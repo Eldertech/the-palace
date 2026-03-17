@@ -55,6 +55,17 @@ This is a collection of interconnected Markdown files that form a knowledge grap
 
 The foundational principle: **cooperation yields agency**. Two entities with complementary capabilities, aligned on shared intent, produce something neither could alone. This palace is the persistent substrate of that cooperation.
 
+## Versioning
+
+The palace is tracked with git. Every committed change is a snapshot of the organism at a moment in time — the history of growth, stage transitions, new links, and ceremonies left as a record. To capture a session:
+
+```bash
+git add .
+git commit -m "brief description of what changed"
+```
+
+Commit messages are a second layer of narrative. Use them like log entries: *"sprouted [[X]] from conversation about Y"* or *"Weave ceremony — 3 new links, 2 entries promoted."*
+
 ## How It Works
 
 ### Reading an Entry
