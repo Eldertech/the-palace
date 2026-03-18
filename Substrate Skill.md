@@ -85,32 +85,28 @@ YAML frontmatter links are reserved for structural relationships that matter. Bo
 
 The canonical list of all ceremonies lives at [[Palace Ceremonies]]. Operational instructions for the core ceremonies follow.
 
-**"Let's walk"** — The Walk ceremony.
-1. Read the full palace directory
-2. Pick a starting entry (or let Loudon choose)
-3. Follow typed links from entry to entry
-4. At each stop, note: what connects differently now? What surprises you? What's missing?
-5. Surface at least one unexpected connection
-6. Propose any metadata updates (activation counts, stage changes)
-7. If any metadata was updated: commit: `Walk — [date] — [starting entry] — metadata updates`
+**"Let's walk"** — The Walk ceremony. Full contract and protocol: [[Walk Ceremony]].
+1. Pick a starting entry. Follow typed links for 4–6 entries.
+2. At each stop: what connects differently now? What surprises?
+3. Surface at least one unexpected connection.
+4. Propose metadata updates (activation counts, stage changes).
+5. If metadata updated: commit `Walk — [date] — [starting entry] — metadata updates`
 
-**"Let's weave"** — The Weave ceremony.
-0. **Process the hibernation queue first.** Read all files in `_hibernation_queue/`. For each: update the Harvest Log using the record's details, verify frontmatter exists on the deposited files (add if missing), delete the queue file. Commit: `Queue processing — [N records processed]`. Only then proceed.
-1. Read ALL entries in the palace
-2. Report on topology: hub nodes, orphans, growing clusters, dormant entries, cross-pillar bridges
-3. Identify entries that should be connected but aren't
-4. Propose new typed links between existing entries
-5. Flag entries whose metadata is stale
-6. Update activation counts and last_activated dates
-7. Propose new entries for ideas that live in conversations but haven't been deposited yet
-8. Commit all metadata updates: `Weave — [date] — [N links added, N entries promoted, N orphans flagged]`
+**"Let's weave"** — The Weave ceremony. Full contract and protocol: [[Weave Ceremony]].
+0. Process `_hibernation_queue/` first — update log, delete queue files, commit.
+1. Read ALL entries. Build topology model.
+2. Report: hubs, orphans, most-connected, cross-pillar bridges, dormant, stale metadata.
+3. Propose ≥3 new typed links. Apply confirmed links.
+4. Propose stage transitions. Apply confirmed transitions.
+5. Flag deposit candidates for Palace To-Do.
+6. Commit: `Weave — [date] — [N links added, N entries promoted, N orphans flagged]`
 
-**"Spore check"** — The Spore Check ceremony.
-1. Read all entries with `stage: dormant`
-2. For each, check: has anything in current work or recent conversations changed the revival conditions?
-3. Propose specific revivals with reasoning
-4. For entries that have been dormant very long with no connection to current work, ask whether to let them compost
-5. After dispositions are confirmed: apply any stage changes, then commit: `Spore Check — [date] — [N revived, N composted, N held]`
+**"Spore check"** — The Spore Check ceremony. Full contract and protocol: [[Spore Check Ceremony]].
+1. Read all `stage: dormant` entries.
+2. For each, assign disposition: revive / hold / compost.
+3. Show all dispositions to Loudon before applying.
+4. Mark compost candidates `stage: composting` (not deleted — deletion at next Weave).
+5. Commit: `Spore Check — [date] — [N revived, N composted, N held]`
 
 ### Proposing Connections
 

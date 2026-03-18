@@ -13,6 +13,14 @@ links:
     type: enables
   - target: "[[Deposit Ceremony]]"
     type: enables
+  - target: "[[Walk Ceremony]]"
+    type: enables
+  - target: "[[Weave Ceremony]]"
+    type: enables
+  - target: "[[Spore Check Ceremony]]"
+    type: enables
+  - target: "[[Self-Model Update Ceremony]]"
+    type: enables
   - target: "[[SCHEMA]]"
     type: connects-to
 ---
@@ -24,10 +32,10 @@ The complete and canonical list of all palace ceremonies. Every ceremony has a t
 
 | Ceremony | Trigger | Cadence | What Happens | Full Spec |
 |---|---|---|---|---|
-| The Walk | "Let's walk" | Weekly | Pick a starting entry, follow typed links, note surprises, surface one unexpected connection | [[Substrate Skill]] |
-| The Weave | "Let's weave" | Monthly | Read ALL entries. Report topology: hubs, orphans, clusters, dormant. Propose new typed links. Process any records in `_hibernation_queue/`. | [[Substrate Skill]] |
-| The Spore Check | "Spore check" | Quarterly | Read all `stage: dormant` entries. Match against current work. Propose revivals. | [[Substrate Skill]] |
-| The Self-Model Update | "Self-model update" | As needed | Revise [[Substrate]] — update the palace's self-description to reflect current state | [[Substrate Skill]] |
+| The Walk | "Let's walk" | Weekly | Pick a starting entry, follow typed links, note surprises, surface one unexpected connection | [[Walk Ceremony]] |
+| The Weave | "Let's weave" | Monthly | Read ALL entries. Report topology: hubs, orphans, clusters, dormant. Propose new typed links. Process `_hibernation_queue/` first. | [[Weave Ceremony]] |
+| The Spore Check | "Spore check" | Quarterly | Read all `stage: dormant` entries. Assign disposition: revive / hold / compost. | [[Spore Check Ceremony]] |
+| The Self-Model Update | "Self-model update" | As needed | Revise [[Substrate]] — update the palace's self-description to reflect current state | [[Self-Model Update Ceremony]] |
 
 ## Harvest and Deposit Ceremonies
 
