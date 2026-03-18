@@ -13,6 +13,8 @@ links:
     type: enables
   - target: "[[Deposit Ceremony]]"
     type: enables
+  - target: "[[SCHEMA]]"
+    type: connects-to
 ---
 # Palace Ceremonies
 
@@ -44,3 +46,28 @@ Not full ceremonies, but palace-aware interactions that can happen in any conver
 | "Add this to the palace" | Draft a new entry from the current conversation. Show for approval before writing. |
 | "Connect this to the palace" | Propose typed links between the current topic and existing entries. |
 | "What does the palace say about [topic]?" | Read relevant entries and synthesize. Follow typed links. |
+
+---
+
+## Ceremony Linter
+
+Before any new ceremony is committed to this document or to [[Substrate Skill]], it must pass the Ceremony Linter. All six checks must pass. No partial passes.
+
+| Check | Question |
+|---|---|
+| **Trigger** | Is there at least one exact phrase that invokes this ceremony without ambiguity? |
+| **Preconditions** | Are the conditions that must be true *before* the ceremony begins stated explicitly? |
+| **Protocol** | Are the steps numbered, ordered, and executable by a human with no AI? |
+| **Postconditions** | Is there at least one checkable assertion that must be true when the ceremony ends? |
+| **Failure Mode** | Is there a stated behavior for when the postcondition is not met? |
+| **Git Commit** | Does the ceremony produce a named artifact or state change that belongs in version control? |
+
+A ceremony that fails any check is revised before it is committed. A ceremony that passes all six is added to the tables above and to [[Substrate Skill]] in the same Schema Ceremony commit.
+
+**The Linter passes its own test:**
+Trigger: "lint this ceremony" / "does this ceremony pass?"
+Precondition: A ceremony draft exists.
+Protocol: Apply the six checks above in order.
+Postcondition: Every check is marked pass or fail. No ceremony proceeds with a failing check.
+Failure mode: Revise and re-lint. Do not commit a failing ceremony.
+Git commit: The validated ceremony definition added to Palace Ceremonies and Substrate Skill. ✓

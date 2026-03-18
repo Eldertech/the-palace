@@ -44,7 +44,7 @@ This is a **meta-entry**: a document about the Palace itself. Its purpose is to 
 | **Weave Ceremony** | `analyzeGraph()` | Topology report / lineage scan | Inferencing / entailment run | Structural analysis pass | Bounded context mapping |
 | **Spore Check** | `audit()` / `gc()` | Data quality scan | Orphan node detection | Dead link check | Stale aggregate review |
 | **Schema Ceremony** | Refactoring / interface change | Schema migration | TBox update | Macro redefinition | Ubiquitous language revision |
-| **Ceremony Linter** | A unit test suite for method contracts | A pipeline validation check | An ontology consistency check | A structural correctness test | A domain invariant check |
+| **Ceremony Linter** (lives in [[Palace Ceremonies]]) | A unit test suite for method contracts | A pipeline validation check | An ontology consistency check | A structural correctness test | A domain invariant check |
 | **The Palace Keeper** | The runtime / interpreter | The pipeline orchestrator | The reasoner / triplestore engine | The literate programming tool | The domain expert / ubiquitous language guardian |
 | **A Connection** | A method call between objects | A join / edge in a data graph | An RDF triple (subject–predicate–object) | A cross-reference | An Association |
 | **The Harvest Log** | A write-ahead log / commit journal | A pipeline run log | A provenance graph | A revision history | An event store |

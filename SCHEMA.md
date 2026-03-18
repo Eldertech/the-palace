@@ -181,24 +181,7 @@ Use only these relationship types:
 
 ---
 
-## 5. The Ceremony Linter
-
-Before any new ceremony is committed to [[Palace Ceremonies]] or [[Substrate Skill]], it must pass the Ceremony Linter. Apply all six checks. No partial passes.
-
-| Check | Question |
-|---|---|
-| **Trigger** | Is there at least one exact phrase that invokes this ceremony without ambiguity? |
-| **Preconditions** | Are the conditions that must be true *before* the ceremony begins stated explicitly? |
-| **Protocol** | Are the steps numbered, ordered, and executable by a human with no AI? |
-| **Postconditions** | Is there at least one checkable assertion that must be true when the ceremony ends? |
-| **Failure Mode** | Is there a stated behavior for when the postcondition is not met? |
-| **Git Commit** | Does the ceremony produce a named artifact or state change that belongs in version control? |
-
-A ceremony that fails any check is revised before it is committed. A ceremony that passes all six is added to [[Palace Ceremonies]] and [[Substrate Skill]] in the same Schema Ceremony commit.
-
----
-
-## 6. Schema Change Protocol (The Schema Ceremony)
+## 5. Schema Change Protocol (The Schema Ceremony)
 
 When any of the following change, a Schema Ceremony is required:
 
@@ -222,7 +205,7 @@ When any of the following change, a Schema Ceremony is required:
 
 ---
 
-## 7. The Self-Description Test
+## 6. The Self-Description Test
 
 After any structural change, apply this test:
 
