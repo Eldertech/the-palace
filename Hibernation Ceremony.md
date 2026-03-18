@@ -1,6 +1,6 @@
 ---
 title: "Hibernation Ceremony"
-type: meta
+type: practice
 pillars: [practice, tools]
 born: 2026-03
 last_activated: 2026-03
@@ -16,6 +16,32 @@ links:
 ---
 
 # Hibernation Ceremony
+
+## Ceremony Contract
+
+**Trigger:** Loudon says "nothing left unsaid" at the close of a completed Deposit session
+
+**Access vectors:**
+- *Full:* Any vector that hosted the deposit session (the Hibernation runs in the same context as the Deposit)
+- *Queue processing:* Claude Code / Cowork (processes `_hibernation_queue/` files and updates the Harvest Log)
+- *Note:* The git commit for the deposited files is intentionally deferred to queue processing, not made in the original conversation context. This is by design — not an omission. The original conversation cannot safely edit the Harvest Log directly (risk of truncation on large files), so it writes a queue record instead. Queue processing happens during the next Weave or routine maintenance.
+
+**Preconditions:**
+1. All artifacts from the deposit are written to the palace with valid YAML frontmatter
+2. Companion document is written and approved (if the session produced process insight warranting one)
+3. Lost branches are named in the deposit map
+4. Loudon has confirmed: nothing feels unfinished or unsaid
+
+**Postconditions:**
+1. Closing note is written into the conversation thread
+2. A hibernation queue record exists at `_hibernation_queue/[HarvestID]_[theme-slug].md`
+3. The queue record contains all information needed to update the Harvest Log without returning to this conversation
+
+**Failure mode:** If the queue record is not written (session ends abruptly), the Harvest Log will not be updated. On next Weave: check `_hibernation_queue/` — if a conversation is known to have completed but has no queue record, treat the deposited files as orphaned and reconstruct the log entry from the frontmatter of those files.
+
+**Git commit:** Deferred. The queue record is written in this context. The git commit (`Deposit — [harvest ID] — [theme] — hibernated`) is made by the palace keeper during queue processing.
+
+---
 
 The final act of the [[Deposit Ceremony]]. A conversation that has given everything it has — artifacts written, companion document complete, nothing left unsaid — does not end. It hibernates.
 

@@ -1,6 +1,6 @@
 ---
 title: "Harvest Ceremony"
-type: concept
+type: practice
 pillars: [practice, tools]
 born: 2026-03
 last_activated: 2026-03
@@ -20,6 +20,33 @@ links:
 ---
 
 # Harvest Ceremony
+
+## Ceremony Contract
+
+**Trigger:** "Let's harvest"
+
+**Access vectors:**
+- *Full:* claude.ai (has `recent_chats` tool — the only vector with past chat access)
+- *Partial:* Claude Code / Cowork (can harvest Google Drive, local files, email; cannot access Claude chat history)
+- *Read-only:* Obsidian (human-only triage, no AI assistance)
+- *Not supported:* GitHub cloud, Google Drive alone
+
+**Preconditions:**
+1. Harvest Log exists and `## Frontier` section is current
+2. Source material is accessible via the current vector
+3. Prediction Alignment Log has been reviewed for any calibration notes
+
+**Postconditions:**
+1. All triaged items (including auto-triaged) are written to the Harvest Log with ID, decision, and `skip_reason` or `deposit_notes`
+2. The Frontier datetime has been updated to reflect the last processed item
+3. The Prediction Alignment Log has been updated with this batch's results
+4. A git commit has been made with message: `Harvest — [batch ID range] — [N worthy, N partial, N skip]`
+
+**Failure mode:** If the session is interrupted before the log is written, the Frontier will not reflect the lost decisions. On resume: check whether the Frontier matches expectations. If batch decisions were lost, re-triage using the prediction system — with high alignment, re-triage is fast. Do not advance the Frontier without writing the log.
+
+**Git commit:** After writing all decisions to the Harvest Log, commit: `Harvest — [batch ID range] — [N worthy, N partial, N skip]`
+
+---
 
 A triage ceremony for surveying raw source material — conversations, documents, notes, files — and flagging what is worthy of eventual incorporation into the palace. The Harvest does not build palace entries. It identifies what should be built and records that decision persistently in the [[Harvest Log]].
 
@@ -125,7 +152,7 @@ Any of the following ends a session cleanly:
 - The batch runs out
 - A deposit is triggered mid-harvest
 
-On stop: update the Frontier, add a session row to `## Session History`, confirm the log is current.
+On stop: update the Frontier, add a session row to `## Session History`, confirm the log is current. Then commit: `Harvest — [batch ID range] — [N worthy, N partial, N skip]`.
 
 ## What Makes Something "Worthy"
 

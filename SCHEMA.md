@@ -203,6 +203,14 @@ When any of the following change, a Schema Ceremony is required:
 
 **Postcondition:** SCHEMA.md, CLAUDE.md, Rosetta Stone, and Substrate Skill.md are internally consistent. Git commit made with Schema Ceremony message.
 
+**Failure mode:** If a schema change is made but the commit message does not follow the Schema Ceremony format, the change is not considered a Schema Ceremony — it is an undocumented structural edit. On next Weave: flag any version increments whose git commit messages lack the Schema Ceremony format. Reconstruct the rationale from the diff and add it retroactively as a note in SCHEMA.md.
+
+**Access vectors:**
+- *Full:* Claude Code / Cowork (filesystem read/write + git)
+- *Planning only:* claude.ai online (can deliberate and draft changes; cannot write files or commit)
+- *Manual:* Obsidian + human (human makes edits; human runs git commit)
+- *Not supported:* GitHub cloud alone
+
 ---
 
 ## 6. The Self-Description Test

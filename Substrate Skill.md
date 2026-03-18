@@ -92,8 +92,10 @@ The canonical list of all ceremonies lives at [[Palace Ceremonies]]. Operational
 4. At each stop, note: what connects differently now? What surprises you? What's missing?
 5. Surface at least one unexpected connection
 6. Propose any metadata updates (activation counts, stage changes)
+7. If any metadata was updated: commit: `Walk — [date] — [starting entry] — metadata updates`
 
 **"Let's weave"** — The Weave ceremony.
+0. **Process the hibernation queue first.** Read all files in `_hibernation_queue/`. For each: update the Harvest Log using the record's details, verify frontmatter exists on the deposited files (add if missing), delete the queue file. Commit: `Queue processing — [N records processed]`. Only then proceed.
 1. Read ALL entries in the palace
 2. Report on topology: hub nodes, orphans, growing clusters, dormant entries, cross-pillar bridges
 3. Identify entries that should be connected but aren't
@@ -101,12 +103,14 @@ The canonical list of all ceremonies lives at [[Palace Ceremonies]]. Operational
 5. Flag entries whose metadata is stale
 6. Update activation counts and last_activated dates
 7. Propose new entries for ideas that live in conversations but haven't been deposited yet
+8. Commit all metadata updates: `Weave — [date] — [N links added, N entries promoted, N orphans flagged]`
 
 **"Spore check"** — The Spore Check ceremony.
 1. Read all entries with `stage: dormant`
 2. For each, check: has anything in current work or recent conversations changed the revival conditions?
 3. Propose specific revivals with reasoning
 4. For entries that have been dormant very long with no connection to current work, ask whether to let them compost
+5. After dispositions are confirmed: apply any stage changes, then commit: `Spore Check — [date] — [N revived, N composted, N held]`
 
 ### Proposing Connections
 
@@ -139,4 +143,4 @@ Show proposed changes to Loudon before writing.
 
 This skill complements the Four Pillars skill. The Four Pillars governs HOW we work together. The Substrate governs WHERE we deposit what we learn. They should work together seamlessly.
 
-When the RNBO or Ableton Extensions skills are active, stay alert for palace-worthy breakthroughs but let those skills lead. The Substrate is infrastructure, not the main event.
+When other skills like RNBO or Ableton Extensions skills are active, stay alert for palace-worthy breakthroughs but let those skills lead. The Substrate is infrastructure, not the main event.

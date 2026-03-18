@@ -1,6 +1,6 @@
 ---
 title: "Deposit Ceremony"
-type: concept
+type: practice
 pillars: [practice, tools, philosophy]
 born: 2026-03
 last_activated: 2026-03
@@ -20,6 +20,36 @@ links:
 ---
 
 # Deposit Ceremony
+
+## Ceremony Contract
+
+**Trigger:** "Let's deposit" / "Add this to the palace" (for single-item deposits)
+
+**Access vectors:**
+- *Full:* Claude Code / Cowork (filesystem read/write + git; best for non-chat sources)
+- *Full for claude_chat sources:* Original conversation context (any vector that can open the URL)
+- *Planning only:* claude.ai online (can read palace via GitHub raw URLs once pushed; cannot write files directly)
+- *Manual:* Obsidian + human (human writes entries; AI assists with drafting in a separate window)
+- *Not supported:* GitHub cloud alone, Google Drive alone
+
+**Preconditions:**
+1. Harvest Log has at least one item with `deposit_status: pending`
+2. The source is accessible via the current vector (see Step 2 for `claude_chat` source handling)
+3. Palace entries exist to link to (minimum: README and at least one concept entry)
+
+**Postconditions:**
+1. At least one new entry exists in the palace folder, or at least one existing entry has been meaningfully updated
+2. All new entries have valid YAML frontmatter with required fields
+3. The Harvest Log item is marked `deposit_status: done` with a `deposit_notes` summary
+4. Lost branches are named in the deposit map or closing log
+5. Loudon has confirmed: nothing feels unfinished or unsaid
+6. A git commit has been made: `Deposit — [harvest ID] — [theme] — [N new entries, N updated]`
+
+**Failure mode:** If the deposit is interrupted after files are written but before the log is updated, mark the item `deposit_status: in-progress` in the log. On resume, check for orphaned files (entries in the palace folder with no corresponding log update) during the next Weave.
+
+**Git commit:** After all files are written and Loudon confirms completion: `Deposit — [harvest ID] — [theme] — [N new entries, N updated]`. For `claude_chat` sources where writing happens in the original conversation, the commit is made by that context's Claude or deferred to queue processing — see Hibernation Ceremony.
+
+---
 
 The second ceremony in the two-ceremony harvest system. Where the [[Harvest Ceremony]] flags sources as worthy, the Deposit Ceremony reads a single flagged source deeply and weaves its knowledge into the palace — drafting entries, proposing typed links, updating existing entries, and writing to disk on Loudon's approval.
 
@@ -283,6 +313,55 @@ If Loudon confirms nothing remains — the [[Hibernation Ceremony]] begins immed
 **What hibernation owns:** The closing note in the thread, the harvest log update, the final marking of the thread as dormant.
 
 The handoff is the moment Loudon says "nothing left unsaid."
+
+## Companion Document Template
+
+The companion document is the meta-layer of a deposit session. It is a palace entry in its own right — type `practice`, stage `seed` — that records not just what was deposited but what the process itself revealed: pace observations, recalibrations, missed branches, and any shifts in how you understand the palace or the work. It is written during the deposit, not after. It exists so that the next operator inheriting this context can understand not just what the palace contains but how it came to contain it.
+
+The companion document is only needed when the deposit session produces genuine process insight — a change in understanding, a recalibration, a named discovery about how to work. Routine deposits that proceed cleanly do not require one.
+
+**Template:**
+
+```yaml
+---
+title: "Companion — [Harvest ID] — [Theme]"
+type: practice
+pillars: [practice]
+born: YYYY-MM
+stage: seed
+links:
+  - target: "[[Deposit Ceremony]]"
+    type: emerged-from
+  - target: "[[relevant entry deposited]]"
+    type: connects-to
+---
+```
+
+```markdown
+# Companion — [Harvest ID] — [Theme]
+
+## What Was Deposited
+
+A brief, specific list of entries created or updated, with one-line descriptions.
+
+## Process Observations
+
+What did this session reveal about how to do deposit work well? What friction arose? What worked?
+
+## Recalibrations
+
+Any updates to triage judgment, pace understanding, or ceremony procedure that emerged from this session.
+
+## Lost Branches
+
+Paths in the source that weren't followed. Not a to-do list — an honest accounting of what exists but wasn't taken.
+
+## Open Questions
+
+Anything that remains unresolved or unasked from this source.
+```
+
+---
 
 ## Open Questions
 
