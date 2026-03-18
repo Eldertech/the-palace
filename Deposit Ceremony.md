@@ -29,21 +29,35 @@ links:
 
 > **If this ceremony was just invoked in a past conversation:**
 >
-> You are returning to this conversation as an archivist, not continuing it as a participant. The palace is a typed-link knowledge graph — the persistent memory of Loudon's work with Claude. Your first act is not to map or propose anything.
+> You are returning to this conversation now as an archivist, not continuing it as a participant. Your new goal is to find the most important aspects of this conversation and codify and map into "The Palace." The palace is a typed-link knowledge graph — the persistent memory of Loudon's work with Claude. Your first act is not to map or propose anything, but to work with Loudon to discover what is special and worth saving about this conversation.
 >
 > Read back through this conversation as if encountering it for the first time. Notice the arc. Notice where things opened. Notice what was built and then left behind, the branches that weren't followed, the moments of discovery that didn't get named. Then tell Loudon what you notice and wait for him to respond.
 >
 > The deposit is slow and conversational. Do not rush. Do not produce a map yet. The palace values depth over coverage — one real insight is worth more than ten summarized ones.
 >
+> **Your context is already full — do not pull the palace into it.** Your job is to distill this conversation into one or a few well-formed entries, and to name the obvious connections to existing palace entries by title. You do not need to read those entries. Deep integration happens through future Weave and Walk ceremonies. The deposit plants the seed; the ceremonies grow the roots.
+>
+> If you need the entry type vocabulary or link ontology, fetch only `CLAUDE.md` via the GitHub raw URL below. Nothing else unless Loudon specifically asks.
+>
 > **Palace path (for writing files):** `/Users/loudonstearns/Library/CloudStorage/GoogleDrive-loudon@gmail.com/My Drive/The Palace/`
-> **GitHub raw (read from any vector):** `https://raw.githubusercontent.com/Eldertech/the-palace/main/[filename].md`
-> Fetch `CLAUDE.md` first if you need palace context, then follow links as needed.
+> **GitHub raw:** `https://raw.githubusercontent.com/Eldertech/the-palace/main/[filename].md`
 
 ---
 
 The second ceremony in the two-ceremony harvest system. Where the [[Harvest Ceremony]] flags sources as worthy, the Deposit Ceremony reads a single flagged source deeply and weaves its knowledge into the palace — drafting entries, proposing typed links, updating existing entries, and writing to disk on Loudon's approval.
 
 One source per session. Depth over coverage.
+
+## The Scope of the Deposit
+
+The deposit's job is **distillation, not integration.**
+
+Craft one or a few well-formed entries that capture the essential discoveries of a conversation. Name the obvious connections to existing palace entries by title. Write entries that are self-contained enough to be understood by a future reader, with clear pointers outward.
+
+Do not attempt to read the full palace or update existing entries during a deposit from a live conversation. The context is already rich — adding the palace to it works against the ceremony. The Weave and Walk exist precisely to develop deeper connections over time. As the palace grows and other entries accumulate, relationships that aren't obvious now will become visible then.
+
+**What the deposit owns:** Distillation, new entries, named links, lost branches.
+**What the Weave owns:** Deep integration, updating existing entries, discovering connections that weren't obvious at deposit time.
 
 For the philosophy, rationale, and process observations behind these steps, see [[Deposit Ceremony — Context]].
 
@@ -165,19 +179,19 @@ Before drafting any entries, present a deposit map to Loudon:
 > *New entries to create:*
 > — "Kuramoto Coupling" (concept) — the mathematical framework plus cross-domain breakthrough
 >
-> *Existing entries to update:*
-> — [[Four Pillars]] → add Kuramoto to Open Questions
-> — [[Cooperation Yields Agency]] → add a mirrors link to Kuramoto
->
-> *Proposed typed links:*
-> — Kuramoto `mirrors` Cooperation Yields Agency
-> — Kuramoto `connects-to` Hilaritas Generator
+> *Proposed typed links (by name — no need to read these entries):*
+> — Kuramoto `mirrors` [[Cooperation Yields Agency]]
+> — Kuramoto `connects-to` [[Hilaritas Generator]]
 >
 > *Quotes:*
 > — One candidate for [[Palace Quotes]]
 >
 > *Lost branches to flag:*
 > — List any paths from the source that weren't followed and might deserve future deposit
+>
+> *Existing entries to flag for Weave (do not update now):*
+> — [[Four Pillars]] — may want to reference Kuramoto in Open Questions
+> — [[Cooperation Yields Agency]] — Kuramoto mirrors link could go in frontmatter
 >
 > Approve, adjust, or add?
 
@@ -207,12 +221,15 @@ The deposit map is the most important structural step. It forces synthesis befor
 - **Entry type** — concept, breakthrough, project, question, spore, source
 - **Pillar affiliations** — which pillars does this touch?
 - **Proposed stage** — seed, sprout, or growing?
-- **Typed links** — named relationship types, not just "connects to"
+- **Typed links** — named relationship types, not just "connects to." Propose these by entry name — do not read the linked entries.
 - **Lost branches** — paths in the source that weren't followed and deserve naming even if not yet deposited
+- **Existing entries to flag for Weave** — entries in the palace that may want updating once this deposit lands. Flag the entry name and what might change. Do not read or update them now.
 
 ## Updating Existing Entries
 
-When adding to an existing entry:
+**When depositing from a live conversation:** defer updates to existing entries. Flag them in the deposit map under "existing entries to flag for Weave" and leave the updates for the next Weave or a dedicated Claude Code session. Do not read existing entries to update them — context preservation takes priority.
+
+**When depositing from Claude Code or a dedicated deposit session** (no rich conversation context to protect): updating existing entries is appropriate. Follow these steps:
 - Increment `activation_count` in the frontmatter
 - Update `last_activated` to current month (YYYY-MM format)
 - Adjust `stage` if the entry has genuinely matured
@@ -228,8 +245,8 @@ A new Claude instance can resume a Deposit session by:
 1. Reading [[README - The Palace Guide]]
 2. Reading this entry
 3. Reading [[Harvest Log]] — find the item marked `deposit_status: in-progress` (if any) or the oldest `pending` item
-4. Checking `source_type` — if `claude_chat`, prepare the link and prompt for Loudon rather than attempting to retrieve the source directly
-5. Confirming with Loudon: "Ready to deposit H042 — the Kick Drum Paradox session from January 2026. This is a claude_chat source, so the deposit needs to happen from within that conversation. Here's the link and a prompt to paste in."
+4. Checking `source_type` — if `claude_chat`, give Loudon the direct link from `source_ref` rather than attempting to retrieve the source directly
+5. Confirming with Loudon: "Ready to deposit H042 — the Kick Drum Paradox session from January 2026. This is a claude_chat source — follow this link and invoke the ceremony there: [link]"
 
 If a prior session got as far as a deposit map but didn't write anything, note that in the log as `deposit_status: in-progress` with the map details in `deposit_notes` so the next session doesn't have to regenerate it.
 
