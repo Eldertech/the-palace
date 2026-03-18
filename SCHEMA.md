@@ -234,11 +234,9 @@ When a ceremony file exceeds ~8KB, split it into two files:
 
 **Currently split:**
 - [[Deposit Ceremony]] + [[Deposit Ceremony — Context]]
-
-**Candidates for splitting (next Weave):**
-- [[Harvest Ceremony]] (13KB)
-- [[Weave Ceremony]] (8KB — borderline)
-- [[Hibernation Ceremony]] (8KB — borderline)
+- [[Harvest Ceremony]] + [[Harvest Ceremony — Context]]
+- [[Weave Ceremony]] + [[Weave Ceremony — Context]]
+- [[Hibernation Ceremony]] + [[Hibernation Ceremony — Context]]
 
 ---
 

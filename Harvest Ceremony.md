@@ -17,9 +17,17 @@ links:
     type: connects-to
   - target: "[[Mixture of Experts]]"
     type: mirrors
+  - target: "[[Harvest Ceremony — Context]]"
+    type: spawned
 ---
 
 # Harvest Ceremony
+
+A triage ceremony for surveying raw source material — conversations, documents, notes, files — and flagging what is worthy of eventual incorporation into the palace. The Harvest does not build palace entries. It identifies what should be built and records that decision persistently in the [[Harvest Log]].
+
+The Harvest is designed to run across many sessions, stopped and started freely, by different Claude instances with no prior context. The [[Harvest Log]] is the only state that persists. Every session reads the log, finds the frontier, continues from there.
+
+For rationale and historical calibration observations, see [[Harvest Ceremony — Context]].
 
 ## Ceremony Contract
 
@@ -48,19 +56,6 @@ links:
 
 ---
 
-A triage ceremony for surveying raw source material — conversations, documents, notes, files — and flagging what is worthy of eventual incorporation into the palace. The Harvest does not build palace entries. It identifies what should be built and records that decision persistently in the [[Harvest Log]].
-
-The Harvest is designed to run across many sessions, stopped and started freely, by different Claude instances with no prior context. The [[Harvest Log]] is the only state that persists. Every session reads the log, finds the frontier, continues from there.
-
-## The Two-Ceremony Design
-
-The Harvest and the [[Deposit Ceremony]] are intentionally separate:
-
-- **Harvest** — fast, gestalt, broad coverage. "Does this matter?" Momentum is the goal.
-- **Deposit** — slow, surgical, one source at a time. "What exactly matters and how does it connect?" Quality is the goal.
-
-Keeping them separate allows long harvest runs without getting pulled into depth, and focused deposit sessions without the pressure of coverage. The Harvest Log is the handoff between them.
-
 ## Prediction and Auto-Triage
 
 After sufficient calibration, Claude should generate predictions for each item before showing it to Loudon. Each prediction includes a confidence score and a brief reason. This serves two purposes: it builds toward auto-triage capability, and it surfaces the reasoning so Loudon can correct miscalibrations quickly.
@@ -75,14 +70,6 @@ After sufficient calibration, Claude should generate predictions for each item b
 Auto-triage applies to skips only. Worthy and partial predictions always go to Loudon for confirmation.
 
 **Calibration log:** The [[Harvest Log]] maintains a `## Prediction Alignment Log` table. Update it after every batch. Track misses and their direction — did Claude over-skip or over-worthy? This is how the model improves.
-
-**Known calibration notes (from batches 1–4):**
-- Narrative history used as a teaching vehicle (e.g., historical storytelling sessions) is more likely `partial` than `skip` — pedagogical framing elevates these above factual lookup.
-- Sessions with cross-domain synthesis (control theory + filter theory + physics; optics + audio) are nearly always `worthy` — weight these heavily.
-- Early "capability exploration" chats (can Claude do X?) are `skip` — they document Claude's historical limitations, not conceptual breakthroughs.
-- Craft work for specific tracks or releases is `skip` unless it contains an explicit conceptual framing.
-- Sessions producing interactive visualizations or tools should be checked for pedagogical methodology breakthrough, not just technical output.
-- Craft/tool-building sessions with strong aesthetic output but no new conceptual framework → `partial` not `worthy`. Aesthetic achievement (CRT phosphor aesthetic, animated interface) is palace-adjacent but not a conceptual breakthrough unless it introduces a new design principle.
 
 ## Interaction Design
 
@@ -200,10 +187,3 @@ A new Claude instance with no prior context resumes by:
 5. Pre-processing predictions, building the interface, presenting to Loudon
 
 No other context needed. The palace is self-sufficient.
-
-## Open Questions
-
-- As source types multiply, should each type have its own Harvest Log section, or stay flat?
-- At what alignment level should auto-triage extend beyond skips to low-confidence worthy predictions?
-- Should the Harvest ever revisit `skip` decisions as the palace grows and new entries change what's relevant?
-- Is there a natural batch size that optimizes momentum vs. fatigue? (Current experience: 15–20 is good; fewer than 10 feels like too much overhead for too little coverage.)

@@ -13,9 +13,21 @@ links:
     type: enables
   - target: "[[Palace Ceremonies]]"
     type: connects-to
+  - target: "[[Hibernation Ceremony — Context]]"
+    type: spawned
 ---
 
 # Hibernation Ceremony
+
+The final act of the [[Deposit Ceremony]]. A conversation that has given everything it has — artifacts written, companion document complete, nothing left unsaid — does not end. It hibernates.
+
+Like a bear in winter: the animal is not gone. Its life continues slowly, at depth, out of sight. The knowledge it carried has been metabolized into the palace. The thread rests, preserved, with the faint possibility of reawakening — but with no expectation of it.
+
+**Trigger:** Loudon says "nothing left unsaid" at the end of a completed deposit. Hibernation begins immediately — it is the continuous closing motion of deposit, not a separate session.
+
+**Design principle:** The hibernation is self-contained. Loudon should be able to end any conversation with this ceremony without needing to return to another context to finish the work. Everything the past Claude needs is carried in the deposit prompt. The harvest log update happens asynchronously via the hibernation queue.
+
+For philosophical reflection, see [[Hibernation Ceremony — Context]].
 
 ## Ceremony Contract
 
@@ -42,14 +54,6 @@ links:
 **Git commit:** Deferred. The queue record is written in this context. The git commit (`Deposit — [harvest ID] — [theme] — hibernated`) is made by the palace keeper during queue processing.
 
 ---
-
-The final act of the [[Deposit Ceremony]]. A conversation that has given everything it has — artifacts written, companion document complete, nothing left unsaid — does not end. It hibernates.
-
-Like a bear in winter: the animal is not gone. Its life continues slowly, at depth, out of sight. The knowledge it carried has been metabolized into the palace. The thread rests, preserved, with the faint possibility of reawakening — but with no expectation of it.
-
-**Trigger:** Loudon says "nothing left unsaid" at the end of a completed deposit. Hibernation begins immediately — it is the continuous closing motion of deposit, not a separate session.
-
-**Design principle:** The hibernation is self-contained. Loudon should be able to end any conversation with this ceremony without needing to return to another context to finish the work. Everything the past Claude needs is carried in the deposit prompt. The harvest log update happens asynchronously via the hibernation queue.
 
 ## Prerequisites
 
@@ -161,15 +165,3 @@ The Palace/Artifacts/[Theme]/[filename]
 4. Delete the queue file once processed
 
 The queue means: no hibernation is ever incomplete. If the log wasn't updated in the moment, it will be updated in the next pass.
-
-## The Bear
-
-Bears do not decide to hibernate. The conditions arrive and the body knows. The ceremony should feel the same way — not a decision to stop, but a recognition that the season has changed. The work is done. The knowledge is safe. The thread can rest.
-
-A hibernating conversation is not a failed conversation or an abandoned one. It is a complete one.
-
-## Open Questions
-
-- Should hibernated conversations be noted somewhere beyond the harvest log — a dedicated registry of dormant threads, so they can be found if revival ever becomes relevant?
-- Is there a Revival Ceremony — a way to formally reawaken a hibernated conversation when new work makes it relevant again?
-- What happens when a conversation is too old to access fully but hasn't been hibernated? Can we perform a partial hibernation based on summary alone, or does it simply remain unhibernated in the log?

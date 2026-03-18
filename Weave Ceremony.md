@@ -17,9 +17,19 @@ links:
     type: enables
   - target: "[[Kuramoto Coupling]]"
     type: mirrors
+  - target: "[[Weave Ceremony — Context]]"
+    type: spawned
 ---
 
 # Weave Ceremony
+
+The palace's full-body examination. Where the Walk follows one thread, the Weave reads every thread and asks: how do they relate? What forms? What tangles? What has grown unnoticed? What has died without a marker?
+
+The metaphor is the elder weaving the blanket — not creating new material, but working with what exists, finding the pattern across all threads simultaneously. The Weave is also the mycorrhizal network doing its distributed routing work: redistributing nutrients (connections) toward need, away from surplus.
+
+The Weave is monthly. More frequent and it becomes overhead. Less frequent and the palace begins to drift — orphan entries accumulate, stale metadata misleads, the topology report loses its ability to surprise.
+
+For philosophical reflection on the Weave, see [[Weave Ceremony — Context]].
 
 ## Ceremony Contract
 
@@ -48,14 +58,6 @@ links:
 **Git commit:** `Weave — [date] — [N links added, N entries promoted, N orphans flagged]`
 
 ---
-
-## What the Weave Is
-
-The Weave is the palace's full-body examination. Where the Walk follows one thread, the Weave reads every thread and asks: how do they relate? What forms? What tangles? What has grown unnoticed? What has died without a marker?
-
-The metaphor is the elder weaving the blanket — not creating new material, but working with what exists, finding the pattern across all threads simultaneously. The Weave is also the mycorrhizal network doing its distributed routing work: redistributing nutrients (connections) toward need, away from surplus.
-
-The Weave is monthly. More frequent and it becomes overhead. Less frequent and the palace begins to drift — orphan entries accumulate, stale metadata misleads, the topology report loses its ability to surprise.
 
 ## Protocol
 
@@ -153,15 +155,3 @@ After all confirmed changes are written: `Weave — [date] — [N links added, N
 
 **Queue records processed:** [N]
 ```
-
-## The Blanket
-
-A well-woven blanket is not a collection of threads — it is a structure that has emerged from their interaction. The individual threads do not change; the weaving reveals the pattern that was always possible in their combination.
-
-The palace after a Weave is not a larger palace. It is a more coherent one. The same entries, held together more intentionally.
-
-## Open Questions
-
-- At what palace size should the Weave split into two passes — one for topology, one for link proposals?
-- Should the Weave produce a persistent `Weave Report — [date].md` entry as a record of each Weave? This would make the palace's growth history traversable.
-- Is there a minimum Weave that can be done in under 15 minutes for maintenance during an active work period, distinct from the full monthly Weave?
