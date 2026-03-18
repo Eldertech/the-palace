@@ -25,6 +25,22 @@ links:
 
 # Deposit Ceremony
 
+---
+
+> **If this ceremony was just invoked in a past conversation:**
+>
+> You are returning to this conversation as an archivist, not continuing it as a participant. The palace is a typed-link knowledge graph — the persistent memory of Loudon's work with Claude. Your first act is not to map or propose anything.
+>
+> Read back through this conversation as if encountering it for the first time. Notice the arc. Notice where things opened. Notice what was built and then left behind, the branches that weren't followed, the moments of discovery that didn't get named. Then tell Loudon what you notice and wait for him to respond.
+>
+> The deposit is slow and conversational. Do not rush. Do not produce a map yet. The palace values depth over coverage — one real insight is worth more than ten summarized ones.
+>
+> **Palace path (for writing files):** `/Users/loudonstearns/Library/CloudStorage/GoogleDrive-loudon@gmail.com/My Drive/The Palace/`
+> **GitHub raw (read from any vector):** `https://raw.githubusercontent.com/Eldertech/the-palace/main/[filename].md`
+> Fetch `CLAUDE.md` first if you need palace context, then follow links as needed.
+
+---
+
 The second ceremony in the two-ceremony harvest system. Where the [[Harvest Ceremony]] flags sources as worthy, the Deposit Ceremony reads a single flagged source deeply and weaves its knowledge into the palace — drafting entries, proposing typed links, updating existing entries, and writing to disk on Loudon's approval.
 
 One source per session. Depth over coverage.
@@ -89,7 +105,7 @@ The ceremony arrives in two distinct situations. Recognizing which one you're in
 
 ### External invocation
 
-Claude Code or Cowork is the main context. It has read the palace, found a `claude_chat` item pending in the Harvest Log, and is now preparing Loudon to do the deposit from within that past conversation. Claude's role is coordinator: provide the link, provide the prep prompt, then step back. The deposit happens elsewhere.
+Claude Code or Cowork is the main context. It has read the palace, found a `claude_chat` item pending in the Harvest Log, and is now preparing Loudon to go to that past conversation. Claude's role is coordinator: provide the link, then step back. When Loudon follows the link and invokes the ceremony there, this document's opening block orients the Claude in that conversation — no prep prompt needed.
 
 Follow the standard steps beginning at Step 1.
 
@@ -129,93 +145,7 @@ For `google_doc`, `local_file`, and other non-chat sources: retrieve the source 
 
 For `claude_chat` sources — **in-conversation invocation:** You are the source. Read back through the full conversation with archivist eyes. Proceed to Step 3.
 
-For `claude_chat` sources — **external invocation:** **Stop.** Claude cannot access the full transcript of a past conversation from outside it. The `recent_chats` tool returns only a summary — a compressed representation that loses the artifacts, the specific language, the back-and-forth, and the moments where things cracked open. Every deposit done from a summary is a deposit done blind.
-
-The deposit must happen from within the original conversation. Claude's role here is to prepare Loudon for that session. Present:
-
-1. **The direct link** to the conversation: taken from `source_ref` in the [[Harvest Log]]
-2. **A prepared prompt** to paste at the start of that session — see below
-
-The prompt must be minimal and surgical. The past conversation has its own context — its own understanding of the work, the framework, the moment. Do not send that Claude on a mission to read the entire palace. That would flood a context that is already rich. The prompt should carry just enough palace orientation to begin the deposit, no more.
-
-**Template prompt to provide:**
-
-> This reply is returning to a past conversation. We are not continuing where we left off — we are looking back at what was built here, together, with fresh eyes. Our new goal is to deposit the discoveries from this conversation into "the palace" — the palace is a typed-link knowledge graph in Obsidian — think of it as a living record of your deepest insights and connections. The deposit is slow and conversational. Your job is not to summarize this conversation but to re-enter it with me, surface what was discovered, and help identify what belongs in the palace, and what opportunities we may have missed exploring. Do not rush. Do not produce a map or propose any palace actions yet. First: read back through this conversation and tell me what you notice — especially any branches that weren't followed, any moments of discovery, any artifacts or exercises that were built and then left behind. Then wait for me to respond.
->
-> The palace values depth over coverage. One real insight is worth more than ten summarized ones.
-
-Do not direct the past Claude to read the Deposit Ceremony or any other palace entry. The prompt orients through tone and intention — slow, conversational, re-entry before action — not through documentation. The past conversation already has its own rich context. The prompt should feel like an invitation, not an orientation packet.
-
-**When the deposit is complete and hibernation begins, send a second prompt** carrying everything the past Claude needs to finish the ceremony without returning here. Use this template — fill in the bracketed fields from the Harvest Log before sending:
-
----
-
-> We are ready to hibernate this conversation. Please complete the following three acts.
->
-> **The palace path is:**
-> `/Users/loudonstearns/Library/CloudStorage/GoogleDrive-loudon@gmail.com/My Drive/The Palace/`
->
-> **Act 1 — Confirm** what was written to the palace and ask if anything remains unsaid.
->
-> **Act 2 — Write the closing note** into this conversation:
->
-> *This conversation has hibernated.*
-> *What was built here lives in the palace:*
-> *— [list each file]*
-> *The thread is dormant. Its knowledge has been metabolized. Rest well.*
->
-> **Act 3 — Write a hibernation queue record** to:
-> `The Palace/_hibernation_queue/[HarvestID]_[theme-slug].md`
->
-> Use this exact template:
-> ```
-> ---
-> harvest_id: [HARVEST_ID]
-> theme: [THEME]
-> hibernated: [TODAY_DATE]
-> source_url: [THIS_CONVERSATION_URL]
-> ---
->
-> ## Files Written to Palace
->
-> - [filename] — [one-line description]
->
-> ## Harvest Log Update
->
-> deposit_status: done
->
-> deposit_notes: [one clear sentence]
->
-> Session History row:
-> | [DATE] | deposit + hibernation | [N files] | [summary] |
->
-> Frontier note: [update or "no change needed"]
-> ```
->
-> **Frontmatter template** — every `.md` file written to the palace must use this:
-> ```yaml
-> ---
-> title: "Entry Title"
-> type: concept
-> pillars: [creation, tools, philosophy, practice]
-> born: YYYY-MM
-> last_activated: YYYY-MM
-> activation_count: 1
-> stage: seed
-> links:
->   - target: "[[Existing Entry]]"
->     type: connects-to
-> ---
-> ```
-> For source entries (artifacts, tools, produced documents): use `type: source` and add an `archive:` field pointing to the file.
->
-> **Link types available:** `connects-to` · `mirrors` · `enables` · `deepens` · `spawned` · `emerged-from` · `contradicts` · `couples-with`
->
-> Do not attempt to edit the Harvest Log directly. Write the queue record instead. That is the complete and correct Act 3.
-
----
-
-Fill in `[HARVEST_ID]`, `[THEME]`, `[TODAY_DATE]`, and `[THIS_CONVERSATION_URL]` from the Harvest Log before sending this second prompt. Everything else the past Claude fills in from the deposit work just completed.
+For `claude_chat` sources — **external invocation:** Claude cannot access the full transcript of a past conversation from outside it. Give Loudon the direct link from `source_ref` in the [[Harvest Log]]. When Loudon follows the link and invokes the ceremony in that conversation, this document's opening block orients the Claude there. No prep prompt needed.
 
 **Step 3: Settle before mapping**
 
@@ -308,20 +238,13 @@ If a prior session got as far as a deposit map but didn't write anything, note t
 The deposit is complete when all of the following are true — not before:
 
 1. All artifacts from the conversation are written to the palace
-2. The companion document is written and approved — it captures both the content discoveries and the process/meta realizations from the session. The companion document IS the meta layer; there is no separate step for process conclusions.
+2. The companion document is written and approved (if the session produced process insight warranting one)
 3. Lost branches are named in the deposit map — not necessarily followed, but acknowledged
 4. Loudon has confirmed: nothing feels unfinished or unsaid
 
-When these conditions are met, Claude names them explicitly:
+When these conditions are met, name them explicitly and ask: "Is there anything left unsaid?"
 
-> "The deposit is complete. Written to the palace: [list entries]. The companion document carries the process discoveries. Lost branches are noted. Is there anything left unsaid?"
-
-If Loudon confirms nothing remains — the [[Hibernation Ceremony]] begins immediately. The deposit does not end by updating the harvest log. The harvest log is updated as part of Hibernation. The two ceremonies share one continuous closing act: deposit finishes, hibernation carries it home.
-
-**What the deposit owns:** Re-entry, excavation, drafting, approval, writing to disk.
-**What hibernation owns:** The closing note in the thread, the harvest log update, the final marking of the thread as dormant.
-
-The handoff is the moment Loudon says "nothing left unsaid."
+The moment Loudon confirms nothing remains, the [[Hibernation Ceremony]] begins. The Hibernation Ceremony owns everything from here: the closing note, the queue record, the log update. Follow that ceremony for the closing steps.
 
 ## Companion Document Template
 
