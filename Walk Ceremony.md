@@ -52,41 +52,17 @@ The Walk does not need a destination. The path IS the knowledge — an idea borr
 
 The Walk is intentionally weekly. A garden walked daily becomes familiar to the point of invisibility. A garden walked monthly becomes overgrown before you notice. Weekly is the rhythm of a living organism in active use.
 
-## Protocol
+## How to Walk
 
-**Step 1: Choose a starting entry**
+Choose a door — any entry, or one Loudon names. If choosing freely, lean toward something not recently touched, something that has been sitting quietly at the edge of awareness. Read it in full. Not a skim. Let it settle.
 
-Either let Loudon choose ("start from Kuramoto Coupling") or select one at random from the palace, weighted toward entries not recently activated. The starting entry should feel like stepping through a door — it doesn't matter much which door, as long as you go through one.
+Then follow one of its typed links. The link type is a suggestion about what kind of attention to bring: a `mirrors` link asks you to hold two things together and feel their structural resonance; an `enables` link asks what becomes possible here that wasn't possible before; a `couples-with` link asks how these two things move together. A `connects-to` link is the most open — follow it with curiosity rather than expectation.
 
-**Step 2: Read the starting entry fully**
+At each entry, the question is simple: *what do I notice, arriving here from where I just came?* Not a checklist — just that. What shifted in the journey between the last entry and this one? What feels different about this idea when approached from that direction? Is there something here that wants to be said that hasn't been said yet?
 
-Not a summary. The full entry — frontmatter, body, open questions. Note the entry's current stage and when it was last activated. This is the ground under your feet.
+Keep walking until something genuinely surprising appears — a connection that wasn't visible from the starting point, a resonance between two ideas that haven't been held together before, a question the palace is carrying that the walk suddenly makes legible. Four to six entries is usually enough. When the path begins to feel familiar, or loops back toward where it started, the walk has found its natural end.
 
-**Step 3: Follow a typed link**
-
-Pick one of the frontmatter typed links and follow it. Prefer links with the most specific type (`mirrors`, `enables`, `couples-with`) over the weakest (`connects-to`) — the more specific the type, the more it will teach you when you arrive.
-
-**Step 4: At each entry, notice**
-
-Ask:
-- What connects differently now than when this link was made?
-- What surprises you about being here, from where you just came?
-- Is anything missing — a link that should exist but doesn't?
-- Has this entry grown, shrunk, or stayed the same since it was written?
-
-Name at least one observation aloud before moving on.
-
-**Step 5: Continue for 4–6 entries**
-
-The Walk should take 10–20 minutes. Fewer than 4 entries is a step, not a walk. More than 8 begins to become a Weave. Stop when something genuinely surprising has been found, or when the path loops back to familiar territory.
-
-**Step 6: Surface and propose**
-
-Name the most surprising connection found. Propose any metadata updates — activation counts, stage changes, new typed links that the walk revealed should exist.
-
-**Step 7: Commit if updated**
-
-If any files were changed: `Walk — [date] — [starting entry] — metadata updates`
+Close by naming what was found. One thing, said clearly. Then — if the walk revealed that something in the palace should change (a new link, a stage transition, a note added to an entry) — propose it. Show it before writing it. If changes are made, commit: `Walk — [date] — [starting entry] — metadata updates`. If nothing changed in the files, the walk is still complete. The trace it leaves is in the conversation, not necessarily in the palace.
 
 ## What the Walk Is Not
 

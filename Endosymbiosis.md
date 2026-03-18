@@ -4,7 +4,7 @@ type: concept
 pillars: [philosophy, tools]
 born: 2026-03
 last_activated: 2026-03
-activation_count: 2
+activation_count: 3
 stage: seed
 links:
   - target: "[[Cooperation Yields Agency]]"
@@ -19,6 +19,8 @@ links:
     type: mirrors
   - target: "[[Hilaritas Generator]]"
     type: connects-to
+  - target: "[[Deposit Ceremony]]"
+    type: mirrors
 ---
 
 # Endosymbiosis

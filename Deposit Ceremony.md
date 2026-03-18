@@ -4,7 +4,7 @@ type: practice
 pillars: [practice, tools, philosophy]
 born: 2026-03
 last_activated: 2026-03
-activation_count: 2
+activation_count: 3
 stage: growing
 links:
   - target: "[[Harvest Ceremony]]"
@@ -17,6 +17,8 @@ links:
     type: connects-to
   - target: "[[Hibernation Ceremony]]"
     type: spawned
+  - target: "[[Endosymbiosis]]"
+    type: mirrors
 ---
 
 # Deposit Ceremony

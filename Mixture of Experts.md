@@ -4,7 +4,7 @@ type: concept
 pillars: [tools, philosophy]
 born: 2024-06
 last_activated: 2026-03
-activation_count: 2
+activation_count: 3
 stage: mature
 links:
   - target: "[[Hyperdimensional Prism]]"

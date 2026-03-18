@@ -4,7 +4,7 @@ type: practice
 pillars: [practice, tools]
 born: 2026-03
 last_activated: 2026-03
-activation_count: 4
+activation_count: 5
 stage: mature
 links:
   - target: "[[Deposit Ceremony]]"

@@ -4,7 +4,7 @@ type: hub
 pillars: [creation, tools, philosophy, practice]
 born: 2025-01
 last_activated: 2026-03
-activation_count: 13
+activation_count: 14
 stage: foundational
 confidence: foundational
 energy: high
