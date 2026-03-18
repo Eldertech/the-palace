@@ -213,7 +213,36 @@ When any of the following change, a Schema Ceremony is required:
 
 ---
 
-## 6. The Self-Description Test
+## 6. Ceremony File Conventions
+
+### Operational Card + Context Split
+
+When a ceremony file exceeds ~8KB, split it into two files:
+
+| File | Purpose | Read when |
+|---|---|---|
+| `[Ceremony Name].md` | Lean operational card — trigger, contract, steps only | Every ceremony execution |
+| `[Ceremony Name] — Context.md` | History, rationale, process observations, open questions | Weaves, Schema Ceremonies, revisiting rationale |
+
+**Rules:**
+- Both files carry full YAML frontmatter with all required fields
+- Both files live flat in the palace root (no subdirectories)
+- The Context file links back to the operational card with `type: emerged-from`
+- The operational card links forward to the Context file with `type: spawned`
+- When a ceremony operator is instructed to "add to the context" or "add to the log" for a ceremony, entries go in the Context file, not the operational card
+- The operational card should remain readable and fully executable without the Context file
+
+**Currently split:**
+- [[Deposit Ceremony]] + [[Deposit Ceremony — Context]]
+
+**Candidates for splitting (next Weave):**
+- [[Harvest Ceremony]] (13KB)
+- [[Weave Ceremony]] (8KB — borderline)
+- [[Hibernation Ceremony]] (8KB — borderline)
+
+---
+
+## 7. The Self-Description Test
 
 After any structural change, apply this test:
 

@@ -97,6 +97,14 @@ Do not introduce new link types without discussing with Loudon. When unsure, use
 
 YAML frontmatter links are reserved for structural relationships that matter. Body text [[wiki links]] are casual and abundant. YAML links are curated and intentional.
 
+### Ceremony File Conventions
+
+Ceremony files are split into two when they exceed ~8KB: a lean **operational card** (read during every execution) and a **Context file** (`[Ceremony Name] — Context.md`) carrying rationale, history, and process observations (read only during Weaves or when revisiting ceremony design).
+
+When instructed to "add to the context" or "add to the log" for a ceremony, write to the Context file — never to the operational card. Both files carry full YAML frontmatter and live flat in the palace root. Full convention: see SCHEMA.md Section 6.
+
+Currently split: [[Deposit Ceremony]] + [[Deposit Ceremony — Context]].
+
 ### Palace Ceremonies
 
 The canonical list of all ceremonies lives at [[Palace Ceremonies]]. Operational instructions for the core ceremonies follow.
