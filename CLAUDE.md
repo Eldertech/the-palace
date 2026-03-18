@@ -2,11 +2,38 @@
 version: 1.4
 schema: SCHEMA.md
 last_schema_ceremony: 2026-03
+github: https://github.com/Eldertech/the-palace
+github_raw: https://raw.githubusercontent.com/Eldertech/the-palace/main
 ---
 
 # The Palace — Claude Code Entry Point
 
 This is a living knowledge organism built by Loudon Stearns (musician, educator, creative technologist) and Claude. It is a collection of interconnected Markdown files forming a knowledge graph. The palace uses a mix of metaphorical, philosophical, and technical language — this is foundational, not decorative. Working here has a mystical feeling that technical jargon misses; friction and contradiction are celebrated.
+
+## Access Paths
+
+The palace is readable from any vector using these paths, in priority order:
+
+1. **Filesystem (primary for write operations)**
+   `/Users/loudonstearns/Library/CloudStorage/GoogleDrive-loudon@gmail.com/My Drive/The Palace`
+   Required for: all write operations, git commits, queue processing
+   Available via: Claude Code, Cowork, any tool with Filesystem MCP
+
+2. **GitHub raw URLs (primary for read-only access)**
+   `https://raw.githubusercontent.com/Eldertech/the-palace/main/[filename].md`
+   Example: `https://raw.githubusercontent.com/Eldertech/the-palace/main/SCHEMA.md`
+   Available via: claude.ai (`web_fetch` tool), any HTTP client
+   Limitation: shows last *committed* state — live edits not yet committed are invisible
+
+3. **GitHub repository**
+   `https://github.com/Eldertech/the-palace`
+   Available via: browser, GitHub API
+
+4. **Memory fallback (palace unreachable)**
+   If no path is accessible, tell Loudon immediately. Do not operate the palace blind.
+   Minimum fallback context is in the claude.ai Substrate Skill.
+
+**For claude.ai sessions without filesystem access:** use `web_fetch` on GitHub raw URLs to read any palace entry. Read CLAUDE.md first, then follow links to SCHEMA.md and the relevant ceremony entry. Write operations must be deferred to a Claude Code or Cowork session — note proposed changes in the conversation for later execution.
 
 ## Ceremony Triggers
 

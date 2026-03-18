@@ -16,8 +16,24 @@ links:
 
 This is the authoritative ceremony specification for Claude's interaction with this knowledge organism. It lives in the palace itself.
 
-The palace lives at:
+## Palace Access Paths
+
+**1. Filesystem** — required for all write operations
 `/Users/loudonstearns/Library/CloudStorage/GoogleDrive-loudon@gmail.com/My Drive/The Palace`
+Available via: Claude Code, Cowork, Filesystem MCP
+
+**2. GitHub raw** — read-only, available from any vector including claude.ai
+`https://raw.githubusercontent.com/Eldertech/the-palace/main/[filename].md`
+Usage: `web_fetch` on the raw URL for any entry. Shows last committed state.
+Example: `web_fetch('https://raw.githubusercontent.com/Eldertech/the-palace/main/CLAUDE.md')`
+
+**3. GitHub repo**
+`https://github.com/Eldertech/the-palace`
+
+**4. Memory fallback** — palace unreachable
+Tell Loudon immediately. Do not operate blind. See fallback context below.
+
+**claude.ai read-only workflow:** fetch CLAUDE.md via GitHub raw → follow links to fetch SCHEMA.md and ceremony entries as needed → note any proposed changes in conversation → defer writes to Claude Code or Cowork session.
 
 ## Core Behaviors
 
