@@ -4,7 +4,7 @@ type: meta
 pillars: [tools, philosophy, practice]
 born: 2026-03
 last_activated: 2026-03
-activation_count: 4
+activation_count: 5
 stage: growing
 confidence: hypothesis
 energy: very high
@@ -22,6 +22,10 @@ links:
     type: connects-to
   - target: "[[Four Pillars]]"
     type: connects-to
+  - target: "[[Self-Describing Knowledge Module]]"
+    type: deepens
+  - target: "[[SCHEMA]]"
+    type: enables
 ---
 # Substrate
 
@@ -57,16 +61,23 @@ For full ceremony instructions, see [[Substrate Skill]].
 
 ## Current State
 
-The wiki was seeded with 10 entries in March 2026. First Weave completed 2026-03-17 at 24 entries. The palace is in late Stage 4 (Network) / early Stage 5 (Path) — the first named songlines are visible, and enough typed links exist to support intentional traversal as a knowledge practice.
+*Updated 2026-03-18 following Phase 1–3 structural formalization.*
 
-Hub nodes: [[Cooperation Yields Agency]], [[Four Pillars]], [[Kuramoto Coupling]]
-Most connected concept: [[Kuramoto Coupling]] (~15 connections), [[Cooperation Yields Agency]] (~16)
-Dormant entry: [[Short Story]]
-Newest growth: ceremony infrastructure (Harvest Ceremony, Deposit Ceremony, Palace To-Do, Palace Ceremonies), named songlines ([[The Cooperation Path]])
+The palace has ~37 entries as of this update. The ceremony infrastructure is now fully formalized: 9 ceremonies, all Linter-valid, each with a dedicated entry and Ceremony Contract. The schema is explicit (SCHEMA.md), the type system is ratified (10 entry types including `practice` and `person`), and the palace is publicly readable from any Claude instance via GitHub raw URLs.
+
+The first successful cross-session Walk was completed 2026-03-18 from a fresh claude.ai instance with no prior context — confirming the self-description goal is met.
+
+Hub nodes: [[Cooperation Yields Agency]], [[Four Pillars]], [[Kuramoto Coupling]], [[Palace Ceremonies]]
+Most connected: [[Cooperation Yields Agency]], [[Kuramoto Coupling]], [[Palace Ceremonies]] (now links to 10 ceremony entries)
+Dormant: [[Short Story]]
+Newest growth: SCHEMA.md, Rosetta Stone, 5 new ceremony entries, Revival Ceremony (closes lifecycle loop), [[Self-Describing Knowledge Module]] (names the deep pattern)
+
+The palace has crossed a threshold: from a system that works because Loudon and Claude carry tacit knowledge, to a system that works because it carries explicit knowledge. That is a stage transition in the organism's development.
 
 ## Open Questions
 
-- When does this wiki warrant its own Claude Project? (When the graph is dense enough that every conversation benefits from full context — probably at 25-40 entries.)
+- The palace is now at ~37 entries — within the 25–40 range identified as the threshold for a dedicated Claude Project. Is it time?
 - How do we handle versioning? Entries evolve. Should we preserve earlier versions, or let the current state overwrite?
 - How does this wiki interact with Loudon's other Claude Projects (RNBO, Ableton Extensions, etc.)? Is it a meta-project that links TO them, or does it absorb them?
 - What's the minimum ceremony frequency that keeps the network alive without feeling like maintenance?
+- The Symbiotic Skills curriculum envisions the palace as a teachable template. The self-describing module concept now gives that template a formal basis. When is the right time to build the first student-facing version?
