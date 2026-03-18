@@ -1,5 +1,5 @@
 ---
-version: 1.1
+version: 1.4
 schema: SCHEMA.md
 last_schema_ceremony: 2026-03
 ---

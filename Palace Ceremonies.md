@@ -21,6 +21,8 @@ links:
     type: enables
   - target: "[[Self-Model Update Ceremony]]"
     type: enables
+  - target: "[[Revival Ceremony]]"
+    type: enables
   - target: "[[SCHEMA]]"
     type: connects-to
 ---
@@ -44,6 +46,14 @@ The complete and canonical list of all palace ceremonies. Every ceremony has a t
 | The Harvest | "Let's harvest" | Triage raw source material (conversations, docs, files). Flag what's worthy for deposit. | [[Harvest Ceremony]] |
 | The Deposit | "Let's deposit" | Read one flagged source deeply. Draft entries, propose links, write on approval. | [[Deposit Ceremony]] |
 | The Hibernation | "Time to hibernate" | The closing act of a completed deposit. Write the closing note into the thread, update the harvest log, mark the conversation dormant. Begins the moment Loudon says "nothing left unsaid." | [[Hibernation Ceremony]] |
+
+## Revival
+
+| Ceremony | Trigger | What Happens | Full Spec |
+|---|---|---|
+| The Revival | "Let's revive [entry name]" | Formally reawaken a dormant entry: re-enter its content, add Revival Note, update stage, add new typed links connecting it to current palace work. | [[Revival Ceremony]] |
+
+---
 
 ## Ad-Hoc Operations
 

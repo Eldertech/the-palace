@@ -155,11 +155,13 @@ Each link between entries carries a **predicate** — a named relationship type.
 |---|---|---|---|---|
 | **Harvest** | "Let's harvest" | Harvest Log exists and is current | Extract palace-worthy items from source conversations; assign IDs; log in Harvest Log | All items assigned IDs; Harvest Log row count matches item count |
 | **Deposit** | "Let's deposit" / "Add this to the palace" | Harvest Log has undeposited items | Draft entry → review → write to palace → mark deposited in log | Entry file exists in palace; Harvest Log row marked deposited |
-| **Walk** | "Let's walk" | At least one entry exists | Follow typed links entry to entry, narrating connections | Operator can describe the path taken and what was discovered |
-| **Weave** | "Let's weave" | Palace has ≥5 entries | Full topology report: orphans, clusters, most-connected nodes, missing link candidates | Report produced; orphans flagged; metadata updates proposed |
-| **Spore Check** | "Spore check" | Palace has entries with stage: dormant | Surface dormant entries; assess for connection, update, or composting | Each flagged entry has a disposition: connect, update, or compost |
-| **Hibernation** | "Time to hibernate" | A deposit session is complete | Write closing note; update harvest log; mark conversation dormant | Harvest log updated; session archived |
-| **Schema Ceremony** | "Let's update the schema" | Current SCHEMA.md version on record | Deliberate on change → document rationale → update SCHEMA.md → update CLAUDE.md version → update Rosetta Stone | SCHEMA.md, CLAUDE.md, Rosetta Stone internally consistent; Git commit made |
+| **Walk** | "Let's walk" | ≥1 entry with typed links | Follow typed links entry to entry, narrating connections | Path described; surprise named; metadata updated if needed; commit if files changed | [[Walk Ceremony]] |
+| **Weave** | "Let's weave" | ≥5 entries + filesystem access | Process queue → full topology report → propose links → propose stage transitions | Queue clear; topology report produced; ≥3 links proposed; commit made | [[Weave Ceremony]] |
+| **Spore Check** | "Spore check" | ≥1 dormant entry | Review all dormant entries; assign revive / hold / compost | Every dormant entry has a disposition; commit made | [[Spore Check Ceremony]] |
+| **Revival** | "Let's revive [entry]" | Named entry is dormant; revival rationale is statable | Re-enter dormant entry; add Revival Note; update stage; add new typed links | Stage updated; Revival Note written; new links added; commit made | [[Revival Ceremony]] |
+| **Hibernation** | "Nothing left unsaid" | Deposit is complete | Write closing note; write hibernation queue record | Closing note in thread; queue record in `_hibernation_queue/`; deferred commit | [[Hibernation Ceremony]] |
+| **Self-Model Update** | "Self-model update" | Substrate.md is readable; palace state has changed | Read current Substrate.md; compare to actual state; draft and apply corrections | Substrate.md reflects current reality; commit made | [[Self-Model Update Ceremony]] |
+| **Schema Ceremony** | "Let's update the schema" | Current SCHEMA.md version on record | Deliberate on change → document rationale → update SCHEMA.md → update CLAUDE.md version → update Rosetta Stone | SCHEMA.md, CLAUDE.md, Rosetta Stone internally consistent; commit made | [[SCHEMA]] |
 
 ---
 
