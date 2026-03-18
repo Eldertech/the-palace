@@ -101,6 +101,8 @@ Read the [[Harvest Log]]. Check:
 **Step 2: Load**
 Load the next batch from the frontier. For Claude chats: use `recent_chats` with `sort_order: asc` and `after` set to the frontier datetime. Batches of 15–20 items.
 
+**⚠ Project scope constraint:** The `recent_chats` and `conversation_search` tools are scoped to the launch context. Conversations inside Claude Projects are invisible to a harvest started outside a project, and vice versa. To harvest project conversations, start a dedicated harvest session from within each project. If harvesting from within a Claude Project, record the project name in the `source_project` field of every log entry created in that session. Leave blank for conversations outside projects. Maintain a harvest log entry noting which projects have been covered and when.
+
 **Step 3: Pre-process**
 Before building the interface:
 - Generate a prediction (worthy / skip / partial) and confidence score for every item

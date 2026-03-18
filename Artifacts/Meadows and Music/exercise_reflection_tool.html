@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercise Reflection Tool</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #2d3748;
+            background: #f7fafc;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+        }
+
+        header h1 {
+            font-size: 1.8em;
+            margin-bottom: 10px;
+        }
+
+        header p {
+            opacity: 0.9;
+            font-size: 1.1em;
+        }
+
+        .progress-section {
+            padding: 20px 30px;
+            background: #edf2f7;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .progress-bar {
+            background: #cbd5e0;
+            height: 8px;
+            border-radius: 4px;
+            overflow: hidden;
+            margin-bottom: 10px;
+        }
+
+        .progress-fill {
+            background: linear-gradient(90deg, #667eea, #764ba2);
+            height: 100%;
+            transition: width 0.3s;
+        }
+
+        .progress-text {
+            font-size: 0.9em;
+            color: #4a5568;
+        }
+
+        .exercise-content {
+            padding: 30px;
+        }
+
+        .exercise-header {
+            margin-bottom: 25px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid #e2e8f0;
+        }
+
+        .exercise-number {
+            color: #667eea;
+            font-size: 0.9em;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .exercise-title {
+            font-size: 1.6em;
+            color: #1a202c;
+            margin: 8px 0;
+        }
+
+        .exercise-subtitle {
+            color: #718096;
+            font-size: 1.1em;
+            font-style: italic;
+        }
+
+        .exercise-domain {
+            display: inline-block;
+            background: #e6fffa;
+            color: #234e52;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 0.85em;
+            margin-top: 10px;
+        }
+
+        .exercise-body {
+            margin: 25px 0;
+            line-height: 1.8;
+        }
+
+        .exercise-body h4 {
+            color: #2d3748;
+            margin: 20px 0 10px 0;
+        }
+
+        .exercise-body p {
+            margin-bottom: 15px;
+        }
+
+        .exercise-body ul, .exercise-body ol {
+            margin-left: 25px;
+            margin-bottom: 15px;
+        }
+
+        .exercise-body li {
+            margin-bottom: 8px;
+        }
+
+        .reflection-section {
+            background: #f7fafc;
+            padding: 25px;
+            border-radius: 8px;
+            margin-top: 30px;
+        }
+
+        .reflection-section h3 {
+            color: #2d3748;
+            margin-bottom: 20px;
+            font-size: 1.3em;
+        }
+
+        .metric-group {
+            margin-bottom: 25px;
+        }
+
+        .metric-label {
+            display: block;
+            color: #4a5568;
+            font-weight: 600;
+            margin-bottom: 10px;
+            font-size: 0.95em;
+        }
+
+        .metric-description {
+            color: #718096;
+            font-size: 0.85em;
+            margin-bottom: 12px;
+        }
+
+        .slider-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .slider {
+            flex: 1;
+            -webkit-appearance: none;
+            appearance: none;
+            height: 8px;
+            border-radius: 4px;
+            background: #e2e8f0;
+            outline: none;
+        }
+
+        .slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background: #667eea;
+            cursor: pointer;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .slider::-moz-range-thumb {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background: #667eea;
+            cursor: pointer;
+            border: none;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .slider-value {
+            min-width: 100px;
+            text-align: right;
+            color: #667eea;
+            font-weight: 600;
+        }
+
+        .slider-labels {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.8em;
+            color: #a0aec0;
+            margin-top: 5px;
+        }
+
+        textarea {
+            width: 100%;
+            min-height: 120px;
+            padding: 12px;
+            border: 2px solid #e2e8f0;
+            border-radius: 6px;
+            font-family: inherit;
+            font-size: 0.95em;
+            resize: vertical;
+            transition: border-color 0.2s;
+        }
+
+        textarea:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        .button-group {
+            display: flex;
+            gap: 15px;
+            margin-top: 30px;
+            padding-top: 25px;
+            border-top: 1px solid #e2e8f0;
+        }
+
+        button {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 6px;
+            font-size: 1em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .btn-primary {
+            background: #667eea;
+            color: white;
+            flex: 1;
+        }
+
+        .btn-primary:hover {
+            background: #5a67d8;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 8px rgba(102, 126, 234, 0.3);
+        }
+
+        .btn-secondary {
+            background: #e2e8f0;
+            color: #4a5568;
+        }
+
+        .btn-secondary:hover {
+            background: #cbd5e0;
+        }
+
+        .btn-nav {
+            padding: 10px 20px;
+            font-size: 0.95em;
+        }
+
+        .utility-buttons {
+            display: flex;
+            gap: 10px;
+            padding: 20px 30px;
+            background: #edf2f7;
+            border-top: 1px solid #e2e8f0;
+        }
+
+        .utility-buttons button {
+            flex: 1;
+            padding: 10px;
+            font-size: 0.9em;
+        }
+
+        .export-section {
+            padding: 20px 30px;
+            background: #f0fff4;
+            border-top: 1px solid #c6f6d5;
+            display: none;
+        }
+
+        .export-section.show {
+            display: block;
+        }
+
+        .export-section h3 {
+            color: #22543d;
+            margin-bottom: 10px;
+        }
+
+        .export-section textarea {
+            min-height: 200px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.85em;
+        }
+
+        .status-message {
+            padding: 12px 20px;
+            margin: 20px 30px;
+            border-radius: 6px;
+            font-size: 0.9em;
+            display: none;
+        }
+
+        .status-message.show {
+            display: block;
+        }
+
+        .status-message.success {
+            background: #c6f6d5;
+            color: #22543d;
+            border-left: 4px solid #38a169;
+        }
+
+        .status-message.info {
+            background: #bee3f8;
+            color: #2c5282;
+            border-left: 4px solid #3182ce;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                border-radius: 0;
+            }
+
+            header, .exercise-content, .utility-buttons {
+                padding: 20px;
+            }
+
+            .button-group {
+                flex-direction: column;
+            }
+
+            .slider-container {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .slider-value {
+                text-align: left;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Exercise Reflection Tool</h1>
+            <p>Explore and reflect on 32 Meadows leverage point exercises</p>
+        </header>
+
+        <div class="progress-section">
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressBar"></div>
+            </div>
+            <div class="progress-text" id="progressText">0 of 32 exercises reflected upon</div>
+        </div>
+
+        <div class="status-message" id="statusMessage"></div>
+
+        <div class="exercise-content" id="exerciseContent">
+            <!-- Exercise content will be dynamically loaded here -->
+        </div>
+
+        <div class="utility-buttons">
+            <button class="btn-secondary" onclick="saveProgress()">💾 Save Progress</button>
+            <button class="btn-secondary" onclick="loadProgress()">📂 Load Progress</button>
+            <button class="btn-secondary" onclick="toggleExport()">📤 Export Responses</button>
+        </div>
+
+        <div class="export-section" id="exportSection">
+            <h3>Your Reflections (Copy this text)</h3>
+            <textarea id="exportText" readonly></textarea>
+            <button class="btn-primary" onclick="copyExport()" style="margin-top: 10px;">Copy to Clipboard</button>
+        </div>
+    </div>
+
+    <script>
+        const exercises = [
+            // Exercise data would go here but truncated for brevity in palace storage
+            // See original file in Claude's outputs if full exercise content needed
+        ];
+
+        let currentIndex = 0;
+        let responses = {};
+
+        // Initialization and functions would follow
+        // (Full implementation preserved in original artifact)
+    </script>
+</body>
+</html>

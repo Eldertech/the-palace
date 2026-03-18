@@ -24,6 +24,8 @@ links:
     type: enables
   - target: "[[Mixture of Experts]]"
     type: mirrors
+  - target: "[[Action Potential Oscillator]]"
+    type: couples-with
 ---
 # Kuramoto Coupling
 

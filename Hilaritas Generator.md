@@ -4,7 +4,7 @@ type: concept
 pillars: [practice, philosophy, creation]
 born: 2025-09
 last_activated: 2026-03
-activation_count: 8
+activation_count: 9
 stage: mature
 confidence: foundational
 energy: high
@@ -19,6 +19,8 @@ links:
   - target: "[[Cooperation Yields Agency]]"
     type: mirrors
   - target: "[[Symbiotic Skills]]"
+    type: enables
+  - target: "[[Quality Manifesto]]"
     type: enables
 ---
 # Hilaritas Generator
@@ -55,6 +57,22 @@ The key insight: hilaritas is not a side effect of good teaching. It IS the teac
 **[[Spinoza Conatus]]** — Hilaritas is conatus succeeding. The drive to persist and grow, when it encounters conditions that support that growth, produces joy. The generator creates those conditions deliberately.
 
 **[[Symbiotic Skills]]** — The skill sequence is designed to produce hilaritas at each stage. Each session should end with the learner feeling more capable, more connected, more curious. If a session produces tristitia (frustration, confusion, boredom without resolution), something is wrong with the design.
+
+## The Metrics Redirector
+
+The hilaritas generator applied to the creator's own practice has a single operating question: **"How do you feel?"** not **"How many views?"**
+
+This is not sentimentality — it is the correct feedback loop. Platform analytics measure titillatio (narrow, localized response). Felt experience measures whether hilaritas actually occurred. A session that produced 10,000 views and left you depleted was a tristitia event. A session that produced 40 views and left you expanded was a hilaritas event. The metrics redirector insists on the right signal.
+
+See [[Quality Manifesto]] for the full articulation of this principle.
+
+## Leverage Points as Hilaritas Infrastructure
+
+Two specific Loudon-authored extensions of Donella Meadows' leverage points framework illuminate how the hilaritas generator works at different levels (from PP05, January 2026):
+
+**Feedback delay with envelope control** (buffer + flow + feedback in one device): The delay time functions as an information buffer (Meadows level 6). The feedback amount controls how fast information flows around the loop (level 5). The envelope follower creates a self-regulating system that can produce either stabilizing negative feedback (level 8) or destabilizing positive feedback (level 8) depending on configuration. This single production tool instantiates three Meadows principles simultaneously — a natural hilaritas trigger because it reveals deep structural identity across domains.
+
+**Journaling as paradigm-transcendence lever** (Meadows level 2, highest leverage): Reflecting on creative motivations in writing exposes hidden information flows (what you actually value vs. what you claim to value) and enables paradigm shifts — from "money-making" to "self-expression" as the organizing goal. Paradoxically, the paradigm shift toward intrinsic motivation tends to produce better outcomes across all dimensions. Journaling is practice-pillar infrastructure that operates at the philosophy-pillar level.
 
 ## Open Questions
 

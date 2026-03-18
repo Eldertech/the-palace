@@ -4,7 +4,7 @@ type: hub
 pillars: [creation, tools, philosophy, practice]
 born: 2025-01
 last_activated: 2026-03
-activation_count: 12
+activation_count: 13
 stage: foundational
 confidence: foundational
 energy: high
@@ -26,6 +26,8 @@ links:
     type: mirrors
   - target: "[[Mixture of Experts]]"
     type: mirrors
+  - target: "[[Quality Manifesto]]"
+    type: connects-to
 ---
 # Cooperation Yields Agency
 
@@ -63,6 +65,14 @@ It [[mirrors]] [[Endosymbiosis]] — the merger that produced all complex life o
 ## System-Level MoE
 
 The planner/executor hierarchy now emerging in AI systems — where a high-reasoning model routes tasks to specialized executor models — is cooperation yielding agency at the architectural level. The planner and executor have complementary capabilities and shared intent; neither could accomplish the full task alone. This is not metaphor: it is the same formula operating at a different scale. See [[Mixture of Experts]].
+
+## AI Collaboration as Public Modeling
+
+Loudon's decision to model AI collaboration publicly — on stream, in educational content, as part of the Four Pillars framework — is the cooperation-yields-agency principle operating as pedagogy. The collaboration is not hidden backstage; it is the demonstration.
+
+This extends the thesis: cooperation yields agency not only for the collaborators, but for those who witness the cooperation. Showing how to work with AI as a thinking partner (not a task-completer) gives participants a new model for their own practice. The cooperation propagates.
+
+See [[Quality Manifesto]] for how this connects to Loudon's three quality metrics: the collaboration is measured by wellbeing, integrity, and depth of relationship — not by output volume.
 
 ## In Our Practice
 

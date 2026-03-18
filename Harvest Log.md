@@ -9,10 +9,13 @@ The persistent state tracker for the [[Harvest Ceremony]] and [[Deposit Ceremony
 ```
 source_type:   claude_chat
 direction:     oldest-first
-last_processed: H104
-last_datetime:  2026-03-17T19:00:00+00:00
-next_action:   DEPOSIT IN PROGRESS. Resume from H036 (oldest pending). Next Claude instance: read Deposit Ceremony entry, read this log, confirm with Loudon, proceed.
-session_note:  Deposit Session 2 complete. H014-H035 range: all compost. Pattern confirmed: early 2024 sessions were factual lookups, palace framing not yet developed. H036 next - interactive visualization pedagogy + first real gen~ sine oscillator. Session paused for rest (Practice pillar).
+last_processed: PP06 (Four Pillars project harvest complete)
+last_datetime:  2026-03-17T22:00:00+00:00
+next_action:   DEPOSIT IN PROGRESS. Three queues active:
+               (1) General queue: resume from H036 (oldest pending).
+               (2) Neural Synthesizer project queue: HP01-HP10 all pending. High-priority: HP07 (stick-slip/AP isomorphism ⭐), HP05 (all-pass prism ⭐), HP08 (asymmetric Kuramoto ⭐).
+               (3) Four Pillars project queue: PP05-PP06 pending. High-priority: PP06 (4 Pillars crystallization + Quality Manifesto ⭐).
+session_note:  Four Pillars project harvest complete. 6 conversations triaged: 2 worthy, 2 partial, 2 skip. 100% prediction alignment. All project harvest scopes now covered (general, Neural Synthesizer, Four Pillars).
 ```
 
 ---
@@ -29,6 +32,8 @@ Tracking alignment between Claude predictions and Loudon's decisions to build to
 | Batch 4 | 20 | 20/20 | 100% | Perfect alignment. H068 corrected by Loudon via screenshot (accidentally clicked worthy, intended skip). Auto-triage threshold confirmed. |
 | Batch 5 | 18 (+2 auto) | 17/18 | 94% | One miss: H085 BOLT visualizer (predicted worthy, decided partial). Calibration: aesthetic craft output without new framework → partial. |
 | Batch 6 | 5 (+2 auto) | 5/5 | 100% | Final batch. All Claude chat history triaged. Perfect alignment. |
+| Neural Synth project | 10 | 10/10 | 100% | First project-scoped harvest. 8 worthy, 2 partial, 0 skip. Perfect alignment. HP02 and HP10 both predicted partial, confirmed partial. |
+| Four Pillars project | 6 | 6/6 | 100% | Second project-scoped harvest. 2 worthy, 2 partial, 2 skip. Perfect alignment. PP06 (Quality Manifesto) is high-priority deposit. |
 
 **Auto-triage status:** ACTIVE. Two consecutive batches at ≥95%. Ready to auto-triage high-confidence skips (≥90%) in future batches, surfacing only ambiguous and worthy items for Loudon's review. Will note all auto-triaged items transparently.
 
@@ -49,13 +54,17 @@ Tracking alignment between Claude predictions and Loudon's decisions to build to
 | 2026-03-17 | setup | 0 | 0 | Log initialized. Ceremony entries written. |
 | 2026-03-17 | deposit | 6 | 4 new entries, 5 existing entries updated | Deposit Session 1: H005–H012. New entries: Frequency-Time Duality, Embeddings as Relational Meaning, Meaning and the Link (2014), Mixture of Experts. Schema: `source` type added. Paper archived. H008 composted, H012 minimal. Next: H014. |
 | 2026-03-17 | deposit | 7 composted | 0 new entries | Deposit Session 2 complete. H014, H017, H027, H028, H032, H035 composted. Full pattern: early 2024 = factual lookups, palace framing not yet present. H036 is next - first genuinely worthy candidate in this range. Session paused - Practice pillar. |
+| 2026-03-17 | harvest | 10 | 8 worthy, 2 partial | Neural Synthesizer project harvest. HP01–HP10. 100% prediction alignment. [[Action Potential Oscillator]] entry created and deposited. Backlinks written. |
+| 2026-03-17 | harvest | 6 | 2 worthy, 2 partial | Four Pillars project harvest. PP01–PP06. 100% prediction alignment. PP06 (4 Pillars crystallization + Quality Manifesto) is ⭐ high-priority deposit. |
+| 2026-03-17 | deposit | 2 | 1 new entry, 4 existing entries updated | PP05 + PP06. New: [[Quality Manifesto]]. Updated: [[Four Pillars]] (Kick Drum Paradox, Quality Manifesto, collaborative language, AI pedagogy), [[Hilaritas Generator]] (metrics redirector, leverage points), [[Cooperation Yields Agency]] (AI public modeling), [[Palace Quotes]] (2 Loudon quotes). |
+| 2026-03-18 | deposit + hibernation | 3 files | PP05: Meadows and Music. First Hibernation Ceremony test. Created [[Meadows and Music — Leverage Points]], [[Meadows and Music — Origin and Process]], exercise_reflection_tool.html. Frontmatter added here via queue processing. Deposit Ceremony and Hibernation Ceremony redesigned to be self-contained. |
 
 ---
 
 ## Harvest Items
 
-| ID | source_type | source_ref | date | title_or_topic | harvested | decision | skip_reason | deposit_status | deposit_notes |
-|---|---|---|---|---|---|---|---|---|---|
+| ID | source_type | source_project | source_ref | date | title_or_topic | harvested | decision | skip_reason | deposit_status | deposit_notes |
+|---|---|---|---|---|---|---|---|---|---|---|
 | H001 | claude_chat | https://claude.ai/chat/851f67be-9110-4814-a2c8-dab04033950b | 2024-05-11 | Web app brainstorm — stock market simulation game | 2026-03-17 | skip | Generic app scaffolding, no palace-worthy concepts | | |
 | H002 | claude_chat | https://claude.ai/chat/2a52e42d-399b-474d-bb5e-b1b20cdd9cea | 2024-06-01 | Signal flow diagrams for ESP32 + LED | 2026-03-17 | partial | | pending | Accuracy vs legibility in technical diagrams. May connect to three-layer interface design in [[Boundary-Crossing Instruments]]. Skip ESP32 specifics. |
 | H003 | claude_chat | https://claude.ai/chat/567334cc-95bc-420c-8e2d-a53815b71c20 | 2024-06-01 | Photo ID — tuxedo cat | 2026-03-17 | skip | Personal/casual, no conceptual content | | |
@@ -219,6 +228,18 @@ Items flagged `worthy` or `partial` with `deposit_status: pending`, oldest-first
 | 52 | H094 | 2026-03-10 | Cowork grading use case | [[Four Pillars]] tools pillar — very low priority |
 | 53 | H095 | 2026-03-11 | SYNCHRONIZE dual meaning architecture | Creative architecture insight — low priority |
 | 54 | H002 | 2024-06-01 | Accuracy vs legibility in diagrams | Three-layer interface — low priority |
+| 55 | HP01 | 2026-02-09 | Neural oscillator sync + PLLs — gap junction coupling as distributed continuous-time PLL; Kuramoto = PLL mathematics | [[Kuramoto Coupling]] verify + deepen; [[Boundary-Crossing Instruments]] cross-domain connection |
+| 56 | HP02 | 2026-02-09 | Shepard tone synthesizer — perceptual continuum, fixed-filter octave window, portamento architecture | Extract perceptual continuum angle for [[Frequency-Time Duality]]; skip implementation specifics |
+| 57 | HP03 | 2026-02-09 | Biomechanical synthesis + The Modification Parlor — worldbuilding as synthesis curriculum | Narrative-as-curriculum framing; seed "Worldbuilding as Pedagogy" or add to [[Hilaritas Generator]] |
+| 58 | HP04 | 2026-02-09 | Crystalline synthesizer — Bravais lattice vibrational modes as audio oscillator bank; optical→sonic parameter map | Seed "Crystalline Synthesizer" project entry; connects to wallpaper group reverb roadmap |
+| 59 | HP05 | 2026-02-09 | All-pass filters = acoustic prisms; phasers = rotating prisms. Wallpaper group reverb topology. SVF acceleration analysis. | ⭐ Seed "All-Pass Prism" or add to [[Boundary-Crossing Instruments]]; wallpaper group reverb = palace roadmap item |
+| 60 | HP06 | 2026-02-09 | neuron_oscillator.html UX redesign — fixed time windows; prominent readout strip; biological ceiling detection | Fixed-time-window as pedagogical design principle; add to [[Boundary-Crossing Instruments]] or [[Hilaritas Generator]] |
+| 61 | HP07 | 2026-02-09 | Action potential / stick-slip friction — same relaxation oscillator phase structure. LLM attention as attention-weighted coupling. | ⭐ Deposit into [[Action Potential Oscillator]]; stick-slip isomorphism is verified physics; attention-weighted coupling = roadmap item |
+| 62 | HP08 | 2026-02-10 | Neural coupling roadmap + asymmetric Kuramoto — stubbornness/influence two-parameter extension | ⭐ Deposit into [[Kuramoto Coupling]] and [[Action Potential Oscillator]]; asymmetric parameters are new vocabulary |
+| 63 | HP09 | 2026-03-09 | NeuroPulse + Faust→VST3 stack decision — GPL philosophy, WebView UI, full Technical Blueprint | ⭐ Deposit into [[Action Potential Oscillator]]; seed "NeuroPulse" project entry if scope warrants |
+| 64 | HP10 | 2026-03-09 | Project guidelines update — Four Pillars skill integration into Neural Synthesizer project | Infrastructure record; deposit as historical note only; very low priority |
+| 65 | PP05 | 2026-01-15 | Kick drum + Meadows leverage points in music — feedback delay, journaling as paradigm lever | done — Full deposit via Hibernation Ceremony. Created: [[Meadows and Music — Leverage Points]] (11 exercises 0-10), [[Meadows and Music — Origin and Process]] (alignment method + process discoveries), exercise_reflection_tool.html artifact. First successful Hibernation Ceremony. |
+| 66 | PP06 | 2026-01-20 | ⭐ 4 Pillars crystallization + Quality Manifesto + AI-as-human-betterment | done — [[Quality Manifesto]] entry created; [[Four Pillars]] updated (collaborative language, AI pedagogy, canonical example); [[Hilaritas Generator]] updated (metrics redirector); [[Cooperation Yields Agency]] updated (public modeling section); two quotes added to [[Palace Quotes]] |
 
 ---
 

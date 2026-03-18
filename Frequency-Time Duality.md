@@ -13,6 +13,8 @@ links:
     type: mirrors
   - target: "[[Kuramoto Coupling]]"
     type: connects-to
+  - target: "[[Action Potential Oscillator]]"
+    type: connects-to
 ---
 
 # Frequency-Time Duality

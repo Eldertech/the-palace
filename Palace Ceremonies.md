@@ -23,7 +23,7 @@ The complete and canonical list of all palace ceremonies. Every ceremony has a t
 | Ceremony | Trigger | Cadence | What Happens | Full Spec |
 |---|---|---|---|---|
 | The Walk | "Let's walk" | Weekly | Pick a starting entry, follow typed links, note surprises, surface one unexpected connection | [[Substrate Skill]] |
-| The Weave | "Let's weave" | Monthly | Read ALL entries. Report topology: hubs, orphans, clusters, dormant. Propose new typed links. | [[Substrate Skill]] |
+| The Weave | "Let's weave" | Monthly | Read ALL entries. Report topology: hubs, orphans, clusters, dormant. Propose new typed links. Process any records in `_hibernation_queue/`. | [[Substrate Skill]] |
 | The Spore Check | "Spore check" | Quarterly | Read all `stage: dormant` entries. Match against current work. Propose revivals. | [[Substrate Skill]] |
 | The Self-Model Update | "Self-model update" | As needed | Revise [[Substrate]] — update the palace's self-description to reflect current state | [[Substrate Skill]] |
 
@@ -33,6 +33,7 @@ The complete and canonical list of all palace ceremonies. Every ceremony has a t
 |---|---|---|---|
 | The Harvest | "Let's harvest" | Triage raw source material (conversations, docs, files). Flag what's worthy for deposit. | [[Harvest Ceremony]] |
 | The Deposit | "Let's deposit" | Read one flagged source deeply. Draft entries, propose links, write on approval. | [[Deposit Ceremony]] |
+| The Hibernation | "Time to hibernate" | The closing act of a completed deposit. Write the closing note into the thread, update the harvest log, mark the conversation dormant. Begins the moment Loudon says "nothing left unsaid." | [[Hibernation Ceremony]] |
 
 ## Ad-Hoc Operations
 

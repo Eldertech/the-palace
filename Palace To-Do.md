@@ -51,10 +51,11 @@ Organized into sections by type. Items move off this list when they become entri
 
 ## Structural Improvements
 
-- [ ] **Slim the Substrate Skill** — The skill file that tells Claude how to access the palace should shrink to a minimal entry point. The palace itself (especially [[README - The Palace Guide]] and the ceremony entries) should contain the full ceremony instructions. The skill triggers the behavior; the palace defines it.
+- [x] **Slim the Substrate Skill** — Complete 2026-03-17. Both the Substrate skill and Four Pillars skill now reduced to ~20-line pointers. Palace files (CLAUDE.md, Substrate Skill.md, Four Pillars.md, README) are the authoritative instruction set. Skill files contain trigger vocabulary, palace path, and a 3-sentence fallback for offline operation only.
 - [ ] **Add activation counts to more entries** — Several entries (Endosymbiosis, Palace Philosophies, Palace Quotes, Boundary-Crossing Instruments) are missing activation tracking. Standardize during next Weave.
 - [ ] **Boundary-Crossing Instruments** — Currently underactivated (last activated Dec 2025). Check whether Deposit session has added new connections. The three-layer interface design should link forward to Symbiotic Skills.
 - [ ] **Endosymbiosis** — Stage: seed, activation: 1. Body is thin. Consider whether a Deposit session would enrich it or whether it should stay as a thin pointer to the biological proof-of-concept for [[Cooperation Yields Agency]].
+- [ ] **GitHub as palace read target** — The palace now has git version control. Next step: push to a cloud GitHub repo and update both skill files to read from `raw.githubusercontent.com` as the primary path, with the filesystem path as fallback. This makes the palace accessible in any Claude interface (not just when filesystem MCP is connected), since `web_fetch` is always available. One tradeoff: GitHub shows last committed state, not live edits — acceptable for the palace since entries are committed when finished. Architecture: primary = GitHub raw URL → fallback = filesystem path → fallback = memory. Do after the current Plan A setup has been road-tested for a few weeks.
 - [ ] **Consider a Claude Project for the palace** — [[Substrate]] notes the threshold is ~25–40 entries. Currently at 19. Begin planning at 20, create at 25.
 
 ---

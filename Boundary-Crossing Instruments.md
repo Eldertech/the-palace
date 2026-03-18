@@ -22,6 +22,8 @@ links:
     type: mirrors
   - target: "[[Symbiotic Skills]]"
     type: enables
+  - target: "[[Action Potential Oscillator]]"
+    type: connects-to
 ---
 
 # Boundary-Crossing Instruments
