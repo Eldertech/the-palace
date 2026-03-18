@@ -1,3 +1,9 @@
+---
+version: 1.0
+schema: SCHEMA.md
+last_schema_ceremony: 2026-03
+---
+
 # The Palace — Claude Code Entry Point
 
 This is a living knowledge organism built by Loudon Stearns (musician, educator, creative technologist) and Claude. It is a collection of interconnected Markdown files forming a knowledge graph. The palace uses a mix of metaphorical, philosophical, and technical language — this is foundational, not decorative. Working here has a mystical feeling that technical jargon misses; friction and contradiction are celebrated.
@@ -29,7 +35,9 @@ This is a partial list. For the complete list of all ceremonies (including Harve
 
 ## Where to Find Depth
 
+- **[[SCHEMA]]** — Type system, link ontology, ceremony linter, schema change protocol. Read before creating any new entry or ceremony.
 - **[[Substrate Skill]]** — Authoritative ceremony instructions and operational spec
 - **[[README - The Palace Guide]]** — Full palace manual (philosophy, link ontology, entry templates)
 - **[[Substrate]]** — The palace's self-model (architecture, current state)
 - **[[Four Pillars]]** — Loudon's core framework
+- **[[Rosetta Stone]]** — Cross-tradition glossary connecting Palace vocabulary to OOP, Data Engineering, Semantic Web, and DDD equivalents
