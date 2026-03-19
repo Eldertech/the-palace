@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portrait: A Media Dossier — L. Stearns, March 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
+<style>
+  :root { --ink: #1a1814; --paper: #f5f0e8; --faded: #8a8070; --accent: #c4391c; --rule: #d4cbb8; --highlight: #e8dfc8; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: var(--paper); color: var(--ink); font-family: 'Cormorant Garamond', Georgia, serif; font-size: 18px; line-height: 1.7; min-height: 100vh; }
+  .page { max-width: 780px; margin: 0 auto; padding: 80px 40px 120px; }
+  header { border-top: 3px solid var(--ink); border-bottom: 1px solid var(--rule); padding: 32px 0 28px; margin-bottom: 64px; }
+  .overline { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.25em; text-transform: uppercase; color: var(--faded); margin-bottom: 16px; }
+  h1 { font-size: 52px; font-weight: 300; line-height: 1.1; letter-spacing: -0.02em; }
+  h1 em { font-style: italic; color: var(--accent); }
+  .subtitle { margin-top: 12px; font-size: 14px; font-style: italic; color: var(--faded); font-weight: 300; }
+  .preamble { font-size: 16px; font-style: italic; color: var(--faded); border-left: 2px solid var(--rule); padding-left: 24px; margin-bottom: 72px; line-height: 1.8; }
+  .dimension { margin-bottom: 72px; padding-bottom: 64px; border-bottom: 1px solid var(--rule); }
+  .dimension:last-of-type { border-bottom: none; }
+  .dimension-header { display: flex; align-items: baseline; gap: 20px; margin-bottom: 10px; }
+  .dimension-number { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--faded); letter-spacing: 0.15em; flex-shrink: 0; padding-top: 4px; }
+  .dimension-title { font-size: 28px; font-weight: 600; letter-spacing: 0.02em; line-height: 1.2; }
+  .dimension-key { font-size: 13px; font-style: italic; color: var(--faded); margin-left: 44px; margin-bottom: 20px; line-height: 1.6; }
+  .unlock-note { background: var(--highlight); border-left: 3px solid var(--accent); padding: 14px 20px; margin: 0 0 28px 44px; font-size: 14px; font-style: italic; line-height: 1.7; color: #5a4a38; }
+  .unlock-note strong { font-style: normal; font-weight: 600; color: var(--accent); display: block; font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 4px; font-family: 'DM Mono', monospace; }
+  .media-list { margin-left: 44px; list-style: none; }
+  .media-item { display: grid; grid-template-columns: 1fr auto; align-items: baseline; gap: 12px; padding: 10px 0; border-bottom: 1px dotted var(--rule); }
+  .media-item:last-child { border-bottom: none; }
+  .media-title { font-size: 17px; font-weight: 400; }
+  .media-creator { font-style: italic; font-size: 15px; color: var(--faded); font-weight: 300; }
+  .media-tag { font-family: 'DM Mono', monospace; font-size: 9px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--faded); background: var(--highlight); padding: 3px 8px; white-space: nowrap; border: 1px solid var(--rule); }
+  .media-tag.film { color: #8b4000; border-color: #d4a070; background: #faf0e0; }
+  .media-tag.book { color: #2a5a2a; border-color: #90b890; background: #f0f5f0; }
+  .media-tag.tv { color: #1a3a6a; border-color: #8090c0; background: #f0f2f8; }
+  .media-tag.play { color: #5a2a5a; border-color: #b080b0; background: #f5f0f5; }
+  footer { border-top: 3px solid var(--ink); padding-top: 32px; margin-top: 80px; }
+  .footer-note { font-family: 'DM Mono', monospace; font-size: 10px; color: var(--faded); letter-spacing: 0.1em; line-height: 1.8; }
+  .total { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--ink); margin-top: 16px; letter-spacing: 0.1em; }
+  .page-break { margin: 80px 0 64px; padding: 48px 0 40px; border-top: 3px solid var(--ink); border-bottom: 1px solid var(--rule); }
+  .page-break-label { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: 0.25em; text-transform: uppercase; color: var(--faded); margin-bottom: 14px; }
+  .page-break-title { font-size: 52px; font-weight: 300; letter-spacing: -0.02em; line-height: 1.1; font-style: italic; color: var(--accent); }
+  .page-break-sub { margin-top: 12px; font-size: 14px; font-style: italic; color: var(--faded); font-weight: 300; }
+  .transcript { margin-bottom: 64px; }
+  .exchange { margin-bottom: 6px; }
+  .exchange-gap { height: 36px; position: relative; }
+  .exchange-gap::after { content: '·'; position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); color: var(--rule); font-size: 20px; }
+  .speaker { font-family: 'DM Mono', monospace; font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 6px; }
+  .speaker.interviewer { color: var(--accent); }
+  .speaker.subject { color: var(--faded); }
+  .utterance { font-size: 17px; line-height: 1.75; padding-left: 20px; border-left: 2px solid transparent; margin-bottom: 4px; }
+  .utterance.interviewer-text { border-left-color: var(--accent); font-style: italic; color: #3a2a20; }
+  .utterance.subject-text { border-left-color: var(--rule); color: var(--ink); font-weight: 400; }
+  .transcript-footer { display: flex; justify-content: space-between; align-items: center; margin-top: 56px; padding-top: 20px; border-top: 1px solid var(--rule); font-family: 'DM Mono', monospace; font-size: 10px; color: var(--faded); letter-spacing: 0.1em; }
+  @media (max-width: 600px) { .page { padding: 40px 24px 80px; } h1 { font-size: 36px; } .media-item { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+<div class="page">
+  <header>
+    <div class="overline">Classified — Portrait Session — March 2026</div>
+    <h1>A Media <em>Dossier</em></h1>
+    <div class="subtitle">Derived from oblique interrogation. Subject: L. Stearns.<br>Organized not by genre, but by the psychological dimension that yielded each entry.</div>
+  </header>
+  <div class="preamble">You were never asked what you liked to watch. You were asked about glass block light, about cold mornings, about a boss who flattered you into trust, about the nine-year-old who was already performing a self. The following list emerged from the space between your answers — from what you reached for and what you avoided, from the shape of your humor and the texture of your failures. You did not choose these. They chose you.</div>
+
+  <div class="dimension">
+    <div class="dimension-header"><span class="dimension-number">I</span><h2 class="dimension-title">The Glass Block Self</h2></div>
+    <div class="dimension-key">Sensory liminality / private interior architecture / the world made present but strange</div>
+    <div class="unlock-note"><strong>What unlocked this</strong>You described sleeping above your own room in diffuse, wavy light through glass block — the world legible but dissolved, near but transformed. A private elevated position from which the ordinary became strange. These works live in that same frequency.</div>
+    <ul class="media-list">
+      <li class="media-item"><span><span class="media-title">Mirror</span> <span class="media-creator">— Andrei Tarkovsky</span></span><span class="media-tag film">Film</span></li>
+      <li class="media-item"><span><span class="media-title">The Spirit of the Beehive</span> <span class="media-creator">— Víctor Erice</span></span><span class="media-tag film">Film</span></li>
+      <li class="media-item"><span><span class="media-title">Aftersun</span> <span class="media-creator">— Charlotte Wells</span></span><span class="media-tag film">Film</span></li>
+      <li class="media-item"><span><span class="media-title">Picnic at Hanging Rock</span> <span class="media-creator">— Peter Weir</span></span><span class="media-tag film">Film</span></li>
+      <li class="media-item"><span><span class="media-title">The Double Life of Véronique</span> <span class="media-creator">— Krzysztof Kieślowski</span></span><span class="media-tag film">Film</span></li>
+      <li class="media-item"><span><span class="media-title">House of Leaves</span> <span class="media-creator">— Mark Z. Danielewski</span></span><span class="media-tag book">Book</span></li>
+      <li class="media-item"><span><span class="media-title">Come and See</span> <span class="media-creator">— Elem Klimov</span></span><span class="media-tag film">Film</span></li>
+    </ul>
+  </div>
+
+  <div class="dimension">
+    <div class="dimension-header"><span class="dimension-number">II</span><h2 class="dimension-title">The Seam Split Open</h2></div>
+    <div class="dimension-key">The comedy of fundamental contradiction / watching systems eat themselves / being the only one who sees the seam</div>
+    <div class="unlock-note"><strong>What unlocked this</strong>You find it genuinely, helplessly funny when people reveal a fundamental contradiction in their own worldview. Not laughing at them — watching the magic trick fail in slow motion. These works were made by people who share exactly that pleasure.</div>
+    <ul class="media-list">
+      <li class="media-item"><span><span class="media-title">Dr. Strangelove</span> <span class="media-creator">— Stanley Kubrick</span></span><span class="media-tag film">Film</span></li>
+      <li class="media-item"><span><span class="media-title">The Rehearsal</span> <span class="media-creator">— Nathan Fielder</span></span><span class="media-tag tv">Television</span></li>
+      <li class="media-item"><span><span class="media-title">In the Loop</span> <span class="media-creator">— Armando Iannucci</span></span><span class="media-tag film">Film</span></li>
+      <li class="media-item"><span><span class="media-title">Four Lions</span> <span class="media-creator">— Chris Morris</span></span><span class="media-tag film">Film</span></li>
+      <li class="media-item"><span><span class="media-title">Network</span> <span class="media-creator">— Sidney Lumet</span></span><span class="media-tag film">Film</span></li>
+      <li class="media-item"><span><span class="media-title">The Death of Stalin</span> <span class="media-creator">— Armando Iannucci</span></span><span class="media-tag film">Film</span></li>
+      <li class="media-item"><span><span class="media-title">Catch-22</span> <span class="media-creator">— Joseph Heller</span></span><span class="media-tag book">Book</span></li>
+      <li class="media-item"><span><span class="media-title">Infinite Jest</span> <span class="media-creator">— David Foster Wallace</span></span><span class="media-tag book">Book</span></li>
+      <li class="media-item"><span><span class="media-title">Succession</span> <span class="media-creator">— Jesse Armstrong</span></span><span class="media-tag tv">Television</span></li>
+      <li class="media-item"><span><span class="media-title">I Think You Should Leave</span> <span class="media-creator">— Tim Robinson</span></span><span class="media-tag tv">Television</span></li>
+    </ul>
+  </div>
+
+  <div class="dimension">
+    <div class="dimension-header"><span class="dimension-number">III</span><h2 class="dimension-title">The Quiet Armoring</h2></div>
+    <div class="dimension-key">Stoicism as performance / hidden interior life / holding the shape of yourself while something else happens underneath</div>
+    <div class="unlock-note"><strong>What unlocked this</strong>This morning you were cold. You pretended not to be. You braced secretly, outwardly unchanged. That is a profound habit — one that produces a particular kind of person. These works are portraits of people who do exactly that, and what it eventually costs them.</div>
+    <ul class="media-list">
+      <li class="media-item"><span><span class="media-title">The Remains of the Day</span> <span class="media-creator">— Kazuo Ishiguro</span></span><span class="media-tag book">Book</span></li>
+      <li class="media-item"><span><span class="media-title">Tinker Tailor Soldier Spy</span> <span class="media-creator">— Tomas Alfredson</span></span><span class="media-tag film">Film</span></li>
+      <li class="media-item"><span><span class="media-title">Tinker Tailor Soldier Spy</span> <span class="media-creator">— John le Carré</span></span><span class="media-tag book">Book</span></li>
+      <li class="media-item"><span><span class="media-title">First Reformed</span> <span class="media-creator">— Paul Schrader</span></span><span class="media-tag film">Film</span></li>
+      <li class="media-item"><span><span class="media-title">Persona</span> <span class="media-creator">— Ingmar Bergman</span></span><span class="media-tag film">Film</span></li>
+      <li class="media-item"><span><span class="media-title">Cold War</span> <span class="media-creator">— Paweł Pawlikowski</span></span><span class="media-tag film">Film</span></li>
+    </ul>
+  </div>
+
+  <div class="dimension">
+    <div class="dimension-header"><span class="dimension-number">IV</span><h2 class="dimension-title">The Charming Asshole</h2></div>
+    <div class="dimension-key">Seduction as weapon / charm as confidence trick / the flattery that preceded the betrayal</div>
+    <div class="unlock-note"><strong>What unlocked this</strong>You were seduced by a boss — money, glory, compliments — and eventually filed him under the correct heading. The interesting part: you probably knew before you let yourself know. These works are portraits of people who weaponize the very qualities that make them irresistible.</div>
+    <ul class="media-list">
+      <li class="media-item"><span><span class="media-title">The Talented Mr. Ripley</span> <span class="media-creator">— Patricia Highsmith</span></span><span class="media-tag book">Book</span></li>
+      <li class="media-item"><span><span class="media-title">House of Games</span> <span class="media-creator">— David Mamet</span></span><span class="media-tag film">Film</span></li>
+      <li class="media-item"><span><span class="media-title">Glengarry Glen Ross</span> <span class="media-creator">— David Mamet</span></span><span class="media-tag play">Film / Play</span></li>
+      <li class="media-item"><span><span class="media-title">The Social Network</span> <span class="media-creator">— David Fincher</span></span><span class="media-tag film">Film</span></li>
+      <li class="media-item"><span><span class="media-title">Bad Blood</span> <span class="media-creator">— John Carreyrou</span></span><span class="media-tag book">Book</span></li>
+      <li class="media-item"><span><span class="media-title">Dirty Money</span> <span class="media-creator">— Netflix</span></span><span class="media-tag tv">Documentary</span></li>
+      <li class="media-item"><span><span class="media-title">The Dropout</span> <span class="media-creator">— Elizabeth Meriwether</span></span><span class="media-tag tv">Television</span></li>
+    </ul>
+  </div>
+
+  <div class="dimension">
+    <div class="dimension-header"><span class="dimension-number">V</span><h2 class="dimension-title">The Waiting Room</h2></div>
+    <div class="dimension-key">Deferred desire / performed identity / leaving the window open for ambition to arrive like weather</div>
+    <div class="unlock-note"><strong>What unlocked this</strong>At nine you were already performing a self — the musician was a convenient story, not a desire. Inside: waiting. For desire, for wanting, for ambition to arrive. These works are built around people in that same suspended state, or around the philosophical weight of waiting itself.</div>
+    <ul class="media-list">
+      <li class="media-item"><span><span class="media-title">Stoner</span> <span class="media-creator">— John Williams</span></span><span class="media-tag book">Book</span></li>
+      <li class="media-item"><span><span class="media-title">Oblomov</span> <span class="media-creator">— Ivan Goncharov</span></span><span class="media-tag book">Book</span></li>
+      <li class="media-item"><span><span class="media-title">Waiting for Godot</span> <span class="media-creator">— Samuel Beckett</span></span><span class="media-tag play">Play</span></li>
+      <li class="media-item"><span><span class="media-title">The Waves</span> <span class="media-creator">— Virginia Woolf</span></span><span class="media-tag book">Book</span></li>
+      <li class="media-item"><span><span class="media-title">Late Spring</span> <span class="media-creator">— Yasujirō Ozu</span></span><span class="media-tag film">Film</span></li>
+      <li class="media-item"><span><span class="media-title">Boyhood</span> <span class="media-creator">— Richard Linklater</span></span><span class="media-tag film">Film</span></li>
+      <li class="media-item"><span><span class="media-title">Days of Heaven</span> <span class="media-creator">— Terrence Malick</span></span><span class="media-tag film">Film</span></li>
+      <li class="media-item"><span><span class="media-title">A Ghost Story</span> <span class="media-creator">— David Lowery</span></span><span class="media-tag film">Film</span></li>
+      <li class="media-item"><span><span class="media-title">The Stranger</span> <span class="media-creator">— Albert Camus</span></span><span class="media-tag book">Book</span></li>
+      <li class="media-item"><span><span class="media-title">My Year of Rest and Relaxation</span> <span class="media-creator">— Ottessa Moshfegh</span></span><span class="media-tag book">Book</span></li>
+    </ul>
+  </div>
+
+  <div class="dimension">
+    <div class="dimension-header"><span class="dimension-number">VI</span><h2 class="dimension-title">The Road Around the Mountain</h2></div>
+    <div class="dimension-key">Secret failure / success as displacement / the impostor no one suspects / everyone thinks you've been to the top</div>
+    <div class="unlock-note"><strong>What unlocked this</strong>You failed at being a great musician. Nobody knows. Your success in music is legible to others as mastery — but you built it around the thing you couldn't do. The success is the evidence of the failure. These works live in that exact territory.</div>
+    <ul class="media-list">
+      <li class="media-item"><span><span class="media-title">Synecdoche, New York</span> <span class="media-creator">— Charlie Kaufman</span></span><span class="media-tag film">Film</span></li>
+      <li class="media-item"><span><span class="media-title">Birdman</span> <span class="media-creator">— Alejandro González Iñárritu</span></span><span class="media-tag film">Film</span></li>
+      <li class="media-item"><span><span class="media-title">Whiplash</span> <span class="media-creator">— Damien Chazelle</span></span><span class="media-tag film">Film</span></li>
+      <li class="media-item"><span><span class="media-title">Never Let Me Go</span> <span class="media-creator">— Kazuo Ishiguro</span></span><span class="media-tag book">Book</span></li>
+      <li class="media-item"><span><span class="media-title">Flowers for Algernon</span> <span class="media-creator">— Daniel Keyes</span></span><span class="media-tag book">Book</span></li>
+      <li class="media-item"><span><span class="media-title">Scenes from a Marriage</span> <span class="media-creator">— Ingmar Bergman</span></span><span class="media-tag tv">Film / TV</span></li>
+    </ul>
+  </div>
+
+  <div class="dimension">
+    <div class="dimension-header"><span class="dimension-number">VII</span><h2 class="dimension-title">The Private Grammar</h2></div>
+    <div class="dimension-key">Hidden order legible only to its author / the system that looks like clutter from outside</div>
+    <div class="unlock-note"><strong>What unlocked this</strong>You can't work until organized — but to others it might look like clutter. There's a real order underneath, speaking a private language. These works are structured around labyrinthine private grammars with their own internal logic, only legible from deep inside.</div>
+    <ul class="media-list">
+      <li class="media-item"><span><span class="media-title">Ficciones</span> <span class="media-creator">— Jorge Luis Borges</span></span><span class="media-tag book">Book</span></li>
+      <li class="media-item"><span><span class="media-title">The Name of the Rose</span> <span class="media-creator">— Umberto Eco</span></span><span class="media-tag book">Book</span></li>
+      <li class="media-item"><span><span class="media-title">Pattern Recognition</span> <span class="media-creator">— William Gibson</span></span><span class="media-tag book">Book</span></li>
+      <li class="media-item"><span><span class="media-title">The Raw Shark Texts</span> <span class="media-creator">— Steven Hall</span></span><span class="media-tag book">Book</span></li>
+      <li class="media-item"><span><span class="media-title">Primer</span> <span class="media-creator">— Shane Carruth</span></span><span class="media-tag film">Film</span></li>
+      <li class="media-item"><span><span class="media-title">The Wire</span> <span class="media-creator">— David Simon</span></span><span class="media-tag tv">Television</span></li>
+      <li class="media-item"><span><span class="media-title">Memento</span> <span class="media-creator">— Christopher Nolan</span></span><span class="media-tag film">Film</span></li>
+    </ul>
+  </div>
+
+  <div class="dimension">
+    <div class="dimension-header"><span class="dimension-number">VIII</span><h2 class="dimension-title">People as Equations</h2></div>
+    <div class="dimension-key">Analytical detachment as social strategy / observation as intimacy / comfort through decoding</div>
+    <div class="unlock-note"><strong>What unlocked this</strong>In a group, you take a relaxed posture and observe — comfortable because you're solving people like math problems. The observation is the participation. The distance is the connection. These works are built around that exact mode of being in the world.</div>
+    <ul class="media-list">
+      <li class="media-item"><span><span class="media-title">True Detective</span> <span class="media-creator">— Season 1, Nic Pizzolatto</span></span><span class="media-tag tv">Television</span></li>
+      <li class="media-item"><span><span class="media-title">The Knick</span> <span class="media-creator">— Steven Soderbergh</span></span><span class="media-tag tv">Television</span></li>
+      <li class="media-item"><span><span class="media-title">Slow Horses</span> <span class="media-creator">— Mick Herron</span></span><span class="media-tag tv">Book / TV</span></li>
+      <li class="media-item"><span><span class="media-title">Notes from Underground</span> <span class="media-creator">— Fyodor Dostoevsky</span></span><span class="media-tag book">Book</span></li>
+      <li class="media-item"><span><span class="media-title">The Double</span> <span class="media-creator">— Fyodor Dostoevsky</span></span><span class="media-tag book">Book</span></li>
+    </ul>
+  </div>
+
+  <div class="dimension">
+    <div class="dimension-header"><span class="dimension-number">IX</span><h2 class="dimension-title">The Wrong Fear</h2></div>
+    <div class="dimension-key">Irrational anxiety seated next to the mundane / the uncanny embedded in ordinary commerce and nature / shoe stores</div>
+    <div class="unlock-note"><strong>What unlocked this</strong>Bugs. Snakes. Shoe stores. That last one is the key — because it's not irrational at all when you look at it sideways. Shoe stores are uncanny spaces: you sit in a vulnerable position while a stranger handles your feet, surrounded by identical versions of objects meant to individuate you. These works treat the mundane with exactly that kind of sideways suspicion.</div>
+    <ul class="media-list">
+      <li class="media-item"><span><span class="media-title">The Trial</span> <span class="media-creator">— Franz Kafka</span></span><span class="media-tag book">Book</span></li>
+      <li class="media-item"><span><span class="media-title">The Metamorphosis</span> <span class="media-creator">— Franz Kafka</span></span><span class="media-tag book">Book</span></li>
+      <li class="media-item"><span><span class="media-title">Being John Malkovich</span> <span class="media-creator">— Charlie Kaufman</span></span><span class="media-tag film">Film</span></li>
+      <li class="media-item"><span><span class="media-title">The Lobster</span> <span class="media-creator">— Yorgos Lanthimos</span></span><span class="media-tag film">Film</span></li>
+      <li class="media-item"><span><span class="media-title">Dogtooth</span> <span class="media-creator">— Yorgos Lanthimos</span></span><span class="media-tag film">Film</span></li>
+      <li class="media-item"><span><span class="media-title">I'm Thinking of Ending Things</span> <span class="media-creator">— Charlie Kaufman</span></span><span class="media-tag film">Film</span></li>
+      <li class="media-item"><span><span class="media-title">Severance</span> <span class="media-creator">— Ben Stiller / Apple TV+</span></span><span class="media-tag tv">Television</span></li>
+      <li class="media-item"><span><span class="media-title">Curb Your Enthusiasm</span> <span class="media-creator">— Larry David</span></span><span class="media-tag tv">Television</span></li>
+    </ul>
+  </div>
+
+  <div class="page-break">
+    <div class="page-break-label">— Appendix —</div>
+    <div class="page-break-title">The Transcript</div>
+    <div class="page-break-sub">A complete record of the interrogation. The subject did not know what was being built.</div>
+  </div>
+
+  <div class="transcript">
+    <div class="exchange"><div class="speaker interviewer">Interviewer</div><div class="utterance interviewer-text">Tell me about a room from your childhood that you remember with unusual clarity — not because something important happened there, but just because of how it <em>felt</em> to be in it.</div></div>
+    <div class="exchange"><div class="speaker subject">Subject</div><div class="utterance subject-text">My attic bed attached to my bedroom.</div></div>
+    <div class="exchange-gap"></div>
+    <div class="exchange"><div class="speaker interviewer">Interviewer</div><div class="utterance interviewer-text">An attic bed. So you slept <em>above</em> your own room — in the ceiling of your own life, in a way. What was the quality of the light up there?</div></div>
+    <div class="exchange"><div class="speaker subject">Subject</div><div class="utterance subject-text">Diffuse and wavy through glass block.</div></div>
+    <div class="exchange-gap"></div>
+    <div class="exchange"><div class="speaker interviewer">Interviewer</div><div class="utterance interviewer-text">Glass block. So the world outside was present but made strange — recognizable shapes dissolved into something almost liquid.<br><br>Completely different direction now. What's something you find genuinely, helplessly funny that you suspect most people around you would not find funny at all?</div></div>
+    <div class="exchange"><div class="speaker subject">Subject</div><div class="utterance subject-text">When people reveal a fundamental contradiction in their own worldview.</div></div>
+    <div class="exchange-gap"></div>
+    <div class="exchange"><div class="speaker interviewer">Interviewer</div><div class="utterance interviewer-text">There's a particular pleasure in that — being the only one in the room who sees the seam split open. You're not laughing <em>at</em> them, exactly. It's more like watching a magic trick fail in slow motion.<br><br>Different direction entirely. When did you last feel genuinely, physically cold — and what did you do with your body in response?</div></div>
+    <div class="exchange"><div class="speaker subject">Subject</div><div class="utterance subject-text">This morning. I pretended I didn't feel cold, secretly braced myself — outwardly no change.</div></div>
+    <div class="exchange-gap"></div>
+    <div class="exchange"><div class="speaker interviewer">Interviewer</div><div class="utterance interviewer-text">Stoic on the outside, quietly armored on the inside. You held the shape of yourself while something else happened underneath.<br><br>Tell me about a time you were wrong about a person — not morally wrong, just <em>categorically</em> wrong. You had them filed under the wrong heading entirely.</div></div>
+    <div class="exchange"><div class="speaker subject">Subject</div><div class="utterance subject-text">An old boss of mine. He seduced me with charm, money, glory and compliments. He was a conniving asshole.</div></div>
+    <div class="exchange-gap"></div>
+    <div class="exchange"><div class="speaker interviewer">Interviewer</div><div class="utterance interviewer-text">The seduction was the real story — and you probably knew something was off before you let yourself know you knew.<br><br>What did you want to be when you were nine years old?</div></div>
+    <div class="exchange"><div class="speaker subject">Subject</div><div class="utterance subject-text">I never wanted to be anything. I said I wanted to be a musician/composer, but inside I just waited. I was a good musician so I let people think it was my desire, but really it was just a thing I did because it was easy and I enjoyed being good and perhaps praised for something.</div></div>
+    <div class="exchange-gap"></div>
+    <div class="exchange"><div class="speaker interviewer">Interviewer</div><div class="utterance interviewer-text">So you were already performing a self at nine. The musician wasn't a dream — it was a convenient story that fit the shape others needed you to have.<br><br>That word you used — <em>waited</em> — what were you waiting <em>for</em>, do you think? Or was the waiting itself the thing?</div></div>
+    <div class="exchange"><div class="speaker subject">Subject</div><div class="utterance subject-text">Waiting for desire, waiting to want, waiting for ambition perhaps.</div></div>
+    <div class="exchange-gap"></div>
+    <div class="exchange"><div class="speaker interviewer">Interviewer</div><div class="utterance interviewer-text">Waiting for desire to arrive like weather. Not forcing it, just leaving the window open.<br><br>Sharp left turn. What's something that other people find deeply pleasurable that you have genuinely never understood the appeal of — not morally, not intellectually, just <em>viscerally</em>?</div></div>
+    <div class="exchange"><div class="speaker subject">Subject</div><div class="utterance subject-text">Musical theatre.</div></div>
+    <div class="exchange-gap"></div>
+    <div class="exchange"><div class="speaker interviewer">Interviewer</div><div class="utterance interviewer-text">Not even a flicker. Just — nothing.<br><br>Tell me about a time you failed at something in a way that nobody ever found out about.</div></div>
+    <div class="exchange"><div class="speaker subject">Subject</div><div class="utterance subject-text">I failed at being a great musician. Everyone assumes I am a great musician, but I'm really not. I can't play very well. I don't know maybe songs. I can't recognize chords by ear. But because I have found a path of success around music, people assume I am a great musician. But I failed at achieving that.</div></div>
+    <div class="exchange-gap"></div>
+    <div class="exchange"><div class="speaker interviewer">Interviewer</div><div class="utterance interviewer-text">That's a very particular kind of failure — one where the success <em>is</em> the evidence of the failure. You built a road around the mountain instead of climbing it, and now everyone thinks you've been to the top.<br><br>Complete change of register. Describe your relationship to clutter. Physical clutter, in the spaces where you live and work.</div></div>
+    <div class="exchange"><div class="speaker subject">Subject</div><div class="utterance subject-text">I can't work until it is organized. To me, perhaps to others it would look like clutter.</div></div>
+    <div class="exchange-gap"></div>
+    <div class="exchange"><div class="speaker interviewer">Interviewer</div><div class="utterance interviewer-text">So there's a real order underneath — it just speaks a private language. The system is legible to you and only you.<br><br>When you're in a group of people and the energy goes wrong — the conversation dies, or someone says something that lands badly — what do you do with your body?</div></div>
+    <div class="exchange"><div class="speaker subject">Subject</div><div class="utterance subject-text">I assume a relaxed posture and observe. I am always comfortable in a group, because I look to figure people out like they were math equations.</div></div>
+    <div class="exchange-gap"></div>
+    <div class="exchange"><div class="speaker interviewer">Interviewer</div><div class="utterance interviewer-text">People are puzzles you're already solving before they've finished their first sentence. Comfort as a byproduct of analysis — the observation <em>is</em> the participation.<br><br>What are you afraid of that you think you probably shouldn't be afraid of?</div></div>
+    <div class="exchange"><div class="speaker subject">Subject</div><div class="utterance subject-text">Some bugs. Snakes. Shoe stores.</div></div>
+    <div class="transcript-footer"><span>End of session.</span><span>12 exchanges &nbsp;·&nbsp; 9 dimensions unlocked &nbsp;·&nbsp; 62 media entries derived</span></div>
+  </div>
+
+  <footer>
+    <div class="footer-note">CLASSIFIED — PORTRAIT SESSION / MARCH 2026<br>Subject was never asked about media. All entries derived from oblique interrogation across nine psychological dimensions.<br>Method: memory, humor, body/sensation, social context, failure/embarrassment, desire, childhood, contradiction.</div>
+    <div class="total">TOTAL ENTRIES: 62 &nbsp;·&nbsp; DIMENSIONS: 9 &nbsp;·&nbsp; DIRECT QUESTIONS ABOUT MEDIA: 0</div>
+  </footer>
+</div>
+</body>
+</html>
