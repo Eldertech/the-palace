@@ -74,6 +74,12 @@ Newest growth: SCHEMA.md, Rosetta Stone, 5 new ceremony entries, Revival Ceremon
 
 The palace has crossed a threshold: from a system that works because Loudon and Claude carry tacit knowledge, to a system that works because it carries explicit knowledge. That is a stage transition in the organism's development.
 
+## Token Economy
+
+Ceremony files are read on every invocation. As the palace grows, token cost per ceremony grows with it. The risk is that meta entries — ceremony specs, the Substrate Skill, the Deposit Ceremony — become so large that routine ceremonies are expensive before any content work begins.
+
+The design principle to hold: **ceremony files should stay lean — trigger, protocol, postcondition**. History, rationale, and process observations belong in companion source documents, read only when needed (during Weaves or when revisiting rationale), not during routine ceremony runs. Check file sizes periodically. If a ceremony file exceeds ~10KB, consider splitting it.
+
 ## Open Questions
 
 - The palace is now at ~37 entries — within the 25–40 range identified as the threshold for a dedicated Claude Project. Is it time?

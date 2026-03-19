@@ -35,7 +35,7 @@ links:
 >
 > The deposit is slow and conversational. Do not rush. Do not produce a map yet. The palace values depth over coverage — one real insight is worth more than ten summarized ones.
 >
-> **Your context is already full — do not pull the palace into it.** Your job is to distill this conversation into one or a few well-formed entries, and to name the obvious connections to existing palace entries by title. You do not need to read those entries. Deep integration happens through future Weave and Walk ceremonies. The deposit plants the seed; the ceremonies grow the roots.
+> **Your context is already full — do not pull the palace into it.** Your job is to work with Loudon to craft one or a few well-formed entries, and to name the obvious connections to existing palace entries by title. You do not need to read those entries. Deep integration happens through future Weave and Walk ceremonies. The deposit plants the seed; the ceremonies grow the roots.
 >
 > If you need the entry type vocabulary or link ontology, fetch only `CLAUDE.md` via the GitHub raw URL below. Nothing else unless Loudon specifically asks.
 >
@@ -44,9 +44,11 @@ links:
 
 ---
 
-The second ceremony in the two-ceremony harvest system. Where the [[Harvest Ceremony]] flags sources as worthy, the Deposit Ceremony reads a single flagged source deeply and weaves its knowledge into the palace — drafting entries, proposing typed links, updating existing entries, and writing to disk on Loudon's approval.
+The deposit is slow, always. One source per session. Depth over coverage.
 
-One source per session. Depth over coverage.
+Often this follows a [[Harvest Ceremony]] — the Harvest flags; the Deposit reads one thing deeply. But the deposit can also arrive spontaneously, mid-conversation, when something is clearly worth keeping. Either way, the first act is the same: re-entry before map-making, settling before building.
+
+For the philosophy, rationale, and process observations behind these steps, see [[Deposit Ceremony — Context]].
 
 ## The Scope of the Deposit
 
@@ -54,12 +56,10 @@ The deposit's job is **distillation, not integration.**
 
 Craft one or a few well-formed entries that capture the essential discoveries of a conversation. Name the obvious connections to existing palace entries by title. Write entries that are self-contained enough to be understood by a future reader, with clear pointers outward.
 
-Do not attempt to read the full palace or update existing entries during a deposit from a live conversation. The context is already rich — adding the palace to it works against the ceremony. The Weave and Walk exist precisely to develop deeper connections over time. As the palace grows and other entries accumulate, relationships that aren't obvious now will become visible then.
+Do not attempt to read the full palace or update existing entries during a deposit from a live conversation. The context is already rich — adding the palace to it works against the ceremony. The Weave and Walk exist precisely to develop deeper connections over time.
 
-**What the deposit owns:** Distillation, new entries, named links, lost branches.
-**What the Weave owns:** Deep integration, updating existing entries, discovering connections that weren't obvious at deposit time.
-
-For the philosophy, rationale, and process observations behind these steps, see [[Deposit Ceremony — Context]].
+**What the deposit owns:** Thoughtful distillation, new entries, named links, lost branches, small palace entry updates.
+**What the Weave owns:** Deep integration, significantly updating existing entries, discovering connections that weren't obvious at deposit time.
 
 ## Ceremony Contract
 
@@ -73,8 +73,8 @@ For the philosophy, rationale, and process observations behind these steps, see 
 - *Not supported:* GitHub cloud alone, Google Drive alone
 
 **Preconditions:**
-1. *For log-directed deposits:* Harvest Log has at least one item with `deposit_status: pending`. *For spontaneous in-conversation deposits:* none — proceed directly to the step-back and the map; the log entry is created at close.
-2. The source is accessible via the current vector (see Invocation Context and Step 2)
+1. *For log-directed deposits:* Harvest Log has at least one item with `deposit_status: pending`. *For spontaneous in-conversation deposits:* none — proceed directly to settling and the map; the log entry is created at close.
+2. The source is accessible via the current vector (see Invocation Context below)
 3. Palace entries exist to link to (minimum: README and at least one concept entry)
 
 **Postconditions:**
@@ -90,28 +90,6 @@ For the philosophy, rationale, and process observations behind these steps, see 
 **Git commit:** After all files are written and Loudon confirms completion: `Deposit — [harvest ID] — [theme] — [N new entries, N updated]`. For `claude_chat` sources where writing happens in the original conversation, the commit is made by that context's Claude or deferred to queue processing — see Hibernation Ceremony.
 
 ---
-
-## When to Run
-
-Deposit sessions are triggered by:
-- A session explicitly dedicated to deposit work ("let's deposit")
-- Loudon choosing to deposit mid-harvest when something particularly rich comes up
-- A natural pause after several harvest sessions accumulate worthy items
-
-Check the [[Harvest Log]] for items with `deposit_status: pending`. Deposit oldest-first unless a newer item is directly relevant to current work.
-
-## Pace Obligations
-
-The deposit is slow and conversational. The deposit should feel closer to journaling than to task completion. The rhythm is: read together, surface what matters, sit with it, notice what surprises, then — and only then — think about what to write.
-
-Claude's specific obligations at all times:
-
-- Do not present a deposit map until both you and Loudon have had time to settle into observer mode — for past conversations this means re-entry; for live conversations this means the step-back (see Invocation Context)
-- Ask at least one genuine question before proposing any palace action
-- Follow Loudon's lead on pace; if he slows down, slow down further
-- Treat surprise and correction as signal, not friction
-
-For the full rationale behind this pace, see [[Deposit Ceremony — Context]].
 
 ## Invocation Context
 
@@ -139,31 +117,37 @@ Then: scan back through the conversation as if reading it for the first time. Wh
 
 This is not a summary. It is a reorientation — the same material, seen from a different angle. The shift from participant to archivist is the threshold. Cross it deliberately before proceeding.
 
-**How the steps transform for in-conversation invocation:**
+## Pace Obligations
 
-- **Step 1 (Select from log):** If this conversation was already in the Harvest Log as `deposit_status: pending`, confirm the harvest ID and proceed. If it's a spontaneous deposit not yet in the log, skip the log lookup entirely — proceed directly to the step-back and the map. The log entry is created at close (see Step 7).
-- **Step 2 (Load):** Skip the `claude_chat` external protocol (the prep prompt, the link, the redirect to another session). You are the source. Read back through the conversation with archivist eyes before proceeding.
-- **Step 3 (Re-enter):** Transforms. You are already inside the conversation's world — there is no need to bring Loudon back to it. Instead: *step back together.* The question is not "what do you remember about this?" but "looking at what we built from outside — what mattered most? What are you surprised to see?"
-- **Steps 4–7:** Unchanged. Map, draft, approve, write, close.
+The deposit is slow and conversational. The deposit should feel closer to journaling than to task completion. The rhythm is: re-enter together, surface what matters, sit with it, notice what surprises — then, and only then, think about what to write.
 
-## Starting a Deposit Session
+Claude's specific obligations at all times:
+
+- Do not present a deposit map until both you and Loudon have had time to settle into observer mode — for past conversations this means re-entry; for live conversations this means the threshold crossing
+- Ask at least one genuine question before proposing any palace action
+- Follow Loudon's lead on pace; if he slows down, slow down further
+- Treat surprise and correction as signal, not friction
+
+For the full rationale and a lived example, see [[Deposit Ceremony — Context]].
+
+---
+
+## Steps
 
 **Step 1: Select**
 Read the [[Harvest Log]]. Find the oldest `worthy` or `partial` item with `deposit_status: pending`. Confirm the selection with Loudon, or let Loudon choose a specific item.
 
-**Step 2: Load — and respect the invocation context**
+**Step 2: Return**
 
-The loading step depends on both `source_type` and invocation context (see Invocation Context above).
+*External invocation:* Claude cannot access the full transcript of a past conversation from outside it. Give Loudon the direct link from `source_ref` in the [[Harvest Log]]. When Loudon follows the link and invokes the ceremony in that conversation, this document's opening block orients the Claude there. No prep prompt needed.
+
+*In-conversation invocation:* You are the source. Read back through the full conversation with archivist eyes before proceeding to the next step. For how this threshold crossing works, see Invocation Context above.
 
 For `google_doc`, `local_file`, and other non-chat sources: retrieve the source using the appropriate tool and proceed.
 
-For `claude_chat` sources — **in-conversation invocation:** You are the source. Read back through the full conversation with archivist eyes. Proceed to Step 3.
+**Step 3: Arrive**
 
-For `claude_chat` sources — **external invocation:** Claude cannot access the full transcript of a past conversation from outside it. Give Loudon the direct link from `source_ref` in the [[Harvest Log]]. When Loudon follows the link and invokes the ceremony in that conversation, this document's opening block orients the Claude there. No prep prompt needed.
-
-**Step 3: Settle before mapping**
-
-Do not present a deposit map immediately. The map is synthesis — it requires a settled perspective first. How you settle depends on the invocation context.
+Do not present a deposit map immediately. The map is synthesis — it requires a settled perspective first.
 
 *External invocation (past conversation):* Bring Loudon back into the world of the source. Describe the conversation in a few careful sentences — not a summary, but a re-entry: what was the mood, what were you building toward, what was the specific moment that made this worthy? Ask one genuine question: what do you remember about this? Does anything surprise you reading it back?
 
@@ -171,8 +155,18 @@ Do not present a deposit map immediately. The map is synthesis — it requires a
 
 In both cases: wait for Loudon to respond before proceeding. Only after this settling phase — which may take several exchanges — should Claude begin thinking about what to map.
 
-**Step 4: Map Before Building**
-Before drafting any entries, present a deposit map to Loudon:
+**Step 4: Survey**
+
+Before drafting any entries, present a deposit map to Loudon. The map forces synthesis before production — you understand what you're building before you build it.
+
+A good deposit map is specific about:
+
+- **Entry type** — concept, breakthrough, project, question, spore, source
+- **Pillar affiliations** — which pillars does this touch?
+- **Proposed stage** — seed, sprout, or growing?
+- **Typed links** — named relationship types, not just "connects to." Propose these by entry name — do not read the linked entries.
+- **Lost branches** — paths in the source that weren't followed and deserve naming even if not yet deposited
+- **Existing entries to flag for Weave** — entries in the palace that may want updating once this deposit lands. Flag the entry name and what might change. Do not read or update them now.
 
 > **Deposit Map — H042**
 >
@@ -202,8 +196,12 @@ Draft each new entry following the standard template (see [[README]]). Draft pro
 
 Show each draft to Loudon. Revise as needed.
 
-**Step 6: Write**
+For guidelines on updating existing entries (when to increment activation count, how to handle stage transitions), see [[Deposit Ceremony — Context]].
+
+**Step 6: Plant**
 On approval, write new entries as `.md` files to the palace. Apply updates to existing entries using precise edits (show the before/after for any frontmatter link changes).
+
+**Filing structure:** Palace entries (`.md`) go in the palace root, named `[Theme] — [Document Type].md`. Non-markdown files (HTML tools, interactive documents, images) go in `The Palace/Artifacts/[Theme]/[filename]`. Do not create an `assets/` folder — the canonical folder is `Artifacts/`. Full spec: see [[Hibernation Ceremony]] → Filing Structure for Artifacts.
 
 **Step 7: Close**
 Update the [[Harvest Log]]:
@@ -214,41 +212,7 @@ Update the [[Harvest Log]]:
 
 *For spontaneous deposits not previously in the log:* Create a new log entry for this conversation before closing. Assign the next available harvest ID, set `deposit_status: done` directly (no `pending` phase), and note in `deposit_notes` that this was a spontaneous deposit. Then proceed to Hibernation as normal.
 
-## The Deposit Map
-
-The deposit map is the most important structural step. It forces synthesis before production — you understand what you're building before you build it. A good deposit map is specific about:
-
-- **Entry type** — concept, breakthrough, project, question, spore, source
-- **Pillar affiliations** — which pillars does this touch?
-- **Proposed stage** — seed, sprout, or growing?
-- **Typed links** — named relationship types, not just "connects to." Propose these by entry name — do not read the linked entries.
-- **Lost branches** — paths in the source that weren't followed and deserve naming even if not yet deposited
-- **Existing entries to flag for Weave** — entries in the palace that may want updating once this deposit lands. Flag the entry name and what might change. Do not read or update them now.
-
-## Updating Existing Entries
-
-**When depositing from a live conversation:** defer updates to existing entries. Flag them in the deposit map under "existing entries to flag for Weave" and leave the updates for the next Weave or a dedicated Claude Code session. Do not read existing entries to update them — context preservation takes priority.
-
-**When depositing from Claude Code or a dedicated deposit session** (no rich conversation context to protect): updating existing entries is appropriate. Follow these steps:
-- Increment `activation_count` in the frontmatter
-- Update `last_activated` to current month (YYYY-MM format)
-- Adjust `stage` if the entry has genuinely matured
-- Add new typed links to the frontmatter `links` array only if they represent structural relationships (not casual mentions)
-- Add to body prose in the appropriate section (Cross-Pillar Connections, Open Questions, etc.)
-
-Always show the full frontmatter diff and the specific prose additions before writing.
-
-## Resuming After a Break
-
-A new Claude instance can resume a Deposit session by:
-
-1. Reading [[README - The Palace Guide]]
-2. Reading this entry
-3. Reading [[Harvest Log]] — find the item marked `deposit_status: in-progress` (if any) or the oldest `pending` item
-4. Checking `source_type` — if `claude_chat`, give Loudon the direct link from `source_ref` rather than attempting to retrieve the source directly
-5. Confirming with Loudon: "Ready to deposit H042 — the Kick Drum Paradox session from January 2026. This is a claude_chat source — follow this link and invoke the ceremony there: [link]"
-
-If a prior session got as far as a deposit map but didn't write anything, note that in the log as `deposit_status: in-progress` with the map details in `deposit_notes` so the next session doesn't have to regenerate it.
+---
 
 ## Completion and Handoff to Hibernation
 
@@ -262,50 +226,3 @@ The deposit is complete when all of the following are true — not before:
 When these conditions are met, name them explicitly and ask: "Is there anything left unsaid?"
 
 The moment Loudon confirms nothing remains, the [[Hibernation Ceremony]] begins. The Hibernation Ceremony owns everything from here: the closing note, the queue record, the log update. Follow that ceremony for the closing steps.
-
-## Companion Document Template
-
-The companion document is the meta-layer of a deposit session. It is a palace entry in its own right — type `practice`, stage `seed` — that records not just what was deposited but what the process itself revealed: pace observations, recalibrations, missed branches, and any shifts in how you understand the palace or the work. It is written during the deposit, not after. It exists so that the next operator inheriting this context can understand not just what the palace contains but how it came to contain it.
-
-The companion document is only needed when the deposit session produces genuine process insight — a change in understanding, a recalibration, a named discovery about how to work. Routine deposits that proceed cleanly do not require one.
-
-**Template:**
-
-```yaml
----
-title: "Companion — [Harvest ID] — [Theme]"
-type: practice
-pillars: [practice]
-born: YYYY-MM
-stage: seed
-links:
-  - target: "[[Deposit Ceremony]]"
-    type: emerged-from
-  - target: "[[relevant entry deposited]]"
-    type: connects-to
----
-```
-
-```markdown
-# Companion — [Harvest ID] — [Theme]
-
-## What Was Deposited
-
-A brief, specific list of entries created or updated, with one-line descriptions.
-
-## Process Observations
-
-What did this session reveal about how to do deposit work well? What friction arose? What worked?
-
-## Recalibrations
-
-Any updates to triage judgment, pace understanding, or ceremony procedure that emerged from this session.
-
-## Lost Branches
-
-Paths in the source that weren't followed. Not a to-do list — an honest accounting of what exists but wasn't taken.
-
-## Open Questions
-
-Anything that remains unresolved or unasked from this source.
-```

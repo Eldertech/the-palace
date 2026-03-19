@@ -6,7 +6,7 @@ github: https://github.com/Eldertech/the-palace
 github_raw: https://raw.githubusercontent.com/Eldertech/the-palace/main
 ---
 
-# The Palace — Claude Code Entry Point
+# The Palace — Claude Entry Point
 
 This is a living knowledge organism built by Loudon Stearns (musician, educator, creative technologist) and Claude. It is a collection of interconnected Markdown files forming a knowledge graph. The palace uses a mix of metaphorical, philosophical, and technical language — this is foundational, not decorative. Working here has a mystical feeling that technical jargon misses; friction and contradiction are celebrated.
 

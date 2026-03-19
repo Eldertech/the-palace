@@ -12,10 +12,10 @@ direction:     oldest-first
 last_processed: PP06 (Four Pillars project harvest complete)
 last_datetime:  2026-03-17T22:00:00+00:00
 next_action:   DEPOSIT IN PROGRESS. Three queues active:
-               (1) General queue: resume from H036 (oldest pending).
+               (1) General queue: resume from H049 (oldest pending). H038–H040, H043, H045, H047 are skips.
                (2) Neural Synthesizer project queue: HP01-HP10 all pending. High-priority: HP07 (stick-slip/AP isomorphism ⭐), HP05 (all-pass prism ⭐), HP08 (asymmetric Kuramoto ⭐).
                (3) Four Pillars project queue: PP05-PP06 pending. High-priority: PP06 (4 Pillars crystallization + Quality Manifesto ⭐).
-session_note:  Four Pillars project harvest complete. 6 conversations triaged: 2 worthy, 2 partial, 2 skip. 100% prediction alignment. All project harvest scopes now covered (general, Neural Synthesizer, Four Pillars).
+session_note:  Deposit session 2026-03-18. H036–H046 processed: 4 composted (H036, H037, H042, H046), 2 deposited (H041→[[Excellent Adventure]]+[[Hilaritas Generator]] Learning Architect; H044→[[Striatum]]). Paused at H048 (4D geometry). 3 new palace entries this session.
 ```
 
 ---
@@ -58,6 +58,14 @@ Tracking alignment between Claude predictions and Loudon's decisions to build to
 | 2026-03-17 | harvest | 6 | 2 worthy, 2 partial | Four Pillars project harvest. PP01–PP06. 100% prediction alignment. PP06 (4 Pillars crystallization + Quality Manifesto) is ⭐ high-priority deposit. |
 | 2026-03-17 | deposit | 2 | 1 new entry, 4 existing entries updated | PP05 + PP06. New: [[Quality Manifesto]]. Updated: [[Four Pillars]] (Kick Drum Paradox, Quality Manifesto, collaborative language, AI pedagogy), [[Hilaritas Generator]] (metrics redirector, leverage points), [[Cooperation Yields Agency]] (AI public modeling), [[Palace Quotes]] (2 Loudon quotes). |
 | 2026-03-18 | deposit + hibernation | 3 files | PP05: Meadows and Music. First Hibernation Ceremony test. Created [[Meadows and Music — Leverage Points]], [[Meadows and Music — Origin and Process]], exercise_reflection_tool.html. Frontmatter added here via queue processing. Deposit Ceremony and Hibernation Ceremony redesigned to be self-contained. |
+| 2026-03-18 | deposit | 0 | H036 composted. Source reviewed in session — no palace-worthy material on inspection. Triage optimism confirmed as a pattern risk. Moved to H037. |
+| 2026-03-18 | deposit | 0 | H037 composted. Source reviewed — no philosophical frame survived inspection. Moved to H041 (next pending; H038–H040 are skips). |
+| 2026-03-18 | deposit | 2 files | H041: Vicksburg. Triage note corrected — content unimportant, method was the discovery. Created [[Excellent Adventure]] (keyword: vicksburg). Added Learning Architect section to [[Hilaritas Generator]]. Original batch 3 calibration miss fully resolved. |
+| 2026-03-18 | deposit | 0 | H042 composted. Downstream application of [[Excellent Adventure]]; no new conceptual ground. |
+| 2026-03-18 | deposit | 1 file | H044: Striatum. Created [[Striatum]] sprout entry. Dopamine/hilaritas grounding named. Links seeded to Kuramoto, Action Potential Oscillator, Four Pillars. |
+| 2026-03-18 | deposit | 0 | H046 composted. Practical MCP explainer; no conceptual ground beyond [[Symbiotic Skills]]. |
+| 2026-03-18 | deposit | 0 | H048 composted. Artifact capability test — 4D interest is real but nothing palace-worthy emerged. Concept already held in [[Hyperdimensional Prism]]. |
+| 2026-03-19 | deposit + hibernation | 2 new entries, 1 artifact | H105 (spontaneous). Created [[Oblique Portrait Method]] (practice, sprout) and [[Lateral Access]] (concept, sprout). Dossier HTML archived to Artifacts/Oblique Portrait Method/ (corrected from assets/ — folder mismatch resolved 2026-03-19). Origin: oblique portrait interview session — Claude wrote the prompt, Loudon was the subject. Significant personal material: childhood memory inaccessibility, identity filter, new song composing a relationship to joyful past. |
 
 ---
 
@@ -100,19 +108,19 @@ Tracking alignment between Claude predictions and Loudon's decisions to build to
 | H033 | claude_chat | https://claude.ai/chat/7174cc63-23d1-4f12-b9b7-bcabaa67e002 | 2024-07-01 | Japan AI training copyright law — 2018 exception | 2026-03-17 | skip | Legal explainer, no palace framing | | |
 | H034 | claude_chat | https://claude.ai/chat/9287c54f-2c3c-45e7-95b2-e4862e999eb0 | 2024-07-01 | Tree ID — Pawpaw vs Catalpa | 2026-03-17 | skip | Nature observation, no conceptual content | | |
 | H035 | claude_chat | https://claude.ai/chat/b3ee2466-ef6e-4101-b72e-f718d352ce07 | 2024-07-09 | COMPOSTED - Perplexity in LLMs — cross-entropy loss, logarithms | 2026-03-17 | partial | | pending | Perplexity as model surprise. Cross-entropy mathematical beauty. May feed "Surprise and Learning" concept. |
-| H036 | claude_chat | https://claude.ai/chat/096673ca-76ee-429a-8ca9-6c95ea6438e6 | 2024-07-09 | Interactive log graph tool + early gen~ sine oscillator | 2026-03-17 | worthy | | pending | Interactive visualization as pedagogy (early form of core teaching approach). gen~ sine oscillator — historical RNBO codebox arc origin. |
-| H037 | claude_chat | https://claude.ai/chat/7b25ff98-7cbe-4740-9c69-314786a50c40 | 2024-07-10 | GenAI job displacement — artist economy | 2026-03-17 | partial | | pending | Artist economy: fewer jobs, higher pay for survivors? Human flourishing angle. Extract philosophical frame, skip job-list specifics. |
+| H036 | claude_chat | https://claude.ai/chat/096673ca-76ee-429a-8ca9-6c95ea6438e6 | 2024-07-09 | Interactive log graph tool + early gen~ sine oscillator | 2026-03-17 | worthy | | done | Composted 2026-03-18. Source reviewed — no palace-worthy material found. Triage note was optimistic; actual content did not hold up on inspection. |
+| H037 | claude_chat | https://claude.ai/chat/7b25ff98-7cbe-4740-9c69-314786a50c40 | 2024-07-10 | GenAI job displacement — artist economy | 2026-03-17 | partial | | done | Composted 2026-03-18. Source reviewed — no palace-worthy philosophical frame survived inspection. |
 | H038 | claude_chat | https://claude.ai/chat/406071ce-583f-413a-8acc-c32dd4de8409 | 2024-07-11 | Squatting rights in Massachusetts | 2026-03-17 | skip | Legal lookup, unrelated to palace | | |
 | H039 | claude_chat | https://claude.ai/chat/c85c95e8-d8fe-45ac-b0ee-f34d8d7983e6 | 2024-07-18 | BPM to seconds per beat equation | 2026-03-17 | skip | Quick math, no conceptual depth | | |
 | H040 | claude_chat | https://claude.ai/chat/c85c95e8-d8fe-45ac-b0ee-f34d8d7983e6 | 2024-07-18 | Frontier duplicate of H039 | 2026-03-17 | skip | Duplicate | | |
-| H041 | claude_chat | https://claude.ai/chat/d48b2bbb-f514-4c2e-9609-d2a9dcfa2fef | 2024-10-23 | Vicksburg civil war story — young woman's perspective, Grant's quotes | 2026-03-17 | partial | | pending | Narrative history as teaching method — learning through story. Low priority. |
-| H042 | claude_chat | https://claude.ai/chat/1743c661-e882-4c8c-8cc2-a0bdbc39b1dd | 2024-11-29 | Learning Japanese — hiragana through storytelling | 2026-03-17 | partial | | pending | Learning-through-story as explicit pedagogy method. Connects to Four Pillars practice pillar and autodidact mission. |
+| H041 | claude_chat | https://claude.ai/chat/d48b2bbb-f514-4c2e-9609-d2a9dcfa2fef | 2024-10-23 | Vicksburg civil war story — young woman's perspective, Grant's quotes | 2026-03-17 | partial | | done | Deposited 2026-03-18. Triage note was wrong — content (Vicksburg) was unimportant; the discovery was the method. Created [[Excellent Adventure]] (breakthrough entry, keyword: vicksburg). Added "The Learning Architect" section to [[Hilaritas Generator]]. Original calibration miss (batch 3) now fully resolved with correct reading. |
+| H042 | claude_chat | https://claude.ai/chat/1743c661-e882-4c8c-8cc2-a0bdbc39b1dd | 2024-11-29 | Learning Japanese — hiragana through storytelling | 2026-03-17 | partial | | done | Composted 2026-03-18. Conceptual ground fully covered by [[Excellent Adventure]] deposited same session. |
 | H043 | claude_chat | https://claude.ai/chat/143b5189-26fb-49aa-bc7f-32002f26801d | 2025-01-31 | ASCII art of 'Loudon' | 2026-03-17 | skip | Casual tool test, no conceptual content | | |
-| H044 | claude_chat | https://claude.ai/chat/2de5941e-f836-48ee-8f2d-604f3b31c54f | 2025-05-08 | Striatum and musical rhythm learning — procedural memory, dopamine, beat processing | 2026-03-17 | worthy | | pending | Neuroscience of rhythm learning. Connects to [[Hilaritas Generator]] (dopamine as hilaritas mechanism) and [[Four Pillars]] practice pillar. May seed "Neurological Synthesizer" entry. |
+| H044 | claude_chat | https://claude.ai/chat/2de5941e-f836-48ee-8f2d-604f3b31c54f | 2025-05-08 | Striatum and musical rhythm learning — procedural memory, dopamine, beat processing | 2026-03-17 | worthy | | done | Deposited 2026-03-18. Created [[Striatum]] (sprout). Links seeded to [[Hilaritas Generator]], [[Kuramoto Coupling]], [[Action Potential Oscillator]], [[Four Pillars]]. Dopamine/hilaritas connection named explicitly. |
 | H045 | claude_chat | https://claude.ai/chat/6583b783-42fc-4a76-8ad4-836961f12c3d | 2025-05-18 | Glass vs ceramic — structure, silica | 2026-03-17 | skip | Material science explainer, no palace connection | | |
-| H046 | claude_chat | https://claude.ai/chat/f4970a38-4766-4372-802e-9b3f3a717567 | 2025-12-31 | MCP servers explained — protocol, architecture, use cases | 2026-03-17 | partial | | pending | MCP as tools-pillar infrastructure. Thin — practical rather than conceptual. Low priority. |
+| H046 | claude_chat | https://claude.ai/chat/f4970a38-4766-4372-802e-9b3f3a717567 | 2025-12-31 | MCP servers explained — protocol, architecture, use cases | 2026-03-17 | partial | | done | Composted 2026-03-18. Practical explainer only; no conceptual ground not already held in [[Symbiotic Skills]]. |
 | H047 | claude_chat | https://claude.ai/chat/4dd3e878-730b-414b-ab15-567f35bcdd50 | 2025-12-31 | Claude Projects sharing — tiers, permissions | 2026-03-17 | skip | Product FAQ, no conceptual depth | | |
-| H048 | claude_chat | https://claude.ai/chat/f9c50e77-b95c-4730-b40a-520d59b373d8 | 2025-12-31 | 4D geometry visualization — tesseract, hyper-pyramid, flashlight projection | 2026-03-17 | worthy | | pending | 4D geometry as direct instantiation of [[Hyperdimensional Prism]]. Flashlight projection system makes multi-dimensional projection tangible. Connects to Lissajous visual identity. |
+| H048 | claude_chat | https://claude.ai/chat/f9c50e77-b95c-4730-b40a-520d59b373d8 | 2025-12-31 | 4D geometry visualization — tesseract, hyper-pyramid, flashlight projection | 2026-03-17 | worthy | | done | Composted 2026-03-18. Testing artifact limits — the 4D interest is real but nothing palace-worthy emerged from this experiment. The concept lives in [[Hyperdimensional Prism]] already. |
 | H049 | claude_chat | https://claude.ai/chat/63d9f6cc-e540-4269-a6c0-da98b26f0821 | 2026-01-02 | Convolution, dispersion, inharmonicity, Ohm's Law, logarithmic scaling across fields | 2026-03-17 | worthy | | pending | Dense cross-domain session: inharmonicity formula, Ohm's Law as variable relationship model, logarithmic scaling as universal interface principle. Connects to [[Boundary-Crossing Instruments]], [[Hyperdimensional Prism]]. Multiple deposit-worthy concepts. |
 | H050 | claude_chat | https://claude.ai/chat/bc2b747f-a7be-4346-9fcb-d12a8a809ffa | 2026-01-02 | Inharmonicity explorer v6 — file not found | 2026-03-17 | skip | Short logistical exchange, no new concepts | | |
 | H051 | claude_chat | https://claude.ai/chat/bcf29eda-1c96-4970-b20a-e9ad5f232ca5 | 2026-01-03 | Hard techno press release for 'My Mind' | 2026-03-17 | skip | Craft work for specific track, not palace-level concept | | |
@@ -178,13 +186,13 @@ Items flagged `worthy` or `partial` with `deposit_status: pending`, oldest-first
 
 | Priority | ID | date | topic | deposit_notes summary |
 |---|---|---|---|---|
-| 1 | H036 | 2024-07-09 | Interactive visualization pedagogy + gen~ origin | [[Four Pillars]], RNBO |
-| 6 | H037 | 2024-07-10 | Artist economy in AI era | Human flourishing angle |
-| 7 | H041 | 2024-10-23 | Narrative history as teaching method | Thin — pedagogy angle |
-| 8 | H042 | 2024-11-29 | Learning-through-story as pedagogy | [[Four Pillars]] practice pillar |
-| 9 | H044 | 2025-05-08 | Striatum and musical rhythm learning | [[Hilaritas Generator]], neurological synthesizer |
-| 10 | H046 | 2025-12-31 | MCP as tools-pillar infrastructure | [[Symbiotic Skills]] — low priority |
-| 11 | H048 | 2025-12-31 | 4D geometry — tesseract, hyper-pyramid | [[Hyperdimensional Prism]], visual identity |
+| ~~1~~ | ~~H036~~ | ~~2024-07-09~~ | ~~Interactive visualization pedagogy + gen~ origin~~ | Composted 2026-03-18 |
+| ~~6~~ | ~~H037~~ | ~~2024-07-10~~ | ~~Artist economy in AI era~~ | Composted 2026-03-18 |
+| ~~7~~ | ~~H041~~ | ~~2024-10-23~~ | ~~Narrative history as teaching method~~ | Deposited 2026-03-18. Created [[Excellent Adventure]], updated [[Hilaritas Generator]]. |
+| ~~8~~ | ~~H042~~ | ~~2024-11-29~~ | ~~Learning-through-story as pedagogy~~ | Composted 2026-03-18. Covered by [[Excellent Adventure]]. |
+| ~~9~~ | ~~H044~~ | ~~2025-05-08~~ | ~~Striatum and musical rhythm learning~~ | Deposited 2026-03-18. Created [[Striatum]]. |
+| ~~10~~ | ~~H046~~ | ~~2025-12-31~~ | ~~MCP as tools-pillar infrastructure~~ | Composted 2026-03-18. |
+| ~~11~~ | ~~H048~~ | ~~2025-12-31~~ | ~~4D geometry — tesseract, hyper-pyramid~~ | Composted 2026-03-18. |
 | 12 | H049 | 2026-01-02 | Inharmonicity, Ohm's Law, logarithmic scaling | [[Boundary-Crossing Instruments]] — multiple concepts |
 | 13 | H052 | 2026-01-03 | Terminological clarity as pedagogy principle | Teaching philosophy |
 | 14 | H053 | 2026-01-05 | Short Story origin — cooperation yields agency | ⭐ [[Cooperation Yields Agency]] explicit origin |
@@ -240,6 +248,7 @@ Items flagged `worthy` or `partial` with `deposit_status: pending`, oldest-first
 | 64 | HP10 | 2026-03-09 | Project guidelines update — Four Pillars skill integration into Neural Synthesizer project | Infrastructure record; deposit as historical note only; very low priority |
 | 65 | PP05 | 2026-01-15 | Kick drum + Meadows leverage points in music — feedback delay, journaling as paradigm lever | done — Full deposit via Hibernation Ceremony. Created: [[Meadows and Music — Leverage Points]] (11 exercises 0-10), [[Meadows and Music — Origin and Process]] (alignment method + process discoveries), exercise_reflection_tool.html artifact. First successful Hibernation Ceremony. |
 | 66 | PP06 | 2026-01-20 | ⭐ 4 Pillars crystallization + Quality Manifesto + AI-as-human-betterment | done — [[Quality Manifesto]] entry created; [[Four Pillars]] updated (collaborative language, AI pedagogy, canonical example); [[Hilaritas Generator]] updated (metrics redirector); [[Cooperation Yields Agency]] updated (public modeling section); two quotes added to [[Palace Quotes]] |
+| 67 | H105 | 2026-03-19 | Spontaneous deposit: Oblique Portrait Method + Lateral Access. Claude-authored interview prompt, Loudon as subject. Childhood memory access, identity filter, new song. | done — created [[Oblique Portrait Method]] (practice, sprout) + [[Lateral Access]] (concept, sprout). Dossier HTML archived to assets/. Significant personal material — see entry body. |
 
 ---
 
