@@ -67,7 +67,7 @@ For full ceremony instructions, see [[Substrate Skill]].
 
 *Updated 2026-03-19 following first Weave ceremony.*
 
-The palace has 48 entries as of this update. The first full Weave was completed 2026-03-19, producing a topology report, 6 Tier 1 link formalizations, 4 Tier 2 semantic proposals, 3 hub promotions, and 3 stage transitions.
+The palace has 48 entries as of this update. The first full Weave was completed 2026-03-19, producing a topology report, 6 unsung paths formalized, 4 new introductions proposed, 3 hub promotions, and 3 stage transitions.
 
 Hub nodes: [[Cooperation Yields Agency]], [[Four Pillars]], [[Hilaritas Generator]], [[Kuramoto Coupling]], [[Palace Ceremonies]], [[Palace Philosophies]], [[Spinoza Conatus]]
 Most connected: [[Cooperation Yields Agency]] (~26 links), [[Kuramoto Coupling]] (~24), [[Four Pillars]] (~23), [[Hilaritas Generator]] (~21), [[Spinoza Conatus]] (~18)

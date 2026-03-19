@@ -206,7 +206,7 @@ Before presenting any draft entry for final approval, scan its body text for:
 2. Cross-Domain Resonance section headers that name a palace entry — ensure they use `[[Entry Name]]` format
 3. `[[wikilinks]]` in body text that are conceptually significant enough to also appear as YAML frontmatter links — add them
 
-An entry that arrives with its body-text links formalized enters the palace fully wired. This prevents the Weave from having to do Tier 1 cleanup work that could have been done at deposit time — the two minutes here saves the Weave from surfacing gaps that were always visible.
+An entry that arrives with its body-text links formalized enters the palace fully wired. This prevents the Weave from having to do unsung paths cleanup work that could have been done at deposit time — the two minutes here saves the Weave from surfacing gaps that were always visible.
 
 **Step 6: Plant**
 On approval, write new entries as `.md` files to the palace. Apply updates to existing entries using precise edits (show the before/after for any frontmatter link changes).
@@ -221,6 +221,18 @@ Update the [[Harvest Log]]:
 - Add a line to `## Session History`
 
 *For spontaneous deposits not previously in the log:* Create a new log entry for this conversation before closing. Assign the next available harvest ID, set `deposit_status: done` directly (no `pending` phase), and note in `deposit_notes` that this was a spontaneous deposit. Then proceed to Hibernation as normal.
+
+**Step 7.5: Single-Doc Worker** *(recommended)*
+
+After closing the log, run the Single-Doc Worker on the newly deposited entry. This wires the new entry to its closest peers before it has a chance to sit unlinked until the next Weave.
+
+Say: **"Run the single-doc worker on [Entry Name]"**
+
+Claude fetches the entry and its immediate neighbors via GitHub raw URLs, runs the unsung paths audit and proposes up to 3 new introductions scoped to that entry, and presents a clean proposal table for approval. No code required — this runs in any claude.ai session.
+
+If the deposit is happening in a Cowork session with filesystem access, confirmed links can be written immediately. Otherwise, note the proposed links in the conversation for queue processing at the next Weave.
+
+This step is optional but strongly recommended. The deposit plants the seed; the Single-Doc Worker wires it in. See [[Swarm Weave]] for the full architecture.
 
 ---
 

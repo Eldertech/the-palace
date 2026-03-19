@@ -57,13 +57,13 @@ layer and filesystem write access.
 
 **When to run:** Monthly, in place of the single-agent Weave. Becomes the default
 Weave once palace exceeds ~50 entries, or the single-agent Weave misses obvious
-Tier 1 connections on two consecutive cycles.
+unsung paths on two consecutive cycles.
 
 ### Mode 2 — Single-Doc Worker (claude.ai, after any Deposit)
 
 A lightweight single-worker run scoped to one newly deposited entry. Runs from
 claude.ai using a prompt template. Takes one entry and its immediate neighbors,
-produces Tier 1 + Tier 2 connection proposals, and presents them to Loudon for
+produces unsung paths + new introductions proposals, and presents them to Loudon for
 approval — rich linking work without needing Claude Code or parallel execution.
 
 **When to run:** Immediately after any Deposit Ceremony, before the next Weave
@@ -90,7 +90,7 @@ USER:
 [full text of entry, including YAML frontmatter]
 
 ## Known palace entries (titles only)
-[list of all entry titles — for Tier 1 matching only]
+[list of all entry titles — for unsung paths matching only]
 
 ## Immediate neighbors (full text)
 [full text of each entry linked in YAML frontmatter, ±1 hop]
@@ -99,19 +99,22 @@ USER:
 [SCHEMA §4 — link types and definitions]
 
 ## Your task
-1. TIER 1 — Literal Link Audit:
+1. UNSUNG PATHS — Literal Link Audit:
    Scan the body text of your assigned entry for plain-text mentions of
    known entry titles that lack [[wikilink]] syntax. For each finding,
    report: the phrase used, the entry it refers to, whether the location
    is structurally significant (Cross-Domain Resonance heading, bold
-   term, sentence-level reference), and a proposed link type.
+   term, sentence-level reference), and a proposed link type. These are
+   mandatory — the prose already asserts the connection; the YAML just
+   hasn't caught up. Flag all of them.
 
-2. TIER 2 — Semantic Proposals:
+2. NEW INTRODUCTIONS — Semantic Proposals:
    Propose up to three connections between your entry and other palace
    entries that are NOT already named in either entry's body text. These
    are connections visible only from the topology — patterns your
    immediate reading surfaces. For each: name both entries, propose link
-   type and direction, give one sentence of reasoning.
+   type and direction, give one sentence of reasoning. Maximum 3 per
+   worker — the coordinator applies the palace-wide rate limit.
 
 3. METADATA:
    Flag any missing or stale fields (last_activated, activation_count,
@@ -140,8 +143,8 @@ The coordinator's tasks:
    hub; propose stage promotion
 4. **Build the Topology Report** — using the Weave Ceremony's report format,
    populated from coordinator synthesis, not re-reading every file
-5. **Present to Loudon** — staged approval: Tier 1 (maintenance, near-zero
-   deliberation), then Tier 2 (semantic proposals, creative review)
+5. **Present to Loudon** — staged approval: unsung paths first (navigation hygiene,
+   formalize all), then new introductions (creative review, max 5 palace-wide)
 
 The coordinator does not re-read every entry. It reasons from reports. This
 is the merge coordinator in distributed version control — not the smartest
@@ -184,7 +187,7 @@ await presentToLoudon(topologyReport);
 ```json
 {
   "entry_title": "Lateral Access",
-  "tier1": [
+  "unsung_paths": [
     {
       "body_phrase": "The Kuramoto model",
       "references_entry": "Kuramoto Coupling",
@@ -194,7 +197,7 @@ await presentToLoudon(topologyReport);
       "proposed_direction": "bidirectional"
     }
   ],
-  "tier2": [
+  "new_introductions": [
     {
       "entry_a": "Lateral Access",
       "entry_b": "Physical Modeling Synthesis",
@@ -256,9 +259,9 @@ on one newly deposited entry.
  — Section 4 only]
 
 ## Task
-Run Tier 1 (literal link audit) and Tier 2 (up to 3 semantic proposals) on the
-assigned entry only. Format as a clean proposal table. No JSON — readable prose
-for Loudon's approval.
+Run the unsung paths audit and propose up to 3 new introductions on the assigned
+entry only. Format as a clean proposal table. No JSON — readable prose for
+Loudon's approval.
 ```
 
 ---
@@ -290,8 +293,8 @@ from the ground up. The learning arc:
 
 **Step 1 — The basic API call from Claude Code**
 Claude Code can make Anthropic API calls programmatically via Node.js. Start
-with a single API call that sends a palace entry as context and asks for a
-Tier 1 audit. Read the response. This is one worker, not a swarm.
+with a single API call that sends a palace entry as context and asks for an
+unsung paths audit. Read the response. This is one worker, not a swarm.
 
 **Step 2 — Structured output (JSON mode)**
 Modify the prompt to return JSON only. Parse the response. This is the worker
