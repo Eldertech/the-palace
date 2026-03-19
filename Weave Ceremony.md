@@ -3,6 +3,8 @@ title: "Weave Ceremony"
 type: practice
 pillars: [practice, tools, philosophy]
 born: 2026-03
+last_activated: 2026-03
+activation_count: 1
 stage: mature
 links:
   - target: "[[Palace Ceremonies]]"
@@ -18,6 +20,8 @@ links:
   - target: "[[Kuramoto Coupling]]"
     type: mirrors
   - target: "[[Weave Ceremony — Context]]"
+    type: spawned
+  - target: "[[Swarm Weave]]"
     type: spawned
 ---
 

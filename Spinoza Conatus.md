@@ -1,6 +1,6 @@
 ---
 title: "Spinoza Conatus"
-type: concept
+type: hub
 pillars: [philosophy]
 born: 2025-06
 last_activated: 2026-03
@@ -26,6 +26,8 @@ links:
     type: mirrors
   - target: "[[Meaning and the Link (2014)]]"
     type: mirrors
+  - target: "[[Symbiotic Skills]]"
+    type: connects-to
 ---
 
 # Spinoza Conatus

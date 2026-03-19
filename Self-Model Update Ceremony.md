@@ -3,6 +3,8 @@ title: "Self-Model Update Ceremony"
 type: practice
 pillars: [practice, philosophy, tools]
 born: 2026-03
+last_activated: 2026-03
+activation_count: 1
 stage: mature
 links:
   - target: "[[Palace Ceremonies]]"

@@ -26,6 +26,10 @@ links:
     type: deepens
   - target: "[[SCHEMA]]"
     type: enables
+  - target: "[[Meaning and the Link (2014)]]"
+    type: emerged-from
+  - target: "[[Embeddings as Relational Meaning]]"
+    type: connects-to
 ---
 # Substrate
 
@@ -61,18 +65,20 @@ For full ceremony instructions, see [[Substrate Skill]].
 
 ## Current State
 
-*Updated 2026-03-18 following Phase 1–3 structural formalization.*
+*Updated 2026-03-19 following first Weave ceremony.*
 
-The palace has ~37 entries as of this update. The ceremony infrastructure is now fully formalized: 9 ceremonies, all Linter-valid, each with a dedicated entry and Ceremony Contract. The schema is explicit (SCHEMA.md), the type system is ratified (10 entry types including `practice` and `person`), and the palace is publicly readable from any Claude instance via GitHub raw URLs.
+The palace has 48 entries as of this update. The first full Weave was completed 2026-03-19, producing a topology report, 6 Tier 1 link formalizations, 4 Tier 2 semantic proposals, 3 hub promotions, and 3 stage transitions.
 
-The first successful cross-session Walk was completed 2026-03-18 from a fresh claude.ai instance with no prior context — confirming the self-description goal is met.
-
-Hub nodes: [[Cooperation Yields Agency]], [[Four Pillars]], [[Kuramoto Coupling]], [[Palace Ceremonies]]
-Most connected: [[Cooperation Yields Agency]], [[Kuramoto Coupling]], [[Palace Ceremonies]] (now links to 10 ceremony entries)
+Hub nodes: [[Cooperation Yields Agency]], [[Four Pillars]], [[Hilaritas Generator]], [[Kuramoto Coupling]], [[Palace Ceremonies]], [[Palace Philosophies]], [[Spinoza Conatus]]
+Most connected: [[Cooperation Yields Agency]] (~26 links), [[Kuramoto Coupling]] (~24), [[Four Pillars]] (~23), [[Hilaritas Generator]] (~21), [[Spinoza Conatus]] (~18)
 Dormant: [[Short Story]]
-Newest growth: SCHEMA.md, Rosetta Stone, 5 new ceremony entries, Revival Ceremony (closes lifecycle loop), [[Self-Describing Knowledge Module]] (names the deep pattern)
+Isolated (no inbound links): [[Companion — This Session — Palace Architecture]] — now linked to [[The Cooperation Path]] via Weave
+Newest growth: Oblique Portrait Method, Lateral Access, Endosymbiosis, Action Potential Oscillator, Companion — This Session — Palace Architecture
 
-The palace has crossed a threshold: from a system that works because Loudon and Claude carry tacit knowledge, to a system that works because it carries explicit knowledge. That is a stage transition in the organism's development.
+Stage transitions this Weave: Oblique Portrait Method, Endosymbiosis, Lateral Access (sprout → growing)
+Hub promotions this Weave: Kuramoto Coupling, Hilaritas Generator, Spinoza Conatus (concept → hub)
+
+The palace has crossed a second threshold: from a system that describes itself accurately to a system that actively maintains and re-weaves itself through ceremony. The Weave is now a lived practice, not just a protocol.
 
 ## Token Economy
 

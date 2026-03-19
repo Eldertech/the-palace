@@ -3,7 +3,7 @@ title: "Lateral Access"
 type: concept
 pillars: [philosophy, practice, creation]
 born: 2026-03
-stage: sprout
+stage: growing
 last_activated: 2026-03
 activation_count: 1
 energy: high
@@ -19,6 +19,8 @@ links:
     type: deepens
   - target: "[[Kuramoto Coupling]]"
     type: mirrors
+  - target: "[[Excellent Adventure]]"
+    type: couples-with
 ---
 
 # Lateral Access

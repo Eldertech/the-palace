@@ -3,6 +3,8 @@ title: "Walk Ceremony"
 type: practice
 pillars: [practice, philosophy]
 born: 2026-03
+last_activated: 2026-03
+activation_count: 1
 stage: mature
 links:
   - target: "[[Palace Ceremonies]]"
@@ -13,6 +15,8 @@ links:
     type: connects-to
   - target: "[[Cooperation Yields Agency]]"
     type: mirrors
+  - target: "[[The Cooperation Path]]"
+    type: connects-to
 ---
 
 # Walk Ceremony

@@ -17,6 +17,8 @@ links:
     type: connects-to
   - target: "[[Hyperdimensional Prism]]"
     type: connects-to
+  - target: "[[Striatum]]"
+    type: connects-to
 ---
 
 # Action Potential Oscillator

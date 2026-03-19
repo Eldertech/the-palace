@@ -1,6 +1,6 @@
 ---
 title: "Kuramoto Coupling"
-type: concept
+type: hub
 pillars: [tools, philosophy, creation]
 born: 2025-11
 last_activated: 2026-03

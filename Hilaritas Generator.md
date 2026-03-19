@@ -1,6 +1,6 @@
 ---
 title: "Hilaritas Generator"
-type: concept
+type: hub
 pillars: [practice, philosophy, creation]
 born: 2025-09
 last_activated: 2026-03
@@ -26,6 +26,8 @@ links:
     type: spawned
   - target: "[[Striatum]]"
     type: deepens
+  - target: "[[Meadows and Music — Leverage Points]]"
+    type: connects-to
 ---
 # Hilaritas Generator
 

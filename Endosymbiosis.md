@@ -5,7 +5,7 @@ pillars: [philosophy, tools]
 born: 2026-03
 last_activated: 2026-03
 activation_count: 3
-stage: sprout
+stage: growing
 links:
   - target: "[[Cooperation Yields Agency]]"
     type: mirrors
@@ -21,6 +21,8 @@ links:
     type: connects-to
   - target: "[[Deposit Ceremony]]"
     type: mirrors
+  - target: "[[Symbiotic Skills]]"
+    type: connects-to
 ---
 
 # Endosymbiosis

@@ -18,6 +18,8 @@ links:
     type: connects-to
   - target: "[[Spinoza Conatus]]"
     type: mirrors
+  - target: "[[Palace Ceremonies]]"
+    type: enables
 ---
 
 # Meaning and the Link (2014)

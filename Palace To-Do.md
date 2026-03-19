@@ -58,6 +58,9 @@ Organized into sections by type. Items move off this list when they become entri
 
 ## Structural Improvements
 
+- [ ] **Build the Swarm Weave** ⭐ — Replace the single-agent [[Weave Ceremony]] with a colony architecture: parallel worker sub-agents (one per entry, scoped context) + a coordinator that synthesizes and de-duplicates. Two modes: Full Swarm Weave (Claude Code, monthly) and Single-Doc Worker (claude.ai, post-deposit). Full spec and learning path in [[Swarm Weave]]. Learning arc: single API call → JSON output → sequential workers → `Promise.all()` parallel swarm → coordinator synthesis → write-back on approval → ceremony-ified. *Prerequisite: palace at ~50 entries or single-agent Weave misses obvious Tier 1 connections on two consecutive cycles. Single-Doc Worker can be built and used immediately.* ⭐ *HIGH PRIORITY for Single-Doc Worker mode*
+
+
 - [x] **Phase 1 — Schema formalization** — Complete 2026-03-18. SCHEMA.md created (type system, link ontology, ceremony linter, schema change protocol). `practice` and `person` types ratified. CLAUDE.md versioned at v1.0. Rosetta Stone deposited. Commits: b420350 (pre-snapshot), d1f62f5 (v1.0), 3a4099a (v1.1 — Linter relocated to Palace Ceremonies).
 
 - [x] **Phase 2 — Ceremony audit and formalization** — Complete 2026-03-18. All ceremonies pass the Ceremony Linter. Every ceremony has a dedicated entry with Ceremony Contract (trigger, access vectors, preconditions, postconditions, failure mode, git commit). Types corrected: Harvest/Deposit/Hibernation → `practice`. Git commit steps added to all ceremonies. Weave queue processing formalized as Step 0. Companion document template added to Deposit Ceremony. Walk, Weave, Spore Check, Self-Model Update given dedicated entries. Revival Ceremony created — closes the dormancy lifecycle loop. Rosetta Stone ceremony table updated with all 9 ceremonies. CLAUDE.md at v1.4. Commits: 70489de (v1.2), fa8fe91 (v1.3), 47ce436 (v1.4).

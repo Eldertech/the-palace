@@ -13,6 +13,8 @@ links:
     type: connects-to
   - target: "[[SCHEMA]]"
     type: connects-to
+  - target: "[[The Cooperation Path]]"
+    type: connects-to
 ---
 
 # Companion — This Session — Palace Architecture
