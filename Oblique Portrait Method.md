@@ -18,6 +18,8 @@ links:
     type: spawned
   - target: "[[Four Pillars]]"
     type: connects-to
+  - target: "[[Excellent Adventure]]"
+    type: mirrors
 ---
 
 # Oblique Portrait Method

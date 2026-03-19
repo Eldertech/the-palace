@@ -5,7 +5,7 @@ pillars: [philosophy, creation, practice, tools]
 born: 2026-03
 last_activated: 2026-03
 activation_count: 1
-stage: seed
+stage: sprout
 links:
   - target: "[[Short Story]]"
     type: connects-to

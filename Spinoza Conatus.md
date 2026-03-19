@@ -22,6 +22,8 @@ links:
     type: connects-to
   - target: "[[Hyperdimensional Prism]]"
     type: connects-to
+  - target: "[[Quality Manifesto]]"
+    type: mirrors
   - target: "[[Meaning and the Link (2014)]]"
     type: mirrors
 ---

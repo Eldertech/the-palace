@@ -18,6 +18,8 @@ links:
     type: connects-to
   - target: "[[Four Pillars]]"
     type: connects-to
+  - target: "[[Excellent Adventure]]"
+    type: deepens
 ---
 
 # Striatum

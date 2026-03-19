@@ -12,7 +12,7 @@ links:
   - target: "[[Hilaritas Generator]]"
     type: connects-to
   - target: "[[Cooperation Yields Agency]]"
-    type: connects-to
+    type: deepens
   - target: "[[Meadows and Music — Leverage Points]]"
     type: couples-with
 ---

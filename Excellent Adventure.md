@@ -19,6 +19,8 @@ links:
     type: connects-to
   - target: "[[Cooperation Yields Agency]]"
     type: connects-to
+  - target: "[[Oblique Portrait Method]]"
+    type: mirrors
 ---
 
 # Excellent Adventure

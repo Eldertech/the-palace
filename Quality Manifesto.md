@@ -13,6 +13,8 @@ links:
     type: enables
   - target: "[[Cooperation Yields Agency]]"
     type: connects-to
+  - target: "[[Spinoza Conatus]]"
+    type: mirrors
 ---
 
 # Quality Manifesto

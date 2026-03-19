@@ -5,7 +5,7 @@ pillars: [philosophy]
 born: 2026-03
 last_activated: 2026-03
 activation_count: 2
-stage: sprout
+stage: growing
 links:
   - target: "[[Spinoza Conatus]]"
     type: deepens
