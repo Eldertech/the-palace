@@ -222,17 +222,17 @@ Update the [[Harvest Log]]:
 
 *For spontaneous deposits not previously in the log:* Create a new log entry for this conversation before closing. Assign the next available harvest ID, set `deposit_status: done` directly (no `pending` phase), and note in `deposit_notes` that this was a spontaneous deposit. Then proceed to Hibernation as normal.
 
-**Step 7.5: Single-Doc Worker** *(recommended)*
+**Step 7.5: Palace Worker** *(recommended)*
 
-After closing the log, run the Single-Doc Worker on the newly deposited entry. This wires the new entry to its closest peers before it has a chance to sit unlinked until the next Weave.
+After closing the log, run a Palace Worker on the newly deposited entry. This wires the new entry to its closest peers before it has a chance to sit unlinked until the next Weave.
 
-Say: **"Run the single-doc worker on [Entry Name]"**
+Say: **"Run a palace worker on [Entry Name]"**
 
 Claude fetches the entry and its immediate neighbors via GitHub raw URLs, runs the unsung paths audit and proposes up to 3 new introductions scoped to that entry, and presents a clean proposal table for approval. No code required — this runs in any claude.ai session.
 
 If the deposit is happening in a Cowork session with filesystem access, confirmed links can be written immediately. Otherwise, note the proposed links in the conversation for queue processing at the next Weave.
 
-This step is optional but strongly recommended. The deposit plants the seed; the Single-Doc Worker wires it in. See [[Swarm Weave]] for the full architecture.
+This step is optional but strongly recommended. The deposit plants the seed; the Palace Worker wires it in. See [[Swarm Weave]] for the full architecture.
 
 ---
 

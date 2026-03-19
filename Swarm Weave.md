@@ -59,7 +59,7 @@ layer and filesystem write access.
 Weave once palace exceeds ~50 entries, or the single-agent Weave misses obvious
 unsung paths on two consecutive cycles.
 
-### Mode 2 — Single-Doc Worker (claude.ai, after any Deposit)
+### Mode 2 — Palace Worker (claude.ai, after any Deposit)
 
 A lightweight single-worker run scoped to one newly deposited entry. Runs from
 claude.ai using a prompt template. Takes one entry and its immediate neighbors,
@@ -67,7 +67,7 @@ produces unsung paths + new introductions proposals, and presents them to Loudon
 approval — rich linking work without needing Claude Code or parallel execution.
 
 **When to run:** Immediately after any Deposit Ceremony, before the next Weave
-cycle. The deposit plants the seed; the Single-Doc Worker wires it to its closest
+cycle. The deposit plants the seed; the Palace Worker wires it to its closest
 peers before it has a chance to sit unlinked.
 
 ---
@@ -219,7 +219,7 @@ await presentToLoudon(topologyReport);
 
 ---
 
-## Architecture: Single-Doc Worker (Mode 2)
+## Architecture: Palace Worker (Mode 2)
 
 This is a prompt template, not a code architecture. It runs in any claude.ai
 session. It exists so that Loudon can wire a freshly deposited entry to its
@@ -228,7 +228,7 @@ closest peers immediately, without waiting for the next full Weave cycle.
 ### When to invoke
 
 After any [[Deposit Ceremony]], before the conversation closes. Loudon says:
-**"Run the single-doc worker on [Entry Name]"**
+**"Run a palace worker on [Entry Name]"**
 
 Claude fetches the entry via GitHub raw URL, fetches its immediate neighbors,
 fetches the palace entry list from SCHEMA or the Substrate, and runs the worker
@@ -240,8 +240,8 @@ Loudon has filesystem access).
 ### Prompt template (stored in this entry for reuse)
 
 ```
-You are running a Single-Doc Worker for The Palace — a focused connection audit
-on one newly deposited entry.
+You are a palace worker running a focused connection audit on one newly deposited
+entry.
 
 ## Assigned entry
 [fetch: https://raw.githubusercontent.com/Eldertech/the-palace/main/[EntryName].md]
@@ -330,11 +330,98 @@ using the Ceremony Linter. This is now a production palace tool.
 
 ---
 
+## Phase 2: Pheromone Trails and Worker Differentiation
+
+*This section describes work that begins only after the basic swarm is running and
+producing clean output. Do not build Phase 2 until Phase 1 is ceremony-ified.*
+
+Once the swarm is functioning, it will begin to know things that no single prior
+agent has known: which entries consistently generate conflicting worker reports,
+which produce unusually rich new introductions, which hub nodes keep appearing
+in reports from workers not assigned to them, which entries yield thin output
+cycle after cycle. This knowledge belongs in the palace — not as human annotation,
+but as trails written by the swarm itself.
+
+### The Pheromone Trail
+
+After each Swarm Weave cycle, the coordinator writes a `worker_trace` block back
+to entries where something notable happened:
+
+```yaml
+worker_trace:
+  last_weave: 2026-04
+  finding: "Three independent workers flagged connection to Physical Modeling Synthesis"
+  status: unresolved
+  signal_strength: high
+```
+
+On the next cycle, the worker assigned to that entry reads this trace before it
+begins. A high-strength unresolved trace means: look here first. A resolved trace
+clears itself. No worker needs to remember what the previous swarm found — the
+memory lives in the entry itself. This is stigmergy in the exact biological sense:
+the environment carries marks left by prior agents, and those marks shape the
+behavior of future agents.
+
+### Worker Differentiation (Epigenetics)
+
+As traces accumulate over multiple cycles, the coordinator can begin writing
+`worker_profile` blocks — not as human pre-annotation, but as swarm-derived
+instruction:
+
+```yaml
+worker_profile:
+  depth: deep
+  scope: pillar
+  note: "Cross-pillar hub — three prior cycles produced conflicting link-type proposals. Prioritize disambiguation over new introductions."
+```
+
+This profile is written *by the coordinator* based on observed swarm behavior,
+not declared in advance by any single agent. An entry earns its profile by
+demonstrating complexity. The differentiation is emergent, not imposed.
+
+All workers are the same base model — the same genome. What differs is the local
+signal environment they receive: the assigned entry, its neighbors, and whatever
+traces prior cycles have left in the frontmatter. This is the epigenetics model:
+same DNA, different expression, shaped by local environment.
+
+### The Biological Parallels, Made Precise
+
+**Ant colony stigmergy** — pheromone concentration on a trail reflects how many
+ants have found it useful. High-signal entries in the palace attract deeper worker
+attention in future cycles because prior cycles left strong traces. Low-signal
+entries get lighter treatment — the trail fades.
+
+**Developmental biology / morphogen gradients** — a stem cell's fate is determined
+by what it reads in its local chemical environment, not by central instruction.
+Workers read their local environment (entry + neighbors + traces) and express
+different behavior accordingly.
+
+**LangGraph routing** — in agent graph frameworks, nodes route themselves into
+different behavioral branches based on local state. The `worker_profile` is the
+state. The worker reads it and routes: deep analysis vs. shallow metadata check,
+local scope vs. pillar-wide search.
+
+**Kuramoto threshold** — entries below a certain `activation_count` or `energy`
+get a minimal worker automatically, without needing an explicit profile. The
+coupling is below threshold; don't attempt synchrony. This can be derived from
+existing frontmatter fields — the pheromone concentration is already in the page,
+if you know how to read it.
+
+### What the Swarm Should Never Do
+
+No single pre-pass should annotate `worker_profile` across all entries before the
+swarm runs. That reintroduces the centralized queen. The differentiation earns
+itself through cycles. The trail is written by the colony's accumulated experience,
+not declared by any prior agent who thought they knew in advance which entries were
+complex. They didn't. The swarm will find out.
+
+---
+
 ## Open Questions
 
 - **What is the right worker scope?** One worker per entry is the cleanest model.
   An alternative is one worker per *cluster* (entries sharing a pillar or a hub
-  node). Clusters might produce richer Tier 2 proposals but require a clustering
+  node). Clusters might produce richer new introductions but require a clustering
   step before worker dispatch.
 - **How should the coordinator handle disagreement between workers?** If worker A
   proposes A→B as `mirrors` and worker B proposes B→A as `deepens`, present both
@@ -342,9 +429,9 @@ using the Ceremony Linter. This is now a production palace tool.
 - **Rate limits:** The Anthropic API rate-limits by tokens per minute. A 30-worker
   swarm with medium-context entries may hit limits. Build in backoff/retry from
   the start.
-- **When does the Single-Doc Worker become the default post-deposit step?** Once
-  built and tested, it should probably be added to the [[Deposit Ceremony]] as a
-  recommended closing action — Step 7.5, before Hibernation.
+- **When does the Palace Worker become the default post-deposit step?** It has
+  been added to the [[Deposit Ceremony]] as Step 7.5. The question becomes: when
+  is it built and tested enough to be non-optional?
 - **Should the coordinator produce a diff against the previous Weave's topology
   report?** Tracking what changed cycle-to-cycle would reveal the palace's growth
   arc over time.
