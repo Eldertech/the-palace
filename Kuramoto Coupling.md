@@ -26,6 +26,8 @@ links:
     type: mirrors
   - target: "[[Action Potential Oscillator]]"
     type: couples-with
+  - target: "[[Lateral Access]]"
+    type: mirrors
 ---
 # Kuramoto Coupling
 

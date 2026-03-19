@@ -49,6 +49,7 @@ For philosophical reflection on the Weave, see [[Weave Ceremony — Context]].
 **Postconditions:**
 1. `_hibernation_queue/` has been fully processed — all queue files read, log updated, queue files deleted
 2. A topology report has been produced covering: total entry count, hub nodes, orphan entries, most-connected nodes, cross-pillar bridges, dormant entries, stale metadata
+2a. A Tier 1 (literal link) audit has been completed: all plain-text body references to known entry titles have been surfaced and either formalized as YAML frontmatter links or flagged for deliberate exclusion with a one-line reason.
 3. At least three candidate connections have been proposed (new typed links between existing entries)
 4. Any confirmed metadata updates have been written to entry files
 5. Git commit made: `Weave — [date] — [N links added, N entries promoted, N orphans flagged]`
@@ -83,6 +84,24 @@ Read every `.md` file in the palace root and any subdirectories. Build an intern
 - All entries with no outbound typed links (orphans)
 - All entries with no inbound typed links (isolated — no one points to them)
 
+**Step 1b: Literal Link Audit (Tier 1)**
+
+From the full-text read completed in Step 1, build a list of all known entry titles in the palace. Then scan every entry's body text for:
+
+1. Plain-text mentions of a known entry title that lack `[[wikilink]]` syntax — e.g., "the Kuramoto model" where "Kuramoto Coupling" is a known entry
+2. `[[wikilinks]]` in body text that do not have a corresponding YAML frontmatter link
+
+For each finding, record:
+- Which entry contains the body-text mention
+- Which known entry is being referenced
+- Whether the mention is in a structurally significant location (Cross-Domain Resonance heading, bold term, explicit sentence-level reference)
+
+These are **Tier 1 candidates** — connections already stated in prose, not yet registered in the graph. They require near-zero deliberation: the intellectual work is done; only the structural registration is missing.
+
+Collect all Tier 1 candidates and add them to the Topology Report. They are resolved in Step 3a, before any creative (Tier 2) proposals.
+
+If operating in analysis-only mode (GitHub raw URLs, no filesystem write access), still complete this audit and surface findings — note that write operations require a full-access session.
+
 **Step 2: Produce the topology report**
 
 Report on:
@@ -96,9 +115,20 @@ Report on:
 - **Stale metadata** — entries missing `last_activated`, `activation_count`, or with stage that seems wrong given content.
 - **Composting candidates** — entries at `stage: composting` from a prior Weave. Confirm deletion or revive.
 
-**Step 3: Propose new typed links**
+**Step 3a: Formalize literal links (Tier 1)**
 
-Identify at least three pairs of entries that should be connected but aren't. For each proposed link:
+Present the Tier 1 candidates from Step 1b to Loudon. For each candidate:
+- Name both entries
+- Propose a link type and direction using the link ontology (SCHEMA §4)
+- Note whether the mention is in a structurally significant location
+
+These are maintenance, not proposals. The reasoning already exists in the prose. On Loudon's confirmation, add to YAML frontmatter.
+
+If a Tier 1 candidate should NOT become a YAML link (the mention is passing, historical, or explicitly non-structural), note the deliberate exclusion with a one-line reason. This prevents it from re-surfacing in future Weaves.
+
+**Step 3b: Propose semantic links (Tier 2)**
+
+Identify at least three pairs of entries that should be connected but are NOT already named in each other's body text — connections that emerge from reading the topology as a whole. This is the creative work of the Weave. For each proposal:
 - Name both entries
 - Name the proposed link type and direction
 - Give one sentence of reasoning
@@ -146,7 +176,10 @@ After all confirmed changes are written: `Weave — [date] — [N links added, N
 
 **Stale metadata:** [entries missing required fields or with outdated stage]
 
-**Proposed new links:** [N proposals — list below]
+**Tier 1 — unformalized body-text links:** [N findings]
+1. [[Entry A]] body mentions "[phrase]" → propose [[Entry B]] as [link-type] — [structurally significant: yes/no]
+
+**Tier 2 — semantic proposals:** [N proposals]
 1. [[Entry A]] —[type]→ [[Entry B]] — [one-line rationale]
 
 **Proposed stage transitions:** [list]

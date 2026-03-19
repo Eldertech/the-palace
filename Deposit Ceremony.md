@@ -198,6 +198,16 @@ Show each draft to Loudon. Revise as needed.
 
 For guidelines on updating existing entries (when to increment activation count, how to handle stage transitions), see [[Deposit Ceremony — Context]].
 
+**Step 5a: Literal Link Pass**
+
+Before presenting any draft entry for final approval, scan its body text for:
+
+1. Plain-text mentions of known entry titles that don't use `[[wikilink]]` syntax — convert these to `[[Entry Name]]` format
+2. Cross-Domain Resonance section headers that name a palace entry — ensure they use `[[Entry Name]]` format
+3. `[[wikilinks]]` in body text that are conceptually significant enough to also appear as YAML frontmatter links — add them
+
+An entry that arrives with its body-text links formalized enters the palace fully wired. This prevents the Weave from having to do Tier 1 cleanup work that could have been done at deposit time — the two minutes here saves the Weave from surfacing gaps that were always visible.
+
 **Step 6: Plant**
 On approval, write new entries as `.md` files to the palace. Apply updates to existing entries using precise edits (show the before/after for any frontmatter link changes).
 

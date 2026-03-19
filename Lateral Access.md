@@ -17,6 +17,8 @@ links:
     type: connects-to
   - target: "[[Hilaritas Generator]]"
     type: deepens
+  - target: "[[Kuramoto Coupling]]"
+    type: mirrors
 ---
 
 # Lateral Access
@@ -172,7 +174,7 @@ You do not simulate a physical system by naming its properties. You simulate
 the forces and constraints, and the behavior emerges. The sound arrives
 because the conditions were right, not because it was commanded.
 
-**The Kuramoto model**
+**[[Kuramoto Coupling]]**
 Phase coherence is not commanded. It emerges from local coupling. You cannot
 make oscillators synchronize by instructing them to synchronize. You set up
 the conditions and let the synchrony arrive laterally.
