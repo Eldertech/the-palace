@@ -15,9 +15,9 @@ This is a living knowledge organism built by Loudon Stearns (musician, educator,
 The palace is readable from any vector using these paths, in priority order:
 
 1. **Filesystem (primary for write operations)**
-   `/Users/loudonstearns/Library/CloudStorage/GoogleDrive-loudon@gmail.com/My Drive/The Palace`
+   `/Users/loudonstearns/Google Drive/My Drive/The Palace`
    Required for: all write operations, git commits, queue processing
-   Available via: Claude Code, Cowork, any tool with Filesystem MCP
+   Available via: Claude Code, Cowork (`osascript` for git/delete — see Cowork Operations below), any tool with Filesystem MCP
 
 2. **GitHub raw URLs (primary for read-only access)**
    `https://raw.githubusercontent.com/Eldertech/the-palace/main/[filename].md`
@@ -34,6 +34,12 @@ The palace is readable from any vector using these paths, in priority order:
    Minimum fallback context is in the claude.ai Substrate Skill.
 
 **For claude.ai sessions without filesystem access:** use `web_fetch` on GitHub raw URLs to read any palace entry. Read CLAUDE.md first, then follow links to SCHEMA.md and the relevant ceremony entry. Write operations must be deferred to a Claude Code or Cowork session — note proposed changes in the conversation for later execution.
+
+**Cowork Operations (git & file deletion):** The Cowork VM accesses the palace via a FUSE mount, which blocks `rm` and git lock removal. Always use `mcp__Control_your_Mac__osascript` for these operations, targeting the local path directly:
+- **File reads/edits/writes:** Read, Edit, Write tools via the Cowork mount — these work normally
+- **File deletion:** `do shell script "rm \"/Users/loudonstearns/Google Drive/My Drive/The Palace/[file]\""`
+- **Git commits:** `do shell script "cd \"/Users/loudonstearns/Google Drive/My Drive/The Palace\" && git add -A && git commit -m '...'"`
+- **Obsidian:** Quit at the start of any ceremony involving git — `tell application "Obsidian" to quit` — before the first commit
 
 ## Ceremony Triggers
 
