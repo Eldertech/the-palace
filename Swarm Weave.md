@@ -20,6 +20,10 @@ links:
     type: connects-to
   - target: "[[Lateral Access]]"
     type: connects-to
+  - target: "[[Metaphor as Coupling Medium]]"
+    type: spawned
+  - target: "[[Walk That Weaves]]"
+    type: spawned
 ---
 
 # Swarm Weave
