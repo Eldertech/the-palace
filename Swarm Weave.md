@@ -127,28 +127,55 @@ The worker returns structured JSON. No prose. No explanation. Just the report.
 
 ### The Coordinator
 
-After all workers complete, the coordinator receives:
-- All worker JSON reports (one per entry)
-- The full palace entry list (titles + types + current link counts)
-- The topology summary built from frontmatter (not body text)
+The coordinator's job is **dispatch and synthesis only** — it never reads entry
+body content. This is the architectural constraint that makes the whole system
+scale: if the coordinator loaded every entry to build worker contexts, it would
+need to hold the entire palace in its context window before dispatching a single
+worker, defeating the purpose entirely.
 
-The coordinator's tasks:
-1. **De-duplicate** — multiple workers independently flagging the same gap
-   (e.g., worker A finds Lateral Access → Kuramoto, worker B finds
-   Kuramoto → Lateral Access) collapse to one confirmed bidirectional link
-2. **Resolve conflicts** — two workers proposing incompatible link types
-   for the same pair are flagged for Loudon's decision
-3. **Surface global patterns** — if three workers each independently flagged
-   connections to the same entry, that entry is probably underpowered as a
-   hub; propose stage promotion
-4. **Build the Topology Report** — using the Weave Ceremony's report format,
-   populated from coordinator synthesis, not re-reading every file
-5. **Present to Loudon** — staged approval: unsung paths first (navigation hygiene,
-   formalize all), then new introductions (creative review, max 5 palace-wide)
+What the coordinator actually does:
 
-The coordinator does not re-read every entry. It reasons from reports. This
-is the merge coordinator in distributed version control — not the smartest
-worker, but the function that makes the workers' intelligence coherent.
+**Phase 1 — Dispatch map (cheap, no API calls)**
+1. List all `.md` files in the palace root (`fs.readdirSync` — essentially free)
+2. Parse **frontmatter only** from each file (YAML headers, ~20–40 lines per
+   entry — tiny). This gives the full title list and each entry's link targets.
+3. Build a neighbor map: for each entry, which entries does its frontmatter link
+   to? This is the dispatch payload — paths, not content.
+4. Dispatch one worker per entry, passing only:
+   - The **path** to the assigned entry
+   - The **paths** to its immediate neighbors (from frontmatter)
+   - The flat **list of all entry titles** (strings only — for unsung paths matching)
+   - The **path** to SCHEMA (worker reads Section 4 itself)
+
+Workers receive paths. Workers do their own reading. The coordinator never
+holds body content at any point.
+
+**Phase 2 — Synthesis (after all workers return)**
+
+The coordinator receives all worker JSON reports and:
+1. **De-duplicates** — worker A flags Lateral Access → Kuramoto, worker B
+   flags Kuramoto → Lateral Access: collapse to one confirmed bidirectional link
+2. **Resolves conflicts** — two workers proposing incompatible link types for
+   the same pair are surfaced for Loudon's decision, not auto-resolved
+3. **Surfaces global patterns** — an entry independently flagged by three
+   workers who weren't assigned to it is probably an underpowered hub;
+   propose stage promotion
+4. **Builds the Topology Report** from worker reports alone — never re-reads
+   palace files at this stage
+5. **Presents to Loudon** — staged approval: unsung paths first (near-zero
+   deliberation, formalize all), then new introductions (creative review)
+
+The coordinator is the merge coordinator in distributed version control: not
+the smartest worker, but the function that makes the workers' intelligence
+coherent. Its context budget goes to synthesis logic, not content storage.
+
+**Context budget summary:**
+
+| Agent | Reads | Context size |
+|---|---|---|
+| Coordinator | Frontmatter only (all entries) + worker reports | Small — ~30 × 30 lines + reports |
+| Each worker | One entry body + neighbor bodies (self-fetched) | Small — 3–6 files |
+| No agent | The full palace simultaneously | Never |
 
 ### Parallelism
 
@@ -159,27 +186,59 @@ sequential calls. This is the core performance gain — and the core reason the
 architecture scales where the single-weaver cannot.
 
 ```javascript
-// Pseudocode sketch — to be built out
-const entries = await readAllPalaceEntries(PALACE_PATH);
-const entryTitles = entries.map(e => e.title);
-const schema = await readLinkOntology();
+// Pseudocode sketch — to be built out in Claude Code
+// KEY PRINCIPLE: coordinator reads frontmatter only, passes paths to workers.
+// Workers are autonomous readers — they fetch their own content.
 
+const PALACE_PATH = '/Users/loudonstearns/.../The Palace';
+
+// --- COORDINATOR PHASE 1: Dispatch map (no API calls, no body reads) ---
+
+// 1. List all entries (free — just filesystem)
+const files = fs.readdirSync(PALACE_PATH).filter(f => f.endsWith('.md'));
+
+// 2. Parse frontmatter only from each file (cheap — YAML headers only)
+const frontmatters = files.map(f => ({
+  path: path.join(PALACE_PATH, f),
+  title: parseFrontmatterTitle(f),        // read first ~40 lines only
+  linkTargets: parseFrontmatterLinks(f)   // extract [[targets]] from YAML
+}));
+
+const entryTitles = frontmatters.map(e => e.title);
+const schemaPath = path.join(PALACE_PATH, 'SCHEMA.md');
+
+// 3. Build neighbor map and dispatch workers in parallel
+//    Workers receive PATHS, not content. Workers read themselves.
 const workerReports = await Promise.all(
-  entries.map(entry => runWorker({
-    assignedEntry: entry,
-    neighbors: getNeighbors(entry, entries),
-    entryTitles,
-    schema
+  frontmatters.map(entry => runWorker({
+    assignedEntryPath: entry.path,
+    neighborPaths: resolveNeighborPaths(entry.linkTargets, frontmatters),
+    entryTitles,       // strings only — for unsung paths title matching
+    schemaPath         // worker reads Section 4 itself
   }))
 );
 
+// --- COORDINATOR PHASE 2: Synthesis (reasons from reports, no re-reads) ---
+
 const topologyReport = await runCoordinator({
   workerReports,
-  entries,
-  frontmatterGraph: buildGraph(entries)
+  entryTitles,
+  frontmatters         // titles + link counts only — already parsed above
 });
 
 await presentToLoudon(topologyReport);
+
+// --- WORKER (runs as sub-agent or API call) ---
+// Receives paths, reads its own files, returns JSON report.
+// Never needs to know about any entry it wasn't given.
+async function runWorker({ assignedEntryPath, neighborPaths, entryTitles, schemaPath }) {
+  const assignedEntry = fs.readFileSync(assignedEntryPath, 'utf8');  // full body
+  const neighbors     = neighborPaths.map(p => fs.readFileSync(p, 'utf8'));
+  const schema        = extractSection4(fs.readFileSync(schemaPath, 'utf8'));
+
+  // Send to Claude API with focused context — returns structured JSON
+  return callClaudeAPI({ assignedEntry, neighbors, entryTitles, schema });
+}
 ```
 
 ### Report Schema (worker output)
@@ -289,44 +348,118 @@ first ceremony that actually *runs* that way rather than merely *describing* it.
 ## Learning Path: Sub-Agents in Claude Code
 
 Loudon is comfortable in Claude Code and eager to understand this architecture
-from the ground up. The learning arc:
+from the ground up. The learning arc builds in two phases: first use Claude
+Code's native agents feature to develop intuition and test the concept on a
+real palace neighborhood; then rebuild the same logic using the Anthropic SDK
+and Node.js for production use.
 
-**Step 1 — The basic API call from Claude Code**
-Claude Code can make Anthropic API calls programmatically via Node.js. Start
-with a single API call that sends a palace entry as context and asks for an
-unsung paths audit. Read the response. This is one worker, not a swarm.
+---
 
-**Step 2 — Structured output (JSON mode)**
-Modify the prompt to return JSON only. Parse the response. This is the worker
-report schema above. Key technique: prompt the model to return only valid JSON
-with no preamble, and use `JSON.parse()` with a try/catch.
+### Phase A — Claude Code Agents (no SDK, no Node.js required)
 
-**Step 3 — Sequential workers**
-Run the same API call for each palace entry in a loop. Collect all reports.
-Print them. This is still sequential — slow, but correct. Confirm the output
-shape is what the coordinator needs.
+*Goal: develop real intuition about sub-agent spawning, context scoping, and
+coordinator synthesis before writing any orchestration code. Use real palace
+data from the start — the Hilaritas Generator neighborhood is the test bed.*
 
-**Step 4 — Parallel workers with Promise.all()**
+**Step A1 — Spawn a single sub-agent manually**
+In Claude Code, use the Task tool (or `/agents` command) to spawn one sub-agent.
+Give it a single palace entry — `Hilaritas Generator.md` — and ask it to run
+the unsung paths audit only. Read what it returns. Understand the boundary:
+what did it see, what didn't it see, what did it need that you didn't give it.
+
+This is the most important step in the whole learning arc. The question
+*"what does a worker actually need in its context?"* is answered here
+experimentally, not theoretically.
+
+**Step A2 — Scope the neighborhood**
+The Hilaritas Generator neighborhood is the test bed: `Hilaritas Generator.md`
+plus all entries it links to directly. Identify these from frontmatter before
+you begin — this is the coordinator's frontmatter-only parse, done manually.
+Note how cheap this step is: you're reading 20–40 lines per file, not bodies.
+
+**Step A3 — Spawn one worker per neighborhood entry**
+Spawn a separate sub-agent for each entry in the neighborhood. Give each one:
+- Its assigned entry (full text, fetched by the sub-agent or passed directly)
+- The neighbor paths (the other entries in the neighborhood)
+- The flat title list
+- SCHEMA Section 4
+
+Do this sequentially first — spawn, wait, read the report, then spawn the next.
+Confirm that each worker returns a clean JSON report. Fix prompt and scope issues
+before attempting parallelism.
+
+**Step A4 — Spawn all workers simultaneously**
+Spawn all neighborhood workers at once. Observe what arrives. This is the first
+moment the architecture feels like a swarm rather than a loop. Note:
+- Do the reports conflict? (Expected — this is useful data)
+- Does any worker return malformed JSON? (Fix the prompt)
+- Does the Hilaritas Generator worker find things the others don't? (It should)
+
+**Step A5 — Coordinate manually**
+Take all the worker reports and feed them to a fresh Claude Code conversation
+as the coordinator context. Ask it to de-duplicate, flag conflicts, surface
+global patterns, and produce a topology report for the Hilaritas Generator
+neighborhood. Review the output with Loudon's eyes. This is the first real
+Swarm Weave result — small scope, but fully functional.
+
+**Step A6 — Validate and write back**
+Approve or reject the coordinator's proposals. Write confirmed links to the
+actual palace entries. This closes the loop: workers found, coordinator
+synthesized, Loudon approved, palace updated. The full ceremony, manually
+orchestrated, on six entries.
+
+*When Step A6 feels natural and the outputs are trustworthy, proceed to Phase B.
+Do not begin Phase B until the neighborhood swarm is producing clean results.*
+
+---
+
+### Phase B — SDK and Node.js (production architecture)
+
+*Goal: automate what Phase A did manually, with parallelism, error handling,
+and write-back. The architecture is already understood — Phase B is engineering.*
+
+**Step B1 — The basic API call from Claude Code**
+Claude Code can make Anthropic API calls programmatically via Node.js. Reproduce
+the single worker from Step A1 as a Node.js function. Read the response. Confirm
+the output shape matches the report schema above.
+
+**Step B2 — Structured output (JSON mode)**
+Modify the prompt to return JSON only. Parse with `JSON.parse()` in a try/catch.
+This is the worker report schema — the same shape you validated manually in
+Phase A, now enforced programmatically.
+
+**Step B3 — Frontmatter-only coordinator parse**
+Write the coordinator's dispatch map logic: `fs.readdirSync`, frontmatter
+extraction (YAML headers only — first ~40 lines), neighbor path resolution.
+Confirm it builds the correct dispatch map without reading any entry bodies.
+Test on the full palace. This should feel trivially fast.
+
+**Step B4 — Sequential workers**
+Run the worker function for each palace entry in a loop, passing paths not
+content. Collect all reports. Print them. Slow, but correct. Confirm the output
+shape before adding parallelism.
+
+**Step B5 — Parallel workers with Promise.all()**
 Convert the sequential loop to `Promise.all()`. All workers fire simultaneously.
-This is the performance breakthrough. Observe the difference in wall-clock time.
-This is also the moment the architecture *feels* like a swarm — all the reports
-arrive together.
+Observe the wall-clock time difference. This is also the moment the architecture
+*feels* like a swarm — all the reports arrive together, none of them aware
+of the others.
 
-**Step 5 — The coordinator**
-Write a second API call that receives all worker reports as context and produces
-the topology synthesis. This is the coordinator. The key insight: the coordinator
-never reads the palace entries directly — it reasons from the reports. Smaller
-context, different function.
+**Step B6 — The coordinator**
+Write the coordinator as a second API call. It receives all worker reports and
+produces the topology synthesis. Key constraint: the coordinator never reads
+palace files at this stage — it reasons from reports only. Confirm this holds
+by checking what's in its context window.
 
-**Step 6 — Write-back on approval**
-Add the confirmation loop: present the coordinator's output to Loudon, accept
-approval/rejection per link, write confirmed links to the appropriate `.md` files
-using the Filesystem MCP tools. This closes the loop from report to palace edit.
+**Step B7 — Write-back on approval**
+Add the confirmation loop: present output to Loudon, accept approval/rejection
+per link, write confirmed links to `.md` files using Filesystem MCP tools.
+This closes the full loop from dispatch to palace edit.
 
-**Step 7 — Harden and ceremony-ify**
-Add error handling, rate limiting (Anthropic API has limits), progress reporting,
-and a dry-run mode. Write the Swarm Weave Ceremony entry as a formal ceremony
-using the Ceremony Linter. This is now a production palace tool.
+**Step B8 — Harden and ceremony-ify**
+Add error handling, rate limit backoff/retry, progress reporting, dry-run mode.
+Write the Swarm Weave Ceremony entry as a formal ceremony using the Ceremony
+Linter. This is now a production palace tool.
 
 ---
 
