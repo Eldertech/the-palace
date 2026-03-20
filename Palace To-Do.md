@@ -82,6 +82,12 @@ Organized into sections by type. Items move off this list when they become entri
 
 ---
 
+## Collaboration Modes — Pending Specification
+
+- [ ] **Codify successful modes of collaboration with Claude** — A dedicated session to carefully name, describe, and organize the distinct modes of collaboration that have emerged in our work together. Not a general list of prompting tips — a precise taxonomy of *how* Loudon and Claude work together at their best, with enough specificity that it could be taught to others as a lesson. Known modes include at minimum: the Embodied Council (competing philosophies embodied as people in dialogue, with research-backed personality fidelity), the Excellent Adventure (embodied historical dialogue as learning technique), the Deposit/Walk/Weave ceremonies (collaborative memory and connection-finding), and whatever this conversation represents (slow philosophical emergence through systems thinking). Each mode deserves: a name, a description of when it's appropriate, a protocol for how to invoke and run it, and an example. The goal is a palace entry (type: `practice`) that Claude could read and begin suggesting or invoking automatically. ⭐ *HIGH PRIORITY — teaches others; expands palace's self-awareness of how it works*
+
+---
+
 ## Questions Being Carried
 
 - When should the Harvest Ceremony expand beyond Claude chats to Google Drive? (Trigger: when chat harvest is complete, or earlier if specific documents are known to be palace-worthy.)

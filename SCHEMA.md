@@ -16,7 +16,6 @@ links:
   - target: "[[Substrate Skill]]"
     type: enables
 ---
-
 # SCHEMA — The Palace Type System
 
 This is the authoritative TBox (type system) for the Palace. It defines what can exist here and how things can be related. Any human or AI operator must read this before creating new entries, proposing new link types, or modifying ceremony structure.

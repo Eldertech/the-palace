@@ -49,11 +49,11 @@ links:
 
 ## What the Revival Ceremony Is
 
-Hibernation puts a conversation to rest. The Spore Check reviews dormant entries for readiness. The Revival Ceremony is what happens when readiness arrives — the formal act of reawakening an entry and returning it to active life in the palace.
+"the conditions have changed. This idea is needed again.*
 
-The Revival is the inverse of entering dormancy. Where dormancy is a recession — a withdrawal of active energy in the absence of conditions — revival is a recognition: *the conditions have changed. This idea is needed again.*
+An entry into a neighborhood of ideas.
 
-The Revival is also a re-entry. The dormant entry carries a snapshot of the understanding that existed when it last went quiet. The revival ceremony does not just update the entry's status — it reconnects it to the current palace with fresh typed links, reads its dormant content against what is now known, and asks: what does this entry know that the current palace needs?
+The dormant entry carries a snapshot of the understanding that existed when it last went quiet. The revival ceremony does not just update the entry's status — it reconnects it to the current palace with fresh typed links, reads its dormant content against what is now known, and asks: what does this entry know that the current palace needs?
 
 ## Protocol
 

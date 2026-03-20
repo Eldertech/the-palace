@@ -24,7 +24,6 @@ links:
   - target: "[[Symbiotic Skills]]"
     type: connects-to
 ---
-
 # Endosymbiosis
 
 Lynn Margulis's theory that the most significant transitions in evolutionary history occurred through symbiotic mergers rather than gradual mutation. The most famous case: the ancestral eukaryotic cell engulfed an aerobic bacterium — rather than digesting it, they cooperated. The bacterium became the mitochondrion. Every complex life form on Earth runs on this merger.
