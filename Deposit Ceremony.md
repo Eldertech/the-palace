@@ -229,7 +229,7 @@ moment for invocation. Running one after a deposit is one option; so is running
 one on an entry that feels underlinked, or before a Weave, or at any other
 moment Loudon judges the entry needs focused attention.
 
-Say: **"Run a palace worker on [Entry Name]"**
+Invoke: **"Run a palace worker on [Entry Name]"** — by Loudon, by the coordinator, or by any agent with a reason to look closely at the entry.
 
 The worker reads the entry and its immediate neighbors from the filesystem,
 runs the unsung paths audit, proposes up to 3 new introductions, and flags

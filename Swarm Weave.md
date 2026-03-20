@@ -65,11 +65,14 @@ A lightweight single-worker run scoped to one entry and its immediate neighborho
 No coordinator. No parallelism. Focused attention on one node in the graph,
 producing unsung paths and new introductions proposals for Loudon's approval.
 
-**When to run:** Any time Loudon wants focused attention on a single entry —
+**When to run:** Any time focused attention on a single entry is warranted —
 after a deposit, before a Weave, mid-project, when an entry feels underlinked,
-when a new concept lands nearby and the neighborhood needs re-examining. The
-worker has no opinion about when it should be invoked. That judgment belongs
-to Loudon.
+when a new concept lands nearby and the neighborhood needs re-examining.
+
+The invoker can be Loudon, the Swarm coordinator, or another worker that has
+identified a neighbor worth deeper examination. Workers can spawn workers.
+The tool doesn't know or care who called it — it receives an entry and does
+its work.
 
 ---
 
@@ -293,12 +296,13 @@ For now: filesystem only.
 
 ### When to invoke
 
-Loudon says: **"Run a palace worker on [Entry Name]"**
+**"Run a palace worker on [Entry Name]"** — invoked by Loudon, by the
+coordinator, or by another worker that has flagged a neighbor as needing
+deeper attention. No assumed context. Any entry, any time, any invoker.
 
-That's the only trigger. No assumed context — not "after a deposit," not
-"before a Weave." Any entry, any time, any reason. The worker's capabilities
-will grow over time (formatting fixes, metadata normalization, deeper link
-audits) but its scope stays local: one entry and its neighborhood per run.
+The worker's capabilities will grow over time (formatting fixes, metadata
+normalization, deeper link audits) but its scope stays local: one entry and
+its neighborhood per run. The worker does not need to know who called it.
 
 Current capabilities:
 - Unsung paths audit (body-text mentions not yet in YAML)
