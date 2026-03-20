@@ -59,16 +59,17 @@ layer and filesystem write access.
 Weave once palace exceeds ~50 entries, or the single-agent Weave misses obvious
 unsung paths on two consecutive cycles.
 
-### Mode 2 — Palace Worker (claude.ai, after any Deposit)
+### Mode 2 — Palace Worker (single entry, on demand)
 
-A lightweight single-worker run scoped to one newly deposited entry. Runs from
-claude.ai using a prompt template. Takes one entry and its immediate neighbors,
-produces unsung paths + new introductions proposals, and presents them to Loudon for
-approval — rich linking work without needing Claude Code or parallel execution.
+A lightweight single-worker run scoped to one entry and its immediate neighborhood.
+No coordinator. No parallelism. Focused attention on one node in the graph,
+producing unsung paths and new introductions proposals for Loudon's approval.
 
-**When to run:** Immediately after any Deposit Ceremony, before the next Weave
-cycle. The deposit plants the seed; the Palace Worker wires it to its closest
-peers before it has a chance to sit unlinked.
+**When to run:** Any time Loudon wants focused attention on a single entry —
+after a deposit, before a Weave, mid-project, when an entry feels underlinked,
+when a new concept lands nearby and the neighborhood needs re-examining. The
+worker has no opinion about when it should be invoked. That judgment belongs
+to Loudon.
 
 ---
 
@@ -280,9 +281,9 @@ async function runWorker({ assignedEntryPath, neighborPaths, entryTitles, schema
 
 ## Architecture: Palace Worker (Mode 2)
 
-This is a prompt template, not a code architecture. A single worker scoped to
-one newly deposited entry — no coordinator needed, output small enough to review
-in-conversation. Loudon approves or adjusts. Confirmed links are written immediately via filesystem.
+A focused, on-demand tool. One entry, its immediate neighborhood, one worker.
+No coordinator. No parallelism. Output small enough to review and approve in a
+single session. Confirmed links written immediately via filesystem.
 
 All palace work runs from Claude Code with direct filesystem access. GitHub raw
 URLs are not used for any Weave operation — they read last-committed state rather
@@ -292,12 +293,17 @@ For now: filesystem only.
 
 ### When to invoke
 
-After any [[Deposit Ceremony]], before the conversation closes. Loudon says:
-**"Run a palace worker on [Entry Name]"**
+Loudon says: **"Run a palace worker on [Entry Name]"**
 
-The worker runs the unsung paths audit and proposes up to 3 new introductions
-on the assigned entry only. No coordinator. No parallelism. Just one worker,
-one entry, immediate output.
+That's the only trigger. No assumed context — not "after a deposit," not
+"before a Weave." Any entry, any time, any reason. The worker's capabilities
+will grow over time (formatting fixes, metadata normalization, deeper link
+audits) but its scope stays local: one entry and its neighborhood per run.
+
+Current capabilities:
+- Unsung paths audit (body-text mentions not yet in YAML)
+- New introductions (up to 3 semantic proposals)
+- Metadata flags (missing or stale fields)
 
 ### Prompt template
 
