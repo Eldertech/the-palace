@@ -40,10 +40,9 @@ For philosophical reflection on the Weave, see [[Weave Ceremony — Context]].
 **Trigger:** "Let's weave"
 
 **Access vectors:**
-- *Full:* Claude Code / Cowork (filesystem read/write + git; required for metadata updates and queue processing)
-- *Analysis only:* claude.ai online (can read palace via GitHub raw URLs once pushed; can produce a topology report and propose changes; cannot write files or commit)
+- *Full:* Claude Code with filesystem access (required — all Weave operations read and write live files)
 - *Manual:* Obsidian + human (human uses graph view; human applies changes manually)
-- *Not supported:* GitHub cloud alone
+- *Not supported:* GitHub cloud alone, claude.ai without filesystem access
 
 **Preconditions:**
 1. Palace has at least 5 entries (fewer and the topology report has nothing to say)
@@ -104,7 +103,7 @@ These are **unsung paths** — connections already stated in prose, not yet regi
 
 Collect all unsung paths and add them to the Topology Report. They are resolved in Step 3a, before any new introductions (Step 3b).
 
-If operating in analysis-only mode (GitHub raw URLs, no filesystem write access), still complete this audit and surface findings — note that write operations require a full-access session.
+The Weave always runs with full filesystem access. No GitHub URL fallback.
 
 **Step 2: Produce the topology report**
 

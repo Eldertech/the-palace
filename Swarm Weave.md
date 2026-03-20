@@ -282,14 +282,13 @@ async function runWorker({ assignedEntryPath, neighborPaths, entryTitles, schema
 
 This is a prompt template, not a code architecture. A single worker scoped to
 one newly deposited entry — no coordinator needed, output small enough to review
-in-conversation. Loudon approves or adjusts. Confirmed links are written
-immediately (Claude Code) or queued for the next write session (claude.ai).
+in-conversation. Loudon approves or adjusts. Confirmed links are written immediately via filesystem.
 
-**Why two variants:** claude.ai has no filesystem access — it can only reach files
-via HTTP. The claude.ai template uses GitHub raw URLs for that reason. Claude Code
-has direct filesystem access and should always use it — faster, no network
-dependency, reads live files rather than last-committed state. Always prefer the
-Claude Code variant when you have filesystem access.
+All palace work runs from Claude Code with direct filesystem access. GitHub raw
+URLs are not used for any Weave operation — they read last-committed state rather
+than live files, and introduce network dependency where none is needed. If a
+claude.ai-based worker template is ever needed in future, it can be added then.
+For now: filesystem only.
 
 ### When to invoke
 
@@ -300,13 +299,11 @@ The worker runs the unsung paths audit and proposes up to 3 new introductions
 on the assigned entry only. No coordinator. No parallelism. Just one worker,
 one entry, immediate output.
 
----
-
-### Prompt template — Claude Code variant (filesystem, preferred)
+### Prompt template
 
 ```
 You are a palace worker running a focused connection audit on one palace entry.
-You have filesystem access. Read files directly — do not use network URLs.
+You have filesystem access. Read files directly.
 
 PALACE_PATH = /Users/loudonstearns/Library/CloudStorage/GoogleDrive-loudon@gmail.com/My Drive/The Palace
 
@@ -322,38 +319,6 @@ PALACE_PATH = /Users/loudonstearns/Library/CloudStorage/GoogleDrive-loudon@gmail
 [paste the worker task block from the Full Swarm Weave system prompt above]
 
 Output as a readable proposal table for Loudon's approval, not JSON.
-```
-
----
-
-### Prompt template — claude.ai variant (GitHub raw URLs, fallback only)
-
-*Use only when filesystem access is unavailable. Requires palace to have been
-pushed to GitHub. Reads last-committed state, not live files.*
-
-```
-You are a palace worker running a focused connection audit on one palace
-entry.
-
-## Assigned entry
-[fetch: https://raw.githubusercontent.com/Eldertech/the-palace/main/[EntryName].md]
-
-## Palace entry list
-[fetch: https://raw.githubusercontent.com/Eldertech/the-palace/main/CLAUDE.md
- — extract entry titles from the most recent Weave report, or from Loudon's
- confirmation of current entries]
-
-## Immediate neighbors
-[fetch each entry named in the assigned entry's YAML links]
-
-## Link ontology
-[fetch: https://raw.githubusercontent.com/Eldertech/the-palace/main/SCHEMA.md
- — Section 4 only]
-
-## Task
-Run the unsung paths audit and propose up to 3 new introductions on the assigned
-entry only. Format as a clean proposal table. No JSON — readable prose for
-Loudon's approval.
 ```
 
 ---
