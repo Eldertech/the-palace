@@ -280,26 +280,59 @@ async function runWorker({ assignedEntryPath, neighborPaths, entryTitles, schema
 
 ## Architecture: Palace Worker (Mode 2)
 
-This is a prompt template, not a code architecture. It runs in any claude.ai
-session. It exists so that Loudon can wire a freshly deposited entry to its
-closest peers immediately, without waiting for the next full Weave cycle.
+This is a prompt template, not a code architecture. A single worker scoped to
+one newly deposited entry — no coordinator needed, output small enough to review
+in-conversation. Loudon approves or adjusts. Confirmed links are written
+immediately (Claude Code) or queued for the next write session (claude.ai).
+
+**Why two variants:** claude.ai has no filesystem access — it can only reach files
+via HTTP. The claude.ai template uses GitHub raw URLs for that reason. Claude Code
+has direct filesystem access and should always use it — faster, no network
+dependency, reads live files rather than last-committed state. Always prefer the
+Claude Code variant when you have filesystem access.
 
 ### When to invoke
 
 After any [[Deposit Ceremony]], before the conversation closes. Loudon says:
 **"Run a palace worker on [Entry Name]"**
 
-Claude fetches the entry via GitHub raw URL, fetches its immediate neighbors,
-fetches the palace entry list from SCHEMA or the Substrate, and runs the worker
-task scoped to that one entry. No coordinator needed — the output is small enough
-for Loudon to review in-conversation. Loudon approves or adjusts. Proposed links
-are queued for the next Cowork write session (or executed there immediately if
-Loudon has filesystem access).
+The worker runs the unsung paths audit and proposes up to 3 new introductions
+on the assigned entry only. No coordinator. No parallelism. Just one worker,
+one entry, immediate output.
 
-### Prompt template (stored in this entry for reuse)
+---
+
+### Prompt template — Claude Code variant (filesystem, preferred)
 
 ```
-You are a palace worker running a focused connection audit on one newly deposited
+You are a palace worker running a focused connection audit on one palace entry.
+You have filesystem access. Read files directly — do not use network URLs.
+
+PALACE_PATH = /Users/loudonstearns/Library/CloudStorage/GoogleDrive-loudon@gmail.com/My Drive/The Palace
+
+## Your tasks
+1. Read the assigned entry: [PALACE_PATH]/[EntryName].md
+2. Parse its YAML frontmatter links to identify immediate neighbors
+3. Read each neighbor file from the filesystem
+4. Read SCHEMA.md — Section 4 only (link ontology)
+5. List all .md filenames in PALACE_PATH — these are your known entry titles
+   for unsung paths matching (filenames only, no body reads)
+
+## Run the worker task
+[paste the worker task block from the Full Swarm Weave system prompt above]
+
+Output as a readable proposal table for Loudon's approval, not JSON.
+```
+
+---
+
+### Prompt template — claude.ai variant (GitHub raw URLs, fallback only)
+
+*Use only when filesystem access is unavailable. Requires palace to have been
+pushed to GitHub. Reads last-committed state, not live files.*
+
+```
+You are a palace worker running a focused connection audit on one palace
 entry.
 
 ## Assigned entry
