@@ -4,7 +4,7 @@ type: hub
 pillars: [creation, tools, philosophy, practice]
 born: 2024-01
 last_activated: 2026-03
-activation_count: 31
+activation_count: 32
 stage: mature
 confidence: foundational
 energy: high
@@ -43,6 +43,14 @@ Loudon's framework for learning through making. Four projections of a single hig
 The pillars emerged from over 20 years of Loudon's teaching experience in music technology. They began as a domain-specific framework and are deliberately evolving toward universality. The specific→general trajectory is the governing frame: music tech is the concrete entry point; human flourishing through joyful creation is the destination.
 
 The public names are kept for current authority and audience, but the deeper definitions expand continuously. This tension between specific and general is itself generative — it prevents the framework from becoming either too abstract to be useful or too narrow to be true.
+
+## The "Practice" Resolution
+
+The fourth pillar's name emerged through struggle. Earlier formulations used "wellbeing" — the pillar of balanced, healthy, joyful existence outside capitalism's value systems. But "wellbeing" carried unwanted connotations of the wellness industry, self-optimization culture, everything antithetical to the actual intention.
+
+**Practice** resolved this perfectly (March 2026 conversation). It connects to musical practice (Loudon's authority), carries the "ever verb, always developing, glorifying imperfection" quality needed, and includes all dimensions of embodied living: physical health, daily discipline, community care, philosophical praxis, sustainable creative work. Practice is the *how* — the living embodiment, the ongoing messy work of actualizing values through repeated action.
+
+The shift from "wellbeing" to "Practice" parallels the shift from Music→Creation and Technology→Tools: finding the universal frame that was always implicit in the specific case.
 
 ## The Specific→General Trajectory
 

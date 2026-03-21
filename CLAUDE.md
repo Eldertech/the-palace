@@ -56,6 +56,8 @@ When Loudon says any of the following, execute the corresponding ceremony immedi
 
 This is a partial list. For the complete list of all ceremonies (including Harvest and Deposit), see [[Palace Ceremonies]]. For full operational instructions, see [[Substrate Skill]].
 
+**Harvest file split (2026-03):** The old `Harvest Log.md` has been replaced by three files: [[Harvest Frontier]] (live state, session history, alignment log — read during Harvest), [[Harvest Queue]] (pending deposits — read during Deposit coordinator role), [[Harvest Archive]] (all completed/skipped decisions — never read during ceremony).
+
 ## Key Vocabulary
 
 **Four Pillars** — All entries are tagged with pillar affiliations: `creation` (Music), `tools` (Technology), `philosophy`, `practice`.

@@ -9,7 +9,9 @@ stage: mature
 links:
   - target: "[[Deposit Ceremony]]"
     type: spawned
-  - target: "[[Harvest Log]]"
+  - target: "[[Harvest Frontier]]"
+    type: enables
+  - target: "[[Harvest Queue]]"
     type: enables
   - target: "[[Substrate]]"
     type: deepens
@@ -23,9 +25,9 @@ links:
 
 # Harvest Ceremony
 
-A triage ceremony for surveying raw source material — conversations, documents, notes, files — and flagging what is worthy of eventual incorporation into the palace. The Harvest does not build palace entries. It identifies what should be built and records that decision persistently in the [[Harvest Log]].
+A triage ceremony for surveying raw source material — conversations, documents, notes, files — and flagging what is worthy of eventual incorporation into the palace. The Harvest does not build palace entries. It identifies what should be built and records that decision persistently across [[Harvest Frontier]], [[Harvest Queue]], and [[Harvest Archive]].
 
-The Harvest is designed to run across many sessions, stopped and started freely, by different Claude instances with no prior context. The [[Harvest Log]] is the only state that persists. Every session reads the log, finds the frontier, continues from there.
+The Harvest is designed to run across many sessions, stopped and started freely, by different Claude instances with no prior context. The [[Harvest Frontier]] is the only state that persists across sessions. Every session reads the frontier, finds where to resume, then writes new decisions to [[Harvest Queue]] (worthy/partial) or [[Harvest Archive]] (skip/done).
 
 For rationale and historical calibration observations, see [[Harvest Ceremony — Context]].
 
@@ -45,12 +47,12 @@ For rationale and historical calibration observations, see [[Harvest Ceremony �
 3. Prediction Alignment Log has been reviewed for any calibration notes
 
 **Postconditions:**
-1. All triaged items (including auto-triaged) are written to the Harvest Log with ID, decision, and `skip_reason` or `deposit_notes`
-2. The Frontier datetime has been updated to reflect the last processed item
-3. The Prediction Alignment Log has been updated with this batch's results
-4. A git commit has been made with message: `Harvest — [batch ID range] — [N worthy, N partial, N skip]`
+1. All triaged items (including auto-triaged) are written: worthy/partial rows to [[Harvest Queue]], skip/done rows to [[Harvest Archive]]
+2. The Frontier datetime in [[Harvest Frontier]] has been updated to reflect the last processed item
+3. The Prediction Alignment Log in [[Harvest Frontier]] has been updated with this batch's results
+4. A git commit has been made: `Harvest — [batch ID range] — [N worthy, N partial, N skip]`
 
-**Failure mode:** If the session is interrupted before the log is written, the Frontier will not reflect the lost decisions. On resume: check whether the Frontier matches expectations. If batch decisions were lost, re-triage using the prediction system — with high alignment, re-triage is fast. Do not advance the Frontier without writing the log.
+**Failure mode:** If the session is interrupted before files are written, the Frontier will not reflect the lost decisions. On resume: check whether the Frontier matches expectations. If batch decisions were lost, re-triage using the prediction system — with high alignment, re-triage is fast. Do not advance the Frontier without writing.
 
 **Git commit:** After writing all decisions to the Harvest Log, commit: `Harvest — [batch ID range] — [N worthy, N partial, N skip]`
 
@@ -108,7 +110,7 @@ New source types can be added as the palace grows. The [[Harvest Log]] schema ac
 ## Starting a Harvest Session
 
 **Step 1: Orient**
-Read the [[Harvest Log]]. Check:
+Read [[Harvest Frontier]]. Check:
 - `## Frontier` — where to resume, what datetime to use for the next `recent_chats` call
 - `## Prediction Alignment Log` — current alignment score and any calibration notes to load before predicting
 
@@ -130,7 +132,10 @@ Present non-auto-triaged items as the interactive card UI. Show auto-triaged ite
 Loudon clicks through. No discussion during triage. If something pulls toward depth, note it in `deposit_notes` and continue — depth happens in [[Deposit Ceremony]].
 
 **Step 6: Log**
-When Loudon submits, write all decisions (including auto-triaged items) to the [[Harvest Log]] in one operation. Update the Frontier datetime. Update the Alignment Log table.
+When Loudon submits, write all decisions in one operation:
+- Worthy/partial rows → append to [[Harvest Queue]]
+- Skip/done rows → append to [[Harvest Archive]]
+- Update Frontier datetime and Alignment Log table in [[Harvest Frontier]]
 
 ## Stopping the Harvest
 
@@ -139,7 +144,7 @@ Any of the following ends a session cleanly:
 - The batch runs out
 - A deposit is triggered mid-harvest
 
-On stop: update the Frontier, add a session row to `## Session History`, confirm the log is current. Then commit: `Harvest — [batch ID range] — [N worthy, N partial, N skip]`.
+On stop: update the Frontier in [[Harvest Frontier]], add a session row to `## Session History`, confirm [[Harvest Queue]] and [[Harvest Archive]] are current. Then commit: `Harvest — [batch ID range] — [N worthy, N partial, N skip]`.
 
 ## What Makes Something "Worthy"
 
@@ -182,7 +187,7 @@ A new Claude instance with no prior context resumes by:
 
 1. Reading [[README - The Palace Guide]]
 2. Reading this entry
-3. Reading [[Harvest Log]] — Frontier section and Prediction Alignment Log
+3. Reading [[Harvest Frontier]] — Frontier section and Prediction Alignment Log
 4. Loading the next batch from the Frontier datetime
 5. Pre-processing predictions, building the interface, presenting to Loudon
 

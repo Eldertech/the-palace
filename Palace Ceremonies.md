@@ -43,9 +43,8 @@ The complete and canonical list of all palace ceremonies. Every ceremony has a t
 
 | Ceremony | Trigger | What Happens | Full Spec |
 |---|---|---|---|
-| The Harvest | "Let's harvest" | Triage raw source material (conversations, docs, files). Flag what's worthy for deposit. | [[Harvest Ceremony]] |
-| The Deposit | "Let's deposit" | Read one flagged source deeply. Draft entries, propose links, write on approval. | [[Deposit Ceremony]] |
-| The Hibernation | "Time to hibernate" | The closing act of a completed deposit. Write the closing note into the thread, update the harvest log, mark the conversation dormant. Begins the moment Loudon says "nothing left unsaid." | [[Hibernation Ceremony]] |
+| The Harvest | "Let's harvest" | Triage raw source material (conversations, docs, files). Flag what's worthy for deposit. Writes to [[Harvest Queue]] and [[Harvest Archive]]. | [[Harvest Ceremony]] |
+| The Deposit | "Let's deposit" | Read one flagged source deeply. Draft entries, propose links, write on approval. Closes with a hibernation note written into the thread and queue update. | [[Deposit Ceremony]] |
 
 ## Revival
 
