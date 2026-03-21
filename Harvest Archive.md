@@ -98,6 +98,7 @@ When a deposit completes: append a one-line record to the bottom of this file an
 | H106 | (swarm weave session) | 2026-03-19 | Swarm Weave architecture | worthy | | done | Deposited 2026-03-19. Created [[Swarm Weave]], [[Metaphor as Coupling Medium]], [[Walk That Weaves]]. |
 | H107 | (LangGraph session) | 2026-03-20 | Palace as Context Injection System | worthy | | done | Deposited 2026-03-20. Created [[Palace as Context Injection System]], [[Enchanted Worker]], [[Agent Wellbeing as Design Ethic]], [[Embodied Council Method]]. |
 | H108 | (Confucianism session) | 2026-03-21 | Fortress and Threshold — Confucianism/Stoicism | worthy | | done | Deposited 2026-03-21. Created [[The Fortress and the Threshold]], [[Confucianism]], [[Stoicism]]. |
+| H109 | (this session) | 2026-03-21 | Harvest/Deposit workflow redesign + Entry Desire | worthy | | done | Spontaneous deposit. Created [[Harvest Ceremony — Context]] (practice, sprout), [[Entry Desire]] (concept, seed). Updated [[Deposit Ceremony — Context]] (task surface + ceremonies-teach-practices sections), [[Palace To-Do]] (Harvest Log growth resolved). Commit 7bc5251. |
 | PP01 | (Four Pillars project) | — | Four Pillars project item 1 | skip | — | | |
 | PP02 | (Four Pillars project) | — | Four Pillars project item 2 | skip | — | | |
 | PP03 | (Four Pillars project) | — | Four Pillars project item 3 | skip | — | | |

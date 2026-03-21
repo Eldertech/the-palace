@@ -26,7 +26,7 @@ The [[Harvest Queue]] holds pending deposits. The [[Harvest Archive]] holds all 
 ```
 source_type:   claude_chat
 direction:     oldest-first
-last_processed: H108 (spontaneous deposit 2026-03-21 — Confucianism/Stoicism/Fortress and Threshold)
+last_processed: H109 (spontaneous deposit 2026-03-21 — Harvest/Deposit workflow redesign + Entry Desire)
 last_datetime:  2026-03-21T00:00:00+00:00
 next_action:   DEPOSIT IN PROGRESS. Two queues active:
                (1) General queue: resume from H049 (oldest pending).
@@ -83,3 +83,4 @@ session_note:  Harvest/Deposit architecture redesign 2026-03-21. Harvest Log spl
 | 2026-03-19 | weave | — | First Weave from Cowork. Queue records H105/PP05/PP_HARVEST_SESSION cleared. |
 | 2026-03-21 | deposit | 3 new, 2 updated | H108 (spontaneous): [[The Fortress and the Threshold]], [[Confucianism]], [[Stoicism]]. |
 | 2026-03-21 | infrastructure | — | Architecture redesign: log split, hibernation absorbed into deposit, _hibernation_queue deprecated. |
+| 2026-03-21 | deposit | 2 new, 2 updated | H109 (spontaneous): [[Harvest Ceremony — Context]], [[Entry Desire]]. Updated [[Deposit Ceremony — Context]], [[Palace To-Do]]. |
