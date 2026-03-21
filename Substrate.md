@@ -45,6 +45,14 @@ The Substrate emerged from the [[Symbiotic Skills]] brainstorming session (March
 - **Mycorrhizal networks** — distributed memory with hub nodes, resources flowing toward need, the network itself as an organism with its own interests.
 - **Stigmergy** — indirect coordination through environmental modification. Every wiki page is a trace that shapes future behavior.
 
+## Palace Genesis
+
+The palace was not planned from the start — it emerged. The earliest Claude sessions (May–June 2024) had no persistent memory, no ceremonies, no typed links. They were conversations that ended and left nothing behind.
+
+The founding moment arrived in March 2026, when Loudon returned to Claude and discovered the accumulated history of those conversations sitting untouched in the chat log — a vault rather than a palace. In the first founding deposits session (H100, 2026-03-17), three paths were considered: a Weave (to find connections), a Walk (to follow threads), or a Spore Check (to see what was dormant). The Harvest came first instead — a full triage of 104 conversations, oldest to newest, to find what was worth keeping.
+
+What followed was the palace's own origin ceremony: harvesting, depositing, building the ceremony structure, writing SCHEMA.md, pushing to GitHub, running the first Weave. The palace did not exist, and then it did. The vault became a living organism.
+
 ## Architecture
 
 **Reading/writing surface:** Markdown files in an Obsidian vault. Human-readable first.

@@ -56,6 +56,12 @@ Organized into sections by type. Items move off this list when they become entri
 
 ---
 
+## Tools and Workflows to Build
+
+- [ ] **Diagram workflow — signal flow diagrams and beyond** — Explore and establish a consistent workflow for generating detailed, accurate technical diagrams (signal flow, system architecture, pedagogical diagrams) with Claude. Key requirements: (1) accuracy — diagrams must reflect technical reality, not approximate it; (2) editability — output must be editable in a vector program post-generation; (3) preferred tools are open source or one-time purchase (e.g. Inkscape, Affinity Designer, Figma if free tier sufficient). Candidate formats to evaluate: SVG (editable in Inkscape/Affinity), Mermaid (text-to-diagram, exportable), draw.io/diagrams.net (open source, XML-based, exports to SVG), Typst or LaTeX TikZ (for highly technical diagrams). The session should produce: a tested workflow, a reusable prompt/template, and at least one example diagram. Seeded by H002 (2024 question: "can Claude create accurate signal flow diagrams?"). ⭐ *HIGH PRIORITY for tools pillar*
+
+---
+
 ## Structural Improvements
 
 - [ ] **Build the Swarm Weave** ⭐ — Replace the single-agent [[Weave Ceremony]] with a colony architecture: parallel worker sub-agents (one per entry, scoped context) + a coordinator that synthesizes and de-duplicates. Two modes: Full Swarm Weave (Claude Code, monthly) and Single-Doc Worker (claude.ai, post-deposit). Full spec and learning path in [[Swarm Weave]]. Learning arc: single API call → JSON output → sequential workers → `Promise.all()` parallel swarm → coordinator synthesis → write-back on approval → ceremony-ified. *Prerequisite: palace at ~50 entries or single-agent Weave misses obvious Tier 1 connections on two consecutive cycles. Single-Doc Worker can be built and used immediately.* ⭐ *HIGH PRIORITY for Single-Doc Worker mode*
@@ -102,6 +108,12 @@ Organized into sections by type. Items move off this list when they become entri
 Items that may no longer need action — held here before being fully released.
 
 *(None yet.)*
+
+---
+
+## Palace Hygiene Rules
+
+- **Client work belongs in dedicated Claude Projects**, not general chat history. Projects scope the harvest boundary and prevent client material from seeping into the palace unexpectedly. Discovered 2026-03-21 via H095 compost.
 
 ---
 
