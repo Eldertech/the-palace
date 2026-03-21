@@ -21,6 +21,12 @@ links:
     type: connects-to
   - target: "[[Cooperation Yields Agency]]"
     type: deepens
+  - target: "[[Confucianism]]"
+    type: connects-to
+  - target: "[[Stoicism]]"
+    type: connects-to
+  - target: "[[The Fortress and the Threshold]]"
+    type: connects-to
 ---
 
 # Palace Philosophies
@@ -103,3 +109,7 @@ In our work: the interdependence of the pillars — each contains the others fro
 
 - How do these traditions contradict each other productively? Spinoza's determinism vs. Machiavelli's virtù (can you bend fortuna if everything is determined?). Plato's eternal Forms vs. Deleuze's difference-without-identity. Taoism's wu wei vs. Machiavelli's virtù (is striving against the grain always wrong?). The contradictions are as generative as the convergences.
 - Is there a unified meta-philosophy emergent from this collection, or is the plurality itself the point?
+
+## Philosophy Pages
+
+Each major tradition now has its own entry where productive tensions and mirrorings are made explicit. The first `contradicts` link in the palace lives here: [[Stoicism]] `contradicts` [[Confucianism]] via [[The Fortress and the Threshold]]. The philosophy neighborhood is the primary site of productive contradiction in the palace — where two things are simultaneously true and the tension between them generates more light than either alone.

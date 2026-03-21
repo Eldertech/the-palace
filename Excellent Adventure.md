@@ -4,7 +4,7 @@ type: breakthrough
 pillars: [practice, philosophy, tools]
 born: 2024-10
 last_activated: 2026-03
-activation_count: 1
+activation_count: 2
 stage: growing
 confidence: demonstrated
 energy: high
@@ -21,6 +21,12 @@ links:
     type: connects-to
   - target: "[[Oblique Portrait Method]]"
     type: mirrors
+  - target: "[[Confucianism]]"
+    type: connects-to
+  - target: "[[Stoicism]]"
+    type: connects-to
+  - target: "[[The Fortress and the Threshold]]"
+    type: connects-to
 ---
 
 # Excellent Adventure
@@ -47,8 +53,17 @@ Not a seance (passive reception of a transmitted voice). Not a simulation (accur
 
 This technique was the opening through which Loudon recognized a deeper principle: that the highest-leverage teaching is not delivering content but designing the learning encounter itself. The excellent adventure is one such design. See [[Hilaritas Generator]] — The Learning Architect.
 
+## Named Examples
+
+- **Vicksburg** (October 2024) — the origin encounter. A specific consciousness inside the siege, made responsive and particular.
+- **Spinoza dialogue** — conatus, hilaritas, and the teaching philosophy explored through direct conversation with the man.
+- **Deleuzian seven-movement conversation** — virtual/actual, difference-in-itself, the rhizome.
+- **Confucianism/Stoicism/Zen trialogue** (2026-03) — Confucius, Marcus Aurelius, and a nameless Zen master at a fire. The method's first three-way encounter.
+- **The Fire at Nicopolis** (2026-03) — Epictetus and Confucius as old men beside a fire, speaking of their lives, regrets, and what they found. The conversation became personal: the teacher whose context is collapsing around him while his virtue holds. Produced [[The Fortress and the Threshold]], [[Confucianism]], [[Stoicism]] as palace deposits — and the first `contradicts` link in the palace.
+
 ## Open Questions
 
 - What figures or traditions are most fruitful for this method? Is there a pattern to which voices come alive most fully?
 - Can this be taught directly to students, or does it require modeling first?
 - What is the difference between an excellent adventure that produces hilaritas and one that produces only entertainment?
+- When does an excellent adventure become personally transformative rather than intellectually generative? The Fire at Nicopolis crossed this line — the philosophical dialogue became a mirror for lived experience.
