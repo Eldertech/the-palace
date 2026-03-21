@@ -21,6 +21,8 @@ links:
     type: mirrors
   - target: "[[Harvest Ceremony — Context]]"
     type: spawned
+  - target: "[[Entry Desire]]"
+    type: connects-to
 ---
 
 # Harvest Ceremony

@@ -55,6 +55,16 @@ For `claude_chat` sources, this asymmetry means the deposit must always begin wi
 
 If a source was flagged `partial`, the deposit map should reflect that — only the relevant section gets deposited. Note clearly in the closing log update what was left out and why, so future Claude instances don't re-examine the skipped portions.
 
+## The Palace as Task Surface
+
+The palace has begun functioning as a task surface — a place where outstanding work is tracked, not just where knowledge is stored. This is a deliberate scoping decision: the palace tracks *palace tasks* (deposit queue, ceremony to-dos, structural improvements) but not general life tasks. Keeping this boundary intact preserves the palace's identity as a knowledge organism. A knowledge organism that becomes a general GTD system loses the quality that makes it distinct.
+
+The [[Palace To-Do]] entry is the designated surface for palace tasks. General life management belongs elsewhere.
+
+## Ceremonies Teach Practices by Requiring Structures
+
+A recurring observation across deposit sessions: working with the palace teaches data management practices — logs, queues, archives, frontiers — by requiring you to build and use structures that embody them. The student learns what a queue is not by reading a definition but by feeling the difference between a queue and an archive in practice. This is the Four Pillars pedagogy applied to the palace itself: learn for the joy of learning, learn through creating. The palace is its own curriculum.
+
 ## Open Questions
 
 - Should every deposit session end with a mini-Weave — checking whether the new entries reveal new connections to other existing entries?
@@ -83,7 +93,7 @@ A new Claude instance can resume a Deposit session by:
 
 1. Reading [[README - The Palace Guide]]
 2. Reading [[Deposit Ceremony]]
-3. Reading [[Harvest Log]] — find the item marked `deposit_status: in-progress` (if any) or the oldest `pending` item
+3. Reading [[Harvest Queue]] — find the oldest pending item, or any item marked `in-progress`
 4. Checking `source_type` — if `claude_chat`, give Loudon the direct link from `source_ref` rather than attempting to retrieve the source directly
 5. Confirming with Loudon: "Ready to deposit H042 — the Kick Drum Paradox session from January 2026. This is a claude_chat source — follow this link and invoke the ceremony there: [link]"
 

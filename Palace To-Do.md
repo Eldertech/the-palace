@@ -28,7 +28,7 @@ Organized into sections by type. Items move off this list when they become entri
 ## Token Economy — Pending Work
 
 - [x] **Audit ceremony file sizes — all four ceremonies split** — [[Deposit Ceremony]], [[Harvest Ceremony]], [[Weave Ceremony]], [[Hibernation Ceremony]] each split into a lean operational card + `— Context.md` companion. Convention formalized in SCHEMA.md Section 6 and Substrate Skill: tone/communication style/shared goals stay in operational cards; rationale, history, open questions move to Context. All Context files carry full frontmatter and link back via `emerged-from`.
-- [ ] **Harvest Log growth** — At 53KB, the Harvest Log is the largest content file in the palace. As deposit queues clear, old completed rows could be archived to a `Harvest Log — Archive.md` file, keeping the active log lean.
+- [x] **Harvest Log growth** — Resolved 2026-03-21. Harvest Log split into [[Harvest Frontier]] (live state), [[Harvest Queue]] (pending deposits), and [[Harvest Archive]] (completed/skipped — never read during ceremony). Each file has one job. No ceremony loads more than it requires.
 
 ---
 
