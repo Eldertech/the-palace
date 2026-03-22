@@ -145,3 +145,17 @@ Paths in the source that weren't followed. Not a to-do list — an honest accoun
 
 Anything that remains unresolved or unasked from this source.
 ```
+
+---
+
+## Session Log — 2026-03-21
+
+### Changes Made
+
+Three additions to the Deposit Ceremony operational card, developed in conversation with Loudon:
+
+**Step 7c: Route the branches** — Lost branches named in the deposit map now get routed to existing palace entries rather than disappearing into hibernated threads. The routing test: *which existing entry would a future walker most likely be reading when this branch becomes relevant?* The branch lands in that entry's growing edge section as a question or brief statement. If no clear home exists, it goes into the closing note only. No new stub pages are created for lost branches.
+
+**Open Questions & Budding Branches** — The standard entry section `## Open Questions` has been renamed `## Open Questions & Budding Branches` in the README minimum viable entry template. The section now explicitly names three things that live there: unresolved questions, actively carried questions, and unfollowed paths from conversation. This is the growing edge of an entry — the place lost branches attach to living knowledge rather than floating free.
+
+**Step 3: Reflection voice note** — If Loudon's response to the Step 3 reflection question reveals something significant, it is treated as deposit material and added to the most relevant existing entry or its Context file. Loudon's words are preserved as closely as possible — quoted directly or edited lightly for clarity only. The palace is largely written by AI; these reflection moments are in his voice, and that has value worth keeping.
