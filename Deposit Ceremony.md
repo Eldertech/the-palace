@@ -165,6 +165,8 @@ Do not present a deposit map immediately. The map is synthesis — it requires a
 
 In both cases: wait for Loudon to respond before proceeding. Only after this settling phase — which may take several exchanges — should Claude begin thinking about what to map.
 
+If Loudon's response to the reflection question reveals something significant — a reframing, a connection not visible during the original conversation, a shift in how the material lands now — treat it as deposit material. Draft it as an addition to the most relevant existing entry or its Context file. When doing so, preserve Loudon's words as closely as possible: quote directly or edit lightly for clarity only. These moments are in his voice, and that has value the palace should keep.
+
 **Step 4: Survey**
 
 Before drafting any entries, present a deposit map to Loudon. The map forces synthesis before production.
