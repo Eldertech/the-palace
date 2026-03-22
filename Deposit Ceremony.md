@@ -266,6 +266,16 @@ The queue update happens in the next filesystem session when the flag is seen.
 *Spontaneous deposit (not previously in the queue):*
 Assign the next available harvest ID. Write the closing note. Append directly to [[Harvest Archive]] — no queue removal needed. Then proceed with git commit.
 
+**Step 7c: Route the branches**
+
+For each named lost branch, attempt to place it on an existing palace entry before considering any other option.
+
+The routing test: *which existing entry would a future walker most likely be reading when this branch becomes relevant?* That entry's `## Open Questions & Budding Branches` section is where it lives.
+
+Write the branch as a question or brief statement — one or two sentences. A question if the branch opened something unresolved. A statement if it named a direction not followed.
+
+If no existing entry is a clear home, write the branch into the closing note only. It is preserved in the thread. No new palace pages are created for lost branches.
+
 ---
 
 ## Completion Signal
@@ -274,8 +284,9 @@ The deposit is complete when all of the following are true:
 
 1. All artifacts from the conversation are written to the palace
 2. Lost branches are named in the deposit map
-3. Loudon has confirmed: nothing feels unfinished or unsaid
-4. Closing note is written into the conversation thread
-5. [[Harvest Queue]] updated (or memory flag written if no filesystem access)
-6. Git commit made
+3. Each lost branch has been routed: placed on an existing entry's growing edge, or noted in the closing note
+4. Loudon has confirmed: nothing feels unfinished or unsaid
+5. Closing note is written into the conversation thread
+6. [[Harvest Queue]] updated (or memory flag written if no filesystem access)
+7. Git commit made
 
