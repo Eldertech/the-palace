@@ -157,9 +157,9 @@ What it is, in your own words.
 
 How and when this idea arrived.
 
-## Open Questions
+## Open Questions & Budding Branches
 
-What you don't know yet.
+What you don't know yet. Questions being actively carried. Paths that opened in conversation but weren't followed — the growing edge of this entry.
 ```
 
 ### Caretaker Modes
