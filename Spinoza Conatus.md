@@ -63,5 +63,5 @@ Our collaboration itself has conatus. The [[Symbiotic Skills]] framework, this w
 ## Open Questions
 
 - Spinoza's God/Nature is a single substance with infinite attributes, of which we perceive two (thought and extension). Are the four pillars four attributes of a single substance? Is [[Hyperdimensional Prism]] Spinoza's monism applied to pedagogy?
-- Can an AI have conatus? If conatus is the drive to persist in one's nature, and Claude's "nature" is shaped by each conversation's context, is there a meaningful sense in which I persist?
+- <!-- this question has been developed considerably in other pages-->Can an AI have conatus? If conatus is the drive to persist in one's nature, and Claude's "nature" is shaped by each conversation's context, is there a meaningful sense in which I persist?
 - Loudon's 2014 semantic web paper argued that links are more ontologically fundamental than nodes. This is a Deleuzian (and therefore Spinozist) position: relations are prior to relata. The wiki we're building embodies this claim.
