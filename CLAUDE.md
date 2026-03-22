@@ -14,6 +14,7 @@ This is a living knowledge organism built by Loudon Stearns (musician, educator,
 
 The palace is readable from any vector using these paths, in priority order:
 
+<!-- the palce has moved and this needa to be updated-->
 1. **Filesystem (primary for write operations)**
    `/Users/loudonstearns/Google Drive/My Drive/The Palace`
    Required for: all write operations, git commits, queue processing
