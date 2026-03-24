@@ -1,7 +1,10 @@
 ---
-title: "Metaphor as Coupling Medium"
+title: Metaphor as Coupling Medium
 type: breakthrough
-pillars: [philosophy, practice, creation]
+pillars:
+  - philosophy
+  - practice
+  - creation
 born: 2026-03
 stage: sprout
 last_activated: 2026-03
@@ -9,7 +12,7 @@ activation_count: 1
 energy: very high
 beauty: 10
 links:
-  - target: "[[Lateral Access]]"
+  - target: "[[Lataral Access]]"
     type: mirrors
   - target: "[[Kuramoto Coupling]]"
     type: mirrors
@@ -121,7 +124,7 @@ student who arrives already knowing what they expect to learn is defended agains
 surprise. The student who arrives willing to follow an image into unfamiliar
 territory — that student is available to the real discovery.
 
-This connects directly to [[Lateral Access]]: the front door is often guarded by
+This connects directly to [[Lataral Access]]: the front door is often guarded by
 the student's existing self-model. The oblique approach bypasses the guard. The
 concept arrives through a window they didn't know was open.
 

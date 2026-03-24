@@ -21,7 +21,7 @@ Welcome. You are reading the entry point of a shared knowledge base built by Lou
 
 This palace relies on a deep mixture of metaphorical, philosophical, and technical language and concepts. This is a foundational mode of working, what an ai might describe as a "skill" we describe in other ways, perhaps a "spell" or "ceremony." Mixing metaphorical and cultural references expresses deep meaning and nuance which simple technical jargon misses. Working within this palace of ideas has a mystical feeling that technical jargon misses. Working within this palace this way is not perfectly efficient, it has friction and contradiction and that is OK and celebrated.
 
-The name: memory palace. Our palace. knowledge palace. A place built for traversal, for finding, for knowing where things live.
+The name: memory palace. Our palace. knowledge palace. A place built for traversal, for finding, for knowing where things live. It has a git backup, so be bold, risk it.
 
 ## Palace Ceremony Triggers
 
@@ -31,7 +31,7 @@ When working within the palace with an AI:
 - **"Let's walk"** — The AI reads the current state of the palace and surfaces connections, orphans, or surprises. The Walk ceremony.
 - **"Let's weave"** — Full graph review. The AI reads all entries, reports on topology, suggests new links, identifies what's dormant. The Weave ceremony.
 - **"Spore check"** — The AI reviews dormant entries against current work and proposes revivals.
-- **"What does the palace say about [topic]?"** — The AI searches the palace for relevant entries and synthesizes.
+- **"What does the palace say about...?"** — The AI searches the palace for relevant entries and synthesizes.
 - **"Connect this to the palace"** — The AI proposes which existing entries relate to what you're currently discussing and what link types apply.
 
 This is a partial list. For the complete list of all ceremonies, see [[Palace Ceremonies]].
@@ -75,6 +75,9 @@ Every entry has two layers:
 **YAML frontmatter** (the metadata between `---` fences at the top) — Structured data that encodes the entry's type, pillar affiliations, development stage, energy level, and most importantly: **typed links** to other entries. These typed links are the semantic web of the palace — they don't just say "these two things are connected" but *how* they're connected (mirrors, enables, deepens, spawned, contradicts, couples-with). In Obsidian's reading view, the frontmatter is hidden. Switch to editing view to see and modify it.
 
 **Body prose** — Human-readable writing. Contains `[[wiki links]]` to other entries (untyped, contextual) and the actual knowledge: origins, cross-domain connections, open questions.
+
+<!--We will need to add here the importance of the ending open questions, "forward vector" at the end of each entry. Every page must be considered as a page of text to read, but also as the invocation of an agent, and the last part of the page is the forward vector of that agent, Next steps, open questions, drive, conatus -->
+
 
 ### The Typed Link Ontology
 
@@ -134,7 +137,7 @@ Entries that touch all four pillars are likely hub nodes. Cross-pillar connectio
 3. Add at least 2-3 typed links in the frontmatter connecting to existing entries
 4. Write the body: an Origin section (how this idea arrived), the core content, Cross-Pillar Connections, and Open Questions
 5. Sprinkle `[[wiki links]]` in the body text to any related entries
-
+<!-- Lets move from "open questions & Budding branches to "forward vector" When this page is the "spirit" of an AI agent what are its drives, what questions does it want to answer, what does it want to fix about itself. Its tone and its personality is learned through its content and it drive is found in it's forward vector -->
 ### Minimum Viable Entry
 
 ```yaml
@@ -162,9 +165,6 @@ How and when this idea arrived.
 What you don't know yet. Questions being actively carried. Paths that opened in conversation but weren't followed — the growing edge of this entry.
 ```
 
-### Caretaker Modes
-
-The Weaver, the Headmaster, the Scout, the Gardener — these are attitudes we adopt during different ceremonies, not persistent entities. The palace is the persistent layer. Conversations are metabolic events that modify it.
 
 ### The Key Rule
 
@@ -173,6 +173,8 @@ Don't wait for perfection. Plant seeds. Tend them later.
 ## Palace Ceremonies
 
 The palace stays alive through periodic ceremonies — intentional acts of review and maintenance. For the complete list with triggers and full specs, see [[Palace Ceremonies]].
+
+<!--Add in deposit here, as it is perhaps the most important to the growth of the palace -->
 
 **The Walk** (weekly, ~15 min) — Pick a starting entry. Follow links. Read. Note what surprises you. This is the songline walk — the act of traversal generates understanding.
 
@@ -183,6 +185,8 @@ The palace stays alive through periodic ceremonies — intentional acts of revie
 **The Self-Model Update** (when it feels right) — Revise [[Substrate]] page. Update the organism's self-description.
 
 ## Philosophical Foundations
+
+<!-- This section needs setting up, establishing the importance of philosophical/metaphorical grounding, why is this important, how should philosophies be used in general? -->
 
 This palace stands on ideas from:
 

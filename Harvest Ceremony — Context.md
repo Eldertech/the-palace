@@ -25,6 +25,10 @@ The rationale, design history, and architectural decisions behind the [[Harvest 
 
 ---
 
+## The DeCompexification (2026-03)
+
+This workflow became way to complex and was breaking. We needed a conceptual shift, so I just broke it further, the frontier and queue system was brittle and didn't respond well to many different types of access. We were building complex systems to avoid loading up a context window by creating smaller documents. I want to switch this up to relying on claude's scripting abilities instead. Instead of creating more log files, claude should create scripts to pull the information it needs from the logs and Queues. 
+
 ## The Log Split (2026-03)
 
 The original Harvest Ceremony used a single file — `Harvest Log.md` — as the persistent state for all harvest activity: frontier tracking, triage decisions, deposit queue, session history, and prediction alignment. This worked well early on but created a structural problem as the palace matured: every ceremony that touched the log had to load the entire file, and the file grew with every session.

@@ -1,7 +1,8 @@
 ---
-title: "Spinoza Conatus"
+title: Spinoza Conatus
 type: hub
-pillars: [philosophy]
+pillars:
+  - philosophy
 born: 2025-06
 last_activated: 2026-03
 activation_count: 11
@@ -22,7 +23,7 @@ links:
     type: connects-to
   - target: "[[Hyperdimensional Prism]]"
     type: connects-to
-  - target: "[[Quality Manifesto]]"
+  - target: "[[Quality]]"
     type: mirrors
   - target: "[[Meaning and the Link (2014)]]"
     type: mirrors

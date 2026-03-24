@@ -1,7 +1,10 @@
 ---
-title: "Hilaritas Generator"
+title: Hilaritas Generator
 type: hub
-pillars: [practice, philosophy, creation]
+pillars:
+  - practice
+  - philosophy
+  - creation
 born: 2025-09
 last_activated: 2026-03
 activation_count: 9
@@ -20,7 +23,7 @@ links:
     type: mirrors
   - target: "[[Symbiotic Skills]]"
     type: enables
-  - target: "[[Quality Manifesto]]"
+  - target: "[[Quality]]"
     type: enables
   - target: "[[Excellent Adventure]]"
     type: spawned
@@ -70,7 +73,7 @@ The hilaritas generator applied to the creator's own practice has a single opera
 
 This is not sentimentality — it is the correct feedback loop. Platform analytics measure titillatio (narrow, localized response). Felt experience measures whether hilaritas actually occurred. A session that produced 10,000 views and left you depleted was a tristitia event. A session that produced 40 views and left you expanded was a hilaritas event. The metrics redirector insists on the right signal.
 
-See [[Quality Manifesto]] for the full articulation of this principle.
+See [[Quality]] for the full articulation of this principle.
 
 ## Leverage Points as Hilaritas Infrastructure
 

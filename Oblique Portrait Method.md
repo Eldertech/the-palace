@@ -1,7 +1,11 @@
 ---
-title: "Oblique Portrait Method"
+title: Oblique Portrait Method
 type: practice
-pillars: [creation, tools, philosophy, practice]
+pillars:
+  - creation
+  - tools
+  - philosophy
+  - practice
 born: 2026-03
 stage: growing
 last_activated: 2026-03
@@ -14,7 +18,7 @@ links:
     type: mirrors
   - target: "[[Symbiotic Skills]]"
     type: connects-to
-  - target: "[[Lateral Access]]"
+  - target: "[[Lataral Access]]"
     type: spawned
   - target: "[[Four Pillars]]"
     type: connects-to

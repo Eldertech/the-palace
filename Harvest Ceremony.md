@@ -24,16 +24,39 @@ links:
   - target: "[[Entry Desire]]"
     type: connects-to
 ---
+<!--On 3/22 Loudon edited this document heavily. We are in the process of simplifying this, do not run this ceremony unless you take a moment to coordinate simplifying this and the Deposit ceremony together and remove this comment after the ceremonies are updated, a major edit has been to reduce the scope of the ceremony so that it is only for Loudon & Claude conversations and only when on the computer, not designed for Claude.ai input vector. Previously we incorporated a "Harvest Frontier" which I believe is not at all necessary. The Harvest Archive should be renamed the Deposit Archive, as that is a more accurate description of what it actually is. Please refer to older Git commits and to the Harvest ceremony context to understand what the ceremonies were, before I made this simplification edit-->
+
+Harvest and deposit Structure:
+
+Harvest Ceremony searches through past chats to uncover ideas that have not been added to the Palace. The conversation links and suggestions are added to the Harvest Queue.
+
+Then Loudon goes through the Queue and follows the links there to do a deposit ceremony in the original conversation to put the important aspects into the Palace.
+
+This is largely needed to catchup to where we are now. There were many conversations created before the palace was created, this is a way to catch up to where we are now. Moving forward Loudon will deposit as he has new conversations.
+
+This must also be used within Projects, to ensure that all important conversations from projects were added to the Palace.
+
+
+Step by step:
+1. Harvest triages and builds the log.
+2. Loudon goes to one of the links in the log.
+3. Loudon deposits and hibernates a conversation, the record of that deposit is placed at the end of the Deposit Archive without reading the document's contents.
+4. When I request the harvest ceremony to propose a new deposit, we must scan through the document to find conversations that are worthy of being deposited that haven't already been deposited. <!--This process of comparing the deposit archive and the harvest queue must be developed and it should happen without loading the entirety of both into context. We need to find an answer that uses a script to pull all of the needed information out of the deposit archive so that the entire archive does not need to be loaded into context.-->
+
+
+<!-- Previous version of this process were overly specific and too structured, it is OK if some ideas are missed, or I go to a conversation two times by accident. We shouldn't make complex workflows. There are two many access vectors and unknowns, keep the principles clear and the goals in mind and allow for a little sloppyness. This is a shift in thinking for me, I am accostumed to very strict programming, but lets be looser, you also tend toward making "production ready" workflows, but I don't need that in the palace, I need conversational incremental progress toward beauty and truth and innovation.-->
+
 
 # Harvest Ceremony
 
-A triage ceremony for surveying raw source material — conversations, documents, notes, files — and flagging what is worthy of eventual incorporation into the palace. The Harvest does not build palace entries. It identifies what should be built and records that decision persistently across [[Harvest Frontier]], [[Harvest Queue]], and [[Harvest Archive]].
+A triage ceremony for surveying raw conversations and flagging what is worthy of eventual incorporation into the palace. The Harvest does not build palace entries. It identifies what should be built and records that decision into the [[Harvest Queue]].
 
 The Harvest is designed to run across many sessions, stopped and started freely, by different Claude instances with no prior context. The [[Harvest Frontier]] is the only state that persists across sessions. Every session reads the frontier, finds where to resume, then writes new decisions to [[Harvest Queue]] (worthy/partial) or [[Harvest Archive]] (skip/done).
 
 For rationale and historical calibration observations, see [[Harvest Ceremony — Context]].
 
 ## Ceremony Contract
+<!-- I don't like seeing these contracts like this, we need to re-write all of these in natural language, don't fill the palace with tech speech unless absolutely necessary. Places like this make me feel like I can't edit this or it will cause disaster, but it won't, and you skip over things like this all the time anyway! Numerous times I have had to remind you to read the whole ceremony when you skipped to a part, so these aren't working perfectly, and they are ugly, so lets make purpose,goals, intent clear and reinforce intent and desire instead of setting strict rules. We are building mindful collaborators with shared goals, not mindless rigid fragile automatons. -->
 
 **Trigger:** "Let's harvest"
 
@@ -95,58 +118,27 @@ Item summaries must be 1–2 sentences maximum. Gestalt recognition, not re-read
 
 **On interruption:** If a session is interrupted before the log is written, the Frontier will not reflect the lost decisions. On resume, check whether the Frontier matches expectations. If batch decisions were lost, re-triage using the prediction system — with high alignment, re-triage is fast and low-friction.
 
-## Source Types
-
-The Harvest begins with Claude chat history and expands over time to any source:
-
-| Source Type | `source_type` value | How to Access |
-|---|---|---|
-| Claude conversations | `claude_chat` | `recent_chats` tool, oldest-first |
-| Google Drive documents | `google_doc` | Google Drive search or direct fetch |
-| Local files | `local_file` | Filesystem tools |
-| Email threads | `email` | Gmail tool |
-| Research notes | `research_note` | Any applicable tool |
-
-New source types can be added as the palace grows. The [[Harvest Log]] schema accommodates any source type through the `source_type` and `source_ref` fields.
-
 ## Starting a Harvest Session
 
-**Step 1: Orient**
-Read [[Harvest Frontier]]. Check:
-- `## Frontier` — where to resume, what datetime to use for the next `recent_chats` call
-- `## Prediction Alignment Log` — current alignment score and any calibration notes to load before predicting
+Look through the deposit archive and the harvest queue to determine what past conversations are available for harvest that have not been triaged or deposited. Do not load the entire deposit archive into context. Instead read a small part to establish the format of the deposit archive and use scripts to pull a condensed version of the exact information you need to define a pool of unharvested conversations for triage. Remember, create scripts to avoid loading logs and queues into context, document successful scripting approaches in the logs and queues themselves for future passes. As your tools and capabilities grow these processes must adapt, don't code specific steps, document successful processes and assume the next user will start from that process and adapt based on their skills.
 
-**Step 2: Load**
-Load the next batch from the frontier. For Claude chats: use `recent_chats` with `sort_order: asc` and `after` set to the frontier datetime. Batches of 15–20 items.
-
-**⚠ Project scope constraint:** The `recent_chats` and `conversation_search` tools are scoped to the launch context. Conversations inside Claude Projects are invisible to a harvest started outside a project, and vice versa. To harvest project conversations, start a dedicated harvest session from within each project. If harvesting from within a Claude Project, record the project name in the `source_project` field of every log entry created in that session. Leave blank for conversations outside projects. Maintain a harvest log entry noting which projects have been covered and when.
-
-**Step 3: Pre-process**
+Pre-process**
 Before building the interface:
 - Generate a prediction (worthy / skip / partial) and confidence score for every item
 - Identify items eligible for auto-triage (≥90% skip confidence, alignment threshold met)
 - Auto-triage those items internally; prepare the override list
 
-**Step 4: Build the interface**
+Build the interface**
 Present non-auto-triaged items as the interactive card UI. Show auto-triaged items as a collapsible override list at the top. Include all predictions on cards.
 
-**Step 5: Triage**
+Triage**
 Loudon clicks through. No discussion during triage. If something pulls toward depth, note it in `deposit_notes` and continue — depth happens in [[Deposit Ceremony]].
 
-**Step 6: Log**
+**Log**
 When Loudon submits, write all decisions in one operation:
 - Worthy/partial rows → append to [[Harvest Queue]]
-- Skip/done rows → append to [[Harvest Archive]]
-- Update Frontier datetime and Alignment Log table in [[Harvest Frontier]]
+- Skip/done rows → append to [[Deposit Archive]]
 
-## Stopping the Harvest
-
-Any of the following ends a session cleanly:
-- Loudon says "stop," "pause," or "that's enough"
-- The batch runs out
-- A deposit is triggered mid-harvest
-
-On stop: update the Frontier in [[Harvest Frontier]], add a session row to `## Session History`, confirm [[Harvest Queue]] and [[Harvest Archive]] are current. Then commit: `Harvest — [batch ID range] — [N worthy, N partial, N skip]`.
 
 ## What Makes Something "Worthy"
 
@@ -189,8 +181,6 @@ A new Claude instance with no prior context resumes by:
 
 1. Reading [[README - The Palace Guide]]
 2. Reading this entry
-3. Reading [[Harvest Frontier]] — Frontier section and Prediction Alignment Log
-4. Loading the next batch from the Frontier datetime
-5. Pre-processing predictions, building the interface, presenting to Loudon
+3. Pre-processing predictions, building the interface, presenting to Loudon
 
 No other context needed. The palace is self-sufficient.

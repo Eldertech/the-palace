@@ -20,6 +20,8 @@ links:
     type: connects-to
   - target: "[[Four Pillars]]"
     type: connects-to
+  - target: "[[Ohm's Law]]"
+    type: connects-to
 ---
 
 # Modes of Collaboration
@@ -53,6 +55,17 @@ Claude functions as a deeply invested mentor who creates progressive lesson mate
 **Output**: Lesson documents, answer keys, deep mathematical/technical intuition
 **Ideal for**: Mathematics, physics, DSP theory, any domain with formal structure that benefits from progressive scaffolding
 **Named examples**: Kuramoto coupling 8-lesson series (March 2026), Differential equations and cross-domain applications (January 2026)
+
+### Interactive Exploration for Mathematical Intuition
+
+Concrete mathematical concepts — relationships between variables in equations, physical phenomena with precise formulas — are learned through manipulable interactive interfaces that make the relationships tangible. Claude builds tools (sliders, visualizations, interactive demos) that let Loudon **feel** how variables relate, paired with quiz work for gap detection.
+
+**Rhythm**: Iterative refinement — build the interface, test intuition, refine the interface based on what's still confusing
+**Power dynamic**: Loudon defines what feels right (precision, scaling, visual layout); Claude implements and explains the underlying patterns
+**Output**: Interactive teaching instruments + reference documents; dual-purpose tools (Loudon's understanding + teaching others)
+**Ideal for**: Equations with multiple interacting variables (Ohm's Law, inharmonicity formulas), interface design patterns (logarithmic scaling), physics simulations
+**Named examples**: [[Ohm's Law]] interactive with lock mechanism (March 2026), [[Piano String Inharmonicity]] string bending explorer (March 2026), logarithmic slider design
+**Pedagogical completeness criterion**: An interactive demo is complete when Loudon can teach confidently with it — requires both the interactive element and a carefully designed teaching document
 
 ### The Build Session
 

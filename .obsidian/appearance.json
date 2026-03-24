@@ -1,1 +1,9 @@
-{}
+{
+  "theme": "obsidian",
+  "showRibbon": false,
+  "showViewHeader": false,
+  "baseFontSize": 18,
+  "nativeMenus": true,
+  "translucency": true,
+  "cssTheme": "Maple"
+}

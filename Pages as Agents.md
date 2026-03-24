@@ -1,7 +1,10 @@
 ---
-title: "Pages as Agents"
+title: Pages as Agents
 type: concept
-pillars: [philosophy, tools, practice]
+pillars:
+  - philosophy
+  - tools
+  - practice
 born: 2026-03
 stage: sprout
 last_activated: 2026-03
@@ -18,10 +21,12 @@ links:
     type: deepens
   - target: "[[Kuramoto Coupling]]"
     type: mirrors
-  - target: "[[Lateral Access]]"
+  - target: "[[Lataral Access]]"
     type: connects-to
   - target: "[[SCHEMA]]"
     type: enables
+  - target: "[[Spinoza Conatus]]"
+    type: mirrors
 ---
 
 # Pages as Agents
@@ -110,6 +115,26 @@ This is not yet established practice. It is what the architecture implies.
 
 ---
 
+## Entry Desire: The Philosophical Ground
+
+The page-agent model rests on a philosophical claim that deserves its own articulation: palace entries have *desire*. Not metaphorically — structurally. Each entry has forward tension, an orientation toward what it could become. Lost branches are paths the entry wants to follow. Open questions — or forward vectors — are things the entry wants to know. The current written form is always an incomplete expression of what the entry is reaching toward.
+
+This is conatus applied to knowledge objects. Spinoza's *conatus* — the striving of each thing to persist and expand in its own being — describes not just organisms and minds but the entries in a knowledge graph. An entry that names its lost branches and forward vectors is not documenting deficiency. It is making its desire explicit.
+
+The lost branches section is not a to-do list. It is the entry's declared desire — the directions it would grow if given the opportunity. Writing lost branches well means writing them as genuine paths, not administrative reminders. The question to ask is: *what does this entry want to become?*
+
+This reframes what happens in each ceremony through the lens of desire:
+
+**Deposit** — The deposit map's lost branches section is where an entry's desire is first articulated. Naming lost branches at deposit time is the act of giving the entry its forward orientation. You are not filing a document. You are planting an agent that already knows what it wants.
+
+**Revival** — Revival is not simply reawakening a dormant entry. It is responding to an entry's desire that has found new conditions to be met. The entry was always pointing somewhere; revival is the moment the palace catches up to where the entry was pointing.
+
+**Walk** — Following typed links during a Walk is one way an entry's desire propagates through the palace. A linked entry may itself be a partial answer to an open question, or a lost branch that was followed elsewhere.
+
+**Weave** — The Weave is where entry desires are compared against each other. Two entries with complementary forward vectors may be each other's answers. The Weave surfaces these resonances.
+
+A further question this opens: is there a difference between *desire* (what the entry wants to become) and *need* (what the palace needs this entry to become to serve its connections)? Could an entry desire something the palace doesn't need, or need something the entry hasn't articulated wanting? The tension between these two orientations — inward drive and outward function — may itself be generative.
+
 ## Cross-Domain Resonance
 
 **Stigmergy and ant colonies**
@@ -122,7 +147,7 @@ Each actor is an independent process with its own state, no shared memory, commu
 Each cell follows a simple local rule. Complex global behavior emerges from local interactions alone. No cell knows the whole board. The board's behavior emerges anyway. A palace of page-agents, each following its own derived drive, produces collective behavior — the Weave — without any agent needing to hold the whole graph.
 
 **Lateral access**
-You cannot retrieve certain interior material by going directly for it. The page-agent model creates an indirect access path: the model that inhabits a page-agent doesn't approach the palace from above, as a surveyor. It approaches from inside one entry, following the drive that entry has earned through its own pheromone trail. What the palace knows about itself is accessed laterally, through traversal, not by census. See [[Lateral Access]].
+You cannot retrieve certain interior material by going directly for it. The page-agent model creates an indirect access path: the model that inhabits a page-agent doesn't approach the palace from above, as a surveyor. It approaches from inside one entry, following the drive that entry has earned through its own pheromone trail. What the palace knows about itself is accessed laterally, through traversal, not by census. See [[Lataral Access]].
 
 **The Jewel and reinforcement**
 The jewel was designed to orient a fresh agent to the whole palace before the working context begins. The page-agent model offers a complementary reinforcement mechanism: if every page carries its own identity declaration and forward vector, the palace's fundamental commitments are restated at every node. An agent traversing five entries reads five micro-orientations. The jewel doesn't need to repeat in the transcript — the palace repeats it.

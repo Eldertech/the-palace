@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PD Portamento - Ultra Stable</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            font-family: 'Courier New', monospace;
+            background: #0a0a0a;
+            color: #00ff00;
+            display: flex;
+            gap: 20px;
+            min-height: 100vh;
+        }
+        
+        .controls {
+            width: 250px;
+            background: #1a1a1a;
+            padding: 20px;
+            border: 2px solid #00ff00;
+            border-radius: 8px;
+            height: fit-content;
+        }
+        
+        .main {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        
+        h1 {
+            margin: 0 0 20px 0;
+            font-size: 24px;
+            text-align: center;
+            color: #00ff00;
+            text-shadow: 0 0 10px #00ff00;
+        }
+        
+        h2 {
+            margin: 0 0 15px 0;
+            font-size: 16px;
+            border-bottom: 1px solid #00ff00;
+            padding-bottom: 5px;
+        }
+        
+        .note-buttons {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px;
+            margin-bottom: 20px;
+        }
+        
+        button {
+            background: #1a1a1a;
+            color: #00ff00;
+            border: 2px solid #00ff00;
+            padding: 12px 8px;
+            cursor: pointer;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            font-weight: bold;
+            border-radius: 4px;
+            transition: all 0.1s;
+        }
+        
+        button:hover {
+            background: #00ff00;
+            color: #0a0a0a;
+            box-shadow: 0 0 15px #00ff00;
+        }
+        
+        button:active {
+            transform: scale(0.95);
+        }
+        
+        .reset-button {
+            background: #1a1a1a;
+            color: #ff6600;
+            border: 2px solid #ff6600;
+            width: 100%;
+            margin-bottom: 20px;
+            padding: 15px;
+            font-size: 16px;
+        }
+        
+        .reset-button:hover {
+            background: #ff6600;
+            color: #0a0a0a;
+            box-shadow: 0 0 15px #ff6600;
+        }
+        
+        .slider-group {
+            margin-bottom: 20px;
+        }
+        
+        .slider-label {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 5px;
+            font-size: 12px;
+        }
+        
+        .slider-value {
+            color: #00ff00;
+            font-weight: bold;
+        }
+        
+        input[type="range"] {
+            width: 100%;
+            height: 6px;
+            background: #0a0a0a;
+            outline: none;
+            border: 1px solid #00ff00;
+            border-radius: 3px;
+            -webkit-appearance: none;
+        }
+        
+        input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 16px;
+            height: 16px;
+            background: #00ff00;
+            cursor: pointer;
+            border-radius: 50%;
+            box-shadow: 0 0 5px #00ff00;
+        }
+        
+        input[type="range"]::-moz-range-thumb {
+            width: 16px;
+            height: 16px;
+            background: #00ff00;
+            cursor: pointer;
+            border-radius: 50%;
+            border: none;
+            box-shadow: 0 0 5px #00ff00;
+        }
+        
+        #canvas {
+            background: #0a0a0a;
+            border: 2px solid #00ff00;
+            border-radius: 8px;
+            box-shadow: 0 0 20px rgba(0, 255, 0, 0.3);
+        }
+        
+        .stats {
+            background: #1a1a1a;
+            border: 2px solid #00ff00;
+            border-radius: 8px;
+            padding: 15px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+        }
+        
+        .stat {
+            font-size: 12px;
+        }
+        
+        .stat-label {
+            color: #00aa00;
+            margin-bottom: 3px;
+        }
+        
+        .stat-value {
+            font-size: 18px;
+            font-weight: bold;
+            color: #00ff00;
+        }
+        
+        .preset-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            margin-top: 20px;
+        }
+        
+        .preset-button {
+            padding: 8px;
+            font-size: 12px;
+        }
+        
+        .info {
+            font-size: 11px;
+            color: #00aa00;
+            line-height: 1.4;
+            margin-top: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="controls">
+        <button class="reset-button" onclick="resetSystem()">⟲ RESET</button>
+        
+        <h2>NOTES</h2>
+        <div class="note-buttons">
+            <button onclick="playNote(36)">C2<br>65Hz</button>
+            <button onclick="playNote(40)">E2<br>82Hz</button>
+            <button onclick="playNote(43)">G2<br>98Hz</button>
+            <button onclick="playNote(48)">C3<br>131Hz</button>
+            <button onclick="playNote(52)">E3<br>165Hz</button>
+            <button onclick="playNote(55)">G3<br>196Hz</button>
+            <button onclick="playNote(60)">C4<br>262Hz</button>
+            <button onclick="playNote(64)">E4<br>330Hz</button>
+            <button onclick="playNote(67)">G4<br>392Hz</button>
+            <button onclick="playNote(72)">C5<br>523Hz</button>
+            <button onclick="playNote(76)">E5<br>659Hz</button>
+            <button onclick="playNote(79)">G5<br>784Hz</button>
+        </div>
+        
+        <h2>SIMPLE SMOOTHING</h2>
+        <div class="slider-group">
+            <div class="slider-label">
+                <span>Glide Speed</span>
+                <span class="slider-value" id="speed-value">0.15</span>
+            </div>
+            <input type="range" id="speed" min="0.01" max="0.5" step="0.01" value="0.15" oninput="updateParams()">
+            <div class="info">How fast to glide to target</div>
+        </div>
+        
+        <div class="slider-group">
+            <div class="slider-label">
+                <span>Smoothness</span>
+                <span class="slider-value" id="smooth-value">0.90</span>
+            </div>
+            <input type="range" id="smooth" min="0.70" max="0.99" step="0.01" value="0.90" oninput="updateParams()">
+            <div class="info">Higher = smoother but slower</div>
+        </div>
+        
+        <h2>PRESETS</h2>
+        <div class="preset-buttons">
+            <button class="preset-button" onclick="loadPreset('fast')">Fast</button>
+            <button class="preset-button" onclick="loadPreset('medium')">Medium</button>
+            <button class="preset-button" onclick="loadPreset('slow')">Slow</button>
+            <button class="preset-button" onclick="loadPreset('smooth')">Very Smooth</button>
+        </div>
+    </div>
+    
+    <div class="main">
+        <h1>◆ SIMPLE PORTAMENTO ◆</h1>
+        <canvas id="canvas"></canvas>
+        
+        <div class="stats">
+            <div class="stat">
+                <div class="stat-label">CURRENT PITCH</div>
+                <div class="stat-value" id="current-pitch">C4 (262Hz)</div>
+            </div>
+            <div class="stat">
+                <div class="stat-label">TARGET PITCH</div>
+                <div class="stat-value" id="target-pitch">C4 (262Hz)</div>
+            </div>
+            <div class="stat">
+                <div class="stat-label">ERROR (semitones)</div>
+                <div class="stat-value" id="error">0.000</div>
+            </div>
+            <div class="stat">
+                <div class="stat-label">VELOCITY (st/s)</div>
+                <div class="stat-value" id="velocity">0.00</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const canvas = document.getElementById('canvas');
+        const ctx = canvas.getContext('2d');
+        
+        function resizeCanvas() {
+            canvas.width = canvas.parentElement.offsetWidth;
+            canvas.height = 600;
+        }
+        resizeCanvas();
+        window.addEventListener('resize', resizeCanvas);
+        
+        // State - SIMPLE exponential smoothing
+        let currentPitchSemitones = 60;
+        let targetPitchSemitones = 60;
+        let velocity = 0; // For display only
+        
+        // Parameters
+        let glideSpeed = 0.15; // How fast to approach
+        let smoothness = 0.90; // Smoothing coefficient
+        
+        // History
+        const history = [];
+        const maxHistory = 300;
+        
+        const fps = 60;
+        const dt = 1.0 / fps;
+        
+        const noteNames = ['C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#', 'A', 'A#', 'B'];
+        
+        function midiToFreq(midi) {
+            return 440 * Math.pow(2, (midi - 69) / 12);
+        }
+        
+        function midiToNoteName(midi) {
+            const rounded = Math.round(midi);
+            const octave = Math.floor(rounded / 12) - 1;
+            const note = noteNames[rounded % 12];
+            const cents = Math.round((midi - rounded) * 100);
+            const centsStr = cents !== 0 ? ` ${cents > 0 ? '+' : ''}${cents}¢` : '';
+            return `${note}${octave}${centsStr}`;
+        }
+        
+        function playNote(midi) {
+            targetPitchSemitones = midi;
+        }
+        
+        function resetSystem() {
+            currentPitchSemitones = 60;
+            targetPitchSemitones = 60;
+            velocity = 0;
+            history.length = 0;
+        }
+        
+        function updateParams() {
+            glideSpeed = parseFloat(document.getElementById('speed').value);
+            smoothness = parseFloat(document.getElementById('smooth').value);
+            
+            document.getElementById('speed-value').textContent = glideSpeed.toFixed(2);
+            document.getElementById('smooth-value').textContent = smoothness.toFixed(2);
+        }
+        
+        function loadPreset(name) {
+            const presets = {
+                fast: { speed: 0.25, smooth: 0.85 },
+                medium: { speed: 0.15, smooth: 0.90 },
+                slow: { speed: 0.08, smooth: 0.93 },
+                smooth: { speed: 0.05, smooth: 0.96 }
+            };
+            
+            const preset = presets[name];
+            document.getElementById('speed').value = preset.speed;
+            document.getElementById('smooth').value = preset.smooth;
+            updateParams();
+        }
+        
+        function processSimpleGlide() {
+            // Store previous for velocity calculation
+            const previousPitch = currentPitchSemitones;
+            
+            // Calculate error
+            const error = targetPitchSemitones - currentPitchSemitones;
+            
+            // Simple proportional movement toward target
+            const movement = error * glideSpeed;
+            
+            // Apply movement with smoothing
+            currentPitchSemitones += movement * (1 - smoothness);
+            
+            // Smooth the position itself
+            currentPitchSemitones = currentPitchSemitones * smoothness + 
+                                   targetPitchSemitones * (1 - smoothness) * glideSpeed;
+            
+            // Calculate velocity
+            velocity = (currentPitchSemitones - previousPitch) / dt;
+            
+            // Store history
+            history.push({
+                current: currentPitchSemitones,
+                target: targetPitchSemitones,
+                error: error,
+                velocity: velocity
+            });
+            
+            if (history.length > maxHistory) {
+                history.shift();
+            }
+            
+            // Update display
+            const currentFreq = midiToFreq(currentPitchSemitones);
+            const targetFreq = midiToFreq(targetPitchSemitones);
+            
+            document.getElementById('current-pitch').textContent = 
+                `${midiToNoteName(currentPitchSemitones)} (${currentFreq.toFixed(1)}Hz)`;
+            document.getElementById('target-pitch').textContent = 
+                `${midiToNoteName(targetPitchSemitones)} (${targetFreq.toFixed(1)}Hz)`;
+            document.getElementById('error').textContent = error.toFixed(3);
+            document.getElementById('velocity').textContent = velocity.toFixed(2);
+        }
+        
+        function draw() {
+            const width = canvas.width;
+            const height = canvas.height;
+            
+            ctx.fillStyle = '#0a0a0a';
+            ctx.fillRect(0, 0, width, height);
+            
+            const minNote = 30;
+            const maxNote = 84;
+            const noteRange = maxNote - minNote;
+            
+            // Grid
+            ctx.strokeStyle = '#003300';
+            ctx.lineWidth = 1;
+            ctx.font = '10px Courier New';
+            ctx.fillStyle = '#00aa00';
+            
+            for (let note = minNote; note <= maxNote; note += 12) {
+                const y = height - ((note - minNote) / noteRange) * height;
+                ctx.beginPath();
+                ctx.moveTo(50, y);
+                ctx.lineTo(width, y);
+                ctx.stroke();
+                
+                const noteName = midiToNoteName(note);
+                const freq = midiToFreq(note);
+                ctx.fillText(`${noteName}`, 5, y + 3);
+                ctx.fillText(`${freq.toFixed(0)}Hz`, 5, y + 15);
+            }
+            
+            // Target line
+            if (history.length > 0) {
+                const targetY = height - ((targetPitchSemitones - minNote) / noteRange) * height;
+                ctx.strokeStyle = '#00ff0040';
+                ctx.lineWidth = 2;
+                ctx.setLineDash([5, 5]);
+                ctx.beginPath();
+                ctx.moveTo(50, targetY);
+                ctx.lineTo(width, targetY);
+                ctx.stroke();
+                ctx.setLineDash([]);
+                
+                ctx.fillStyle = '#00ff00';
+                ctx.fillText('TARGET', width - 60, targetY - 5);
+            }
+            
+            // Pitch trace
+            if (history.length > 1) {
+                ctx.strokeStyle = '#00ff00';
+                ctx.lineWidth = 3;
+                ctx.shadowBlur = 10;
+                ctx.shadowColor = '#00ff00';
+                
+                ctx.beginPath();
+                for (let i = 0; i < history.length; i++) {
+                    const x = 50 + ((i / maxHistory) * (width - 50));
+                    const pitch = history[i].current;
+                    const clampedPitch = Math.max(minNote, Math.min(maxNote, pitch));
+                    const y = height - ((clampedPitch - minNote) / noteRange) * height;
+                    
+                    if (i === 0) {
+                        ctx.moveTo(x, y);
+                    } else {
+                        ctx.lineTo(x, y);
+                    }
+                }
+                ctx.stroke();
+                ctx.shadowBlur = 0;
+                
+                // Current position
+                if (history.length > 0) {
+                    const lastPoint = history[history.length - 1];
+                    const x = width - 5;
+                    const clampedPitch = Math.max(minNote, Math.min(maxNote, lastPoint.current));
+                    const y = height - ((clampedPitch - minNote) / noteRange) * height;
+                    
+                    ctx.fillStyle = '#00ff00';
+                    ctx.beginPath();
+                    ctx.arc(x, y, 6, 0, Math.PI * 2);
+                    ctx.fill();
+                    
+                    ctx.strokeStyle = '#00ff00';
+                    ctx.lineWidth = 2;
+                    ctx.beginPath();
+                    ctx.arc(x, y, 10, 0, Math.PI * 2);
+                    ctx.stroke();
+                }
+            }
+        }
+        
+        function animate() {
+            processSimpleGlide();
+            draw();
+            requestAnimationFrame(animate);
+        }
+        
+        updateParams();
+        animate();
+    </script>
+</body>
+</html>

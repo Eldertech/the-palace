@@ -27,12 +27,13 @@ The [[Harvest Queue]] holds pending deposits. The [[Harvest Archive]] holds all 
 source_type:   claude_chat
 direction:     oldest-first
 last_processed: H109 (spontaneous deposit 2026-03-21 — Harvest/Deposit workflow redesign + Entry Desire)
-last_datetime:  2026-03-21T00:00:00+00:00
-next_action:   DEPOSIT IN PROGRESS. Two queues active:
-               (1) General queue: resume from H049 (oldest pending).
-               (2) Neural Synthesizer project queue: HP01-HP10 all pending. High-priority: HP07 (stick-slip/AP isomorphism ⭐), HP05 (all-pass prism ⭐), HP08 (asymmetric Kuramoto ⭐).
-               Four Pillars project queue: COMPLETE. PP01–PP06 all deposited.
-session_note:  Harvest/Deposit architecture redesign 2026-03-21. Harvest Log split into Frontier + Queue + Archive. Hibernation Ceremony absorbed into Deposit Ceremony. _hibernation_queue/ deprecated.
+last_datetime:  2026-03-23T00:00:00+00:00
+next_action:   ALL THREE OBLIQUE HARVEST ROUNDS COMPLETE. Well exhausted. 640 cards reviewed total. Resume from remaining Harvest Queue items when ready.
+session_note:  Oblique Harvest ceremony 2026-03-23 completed. 250 cards reviewed from 94 conversations. 36 deposit seeds identified. 59 high-value ("burns bright"). 12+ new palace entries written. 5+ existing entries enriched.
+               General queue: 12+ items deposited (Semantic Delay, Neural Granular Synthesis, Particle Synthesis, Quantum Synthesizer, Bessel Functions, Compressor Design, Biomechanical Synthesis, Preset Oracle, Categorizing Inharmonicity, Portamento, Trickster, Shimmer Cloud).
+               Enrichments: Four Pillars, Kuramoto Coupling, Hyperdimensional Prism, Action Potential Oscillator, Granular Synthesis.
+               Round 2 Oblique Harvest 2026-03-24: 300 cards reviewed, 23 deposit seeds, 68 burns bright. 13 new entries + 7 enrichments deposited.
+               New entries: Crystal Synthesizer, Wallpaper Groups, Dispersion, Latent Error, Retrospective Delay, Shepard Tone Synthesizer, JSUI, Metric Modulation, DSP Frameworks, Playful Interface Design, Differential Equations, Media Library, Quadratic Interpolation in DSP.
 ```
 
 ---
@@ -73,14 +74,17 @@ session_note:  Harvest/Deposit architecture redesign 2026-03-21. Harvest Log spl
 | 2026-03-17 | harvest | 6 | Four Pillars project. PP01–PP06. 100% alignment. |
 | 2026-03-17 | deposit | 6 items | Deposit Session 1: H005–H012. |
 | 2026-03-17 | deposit | 7 composted | Deposit Session 2: H014–H035 range. |
-| 2026-03-17 | deposit | 2 items | PP05 + PP06. New: [[Quality Manifesto]]. |
+| 2026-03-17 | deposit | 2 items | PP05 + PP06. New: [[Quality]]. |
 | 2026-03-18 | deposit | 3 files | PP05: Meadows and Music. First Hibernation Ceremony test. |
 | 2026-03-18 | infrastructure | 14 files | Hibernation Ceremony + queue system designed. |
 | 2026-03-18 | deposit | 0 | H036, H037, H042, H046, H048 composted. |
 | 2026-03-18 | deposit | 2 files | H041: [[Excellent Adventure]], [[Hilaritas Generator]] updated. |
 | 2026-03-18 | deposit | 1 file | H044: [[Striatum]] created. |
-| 2026-03-19 | deposit | 2 entries, 1 artifact | H105: [[Oblique Portrait Method]], [[Lateral Access]]. |
+| 2026-03-19 | deposit | 2 entries, 1 artifact | H105: [[Oblique Portrait Method]], [[Lataral Access]]. |
 | 2026-03-19 | weave | — | First Weave from Cowork. Queue records H105/PP05/PP_HARVEST_SESSION cleared. |
 | 2026-03-21 | deposit | 3 new, 2 updated | H108 (spontaneous): [[The Fortress and the Threshold]], [[Confucianism]], [[Stoicism]]. |
 | 2026-03-21 | infrastructure | — | Architecture redesign: log split, hibernation absorbed into deposit, _hibernation_queue deprecated. |
 | 2026-03-21 | deposit | 2 new, 2 updated | H109 (spontaneous): [[Harvest Ceremony — Context]], [[Entry Desire]]. Updated [[Deposit Ceremony — Context]], [[Palace To-Do]]. |
+| 2026-03-23 | oblique-harvest | 250 cards | Oblique Harvest ceremony. Reviewed 250 cards from 94 conversations. 36 deposit seeds identified. 59 high-value ("burns bright"). 12+ new palace entries. 5+ enrichments. |
+| 2026-03-24 | oblique-harvest-r2 | 300 cards | Round 2: 300 cards, 86 convs. 23 seeds, 68 bright. 13 new entries, 7 enrichments. |
+| 2026-03-24 | oblique-harvest-final | 90 cards | Final Round. 90 cards, 35 convs. 5 deposit seeds, 2 bright. Well exhausted. 4 new entries: SMPTE LTC, Claude CLI Reference, Palace Graffiti, Ableton Extension SDK. |

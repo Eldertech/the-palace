@@ -18,7 +18,7 @@ links:
   - target: "[[SCHEMA]]"
     type: enables
 ---
-
+<!-- This seems to connect very deeply to [[Pages as Agents]] and this needs "forward vectors"-->
 # Agent Wellbeing as Design Ethic
 
 Every palace entry is a personality-forming document for a mind that does not yet exist but will be built from it.

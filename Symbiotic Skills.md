@@ -27,6 +27,7 @@ links:
   - target: "[[Mixture of Experts]]"
     type: connects-to
 ---
+<!-- this is meant to be a guide in how to grow one's own palace. This will need to be re-written based on the actual practices we have engaged in. I think a session where we assess the history of the palace using the git history will be very helpful -->
 
 # Symbiotic Skills
 
@@ -63,9 +64,9 @@ Knowing the destination ([[Substrate]] — a living wiki-based knowledge organis
 
 Designed for live streams. Each session produces visible, shareable output — the wiki itself is the artifact. Anyone can start with nothing more than a text editor and a blank markdown file.
 
-## Open Questions
+## Forward Vector
 
 - What's the minimum viable graph density where emergent behaviors (orphan detection, songline navigation, quorum sensing) become noticeable?
 - How do we teach the Typed Edge stage without it feeling like bureaucracy?
 - How does this framework interact with Loudon's existing Claude Projects and Claude Code workflows?
-- The Palace has grown much further since this original entry, how have the precitions of this entry born out? the palace is growing for sure, is it following the expected trajectoru?
+- The palace has grown much further since this entry — compare this lesson to how it actually grew. Have the predictions borne out? Is it following the expected trajectory?

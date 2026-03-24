@@ -28,7 +28,6 @@ links:
   - target: "[[The Fortress and the Threshold]]"
     type: connects-to
 ---
-
 # Excellent Adventure
 
 A method of embodied historical and philosophical dialogue as an AI learning technique. Named after *Bill & Ted's Excellent Adventure*: past figures are brought into the present, or you travel to them, and they respond — not in lecture, but in living conversation shaped by your specific questions.
