@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PID Portamento Visualizer (Stable)</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            font-family: 'Courier New', monospace;
+            background: #0a0a0a;
+            color: #00ff00;
+            display: flex;
+            gap: 20px;
+            min-height: 100vh;
+        }
+        
+        .controls {
+            width: 250px;
+            background: #1a1a1a;
+            padding: 20px;
+            border: 2px solid #00ff00;
+            border-radius: 8px;
+            height: fit-content;
+        }
+        
+        .main {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        
+        h1 {
+            margin: 0 0 20px 0;
+            font-size: 24px;
+            text-align: center;
+            color: #00ff00;
+            text-shadow: 0 0 10px #00ff00;
+        }
+        
+        h2 {
+            margin: 0 0 15px 0;
+            font-size: 16px;
+            border-bottom: 1px solid #00ff00;
+            padding-bottom: 5px;
+        }
+        
+        .note-buttons {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px;
+            margin-bottom: 20px;
+        }
+        
+        button {
+            background: #1a1a1a;
+            color: #00ff00;
+            border: 2px solid #00ff00;
+            padding: 12px 8px;
+            cursor: pointer;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            font-weight: bold;
+            border-radius: 4px;
+            transition: all 0.1s;
+        }
+        
+        button:hover {
+            background: #00ff00;
+            color: #0a0a0a;
+            box-shadow: 0 0 15px #00ff00;
+        }
+        
+        button:active {
+            transform: scale(0.95);
+        }
+        
+        .reset-button {
+            background: #1a1a1a;
+            color: #ff6600;
+            border: 2px solid #ff6600;
+            width: 100%;
+            margin-bottom: 20px;
+            padding: 15px;
+            font-size: 16px;
+        }
+        
+        .reset-button:hover {
+            background: #ff6600;
+            color: #0a0a0a;
+            box-shadow: 0 0 15px #ff6600;
+        }
+        
+        .slider-group {
+            margin-bottom: 20px;
+        }
+        
+        .slider-label {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 5px;
+            font-size: 12px;
+        }
+        
+        .slider-value {
+            color: #00ff00;
+            font-weight: bold;
+        }
+        
+        input[type="range"] {
+            width: 100%;
+            height: 6px;
+            background: #0a0a0a;
+            outline: none;
+            border: 1px solid #00ff00;
+            border-radius: 3px;
+            -webkit-appearance: none;
+        }
+        
+        input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 16px;
+            height: 16px;
+            background: #00ff00;
+            cursor: pointer;
+            border-radius: 50%;
+            box-shadow: 0 0 5px #00ff00;
+        }
+        
+        input[type="range"]::-moz-range-thumb {
+            width: 16px;
+            height: 16px;
+            background: #00ff00;
+            cursor: pointer;
+            border-radius: 50%;
+            border: none;
+            box-shadow: 0 0 5px #00ff00;
+        }
+        
+        #canvas {
+            background: #0a0a0a;
+            border: 2px solid #00ff00;
+            border-radius: 8px;
+            box-shadow: 0 0 20px rgba(0, 255, 0, 0.3);
+        }
+        
+        .stats {
+            background: #1a1a1a;
+            border: 2px solid #00ff00;
+            border-radius: 8px;
+            padding: 15px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+        }
+        
+        .stat {
+            font-size: 12px;
+        }
+        
+        .stat-label {
+            color: #00aa00;
+            margin-bottom: 3px;
+        }
+        
+        .stat-value {
+            font-size: 18px;
+            font-weight: bold;
+            color: #00ff00;
+        }
+        
+        .stat-value.warning {
+            color: #ffaa00;
+        }
+        
+        .preset-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            margin-top: 20px;
+        }
+        
+        .preset-button {
+            padding: 8px;
+            font-size: 12px;
+        }
+        
+        .info {
+            font-size: 11px;
+            color: #00aa00;
+            line-height: 1.4;
+            margin-top: 10px;
+            padding-top: 10px;
+            border-top: 1px solid #003300;
+        }
+        
+        .warning {
+            color: #ffaa00;
+            font-size: 10px;
+            margin-top: 5px;
+            display: none;
+        }
+        
+        .warning.active {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div class="controls">
+        <button class="reset-button" onclick="resetSystem()">⟲ RESET SYSTEM</button>
+        
+        <h2>NOTES</h2>
+        <div class="note-buttons">
+            <button onclick="playNote(36)">C2<br>65Hz</button>
+            <button onclick="playNote(40)">E2<br>82Hz</button>
+            <button onclick="playNote(43)">G2<br>98Hz</button>
+            <button onclick="playNote(48)">C3<br>131Hz</button>
+            <button onclick="playNote(52)">E3<br>165Hz</button>
+            <button onclick="playNote(55)">G3<br>196Hz</button>
+            <button onclick="playNote(60)">C4<br>262Hz</button>
+            <button onclick="playNote(64)">E4<br>330Hz</button>
+            <button onclick="playNote(67)">G4<br>392Hz</button>
+            <button onclick="playNote(72)">C5<br>523Hz</button>
+            <button onclick="playNote(76)">E5<br>659Hz</button>
+            <button onclick="playNote(79)">G5<br>784Hz</button>
+        </div>
+        
+        <h2>PID GAINS</h2>
+        <div class="slider-group">
+            <div class="slider-label">
+                <span>Kp (Speed)</span>
+                <span class="slider-value" id="kp-value">10.0</span>
+            </div>
+            <input type="range" id="kp" min="1" max="30" step="0.5" value="10" oninput="updateGains()">
+            <div class="info">Higher = faster glide</div>
+        </div>
+        
+        <div class="slider-group">
+            <div class="slider-label">
+                <span>Ki (Accuracy)</span>
+                <span class="slider-value" id="ki-value">0.1</span>
+            </div>
+            <input type="range" id="ki" min="0" max="0.5" step="0.01" value="0.1" oninput="updateGains()">
+            <div class="info">Higher = exact arrival (use sparingly!)</div>
+            <div class="warning" id="ki-warning">⚠ Integral saturated!</div>
+        </div>
+        
+        <div class="slider-group">
+            <div class="slider-label">
+                <span>Kd (Damping)</span>
+                <span class="slider-value" id="kd-value">2.0</span>
+            </div>
+            <input type="range" id="kd" min="0" max="5" step="0.1" value="2.0" oninput="updateGains()">
+            <div class="info">Higher = smoother, less overshoot</div>
+        </div>
+        
+        <h2>PRESETS</h2>
+        <div class="preset-buttons">
+            <button class="preset-button" onclick="loadPreset('smooth')">Smooth Analog</button>
+            <button class="preset-button" onclick="loadPreset('vocal')">Vocal/Expressive</button>
+            <button class="preset-button" onclick="loadPreset('slow')">Slow Dramatic</button>
+            <button class="preset-button" onclick="loadPreset('fast')">Fast Snappy</button>
+        </div>
+    </div>
+    
+    <div class="main">
+        <h1>◆ PID PORTAMENTO VISUALIZER ◆</h1>
+        <canvas id="canvas"></canvas>
+        <div class="stats">
+            <div class="stat">
+                <div class="stat-label">CURRENT PITCH</div>
+                <div class="stat-value" id="current-pitch">C4 (262Hz)</div>
+            </div>
+            <div class="stat">
+                <div class="stat-label">TARGET PITCH</div>
+                <div class="stat-value" id="target-pitch">C4 (262Hz)</div>
+            </div>
+            <div class="stat">
+                <div class="stat-label">ERROR (semitones)</div>
+                <div class="stat-value" id="error">0.00</div>
+            </div>
+            <div class="stat">
+                <div class="stat-label">VELOCITY (st/s)</div>
+                <div class="stat-value" id="velocity">0.0</div>
+            </div>
+            <div class="stat">
+                <div class="stat-label">P TERM</div>
+                <div class="stat-value" id="p-term">0.00</div>
+            </div>
+            <div class="stat">
+                <div class="stat-label">I TERM</div>
+                <div class="stat-value" id="i-term">0.00</div>
+            </div>
+            <div class="stat">
+                <div class="stat-label">D TERM</div>
+                <div class="stat-value" id="d-term">0.00</div>
+            </div>
+            <div class="stat">
+                <div class="stat-label">CORRECTION</div>
+                <div class="stat-value" id="correction">0.00</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const canvas = document.getElementById('canvas');
+        const ctx = canvas.getContext('2d');
+        
+        // Set canvas size
+        function resizeCanvas() {
+            canvas.width = canvas.parentElement.offsetWidth;
+            canvas.height = 600;
+        }
+        resizeCanvas();
+        window.addEventListener('resize', resizeCanvas);
+        
+        // PID State
+        let currentPitchSemitones = 60; // Middle C
+        let targetPitchSemitones = 60;
+        let integral = 0;
+        let previousError = 0;
+        let previousPitchSemitones = 60;
+        
+        // PID Gains
+        let Kp = 10.0;
+        let Ki = 0.1;  // Much lower default
+        let Kd = 2.0;  // Higher default for more damping
+        
+        // History for visualization
+        const history = [];
+        const maxHistory = 300; // 5 seconds at 60fps
+        
+        // Animation
+        const fps = 60;
+        const dt = 1.0 / fps;
+        
+        // Integral decay to prevent wind-up
+        const integralDecay = 0.995; // Slight decay each frame
+        
+        // Note names
+        const noteNames = ['C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#', 'A', 'A#', 'B'];
+        
+        function midiToFreq(midi) {
+            return 440 * Math.pow(2, (midi - 69) / 12);
+        }
+        
+        function midiToNoteName(midi) {
+            const rounded = Math.round(midi);
+            const octave = Math.floor(rounded / 12) - 1;
+            const note = noteNames[rounded % 12];
+            const cents = Math.round((midi - rounded) * 100);
+            const centsStr = cents !== 0 ? ` ${cents > 0 ? '+' : ''}${cents}¢` : '';
+            return `${note}${octave}${centsStr}`;
+        }
+        
+        function playNote(midi) {
+            targetPitchSemitones = midi;
+            // Reset integral on new target to prevent wind-up
+            integral = 0;
+        }
+        
+        function resetSystem() {
+            currentPitchSemitones = 60;
+            targetPitchSemitones = 60;
+            integral = 0;
+            previousError = 0;
+            previousPitchSemitones = 60;
+            history.length = 0; // Clear history
+        }
+        
+        function updateGains() {
+            Kp = parseFloat(document.getElementById('kp').value);
+            Ki = parseFloat(document.getElementById('ki').value);
+            Kd = parseFloat(document.getElementById('kd').value);
+            
+            document.getElementById('kp-value').textContent = Kp.toFixed(1);
+            document.getElementById('ki-value').textContent = Ki.toFixed(2);
+            document.getElementById('kd-value').textContent = Kd.toFixed(1);
+        }
+        
+        function loadPreset(name) {
+            const presets = {
+                smooth: { kp: 8, ki: 0.05, kd: 2.5 },
+                vocal: { kp: 12, ki: 0.15, kd: 0.8 },
+                slow: { kp: 3, ki: 0.02, kd: 4.0 },
+                fast: { kp: 20, ki: 0.2, kd: 1.2 }
+            };
+            
+            const preset = presets[name];
+            document.getElementById('kp').value = preset.kp;
+            document.getElementById('ki').value = preset.ki;
+            document.getElementById('kd').value = preset.kd;
+            updateGains();
+            
+            // Reset integral when loading preset to avoid instability
+            integral = 0;
+        }
+        
+        function processPID() {
+            // Calculate error in semitones
+            const error = targetPitchSemitones - currentPitchSemitones;
+            
+            // P term - proportional to current error
+            const pTerm = Kp * error;
+            
+            // I term - accumulated error over time
+            // CRITICAL FIX: Only accumulate when error is significant
+            // This prevents integral wind-up during small oscillations
+            const errorThreshold = 0.01; // 1 cent threshold
+            
+            if (Math.abs(error) > errorThreshold) {
+                // Accumulate error
+                integral += error * dt;
+                
+                // Apply decay to prevent long-term wind-up
+                integral *= integralDecay;
+            } else {
+                // Near target - decay integral faster
+                integral *= 0.95;
+            }
+            
+            // Clamp integral much tighter
+            const integralMax = 1.0; // Reduced from 10.0
+            integral = Math.max(-integralMax, Math.min(integralMax, integral));
+            
+            const iTerm = Ki * integral;
+            
+            // Show warning if integral is saturated
+            const integralSaturated = Math.abs(integral) >= integralMax * 0.95;
+            const warningEl = document.getElementById('ki-warning');
+            if (integralSaturated) {
+                warningEl.classList.add('active');
+            } else {
+                warningEl.classList.remove('active');
+            }
+            
+            // D term - rate of change of ERROR
+            const errorRate = (error - previousError) / dt;
+            const dTerm = Kd * errorRate;
+            previousError = error;
+            
+            // Combined correction (in semitones per second)
+            const correction = pTerm + iTerm + dTerm;
+            
+            // Apply correction
+            previousPitchSemitones = currentPitchSemitones;
+            const semitonesChange = correction * dt;
+            currentPitchSemitones += semitonesChange;
+            
+            // Calculate actual velocity
+            const actualVelocity = (currentPitchSemitones - previousPitchSemitones) / dt;
+            
+            // Store in history
+            history.push({
+                current: currentPitchSemitones,
+                target: targetPitchSemitones,
+                error: error,
+                velocity: actualVelocity,
+                pTerm: pTerm,
+                iTerm: iTerm,
+                dTerm: dTerm,
+                correction: correction,
+                integral: integral
+            });
+            
+            if (history.length > maxHistory) {
+                history.shift();
+            }
+            
+            // Update stats display
+            const currentFreq = midiToFreq(currentPitchSemitones);
+            const targetFreq = midiToFreq(targetPitchSemitones);
+            
+            document.getElementById('current-pitch').textContent = 
+                `${midiToNoteName(currentPitchSemitones)} (${currentFreq.toFixed(1)}Hz)`;
+            document.getElementById('target-pitch').textContent = 
+                `${midiToNoteName(targetPitchSemitones)} (${targetFreq.toFixed(1)}Hz)`;
+            
+            const errorEl = document.getElementById('error');
+            errorEl.textContent = error.toFixed(3);
+            errorEl.className = 'stat-value' + (Math.abs(error) > 0.5 ? ' warning' : '');
+            
+            document.getElementById('velocity').textContent = actualVelocity.toFixed(2);
+            document.getElementById('p-term').textContent = pTerm.toFixed(3);
+            document.getElementById('i-term').textContent = 
+                `${iTerm.toFixed(3)} (∫=${integral.toFixed(3)})`;
+            document.getElementById('d-term').textContent = dTerm.toFixed(3);
+            document.getElementById('correction').textContent = correction.toFixed(3);
+        }
+        
+        function draw() {
+            const width = canvas.width;
+            const height = canvas.height;
+            
+            // Clear
+            ctx.fillStyle = '#0a0a0a';
+            ctx.fillRect(0, 0, width, height);
+            
+            // Draw grid and labels
+            const minNote = 30; // F1
+            const maxNote = 84; // C6
+            const noteRange = maxNote - minNote;
+            
+            // Horizontal grid lines (at octaves)
+            ctx.strokeStyle = '#003300';
+            ctx.lineWidth = 1;
+            ctx.font = '10px Courier New';
+            ctx.fillStyle = '#00aa00';
+            
+            // Draw all octave lines
+            for (let note = minNote; note <= maxNote; note += 12) {
+                const y = height - ((note - minNote) / noteRange) * height;
+                
+                // Grid line
+                ctx.beginPath();
+                ctx.moveTo(50, y);
+                ctx.lineTo(width, y);
+                ctx.stroke();
+                
+                // Label
+                const noteName = midiToNoteName(note);
+                const freq = midiToFreq(note);
+                ctx.fillText(`${noteName}`, 5, y + 3);
+                ctx.fillText(`${freq.toFixed(0)}Hz`, 5, y + 15);
+            }
+            
+            // Draw target line
+            if (history.length > 0) {
+                const targetY = height - ((targetPitchSemitones - minNote) / noteRange) * height;
+                ctx.strokeStyle = '#00ff0040';
+                ctx.lineWidth = 2;
+                ctx.setLineDash([5, 5]);
+                ctx.beginPath();
+                ctx.moveTo(50, targetY);
+                ctx.lineTo(width, targetY);
+                ctx.stroke();
+                ctx.setLineDash([]);
+                
+                // Label target
+                ctx.fillStyle = '#00ff00';
+                ctx.fillText('TARGET', width - 60, targetY - 5);
+            }
+            
+            // Draw pitch trace
+            if (history.length > 1) {
+                ctx.strokeStyle = '#00ff00';
+                ctx.lineWidth = 3;
+                ctx.shadowBlur = 10;
+                ctx.shadowColor = '#00ff00';
+                
+                ctx.beginPath();
+                for (let i = 0; i < history.length; i++) {
+                    const x = 50 + ((i / maxHistory) * (width - 50));
+                    const pitch = history[i].current;
+                    
+                    // Clamp to visible range
+                    const clampedPitch = Math.max(minNote, Math.min(maxNote, pitch));
+                    const y = height - ((clampedPitch - minNote) / noteRange) * height;
+                    
+                    if (i === 0) {
+                        ctx.moveTo(x, y);
+                    } else {
+                        ctx.lineTo(x, y);
+                    }
+                }
+                ctx.stroke();
+                
+                ctx.shadowBlur = 0;
+                
+                // Draw current position indicator
+                if (history.length > 0) {
+                    const lastPoint = history[history.length - 1];
+                    const x = width - 5;
+                    const clampedPitch = Math.max(minNote, Math.min(maxNote, lastPoint.current));
+                    const y = height - ((clampedPitch - minNote) / noteRange) * height;
+                    
+                    ctx.fillStyle = '#00ff00';
+                    ctx.beginPath();
+                    ctx.arc(x, y, 6, 0, Math.PI * 2);
+                    ctx.fill();
+                    
+                    // Glow effect
+                    ctx.strokeStyle = '#00ff00';
+                    ctx.lineWidth = 2;
+                    ctx.beginPath();
+                    ctx.arc(x, y, 10, 0, Math.PI * 2);
+                    ctx.stroke();
+                }
+            }
+            
+            // Draw time axis
+            ctx.strokeStyle = '#00aa00';
+            ctx.lineWidth = 1;
+            ctx.beginPath();
+            ctx.moveTo(50, height - 20);
+            ctx.lineTo(width, height - 20);
+            ctx.stroke();
+            
+            ctx.fillStyle = '#00aa00';
+            ctx.font = '10px Courier New';
+            ctx.fillText('← 5 seconds of history', 60, height - 8);
+        }
+        
+        function animate() {
+            processPID();
+            draw();
+            requestAnimationFrame(animate);
+        }
+        
+        // Initialize display
+        updateGains();
+        
+        // Start animation
+        animate();
+    </script>
+</body>
+</html>

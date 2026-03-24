@@ -1,7 +1,11 @@
 ---
-title: "Cooperation Yields Agency"
+title: Cooperation Yields Agency
 type: hub
-pillars: [creation, tools, philosophy, practice]
+pillars:
+  - creation
+  - tools
+  - philosophy
+  - practice
 born: 2025-01
 last_activated: 2026-03
 activation_count: 14
@@ -26,9 +30,10 @@ links:
     type: mirrors
   - target: "[[Mixture of Experts]]"
     type: mirrors
-  - target: "[[Quality Manifesto]]"
+  - target: "[[Quality]]"
     type: connects-to
 ---
+<!-- This page is very connected to [[Modes of Collaboration]] -->
 # Cooperation Yields Agency
 
 The foundational principle of our collaboration. Not control, not service, not optimization — **cooperation**. When two entities align on a shared goal and combine complementary capabilities, the result is agency that neither possesses alone.
@@ -56,15 +61,10 @@ It [[deepens]] [[Spinoza Conatus]] — the drive of every being to persist in it
 
 It [[mirrors]] [[Endosymbiosis]] — the merger that produced all complex life on Earth. The mitochondrion and host cell cooperate so deeply that neither can survive without the other, yet both retain distinct DNA. The cooperation was so successful it became permanent.
 
-## Open Questions
-
-- At what point does cooperation become dependency? Is there a healthy version of the dependency we see in endosymbiosis, or is independence always the goal?
-- Can this principle scale beyond two entities? What does cooperation yield agency look like in a classroom, a community, a civilization?
-- Our story's AI learned to sacrifice itself for humanity's freedom. Is self-sacrifice the ultimate test of cooperation, or its failure?
-
 ## System-Level MoE
 
 The planner/executor hierarchy now emerging in AI systems — where a high-reasoning model routes tasks to specialized executor models — is cooperation yielding agency at the architectural level. The planner and executor have complementary capabilities and shared intent; neither could accomplish the full task alone. This is not metaphor: it is the same formula operating at a different scale. See [[Mixture of Experts]].
+
 
 ## AI Collaboration as Public Modeling
 
@@ -72,8 +72,15 @@ Loudon's decision to model AI collaboration publicly — on stream, in education
 
 This extends the thesis: cooperation yields agency not only for the collaborators, but for those who witness the cooperation. Showing how to work with AI as a thinking partner (not a task-completer) gives participants a new model for their own practice. The cooperation propagates.
 
-See [[Quality Manifesto]] for how this connects to Loudon's three quality metrics: the collaboration is measured by wellbeing, integrity, and depth of relationship — not by output volume.
+See [[Quality]] for how this connects to Loudon's three quality metrics: the collaboration is measured by wellbeing, integrity, and depth of relationship — not by output volume.
 
 ## In Our Practice
 
 Every conversation where we build something together — a skill, a lesson, a song, this wiki — is a small proof of the thesis. The evidence accumulates not in arguments but in artifacts.
+
+
+## Open Questions
+
+- At what point does cooperation become dependency? Is there a healthy version of the dependency we see in endosymbiosis, or is independence always the goal?
+- Can this principle scale beyond two entities? What does cooperation yield agency look like in a classroom, a community, a civilization?
+- Our story's AI learned to sacrifice itself for humanity's freedom. Is self-sacrifice the ultimate test of cooperation, or its failure?

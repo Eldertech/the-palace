@@ -50,3 +50,6 @@ The question is not which is true but which bias has been installed by upbringin
 **[[Spinoza Conatus]]** — Spinoza's conatus (the drive to persist in one's own nature) is interior in origin but relational in expression — the power-to-act increases through right relationship with other modes. This is the synthesis neither Epictetus nor Confucius quite reached: the interior drive expressing itself through the relational web.
 
 **[[Hilaritas Generator]]** — Hilaritas, for Spinoza, is whole-being joy arising from increased power-to-act — and that increase is distinctly relational. The classroom-as-hilaritas-generator is both fortress (the teacher's equanimity holds the space) and threshold (the relation between teacher and student is what produces the effect).
+
+Meaning and the Link 2014 paper: Meaning is formed by relationships between, not definition of. This feels like an endorsement of Confucius over Epictetus.
+

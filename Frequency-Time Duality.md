@@ -51,3 +51,4 @@ Examined June 2024 through a MIDI frequency table mapping the full spectrum to d
 - Where exactly is the perceptual transition between flutter echo and pitch? Is it 20 Hz precisely, or is there individual variability worth mapping?
 - The table used 120 BPM as reference. How does the perceptual map shift at very slow or very fast tempos?
 - The modulated delay column (chorus, flanger, phasing) introduces a second axis — rate of rate change. This is a 2D surface, not a 1D continuum. Does the full surface deserve its own entry?
+- Lets bring Curtis Roads into this conversation, the best analysis of time scales in music I have found was in Curtis Roads book, microsound.

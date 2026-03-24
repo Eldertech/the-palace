@@ -4,7 +4,7 @@ type: project
 pillars: [creation, tools, philosophy]
 born: 2026-03
 last_activated: 2026-03
-activation_count: 2
+activation_count: 3
 stage: sprout
 confidence: working
 energy: high
@@ -59,7 +59,11 @@ A complete Gen~ development plan with per-sample pseudocode, input guards, testi
 
 ## The Artifact
 
-`neuron_oscillator.html` lives in the Claude project "Neural synthesizer" — a research document with embedded interactive visualizations. Fixed time windows (not rescaled) so parameter changes are immediately legible. Color-coded by ion species: Na⁺ orange, K⁺ blue, spike red, resting green, leak amber, hyperpolarization purple, charge yellow. Also archived at `Artifacts/Action Potential Oscillator/neuron_oscillator.html` when ready for palace archival.
+The primary research artifact is `Artifacts/Action Potential Oscillator/neuron_oscillator.html` — a self-contained interactive document with 8 Canvas-rendered visualizations (static graphs + real-time interactive controls). Fixed 20ms time windows so parameter changes are immediately legible as waveform compression/expansion. Color-coded by ion species: Na⁺ orange, K⁺ blue, spike red, resting green, leak amber, hyperpolarization purple, charge yellow.
+
+The Stage 2 interactive shows the LIF waveform with τ and drive sliders — drive below 1.0× rheobase enters subthreshold regime (neuron goes silent). The Stage 4 interactive exposes all four phases (charge, spike rise, spike fall, refractory recovery) with τ, spike peak, hyperpolarization depth, recovery damping, and frequency controls. Both show real-time Hz / MIDI note readout. The biological maximum firing rate ceiling is visualized when frequency exceeds the spike+refractory duration.
+
+The source of truth for this artifact is the Claude project "Neural synthesizer" where iterative development happens. Palace copy is a periodic snapshot.
 
 ## Cross-Domain Isomorphisms
 

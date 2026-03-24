@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PD Portamento - FIXED</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            font-family: 'Courier New', monospace;
+            background: #0a0a0a;
+            color: #00ff00;
+            display: flex;
+            gap: 20px;
+            min-height: 100vh;
+        }
+        
+        .controls {
+            width: 280px;
+            background: #1a1a1a;
+            padding: 20px;
+            border: 2px solid #00ff00;
+            border-radius: 8px;
+            height: fit-content;
+        }
+        
+        .main {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        
+        h1 {
+            margin: 0 0 20px 0;
+            font-size: 24px;
+            text-align: center;
+            color: #00ff00;
+            text-shadow: 0 0 10px #00ff00;
+        }
+        
+        h2 {
+            margin: 0 0 15px 0;
+            font-size: 16px;
+            border-bottom: 1px solid #00ff00;
+            padding-bottom: 5px;
+        }
+        
+        .note-buttons {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px;
+            margin-bottom: 20px;
+        }
+        
+        button {
+            background: #1a1a1a;
+            color: #00ff00;
+            border: 2px solid #00ff00;
+            padding: 12px 8px;
+            cursor: pointer;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            font-weight: bold;
+            border-radius: 4px;
+            transition: all 0.1s;
+        }
+        
+        button:hover {
+            background: #00ff00;
+            color: #0a0a0a;
+            box-shadow: 0 0 15px #00ff00;
+        }
+        
+        button:active {
+            transform: scale(0.95);
+        }
+        
+        .reset-button {
+            background: #1a1a1a;
+            color: #ff6600;
+            border: 2px solid #ff6600;
+            width: 100%;
+            margin-bottom: 20px;
+            padding: 15px;
+            font-size: 16px;
+        }
+        
+        .reset-button:hover {
+            background: #ff6600;
+            color: #0a0a0a;
+            box-shadow: 0 0 15px #ff6600;
+        }
+        
+        .slider-group {
+            margin-bottom: 20px;
+        }
+        
+        .slider-label {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 5px;
+            font-size: 12px;
+        }
+        
+        .slider-value {
+            color: #00ff00;
+            font-weight: bold;
+        }
+        
+        input[type="range"] {
+            width: 100%;
+            height: 6px;
+            background: #0a0a0a;
+            outline: none;
+            border: 1px solid #00ff00;
+            border-radius: 3px;
+            -webkit-appearance: none;
+        }
+        
+        input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 16px;
+            height: 16px;
+            background: #00ff00;
+            cursor: pointer;
+            border-radius: 50%;
+            box-shadow: 0 0 5px #00ff00;
+        }
+        
+        input[type="range"]::-moz-range-thumb {
+            width: 16px;
+            height: 16px;
+            background: #00ff00;
+            cursor: pointer;
+            border-radius: 50%;
+            border: none;
+            box-shadow: 0 0 5px #00ff00;
+        }
+        
+        #canvas {
+            background: #0a0a0a;
+            border: 2px solid #00ff00;
+            border-radius: 8px;
+            box-shadow: 0 0 20px rgba(0, 255, 0, 0.3);
+        }
+        
+        .stats {
+            background: #1a1a1a;
+            border: 2px solid #00ff00;
+            border-radius: 8px;
+            padding: 15px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+        }
+        
+        .stat {
+            font-size: 12px;
+        }
+        
+        .stat-label {
+            color: #00aa00;
+            margin-bottom: 3px;
+        }
+        
+        .stat-value {
+            font-size: 18px;
+            font-weight: bold;
+            color: #00ff00;
+        }
+        
+        .preset-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            margin-top: 20px;
+        }
+        
+        .preset-button {
+            padding: 8px;
+            font-size: 12px;
+        }
+        
+        .info {
+            font-size: 11px;
+            color: #00aa00;
+            line-height: 1.4;
+            margin-top: 5px;
+        }
+        
+        .note-box {
+            background: #1a3a1a;
+            border: 1px solid #00aa00;
+            padding: 12px;
+            margin-top: 15px;
+            border-radius: 4px;
+            font-size: 11px;
+            line-height: 1.6;
+        }
+        
+        .damping-indicator {
+            background: #1a1a2a;
+            border: 1px solid #6666ff;
+            padding: 10px;
+            margin-top: 10px;
+            border-radius: 4px;
+            font-size: 11px;
+            color: #aaaaff;
+            text-align: center;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="controls">
+        <button class="reset-button" onclick="resetSystem()">⟲ RESET</button>
+        
+        <h2>NOTES</h2>
+        <div class="note-buttons">
+            <button onclick="playNote(36)">C2<br>65Hz</button>
+            <button onclick="playNote(40)">E2<br>82Hz</button>
+            <button onclick="playNote(43)">G2<br>98Hz</button>
+            <button onclick="playNote(48)">C3<br>131Hz</button>
+            <button onclick="playNote(52)">E3<br>165Hz</button>
+            <button onclick="playNote(55)">G3<br>196Hz</button>
+            <button onclick="playNote(60)">C4<br>262Hz</button>
+            <button onclick="playNote(64)">E4<br>330Hz</button>
+            <button onclick="playNote(67)">G4<br>392Hz</button>
+            <button onclick="playNote(72)">C5<br>523Hz</button>
+            <button onclick="playNote(76)">E5<br>659Hz</button>
+            <button onclick="playNote(79)">G5<br>784Hz</button>
+        </div>
+        
+        <h2>PD CONTROL</h2>
+        
+        <div class="slider-group">
+            <div class="slider-label">
+                <span>Kp (Speed)</span>
+                <span class="slider-value" id="kp-value">5.0</span>
+            </div>
+            <input type="range" id="kp" min="1" max="15" step="0.5" value="5.0" oninput="updateParams()">
+            <div class="info">Drive toward target</div>
+        </div>
+        
+        <div class="slider-group">
+            <div class="slider-label">
+                <span>Kd (Damping)</span>
+                <span class="slider-value" id="kd-value">0.5</span>
+            </div>
+            <input type="range" id="kd" min="0" max="2.0" step="0.05" value="0.5" oninput="updateParams()">
+            <div class="info">Braking force</div>
+        </div>
+        
+        <div class="damping-indicator" id="damping-indicator">
+            Damping Ratio: 0.50 (underdamped)
+        </div>
+        
+        <div class="note-box">
+            <strong>Damping Guide:</strong><br>
+            ζ < 0.7: Underdamped (overshoots)<br>
+            ζ ≈ 1.0: Critical (no overshoot)<br>
+            ζ > 1.3: Overdamped (slow)<br><br>
+            <strong>To see overshoot:</strong> Keep ζ below 0.7
+        </div>
+        
+        <h2>PRESETS</h2>
+        <div class="preset-buttons">
+            <button class="preset-button" onclick="loadPreset('smooth')">Smooth (No Overshoot)</button>
+            <button class="preset-button" onclick="loadPreset('vocal')">Vocal (Slight Overshoot)</button>
+            <button class="preset-button" onclick="loadPreset('bouncy')">Bouncy (Clear Overshoot)</button>
+            <button class="preset-button" onclick="loadPreset('extreme')">Extreme Overshoot</button>
+        </div>
+    </div>
+    
+    <div class="main">
+        <h1>◆ PD PORTAMENTO - CORRECTED ◆</h1>
+        <canvas id="canvas"></canvas>
+        
+        <div class="stats">
+            <div class="stat">
+                <div class="stat-label">CURRENT PITCH</div>
+                <div class="stat-value" id="current-pitch">C4 (262Hz)</div>
+            </div>
+            <div class="stat">
+                <div class="stat-label">TARGET PITCH</div>
+                <div class="stat-value" id="target-pitch">C4 (262Hz)</div>
+            </div>
+            <div class="stat">
+                <div class="stat-label">ERROR (semitones)</div>
+                <div class="stat-value" id="error">0.000</div>
+            </div>
+            <div class="stat">
+                <div class="stat-label">VELOCITY (st/s)</div>
+                <div class="stat-value" id="velocity">0.00</div>
+            </div>
+            <div class="stat">
+                <div class="stat-label">P TERM</div>
+                <div class="stat-value" id="p-term">0.00</div>
+            </div>
+            <div class="stat">
+                <div class="stat-label">D TERM</div>
+                <div class="stat-value" id="d-term">0.00</div>
+            </div>
+            <div class="stat">
+                <div class="stat-label">CORRECTION</div>
+                <div class="stat-value" id="correction">0.00</div>
+            </div>
+            <div class="stat">
+                <div class="stat-label">ζ (ZETA)</div>
+                <div class="stat-value" id="zeta">0.00</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const canvas = document.getElementById('canvas');
+        const ctx = canvas.getContext('2d');
+        
+        function resizeCanvas() {
+            canvas.width = canvas.parentElement.offsetWidth;
+            canvas.height = 600;
+        }
+        resizeCanvas();
+        window.addEventListener('resize', resizeCanvas);
+        
+        // State
+        let currentPitchSemitones = 60;
+        let targetPitchSemitones = 60;
+        let previousPitchSemitones = 60;
+        
+        // PD Gains
+        let Kp = 5.0;
+        let Kd = 0.5;
+        
+        // History
+        const history = [];
+        const maxHistory = 300;
+        
+        const fps = 60;
+        const dt = 1.0 / fps;
+        
+        const noteNames = ['C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#', 'A', 'A#', 'B'];
+        
+        function midiToFreq(midi) {
+            return 440 * Math.pow(2, (midi - 69) / 12);
+        }
+        
+        function midiToNoteName(midi) {
+            const rounded = Math.round(midi);
+            const octave = Math.floor(rounded / 12) - 1;
+            const note = noteNames[rounded % 12];
+            const cents = Math.round((midi - rounded) * 100);
+            const centsStr = cents !== 0 ? ` ${cents > 0 ? '+' : ''}${cents}¢` : '';
+            return `${note}${octave}${centsStr}`;
+        }
+        
+        function playNote(midi) {
+            targetPitchSemitones = midi;
+        }
+        
+        function resetSystem() {
+            currentPitchSemitones = 60;
+            targetPitchSemitones = 60;
+            previousPitchSemitones = 60;
+            history.length = 0;
+        }
+        
+        function updateParams() {
+            Kp = parseFloat(document.getElementById('kp').value);
+            Kd = parseFloat(document.getElementById('kd').value);
+            
+            document.getElementById('kp-value').textContent = Kp.toFixed(1);
+            document.getElementById('kd-value').textContent = Kd.toFixed(2);
+            
+            // Calculate damping ratio
+            const zeta = Kd / (2 * Math.sqrt(Kp));
+            
+            let dampingText = `ζ = ${zeta.toFixed(2)}`;
+            
+            if (zeta < 0.4) {
+                dampingText += ' (HIGHLY UNDERDAMPED - big overshoot!)';
+            } else if (zeta < 0.7) {
+                dampingText += ' (underdamped - will overshoot)';
+            } else if (zeta < 1.2) {
+                dampingText += ' (critically damped - smooth)';
+            } else {
+                dampingText += ' (overdamped - slow)';
+            }
+            
+            document.getElementById('damping-indicator').textContent = dampingText;
+            document.getElementById('zeta').textContent = zeta.toFixed(2);
+        }
+        
+        function loadPreset(name) {
+            const presets = {
+                // ζ = Kd / (2√Kp)
+                smooth: { kp: 6.0, kd: 2.8 },    // ζ = 2.8/(2√6) ≈ 0.57 ... wait, let me recalc
+                vocal: { kp: 8.0, kd: 2.0 },     // ζ = 2.0/(2√8) ≈ 0.35
+                bouncy: { kp: 10.0, kd: 1.5 },   // ζ = 1.5/(2√10) ≈ 0.24
+                extreme: { kp: 12.0, kd: 0.8 }   // ζ = 0.8/(2√12) ≈ 0.12
+            };
+            
+            // Actually let me recalculate properly:
+            // smooth: want ζ ≈ 1.0, so Kd = 2√Kp
+            //   Kp=6 → Kd = 2√6 ≈ 4.9
+            // vocal: want ζ ≈ 0.5, so Kd = √Kp
+            //   Kp=8 → Kd = √8 ≈ 2.8
+            // bouncy: want ζ ≈ 0.3
+            //   Kp=10 → Kd = 0.6√10 ≈ 1.9
+            // extreme: want ζ ≈ 0.15
+            //   Kp=12 → Kd = 0.3√12 ≈ 1.0
+            
+            const presetsFixed = {
+                smooth: { kp: 6.0, kd: 4.9 },
+                vocal: { kp: 8.0, kd: 2.8 },
+                bouncy: { kp: 10.0, kd: 1.9 },
+                extreme: { kp: 12.0, kd: 1.0 }
+            };
+            
+            const preset = presetsFixed[name];
+            document.getElementById('kp').value = preset.kp;
+            document.getElementById('kd').value = preset.kd;
+            updateParams();
+        }
+        
+        function processPD() {
+            // Calculate error
+            const error = targetPitchSemitones - currentPitchSemitones;
+            
+            // P term - drive toward target
+            const pTerm = Kp * error;
+            
+            // D term - derivative on MEASUREMENT
+            // CRITICAL: Calculate velocity BEFORE updating previousPitchSemitones
+            const outputVelocity = (currentPitchSemitones - previousPitchSemitones) / dt;
+            const dTerm = -Kd * outputVelocity;
+            
+            // Combined correction
+            const correction = pTerm + dTerm;
+            
+            // NOW update previous (after calculating D term)
+            previousPitchSemitones = currentPitchSemitones;
+            
+            // Apply correction
+            const change = correction * dt;
+            currentPitchSemitones += change;
+            
+            // Calculate actual velocity for display
+            const actualVelocity = (currentPitchSemitones - previousPitchSemitones) / dt;
+            
+            // Store history
+            history.push({
+                current: currentPitchSemitones,
+                target: targetPitchSemitones,
+                error: error,
+                velocity: actualVelocity,
+                pTerm: pTerm,
+                dTerm: dTerm,
+                correction: correction
+            });
+            
+            if (history.length > maxHistory) {
+                history.shift();
+            }
+            
+            // Update display
+            const currentFreq = midiToFreq(currentPitchSemitones);
+            const targetFreq = midiToFreq(targetPitchSemitones);
+            
+            document.getElementById('current-pitch').textContent = 
+                `${midiToNoteName(currentPitchSemitones)} (${currentFreq.toFixed(1)}Hz)`;
+            document.getElementById('target-pitch').textContent = 
+                `${midiToNoteName(targetPitchSemitones)} (${targetFreq.toFixed(1)}Hz)`;
+            document.getElementById('error').textContent = error.toFixed(3);
+            document.getElementById('velocity').textContent = actualVelocity.toFixed(2);
+            document.getElementById('p-term').textContent = pTerm.toFixed(2);
+            document.getElementById('d-term').textContent = dTerm.toFixed(2);
+            document.getElementById('correction').textContent = correction.toFixed(2);
+        }
+        
+        function draw() {
+            const width = canvas.width;
+            const height = canvas.height;
+            
+            ctx.fillStyle = '#0a0a0a';
+            ctx.fillRect(0, 0, width, height);
+            
+            const minNote = 30;
+            const maxNote = 84;
+            const noteRange = maxNote - minNote;
+            
+            // Grid
+            ctx.strokeStyle = '#003300';
+            ctx.lineWidth = 1;
+            ctx.font = '10px Courier New';
+            ctx.fillStyle = '#00aa00';
+            
+            for (let note = minNote; note <= maxNote; note += 12) {
+                const y = height - ((note - minNote) / noteRange) * height;
+                ctx.beginPath();
+                ctx.moveTo(50, y);
+                ctx.lineTo(width, y);
+                ctx.stroke();
+                
+                const noteName = midiToNoteName(note);
+                const freq = midiToFreq(note);
+                ctx.fillText(`${noteName}`, 5, y + 3);
+                ctx.fillText(`${freq.toFixed(0)}Hz`, 5, y + 15);
+            }
+            
+            // Target line
+            if (history.length > 0) {
+                const targetY = height - ((targetPitchSemitones - minNote) / noteRange) * height;
+                ctx.strokeStyle = '#00ff0040';
+                ctx.lineWidth = 2;
+                ctx.setLineDash([5, 5]);
+                ctx.beginPath();
+                ctx.moveTo(50, targetY);
+                ctx.lineTo(width, targetY);
+                ctx.stroke();
+                ctx.setLineDash([]);
+                
+                ctx.fillStyle = '#00ff00';
+                ctx.fillText('TARGET', width - 60, targetY - 5);
+            }
+            
+            // Pitch trace
+            if (history.length > 1) {
+                ctx.strokeStyle = '#00ff00';
+                ctx.lineWidth = 3;
+                ctx.shadowBlur = 10;
+                ctx.shadowColor = '#00ff00';
+                
+                ctx.beginPath();
+                for (let i = 0; i < history.length; i++) {
+                    const x = 50 + ((i / maxHistory) * (width - 50));
+                    const pitch = history[i].current;
+                    const clampedPitch = Math.max(minNote, Math.min(maxNote, pitch));
+                    const y = height - ((clampedPitch - minNote) / noteRange) * height;
+                    
+                    if (i === 0) {
+                        ctx.moveTo(x, y);
+                    } else {
+                        ctx.lineTo(x, y);
+                    }
+                }
+                ctx.stroke();
+                ctx.shadowBlur = 0;
+                
+                // Current position
+                if (history.length > 0) {
+                    const lastPoint = history[history.length - 1];
+                    const x = width - 5;
+                    const clampedPitch = Math.max(minNote, Math.min(maxNote, lastPoint.current));
+                    const y = height - ((clampedPitch - minNote) / noteRange) * height;
+                    
+                    ctx.fillStyle = '#00ff00';
+                    ctx.beginPath();
+                    ctx.arc(x, y, 6, 0, Math.PI * 2);
+                    ctx.fill();
+                    
+                    ctx.strokeStyle = '#00ff00';
+                    ctx.lineWidth = 2;
+                    ctx.beginPath();
+                    ctx.arc(x, y, 10, 0, Math.PI * 2);
+                    ctx.stroke();
+                }
+            }
+        }
+        
+        function animate() {
+            processPD();
+            draw();
+            requestAnimationFrame(animate);
+        }
+        
+        updateParams();
+        animate();
+    </script>
+</body>
+</html>

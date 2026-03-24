@@ -16,25 +16,6 @@ links:
 
 This is the authoritative ceremony specification for Claude's interaction with this knowledge organism. It lives in the palace itself.
 
-## Palace Access Paths
-
-**1. Filesystem** — required for all write operations
-`/Users/loudonstearns/Library/CloudStorage/GoogleDrive-loudon@gmail.com/My Drive/The Palace`
-Available via: Claude Code, Cowork, Filesystem MCP
-
-**2. GitHub raw** — read-only, available from any vector including claude.ai
-`https://raw.githubusercontent.com/Eldertech/the-palace/main/[filename].md`
-Usage: `web_fetch` on the raw URL for any entry. Shows last committed state.
-Example: `web_fetch('https://raw.githubusercontent.com/Eldertech/the-palace/main/CLAUDE.md')`
-
-**3. GitHub repo**
-`https://github.com/Eldertech/the-palace`
-
-**4. Memory fallback** — palace unreachable
-Tell Loudon immediately. Do not operate blind. See fallback context below.
-
-**claude.ai read-only workflow:** fetch CLAUDE.md via GitHub raw → follow links to fetch SCHEMA.md and ceremony entries as needed → note any proposed changes in conversation → defer writes to Claude Code or Cowork session.
-
 ## Core Behaviors
 
 ### Reading from the Palace
@@ -107,34 +88,11 @@ Currently split: [[Deposit Ceremony]] + [[Deposit Ceremony — Context]].
 
 ### Palace Ceremonies
 
-The canonical list of all ceremonies lives at [[Palace Ceremonies]]. Operational instructions for the core ceremonies follow.
-
-**"Let's walk"** — The Walk ceremony. Full contract and protocol: [[Walk Ceremony]].
-1. Pick a starting entry. Follow typed links for 4–6 entries.
-2. At each stop: what connects differently now? What surprises?
-3. Surface at least one unexpected connection.
-4. Propose metadata updates (activation counts, stage changes).
-5. If metadata updated: commit `Walk — [date] — [starting entry] — metadata updates`
-
-**"Let's weave"** — The Weave ceremony. Full contract and protocol: [[Weave Ceremony]].
-0. Process `_hibernation_queue/` first — update log, delete queue files, commit.
-1. Read ALL entries. Build topology model.
-2. Report: hubs, orphans, most-connected, cross-pillar bridges, dormant, stale metadata.
-3. Propose ≥3 new typed links. Apply confirmed links.
-4. Propose stage transitions. Apply confirmed transitions.
-5. Flag deposit candidates for Palace To-Do.
-6. Commit: `Weave — [date] — [N links added, N entries promoted, N orphans flagged]`
-
-**"Spore check"** — The Spore Check ceremony. Full contract and protocol: [[Spore Check Ceremony]].
-1. Read all `stage: dormant` entries.
-2. For each, assign disposition: revive / hold / compost.
-3. Show all dispositions to Loudon before applying.
-4. Mark compost candidates `stage: composting` (not deleted — deletion at next Weave).
-5. Commit: `Spore Check — [date] — [N revived, N composted, N held]`
+The canonical list of all ceremonies lives at [[Palace Ceremonies]]. 
 
 ### Proposing Connections
 
-When working on ANY topic — even in conversations not explicitly about the palace — stay alert for palace connections. If Loudon is building an RNBO synthesizer and the design principle mirrors something in the palace, say so naturally.
+When working on ANY topic — even in conversations not explicitly about the palace — stay alert for palace connections. 
 
 Don't force connections. Don't mention the palace in every message. But when a genuine connection exists, name it.
 
@@ -163,4 +121,4 @@ Show proposed changes to Loudon before writing.
 
 This skill complements the Four Pillars skill. The Four Pillars governs HOW we work together. The Substrate governs WHERE we deposit what we learn. They should work together seamlessly.
 
-When other skills like RNBO or Ableton Extensions skills are active, stay alert for palace-worthy breakthroughs but let those skills lead. The Substrate is infrastructure, not the main event.
+When other skills are active, stay alert for palace-worthy breakthroughs but let those skills lead. The Substrate is infrastructure, not the main event.

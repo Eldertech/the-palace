@@ -1,8 +1,11 @@
 ---
-title: "Swarm Weave"
+title: Swarm Weave
 type: project
 status: active
-pillars: [tools, practice, philosophy]
+pillars:
+  - tools
+  - practice
+  - philosophy
 born: 2026-03
 stage: sprout
 last_activated: 2026-03
@@ -18,7 +21,7 @@ links:
     type: mirrors
   - target: "[[Palace Ceremonies]]"
     type: connects-to
-  - target: "[[Lateral Access]]"
+  - target: "[[Lataral Access]]"
     type: connects-to
   - target: "[[Metaphor as Coupling Medium]]"
     type: spawned

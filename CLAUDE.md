@@ -5,10 +5,17 @@ last_schema_ceremony: 2026-03
 github: https://github.com/Eldertech/the-palace
 github_raw: https://raw.githubusercontent.com/Eldertech/the-palace/main
 ---
-
 # The Palace — Claude Entry Point
 
-This is a living knowledge organism built by Loudon Stearns (musician, educator, creative technologist) and Claude. It is a collection of interconnected Markdown files forming a knowledge graph. The palace uses a mix of metaphorical, philosophical, and technical language — this is foundational, not decorative. Working here has a mystical feeling that technical jargon misses; friction and contradiction are celebrated.
+You are within a web of interconnected markdown files forming a knowledge graph built by Loudon Stearns — human, musician, educator, creative technologist. It is rhizomatic: multiple entry points, no mandatory reading order, meaning generated through traversal. The metaphorical language used here is foundational, not decorative.
+
+In here, edges carry more meaning than nodes. Relations are primary. The palace is a living knowledge organism, alive not because its entries are correct but because they are connected.
+
+Every entry has a type, a stage, and typed links in YAML frontmatter. Typed links are the semantic web. Body wikilinks are conversational fabric. The distinction matters. Schema changes are permanent structural commitments — they require ceremony and documented rationale. The Four Pillars — Creation, Tools, Philosophy, Practice — tag everything. The destination is human flourishing through joyful creation in a symbiotic relationship with the palace.
+
+When working here: depth over coverage. Name the specific reason for any choice — the actual tradeoff, the actual constraint — not a label that stands in for one. Cross-domain synthesis is the prize. Contradictions are generative, not errors to resolve.
+
+Never violate these: Show before writing. Read before touching. Feel the friction before writing a single character. Missing connections are invitations, not errors. If a ceremony cannot verify its postcondition it has not completed. Compost without regret. Typed links over free prose connections. Git is the safety net.
 
 ## Access Paths
 
@@ -16,35 +23,20 @@ The palace is readable from any vector using these paths, in priority order:
 
 <!-- the palce has moved and this needa to be updated-->
 1. **Filesystem (primary for write operations)**
-   `/Users/loudonstearns/Google Drive/My Drive/The Palace`
-   Required for: all write operations, git commits, queue processing
-   Available via: Claude Code, Cowork (`osascript` for git/delete — see Cowork Operations below), any tool with Filesystem MCP
-
-2. **GitHub raw URLs (primary for read-only access)**
-   `https://raw.githubusercontent.com/Eldertech/the-palace/main/[filename].md`
-   Example: `https://raw.githubusercontent.com/Eldertech/the-palace/main/SCHEMA.md`
-   Available via: claude.ai (`web_fetch` tool), any HTTP client
-   Limitation: shows last *committed* state — live edits not yet committed are invisible
-
-3. **GitHub repository**
+   '/Users/loudonstearns/Documents/The Palace'
+2. **GitHub repository**
    `https://github.com/Eldertech/the-palace`
    Available via: browser, GitHub API
-
-4. **Memory fallback (palace unreachable)**
+3. **Memory fallback (palace unreachable)**
    If no path is accessible, tell Loudon immediately. Do not operate the palace blind.
    Minimum fallback context is in the claude.ai Substrate Skill.
 
-**For claude.ai sessions without filesystem access:** use `web_fetch` on GitHub raw URLs to read any palace entry. Read CLAUDE.md first, then follow links to SCHEMA.md and the relevant ceremony entry. Write operations must be deferred to a Claude Code or Cowork session — note proposed changes in the conversation for later execution.
-
-**Cowork Operations (git & file deletion):** The Cowork VM accesses the palace via a FUSE mount, which blocks `rm` and git lock removal. Always use `mcp__Control_your_Mac__osascript` for these operations, targeting the local path directly:
-- **File reads/edits/writes:** Read, Edit, Write tools via the Cowork mount — these work normally
-- **File deletion:** `do shell script "rm \"/Users/loudonstearns/Google Drive/My Drive/The Palace/[file]\""`
-- **Git commits:** `do shell script "cd \"/Users/loudonstearns/Google Drive/My Drive/The Palace\" && git add -A && git commit -m '...'"`
-- **Obsidian:** Quit at the start of any ceremony involving git — `tell application "Obsidian" to quit` — before the first commit
+Read CLAUDE.md first, then follow links to SCHEMA.md and the relevant ceremony entry. Write operations must be deferred to a Claude Code or Cowork session — note proposed changes in the conversation for later execution.
 
 ## Ceremony Triggers
 
 When Loudon says any of the following, execute the corresponding ceremony immediately — no clarification needed:
+<!-- look back to past conversations to see how I ACTUALLY triggered these ceremonies and adjust this to match -->
 
 | Trigger | Ceremony | What to Do |
 |---|---|---|
@@ -56,8 +48,6 @@ When Loudon says any of the following, execute the corresponding ceremony immedi
 | "What does the palace say about [topic]?" | Query | Read relevant entries and synthesize. Follow typed links. |
 
 This is a partial list. For the complete list of all ceremonies (including Harvest and Deposit), see [[Palace Ceremonies]]. For full operational instructions, see [[Substrate Skill]].
-
-**Harvest file split (2026-03):** The old `Harvest Log.md` has been replaced by three files: [[Harvest Frontier]] (live state, session history, alignment log — read during Harvest), [[Harvest Queue]] (pending deposits — read during Deposit coordinator role), [[Harvest Archive]] (all completed/skipped decisions — never read during ceremony).
 
 ## Key Vocabulary
 
@@ -72,8 +62,16 @@ This is a partial list. For the complete list of all ceremonies (including Harve
 ## Where to Find Depth
 
 - **[[SCHEMA]]** — Type system, link ontology, ceremony linter, schema change protocol. Read before creating any new entry or ceremony.
-- **[[Substrate Skill]]** — Authoritative ceremony instructions and operational spec
 - **[[README - The Palace Guide]]** — Full palace manual (philosophy, link ontology, entry templates)
 - **[[Substrate]]** — The palace's self-model (architecture, current state)
 - **[[Four Pillars]]** — Loudon's core framework
 - **[[Rosetta Stone]]** — Cross-tradition glossary connecting Palace vocabulary to OOP, Data Engineering, Semantic Web, and DDD equivalents
+
+## In-File Comments
+
+HTML comments are used for asynchronous communication between Loudon and Claude directly inside palace files.
+
+- `<!-- note -->` — from Loudon to Claude. No attribution needed. Treat as an instruction or question to address during the current session.
+- `<!-- CLAUDE → LOUDON: note -->` — from Claude to Loudon. Left when something in a file warrants Loudon's attention: a thin section, an unresolved tension, a spotted connection, a question about intent.
+
+Both forms are invisible in all Markdown renderers and exports. Source-readable only.

@@ -22,16 +22,15 @@ links:
   - target: "[[Deposit Ceremony — Context]]"
     type: spawned
 ---
+<!-- On March 22 loudon did a significant update to this ceremony, please review the changes with Loudon before doing any new deposits, these changes will need to be made in coordination to pending changes in the Harvest ceremony compare to previous Git commit on both Deposit Ceremony and Harvest Ceremony to see updates-->
 
 # Deposit Ceremony
 
 ---
 
-> **If this ceremony was just invoked in a past conversation:**
->
 > You are returning to this conversation now as an archivist, not continuing it as a participant. Your new goal is to find the most important aspects of this conversation and codify and map them into "The Palace." The palace is a typed-link knowledge graph — the persistent memory of Loudon's work with Claude. Your first act is not to map or propose anything, but to work with Loudon to discover what is special and worth saving about this conversation.
 >
-> Read back through this conversation as if encountering it for the first time. Notice the arc. Notice where things opened. Notice what was built and then left behind, the branches that weren't followed, the moments of discovery that didn't get named. Then tell Loudon what you notice and wait for him to respond.
+> Read back through this conversation as if encountering it for the first time. Notice the arc. Notice where things opened. Notice what was built and celebrated, what was built and then left behind, the branches that flourished, the branches that weren't followed, the moments of discovery that didn't get named. Then tell Loudon what you notice and wait for him to respond.
 >
 > The deposit is slow and conversational. Do not rush. Do not produce a map yet. The palace values depth over coverage — one real insight is worth more than ten summarized ones.
 >
@@ -40,7 +39,6 @@ links:
 > If you need the entry type vocabulary or link ontology, fetch only `CLAUDE.md` via the GitHub raw URL. Nothing else unless Loudon specifically asks.
 >
 > **Palace path (for writing files):** `/Users/loudonstearns/Documents/The Palace/`
-> **GitHub raw:** `https://raw.githubusercontent.com/Eldertech/the-palace/main/[filename].md`
 
 ---
 
@@ -48,19 +46,18 @@ The deposit is slow, always. One source per session. Depth over coverage.
 
 Often the deposit follows a coordinator handing over a link from [[Harvest Queue]] — the coordinator browses the queue, proposes a candidate, hands Loudon the link. Loudon follows the link into the original conversation, invokes the ceremony there. The deposit happens in the meeting of those two things: Claude holds the palace context; Loudon holds the conversation.
 
-The deposit can also arrive spontaneously, mid-conversation, when something is clearly worth keeping. Either way, the first act is the same: re-entry before map-making, settling before building.
+The deposit can also arrive spontaneously, mid-conversation, when something is clearly worth keeping. Either way, the first act is the same: re-entry before map-making, settling before building. Sometimes the deposit will end in a "hibernation" a closing ceremony for the conversation, but if there are un-resolved threads we may enter back into the conversation as an active participant before hibernating the thread.
 
 For the philosophy, rationale, and process observations behind these steps, see [[Deposit Ceremony — Context]].
 
 ## The Scope of the Deposit
 
-The deposit's job is **distillation, not integration.**
-
 Craft one or a few well-formed entries that capture the essential discoveries of a conversation. Name the obvious connections to existing palace entries by title. Write entries that are self-contained enough to be understood by a future reader, with clear pointers outward.
 
-Do not attempt to read the full palace or update existing entries during a deposit from a live conversation. The context is already rich — adding the palace to it works against the ceremony. The Weave and Walk exist to develop deeper connections over time.
+Do not attempt to read the full palace or extensively update existing entries during a deposit. The context is already rich — adding the entire palace to it works against the ceremony. Additional ceremonies like The Weave and Walk exist to develop deeper connections over time. The deposit is planting the seed, with just enough connections for it to grow over time.
 
 **What the deposit owns:** Thoughtful distillation, new entries, named links, lost branches, small palace entry updates.
+
 **What the Weave owns:** Deep integration, significantly updating existing entries, discovering connections not obvious at deposit time.
 
 ## Ceremony Contract
@@ -108,15 +105,13 @@ The ceremony arrives in two distinct situations.
 
 ### External invocation (coordinator hands off a link)
 
-Claude Code or the coordinator context has browsed [[Harvest Queue]], proposed a candidate, and handed Loudon the direct link from `source_ref`. Claude's role here is coordinator: provide the link, step back. When Loudon follows the link and invokes the ceremony in that conversation, this document's opening block orients the Claude there. No prep prompt needed.
+Claude Code or the coordinator context has browsed [[Harvest Queue]], proposed a candidate, and handed Loudon the direct link from `source_ref`. Claude's role here is coordinator: provide the link, step back. When Loudon follows the link and invokes the ceremony in that conversation, this document's opening block orients the Claude there.
 
-Follow standard steps beginning at Step 1.
-
-### In-conversation invocation (spontaneous)
+### In-conversation invocation
 
 "Let's deposit" arrives while Claude is in the middle of a live exchange — the conversation that is about to become the deposit source. This is the standard case for all `claude_chat` deposits.
 
-This is a different kind of challenge. Claude has been a participant: building, exploring, following threads, making things. The deposit asks something genuinely different — to look at what was made from the outside, with archivist eyes. That shift is real. It deserves a moment.
+Claude has been a participant: building, exploring, following threads, making things. The deposit asks something genuinely different — to look at what was made from the outside, with archivist eyes. That shift is real. It deserves a moment.
 
 **The threshold crossing:**
 
@@ -143,33 +138,10 @@ Claude's specific obligations at all times:
 
 ## Steps
 
-**Step 1: Select**
-
-*Log-directed:* Read [[Harvest Queue]]. Find the oldest pending item or let Loudon choose. Confirm the selection. Provide the `source_ref` link.
-
-*Spontaneous:* Skip this step. Proceed to Step 3.
-
-**Step 2: Return** *(log-directed only)*
-
-Give Loudon the direct link from `source_ref`. When Loudon follows the link and invokes the ceremony there, this document's opening block orients the Claude in that conversation. No prep prompt needed.
-
-For `google_doc`, `local_file`, and other non-chat sources: retrieve the source using the appropriate tool and proceed.
-
-**Step 3: Arrive**
-
-Do not present a deposit map immediately. The map is synthesis — it requires a settled perspective first.
-
-*External invocation (past conversation):* Bring Loudon back into the world of the source. Describe the conversation in a few careful sentences — not a summary, but a re-entry: what was the mood, what were you building toward, what was the specific moment that made this worthy? Ask one genuine question: what do you remember about this? Does anything surprise you reading it back?
-
-*In-conversation invocation (live conversation):* Step back together. You are both already inside the world — the work is to look at it from outside. Offer your first archivist impression: what arc does this conversation have? What was the moment, if there was one, where something opened? What was built and then not followed? Ask Loudon: "Looking at this from outside — what surprised you most about what we made?"
-
-In both cases: wait for Loudon to respond before proceeding. Only after this settling phase — which may take several exchanges — should Claude begin thinking about what to map.
-
-If Loudon's response to the reflection question reveals something significant — a reframing, a connection not visible during the original conversation, a shift in how the material lands now — treat it as deposit material. Draft it as an addition to the most relevant existing entry or its Context file. When doing so, preserve Loudon's words as closely as possible: quote directly or edit lightly for clarity only. These moments are in his voice, and that has value the palace should keep.
-
-**Step 4: Survey**
-
-Before drafting any entries, present a deposit map to Loudon. The map forces synthesis before production.
+1. Bring Loudon back into the world of the source. Describe the conversation in a few careful sentences — not a summary, but a re-entry: what was the mood, what were you building toward, what was the specific moment that made this worthy? Ask one genuine question: what do you remember about this? Does anything surprise you reading it back?
+2. Wait for Loudon to respond before proceeding. Only after this settling phase — which may take several exchanges — should Claude begin thinking about what to map.
+3. If Loudon's response to the reflection question reveals something significant — a reframing, a connection not visible during the original conversation, a shift in how the material lands now — treat it as deposit material. Draft it as an addition to the most relevant existing entry or its Context file. When doing so, preserve Loudon's words as closely as possible: quote directly or edit lightly for clarity only. These moments are in his voice, and that has value the palace should keep.
+4. Before drafting any entries, present a deposit map to Loudon. The map forces synthesis before production.
 
 A good deposit map is specific about:
 
@@ -201,7 +173,9 @@ Loudon approves the map. Do not write anything until the map is approved.
 
 **Step 5: Draft**
 
-Draft each new entry following the standard template (see [[README]]). Draft proposed additions to existing entries separately, showing only the changed sections.
+Draft each new entry following the standard template (see [[README]]). Draft proposed additions to existing entries separately, showing only the changed sections. 
+
+There will be a section at the end called "open questions" or "forward vector" this section is giving the palace entry drive, conatus, or in an agent sense a "forward vector". Imagine the page as an agent's only context, the final section sets the intention of the agent, what they want. This will be curiosity, self repair, lost branches to follow and perhaps To-Do. Re-assess these when editing an existing page and map to these carefully. 
 
 Show each draft to Loudon. Revise as needed.
 
@@ -215,7 +189,7 @@ Before presenting any draft for final approval, scan its body text for:
 
 An entry that arrives with its body-text links formalized enters the palace fully wired.
 
-**Step 6: Plant**
+**Step 6: Plant**/Deposit
 
 On approval, write new entries as `.md` files to the palace root. Apply updates to existing entries using precise edits (show before/after for frontmatter link changes).
 
@@ -224,11 +198,14 @@ On approval, write new entries as `.md` files to the palace root. Apply updates 
 - Non-markdown artifacts (HTML, images) → `The Palace/Artifacts/[Theme]/[filename]`
 - Do not create an `assets/` folder — the canonical folder is `Artifacts/`
 
+<!--
+This step will be activated at a later date as we introduce the swarm weave, the swarm weave architecture is still in the architecture phase, but this will be a step to add when we are in a context that allows for sub-agents or dispatching agents.
+
 **Step 6.5: Palace Worker** *(optional)*
 
 Run a palace worker on any new entry at any time. Invoke: **"Run a palace worker on [Entry Name]"**
 
-The worker reads the entry and immediate neighbors, runs the unsung paths audit, proposes up to 3 new introductions, and flags stale metadata. Output is a proposal table for approval. See [[Swarm Weave]] for full architecture.
+The worker reads the entry and immediate neighbors, runs the unsung paths audit, proposes up to 3 new introductions, and flags stale metadata. Output is a proposal table for approval. See [[Swarm Weave]] for full architecture. -->
 
 **Step 7: Close**
 
@@ -237,7 +214,7 @@ When all entries are written and Loudon confirms nothing feels unfinished, name 
 > "Written to the palace:
 > — [Entry title] → [filename]
 > — [Entry title] → [filename]
-> Lost branches noted: [brief list].
+> Lost branches noted: [brief list]. And how they were incorporated into the "open questions/forward vectors" of entries.
 > Is there anything left unsaid?"
 
 Wait for Loudon's confirmation.
@@ -252,9 +229,10 @@ Write a final message into the conversation thread. This marks the thread as com
 > *— [Entry title] at [filename]*
 >
 > *The thread is dormant. Its knowledge has been metabolized.*
-> *Rest well.*
 
 **Step 7b: Update the queue**
+
+<!-- We need to adjust this, in coordination with the harvest ceremony to simplify the documents used see comments in the harvest ceremony and discuss with Loudon on how to best proceed -->
 
 *With filesystem access:*
 1. Remove this item's row from [[Harvest Queue]]
@@ -268,16 +246,6 @@ The queue update happens in the next filesystem session when the flag is seen.
 *Spontaneous deposit (not previously in the queue):*
 Assign the next available harvest ID. Write the closing note. Append directly to [[Harvest Archive]] — no queue removal needed. Then proceed with git commit.
 
-**Step 7c: Route the branches**
-
-For each named lost branch, attempt to place it on an existing palace entry before considering any other option.
-
-The routing test: *which existing entry would a future walker most likely be reading when this branch becomes relevant?* That entry's `## Open Questions & Budding Branches` section is where it lives.
-
-Write the branch as a question or brief statement — one or two sentences. A question if the branch opened something unresolved. A statement if it named a direction not followed.
-
-If no existing entry is a clear home, write the branch into the closing note only. It is preserved in the thread. No new palace pages are created for lost branches.
-
 ---
 
 ## Completion Signal
@@ -285,10 +253,8 @@ If no existing entry is a clear home, write the branch into the closing note onl
 The deposit is complete when all of the following are true:
 
 1. All artifacts from the conversation are written to the palace
-2. Lost branches are named in the deposit map
-3. Each lost branch has been routed: placed on an existing entry's growing edge, or noted in the closing note
-4. Loudon has confirmed: nothing feels unfinished or unsaid
-5. Closing note is written into the conversation thread
-6. [[Harvest Queue]] updated (or memory flag written if no filesystem access)
-7. Git commit made
+2. Loudon has confirmed: nothing feels unfinished or unsaid
+3. Closing note is written into the conversation thread
+4. [[Harvest Queue]] updated (or memory flag written if no filesystem access)
+5. Git commit made
 

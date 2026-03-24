@@ -16,6 +16,7 @@ links:
   - target: "[[Cooperation Yields Agency]]"
     type: enables
 ---
+<!-- I'd like to consider the concept in this entry in relation to Confucius, in our study of his philosophy, it felt to me that identity in his estimation is created by a person's relations to other peoples, who a person is, is the relationships he has: father, ruler, son, wife mentor. -->
 
 # Embeddings as Relational Meaning
 
@@ -24,6 +25,8 @@ In large language models, a word's meaning is not stored as a definition — it 
 This is the computational instantiation of the thesis in [[Meaning and the Link (2014)]]: meaning arises from sufficient associations between a pattern of symbols and a reality. The link is prior to the node. Here, the geometry of the embedding space *is* the links — directions and distances in that space encode semantic relationships (king − man + woman ≈ queen), syntactic roles, conceptual neighborhoods.
 
 A word has no meaning alone. It is a coordinate in a space defined entirely by relation.
+
+<!-- How does this concept relate to how meaning forms within a human brain? What kind of research in neuroscience strengthens and disputes the claim that relationships are primary? -->
 
 ## Origin
 
@@ -47,5 +50,5 @@ Context-dependent embeddings (transformers) go further: the same word has a *dif
 
 - The corpus→weights pipeline is a lossy compression of human language into a fixed parameter space. What is preserved and what is lost? The relational geometry of words survives — "square" near "cube." But does the *structure of understanding* survive, or only its statistical shadow? This connects to the palace itself: every deposit is also a compression. What does the palace lose when it distills a conversation into an entry? What is the fidelity of the typed link relative to the lived experience that generated it?
 - If meaning is purely relational, what grounds the relations themselves? Does the embedding space need anchoring in sensory or motor experience, or is pure associative density sufficient?
-- The 2014 paper argued for typed links as more powerful than untyped links. LLM embeddings are untyped — directions encode relations implicitly. Is the palace's typed link system doing something categorically different from what embeddings do?
+- The 2014 paper argued for typed links as more powerful than untyped links. LLM embeddings are untyped — directions encode relations implicitly. <!--Is the palace's typed link system doing something categorically different from what embeddings do? Are we overconstraining the "typed link" to be a single word? Should a typed link be a more thorough description of the relationship? Is this what are "cross-pillar connections" are? Is there value in expanding the "typed link" to be a "descriptive link". A link that encourages nuance, or opening a bi-directional flow of meaning between two shifting endpoints? Is this what embodied/active/enchanted pages accomplish if we bring a page to life and encourage it to build nuance along it's relationships, instead of building information about itself.?-->
 - Embeddings are learned from text alone. Does meaning in this sense converge with human meaning, or is it a different phenomenon that resembles it?

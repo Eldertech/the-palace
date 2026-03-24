@@ -1,7 +1,11 @@
 ---
-title: "Four Pillars"
+title: Four Pillars
 type: hub
-pillars: [creation, tools, philosophy, practice]
+pillars:
+  - creation
+  - tools
+  - philosophy
+  - practice
 born: 2024-01
 last_activated: 2026-03
 activation_count: 32
@@ -22,8 +26,10 @@ links:
     type: spawned
   - target: "[[Kuramoto Coupling]]"
     type: connects-to
-  - target: "[[Quality Manifesto]]"
+  - target: "[[Quality]]"
     type: spawned
+  - target: "[[Trickster]]"
+    type: connects-to
 ---
 
 # Four Pillars
@@ -82,7 +88,7 @@ The Kick Drum Paradox is useful as a template: any deep creative object can gene
 
 Quality in the Four Pillars context is defined by furtherance of your own highest goals — not by industry standards. The three metrics: wellbeing, integrity, depth of relationships. This is a Meadows leverage-point intervention at the paradigm level: change the goal of the system, and the system reorients.
 
-The practical redirector: **"How do you feel?"** not **"How many views?"** See [[Quality Manifesto]] for the full articulation.
+The practical redirector: **"How do you feel?"** not **"How many views?"** See [[Quality]] for the full articulation.
 
 ## The Collaborative Language
 
@@ -99,6 +105,32 @@ These are not stylistic choices — they are structural commitments. The languag
 Loudon's use of AI is explicitly pedagogical — not just for output, but as a model. The intention: demonstrate publicly what thoughtful AI collaboration looks like. Not AI as autocomplete, but AI as thinking partner in the service of becoming a better human. The collaboration itself is the teaching.
 
 This connects the Four Pillars to [[Cooperation Yields Agency]] at the level of public practice, not just theory.
+
+## The Autodidact/Polymath Trajectory
+
+The Four Pillars framework is fundamentally a framework for autodidacts and polymaths — people who do not learn disciplines sequentially but obliquely, who learn by doing before knowing all the prerequisites, who build understanding through creation rather than accumulation.
+
+**The traditional path inverted:** Institutional education says learn first, make later. You acquire prerequisites, then apply them. The Four Pillars invert this: make first, learn through friction. The question becomes not "do I know enough yet?" but "what does this broken experiment teach me about what I need to know?"
+
+**The autodidact's actual problem:** It is not lack of discipline or rigor. The problem is the absence of a *framework* for how self-directed learning works — how to know what to learn next, how to validate understanding without credentials, how to build coherence from a chaotic web of half-finished explorations. The Four Pillars provide that framework: the pillars themselves are the dimensions of coherence.
+
+**The polymath pressure:** Society insists: pick a lane, specialize, be one thing. The Four Pillars refuse this. The lane is not the specialization — the lane *is* the synthesis itself. Knowing synthesizer physics makes you a better music educator, which makes you a better programmer, which makes you a better philosopher. These are not separate skills executed in serial. They are views of the same thing. The integration *is* the expertise. This connects to [[Hyperdimensional Prism]]: from above, all the views are the same object.
+
+**Cross-domain learning as competitive advantage:** The deepest work happens at the intersections. A person fluent in all four pillars sees leverage points that specialists miss because specialists see only one dimension of the system. This is not dilettantism — it is the opposite. The polymath has more attack surfaces for understanding, more analogies to draw from, more degrees of freedom for solving novel problems.
+
+**Learning through making as the core method:** You do not understand a thing until you have built a version of it. Not theoretically. Not by reading or listening. By building. The friction of bringing something into existence teaches you what the thing actually is, versus what you thought it was. This is why the Kick Drum Paradox works: the moment you try to place the kick drum, you collide with the reality of how the system actually behaves. That collision is learning.
+
+## Mission Statements
+
+The Four Pillars has two distinct missions, and the gap between them is generative.
+
+**Personal mission:** To pursue human flourishing through joyful creation. This is lived already — through Loudon's own embodied practice across all four pillars, through the daily act of making, teaching, thinking, and sustaining the work.
+
+**Public/pedagogical mission:** To create learning experiences where participants discover their own autodidact and polymath capability through direct creative experience. Not to impose the framework, but to let people *feel* how learning happens when you stop asking permission and start building. This mission is in active development.
+
+**The gap itself:** The personal mission is self-validating. Loudon knows whether he is flourishing. The public mission has no single proof point — it lives in the distributed outcomes of everyone who has participated: a musician who now codes, a teacher who now makes, a person who discovered they could learn by doing. The gap between certainty (personal) and distributed emergence (public) is where the teaching happens.
+
+**AI partnership as public demonstration:** Part of the public mission is to model openly what thoughtful human-AI collaboration looks like. Not AI as tool, but AI as thinking partner in the service of becoming a better human. The collaboration itself becomes the teaching artifact. When Loudon works with Claude on the palace, this isn't hidden labor — it's a public demonstration of cooperation that does not diminish human agency but extends it. This is [[Cooperation Yields Agency]] performed in real time, visible to anyone watching.
 
 ## Open Questions
 

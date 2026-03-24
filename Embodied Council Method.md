@@ -56,7 +56,7 @@ Where Excellent Adventure produces immersive encounter with a single perspective
 - How much research is enough before embodying a voice? Minimum viable: read their own words, not only secondary sources. Know their vocabulary. Know one thing they got wrong that they didn't know they got wrong.
 - What questions work best? Systems design, pedagogical philosophy, architectural decisions, ethical questions in creative practice. Questions where the disagreement is structural, not factual.
 - How to handle historical figures on contemporary problems? Explicitly acknowledge the anachronism and let it generate energy rather than trying to resolve it. Meadows never encountered LLMs. That gap is productive.
-- What is the right size of council? Two voices produce tension. Three produce triangulation. Four or more risk cacophony. Start with three.
+- What is the right size of council? Two voices produce tension. Three produce triangulation. Four or more risk cacophony. Start with three. <!--Three is great, and more can step in and step out, imagine plato and socrates, many people of different views enter and exit the discussion. Dialectic. Actually, lets prefer the term "dialectic" That holds the right weight, the joint search for truth instead of a simple conversation.-->
 
 ## Cross-Domain Resonance
 
@@ -67,3 +67,6 @@ Where Excellent Adventure produces immersive encounter with a single perspective
 **[[Palace Philosophies]]** — The council's voices often become candidates for `person` entries in the palace. A voice well-researched enough to embody is well-researched enough to deposit.
 
 **[[Hilaritas Generator]]** — The Embodied Council consistently produces the conditions for hilaritas: surprise, genuine discovery, positions that behave unexpectedly under pressure. It is a reliable method for generating the friction that good thinking requires.
+
+## Forward Vector
+- Make an interactive front end for this where a user can move around people in a virtual space, and they have conversations with each other, and we can interject our own questions to groups of famous philosophers and personalities.

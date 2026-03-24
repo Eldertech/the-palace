@@ -1,0 +1,825 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Quantum Membrane Visualizer</title>
+    <style>
+        body { margin: 0; overflow: hidden; background: #000; }
+        canvas { display: block; }
+        #controls {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            color: white;
+            font-family: monospace;
+            background: rgba(0,0,0,0.7);
+            padding: 15px;
+            border-radius: 5px;
+        }
+        .slider-container {
+            margin: 10px 0;
+        }
+        label {
+            display: inline-block;
+            width: 100px;
+        }
+    </style>
+</head>
+<body>
+    <div id="controls">
+        <h3>Quantum Membrane</h3>
+        <div class="slider-container">
+            <label>Mode (0,0):</label>
+            <input type="range" id="c00" min="0" max="100" value="100">
+            <span id="c00val">1.00</span>
+        </div>
+        <div class="slider-container">
+            <label>Mode (1,0):</label>
+            <input type="range" id="c10" min="0" max="100" value="0">
+            <span id="c10val">0.00</span>
+        </div>
+        <div class="slider-container">
+            <label>Mode (0,1):</label>
+            <input type="range" id="c01" min="0" max="100" value="0">
+            <span id="c01val">0.00</span>
+        </div>
+        <div class="slider-container">
+            <label>Mode (2,0):</label>
+            <input type="range" id="c20" min="0" max="100" value="0">
+            <span id="c20val">0.00</span>
+        </div>
+        <div class="slider-container">
+            <label>Mode (1,1):</label>
+            <input type="range" id="c11" min="0" max="100" value="0">
+            <span id="c11val">0.00</span>
+        </div>
+        <div class="slider-container">
+            <label>Speed:</label>
+            <input type="range" id="speed" min="0" max="200" value="100">
+            <span id="speedval">1.0x</span>
+        </div>
+        <button id="normalize">Normalize</button>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="quantum-membrane.js"></script>
+</body>
+</html>
+```
+
+### Vertex Shader (`vertexShader.glsl`):
+
+```glsl
+varying vec2 vUv;
+varying vec3 vPosition;
+
+void main() {
+    vUv = uv;
+    vPosition = position;
+    
+    // Pass through position - fragment shader will compute height
+    gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
+}
+```
+
+### Fragment Shader (`fragmentShader.glsl`):
+
+```glsl
+precision highp float;
+
+varying vec2 vUv;
+varying vec3 vPosition;
+
+// Quantum state parameters (passed from JavaScript)
+uniform float time;
+uniform vec3 amplitudes[5];  // [n, m, c_nm] for each mode
+uniform int numModes;
+uniform float radius;
+
+// Constants
+#define PI 3.14159265359
+#define TWO_PI 6.28318530718
+
+// Factorial function (for Bessel computation)
+float factorial(int n) {
+    float result = 1.0;
+    for(int i = 2; i <= n; i++) {
+        result *= float(i);
+    }
+    return result;
+}
+
+// Bessel function J_m(x) using series expansion
+float bessel_J(int m, float x) {
+    float sum = 0.0;
+    float term;
+    
+    // Series expansion (first 10 terms usually sufficient)
+    for(int k = 0; k < 10; k++) {
+        float sign = (k % 2 == 0) ? 1.0 : -1.0;
+        float num = pow(x / 2.0, float(2*k + m));
+        float denom = factorial(k) * factorial(m + k);
+        term = sign * num / denom;
+        sum += term;
+        
+        // Early exit if term becomes negligible
+        if(abs(term) < 1e-6) break;
+    }
+    
+    return sum;
+}
+
+// Eigenvalues λ_{n,m} for circular membrane
+// These are zeros of Bessel functions - precomputed table
+float getLambda(int n, int m) {
+    // First few eigenvalues (dimensionless)
+    // λ_{n,m} such that J_m(λ_{n,m} * R) = 0
+    
+    if(m == 0) {
+        if(n == 0) return 2.4048;  // J_0 first zero
+        if(n == 1) return 5.5201;  // J_0 second zero
+        if(n == 2) return 8.6537;  // J_0 third zero
+    }
+    else if(m == 1) {
+        if(n == 0) return 3.8317;  // J_1 first zero
+        if(n == 1) return 7.0156;  // J_1 second zero
+    }
+    else if(m == 2) {
+        if(n == 0) return 5.1356;  // J_2 first zero
+    }
+    
+    return 1.0; // Fallback
+}
+
+// Frequency for mode (n,m)
+// ω_{n,m} = c * λ_{n,m} / R
+// We'll set c/R = 1 for simplicity
+float getOmega(int n, int m) {
+    return getLambda(n, m);
+}
+
+// Compute single quantum mode at position (r, theta)
+vec2 computeMode(int n, int m, float r, float theta, float t, float amplitude) {
+    float lambda = getLambda(n, m);
+    float omega = getOmega(n, m);
+    
+    // Radial part: J_m(λ_{n,m} * r/R)
+    float radial = bessel_J(m, lambda * r / radius);
+    
+    // Angular part: e^{i*m*θ} = cos(m*θ) + i*sin(m*θ)
+    float angular_real = cos(float(m) * theta);
+    float angular_imag = sin(float(m) * theta);
+    
+    // Temporal part: e^{-i*ω*t} = cos(ω*t) - i*sin(ω*t)
+    float temporal_real = cos(omega * t);
+    float temporal_imag = -sin(omega * t);
+    
+    // Complex multiplication: (angular) * (temporal) * amplitude
+    float real = amplitude * radial * (angular_real * temporal_real - angular_imag * temporal_imag);
+    float imag = amplitude * radial * (angular_real * temporal_imag + angular_imag * temporal_real);
+    
+    return vec2(real, imag);
+}
+
+void main() {
+    // Convert UV coordinates to radial coordinates
+    // UV is [0,1] × [0,1], center at (0.5, 0.5)
+    vec2 centered = vUv - 0.5;
+    float r = length(centered) * 2.0 * radius;  // Scale to physical radius
+    float theta = atan(centered.y, centered.x);
+    
+    // Boundary condition: outside radius, wavefunction is zero
+    if(r > radius) {
+        discard;  // Don't render outside membrane
+    }
+    
+    // Compute wavefunction as superposition of modes
+    vec2 psi = vec2(0.0, 0.0);  // Complex number (real, imag)
+    
+    for(int i = 0; i < 5; i++) {  // Max 5 modes (expandable)
+        if(i >= numModes) break;
+        
+        int n = int(amplitudes[i].x);
+        int m = int(amplitudes[i].y);
+        float c = amplitudes[i].z;
+        
+        if(c > 0.0) {
+            psi += computeMode(n, m, r, theta, time, c);
+        }
+    }
+    
+    // Probability density: |ψ|² = real² + imag²
+    float prob_density = dot(psi, psi);
+    
+    // Map probability density to height/color
+    float height = prob_density;
+    
+    // Color based on height (blue → white → red)
+    vec3 color;
+    if(height < 0.5) {
+        // Blue to cyan
+        color = mix(vec3(0.0, 0.0, 0.5), vec3(0.0, 0.5, 1.0), height * 2.0);
+    } else {
+        // Cyan to white to yellow
+        color = mix(vec3(0.0, 0.5, 1.0), vec3(1.0, 1.0, 0.8), (height - 0.5) * 2.0);
+    }
+    
+    // Add some brightness based on height for 3D effect
+    color += vec3(height * 0.3);
+    
+    gl_FragColor = vec4(color, 1.0);
+}
+```
+
+### JavaScript (`quantum-membrane.js`):
+
+```javascript
+// Scene setup
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+const renderer = new THREE.WebGLRenderer({ antialias: true });
+renderer.setSize(window.innerWidth, window.innerHeight);
+document.body.appendChild(renderer.domElement);
+
+// Camera position
+camera.position.set(0, 1.5, 2);
+camera.lookAt(0, 0, 0);
+
+// Lighting
+const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
+scene.add(ambientLight);
+const pointLight = new THREE.PointLight(0xffffff, 0.8);
+pointLight.position.set(2, 3, 2);
+scene.add(pointLight);
+
+// Quantum membrane parameters
+const membraneRadius = 1.0;
+const gridResolution = 128;  // Higher = smoother
+
+// Shader uniforms
+const uniforms = {
+    time: { value: 0.0 },
+    radius: { value: membraneRadius },
+    numModes: { value: 5 },
+    amplitudes: { value: [
+        new THREE.Vector3(0, 0, 1.0),  // (n=0, m=0, c=1.0)
+        new THREE.Vector3(1, 0, 0.0),  // (n=1, m=0, c=0.0)
+        new THREE.Vector3(0, 1, 0.0),  // (n=0, m=1, c=0.0)
+        new THREE.Vector3(2, 0, 0.0),  // (n=2, m=0, c=0.0)
+        new THREE.Vector3(1, 1, 0.0),  // (n=1, m=1, c=0.0)
+    ]}
+};
+
+// Create circular membrane geometry
+const geometry = new THREE.CircleGeometry(membraneRadius, gridResolution);
+
+// Shader material
+const material = new THREE.ShaderMaterial({
+    uniforms: uniforms,
+    vertexShader: `
+        varying vec2 vUv;
+        void main() {
+            vUv = uv;
+            gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
+        }
+    `,
+    fragmentShader: `
+        precision highp float;
+        varying vec2 vUv;
+        
+        uniform float time;
+        uniform vec3 amplitudes[5];
+        uniform int numModes;
+        uniform float radius;
+        
+        #define PI 3.14159265359
+        
+        float factorial(int n) {
+            float result = 1.0;
+            for(int i = 2; i <= n; i++) {
+                result *= float(i);
+            }
+            return result;
+        }
+        
+        float bessel_J(int m, float x) {
+            float sum = 0.0;
+            for(int k = 0; k < 10; k++) {
+                float sign = mod(float(k), 2.0) == 0.0 ? 1.0 : -1.0;
+                float num = pow(x / 2.0, float(2*k + m));
+                float denom = factorial(k) * factorial(m + k);
+                sum += sign * num / denom;
+            }
+            return sum;
+        }
+        
+        float getLambda(int n, int m) {
+            if(m == 0) {
+                if(n == 0) return 2.4048;
+                if(n == 1) return 5.5201;
+                if(n == 2) return 8.6537;
+            }
+            else if(m == 1) {
+                if(n == 0) return 3.8317;
+                if(n == 1) return 7.0156;
+            }
+            else if(m == 2) {
+                if(n == 0) return 5.1356;
+            }
+            return 1.0;
+        }
+        
+        vec2 computeMode(int n, int m, float r, float theta, float t, float amplitude) {
+            float lambda = getLambda(n, m);
+            float omega = lambda;
+            
+            float radial = bessel_J(m, lambda * r / radius);
+            float angular_real = cos(float(m) * theta);
+            float angular_imag = sin(float(m) * theta);
+            float temporal_real = cos(omega * t);
+            float temporal_imag = -sin(omega * t);
+            
+            float real = amplitude * radial * (angular_real * temporal_real - angular_imag * temporal_imag);
+            float imag = amplitude * radial * (angular_real * temporal_imag + angular_imag * temporal_real);
+            
+            return vec2(real, imag);
+        }
+        
+        void main() {
+            vec2 centered = vUv - 0.5;
+            float r = length(centered) * 2.0 * radius;
+            float theta = atan(centered.y, centered.x);
+            
+            if(r > radius) {
+                discard;
+            }
+            
+            vec2 psi = vec2(0.0);
+            
+            for(int i = 0; i < 5; i++) {
+                if(i >= numModes) break;
+                int n = int(amplitudes[i].x);
+                int m = int(amplitudes[i].y);
+                float c = amplitudes[i].z;
+                if(c > 0.0) {
+                    psi += computeMode(n, m, r, theta, time, c);
+                }
+            }
+            
+            float prob_density = dot(psi, psi);
+            float height = prob_density * 5.0;  // Scale for visibility
+            
+            vec3 color;
+            if(height < 0.5) {
+                color = mix(vec3(0.1, 0.1, 0.5), vec3(0.2, 0.6, 1.0), height * 2.0);
+            } else {
+                color = mix(vec3(0.2, 0.6, 1.0), vec3(1.0, 0.9, 0.7), (height - 0.5) * 2.0);
+            }
+            
+            gl_FragColor = vec4(color, 1.0);
+        }
+    `,
+    side: THREE.DoubleSide
+});
+
+const membrane = new THREE.Mesh(geometry, material);
+membrane.rotation.x = -Math.PI / 2;  // Lay flat
+scene.add(membrane);
+
+// Controls
+const controls = {
+    c00: 1.0,
+    c10: 0.0,
+    c01: 0.0,
+    c20: 0.0,
+    c11: 0.0,
+    speed: 1.0
+};
+
+// UI Event handlers
+['c00', 'c10', 'c01', 'c20', 'c11'].forEach((id, index) => {
+    const slider = document.getElementById(id);
+    const display = document.getElementById(id + 'val');
+    slider.addEventListener('input', (e) => {
+        controls[id] = parseFloat(e.target.value) / 100;
+        display.textContent = controls[id].toFixed(2);
+        updateAmplitudes();
+    });
+});
+
+document.getElementById('speed').addEventListener('input', (e) => {
+    controls.speed = parseFloat(e.target.value) / 100;
+    document.getElementById('speedval').textContent = controls.speed.toFixed(1) + 'x';
+});
+
+document.getElementById('normalize').addEventListener('click', () => {
+    const sum = controls.c00**2 + controls.c10**2 + controls.c01**2 + controls.c20**2 + controls.c11**2;
+    const norm = Math.sqrt(sum);
+    if(norm > 0) {
+        controls.c00 /= norm;
+        controls.c10 /= norm;
+        controls.c01 /= norm;
+        controls.c20 /= norm;
+        controls.c11 /= norm;
+        
+        document.getElementById('c00').value = controls.c00 * 100;
+        document.getElementById('c10').value = controls.c10 * 100;
+        document.getElementById('c01').value = controls.c01 * 100;
+        document.getElementById('c20').value = controls.c20 * 100;
+        document.getElementById('c11').value = controls.c11 * 100;
+        
+        document.getElementById('c00val').textContent = controls.c00.toFixed(2);
+        document.getElementById('c10val').textContent = controls.c10.toFixed(2);
+        document.getElementById('c01val').textContent = controls.c01.toFixed(2);
+        document.getElementById('c20val').textContent = controls.c20.toFixed(2);
+        document.getElementById('c11val').textContent = controls.c11.toFixed(2);
+        
+        updateAmplitudes();
+    }
+});
+
+function updateAmplitudes() {
+    uniforms.amplitudes.value = [
+        new THREE.Vector3(0, 0, controls.c00),
+        new THREE.Vector3(1, 0, controls.c10),
+        new THREE.Vector3(0, 1, controls.c01),
+        new THREE.Vector3(2, 0, controls.c20),
+        new THREE.Vector3(1, 1, controls.c11),
+    ];
+}
+
+// Animation loop
+function animate() {
+    requestAnimationFrame(animate);
+    
+    uniforms.time.value += 0.016 * controls.speed;  // ~60fps
+    
+    // Optional: Rotate camera slowly
+    // camera.position.x = Math.cos(uniforms.time.value * 0.1) * 2;
+    // camera.position.z = Math.sin(uniforms.time.value * 0.1) * 2;
+    // camera.lookAt(0, 0, 0);
+    
+    renderer.render(scene, camera);
+}
+
+animate();
+
+// Handle window resize
+window.addEventListener('resize', () => {
+    camera.aspect = window.innerWidth / window.innerHeight;
+    camera.updateProjectionMatrix();
+    renderer.setSize(window.innerWidth, window.innerHeight);
+});
+```
+
+---
+
+## Part 4: How to Use This
+
+### Getting It Running:
+
+1. **Save three files:**
+   - `index.html` (the HTML above)
+   - `quantum-membrane.js` (the JavaScript above)
+
+2. **Serve locally:**
+   ```bash
+   python -m http.server 8000
+   ```
+   Then open `http://localhost:8000`
+
+3. **Play with sliders:**
+   - Mode (0,0): Ground state (circular ripple)
+   - Mode (1,0): First radial overtone (ring pattern)
+   - Mode (0,1): First angular mode (splits in half)
+   - Combine them to see interference!
+
+### What You'll See:
+
+**Pure (0,0) mode:**
+- Pulsating circle
+- Brightness increases/decreases from center
+- Single frequency oscillation
+
+**Pure (1,0) mode:**
+- Two concentric rings
+- Inner and outer oscillate out of phase
+- Higher frequency than (0,0)
+
+**Pure (0,1) mode:**
+- Membrane splits into two halves
+- One side up, other side down
+- Rotates around center
+
+**Superposition (0,0) + (0,1):**
+- Interference creates wobbling pattern
+- Beating between two frequencies
+- **Beautiful traveling waves**
+
+---
+
+## Part 5: Making It 3D (Height Map)
+
+The current version is **2D colored** (flat disk with color = probability).
+
+To make it a **true 3D surface** (your vision!), we need to **displace vertices vertically**:
+
+### Modified Approach: Displacement Mapping
+
+**Change the vertex shader to compute height:**
+
+```glsl
+// VERTEX SHADER (3D version)
+varying vec2 vUv;
+varying float vHeight;
+
+uniform float time;
+uniform vec3 amplitudes[5];
+uniform int numModes;
+uniform float radius;
+
+// [Include all the Bessel/mode functions here - same as fragment shader]
+
+void main() {
+    vUv = uv;
+    
+    // Convert to polar coordinates
+    vec2 centered = uv - 0.5;
+    float r = length(centered) * 2.0 * radius;
+    float theta = atan(centered.y, centered.x);
+    
+    // Compute wavefunction
+    vec2 psi = vec2(0.0);
+    for(int i = 0; i < 5; i++) {
+        if(i >= numModes) break;
+        int n = int(amplitudes[i].x);
+        int m = int(amplitudes[i].y);
+        float c = amplitudes[i].z;
+        if(c > 0.0) {
+            psi += computeMode(n, m, r, theta, time, c);
+        }
+    }
+    
+    float prob_density = dot(psi, psi);
+    vHeight = prob_density * 0.5;  // Scale factor for height
+    
+    // Displace vertex vertically
+    vec3 displaced = position;
+    displaced.z += vHeight;
+    
+    gl_Position = projectionMatrix * modelViewMatrix * vec4(displaced, 1.0);
+}
+```
+
+**Fragment shader just colors based on height:**
+
+```glsl
+// FRAGMENT SHADER (3D version)
+varying float vHeight;
+
+void main() {
+    vec3 color;
+    if(vHeight < 0.25) {
+        color = mix(vec3(0.1, 0.1, 0.5), vec3(0.2, 0.6, 1.0), vHeight * 4.0);
+    } else {
+        color = mix(vec3(0.2, 0.6, 1.0), vec3(1.0, 0.9, 0.7), (vHeight - 0.25) * 4.0);
+    }
+    
+    gl_FragColor = vec4(color, 1.0);
+}
+```
+
+**HOWEVER:** There's a problem - **vertex shaders don't have loops in older GLSL**!
+
+### Solution: Use PlaneGeometry + Displacement Texture
+
+Better approach for 3D:
+
+1. **Compute wavefunction in fragment shader** (as before)
+2. **Render to texture** (RTT)
+3. **Use that texture as displacement map** in a separate pass
+
+OR
+
+**Use compute shader** (WebGL 2.0 / WebGPU) - more advanced but cleaner.
+
+---
+
+## Part 6: Optimizations
+
+### Performance Improvements:
+
+**1. Precompute Bessel function:**
+   - Create lookup texture
+   - Sample instead of compute
+
+**2. Reduce mode count dynamically:**
+   - Only compute modes with non-zero amplitude
+   - Use `if(c > epsilon)` to skip
+
+**3. Level of detail:**
+   - Lower resolution grid when far away
+   - Higher when zoomed in
+
+**4. Web Workers for audio:**
+   - Compute audio in separate thread
+   - GPU does visualization
+   - CPU does sound generation
+
+---
+
+## Part 7: Audio Integration
+
+### Connecting Visualization to Sound:
+
+**Strategy:** Read center pixel value each frame
+
+```javascript
+// In animation loop:
+const centerPixel = renderer.readRenderTargetPixels(/* center coordinate */);
+const amplitude = centerPixel.r; // Or compute from RGB
+
+// Use as audio signal
+audioContext.currentTime += deltaTime;
+oscillator.frequency.value = baseFrequency;
+oscillator.amplitude.value = amplitude;
+```
+
+**Better strategy:** Compute audio and video in parallel
+
+```javascript
+// Audio buffer generation (Web Audio API)
+function generateAudioFrame(time, amplitudes) {
+    let signal = 0.0;
+    
+    // Modal synthesis
+    for(let i = 0; i < amplitudes.length; i++) {
+        const [n, m, c] = modes[i];
+        const omega = getLambda(n, m); // Same as visual
+        signal += c * Math.cos(omega * time);
+    }
+    
+    return signal;
+}
+
+// Called from ScriptProcessorNode or AudioWorklet
+function processAudio(e) {
+    const output = e.outputBuffer.getChannelData(0);
+    for(let i = 0; i < output.length; i++) {
+        output[i] = generateAudioFrame(currentTime, controls);
+        currentTime += 1.0 / sampleRate;
+    }
+}
+```
+
+---
+
+## Part 8: Max/MSP Integration (Jitter + Gen)
+
+For your Max environment:
+
+### Using jit.gl.shader:
+
+**Patch structure:**
+```
+[jit.gl.render @erase_color 0 0 0 1]
+│
+[jit.gl.mesh @draw_mode triangles @automatic 0]
+│
+[jit.gl.shader @file quantum_membrane.vert quantum_membrane.frag]
+│
+├─ param time $1
+├─ param c00 $2
+├─ param c10 $3
+└─ ...
+```
+
+**Driving it:**
+```
+[metro 33]  ← ~30fps
+│
+[counter]
+│
+[/ 100.]  ← Time value
+│
+[prepend time]
+│
+[jit.gl.shader]
+```
+
+### Shader Files in Max:
+
+Save as `quantum_membrane.vert` and `quantum_membrane.frag` in the same directory.
+
+Max will automatically load them!
+
+### Passing Mode Amplitudes:
+
+```
+[live.dial @range 0 100]  ← UI control
+│
+[/ 100.]
+│
+[prepend param c00]
+│
+[jit.gl.shader @name quantum_membrane]
+```
+
+---
+
+## Part 9: Next-Level Features
+
+### Once Basic Version Works:
+
+**1. Custom membrane shapes:**
+   - User draws boundary
+   - Shader tests point-in-polygon
+   - Creates unique mode shapes
+
+**2. Multiple membrane**:
+   - Array of membranes
+   - Coupled oscillators
+   - Visual "quantum field"
+
+**3. VR/AR version:**
+   - Walk around the membrane
+   - Reach in and "touch" it
+   - Haptic feedback
+
+**4. Live performance tool:**
+   - MIDI control of mode amplitudes
+   - OSC input from sensors
+   - Real-time audio-reactive
+
+**5. Quantum measurement visualization:**
+   - Click on membrane
+   - Collapse to single mode
+   - Show measurement probability distribution
+
+---
+
+## Part 10: Complete Starter Code (Simplified)
+
+Here's a **minimal working example** you can run RIGHT NOW:
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body { margin: 0; }
+        canvas { display: block; }
+    </style>
+</head>
+<body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 0.1, 1000);
+const renderer = new THREE.WebGLRenderer();
+renderer.setSize(window.innerWidth, window.innerHeight);
+document.body.appendChild(renderer.domElement);
+
+camera.position.z = 2;
+
+const geometry = new THREE.PlaneGeometry(2, 2, 128, 128);
+const material = new THREE.ShaderMaterial({
+    uniforms: {
+        time: { value: 0 }
+    },
+    vertexShader: `
+        varying vec2 vUv;
+        void main() {
+            vUv = uv;
+            gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
+        }
+    `,
+    fragmentShader: `
+        uniform float time;
+        varying vec2 vUv;
+        
+        void main() {
+            vec2 p = vUv - 0.5;
+            float r = length(p);
+            float a = atan(p.y, p.x);
+            
+            // Simple wave
+            float wave = sin(r * 10.0 - time) * cos(2.0 * a);
+            float intensity = wave * 0.5 + 0.5;
+            
+            vec3 color = vec3(0.2, 0.6, 1.0) * intensity;
+            gl_FragColor = vec4(color, 1.0);
+        }
+    `
+});
+
+const mesh = new THREE.Mesh(geometry, material);
+scene.add(mesh);
+
+function animate() {
+    requestAnimationFrame(animate);
+    material.uniforms.time.value += 0.05;
+    renderer.render(scene, camera);
+}
+animate();
+</script>
+</body>
+</html>

@@ -1,0 +1,1807 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Action Potential Oscillator — From Neurobiology to Audio Synthesis</title>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400&family=JetBrains+Mono:wght@400;500&family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #0a0a0f;
+  --bg-card: #12121a;
+  --bg-code: #1a1a28;
+  --border: #2a2a3a;
+  --text: #c8c8d8;
+  --text-dim: #7a7a8e;
+  --text-bright: #e8e8f0;
+  --accent-na: #ff6b4a;
+  --accent-k: #4aadff;
+  --accent-spike: #ff4a6b;
+  --accent-rest: #4aff8b;
+  --accent-leak: #ffa64a;
+  --accent-hyper: #a64aff;
+  --accent-charge: #ffe44a;
+  --serif: 'Source Serif 4', Georgia, serif;
+  --mono: 'JetBrains Mono', monospace;
+  --sans: 'DM Sans', system-ui, sans-serif;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--serif);
+  font-size: 17px;
+  line-height: 1.75;
+  -webkit-font-smoothing: antialiased;
+}
+
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 40px 24px 100px;
+}
+
+/* ── HEADER ── */
+header {
+  text-align: center;
+  padding: 80px 0 60px;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 60px;
+}
+
+header h1 {
+  font-family: var(--serif);
+  font-size: clamp(2rem, 5vw, 3.2rem);
+  font-weight: 700;
+  color: var(--text-bright);
+  line-height: 1.2;
+  margin-bottom: 16px;
+  letter-spacing: -0.02em;
+}
+
+header .subtitle {
+  font-family: var(--sans);
+  font-size: 1.05rem;
+  color: var(--text-dim);
+  font-weight: 400;
+  max-width: 600px;
+  margin: 0 auto 24px;
+}
+
+header .meta {
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  color: var(--text-dim);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+/* ── SECTIONS ── */
+h2 {
+  font-family: var(--serif);
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--text-bright);
+  margin: 72px 0 8px;
+  letter-spacing: -0.01em;
+}
+
+h2 .stage-num {
+  font-family: var(--mono);
+  font-size: 0.8rem;
+  color: var(--accent-na);
+  display: block;
+  margin-bottom: 4px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+h3 {
+  font-family: var(--sans);
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--text-bright);
+  margin: 40px 0 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-size: 0.85rem;
+}
+
+h3::before {
+  content: '▸ ';
+  color: var(--accent-na);
+}
+
+p {
+  margin-bottom: 18px;
+  font-optical-sizing: auto;
+}
+
+/* ── GRAPH CONTAINERS ── */
+.graph-container {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 24px;
+  margin: 32px 0;
+  position: relative;
+}
+
+.graph-container .graph-title {
+  font-family: var(--sans);
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--text-dim);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 16px;
+}
+
+.graph-container canvas {
+  width: 100% !important;
+  height: auto !important;
+  display: block;
+}
+
+.graph-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-top: 12px;
+  font-family: var(--mono);
+  font-size: 0.72rem;
+}
+
+.graph-legend span {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.graph-legend .dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+/* ── EQUATION BOXES ── */
+.equation-box {
+  background: var(--bg-card);
+  border-left: 3px solid var(--accent-na);
+  border-radius: 0 8px 8px 0;
+  padding: 24px 28px;
+  margin: 28px 0;
+}
+
+.equation-box .eq-main {
+  font-family: var(--mono);
+  font-size: 1.1rem;
+  color: var(--text-bright);
+  margin-bottom: 16px;
+  line-height: 1.6;
+  overflow-x: auto;
+  white-space: nowrap;
+}
+
+.eq-main .na { color: var(--accent-na); }
+.eq-main .k { color: var(--accent-k); }
+.eq-main .spike { color: var(--accent-spike); }
+.eq-main .rest { color: var(--accent-rest); }
+.eq-main .leak { color: var(--accent-leak); }
+.eq-main .hyper { color: var(--accent-hyper); }
+.eq-main .charge { color: var(--accent-charge); }
+
+.equation-box .eq-terms {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 4px 16px;
+  font-size: 0.88rem;
+}
+
+.eq-terms dt {
+  font-family: var(--mono);
+  font-size: 0.82rem;
+  color: var(--text-bright);
+  white-space: nowrap;
+}
+
+.eq-terms dd {
+  color: var(--text-dim);
+  font-family: var(--sans);
+  font-size: 0.85rem;
+}
+
+/* ── CODE BLOCKS ── */
+.code-block {
+  background: var(--bg-code);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 20px 24px;
+  margin: 28px 0;
+  overflow-x: auto;
+  font-family: var(--mono);
+  font-size: 0.78rem;
+  line-height: 1.7;
+  color: var(--text);
+}
+
+.code-block .comment { color: #5a6a5a; }
+.code-block .keyword { color: var(--accent-na); }
+.code-block .param { color: var(--accent-k); }
+.code-block .num { color: var(--accent-charge); }
+
+/* ── CALLOUT BOXES ── */
+.callout {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 20px 24px;
+  margin: 28px 0;
+  font-family: var(--sans);
+  font-size: 0.9rem;
+}
+
+.callout.biology { border-left: 3px solid var(--accent-rest); }
+.callout.simplification { border-left: 3px solid var(--accent-charge); }
+.callout.sound { border-left: 3px solid var(--accent-hyper); }
+.callout.connection { border-left: 3px solid var(--accent-k); }
+
+.callout .callout-label {
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 8px;
+}
+
+.callout.biology .callout-label { color: var(--accent-rest); }
+.callout.simplification .callout-label { color: var(--accent-charge); }
+.callout.sound .callout-label { color: var(--accent-hyper); }
+.callout.connection .callout-label { color: var(--accent-k); }
+
+/* ── CITATIONS ── */
+.citation {
+  font-family: var(--sans);
+  font-size: 0.78rem;
+  color: var(--text-dim);
+  padding-left: 20px;
+  border-left: 2px solid #2a2a3a;
+  margin: 12px 0 24px;
+  line-height: 1.6;
+}
+
+.citation a {
+  color: var(--accent-k);
+  text-decoration: none;
+}
+.citation a:hover { text-decoration: underline; }
+
+/* ── REFERENCES SECTION ── */
+.references {
+  margin-top: 80px;
+  padding-top: 40px;
+  border-top: 1px solid var(--border);
+}
+
+.references h2 { margin-top: 0; }
+
+.references ol {
+  list-style: none;
+  counter-reset: ref-counter;
+  padding: 0;
+}
+
+.references li {
+  counter-increment: ref-counter;
+  font-family: var(--sans);
+  font-size: 0.82rem;
+  color: var(--text-dim);
+  margin-bottom: 12px;
+  padding-left: 36px;
+  position: relative;
+  line-height: 1.6;
+}
+
+.references li::before {
+  content: "[" counter(ref-counter) "]";
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  color: var(--accent-na);
+  position: absolute;
+  left: 0;
+}
+
+/* ── TABLE ── */
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 24px 0;
+  font-family: var(--sans);
+  font-size: 0.85rem;
+}
+
+.data-table th {
+  text-align: left;
+  padding: 10px 14px;
+  border-bottom: 2px solid var(--border);
+  color: var(--text-dim);
+  font-weight: 500;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.data-table td {
+  padding: 10px 14px;
+  border-bottom: 1px solid #1a1a2a;
+  color: var(--text);
+}
+
+.data-table tr:hover td { background: rgba(255,255,255,0.02); }
+
+/* ── INTERACTIVE CONTROLS ── */
+.param-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin: 16px 0;
+  padding: 16px;
+  background: rgba(255,255,255,0.02);
+  border-radius: 6px;
+}
+
+.param-controls label {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  color: var(--text-dim);
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.param-controls input[type="range"] {
+  width: 140px;
+  accent-color: var(--accent-na);
+}
+
+.param-controls .value-display {
+  color: var(--text-bright);
+  font-size: 0.75rem;
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 640px) {
+  .container { padding: 20px 16px 60px; }
+  header { padding: 40px 0 30px; }
+  h2 { font-size: 1.4rem; margin-top: 48px; }
+  .equation-box { padding: 16px 18px; }
+  .eq-main { font-size: 0.9rem; }
+  .param-controls { flex-direction: column; }
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+
+<header>
+  <h1>The Action Potential Oscillator</h1>
+  <p class="subtitle">Designing an audio oscillator from neuronal first principles — biology, mathematics, and synthesis in four progressive stages</p>
+  <p class="meta">Music Technology Research Document · 2026</p>
+</header>
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- INTRODUCTION -->
+<!-- ═══════════════════════════════════════════ -->
+
+<h2>Introduction: Architecture of a Neuron-Oscillator</h2>
+
+<p>A single action potential cycle has distinct <em>phases</em>, and a neuron is always in exactly one of them. This maps naturally to a state machine — clean to implement in Gen~ and compilable through RNBO because it uses only primitive operations: comparison, arithmetic, and conditional assignment.</p>
+
+<p>The four phases of our oscillator's cycle, mapped directly to their biological origins:</p>
+
+<table class="data-table">
+  <thead>
+    <tr><th>Phase</th><th>Biology</th><th>Waveform Region</th></tr>
+  </thead>
+  <tbody>
+    <tr><td style="color:var(--accent-charge)">1 — Integration</td><td>Synaptic input accumulates on membrane capacitance; leak conductance drains charge</td><td>Rising ramp</td></tr>
+    <tr><td style="color:var(--accent-na)">2 — Depolarization</td><td>Na⁺ channels explode open; membrane rockets toward +40 mV</td><td>Sharp spike peak</td></tr>
+    <tr><td style="color:var(--accent-k)">3 — Repolarization</td><td>Na⁺ inactivation + K⁺ activation; voltage crashes through rest</td><td>Downstroke &amp; undershoot</td></tr>
+    <tr><td style="color:var(--accent-hyper)">4 — Refractory</td><td>Na⁺ inactivation gates reset; K⁺ conductance decays; return to rest</td><td>Dead zone → recovery</td></tr>
+  </tbody>
+</table>
+
+<p>The total time through all four phases determines the oscillator's period, and therefore its pitch. We will build each stage progressively, beginning with the simplest possible model and adding biological realism layer by layer.</p>
+
+<div class="graph-container">
+  <div class="graph-title">Overview: Complete Action Potential Waveform with Phase Annotations</div>
+  <canvas id="overviewGraph" width="850" height="340"></canvas>
+  <div class="graph-legend">
+    <span><span class="dot" style="background:var(--accent-charge)"></span> Phase 1: Subthreshold charging</span>
+    <span><span class="dot" style="background:var(--accent-na)"></span> Phase 2: Na⁺ depolarization</span>
+    <span><span class="dot" style="background:var(--accent-k)"></span> Phase 3: K⁺ repolarization</span>
+    <span><span class="dot" style="background:var(--accent-hyper)"></span> Phase 4: Refractory recovery</span>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- STAGE 1 -->
+<!-- ═══════════════════════════════════════════ -->
+
+<h2><span class="stage-num">Stage 1</span>Linear Integrate-and-Fire: The Capacitor</h2>
+
+<h3>The Biology</h3>
+
+<p>Strip away everything about a neuron except the most basic fact: the cell membrane is a capacitor. It separates charge. The lipid bilayer, roughly 7–8 nm thick, acts as a dielectric between the conducting intracellular and extracellular fluids. Its specific capacitance is approximately 1 µF/cm², remarkably consistent across all cell types — a value that arises directly from the dielectric constant of the lipid membrane and its thickness [1].</p>
+
+<p>When current flows into the cell (through synaptic input or, in our oscillator, through a "drive current" that controls pitch), charge accumulates on the membrane, and voltage rises. When voltage reaches a threshold (~−55 mV in a typical cortical neuron, approximately 15 mV above rest), something dramatic happens. Then the system resets.</p>
+
+<div class="callout connection">
+  <div class="callout-label">Synthesis Connection</div>
+  This is the same principle as charging a capacitor through a resistor in an analog synth's ramp oscillator. Analog oscillator cores based on capacitor charging and comparator-triggered reset <em>are</em> performing a simplified version of what a neuron does.
+</div>
+
+<h3>The Math</h3>
+
+<p>For a pure capacitor with no leak:</p>
+
+<div class="equation-box">
+  <div class="eq-main">C<sub>m</sub> × <span class="na">dV/dt</span> = <span class="charge">I<sub>input</sub></span></div>
+  <dl class="eq-terms">
+    <dt>C<sub>m</sub></dt><dd>Membrane capacitance (~1 µF/cm² — the lipid bilayer's ability to store charge)</dd>
+    <dt class="na">dV/dt</dt><dd>Rate of change of membrane voltage over time (what we hear as the waveform)</dd>
+    <dt class="charge">I<sub>input</sub></dt><dd>Injected current — in our oscillator, the "drive" that controls pitch</dd>
+  </dl>
+</div>
+
+<p>This gives a linear charging rate: <strong>dV/dt = I<sub>input</sub> / C<sub>m</sub></strong>. Voltage increases at a constant rate, and the time to reach threshold V<sub>th</sub> from a reset value V<sub>reset</sub> is:</p>
+
+<div class="equation-box">
+  <div class="eq-main"><span class="charge">f</span> = <span class="na">I<sub>input</sub></span> / (C<sub>m</sub> × (<span class="spike">V<sub>th</sub></span> − <span class="rest">V<sub>reset</sub></span>))</div>
+  <dl class="eq-terms">
+    <dt class="charge">f</dt><dd>Oscillation frequency — directly proportional to input current</dd>
+    <dt class="spike">V<sub>th</sub></dt><dd>Threshold voltage (normalized to 1.0 in our system)</dd>
+    <dt class="rest">V<sub>reset</sub></dt><dd>Reset voltage after spike (normalized to 0.0)</dd>
+  </dl>
+</div>
+
+<p>Frequency is directly proportional to input current. This is the simplest possible relationship, and it's actually a reasonable first approximation of the real neuronal f–I (frequency-current) curve in the suprathreshold regime.</p>
+
+<div class="graph-container">
+  <div class="graph-title">Stage 1 Output: Linear Ramp (Sawtooth) — 3 cycles at 440 Hz</div>
+  <canvas id="stage1Graph" width="850" height="260"></canvas>
+  <div class="graph-legend">
+    <span><span class="dot" style="background:var(--accent-charge)"></span> Membrane voltage (linear ramp)</span>
+    <span><span class="dot" style="background:var(--accent-spike)"></span> Threshold</span>
+  </div>
+</div>
+
+<div class="callout sound">
+  <div class="callout-label">What This Sounds Like</div>
+  This is literally a sawtooth wave built from the neuron's perspective. Linear charge-to-threshold-and-reset produces an ascending ramp that snaps back to zero, containing all harmonics with amplitudes falling as 1/n. Bright, buzzy, familiar.
+</div>
+
+<div class="callout simplification">
+  <div class="callout-label">Nonlinearities Ignored (for later)</div>
+  <strong>Membrane leak conductance</strong> — real membranes are not perfect capacitors; leak K⁺ channels constantly drain charge, making the curve exponential rather than linear. <strong>Stochastic channel noise</strong> — real ion channels open/close probabilistically, adding pitch jitter. <strong>Spike waveform</strong> — we are just resetting, not generating an actual spike shape. <strong>Spatial variation</strong> — we treat the neuron as a single point (the standard "point neuron" assumption).
+</div>
+
+<h3>Pseudocode — Stage 1</h3>
+
+<div class="code-block"><span class="comment">// STAGE 1: Linear Integrate-and-Fire</span>
+<span class="comment">// Output: sawtooth-like ramp from 0 to 1, then reset</span>
+
+<span class="keyword">param</span> <span class="param">frequency</span> = <span class="num">440</span>;
+<span class="keyword">History</span> membrane_v = <span class="num">0</span>;
+
+charge_increment = <span class="param">frequency</span> / samplerate;
+membrane_v = membrane_v + charge_increment;
+
+<span class="keyword">if</span> (membrane_v >= <span class="num">1.0</span>) {
+    membrane_v = membrane_v - <span class="num">1.0</span>;  <span class="comment">// wrap preserves phase accuracy</span>
+}
+
+out1 = membrane_v * <span class="num">2.0</span> - <span class="num">1.0</span>;  <span class="comment">// scale to ±1 audio range</span></div>
+
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- STAGE 2 -->
+<!-- ═══════════════════════════════════════════ -->
+
+<h2><span class="stage-num">Stage 2</span>Leaky Integrate-and-Fire: The RC Circuit</h2>
+
+<h3>The Biology</h3>
+
+<p>Now we add the most fundamental electrical property of the neuronal membrane: it leaks. The lipid bilayer is not a perfect insulator. Even at rest, potassium ions slowly diffuse outward through leak channels (sometimes called "background" or "resting" potassium channels). The resting membrane potential of approximately −70 mV exists because K⁺ permeability dominates — about 20 times greater than Na⁺ permeability at rest [2, 3]. This passive leak constantly pulls the membrane potential back toward the potassium equilibrium potential (E<sub>K</sub> ≈ −90 mV).</p>
+
+<p>The following ion concentrations establish the electrochemical gradients that drive all neural signaling:</p>
+
+<table class="data-table">
+  <thead>
+    <tr><th>Ion</th><th>Intracellular (mM)</th><th>Extracellular (mM)</th><th>E<sub>equil</sub></th><th>Role</th></tr>
+  </thead>
+  <tbody>
+    <tr><td style="color:var(--accent-k)">K⁺</td><td>~140</td><td>~5</td><td>−90 mV</td><td>Sets resting potential; repolarizes spike</td></tr>
+    <tr><td style="color:var(--accent-na)">Na⁺</td><td>~12</td><td>~145</td><td>+60 mV</td><td>Drives depolarization spike</td></tr>
+    <tr><td style="color:var(--accent-rest)">Cl⁻</td><td>~10</td><td>~110</td><td>−80 mV</td><td>Inhibitory; stabilizes resting potential</td></tr>
+    <tr><td style="color:var(--accent-hyper)">Ca²⁺</td><td>~0.0001</td><td>~2</td><td>+125 mV</td><td>Signaling; synaptic release trigger</td></tr>
+  </tbody>
+</table>
+
+<div class="citation">Ion concentration values: Purves et al., <em>Neuroscience</em>, 2nd ed. (Sinauer, 2001) [4]; equilibrium potentials: StatPearls, "Physiology, Action Potential" (NCBI, 2023) [5]; ScienceDirect, "Nerve Cell Membrane Potential" [6].</div>
+
+<p>These gradients are maintained by the Na⁺/K⁺-ATPase pump, which actively transports 3 Na⁺ out and 2 K⁺ in per cycle, consuming one ATP molecule per cycle. This pump's activity accounts for an estimated 20–40% of the brain's total energy budget [4], and sodium pumping overall is responsible for the majority of the brain's ATP consumption [7].</p>
+
+<h3>The Nernst Equation</h3>
+
+<p>The equilibrium potential for any single ion — the voltage at which the electrical force exactly balances the concentration gradient — is given by:</p>
+
+<div class="equation-box" style="border-left-color: var(--accent-k);">
+  <div class="eq-main">E<sub>ion</sub> = (<span class="k">RT</span> / <span class="na">zF</span>) × ln([ion]<sub>out</sub> / [ion]<sub>in</sub>)</div>
+  <dl class="eq-terms">
+    <dt>E<sub>ion</sub></dt><dd>Equilibrium potential for a given ion species (mV)</dd>
+    <dt class="k">R</dt><dd>Universal gas constant — 8.314 J·K⁻¹·mol⁻¹ (relates thermal energy to molecular quantity)</dd>
+    <dt class="k">T</dt><dd>Absolute temperature in Kelvin (310 K for mammalian body temp = 37°C)</dd>
+    <dt class="na">z</dt><dd>Ion valence (+1 for K⁺/Na⁺, +2 for Ca²⁺, −1 for Cl⁻)</dd>
+    <dt class="na">F</dt><dd>Faraday's constant — 96,485 C·mol⁻¹ (charge carried by one mole of electrons)</dd>
+    <dt>ln</dt><dd>Natural logarithm of the outside-to-inside concentration ratio</dd>
+  </dl>
+</div>
+
+<p>At mammalian body temperature (37°C), the factor RT/zF ≈ 26.7 mV for monovalent ions, giving approximately 61 mV per tenfold concentration change when converted to log base 10 [8]. For K⁺ with a roughly 28:1 inside-to-outside ratio, E<sub>K</sub> ≈ −90 mV. For Na⁺ with roughly 12:1 outside-to-inside ratio, E<sub>Na</sub> ≈ +60 mV [5].</p>
+
+<div class="graph-container">
+  <div class="graph-title">Nernst Potential vs. Concentration Ratio (monovalent cation, 37°C)</div>
+  <canvas id="nernstGraph" width="850" height="300"></canvas>
+  <div class="graph-legend">
+    <span><span class="dot" style="background:var(--accent-k)"></span> K⁺ equilibrium (≈ −90 mV)</span>
+    <span><span class="dot" style="background:var(--accent-na)"></span> Na⁺ equilibrium (≈ +60 mV)</span>
+  </div>
+</div>
+
+<h3>The Leak Equation</h3>
+
+<p>Electrically, adding leak gives us an RC circuit. The membrane capacitance C<sub>m</sub> in parallel with the leak resistance R<sub>m</sub> gives a time constant <strong>τ = R<sub>m</sub> × C<sub>m</sub></strong>, typically 10–30 ms in cortical neurons [9]. Charge placed on the capacitor exponentially decays back to the resting potential with this time constant:</p>
+
+<div class="equation-box" style="border-left-color: var(--accent-leak);">
+  <div class="eq-main"><span class="na">dV/dt</span> = −<span class="leak">V/τ</span> + <span class="charge">I<sub>drive</sub></span></div>
+  <dl class="eq-terms">
+    <dt class="leak">V/τ</dt><dd>Leak term — voltage (relative to rest) divided by membrane time constant. This is the passive K⁺ leak constantly pulling voltage back toward rest.</dd>
+    <dt class="charge">I<sub>drive</sub></dt><dd>Input drive current (controls pitch). Must overcome the leak to reach threshold.</dd>
+    <dt>τ</dt><dd>Membrane time constant = R<sub>m</sub> × C<sub>m</sub> (typically 10–30 ms in cortex). Determines how quickly charge dissipates.</dd>
+  </dl>
+</div>
+
+<p>The steady-state voltage (where dV/dt = 0) is <strong>V<sub>∞</sub> = I<sub>drive</sub> × τ</strong>. The neuron can only fire if V<sub>∞</sub> > V<sub>threshold</sub>, meaning the drive current must be strong enough to overcome the leak. This creates a <strong>minimum current for spiking</strong> (the rheobase), which is biologically real and creates a natural low-frequency limit for our oscillator.</p>
+
+<p>The exact inter-spike interval with exponential charging:</p>
+
+<div class="equation-box" style="border-left-color: var(--accent-leak);">
+  <div class="eq-main"><span class="charge">T<sub>charge</sub></span> = −<span class="leak">τ</span> × ln(1 − <span class="spike">V<sub>th</sub></span> / V<sub>∞</sub>)</div>
+  <dl class="eq-terms">
+    <dt class="charge">T<sub>charge</sub></dt><dd>Time from reset to threshold crossing — determines oscillator period</dd>
+    <dt class="leak">τ</dt><dd>Membrane time constant</dd>
+    <dt class="spike">V<sub>th</sub></dt><dd>Threshold voltage (normalized to 1.0)</dd>
+    <dt>V<sub>∞</sub></dt><dd>Steady-state voltage = I<sub>drive</sub> × τ (must exceed V<sub>th</sub> for spiking to occur)</dd>
+    <dt>ln</dt><dd>Natural logarithm — this makes the f–I curve <em>nonlinear</em></dd>
+  </dl>
+</div>
+
+<div class="callout connection">
+  <div class="callout-label">Synthesis Connection</div>
+  The discrete-time leak is a one-pole lowpass filter applied to membrane voltage: <code>V[n+1] = V[n] × (1 − dt/τ) + I<sub>drive</sub> × dt</code>. The term <code>(1 − dt/τ)</code> is the leak coefficient — exactly the same exponential smoothing coefficient you use in attack/release smoothing in compressors and envelope followers. The membrane of a neuron IS doing the same math as a one-pole filter.
+</div>
+
+<div class="graph-container">
+  <div class="graph-title">Stage 1 vs Stage 2: Linear Ramp vs Exponential Charging (3 cycles)</div>
+  <canvas id="stage2CompareGraph" width="850" height="300"></canvas>
+  <div class="graph-legend">
+    <span><span class="dot" style="background:var(--accent-charge)"></span> Stage 1: Linear ramp (sawtooth)</span>
+    <span><span class="dot" style="background:var(--accent-leak)"></span> Stage 2: Exponential ramp (leaky integrator)</span>
+    <span><span class="dot" style="background:var(--accent-spike)"></span> Threshold</span>
+  </div>
+</div>
+
+<div class="graph-container" style="padding-bottom:16px;">
+  <div class="graph-title">Interactive: How Leak and Drive Shape the LIF Waveform</div>
+
+  <div style="display:grid; grid-template-columns:1fr 1fr; gap:24px; margin:16px 0 16px; padding:16px 20px; background:rgba(255,255,255,0.02); border-radius:6px; font-family:var(--sans);">
+
+    <div>
+      <div style="display:flex; justify-content:space-between; align-items:baseline; margin-bottom:6px;">
+        <span style="font-family:var(--mono); font-size:0.75rem; color:var(--accent-leak);">τ — membrane time constant</span>
+        <span class="value-display" id="tauValue" style="color:var(--accent-leak); font-family:var(--mono); font-size:0.85rem;">5.0 ms</span>
+      </div>
+      <input type="range" id="tauSlider" min="0.5" max="30" step="0.5" value="5" style="width:100%; accent-color:var(--accent-leak);">
+      <div style="font-size:0.72rem; color:var(--text-dim); margin-top:6px; line-height:1.5;">
+        How fast charge leaks through the membrane. <strong style="color:var(--accent-leak)">Small τ</strong> = leaky membrane, charge drains fast, strongly curved ramp (warm, fewer upper harmonics). <strong style="color:var(--accent-leak)">Large τ</strong> = tight membrane, charge barely leaks, nearly linear ramp (bright, approaches pure sawtooth). At τ = ∞ this reduces to Stage 1.
+      </div>
+    </div>
+
+    <div>
+      <div style="display:flex; justify-content:space-between; align-items:baseline; margin-bottom:6px;">
+        <span style="font-family:var(--mono); font-size:0.75rem; color:var(--accent-charge);">Drive — input current (× rheobase)</span>
+        <span class="value-display" id="driveValue" style="color:var(--accent-charge); font-family:var(--mono); font-size:0.85rem;">1.50×</span>
+      </div>
+      <input type="range" id="driveSlider" min="0.3" max="5" step="0.05" value="1.5" style="width:100%; accent-color:var(--accent-charge);">
+      <div style="font-size:0.72rem; color:var(--text-dim); margin-top:6px; line-height:1.5;">
+        Synaptic input current, expressed as multiples of rheobase (minimum current that can produce firing). <strong style="color:var(--accent-spike)">Below 1.0×</strong> = subthreshold, V∞ never reaches threshold, neuron stays silent. <strong style="color:var(--accent-charge)">Above 1.0×</strong> = suprathreshold, higher current = shorter charge time = higher frequency. The f-I relationship is nonlinear — doubling drive does <em>not</em> double frequency.
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Prominent readout strip -->
+  <div id="s2Readout" style="display:flex; align-items:baseline; gap:32px; padding:8px 20px 12px; font-family:var(--mono);"></div>
+
+  <canvas id="tauWaveform" width="850" height="300"></canvas>
+
+  <div class="graph-legend" style="margin-top:10px;">
+    <span><span class="dot" style="background:var(--accent-leak)"></span> Stage 2 — leaky integrator</span>
+    <span><span class="dot" style="background:var(--accent-charge);opacity:0.3"></span> Stage 1 — linear integrator (for comparison)</span>
+    <span><span class="dot" style="background:var(--accent-spike)"></span> Threshold</span>
+  </div>
+</div>
+
+<div class="callout simplification">
+  <div class="callout-label">Nonlinearities Ignored (new for Stage 2)</div>
+  <strong>Voltage-dependent leak</strong> — even "leak" channels (KCNK two-pore K⁺ channels) have mild outward rectification, leaking more at depolarized potentials. <strong>Persistent sodium current (I<sub>NaP</sub>)</strong> — a small population of Na⁺ channels activate below threshold without fully inactivating, creating a depolarizing force that partially counteracts the leak near threshold. This creates a positive feedback nonlinearity: a slight upward inflection just before the spike fires, adding a subtle "snap." <strong>Subthreshold oscillations</strong> — the interplay between persistent Na⁺ and slow K⁺ currents creates damped ringing in the subthreshold regime (connected to RLC/damped oscillator models).
+</div>
+
+<h3>Pseudocode — Stage 2</h3>
+
+<div class="code-block"><span class="comment">// STAGE 2: Leaky Integrate-and-Fire</span>
+<span class="comment">// Output: exponential ramp (concave curve) from 0 to threshold</span>
+
+<span class="keyword">param</span> <span class="param">frequency</span> = <span class="num">440</span>;
+<span class="keyword">param</span> <span class="param">leak_tau_ms</span> = <span class="num">5</span>;
+
+leak_tau = <span class="param">leak_tau_ms</span> * <span class="num">0.001</span> * samplerate;
+leak_coeff = <span class="num">1.0</span> - (<span class="num">1.0</span> / leak_tau);
+
+period_samples = samplerate / <span class="param">frequency</span>;
+drive = <span class="num">1.0</span> / (leak_tau * (<span class="num">1.0</span> - exp(-period_samples / leak_tau)));
+
+<span class="keyword">History</span> membrane_v = <span class="num">0</span>;
+
+membrane_v = membrane_v * leak_coeff + drive;
+
+<span class="keyword">if</span> (membrane_v >= <span class="num">1.0</span>) {
+    membrane_v = <span class="num">0</span>;
+}
+
+out1 = membrane_v * <span class="num">2.0</span> - <span class="num">1.0</span>;</div>
+
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- STAGE 3 -->
+<!-- ═══════════════════════════════════════════ -->
+
+<h2><span class="stage-num">Stage 3</span>Shaped Spike: The Action Potential Waveform</h2>
+
+<h3>The Biology</h3>
+
+<p>Until now, our "spike" has been an instantaneous reset. But the real action potential is a shaped event with its own internal dynamics lasting roughly 1–2 milliseconds. During the spike, two populations of channels are racing against each other: Na⁺ activation gates (<strong>m</strong>) snap open with a time constant of roughly 0.1–0.3 ms, while Na⁺ inactivation gates (<strong>h</strong>) close with a time constant of roughly 0.5–1 ms, and K⁺ activation gates (<strong>n</strong>) open with a time constant of roughly 1–3 ms [1, 10].</p>
+
+<p>The spike's shape is determined by the relative speeds of these three gating processes, described by the Hodgkin-Huxley equations:</p>
+
+<div class="equation-box" style="border-left-color: var(--accent-spike);">
+  <div class="eq-main">C<sub>m</sub> × dV/dt = −<span class="na">g̅<sub>Na</sub> m³h</span>(V − E<sub>Na</sub>) − <span class="k">g̅<sub>K</sub> n⁴</span>(V − E<sub>K</sub>) − <span class="leak">g<sub>L</sub></span>(V − E<sub>L</sub>) + I<sub>ext</sub></div>
+  <dl class="eq-terms">
+    <dt>C<sub>m</sub></dt><dd>Membrane capacitance (~1 µF/cm²)</dd>
+    <dt class="na">g̅<sub>Na</sub> m³h</dt><dd>Sodium conductance: maximum conductance × 3 activation gates × 1 inactivation gate (all must be open simultaneously)</dd>
+    <dt class="k">g̅<sub>K</sub> n⁴</dt><dd>Potassium conductance: maximum conductance × 4 activation gates (all must be open)</dd>
+    <dt class="leak">g<sub>L</sub></dt><dd>Leak conductance (constant — chloride and other ions)</dd>
+    <dt>E<sub>Na</sub>, E<sub>K</sub>, E<sub>L</sub></dt><dd>Reversal (Nernst) potentials for each ion: +60 mV, −90 mV, ~−65 mV</dd>
+    <dt>m, h, n</dt><dd>Gating variables (0–1 probability that each molecular gate is open), each following first-order voltage-dependent kinetics</dd>
+  </dl>
+</div>
+
+<div class="citation">Hodgkin, A.L. & Huxley, A.F. "A quantitative description of membrane current and its application to conduction and excitation in nerve." <em>J. Physiol.</em> 117: 500–544 (1952). Nobel Prize in Physiology or Medicine, 1963 [1].</div>
+
+<p>Each gating variable follows first-order kinetics where it relaxes toward a voltage-dependent steady state:</p>
+
+<div class="equation-box" style="border-left-color: var(--accent-na);">
+  <div class="eq-main"><span class="na">dm/dt</span> = α<sub>m</sub>(V) × (1 − m) − β<sub>m</sub>(V) × m</div>
+  <dl class="eq-terms">
+    <dt class="na">dm/dt</dt><dd>Rate of change of sodium activation gate probability</dd>
+    <dt>α<sub>m</sub>(V)</dt><dd>Voltage-dependent opening rate — increases sharply with depolarization</dd>
+    <dt>β<sub>m</sub>(V)</dt><dd>Voltage-dependent closing rate</dd>
+    <dt>m</dt><dd>Current probability that an activation gate is open (0 to 1)</dd>
+  </dl>
+</div>
+
+<p>For our MVP oscillator, we don't simulate the full Hodgkin-Huxley system. Instead, we <em>prescribe</em> a spike waveform using paired exponentials that capture the essential asymmetry: fast rise (Na⁺ activation, ~0.1 ms) and slower fall (Na⁺ inactivation + K⁺ activation, ~0.5–1 ms). This is legitimate computational neuroscience — the "fire-and-reset with spike insertion" method — because the spike shape is highly stereotyped (nearly identical every time, hence the "all-or-nothing" law).</p>
+
+<div class="graph-container">
+  <div class="graph-title">Gating Variable Dynamics During an Action Potential</div>
+  <canvas id="gatingGraph" width="850" height="320"></canvas>
+  <div class="graph-legend">
+    <span><span class="dot" style="background:var(--accent-na)"></span> m — Na⁺ activation (fast open)</span>
+    <span><span class="dot" style="background:var(--accent-spike)"></span> h — Na⁺ inactivation (slower close)</span>
+    <span><span class="dot" style="background:var(--accent-k)"></span> n — K⁺ activation (delayed open)</span>
+    <span><span class="dot" style="background:var(--text-bright)"></span> V — Membrane potential</span>
+  </div>
+</div>
+
+<h3>Spike Duration and Pitch</h3>
+
+<p>The spike has a <em>fixed</em> biological duration (~1–2 ms regardless of firing rate). As oscillator frequency rises, the spike occupies an increasing fraction of each cycle. At 100 Hz, a 1 ms spike is 10% of the period. At 1000 Hz, it's 100%. This creates a natural <strong>maximum frequency</strong> — biologically accurate (real neurons max out at ~500–1000 Hz for fast-spiking interneurons) [11] and sonically interesting as the character changes with pitch.</p>
+
+<div class="graph-container">
+  <div class="graph-title">Stage 3 Output: Exponential Charge + Shaped Spike (3 cycles at 200 Hz)</div>
+  <canvas id="stage3Graph" width="850" height="300"></canvas>
+  <div class="graph-legend">
+    <span><span class="dot" style="background:var(--accent-charge)"></span> Subthreshold charging</span>
+    <span><span class="dot" style="background:var(--accent-na)"></span> Spike rising (Na⁺ activation)</span>
+    <span><span class="dot" style="background:var(--accent-k)"></span> Spike falling (K⁺ repolarization)</span>
+  </div>
+</div>
+
+<div class="callout simplification">
+  <div class="callout-label">Nonlinearities Ignored (new for Stage 3)</div>
+  <strong>Sodium activation cubic nonlinearity (m³)</strong> — the autocatalytic positive feedback that makes the real rising edge near-vertical rather than exponential. <strong>Sodium inactivation dynamics (h gate)</strong> — our spike prescribes a peak, but the real inactivation process shapes the peak's curvature. <strong>Potassium activation (n⁴) delayed rectifier</strong> — creates a sigmoid K⁺ current onset that shapes the falling edge differently from a simple exponential. <strong>Temperature dependence</strong> — all rate constants have Q₁₀ factors (~doubling per 10°C); "temperature" could be a global dynamics parameter.
+</div>
+
+<h3>Pseudocode — Stage 3</h3>
+
+<div class="code-block"><span class="comment">// STAGE 3: LIF with Shaped Spike</span>
+
+<span class="keyword">param</span> <span class="param">frequency</span> = <span class="num">440</span>;
+<span class="keyword">param</span> <span class="param">leak_tau_ms</span> = <span class="num">5</span>;
+<span class="keyword">param</span> <span class="param">spike_duration_ms</span> = <span class="num">1.0</span>;
+<span class="keyword">param</span> <span class="param">spike_rise_fraction</span> = <span class="num">0.2</span>;  <span class="comment">// asymmetry: fast rise, slow fall</span>
+<span class="keyword">param</span> <span class="param">spike_peak</span> = <span class="num">1.5</span>;          <span class="comment">// overshoot above threshold</span>
+
+<span class="comment">// ... (leak + drive calculation as Stage 2)</span>
+
+<span class="keyword">History</span> V = <span class="num">0</span>;
+<span class="keyword">History</span> spike_v = <span class="num">0</span>;
+<span class="keyword">History</span> is_spiking = <span class="num">0</span>;  <span class="comment">// 0=charge, 1=rise, 2=fall</span>
+<span class="keyword">History</span> timer = <span class="num">0</span>;
+
+<span class="keyword">if</span> (is_spiking == <span class="num">0</span>) {
+    V = V * leak_coeff + drive;
+    <span class="keyword">if</span> (V >= <span class="num">1.0</span>) { is_spiking = <span class="num">1</span>; timer = <span class="num">0</span>; spike_v = V; }
+} <span class="keyword">else if</span> (is_spiking == <span class="num">1</span>) {
+    spike_v += (<span class="param">spike_peak</span> - spike_v) * rise_rate;
+    timer += <span class="num">1</span>;
+    <span class="keyword">if</span> (timer >= rise_samps) { is_spiking = <span class="num">2</span>; timer = <span class="num">0</span>; }
+} <span class="keyword">else if</span> (is_spiking == <span class="num">2</span>) {
+    spike_v += (<span class="num">0.0</span> - spike_v) * fall_rate;
+    timer += <span class="num">1</span>;
+    <span class="keyword">if</span> (timer >= fall_samps) { is_spiking = <span class="num">0</span>; V = <span class="num">0</span>; spike_v = <span class="num">0</span>; }
+}
+
+output = (is_spiking == <span class="num">0</span>) ? V : spike_v;
+out1 = output * <span class="num">2.0</span> - <span class="num">1.0</span>;</div>
+
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- STAGE 4 -->
+<!-- ═══════════════════════════════════════════ -->
+
+<h2><span class="stage-num">Stage 4</span>Hyperpolarization &amp; Refractory Period: The Full MVP</h2>
+
+<h3>The Biology</h3>
+
+<p>After the spike's repolarization, the membrane potential doesn't just return neatly to rest. It <em>overshoots</em> to the negative side, typically reaching −80 to −85 mV versus a resting potential of −70 mV. This afterhyperpolarization (AHP) occurs because K⁺ channels opened during the spike are still conducting outward current. Since the potassium Nernst potential is approximately −90 mV, the elevated K⁺ conductance pulls the membrane below rest, toward E<sub>K</sub> [5, 10].</p>
+
+<p>During the AHP, the neuron is in its <strong>refractory period</strong>. In the absolute refractory period (~1–2 ms after the spike), Na⁺ inactivation gates have not yet reset — no stimulus of any strength can trigger another spike. In the relative refractory period (next ~2–5 ms), Na⁺ gates are partially recovered but the hyperpolarized membrane and residual K⁺ conductance demand a stronger-than-normal stimulus [10, 11].</p>
+
+<div class="callout connection">
+  <div class="callout-label">Synthesis Connection — Damped Oscillator</div>
+  The recovery from hyperpolarization in many neurons exhibits <strong>damped ringing</strong> caused by the interplay between recovering Na⁺ current and decaying K⁺ current. This is the mass-spring-damper system: the "spring" is the combined ion channel forces pulling toward equilibrium, the "mass" is membrane capacitance, and the "damping" is leak conductance. Depending on parameters: <em>overdamped</em> (smooth exponential return), <em>critically damped</em> (fastest non-oscillatory return), or <em>underdamped</em> (decaying oscillation with gamma-band ringing).
+</div>
+
+<div class="graph-container" style="padding-bottom:16px;">
+  <div class="graph-title">Interactive: Full MVP Waveform — All Four Phases</div>
+
+  <div style="display:grid; grid-template-columns:1fr 1fr; gap:20px; margin:16px 0 12px; padding:16px 20px; background:rgba(255,255,255,0.02); border-radius:6px; font-family:var(--sans);">
+
+    <div>
+      <div style="display:flex; justify-content:space-between; align-items:baseline; margin-bottom:5px;">
+        <span style="font-family:var(--mono); font-size:0.72rem; color:var(--accent-charge);">τ — membrane time constant</span>
+        <span class="value-display" id="s4TauValue" style="color:var(--accent-charge); font-family:var(--mono); font-size:0.82rem;">5.0 ms</span>
+      </div>
+      <input type="range" id="s4TauSlider" min="0.5" max="30" step="0.5" value="5" style="width:100%; accent-color:var(--accent-charge);">
+      <div style="font-size:0.68rem; color:var(--text-dim); margin-top:4px; line-height:1.4;">
+        Charging curve shape. Small = warm exponential, large = bright linear ramp.
+      </div>
+    </div>
+
+    <div>
+      <div style="display:flex; justify-content:space-between; align-items:baseline; margin-bottom:5px;">
+        <span style="font-family:var(--mono); font-size:0.72rem; color:var(--accent-na);">Spike peak — Na⁺ overshoot</span>
+        <span class="value-display" id="peakValue" style="color:var(--accent-na); font-family:var(--mono); font-size:0.82rem;">1.50</span>
+      </div>
+      <input type="range" id="peakSlider" min="1.05" max="2.5" step="0.05" value="1.5" style="width:100%; accent-color:var(--accent-na);">
+      <div style="font-size:0.68rem; color:var(--text-dim); margin-top:4px; line-height:1.4;">
+        How far above threshold the spike overshoots. Higher = brighter transient click, more high-frequency energy per cycle.
+      </div>
+    </div>
+
+    <div>
+      <div style="display:flex; justify-content:space-between; align-items:baseline; margin-bottom:5px;">
+        <span style="font-family:var(--mono); font-size:0.72rem; color:var(--accent-hyper);">Hyperpolarization depth</span>
+        <span class="value-display" id="hyperValue" style="color:var(--accent-hyper); font-family:var(--mono); font-size:0.82rem;">−0.20</span>
+      </div>
+      <input type="range" id="hyperSlider" min="-0.5" max="-0.02" step="0.01" value="-0.2" style="width:100%; accent-color:var(--accent-hyper);">
+      <div style="font-size:0.68rem; color:var(--text-dim); margin-top:4px; line-height:1.4;">
+        How far below rest the membrane overshoots after repolarization. Deeper = more waveform asymmetry, shifts even/odd harmonic balance.
+      </div>
+    </div>
+
+    <div>
+      <div style="display:flex; justify-content:space-between; align-items:baseline; margin-bottom:5px;">
+        <span style="font-family:var(--mono); font-size:0.72rem; color:var(--accent-k);">Recovery damping</span>
+        <span class="value-display" id="dampValue" style="color:var(--accent-k); font-family:var(--mono); font-size:0.82rem;">0.70</span>
+      </div>
+      <input type="range" id="dampSlider" min="0.05" max="1.4" step="0.05" value="0.7" style="width:100%; accent-color:var(--accent-k);">
+      <div style="font-size:0.68rem; color:var(--text-dim); margin-top:4px; line-height:1.4;">
+        How the membrane returns from hyperpolarization. <strong style="color:var(--accent-k)">High</strong> = overdamped, smooth return. <strong style="color:var(--accent-k)">Low</strong> = underdamped, ringing oscillation that adds sub-harmonic growl.
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Prominent readout -->
+  <div id="s4Readout" style="display:flex; align-items:baseline; gap:32px; padding:6px 20px 10px; font-family:var(--mono);"></div>
+
+  <!-- Frequency slider full-width below readout -->
+  <div style="padding:0 20px 12px; display:flex; align-items:center; gap:12px;">
+    <span style="font-family:var(--mono); font-size:0.72rem; color:var(--text-dim); white-space:nowrap;">Frequency</span>
+    <input type="range" id="freqSlider" min="30" max="1000" step="5" value="200" style="flex:1; accent-color:var(--text-bright);">
+  </div>
+
+  <canvas id="stage4Interactive" width="850" height="320"></canvas>
+
+  <div class="graph-legend" style="margin-top:10px;">
+    <span><span class="dot" style="background:var(--accent-charge)"></span> Charging (leak + drive)</span>
+    <span><span class="dot" style="background:var(--accent-na)"></span> Spike rise (Na⁺)</span>
+    <span><span class="dot" style="background:var(--accent-k)"></span> Spike fall (K⁺)</span>
+    <span><span class="dot" style="background:var(--accent-hyper)"></span> Refractory / recovery</span>
+  </div>
+</div>
+
+<div class="callout sound">
+  <div class="callout-label">What This Sounds Like</div>
+  This is no longer any standard waveform. Each cycle has four distinct timbral regions: a warm exponential ramp (low-to-mid harmonics), a sharp transient spike (broad high-frequency energy), a rapid descent into negative territory (harmonic cancellation at specific frequencies), and a damped recovery that may ring (sub-harmonic content). The character sits between a sawtooth, a pulse wave, and something entirely its own — a bright, organic buzz with an embedded transient click and a subtle negative "breath" after each spike.
+</div>
+
+<h3>Full MVP Pseudocode</h3>
+
+<div class="code-block"><span class="comment">// STAGE 4: FULL MVP ACTION POTENTIAL OSCILLATOR</span>
+
+<span class="keyword">param</span> <span class="param">frequency</span> = <span class="num">440</span>;
+<span class="keyword">param</span> <span class="param">leak_tau_ms</span> = <span class="num">5.0</span>;
+<span class="keyword">param</span> <span class="param">spike_duration_ms</span> = <span class="num">1.0</span>;
+<span class="keyword">param</span> <span class="param">spike_rise_fraction</span> = <span class="num">0.2</span>;
+<span class="keyword">param</span> <span class="param">spike_peak</span> = <span class="num">1.5</span>;
+<span class="keyword">param</span> <span class="param">hyperpol_depth</span> = <span class="num">-0.2</span>;
+<span class="keyword">param</span> <span class="param">recovery_tau_ms</span> = <span class="num">3.0</span>;
+<span class="keyword">param</span> <span class="param">refractory_ms</span> = <span class="num">1.5</span>;
+<span class="keyword">param</span> <span class="param">recovery_damping</span> = <span class="num">0.7</span>;
+
+<span class="comment">// ... (derived values as described above)</span>
+
+<span class="keyword">History</span> V = <span class="num">0</span>; <span class="keyword">History</span> phase = <span class="num">0</span>;
+<span class="keyword">History</span> timer = <span class="num">0</span>; <span class="keyword">History</span> recovery_velocity = <span class="num">0</span>;
+
+<span class="keyword">if</span> (phase == <span class="num">0</span>) {                    <span class="comment">// SUBTHRESHOLD INTEGRATION</span>
+    V = V * leak_coeff + drive;
+    <span class="keyword">if</span> (V >= <span class="num">1.0</span>) { phase = <span class="num">1</span>; timer = <span class="num">0</span>; }
+
+} <span class="keyword">else if</span> (phase == <span class="num">1</span>) {             <span class="comment">// DEPOLARIZATION (Na⁺ channels open)</span>
+    V += (<span class="param">spike_peak</span> - V) * rise_rate;
+    timer += <span class="num">1</span>;
+    <span class="keyword">if</span> (timer >= rise_samps) { phase = <span class="num">2</span>; timer = <span class="num">0</span>; }
+
+} <span class="keyword">else if</span> (phase == <span class="num">2</span>) {             <span class="comment">// REPOLARIZATION (Na⁺ inactivation + K⁺)</span>
+    V += (<span class="param">hyperpol_depth</span> - V) * fall_rate;
+    timer += <span class="num">1</span>;
+    <span class="keyword">if</span> (timer >= fall_samps) { phase = <span class="num">3</span>; timer = <span class="num">0</span>; recovery_velocity = <span class="num">0</span>; }
+
+} <span class="keyword">else if</span> (phase == <span class="num">3</span>) {             <span class="comment">// REFRACTORY + RECOVERY</span>
+    spring_force = (<span class="num">0.0</span> - V) * recovery_rate;
+    damping_force = -recovery_velocity * <span class="param">recovery_damping</span>;
+    recovery_velocity += spring_force + damping_force;
+    V += recovery_velocity;
+    timer += <span class="num">1</span>;
+    <span class="keyword">if</span> (timer >= refractory_samps && V > <span class="param">hyperpol_depth</span> * <span class="num">0.3</span>) {
+        phase = <span class="num">0</span>; recovery_velocity = <span class="num">0</span>;
+    }
+}
+
+output_range = <span class="param">spike_peak</span> - <span class="param">hyperpol_depth</span>;
+out1 = (V - <span class="param">hyperpol_depth</span>) / output_range * <span class="num">2.0</span> - <span class="num">1.0</span>;</div>
+
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- MUSICALLY VARIABLE PARAMETERS -->
+<!-- ═══════════════════════════════════════════ -->
+
+<h2>Parameter Map: Biology → Sound</h2>
+
+<table class="data-table">
+  <thead>
+    <tr><th>Parameter</th><th>Biological Origin</th><th>Sonic Effect</th></tr>
+  </thead>
+  <tbody>
+    <tr><td style="color:var(--accent-leak)">leak_tau</td><td>Membrane time constant (R<sub>m</sub>×C<sub>m</sub>)</td><td>Waveshape: linear→exponential ramp; warmth/brightness</td></tr>
+    <tr><td style="color:var(--accent-na)">spike_peak</td><td>Peak Na⁺ conductance / E<sub>Na</sub></td><td>Transient intensity; brightness and click</td></tr>
+    <tr><td style="color:var(--accent-na)">spike_rise_fraction</td><td>Na⁺ activation speed (m gate)</td><td>Attack sharpness of per-cycle transient</td></tr>
+    <tr><td style="color:var(--accent-k)">spike_duration</td><td>Combined Na⁺ inactivation + K⁺ activation timescale</td><td>Ratio of spike to charge; character vs pitch</td></tr>
+    <tr><td style="color:var(--accent-hyper)">hyperpol_depth</td><td>Residual K⁺ conductance pulling toward E<sub>K</sub></td><td>Waveform asymmetry; even/odd harmonic balance</td></tr>
+    <tr><td style="color:var(--accent-hyper)">recovery_damping</td><td>Balance of recovering Na⁺ vs decaying K⁺ current</td><td>Overdamped=clean; underdamped=growling sub-harmonics</td></tr>
+    <tr><td style="color:var(--accent-spike)">refractory_ms</td><td>Na⁺ inactivation gate reset time</td><td>Maximum frequency ceiling; natural bandwidth limit</td></tr>
+  </tbody>
+</table>
+
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- FUTURE NONLINEARITIES -->
+<!-- ═══════════════════════════════════════════ -->
+
+<h2>Complete Inventory: Future Nonlinearities</h2>
+
+<h3>Affects Spike Shape (spectral content per cycle)</h3>
+<p>1. <strong>Sodium activation cubic nonlinearity (m³)</strong> — the autocatalytic positive feedback explosion that makes the rising edge near-vertical. 2. <strong>Sodium inactivation dynamics (h gate)</strong> — shapes the peak's curvature and rise-to-fall transition. 3. <strong>Potassium delayed rectifier (n⁴)</strong> — sigmoid K⁺ onset shapes the falling edge. 4. <strong>Temperature dependence</strong> — all rate constants have Q₁₀ factors; "temperature" as a global dynamics macro.</p>
+
+<h3>Affects Cycle-to-Cycle Variation (timbral evolution)</h3>
+<p>5. <strong>Spike amplitude adaptation</strong> — incomplete Na⁺ inactivation recovery at fast rates reduces spike amplitude, naturally darkening timbre at high frequencies. 6. <strong>Calcium-dependent K⁺ currents</strong> — slow AHP (100–1000 ms) causing spike-frequency adaptation: starts fast, gradually slows. 7. <strong>Stochastic channel gating</strong> — probabilistic opening/closing adds pitch jitter and noise whose character depends on simulated channel count.</p>
+
+<h3>Affects Modular Interaction (ecosystem connections)</h3>
+<p>8. <strong>Synaptic input modeling</strong> — multiple "synapse" inputs with distinct dynamics (fast AMPA, slow NMDA, inhibitory GABA). 9. <strong>Short-term synaptic plasticity</strong> — input-dependent timbral variation through facilitation and depression. 10. <strong>Gap junction coupling</strong> — direct electrical coupling between oscillator instances for emergent synchronization behavior.</p>
+
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- REFERENCES -->
+<!-- ═══════════════════════════════════════════ -->
+
+<div class="references">
+<h2>References</h2>
+<ol>
+  <li>Hodgkin, A.L. & Huxley, A.F. "A quantitative description of membrane current and its application to conduction and excitation in nerve." <em>J. Physiol.</em> 117: 500–544 (1952). doi:10.1113/jphysiol.1952.sp004764</li>
+  <li>Hodgkin, A.L. & Katz, B. "The effect of sodium ions on the electrical activity of the giant axon of the squid." <em>J. Physiol.</em> 108: 37–77 (1949). — Established the permeability ratio P<sub>K</sub>:P<sub>Na</sub>:P<sub>Cl</sub> ≈ 1:0.04:0.45 for squid axon at rest.</li>
+  <li>"Physiology, Resting Potential." <em>StatPearls</em> (NCBI Bookshelf, 2023). — "Na⁺ permeability is about 5% of the K⁺ permeability or even less."</li>
+  <li>Purves, D. et al. <em>Neuroscience</em>, 2nd ed. (Sinauer Associates, 2001). — Ion concentrations: K⁺ 140 mM inside / 5 mM outside; Na⁺ 12 mM inside / 145 mM outside. Na⁺/K⁺ pump: "estimated to account for 20–40% of the brain's energy consumption."</li>
+  <li>"Physiology, Action Potential." <em>StatPearls</em> (NCBI Bookshelf, 2023). — E<sub>Na</sub> ≈ +60 mV; E<sub>K</sub> ≈ −85 mV.</li>
+  <li>"Nerve Cell Membrane Potential." <em>ScienceDirect Topics</em>. — E<sub>Na</sub> ≈ +56 mV; E<sub>Cl</sub> ≈ −76 mV; E<sub>Ca</sub> ≈ +125 mV in mammalian neurons.</li>
+  <li>Attwell, D. & Laughlin, S.B. "An energy budget for signaling in the grey matter of the brain." <em>J. Cereb. Blood Flow Metab.</em> 21: 1133–1145 (2001). — Action potentials consume 47%, postsynaptic currents 34%, resting potential 13% of signaling energy.</li>
+  <li>"Membrane Potential." <em>Foundations of Neuroscience</em> (MSU Open Books). — At mammalian body temperature, the Nernst equation yields ~61 mV per tenfold concentration change.</li>
+  <li>Koch, C. <em>Biophysics of Computation</em> (Oxford University Press, 1999). — Cortical neuron membrane time constants typically 10–30 ms.</li>
+  <li>Schwiening, C.J. "A brief historical perspective: Hodgkin and Huxley." <em>J. Physiol.</em> 590: 2571–2575 (2012). PMC3424716. — Overview of gating variable dynamics and experimental methods.</li>
+  <li>Bean, B.P. "The action potential in mammalian central neurons." <em>Nature Reviews Neuroscience</em> 8: 451–465 (2007). — Fast-spiking interneurons can fire up to ~1000 Hz; typical cortical neurons max ~200–500 Hz.</li>
+</ol>
+</div>
+
+</div><!-- /container -->
+
+
+<!-- ═══════════════════════════════════════════ -->
+<!-- JAVASCRIPT: ALL GRAPHS -->
+<!-- ═══════════════════════════════════════════ -->
+<script>
+// ── UTILITY ──
+const COLORS = {
+  charge: '#ffe44a', na: '#ff6b4a', k: '#4aadff', spike: '#ff4a6b',
+  rest: '#4aff8b', leak: '#ffa64a', hyper: '#a64aff', text: '#c8c8d8',
+  dim: '#4a4a5e', grid: '#1e1e2e', bright: '#e8e8f0'
+};
+
+function setupCanvas(id) {
+  const c = document.getElementById(id);
+  const dpr = window.devicePixelRatio || 1;
+  const rect = c.getBoundingClientRect();
+  const w = c.width;
+  const h = c.height;
+  c.width = w * dpr;
+  c.height = h * dpr;
+  c.style.width = w + 'px';
+  c.style.height = h + 'px';
+  const ctx = c.getContext('2d');
+  ctx.scale(dpr, dpr);
+  return { ctx, w, h };
+}
+
+function drawGrid(ctx, w, h, opts = {}) {
+  const { xLabel, yLabel, yMin = 0, yMax = 1, xMin = 0, xMax = 1, padL = 50, padR = 20, padT = 20, padB = 36 } = opts;
+  const plotW = w - padL - padR;
+  const plotH = h - padT - padB;
+
+  ctx.strokeStyle = COLORS.grid;
+  ctx.lineWidth = 1;
+  for (let i = 0; i <= 4; i++) {
+    const y = padT + (plotH * i / 4);
+    ctx.beginPath(); ctx.moveTo(padL, y); ctx.lineTo(w - padR, y); ctx.stroke();
+  }
+
+  ctx.fillStyle = COLORS.dim;
+  ctx.font = '11px "JetBrains Mono", monospace';
+  ctx.textAlign = 'right';
+  for (let i = 0; i <= 4; i++) {
+    const val = yMax - (yMax - yMin) * i / 4;
+    const y = padT + (plotH * i / 4);
+    ctx.fillText(val.toFixed(val % 1 === 0 ? 0 : 1), padL - 6, y + 4);
+  }
+
+  if (xLabel) {
+    ctx.textAlign = 'center';
+    ctx.fillText(xLabel, padL + plotW / 2, h - 4);
+  }
+  if (yLabel) {
+    ctx.save();
+    ctx.translate(12, padT + plotH / 2);
+    ctx.rotate(-Math.PI / 2);
+    ctx.textAlign = 'center';
+    ctx.fillText(yLabel, 0, 0);
+    ctx.restore();
+  }
+
+  return { plotW, plotH, padL, padR, padT, padB };
+}
+
+function mapX(val, min, max, padL, plotW) {
+  return padL + (val - min) / (max - min) * plotW;
+}
+function mapY(val, min, max, padT, plotH) {
+  return padT + (1 - (val - min) / (max - min)) * plotH;
+}
+
+// ── 1. OVERVIEW GRAPH ──
+(function() {
+  const { ctx, w, h } = setupCanvas('overviewGraph');
+  const g = drawGrid(ctx, w, h, { yMin: -90, yMax: 50, yLabel: 'mV', xLabel: 'Time (ms)' });
+
+  // Generate a realistic-ish action potential shape
+  const dt = 0.01; // ms
+  const totalMs = 8;
+  const points = [];
+  for (let t = 0; t < totalMs; t += dt) {
+    let v;
+    if (t < 2.5) {
+      // Resting + slow subthreshold rise
+      v = -70 + 6 * (1 - Math.exp(-t / 1.5));
+    } else if (t < 2.8) {
+      // Rapid depolarization
+      const tt = (t - 2.5) / 0.3;
+      v = -64 + 74 * Math.pow(tt, 1.5);
+    } else if (t < 3.0) {
+      // Peak transition
+      const tt = (t - 2.8) / 0.2;
+      v = 10 + 30 * (1 - tt * tt);
+    } else if (t < 3.8) {
+      // Repolarization
+      const tt = (t - 3.0) / 0.8;
+      v = 40 - 125 * tt;
+    } else if (t < 4.5) {
+      // Hyperpolarization bottom
+      const tt = (t - 3.8) / 0.7;
+      v = -85 + 5 * tt;
+    } else {
+      // Recovery
+      const tt = t - 4.5;
+      v = -80 + 10 * (1 - Math.exp(-tt / 1.2));
+    }
+    points.push({ t, v });
+  }
+
+  // Phase coloring
+  function getPhaseColor(t) {
+    if (t < 2.5) return COLORS.charge;
+    if (t < 3.0) return COLORS.na;
+    if (t < 3.8) return COLORS.k;
+    return COLORS.hyper;
+  }
+
+  // Draw
+  ctx.lineWidth = 2.5;
+  for (let i = 1; i < points.length; i++) {
+    const p0 = points[i-1], p1 = points[i];
+    ctx.strokeStyle = getPhaseColor(p1.t);
+    ctx.beginPath();
+    ctx.moveTo(mapX(p0.t, 0, totalMs, g.padL, g.plotW), mapY(p0.v, -90, 50, g.padT, g.plotH));
+    ctx.lineTo(mapX(p1.t, 0, totalMs, g.padL, g.plotW), mapY(p1.v, -90, 50, g.padT, g.plotH));
+    ctx.stroke();
+  }
+
+  // Threshold line
+  ctx.strokeStyle = COLORS.spike;
+  ctx.setLineDash([4, 4]);
+  ctx.lineWidth = 1;
+  const threshY = mapY(-55, -90, 50, g.padT, g.plotH);
+  ctx.beginPath(); ctx.moveTo(g.padL, threshY); ctx.lineTo(w - g.padR, threshY); ctx.stroke();
+  ctx.setLineDash([]);
+  ctx.fillStyle = COLORS.spike;
+  ctx.font = '10px "JetBrains Mono", monospace';
+  ctx.textAlign = 'left';
+  ctx.fillText('threshold ≈ −55 mV', g.padL + 4, threshY - 5);
+
+  // Resting line
+  ctx.strokeStyle = COLORS.dim;
+  ctx.setLineDash([4, 4]);
+  const restY = mapY(-70, -90, 50, g.padT, g.plotH);
+  ctx.beginPath(); ctx.moveTo(g.padL, restY); ctx.lineTo(w - g.padR, restY); ctx.stroke();
+  ctx.setLineDash([]);
+  ctx.fillStyle = COLORS.dim;
+  ctx.fillText('resting ≈ −70 mV', g.padL + 4, restY + 14);
+
+  // Phase labels
+  ctx.font = '10px "DM Sans", sans-serif';
+  ctx.textAlign = 'center';
+  const labels = [
+    { t: 1.2, text: 'INTEGRATION', color: COLORS.charge },
+    { t: 2.75, text: 'DEPOL.', color: COLORS.na },
+    { t: 3.4, text: 'REPOL.', color: COLORS.k },
+    { t: 5.5, text: 'REFRACTORY', color: COLORS.hyper }
+  ];
+  labels.forEach(l => {
+    ctx.fillStyle = l.color;
+    ctx.fillText(l.text, mapX(l.t, 0, totalMs, g.padL, g.plotW), g.padT + g.plotH + 28);
+  });
+})();
+
+
+// ── 2. STAGE 1 GRAPH ──
+(function() {
+  const { ctx, w, h } = setupCanvas('stage1Graph');
+  const g = drawGrid(ctx, w, h, { yMin: -1, yMax: 1, yLabel: 'Output', xLabel: 'Samples (3 cycles at 440 Hz, sr=44100)' });
+
+  const sr = 44100;
+  const freq = 440;
+  const inc = freq / sr;
+  const totalSamples = Math.floor(sr / freq * 3);
+
+  ctx.lineWidth = 2;
+  ctx.strokeStyle = COLORS.charge;
+  ctx.beginPath();
+  let v = 0;
+  for (let i = 0; i < totalSamples; i++) {
+    v += inc;
+    if (v >= 1.0) v -= 1.0;
+    const x = mapX(i, 0, totalSamples, g.padL, g.plotW);
+    const y = mapY(v * 2 - 1, -1, 1, g.padT, g.plotH);
+    if (i === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y);
+  }
+  ctx.stroke();
+
+  // Threshold
+  ctx.strokeStyle = COLORS.spike;
+  ctx.setLineDash([4, 4]);
+  ctx.lineWidth = 1;
+  const thY = mapY(1, -1, 1, g.padT, g.plotH);
+  ctx.beginPath(); ctx.moveTo(g.padL, thY); ctx.lineTo(w - g.padR, thY); ctx.stroke();
+  ctx.setLineDash([]);
+})();
+
+
+// ── 3. NERNST GRAPH ──
+(function() {
+  const { ctx, w, h } = setupCanvas('nernstGraph');
+  const g = drawGrid(ctx, w, h, { yMin: -120, yMax: 80, yLabel: 'E (mV)', xLabel: '[outside] / [inside]' });
+
+  // Nernst: E = 61.5 * log10(ratio) for monovalent cation at 37°C
+  ctx.lineWidth = 2.5;
+  ctx.strokeStyle = COLORS.bright;
+  ctx.beginPath();
+  const ratioMin = 0.02, ratioMax = 50;
+  for (let i = 0; i <= 400; i++) {
+    const t = i / 400;
+    const ratio = ratioMin * Math.pow(ratioMax / ratioMin, t);
+    const E = 61.5 * Math.log10(ratio);
+    if (E < -120 || E > 80) continue;
+    const x = mapX(t, 0, 1, g.padL, g.plotW);
+    const y = mapY(E, -120, 80, g.padT, g.plotH);
+    if (i === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y);
+  }
+  ctx.stroke();
+
+  // Mark K+ point: [out]/[in] = 5/140 = 0.036 → E ≈ -90
+  const kRatio = 5 / 140;
+  const kT = Math.log(kRatio / ratioMin) / Math.log(ratioMax / ratioMin);
+  const kE = 61.5 * Math.log10(kRatio);
+  const kx = mapX(kT, 0, 1, g.padL, g.plotW);
+  const ky = mapY(kE, -120, 80, g.padT, g.plotH);
+  ctx.fillStyle = COLORS.k;
+  ctx.beginPath(); ctx.arc(kx, ky, 6, 0, Math.PI * 2); ctx.fill();
+  ctx.font = '11px "JetBrains Mono", monospace';
+  ctx.textAlign = 'left';
+  ctx.fillText(`K⁺ (5/140) → ${kE.toFixed(0)} mV`, kx + 10, ky + 4);
+
+  // Mark Na+ point: [out]/[in] = 145/12 = 12.08 → E ≈ +66
+  const naRatio = 145 / 12;
+  const naT = Math.log(naRatio / ratioMin) / Math.log(ratioMax / ratioMin);
+  const naE = 61.5 * Math.log10(naRatio);
+  const nax = mapX(naT, 0, 1, g.padL, g.plotW);
+  const nay = mapY(naE, -120, 80, g.padT, g.plotH);
+  ctx.fillStyle = COLORS.na;
+  ctx.beginPath(); ctx.arc(nax, nay, 6, 0, Math.PI * 2); ctx.fill();
+  ctx.textAlign = 'right';
+  ctx.fillText(`Na⁺ (145/12) → +${naE.toFixed(0)} mV`, nax - 10, nay + 4);
+
+  // Zero line
+  ctx.strokeStyle = COLORS.dim;
+  ctx.setLineDash([3, 3]);
+  ctx.lineWidth = 1;
+  const zeroY = mapY(0, -120, 80, g.padT, g.plotH);
+  ctx.beginPath(); ctx.moveTo(g.padL, zeroY); ctx.lineTo(w - g.padR, zeroY); ctx.stroke();
+  ctx.setLineDash([]);
+
+  // X-axis ratio labels
+  ctx.fillStyle = COLORS.dim;
+  ctx.textAlign = 'center';
+  ctx.font = '10px "JetBrains Mono", monospace';
+  [0.03, 0.1, 0.3, 1, 3, 10, 30].forEach(r => {
+    const rt = Math.log(r / ratioMin) / Math.log(ratioMax / ratioMin);
+    if (rt >= 0 && rt <= 1) {
+      ctx.fillText(r.toString(), mapX(rt, 0, 1, g.padL, g.plotW), h - g.padB + 24);
+    }
+  });
+})();
+
+
+// ── 4. STAGE 2 COMPARISON ──
+(function() {
+  const { ctx, w, h } = setupCanvas('stage2CompareGraph');
+  const g = drawGrid(ctx, w, h, { yMin: -1, yMax: 1, yLabel: 'Output', xLabel: '3 cycles at 440 Hz' });
+
+  const sr = 44100;
+  const freq = 440;
+  const period = sr / freq;
+  const totalSamples = Math.floor(period * 3);
+  const tau = 5 * 0.001 * sr;
+  const leakCoeff = 1 - 1/tau;
+  const drive = 1.0 / (tau * (1 - Math.exp(-period / tau)));
+
+  // Stage 1 (linear)
+  ctx.lineWidth = 2;
+  ctx.strokeStyle = COLORS.charge;
+  ctx.globalAlpha = 0.5;
+  ctx.beginPath();
+  let v1 = 0;
+  for (let i = 0; i < totalSamples; i++) {
+    v1 += freq / sr;
+    if (v1 >= 1.0) v1 -= 1.0;
+    const x = mapX(i, 0, totalSamples, g.padL, g.plotW);
+    const y = mapY(v1 * 2 - 1, -1, 1, g.padT, g.plotH);
+    if (i === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y);
+  }
+  ctx.stroke();
+  ctx.globalAlpha = 1;
+
+  // Stage 2 (exponential)
+  ctx.strokeStyle = COLORS.leak;
+  ctx.lineWidth = 2.5;
+  ctx.beginPath();
+  let v2 = 0;
+  for (let i = 0; i < totalSamples; i++) {
+    v2 = v2 * leakCoeff + drive;
+    if (v2 >= 1.0) v2 = 0;
+    const x = mapX(i, 0, totalSamples, g.padL, g.plotW);
+    const y = mapY(v2 * 2 - 1, -1, 1, g.padT, g.plotH);
+    if (i === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y);
+  }
+  ctx.stroke();
+})();
+
+
+// ── 5. INTERACTIVE LEAK/DRIVE WAVEFORM ──
+function drawLeakInteractive() {
+  var tauMs = parseFloat(document.getElementById('tauSlider').value);
+  var driveRatio = parseFloat(document.getElementById('driveSlider').value);
+  document.getElementById('tauValue').textContent = tauMs.toFixed(1) + ' ms';
+  document.getElementById('driveValue').textContent = driveRatio.toFixed(2) + '\u00d7';
+
+  var Vinf = driveRatio;
+  var tau = tauMs;
+  var canFire = Vinf > 1.0;
+  var tCross = canFire ? -tau * Math.log(1 - 1.0 / Vinf) : Infinity;
+  var firingFreq = canFire ? 1000 / tCross : 0;
+
+  // ── Prominent readout strip ──
+  var readout = document.getElementById('s2Readout');
+  if (canFire) {
+    var midiNote = 12 * Math.log2(firingFreq / 440) + 69;
+    var noteNames = ['C','C#','D','D#','E','F','F#','G','G#','A','A#','B'];
+    var noteName = noteNames[Math.round(midiNote) % 12] + '' + Math.floor((Math.round(midiNote) - 12) / 12);
+    readout.innerHTML =
+      '<span style="font-size:1.6rem; color:var(--text-bright); font-weight:600;">' + firingFreq.toFixed(0) + ' <span style="font-size:0.9rem; color:var(--text-dim);">Hz</span></span>' +
+      '<span style="font-size:1.2rem; color:var(--accent-leak);">' + noteName + ' <span style="font-size:0.8rem; color:var(--text-dim);">MIDI ' + Math.round(midiNote) + '</span></span>' +
+      '<span style="font-size:0.8rem; color:var(--text-dim);">T<sub>charge</sub> = ' + tCross.toFixed(1) + ' ms</span>' +
+      '<span style="font-size:0.8rem; color:var(--text-dim);">V\u221e = ' + Vinf.toFixed(2) + '</span>';
+  } else {
+    var pct = (Vinf * 100).toFixed(0);
+    readout.innerHTML =
+      '<span style="font-size:1.4rem; color:var(--accent-spike); font-weight:600;">SILENT</span>' +
+      '<span style="font-size:0.85rem; color:var(--text-dim);">V\u221e = ' + Vinf.toFixed(2) + ' \u2014 only reaches ' + pct + '% of threshold. Increase drive past 1.0\u00d7 to fire.</span>';
+  }
+
+  // ── Canvas setup ──
+  var c = document.getElementById('tauWaveform');
+  var dpr = window.devicePixelRatio || 1;
+  var w = 850, h = 300;
+  c.width = w * dpr; c.height = h * dpr;
+  c.style.width = w + 'px'; c.style.height = h + 'px';
+  var ctx = c.getContext('2d');
+  ctx.scale(dpr, dpr);
+
+  // FIXED time window — this is the key change.
+  // 20ms shows the waveform compressing/expanding as parameters change.
+  var WINDOW_MS = 20;
+  var sr = 44100;
+  var totalSamples = Math.floor(WINDOW_MS * 0.001 * sr); // 882 samples
+
+  // ── SUBTHRESHOLD MODE ──
+  if (!canFire) {
+    var yMin = -0.05, yMax = 1.2;
+    var g = drawGrid(ctx, w, h, { yMin: yMin, yMax: yMax, yLabel: 'V (normalized)', xLabel: WINDOW_MS + ' ms' });
+
+    // Threshold line
+    var thY = mapY(1.0, yMin, yMax, g.padT, g.plotH);
+    ctx.strokeStyle = COLORS.spike;
+    ctx.setLineDash([5, 4]);
+    ctx.lineWidth = 1.5;
+    ctx.beginPath(); ctx.moveTo(g.padL, thY); ctx.lineTo(w - g.padR, thY); ctx.stroke();
+    ctx.setLineDash([]);
+    ctx.fillStyle = COLORS.spike;
+    ctx.font = '11px "JetBrains Mono", monospace';
+    ctx.textAlign = 'left';
+    ctx.fillText('threshold', g.padL + 4, thY - 7);
+
+    // V∞ asymptote
+    var vinfY = mapY(Vinf, yMin, yMax, g.padT, g.plotH);
+    ctx.strokeStyle = '#555';
+    ctx.setLineDash([4, 4]);
+    ctx.lineWidth = 1;
+    ctx.beginPath(); ctx.moveTo(g.padL, vinfY); ctx.lineTo(w - g.padR, vinfY); ctx.stroke();
+    ctx.setLineDash([]);
+    ctx.fillStyle = '#777';
+    ctx.font = '10px "JetBrains Mono", monospace';
+    ctx.textAlign = 'right';
+    ctx.fillText('V\u221e = ' + Vinf.toFixed(2), w - g.padR - 4, vinfY + 14);
+
+    // Gap brace
+    var braceX = w - g.padR - 65;
+    ctx.strokeStyle = 'rgba(255, 74, 107, 0.4)';
+    ctx.lineWidth = 1;
+    ctx.beginPath();
+    ctx.moveTo(braceX, thY + 2); ctx.lineTo(braceX + 6, thY + 2);
+    ctx.lineTo(braceX + 6, vinfY - 2); ctx.lineTo(braceX, vinfY - 2);
+    ctx.stroke();
+    ctx.fillStyle = 'rgba(255, 74, 107, 0.5)';
+    ctx.font = '10px "DM Sans", sans-serif';
+    ctx.textAlign = 'left';
+    ctx.fillText('unreachable', braceX + 10, (thY + vinfY) / 2 + 4);
+
+    // Charging curve — fills the 20ms window, approaching V∞
+    var tauSamps = tau * 0.001 * sr;
+    var driveAmp = Vinf / tauSamps;
+    var V = 0;
+    ctx.lineWidth = 2.5;
+    ctx.strokeStyle = COLORS.leak;
+    ctx.beginPath();
+    for (var i = 0; i < totalSamples; i++) {
+      V = V * (1 - 1/tauSamps) + driveAmp;
+      var x = mapX(i, 0, totalSamples, g.padL, g.plotW);
+      var y = mapY(V, yMin, yMax, g.padT, g.plotH);
+      if (i === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y);
+    }
+    ctx.stroke();
+    return;
+  }
+
+  // ── SUPRATHRESHOLD MODE ──
+  var tauSamps = tau * 0.001 * sr;
+  var periodSamps = tCross * 0.001 * sr;
+  var leakCoeff = Math.exp(-1 / tauSamps);
+  var driveAmp = 1.0 / (tauSamps * (1 - Math.exp(-periodSamps / tauSamps)));
+  var linInc = 1.0 / periodSamps;
+
+  // Simulate both waveforms across fixed window
+  var expWave = [];
+  var linWave = [];
+  var V = 0, vLin = 0;
+  for (var i = 0; i < totalSamples; i++) {
+    V = V * leakCoeff + driveAmp;
+    vLin += linInc;
+    if (V >= 1.0) V = 0;
+    if (vLin >= 1.0) vLin -= 1.0;
+    expWave.push(V);
+    linWave.push(vLin);
+  }
+
+  // Draw
+  var yMin2 = -0.08, yMax2 = 1.15;
+  var g2 = drawGrid(ctx, w, h, { yMin: yMin2, yMax: yMax2, yLabel: 'V (membrane)', xLabel: WINDOW_MS + ' ms (fixed window)' });
+
+  // Threshold line
+  var thY2 = mapY(1.0, yMin2, yMax2, g2.padT, g2.plotH);
+  ctx.strokeStyle = 'rgba(255, 74, 107, 0.35)';
+  ctx.setLineDash([5, 4]);
+  ctx.lineWidth = 1;
+  ctx.beginPath(); ctx.moveTo(g2.padL, thY2); ctx.lineTo(w - g2.padR, thY2); ctx.stroke();
+  ctx.setLineDash([]);
+  ctx.fillStyle = 'rgba(255, 74, 107, 0.45)';
+  ctx.font = '10px "JetBrains Mono", monospace';
+  ctx.textAlign = 'right';
+  ctx.fillText('threshold \u2192 reset', w - g2.padR - 4, thY2 - 5);
+
+  // Stage 1 linear ghost
+  ctx.lineWidth = 1.5;
+  ctx.strokeStyle = 'rgba(255, 228, 74, 0.13)';
+  ctx.beginPath();
+  for (var i = 0; i < totalSamples; i++) {
+    var x = mapX(i, 0, totalSamples, g2.padL, g2.plotW);
+    var y = mapY(linWave[i], yMin2, yMax2, g2.padT, g2.plotH);
+    if (i === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y);
+  }
+  ctx.stroke();
+
+  // Stage 2 exponential
+  ctx.lineWidth = 2.5;
+  ctx.strokeStyle = COLORS.leak;
+  ctx.beginPath();
+  for (var i = 0; i < totalSamples; i++) {
+    var x = mapX(i, 0, totalSamples, g2.padL, g2.plotW);
+    var y = mapY(expWave[i], yMin2, yMax2, g2.padT, g2.plotH);
+    if (i === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y);
+  }
+  ctx.stroke();
+
+  // Count visible cycles for annotation
+  var cycleCount = 0;
+  for (var i = 1; i < totalSamples; i++) {
+    if (expWave[i] < 0.1 && expWave[i-1] > 0.8) cycleCount++;
+  }
+  if (cycleCount > 0) {
+    ctx.fillStyle = 'rgba(255,255,255,0.25)';
+    ctx.font = '10px "JetBrains Mono", monospace';
+    ctx.textAlign = 'left';
+    ctx.fillText(cycleCount + ' cycles visible', g2.padL + 4, g2.padT + 14);
+  }
+}
+
+document.getElementById('tauSlider').addEventListener('input', drawLeakInteractive);
+document.getElementById('driveSlider').addEventListener('input', drawLeakInteractive);
+drawLeakInteractive();
+
+// ── 6. GATING VARIABLE GRAPH ──
+(function() {
+  const { ctx, w, h } = setupCanvas('gatingGraph');
+  const g = drawGrid(ctx, w, h, { yMin: -0.1, yMax: 1.1, yLabel: 'Probability / V (scaled)', xLabel: 'Time (ms)' });
+
+  const totalMs = 5;
+  const dt = 0.01;
+
+  // Approximate gating dynamics during an AP
+  // m: fast activation (sigmoid rise peaking ~0.5ms, then declining)
+  // h: slower inactivation (starts high, drops)
+  // n: delayed activation (sigmoid rise, slower than m)
+  // V: action potential shape
+
+  function sigmoid(t, center, steepness) {
+    return 1 / (1 + Math.exp(-(t - center) * steepness));
+  }
+
+  const curves = {
+    V: [], m: [], h: [], n: []
+  };
+
+  for (let t = 0; t <= totalMs; t += dt) {
+    // Voltage (normalized 0-1 for display)
+    let V;
+    if (t < 1.0) V = 0.1;
+    else if (t < 1.3) V = 0.1 + 0.9 * Math.pow((t - 1) / 0.3, 2);
+    else if (t < 1.5) V = 1.0 - 0.3 * ((t - 1.3) / 0.2);
+    else if (t < 2.2) V = 0.7 - 0.85 * ((t - 1.5) / 0.7);
+    else V = -0.15 + 0.25 * (1 - Math.exp(-(t - 2.2) / 0.8));
+    V = Math.max(-0.1, Math.min(1.1, V));
+
+    // m gate: fast activation
+    const m = sigmoid(t, 1.1, 15) * (1 - sigmoid(t, 1.8, 5));
+
+    // h gate: inactivation
+    const h = 1 - sigmoid(t, 1.3, 6) * (1 - 0.15 * sigmoid(t, 3.5, 2));
+
+    // n gate: delayed activation
+    const n = sigmoid(t, 1.5, 5) * (1 - 0.3 * sigmoid(t, 3.5, 1.5));
+
+    curves.V.push({ t, v: V });
+    curves.m.push({ t, v: m });
+    curves.h.push({ t, v: h });
+    curves.n.push({ t, v: n });
+  }
+
+  function drawCurve(data, color, lineW) {
+    ctx.strokeStyle = color;
+    ctx.lineWidth = lineW;
+    ctx.beginPath();
+    data.forEach((p, i) => {
+      const x = mapX(p.t, 0, totalMs, g.padL, g.plotW);
+      const y = mapY(p.v, -0.1, 1.1, g.padT, g.plotH);
+      if (i === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y);
+    });
+    ctx.stroke();
+  }
+
+  drawCurve(curves.n, COLORS.k, 2.5);
+  drawCurve(curves.h, COLORS.spike, 2.5);
+  drawCurve(curves.m, COLORS.na, 2.5);
+  drawCurve(curves.V, COLORS.bright, 2);
+
+  // Labels
+  ctx.font = '11px "JetBrains Mono", monospace';
+  ctx.textAlign = 'left';
+  ctx.fillStyle = COLORS.na; ctx.fillText('m (Na⁺ act.)', mapX(1.35, 0, totalMs, g.padL, g.plotW), mapY(0.95, -0.1, 1.1, g.padT, g.plotH) - 8);
+  ctx.fillStyle = COLORS.spike; ctx.fillText('h (Na⁺ inact.)', mapX(2.5, 0, totalMs, g.padL, g.plotW), mapY(0.25, -0.1, 1.1, g.padT, g.plotH));
+  ctx.fillStyle = COLORS.k; ctx.fillText('n (K⁺ act.)', mapX(2.6, 0, totalMs, g.padL, g.plotW), mapY(0.75, -0.1, 1.1, g.padT, g.plotH));
+})();
+
+
+// ── 7. STAGE 3 GRAPH ──
+(function() {
+  const { ctx, w, h } = setupCanvas('stage3Graph');
+  const g = drawGrid(ctx, w, h, { yMin: -0.2, yMax: 1.6, yLabel: 'V (normalized)', xLabel: '3 cycles at 200 Hz (sr=44100)' });
+
+  const sr = 44100;
+  const freq = 200;
+  const tauMs = 5;
+  const tau = tauMs * 0.001 * sr;
+  const leakCoeff = 1 - 1/tau;
+  const spikeDurMs = 1.0;
+  const spikeSamps = spikeDurMs * 0.001 * sr;
+  const riseFrac = 0.2;
+  const riseSamps = spikeSamps * riseFrac;
+  const fallSamps = spikeSamps * (1 - riseFrac);
+  const riseRate = 1 - Math.exp(-3 / Math.max(riseSamps, 1));
+  const fallRate = 1 - Math.exp(-3 / Math.max(fallSamps, 1));
+  const spikePeak = 1.5;
+
+  const chargeSamps = sr / freq - spikeSamps;
+  const drive = 1.0 / (tau * (1 - Math.exp(-chargeSamps / tau)));
+
+  const totalSamples = Math.floor(sr / freq * 3);
+  let V = 0, spikeV = 0, isSpiking = 0, timer = 0;
+
+  ctx.lineWidth = 2;
+  ctx.beginPath();
+  let prevX, prevY;
+  for (let i = 0; i < totalSamples; i++) {
+    let color;
+    if (isSpiking === 0) {
+      V = V * leakCoeff + drive;
+      color = COLORS.charge;
+      if (V >= 1.0) { isSpiking = 1; timer = 0; spikeV = V; }
+    } else if (isSpiking === 1) {
+      spikeV += (spikePeak - spikeV) * riseRate;
+      V = spikeV;
+      color = COLORS.na;
+      timer++;
+      if (timer >= riseSamps) { isSpiking = 2; timer = 0; }
+    } else {
+      spikeV += (0 - spikeV) * fallRate;
+      V = spikeV;
+      color = COLORS.k;
+      timer++;
+      if (timer >= fallSamps) { isSpiking = 0; V = 0; spikeV = 0; }
+    }
+
+    const x = mapX(i, 0, totalSamples, g.padL, g.plotW);
+    const y = mapY(isSpiking === 0 ? V : spikeV, -0.2, 1.6, g.padT, g.plotH);
+
+    if (i > 0) {
+      ctx.strokeStyle = color;
+      ctx.beginPath();
+      ctx.moveTo(prevX, prevY);
+      ctx.lineTo(x, y);
+      ctx.stroke();
+    }
+    prevX = x; prevY = y;
+  }
+})();
+
+
+// ── 8. STAGE 4 INTERACTIVE ──
+function drawStage4() {
+  var c = document.getElementById('stage4Interactive');
+  var dpr = window.devicePixelRatio || 1;
+  var w = 850, h = 320;
+  c.width = w * dpr; c.height = h * dpr;
+  c.style.width = w + 'px'; c.style.height = h + 'px';
+  var ctx = c.getContext('2d');
+  ctx.scale(dpr, dpr);
+
+  var freq = parseFloat(document.getElementById('freqSlider').value);
+  var tauMs = parseFloat(document.getElementById('s4TauSlider').value);
+  var spikePeak = parseFloat(document.getElementById('peakSlider').value);
+  var hyperDepth = parseFloat(document.getElementById('hyperSlider').value);
+  var dampVal = parseFloat(document.getElementById('dampSlider').value);
+
+  document.getElementById('peakValue').textContent = spikePeak.toFixed(2);
+  document.getElementById('hyperValue').textContent = hyperDepth.toFixed(2);
+  document.getElementById('dampValue').textContent = dampVal.toFixed(2);
+  document.getElementById('s4TauValue').textContent = tauMs.toFixed(1) + ' ms';
+
+  // Readout strip
+  var midiNote = 12 * Math.log2(freq / 440) + 69;
+  var noteNames = ['C','C#','D','D#','E','F','F#','G','G#','A','A#','B'];
+  var noteName = noteNames[Math.round(midiNote) % 12] + '' + Math.floor((Math.round(midiNote) - 12) / 12);
+  var readout = document.getElementById('s4Readout');
+  readout.innerHTML =
+    '<span style="font-size:1.6rem; color:var(--text-bright); font-weight:600;">' + freq.toFixed(0) + ' <span style="font-size:0.9rem; color:var(--text-dim);">Hz</span></span>' +
+    '<span style="font-size:1.2rem; color:var(--accent-na);">' + noteName + ' <span style="font-size:0.8rem; color:var(--text-dim);">MIDI ' + Math.round(midiNote) + '</span></span>' +
+    '<span style="font-size:0.8rem; color:var(--text-dim);">period = ' + (1000/freq).toFixed(1) + ' ms</span>';
+
+  // Fixed 20ms window
+  var WINDOW_MS = 20;
+  var sr = 44100;
+  var totalSamples = Math.floor(WINDOW_MS * 0.001 * sr);
+
+  // Simulation parameters
+  var tau = tauMs * 0.001 * sr; // in samples
+  var leakCoeff = Math.exp(-1 / tau);
+  var spikeDurMs = 1.0;
+  var spikeSamps = Math.floor(spikeDurMs * 0.001 * sr);
+  var riseFrac = 0.2;
+  var riseSamps = Math.floor(spikeSamps * riseFrac);
+  var fallSamps = spikeSamps - riseSamps;
+  var riseRate = 1 - Math.exp(-3 / Math.max(riseSamps, 1));
+  var fallRate = 1 - Math.exp(-3 / Math.max(fallSamps, 1));
+  var refractoryMs = 1.5;
+  var refractorySamps = Math.floor(refractoryMs * 0.001 * sr);
+  var recoveryTauMs = 3;
+  var recoveryTauSamps = recoveryTauMs * 0.001 * sr;
+  var recoveryRate = 1 - Math.exp(-1 / Math.max(recoveryTauSamps, 1));
+
+  var fixedPhaseSamps = spikeSamps + refractorySamps;
+  var periodSamps = sr / freq;
+  var chargeSamps = Math.max(periodSamps - fixedPhaseSamps, 1);
+  var drive = 1.0 / (tau * (1 - Math.exp(-chargeSamps / tau)));
+
+  // Check for impossible regime
+  var isImpossible = periodSamps <= fixedPhaseSamps;
+
+  // Grid
+  var yMin = Math.min(hyperDepth * 1.3, -0.35);
+  var yMax = spikePeak + 0.15;
+  var g = drawGrid(ctx, w, h, { yMin: yMin, yMax: yMax, yLabel: 'V', xLabel: WINDOW_MS + ' ms (fixed window)' });
+
+  // Zero/resting line
+  var zY = mapY(0, yMin, yMax, g.padT, g.plotH);
+  ctx.strokeStyle = 'rgba(255,255,255,0.12)';
+  ctx.setLineDash([3, 3]);
+  ctx.lineWidth = 1;
+  ctx.beginPath(); ctx.moveTo(g.padL, zY); ctx.lineTo(w - g.padR, zY); ctx.stroke();
+  ctx.setLineDash([]);
+  ctx.fillStyle = 'rgba(255,255,255,0.2)';
+  ctx.font = '9px "JetBrains Mono", monospace';
+  ctx.textAlign = 'left';
+  ctx.fillText('resting', g.padL + 4, zY - 4);
+
+  // Threshold line
+  var thY = mapY(1.0, yMin, yMax, g.padT, g.plotH);
+  ctx.strokeStyle = 'rgba(255, 74, 107, 0.3)';
+  ctx.setLineDash([5, 4]);
+  ctx.lineWidth = 1;
+  ctx.beginPath(); ctx.moveTo(g.padL, thY); ctx.lineTo(w - g.padR, thY); ctx.stroke();
+  ctx.setLineDash([]);
+
+  // Impossible regime warning
+  if (isImpossible) {
+    ctx.fillStyle = 'rgba(255, 74, 107, 0.6)';
+    ctx.font = '13px "DM Sans", sans-serif';
+    ctx.textAlign = 'center';
+    var cx = g.padL + g.plotW / 2;
+    var cy = g.padT + g.plotH / 2;
+    ctx.fillText('Period (' + (1000/freq).toFixed(1) + ' ms) shorter than fixed spike+refractory phases (' + (fixedPhaseSamps/sr*1000).toFixed(1) + ' ms)', cx, cy - 12);
+    ctx.font = '11px "DM Sans", sans-serif';
+    ctx.fillStyle = 'rgba(255, 74, 107, 0.4)';
+    ctx.fillText('This is the biological maximum firing rate ceiling \u2014 reduce frequency to see waveform', cx, cy + 8);
+    readout.innerHTML += '<span style="color:var(--accent-spike); font-size:0.85rem; font-weight:600;"> \u26A0 ABOVE MAX RATE</span>';
+    return;
+  }
+
+  // Simulate
+  var V = 0, phase = 0, timer = 0, recVel = 0;
+  var prevX, prevY;
+  var firstCycleEnd = -1;
+  var phaseStarts = [];
+
+  for (var i = 0; i < totalSamples; i++) {
+    var color;
+    var prevPhase = phase;
+    if (phase === 0) {
+      V = V * leakCoeff + drive;
+      color = COLORS.charge;
+      if (V >= 1.0) { phase = 1; timer = 0; }
+    } else if (phase === 1) {
+      V += (spikePeak - V) * riseRate;
+      color = COLORS.na;
+      timer++;
+      if (timer >= riseSamps) { phase = 2; timer = 0; }
+    } else if (phase === 2) {
+      V += (hyperDepth - V) * fallRate;
+      color = COLORS.k;
+      timer++;
+      if (timer >= fallSamps) { phase = 3; timer = 0; recVel = 0; }
+    } else {
+      var spring = (0 - V) * recoveryRate;
+      var damp = -recVel * dampVal;
+      recVel += spring + damp;
+      V += recVel;
+      color = COLORS.hyper;
+      timer++;
+      if (timer >= refractorySamps && V > hyperDepth * 0.3) {
+        phase = 0; recVel = 0;
+        if (firstCycleEnd < 0) firstCycleEnd = i;
+      }
+    }
+
+    // Track phase transitions in first cycle for annotation
+    if (firstCycleEnd < 0 && phase !== prevPhase) {
+      phaseStarts.push({ phase: phase, sample: i });
+    }
+
+    var x = mapX(i, 0, totalSamples, g.padL, g.plotW);
+    var y = mapY(V, yMin, yMax, g.padT, g.plotH);
+
+    if (i > 0) {
+      ctx.strokeStyle = color;
+      ctx.lineWidth = 2;
+      ctx.beginPath();
+      ctx.moveTo(prevX, prevY);
+      ctx.lineTo(x, y);
+      ctx.stroke();
+    }
+    prevX = x; prevY = y;
+  }
+
+  // Annotate first cycle phases
+  var phaseLabels = { 1: 'Na\u207A rise', 2: 'K\u207A fall', 3: 'recovery', 0: 'charge' };
+  var phaseColors = { 1: COLORS.na, 2: COLORS.k, 3: COLORS.hyper, 0: COLORS.charge };
+  for (var p = 0; p < phaseStarts.length && p < 4; p++) {
+    var ps = phaseStarts[p];
+    var px = mapX(ps.sample, 0, totalSamples, g.padL, g.plotW);
+    // Only annotate if there's room (not too compressed)
+    if (px > g.padL + 30 && px < g.padL + g.plotW * 0.5) {
+      ctx.strokeStyle = 'rgba(255,255,255,0.08)';
+      ctx.setLineDash([2, 3]);
+      ctx.lineWidth = 1;
+      ctx.beginPath();
+      ctx.moveTo(px, g.padT); ctx.lineTo(px, g.padT + g.plotH);
+      ctx.stroke();
+      ctx.setLineDash([]);
+    }
+  }
+
+  // Cycle count
+  var cycleCount = 0;
+  for (var i = 1; i < totalSamples; i++) {
+    // Count resets (phase 0 entries)
+    // Simple: count when V drops from >0.8 to <0.2
+  }
+  // Use period to estimate
+  cycleCount = Math.floor(WINDOW_MS / (1000/freq));
+  if (cycleCount > 0) {
+    ctx.fillStyle = 'rgba(255,255,255,0.2)';
+    ctx.font = '10px "JetBrains Mono", monospace';
+    ctx.textAlign = 'left';
+    ctx.fillText(cycleCount + ' cycles', g.padL + 4, g.padT + 14);
+  }
+}
+
+['freqSlider', 'peakSlider', 'hyperSlider', 'dampSlider', 's4TauSlider'].forEach(function(id) {
+  document.getElementById(id).addEventListener('input', drawStage4);
+});
+drawStage4();
+</script>
+
+</body>
+</html>
