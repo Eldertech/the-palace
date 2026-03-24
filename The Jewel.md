@@ -68,17 +68,18 @@ Tier 0 + Tier 1 + Tier 2 ≈ 16K tokens — roughly one quarter of a standard co
 ## Open questions
 
 - Should the jewel include a one-line summary of the current palace state (entry count, most active hubs) so a spawned agent has situational awareness without reading Substrate.md? 
-	- Perhaps a description of the most connected entries and their relationship to each other and a "you are here" flag. It Describes where each entry lives within a constellation of stars. It is an image that is seen up in the sky from inside a data-space, with each entry as stars connected by dim threads of light. 
+	- <!--Perhaps a description of the most connected entries and their relationship to each other and a "you are here" flag. It Describes where each entry lives within a constellation of stars. It is an image that is seen up in the sky from inside a data-space, with each entry as stars connected by dim threads of light. -->
 - Is there a version of the jewel tuned specifically for Walk agents vs. Weave agents vs. Deposit agents — or does one jewel serve all ceremonies?
-	- All pages are designed to give an agent purpose, they are born at the top of the page, and are given drive at the bottom. The jewel is polymorphic itself a projection of a slice of a higher dimension into ours.
+	- <!--All pages are designed to give an agent purpose, they are born at the top of the page, and are given drive at the bottom. The jewel is polymorphic itself a projection of a slice of a higher dimension into ours. -->
 - How do we test whether a version of the jewel is working? What does a well-oriented agent do differently than a poorly-oriented one? 
-	- Feels "right" to loudon. This is subjectively tuned and honestly aligned over time.
+	- <!--Feels "right" to loudon. This is subjectively tuned and honestly aligned over time.-->
 - At what point does the jewel become so familiar that it stops being read carefully — and what do we do then? 
-	- Keep modifying and changing it, jewel honestly feels not quite right, because it must adapt to the personality of the page and the needs of the page within its neighborhood.
+	- <!--Keep modifying and changing it, jewel honestly feels not quite right, because it must adapt to the personality of the page and the needs of the page within its neighborhood.-->
 - Should the jewel be embedded verbatim inside CLAUDE.md so it is always co-present with the entry point?
-	- Yes
+	- <!--Yes-->
 
 ## Forward Vectors
 - Make a game that refines and adapts the jewel.
 - Propose specific changes to make.
 - Make an even more condensed jewel, stardust.
+- Build the teired loading directly into Claude.md
