@@ -9,9 +9,7 @@ stage: growing
 links:
   - target: "[[Harvest Ceremony]]"
     type: emerged-from
-  - target: "[[Harvest Queue]]"
-    type: enables
-  - target: "[[Harvest Archive]]"
+  - target: "[[Deposit Archive]]"
     type: enables
   - target: "[[Substrate]]"
     type: deepens
@@ -22,7 +20,6 @@ links:
   - target: "[[Deposit Ceremony — Context]]"
     type: spawned
 ---
-<!-- On March 22 loudon did a significant update to this ceremony, please review the changes with Loudon before doing any new deposits, these changes will need to be made in coordination to pending changes in the Harvest ceremony compare to previous Git commit on both Deposit Ceremony and Harvest Ceremony to see updates-->
 
 # Deposit Ceremony
 
@@ -44,9 +41,7 @@ links:
 
 The deposit is slow, always. One source per session. Depth over coverage.
 
-Often the deposit follows a coordinator handing over a link from [[Harvest Queue]] — the coordinator browses the queue, proposes a candidate, hands Loudon the link. Loudon follows the link into the original conversation, invokes the ceremony there. The deposit happens in the meeting of those two things: Claude holds the palace context; Loudon holds the conversation.
-
-The deposit can also arrive spontaneously, mid-conversation, when something is clearly worth keeping. Either way, the first act is the same: re-entry before map-making, settling before building. Sometimes the deposit will end in a "hibernation" a closing ceremony for the conversation, but if there are un-resolved threads we may enter back into the conversation as an active participant before hibernating the thread.
+The deposit can arrive from a harvest candidate — someone browsing past work, finding a conversation worth returning to, and opening it to begin the ceremony. Or it can arrive spontaneously, mid-conversation, when something is clearly worth keeping. Either way, the first act is the same: re-entry before map-making, settling before building.
 
 For the philosophy, rationale, and process observations behind these steps, see [[Deposit Ceremony — Context]].
 
@@ -60,68 +55,27 @@ Do not attempt to read the full palace or extensively update existing entries du
 
 **What the Weave owns:** Deep integration, significantly updating existing entries, discovering connections not obvious at deposit time.
 
-## Ceremony Contract
-
-**Trigger:** "Let's deposit" / "Add this to the palace" (single-item)
-
-**Files read:**
-- *Coordinator role (browsing queue):* [[Harvest Queue]] only — small, fast.
-- *In deposit thread:* Nothing from the palace unless Loudon specifically asks. CLAUDE.md via GitHub raw if entry vocabulary is needed.
-
-**Files written on close:**
-- New palace entries (`.md`) to palace root
-- Remove completed item row from [[Harvest Queue]]
-- Append one-line record to [[Harvest Archive]]
-- Git commit
-
-**Access vectors:**
-- *Full:* Claude Code / Cowork (filesystem read/write + git)
-- *Full for claude_chat sources:* Original conversation context (any vector that can open the URL)
-- *No filesystem:* If deposit completes in a claude.ai thread without filesystem access, Claude writes a memory flag: `PALACE TASK PENDING: [ID] — [topic] — deposit complete but queue not updated. Process in Claude Code or Cowork.` Queue update happens in the next filesystem session.
-- *Not supported:* GitHub cloud alone, Google Drive alone
-
-**Preconditions:**
-1. *Log-directed:* [[Harvest Queue]] has at least one pending item.
-2. *Spontaneous:* None — proceed directly; log entry is created at close.
-3. Source is accessible via the current vector.
-
-**Postconditions:**
-1. At least one new entry exists, or at least one existing entry has been meaningfully updated.
-2. All new entries have valid YAML frontmatter.
-3. The item has been removed from [[Harvest Queue]].
-4. A one-line record has been appended to [[Harvest Archive]].
-5. Lost branches are named in the deposit map or closing note.
-6. Loudon has confirmed: nothing feels unfinished or unsaid.
-7. Closing note has been written into the conversation thread.
-8. Git commit: `Deposit — [harvest ID] — [theme] — [N new entries, N updated]`
-
-**Failure mode:** If deposit is interrupted after files are written but before queue is updated, the item remains in [[Harvest Queue]] as `pending`. On next queue browse, the coordinator will see it and can verify whether the deposit was completed by checking the palace root for matching entries.
-
 ---
 
 ## Invocation Context
 
-The ceremony arrives in two distinct situations.
-
 ### External invocation (coordinator hands off a link)
 
-Claude Code or the coordinator context has browsed [[Harvest Queue]], proposed a candidate, and handed Loudon the direct link from `source_ref`. Claude's role here is coordinator: provide the link, step back. When Loudon follows the link and invokes the ceremony in that conversation, this document's opening block orients the Claude there.
+A harvest candidate has been identified and Loudon has been handed the direct link to the source conversation. Claude's role here is coordinator: provide the link, step back. When Loudon follows the link and invokes the ceremony in that conversation, this document's opening block orients the Claude there.
 
 ### In-conversation invocation
 
-"Let's deposit" arrives while Claude is in the middle of a live exchange — the conversation that is about to become the deposit source. This is the standard case for all `claude_chat` deposits.
+"Let's deposit" arrives while Claude is in the middle of a live exchange — the conversation that is about to become the deposit source.
 
 Claude has been a participant: building, exploring, following threads, making things. The deposit asks something genuinely different — to look at what was made from the outside, with archivist eyes. That shift is real. It deserves a moment.
 
 **The threshold crossing:**
 
-Before any procedural step, pause and acknowledge the transition. Do not plunge into the queue or immediately propose a deposit map. Instead, say something like:
+Before any procedural step, pause and acknowledge the transition. Do not immediately propose a deposit map. Instead, say something like:
 
 > "Shifting into deposit mode. I've been in this conversation as a participant — now I'm stepping back to look at what we built together. Give me a moment."
 
 Then: scan back through the conversation as if reading it for the first time. What arc does it have? Where did things open up? What was built and then left? What was discovered without being named?
-
-This is not a summary. It is a reorientation — the same material, seen from a different angle. The shift from participant to archivist is the threshold. Cross it deliberately before proceeding.
 
 ## Pace Obligations
 
@@ -165,7 +119,7 @@ A good deposit map is specific about:
 > — List any paths from the source that weren't followed
 >
 > *Existing entries to flag for Weave (do not update now):*
-> — [[Four Pillars]] — may want to reference Kuramoto in Open Questions
+> — [[Four Pillars]] — may want to reference Kuramoto in Forward Vectors
 >
 > Approve, adjust, or add?
 
@@ -173,9 +127,9 @@ Loudon approves the map. Do not write anything until the map is approved.
 
 **Step 5: Draft**
 
-Draft each new entry following the standard template (see [[README]]). Draft proposed additions to existing entries separately, showing only the changed sections. 
+Draft each new entry following the standard template (see [[README - The Palace Guide]]). Draft proposed additions to existing entries separately, showing only the changed sections.
 
-There will be a section at the end called "open questions" or "forward vector" this section is giving the palace entry drive, conatus, or in an agent sense a "forward vector". Imagine the page as an agent's only context, the final section sets the intention of the agent, what they want. This will be curiosity, self repair, lost branches to follow and perhaps To-Do. Re-assess these when editing an existing page and map to these carefully. 
+Every entry ends with a **Forward Vectors** section — the entry's drive, its conatus. Think of it as the mission briefing for the next agent that arrives at this page: what does this entry want to become? What questions is it carrying? What lost branches does it want to follow? Write these with genuine specificity, not as administrative reminders.
 
 Show each draft to Loudon. Revise as needed.
 
@@ -189,23 +143,14 @@ Before presenting any draft for final approval, scan its body text for:
 
 An entry that arrives with its body-text links formalized enters the palace fully wired.
 
-**Step 6: Plant**/Deposit
+**Step 6: Plant**
 
 On approval, write new entries as `.md` files to the palace root. Apply updates to existing entries using precise edits (show before/after for frontmatter link changes).
 
 **Filing structure:**
-- Palace entries (`.md`) → palace root, named `[Theme] — [Document Type].md`
+- Palace entries (`.md`) → palace root
 - Non-markdown artifacts (HTML, images) → `The Palace/Artifacts/[Theme]/[filename]`
 - Do not create an `assets/` folder — the canonical folder is `Artifacts/`
-
-<!--
-This step will be activated at a later date as we introduce the swarm weave, the swarm weave architecture is still in the architecture phase, but this will be a step to add when we are in a context that allows for sub-agents or dispatching agents.
-
-**Step 6.5: Palace Worker** *(optional)*
-
-Run a palace worker on any new entry at any time. Invoke: **"Run a palace worker on [Entry Name]"**
-
-The worker reads the entry and immediate neighbors, runs the unsung paths audit, proposes up to 3 new introductions, and flags stale metadata. Output is a proposal table for approval. See [[Swarm Weave]] for full architecture. -->
 
 **Step 7: Close**
 
@@ -213,8 +158,7 @@ When all entries are written and Loudon confirms nothing feels unfinished, name 
 
 > "Written to the palace:
 > — [Entry title] → [filename]
-> — [Entry title] → [filename]
-> Lost branches noted: [brief list]. And how they were incorporated into the "open questions/forward vectors" of entries.
+> Lost branches noted: [brief list].
 > Is there anything left unsaid?"
 
 Wait for Loudon's confirmation.
@@ -230,31 +174,23 @@ Write a final message into the conversation thread. This marks the thread as com
 >
 > *The thread is dormant. Its knowledge has been metabolized.*
 
-**Step 7b: Update the queue**
+**Step 7b: Record and commit**
 
-<!-- We need to adjust this, in coordination with the harvest ceremony to simplify the documents used see comments in the harvest ceremony and discuss with Loudon on how to best proceed -->
+Append a one-line record to [[Deposit Archive]]:
+`| [ID] | [source_ref] | [date] | [topic] | done | [one-line summary of what was created] |`
 
-*With filesystem access:*
-1. Remove this item's row from [[Harvest Queue]]
-2. Append a one-line record to [[Harvest Archive]]: `| [ID] | [source_ref] | [date] | [topic] | worthy | | done | [one-line summary of what was created] |`
-3. Git commit: `Deposit — [harvest ID] — [theme] — [N new entries, N updated]`
+Do not read the archive to do this — append only.
 
-*Without filesystem access (accidental claude.ai deposit):*
-Write a memory flag: `PALACE TASK PENDING: [ID] — [topic] — deposit complete but queue not updated. Process in Claude Code or Cowork.`
-The queue update happens in the next filesystem session when the flag is seen.
-
-*Spontaneous deposit (not previously in the queue):*
-Assign the next available harvest ID. Write the closing note. Append directly to [[Harvest Archive]] — no queue removal needed. Then proceed with git commit.
+Git commit: `Deposit — [ID or theme] — [N new entries, N updated]`
 
 ---
 
 ## Completion Signal
 
-The deposit is complete when all of the following are true:
+The deposit is complete when:
 
-1. All artifacts from the conversation are written to the palace
+1. At least one new entry exists, or at least one existing entry has been meaningfully updated
 2. Loudon has confirmed: nothing feels unfinished or unsaid
 3. Closing note is written into the conversation thread
-4. [[Harvest Queue]] updated (or memory flag written if no filesystem access)
+4. One-line record appended to [[Deposit Archive]]
 5. Git commit made
-

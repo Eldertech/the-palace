@@ -28,14 +28,14 @@ Organized into sections by type. Items move off this list when they become entri
 ## Token Economy — Pending Work
 
 - [x] **Audit ceremony file sizes — all four ceremonies split** — [[Deposit Ceremony]], [[Harvest Ceremony]], [[Weave Ceremony]], [[Hibernation Ceremony]] each split into a lean operational card + `— Context.md` companion. Convention formalized in SCHEMA.md Section 6 and Substrate Skill: tone/communication style/shared goals stay in operational cards; rationale, history, open questions move to Context. All Context files carry full frontmatter and link back via `emerged-from`.
-- [x] **Harvest Log growth** — Resolved 2026-03-21. Harvest Log split into [[Harvest Frontier]] (live state), [[Harvest Queue]] (pending deposits), and [[Harvest Archive]] (completed/skipped — never read during ceremony). Each file has one job. No ceremony loads more than it requires.
+- [x] **Harvest Log growth** — Resolved 2026-03-21. Later simplified further: Harvest Archive renamed to [[Deposit Archive]], Harvest Frontier and Harvest Queue composted (all past conversations now deposited). The archive is now the single permanent record.
 
 ---
 
 ## Ceremonies to Run
 
 - [x] **First Harvest session** — Complete. Batch 1 (H001–H019) logged 2026-03-17. Frontier at 2024-06-19.
-- [ ] **Continue Harvest** — Resume from 2024-06-19, oldest-first. Frontier is set in [[Harvest Log]].
+- [x] **Complete the harvest of all past Claude conversations** — All three Oblique Harvest rounds complete (640 cards, 2026-03-23/24). The next harvest begins when there is a new body of material (Google Drive, new conversation batches, project archives).
 - [x] **First Weave** — Complete 2026-03-17. Palace at 24 entries. 8 new typed links added, stale metadata updated, Tao section added to Palace Philosophies, [[The Cooperation Path]] songline entry created.
 - [ ] **Spore check on Short Story** — [[Short Story]] is dormant. Revival conditions: Loudon ready to return to fiction writing. Check whether current work has changed the conditions.
 
@@ -78,16 +78,16 @@ Organized into sections by type. Items move off this list when they become entri
 - [x] **Slim the Substrate Skill** — Complete 2026-03-17. Both the Substrate skill and Four Pillars skill now reduced to ~20-line pointers. Palace files (CLAUDE.md, Substrate Skill.md, Four Pillars.md, README) are the authoritative instruction set. Skill files contain trigger vocabulary, palace path, and a 3-sentence fallback for offline operation only.
 - [x] **Deposit Ceremony — mid-discussion invocation** — New "Invocation Context" section added to Deposit Ceremony. Two paths named: external (coordinator sending Loudon to a past chat) and in-conversation (the standard case). Mode shift ritual added for in-conversation: "threshold crossing" before any procedural step. Steps 1, 2, 3, and 7 updated with branches for each case. Preconditions relaxed for spontaneous deposits.
 
-- [ ] **Consider renaming "Deposit Ceremony" to "Plant Ceremony"** — The organic metaphor runs deep: harvest, compost, sprout, growing, fruiting, dormant. The deposit sessions consistently feel like planting seeds, not depositing objects. "Deposit" carries a banking connotation; "plant" fits the living organism frame. If renamed, update: Deposit Ceremony entry, Harvest Log references, Palace Ceremonies table, CLAUDE.md, Substrate Skill, README, all ceremony cross-references. This is a Schema Ceremony change — requires the linter. Do not rename casually; rename when it feels obviously right.
+- [ ] **Consider renaming "Deposit Ceremony" to "Plant Ceremony"** — Still open. "Deposit" is accurate but banking-flavored. "Plant" fits the organism frame. Loudon has held this open deliberately — rename when it feels obviously right.
 
-- [ ] **Reassess tone of all ceremonies** — The Walk Ceremony revealed that mechanical protocol language undermines organic ceremony. The Walk was rewritten in this session. The other ceremonies (Weave, Spore Check, Deposit, Hibernation, etc.) should be reviewed for the same pattern: where numbered steps are used, ask whether the ceremony's metaphorical frame calls for prose instead. This is not a Schema Ceremony — it is a practice revision. Suggested approach: read each ceremony aloud and notice where the language stops you. Do in a single dedicated session. Prerequisite: at least one full Weave cycle with the current ceremony set, so there is lived experience to draw on.
+- [x] **Reassess tone of all ceremonies** — Done 2026-03-24. Harvest Ceremony rewritten to be lean and adaptive. Palace Ceremonies linter replaced with the organic multi-perspective "Ceremony Reader." Deposit Ceremony cleaned of stale graffiti and "without filesystem access" complexity. Weave Ceremony Step 0 (hibernation queue) replaced with living orientation step. The ceremony set as a whole is now more inviting and less mechanical.
 
 - [ ] **Add activation counts to more entries** — Several entries (Endosymbiosis, Palace Philosophies, Palace Quotes, Boundary-Crossing Instruments) are missing activation tracking. Standardize during next Weave.
 
 - [x] **Palace Graffiti convention named** — Loudon renamed the HTML comment system to "Graffiti" and claimed the role of trickster in the palace. Concept entry written: [[Palace Graffiti]]. CLAUDE.md should be updated to use the graffiti language in its in-file comments section.
 - [ ] **Boundary-Crossing Instruments** — Currently underactivated (last activated Dec 2025). Check whether Deposit session has added new connections. The three-layer interface design should link forward to Symbiotic Skills.
 - [ ] **Endosymbiosis** — Stage: seed, activation: 1. Body is thin. Consider whether a Deposit session would enrich it or whether it should stay as a thin pointer to the biological proof-of-concept for [[Cooperation Yields Agency]].
-- [ ] **Clarify Harvest and Deposit ceremonies.** We have not yet gotten them down to a simple and clean workflow. Harvest is triage, finding things to deposit into the palace. Deposit is doing the work of putting things in the palace. The complexity comes from different scopes and sizes of files. We don't need a "frontier." The "harvest archive" is actually the "deposit"archive a record of what has been placed into the palace. So we end up having two logs, a harvest que of items to deposit, and the deposit archive a list of things we have added to the palace. Lets reduce complexity by focusing both to be ONLY FOR CONVERSATIONS, and only when I am on my computer, and I can focus on using Co-work or claude code. Later, we will port the process over to other file types and vectors. The Deposit process should deposit the material into the palace, then write at the end of the deposit archive without loading the entire archive into memory. Then it should write a very short line into the harvest cue at the end, also not loading into memory. Whenever I ask to find me a conversation to deposit, the harvester first loads the log into memory, edits the file to remove deposits from the harvest queue. Only then do we find conversations to suggest for deposit. And all that process is is giving me a link to follow, where I open up an old thread and run the deposit ceremony. When I ask the harvester to triage, then it will need to compare the harvest log, and the deposit archive to build a "do not harvest" list, and then compare that against the list of conversations we have had to build a "triage these" list and start the triage. This process should be made with subagents as it will clearly fill up some context windows in the process, and maybe this is were we move up to "swarm triage" as we have moved up to "swarm weave".
+- [x] **Clarify Harvest and Deposit ceremonies** — Done 2026-03-24. Harvest Archive renamed to [[Deposit Archive]] (permanent record of all deposits). Harvest Frontier and Harvest Queue composted. Harvest Ceremony rewritten to be lean and adaptive — no prescribed structure, oblique approach preferred. Deposit Ceremony cleaned up. The two ceremonies are now clearly distinct: Harvest finds, Deposit builds.
 - [x] **GitHub as palace read target** — Superseded and completed by Phase 3 above.
 - [ ] **Consider a Claude Project for the palace** — [[Substrate]] notes the threshold is ~25–40 entries. Currently at 19. Begin planning at 20, create at 25.
 
@@ -95,13 +95,13 @@ Organized into sections by type. Items move off this list when they become entri
 
 ## Collaboration Modes — Pending Specification
 
-- [ ] **Codify successful modes of collaboration with Claude** — A dedicated session to carefully name, describe, and organize the distinct modes of collaboration that have emerged in our work together. Not a general list of prompting tips — a precise taxonomy of *how* Loudon and Claude work together at their best, with enough specificity that it could be taught to others as a lesson. Known modes include at minimum: the Embodied Council (competing philosophies embodied as people in dialogue, with research-backed personality fidelity), the Excellent Adventure (embodied historical dialogue as learning technique), the Deposit/Walk/Weave ceremonies (collaborative memory and connection-finding), and whatever this conversation represents (slow philosophical emergence through systems thinking). Each mode deserves: a name, a description of when it's appropriate, a protocol for how to invoke and run it, and an example. The goal is a palace entry (type: `practice`) that Claude could read and begin suggesting or invoking automatically. ⭐ *HIGH PRIORITY — teaches others; expands palace's self-awareness of how it works*
+- [x] **Codify successful modes of collaboration with Claude** — Done. [[Modes of Collaboration]] entry exists (type: `practice`, stage: sprout). Six named modes: Excellent Adventure, Mentor and Quiz, Interactive Exploration, The Build Session, Philosophical Dialogue, Harvest/Deposit. "Modes Not Yet Named" section carries brainstorm mode, debugging session, literature review, design review. ⭐ Needs enrichment as modes mature — this is ongoing, not finished.
 
 ---
 
 ## Questions Being Carried
 
-- When should the Harvest Ceremony expand beyond Claude chats to Google Drive? (Trigger: when chat harvest is complete, or earlier if specific documents are known to be palace-worthy.)
+- When should the Harvest Ceremony expand beyond Claude chats to Google Drive? (Chat harvest is now complete. Google Drive harvest can begin when there's capacity.)
 - Is there a minimum ceremony frequency that keeps the palace alive without feeling like maintenance? (Current hypothesis: Walk monthly, Weave quarterly, Harvest/Deposit in dedicated sessions as capacity allows.)
 - Should [[Palace Philosophies]] have a section on Taoism? On indigenous knowledge traditions beyond Aboriginal Australian songlines?
 - At what point does the palace warrant its own visual map? (Obsidian's graph view is available but not yet used as a ceremony tool.)
@@ -124,6 +124,7 @@ Items that may no longer need action — held here before being fully released.
 
 ## Recently Completed
 
+- [x] **Full palace audit — ceremonies, renames, Forward Vectors, graffiti** — 2026-03-24. Harvest Archive → Deposit Archive. Embodied Council Method → Dialectic. Harvest Frontier + Queue composted. Harvest Ceremony rewritten. Linter replaced with Ceremony Reader. Deposit/Weave ceremonies cleaned. Old paths updated. Forward Vectors standardized. Multiple graffiti addressed.
 - [x] **Harvest batch 1 logged** (H001–H019) — 2026-03-17
 - [x] **Harvest Ceremony entry written** — 2026-03-17
 - [x] **Deposit Ceremony entry written** — 2026-03-17

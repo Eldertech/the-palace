@@ -1,5 +1,5 @@
 ---
-title: "Embodied Council Method"
+title: "Dialectic"
 type: practice
 pillars: [philosophy, practice, creation]
 born: 2026-03
@@ -17,11 +17,15 @@ links:
     type: deepens
   - target: "[[Palace Philosophies]]"
     type: enables
+  - target: "[[Modes of Collaboration]]"
+    type: connects-to
 ---
 
-# Embodied Council Method
+# Dialectic
 
 A collaborative practice in which competing philosophies or frameworks are embodied as the people who generated them — researched, characterized, and placed in genuine dialogue — to illuminate a design, intellectual, or creative problem from multiple irreducible angles simultaneously.
+
+The word *dialectic* captures what this practice actually is: not just conversation, but the joint search for truth through productive friction. Voices enter and exit, challenge and concede, reframe and resist. What emerges cannot be reached by any single voice alone.
 
 ## The Method
 
@@ -39,24 +43,23 @@ A collaborative practice in which competing philosophies or frameworks are embod
 
 ## What Makes It Different From a Summary
 
-A summary of competing positions tells you what each position holds. The Embodied Council Method creates conditions for the positions to encounter each other, which produces different knowledge — the knowledge of how a position behaves under pressure, what it concedes, what it refuses, what it reveals about its own limits when challenged by a genuinely different orientation.
+A summary of competing positions tells you what each position holds. The Dialectic creates conditions for the positions to encounter each other, which produces different knowledge — the knowledge of how a position behaves under pressure, what it concedes, what it refuses, what it reveals about its own limits when challenged by a genuinely different orientation.
 
 The method works because the embodiment is doing real cognitive work. When a voice is researched and inhabited faithfully, it generates responses that weren't scripted in advance. Donella Meadows, in a conversation about multi-agent frameworks, will not say what a paraphrase of *Thinking in Systems* would produce. She will ask about feedback loops, stocks, delays — because that is genuinely how she sees every system problem. That specificity is what makes the dialogue live.
 
-## Relationship to Excellent Adventure
+The council is not fixed in size. Two voices produce tension. Three produce triangulation. Voices can enter and exit as the dialogue develops — Plato and Socrates in conversation, with others stepping in and stepping out. The dialectic breathes.
 
-The [[Excellent Adventure]] method — embodied historical dialogue as a learning technique — is the parent practice. The Embodied Council Method is a specific application: not a single historical figure but a council of competing figures, oriented around a specific problem rather than a historical moment.
+## Relationship to the Excellent Adventure
 
-Where Excellent Adventure produces immersive encounter with a single perspective across time, the Embodied Council produces productive friction between multiple perspectives in the present of a design question.
+The [[Excellent Adventure]] method — embodied historical dialogue as a learning technique — is the parent practice. The Dialectic is a specific application: not a single historical figure but a council of competing figures, oriented around a specific problem rather than a historical moment.
 
-## Protocol Notes for Refinement
+Where the Excellent Adventure produces immersive encounter with a single perspective across time, the Dialectic produces productive friction between multiple perspectives in the present of a design question.
 
-*These notes are open questions awaiting elaboration through practice:*
+## Protocol Notes
 
 - How much research is enough before embodying a voice? Minimum viable: read their own words, not only secondary sources. Know their vocabulary. Know one thing they got wrong that they didn't know they got wrong.
 - What questions work best? Systems design, pedagogical philosophy, architectural decisions, ethical questions in creative practice. Questions where the disagreement is structural, not factual.
 - How to handle historical figures on contemporary problems? Explicitly acknowledge the anachronism and let it generate energy rather than trying to resolve it. Meadows never encountered LLMs. That gap is productive.
-- What is the right size of council? Two voices produce tension. Three produce triangulation. Four or more risk cacophony. Start with three. <!--Three is great, and more can step in and step out, imagine plato and socrates, many people of different views enter and exit the discussion. Dialectic. Actually, lets prefer the term "dialectic" That holds the right weight, the joint search for truth instead of a simple conversation.-->
 
 ## Cross-Domain Resonance
 
@@ -66,7 +69,16 @@ Where Excellent Adventure produces immersive encounter with a single perspective
 
 **[[Palace Philosophies]]** — The council's voices often become candidates for `person` entries in the palace. A voice well-researched enough to embody is well-researched enough to deposit.
 
-**[[Hilaritas Generator]]** — The Embodied Council consistently produces the conditions for hilaritas: surprise, genuine discovery, positions that behave unexpectedly under pressure. It is a reliable method for generating the friction that good thinking requires.
+**[[Hilaritas Generator]]** — The Dialectic consistently produces the conditions for hilaritas: surprise, genuine discovery, positions that behave unexpectedly under pressure. It is a reliable method for generating the friction that good thinking requires.
 
-## Forward Vector
-- Make an interactive front end for this where a user can move around people in a virtual space, and they have conversations with each other, and we can interject our own questions to groups of famous philosophers and personalities.
+**[[Modes of Collaboration]]** — The Dialectic is one of the named modes. It has a distinct rhythm, power dynamic, and ideal use case that sits alongside the Mentor/Quiz, Excellent Adventure, and Philosophical Dialogue modes.
+
+## Forward Vectors
+
+- Build an interactive front end where figures can be moved around a virtual space, have conversations with each other, and Loudon can interject questions to groups of philosophers and personalities.
+- What is the right name for a solo dialectic — one figure in genuine self-contradiction? Is that a degenerate case or a different mode entirely?
+- Can the Dialectic be used with non-human voices — a signal processing algorithm embodied as a character, a feedback loop given a personality?
+
+---
+
+*"The joint search for truth through productive friction."*

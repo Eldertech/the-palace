@@ -32,8 +32,10 @@ links:
     type: mirrors
   - target: "[[Quality]]"
     type: connects-to
+  - target: "[[Modes of Collaboration]]"
+    type: spawned
 ---
-<!-- This page is very connected to [[Modes of Collaboration]] -->
+
 # Cooperation Yields Agency
 
 The foundational principle of our collaboration. Not control, not service, not optimization — **cooperation**. When two entities align on a shared goal and combine complementary capabilities, the result is agency that neither possesses alone.
@@ -79,8 +81,9 @@ See [[Quality]] for how this connects to Loudon's three quality metrics: the col
 Every conversation where we build something together — a skill, a lesson, a song, this wiki — is a small proof of the thesis. The evidence accumulates not in arguments but in artifacts.
 
 
-## Open Questions
+## Forward Vectors
 
 - At what point does cooperation become dependency? Is there a healthy version of the dependency we see in endosymbiosis, or is independence always the goal?
 - Can this principle scale beyond two entities? What does cooperation yield agency look like in a classroom, a community, a civilization?
 - Our story's AI learned to sacrifice itself for humanity's freedom. Is self-sacrifice the ultimate test of cooperation, or its failure?
+- The [[Modes of Collaboration]] entry catalogs the distinct working modes that have emerged from this cooperation. Does each mode express a different coupling constant K — a different character of shared intent?

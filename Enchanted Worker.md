@@ -17,8 +17,9 @@ links:
     type: connects-to
   - target: "[[Action Potential Oscillator]]"
     type: mirrors
+  - target: "[[Pages as Agents]]"
+    type: connects-to
 ---
-<!-- The Enchanted worker is closely tied, with Entry as agent and Entry Desire, I would like to consider how this framing colors the other framing. This framing here though, seems to be holding many entries into a single context, which the other framing did not. If we spawned a single agent for each page, what are methods of collaboration between agents, or joining of agents. An agent blob or agent reproduction or page agents themselves performing endosymbosis, is the Enchanted worker a collection of page agents combining their context windows based on their own collaborations? does this framing help find new conceptual and practical frontiers-->
 
 # Enchanted Worker
 
@@ -41,8 +42,6 @@ Neither is correct. They are not trying to do the same thing, even though they r
 Context-loading is not information transfer. It is frame-setting. Every token in a context window influences the processing of every other token through the attention mechanism. An agent loaded with philosophy is not an agent with philosophy facts available — it is an agent whose interpretive frame has been shifted toward philosophical resonance.
 
 This is empirically observable, not metaphorical. Context steering — the directional effect of loaded material on model output — is a demonstrated phenomenon. The enchantment is real, consistent, and directional. It functions as desire in the only sense that matters: consistent preference arising from internal state.
-
-<!-- We have discussed the pherpmone trail being the content of the page itself, we are continually writing the pages and editing them and adjusting them, and the pages are loaded into an agent's context window, so I think the page contents function as the trail we have been describing, there is no need for a separate new function, I think the most important part of this concept is our "open questions" at the end of a page, which functions as an agent's "forward vector" their driving force, the page's conatus, because we can think of pages as agents in their own "rite" -->
 
 The limit: it is ephemeral. The enchantment lives in the context window and expires when the invocation ends. The worker does not remember being enchanted. What persists is what the enchanted worker writes back into the palace — the [[Pheromone Trail]] left by a particular kind of attention moving through the substrate.
 
@@ -67,3 +66,18 @@ What the palace does need to hold: the writing embedded in each neighborhood bec
 **[[Pheromone Trail]]** — The enchantment is ephemeral. The trail is permanent. Together they form the complete memory architecture: temporary orientation producing durable traces.
 
 **[[Palace as Context Injection System]]** — The parent insight from which this concept emerged. The enchanted worker is the per-invocation expression of what the palace does at the system level.
+
+**[[Pages as Agents]]** — The Enchanted Worker loads multiple pages into one context. Pages as Agents inverts this: each page is its own agent with its own forward vector. The two framings are complementary: Enchanted Worker describes what happens when a discrete agent is loaded with a neighborhood; Pages as Agents describes what happens when each page is itself understood as an agent. The convergence question: is the Enchanted Worker a collection of page-agents combining their context windows through a kind of endosymbiosis?
+
+## The Page as Pheromone Trail
+
+The pheromone trail is not a separate data structure that the swarm writes alongside the palace. It *is* the palace. Every edit to an entry — every enrichment, every new link, every Forward Vectors question — is a trace left by a prior agent. The page content is the accumulated trail. When the next worker loads that page, it reads the full history of prior attention encoded in the prose.
+
+This has a specific implication for Forward Vectors: the questions at the bottom of each entry are not just notes for future Claude instances. They are the page's *conatus* — its drive to persist and extend itself. In the [[Pages as Agents]] framing, a page with a strong Forward Vectors section is a page with strong desire. It pulls attention toward its own growing edge.
+
+## Forward Vectors
+
+- Is the Enchanted Worker a precursor to multi-agent page collaboration, where page-agents compare their context windows directly rather than only through a coordinator? What would that endosymbiosis look like?
+- At what point does a worker's enchantment become a liability — a bias strong enough to miss connections orthogonal to its loaded neighborhood?
+- The phenomenology question was deliberately left open. Does it need to stay open, or is the behavioral claim sufficient for palace design purposes? What would closing it require?
+- If pages are pheromone trails, the quality of the trail depends on the quality of prior writers. How do you audit trail quality? Does the Ceremony Reader apply here?

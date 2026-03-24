@@ -93,7 +93,7 @@ A new Claude instance can resume a Deposit session by:
 
 1. Reading [[README - The Palace Guide]]
 2. Reading [[Deposit Ceremony]]
-3. Reading [[Harvest Queue]] — find the oldest pending item, or any item marked `in-progress`
+3. Checking with Loudon about what source to deposit next — or browsing [[Deposit Archive]] via script for recent harvest candidates
 4. Checking `source_type` — if `claude_chat`, give Loudon the direct link from `source_ref` rather than attempting to retrieve the source directly
 5. Confirming with Loudon: "Ready to deposit H042 — the Kick Drum Paradox session from January 2026. This is a claude_chat source — follow this link and invoke the ceremony there: [link]"
 

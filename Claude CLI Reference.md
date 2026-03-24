@@ -139,7 +139,7 @@ The system will recognize the ceremony type from your message content and apply 
 
 Loudon wants to learn more fun ways to interact — the CLI is one of many. See [[Modes of Collaboration]] for the fuller picture of how we work together. Other modes include:
 
-- **The Embodied Council** — Competing philosophies as people in dialogue.
+- **[[Dialectic]]** — Competing philosophies as people in genuine dialogue — the joint search for truth.
 - **The Excellent Adventure** — Historical dialogue as learning technique.
 - **Ceremony modes** — Deposit, Harvest, Weave, Walk, Spore Check, Hibernation.
 - **Slow synthesis** — Systems thinking over multiple sessions.

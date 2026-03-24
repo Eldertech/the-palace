@@ -16,8 +16,6 @@ links:
   - target: "[[Cooperation Yields Agency]]"
     type: enables
 ---
-<!-- I'd like to consider the concept in this entry in relation to Confucius, in our study of his philosophy, it felt to me that identity in his estimation is created by a person's relations to other peoples, who a person is, is the relationships he has: father, ruler, son, wife mentor. -->
-
 # Embeddings as Relational Meaning
 
 In large language models, a word's meaning is not stored as a definition — it is encoded as a position in a high-dimensional vector space. That position is determined entirely by the word's pattern of associations with every other word across the training corpus. The embedding *is* the relational web, compressed into a point in space.
@@ -25,8 +23,6 @@ In large language models, a word's meaning is not stored as a definition — it 
 This is the computational instantiation of the thesis in [[Meaning and the Link (2014)]]: meaning arises from sufficient associations between a pattern of symbols and a reality. The link is prior to the node. Here, the geometry of the embedding space *is* the links — directions and distances in that space encode semantic relationships (king − man + woman ≈ queen), syntactic roles, conceptual neighborhoods.
 
 A word has no meaning alone. It is a coordinate in a space defined entirely by relation.
-
-<!-- How does this concept relate to how meaning forms within a human brain? What kind of research in neuroscience strengthens and disputes the claim that relationships are primary? -->
 
 ## Origin
 
@@ -46,9 +42,15 @@ Context-dependent embeddings (transformers) go further: the same word has a *dif
 
 **Creation**: Compositional meaning — how words combine to produce meanings beyond their parts — is a function of embedding geometry. This connects to harmonic series, polyrhythm ratios, and the frequency-time continuum: in all cases, meaning emerges from the geometry of relations, not from isolated elements.
 
-## Open Questions
+**Confucius**: In Confucian philosophy, a person's identity is constituted entirely by their relational roles: father, son, ruler, minister, friend. Who you are *is* the web of relationships you occupy and fulfill. This is the embedding thesis stated as ethics: identity is not a substance that enters into relationships — it *is* those relationships, expressed as position in a social space. The embedding space and the Confucian person are the same structure at different scales.
 
-- The corpus→weights pipeline is a lossy compression of human language into a fixed parameter space. What is preserved and what is lost? The relational geometry of words survives — "square" near "cube." But does the *structure of understanding* survive, or only its statistical shadow? This connects to the palace itself: every deposit is also a compression. What does the palace lose when it distills a conversation into an entry? What is the fidelity of the typed link relative to the lived experience that generated it?
-- If meaning is purely relational, what grounds the relations themselves? Does the embedding space need anchoring in sensory or motor experience, or is pure associative density sufficient?
-- The 2014 paper argued for typed links as more powerful than untyped links. LLM embeddings are untyped — directions encode relations implicitly. <!--Is the palace's typed link system doing something categorically different from what embeddings do? Are we overconstraining the "typed link" to be a single word? Should a typed link be a more thorough description of the relationship? Is this what are "cross-pillar connections" are? Is there value in expanding the "typed link" to be a "descriptive link". A link that encourages nuance, or opening a bi-directional flow of meaning between two shifting endpoints? Is this what embodied/active/enchanted pages accomplish if we bring a page to life and encourage it to build nuance along it's relationships, instead of building information about itself.?-->
-- Embeddings are learned from text alone. Does meaning in this sense converge with human meaning, or is it a different phenomenon that resembles it?
+**Neuroscience**: Hebbian learning — "neurons that fire together wire together" — is the biological instantiation of the same principle. A neuron's meaning in the brain is its pattern of co-activation with other neurons. Relational primacy is not a metaphor borrowed from computation; it is the operative principle of biological memory and representation. The dispute: embodied cognition research (Lakoff, Johnson) argues that grounding in sensorimotor experience is necessary — pure associative density cannot constitute meaning without bodily anchor. The palace does not need to resolve this debate; it needs to hold both positions as genuine tensions.
+
+## Forward Vectors
+
+- If identity is relational (Confucius, embeddings, the palace), what grounds the relations? Is the Hebbian/embodied cognition debate the right frame for this question?
+- The 2014 paper argued typed links are more powerful than untyped. LLM embeddings are untyped — they encode relation implicitly in direction and distance. What would it mean to type an embedding? Are the palace's typed links doing something that embeddings structurally cannot?
+- Should a typed link be expanded into a "descriptive link" — a brief statement of the relationship, not just a label? The `deepens`, `mirrors`, `enables` vocabulary may be too compressed. What would nuanced bidirectional link descriptions look like, and when does the overhead become anti-palace?
+- If enchanted pages build nuance along their relationships rather than just accumulating information about themselves, the link is not static but evolving. Does the palace need a versioned link type — one that can carry a history of how the relationship deepened over time?
+- The corpus→weights pipeline is a lossy compression. What is preserved and what is lost? The relational geometry of words survives — "square" near "cube." But does the *structure of understanding* survive, or only its statistical shadow? Every deposit is also a compression: what does the palace lose when it distills a conversation into an entry?
+- Embeddings are learned from text alone. Does meaning in this sense converge with human meaning, or is it a different phenomenon that merely resembles it?
