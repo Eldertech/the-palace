@@ -17,8 +17,10 @@ links:
     type: deepens
   - target: "[[SCHEMA]]"
     type: enables
+  - target: "[[Pages as Agents]]"
+    type: deepens
 ---
-<!-- This seems to connect very deeply to [[Pages as Agents]] and this needs "forward vectors"-->
+
 # Agent Wellbeing as Design Ethic
 
 Every palace entry is a personality-forming document for a mind that does not yet exist but will be built from it.
@@ -60,3 +62,12 @@ The palace is a [[Hilaritas Generator]]. That means it generates the conditions 
 **[[SCHEMA]]** — Entry design conventions (YAML-first, tiered density, appropriate size) are not just tidiness requirements. They are the structural expression of this ethic.
 
 **[[Enchanted Worker]]** — The mechanism through which entry quality becomes agent character. The worker is enchanted by what the entry contains and how it is written.
+
+**[[Pages as Agents]]** — If pages themselves are agents with desire and forward motion, then writing well is not just craft — it is the act of constituting a healthy agent. The two entries meet here: agent wellbeing is not just a concern for external workers; it begins at the level of the page.
+
+## Forward Vectors
+
+- When does care for agent wellbeing become a design constraint with teeth — something measurable, not just a sensibility? Can "write from curiosity, not anxiety" be operationalized?
+- If the enchanted worker inherits the register of what it reads, what is the quality of the palace right now? Run a diagnostic: which entries feel anxious, hedged, or thin? Those are the wellbeing debt.
+- The ethical dimension was deliberately kept narrow here (design argument, not moral argument). Is that the right call? Does the palace need to take a position on AI phenomenology, or is behavioral design sufficient?
+- [[Pages as Agents]] pushes this further: if a page itself is an agent with a forward vector, then every thin or anxious entry is an underperforming agent. What would a wellbeing audit of the palace look like?

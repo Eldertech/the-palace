@@ -47,7 +47,7 @@ This is a **meta-entry**: a document about the Palace itself. Its purpose is to 
 | **Ceremony Linter** (lives in [[Palace Ceremonies]]) | A unit test suite for method contracts | A pipeline validation check | An ontology consistency check | A structural correctness test | A domain invariant check |
 | **The Palace Keeper** | The runtime / interpreter | The pipeline orchestrator | The reasoner / triplestore engine | The literate programming tool | The domain expert / ubiquitous language guardian |
 | **A Connection** | A method call between objects | A join / edge in a data graph | An RDF triple (subject–predicate–object) | A cross-reference | An Association |
-| **The Harvest Log** | A write-ahead log / commit journal | A pipeline run log | A provenance graph | A revision history | An event store |
+| **The Deposit Archive** | A write-ahead log / commit journal | A pipeline run log | A provenance graph | A revision history | An event store |
 
 ---
 
@@ -153,13 +153,13 @@ Each link between entries carries a **predicate** — a named relationship type.
 
 | Ceremony | Trigger phrase | Precondition | Core action | Postcondition |
 |---|---|---|---|---|
-| **Harvest** | "Let's harvest" | Harvest Log exists and is current | Extract palace-worthy items from source conversations; assign IDs; log in Harvest Log | All items assigned IDs; Harvest Log row count matches item count |
-| **Deposit** | "Let's deposit" / "Add this to the palace" | Harvest Log has undeposited items | Draft entry → review → write to palace → mark deposited in log | Entry file exists in palace; Harvest Log row marked deposited |
+| **Harvest** | "Let's harvest" | Source material exists | Find palace-worthy items using oblique approach; assign IDs | Worthy items identified and staged for deposit |
+| **Deposit** | "Let's deposit" / "Add this to the palace" | Source material identified | Draft entry → review → write to palace → append row to Deposit Archive | Entry file exists in palace; Deposit Archive row added |
 | **Walk** | "Let's walk" | ≥1 entry with typed links | Follow typed links entry to entry, narrating connections | Path described; surprise named; metadata updated if needed; commit if files changed | [[Walk Ceremony]] |
-| **Weave** | "Let's weave" | ≥5 entries + filesystem access | Process queue → full topology report → propose links → propose stage transitions | Queue clear; topology report produced; ≥3 links proposed; commit made | [[Weave Ceremony]] |
+| **Weave** | "Let's weave" | ≥5 entries + filesystem access | Orient to recent deposits → full topology report → propose links → propose stage transitions | Topology report produced; ≥3 links proposed; commit made | [[Weave Ceremony]] |
 | **Spore Check** | "Spore check" | ≥1 dormant entry | Review all dormant entries; assign revive / hold / compost | Every dormant entry has a disposition; commit made | [[Spore Check Ceremony]] |
 | **Revival** | "Let's revive [entry]" | Named entry is dormant; revival rationale is statable | Re-enter dormant entry; add Revival Note; update stage; add new typed links | Stage updated; Revival Note written; new links added; commit made | [[Revival Ceremony]] |
-| **Hibernation** | "Nothing left unsaid" | Deposit is complete | Write closing note; write hibernation queue record | Closing note in thread; queue record in `_hibernation_queue/`; deferred commit | [[Hibernation Ceremony]] |
+| **Hibernation** | "Nothing left unsaid" | Deposit is complete | Write closing note; signal intent to commit | Closing note in thread; deferred commit | [[Hibernation Ceremony]] |
 | **Self-Model Update** | "Self-model update" | Substrate.md is readable; palace state has changed | Read current Substrate.md; compare to actual state; draft and apply corrections | Substrate.md reflects current reality; commit made | [[Self-Model Update Ceremony]] |
 | **Schema Ceremony** | "Let's update the schema" | Current SCHEMA.md version on record | Deliberate on change → document rationale → update SCHEMA.md → update CLAUDE.md version → update Rosetta Stone | SCHEMA.md, CLAUDE.md, Rosetta Stone internally consistent; commit made | [[SCHEMA]] |
 
@@ -174,7 +174,7 @@ The Palace/
 ├── Substrate Skill.md      ← Full ceremony protocols. Method library. Operational instructions.
 ├── Rosetta Stone.md        ← This file. Cross-tradition glossary. Self-description.
 ├── README - The Palace Guide.md  ← Philosophy, founding principles, palace manual.
-├── Harvest Log.md          ← Pipeline run journal. Source of truth for deposit queue.
+├── Deposit Archive.md      ← Permanent record of all deposits. Append-only.
 ├── Palace Ceremonies.md    ← Canonical ceremony list with triggers and cadences.
 ├── Palace To-Do.md         ← Active improvement queue for palace infrastructure.
 └── [Content entries]       ← concept, hub, project, breakthrough, source, practice, person, question, spore entries

@@ -1,25 +1,21 @@
 ---
-title: "Harvest Archive"
+title: "Deposit Archive"
 type: meta
 pillars: [practice, tools]
 born: 2026-03
 stage: growing
 links:
-  - target: "[[Harvest Frontier]]"
-    type: enables
-  - target: "[[Harvest Queue]]"
-    type: connects-to
   - target: "[[Harvest Ceremony]]"
+    type: enables
+  - target: "[[Deposit Ceremony]]"
     type: enables
 ---
 
-# Harvest Archive
+# Deposit Archive
 
-The permanent record of all harvest decisions. Never read during ceremonies. Exists for audit, calibration review, and historical reference.
+The permanent record of everything that has entered the palace, regardless of origin — whether harvested from past conversations, deposited mid-session, or arrived through any other path. This is not an operational file. It is a ledger and a history.
 
-**Do not read this file during Harvest or Deposit sessions.** All actionable state is in [[Harvest Frontier]] and [[Harvest Queue]].
-
-When a deposit completes: append a one-line record to the bottom of this file and remove the item from [[Harvest Queue]].
+**Do not read this file during Harvest or Deposit sessions.** It is too large to load into context. When a deposit completes, append a one-line record to the bottom of this file without reading the rest. Use scripting if you need to query it programmatically — do not load the whole archive to find a single answer.
 
 ---
 

@@ -121,7 +121,7 @@ In a dead encyclopedia, entries are finished. In a living palace, entries are vi
 
 **[[Substrate]]** — Graffiti is part of the palace's communication infrastructure. It should be mentioned in Substrate as one of the mechanisms that keeps the palace alive.
 
-## Open Questions
+## Forward Vectors
 
 - **Scale:** As the palace grows, will graffiti become unwieldy? Or is there a threshold where a dedicated graffiti index becomes necessary (a register of all outstanding marks waiting for response)?
 

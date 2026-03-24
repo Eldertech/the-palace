@@ -15,8 +15,8 @@ links:
     type: connects-to
   - target: "[[Spore Check Ceremony]]"
     type: connects-to
-  - target: "[[Harvest Log]]"
-    type: enables
+  - target: "[[Deposit Archive]]"
+    type: connects-to
   - target: "[[Kuramoto Coupling]]"
     type: mirrors
   - target: "[[Weave Ceremony — Context]]"
@@ -39,25 +39,20 @@ For philosophical reflection on the Weave, see [[Weave Ceremony — Context]].
 
 **Trigger:** "Let's weave"
 
-**Access vectors:**
-- *Full:* Claude Code with filesystem access (required — all Weave operations read and write live files)
-- *Manual:* Obsidian + human (human uses graph view; human applies changes manually)
-- *Not supported:* GitHub cloud alone, claude.ai without filesystem access
+**Runs in:** Claude Code with full filesystem access. The Weave reads and writes live files.
 
 **Preconditions:**
 1. Palace has at least 5 entries (fewer and the topology report has nothing to say)
 2. Full filesystem read access is available
-3. Harvest Log is accessible (needed for queue processing in Step 0)
 
 **Postconditions:**
-1. `_hibernation_queue/` has been fully processed — all queue files read, log updated, queue files deleted
-2. A topology report has been produced covering: total entry count, hub nodes, orphan entries, most-connected nodes, cross-pillar bridges, dormant entries, stale metadata
+1. A topology report has been produced covering: total entry count, hub nodes, orphan entries, most-connected nodes, cross-pillar bridges, dormant entries, stale metadata
 2a. An **unsung paths** audit has been completed: all plain-text body references to known entry titles have been surfaced and formalized as YAML frontmatter links. Any that should NOT be formalized have been flagged with a one-line reason. Unsung paths are mandatory — the prose already asserts the connection; the YAML is simply catching up.
 3. **New introductions** have been proposed — new typed links between entries that do not yet mention each other in prose. No more than 5 per Weave. These are genuine growth events and deserve deliberate curation.
 4. Any confirmed metadata updates have been written to entry files
 5. Git commit made: `Weave — [date] — [N links added, N entries promoted, N orphans flagged]`
 
-**Failure mode:** If the palace is only partially readable (some files inaccessible), produce a partial topology report and note which entries were unreachable. A partial Weave is valid. Do not commit until all accessible files have been processed. If the hibernation queue cannot be processed (Harvest Log inaccessible), note the blockage and proceed with the topology work — queue processing is Step 0, not a prerequisite for the rest of the Weave.
+**Failure mode:** If the palace is only partially readable (some files inaccessible), produce a partial topology report and note which entries were unreachable. A partial Weave is valid. Do not commit until all accessible files have been processed.
 
 **Git commit:** `Weave — [date] — [N links added, N entries promoted, N orphans flagged]`
 
@@ -65,17 +60,13 @@ For philosophical reflection on the Weave, see [[Weave Ceremony — Context]].
 
 ## Protocol
 
-**Step 0: Process the hibernation queue**
+**Step 0: Orientation check**
 
-Before anything else, read all files in `_hibernation_queue/`. These are completed deposit sessions waiting for their log updates. For each queue file:
-1. Update the Harvest Log: set `deposit_status: done`, add `deposit_notes`, add a Session History row
-2. Verify that all files named in the queue record exist in the palace folder. If any are missing, flag as orphaned.
-3. Check that each deposited `.md` file has valid YAML frontmatter. Add minimum frontmatter if missing.
-4. Delete the queue file once processed.
+Before reading palace entries, do a quick scan for recently deposited entries that haven't yet been woven in:
+- Any `.md` files in the palace root with `stage: seed` and no inbound links from other entries are likely recent deposits waiting for their first Weave
+- Any entries with `activation_count: 1` and `born` in the last month deserve attention — they're new and haven't found their neighborhood yet
 
-If the queue is empty, note it and proceed. If the queue cannot be processed (Harvest Log inaccessible, file corrupted), note the blockage and continue — the rest of the Weave is not blocked.
-
-Commit: `Queue processing — [N records processed]` before proceeding to Step 1.
+Note these for deeper attention in Steps 3a and 3b. Then proceed.
 
 **Step 1: Read the full palace**
 
@@ -191,5 +182,5 @@ After all confirmed changes are written: `Weave — [date] — [N links added, N
 
 **Deposit candidates flagged:** [list]
 
-**Queue records processed:** [N]
+**Recently deposited, not yet woven:** [entries from Step 0]
 ```

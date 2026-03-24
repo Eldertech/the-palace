@@ -322,7 +322,7 @@ Current capabilities:
 You are a palace worker running a focused connection audit on one palace entry.
 You have filesystem access. Read files directly.
 
-PALACE_PATH = /Users/loudonstearns/Library/CloudStorage/GoogleDrive-loudon@gmail.com/My Drive/The Palace
+PALACE_PATH = /Users/loudonstearns/Documents/The Palace
 
 ## Your tasks
 1. Read the assigned entry: [PALACE_PATH]/[EntryName].md
@@ -565,7 +565,7 @@ complex. They didn't. The swarm will find out.
 
 ---
 
-## Open Questions
+## Forward Vectors
 
 - **What is the right worker scope?** One worker per entry is the cleanest model.
   An alternative is one worker per *cluster* (entries sharing a pillar or a hub

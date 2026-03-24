@@ -1,17 +1,20 @@
-<!-- Add proper YAML frontmater -->
+---
+title: "Oblique Harvest"
+type: practice
+pillars: [practice, tools, philosophy]
+born: 2026-03
+stage: composting
+links:
+  - target: "[[Harvest Ceremony]]"
+    type: deepens
+  - target: "[[Oblique Portrait Method]]"
+    type: emerged-from
+  - target: "[[Deposit Ceremony]]"
+    type: enables
+---
 
-Use [[Oblique Portrait Method]] interaction techniques applied to the [[Harvest Archive]] to harvest ideas from an archive of conversations and deposit them in the palace, ask me questions to help you incorporate them into our palace. We now have the [[full claude conversation backup]] .
+# Oblique Harvest
 
-Make any idea that we even slightly develop in past conversations into a page in the palace and link them as much as possible. Make a game where I click on buttons to guide you, I help prioritize and direct. Where we we made an artifact, it goes into the palace. If you are unsure, ask me. 
+This entry is composting. Its core insight — that harvest works better as an oblique interactive game than as a strict item-by-item audit — has been absorbed into [[Harvest Ceremony — Context]] as the preferred approach for future harvests.
 
-Asking Loudon quick questions is a game that helps to integrate, align, develop, heal, and focus the palace. A wide variety of mouse-based interactions(buttons, drag drop, faders, drawing, rotating, rearranging, connecting, etc) but also places to type in thoughts for nuance.
-
-Use what is in the palace already as a guide for what to add from the past conversations.
-
-## Forward Vector
-
-Make fun systems to find the best ideas from our past discussions and turn them into beautiful, well-connected, palace entries. 
-
-
-
-
+The Oblique Harvest was tested in a full Cowork session (2026-03-23) and proved highly productive: 640 cards reviewed across three rounds, 36 deposit seeds identified in the first round alone, interactive button-click interface allowing fast prioritization and directing. The session's methods and lessons live in [[Harvest Ceremony — Context]].

@@ -4,66 +4,97 @@ type: practice
 pillars: [practice, tools]
 born: 2026-03
 last_activated: 2026-03
-activation_count: 1
-stage: sprout
+activation_count: 2
+stage: growing
 links:
   - target: "[[Harvest Ceremony]]"
     type: emerged-from
   - target: "[[Deposit Ceremony — Context]]"
     type: connects-to
-  - target: "[[Harvest Frontier]]"
+  - target: "[[Deposit Archive]]"
     type: connects-to
-  - target: "[[Harvest Queue]]"
-    type: connects-to
-  - target: "[[Harvest Archive]]"
-    type: connects-to
+  - target: "[[Oblique Portrait Method]]"
+    type: deepens
 ---
 
 # Harvest Ceremony — Context
 
-The rationale, design history, and architectural decisions behind the [[Harvest Ceremony]]. Read during Weaves, Schema Ceremonies, and when revisiting the ceremony's design — not during routine harvest sessions.
+The rationale, design history, and best practices behind the [[Harvest Ceremony]]. Read during Weaves, Schema Ceremonies, and when designing a new harvest — not during routine sessions.
 
 ---
 
-## The DeCompexification (2026-03)
+## The Oblique Harvest — Best Practice (2026-03)
 
-This workflow became way to complex and was breaking. We needed a conceptual shift, so I just broke it further, the frontier and queue system was brittle and didn't respond well to many different types of access. We were building complex systems to avoid loading up a context window by creating smaller documents. I want to switch this up to relying on claude's scripting abilities instead. Instead of creating more log files, claude should create scripts to pull the information it needs from the logs and Queues. 
+The most effective harvest Loudon and Claude have run used the [[Oblique Portrait Method]] applied to a large archive of conversations. Rather than reading each conversation carefully in sequence, the approach was:
 
-## The Log Split (2026-03)
+**Present candidates as a fast game.** A card interface with quick signals — "burns bright," "deposit seed," "skip" — let Loudon respond from intuition rather than analysis. Interactive buttons replaced careful deliberation. The pace was fast. The music was on. The session felt like sorting through a record collection, not auditing a database.
 
-The original Harvest Ceremony used a single file — `Harvest Log.md` — as the persistent state for all harvest activity: frontier tracking, triage decisions, deposit queue, session history, and prediction alignment. This worked well early on but created a structural problem as the palace matured: every ceremony that touched the log had to load the entire file, and the file grew with every session.
+**Results from three rounds (2026-03-23 to 2026-03-24):**
+- Round 1 (Cowork session): 250 cards, 94 conversations, 36 deposit seeds, 59 "burns bright," 12+ new palace entries, 5+ enrichments
+- Round 2: 300 cards, 86 conversations, 23 deposit seeds, 68 "burns bright," 13 new entries, 7 enrichments
+- Round 3 (final): 90 cards, 35 conversations, 5 deposit seeds, 4 new entries
+- Total: 640 cards reviewed. All past Claude conversations exhausted.
 
-The problem became acute when the deposit workflow clarified. Deposits were happening primarily in original conversation threads — a Claude instance in that thread needs to do slow, deliberate work with a context budget reserved for the conversation itself, not palace plumbing. And the coordinator role (browsing pending items to propose candidates and hand over links) needed only a small, fast-access list, not the full decision history.
+**Why oblique works better than direct:** A direct item-by-item audit asks Loudon to hold the whole palace in mind while evaluating each conversation, which is cognitively expensive and produces fatigue. The oblique approach asks Loudon to signal a felt sense — does this burn? — which is fast and accurate. Precision happens in the [[Deposit Ceremony]], not the harvest. The harvest's job is sorting, not analyzing.
 
-**The redesign split the log into three files with non-overlapping jobs:**
+**For future harvests:** Match the interface to the dataset. A new body of material (Google Drive documents, project archives, a new batch of conversations) may call for a different oblique game than what worked for the 2026-03 conversation archive. The principle holds; the specific mechanics should adapt.
 
-- **[[Harvest Frontier]]** — live state only. Where the harvest left off, session history, prediction alignment log. Read at the start of every harvest session. Small and stable.
-- **[[Harvest Queue]]** — pending deposits only. The actionable list. Read by the deposit coordinator. Shrinks as deposits complete.
-- **[[Harvest Archive]]** — the permanent record of all decisions ever made (skip, compost, done). Never read during ceremony. Grows indefinitely; consulted only for audit or calibration review.
+---
 
-This separation means the deposit coordinator reads one small file, the deposit thread reads nothing from the palace unless specifically asked, and the harvest session reads only the frontier state it needs to resume. No ceremony loads more than it requires.
+## The Simplification (2026-03)
+
+The harvest workflow grew too complex and started breaking under its own weight. An elaborate frontier/queue/archive split tried to minimize context window usage by maintaining many small specialized files, but this created brittleness: every access vector had slightly different capabilities, every ceremony had to know which files it could and couldn't touch.
+
+The redesign simplified by trusting Claude's scripting abilities instead. Rather than pre-structuring all information into perfectly-sized files, the approach is now: use scripts to extract exactly what you need from large files, and don't build infrastructure to solve problems that scripting can handle more flexibly.
+
+**What collapsed:** The Harvest Frontier (live state tracker), the Harvest Queue (pending deposits list), and the Harvest Archive (decision log) were three files doing the work of one. The Frontier and Queue are now composting. The Archive was renamed the [[Deposit Archive]] — a more accurate description of what it actually is.
+
+**What remains:** The [[Deposit Archive]] as permanent record. Everything else is session-specific and can be created fresh each time.
+
+---
+
+## The Log Split (2026-03, now superseded)
+
+Before the simplification, the original single `Harvest Log.md` was split into three files when it grew too large to load in full. This solved the context window problem but created coordination overhead. Documented here for historical reference.
+
+The split structure was:
+- Frontier — live state, where we left off
+- Queue — pending deposits
+- Archive — completed decisions
+
+This worked for a time, then the overhead of coordinating three files across different access vectors became its own problem. The simplification resolved it.
+
+---
 
 ## The Hibernation Absorption (2026-03)
 
-The Hibernation Ceremony existed to solve one problem: the Harvest Log was too large to safely edit from inside a past conversation thread. The ceremony invented `_hibernation_queue/` as an intermediate step — write a small structured record in the deposit thread, process it later during a Weave or maintenance session.
+The Hibernation Ceremony existed to solve one problem: deposit threads running in past conversation contexts couldn't safely write to palace files. It invented `_hibernation_queue/` as an intermediate step. Once the queue system simplified, the hibernation queue became unnecessary and was folded into the [[Deposit Ceremony]] closing steps. The closing note ritual — writing a resting-place marker into the conversation thread — was retained as genuinely valuable.
 
-Once the log split made [[Harvest Queue]] small and directly writable, the entire reason for the queue and the Hibernation Ceremony disappeared. The deposit thread can now write the queue update directly. The three-act Hibernation structure (Confirm, Closing Note, Queue Record) was absorbed into the [[Deposit Ceremony]] closing steps. The closing note ritual — writing a resting-place marker into the conversation thread — was retained as genuinely valuable independent of the infrastructure problem it originally served.
+---
 
-## The Memory Flag Fallback
+## Calibration Notes from 2026-03 Harvest
 
-A new failure mode emerged from the redesign: deposits occasionally begin in claude.ai threads without filesystem access — either by accident or because the conversation is happening in a context that doesn't support file writes. For these cases, the deposit thread writes a memory flag: `PALACE TASK PENDING: [ID] — [topic] — deposit complete but queue not updated. Process in Claude Code or Cowork.` Any subsequent session sees the flag and completes the queue update. This keeps the ceremony's closing obligation from depending on infrastructure that may not always be present.
+These notes emerged from the initial full harvest and are relevant for calibrating future ones:
 
-## Design Principles for Future Changes
+- Narrative-as-pedagogy content: flag as partial, not skip — even if the pedagogical frame is the main value rather than the content
+- Aesthetic craft output without a new framework: partial, not worthy
+- Capability exploration ("can Claude do X?"): skip unless something unexpected happened
+- Multi-topic chats that drift between domains: partial — deposit the best thread, flag the rest
+- Auto-triage reached 95–100% alignment after batch 3, meaning Claude's intuition calibrated well with Loudon's after ~60 items
 
-When evaluating future changes to the harvest/deposit architecture, these principles guided the 2026-03 redesign and should guide future ones:
+---
 
-- **Each file should have one job.** If a file is being read for two different purposes by two different ceremonies, consider splitting it.
-- **Ceremony context budgets are real.** A deposit thread running in a rich conversation context cannot load large palace files without crowding out the conversation itself. Architectural choices that minimize what each ceremony must read are worth pursuing.
-- **Workarounds name real problems.** The hibernation queue was a workaround. When a workaround accretes its own ceremony, that is a signal the underlying problem should be solved rather than managed.
-- **The coordinator and the worker have different needs.** The role that browses and proposes (coordinator) needs fast access to a small actionable list. The role that does the deep work (deposit thread) needs minimal palace context. Conflating these needs into one file creates friction for both.
+## Design Principles
 
-## Open Questions
+When evaluating future changes to the harvest/deposit architecture:
 
-- As the Harvest Queue empties over time, will it need a "someday/maybe" tier for items that are worthy but not yet ready to deposit (e.g. waiting for a related entry to be written first)?
-- Should the Harvest Frontier track which Claude Projects have been harvested and when, as a parallel frontier for project-scoped material?
-- At what point does the Harvest Archive warrant its own internal organization — by year, by pillar, by source type?
+- **Prefer scripting over structure.** New log files add coordination cost. Scripts that extract what you need from existing files add capability without overhead.
+- **Ceremony context budgets are real.** A deposit thread in a rich conversation cannot load large palace files without crowding out the conversation itself.
+- **Workarounds name real problems.** When a workaround accretes its own ceremony, that is a signal the underlying problem should be solved rather than managed.
+- **Oblique before direct.** A fast game surfaces more genuine signal than careful sequential review. The deposit is where depth happens; the harvest is where sorting happens.
+
+## Forward Vectors
+
+- When the next harvest begins, what dataset is it? Google Drive? A new batch of conversations? Project archives? The answer shapes the oblique game.
+- Should the [[Deposit Archive]] eventually have internal organization — by year, by pillar, by source type? Only worth solving when querying it manually becomes genuinely hard.
+- Is there a harvest that works on the *palace itself* — finding entries that are underlinked, understaged, or contain unrealized connections? That would be a kind of internal harvest, distinct from the external archive harvest.
