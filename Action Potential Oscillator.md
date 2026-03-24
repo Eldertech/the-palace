@@ -27,6 +27,10 @@ links:
     type: connects-to
   - target: "[[Biomechanical Synthesis]]"
     type: connects-to
+  - target: "[[State Machine]]"
+    type: connects-to
+  - target: "[[Progressive Staging]]"
+    type: emerged-from
 ---
 
 <!-- CLAUDE → LOUDON: You mentioned porting to the Eventide H90. This wasn't addressed in the March 2026 session — flagging for a future conversation. The Gen~ → RNBO path may be relevant here if H90 accepts compiled RNBO output, or it may require a separate export strategy. -->
@@ -56,6 +60,17 @@ The Gen~ development progresses through the four stages sequentially, each produ
 Faust remains a candidate for the production population-dynamics instrument (NeuroPulse), where `par(i, N, neuron(i))` provides first-class parallelism for large neuron populations. The Gen~ path and the Faust path may converge or remain complementary — the single-neuron oscillator in Gen~ feeds the educational series; the Faust population engine feeds the performance instrument.
 
 A complete Gen~ development plan with per-sample pseudocode, input guards, testing criteria, and citation verification lives at `Artifacts/Action Potential Oscillator/neural_oscillator_dev_plan.md`.
+
+## Implementation Status (March 2026)
+
+Stages 1–4 are implemented and playable. Stages 1–3 were built in Gen~ modules (visual dataflow); Stage 4 moved to Gen~ codebox as a deliberate pedagogical transition — the 4-state [[State Machine]] exceeded the visual paradigm's complexity threshold. The complete Stage 4 codebox code and educational interface text (intro paragraph, 4 phase descriptions, 8 parameter descriptions with biological ranges) are archived at `Artifacts/Action Potential Oscillator/`.
+
+Key implementation decisions documented during the build:
+- **Frequency compensation**: spike and refractory durations are subtracted from the target period before computing drive current, so the `freq` input behaves as true pitch control regardless of spike_peak or refractory_ms settings.
+- **V_start_actual**: a History variable captures the exact voltage at each cycle boundary rather than predicting it analytically — simpler, more accurate, and applicable across both Stage 3 and Stage 4.
+- **Latch pattern**: at the spike fall → next phase transition, voltage is latched (`V = spike_v` or `V` carries through) rather than hard-reset to 0, eliminating a waveform discontinuity at the cycle boundary.
+
+The staging method itself — each stage complete, playable, and educational before the next begins — is documented in [[Progressive Staging]].
 
 ## The Artifact
 
