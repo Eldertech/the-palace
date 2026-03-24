@@ -55,7 +55,8 @@ Items move off this list when they become entries, get completed, or get compost
 
 ## Structural Improvements
 
-- [ ] **Build the Swarm Weave** ⭐ — Replace the single-agent [[Weave Ceremony]] with a colony architecture: parallel worker sub-agents (one per entry, scoped context) + a coordinator that synthesizes and de-duplicates. Full spec and learning path in [[Swarm Weave]]. *Single-Doc Worker (one entry, on demand) can be built and used immediately without waiting for the full swarm.* ⭐ *HIGH PRIORITY for Single-Doc Worker mode*
+- [ ] **Build the Swarm Weave** ⭐ — Replace the single-agent [[Weave Ceremony]] with a colony architecture: parallel worker sub-agents (one per entry, scoped context) + a coordinator that synthesizes and de-duplicates. Full spec and learning path in [[Swarm Weave]]. *Single-Doc Worker (one entry, on demand) can be built and used immediately without waiting for the full swarm.* ⭐ *HIGH PRIORITY for Single-Doc Worker mode* Swarm weave connects very intimately with [[Agent Wellbeing as Design Ethic]] and [[Pages as Agents]] and [[Enchanted Worker]].
+- [ ] Tiered loading and [[The Jewel]] must be adopted across the palace, but most importantly in the claude.md file. 
 
 - [ ] **Deposit Ceremony / Plant Ceremony** — "Deposit" is accurate but banking-flavored. "Plant" fits the organism frame. These may be synonyms rather than alternatives — both names live comfortably in the palace. Rename when it feels obviously right; until then, both are valid.
 
