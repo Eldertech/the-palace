@@ -1,7 +1,10 @@
 ---
-title: "Excellent Adventure"
+title: Excellent Adventure
 type: breakthrough
-pillars: [practice, philosophy, tools]
+pillars:
+  - practice
+  - philosophy
+  - tools
 born: 2024-10
 last_activated: 2026-03
 activation_count: 2
@@ -11,11 +14,12 @@ energy: high
 hook_quality: 9
 beauty: 8
 who_leads: loudon
-keywords: [vicksburg]
+keywords:
+  - vicksburg
 links:
   - target: "[[Hilaritas Generator]]"
     type: deepens
-  - target: "[[Four Pillars]]"
+  - target: "[[FOUR PILLARS]]"
     type: connects-to
   - target: "[[Cooperation Yields Agency]]"
     type: connects-to

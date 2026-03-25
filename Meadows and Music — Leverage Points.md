@@ -1,14 +1,18 @@
 ---
-title: "Meadows and Music — Leverage Points"
+title: Meadows and Music — Leverage Points
 type: source
-pillars: [creation, tools, philosophy, practice]
+pillars:
+  - creation
+  - tools
+  - philosophy
+  - practice
 born: 2026-01
 last_activated: 2026-03
 activation_count: 1
 stage: sprout
 archive: "Ten Leverage Points: A Progressive Exploration (produced in PP05 conversation)"
 links:
-  - target: "[[Four Pillars]]"
+  - target: "[[FOUR PILLARS]]"
     type: connects-to
   - target: "[[Hilaritas Generator]]"
     type: connects-to

@@ -1,9 +1,12 @@
 ---
-title: "SCHEMA"
+title: SCHEMA
 type: meta
-pillars: [tools, practice, philosophy]
+pillars:
+  - tools
+  - practice
+  - philosophy
 born: 2026-03
-version: 1.0
+version: 1
 stage: foundational
 status: canonical
 links:
@@ -11,12 +14,12 @@ links:
     type: enables
   - target: "[[README - The Palace Guide]]"
     type: deepens
-  - target: "[[Rosetta Stone]]"
+  - target: "[[ROSETTA]]"
     type: mirrors
   - target: "[[Substrate Skill]]"
     type: enables
 ---
-# SCHEMA — The Palace Type System
+	# SCHEMA — The Palace Type System
 
 This is the authoritative TBox (type system) for the Palace. It defines what can exist here and how things can be related. Any human or AI operator must read this before creating new entries, proposing new link types, or modifying ceremony structure.
 
@@ -198,7 +201,7 @@ When any of the following change, a Schema Ceremony is required:
 2. Review against existing entries: does this break or orphan anything?
 3. Update SCHEMA.md
 4. Update CLAUDE.md version field (increment MAJOR if breaking change, MINOR if additive)
-5. Update the Rosetta Stone if affected
+5. Update ROSETTA if affected
 6. Update Substrate Skill.md if affected
 7. Git commit with message: `Schema Ceremony — [what changed] — v[new version]`
 

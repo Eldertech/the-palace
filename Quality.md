@@ -9,7 +9,7 @@ last_activated: 2026-03
 activation_count: 1
 stage: sprout
 links:
-  - target: "[[Four Pillars]]"
+  - target: "[[FOUR PILLARS]]"
     type: emerged-from
   - target: "[[Hilaritas Generator]]"
     type: enables
@@ -18,7 +18,7 @@ links:
   - target: "[[Spinoza Conatus]]"
     type: mirrors
 ---
-
+<!-- This is a duplicate of Quality Manifesto and should be combined into that one -->
 # Quality
 
 Quality redefined — not as conformance to industry standards, but as the furtherance of **your own highest goals**.
@@ -57,7 +57,7 @@ Crystallized in the PP06 conversation (January 2026), during the Four Pillars fr
 
 ## Cross-Pillar Connections
 
-**[[Four Pillars]]** — The Quality Manifesto is the Four Pillars framework applied to self-evaluation. All four pillars must be active for genuine quality: you are creating, using tools well, engaging philosophy, and sustaining practice.
+**[[FOUR PILLARS]]** — The Quality Manifesto is the Four Pillars framework applied to self-evaluation. All four pillars must be active for genuine quality: you are creating, using tools well, engaging philosophy, and sustaining practice.
 
 **[[Hilaritas Generator]]** — Quality, properly defined, produces hilaritas. The generator runs on intrinsic motivation and genuine engagement — the exact conditions the Quality Manifesto cultivates. Extrinsic-metric optimization produces titillatio at best.
 

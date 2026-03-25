@@ -22,7 +22,7 @@ links:
 ---
 
 # Mixture of Experts
-
+<!-- I'd like to related this to our excellent adventure and dialectic mode of interaction, we have a pool of "experts" we bring to human situations ourselves, by "emobdying" an important person in life and seeing it thorugh their perspective, and putting them in dialogue with each other -->
 An architectural pattern in which a system routes each input to one or more specialist sub-models (experts) via a learned gating mechanism, rather than passing every input through a single monolithic model. Only the relevant experts activate — the rest remain dormant. The gate chooses; the experts execute; the results integrate.
 
 First encountered in June 2024 as a curiosity about LLM internals. Recognized in March 2026 as the dominant paradigm in frontier AI — and as a precise architectural mirror of both the [[Hyperdimensional Prism]] and the palace itself.

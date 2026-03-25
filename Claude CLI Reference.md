@@ -1,7 +1,9 @@
 ---
-title: "Claude CLI Reference"
+title: Claude CLI Reference
 type: meta
-pillars: [tools, practice]
+pillars:
+  - tools
+  - practice
 born: 2026-03
 last_activated: 2026-03
 activation_count: 1
@@ -12,7 +14,7 @@ hook_quality: 5
 beauty: 4
 who_leads: loudon
 links:
-  - target: "[[Substrate]]"
+  - target: "[[SUBSTRATE]]"
     type: enables
   - target: "[[Modes of Collaboration]]"
     type: connects-to

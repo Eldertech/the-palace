@@ -1,7 +1,10 @@
 ---
-title: "Lateral Access"
+title: Lateral Access
 type: concept
-pillars: [philosophy, practice, creation]
+pillars:
+  - philosophy
+  - practice
+  - creation
 born: 2026-03
 stage: growing
 last_activated: 2026-03
@@ -13,7 +16,7 @@ links:
     type: emerged-from
   - target: "[[Embeddings as Relational Meaning]]"
     type: mirrors
-  - target: "[[Four Pillars]]"
+  - target: "[[FOUR PILLARS]]"
     type: connects-to
   - target: "[[Hilaritas Generator]]"
     type: deepens

@@ -19,7 +19,7 @@ links:
     type: mirrors
   - target: "[[Hilaritas Generator]]"
     type: enables
-  - target: "[[Four Pillars]]"
+  - target: "[[FOUR PILLARS]]"
     type: connects-to
   - target: "[[Hyperdimensional Prism]]"
     type: connects-to

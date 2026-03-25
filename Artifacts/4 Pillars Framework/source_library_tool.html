@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>4 Pillars Source Library</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 100%);
+            color: #e0e0e0;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 48px;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            font-weight: 300;
+            margin-bottom: 12px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .subtitle {
+            font-size: 1.1em;
+            color: #999;
+        }
+
+        .filters {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-bottom: 32px;
+        }
+
+        .filter-btn {
+            padding: 10px 20px;
+            border: 1px solid #3d3d3d;
+            background: #2d2d2d;
+            color: #e0e0e0;
+            border-radius: 24px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.9em;
+        }
+
+        .filter-btn:hover {
+            background: #3d3d3d;
+            border-color: #667eea;
+        }
+
+        .filter-btn.active {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-color: #667eea;
+            color: white;
+        }
+
+        .core-five {
+            background: rgba(102, 126, 234, 0.1);
+            border: 2px solid #667eea;
+            border-radius: 16px;
+            padding: 32px;
+            margin-bottom: 48px;
+        }
+
+        .core-five h2 {
+            color: #667eea;
+            margin-bottom: 16px;
+        }
+
+        .core-five-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 16px;
+            margin-top: 24px;
+        }
+
+        .sources-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 24px;
+        }
+
+        .source-card {
+            background: rgba(30, 30, 46, 0.8);
+            border: 1px solid #3d3d3d;
+            border-radius: 12px;
+            padding: 24px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .source-card:hover {
+            border-color: #667eea;
+            transform: translateY(-4px);
+            box-shadow: 0 8px 24px rgba(102, 126, 234, 0.2);
+        }
+
+        .source-card.core {
+            border-color: #667eea;
+            background: rgba(102, 126, 234, 0.05);
+        }
+
+        .source-card.read {
+            opacity: 0.6;
+        }
+
+        .source-name {
+            font-size: 1.3em;
+            font-weight: 600;
+            color: #667eea;
+            margin-bottom: 8px;
+        }
+
+        .source-years {
+            font-size: 0.85em;
+            color: #999;
+            margin-bottom: 12px;
+        }
+
+        .source-domains {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin-bottom: 12px;
+        }
+
+        .domain-tag {
+            padding: 4px 12px;
+            background: rgba(102, 126, 234, 0.2);
+            color: #667eea;
+            border-radius: 12px;
+            font-size: 0.75em;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .source-desc {
+            font-size: 0.9em;
+            color: #ccc;
+            margin-bottom: 16px;
+            line-height: 1.5;
+        }
+
+        .source-texts {
+            margin-top: 16px;
+            padding-top: 16px;
+            border-top: 1px solid #3d3d3d;
+        }
+
+        .text-label {
+            font-size: 0.75em;
+            color: #999;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+        }
+
+        .text-item {
+            font-size: 0.85em;
+            color: #e0e0e0;
+            margin-bottom: 4px;
+        }
+
+        .read-checkbox {
+            margin-top: 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+        }
+
+        .read-checkbox input {
+            cursor: pointer;
+        }
+
+        .reading-plan {
+            background: rgba(30, 30, 46, 0.8);
+            border: 1px solid #3d3d3d;
+            border-radius: 12px;
+            padding: 32px;
+            margin-top: 48px;
+        }
+
+        .reading-plan h2 {
+            color: #667eea;
+            margin-bottom: 24px;
+        }
+
+        .arc-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 16px;
+        }
+
+        .arc-card {
+            background: rgba(102, 126, 234, 0.1);
+            border: 1px solid #667eea;
+            border-radius: 8px;
+            padding: 16px;
+        }
+
+        .arc-title {
+            font-weight: 600;
+            color: #667eea;
+            margin-bottom: 8px;
+        }
+
+        .arc-months {
+            font-size: 0.85em;
+            color: #999;
+            margin-bottom: 12px;
+        }
+
+        .arc-content {
+            font-size: 0.85em;
+            color: #ccc;
+        }
+
+        .category-section {
+            margin-bottom: 48px;
+        }
+
+        .category-title {
+            font-size: 1.8em;
+            color: #667eea;
+            margin-bottom: 8px;
+        }
+
+        .category-desc {
+            font-size: 0.9em;
+            color: #999;
+            margin-bottom: 24px;
+        }
+
+        .stats {
+            display: flex;
+            justify-content: center;
+            gap: 32px;
+            margin: 32px 0;
+            padding: 24px;
+            background: rgba(30, 30, 46, 0.6);
+            border-radius: 12px;
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2.5em;
+            font-weight: 600;
+            color: #667eea;
+        }
+
+        .stat-label {
+            font-size: 0.85em;
+            color: #999;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Source Library</h1>
+            <p class="subtitle">Thinkers, Artists, and Makers Who Teach Pattern Recognition</p>
+        </header>
+
+        <div class="stats" id="stats">
+            <div class="stat">
+                <div class="stat-number" id="totalSources">0</div>
+                <div class="stat-label">Total Sources</div>
+            </div>
+            <div class="stat">
+                <div class="stat-number" id="readSources">0</div>
+                <div class="stat-label">Read</div>
+            </div>
+            <div class="stat">
+                <div class="stat-number" id="coreComplete">0</div>
+                <div class="stat-label">Core Five</div>
+            </div>
+        </div>
+
+        <div class="filters">
+            <button class="filter-btn active" data-filter="all">All Sources</button>
+            <button class="filter-btn" data-filter="core">Core Five</button>
+            <button class="filter-btn" data-filter="systems">Systems Thinkers</button>
+            <button class="filter-btn" data-filter="philosophy">Philosophers</button>
+            <button class="filter-btn" data-filter="music">Musicians</button>
+            <button class="filter-btn" data-filter="artists">Artists & Makers</button>
+        </div>
+
+        <div class="core-five">
+            <h2>Start Here: The Core Five</h2>
+            <p style="color: #999; margin-bottom: 16px;">These five sources form the philosophical foundation of 4 Pillars. Spend 3 months with each (15 months total) for deep fluency.</p>
+            <div class="core-five-grid" id="coreFive"></div>
+        </div>
+
+        <div id="sourcesContainer"></div>
+
+        <div class="reading-plan">
+            <h2>Suggested Year-Long Arc</h2>
+            <p style="color: #999; margin-bottom: 24px;">Deep reading approach: 3 months per source + 1 integration month per quarter</p>
+            <div class="arc-grid">
+                <div class="arc-card">
+                    <div class="arc-title">Q1: Systems Thinking</div>
+                    <div class="arc-months">Jan-Mar + Apr Integration</div>
+                    <div class="arc-content">
+                        <strong>Donella Meadows</strong><br>
+                        Jan: Thinking in Systems<br>
+                        Feb: Leverage Points + Practice<br>
+                        Mar: Application to Work<br>
+                        Apr: Rotate all previous
+                    </div>
+                </div>
+                <div class="arc-card">
+                    <div class="arc-title">Q2: Zen Practice</div>
+                    <div class="arc-months">May-Jul + Aug Integration</div>
+                    <div class="arc-content">
+                        <strong>Shunryu Suzuki</strong><br>
+                        May: Zen Mind, Beginner's Mind<br>
+                        Jun: Daily Meditation Practice<br>
+                        Jul: Not Always So<br>
+                        Aug: Integrate practices
+                    </div>
+                </div>
+                <div class="arc-card">
+                    <div class="arc-title">Q3: Stoic Practice</div>
+                    <div class="arc-months">Sep-Nov + Dec Integration</div>
+                    <div class="arc-content">
+                        <strong>Marcus Aurelius</strong><br>
+                        Sep: Meditations (Books 2, 4, 5)<br>
+                        Oct: Morning/Evening Practice<br>
+                        Nov: Obstacles as Material<br>
+                        Dec: Year-end reflection
+                    </div>
+                </div>
+                <div class="arc-card">
+                    <div class="arc-title">Year 2 Q1: Taoist Philosophy</div>
+                    <div class="arc-months">Jan-Mar + Apr Integration</div>
+                    <div class="arc-content">
+                        <strong>Lao Tzu</strong><br>
+                        Jan: Tao Te Ching (Le Guin)<br>
+                        Feb: Subtraction Practice<br>
+                        Mar: Wu Wei Application<br>
+                        Apr: Review Year 1
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const sources = {
+            core: [
+                {
+                    id: 'meadows',
+                    name: 'Donella Meadows',
+                    years: '1941-2001',
+                    category: 'systems',
+                    domains: ['systems thinking', 'leverage points'],
+                    description: 'Systems thinker who teaches leverage points framework. Core to understanding paradigm-level change.',
+                    primaryText: 'Thinking in Systems (2008)',
+                    keyText: 'Leverage Points essay (1999)',
+                    themes: ['The Kick Drum Paradox', 'Quality Manifesto']
+                },
+                {
+                    id: 'suzuki',
+                    name: 'Shunryu Suzuki',
+                    years: '1904-1971',
+                    category: 'philosophy',
+                    domains: ['zen practice', 'beginners mind'],
+                    description: 'Zen master teaching beginner mind and breath practice. Transforms repetition into meditation.',
+                    primaryText: 'Zen Mind, Beginner Mind (1970)',
+                    keyText: 'Chapter: Breathing',
+                    themes: ['Four on the Floor', 'Sidechain and Conversation']
+                },
+                {
+                    id: 'aurelius',
+                    name: 'Marcus Aurelius',
+                    years: '121-180 CE',
+                    category: 'philosophy',
+                    domains: ['stoicism', 'daily practice'],
+                    description: 'Stoic philosopher teaching intentional beginning and response control. Foundation for morning practice.',
+                    primaryText: 'Meditations (Gregory Hays translation)',
+                    keyText: 'Book 2 (Morning Practice)',
+                    themes: ['The First Sound', 'Kick and Foundation']
+                },
+                {
+                    id: 'laotzu',
+                    name: 'Lao Tzu',
+                    years: '~6th century BCE',
+                    category: 'philosophy',
+                    domains: ['taoism', 'subtraction', 'wu wei'],
+                    description: 'Taoist philosopher teaching subtraction reveals essence. Core to understanding high-pass filters and less-is-more.',
+                    primaryText: 'Tao Te Ching (Le Guin translation)',
+                    keyText: 'Chapter 11 (The Empty Pot)',
+                    themes: ['High Pass Low Pass', 'Cooking and Mixing']
+                },
+                {
+                    id: 'eno',
+                    name: 'Brian Eno',
+                    years: '1948-present',
+                    category: 'music',
+                    domains: ['generative systems', 'constraints', 'ambient'],
+                    description: 'Musician/producer teaching constraints create character and systems create emergence. Living practitioner.',
+                    primaryText: 'A Year with Swollen Appendices (1996)',
+                    keyText: 'Oblique Strategies (1975)',
+                    themes: ['The 808', 'Generative Systems']
+                }
+            ],
+            additional: [
+                {
+                    id: 'alexander',
+                    name: 'Christopher Alexander',
+                    years: '1936-2022',
+                    category: 'systems',
+                    domains: ['pattern language', 'architecture'],
+                    description: 'Architect who created pattern language methodology. Foundation for cross-domain resonances.',
+                    primaryText: 'A Pattern Language (1977)',
+                    keyText: 'The Timeless Way of Building (1979)',
+                    themes: ['Cross-Domain Resonances', 'Pattern Library']
+                },
+                {
+                    id: 'hofstadter',
+                    name: 'Douglas Hofstadter',
+                    years: '1945-present',
+                    category: 'systems',
+                    domains: ['strange loops', 'analogy', 'cognition'],
+                    description: 'Cognitive scientist teaching analogy as core of cognition. Cross-domain thinking made explicit.',
+                    primaryText: 'Godel, Escher, Bach (1979)',
+                    keyText: 'I Am a Strange Loop (2007)',
+                    themes: ['Pattern Recognition', 'Recursive Thinking']
+                },
+                {
+                    id: 'cage',
+                    name: 'John Cage',
+                    years: '1912-1992',
+                    category: 'music',
+                    domains: ['chance', 'silence', 'letting sounds be'],
+                    description: 'Composer teaching non-intention and silence as material. Trust in process.',
+                    primaryText: 'Silence: Lectures and Writings (1961)',
+                    keyText: '4\'33" (1952)',
+                    themes: ['The First Sound', 'Chance Operations']
+                },
+                {
+                    id: 'oliveros',
+                    name: 'Pauline Oliveros',
+                    years: '1932-2016',
+                    category: 'music',
+                    domains: ['deep listening', 'sonic awareness'],
+                    description: 'Composer teaching deep listening as practice. Attention to subtle sonic detail.',
+                    primaryText: 'Deep Listening: A Composer Sound Practice (2005)',
+                    keyText: 'Sonic Meditations (1971)',
+                    themes: ['Deep Listening', 'Sonic Awareness']
+                },
+                {
+                    id: 'turrell',
+                    name: 'James Turrell',
+                    years: '1943-present',
+                    category: 'artists',
+                    domains: ['light', 'perception', 'space'],
+                    description: 'Artist working with light and perception. Teaches subtlety and patience.',
+                    primaryText: 'James Turrell: A Retrospective (exhibition catalog)',
+                    keyText: 'Roden Crater (ongoing project)',
+                    themes: ['Perception', 'Subtlety', 'Patience']
+                }
+            ]
+        };
+
+        let readStatus = JSON.parse(localStorage.getItem('sourceReadStatus') || '{}');
+
+        function updateStats() {
+            const total = sources.core.length + sources.additional.length;
+            const read = Object.values(readStatus).filter(v => v).length;
+            const coreRead = sources.core.filter(s => readStatus[s.id]).length;
+            
+            document.getElementById('totalSources').textContent = total;
+            document.getElementById('readSources').textContent = read;
+            document.getElementById('coreComplete').textContent = coreRead + '/5';
+        }
+
+        function toggleRead(id) {
+            readStatus[id] = !readStatus[id];
+            localStorage.setItem('sourceReadStatus', JSON.stringify(readStatus));
+            render();
+            updateStats();
+        }
+
+        function createSourceCard(source, isCore) {
+            const isRead = readStatus[source.id] || false;
+            
+            const card = document.createElement('div');
+            card.className = 'source-card' + (isCore ? ' core' : '') + (isRead ? ' read' : '');
+            card.dataset.id = source.id;
+            card.dataset.category = source.category;
+            
+            card.innerHTML = `
+                <div class="source-name">${source.name}</div>
+                <div class="source-years">${source.years}</div>
+                <div class="source-domains">
+                    ${source.domains.map(d => '<span class="domain-tag">' + d + '</span>').join('')}
+                </div>
+                <div class="source-desc">${source.description}</div>
+                <div class="source-texts">
+                    <div class="text-label">Start Here</div>
+                    <div class="text-item">📖 ${source.primaryText}</div>
+                    <div class="text-item">⭐ ${source.keyText}</div>
+                </div>
+            `;
+            
+            const checkbox = document.createElement('label');
+            checkbox.className = 'read-checkbox';
+            const input = document.createElement('input');
+            input.type = 'checkbox';
+            input.checked = isRead;
+            input.addEventListener('change', () => toggleRead(source.id));
+            checkbox.appendChild(input);
+            const span = document.createElement('span');
+            span.textContent = 'Mark as read';
+            checkbox.appendChild(span);
+            card.appendChild(checkbox);
+            
+            return card;
+        }
+
+        function render(filter) {
+            filter = filter || 'all';
+            
+            // Core Five
+            const coreFiveContainer = document.getElementById('coreFive');
+            coreFiveContainer.innerHTML = '';
+            sources.core.forEach(s => {
+                coreFiveContainer.appendChild(createSourceCard(s, true));
+            });
+
+            // Additional sources organized by category
+            const categories = {
+                systems: { title: 'Systems Thinkers', desc: 'Teaching structure, feedback loops, emergence, and leverage points' },
+                philosophy: { title: 'Philosophers of Practice', desc: 'Teaching how to work, live, and approach making' },
+                music: { title: 'Musicians & Sound Thinkers', desc: 'Teaching musical structure, sonic philosophy, composition as practice' },
+                artists: { title: 'Artists & Makers', desc: 'Teaching visual thinking, material practice, craft as philosophy' }
+            };
+
+            const container = document.getElementById('sourcesContainer');
+            container.innerHTML = '';
+            
+            for (const cat in categories) {
+                const catSources = sources.additional.filter(s => s.category === cat);
+                if (catSources.length === 0) continue;
+                
+                if (filter === 'all' || filter === cat) {
+                    const section = document.createElement('div');
+                    section.className = 'category-section';
+                    
+                    const title = document.createElement('h2');
+                    title.className = 'category-title';
+                    title.textContent = categories[cat].title;
+                    section.appendChild(title);
+                    
+                    const desc = document.createElement('p');
+                    desc.className = 'category-desc';
+                    desc.textContent = categories[cat].desc;
+                    section.appendChild(desc);
+                    
+                    const grid = document.createElement('div');
+                    grid.className = 'sources-grid';
+                    catSources.forEach(s => {
+                        grid.appendChild(createSourceCard(s, false));
+                    });
+                    section.appendChild(grid);
+                    
+                    container.appendChild(section);
+                }
+            }
+        }
+
+        // Filter buttons
+        document.querySelectorAll('.filter-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                
+                const filter = btn.dataset.filter;
+                if (filter === 'core') {
+                    document.querySelector('.core-five').style.display = 'block';
+                    document.getElementById('sourcesContainer').style.display = 'none';
+                } else {
+                    document.querySelector('.core-five').style.display = filter === 'all' ? 'block' : 'none';
+                    document.getElementById('sourcesContainer').style.display = 'block';
+                    render(filter);
+                }
+            });
+        });
+
+        // Initialize
+        render();
+        updateStats();
+    </script>
+</body>
+</html>

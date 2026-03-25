@@ -1,7 +1,10 @@
 ---
-title: "DSP Frameworks"
+title: DSP Frameworks
 type: hub
-pillars: [tools, practice, creation]
+pillars:
+  - tools
+  - practice
+  - creation
 born: 2026-03
 last_activated: 2026-03
 activation_count: 1
@@ -12,7 +15,7 @@ hook_quality: 7
 beauty: 6
 who_leads: loudon
 links:
-  - target: "[[Four Pillars]]"
+  - target: "[[FOUR PILLARS]]"
     type: enables
   - target: "[[Biomechanical Synthesis]]"
     type: connects-to

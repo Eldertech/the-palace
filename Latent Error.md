@@ -1,7 +1,10 @@
 ---
-title: "Latent Error"
+title: Latent Error
 type: concept
-pillars: [philosophy, tools, practice]
+pillars:
+  - philosophy
+  - tools
+  - practice
 born: 2026-01
 last_activated: 2026-03
 activation_count: 2
@@ -12,7 +15,7 @@ hook_quality: 7
 beauty: 7
 who_leads: loudon
 links:
-  - target: "[[Four Pillars]]"
+  - target: "[[FOUR PILLARS]]"
     type: connects-to
   - target: "[[Kuramoto Coupling]]"
     type: connects-to
@@ -65,7 +68,7 @@ When a lesson fails â€” a student doesn't grasp a concept despite explanation â€
 
 Solution: Don't blame the student for not understanding. Redesign the lesson to explicitly map the concept onto what the student already knows. Add a bridge. Make the conceptual pathway transparent. Design for clarity, not for idealized attention.
 
-The [[Four Pillars|four pillars framework]] itself is a latent-error reduction system: it provides structural categories (creation, tools, philosophy, practice) that help students organize and retrieve learning. It's not enough to teach concepts; the system must help them stick.
+The [[FOUR PILLARS|four pillars framework]] itself is a latent-error reduction system: it provides structural categories (creation, tools, philosophy, practice) that help students organize and retrieve learning. It's not enough to teach concepts; the system must help them stick.
 
 **In tool design:**
 

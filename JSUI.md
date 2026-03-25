@@ -1,7 +1,9 @@
 ---
-title: "JSUI"
+title: JSUI
 type: spore
-pillars: [tools, creation]
+pillars:
+  - tools
+  - creation
 born: 2026-01
 last_activated: 2026-03
 activation_count: 3
@@ -16,7 +18,7 @@ links:
     type: spawned
   - target: "[[Playful Interface Design]]"
     type: enables
-  - target: "[[Four Pillars]]"
+  - target: "[[FOUR PILLARS]]"
     type: connects-to
   - target: "[[Preset Oracle]]"
     type: connects-to

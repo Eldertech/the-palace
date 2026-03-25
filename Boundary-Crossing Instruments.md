@@ -1,7 +1,10 @@
 ---
-title: "Boundary-Crossing Instruments"
+title: Boundary-Crossing Instruments
 type: breakthrough
-pillars: [tools, creation, philosophy]
+pillars:
+  - tools
+  - creation
+  - philosophy
 born: 2025-08
 last_activated: 2026-03
 activation_count: 7
@@ -12,7 +15,7 @@ hook_quality: 8
 beauty: 9
 who_leads: shared
 links:
-  - target: "[[Four Pillars]]"
+  - target: "[[FOUR PILLARS]]"
     type: connects-to
   - target: "[[Frequency-Time Duality]]"
     type: spawned

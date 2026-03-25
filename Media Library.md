@@ -1,7 +1,11 @@
 ---
-title: "Media Library"
+title: Media Library
 type: meta
-pillars: [philosophy, creation, tools, practice]
+pillars:
+  - philosophy
+  - creation
+  - tools
+  - practice
 born: 2026-03
 last_activated: 2026-03
 activation_count: 1
@@ -12,13 +16,13 @@ hook_quality: 6
 beauty: 6
 who_leads: loudon
 links:
-  - target: "[[Four Pillars]]"
+  - target: "[[FOUR PILLARS]]"
     type: connects-to
   - target: "[[Spinoza Conatus]]"
     type: connects-to
   - target: "[[Hyperdimensional Prism]]"
     type: connects-to
-  - target: "[[Substrate]]"
+  - target: "[[SUBSTRATE]]"
     type: enables
 ---
 
@@ -37,20 +41,20 @@ The palace is rhizomatic. These sources are its external mycelium. By mapping th
 | *The Parmenides*                               | Plato              | Philosophy       | Referenced | The One and The Many. How does multiplicity arise from unity? How do individual voices in a [[Kuramoto Coupling]] system emerge from a single frequency space?                                                                                          |
 | *Human Error*                                  | James Reason       | Systems/Safety   | Unread     | Latent errors, accident precursors, swissness of systems design. Pending connection to [[Latent Error]].                                                                                                                                                |
 | *The Pleasure of Finding Things Out*           | Richard Feynman    | Essays           | Referenced | Joy in exploration, the delight of not-knowing. Embedded in Loudon's pedagogy across the palace.                                                                                                                                                        |
-| *On the Origin of Species*                     | Charles Darwin     | Science          | Referenced | Evolution through variation and selection. Generative constraint: small tweaks compound into radically different forms. Seeds [[Four Pillars]] thinking.                                                                                                |
+| *On the Origin of Species*                     | Charles Darwin     | Science          | Referenced | Evolution through variation and selection. Generative constraint: small tweaks compound into radically different forms. Seeds [[FOUR PILLARS]] thinking.                                                                                                |
 | *The Critique of Pure Reason*                  | Immanuel Kant      | Philosophy       | Referenced | Categories of understanding. How do we structure the palace itself? What are the atomic units of a knowledge system?                                                                                                                                    |
 
 ## People as Sources
 
 | Name | Role | Status | Palace Connection |
 |------|------|--------|-------------------|
-| Rick Rubin | Producer/Philosopher | Engaged | Creative process, the artist as conduit, constraints as teachers. Embedded in [[Four Pillars]] thinking and pedagogical philosophy. |
+| Rick Rubin | Producer/Philosopher | Engaged | Creative process, the artist as conduit, constraints as teachers. Embedded in [[FOUR PILLARS]] thinking and pedagogical philosophy. |
 | Buckminster Fuller | Inventor/Visionary | Referenced | Geometry, tensegrity, the universe as a comprehensive system. Seeds [[Hyperdimensional Prism]], the idea of synergetic geometry. |
 | Gilles Deleuze | Philosopher | Referenced | Relational ontology, the rhizome as model. The palace's *architecture* is Deleuzian. |
 | Alan Turing | Mathematician/Computer Scientist | Referenced | Computation, the Church-Turing thesis, what can and cannot be computed. Implicit in all [[DSP Frameworks]] thinking. |
 | James Turrell | Artist (Light) | Engaged | Perception of light as material. The aesthetics of presence and absence. Connects to palette thinking in [[Hyperdimensional Prism]] and color as constraint. |
 | Claude Debussy | Composer | Referenced | Orchestration as timbre design. The whole-tone scale breaks traditional harmonic constraint. Seeds [[Wallpaper Groups]] thinking about symmetry-breaking. |
-| Pauline Oliveros | Composer | Referenced | Deep listening, participatory composition, the audience as co-creator. Embedded in [[Four Pillars]] pedagogy. |
+| Pauline Oliveros | Composer | Referenced | Deep listening, participatory composition, the audience as co-creator. Embedded in [[FOUR PILLARS]] pedagogy. |
 | Éliane Radigue | Synthesist | Referenced | The ARP 2500 as instrument for *discovery*. Slow, meditative exploration of parameter space. Model for hands-on learning. |
 
 ## Films & Visual Media

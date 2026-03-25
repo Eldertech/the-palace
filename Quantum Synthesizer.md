@@ -1,7 +1,10 @@
 ---
 title: Quantum Synthesizer
 type: concept
-pillars: [creation, tools, philosophy]
+pillars:
+  - creation
+  - tools
+  - philosophy
 born: 2026-01
 stage: growing
 links:
@@ -15,7 +18,7 @@ links:
     type: deepens
   - target: "[[Hyperdimensional Prism]]"
     type: connects-to
-  - target: "[[Four Pillars]]"
+  - target: "[[FOUR PILLARS]]"
     type: connects-to
 ---
 

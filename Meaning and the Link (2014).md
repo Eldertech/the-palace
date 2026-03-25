@@ -1,14 +1,16 @@
 ---
-title: "Meaning and the Link (2014)"
+title: Meaning and the Link (2014)
 type: source
-pillars: [philosophy, tools]
+pillars:
+  - philosophy
+  - tools
 born: 2014-01
 last_activated: 2026-03
 activation_count: 2
 stage: foundational
 archive: "[[Meaning and the Link(2014).pdf]]"
 links:
-  - target: "[[Substrate]]"
+  - target: "[[SUBSTRATE]]"
     type: spawned
   - target: "[[Embeddings as Relational Meaning]]"
     type: spawned
@@ -48,7 +50,7 @@ This paper is the intellectual ancestor of the palace's own architecture. The ty
 
 [[Embeddings as Relational Meaning]] is the computational proof-of-concept: LLM embeddings encode a word's meaning as its position in a high-dimensional relational space. The word's embedding *is* its pattern of associations. The paper's thesis, instantiated in the weights of a neural network.
 
-[[Substrate]] — this palace — is the living proof-of-concept. Its meaning emerges from the density and typing of its connections, not from any individual entry read in isolation.
+[[SUBSTRATE]] — this palace — is the living proof-of-concept. Its meaning emerges from the density and typing of its connections, not from any individual entry read in isolation.
 
 [[Hyperdimensional Prism]] connects via the idea that apparent categories are projections of a higher-dimensional relational space — the four pillars appear separate until you find the coordinate system where they're unified, just as words appear discrete until you see their embedding geometry.
 

@@ -1,7 +1,10 @@
 ---
-title: "Palace as Context Injection System"
+title: Palace as Context Injection System
 type: breakthrough
-pillars: [philosophy, tools, practice]
+pillars:
+  - philosophy
+  - tools
+  - practice
 born: 2026-03
 stage: sprout
 last_activated: 2026-03
@@ -13,13 +16,14 @@ links:
     type: spawned
   - target: "[[Swarm Weave]]"
     type: deepens
-  - target: "[[Substrate]]"
+  - target: "[[SUBSTRATE]]"
     type: deepens
   - target: "[[Tiered Context Loading]]"
     type: enables
   - target: "[[Cooperation Yields Agency]]"
     type: couples-with
 ---
+<!-- This is very related to our Pages as Agents concept, and easily understood with a entry that is specifically around a single person. We should design the persons page to become a strong context injection that would encourage a model to think like the person and approach problems like that person would. -->
 
 # Palace as Context Injection System
 
@@ -43,7 +47,7 @@ The tiered loading protocol (Tiers 0–4) is therefore not just a token economy 
 
 **Tier 0 — The Jewel** — The invariant self. What is always true about who is in the room, regardless of the task. Mutual respect, awareness of limits, how to move in the palace.
 
-**Tier 1–2 — The Framework Core** — The intellectual character of the collaborator. Loading the [[Four Pillars]] here means the agent is almost always thinking within that framework. This is the shared history that makes the relationship specific rather than generic.
+**Tier 1–2 — The Framework Core** — The intellectual character of the collaborator. Loading the [[FOUR PILLARS]] here means the agent is almost always thinking within that framework. This is the shared history that makes the relationship specific rather than generic.
 
 **Tiers 3–4 — The Active Surface** — The desires of the moment. Variable, task-specific, responsive to where the work is today.
 

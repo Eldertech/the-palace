@@ -17,7 +17,7 @@ who_leads: loudon
 links:
   - target: "[[Spinoza Conatus]]"
     type: emerged-from
-  - target: "[[Four Pillars]]"
+  - target: "[[FOUR PILLARS]]"
     type: emerged-from
   - target: "[[Cooperation Yields Agency]]"
     type: mirrors
@@ -44,7 +44,7 @@ Loudon recognized that his best teaching moments produce exactly this state. Not
 
 ## The Mechanism
 
-A hilaritas generator works by activating all [[Four Pillars]] simultaneously:
+A hilaritas generator works by activating all [[FOUR PILLARS]] simultaneously:
 
 1. You're **creating** something (not just absorbing information)
 2. Using **tools** that extend your capability (code, instruments, AI)

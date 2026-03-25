@@ -22,7 +22,7 @@ links:
     type: mirrors
   - target: "[[Spinoza Conatus]]"
     type: deepens
-  - target: "[[Four Pillars]]"
+  - target: "[[FOUR PILLARS]]"
     type: enables
   - target: "[[Symbiotic Skills]]"
     type: spawned

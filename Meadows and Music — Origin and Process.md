@@ -1,13 +1,17 @@
 ---
-title: "Meadows and Music — Origin and Process"
+title: Meadows and Music — Origin and Process
 type: source
-pillars: [creation, tools, philosophy, practice]
+pillars:
+  - creation
+  - tools
+  - philosophy
+  - practice
 born: 2026-01
 last_activated: 2026-03
 activation_count: 1
 stage: sprout
 links:
-  - target: "[[Four Pillars]]"
+  - target: "[[FOUR PILLARS]]"
     type: deepens
   - target: "[[Hilaritas Generator]]"
     type: connects-to

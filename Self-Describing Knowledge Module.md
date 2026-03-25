@@ -1,7 +1,10 @@
 ---
-title: "Self-Describing Knowledge Module"
+title: Self-Describing Knowledge Module
 type: concept
-pillars: [tools, philosophy, practice]
+pillars:
+  - tools
+  - philosophy
+  - practice
 born: 2026-03
 last_activated: 2026-03
 activation_count: 1
@@ -9,9 +12,9 @@ stage: growing
 links:
   - target: "[[Meaning and the Link (2014)]]"
     type: mirrors
-  - target: "[[Rosetta Stone]]"
+  - target: "[[ROSETTA]]"
     type: enables
-  - target: "[[Substrate]]"
+  - target: "[[SUBSTRATE]]"
     type: deepens
   - target: "[[Symbiotic Skills]]"
     type: connects-to

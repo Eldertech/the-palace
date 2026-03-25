@@ -1,7 +1,10 @@
 ---
-title: "Compressor Design"
+title: Compressor Design
 type: project
-pillars: [tools, creation, philosophy]
+pillars:
+  - tools
+  - creation
+  - philosophy
 born: 2026-01
 stage: growing
 status: complete
@@ -12,7 +15,7 @@ links:
     type: connects-to
   - target: "[[Hyperdimensional Prism]]"
     type: connects-to
-  - target: "[[Four Pillars]]"
+  - target: "[[FOUR PILLARS]]"
     type: enables
   - target: "[[Granular Synthesis]]"
     type: connects-to
@@ -69,5 +72,5 @@ This insight cascaded into the kaleidoscope interface concept: modulation and ro
 
 The soft knee's quadratic blend is structurally identical to the easing curves used in animation and UI design. A designer and a DSP engineer are solving the same mathematical problem: how to smoothly transition between two states without introducing artifacts. This connection, once seen, cannot be unseen. It appears in [[Boundary-Crossing Instruments]] — the recognition that signal flow and information flow are the same topology, expressed in different materials.
 
-The Gen~ implementation serves [[Four Pillars]]: the Tools pillar through explicit DSP; the Creation pillar through the artifact itself; the Philosophy pillar through the questions each edge case raises about discretization, feedback, and nonlinearity; the Practice pillar through the discipline of pedagogical clarity.
+The Gen~ implementation serves [[FOUR PILLARS]]: the Tools pillar through explicit DSP; the Creation pillar through the artifact itself; the Philosophy pillar through the questions each edge case raises about discretization, feedback, and nonlinearity; the Practice pillar through the discipline of pedagogical clarity.
 

@@ -1,7 +1,9 @@
 ---
-title: "Endosymbiosis"
+title: Endosymbiosis
 type: concept
-pillars: [philosophy, tools]
+pillars:
+  - philosophy
+  - tools
 born: 2026-03
 last_activated: 2026-03
 activation_count: 3
@@ -13,7 +15,7 @@ links:
     type: mirrors
   - target: "[[Kuramoto Coupling]]"
     type: connects-to
-  - target: "[[Substrate]]"
+  - target: "[[SUBSTRATE]]"
     type: connects-to
   - target: "[[Short Story]]"
     type: mirrors

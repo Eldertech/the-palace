@@ -1,7 +1,11 @@
 ---
-title: "Biomechanical Synthesis"
+title: Biomechanical Synthesis
 type: concept
-pillars: [creation, tools, philosophy, practice]
+pillars:
+  - creation
+  - tools
+  - philosophy
+  - practice
 born: 2026-02
 stage: growing
 links:
@@ -11,7 +15,7 @@ links:
     type: mirrors
   - target: "[[Hilaritas Generator]]"
     type: connects-to
-  - target: "[[Four Pillars]]"
+  - target: "[[FOUR PILLARS]]"
     type: connects-to
   - target: "[[Granular Synthesis]]"
     type: connects-to
@@ -39,7 +43,7 @@ The framework is concrete. Eight instruments, eight biological systems:
 
 4. **Blood hydraulics compressor** — blood pressure = amplitude, vessel diameter = gain reduction, pulse rate = attack time. The compressor physically demonstrates its own function.
 
-5. **Slime mold delay** — the plasmodium's foraging pattern as feedback delay topology, path optimization as reverb decay.
+5. **Slime mold delay** — the [[**plasmodium**]]'s foraging pattern as feedback delay topology, path optimization as reverb decay.
 
 6. **Carnivorous plant gate** — Venus flytrap trigger threshold as noise gate with biological hysteresis.
 
@@ -47,7 +51,7 @@ The framework is concrete. Eight instruments, eight biological systems:
 
 8. **Cochlear implant vocoder** — direct mapping of cochlear mechanics to vocoder filter bank.
 
-Each instrument is built not to mimic biology but to *become* biology. The DSP IS the organism.
+Each instrument is built not to mimic biology but to *become* biology. The DSP models the organism's biology. Use the Neural Synthesizer and Oscillator as examples of how to develop these concepts. Simplify mathematically to a synthesizer modular patch, then build up from there in scaffold stages, capturing key non-linearitys and using 
 
 ## The Mycelial Model in Detail
 
@@ -55,7 +59,7 @@ The mycelial architecture is the most developed:
 
 **Spawn points** = initial frequencies (the notes played or the fundamental). These are not oscillators in the traditional sense; they are seeds in a biological field.
 
-**Hyphae** = spectral paths that grow toward frequency-rich regions. Guided by spectral analysis of the input signal, the network extends threads into the frequency domain, following concentration gradients like a real mycelium follows nutrient gradients.
+**Hyphae** = spectral paths that grow toward frequency-rich regions. Guided by spectral analysis of the input signal, the network extends threads into the frequency domain, following concentration gradients like a real mycelium follows nutrient gradients. Quickly toward nearest harmonic frequency of played MIDI note.
 
 **Fruiting bodies** = resonant peaks that emerge where hyphae concentrate. Comb filters placed at intersection points. As the network grows, fruiting bodies appear, disappear, intensify, decay.
 
@@ -67,9 +71,9 @@ This is not a reverb that happens to sound organic. It is a reverb that *is* an 
 
 ## Visceral Pedagogy
 
-The principle: "Visceral engagement — each tool creates discomfort that forces you to feel the signal processing. You'll never forget how a compressor works after pumping blood through arteries."
+The principle: "Visceral engagement — the tool creates discomfort that forces you to feel the signal processing. You'll never forget how a compressor works after pumping blood through arteries."
 
-The body-horror aesthetic is not decoration. It is mandatory pedagogy. A student who builds a blood hydraulics compressor understands gain reduction not as a number but as a vessel narrowing under pressure. They feel it. The disgust is intentional — it burns the concept into memory.
+The body-horror aesthetic is not decoration. It is mandatory pedagogy. A student who builds a hydraulic blood compressor understands gain reduction not as a number but as a vessel narrowing under pressure. They feel it. The disgust is intentional — it burns the concept into memory.
 
 When students encounter the carnivorous plant gate, they must design the threshold and hysteresis as biological parameters: how sensitive is the trigger? How long does the trap stay closed? These are DSP questions answered through biological intuition. The gate becomes unforgettable.
 
@@ -95,11 +99,11 @@ The most operational of the biological synthesis concepts is the neural network 
 
 **Excitatory connections** — one neuron firing makes others more likely to fire → cascading avalanches of sound. A single note trigger can cascade through an excitatory network to produce complex polyrhythmic textures without explicit sequencing. The synthesis emerges from propagation.
 
-**Inhibitory connections** — one neuron firing SUPPRESSES others → competitive rhythmic patterns, syncopation. Inhibitory networks create rhythms through absence — a beat emerges from what is *prevented* from firing. This is rhythm as negative space. In synthesis terms: a single trigger, when it reaches an inhibitory node, silences competing frequency regions, creating syncopated polyrhythm from sculptural silence.
+**Inhibitory connections** — one neuron firing SUPPRESSES others → competitive rhythmic patterns, syncopation. Inhibitory networks create rhythms through absence — a beat emerges from what is *prevented* from firing. This is **rhythm as negative space**. In synthesis terms: a single trigger, when it reaches an inhibitory node, silences competing frequency regions, creating syncopated polyrhythm from sculptural silence.
 
-**Feedback loops** — neurons feeding back into themselves or each other → self-sustaining oscillation, instability, drone. The feedback loop IS the oscillator; the oscillation frequency is the loop's natural resonance. Coupled feedback creates frequency locking and competition—[[Kuramoto Coupling]]-like behavior emerging from local interactions.
+**Feedback loops** — neurons feeding back into themselves or each other → self-sustaining oscillation, instability, drone. The **feedback loop IS the oscillator**; the oscillation frequency is the loop's natural resonance. Coupled feedback creates frequency locking and competition—[[Kuramoto Coupling]]-like behavior emerging from local interactions.
 
-**At high rates (100+ Hz)**: dense granular textures approach continuous tones but retain temporal microstructure — like FM synthesis creating sidebands through rapid modulation. The neural firing rate becomes the grain rate. The instantaneous firing pattern becomes the grain shape.
+**At high rates (100+ Hz)**: dense granular textures approach continuous tones but retain temporal **microstructure** — like FM synthesis creating sidebands through rapid modulation. The neural firing rate becomes the grain rate. The instantaneous firing pattern becomes the grain shape.
 
 The DAW-as-narrative-world emerges from this: "Each track in my DAW is one character in a scene that moves through time. Many concepts coexist together, in an alien landscape, Larry Niven meets M.C. Escher—with neural topology as the organizational principle. Tracks are neurons. Their connections (sends, sidechain modulations, frequency interactions) are synapses. The mix is a network firing."
 

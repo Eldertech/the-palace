@@ -21,9 +21,8 @@ Never violate these: Show before writing. Read before touching. Feel the frictio
 
 The palace is readable from any vector using these paths, in priority order:
 
-<!-- the palce has moved and this needa to be updated-->
 1. **Filesystem (primary for write operations)**
-   '/Users/loudonstearns/Documents/The Palace'
+   `/Users/loudonstearns/Documents/The Palace`
 2. **GitHub repository**
    `https://github.com/Eldertech/the-palace`
    Available via: browser, GitHub API
@@ -32,6 +31,36 @@ The palace is readable from any vector using these paths, in priority order:
    Minimum fallback context is in the claude.ai Substrate Skill.
 
 Read CLAUDE.md first, then follow links to SCHEMA.md and the relevant ceremony entry. Write operations must be deferred to a Claude Code or Cowork session — note proposed changes in the conversation for later execution.
+
+## Directory Structure
+
+The palace root contains two things: **foundational skeleton files** and **knowledge entries**. Operational machinery lives one level down in `_ops/`.
+
+```
+The Palace/
+├── CLAUDE.md               ← you are here (entry point)
+├── SCHEMA.md               ← type system, link ontology
+├── JEWEL.md            ← tiered loading map, orientation seed
+├── Jewel — Context.md  ← session history for The Jewel
+├── SUBSTRATE.md            ← palace self-model
+├── Substrate Skill.md      ← operational instructions for AI agents
+├── README - The Palace Guide.md
+├── ROSETTA.md        ← vocabulary cross-reference
+├── FOUR PILLARS.md         ← Loudon's core framework
+├── [knowledge entries]     ← all concepts, hubs, projects, etc.
+│
+└── _ops/                   ← ceremony machinery + working queues
+    ├── Palace Ceremonies.md
+    ├── Deposit Ceremony.md / Harvest Ceremony.md / Walk Ceremony.md
+    ├── Weave Ceremony.md / Spore Check Ceremony.md / Revival Ceremony.md
+    ├── Self-Model Update Ceremony.md
+    ├── [*— Context.md]     ← ceremony session history companions
+    ├── Harvest Queue.md / Harvest Frontier.md
+    ├── Deposit Archive.md
+    └── Palace Graffiti.md / Palace Quotes.md / Palace To-Do.md
+```
+
+Obsidian resolves `[[wikilinks]]` by filename regardless of folder, so all existing links remain valid. When loading files by path (e.g., in tiered context loading), use paths relative to the palace root.
 
 ## Ceremony Triggers
 
@@ -61,11 +90,13 @@ This is a partial list. For the complete list of all ceremonies (including Harve
 
 ## Where to Find Depth
 
-- **[[SCHEMA]]** — Type system, link ontology, ceremony linter, schema change protocol. Read before creating any new entry or ceremony.
-- **[[README - The Palace Guide]]** — Full palace manual (philosophy, link ontology, entry templates)
-- **[[Substrate]]** — The palace's self-model (architecture, current state)
-- **[[Four Pillars]]** — Loudon's core framework
-- **[[Rosetta Stone]]** — Cross-tradition glossary connecting Palace vocabulary to OOP, Data Engineering, Semantic Web, and DDD equivalents
+- **[[SCHEMA]]** — Type system, link ontology, ceremony linter, schema change protocol. Read before creating any new entry or ceremony. (`SCHEMA.md`)
+- **[[README - The Palace Guide]]** — Full palace manual (philosophy, link ontology, entry templates) (`README - The Palace Guide.md`)
+- **[[SUBSTRATE]]** — The palace's self-model (architecture, current state) (`Substrate.md`)
+- **[[FOUR PILLARS]]** — Loudon's core framework (`Four Pillars.md`)
+- **[[ROSETTA]]** — Cross-tradition glossary connecting Palace vocabulary to OOP, Data Engineering, Semantic Web, and DDD equivalents (`Rosetta Stone.md`)
+- **[[Palace Ceremonies]]** — Full ceremony list with triggers and specs (`_ops/Palace Ceremonies.md`)
+- **[[Substrate Skill]]** — Full operational instructions for AI agents (`Substrate Skill.md`)
 
 ## In-File Comments
 

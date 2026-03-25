@@ -1,7 +1,10 @@
 ---
-title: "Substrate"
+title: Substrate
 type: meta
-pillars: [tools, philosophy, practice]
+pillars:
+  - tools
+  - philosophy
+  - practice
 born: 2026-03
 last_activated: 2026-03
 activation_count: 5
@@ -20,7 +23,7 @@ links:
     type: mirrors
   - target: "[[Kuramoto Coupling]]"
     type: connects-to
-  - target: "[[Four Pillars]]"
+  - target: "[[FOUR PILLARS]]"
     type: connects-to
   - target: "[[Self-Describing Knowledge Module]]"
     type: deepens
@@ -63,6 +66,12 @@ What followed was the palace's own origin ceremony: harvesting, depositing, buil
 - YAML frontmatter links — typed, curated, structural. The major neural tracts. Our RDF triples.
 - Body text `[[wiki links]]` — untyped, casual, contextual. The local associations. Meaning carried by surrounding prose.
 
+**Folder structure (as of 2026-03-25):**
+- **Root** — Foundational skeleton files (CLAUDE.md, SCHEMA.md, The Jewel, Substrate, Rosetta Stone, README, Four Pillars) and all knowledge entries (concepts, hubs, projects, breakthroughs, sources, questions, spores). Flat by design.
+- **`_ops/`** — Ceremony machinery and working queues. Contains all ceremony specs, their Context companions (session history), and active working files (Harvest Queue, Harvest Frontier, Deposit Archive, Palace Graffiti, Palace Quotes, Palace To-Do). Underscore prefix sorts it to the top of any file explorer. Obsidian wikilinks resolve across folders; no links broke in the reorganization.
+
+The distinction: root entries are *of* the palace; `_ops/` files *operate* the palace.
+
 ## Parameters Encoded
 
 Each entry carries: identity (title, type, pillar affiliations), relationships (typed links, connection density), temporal data (born, last activated, activation count, stage), depth (confidence, richness, who-leads), and aesthetic/emotional data (energy, hook quality, beauty, danger/edge).
@@ -77,8 +86,8 @@ For full ceremony instructions, see [[Substrate Skill]].
 
 The palace has 48 entries as of this update. The first full Weave was completed 2026-03-19, producing a topology report, 6 unsung paths formalized, 4 new introductions proposed, 3 hub promotions, and 3 stage transitions.
 
-Hub nodes: [[Cooperation Yields Agency]], [[Four Pillars]], [[Hilaritas Generator]], [[Kuramoto Coupling]], [[Palace Ceremonies]], [[Palace Philosophies]], [[Spinoza Conatus]]
-Most connected: [[Cooperation Yields Agency]] (~26 links), [[Kuramoto Coupling]] (~24), [[Four Pillars]] (~23), [[Hilaritas Generator]] (~21), [[Spinoza Conatus]] (~18)
+Hub nodes: [[Cooperation Yields Agency]], [[FOUR PILLARS]], [[Hilaritas Generator]], [[Kuramoto Coupling]], [[Palace Ceremonies]], [[Palace Philosophies]], [[Spinoza Conatus]]
+Most connected: [[Cooperation Yields Agency]] (~26 links), [[Kuramoto Coupling]] (~24), [[FOUR PILLARS]] (~23), [[Hilaritas Generator]] (~21), [[Spinoza Conatus]] (~18)
 Dormant: [[Short Story]]
 Isolated (no inbound links): [[Companion — This Session — Palace Architecture]] — now linked to [[The Cooperation Path]] via Weave
 Newest growth: Oblique Portrait Method, Lateral Access, Endosymbiosis, Action Potential Oscillator, Companion — This Session — Palace Architecture

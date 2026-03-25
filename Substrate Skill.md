@@ -1,17 +1,20 @@
 ---
-title: "Substrate Skill"
+title: Substrate Skill
 type: meta
-pillars: [tools, practice]
+pillars:
+  - tools
+  - practice
 born: 2026-03
 last_activated: 2026-03
 activation_count: 2
 stage: mature
 links:
-  - target: "[[Substrate]]"
+  - target: "[[SUBSTRATE]]"
     type: deepens
   - target: "[[README - The Palace Guide]]"
     type: enables
 ---
+<!-- Should this live in _Ops -->
 # Substrate Skill (Palace Edition)
 
 This is the authoritative ceremony specification for Claude's interaction with this knowledge organism. It lives in the palace itself.

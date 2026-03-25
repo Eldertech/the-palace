@@ -1,0 +1,116 @@
+---
+title: Terrence Malick
+type: source
+pillars:
+  - philosophy
+  - practice
+born: 2026-03
+stage: mature
+last_activated: 2026-03
+activation_count: 1
+confidence: established
+energy: high
+hook_quality: 9
+beauty: 9
+who_leads: shared
+domain: Filmmaker
+links:
+  - target: "[[Source Library]]"
+    type: member-of
+  - target: "[[FOUR PILLARS]]"
+    type: informs
+---
+
+# Terrence Malick
+## Filmmaker
+
+**Domain:** Filmmaker
+
+---
+
+## Key Works
+
+- The Tree of Life (2011)
+- The Thin Red Line (1998)
+- Days of Heaven (1978)
+
+---
+
+## Core Concepts
+
+- **Visual poetry over narrative** - images carry meaning
+- **Voice-over as inner dialogue** - stream of consciousness
+- **Natural light and magic hour** - beauty through timing
+- **Long gestation** - years between films, deep preparation
+- **Transcendence through nature** - spiritual cinema
+
+---
+
+## Connection to 4 Pillars
+
+Malick's visual poetry = sound design as emotional language. His voice-over style = ambient textures (consciousness without words). Magic hour shooting = golden moments in production - timing matters. His long gaps between films = deep work, not fast output. Spiritual cinema = music as transcendent experience, not entertainment.
+
+---
+
+## Key Quotes
+
+> "[Rarely gives interviews, works in silence]"
+> "[Known for editing films for years - The Thin Red Line shot 3 years of footage for 3-hour film]"
+> "[On The Tree of Life: 'There are two ways through life: the way of nature and the way of grace']"
+
+---
+
+## Recommended Reading Approach
+
+Watch The Tree of Life with no distractions. Experience it as visual music, not narrative. Notice: How do images create emotion without words? Apply to ambient/atmospheric music production.
+
+---
+
+## Applications to Four Pillars
+
+### Creation Pillar
+Visual poetry approach: Let sounds create emotional meaning without lyrics/structure. Atmosphere over narrative.
+
+### Tools Pillar
+Long gestation: Don't rush releases. Let projects develop for months/years. Quality over speed.
+
+### Philosophy Pillar
+Transcendence through craft. Music as spiritual experience. Beauty found in nature, not effects.
+
+### Practice Pillar
+Patient creation: Work on one ambient piece for months. Add texture weekly. Let it evolve slowly.
+
+---
+
+## Teaching Integration
+
+**For weekly themes:**
+- Reference Terrence Malick's work when themes align with these concepts
+- Use quotes as prompts for reflection
+- Assign reading from key works during relevant months
+- Build exercises that apply concepts to music production
+
+**For student discovery:**
+- Encourage students to find connections between Terrence Malick's work and their practice
+- Document how concepts transfer across domains
+- Share examples of applying these ideas in production
+
+**For deeper study:**
+- Dedicate 3-month arc to Terrence Malick (following Source Library structure)
+- Read primary sources, not summaries
+- Create projects directly influenced by their philosophy
+- Journal throughout: What shifts in your practice?
+
+---
+
+## Why This Source Matters
+
+Terrence Malick provides essential perspective on the 4 Pillars framework because their work demonstrates how Visual poetry over narrative appears across all creative domains.
+
+Their approach teaches that the same patterns exist whether you're filmmaker, making music, building tools, or developing daily practice.
+
+This is cross-domain resonance in action.
+
+---
+
+*Terrence Malick. Filmmaker. Same patterns, different materials. That's what the 4 Pillars framework reveals.*

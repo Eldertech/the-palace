@@ -18,7 +18,7 @@ links:
     type: mirrors
   - target: "[[Hilaritas Generator]]"
     type: connects-to
-  - target: "[[Four Pillars]]"
+  - target: "[[FOUR PILLARS]]"
     type: connects-to
   - target: "[[Cooperation Yields Agency]]"
     type: deepens

@@ -1,7 +1,8 @@
 ---
-title: "Palace Philosophies"
+title: Palace Philosophies
 type: hub
-pillars: [philosophy]
+pillars:
+  - philosophy
 born: 2026-03
 last_activated: 2026-03
 activation_count: 2
@@ -9,7 +10,7 @@ stage: growing
 links:
   - target: "[[Spinoza Conatus]]"
     type: deepens
-  - target: "[[Four Pillars]]"
+  - target: "[[FOUR PILLARS]]"
     type: connects-to
   - target: "[[Hyperdimensional Prism]]"
     type: connects-to

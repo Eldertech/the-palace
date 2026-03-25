@@ -1,7 +1,10 @@
 ---
-title: "Signal-Rate CV Architecture"
+title: Signal-Rate CV Architecture
 type: concept
-pillars: [tools, creation, philosophy]
+pillars:
+  - tools
+  - creation
+  - philosophy
 born: 2026-03
 stage: seed
 confidence: working
@@ -11,7 +14,7 @@ links:
     type: enables
   - target: "[[Boundary-Crossing Instruments]]"
     type: mirrors
-  - target: "[[Four Pillars]]"
+  - target: "[[FOUR PILLARS]]"
     type: connects-to
 ---
 
@@ -27,7 +30,7 @@ The principle emerges from three independent lines of reasoning that arrive at t
 
 **The biological argument.** The processes this suite models — ion channel conductances, membrane leak, synaptic drive, recovery dynamics — are continuous. They don't update at "block rate." A neuron's membrane time constant doesn't wait for a control vector to arrive before changing. Modeling these as signal-rate inputs reflects the actual temporal grain of the biology. Where the modeled quantity is biologically continuous (synaptic drive, membrane state), signal-rate modulation is faithful. Where it is biologically fixed (spike peak amplitude, channel kinetics), signal-rate modulation is an artistic extension — and should be named as such.
 
-**The pedagogical argument.** When the math runs per-sample, the student can hear every equation directly. Patch an LFO into the leak time constant: you hear the membrane becoming leakier in real time, the ramp curving and straightening, the timbre sweeping from warm to bright. The relationship between the equation and the sound is immediate, not mediated by a UI abstraction. This directness is the [[Four Pillars]] philosophy in practice — learning through making, at the speed of the underlying process.
+**The pedagogical argument.** When the math runs per-sample, the student can hear every equation directly. Patch an LFO into the leak time constant: you hear the membrane becoming leakier in real time, the ramp curving and straightening, the timbre sweeping from warm to bright. The relationship between the equation and the sound is immediate, not mediated by a UI abstraction. This directness is the [[FOUR PILLARS]] philosophy in practice — learning through making, at the speed of the underlying process.
 
 ## Practical Consequences in Gen~ / RNBO
 
