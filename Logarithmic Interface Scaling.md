@@ -1,11 +1,13 @@
 ---
-title: "Logarithmic Interface Scaling"
+title: Logarithmic Interface Scaling
 type: concept
-pillars: [tools, philosophy]
+pillars:
+  - tools
+  - philosophy
 born: 2026-03
 stage: growing
 links:
-  - target: "[[Four Pillars]]"
+  - target: "[[FOUR PILLARS]]"
     type: connects-to
   - target: "[[Boundary-Crossing Instruments]]"
     type: mirrors
@@ -215,7 +217,7 @@ Examples: [[Piano String Inharmonicity]] (B ∝ 1/T), filter frequency controls,
 - [[Ohm's Law]] — Interactive demo using this pattern
 - [[Piano String Inharmonicity]] — Application to string physics controls
 - [[Boundary-Crossing Instruments]] — Same pattern across domains
-- [[Four Pillars]] — Tools pillar: universal interface design principle
+- [[FOUR PILLARS]] — Tools pillar: universal interface design principle
 
 ## Artifacts
 

@@ -20,7 +20,6 @@ links:
   - target: "[[Symbiotic Skills]]"
     type: connects-to
 ---
-
 # The Cooperation Path
 
 A named songline through the palace, tracing how a story became a principle, grounded in biology, rooted in philosophy, expressed as pedagogy, and scaled into a framework.
@@ -56,6 +55,6 @@ Named during the first Weave ceremony (2026-03-17), when the palace reached suff
 ## Open Questions
 
 - Is this the palace's primary songline, or one of several peers?
-- Should the path extend further — to [[Substrate]] as the knowledge organism that the cooperation built?
+- Should the path extend further — to [[SUBSTRATE]] as the knowledge organism that the cooperation built?
 - Can it be walked in reverse? What does the reverse reading reveal? (Starting at Symbiotic Skills and working backward toward fiction.)
 - The path currently covers creation → biology → philosophy → pedagogy → framework. Is there a version that runs through tools and instruments instead?

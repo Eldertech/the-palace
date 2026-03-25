@@ -1,7 +1,10 @@
 ---
-title: "State Machine"
+title: State Machine
 type: concept
-pillars: [tools, practice, philosophy]
+pillars:
+  - tools
+  - practice
+  - philosophy
 born: 2026-03
 stage: sprout
 confidence: working
@@ -13,7 +16,7 @@ links:
     type: connects-to
   - target: "[[Signal-Rate CV Architecture]]"
     type: connects-to
-  - target: "[[Rosetta Stone]]"
+  - target: "[[ROSETTA]]"
     type: mirrors
   - target: "[[Progressive Staging]]"
     type: couples-with
@@ -141,7 +144,7 @@ phase, V, timer = neuron(freq, leak_tau, ...)
     };
 ```
 
-**The pattern is identical across all four languages.** State memory, transition conditions, state-specific behavior, transition actions. Only the syntax and the mechanism for persistent state differ. This is what makes the state machine a [[Rosetta Stone]] concept — learn it in one language, recognize it in all of them.
+**The pattern is identical across all four languages.** State memory, transition conditions, state-specific behavior, transition actions. Only the syntax and the mechanism for persistent state differ. This is what makes the state machine a [[ROSETTA]] concept — learn it in one language, recognize it in all of them.
 
 ## When to Cross the Line
 

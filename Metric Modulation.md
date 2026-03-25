@@ -1,7 +1,10 @@
 ---
-title: "Metric Modulation"
+title: Metric Modulation
 type: concept
-pillars: [creation, philosophy, tools]
+pillars:
+  - creation
+  - philosophy
+  - tools
 born: 2026-03
 last_activated: 2026-03
 activation_count: 1
@@ -16,7 +19,7 @@ links:
     type: mirrors
   - target: "[[Frequency-Time Duality]]"
     type: connects-to
-  - target: "[[Four Pillars]]"
+  - target: "[[FOUR PILLARS]]"
     type: connects-to
   - target: "[[Semantic Delay]]"
     type: emerged-from

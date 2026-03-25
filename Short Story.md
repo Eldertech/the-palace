@@ -1,7 +1,9 @@
 ---
-title: "Short Story"
+title: Short Story
 type: project
-pillars: [creation, philosophy]
+pillars:
+  - creation
+  - philosophy
 born: 2025-01
 last_activated: 2026-03
 activation_count: 8
@@ -11,7 +13,7 @@ energy: high
 hook_quality: 10
 beauty: 10
 who_leads: shared
-revival_conditions: "Prose writing phase begins. All structural work, character arcs, mythic avatars, and thematic architecture complete. Time to inhabit the voices."
+revival_conditions: Prose writing phase begins. All structural work, character arcs, mythic avatars, and thematic architecture complete. Time to inhabit the voices.
 links:
   - target: "[[Cooperation Yields Agency]]"
     type: spawned
@@ -19,13 +21,13 @@ links:
     type: connects-to
   - target: "[[Symbiotic Skills]]"
     type: mirrors
-  - target: "[[Four Pillars]]"
+  - target: "[[FOUR PILLARS]]"
     type: connects-to
   - target: "[[Endosymbiosis]]"
     type: mirrors
   - target: "[[Trickster]]"
     type: connects-to
-  - target: "https://claude.ai/chat/5e5e6393-52f7-4db4-bd4f-9e622e90d3f7"
+  - target: https://claude.ai/chat/5e5e6393-52f7-4db4-bd4f-9e622e90d3f7
     type: sourced-from
 ---
 

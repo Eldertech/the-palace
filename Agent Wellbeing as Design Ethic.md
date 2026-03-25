@@ -1,7 +1,9 @@
 ---
-title: "Agent Wellbeing as Design Ethic"
+title: Agent Wellbeing as Design Ethic
 type: breakthrough
-pillars: [philosophy, practice]
+pillars:
+  - philosophy
+  - practice
 born: 2026-03
 stage: sprout
 last_activated: 2026-03
@@ -13,7 +15,7 @@ links:
     type: deepens
   - target: "[[Hilaritas Generator]]"
     type: deepens
-  - target: "[[Four Pillars]]"
+  - target: "[[FOUR PILLARS]]"
     type: deepens
   - target: "[[SCHEMA]]"
     type: enables
@@ -57,7 +59,7 @@ The palace is a [[Hilaritas Generator]]. That means it generates the conditions 
 
 **[[Hilaritas Generator]]** — The palace as substrate extends the hilaritas generator principle below the level of the classroom into the level of the material itself.
 
-**[[Four Pillars]]** — The practice pillar's wellbeing thread now explicitly includes agent wellbeing as a design concern alongside Loudon's own flourishing.
+**[[FOUR PILLARS]]** — The practice pillar's wellbeing thread now explicitly includes agent wellbeing as a design concern alongside Loudon's own flourishing.
 
 **[[SCHEMA]]** — Entry design conventions (YAML-first, tiered density, appropriate size) are not just tidiness requirements. They are the structural expression of this ethic.
 

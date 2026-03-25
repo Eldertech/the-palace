@@ -1,7 +1,9 @@
 ---
-title: "Striatum"
+title: Striatum
 type: concept
-pillars: [practice, philosophy]
+pillars:
+  - practice
+  - philosophy
 born: 2025-05
 last_activated: 2026-03
 activation_count: 1
@@ -16,7 +18,7 @@ links:
     type: connects-to
   - target: "[[Action Potential Oscillator]]"
     type: connects-to
-  - target: "[[Four Pillars]]"
+  - target: "[[FOUR PILLARS]]"
     type: connects-to
   - target: "[[Excellent Adventure]]"
     type: deepens
@@ -42,7 +44,7 @@ Three palace threads run through this structure:
 When you successfully execute a complex rhythm and feel that satisfaction — the groove locking in — the ventral striatum is processing that reward signal and simultaneously strengthening the neural pathways that produced it. The joy is not a side effect of the learning. It is the learning mechanism. This is the neurological grounding of what [[Hilaritas Generator]] describes philosophically: hilaritas as the subjective experience of capability expanding. Spinoza's intuition and the basal ganglia are describing the same phenomenon from different floors.
 
 **2. Practice pillar at the neurological level**
-The dorsal striatum is what practice *does*, mechanistically. Repeated deliberate action is gradually transferred from conscious effortful control to automatic motor programs. This is why the practice pillar of [[Four Pillars]] works — not as a motivational claim but as a description of the brain's actual architecture.
+The dorsal striatum is what practice *does*, mechanistically. Repeated deliberate action is gradually transferred from conscious effortful control to automatic motor programs. This is why the practice pillar of [[FOUR PILLARS]] works — not as a motivational claim but as a description of the brain's actual architecture.
 
 **3. Timing and beat-based processing**
 The basal ganglia, including the striatum, are essential for beat-based timing — detecting and predicting rhythmic patterns, synchronizing movement to external rhythms. This connects to [[Kuramoto Coupling]]: the striatum may be part of the biological implementation of the phase-locking dynamics that Kuramoto describes mathematically.

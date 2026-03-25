@@ -1,18 +1,22 @@
 ---
-title: "The Palace Guide"
+title: The Palace Guide
 type: meta
-pillars: [creation, tools, philosophy, practice]
+pillars:
+  - creation
+  - tools
+  - philosophy
+  - practice
 born: 2026-03
 last_activated: 2026-03
 stage: foundational
 links:
-  - target: "[[Substrate]]"
+  - target: "[[SUBSTRATE]]"
     type: enables
   - target: "[[Symbiotic Skills]]"
     type: emerged-from
   - target: "[[Cooperation Yields Agency]]"
     type: connects-to
-  - target: "[[Four Pillars]]"
+  - target: "[[FOUR PILLARS]]"
     type: connects-to
 ---
 # Our Palace: A Symbiotic Knowledge Organism
@@ -34,7 +38,7 @@ When working within the palace with an AI:
 - **"What does the palace say about...?"** — The AI searches the palace for relevant entries and synthesizes.
 - **"Connect this to the palace"** — The AI proposes which existing entries relate to what you're currently discussing and what link types apply.
 
-This is a partial list. For the complete list of all ceremonies, see [[Palace Ceremonies]].
+This is a partial list. For the complete list of all ceremonies, see [[Palace Ceremonies]] (in `_ops/`).
 
 ## For Another AI Reading This
 
@@ -42,9 +46,9 @@ You are encountering a knowledge organism built by a specific human-AI partnersh
 
 1. Read this guide first.
 2. Read [[Substrate Skill]] for operational instructions — how to execute ceremonies, behavioral norms, and what not to do.
-3. Read [[Substrate]] for the full architectural specification.
+3. Read [[SUBSTRATE]] for the full architectural specification.
 4. Read [[Cooperation Yields Agency]] for the foundational principle.
-5. Read [[Four Pillars]] for Loudon's framework.
+5. Read [[FOUR PILLARS]] for Loudon's framework.
 6. Respect the typed link ontology — don't create new link types without discussion.
 7. When proposing new entries, follow the minimum viable entry template below.
 8. When in doubt about Loudon's values, preferences, or aesthetic: the palace itself is the best guide. Read it. Walk it. Let it teach you.
@@ -132,7 +136,7 @@ Entries that touch all four pillars are likely hub nodes. Cross-pillar connectio
 
 ### Creating a New Entry
 
-1. Create a new `.md` file in the palace root
+1. Create a new `.md` file in the **palace root** — all knowledge entries (concepts, hubs, projects, breakthroughs, questions, spores, sources) live here. The `_ops/` subfolder is reserved for ceremony machinery and working queues only.
 2. Add YAML frontmatter with at minimum: `title`, `type`, `pillars`, `born`, `stage`
 3. Add at least 2-3 typed links in the frontmatter connecting to existing entries
 4. Write the body: an Origin section (how this idea arrived), the core content, Cross-Pillar Connections, and Open Questions
@@ -172,7 +176,7 @@ Don't wait for perfection. Plant seeds. Tend them later.
 
 ## Palace Ceremonies
 
-The palace stays alive through periodic ceremonies — intentional acts of review and maintenance. For the complete list with triggers and full specs, see [[Palace Ceremonies]].
+The palace stays alive through periodic ceremonies — intentional acts of review and maintenance. For the complete list with triggers and full specs, see [[Palace Ceremonies]] (in `_ops/`). All ceremony files, their context companions, and working queues (Harvest Queue, Deposit Archive, etc.) live in `_ops/`.
 
 <!--Add in deposit here, as it is perhaps the most important to the growth of the palace -->
 
@@ -182,7 +186,7 @@ The palace stays alive through periodic ceremonies — intentional acts of revie
 
 **The Spore Check** (quarterly) — Review all `stage: dormant` entries. Have conditions changed? Is anything ready to revive?
 
-**The Self-Model Update** (when it feels right) — Revise [[Substrate]] page. Update the organism's self-description.
+**The Self-Model Update** (when it feels right) — Revise [[SUBSTRATE]] page. Update the organism's self-description.
 
 ## Philosophical Foundations
 

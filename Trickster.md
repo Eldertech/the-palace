@@ -1,7 +1,11 @@
 ---
-title: "Trickster"
+title: Trickster
 type: concept
-pillars: [philosophy, creation, tools, practice]
+pillars:
+  - philosophy
+  - creation
+  - tools
+  - practice
 born: 2026-03
 last_activated: 2026-03
 activation_count: 1
@@ -22,7 +26,7 @@ links:
     type: mirrors
   - target: "[[Compressor Design]]"
     type: connects-to
-  - target: "[[Four Pillars]]"
+  - target: "[[FOUR PILLARS]]"
     type: connects-to
   - target: "[[Spinoza Conatus]]"
     type: connects-to
@@ -68,7 +72,7 @@ This is [[Spinoza Conatus|Spinozist]] pedagogy: you learn what a person is by ob
 
 **The trickster's teaching lives in the space between intention and utterance.** You ask what the intention is, and the trickster shows you what actually comes out. You ask for the answer, and the trickster asks a question that is not about the answer at all. You want clarity, and the trickster offers three mirrors that contradict each other until the contradiction itself becomes clear.
 
-This is why the [[Four Pillars|four pillars]] framework can only be taught through doing, never through explanation. You cannot be told "creation is the prism's shadow in one direction." You must live in Creation, then in Tools, then in Philosophy, then in Practice, and suddenly see that you were always looking at the same object from different angles. The teaching is the trickster's work — the framework itself is the subversive gesture that makes visible what the linear explanation hides.
+This is why the [[FOUR PILLARS|four pillars]] framework can only be taught through doing, never through explanation. You cannot be told "creation is the prism's shadow in one direction." You must live in Creation, then in Tools, then in Philosophy, then in Practice, and suddenly see that you were always looking at the same object from different angles. The teaching is the trickster's work — the framework itself is the subversive gesture that makes visible what the linear explanation hides.
 
 ## The Trickster and Agency
 

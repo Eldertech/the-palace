@@ -1,7 +1,10 @@
 ---
-title: "Modes of Collaboration"
+title: Modes of Collaboration
 type: practice
-pillars: [practice, philosophy, tools]
+pillars:
+  - practice
+  - philosophy
+  - tools
 born: 2026-03
 stage: sprout
 confidence: working
@@ -18,7 +21,7 @@ links:
     type: connects-to
   - target: "[[Symbiotic Skills]]"
     type: connects-to
-  - target: "[[Four Pillars]]"
+  - target: "[[FOUR PILLARS]]"
     type: connects-to
   - target: "[[Ohm's Law]]"
     type: connects-to
@@ -110,7 +113,7 @@ These deserve naming and characterization as they mature.
 
 ## Open Questions
 
-- Do these modes map to the [[Four Pillars]]? Does each mode have a natural pillar affinity?
+- Do these modes map to the [[FOUR PILLARS]]? Does each mode have a natural pillar affinity?
 - Can modes be combined deliberately? (e.g., Excellent Adventure + Build Session = building something with a historical figure as consultant)
 - Is there a mode taxonomy — a small number of dimensions (structured/improvised, who-leads, output-type) that generates all modes?
 - How do modes relate to [[Symbiotic Skills]] progression? Do different symbiotic skill levels unlock different modes?

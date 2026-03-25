@@ -1,7 +1,10 @@
 ---
-title: "Progressive Staging"
+title: Progressive Staging
 type: practice
-pillars: [practice, philosophy, creation]
+pillars:
+  - practice
+  - philosophy
+  - creation
 born: 2026-03
 stage: seed
 confidence: working
@@ -9,7 +12,7 @@ energy: high
 links:
   - target: "[[Action Potential Oscillator]]"
     type: enables
-  - target: "[[Four Pillars]]"
+  - target: "[[FOUR PILLARS]]"
     type: mirrors
   - target: "[[Modes of Collaboration]]"
     type: connects-to
@@ -37,7 +40,7 @@ The principle emerged from building the [[Action Potential Oscillator]] across f
 
 The key insight is that **the staging follows the biology**. A neuron's complexity is itself layered: passive membrane properties → active ion channels → spike dynamics → recovery dynamics. The pedagogy mirrors the biology, which mirrors the synthesis. The student learns about neurons, about oscillators, and about incremental engineering simultaneously, because they are the same structure at different scales.
 
-This is the [[Four Pillars]] in action: Creation (each stage produces a playable sound), Tools (each stage introduces new Gen~/codebox technique), Philosophy (each stage teaches a concept from neurobiology), Practice (the staging method itself is a transferable approach to building anything complex).
+This is the [[FOUR PILLARS]] in action: Creation (each stage produces a playable sound), Tools (each stage introduces new Gen~/codebox technique), Philosophy (each stage teaches a concept from neurobiology), Practice (the staging method itself is a transferable approach to building anything complex).
 
 ## When to Use This
 

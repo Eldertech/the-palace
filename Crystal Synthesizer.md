@@ -46,11 +46,13 @@ $$\omega(k) = 2\sqrt{\frac{K}{m}} \left| \sin\left(\frac{k_x a}{2}\right) \right
 
 At room temperature, a crystal contains roughly $10^{22}$ phonons per cubic centimeter, excited thermally. Strike the crystal, and you excite many phonon modes simultaneously. These decay through damping (anharmonic coupling between modes), releasing energy as heat and sound. The *temporal decay profile* of these modes is what you hear as tone color and sustain.
 
-In a synthesizer, instead of oscillating a mass-spring at a fixed frequency, we could oscillate at the frequencies that are *natural to a chosen crystal*. The instrument doesn't simulate the crystal—it *enacts* its physics.
+In a synthesizer, instead of oscillating a mass-spring at a fixed frequency, we oscillate at the frequencies that are *natural to a chosen crystal*. The instrument *enacts* its physics.
 
 ## Bravais Lattice Taxonomy: Seven into Fourteen into 230
+Interface design: 3D accurate slowly rotating wireframe diagram with the chemical letters below. light through fog shining through the wireframe and being dispersed and modulated by the rotating crystals. 
 
 There are exactly 7 **primitive lattice systems** in 3D, distinguished by the symmetry of their unit cell:
+<!-- I don't believe these descriptions of how a crystal sounds, I think this is guessing based on spectral descriptions, I'd like to hear or read a source. -->
 
 1. **Cubic**: Three equal axes, 90-degree angles. Highest symmetry. High-frequency modes densely packed. Sound: *thick, bright, rich partials*. Example: diamond, NaCl.
    - Phonon mode density is isotropic (same in all directions).

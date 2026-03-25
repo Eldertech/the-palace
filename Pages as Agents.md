@@ -15,9 +15,9 @@ confidence: hypothesis
 links:
   - target: "[[Swarm Weave]]"
     type: deepens
-  - target: "[[The Jewel]]"
+  - target: "[[JEWEL]]"
     type: connects-to
-  - target: "[[Substrate]]"
+  - target: "[[SUBSTRATE]]"
     type: deepens
   - target: "[[Kuramoto Coupling]]"
     type: mirrors
@@ -28,6 +28,7 @@ links:
   - target: "[[Spinoza Conatus]]"
     type: mirrors
 ---
+<!-- Pages as agents will be a powerful connection with our "person" pages, and with giving each page a "forward vector" Any entry we create for a person should have a clear purpose of "embodying" that person when loaded into the context of an agent. Currently, many of our "persons" pages are based around the four pillars(these exist in the artifacts folder for now) But, those pages need to be developed so that they can enchant a worker and their individual personalities can be brought to any problem we are encountering, and they can enter conversations where their input would be most useful -->
 
 # Pages as Agents
 
@@ -106,7 +107,7 @@ Each resonance section should name the connection precisely enough that an agent
 
 **The footer jewel**
 
-Each page might carry a tiny footer jewel — two or three lines below the closing quotes, below everything else — that restates the page's drive in the most compressed form possible. Not the jewel from [[The Jewel]], which orients to the whole palace. A page-specific micro-jewel: what this entry is, what it is reaching toward, what condition would tell it that it has arrived.
+Each page might carry a tiny footer jewel — two or three lines below the closing quotes, below everything else — that restates the page's drive in the most compressed form possible. Not the jewel from [[JEWEL]], which orients to the whole palace. A page-specific micro-jewel: what this entry is, what it is reaching toward, what condition would tell it that it has arrived.
 
 The footer jewel serves two purposes simultaneously. For a human reader it is a closing resonance — the entry speaking itself one final time at its own close. For a spawned agent it is reinforcement: the drive stated once in the forward vectors and once again at the bottom, in the strongest position. The jewel doesn't need to repeat across the transcript if each page carries its own echo.
 

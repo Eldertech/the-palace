@@ -1,13 +1,15 @@
 ---
-title: "Ohm's Law"
+title: Ohm's Law
 type: concept
-pillars: [tools, philosophy]
+pillars:
+  - tools
+  - philosophy
 born: 2026-03
 stage: growing
 links:
   - target: "[[Logarithmic Interface Scaling]]"
     type: connects-to
-  - target: "[[Four Pillars]]"
+  - target: "[[FOUR PILLARS]]"
     type: connects-to
   - target: "[[Modes of Collaboration]]"
     type: connects-to
@@ -92,7 +94,7 @@ This pattern applies to:
 - **Inharmonicity: B ∝ 1 / Tension** (inverse relationship)
 
 ## Interactive Learning Tool
-
+<!-- Link to the html -->
 The interactive Ohm's Law explorer makes variable relationships tangible through:
 
 1. **Lock mechanism** — Choose which variable stays constant (like a real experiment)
@@ -115,7 +117,7 @@ The lock buttons work as radio buttons (only one locked at a time), making the c
 ## Related Concepts
 
 - [[Logarithmic Interface Scaling]] — Why the sliders use log scale
-- [[Four Pillars]] — Tools pillar: interface design for learning
+- [[FOUR PILLARS]] — Tools pillar: interface design for learning
 - [[Modes of Collaboration]] — Interactive exploration mode
 - [[Piano String Inharmonicity]] — Another application of inverse relationships
 

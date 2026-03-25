@@ -20,7 +20,7 @@ links:
     type: connects-to
   - target: "[[Lataral Access]]"
     type: spawned
-  - target: "[[Four Pillars]]"
+  - target: "[[FOUR PILLARS]]"
     type: connects-to
   - target: "[[Excellent Adventure]]"
     type: mirrors

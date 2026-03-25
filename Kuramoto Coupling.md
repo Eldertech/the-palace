@@ -23,7 +23,7 @@ links:
     type: connects-to
   - target: "[[Spinoza Conatus]]"
     type: mirrors
-  - target: "[[Substrate]]"
+  - target: "[[SUBSTRATE]]"
     type: enables
   - target: "[[Mixture of Experts]]"
     type: mirrors

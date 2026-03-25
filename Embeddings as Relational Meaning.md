@@ -1,7 +1,9 @@
 ---
-title: "Embeddings as Relational Meaning"
+title: Embeddings as Relational Meaning
 type: concept
-pillars: [tools, philosophy]
+pillars:
+  - tools
+  - philosophy
 born: 2024-06
 last_activated: 2026-03
 activation_count: 1
@@ -9,7 +11,7 @@ stage: growing
 links:
   - target: "[[Meaning and the Link (2014)]]"
     type: emerged-from
-  - target: "[[Substrate]]"
+  - target: "[[SUBSTRATE]]"
     type: mirrors
   - target: "[[Hyperdimensional Prism]]"
     type: connects-to

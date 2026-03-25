@@ -1,12 +1,16 @@
 ---
-title: "Preset Oracle"
+title: Preset Oracle
 type: project
-pillars: [creation, tools, philosophy, practice]
+pillars:
+  - creation
+  - tools
+  - philosophy
+  - practice
 born: 2026-01
 stage: growing
 status: complete
 links:
-  - target: "[[Four Pillars]]"
+  - target: "[[FOUR PILLARS]]"
     type: mirrors
   - target: "[[Hilaritas Generator]]"
     type: connects-to
@@ -62,7 +66,7 @@ The method works because it respects the student's interpretation. The oracle do
 
 ## Four-Pillars Compression
 
-Each challenge is a compressed exercise in the [[Four Pillars]]:
+Each challenge is a compressed exercise in the [[FOUR PILLARS]]:
 
 - **Philosophy pillar**: The anchor (Spinoza, Heidegger, etc.) provides the conceptual frame.
 - **Tools pillar**: The technical constraint forces explicit engagement with signal flow.

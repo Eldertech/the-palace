@@ -22,7 +22,7 @@ links:
   - target: "[[Hilaritas Generator]]"
     type: connects-to
 ---
-
+<!-- This needs an origin, I believe this formed from a dialectic between confuscius and eptictus, regardless it is a beautiful binary, and I wonder how a zen master would think of this binary... -->
 # The Fortress and the Threshold
 
 Two answers to the question of what a human being fundamentally *is* — and what virtue therefore requires.

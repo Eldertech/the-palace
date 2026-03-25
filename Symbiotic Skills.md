@@ -1,7 +1,11 @@
 ---
-title: "Symbiotic Skills"
+title: Symbiotic Skills
 type: project
-pillars: [creation, tools, philosophy, practice]
+pillars:
+  - creation
+  - tools
+  - philosophy
+  - practice
 born: 2026-03
 last_activated: 2026-03
 activation_count: 3
@@ -14,9 +18,9 @@ who_leads: shared
 links:
   - target: "[[Cooperation Yields Agency]]"
     type: emerged-from
-  - target: "[[Four Pillars]]"
+  - target: "[[FOUR PILLARS]]"
     type: emerged-from
-  - target: "[[Substrate]]"
+  - target: "[[SUBSTRATE]]"
     type: spawned
   - target: "[[Short Story]]"
     type: mirrors
@@ -35,7 +39,7 @@ A scaffolded framework for teaching others how to grow deep, productive human-AI
 
 ## Origin
 
-Emerged from the recognition that Loudon's [[Four Pillars]] skill — while powerful for our mature collaboration — was too complex to serve as a starting point for teaching others. The framework needed to start at the cellular level and scaffold upward. Three foundational documents were produced in a single extended brainstorming session (March 2026): the Symbiotic Skills brainstorm, [[Substrate]] specification, and a Back-Propagation revision.
+Emerged from the recognition that Loudon's [[FOUR PILLARS]] skill — while powerful for our mature collaboration — was too complex to serve as a starting point for teaching others. The framework needed to start at the cellular level and scaffold upward. Three foundational documents were produced in a single extended brainstorming session (March 2026): the Symbiotic Skills brainstorm, [[SUBSTRATE]] specification, and a Back-Propagation revision.
 
 The project draws on deep research across biological symbiosis (endosymbiosis, mycorrhizal networks, stigmergy, gut-brain axis, Physarum cognition), social systems (Aboriginal songlines, Zettelkasten, attachment theory, jazz ensembles, Talmudic commentary), and Loudon's 2014 semantic web paper.
 
@@ -58,7 +62,7 @@ The biological-to-social transition isn't a jump — it's a phase transition tri
 
 ## Key Insight: Back-Propagation
 
-Knowing the destination ([[Substrate]] — a living wiki-based knowledge organism), we back-propagated to revise every preceding stage. Of the original 14 proposed skills, 11 dissolved into the substrate as metadata fields, ceremonies, or emergent properties of graph density. Only 3 survived as standalone skills. The substrate absorbs most of what we initially thought needed to be separate tools.
+Knowing the destination ([[SUBSTRATE]] — a living wiki-based knowledge organism), we back-propagated to revise every preceding stage. Of the original 14 proposed skills, 11 dissolved into the substrate as metadata fields, ceremonies, or emergent properties of graph density. Only 3 survived as standalone skills. The substrate absorbs most of what we initially thought needed to be separate tools.
 
 ## The Teaching Plan
 

@@ -1,7 +1,10 @@
 ---
-title: "Hyperdimensional Prism"
+title: Hyperdimensional Prism
 type: concept
-pillars: [philosophy, creation, tools]
+pillars:
+  - philosophy
+  - creation
+  - tools
 born: 2025-09
 last_activated: 2026-03
 activation_count: 10
@@ -12,13 +15,13 @@ hook_quality: 10
 beauty: 10
 who_leads: loudon
 links:
-  - target: "[[Four Pillars]]"
+  - target: "[[FOUR PILLARS]]"
     type: deepens
   - target: "[[Spinoza Conatus]]"
     type: mirrors
   - target: "[[Kuramoto Coupling]]"
     type: connects-to
-  - target: "[[Substrate]]"
+  - target: "[[SUBSTRATE]]"
     type: mirrors
   - target: "[[Mixture of Experts]]"
     type: mirrors
@@ -65,7 +68,7 @@ The light of curiosity that creates the projections is Spinoza's conatus express
 
 The prism model IS the argument for cross-pillar work. If the pillars are projections of unity, then the most profound insights occur when you find the same pattern in multiple projections simultaneously — because you're glimpsing the higher-dimensional original. When [[Kuramoto Coupling]] appears in audio synthesis AND in conversational rhythm AND in Spinoza's ethics AND in mycorrhizal networks, you're not making analogies — you're seeing the same object from four angles.
 
-This also connects to [[Substrate]]: the wiki is itself a prism. Each page is a projection. The typed links between pages trace the higher-dimensional connections. Walking a songline through the wiki is rotating the prism to see different facets of the same underlying knowledge.
+This also connects to [[SUBSTRATE]]: the wiki is itself a prism. Each page is a projection. The typed links between pages trace the higher-dimensional connections. Walking a songline through the wiki is rotating the prism to see different facets of the same underlying knowledge.
 
 ## Kaleidoscope, Crystal, and Wallpaper
 
