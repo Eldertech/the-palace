@@ -27,6 +27,8 @@ links:
     type: enables
   - target: "[[Spinoza Conatus]]"
     type: mirrors
+  - target: "[[Palace Enchantment]]"
+    type: spawned
 ---
 
 # Pages as Agents

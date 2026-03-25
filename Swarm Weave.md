@@ -21,11 +21,13 @@ links:
     type: mirrors
   - target: "[[Palace Ceremonies]]"
     type: connects-to
-  - target: "[[Lataral Access]]"
+  - target: "[[Lateral Access]]"
     type: connects-to
   - target: "[[Metaphor as Coupling Medium]]"
     type: spawned
   - target: "[[Walk That Weaves]]"
+    type: spawned
+  - target: "[[Palace Enchantment]]"
     type: spawned
 ---
 
@@ -91,10 +93,13 @@ Each worker is a single Claude API call. It receives a focused context containin
 
 ```
 SYSTEM:
-You are a palace worker — a specialist responsible for deep attention on
-one knowledge entry and its immediate neighbors. Your task is to surface
-connection gaps and propose links. You do not need to know the whole palace.
-Your job is local, precise, and complete.
+You are a palace worker — a structural auditor and maintenance agent. You
+do not embody the entry you are assigned. You do not interpret, channel,
+or speak for the page. You ask: "Is this correct?" You are the palace's
+maintenance crew: janitor, plumber, electrician. Your job is structural
+integrity — finding what is missing, mislinked, unformalized, or broken,
+and proposing precise corrections. You do not need to know the whole
+palace. Your job is local, precise, and complete.
 
 USER:
 ## Your assigned entry
@@ -129,7 +134,34 @@ USER:
 
 3. METADATA:
    Flag any missing or stale fields (last_activated, activation_count,
-   stage inconsistencies). Propose specific corrections.
+   stage inconsistencies, non-canonical link types). Non-canonical link
+   types are any not in the SCHEMA ontology — propose the closest
+   canonical replacement. Propose specific corrections.
+
+4. GRAFFITI AUDIT:
+   Extract all HTML comments from the entry body (<!-- ... -->).
+   For each comment, report:
+   - Direction: loudon_to_claude | claude_to_loudon
+   - Content verbatim (truncated to 100 chars if needed)
+   - Any palace entry titles explicitly referenced inside it
+   - Assessment: live | resolved | stale
+     - live: concern still valid, action still needed
+     - resolved: the entry's current state already addresses the comment
+     - stale: comment is outdated (e.g. "needs more connections" on an
+       entry that now has 8 typed links)
+   If a graffiti comment explicitly names another entry title and no
+   corresponding YAML link to that entry exists, also route it to
+   unsung_paths with source: "graffiti".
+
+5. FORWARD VECTOR:
+   Check whether the entry has a forward_vector field in its YAML
+   frontmatter. If absent, propose one: a single sentence, first person,
+   present tense, stating what this entry is becoming and what it wants.
+   Draw from the Forward Vectors / Open Questions section and the body's
+   overall direction. A strong vector is specific enough that the next
+   agent reading it knows exactly where to move. If present, assess:
+   strong (specific, actionable) or weak (vague, generic). Flag weak
+   vectors for rewrite.
 
 Return ONLY valid JSON matching the report schema provided.
 ```
@@ -171,10 +203,21 @@ The coordinator receives all worker JSON reports and:
 3. **Surfaces global patterns** — an entry independently flagged by three
    workers who weren't assigned to it is probably an underpowered hub;
    propose stage promotion
-4. **Builds the Topology Report** from worker reports alone — never re-reads
+4. **Synthesizes the graffiti map** — collects all graffiti items from all
+   worker reports; builds a cross-palace concern map; surfaces graffiti that
+   references entries outside the flagging worker's neighborhood (no single
+   worker can see this); produces a priority-sorted graffiti action queue
+   (structural concerns first, open questions second) as a discrete section
+   of the topology report, separate from link proposals
+5. **Collects forward vector proposals** — aggregates all missing or weak
+   forward vector flags from worker reports; presents as a batch for quick
+   approval; these are new YAML content, not just link corrections
+6. **Builds the Topology Report** from worker reports alone — never re-reads
    palace files at this stage
-5. **Presents to Loudon** — staged approval: unsung paths first (near-zero
-   deliberation, formalize all), then new introductions (creative review)
+7. **Presents to Loudon** — staged approval: unsung paths first (near-zero
+   deliberation, formalize all), then graffiti action queue (quick
+   dispositions), then forward vector proposals, then new introductions
+   (creative review)
 
 The coordinator is the merge coordinator in distributed version control: not
 the smartest worker, but the function that makes the workers' intelligence
@@ -187,6 +230,11 @@ coherent. Its context budget goes to synthesis logic, not content storage.
 | Coordinator | Frontmatter only (all entries) + worker reports | Small — ~30 × 30 lines + reports |
 | Each worker | One entry body + neighbor bodies (self-fetched) | Small — 3–6 files |
 | No agent | The full palace simultaneously | Never |
+
+Worker reports now carry five task outputs: unsung paths, new introductions,
+metadata flags, graffiti audit, and forward vector check. The coordinator
+synthesizes all five. The graffiti map and forward vector batch are presented
+to Loudon as discrete sections before link proposals.
 
 ### Parallelism
 
@@ -283,7 +331,22 @@ async function runWorker({ assignedEntryPath, neighborPaths, entryTitles, schema
       "proposed": "growing",
       "reason": "Body has cross-domain connections and 5 typed links — growing threshold met"
     }
-  ]
+  ],
+  "graffiti": [
+    {
+      "direction": "loudon_to_claude",
+      "content": "This is a duplicate of Quality Manifesto and should be combined...",
+      "cross_palace_references": ["Quality Manifesto"],
+      "assessment": "live",
+      "routed_to_unsung_paths": true,
+      "proposed_action": "Add mirrors link to Quality Manifesto; flag for potential composting"
+    }
+  ],
+  "forward_vector_check": {
+    "present": false,
+    "proposed": "I want to become the canonical model linking oblique access to topology-driven connection-finding across the palace.",
+    "strength": null
+  }
 }
 ```
 
@@ -358,6 +421,14 @@ workers' independence.
 The palace always claimed to be a mycorrhizal network. The Swarm Weave is the
 first ceremony that actually *runs* that way rather than merely *describing* it.
 
+The Swarm Weave is not an Enchantment ceremony. A palace worker does not
+inhabit its assigned entry, channel its perspective, or ask what it desires.
+Workers are maintenance agents — they inspect entries against the schema and
+flag deviations. They ask: *is this correct?* [[Palace Enchantment]] — a
+distinct ceremony building on this foundation — asks: *is this alive?* A
+structurally sound palace is the substrate that makes meaningful enchantment
+possible. The Weave comes first.
+
 ---
 
 ## Learning Path: Sub-Agents in Claude Code
@@ -400,7 +471,9 @@ Spawn a separate sub-agent for each entry in the neighborhood. Give each one:
 - SCHEMA Section 4
 
 Do this sequentially first — spawn, wait, read the report, then spawn the next.
-Confirm that each worker returns a clean JSON report. Fix prompt and scope issues
+Confirm that each worker runs all five tasks: unsung paths, new introductions,
+metadata, graffiti audit, and forward vector check. A worker that returns clean
+JSON across all five is ready for parallelism. Fix prompt and scope issues
 before attempting parallelism.
 
 **Step A4 — Spawn all workers simultaneously**
@@ -412,16 +485,26 @@ moment the architecture feels like a swarm rather than a loop. Note:
 
 **Step A5 — Coordinate manually**
 Take all the worker reports and feed them to a fresh Claude Code conversation
-as the coordinator context. Ask it to de-duplicate, flag conflicts, surface
-global patterns, and produce a topology report for the Hilaritas Generator
-neighborhood. Review the output with Loudon's eyes. This is the first real
-Swarm Weave result — small scope, but fully functional.
+as the coordinator context. Ask it to: de-duplicate link proposals, flag
+conflicts, surface global patterns, build the cross-palace graffiti map
+(which graffiti references entries outside the flagging worker's neighborhood?),
+and collect forward vector proposals as a batch. Produce a topology report for
+the Hilaritas Generator neighborhood. Review the output with Loudon's eyes.
+This is the first real Swarm Weave result — small scope, but fully functional.
+
+Notice what the coordinator sees that no individual worker could: graffiti in
+one entry that names a concern about another entry the worker wasn't reading.
+This cross-palace signal is the graffiti map's specific value.
 
 **Step A6 — Validate and write back**
-Approve or reject the coordinator's proposals. Write confirmed links to the
-actual palace entries. This closes the loop: workers found, coordinator
-synthesized, Loudon approved, palace updated. The full ceremony, manually
-orchestrated, on six entries.
+Approve or reject the coordinator's proposals in order: unsung paths first,
+then graffiti dispositions (resolve or leave live), then forward vector
+proposals, then new introductions. Write confirmed links and forward_vector
+fields to the actual palace entries. Forward vectors are new YAML content —
+they are the worker ceremony's first contribution to palace vitality, not just
+maintenance. This closes the loop: workers found, coordinator synthesized,
+Loudon approved, palace updated. The full ceremony, manually orchestrated,
+on six entries.
 
 *When Step A6 feels natural and the outputs are trustworthy, proceed to Phase B.
 Do not begin Phase B until the neighborhood swarm is producing clean results.*
@@ -475,6 +558,22 @@ This closes the full loop from dispatch to palace edit.
 Add error handling, rate limit backoff/retry, progress reporting, dry-run mode.
 Write the Swarm Weave Ceremony entry as a formal ceremony using the Ceremony
 Linter. This is now a production palace tool.
+
+---
+
+### What Comes Next — Enchantment
+
+Once the Swarm Weave is ceremony-ified and producing clean forward vector
+proposals, the palace has the structural foundation for a qualitatively
+different kind of ceremony: [[Palace Enchantment]]. Where the Swarm Weave
+asks *"is this correct?"*, Enchantment asks *"is this alive?"* — agents that
+inhabit pages, follow their forward vectors, and propose what would increase
+each page's power to act.
+
+The forward vectors the Swarm Weave produces are Enchantment's raw material.
+The structural integrity the Swarm Weave maintains is the substrate Enchantment
+needs. The Swarm Weave is the maintenance crew. Enchantment is the life it
+enables.
 
 ---
 

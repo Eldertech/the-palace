@@ -19,6 +19,8 @@ links:
     type: mirrors
   - target: "[[Pages as Agents]]"
     type: connects-to
+  - target: "[[Palace Enchantment]]"
+    type: spawned
 ---
 
 # Enchanted Worker
