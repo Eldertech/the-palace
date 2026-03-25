@@ -24,6 +24,8 @@ links:
     type: deepens
   - target: "[[Swarm Weave]]"
     type: spawned
+  - target: "[[Excellent Adventure]]"
+    type: enables
 ---
 
 # Metaphor as Coupling Medium

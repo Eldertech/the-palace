@@ -23,6 +23,8 @@ links:
     type: connects-to
   - target: "[[Meaning and the Link (2014)]]"
     type: connects-to
+  - target: "[[Frequency-Time Duality]]"
+    type: mirrors
 ---
 <!-- This needs an origin, I believe this formed from a dialectic between confuscius and eptictus, regardless it is a beautiful binary, and I wonder how a zen master would think of this binary... -->
 # The Fortress and the Threshold

@@ -18,6 +18,8 @@ links:
     type: connects-to
   - target: "[[Boundary-Crossing Instruments]]"
     type: connects-to
+  - target: "[[Endosymbiosis]]"
+    type: mirrors
   - target: "[[Particle Synthesis]]"
     type: connects-to
   - target: "[[Neural Granular Synthesis]]"

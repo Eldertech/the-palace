@@ -22,6 +22,8 @@ links:
     type: enables
   - target: "[[4 Pillars Framework - The Founding Conversation]]"
     type: emerged-from
+  - target: "[[Hilaritas Generator]]"
+    type: enables
 ---
 
 # Quality Manifesto

@@ -25,6 +25,12 @@ links:
     type: mirrors
   - target: "[[Symbiotic Skills]]"
     type: connects-to
+  - target: "[[Granular Synthesis]]"
+    type: mirrors
+  - target: "[[Pages as Agents]]"
+    type: mirrors
+  - target: "[[Swarm Weave]]"
+    type: mirrors
 ---
 # Endosymbiosis
 

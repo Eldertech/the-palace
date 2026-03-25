@@ -27,6 +27,8 @@ links:
     type: spawned
   - target: "[[Walk That Weaves]]"
     type: spawned
+  - target: "[[Endosymbiosis]]"
+    type: mirrors
 ---
 
 # Swarm Weave

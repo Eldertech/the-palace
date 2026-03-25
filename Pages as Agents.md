@@ -27,6 +27,8 @@ links:
     type: enables
   - target: "[[Spinoza Conatus]]"
     type: mirrors
+  - target: "[[Endosymbiosis]]"
+    type: mirrors
 ---
 <!-- Pages as agents will be a powerful connection with our "person" pages, and with giving each page a "forward vector" Any entry we create for a person should have a clear purpose of "embodying" that person when loaded into the context of an agent. Currently, many of our "persons" pages are based around the four pillars(these exist in the artifacts folder for now) But, those pages need to be developed so that they can enchant a worker and their individual personalities can be brought to any problem we are encountering, and they can enter conversations where their input would be most useful -->
 
@@ -45,7 +47,7 @@ A single palace entry, loaded alone, gives an agent:
 
 **Its own nature.** Type and stage declare what kind of thing it is and how mature. A spore knows it is dormant. A hub knows it organizes a region. A question knows it is unresolved tension.
 
-**Its pheromone concentration.** Activation count and born date together tell the story of how well-traveled this entry is. Born three months ago, activated twice — a thin trail. Born last week, activated twelve times — a dense one. The model reads this the way an ant reads chemical gradient: the signal is stronger where more agents have passed.
+**Its pheromone concentration.** Activation count and born date together tell the story of how well-traveled this entry is. Born three months ago, activated twice — a thin trail. Born last week, activated twelve times — a dense one. The model reads this the way an ant reads chemical gradient: the signal is stronger where more agents have passed.  The content of the page itself is the full pheromone trail.
 
 **The shape of its neighborhood without seeing it.** Typed links in YAML frontmatter give the entry its relational fingerprint — who it enables, what it contradicts, what it emerged from. The names of neighbors are present. Their current content is not. The entry knows its connections without knowing their state — a partial knowledge that is itself information.
 

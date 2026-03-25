@@ -18,10 +18,12 @@ links:
     type: deepens
   - target: "[[SUBSTRATE]]"
     type: deepens
-  - target: "[[Tiered Context Loading]]"
+  - target: "[[JEWEL]]"
     type: enables
   - target: "[[Cooperation Yields Agency]]"
     type: couples-with
+  - target: "[[Pheromone Trail]]"
+    type: connects-to
 ---
 <!-- This is very related to our Pages as Agents concept, and easily understood with a entry that is specifically around a single person. We should design the persons page to become a strong context injection that would encourage a model to think like the person and approach problems like that person would. -->
 
@@ -78,4 +80,4 @@ The palace is not a tool Loudon uses. It is the conditions under which a particu
 
 **[[Pheromone Trail]]** — The mechanism by which palace entries accumulate the history of their own navigation, making the substrate increasingly tuned to what has been generative.
 
-**[[Tiered Context Loading]]** — The architectural protocol that operationalizes this insight.
+**[[JEWEL]]** — The architectural protocol that operationalizes this insight.

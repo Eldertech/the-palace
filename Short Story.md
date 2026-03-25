@@ -28,7 +28,7 @@ links:
   - target: "[[Trickster]]"
     type: connects-to
   - target: https://claude.ai/chat/5e5e6393-52f7-4db4-bd4f-9e622e90d3f7
-    type: sourced-from
+    type: connects-to
 ---
 
 # Short Story

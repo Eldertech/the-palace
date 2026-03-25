@@ -13,6 +13,7 @@ energy: medium
 hook_quality: 6
 beauty: 6
 who_leads: loudon
+revival_conditions: Continued work with Max/MSP and JavaScript — building interface-heavy plugins or teaching JSUI as a bridge between Max, web graphics, and visual metaphor.
 links:
   - target: "[[Retrospective Delay]]"
     type: spawned
