@@ -133,6 +133,24 @@ USER:
    Flag any missing or stale fields (last_activated, activation_count,
    stage inconsistencies). Propose specific corrections.
 
+4. GRAFFITI AUDIT:
+   Extract all HTML comments from the entry body (<!-- ... -->).
+   For each comment, report:
+   - Direction: loudon_to_claude (unsigned comment) or
+     claude_to_loudon (prefixed <!-- CLAUDE → LOUDON: ... -->)
+   - The comment text verbatim
+   - Any palace entry titles explicitly referenced inside it
+   - Assessment:
+     - live: concern still valid, action still needed
+     - resolved: the entry's current state already addresses the comment
+     - stale: the concern has been superseded (e.g. "needs more
+       connections" on an entry now with 8 typed links)
+   IMPORTANT: if a comment names another entry and no corresponding YAML
+   frontmatter link exists, route it to unsung_paths with
+   source: "graffiti" — do not leave it in graffiti only. A
+   comment-level reference that names a connection is an unsung path;
+   the prose already asserts the relationship. Treat it as such.
+
 Return ONLY valid JSON matching the report schema provided.
 ```
 
@@ -175,8 +193,26 @@ The coordinator receives all worker JSON reports and:
    propose stage promotion
 4. **Builds the Topology Report** from worker reports alone — never re-reads
    palace files at this stage
-5. **Presents to Loudon** — staged approval: unsung paths first (near-zero
-   deliberation, formalize all), then new introductions (creative review)
+5. **Synthesizes the graffiti map** — collects all graffiti items from all
+   worker reports into a single cross-palace view. Looks for:
+   - Comments referencing an entry outside the reporting worker's
+     neighborhood (the worker couldn't follow the reference; the
+     coordinator routes it to the relevant neighbor worker retroactively,
+     or surfaces it directly as a coordinator-level finding)
+   - Entries appearing in multiple workers' graffiti reports — consistently
+     unresolved signals across the palace, not local concerns; these rank
+     highest in the action queue
+   - Unresolved loudon_to_claude graffiti across all entries — the full
+     outstanding instruction queue visible in one place for the first time
+   Produces a **graffiti action queue** sorted by priority: structural
+   concerns first (duplicate entries, broken claims, unresolved tensions
+   that have become contradictions), then open questions, then stale items
+   proposed for removal. This queue is distinct from the link proposals and
+   goes to Loudon before them — graffiti is often cheaper to act on and
+   its resolution can clarify link proposals that follow.
+6. **Presents to Loudon** — staged approval in three passes:
+   graffiti action queue first, then unsung paths (near-zero deliberation,
+   formalize all confirmed), then new introductions (creative review)
 
 The coordinator is the merge coordinator in distributed version control: not
 the smartest worker, but the function that makes the workers' intelligence
@@ -284,6 +320,22 @@ async function runWorker({ assignedEntryPath, neighborPaths, entryTitles, schema
       "current": "sprout",
       "proposed": "growing",
       "reason": "Body has cross-domain connections and 5 typed links — growing threshold met"
+    }
+  ],
+  "graffiti": [
+    {
+      "direction": "loudon_to_claude",
+      "content": "This is a duplicate of Quality Manifesto and should be combined into that one",
+      "cross_palace_references": ["Quality Manifesto"],
+      "assessment": "live",
+      "routed_to_unsung_paths": true
+    },
+    {
+      "direction": "claude_to_loudon",
+      "content": "CLAUDE → LOUDON: The jewel as poem, each page a stanza — this describes the actual structure...",
+      "cross_palace_references": [],
+      "assessment": "resolved",
+      "reasoning": "JEWEL.md has been substantially developed since this was written"
     }
   ]
 }
