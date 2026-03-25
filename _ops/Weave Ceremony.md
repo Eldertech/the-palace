@@ -127,7 +127,7 @@ Identify pairs of entries that should be connected but are NOT already named in 
 - Name the proposed link type and direction
 - Give one sentence of reasoning
 
-**Rate limit: propose no more than 5 new introductions per Weave.** If more candidates exist, choose the ones that feel most alive right now. This constraint is intentional and serves two purposes: it forces curation (a new introduction should feel earned, not automatic) and it keeps the palace's growth slow enough to remain deliberate. A typed link is a permanent claim about the structure of knowledge. The palace and its gardener both benefit from a slow metabolism.
+**Rate limit: propose no more than 15 new introductions per Weave.** If more candidates exist, choose the ones that feel most alive right now. This constraint is intentional and serves two purposes: it forces curation (a new introduction should feel earned, not automatic) and it keeps the palace's growth slow enough to remain deliberate. A typed link is a permanent claim about the structure of knowledge. The palace and its gardener both benefit from a slow metabolism.
 
 Present to Loudon. Add confirmed links to the appropriate entry frontmatter.
 

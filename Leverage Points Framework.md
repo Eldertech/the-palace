@@ -19,9 +19,9 @@ links:
   - target: "[[Quality Manifesto]]"
     type: enables
   - target: "[[FOUR PILLARS]]"
-    type: applies-to
+    type: connects-to
   - target: "[[4 Pillars Weekly Structure]]"
-    type: applies-to
+    type: connects-to
   - target: "[[4 Pillars Framework - The Founding Conversation]]"
     type: emerged-from
   - target: "[[Meadows and Music — Leverage Points]]"
