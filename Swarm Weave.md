@@ -21,7 +21,7 @@ links:
     type: mirrors
   - target: "[[Palace Ceremonies]]"
     type: connects-to
-  - target: "[[Lataral Access]]"
+  - target: "[[Lateral Access]]"
     type: connects-to
   - target: "[[Metaphor as Coupling Medium]]"
     type: spawned

@@ -18,7 +18,7 @@ links:
     type: connects-to
   - target: "[[Swarm Weave]]"
     type: emerged-from
-  - target: "[[Lataral Access]]"
+  - target: "[[Lateral Access]]"
     type: mirrors
   - target: "[[Kuramoto Coupling]]"
     type: connects-to
@@ -64,7 +64,7 @@ unresolved question.
 
 ## The Oblique Approach Applied to the Palace Itself
 
-There is a deeper resonance here. [[Lataral Access]] argues that habitual routes
+There is a deeper resonance here. [[Lateral Access]] argues that habitual routes
 through a landscape find only what they've found before. The Weave's habitual
 route is the full-census approach. A Walk That Weaves would be a different song
 sung through the same territory — and different country would become visible
