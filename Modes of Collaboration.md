@@ -25,6 +25,8 @@ links:
     type: connects-to
   - target: "[[Ohm's Law]]"
     type: connects-to
+  - target: "[[Dialectic]]"
+    type: connects-to
 ---
 
 # Modes of Collaboration

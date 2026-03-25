@@ -31,6 +31,8 @@ links:
     type: connects-to
   - target: "[[The Fortress and the Threshold]]"
     type: connects-to
+  - target: "[[Dialectic]]"
+    type: couples-with
 ---
 # Excellent Adventure
 

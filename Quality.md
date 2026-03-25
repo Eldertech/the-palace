@@ -17,6 +17,8 @@ links:
     type: connects-to
   - target: "[[Spinoza Conatus]]"
     type: mirrors
+  - target: "[[Quality Manifesto]]"
+    type: mirrors
 ---
 <!-- This is a duplicate of Quality Manifesto and should be combined into that one -->
 # Quality

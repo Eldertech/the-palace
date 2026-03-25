@@ -30,6 +30,10 @@ links:
     type: connects-to
   - target: "[[Spinoza Conatus]]"
     type: connects-to
+  - target: "[[Hyperdimensional Prism]]"
+    type: connects-to
+  - target: "[[Granular Synthesis]]"
+    type: connects-to
 ---
 
 # Trickster

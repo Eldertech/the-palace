@@ -18,7 +18,7 @@ links:
     type: mirrors
   - target: "[[Symbiotic Skills]]"
     type: connects-to
-  - target: "[[Lataral Access]]"
+  - target: "[[Lateral Access]]"
     type: spawned
   - target: "[[FOUR PILLARS]]"
     type: connects-to

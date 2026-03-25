@@ -3,7 +3,7 @@ title: "Harmonicity and Inharmonicity"
 type: concept
 pillars: [creation, tools, philosophy]
 born: 2026-03
-stage: seed
+stage: sprout
 confidence: working
 energy: high
 hook_quality: 8

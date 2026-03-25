@@ -24,6 +24,8 @@ links:
     type: applies-to
   - target: "[[4 Pillars Framework - The Founding Conversation]]"
     type: emerged-from
+  - target: "[[Meadows and Music — Leverage Points]]"
+    type: couples-with
 ---
 
 # Leverage Points Framework

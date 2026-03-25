@@ -3,7 +3,7 @@ title: "Granular Synthesis"
 type: concept
 pillars: [creation, tools]
 born: 2026-03
-stage: seed
+stage: sprout
 confidence: working
 energy: medium
 hook_quality: 7

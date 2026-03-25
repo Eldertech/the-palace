@@ -23,6 +23,8 @@ links:
     type: connects-to
   - target: "[[Action Potential Oscillator]]"
     type: connects-to
+  - target: "[[Kuramoto Coupling]]"
+    type: couples-with
 last_activated: 2026-03
 activation_count: 1
 ---

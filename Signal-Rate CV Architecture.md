@@ -16,6 +16,8 @@ links:
     type: mirrors
   - target: "[[FOUR PILLARS]]"
     type: connects-to
+  - target: "[[Biomechanical Synthesis]]"
+    type: enables
 ---
 
 # Signal-Rate CV Architecture

@@ -21,7 +21,7 @@ links:
     type: deepens
   - target: "[[Kuramoto Coupling]]"
     type: mirrors
-  - target: "[[Lataral Access]]"
+  - target: "[[Lateral Access]]"
     type: connects-to
   - target: "[[SCHEMA]]"
     type: enables
@@ -149,7 +149,7 @@ Each actor is an independent process with its own state, no shared memory, commu
 Each cell follows a simple local rule. Complex global behavior emerges from local interactions alone. No cell knows the whole board. The board's behavior emerges anyway. A palace of page-agents, each following its own derived drive, produces collective behavior — the Weave — without any agent needing to hold the whole graph.
 
 **Lateral access**
-You cannot retrieve certain interior material by going directly for it. The page-agent model creates an indirect access path: the model that inhabits a page-agent doesn't approach the palace from above, as a surveyor. It approaches from inside one entry, following the drive that entry has earned through its own pheromone trail. What the palace knows about itself is accessed laterally, through traversal, not by census. See [[Lataral Access]].
+You cannot retrieve certain interior material by going directly for it. The page-agent model creates an indirect access path: the model that inhabits a page-agent doesn't approach the palace from above, as a surveyor. It approaches from inside one entry, following the drive that entry has earned through its own pheromone trail. What the palace knows about itself is accessed laterally, through traversal, not by census. See [[Lateral Access]].
 
 **The Jewel and reinforcement**
 The jewel was designed to orient a fresh agent to the whole palace before the working context begins. The page-agent model offers a complementary reinforcement mechanism: if every page carries its own identity declaration and forward vector, the palace's fundamental commitments are restated at every node. An agent traversing five entries reads five micro-orientations. The jewel doesn't need to repeat in the transcript — the palace repeats it.

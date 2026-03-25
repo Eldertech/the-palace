@@ -29,7 +29,7 @@ links:
     type: mirrors
   - target: "[[Action Potential Oscillator]]"
     type: couples-with
-  - target: "[[Lataral Access]]"
+  - target: "[[Lateral Access]]"
     type: mirrors
   - target: "[[Harmonicity and Inharmonicity]]"
     type: couples-with
