@@ -29,10 +29,9 @@ links:
 # Reverb and Space
 ## The Architecture of Absence
 
-**Week 7 | Fundamental**
-**Philosopher:** Martin Heidegger
+**Difficulty:** Fundamental | **Philosopher:** Martin Heidegger
 
-**The Pattern:** Space isn't empty—it's what allows dwelling. Reverb doesn't add sound—it reveals the space that was always there.
+Every room has a voice. Alvin Lucier proved this in 1969 by recording himself speaking, playing that recording back into the same room, recording again — repeating until the human voice dissolved entirely and only the room's own resonant frequencies remained. Martin Heidegger — whose essay "Building Dwelling Thinking" is the philosophical text here — would have called this dwelling: the idea that space is not an empty container but a lived environment, shaped by and shaping the beings within it. Reverb in music is the trace of this — the acoustic signature of a space pressed into sound. Three composition experiments ask you to work with space itself as material: vast cathedral, intimate room, and the stark confrontation of no reverb at all. Work with an AI to build a convolution reverb that uses impulse responses you capture yourself — a bathroom, a stairwell, a parking garage. The daily practice is the simplest thing in this entire series: sit in a room, say nothing, and listen. Listen to Lucier's "I Am Sitting in a Room," William Basinski's *Disintegration Loops*, Burial's *Untrue*.
 
 ---
 
@@ -49,12 +48,13 @@ links:
 2. Tight room (intimate, close space)
 3. No reverb (direct, confrontational)
 
-### Tools Pillar
-**Build:** Max convolution reverb with custom impulse responses
-- Record impulse response from real spaces
-- Convolution engine
-- Wet/dry control
-- Pre-delay parameter
+### Tools (Build With AI)
+
+**Concept:** A convolution reverb that uses recordings you make yourself as impulse responses. Record a clap in your bathroom — that recording contains the acoustic signature of the room. Apply it to any dry audio and the audio will sound as if it's in your bathroom.
+
+**Start here:** Ask an AI: *"Help me build a browser-based convolution reverb. I record a short clap or snap, and the tool uses that recording as an impulse response to apply the same room's acoustic character to any other audio I play through it. I need wet/dry control and a pre-delay slider. Keep it simple enough that I can actually use it."*
+
+Before doing the three-spaces composition assignment, capture three rooms in your home — bathroom, stairwell, and a closet or small bedroom. Apply each to the same dry piano or synth recording. The experience of hearing your bathroom's acoustic fingerprint on a piano note will tell you more about what reverb actually IS than any amount of reading. Space is not decoration. Space is material.
 
 ### Philosophy Pillar
 **Reading:** Heidegger - "Building Dwelling Thinking"
@@ -244,4 +244,26 @@ When you think "this space feels right"—**Heidegger's dwelling achieved**.
 
 ---
 
-*Reverb isn't effect. It's revealing space that exists. Heidegger: space isn't void, it's dwelling. Lucier: room has voice. Burial: wrong reverb can feel more right. Space = time. Reflections = memory. Cathedral = transcendence. You don't add reverb. You reveal the room.*
+## Resources
+
+**Music to Study:**
+- Alvin Lucier - *I Am Sitting in a Room* (the room as instrument, space as subject)
+- William Basinski - *Disintegration Loops* (tape decay as spatial and temporal reverb)
+- Burial - *Untrue* (reverb as emotional atmosphere, not acoustic realism)
+
+**Musical Reading:**
+- Barry Blesser & Linda-Ruth Salter - *Spaces Speak, Are You Listening?* (the definitive book on acoustic ecology and spatial hearing)
+- Geoff Emerick - *Here, There and Everywhere* (Beatles recording — the spatial innovations of Abbey Road)
+
+**Philosophical Reading:**
+- Martin Heidegger - "Building Dwelling Thinking" (essay, available online — the source of the dwelling concept)
+- Gaston Bachelard - *The Poetics of Space* (phenomenology of rooms, attics, corners — directly applicable to sonic space)
+
+**Further Exploration:**
+- Acoustic ecology: the work of R. Murray Schafer and the World Soundscape Project
+- The history of artificial reverb: from chambers to plates to springs to digital
+- How different cultures use space in music (Japanese *ma*, concert hall design, church acoustics)
+
+---
+
+*"I am sitting in a room different from the one you are in now."* — Alvin Lucier, *I Am Sitting in a Room*

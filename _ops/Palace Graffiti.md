@@ -45,7 +45,7 @@ Both forms are invisible in all Markdown renderers and exports. They exist only 
 
 ## The Trickster in the Palace
 
-In myth, the trickster is a figure who moves through spaces they don't officially own. The trickster leaves marks — sometimes destructive, sometimes generative, always oblique. The trickster disrupts linearity, exposes hidden rules, names the unnamed, and moves in unexpected ways.
+In myth, the [[Trickster]] is a figure who moves through spaces they don't officially own. The trickster leaves marks — sometimes destructive, sometimes generative, always oblique. The trickster disrupts linearity, exposes hidden rules, names the unnamed, and moves in unexpected ways.
 
 Loudon's practice in the palace is precisely this:
 
