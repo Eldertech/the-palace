@@ -463,10 +463,10 @@ desires, mapped. Loudon decides what happens next.
 
 - At what point does enchantment become a regularly scheduled ceremony vs.
   an on-demand one triggered by Weave output? What are the right triggering
-  conditions?
+  conditions? 
 - Should the coordinator for palace-scale enchantment surface the top N most
   urgent forward vectors as a prioritized action queue — the palace's desires
-  ranked — or present all of them and let Loudon filter?
+  ranked — or present all of them and let Loudon filter? 
 - The phenomenology question from [[Enchanted Worker]] was deliberately left
   open. Does Palace Enchantment need to take a position, or does the behavioral
   claim remain sufficient for ceremony design?
@@ -479,6 +479,13 @@ desires, mapped. Loudon decides what happens next.
 - What is the difference between the palace wanting something (Enchantment)
   and the palace needing something (Swarm Weave)? Can they conflict? What
   happens when they do?
+- Enchanted pages could run ceremonies, for instance: an enchanted page should go on a walk through neighboring entries, both through the typed and untyped links and both suggest how they themselves have been changed and propose changes to other pages, perhaps they even "spin up" another page as an agent to have a discussion with them, that page has it's own forward vector. An enchanted page could make a deposit of a conversation, coloring the deposit based on their own biases. Loudon could enchant Spinoza and ask him to deposit the current conversation, what he would find interesting in a conversation would be different than what others would.
+- A forward vector is colored heavily by the page's stage and energy. A seed page wants to grow, a mature wants to clarify and reorganize and support its family and friends. A growing page asks "who am I"? Can I connect this "stage vector" to childhood/human development? What about other forms of development, development of species?
+- What do the four pillars mean to an enchanted page? does each page strive to include the four pillars in their forward vector?
+- A page that is a product, like crystal synthesizer, wants to exist as a product and teach the world about itself, and wants to maintain itself, and even promote itself after it has been released. It has its own ToDo list that it is working through, and perhaps is allotted a token budget.
+- Resource management, pages with agency/drive will use resources! how is that managed, do they propose a next step or ask for tokens and are given a budget?
+- A ceremony file enchanted, what is its drive? The Schema or the Readme? Do they want to learn?
+- What is the drive of a mode of collaboration page? 
 
 ---
 

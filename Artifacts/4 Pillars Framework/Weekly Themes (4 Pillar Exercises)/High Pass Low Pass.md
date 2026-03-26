@@ -27,9 +27,9 @@ links:
 # High Pass Low Pass
 ## What You Remove Defines What Remains
 
-**Week 4 Theme** | **Difficulty:** Fundamental | **Philosopher:** Lao Tzu
+**Difficulty:** Fundamental | **Philosopher:** Lao Tzu
 
-A high-pass filter removes lows. A low-pass filter removes highs. But filtering isn't about what you cut—it's about revealing what was always there. Lao Tzu wrote: *"We shape clay into a pot, but it is the emptiness inside that holds whatever we want."* The cut is the point. What remains is what you chose to keep.
+Western music production teaches addition: more layers, more effects, more processing. Lao Tzu — whose *Tao Te Ching* is the philosophical text here — taught the opposite: *"To attain knowledge, add things every day. To attain wisdom, subtract things every day."* The three assignments impose a single constraint: only filters, no additive processing. You'll carve melody, bassline, and rhythm out of white noise using subtraction alone. Work with an AI to build a visualizer that shows what's absent from the frequency spectrum rather than what's present — a small inversion that permanently changes how you hear a mix. The daily practice runs the same logic through your schedule. Listen to Alva Noto's *Xerrox* series, Autechre's "Gantz Graf," Ryuichi Sakamoto's *async* — three composers who understood that removal is composition.
 
 ## The Four Pillars Integration
 
@@ -62,43 +62,13 @@ A high-pass filter removes lows. A low-pass filter removes highs. But filtering 
 - Series vs. parallel filtering
 - The relationship between filter frequency and musical pitch
 
-### Tools (Max/MSP Technology)
-**Build:** Negative space visualizer
+### Tools (Build With AI)
 
-**The Concept:**
-A patch that shows what you're removing, not what you're keeping. Most spectrum analyzers show you what's there. This one shows you what's absent.
+**Concept:** A spectrum visualizer that inverts the normal view — showing the frequencies that have been removed rather than the ones that remain. Where there's signal, the display goes dark. Where there's absence, it glows.
 
-**The Patch:**
-```
-[adc~]  ← Input signal
-    |
-[fft~]  ← Frequency analysis
-    |
-    ├─[cartopol~]  ← Convert to magnitude
-    |      |
-    |  [!- 1.]  ← Invert (1 - magnitude = absence)
-    |      |
-    |  [clip~ 0. 1.]
-    |      |
-    └─[matrix~]  ← Visual display
-         |
-    [jit.pwindow]  ← Show the absence, not the presence
+**Start here:** Ask an AI: *"Help me build a browser-based audio spectrum analyzer, but inverted — instead of showing what frequencies are present, show what's been removed. The more energy at a frequency, the darker that band gets. I want to see the sculpture, not the clay."*
 
-Visualization options:
-- Black = frequencies present
-- White = frequencies absent
-- Result: See the sculpture, not the clay
-```
-
-**The Practice:**
-1. Play a full mix through the patch
-2. Watch the absence visualization
-3. Sweep a hi-pass filter up
-4. The white areas grow (more absence)
-5. Ask: What did I choose to keep?
-
-**The Insight:**
-Lao Tzu: *"Thirty spokes share the wheel's hub; it is the center hole that makes it useful."* The filter's usefulness is in what it removes, not what it passes.
+Play a full mix through it. Then sweep a high-pass filter slowly upward and watch the glow spread across the low end. That spreading white is what you chose to remove. Lao Tzu: *"Thirty spokes share the wheel's hub; it is the center hole that makes it useful."* The visualizer makes the center hole visible. Build it before doing the filter-only composition assignments — it will change what you hear.
 
 ### Philosophy (Taoist Practice)
 **Reading:** Lao Tzu - *Tao Te Ching* (Chapters 11, 28, and 48)
@@ -286,4 +256,4 @@ If yes to these: **the theme succeeded**, regardless of the final sound.
 
 ---
 
-*The empty pot holds water. The empty room holds presence. The filtered mix holds clarity. Wu wei: Do less, achieve more. Cut wisely. What remains is what you chose.*
+*"To attain knowledge, add things every day. To attain wisdom, subtract things every day."* — Lao Tzu, *Tao Te Ching*
