@@ -81,11 +81,11 @@ Each theme includes:
 
 **Phase 2 - Weekly Themes:**
 - [[Weekly Themes Database]] - Hub entry for all themes
-- [[The Kick Drum Paradox]] - Week 1: Leverage points
+- [[Kick Drum Paradox]] - Week 1: Leverage points
 - [[Four on the Floor]] - Week 2: Repetition as meditation
-- [[The First Sound]] - Week 3: Beginnings shape everything
+- [[First Sound]] - Week 3: Beginnings shape everything
 - [[High Pass Low Pass]] - Week 4: Subtraction reveals
-- [[The 808]] - Week 5: Limitations become signature
+- [[808 and Limitation]] - Week 5: Limitations become signature
 
 **Phase 3 - Cross-Domain Resonances:**
 - [[Cross-Domain Resonances]] - Hub entry for pattern network

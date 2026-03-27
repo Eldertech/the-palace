@@ -16,8 +16,135 @@ links:
 ---
 
 # Interview Subjects — Book and Web Series
+---
+<!-- https://yohasebe.com/tcse/ is a ted talk search engine, there is a to-do in the palace to build a skill around using it. This page of philosophers philosophies and interview subjects should be used as a resource for finding relevant ted talks to watch, find interview subject, and find cool quotes. I think ted talkers would be engaging subjects for interviews, and many have an explicit goal of bringing classic thought into a modern context, very much in alignment with our working process -->
+## Part I: The Opening Argument — Four Pillars Meta-Alignment
 
-This document maps every Weekly Theme to the best living interview subjects. Where the theme's primary philosopher is still living, they're listed first as a **primary source**. Where the philosopher is historical, the list pivots to living practitioners, theorists, or artists who embody the theme most directly.
+Before the 40 weekly themes, the book and series need an opening that establishes the philosophical premise: that making music is not just a technical skill but a mode of self-knowledge; that the tools we use have philosophical stakes; that creative practice is inseparable from the well-lived life. This is not an original claim — it has a lineage — and that lineage is the subject of Part I.
+
+The Four Pillars framework rests on a single foundational argument: that aesthetic and technical decisions in creative practice are simultaneously philosophical and psychological acts, and that integrating them — rather than treating craft, tools, ideas, and wellbeing as separate domains — is how human flourishing through creative work actually happens. The thinkers below have each made versions of this argument from different directions. Interviews with them would situate the curriculum within the broader intellectual tradition it belongs to, and give the series its opening philosophical register.
+
+---
+
+### Alain de Botton *(born 1969)*
+**The Therapeutic Stakes of Aesthetic Choice**
+
+De Botton's project — across *The Architecture of Happiness*, *Art as Therapy*, *The Consolations of Philosophy*, and The School of Life — is to return philosophy to its original function: not academic analysis but practical guidance for living. His central claim is that aesthetic choices have real psychological stakes, that beauty is not decoration but a necessity, that the spaces and objects and art we surround ourselves with are arguments about who we are trying to become.
+
+This is the philosophical premise of the Four Pillars framework restated from outside music. Every production decision — the reverb on a vocal, the shape of an arrangement, the first sound — is an argument about what matters and what a moment of experience should feel like. De Botton has built an entire public institution (The School of Life) on the claim that art is a form of emotional education. The Four Pillars curriculum is the music production version of that institution.
+
+**Specific books to draw from:** *The Architecture of Happiness* (for the built-environment parallel to arrangement), *Art as Therapy* (the therapeutic framework applied to aesthetic choices generally), *The Consolations of Philosophy* (philosophy as practical life guidance).
+
+**The interview question:** "You've argued that beauty is a necessity, not a luxury. What does that claim mean specifically for music production — for the decisions producers make in the arrangement, the mix, the first sound of a record?"
+
+---
+
+### Richard Sennett *(born 1943)*
+**Craft as a Mode of Knowing**
+
+Sennett's *The Craftsman* (2008) is the most directly relevant book to the Four Pillars framework that has been written by someone outside music. Its central argument: skilled making is a form of thinking. The hand teaches the mind. The 10,000 hours of practice that produces mastery is not just motor learning — it is a sustained form of inquiry into the nature of materials, resistance, and possibility. Sennett argues that the division between thinking and doing — between the theorist and the craftsperson — is one of the most damaging intellectual legacies of Western culture, and that craft's rehabilitation is both an aesthetic and a political act.
+
+The Four Pillars framework is Sennett's argument applied to music production: that the producer at the DAW is a craftsperson in the full philosophical sense, that the technical and the philosophical cannot be separated, that the 10,000 hours is the education.
+
+**Also relevant:** *Together: The Rituals, Pleasures and Politics of Cooperation* (2012) — on collaborative making — and *Building and Dwelling* (2018) — on the relationship between the built environment and the life lived within it.
+
+**The interview question:** "Your work argues that skilled making is a form of intelligence that can't be reduced to following instructions. How does that apply to digital tools — when the tool can generate a beat or suggest a chord progression, what is the craftsperson's role?"
+
+---
+
+### Matthew Crawford *(born ~1963)*
+**Making as Philosophical Attention**
+
+Crawford's *Shop Class as Soulcraft* (2009) and *The World Beyond Your Head* (2015) argue that physical, skilled engagement with resistant materials — the kind that requires you to pay attention, that pushes back, that doesn't do what you expect — develops a specific kind of intelligence that abstract, screen-mediated work cannot replicate. He came to this argument after leaving a philosophy PhD and a think-tank job to open a motorcycle repair shop; the book is partly memoir, partly phenomenology of skilled practice.
+
+The relevance to the Four Pillars is the Practice pillar specifically: the argument that creative practice is not just a psychological comfort habit but a form of direct philosophical engagement with the world. And the Tools pillar: Crawford is worried about tools that do too much, that reduce the operator to a supervisor rather than a maker. His concern about the atrophy of skilled attention in a world of automated tools is exactly the tension the curriculum is navigating with AI.
+
+**The interview question:** "You've written about the difference between tools that extend skilled attention and tools that replace it. How do you think about music production software, and AI production tools specifically, through that lens?"
+
+---
+
+### David Byrne *(born 1952)*
+**The Music Maker Thinking About Making**
+
+*How Music Works* (2012) is the musician's version of the Four Pillars argument, written by the person who made *Talking Heads*, who has thought more systematically than almost any working musician about the relationship between context, constraint, and creative expression. Byrne's thesis: music is not created in a vacuum and then placed in a context; the context — the room, the technology, the cultural moment — shapes what can be made. Tiny rooms produce intimate music; large spaces produce anthems; 4-track cassette recorders produce lo-fi aesthetics; the 808 produces trap.
+
+He is also the most articulate living musician about the relationship between limitation and creativity — the argument that constraints generate expression rather than blocking it, which is the philosophical underpinning of the Tools pillar.
+
+**The interview question:** "You've argued that the technology always shapes the music, not just delivers it. What does that mean now, when the technology can generate the music itself? Is AI a context or a collaborator?"
+
+---
+
+### Albert Borgmann *(born 1937)*
+**Focal Practices and the Thinning of Experience**
+
+Borgmann is a philosopher of technology at the University of Montana, best known for his concept of "focal practices" from *Technology and the Character of Contemporary Life* (1984) — activities that engage the whole person, that gather and focus a life, that resist the thinning of experience that modern consumer technology produces. His examples: cooking a meal together, running, playing music. These are not hobbies; they are the practices through which a life acquires depth and coherence. The commodity alternative — a microwave meal, a car, recorded music — delivers the result without the engagement.
+
+The Four Pillars framework is a curriculum in focal practices. It is specifically arguing that *making* music, not just consuming it, is what produces the depth and coherence Borgmann describes. And the Tools pillar is in direct dialogue with Borgmann's worry: does a tool that does more of the making for you move you closer to the focal practice or further from it?
+
+Now in his late 80s. Still intellectually active. An interview at this age would carry the weight of someone who has been thinking about this question since before digital audio workstations existed.
+
+**The interview question:** "You drew a distinction between focal practices that engage the whole person and devices that deliver outcomes without engagement. Where does music production software sit on that spectrum — and has AI changed the answer?"
+
+---
+
+### Bret Victor *(born ~1978)*
+**Immediate Feedback and the Conditions for Creativity**
+
+Victor is a programmer and designer whose talks and essays — particularly *Inventing on Principle* (2012) and *Learnable Programming* (2012) — argue that the tools creators use determine what they can think. His central claim: when there is a significant delay between a creative decision and its visible/audible result, a fundamental part of the creative process is severed. Creators need to see what they're making *as they make it*. The history of creative tools is a history of reducing that delay.
+
+This is the philosophical underpinning of the Tools pillar's AI assignments: not "use AI to make something faster" but "use AI to see something you couldn't see before, to get feedback you couldn't get before." Victor's framework distinguishes between tools that augment perception and tools that automate production. The Four Pillars curriculum is specifically asking students to use AI as the former.
+
+**The interview question:** "You've argued that the most important thing about a creative tool is how quickly it shows you what you're making. How do you evaluate AI music tools through that lens — do they increase or decrease a creator's ability to see their own work?"
+
+---
+
+### Ellen Langer *(born 1947)*
+**Mindful Making**
+
+Harvard psychologist, author of *Mindfulness* (1989) and *On Becoming an Artist* (2005). Langer's central research finding — replicated across dozens of studies — is that conditional learning (noticing new things, staying open to uncertainty) produces better cognitive outcomes than rote learning (learning fixed facts or procedures). Her work on artists specifically argues that the mindset of "painting as if it matters" versus "painting to reproduce a technique" produces measurably different work and different states of wellbeing.
+
+The Practice pillar of the Four Pillars is essentially Langer's applied psychology: the daily reflections, the cross-domain exercises, the instruction to notice rather than execute. Her research gives the Practice pillar an empirical foundation that goes beyond the philosophical argument.
+
+**The interview question:** "Your research suggests that noticing new things — staying conditionally engaged — is the key variable in both creativity and wellbeing. What does that mean for music production, where so much of the work is procedural?"
+
+---
+
+### Kevin Kelly *(born 1952)*
+**What Technology Wants from Makers**
+
+Co-founder of *Wired*, author of *What Technology Wants* (2010) and *The Inevitable* (2016). Kelly's argument: technology is not neutral — it has inclinations, preferences, directions of development. Every tool wants something from its user. The question for a creative practitioner is not just "what can I do with this tool?" but "what does this tool want me to do, and is that aligned with what I want to make?"
+
+This is the philosophical question the Tools pillar is asking every week. The AI prompt assignments are not just productivity exercises; they are explorations of what AI tools want to produce, and whether that inclination aligns with or diverges from the student's creative intent. Kelly is the thinker who has most systematically asked this question about technology in general.
+
+**The interview question:** "You've argued that technologies have their own evolutionary logic — they want certain things. What does AI music generation want? And what does that mean for a human creative practitioner who uses it?"
+
+---
+
+### The Essential Dead Reference: John Dewey *(1859–1952)*
+**Art as Experience — The Philosophical Grandfather**
+
+No living interview is possible, but Dewey's *Art as Experience* (1934) is the philosophical grandfather of the entire Four Pillars project and should be named in the opening chapter. Dewey's argument: aesthetic experience is not a separate category of elevated encounter with special objects (museums, concert halls) — it is the ideal form of any experience, the moment when an activity becomes fully coherent, fully engaged, fully meaningful. Making and perceiving are unified. The craftsperson and the theorist are doing the same thing. Every production decision in a DAW, when made with full attention and intentionality, is an aesthetic act in Dewey's sense.
+
+The Four Pillars curriculum is *Art as Experience* rewritten for the contemporary music producer. This should be stated explicitly in the opening chapter, and Dewey's framework used to establish why the integration of Creation, Tools, Philosophy, and Practice is not a pedagogical eccentricity but a philosophical necessity.
+
+---
+
+### The Essential Dead Reference: Mihaly Csikszentmihalyi *(1934–2021)*
+**Flow — The Psychological Model**
+
+Died October 2021. His *Flow: The Psychology of Optimal Experience* (1990) is the psychological model for what the Four Pillars seeks to produce. Flow — the state in which skill meets challenge, in which self-consciousness dissolves, in which time distorts and the activity carries its own reward — is what every practice session, every production session, every Tools assignment is trying to generate. Csikszentmihalyi's research gives the Practice pillar its psychological grounding and the entire curriculum its target state.
+
+The opening chapter should name flow explicitly: the Four Pillars framework is a curriculum in generating the conditions for flow across four complementary dimensions of musical practice.
+
+---
+
+*This section should be read before any of the weekly theme interviews. The arguments these thinkers make are the philosophical water the curriculum swims in — the opening chapter needs to make that water visible.*
+
+---
+
+## Part II: Theme-by-Theme Interviews
+
+This document maps every Weekly Theme to the best living interview subjects. Where the theme's primary philosopher is still living, they're listed first as a **primary source**. Where the philosopher is historical, the list pivots to living practitioners, theorists, or artists who embody the theme most directly. Where the theme's primary philosopher is still living, they're listed first as a **primary source**. Where the philosopher is historical, the list pivots to living practitioners, theorists, or artists who embody the theme most directly.
 
 One note on method: the goal is not credential collection. The best interviews in this kind of book are with people who *practice* the ideas — who have built something, failed at something, or changed their mind about something. Prioritize the ones who will speak from experience, not just expertise.
 
@@ -69,6 +196,9 @@ Author of *Spaces Speak, Are You Listening?* — the most important book on the 
 
 **Bob Clearmountain** *(born 1956)*
 The mixing engineer whose use of room and reverb has defined the spatial character of popular records for four decades. Can speak from practice rather than theory about what reverb communicates emotionally.
+
+**Alain de Botton** *(see Part I: Meta-Alignment)*
+Secondary fit. His argument in *The Architecture of Happiness* — that spaces communicate psychological states, that we seek in rooms a reflection of our inner condition — is the same claim the Reverb and Space theme makes about acoustic space. The reverb on a record is an argument about the emotional world the music inhabits; de Botton can articulate why that argument matters to a listener.
 
 ---
 
@@ -156,8 +286,11 @@ Composer, trombonist, scholar. Author of *A Power Stronger Than Itself: The AACM
 
 ---
 
-### Week 17 — Arrangement as Architecture / Christopher Alexander
-Christopher Alexander died in 2022. His ideas live on most directly through:
+### Week 17 — Arrangement as Architecture / Christopher Alexander & Alain de Botton
+Christopher Alexander died in 2022. Alain de Botton is living and is a primary interview subject for this week (full entry in Part I: Meta-Alignment). The key distinction: Alexander answers *how* alive structures work; de Botton answers *why* they matter — what they do to the person who inhabits them. Both voices are in the Week 17 theme. De Botton is the living primary source here.
+
+**Alain de Botton** *(born 1969)* — *see Part I: Meta-Alignment for full entry*
+The most direct interview for this week. Can speak to what arrangement owes the listener, why structure is a moral argument as much as an aesthetic one, and how *The Architecture of Happiness* translates to sonic architecture specifically.
 
 **Steven Johnson** *(born 1968)*
 Author of *Where Good Ideas Come From* and *Emergence*. Thinks about structure, pattern, and the conditions for creativity in ways that parallel Alexander's pattern language. Can frame arrangement as a generative constraint system.

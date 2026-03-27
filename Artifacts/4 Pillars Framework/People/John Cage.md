@@ -24,7 +24,7 @@ who_leads: shared
 links:
   - target: "[[Source Library]]"
     type: connects-to
-  - target: "[[The First Sound]]"
+  - target: "[[First Sound]]"
     type: deepens
   - target: "[[Brian Eno]]"
     type: connects-to

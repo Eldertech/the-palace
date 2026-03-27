@@ -1,5 +1,5 @@
 ---
-title: The Voice
+title: Voice and Grain
 type: theme
 pillars:
   - creation

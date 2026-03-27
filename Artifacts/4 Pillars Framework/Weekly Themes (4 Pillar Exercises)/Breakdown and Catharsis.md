@@ -1,5 +1,5 @@
 ---
-title: The Breakdown
+title: Breakdown and Catharsis
 type: theme
 pillars:
   - creation

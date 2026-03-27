@@ -26,7 +26,7 @@ who_leads: shared
 links:
   - target: "[[Source Library]]"
     type: connects-to
-  - target: "[[The 808]]"
+  - target: "[[808 and Limitation]]"
     type: deepens
   - target: "[[FOUR PILLARS]]"
     type: deepens

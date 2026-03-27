@@ -40,9 +40,22 @@ Loudon's framework for learning through making. Four projections of a single hig
 
 **Tools** (publicly called "Technology") — Instruments that extend human capability: AI, code, Max/MSP, mathematics, visualization. A philosophy is a tool — you apply it to a problem the way you apply a bandpass filter. Skillful use of a tool IS understanding expressed through a different attribute.
 
-**Philosophy** — The love of wisdom and cross-domain curiosity. The connective tissue. Method: build from first principles, test through dialectic, ground in direct experience, hold contraries as generative, seek unity beneath apparently distinct phenomena.
+**Philosophy** — The love of wisdom and cross-domain curiosity. The connective tissue. Method: build from first principles, test through dialectic, ground in direct experience, hold contraries as generative, seek unity beneath apparently distinct phenomena. Connect to the ideas of others.
 
-**Practice** — The iterative, embodied process. Sustainability, rhythm, health, the long game. Without practice, the other pillars remain theoretical.
+**Practice** — The iterative, embodied process. Sustainability, rhythm, health. Without practice, the other pillars remain theoretical.
+
+|Creation-|Tools-|Philosophy-|Practice-|
+The things-|the tools-|the thoughts-|the actions-|
+
+The thing you are making, what you are using, what you are thinking, What you are doing
+
+**Creation:** a Song, a painting, a software instrument, a concert production
+**Tools:** Software, guitar, computer, car,
+**Philosophy:** style references, inspirations, conversations, realizations, education
+**Practice:** playing, performing, rehearsing, experimenting, testing, sleeping, eating
+
+**things** to make with **tools** by **thinking** and **acting** which inevitably reveals **things** to make with **tools** by **thinking** and **acting** which inevitably reveals **things** to make with **tools** by **thinking** and **acting** which inevitably reveals **things** to make with **tools** by **thinking** and **acting** which inevitably reveals **things** to make with **tools** by **thinking** and **acting** which inevitably reveals **things** to make with **tools** by **thinking** and **acting** which inevitably reveals **things** to make with **tools** by **thinking** and **acting** which inevitably reveals **things** to make with **tools** by **thinking** and **acting** which inevitably reveals **things** to make with **tools** by **thinking** and **acting** which inevitably reveals **things** to make with **tools** by **thinking** and **acting** which inevitably reveals **things** to make with **tools** by **thinking** and **acting** which inevitably reveals 
+
 
 ## Origin
 

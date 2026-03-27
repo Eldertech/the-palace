@@ -1,5 +1,5 @@
 ---
-title: The Shepard Tone
+title: Overtone Series
 type: theme
 pillars:
   - creation
@@ -15,9 +15,9 @@ energy: high
 hook_quality: 8
 beauty: 8
 who_leads: shared
-week_number: 29
+week_number: 34
 difficulty: deep
-philosopher: M.C. Escher
+philosopher: Jean-Philippe Rameau
 links:
   - target: "[[Weekly Themes Database]]"
     type: member-of
@@ -25,11 +25,11 @@ links:
     type: exemplifies
 ---
 
-# The Shepard Tone
-## Infinitely Rising Pitch
+# The Overtone Series
+## Nature's Chord
 
-**Week 29 | Deep**
-**Philosopher:** M.C. Escher
+**Week 34 | Deep**
+**Philosopher:** Jean-Philippe Rameau
 
 ---
 
@@ -49,7 +49,7 @@ links:
 ### Philosophy Pillar
 **Reading:** 
 
-**Core Concept:** Impossible objects, paradox, perception vs reality
+**Core Concept:** Rameau's corps sonore, natural chord
 
 ### Practice Pillar
 **Daily Practice:** Integrate this concept into daily creative practice
@@ -58,7 +58,7 @@ links:
 
 ## The Technical Side
 
-**Technical Concept:** Auditory illusion, circular pitch, psychoacoustics
+**Technical Concept:** Partials, harmonics, resonance
 
 **Key techniques:**
 - Understanding the core audio/synthesis concept
@@ -75,10 +75,10 @@ links:
 
 ## The Conceptual Side
 
-**Philosophical Concept:** Impossible objects, paradox, perception vs reality
+**Philosophical Concept:** Rameau's corps sonore, natural chord
 
 **The connection:**
-Shepard tone ↔ Escher's stairs ↔ Perceptual paradox
+Overtones ↔ Natural resonance ↔ Harmonic theory
 
 **Why this matters:**
 - How the technical and philosophical mirror each other
@@ -166,4 +166,4 @@ When both sides illuminate each other—**the resonance succeeded**.
 
 ---
 
-*The Shepard Tone. Infinitely Rising Pitch. Technical mastery meets philosophical insight. Same pattern, different materials. That's 4 Pillars teaching.*
+*The Overtone Series. Nature's Chord. Technical mastery meets philosophical insight. Same pattern, different materials. That's 4 Pillars teaching.*

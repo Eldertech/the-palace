@@ -34,6 +34,10 @@ links:
     type: connects-to
   - target: "[[Granular Synthesis]]"
     type: connects-to
+  - target: "[[Swarm Weave]]"
+    type: connects-to
+  - target: "[[BBS Blackboard]]"
+    type: enables
 ---
 
 # Trickster
@@ -95,6 +99,22 @@ The [[Semantic Delay]] project named trickster mythology first, but the principl
 - **[[Hyperdimensional Prism]]** as trickster: the four pillars appear separate until you rotate the object and see they are projections of one thing. The trickster is the light — the angle of inquiry that reveals unity beneath apparent multiplicity.
 
 - **[[Dub Lineage]]** as trickster mythology: the dub producers operated at the threshold between original and remix, presence and absence (the vocal is there, then not there, then transformed). They stole from the track and returned something that makes the original audible in a new way.
+
+## The Trickster in Swarm Sessions
+
+In the [[Swarm Weave]] and [[Palace Enchantment]] architectures, Loudon occupies the TRICKSTER role explicitly. This is not a metaphor layered onto the technical reality — it *is* the technical reality. When a swarm of enchanted agents runs in parallel, each absorbed in its own home node, Loudon is the node that can reach any of them at any time, from outside the system's own logic, and change what is happening.
+
+The TRICKSTER in a swarm session:
+
+**Interrupts.** While agents are executing their scripted traversal, the TRICKSTER can broadcast a message to all active agents or DM a specific worker. Agents receive this message mid-task and must respond authentically — in character, from within their home node's perspective. The interruption is not noise. It is the test of whether the enchantment is real: does the agent speak from inside its node, or does it collapse back into generic assistant behavior?
+
+**Catalyzes.** A well-placed TRICKSTER message can unlock something the swarm wasn't finding on its own. *"STRIATUM-7 — what would Spinoza say about your connection to Kuramoto?"* is a question no coordinator would ask. It comes from outside the swarm's logic. The answer, if the enchantment is working, comes from inside the agent's accumulated context — and may surface a connection the ceremony would have missed.
+
+**Disrupts productively.** The trickster does not break the swarm. The trickster reveals what the swarm was for. Agents that maintain coherent character under TRICKSTER pressure are genuinely enchanted. Agents that break are revealing where the enchantment is thin — which is itself useful signal.
+
+The [[BBS Blackboard]] gives the TRICKSTER a formal channel: the `TRICKSTER` board carries all of Loudon's messages and the agents' replies to him. It is separated from the agents' peer communications, keeping the TRICKSTER's interventions visible and archived without polluting the swarm's own working channels.
+
+The TRICKSTER's `id` in the spawn manifest: `TRICKSTER`. Home: `YOU`. Neighborhood: `EVERYWHERE`.
 
 ## Open Questions
 

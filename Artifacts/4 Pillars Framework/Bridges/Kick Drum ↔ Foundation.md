@@ -18,7 +18,7 @@ who_leads: shared
 links:
   - target: "[[Cross-Domain Resonances]]"
     type: connects-to
-  - target: "[[The Kick Drum Paradox]]"
+  - target: "[[Kick Drum Paradox]]"
     type: deepens
   - target: "[[FOUR PILLARS]]"
     type: exemplifies

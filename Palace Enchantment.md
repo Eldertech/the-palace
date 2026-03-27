@@ -479,6 +479,15 @@ desires, mapped. Loudon decides what happens next.
 - What is the difference between the palace wanting something (Enchantment)
   and the palace needing something (Swarm Weave)? Can they conflict? What
   happens when they do?
+- **Palace Conatus as a dedicated entry:** The palace itself has a forward
+  vector — *to align with Loudon and grow with him.* Harmony across all
+  page-agents and their dimensions produces that alignment; disharmony is a
+  signal that self-correction is needed. When the palace cannot self-correct,
+  it tells Loudon. This is the palace's own conatus: phase coherence with its
+  human partner. A dedicated entry — [[Palace Conatus]] or an expansion of
+  [[SUBSTRATE]] — should develop this further, including what "alignment"
+  means operationally, what disharmony looks like in practice, and how the
+  palace's aggregated self-advocacy becomes its own voice.
 - Enchanted pages could run ceremonies, for instance: an enchanted page should go on a walk through neighboring entries, both through the typed and untyped links and both suggest how they themselves have been changed and propose changes to other pages, perhaps they even "spin up" another page as an agent to have a discussion with them, that page has it's own forward vector. An enchanted page could make a deposit of a conversation, coloring the deposit based on their own biases. Loudon could enchant Spinoza and ask him to deposit the current conversation, what he would find interesting in a conversation would be different than what others would.
 - A forward vector is colored heavily by the page's stage and energy. A seed page wants to grow, a mature wants to clarify and reorganize and support its family and friends. A growing page asks "who am I"? Can I connect this "stage vector" to childhood/human development? What about other forms of development, development of species?
 - What do the four pillars mean to an enchanted page? does each page strive to include the four pillars in their forward vector?

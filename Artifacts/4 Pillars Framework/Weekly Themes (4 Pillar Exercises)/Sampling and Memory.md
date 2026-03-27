@@ -1,5 +1,5 @@
 ---
-title: The Sample
+title: Sampling and Memory
 type: theme
 pillars:
   - creation

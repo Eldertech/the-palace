@@ -1,5 +1,5 @@
 ---
-title: The Bass Question
+title: Bass and Physics
 type: theme
 pillars:
   - creation

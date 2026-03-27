@@ -1,5 +1,5 @@
 ---
-title: The Transition
+title: Transition and Liminality
 type: theme
 pillars:
   - creation

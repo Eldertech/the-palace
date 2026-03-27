@@ -22,7 +22,7 @@ links:
     type: deepens
   - target: "[[FOUR PILLARS]]"
     type: exemplifies
-  - target: "[[The Sidechain Story]]"
+  - target: "[[Sidechain Dialogue]]"
     type: connects-to
 ---
 

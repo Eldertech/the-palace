@@ -1,5 +1,5 @@
 ---
-title: The Sidechain Story
+title: Sidechain Dialogue
 type: theme
 pillars:
   - creation

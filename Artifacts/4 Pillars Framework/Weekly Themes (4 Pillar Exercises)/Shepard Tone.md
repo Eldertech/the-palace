@@ -1,5 +1,5 @@
 ---
-title: The Transfer Function
+title: Shepard Tone
 type: theme
 pillars:
   - creation
@@ -15,9 +15,9 @@ energy: high
 hook_quality: 8
 beauty: 8
 who_leads: shared
-week_number: 38
+week_number: 29
 difficulty: deep
-philosopher: Claude Shannon
+philosopher: M.C. Escher
 links:
   - target: "[[Weekly Themes Database]]"
     type: member-of
@@ -25,11 +25,11 @@ links:
     type: exemplifies
 ---
 
-# The Transfer Function
-## How Systems Transform Signals
+# The Shepard Tone
+## Infinitely Rising Pitch
 
-**Week 38 | Deep**
-**Philosopher:** Claude Shannon
+**Week 29 | Deep**
+**Philosopher:** M.C. Escher
 
 ---
 
@@ -49,7 +49,7 @@ links:
 ### Philosophy Pillar
 **Reading:** 
 
-**Core Concept:** Information theory, signal and noise
+**Core Concept:** Impossible objects, paradox, perception vs reality
 
 ### Practice Pillar
 **Daily Practice:** Integrate this concept into daily creative practice
@@ -58,7 +58,7 @@ links:
 
 ## The Technical Side
 
-**Technical Concept:** Filters as transfer functions, frequency response, impulse response
+**Technical Concept:** Auditory illusion, circular pitch, psychoacoustics
 
 **Key techniques:**
 - Understanding the core audio/synthesis concept
@@ -75,10 +75,10 @@ links:
 
 ## The Conceptual Side
 
-**Philosophical Concept:** Information theory, signal and noise
+**Philosophical Concept:** Impossible objects, paradox, perception vs reality
 
 **The connection:**
-Transfer function ↔ Information theory ↔ Shannon's theorem
+Shepard tone ↔ Escher's stairs ↔ Perceptual paradox
 
 **Why this matters:**
 - How the technical and philosophical mirror each other
@@ -166,4 +166,4 @@ When both sides illuminate each other—**the resonance succeeded**.
 
 ---
 
-*The Transfer Function. How Systems Transform Signals. Technical mastery meets philosophical insight. Same pattern, different materials. That's 4 Pillars teaching.*
+*The Shepard Tone. Infinitely Rising Pitch. Technical mastery meets philosophical insight. Same pattern, different materials. That's 4 Pillars teaching.*
