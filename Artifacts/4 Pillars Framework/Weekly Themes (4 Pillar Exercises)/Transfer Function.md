@@ -1,5 +1,5 @@
 ---
-title: The Harmonic Oscillator
+title: Transfer Function
 type: theme
 pillars:
   - creation
@@ -15,9 +15,9 @@ energy: high
 hook_quality: 8
 beauty: 8
 who_leads: shared
-week_number: 33
+week_number: 38
 difficulty: deep
-philosopher: Isaac Newton
+philosopher: Claude Shannon
 links:
   - target: "[[Weekly Themes Database]]"
     type: member-of
@@ -25,11 +25,11 @@ links:
     type: exemplifies
 ---
 
-# The Harmonic Oscillator
-## Simple Motion, Complex Music
+# The Transfer Function
+## How Systems Transform Signals
 
-**Week 33 | Deep**
-**Philosopher:** Isaac Newton
+**Week 38 | Deep**
+**Philosopher:** Claude Shannon
 
 ---
 
@@ -49,7 +49,7 @@ links:
 ### Philosophy Pillar
 **Reading:** 
 
-**Core Concept:** Newtonian mechanics, simple harmonic motion
+**Core Concept:** Information theory, signal and noise
 
 ### Practice Pillar
 **Daily Practice:** Integrate this concept into daily creative practice
@@ -58,7 +58,7 @@ links:
 
 ## The Technical Side
 
-**Technical Concept:** Oscillation, synthesis fundamentals, waveforms
+**Technical Concept:** Filters as transfer functions, frequency response, impulse response
 
 **Key techniques:**
 - Understanding the core audio/synthesis concept
@@ -75,10 +75,10 @@ links:
 
 ## The Conceptual Side
 
-**Philosophical Concept:** Newtonian mechanics, simple harmonic motion
+**Philosophical Concept:** Information theory, signal and noise
 
 **The connection:**
-Oscillator ↔ Pendulum ↔ Newtonian physics
+Transfer function ↔ Information theory ↔ Shannon's theorem
 
 **Why this matters:**
 - How the technical and philosophical mirror each other
@@ -166,4 +166,4 @@ When both sides illuminate each other—**the resonance succeeded**.
 
 ---
 
-*The Harmonic Oscillator. Simple Motion, Complex Music. Technical mastery meets philosophical insight. Same pattern, different materials. That's 4 Pillars teaching.*
+*The Transfer Function. How Systems Transform Signals. Technical mastery meets philosophical insight. Same pattern, different materials. That's 4 Pillars teaching.*

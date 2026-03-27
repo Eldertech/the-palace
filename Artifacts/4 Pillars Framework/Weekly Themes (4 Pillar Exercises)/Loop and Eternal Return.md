@@ -1,5 +1,5 @@
 ---
-title: The Loop
+title: Loop and Eternal Return
 type: theme
 pillars:
   - creation

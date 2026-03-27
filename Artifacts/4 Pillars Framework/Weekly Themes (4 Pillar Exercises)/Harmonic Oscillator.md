@@ -1,5 +1,5 @@
 ---
-title: The Overtone Series
+title: Harmonic Oscillator
 type: theme
 pillars:
   - creation
@@ -15,9 +15,9 @@ energy: high
 hook_quality: 8
 beauty: 8
 who_leads: shared
-week_number: 34
+week_number: 33
 difficulty: deep
-philosopher: Jean-Philippe Rameau
+philosopher: Isaac Newton
 links:
   - target: "[[Weekly Themes Database]]"
     type: member-of
@@ -25,11 +25,11 @@ links:
     type: exemplifies
 ---
 
-# The Overtone Series
-## Nature's Chord
+# The Harmonic Oscillator
+## Simple Motion, Complex Music
 
-**Week 34 | Deep**
-**Philosopher:** Jean-Philippe Rameau
+**Week 33 | Deep**
+**Philosopher:** Isaac Newton
 
 ---
 
@@ -49,7 +49,7 @@ links:
 ### Philosophy Pillar
 **Reading:** 
 
-**Core Concept:** Rameau's corps sonore, natural chord
+**Core Concept:** Newtonian mechanics, simple harmonic motion
 
 ### Practice Pillar
 **Daily Practice:** Integrate this concept into daily creative practice
@@ -58,7 +58,7 @@ links:
 
 ## The Technical Side
 
-**Technical Concept:** Partials, harmonics, resonance
+**Technical Concept:** Oscillation, synthesis fundamentals, waveforms
 
 **Key techniques:**
 - Understanding the core audio/synthesis concept
@@ -75,10 +75,10 @@ links:
 
 ## The Conceptual Side
 
-**Philosophical Concept:** Rameau's corps sonore, natural chord
+**Philosophical Concept:** Newtonian mechanics, simple harmonic motion
 
 **The connection:**
-Overtones ↔ Natural resonance ↔ Harmonic theory
+Oscillator ↔ Pendulum ↔ Newtonian physics
 
 **Why this matters:**
 - How the technical and philosophical mirror each other
@@ -166,4 +166,4 @@ When both sides illuminate each other—**the resonance succeeded**.
 
 ---
 
-*The Overtone Series. Nature's Chord. Technical mastery meets philosophical insight. Same pattern, different materials. That's 4 Pillars teaching.*
+*The Harmonic Oscillator. Simple Motion, Complex Music. Technical mastery meets philosophical insight. Same pattern, different materials. That's 4 Pillars teaching.*

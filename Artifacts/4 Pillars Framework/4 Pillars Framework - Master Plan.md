@@ -31,6 +31,13 @@ links:
 ---
 
 # 4 Pillars Framework - Master Plan
+
+<!-- Lets revisit this a bit to reflect our developments. Big changes... the technology section needs to be more inclusive in two big ways 1. rely on DAW and physical technology first, try to first give a path that creates a prototype with standard DAW tools or easy mockup in the real world 2. teach how to build with AI instead of suggesting using MAX, teach students how to work with AI systems to improve themselves.
+
+Next, big change: The philosophies are excellent, we need to include interviews with real living people, we now have a document of "interview subjects" that relate to the weekly themes, lets continue to build this out and use the https://yohasebe.com/tcse/ Ted search engine to help find enthusiastic and aligned speakers. 
+
+Phase 5 is on hold for the forseeable future, it is more important to develop and test the early stages. The interactions are very much bare bones and mostly non-useful for a creative at the moment, this will change with use and development-->
+
 ## The Complete Roadmap
 
 **Created:** March 24, 2026

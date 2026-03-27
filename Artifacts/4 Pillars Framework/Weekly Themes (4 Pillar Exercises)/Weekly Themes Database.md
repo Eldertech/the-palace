@@ -24,15 +24,15 @@ links:
     type: applies-to
   - target: "[[4 Pillars Framework - The Founding Conversation]]"
     type: emerged-from
-  - target: "[[The Kick Drum Paradox]]"
+  - target: "[[Kick Drum Paradox]]"
     type: spawned
   - target: "[[Four on the Floor]]"
     type: spawned
-  - target: "[[The First Sound]]"
+  - target: "[[First Sound]]"
     type: spawned
   - target: "[[High Pass Low Pass]]"
     type: spawned
-  - target: "[[The 808]]"
+  - target: "[[808 and Limitation]]"
     type: spawned
 ---
 
@@ -59,11 +59,11 @@ Each theme includes:
 Accessible entry points. These assume curiosity but not advanced technical knowledge. They use familiar objects (kick drum, reverb, loop) as leverage points for deeper exploration.
 
 **Examples:**
-- The Kick Drum Paradox: Small Decisions, Infinite Implications
+- Kick Drum Paradox: Small Decisions, Infinite Implications
 - Four on the Floor: Repetition as Meditation
-- The First Sound: Beginnings Shape Everything
+- First Sound: Beginnings Shape Everything
 - High Pass Low Pass: What You Remove Defines What Remains
-- The 808: When Limitations Become Signature
+- 808 and Limitation: When Limitations Become Signature
 
 These themes meet people where they are—with sounds they recognize—and reveal the philosophical depth already present in everyday production choices.
 
@@ -127,7 +127,7 @@ Traditional music education separates:
 - **Artistic vision** (what to make)
 - **Life practice** (how to sustain the work)
 
-The 4 Pillars integrates all four **around a single weekly theme**. The Kick Drum Paradox demonstrates:
+The 4 Pillars integrates all four **around a single weekly theme**. Kick Drum Paradox demonstrates:
 
 **Creation:** Make three kick-driven tracks (technical skill)
 **Tools:** Build Max feedback delay (systems thinking in action)

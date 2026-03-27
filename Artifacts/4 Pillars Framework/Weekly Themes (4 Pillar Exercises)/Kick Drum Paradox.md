@@ -1,5 +1,5 @@
 ---
-title: The Kick Drum Paradox
+title: Kick Drum Paradox
 type: concept
 pillars:
   - creation

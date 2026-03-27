@@ -1,5 +1,5 @@
 ---
-title: The Impulse Response
+title: Haas Effect
 type: theme
 pillars:
   - creation
@@ -15,9 +15,9 @@ energy: high
 hook_quality: 8
 beauty: 8
 who_leads: shared
-week_number: 40
+week_number: 32
 difficulty: deep
-philosopher: Hermann von Helmholtz
+philosopher: Immanuel Kant
 links:
   - target: "[[Weekly Themes Database]]"
     type: member-of
@@ -25,11 +25,11 @@ links:
     type: exemplifies
 ---
 
-# The Impulse Response
-## A System's Fingerprint
+# The Haas Effect
+## Time Creates Space
 
-**Week 40 | Deep**
-**Philosopher:** Hermann von Helmholtz
+**Week 32 | Deep**
+**Philosopher:** Immanuel Kant
 
 ---
 
@@ -49,7 +49,7 @@ links:
 ### Philosophy Pillar
 **Reading:** 
 
-**Core Concept:** Helmholtz on acoustics and perception
+**Core Concept:** Kant on time and space as categories of perception
 
 ### Practice Pillar
 **Daily Practice:** Integrate this concept into daily creative practice
@@ -58,7 +58,7 @@ links:
 
 ## The Technical Side
 
-**Technical Concept:** IR, convolution, linear time-invariant systems
+**Technical Concept:** Precedence effect, psychoacoustics, spatial hearing
 
 **Key techniques:**
 - Understanding the core audio/synthesis concept
@@ -75,10 +75,10 @@ links:
 
 ## The Conceptual Side
 
-**Philosophical Concept:** Helmholtz on acoustics and perception
+**Philosophical Concept:** Kant on time and space as categories of perception
 
 **The connection:**
-Impulse response ↔ System identity ↔ Acoustic signature
+Haas effect ↔ Kant's categories ↔ Perceptual construction
 
 **Why this matters:**
 - How the technical and philosophical mirror each other
@@ -166,4 +166,4 @@ When both sides illuminate each other—**the resonance succeeded**.
 
 ---
 
-*The Impulse Response. A System's Fingerprint. Technical mastery meets philosophical insight. Same pattern, different materials. That's 4 Pillars teaching.*
+*The Haas Effect. Time Creates Space. Technical mastery meets philosophical insight. Same pattern, different materials. That's 4 Pillars teaching.*

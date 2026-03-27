@@ -24,6 +24,8 @@ links:
     type: emerged-from
   - target: "[[Hilaritas Generator]]"
     type: enables
+  - target: "[[Wu Wei — Water as Pedagogical Architecture]]"
+    type: mirrors
 ---
 
 # Quality Manifesto

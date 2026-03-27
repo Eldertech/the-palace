@@ -1,5 +1,5 @@
 ---
-title: The Reference Track
+title: Reference Track
 type: theme
 pillars:
   - creation

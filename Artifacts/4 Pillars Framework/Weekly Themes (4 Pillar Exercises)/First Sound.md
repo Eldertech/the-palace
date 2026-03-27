@@ -1,5 +1,5 @@
 ---
-title: The First Sound
+title: First Sound
 type: concept
 pillars:
   - creation

@@ -31,6 +31,10 @@ links:
     type: mirrors
   - target: "[[Palace Enchantment]]"
     type: spawned
+  - target: "[[BBS Blackboard]]"
+    type: enables
+  - target: "[[Palace Map]]"
+    type: enables
 ---
 
 # Swarm Weave
@@ -720,6 +724,14 @@ complex. They didn't. The swarm will find out.
 - **Should the coordinator produce a diff against the previous Weave's topology
   report?** Tracking what changed cycle-to-cycle would reveal the palace's growth
   arc over time.
+- **Resource pooling across enchanted agents:** When multiple enchanted pages
+  independently request similar tools — search over the same corpus, shared
+  codebases for related projects — can the coordinator identify and surface
+  these overlaps before dispatching? A synthesizer project page and a DSP spec
+  page both reaching for physical modeling code are proposing a commons neither
+  named explicitly. The coordinator that spots this produces not just an
+  allocation decision but a mutualism proposal. What would the coordinator
+  need to see in worker resource requests to detect pooling opportunities?
 
 ---
 

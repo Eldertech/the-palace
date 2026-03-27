@@ -18,7 +18,7 @@ links:
   - target: "[[README]]"
     type: connects-to
 ---
-``
+
 # Palace To-Do
 
 A cache of meta-improvement ideas for the palace itself — things to do, things to build, things to reconsider. This is a planning surface, not an action log. Items here are captured but not yet acted on. The palace grows deliberately.
@@ -47,7 +47,8 @@ Items move off this list when they become entries, get completed, or get compost
 
 ## Tools and Workflows to Build
 
-- [ ] **Diagram workflow — signal flow diagrams and beyond** — Establish a consistent workflow for generating detailed, accurate technical diagrams with Claude. Requirements: accuracy (must reflect technical reality), editability (output editable in a vector program), open-source or one-time-purchase tools preferred (Inkscape, Affinity Designer, Figma). Candidate formats: SVG, Mermaid, draw.io/diagrams.net, Typst or LaTeX TikZ. Session should produce a tested workflow, a reusable prompt/template, and at least one example diagram. ⭐ *HIGH PRIORITY*
+- [ ] **Diagram workflow — signal flow diagrams and beyond** — Establish a consistent workflow for generating detailed, accurate technical diagrams with Claude. Requirements: accuracy (must reflect technical reality), editability (output editable in a vector program), open-source or one-time-purchase tools preferred (Inkscape, Affinity Designer, Figma). Candidate formats: SVG, Mermaid, draw.io/diagrams.net, Typst or LaTeX TikZ. Session should produce a tested workflow, a reusable prompt/template, and at least one example diagram. ⭐ *HIGH PRIORITY* <!-- we have started this with pages dedicated to mermaid and images in the palace, now needs further testing and to ensure that AI's in the palace know these are the preferred methods for adding diagrams and images, I would also like to explore LaTeX further -->
+- [ ] Make a skill/process/habit around searching Ted for relevant thinkers/quotes and general research: https://yohasebe.com/tcse/ is a search engine for Ted, lets build a skill around this together.
 
 - [ ] **Claude CLI Fluency** — Dedicated session to explore less-known CLI interaction modes and fun patterns. Reference page written: [[Claude CLI Reference]]. See also: [[Modes of Collaboration]].
 

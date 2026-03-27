@@ -47,6 +47,7 @@ The complete and canonical list of all palace ceremonies. Every ceremony has a t
 |---|---|---|---|
 | The Harvest | "Let's harvest" | Search a body of past work and surface candidates worthy of deposit. Writes candidates to a working list. | [[Harvest Ceremony]] |
 | The Deposit | "Let's deposit" / "Add this to the palace" | Bring one source deeply into the palace. Draft entries, propose links, write on approval. Closes with a note written into the source thread. Appends a record to [[Deposit Archive]]. | [[Deposit Ceremony]] |
+| The Map Build | "Let's build the map" / "Map build" / "Build a neighborhood map for [X]" | Scan palace frontmatter, extract typed links, compile edge list and ghost nodes. Output TSV, adjacency list, or JSON. Full survey or bounded by neighborhood field. | [[Map Build Ceremony]] |
 
 ## Revival
 

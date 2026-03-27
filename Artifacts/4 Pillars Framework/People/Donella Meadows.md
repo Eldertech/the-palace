@@ -25,7 +25,7 @@ links:
     type: connects-to
   - target: "[[Leverage Points Framework]]"
     type: enables
-  - target: "[[The Kick Drum Paradox]]"
+  - target: "[[Kick Drum Paradox]]"
     type: deepens
   - target: "[[FOUR PILLARS]]"
     type: deepens

@@ -1,5 +1,5 @@
 ---
-title: The Accident
+title: Happy Accidents
 type: theme
 pillars:
   - creation

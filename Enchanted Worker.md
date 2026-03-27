@@ -22,7 +22,7 @@ links:
   - target: "[[Palace Enchantment]]"
     type: spawned
 ---
-
+ 
 # Enchanted Worker
 
 A worker agent whose context window has been seeded with a specific palace neighborhood before task dispatch — producing consistent directional behavior that functions as orientation, preference, and something usefully called desire.

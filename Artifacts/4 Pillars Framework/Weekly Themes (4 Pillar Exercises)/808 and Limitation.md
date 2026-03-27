@@ -1,5 +1,5 @@
 ---
-title: The 808
+title: 808 and Limitation
 type: concept
 pillars:
   - creation

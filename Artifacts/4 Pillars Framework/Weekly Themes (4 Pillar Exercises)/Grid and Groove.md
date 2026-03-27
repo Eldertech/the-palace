@@ -1,5 +1,5 @@
 ---
-title: The Grid and the Groove
+title: Grid and Groove
 type: theme
 pillars:
   - creation
