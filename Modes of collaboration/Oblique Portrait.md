@@ -24,6 +24,10 @@ links:
     type: connects-to
   - target: "[[Excellent Adventure]]"
     type: mirrors
+  - target: "[[Modes of Collaboration]]"
+    type: connects-to
+  - target: "[[Trickster]]"
+    type: mirrors
 ---
 
 # Oblique Portrait Method

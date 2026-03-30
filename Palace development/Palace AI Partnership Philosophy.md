@@ -27,6 +27,10 @@ links:
     type: emerged-from
   - target: "[[Cooperation Yields Agency]]"
     type: mirrors
+  - target: "[[Enchanted Worker]]"
+    type: deepens
+  - target: "[[Palace Enchantment]]"
+    type: connects-to
 ---
 
 # AI Partnership Philosophy

@@ -20,6 +20,8 @@ links:
     type: connects-to
   - target: "[[Palace Ceremonies]]"
     type: enables
+  - target: "[[Pages as Agents]]"
+    type: connects-to
 ---
 
 # Claude CLI Reference

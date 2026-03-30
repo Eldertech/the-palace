@@ -20,7 +20,7 @@ links:
     type: spawned
   - target: "[[Leverage Points Framework]]"
     type: spawned
-  - target: "[[AI Partnership Philosophy]]"
+  - target: "[[Palace AI Partnership Philosophy]]"
     type: spawned
   - target: "[[FOUR PILLARS]]"
     type: deepens

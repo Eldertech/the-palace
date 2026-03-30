@@ -6,7 +6,7 @@ pillars:
   - practice
   - tools
 born: 2026-03
-stage: seed
+stage: sprout
 last_activated: 2026-03
 activation_count: 1
 energy: high

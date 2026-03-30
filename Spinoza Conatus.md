@@ -25,7 +25,7 @@ links:
     type: connects-to
   - target: "[[Quality]]"
     type: mirrors
-  - target: "[[Meaning and the Link (2014)]]"
+  - target: "[[Meaning and the Link]]"
     type: mirrors
   - target: "[[Symbiotic Skills]]"
     type: connects-to

@@ -194,7 +194,7 @@ The palace stays alive through periodic ceremonies — intentional acts of revie
 
 This palace stands on ideas from:
 
-- **[[Meaning and the Link (2014)]]** — Meaning arises from sufficient associations between a pattern of symbols and a reality. Typed links are our private semantic web. Archived locally as `Meaning and the Link(2014).pdf`.
+- **[[Meaning and the Link]]** — Meaning arises from sufficient associations between a pattern of symbols and a reality. Typed links are our private semantic web. Archived locally as `Meaning and the Link(2014).pdf`.
 - **Luhmann's Zettelkasten** — "I, of course, do not think everything by myself. It happens mainly within the slip-box."
 - **Aboriginal Australian songlines** — Knowledge activated through traversal, not retrieval. The path IS the knowledge.
 - **Mycorrhizal networks** — Distributed memory with hub nodes. Resources flow toward need.

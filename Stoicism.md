@@ -19,6 +19,8 @@ links:
     type: connects-to
   - target: "[[Spinoza Conatus]]"
     type: connects-to
+  - target: "[[Quality Manifesto]]"
+    type: deepens
 ---
 
 # Stoicism

@@ -2,8 +2,9 @@
   "theme": "obsidian",
   "showRibbon": false,
   "showViewHeader": false,
-  "baseFontSize": 18,
+  "baseFontSize": 23,
   "nativeMenus": true,
   "translucency": true,
-  "cssTheme": "Maple"
+  "cssTheme": "Maple",
+  "accentColor": "#31502a"
 }

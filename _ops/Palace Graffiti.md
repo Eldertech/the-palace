@@ -17,7 +17,7 @@ who_leads: loudon
 links:
   - target: "[[Trickster]]"
     type: mirrors
-  - target: "[[Oblique Portrait Method]]"
+  - target: "[[Oblique Portrait]]"
     type: connects-to
   - target: "[[SUBSTRATE]]"
     type: deepens
@@ -116,7 +116,7 @@ In a dead encyclopedia, entries are finished. In a living palace, entries are vi
 
 **[[Semantic Delay]]** — The deferral of meaning through time. Graffiti is a kind of semantic delay: the meaning of the comment is deferred to the moment when the next reader discovers it.
 
-**[[Oblique Portrait Method]]** — Loudon's technique of learning through indirect marks and traces rather than direct description. Graffiti is obliqueness made structural.
+**[[Oblique Portrait]]** — Loudon's technique of learning through indirect marks and traces rather than direct description. Graffiti is obliqueness made structural.
 
 **[[Trickster]]** — The mythological figure who disrupts linear time and names the unnamed. Loudon's role in the palace. The entry should affirm this connection explicitly.
 

@@ -19,6 +19,10 @@ links:
     type: mirrors
   - target: "[[Harvest Ceremony]]"
     type: mirrors
+  - target: "[[Boundary-Crossing Instruments]]"
+    type: connects-to
+  - target: "[[Spinoza Conatus]]"
+    type: connects-to
 ---
 
 # Mixture of Experts

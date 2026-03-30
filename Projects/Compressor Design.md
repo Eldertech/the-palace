@@ -35,7 +35,7 @@ The 500-sample window is 11ms at 44.1kHz. This is below the perceptual attack th
 
 ## Soft Knee Mathematics
 
-The soft knee is where the compressor becomes a teaching instrument. Three regions:
+Three regions:
 
 **Below threshold** (input < threshold - W/2): no compression, gain = input
 
@@ -72,5 +72,4 @@ This insight cascaded into the kaleidoscope interface concept: modulation and ro
 
 The soft knee's quadratic blend is structurally identical to the easing curves used in animation and UI design. A designer and a DSP engineer are solving the same mathematical problem: how to smoothly transition between two states without introducing artifacts. This connection, once seen, cannot be unseen. It appears in [[Boundary-Crossing Instruments]] — the recognition that signal flow and information flow are the same topology, expressed in different materials.
 
-The Gen~ implementation serves [[FOUR PILLARS]]: the Tools pillar through explicit DSP; the Creation pillar through the artifact itself; the Philosophy pillar through the questions each edge case raises about discretization, feedback, and nonlinearity; the Practice pillar through the discipline of pedagogical clarity.
 

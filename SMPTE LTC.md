@@ -18,6 +18,8 @@ links:
     type: connects-to
   - target: "[[Frequency-Time Duality]]"
     type: connects-to
+  - target: "[[Signal-Rate CV Architecture]]"
+    type: connects-to
 ---
 
 # SMPTE LTC

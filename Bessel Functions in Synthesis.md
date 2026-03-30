@@ -17,6 +17,12 @@ links:
     type: connects-to
   - target: "[[Crystal Synthesizer]]"
     type: connects-to
+  - target: "[[Quantum Synthesizer]]"
+    type: connects-to
+  - target: "[[Spinoza Conatus]]"
+    type: connects-to
+  - target: "[[Action Potential Oscillator]]"
+    type: connects-to
 ---
 
 # Bessel Functions in Synthesis

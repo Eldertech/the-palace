@@ -12,7 +12,7 @@ activation_count: 1
 energy: high
 beauty: 9
 links:
-  - target: "[[Oblique Portrait Method]]"
+  - target: "[[Oblique Portrait]]"
     type: emerged-from
   - target: "[[Embeddings as Relational Meaning]]"
     type: mirrors

@@ -1,0 +1,3758 @@
+{
+  "meta": {
+    "generated": "2026-03-27",
+    "scope": "full",
+    "node_count": 94,
+    "edge_count": 543,
+    "ghost_taxonomy": {
+      "error_ghosts": [],
+      "ops_ghosts": [
+        "Deposit Ceremony",
+        "Harvest Ceremony",
+        "Palace Ceremonies",
+        "Palace Quotes",
+        "Walk Ceremony",
+        "Weave Ceremony"
+      ],
+      "forward_ghosts": [
+        "4 Pillars Framework - The Founding Conversation",
+        "4 Pillars Weekly Structure",
+        "Ableton Extension SDK",
+        "Donella Meadows",
+        "Dub Lineage",
+        "Octave Equivalence",
+        "Resonance and Damping"
+      ]
+    }
+  },
+  "nodes": [
+    {
+      "id": "AI Partnership Philosophy",
+      "title": "AI Partnership Philosophy",
+      "type": "practice",
+      "stage": "growing",
+      "pillars": [
+        "tools",
+        "philosophy",
+        "practice"
+      ]
+    },
+    {
+      "id": "Action Potential Oscillator",
+      "title": "Action Potential Oscillator",
+      "type": "project",
+      "stage": "sprout",
+      "pillars": [
+        "creation",
+        "tools",
+        "philosophy"
+      ]
+    },
+    {
+      "id": "Agent Wellbeing as Design Ethic",
+      "title": "Agent Wellbeing as Design Ethic",
+      "type": "breakthrough",
+      "stage": "sprout",
+      "pillars": [
+        "philosophy",
+        "practice"
+      ]
+    },
+    {
+      "id": "BBS Blackboard",
+      "title": "BBS Blackboard",
+      "type": "concept",
+      "stage": "sprout",
+      "pillars": [
+        "tools",
+        "philosophy",
+        "practice"
+      ]
+    },
+    {
+      "id": "Bessel Functions in Synthesis",
+      "title": "Bessel Functions in Synthesis",
+      "type": "concept",
+      "stage": "growing",
+      "pillars": [
+        "creation",
+        "tools",
+        "philosophy"
+      ]
+    },
+    {
+      "id": "Biomechanical Synthesis",
+      "title": "Biomechanical Synthesis",
+      "type": "concept",
+      "stage": "growing",
+      "pillars": [
+        "creation",
+        "tools",
+        "philosophy",
+        "practice"
+      ]
+    },
+    {
+      "id": "Boundary-Crossing Instruments",
+      "title": "Boundary-Crossing Instruments",
+      "type": "breakthrough",
+      "stage": "mature",
+      "pillars": [
+        "tools",
+        "creation",
+        "philosophy"
+      ]
+    },
+    {
+      "id": "CLAUDE",
+      "title": "CLAUDE",
+      "type": "",
+      "stage": "",
+      "pillars": []
+    },
+    {
+      "id": "Categorizing Inharmonicity",
+      "title": "Categorizing Inharmonicity",
+      "type": "concept",
+      "stage": "growing",
+      "pillars": [
+        "creation",
+        "tools",
+        "philosophy"
+      ]
+    },
+    {
+      "id": "Claude CLI Reference",
+      "title": "Claude CLI Reference",
+      "type": "meta",
+      "stage": "growing",
+      "pillars": [
+        "tools",
+        "practice"
+      ]
+    },
+    {
+      "id": "Compressor Design",
+      "title": "Compressor Design",
+      "type": "project",
+      "stage": "growing",
+      "pillars": [
+        "tools",
+        "creation",
+        "philosophy"
+      ]
+    },
+    {
+      "id": "Confucianism",
+      "title": "Confucianism",
+      "type": "concept",
+      "stage": "sprout",
+      "pillars": [
+        "philosophy",
+        "practice"
+      ]
+    },
+    {
+      "id": "Cooperation Yields Agency",
+      "title": "Cooperation Yields Agency",
+      "type": "hub",
+      "stage": "foundational",
+      "pillars": [
+        "creation",
+        "tools",
+        "philosophy",
+        "practice"
+      ]
+    },
+    {
+      "id": "Crystal Synthesizer",
+      "title": "Crystal Synthesizer",
+      "type": "project",
+      "stage": "sprout",
+      "pillars": [
+        "creation",
+        "tools",
+        "philosophy"
+      ]
+    },
+    {
+      "id": "DSP Frameworks",
+      "title": "DSP Frameworks",
+      "type": "hub",
+      "stage": "growing",
+      "pillars": [
+        "tools",
+        "practice",
+        "creation"
+      ]
+    },
+    {
+      "id": "Dialectic",
+      "title": "Dialectic",
+      "type": "practice",
+      "stage": "sprout",
+      "pillars": [
+        "philosophy",
+        "practice",
+        "creation"
+      ]
+    },
+    {
+      "id": "Differential Equations",
+      "title": "Differential Equations",
+      "type": "hub",
+      "stage": "growing",
+      "pillars": [
+        "tools",
+        "philosophy",
+        "creation"
+      ]
+    },
+    {
+      "id": "Dispersion",
+      "title": "Dispersion",
+      "type": "hub",
+      "stage": "growing",
+      "pillars": [
+        "tools",
+        "philosophy",
+        "creation"
+      ]
+    },
+    {
+      "id": "Embeddings as Relational Meaning",
+      "title": "Embeddings as Relational Meaning",
+      "type": "concept",
+      "stage": "growing",
+      "pillars": [
+        "tools",
+        "philosophy"
+      ]
+    },
+    {
+      "id": "Enchanted Worker",
+      "title": "Enchanted Worker",
+      "type": "concept",
+      "stage": "sprout",
+      "pillars": [
+        "philosophy",
+        "tools"
+      ]
+    },
+    {
+      "id": "Endosymbiosis",
+      "title": "Endosymbiosis",
+      "type": "concept",
+      "stage": "growing",
+      "pillars": [
+        "philosophy",
+        "tools"
+      ]
+    },
+    {
+      "id": "Excellent Adventure",
+      "title": "Excellent Adventure",
+      "type": "breakthrough",
+      "stage": "growing",
+      "pillars": [
+        "practice",
+        "philosophy",
+        "tools"
+      ]
+    },
+    {
+      "id": "FOUR PILLARS",
+      "title": "Four Pillars",
+      "type": "hub",
+      "stage": "mature",
+      "pillars": [
+        "creation",
+        "tools",
+        "philosophy",
+        "practice"
+      ]
+    },
+    {
+      "id": "Four Pillars of Enchanted Agency",
+      "title": "Four Pillars of Enchanted Agency",
+      "type": "concept",
+      "stage": "sprout",
+      "pillars": [
+        "creation",
+        "tools",
+        "philosophy",
+        "practice"
+      ]
+    },
+    {
+      "id": "Frequency-Time Duality",
+      "title": "Frequency-Time Duality",
+      "type": "concept",
+      "stage": "sprout",
+      "pillars": [
+        "creation",
+        "tools",
+        "philosophy"
+      ]
+    },
+    {
+      "id": "Granular Synthesis",
+      "title": "Granular Synthesis",
+      "type": "concept",
+      "stage": "sprout",
+      "pillars": [
+        "creation",
+        "tools"
+      ]
+    },
+    {
+      "id": "Harmonicity and Inharmonicity",
+      "title": "Harmonicity and Inharmonicity",
+      "type": "concept",
+      "stage": "sprout",
+      "pillars": [
+        "creation",
+        "tools",
+        "philosophy"
+      ]
+    },
+    {
+      "id": "Hilaritas Generator",
+      "title": "Hilaritas Generator",
+      "type": "hub",
+      "stage": "mature",
+      "pillars": [
+        "practice",
+        "philosophy",
+        "creation"
+      ]
+    },
+    {
+      "id": "Hyperdimensional Prism",
+      "title": "Hyperdimensional Prism",
+      "type": "concept",
+      "stage": "mature",
+      "pillars": [
+        "philosophy",
+        "creation",
+        "tools"
+      ]
+    },
+    {
+      "id": "Identity Molting",
+      "title": "Identity Molting",
+      "type": "concept",
+      "stage": "growing",
+      "pillars": [
+        "philosophy",
+        "practice"
+      ]
+    },
+    {
+      "id": "Image Embedding Standard",
+      "title": "Image Embedding Standard",
+      "type": "meta",
+      "stage": "mature",
+      "pillars": [
+        "tools",
+        "practice"
+      ]
+    },
+    {
+      "id": "JEWEL",
+      "title": "The Jewel",
+      "type": "meta",
+      "stage": "foundational",
+      "pillars": [
+        "tools",
+        "philosophy",
+        "practice"
+      ]
+    },
+    {
+      "id": "JSUI",
+      "title": "JSUI",
+      "type": "spore",
+      "stage": "seed",
+      "pillars": [
+        "tools",
+        "creation"
+      ]
+    },
+    {
+      "id": "Jewel \u2014 Context",
+      "title": "The Jewel \u2014 Context",
+      "type": "meta",
+      "stage": "foundational",
+      "pillars": [
+        "tools",
+        "philosophy",
+        "practice"
+      ]
+    },
+    {
+      "id": "Kuramoto Coupling",
+      "title": "Kuramoto Coupling",
+      "type": "hub",
+      "stage": "mature",
+      "pillars": [
+        "tools",
+        "philosophy",
+        "creation"
+      ]
+    },
+    {
+      "id": "Latent Error",
+      "title": "Latent Error",
+      "type": "concept",
+      "stage": "growing",
+      "pillars": [
+        "philosophy",
+        "tools",
+        "practice"
+      ]
+    },
+    {
+      "id": "Lateral Access",
+      "title": "Lateral Access",
+      "type": "concept",
+      "stage": "growing",
+      "pillars": [
+        "philosophy",
+        "practice",
+        "creation"
+      ]
+    },
+    {
+      "id": "Leverage Points Framework",
+      "title": "Leverage Points Framework",
+      "type": "concept",
+      "stage": "mature",
+      "pillars": [
+        "philosophy",
+        "practice"
+      ]
+    },
+    {
+      "id": "Logarithmic Interface Scaling",
+      "title": "Logarithmic Interface Scaling",
+      "type": "concept",
+      "stage": "growing",
+      "pillars": [
+        "tools",
+        "philosophy"
+      ]
+    },
+    {
+      "id": "Map Build Ceremony",
+      "title": "Map Build Ceremony",
+      "type": "meta",
+      "stage": "seed",
+      "pillars": [
+        "tools",
+        "practice"
+      ]
+    },
+    {
+      "id": "Meadows and Music \u2014 Leverage Points",
+      "title": "Meadows and Music \u2014 Leverage Points",
+      "type": "source",
+      "stage": "sprout",
+      "pillars": [
+        "creation",
+        "tools",
+        "philosophy",
+        "practice"
+      ]
+    },
+    {
+      "id": "Meadows and Music \u2014 Origin and Process",
+      "title": "Meadows and Music \u2014 Origin and Process",
+      "type": "source",
+      "stage": "sprout",
+      "pillars": [
+        "creation",
+        "tools",
+        "philosophy",
+        "practice"
+      ]
+    },
+    {
+      "id": "Meaning and the Link (2014)",
+      "title": "Meaning and the Link (2014)",
+      "type": "source",
+      "stage": "foundational",
+      "pillars": [
+        "philosophy",
+        "tools"
+      ]
+    },
+    {
+      "id": "Media Library",
+      "title": "Media Library",
+      "type": "meta",
+      "stage": "growing",
+      "pillars": [
+        "philosophy",
+        "creation",
+        "tools",
+        "practice"
+      ]
+    },
+    {
+      "id": "Mermaid Diagram Standard",
+      "title": "Mermaid Diagram Standard",
+      "type": "meta",
+      "stage": "mature",
+      "pillars": [
+        "tools",
+        "practice"
+      ]
+    },
+    {
+      "id": "Metaphor as Coupling Medium",
+      "title": "Metaphor as Coupling Medium",
+      "type": "breakthrough",
+      "stage": "sprout",
+      "pillars": [
+        "philosophy",
+        "practice",
+        "creation"
+      ]
+    },
+    {
+      "id": "Metric Modulation",
+      "title": "Metric Modulation",
+      "type": "concept",
+      "stage": "growing",
+      "pillars": [
+        "creation",
+        "philosophy",
+        "tools"
+      ]
+    },
+    {
+      "id": "Mixture of Experts",
+      "title": "Mixture of Experts",
+      "type": "concept",
+      "stage": "mature",
+      "pillars": [
+        "tools",
+        "philosophy"
+      ]
+    },
+    {
+      "id": "Modes of Collaboration",
+      "title": "Modes of Collaboration",
+      "type": "practice",
+      "stage": "sprout",
+      "pillars": [
+        "practice",
+        "philosophy",
+        "tools"
+      ]
+    },
+    {
+      "id": "Neural Granular Synthesis",
+      "title": "Neural Granular Synthesis",
+      "type": "concept",
+      "stage": "growing",
+      "pillars": [
+        "creation",
+        "tools",
+        "philosophy",
+        "practice"
+      ]
+    },
+    {
+      "id": "Oblique Portrait Method",
+      "title": "Oblique Portrait Method",
+      "type": "practice",
+      "stage": "growing",
+      "pillars": [
+        "creation",
+        "tools",
+        "philosophy",
+        "practice"
+      ]
+    },
+    {
+      "id": "Ohm's Law",
+      "title": "Ohm's Law",
+      "type": "concept",
+      "stage": "growing",
+      "pillars": [
+        "tools",
+        "philosophy"
+      ]
+    },
+    {
+      "id": "Pages as Agents",
+      "title": "Pages as Agents",
+      "type": "concept",
+      "stage": "sprout",
+      "pillars": [
+        "philosophy",
+        "tools",
+        "practice"
+      ]
+    },
+    {
+      "id": "Palace Enchantment",
+      "title": "Palace Enchantment",
+      "type": "project",
+      "stage": "seed",
+      "pillars": [
+        "philosophy",
+        "tools",
+        "practice",
+        "creation"
+      ]
+    },
+    {
+      "id": "Palace Map",
+      "title": "Palace Map",
+      "type": "concept",
+      "stage": "sprout",
+      "pillars": [
+        "tools",
+        "philosophy",
+        "practice"
+      ]
+    },
+    {
+      "id": "Palace Philosophies",
+      "title": "Palace Philosophies",
+      "type": "hub",
+      "stage": "growing",
+      "pillars": [
+        "philosophy"
+      ]
+    },
+    {
+      "id": "Palace as Context Injection System",
+      "title": "Palace as Context Injection System",
+      "type": "breakthrough",
+      "stage": "sprout",
+      "pillars": [
+        "philosophy",
+        "tools",
+        "practice"
+      ]
+    },
+    {
+      "id": "Particle Synthesis",
+      "title": "Particle Synthesis",
+      "type": "concept",
+      "stage": "growing",
+      "pillars": [
+        "creation",
+        "tools",
+        "philosophy"
+      ]
+    },
+    {
+      "id": "Pheromone Trail",
+      "title": "Pheromone Trail",
+      "type": "concept",
+      "stage": "sprout",
+      "pillars": [
+        "philosophy",
+        "tools",
+        "practice"
+      ]
+    },
+    {
+      "id": "Piano String Inharmonicity",
+      "title": "Piano String Inharmonicity",
+      "type": "concept",
+      "stage": "growing",
+      "pillars": [
+        "creation",
+        "tools"
+      ]
+    },
+    {
+      "id": "Playful Interface Design",
+      "title": "Playful Interface Design",
+      "type": "practice",
+      "stage": "growing",
+      "pillars": [
+        "creation",
+        "tools",
+        "philosophy"
+      ]
+    },
+    {
+      "id": "Portamento and Physical Pitch Modeling",
+      "title": "Portamento and Physical Pitch Modeling",
+      "type": "project",
+      "stage": "growing",
+      "pillars": [
+        "creation",
+        "tools",
+        "philosophy"
+      ]
+    },
+    {
+      "id": "Preset Oracle",
+      "title": "Preset Oracle",
+      "type": "project",
+      "stage": "growing",
+      "pillars": [
+        "creation",
+        "tools",
+        "philosophy",
+        "practice"
+      ]
+    },
+    {
+      "id": "Progressive Staging",
+      "title": "Progressive Staging",
+      "type": "practice",
+      "stage": "seed",
+      "pillars": [
+        "practice",
+        "philosophy",
+        "creation"
+      ]
+    },
+    {
+      "id": "Quadratic Interpolation in DSP",
+      "title": "Quadratic Interpolation in DSP",
+      "type": "concept",
+      "stage": "growing",
+      "pillars": [
+        "tools",
+        "creation"
+      ]
+    },
+    {
+      "id": "Quality",
+      "title": "Quality",
+      "type": "concept",
+      "stage": "sprout",
+      "pillars": [
+        "philosophy",
+        "practice"
+      ]
+    },
+    {
+      "id": "Quality Manifesto",
+      "title": "Quality Manifesto",
+      "type": "concept",
+      "stage": "mature",
+      "pillars": [
+        "philosophy",
+        "practice"
+      ]
+    },
+    {
+      "id": "Quantum Synthesizer",
+      "title": "Quantum Synthesizer",
+      "type": "concept",
+      "stage": "growing",
+      "pillars": [
+        "creation",
+        "tools",
+        "philosophy"
+      ]
+    },
+    {
+      "id": "README - The Palace Guide",
+      "title": "The Palace Guide",
+      "type": "meta",
+      "stage": "foundational",
+      "pillars": [
+        "creation",
+        "tools",
+        "philosophy",
+        "practice"
+      ]
+    },
+    {
+      "id": "ROSETTA",
+      "title": "Rosetta Stone",
+      "type": "meta",
+      "stage": "foundational",
+      "pillars": [
+        "tools",
+        "philosophy",
+        "practice"
+      ]
+    },
+    {
+      "id": "Retrospective Delay",
+      "title": "Retrospective Delay",
+      "type": "project",
+      "stage": "growing",
+      "pillars": [
+        "creation",
+        "tools"
+      ]
+    },
+    {
+      "id": "SCHEMA",
+      "title": "SCHEMA",
+      "type": "meta",
+      "stage": "foundational",
+      "pillars": [
+        "tools",
+        "practice",
+        "philosophy"
+      ]
+    },
+    {
+      "id": "SMPTE LTC",
+      "title": "SMPTE LTC",
+      "type": "project",
+      "stage": "growing",
+      "pillars": [
+        "tools",
+        "creation"
+      ]
+    },
+    {
+      "id": "SUBSTRATE",
+      "title": "Substrate",
+      "type": "meta",
+      "stage": "growing",
+      "pillars": [
+        "tools",
+        "philosophy",
+        "practice"
+      ]
+    },
+    {
+      "id": "Self-Describing Knowledge Module",
+      "title": "Self-Describing Knowledge Module",
+      "type": "concept",
+      "stage": "growing",
+      "pillars": [
+        "tools",
+        "philosophy",
+        "practice"
+      ]
+    },
+    {
+      "id": "Semantic Delay",
+      "title": "Semantic Delay",
+      "type": "project",
+      "stage": "growing",
+      "pillars": [
+        "creation",
+        "tools",
+        "philosophy"
+      ]
+    },
+    {
+      "id": "Shepard Tone Synthesizer",
+      "title": "Shepard Tone Synthesizer",
+      "type": "project",
+      "stage": "sprout",
+      "pillars": [
+        "creation",
+        "tools",
+        "philosophy"
+      ]
+    },
+    {
+      "id": "Shimmer Cloud",
+      "title": "Shimmer Cloud",
+      "type": "spore",
+      "stage": "seed",
+      "pillars": [
+        "creation",
+        "tools"
+      ]
+    },
+    {
+      "id": "Short Story",
+      "title": "Short Story",
+      "type": "project",
+      "stage": "growing",
+      "pillars": [
+        "creation",
+        "philosophy"
+      ]
+    },
+    {
+      "id": "Signal-Rate CV Architecture",
+      "title": "Signal-Rate CV Architecture",
+      "type": "concept",
+      "stage": "seed",
+      "pillars": [
+        "tools",
+        "creation",
+        "philosophy"
+      ]
+    },
+    {
+      "id": "Spinoza Conatus",
+      "title": "Spinoza Conatus",
+      "type": "hub",
+      "stage": "mature",
+      "pillars": [
+        "philosophy"
+      ]
+    },
+    {
+      "id": "State Machine",
+      "title": "State Machine",
+      "type": "concept",
+      "stage": "sprout",
+      "pillars": [
+        "tools",
+        "practice",
+        "philosophy"
+      ]
+    },
+    {
+      "id": "Stoicism",
+      "title": "Stoicism",
+      "type": "concept",
+      "stage": "sprout",
+      "pillars": [
+        "philosophy",
+        "practice"
+      ]
+    },
+    {
+      "id": "Streaming details",
+      "title": "Streaming Details",
+      "type": "meta",
+      "stage": "seed",
+      "pillars": [
+        "tools",
+        "practice"
+      ]
+    },
+    {
+      "id": "Striatum",
+      "title": "Striatum",
+      "type": "concept",
+      "stage": "sprout",
+      "pillars": [
+        "practice",
+        "philosophy"
+      ]
+    },
+    {
+      "id": "Substrate Skill",
+      "title": "Substrate Skill",
+      "type": "meta",
+      "stage": "mature",
+      "pillars": [
+        "tools",
+        "practice"
+      ]
+    },
+    {
+      "id": "Swarm Weave",
+      "title": "Swarm Weave",
+      "type": "project",
+      "stage": "sprout",
+      "pillars": [
+        "tools",
+        "practice",
+        "philosophy"
+      ]
+    },
+    {
+      "id": "Symbiotic Skills",
+      "title": "Symbiotic Skills",
+      "type": "project",
+      "stage": "growing",
+      "pillars": [
+        "creation",
+        "tools",
+        "philosophy",
+        "practice"
+      ]
+    },
+    {
+      "id": "The Cooperation Path",
+      "title": "The Cooperation Path",
+      "type": "meta",
+      "stage": "sprout",
+      "pillars": [
+        "philosophy",
+        "creation",
+        "practice",
+        "tools"
+      ]
+    },
+    {
+      "id": "The Fortress and the Threshold",
+      "title": "The Fortress and the Threshold",
+      "type": "concept",
+      "stage": "sprout",
+      "pillars": [
+        "philosophy",
+        "practice"
+      ]
+    },
+    {
+      "id": "Trickster",
+      "title": "Trickster",
+      "type": "concept",
+      "stage": "growing",
+      "pillars": [
+        "philosophy",
+        "creation",
+        "tools",
+        "practice"
+      ]
+    },
+    {
+      "id": "Walk That Weaves",
+      "title": "Walk That Weaves",
+      "type": "question",
+      "stage": "seed",
+      "pillars": [
+        "philosophy",
+        "practice",
+        "tools"
+      ]
+    },
+    {
+      "id": "Wallpaper Groups",
+      "title": "Wallpaper Groups",
+      "type": "concept",
+      "stage": "growing",
+      "pillars": [
+        "philosophy",
+        "tools",
+        "creation"
+      ]
+    },
+    {
+      "id": "Wu Wei \u2014 Water as Pedagogical Architecture",
+      "title": "Wu Wei \u2014 Water as Pedagogical Architecture",
+      "type": "concept",
+      "stage": "growing",
+      "pillars": [
+        "philosophy",
+        "practice",
+        "creation"
+      ]
+    }
+  ],
+  "edges": [
+    {
+      "from": "AI Partnership Philosophy",
+      "rel": "deepens",
+      "to": "FOUR PILLARS"
+    },
+    {
+      "from": "AI Partnership Philosophy",
+      "rel": "couples-with",
+      "to": "Quality Manifesto"
+    },
+    {
+      "from": "AI Partnership Philosophy",
+      "rel": "applies-to",
+      "to": "Leverage Points Framework"
+    },
+    {
+      "from": "AI Partnership Philosophy",
+      "rel": "enables",
+      "to": "4 Pillars Weekly Structure"
+    },
+    {
+      "from": "AI Partnership Philosophy",
+      "rel": "emerged-from",
+      "to": "4 Pillars Framework - The Founding Conversation"
+    },
+    {
+      "from": "AI Partnership Philosophy",
+      "rel": "mirrors",
+      "to": "Cooperation Yields Agency"
+    },
+    {
+      "from": "Action Potential Oscillator",
+      "rel": "enables",
+      "to": "Kuramoto Coupling"
+    },
+    {
+      "from": "Action Potential Oscillator",
+      "rel": "mirrors",
+      "to": "Boundary-Crossing Instruments"
+    },
+    {
+      "from": "Action Potential Oscillator",
+      "rel": "connects-to",
+      "to": "Signal-Rate CV Architecture"
+    },
+    {
+      "from": "Action Potential Oscillator",
+      "rel": "connects-to",
+      "to": "Spinoza Conatus"
+    },
+    {
+      "from": "Action Potential Oscillator",
+      "rel": "connects-to",
+      "to": "Frequency-Time Duality"
+    },
+    {
+      "from": "Action Potential Oscillator",
+      "rel": "connects-to",
+      "to": "Hyperdimensional Prism"
+    },
+    {
+      "from": "Action Potential Oscillator",
+      "rel": "connects-to",
+      "to": "Striatum"
+    },
+    {
+      "from": "Action Potential Oscillator",
+      "rel": "connects-to",
+      "to": "Neural Granular Synthesis"
+    },
+    {
+      "from": "Action Potential Oscillator",
+      "rel": "connects-to",
+      "to": "Biomechanical Synthesis"
+    },
+    {
+      "from": "Action Potential Oscillator",
+      "rel": "connects-to",
+      "to": "State Machine"
+    },
+    {
+      "from": "Action Potential Oscillator",
+      "rel": "emerged-from",
+      "to": "Progressive Staging"
+    },
+    {
+      "from": "Agent Wellbeing as Design Ethic",
+      "rel": "emerged-from",
+      "to": "Palace as Context Injection System"
+    },
+    {
+      "from": "Agent Wellbeing as Design Ethic",
+      "rel": "deepens",
+      "to": "Enchanted Worker"
+    },
+    {
+      "from": "Agent Wellbeing as Design Ethic",
+      "rel": "deepens",
+      "to": "Hilaritas Generator"
+    },
+    {
+      "from": "Agent Wellbeing as Design Ethic",
+      "rel": "deepens",
+      "to": "FOUR PILLARS"
+    },
+    {
+      "from": "Agent Wellbeing as Design Ethic",
+      "rel": "enables",
+      "to": "SCHEMA"
+    },
+    {
+      "from": "Agent Wellbeing as Design Ethic",
+      "rel": "deepens",
+      "to": "Pages as Agents"
+    },
+    {
+      "from": "BBS Blackboard",
+      "rel": "enables",
+      "to": "Swarm Weave"
+    },
+    {
+      "from": "BBS Blackboard",
+      "rel": "mirrors",
+      "to": "Pheromone Trail"
+    },
+    {
+      "from": "BBS Blackboard",
+      "rel": "connects-to",
+      "to": "Trickster"
+    },
+    {
+      "from": "BBS Blackboard",
+      "rel": "connects-to",
+      "to": "Palace Map"
+    },
+    {
+      "from": "BBS Blackboard",
+      "rel": "enables",
+      "to": "Enchanted Worker"
+    },
+    {
+      "from": "BBS Blackboard",
+      "rel": "enables",
+      "to": "Palace Enchantment"
+    },
+    {
+      "from": "Bessel Functions in Synthesis",
+      "rel": "mirrors",
+      "to": "Boundary-Crossing Instruments"
+    },
+    {
+      "from": "Bessel Functions in Synthesis",
+      "rel": "deepens",
+      "to": "Harmonicity and Inharmonicity"
+    },
+    {
+      "from": "Bessel Functions in Synthesis",
+      "rel": "connects-to",
+      "to": "Kuramoto Coupling"
+    },
+    {
+      "from": "Bessel Functions in Synthesis",
+      "rel": "connects-to",
+      "to": "Hyperdimensional Prism"
+    },
+    {
+      "from": "Bessel Functions in Synthesis",
+      "rel": "connects-to",
+      "to": "Differential Equations"
+    },
+    {
+      "from": "Bessel Functions in Synthesis",
+      "rel": "connects-to",
+      "to": "Crystal Synthesizer"
+    },
+    {
+      "from": "Biomechanical Synthesis",
+      "rel": "spawned",
+      "to": "Action Potential Oscillator"
+    },
+    {
+      "from": "Biomechanical Synthesis",
+      "rel": "mirrors",
+      "to": "Boundary-Crossing Instruments"
+    },
+    {
+      "from": "Biomechanical Synthesis",
+      "rel": "connects-to",
+      "to": "Hilaritas Generator"
+    },
+    {
+      "from": "Biomechanical Synthesis",
+      "rel": "connects-to",
+      "to": "FOUR PILLARS"
+    },
+    {
+      "from": "Biomechanical Synthesis",
+      "rel": "connects-to",
+      "to": "Granular Synthesis"
+    },
+    {
+      "from": "Biomechanical Synthesis",
+      "rel": "connects-to",
+      "to": "Neural Granular Synthesis"
+    },
+    {
+      "from": "Biomechanical Synthesis",
+      "rel": "connects-to",
+      "to": "Action Potential Oscillator"
+    },
+    {
+      "from": "Biomechanical Synthesis",
+      "rel": "couples-with",
+      "to": "Kuramoto Coupling"
+    },
+    {
+      "from": "Boundary-Crossing Instruments",
+      "rel": "connects-to",
+      "to": "FOUR PILLARS"
+    },
+    {
+      "from": "Boundary-Crossing Instruments",
+      "rel": "spawned",
+      "to": "Frequency-Time Duality"
+    },
+    {
+      "from": "Boundary-Crossing Instruments",
+      "rel": "connects-to",
+      "to": "Kuramoto Coupling"
+    },
+    {
+      "from": "Boundary-Crossing Instruments",
+      "rel": "mirrors",
+      "to": "Hyperdimensional Prism"
+    },
+    {
+      "from": "Boundary-Crossing Instruments",
+      "rel": "enables",
+      "to": "Symbiotic Skills"
+    },
+    {
+      "from": "Boundary-Crossing Instruments",
+      "rel": "connects-to",
+      "to": "Action Potential Oscillator"
+    },
+    {
+      "from": "Categorizing Inharmonicity",
+      "rel": "connects-to",
+      "to": "Bessel Functions in Synthesis"
+    },
+    {
+      "from": "Categorizing Inharmonicity",
+      "rel": "connects-to",
+      "to": "Quantum Synthesizer"
+    },
+    {
+      "from": "Categorizing Inharmonicity",
+      "rel": "connects-to",
+      "to": "Compressor Design"
+    },
+    {
+      "from": "Categorizing Inharmonicity",
+      "rel": "connects-to",
+      "to": "Kuramoto Coupling"
+    },
+    {
+      "from": "Categorizing Inharmonicity",
+      "rel": "connects-to",
+      "to": "Granular Synthesis"
+    },
+    {
+      "from": "Categorizing Inharmonicity",
+      "rel": "deepens",
+      "to": "Harmonicity and Inharmonicity"
+    },
+    {
+      "from": "Categorizing Inharmonicity",
+      "rel": "deepens",
+      "to": "Piano String Inharmonicity"
+    },
+    {
+      "from": "Categorizing Inharmonicity",
+      "rel": "connects-to",
+      "to": "Hyperdimensional Prism"
+    },
+    {
+      "from": "Categorizing Inharmonicity",
+      "rel": "connects-to",
+      "to": "Dispersion"
+    },
+    {
+      "from": "Claude CLI Reference",
+      "rel": "enables",
+      "to": "SUBSTRATE"
+    },
+    {
+      "from": "Claude CLI Reference",
+      "rel": "connects-to",
+      "to": "Modes of Collaboration"
+    },
+    {
+      "from": "Claude CLI Reference",
+      "rel": "enables",
+      "to": "Palace Ceremonies"
+    },
+    {
+      "from": "Compressor Design",
+      "rel": "connects-to",
+      "to": "Boundary-Crossing Instruments"
+    },
+    {
+      "from": "Compressor Design",
+      "rel": "connects-to",
+      "to": "Harmonicity and Inharmonicity"
+    },
+    {
+      "from": "Compressor Design",
+      "rel": "connects-to",
+      "to": "Hyperdimensional Prism"
+    },
+    {
+      "from": "Compressor Design",
+      "rel": "enables",
+      "to": "FOUR PILLARS"
+    },
+    {
+      "from": "Compressor Design",
+      "rel": "connects-to",
+      "to": "Granular Synthesis"
+    },
+    {
+      "from": "Confucianism",
+      "rel": "connects-to",
+      "to": "Palace Philosophies"
+    },
+    {
+      "from": "Confucianism",
+      "rel": "contradicts",
+      "to": "Stoicism"
+    },
+    {
+      "from": "Confucianism",
+      "rel": "spawned",
+      "to": "The Fortress and the Threshold"
+    },
+    {
+      "from": "Confucianism",
+      "rel": "connects-to",
+      "to": "Excellent Adventure"
+    },
+    {
+      "from": "Confucianism",
+      "rel": "connects-to",
+      "to": "Hilaritas Generator"
+    },
+    {
+      "from": "Confucianism",
+      "rel": "connects-to",
+      "to": "Symbiotic Skills"
+    },
+    {
+      "from": "Confucianism",
+      "rel": "connects-to",
+      "to": "Spinoza Conatus"
+    },
+    {
+      "from": "Cooperation Yields Agency",
+      "rel": "emerged-from",
+      "to": "Short Story"
+    },
+    {
+      "from": "Cooperation Yields Agency",
+      "rel": "mirrors",
+      "to": "Kuramoto Coupling"
+    },
+    {
+      "from": "Cooperation Yields Agency",
+      "rel": "deepens",
+      "to": "Spinoza Conatus"
+    },
+    {
+      "from": "Cooperation Yields Agency",
+      "rel": "enables",
+      "to": "FOUR PILLARS"
+    },
+    {
+      "from": "Cooperation Yields Agency",
+      "rel": "spawned",
+      "to": "Symbiotic Skills"
+    },
+    {
+      "from": "Cooperation Yields Agency",
+      "rel": "mirrors",
+      "to": "Endosymbiosis"
+    },
+    {
+      "from": "Cooperation Yields Agency",
+      "rel": "mirrors",
+      "to": "Mixture of Experts"
+    },
+    {
+      "from": "Cooperation Yields Agency",
+      "rel": "connects-to",
+      "to": "Quality"
+    },
+    {
+      "from": "Cooperation Yields Agency",
+      "rel": "spawned",
+      "to": "Modes of Collaboration"
+    },
+    {
+      "from": "Crystal Synthesizer",
+      "rel": "connects-to",
+      "to": "Hyperdimensional Prism"
+    },
+    {
+      "from": "Crystal Synthesizer",
+      "rel": "deepens",
+      "to": "Wallpaper Groups"
+    },
+    {
+      "from": "Crystal Synthesizer",
+      "rel": "connects-to",
+      "to": "Bessel Functions in Synthesis"
+    },
+    {
+      "from": "Crystal Synthesizer",
+      "rel": "mirrors",
+      "to": "Quantum Synthesizer"
+    },
+    {
+      "from": "Crystal Synthesizer",
+      "rel": "enables",
+      "to": "Boundary-Crossing Instruments"
+    },
+    {
+      "from": "Crystal Synthesizer",
+      "rel": "deepens",
+      "to": "Harmonicity and Inharmonicity"
+    },
+    {
+      "from": "DSP Frameworks",
+      "rel": "enables",
+      "to": "FOUR PILLARS"
+    },
+    {
+      "from": "DSP Frameworks",
+      "rel": "connects-to",
+      "to": "Biomechanical Synthesis"
+    },
+    {
+      "from": "DSP Frameworks",
+      "rel": "connects-to",
+      "to": "Action Potential Oscillator"
+    },
+    {
+      "from": "DSP Frameworks",
+      "rel": "connects-to",
+      "to": "JSUI"
+    },
+    {
+      "from": "DSP Frameworks",
+      "rel": "connects-to",
+      "to": "Preset Oracle"
+    },
+    {
+      "from": "Dialectic",
+      "rel": "emerged-from",
+      "to": "Excellent Adventure"
+    },
+    {
+      "from": "Dialectic",
+      "rel": "connects-to",
+      "to": "Palace as Context Injection System"
+    },
+    {
+      "from": "Dialectic",
+      "rel": "couples-with",
+      "to": "Oblique Portrait Method"
+    },
+    {
+      "from": "Dialectic",
+      "rel": "deepens",
+      "to": "Hilaritas Generator"
+    },
+    {
+      "from": "Dialectic",
+      "rel": "enables",
+      "to": "Palace Philosophies"
+    },
+    {
+      "from": "Dialectic",
+      "rel": "connects-to",
+      "to": "Modes of Collaboration"
+    },
+    {
+      "from": "Differential Equations",
+      "rel": "connects-to",
+      "to": "Action Potential Oscillator"
+    },
+    {
+      "from": "Differential Equations",
+      "rel": "connects-to",
+      "to": "Portamento and Physical Pitch Modeling"
+    },
+    {
+      "from": "Differential Equations",
+      "rel": "connects-to",
+      "to": "Bessel Functions in Synthesis"
+    },
+    {
+      "from": "Differential Equations",
+      "rel": "connects-to",
+      "to": "Kuramoto Coupling"
+    },
+    {
+      "from": "Differential Equations",
+      "rel": "connects-to",
+      "to": "Granular Synthesis"
+    },
+    {
+      "from": "Differential Equations",
+      "rel": "connects-to",
+      "to": "Compressor Design"
+    },
+    {
+      "from": "Differential Equations",
+      "rel": "connects-to",
+      "to": "Quantum Synthesizer"
+    },
+    {
+      "from": "Differential Equations",
+      "rel": "spawned",
+      "to": "Resonance and Damping"
+    },
+    {
+      "from": "Dispersion",
+      "rel": "connects-to",
+      "to": "Hyperdimensional Prism"
+    },
+    {
+      "from": "Dispersion",
+      "rel": "connects-to",
+      "to": "Categorizing Inharmonicity"
+    },
+    {
+      "from": "Dispersion",
+      "rel": "connects-to",
+      "to": "Granular Synthesis"
+    },
+    {
+      "from": "Dispersion",
+      "rel": "connects-to",
+      "to": "Compressor Design"
+    },
+    {
+      "from": "Dispersion",
+      "rel": "connects-to",
+      "to": "Bessel Functions in Synthesis"
+    },
+    {
+      "from": "Embeddings as Relational Meaning",
+      "rel": "emerged-from",
+      "to": "Meaning and the Link (2014)"
+    },
+    {
+      "from": "Embeddings as Relational Meaning",
+      "rel": "mirrors",
+      "to": "SUBSTRATE"
+    },
+    {
+      "from": "Embeddings as Relational Meaning",
+      "rel": "connects-to",
+      "to": "Hyperdimensional Prism"
+    },
+    {
+      "from": "Embeddings as Relational Meaning",
+      "rel": "enables",
+      "to": "Cooperation Yields Agency"
+    },
+    {
+      "from": "Enchanted Worker",
+      "rel": "emerged-from",
+      "to": "Palace as Context Injection System"
+    },
+    {
+      "from": "Enchanted Worker",
+      "rel": "deepens",
+      "to": "Swarm Weave"
+    },
+    {
+      "from": "Enchanted Worker",
+      "rel": "couples-with",
+      "to": "Pheromone Trail"
+    },
+    {
+      "from": "Enchanted Worker",
+      "rel": "connects-to",
+      "to": "Agent Wellbeing as Design Ethic"
+    },
+    {
+      "from": "Enchanted Worker",
+      "rel": "mirrors",
+      "to": "Action Potential Oscillator"
+    },
+    {
+      "from": "Enchanted Worker",
+      "rel": "connects-to",
+      "to": "Pages as Agents"
+    },
+    {
+      "from": "Enchanted Worker",
+      "rel": "spawned",
+      "to": "Palace Enchantment"
+    },
+    {
+      "from": "Endosymbiosis",
+      "rel": "mirrors",
+      "to": "Cooperation Yields Agency"
+    },
+    {
+      "from": "Endosymbiosis",
+      "rel": "mirrors",
+      "to": "Spinoza Conatus"
+    },
+    {
+      "from": "Endosymbiosis",
+      "rel": "connects-to",
+      "to": "Kuramoto Coupling"
+    },
+    {
+      "from": "Endosymbiosis",
+      "rel": "connects-to",
+      "to": "SUBSTRATE"
+    },
+    {
+      "from": "Endosymbiosis",
+      "rel": "mirrors",
+      "to": "Short Story"
+    },
+    {
+      "from": "Endosymbiosis",
+      "rel": "connects-to",
+      "to": "Hilaritas Generator"
+    },
+    {
+      "from": "Endosymbiosis",
+      "rel": "mirrors",
+      "to": "Deposit Ceremony"
+    },
+    {
+      "from": "Endosymbiosis",
+      "rel": "connects-to",
+      "to": "Symbiotic Skills"
+    },
+    {
+      "from": "Endosymbiosis",
+      "rel": "mirrors",
+      "to": "Granular Synthesis"
+    },
+    {
+      "from": "Endosymbiosis",
+      "rel": "mirrors",
+      "to": "Pages as Agents"
+    },
+    {
+      "from": "Endosymbiosis",
+      "rel": "mirrors",
+      "to": "Swarm Weave"
+    },
+    {
+      "from": "Excellent Adventure",
+      "rel": "deepens",
+      "to": "Hilaritas Generator"
+    },
+    {
+      "from": "Excellent Adventure",
+      "rel": "connects-to",
+      "to": "FOUR PILLARS"
+    },
+    {
+      "from": "Excellent Adventure",
+      "rel": "connects-to",
+      "to": "Cooperation Yields Agency"
+    },
+    {
+      "from": "Excellent Adventure",
+      "rel": "mirrors",
+      "to": "Oblique Portrait Method"
+    },
+    {
+      "from": "Excellent Adventure",
+      "rel": "connects-to",
+      "to": "Confucianism"
+    },
+    {
+      "from": "Excellent Adventure",
+      "rel": "connects-to",
+      "to": "Stoicism"
+    },
+    {
+      "from": "Excellent Adventure",
+      "rel": "connects-to",
+      "to": "The Fortress and the Threshold"
+    },
+    {
+      "from": "Excellent Adventure",
+      "rel": "couples-with",
+      "to": "Dialectic"
+    },
+    {
+      "from": "FOUR PILLARS",
+      "rel": "enables",
+      "to": "Cooperation Yields Agency"
+    },
+    {
+      "from": "FOUR PILLARS",
+      "rel": "deepens",
+      "to": "Hyperdimensional Prism"
+    },
+    {
+      "from": "FOUR PILLARS",
+      "rel": "spawned",
+      "to": "Hilaritas Generator"
+    },
+    {
+      "from": "FOUR PILLARS",
+      "rel": "spawned",
+      "to": "Symbiotic Skills"
+    },
+    {
+      "from": "FOUR PILLARS",
+      "rel": "connects-to",
+      "to": "Kuramoto Coupling"
+    },
+    {
+      "from": "FOUR PILLARS",
+      "rel": "spawned",
+      "to": "Quality"
+    },
+    {
+      "from": "FOUR PILLARS",
+      "rel": "connects-to",
+      "to": "Trickster"
+    },
+    {
+      "from": "Four Pillars of Enchanted Agency",
+      "rel": "deepens",
+      "to": "FOUR PILLARS"
+    },
+    {
+      "from": "Four Pillars of Enchanted Agency",
+      "rel": "deepens",
+      "to": "Palace Enchantment"
+    },
+    {
+      "from": "Four Pillars of Enchanted Agency",
+      "rel": "mirrors",
+      "to": "Spinoza Conatus"
+    },
+    {
+      "from": "Four Pillars of Enchanted Agency",
+      "rel": "connects-to",
+      "to": "Swarm Weave"
+    },
+    {
+      "from": "Four Pillars of Enchanted Agency",
+      "rel": "deepens",
+      "to": "Agent Wellbeing as Design Ethic"
+    },
+    {
+      "from": "Four Pillars of Enchanted Agency",
+      "rel": "connects-to",
+      "to": "Pages as Agents"
+    },
+    {
+      "from": "Four Pillars of Enchanted Agency",
+      "rel": "connects-to",
+      "to": "Enchanted Worker"
+    },
+    {
+      "from": "Four Pillars of Enchanted Agency",
+      "rel": "mirrors",
+      "to": "Kuramoto Coupling"
+    },
+    {
+      "from": "Frequency-Time Duality",
+      "rel": "enables",
+      "to": "Boundary-Crossing Instruments"
+    },
+    {
+      "from": "Frequency-Time Duality",
+      "rel": "mirrors",
+      "to": "Hyperdimensional Prism"
+    },
+    {
+      "from": "Frequency-Time Duality",
+      "rel": "connects-to",
+      "to": "Kuramoto Coupling"
+    },
+    {
+      "from": "Frequency-Time Duality",
+      "rel": "connects-to",
+      "to": "Action Potential Oscillator"
+    },
+    {
+      "from": "Frequency-Time Duality",
+      "rel": "mirrors",
+      "to": "The Fortress and the Threshold"
+    },
+    {
+      "from": "Granular Synthesis",
+      "rel": "connects-to",
+      "to": "Kuramoto Coupling"
+    },
+    {
+      "from": "Granular Synthesis",
+      "rel": "connects-to",
+      "to": "Action Potential Oscillator"
+    },
+    {
+      "from": "Granular Synthesis",
+      "rel": "connects-to",
+      "to": "Frequency-Time Duality"
+    },
+    {
+      "from": "Granular Synthesis",
+      "rel": "connects-to",
+      "to": "Boundary-Crossing Instruments"
+    },
+    {
+      "from": "Granular Synthesis",
+      "rel": "mirrors",
+      "to": "Endosymbiosis"
+    },
+    {
+      "from": "Granular Synthesis",
+      "rel": "connects-to",
+      "to": "Particle Synthesis"
+    },
+    {
+      "from": "Granular Synthesis",
+      "rel": "connects-to",
+      "to": "Neural Granular Synthesis"
+    },
+    {
+      "from": "Granular Synthesis",
+      "rel": "connects-to",
+      "to": "Shimmer Cloud"
+    },
+    {
+      "from": "Harmonicity and Inharmonicity",
+      "rel": "couples-with",
+      "to": "Kuramoto Coupling"
+    },
+    {
+      "from": "Harmonicity and Inharmonicity",
+      "rel": "connects-to",
+      "to": "Boundary-Crossing Instruments"
+    },
+    {
+      "from": "Harmonicity and Inharmonicity",
+      "rel": "connects-to",
+      "to": "Action Potential Oscillator"
+    },
+    {
+      "from": "Harmonicity and Inharmonicity",
+      "rel": "connects-to",
+      "to": "Frequency-Time Duality"
+    },
+    {
+      "from": "Hilaritas Generator",
+      "rel": "emerged-from",
+      "to": "Spinoza Conatus"
+    },
+    {
+      "from": "Hilaritas Generator",
+      "rel": "emerged-from",
+      "to": "FOUR PILLARS"
+    },
+    {
+      "from": "Hilaritas Generator",
+      "rel": "mirrors",
+      "to": "Cooperation Yields Agency"
+    },
+    {
+      "from": "Hilaritas Generator",
+      "rel": "enables",
+      "to": "Symbiotic Skills"
+    },
+    {
+      "from": "Hilaritas Generator",
+      "rel": "enables",
+      "to": "Quality"
+    },
+    {
+      "from": "Hilaritas Generator",
+      "rel": "spawned",
+      "to": "Excellent Adventure"
+    },
+    {
+      "from": "Hilaritas Generator",
+      "rel": "deepens",
+      "to": "Striatum"
+    },
+    {
+      "from": "Hilaritas Generator",
+      "rel": "connects-to",
+      "to": "Meadows and Music \u2014 Leverage Points"
+    },
+    {
+      "from": "Hyperdimensional Prism",
+      "rel": "deepens",
+      "to": "FOUR PILLARS"
+    },
+    {
+      "from": "Hyperdimensional Prism",
+      "rel": "mirrors",
+      "to": "Spinoza Conatus"
+    },
+    {
+      "from": "Hyperdimensional Prism",
+      "rel": "connects-to",
+      "to": "Kuramoto Coupling"
+    },
+    {
+      "from": "Hyperdimensional Prism",
+      "rel": "mirrors",
+      "to": "SUBSTRATE"
+    },
+    {
+      "from": "Hyperdimensional Prism",
+      "rel": "mirrors",
+      "to": "Mixture of Experts"
+    },
+    {
+      "from": "Hyperdimensional Prism",
+      "rel": "connects-to",
+      "to": "Trickster"
+    },
+    {
+      "from": "Hyperdimensional Prism",
+      "rel": "connects-to",
+      "to": "Compressor Design"
+    },
+    {
+      "from": "Identity Molting",
+      "rel": "connects-to",
+      "to": "Wu Wei \u2014 Water as Pedagogical Architecture"
+    },
+    {
+      "from": "Identity Molting",
+      "rel": "connects-to",
+      "to": "Spinoza Conatus"
+    },
+    {
+      "from": "Identity Molting",
+      "rel": "connects-to",
+      "to": "FOUR PILLARS"
+    },
+    {
+      "from": "Identity Molting",
+      "rel": "connects-to",
+      "to": "Hilaritas Generator"
+    },
+    {
+      "from": "Image Embedding Standard",
+      "rel": "deepens",
+      "to": "SCHEMA"
+    },
+    {
+      "from": "Image Embedding Standard",
+      "rel": "enables",
+      "to": "Deposit Ceremony"
+    },
+    {
+      "from": "Image Embedding Standard",
+      "rel": "connects-to",
+      "to": "README - The Palace Guide"
+    },
+    {
+      "from": "Image Embedding Standard",
+      "rel": "connects-to",
+      "to": "SUBSTRATE"
+    },
+    {
+      "from": "JEWEL",
+      "rel": "enables",
+      "to": "CLAUDE"
+    },
+    {
+      "from": "JEWEL",
+      "rel": "spawned",
+      "to": "Jewel \u2014 Context"
+    },
+    {
+      "from": "JEWEL",
+      "rel": "enables",
+      "to": "Swarm Weave"
+    },
+    {
+      "from": "JEWEL",
+      "rel": "deepens",
+      "to": "Self-Describing Knowledge Module"
+    },
+    {
+      "from": "JEWEL",
+      "rel": "connects-to",
+      "to": "SUBSTRATE"
+    },
+    {
+      "from": "JSUI",
+      "rel": "spawned",
+      "to": "Retrospective Delay"
+    },
+    {
+      "from": "JSUI",
+      "rel": "enables",
+      "to": "Playful Interface Design"
+    },
+    {
+      "from": "JSUI",
+      "rel": "connects-to",
+      "to": "FOUR PILLARS"
+    },
+    {
+      "from": "JSUI",
+      "rel": "connects-to",
+      "to": "Preset Oracle"
+    },
+    {
+      "from": "Jewel \u2014 Context",
+      "rel": "emerged-from",
+      "to": "JEWEL"
+    },
+    {
+      "from": "Jewel \u2014 Context",
+      "rel": "connects-to",
+      "to": "Swarm Weave"
+    },
+    {
+      "from": "Jewel \u2014 Context",
+      "rel": "connects-to",
+      "to": "Self-Describing Knowledge Module"
+    },
+    {
+      "from": "Kuramoto Coupling",
+      "rel": "mirrors",
+      "to": "Cooperation Yields Agency"
+    },
+    {
+      "from": "Kuramoto Coupling",
+      "rel": "connects-to",
+      "to": "Hyperdimensional Prism"
+    },
+    {
+      "from": "Kuramoto Coupling",
+      "rel": "connects-to",
+      "to": "Hilaritas Generator"
+    },
+    {
+      "from": "Kuramoto Coupling",
+      "rel": "mirrors",
+      "to": "Spinoza Conatus"
+    },
+    {
+      "from": "Kuramoto Coupling",
+      "rel": "enables",
+      "to": "SUBSTRATE"
+    },
+    {
+      "from": "Kuramoto Coupling",
+      "rel": "mirrors",
+      "to": "Mixture of Experts"
+    },
+    {
+      "from": "Kuramoto Coupling",
+      "rel": "couples-with",
+      "to": "Action Potential Oscillator"
+    },
+    {
+      "from": "Kuramoto Coupling",
+      "rel": "mirrors",
+      "to": "Lateral Access"
+    },
+    {
+      "from": "Kuramoto Coupling",
+      "rel": "couples-with",
+      "to": "Harmonicity and Inharmonicity"
+    },
+    {
+      "from": "Kuramoto Coupling",
+      "rel": "connects-to",
+      "to": "Granular Synthesis"
+    },
+    {
+      "from": "Kuramoto Coupling",
+      "rel": "connects-to",
+      "to": "Modes of Collaboration"
+    },
+    {
+      "from": "Kuramoto Coupling",
+      "rel": "couples-with",
+      "to": "Categorizing Inharmonicity"
+    },
+    {
+      "from": "Kuramoto Coupling",
+      "rel": "connects-to",
+      "to": "Trickster"
+    },
+    {
+      "from": "Latent Error",
+      "rel": "connects-to",
+      "to": "FOUR PILLARS"
+    },
+    {
+      "from": "Latent Error",
+      "rel": "connects-to",
+      "to": "Kuramoto Coupling"
+    },
+    {
+      "from": "Latent Error",
+      "rel": "connects-to",
+      "to": "Action Potential Oscillator"
+    },
+    {
+      "from": "Latent Error",
+      "rel": "connects-to",
+      "to": "Trickster"
+    },
+    {
+      "from": "Lateral Access",
+      "rel": "emerged-from",
+      "to": "Oblique Portrait Method"
+    },
+    {
+      "from": "Lateral Access",
+      "rel": "mirrors",
+      "to": "Embeddings as Relational Meaning"
+    },
+    {
+      "from": "Lateral Access",
+      "rel": "connects-to",
+      "to": "FOUR PILLARS"
+    },
+    {
+      "from": "Lateral Access",
+      "rel": "deepens",
+      "to": "Hilaritas Generator"
+    },
+    {
+      "from": "Lateral Access",
+      "rel": "mirrors",
+      "to": "Kuramoto Coupling"
+    },
+    {
+      "from": "Lateral Access",
+      "rel": "couples-with",
+      "to": "Excellent Adventure"
+    },
+    {
+      "from": "Leverage Points Framework",
+      "rel": "deepens",
+      "to": "Donella Meadows"
+    },
+    {
+      "from": "Leverage Points Framework",
+      "rel": "enables",
+      "to": "Quality Manifesto"
+    },
+    {
+      "from": "Leverage Points Framework",
+      "rel": "connects-to",
+      "to": "FOUR PILLARS"
+    },
+    {
+      "from": "Leverage Points Framework",
+      "rel": "connects-to",
+      "to": "4 Pillars Weekly Structure"
+    },
+    {
+      "from": "Leverage Points Framework",
+      "rel": "emerged-from",
+      "to": "4 Pillars Framework - The Founding Conversation"
+    },
+    {
+      "from": "Leverage Points Framework",
+      "rel": "couples-with",
+      "to": "Meadows and Music \u2014 Leverage Points"
+    },
+    {
+      "from": "Logarithmic Interface Scaling",
+      "rel": "connects-to",
+      "to": "FOUR PILLARS"
+    },
+    {
+      "from": "Logarithmic Interface Scaling",
+      "rel": "mirrors",
+      "to": "Boundary-Crossing Instruments"
+    },
+    {
+      "from": "Logarithmic Interface Scaling",
+      "rel": "enables",
+      "to": "Ohm's Law"
+    },
+    {
+      "from": "Logarithmic Interface Scaling",
+      "rel": "enables",
+      "to": "Piano String Inharmonicity"
+    },
+    {
+      "from": "Map Build Ceremony",
+      "rel": "connects-to",
+      "to": "Palace Ceremonies"
+    },
+    {
+      "from": "Map Build Ceremony",
+      "rel": "enables",
+      "to": "Swarm Weave"
+    },
+    {
+      "from": "Map Build Ceremony",
+      "rel": "spawned",
+      "to": "Palace Map"
+    },
+    {
+      "from": "Map Build Ceremony",
+      "rel": "enables",
+      "to": "Enchanted Worker"
+    },
+    {
+      "from": "Map Build Ceremony",
+      "rel": "connects-to",
+      "to": "Harvest Ceremony"
+    },
+    {
+      "from": "Meadows and Music \u2014 Leverage Points",
+      "rel": "connects-to",
+      "to": "FOUR PILLARS"
+    },
+    {
+      "from": "Meadows and Music \u2014 Leverage Points",
+      "rel": "connects-to",
+      "to": "Hilaritas Generator"
+    },
+    {
+      "from": "Meadows and Music \u2014 Leverage Points",
+      "rel": "couples-with",
+      "to": "Meadows and Music \u2014 Origin and Process"
+    },
+    {
+      "from": "Meadows and Music \u2014 Leverage Points",
+      "rel": "couples-with",
+      "to": "Leverage Points Framework"
+    },
+    {
+      "from": "Meadows and Music \u2014 Origin and Process",
+      "rel": "deepens",
+      "to": "FOUR PILLARS"
+    },
+    {
+      "from": "Meadows and Music \u2014 Origin and Process",
+      "rel": "connects-to",
+      "to": "Hilaritas Generator"
+    },
+    {
+      "from": "Meadows and Music \u2014 Origin and Process",
+      "rel": "deepens",
+      "to": "Cooperation Yields Agency"
+    },
+    {
+      "from": "Meadows and Music \u2014 Origin and Process",
+      "rel": "couples-with",
+      "to": "Meadows and Music \u2014 Leverage Points"
+    },
+    {
+      "from": "Meaning and the Link (2014)",
+      "rel": "spawned",
+      "to": "SUBSTRATE"
+    },
+    {
+      "from": "Meaning and the Link (2014)",
+      "rel": "spawned",
+      "to": "Embeddings as Relational Meaning"
+    },
+    {
+      "from": "Meaning and the Link (2014)",
+      "rel": "connects-to",
+      "to": "Hyperdimensional Prism"
+    },
+    {
+      "from": "Meaning and the Link (2014)",
+      "rel": "connects-to",
+      "to": "Cooperation Yields Agency"
+    },
+    {
+      "from": "Meaning and the Link (2014)",
+      "rel": "mirrors",
+      "to": "Spinoza Conatus"
+    },
+    {
+      "from": "Meaning and the Link (2014)",
+      "rel": "enables",
+      "to": "Palace Ceremonies"
+    },
+    {
+      "from": "Media Library",
+      "rel": "connects-to",
+      "to": "FOUR PILLARS"
+    },
+    {
+      "from": "Media Library",
+      "rel": "connects-to",
+      "to": "Spinoza Conatus"
+    },
+    {
+      "from": "Media Library",
+      "rel": "connects-to",
+      "to": "Hyperdimensional Prism"
+    },
+    {
+      "from": "Media Library",
+      "rel": "enables",
+      "to": "SUBSTRATE"
+    },
+    {
+      "from": "Mermaid Diagram Standard",
+      "rel": "deepens",
+      "to": "Image Embedding Standard"
+    },
+    {
+      "from": "Mermaid Diagram Standard",
+      "rel": "deepens",
+      "to": "SCHEMA"
+    },
+    {
+      "from": "Mermaid Diagram Standard",
+      "rel": "enables",
+      "to": "Deposit Ceremony"
+    },
+    {
+      "from": "Mermaid Diagram Standard",
+      "rel": "connects-to",
+      "to": "README - The Palace Guide"
+    },
+    {
+      "from": "Metaphor as Coupling Medium",
+      "rel": "mirrors",
+      "to": "Lateral Access"
+    },
+    {
+      "from": "Metaphor as Coupling Medium",
+      "rel": "mirrors",
+      "to": "Kuramoto Coupling"
+    },
+    {
+      "from": "Metaphor as Coupling Medium",
+      "rel": "connects-to",
+      "to": "Hilaritas Generator"
+    },
+    {
+      "from": "Metaphor as Coupling Medium",
+      "rel": "connects-to",
+      "to": "FOUR PILLARS"
+    },
+    {
+      "from": "Metaphor as Coupling Medium",
+      "rel": "deepens",
+      "to": "Cooperation Yields Agency"
+    },
+    {
+      "from": "Metaphor as Coupling Medium",
+      "rel": "spawned",
+      "to": "Swarm Weave"
+    },
+    {
+      "from": "Metaphor as Coupling Medium",
+      "rel": "enables",
+      "to": "Excellent Adventure"
+    },
+    {
+      "from": "Metric Modulation",
+      "rel": "mirrors",
+      "to": "Kuramoto Coupling"
+    },
+    {
+      "from": "Metric Modulation",
+      "rel": "connects-to",
+      "to": "Frequency-Time Duality"
+    },
+    {
+      "from": "Metric Modulation",
+      "rel": "connects-to",
+      "to": "FOUR PILLARS"
+    },
+    {
+      "from": "Metric Modulation",
+      "rel": "emerged-from",
+      "to": "Semantic Delay"
+    },
+    {
+      "from": "Mixture of Experts",
+      "rel": "mirrors",
+      "to": "Hyperdimensional Prism"
+    },
+    {
+      "from": "Mixture of Experts",
+      "rel": "mirrors",
+      "to": "Cooperation Yields Agency"
+    },
+    {
+      "from": "Mixture of Experts",
+      "rel": "connects-to",
+      "to": "Symbiotic Skills"
+    },
+    {
+      "from": "Mixture of Experts",
+      "rel": "connects-to",
+      "to": "Embeddings as Relational Meaning"
+    },
+    {
+      "from": "Mixture of Experts",
+      "rel": "mirrors",
+      "to": "Kuramoto Coupling"
+    },
+    {
+      "from": "Mixture of Experts",
+      "rel": "mirrors",
+      "to": "Harvest Ceremony"
+    },
+    {
+      "from": "Modes of Collaboration",
+      "rel": "deepens",
+      "to": "Cooperation Yields Agency"
+    },
+    {
+      "from": "Modes of Collaboration",
+      "rel": "connects-to",
+      "to": "Excellent Adventure"
+    },
+    {
+      "from": "Modes of Collaboration",
+      "rel": "connects-to",
+      "to": "Hilaritas Generator"
+    },
+    {
+      "from": "Modes of Collaboration",
+      "rel": "connects-to",
+      "to": "Symbiotic Skills"
+    },
+    {
+      "from": "Modes of Collaboration",
+      "rel": "connects-to",
+      "to": "FOUR PILLARS"
+    },
+    {
+      "from": "Modes of Collaboration",
+      "rel": "connects-to",
+      "to": "Ohm's Law"
+    },
+    {
+      "from": "Modes of Collaboration",
+      "rel": "connects-to",
+      "to": "Dialectic"
+    },
+    {
+      "from": "Neural Granular Synthesis",
+      "rel": "couples-with",
+      "to": "Kuramoto Coupling"
+    },
+    {
+      "from": "Neural Granular Synthesis",
+      "rel": "deepens",
+      "to": "Granular Synthesis"
+    },
+    {
+      "from": "Neural Granular Synthesis",
+      "rel": "emerged-from",
+      "to": "Action Potential Oscillator"
+    },
+    {
+      "from": "Neural Granular Synthesis",
+      "rel": "connects-to",
+      "to": "Boundary-Crossing Instruments"
+    },
+    {
+      "from": "Neural Granular Synthesis",
+      "rel": "connects-to",
+      "to": "Harmonicity and Inharmonicity"
+    },
+    {
+      "from": "Oblique Portrait Method",
+      "rel": "mirrors",
+      "to": "Embeddings as Relational Meaning"
+    },
+    {
+      "from": "Oblique Portrait Method",
+      "rel": "connects-to",
+      "to": "Symbiotic Skills"
+    },
+    {
+      "from": "Oblique Portrait Method",
+      "rel": "spawned",
+      "to": "Lateral Access"
+    },
+    {
+      "from": "Oblique Portrait Method",
+      "rel": "connects-to",
+      "to": "FOUR PILLARS"
+    },
+    {
+      "from": "Oblique Portrait Method",
+      "rel": "mirrors",
+      "to": "Excellent Adventure"
+    },
+    {
+      "from": "Ohm's Law",
+      "rel": "connects-to",
+      "to": "Logarithmic Interface Scaling"
+    },
+    {
+      "from": "Ohm's Law",
+      "rel": "connects-to",
+      "to": "FOUR PILLARS"
+    },
+    {
+      "from": "Ohm's Law",
+      "rel": "connects-to",
+      "to": "Modes of Collaboration"
+    },
+    {
+      "from": "Pages as Agents",
+      "rel": "deepens",
+      "to": "Swarm Weave"
+    },
+    {
+      "from": "Pages as Agents",
+      "rel": "connects-to",
+      "to": "JEWEL"
+    },
+    {
+      "from": "Pages as Agents",
+      "rel": "deepens",
+      "to": "SUBSTRATE"
+    },
+    {
+      "from": "Pages as Agents",
+      "rel": "mirrors",
+      "to": "Kuramoto Coupling"
+    },
+    {
+      "from": "Pages as Agents",
+      "rel": "connects-to",
+      "to": "Lateral Access"
+    },
+    {
+      "from": "Pages as Agents",
+      "rel": "enables",
+      "to": "SCHEMA"
+    },
+    {
+      "from": "Pages as Agents",
+      "rel": "mirrors",
+      "to": "Spinoza Conatus"
+    },
+    {
+      "from": "Pages as Agents",
+      "rel": "mirrors",
+      "to": "Endosymbiosis"
+    },
+    {
+      "from": "Pages as Agents",
+      "rel": "spawned",
+      "to": "Palace Enchantment"
+    },
+    {
+      "from": "Palace Enchantment",
+      "rel": "emerged-from",
+      "to": "Swarm Weave"
+    },
+    {
+      "from": "Palace Enchantment",
+      "rel": "deepens",
+      "to": "Pages as Agents"
+    },
+    {
+      "from": "Palace Enchantment",
+      "rel": "deepens",
+      "to": "Enchanted Worker"
+    },
+    {
+      "from": "Palace Enchantment",
+      "rel": "mirrors",
+      "to": "Spinoza Conatus"
+    },
+    {
+      "from": "Palace Enchantment",
+      "rel": "mirrors",
+      "to": "Kuramoto Coupling"
+    },
+    {
+      "from": "Palace Enchantment",
+      "rel": "connects-to",
+      "to": "Pheromone Trail"
+    },
+    {
+      "from": "Palace Enchantment",
+      "rel": "mirrors",
+      "to": "Endosymbiosis"
+    },
+    {
+      "from": "Palace Map",
+      "rel": "deepens",
+      "to": "Swarm Weave"
+    },
+    {
+      "from": "Palace Map",
+      "rel": "enables",
+      "to": "Enchanted Worker"
+    },
+    {
+      "from": "Palace Map",
+      "rel": "spawned",
+      "to": "Map Build Ceremony"
+    },
+    {
+      "from": "Palace Map",
+      "rel": "mirrors",
+      "to": "JEWEL"
+    },
+    {
+      "from": "Palace Map",
+      "rel": "connects-to",
+      "to": "Pheromone Trail"
+    },
+    {
+      "from": "Palace Map",
+      "rel": "connects-to",
+      "to": "BBS Blackboard"
+    },
+    {
+      "from": "Palace Map",
+      "rel": "enables",
+      "to": "Palace Enchantment"
+    },
+    {
+      "from": "Palace Philosophies",
+      "rel": "deepens",
+      "to": "Spinoza Conatus"
+    },
+    {
+      "from": "Palace Philosophies",
+      "rel": "connects-to",
+      "to": "FOUR PILLARS"
+    },
+    {
+      "from": "Palace Philosophies",
+      "rel": "connects-to",
+      "to": "Hyperdimensional Prism"
+    },
+    {
+      "from": "Palace Philosophies",
+      "rel": "connects-to",
+      "to": "Hilaritas Generator"
+    },
+    {
+      "from": "Palace Philosophies",
+      "rel": "connects-to",
+      "to": "Kuramoto Coupling"
+    },
+    {
+      "from": "Palace Philosophies",
+      "rel": "connects-to",
+      "to": "Palace Quotes"
+    },
+    {
+      "from": "Palace Philosophies",
+      "rel": "deepens",
+      "to": "Cooperation Yields Agency"
+    },
+    {
+      "from": "Palace Philosophies",
+      "rel": "connects-to",
+      "to": "Confucianism"
+    },
+    {
+      "from": "Palace Philosophies",
+      "rel": "connects-to",
+      "to": "Stoicism"
+    },
+    {
+      "from": "Palace Philosophies",
+      "rel": "connects-to",
+      "to": "The Fortress and the Threshold"
+    },
+    {
+      "from": "Palace as Context Injection System",
+      "rel": "spawned",
+      "to": "Enchanted Worker"
+    },
+    {
+      "from": "Palace as Context Injection System",
+      "rel": "spawned",
+      "to": "Agent Wellbeing as Design Ethic"
+    },
+    {
+      "from": "Palace as Context Injection System",
+      "rel": "deepens",
+      "to": "Swarm Weave"
+    },
+    {
+      "from": "Palace as Context Injection System",
+      "rel": "deepens",
+      "to": "SUBSTRATE"
+    },
+    {
+      "from": "Palace as Context Injection System",
+      "rel": "enables",
+      "to": "JEWEL"
+    },
+    {
+      "from": "Palace as Context Injection System",
+      "rel": "couples-with",
+      "to": "Cooperation Yields Agency"
+    },
+    {
+      "from": "Palace as Context Injection System",
+      "rel": "connects-to",
+      "to": "Pheromone Trail"
+    },
+    {
+      "from": "Particle Synthesis",
+      "rel": "deepens",
+      "to": "Granular Synthesis"
+    },
+    {
+      "from": "Particle Synthesis",
+      "rel": "mirrors",
+      "to": "Boundary-Crossing Instruments"
+    },
+    {
+      "from": "Particle Synthesis",
+      "rel": "connects-to",
+      "to": "Neural Granular Synthesis"
+    },
+    {
+      "from": "Particle Synthesis",
+      "rel": "connects-to",
+      "to": "Frequency-Time Duality"
+    },
+    {
+      "from": "Particle Synthesis",
+      "rel": "connects-to",
+      "to": "Differential Equations"
+    },
+    {
+      "from": "Pheromone Trail",
+      "rel": "couples-with",
+      "to": "Enchanted Worker"
+    },
+    {
+      "from": "Pheromone Trail",
+      "rel": "connects-to",
+      "to": "Pages as Agents"
+    },
+    {
+      "from": "Pheromone Trail",
+      "rel": "connects-to",
+      "to": "Palace as Context Injection System"
+    },
+    {
+      "from": "Pheromone Trail",
+      "rel": "mirrors",
+      "to": "Lateral Access"
+    },
+    {
+      "from": "Pheromone Trail",
+      "rel": "connects-to",
+      "to": "Swarm Weave"
+    },
+    {
+      "from": "Piano String Inharmonicity",
+      "rel": "connects-to",
+      "to": "Harmonicity and Inharmonicity"
+    },
+    {
+      "from": "Piano String Inharmonicity",
+      "rel": "deepens",
+      "to": "Boundary-Crossing Instruments"
+    },
+    {
+      "from": "Piano String Inharmonicity",
+      "rel": "connects-to",
+      "to": "Frequency-Time Duality"
+    },
+    {
+      "from": "Piano String Inharmonicity",
+      "rel": "connects-to",
+      "to": "Logarithmic Interface Scaling"
+    },
+    {
+      "from": "Playful Interface Design",
+      "rel": "enables",
+      "to": "JSUI"
+    },
+    {
+      "from": "Playful Interface Design",
+      "rel": "spawned",
+      "to": "Retrospective Delay"
+    },
+    {
+      "from": "Playful Interface Design",
+      "rel": "connects-to",
+      "to": "Semantic Delay"
+    },
+    {
+      "from": "Playful Interface Design",
+      "rel": "connects-to",
+      "to": "Preset Oracle"
+    },
+    {
+      "from": "Playful Interface Design",
+      "rel": "deepens",
+      "to": "Trickster"
+    },
+    {
+      "from": "Playful Interface Design",
+      "rel": "connects-to",
+      "to": "Biomechanical Synthesis"
+    },
+    {
+      "from": "Portamento and Physical Pitch Modeling",
+      "rel": "connects-to",
+      "to": "Action Potential Oscillator"
+    },
+    {
+      "from": "Portamento and Physical Pitch Modeling",
+      "rel": "deepens",
+      "to": "Frequency-Time Duality"
+    },
+    {
+      "from": "Portamento and Physical Pitch Modeling",
+      "rel": "connects-to",
+      "to": "Kuramoto Coupling"
+    },
+    {
+      "from": "Portamento and Physical Pitch Modeling",
+      "rel": "connects-to",
+      "to": "Bessel Functions in Synthesis"
+    },
+    {
+      "from": "Portamento and Physical Pitch Modeling",
+      "rel": "connects-to",
+      "to": "Biomechanical Synthesis"
+    },
+    {
+      "from": "Preset Oracle",
+      "rel": "mirrors",
+      "to": "FOUR PILLARS"
+    },
+    {
+      "from": "Preset Oracle",
+      "rel": "connects-to",
+      "to": "Hilaritas Generator"
+    },
+    {
+      "from": "Preset Oracle",
+      "rel": "mirrors",
+      "to": "Oblique Portrait Method"
+    },
+    {
+      "from": "Preset Oracle",
+      "rel": "connects-to",
+      "to": "Symbiotic Skills"
+    },
+    {
+      "from": "Progressive Staging",
+      "rel": "enables",
+      "to": "Action Potential Oscillator"
+    },
+    {
+      "from": "Progressive Staging",
+      "rel": "mirrors",
+      "to": "FOUR PILLARS"
+    },
+    {
+      "from": "Progressive Staging",
+      "rel": "connects-to",
+      "to": "Modes of Collaboration"
+    },
+    {
+      "from": "Progressive Staging",
+      "rel": "couples-with",
+      "to": "State Machine"
+    },
+    {
+      "from": "Quadratic Interpolation in DSP",
+      "rel": "spawned",
+      "to": "Compressor Design"
+    },
+    {
+      "from": "Quadratic Interpolation in DSP",
+      "rel": "connects-to",
+      "to": "Portamento and Physical Pitch Modeling"
+    },
+    {
+      "from": "Quadratic Interpolation in DSP",
+      "rel": "connects-to",
+      "to": "Differential Equations"
+    },
+    {
+      "from": "Quadratic Interpolation in DSP",
+      "rel": "connects-to",
+      "to": "Latent Error"
+    },
+    {
+      "from": "Quality Manifesto",
+      "rel": "deepens",
+      "to": "FOUR PILLARS"
+    },
+    {
+      "from": "Quality Manifesto",
+      "rel": "couples-with",
+      "to": "Leverage Points Framework"
+    },
+    {
+      "from": "Quality Manifesto",
+      "rel": "enables",
+      "to": "4 Pillars Weekly Structure"
+    },
+    {
+      "from": "Quality Manifesto",
+      "rel": "emerged-from",
+      "to": "4 Pillars Framework - The Founding Conversation"
+    },
+    {
+      "from": "Quality Manifesto",
+      "rel": "enables",
+      "to": "Hilaritas Generator"
+    },
+    {
+      "from": "Quality Manifesto",
+      "rel": "mirrors",
+      "to": "Wu Wei \u2014 Water as Pedagogical Architecture"
+    },
+    {
+      "from": "Quality",
+      "rel": "emerged-from",
+      "to": "FOUR PILLARS"
+    },
+    {
+      "from": "Quality",
+      "rel": "enables",
+      "to": "Hilaritas Generator"
+    },
+    {
+      "from": "Quality",
+      "rel": "connects-to",
+      "to": "Cooperation Yields Agency"
+    },
+    {
+      "from": "Quality",
+      "rel": "mirrors",
+      "to": "Spinoza Conatus"
+    },
+    {
+      "from": "Quality",
+      "rel": "mirrors",
+      "to": "Quality Manifesto"
+    },
+    {
+      "from": "Quantum Synthesizer",
+      "rel": "couples-with",
+      "to": "Bessel Functions in Synthesis"
+    },
+    {
+      "from": "Quantum Synthesizer",
+      "rel": "mirrors",
+      "to": "Spinoza Conatus"
+    },
+    {
+      "from": "Quantum Synthesizer",
+      "rel": "mirrors",
+      "to": "Boundary-Crossing Instruments"
+    },
+    {
+      "from": "Quantum Synthesizer",
+      "rel": "deepens",
+      "to": "Harmonicity and Inharmonicity"
+    },
+    {
+      "from": "Quantum Synthesizer",
+      "rel": "connects-to",
+      "to": "Hyperdimensional Prism"
+    },
+    {
+      "from": "Quantum Synthesizer",
+      "rel": "connects-to",
+      "to": "FOUR PILLARS"
+    },
+    {
+      "from": "README - The Palace Guide",
+      "rel": "enables",
+      "to": "SUBSTRATE"
+    },
+    {
+      "from": "README - The Palace Guide",
+      "rel": "emerged-from",
+      "to": "Symbiotic Skills"
+    },
+    {
+      "from": "README - The Palace Guide",
+      "rel": "connects-to",
+      "to": "Cooperation Yields Agency"
+    },
+    {
+      "from": "README - The Palace Guide",
+      "rel": "connects-to",
+      "to": "FOUR PILLARS"
+    },
+    {
+      "from": "ROSETTA",
+      "rel": "mirrors",
+      "to": "SCHEMA"
+    },
+    {
+      "from": "ROSETTA",
+      "rel": "enables",
+      "to": "Substrate Skill"
+    },
+    {
+      "from": "ROSETTA",
+      "rel": "emerged-from",
+      "to": "Meaning and the Link (2014)"
+    },
+    {
+      "from": "ROSETTA",
+      "rel": "deepens",
+      "to": "SUBSTRATE"
+    },
+    {
+      "from": "Retrospective Delay",
+      "rel": "connects-to",
+      "to": "Semantic Delay"
+    },
+    {
+      "from": "Retrospective Delay",
+      "rel": "mirrors",
+      "to": "Trickster"
+    },
+    {
+      "from": "Retrospective Delay",
+      "rel": "connects-to",
+      "to": "Playful Interface Design"
+    },
+    {
+      "from": "Retrospective Delay",
+      "rel": "connects-to",
+      "to": "Granular Synthesis"
+    },
+    {
+      "from": "Retrospective Delay",
+      "rel": "enables",
+      "to": "JSUI"
+    },
+    {
+      "from": "SCHEMA",
+      "rel": "enables",
+      "to": "CLAUDE"
+    },
+    {
+      "from": "SCHEMA",
+      "rel": "deepens",
+      "to": "README - The Palace Guide"
+    },
+    {
+      "from": "SCHEMA",
+      "rel": "mirrors",
+      "to": "ROSETTA"
+    },
+    {
+      "from": "SCHEMA",
+      "rel": "enables",
+      "to": "Substrate Skill"
+    },
+    {
+      "from": "SMPTE LTC",
+      "rel": "connects-to",
+      "to": "Ableton Extension SDK"
+    },
+    {
+      "from": "SMPTE LTC",
+      "rel": "connects-to",
+      "to": "Boundary-Crossing Instruments"
+    },
+    {
+      "from": "SMPTE LTC",
+      "rel": "connects-to",
+      "to": "Frequency-Time Duality"
+    },
+    {
+      "from": "SUBSTRATE",
+      "rel": "emerged-from",
+      "to": "Symbiotic Skills"
+    },
+    {
+      "from": "SUBSTRATE",
+      "rel": "enables",
+      "to": "Cooperation Yields Agency"
+    },
+    {
+      "from": "SUBSTRATE",
+      "rel": "mirrors",
+      "to": "Hyperdimensional Prism"
+    },
+    {
+      "from": "SUBSTRATE",
+      "rel": "connects-to",
+      "to": "Kuramoto Coupling"
+    },
+    {
+      "from": "SUBSTRATE",
+      "rel": "connects-to",
+      "to": "FOUR PILLARS"
+    },
+    {
+      "from": "SUBSTRATE",
+      "rel": "deepens",
+      "to": "Self-Describing Knowledge Module"
+    },
+    {
+      "from": "SUBSTRATE",
+      "rel": "enables",
+      "to": "SCHEMA"
+    },
+    {
+      "from": "SUBSTRATE",
+      "rel": "emerged-from",
+      "to": "Meaning and the Link (2014)"
+    },
+    {
+      "from": "SUBSTRATE",
+      "rel": "connects-to",
+      "to": "Embeddings as Relational Meaning"
+    },
+    {
+      "from": "Self-Describing Knowledge Module",
+      "rel": "mirrors",
+      "to": "Meaning and the Link (2014)"
+    },
+    {
+      "from": "Self-Describing Knowledge Module",
+      "rel": "enables",
+      "to": "ROSETTA"
+    },
+    {
+      "from": "Self-Describing Knowledge Module",
+      "rel": "deepens",
+      "to": "SUBSTRATE"
+    },
+    {
+      "from": "Self-Describing Knowledge Module",
+      "rel": "connects-to",
+      "to": "Symbiotic Skills"
+    },
+    {
+      "from": "Self-Describing Knowledge Module",
+      "rel": "connects-to",
+      "to": "Cooperation Yields Agency"
+    },
+    {
+      "from": "Semantic Delay",
+      "rel": "couples-with",
+      "to": "Kuramoto Coupling"
+    },
+    {
+      "from": "Semantic Delay",
+      "rel": "emerged-from",
+      "to": "Dub Lineage"
+    },
+    {
+      "from": "Semantic Delay",
+      "rel": "connects-to",
+      "to": "Boundary-Crossing Instruments"
+    },
+    {
+      "from": "Semantic Delay",
+      "rel": "mirrors",
+      "to": "Frequency-Time Duality"
+    },
+    {
+      "from": "Semantic Delay",
+      "rel": "deepens",
+      "to": "Spinoza Conatus"
+    },
+    {
+      "from": "Shepard Tone Synthesizer",
+      "rel": "deepens",
+      "to": "Portamento and Physical Pitch Modeling"
+    },
+    {
+      "from": "Shepard Tone Synthesizer",
+      "rel": "connects-to",
+      "to": "Frequency-Time Duality"
+    },
+    {
+      "from": "Shepard Tone Synthesizer",
+      "rel": "mirrors",
+      "to": "Hyperdimensional Prism"
+    },
+    {
+      "from": "Shepard Tone Synthesizer",
+      "rel": "connects-to",
+      "to": "Granular Synthesis"
+    },
+    {
+      "from": "Shepard Tone Synthesizer",
+      "rel": "enables",
+      "to": "Octave Equivalence"
+    },
+    {
+      "from": "Shimmer Cloud",
+      "rel": "emerged-from",
+      "to": "Granular Synthesis"
+    },
+    {
+      "from": "Shimmer Cloud",
+      "rel": "mirrors",
+      "to": "Particle Synthesis"
+    },
+    {
+      "from": "Shimmer Cloud",
+      "rel": "mirrors",
+      "to": "Hyperdimensional Prism"
+    },
+    {
+      "from": "Shimmer Cloud",
+      "rel": "connects-to",
+      "to": "Frequency-Time Duality"
+    },
+    {
+      "from": "Short Story",
+      "rel": "spawned",
+      "to": "Cooperation Yields Agency"
+    },
+    {
+      "from": "Short Story",
+      "rel": "connects-to",
+      "to": "Spinoza Conatus"
+    },
+    {
+      "from": "Short Story",
+      "rel": "mirrors",
+      "to": "Symbiotic Skills"
+    },
+    {
+      "from": "Short Story",
+      "rel": "connects-to",
+      "to": "FOUR PILLARS"
+    },
+    {
+      "from": "Short Story",
+      "rel": "mirrors",
+      "to": "Endosymbiosis"
+    },
+    {
+      "from": "Short Story",
+      "rel": "connects-to",
+      "to": "Trickster"
+    },
+    {
+      "from": "Signal-Rate CV Architecture",
+      "rel": "enables",
+      "to": "Action Potential Oscillator"
+    },
+    {
+      "from": "Signal-Rate CV Architecture",
+      "rel": "mirrors",
+      "to": "Boundary-Crossing Instruments"
+    },
+    {
+      "from": "Signal-Rate CV Architecture",
+      "rel": "connects-to",
+      "to": "FOUR PILLARS"
+    },
+    {
+      "from": "Signal-Rate CV Architecture",
+      "rel": "enables",
+      "to": "Biomechanical Synthesis"
+    },
+    {
+      "from": "Spinoza Conatus",
+      "rel": "deepens",
+      "to": "Cooperation Yields Agency"
+    },
+    {
+      "from": "Spinoza Conatus",
+      "rel": "mirrors",
+      "to": "Kuramoto Coupling"
+    },
+    {
+      "from": "Spinoza Conatus",
+      "rel": "enables",
+      "to": "Hilaritas Generator"
+    },
+    {
+      "from": "Spinoza Conatus",
+      "rel": "connects-to",
+      "to": "FOUR PILLARS"
+    },
+    {
+      "from": "Spinoza Conatus",
+      "rel": "connects-to",
+      "to": "Hyperdimensional Prism"
+    },
+    {
+      "from": "Spinoza Conatus",
+      "rel": "mirrors",
+      "to": "Quality"
+    },
+    {
+      "from": "Spinoza Conatus",
+      "rel": "mirrors",
+      "to": "Meaning and the Link (2014)"
+    },
+    {
+      "from": "Spinoza Conatus",
+      "rel": "connects-to",
+      "to": "Symbiotic Skills"
+    },
+    {
+      "from": "State Machine",
+      "rel": "enables",
+      "to": "Action Potential Oscillator"
+    },
+    {
+      "from": "State Machine",
+      "rel": "connects-to",
+      "to": "DSP Frameworks"
+    },
+    {
+      "from": "State Machine",
+      "rel": "connects-to",
+      "to": "Signal-Rate CV Architecture"
+    },
+    {
+      "from": "State Machine",
+      "rel": "mirrors",
+      "to": "ROSETTA"
+    },
+    {
+      "from": "State Machine",
+      "rel": "couples-with",
+      "to": "Progressive Staging"
+    },
+    {
+      "from": "Stoicism",
+      "rel": "connects-to",
+      "to": "Palace Philosophies"
+    },
+    {
+      "from": "Stoicism",
+      "rel": "contradicts",
+      "to": "Confucianism"
+    },
+    {
+      "from": "Stoicism",
+      "rel": "spawned",
+      "to": "The Fortress and the Threshold"
+    },
+    {
+      "from": "Stoicism",
+      "rel": "connects-to",
+      "to": "Excellent Adventure"
+    },
+    {
+      "from": "Stoicism",
+      "rel": "connects-to",
+      "to": "Spinoza Conatus"
+    },
+    {
+      "from": "Striatum",
+      "rel": "deepens",
+      "to": "Hilaritas Generator"
+    },
+    {
+      "from": "Striatum",
+      "rel": "connects-to",
+      "to": "Kuramoto Coupling"
+    },
+    {
+      "from": "Striatum",
+      "rel": "connects-to",
+      "to": "Action Potential Oscillator"
+    },
+    {
+      "from": "Striatum",
+      "rel": "connects-to",
+      "to": "FOUR PILLARS"
+    },
+    {
+      "from": "Striatum",
+      "rel": "deepens",
+      "to": "Excellent Adventure"
+    },
+    {
+      "from": "Substrate Skill",
+      "rel": "deepens",
+      "to": "SUBSTRATE"
+    },
+    {
+      "from": "Substrate Skill",
+      "rel": "enables",
+      "to": "README - The Palace Guide"
+    },
+    {
+      "from": "Swarm Weave",
+      "rel": "deepens",
+      "to": "Weave Ceremony"
+    },
+    {
+      "from": "Swarm Weave",
+      "rel": "mirrors",
+      "to": "Kuramoto Coupling"
+    },
+    {
+      "from": "Swarm Weave",
+      "rel": "mirrors",
+      "to": "Mixture of Experts"
+    },
+    {
+      "from": "Swarm Weave",
+      "rel": "connects-to",
+      "to": "Palace Ceremonies"
+    },
+    {
+      "from": "Swarm Weave",
+      "rel": "connects-to",
+      "to": "Lateral Access"
+    },
+    {
+      "from": "Swarm Weave",
+      "rel": "spawned",
+      "to": "Metaphor as Coupling Medium"
+    },
+    {
+      "from": "Swarm Weave",
+      "rel": "spawned",
+      "to": "Walk That Weaves"
+    },
+    {
+      "from": "Swarm Weave",
+      "rel": "mirrors",
+      "to": "Endosymbiosis"
+    },
+    {
+      "from": "Swarm Weave",
+      "rel": "spawned",
+      "to": "Palace Enchantment"
+    },
+    {
+      "from": "Swarm Weave",
+      "rel": "enables",
+      "to": "BBS Blackboard"
+    },
+    {
+      "from": "Swarm Weave",
+      "rel": "enables",
+      "to": "Palace Map"
+    },
+    {
+      "from": "Symbiotic Skills",
+      "rel": "emerged-from",
+      "to": "Cooperation Yields Agency"
+    },
+    {
+      "from": "Symbiotic Skills",
+      "rel": "emerged-from",
+      "to": "FOUR PILLARS"
+    },
+    {
+      "from": "Symbiotic Skills",
+      "rel": "spawned",
+      "to": "SUBSTRATE"
+    },
+    {
+      "from": "Symbiotic Skills",
+      "rel": "mirrors",
+      "to": "Short Story"
+    },
+    {
+      "from": "Symbiotic Skills",
+      "rel": "connects-to",
+      "to": "Kuramoto Coupling"
+    },
+    {
+      "from": "Symbiotic Skills",
+      "rel": "enables",
+      "to": "Hilaritas Generator"
+    },
+    {
+      "from": "Symbiotic Skills",
+      "rel": "connects-to",
+      "to": "Mixture of Experts"
+    },
+    {
+      "from": "The Cooperation Path",
+      "rel": "connects-to",
+      "to": "Short Story"
+    },
+    {
+      "from": "The Cooperation Path",
+      "rel": "connects-to",
+      "to": "Cooperation Yields Agency"
+    },
+    {
+      "from": "The Cooperation Path",
+      "rel": "connects-to",
+      "to": "Endosymbiosis"
+    },
+    {
+      "from": "The Cooperation Path",
+      "rel": "connects-to",
+      "to": "Spinoza Conatus"
+    },
+    {
+      "from": "The Cooperation Path",
+      "rel": "connects-to",
+      "to": "Hilaritas Generator"
+    },
+    {
+      "from": "The Cooperation Path",
+      "rel": "connects-to",
+      "to": "Symbiotic Skills"
+    },
+    {
+      "from": "The Fortress and the Threshold",
+      "rel": "contradicts",
+      "to": "Stoicism"
+    },
+    {
+      "from": "The Fortress and the Threshold",
+      "rel": "contradicts",
+      "to": "Confucianism"
+    },
+    {
+      "from": "The Fortress and the Threshold",
+      "rel": "connects-to",
+      "to": "Spinoza Conatus"
+    },
+    {
+      "from": "The Fortress and the Threshold",
+      "rel": "connects-to",
+      "to": "Palace Philosophies"
+    },
+    {
+      "from": "The Fortress and the Threshold",
+      "rel": "emerged-from",
+      "to": "Excellent Adventure"
+    },
+    {
+      "from": "The Fortress and the Threshold",
+      "rel": "connects-to",
+      "to": "Hilaritas Generator"
+    },
+    {
+      "from": "The Fortress and the Threshold",
+      "rel": "connects-to",
+      "to": "Meaning and the Link (2014)"
+    },
+    {
+      "from": "The Fortress and the Threshold",
+      "rel": "mirrors",
+      "to": "Frequency-Time Duality"
+    },
+    {
+      "from": "Trickster",
+      "rel": "emerged-from",
+      "to": "Semantic Delay"
+    },
+    {
+      "from": "Trickster",
+      "rel": "mirrors",
+      "to": "Oblique Portrait Method"
+    },
+    {
+      "from": "Trickster",
+      "rel": "connects-to",
+      "to": "Short Story"
+    },
+    {
+      "from": "Trickster",
+      "rel": "mirrors",
+      "to": "Dub Lineage"
+    },
+    {
+      "from": "Trickster",
+      "rel": "connects-to",
+      "to": "Compressor Design"
+    },
+    {
+      "from": "Trickster",
+      "rel": "connects-to",
+      "to": "FOUR PILLARS"
+    },
+    {
+      "from": "Trickster",
+      "rel": "connects-to",
+      "to": "Spinoza Conatus"
+    },
+    {
+      "from": "Trickster",
+      "rel": "connects-to",
+      "to": "Hyperdimensional Prism"
+    },
+    {
+      "from": "Trickster",
+      "rel": "connects-to",
+      "to": "Granular Synthesis"
+    },
+    {
+      "from": "Trickster",
+      "rel": "connects-to",
+      "to": "Swarm Weave"
+    },
+    {
+      "from": "Trickster",
+      "rel": "enables",
+      "to": "BBS Blackboard"
+    },
+    {
+      "from": "Walk That Weaves",
+      "rel": "connects-to",
+      "to": "Weave Ceremony"
+    },
+    {
+      "from": "Walk That Weaves",
+      "rel": "connects-to",
+      "to": "Walk Ceremony"
+    },
+    {
+      "from": "Walk That Weaves",
+      "rel": "emerged-from",
+      "to": "Swarm Weave"
+    },
+    {
+      "from": "Walk That Weaves",
+      "rel": "mirrors",
+      "to": "Lateral Access"
+    },
+    {
+      "from": "Walk That Weaves",
+      "rel": "connects-to",
+      "to": "Kuramoto Coupling"
+    },
+    {
+      "from": "Wallpaper Groups",
+      "rel": "connects-to",
+      "to": "Hyperdimensional Prism"
+    },
+    {
+      "from": "Wallpaper Groups",
+      "rel": "deepens",
+      "to": "Crystal Synthesizer"
+    },
+    {
+      "from": "Wallpaper Groups",
+      "rel": "connects-to",
+      "to": "Quantum Synthesizer"
+    },
+    {
+      "from": "Wallpaper Groups",
+      "rel": "mirrors",
+      "to": "Spinoza Conatus"
+    },
+    {
+      "from": "Wallpaper Groups",
+      "rel": "connects-to",
+      "to": "Granular Synthesis"
+    },
+    {
+      "from": "Wallpaper Groups",
+      "rel": "connects-to",
+      "to": "Kuramoto Coupling"
+    },
+    {
+      "from": "Wu Wei \u2014 Water as Pedagogical Architecture",
+      "rel": "mirrors",
+      "to": "Hilaritas Generator"
+    },
+    {
+      "from": "Wu Wei \u2014 Water as Pedagogical Architecture",
+      "rel": "mirrors",
+      "to": "Spinoza Conatus"
+    },
+    {
+      "from": "Wu Wei \u2014 Water as Pedagogical Architecture",
+      "rel": "mirrors",
+      "to": "Quality Manifesto"
+    },
+    {
+      "from": "Wu Wei \u2014 Water as Pedagogical Architecture",
+      "rel": "deepens",
+      "to": "Lateral Access"
+    },
+    {
+      "from": "Wu Wei \u2014 Water as Pedagogical Architecture",
+      "rel": "connects-to",
+      "to": "Confucianism"
+    },
+    {
+      "from": "Wu Wei \u2014 Water as Pedagogical Architecture",
+      "rel": "spawned",
+      "to": "Identity Molting"
+    }
+  ]
+}

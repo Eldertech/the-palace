@@ -19,7 +19,7 @@ links:
     type: connects-to
   - target: "[[Harvest Ceremony — Context]]"
     type: spawned
-  - target: "[[Oblique Portrait Method]]"
+  - target: "[[Oblique Portrait]]"
     type: couples-with
 ---
 

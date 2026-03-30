@@ -1,7 +1,10 @@
 ---
-title: "Dialectic"
+title: Dialectic
 type: practice
-pillars: [philosophy, practice, creation]
+pillars:
+  - philosophy
+  - practice
+  - creation
 born: 2026-03
 stage: sprout
 last_activated: 2026-03
@@ -11,7 +14,7 @@ links:
     type: emerged-from
   - target: "[[Palace as Context Injection System]]"
     type: connects-to
-  - target: "[[Oblique Portrait Method]]"
+  - target: "[[Oblique Portrait]]"
     type: couples-with
   - target: "[[Hilaritas Generator]]"
     type: deepens
@@ -65,7 +68,7 @@ Where the Excellent Adventure produces immersive encounter with a single perspec
 
 **[[Excellent Adventure]]** — Parent practice: embodied historical dialogue as AI learning technique.
 
-**[[Oblique Portrait Method]]** — Sibling practice: approaching interior material obliquely rather than directly. Both methods use indirection to access territory that direct questioning cannot reach.
+**[[Oblique Portrait]]** — Sibling practice: approaching interior material obliquely rather than directly. Both methods use indirection to access territory that direct questioning cannot reach.
 
 **[[Palace Philosophies]]** — The council's voices often become candidates for `person` entries in the palace. A voice well-researched enough to embody is well-researched enough to deposit.
 

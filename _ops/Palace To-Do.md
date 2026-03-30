@@ -29,7 +29,7 @@ Items move off this list when they become entries, get completed, or get compost
 
 ## Ceremonies to Run
 
-- [ ] **Spore check on Short Story** — [[Short Story]] is dormant. Revival conditions: Loudon ready to return to fiction writing. Check whether current work has changed the conditions.
+- [ ] **Spore check on Short Story** — [[1 from 2]] is dormant. Revival conditions: Loudon ready to return to fiction writing. Check whether current work has changed the conditions.
 
 ---
 
@@ -65,6 +65,12 @@ Items move off this list when they become entries, get completed, or get compost
 
 - [ ] **Add activation counts to more entries** — Several entries (Endosymbiosis, Palace Philosophies, Palace Quotes, Boundary-Crossing Instruments) are missing activation tracking. Standardize during next Weave.
 
+- [ ] **[Weave flag — Schema/RDP session 2026-03] Label enrichment pass** — Step 3c is now live in the Weave Ceremony. On next Weave: run a full label enrichment pass across all existing links, prioritizing `connects-to` links. The three new entries from this session ([[Resonant Link Labels]], [[Lossy Compression with Intent Alignment]], [[Generative Compression]]) already carry labels and model the vocabulary. Use them as reference.
+
+- [ ] **[Weave flag — Schema/RDP session 2026-03] Weave new entries into existing hub nodes** — Three new entries need their first Weave pass: [[Resonant Link Labels]], [[Lossy Compression with Intent Alignment]], [[Generative Compression]]. Candidate connections to investigate: [[Hilaritas Generator]] (shares a mechanism with lossy compression), [[Endosymbiosis]] (the deposit ceremony already mirrors it — does the new framing of deposit-as-model-training deepen this?), [[Four Pillars]] (Generative Compression touches all four pillars and may want a hub-level link), [[Pages as Agents]] (if every entry is a dormant agent, latent-variable encoding is the mechanism of activation — may want a `mirrors` or `enables` link).
+
+- [ ] **[Weave flag — Schema/RDP session 2026-03] Check SCHEMA `connects-to` description** — With the label field live, consider whether the `connects-to` description in SCHEMA §4 should note its redemption: `connects-to` + label is now a permanent relationship class, not just a draft placeholder. Small prose change, no breaking change.
+
 - [ ] **Boundary-Crossing Instruments** — Currently underactivated (last activated Dec 2025). Check whether Deposit session has added new connections. The three-layer interface design should link forward to Symbiotic Skills.
 
 - [ ] **Endosymbiosis** — Stage: seed, activation: 1. Body is thin. Consider whether a Deposit session would enrich it or whether it should stay as a thin pointer to the biological proof-of-concept for [[Cooperation Yields Agency]].
@@ -77,6 +83,9 @@ Items move off this list when they become entries, get completed, or get compost
 
 - Is there a minimum ceremony frequency that keeps the palace alive without feeling like maintenance? Current hypothesis: Walk monthly, Weave quarterly, Harvest/Deposit in dedicated sessions as capacity allows.
 - When should the Harvest Ceremony expand to Google Drive? Chat harvest is now complete — Google Drive is the natural next body of material.
+- **[lost branch — Schema/RDP session 2026-03]** The RDP framework can be applied to *all* palace ceremonies, not just Deposit. The Weave selects which links to formalize — it is also doing compression. What is the Weave's perception target? What does it optimize for? This could reshape the Weave's rate-limiting logic.
+- **[lost branch — Schema/RDP session 2026-03]** Chain distillation in ML: the student becomes the next teacher. Are palace entry stage transitions (seed → sprout → growing → mature) each a distillation pass — compression with higher intent alignment? If so, the stage lifecycle is not just a maturity marker; it is a compression history.
+- **[lost branch — Schema/RDP session 2026-03]** Should `connects-to` + label be formally recognized as a distinct permanent type class, rather than the weakest/draft type? With labels, `connects-to` is no longer semantically underweight. Consider whether the type description in SCHEMA should reflect this shift — not a breaking change, but a reframing.
 
 ---
 
@@ -99,7 +108,7 @@ Items that may no longer need action — held here before being fully released.
 *Headlines only. Full audit trail lives in git.*
 
 - **Full palace audit** — 2026-03-24. Harvest Archive → Deposit Archive. Embodied Council Method → Dialectic. Harvest Frontier + Queue composted. Harvest Ceremony rewritten. Linter → Ceremony Reader. Deposit/Weave ceremonies cleaned. Forward Vectors on 12 entries. Multiple graffiti addressed.
-- **Semantic Web Paper** — Entry written as [[Meaning and the Link (2014)]].
+- **Semantic Web Paper** — Entry written as [[Meaning and the Link]].
 - **Tao** — Taoism section added to [[Palace Philosophies]].
 - **Retrospective Delay** — Deposited 2026-03-24.
 - **Modes of Collaboration** — Entry written and growing (type: practice, stage: sprout).

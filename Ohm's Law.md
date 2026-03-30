@@ -13,6 +13,8 @@ links:
     type: connects-to
   - target: "[[Modes of Collaboration]]"
     type: connects-to
+  - target: "[[Piano String Inharmonicity]]"
+    type: connects-to
 ---
 
 # Ohm's Law

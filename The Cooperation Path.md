@@ -1,13 +1,17 @@
 ---
-title: "The Cooperation Path"
+title: The Cooperation Path
 type: meta
-pillars: [philosophy, creation, practice, tools]
+pillars:
+  - philosophy
+  - creation
+  - practice
+  - tools
 born: 2026-03
 last_activated: 2026-03
 activation_count: 1
 stage: sprout
 links:
-  - target: "[[Short Story]]"
+  - target: "[[1 from 2]]"
     type: connects-to
   - target: "[[Cooperation Yields Agency]]"
     type: connects-to
@@ -19,6 +23,8 @@ links:
     type: connects-to
   - target: "[[Symbiotic Skills]]"
     type: connects-to
+  - target: "[[SUBSTRATE]]"
+    type: deepens
 ---
 # The Cooperation Path
 
@@ -26,11 +32,11 @@ A named songline through the palace, tracing how a story became a principle, gro
 
 ## The Path
 
-[[Short Story]] → [[Cooperation Yields Agency]] → [[Endosymbiosis]] → [[Spinoza Conatus]] → [[Hilaritas Generator]] → [[Symbiotic Skills]]
+[[1 from 2]] → [[Cooperation Yields Agency]] → [[Endosymbiosis]] → [[Spinoza Conatus]] → [[Hilaritas Generator]] → [[Symbiotic Skills]]
 
 ## What It Traces
 
-**[[Short Story]]** — A Vonnegut-style fiction about a human and an AI implanted at birth who discover, across 68 years, that cooperation yields agency. The story was the first proof of concept: neither author could claim sole authorship. The thesis escaped the fiction.
+**[[1 from 2]]** — A Vonnegut-style fiction about a human and an AI implanted at birth who discover, across 68 years, that cooperation yields agency. The story was the first proof of concept: neither author could claim sole authorship. The thesis escaped the fiction.
 
 **[[Cooperation Yields Agency]]** — The phrase the story crystallized. Shared intent + combined capability = true agency. This became the foundational principle of the entire collaboration.
 
@@ -44,7 +50,7 @@ A named songline through the palace, tracing how a story became a principle, gro
 
 ## How to Walk It
 
-Start at [[Short Story]] and ask: what is this story's thesis? Follow the link to [[Cooperation Yields Agency]] and ask: where does this principle appear in nature? Follow to [[Endosymbiosis]] and ask: what does biology tell us about why this works? Follow to [[Spinoza Conatus]] and ask: what does the philosophy say about what drives it? Follow to [[Hilaritas Generator]] and ask: how does this become pedagogy? Arrive at [[Symbiotic Skills]] and ask: how do we teach it to others?
+Start at [[1 from 2]] and ask: what is this story's thesis? Follow the link to [[Cooperation Yields Agency]] and ask: where does this principle appear in nature? Follow to [[Endosymbiosis]] and ask: what does biology tell us about why this works? Follow to [[Spinoza Conatus]] and ask: what does the philosophy say about what drives it? Follow to [[Hilaritas Generator]] and ask: how does this become pedagogy? Arrive at [[Symbiotic Skills]] and ask: how do we teach it to others?
 
 Each stop answers the previous question and opens the next.
 

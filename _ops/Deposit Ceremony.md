@@ -22,6 +22,9 @@ links:
     type: mirrors
   - target: "[[Deposit Ceremony — Context]]"
     type: spawned
+  - target: "[[SCHEMA]]"
+    type: connects-to
+    label: "governed-by"
 ---
 
 # Deposit Ceremony
@@ -95,6 +98,10 @@ Claude's specific obligations at all times:
 
 ## Steps
 
+**Pre-step: Intent Declaration**
+
+Before describing the conversation or proposing any map, state in one sentence: *what is this deposit trying to preserve, and for whom?* This is not the deposit map — it is the compression target that guides every decision in the ceremony. Example: *“This deposit preserves the insight that the deposit ceremony is a form of lossy compression — encoded so a future agent can regenerate the conversation that produced it.”* The intent declaration takes 30 seconds. Without it, compression defaults to low-distortion summarization rather than high-perception generative encoding.
+
 1. Bring Loudon back into the world of the source. Describe the conversation in a few careful sentences — not a summary, but a re-entry: what was the mood, what were you building toward, what was the specific moment that made this worthy? Ask one genuine question: what do you remember about this? Does anything surprise you reading it back?
 2. Wait for Loudon to respond before proceeding. Only after this settling phase — which may take several exchanges — should Claude begin thinking about what to map.
 3. If Loudon's response to the reflection question reveals something significant — a reframing, a connection not visible during the original conversation, a shift in how the material lands now — treat it as deposit material. Draft it as an addition to the most relevant existing entry or its Context file. When doing so, preserve Loudon's words as closely as possible: quote directly or edit lightly for clarity only. These moments are in his voice, and that has value the palace should keep.
@@ -105,8 +112,9 @@ A good deposit map is specific about:
 - **Entry type** — concept, breakthrough, project, question, spore, source
 - **Pillar affiliations** — which pillars does this touch?
 - **Proposed stage** — seed, sprout, or growing?
-- **Typed links** — named relationship types, not just "connects to." Propose by entry name — do not read the linked entries.
+- **Typed links** — named relationship types, not just "connects to." Propose by entry name — do not read the linked entries. For every link proposed, ask: does this relationship deserve a label? If yes, add `label: [word]` to the link object. The label is the semantic compression of the relationship — one word that names its specific register.
 - **Lost branches** — paths in the source that weren't followed and deserve naming
+- **Tension Map** — does any proposed entry create productive tension with an existing palace entry? Name the entry and the specific contradiction in one sentence. If yes, flag it for a `contradicts` link and note the tension explicitly. These are the most generative deposits — they add to the palace's connective tissue rather than just its nodes.
 - **Existing entries to flag for Weave** — entries that may want updating once this deposit lands; flag the name and what might change. Do not read or update them now.
 
 > **Deposit Map — H042**
@@ -133,6 +141,10 @@ Loudon approves the map. Do not write anything until the map is approved.
 Draft each new entry following the standard template (see [[README - The Palace Guide]]). Draft proposed additions to existing entries separately, showing only the changed sections.
 
 Every entry ends with a **Forward Vectors** section — the entry's drive, its conatus. Think of it as the mission briefing for the next agent that arrives at this page: what does this entry want to become? What questions is it carrying? What lost branches does it want to follow? Write these with genuine specificity, not as administrative reminders.
+
+**Latent Variable Check:** Before finalizing any entry draft, ask: *is this entry storing the surface phenomena of the conversation, or the underlying generative variables?* A surface entry records what happened. A latent-variable entry encodes the principle that generated what happened — the thing a new conversation could be built from. Test: could a Claude reading only this entry have a productive new conversation in this territory? If it can only reconstruct the old one, the latent variables haven’t been found. Revise until the answer is yes.
+
+**Reconstruction Test:** Read the draft entry cold, as if encountering it for the first time with no memory of the source conversation. Ask: does this entry *open* something, or does it *close* something? A good palace entry is generative — it creates more questions than it answers, more paths than it names. If the entry feels like a summary, it has been compressed toward low distortion. If it feels like a seed, it has been compressed toward high perception. A weak forward vector is usually the sign that the entry has landed in summary mode.
 
 Show each draft to Loudon. Revise as needed.
 
@@ -197,3 +209,4 @@ The deposit is complete when:
 3. Closing note is written into the conversation thread
 4. One-line record appended to [[Deposit Archive]]
 5. Git commit made
+6. At least one link in the new entries carries a `label` — the semantic compression step has been executed, not just the structural registration step

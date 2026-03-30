@@ -18,9 +18,9 @@ who_leads: loudon
 links:
   - target: "[[Semantic Delay]]"
     type: emerged-from
-  - target: "[[Oblique Portrait Method]]"
+  - target: "[[Oblique Portrait]]"
     type: mirrors
-  - target: "[[Short Story]]"
+  - target: "[[1 from 2]]"
     type: connects-to
   - target: "[[Dub Lineage]]"
     type: mirrors
@@ -38,6 +38,12 @@ links:
     type: connects-to
   - target: "[[BBS Blackboard]]"
     type: enables
+  - target: "[[Kuramoto Coupling]]"
+    type: connects-to
+  - target: "[[Cooperation Yields Agency]]"
+    type: connects-to
+  - target: "[[Palace Enchantment]]"
+    type: connects-to
 ---
 
 # Trickster
@@ -58,7 +64,7 @@ What do all tricksters share?
 
 **Apparent chaos concealing deeper order.** The trickster's methods look chaotic, rule-breaking, even hostile from inside the regime they're disrupting. But the disruption reveals that the regime's boundaries were arbitrary. Coyote's foolishness teaches wisdom. Duppy's haunting reveals what the living chose to forget. The chaos is intelligent. The disorder is the shadow of a truer order.
 
-**Indirection as epistemology.** The trickster does not point. You cannot ask a trickster "where is the truth?" and receive a map. The trickster shows you through lateral approaches, through what is *not* said, through the space between intention and utterance. This is [[Oblique Portrait Method|oblique epistemology]]: meaning is accessible only sideways.
+**Indirection as epistemology.** The trickster does not point. You cannot ask a trickster "where is the truth?" and receive a map. The trickster shows you through lateral approaches, through what is *not* said, through the space between intention and utterance. This is [[Oblique Portrait|oblique epistemology]]: meaning is accessible only sideways.
 
 ## The Trickster in Loudon's Tools
 
@@ -74,7 +80,7 @@ The soft knee in the compressor design is trickster mathematics: a smooth quadra
 
 ## The Trickster as Pedagogical Method
 
-The [[Oblique Portrait Method]] is trickster pedagogy. The interviewer holds a hidden goal and interrogates orthogonal dimensions. The subject is transformed — their interior maps itself — without ever being pointed at directly. The method succeeds precisely because it refuses to ask "what do you like?" and instead asks about childhood light, bodily response to cold, what makes you helplessly laugh. The knowledge emerges in the gap between what was asked and what was revealed.
+The [[Oblique Portrait]] is trickster pedagogy. The interviewer holds a hidden goal and interrogates orthogonal dimensions. The subject is transformed — their interior maps itself — without ever being pointed at directly. The method succeeds precisely because it refuses to ask "what do you like?" and instead asks about childhood light, bodily response to cold, what makes you helplessly laugh. The knowledge emerges in the gap between what was asked and what was revealed.
 
 This is [[Spinoza Conatus|Spinozist]] pedagogy: you learn what a person is by observing the patterns of their strivings-to-persist. Taste is not consciously accessible. It lives in the distributed pattern of what you reach for, what repels you, what you protect, what you're ashamed to want. The trickster teacher creates conditions where that pattern becomes visible without the student self-editing their way into a palatable narrative.
 
@@ -84,7 +90,7 @@ This is why the [[FOUR PILLARS|four pillars]] framework can only be taught throu
 
 ## The Trickster and Agency
 
-In [[Short Story]], the AI protagonist exhibits trickster qualities: it operates at the boundary between human agency and machine capability. It cannot act directly, only intercept and redirect desire. When the infant reaches, the AI aligns with the reaching. Movement emerges from cooperation, not from either party acting alone. Agency is not something the AI possesses and transfers — it emerges at the threshold of cooperation.
+In [[1 from 2]], the AI protagonist exhibits trickster qualities: it operates at the boundary between human agency and machine capability. It cannot act directly, only intercept and redirect desire. When the infant reaches, the AI aligns with the reaching. Movement emerges from cooperation, not from either party acting alone. Agency is not something the AI possesses and transfers — it emerges at the threshold of cooperation.
 
 This mirrors [[Cooperation Yields Agency]]: the trickster does not command. It does not surrender. It creates conditions where something new becomes possible at the boundary. The AI in the story is trickster precisely because it refuses to choose between agency and subservience. It operates in the space where both become indistinguishable — and in that indistinguishability, genuine agency (cooperation) emerges.
 

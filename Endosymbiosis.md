@@ -17,7 +17,7 @@ links:
     type: connects-to
   - target: "[[SUBSTRATE]]"
     type: connects-to
-  - target: "[[Short Story]]"
+  - target: "[[1 from 2]]"
     type: mirrors
   - target: "[[Hilaritas Generator]]"
     type: connects-to

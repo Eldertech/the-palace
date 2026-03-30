@@ -18,6 +18,14 @@ links:
     type: mirrors
   - target: "[[Substrate Skill]]"
     type: enables
+  - target: "[[Weave Ceremony]]"
+    type: enables
+  - target: "[[Harvest Ceremony]]"
+    type: enables
+  - target: "[[Deposit Ceremony]]"
+    type: enables
+  - target: "[[Resonant Link Labels]]"
+    type: connects-to
 ---
 	# SCHEMA — The Palace Type System
 
@@ -131,9 +139,11 @@ seed → sprout → growing → mature → fruiting → dormant → composting
 
 | Field | Type | Notes |
 |---|---|---|
-| `links` | array of {target, type} | At minimum 1 typed link before an entry is considered a sprout. Use `[[Wiki Link]]` format for targets. |
+| `links` | array of {target, type, label?} | At minimum 1 typed link before an entry is considered a sprout. Use `[[Wiki Link]]` format for targets. Each link object may carry an optional `label` — see **Link Object Fields** note below. |
 | `last_activated` | YYYY-MM | Updated each time the entry is read or meaningfully engaged in a session. |
 | `activation_count` | integer | Incremented each activation. Tracks the entry's vitality. |
+
+**Link Object Fields:** Each link requires `target` and `type`. The optional `label` field is a single word or hyphenated phrase naming the relationship with resonance and specificity. The `type` is the structural scaffold — it handles traversal, Weave topology analysis, and ceremony linting. The `label` is the semantic compression — it names the specific register of the relationship with cultural and emotional nuance. Examples: `midwifed`, `rhymes-with`, `fermented-from`, `argues-with-love`. Labels never require ceremony. They are the compression happening at the relational level.
 
 ### Type-Specific Required Fields
 
@@ -180,6 +190,8 @@ Use only these relationship types:
 | `emerged-from` | directed A→B | B crystallized from A through synthesis | When B grew from A but the relationship is diffuse, not direct. |
 | `contradicts` | symmetric | Productive tension | Blake's contraries: both true, generative friction between them. |
 | `couples-with` | symmetric | Mutual reinforcement, co-activation | Ideas always active together; Kuramoto-style coupling. |
+
+**The `label` field:** Each link object may carry an optional `label` — a single word or hyphenated phrase naming the relationship's specific register. The `type` handles topological traversal and ceremony linting; the `label` carries the semantic compression that makes a link generative rather than merely classificatory. A `mirrors` link may mirror in the register of `rhymes-with`, `echoes`, `refracts`, or `shadows` — these are not synonyms. A `contradicts` link may contradict in the register of `argues-with-love`, `mourns`, `refuses`, or `breaks-open`. Label vocabulary: lower-case, evocative over clinical, single word or hyphenated phrase. Suggested vocabulary per family lives in [[Resonant Link Labels]]. New labels never require ceremony.
 
 **Adding a new link type** requires a Schema Ceremony. The link ontology is the palace's semantic vocabulary. Inflation cheapens all existing types. When in doubt, use `connects-to` and differentiate in a later Weave.
 

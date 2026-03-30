@@ -14,7 +14,7 @@ links:
     type: mirrors
   - target: "[[Hilaritas Generator]]"
     type: connects-to
-  - target: "[[Oblique Portrait Method]]"
+  - target: "[[Oblique Portrait]]"
     type: mirrors
   - target: "[[Symbiotic Skills]]"
     type: connects-to
@@ -60,7 +60,7 @@ A student asked to make "Spinoza's conatus as sound" cannot look up the answer. 
 2. Translate that interpretation into synthesis decisions — does striving sound like feedback? Harmonic motion? Chaos driven toward an attractor?
 3. Answer the constraint within the technical frame.
 
-The philosophical frame forces genuine engagement with both the concept and the instrument. No two students make the same sound. This is the [[Oblique Portrait Method]] applied to synthesis pedagogy: constraints that force originality.
+The philosophical frame forces genuine engagement with both the concept and the instrument. No two students make the same sound. This is the [[Oblique Portrait]] applied to synthesis pedagogy: constraints that force originality.
 
 The method works because it respects the student's interpretation. The oracle does not judge whether the preset is "correct." It only asks: did you commit to a choice? Did you make something? The oracle's role is to ask the question and trust the student to answer it.
 
