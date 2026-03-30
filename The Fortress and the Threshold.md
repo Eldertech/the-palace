@@ -1,7 +1,9 @@
 ---
-title: "The Fortress and the Threshold"
+title: The Fortress and the Threshold
 type: concept
-pillars: [philosophy, practice]
+pillars:
+  - philosophy
+  - practice
 born: 2026-03
 stage: sprout
 confidence: working
@@ -21,7 +23,7 @@ links:
     type: emerged-from
   - target: "[[Hilaritas Generator]]"
     type: connects-to
-  - target: "[[Meaning and the Link (2014)]]"
+  - target: "[[Meaning and the Link]]"
     type: connects-to
   - target: "[[Frequency-Time Duality]]"
     type: mirrors

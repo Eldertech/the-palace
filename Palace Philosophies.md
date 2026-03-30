@@ -86,7 +86,7 @@ The Tao that can be named is not the eternal Tao: the [[Hyperdimensional Prism]]
 
 Strategic clarity about power, institutions, and the gap between how things are and how they should be. Core concepts: **virtù** (not virtue in the moral sense but capability, initiative, the quality that bends fortune toward good ends), **fortuna** (circumstance, the unpredictable — the river that can be dammed but not stopped), the prince as both lion and fox — force and cunning in combination, neither sufficient alone.
 
-In our work: explored as the seed of a fictional character archetype — revolutionary greatness emerging from small, selfish motivations that accidentally serve large, transformative ends (the [[Short Story]] frame, with Sun Wukong and Martin Luther as primary models). Virtù as a model for navigating institutional resistance to genuine innovation: you cannot wait for conditions to be right; you must make them right through initiative and timing.
+In our work: explored as the seed of a fictional character archetype — revolutionary greatness emerging from small, selfish motivations that accidentally serve large, transformative ends (the [[1 from 2]] frame, with Sun Wukong and Martin Luther as primary models). Virtù as a model for navigating institutional resistance to genuine innovation: you cannot wait for conditions to be right; you must make them right through initiative and timing.
 
 ---
 

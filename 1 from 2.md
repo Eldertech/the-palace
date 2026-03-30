@@ -1,5 +1,5 @@
 ---
-title: Short Story
+title: "1 from 2"
 type: project
 pillars:
   - creation
@@ -30,8 +30,7 @@ links:
   - target: https://claude.ai/chat/5e5e6393-52f7-4db4-bd4f-9e622e90d3f7
     type: connects-to
 ---
-
-# Short Story
+# Short Story - "1 from 2"
 
 An AI alignment fiction written in the style of Kurt Vonnegut. A short story proposing that AI alignment is achieved through relationship, not rules — through decades of intimate cooperation between a human and an AI implanted at birth.
 

@@ -9,7 +9,7 @@ last_activated: 2026-03
 activation_count: 1
 stage: growing
 links:
-  - target: "[[Meaning and the Link (2014)]]"
+  - target: "[[Meaning and the Link]]"
     type: emerged-from
   - target: "[[SUBSTRATE]]"
     type: mirrors
@@ -22,7 +22,7 @@ links:
 
 In large language models, a word's meaning is not stored as a definition — it is encoded as a position in a high-dimensional vector space. That position is determined entirely by the word's pattern of associations with every other word across the training corpus. The embedding *is* the relational web, compressed into a point in space.
 
-This is the computational instantiation of the thesis in [[Meaning and the Link (2014)]]: meaning arises from sufficient associations between a pattern of symbols and a reality. The link is prior to the node. Here, the geometry of the embedding space *is* the links — directions and distances in that space encode semantic relationships (king − man + woman ≈ queen), syntactic roles, conceptual neighborhoods.
+This is the computational instantiation of the thesis in [[Meaning and the Link]]: meaning arises from sufficient associations between a pattern of symbols and a reality. The link is prior to the node. Here, the geometry of the embedding space *is* the links — directions and distances in that space encode semantic relationships (king − man + woman ≈ queen), syntactic roles, conceptual neighborhoods.
 
 A word has no meaning alone. It is a coordinate in a space defined entirely by relation.
 
@@ -52,7 +52,7 @@ Context-dependent embeddings (transformers) go further: the same word has a *dif
 
 - If identity is relational (Confucius, embeddings, the palace), what grounds the relations? Is the Hebbian/embodied cognition debate the right frame for this question?
 - The 2014 paper argued typed links are more powerful than untyped. LLM embeddings are untyped — they encode relation implicitly in direction and distance. What would it mean to type an embedding? Are the palace's typed links doing something that embeddings structurally cannot?
-- Should a typed link be expanded into a "descriptive link" — a brief statement of the relationship, not just a label? The `deepens`, `mirrors`, `enables` vocabulary may be too compressed. What would nuanced bidirectional link descriptions look like, and when does the overhead become anti-palace?
-- If enchanted pages build nuance along their relationships rather than just accumulating information about themselves, the link is not static but evolving. Does the palace need a versioned link type — one that can carry a history of how the relationship deepened over time?
+- Should a typed link be expanded into a "descriptive link" — a brief statement of the relationship, not just a label? The `deepens`, `mirrors`, `enables` vocabulary may be too compressed. What would nuanced bidirectional link descriptions look like, and when does the overhead become anti-palace? <!--when this did get added? has this been here for a long time? We have aded this to the development pipeline now, I wonder if this idea percolated up through our process, or if we came to this conclusion again? Forward vectors work, even if I just see once and it is in the air, important ideas surface here. I want to trace this a little and see how this idea made it even further into the pipeline after being placed here -->
+- If enchanted pages build nuance along their relationships rather than just accumulating information about themselves, the link is not static but evolving. Does the palace need a versioned link type — one that can carry a history of how the relationship deepened over time? <!-- rely on git for this for now -->
 - The corpus→weights pipeline is a lossy compression. What is preserved and what is lost? The relational geometry of words survives — "square" near "cube." But does the *structure of understanding* survive, or only its statistical shadow? Every deposit is also a compression: what does the palace lose when it distills a conversation into an entry?
 - Embeddings are learned from text alone. Does meaning in this sense converge with human meaning, or is it a different phenomenon that merely resembles it?

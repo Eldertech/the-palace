@@ -18,6 +18,10 @@ links:
     type: connects-to
   - target: "[[State Machine]]"
     type: couples-with
+  - target: "[[Kuramoto Coupling]]"
+    type: connects-to
+  - target: "[[Crystal Synthesizer]]"
+    type: connects-to
 ---
 
 # Progressive Staging

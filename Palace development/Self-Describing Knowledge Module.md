@@ -10,7 +10,7 @@ last_activated: 2026-03
 activation_count: 1
 stage: growing
 links:
-  - target: "[[Meaning and the Link (2014)]]"
+  - target: "[[Meaning and the Link]]"
     type: mirrors
   - target: "[[ROSETTA]]"
     type: enables
@@ -56,7 +56,7 @@ This inversion matters. It suggests the pattern is not merely a software enginee
 
 ## The Semantic Web Resonance
 
-The palace's deepest ancestor is the 2014 semantic web paper ([[Meaning and the Link (2014)]]), which argued that predicates — edges, relationships — are ontologically prior to nodes. The self-describing module makes the same claim at the structural level: what makes a knowledge module valuable is not its data in isolation but the typed relationships between data, instructions, and ceremonies. The instructions *interpret* the data. The ceremonies *activate* it. Remove the relationships and you have files. Keep them and you have an organism.
+The palace's deepest ancestor is the 2014 semantic web paper ([[Meaning and the Link]]), which argued that predicates — edges, relationships — are ontologically prior to nodes. The self-describing module makes the same claim at the structural level: what makes a knowledge module valuable is not its data in isolation but the typed relationships between data, instructions, and ceremonies. The instructions *interpret* the data. The ceremonies *activate* it. Remove the relationships and you have files. Keep them and you have an organism.
 
 ## Cross-Pillar Connections
 

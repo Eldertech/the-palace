@@ -23,7 +23,7 @@ links:
     type: connects-to
   - target: "[[Cooperation Yields Agency]]"
     type: connects-to
-  - target: "[[Oblique Portrait Method]]"
+  - target: "[[Oblique Portrait]]"
     type: mirrors
   - target: "[[Confucianism]]"
     type: connects-to

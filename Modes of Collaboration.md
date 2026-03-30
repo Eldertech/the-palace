@@ -33,6 +33,8 @@ links:
 
 A living catalogue of named working modes that Loudon and Claude adopt when attacking a topic together. Each mode has a distinct rhythm, power dynamic, output type, and ideal use case. The modes are not rigid — they blend and shift — but naming them makes them choosable. When starting a new exploration, the question "which mode?" becomes a design decision about how to learn.
 
+A folder of [[Modes of Collaboration]] holds files for each fully developed mode.
+
 ## Origin
 
 The recognition that these modes exist as distinct patterns emerged during the Kuramoto coupling lesson series (March 2026), where the Mentor and Quiz mode proved highly effective and Loudon observed: "we have been developing many modes of collaboration... this is deserving of a list/formulation somewhere in the palace so we can pick from various modes when we want to attack a topic."

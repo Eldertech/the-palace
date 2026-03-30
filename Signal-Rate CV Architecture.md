@@ -18,6 +18,8 @@ links:
     type: connects-to
   - target: "[[Biomechanical Synthesis]]"
     type: enables
+  - target: "[[Crystal Synthesizer]]"
+    type: connects-to
 ---
 
 # Signal-Rate CV Architecture

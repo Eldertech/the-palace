@@ -23,6 +23,8 @@ links:
     type: connects-to
   - target: "[[Spinoza Conatus]]"
     type: connects-to
+  - target: "[[Cooperation Yields Agency]]"
+    type: connects-to
 ---
 
 # Confucianism

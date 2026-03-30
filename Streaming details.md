@@ -5,7 +5,7 @@ pillars: [tools, practice]
 born: 2026-03
 last_activated: 2026-03
 activation_count: 1
-stage: seed
+stage: composting
 links: []
 ---
 

@@ -76,7 +76,7 @@ Each theme includes:
 **Phase 1 - Core Framework:**
 - [[Quality Manifesto]] - The philosophical foundation
 - [[Leverage Points Framework]] - Systems thinking for creative practice
-- [[AI Partnership Philosophy]] - How we built these together
+- [[Palace AI Partnership Philosophy]] - How we built these together
 - [[4 Pillars Framework - The Founding Conversation]] - The breakthrough that spawned everything
 
 **Phase 2 - Weekly Themes:**

@@ -120,6 +120,14 @@ Unsung paths are navigation hygiene, not proposals. The body text already assert
 
 **No rate limit applies here.** Every unsung path found should be formalized.
 
+For any unsung path being formalized as a `connects-to` link, consider whether the relationship deserves a label. `connects-to` is the most under-described type — a label often carries more signal than the type itself. If the body text already names the relationship more specifically (e.g. “X *echoes* Y”, “X *feeds into* Y”), use that word as the label.
+
+**Step 3c: Label enrichment**
+
+Review existing links that lack labels, prioritizing: (1) all `connects-to` links — these are the most semantically underweight; (2) `mirrors` and `contradicts` links where the nuance is high; (3) any link whose body text already names the relationship more specifically than the type does. For each candidate, propose a single-word or hyphenated label. Rate limit: no more than 10 label proposals per Weave — curation applies here too. A label is a permanent commitment to a specific register; choose deliberately.
+
+Present all label proposals to Loudon before applying. Write confirmed labels to the appropriate entry frontmatter.
+
 **Step 3b: Propose new introductions**
 
 Identify pairs of entries that should be connected but are NOT already named in each other's body text — connections that emerge from reading the topology as a whole. This is the creative work of the Weave and the palace's genuine growth mechanism. For each proposal:

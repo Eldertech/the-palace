@@ -18,6 +18,8 @@ links:
     type: connects-to
   - target: "[[Frequency-Time Duality]]"
     type: connects-to
+  - target: "[[Categorizing Inharmonicity]]"
+    type: spawned
 ---
 
 # Harmonicity and Inharmonicity

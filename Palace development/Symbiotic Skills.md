@@ -22,7 +22,7 @@ links:
     type: emerged-from
   - target: "[[SUBSTRATE]]"
     type: spawned
-  - target: "[[Short Story]]"
+  - target: "[[1 from 2]]"
     type: mirrors
   - target: "[[Kuramoto Coupling]]"
     type: connects-to

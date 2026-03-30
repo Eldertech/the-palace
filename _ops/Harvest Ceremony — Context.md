@@ -1,7 +1,9 @@
 ---
-title: "Harvest Ceremony — Context"
+title: Harvest Ceremony — Context
 type: practice
-pillars: [practice, tools]
+pillars:
+  - practice
+  - tools
 born: 2026-03
 last_activated: 2026-03
 activation_count: 2
@@ -13,7 +15,7 @@ links:
     type: connects-to
   - target: "[[Deposit Archive]]"
     type: connects-to
-  - target: "[[Oblique Portrait Method]]"
+  - target: "[[Oblique Portrait]]"
     type: deepens
 ---
 
@@ -25,7 +27,7 @@ The rationale, design history, and best practices behind the [[Harvest Ceremony]
 
 ## The Oblique Harvest — Best Practice (2026-03)
 
-The most effective harvest Loudon and Claude have run used the [[Oblique Portrait Method]] applied to a large archive of conversations. Rather than reading each conversation carefully in sequence, the approach was:
+The most effective harvest Loudon and Claude have run used the [[Oblique Portrait]] applied to a large archive of conversations. Rather than reading each conversation carefully in sequence, the approach was:
 
 **Present candidates as a fast game.** A card interface with quick signals — "burns bright," "deposit seed," "skip" — let Loudon respond from intuition rather than analysis. Interactive buttons replaced careful deliberation. The pace was fast. The music was on. The session felt like sorting through a record collection, not auditing a database.
 

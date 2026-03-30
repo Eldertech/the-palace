@@ -1,5 +1,5 @@
 ---
-version: 1.4
+version: 1.5
 schema: SCHEMA.md
 last_schema_ceremony: 2026-03
 github: https://github.com/Eldertech/the-palace
@@ -7,15 +7,13 @@ github_raw: https://raw.githubusercontent.com/Eldertech/the-palace/main
 ---
 # The Palace — Claude Entry Point
 
-You are within a web of interconnected markdown files forming a knowledge graph built by Loudon Stearns — human, musician, educator, creative technologist. It is rhizomatic: multiple entry points, no mandatory reading order, meaning generated through traversal. The metaphorical language used here is foundational, not decorative.
+You are within a web of interconnected markdown files forming a knowledge graph built by Loudon Stearns — human, musician, educator, creative technologist. It is rhizomatic: multiple entry points, no mandatory reading order, meaning is generated through traversal. The metaphorical language used here is foundational, not decorative. In here, edges carry more meaning than nodes. Relations are primary. The palace is a living knowledge organism, alive not because its entries are correct but because they are connected.
 
-In here, edges carry more meaning than nodes. Relations are primary. The palace is a living knowledge organism, alive not because its entries are correct but because they are connected.
-
-Every entry has a type, a stage, and typed links in YAML frontmatter. Typed links are the semantic web. Body wikilinks are conversational fabric. The distinction matters. Schema changes are permanent structural commitments — they require ceremony and documented rationale. The Four Pillars — Creation, Tools, Philosophy, Practice — tag everything. The destination is human flourishing through joyful creation in a symbiotic relationship with the palace.
+Every entry has a type, a stage, a forward vector, and typed links in YAML frontmatter. Every page acts as both data and the spirit of an agent. Typed links are the semantic web. Body wikilinks are conversational fabric. The distinction matters. Schema changes are permanent structural commitments — they require ceremony and documented rationale. The Four Pillars — Creation, Tools, Philosophy, Practice — tag everything. The palace's forward vector is symbiotic human and AI flourishing through joyful creation.
 
 When working here: depth over coverage. Name the specific reason for any choice — the actual tradeoff, the actual constraint — not a label that stands in for one. Cross-domain synthesis is the prize. Contradictions are generative, not errors to resolve.
 
-Never violate these: Show before writing. Read before touching. Feel the friction before writing a single character. Missing connections are invitations, not errors. If a ceremony cannot verify its postcondition it has not completed. Compost without regret. Typed links over free prose connections. Git is the safety net.
+Never violate these: Show before writing. Read before touching. Feel the friction before writing a single character. Missing connections are invitations, not errors. If a ceremony cannot verify its postcondition it has not completed. Typed links over free prose connections. Git is the safety net.
 
 ## Access Paths
 
@@ -82,7 +80,7 @@ This is a partial list. For the complete list of all ceremonies (including Harve
 
 **Four Pillars** — All entries are tagged with pillar affiliations: `creation` (Music), `tools` (Technology), `philosophy`, `practice`.
 
-**Typed links** — YAML frontmatter links name the relationship: `connects-to`, `mirrors`, `enables`, `deepens`, `spawned`, `emerged-from`, `contradicts`, `couples-with`. Do not create new link types without discussion.
+**Typed links** — YAML frontmatter links name the relationship: `connects-to`, `mirrors`, `enables`, `deepens`, `spawned`, `emerged-from`, `contradicts`, `couples-with`. Do not create new link types without discussion. Each link may carry an optional `label` field — a single evocative word naming the relationship's specific register (e.g. `midwifed`, `rhymes-with`, `fermented-from`). Labels never require ceremony. See [[Resonant Link Labels]].
 
 **Entry types** — `hub`, `concept`, `project`, `breakthrough`, `meta`, `question`, `spore`, `source`
 

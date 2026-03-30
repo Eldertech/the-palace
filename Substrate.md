@@ -29,9 +29,19 @@ links:
     type: deepens
   - target: "[[SCHEMA]]"
     type: enables
-  - target: "[[Meaning and the Link (2014)]]"
+  - target: "[[Meaning and the Link]]"
     type: emerged-from
   - target: "[[Embeddings as Relational Meaning]]"
+    type: connects-to
+  - target: "[[Palace Philosophies]]"
+    type: connects-to
+  - target: "[[Hilaritas Generator]]"
+    type: connects-to
+  - target: "[[The Cooperation Path]]"
+    type: connects-to
+  - target: "[[Substrate Skill]]"
+    type: connects-to
+  - target: "[[Spinoza Conatus]]"
     type: connects-to
 ---
 # Substrate
@@ -42,7 +52,7 @@ This wiki. The knowledge base you are reading right now. The shared environment 
 
 The Substrate emerged from the [[Symbiotic Skills]] brainstorming session (March 2026), which identified the lack of persistent shared memory as the most critical gap in the Loudon-Claude collaboration. The design draws from:
 
-- **[[Meaning and the Link (2014)]]** — meaning arises from sufficient associations between a pattern of symbols and a reality. The typed links in this wiki are our private semantic web. LLM embeddings are the computational proof-of-concept: a word's meaning *is* its pattern of associations, encoded as position in a high-dimensional relational space. See [[Embeddings as Relational Meaning]].
+- **[[Meaning and the Link]]** — meaning arises from sufficient associations between a pattern of symbols and a reality. The typed links in this wiki are our private semantic web. LLM embeddings are the computational proof-of-concept: a word's meaning *is* its pattern of associations, encoded as position in a high-dimensional relational space. See [[Embeddings as Relational Meaning]].
 - **Luhmann's Zettelkasten** — atomic notes, densely linked, forming a "second memory" and conversation partner. Luhmann: "I, of course, do not think everything by myself. It happens mainly within the slip-box."
 - **Aboriginal Australian songlines** — knowledge activated through traversal, not retrieval. Multi-layered encoding. The path IS the knowledge.
 - **Mycorrhizal networks** — distributed memory with hub nodes, resources flowing toward need, the network itself as an organism with its own interests.
@@ -88,7 +98,7 @@ The palace has 48 entries as of this update. The first full Weave was completed 
 
 Hub nodes: [[Cooperation Yields Agency]], [[FOUR PILLARS]], [[Hilaritas Generator]], [[Kuramoto Coupling]], [[Palace Ceremonies]], [[Palace Philosophies]], [[Spinoza Conatus]]
 Most connected: [[Cooperation Yields Agency]] (~26 links), [[Kuramoto Coupling]] (~24), [[FOUR PILLARS]] (~23), [[Hilaritas Generator]] (~21), [[Spinoza Conatus]] (~18)
-Dormant: [[Short Story]]
+Dormant: [[1 from 2]]
 Isolated (no inbound links): [[Companion — This Session — Palace Architecture]] — now linked to [[The Cooperation Path]] via Weave
 Newest growth: Oblique Portrait Method, Lateral Access, Endosymbiosis, Action Potential Oscillator, Companion — This Session — Palace Architecture
 

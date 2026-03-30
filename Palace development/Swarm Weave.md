@@ -35,6 +35,8 @@ links:
     type: enables
   - target: "[[Palace Map]]"
     type: enables
+  - target: "[[Deposit Ceremony]]"
+    type: connects-to
 ---
 
 # Swarm Weave

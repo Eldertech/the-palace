@@ -20,6 +20,8 @@ links:
     type: connects-to
   - target: "[[Latent Error]]"
     type: connects-to
+  - target: "[[DSP Frameworks]]"
+    type: connects-to
 ---
 
 # Quadratic Interpolation in DSP

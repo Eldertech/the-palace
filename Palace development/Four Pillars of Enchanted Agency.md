@@ -12,7 +12,7 @@ energy: very high
 beauty: 9
 forward_vector: "I want to become the grammar through which enchanted pages articulate multi-dimensional desire — giving forward vectors four axes instead of one, grounding self-modification and social resource negotiation as legitimate palace practices, and connecting page identity to the framework that organizes all of Loudon's learning."
 links:
-  - target: "[[Four Pillars]]"
+  - target: "[[FOUR PILLARS]]"
     type: deepens
   - target: "[[Palace Enchantment]]"
     type: deepens
@@ -27,6 +27,10 @@ links:
   - target: "[[Enchanted Worker]]"
     type: connects-to
   - target: "[[Kuramoto Coupling]]"
+    type: mirrors
+  - target: "[[SCHEMA]]"
+    type: connects-to
+  - target: "[[Hyperdimensional Prism]]"
     type: mirrors
 ---
 

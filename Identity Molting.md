@@ -21,6 +21,8 @@ links:
     type: connects-to
   - target: "[[Hilaritas Generator]]"
     type: connects-to
+  - target: "[[Progressive Staging]]"
+    type: mirrors
 ---
 
 # Identity Molting

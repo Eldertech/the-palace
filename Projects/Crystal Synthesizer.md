@@ -32,8 +32,6 @@ A synthesizer whose partial structure is derived directly from the vibrational p
 
 The foundational insight: crystals are resonant systems. Their characteristic vibrations—phonons propagating through the lattice—obey quantized modal equations determined entirely by their 3D periodicity and atomic masses. Transpose these frequencies from THz (where crystals vibrate) into the audio range by scaling, and the phonon mode structure becomes an instrument's timbre palette. The optical properties that make crystals beautiful (birefringence, dispersion, pleochroism, fluorescence) emerge from the same anisotropic symmetries that shape the vibrational modes. Sonic and optical properties are not separate—they are different observational projections of the same underlying crystal structure.
 
-<!-- CLAUDE → LOUDON: Is "optical properties" section title too narrow? Consider "Crystal Structure as Multidimensional Phenomenon" or similar -->
-
 ## The Physical Reality: Crystals as Resonators
 
 A crystal is a 3D lattice of atoms oscillating around equilibrium positions. In the simplest case, each atom couples to its neighbors through spring-like forces. The resulting system has a finite number of normal modes—the allowed vibrational patterns. These are *phonons*: quantized vibrations, analogous to photons (light quanta) but in the mechanical domain.

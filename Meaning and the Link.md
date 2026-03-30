@@ -22,6 +22,8 @@ links:
     type: mirrors
   - target: "[[Palace Ceremonies]]"
     type: enables
+  - target: "[[Resonant Link Labels]]"
+    type: spawned
 ---
 
 # Meaning and the Link (2014)

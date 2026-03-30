@@ -15,7 +15,7 @@ links:
     type: mirrors
   - target: "[[Substrate Skill]]"
     type: enables
-  - target: "[[Meaning and the Link (2014)]]"
+  - target: "[[Meaning and the Link]]"
     type: emerged-from
   - target: "[[SUBSTRATE]]"
     type: deepens
@@ -137,7 +137,7 @@ For the authoritative decision tree and full definitions, see [[SCHEMA]]. This t
 
 ## 4. The Typed Link Ontology
 
-Each link between entries carries a **predicate** — a named relationship type. The predicate is as important as the nodes it connects. This is the Semantic Web's core insight: edges are where meaning lives. (See [[Meaning and the Link (2014)]].)
+Each link between entries carries a **predicate** — a named relationship type. The predicate is as important as the nodes it connects. This is the Semantic Web's core insight: edges are where meaning lives. (See [[Meaning and the Link]].)
 
 | Link Type | Direction | Meaning | RDF/OWL analogy |
 |---|---|---|---|
@@ -149,6 +149,8 @@ Each link between entries carries a **predicate** — a named relationship type.
 | `emerged-from` | directed | B crystallized from A through synthesis | `prov:wasInfluencedBy` |
 | `contradicts` | symmetric | Productive tension | `owl:disjointWith` (loose) |
 | `couples-with` | symmetric | Mutual reinforcement, co-constitution | `owl:complementOf` (loose) |
+
+Each link object may carry an optional `label` field — a single word or hyphenated phrase naming the relationship's specific register. The `type` is the structural predicate (topological scaffold, traversal, ceremony linting). The `label` is the semantic compression (cultural nuance, emotional register, generative resonance). Examples: `midwifed`, `rhymes-with`, `fermented-from`, `argues-with-love`. In RDF terms, `label` functions like `skos:altLabel` applied to the predicate itself — it qualifies *how* the relationship holds, not *what kind* it is. Labels never require ceremony. See [[Resonant Link Labels]] for vocabulary per family.
 
 ---
 

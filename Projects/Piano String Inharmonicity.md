@@ -13,6 +13,8 @@ links:
     type: connects-to
   - target: "[[Logarithmic Interface Scaling]]"
     type: connects-to
+  - target: "[[Ohm's Law]]"
+    type: connects-to
 ---
 <!--This page is good, but can we make it more visual and interactive? in obsidian the link to the interaction artifact is not functional. Do some pages, like this one, need an accompanying HTML version that sits right beside it, like our ceremony context files do, but the HTML version is a more interactive and beautiful version, or maybe that is what the artifact is. here in Obsidian I can't render the JSX files natively, if they are inside of HTML can I? these dense technical/scientific pages with accompanying interactions can be really great if we design this right! -->
 
