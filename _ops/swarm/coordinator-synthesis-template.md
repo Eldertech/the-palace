@@ -71,6 +71,16 @@ python3 _ops/swarm/extract-neighborhood.py "Entry Name" --template
 ### Step 3: Dispatch workers
 Use the Agent tool with `subagent_type="Explore"`. Dispatch up to 5 workers in parallel in a single message.
 
+**Model selection:** Default to `model: "haiku"` for all routine swarm workers. Haiku produces comparable audit quality at ~50-80x lower cost than Opus. Reserve Opus for:
+- The coordinator synthesis step (cross-worker convergence, judgment calls)
+- Individual deep-dive audits on philosophically complex entries
+- Sessions where link-type upgrade reasoning needs to be especially rigorous
+
+Quality comparison (validated 2026-03-31, 5-entry parallel test):
+- Haiku matches Opus on: JSON compliance, stage assessment, missing connections, body health diagnostics
+- Opus has edge on: cross-domain philosophical leaps, evocative link labels
+- Haiku surprised on: granular body analysis (caught incomplete sentences), proposed link-type upgrades (e.g., `contrasts-with` for Semantic Delay ↔ Retrospective Delay)
+
 ### Step 4: Synthesize
 Collect all worker JSON outputs. Apply the synthesis protocol above. Present to Loudon (the Trickster) for approval before writing any changes.
 
