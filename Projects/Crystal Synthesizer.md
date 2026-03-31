@@ -139,3 +139,8 @@ This connects to [[Hyperdimensional Prism]]: the crystal is a prism machine. Its
 - The triclinic lattice generates the most inharmonic phonon structure. Is there a triclinic "timbre" that is uniquely chaotic or bell-like?
 - How would a performer interface with this? Choosing a crystal, a direction, an excitation pattern—these feel like the controls. What is the performance gesture?
 
+## Forward Vectors
+- Implement a prototype crystallographic oscillator bank in Gen~ where symmetry group determines partial relationships
+- Explore whether [[Wallpaper Groups]] can generate timbral palettes that are perceptually "crystalline" vs "amorphous"
+- Test the hypothesis: a crystal structure's point group maps to a specific spectral fingerprint
+

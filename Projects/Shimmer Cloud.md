@@ -20,7 +20,7 @@ links:
   - target: "[[Hyperdimensional Prism]]"
     type: mirrors
   - target: "[[Frequency-Time Duality]]"
-    type: connects-to
+    type: deepens
 ---
 
 # Shimmer Cloud
@@ -88,3 +88,8 @@ The promise: a reverb algorithm that is simultaneously a texture synthesizer, a 
 ---
 
 *This is a seed. The concept is fully named but not yet grown. It waits for the conditions under which it becomes a fruiting project.*
+
+## Forward Vectors
+- Prototype a pitch-shifted granular reverb in Max/MSP where grain density and pitch offset create emergent spatial textures
+- Test whether [[Dispersion]]-based spreading algorithms produce more "natural" shimmer than simple pitch shifting
+- Define the threshold where shimmer becomes drone — is that a feature or a boundary?

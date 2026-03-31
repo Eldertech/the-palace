@@ -18,7 +18,7 @@ links:
   - target: "[[Kuramoto Coupling]]"
     type: mirrors
   - target: "[[Frequency-Time Duality]]"
-    type: connects-to
+    type: deepens
   - target: "[[FOUR PILLARS]]"
     type: connects-to
   - target: "[[Semantic Delay]]"

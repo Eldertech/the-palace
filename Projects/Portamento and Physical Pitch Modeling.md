@@ -18,7 +18,7 @@ links:
   - target: "[[Frequency-Time Duality]]"
     type: deepens
   - target: "[[Kuramoto Coupling]]"
-    type: connects-to
+    type: couples-with
   - target: "[[Bessel Functions in Synthesis]]"
     type: connects-to
   - target: "[[Biomechanical Synthesis]]"

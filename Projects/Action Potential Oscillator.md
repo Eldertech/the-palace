@@ -10,7 +10,7 @@ confidence: working
 energy: high
 links:
   - target: "[[Kuramoto Coupling]]"
-    type: enables
+    type: couples-with
   - target: "[[Boundary-Crossing Instruments]]"
     type: mirrors
   - target: "[[Signal-Rate CV Architecture]]"
@@ -24,7 +24,7 @@ links:
   - target: "[[Striatum]]"
     type: connects-to
   - target: "[[Neural Granular Synthesis]]"
-    type: connects-to
+    type: mirrors
   - target: "[[Biomechanical Synthesis]]"
     type: connects-to
   - target: "[[State Machine]]"

@@ -7,7 +7,7 @@ pillars:
   - philosophy
   - practice
 born: 2026-01
-stage: growing
+stage: mature
 status: complete
 links:
   - target: "[[FOUR PILLARS]]"

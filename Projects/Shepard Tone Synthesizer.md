@@ -13,7 +13,7 @@ beauty: 9
 who_leads: loudon
 links:
   - target: "[[Portamento and Physical Pitch Modeling]]"
-    type: deepens
+    type: couples-with
   - target: "[[Frequency-Time Duality]]"
     type: connects-to
   - target: "[[Hyperdimensional Prism]]"
@@ -22,6 +22,8 @@ links:
     type: connects-to
   - target: "[[Octave Equivalence]]"
     type: enables
+  - target: "[[Kuramoto Coupling]]"
+    type: connects-to
 ---
 
 # Shepard Tone Synthesizer
