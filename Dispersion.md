@@ -22,6 +22,16 @@ links:
     type: connects-to
   - target: "[[Bessel Functions in Synthesis]]"
     type: connects-to
+  - target: "[[Crystal Synthesizer]]"
+    type: enables
+  - target: "[[Particle Synthesis]]"
+    type: enables
+  - target: "[[Portamento and Physical Pitch Modeling]]"
+    type: connects-to
+  - target: "[[Piano String Inharmonicity]]"
+    type: deepens
+  - target: "[[Shimmer Cloud]]"
+    type: connects-to
 ---
 
 # Dispersion

@@ -22,6 +22,12 @@ links:
     type: connects-to
   - target: "[[JSUI]]"
     type: enables
+  - target: "[[Frequency-Time Duality]]"
+    type: deepens
+  - target: "[[Boundary-Crossing Instruments]]"
+    type: connects-to
+  - target: "[[Kuramoto Coupling]]"
+    type: connects-to
 ---
 
 # Retrospective Delay
@@ -85,3 +91,8 @@ The interface is not subtle. It is *playful*, *funny*, *dramatic*. It invites th
 ## Relationship to Granular Synthesis
 
 The retrospective phrase can be thought of as a single *grain* at the measure timescale. Granular synthesis typically deals with sub-second grains (10ms–100ms), densely layered. This is granular in the same conceptual sense: a chunk of audio (the grain) is triggered and modulated by a parameter (the gain). The "granule" happens to be one measure long instead of milliseconds.
+
+## Forward Vectors
+- Implement variable-speed phrase playback — the temporal ghost plays back at different rates, creating pitch-shifted memory
+- Connect temporal looping to [[Dub Lineage]] production philosophy explicitly in the interface
+- Explore phrase-detection intelligence: can the delay learn where musical phrases begin and end?

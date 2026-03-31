@@ -6,7 +6,7 @@ pillars:
   - creation
   - philosophy
 born: 2026-01
-stage: growing
+stage: mature
 status: complete
 links:
   - target: "[[Boundary-Crossing Instruments]]"

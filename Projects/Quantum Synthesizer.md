@@ -11,7 +11,7 @@ links:
   - target: "[[Bessel Functions in Synthesis]]"
     type: couples-with
   - target: "[[Spinoza Conatus]]"
-    type: mirrors
+    type: deepens
   - target: "[[Boundary-Crossing Instruments]]"
     type: mirrors
   - target: "[[Harmonicity and Inharmonicity]]"

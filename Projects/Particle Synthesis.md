@@ -100,3 +100,8 @@ This is the pedagogical promise of [[Particle Synthesis]]: the physics *is* the 
 ---
 
 **Revival conditions:** Accessible GPU compute frameworks (WebGPU, Vulkan compute shaders) becoming standard in audio frameworks; game audio SDKs adding granular synthesis layers; physicists recognizing audio synthesis as a testbed for nonlinear dispersive systems.
+
+## Forward Vectors
+- Build a Gen~ grain engine where each particle carries its own differential equation state — not just windowed samples but evolving micro-systems
+- Connect to [[Neural Granular Synthesis]]: can particle behavior be learned rather than designed?
+- Explore particle collision as a compositional primitive — what happens when grains interact rather than superpose?

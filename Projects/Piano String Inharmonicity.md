@@ -10,11 +10,11 @@ links:
   - target: "[[Boundary-Crossing Instruments]]"
     type: deepens
   - target: "[[Frequency-Time Duality]]"
-    type: connects-to
+    type: mirrors
   - target: "[[Logarithmic Interface Scaling]]"
     type: connects-to
   - target: "[[Ohm's Law]]"
-    type: connects-to
+    type: mirrors
 ---
 <!--This page is good, but can we make it more visual and interactive? in obsidian the link to the interaction artifact is not functional. Do some pages, like this one, need an accompanying HTML version that sits right beside it, like our ceremony context files do, but the HTML version is a more interactive and beautiful version, or maybe that is what the artifact is. here in Obsidian I can't render the JSX files natively, if they are inside of HTML can I? these dense technical/scientific pages with accompanying interactions can be really great if we design this right! -->
 
@@ -161,3 +161,8 @@ Interactive string bending demonstration: `/Artifacts/Piano String Inharmonicity
 ---
 
 *"The string does not lie. Increase tension, reduce inharmonicity. The physics is simple; the timbre is profound. What seemed like a constant — the sound of the string — was only constant because we held tension constant."*
+
+## Forward Vectors
+- Build an interactive demonstration (HTML or Gen~) showing real-time partial stretching as string stiffness changes
+- Connect stretched partials to [[Octave Equivalence]] breakdown — when does a "piano octave" stop sounding like an octave?
+- Use inharmonicity coefficients as synthesis parameters: what instruments live in the space between harmonic and inharmonic?

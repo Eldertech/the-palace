@@ -25,6 +25,14 @@ links:
     type: connects-to
   - target: "[[Kuramoto Coupling]]"
     type: couples-with
+  - target: "[[Portamento and Physical Pitch Modeling]]"
+    type: connects-to
+  - target: "[[Retrospective Delay]]"
+    type: connects-to
+  - target: "[[Frequency-Time Duality]]"
+    type: connects-to
+  - target: "[[Dispersion]]"
+    type: connects-to
 last_activated: 2026-03
 activation_count: 1
 ---
@@ -108,4 +116,9 @@ The most operational of the biological synthesis concepts is the neural network 
 **At high rates (100+ Hz)**: dense granular textures approach continuous tones but retain temporal **microstructure** — like FM synthesis creating sidebands through rapid modulation. The neural firing rate becomes the grain rate. The instantaneous firing pattern becomes the grain shape.
 
 The DAW-as-narrative-world emerges from this: "Each track in my DAW is one character in a scene that moves through time. Many concepts coexist together, in an alien landscape, Larry Niven meets M.C. Escher—with neural topology as the organizational principle. Tracks are neurons. Their connections (sends, sidechain modulations, frequency interactions) are synapses. The mix is a network firing."
+
+## Forward Vectors
+- Design a "body horror oscillator" tutorial series paralleling [[Action Potential Oscillator]] but for non-neural biological systems (muscle fiber, cardiac rhythm, peristalsis)
+- Map the biomechanical aesthetic onto [[Kuramoto Coupling]] — synchronized biological oscillators as a mixing/spatializing paradigm
+- Explore visceral interface design: can the UI itself feel alive?
 
