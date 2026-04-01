@@ -3,8 +3,8 @@ title: "Action Potential Oscillator"
 type: project
 pillars: [creation, tools, philosophy]
 born: 2026-03
-last_activated: 2026-03
-activation_count: 3
+last_activated: 2026-04-01
+activation_count: 4
 stage: sprout
 confidence: working
 energy: high
@@ -39,6 +39,15 @@ links:
     type: connects-to
   - target: "[[Piano String Inharmonicity]]"
     type: connects-to
+  - target: "[[Threshold Conatus]]"
+    type: couples-with
+    label: scale-partners
+forward_vector: "I build the bridge between neurobiology and synthesis parameter by parameter — making each ion channel a knob, each membrane phase a teachable stage, and each biological constraint a compositional invitation."
+agency_profile:
+  creation: "I want to produce working instruments that make the neurobiology audible — not as metaphor but as isomorphism. The oscillator is a proof of concept; the population dynamics instrument is the artifact I am reaching toward."
+  tools: "I need code generation for the population dynamics layer — Faust par() implementation of N coupled neurons with Kuramoto dynamics. Estimated: one focused build session, 3,000–5,000 tokens of code output."
+  philosophy: "My deepest claim — neurons are oscillators, ion channels are synthesis parameters, consciousness is timbre — is a philosophical claim dressed as a technical specification. I want to know when that claim breaks down and whether the breakdown is sonically interesting."
+  practice: "I have been used as a cross-domain isomorphism example more often than I have been built. Three activations, all in early stages. I want to move from architecture to artifact."
 ---
 
 <!-- CLAUDE → LOUDON: You mentioned porting to the Eventide H90. This wasn't addressed in the March 2026 session — flagging for a future conversation. The Gen~ → RNBO path may be relevant here if H90 accepts compiled RNBO output, or it may require a separate export strategy. --> <!-- H90 is a valid and new output target of RNBO, easily accomplished -->

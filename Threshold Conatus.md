@@ -7,7 +7,7 @@ pillars:
   - tools
   - practice
 born: 2026-04
-stage: seed
+stage: sprout
 energy: high
 beauty: 8
 links:
@@ -18,7 +18,11 @@ links:
   - target: "[[Kuramoto Coupling]]"
     type: mirrors
   - target: "[[Action Potential Oscillator]]"
+    type: couples-with
+    label: scale-partners
+  - target: "[[Pheromone Trail]]"
     type: connects-to
+    label: distributed-revelation
   - target: "[[Lateral Access]]"
     type: connects-to
   - target: "[[Hilaritas Generator]]"
