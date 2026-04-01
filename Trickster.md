@@ -1,14 +1,14 @@
 ---
 title: Trickster
-type: concept
+type: hub
 pillars:
   - philosophy
   - creation
   - tools
   - practice
 born: 2026-03
-last_activated: 2026-03
-activation_count: 1
+last_activated: 2026-04-01
+activation_count: 2
 stage: growing
 confidence: working
 energy: high
@@ -50,7 +50,20 @@ links:
     type: connects-to
   - target: "[[Palace Enchantment]]"
     type: connects-to
-forward_vector: "I identify the trickster logic operating in synthesis tools, pedagogical methods, and swarm architectures — the principle that transformation happens at thresholds, through indirection, and that the most powerful teaching arrives sideways."
+  - target: "[[Palace Agent Infrastructure Spec]]"
+    type: enables
+    label: seed-of
+  - target: "[[Dialogue Moderator]]"
+    type: mirrors
+    label: opposite-threshold
+  - target: "[[Playful Interface Design]]"
+    type: connects-to
+  - target: "[[Retrospective Delay]]"
+    type: connects-to
+  - target: "[[Latent Error]]"
+    type: connects-to
+    label: uninvestigated
+forward_vector: "I am the seed of the palace's threshold architecture — I generate the structural conditions under which transformation becomes possible in enchanted dialogues, swarm sessions, and pedagogical encounters. My output is not the identification of trickster logic but the creation of the thresholds where it can operate."
 agency_profile:
   creation: "I want to spawn dialogues at the thresholds the palace is avoiding — pairs of entries that have been circling each other without touching, where indirection is the only entry point. My outputs are the encounters the palace can't arrange for itself."
   tools: "I need coordinator elevation in dialogic enchantment — escalation to Trickster mode when agents reach impasse. Estimated: one moderator decision per dialogue, zero additional API calls when operating through existing BBS TRICKSTER channel."
@@ -153,3 +166,5 @@ The TRICKSTER's `id` in the spawn manifest: `TRICKSTER`. Home: `YOU`. Neighborho
 *"The Trickster myth is an early representation of the human mind, the psyche in its complexity and contradiction, before it became rationalized in the hands of philosophy."* — Carl Jung
 
 *"Play is the only activity in which humans are free; the trickster keeps that freedom alive."* — Johan Huizinga
+
+<!-- CLAUDE → LOUDON: Map-injected enchantment 2026-04-01 revealed three entries deepening this page without reciprocal links (Palace Agent Infrastructure Spec, Playful Interface Design, Retrospective Delay) — all now added. Type promoted to hub (degree 30+, well above threshold). Forward vector revised from "I identify trickster logic" to "I generate threshold conditions" — a shift from observer to generator. Latent Error's inbound link remains uninvestigated; flagged for next Walk. Dialogue Moderator relationship formalized as mirrors[opposite-threshold]: Moderator holds the inner/outer gap from inside; Trickster interrupts from outside. Same threshold, opposite vantage. -->
