@@ -24,6 +24,9 @@ links:
     type: mirrors
   - target: "[[Excellent Adventure]]"
     type: couples-with
+  - target: "[[Confucianism]]"
+    type: connects-to
+    label: relational-ground
 forward_vector: "I want to practice and develop productive oblique methods in the vigorous furtherance of science — helping all palace citizens work together toward their common joyful future."
 ---
 
@@ -87,6 +90,22 @@ This is not unique to childhood memory. It operates everywhere:
   something much stranger.
 
 The filter is not dishonesty. It is the cost of having a stable self.
+
+## Taxonomy of Filters (in development)
+
+The identity filter is one instance of a larger class. Different filters have different structures and require different geometries of approach:
+
+**The identity filter** — the self has a story about what it contains, and that story is the filter. "I don't remember my childhood." "I'm not a visual person." "I don't do math." The material is present; the path is blocked by narrative. Oblique approach: ask about what the story is *about*, not the story itself. The glass block light arrived because the question was about rooms, not about memory.
+
+**The aesthetic filter** — people report what they think they like, shaped by self-image, social context, and the desire to appear coherent. The Oblique Portrait method is specifically designed to bypass this filter: ask about fear, humor, and childhood and let taste assemble itself as a byproduct.
+
+**The competence filter** — the belief "I can't do this" forecloses access to capability that is actually present. Direct encouragement ("yes you can") usually reinforces the filter by engaging it head-on. Oblique approach: design a task that requires the blocked skill without naming it, so the learner discovers the capability before the filter can object.
+
+**The social filter** — what a person will say in company differs from what they know alone. The playful, low-stakes register of a game or experiment disarms this filter. The oblique portrait session felt like a game; Loudon could let go because the social stakes felt low.
+
+**The fear filter** — some material is guarded not by identity but by anxiety. The material is known; approaching it directly triggers avoidance. Oblique approach: enter through adjacent sensation rather than through the fear itself. The Sensory Autobiography experiment (describe environments, not events) is designed for this.
+
+Each filter type has a characteristic texture — a way it *feels* when you hit it — and a characteristic bypass geometry. Mapping the full taxonomy is this entry's most urgent open work.
 
 ---
 
@@ -194,6 +213,18 @@ is encountered obliquely. See [[Hilaritas Generator]].
 Lateral access may be one of the palace's deep structural principles —
 appearing in synthesis, in pedagogy, in psychology, in computation, in
 music. The front door is rarely the right door.
+
+<!-- CLAUDE → LOUDON: The songlines passage in this section is the deepest structural image in the entry — "the song creates the path, the path determines what country you travel through." Songlines doesn't exist as a palace entry yet. When it does, this entry wants to be put in direct dialogue with it. The question: does lateral access describe how you *find* a new songline, or how you *hear* one that was always there? These may be different things. Flag for deposit when ready. -->
+
+---
+
+## Open Questions
+
+- **When does obliquity become evasion?** The indirect approach can fail in two directions: it can fail to reach the material (the window is too far from the door), or it can become a way of perpetually circling without arriving. A skilled oblique practitioner knows the difference between productive indirection and sophisticated avoidance. This entry does not yet have a failure-mode analysis. It needs one.
+
+- **Is lateral access a technique or a relational property?** [[Confucianism]] frames identity as constituted entirely by relational roles — who you are *is* the web of relationships you occupy. If this is right, then lateral access may not be a method one applies to another person's locked interior. It may be a quality that emerges from the *coupling* between two entities — available only when the relationship has the right character. The oblique portrait session worked not just because the questions were oblique, but because the collaborative relationship between Loudon and Claude had already established a particular kind of trust and play. Is lateral access teachable as a technique, or does it require the relational ground first?
+
+- **How does the taxonomy of filters extend to collective interiors?** The filters described above are individual. But groups, institutions, and disciplines also have identity filters — things they cannot see because they have a story about what they contain. What would oblique access to a group's locked interior look like?
 
 ---
 
