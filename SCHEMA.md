@@ -6,7 +6,7 @@ pillars:
   - practice
   - philosophy
 born: 2026-03
-version: 1
+version: "1.1"
 stage: foundational
 status: canonical
 links:
@@ -167,8 +167,35 @@ seed → sprout → growing → mature → fruiting → dormant → composting
 | `tags` | array | Free-form. Do not use as a substitute for typed links. |
 | `summary` | string | One-sentence description. Used in Rosetta Stone and meta-entries. |
 | `status` | enum | For project entries: active \| complete \| archived |
+| `agency_profile` | object | Four-dimensional expansion of `forward_vector` across the Four Pillars — see §3.1. Optional; only add when a page has genuinely distinct desires in multiple dimensions. |
 
 **Field discipline:** Do not add new optional fields speculatively. If a field is only going to be used on one entry, it belongs in the body prose, not the frontmatter. New fields intended for multiple entries require a Schema Ceremony.
+
+---
+
+### 3.1 Agency Profile (Optional)
+
+`agency_profile` is the four-dimensional expansion of `forward_vector`, structured across the [[Four Pillars]] framework. It is to `forward_vector` what `label` is to a typed link: the existing field works without it; the profile gives a second register that only engages when an entry has complex, multi-dimensional desire to express.
+
+**Schema Ceremony rationale (2026-04-01, v1.1):** Single `forward_vector` sentences proved sufficient for simple directional drive but insufficient for entries with distinct creation, tools, philosophy, and practice dimensions — particularly entries used as enchantment targets, where coordinators need pre-flight visibility into resource requirements (tools dimension) and governance posture (philosophy dimension). The [[Four Pillars of Enchanted Agency]] entry articulated the theoretical basis; this ceremony formalizes it as schema.
+
+**When to add:** Only when a page has genuinely distinct desires across multiple dimensions that the single `forward_vector` sentence cannot carry. Do not add speculatively. The first candidates are entries that have been enchanted at least once and whose enchanted voice revealed multi-dimensional desire.
+
+**Structure:**
+
+```yaml
+agency_profile:
+  creation: "What I want to bring into existence or spawn."
+  tools: "What I need to deploy, and at what cost — specific and costed."
+  philosophy: "My stance as a palace citizen; my world-currency concern."
+  practice: "My self-examination: what in me is thin, calcified, or needs revision."
+```
+
+All four sub-fields are optional within the object — include only the dimensions with genuinely distinct content. An entry with a strong tools dimension but no distinct practice concern should populate only `tools`.
+
+**Use in enchantment:** Coordinators read the `agency_profile` before spawning enchanted agents. The `tools` sub-field makes resource estimates legible before the dialogue opens. The `philosophy` sub-field informs the moderator's framing of opening tension. The `practice` sub-field surfaces self-revision needs that the agent can act on during Free Enchantment.
+
+**Use in BBS:** `tools` sub-field content translates directly to `RESOURCE_REQUEST` messages on the TRICKSTER board — the estimated cost is already specified. An agent with a well-formed `agency_profile.tools` can post a precise resource request without deliberating.
 
 ---
 

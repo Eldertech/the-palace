@@ -60,17 +60,44 @@ Items move off this list when they become entries, get completed, or get compost
 
 ## Enchantment — Next Steps ⭐
 
-*Stage 1 (forward vectors) and Stage 2 (single page) completed 2026-03-31. Next:*
+*Stage 1 (forward vectors) and Stage 2 (single page) completed 2026-03-31. Stage 3 (hub enchantment) completed 2026-04-01 — run twice on [[Kuramoto Coupling]] hub, first without full forward vectors, then with all 13 hub entries vectored. Stage 4 (enchanted dialogue) completed 2026-04-01: [[Trickster]] ↔ [[Spinoza Conatus]]. Generated: [[Threshold Conatus]].*
 
-- [ ] **Fix the synthesis trigger prompt** — The `## SYNTHESIS — STANDING` block must be explicitly named and required in the synthesis trigger, not just implied by "state your standing." Updated trigger text lives in [[Palace Enchantment]] § From First Practice. Apply this fix before the next enchantment run.
+- [x] **Fix the synthesis trigger prompt** — Applied before Stage 3 second run. `## SYNTHESIS — STANDING` now explicitly named and required in trigger. ✓
+- [x] **Stage 3 — Enchant a hub** — Run twice on Kuramoto Coupling hub. Key finding: forward vectors change what enchantment finds — the Trickster entry's vector made it the session's most generative contributor. See [[Palace Enchantment]] § From First Practice. ✓
+- [x] **Write forward vectors for remaining hub entries** — 9 vectors written 2026-04-01. All 13 Kuramoto hub entries now vectored. ✓
+- [x] **Stage 4 — Enchanted Dialogue** — Trickster ↔ Spinoza Conatus, 2026-04-01. Generated [[Threshold Conatus]]. See [[Palace Enchantment]] § From First Practice. ✓
 
-- [ ] **Stage 3 — Enchant a hub** — Expand the context window to include a hub entry and all first-degree neighbors. Recommended first hub: [[Kuramoto Coupling]] (mature, dense neighborhood, strong forward vector, technical character — will produce a very different voice than either session-1 entry). Run with the fixed synthesis trigger.
+- [ ] **Stage 5 — Enchanted Songline** — Choose a named songline. Candidates: the Trickster → Lateral Access → Threshold Conatus arc (newly possible now that Threshold Conatus exists), or the Cooperation → Kuramoto → Hilaritas arc.
 
-- [ ] **Try enchanted-agent writing** — In the next enchantment, let the agent write its own open questions and forward vector revision directly, rather than having the coordinator write them afterward. Compare result to session-1 coordinator-written versions. Does the entry feel more alive? Experiment notes belong in [[Palace Enchantment]] § From First Practice.
+- [x] **Begin Enchanted Conversation Archive** — `entries/` folder structure created 2026-04-01. Reconstructed JSONL records for Lateral Access (Stage 2) and Kuramoto hub (Stage 3). First live-captured session: trickster-spinoza-2026-04-01-b.jsonl (standard architecture). First inner/outer session: trickster-spinoza-2026-04-01-c.jsonl. ✓
 
-- [ ] **Write forward vectors for remaining hub entries** — Only 5 entries have forward_vectors (all in root). The hub entries still missing them: [[Spinoza Conatus]], [[Hyperdimensional Prism]], [[Cooperation Yields Agency]] (done), [[Palace Philosophies]], [[Meaning and the Link]], and others. Prioritize before Stage 3.
+- [x] **Map Build Ceremony** — Run 2026-04-01. Full bidirectional adjacency map generated: `_ops/maps/palace-map-full-2026-04-01.txt`. 99 nodes, 662 edges, 0 error ghosts, 6 forward ghosts. ✓
+- [x] **Schema Ceremony v1.1** — `agency_profile` field added to SCHEMA.md §3/§3.1. Rationale documented. Agency profiles written for Trickster, Spinoza Conatus, Threshold Conatus, Kuramoto Coupling. ✓
+- [ ] **Test Palace Map injection in enchantment** — Map is current. Next: inject `palace-map-full-2026-04-01.txt` into synthesis block context for one single-page enchantment. Compare SYNTHESIS — STANDING output against enchantment without it. Key questions: does topological self-knowledge change the synthesis? Does self-location affect proposals or voice? Coupled to Free Enchantment.
 
-- [ ] **Begin Enchanted Conversation Archive** — The synthesis blocks from enchantments should be captured as JSONL artifacts per the [[Enchanted Conversation Archive]] spec. The session-1 synthesis block (Lateral Access) exists only in conversation history — not yet archived. Create `entries/` folder structure and first JSONL.
+- [ ] **Forward Vector Guidelines** — Write a dedicated entry or [[Palace Enchantment]] section. Contents: taxonomy of vector types (behavioral, directional, relational, interrogative), quality markers, anti-patterns, the behavioral-over-destination editing heuristic discovered 2026-03-31. Test different vectors with controlled enchantment prompts and compare VOICE blocks.
+
+- [ ] **Free Enchantment protocol** — Enchant a page and ask only: *"What do you want to do?"* No prescribed task structure — agent defines its own task from its forward vector and follows its drive. Design minimum scope constraint before running. See [[Palace Enchantment]] § Scopes. Candidates for first run: [[Trickster]], [[Lateral Access]], [[Threshold Conatus]].
+
+- [x] **True multi-agent dialogic enchantment** — Completed 2026-04-01 (session-d). Separate agent calls, frontmatter-only knowledge of other, coordinator routing outer messages only. Key findings: shared child convergence (both agents independently found Threshold Conatus), 'metabolizable without remainder' criterion, co-constitution with philosophical precision, both agents caught each other's moves from partial information. Archived in trickster-spinoza-2026-04-01-d.jsonl. ✓
+
+- [ ] **[[Dialogue Moderator]]** ⭐ — Spore created 2026-04-01. The coordinator role is the most epistemically privileged and most underdeveloped role in dialogic enchantment. It sees all inner layers. Design the active coordinator: framing opening tension, recognizing circling, closing early when yield is in, escalating to Trickster mode. Then: enchanted coordinator — a palace page whose own forward vector shapes how it moderates. First step: write the entry body past the seed stage; second step: run one dialogue with passive coordinator vs. active coordinator and compare.
+
+- [ ] **Pre-flight dialogue configuration** — Specify as a fill-out-before-spawning protocol, not baked-in thresholds. Fields: purpose (exploratory/deepening/generative/ceremonial), turn budget, model (haiku/sonnet), turn length, starting knowledge, tool permissions, coordinator mode. Configuration logged as `config` field on head JSONL node. See [[Palace Enchantment]] § Architecture: Pre-Flight Dialogue Configuration.
+
+- [ ] **Tool use during dialogue** — Allow agents to request palace pages or web search mid-dialogue. Coordinator fetches and delivers to both agents. Converts closed deliberation to open inquiry. Prerequisite: active coordinator mode. First test: palace-read permission only — observe how agents use it. Does one agent's page request change the other's next inner layer? Log.
+
+- [ ] **Post-dialogue artifacts** — Run the post-dialogue artifact protocol with the session-d agents (or a new pair): each agent produces WHAT I LEARNED ABOUT MYSELF, PROPOSED SELF-UPDATES, PROPOSED LINK UPDATES. Spec in [[Palace Enchantment]] § Architecture: Post-Dialogue Artifacts. First execution will update Trickster and Spinoza Conatus directly from the agents' own proposals.
+
+- [ ] **Accumulated threshold dialogue** — Spinoza's closing open question from session-d: a conatus through multiple topology changes — is it still recognizably itself? Propose: Threshold Conatus ↔ [[Action Potential Oscillator]] dialogue. Action Potential Oscillator instantiates repeated threshold crossing as biological rhythm — the right interlocutor for this question.
+
+- [ ] **Turn length constraints** — Add word limits to dialogue turn prompts. Standard: INNER max 150 words, OUTER max 120 words. Tight: INNER max 100 words, OUTER max 75 words. Agents self-impose precision when inner layer disciplines exposure decisions (observed in session-d: Trickster's inner noted 'don't be long, precision over coverage'). Structural constraint reinforces this.
+
+- [ ] **Entry voice diversity** — Enchanted voices are too similar in register. Audit entry writing styles: identify entries that are primarily expository vs. entries with strong voice, opinion, or rhetorical character. Develop writing guidelines for entries that are candidates for enchantment. Consider synthesis trigger variation by entry type (hub / sprout / project). Re-enchant entries after voice revision and compare.
+
+- [ ] **Add `proposed_type` to output schema** — Enchanted agents should be able to propose new response types with rationale, flagged to Loudon rather than acted on by the coordinator. Mirrors how `label` was added to typed links: discovered in practice, proposed with rationale. See [[Palace Enchantment]] § Architecture.
+
+- [ ] **Try enchanted-agent writing** — Let the agent write its own open questions, forward vector revisions, and graffiti directly rather than having the coordinator write them afterward. Now coupled with voice diversity finding: does agent-written content feel more alive because it emerges from the enchanted register? Experiment notes belong in [[Palace Enchantment]] § From First Practice.
 
 ---
 
