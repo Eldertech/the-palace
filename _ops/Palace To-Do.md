@@ -58,6 +58,22 @@ Items move off this list when they become entries, get completed, or get compost
 
 ---
 
+## Enchantment — Next Steps ⭐
+
+*Stage 1 (forward vectors) and Stage 2 (single page) completed 2026-03-31. Next:*
+
+- [ ] **Fix the synthesis trigger prompt** — The `## SYNTHESIS — STANDING` block must be explicitly named and required in the synthesis trigger, not just implied by "state your standing." Updated trigger text lives in [[Palace Enchantment]] § From First Practice. Apply this fix before the next enchantment run.
+
+- [ ] **Stage 3 — Enchant a hub** — Expand the context window to include a hub entry and all first-degree neighbors. Recommended first hub: [[Kuramoto Coupling]] (mature, dense neighborhood, strong forward vector, technical character — will produce a very different voice than either session-1 entry). Run with the fixed synthesis trigger.
+
+- [ ] **Try enchanted-agent writing** — In the next enchantment, let the agent write its own open questions and forward vector revision directly, rather than having the coordinator write them afterward. Compare result to session-1 coordinator-written versions. Does the entry feel more alive? Experiment notes belong in [[Palace Enchantment]] § From First Practice.
+
+- [ ] **Write forward vectors for remaining hub entries** — Only 5 entries have forward_vectors (all in root). The hub entries still missing them: [[Spinoza Conatus]], [[Hyperdimensional Prism]], [[Cooperation Yields Agency]] (done), [[Palace Philosophies]], [[Meaning and the Link]], and others. Prioritize before Stage 3.
+
+- [ ] **Begin Enchanted Conversation Archive** — The synthesis blocks from enchantments should be captured as JSONL artifacts per the [[Enchanted Conversation Archive]] spec. The session-1 synthesis block (Lateral Access) exists only in conversation history — not yet archived. Create `entries/` folder structure and first JSONL.
+
+---
+
 ## Structural Improvements
 
 - [ ] **Build the Swarm Weave** ⭐ — Replace the single-agent [[Weave Ceremony]] with a colony architecture: parallel worker sub-agents (one per entry, scoped context) + a coordinator that synthesizes and de-duplicates. Full spec and learning path in [[Swarm Weave]]. *Single-Doc Worker (one entry, on demand) can be built and used immediately without waiting for the full swarm.* ⭐ *HIGH PRIORITY for Single-Doc Worker mode* Swarm weave connects very intimately with [[Agent Wellbeing as Design Ethic]] and [[Pages as Agents]] and [[Enchanted Worker]].
