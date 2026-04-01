@@ -24,13 +24,21 @@ links:
   - target: "[[Striatum]]"
     type: connects-to
   - target: "[[Neural Granular Synthesis]]"
-    type: mirrors
+    type: deepens
   - target: "[[Biomechanical Synthesis]]"
     type: connects-to
   - target: "[[State Machine]]"
     type: connects-to
   - target: "[[Progressive Staging]]"
     type: emerged-from
+  - target: "[[FOUR PILLARS]]"
+    type: connects-to
+  - target: "[[Bessel Functions in Synthesis]]"
+    type: connects-to
+  - target: "[[Compressor Design]]"
+    type: connects-to
+  - target: "[[Piano String Inharmonicity]]"
+    type: connects-to
 ---
 
 <!-- CLAUDE → LOUDON: You mentioned porting to the Eventide H90. This wasn't addressed in the March 2026 session — flagging for a future conversation. The Gen~ → RNBO path may be relevant here if H90 accepts compiled RNBO output, or it may require a separate export strategy. --> <!-- H90 is a valid and new output target of RNBO, easily accomplished -->

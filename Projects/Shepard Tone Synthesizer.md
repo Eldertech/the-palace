@@ -13,7 +13,7 @@ beauty: 9
 who_leads: loudon
 links:
   - target: "[[Portamento and Physical Pitch Modeling]]"
-    type: couples-with
+    type: deepens
   - target: "[[Frequency-Time Duality]]"
     type: connects-to
   - target: "[[Hyperdimensional Prism]]"
@@ -23,6 +23,12 @@ links:
   - target: "[[Octave Equivalence]]"
     type: enables
   - target: "[[Kuramoto Coupling]]"
+    type: connects-to
+  - target: "[[Particle Synthesis]]"
+    type: connects-to
+  - target: "[[Piano String Inharmonicity]]"
+    type: connects-to
+  - target: "[[Signal-Rate CV Architecture]]"
     type: connects-to
 ---
 

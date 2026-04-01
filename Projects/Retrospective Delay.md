@@ -13,9 +13,11 @@ beauty: 8
 who_leads: loudon
 links:
   - target: "[[Semantic Delay]]"
-    type: connects-to
+    type: contrasts-with
   - target: "[[Trickster]]"
-    type: mirrors
+    type: deepens
+  - target: "[[Dub Lineage]]"
+    type: emerged-from
   - target: "[[Playful Interface Design]]"
     type: connects-to
   - target: "[[Granular Synthesis]]"
