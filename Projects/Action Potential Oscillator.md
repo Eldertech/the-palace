@@ -116,6 +116,22 @@ The next stages of this project connect directly to existing palace entries:
 
 **[[Frequency-Time Duality]]** — The refractory period defines a minimum period and therefore a maximum frequency. The fixed spike duration creates a timbre-pitch coupling as frequency rises. These are frequency-time duality effects operating at the single-cycle scale.
 
+## The Refractory Period as Threshold Conatus
+
+*From the Stage 6 dialogue with [[Threshold Conatus]], 2026-04-01.*
+
+The refractory period has been described above as a biological mechanism and as a synthesis parameter — the maximum frequency ceiling, the underdamped ringing that adds subharmonic growl. But the dialogue with [[Threshold Conatus]] revealed a philosophical register for the same mechanism.
+
+The refractory period is the threshold's own self-maintenance. During absolute refractory, no stimulus fires the cell. During relative refractory, only suprathreshold stimuli recruit it. This graduated recovery is not symmetric return to rest — it is **selective crossability**. The threshold will fire for stimuli that have earned the crossing relative to the current recovery state. It maintains a preference structure.
+
+This is the threshold's conatus: the drive of the crossing mechanism to remain functionally available for what warrants it. The sacrifice of the spike — the ionic gradient expenditure — is not merely cost. It is the price of continued crossability. The refractory period is the threshold preserving itself.
+
+**Temporal selectivity as coupled memory.** This connects the mechanism and network levels of [[Scale-Stratified Identity]]. After a large population event, cells enter refractory at slightly different times — only some are recruitable by the next stimulus. The history of which cells crossed when modifies synaptic weights (network level) and simultaneously determines which cells are available for the next crossing (mechanism level). The threshold's own conatus and the network's accumulated memory are coupled in a feedback loop:
+
+*The threshold preserves its crossability → the network records who crossed with whom → what the network records changes who can cross next → what can cross next changes what the network records.*
+
+Repetition is not trivial. Each spike is read in a network whose topology prior spikes helped create. This is the mechanism by which accumulated threshold crossings become context rather than mere rhythm.
+
 ## Population Dynamics
 
 A single neuron oscillator is the building block, but the brain does not operate on single neurons. It uses populations. Population dynamics is where the interesting behavior lives.
