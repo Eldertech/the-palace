@@ -23,7 +23,13 @@ links:
   - target: "[[Boundary-Crossing Instruments]]"
     type: enables
   - target: "[[Harmonicity and Inharmonicity]]"
+    type: couples-with
+  - target: "[[Dispersion]]"
+    type: emerged-from
+  - target: "[[Differential Equations]]"
     type: deepens
+  - target: "[[Signal-Rate CV Architecture]]"
+    type: mirrors
 ---
 
 # Crystal Synthesizer

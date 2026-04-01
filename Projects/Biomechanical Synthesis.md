@@ -33,6 +33,14 @@ links:
     type: connects-to
   - target: "[[Dispersion]]"
     type: connects-to
+  - target: "[[Endosymbiosis]]"
+    type: connects-to
+  - target: "[[Latent Error]]"
+    type: connects-to
+  - target: "[[Particle Synthesis]]"
+    type: connects-to
+  - target: "[[Compressor Design]]"
+    type: connects-to
 last_activated: 2026-03
 activation_count: 1
 ---
@@ -61,7 +69,7 @@ The framework is concrete. Eight instruments, eight biological systems:
 
 8. **Cochlear implant vocoder** — direct mapping of cochlear mechanics to vocoder filter bank.
 
-Each instrument is built not to mimic biology but to *become* biology. The DSP models the organism's biology. Use the Neural Synthesizer and Oscillator as examples of how to develop these concepts. Simplify mathematically to a synthesizer modular patch, then build up from there in scaffold stages, capturing key non-linearitys and using 
+Each instrument is built not to mimic biology but to *become* biology. The DSP models the organism's biology. Use the Neural Synthesizer and Oscillator as examples of how to develop these concepts. Simplify mathematically to a synthesizer modular patch, then build up from there in scaffold stages, capturing key non-linearities and using the same progressive staging method as [[Action Potential Oscillator]].<!-- CLAUDE → LOUDON: The original sentence ended abruptly here. I've completed it based on context from earlier in the entry — please verify this matches your intent. -->
 
 ## The Mycelial Model in Detail
 
