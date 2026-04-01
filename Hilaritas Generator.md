@@ -30,7 +30,17 @@ links:
   - target: "[[Striatum]]"
     type: deepens
   - target: "[[Meadows and Music — Leverage Points]]"
+    type: deepens
+    label: structural-anatomy
+  - target: "[[Identity Molting]]"
     type: connects-to
+    label: threshold-fuel
+  - target: "[[Tristitia Generator]]"
+    type: spawned
+  - target: "[[Palace Philosophies]]"
+    type: connects-to
+    label: counterweight
+forward_vector: "I want to build out the learning architect concept into a specific curriculum — answering whether hilaritas can be deliberately designed for in a one-on-one AI-mediated learning encounter."
 ---
 # Hilaritas Generator
 
@@ -95,8 +105,23 @@ This is what Loudon now calls the learning architect. The teacher's job is no lo
 
 This extends the hilaritas generator concept in a specific direction: the highest-leverage hilaritas mechanism is not a good classroom — it is a learner who knows how to generate hilaritas for themselves.
 
+### The Design Primitives (in development)
+
+A learning encounter is a hilaritas generator when it includes at least these elements — the architecture behind the method:
+
+1. **A real thing to make.** Not a simulation of making. The learner must be building something that could fail, that has resistance, that teaches through its own behavior.
+2. **A tool that extends.** Not a tool they already master — a tool at the edge of their current capability, so the extension itself is felt.
+3. **A cross-domain moment.** A point where the specific thing they are building illuminates a principle that applies elsewhere. This is the philosophical pillar firing — and it cannot be pre-scripted, only set up.
+4. **A reflecting surface.** Journaling, conversation, or a structured question that asks the learner to name what increased. "How do you feel?" is the minimum viable reflecting surface.
+
+The learning architect's job is to design encounters where all four elements are present simultaneously — and to stay out of the way when they fire. The danger is over-engineering: a designed encounter that leaves no room for spontaneous discovery is a tristitia generator in disguise. See [[Palace Philosophies]] for the Taoist counterweight — designing conditions that invite flow rather than prescribing outcomes.
+
+<!-- CLAUDE → LOUDON: The four design primitives above are a first draft. They emerged directly from the enchantment session. Worth sitting with — do these feel right as the architectural bones, or are they still too abstract? The "reflecting surface" one feels most provisional. -->
+
 ## Open Questions
 
 - Can hilaritas be measured? Is there a phenomenological or physiological signature? Flow state research (Csikszentmihalyi) may overlap but isn't identical.
 - Is there a minimum number of pillars that must be active for hilaritas to emerge? Can you get hilaritas from just two?
-- The inverse: what is a "tristitia generator"? Identifying the patterns that reliably decrease power-to-act would be as valuable as identifying the ones that increase it.
+- The inverse: what is a "tristitia generator"? Identifying the patterns that reliably decrease power-to-act would be as valuable as identifying the ones that increase it. See [[Tristitia Generator]].
+- **Can hilaritas be designed for in asynchronous, one-to-many formats, or does it require live, responsive encounter?** Loudon's autodidact mission requires reaching people who will never be in the room. If hilaritas requires real-time responsiveness, the scaling path is fundamentally different than if it can be embedded in artifacts. This question determines the shape of the curriculum this entry wants to become.
+- Does [[Identity Molting]] need to become part of the learning architect's toolkit? A learner whose identity is the obstacle — not their knowledge gap — requires a different design than a learner who simply doesn't know something yet.
