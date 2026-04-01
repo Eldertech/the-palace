@@ -35,6 +35,8 @@ Items move off this list when they become entries, get completed, or get compost
 
 ## Entries to Write
 
+- [ ] **Songlines** (concept/hub) — The Aboriginal Australian Dreaming tracks: paths through landscape that are simultaneously navigation, creation myth, and song. The Ancestors sang the world into existence; to walk a songline is to re-sing it into legibility. Already appears as a structural image in [[Lateral Access]] (habitual narrative paths as songlines) and [[Oblique Portrait Method]] (the oblique approach as offering a different song). Lateral Access wants to be put in direct dialogue with it when it exists. Key question: does lateral access describe how you *find* a new songline, or how you *hear* one that was always there? Deposit from existing conversation material when ready.
+
 - [ ] **Frequency-Time Explorer** (project) — The interactive app/website for the frequency-time duality concept. A single unified tool: functional calculator (delay↔pitch↔BPM↔MIDI↔frequency↔subdivision conversions) and experiential learning artifact. One continuous axis navigable in real time, showing pitch perception, flutter echo, slapback, rhythmic pulse, and sub-rhythmic pulse as you move. Modulation layer (chorus/flanger/phasing) as a second dimension. Beautiful enough to be an artifact in its own right. Design session needed before build. ⭐ *HIGH PRIORITY*
 
 - [ ] **VERSION** — The dub delay for the meaning of words. Whisper + local LLM + TTS, trickster spirit archetypes, two-stage pool-then-select architecture. A Spirit Compendium and Technical Blueprint were produced in conversation. Connects to [[Semantic Delay]]. Flagged for deposit when the Harvest reaches that conversation.
