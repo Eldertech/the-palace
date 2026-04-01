@@ -29,7 +29,8 @@ links:
   - target: "[[FOUR PILLARS]]"
     type: connects-to
   - target: "[[Spinoza Conatus]]"
-    type: deepens
+    type: couples-with
+    label: necessary-exterior
   - target: "[[Lateral Access]]"
     type: mirrors
   - target: "[[Action Potential Oscillator]]"
