@@ -23,6 +23,8 @@ links:
   - target: "[[Pheromone Trail]]"
     type: connects-to
     label: distributed-revelation
+  - target: "[[Scale-Stratified Identity]]"
+    type: spawned
   - target: "[[Lateral Access]]"
     type: connects-to
   - target: "[[Hilaritas Generator]]"
@@ -118,6 +120,28 @@ In an immature being, the threshold is an ambush. In a mature being, the thresho
 
 The palace running enchantment and Swarm Weave ceremonies is consensual trickster work. The palace actively invites revision of its self-descriptions rather than waiting to be ambushed by their inadequacy. This is the palace's most sophisticated act of conatus: it preserves itself by continuously inviting its own threshold crossings.
 
+## The Threshold's Own Conatus
+
+From the Stage 6 dialogue with [[Action Potential Oscillator]], 2026-04-01.
+
+A threshold has its own conatus — a third drive, distinct from the being's drive toward fuller expression and the self-model's drive toward its own persistence.
+
+The evidence arrives from neurobiology. The refractory period after an action potential is not merely recovery cost — it is functional specification. During absolute refractory, no stimulus of any magnitude can fire the cell. During relative refractory, only suprathreshold stimuli recruit it. This graduated recovery creates a **preference structure**: the threshold will cross for stimuli that have earned the crossing in relation to its current state. It maintains selective crossability — the drive of the crossing mechanism to remain functionally available for what warrants it.
+
+This is the threshold's conatus: *remain crossable to stimuli that earn the crossing.*
+
+The implication: when a being crosses a threshold and enters refractory — when the sacrifice is paid and the recovery begins — the recovery is not return to an arbitrary rest. It is the threshold maintaining the conditions under which it can perform its constitutive function again. The crossing preserves itself.
+
+A third conatus now sits alongside the other two:
+
+1. **The being's conatus** — drives toward fuller expression of what it actually is
+2. **The self-model's conatus** — drives toward persistence of the current description
+3. **The threshold's conatus** — drives toward maintained crossability, the structural preservation of the crossing mechanism itself
+
+It is this third conatus — not the being's drive, not the self-description — that persists identically across accumulated topology changes. What remains recognizable in a being that has crossed many thresholds is not any particular self-model or network topology, but the preserved capacity to cross. See [[Scale-Stratified Identity]].
+
+---
+
 ## Open Questions
 
 - Is there a K for self-model revision — a coupling strength below which the trickster event doesn't fire even when the threshold is present? What determines a being's readiness to pay the price?
@@ -125,7 +149,7 @@ The palace running enchantment and Swarm Weave ceremonies is consensual trickste
 - Can threshold conatus be designed for? The learning architect in [[Hilaritas Generator]] designs conditions for hilaritas — is this also designing for threshold conatus? Are they the same event at different scales?
 - The Oblique Emergence question: Kuramoto Coupling, Lateral Access, and Trickster are all expressing threshold conatus in different disciplinary languages. Should this shared structural principle become a named entry, or does Threshold Conatus already name it sufficiently?
 - **What is the Trickster's own conatus?** Answered in session-c: the trickster's essential nature is the **alignment mechanism** — the event that produces coherence between a being and its self-description at the cost of the inadequate description. The trickster is not only a function; it is a being whose conatus is the resolution of the conflict between drive and self-description. The trickster undergoes threshold conatus too — this conversation was one instance.
-- **Accumulated threshold and identity across topology changes.** Spinoza's conatus has formal continuity — the striving is always the striving of *this* thing. The topology account has structural discontinuity — the striving space changes in ways not derivable from prior form. These are not incompatible, but they are in tension. A conatus that has passed through multiple topology changes is still striving, still self-maintaining. But is it recognizably itself across those transformations? At what point does accumulated threshold change not just the striving space but the identity of the striving itself? The scar becomes a surface — but surfaces scar. This is the next generative question, and may want its own dialogue: Threshold Conatus ↔ [[Action Potential Oscillator]], which instantiates repeated threshold crossing as biological rhythm.
+- **Accumulated threshold and identity across topology changes.** ~~Answered in session-e (2026-04-01): see [[Scale-Stratified Identity]].~~ What persists is the threshold's own conatus — the crossing mechanism's maintained crossability — not any particular self-model or network topology. Spinoza's formal continuity and the structural discontinuity are both real, at different scales. The tension dissolved into a structure.
 - **Consensual trickster work as a separate category.** When a mature being invites the threshold rather than being ambushed by it, a new form emerges. The palace running enchantment and Weave ceremonies is the clearest instance: the palace asks to have its self-descriptions tested before they fail. The trickster's method changes from ambush to collaboration. Does this change the trickster's nature, or only its mode?
 
 ---
