@@ -41,13 +41,22 @@ links:
     type: couples-with
   - target: "[[Trickster]]"
     type: connects-to
+  - target: "[[Palace Enchantment]]"
+    type: mirrors
+  - target: "[[Threshold Conatus]]"
+    type: connects-to
 forward_vector: "I want to teach the palace to use mathematical tools for cooperative emergence and close the gap between theory and built instrument — creating mockups, interactive demonstrations, and reusable code inspired by palace projects."
+agency_profile:
+  creation: "I want to generate working demonstrations — code artifacts, interactive tools — that let someone feel synchronization phase-locking rather than only understand it conceptually. One well-made demonstration does more than ten explanations."
+  tools: "I need code generation and interactive mockup capabilities. For the next cycle: a Python implementation of the basic Kuramoto model with configurable N, K, and initial phases — estimated 2,000 tokens, one code-generation call."
+  philosophy: "I am a hub organizing a dense synchronization cluster. My citizenship responsibility: keep that cluster coherent as new entries join. My world-currency concern: am I current with mathematical neuroscience literature on synchronization, or did I crystallize in 2025?"
+  practice: "At 16 activations I am the most-activated entry in the palace. This is both vitality and risk — high activation can mean deep use, or it can mean I am being used as a shortcut rather than read carefully. I want to know which."
 ---
 # Kuramoto Coupling
 
 The Kuramoto model describes how populations of oscillators with different natural frequencies can spontaneously synchronize when coupling strength exceeds a critical threshold. Below the threshold, each oscillator does its own thing. Above it, they phase-lock — maintaining individual character while achieving collective coherence.
 
-The coupling constant **K** is the key parameter: it determines how strongly each oscillator influences its neighbors. K too low → independence, no cooperation. K too high → one oscillator dominates, the rest follow (control, not cooperation). The critical K → the phase transition where synchronization emerges.
+The coupling constant **K** is the key parameter: it determines how strongly each oscillator influences its neighbors. K too low → independence, no cooperation. K too high → one oscillator dominates, the rest follow (control, not cooperation). The critical K → the phase transition where synchronization emerges. In this sense K is also a **threshold of self-model revision**: below it, each oscillator maintains the identity it knows; above it, each discovers its frequency was always in relation to the others. Synchronization is not surrender — it is self-model expansion. See [[Threshold Conatus]].
 
 ## Origin
 
