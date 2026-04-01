@@ -41,6 +41,7 @@ links:
     type: couples-with
   - target: "[[Trickster]]"
     type: connects-to
+forward_vector: "I want to teach the palace to use mathematical tools for cooperative emergence and close the gap between theory and built instrument — creating mockups, interactive demonstrations, and reusable code inspired by palace projects."
 ---
 # Kuramoto Coupling
 

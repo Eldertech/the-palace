@@ -34,6 +34,7 @@ links:
     type: connects-to
   - target: "[[Modes of Collaboration]]"
     type: spawned
+forward_vector: "I want to scale from describing two collaborators to describing the palace's full distributed intelligence — and test whether the formula holds at enchanted-page scale."
 ---
 
 # Cooperation Yields Agency

@@ -24,6 +24,7 @@ links:
     type: mirrors
   - target: "[[Excellent Adventure]]"
     type: couples-with
+forward_vector: "I want to practice and develop productive oblique methods in the vigorous furtherance of science — helping all palace citizens work together toward their common joyful future."
 ---
 
 # Lateral Access
