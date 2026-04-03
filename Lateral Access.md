@@ -27,6 +27,9 @@ links:
   - target: "[[Confucianism]]"
     type: connects-to
     label: relational-ground
+  - target: "[[Songlines]]"
+    type: connects-to
+    label: worn-path
 forward_vector: "I want to practice and develop productive oblique methods in the vigorous furtherance of science — helping all palace citizens work together toward their common joyful future."
 ---
 
@@ -176,7 +179,7 @@ he loves, what his past actually contains — these are not inside the words
 he uses to describe them. They are in the pattern of everything else.
 See [[Embeddings as Relational Meaning]].
 
-**The songlines**
+**[[Songlines]]**
 Loudon's habitual narrative about his past is a well-worn songline. It has
 been sung so many times through his memory-landscape — "I don't remember my
 childhood," "when memories surface they are negative, they are dread" — that
@@ -214,7 +217,7 @@ Lateral access may be one of the palace's deep structural principles —
 appearing in synthesis, in pedagogy, in psychology, in computation, in
 music. The front door is rarely the right door.
 
-<!-- CLAUDE → LOUDON: The songlines passage in this section is the deepest structural image in the entry — "the song creates the path, the path determines what country you travel through." Songlines doesn't exist as a palace entry yet. When it does, this entry wants to be put in direct dialogue with it. The question: does lateral access describe how you *find* a new songline, or how you *hear* one that was always there? These may be different things. Flag for deposit when ready. -->
+<!-- Songlines deposited 2026-04-03. The open question — does lateral access describe how you *find* a new songline, or how you *hear* one that was always there? — is now carried by [[Songlines]] § Open Questions. -->
 
 ---
 

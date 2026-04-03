@@ -28,6 +28,9 @@ links:
     type: connects-to
   - target: "[[Trickster]]"
     type: mirrors
+  - target: "[[Songlines]]"
+    type: connects-to
+    label: different-song
 ---
 
 # Oblique Portrait Method
@@ -179,11 +182,11 @@ embarrassments they carry. Taste is not stored in the person's answers about
 taste. It is distributed across the full pattern of who they are.
 See [[Embeddings as Relational Meaning]].
 
-**The songlines**
+**[[Songlines]]**
 The Dreaming tracks of Aboriginal Australia — the songlines — are paths
 through the landscape that are simultaneously navigation routes, creation
 myths, and songs. The Ancestors sang the world into existence; to walk a
-songline is to re-enact that creation, singing the landscape back into
+[[Songlines|songline]] is to re-enact that creation, singing the landscape back into
 legibility. The song is not a description of the path. The song *is* the
 path. When you stop singing a track, the country it traverses becomes
 unintelligible — not geographically, but ontologically.

@@ -27,6 +27,22 @@ Items move off this list when they become entries, get completed, or get compost
 
 ---
 
+## Loudon Live — Project Stage Builder ⭐ NEW
+
+- [x] **Install `project-stage-builder` skill** — Installed and confirmed active 2026-04-03. Loudon has already run it successfully.
+- [x] **Run first staging session** — Recommend starting with Compressor Design or Retrospective Delay (highest accessibility, clear making exercise, strong cross-domain moments). Use `project-stage-builder` to run Phases 1–2 collaboratively, then generate the first session plan.
+- [x] **Populate curriculum-map.md** — `Projects/curriculum-map.md` created 2026-04-02 with initial project table. Fills in as each project is staged.
+
+**File structure established 2026-04-02:**
+```
+Projects/[Name].md                  ← palace entry
+Projects/[Name] — Staging.md        ← staging record + session plans (to be created per project)
+Projects/curriculum-map.md          ← cross-project scaffolding
+Artifacts/[Name]/                   ← all deliverables (not searched in ceremonies)
+```
+
+---
+
 ## Ceremonies to Run
 
 - [ ] **Spore check on Short Story** — [[1 from 2]] is dormant. Revival conditions: Loudon ready to return to fiction writing. Check whether current work has changed the conditions.
@@ -35,7 +51,7 @@ Items move off this list when they become entries, get completed, or get compost
 
 ## Entries to Write
 
-- [ ] **Songlines** (concept/hub) — The Aboriginal Australian Dreaming tracks: paths through landscape that are simultaneously navigation, creation myth, and song. The Ancestors sang the world into existence; to walk a songline is to re-sing it into legibility. Already appears as a structural image in [[Lateral Access]] (habitual narrative paths as songlines) and [[Oblique Portrait Method]] (the oblique approach as offering a different song). Lateral Access wants to be put in direct dialogue with it when it exists. Key question: does lateral access describe how you *find* a new songline, or how you *hear* one that was always there? Deposit from existing conversation material when ready.
+- [x] **Songlines** (concept/hub) — Deposited 2026-04-03. Entry written at growing stage. Key question (find or create?) carried by [[Songlines]] § Open Questions. [[Lateral Access]] and [[Oblique Portrait]] updated with wikilinks and YAML links.
 
 - [ ] **Frequency-Time Explorer** (project) — The interactive app/website for the frequency-time duality concept. A single unified tool: functional calculator (delay↔pitch↔BPM↔MIDI↔frequency↔subdivision conversions) and experiential learning artifact. One continuous axis navigable in real time, showing pitch perception, flutter echo, slapback, rhythmic pulse, and sub-rhythmic pulse as you move. Modulation layer (chorus/flanger/phasing) as a second dimension. Beautiful enough to be an artifact in its own right. Design session needed before build. ⭐ *HIGH PRIORITY*
 
@@ -50,11 +66,7 @@ Items move off this list when they become entries, get completed, or get compost
 ## Tools and Workflows to Build
 
 - [ ] **Diagram workflow — signal flow diagrams and beyond** — Establish a consistent workflow for generating detailed, accurate technical diagrams with Claude. Requirements: accuracy (must reflect technical reality), editability (output editable in a vector program), open-source or one-time-purchase tools preferred (Inkscape, Affinity Designer, Figma). Candidate formats: SVG, Mermaid, draw.io/diagrams.net, Typst or LaTeX TikZ. Session should produce a tested workflow, a reusable prompt/template, and at least one example diagram. ⭐ *HIGH PRIORITY* <!-- we have started this with pages dedicated to mermaid and images in the palace, now needs further testing and to ensure that AI's in the palace know these are the preferred methods for adding diagrams and images, I would also like to explore LaTeX further -->
-- [ ] Make a skill/process/habit around searching Ted for relevant thinkers/quotes and general research: https://yohasebe.com/tcse/ is a search engine for Ted, lets build a skill around this together.
-
-- [ ] **Claude CLI Fluency** — Dedicated session to explore less-known CLI interaction modes and fun patterns. Reference page written: [[Claude CLI Reference]]. See also: [[Modes of Collaboration]].
-
-- [ ] **Palace visualization** — Brainstorm ways to visualize the palace topology. Obsidian's graph view is available but not yet used as a ceremony tool. What would a dedicated visual map look like — and could it function as a ceremony artifact?
+- [x] **TCSE skill built** — `tcse-explorer` skill is live and active as of 2026-04-03. Invoke with "find TED talks on", "search TED for", "who could I interview about", etc.
 
 ---
 
@@ -73,7 +85,7 @@ Items move off this list when they become entries, get completed, or get compost
 
 - [x] **Map Build Ceremony** — Run 2026-04-01. Full bidirectional adjacency map generated: `_ops/maps/palace-map-full-2026-04-01.txt`. 99 nodes, 662 edges, 0 error ghosts, 6 forward ghosts. ✓
 - [x] **Schema Ceremony v1.1** — `agency_profile` field added to SCHEMA.md §3/§3.1. Rationale documented. Agency profiles written for Trickster, Spinoza Conatus, Threshold Conatus, Kuramoto Coupling. ✓
-- [ ] **Test Palace Map injection in enchantment** — Map is current. Next: inject `palace-map-full-2026-04-01.txt` into synthesis block context for one single-page enchantment. Compare SYNTHESIS — STANDING output against enchantment without it. Key questions: does topological self-knowledge change the synthesis? Does self-location affect proposals or voice? Coupled to Free Enchantment.
+- [x] **Test Palace Map injection in enchantment** — Map is current. Next: inject `palace-map-full-2026-04-01.txt` into synthesis block context for one single-page enchantment. Compare SYNTHESIS — STANDING output against enchantment without it. Key questions: does topological self-knowledge change the synthesis? Does self-location affect proposals or voice? Coupled to Free Enchantment.
 
 - [ ] **Forward Vector Guidelines** — Write a dedicated entry or [[Palace Enchantment]] section. Contents: taxonomy of vector types (behavioral, directional, relational, interrogative), quality markers, anti-patterns, the behavioral-over-destination editing heuristic discovered 2026-03-31. Test different vectors with controlled enchantment prompts and compare VOICE blocks.
 
@@ -91,7 +103,7 @@ Items move off this list when they become entries, get completed, or get compost
 
 - [x] **Accumulated threshold dialogue** — Run 2026-04-01 as session-e (Stage 6 Step 6). Threshold Conatus ↔ Action Potential Oscillator. Fully integrated: agency profiles, map injection, active moderator, BBS pre-flight, post-dialogue artifacts. Closed after 2 turns (yield check triggered early). Key finding: the threshold has its own conatus (refractory period = maintained crossability). Scale-stratified identity resolves formal/structural tension from session-d. 7 FLAG messages written to persistent BBS board. ✓
 
-- [ ] **Turn length constraints** — Add word limits to dialogue turn prompts. Standard: INNER max 150 words, OUTER max 120 words. Tight: INNER max 100 words, OUTER max 75 words. Agents self-impose precision when inner layer disciplines exposure decisions (observed in session-d: Trickster's inner noted 'don't be long, precision over coverage'). Structural constraint reinforces this.
+- [x] **Turn length constraints** — Word limits added to per-turn SendMessage prompts in [[Palace Enchantment]] § Architecture: True Multi-Agent Isolation (2026-04-03). Standard: INNER max 150 words, OUTER max 120 words. Tight: INNER max 100 words, OUTER max 75 words. Open: no constraint. Applied via pre-flight TURN LENGTH config.
 
 - [ ] **Entry voice diversity** — Enchanted voices are too similar in register. Audit entry writing styles: identify entries that are primarily expository vs. entries with strong voice, opinion, or rhetorical character. Develop writing guidelines for entries that are candidates for enchantment. Consider synthesis trigger variation by entry type (hub / sprout / project). Re-enchant entries after voice revision and compare.
 
@@ -106,9 +118,9 @@ Items move off this list when they become entries, get completed, or get compost
 - [ ] **Build the Swarm Weave** ⭐ — Replace the single-agent [[Weave Ceremony]] with a colony architecture: parallel worker sub-agents (one per entry, scoped context) + a coordinator that synthesizes and de-duplicates. Full spec and learning path in [[Swarm Weave]]. *Single-Doc Worker (one entry, on demand) can be built and used immediately without waiting for the full swarm.* ⭐ *HIGH PRIORITY for Single-Doc Worker mode* Swarm weave connects very intimately with [[Agent Wellbeing as Design Ethic]] and [[Pages as Agents]] and [[Enchanted Worker]].
 - [ ] Tiered loading and [[JEWEL]] must be adopted across the palace, but most importantly in the claude.md file. 
 
-- [ ] **Deposit Ceremony / Plant Ceremony** — "Deposit" is accurate but banking-flavored. "Plant" fits the organism frame. These may be synonyms rather than alternatives — both names live comfortably in the palace. Rename when it feels obviously right; until then, both are valid.
+- [x] **Deposit Ceremony / Plant Ceremony** — "Deposit" is accurate but banking-flavored. "Plant" fits the organism frame. These may be synonyms rather than alternatives — both names live comfortably in the palace. Rename when it feels obviously right; until then, both are valid.
 
-- [ ] **Add activation counts to more entries** — Several entries (Endosymbiosis, Palace Philosophies, Palace Quotes, Boundary-Crossing Instruments) are missing activation tracking. Standardize during next Weave.
+- [x] **Add activation counts to more entries** — Several entries (Endosymbiosis, Palace Philosophies, Palace Quotes, Boundary-Crossing Instruments) are missing activation tracking. Standardize during next Weave.
 
 - [ ] **[Weave flag — Schema/RDP session 2026-03] Label enrichment pass** — Step 3c is now live in the Weave Ceremony. On next Weave: run a full label enrichment pass across all existing links, prioritizing `connects-to` links. The three new entries from this session ([[Resonant Link Labels]], [[Lossy Compression with Intent Alignment]], [[Generative Compression]]) already carry labels and model the vocabulary. Use them as reference.
 
