@@ -9,7 +9,7 @@ pillars:
 born: 2025-01
 last_activated: 2026-03
 activation_count: 14
-stage: foundational
+stage: mature
 confidence: foundational
 energy: high
 hook_quality: 10

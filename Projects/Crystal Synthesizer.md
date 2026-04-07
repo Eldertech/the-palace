@@ -5,7 +5,7 @@ pillars: [creation, tools, philosophy]
 born: 2026-02
 last_activated: 2026-02
 activation_count: 1
-stage: sprout
+stage: growing
 confidence: hypothesis
 energy: high
 hook_quality: 9
@@ -53,31 +53,32 @@ At room temperature, a crystal contains roughly $10^{22}$ phonons per cubic cent
 In a synthesizer, instead of oscillating a mass-spring at a fixed frequency, we oscillate at the frequencies that are *natural to a chosen crystal*. The instrument *enacts* its physics.
 
 ## Bravais Lattice Taxonomy: Seven into Fourteen into 230
-Interface design: 3D accurate slowly rotating wireframe diagram with the chemical letters below. light through fog shining through the wireframe and being dispersed and modulated by the rotating crystals. 
+Interface design: 3D accurate slowly rotating wireframe diagram with the chemical letters below. light through fog shining through the wireframe and being dispersed and modulated by the rotating crystals.
 
 There are exactly 7 **primitive lattice systems** in 3D, distinguished by the symmetry of their unit cell:
-<!-- I don't believe these descriptions of how a crystal sounds, I think this is guessing based on spectral descriptions, I'd like to hear or read a source. -->
 
-1. **Cubic**: Three equal axes, 90-degree angles. Highest symmetry. High-frequency modes densely packed. Sound: *thick, bright, rich partials*. Example: diamond, NaCl.
-   - Phonon mode density is isotropic (same in all directions).
-   - At the zone boundary, many degenerate modes create spectral clustering.
+The following timbral descriptions are derived from spectral analogy — reasoning from optical to acoustic behavior by structural parallel. They are not empirically verified. The Crystal Synthesizer exists precisely to test them. Each description below is a hypothesis. The builder's task is to confirm or disprove it.
 
-2. **Tetragonal**: Two equal axes, one different, 90-degree angles. Middle symmetry. Sound: *slightly pinched, with directional coloration*.
+1. **Cubic**: Three equal axes, 90-degree angles. Highest symmetry. Phonon mode density is isotropic (same in all directions). At the zone boundary, many degenerate modes create spectral clustering. Example: diamond, NaCl.
+   - **Hypothesis:** *thick, bright, rich partials — high-frequency modes densely packed, clustering near the zone boundary.* To be tested.
 
-3. **Orthorhombic**: Three unequal axes, 90-degree angles. Lower symmetry. Sound: *less dense in high frequencies, more separated partials*.
+2. **Tetragonal**: Two equal axes, one different, 90-degree angles. Middle symmetry.
+   - **Hypothesis:** *slightly pinched, with directional coloration — two interleaved mode families from the axis asymmetry.* To be tested.
 
-4. **Hexagonal**: Triangular base, different height. Like a prism. Sound: *birefringent, two distinct propagation velocities depending on direction*. Example: quartz, graphite.
-   - Modes split into ordinary and extraordinary rays.
-   - Birefringence in optics → birefringence in acoustics (frequency-dependent direction-dependent sound speed).
+3. **Orthorhombic**: Three unequal axes, 90-degree angles. Lower symmetry.
+   - **Hypothesis:** *less dense in high frequencies, more separated partials — three distinct mode groups with wider spacing.* To be tested.
 
-5. **Trigonal** (Rhombohedral): Similar symmetry to hexagonal but different geometry. Sound: *shimmery, with subtle asymmetries*.
+4. **Hexagonal**: Triangular base, different height. Like a prism. Modes split into ordinary and extraordinary rays — birefringence in optics becomes birefringence in acoustics (frequency-dependent direction-dependent sound speed). Example: quartz, graphite.
+   - **Hypothesis:** *birefringent — a doubled, shimmery quality from two distinct propagation velocities.* To be tested.
 
-6. **Monoclinic**: Only one 90-degree angle. Lower symmetry. Sound: *complex partials with no obvious pattern, more inharmonic character*.
+5. **Trigonal** (Rhombohedral): Similar symmetry to hexagonal but different geometry.
+   - **Hypothesis:** *near-hexagonal with subtle asymmetries — a slight irregularity in partial spacing that adds shimmer without full birefringent doubling.* To be tested.
 
-7. **Triclinic**: No perpendicular axes. Lowest symmetry. All modes distinct. Sound: *deeply inharmonic, each partial scattered, no recurring structure*. Example: plagioclase feldspar.
-   - Every mode is unique; no degeneracies.
-   - Partials have no simple integer relationships.
-   - Timbrally: chaotic, bell-like, unpredictable decay patterns.
+6. **Monoclinic**: Only one 90-degree angle. Lower symmetry.
+   - **Hypothesis:** *complex, inharmonic — no simple pattern to partial spacing, more bell-like and unpredictable.* To be tested.
+
+7. **Triclinic**: No perpendicular axes. Lowest symmetry. Every mode is unique; no degeneracies. Partials have no simple integer relationships. Example: plagioclase feldspar.
+   - **Hypothesis:** *deeply inharmonic, each partial scattered, no recurring structure — chaotic, bell-like, unpredictable decay patterns. The most "alien" timbre of the seven.* To be tested — and the prediction here is the least certain.
 
 When you add **glide reflection** (translation + reflection) and **screw rotation** (translation + rotation), the 7 primitive systems generate **14 Bravais lattices**. When you account for the atoms *within* the unit cell (basis), the full classification yields **230 space groups**—the complete enumeration of all possible 3D periodic symmetries in nature. Every crystal belongs to one of these 230 groups. Every crystal's phonon structure maps to its space group.
 

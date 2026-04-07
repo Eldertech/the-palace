@@ -6,7 +6,7 @@ pillars:
   - creation
   - practice
 born: 2026-04
-stage: growing
+stage: mature
 last_activated: 2026-04
 activation_count: 1
 energy: high

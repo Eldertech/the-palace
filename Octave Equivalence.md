@@ -3,12 +3,12 @@ title: "Octave Equivalence"
 type: concept
 pillars: [creation, philosophy]
 born: 2026-03
-stage: seed
+stage: sprout
 links:
   - target: "[[Shepard Tone Synthesizer]]"
     type: emerged-from
   - target: "[[Frequency-Time Duality]]"
-    type: deepens
+    type: couples-with
   - target: "[[Harmonicity and Inharmonicity]]"
     type: connects-to
 ---

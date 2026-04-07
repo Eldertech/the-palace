@@ -3,7 +3,7 @@ title: "Granular Synthesis"
 type: concept
 pillars: [creation, tools]
 born: 2026-03
-stage: sprout
+stage: growing
 confidence: working
 energy: medium
 hook_quality: 7
@@ -11,7 +11,8 @@ beauty: 7
 who_leads: shared
 links:
   - target: "[[Kuramoto Coupling]]"
-    type: connects-to
+    type: emerges-from
+    label: phase-scatter
   - target: "[[Action Potential Oscillator]]"
     type: connects-to
   - target: "[[Frequency-Time Duality]]"
@@ -21,11 +22,13 @@ links:
   - target: "[[Endosymbiosis]]"
     type: mirrors
   - target: "[[Particle Synthesis]]"
-    type: connects-to
+    type: mirrors
+    label: grain-particle-equivalence
   - target: "[[Neural Granular Synthesis]]"
     type: connects-to
   - target: "[[Shimmer Cloud]]"
     type: connects-to
+forward_vector: "I build boundary crossing instruments from populations of short-term oscillators, pushing toward the moment when population dynamics — Kuramoto coupling, particle physics, statistical distributions — become primary synthesis paradigms."
 ---
 
 # Granular Synthesis

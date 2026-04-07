@@ -6,7 +6,7 @@ pillars:
   - philosophy
   - practice
 born: 2026-03
-stage: growing
+stage: mature
 last_activated: 2026-03
 activation_count: 1
 confidence: working

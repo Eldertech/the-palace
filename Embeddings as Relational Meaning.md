@@ -12,11 +12,15 @@ links:
   - target: "[[Meaning and the Link]]"
     type: emerged-from
   - target: "[[SUBSTRATE]]"
-    type: mirrors
+    type: instantiates
+    label: wiki-substrate
   - target: "[[Hyperdimensional Prism]]"
     type: connects-to
   - target: "[[Cooperation Yields Agency]]"
     type: enables
+  - target: "[[Spinoza Conatus]]"
+    type: mirrors
+    label: relational-persistence
 ---
 # Embeddings as Relational Meaning
 

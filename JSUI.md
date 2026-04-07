@@ -7,7 +7,7 @@ pillars:
 born: 2026-01
 last_activated: 2026-03
 activation_count: 3
-stage: seed
+stage: sprout
 confidence: hypothesis
 energy: medium
 hook_quality: 6

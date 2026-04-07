@@ -17,17 +17,22 @@ links:
   - target: "[[FOUR PILLARS]]"
     type: deepens
   - target: "[[Leverage Points Framework]]"
-    type: couples-with
+    type: deepens
+    label: paradigm-application
   - target: "[[4 Pillars Weekly Structure]]"
     type: enables
   - target: "[[4 Pillars Framework - The Founding Conversation]]"
     type: emerged-from
   - target: "[[Hilaritas Generator]]"
     type: enables
-  - target: "[[Wu Wei — Water as Pedagogical Architecture]]"
+  - target: "[[Like Water]]"
     type: mirrors
-  - target: "[[AI Partnership Philosophy]]"
-    type: emerged-from
+  - target: "[[Palace AI Partnership Philosophy]]"
+    type: mirrors
+    label: parallel-philosophy
+  - target: "[[Spinoza Conatus]]"
+    type: mirrors
+    label: self-legislation
 ---
 
 # Quality Manifesto

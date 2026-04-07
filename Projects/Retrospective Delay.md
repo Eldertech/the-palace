@@ -23,13 +23,17 @@ links:
   - target: "[[Granular Synthesis]]"
     type: connects-to
   - target: "[[JSUI]]"
-    type: enables
+    type: spawned
+    label: proof-of-concept
   - target: "[[Frequency-Time Duality]]"
     type: deepens
   - target: "[[Boundary-Crossing Instruments]]"
     type: connects-to
   - target: "[[Kuramoto Coupling]]"
     type: connects-to
+  - target: "[[Progressive Staging]]"
+    type: couples-with
+    label: staging-methodology
 ---
 
 # Retrospective Delay
@@ -64,8 +68,6 @@ The device is a séance. The performer is a spiritualist medium. The circular bu
 
 The gain acts as a conduit. At 0, the ghost is dormant. As the knob rises, ectoplasm swirls, the ghost gains presence, becomes audible, visible (metaphorically). The performer doesn't summon *words* or *concepts*—they summon *presence*, a full-bodied echo of what they just sang or played.
 
-This is a gift device, made for a friend who is a DJ. The séance metaphor invites play, humor, ritual. The interface should visually reinforce this: spirits emerging, crystal balls glowing, the DJ as medium.
-
 ## Interface Design Philosophy
 
 The interface changes **dramatically** as the main knob turns. Not subtly—not a smooth color gradient. The character should *move*, *react*, *pose* in response to the knob position.
@@ -80,19 +82,11 @@ The interface is not subtle. It is *playful*, *funny*, *dramatic*. It invites th
 
 1. **Feedback architecture**: How many measures should the buffer hold? One measure (as designed) creates a tight loop. Two measures give more temporal breathing room. Should this be parameterized or fixed?
 
-2. **Fade-in/fade-out**: Does the retrospective phrase fade in smoothly, or does it enter abruptly? Smooth fades are more musical; abrupt entry is more disruptive (which might be desired for certain genres).
+2. **Cross-fade between measures**: When the buffer loops (one measure becomes the next), is there a discontinuity at the boundary, or a smooth cross-fade? A subtle cross-fade preserves continuity.
 
-3. **Polyphonic behavior**: If the performer plays multiple simultaneous phrases (stacked melodies), does the device capture and replay the entire mix, or individual voices? Current design captures the mix.
+3. **Post-phrase automation**: Loudon mentioned the possibility of *automatically* applying effects to the replayed phrase—reverb, saturation, filtering—triggered by the gain knob rising. This couples the device more tightly to effects chains and invites experimentation.
 
-4. **Cross-fade between measures**: When the buffer loops (one measure becomes the next), is there a discontinuity at the boundary, or a smooth cross-fade? A subtle cross-fade preserves continuity.
-
-5. **Post-phrase automation**: Loudon mentioned the possibility of *automatically* applying effects to the replayed phrase—reverb, saturation, filtering—triggered by the gain knob rising. This couples the device more tightly to effects chains and invites experimentation.
-
-6. **Max for Live vs. VST**: The device currently works in Max/MSP. Porting to Max for Live (Ableton) is straightforward. VST/AU wrapping requires separate build infrastructure. What's the target platform?
-
-## Relationship to Granular Synthesis
-
-The retrospective phrase can be thought of as a single *grain* at the measure timescale. Granular synthesis typically deals with sub-second grains (10ms–100ms), densely layered. This is granular in the same conceptual sense: a chunk of audio (the grain) is triggered and modulated by a parameter (the gain). The "granule" happens to be one measure long instead of milliseconds.
+4. **Max for Live vs. VST**: The device currently works in Max/MSP. Porting to Max for Live (Ableton) is straightforward. VST/AU wrapping requires separate build infrastructure. What's the target platform?
 
 ## Forward Vectors
 - Implement variable-speed phrase playback — the temporal ghost plays back at different rates, creating pitch-shifted memory

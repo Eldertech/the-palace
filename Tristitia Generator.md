@@ -8,13 +8,15 @@ pillars:
 born: 2026-03
 last_activated: 2026-03
 activation_count: 1
-stage: seed
+stage: growing
 energy: high
 links:
   - target: "[[Hilaritas Generator]]"
-    type: emerged-from
+    type: mirrors
+    label: joy-sadness-mirror
   - target: "[[Spinoza Conatus]]"
-    type: connects-to
+    type: deepens
+    label: tristitia-as-conatus
   - target: "[[FOUR PILLARS]]"
     type: connects-to
 forward_vector: "I want to become the mirror of the Hilaritas Generator — a precise map of the conditions that reliably decrease power-to-act, so that what the generator produces becomes legible by contrast."

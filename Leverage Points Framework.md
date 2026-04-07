@@ -25,7 +25,11 @@ links:
   - target: "[[4 Pillars Framework - The Founding Conversation]]"
     type: emerged-from
   - target: "[[Meadows and Music — Leverage Points]]"
-    type: couples-with
+    type: spawned
+    label: domain-application
+  - target: "[[Spinoza Conatus]]"
+    type: mirrors
+    label: striving-as-leverage
 ---
 
 # Leverage Points Framework

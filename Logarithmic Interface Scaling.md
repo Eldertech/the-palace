@@ -5,7 +5,7 @@ pillars:
   - tools
   - philosophy
 born: 2026-03
-stage: growing
+stage: mature
 links:
   - target: "[[FOUR PILLARS]]"
     type: connects-to

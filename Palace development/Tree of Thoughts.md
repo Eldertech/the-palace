@@ -26,6 +26,9 @@ links:
     type: connects-to
   - target: "[[Generative Compression]]"
     type: connects-to
+  - target: "[[Pages as Agents]]"
+    type: enables
+    label: agent-tree-search
 ---
 
 # Tree of Thoughts

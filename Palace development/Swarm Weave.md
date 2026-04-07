@@ -7,7 +7,7 @@ pillars:
   - practice
   - philosophy
 born: 2026-03
-stage: sprout
+stage: growing
 last_activated: 2026-03
 activation_count: 1
 energy: very high
@@ -20,7 +20,8 @@ links:
   - target: "[[Mixture of Experts]]"
     type: mirrors
   - target: "[[Palace Ceremonies]]"
-    type: connects-to
+    type: enables
+    label: replaces-single-agent
   - target: "[[Lateral Access]]"
     type: connects-to
   - target: "[[Metaphor as Coupling Medium]]"
@@ -37,6 +38,12 @@ links:
     type: enables
   - target: "[[Deposit Ceremony]]"
     type: connects-to
+  - target: "[[Spinoza Conatus]]"
+    type: mirrors
+    label: philosophical-ground
+  - target: "[[Pages as Agents]]"
+    type: deepens
+    label: foundation
 ---
 
 # Swarm Weave

@@ -26,6 +26,9 @@ links:
   - target: "[[Hilaritas Generator]]"
     type: connects-to
     label: shares-a-mechanism-with
+  - target: "[[Progressive Staging]]"
+    type: mirrors
+    label: distillation-across-stages
 ---
 
 # Lossy Compression with Intent Alignment

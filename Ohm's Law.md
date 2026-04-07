@@ -5,7 +5,7 @@ pillars:
   - tools
   - philosophy
 born: 2026-03
-stage: growing
+stage: mature
 links:
   - target: "[[Logarithmic Interface Scaling]]"
     type: connects-to
@@ -15,6 +15,9 @@ links:
     type: connects-to
   - target: "[[Piano String Inharmonicity]]"
     type: connects-to
+  - target: "[[Boundary-Crossing Instruments]]"
+    type: mirrors
+    label: reframing-inverse-relationships
 ---
 
 # Ohm's Law

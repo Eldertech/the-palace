@@ -9,7 +9,7 @@ pillars:
 born: 2026-01
 last_activated: 2026-03
 activation_count: 1
-stage: sprout
+stage: growing
 links:
   - target: "[[FOUR PILLARS]]"
     type: deepens
@@ -19,6 +19,9 @@ links:
     type: deepens
   - target: "[[Meadows and Music — Leverage Points]]"
     type: couples-with
+  - target: "[[Modes of Collaboration]]"
+    type: spawned
+    label: reflection-as-mode
 ---
 
 # Ten Leverage Points: Origin & Process Document

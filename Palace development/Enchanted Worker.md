@@ -3,7 +3,7 @@ title: "Enchanted Worker"
 type: concept
 pillars: [philosophy, tools]
 born: 2026-03
-stage: sprout
+stage: growing
 last_activated: 2026-03
 activation_count: 1
 links:
@@ -21,6 +21,9 @@ links:
     type: connects-to
   - target: "[[Palace Enchantment]]"
     type: spawned
+  - target: "[[Spinoza Conatus]]"
+    type: mirrors
+    label: conatus-as-worker-drive
 ---
  
 # Enchanted Worker

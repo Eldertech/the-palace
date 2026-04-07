@@ -6,10 +6,11 @@ pillars:
 born: 2026-03
 last_activated: 2026-03
 activation_count: 2
-stage: growing
+stage: mature
 links:
   - target: "[[Spinoza Conatus]]"
-    type: deepens
+    type: spawned
+    label: metaphysical-backbone
   - target: "[[FOUR PILLARS]]"
     type: connects-to
   - target: "[[Hyperdimensional Prism]]"

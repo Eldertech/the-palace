@@ -18,6 +18,9 @@ links:
     type: mirrors
   - target: "[[Symbiotic Skills]]"
     type: connects-to
+  - target: "[[Spinoza Conatus]]"
+    type: deepens
+    label: striving-as-preset
 last_activated: 2026-03
 activation_count: 1
 ---
