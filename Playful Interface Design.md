@@ -27,6 +27,7 @@ links:
   - target: "[[Boundary-Crossing Instruments]]"
     type: mirrors
     label: instrument-as-interface
+forward_vector: "I want to become the palace's design philosophy for every future plugin interface — the entry that makes the case that mythology is not optional, only accidental or intentional. I want a complete character catalogue: every archetype already designed (the séance medium, the crystal oracle) plus the ones waiting for their instruments, so that when a new synthesizer concept arrives, its interface character can be chosen from a living vocabulary of tested archetypes."
 ---
 
 # Playful Interface Design

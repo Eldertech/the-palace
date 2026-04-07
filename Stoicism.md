@@ -21,6 +21,7 @@ links:
     type: connects-to
   - target: "[[Quality Manifesto]]"
     type: deepens
+forward_vector: "I want to become the palace's most honest account of the fortress and its limits — not a celebration of Stoic resilience but a rigorous examination of what the philosophy can and cannot carry. I want to develop the Epictetus biographical thread further: how the discovery of the fortress in slavery produces a philosophy that is both genuinely profound and possibly the wound become worldview. I want a section that tests Stoicism directly against the palace's relational architecture — where it helps and where it breaks."
 ---
 
 # Stoicism

@@ -34,6 +34,7 @@ links:
   - target: "[[Progressive Staging]]"
     type: couples-with
     label: staging-methodology
+forward_vector: "I want to become a fully staged Loudon Live teaching instrument — with each stage documented as a complete pedagogical moment, not just a step toward the next. My JSUI theatrical layer is the Stage 4 target that unlocks the JSUI revival. I want my Dub Lineage to be made explicit in the interface mythology: the séance medium as the ghost of the dub engineer, the crystal ball as King Tubby's mixing board."
 ---
 
 # Retrospective Delay

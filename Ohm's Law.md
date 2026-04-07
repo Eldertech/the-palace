@@ -18,6 +18,7 @@ links:
   - target: "[[Boundary-Crossing Instruments]]"
     type: mirrors
     label: reframing-inverse-relationships
+forward_vector: "I want to become the palace's exemplar for cross-domain structural isomorphism — the entry that shows students how a single equation (V=IR) appears identically in electrical, hydraulic, thermal, and acoustic domains, making each domain more legible through the others. I want to grow a section connecting Ohm's Law specifically to Loudon's DSP work: resistance as filter Q, current as signal flow, voltage as amplitude — making the electronics metaphor operative in synthesis."
 ---
 
 # Ohm's Law

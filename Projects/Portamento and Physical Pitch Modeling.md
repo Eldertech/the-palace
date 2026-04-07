@@ -23,6 +23,7 @@ links:
     type: connects-to
   - target: "[[Biomechanical Synthesis]]"
     type: connects-to
+forward_vector: "I want to become a fully implemented and staged teaching instrument — where overdamped, critically damped, and underdamped portamento are not just equations but audible, feelable distinctions that any student can identify by ear after a single session. I want to develop concrete listening exercises: pairs of portamento examples where the student identifies the damping regime and explains what physical system would produce that trajectory. The physics is already here; the pedagogy needs its exercises."
 ---
 
 # Portamento and Physical Pitch Modeling

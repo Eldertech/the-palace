@@ -23,6 +23,7 @@ links:
     type: connects-to
   - target: "[[Crystal Synthesizer]]"
     type: connects-to
+forward_vector: "I want to become the design specification that shapes every future Loudon Live project: a checklist, a template, and a philosophy that ensures every stage is a complete thing and every migration is a pedagogical event. I want to be read at the start of every new project build so that the staging happens in the design, not as an afterthought."
 ---
 
 # Progressive Staging

@@ -27,6 +27,7 @@ links:
     type: enables
   - target: "[[Action Potential Oscillator]]"
     type: connects-to
+forward_vector: "I want to become the palace's named pattern for apparent discontinuities that dissolve when you find the right coordinate system — with a growing catalogue of specific instances: compression ratio as slope, frequency-time as a single axis, octave equivalence as a circular space. I want to be the first entry a designer reads when a parameter seems to hit a wall, because the wall is usually in the representation, not the phenomenon."
 ---
 
 # Boundary-Crossing Instruments

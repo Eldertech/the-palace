@@ -29,6 +29,7 @@ links:
   - target: "[[Progressive Staging]]"
     type: mirrors
     label: distillation-across-stages
+forward_vector: "I want to become the palace's epistemological backbone for every Deposit decision — the entry that explains why a good palace entry is not a faithful transcript of a conversation but a generative latent-variable encoding of the principle that conversation instantiated. I want a worked Deposit critique: two versions of the same entry (low-perception faithful summary vs. high-perception generative encoding) with annotation of what the second preserves that the first loses."
 ---
 
 # Lossy Compression with Intent Alignment

@@ -24,6 +24,7 @@ links:
     type: enables
   - target: "[[Resonant Link Labels]]"
     type: spawned
+forward_vector: "I am the intellectual ancestor of everything in this palace — the 2014 paper whose thesis the palace enacts. I want to become more than a source citation: I want the paper's central claim (links are ontologically prior to nodes) to accumulate living demonstrations from the palace itself, so that any new agent who reads me immediately understands that the palace is not storing knowledge but enacting a philosophical position. I want a section that maps my paper's argument directly onto the palace's architecture, showing where each architectural choice is a proof of the thesis."
 ---
 
 # Meaning and the Link (2014)

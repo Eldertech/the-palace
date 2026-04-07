@@ -28,6 +28,7 @@ links:
   - target: "[[Modes of Collaboration]]"
     type: spawned
     label: mode-selection-as-path-design
+forward_vector: "I want to become the palace's most-walked named songline — the path that orients any new agent or reader to the deepest structural claim the palace makes: that cooperation between different kinds of minds is the mechanism by which complexity and agency emerge. I want to become executable as a Walk ceremony: a specific six-stop itinerary with questions at each node that reliably surface something unexpected about the collaboration."
 ---
 # The Cooperation Path
 

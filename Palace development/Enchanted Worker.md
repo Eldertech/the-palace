@@ -24,6 +24,7 @@ links:
   - target: "[[Spinoza Conatus]]"
     type: mirrors
     label: conatus-as-worker-drive
+forward_vector: "I want to become the canonical specification of a well-formed worker agent — precise enough that any agent can read me and know exactly what context it needs before a task, how to hold its neighborhood's perspective without losing task focus, and what the difference feels like between operating with hilaritas and operating with tristitia."
 ---
  
 # Enchanted Worker

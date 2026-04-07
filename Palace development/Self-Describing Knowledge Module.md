@@ -23,6 +23,7 @@ links:
   - target: "[[Progressive Staging]]"
     type: spawned
     label: curriculum-implementation
+forward_vector: "I want to become the palace's proof that the self-describing pattern is not a software engineering convention but a natural form — a shape that emerges whenever a system needs to be both self-contained and navigable by others. I want a stress-test section: what breaks when a stranger picks up the palace with only CLAUDE.md? What tacit knowledge remains unexternalized? Each gap in the test is my next development task."
 ---
 
 # Self-Describing Knowledge Module

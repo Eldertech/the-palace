@@ -30,6 +30,7 @@ links:
     type: deepens
   - target: "[[Signal-Rate CV Architecture]]"
     type: mirrors
+forward_vector: "I want to move from hypothesis to instrument — from phonon mode equations on paper to actual audio that enacts crystal physics. My immediate direction: implement the simplest Bravais lattice (cubic) as a working synthesizer patch and test whether the timbral descriptions derived from spectral analogy are confirmed or disproved by what you actually hear. Every failed prediction is as valuable as a confirmed one, because the Crystal Synthesizer exists precisely to test its own hypotheses."
 ---
 
 # Crystal Synthesizer

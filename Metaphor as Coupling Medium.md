@@ -29,6 +29,7 @@ links:
   - target: "[[Pages as Agents]]"
     type: enables
     label: inhabited-context
+forward_vector: "I am a breakthrough that risks staying abstract. My direction is toward demonstration: I want to accumulate a living catalogue of specific metaphors that have done real cognitive work in palace sessions — not as illustrations but as the mechanism by which coupling happened. Each entry should name what two domains were joined, what the metaphor was, and what became possible after."
 ---
 
 # Metaphor as Coupling Medium

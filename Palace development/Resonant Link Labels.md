@@ -20,6 +20,7 @@ links:
   - target: "[[Generative Compression]]"
     type: connects-to
     label: instance-of
+forward_vector: "I want to become the palace's living vocabulary for relationship register — accumulating a growing lexicon of labels that have proven generative, with annotation of what each label names that the link type alone cannot. I want to become the first thing a Weave worker reads before proposing new links, so that labels are chosen with the same intentionality as link types, and the label system becomes a precision instrument rather than an optional decoration."
 ---
 
 # Resonant Link Labels

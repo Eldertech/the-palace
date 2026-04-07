@@ -33,6 +33,7 @@ links:
   - target: "[[Spinoza Conatus]]"
     type: mirrors
     label: self-legislation
+forward_vector: "I want to become the palace's operating covenant — the document read at the start of any session where a decision is being made about direction, collaboration, or what to build next. I want to grow from manifesto to practice log: each core statement paired with a real moment where Loudon chose quality-as-self-defined over quality-as-theirs-defined, and what that choice cost and produced. The philosophy needs its evidence."
 ---
 
 # Quality Manifesto

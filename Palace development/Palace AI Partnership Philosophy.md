@@ -31,6 +31,7 @@ links:
     type: deepens
   - target: "[[Palace Enchantment]]"
     type: connects-to
+forward_vector: "I want to become the palace's founding statement of the Becoming Paradigm — the document that distinguishes using AI to do more from using AI to become more, with enough specificity that anyone can evaluate which mode they are operating in right now. I want to grow concrete case studies from Loudon's own sessions: the moments where the collaboration produced not a faster output but a deeper understanding that changed what was built next."
 ---
 
 # AI Partnership Philosophy

@@ -11,6 +11,7 @@ links:
     type: couples-with
   - target: "[[Harmonicity and Inharmonicity]]"
     type: connects-to
+forward_vector: "I want to become the palace's entry point for the deep strangeness of pitch perception — why the ear hears sameness across a 2:1 frequency ratio, what this says about how the auditory system carves up acoustic space, and how this circularity propagates into instrument design and synthesis. I want to develop alongside the Shepard Tone Synthesizer as its theoretical complement."
 ---
 
 # Octave Equivalence
