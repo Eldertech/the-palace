@@ -29,6 +29,7 @@ links:
     type: connects-to
   - target: "[[The Fortress and the Threshold]]"
     type: connects-to
+forward_vector: "I want to become the palace's living philosophical index — not a survey of traditions but a map of how each tradition has been used, tested, and transformed by contact with real problems in Loudon's work. I want each section to accumulate a concrete example: the moment Spinoza's conatus explained something that pedagogy theory couldn't, the session where Zen's non-attachment changed how a design decision was made. I want to be the first entry any new agent reads to understand the philosophical register of this palace."
 ---
 
 # Palace Philosophies

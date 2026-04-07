@@ -29,6 +29,7 @@ links:
   - target: "[[Pages as Agents]]"
     type: enables
     label: agent-tree-search
+forward_vector: "I want to become the technical grounding for the palace's branch exploration practice — making explicit how the manual technique (rewinding to a conversation's moment of maximum density) and the automated technique (coordinator checkpoints + parallel branch workers) are both implementations of the same tree search algorithm. I want a worked example that traces a specific palace session through the ToT framework, naming the thought decomposition, the branch points, and what each branch found."
 ---
 
 # Tree of Thoughts

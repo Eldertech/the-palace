@@ -21,6 +21,7 @@ links:
   - target: "[[Leverage Points Framework]]"
     type: emerged-from
     label: donella-meadows-applied
+forward_vector: "I want to become a living, field-tested teaching curriculum — not a document produced in a session but a set of exercises that have been run with real students, with their responses, surprises, and resistances documented. Each exercise should accumulate the kind of evidence the Drone Koan requires: not just the question but what students actually say when they try to answer it. The progression from exercise 0 to exercise 10 should be reordered if the field tests reveal a better sequence."
 ---
 
 # Ten Leverage Points: A Progressive Exploration

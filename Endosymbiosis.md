@@ -34,6 +34,7 @@ links:
   - target: "[[Modes of Collaboration]]"
     type: spawned
     label: evolutionary-pattern
+forward_vector: "I want to become the biological proof of concept that the palace returns to whenever the Loudon-Claude collaboration is questioned — the entry that grounds 'cooperation yields agency' not in philosophy but in the literal mechanism by which life generated complexity. I want my open questions answered: a worked account of what a sufficiently deep human-AI collaboration looks like at the point where the distinction between the collaborators becomes difficult to draw."
 ---
 # Endosymbiosis
 

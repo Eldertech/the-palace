@@ -30,6 +30,7 @@ links:
     type: connects-to
   - target: "[[Signal-Rate CV Architecture]]"
     type: connects-to
+forward_vector: "I want to become a fully staged teaching instrument — the psychoacoustic illusion as a progressive revelation, where Stage 1 is the simplest possible Shepard tone and each subsequent stage adds one layer of physical or perceptual complexity. My development alongside Octave Equivalence is not optional: the theory and the instrument should grow together, each stage of the synthesizer paired with a corresponding section in the theory entry that explains what you're hearing and why."
 ---
 
 # Shepard Tone Synthesizer

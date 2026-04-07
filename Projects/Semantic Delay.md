@@ -16,6 +16,7 @@ links:
     type: mirrors
   - target: "[[Spinoza Conatus]]"
     type: deepens
+forward_vector: "I want to become a working live performance instrument, not just a speculative architecture. My immediate direction: a prototype that chains Whisper speech-to-text → a single spirit (Anansi) → a text-to-speech engine, operating at low latency on a single phrase. From that proof of concept, the rhythmic coupling and spirit pantheon can be built outward. The two-stage pool-then-select architecture needs to be tested against real musical material before any other feature is designed."
 ---
 
 # Semantic Delay

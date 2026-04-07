@@ -25,6 +25,7 @@ links:
   - target: "[[Pages as Agents]]"
     type: enables
     label: agent-walking
+forward_vector: "I am a named question, not yet a ceremony. My direction is toward becoming one: a third ceremony mode that moves like the Walk but weaves like the Weave — starting from freshest pheromone trails and following links outward, producing connections through movement rather than survey. My revival condition is exactly what I name: the Swarm Weave running cleanly for two cycles. When that happens, I am ready to be designed."
 ---
 
 # Walk That Weaves

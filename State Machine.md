@@ -21,6 +21,7 @@ links:
   - target: "[[Progressive Staging]]"
     type: mirrors
     label: pedagogical-isomorphism
+forward_vector: "I want to become the palace's cross-paradigm reference for state-based thinking — the entry that shows exactly the same state machine implemented in Gen~ boxes-and-lines, JavaScript, and Python, so the concept is legible across all three paradigms Loudon teaches in. I want my best practices section expanded with a worked debugging exercise: a state machine with a specific class of bug (ambiguous transition, missing guard, wrong transition action) and the diagnostic process for finding it."
 ---
 
 # State Machine

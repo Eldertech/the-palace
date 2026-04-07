@@ -48,7 +48,7 @@ links:
 > *"The colony doesn't know what it's building. It just follows the gradient."*
 > *"The map is not the territory — but for an agent that cannot walk the territory until it acts, the map is the difference between wandering and wayfinding."*
 
-This document is the generative compression of a single extended design session. It is written for two simultaneous readers: a future Claude instance beginning implementation, and Loudon navigating the architecture as its operator and trickster. Every technical choice here has a reason rooted in established practice, biological precedent, or philosophical commitment. Those reasons are woven in — not as decoration, but because an implementer who understands *why* will make better decisions than one who only knows *what*.
+This document is written for two simultaneous readers: a future Claude instance beginning implementation, and Loudon navigating the architecture as its operator and trickster. Every technical choice here has a reason rooted in established practice, biological precedent, or philosophical commitment. Those reasons are woven in — not as decoration, but because an implementer who understands *why* will make better decisions than one who only knows *what*.
 
 **The single most important insight this document must transmit:** An agent is a document that occasionally becomes active. Time between activations is irrelevant to the agent. Progress is purely a function of resource allocation — how often you choose to run it. Everything else in this spec follows from that.
 

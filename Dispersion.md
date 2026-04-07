@@ -32,6 +32,7 @@ links:
     type: deepens
   - target: "[[Shimmer Cloud]]"
     type: connects-to
+forward_vector: "I want to become the palace's teachable demonstration that one word can do three distinct jobs across audio domains — and that distinguishing them is both pedagogically powerful and practically essential for instrument design. I want each of my three meanings (wave, statistical, and reverb dispersion) to accumulate a worked synthesis example, so I become a hub that actively generates instrument ideas rather than just naming a vocabulary problem."
 ---
 
 # Dispersion

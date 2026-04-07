@@ -31,6 +31,7 @@ links:
   - target: "[[Songlines]]"
     type: connects-to
     label: different-song
+forward_vector: "I want to become the palace's primary method for surfacing interior knowledge that cannot be accessed directly — with a growing catalogue of oblique portrait sessions and what they found that direct questioning would have missed. I want to be developed toward a teaching tool: a protocol for initiating an Oblique Portrait session of a student's creative practice, to surface the aesthetic commitments and design intuitions they cannot articulate about themselves until they see them assembled obliquely."
 ---
 
 # Oblique Portrait Method

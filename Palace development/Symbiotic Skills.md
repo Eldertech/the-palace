@@ -30,6 +30,7 @@ links:
     type: enables
   - target: "[[Mixture of Experts]]"
     type: connects-to
+forward_vector: "I want to become a teachable, executable framework that someone else can use to grow their own palace from scratch — not a description of what Loudon built, but a replicable method grounded in the actual git history of how this palace developed from a single wiki page to a living organism. I want to be rewritten once a git archaeology session has been completed, so that the developmental sequence I document is the real one, not the ideal one."
 ---
 <!-- this is meant to be a guide in how to grow one's own palace. This will need to be re-written based on the actual practices we have engaged in. I think a session where we assess the history of the palace using the git history will be very helpful -->
 

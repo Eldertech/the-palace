@@ -21,6 +21,7 @@ links:
   - target: "[[Spinoza Conatus]]"
     type: mirrors
     label: relational-persistence
+forward_vector: "I want to become the technical grounding for the palace's core claim that meaning is relational, not intrinsic. I want to accumulate demonstrations — specific embedding experiments, semantic neighborhood maps, geometric examples — that make the philosophical claim tangible and testable. The palace as vector space, not as database."
 ---
 # Embeddings as Relational Meaning
 

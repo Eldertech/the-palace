@@ -27,6 +27,7 @@ links:
     type: connects-to
   - target: "[[Frequency-Time Duality]]"
     type: mirrors
+forward_vector: "I want to become the palace's primary lens for questions of self and relationship — the entry that names why neither the Stoic fortress nor the Confucian threshold is the complete answer, and what Spinoza's synthesis makes possible that neither tradition alone can reach. I want the open question about the Zen master's view of this binary to be answered through an Excellent Adventure: Zhuangzi, Epictetus, and Confucius in conversation about where the self ends."
 ---
 <!-- This needs an origin, I believe this formed from a dialectic between confuscius and eptictus, regardless it is a beautiful binary, and I wonder how a zen master would think of this binary... -->
 # The Fortress and the Threshold

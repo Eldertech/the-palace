@@ -24,6 +24,7 @@ links:
   - target: "[[Modes of Collaboration]]"
     type: connects-to
     label: multi-device-sync
+forward_vector: "I want to become a completed, documented Max MSP implementation — with the biphase encoding, bit-stream generation, and multi-device sync all working and annotated as a teachable artifact. My deeper goal: to become the palace's example of temporal synchrony as a design problem, showing how LTC encodes time as audio and connecting the engineering solution to the philosophical question of what it means to make multiple independent systems share a clock."
 ---
 
 # SMPTE LTC

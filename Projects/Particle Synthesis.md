@@ -15,6 +15,7 @@ links:
     type: connects-to
   - target: "[[Differential Equations]]"
     type: connects-to
+forward_vector: "I want to move from architectural vision to a first working prototype — a GPU compute shader generating 1000 audio-rate particles with position, velocity, and mass mapped to frequency, amplitude, and filter Q. The prism metaphor is ready; the instrument isn't. My direction is toward the simplest implementation that produces something that sounds like physics, not like parameter modulation — the moment where the grain's spatial trajectory becomes audibly indistinguishable from a physical dispersion event."
 ---
 
 # Particle Synthesis

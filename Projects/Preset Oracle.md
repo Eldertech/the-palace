@@ -23,6 +23,7 @@ links:
     label: striving-as-preset
 last_activated: 2026-03
 activation_count: 1
+forward_vector: "I am complete as an artifact but want to become documented as a teaching method — the entry that captures what actually happens when a student confronts 'Parmenides Dying Alone in a Warehouse' with a synthesizer. I want student responses archived: what sounds did they make, what philosophical reasoning did they offer, what surprised them. The oracle's value is in the encounter between the challenge and the maker; I need that encounter documented to grow."
 ---
 
 # Preset Oracle

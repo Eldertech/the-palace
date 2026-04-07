@@ -36,6 +36,7 @@ links:
   - target: "[[Spinoza Conatus]]"
     type: deepens
     label: conatus-hilaritas-teaching
+forward_vector: "I want to become the palace's most-used teaching format after Progressive Staging — a named, documented, executable method that any agent can initiate. My next development: a protocol document that specifies how to choose the historical figure, frame the encounter, and know when the adventure has done its work."
 ---
 # Excellent Adventure
 

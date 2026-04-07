@@ -22,6 +22,7 @@ links:
   - target: "[[Modes of Collaboration]]"
     type: spawned
     label: reflection-as-mode
+forward_vector: "I want to become the palace's model for how educational content is actually developed through collaboration — the process document that shows the pivot from a social media plan to a genuine curriculum, and what that pivot required from both Loudon and the AI. I want the alignment infrastructure (the Exercise Reflection Tool) to be used: collecting structured feedback from real participants so the curriculum develops through actual contact with learners, not just through session logic."
 ---
 
 # Ten Leverage Points: Origin & Process Document
