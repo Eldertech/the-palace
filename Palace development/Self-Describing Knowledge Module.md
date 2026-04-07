@@ -20,6 +20,9 @@ links:
     type: connects-to
   - target: "[[Cooperation Yields Agency]]"
     type: connects-to
+  - target: "[[Progressive Staging]]"
+    type: spawned
+    label: curriculum-implementation
 ---
 
 # Self-Describing Knowledge Module

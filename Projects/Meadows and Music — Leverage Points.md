@@ -9,7 +9,7 @@ pillars:
 born: 2026-01
 last_activated: 2026-03
 activation_count: 1
-stage: sprout
+stage: growing
 archive: "Ten Leverage Points: A Progressive Exploration (produced in PP05 conversation)"
 links:
   - target: "[[FOUR PILLARS]]"
@@ -19,7 +19,8 @@ links:
   - target: "[[Meadows and Music — Origin and Process]]"
     type: couples-with
   - target: "[[Leverage Points Framework]]"
-    type: couples-with
+    type: emerged-from
+    label: donella-meadows-applied
 ---
 
 # Ten Leverage Points: A Progressive Exploration

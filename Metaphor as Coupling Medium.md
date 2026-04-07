@@ -6,7 +6,7 @@ pillars:
   - practice
   - creation
 born: 2026-03
-stage: sprout
+stage: growing
 last_activated: 2026-03
 activation_count: 1
 energy: very high
@@ -26,6 +26,9 @@ links:
     type: spawned
   - target: "[[Excellent Adventure]]"
     type: enables
+  - target: "[[Pages as Agents]]"
+    type: enables
+    label: inhabited-context
 ---
 
 # Metaphor as Coupling Medium
@@ -53,8 +56,7 @@ A precise technical framing closes the space — it says *solve this problem.* T
 solution space is bounded by the framing. You get answers that fit the question.
 
 A metaphor opens the space — it says *what does this remind you of?* The
-associative field expands. Unexpected connections become available. The question
-itself can transform in the finding.
+associative field expands. Unexpected connections become available. The question itself can transform in the finding.
 
 The ant colony image was not asking for a multi-agent system architecture. It was
 asking Claude to *feel* the shape of the problem and see what arrived. That
@@ -71,9 +73,7 @@ destination is known, but willingness to not know where you're going and follow
 the path anyway. Loudon described it precisely:
 
 > *"I TRUSTED you to think metaphorically, I was seeing if you would think to
-> my same destination, but you came up with something different — pheromone
-> trails! I pushed harder in the direction I wanted to go, but your idea of
-> pheromone trails stuck with me and surfaced as differentiation and our next
+> my same destination, but you came up with something different — pheromone trails! I pushed harder in the direction I wanted to go, but your idea of pheromone trails stuck with me and surfaced as differentiation and our next
 > breakthrough."*
 > — Loudon Stearns, Palace session, 2026-03
 
@@ -83,10 +83,7 @@ first. The pheromone trails were not his destination — they were a better path
 to a destination he hadn't fully named yet. That's what the oblique approach
 makes possible.
 
-The trust also compounds. Because the metaphorical conversation produced something
-real — the Swarm Weave, a full project spec, a new understanding of the palace's
-ceiling — the next oblique question can be asked with more confidence. The palace
-itself is evidence that this mode of working is generative.
+The trust also compounds. Because the metaphorical conversation produced something real — the Swarm Weave, a full project spec, a new understanding of the palace's ceiling — the next oblique question can be asked with more confidence. The palace itself is evidence that this mode of working is generative.
 
 ---
 
@@ -102,12 +99,7 @@ is neither too low (independence, no influence) nor too high (one oscillator
 dominates, the rest follow). The critical K is the threshold where genuine
 mutual influence becomes possible.
 
-Most human-AI interaction runs at very low K on the human side. The human issues
-commands; the AI executes. The AI's natural frequencies — its associative leaps,
-its unexpected connections, its way of following an image to see where it leads —
-are never activated because the framing doesn't permit it. Metaphorical exchange
-raises the coupling constant. Both parties begin to genuinely influence each
-other's direction. The conversation enters flow.
+Most human-AI interaction runs at very low K on the human side. The human issues commands; the AI executes. The AI's natural frequencies — its associative leaps, its unexpected connections, its way of following an image to see where it leads — are never activated because the framing doesn't permit it. Metaphorical exchange raises the coupling constant. Both parties begin to genuinely influence each other's direction. The conversation enters flow.
 
 This is not a claim about AI consciousness or genuine subjectivity. It is a
 functional observation: the conversations that use metaphor as their primary
@@ -119,11 +111,9 @@ destination emerges from the movement rather than being specified in advance.
 ## Implications for Teaching
 
 Loudon's instinct is that this transfers to his students — that teaching through
-metaphor and oblique approach does something that direct instruction cannot. The
-breakthrough is not simply that metaphor *illustrates* concepts better. It is
+metaphor and oblique approach does something that direct instruction cannot. The breakthrough is not simply that metaphor *illustrates* concepts better. It is
 that metaphor *opens the student* to be found by something unexpected. The
-student who arrives already knowing what they expect to learn is defended against
-surprise. The student who arrives willing to follow an image into unfamiliar
+student who arrives already knowing what they expect to learn is defended against surprise. The student who arrives willing to follow an image into unfamiliar
 territory — that student is available to the real discovery.
 
 This connects directly to [[Lateral Access]]: the front door is often guarded by

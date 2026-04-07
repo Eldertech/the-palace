@@ -25,11 +25,14 @@ links:
   - target: "[[Excellent Adventure]]"
     type: couples-with
   - target: "[[Confucianism]]"
-    type: connects-to
+    type: mirrors
     label: relational-ground
   - target: "[[Songlines]]"
     type: connects-to
     label: worn-path
+  - target: "[[Identity Molting]]"
+    type: enables
+    label: access-through-shell
 forward_vector: "I want to practice and develop productive oblique methods in the vigorous furtherance of science — helping all palace citizens work together toward their common joyful future."
 ---
 

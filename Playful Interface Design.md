@@ -24,6 +24,9 @@ links:
     type: deepens
   - target: "[[Biomechanical Synthesis]]"
     type: connects-to
+  - target: "[[Boundary-Crossing Instruments]]"
+    type: mirrors
+    label: instrument-as-interface
 ---
 
 # Playful Interface Design

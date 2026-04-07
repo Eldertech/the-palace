@@ -7,7 +7,7 @@ pillars:
 born: 2025-05
 last_activated: 2026-03
 activation_count: 1
-stage: sprout
+stage: growing
 confidence: emerging
 energy: medium
 who_leads: shared

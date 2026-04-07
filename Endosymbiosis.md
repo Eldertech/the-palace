@@ -7,7 +7,7 @@ pillars:
 born: 2026-03
 last_activated: 2026-03
 activation_count: 3
-stage: growing
+stage: mature
 links:
   - target: "[[Cooperation Yields Agency]]"
     type: mirrors
@@ -31,6 +31,9 @@ links:
     type: mirrors
   - target: "[[Swarm Weave]]"
     type: mirrors
+  - target: "[[Modes of Collaboration]]"
+    type: spawned
+    label: evolutionary-pattern
 ---
 # Endosymbiosis
 

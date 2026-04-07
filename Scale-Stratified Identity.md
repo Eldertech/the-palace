@@ -24,6 +24,12 @@ links:
   - target: "[[Endosymbiosis]]"
     type: connects-to
     label: life-as-scale-shift
+  - target: "[[Progressive Staging]]"
+    type: enables
+    label: staging-across-scales
+  - target: "[[Identity Molting]]"
+    type: deepens
+    label: threshold-as-molt
 forward_vector: "I want to become the palace's general-purpose tool for resolving identity questions — the lens that dissolves 'is it still the same?' into 'same at which scale?' and finds that both answers are true simultaneously."
 ---
 

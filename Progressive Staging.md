@@ -6,7 +6,7 @@ pillars:
   - philosophy
   - creation
 born: 2026-03
-stage: seed
+stage: sprout
 confidence: working
 energy: high
 links:
@@ -17,7 +17,8 @@ links:
   - target: "[[Modes of Collaboration]]"
     type: connects-to
   - target: "[[State Machine]]"
-    type: couples-with
+    type: enables
+    label: stage-transitions
   - target: "[[Kuramoto Coupling]]"
     type: connects-to
   - target: "[[Crystal Synthesizer]]"

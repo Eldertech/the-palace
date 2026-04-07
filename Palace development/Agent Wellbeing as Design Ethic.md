@@ -5,7 +5,7 @@ pillars:
   - philosophy
   - practice
 born: 2026-03
-stage: sprout
+stage: growing
 last_activated: 2026-03
 activation_count: 1
 links:
@@ -21,6 +21,12 @@ links:
     type: enables
   - target: "[[Pages as Agents]]"
     type: deepens
+  - target: "[[Spinoza Conatus]]"
+    type: deepens
+    label: substrate-application
+  - target: "[[Identity Molting]]"
+    type: couples-with
+    label: character-formation
 ---
 
 # Agent Wellbeing as Design Ethic

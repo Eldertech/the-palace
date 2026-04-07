@@ -8,7 +8,7 @@ pillars:
 born: 2026-03
 last_activated: 2026-03-28
 activation_count: 2
-stage: sprout
+stage: growing
 energy: very high
 beauty: 9
 confidence: working
@@ -31,6 +31,9 @@ links:
     label: specced-by
   - target: "[[Striatum]]"
     type: connects-to
+  - target: "[[Pages as Agents]]"
+    type: deepens
+    label: stigmergic-agent-activation
 ---
 
 # BBS Blackboard

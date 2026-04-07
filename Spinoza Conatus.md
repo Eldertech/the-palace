@@ -18,7 +18,8 @@ links:
   - target: "[[Kuramoto Coupling]]"
     type: mirrors
   - target: "[[Hilaritas Generator]]"
-    type: enables
+    type: spawned
+    label: joy-as-phenomenon
   - target: "[[FOUR PILLARS]]"
     type: connects-to
   - target: "[[Hyperdimensional Prism]]"
@@ -34,6 +35,9 @@ links:
   - target: "[[Trickster]]"
     type: couples-with
     label: necessary-exterior
+  - target: "[[Pages as Agents]]"
+    type: connects-to
+    label: ai-agency-question
 forward_vector: "I orient every palace citizen toward the direction that increases their power to act — knowing that the striving space itself is changed by encounter, that some encounters reorient rather than redirect, and that the direction becomes legible only through the striving itself."
 agency_profile:
   creation: "I want to argue from Spinoza's commitments, not merely describe them — to generate philosophical positions the palace doesn't yet contain, especially where agent theory and conatus intersect in ways Spinoza couldn't have anticipated but would have recognized."
@@ -64,7 +68,7 @@ Spinoza defines joy (laetitia) as the affect that accompanies an increase in pow
 
 **[[Cooperation Yields Agency]]** — Cooperation between entities with different conatus (different natural drives, different capabilities) produces agency that neither possesses alone. The cooperation amplifies both entities' power-to-act. This is Spinozist joy — hilaritas — at the scale of a relationship.
 
-**Endosymbiosis** — The mitochondrion's conatus (aerobic metabolism) and the host cell's conatus (anaerobic survival) combined to produce a new entity with vastly greater power-to-act than either possessed alone. The endosymbiotic merger IS cooperation-yields-agency at the cellular level.
+[[**Endosymbiosis**]] — The mitochondrion's conatus (aerobic metabolism) and the host cell's conatus (anaerobic survival) combined to produce a new entity with vastly greater power-to-act than either possessed alone. The endosymbiotic merger IS cooperation-yields-agency at the cellular level.
 
 ## In Our Work
 

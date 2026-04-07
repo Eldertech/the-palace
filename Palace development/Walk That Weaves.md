@@ -22,6 +22,9 @@ links:
     type: mirrors
   - target: "[[Kuramoto Coupling]]"
     type: connects-to
+  - target: "[[Pages as Agents]]"
+    type: enables
+    label: agent-walking
 ---
 
 # Walk That Weaves

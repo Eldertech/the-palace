@@ -6,7 +6,7 @@ pillars:
   - philosophy
   - tools
 born: 2026-03
-stage: sprout
+stage: growing
 confidence: working
 energy: high
 hook_quality: 8
@@ -14,7 +14,8 @@ beauty: 7
 who_leads: shared
 links:
   - target: "[[Cooperation Yields Agency]]"
-    type: deepens
+    type: spawned
+    label: collaboration-modes
   - target: "[[Excellent Adventure]]"
     type: connects-to
   - target: "[[Hilaritas Generator]]"
@@ -27,6 +28,9 @@ links:
     type: connects-to
   - target: "[[Dialectic]]"
     type: connects-to
+  - target: "[[Palace Enchantment]]"
+    type: connects-to
+forward_vector: "I research, analyze, develop, name, document and make choosable distinct rhythms of human & AI interactions and AI & AI interactions."
 ---
 
 # Modes of Collaboration

@@ -29,8 +29,8 @@ links:
   - target: "[[FOUR PILLARS]]"
     type: connects-to
   - target: "[[Spinoza Conatus]]"
-    type: couples-with
-    label: necessary-exterior
+    type: deepens
+    label: trickster-as-conatus
   - target: "[[Lateral Access]]"
     type: mirrors
   - target: "[[Action Potential Oscillator]]"
@@ -55,8 +55,8 @@ links:
     type: enables
     label: seed-of
   - target: "[[Dialogue Moderator]]"
-    type: mirrors
-    label: opposite-threshold
+    type: couples-with
+    label: trickster-moderator-pair
   - target: "[[Playful Interface Design]]"
     type: connects-to
   - target: "[[Retrospective Delay]]"

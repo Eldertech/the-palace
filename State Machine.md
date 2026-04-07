@@ -6,7 +6,7 @@ pillars:
   - practice
   - philosophy
 born: 2026-03
-stage: sprout
+stage: growing
 confidence: working
 energy: high
 links:
@@ -19,7 +19,8 @@ links:
   - target: "[[ROSETTA]]"
     type: mirrors
   - target: "[[Progressive Staging]]"
-    type: couples-with
+    type: mirrors
+    label: pedagogical-isomorphism
 ---
 
 # State Machine

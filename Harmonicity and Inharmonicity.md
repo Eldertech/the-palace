@@ -3,7 +3,7 @@ title: "Harmonicity and Inharmonicity"
 type: concept
 pillars: [creation, tools, philosophy]
 born: 2026-03
-stage: sprout
+stage: growing
 confidence: working
 energy: high
 hook_quality: 8
@@ -20,6 +20,7 @@ links:
     type: connects-to
   - target: "[[Categorizing Inharmonicity]]"
     type: spawned
+forward_vector: "I ask what happens to coupling when the relationships break — how inharmonic partials create frustrated forces — and I use that frustration to clarify both instrument design and the physics of coherence."
 ---
 
 # Harmonicity and Inharmonicity

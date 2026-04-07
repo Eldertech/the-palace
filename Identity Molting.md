@@ -5,7 +5,7 @@ pillars:
   - philosophy
   - practice
 born: 2026-03
-stage: growing
+stage: mature
 last_activated: 2026-03
 activation_count: 1
 confidence: working
@@ -13,7 +13,7 @@ energy: high
 beauty: 9
 who_leads: shared
 links:
-  - target: "[[Wu Wei — Water as Pedagogical Architecture]]"
+  - target: "[[Like Water]]"
     type: connects-to
   - target: "[[Spinoza Conatus]]"
     type: connects-to
@@ -71,7 +71,7 @@ tightening shell feels like security. It is the opposite.
 
 ## Water as Archetype
 
-[[Wu Wei — Water as Pedagogical Architecture]] offers the clearest image:
+[[Like Water]] offers the clearest image:
 water takes the shape of any container while remaining entirely water.
 The container is not the identity. The identity is what flows.
 
@@ -119,7 +119,7 @@ structure: the drive to persist *as what one actually is* overcomes
 attachment to the container that no longer fits. The organism persists by
 shedding.
 
-**[[Wu Wei — Water as Pedagogical Architecture]]** — Raymond Tang's openness
+**[[Like Water]]** — Raymond Tang's openness
 lesson: the teams that win hackathons are not the most experienced but the
 most open to changing form. Endurance comes from total flexibility of form
 with total constancy of nature. This is molting as competitive advantage,

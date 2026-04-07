@@ -5,7 +5,7 @@ pillars: [creation, tools, philosophy]
 born: 2026-02
 last_activated: 2026-03
 activation_count: 1
-stage: growing
+stage: mature
 confidence: working
 energy: high
 hook_quality: 8
@@ -30,6 +30,10 @@ links:
     type: connects-to
   - target: "[[Dispersion]]"
     type: connects-to
+  - target: "[[Spinoza Conatus]]"
+    type: deepens
+    label: philosophical-grounding
+forward_vector: "I map the space of inharmonicity types — stretched, Bessel, stochastic, chaotic, phase-accumulation — with image, sound and code, giving instrument designers and composers a palette of specific forms rather than a single undifferentiated deviation from harmony."
 ---
 
 # Categorizing Inharmonicity

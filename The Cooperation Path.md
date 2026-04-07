@@ -9,7 +9,7 @@ pillars:
 born: 2026-03
 last_activated: 2026-03
 activation_count: 1
-stage: sprout
+stage: growing
 links:
   - target: "[[1 from 2]]"
     type: connects-to
@@ -25,6 +25,9 @@ links:
     type: connects-to
   - target: "[[SUBSTRATE]]"
     type: deepens
+  - target: "[[Modes of Collaboration]]"
+    type: spawned
+    label: mode-selection-as-path-design
 ---
 # The Cooperation Path
 

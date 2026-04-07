@@ -6,7 +6,7 @@ pillars:
   - tools
   - practice
 born: 2026-03
-stage: sprout
+stage: growing
 links:
   - target: "[[SCHEMA]]"
     type: emerged-from

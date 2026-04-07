@@ -15,11 +15,15 @@ links:
   - target: "[[Ableton Extension SDK]]"
     type: connects-to
   - target: "[[Boundary-Crossing Instruments]]"
-    type: connects-to
+    type: deepens
+    label: reverse-boundary-crossing
   - target: "[[Frequency-Time Duality]]"
     type: connects-to
   - target: "[[Signal-Rate CV Architecture]]"
     type: connects-to
+  - target: "[[Modes of Collaboration]]"
+    type: connects-to
+    label: multi-device-sync
 ---
 
 # SMPTE LTC

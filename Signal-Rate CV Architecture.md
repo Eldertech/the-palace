@@ -6,7 +6,7 @@ pillars:
   - creation
   - philosophy
 born: 2026-03
-stage: seed
+stage: growing
 confidence: working
 energy: high
 links:
@@ -20,6 +20,9 @@ links:
     type: enables
   - target: "[[Crystal Synthesizer]]"
     type: connects-to
+  - target: "[[Progressive Staging]]"
+    type: couples-with
+    label: pedagogical-method
 ---
 
 # Signal-Rate CV Architecture

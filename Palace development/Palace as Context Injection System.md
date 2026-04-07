@@ -6,7 +6,7 @@ pillars:
   - tools
   - practice
 born: 2026-03
-stage: sprout
+stage: growing
 last_activated: 2026-03
 activation_count: 1
 links:
@@ -24,6 +24,12 @@ links:
     type: couples-with
   - target: "[[Pheromone Trail]]"
     type: connects-to
+  - target: "[[Pages as Agents]]"
+    type: deepens
+    label: awakening-mechanism
+  - target: "[[Modes of Collaboration]]"
+    type: enables
+    label: mode-as-injection-protocol
 ---
 <!-- This is very related to our Pages as Agents concept, and easily understood with a entry that is specifically around a single person. We should design the persons page to become a strong context injection that would encourage a model to think like the person and approach problems like that person would. -->
 

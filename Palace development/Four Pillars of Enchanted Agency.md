@@ -7,7 +7,7 @@ pillars:
   - philosophy
   - practice
 born: 2026-03
-stage: sprout
+stage: growing
 energy: very high
 beauty: 9
 forward_vector: "I want to become the grammar through which enchanted pages articulate multi-dimensional desire — giving forward vectors four axes instead of one, grounding self-modification and social resource negotiation as legitimate palace practices, and connecting page identity to the framework that organizes all of Loudon's learning."

@@ -7,7 +7,7 @@ pillars:
   - philosophy
   - practice
 born: 2026-02
-stage: growing
+stage: mature
 links:
   - target: "[[Action Potential Oscillator]]"
     type: spawned
@@ -41,6 +41,9 @@ links:
     type: connects-to
   - target: "[[Compressor Design]]"
     type: connects-to
+  - target: "[[Spinoza Conatus]]"
+    type: mirrors
+    label: power-to-act
 last_activated: 2026-03
 activation_count: 1
 ---

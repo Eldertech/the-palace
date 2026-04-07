@@ -5,7 +5,7 @@ pillars: [tools, philosophy, creation]
 born: 2026-01
 last_activated: 2026-03
 activation_count: 2
-stage: growing
+stage: mature
 confidence: demonstrated
 energy: high
 hook_quality: 8
