@@ -430,7 +430,52 @@ Current capabilities:
 - New introductions (up to 3 semantic proposals)
 - Metadata flags (missing or stale fields)
 
-### Prompt template
+### Execution options
+
+**Option A — Claude sub-agent (default)**
+
+Uses `Agent(subagent_type="Explore")` in Claude Code. The worker receives
+paths and reads its own files. Produces the highest-quality output, especially
+on unsung paths and evocative labels. Use the prompt template from
+`_ops/swarm/worker-prompt-template.md`.
+
+**Option B — Local Gemma 26b (zero API cost)**
+
+Uses `gemma4:26b` via Ollama with a pre-loaded architecture: the coordinator
+reads all files and embeds content directly into the prompt. No tool calls
+required from the model. Validated 2026-04-08 on SCHEMA and Endosymbiosis.
+
+Requirements: Ollama installed, `gemma4:26b` pulled (~17GB), 32GB+ unified
+memory. Serialized — one entry at a time. Not suitable for full Swarm Weave
+(no parallelism), but zero-cost for focused single-entry work.
+
+```bash
+# Generate and dispatch in one pipeline
+python3 _ops/swarm/build-preloaded-prompt.py "Entry Name" 3 \
+  | python3 -c "
+import json, sys
+prompt = sys.stdin.read()
+import urllib.request
+req = urllib.request.Request(
+    'http://localhost:11434/api/generate',
+    data=json.dumps({'model': 'gemma4:26b', 'stream': False, 'prompt': prompt}).encode(),
+    headers={'Content-Type': 'application/json'}
+)
+resp = urllib.request.urlopen(req, timeout=300)
+print(json.loads(resp.read()).get('response', ''))
+"
+```
+
+**Known Gemma 26b limitations vs. Claude workers:**
+- Occasional label inconsistency across runs (1-2 items may vary)
+- Does not find harvest candidates (concepts worth depositing) — this is
+  correct behavior per the narrow unsung paths definition, but Claude workers
+  will sometimes surface these as a bonus
+- `gemma4:latest` = `gemma4:e4b` (8B) — not `26b`. Always specify `gemma4:26b`
+- Smaller variants (e4b, e2b) tested and not viable: e4b missed unsung paths
+  entirely, e2b produced hallucinations
+
+### Prompt template (Claude sub-agent)
 
 ```
 You are a palace worker running a focused connection audit on one palace entry.

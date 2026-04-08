@@ -23,6 +23,9 @@ Scan all reports for:
 - Worker B's home IS Entry Y and confirms the connection from the other direction
 - This bidirectional confirmation is the strongest signal the swarm produces
 
+### 4b. Label Enrichment Aggregation
+Collect all `proposed_label` values from worker reports — from unsung paths, new introductions, and link type upgrade proposals. Additionally scan all existing `connects-to`, `mirrors`, and `contradicts` links in worker reports that currently lack labels; where the worker's body analysis already names the relationship more specifically, propose that word as the label. Compile into a single label proposals list, de-duplicated. Rate limit: 15 per swarm run (scaled to palace size vs. the single-agent limit of 10). Present as a discrete batch to Loudon after unsung paths and graffiti, before new introductions. A label is a permanent commitment to a specific register — Loudon approves each one.
+
 ### 4. Priority Sorting
 Rank findings by:
 1. Broken links / ghost nodes (fix immediately)
@@ -50,13 +53,25 @@ Rank findings by:
 |---|--------|---------|------------|
 | 1 | ... | ... | high/medium/low |
 
+### Label Proposals (existing links enriched, max 15)
+- [[Entry A]] —[type]→ [[Entry B]]: proposed label `word` — [one-line rationale]
+
 ### Deferred to Next Session
 - [items too large or uncertain for this session]
 ```
 
+**Presentation order to Loudon:** unsung paths → graffiti action queue → forward vector proposals → label proposals → new introductions. Labels come before new introductions: they are enrichment of existing structure, not new growth, and carry less deliberation cost.
+
 ---
 
 ## Running a Swarm in Claude Code
+
+### Step 0: Build a fresh palace map
+Before choosing entries, run the [[Map Build Ceremony]]:
+```bash
+python3 _ops/swarm/extract-neighborhood.py --build-map
+```
+Or trigger manually: `"Let's build the map"`. This produces `_ops/maps/palace-map-full-[date].json`. Use this file for worker neighbor resolution and coordinator topology reporting. Do not proceed with a map older than the last Deposit.
 
 ### Step 1: Choose entries
 ```bash
@@ -68,15 +83,27 @@ python3 _ops/swarm/extract-neighborhood.py --list
 python3 _ops/swarm/extract-neighborhood.py "Entry Name" --template
 ```
 
+### Step 2b: Set MAX_INTRODUCTIONS per worker
+Before dispatching, check each entry's `born` field from the map (nodes array). Apply:
+- `born` after the last Weave date → `MAX_INTRODUCTIONS = 9`
+- `born` at or before the last Weave date → `MAX_INTRODUCTIONS = 3`
+
+New entries have never been woven and have more unclaimed connection potential — they earn the higher limit. The coordinator-level cap still applies after de-duplication.
+
 ### Step 3: Dispatch workers
 Use the Agent tool with `subagent_type="Explore"`. Dispatch up to 5 workers in parallel in a single message.
 
-**Model selection:** Default to `model: "haiku"` for all routine swarm workers. Haiku produces comparable audit quality at ~50-80x lower cost than Opus. Reserve Opus for:
-- The coordinator synthesis step (cross-worker convergence, judgment calls)
-- Individual deep-dive audits on philosophically complex entries
-- Sessions where link-type upgrade reasoning needs to be especially rigorous
+**Model selection:**
 
-Quality comparison (validated 2026-03-31, 5-entry parallel test):
+| Role | Model | Notes |
+|---|---|---|
+| Full Swarm workers | `model: "haiku"` | Default. Parallel dispatch via Agent tool. Best unsung path coverage and label quality. |
+| Coordinator synthesis | Claude Sonnet (main session) | Cross-worker convergence, judgment calls, presentation to Loudon. |
+| Mode 2 single-entry (zero API cost) | `gemma4:26b` via Ollama | Pre-loaded architecture — use `_ops/swarm/build-preloaded-prompt.py`. Serialized, not suitable for full swarm. See [[Swarm Weave]] Mode 2 section. |
+
+**Do not use smaller Gemma variants for worker tasks.** `gemma4:e4b` (8B, also tagged `gemma4:latest`) missed unsung paths entirely in validation. `gemma4:e2b` (5B) produced hallucinations. Validated 2026-04-08.
+
+Quality comparison (validated 2026-03-31, 5-entry parallel test, Haiku vs Opus):
 - Haiku matches Opus on: JSON compliance, stage assessment, missing connections, body health diagnostics
 - Opus has edge on: cross-domain philosophical leaps, evocative link labels
 - Haiku surprised on: granular body analysis (caught incomplete sentences), proposed link-type upgrades (e.g., `contrasts-with` for Semantic Delay ↔ Retrospective Delay)
