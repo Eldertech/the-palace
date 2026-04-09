@@ -3,10 +3,10 @@ title: "Crystal Synthesizer"
 type: project
 pillars: [creation, tools, philosophy]
 born: 2026-02
-last_activated: 2026-02
-activation_count: 1
-stage: growing
-confidence: hypothesis
+last_activated: 2026-04
+activation_count: 2
+stage: fruiting
+confidence: working
 energy: high
 hook_quality: 9
 beauty: 10
@@ -30,7 +30,12 @@ links:
     type: deepens
   - target: "[[Signal-Rate CV Architecture]]"
     type: mirrors
-forward_vector: "I want to move from hypothesis to instrument — from phonon mode equations on paper to actual audio that enacts crystal physics. My immediate direction: implement the simplest Bravais lattice (cubic) as a working synthesizer patch and test whether the timbral descriptions derived from spectral analogy are confirmed or disproved by what you actually hear. Every failed prediction is as valuable as a confirmed one, because the Crystal Synthesizer exists precisely to test its own hypotheses."
+  - target: "[[The Metaphor Stretch]]"
+    type: spawned
+    label: midwifed
+  - target: "[[What Claim Does Scientific Sonification Make?]]"
+    type: spawned
+forward_vector: "The first audio exists. Seven lattice types rendered, spectral hypotheses directionally confirmed (cubic brightest → triclinic most scattered). Four Decision Points identified and built into the code as explicit pedagogical parameters. The live edge is now the fidelity question: what claim does this instrument make about actual crystals? Three paths named, none chosen. The next move is either first performance (which will force the choice) or building lesson material around the Decision Points — starting with N_PARTIALS as the most audibly dramatic. The honest artifact (beating sweeps that are wrong in detail but right in tendency) wants examination across other boundary-crossing instruments. Audio files at Projects/Crystal Audio/."
 ---
 
 # Crystal Synthesizer
