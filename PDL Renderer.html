@@ -1,0 +1,1024 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PDL — Patch Description Language</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.23.2/babel.min.js"></script>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: #0a0f1e; color: #f1f5f9; font-family: monospace; }
+  </style>
+</head>
+<body>
+  <div id="root"></div>
+
+  <!--
+    Single source of truth for the VCV Fundamental registry.
+    This block is the same data as vcv_fundamental_registry.json — keep them in sync.
+    The babel script below reads this node via document.getElementById("vcv-registry").
+  -->
+  <script type="application/json" id="vcv-registry">
+{
+  "version": "2.0",
+  "plugin": "Fundamental",
+  "plugin_slug": "Fundamental",
+  "vcv_rack_version": "2.x",
+  "source": "https://github.com/VCVRack/Fundamental",
+  "verification_method": "All port and param indices verified against Fundamental v2 source code via WebFetch of each module's .cpp file (configInput / configOutput / configParam call order).",
+  "last_verified": "2026-04-19",
+  "notes": "Port indices are the integer IDs cables use in .vcv JSON. They are determined by the order of configInput()/configOutput() calls in each module's source. UI label position on the panel does NOT determine index — only the source code does. v2.0 corrects extensive errors in v1.0.",
+  "signal_types": {
+    "audio":   { "voltage": "±5V nominal",                 "color_hint": "coral"  },
+    "cv":      { "voltage": "0–10V or ±5V context-dependent", "color_hint": "purple" },
+    "pitch":   { "voltage": "1V/octave, 0V = C4",          "color_hint": "blue"   },
+    "gate":    { "voltage": "0V or 10V",                   "color_hint": "teal"   },
+    "trigger": { "voltage": "brief 10V pulse",             "color_hint": "amber"  }
+  },
+  "modules": {
+    "VCO": {
+      "slug": "VCO", "name": "VCO", "hp": 12,
+      "description": "Voltage-controlled oscillator. Four simultaneous waveform outputs. Hard/soft sync. PWM.",
+      "verification": "verified against src/VCO.cpp (2026-04-19)",
+      "inputs": [
+        { "name": "V/OCT", "type": "pitch",   "index": 0, "description": "1V/oct pitch CV" },
+        { "name": "FM",    "type": "cv",      "index": 1, "description": "Frequency modulation CV" },
+        { "name": "SYNC",  "type": "trigger", "index": 2, "description": "Hard or soft sync (mode set by SYNC_MODE param)" },
+        { "name": "PWM",   "type": "cv",      "index": 3, "description": "PWM CV (depth set by PWM_DEPTH param)" }
+      ],
+      "outputs": [
+        { "name": "SIN", "type": "audio", "index": 0, "description": "Sine" },
+        { "name": "TRI", "type": "audio", "index": 1, "description": "Triangle" },
+        { "name": "SAW", "type": "audio", "index": 2, "description": "Sawtooth" },
+        { "name": "SQR", "type": "audio", "index": 3, "description": "Square/pulse — width = PW + PWM" }
+      ],
+      "params": [
+        { "name": "FREQ",      "index": 0, "range": [-76.0, 76.0], "default": 0.0, "unit": "semitones",  "description": "Frequency offset" },
+        { "name": "FM_DEPTH",  "index": 1, "range": [-1.0, 1.0],   "default": 0.0, "unit": "normalized", "description": "FM input attenuverter" },
+        { "name": "PW",        "index": 2, "range": [0.01, 0.99],  "default": 0.5, "unit": "normalized", "description": "Pulse width" },
+        { "name": "PWM_DEPTH", "index": 3, "range": [-1.0, 1.0],   "default": 0.0, "unit": "normalized", "description": "PWM input attenuverter" },
+        { "name": "FM_MODE",   "index": 4, "range": [0.0, 1.0],    "default": 0.0, "unit": "toggle",     "description": "FM mode (0=lin, 1=exp)" },
+        { "name": "SYNC_MODE", "index": 5, "range": [0.0, 1.0],    "default": 1.0, "unit": "toggle",     "description": "Sync mode (0=soft, 1=hard)" }
+      ],
+      "perceptual_index": ["oscillator","osc","tone","pitch","source","saw","sawtooth","sine","sin","triangle","tri","square","pulse","waveform","fundamental","vco","analog","bright","buzzy","raw","rich","harmonics"]
+    },
+    "VCF": {
+      "slug": "VCF", "name": "VCF", "hp": 8,
+      "description": "Voltage-controlled filter. Lowpass + highpass simultaneously. Drive input. Self-oscillates at high resonance.",
+      "verification": "verified against src/VCF.cpp (2026-04-19)",
+      "inputs": [
+        { "name": "FREQ",  "type": "cv",    "index": 0, "description": "Cutoff frequency CV" },
+        { "name": "RES",   "type": "cv",    "index": 1, "description": "Resonance CV" },
+        { "name": "DRIVE", "type": "cv",    "index": 2, "description": "Drive (saturation) CV" },
+        { "name": "IN",    "type": "audio", "index": 3, "description": "Audio signal input — THIS IS WHERE AUDIO GOES (index 3, not 0)" }
+      ],
+      "outputs": [
+        { "name": "LPF", "type": "audio", "index": 0, "description": "Lowpass output" },
+        { "name": "HPF", "type": "audio", "index": 1, "description": "Highpass output" }
+      ],
+      "params": [
+        { "name": "FREQ",     "index": 0, "range": [0.0, 1.0],  "default": 0.5, "unit": "normalized", "description": "Cutoff knob" },
+        { "name": "RES",      "index": 1, "range": [0.0, 1.0],  "default": 0.0, "unit": "normalized", "description": "Resonance" },
+        { "name": "RES_CV",   "index": 2, "range": [-1.0, 1.0], "default": 0.0, "unit": "normalized", "description": "RES CV attenuverter" },
+        { "name": "FREQ_CV",  "index": 3, "range": [-1.0, 1.0], "default": 0.0, "unit": "normalized", "description": "FREQ CV attenuverter" },
+        { "name": "DRIVE",    "index": 4, "range": [-1.0, 1.0], "default": 0.0, "unit": "normalized", "description": "Drive amount" },
+        { "name": "DRIVE_CV", "index": 5, "range": [-1.0, 1.0], "default": 0.0, "unit": "normalized", "description": "DRIVE CV attenuverter" }
+      ],
+      "perceptual_index": ["filter","vcf","lowpass","highpass","cutoff","resonance","dark","bright","thin","warm","muffled","smooth","sharp","sweep","wah","self-oscillate","drive","saturation","tone shaping","timbre"]
+    },
+    "ADSR": {
+      "slug": "ADSR", "name": "ADSR EG", "hp": 8,
+      "description": "Attack-Decay-Sustain-Release envelope generator. Gate input is at index 4 (after the 4 CV modulation inputs).",
+      "verification": "verified against src/ADSR.cpp (2026-04-19)",
+      "inputs": [
+        { "name": "A_CV",   "type": "cv",      "index": 0, "description": "Attack time CV" },
+        { "name": "D_CV",   "type": "cv",      "index": 1, "description": "Decay time CV" },
+        { "name": "S_CV",   "type": "cv",      "index": 2, "description": "Sustain level CV" },
+        { "name": "R_CV",   "type": "cv",      "index": 3, "description": "Release time CV" },
+        { "name": "GATE",   "type": "gate",    "index": 4, "description": "Gate input — primary trigger (NOT index 0)" },
+        { "name": "RETRIG", "type": "trigger", "index": 5, "description": "Retrigger" }
+      ],
+      "outputs": [
+        { "name": "ENV", "type": "cv", "index": 0, "description": "Envelope CV (0–10V)" }
+      ],
+      "params": [
+        { "name": "A",    "index": 0, "range": [0.0, 1.0],  "default": 0.5, "unit": "normalized", "description": "Attack" },
+        { "name": "D",    "index": 1, "range": [0.0, 1.0],  "default": 0.5, "unit": "normalized", "description": "Decay" },
+        { "name": "S",    "index": 2, "range": [0.0, 1.0],  "default": 0.5, "unit": "normalized", "description": "Sustain" },
+        { "name": "R",    "index": 3, "range": [0.0, 1.0],  "default": 0.5, "unit": "normalized", "description": "Release" },
+        { "name": "A_CV", "index": 4, "range": [-1.0, 1.0], "default": 0.0, "unit": "normalized", "description": "A CV attenuverter" },
+        { "name": "D_CV", "index": 5, "range": [-1.0, 1.0], "default": 0.0, "unit": "normalized", "description": "D CV attenuverter" },
+        { "name": "S_CV", "index": 6, "range": [-1.0, 1.0], "default": 0.0, "unit": "normalized", "description": "S CV attenuverter" },
+        { "name": "R_CV", "index": 7, "range": [-1.0, 1.0], "default": 0.0, "unit": "normalized", "description": "R CV attenuverter" },
+        { "name": "PUSH", "index": 8, "range": [0.0, 1.0],  "default": 0.0, "unit": "button",     "description": "Manual gate" }
+      ],
+      "perceptual_index": ["envelope","adsr","eg","contour","shape","dynamics","attack","decay","sustain","release","pluck","pad","swell","punch","snap","breath","transient","articulation","volume shape","timbre shape"]
+    },
+    "VCA": {
+      "slug": "VCA-1", "name": "VCA", "hp": 3,
+      "description": "Single-channel VCA. CV input is index 0, audio input is index 1 (NOT the other way around).",
+      "verification": "verified against src/VCA-1.cpp (2026-04-19)",
+      "inputs": [
+        { "name": "CV", "type": "cv",    "index": 0, "description": "Level CV (0–10V) — THIS IS INDEX 0, not the audio input" },
+        { "name": "IN", "type": "audio", "index": 1, "description": "Audio input — THIS IS INDEX 1" }
+      ],
+      "outputs": [
+        { "name": "OUT", "type": "audio", "index": 0, "description": "Amplified output" }
+      ],
+      "params": [
+        { "name": "LEVEL",    "index": 0, "range": [0.0, 1.0], "default": 1.0, "unit": "normalized", "description": "Level offset" },
+        { "name": "RESPONSE", "index": 1, "range": [0.0, 1.0], "default": 1.0, "unit": "toggle",     "description": "0=exp, 1=lin" }
+      ],
+      "perceptual_index": ["vca","amplifier","volume","level","gain","dynamics","gating","tremolo","amplitude modulation","open","close","envelope follower","duck"]
+    },
+    "LFO": {
+      "slug": "LFO", "name": "LFO", "hp": 10,
+      "description": "Low-frequency oscillator. Four outputs (no UNI — use OFFSET param for unipolar). Clock-syncable.",
+      "verification": "verified against src/LFO.cpp (2026-04-19)",
+      "inputs": [
+        { "name": "FM",    "type": "cv",      "index": 0, "description": "FM CV" },
+        { "name": "CLOCK", "type": "trigger", "index": 1, "description": "Clock for sync" },
+        { "name": "RESET", "type": "trigger", "index": 2, "description": "Reset phase" },
+        { "name": "PWM",   "type": "cv",      "index": 3, "description": "PWM CV (square output)" }
+      ],
+      "outputs": [
+        { "name": "SIN", "type": "cv", "index": 0, "description": "Sine (±5V or 0–10V depending on OFFSET)" },
+        { "name": "TRI", "type": "cv", "index": 1, "description": "Triangle" },
+        { "name": "SAW", "type": "cv", "index": 2, "description": "Sawtooth" },
+        { "name": "SQR", "type": "cv", "index": 3, "description": "Square" }
+      ],
+      "params": [
+        { "name": "FREQ",      "index": 0, "range": [-8.0, 10.0], "default": 1.0, "unit": "log Hz",     "description": "Frequency" },
+        { "name": "FM_DEPTH",  "index": 1, "range": [-1.0, 1.0],  "default": 0.0, "unit": "normalized", "description": "FM attenuverter" },
+        { "name": "PW",        "index": 2, "range": [0.01, 0.99], "default": 0.5, "unit": "normalized", "description": "Pulse width" },
+        { "name": "PWM_DEPTH", "index": 3, "range": [-1.0, 1.0],  "default": 0.0, "unit": "normalized", "description": "PWM attenuverter" },
+        { "name": "OFFSET",    "index": 4, "range": [0.0, 1.0],   "default": 1.0, "unit": "toggle",     "description": "0=bipolar ±5V, 1=unipolar 0-10V" },
+        { "name": "INVERT",    "index": 5, "range": [0.0, 1.0],   "default": 0.0, "unit": "toggle",     "description": "Invert outputs" }
+      ],
+      "perceptual_index": ["lfo","modulation","wobble","vibrato","tremolo","drift","slowly evolving","breathing","pulsing","sweeping","rhythmic","cyclic","periodic","wave","low frequency"]
+    },
+    "SEQ3": {
+      "slug": "SEQ3", "name": "SEQ 3", "hp": 26,
+      "description": "Three-channel 8-step sequencer. Output 0 is master TRIG; CV1-3 are at indices 1-3; per-step triggers at 4-11.",
+      "verification": "verified against src/SEQ3.cpp (2026-04-19)",
+      "inputs": [
+        { "name": "TEMPO", "type": "cv",      "index": 0, "description": "Tempo CV (internal clock)" },
+        { "name": "CLOCK", "type": "trigger", "index": 1, "description": "External clock — overrides internal when patched" },
+        { "name": "RESET", "type": "trigger", "index": 2, "description": "Reset to step 1" },
+        { "name": "STEPS", "type": "cv",      "index": 3, "description": "Step count CV" },
+        { "name": "RUN",   "type": "trigger", "index": 4, "description": "Run/stop gate" }
+      ],
+      "outputs": [
+        { "name": "TRIG",  "type": "trigger", "index": 0,  "description": "Master per-step trigger" },
+        { "name": "CV1",   "type": "cv",      "index": 1,  "description": "Channel 1 CV" },
+        { "name": "CV2",   "type": "cv",      "index": 2,  "description": "Channel 2 CV" },
+        { "name": "CV3",   "type": "cv",      "index": 3,  "description": "Channel 3 CV" },
+        { "name": "STEP1", "type": "trigger", "index": 4,  "description": "Step 1 trig" },
+        { "name": "STEP2", "type": "trigger", "index": 5,  "description": "Step 2 trig" },
+        { "name": "STEP3", "type": "trigger", "index": 6,  "description": "Step 3 trig" },
+        { "name": "STEP4", "type": "trigger", "index": 7,  "description": "Step 4 trig" },
+        { "name": "STEP5", "type": "trigger", "index": 8,  "description": "Step 5 trig" },
+        { "name": "STEP6", "type": "trigger", "index": 9,  "description": "Step 6 trig" },
+        { "name": "STEP7", "type": "trigger", "index": 10, "description": "Step 7 trig" },
+        { "name": "STEP8", "type": "trigger", "index": 11, "description": "Step 8 trig" }
+      ],
+      "params": [
+        { "name": "TEMPO", "index": 0, "range": [-2.0, 4.0], "default": 1.0, "unit": "log",     "description": "Internal tempo" },
+        { "name": "STEPS", "index": 5, "range": [1, 8],      "default": 8,   "unit": "integer", "description": "Active step count" }
+      ],
+      "perceptual_index": ["sequencer","sequence","pattern","melody","arpeggio","step","clock","rhythm","loop","cycle","melodic pattern","bassline","motif","phrase"]
+    },
+    "MIXER": {
+      "slug": "Mixer", "name": "Mix", "hp": 6,
+      "description": "Six-input simple mixer. Single master Level knob — no per-channel control. Use VCMIXER for per-channel.",
+      "verification": "verified against src/Mixer.cpp (2026-04-19)",
+      "inputs": [
+        { "name": "IN1", "type": "audio", "index": 0, "description": "Ch1" },
+        { "name": "IN2", "type": "audio", "index": 1, "description": "Ch2" },
+        { "name": "IN3", "type": "audio", "index": 2, "description": "Ch3" },
+        { "name": "IN4", "type": "audio", "index": 3, "description": "Ch4" },
+        { "name": "IN5", "type": "audio", "index": 4, "description": "Ch5" },
+        { "name": "IN6", "type": "audio", "index": 5, "description": "Ch6" }
+      ],
+      "outputs": [
+        { "name": "MIX", "type": "audio", "index": 0, "description": "Summed mix" }
+      ],
+      "params": [
+        { "name": "LEVEL", "index": 0, "range": [0.0, 1.0], "default": 1.0, "unit": "normalized", "description": "Master level" }
+      ],
+      "perceptual_index": ["mixer","mix","blend","combine","sum","six channel","multi-source","submix","simple mix"]
+    },
+    "VCMIXER": {
+      "slug": "VCMixer", "name": "VCA Mix", "hp": 10,
+      "description": "Four-channel mixer with per-channel level knobs AND CV inputs. Audio inputs start at index 5, not 0.",
+      "verification": "verified against src/VCMixer.cpp (2026-04-19)",
+      "inputs": [
+        { "name": "MIX_CV", "type": "cv",    "index": 0, "description": "Master mix CV" },
+        { "name": "CV1",    "type": "cv",    "index": 1, "description": "Ch1 level CV" },
+        { "name": "CV2",    "type": "cv",    "index": 2, "description": "Ch2 level CV" },
+        { "name": "CV3",    "type": "cv",    "index": 3, "description": "Ch3 level CV" },
+        { "name": "CV4",    "type": "cv",    "index": 4, "description": "Ch4 level CV" },
+        { "name": "IN1",    "type": "audio", "index": 5, "description": "Ch1 audio (audio inputs start at 5!)" },
+        { "name": "IN2",    "type": "audio", "index": 6, "description": "Ch2 audio" },
+        { "name": "IN3",    "type": "audio", "index": 7, "description": "Ch3 audio" },
+        { "name": "IN4",    "type": "audio", "index": 8, "description": "Ch4 audio" }
+      ],
+      "outputs": [
+        { "name": "MIX",  "type": "audio", "index": 0, "description": "Summed mix" },
+        { "name": "OUT1", "type": "audio", "index": 1, "description": "Ch1 post-VCA (pre-mix)" },
+        { "name": "OUT2", "type": "audio", "index": 2, "description": "Ch2 post-VCA" },
+        { "name": "OUT3", "type": "audio", "index": 3, "description": "Ch3 post-VCA" },
+        { "name": "OUT4", "type": "audio", "index": 4, "description": "Ch4 post-VCA" }
+      ],
+      "params": [
+        { "name": "MIX_LVL", "index": 0, "range": [0.0, 2.0],   "default": 1.0, "unit": "normalized", "description": "Master mix level" },
+        { "name": "LVL1",    "index": 1, "range": [0.0, 1.414], "default": 1.0, "unit": "normalized", "description": "Ch1 level" },
+        { "name": "LVL2",    "index": 2, "range": [0.0, 1.414], "default": 1.0, "unit": "normalized", "description": "Ch2 level" },
+        { "name": "LVL3",    "index": 3, "range": [0.0, 1.414], "default": 1.0, "unit": "normalized", "description": "Ch3 level" },
+        { "name": "LVL4",    "index": 4, "range": [0.0, 1.414], "default": 1.0, "unit": "normalized", "description": "Ch4 level" }
+      ],
+      "perceptual_index": ["mixer","vc mixer","vca mix","voltage controlled mixer","four channel","per-channel level","channel mix","balance","submix","stem","pre-mix output","channel strip"]
+    }
+  }
+}
+  </script>
+
+  <script type="text/babel">
+    const { useState } = React;
+
+    // ─── Registry Bootstrap ──────────────────────────────────────────────────────
+    // Single source of truth: the inline <script type="application/json" id="vcv-registry">
+    // block at the top of the body. That block mirrors vcv_fundamental_registry.json —
+    // keep them in sync (when the schema solidifies, the HTML can fetch() the JSON instead).
+    //
+    // REGISTRY shape after bootstrap: { [moduleType]: { slug, hp, inputs:[...], outputs:[...], params, perceptual_index, ... } }
+
+    const REGISTRY_DATA = JSON.parse(document.getElementById("vcv-registry").textContent);
+    const REGISTRY      = REGISTRY_DATA.modules;
+    const PLUGIN_SLUG   = REGISTRY_DATA.plugin_slug || "Fundamental";
+
+    // Build lookup maps from the registry for fast port-type resolution
+    function buildRegistryLookup(registry) {
+      const inputMap  = {}; // moduleType → { portName → type }
+      const outputMap = {};
+      for (const [type, mod] of Object.entries(registry)) {
+        inputMap[type]  = {};
+        outputMap[type] = {};
+        for (const p of (mod.inputs  || [])) inputMap[type][p.name]  = p.type;
+        for (const p of (mod.outputs || [])) outputMap[type][p.name] = p.type;
+      }
+      return { inputMap, outputMap };
+    }
+    const { inputMap: REG_INPUTS, outputMap: REG_OUTPUTS } = buildRegistryLookup(REGISTRY);
+
+    // ─── Constants ──────────────────────────────────────────────────────────────
+    const MODULE_W       = 160;
+    const MODULE_HEADER  = 28;
+    const PORT_H         = 22;
+    const PORT_PAD_BOT   = 10;
+    const PORT_DOT_R     = 5;
+    const COL_GAP        = 100;
+    const ROW_GAP        = 28;
+    const CANVAS_PAD     = 48;
+
+    const SIGNAL_COLORS = {
+      audio:   "#f28b6e",
+      cv:      "#a78bfa",
+      gate:    "#6ee7b7",
+      pitch:   "#60a5fa",
+      trigger: "#fbbf24",
+      default: "#94a3b8",
+    };
+
+    const SIGNAL_LABELS = {
+      audio: "Audio", cv: "CV", gate: "Gate", pitch: "Pitch", trigger: "Trigger",
+    };
+
+    // ─── Helpers ─────────────────────────────────────────────────────────────────
+    function modHeight(numInputs) {
+      return MODULE_HEADER + Math.max(numInputs, 1) * PORT_H + PORT_PAD_BOT;
+    }
+    function inputPortY(modY, portIdx) {
+      return modY + MODULE_HEADER + portIdx * PORT_H + PORT_H / 2;
+    }
+    function outputPortY(modY, numInputs) {
+      return modY + MODULE_HEADER + (Math.max(numInputs, 1) * PORT_H) / 2;
+    }
+
+    // ─── Registry Port Type Resolution ───────────────────────────────────────────
+    // Priority: explicit bracket > destination registry input > source registry output > null
+    // Callers chain with || and put "default" at the end — so these must return null on miss,
+    // never the string "default" (which would be truthy and short-circuit the chain).
+    function resolveInputType(instanceId, portName, bracketType, instanceTypes) {
+      if (bracketType) return bracketType;                    // explicit bracket wins
+      const modType = instanceTypes[instanceId];
+      if (modType && REG_INPUTS[modType]) {
+        const t = REG_INPUTS[modType][portName];
+        if (t) return t;
+      }
+      return null;                                           // miss → let caller try next resolver
+    }
+
+    function resolveOutputType(instanceId, portName, bracketType, instanceTypes) {
+      if (bracketType) return bracketType;                    // explicit bracket wins
+      const modType = instanceTypes[instanceId];
+      if (modType && REG_OUTPUTS[modType]) {
+        const t = REG_OUTPUTS[modType][portName || "OUT"];
+        if (t) return t;
+      }
+      return null;                                           // miss → caller falls through to "default"
+    }
+
+    // ─── Parser ──────────────────────────────────────────────────────────────────
+    function parsePDL(text) {
+      const connections   = [];
+      const params        = {};
+      const moduleSet     = new Set();
+      const instanceTypes = {}; // instanceId → registry module type key
+
+      for (const rawLine of text.split("\n")) {
+        // Strip trailing `// comment` from any line, then trim. This way an inline
+        // comment on a declaration / connection / param line doesn't make the
+        // regex below silently reject the whole line — a real bug we hit on
+        // 2026-04-19 when @FENV = ADSR  // filter envelope failed to register.
+        const stripped = rawLine.replace(/\/\/.*$/, "");
+        const line = stripped.trim();
+        if (!line) continue;
+
+        // Instance declaration:  @INSTANCE = ModuleType
+        if (line.startsWith("@")) {
+          const m = line.match(/^@([\w\s]+?)\s*=\s*(\w+)\s*$/);
+          if (m) {
+            const instanceId = m[1].trim();
+            const modType    = m[2].trim();
+            if (REGISTRY[modType]) {
+              instanceTypes[instanceId] = modType;
+            }
+          }
+          continue;
+        }
+
+        // Parameter line:  * Module: Key = Val | Key = Val
+        if (line.startsWith("*")) {
+          const m = line.match(/^\*\s*([\w\s]+?):\s*(.+)$/);
+          if (m) {
+            const mod = m[1].trim();
+            params[mod] = params[mod] || [];
+            m[2].split("|").map(s => s.trim()).filter(Boolean).forEach(e => params[mod].push(e));
+          }
+          continue;
+        }
+
+        // Connection line:  A(:port)? -> B(:port)? [type]?
+        const cm = line.match(
+          /^([\w\s/]+?)(?::([^->\[\]]+))?\s*->\s*([\w\s/]+?)(?::([^->\[\]]+))?\s*(?:\[(\w+)\])?$/
+        );
+        if (cm) {
+          const [, from, fromPort, to, toPort, bracketType] = cm;
+          const fromId = from.trim(), toId = to.trim();
+          moduleSet.add(fromId);
+          moduleSet.add(toId);
+          connections.push({
+            from: fromId, fromPort: fromPort?.trim() || null,
+            to:   toId,   toPort:   toPort?.trim()   || null,
+            bracketType: bracketType?.toLowerCase() || null,
+          });
+        }
+      }
+
+      // Resolve final port names + signal types for each connection.
+      // For unnamed connections to/from a registered module, default to the first
+      // input/output in the registry — not a generic "IN"/"OUT" string, which would
+      // miss for modules like VCO (first input is V/OCT, first output is SIN).
+      const resolvedConnections = connections.map(c => {
+        const toModType    = instanceTypes[c.to];
+        const fromModType  = instanceTypes[c.from];
+        const toFirstIn    = toModType   && REGISTRY[toModType]   && REGISTRY[toModType].inputs?.[0]?.name;
+        const fromFirstOut = fromModType && REGISTRY[fromModType] && REGISTRY[fromModType].outputs?.[0]?.name;
+
+        // Canonical port names — written back into the connection so downstream
+        // code (buildPortMap, renderer, emitter) all see the same resolved names.
+        const toPort   = c.toPort   || toFirstIn    || "In";
+        const fromPort = c.fromPort || fromFirstOut || "Out";
+
+        const type = resolveInputType(c.to, toPort, c.bracketType, instanceTypes)
+                  || resolveOutputType(c.from, fromPort, c.bracketType, instanceTypes)
+                  || "default";
+        return { ...c, toPort, fromPort, type };
+      });
+
+      return { connections: resolvedConnections, params, modules: [...moduleSet], instanceTypes };
+    }
+
+    // ─── .vcv Emitter ────────────────────────────────────────────────────────────
+    // Transforms a parsed PDL spec + registry into a VCV Rack patch JSON object.
+    //
+    // Scope (T1 minimum viable):
+    //   - Only registered instances become VCV modules. Unregistered endpoints
+    //     (KEYBOARD, OUT, external controllers) are treated as virtual — cables
+    //     that touch them are skipped in the emitter output.
+    //   - Module placement packs left-to-right by HP width, wrapping at LAYOUT_MAX_HP.
+    //   - Parameter values are NOT emitted in this pass — that is T7. Emitted modules
+    //     load with their VCV Rack defaults.
+    //
+    // Schema caveats:
+    //   VCV Rack's .vcv JSON schema was written from public documentation and sample
+    //   files. If a generated file fails to load, the most likely culprits are field
+    //   name casing or the exact version string. Compare against a file saved out of
+    //   VCV Rack 2.x and adjust this emitter accordingly. The structural shape —
+    //   modules[] with {id, plugin, model, version, params, pos} and cables[] with
+    //   {id, outputModuleId, outputId, inputModuleId, inputId, color} — is stable.
+
+    const LAYOUT_MAX_HP = 120;
+    const CABLE_COLORS_VCV = {
+      audio:   "#f28b6e",
+      cv:      "#a78bfa",
+      gate:    "#6ee7b7",
+      pitch:   "#60a5fa",
+      trigger: "#fbbf24",
+      default: "#94a3b8",
+    };
+
+    function emitVcvJson(pdlText) {
+      const { connections, instanceTypes } = parsePDL(pdlText);
+
+      // Only registered instances become VCV modules.
+      const registeredIds = Object.keys(instanceTypes).filter(id => REGISTRY[instanceTypes[id]]);
+
+      // Assign sequential integer IDs starting at 1.
+      const moduleId = {};
+      registeredIds.forEach((id, i) => { moduleId[id] = i + 1; });
+
+      // Layout: left-to-right HP packing with row wrap.
+      const positions = {};
+      let curX = 0, curRow = 0;
+      for (const id of registeredIds) {
+        const mod = REGISTRY[instanceTypes[id]];
+        const hp  = mod.hp || 1;
+        if (curX + hp > LAYOUT_MAX_HP && curX > 0) { curRow++; curX = 0; }
+        positions[id] = [curX, curRow];
+        curX += hp;
+      }
+
+      // Build modules array.
+      const modulesOut = registeredIds.map(id => {
+        const modType = instanceTypes[id];
+        const mod     = REGISTRY[modType];
+        return {
+          id: moduleId[id],
+          plugin: PLUGIN_SLUG,
+          version: REGISTRY_DATA.vcv_rack_version || "2.0.0",
+          model: mod.slug,
+          params: (mod.params || []).map((_p, i) => ({ id: i, value: 0 })),
+          leftModuleId: -1,
+          rightModuleId: -1,
+          data: {},
+          pos: positions[id],
+        };
+      });
+
+      // Build cables array. Skip any cable whose endpoint isn't a registered module
+      // (e.g. KEYBOARD -> OSC on the source side). Emit a warning list so the UI
+      // can surface which PDL lines didn't translate.
+      const cablesOut = [];
+      const skipped   = [];
+      let cableCounter = 1;
+
+      for (const c of connections) {
+        if (!instanceTypes[c.from] || !instanceTypes[c.to]) {
+          skipped.push({ line: `${c.from}${c.fromPort?':'+c.fromPort:''} -> ${c.to}${c.toPort?':'+c.toPort:''}`, reason: "endpoint not registered" });
+          continue;
+        }
+
+        const fromMod = REGISTRY[instanceTypes[c.from]];
+        const toMod   = REGISTRY[instanceTypes[c.to]];
+        const fromPort = (fromMod.outputs || []).find(p => p.name === c.fromPort);
+        const toPort   = (toMod.inputs   || []).find(p => p.name === c.toPort);
+
+        if (!fromPort || !toPort) {
+          skipped.push({
+            line: `${c.from}:${c.fromPort} -> ${c.to}:${c.toPort}`,
+            reason: !fromPort ? `output port "${c.fromPort}" not in ${instanceTypes[c.from]}` :
+                                `input port "${c.toPort}" not in ${instanceTypes[c.to]}`
+          });
+          continue;
+        }
+
+        cablesOut.push({
+          id: cableCounter++,
+          outputModuleId: moduleId[c.from],
+          outputId: fromPort.index,
+          inputModuleId: moduleId[c.to],
+          inputId: toPort.index,
+          color: CABLE_COLORS_VCV[c.type] || CABLE_COLORS_VCV.default,
+        });
+      }
+
+      const patch = {
+        version: REGISTRY_DATA.vcv_rack_version || "2.0.0",
+        zoom: 0.0,
+        gridOffset: [0.0, 0.0],
+        cableOpacity: 0.5,
+        cableTension: 0.5,
+        lockModules: false,
+        modules: modulesOut,
+        cables: cablesOut,
+      };
+
+      return { patch, skipped };
+    }
+
+    // Triggers a browser download of a .vcv file for the given PDL spec.
+    function downloadVcvPatch(pdlText, filename) {
+      const { patch, skipped } = emitVcvJson(pdlText);
+      const json = JSON.stringify(patch, null, 2);
+      const blob = new Blob([json], { type: "application/json" });
+      const url  = URL.createObjectURL(blob);
+      const a    = document.createElement("a");
+      a.href     = url;
+      a.download = filename || "patch.vcv";
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      setTimeout(() => URL.revokeObjectURL(url), 1000);
+      return { skipped, moduleCount: patch.modules.length, cableCount: patch.cables.length };
+    }
+
+    // ─── Port Map ────────────────────────────────────────────────────────────────
+    function buildPortMap(connections) {
+      const inputPorts  = {};
+      const outputPorts = {};
+
+      for (const c of connections) {
+        inputPorts[c.to]  = inputPorts[c.to]  || [];
+        const inName  = c.toPort   || "In";
+        if (!inputPorts[c.to].find(p => p.name === inName))
+          inputPorts[c.to].push({ name: inName, type: c.type });
+
+        outputPorts[c.from] = outputPorts[c.from] || [];
+        const outName = c.fromPort || "Out";
+        if (!outputPorts[c.from].find(p => p.name === outName))
+          outputPorts[c.from].push({ name: outName, type: c.type });
+      }
+
+      return { inputPorts, outputPorts };
+    }
+
+    // ─── Layout ──────────────────────────────────────────────────────────────────
+    function layoutModules(modules, connections, inputPorts) {
+      const outEdges = {}, inDegree = {};
+      for (const m of modules) { outEdges[m] = []; inDegree[m] = 0; }
+      for (const c of connections) {
+        outEdges[c.from] = outEdges[c.from] || [];
+        inDegree[c.to]   = (inDegree[c.to] || 0);
+        outEdges[c.from].push(c.to);
+        inDegree[c.to]++;
+      }
+
+      const col = {}, visited = new Set();
+      const queue = modules.filter(m => (inDegree[m] || 0) === 0);
+      queue.forEach(m => { col[m] = 0; visited.add(m); });
+
+      let head = 0;
+      while (head < queue.length) {
+        const m = queue[head++];
+        for (const next of (outEdges[m] || [])) {
+          col[next] = Math.max(col[next] || 0, col[m] + 1);
+          if (!visited.has(next)) { visited.add(next); queue.push(next); }
+        }
+      }
+      for (const m of modules) if (col[m] === undefined) col[m] = 0;
+
+      const cols = {};
+      for (const m of modules) {
+        const c = col[m];
+        cols[c] = cols[c] || [];
+        cols[c].push(m);
+      }
+
+      const positions = {};
+      const colKeys   = Object.keys(cols).map(Number).sort((a, b) => a - b);
+      let x = CANVAS_PAD;
+
+      for (const c of colKeys) {
+        let y = CANVAS_PAD;
+        for (const m of cols[c]) {
+          const numIn = (inputPorts[m] || []).length;
+          const h     = modHeight(numIn);
+          positions[m] = { x, y, w: MODULE_W, h };
+          y += h + ROW_GAP;
+        }
+        x += MODULE_W + COL_GAP;
+      }
+
+      const totalW = x - COL_GAP + CANVAS_PAD + 180;
+      const totalH = Math.max(...Object.values(positions).map(p => p.y + p.h)) + CANVAS_PAD;
+
+      return { positions, totalW, totalH };
+    }
+
+    // ─── Cable Path ──────────────────────────────────────────────────────────────
+    function cablePath(x1, y1, x2, y2) {
+      const dx = Math.max(Math.abs(x2 - x1) * 0.5, 50);
+      return `M ${x1} ${y1} C ${x1 + dx} ${y1}, ${x2 - dx} ${y2}, ${x2} ${y2}`;
+    }
+
+    // ─── Registry Badge ──────────────────────────────────────────────────────────
+    // Shows which module type an instance is bound to (small badge in header)
+    function RegistryBadge({ x, y, w, instanceId, instanceTypes }) {
+      const modType = instanceTypes[instanceId];
+      if (!modType) return null;
+      const mod = REGISTRY[modType];
+      const label = mod ? `${modType} · ${mod.hp}hp` : modType;
+      return (
+        <text
+          x={x + w / 2} y={y + MODULE_HEADER + 1}
+          textAnchor="middle" fill="#475569"
+          fontSize={7.5} fontFamily="monospace"
+          style={{ userSelect: "none" }}
+        >
+          {label}
+        </text>
+      );
+    }
+
+    // ─── Module Block ─────────────────────────────────────────────────────────────
+    function ModuleBlock({ id, x, y, w, h, inputPorts, outputPorts, instanceTypes }) {
+      const inputs    = inputPorts[id]  || [];
+      const hasOutput = (outputPorts[id] || []).length > 0;
+      const numInputs = inputs.length;
+      const outY      = outputPortY(y, numInputs);
+      const isRegistered = !!instanceTypes[id];
+
+      return (
+        <g>
+          {/* Shadow */}
+          <rect x={x+3} y={y+3} width={w} height={h} rx={8} fill="rgba(0,0,0,0.22)" />
+          {/* Body */}
+          <rect x={x} y={y} width={w} height={h} rx={8} fill="#1e293b" stroke={isRegistered ? "#3b5270" : "#334155"} strokeWidth={isRegistered ? 2 : 1.5} />
+          {/* Header band */}
+          <rect x={x} y={y} width={w} height={MODULE_HEADER} rx={8} fill={isRegistered ? "#2d4060" : "#2d3f55"} />
+          <rect x={x} y={y + MODULE_HEADER - 8} width={w} height={8} fill={isRegistered ? "#2d4060" : "#2d3f55"} />
+          {/* Module name */}
+          <text
+            x={x + w / 2} y={y + MODULE_HEADER - 8}
+            textAnchor="middle" fill="#f1f5f9"
+            fontSize={11} fontWeight="700" fontFamily="monospace"
+          >
+            {id}
+          </text>
+
+          {/* Registry type badge */}
+          <RegistryBadge x={x} y={y} w={w} instanceId={id} instanceTypes={instanceTypes} />
+
+          {/* Divider line below header */}
+          <line x1={x} y1={y + MODULE_HEADER} x2={x + w} y2={y + MODULE_HEADER} stroke="#334155" strokeWidth={1} />
+
+          {/* Input port rows */}
+          {inputs.map((port, i) => {
+            const py    = inputPortY(y, i);
+            const color = SIGNAL_COLORS[port.type] || SIGNAL_COLORS.default;
+            return (
+              <g key={port.name}>
+                {i % 2 === 1 && (
+                  <rect x={x + 1} y={py - PORT_H / 2} width={w - 2} height={PORT_H} fill="rgba(255,255,255,0.02)" />
+                )}
+                <circle cx={x} cy={py} r={PORT_DOT_R} fill={color} stroke="#0f172a" strokeWidth={1.5} />
+                <rect x={x + PORT_DOT_R + 2} y={py - 1} width={3} height={2} fill={color} opacity={0.6} />
+                <text
+                  x={x + PORT_DOT_R + 10} y={py + 4}
+                  fill="#cbd5e1" fontSize={10} fontFamily="monospace"
+                >
+                  {port.name}
+                </text>
+                {/* Type tag removed — color on the dot encodes type; text clashed with the output "out" label */}
+              </g>
+            );
+          })}
+
+          {inputs.length === 0 && !hasOutput && (
+            <text x={x + w/2} y={y + MODULE_HEADER + PORT_H/2 + 4} textAnchor="middle" fill="#475569" fontSize={9} fontFamily="monospace">
+              (no connections)
+            </text>
+          )}
+
+          {hasOutput && (
+            <>
+              <circle cx={x + w} cy={outY} r={PORT_DOT_R} fill="#475569" stroke="#0f172a" strokeWidth={1.5} />
+              {/* "out" label sits above the dot — avoids colliding with input type rows */}
+              <text
+                x={x + w} y={outY - PORT_DOT_R - 3}
+                textAnchor="middle" fill="#475569"
+                fontSize={7.5} fontFamily="monospace"
+              >
+                out
+              </text>
+            </>
+          )}
+        </g>
+      );
+    }
+
+    // ─── Diagram ─────────────────────────────────────────────────────────────────
+    function Diagram({ pdl }) {
+      const { connections, params, modules, instanceTypes } = parsePDL(pdl);
+      if (modules.length === 0) return (
+        <div style={{ color: "#475569", fontSize: 12, padding: 40 }}>
+          No modules yet — start typing connections above.
+        </div>
+      );
+
+      const { inputPorts, outputPorts } = buildPortMap(connections);
+      const { positions, totalW, totalH } = layoutModules(modules, connections, inputPorts);
+
+      return (
+        <svg
+          width={totalW} height={totalH}
+          style={{ display: "block", background: "#0f172a", borderRadius: 12 }}
+        >
+          <defs>
+            {Object.entries(SIGNAL_COLORS).map(([type, color]) => (
+              <marker key={type} id={`arr-${type}`} markerWidth="7" markerHeight="7" refX="5" refY="3" orient="auto">
+                <path d="M0,0 L0,6 L7,3 z" fill={color} />
+              </marker>
+            ))}
+          </defs>
+
+          {/* Cables — drawn first so modules render on top */}
+          {connections.map((c, i) => {
+            const from = positions[c.from];
+            const to   = positions[c.to];
+            if (!from || !to) return null;
+
+            const color = SIGNAL_COLORS[c.type] || SIGNAL_COLORS.default;
+
+            const numFromIn = (inputPorts[c.from] || []).length;
+            const x1 = from.x + from.w + PORT_DOT_R;
+            const y1 = outputPortY(from.y, numFromIn);
+
+            const toPortList = inputPorts[c.to] || [];
+            const inName     = c.toPort || "In";
+            const portIdx    = Math.max(0, toPortList.findIndex(p => p.name === inName));
+            const x2 = to.x - PORT_DOT_R;
+            const y2 = inputPortY(to.y, portIdx);
+
+            return (
+              <g key={i}>
+                <path
+                  d={cablePath(x1, y1, x2, y2)}
+                  stroke={color} strokeWidth={2} fill="none"
+                  strokeOpacity={0.8}
+                  markerEnd={`url(#arr-${c.type})`}
+                />
+              </g>
+            );
+          })}
+
+          {/* Module blocks */}
+          {modules.map(id => {
+            const pos = positions[id];
+            if (!pos) return null;
+            return (
+              <ModuleBlock
+                key={id} id={id}
+                x={pos.x} y={pos.y} w={pos.w} h={pos.h}
+                inputPorts={inputPorts}
+                outputPorts={outputPorts}
+                instanceTypes={instanceTypes}
+              />
+            );
+          })}
+
+          {/* Legend */}
+          <g transform={`translate(${totalW - 158}, 20)`}>
+            <rect x={0} y={0} width={140} height={120} rx={6} fill="#1e293b" stroke="#334155" strokeWidth={1} opacity={0.95} />
+            <text x={10} y={18} fill="#64748b" fontSize={9} fontFamily="monospace" fontWeight="600" letterSpacing="1">
+              SIGNAL TYPES
+            </text>
+            {Object.entries(SIGNAL_LABELS).map(([type, label], i) => (
+              <g key={type} transform={`translate(10, ${30 + i * 18})`}>
+                <circle cx={6} cy={4} r={4} fill={SIGNAL_COLORS[type]} />
+                <line x1={14} y1={4} x2={28} y2={4} stroke={SIGNAL_COLORS[type]} strokeWidth={2} />
+                <text x={34} y={8} fill={SIGNAL_COLORS[type]} fontSize={9} fontFamily="monospace">{label}</text>
+              </g>
+            ))}
+          </g>
+        </svg>
+      );
+    }
+
+    // ─── Registry Panel ───────────────────────────────────────────────────────────
+    function RegistryPanel() {
+      const [open, setOpen] = useState(false);
+      return (
+        <div style={{ marginTop: 16 }}>
+          <button
+            onClick={() => setOpen(o => !o)}
+            style={{
+              background: "none", border: "1px solid #334155", color: "#64748b",
+              borderRadius: 6, padding: "4px 10px", fontSize: 10, cursor: "pointer",
+              fontFamily: "monospace", letterSpacing: 1,
+            }}
+          >
+            {open ? "▾" : "▸"} REGISTRY — VCV Fundamental ({Object.keys(REGISTRY).length} modules)
+          </button>
+          {open && (
+            <div style={{ marginTop: 8, display: "flex", flexWrap: "wrap", gap: 8 }}>
+              {Object.entries(REGISTRY).map(([key, mod]) => (
+                <div key={key} style={{
+                  background: "#1e293b", border: "1px solid #2d4060",
+                  borderRadius: 6, padding: "8px 10px", fontSize: 9,
+                  color: "#94a3b8", minWidth: 140,
+                }}>
+                  <div style={{ color: "#f1f5f9", fontWeight: 700, marginBottom: 4 }}>
+                    {key} <span style={{ color: "#475569", fontWeight: 400 }}>({mod.slug} · {mod.hp}hp)</span>
+                  </div>
+                  {mod.inputs.length > 0 && (
+                    <div style={{ marginBottom: 3 }}>
+                      <span style={{ color: "#475569" }}>in: </span>
+                      {mod.inputs.map(p => (
+                        <span key={p.name} style={{ color: SIGNAL_COLORS[p.type], marginRight: 6 }}>
+                          {p.name}
+                          {!p.verified && <span style={{ color: "#475569" }}>*</span>}
+                        </span>
+                      ))}
+                    </div>
+                  )}
+                  {mod.outputs.length > 0 && (
+                    <div>
+                      <span style={{ color: "#475569" }}>out: </span>
+                      {mod.outputs.map(p => (
+                        <span key={p.name} style={{ color: SIGNAL_COLORS[p.type], marginRight: 6 }}>
+                          {p.name}
+                        </span>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              ))}
+              <div style={{ fontSize: 9, color: "#334155", alignSelf: "flex-end" }}>* = derived, not source-verified</div>
+            </div>
+          )}
+        </div>
+      );
+    }
+
+    // ─── App ─────────────────────────────────────────────────────────────────────
+    const DEFAULT_PDL = `// Classic Subtractive Voice — registry-grounded
+// @declarations bind instance names to registry module types.
+// Port types are looked up from the registry — brackets are deprecated.
+
+@OSC  = VCO
+@FILT = VCF
+@ENV  = ADSR
+@AMP  = VCA
+
+// Keyboard drives pitch and gate
+KEYBOARD -> OSC:V/OCT
+KEYBOARD -> ENV:GATE
+
+// Audio signal chain
+OSC:SAW -> FILT:IN
+FILT:LPF -> AMP:IN
+
+// Envelope controls amplifier
+ENV:ENV -> AMP:CV
+
+// Output
+AMP -> OUT
+
+// Parameters
+* OSC:  Waveform = Saw | Tune = 0
+* FILT: Cutoff = 2000Hz | Resonance = 20%
+* ENV:  A = 5ms | D = 200ms | S = 70% | R = 400ms`;
+
+    function App() {
+      const [pdl, setPdl] = useState(DEFAULT_PDL);
+      const [exportStatus, setExportStatus] = useState(null);
+
+      function handleExport() {
+        try {
+          const result = downloadVcvPatch(pdl, "patch.vcv");
+          setExportStatus({ ok: true, ...result });
+        } catch (err) {
+          setExportStatus({ ok: false, error: String(err && err.message || err) });
+        }
+      }
+
+      return (
+        <div style={{ padding: 24, minHeight: "100vh" }}>
+          {/* Header */}
+          <div style={{ marginBottom: 20 }}>
+            <div style={{ fontSize: 18, fontWeight: 700, letterSpacing: 1 }}>
+              PDL — Patch Description Language
+            </div>
+            <div style={{ fontSize: 11, color: "#64748b", marginTop: 4 }}>
+              Edit the spec → diagram updates live &nbsp;·&nbsp;
+              {Object.entries(SIGNAL_LABELS).map(([type, label]) => (
+                <span key={type} style={{ color: SIGNAL_COLORS[type], marginRight: 12 }}>● {label}</span>
+              ))}
+              <span style={{ color: "#3b5270" }}>■</span>
+              <span style={{ color: "#475569", marginLeft: 4 }}>= registry-grounded module</span>
+            </div>
+          </div>
+
+          <div style={{ display: "flex", gap: 24, alignItems: "flex-start", flexWrap: "wrap" }}>
+
+            {/* Editor panel */}
+            <div style={{ flex: "0 0 320px" }}>
+              <div style={{ fontSize: 10, color: "#64748b", marginBottom: 6, letterSpacing: 1, textTransform: "uppercase" }}>
+                Patch Spec
+              </div>
+              <textarea
+                value={pdl}
+                onChange={e => { setPdl(e.target.value); setExportStatus(null); }}
+                spellCheck={false}
+                style={{
+                  width: "100%", height: 440,
+                  background: "#1e293b", color: "#e2e8f0",
+                  border: "1px solid #334155", borderRadius: 8,
+                  padding: 14, fontSize: 12, lineHeight: 1.7,
+                  fontFamily: "monospace", resize: "vertical", outline: "none",
+                }}
+              />
+
+              {/* Export bar — T1: closes Stage 1 by emitting a loadable VCV Rack patch */}
+              <div style={{ marginTop: 10, display: "flex", alignItems: "center", gap: 10 }}>
+                <button
+                  onClick={handleExport}
+                  style={{
+                    background: "#2d4060", color: "#f1f5f9",
+                    border: "1px solid #3b5270", borderRadius: 6,
+                    padding: "6px 12px", fontSize: 11, cursor: "pointer",
+                    fontFamily: "monospace", letterSpacing: 1, fontWeight: 600,
+                  }}
+                >
+                  ⬇ EXPORT .vcv
+                </button>
+                {exportStatus && exportStatus.ok && (
+                  <div style={{ fontSize: 10, color: "#6ee7b7", fontFamily: "monospace" }}>
+                    {exportStatus.moduleCount} modules, {exportStatus.cableCount} cables written
+                    {exportStatus.skipped && exportStatus.skipped.length > 0 && (
+                      <span style={{ color: "#fbbf24", marginLeft: 8 }}>
+                        · {exportStatus.skipped.length} skipped
+                      </span>
+                    )}
+                  </div>
+                )}
+                {exportStatus && !exportStatus.ok && (
+                  <div style={{ fontSize: 10, color: "#ef4444", fontFamily: "monospace" }}>
+                    {exportStatus.error}
+                  </div>
+                )}
+              </div>
+              {exportStatus && exportStatus.ok && exportStatus.skipped && exportStatus.skipped.length > 0 && (
+                <div style={{ marginTop: 6, fontSize: 9, color: "#64748b", fontFamily: "monospace", lineHeight: 1.6 }}>
+                  <div style={{ color: "#fbbf24", marginBottom: 2 }}>Skipped cables (endpoints not registered):</div>
+                  {exportStatus.skipped.map((s, i) => (
+                    <div key={i}>· {s.line} — <span style={{ color: "#475569" }}>{s.reason}</span></div>
+                  ))}
+                </div>
+              )}
+
+              {/* Syntax reference */}
+              <div style={{ marginTop: 12, fontSize: 10, color: "#475569", lineHeight: 2.0 }}>
+                <div style={{ color: "#64748b", fontWeight: 600, marginBottom: 4 }}>Syntax</div>
+                <div><span style={{ color: "#60a5fa" }}>@INST = ModuleType</span> &nbsp;— bind to registry</div>
+                <div><span style={{ color: "#94a3b8" }}>A -&gt; B</span> &nbsp;— connection (type from registry)</div>
+                <div><span style={{ color: "#94a3b8" }}>A -&gt; B:Port</span> &nbsp;— named input port</div>
+                <div><span style={{ color: "#94a3b8" }}>A:Port -&gt; B</span> &nbsp;— named output port</div>
+                <div><span style={{ color: "#94a3b8" }}>A -&gt; B [type]</span> &nbsp;— explicit type override</div>
+                <div><span style={{ color: "#94a3b8" }}>* Mod: P=V | P=V</span> &nbsp;— parameters</div>
+                <div><span style={{ color: "#94a3b8" }}>// text</span> &nbsp;— comment</div>
+                <div style={{ marginTop: 8, color: "#64748b", fontWeight: 600 }}>Registry Module Keys</div>
+                <div style={{ color: "#3b82f6" }}>{Object.keys(REGISTRY).join(" · ")}</div>
+                <div style={{ marginTop: 8, color: "#475569" }}>
+                  Brackets are deprecated for registry-grounded instances.<br/>
+                  They remain valid as explicit overrides.
+                </div>
+              </div>
+
+              {/* Registry panel */}
+              <RegistryPanel />
+            </div>
+
+            {/* Diagram panel */}
+            <div style={{ flex: 1, minWidth: 0 }}>
+              <div style={{ fontSize: 10, color: "#64748b", marginBottom: 6, letterSpacing: 1, textTransform: "uppercase" }}>
+                Signal Flow
+              </div>
+              <div style={{ overflowX: "auto" }}>
+                <Diagram pdl={pdl} />
+              </div>
+            </div>
+          </div>
+        </div>
+      );
+    }
+
+    ReactDOM.createRoot(document.getElementById("root")).render(<App />);
+  </script>
+</body>
+</html>
