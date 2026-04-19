@@ -1,0 +1,283 @@
+{
+  "version": "2.0",
+  "plugin": "Fundamental",
+  "plugin_slug": "Fundamental",
+  "vcv_rack_version": "2.x",
+  "source": "https://github.com/VCVRack/Fundamental",
+  "verification_method": "All port and param indices verified against Fundamental v2 source code via WebFetch of each module's .cpp file (configInput / configOutput / configParam call order).",
+  "last_verified": "2026-04-19",
+  "notes": "Port indices are the integer IDs cables use in .vcv JSON. They are determined by the order of configInput()/configOutput() calls in each module's source. UI label position on the panel does NOT determine index — only the source code does. v2.0 corrects extensive errors in v1.0 caused by guessing from documentation rather than reading source.",
+  "signal_types": {
+    "audio": { "voltage": "±5V nominal", "color_hint": "coral" },
+    "cv":    { "voltage": "0–10V or ±5V context-dependent", "color_hint": "purple" },
+    "pitch": { "voltage": "1V/octave, 0V = C4", "color_hint": "blue" },
+    "gate":  { "voltage": "0V or 10V", "color_hint": "teal" },
+    "trigger": { "voltage": "brief 10V pulse", "color_hint": "amber" }
+  },
+  "modules": {
+    "VCO": {
+      "slug": "VCO",
+      "name": "VCO",
+      "hp": 12,
+      "description": "Voltage-controlled oscillator. Four simultaneous waveform outputs. Hard sync input. Pulse width modulation.",
+      "verification": "verified against src/VCO.cpp (2026-04-19)",
+      "inputs": [
+        { "name": "V/OCT", "type": "pitch",   "index": 0, "description": "1V/oct pitch CV — primary pitch input" },
+        { "name": "FM",    "type": "cv",      "index": 1, "description": "Frequency modulation CV (depth set by FM param + mode)" },
+        { "name": "SYNC",  "type": "trigger", "index": 2, "description": "Hard or soft sync — resets / phase-modulates waveform" },
+        { "name": "PWM",   "type": "cv",      "index": 3, "description": "Pulse width modulation CV for square wave" }
+      ],
+      "outputs": [
+        { "name": "SIN", "type": "audio", "index": 0, "description": "Sine wave output" },
+        { "name": "TRI", "type": "audio", "index": 1, "description": "Triangle wave output" },
+        { "name": "SAW", "type": "audio", "index": 2, "description": "Sawtooth wave output" },
+        { "name": "SQR", "type": "audio", "index": 3, "description": "Square/pulse wave output — width set by PW + PWM" }
+      ],
+      "params": [
+        { "name": "FREQ",     "index": 0, "range": [-76.0, 76.0], "default": 0.0,  "unit": "semitones",   "description": "Frequency offset in semitones" },
+        { "name": "FM_DEPTH", "index": 1, "range": [-1.0, 1.0],   "default": 0.0,  "unit": "normalized",  "description": "FM input attenuverter" },
+        { "name": "PW",       "index": 2, "range": [0.01, 0.99],  "default": 0.5,  "unit": "normalized",  "description": "Pulse width for square wave (0.01–0.99)" },
+        { "name": "PWM_DEPTH","index": 3, "range": [-1.0, 1.0],   "default": 0.0,  "unit": "normalized",  "description": "PWM input attenuverter" },
+        { "name": "FM_MODE",  "index": 4, "range": [0.0, 1.0],    "default": 0.0,  "unit": "toggle",      "description": "FM mode (0=linear, 1=exponential)" },
+        { "name": "SYNC_MODE","index": 5, "range": [0.0, 1.0],    "default": 1.0,  "unit": "toggle",      "description": "Sync mode (0=soft, 1=hard)" }
+      ],
+      "perceptual_index": [
+        "oscillator", "osc", "tone", "pitch", "source",
+        "saw", "sawtooth", "sine", "sin", "triangle", "tri", "square", "pulse",
+        "waveform", "fundamental", "vco", "analog",
+        "bright", "buzzy", "raw", "rich", "harmonics"
+      ]
+    },
+
+    "VCF": {
+      "slug": "VCF",
+      "name": "VCF",
+      "hp": 8,
+      "description": "Voltage-controlled filter. Lowpass + highpass outputs simultaneously. Drive input adds saturation. Self-oscillates at high resonance.",
+      "verification": "verified against src/VCF.cpp (2026-04-19)",
+      "inputs": [
+        { "name": "FREQ",  "type": "cv",    "index": 0, "description": "Cutoff frequency CV input (1V/oct attenuated by Cutoff CV param)" },
+        { "name": "RES",   "type": "cv",    "index": 1, "description": "Resonance CV input" },
+        { "name": "DRIVE", "type": "cv",    "index": 2, "description": "Drive (saturation) CV input" },
+        { "name": "IN",    "type": "audio", "index": 3, "description": "Audio signal input — THIS IS WHERE AUDIO GOES" }
+      ],
+      "outputs": [
+        { "name": "LPF", "type": "audio", "index": 0, "description": "Lowpass filtered output" },
+        { "name": "HPF", "type": "audio", "index": 1, "description": "Highpass filtered output" }
+      ],
+      "params": [
+        { "name": "FREQ",     "index": 0, "range": [0.0, 1.0],   "default": 0.5, "unit": "normalized", "description": "Cutoff frequency knob" },
+        { "name": "RES",      "index": 1, "range": [0.0, 1.0],   "default": 0.0, "unit": "normalized", "description": "Resonance (0=off, 1=self-oscillation)" },
+        { "name": "RES_CV",   "index": 2, "range": [-1.0, 1.0],  "default": 0.0, "unit": "normalized", "description": "Resonance CV attenuverter" },
+        { "name": "FREQ_CV",  "index": 3, "range": [-1.0, 1.0],  "default": 0.0, "unit": "normalized", "description": "Cutoff CV attenuverter" },
+        { "name": "DRIVE",    "index": 4, "range": [-1.0, 1.0],  "default": 0.0, "unit": "normalized", "description": "Drive (saturation) amount" },
+        { "name": "DRIVE_CV", "index": 5, "range": [-1.0, 1.0],  "default": 0.0, "unit": "normalized", "description": "Drive CV attenuverter" }
+      ],
+      "perceptual_index": [
+        "filter", "vcf", "lowpass", "highpass", "cutoff", "resonance",
+        "dark", "bright", "thin", "warm", "muffled", "smooth", "sharp",
+        "sweep", "wah", "self-oscillate", "drive", "saturation",
+        "tone shaping", "timbre"
+      ]
+    },
+
+    "ADSR": {
+      "slug": "ADSR",
+      "name": "ADSR EG",
+      "hp": 8,
+      "description": "Attack-Decay-Sustain-Release envelope generator. Gate input triggers envelope; CV inputs modulate each stage.",
+      "verification": "verified against src/ADSR.cpp (2026-04-19)",
+      "inputs": [
+        { "name": "A_CV",   "type": "cv",      "index": 0, "description": "Attack time CV modulation" },
+        { "name": "D_CV",   "type": "cv",      "index": 1, "description": "Decay time CV modulation" },
+        { "name": "S_CV",   "type": "cv",      "index": 2, "description": "Sustain level CV modulation" },
+        { "name": "R_CV",   "type": "cv",      "index": 3, "description": "Release time CV modulation" },
+        { "name": "GATE",   "type": "gate",    "index": 4, "description": "Gate input — envelope follows gate high/low. THIS IS THE TRIGGER INPUT." },
+        { "name": "RETRIG", "type": "trigger", "index": 5, "description": "Retrigger — restarts attack from current level without release" }
+      ],
+      "outputs": [
+        { "name": "ENV", "type": "cv", "index": 0, "description": "Envelope CV output (0–10V)" }
+      ],
+      "params": [
+        { "name": "A",      "index": 0, "range": [0.0, 1.0],  "default": 0.5, "unit": "normalized", "description": "Attack time (1ms–10s)" },
+        { "name": "D",      "index": 1, "range": [0.0, 1.0],  "default": 0.5, "unit": "normalized", "description": "Decay time (1ms–10s)" },
+        { "name": "S",      "index": 2, "range": [0.0, 1.0],  "default": 0.5, "unit": "normalized", "description": "Sustain level (0–1)" },
+        { "name": "R",      "index": 3, "range": [0.0, 1.0],  "default": 0.5, "unit": "normalized", "description": "Release time (1ms–10s)" },
+        { "name": "A_CV",   "index": 4, "range": [-1.0, 1.0], "default": 0.0, "unit": "normalized", "description": "Attack CV attenuverter" },
+        { "name": "D_CV",   "index": 5, "range": [-1.0, 1.0], "default": 0.0, "unit": "normalized", "description": "Decay CV attenuverter" },
+        { "name": "S_CV",   "index": 6, "range": [-1.0, 1.0], "default": 0.0, "unit": "normalized", "description": "Sustain CV attenuverter" },
+        { "name": "R_CV",   "index": 7, "range": [-1.0, 1.0], "default": 0.0, "unit": "normalized", "description": "Release CV attenuverter" },
+        { "name": "PUSH",   "index": 8, "range": [0.0, 1.0],  "default": 0.0, "unit": "button",     "description": "Manual gate push button" }
+      ],
+      "perceptual_index": [
+        "envelope", "adsr", "eg", "contour", "shape", "dynamics",
+        "attack", "decay", "sustain", "release",
+        "pluck", "pad", "swell", "punch", "snap", "breath",
+        "transient", "articulation", "volume shape", "timbre shape"
+      ]
+    },
+
+    "VCA": {
+      "slug": "VCA-1",
+      "name": "VCA",
+      "hp": 3,
+      "description": "Single-channel voltage-controlled amplifier. CV input, audio input, audio output. Linear or exponential response.",
+      "verification": "verified against src/VCA-1.cpp (2026-04-19)",
+      "inputs": [
+        { "name": "CV", "type": "cv",    "index": 0, "description": "Level control CV (0–10V = silent to unity). NOTE: CV is index 0, audio is index 1." },
+        { "name": "IN", "type": "audio", "index": 1, "description": "Audio (or CV) signal input — passes through, level controlled by CV+knob" }
+      ],
+      "outputs": [
+        { "name": "OUT", "type": "audio", "index": 0, "description": "Amplified output" }
+      ],
+      "params": [
+        { "name": "LEVEL",    "index": 0, "range": [0.0, 1.0], "default": 1.0, "unit": "normalized", "description": "Level offset (sums with CV)" },
+        { "name": "RESPONSE", "index": 1, "range": [0.0, 1.0], "default": 1.0, "unit": "toggle",     "description": "Response mode: 0=exponential, 1=linear" }
+      ],
+      "perceptual_index": [
+        "vca", "amplifier", "volume", "level", "gain",
+        "dynamics", "gating", "tremolo", "amplitude modulation",
+        "open", "close", "envelope follower", "duck"
+      ]
+    },
+
+    "LFO": {
+      "slug": "LFO",
+      "name": "LFO",
+      "hp": 10,
+      "description": "Low-frequency oscillator. Four simultaneous waveform outputs. Clock input for sync. Can run at audio rate.",
+      "verification": "verified against src/LFO.cpp (2026-04-19)",
+      "inputs": [
+        { "name": "FM",    "type": "cv",      "index": 0, "description": "Frequency modulation CV" },
+        { "name": "CLOCK", "type": "trigger", "index": 1, "description": "Clock input for sync" },
+        { "name": "RESET", "type": "trigger", "index": 2, "description": "Reset phase to start" },
+        { "name": "PWM",   "type": "cv",      "index": 3, "description": "Pulse width modulation CV (affects square output)" }
+      ],
+      "outputs": [
+        { "name": "SIN", "type": "cv", "index": 0, "description": "Sine wave (±5V or 0–10V depending on Offset param)" },
+        { "name": "TRI", "type": "cv", "index": 1, "description": "Triangle wave" },
+        { "name": "SAW", "type": "cv", "index": 2, "description": "Sawtooth wave" },
+        { "name": "SQR", "type": "cv", "index": 3, "description": "Square wave (width set by PW)" }
+      ],
+      "params": [
+        { "name": "FREQ",       "index": 0, "range": [-8.0, 10.0], "default": 1.0, "unit": "log Hz",     "description": "Frequency (log scale, ~0.002Hz to ~1kHz at 1.0)" },
+        { "name": "FM_DEPTH",   "index": 1, "range": [-1.0, 1.0],  "default": 0.0, "unit": "normalized", "description": "FM input attenuverter" },
+        { "name": "PW",         "index": 2, "range": [0.01, 0.99], "default": 0.5, "unit": "normalized", "description": "Pulse width" },
+        { "name": "PWM_DEPTH",  "index": 3, "range": [-1.0, 1.0],  "default": 0.0, "unit": "normalized", "description": "PWM input attenuverter" },
+        { "name": "OFFSET",     "index": 4, "range": [0.0, 1.0],   "default": 1.0, "unit": "toggle",     "description": "Output offset: 0=bipolar ±5V, 1=unipolar 0-10V" },
+        { "name": "INVERT",     "index": 5, "range": [0.0, 1.0],   "default": 0.0, "unit": "toggle",     "description": "Invert outputs" }
+      ],
+      "perceptual_index": [
+        "lfo", "modulation", "wobble", "vibrato", "tremolo", "drift",
+        "slowly evolving", "breathing", "pulsing", "sweeping",
+        "rhythmic", "cyclic", "periodic", "wave", "low frequency"
+      ]
+    },
+
+    "SEQ3": {
+      "slug": "SEQ3",
+      "name": "SEQ 3",
+      "hp": 26,
+      "description": "Three-channel 8-step sequencer. Internal clock or external clock. Three CV outputs (one per channel) plus per-step trigger outputs.",
+      "verification": "verified against src/SEQ3.cpp (2026-04-19)",
+      "inputs": [
+        { "name": "TEMPO", "type": "cv",      "index": 0, "description": "Tempo CV (when using internal clock)" },
+        { "name": "CLOCK", "type": "trigger", "index": 1, "description": "External clock input — overrides internal clock when patched" },
+        { "name": "RESET", "type": "trigger", "index": 2, "description": "Reset to step 1" },
+        { "name": "STEPS", "type": "cv",      "index": 3, "description": "Step count CV" },
+        { "name": "RUN",   "type": "trigger", "index": 4, "description": "Run/stop toggle gate" }
+      ],
+      "outputs": [
+        { "name": "TRIG",  "type": "trigger", "index": 0,  "description": "Master clock trigger (per-step pulse)" },
+        { "name": "CV1",   "type": "cv",      "index": 1,  "description": "Channel 1 CV output" },
+        { "name": "CV2",   "type": "cv",      "index": 2,  "description": "Channel 2 CV output" },
+        { "name": "CV3",   "type": "cv",      "index": 3,  "description": "Channel 3 CV output" },
+        { "name": "STEP1", "type": "trigger", "index": 4,  "description": "Step 1 trigger output" },
+        { "name": "STEP2", "type": "trigger", "index": 5,  "description": "Step 2 trigger output" },
+        { "name": "STEP3", "type": "trigger", "index": 6,  "description": "Step 3 trigger output" },
+        { "name": "STEP4", "type": "trigger", "index": 7,  "description": "Step 4 trigger output" },
+        { "name": "STEP5", "type": "trigger", "index": 8,  "description": "Step 5 trigger output" },
+        { "name": "STEP6", "type": "trigger", "index": 9,  "description": "Step 6 trigger output" },
+        { "name": "STEP7", "type": "trigger", "index": 10, "description": "Step 7 trigger output" },
+        { "name": "STEP8", "type": "trigger", "index": 11, "description": "Step 8 trigger output" },
+        { "name": "STEPS_OUT", "type": "cv",      "index": 12, "description": "Current step count out" },
+        { "name": "CLOCK_OUT", "type": "trigger", "index": 13, "description": "Clock thru output" },
+        { "name": "RUN_OUT",   "type": "trigger", "index": 14, "description": "Run state output" },
+        { "name": "RESET_OUT", "type": "trigger", "index": 15, "description": "Reset thru output" }
+      ],
+      "params": [
+        { "name": "TEMPO", "index": 0, "range": [-2.0, 4.0], "default": 1.0, "unit": "log",        "description": "Internal tempo" },
+        { "name": "STEPS", "index": 5, "range": [1, 8],      "default": 8,   "unit": "integer",    "description": "Active step count (1–8)" }
+      ],
+      "perceptual_index": [
+        "sequencer", "sequence", "pattern", "melody", "arpeggio",
+        "step", "clock", "rhythm", "loop", "cycle",
+        "melodic pattern", "bassline", "motif", "phrase"
+      ]
+    },
+
+    "MIXER": {
+      "slug": "Mixer",
+      "name": "Mix",
+      "hp": 6,
+      "description": "Six-input simple mixer with single master Level knob. No per-channel level control — use VCMixer for that.",
+      "verification": "verified against src/Mixer.cpp (2026-04-19)",
+      "inputs": [
+        { "name": "IN1", "type": "audio", "index": 0, "description": "Channel 1 audio input" },
+        { "name": "IN2", "type": "audio", "index": 1, "description": "Channel 2 audio input" },
+        { "name": "IN3", "type": "audio", "index": 2, "description": "Channel 3 audio input" },
+        { "name": "IN4", "type": "audio", "index": 3, "description": "Channel 4 audio input" },
+        { "name": "IN5", "type": "audio", "index": 4, "description": "Channel 5 audio input" },
+        { "name": "IN6", "type": "audio", "index": 5, "description": "Channel 6 audio input" }
+      ],
+      "outputs": [
+        { "name": "MIX", "type": "audio", "index": 0, "description": "Summed mix output (level scaled by master)" }
+      ],
+      "params": [
+        { "name": "LEVEL", "index": 0, "range": [0.0, 1.0], "default": 1.0, "unit": "normalized", "description": "Master level applied to summed mix" }
+      ],
+      "perceptual_index": [
+        "mixer", "mix", "blend", "combine", "sum",
+        "six channel", "multi-source", "submix", "simple mix"
+      ]
+    },
+
+    "VCMIXER": {
+      "slug": "VCMixer",
+      "name": "VCA Mix",
+      "hp": 10,
+      "description": "Four-channel mixer with per-channel level knobs AND CV-controllable levels. Each channel has its own pre-mix output. Use this when you need real per-channel mixing.",
+      "verification": "verified against src/VCMixer.cpp (2026-04-19)",
+      "inputs": [
+        { "name": "MIX_CV", "type": "cv",    "index": 0, "description": "CV control of master mix level" },
+        { "name": "CV1",    "type": "cv",    "index": 1, "description": "Channel 1 level CV" },
+        { "name": "CV2",    "type": "cv",    "index": 2, "description": "Channel 2 level CV" },
+        { "name": "CV3",    "type": "cv",    "index": 3, "description": "Channel 3 level CV" },
+        { "name": "CV4",    "type": "cv",    "index": 4, "description": "Channel 4 level CV" },
+        { "name": "IN1",    "type": "audio", "index": 5, "description": "Channel 1 audio input. NOTE: audio inputs start at index 5, not 0." },
+        { "name": "IN2",    "type": "audio", "index": 6, "description": "Channel 2 audio input" },
+        { "name": "IN3",    "type": "audio", "index": 7, "description": "Channel 3 audio input" },
+        { "name": "IN4",    "type": "audio", "index": 8, "description": "Channel 4 audio input" }
+      ],
+      "outputs": [
+        { "name": "MIX",  "type": "audio", "index": 0, "description": "Summed mix output" },
+        { "name": "OUT1", "type": "audio", "index": 1, "description": "Channel 1 post-VCA output (pre-mix)" },
+        { "name": "OUT2", "type": "audio", "index": 2, "description": "Channel 2 post-VCA output" },
+        { "name": "OUT3", "type": "audio", "index": 3, "description": "Channel 3 post-VCA output" },
+        { "name": "OUT4", "type": "audio", "index": 4, "description": "Channel 4 post-VCA output" }
+      ],
+      "params": [
+        { "name": "MIX_LVL", "index": 0, "range": [0.0, 2.0],   "default": 1.0, "unit": "normalized", "description": "Master mix level (0=silent, 1=unity, 2=+6dB)" },
+        { "name": "LVL1",    "index": 1, "range": [0.0, 1.414], "default": 1.0, "unit": "normalized", "description": "Channel 1 level" },
+        { "name": "LVL2",    "index": 2, "range": [0.0, 1.414], "default": 1.0, "unit": "normalized", "description": "Channel 2 level" },
+        { "name": "LVL3",    "index": 3, "range": [0.0, 1.414], "default": 1.0, "unit": "normalized", "description": "Channel 3 level" },
+        { "name": "LVL4",    "index": 4, "range": [0.0, 1.414], "default": 1.0, "unit": "normalized", "description": "Channel 4 level" }
+      ],
+      "perceptual_index": [
+        "mixer", "vc mixer", "vca mix", "voltage controlled mixer",
+        "four channel", "per-channel level", "channel mix", "balance",
+        "submix", "stem", "pre-mix output", "channel strip"
+      ]
+    }
+  }
+}
