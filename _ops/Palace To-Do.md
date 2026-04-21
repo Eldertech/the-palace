@@ -55,7 +55,7 @@ Artifacts/[Name]/                   ← all deliverables (not searched in ceremo
 
 - [ ] **Frequency-Time Explorer** (project) — The interactive app/website for the frequency-time duality concept. A single unified tool: functional calculator (delay↔pitch↔BPM↔MIDI↔frequency↔subdivision conversions) and experiential learning artifact. One continuous axis navigable in real time, showing pitch perception, flutter echo, slapback, rhythmic pulse, and sub-rhythmic pulse as you move. Modulation layer (chorus/flanger/phasing) as a second dimension. Beautiful enough to be an artifact in its own right. Design session needed before build. ⭐ *HIGH PRIORITY*
 
-- [ ] **VERSION** — The dub delay for the meaning of words. Whisper + local LLM + TTS, trickster spirit archetypes, two-stage pool-then-select architecture. A Spirit Compendium and Technical Blueprint were produced in conversation. Connects to [[Semantic Delay]]. Flagged for deposit when the Harvest reaches that conversation.
+- [x] **VERSION** — The dub delay for the meaning of words. Whisper + local LLM + TTS, trickster spirit archetypes, two-stage pool-then-select architecture. A Spirit Compendium and Technical Blueprint were produced in conversation. Connects to [[Semantic Delay]]. Flagged for deposit when the Harvest reaches that conversation.
 
 - [ ] **Loudon's Music-Making & Teaching Toolkit** — A dedicated session to map and document the full ecosystem of hardware and software tools Loudon uses for making music and teaching: DAWs, hardware synths/drum machines, Max/MSP, RNBO, Ableton, Python, visualization tools, and how they interrelate. The goal is a palace entry (or small cluster) that gives any Claude instance a clear picture of the instrument landscape without needing to piece it together from scattered conversations.
 
@@ -115,7 +115,7 @@ Artifacts/[Name]/                   ← all deliverables (not searched in ceremo
 
 ## Structural Improvements
 
-- [ ] **Build the Swarm Weave** ⭐ — Replace the single-agent [[Weave Ceremony]] with a colony architecture: parallel worker sub-agents (one per entry, scoped context) + a coordinator that synthesizes and de-duplicates. Full spec and learning path in [[Swarm Weave]]. *Single-Doc Worker (one entry, on demand) can be built and used immediately without waiting for the full swarm.* ⭐ *HIGH PRIORITY for Single-Doc Worker mode* Swarm weave connects very intimately with [[Agent Wellbeing as Design Ethic]] and [[Pages as Agents]] and [[Enchanted Worker]].
+- [ ] **Build the Swarm Weave** ⭐ — Replace the single-agent [[Weave Ceremony]] with a colony architecture: parallel worker sub-agents (one per entry, scoped context) + a coordinator that synthesizes and de-duplicates. Full spec and learning path in [[Swarm Weave]]. *Single-Doc Worker (one entry, on demand) can be built and used immediately without waiting for the full swarm.* ⭐ *HIGH PRIORITY for Single-Doc Worker mode* Swarm weave connects very intimately with [[Agent Wellbeing]] and [[Pages as Agents]] and [[Enchanted Worker]].
 - [ ] Tiered loading and [[JEWEL]] must be adopted across the palace, but most importantly in the claude.md file. 
 
 - [x] **Deposit Ceremony / Plant Ceremony** — "Deposit" is accurate but banking-flavored. "Plant" fits the organism frame. These may be synonyms rather than alternatives — both names live comfortably in the palace. Rename when it feels obviously right; until then, both are valid.

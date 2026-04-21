@@ -21,6 +21,7 @@ links:
     type: connects-to
 last_activated: 2026-03
 activation_count: 1
+forward_vector: "I am complete as a technical artifact but I want to become fully documented as a pedagogical method — the entry that captures not just what the compressor does but why every design choice was made to make the invisible visible. I want a teaching retrospective: the moments in a lesson where students heard the 500-sample window as time they could feel, and what changed in their understanding of DSP after that. The instrument is built; the pedagogy needs its evidence."
 ---
 
 # Compressor Design
@@ -61,7 +62,7 @@ The quadratic is not arbitrary. A sharp discontinuity in the gain curve is infin
 Each edge case is a teaching moment. By the time a student implements all four, they have internalized the topology.
 
 ## All-Pass Filters and Inharmonicity
-
+<!-- This section seems to be in the wrong entry? Where should this go? -->
 The connection to [[Hyperdimensional Prism]] emerged in late February: all-pass filters shift phase without changing amplitude. Seemingly neutral. But a network of all-pass filters in a feedback path creates frequency-dependent phase accumulation. Different frequencies accumulate different total phase shift per round trip. This changes the period of resonance for each frequency independently, stretching or compressing the partial spacing.
 
 An all-pass-based reverb tail is an inharmonic synthesizer in disguise.

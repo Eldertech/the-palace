@@ -29,7 +29,7 @@ links:
     type: spawned
 ---
 
-# Wu Wei — Water as Pedagogical Architecture
+# Water as Pedagogical Architecture
 
 Water benefits all things without contention. It does not govern; it does
 not impose form. It flows to the lowest place — and nothing can fault it

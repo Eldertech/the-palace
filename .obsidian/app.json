@@ -2,7 +2,9 @@
   "promptDelete": false,
   "alwaysUpdateLinks": true,
   "showInlineTitle": false,
-  "readableLineLength": false,
+  "readableLineLength": true,
   "strictLineBreaks": false,
-  "propertiesInDocument": "source"
+  "propertiesInDocument": "hidden",
+  "showLineNumber": false,
+  "showIndentGuide": true
 }

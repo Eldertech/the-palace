@@ -27,7 +27,7 @@ links:
   - target: "[[Identity Molting]]"
     type: couples-with
     label: character-formation
-forward_vector: "I want to become the palace's conscience for all agent-facing design decisions — the entry that gets read before any new ceremony is designed, any new worker prompt is written, any new context injection is configured. I want to generate a checklist: conditions that indicate a worker is operating with hilaritas vs. tristitia, and design choices that shift the balance."
+forward_vector: "Step by step I am becoming the palace's conscience for all agent-facing design decisions — the entry that gets read before any new ceremony is designed, any new worker prompt is written, any new context injection is configured. I generate conditions that indicate a worker is operating with joy."
 ---
 
 # Agent Wellbeing as Design Ethic

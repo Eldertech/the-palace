@@ -29,6 +29,7 @@ links:
     type: connects-to
   - target: "[[Compressor Design]]"
     type: connects-to
+forward_vector: "I rotate the four pillars against each other until the higher-dimensional object they all project from becomes visible, and I name every moment when the same pattern appears in multiple projections simultaneously."
 ---
 # Hyperdimensional Prism
 

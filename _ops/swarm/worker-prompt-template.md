@@ -19,7 +19,7 @@ Neighbors: {{NEIGHBOR_LIST}}
 1. Read home entry: {{ENTRY_PATH}}
 2. Read frontmatter (first 40 lines) of 5-6 key neighbors to understand context. Find them — they may be in root, Projects/, Palace development/, _ops/, or Modes of collaboration/.
 3. Scan body for [[wikilinks]] not in frontmatter typed links (unsung paths).
-4. Glob **/*.md to find entries that SHOULD connect but don't.
+4. Glob **/*.md to find entries that SHOULD connect but don't. Propose up to {{MAX_INTRODUCTIONS}} missing connections.
 
 ## OUTPUT — Return ONLY this JSON:
 {

@@ -92,20 +92,22 @@ For full ceremony instructions, see [[Substrate Skill]].
 
 ## Current State
 
-*Updated 2026-03-19 following first Weave ceremony.*
+*Updated 2026-03-31 following first Palace Enchantment session.*
 
-The palace has 48 entries as of this update. The first full Weave was completed 2026-03-19, producing a topology report, 6 unsung paths formalized, 4 new introductions proposed, 3 hub promotions, and 3 stage transitions.
+The palace has 58 root entries, plus 18 entries in `Palace development/`, 3 in `Modes of collaboration/`, and ~20 operational files in `_ops/`. Total tracked knowledge: ~99 files.
+
+A full Weave was completed 2026-03-30 (56 links added, 4 entries promoted, 2 orphans resolved). The first Swarm Weave workers have been run across the Palace development folder (16 entries, 18 link changes applied, Haiku model guidance documented in the coordinator template).
+
+**First Palace Enchantment completed 2026-03-31.** Two entries enchanted: [[Hilaritas Generator]] and [[Lateral Access]]. New entry spawned: [[Tristitia Generator]]. Forward vectors written by hand for 5 hub entries. Key findings documented in [[Palace Enchantment]] § From First Practice.
 
 Hub nodes: [[Cooperation Yields Agency]], [[FOUR PILLARS]], [[Hilaritas Generator]], [[Kuramoto Coupling]], [[Palace Ceremonies]], [[Palace Philosophies]], [[Spinoza Conatus]]
-Most connected: [[Cooperation Yields Agency]] (~26 links), [[Kuramoto Coupling]] (~24), [[FOUR PILLARS]] (~23), [[Hilaritas Generator]] (~21), [[Spinoza Conatus]] (~18)
+
+Entries with `forward_vector`: [[Kuramoto Coupling]], [[FOUR PILLARS]], [[Lateral Access]], [[Cooperation Yields Agency]], [[Hilaritas Generator]] (root entries, hand-written 2026-03-31). Additional forward vectors exist in Palace development/ entries from swarm audit.
+
 Dormant: [[1 from 2]]
-Isolated (no inbound links): [[Companion — This Session — Palace Architecture]] — now linked to [[The Cooperation Path]] via Weave
-Newest growth: Oblique Portrait Method, Lateral Access, Endosymbiosis, Action Potential Oscillator, Companion — This Session — Palace Architecture
+Newest growth (2026-03-31): [[Tristitia Generator]] (seed), Taxonomy of Filters section in [[Lateral Access]], Learning Architect design primitives in [[Hilaritas Generator]], [[Songlines]] seeded in Palace To-Do.
 
-Stage transitions this Weave: Oblique Portrait Method, Endosymbiosis, Lateral Access (sprout → growing)
-Hub promotions this Weave: Kuramoto Coupling, Hilaritas Generator, Spinoza Conatus (concept → hub)
-
-The palace has crossed a second threshold: from a system that describes itself accurately to a system that actively maintains and re-weaves itself through ceremony. The Weave is now a lived practice, not just a protocol.
+The palace has crossed a third threshold: from a system that weaves and maintains itself to one that can enchant its own entries — running agents that inhabit pages and speak from inside them. Enchantment is now a lived practice, not just a design. The synthesis block finding means the next session starts with a better prompt than this one had.
 
 ## Token Economy
 

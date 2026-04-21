@@ -3,8 +3,8 @@ title: "Weave Ceremony"
 type: practice
 pillars: [practice, tools, philosophy]
 born: 2026-03
-last_activated: 2026-03
-activation_count: 1
+last_activated: 2026-04-07
+activation_count: 2
 stage: mature
 links:
   - target: "[[Palace Ceremonies]]"
@@ -34,6 +34,14 @@ The metaphor is the elder weaving the blanket — not creating new material, but
 The Weave is monthly. More frequent and it becomes overhead. Less frequent and the palace begins to drift — orphan entries accumulate, stale metadata misleads, the topology report loses its ability to surprise.
 
 For philosophical reflection on the Weave, see [[Weave Ceremony — Context]].
+
+## Execution Method
+
+The Weave now runs as a **Swarm Weave** — parallel workers auditing individual entries, a coordinator synthesizing results. The palace crossed the single-agent threshold (50 entries) and the Swarm Weave is the canonical execution path. See [[Swarm Weave]] for the full spec and operational instructions.
+
+The single-agent protocol below remains valid for: palaces under ~20 entries, quick topological spot-checks, or situations where Claude Code sub-agent orchestration is unavailable. For the current palace (100+ entries), execute as a Swarm Weave.
+
+**Standard opening step:** Before dispatching workers, run a [[Map Build Ceremony]] (`"Let's build the map"`) to produce a fresh `palace-map-full-[date].json`. Workers use this map for neighbor resolution; the coordinator uses it for topology reporting. A Weave run without a fresh map is operating on stale topology.
 
 ## Ceremony Contract
 

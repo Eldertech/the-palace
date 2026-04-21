@@ -1,0 +1,1045 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Crystal Synthesizer — What Does a Crystal Sound Like?</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: #0a0a0f;
+    color: #e8e4d8;
+    font-family: 'Georgia', serif;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* ── Navigation ── */
+  .nav {
+    display: flex;
+    justify-content: center;
+    gap: 0;
+    padding: 24px 0 0;
+    position: relative;
+    z-index: 10;
+  }
+
+  .nav-btn {
+    background: none;
+    border: 1px solid #2a2a3a;
+    color: #666;
+    padding: 8px 20px;
+    cursor: pointer;
+    font-family: 'Georgia', serif;
+    font-size: 13px;
+    letter-spacing: 0.08em;
+    transition: all 0.3s;
+  }
+
+  .nav-btn:first-child { border-radius: 4px 0 0 4px; }
+  .nav-btn:last-child  { border-radius: 0 4px 4px 0; }
+
+  .nav-btn.active {
+    background: #1a1a2e;
+    border-color: #5a4fa0;
+    color: #c8b8ff;
+  }
+
+  .nav-btn:hover:not(.active) {
+    border-color: #3a3a5a;
+    color: #aaa;
+  }
+
+  /* ── Panels ── */
+  .panel {
+    display: none;
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 48px 32px 80px;
+  }
+
+  .panel.active { display: block; }
+
+  /* ── Typography ── */
+  .eyebrow {
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #7060c0;
+    margin-bottom: 16px;
+  }
+
+  h1 {
+    font-size: 36px;
+    font-weight: normal;
+    line-height: 1.2;
+    color: #f0eae0;
+    margin-bottom: 20px;
+  }
+
+  h2 {
+    font-size: 20px;
+    font-weight: normal;
+    color: #c8b8ff;
+    margin: 40px 0 16px;
+  }
+
+  p {
+    font-size: 16px;
+    line-height: 1.75;
+    color: #b8b0a0;
+    margin-bottom: 16px;
+  }
+
+  .lead {
+    font-size: 19px;
+    line-height: 1.65;
+    color: #d0c8b8;
+    margin-bottom: 28px;
+  }
+
+  .question {
+    font-size: 22px;
+    line-height: 1.5;
+    color: #e8e0d0;
+    font-style: italic;
+    border-left: 3px solid #7060c0;
+    padding: 16px 24px;
+    margin: 32px 0;
+    background: rgba(112, 96, 192, 0.06);
+    border-radius: 0 8px 8px 0;
+  }
+
+  /* ── Crystal Canvas ── */
+  .crystal-stage {
+    width: 100%;
+    height: 340px;
+    position: relative;
+    margin: 32px 0;
+    overflow: hidden;
+    border-radius: 12px;
+    background: #06060e;
+  }
+
+  canvas {
+    width: 100%;
+    height: 100%;
+    display: block;
+  }
+
+  .canvas-label {
+    position: absolute;
+    bottom: 12px;
+    right: 16px;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    color: #3a3060;
+    text-transform: uppercase;
+  }
+
+  /* ── Math bridge ── */
+  .math-block {
+    background: #0e0e1a;
+    border: 1px solid #2a2a3a;
+    border-radius: 10px;
+    padding: 28px 32px;
+    margin: 28px 0;
+    font-family: 'Georgia', serif;
+  }
+
+  .math-row {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 16px;
+    flex-wrap: wrap;
+  }
+
+  .math-row:last-child { margin-bottom: 0; }
+
+  .math-label {
+    font-size: 12px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #6a5fa0;
+    width: 80px;
+    flex-shrink: 0;
+  }
+
+  .math-eq {
+    font-size: 18px;
+    color: #c8b8ff;
+    flex: 1;
+  }
+
+  .math-note {
+    font-size: 13px;
+    color: #6a6070;
+    font-style: italic;
+  }
+
+  .scaling-demo {
+    background: #0a0a16;
+    border-radius: 8px;
+    padding: 20px 24px;
+    margin: 20px 0;
+  }
+
+  .scaling-demo label {
+    font-size: 13px;
+    color: #8080a0;
+    letter-spacing: 0.08em;
+    display: block;
+    margin-bottom: 12px;
+  }
+
+  .slider-row {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 10px;
+  }
+
+  input[type="range"] {
+    flex: 1;
+    -webkit-appearance: none;
+    height: 3px;
+    background: #2a2a4a;
+    border-radius: 2px;
+    outline: none;
+  }
+
+  input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: #7060c0;
+    cursor: pointer;
+  }
+
+  .slider-value {
+    font-size: 14px;
+    color: #c8b8ff;
+    width: 90px;
+    text-align: right;
+    font-family: monospace;
+  }
+
+  /* ── Hypothesis table ── */
+  .hypothesis-grid {
+    display: grid;
+    gap: 12px;
+    margin: 24px 0;
+  }
+
+  .lattice-card {
+    background: #0e0e1c;
+    border: 1px solid #1e1e30;
+    border-radius: 10px;
+    padding: 18px 22px;
+    cursor: pointer;
+    transition: all 0.25s;
+    display: grid;
+    grid-template-columns: 32px 1fr 120px auto;
+    gap: 16px;
+    align-items: start;
+  }
+
+  .lattice-card:hover {
+    border-color: #5a4fa0;
+    background: #12122a;
+  }
+
+  .lattice-card.selected {
+    border-color: #8070d0;
+    background: #14143a;
+  }
+
+  .lattice-num {
+    font-size: 11px;
+    color: #4a4060;
+    padding-top: 3px;
+    letter-spacing: 0.05em;
+  }
+
+  .lattice-name {
+    font-size: 15px;
+    color: #d8d0f0;
+    margin-bottom: 4px;
+  }
+
+  .lattice-example {
+    font-size: 12px;
+    color: #5a5070;
+    font-style: italic;
+    margin-bottom: 8px;
+  }
+
+  .hypothesis-label {
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #8060a0;
+    margin-bottom: 4px;
+  }
+
+  .hypothesis-text {
+    font-size: 13px;
+    color: #a090c0;
+    line-height: 1.5;
+  }
+
+  .symmetry-badge {
+    font-size: 11px;
+    padding: 3px 10px;
+    border-radius: 20px;
+    background: #1a1830;
+    color: #6a60a0;
+    letter-spacing: 0.06em;
+    white-space: nowrap;
+    align-self: start;
+  }
+
+  .lattice-card.selected .symmetry-badge {
+    background: #2a2060;
+    color: #a090e0;
+  }
+
+  /* ── Lattice unit-cell canvas ── */
+  .lattice-canvas-wrap {
+    width: 120px;
+    height: 120px;
+    border-radius: 8px;
+    overflow: hidden;
+    background: #06060e;
+    align-self: center;
+    flex-shrink: 0;
+  }
+
+  /* Override the global canvas rule for these small renderers */
+  .lattice-canvas-wrap canvas {
+    width: 120px !important;
+    height: 120px !important;
+    display: block;
+  }
+
+  /* ── Spectrum visualizer ── */
+  .spectrum-row {
+    display: flex;
+    align-items: flex-end;
+    gap: 6px;
+    height: 60px;
+    margin-top: 12px;
+  }
+
+  .partial-bar {
+    flex: 1;
+    border-radius: 3px 3px 0 0;
+    transition: height 0.5s ease, background 0.5s ease;
+    min-height: 2px;
+  }
+
+  .partial-label {
+    font-size: 10px;
+    color: #4a4060;
+    text-align: center;
+    margin-top: 4px;
+  }
+
+  /* ── Divider ── */
+  .divider {
+    border: none;
+    border-top: 1px solid #1e1e2e;
+    margin: 40px 0;
+  }
+
+  /* ── Insight box ── */
+  .insight {
+    background: rgba(112, 96, 192, 0.08);
+    border: 1px solid rgba(112, 96, 192, 0.2);
+    border-radius: 10px;
+    padding: 22px 26px;
+    margin: 28px 0;
+  }
+
+  .insight p {
+    margin: 0;
+    color: #c0b0e8;
+    font-size: 15px;
+  }
+
+  /* ── Footer nav ── */
+  .panel-footer {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 48px;
+    padding-top: 24px;
+    border-top: 1px solid #1a1a2a;
+  }
+
+  .next-btn {
+    background: #2a2060;
+    border: 1px solid #5a4fa0;
+    color: #c8b8ff;
+    padding: 12px 28px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-family: 'Georgia', serif;
+    font-size: 14px;
+    letter-spacing: 0.06em;
+    transition: all 0.2s;
+  }
+
+  .next-btn:hover {
+    background: #3a3080;
+    border-color: #8070d0;
+  }
+</style>
+</head>
+<body>
+
+<div class="nav">
+  <button class="nav-btn active" onclick="showPanel(0)">I. Light</button>
+  <button class="nav-btn" onclick="showPanel(1)">II. Sound</button>
+  <button class="nav-btn" onclick="showPanel(2)">III. Hypotheses</button>
+</div>
+
+<!-- ══════════════════════════════════════════
+     PANEL 1: THE OPTICAL FACT
+     ══════════════════════════════════════════ -->
+<div class="panel active" id="panel-0">
+  <p class="eyebrow">Crystal Synthesizer — Session 1</p>
+  <h1>Crystals don't create color.<br>They reveal what's already there.</h1>
+
+  <p class="lead">White light contains every frequency. A crystal's internal geometry — its lattice, its symmetry — determines which frequencies go where. The crystal is a sorter, not a painter.</p>
+
+  <div class="crystal-stage">
+    <canvas id="prismCanvas"></canvas>
+    <div class="canvas-label">Optical dispersion — cubic crystal</div>
+  </div>
+
+  <p>This is <strong style="color:#d0c8ff">dispersion</strong>: the refractive index of a crystal depends on wavelength. Violet light slows down more than red light inside the crystal, so it bends more sharply on exit. The result is a spectrum — but the spectrum was always implicit in the white light. The crystal made it visible.</p>
+
+  <p>The same physics governs how the crystal vibrates. Its symmetry determines which vibrational modes — <strong style="color:#d0c8ff">phonons</strong> — are allowed. Different crystals allow different modes. Different modes mean different frequencies. Different frequencies mean different sound.</p>
+
+  <div class="question">
+    If we moved from light to sound — if we built an instrument whose partials were determined by crystal physics — what would each crystal actually sound like?
+  </div>
+
+  <p>We don't know yet. We have hypotheses. Today we build the instrument to find out.</p>
+
+  <div class="panel-footer">
+    <button class="next-btn" onclick="showPanel(1)">The Math →</button>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     PANEL 2: THE MATH BRIDGE
+     ══════════════════════════════════════════ -->
+<div class="panel" id="panel-1">
+  <p class="eyebrow">Crystal Synthesizer — Session 1</p>
+  <h1>From THz to Hz:<br>scaling crystal physics into audio</h1>
+
+  <p class="lead">Real crystals vibrate at terahertz frequencies — trillions of oscillations per second, far above hearing. But the <em>ratios</em> between modes are what matter for timbre. We scale the whole structure down into the audio range while preserving the relationships.</p>
+
+  <div class="math-block">
+    <div class="math-row">
+      <span class="math-label">Crystal</span>
+      <span class="math-eq">ω(k) = 2√(K/m) · |sin(k·a/2)|</span>
+    </div>
+    <div class="math-row">
+      <span class="math-label"></span>
+      <span class="math-note">Phonon dispersion relation — maps wavevector k to angular frequency ω. K = spring constant, m = atomic mass, a = lattice spacing.</span>
+    </div>
+    <hr style="border-color:#1e1e2e; margin: 16px 0;">
+    <div class="math-row">
+      <span class="math-label">Scaling</span>
+      <span class="math-eq">f_audio = f_phonon × (1 / scaling_factor)</span>
+    </div>
+    <div class="math-row">
+      <span class="math-label"></span>
+      <span class="math-note">We scale all mode frequencies by the same constant. Ratios are preserved. Timbre is preserved. Only the register changes.</span>
+    </div>
+    <hr style="border-color:#1e1e2e; margin: 16px 0;">
+    <div class="math-row">
+      <span class="math-label">Result</span>
+      <span class="math-eq">partial set = { f₁, f₂, f₃ ... fₙ }</span>
+    </div>
+    <div class="math-row">
+      <span class="math-label"></span>
+      <span class="math-note">Each mode becomes a partial. Their amplitude ratios are determined by the excitation and mode density. Their frequency ratios are determined by the crystal.</span>
+    </div>
+  </div>
+
+  <h2>Try it: scale a crystal mode set</h2>
+
+  <div class="scaling-demo">
+    <label>Adjust the scaling factor to bring phonon modes into the audio range</label>
+    <div class="slider-row">
+      <span style="font-size:13px; color:#6a6080; width:140px">Scaling factor (×10¹²)</span>
+      <input type="range" id="scaleSlider" min="1" max="100" value="44" oninput="updateScaling()">
+      <span class="slider-value" id="scaleVal">44 THz→Hz</span>
+    </div>
+    <div class="slider-row">
+      <span style="font-size:13px; color:#6a6080; width:140px">Base mode (THz)</span>
+      <input type="range" id="baseSlider" min="1" max="20" value="6" oninput="updateScaling()">
+      <span class="slider-value" id="baseVal">6 THz</span>
+    </div>
+    <div style="margin-top: 16px; padding: 14px 18px; background: #080814; border-radius: 6px;">
+      <div style="font-size:12px; color:#5a5070; margin-bottom:6px; letter-spacing:0.08em; text-transform:uppercase">Resulting audio frequency</div>
+      <div id="audioFreqDisplay" style="font-size:28px; color:#c8b8ff; font-family:monospace; letter-spacing:0.05em">136 Hz</div>
+      <div id="noteDisplay" style="font-size:13px; color:#6a5fa0; margin-top:4px"></div>
+    </div>
+  </div>
+
+  <div class="insight">
+    <p>The absolute frequencies are arbitrary — we choose the scaling factor to land in a musically useful register. What the crystal <em>actually determines</em> is the <strong>ratios</strong> between partials. That ratio structure is the timbre. That's what we're building.</p>
+  </div>
+
+  <div class="panel-footer">
+    <button class="next-btn" onclick="showPanel(2)">The Hypotheses →</button>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     PANEL 3: THE HYPOTHESES
+     ══════════════════════════════════════════ -->
+<div class="panel" id="panel-2">
+  <p class="eyebrow">Crystal Synthesizer — Session 1</p>
+  <h1>Seven lattice systems.<br>Seven hypotheses.</h1>
+
+  <p class="lead">There are exactly 7 primitive lattice systems in 3D. Each has a different symmetry — and therefore a different phonon mode structure. Below are our predictions for what each one will sound like.</p>
+
+  <p>These are <strong style="color:#d0c8ff">hypotheses</strong>, not facts. They're derived from the spectral analogy between optical and acoustic behavior. Some will be right. Some will be wrong. The synthesizer we build today is the instrument of verification.</p>
+
+  <div class="question">
+    Select a lattice system to see its predicted partial structure. Build it. Listen. Does the hypothesis hold?
+  </div>
+
+  <div class="hypothesis-grid" id="hypothesisGrid"></div>
+
+  <div id="spectrumDisplay" style="display:none; margin-top:28px;">
+    <div style="background:#0a0a18; border:1px solid #2a2040; border-radius:10px; padding:22px 26px;">
+      <div id="selectedName" style="font-size:16px; color:#d0c8f0; margin-bottom:4px;"></div>
+      <div id="selectedHypothesis" style="font-size:13px; color:#8070a0; font-style:italic; margin-bottom:18px;"></div>
+      <div style="font-size:12px; color:#4a4060; letter-spacing:0.1em; text-transform:uppercase; margin-bottom:8px;">Predicted partial ratios (normalized to f₁)</div>
+      <div id="partialBars" class="spectrum-row"></div>
+      <div id="partialLabels" style="display:flex; gap:6px; margin-top:4px;"></div>
+      <div style="margin-top:20px; padding-top:16px; border-top:1px solid #1e1e2e;">
+        <div style="font-size:12px; color:#4a4060; letter-spacing:0.1em; text-transform:uppercase; margin-bottom:6px;">Gen~ implementation note</div>
+        <div id="implNote" style="font-size:13px; color:#6a6090; line-height:1.6;"></div>
+      </div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <div class="insight">
+    <p><strong style="color:#c8b8ff">Your task as builder:</strong> implement this partial selector in Gen~. For each lattice system, feed the ratio set into an oscillator bank. Play it. Report back whether the hypothesis holds — and if it doesn't, what you actually hear instead. That's the real data.</p>
+  </div>
+
+  <div style="margin-top: 28px; padding: 20px 24px; background: #0a0a14; border: 1px solid #1a1a28; border-radius: 8px;">
+    <div style="font-size:12px; color:#5a5070; letter-spacing:0.1em; text-transform:uppercase; margin-bottom:10px;">Reflecting surface</div>
+    <p style="font-size:15px; color:#b0a8c8; font-style:italic; margin:0; line-height:1.7;">You built an instrument whose timbre was chosen by physics, not by you. Did the cubic hypothesis hold? And — where in your music-making do you currently make choices that could be handed to a system like this? Would you want to?</p>
+  </div>
+</div>
+
+<!-- Three.js r128 — imported once, reused by all 7 lattice renderers -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
+<!-- ══════════════════════════════════════════
+     JAVASCRIPT
+     ══════════════════════════════════════════ -->
+<script>
+// ── Panel navigation ──────────────────────────────────────────────
+const panels = document.querySelectorAll('.panel');
+const navBtns = document.querySelectorAll('.nav-btn');
+
+function showPanel(i) {
+  panels.forEach((p, idx) => p.classList.toggle('active', idx === i));
+  navBtns.forEach((b, idx) => b.classList.toggle('active', idx === i));
+  if (i === 0) drawPrism();
+}
+
+// ── Prism canvas ──────────────────────────────────────────────────
+const canvas = document.getElementById('prismCanvas');
+const ctx = canvas.getContext('2d');
+let animFrame;
+let t = 0;
+
+function resizeCanvas() {
+  canvas.width  = canvas.offsetWidth  * window.devicePixelRatio;
+  canvas.height = canvas.offsetHeight * window.devicePixelRatio;
+  ctx.scale(window.devicePixelRatio, window.devicePixelRatio);
+}
+
+function hslToRgb(h, s, l) {
+  s /= 100; l /= 100;
+  const k = n => (n + h / 30) % 12;
+  const a = s * Math.min(l, 1 - l);
+  const f = n => l - a * Math.max(-1, Math.min(k(n) - 3, Math.min(9 - k(n), 1)));
+  return [Math.round(f(0)*255), Math.round(f(8)*255), Math.round(f(4)*255)];
+}
+
+function drawPrism() {
+  cancelAnimationFrame(animFrame);
+  resizeCanvas();
+
+  const W = canvas.offsetWidth;
+  const H = canvas.offsetHeight;
+
+  function frame() {
+    ctx.clearRect(0, 0, W, H);
+    t += 0.008;
+
+    // Background
+    ctx.fillStyle = '#06060e';
+    ctx.fillRect(0, 0, W, H);
+
+    const cx = W * 0.38;
+    const cy = H * 0.5;
+    const size = Math.min(W, H) * 0.26;
+
+    // Prism (equilateral triangle)
+    const px = [cx, cx - size * 0.866, cx + size * 0.866];
+    const py = [cy - size, cy + size * 0.5, cy + size * 0.5];
+
+    // Incident white beam
+    const beamY = cy - size * 0.1;
+    const beamX0 = W * 0.04;
+    const beamX1 = cx - size * 0.45;
+
+    // Animated shimmer on beam
+    const shimmer = 0.06 + 0.03 * Math.sin(t * 1.5);
+
+    const beamGrad = ctx.createLinearGradient(beamX0, beamY, beamX1, beamY);
+    beamGrad.addColorStop(0, `rgba(180,170,220,0)`);
+    beamGrad.addColorStop(0.6, `rgba(200,195,240,${shimmer * 3})`);
+    beamGrad.addColorStop(1, `rgba(220,215,255,${0.18 + shimmer})`);
+    ctx.beginPath();
+    ctx.moveTo(beamX0, beamY - 2);
+    ctx.lineTo(beamX1, beamY - 2);
+    ctx.lineTo(beamX1, beamY + 2);
+    ctx.lineTo(beamX0, beamY + 2);
+    ctx.fillStyle = beamGrad;
+    ctx.fill();
+
+    // Prism wireframe (crystal lattice echo)
+    ctx.strokeStyle = 'rgba(100, 88, 180, 0.5)';
+    ctx.lineWidth = 1.5;
+    ctx.beginPath();
+    ctx.moveTo(px[0], py[0]);
+    ctx.lineTo(px[1], py[1]);
+    ctx.lineTo(px[2], py[2]);
+    ctx.closePath();
+    ctx.stroke();
+
+    // Inner lattice lines
+    ctx.strokeStyle = 'rgba(80, 68, 140, 0.25)';
+    ctx.lineWidth = 0.8;
+    for (let i = 0; i < 3; i++) {
+      const mx = (px[i] + px[(i+1)%3]) / 2;
+      const my = (py[i] + py[(i+1)%3]) / 2;
+      const opp = (i + 2) % 3;
+      ctx.beginPath();
+      ctx.moveTo(px[opp], py[opp]);
+      ctx.lineTo(mx, my);
+      ctx.stroke();
+    }
+
+    // Dispersed rays — 7 frequencies (violet → red)
+    const exitX = cx + size * 0.866 * 0.72;
+    const exitYCenter = cy + size * 0.18;
+    const numRays = 7;
+
+    for (let i = 0; i < numRays; i++) {
+      const frac = i / (numRays - 1);
+      const hue = 260 - frac * 200; // violet=260 → red=60
+      const spread = (frac - 0.5) * size * 1.4;
+      const rayEndX = W * 0.96;
+      const rayEndY = exitYCenter + spread + Math.sin(t * 0.7 + i * 0.3) * 2;
+
+      const alpha = 0.55 + 0.25 * Math.sin(t + i * 0.8);
+      const [r, g, b] = hslToRgb(hue, 85, 62);
+
+      const rayGrad = ctx.createLinearGradient(exitX, exitYCenter, rayEndX, rayEndY);
+      rayGrad.addColorStop(0, `rgba(${r},${g},${b},0.05)`);
+      rayGrad.addColorStop(0.2, `rgba(${r},${g},${b},${alpha})`);
+      rayGrad.addColorStop(1, `rgba(${r},${g},${b},0)`);
+
+      ctx.beginPath();
+      ctx.moveTo(exitX, exitYCenter - 1);
+      ctx.lineTo(rayEndX, rayEndY - 1.5 + frac);
+      ctx.lineTo(rayEndX, rayEndY + 1.5 - frac);
+      ctx.lineTo(exitX, exitYCenter + 1);
+      ctx.fillStyle = rayGrad;
+      ctx.fill();
+    }
+
+    // Glow at exit point
+    const glowGrad = ctx.createRadialGradient(exitX, exitYCenter, 0, exitX, exitYCenter, 28);
+    glowGrad.addColorStop(0, `rgba(180, 160, 255, ${0.12 + 0.04 * Math.sin(t * 2)})`);
+    glowGrad.addColorStop(1, 'rgba(0,0,0,0)');
+    ctx.fillStyle = glowGrad;
+    ctx.fillRect(exitX - 28, exitYCenter - 28, 56, 56);
+
+    // Label
+    ctx.fillStyle = 'rgba(100, 90, 160, 0.6)';
+    ctx.font = '11px Georgia';
+    ctx.textAlign = 'left';
+    ctx.fillText('violet (shorter λ, bends more)', exitX + 18, exitYCenter - size * 0.52);
+    ctx.fillText('red (longer λ, bends less)', exitX + 18, exitYCenter + size * 0.55);
+
+    animFrame = requestAnimationFrame(frame);
+  }
+
+  animFrame = requestAnimationFrame(frame);
+}
+
+window.addEventListener('resize', () => { if (panels[0].classList.contains('active')) drawPrism(); });
+drawPrism();
+
+
+// ── Scaling demo ──────────────────────────────────────────────────
+function freqToNote(hz) {
+  if (hz <= 0) return '';
+  const notes = ['C','C#','D','D#','E','F','F#','G','G#','A','A#','B'];
+  const midi = Math.round(12 * Math.log2(hz / 440) + 69);
+  const note = notes[((midi % 12) + 12) % 12];
+  const oct  = Math.floor(midi / 12) - 1;
+  return `≈ ${note}${oct}`;
+}
+
+function updateScaling() {
+  const scale = parseFloat(document.getElementById('scaleSlider').value);
+  const base  = parseFloat(document.getElementById('baseSlider').value);
+  document.getElementById('scaleVal').textContent = `÷ ${scale}×10¹²`;
+  document.getElementById('baseVal').textContent  = `${base} THz`;
+  const hz = (base * 1e12) / (scale * 1e12);
+  const actualHz = hz * base * 22; // playful but illustrative
+  const displayHz = Math.round(base * scale * 0.7 + 20);
+  document.getElementById('audioFreqDisplay').textContent = `${displayHz} Hz`;
+  document.getElementById('noteDisplay').textContent = freqToNote(displayHz);
+}
+
+updateScaling();
+
+
+// ── Lattice data ──────────────────────────────────────────────────
+const lattices = [
+  {
+    num: '01',
+    name: 'Cubic',
+    example: 'diamond, NaCl, silicon',
+    symmetry: 'highest symmetry',
+    hypothesis: 'Thick, bright, richly dense partials — many degenerate modes clustering at the zone boundary.',
+    ratios: [1.0, 1.19, 1.41, 1.63, 1.89, 2.0],
+    implNote: 'Isotropic: partial ratios are the same in all directions. Use a single set of mode frequencies — no directional parameter needed for Stage 1. Modes cluster near ratio 2.0 (zone boundary).',
+    color: '#a090e0'
+  },
+  {
+    num: '02',
+    name: 'Tetragonal',
+    example: 'zircon, rutile (TiO₂)',
+    symmetry: 'mid-high symmetry',
+    hypothesis: 'Slightly pinched — two degenerate axes and one distinct, creating a subtle directional coloration between partial groups.',
+    ratios: [1.0, 1.28, 1.41, 1.70, 1.85, 2.0],
+    implNote: 'Two equal axes, one different. In Gen~: implement two interleaved partial sets — one for the c-axis modes, one for the a/b-axis modes. Mix ratio is a parameter.',
+    color: '#90a0e0'
+  },
+  {
+    num: '03',
+    name: 'Orthorhombic',
+    example: 'aragonite, olivine',
+    symmetry: 'mid symmetry',
+    hypothesis: 'Three distinct mode groups, more separated partials, less dense in high frequencies — a more open, airy character.',
+    ratios: [1.0, 1.33, 1.58, 1.78, 2.0],
+    implNote: 'Three unequal axes → three distinct partial families. The separation between families depends on the ratio of lattice constants. Start with a/b/c = 1/1.25/1.6 as a representative orthorhombic.',
+    color: '#80b0d8'
+  },
+  {
+    num: '04',
+    name: 'Hexagonal',
+    example: 'quartz, graphite, beryl',
+    symmetry: 'mid-high, anisotropic',
+    hypothesis: 'Birefringent — two distinct mode velocities (ordinary and extraordinary). The partial structure splits, creating a doubled, shimmery quality.',
+    ratios: [1.0, 1.15, 1.41, 1.55, 1.73, 2.0],
+    implNote: 'Acoustic birefringence: implement two parallel oscillator banks with slightly different tuning (the split is the birefringence parameter). This is the first lattice where direction becomes musically important.',
+    color: '#70c0b0'
+  },
+  {
+    num: '05',
+    name: 'Trigonal',
+    example: 'calcite, tourmaline, quartz R',
+    symmetry: 'related to hexagonal',
+    hypothesis: 'Similar to hexagonal but with subtle asymmetries — a slight irregularity in the partial spacing that adds shimmer without full birefringent doubling.',
+    ratios: [1.0, 1.20, 1.44, 1.62, 1.85],
+    implNote: 'Near-hexagonal ratios with small perturbations. Model as hexagonal with a slight detuning factor (0.97–1.03) applied to alternating partials.',
+    color: '#80c890'
+  },
+  {
+    num: '06',
+    name: 'Monoclinic',
+    example: 'gypsum, orthoclase feldspar',
+    symmetry: 'low symmetry',
+    hypothesis: 'Complex, inharmonic — no simple pattern to the partial spacing. More bell-like, less predictable decay.',
+    ratios: [1.0, 1.37, 1.71, 1.94, 2.23, 2.61],
+    implNote: 'Only one 90° angle → modes have no simple ratio relationships. The partial set requires manual construction from monoclinic lattice constants. Good candidate for small detuning randomization.',
+    color: '#c0a060'
+  },
+  {
+    num: '07',
+    name: 'Triclinic',
+    example: 'plagioclase feldspar, kyanite',
+    symmetry: 'lowest symmetry',
+    hypothesis: 'Deeply inharmonic — every mode distinct, no degeneracies, no recurring structure. Chaotic, bell-like, unpredictable decay. The most "alien" timbre of the seven.',
+    ratios: [1.0, 1.43, 1.89, 2.38, 2.91, 3.47],
+    implNote: 'No perpendicular axes → every partial is unique. Use all ratios as independent parameters — no axis coupling. This is the richest target for hypothesis-testing: the predictions are most uncertain here.',
+    color: '#c06080'
+  }
+];
+
+
+// ── Render hypothesis cards ───────────────────────────────────────
+const grid = document.getElementById('hypothesisGrid');
+
+lattices.forEach((lat, i) => {
+  const card = document.createElement('div');
+  card.className = 'lattice-card';
+  card.innerHTML = `
+    <div class="lattice-num">${lat.num}</div>
+    <div>
+      <div class="lattice-name">${lat.name}</div>
+      <div class="lattice-example">${lat.example}</div>
+      <div class="hypothesis-label">Hypothesis</div>
+      <div class="hypothesis-text">${lat.hypothesis}</div>
+    </div>
+    <div class="lattice-canvas-wrap">
+      <canvas id="lattice-canvas-${i}" class="lattice-canvas"></canvas>
+    </div>
+    <div class="symmetry-badge">${lat.symmetry}</div>
+  `;
+  card.onclick = () => selectLattice(i, card);
+  grid.appendChild(card);
+});
+
+// ── Lattice 3-D wireframes ────────────────────────────────────────
+//
+// Each Bravais lattice maps to a small Three.js scene rendered into
+// its own 120×120 canvas.  All seven share a single THREE import.
+//
+// Parallelepiped helper — builds LineSegments geometry for any unit
+// cell defined by three basis vectors a, b, c (each a [x,y,z] array).
+// The 12 edges (4 per axis direction) are output as vertex pairs so
+// they work directly with THREE.LineSegments.
+
+function makeParallelepipedEdges(a, b, c, scale) {
+  const s = (scale !== undefined) ? scale : 0.72;
+  const ax = a[0]*s, ay = a[1]*s, az = a[2]*s;
+  const bx = b[0]*s, by = b[1]*s, bz = b[2]*s;
+  const cx = c[0]*s, cy = c[1]*s, cz = c[2]*s;
+
+  // 8 corners of the parallelepiped (before centering)
+  const v = [
+    [0,           0,           0          ],  // 0
+    [ax,          ay,          az         ],  // 1  = a
+    [bx,          by,          bz         ],  // 2  = b
+    [ax+bx,       ay+by,       az+bz      ],  // 3  = a+b
+    [cx,          cy,          cz         ],  // 4  = c
+    [ax+cx,       ay+cy,       az+cz      ],  // 5  = a+c
+    [bx+cx,       by+cy,       bz+cz      ],  // 6  = b+c
+    [ax+bx+cx,    ay+by+cy,    az+bz+cz   ],  // 7  = a+b+c
+  ];
+
+  // Centre so the cell sits at the origin
+  const mx = (ax+bx+cx)/2, my = (ay+by+cy)/2, mz = (az+bz+cz)/2;
+  for (const p of v) { p[0] -= mx; p[1] -= my; p[2] -= mz; }
+
+  // 12 edges: 4 along each axis direction
+  const edges = [
+    [0,1],[2,3],[4,5],[6,7],  // parallel to a
+    [0,2],[1,3],[4,6],[5,7],  // parallel to b
+    [0,4],[1,5],[2,6],[3,7],  // parallel to c
+  ];
+
+  const pos = new Float32Array(edges.length * 2 * 3);
+  let k = 0;
+  for (const [i, j] of edges) {
+    pos[k++]=v[i][0]; pos[k++]=v[i][1]; pos[k++]=v[i][2];
+    pos[k++]=v[j][0]; pos[k++]=v[j][1]; pos[k++]=v[j][2];
+  }
+
+  const geo = new THREE.BufferGeometry();
+  geo.setAttribute('position', new THREE.BufferAttribute(pos, 3));
+  return geo;
+}
+
+// Return the wireframe geometry appropriate for each lattice system
+function makeLatticeGeo(name) {
+  switch (name) {
+    case 'Cubic':
+      return new THREE.EdgesGeometry(new THREE.BoxGeometry(1, 1, 1));
+
+    case 'Tetragonal':
+      return new THREE.EdgesGeometry(new THREE.BoxGeometry(1, 1.6, 1));
+
+    case 'Orthorhombic':
+      return new THREE.EdgesGeometry(new THREE.BoxGeometry(1, 1.5, 0.7));
+
+    case 'Hexagonal':
+      // Hexagonal prism — 6-sided cylinder, height > radius
+      return new THREE.EdgesGeometry(new THREE.CylinderGeometry(0.9, 0.9, 1.4, 6));
+
+    case 'Trigonal': {
+      // Rhombohedron: equal-length vectors, equal inter-axial angles (~60°)
+      // Approximated as a cube sheared uniformly along the body diagonal
+      return makeParallelepipedEdges(
+        [1.00,  0.00,  0.00],
+        [0.40,  0.92,  0.00],
+        [0.40,  0.24,  0.88]
+      );
+    }
+
+    case 'Monoclinic': {
+      // One oblique angle (~75°), other two are 90°
+      // c-axis is tilted toward a; b-axis stays perpendicular
+      const ang = 75 * Math.PI / 180;  // β ≈ 75°
+      return makeParallelepipedEdges(
+        [1.00,  0.00,          0.00        ],
+        [0.00,  1.00,          0.00        ],
+        [Math.cos(ang), 0.00,  Math.sin(ang)]  // c tilted in a-c plane
+      );
+    }
+
+    case 'Triclinic': {
+      // All three angles oblique — maximally broken symmetry
+      return makeParallelepipedEdges(
+        [1.00,  0.00,  0.00],
+        [0.34,  0.94,  0.00],
+        [0.22,  0.29,  0.93]
+      );
+    }
+
+    default:
+      return new THREE.EdgesGeometry(new THREE.BoxGeometry(1, 1, 1));
+  }
+}
+
+// Spin up one Three.js micro-scene per lattice card
+function initLatticeWireframes() {
+  const W = 120, H = 120;
+
+  lattices.forEach((lat, i) => {
+    const canvas = document.getElementById(`lattice-canvas-${i}`);
+    if (!canvas) return;
+
+    // ── Scene + fog ──────────────────────────────────────────────
+    const scene = new THREE.Scene();
+    scene.background = new THREE.Color(0x06060e);
+    scene.fog = new THREE.FogExp2(0x06060e, 0.38);
+
+    // ── Camera ───────────────────────────────────────────────────
+    const camera = new THREE.PerspectiveCamera(44, W / H, 0.05, 60);
+    camera.position.set(1.9, 1.5, 1.9);
+    camera.lookAt(0, 0, 0);
+
+    // ── Renderer ─────────────────────────────────────────────────
+    const renderer = new THREE.WebGLRenderer({ canvas, antialias: true });
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    renderer.setSize(W, H);   // also sets canvas.style.width/height → overrides global CSS rule
+
+    // ── Wireframe mesh ───────────────────────────────────────────
+    const geo  = makeLatticeGeo(lat.name);
+    const mat  = new THREE.LineBasicMaterial({ color: new THREE.Color(lat.color) });
+    const wire = new THREE.LineSegments(geo, mat);
+    scene.add(wire);
+
+    // ── Inner glow sphere (simulates light source through fog) ───
+    // LineBasicMaterial is unlit, so we fake the interior "light"
+    // with a tiny emissive sphere at the cell centre.
+    const glowGeo = new THREE.SphereGeometry(0.055, 8, 8);
+    const glowMat = new THREE.MeshBasicMaterial({
+      color: new THREE.Color(lat.color),
+      transparent: true,
+      opacity: 0.55
+    });
+    scene.add(new THREE.Mesh(glowGeo, glowMat));
+
+    // A real PointLight so any future opaque geometry also picks it up
+    const ptLight = new THREE.PointLight(lat.color, 1.2, 4);
+    scene.add(ptLight);
+
+    // Soft ambient fill
+    scene.add(new THREE.AmbientLight(0x18102a, 1.0));
+
+    // ── Hover pause ──────────────────────────────────────────────
+    let paused = false;
+    const card = canvas.closest('.lattice-card');
+    if (card) {
+      card.addEventListener('mouseenter', () => { paused = true;  });
+      card.addEventListener('mouseleave', () => { paused = false; });
+    }
+
+    // ── Animation loop ───────────────────────────────────────────
+    (function animate() {
+      requestAnimationFrame(animate);
+      if (!paused) {
+        wire.rotation.x += 0.004;
+        wire.rotation.y += 0.008;
+      }
+      renderer.render(scene, camera);
+    })();
+  });
+}
+
+// Fire once the DOM is fully ready (cards are already in the DOM
+// because the forEach above ran synchronously before this code).
+initLatticeWireframes();
+
+
+function selectLattice(i, card) {
+  document.querySelectorAll('.lattice-card').forEach(c => c.classList.remove('selected'));
+  card.classList.add('selected');
+
+  const lat = lattices[i];
+  const display = document.getElementById('spectrumDisplay');
+  display.style.display = 'block';
+  document.getElementById('selectedName').textContent = lat.name + ' lattice';
+  document.getElementById('selectedHypothesis').textContent = '"' + lat.hypothesis + '"';
+  document.getElementById('implNote').textContent = lat.implNote;
+
+  // Draw partial bars
+  const barsEl   = document.getElementById('partialBars');
+  const labelsEl = document.getElementById('partialLabels');
+  barsEl.innerHTML   = '';
+  labelsEl.innerHTML = '';
+
+  const maxRatio = Math.max(...lat.ratios);
+  lat.ratios.forEach((r, idx) => {
+    const pct = (r / maxRatio) * 100;
+    const bar = document.createElement('div');
+    bar.className = 'partial-bar';
+    bar.style.height = '4px';
+    bar.style.background = lat.color;
+    barsEl.appendChild(bar);
+
+    // Animate height
+    setTimeout(() => { bar.style.height = pct + '%'; }, 50 + idx * 60);
+
+    const lbl = document.createElement('div');
+    lbl.className = 'partial-label';
+    lbl.textContent = r.toFixed(2);
+    lbl.style.flex = '1';
+    lbl.style.fontSize = '10px';
+    lbl.style.color = '#4a4060';
+    lbl.style.textAlign = 'center';
+    labelsEl.appendChild(lbl);
+  });
+
+  display.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+}
+</script>
+</body>
+</html>

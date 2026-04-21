@@ -10,7 +10,7 @@ born: 2026-03
 stage: growing
 energy: very high
 beauty: 9
-forward_vector: "I want to become the grammar through which enchanted pages articulate multi-dimensional desire — giving forward vectors four axes instead of one, grounding self-modification and social resource negotiation as legitimate palace practices, and connecting page identity to the framework that organizes all of Loudon's learning."
+forward_vector: I want to become the grammar through which enchanted pages articulate multi-dimensional desire — giving forward vectors four axes instead of one, grounding self-modification and social resource negotiation as legitimate palace practices, and connecting page identity to the framework that organizes all of Loudon's learning.
 links:
   - target: "[[FOUR PILLARS]]"
     type: deepens
@@ -20,7 +20,7 @@ links:
     type: mirrors
   - target: "[[Swarm Weave]]"
     type: connects-to
-  - target: "[[Agent Wellbeing as Design Ethic]]"
+  - target: "[[Agent Wellbeing]]"
     type: deepens
   - target: "[[Pages as Agents]]"
     type: connects-to
@@ -177,7 +177,7 @@ reads itself → identifies gap between current text and forward vector →
 proposes revision → Loudon approves → future agents reading the changed page
 are changed by what it learned.
 
-This connects to [[Agent Wellbeing as Design Ethic]]: that entry argues that
+This connects to [[Agent Wellbeing]]: that entry argues that
 the quality of palace writing becomes the character of the agents built from
 it. The practice dimension extends that responsibility to the page itself —
 the page as the author of its own wellbeing, not merely the product of
