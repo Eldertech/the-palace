@@ -1,12 +1,12 @@
 {
-  "version": "2.1",
+  "version": "2.2",
   "plugin": "Fundamental",
   "plugin_slug": "Fundamental",
   "vcv_rack_version": "2.x",
   "source": "https://github.com/VCVRack/Fundamental",
-  "verification_method": "All port and param indices verified against Fundamental v2 source code via WebFetch of each module's .cpp file (configInput / configOutput / configParam call order).",
-  "last_verified": "2026-04-19",
-  "notes": "Port indices are the integer IDs cables use in .vcv JSON, determined by the order of configInput()/configOutput() calls in each module's source. UI label position does NOT determine index. v2.0 corrected extensive errors in v1.0 (guessed indices). v2.1 (2026-04-19) adds optional default_input / default_output fields per module so unnamed-port resolution (e.g. `OSC -> FILT`) prefers the conceptually 'right' port rather than the lowest-index one — needed because v2.0's source-verified ordering often puts CV modulation inputs at index 0.",
+  "verification_method": "All port and param indices verified against Fundamental v2 + Rack v2/src/core source via WebFetch of each module's .cpp file (configInput / configOutput / configParam call order). Core slugs verified via `createModel<...>(\"slug\")` declarations.",
+  "last_verified": "2026-04-20",
+  "notes": "Port indices are the integer IDs cables use in .vcv JSON, determined by the order of configInput()/configOutput() calls in each module's source. UI label position does NOT determine index. v2.0 corrected extensive errors in v1.0 (guessed indices). v2.1 (2026-04-19) added optional default_input / default_output fields per module so unnamed-port resolution prefers the conceptually 'right' port rather than the lowest-index one. v2.2 (2026-04-20, T11) adds per-module `plugin` field (Fundamental vs Core), MIDI_CV and AUDIO_8 under plugin:Core, and the top-level `virtual_endpoints` map so unbound `KEYBOARD` / `OUT` instances auto-bind to those modules — closing T1's audible-playback gate.",
   "signal_types": {
     "audio": { "voltage": "±5V nominal", "color_hint": "coral" },
     "cv":    { "voltage": "0–10V or ±5V context-dependent", "color_hint": "purple" },
@@ -17,6 +17,7 @@
   "modules": {
     "VCO": {
       "slug": "VCO",
+      "plugin": "Fundamental",
       "name": "VCO",
       "hp": 12,
       "description": "Voltage-controlled oscillator. Four simultaneous waveform outputs. Hard sync input. Pulse width modulation.",
@@ -53,6 +54,7 @@
 
     "VCF": {
       "slug": "VCF",
+      "plugin": "Fundamental",
       "name": "VCF",
       "hp": 8,
       "description": "Voltage-controlled filter. Lowpass + highpass outputs simultaneously. Drive input adds saturation. Self-oscillates at high resonance.",
@@ -87,6 +89,7 @@
 
     "ADSR": {
       "slug": "ADSR",
+      "plugin": "Fundamental",
       "name": "ADSR EG",
       "hp": 8,
       "description": "Attack-Decay-Sustain-Release envelope generator. Gate input triggers envelope; CV inputs modulate each stage.",
@@ -125,6 +128,7 @@
 
     "VCA": {
       "slug": "VCA-1",
+      "plugin": "Fundamental",
       "name": "VCA",
       "hp": 3,
       "description": "Single-channel voltage-controlled amplifier. CV input, audio input, audio output. Linear or exponential response.",
@@ -151,6 +155,7 @@
 
     "LFO": {
       "slug": "LFO",
+      "plugin": "Fundamental",
       "name": "LFO",
       "hp": 10,
       "description": "Low-frequency oscillator. Four simultaneous waveform outputs. Clock input for sync. Can run at audio rate.",
@@ -185,6 +190,7 @@
 
     "SEQ3": {
       "slug": "SEQ3",
+      "plugin": "Fundamental",
       "name": "SEQ 3",
       "hp": 26,
       "description": "Three-channel 8-step sequencer. Internal clock or external clock. Three CV outputs (one per channel) plus per-step trigger outputs.",
@@ -229,6 +235,7 @@
 
     "MIXER": {
       "slug": "Mixer",
+      "plugin": "Fundamental",
       "name": "Mix",
       "hp": 6,
       "description": "Six-input simple mixer with single master Level knob. No per-channel level control — use VCMixer for that.",
@@ -257,6 +264,7 @@
 
     "VCMIXER": {
       "slug": "VCMixer",
+      "plugin": "Fundamental",
       "name": "VCA Mix",
       "hp": 10,
       "description": "Four-channel mixer with per-channel level knobs AND CV-controllable levels. Each channel has its own pre-mix output. Use this when you need real per-channel mixing.",
@@ -293,6 +301,85 @@
         "four channel", "per-channel level", "channel mix", "balance",
         "submix", "stem", "pre-mix output", "channel strip"
       ]
+    },
+
+    "MIDI_CV": {
+      "slug": "MIDIToCVInterface",
+      "plugin": "Core",
+      "name": "MIDI-CV",
+      "hp": 9,
+      "description": "MIDI-to-CV interface. No inputs, no params — 12 outputs derived from incoming MIDI. Slug is 'MIDIToCVInterface' (historical), plugin is 'Core'.",
+      "verification": "verified against Rack v2/src/core/MIDI_CV.cpp (2026-04-20). NUM_INPUTS=0, NUM_PARAMS=0, 12 configOutput() calls in OutputIds enum order. Slug verified from `createModel<MIDI_CV, MIDI_CVWidget>(\"MIDIToCVInterface\")`.",
+      "default_output": "PITCH",
+      "inputs": [],
+      "outputs": [
+        { "name": "PITCH",      "type": "pitch",   "index": 0,  "description": "1V/octave pitch — primary pitch output" },
+        { "name": "GATE",       "type": "gate",    "index": 1,  "description": "Gate (10V while key held)" },
+        { "name": "VELOCITY",   "type": "cv",      "index": 2,  "description": "Note-on velocity CV (0-10V)" },
+        { "name": "AFTERTOUCH", "type": "cv",      "index": 3,  "description": "Channel aftertouch CV" },
+        { "name": "PW",         "type": "cv",      "index": 4,  "description": "Pitch wheel CV (±5V)" },
+        { "name": "MOD",        "type": "cv",      "index": 5,  "description": "Mod wheel CV" },
+        { "name": "RETRIG",     "type": "trigger", "index": 6,  "description": "Retrigger on new note (polyphonic steal)" },
+        { "name": "CLOCK",      "type": "trigger", "index": 7,  "description": "MIDI clock pulse" },
+        { "name": "CLOCK_DIV",  "type": "trigger", "index": 8,  "description": "Divided clock pulse" },
+        { "name": "START",      "type": "trigger", "index": 9,  "description": "MIDI start message" },
+        { "name": "STOP",       "type": "trigger", "index": 10, "description": "MIDI stop message" },
+        { "name": "CONTINUE",   "type": "trigger", "index": 11, "description": "MIDI continue message" }
+      ],
+      "params": [],
+      "perceptual_index": [
+        "keyboard", "midi", "note", "gate", "pitch", "play",
+        "trigger", "controller", "input", "human input", "performer"
+      ]
+    },
+
+    "AUDIO_8": {
+      "slug": "AudioInterface",
+      "plugin": "Core",
+      "name": "Audio-8",
+      "hp": 10,
+      "description": "Audio interface, 8×8. Inputs on the left (signals leaving the rack to the DAW/speakers — 'device output N'). Outputs on the right (signals arriving from the DAW/mic — 'device input N'). For stereo listen, patch to IN1 AND IN2.",
+      "verification": "verified against Rack v2/src/core/Audio.cpp (2026-04-20). AUDIO_INPUTS+i / AUDIO_OUTPUTS+i pattern for i∈[0,7], no params. Slug verified from `createModel<Audio<8,8>, AudioWidget<8,8>>(\"AudioInterface\")`.",
+      "default_input": "IN1",
+      "default_output": "OUT1",
+      "inputs": [
+        { "name": "IN1", "type": "audio", "index": 0, "description": "To device output 1 (main left)" },
+        { "name": "IN2", "type": "audio", "index": 1, "description": "To device output 2 (main right)" },
+        { "name": "IN3", "type": "audio", "index": 2, "description": "To device output 3" },
+        { "name": "IN4", "type": "audio", "index": 3, "description": "To device output 4" },
+        { "name": "IN5", "type": "audio", "index": 4, "description": "To device output 5" },
+        { "name": "IN6", "type": "audio", "index": 5, "description": "To device output 6" },
+        { "name": "IN7", "type": "audio", "index": 6, "description": "To device output 7" },
+        { "name": "IN8", "type": "audio", "index": 7, "description": "To device output 8" }
+      ],
+      "outputs": [
+        { "name": "OUT1", "type": "audio", "index": 0, "description": "From device input 1" },
+        { "name": "OUT2", "type": "audio", "index": 1, "description": "From device input 2" },
+        { "name": "OUT3", "type": "audio", "index": 2, "description": "From device input 3" },
+        { "name": "OUT4", "type": "audio", "index": 3, "description": "From device input 4" },
+        { "name": "OUT5", "type": "audio", "index": 4, "description": "From device input 5" },
+        { "name": "OUT6", "type": "audio", "index": 5, "description": "From device input 6" },
+        { "name": "OUT7", "type": "audio", "index": 6, "description": "From device input 7" },
+        { "name": "OUT8", "type": "audio", "index": 7, "description": "From device input 8" }
+      ],
+      "params": [],
+      "perceptual_index": [
+        "audio", "output", "speakers", "interface", "dac",
+        "listen", "hear", "main out", "monitor", "sink", "destination"
+      ]
+    }
+  },
+
+  "virtual_endpoints": {
+    "KEYBOARD": {
+      "module": "MIDI_CV",
+      "role": "source",
+      "note": "Unbound `KEYBOARD` instances auto-bind to MIDI_CV at parse time — user doesn't have to write `@KEYBOARD = MIDI_CV`."
+    },
+    "OUT": {
+      "module": "AUDIO_8",
+      "role": "sink",
+      "note": "Unbound `OUT` instances auto-bind to AUDIO_8. For stereo-centered listen, patch both `OUT:IN1` and `OUT:IN2`."
     }
   }
 }

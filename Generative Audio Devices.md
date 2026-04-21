@@ -22,7 +22,7 @@ links:
   - target: "[[PDL Renderer]]"
     type: spawned
     label: "first-fruit"
-forward_vector: "The larger goal is a generalizable pipeline: natural language → a target-agnostic signal-flow IR (PDL) → any modular/DSP target via a per-target registry. VCV Rack is the first test case, not the destination. As of 2026-04-19 the registry is at v2.1: all 8 modules source-verified against Fundamental v2 .cpp files (v2.0), plus optional default_input/default_output fields (v2.1) so unnamed-port resolution prefers the conceptually-right port over the lowest-index one. Topologically, the emitter is confirmed working. The remaining gate to T1 closure is **audible** playback, which requires either manually adding Core MIDI-CV + Audio-8 in Rack, or implementing T11 (registry entries + virtual KEYBOARD/OUT mapping) to make patches sound-ready out of the gate. Still open: T12 (parse-time diagnostics — the renderer should warn when it drops a line, not fail silently), T6 (generation prompt), T7 (parameter emission), T8 (perceptual-index UI), T10 (second target)."
+forward_vector: "The larger goal is a generalizable pipeline: natural language → a target-agnostic signal-flow IR (PDL) → any modular/DSP target via a per-target registry. VCV Rack is the first test case, not the destination. As of 2026-04-20 the registry is at v2.2: 10 modules — 8 Fundamental (source-verified against v2 .cpp files) plus 2 Core (MIDI_CV and AUDIO_8, source-verified 2026-04-20). Per-module `plugin` field lets Fundamental and Core modules coexist in one patch. A top-level `virtual_endpoints` map auto-binds unbound `KEYBOARD` → MIDI_CV and `OUT` → AUDIO_8 at parse time, and type-aware default port resolution routes `KEYBOARD -> ENV:GATE` to KEYBOARD:GATE (not the default PITCH) because the destination's signal type is used to pick the matching source output. **T11 is closed** — the exported .vcv now contains MIDI_CV + AudioInterface wired through automatically, so patches are sound-ready without manual additions in Rack. **T7a phase 1 (numeric param emission) closed 2026-04-20** — `emitVcvJson` now reads PDL `*` lines, resolves each entry per-instance, and writes either the parsed numeric value or the registry default into the .vcv `params` array. Verified against the `house_bass.pdl` / `house_bass.vcv` reference pair: same param values for every module, zero warnings, zero skipped cables. Four warning classes (orphan instance, missing `=`, unknown param name, non-finite value) surface through the amber panel with source line numbers for click-to-jump. This is the seam T7a phase 2 will intercept: a non-finite value like `CUTOFF = dark` today warns and falls back to default, tomorrow resolves through a named perceptual region. **Critical path now T7a phase 2 → T7b → T6 refactor → T10.** Phase 2 (regions + curves on each param) is still a schema commitment; T7b (archetype library) is the musically consequential piece. See the **Parameter Intelligence** section below."
 ---
 
 # Generative Audio Devices
@@ -82,8 +82,12 @@ A self-contained React-in-browser artifact. Open in any browser, no build step. 
 - Renders cables color-coded by signal type
 - Exports a loadable `.vcv` file via `emitVcvJson()` + "Export .vcv" button
 
-### VCV Registry (`vcv_fundamental_registry.json`) — **v2.0 as of 2026-04-19**
-Source-verified registry for **8 modules** from VCV Fundamental: VCO, VCF, ADSR, VCA, LFO, SEQ3, Mixer, VCMIXER. Every entry is verified against the corresponding `.cpp` file in the Fundamental v2 plugin (verification dates and source-file references stored in each entry's `verification` field).
+### VCV Registry (`vcv_fundamental_registry.json`) — **v2.2 as of 2026-04-20**
+Source-verified registry for **10 modules** across two plugins:
+- **Fundamental (8):** VCO, VCF, ADSR, VCA, LFO, SEQ3, Mixer, VCMIXER
+- **Core (2):** MIDI_CV (slug `MIDIToCVInterface`), AUDIO_8 (slug `AudioInterface`)
+
+Every entry is verified against source — Fundamental v2 `.cpp` files and Rack v2 `src/core/` files (verification dates and source-file references stored in each entry's `verification` field). Per-module `plugin` field lets Fundamental and Core coexist in one emitted patch. Top-level `virtual_endpoints` map defines the auto-bind rules used by the parser.
 
 Fields per module: `slug`, `hp`, `inputs` / `outputs` with `name`, `type` (`audio` / `cv` / `gate` / `pitch` / `trigger`), `index`, `description`; `params` with `index`, name, range, default, unit, description; `perceptual_index` — the human-language cloud that summons this module; `verification` — source file and date.
 
@@ -113,15 +117,48 @@ Signal types: `audio` · `cv` · `gate` · `pitch` · `trigger`. Port-type resol
   - `SEQ -> OSC` → `SEQ:CV1 -> OSC:V/OCT` (was `SEQ:TRIG` master trigger)
   Explicit `:Port` syntax continues to win over defaults. Default spec emits identical cables to pre-T4b (no regression). VCA default_input = "IN" (audio); modulation targets like `ENV -> AMP:CV` remain explicit — per-source signal-type-aware routing is out of T4b scope.
 - **Parser comment-strip fix** (no task number, 2026-04-19). `@INSTANCE = ADSR  // comment` lines were silently rejected. Trailing `// comment` is now stripped before per-line parsing. **Lesson — see T12.**
+- **T12 (2026-04-20)** — parse-time diagnostics. `parsePDL` now collects `warnings: [{ source, lineNumber, content, reason }]`. Three shapes surface: unknown module types in `@` declarations (e.g. `@VCO1 = VCOO` → `unknown module type: "VCOO" — not in registry`), malformed `@`/`*` lines that start with the sigil but fail their regex, and unrecognized lines that match no known shape. `emitVcvJson` and `downloadVcvPatch` bubble these alongside the existing `skipped` cable list. A new `WarningsPanel` component renders them in an amber sidebar block, recomputed from `parsePDL(pdl)` on every keystroke so silent regex rejection is now loud. Rendering never blocks — good lines still produce a diagram and a patch. Strict-mode toggle was scoped out — the always-on amber panel already provides the loud signal, and a hard-block toggle would have forced threading state through `Diagram`. Known residual edge: `@ = VCO` (empty instance ID) still matches the declaration regex because `[\w\s]+?` consumes the whitespace between `@` and `=`; flagged here so T6 iteration isn't caught off-guard, but out of T12 scope. **Lesson:** the fastest way to debug a pipeline is to make its failures visible in the surface the user is already editing.
+- **First playable generation test (2026-04-20)** — a hand-described "house bass" was produced end-to-end: PDL written against the current grammar, `.vcv` emitted directly from the v2.2 registry (via `build_house_bass.js`), loaded in Rack, played on first keypress. Loudon confirmed the voicing works. Files: `house_bass.pdl` (intent), `house_bass.vcv` (playable). **Why this matters for the roadmap:** the test had to bypass `emitVcvJson` and write the `.vcv` directly from the registry, because the current emitter zeroes all params regardless of PDL `*` lines. Structural pipeline is sound; the missing piece is parameter emission. **This is exactly the gap T7a closes** — and the first real test of the pipeline just demonstrated, by necessity, why T7a is now the critical path. Every future audible test needs it. Do T7a next.
+- **T7a phase 1 (2026-04-20)** — numeric param emission. `emitVcvJson` no longer writes `value: 0` for every param; it reads the `params` map that `parsePDL` was already returning, resolves each `* Instance: Name = Value | ...` entry against the registry, and emits either the parsed numeric value or the registry `default`. Four failure modes now surface as warnings through the existing amber panel — orphan instances (`* PHANTOM: ...` with no `@` declaration and no virtual-endpoint match), malformed entries missing `=`, param names not in the registry for the instance's module type, and non-finite values (which is also the phase-2 seam: `CUTOFF = dark` warns and falls back to default today, will resolve through a named region once phase 2 lands). Param entries now carry their source line number through `parsePDL` so each warning points the editor at the exact line — mixed-entry lines like `* OSC: FREEQ = -12 | PW = 0.5` correctly flag only the typo on that line, not the valid sibling. Registry-default fallback is also strictly more correct than the old zero stub — a bare VCO now emits with `PW=0.5, SYNC_MODE=1` instead of all zeros (which would have left SYNC_MODE at 0 — soft sync, wrong default). Verified with a Node harness (`verify_t7a.js` in session outputs) that duplicates the pure-JS parser + emitter and diffs against `house_bass.vcv` — clean pass, all seven modules' param arrays match the hand-baked reference. **Lesson:** the phase-2 seam came for free. Because numeric-only parsing warns on anything non-finite, named-region resolution slots in as "intercept the warning path before it fires" rather than as new code in a new place — the same pattern T12 taught (make failure visible in the surface the user is already editing, then extend from there).
+- **T11 (2026-04-20)** — sound-ready patches. Registry bumped to v2.2. Added per-module `plugin` field (Fundamental vs Core); added MIDI_CV (slug `MIDIToCVInterface`) and AUDIO_8 (slug `AudioInterface`) Core entries, both source-verified against `Rack v2/src/core/MIDI_CV.cpp` and `Audio.cpp`. Added top-level `virtual_endpoints` map; `parsePDL` auto-binds unbound `KEYBOARD` → MIDI_CV and `OUT` → AUDIO_8 so they behave like any declared instance (they appear in the diagram with registry badges and emit to `.vcv`). Added **type-aware default port resolution**: when one side of a connection has a named port with a known signal type, the other side prefers a port of matching type over `default_input`/`default_output`. This is what makes `KEYBOARD -> ENV:GATE` auto-resolve to `KEYBOARD:GATE` (not the default PITCH) without explicit port syntax. Emitter now uses `mod.plugin || PLUGIN_SLUG` per module so Fundamental + Core can coexist. Verified via Node harness (`verify_t11.js` at session root): default PDL emits 6 modules, 7 cables, 0 skipped, 0 warnings; MIDIToCVInterface wired PITCH→OSC and GATE→ENV; AudioInterface wired IN1 + IN2 from AMP:OUT for stereo-centered mono. **Lesson:** a virtual endpoint is an emergent third thing — not parser sugar, not an emitter hack, but a convention that connects loose external-world language (KEYBOARD, OUT) to the precise target vocabulary. Putting it in the registry (alongside modules) rather than hardcoding it in parser/emitter was the right call — it means "second-target" work (T10) can define its own virtual endpoints without touching the core.
 
 ### What still does NOT exist
-- **Empirical confirmation of audible playback** (gated on manual wiring in Rack or T11)
-- **T11** — Core MIDI-CV + Audio-8 registry entries + virtual KEYBOARD/OUT mapping
-- **T12** — parse-time diagnostics (warn on dropped lines instead of failing silently)
 - **T6** — generation prompt (left-to-right half of the pipeline)
-- **T7** — parameter values in exported patches
+- **T7a phase 2** — perceptual parameter vocabulary (regions + curve hints on each param; region-name values in PDL like `CUTOFF = dark`). Phase 1 (numeric emission) shipped 2026-04-20.
+- **T7b** — archetype library and seeded resolver (the musically consequential piece — see **Parameter Intelligence** below)
 - **T8** — perceptual-index wiring in the renderer UI
 - **T10** — any second-target registry (no RNBO, Max, PD, WebAudio registries yet)
+
+---
+
+## Parameter Intelligence — The Next Architectural Layer
+
+Signal flow answers *what connects to what*. Parameter setting answers *what does it sound like when it does*. These are different epistemic projects and deserve different machinery. Conflating them is the trap: it produces patches that are structurally correct and audibly inert, filter cutoffs stranded at center, envelopes stuck at medium-medium-medium-medium, every preset wearing the same neutral face.
+
+**The core asymmetry with signal flow.** Signal flow has a strong syntactic floor — a cable either exists or doesn't, a port is compatible or isn't, and the emitter can verify a patch is legal before it ever hears sound. Parameters have no such floor. Every numeric setting in range is "legal." The constraint is not syntax, it is *perceptual plausibility*, which lives in a domain the registry doesn't currently model. Signal-flow intelligence is a graph problem. Parameter intelligence is a taste problem wearing a graph problem's clothes.
+
+**What the registry already gives for free.** Each param carries `range`, `default`, `unit`. That is the skeleton. What is missing is *perceptual geometry* — the shape of each param's musically meaningful space. A VCF cutoff is not uniform across 0–1; the bottom ~15% reads as "closed," the middle is "character," the top is "open." ADSR attack has a log-perceptual curve; release beyond ~2s reads as "ambient," below ~50ms reads as "pluck." This knowledge already exists in synth-design tradition. The project has not yet invited it into the registry.
+
+**Three layers of parameter knowledge, in order of difficulty.**
+
+The first is *per-module perceptual indexing* — extending the registry so each param carries named perceptual regions alongside its numeric range (`CUTOFF: {closed: [0, 0.15], dark: [0.15, 0.4], open: [0.4, 0.75], bright: [0.75, 1.0]}`). This is the same move the type-aware port resolution made in T11: make the registry richer so the generator can speak in higher-level terms. PDL accepts `* VCF: CUTOFF = dark` and resolves to a sample from that region. This is the *vocabulary* layer — the parametric cousin of the perceptual index that already exists for modules.
+
+The second is *archetype-to-cloud mapping* — a new layer above the registry that knows what a "kick drum," a "pad," a "sparkle lead," a "sub bass" actually *are* as constellations of parameter settings across multiple modules. A kick drum is not "VCO+VCA with fast decay"; it is the specific co-dependency that the pitch envelope's decay matches the amp envelope's decay, the VCO is set low, the LFO is not doing audio-rate FM. These are *constraint bundles across modules*, and they only make sense holistically. An archetype registry is therefore a sibling to the module registry, keyed by musical identity rather than by module identity. It is essentially typed links between modules, weighted by musical co-dependency — the palace's link ontology showing up inside the pipeline itself.
+
+The third is *contextual constraint propagation*. When an archetype is chosen, its parameter cloud propagates outward through the signal graph. Choose "plucky lead," and the envelope's release wants to be short; if the patch then routes VCA into a delay, the delay's feedback wants to complement a pluck, not a pad. This is where parameter intelligence stops being local per-module taste and becomes global patch coherence. This is the hardest layer and the one musicality actually lives in.
+
+**The one-to-many principle, applied again.** The signal-flow pipeline embraced one-to-many: one PDL description, many possible target realizations. Parameter intelligence should do the same on a different axis. One archetype ("warm pad") produces a *distribution* of parameter sets, not a fixed one. Generation is sampling from that distribution, seeded. This avoids the "every kick sounds identical" trap and gives the user a natural knob — variance — that rewards re-generation rather than punishing it. The archetype constrains the region; the seed picks the point.
+
+**The pattern this reveals.** The hard problems in this project keep turning out to be *knowledge-representation* problems, not encoding problems — figuring out what shape of structured knowledge the registry must carry so the generator can stay dumb. Port types (T4), virtual endpoints (T11), and now perceptual regions plus archetypes are all the same move: *push musical intelligence into the static data layer so the generation layer does not have to reinvent it every time.* Parameter intelligence is the largest instance of that pattern the project has hit yet.
+
+**How this reshapes T7 and what comes after.** T7 as originally written ("emit parameter numbers") was the one-line version of this problem. It now splits:
+
+- **T7a — Perceptual parameter vocabulary.** Registry extension: each param carries perceptual regions and curve hints (linear / log / exp). PDL accepts named regions as values (`CUTOFF = dark`). Same register of work as T4b and T11 — a schema commitment. Closes the "every preset sounds neutral" problem immediately even without archetypes, because the generator can say `CUTOFF = bright` instead of leaving the default.
+- **T7b — Archetype library and resolver.** New palace entry `Synth Archetypes.md` plus new JSON `archetypes.json`. Start with 8–12 archetypes (kick, sub, pad, pluck, lead, bell, noise-hit, drone). Each archetype declares topology hints (what modules it expects present) and a parameter cloud over those modules. Add a resolver that, given an archetype + seed, samples a concrete parameter set and emits it through the T7a pipeline. This is probably the most musically consequential single task in the whole project.
+
+**How this interacts with the rest of the plan.** T6's job gets meaningfully smaller once T7b exists: the generator maps description → archetype + topology hints, rather than description → full PDL. It no longer has to improvise synth-design expertise from scratch — it selects from a curated palette that encodes it. T10 (second target) is where the value compounds: archetypes are *target-agnostic* by construction, so the same "warm pad" sampled for VCV and for the second target should produce perceptually matched results. Without archetypes, cross-target portability is only "the cables match" — architecturally clean but audibly meaningless.
+
+**Suggested execution order:** T7a → T7b → T6 refactor → T10. T7a is scoped and fast; T7b is the big new piece; T6 re-derives after both exist; T10 becomes the first real test of cross-target archetype portability.
 
 ---
 
@@ -164,34 +201,10 @@ Delete `PDL Renderer.jsx`. It is the pre-registry version and has drifted from t
 
 ---
 
-### T12 — Parse-time diagnostics: warn on dropped lines
-**Priority:** medium — small task, large debuggability win. Do **before** T6, because prompt iteration will produce malformed PDL constantly and silent dropouts will waste hours.
-
-**Background.** The 2026-04-19 comment-strip bug bit because the `@INSTANCE` regex silently rejected three of eight declarations; no on-screen indication. Silent regex rejection is a footgun the pipeline must outgrow.
-
-**Files to read first:**
-- `PDL Renderer.html` — the per-line parsing loop in `parsePDL`
-- The sidebar `RegistryPanel` component
-
-**What to build:**
-1. In `parsePDL`, every non-empty, non-comment line that does not match any recognized shape records `{ lineNumber, content, reason }` into a `warnings` array on the parsed result.
-2. Render warnings in the sidebar in a yellow/amber panel: "3 lines were not recognized" with each line's number and content. Do not block rendering.
-3. Same warnings in `emitVcvJson`: list unregistered module types referenced or cables dropped for port-resolution failure.
-4. Optional: "strict mode" toggle that turns warnings into hard errors.
-
-**Success criteria:**
-- `@FENV = ADSR  // a comment` + usage of FENV produces no warnings (comment-strip is upstream).
-- Typo `@VCO1 = VCOO` produces a visible warning naming the line with `"unknown module type: VCOO"`.
-- The default PDL spec produces zero warnings.
-
-**Out of scope:** auto-fix suggestions, fuzzy matching.
-
----
-
 ### T6 — Write the generation prompt (close the left-to-right half)
 **Priority:** high — the other half of the pipeline.
 
-**Preconditions:** T2, T3, T4b, T12 help. Not blocking.
+**Preconditions:** T2, T3, T4b, T12 are all in place — T12 in particular means bad PDL from prompt iteration surfaces as a visible warning instead of a silently-dropped line. Not blocking, but expect to lean on the warnings panel heavily here.
 
 **Files to read first:**
 - This file — three-layer architecture and perceptual index sections
@@ -210,23 +223,61 @@ Delete `PDL Renderer.jsx`. It is the pre-registry version and has drifted from t
 
 ---
 
-### T7 — Extend the `.vcv` emitter to write parameter values
-**Priority:** medium — completes patch expressivity.
+### T7a phase 1 — Numeric param emission ✅ closed 2026-04-20
 
-**Preconditions:** T1 complete.
+PDL `*` lines now resolve against the registry and emit their numeric values into the `.vcv` params array. Non-numeric values (named regions) warn through the amber panel and fall back to the registry default — the seam phase 2 will intercept. See the Done-recently entry above and `verify_t7a.js` in the session outputs directory for the verification harness.
+
+### T7a phase 2 — Perceptual parameter vocabulary (regions + curves)
+**Priority:** high — the schema half of the parameter-intelligence split. Closes the "every preset sounds neutral" gate even without the archetype system.
+
+**Preconditions:** T7a phase 1 complete. No dependency on T6 or T7b.
 
 **Files to read first:**
-- `PDL Renderer.html` — `parsePDL` returns a `params` map
-- `vcv_fundamental_registry.json` — `params` arrays with `range` and `unit`
-- Sample `.vcv` file — how parameter values are stored per module
+- This file — **Parameter Intelligence** section above
+- `vcv_fundamental_registry.json` — existing `params` arrays (each has `range`, `default`, `unit`)
+- `PDL Renderer.html` — `emitVcvJson`'s per-entry resolution loop (this is where the non-finite warning fires today; phase 2 intercepts before the warning, resolving named regions into concrete numbers)
+- `SCHEMA.md` — schema-change protocol (this is a schema commitment and needs the ceremony)
 
-**What to change:**
-- In the emitter from T1, include per-module parameter arrays
-- For each `*` line (e.g. `* FILT: Cutoff = 2000Hz | Resonance = 20%`), look up the param name in the registry, map the human-readable value to the normalized range using `unit`, emit the numeric value VCV expects
+**What to build:**
+1. Extend each param entry with optional `regions` (named perceptual ranges, e.g. `{closed: [0, 0.15], dark: [0.15, 0.4], ...}`) and `curve` hint (`linear` / `log` / `exp`).
+2. Add a small region-sampler utility in the renderer: given `{range, regions, curve}` and a region name (or direct numeric or normalized value), return a concrete numeric value in the registry's native units.
+3. Intercept the emitter's non-finite-value branch: if `rawVal` matches a region name for this param, sample and emit; else warn and fall back to default as today.
+4. Populate regions for at least VCF.CUTOFF, VCF.RES, ADSR.{A,D,S,R}, VCO.FREQ, LFO.FREQ. Start from synth-design tradition, verify by ear.
 
-**Success criteria:** exported .vcv loads with the described parameter values (filter cutoff audibly at 2kHz, etc.)
+**Success criteria:**
+- `* VCF: CUTOFF = dark` emits a .vcv whose filter opens appreciably darker than default on load.
+- Regions are documented per-param, verifiable by ear at region midpoints.
+- Schema change documented per `SCHEMA.md` protocol.
 
-**Out of scope:** modulation, automation lanes.
+**Out of scope:** archetypes, cross-module constraints, modulation.
+
+---
+
+### T7b — Archetype library and resolver
+**Priority:** high — the musically consequential half. Do after T7a.
+
+**Preconditions:** T7a phase 2 complete (phase 1 alone is enough if archetypes emit raw numeric values, but regions make the archetype JSON far more readable). T6 can wait — T7b is usable from hand-written PDL first.
+
+**Files to read first:**
+- This file — **Parameter Intelligence** section above
+- `vcv_fundamental_registry.json` — module names, their `perceptual_index`, and (post-T7a) their param regions
+- Any drafts of `PDL Generation Prompt.md` if T6 has started
+
+**What to build:**
+1. New palace entry `Synth Archetypes.md` and sibling JSON `archetypes.json`. Start with 8–12 archetypes: `kick`, `sub_bass`, `warm_pad`, `pluck`, `bright_lead`, `bell`, `noise_hit`, `drone`. Each archetype specifies:
+   - Module topology hints (what modules it expects present, with optional roles — e.g. `amp_env: ADSR`, `pitch_env: ADSR`)
+   - Parameter cloud over those modules as region names (leaning on T7a vocabulary)
+   - Cross-module constraints where they matter (e.g. for `kick`, pitch-env decay co-varies with amp-env decay)
+   - A short perceptual-index array so archetypes can be summoned by description
+2. A seeded resolver: `resolveArchetype(archetypeName, seed, pdlInstances) → paramMap`. Samples the cloud deterministically per seed; validates that required modules exist in the PDL.
+3. PDL directive for archetype application: `@@ AMP_ENV, FILT_ENV, OSC1, OSC2, AMP -> archetype: warm_pad #seed=42` (exact syntax TBD in dialogue). Alternative: `# archetype: warm_pad` as a top-level pragma that applies once PDL is otherwise resolved.
+
+**Success criteria:**
+- Hand-written PDL + `# archetype: kick` produces a .vcv that sounds convincingly like a kick drum on load, not a neutral patch.
+- Changing the seed produces audibly distinct but family-consistent kicks.
+- At least three archetypes are perceptually distinguishable on first load without any manual knob adjustment.
+
+**Out of scope:** learning archetypes from examples; cross-archetype blending; second-target archetype portability (that is T10's job).
 
 ---
 
@@ -282,7 +333,7 @@ Discipline: do not split attention across targets before one is proven.
 - **Dialogue before writing schema changes.** Adding a new link type, entry type, or ceremony requires discussion with Loudon, not a solo commit.
 - **PDL is target-agnostic on purpose.** If tempted to add VCV-specific syntax to the language, stop. Target specifics live in registries and emitters.
 - **The registry is the reliability surface.** An unverified entry is a liability, not a caveat. When adding modules, verify against source before committing. The v2.0 audit found entries previously claiming `"verified"` had actually been guessed — and that one lie cascaded into a screen of mis-routed cables on the first real test load. If you mark something verified, name the source file and date, and have actually read the lines.
-- **Silent regex rejection is a footgun.** When something "doesn't work" — modules missing, cables wrong — the first hypothesis is *not* "the registry is wrong." The first hypothesis is *"the parser silently dropped a line."* The 2026-04-19 load looked like a registry bug for several minutes; it was a regex bug. Build diagnostics (T12) so this kind of failure is loud, not silent.
+- **Silent regex rejection is a footgun.** When something "doesn't work" — modules missing, cables wrong — the first hypothesis is *not* "the registry is wrong." The first hypothesis is *"the parser silently dropped a line."* The 2026-04-19 load looked like a registry bug for several minutes; it was a regex bug. T12 (2026-04-20) installed the amber warnings panel that surfaces this class of failure; if the panel is clean and something still looks wrong, *then* suspect the registry.
 - **Stage 2+ is target-agnostic.** The second target should be chosen after Stage 1 closes, based on what best tests the three-layer architecture (likely: a code-emitting target).
 - **"Topology works" ≠ "patch makes sound."** The emitter can produce a structurally perfect .vcv that is silent in Rack because no MIDI-CV or audio-out is wired in. This is the gap T11 closes. Do not declare T1 done because the patch loaded — declare it done when a key press makes a noise.
 - **Depth over coverage.** Name the specific reason for a choice — the actual tradeoff — not a label that stands in for one.

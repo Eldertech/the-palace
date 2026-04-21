@@ -22,14 +22,14 @@
   -->
   <script type="application/json" id="vcv-registry">
 {
-  "version": "2.1",
+  "version": "2.2",
   "plugin": "Fundamental",
   "plugin_slug": "Fundamental",
   "vcv_rack_version": "2.x",
   "source": "https://github.com/VCVRack/Fundamental",
-  "verification_method": "All port and param indices verified against Fundamental v2 source code via WebFetch of each module's .cpp file (configInput / configOutput / configParam call order).",
-  "last_verified": "2026-04-19",
-  "notes": "Port indices are the integer IDs cables use in .vcv JSON. They are determined by the order of configInput()/configOutput() calls in each module's source. UI label position does NOT determine index. v2.0 corrected errors in v1.0. v2.1 adds optional default_input/default_output so unnamed-port resolution prefers the 'right' port rather than the lowest-index one.",
+  "verification_method": "All port and param indices verified against Fundamental v2 + Rack v2/src/core source via WebFetch of each module's .cpp file (configInput / configOutput / configParam call order). Core slugs verified via `createModel<...>(\"slug\")` declarations.",
+  "last_verified": "2026-04-20",
+  "notes": "Port indices are the integer IDs cables use in .vcv JSON. They are determined by the order of configInput()/configOutput() calls in each module's source. UI label position does NOT determine index. v2.0 corrected errors in v1.0. v2.1 adds optional default_input/default_output so unnamed-port resolution prefers the 'right' port rather than the lowest-index one. v2.2 (2026-04-20, T11) adds per-module `plugin` field (Fundamental vs Core), the MIDI_CV and AUDIO_8 Core modules, and the `virtual_endpoints` map so unbound `KEYBOARD` / `OUT` instances auto-bind to those modules — closing T1's audible-playback gate.",
   "signal_types": {
     "audio":   { "voltage": "±5V nominal",                 "color_hint": "coral"  },
     "cv":      { "voltage": "0–10V or ±5V context-dependent", "color_hint": "purple" },
@@ -39,7 +39,7 @@
   },
   "modules": {
     "VCO": {
-      "slug": "VCO", "name": "VCO", "hp": 12,
+      "slug": "VCO", "plugin": "Fundamental", "name": "VCO", "hp": 12,
       "description": "Voltage-controlled oscillator. Four simultaneous waveform outputs. Hard/soft sync. PWM.",
       "verification": "verified against src/VCO.cpp (2026-04-19)",
       "default_input": "V/OCT", "default_output": "SAW",
@@ -66,7 +66,7 @@
       "perceptual_index": ["oscillator","osc","tone","pitch","source","saw","sawtooth","sine","sin","triangle","tri","square","pulse","waveform","fundamental","vco","analog","bright","buzzy","raw","rich","harmonics"]
     },
     "VCF": {
-      "slug": "VCF", "name": "VCF", "hp": 8,
+      "slug": "VCF", "plugin": "Fundamental", "name": "VCF", "hp": 8,
       "description": "Voltage-controlled filter. Lowpass + highpass simultaneously. Drive input. Self-oscillates at high resonance.",
       "verification": "verified against src/VCF.cpp (2026-04-19)",
       "default_input": "IN", "default_output": "LPF",
@@ -91,7 +91,7 @@
       "perceptual_index": ["filter","vcf","lowpass","highpass","cutoff","resonance","dark","bright","thin","warm","muffled","smooth","sharp","sweep","wah","self-oscillate","drive","saturation","tone shaping","timbre"]
     },
     "ADSR": {
-      "slug": "ADSR", "name": "ADSR EG", "hp": 8,
+      "slug": "ADSR", "plugin": "Fundamental", "name": "ADSR EG", "hp": 8,
       "description": "Attack-Decay-Sustain-Release envelope generator. Gate input is at index 4 (after the 4 CV modulation inputs).",
       "verification": "verified against src/ADSR.cpp (2026-04-19)",
       "default_input": "GATE", "default_output": "ENV",
@@ -120,7 +120,7 @@
       "perceptual_index": ["envelope","adsr","eg","contour","shape","dynamics","attack","decay","sustain","release","pluck","pad","swell","punch","snap","breath","transient","articulation","volume shape","timbre shape"]
     },
     "VCA": {
-      "slug": "VCA-1", "name": "VCA", "hp": 3,
+      "slug": "VCA-1", "plugin": "Fundamental", "name": "VCA", "hp": 3,
       "description": "Single-channel VCA. CV input is index 0, audio input is index 1 (NOT the other way around).",
       "verification": "verified against src/VCA-1.cpp (2026-04-19)",
       "default_input": "IN", "default_output": "OUT",
@@ -138,7 +138,7 @@
       "perceptual_index": ["vca","amplifier","volume","level","gain","dynamics","gating","tremolo","amplitude modulation","open","close","envelope follower","duck"]
     },
     "LFO": {
-      "slug": "LFO", "name": "LFO", "hp": 10,
+      "slug": "LFO", "plugin": "Fundamental", "name": "LFO", "hp": 10,
       "description": "Low-frequency oscillator. Four outputs (no UNI — use OFFSET param for unipolar). Clock-syncable.",
       "verification": "verified against src/LFO.cpp (2026-04-19)",
       "default_output": "SIN",
@@ -165,7 +165,7 @@
       "perceptual_index": ["lfo","modulation","wobble","vibrato","tremolo","drift","slowly evolving","breathing","pulsing","sweeping","rhythmic","cyclic","periodic","wave","low frequency"]
     },
     "SEQ3": {
-      "slug": "SEQ3", "name": "SEQ 3", "hp": 26,
+      "slug": "SEQ3", "plugin": "Fundamental", "name": "SEQ 3", "hp": 26,
       "description": "Three-channel 8-step sequencer. Output 0 is master TRIG; CV1-3 are at indices 1-3; per-step triggers at 4-11.",
       "verification": "verified against src/SEQ3.cpp (2026-04-19)",
       "default_input": "CLOCK", "default_output": "CV1",
@@ -197,7 +197,7 @@
       "perceptual_index": ["sequencer","sequence","pattern","melody","arpeggio","step","clock","rhythm","loop","cycle","melodic pattern","bassline","motif","phrase"]
     },
     "MIXER": {
-      "slug": "Mixer", "name": "Mix", "hp": 6,
+      "slug": "Mixer", "plugin": "Fundamental", "name": "Mix", "hp": 6,
       "description": "Six-input simple mixer. Single master Level knob — no per-channel control. Use VCMIXER for per-channel.",
       "verification": "verified against src/Mixer.cpp (2026-04-19)",
       "default_input": "IN1", "default_output": "MIX",
@@ -218,7 +218,7 @@
       "perceptual_index": ["mixer","mix","blend","combine","sum","six channel","multi-source","submix","simple mix"]
     },
     "VCMIXER": {
-      "slug": "VCMixer", "name": "VCA Mix", "hp": 10,
+      "slug": "VCMixer", "plugin": "Fundamental", "name": "VCA Mix", "hp": 10,
       "description": "Four-channel mixer with per-channel level knobs AND CV inputs. Audio inputs start at index 5, not 0.",
       "verification": "verified against src/VCMixer.cpp (2026-04-19)",
       "default_input": "IN1", "default_output": "MIX",
@@ -248,7 +248,65 @@
         { "name": "LVL4",    "index": 4, "range": [0.0, 1.414], "default": 1.0, "unit": "normalized", "description": "Ch4 level" }
       ],
       "perceptual_index": ["mixer","vc mixer","vca mix","voltage controlled mixer","four channel","per-channel level","channel mix","balance","submix","stem","pre-mix output","channel strip"]
+    },
+    "MIDI_CV": {
+      "slug": "MIDIToCVInterface", "plugin": "Core", "name": "MIDI-CV", "hp": 9,
+      "description": "MIDI-to-CV interface. No inputs, no params — 12 outputs derived from incoming MIDI. Slug is 'MIDIToCVInterface' (historical), plugin is 'Core'.",
+      "verification": "verified against Rack v2/src/core/MIDI_CV.cpp (2026-04-20). NUM_INPUTS=0, NUM_PARAMS=0, 12 configOutput() calls in OutputIds enum order. Slug verified from `createModel<MIDI_CV, MIDI_CVWidget>(\"MIDIToCVInterface\")`.",
+      "default_output": "PITCH",
+      "inputs": [],
+      "outputs": [
+        { "name": "PITCH",     "type": "pitch",   "index": 0,  "description": "1V/octave pitch — primary pitch output" },
+        { "name": "GATE",      "type": "gate",    "index": 1,  "description": "Gate (10V while key held)" },
+        { "name": "VELOCITY",  "type": "cv",      "index": 2,  "description": "Note-on velocity CV (0-10V)" },
+        { "name": "AFTERTOUCH","type": "cv",      "index": 3,  "description": "Channel aftertouch CV" },
+        { "name": "PW",        "type": "cv",      "index": 4,  "description": "Pitch wheel CV (±5V)" },
+        { "name": "MOD",       "type": "cv",      "index": 5,  "description": "Mod wheel CV" },
+        { "name": "RETRIG",    "type": "trigger", "index": 6,  "description": "Retrigger on new note (polyphonic steal)" },
+        { "name": "CLOCK",     "type": "trigger", "index": 7,  "description": "MIDI clock pulse" },
+        { "name": "CLOCK_DIV", "type": "trigger", "index": 8,  "description": "Divided clock pulse" },
+        { "name": "START",     "type": "trigger", "index": 9,  "description": "MIDI start message" },
+        { "name": "STOP",      "type": "trigger", "index": 10, "description": "MIDI stop message" },
+        { "name": "CONTINUE",  "type": "trigger", "index": 11, "description": "MIDI continue message" }
+      ],
+      "params": [],
+      "perceptual_index": ["keyboard","midi","note","gate","pitch","play","trigger","controller","input","human input","performer"]
+    },
+    "AUDIO_8": {
+      "slug": "AudioInterface", "plugin": "Core", "name": "Audio-8", "hp": 10,
+      "description": "Audio interface, 8×8. Inputs on the left (signals leaving the rack to the DAW/speakers — 'device output N'). Outputs on the right (signals arriving from the DAW/mic — 'device input N'). For stereo listen, patch to IN1 AND IN2.",
+      "verification": "verified against Rack v2/src/core/Audio.cpp (2026-04-20). AUDIO_INPUTS+i / AUDIO_OUTPUTS+i pattern for i∈[0,7], no params. Slug verified from `createModel<Audio<8,8>, AudioWidget<8,8>>(\"AudioInterface\")`.",
+      "default_input": "IN1",
+      "default_output": "OUT1",
+      "inputs": [
+        { "name": "IN1", "type": "audio", "index": 0, "description": "To device output 1 (main left)" },
+        { "name": "IN2", "type": "audio", "index": 1, "description": "To device output 2 (main right)" },
+        { "name": "IN3", "type": "audio", "index": 2, "description": "To device output 3" },
+        { "name": "IN4", "type": "audio", "index": 3, "description": "To device output 4" },
+        { "name": "IN5", "type": "audio", "index": 4, "description": "To device output 5" },
+        { "name": "IN6", "type": "audio", "index": 5, "description": "To device output 6" },
+        { "name": "IN7", "type": "audio", "index": 6, "description": "To device output 7" },
+        { "name": "IN8", "type": "audio", "index": 7, "description": "To device output 8" }
+      ],
+      "outputs": [
+        { "name": "OUT1", "type": "audio", "index": 0, "description": "From device input 1" },
+        { "name": "OUT2", "type": "audio", "index": 1, "description": "From device input 2" },
+        { "name": "OUT3", "type": "audio", "index": 2, "description": "From device input 3" },
+        { "name": "OUT4", "type": "audio", "index": 3, "description": "From device input 4" },
+        { "name": "OUT5", "type": "audio", "index": 4, "description": "From device input 5" },
+        { "name": "OUT6", "type": "audio", "index": 5, "description": "From device input 6" },
+        { "name": "OUT7", "type": "audio", "index": 6, "description": "From device input 7" },
+        { "name": "OUT8", "type": "audio", "index": 7, "description": "From device input 8" }
+      ],
+      "params": [],
+      "perceptual_index": ["audio","output","speakers","interface","dac","listen","hear","main out","monitor","sink","destination"]
     }
+  },
+  "virtual_endpoints": {
+    "KEYBOARD": { "module": "MIDI_CV", "role": "source",
+                  "note": "Unbound `KEYBOARD` instances auto-bind to MIDI_CV at parse time — user doesn't have to write `@KEYBOARD = MIDI_CV`." },
+    "OUT":      { "module": "AUDIO_8", "role": "sink",
+                  "note": "Unbound `OUT` instances auto-bind to AUDIO_8. For stereo-centered listen, patch both `OUT:IN1` and `OUT:IN2`." }
   }
 }
   </script>
@@ -263,9 +321,13 @@
     //
     // REGISTRY shape after bootstrap: { [moduleType]: { slug, hp, inputs:[...], outputs:[...], params, perceptual_index, ... } }
 
-    const REGISTRY_DATA = JSON.parse(document.getElementById("vcv-registry").textContent);
-    const REGISTRY      = REGISTRY_DATA.modules;
-    const PLUGIN_SLUG   = REGISTRY_DATA.plugin_slug || "Fundamental";
+    const REGISTRY_DATA     = JSON.parse(document.getElementById("vcv-registry").textContent);
+    const REGISTRY          = REGISTRY_DATA.modules;
+    const PLUGIN_SLUG       = REGISTRY_DATA.plugin_slug || "Fundamental";
+    // T11 — virtual endpoint map ({ KEYBOARD: { module: "MIDI_CV", ... }, OUT: { module: "AUDIO_8", ... }})
+    // lets the parser auto-bind unregistered-but-referenced instances so patches
+    // emit sound-ready without requiring `@KEYBOARD = MIDI_CV` boilerplate.
+    const VIRTUAL_ENDPOINTS = REGISTRY_DATA.virtual_endpoints || {};
 
     // Build lookup maps from the registry for fast port-type resolution
     function buildRegistryLookup(registry) {
@@ -340,13 +402,23 @@
     }
 
     // ─── Parser ──────────────────────────────────────────────────────────────────
+    // T12 (2026-04-20): every non-empty, non-comment line that matches no known
+    // shape — and every @declaration naming an unknown module type — records a
+    // warning with its line number and original content. The sidebar surfaces
+    // these so silent regex rejection (the 2026-04-19 footgun) is loud, not
+    // invisible. Warnings never block parsing; good lines still produce a patch.
     function parsePDL(text) {
       const connections   = [];
       const params        = {};
       const moduleSet     = new Set();
       const instanceTypes = {}; // instanceId → registry module type key
+      const warnings      = []; // { source, lineNumber, content, reason }
 
-      for (const rawLine of text.split("\n")) {
+      const rawLines = text.split("\n");
+      for (let i = 0; i < rawLines.length; i++) {
+        const rawLine    = rawLines[i];
+        const lineNumber = i + 1;
+
         // Strip trailing `// comment` from any line, then trim. This way an inline
         // comment on a declaration / connection / param line doesn't make the
         // regex below silently reject the whole line — a real bug we hit on
@@ -363,18 +435,41 @@
             const modType    = m[2].trim();
             if (REGISTRY[modType]) {
               instanceTypes[instanceId] = modType;
+            } else {
+              warnings.push({
+                source: "parser", lineNumber, content: rawLine,
+                reason: `unknown module type: "${modType}" — not in registry (known: ${Object.keys(REGISTRY).join(", ")})`,
+              });
+              // Don't record the binding — a non-existent module type can't be routed.
+              // The instance will render as unregistered, with the warning as context.
             }
+          } else {
+            warnings.push({
+              source: "parser", lineNumber, content: rawLine,
+              reason: "malformed @instance declaration (expected `@INSTANCE = ModuleType`)",
+            });
           }
           continue;
         }
 
         // Parameter line:  * Module: Key = Val | Key = Val
+        // Entries carry their source line number so downstream warnings
+        // (emitVcvJson) can point the amber panel at the exact line in the
+        // editor. Multiple entries on one line share the same line number —
+        // that's fine, any one of them is the right place to look.
         if (line.startsWith("*")) {
           const m = line.match(/^\*\s*([\w\s]+?):\s*(.+)$/);
           if (m) {
             const mod = m[1].trim();
             params[mod] = params[mod] || [];
-            m[2].split("|").map(s => s.trim()).filter(Boolean).forEach(e => params[mod].push(e));
+            m[2].split("|").map(s => s.trim()).filter(Boolean).forEach(e =>
+              params[mod].push({ entry: e, lineNumber })
+            );
+          } else {
+            warnings.push({
+              source: "parser", lineNumber, content: rawLine,
+              reason: "malformed `* param` line (expected `* Mod: Name = Value | Name = Value`)",
+            });
           }
           continue;
         }
@@ -393,16 +488,43 @@
             to:   toId,   toPort:   toPort?.trim()   || null,
             bracketType: bracketType?.toLowerCase() || null,
           });
+        } else {
+          warnings.push({
+            source: "parser", lineNumber, content: rawLine,
+            reason: "unrecognized line — does not match `@decl`, `A -> B`, `* param`, or `// comment`",
+          });
+        }
+      }
+
+      // T11 — auto-inject virtual endpoints. Any instance name that was referenced
+      // in a connection but NOT declared with `@name = Type`, and whose name
+      // matches a key in the registry's virtual_endpoints map, gets bound to
+      // the mapped module type. This is the whole point of virtual endpoints:
+      // `KEYBOARD -> OSC:V/OCT` Just Works without `@KEYBOARD = MIDI_CV`
+      // boilerplate, and similarly `AMP -> OUT:IN1` auto-binds OUT to AUDIO_8.
+      // Explicit `@` declarations still win — if the user wrote `@KEYBOARD = VCO`
+      // the auto-injection skips it.
+      for (const [virtName, spec] of Object.entries(VIRTUAL_ENDPOINTS)) {
+        if (!instanceTypes[virtName] && moduleSet.has(virtName) && REGISTRY[spec.module]) {
+          instanceTypes[virtName] = spec.module;
         }
       }
 
       // Resolve final port names + signal types for each connection.
-      // For unnamed connections to/from a registered module, prefer the module's
-      // `default_input` / `default_output` field (v2.1+). Fall back to the first
-      // port only if the field is missing. This matters because v2.0's
-      // source-verified ordering often puts CV modulation inputs at index 0
-      // (VCF:FREQ, VCA:CV, ADSR:A_CV, VCMIXER:MIX_CV), so "first input" is
-      // usually NOT what the user meant by an unnamed connection.
+      //
+      // Priority for an unnamed port, in order (v2.2):
+      //   1. Type-matched sibling — if the OTHER side of this connection has a
+      //      named port with a known signal type, prefer a port on THIS side
+      //      whose type matches. This is what makes `KEYBOARD -> ENV:GATE`
+      //      auto-pick KEYBOARD:GATE (gate) instead of KEYBOARD:PITCH (default).
+      //   2. Module's `default_input` / `default_output` (v2.1+ explicit).
+      //   3. First port in declaration order (legacy fallback).
+      //
+      // Type-matching matters for virtual endpoints that expose many typed
+      // outputs (MIDI_CV has 12, grouped as pitch/gate/cv/trigger); without
+      // it, every unnamed KEYBOARD-> cable would resolve to PITCH.
+      const findPortByType = (ports, type) => ports?.find(p => p.type === type)?.name || null;
+
       const resolvedConnections = connections.map(c => {
         const toModType    = instanceTypes[c.to];
         const fromModType  = instanceTypes[c.from];
@@ -411,11 +533,25 @@
         const toDefault    = toModReg   && (toModReg.default_input    || toModReg.inputs?.[0]?.name);
         const fromDefault  = fromModReg && (fromModReg.default_output || fromModReg.outputs?.[0]?.name);
 
-        // Canonical port names — written back into the connection so downstream
-        // code (buildPortMap, renderer, emitter) all see the same resolved names.
-        // Fallback "In"/"Out" is for unregistered endpoints like KEYBOARD, OUT.
-        const toPort   = c.toPort   || toDefault   || "In";
-        const fromPort = c.fromPort || fromDefault || "Out";
+        // Start with explicit ports.
+        let toPort   = c.toPort;
+        let fromPort = c.fromPort;
+
+        // Step 1 — type-matched sibling. Only fills in a missing port if the
+        // OTHER side is already named AND typed.
+        if (toPort && !fromPort && fromModReg) {
+          const destType = toModReg?.inputs?.find(p => p.name === toPort)?.type;
+          if (destType) fromPort = findPortByType(fromModReg.outputs, destType) || fromPort;
+        }
+        if (fromPort && !toPort && toModReg) {
+          const srcType = fromModReg?.outputs?.find(p => p.name === fromPort)?.type;
+          if (srcType) toPort = findPortByType(toModReg.inputs, srcType) || toPort;
+        }
+
+        // Step 2/3 — module default, then first-port legacy. Unregistered
+        // endpoints fall through to "In"/"Out" placeholders.
+        toPort   = toPort   || toDefault   || "In";
+        fromPort = fromPort || fromDefault || "Out";
 
         const type = resolveInputType(c.to, toPort, c.bracketType, instanceTypes)
                   || resolveOutputType(c.from, fromPort, c.bracketType, instanceTypes)
@@ -423,19 +559,21 @@
         return { ...c, toPort, fromPort, type };
       });
 
-      return { connections: resolvedConnections, params, modules: [...moduleSet], instanceTypes };
+      return { connections: resolvedConnections, params, modules: [...moduleSet], instanceTypes, warnings };
     }
 
     // ─── .vcv Emitter ────────────────────────────────────────────────────────────
     // Transforms a parsed PDL spec + registry into a VCV Rack patch JSON object.
     //
-    // Scope (T1 minimum viable):
+    // Scope (T7a phase 1, 2026-04-20):
     //   - Only registered instances become VCV modules. Unregistered endpoints
     //     (KEYBOARD, OUT, external controllers) are treated as virtual — cables
     //     that touch them are skipped in the emitter output.
     //   - Module placement packs left-to-right by HP width, wrapping at LAYOUT_MAX_HP.
-    //   - Parameter values are NOT emitted in this pass — that is T7. Emitted modules
-    //     load with their VCV Rack defaults.
+    //   - Parameter values: per-param, prefer the numeric value from the PDL `*`
+    //     line for that instance, else the registry `default`. Named perceptual
+    //     regions (e.g. `CUTOFF = dark`) are T7a phase 2 — any non-numeric value
+    //     surfaces a warning and falls back to the default.
     //
     // Schema caveats:
     //   VCV Rack's .vcv JSON schema was written from public documentation and sample
@@ -456,7 +594,7 @@
     };
 
     function emitVcvJson(pdlText) {
-      const { connections, instanceTypes } = parsePDL(pdlText);
+      const { connections, instanceTypes, params: pdlParams, warnings } = parsePDL(pdlText);
 
       // Only registered instances become VCV modules.
       const registeredIds = Object.keys(instanceTypes).filter(id => REGISTRY[instanceTypes[id]]);
@@ -476,16 +614,102 @@
         curX += hp;
       }
 
-      // Build modules array.
+      // T7a phase 1 — resolve PDL `*` entries into per-instance
+      // { paramName → numeric value } maps. Each entry is `Name = Value`;
+      // values must parse as finite numbers in this phase. Named perceptual
+      // regions (`CUTOFF = dark`) are T7a phase 2 — they surface as warnings
+      // here and the emitter falls through to the registry default. Warnings
+      // also fire for: malformed entries missing `=`; param names not in the
+      // registry for the instance's module type; and `*` lines referring to
+      // instances that were never declared (and aren't virtual endpoints).
+      const resolvedParams = {}; // instanceId → { paramName: number }
+      for (const [instId, entries] of Object.entries(pdlParams || {})) {
+        resolvedParams[instId] = {};
+        const modType = instanceTypes[instId];
+        const modReg  = modType && REGISTRY[modType];
+
+        if (!modReg) {
+          // Orphan `* INST: ...` — no @ declaration and not a virtual endpoint
+          // that resolved to a registry module. Use the first entry's line
+          // number; if there are multiple lines for the same orphan instance
+          // any one of them is the right place to look.
+          const firstLine = entries[0]?.lineNumber ?? null;
+          warnings.push({
+            source: "emitter", lineNumber: firstLine,
+            content: `* ${instId}: ${entries.map(e => e.entry).join(" | ")}`,
+            reason: `param line refers to undeclared instance "${instId}" — no values will be emitted`,
+          });
+          continue;
+        }
+
+        const paramNames = (modReg.params || []).map(p => p.name);
+
+        for (const { entry, lineNumber } of entries) {
+          const eqIdx = entry.indexOf("=");
+          if (eqIdx < 0) {
+            warnings.push({
+              source: "emitter", lineNumber,
+              content: `* ${instId}: ${entry}`,
+              reason: `param entry missing "=": "${entry}"`,
+            });
+            continue;
+          }
+          const name   = entry.slice(0, eqIdx).trim();
+          const rawVal = entry.slice(eqIdx + 1).trim();
+
+          if (!paramNames.includes(name)) {
+            warnings.push({
+              source: "emitter", lineNumber,
+              content: `* ${instId}: ${entry}`,
+              reason: `param "${name}" is not in registry for ${modType} (known: ${paramNames.join(", ") || "<none>"})`,
+            });
+            continue;
+          }
+
+          // Phase 1: numeric literals only. JS `Number("")` is 0, so guard
+          // empty strings explicitly. Named regions ("dark", "open") parse
+          // as NaN and land in the warning path below.
+          const num = rawVal === "" ? NaN : Number(rawVal);
+          if (!Number.isFinite(num)) {
+            warnings.push({
+              source: "emitter", lineNumber,
+              content: `* ${instId}: ${entry}`,
+              reason: `param "${name}" value "${rawVal}" is not a finite number (named regions are T7a phase 2 — falling back to registry default)`,
+            });
+            continue;
+          }
+
+          resolvedParams[instId][name] = num;
+        }
+      }
+
+      // Build modules array. Each module's plugin comes from its registry
+      // entry's `plugin` field (v2.2+); falls back to the top-level PLUGIN_SLUG
+      // for legacy entries that predate per-module plugins. Fundamental and Core
+      // modules can now coexist in a single patch — the T11 prerequisite for
+      // MIDI_CV + AudioInterface to ride alongside VCO/VCF/ADSR/VCA.
+      //
+      // T7a phase 1 (2026-04-20) — per-param value emission: prefer the
+      // parsed PDL `*` value for this instance, else the registry `default`.
+      // Previous behavior wrote `value: 0` for every param regardless of the
+      // PDL spec, which made audible generation tests require hand-writing
+      // the .vcv file. Registry-default fallback is strictly more correct
+      // than zero (e.g. VCO SYNC_MODE defaults to 1, LFO OFFSET defaults to 1).
       const modulesOut = registeredIds.map(id => {
         const modType = instanceTypes[id];
         const mod     = REGISTRY[modType];
+        const pvals   = resolvedParams[id] || {};
         return {
           id: moduleId[id],
-          plugin: PLUGIN_SLUG,
+          plugin: mod.plugin || PLUGIN_SLUG,
           version: REGISTRY_DATA.vcv_rack_version || "2.0.0",
           model: mod.slug,
-          params: (mod.params || []).map((_p, i) => ({ id: i, value: 0 })),
+          params: (mod.params || []).map(p => ({
+            id: p.index,
+            value: Object.prototype.hasOwnProperty.call(pvals, p.name)
+              ? pvals[p.name]
+              : (p.default ?? 0),
+          })),
           leftModuleId: -1,
           rightModuleId: -1,
           data: {},
@@ -541,12 +765,12 @@
         cables: cablesOut,
       };
 
-      return { patch, skipped };
+      return { patch, skipped, warnings };
     }
 
     // Triggers a browser download of a .vcv file for the given PDL spec.
     function downloadVcvPatch(pdlText, filename) {
-      const { patch, skipped } = emitVcvJson(pdlText);
+      const { patch, skipped, warnings } = emitVcvJson(pdlText);
       const json = JSON.stringify(patch, null, 2);
       const blob = new Blob([json], { type: "application/json" });
       const url  = URL.createObjectURL(blob);
@@ -557,7 +781,7 @@
       a.click();
       document.body.removeChild(a);
       setTimeout(() => URL.revokeObjectURL(url), 1000);
-      return { skipped, moduleCount: patch.modules.length, cableCount: patch.cables.length };
+      return { skipped, warnings, moduleCount: patch.modules.length, cableCount: patch.cables.length };
     }
 
     // ─── Port Map ────────────────────────────────────────────────────────────────
@@ -823,6 +1047,41 @@
       );
     }
 
+    // ─── Warnings Panel ───────────────────────────────────────────────────────────
+    // T12 surface — parse-time warnings appear here the moment the PDL textarea
+    // changes. This is the whole point of T12: a line the parser couldn't
+    // recognize must be visible, not silently dropped. Rendering never blocks —
+    // good lines still produce a diagram.
+    function WarningsPanel({ warnings }) {
+      if (!warnings || warnings.length === 0) return null;
+      return (
+        <div style={{
+          marginTop: 12,
+          background: "rgba(251, 191, 36, 0.06)",
+          border: "1px solid rgba(251, 191, 36, 0.35)",
+          borderRadius: 8,
+          padding: "10px 12px",
+          fontFamily: "monospace",
+        }}>
+          <div style={{ color: "#fbbf24", fontSize: 10, fontWeight: 700, letterSpacing: 1, marginBottom: 6 }}>
+            ⚠ {warnings.length} LINE{warnings.length === 1 ? "" : "S"} NOT RECOGNIZED
+          </div>
+          <div style={{ fontSize: 10, color: "#cbd5e1", lineHeight: 1.7 }}>
+            {warnings.map((w, i) => (
+              <div key={i} style={{ marginBottom: 4 }}>
+                <span style={{ color: "#fbbf24" }}>line {w.lineNumber}</span>
+                <span style={{ color: "#475569" }}> — </span>
+                <span style={{ color: "#e2e8f0" }}>{w.reason}</span>
+                <div style={{ color: "#64748b", marginLeft: 12, fontSize: 9 }}>
+                  {w.content.trim().length > 0 ? `› ${w.content.trim()}` : "› (whitespace only)"}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      );
+    }
+
     // ─── Registry Panel ───────────────────────────────────────────────────────────
     function RegistryPanel() {
       const [open, setOpen] = useState(false);
@@ -880,16 +1139,18 @@
     }
 
     // ─── App ─────────────────────────────────────────────────────────────────────
-    const DEFAULT_PDL = `// Classic Subtractive Voice — registry-grounded
-// @declarations bind instance names to registry module types.
-// Port types are looked up from the registry — brackets are deprecated.
+    const DEFAULT_PDL = `// Classic Subtractive Voice — sound-ready out of the gate (T11)
+// KEYBOARD and OUT are virtual: they auto-bind to MIDI_CV and AUDIO_8
+// at parse time, so the exported .vcv loads AND plays sound with no
+// manual wiring inside Rack. Type-aware default resolution picks
+// KEYBOARD:PITCH for V/OCT cables and KEYBOARD:GATE for gate cables.
 
 @OSC  = VCO
 @FILT = VCF
 @ENV  = ADSR
 @AMP  = VCA
 
-// Keyboard drives pitch and gate
+// Keyboard drives pitch and gate (type-matched defaults pick PITCH / GATE)
 KEYBOARD -> OSC:V/OCT
 KEYBOARD -> ENV:GATE
 
@@ -900,10 +1161,11 @@ FILT:LPF -> AMP:IN
 // Envelope controls amplifier
 ENV:ENV -> AMP:CV
 
-// Output
-AMP -> OUT
+// Stereo-centered output — patch both interface inputs so both speakers play
+AMP -> OUT:IN1
+AMP -> OUT:IN2
 
-// Parameters
+// Parameters (emitted in T7 — currently cosmetic; modules load with VCV defaults)
 * OSC:  Waveform = Saw | Tune = 0
 * FILT: Cutoff = 2000Hz | Resonance = 20%
 * ENV:  A = 5ms | D = 200ms | S = 70% | R = 400ms`;
@@ -911,6 +1173,10 @@ AMP -> OUT
     function App() {
       const [pdl, setPdl] = useState(DEFAULT_PDL);
       const [exportStatus, setExportStatus] = useState(null);
+
+      // Re-parse on every render to drive live warnings. parsePDL is pure and
+      // cheap at this spec size; if it ever gets expensive, memoize on pdl.
+      const liveParse = parsePDL(pdl);
 
       function handleExport() {
         try {
@@ -995,6 +1261,12 @@ AMP -> OUT
                   ))}
                 </div>
               )}
+
+              {/* T12 — parse-time diagnostics: every non-comment line the parser
+                  couldn't recognize shows up here the moment it's typed. This is
+                  the live-feedback surface the 2026-04-19 comment-strip bug
+                  would have exposed immediately. */}
+              <WarningsPanel warnings={liveParse.warnings} />
 
               {/* Syntax reference */}
               <div style={{ marginTop: 12, fontSize: 10, color: "#475569", lineHeight: 2.0 }}>
