@@ -209,7 +209,7 @@ Use only these relationship types:
 
 | Link Type | Direction | Meaning | When to use |
 |---|---|---|---|
-| `connects-to` | symmetric | General proximity | Default. Use when the relationship is real but not yet named more precisely. |
+| `connects-to` | symmetric | General proximity | Default. Use when the relationship is real but not yet named more precisely. With a `label`, this becomes a permanent named class — not a draft placeholder but a fully specified relationship carrying both topology and semantic register. |
 | `mirrors` | symmetric | Deep structural identity across domains | When two things are the same pattern in different material. |
 | `enables` | directed A→B | A is a precondition or generative force for B | When B could not exist or be understood without A. |
 | `deepens` | directed A→B | B is a more developed articulation of A | When B extends or elaborates A without replacing it. |

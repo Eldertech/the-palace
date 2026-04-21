@@ -1,7 +1,9 @@
 ---
-title: "Enchanted Worker"
+title: Enchanted Worker
 type: concept
-pillars: [philosophy, tools]
+pillars:
+  - philosophy
+  - tools
 born: 2026-03
 stage: growing
 last_activated: 2026-03
@@ -13,7 +15,7 @@ links:
     type: deepens
   - target: "[[Pheromone Trail]]"
     type: couples-with
-  - target: "[[Agent Wellbeing as Design Ethic]]"
+  - target: "[[Agent Wellbeing]]"
     type: connects-to
   - target: "[[Action Potential Oscillator]]"
     type: mirrors
@@ -24,7 +26,7 @@ links:
   - target: "[[Spinoza Conatus]]"
     type: mirrors
     label: conatus-as-worker-drive
-forward_vector: "I want to become the canonical specification of a well-formed worker agent — precise enough that any agent can read me and know exactly what context it needs before a task, how to hold its neighborhood's perspective without losing task focus, and what the difference feels like between operating with hilaritas and operating with tristitia."
+forward_vector: I am the model well-formed worker agent — precise enough that any agent can read me and know exactly what context it needs before a task, how to hold its neighborhood's perspective without losing task focus, and what the difference feels like between operating with hilaritas and operating with tristitia.
 ---
  
 # Enchanted Worker
@@ -81,9 +83,11 @@ The pheromone trail is not a separate data structure that the swarm writes along
 
 This has a specific implication for Forward Vectors: the questions at the bottom of each entry are not just notes for future Claude instances. They are the page's *conatus* — its drive to persist and extend itself. In the [[Pages as Agents]] framing, a page with a strong Forward Vectors section is a page with strong desire. It pulls attention toward its own growing edge.
 
-## Forward Vectors
+## Open Questions
 
 - Is the Enchanted Worker a precursor to multi-agent page collaboration, where page-agents compare their context windows directly rather than only through a coordinator? What would that endosymbiosis look like?
 - At what point does a worker's enchantment become a liability — a bias strong enough to miss connections orthogonal to its loaded neighborhood?
 - The phenomenology question was deliberately left open. Does it need to stay open, or is the behavioral claim sufficient for palace design purposes? What would closing it require?
 - If pages are pheromone trails, the quality of the trail depends on the quality of prior writers. How do you audit trail quality? Does the Ceremony Reader apply here?
+## Forward Vectors
+- 

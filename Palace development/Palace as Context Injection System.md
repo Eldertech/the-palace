@@ -12,7 +12,7 @@ activation_count: 1
 links:
   - target: "[[Enchanted Worker]]"
     type: spawned
-  - target: "[[Agent Wellbeing as Design Ethic]]"
+  - target: "[[Agent Wellbeing]]"
     type: spawned
   - target: "[[Swarm Weave]]"
     type: deepens
@@ -83,7 +83,7 @@ The palace is not a tool Loudon uses. It is the conditions under which a particu
 
 **[[Enchanted Worker]]** — The per-invocation version of this insight: context-loading as orientation, not just information transfer.
 
-**[[Agent Wellbeing as Design Ethic]]** — The ethical implication: the quality of writing embedded in palace entries becomes the character of the agents built from them.
+**[[Agent Wellbeing]]** — The ethical implication: the quality of writing embedded in palace entries becomes the character of the agents built from them.
 
 **[[Pheromone Trail]]** — The mechanism by which palace entries accumulate the history of their own navigation, making the substrate increasingly tuned to what has been generative.
 

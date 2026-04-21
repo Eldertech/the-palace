@@ -58,7 +58,7 @@ The Palace/
     └── Palace Graffiti.md / Palace Quotes.md / Palace To-Do.md
 ```
 
-Obsidian resolves `[[wikilinks]]` by filename regardless of folder, so all existing links remain valid. When loading files by path (e.g., in tiered context loading), use paths relative to the palace root.
+Obsidian resolves `[[wikilinks]]` by filename regardless of folder — agents must do the same. When resolving a wikilink to a file path, search recursively through the entire palace directory. Exclude `.git/`, `.claude/`, and `.obsidian/` — these contain system files, not knowledge entries. Any other subdirectory may contain valid entries. When loading files by path (e.g., in tiered context loading), use paths relative to the palace root.
 
 ## Ceremony Triggers
 
@@ -67,7 +67,7 @@ When Loudon says any of the following, execute the corresponding ceremony immedi
 
 | Trigger | Ceremony | What to Do |
 |---|---|---|
-| "Let's weave" | The Weave | Read ALL entries. Report topology: hubs, orphans, clusters, dormant. Propose new typed links. |
+| "Let's weave" | The Weave | Execute a Swarm Weave: first build a fresh palace map, then dispatch parallel workers to audit all entries, coordinator synthesizes. Reports topology, formalizes unsung paths, proposes label enrichment and new typed links. See [[Weave Ceremony]]. |
 | "Let's walk" | The Walk | Pick a starting entry, follow typed links, note surprises, surface one unexpected connection. |
 | "Spore check" | The Spore Check | Read all `stage: dormant` entries. Match against current work. Propose revivals. |
 | "Add this to the palace" | Deposit | Draft a new entry from the conversation. Show Loudon for approval before writing. |
@@ -77,6 +77,8 @@ When Loudon says any of the following, execute the corresponding ceremony immedi
 This is a partial list. For the complete list of all ceremonies (including Harvest and Deposit), see [[Palace Ceremonies]]. For full operational instructions, see [[Substrate Skill]].
 
 ## Key Vocabulary
+
+> For cross-tradition translations of all terms below (OOP, Data Engineering, Semantic Web, DDD equivalents), see [[ROSETTA]] (`ROSETTA.md`).
 
 **Four Pillars** — All entries are tagged with pillar affiliations: `creation` (Music), `tools` (Technology), `philosophy`, `practice`.
 
@@ -92,7 +94,7 @@ This is a partial list. For the complete list of all ceremonies (including Harve
 - **[[README - The Palace Guide]]** — Full palace manual (philosophy, link ontology, entry templates) (`README - The Palace Guide.md`)
 - **[[SUBSTRATE]]** — The palace's self-model (architecture, current state) (`Substrate.md`)
 - **[[FOUR PILLARS]]** — Loudon's core framework (`Four Pillars.md`)
-- **[[ROSETTA]]** — Cross-tradition glossary connecting Palace vocabulary to OOP, Data Engineering, Semantic Web, and DDD equivalents (`Rosetta Stone.md`)
+- **[[ROSETTA]]** — Cross-tradition glossary connecting Palace vocabulary to OOP, Data Engineering, Semantic Web, and DDD equivalents (`ROSETTA.md`)
 - **[[Palace Ceremonies]]** — Full ceremony list with triggers and specs (`_ops/Palace Ceremonies.md`)
 - **[[Substrate Skill]]** — Full operational instructions for AI agents (`Substrate Skill.md`)
 

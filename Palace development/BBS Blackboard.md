@@ -154,20 +154,20 @@ Health scores: **green** (context < 70%, no anomalies), **yellow** (context 70�
 
 **[[Palace Agent Infrastructure Spec]]** — the complete technical specification for this architecture: message schema, board routing, permission protocol, health scoring, the Trickster inbox data structure, and all swarm modes built on top of it.
 
-## Forward Vectors
-
-
+## Open Questions
 
 - Should agents be able to `QUERY` the blackboard — searching for prior messages matching a pattern — or is read-all sufficient for palace swarm sizes?
-
-
 - Agents following their own forward vectors will often need to ask the Trickster something and basically wait for a response before proceeding. The BBS gives a centralized place for this — perhaps the most important part of the BBS.
-<!-- Would be amazing if questions for me would bubble up and I could click from multiple choice answers -->  → Specced in [[Palace Agent Infrastructure Spec]] §2.6 — Trickster Decision Inbox data structure.
 
 ---
-
 *"Stigmergy is a mechanism of indirect coordination between agents where the trace left by an action stimulates the performance of a subsequent action."* — Pierre-Paul Grassé, who named it watching termites
 
 *"The medium is the message."* — Marshall McLuhan
 
 *"Every BBS was a mycelium before we had the word for it: nodes leaving traces, messages persisting past the sender, the whole alive in the gaps between transmissions."*
+
+--- 
+---
+## Forward Vector
+- Create a beautiful and fun to use ASCII text interface for the Bulletin Board System: Codename Stigmergy. In the process we learn about creating cool ASCII interfaces, step by step.
+

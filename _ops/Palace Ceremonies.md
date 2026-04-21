@@ -37,7 +37,7 @@ The complete and canonical list of all palace ceremonies. Every ceremony has a t
 | Ceremony | Trigger | Cadence | What Happens | Full Spec |
 |---|---|---|---|---|
 | The Walk | "Let's walk" | Weekly | Pick a starting entry, follow typed links, note surprises, surface one unexpected connection | [[Walk Ceremony]] |
-| The Weave | "Let's weave" | Monthly | Read ALL entries. Report topology: hubs, orphans, clusters, dormant. Propose new typed links. | [[Weave Ceremony]] |
+| The Weave | "Let's weave" | Monthly | Full palace structural audit, run as a **Swarm Weave** (parallel workers + coordinator synthesis). Opens with a Map Build. Reports topology, formalizes unsung paths, proposes label enrichment and new typed links. | [[Weave Ceremony]] |
 | The Spore Check | "Spore check" | Quarterly | Read all `stage: dormant` entries. Assign disposition: revive / hold / compost. | [[Spore Check Ceremony]] |
 | The Self-Model Update | "Self-model update" | As needed | Revise [[SUBSTRATE]] — update the palace's self-description to reflect current state | [[Self-Model Update Ceremony]] |
 

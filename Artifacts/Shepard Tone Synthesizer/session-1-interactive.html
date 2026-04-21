@@ -1,0 +1,911 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shepard Tone Synthesizer — Stage 1: The Illusion</title>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400&family=JetBrains+Mono:wght@400;500&family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg:           #0a0a0f;
+  --bg-card:      #12121a;
+  --bg-code:      #1a1a28;
+  --border:       #2a2a3a;
+  --text:         #c8c8d8;
+  --text-dim:     #7a7a8e;
+  --text-bright:  #e8e8f0;
+  --gold:         #e8b84a;
+  --gold-dim:     #7a6030;
+  --blue:         #4a8fff;
+  --blue-dim:     #1a3a6a;
+  --green:        #4aff8b;
+  --serif:        'Source Serif 4', Georgia, serif;
+  --mono:         'JetBrains Mono', monospace;
+  --sans:         'DM Sans', system-ui, sans-serif;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--serif);
+  font-size: 17px;
+  line-height: 1.75;
+  -webkit-font-smoothing: antialiased;
+}
+
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 40px 24px 120px;
+}
+
+/* ── HEADER ── */
+header {
+  text-align: center;
+  padding: 80px 0 60px;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 70px;
+}
+
+header .stage-label {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  color: var(--gold);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+}
+
+header h1 {
+  font-family: var(--serif);
+  font-size: clamp(2rem, 5vw, 3rem);
+  font-weight: 700;
+  color: var(--text-bright);
+  line-height: 1.2;
+  margin-bottom: 12px;
+  letter-spacing: -0.02em;
+}
+
+header h1 em {
+  font-style: italic;
+  font-weight: 300;
+  color: var(--gold);
+}
+
+header .subtitle {
+  font-family: var(--sans);
+  font-size: 1.05rem;
+  color: var(--text-dim);
+  margin: 0 auto 28px;
+  max-width: 540px;
+}
+
+header .meta {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  color: var(--text-dim);
+  letter-spacing: 0.05em;
+}
+
+/* ── SECTIONS ── */
+section {
+  margin-bottom: 80px;
+}
+
+.section-label {
+  font-family: var(--mono);
+  font-size: 0.68rem;
+  color: var(--text-dim);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  margin-bottom: 24px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--border);
+}
+
+h2 {
+  font-family: var(--serif);
+  font-size: 1.75rem;
+  font-weight: 600;
+  color: var(--text-bright);
+  margin-bottom: 16px;
+  letter-spacing: -0.01em;
+}
+
+p {
+  margin-bottom: 1em;
+  color: var(--text);
+}
+
+/* ── ESCHER SPLIT ── */
+.escher-split {
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  gap: 48px;
+  align-items: start;
+  margin-top: 28px;
+}
+
+.staircase-container {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 16px;
+  aspect-ratio: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  position: relative;
+}
+
+#staircase-canvas {
+  display: block;
+}
+
+.escher-text .identity {
+  font-family: var(--serif);
+  font-size: 1.2rem;
+  font-style: italic;
+  color: var(--text-bright);
+  line-height: 1.5;
+  margin-bottom: 24px;
+  padding-left: 20px;
+  border-left: 2px solid var(--gold);
+}
+
+.escher-text .beat {
+  margin-bottom: 18px;
+}
+
+.escher-text .beat .beat-title {
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  color: var(--gold);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 4px;
+}
+
+.escher-text .beat p {
+  font-size: 0.95rem;
+  color: var(--text);
+  margin: 0;
+}
+
+/* ── MECHANISM CANVAS ── */
+.canvas-wrap {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 24px;
+  margin-top: 28px;
+}
+
+.canvas-wrap canvas {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.canvas-caption {
+  font-family: var(--sans);
+  font-size: 0.85rem;
+  color: var(--text-dim);
+  margin-top: 14px;
+  text-align: center;
+  font-style: italic;
+}
+
+/* ── BUILD STEPS ── */
+.build-steps {
+  margin-top: 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.step-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 20px 24px;
+  display: grid;
+  grid-template-columns: 36px 1fr;
+  gap: 16px;
+  align-items: start;
+}
+
+.step-card:hover {
+  border-color: var(--gold-dim);
+  transition: border-color 0.2s ease;
+}
+
+.step-num {
+  font-family: var(--mono);
+  font-size: 0.85rem;
+  color: var(--gold);
+  font-weight: 500;
+  line-height: 1.6;
+  text-align: center;
+  background: rgba(232, 184, 74, 0.1);
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 2px;
+}
+
+.step-content .step-title {
+  font-family: var(--sans);
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text-bright);
+  margin-bottom: 6px;
+}
+
+.step-content .step-detail {
+  font-size: 0.92rem;
+  color: var(--text-dim);
+  font-family: var(--sans);
+  margin: 0;
+  line-height: 1.55;
+}
+
+.step-content .step-params {
+  margin-top: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.param-tag {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  color: var(--blue);
+  background: rgba(74, 143, 255, 0.08);
+  border: 1px solid rgba(74, 143, 255, 0.2);
+  border-radius: 4px;
+  padding: 3px 8px;
+  letter-spacing: 0.03em;
+}
+
+/* ── TUNING SECTION ── */
+.tuning-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 16px;
+  margin-top: 28px;
+}
+
+.tuning-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 18px;
+}
+
+.tuning-card .tuning-title {
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  color: var(--text-dim);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+.tuning-card .tuning-val {
+  font-family: var(--serif);
+  font-size: 1.5rem;
+  color: var(--gold);
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+.tuning-card p {
+  font-family: var(--sans);
+  font-size: 0.82rem;
+  color: var(--text-dim);
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* ── COMPARE ── */
+.compare-box {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--blue);
+  border-radius: 8px;
+  padding: 24px 28px;
+  margin-top: 28px;
+}
+
+.compare-box p {
+  font-size: 0.95rem;
+  margin: 0;
+  color: var(--text);
+}
+
+.compare-box strong {
+  color: var(--text-bright);
+}
+
+/* ── REFLECT ── */
+.reflect-question {
+  font-family: var(--serif);
+  font-size: clamp(1.4rem, 3vw, 2rem);
+  font-style: italic;
+  color: var(--text-bright);
+  line-height: 1.4;
+  text-align: center;
+  padding: 40px 0 36px;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 36px;
+  margin-top: 28px;
+}
+
+.seeds-label {
+  font-family: var(--mono);
+  font-size: 0.68rem;
+  color: var(--text-dim);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.seeds-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+.seed-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 20px 22px;
+}
+
+.seed-card .seed-name {
+  font-family: var(--sans);
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: var(--text-bright);
+  margin-bottom: 6px;
+}
+
+.seed-card .seed-analog {
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  color: var(--gold);
+  letter-spacing: 0.06em;
+  margin-bottom: 8px;
+}
+
+.seed-card p {
+  font-family: var(--sans);
+  font-size: 0.85rem;
+  color: var(--text-dim);
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* ── FOOTER ── */
+footer {
+  border-top: 1px solid var(--border);
+  padding-top: 32px;
+  margin-top: 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+footer .footer-left {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  color: var(--text-dim);
+  letter-spacing: 0.05em;
+}
+
+footer .footer-right {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  color: var(--gold-dim);
+  letter-spacing: 0.05em;
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 680px) {
+  .escher-split { grid-template-columns: 1fr; }
+  .tuning-grid { grid-template-columns: 1fr 1fr; }
+  .seeds-grid { grid-template-columns: 1fr; }
+  footer { flex-direction: column; gap: 8px; text-align: center; }
+}
+</style>
+</head>
+<body>
+<div class="container">
+
+  <!-- HEADER -->
+  <header>
+    <div class="stage-label">Stage 1 · Shepard Tone Synthesizer · Loudon Live</div>
+    <h1>Escher's Impossible Staircase <em>in Sound</em></h1>
+    <p class="subtitle">A finite system. Infinite perceived motion. You climb forever and arrive exactly where you started.</p>
+    <div class="meta">60–75 min · Ableton Live · No Max required</div>
+  </header>
+
+  <!-- SECTION 1: THE STAIRCASE -->
+  <section>
+    <div class="section-label">01 — The Shape</div>
+    <h2>The Impossible Staircase</h2>
+
+    <div class="escher-split">
+      <div class="staircase-container">
+        <canvas id="staircase-canvas" width="268" height="268"></canvas>
+      </div>
+
+      <div class="escher-text">
+        <p class="identity">"You climb forever.<br>You arrive nowhere.<br>The staircase is closed."</p>
+
+        <div class="beat">
+          <div class="beat-title">Escher's insight</div>
+          <p>A staircase that loops back on itself. Each step is locally valid — you genuinely step upward. But globally, the system is sealed. Ascent becomes orbit.</p>
+        </div>
+
+        <div class="beat">
+          <div class="beat-title">The same structure, in sound</div>
+          <p>Roger Shepard (1964) translated this into pitch. A tone that ascends forever through a finite frequency window. You hear it rise. It never arrives. The frequency content cycles; the perception climbs.</p>
+        </div>
+
+        <div class="beat">
+          <div class="beat-title">The structural identity</div>
+          <p>Barber pole. Escher staircase. Shepard tone. These are not metaphors for each other — they are the same topological object in different materials. <em>Finite system. Perceived unidirectional motion.</em></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 2: THE MECHANISM -->
+  <section>
+    <div class="section-label">02 — The Mechanism</div>
+    <h2>How the Illusion Works</h2>
+
+    <p>Two simultaneous facts, carefully balanced against each other:</p>
+    <p><strong style="color:var(--gold)">The pitch cycles.</strong> Nine octaves of the same pitch class — all the C's from C1 to C9 — play simultaneously. As you ascend, the whole stack shifts upward, and when C9 leaves the top, C1 re-enters at the bottom. The frequency content loops.</p>
+    <p><strong style="color:var(--blue)">The window stays fixed.</strong> A smooth bandpass filter — the Shepard filter — sits at a constant frequency. Voices inside the window are loud. Voices outside fade to nothing. This window never moves. Only the voices scroll through it.</p>
+    <p>The brain hears whichever octaves are currently bright in the window, and infers a rising pitch. By the time you've ascended an octave, you're back where you started — but you never noticed the wrap.</p>
+
+    <div class="canvas-wrap">
+      <canvas id="mechanism-canvas" width="852" height="380"></canvas>
+      <p class="canvas-caption">Each line is one octave of the same pitch class, cycling upward through the fixed Shepard filter window (blue glow). Opacity = amplitude at that frequency.</p>
+    </div>
+  </section>
+
+  <!-- SECTION 3: BUILD IT -->
+  <section>
+    <div class="section-label">03 — Build It in Ableton</div>
+    <h2>Your First Shepard Rack</h2>
+
+    <p>Everything you need is already in Ableton. No Max, no plugins, no synthesis knowledge required — just a MIDI Effect Rack and an AutoFilter.</p>
+
+    <div class="build-steps">
+
+      <div class="step-card">
+        <div class="step-num">1</div>
+        <div class="step-content">
+          <div class="step-title">Create a MIDI Effect Rack</div>
+          <p class="step-detail">Drop a MIDI Effect Rack before your instrument. This is the voice stack — everything happens here.</p>
+        </div>
+      </div>
+
+      <div class="step-card">
+        <div class="step-num">2</div>
+        <div class="step-content">
+          <div class="step-title">Add 9 Pitch devices — one per chain</div>
+          <p class="step-detail">Create 9 chains inside the rack. In each chain, add a Pitch MIDI Effect. Set the transpose values to cover 8 octaves:</p>
+          <div class="step-params">
+            <span class="param-tag">−48 st</span>
+            <span class="param-tag">−36 st</span>
+            <span class="param-tag">−24 st</span>
+            <span class="param-tag">−12 st</span>
+            <span class="param-tag">0 st</span>
+            <span class="param-tag">+12 st</span>
+            <span class="param-tag">+24 st</span>
+            <span class="param-tag">+36 st</span>
+            <span class="param-tag">+48 st</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="step-card">
+        <div class="step-num">3</div>
+        <div class="step-content">
+          <div class="step-title">Load an instrument into each chain</div>
+          <p class="step-detail">Operator or Wavetable with a simple sine or saw wave works best — complex timbres can blur the illusion. Keep all 9 instruments identical. Play a note: you should hear a dense, rich unison across octaves.</p>
+        </div>
+      </div>
+
+      <div class="step-card">
+        <div class="step-num">4</div>
+        <div class="step-content">
+          <div class="step-title">Add an AutoFilter after the rack — this is your Shepard filter</div>
+          <p class="step-detail">Set it to Bandpass mode. This is the fixed window that creates the illusion. Start here and tune from these values:</p>
+          <div class="step-params">
+            <span class="param-tag">Type: Bandpass</span>
+            <span class="param-tag">Freq: 600 Hz</span>
+            <span class="param-tag">Q: 0.55</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="step-card">
+        <div class="step-num">5</div>
+        <div class="step-content">
+          <div class="step-title">Play a slow ascending scale and tune the window</div>
+          <p class="step-detail">Ascend chromatically or in whole steps. Listen for the moment the illusion locks in — when you feel yourself climbing without arriving. The filter center and Q are your tuning levers. See the tuning guide below.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- SECTION 4: TUNE THE ILLUSION -->
+  <section>
+    <div class="section-label">04 — Tune the Illusion</div>
+    <h2>Finding the Sweet Spot</h2>
+
+    <p>The Shepard filter is not set-and-forget. The quality of the illusion depends on how well its shape matches the log-frequency spacing of your octave voices. Three parameters matter:</p>
+
+    <div class="tuning-grid">
+      <div class="tuning-card">
+        <div class="tuning-title">Center Frequency</div>
+        <div class="tuning-val">400–900 Hz</div>
+        <p>Places the "bright zone" of the staircase. Lower centers feel darker and more bass-forward. Higher centers feel glassy and bright. Start at 600 Hz.</p>
+      </div>
+      <div class="tuning-card">
+        <div class="tuning-title">Q (Bandwidth)</div>
+        <div class="tuning-val">0.4–0.7</div>
+        <p>Too narrow (Q &gt; 1.5) and you hear discrete octave jumps as voices cross the window edge. Too wide (Q &lt; 0.2) and the illusion dissolves into muddy unison. Aim for a smooth 2-octave window.</p>
+      </div>
+      <div class="tuning-card">
+        <div class="tuning-title">Slope</div>
+        <div class="tuning-val">12 or 24 dB</div>
+        <p>A gentler slope (12 dB/oct) gives a smoother crossfade as voices enter and exit the window. A steeper slope (24 dB/oct) makes the window more defined — stronger contrast, but more risk of audible discontinuities.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 5: COMPARE TO MELD -->
+  <section>
+    <div class="section-label">05 — Compare</div>
+    <h2>Return to Meld</h2>
+
+    <div class="compare-box">
+      <p>You now have your own Shepard tone. Open Meld's Shepard synth alongside your Ableton rack and compare them. <strong>What's the same?</strong> You should hear the same basic illusion — infinite ascent through a finite window. <strong>What's different?</strong> Meld's implementation is more sophisticated under the hood. The amplitude envelope is computed at signal rate. The per-voice crossfades are precise Gaussian curves in log-frequency space, not a single downstream bandpass filter. The portamento glides all voices simultaneously as a synchronized unit. <strong>These gaps are exactly the questions Stage 2 through Stage 5 will answer.</strong> You've built the rough shape of the staircase. Now you know what's inside the walls.</p>
+    </div>
+  </section>
+
+  <!-- SECTION 6: REFLECT -->
+  <section>
+    <div class="section-label">06 — Reflect</div>
+
+    <p class="reflect-question">"This is an auditory barber pole.<br>What other visual illusions could you move into the audio domain?"</p>
+
+    <p class="seeds-label">Seeds — to spark, not to answer</p>
+
+    <div class="seeds-grid">
+
+      <div class="seed-card">
+        <div class="seed-name">Risset's Accelerating Rhythm</div>
+        <div class="seed-analog">Barber pole → in time instead of pitch</div>
+        <p>Jean-Claude Risset did for tempo what Shepard did for pitch. A rhythm that perpetually accelerates — layers cycling at different rates, amplitude-enveloped so the fast layers fade out and slow ones fade in. You always feel it speeding up. It never arrives at a new tempo. The staircase, in the time domain.</p>
+      </div>
+
+      <div class="seed-card">
+        <div class="seed-name">Digital Aliasing</div>
+        <div class="seed-analog">Wagon wheel → the sampling theorem</div>
+        <p>The wagon wheel appears to spin backward because the frame rate undersamples the rotation. Frequencies above the Nyquist limit fold back and appear as lower frequencies in digital audio — the same mathematical operation, the same perceptual reversal, in a different medium. You've heard aliasing artifacts in your DAW. You've already met this illusion.</p>
+      </div>
+
+      <div class="seed-card">
+        <div class="seed-name">The Continuity Illusion</div>
+        <div class="seed-analog">Kanizsa triangle → auditory induction</div>
+        <p>The Kanizsa triangle has no edges — the brain draws them in because the surrounding context demands they exist. A pure tone interrupted by a burst of noise is perceived as <em>continuing through</em> the noise even when it is physically absent. The brain insists the tone must still be there. Synthesizers can exploit this deliberately.</p>
+      </div>
+
+      <div class="seed-card">
+        <div class="seed-name">Auditory Streaming</div>
+        <div class="seed-analog">Rubin's vase → figure / ground in sound</div>
+        <p>The vase and the faces are the same image — the brain flips between two valid interpretations. The same alternating sequence of tones is heard as one melody or two separate streams depending on tempo and interval size. The perceptual system is making a figure/ground decision, in the frequency domain, in real time.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-left">Shepard Tone Synthesizer · Stage 1 of 5</div>
+    <div class="footer-right">Loudon Live · Autodidact Polymaths</div>
+  </footer>
+
+</div>
+
+<script>
+/* ─────────────────────────────────────────────
+   STAIRCASE CANVAS
+   Animated isometric-style staircase using
+   parallelogram steps that scroll upward,
+   opacity fading at extremes (Gaussian envelope)
+───────────────────────────────────────────── */
+(function() {
+  const canvas = document.getElementById('staircase-canvas');
+  const ctx = canvas.getContext('2d');
+  const W = canvas.width;
+  const H = canvas.height;
+
+  const NUM_STEPS = 8;
+  const STEP_W = 52;
+  const STEP_H = 14;
+  const STEP_DEPTH = 8;
+  const OFFSET_X = 20; // horizontal offset per step (staircase slant)
+  const SPEED = 0.35;  // px per frame
+
+  // One "cycle" spans the full height; we draw 2 cycles for seamless loop
+  const CYCLE_H = H;
+
+  // Steps evenly distributed across one cycle
+  let offset = 0;
+
+  function gaussianAlpha(y, center, sigma) {
+    const norm = (y - center) / sigma;
+    return Math.exp(-0.5 * norm * norm);
+  }
+
+  function drawStep(x, y, alpha) {
+    if (alpha < 0.02) return;
+
+    // Front face (riser)
+    ctx.beginPath();
+    ctx.moveTo(x,             y);
+    ctx.lineTo(x + STEP_W,    y);
+    ctx.lineTo(x + STEP_W,    y + STEP_H);
+    ctx.lineTo(x,             y + STEP_H);
+    ctx.closePath();
+    ctx.fillStyle = `rgba(232, 184, 74, ${alpha * 0.55})`;
+    ctx.fill();
+
+    // Top face (tread)
+    ctx.beginPath();
+    ctx.moveTo(x,             y);
+    ctx.lineTo(x + STEP_W,    y);
+    ctx.lineTo(x + STEP_W + STEP_DEPTH, y - STEP_DEPTH);
+    ctx.lineTo(x + STEP_DEPTH, y - STEP_DEPTH);
+    ctx.closePath();
+    ctx.fillStyle = `rgba(232, 184, 74, ${alpha * 0.85})`;
+    ctx.fill();
+
+    // Right face (side)
+    ctx.beginPath();
+    ctx.moveTo(x + STEP_W,    y);
+    ctx.lineTo(x + STEP_W + STEP_DEPTH, y - STEP_DEPTH);
+    ctx.lineTo(x + STEP_W + STEP_DEPTH, y - STEP_DEPTH + STEP_H);
+    ctx.lineTo(x + STEP_W,    y + STEP_H);
+    ctx.closePath();
+    ctx.fillStyle = `rgba(232, 184, 74, ${alpha * 0.35})`;
+    ctx.fill();
+  }
+
+  function draw() {
+    ctx.clearRect(0, 0, W, H);
+
+    // Draw 2 cycles of steps for seamless looping
+    for (let cycle = 0; cycle < 2; cycle++) {
+      for (let i = 0; i < NUM_STEPS; i++) {
+        const stepFrac = i / NUM_STEPS;
+        const baseY = cycle * CYCLE_H + stepFrac * CYCLE_H - offset;
+        const baseX = W * 0.15 + (1 - stepFrac) * (W * 0.5);
+
+        const alpha = gaussianAlpha(baseY / H, 0.5, 0.28);
+        drawStep(baseX, baseY, alpha);
+      }
+    }
+
+    offset += SPEED;
+    if (offset >= CYCLE_H) offset -= CYCLE_H;
+
+    requestAnimationFrame(draw);
+  }
+
+  draw();
+})();
+
+
+/* ─────────────────────────────────────────────
+   MECHANISM CANVAS
+   Shows pitch-class lines cycling upward through
+   a fixed Gaussian Shepard filter window.
+   Y axis = log frequency (C1–C9)
+───────────────────────────────────────────── */
+(function() {
+  const canvas = document.getElementById('mechanism-canvas');
+  const ctx = canvas.getContext('2d');
+  const W = canvas.width;
+  const H = canvas.height;
+
+  const LABEL_W = 52;
+  const RIGHT_PAD = 100;
+  const PLOT_X0 = LABEL_W;
+  const PLOT_X1 = W - RIGHT_PAD;
+  const PLOT_W = PLOT_X1 - PLOT_X0;
+  const PLOT_Y0 = 20;
+  const PLOT_Y1 = H - 36;
+  const PLOT_H = PLOT_Y1 - PLOT_Y0;
+
+  const NUM_VOICES = 9;
+  const NOTE_NAMES = ['C1','C2','C3','C4','C5','C6','C7','C8','C9'];
+  // log2 frequencies for C1–C9
+  const C_FREQS = [32.7, 65.4, 130.8, 261.6, 523.3, 1046.5, 2093.0, 4186.0, 8372.0];
+  const LOG_MIN = Math.log2(C_FREQS[0]);
+  const LOG_MAX = Math.log2(C_FREQS[8]);
+
+  // Shepard window: Gaussian centered at log2(600Hz)
+  const WIN_CENTER_HZ = 600;
+  const WIN_CENTER = (Math.log2(WIN_CENTER_HZ) - LOG_MIN) / (LOG_MAX - LOG_MIN);
+  const WIN_SIGMA = 0.18;
+
+  function shepardAmp(pos) {
+    const d = (pos - WIN_CENTER) / WIN_SIGMA;
+    return Math.exp(-0.5 * d * d);
+  }
+
+  // Convert normalized log-freq position [0,1] to canvas Y
+  function posToY(pos) {
+    return PLOT_Y1 - pos * PLOT_H;
+  }
+
+  // 9 voices evenly spaced in [0,1]; they scroll upward together
+  let voices = Array.from({length: NUM_VOICES}, (_, i) => i / NUM_VOICES);
+  const SPEED = 0.00022; // fraction of range per ms
+  let lastTime = null;
+
+  function drawWindow(ctx) {
+    // Draw Gaussian glow for the Shepard window
+    const centerY = posToY(WIN_CENTER);
+    const bandHalfH = WIN_SIGMA * PLOT_H * 2.5;
+
+    const grad = ctx.createLinearGradient(0, centerY - bandHalfH, 0, centerY + bandHalfH);
+    grad.addColorStop(0,   'rgba(74, 143, 255, 0)');
+    grad.addColorStop(0.3, 'rgba(74, 143, 255, 0.04)');
+    grad.addColorStop(0.5, 'rgba(74, 143, 255, 0.10)');
+    grad.addColorStop(0.7, 'rgba(74, 143, 255, 0.04)');
+    grad.addColorStop(1,   'rgba(74, 143, 255, 0)');
+
+    ctx.fillStyle = grad;
+    ctx.fillRect(PLOT_X0, centerY - bandHalfH, PLOT_W, bandHalfH * 2);
+
+    // Window center line
+    ctx.strokeStyle = 'rgba(74, 143, 255, 0.3)';
+    ctx.lineWidth = 1;
+    ctx.setLineDash([4, 4]);
+    ctx.beginPath();
+    ctx.moveTo(PLOT_X0, centerY);
+    ctx.lineTo(PLOT_X1, centerY);
+    ctx.stroke();
+    ctx.setLineDash([]);
+
+    // Label
+    ctx.font = `500 11px 'JetBrains Mono', monospace`;
+    ctx.fillStyle = 'rgba(74, 143, 255, 0.6)';
+    ctx.textAlign = 'left';
+    ctx.fillText('Shepard', PLOT_X1 + 8, centerY - 8);
+    ctx.fillText('filter ↑', PLOT_X1 + 8, centerY + 6);
+  }
+
+  function drawAxes(ctx) {
+    // Y axis
+    ctx.strokeStyle = 'rgba(122, 122, 142, 0.3)';
+    ctx.lineWidth = 1;
+    ctx.beginPath();
+    ctx.moveTo(PLOT_X0, PLOT_Y0);
+    ctx.lineTo(PLOT_X0, PLOT_Y1);
+    ctx.stroke();
+
+    // Octave gridlines and labels
+    C_FREQS.forEach((freq, i) => {
+      const logPos = (Math.log2(freq) - LOG_MIN) / (LOG_MAX - LOG_MIN);
+      const y = posToY(logPos);
+
+      ctx.strokeStyle = 'rgba(42, 42, 58, 0.8)';
+      ctx.lineWidth = 1;
+      ctx.setLineDash([2, 4]);
+      ctx.beginPath();
+      ctx.moveTo(PLOT_X0, y);
+      ctx.lineTo(PLOT_X1, y);
+      ctx.stroke();
+      ctx.setLineDash([]);
+
+      ctx.fillStyle = 'rgba(122, 122, 142, 0.7)';
+      ctx.font = `400 10px 'JetBrains Mono', monospace`;
+      ctx.textAlign = 'right';
+      ctx.fillText(NOTE_NAMES[i], PLOT_X0 - 6, y + 3.5);
+    });
+
+    // Axis label
+    ctx.save();
+    ctx.translate(11, (PLOT_Y0 + PLOT_Y1) / 2);
+    ctx.rotate(-Math.PI / 2);
+    ctx.fillStyle = 'rgba(122, 122, 142, 0.5)';
+    ctx.font = `400 10px 'JetBrains Mono', monospace`;
+    ctx.textAlign = 'center';
+    ctx.fillText('LOG FREQUENCY', 0, 0);
+    ctx.restore();
+
+    // Bottom label
+    ctx.fillStyle = 'rgba(122, 122, 142, 0.5)';
+    ctx.font = `400 10px 'JetBrains Mono', monospace`;
+    ctx.textAlign = 'center';
+    ctx.fillText('← ALL OCTAVES OF ONE PITCH CLASS, CYCLING UPWARD →', PLOT_X0 + PLOT_W / 2, H - 8);
+  }
+
+  function drawVoices(ctx, voices) {
+    voices.forEach((pos, i) => {
+      const amp = shepardAmp(pos);
+      if (amp < 0.015) return;
+
+      const y = posToY(pos);
+
+      // Glow
+      const glow = ctx.createLinearGradient(PLOT_X0, 0, PLOT_X1, 0);
+      glow.addColorStop(0,   `rgba(232, 184, 74, 0)`);
+      glow.addColorStop(0.1, `rgba(232, 184, 74, ${amp * 0.25})`);
+      glow.addColorStop(0.5, `rgba(232, 184, 74, ${amp * 0.5})`);
+      glow.addColorStop(0.9, `rgba(232, 184, 74, ${amp * 0.25})`);
+      glow.addColorStop(1,   `rgba(232, 184, 74, 0)`);
+
+      ctx.strokeStyle = glow;
+      ctx.lineWidth = 6;
+      ctx.beginPath();
+      ctx.moveTo(PLOT_X0, y);
+      ctx.lineTo(PLOT_X1, y);
+      ctx.stroke();
+
+      // Core line
+      ctx.strokeStyle = `rgba(232, 184, 74, ${amp * 0.9})`;
+      ctx.lineWidth = 1.5;
+      ctx.beginPath();
+      ctx.moveTo(PLOT_X0, y);
+      ctx.lineTo(PLOT_X1, y);
+      ctx.stroke();
+    });
+  }
+
+  function frame(timestamp) {
+    if (lastTime === null) lastTime = timestamp;
+    const dt = timestamp - lastTime;
+    lastTime = timestamp;
+
+    // Advance all voices upward together
+    voices = voices.map(v => {
+      v += SPEED * dt;
+      if (v >= 1.0) v -= 1.0;
+      return v;
+    });
+
+    ctx.clearRect(0, 0, W, H);
+    drawWindow(ctx);
+    drawAxes(ctx);
+    drawVoices(ctx, voices);
+
+    requestAnimationFrame(frame);
+  }
+
+  requestAnimationFrame(frame);
+})();
+</script>
+</body>
+</html>

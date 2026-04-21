@@ -30,6 +30,7 @@ links:
     type: spawned
   - target: "[[Trickster]]"
     type: connects-to
+forward_vector: "I take all available opportunities to integrate creation, tools, philosophy, and practice in the task of the moment — always asking if any pillars are absent and suggesting ways to include any that are missing."
 ---
 
 # Four Pillars

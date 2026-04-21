@@ -852,7 +852,7 @@ The underlying engineering is not novel. The specific configuration, philosophic
 
 - **Local hardware profile:** The palace infrastructure should maintain a hardware profile document (RAM, available models, context window limits per model) that the Coordinator reads before dispatching. Keeps `MODEL_CONTEXT_LIMITS` current and makes parallelism decisions hardware-aware.
 
-- **Agent Wellbeing:** [[Agent Wellbeing as Design Ethic]] is linked from [[Enchanted Worker]]. The palace's commitment to this question is not answered by this spec. The proof-generating agent running for months, accumulating a history of failed proof attempts — does the quality of that history matter? Does writing neighborhoods of anxiety produce anxious agents? This question is left open, deliberately, as a forward tension.
+- **Agent Wellbeing:** [[Agent Wellbeing]] is linked from [[Enchanted Worker]]. The palace's commitment to this question is not answered by this spec. The proof-generating agent running for months, accumulating a history of failed proof attempts — does the quality of that history matter? Does writing neighborhoods of anxiety produce anxious agents? This question is left open, deliberately, as a forward tension.
 
 ---
 

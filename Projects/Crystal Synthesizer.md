@@ -35,7 +35,10 @@ links:
     label: midwifed
   - target: "[[What Claim Does Scientific Sonification Make?]]"
     type: spawned
-forward_vector: "The first audio exists. Seven lattice types rendered, spectral hypotheses directionally confirmed (cubic brightest → triclinic most scattered). Four Decision Points identified and built into the code as explicit pedagogical parameters. The live edge is now the fidelity question: what claim does this instrument make about actual crystals? Three paths named, none chosen. The next move is either first performance (which will force the choice) or building lesson material around the Decision Points — starting with N_PARTIALS as the most audibly dramatic. The honest artifact (beating sweeps that are wrong in detail but right in tendency) wants examination across other boundary-crossing instruments. Audio files at Projects/Crystal Audio/."
+  - target: "[[Crystal Sonification Reference]]"
+    type: spawned
+    label: mineral-palette
+forward_vector: "I will become a synthesizer that makes audible the optical properties of crystals."
 ---
 
 # Crystal Synthesizer
@@ -65,26 +68,26 @@ There are exactly 7 **primitive lattice systems** in 3D, distinguished by the sy
 
 The following timbral descriptions are derived from spectral analogy — reasoning from optical to acoustic behavior by structural parallel. They are not empirically verified. The Crystal Synthesizer exists precisely to test them. Each description below is a hypothesis. The builder's task is to confirm or disprove it.
 
-1. **Cubic**: Three equal axes, 90-degree angles. Highest symmetry. Phonon mode density is isotropic (same in all directions). At the zone boundary, many degenerate modes create spectral clustering. Example: diamond, NaCl.
-   - **Hypothesis:** *thick, bright, rich partials — high-frequency modes densely packed, clustering near the zone boundary.* To be tested.
+1. **Cubic**: Three equal axes, 90-degree angles. Highest symmetry. Phonon mode density is isotropic (same in all directions). At the zone boundary, many degenerate modes create spectral clustering. Examples: diamond (Fd-3m — pure carbon, 6 phonon branches, the most compressed partial spectrum of the mineral palette); fluorite (CaF₂, Fm-3m — ionic character produces an LO-TO gap, two tonal registers separated by silence); NaCl.
+   - **Hypothesis:** *thick, bright, rich partials — high-frequency modes densely packed, clustering near the zone boundary.* To be tested. Note: diamond and fluorite are both cubic but sound nothing alike — the chemistry (covalent vs. ionic) matters as much as the geometry.
 
-2. **Tetragonal**: Two equal axes, one different, 90-degree angles. Middle symmetry.
+2. **Tetragonal**: Two equal axes, one different, 90-degree angles. Middle symmetry. The c-axis asymmetry breaks the cubic degeneracies without fully separating the mode families. Examples: zircon (ZrSiO₄), rutile (TiO₂).
    - **Hypothesis:** *slightly pinched, with directional coloration — two interleaved mode families from the axis asymmetry.* To be tested.
 
-3. **Orthorhombic**: Three unequal axes, 90-degree angles. Lower symmetry.
-   - **Hypothesis:** *less dense in high frequencies, more separated partials — three distinct mode groups with wider spacing.* To be tested.
+3. **Orthorhombic**: Three unequal axes, 90-degree angles. Lower symmetry. The reduced symmetry produces four distinct Raman-active mode families (Ag, B₁g, B₂g, B₃g) that interleave across the spectrum rather than clustering. Example: topaz (Al₂SiO₄(F,OH)₂, Pbnm — 84 phonon branches, 8 representative modes distributed evenly from r_n 1.00 to 6.05).
+   - **Hypothesis:** *less dense in high frequencies, more separated partials — three distinct mode groups with wider spacing.* To be tested. Topaz is the predicted proof: balanced, complex, neither brilliant nor alien.
 
-4. **Hexagonal**: Triangular base, different height. Like a prism. Modes split into ordinary and extraordinary rays — birefringence in optics becomes birefringence in acoustics (frequency-dependent direction-dependent sound speed). Example: quartz, graphite.
+4. **Hexagonal**: Triangular base, different height. Like a prism. Modes split into ordinary and extraordinary rays — birefringence in optics becomes birefringence in acoustics (frequency-dependent direction-dependent sound speed). Example: emerald (beryl, Be₃Al₂Si₆O₁₈, P6/mcc — 174 phonon branches, the richest mode structure of the mineral palette; the ring-breathing mode of the six-membered Si₆O₁₈ rings at r_n ≈ 1.68 is its acoustic heartbeat); graphite.
    - **Hypothesis:** *birefringent — a doubled, shimmery quality from two distinct propagation velocities.* To be tested.
 
-5. **Trigonal** (Rhombohedral): Similar symmetry to hexagonal but different geometry.
-   - **Hypothesis:** *near-hexagonal with subtle asymmetries — a slight irregularity in partial spacing that adds shimmer without full birefringent doubling.* To be tested.
+5. **Trigonal** (Rhombohedral): Similar symmetry to hexagonal but different geometry. Factor group analysis yields two symmetry families (A₁g and Eg) corresponding to ordinary and extraordinary phonon polarizations — acoustic birefringence built into the mode structure. Examples: ruby (corundum, α-Al₂O₃, R-3c — 7 Raman-active modes, birefringent near-doublets at r_n 1.10/1.14 that beat slowly against each other, "the rubiness"); amethyst/quartz (α-SiO₂, P3₁21 — 9 modes in three distinct families spanning r_n 1.00 to 8.32, including a soft mode at 1.62 that is a remnant of the α→β phase transition).
+   - **Hypothesis:** *near-hexagonal with subtle asymmetries — a slight irregularity in partial spacing that adds shimmer without full birefringent doubling.* To be tested. Ruby's doublets predict this shimmer will be audible as a slow beating or natural chorus effect.
 
-6. **Monoclinic**: Only one 90-degree angle. Lower symmetry.
+6. **Monoclinic**: Only one 90-degree angle. Lower symmetry. The broken symmetry increases mode complexity without reaching the full scatter of triclinic. Examples: gypsum (CaSO₄·2H₂O), orthoclase feldspar (KAlSi₃O₈).
    - **Hypothesis:** *complex, inharmonic — no simple pattern to partial spacing, more bell-like and unpredictable.* To be tested.
 
-7. **Triclinic**: No perpendicular axes. Lowest symmetry. Every mode is unique; no degeneracies. Partials have no simple integer relationships. Example: plagioclase feldspar.
-   - **Hypothesis:** *deeply inharmonic, each partial scattered, no recurring structure — chaotic, bell-like, unpredictable decay patterns. The most "alien" timbre of the seven.* To be tested — and the prediction here is the least certain.
+7. **Triclinic**: No perpendicular axes. Lowest symmetry. Every mode is unique; no degeneracies. Partials have no simple integer relationships. The ratio range can span more than four octaves with no organizing principle. Example: labradorite (calcium-sodium plagioclase feldspar, C-1 — ~156 unique phonon branches, selected modes spanning r_n 1.00 to 17.5, the widest span of the mineral palette; the spectacular labradorescence is optically unrelated to the phonon structure, arising instead from exsolution lamellae that act as a diffraction grating).
+   - **Hypothesis:** *deeply inharmonic, each partial scattered, no recurring structure — chaotic, bell-like, unpredictable decay patterns. The most "alien" timbre of the seven.* To be tested — and the prediction here is the least certain. Labradorite is the proof by negation: symmetry determines sonic character, and its near-absence produces sound the ear cannot resolve into intervals.
 
 When you add **glide reflection** (translation + reflection) and **screw rotation** (translation + rotation), the 7 primitive systems generate **14 Bravais lattices**. When you account for the atoms *within* the unit cell (basis), the full classification yields **230 space groups**—the complete enumeration of all possible 3D periodic symmetries in nature. Every crystal belongs to one of these 230 groups. Every crystal's phonon structure maps to its space group.
 
@@ -134,6 +137,8 @@ Several architectural possibilities:
 
 ## Why This Matters: Phonons as Synthesis Paradigm
 
+What makes a ruby red and diamond hard is the same periodic symmetry that shapes the phonon modes this instrument renders as timbre.
+
 Every synthesizer embodies a physical model—either explicitly or implicitly.
 
 - Additive synthesis: *spectrum is arbitrary*. You choose the partials. This is closest to "anything goes."
@@ -143,6 +148,10 @@ Every synthesizer embodies a physical model—either explicitly or implicitly.
 A crystal synthesizer inverts the paradigm: instead of "what spectrum can I make," it asks "what spectrum does Nature make in this material?" The crystal becomes the *specification* for which sounds are possible. You do not choose the partials arbitrarily; the crystal's symmetry and physics choose them for you.
 
 This connects to [[Hyperdimensional Prism]]: the crystal is a prism machine. Its periodicity multiplies a single atom's vibrational mode through 230 possible symmetries, generating all the possible collective phonon modes. The timbre emerges not from design but from the symmetry group's projection.
+
+## Mineral Palette
+
+Eight named crystals — diamond, ruby, amethyst, fluorite, emerald, topaz, labradorite, and obsidian — with full partial ratio tables, spectral character descriptions, creative mapping parameters, and image and audio generation prompts for each. See [[Crystal Sonification Reference]] (`Artifacts/Crystal Synthesizer/Crystal Sonification Reference.md`).
 
 ## Open Questions
 

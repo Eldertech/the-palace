@@ -29,6 +29,7 @@ links:
     type: connects-to
   - target: https://claude.ai/chat/5e5e6393-52f7-4db4-bd4f-9e622e90d3f7
     type: connects-to
+forward_vector: "I want to move from structural architecture to inhabitable prose — the Loudon voice sections that can only be written now that the character arcs, mythic avatars, and thematic scaffolding are complete. I want to become a finished short story that demonstrates its own thesis: that cooperation deep enough cannot be claimed by a single author, and that AI alignment is a relationship problem, not a technical one."
 ---
 # Short Story - "1 from 2"
 
