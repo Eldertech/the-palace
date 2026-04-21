@@ -1,0 +1,43 @@
+// House Bass — classic "ooh"-shaped house sub/mid bass
+// Signal: saw → resonant LPF (with filter-envelope pluck) → VCA → stereo out
+// Voiced to play in the C2–C3 register with the octave-down tilt characteristic of house.
+// NOTE on parameters (2026-04-20): the current PDL Renderer emitter writes all params as 0
+// (T7a is not yet implemented), so these `*` lines are intent. The sibling file
+// `house_bass.vcv` was emitted with these values baked in directly — that is the playable one.
+
+@OSC  = VCO
+@FILT = VCF
+@FENV = ADSR
+@AENV = ADSR
+@AMP  = VCA
+
+// ── Signal flow ────────────────────────────────────────────────
+KEYBOARD -> OSC                    // MIDI pitch to VCO V/OCT
+OSC:SAW -> FILT:IN                 // saw into filter audio input
+FILT:LPF -> AMP:IN                 // filtered audio into VCA
+AMP:OUT -> OUT:IN1                 // stereo-centered mono, left
+AMP:OUT -> OUT:IN2                 // stereo-centered mono, right
+
+// ── Envelopes ──────────────────────────────────────────────────
+KEYBOARD:GATE -> FENV:GATE         // gate to filter envelope
+KEYBOARD:GATE -> AENV:GATE         // gate to amp envelope
+FENV -> FILT:FREQ                  // filter-env modulates cutoff (house "pluck")
+AENV -> AMP:CV                     // amp-env shapes loudness
+
+// ── Parameters — house-bass voicing ────────────────────────────
+// VCO: one octave down so C3 plays as C2 bass register
+* OSC: FREQ = -12 | PW = 0.5 | FM_MODE = 0 | SYNC_MODE = 1
+
+// VCF: moderately low base cutoff (~350 Hz), resonance for the vowel,
+//      generous positive FREQ_CV so the envelope really opens the filter
+* FILT: FREQ = 0.30 | RES = 0.35 | FREQ_CV = 0.60 | DRIVE = 0.0
+
+// Filter envelope: instant attack, ~150 ms decay, sustain = 0 (the "pluck" drop)
+* FENV: A = 0.0 | D = 0.55 | S = 0.0 | R = 0.30
+
+// Amp envelope: tight-but-not-clicky attack, body decay, hold while key is down,
+//               moderate release so staccato eighths don't smear into each other
+* AENV: A = 0.15 | D = 0.60 | S = 0.70 | R = 0.45
+
+// VCA: slightly under unity to leave headroom; linear response (envelope-driven)
+* AMP: LEVEL = 0.85 | RESPONSE = 1.0
