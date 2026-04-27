@@ -17,34 +17,49 @@ who_leads: shared
 links:
   - target: "[[Cooperation Yields Agency]]"
     type: mirrors
+    label: mathematical-formalization
   - target: "[[Hyperdimensional Prism]]"
     type: connects-to
+    label: cross-domain-projection
   - target: "[[Hilaritas Generator]]"
     type: connects-to
+    label: synchrony-as-joy
   - target: "[[Spinoza Conatus]]"
     type: mirrors
+    label: persistence-through-coupling
   - target: "[[SUBSTRATE]]"
     type: enables
+    label: palace-foundation
   - target: "[[Mixture of Experts]]"
     type: mirrors
+    label: distributed-coherence
   - target: "[[Action Potential Oscillator]]"
     type: couples-with
+    label: spectral-coupling-source
   - target: "[[Lateral Access]]"
     type: mirrors
+    label: oblique-convergence
   - target: "[[Harmonicity and Inharmonicity]]"
     type: couples-with
+    label: frustrated-coupling
   - target: "[[Granular Synthesis]]"
     type: connects-to
+    label: attractor-hybrid
   - target: "[[Modes of Collaboration]]"
     type: connects-to
+    label: collaboration-as-coupling
   - target: "[[Categorizing Inharmonicity]]"
     type: couples-with
+    label: direct-coupling
   - target: "[[Trickster]]"
     type: connects-to
+    label: disruptor-as-perturbation
   - target: "[[Palace Enchantment]]"
     type: mirrors
+    label: enchantment-as-synchrony
   - target: "[[Threshold Conatus]]"
     type: connects-to
+    label: critical-K-as-threshold
   - target: "[[Boundary-Crossing Instruments]]"
     type: enables
     label: cross-domain-sync

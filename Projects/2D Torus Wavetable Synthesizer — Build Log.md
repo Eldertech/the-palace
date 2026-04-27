@@ -13,6 +13,16 @@ links:
   - target: "[[2D Wavetable Catalog]]"
     type: connects-to
     label: documents
+  - target: "[[DSP in Looping Dimensions]]"
+    type: connects-to
+  - target: "[[Kuramoto Coupling]]"
+    type: connects-to
+  - target: "[[Frequency-Time Duality]]"
+    type: connects-to
+  - target: "[[Torus Warping Catalog]]"
+    type: connects-to
+  - target: "[[Categorizing Inharmonicity]]"
+    type: connects-to
 ---
 # 2D Torus Wavetable Synthesizer — Build Log
 

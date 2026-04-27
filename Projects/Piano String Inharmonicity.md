@@ -18,6 +18,9 @@ links:
   - target: "[[Dispersion]]"
     type: deepens
     label: stiffness-origin
+  - target: "[[Octave Equivalence]]"
+    type: mirrors
+    label: stretched-octave
 forward_vector: "I want to become an interactive teaching artifact — the HTML version that the inline comment imagines, where the inharmonicity formula is not just displayed but playable: a synthesizer where students can dial the inharmonicity coefficient B and hear the partials stretch in real time, connecting the equation directly to the perceptual experience. The math is here; what is missing is the audible proof that makes the formula unforgettable."
 ---
 <!--This page is good, but can we make it more visual and interactive? in obsidian the link to the interaction artifact is not functional. Do some pages, like this one, need an accompanying HTML version that sits right beside it, like our ceremony context files do, but the HTML version is a more interactive and beautiful version, or maybe that is what the artifact is. here in Obsidian I can't render the JSX files natively, if they are inside of HTML can I? these dense technical/scientific pages with accompanying interactions can be really great if we design this right! -->

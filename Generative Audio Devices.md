@@ -25,6 +25,15 @@ links:
   - target: "[[Generative Preset Development]]"
     type: couples-with
     label: eventual-convergence
+  - target: "[[Preset Oracle]]"
+    type: mirrors
+    label: analysis-generation-duality
+  - target: "[[Self-Describing Knowledge Module]]"
+    type: deepens
+    label: registry-as-knowledge
+  - target: "[[Signal-Rate CV Architecture]]"
+    type: enables
+    label: modulation-carrier
 forward_vector: "The larger goal is a generalizable pipeline: natural language → a target-agnostic signal-flow IR (PDL) → any modular/DSP target via a per-target registry. VCV Rack is the first test case, not the destination. As of 2026-04-20 the registry is at v2.2: 10 modules — 8 Fundamental (source-verified against v2 .cpp files) plus 2 Core (MIDI_CV and AUDIO_8, source-verified 2026-04-20). Per-module `plugin` field lets Fundamental and Core modules coexist in one patch. A top-level `virtual_endpoints` map auto-binds unbound `KEYBOARD` → MIDI_CV and `OUT` → AUDIO_8 at parse time, and type-aware default port resolution routes `KEYBOARD -> ENV:GATE` to KEYBOARD:GATE (not the default PITCH) because the destination's signal type is used to pick the matching source output. **T11 is closed** — the exported .vcv now contains MIDI_CV + AudioInterface wired through automatically, so patches are sound-ready without manual additions in Rack. **T7a phase 1 (numeric param emission) closed 2026-04-20** — `emitVcvJson` now reads PDL `*` lines, resolves each entry per-instance, and writes either the parsed numeric value or the registry default into the .vcv `params` array. Verified against the `house_bass.pdl` / `house_bass.vcv` reference pair: same param values for every module, zero warnings, zero skipped cables. Four warning classes (orphan instance, missing `=`, unknown param name, non-finite value) surface through the amber panel with source line numbers for click-to-jump. This is the seam T7a phase 2 will intercept: a non-finite value like `CUTOFF = dark` today warns and falls back to default, tomorrow resolves through a named perceptual region. **Critical path now T7a phase 2 → T7b → T6 refactor → T10.** Phase 2 (regions + curves on each param) is still a schema commitment; T7b (archetype library) is the musically consequential piece. See the **Parameter Intelligence** section below."
 ---
 

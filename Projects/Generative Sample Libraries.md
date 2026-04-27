@@ -17,6 +17,19 @@ links:
   - target: "[[Generative Preset Development]]"
     type: couples-with
     label: content-meets-configuration
+  - target: "[[Retrospective Delay]]"
+    type: connects-to
+  - target: "[[Shepard Tone Synthesizer]]"
+    type: deepens
+    label: timbral-source
+  - target: "[[Neural Granular Synthesis]]"
+    type: connects-to
+  - target: "[[Four Pillars]]"
+    type: enables
+    label: pedagogical-scaffold
+  - target: "[[Wavetable Synthesis -- Research & Higher-Dimensional Design]]"
+    type: mirrors
+    label: wavetable-space
 forward_vector: "I will become a pipeline that generates complex multisampled instruments and wavetables from a single prompt, deployable across all major sampler and wavetable destinations."
 ---
 

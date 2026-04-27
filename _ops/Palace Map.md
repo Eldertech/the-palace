@@ -6,8 +6,8 @@ pillars:
   - philosophy
   - practice
 born: 2026-03
-last_activated: 2026-04-07
-activation_count: 4
+last_activated: 2026-04-27
+activation_count: 5
 stage: sprout
 energy: very high
 beauty: 8
@@ -28,6 +28,13 @@ links:
     type: connects-to
   - target: "[[Palace Enchantment]]"
     type: enables
+  - target: "[[Striatum]]"
+    type: mirrors
+    label: topology-as-action-selector
+  - target: "[[Pages as Agents]]"
+    type: connects-to
+  - target: "[[Harvest Ceremony]]"
+    type: connects-to
 ---
 
 # Palace Map

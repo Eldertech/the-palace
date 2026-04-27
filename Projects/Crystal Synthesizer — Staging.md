@@ -2,6 +2,7 @@
 title: Crystal Synthesizer — Staging
 project: "[[Crystal Synthesizer]]"
 loudon-live-status: planning
+stage: growing
 last-updated: 2026-04
 ---
 

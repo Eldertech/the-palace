@@ -30,7 +30,7 @@ links:
     type: mirrors
   - target: "[[Mixture of Experts]]"
     type: mirrors
-  - target: "[[Quality]]"
+  - target: "[[Quality Manifesto]]"
     type: connects-to
   - target: "[[Modes of Collaboration]]"
     type: spawned
@@ -75,7 +75,7 @@ Loudon's decision to model AI collaboration publicly — on stream, in education
 
 This extends the thesis: cooperation yields agency not only for the collaborators, but for those who witness the cooperation. Showing how to work with AI as a thinking partner (not a task-completer) gives participants a new model for their own practice. The cooperation propagates.
 
-See [[Quality]] for how this connects to Loudon's three quality metrics: the collaboration is measured by wellbeing, integrity, and depth of relationship — not by output volume.
+See [[Quality Manifesto]] for how this connects to Loudon's three quality metrics: the collaboration is measured by wellbeing, integrity, and depth of relationship — not by output volume.
 
 ## In Our Practice
 

@@ -26,7 +26,7 @@ links:
     type: spawned
   - target: "[[Kuramoto Coupling]]"
     type: connects-to
-  - target: "[[Quality]]"
+  - target: "[[Quality Manifesto]]"
     type: spawned
   - target: "[[Trickster]]"
     type: connects-to
@@ -102,7 +102,7 @@ The Kick Drum Paradox is useful as a template: any deep creative object can gene
 
 Quality in the Four Pillars context is defined by furtherance of your own highest goals — not by industry standards. The three metrics: wellbeing, integrity, depth of relationships. This is a Meadows leverage-point intervention at the paradigm level: change the goal of the system, and the system reorients.
 
-The practical redirector: **"How do you feel?"** not **"How many views?"** See [[Quality]] for the full articulation.
+The practical redirector: **"How do you feel?"** not **"How many views?"** See [[Quality Manifesto]] for the full articulation.
 
 ## The Collaborative Language
 

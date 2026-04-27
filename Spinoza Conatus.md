@@ -15,23 +15,31 @@ who_leads: shared
 links:
   - target: "[[Cooperation Yields Agency]]"
     type: deepens
+    label: agency-as-power-increase
   - target: "[[Kuramoto Coupling]]"
     type: mirrors
+    label: persistence-through-coupling
   - target: "[[Hilaritas Generator]]"
     type: spawned
     label: joy-as-phenomenon
   - target: "[[FOUR PILLARS]]"
     type: connects-to
+    label: substance-monism
   - target: "[[Hyperdimensional Prism]]"
     type: connects-to
-  - target: "[[Quality]]"
+    label: dimensional-conatus
+  - target: "[[Quality Manifesto]]"
     type: mirrors
+    label: quality-as-conatus
   - target: "[[Meaning and the Link]]"
     type: mirrors
+    label: relational-substance
   - target: "[[Symbiotic Skills]]"
     type: connects-to
+    label: flourishing-via-symbiosis
   - target: "[[Threshold Conatus]]"
     type: spawned
+    label: threshold-as-derivative
   - target: "[[Trickster]]"
     type: couples-with
     label: necessary-exterior

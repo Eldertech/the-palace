@@ -22,6 +22,15 @@ links:
     type: enables
   - target: "[[Pages as Agents]]"
     type: connects-to
+  - target: "[[Boundary-Crossing Instruments]]"
+    type: connects-to
+    label: tool-as-bridge
+  - target: "[[Dialectic]]"
+    type: connects-to
+  - target: "[[Neural Granular Synthesis]]"
+    type: connects-to
+  - target: "[[Semantic Delay]]"
+    type: connects-to
 ---
 
 # Claude CLI Reference

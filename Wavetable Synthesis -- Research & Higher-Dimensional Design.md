@@ -23,6 +23,21 @@ connects-to:
     label: structural-twin
 spawned: "2026-04-21"
 tags: [synthesis, DSP, wavetable, inharmonicity, higher-dimensional, cross-disciplinary, design-plan]
+forward_vector: "I want to become the master research index that holds every speculative wavetable direction — neural latent tables, granular hybrids, T^N geometry, perceptual coordinates — until each branch is mature enough to fork into its own entry. I want every wavetable project to test itself against my open questions before claiming completeness."
+links:
+  - target: "[[Four Pillars]]"
+    type: connects-to
+    label: creation-pillar
+
+  - target: "[[Neural Granular Synthesis]]"
+    type: couples-with
+    label: aperiodicity
+  - target: "[[Hyperdimensional Prism]]"
+    type: mirrors
+    label: n-dim-navigation
+  - target: "[[Embeddings as Relational Meaning]]"
+    type: spawned
+    label: latent-table
 ---
 
 # Wavetable Synthesis — Deep Research & Higher-Dimensional Design

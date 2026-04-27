@@ -13,6 +13,10 @@ links:
     type: deepens
   - target: "[[README - The Palace Guide]]"
     type: enables
+  - target: "[[Deposit Ceremony]]"
+    type: connects-to
+  - target: "[[Palace Ceremonies]]"
+    type: connects-to
 ---
 <!-- Should this live in _Ops -->
 # Substrate Skill (Palace Edition)

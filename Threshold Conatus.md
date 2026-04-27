@@ -7,7 +7,7 @@ pillars:
   - tools
   - practice
 born: 2026-04
-stage: sprout
+stage: growing
 energy: high
 beauty: 8
 links:

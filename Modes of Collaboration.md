@@ -30,6 +30,8 @@ links:
     type: connects-to
   - target: "[[Palace Enchantment]]"
     type: connects-to
+  - target: "[[Piano String Inharmonicity]]"
+    type: connects-to
 forward_vector: "I research, analyze, develop, name, document and make choosable distinct rhythms of human & AI interactions and AI & AI interactions."
 ---
 

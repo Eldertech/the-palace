@@ -12,6 +12,7 @@ hook_quality: 8
 beauty: 9
 who_leads: shared
 revival_conditions: "When granular synthesis framework reaches maturity; when pitch-shifted reverb architectures become computationally accessible; when hyperreal spatial textures become a design goal in music production."
+forward_vector: "I want to become a reverb that is also a prism — dispersing input signals into pitch-shifted granular clouds that shimmer between simplicity and complexity, a hyperreal atmospheric texture where the grain population itself becomes the spatial environment."
 links:
   - target: "[[Granular Synthesis]]"
     type: emerged-from
@@ -21,6 +22,8 @@ links:
     type: mirrors
   - target: "[[Frequency-Time Duality]]"
     type: deepens
+  - target: "[[Dispersion]]"
+    type: connects-to
 ---
 
 # Shimmer Cloud

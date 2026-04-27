@@ -9,6 +9,7 @@ pillars:
 born: 2026-04
 stage: fruiting
 status: active
+forward_vector: "I want to become a working RNBO instrument with the seven-surface library validated, the Hopf fibration control surface implemented, and the warp tier system tested in performance — the first concrete instrument that incarnates DSP in Looping Dimensions. I want to demand a commercial-grade decision: ship as Loudon's signature device or remain a pedagogical test bed."
 links:
   - target: "[[DSP in Looping Dimensions]]"
     type: couples-with
@@ -37,6 +38,15 @@ links:
   - target: "[[Three Kinds of Warp]]"
     type: connects-to
     label: clarifies-mechanism
+  - target: "[[Wavetable Space as Torus]]"
+    type: couples-with
+    label: inhabits-geometry
+  - target: "[[Categorizing Inharmonicity]]"
+    type: connects-to
+    label: exemplifies-taxonomy
+  - target: "[[Boundary-Crossing Instruments]]"
+    type: mirrors
+    label: harmonic-inharmonic-continuum
 ---
 # 2D Torus Wavetable Synthesizer
 

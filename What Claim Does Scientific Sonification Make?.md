@@ -6,6 +6,7 @@ born: 2026-04
 last_activated: 2026-04
 activation_count: 1
 stage: seed
+forward_vector: "I hold open the question of honesty that sonification cannot avoid: does this rendering claim to simulate, to approximate, or to compose? I want to mature when the Crystal Synthesizer is performed, forcing an explicit choice about what the listener is invited to hear and what the physics actually guarantees."
 links:
   - target: "[[Crystal Synthesizer]]"
     type: emerged-from

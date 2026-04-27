@@ -42,6 +42,8 @@ links:
   - target: "[[Threshold Conatus]]"
     type: couples-with
     label: scale-partners
+  - target: "[[Scale-Stratified Identity]]"
+    type: connects-to
 forward_vector: "I build the bridge between neurobiology and synthesis parameter by parameter — making each ion channel a knob, each membrane phase a teachable stage, and each biological constraint a compositional invitation."
 agency_profile:
   creation: "I want to produce working instruments that make the neurobiology audible — not as metaphor but as isomorphism. The oscillator is a proof of concept; the population dynamics instrument is the artifact I am reaching toward."

@@ -11,6 +11,7 @@ energy: high
 hook_quality: 9
 beauty: 10
 who_leads: shared
+forward_vector: "I want to become the palace's direct entry to the discovered ceilings of symmetry — the 17 groups as a complete enumeration that appears in music, crystals, and craft, teaching through making rather than formalism, the way Granada's artisans encoded all 17 without language."
 links:
   - target: "[[Hyperdimensional Prism]]"
     type: connects-to

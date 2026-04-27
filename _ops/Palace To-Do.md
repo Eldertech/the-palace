@@ -61,6 +61,24 @@ Artifacts/[Name]/                   ← all deliverables (not searched in ceremo
 
 - [ ] **AI and the Future of Higher Education** ⭐ — Loudon has specific hopes, predictions, and a vision he wants to push for regarding how AI will transform higher education. This deserves a dedicated session to articulate fully — not a brainstorm but a manifesto-level crystallization. Could seed a palace entry, a public essay, or both. Trigger: any session where Loudon is ready to articulate this vision.
 
+- [ ] **Loudon Live** ⭐⭐ — *Persistent forward-ghost, 4-5 references across the palace.* Loudon's streaming education project — connects deeply with [[Four Pillars]]. Likely described in different ways in different locations across the palace; a deposit session is needed to gather all references, articulate the project coherently, and determine its type (project? hub? practice?). Currently referenced from: [[2D Torus Wavetable Synthesizer]], [[Wavetable Synthesis -- Research & Higher-Dimensional Design]], [[Generative Audio Devices]], [[Generative Preset Development]], [[Deposit Archive]]. The 2D Torus Wavetable Synthesizer's forward vector explicitly raises the question of whether the instrument ships as Loudon's signature device for Loudon Live. *Needs its own session before further deposits reference it.* Surfaced 2026-04-27.
+
+- [ ] **Hibernation Ceremony** — Referenced in [[SCHEMA]] and [[ROSETTA]] as a palace ceremony, but not yet written. Persistent forward-ghost across 2+ map cycles. Likely the dual of the [[Revival Ceremony]] — a formal way to put an entry into `stage: dormant` deliberately, with a hibernation note. Surfaced 2026-04-27.
+
+- [ ] **4 Pillars Framework — The Founding Conversation** — Referenced 3× from [[Leverage Points Framework]], [[Palace AI Partnership Philosophy]], [[Quality Manifesto]]. Persistent across 4 map cycles. The originating dialogue that crystallized the Four Pillars framework. Couple with [[Loudon Live]] session — both relate to the curriculum.
+
+- [ ] **4 Pillars Weekly Structure** — Same provenance as above (3× references, 4 cycles). The pedagogical schedule/rhythm dimension of Four Pillars.
+
+- [ ] **Donella Meadows** (person-page) — Referenced from [[Leverage Points Framework]]; persistent ghost across 4 cycles. First test case for the "person-as-context-injector" pattern Loudon describes in [[Pages as Agents]] graffiti — design this page deliberately to embody Meadows, not just describe her.
+
+- [ ] **Synthesis Topologies** — Forward-ghost from [[Generative Audio Devices]] and [[Generative Preset Development]]. Concept that needs its own entry; likely a hub for the family of synthesis architectures (subtractive, FM, granular, wavetable, physical modeling) the generative project pipeline targets.
+
+- [ ] **Bolza Surface** — Forward-ghost surfaced by Swarm Weave 2026-04-27 worker on [[Wavetable Space as Torus]]. The genus-2 generalization of the torus topology, named in that entry's Lost Branches section. Deposit when wavetable research moves past T³.
+
+- [ ] **Spectroscopy** + **Phonon Dispersion** — Forward-ghosts from [[The Curve Is the Material]]. Cross-domain resonances that the entry treats as load-bearing analogies. Worth depositing as concept entries when palace expands into materials science.
+
+- [ ] **Resonance and Damping** — Persistent forward-ghost across 4 cycles from [[Differential Equations]]. The DSP-physics concept central to filter design and physical modeling.
+
 ---
 
 ## Tools and Workflows to Build
@@ -126,7 +144,7 @@ Artifacts/[Name]/                   ← all deliverables (not searched in ceremo
 
 - [ ] **[Weave flag — Schema/RDP session 2026-03] Weave new entries into existing hub nodes** — Three new entries need their first Weave pass: [[Resonant Link Labels]], [[Lossy Compression with Intent Alignment]], [[Generative Compression]]. Candidate connections to investigate: [[Hilaritas Generator]] (shares a mechanism with lossy compression), [[Endosymbiosis]] (the deposit ceremony already mirrors it — does the new framing of deposit-as-model-training deepen this?), [[Four Pillars]] (Generative Compression touches all four pillars and may want a hub-level link), [[Pages as Agents]] (if every entry is a dormant agent, latent-variable encoding is the mechanism of activation — may want a `mirrors` or `enables` link).
 
-- [ ] **[Weave flag — Schema/RDP session 2026-03] Check SCHEMA `connects-to` description** — With the label field live, consider whether the `connects-to` description in SCHEMA §4 should note its redemption: `connects-to` + label is now a permanent relationship class, not just a draft placeholder. Small prose change, no breaking change.
+- [x] **[Weave flag — Schema/RDP session 2026-03] Check SCHEMA `connects-to` description** — Verified 2026-04-27: SCHEMA §4 already includes the redemption text: *"With a `label`, this becomes a permanent named class — not a draft placeholder but a fully specified relationship carrying both topology and semantic register."* ✓
 
 - [ ] **Boundary-Crossing Instruments** — Currently underactivated (last activated Dec 2025). Check whether Deposit session has added new connections. The three-layer interface design should link forward to Symbiotic Skills.
 
@@ -151,6 +169,35 @@ Artifacts/[Name]/                   ← all deliverables (not searched in ceremo
 Items that may no longer need action — held here before being fully released.
 
 *(None yet.)*
+
+---
+
+## Palace Graffiti To-Do — surfaced 2026-04-27 Swarm Weave
+
+Items extracted from in-file `<!-- ... -->` comments during the first systematic graffiti audit. These are real Loudon-to-Claude requests or live tensions that need their own session, not Weave-time fixes. Tracked here so they don't keep resurfacing.
+
+### From Loudon to Claude (live requests)
+
+- [ ] **[[Compressor Design]]** — Section flagged: *"This section seems to be in the wrong entry? Where should this go?"* Needs review session.
+- [ ] **[[Mixture of Experts]]** — Loudon proposes connecting MoE to Excellent Adventure / Dialectic via the framing "we have a pool of 'experts' we bring to human situations ourselves, by 'embodying' an important person in life". Worth exploring as palace concept.
+- [ ] **[[Pages as Agents]]** — Two long Loudon notes about person-pages and Pages as Agents as a palace forward vector toward which the palace will arrive over multiple weaves, intersecting with [[Swarm Weave]].
+- [ ] **[[Palace Map]]** — Three Loudon questions to engage: (1) does compact adjacency compression imply "proper" paths or assign hierarchy? (2) The trickster should add links to nowhere (link-before-object). (3) Agent-as-paratrooper metaphor — what does an agent need to act in unknown territory: self-identity (content), purpose, ...?
+- [ ] **[[Palace as Context Injection System]]** — "Very related to Pages as Agents — design a person's page to become a strong context injector." Couple this with the person-page initiative.
+- [ ] **[[Piano String Inharmonicity]]** — "Make it more visual and interactive — Obsidian link to interaction artifact is broken. Do some pages need an accompanying HTML version that works in/out of Obsidian?"
+- [ ] **[[README - The Palace Guide]]** — Four editorial notes from Loudon: (1) add forward_vector framing as "the invocation of an agent at the bottom of every page"; (2) move from "open questions & budding branches" to "forward vector"; (3) add deposit ceremony as central to palace growth; (4) establish the philosophy section's importance and how philosophies should be used.
+- [ ] **[[Symbiotic Skills]]** — Needs full rewrite based on actual practices. Possible session: assess history of palace practices, then rewrite as guide.
+- [ ] **[[Substrate Skill]]** — "Should this live in _ops?" Architectural question to resolve.
+- [ ] **[[The Fortress and the Threshold]]** — "Needs an origin — believe it formed from a Confucius/Epictetus dialectic. Beautiful binary; how would a Zen master think of it?"
+- [ ] **[[Wallpaper Groups]]** — "Consider adding reference to [[Four Pillars]] as example of how substance monism applies to symmetry" (CLAUDE→LOUDON note awaiting decision).
+- [ ] **[[Toolkit — Synthesizers]]** — Two clarifications needed: (1) DSI Explorer Desktop vs. Evolver Desktop — same unit? (2) Confirm Prophet model.
+
+### From Claude to Loudon (CLAUDE→LOUDON observations awaiting response)
+
+- [ ] **[[Wavetable Space as Torus]]** — Three cross-domain sub-sections (Orbital Resonance, Kuramoto Coupling, Bessel Functions in Synthesis via Hopf discussion) need claim-level verification.
+- [ ] **[[Wavetable Synthesis -- Research & Higher-Dimensional Design]]** — Inharmonicity section surfaces a design principle worth dwelling on: wavetable synthesis defines harmonic purity as ground, treats inharmonicity as modulation of that ground.
+- [ ] **[[DSP Frameworks]]** — "This hub maps frameworks to goals, not features. The key insight — plugin as teaching artifact — deserves its own entry or deep exploration."
+- [ ] **[[Enchanted Conversation Archive]]** — Flag that [[Enchanted Worker]] may want a link back through the synthesis phase.
+- [ ] **[[Palace AI Partnership Philosophy]]** — Would benefit from a concrete example showing the difference between "AI helped me become better" vs "AI just completed a task."
 
 ---
 

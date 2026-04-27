@@ -25,6 +25,9 @@ links:
   - target: "[[Progressive Staging]]"
     type: enables
     label: tool-mastery-trajectory
+  - target: "[[Toolkit — Audio Plugins]]"
+    type: connects-to
+    label: subcategory
 forward_vector: Become a complete, navigable map of every instrument, tool, and environment Loudon uses — giving any agent immediate orientation in the physical and digital ecosystem from which the work emerges.
 ---
 

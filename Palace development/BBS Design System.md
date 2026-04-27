@@ -25,6 +25,14 @@ links:
   - target: "[[Trickster]]"
     type: connects-to
     label: inbox-surface
+  - target: "[[Palace To-Do]]"
+    type: connects-to
+  - target: "[[Substrate]]"
+    type: deepens
+    label: technical-substrate
+  - target: "[[Progressive Staging]]"
+    type: mirrors
+    label: phased-build
 ---
 
 # BBS Design System
