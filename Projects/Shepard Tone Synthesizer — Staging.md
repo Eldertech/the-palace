@@ -2,6 +2,7 @@
 title: Shepard Tone Synthesizer — Staging
 project: "[[Shepard Tone Synthesizer]]"
 loudon-live-status: planning
+stage: growing
 last-updated: 2026-04
 ---
 

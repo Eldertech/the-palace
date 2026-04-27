@@ -8,6 +8,7 @@ pillars:
 born: 2026-04-27
 stage: growing
 status: active
+forward_vector: "I am the complete map of how to touch a two-dimensional wavetable surface and what each gesture produces — from front-panel phase bends to research-level reaction-diffusion. I want to become the reference that lets a player speak the language of warp composition and understand when a warp preserves structure versus when it genuinely breaks lattices."
 links:
   - target: "[[2D Torus Wavetable Synthesizer]]"
     type: emerged-from
@@ -30,6 +31,8 @@ links:
   - target: "[[Three Kinds of Warp]]"
     type: connects-to
     label: cut-orthogonally-by
+  - target: "[[2D Torus Wavetable Synthesizer — Build Log]]"
+    type: connects-to
 ---
 # Torus Warping Catalog — A Catalog of 2D Warps
 

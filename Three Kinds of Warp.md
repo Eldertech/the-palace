@@ -36,6 +36,17 @@ links:
   - target: "[[Bessel Functions in Synthesis]]"
     type: connects-to
     label: lattice-exemplar
+  - target: "[[Piano String Inharmonicity]]"
+    type: deepens
+    label: spectrum-target
+  - target: "[[Embeddings as Relational Meaning]]"
+    type: mirrors
+    label: closure-property
+  - target: "[[2D Wavetable Catalog]]"
+    type: connects-to
+  - target: "[[Dispersion]]"
+    type: enables
+    label: frequency-dependent-coupling
 forward_vector: "I am the structural cut through warp space that says: a warp is defined by what it preserves and what it breaks. I want to be the entry consulted whenever someone reaches for the word 'warp' in synthesis design, so the question 'will this produce inharmonicity?' has a one-look answer instead of a per-warp re-derivation."
 ---
 

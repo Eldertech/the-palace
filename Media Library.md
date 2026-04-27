@@ -24,6 +24,18 @@ links:
     type: connects-to
   - target: "[[SUBSTRATE]]"
     type: enables
+  - target: "[[Quantum Synthesizer]]"
+    type: connects-to
+  - target: "[[Crystal Synthesizer]]"
+    type: connects-to
+  - target: "[[DSP Frameworks]]"
+    type: connects-to
+  - target: "[[Kuramoto Coupling]]"
+    type: connects-to
+  - target: "[[Latent Error]]"
+    type: connects-to
+  - target: "[[Wallpaper Groups]]"
+    type: connects-to
 ---
 
 # Media Library

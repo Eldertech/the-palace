@@ -14,6 +14,7 @@ energy: high
 hook_quality: 7
 beauty: 7
 who_leads: loudon
+forward_vector: "I want to become a diagnostic discipline for teaching and tool design — moving from blame to structure, from symptom to root condition, treating every failure as a signal that reveals what assumption in the system allowed it to become catastrophic."
 links:
   - target: "[[FOUR PILLARS]]"
     type: connects-to

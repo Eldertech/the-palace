@@ -7,7 +7,7 @@ pillars:
   - practice
   - creation
 born: 2026-03
-stage: growing
+stage: mature
 energy: very high
 beauty: 9
 forward_vector: "I want to become the ceremony that activates the palace's nervous system — agents that inhabit pages, follow their forward vectors, and put the palace's own intelligence in dialogue with itself."
@@ -36,6 +36,22 @@ links:
   - target: "[[Modes of Collaboration]]"
     type: connects-to
     label: distributed-agency
+  - target: "[[Lateral Access]]"
+    type: connects-to
+  - target: "[[Hilaritas Generator]]"
+    type: connects-to
+  - target: "[[Threshold Conatus]]"
+    type: connects-to
+  - target: "[[Dialogue Moderator]]"
+    type: couples-with
+    label: active-coordinator
+  - target: "[[Trickster]]"
+    type: connects-to
+  - target: "[[Palace Map]]"
+    type: enables
+    label: map-injection
+  - target: "[[Action Potential Oscillator]]"
+    type: connects-to
 ---
 
 # Palace Enchantment

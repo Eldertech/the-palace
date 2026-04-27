@@ -30,6 +30,8 @@ links:
   - target: "[[Modes of Collaboration]]"
     type: enables
     label: mode-as-injection-protocol
+  - target: "[[Four Pillars]]"
+    type: connects-to
 forward_vector: "I want to become the technical specification that guides every future ceremony design — the entry that makes explicit how context loading builds identity, not just information. I want a worked example of a full injection sequence: which entries in which order for a Swarm Weave session, with annotation of what each tier establishes in the agent's orientation and why the order matters as much as the content."
 ---
 <!-- This is very related to our Pages as Agents concept, and easily understood with a entry that is specifically around a single person. We should design the persons page to become a strong context injection that would encourage a model to think like the person and approach problems like that person would. -->

@@ -14,6 +14,7 @@ energy: very high
 hook_quality: 9
 beauty: 10
 who_leads: shared
+forward_vector: "I want to become the pedagogical principle where virtue flows from nature rather than constraint — water's coherence across dwelling, being, expression, confrontation, governance, and action showing that integrity is not imposed but emerges when the system's foundational goal is rightly named."
 links:
   - target: "[[Hilaritas Generator]]"
     type: mirrors
@@ -27,6 +28,8 @@ links:
     type: connects-to
   - target: "[[Identity Molting]]"
     type: spawned
+  - target: "[[Revival Ceremony]]"
+    type: connects-to
 ---
 
 # Water as Pedagogical Architecture

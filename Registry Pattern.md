@@ -7,6 +7,7 @@ pillars:
   - practice
 born: 2026-04
 stage: seed
+forward_vector: "I want to become the constraint that makes reliable LLM generation possible — injecting a verified vocabulary before generation so the model cannot hallucinate names or connections, closing the output space to only what physically exists."
 links:
   - target: "[[Generative Audio Devices]]"
     type: emerged-from

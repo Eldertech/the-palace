@@ -14,6 +14,7 @@ energy: high
 hook_quality: 8
 beauty: 8
 who_leads: loudon
+forward_vector: "I want to become the technique that reframes the temporal grid itself — not a glide but a reinterpretation where the listener's entrainment resets and a mirror-image journey (drop and snap-back) reveals the gap between clock time and felt time."
 links:
   - target: "[[Kuramoto Coupling]]"
     type: mirrors

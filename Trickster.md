@@ -64,6 +64,8 @@ links:
   - target: "[[Latent Error]]"
     type: connects-to
     label: uninvestigated
+  - target: "[[Particle Synthesis]]"
+    type: connects-to
 forward_vector: "I intercept, delay, substitute, and subvert the expected signal to amplify understanding and joyful creation.**"
 ---
 

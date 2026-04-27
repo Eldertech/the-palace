@@ -27,6 +27,10 @@ links:
     type: enables
   - target: "[[SCHEMA]]"
     type: connects-to
+  - target: "[[Deposit Archive]]"
+    type: connects-to
+  - target: "[[Map Build Ceremony]]"
+    type: enables
 ---
 # Palace Ceremonies
 

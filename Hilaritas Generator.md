@@ -17,18 +17,25 @@ who_leads: loudon
 links:
   - target: "[[Spinoza Conatus]]"
     type: emerged-from
+    label: conatus-applied
   - target: "[[FOUR PILLARS]]"
     type: emerged-from
+    label: pedagogical-frame
   - target: "[[Cooperation Yields Agency]]"
     type: mirrors
+    label: shared-emergence
   - target: "[[Symbiotic Skills]]"
     type: enables
-  - target: "[[Quality]]"
+    label: skill-via-joy
+  - target: "[[Quality Manifesto]]"
     type: enables
+    label: quality-as-feedback
   - target: "[[Excellent Adventure]]"
     type: spawned
+    label: hilaritas-in-practice
   - target: "[[Striatum]]"
     type: deepens
+    label: neural-substrate
   - target: "[[Meadows and Music — Leverage Points]]"
     type: deepens
     label: structural-anatomy
@@ -37,6 +44,7 @@ links:
     label: threshold-fuel
   - target: "[[Tristitia Generator]]"
     type: spawned
+    label: spinozan-mirror
   - target: "[[Palace Philosophies]]"
     type: connects-to
     label: counterweight
@@ -83,7 +91,7 @@ The hilaritas generator applied to the creator's own practice has a single opera
 
 This is not sentimentality — it is the correct feedback loop. Platform analytics measure titillatio (narrow, localized response). Felt experience measures whether hilaritas actually occurred. A session that produced 10,000 views and left you depleted was a tristitia event. A session that produced 40 views and left you expanded was a hilaritas event. The metrics redirector insists on the right signal.
 
-See [[Quality]] for the full articulation of this principle.
+See [[Quality Manifesto]] for the full articulation of this principle.
 
 ## Leverage Points as Hilaritas Infrastructure
 

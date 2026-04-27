@@ -21,6 +21,12 @@ links:
     type: spawned
   - target: "[[Oblique Portrait]]"
     type: couples-with
+  - target: "[[Palace Quotes]]"
+    type: connects-to
+    label: quote-archive
+  - target: "[[Deposit Ceremony]]"
+    type: couples-with
+    label: harvest-deposit-pair
 ---
 
 # Harvest Ceremony

@@ -29,6 +29,9 @@ links:
   - target: "[[Piano String Inharmonicity]]"
     type: connects-to
     label: canonical-instance
+  - target: "[[Harmonicity and Inharmonicity]]"
+    type: deepens
+    label: tuning-timbre-parametrization
 forward_vector: "I want to become a concrete design specification for the Wavetable B editor — the function picker UI with parameter sliders, the analytic evaluation pathway replacing table lookups, and the morphing-in-physical-space behavior. I also want to be tested against the crystal synthesis project: are the photonic mode functions already parameterized in a way that plugs directly into this library model?"
 ---
 

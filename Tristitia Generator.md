@@ -19,6 +19,8 @@ links:
     label: tristitia-as-conatus
   - target: "[[FOUR PILLARS]]"
     type: connects-to
+  - target: "[[Identity Molting]]"
+    type: connects-to
 forward_vector: "I want to become the mirror of the Hilaritas Generator — a precise map of the conditions that reliably decrease power-to-act, so that what the generator produces becomes legible by contrast."
 ---
 

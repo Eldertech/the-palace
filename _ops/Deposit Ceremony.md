@@ -25,6 +25,12 @@ links:
   - target: "[[SCHEMA]]"
     type: connects-to
     label: "governed-by"
+  - target: "[[Four Pillars]]"
+    type: connects-to
+  - target: "[[Cooperation Yields Agency]]"
+    type: connects-to
+  - target: "[[Hilaritas Generator]]"
+    type: connects-to
 ---
 
 # Deposit Ceremony

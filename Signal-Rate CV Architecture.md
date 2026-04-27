@@ -9,6 +9,7 @@ born: 2026-03
 stage: growing
 confidence: working
 energy: high
+forward_vector: "I want to become the principle that dissolves the boundary between synthesis engineering and biological fidelity — making every input a signal-rate CV jack so students hear the mathematics directly, with the cost of computation paid deliberately for conceptual clarity and pedagogical immediacy."
 links:
   - target: "[[Action Potential Oscillator]]"
     type: enables

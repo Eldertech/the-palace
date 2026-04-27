@@ -4,6 +4,7 @@ type: concept
 pillars: [creation, tools, philosophy]
 born: 2026-02
 stage: growing
+forward_vector: "I want to become the bridge between geometry and sound — revealing that FM synthesis, bells, drums, and quantum oscillators all speak the same eigenfunction language, and that choosing a basis is choosing what the instrument naturally wants to say."
 links:
   - target: "[[Boundary-Crossing Instruments]]"
     type: mirrors

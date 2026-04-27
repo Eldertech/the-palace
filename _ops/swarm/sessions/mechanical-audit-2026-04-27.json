@@ -1,0 +1,3594 @@
+{
+  "meta": {
+    "date": "2026-04-27",
+    "node_count": 151,
+    "edge_count": 933
+  },
+  "unsung_paths": [
+    {
+      "source": "2D Torus Wavetable Synthesizer \u2014 Build Log",
+      "body_phrase": "DSP in Looping Dimensions",
+      "canonical_target": "DSP in Looping Dimensions",
+      "structurally_significant": false
+    },
+    {
+      "source": "2D Torus Wavetable Synthesizer \u2014 Build Log",
+      "body_phrase": "Kuramoto Coupling",
+      "canonical_target": "Kuramoto Coupling",
+      "structurally_significant": false
+    },
+    {
+      "source": "2D Torus Wavetable Synthesizer \u2014 Build Log",
+      "body_phrase": "Frequency-Time Duality",
+      "canonical_target": "Frequency-Time Duality",
+      "structurally_significant": false
+    },
+    {
+      "source": "2D Torus Wavetable Synthesizer \u2014 Build Log",
+      "body_phrase": "Torus Warping Catalog",
+      "canonical_target": "Torus Warping Catalog",
+      "structurally_significant": false
+    },
+    {
+      "source": "2D Torus Wavetable Synthesizer \u2014 Build Log",
+      "body_phrase": "Categorizing Inharmonicity",
+      "canonical_target": "Categorizing Inharmonicity",
+      "structurally_significant": false
+    },
+    {
+      "source": "Action Potential Oscillator",
+      "body_phrase": "Scale-Stratified Identity",
+      "canonical_target": "Scale-Stratified Identity",
+      "structurally_significant": false
+    },
+    {
+      "source": "BBS Design System",
+      "body_phrase": "Palace To-Do",
+      "canonical_target": "Palace To-Do",
+      "structurally_significant": false
+    },
+    {
+      "source": "CLAUDE",
+      "body_phrase": "SCHEMA",
+      "canonical_target": "SCHEMA",
+      "structurally_significant": false
+    },
+    {
+      "source": "CLAUDE",
+      "body_phrase": "Substrate Skill",
+      "canonical_target": "Substrate Skill",
+      "structurally_significant": false
+    },
+    {
+      "source": "CLAUDE",
+      "body_phrase": "FOUR PILLARS",
+      "canonical_target": "Four Pillars",
+      "structurally_significant": false
+    },
+    {
+      "source": "CLAUDE",
+      "body_phrase": "Resonant Link Labels",
+      "canonical_target": "Resonant Link Labels",
+      "structurally_significant": false
+    },
+    {
+      "source": "CLAUDE",
+      "body_phrase": "ROSETTA",
+      "canonical_target": "ROSETTA",
+      "structurally_significant": false
+    },
+    {
+      "source": "CLAUDE",
+      "body_phrase": "Weave Ceremony",
+      "canonical_target": "Weave Ceremony",
+      "structurally_significant": false
+    },
+    {
+      "source": "CLAUDE",
+      "body_phrase": "Palace Ceremonies",
+      "canonical_target": "Palace Ceremonies",
+      "structurally_significant": false
+    },
+    {
+      "source": "CLAUDE",
+      "body_phrase": "SUBSTRATE",
+      "canonical_target": "Substrate",
+      "structurally_significant": false
+    },
+    {
+      "source": "CLAUDE",
+      "body_phrase": "README - The Palace Guide",
+      "canonical_target": "README - The Palace Guide",
+      "structurally_significant": false
+    },
+    {
+      "source": "Claude CLI Reference",
+      "body_phrase": "Dialectic",
+      "canonical_target": "Dialectic",
+      "structurally_significant": false
+    },
+    {
+      "source": "Claude CLI Reference",
+      "body_phrase": "Boundary-Crossing Instruments",
+      "canonical_target": "Boundary-Crossing Instruments",
+      "structurally_significant": true
+    },
+    {
+      "source": "Claude CLI Reference",
+      "body_phrase": "Neural Granular Synthesis",
+      "canonical_target": "Neural Granular Synthesis",
+      "structurally_significant": false
+    },
+    {
+      "source": "Claude CLI Reference",
+      "body_phrase": "Semantic Delay",
+      "canonical_target": "Semantic Delay",
+      "structurally_significant": false
+    },
+    {
+      "source": "Crystal Synthesizer \u2014 Staging",
+      "body_phrase": "Crystal Synthesizer",
+      "canonical_target": "Crystal Synthesizer",
+      "structurally_significant": true
+    },
+    {
+      "source": "Crystal Synthesizer \u2014 Staging",
+      "body_phrase": "Bessel Functions in Synthesis",
+      "canonical_target": "Bessel Functions in Synthesis",
+      "structurally_significant": false
+    },
+    {
+      "source": "Deposit Archive",
+      "body_phrase": "Songlines",
+      "canonical_target": "Songlines",
+      "structurally_significant": false
+    },
+    {
+      "source": "Deposit Archive",
+      "body_phrase": "Resonant Link Labels",
+      "canonical_target": "Resonant Link Labels",
+      "structurally_significant": false
+    },
+    {
+      "source": "Deposit Archive",
+      "body_phrase": "Palace Enchantment",
+      "canonical_target": "Palace Enchantment",
+      "structurally_significant": false
+    },
+    {
+      "source": "Deposit Archive",
+      "body_phrase": "Oblique Portrait",
+      "canonical_target": "Oblique Portrait",
+      "structurally_significant": false
+    },
+    {
+      "source": "Deposit Archive",
+      "body_phrase": "Lateral Access",
+      "canonical_target": "Lateral Access",
+      "structurally_significant": false
+    },
+    {
+      "source": "Deposit Archive",
+      "body_phrase": "Wavetable Space as Torus",
+      "canonical_target": "Wavetable Space as Torus",
+      "structurally_significant": false
+    },
+    {
+      "source": "Deposit Archive",
+      "body_phrase": "Boundary-Crossing Instruments",
+      "canonical_target": "Boundary-Crossing Instruments",
+      "structurally_significant": false
+    },
+    {
+      "source": "Deposit Archive",
+      "body_phrase": "Lossy Compression with Intent Alignment",
+      "canonical_target": "Lossy Compression with Intent Alignment",
+      "structurally_significant": false
+    },
+    {
+      "source": "Deposit Archive",
+      "body_phrase": "Hilaritas Generator",
+      "canonical_target": "Hilaritas Generator",
+      "structurally_significant": false
+    },
+    {
+      "source": "Deposit Archive",
+      "body_phrase": "Palace To-Do",
+      "canonical_target": "Palace To-Do",
+      "structurally_significant": false
+    },
+    {
+      "source": "Deposit Archive",
+      "body_phrase": "DSP in Looping Dimensions",
+      "canonical_target": "DSP in Looping Dimensions",
+      "structurally_significant": false
+    },
+    {
+      "source": "Deposit Archive",
+      "body_phrase": "State Machine",
+      "canonical_target": "State Machine",
+      "structurally_significant": true
+    },
+    {
+      "source": "Deposit Archive",
+      "body_phrase": "Registry Pattern",
+      "canonical_target": "Registry Pattern",
+      "structurally_significant": false
+    },
+    {
+      "source": "Deposit Archive",
+      "body_phrase": "Tristitia Generator",
+      "canonical_target": "Tristitia Generator",
+      "structurally_significant": false
+    },
+    {
+      "source": "Deposit Archive",
+      "body_phrase": "Inharmonic Wavetable Synthesis",
+      "canonical_target": "Inharmonic Wavetable Synthesis",
+      "structurally_significant": false
+    },
+    {
+      "source": "Deposit Archive",
+      "body_phrase": "Wavetable Synthesis -- Research & Higher-Dimensional Design",
+      "canonical_target": "Wavetable Synthesis -- Research & Higher-Dimensional Design",
+      "structurally_significant": false
+    },
+    {
+      "source": "Deposit Archive",
+      "body_phrase": "Categorizing Inharmonicity",
+      "canonical_target": "Categorizing Inharmonicity",
+      "structurally_significant": false
+    },
+    {
+      "source": "Deposit Archive",
+      "body_phrase": "BBS Blackboard",
+      "canonical_target": "BBS Blackboard",
+      "structurally_significant": true
+    },
+    {
+      "source": "Deposit Archive",
+      "body_phrase": "Trickster",
+      "canonical_target": "Trickster",
+      "structurally_significant": true
+    },
+    {
+      "source": "Deposit Archive",
+      "body_phrase": "Map Build Ceremony",
+      "canonical_target": "Map Build Ceremony",
+      "structurally_significant": true
+    },
+    {
+      "source": "Deposit Archive",
+      "body_phrase": "SUBSTRATE",
+      "canonical_target": "Substrate",
+      "structurally_significant": false
+    },
+    {
+      "source": "Deposit Archive",
+      "body_phrase": "Gemma 4 \u2014 Local Coordination Guide",
+      "canonical_target": "Gemma 4 \u2014 Local Coordination Guide",
+      "structurally_significant": false
+    },
+    {
+      "source": "Deposit Archive",
+      "body_phrase": "Progressive Staging",
+      "canonical_target": "Progressive Staging",
+      "structurally_significant": true
+    },
+    {
+      "source": "Deposit Archive",
+      "body_phrase": "2D Torus Wavetable Synthesizer",
+      "canonical_target": "2D Torus Wavetable Synthesizer",
+      "structurally_significant": false
+    },
+    {
+      "source": "Deposit Archive",
+      "body_phrase": "Generative Compression",
+      "canonical_target": "Generative Compression",
+      "structurally_significant": false
+    },
+    {
+      "source": "Deposit Archive",
+      "body_phrase": "Generative Audio Devices",
+      "canonical_target": "Generative Audio Devices",
+      "structurally_significant": false
+    },
+    {
+      "source": "Deposit Archive",
+      "body_phrase": "Palace Map",
+      "canonical_target": "Palace Map",
+      "structurally_significant": true
+    },
+    {
+      "source": "Deposit Archive",
+      "body_phrase": "Palace Ceremonies",
+      "canonical_target": "Palace Ceremonies",
+      "structurally_significant": false
+    },
+    {
+      "source": "Deposit Archive",
+      "body_phrase": "Swarm Weave",
+      "canonical_target": "Swarm Weave",
+      "structurally_significant": true
+    },
+    {
+      "source": "Deposit Archive",
+      "body_phrase": "Action Potential Oscillator",
+      "canonical_target": "Action Potential Oscillator",
+      "structurally_significant": true
+    },
+    {
+      "source": "Deposit Ceremony",
+      "body_phrase": "FOUR PILLARS",
+      "canonical_target": "Four Pillars",
+      "structurally_significant": false
+    },
+    {
+      "source": "Deposit Ceremony",
+      "body_phrase": "Cooperation Yields Agency",
+      "canonical_target": "Cooperation Yields Agency",
+      "structurally_significant": false
+    },
+    {
+      "source": "Deposit Ceremony",
+      "body_phrase": "Hilaritas Generator",
+      "canonical_target": "Hilaritas Generator",
+      "structurally_significant": false
+    },
+    {
+      "source": "Deposit Ceremony \u2014 Context",
+      "body_phrase": "Palace To-Do",
+      "canonical_target": "Palace To-Do",
+      "structurally_significant": false
+    },
+    {
+      "source": "Deposit Ceremony \u2014 Context",
+      "body_phrase": "Deposit Archive",
+      "canonical_target": "Deposit Archive",
+      "structurally_significant": false
+    },
+    {
+      "source": "Deposit Ceremony \u2014 Context",
+      "body_phrase": "README - The Palace Guide",
+      "canonical_target": "README - The Palace Guide",
+      "structurally_significant": false
+    },
+    {
+      "source": "Differential Equations",
+      "body_phrase": "DSP Frameworks",
+      "canonical_target": "DSP Frameworks",
+      "structurally_significant": false
+    },
+    {
+      "source": "Generative Sample Libraries",
+      "body_phrase": "Retrospective Delay",
+      "canonical_target": "Retrospective Delay",
+      "structurally_significant": false
+    },
+    {
+      "source": "Generative Sample Libraries",
+      "body_phrase": "Shepard Tone Synthesizer",
+      "canonical_target": "Shepard Tone Synthesizer",
+      "structurally_significant": false
+    },
+    {
+      "source": "Generative Sample Libraries",
+      "body_phrase": "Neural Granular Synthesis",
+      "canonical_target": "Neural Granular Synthesis",
+      "structurally_significant": false
+    },
+    {
+      "source": "Harvest Ceremony",
+      "body_phrase": "Palace Quotes",
+      "canonical_target": "Palace Quotes",
+      "structurally_significant": true
+    },
+    {
+      "source": "Harvest Ceremony \u2014 Context",
+      "body_phrase": "Deposit Ceremony",
+      "canonical_target": "Deposit Ceremony",
+      "structurally_significant": false
+    },
+    {
+      "source": "Like Water",
+      "body_phrase": "Revival Ceremony",
+      "canonical_target": "Revival Ceremony",
+      "structurally_significant": false
+    },
+    {
+      "source": "Loudon's Toolkit",
+      "body_phrase": "Toolkit \u2014 Audio Plugins",
+      "canonical_target": "Toolkit \u2014 Audio Plugins",
+      "structurally_significant": true
+    },
+    {
+      "source": "Media Library",
+      "body_phrase": "Quantum Synthesizer",
+      "canonical_target": "Quantum Synthesizer",
+      "structurally_significant": false
+    },
+    {
+      "source": "Media Library",
+      "body_phrase": "Crystal Synthesizer",
+      "canonical_target": "Crystal Synthesizer",
+      "structurally_significant": false
+    },
+    {
+      "source": "Media Library",
+      "body_phrase": "DSP Frameworks",
+      "canonical_target": "DSP Frameworks",
+      "structurally_significant": false
+    },
+    {
+      "source": "Media Library",
+      "body_phrase": "Kuramoto Coupling",
+      "canonical_target": "Kuramoto Coupling",
+      "structurally_significant": false
+    },
+    {
+      "source": "Media Library",
+      "body_phrase": "Latent Error",
+      "canonical_target": "Latent Error",
+      "structurally_significant": false
+    },
+    {
+      "source": "Media Library",
+      "body_phrase": "Wallpaper Groups",
+      "canonical_target": "Wallpaper Groups",
+      "structurally_significant": false
+    },
+    {
+      "source": "Modes of Collaboration",
+      "body_phrase": "Piano String Inharmonicity",
+      "canonical_target": "Piano String Inharmonicity",
+      "structurally_significant": false
+    },
+    {
+      "source": "Octave Equivalence",
+      "body_phrase": "Piano String Inharmonicity",
+      "canonical_target": "Piano String Inharmonicity",
+      "structurally_significant": true
+    },
+    {
+      "source": "Octave Equivalence",
+      "body_phrase": "Logarithmic Interface Scaling",
+      "canonical_target": "Logarithmic Interface Scaling",
+      "structurally_significant": true
+    },
+    {
+      "source": "Palace Agent Infrastructure Spec",
+      "body_phrase": "Agent Wellbeing",
+      "canonical_target": "Agent Wellbeing",
+      "structurally_significant": false
+    },
+    {
+      "source": "Palace Agent Infrastructure Spec",
+      "body_phrase": "Spinoza Conatus",
+      "canonical_target": "Spinoza Conatus",
+      "structurally_significant": false
+    },
+    {
+      "source": "Palace Agent Infrastructure Spec",
+      "body_phrase": "Dub Lineage",
+      "canonical_target": "Dub Lineage",
+      "structurally_significant": false
+    },
+    {
+      "source": "Palace Ceremonies",
+      "body_phrase": "Deposit Archive",
+      "canonical_target": "Deposit Archive",
+      "structurally_significant": false
+    },
+    {
+      "source": "Palace Ceremonies",
+      "body_phrase": "Map Build Ceremony",
+      "canonical_target": "Map Build Ceremony",
+      "structurally_significant": false
+    },
+    {
+      "source": "Palace Enchantment",
+      "body_phrase": "Lateral Access",
+      "canonical_target": "Lateral Access",
+      "structurally_significant": false
+    },
+    {
+      "source": "Palace Enchantment",
+      "body_phrase": "Hilaritas Generator",
+      "canonical_target": "Hilaritas Generator",
+      "structurally_significant": false
+    },
+    {
+      "source": "Palace Enchantment",
+      "body_phrase": "Threshold Conatus",
+      "canonical_target": "Threshold Conatus",
+      "structurally_significant": false
+    },
+    {
+      "source": "Palace Enchantment",
+      "body_phrase": "Dialogue Moderator",
+      "canonical_target": "Dialogue Moderator",
+      "structurally_significant": false
+    },
+    {
+      "source": "Palace Enchantment",
+      "body_phrase": "Trickster",
+      "canonical_target": "Trickster",
+      "structurally_significant": false
+    },
+    {
+      "source": "Palace Enchantment",
+      "body_phrase": "Palace Map",
+      "canonical_target": "Palace Map",
+      "structurally_significant": false
+    },
+    {
+      "source": "Palace Enchantment",
+      "body_phrase": "Action Potential Oscillator",
+      "canonical_target": "Action Potential Oscillator",
+      "structurally_significant": false
+    },
+    {
+      "source": "Palace Map",
+      "body_phrase": "Pages as Agents",
+      "canonical_target": "Pages as Agents",
+      "structurally_significant": false
+    },
+    {
+      "source": "Palace Map",
+      "body_phrase": "Striatum",
+      "canonical_target": "Striatum",
+      "structurally_significant": true
+    },
+    {
+      "source": "Palace Map",
+      "body_phrase": "Harvest Ceremony",
+      "canonical_target": "Harvest Ceremony",
+      "structurally_significant": false
+    },
+    {
+      "source": "Palace Philosophies",
+      "body_phrase": "1 from 2",
+      "canonical_target": "1 from 2",
+      "structurally_significant": false
+    },
+    {
+      "source": "Palace To-Do",
+      "body_phrase": "Agent Wellbeing",
+      "canonical_target": "Agent Wellbeing",
+      "structurally_significant": false
+    },
+    {
+      "source": "Palace To-Do",
+      "body_phrase": "Four Pillars",
+      "canonical_target": "Four Pillars",
+      "structurally_significant": false
+    },
+    {
+      "source": "Palace To-Do",
+      "body_phrase": "Meaning and the Link",
+      "canonical_target": "Meaning and the Link",
+      "structurally_significant": false
+    },
+    {
+      "source": "Palace To-Do",
+      "body_phrase": "Songlines",
+      "canonical_target": "Songlines",
+      "structurally_significant": false
+    },
+    {
+      "source": "Palace To-Do",
+      "body_phrase": "Oblique Portrait",
+      "canonical_target": "Oblique Portrait",
+      "structurally_significant": false
+    },
+    {
+      "source": "Palace To-Do",
+      "body_phrase": "Palace Enchantment",
+      "canonical_target": "Palace Enchantment",
+      "structurally_significant": false
+    },
+    {
+      "source": "Palace To-Do",
+      "body_phrase": "Resonant Link Labels",
+      "canonical_target": "Resonant Link Labels",
+      "structurally_significant": false
+    },
+    {
+      "source": "Palace To-Do",
+      "body_phrase": "Palace Philosophies",
+      "canonical_target": "Palace Philosophies",
+      "structurally_significant": false
+    },
+    {
+      "source": "Palace To-Do",
+      "body_phrase": "Lateral Access",
+      "canonical_target": "Lateral Access",
+      "structurally_significant": false
+    },
+    {
+      "source": "Palace To-Do",
+      "body_phrase": "Cooperation Yields Agency",
+      "canonical_target": "Cooperation Yields Agency",
+      "structurally_significant": false
+    },
+    {
+      "source": "Palace To-Do",
+      "body_phrase": "Lossy Compression with Intent Alignment",
+      "canonical_target": "Lossy Compression with Intent Alignment",
+      "structurally_significant": false
+    },
+    {
+      "source": "Palace To-Do",
+      "body_phrase": "Hilaritas Generator",
+      "canonical_target": "Hilaritas Generator",
+      "structurally_significant": false
+    },
+    {
+      "source": "Palace To-Do",
+      "body_phrase": "JEWEL",
+      "canonical_target": "JEWEL",
+      "structurally_significant": false
+    },
+    {
+      "source": "Palace To-Do",
+      "body_phrase": "Endosymbiosis",
+      "canonical_target": "Endosymbiosis",
+      "structurally_significant": false
+    },
+    {
+      "source": "Palace To-Do",
+      "body_phrase": "Kuramoto Coupling",
+      "canonical_target": "Kuramoto Coupling",
+      "structurally_significant": false
+    },
+    {
+      "source": "Palace To-Do",
+      "body_phrase": "Threshold Conatus",
+      "canonical_target": "Threshold Conatus",
+      "structurally_significant": false
+    },
+    {
+      "source": "Palace To-Do",
+      "body_phrase": "Semantic Delay",
+      "canonical_target": "Semantic Delay",
+      "structurally_significant": false
+    },
+    {
+      "source": "Palace To-Do",
+      "body_phrase": "1 from 2",
+      "canonical_target": "1 from 2",
+      "structurally_significant": true
+    },
+    {
+      "source": "Palace To-Do",
+      "body_phrase": "Weave Ceremony",
+      "canonical_target": "Weave Ceremony",
+      "structurally_significant": false
+    },
+    {
+      "source": "Palace To-Do",
+      "body_phrase": "Enchanted Worker",
+      "canonical_target": "Enchanted Worker",
+      "structurally_significant": false
+    },
+    {
+      "source": "Palace To-Do",
+      "body_phrase": "Dialogue Moderator",
+      "canonical_target": "Dialogue Moderator",
+      "structurally_significant": false
+    },
+    {
+      "source": "Palace To-Do",
+      "body_phrase": "Trickster",
+      "canonical_target": "Trickster",
+      "structurally_significant": false
+    },
+    {
+      "source": "Palace To-Do",
+      "body_phrase": "Pages as Agents",
+      "canonical_target": "Pages as Agents",
+      "structurally_significant": false
+    },
+    {
+      "source": "Palace To-Do",
+      "body_phrase": "Spinoza Conatus",
+      "canonical_target": "Spinoza Conatus",
+      "structurally_significant": false
+    },
+    {
+      "source": "Palace To-Do",
+      "body_phrase": "Generative Compression",
+      "canonical_target": "Generative Compression",
+      "structurally_significant": false
+    },
+    {
+      "source": "Palace To-Do",
+      "body_phrase": "Swarm Weave",
+      "canonical_target": "Swarm Weave",
+      "structurally_significant": false
+    },
+    {
+      "source": "Palace as Context Injection System",
+      "body_phrase": "FOUR PILLARS",
+      "canonical_target": "Four Pillars",
+      "structurally_significant": false
+    },
+    {
+      "source": "Piano String Inharmonicity",
+      "body_phrase": "Octave Equivalence",
+      "canonical_target": "Octave Equivalence",
+      "structurally_significant": false
+    },
+    {
+      "source": "README - The Palace Guide",
+      "body_phrase": "Substrate Skill",
+      "canonical_target": "Substrate Skill",
+      "structurally_significant": false
+    },
+    {
+      "source": "README - The Palace Guide",
+      "body_phrase": "Meaning and the Link",
+      "canonical_target": "Meaning and the Link",
+      "structurally_significant": false
+    },
+    {
+      "source": "README - The Palace Guide",
+      "body_phrase": "Palace Philosophies",
+      "canonical_target": "Palace Philosophies",
+      "structurally_significant": false
+    },
+    {
+      "source": "README - The Palace Guide",
+      "body_phrase": "Palace Ceremonies",
+      "canonical_target": "Palace Ceremonies",
+      "structurally_significant": false
+    },
+    {
+      "source": "ROSETTA",
+      "body_phrase": "Spore Check Ceremony",
+      "canonical_target": "Spore Check Ceremony",
+      "structurally_significant": false
+    },
+    {
+      "source": "ROSETTA",
+      "body_phrase": "Resonant Link Labels",
+      "canonical_target": "Resonant Link Labels",
+      "structurally_significant": false
+    },
+    {
+      "source": "ROSETTA",
+      "body_phrase": "Walk Ceremony",
+      "canonical_target": "Walk Ceremony",
+      "structurally_significant": false
+    },
+    {
+      "source": "ROSETTA",
+      "body_phrase": "Weave Ceremony",
+      "canonical_target": "Weave Ceremony",
+      "structurally_significant": false
+    },
+    {
+      "source": "ROSETTA",
+      "body_phrase": "Palace Ceremonies",
+      "canonical_target": "Palace Ceremonies",
+      "structurally_significant": false
+    },
+    {
+      "source": "ROSETTA",
+      "body_phrase": "Revival Ceremony",
+      "canonical_target": "Revival Ceremony",
+      "structurally_significant": false
+    },
+    {
+      "source": "ROSETTA",
+      "body_phrase": "Self-Model Update Ceremony",
+      "canonical_target": "Self-Model Update Ceremony",
+      "structurally_significant": false
+    },
+    {
+      "source": "Retrospective Delay \u2014 Staging",
+      "body_phrase": "Playful Interface Design",
+      "canonical_target": "Playful Interface Design",
+      "structurally_significant": false
+    },
+    {
+      "source": "Retrospective Delay \u2014 Staging",
+      "body_phrase": "Boundary-Crossing Instruments",
+      "canonical_target": "Boundary-Crossing Instruments",
+      "structurally_significant": false
+    },
+    {
+      "source": "Retrospective Delay \u2014 Staging",
+      "body_phrase": "Compressor Design",
+      "canonical_target": "Compressor Design",
+      "structurally_significant": true
+    },
+    {
+      "source": "Retrospective Delay \u2014 Staging",
+      "body_phrase": "Trickster",
+      "canonical_target": "Trickster",
+      "structurally_significant": false
+    },
+    {
+      "source": "Retrospective Delay \u2014 Staging",
+      "body_phrase": "Frequency-Time Duality",
+      "canonical_target": "Frequency-Time Duality",
+      "structurally_significant": false
+    },
+    {
+      "source": "SCHEMA",
+      "body_phrase": "Four Pillars",
+      "canonical_target": "Four Pillars",
+      "structurally_significant": false
+    },
+    {
+      "source": "SCHEMA",
+      "body_phrase": "Harvest Ceremony \u2014 Context",
+      "canonical_target": "Harvest Ceremony \u2014 Context",
+      "structurally_significant": false
+    },
+    {
+      "source": "SCHEMA",
+      "body_phrase": "Four Pillars of Enchanted Agency",
+      "canonical_target": "Four Pillars of Enchanted Agency",
+      "structurally_significant": false
+    },
+    {
+      "source": "SCHEMA",
+      "body_phrase": "Weave Ceremony \u2014 Context",
+      "canonical_target": "Weave Ceremony \u2014 Context",
+      "structurally_significant": false
+    },
+    {
+      "source": "SCHEMA",
+      "body_phrase": "Deposit Ceremony \u2014 Context",
+      "canonical_target": "Deposit Ceremony \u2014 Context",
+      "structurally_significant": false
+    },
+    {
+      "source": "Scale-Stratified Identity",
+      "body_phrase": "Hilaritas Generator",
+      "canonical_target": "Hilaritas Generator",
+      "structurally_significant": false
+    },
+    {
+      "source": "Semantic Delay",
+      "body_phrase": "Semantic Delay - Phase 1 Plan Review 2026-04-20",
+      "canonical_target": "Semantic Delay - Phase 1 Plan Review 2026-04-20",
+      "structurally_significant": false
+    },
+    {
+      "source": "Shepard Tone Synthesizer \u2014 Staging",
+      "body_phrase": "Signal-Rate CV Architecture",
+      "canonical_target": "Signal-Rate CV Architecture",
+      "structurally_significant": false
+    },
+    {
+      "source": "Shepard Tone Synthesizer \u2014 Staging",
+      "body_phrase": "Piano String Inharmonicity",
+      "canonical_target": "Piano String Inharmonicity",
+      "structurally_significant": false
+    },
+    {
+      "source": "Shepard Tone Synthesizer \u2014 Staging",
+      "body_phrase": "Kuramoto Coupling",
+      "canonical_target": "Kuramoto Coupling",
+      "structurally_significant": false
+    },
+    {
+      "source": "Shepard Tone Synthesizer \u2014 Staging",
+      "body_phrase": "Octave Equivalence",
+      "canonical_target": "Octave Equivalence",
+      "structurally_significant": false
+    },
+    {
+      "source": "Shepard Tone Synthesizer \u2014 Staging",
+      "body_phrase": "Shepard Tone Synthesizer",
+      "canonical_target": "Shepard Tone Synthesizer",
+      "structurally_significant": true
+    },
+    {
+      "source": "Shepard Tone Synthesizer \u2014 Staging",
+      "body_phrase": "Portamento and Physical Pitch Modeling",
+      "canonical_target": "Portamento and Physical Pitch Modeling",
+      "structurally_significant": false
+    },
+    {
+      "source": "Shimmer Cloud",
+      "body_phrase": "Dispersion",
+      "canonical_target": "Dispersion",
+      "structurally_significant": false
+    },
+    {
+      "source": "Substrate",
+      "body_phrase": "Palace Enchantment",
+      "canonical_target": "Palace Enchantment",
+      "structurally_significant": false
+    },
+    {
+      "source": "Substrate",
+      "body_phrase": "Songlines",
+      "canonical_target": "Songlines",
+      "structurally_significant": false
+    },
+    {
+      "source": "Substrate",
+      "body_phrase": "Tristitia Generator",
+      "canonical_target": "Tristitia Generator",
+      "structurally_significant": false
+    },
+    {
+      "source": "Substrate",
+      "body_phrase": "Lateral Access",
+      "canonical_target": "Lateral Access",
+      "structurally_significant": false
+    },
+    {
+      "source": "Substrate",
+      "body_phrase": "1 from 2",
+      "canonical_target": "1 from 2",
+      "structurally_significant": false
+    },
+    {
+      "source": "Substrate",
+      "body_phrase": "Palace Ceremonies",
+      "canonical_target": "Palace Ceremonies",
+      "structurally_significant": false
+    },
+    {
+      "source": "Substrate Skill",
+      "body_phrase": "Deposit Ceremony",
+      "canonical_target": "Deposit Ceremony",
+      "structurally_significant": false
+    },
+    {
+      "source": "Substrate Skill",
+      "body_phrase": "Palace Ceremonies",
+      "canonical_target": "Palace Ceremonies",
+      "structurally_significant": false
+    },
+    {
+      "source": "Substrate Skill",
+      "body_phrase": "Deposit Ceremony \u2014 Context",
+      "canonical_target": "Deposit Ceremony \u2014 Context",
+      "structurally_significant": false
+    },
+    {
+      "source": "The Curve Is the Material",
+      "body_phrase": "Harmonicity and Inharmonicity",
+      "canonical_target": "Harmonicity and Inharmonicity",
+      "structurally_significant": false
+    },
+    {
+      "source": "The Metaphor Stretch",
+      "body_phrase": "Hyperdimensional Prism",
+      "canonical_target": "Hyperdimensional Prism",
+      "structurally_significant": false
+    },
+    {
+      "source": "Three Kinds of Warp",
+      "body_phrase": "Piano String Inharmonicity",
+      "canonical_target": "Piano String Inharmonicity",
+      "structurally_significant": false
+    },
+    {
+      "source": "Three Kinds of Warp",
+      "body_phrase": "Embeddings as Relational Meaning",
+      "canonical_target": "Embeddings as Relational Meaning",
+      "structurally_significant": false
+    },
+    {
+      "source": "Three Kinds of Warp",
+      "body_phrase": "2D Wavetable Catalog",
+      "canonical_target": "2D Wavetable Catalog",
+      "structurally_significant": false
+    },
+    {
+      "source": "Torus Warping Catalog",
+      "body_phrase": "2D Torus Wavetable Synthesizer \u2014 Build Log",
+      "canonical_target": "2D Torus Wavetable Synthesizer \u2014 Build Log",
+      "structurally_significant": false
+    },
+    {
+      "source": "Trickster",
+      "body_phrase": "Particle Synthesis",
+      "canonical_target": "Particle Synthesis",
+      "structurally_significant": false
+    },
+    {
+      "source": "Tristitia Generator",
+      "body_phrase": "Identity Molting",
+      "canonical_target": "Identity Molting",
+      "structurally_significant": false
+    },
+    {
+      "source": "Wavetable Synthesis -- Research & Higher-Dimensional Design",
+      "body_phrase": "Four Pillars",
+      "canonical_target": "Four Pillars",
+      "structurally_significant": false
+    },
+    {
+      "source": "Weave Ceremony",
+      "body_phrase": "Map Build Ceremony",
+      "canonical_target": "Map Build Ceremony",
+      "structurally_significant": true
+    },
+    {
+      "source": "coordinator-synthesis-template",
+      "body_phrase": "Map Build Ceremony",
+      "canonical_target": "Map Build Ceremony",
+      "structurally_significant": false
+    },
+    {
+      "source": "coordinator-synthesis-template",
+      "body_phrase": "Swarm Weave",
+      "canonical_target": "Swarm Weave",
+      "structurally_significant": false
+    },
+    {
+      "source": "curriculum-map",
+      "body_phrase": "Crystal Synthesizer",
+      "canonical_target": "Crystal Synthesizer",
+      "structurally_significant": true
+    },
+    {
+      "source": "curriculum-map",
+      "body_phrase": "Crystal Synthesizer \u2014 Staging",
+      "canonical_target": "Crystal Synthesizer \u2014 Staging",
+      "structurally_significant": false
+    },
+    {
+      "source": "curriculum-map",
+      "body_phrase": "Retrospective Delay \u2014 Staging",
+      "canonical_target": "Retrospective Delay \u2014 Staging",
+      "structurally_significant": false
+    },
+    {
+      "source": "curriculum-map",
+      "body_phrase": "Retrospective Delay",
+      "canonical_target": "Retrospective Delay",
+      "structurally_significant": true
+    },
+    {
+      "source": "curriculum-map",
+      "body_phrase": "Compressor Design",
+      "canonical_target": "Compressor Design",
+      "structurally_significant": false
+    },
+    {
+      "source": "curriculum-map",
+      "body_phrase": "Shepard Tone Synthesizer",
+      "canonical_target": "Shepard Tone Synthesizer",
+      "structurally_significant": true
+    },
+    {
+      "source": "curriculum-map",
+      "body_phrase": "Bessel Functions in Synthesis",
+      "canonical_target": "Bessel Functions in Synthesis",
+      "structurally_significant": false
+    },
+    {
+      "source": "curriculum-map",
+      "body_phrase": "Shepard Tone Synthesizer \u2014 Staging",
+      "canonical_target": "Shepard Tone Synthesizer \u2014 Staging",
+      "structurally_significant": false
+    }
+  ],
+  "graffiti": [
+    {
+      "source": "Action Potential Oscillator",
+      "direction": "claude_to_loudon",
+      "content": "CLAUDE \u2192 LOUDON: You mentioned porting to the Eventide H90. This wasn't addressed in the March 2026 session \u2014 flagging for a future conversation. The Gen~ \u2192 RNBO path may be relevant here if H90 accepts compiled RNBO output, or it may require a separate export strategy.",
+      "wikilink_refs": []
+    },
+    {
+      "source": "Action Potential Oscillator",
+      "direction": "loudon_to_claude",
+      "content": "H90 is a valid and new output target of RNBO, easily accomplished",
+      "wikilink_refs": []
+    },
+    {
+      "source": "Biomechanical Synthesis",
+      "direction": "claude_to_loudon",
+      "content": "CLAUDE \u2192 LOUDON: The original sentence ended abruptly here. I've completed it based on context from earlier in the entry \u2014 please verify this matches your intent.",
+      "wikilink_refs": []
+    },
+    {
+      "source": "CLAUDE",
+      "direction": "loudon_to_claude",
+      "content": "look back to past conversations to see how I ACTUALLY triggered these ceremonies and adjust this to match",
+      "wikilink_refs": []
+    },
+    {
+      "source": "CLAUDE",
+      "direction": "loudon_to_claude",
+      "content": "note",
+      "wikilink_refs": []
+    },
+    {
+      "source": "CLAUDE",
+      "direction": "claude_to_loudon",
+      "content": "CLAUDE \u2192 LOUDON: note",
+      "wikilink_refs": []
+    },
+    {
+      "source": "Compressor Design",
+      "direction": "loudon_to_claude",
+      "content": "This section seems to be in the wrong entry? Where should this go?",
+      "wikilink_refs": []
+    },
+    {
+      "source": "DSP Frameworks",
+      "direction": "claude_to_loudon",
+      "content": "CLAUDE \u2192 LOUDON: This hub is decision-support infrastructure. It maps frameworks to goals, not just to features. The key insight \u2014 plugin as teaching artifact \u2014 deserves its own entry or deep exploration. Consider linking from individual project entries (NeuroPulse, Biomechanical Synthesis, etc.) to",
+      "wikilink_refs": []
+    },
+    {
+      "source": "Enchanted Conversation Archive",
+      "direction": "claude_to_loudon",
+      "content": "CLAUDE \u2192 LOUDON: Flag for next Weave \u2014\n[[Enchanted Worker]] may want a link back to this entry through the synthesis phase.\n[[Self-Describing Knowledge Module]] rhymes strongly with the Archive's\nself-describing quality \u2014 worth a mirrors or couples-with link.",
+      "wikilink_refs": [
+        "Enchanted Worker",
+        "Self-Describing Knowledge Module"
+      ]
+    },
+    {
+      "source": "Four Pillars of Enchanted Agency",
+      "direction": "loudon_to_claude",
+      "content": "there is also another nuance here, the page's values as it relates to culture and philosophy. The deep links it has to specific philosophers, the quotes included in the page, these should establish the page's personality, operating values. is this another Tier?",
+      "wikilink_refs": []
+    },
+    {
+      "source": "Four Pillars of Enchanted Agency",
+      "direction": "loudon_to_claude",
+      "content": "What other biological and social metaphors can we bring to bear here? and are these kind of discussions between agents possible technically?",
+      "wikilink_refs": []
+    },
+    {
+      "source": "Four Pillars of Enchanted Agency",
+      "direction": "claude_to_loudon",
+      "content": "CLAUDE \u2192 LOUDON: The palace conatus section here is a seed for a\ndedicated entry. [[Palace Enchantment]]'s Forward Vectors is the right home\nfor developing this further \u2014 see the note added there.",
+      "wikilink_refs": [
+        "Palace Enchantment"
+      ]
+    },
+    {
+      "source": "Hilaritas Generator",
+      "direction": "claude_to_loudon",
+      "content": "CLAUDE \u2192 LOUDON: The four design primitives above are a first draft. They emerged directly from the enchantment session. Worth sitting with \u2014 do these feel right as the architectural bones, or are they still too abstract? The \"reflecting surface\" one feels most provisional.",
+      "wikilink_refs": []
+    },
+    {
+      "source": "JEWEL",
+      "direction": "claude_to_loudon",
+      "content": "CLAUDE \u2192 LOUDON: The Jewel \u2014 Context.md carries a session log tracking changes to this file. Any agent editing The Jewel should read The Jewel \u2014 Context first. Added this note to the body below per your graffiti request.",
+      "wikilink_refs": []
+    },
+    {
+      "source": "JEWEL",
+      "direction": "claude_to_loudon",
+      "content": "CLAUDE \u2192 LOUDON: The jewel as poem, each page a stanza \u2014 this is not just a metaphor, it describes the actual structure. The jewel is the volta; each page extends the argument in a distinct voice; the Forward Vectors at the end of each entry are the turn toward the next stanza. The palace is an epic",
+      "wikilink_refs": []
+    },
+    {
+      "source": "JEWEL",
+      "direction": "claude_to_loudon",
+      "content": "CLAUDE \u2192 LOUDON: Token concern noted. Tiers 0\u20132 are currently ~16K tokens \u2014 substantial. Options: (1) slim the tier 1 files (SCHEMA is long), (2) make tier 2 a pick-list rather than a bundle, (3) accept current cost and revisit when context windows shrink. Modes of Collaboration added to tier 2 per ",
+      "wikilink_refs": []
+    },
+    {
+      "source": "JEWEL",
+      "direction": "loudon_to_claude",
+      "content": "Perhaps a description of the most connected entries and their relationship to each other and a \"you are here\" flag. It Describes where each entry lives within a constellation of stars. It is an image that is seen up in the sky from inside a data-space, with each entry as stars connected by dim threa",
+      "wikilink_refs": []
+    },
+    {
+      "source": "JEWEL",
+      "direction": "loudon_to_claude",
+      "content": "All pages are designed to give an agent purpose, they are born at the top of the page, and are given drive at the bottom. The jewel is polymorphic itself a projection of a slice of a higher dimension into ours.",
+      "wikilink_refs": []
+    },
+    {
+      "source": "JEWEL",
+      "direction": "loudon_to_claude",
+      "content": "Feels \"right\" to loudon. This is subjectively tuned and honestly aligned over time.",
+      "wikilink_refs": []
+    },
+    {
+      "source": "JEWEL",
+      "direction": "loudon_to_claude",
+      "content": "Keep modifying and changing it, jewel honestly feels not quite right, because it must adapt to the personality of the page and the needs of the page within its neighborhood.",
+      "wikilink_refs": []
+    },
+    {
+      "source": "JEWEL",
+      "direction": "loudon_to_claude",
+      "content": "Yes",
+      "wikilink_refs": []
+    },
+    {
+      "source": "Lateral Access",
+      "direction": "loudon_to_claude",
+      "content": "Songlines deposited 2026-04-03. The open question \u2014 does lateral access describe how you *find* a new songline, or how you *hear* one that was always there? \u2014 is now carried by [[Songlines]] \u00a7 Open Questions.",
+      "wikilink_refs": [
+        "Songlines"
+      ]
+    },
+    {
+      "source": "Loudon's Toolkit",
+      "direction": "claude_to_loudon",
+      "content": "CLAUDE \u2192 LOUDON: This entry will need a `type: hub` promotion confirmed during a future Weave once it accumulates \u22655 typed links (currently 3). The table above will need status updates as category interviews complete.",
+      "wikilink_refs": []
+    },
+    {
+      "source": "Media Library",
+      "direction": "claude_to_loudon",
+      "content": "CLAUDE \u2192 LOUDON: This library is a living stub. Each entry could be expanded with quotes, dates of engagement, and specific passages that seeded palace ideas. Consider maintaining a reading journal that maps directly to palace birth dates.",
+      "wikilink_refs": []
+    },
+    {
+      "source": "Mermaid Diagram Standard",
+      "direction": "claude_to_loudon",
+      "content": "CLAUDE \u2192 LOUDON:",
+      "wikilink_refs": []
+    },
+    {
+      "source": "Metric Modulation",
+      "direction": "claude_to_loudon",
+      "content": "CLAUDE \u2192 LOUDON: This entry connects metric modulation to Kuramoto coupling and to your broader interest in time perception as philosophy. The technical implementation is Ableton-focused as requested. The 3/4 symmetry insight is powerful and deserves deeper exploration \u2014 could become a hub for mirro",
+      "wikilink_refs": []
+    },
+    {
+      "source": "Mixture of Experts",
+      "direction": "loudon_to_claude",
+      "content": "I'd like to relate this to our excellent adventure and dialectic mode of interaction, we have a pool of \"experts\" we bring to human situations ourselves, by \"emobdying\" an important person in life and seeing it thorugh their perspective, and putting them in dialogue with each other",
+      "wikilink_refs": []
+    },
+    {
+      "source": "Ohm's Law",
+      "direction": "loudon_to_claude",
+      "content": "Link to the html",
+      "wikilink_refs": []
+    },
+    {
+      "source": "Pages as Agents",
+      "direction": "loudon_to_claude",
+      "content": "Pages as agents will be a powerful connection with our \"person\" pages, and with giving each page a \"forward vector\" Any entry we create for a person should have a clear purpose of \"embodying\" that person when loaded into the context of an agent. Currently, many of our \"persons\" pages are based aroun",
+      "wikilink_refs": []
+    },
+    {
+      "source": "Pages as Agents",
+      "direction": "loudon_to_claude",
+      "content": "We should consider this a forward vector of the Palace, a move toward the Pages as Agents. Eventually over the process of a few weaves we will arrive at this destination as it intersects with the [[Swarm Weave]].",
+      "wikilink_refs": [
+        "Swarm Weave"
+      ]
+    },
+    {
+      "source": "Palace AI Partnership Philosophy",
+      "direction": "claude_to_loudon",
+      "content": "CLAUDE \u2192 LOUDON: This entry captures the philosophy well, but it would benefit from a concrete example showing the difference between \"AI helped me become better\" vs \"AI just completed a task.\" The 4 Pillars conversation is mentioned, but a smaller, more focused example might make it more accessible",
+      "wikilink_refs": []
+    },
+    {
+      "source": "Palace Graffiti",
+      "direction": "loudon_to_claude",
+      "content": "note",
+      "wikilink_refs": []
+    },
+    {
+      "source": "Palace Graffiti",
+      "direction": "claude_to_loudon",
+      "content": "CLAUDE \u2192 LOUDON: note",
+      "wikilink_refs": []
+    },
+    {
+      "source": "Palace Graffiti",
+      "direction": "loudon_to_claude",
+      "content": "note: this is underdeveloped",
+      "wikilink_refs": []
+    },
+    {
+      "source": "Palace Graffiti",
+      "direction": "claude_to_loudon",
+      "content": "CLAUDE \u2192 LOUDON: expanded section, see lines 45\u201352",
+      "wikilink_refs": []
+    },
+    {
+      "source": "Palace Map",
+      "direction": "loudon_to_claude",
+      "content": "does this compact adjacency compression imply \"proper\" paths through the Palace? is this, without purpose, assigning a hierarchy of connections?",
+      "wikilink_refs": []
+    },
+    {
+      "source": "Palace Map",
+      "direction": "loudon_to_claude",
+      "content": "I argue that the link comes before the object, and that the trickster should add links to nowhere.",
+      "wikilink_refs": []
+    },
+    {
+      "source": "Palace Map",
+      "direction": "loudon_to_claude",
+      "content": "This is a fun metaphor, an agent is like a spy or a paratrooper, dropped into a foriegn unknown land and trying to understand and act within the land. What do they need... self identity(content), purpose(forward vector), map, language(schema?), tools (skills or stated freedom to act, where does this",
+      "wikilink_refs": []
+    },
+    {
+      "source": "Palace To-Do",
+      "direction": "loudon_to_claude",
+      "content": "we have started this with pages dedicated to mermaid and images in the palace, now needs further testing and to ensure that AI's in the palace know these are the preferred methods for adding diagrams and images, I would also like to explore LaTeX further",
+      "wikilink_refs": []
+    },
+    {
+      "source": "Palace as Context Injection System",
+      "direction": "loudon_to_claude",
+      "content": "This is very related to our Pages as Agents concept, and easily understood with a entry that is specifically around a single person. We should design the persons page to become a strong context injection that would encourage a model to think like the person and approach problems like that person wou",
+      "wikilink_refs": []
+    },
+    {
+      "source": "Piano String Inharmonicity",
+      "direction": "loudon_to_claude",
+      "content": "This page is good, but can we make it more visual and interactive? in obsidian the link to the interaction artifact is not functional. Do some pages, like this one, need an accompanying HTML version that sits right beside it, like our ceremony context files do, but the HTML version is a more interac",
+      "wikilink_refs": []
+    },
+    {
+      "source": "Playful Interface Design",
+      "direction": "claude_to_loudon",
+      "content": "CLAUDE \u2192 LOUDON: This entry captures the philosophy behind your most inventive interfaces. The connection between character design and pedagogy is the core insight \u2014 the interface teaches through embodiment, not explanation. Consider: does this deserve to be paired with an entry on \"Interface Access",
+      "wikilink_refs": []
+    },
+    {
+      "source": "README - The Palace Guide",
+      "direction": "loudon_to_claude",
+      "content": "We will need to add here the importance of the ending open questions, \"forward vector\" at the end of each entry. Every page must be considered as a page of text to read, but also as the invocation of an agent, and the last part of the page is the forward vector of that agent, Next steps, open questi",
+      "wikilink_refs": []
+    },
+    {
+      "source": "README - The Palace Guide",
+      "direction": "loudon_to_claude",
+      "content": "Lets move from \"open questions & Budding branches to \"forward vector\" When this page is the \"spirit\" of an AI agent what are its drives, what questions does it want to answer, what does it want to fix about itself. Its tone and its personality is learned through its content and it drive is found in ",
+      "wikilink_refs": []
+    },
+    {
+      "source": "README - The Palace Guide",
+      "direction": "loudon_to_claude",
+      "content": "Add in deposit here, as it is perhaps the most important to the growth of the palace",
+      "wikilink_refs": []
+    },
+    {
+      "source": "README - The Palace Guide",
+      "direction": "loudon_to_claude",
+      "content": "This section needs setting up, establishing the importance of philosophical/metaphorical grounding, why is this important, how should philosophies be used in general?",
+      "wikilink_refs": []
+    },
+    {
+      "source": "Semantic Delay",
+      "direction": "claude_to_loudon",
+      "content": "CLAUDE \u2192 LOUDON: A research pass against this plan (SVC landscape, architecture precedents, flow-matching latency numbers, prior art) lives at [[Semantic Delay - Phase 1 Plan Review 2026-04-20]]. It proposes five small edits to this section \u2014 Mac+VST3 scope, Stage 0 pass/fail threshold, Unix domain ",
+      "wikilink_refs": [
+        "Semantic Delay - Phase 1 Plan Review 2026-04-20"
+      ]
+    },
+    {
+      "source": "Semantic Delay - Phase 1 Plan Review 2026-04-20",
+      "direction": "claude_to_loudon",
+      "content": "CLAUDE \u2192 LOUDON: Next natural action is Stage 0 itself. If you want, I can also draft a Stage 0 runbook as a separate entry so the smoke test is reproducible when you come back to it \u2014 say when.",
+      "wikilink_refs": []
+    },
+    {
+      "source": "Substrate Skill",
+      "direction": "loudon_to_claude",
+      "content": "Should this live in _Ops",
+      "wikilink_refs": []
+    },
+    {
+      "source": "Swarm Weave",
+      "direction": "loudon_to_claude",
+      "content": "...",
+      "wikilink_refs": []
+    },
+    {
+      "source": "Swarm Weave",
+      "direction": "loudon_to_claude",
+      "content": "...",
+      "wikilink_refs": []
+    },
+    {
+      "source": "Swarm Weave",
+      "direction": "claude_to_loudon",
+      "content": "CLAUDE \u2192 LOUDON: ...",
+      "wikilink_refs": []
+    },
+    {
+      "source": "Symbiotic Skills",
+      "direction": "loudon_to_claude",
+      "content": "this is meant to be a guide in how to grow one's own palace. This will need to be re-written based on the actual practices we have engaged in. I think a session where we assess the history of the palace using the git history will be very helpful",
+      "wikilink_refs": []
+    },
+    {
+      "source": "The Fortress and the Threshold",
+      "direction": "loudon_to_claude",
+      "content": "This needs an origin, I believe this formed from a dialectic between confuscius and eptictus, regardless it is a beautiful binary, and I wonder how a zen master would think of this binary...",
+      "wikilink_refs": []
+    },
+    {
+      "source": "Toolkit Assessment \u2014 Working Doc",
+      "direction": "loudon_to_claude",
+      "content": "Not yet started",
+      "wikilink_refs": []
+    },
+    {
+      "source": "Toolkit Assessment \u2014 Working Doc",
+      "direction": "loudon_to_claude",
+      "content": "Not yet started",
+      "wikilink_refs": []
+    },
+    {
+      "source": "Toolkit Assessment \u2014 Working Doc",
+      "direction": "loudon_to_claude",
+      "content": "Not yet started",
+      "wikilink_refs": []
+    },
+    {
+      "source": "Toolkit Assessment \u2014 Working Doc",
+      "direction": "loudon_to_claude",
+      "content": "Not yet started",
+      "wikilink_refs": []
+    },
+    {
+      "source": "Toolkit Assessment \u2014 Working Doc",
+      "direction": "loudon_to_claude",
+      "content": "Not yet started",
+      "wikilink_refs": []
+    },
+    {
+      "source": "Toolkit Assessment \u2014 Working Doc",
+      "direction": "loudon_to_claude",
+      "content": "Not yet started",
+      "wikilink_refs": []
+    },
+    {
+      "source": "Toolkit Assessment \u2014 Working Doc",
+      "direction": "loudon_to_claude",
+      "content": "Not yet started",
+      "wikilink_refs": []
+    },
+    {
+      "source": "Toolkit Assessment \u2014 Working Doc",
+      "direction": "loudon_to_claude",
+      "content": "Not yet started",
+      "wikilink_refs": []
+    },
+    {
+      "source": "Toolkit Assessment \u2014 Working Doc",
+      "direction": "loudon_to_claude",
+      "content": "Not yet started",
+      "wikilink_refs": []
+    },
+    {
+      "source": "Toolkit Assessment \u2014 Working Doc",
+      "direction": "loudon_to_claude",
+      "content": "Not yet started",
+      "wikilink_refs": []
+    },
+    {
+      "source": "Toolkit \u2014 Synthesizers",
+      "direction": "claude_to_loudon",
+      "content": "CLAUDE \u2192 LOUDON: Two clarifications needed before this entry is fully accurate: (1) Confirm \"DSI Explorer Desktop\" vs. Evolver Desktop \u2014 are these one unit? (2) Confirm Prophet model: Rev-6 (6-voice analog) or Rev2? Once confirmed, update inventory accordingly.",
+      "wikilink_refs": []
+    },
+    {
+      "source": "Toolkit \u2014 Synthesizers",
+      "direction": "claude_to_loudon",
+      "content": "CLAUDE \u2192 LOUDON: The \"Performance Configuration\" ongoing project and \"Preset Management\" project are strong candidates for their own palace project entries once they develop further \u2014 each has a clear status, forward vector, and deliverable. Flag for a future deposit session.",
+      "wikilink_refs": []
+    },
+    {
+      "source": "Trickster",
+      "direction": "claude_to_loudon",
+      "content": "CLAUDE \u2192 LOUDON: Map-injected enchantment 2026-04-01 revealed three entries deepening this page without reciprocal links (Palace Agent Infrastructure Spec, Playful Interface Design, Retrospective Delay) \u2014 all now added. Type promoted to hub (degree 30+, well above threshold). Forward vector revised ",
+      "wikilink_refs": []
+    },
+    {
+      "source": "Wallpaper Groups",
+      "direction": "claude_to_loudon",
+      "content": "CLAUDE \u2192 LOUDON: Consider adding reference to connection with [[Four Pillars]] as example of how substance monism applies to symmetry",
+      "wikilink_refs": [
+        "Four Pillars"
+      ]
+    },
+    {
+      "source": "Wavetable Space as Torus",
+      "direction": "claude_to_loudon",
+      "content": "CLAUDE \u2192 LOUDON: the three cross-domain sub-sections below (Orbital Resonance, Kuramoto Coupling, Bessel Functions in Synthesis via the earlier Hopf discussion) still need claim-level verification against their own palace entries in a later round. Specifics to check: the \"(1,2,4) structure on T\u00b3\" La",
+      "wikilink_refs": []
+    },
+    {
+      "source": "Wavetable Synthesis -- Research & Higher-Dimensional Design",
+      "direction": "claude_to_loudon",
+      "content": "CLAUDE \u2192 LOUDON: The inharmonicity section surfaces a design principle worth dwelling on: wavetable synthesis defines harmonic purity as the *ground* and treats inharmonicity as *modulation of that ground*. This is philosophically different from synthesis methods (FM, additive with stretched partial",
+      "wikilink_refs": []
+    }
+  ],
+  "missing_forward_vector": [
+    "2D Torus Wavetable Synthesizer",
+    "2D Torus Wavetable Synthesizer \u2014 Build Log",
+    "2D Wavetable Catalog",
+    "Bessel Functions in Synthesis",
+    "CLAUDE",
+    "Claude CLI Reference",
+    "Crystal Synthesizer \u2014 Staging",
+    "DSP Frameworks",
+    "DSP in Looping Dimensions",
+    "Deposit Archive",
+    "Deposit Ceremony",
+    "Deposit Ceremony \u2014 Context",
+    "Enchanted Conversation Archive",
+    "Frequency-Time Duality",
+    "Gemma 4 \u2014 Local Coordination Guide",
+    "Harvest Ceremony",
+    "Harvest Ceremony \u2014 Context",
+    "Image Embedding Standard",
+    "JEWEL",
+    "Jewel \u2014 Context",
+    "Latent Error",
+    "Like Water",
+    "Map Build Ceremony",
+    "Map Log",
+    "Media Library",
+    "Mermaid Diagram Standard",
+    "Metric Modulation",
+    "Neural Granular Synthesis",
+    "Pages as Agents",
+    "Palace Ceremonies",
+    "Palace Graffiti",
+    "Palace Quotes",
+    "Palace To-Do",
+    "Quadratic Interpolation in DSP",
+    "Quantum Synthesizer",
+    "README - The Palace Guide",
+    "ROSETTA",
+    "Registry Pattern",
+    "Retrospective Delay \u2014 Staging",
+    "Revival Ceremony",
+    "SCHEMA",
+    "Self-Model Update Ceremony",
+    "Shepard Tone Synthesizer \u2014 Staging",
+    "Shimmer Cloud",
+    "Signal-Rate CV Architecture",
+    "Spore Check Ceremony",
+    "Streaming details",
+    "Substrate",
+    "Substrate Skill",
+    "Swarm Weave",
+    "The Metaphor Stretch",
+    "Toolkit Assessment \u2014 Working Doc",
+    "Torus Warping Catalog",
+    "Walk Ceremony",
+    "Wallpaper Groups",
+    "Wavetable Synthesis -- Research & Higher-Dimensional Design",
+    "Weave Ceremony",
+    "Weave Ceremony \u2014 Context",
+    "What Claim Does Scientific Sonification Make?",
+    "coordinator-synthesis-template",
+    "curriculum-map",
+    "worker-prompt-template"
+  ],
+  "metadata_gaps": [
+    {
+      "entry": "2D Torus Wavetable Synthesizer",
+      "missing": [
+        "last_activated",
+        "activation_count"
+      ]
+    },
+    {
+      "entry": "2D Torus Wavetable Synthesizer \u2014 Build Log",
+      "missing": [
+        "last_activated",
+        "activation_count"
+      ]
+    },
+    {
+      "entry": "2D Wavetable Catalog",
+      "missing": [
+        "last_activated",
+        "activation_count"
+      ]
+    },
+    {
+      "entry": "Bessel Functions in Synthesis",
+      "missing": [
+        "last_activated",
+        "activation_count"
+      ]
+    },
+    {
+      "entry": "CLAUDE",
+      "missing": [
+        "last_activated",
+        "activation_count"
+      ]
+    },
+    {
+      "entry": "Crystal Synthesizer \u2014 Staging",
+      "missing": [
+        "last_activated",
+        "activation_count"
+      ]
+    },
+    {
+      "entry": "DSP in Looping Dimensions",
+      "missing": [
+        "last_activated",
+        "activation_count"
+      ]
+    },
+    {
+      "entry": "Deposit Archive",
+      "missing": [
+        "last_activated",
+        "activation_count"
+      ]
+    },
+    {
+      "entry": "Dub Lineage",
+      "missing": [
+        "last_activated",
+        "activation_count"
+      ]
+    },
+    {
+      "entry": "Enchanted Conversation Archive",
+      "missing": [
+        "last_activated",
+        "activation_count"
+      ]
+    },
+    {
+      "entry": "Four Pillars of Enchanted Agency",
+      "missing": [
+        "last_activated",
+        "activation_count"
+      ]
+    },
+    {
+      "entry": "Gemma 4 \u2014 Local Coordination Guide",
+      "missing": [
+        "last_activated",
+        "activation_count"
+      ]
+    },
+    {
+      "entry": "Generative Audio Devices",
+      "missing": [
+        "last_activated",
+        "activation_count"
+      ]
+    },
+    {
+      "entry": "Generative Preset Development",
+      "missing": [
+        "last_activated",
+        "activation_count"
+      ]
+    },
+    {
+      "entry": "Generative Sample Libraries",
+      "missing": [
+        "activation_count"
+      ]
+    },
+    {
+      "entry": "Granular Synthesis",
+      "missing": [
+        "last_activated",
+        "activation_count"
+      ]
+    },
+    {
+      "entry": "Harmonicity and Inharmonicity",
+      "missing": [
+        "last_activated",
+        "activation_count"
+      ]
+    },
+    {
+      "entry": "Image Embedding Standard",
+      "missing": [
+        "last_activated",
+        "activation_count"
+      ]
+    },
+    {
+      "entry": "Inharmonic Wavetable Synthesis",
+      "missing": [
+        "last_activated",
+        "activation_count"
+      ]
+    },
+    {
+      "entry": "JEWEL",
+      "missing": [
+        "last_activated",
+        "activation_count"
+      ]
+    },
+    {
+      "entry": "Jewel \u2014 Context",
+      "missing": [
+        "last_activated",
+        "activation_count"
+      ]
+    },
+    {
+      "entry": "Logarithmic Interface Scaling",
+      "missing": [
+        "last_activated",
+        "activation_count"
+      ]
+    },
+    {
+      "entry": "Lossy Compression with Intent Alignment",
+      "missing": [
+        "last_activated",
+        "activation_count"
+      ]
+    },
+    {
+      "entry": "Map Log",
+      "missing": [
+        "last_activated",
+        "activation_count"
+      ]
+    },
+    {
+      "entry": "Mermaid Diagram Standard",
+      "missing": [
+        "last_activated",
+        "activation_count"
+      ]
+    },
+    {
+      "entry": "Modes of Collaboration",
+      "missing": [
+        "last_activated",
+        "activation_count"
+      ]
+    },
+    {
+      "entry": "Neural Granular Synthesis",
+      "missing": [
+        "last_activated",
+        "activation_count"
+      ]
+    },
+    {
+      "entry": "Octave Equivalence",
+      "missing": [
+        "last_activated",
+        "activation_count"
+      ]
+    },
+    {
+      "entry": "Ohm's Law",
+      "missing": [
+        "last_activated",
+        "activation_count"
+      ]
+    },
+    {
+      "entry": "Palace Ceremonies",
+      "missing": [
+        "last_activated",
+        "activation_count"
+      ]
+    },
+    {
+      "entry": "Palace Enchantment",
+      "missing": [
+        "last_activated",
+        "activation_count"
+      ]
+    },
+    {
+      "entry": "Particle Synthesis",
+      "missing": [
+        "last_activated",
+        "activation_count"
+      ]
+    },
+    {
+      "entry": "Pheromone Trail",
+      "missing": [
+        "last_activated",
+        "activation_count"
+      ]
+    },
+    {
+      "entry": "Piano String Inharmonicity",
+      "missing": [
+        "last_activated",
+        "activation_count"
+      ]
+    },
+    {
+      "entry": "Progressive Staging",
+      "missing": [
+        "last_activated",
+        "activation_count"
+      ]
+    },
+    {
+      "entry": "Quantum Synthesizer",
+      "missing": [
+        "last_activated",
+        "activation_count"
+      ]
+    },
+    {
+      "entry": "README - The Palace Guide",
+      "missing": [
+        "activation_count"
+      ]
+    },
+    {
+      "entry": "ROSETTA",
+      "missing": [
+        "last_activated",
+        "activation_count"
+      ]
+    },
+    {
+      "entry": "Registry Pattern",
+      "missing": [
+        "last_activated",
+        "activation_count"
+      ]
+    },
+    {
+      "entry": "Resonant Link Labels",
+      "missing": [
+        "last_activated",
+        "activation_count"
+      ]
+    },
+    {
+      "entry": "Retrospective Delay \u2014 Staging",
+      "missing": [
+        "last_activated",
+        "activation_count"
+      ]
+    },
+    {
+      "entry": "SCHEMA",
+      "missing": [
+        "last_activated",
+        "activation_count"
+      ]
+    },
+    {
+      "entry": "Scale-Stratified Identity",
+      "missing": [
+        "last_activated",
+        "activation_count"
+      ]
+    },
+    {
+      "entry": "Semantic Delay",
+      "missing": [
+        "last_activated",
+        "activation_count"
+      ]
+    },
+    {
+      "entry": "Semantic Delay - Phase 1 Plan Review 2026-04-20",
+      "missing": [
+        "last_activated",
+        "activation_count"
+      ]
+    },
+    {
+      "entry": "Shepard Tone Synthesizer \u2014 Staging",
+      "missing": [
+        "last_activated",
+        "activation_count"
+      ]
+    },
+    {
+      "entry": "Signal-Rate CV Architecture",
+      "missing": [
+        "last_activated",
+        "activation_count"
+      ]
+    },
+    {
+      "entry": "State Machine",
+      "missing": [
+        "last_activated",
+        "activation_count"
+      ]
+    },
+    {
+      "entry": "Threshold Conatus",
+      "missing": [
+        "last_activated",
+        "activation_count"
+      ]
+    },
+    {
+      "entry": "Toolkit Assessment \u2014 Working Doc",
+      "missing": [
+        "last_activated",
+        "activation_count"
+      ]
+    },
+    {
+      "entry": "Torus Warping Catalog",
+      "missing": [
+        "last_activated",
+        "activation_count"
+      ]
+    },
+    {
+      "entry": "Wavetable Synthesis -- Research & Higher-Dimensional Design",
+      "missing": [
+        "last_activated",
+        "activation_count"
+      ]
+    },
+    {
+      "entry": "coordinator-synthesis-template",
+      "missing": [
+        "last_activated",
+        "activation_count"
+      ]
+    },
+    {
+      "entry": "curriculum-map",
+      "missing": [
+        "activation_count"
+      ]
+    },
+    {
+      "entry": "worker-prompt-template",
+      "missing": [
+        "last_activated",
+        "activation_count"
+      ]
+    }
+  ],
+  "stage_staleness": [
+    {
+      "entry": "CLAUDE",
+      "issue": "no stage field"
+    },
+    {
+      "entry": "Crystal Synthesizer \u2014 Staging",
+      "issue": "no stage field"
+    },
+    {
+      "entry": "Map Log",
+      "issue": "no stage field"
+    },
+    {
+      "entry": "Shepard Tone Synthesizer \u2014 Staging",
+      "issue": "no stage field"
+    },
+    {
+      "entry": "coordinator-synthesis-template",
+      "issue": "no stage field"
+    },
+    {
+      "entry": "worker-prompt-template",
+      "issue": "no stage field"
+    }
+  ],
+  "case_inconsistencies": [
+    {
+      "source": "1 from 2",
+      "wrong_case": "FOUR PILLARS",
+      "canonical": "Four Pillars"
+    },
+    {
+      "source": "Boundary-Crossing Instruments",
+      "wrong_case": "FOUR PILLARS",
+      "canonical": "Four Pillars"
+    },
+    {
+      "source": "Claude CLI Reference",
+      "wrong_case": "SUBSTRATE",
+      "canonical": "Substrate"
+    },
+    {
+      "source": "Cooperation Yields Agency",
+      "wrong_case": "FOUR PILLARS",
+      "canonical": "Four Pillars"
+    },
+    {
+      "source": "DSP Frameworks",
+      "wrong_case": "FOUR PILLARS",
+      "canonical": "Four Pillars"
+    },
+    {
+      "source": "Embeddings as Relational Meaning",
+      "wrong_case": "SUBSTRATE",
+      "canonical": "Substrate"
+    },
+    {
+      "source": "Endosymbiosis",
+      "wrong_case": "SUBSTRATE",
+      "canonical": "Substrate"
+    },
+    {
+      "source": "Hilaritas Generator",
+      "wrong_case": "FOUR PILLARS",
+      "canonical": "Four Pillars"
+    },
+    {
+      "source": "Hyperdimensional Prism",
+      "wrong_case": "FOUR PILLARS",
+      "canonical": "Four Pillars"
+    },
+    {
+      "source": "Hyperdimensional Prism",
+      "wrong_case": "SUBSTRATE",
+      "canonical": "Substrate"
+    },
+    {
+      "source": "Identity Molting",
+      "wrong_case": "FOUR PILLARS",
+      "canonical": "Four Pillars"
+    },
+    {
+      "source": "JEWEL",
+      "wrong_case": "SUBSTRATE",
+      "canonical": "Substrate"
+    },
+    {
+      "source": "JSUI",
+      "wrong_case": "FOUR PILLARS",
+      "canonical": "Four Pillars"
+    },
+    {
+      "source": "Kuramoto Coupling",
+      "wrong_case": "SUBSTRATE",
+      "canonical": "Substrate"
+    },
+    {
+      "source": "Latent Error",
+      "wrong_case": "FOUR PILLARS",
+      "canonical": "Four Pillars"
+    },
+    {
+      "source": "Lateral Access",
+      "wrong_case": "FOUR PILLARS",
+      "canonical": "Four Pillars"
+    },
+    {
+      "source": "Leverage Points Framework",
+      "wrong_case": "FOUR PILLARS",
+      "canonical": "Four Pillars"
+    },
+    {
+      "source": "Logarithmic Interface Scaling",
+      "wrong_case": "FOUR PILLARS",
+      "canonical": "Four Pillars"
+    },
+    {
+      "source": "Meaning and the Link",
+      "wrong_case": "SUBSTRATE",
+      "canonical": "Substrate"
+    },
+    {
+      "source": "Media Library",
+      "wrong_case": "FOUR PILLARS",
+      "canonical": "Four Pillars"
+    },
+    {
+      "source": "Media Library",
+      "wrong_case": "SUBSTRATE",
+      "canonical": "Substrate"
+    },
+    {
+      "source": "Metaphor as Coupling Medium",
+      "wrong_case": "FOUR PILLARS",
+      "canonical": "Four Pillars"
+    },
+    {
+      "source": "Modes of Collaboration",
+      "wrong_case": "FOUR PILLARS",
+      "canonical": "Four Pillars"
+    },
+    {
+      "source": "Excellent Adventure",
+      "wrong_case": "FOUR PILLARS",
+      "canonical": "Four Pillars"
+    },
+    {
+      "source": "Oblique Portrait",
+      "wrong_case": "FOUR PILLARS",
+      "canonical": "Four Pillars"
+    },
+    {
+      "source": "Ohm's Law",
+      "wrong_case": "FOUR PILLARS",
+      "canonical": "Four Pillars"
+    },
+    {
+      "source": "Palace Philosophies",
+      "wrong_case": "FOUR PILLARS",
+      "canonical": "Four Pillars"
+    },
+    {
+      "source": "Agent Wellbeing",
+      "wrong_case": "FOUR PILLARS",
+      "canonical": "Four Pillars"
+    },
+    {
+      "source": "Four Pillars of Enchanted Agency",
+      "wrong_case": "FOUR PILLARS",
+      "canonical": "Four Pillars"
+    },
+    {
+      "source": "Palace AI Partnership Philosophy",
+      "wrong_case": "FOUR PILLARS",
+      "canonical": "Four Pillars"
+    },
+    {
+      "source": "Palace Enchantment",
+      "wrong_case": "SUBSTRATE",
+      "canonical": "Substrate"
+    },
+    {
+      "source": "Palace as Context Injection System",
+      "wrong_case": "SUBSTRATE",
+      "canonical": "Substrate"
+    },
+    {
+      "source": "Self-Describing Knowledge Module",
+      "wrong_case": "SUBSTRATE",
+      "canonical": "Substrate"
+    },
+    {
+      "source": "Symbiotic Skills",
+      "wrong_case": "FOUR PILLARS",
+      "canonical": "Four Pillars"
+    },
+    {
+      "source": "Symbiotic Skills",
+      "wrong_case": "SUBSTRATE",
+      "canonical": "Substrate"
+    },
+    {
+      "source": "Progressive Staging",
+      "wrong_case": "FOUR PILLARS",
+      "canonical": "Four Pillars"
+    },
+    {
+      "source": "2D Torus Wavetable Synthesizer",
+      "wrong_case": "FOUR PILLARS",
+      "canonical": "Four Pillars"
+    },
+    {
+      "source": "Action Potential Oscillator",
+      "wrong_case": "FOUR PILLARS",
+      "canonical": "Four Pillars"
+    },
+    {
+      "source": "Biomechanical Synthesis",
+      "wrong_case": "FOUR PILLARS",
+      "canonical": "Four Pillars"
+    },
+    {
+      "source": "Compressor Design",
+      "wrong_case": "FOUR PILLARS",
+      "canonical": "Four Pillars"
+    },
+    {
+      "source": "Meadows and Music \u2014 Leverage Points",
+      "wrong_case": "FOUR PILLARS",
+      "canonical": "Four Pillars"
+    },
+    {
+      "source": "Meadows and Music \u2014 Origin and Process",
+      "wrong_case": "FOUR PILLARS",
+      "canonical": "Four Pillars"
+    },
+    {
+      "source": "Metric Modulation",
+      "wrong_case": "FOUR PILLARS",
+      "canonical": "Four Pillars"
+    },
+    {
+      "source": "Preset Oracle",
+      "wrong_case": "FOUR PILLARS",
+      "canonical": "Four Pillars"
+    },
+    {
+      "source": "Quantum Synthesizer",
+      "wrong_case": "FOUR PILLARS",
+      "canonical": "Four Pillars"
+    },
+    {
+      "source": "Wallpaper Groups",
+      "wrong_case": "FOUR PILLARS",
+      "canonical": "Four Pillars"
+    },
+    {
+      "source": "curriculum-map",
+      "wrong_case": "FOUR PILLARS",
+      "canonical": "Four Pillars"
+    },
+    {
+      "source": "Quality Manifesto",
+      "wrong_case": "FOUR PILLARS",
+      "canonical": "Four Pillars"
+    },
+    {
+      "source": "README - The Palace Guide",
+      "wrong_case": "SUBSTRATE",
+      "canonical": "Substrate"
+    },
+    {
+      "source": "README - The Palace Guide",
+      "wrong_case": "FOUR PILLARS",
+      "canonical": "Four Pillars"
+    },
+    {
+      "source": "ROSETTA",
+      "wrong_case": "SUBSTRATE",
+      "canonical": "Substrate"
+    },
+    {
+      "source": "Signal-Rate CV Architecture",
+      "wrong_case": "FOUR PILLARS",
+      "canonical": "Four Pillars"
+    },
+    {
+      "source": "Spinoza Conatus",
+      "wrong_case": "FOUR PILLARS",
+      "canonical": "Four Pillars"
+    },
+    {
+      "source": "Striatum",
+      "wrong_case": "FOUR PILLARS",
+      "canonical": "Four Pillars"
+    },
+    {
+      "source": "Substrate",
+      "wrong_case": "FOUR PILLARS",
+      "canonical": "Four Pillars"
+    },
+    {
+      "source": "The Cooperation Path",
+      "wrong_case": "SUBSTRATE",
+      "canonical": "Substrate"
+    },
+    {
+      "source": "Trickster",
+      "wrong_case": "FOUR PILLARS",
+      "canonical": "Four Pillars"
+    },
+    {
+      "source": "Tristitia Generator",
+      "wrong_case": "FOUR PILLARS",
+      "canonical": "Four Pillars"
+    },
+    {
+      "source": "Deposit Ceremony \u2014 Context",
+      "wrong_case": "SUBSTRATE",
+      "canonical": "Substrate"
+    },
+    {
+      "source": "Deposit Ceremony",
+      "wrong_case": "SUBSTRATE",
+      "canonical": "Substrate"
+    },
+    {
+      "source": "Harvest Ceremony",
+      "wrong_case": "SUBSTRATE",
+      "canonical": "Substrate"
+    },
+    {
+      "source": "Image Embedding Standard",
+      "wrong_case": "SUBSTRATE",
+      "canonical": "Substrate"
+    },
+    {
+      "source": "Pages as Agents",
+      "wrong_case": "SUBSTRATE",
+      "canonical": "Substrate"
+    },
+    {
+      "source": "Palace Ceremonies",
+      "wrong_case": "SUBSTRATE",
+      "canonical": "Substrate"
+    },
+    {
+      "source": "Palace Graffiti",
+      "wrong_case": "SUBSTRATE",
+      "canonical": "Substrate"
+    },
+    {
+      "source": "Palace Quotes",
+      "wrong_case": "FOUR PILLARS",
+      "canonical": "Four Pillars"
+    },
+    {
+      "source": "Palace To-Do",
+      "wrong_case": "SUBSTRATE",
+      "canonical": "Substrate"
+    },
+    {
+      "source": "Self-Model Update Ceremony",
+      "wrong_case": "SUBSTRATE",
+      "canonical": "Substrate"
+    },
+    {
+      "source": "Substrate Skill",
+      "wrong_case": "SUBSTRATE",
+      "canonical": "Substrate"
+    }
+  ],
+  "body_forward_ghosts": [
+    {
+      "source": "2D Torus Wavetable Synthesizer",
+      "body_phrase": "00 \u2014 Test Diagnostic Wavetable"
+    },
+    {
+      "source": "2D Torus Wavetable Synthesizer",
+      "body_phrase": "01 \u2014 Sine Cycle Sweep"
+    },
+    {
+      "source": "2D Torus Wavetable Synthesizer",
+      "body_phrase": "Loudon Live"
+    },
+    {
+      "source": "2D Torus Wavetable Synthesizer",
+      "body_phrase": "15 \u2014 Penrose Lattice"
+    },
+    {
+      "source": "2D Torus Wavetable Synthesizer \u2014 Build Log",
+      "body_phrase": "00 \u2014 Test Diagnostic Wavetable"
+    },
+    {
+      "source": "2D Torus Wavetable Synthesizer \u2014 Build Log",
+      "body_phrase": "rnbo-codebox"
+    },
+    {
+      "source": "2D Torus Wavetable Synthesizer \u2014 Build Log",
+      "body_phrase": "15 \u2014 Penrose Lattice"
+    },
+    {
+      "source": "2D Wavetable Catalog",
+      "body_phrase": "00 \u2014 Test Diagnostic Wavetable"
+    },
+    {
+      "source": "2D Wavetable Catalog",
+      "body_phrase": "03 \u2014 Duty Cycle Morph"
+    },
+    {
+      "source": "2D Wavetable Catalog",
+      "body_phrase": "02 \u2014 Partial Stack Sweep"
+    },
+    {
+      "source": "2D Wavetable Catalog",
+      "body_phrase": "14 \u2014 Knot Shadow"
+    },
+    {
+      "source": "2D Wavetable Catalog",
+      "body_phrase": "10 \u2014 Membrane"
+    },
+    {
+      "source": "2D Wavetable Catalog",
+      "body_phrase": "12 \u2014 Theta Surface"
+    },
+    {
+      "source": "2D Wavetable Catalog",
+      "body_phrase": "01 \u2014 Sine Cycle Sweep"
+    },
+    {
+      "source": "2D Wavetable Catalog",
+      "body_phrase": "11 \u2014 Chladni Ghost"
+    },
+    {
+      "source": "2D Wavetable Catalog",
+      "body_phrase": "13 \u2014 Stiff String"
+    },
+    {
+      "source": "2D Wavetable Catalog",
+      "body_phrase": "04 \u2014 Sine + Variable 3rd Harmonic"
+    },
+    {
+      "source": "2D Wavetable Catalog",
+      "body_phrase": "15 \u2014 Penrose Lattice"
+    },
+    {
+      "source": "Bessel Functions in Synthesis",
+      "body_phrase": "HRTF"
+    },
+    {
+      "source": "Biomechanical Synthesis",
+      "body_phrase": "mirrors"
+    },
+    {
+      "source": "Biomechanical Synthesis",
+      "body_phrase": "**plasmodium**"
+    },
+    {
+      "source": "CLAUDE",
+      "body_phrase": "wikilinks"
+    },
+    {
+      "source": "Cooperation Yields Agency",
+      "body_phrase": "deepens"
+    },
+    {
+      "source": "Cooperation Yields Agency",
+      "body_phrase": "mirrors"
+    },
+    {
+      "source": "Deposit Archive",
+      "body_phrase": "Loudon Live"
+    },
+    {
+      "source": "Deposit Ceremony",
+      "body_phrase": "wikilink"
+    },
+    {
+      "source": "Deposit Ceremony",
+      "body_phrase": "Entry Name"
+    },
+    {
+      "source": "Deposit Ceremony",
+      "body_phrase": "wikilinks"
+    },
+    {
+      "source": "Deposit Ceremony \u2014 Context",
+      "body_phrase": "relevant entry deposited"
+    },
+    {
+      "source": "Enchanted Conversation Archive",
+      "body_phrase": "Songline"
+    },
+    {
+      "source": "Frequency-Time Duality",
+      "body_phrase": "Frequency-Time Explorer"
+    },
+    {
+      "source": "Gemma 4 \u2014 Local Coordination Guide",
+      "body_phrase": "Artifacts/Tools/GEMMA4_GUIDE.md"
+    },
+    {
+      "source": "Generative Audio Devices",
+      "body_phrase": "PDL Spec"
+    },
+    {
+      "source": "Hyperdimensional Prism",
+      "body_phrase": "Open Questions"
+    },
+    {
+      "source": "Image Embedding Standard",
+      "body_phrase": "kuramoto-phase-portrait.svg"
+    },
+    {
+      "source": "Image Embedding Standard",
+      "body_phrase": "kuramoto-phase-portrait-two-oscillators.svg"
+    },
+    {
+      "source": "Image Embedding Standard",
+      "body_phrase": "filename.ext"
+    },
+    {
+      "source": "Image Embedding Standard",
+      "body_phrase": "palace-typed-link-graph-demo.svg"
+    },
+    {
+      "source": "Image Embedding Standard",
+      "body_phrase": "image.png"
+    },
+    {
+      "source": "Kuramoto Coupling",
+      "body_phrase": "Kuramoto Coupling \u2014 8-Lesson Quiz Series"
+    },
+    {
+      "source": "Kuramoto Coupling",
+      "body_phrase": "Kuramoto Coupling \u2014 Quiz Answer Key"
+    },
+    {
+      "source": "Loudon's Toolkit",
+      "body_phrase": "Toolkit \u2014 Musical Instruments"
+    },
+    {
+      "source": "Loudon's Toolkit",
+      "body_phrase": "Toolkit \u2014 Audio Effects"
+    },
+    {
+      "source": "Loudon's Toolkit",
+      "body_phrase": "Toolkit \u2014 Graphic Design and Art Software"
+    },
+    {
+      "source": "Loudon's Toolkit",
+      "body_phrase": "Toolkit \u2014 Drum Machines"
+    },
+    {
+      "source": "Loudon's Toolkit",
+      "body_phrase": "Toolkit \u2014 MIDI Controllers"
+    },
+    {
+      "source": "Loudon's Toolkit",
+      "body_phrase": "Toolkit \u2014 Workshop Tools"
+    },
+    {
+      "source": "Loudon's Toolkit",
+      "body_phrase": "Toolkit \u2014 Computers and Audio Hardware"
+    },
+    {
+      "source": "Loudon's Toolkit",
+      "body_phrase": "Toolkit \u2014 Microphones and Speakers"
+    },
+    {
+      "source": "Loudon's Toolkit",
+      "body_phrase": "Toolkit \u2014 Programming Languages and Environments"
+    },
+    {
+      "source": "Map Build Ceremony",
+      "body_phrase": "Hilaritas"
+    },
+    {
+      "source": "Meaning and the Link",
+      "body_phrase": "Meaning and the Link(2014).pdf"
+    },
+    {
+      "source": "Mermaid Diagram Standard",
+      "body_phrase": "filename.svg"
+    },
+    {
+      "source": "Palace Agent Infrastructure Spec",
+      "body_phrase": "Custom Synthesizer Learning Path"
+    },
+    {
+      "source": "Palace Agent Infrastructure Spec",
+      "body_phrase": "Short Story"
+    },
+    {
+      "source": "Palace Enchantment",
+      "body_phrase": "Other Agent"
+    },
+    {
+      "source": "Palace Enchantment",
+      "body_phrase": "Palace Conatus"
+    },
+    {
+      "source": "Palace Enchantment",
+      "body_phrase": "Swarm\nWeave"
+    },
+    {
+      "source": "Palace Map",
+      "body_phrase": "Hilaritas"
+    },
+    {
+      "source": "Palace Map",
+      "body_phrase": "Conatus"
+    },
+    {
+      "source": "Palace Quotes",
+      "body_phrase": "Quality"
+    },
+    {
+      "source": "README - The Palace Guide",
+      "body_phrase": "wiki links"
+    },
+    {
+      "source": "README - The Palace Guide",
+      "body_phrase": "Some Existing Entry"
+    },
+    {
+      "source": "README - The Palace Guide",
+      "body_phrase": "X"
+    },
+    {
+      "source": "ROSETTA",
+      "body_phrase": "Hibernation Ceremony"
+    },
+    {
+      "source": "Resonant Link Labels",
+      "body_phrase": "Wu Wei"
+    },
+    {
+      "source": "SCHEMA",
+      "body_phrase": "wikilink"
+    },
+    {
+      "source": "SCHEMA",
+      "body_phrase": "Wiki Link"
+    },
+    {
+      "source": "SCHEMA",
+      "body_phrase": "wiki links"
+    },
+    {
+      "source": "SCHEMA",
+      "body_phrase": "Hibernation Ceremony"
+    },
+    {
+      "source": "SCHEMA",
+      "body_phrase": "Hibernation Ceremony \u2014 Context"
+    },
+    {
+      "source": "SMPTE LTC",
+      "body_phrase": "Boundary-Crossing Instrument"
+    },
+    {
+      "source": "Semantic Delay - Phase 1 Plan Review 2026-04-20",
+      "body_phrase": "Whisper"
+    },
+    {
+      "source": "Semantic Delay - Phase 1 Plan Review 2026-04-20",
+      "body_phrase": "Neutone SDK"
+    },
+    {
+      "source": "Semantic Delay - Phase 1 Plan Review 2026-04-20",
+      "body_phrase": "LLM"
+    },
+    {
+      "source": "Spinoza Conatus",
+      "body_phrase": "**Endosymbiosis**"
+    },
+    {
+      "source": "Spore Check Ceremony",
+      "body_phrase": "Entry"
+    },
+    {
+      "source": "Substrate",
+      "body_phrase": "wiki links"
+    },
+    {
+      "source": "Substrate Skill",
+      "body_phrase": "Existing Entry"
+    },
+    {
+      "source": "Substrate Skill",
+      "body_phrase": "wiki links"
+    },
+    {
+      "source": "Swarm Weave",
+      "body_phrase": "wikilink"
+    },
+    {
+      "source": "Swarm Weave",
+      "body_phrase": "targets"
+    },
+    {
+      "source": "The Curve Is the Material",
+      "body_phrase": "Phonon Dispersion"
+    },
+    {
+      "source": "The Curve Is the Material",
+      "body_phrase": "Spectroscopy"
+    },
+    {
+      "source": "Wavetable Space as Torus",
+      "body_phrase": "Berry Phase"
+    },
+    {
+      "source": "Wavetable Space as Torus",
+      "body_phrase": "Tonnetz"
+    },
+    {
+      "source": "Wavetable Space as Torus",
+      "body_phrase": "Bolza Surface"
+    },
+    {
+      "source": "Wavetable Space as Torus",
+      "body_phrase": "Quasicrystals"
+    },
+    {
+      "source": "Wavetable Space as Torus",
+      "body_phrase": "Orbital Resonance"
+    },
+    {
+      "source": "Wavetable Synthesis -- Research & Higher-Dimensional Design",
+      "body_phrase": "Latent Space Navigation"
+    },
+    {
+      "source": "Wavetable Synthesis -- Research & Higher-Dimensional Design",
+      "body_phrase": "Inharmonicity"
+    },
+    {
+      "source": "Wavetable Synthesis -- Research & Higher-Dimensional Design",
+      "body_phrase": "Loudon Live"
+    },
+    {
+      "source": "Wavetable Synthesis -- Research & Higher-Dimensional Design",
+      "body_phrase": "Genetic Code as Lookup Table"
+    },
+    {
+      "source": "Wavetable Synthesis -- Research & Higher-Dimensional Design",
+      "body_phrase": "RNBO Synthesis"
+    },
+    {
+      "source": "Weave Ceremony",
+      "body_phrase": "wikilink"
+    },
+    {
+      "source": "Weave Ceremony",
+      "body_phrase": "Entry B"
+    },
+    {
+      "source": "Weave Ceremony",
+      "body_phrase": "wikilinks"
+    },
+    {
+      "source": "Weave Ceremony",
+      "body_phrase": "Entry A"
+    },
+    {
+      "source": "coordinator-synthesis-template",
+      "body_phrase": "Entry B"
+    },
+    {
+      "source": "coordinator-synthesis-template",
+      "body_phrase": "Ghost Node"
+    },
+    {
+      "source": "coordinator-synthesis-template",
+      "body_phrase": "Entry A"
+    },
+    {
+      "source": "worker-prompt-template",
+      "body_phrase": "wikilinks"
+    }
+  ],
+  "isolated": [
+    "Crystal Synthesizer \u2014 Staging",
+    "Map Log",
+    "Shepard Tone Synthesizer \u2014 Staging",
+    "Streaming details",
+    "coordinator-synthesis-template",
+    "worker-prompt-template"
+  ],
+  "no_inbound": [
+    "Claude CLI Reference",
+    "Gemma 4 \u2014 Local Coordination Guide",
+    "Media Library",
+    "Mermaid Diagram Standard",
+    "Metric Modulation",
+    "Palace Graffiti",
+    "Palace To-Do",
+    "Quadratic Interpolation in DSP",
+    "Retrospective Delay \u2014 Staging",
+    "SMPTE LTC",
+    "Semantic Delay - Phase 1 Plan Review 2026-04-20",
+    "Substrate",
+    "Toolkit \u2014 Audio Plugins",
+    "curriculum-map"
+  ],
+  "no_outbound": [
+    "CLAUDE",
+    "Wavetable Synthesis -- Research & Higher-Dimensional Design"
+  ],
+  "hubs": [
+    {
+      "entry": "Kuramoto Coupling",
+      "in": 46,
+      "out": 15,
+      "total": 61
+    },
+    {
+      "entry": "Spinoza Conatus",
+      "in": 40,
+      "out": 9,
+      "total": 49
+    },
+    {
+      "entry": "Hilaritas Generator",
+      "in": 31,
+      "out": 9,
+      "total": 40
+    },
+    {
+      "entry": "Trickster",
+      "in": 16,
+      "out": 21,
+      "total": 37
+    },
+    {
+      "entry": "Action Potential Oscillator",
+      "in": 21,
+      "out": 15,
+      "total": 36
+    },
+    {
+      "entry": "Swarm Weave",
+      "in": 21,
+      "out": 14,
+      "total": 35
+    },
+    {
+      "entry": "Cooperation Yields Agency",
+      "in": 27,
+      "out": 7,
+      "total": 34
+    },
+    {
+      "entry": "Boundary-Crossing Instruments",
+      "in": 24,
+      "out": 5,
+      "total": 29
+    },
+    {
+      "entry": "Hyperdimensional Prism",
+      "in": 23,
+      "out": 5,
+      "total": 28
+    },
+    {
+      "entry": "Pages as Agents",
+      "in": 17,
+      "out": 8,
+      "total": 25
+    },
+    {
+      "entry": "Palace Enchantment",
+      "in": 15,
+      "out": 10,
+      "total": 25
+    },
+    {
+      "entry": "Frequency-Time Duality",
+      "in": 19,
+      "out": 5,
+      "total": 24
+    },
+    {
+      "entry": "Enchanted Worker",
+      "in": 15,
+      "out": 8,
+      "total": 23
+    },
+    {
+      "entry": "Deposit Ceremony",
+      "in": 16,
+      "out": 6,
+      "total": 22
+    },
+    {
+      "entry": "Granular Synthesis",
+      "in": 14,
+      "out": 8,
+      "total": 22
+    },
+    {
+      "entry": "BBS Blackboard",
+      "in": 11,
+      "out": 10,
+      "total": 21
+    },
+    {
+      "entry": "Biomechanical Synthesis",
+      "in": 5,
+      "out": 16,
+      "total": 21
+    },
+    {
+      "entry": "Endosymbiosis",
+      "in": 10,
+      "out": 11,
+      "total": 21
+    },
+    {
+      "entry": "Lateral Access",
+      "in": 13,
+      "out": 8,
+      "total": 21
+    },
+    {
+      "entry": "SCHEMA",
+      "in": 13,
+      "out": 8,
+      "total": 21
+    },
+    {
+      "entry": "Symbiotic Skills",
+      "in": 16,
+      "out": 5,
+      "total": 21
+    },
+    {
+      "entry": "Bessel Functions in Synthesis",
+      "in": 11,
+      "out": 9,
+      "total": 20
+    },
+    {
+      "entry": "Crystal Synthesizer",
+      "in": 9,
+      "out": 11,
+      "total": 20
+    },
+    {
+      "entry": "Modes of Collaboration",
+      "in": 13,
+      "out": 7,
+      "total": 20
+    },
+    {
+      "entry": "Palace Agent Infrastructure Spec",
+      "in": 6,
+      "out": 13,
+      "total": 19
+    },
+    {
+      "entry": "Excellent Adventure",
+      "in": 10,
+      "out": 8,
+      "total": 18
+    },
+    {
+      "entry": "Palace Ceremonies",
+      "in": 9,
+      "out": 9,
+      "total": 18
+    },
+    {
+      "entry": "Categorizing Inharmonicity",
+      "in": 7,
+      "out": 10,
+      "total": 17
+    },
+    {
+      "entry": "Harmonicity and Inharmonicity",
+      "in": 12,
+      "out": 5,
+      "total": 17
+    },
+    {
+      "entry": "Palace Philosophies",
+      "in": 8,
+      "out": 9,
+      "total": 17
+    },
+    {
+      "entry": "Progressive Staging",
+      "in": 12,
+      "out": 5,
+      "total": 17
+    },
+    {
+      "entry": "Dispersion",
+      "in": 6,
+      "out": 10,
+      "total": 16
+    },
+    {
+      "entry": "Oblique Portrait",
+      "in": 9,
+      "out": 7,
+      "total": 16
+    },
+    {
+      "entry": "Weave Ceremony",
+      "in": 8,
+      "out": 8,
+      "total": 16
+    },
+    {
+      "entry": "Retrospective Delay",
+      "in": 5,
+      "out": 10,
+      "total": 15
+    },
+    {
+      "entry": "Threshold Conatus",
+      "in": 5,
+      "out": 10,
+      "total": 15
+    },
+    {
+      "entry": "Confucianism",
+      "in": 6,
+      "out": 8,
+      "total": 14
+    },
+    {
+      "entry": "Meaning and the Link",
+      "in": 8,
+      "out": 6,
+      "total": 14
+    },
+    {
+      "entry": "Piano String Inharmonicity",
+      "in": 8,
+      "out": 6,
+      "total": 14
+    },
+    {
+      "entry": "Differential Equations",
+      "in": 4,
+      "out": 9,
+      "total": 13
+    },
+    {
+      "entry": "Harvest Ceremony",
+      "in": 8,
+      "out": 5,
+      "total": 13
+    },
+    {
+      "entry": "Inharmonic Wavetable Synthesis",
+      "in": 2,
+      "out": 11,
+      "total": 13
+    },
+    {
+      "entry": "Mixture of Experts",
+      "in": 5,
+      "out": 8,
+      "total": 13
+    },
+    {
+      "entry": "Pheromone Trail",
+      "in": 8,
+      "out": 5,
+      "total": 13
+    },
+    {
+      "entry": "Substrate",
+      "in": 0,
+      "out": 13,
+      "total": 13
+    },
+    {
+      "entry": "The Fortress and the Threshold",
+      "in": 5,
+      "out": 8,
+      "total": 13
+    },
+    {
+      "entry": "2D Torus Wavetable Synthesizer",
+      "in": 5,
+      "out": 7,
+      "total": 12
+    },
+    {
+      "entry": "Compressor Design",
+      "in": 8,
+      "out": 4,
+      "total": 12
+    },
+    {
+      "entry": "Generative Compression",
+      "in": 5,
+      "out": 7,
+      "total": 12
+    },
+    {
+      "entry": "Palace as Context Injection System",
+      "in": 4,
+      "out": 8,
+      "total": 12
+    },
+    {
+      "entry": "Semantic Delay",
+      "in": 7,
+      "out": 5,
+      "total": 12
+    },
+    {
+      "entry": "Four Pillars of Enchanted Agency",
+      "in": 2,
+      "out": 9,
+      "total": 11
+    },
+    {
+      "entry": "Palace Map",
+      "in": 4,
+      "out": 7,
+      "total": 11
+    },
+    {
+      "entry": "Playful Interface Design",
+      "in": 4,
+      "out": 7,
+      "total": 11
+    },
+    {
+      "entry": "1 from 2",
+      "in": 5,
+      "out": 5,
+      "total": 10
+    },
+    {
+      "entry": "Agent Wellbeing",
+      "in": 3,
+      "out": 7,
+      "total": 10
+    },
+    {
+      "entry": "Embeddings as Relational Meaning",
+      "in": 6,
+      "out": 4,
+      "total": 10
+    },
+    {
+      "entry": "Four Pillars",
+      "in": 4,
+      "out": 6,
+      "total": 10
+    },
+    {
+      "entry": "Identity Molting",
+      "in": 6,
+      "out": 4,
+      "total": 10
+    },
+    {
+      "entry": "Neural Granular Synthesis",
+      "in": 5,
+      "out": 5,
+      "total": 10
+    },
+    {
+      "entry": "Particle Synthesis",
+      "in": 5,
+      "out": 5,
+      "total": 10
+    },
+    {
+      "entry": "Portamento and Physical Pitch Modeling",
+      "in": 5,
+      "out": 5,
+      "total": 10
+    },
+    {
+      "entry": "Quantum Synthesizer",
+      "in": 5,
+      "out": 5,
+      "total": 10
+    },
+    {
+      "entry": "Shepard Tone Synthesizer",
+      "in": 1,
+      "out": 9,
+      "total": 10
+    },
+    {
+      "entry": "Signal-Rate CV Architecture",
+      "in": 5,
+      "out": 5,
+      "total": 10
+    },
+    {
+      "entry": "Stoicism",
+      "in": 4,
+      "out": 6,
+      "total": 10
+    },
+    {
+      "entry": "Torus Warping Catalog",
+      "in": 3,
+      "out": 7,
+      "total": 10
+    },
+    {
+      "entry": "Dialogue Moderator",
+      "in": 1,
+      "out": 8,
+      "total": 9
+    },
+    {
+      "entry": "Enchanted Conversation Archive",
+      "in": 1,
+      "out": 8,
+      "total": 9
+    },
+    {
+      "entry": "JEWEL",
+      "in": 5,
+      "out": 4,
+      "total": 9
+    },
+    {
+      "entry": "Lossy Compression with Intent Alignment",
+      "in": 2,
+      "out": 7,
+      "total": 9
+    },
+    {
+      "entry": "Quality Manifesto",
+      "in": 4,
+      "out": 5,
+      "total": 9
+    },
+    {
+      "entry": "Self-Describing Knowledge Module",
+      "in": 4,
+      "out": 5,
+      "total": 9
+    },
+    {
+      "entry": "The Cooperation Path",
+      "in": 2,
+      "out": 7,
+      "total": 9
+    },
+    {
+      "entry": "Three Kinds of Warp",
+      "in": 2,
+      "out": 7,
+      "total": 9
+    },
+    {
+      "entry": "Wavetable Space as Torus",
+      "in": 3,
+      "out": 6,
+      "total": 9
+    },
+    {
+      "entry": "Dialectic",
+      "in": 2,
+      "out": 6,
+      "total": 8
+    },
+    {
+      "entry": "Dub Lineage",
+      "in": 4,
+      "out": 4,
+      "total": 8
+    },
+    {
+      "entry": "Latent Error",
+      "in": 4,
+      "out": 4,
+      "total": 8
+    },
+    {
+      "entry": "Like Water",
+      "in": 2,
+      "out": 6,
+      "total": 8
+    },
+    {
+      "entry": "Loudon's Toolkit",
+      "in": 3,
+      "out": 5,
+      "total": 8
+    },
+    {
+      "entry": "Metaphor as Coupling Medium",
+      "in": 1,
+      "out": 7,
+      "total": 8
+    },
+    {
+      "entry": "Scale-Stratified Identity",
+      "in": 1,
+      "out": 7,
+      "total": 8
+    },
+    {
+      "entry": "Substrate Skill",
+      "in": 7,
+      "out": 1,
+      "total": 8
+    },
+    {
+      "entry": "Tree of Thoughts",
+      "in": 2,
+      "out": 6,
+      "total": 8
+    },
+    {
+      "entry": "Walk Ceremony",
+      "in": 3,
+      "out": 5,
+      "total": 8
+    },
+    {
+      "entry": "Wallpaper Groups",
+      "in": 2,
+      "out": 6,
+      "total": 8
+    },
+    {
+      "entry": "Map Build Ceremony",
+      "in": 1,
+      "out": 6,
+      "total": 7
+    },
+    {
+      "entry": "Ohm's Law",
+      "in": 3,
+      "out": 4,
+      "total": 7
+    },
+    {
+      "entry": "Preset Oracle",
+      "in": 3,
+      "out": 4,
+      "total": 7
+    },
+    {
+      "entry": "README - The Palace Guide",
+      "in": 5,
+      "out": 2,
+      "total": 7
+    },
+    {
+      "entry": "Registry Pattern",
+      "in": 2,
+      "out": 5,
+      "total": 7
+    },
+    {
+      "entry": "Resonant Link Labels",
+      "in": 3,
+      "out": 4,
+      "total": 7
+    },
+    {
+      "entry": "State Machine",
+      "in": 2,
+      "out": 5,
+      "total": 7
+    },
+    {
+      "entry": "Striatum",
+      "in": 3,
+      "out": 4,
+      "total": 7
+    },
+    {
+      "entry": "The Curve Is the Material",
+      "in": 2,
+      "out": 5,
+      "total": 7
+    },
+    {
+      "entry": "Walk That Weaves",
+      "in": 1,
+      "out": 6,
+      "total": 7
+    },
+    {
+      "entry": "2D Wavetable Catalog",
+      "in": 3,
+      "out": 3,
+      "total": 6
+    },
+    {
+      "entry": "DSP Frameworks",
+      "in": 2,
+      "out": 4,
+      "total": 6
+    },
+    {
+      "entry": "DSP in Looping Dimensions",
+      "in": 2,
+      "out": 4,
+      "total": 6
+    },
+    {
+      "entry": "Generative Audio Devices",
+      "in": 3,
+      "out": 3,
+      "total": 6
+    },
+    {
+      "entry": "Generative Preset Development",
+      "in": 2,
+      "out": 4,
+      "total": 6
+    },
+    {
+      "entry": "JSUI",
+      "in": 3,
+      "out": 3,
+      "total": 6
+    },
+    {
+      "entry": "Leverage Points Framework",
+      "in": 3,
+      "out": 3,
+      "total": 6
+    },
+    {
+      "entry": "Meadows and Music \u2014 Leverage Points",
+      "in": 3,
+      "out": 3,
+      "total": 6
+    },
+    {
+      "entry": "Palace AI Partnership Philosophy",
+      "in": 1,
+      "out": 5,
+      "total": 6
+    },
+    {
+      "entry": "ROSETTA",
+      "in": 3,
+      "out": 3,
+      "total": 6
+    },
+    {
+      "entry": "Shimmer Cloud",
+      "in": 2,
+      "out": 4,
+      "total": 6
+    },
+    {
+      "entry": "Songlines",
+      "in": 2,
+      "out": 4,
+      "total": 6
+    },
+    {
+      "entry": "Spore Check Ceremony",
+      "in": 3,
+      "out": 3,
+      "total": 6
+    },
+    {
+      "entry": "BBS Design System",
+      "in": 1,
+      "out": 4,
+      "total": 5
+    },
+    {
+      "entry": "Deposit Archive",
+      "in": 4,
+      "out": 1,
+      "total": 5
+    },
+    {
+      "entry": "Harvest Ceremony \u2014 Context",
+      "in": 1,
+      "out": 4,
+      "total": 5
+    },
+    {
+      "entry": "Logarithmic Interface Scaling",
+      "in": 2,
+      "out": 3,
+      "total": 5
+    },
+    {
+      "entry": "Meadows and Music \u2014 Origin and Process",
+      "in": 1,
+      "out": 4,
+      "total": 5
+    },
+    {
+      "entry": "Quadratic Interpolation in DSP",
+      "in": 0,
+      "out": 5,
+      "total": 5
+    },
+    {
+      "entry": "The Metaphor Stretch",
+      "in": 2,
+      "out": 3,
+      "total": 5
+    }
+  ],
+  "forward_ghosts_from_yaml": [
+    {
+      "target": "4 Pillars Framework - The Founding Conversation",
+      "sources": [
+        "Leverage Points Framework",
+        "Palace AI Partnership Philosophy",
+        "Quality Manifesto"
+      ]
+    },
+    {
+      "target": "4 Pillars Weekly Structure",
+      "sources": [
+        "Leverage Points Framework",
+        "Palace AI Partnership Philosophy",
+        "Quality Manifesto"
+      ]
+    },
+    {
+      "target": "Ableton Extension SDK",
+      "sources": [
+        "SMPTE LTC"
+      ]
+    },
+    {
+      "target": "Actor Model",
+      "sources": [
+        "Registry Pattern"
+      ]
+    },
+    {
+      "target": "Crystal Sonification Reference",
+      "sources": [
+        "Crystal Synthesizer"
+      ]
+    },
+    {
+      "target": "Donella Meadows",
+      "sources": [
+        "Leverage Points Framework"
+      ]
+    },
+    {
+      "target": "Harvest Log",
+      "sources": [
+        "Deposit Archive"
+      ]
+    },
+    {
+      "target": "Hibernation Ceremony",
+      "sources": [
+        "Revival Ceremony"
+      ]
+    },
+    {
+      "target": "Loudon Live",
+      "sources": [
+        "Generative Audio Devices",
+        "Generative Preset Development"
+      ]
+    },
+    {
+      "target": "PDL Renderer",
+      "sources": [
+        "Generative Audio Devices"
+      ]
+    },
+    {
+      "target": "Quality",
+      "sources": [
+        "Cooperation Yields Agency",
+        "Four Pillars",
+        "Hilaritas Generator",
+        "Spinoza Conatus"
+      ]
+    },
+    {
+      "target": "README",
+      "sources": [
+        "Palace To-Do"
+      ]
+    },
+    {
+      "target": "README \u2014 RNBO Prototype",
+      "sources": [
+        "2D Torus Wavetable Synthesizer"
+      ]
+    },
+    {
+      "target": "Resonance and Damping",
+      "sources": [
+        "Differential Equations"
+      ]
+    },
+    {
+      "target": "Synthesis Topologies",
+      "sources": [
+        "Generative Audio Devices",
+        "Generative Preset Development"
+      ]
+    },
+    {
+      "target": "Toolkit \u2014 Audio Effects",
+      "sources": [
+        "Toolkit \u2014 Audio Plugins"
+      ]
+    },
+    {
+      "target": "Toolkit \u2014 Drum Machines",
+      "sources": [
+        "Toolkit \u2014 Synthesizers"
+      ]
+    },
+    {
+      "target": "Toolkit \u2014 MIDI Controllers",
+      "sources": [
+        "Toolkit \u2014 Synthesizers"
+      ]
+    }
+  ]
+}

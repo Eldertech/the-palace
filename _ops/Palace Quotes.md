@@ -73,7 +73,7 @@ A living collection of quotes that have landed in the palace — lines that carr
 
 — Loudon Stearns
 
-*Origin: PP06, January 2026 — the Four Pillars crystallization session. The thesis of the [[Quality]]: when you define quality as furtherance of your own highest goals (wellbeing, integrity, depth), the feedback loop becomes self-reinforcing rather than self-depleting.*
+*Origin: PP06, January 2026 — the Four Pillars crystallization session. The thesis of the [[Quality Manifesto]]: when you define quality as furtherance of your own highest goals (wellbeing, integrity, depth), the feedback loop becomes self-reinforcing rather than self-depleting.*
 
 ---
 

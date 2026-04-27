@@ -1,0 +1,151 @@
+1 from 2	project	growing	5out/5in
+2D Torus Wavetable Synthesizer	project	fruiting	7out/5in
+2D Torus Wavetable Synthesizer — Build Log	meta	growing	2out/2in
+2D Wavetable Catalog	hub	growing	3out/3in
+Action Potential Oscillator	project	growing	15out/21in
+Agent Wellbeing	breakthrough	growing	7out/3in
+BBS Blackboard	concept	growing	10out/11in
+BBS Design System	source	sprout	4out/1in
+Bessel Functions in Synthesis	concept	growing	9out/11in
+Biomechanical Synthesis	concept	mature	16out/5in
+Boundary-Crossing Instruments	breakthrough	mature	5out/24in
+CLAUDE	None	None	0out/2in
+Categorizing Inharmonicity	concept	mature	10out/7in
+Claude CLI Reference	meta	growing	3out/0in
+Compressor Design	project	mature	4out/8in
+Confucianism	concept	growing	8out/6in
+Cooperation Yields Agency	hub	mature	7out/27in
+Crystal Synthesizer	project	fruiting	11out/9in
+Crystal Synthesizer — Staging	None	None	0out/0in
+DSP Frameworks	hub	growing	4out/2in
+DSP in Looping Dimensions	concept	sprout	4out/2in
+Deposit Archive	meta	foundational	1out/4in
+Deposit Ceremony	practice	growing	6out/16in
+Deposit Ceremony — Context	practice	growing	2out/2in
+Dialectic	practice	growing	6out/2in
+Dialogue Moderator	concept	growing	8out/1in
+Differential Equations	hub	mature	9out/4in
+Dispersion	hub	mature	10out/6in
+Dub Lineage	concept	sprout	4out/4in
+Embeddings as Relational Meaning	concept	growing	4out/6in
+Enchanted Conversation Archive	concept	growing	8out/1in
+Enchanted Worker	concept	growing	8out/15in
+Endosymbiosis	concept	mature	11out/10in
+Excellent Adventure	breakthrough	growing	8out/10in
+Four Pillars	hub	mature	6out/4in
+Four Pillars of Enchanted Agency	concept	growing	9out/2in
+Frequency-Time Duality	concept	growing	5out/19in
+Gemma 4 — Local Coordination Guide	source	growing	4out/0in
+Generative Audio Devices	project	sprout	3out/3in
+Generative Compression	practice	growing	7out/5in
+Generative Preset Development	project	growing	4out/2in
+Generative Sample Libraries	project	seed	3out/1in
+Granular Synthesis	concept	growing	8out/14in
+Harmonicity and Inharmonicity	concept	growing	5out/12in
+Harvest Ceremony	practice	mature	5out/8in
+Harvest Ceremony — Context	practice	growing	4out/1in
+Hilaritas Generator	hub	mature	9out/31in
+Hyperdimensional Prism	concept	mature	5out/23in
+Identity Molting	concept	mature	4out/6in
+Image Embedding Standard	meta	mature	3out/1in
+Inharmonic Wavetable Synthesis	project	growing	11out/2in
+JEWEL	meta	foundational	4out/5in
+JSUI	spore	sprout	3out/3in
+Jewel — Context	meta	foundational	3out/1in
+Kuramoto Coupling	hub	mature	15out/46in
+Latent Error	concept	growing	4out/4in
+Lateral Access	concept	growing	8out/13in
+Leverage Points Framework	concept	mature	3out/3in
+Like Water	concept	growing	6out/2in
+Logarithmic Interface Scaling	concept	mature	3out/2in
+Lossy Compression with Intent Alignment	concept	growing	7out/2in
+Loudon's Toolkit	hub	growing	5out/3in
+Map Build Ceremony	meta	growing	6out/1in
+Map Log	None	None	0out/0in
+Meadows and Music — Leverage Points	source	growing	3out/3in
+Meadows and Music — Origin and Process	source	growing	4out/1in
+Meaning and the Link	source	foundational	6out/8in
+Media Library	meta	mature	2out/0in
+Mermaid Diagram Standard	meta	mature	4out/0in
+Metaphor as Coupling Medium	breakthrough	growing	7out/1in
+Metric Modulation	concept	growing	3out/0in
+Mixture of Experts	concept	mature	8out/5in
+Modes of Collaboration	practice	growing	7out/13in
+Neural Granular Synthesis	concept	growing	5out/5in
+Oblique Portrait	practice	growing	7out/9in
+Octave Equivalence	concept	sprout	3out/1in
+Ohm's Law	concept	mature	4out/3in
+Pages as Agents	concept	sprout	8out/17in
+Palace AI Partnership Philosophy	practice	mature	5out/1in
+Palace Agent Infrastructure Spec	concept	sprout	13out/6in
+Palace Ceremonies	hub	growing	9out/9in
+Palace Enchantment	project	growing	10out/15in
+Palace Graffiti	meta	growing	4out/0in
+Palace Map	concept	sprout	7out/4in
+Palace Philosophies	hub	mature	9out/8in
+Palace Quotes	meta	seed	2out/1in
+Palace To-Do	meta	growing	2out/0in
+Palace as Context Injection System	breakthrough	growing	8out/4in
+Particle Synthesis	concept	growing	5out/5in
+Pheromone Trail	concept	sprout	5out/8in
+Piano String Inharmonicity	concept	growing	6out/8in
+Playful Interface Design	practice	growing	7out/4in
+Portamento and Physical Pitch Modeling	project	mature	5out/5in
+Preset Oracle	project	mature	4out/3in
+Progressive Staging	practice	sprout	5out/12in
+Quadratic Interpolation in DSP	concept	growing	5out/0in
+Quality Manifesto	concept	mature	5out/4in
+Quantum Synthesizer	concept	growing	5out/5in
+README - The Palace Guide	meta	foundational	2out/5in
+ROSETTA	meta	foundational	3out/3in
+Registry Pattern	concept	seed	5out/2in
+Resonant Link Labels	concept	growing	4out/3in
+Retrospective Delay	project	growing	10out/5in
+Retrospective Delay — Staging	None	seed	1out/0in
+Revival Ceremony	practice	mature	3out/1in
+SCHEMA	meta	foundational	8out/13in
+SMPTE LTC	project	growing	4out/0in
+Scale-Stratified Identity	concept	sprout	7out/1in
+Self-Describing Knowledge Module	concept	growing	5out/4in
+Self-Model Update Ceremony	practice	mature	3out/1in
+Semantic Delay	project	growing	5out/7in
+Semantic Delay - Phase 1 Plan Review 2026-04-20	concept	sprout	4out/0in
+Shepard Tone Synthesizer	project	sprout	9out/1in
+Shepard Tone Synthesizer — Staging	None	None	0out/0in
+Shimmer Cloud	spore	seed	4out/2in
+Signal-Rate CV Architecture	concept	growing	5out/5in
+Songlines	concept	mature	4out/2in
+Spinoza Conatus	hub	mature	9out/40in
+Spore Check Ceremony	practice	mature	3out/3in
+State Machine	concept	growing	5out/2in
+Stoicism	concept	growing	6out/4in
+Streaming details	meta	seed	0out/0in
+Striatum	concept	growing	4out/3in
+Substrate	meta	growing	13out/0in
+Substrate Skill	meta	mature	1out/7in
+Swarm Weave	project	growing	14out/21in
+Symbiotic Skills	project	growing	5out/16in
+The Cooperation Path	meta	growing	7out/2in
+The Curve Is the Material	concept	growing	5out/2in
+The Fortress and the Threshold	concept	growing	8out/5in
+The Metaphor Stretch	concept	sprout	3out/2in
+Three Kinds of Warp	concept	growing	7out/2in
+Threshold Conatus	concept	sprout	10out/5in
+Toolkit Assessment — Working Doc	meta	foundational	1out/1in
+Toolkit — Audio Plugins	concept	growing	2out/0in
+Toolkit — Synthesizers	concept	growing	1out/2in
+Torus Warping Catalog	hub	growing	7out/3in
+Tree of Thoughts	source	sprout	6out/2in
+Trickster	hub	growing	21out/16in
+Tristitia Generator	concept	growing	2out/1in
+Walk Ceremony	practice	mature	5out/3in
+Walk That Weaves	question	sprout	6out/1in
+Wallpaper Groups	concept	growing	6out/2in
+Wavetable Space as Torus	concept	growing	6out/3in
+Wavetable Synthesis -- Research & Higher-Dimensional Design	concept	growing	0out/2in
+Weave Ceremony	practice	mature	8out/8in
+Weave Ceremony — Context	practice	growing	3out/1in
+What Claim Does Scientific Sonification Make?	question	seed	2out/1in
+coordinator-synthesis-template	None	None	0out/0in
+curriculum-map	meta	sprout	2out/0in
+worker-prompt-template	None	None	0out/0in

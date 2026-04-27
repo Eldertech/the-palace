@@ -26,6 +26,10 @@ links:
     type: enables
   - target: "[[Resonant Link Labels]]"
     type: connects-to
+  - target: "[[Four Pillars]]"
+    type: connects-to
+  - target: "[[Four Pillars of Enchanted Agency]]"
+    type: connects-to
 ---
 	# SCHEMA — The Palace Type System
 

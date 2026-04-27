@@ -43,6 +43,18 @@ links:
     type: connects-to
   - target: "[[Spinoza Conatus]]"
     type: connects-to
+  - target: "[[Palace Enchantment]]"
+    type: connects-to
+  - target: "[[Songlines]]"
+    type: connects-to
+  - target: "[[Tristitia Generator]]"
+    type: connects-to
+  - target: "[[Lateral Access]]"
+    type: connects-to
+  - target: "[[1 from 2]]"
+    type: connects-to
+  - target: "[[Palace Ceremonies]]"
+    type: connects-to
 ---
 # Substrate
 

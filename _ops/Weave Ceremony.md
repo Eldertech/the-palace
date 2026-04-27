@@ -3,8 +3,8 @@ title: "Weave Ceremony"
 type: practice
 pillars: [practice, tools, philosophy]
 born: 2026-03
-last_activated: 2026-04-07
-activation_count: 2
+last_activated: 2026-04-27
+activation_count: 3
 stage: mature
 links:
   - target: "[[Palace Ceremonies]]"
@@ -23,6 +23,9 @@ links:
     type: spawned
   - target: "[[Swarm Weave]]"
     type: spawned
+  - target: "[[Map Build Ceremony]]"
+    type: enables
+    label: pre-weave
 ---
 
 # Weave Ceremony

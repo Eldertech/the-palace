@@ -41,6 +41,13 @@ links:
     type: connects-to
   - target: "[[Tree of Thoughts]]"
     type: connects-to
+  - target: "[[Agent Wellbeing]]"
+    type: connects-to
+  - target: "[[Spinoza Conatus]]"
+    type: deepens
+    label: agency-substrate
+  - target: "[[Dub Lineage]]"
+    type: connects-to
 ---
 
 # Palace Agent Infrastructure Spec
