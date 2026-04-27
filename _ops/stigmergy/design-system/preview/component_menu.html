@@ -1,0 +1,21 @@
+<!doctype html><html><head><meta charset="utf-8">
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  html,body{margin:0;background:var(--bg);padding:14px 20px;box-sizing:border-box;color:var(--fg1)}
+  body::after{content:"";position:fixed;inset:0;pointer-events:none;background:repeating-linear-gradient(to bottom,transparent 0 2px,rgba(0,0,0,.22) 2px 3px);z-index:9}
+  .menu{font-family:var(--font-mono);font-size:14px;color:var(--phosphor);text-shadow:var(--glow)}
+  .item{padding:4px 8px;cursor:pointer}
+  .item:hover{background:var(--phosphor);color:var(--bg);text-shadow:none}
+  .item.sel{background:var(--phosphor);color:var(--bg);text-shadow:none}
+  .hot{color:var(--phosphor-white);text-shadow:var(--glow-strong)}
+  .item.sel .hot, .item:hover .hot{color:var(--bg);text-shadow:none}
+  .lbl{font-size:10px;color:var(--phosphor-dim);text-transform:uppercase;letter-spacing:.08em;margin:0 0 6px}
+</style></head><body>
+<div class="lbl">menu — hover inverts · selected stays inverted</div>
+<div class="menu">
+  <div class="item">[<span class="hot">N</span>] new trace</div>
+  <div class="item sel">[<span class="hot">R</span>] reply</div>
+  <div class="item">[<span class="hot">S</span>] scan board</div>
+  <div class="item">[<span class="hot">Q</span>] quit</div>
+</div>
+</body></html>

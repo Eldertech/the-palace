@@ -1,7 +1,11 @@
 ---
-title: "Inharmonic Wavetable Synthesis"
+title: Inharmonic Wavetable Synthesis
 type: project
-pillars: [creation, tools, philosophy, practice]
+pillars:
+  - creation
+  - tools
+  - philosophy
+  - practice
 born: 2026-04
 stage: growing
 status: active
@@ -32,21 +36,21 @@ links:
     label: trajectory-library
   - target: "[[Dispersion]]"
     type: connects-to
-  - target: "[[Wavetable Synthesis — Deep Research & Higher-Dimensional Design]]"
+  - target: "[[Wavetable Synthesis -- Research & Higher-Dimensional Design]]"
     type: deepens
     label: cube-emergence
-  - target: "[[Synthesis Space as Torus]]"
+  - target: "[[Wavetable Space as Torus]]"
     type: connects-to
     label: topological-reframe
   - target: "[[The Curve Is the Material]]"
     type: connects-to
     label: design-refinement
-forward_vector: "I want to become a working VST instrument and a Four Pillars lesson simultaneously — the synthesizer is the pedagogy, and the pedagogy is the synthesizer. The lesson teaches what harmony actually is by putting a horizontal line in front of you and showing you what happens when you bend it."
+forward_vector: I want to become a working VST instrument and a Four Pillars lesson simultaneously — the synthesizer is the pedagogy, and the pedagogy is the synthesizer. The lesson teaches what harmony actually is by putting a horizontal line in front of you and showing you what happens when you bend it.
 agency_profile:
-  creation: "I want to produce sounds that exist nowhere in current synthesis — the specific quality of a bell's physical frequency evolution applied to a pad's amplitude profile, or piano stretch dynamics applied to a vocal formant wavetable. The synthesis space this opens has not been sonically explored."
+  creation: I want to produce sounds that exist nowhere in current synthesis — the specific quality of a bell's physical frequency evolution applied to a pad's amplitude profile, or piano stretch dynamics applied to a vocal formant wavetable. The synthesis space this opens has not been sonically explored.
   tools: "I require: an additive synthesis engine (64–128 partials, real-time, JUCE/VST3), a Wavetable B rendering system with per-partial interpolation, a physical trajectory analysis pipeline (SMS or STFT peak-tracker to convert real instrument recordings into Wavetable B frames), and a wavetable LFO routing matrix. This is a 6–12 month serious build."
   philosophy: "I am asking: what is harmony, actually? A flat line. That answer contains everything — the physics of string stiffness, the mathematics of Bessel eigenmodes, the perceptual machinery of consonance and dissonance, and the entire tradition of instrument making. The flat line is where physics meets perception meets meaning."
-  practice: "The VST and the lesson must be built together. The lesson teaches better because the instrument exists. The instrument is designed better because the lesson forces clarity. These are not two projects — they are one project with two deliverable forms."
+  practice: The VST and the lesson must be built together. The lesson teaches better because the instrument exists. The instrument is designed better because the lesson forces clarity. These are not two projects — they are one project with two deliverable forms.
 ---
 
 # Inharmonic Wavetable Synthesis

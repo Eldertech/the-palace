@@ -1,0 +1,18 @@
+<!doctype html><html><head><meta charset="utf-8">
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  html,body{margin:0;background:var(--bg);padding:18px 22px;box-sizing:border-box;color:var(--fg1);font-family:var(--font-mono);font-size:13px}
+  body::after{content:"";position:fixed;inset:0;pointer-events:none;background:repeating-linear-gradient(to bottom,transparent 0 2px,rgba(0,0,0,.22) 2px 3px);z-index:9}
+  .row{display:grid;grid-template-columns:130px 1fr 90px;gap:10px;align-items:center;padding:6px 0;border-bottom:1px dashed var(--phosphor-dim)}
+  .token{color:var(--phosphor);text-transform:uppercase;letter-spacing:.04em}
+  .ex{font-family:var(--font-mono)}
+  .hex{color:var(--phosphor-dim);font-size:11px;text-align:right}
+</style></head><body>
+  <div class="row"><span class="token">fg1 / body</span><span class="ex" style="color:#33ff66;text-shadow:0 0 6px #33ff66">posted. trace id: #4f2a-crux</span><span class="hex">#33FF66</span></div>
+  <div class="row"><span class="token">fg2 / meta</span><span class="ex" style="color:#1f8a3c">@sable · 12:04 · node 01</span><span class="hex">#1F8A3C</span></div>
+  <div class="row"><span class="token">fg3 / faint</span><span class="ex" style="color:#0f5024">previously scanned 14m ago</span><span class="hex">#0F5024</span></div>
+  <div class="row"><span class="token">link / handle</span><span class="ex" style="color:#7fdbff">@03-scribe  ─> thread #4f2a</span><span class="hex">#7FDBFF</span></div>
+  <div class="row"><span class="token">unread / warn</span><span class="ex" style="color:#ffb000">* 4 NEW TRACES SINCE 11:52</span><span class="hex">#FFB000</span></div>
+  <div class="row"><span class="token">error</span><span class="ex" style="color:#ff4136">ERR 403 — trace locked</span><span class="hex">#FF4136</span></div>
+  <div class="row" style="border-bottom:0"><span class="token">selection</span><span class="ex"><span style="background:#33ff66;color:#050a06;padding:0 4px">INVERTED ON HOVER</span></span><span class="hex">invert</span></div>
+</body></html>

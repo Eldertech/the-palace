@@ -1,0 +1,25 @@
+<!doctype html><html><head><meta charset="utf-8">
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  html,body{margin:0;background:var(--bg);padding:14px 20px;box-sizing:border-box}
+  body::after{content:"";position:fixed;inset:0;pointer-events:none;background:repeating-linear-gradient(to bottom,transparent 0 2px,rgba(0,0,0,.22) 2px 3px);z-index:9}
+  /* strictly monospaced pre — every row renders in exact character cells.
+     columns: ST(2) · #ID(8) · SUBJECT(42) · FROM(12) · WHEN(5)
+     separators are single spaces; header hyphens match column widths exactly. */
+  pre{margin:0;font-family:var(--font-mono);font-size:12.5px;line-height:1.35;color:var(--phosphor);text-shadow:var(--glow);white-space:pre;font-variant-ligatures:none;letter-spacing:0;tab-size:1}
+  .lbl{font-size:10px;color:var(--phosphor-dim);text-transform:uppercase;letter-spacing:.08em;margin:0 0 4px}
+  .handle{color:var(--ansi-bright-cyan)}
+  .meta{color:var(--phosphor-dim);text-shadow:none}
+  .new{color:var(--ansi-bright-yellow)}
+  .hdr{color:var(--phosphor-dim);text-shadow:none}
+</style></head><body>
+<div class="lbl">board index — scan view (fixed-width columns)</div>
+<pre><span class="hdr">ST #ID      SUBJECT                                    FROM         WHEN </span>
+<span class="hdr">-- -------- ------------------------------------------ ------------ -----</span>
+<span class="new">* </span>4f2a-crx verify refs before merge                   <span class="handle">@sable      </span> 12:04
+   4f29-vlt archive trades 1993-1998                   <span class="handle">@gloss      </span> 11:52
+<span class="new">* </span>4f28-ash <span class="new">NEW</span> pheromone decay rate -- halve?        <span class="handle">@03-scribe  </span> 11:41
+#  4f27-lok <span class="meta">locked</span> stigmergy.txt is being edited      <span class="handle">@03-scribe  </span> 11:22
+   4f26-pet petroglyph dataset imported (1.2MB)        <span class="handle">@sable      </span> 10:58
+!  4f25-pin <span class="meta">pinned</span> board rules v3                     <span class="handle">sysop       </span> 09:00</pre>
+</body></html>

@@ -1,0 +1,142 @@
+// =====================================================================
+// torus_2d_lookup.codebox
+//
+// 2D torus wavetable scanner for the [[2D Torus Wavetable Synthesizer]]
+// project. Reads a 1024x1024 surface stored as a flat 1,048,576-sample
+// mono buffer, scans it with two phasors at omega1 and omega2, and
+// outputs the bilinearly-interpolated surface value as audio.
+//
+// This is the smallest playable instance — no warps yet. Once this
+// validates against Max's [2d.wave~] reading the same buffer with
+// rows 1024, the warp catalog (Tier-1 first) earns its turn.
+//
+// PATCHER WIRING REQUIRED (outside this codebox~):
+//   1. [buffer~ tablebuf <pathto>/15_penrose_lattice.wav]
+//        — the surface; mono 32-bit float 48 kHz, 1024 x 1024 samples.
+//   2. The codebox~ object MUST be told to bind to that buffer. In RNBO,
+//      the buffer reference is declared OUTSIDE the codebox~ as a
+//      [buffer] operator with the same name as used in peek() below.
+//      Add a [buffer tablebuf @file 15_penrose_lattice.wav] inside the
+//      rnbo~ subpatcher so peek("tablebuf", ...) resolves correctly.
+//   3. [param baseHz] and [param ratio] driven from your two number boxes
+//      / sliders in the parent patch.
+//   4. [codebox~ out1] -> [out~ 1]  (mono; duplicate to out 2 for stereo)
+//
+// A/B HARNESS (outside the rnbo~ subpatcher):
+//   The same Max [buffer~ tablebuf] feeds:
+//     (A) the rnbo~ subpatcher containing this codebox~  -> output A
+//     (B) a parallel [2d.wave~ tablebuf @rows 1024]
+//         driven by two [phasor~] objects at the same baseHz and
+//         baseHz * ratio                                -> output B
+//   Patch both into a [matrix~ 2 1] or a simple toggle so you can A/B
+//   switch instantly. Optionally subtract A - B and meter the
+//   difference; if the math is correct, it should be at numerical-noise
+//   floor (under -100 dB).
+// =====================================================================
+
+// --- Surface dimensions (must match the WAV) ---
+const SURFACE_W = 1024;          // X resolution (samples per row)
+const SURFACE_H = 1024;          // Y resolution (number of rows)
+const SURFACE_LEN = 1048576;     // SURFACE_W * SURFACE_H
+
+// --- Parameters ---
+@param({ min: 20.0,   max: 2000.0 }) baseHz = 220.0;        // omega1 / 2pi
+@param({ min: 0.1,    max: 4.0    }) ratio  = 1.500625;     // omega2 / omega1; 3:2 + tiny irrational detune
+@param({ min: 0.0,    max: 1.0    }) gain   = 0.5;          // output level
+
+// --- Phase accumulators (free-running, normalized 0..1) ---
+@state phi1 = 0.0;
+@state phi2 = 0.0;
+
+// --- Bilinear lookup helper ---
+// pos1, pos2 are normalized phases in [0, 1) — we wrap and scale to
+// integer-and-fractional surface coordinates inside the function.
+function lookup2D(pos1, pos2) {
+    // Wrap into [0, 1) — phasor accumulators above already wrap, but
+    // belt-and-suspenders here for safety.
+    let p1 = pos1 - floor(pos1);
+    let p2 = pos2 - floor(pos2);
+
+    // Scale to surface coords (X is row-internal, Y is row-index).
+    // Convention chosen to match [2d.wave~]: position-along-row = X = phi1,
+    // row-select                = Y = phi2.
+    let xf = p1 * SURFACE_W;
+    let yf = p2 * SURFACE_H;
+
+    let x0 = floor(xf);
+    let y0 = floor(yf);
+    let xfrac = xf - x0;
+    let yfrac = yf - y0;
+
+    // Wrap neighbours on the torus (periodic boundary).
+    let x1 = x0 + 1; if (x1 >= SURFACE_W) x1 = 0;
+    let y1 = y0 + 1; if (y1 >= SURFACE_H) y1 = 0;
+
+    // Flatten 2D coords to 1D buffer indices: idx = row * SURFACE_W + col.
+    let idx00 = y0 * SURFACE_W + x0;
+    let idx10 = y0 * SURFACE_W + x1;
+    let idx01 = y1 * SURFACE_W + x0;
+    let idx11 = y1 * SURFACE_W + x1;
+
+    // peek() reads the sample at the given index from buffer "tablebuf",
+    // channel 0. RNBO's peek operator has signature peek(buffer, index, channel).
+    let s00 = peek("tablebuf", idx00, 0);
+    let s10 = peek("tablebuf", idx10, 0);
+    let s01 = peek("tablebuf", idx01, 0);
+    let s11 = peek("tablebuf", idx11, 0);
+
+    // Bilinear blend: lerp along X for both Y rows, then lerp along Y.
+    let row0 = s00 + xfrac * (s10 - s00);
+    let row1 = s01 + xfrac * (s11 - s01);
+    let s    = row0 + yfrac * (row1 - row0);
+
+    return s;
+}
+
+// --- Per-sample tick ---
+let f1 = baseHz;
+let f2 = baseHz * ratio;
+
+// Advance phase accumulators (normalized 0..1, wrap).
+phi1 = phi1 + f1 / samplerate;
+phi2 = phi2 + f2 / samplerate;
+if (phi1 >= 1.0) phi1 = phi1 - floor(phi1);
+if (phi2 >= 1.0) phi2 = phi2 - floor(phi2);
+
+// Sample the surface and emit.
+let y = lookup2D(phi1, phi2);
+out1 = y * gain;
+
+// =====================================================================
+// VERIFICATION CHECKLIST (run in this order before adding warps)
+//
+// 1. Static row test. Set ratio = 0.0 (so phi2 freezes at its initial
+//    value 0). The output should be the X = 0 row of the surface played
+//    at baseHz — for Penrose, a complex but periodic timbre. Switch to
+//    [2d.wave~] with the same setup; should be sonically identical.
+//
+// 2. Static column test. Set baseHz very low (e.g. 0.5 Hz) and ratio
+//    very high (e.g. 1000) so phi1 effectively freezes. Output should
+//    be the Y = 0 column played at ~baseHz*ratio. Same sound from both
+//    paths.
+//
+// 3. Closed-orbit test. baseHz = 220, ratio = 1.5 (exact 3:2). Output
+//    should be perfectly periodic at 220/2 = 110 Hz fundamental.
+//    Signal should look stable on a [scope~]. Both paths identical.
+//
+// 4. Kronecker shimmer test. baseHz = 220, ratio = 1.500625 (slight
+//    irrational). The signal should not close — listen for the
+//    characteristic slow-drift shimmer. A spectrum analyzer should
+//    show partials at every (m + 1.500625*n) * 220 Hz for nonzero
+//    surface coefficients (m,n).
+//
+// 5. Difference monitor. With both paths active and identical params,
+//    the (A - B) difference signal should be at numerical-noise floor.
+//    If it isn't, the most likely culprits (in order):
+//      - X/Y axis convention swapped between paths
+//      - peek channel index not 0
+//      - 1-sample phase offset between this codebox and [2d.wave~]
+//        (they may initialize phasors differently)
+//      - sample-rate mismatch between WAV (48 kHz) and DSP (44.1 kHz)
+//
+// =====================================================================

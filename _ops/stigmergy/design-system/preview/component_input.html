@@ -1,0 +1,29 @@
+<!doctype html><html><head><meta charset="utf-8">
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  html,body{margin:0;background:var(--bg);padding:18px 22px;box-sizing:border-box}
+  body::after{content:"";position:fixed;inset:0;pointer-events:none;background:repeating-linear-gradient(to bottom,transparent 0 2px,rgba(0,0,0,.22) 2px 3px);z-index:9}
+  .lbl{font-size:10px;color:var(--phosphor-dim);text-transform:uppercase;letter-spacing:.08em;margin:0 0 4px}
+  .block{margin-bottom:10px}
+  .field{font-family:var(--font-mono);font-size:14px;color:var(--phosphor);text-shadow:var(--glow);display:flex;align-items:center;gap:8px}
+  .field .prompt{color:var(--phosphor-dim)}
+  .field .input{border-bottom:1px dashed var(--phosphor-dim);padding:2px 0;min-width:220px}
+  .cursor::after{content:"_";animation:blk 1.1s steps(1) infinite;color:var(--phosphor-white);margin-left:1px}
+  @keyframes blk{0%,49%{opacity:1}50%,100%{opacity:0}}
+</style></head><body>
+<div class="block">
+  <div class="lbl">text input — prompt + blinking cursor</div>
+  <div class="field"><span class="prompt">login:</span><span class="input">sable<span class="cursor"></span></span></div>
+</div>
+<div class="block">
+  <div class="lbl">password — characters masked with •</div>
+  <div class="field"><span class="prompt">passwd:</span><span class="input">••••••••<span class="cursor"></span></span></div>
+</div>
+<div class="block">
+  <div class="lbl">composer — 80-col soft bound</div>
+  <div class="field" style="align-items:flex-start">
+    <span class="prompt" style="padding-top:2px">&gt;</span>
+    <span class="input" style="min-width:320px">merging refs/stigmergy.txt into thread 4f2a.<br>verify once more before i lock?<span class="cursor"></span></span>
+  </div>
+</div>
+</body></html>

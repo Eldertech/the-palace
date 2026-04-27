@@ -1,0 +1,32 @@
+<!doctype html><html><head><meta charset="utf-8">
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  html,body{margin:0;background:var(--bg);padding:16px 20px;box-sizing:border-box}
+  body::after{content:"";position:fixed;inset:0;pointer-events:none;background:repeating-linear-gradient(to bottom,transparent 0 2px,rgba(0,0,0,.22) 2px 3px);z-index:9}
+  .grid{display:grid;grid-template-columns:repeat(8,1fr);gap:6px}
+  .sw{border:1px dashed var(--phosphor-dim);padding:6px;min-height:62px;display:flex;flex-direction:column;justify-content:space-between}
+  .chip{height:24px;border:1px solid rgba(255,255,255,.08)}
+  .n{font-size:10px;color:var(--phosphor);text-transform:uppercase;letter-spacing:.04em}
+  .h{font-size:9.5px;color:var(--phosphor-dim);font-family:var(--font-mono)}
+  h4{margin:0 0 6px;color:var(--phosphor-dim);font-size:10px;text-transform:uppercase;letter-spacing:.08em}
+</style></head><body>
+<h4>ANSI 16 — used for status + accents only</h4>
+<div class="grid">
+  <div class="sw"><div class="chip" style="background:#000"></div><div class="n">black</div><div class="h">#000000</div></div>
+  <div class="sw"><div class="chip" style="background:#cc2833"></div><div class="n">red</div><div class="h">#CC2833</div></div>
+  <div class="sw"><div class="chip" style="background:#33ff66"></div><div class="n">green</div><div class="h">#33FF66</div></div>
+  <div class="sw"><div class="chip" style="background:#c0a000"></div><div class="n">yellow</div><div class="h">#C0A000</div></div>
+  <div class="sw"><div class="chip" style="background:#1a4fd6"></div><div class="n">blue</div><div class="h">#1A4FD6</div></div>
+  <div class="sw"><div class="chip" style="background:#a000a0"></div><div class="n">magenta</div><div class="h">#A000A0</div></div>
+  <div class="sw"><div class="chip" style="background:#0aa0a0"></div><div class="n">cyan</div><div class="h">#0AA0A0</div></div>
+  <div class="sw"><div class="chip" style="background:#aaaaaa"></div><div class="n">white</div><div class="h">#AAAAAA</div></div>
+  <div class="sw"><div class="chip" style="background:#555555"></div><div class="n">br.black</div><div class="h">#555555</div></div>
+  <div class="sw"><div class="chip" style="background:#ff4136"></div><div class="n">br.red</div><div class="h">#FF4136</div></div>
+  <div class="sw"><div class="chip" style="background:#7fff9b"></div><div class="n">br.green</div><div class="h">#7FFF9B</div></div>
+  <div class="sw"><div class="chip" style="background:#ffb000"></div><div class="n">br.yellow</div><div class="h">#FFB000</div></div>
+  <div class="sw"><div class="chip" style="background:#4f8cff"></div><div class="n">br.blue</div><div class="h">#4F8CFF</div></div>
+  <div class="sw"><div class="chip" style="background:#ff5fff"></div><div class="n">br.magenta</div><div class="h">#FF5FFF</div></div>
+  <div class="sw"><div class="chip" style="background:#7fdbff"></div><div class="n">br.cyan</div><div class="h">#7FDBFF</div></div>
+  <div class="sw"><div class="chip" style="background:#ffffff"></div><div class="n">br.white</div><div class="h">#FFFFFF</div></div>
+</div>
+</body></html>

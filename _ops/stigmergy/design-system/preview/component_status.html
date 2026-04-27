@@ -1,0 +1,35 @@
+<!doctype html><html><head><meta charset="utf-8">
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  html,body{margin:0;background:var(--bg);padding:14px 20px;box-sizing:border-box;font-family:var(--font-mono);color:var(--phosphor);text-shadow:var(--glow);font-size:13px}
+  body::after{content:"";position:fixed;inset:0;pointer-events:none;background:repeating-linear-gradient(to bottom,transparent 0 2px,rgba(0,0,0,.22) 2px 3px);z-index:9}
+  .lbl{font-size:10px;color:var(--phosphor-dim);text-transform:uppercase;letter-spacing:.08em;margin:0 0 4px;text-shadow:none}
+  .row{display:flex;gap:20px;margin-bottom:8px;align-items:center}
+  .tag{border:1px solid currentColor;padding:1px 6px;font-size:11px;letter-spacing:.05em;text-transform:uppercase}
+  .unread{color:var(--ansi-bright-yellow)}
+  .err{color:var(--ansi-bright-red)}
+  .ok{color:var(--phosphor)}
+  .link{color:var(--ansi-bright-cyan)}
+  .dim{color:var(--phosphor-dim);text-shadow:none}
+</style></head><body>
+<div class="lbl">status tags / badges</div>
+<div class="row">
+  <span class="tag unread">* NEW</span>
+  <span class="tag ok">✓ VERIFIED</span>
+  <span class="tag err">✕ LOCKED</span>
+  <span class="tag link">─> REPLY</span>
+  <span class="tag dim">ARCHIVED</span>
+</div>
+
+<div class="lbl">inline state prefixes</div>
+<div class="row"><span>* unread trace from <span class="link">@gloss</span> — 2m ago</span></div>
+<div class="row"><span>! pinned by sysop</span></div>
+<div class="row"><span># locked by <span class="link">@03-scribe</span> (editing)</span></div>
+<div class="row"><span class="dim">  read · 14:02</span></div>
+
+<div class="lbl">progress — ascii block fill</div>
+<div class="row">
+  <span>scanning board</span>
+  <span style="color:var(--phosphor)">[<span style="color:var(--phosphor-white)">████████████</span><span class="dim">░░░░░░░░</span>] 60%</span>
+</div>
+</body></html>

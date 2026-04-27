@@ -1,7 +1,10 @@
 ---
-title: "Synthesis Space as Torus"
+title: Wavetable Space as Torus
 type: concept
-pillars: [creation, tools, philosophy]
+pillars:
+  - creation
+  - tools
+  - philosophy
 born: 2026-04
 stage: growing
 energy: very high
@@ -13,7 +16,7 @@ links:
   - target: "[[Inharmonic Wavetable Synthesis]]"
     type: deepens
     label: topological-reframe
-  - target: "[[Wavetable Synthesis — Deep Research & Higher-Dimensional Design]]"
+  - target: "[[Wavetable Synthesis -- Research & Higher-Dimensional Design]]"
     type: deepens
     label: cube-abandoned
   - target: "[[Harmonicity and Inharmonicity]]"
@@ -69,44 +72,52 @@ The beat envelope phase ψ ∈ [0, 2π) of the inharmonic partial structure roun
 
 This is not the only way to read inharmonicity as a cyclic dimension. The B coefficient of piano inharmonicity parameterizes a continuous deformation of the torus — at β = 0, the torus is "flat" (perfectly harmonic); as β increases, the phase fiber twists relative to the frame base. This is the **fiber bundle** reading below. Both framings are valid and complementary.
 
-### Knotted Tori: What (p,q,r) Paths Look Like
+### Richer Knots: What (p,q,r) Paths Look Like
 
-On T², a closed (p,q) path is a knotted **curve** — a 1D object — sitting on the surface of a torus in 3-space.
+On T², a closed (p,q) path is a **torus knot** — a 1D closed curve sitting on the surface of a torus in 3-space. Its knot class is determined by the integer pair (p,q) up to sign.
 
-On T³, a closed (p,q,r) path is a knotted **torus** — a 2D surface — when projected to 3D. The path sweeps out a tube whose topology is determined by the triple (p,q,r). These objects are **torus links**: linked and knotted tori threaded through each other. The closed curve became a closed surface. The knot class became a link class.
+On T³, a closed (p,q,r) path is still a 1D closed curve — paths do not gain a dimension when the ambient space does. What *does* grow is the richness of its possible knot types. T³ embeds cleanly into R⁴ but not R³, so visualizing a (p,q,r) closed orbit requires either a 4D embedding or a projection into R³ that accepts some self-intersection. Under such a projection, the closed curve can form knots strictly richer than the torus-knot family — most prominently **cable knots** and **iterated torus knots**, built by tracing a torus knot, then tracing a second torus knot around a tubular neighborhood of the first.
 
-At specific inharmonicity values — those producing rational beat frequencies relative to the audio rate and modulation rate — the synthesis path traces one of these torus links. The integers (p,q,r) encode the three frequency ratios directly. Change any one ratio and the topology of the path changes discretely: a trefoil tube becomes a figure-eight tube.
+At specific inharmonicity values — those producing rational beat frequencies relative to both the audio rate and the modulation rate — the synthesis path closes into one of these knots. The integers (p,q,r) encode three winding counts, one per S¹ factor. Change any one ratio and the knot class changes discretely: a (2,3) trefoil on T² can sit inside a cable knot on T³ whose outer winding is (5), and the whole knot class flips when any factor does. The discrete jumps in knot class are the timbral "phase transitions" that mark rational-ratio modulation configurations.
 
 ---
 
 ## Monodromy and the Fiber Bundle
 
-The most structurally precise reading of inharmonicity uses **fiber bundle** language.
+A more structurally precise reading of inharmonicity uses **fiber bundle** language.
 
-Think of the frame position circle (θ) as the **base space** and the phase circle (φ) as the **fiber**. In a perfectly harmonic wavetable, these are independent — completing one revolution of θ leaves φ unchanged. The bundle is **trivial**, and its total space is a flat T².
+Think of the frame position circle (θ) as the **base space** and the phase circle (φ) as the **fiber**. In a perfectly harmonic wavetable the two are independent — completing one revolution of θ leaves φ unchanged. The bundle is **trivial**: its total space is T², and the natural flow (advancing φ and θ at their own rates) decomposes neatly into the two factors.
 
-Introduce inharmonicity: now one trip around the θ circle **rotates the φ fiber** by an amount related to β. The fiber twists. This rotation — how much the fiber has turned after completing one loop of the base — is the **monodromy** of the bundle.
+Introduce inharmonicity: now one trip around θ does not leave φ unchanged. It shifts φ by an amount determined by β. That shift — how much the fiber has moved after completing one loop of the base — is the **monodromy** of the bundle, or equivalently the **holonomy** of the connection that the inharmonicity defines.
 
-- Rational monodromy (β such that the twist is a rational multiple of 2π): paths close → torus knots
-- Irrational monodromy: paths are ergodic — they densely fill subtori
-- β = 0: trivial monodromy → flat T², harmonic synthesis
-- β varying continuously: sweeps through a family of twisted tori
+A key subtlety worth stating cleanly: the total space of an S¹ bundle over S¹ with pure rotational monodromy is **topologically still T², for every value of β**. The topology of the space does not change as β varies. What changes is the *geometric connection* on the bundle and, consequently, the **flow** on that space:
 
-The inharmonicity depth scalar B in [[Inharmonic Wavetable Synthesis]] is exactly a monodromy parameter. Slow LFO modulation of B traces a path through this family of twisted tori — the sound's character changes as the topological type of its phase-space structure changes.
+- Rational monodromy (β such that the shift is a rational multiple of 2π): orbits of the flow close → **torus knots** on T².
+- Irrational monodromy: orbits never close — they are **ergodic**, densely filling T².
+- β = 0: trivial connection → orbits decompose into pure phase × pure frame motion.
+- β varying continuously: **not** a sweep through topologically distinct tori, but a one-parameter family of flows on the same T², with qualitative phase transitions at every rational value of β.
+
+The inharmonicity depth scalar B in [[Inharmonic Wavetable Synthesis]] plays exactly this role: **B is a holonomy parameter**. After one fundamental period, the nth partial's phase has advanced by 2π·n·√(1+B·n²) instead of 2π·n — an excess of roughly π·B·n³ for small B. That excess phase per loop *is* the holonomy. Slow LFO modulation of B does not change what space the synthesizer lives in; it smoothly changes the flow on that space, and the sound's character shifts because rational and irrational values of B produce qualitatively different orbit structures.
+
+This reading reinforces the architectural choice in [[Inharmonic Wavetable Synthesis]] to expose B as a single scalar expressive control: B is the natural coordinate for the geometric structure actually at work.
 
 ---
 
 ## The Hopf Fibration
 
-The Hopf fibration is a map **h: S³ → S²** where every point on S² has a circle as its preimage — the 3-sphere fibers into circles over the 2-sphere. Every **(p,q) torus knot** is the preimage of a great circle on S² under the Hopf map. And S³ can be decomposed as **two solid tori glued along their boundary** — exactly T² doubled and identified.
+The Hopf fibration is a map **h: S³ → S²** where every point on S² has a circle as its preimage. The 3-sphere fibers into circles indexed by the 2-sphere. Each preimage circle is a **Hopf fiber**, and any two distinct Hopf fibers are linked exactly once as circles in S³ — the simplest non-trivial linking of closed curves.
 
-The synthesis space T³ lives in the neighborhood of this structure. When you consider the full space of all possible synthesis paths across all inharmonicity values — all (p,q,r) torus links — you are beginning to approach the topology of S³ fibered by the Hopf map. The specific inharmonicity values that produce closed paths are the rational points in this structure, and their classification is precisely the classification of torus links under the Hopf fibration.
+Preimages scale with the dimension of what you take the preimage of. The preimage of a **point** on S² is one Hopf fiber — a single circle. The preimage of a **closed curve** on S² — a circle of latitude, say — is a 2-dimensional **Clifford torus** sitting inside S³, swept out by all the Hopf fibers over that curve. Every (p,q) torus knot lives **on** one of these Clifford tori, tracing a (p,q) curve on its surface. The knots themselves are not preimages of curves on S² — they are specific closed orbits on the tori that the Hopf fibration produces.
 
-This is where the geometry connects synthesis to the deepest structures in low-dimensional topology.
+S³ itself decomposes as **two solid tori glued along their shared T² boundary** — a genus-1 Heegaard splitting. The boundary torus is one of the Clifford tori; each side is a solid torus (D² × S¹), a thickened neighborhood of one Hopf fiber. The wavetable synthesis surface is exactly this kind of torus — the page that divides the two halves of S³ in its simplest decomposition.
+
+This is where the synthesis geometry touches the deepest structures in low-dimensional topology. The wavetable torus is a Clifford torus; the modulation paths on it are torus knots; the family of "all wavetables across all inharmonicity values" is a one-parameter family of Clifford tori whose parent structure is the Hopf fibration of S³. The rational β values — the ones producing closed (p,q) paths — are the rational points in that bigger structure, and their classification is the classification of torus knots on Hopf tori.
 
 ---
 
 ## Cross-Domain Resonances
+
+<!-- CLAUDE → LOUDON: the three cross-domain sub-sections below (Orbital Resonance, Kuramoto Coupling, Bessel Functions in Synthesis via the earlier Hopf discussion) still need claim-level verification against their own palace entries in a later round. Specifics to check: the "(1,2,4) structure on T³" Laplace-resonance claim — Io:Europa:Ganymede mean motions are 4:2:1 with a resonance condition n_Io − 2·n_Europa = n_Europa − 2·n_Ganymede, so the winding class is correct in spirit but the exact (p,q,r) encoding deserves careful restatement. Also verify the Kuramoto lock/drift framing against the Kuramoto Coupling entry's own formulation. -->
 
 ### [[Orbital Resonance]] and the KAM Theorem
 
@@ -166,7 +177,7 @@ The Wavetable B editor displays the fiber of the bundle at a given base-space po
 
 - **Seifert surfaces**: every torus knot bounds an orientable surface (the Seifert surface) whose genus is (p−1)(q−1)/2. Sweeping a synthesis parameter through a closed (p,q) path traces its Seifert surface. What does this surface sound like as a 2D audio texture? Unvisited.
 - **Villarceau circles**: cutting a standard torus with a specific plane yields two perfect circles — Villarceau circles. These are the projections of certain rational T² paths. May give a UI insight for visualizing rational synthesis states.
-- **S³ decomposition**: the 3-sphere decomposes into two solid tori glued along their shared boundary torus. This is the completion of the synthesis space topology — the two solid tori are the spaces "inside" and "outside" the toroidal synthesis surface. Not yet developed.
+- **S³ decomposition**: the 3-sphere decomposes into two solid tori glued along their shared boundary torus (a genus-1 Heegaard splitting). Both sides of the wavetable T² in S³ are solid tori — there is no genuine "outside" since S³ is compact; crossing the wavetable surface moves you from one solid torus into the other. This is the completion of the synthesis space topology. Not yet developed.
 - **Higher genus surfaces**: T³ can be generalized to higher-genus surfaces for synthesis with more than three incommensurate frequency components. The [[Bolza Surface]] (genus 2, maximal symmetry) is the next step up — unexplored.
 
 ---

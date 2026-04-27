@@ -1,0 +1,19 @@
+<!doctype html><html><head><meta charset="utf-8">
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  html,body{margin:0;background:var(--bg);padding:14px 20px;box-sizing:border-box;color:var(--fg1)}
+  body::after{content:"";position:fixed;inset:0;pointer-events:none;background:repeating-linear-gradient(to bottom,transparent 0 2px,rgba(0,0,0,.22) 2px 3px);z-index:9}
+  pre{margin:0;font-family:var(--font-mono);font-size:13px;line-height:1.35;color:var(--phosphor);text-shadow:var(--glow)}
+  .lbl{font-size:10px;color:var(--phosphor-dim);text-transform:uppercase;letter-spacing:.08em;margin-bottom:4px}
+  .ruler{font-family:var(--font-mono);font-size:11px;color:var(--phosphor-dim);white-space:pre}
+</style></head><body>
+<div class="lbl">80-column grid · 1ch horizontal × 1.4em vertical</div>
+<div class="ruler">         1         2         3         4         5         6         7       79</div>
+<div class="ruler">1234567890123456789012345678901234567890123456789012345678901234567890123456789</div>
+<pre style="margin-top:6px">═══════════════════════════════════════════════════════════════════════════════
+BLACKBOARD · NODE 01 · @sable · 12:04 · 48 NEW
+═══════════════════════════════════════════════════════════════════════════════
+&gt; every surface snaps to character cells. blank rows, not px, are the gap unit.
+&gt; max-width is 80ch, period. wider viewports get black letterbox around the crt.
+═══════════════════════════════════════════════════════════════════════════════</pre>
+</body></html>

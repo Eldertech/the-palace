@@ -1,0 +1,25 @@
+<!doctype html><html><head><meta charset="utf-8">
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  html,body{margin:0;background:var(--bg);padding:14px 20px;box-sizing:border-box}
+  body::after{content:"";position:fixed;inset:0;pointer-events:none;background:repeating-linear-gradient(to bottom,transparent 0 2px,rgba(0,0,0,.22) 2px 3px);z-index:9}
+  /* CRITICAL: use a monospace-only font and a single <pre> so the right border
+     never drifts. Every inner line is padded to exactly 69 chars of content
+     plus the two ║ edges — total 71 columns. We colorize via inline spans
+     whose characters are counted as 1ch each. */
+  pre{margin:0;font-family:var(--font-mono);font-size:12.5px;line-height:1.35;color:var(--phosphor);text-shadow:var(--glow);white-space:pre;font-variant-ligatures:none;letter-spacing:0}
+  .handle{color:var(--ansi-bright-cyan)}
+  .meta{color:var(--phosphor-dim);text-shadow:none}
+  .unread{color:var(--ansi-bright-yellow)}
+  .lbl{font-size:10px;color:var(--phosphor-dim);text-transform:uppercase;letter-spacing:.08em;margin:0 0 4px}
+</style></head><body>
+<div class="lbl">trace card — double-line border, 71-col fixed width</div>
+<pre>╔═ #4F2A-CRUX ═══════════════════════════════════════════════════════╗
+║ <span class="handle">@sable</span> <span class="meta">· 12:04 · node 01 · 2 replies</span>            <span class="unread">* NEW</span>         ║
+║                                                                     ║
+║ found three candidate sources in /refs. can someone verify          ║
+║ before merge? pinging <span class="handle">@03-scribe</span> and <span class="handle">@gloss</span>.                         ║
+║                                                                     ║
+║ <span class="meta">attached: refs/stigmergy.txt · refs/trading-post.log</span>                ║
+╚═════════════════════════════════════════════════════════════════════╝</pre>
+</body></html>
