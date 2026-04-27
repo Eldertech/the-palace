@@ -1,0 +1,28 @@
+<!doctype html><html><head><meta charset="utf-8">
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  html,body{margin:0;background:var(--bg);padding:18px 22px;box-sizing:border-box}
+  body::after{content:"";position:fixed;inset:0;pointer-events:none;background:repeating-linear-gradient(to bottom,transparent 0 2px,rgba(0,0,0,.22) 2px 3px);z-index:9}
+  .row{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-bottom:10px}
+  .btn{font-family:var(--font-mono);font-size:13px;color:var(--phosphor);text-shadow:var(--glow);padding:4px 10px;border:1px solid var(--phosphor-dim);background:transparent;cursor:pointer;letter-spacing:.04em;text-transform:uppercase}
+  .btn:hover{background:var(--phosphor);color:var(--bg);text-shadow:none;border-color:var(--phosphor)}
+  .btn.primary{border-color:var(--phosphor);color:var(--phosphor-white);text-shadow:var(--glow-strong)}
+  .btn.primary:hover{background:var(--phosphor);color:var(--bg);text-shadow:none}
+  .btn.warn{border-color:var(--warn);color:var(--warn)}
+  .btn.warn:hover{background:var(--warn);color:var(--bg)}
+  .btn.danger{border-color:var(--error);color:var(--error)}
+  .btn.danger:hover{background:var(--error);color:var(--bg)}
+  .btn[disabled]{color:var(--fg3);border-color:var(--fg3);cursor:not-allowed;text-shadow:none}
+  .lbl{font-size:10px;color:var(--phosphor-dim);text-transform:uppercase;letter-spacing:.08em;margin:0 0 6px;width:100%}
+</style></head><body>
+<div class="row"><div class="lbl">buttons</div>
+  <button class="btn primary">[P]OST TRACE</button>
+  <button class="btn">[R]EPLY</button>
+  <button class="btn warn">[A]CK UNREAD</button>
+  <button class="btn danger">[X] CANCEL</button>
+  <button class="btn" disabled>[L] LOCKED</button>
+</div>
+<div class="row"><div class="lbl">bracketed — inline command</div>
+  <span style="font-family:var(--font-mono);color:var(--phosphor);font-size:13px">press <b style="color:var(--phosphor-white);text-shadow:var(--glow)">[ENTER]</b> to post · <b style="color:var(--phosphor-white)">[ESC]</b> to abandon</span>
+</div>
+</body></html>

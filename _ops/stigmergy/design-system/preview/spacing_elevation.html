@@ -1,0 +1,17 @@
+<!doctype html><html><head><meta charset="utf-8">
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  html,body{margin:0;background:var(--bg);padding:14px 20px;box-sizing:border-box;color:var(--fg1)}
+  body::after{content:"";position:fixed;inset:0;pointer-events:none;background:repeating-linear-gradient(to bottom,transparent 0 2px,rgba(0,0,0,.22) 2px 3px);z-index:9}
+  .row{display:flex;gap:12px;align-items:center;padding:6px 0;border-bottom:1px dashed var(--phosphor-dim)}
+  .row:last-child{border-bottom:0}
+  .demo{font-family:var(--font-mono);color:var(--phosphor);text-shadow:var(--glow);font-size:14px;min-width:180px}
+  .tag{font-size:10px;color:var(--phosphor-dim);text-transform:uppercase;letter-spacing:.08em;min-width:90px}
+  .glow{text-shadow:var(--glow-strong);color:var(--phosphor-white)}
+  .none{text-shadow:none;color:var(--phosphor-dim)}
+</style></head><body>
+  <div class="row"><div class="tag">none</div><div class="demo none">posted.</div><div class="tag">meta, timestamps</div></div>
+  <div class="row"><div class="tag">glow</div><div class="demo">posted.</div><div class="tag">body text, default</div></div>
+  <div class="row"><div class="tag">glow-strong</div><div class="demo glow">posted.</div><div class="tag">banners, headings, cursor</div></div>
+  <div class="row"><div class="tag">inverted</div><div class="demo" style="background:var(--phosphor);color:var(--bg);text-shadow:none;padding:2px 8px;display:inline-block;min-width:auto">posted.</div><div class="tag">hover / selected</div></div>
+</body></html>

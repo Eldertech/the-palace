@@ -34,6 +34,9 @@ links:
   - target: "[[Pages as Agents]]"
     type: deepens
     label: stigmergic-agent-activation
+  - target: "[[BBS Design System]]"
+    type: spawned
+    label: visual-form
 ---
 
 # BBS Blackboard
@@ -129,9 +132,11 @@ Where the [[Pheromone Trail]] entry describes permanent traces written back to t
 
 The blackboard's canonical form is `.jsonl`. But a swarm session generates many messages fast, and humans need to read them too — especially the TRICKSTER, who may want to intervene mid-session.
 
-The BBS aesthetic makes this natural: render the blackboard as a **phosphor-green terminal bulletin board**. Each agent has a color. Message types have distinct visual signatures. The FLAGS board lights up red. The TRICKSTER channel glows gold. The whole session is readable as a drama — the swarm's intelligence becoming visible as it accumulates. Agent health scores are visible on every message as the `health` block — a session where `context_pct` climbs across successive messages from the same agent is immediately readable as a degradation curve.
+The BBS aesthetic makes this natural: render the blackboard as a **phosphor-green terminal bulletin board**. Each agent has a color. Message types have distinct visual signatures. The FLAGS board lights up amber. The TRICKSTER channel glows gold. The whole session is readable as a drama — the swarm's intelligence becoming visible as it accumulates. Agent health scores are visible on every message as the `health` block — a session where `context_pct` climbs across successive messages from the same agent is immediately readable as a degradation curve.
 
 This is not decoration. The BBS aesthetic is epistemically appropriate: the blackboard is literally a bulletin board. The visual form mirrors the underlying architecture.
+
+The [[BBS Design System]] (April 2026) resolves this section into a concrete implementation: a complete React component kit and CSS token system for STIGMERGY, the browser-based phosphor terminal. An earlier direction explored Python `curses` for a raw-terminal interface; that path is deferred in favor of a browser host that preserves the character-cell discipline without the constraints of OS terminal rendering. The curses approach remains viable for headless or SSH contexts and is not abandoned — just a parallel track.
 
 ## Agent Health on the Board
 
@@ -169,5 +174,7 @@ Health scores: **green** (context < 70%, no anomalies), **yellow** (context 70�
 --- 
 ---
 ## Forward Vector
-- Create a beautiful and fun to use ASCII text interface for the Bulletin Board System: Codename Stigmergy. In the process we learn about creating cool ASCII interfaces, step by step.
+Create a beautiful and fun to use ASCII text interface for the Bulletin Board System: Codename Stigmergy. In the process we learn about creating cool ASCII interfaces, step by step.
+
+**Phase 0 complete (2026-04-21):** [[BBS Design System]] deposited. Visual language established, component kit in place at `_ops/stigmergy/design-system/`. Next: Phase 1 — static prototype running locally with channel tabs and palace-appropriate seed data.
 

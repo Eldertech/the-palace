@@ -1,7 +1,11 @@
 ---
-title: "The Curve Is the Material"
+title: The Curve Is the Material
 type: concept
-pillars: [creation, tools, philosophy, practice]
+pillars:
+  - creation
+  - tools
+  - philosophy
+  - practice
 born: 2026-04
 stage: growing
 energy: very high
@@ -13,7 +17,7 @@ links:
   - target: "[[Inharmonic Wavetable Synthesis]]"
     type: deepens
     label: design-refinement
-  - target: "[[Synthesis Space as Torus]]"
+  - target: "[[Wavetable Space as Torus]]"
     type: enables
     label: analytic-fuel
   - target: "[[Categorizing Inharmonicity]]"
@@ -90,7 +94,7 @@ If detunings are evaluated analytically rather than looked up in a table:
 - **Computation per partial per buffer:** one formula evaluation. For B coefficient: n · f₀ · √(1 + B·n²) — three multiplications, one square root. For Bessel zeros: one small table lookup (the zero positions, perhaps 20 values total).
 - **Modulation:** B is modulated at audio or LFO rate with one scalar. All N partial frequencies update coherently from that single value.
 
-This analytic path is also the key that unlocks the T³ / path-following synthesis approach described in [[Synthesis Space as Torus]]: an analytically defined detuning function means the T³ scalar field can be evaluated on-the-fly rather than precomputed. The memory-vs-computation trade-off that made the 3D table impractical collapses when the function is analytic.
+This analytic path is also the key that unlocks the T³ / path-following synthesis approach described in [[Wavetable Space as Torus]]: an analytically defined detuning function means the T³ scalar field can be evaluated on-the-fly rather than precomputed. The memory-vs-computation trade-off that made the 3D table impractical collapses when the function is analytic.
 
 ---
 

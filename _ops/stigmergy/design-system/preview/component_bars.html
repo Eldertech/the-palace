@@ -1,0 +1,34 @@
+<!doctype html><html><head><meta charset="utf-8">
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  html,body{margin:0;background:var(--bg);padding:14px 20px;box-sizing:border-box;font-family:var(--font-mono);color:var(--phosphor);text-shadow:var(--glow);font-size:13px}
+  body::after{content:"";position:fixed;inset:0;pointer-events:none;background:repeating-linear-gradient(to bottom,transparent 0 2px,rgba(0,0,0,.22) 2px 3px);z-index:9}
+  .bar{border-top:1px dashed var(--phosphor-dim);border-bottom:1px dashed var(--phosphor-dim);padding:4px 0;display:flex;gap:16px;flex-wrap:wrap}
+  .sep{color:var(--phosphor-dim);text-shadow:none}
+  .handle{color:var(--ansi-bright-cyan)}
+  .unread{color:var(--ansi-bright-yellow)}
+  .ok{color:var(--phosphor)}
+  .lbl{font-size:10px;color:var(--phosphor-dim);text-transform:uppercase;letter-spacing:.08em;margin:8px 0 4px;text-shadow:none}
+  .cmdbar{border:1px solid var(--phosphor-dim);padding:4px 8px;margin-top:10px;display:flex;gap:18px}
+  .hot{color:var(--phosphor-white);text-shadow:var(--glow)}
+</style></head><body>
+<div class="lbl">status bar — pinned top</div>
+<div class="bar">
+  <span>BLACKBOARD</span><span class="sep">·</span>
+  <span>NODE 01</span><span class="sep">·</span>
+  <span class="handle">@sable</span><span class="sep">·</span>
+  <span>12:04</span><span class="sep">·</span>
+  <span class="unread">* 48 NEW</span><span class="sep">·</span>
+  <span class="ok">● uplink ok</span>
+</div>
+
+<div class="lbl">command bar — pinned bottom</div>
+<div class="cmdbar">
+  <span>[<span class="hot">N</span>]EW</span>
+  <span>[<span class="hot">R</span>]EPLY</span>
+  <span>[<span class="hot">S</span>]CAN</span>
+  <span>[<span class="hot">F</span>]ILES</span>
+  <span>[<span class="hot">?</span>] HELP</span>
+  <span>[<span class="hot">Q</span>]UIT</span>
+</div>
+</body></html>

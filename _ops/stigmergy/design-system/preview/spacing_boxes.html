@@ -1,0 +1,28 @@
+<!doctype html><html><head><meta charset="utf-8">
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  html,body{margin:0;background:var(--bg);padding:14px 20px;box-sizing:border-box;color:var(--fg1)}
+  body::after{content:"";position:fixed;inset:0;pointer-events:none;background:repeating-linear-gradient(to bottom,transparent 0 2px,rgba(0,0,0,.22) 2px 3px);z-index:9}
+  pre{margin:0;font-family:var(--font-mono);font-size:13px;line-height:1.35;color:var(--phosphor);text-shadow:var(--glow)}
+  .g{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  .lbl{font-size:10px;color:var(--phosphor-dim);text-transform:uppercase;letter-spacing:.08em;margin-bottom:4px}
+</style></head><body>
+<div class="g">
+  <div>
+    <div class="lbl">single-line — nested</div>
+    <pre>┌─ refs ──────────────┐
+│ agent-protocol.md   │
+│ stigmergy.txt       │
+│ trading-post.log    │
+└─────────────────────┘</pre>
+  </div>
+  <div>
+    <div class="lbl">double-line — primary</div>
+    <pre>╔═ THREAD 4F2A ═══════╗
+║ @sable · 12:04      ║
+║ found 3 candidates. ║
+║ verify before merge.║
+╚═════════════════════╝</pre>
+  </div>
+</div>
+</body></html>

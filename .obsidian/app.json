@@ -2,7 +2,7 @@
   "promptDelete": false,
   "alwaysUpdateLinks": true,
   "showInlineTitle": false,
-  "readableLineLength": true,
+  "readableLineLength": false,
   "strictLineBreaks": false,
   "propertiesInDocument": "hidden",
   "showLineNumber": false,

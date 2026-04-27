@@ -1,0 +1,29 @@
+<!doctype html><html><head><meta charset="utf-8">
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  html,body{margin:0;background:var(--bg);padding:14px 20px;box-sizing:border-box;font-family:var(--font-mono);color:var(--phosphor);text-shadow:var(--glow);font-size:14px}
+  body::after{content:"";position:fixed;inset:0;pointer-events:none;background:repeating-linear-gradient(to bottom,transparent 0 2px,rgba(0,0,0,.22) 2px 3px);z-index:9}
+  .lbl{font-size:10px;color:var(--phosphor-dim);text-transform:uppercase;letter-spacing:.08em;margin:0 0 6px;text-shadow:none}
+  .grid{display:grid;grid-template-columns:repeat(6,1fr);gap:10px;margin-bottom:10px}
+  .cell{border:1px dashed var(--phosphor-dim);padding:10px 4px;text-align:center;font-size:22px;line-height:1}
+  .cap{font-size:10px;color:var(--phosphor-dim);text-shadow:none;margin-top:4px}
+  .cell{display:flex;flex-direction:column;align-items:center;gap:4px}
+</style></head><body>
+<div class="lbl">icon vocabulary — typed, not drawn</div>
+<div class="grid">
+  <div class="cell">*<div class="cap">unread</div></div>
+  <div class="cell">!<div class="cap">pinned</div></div>
+  <div class="cell">#<div class="cap">locked</div></div>
+  <div class="cell">@<div class="cap">handle</div></div>
+  <div class="cell">&gt;<div class="cap">prompt</div></div>
+  <div class="cell">&gt;&gt;<div class="cap">reply</div></div>
+  <div class="cell">●<div class="cap">online</div></div>
+  <div class="cell">○<div class="cap">offline</div></div>
+  <div class="cell">✓<div class="cap">ok</div></div>
+  <div class="cell">✕<div class="cap">err</div></div>
+  <div class="cell">─&gt;<div class="cap">arrow</div></div>
+  <div class="cell">·<div class="cap">sep</div></div>
+</div>
+<div class="lbl">fills &amp; rules</div>
+<div style="font-size:20px;line-height:1.1;color:var(--phosphor-white)">░ ▒ ▓ █ &nbsp; ─ ═ ┈ &nbsp; │ ║ ┊ &nbsp; ┌─┐ ╔═╗</div>
+</body></html>

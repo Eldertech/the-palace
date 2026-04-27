@@ -1,0 +1,20 @@
+<!doctype html><html><head><meta charset="utf-8">
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  html,body{margin:0;background:var(--bg);padding:14px 20px;box-sizing:border-box;font-family:var(--font-mono);color:var(--phosphor);text-shadow:var(--glow);font-size:13px}
+  body::after{content:"";position:fixed;inset:0;pointer-events:none;background:repeating-linear-gradient(to bottom,transparent 0 2px,rgba(0,0,0,.22) 2px 3px);z-index:9}
+  .lbl{font-size:10px;color:var(--phosphor-dim);text-transform:uppercase;letter-spacing:.08em;margin:0 0 4px;text-shadow:none}
+  .row{display:grid;grid-template-columns:120px 1fr;gap:14px;align-items:center;padding:6px 0;border-bottom:1px dashed var(--phosphor-dim)}
+  .tag{font-size:10px;color:var(--phosphor-dim);text-transform:uppercase;letter-spacing:.06em;text-shadow:none}
+  @keyframes blk{0%,49%{opacity:1}50%,100%{opacity:0}}
+  .cursor{display:inline-block;width:10px;background:var(--phosphor-white);height:1em;vertical-align:middle;animation:blk 1.1s steps(1) infinite}
+  @keyframes spin{0%{content:"|"}25%{content:"/"}50%{content:"-"}75%{content:"\\"}100%{content:"|"}}
+  .spin::before{display:inline-block;content:"|";animation:spin .4s steps(4) infinite;width:1ch;color:var(--phosphor-white)}
+  @keyframes type{from{width:0}to{width:28ch}}
+  .type{display:inline-block;overflow:hidden;white-space:nowrap;border-right:1ch solid transparent;animation:type 1.6s steps(28,end) infinite alternate}
+</style></head><body>
+  <div class="row"><div class="tag">cursor · blink</div><div>login: sable<span class="cursor"></span></div></div>
+  <div class="row"><div class="tag">spinner · 4-frame</div><div><span class="spin"></span> scanning board...</div></div>
+  <div class="row"><div class="tag">type-on · steps()</div><div><span class="type">WELCOME TO BLACKBOARD · NODE 01</span></div></div>
+  <div class="row" style="border-bottom:0"><div class="tag">no easing curves</div><div style="color:var(--phosphor-dim);text-shadow:none">all motion uses steps(). no springs, no bezier.</div></div>
+</body></html>
