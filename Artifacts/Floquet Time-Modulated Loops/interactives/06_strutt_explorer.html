@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Strutt Diagram Explorer — Floquet / Time-Modulated Loops</title>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400&family=JetBrains+Mono:wght@400;500&family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #0a0a0f; --bg-card: #12121a; --bg-code: #1a1a28;
+  --border: #2a2a3a; --text: #c8c8d8; --text-dim: #7a7a8e;
+  --text-bright: #e8e8f0;
+  --accent-stable: #4aff8b; --accent-unstable: #ff6b4a;
+  --accent-marginal: #ffe44a; --accent-multiplier: #4aadff;
+  --accent-mod: #a64aff;
+  --serif: 'Source Serif 4', Georgia, serif;
+  --mono: 'JetBrains Mono', monospace;
+  --sans: 'DM Sans', system-ui, sans-serif;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+body { background: var(--bg); color: var(--text); font-family: var(--serif); font-size: 16px; line-height: 1.6; padding: 24px 16px 80px; -webkit-font-smoothing: antialiased; }
+.container { max-width: 1100px; margin: 0 auto; }
+header { text-align:center; padding: 24px 0 32px; border-bottom: 1px solid var(--border); margin-bottom: 32px; }
+header h1 { font-size: clamp(1.6rem, 3.6vw, 2.4rem); font-weight: 700; color: var(--text-bright); letter-spacing: -0.02em; margin-bottom: 8px; }
+header .subtitle { font-family: var(--sans); color: var(--text-dim); font-size: 0.95rem; max-width: 760px; margin: 0 auto 8px; }
+header .breadcrumb { font-family: var(--mono); font-size: 0.7rem; color: var(--text-dim); letter-spacing: 0.08em; text-transform: uppercase; }
+.canvas-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px; padding: 14px; }
+.canvas-card h4 { font-family: var(--mono); font-size: 0.72rem; color: var(--text-dim); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 8px; }
+canvas { display: block; width: 100%; background: var(--bg-code); border-radius: 6px; }
+#strutt { height: 460px; cursor: crosshair; }
+#timeseries { height: 160px; }
+.row { display: grid; grid-template-columns: 1.6fr 1fr; gap: 16px; margin-top: 14px; }
+@media (max-width: 820px) { .row { grid-template-columns: 1fr; } }
+.readout { font-family: var(--mono); font-size: 0.84rem; color: var(--text-dim); padding: 14px; background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px; }
+.readout .stable { color: var(--accent-stable); }
+.readout .unstable { color: var(--accent-unstable); }
+.readout .marginal { color: var(--accent-marginal); }
+.readout .row2 { display: flex; justify-content: space-between; margin: 6px 0; }
+button { font-family: var(--mono); font-size: 0.78rem; padding: 8px 14px; border: 1px solid var(--accent-multiplier); background: var(--bg-code); color: var(--accent-multiplier); border-radius: 6px; cursor: pointer; letter-spacing: 0.05em; }
+button:hover { background: var(--accent-multiplier); color: var(--bg); }
+.button-row { display: flex; gap: 10px; margin-top: 14px; flex-wrap: wrap; }
+details { margin-top: 32px; background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px; }
+summary { padding: 16px 20px; cursor: pointer; font-family: var(--sans); font-weight: 700; color: var(--text-bright); font-size: 0.95rem; }
+details[open] summary { border-bottom: 1px solid var(--border); }
+pre { background: var(--bg-code); color: var(--text); font-family: var(--mono); font-size: 0.78rem; line-height: 1.55; padding: 18px 22px; overflow-x: auto; border-radius: 0 0 12px 12px; }
+.note { font-size: 0.85rem; color: var(--text-dim); margin: 16px 0; }
+</style>
+</head>
+<body>
+<div class="container">
+
+<header>
+  <div class="breadcrumb">media-06  ·  Floquet / Time-Modulated Loops</div>
+  <h1>Strutt Diagram Explorer</h1>
+  <p class="subtitle">Click anywhere on the diagram. The cursor moves there. The time
+  series is computed live for that (a, q) point and played as audio. Drag across a tongue
+  boundary and hear the transition from silence into ringing oscillation.</p>
+</header>
+
+<div class="canvas-card">
+  <h4>Strutt diagram  —  click or drag</h4>
+  <canvas id="strutt"></canvas>
+</div>
+
+<div class="row">
+  <div class="canvas-card">
+    <h4>x(t)  —  the resulting trajectory</h4>
+    <canvas id="timeseries"></canvas>
+    <div class="button-row">
+      <button id="playBtn">▶ play</button>
+      <button id="stopBtn">stop</button>
+      <button id="centerBtn">a = 1, q = 0.30</button>
+      <button id="boundBtn">on the boundary</button>
+      <button id="outsideBtn">outside the tongue</button>
+    </div>
+  </div>
+
+  <div class="readout">
+    <div class="row2"><span>a</span><span id="aOut" class="marginal">·</span></div>
+    <div class="row2"><span>q</span><span id="qOut" class="marginal">·</span></div>
+    <div class="row2"><span>|ρ|</span><span id="rOut" class="marginal">·</span></div>
+    <div class="row2"><span>state</span><span id="sOut" class="stable">·</span></div>
+    <p class="note" style="margin-top:14px;">
+      stable region: green/dim.  marginal: yellow.  inside a tongue: orange-red.
+      The first three tongues are rooted at a = 1, 4, 9 on the q = 0 axis.
+    </p>
+  </div>
+</div>
+
+<details>
+<summary>Source — see how this is built</summary>
+<pre id="srcdump"></pre>
+</details>
+
+</div>
+
+<script>
+// =========================================================================
+// 06_strutt_explorer — clickable Strutt diagram.
+//
+// Strategy:
+//   - Precompute the Strutt diagram once on a 320x200 grid using a fast
+//     monodromy-matrix integrator (200 steps per period).
+//   - For each click, compute the high-resolution (a, q) integrator for
+//     about 300 ms of audio at 44.1 kHz, normalize, and play.
+//   - The cursor visually marks the current click location.
+// =========================================================================
+
+const canvas = document.getElementById('strutt');
+const tsCanvas = document.getElementById('timeseries');
+const ctx = canvas.getContext('2d');
+const tsctx = tsCanvas.getContext('2d');
+
+const A_MIN = -0.5, A_MAX = 6.5;
+const Q_MIN = 0.0,  Q_MAX = 2.0;
+const T_PERIOD = Math.PI;
+
+let strutt = null;          // precomputed image data
+let currentA = 1.0, currentQ = 0.30;
+let trajectoryX = null;
+let dragging = false;
+
+// Symplectic-Euler step.
+function step(x, v, a, q, t, dt) {
+  const c = a - 2 * q * Math.cos(2 * t);
+  const vNew = v + dt * (-c * x);
+  const xNew = x + dt * vNew;
+  return [xNew, vNew];
+}
+
+// Cheap multipliers for grid render.
+function multipliersLite(a, q) {
+  const SPP = 220, dt = T_PERIOD / SPP;
+  function go(x0, v0) {
+    let x = x0, v = v0, t = 0;
+    for (let i = 0; i < SPP; i++) {
+      [x, v] = step(x, v, a, q, t, dt); t += dt;
+      if (!isFinite(x) || Math.abs(x) > 1e8) { x = 1e8; v = 1e8; break; }
+    }
+    return [x, v];
+  }
+  const [m00, m10] = go(1, 0);
+  const [m01, m11] = go(0, 1);
+  const tr = m00 + m11, det = m00 * m11 - m01 * m10;
+  const disc = tr*tr - 4*det;
+  if (disc >= 0) {
+    const r = Math.sqrt(disc);
+    return [(tr+r)/2, (tr-r)/2];   // real numbers
+  } else {
+    const r = Math.sqrt(-disc) / 2;
+    return [{re: tr/2, im: r}, {re: tr/2, im: -r}];
+  }
+}
+
+function magnitude(z) { return typeof z === 'number' ? Math.abs(z) : Math.hypot(z.re, z.im); }
+
+function precomputeGrid() {
+  const w = 360, h = 200;
+  const data = document.createElement('canvas').getContext('2d').createImageData(w, h);
+  for (let j = 0; j < h; j++) {
+    const q = Q_MIN + (Q_MAX - Q_MIN) * (1 - j / (h - 1));
+    for (let i = 0; i < w; i++) {
+      const a = A_MIN + (A_MAX - A_MIN) * i / (w - 1);
+      const rs = multipliersLite(a, q);
+      const m = Math.max(magnitude(rs[0]), magnitude(rs[1]));
+      let r, g, b;
+      if (m < 1.02) { r = 74; g = 255; b = 139; }       // stable
+      else if (m < 1.15) { r = 255; g = 228; b = 74; }  // marginal
+      else if (m < 2.0)  { r = 255; g = 107; b = 74; }  // unstable
+      else               { r = 122; g = 26; b = 10; }   // very unstable
+      const idx = (j * w + i) * 4;
+      data.data[idx] = r; data.data[idx+1] = g;
+      data.data[idx+2] = b; data.data[idx+3] = 200;
+    }
+  }
+  return {w, h, data};
+}
+
+function drawDiagram() {
+  if (!strutt) strutt = precomputeGrid();
+  const dpr = window.devicePixelRatio || 1;
+  const W = canvas.clientWidth, H = canvas.clientHeight;
+  canvas.width = W * dpr; canvas.height = H * dpr;
+  ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  const off = document.createElement('canvas');
+  off.width = strutt.w; off.height = strutt.h;
+  off.getContext('2d').putImageData(strutt.data, 0, 0);
+  ctx.imageSmoothingEnabled = true;
+  ctx.drawImage(off, 0, 0, W, H);
+
+  // Axis labels and tongue roots.
+  ctx.fillStyle = '#7a7a8e'; ctx.font = '11px JetBrains Mono';
+  ctx.fillText('a →', W - 32, H - 8);
+  ctx.fillText('q ↑', 8, 16);
+  // Mark tongue roots at a = 1, 4 on q = 0.
+  for (const ar of [1, 4]) {
+    if (ar < A_MIN || ar > A_MAX) continue;
+    const px = (ar - A_MIN) / (A_MAX - A_MIN) * W;
+    const py = H - (0 - Q_MIN) / (Q_MAX - Q_MIN) * H;
+    ctx.fillStyle = '#a64aff';
+    ctx.beginPath(); ctx.arc(px, py - 1, 4, 0, 2*Math.PI); ctx.fill();
+    ctx.fillStyle = '#a64aff'; ctx.font = '10px JetBrains Mono';
+    ctx.fillText(`a=${ar}`, px - 14, py + 12);
+  }
+
+  // Current point cursor.
+  const cx = (currentA - A_MIN) / (A_MAX - A_MIN) * W;
+  const cy = H - (currentQ - Q_MIN) / (Q_MAX - Q_MIN) * H;
+  ctx.strokeStyle = '#ffffff'; ctx.lineWidth = 1.5;
+  ctx.beginPath(); ctx.arc(cx, cy, 9, 0, 2*Math.PI); ctx.stroke();
+  ctx.fillStyle = '#ff4a6b';
+  ctx.beginPath(); ctx.arc(cx, cy, 5, 0, 2*Math.PI); ctx.fill();
+}
+
+function drawTimeseries() {
+  if (!trajectoryX) return;
+  const dpr = window.devicePixelRatio || 1;
+  const W = tsCanvas.clientWidth, H = tsCanvas.clientHeight;
+  tsCanvas.width = W * dpr; tsCanvas.height = H * dpr;
+  tsctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  tsctx.fillStyle = '#1a1a28'; tsctx.fillRect(0, 0, W, H);
+  tsctx.strokeStyle = '#2a2a3a'; tsctx.lineWidth = 1;
+  tsctx.beginPath(); tsctx.moveTo(0, H/2); tsctx.lineTo(W, H/2); tsctx.stroke();
+  let mx = 1e-6;
+  for (let i = 0; i < trajectoryX.length; i++) mx = Math.max(mx, Math.abs(trajectoryX[i]));
+  tsctx.strokeStyle = '#4aadff'; tsctx.lineWidth = 1.2;
+  tsctx.beginPath();
+  for (let i = 0; i < trajectoryX.length; i++) {
+    const sx = (i / (trajectoryX.length - 1)) * W;
+    const sy = H/2 - (trajectoryX[i] / mx) * (H/2 - 6);
+    if (i === 0) tsctx.moveTo(sx, sy); else tsctx.lineTo(sx, sy);
+  }
+  tsctx.stroke();
+}
+
+function trajectory(a, q, n_periods, sat=8.0) {
+  const SPP = 800, dt = T_PERIOD / SPP;
+  const n = n_periods * SPP;
+  const xs = new Float32Array(n + 1);
+  let x = 0.5, v = 0.0, t = 0.0;
+  xs[0] = x;
+  for (let i = 0; i < n; i++) {
+    [x, v] = step(x, v, a, q, t, dt); t += dt;
+    if (Math.abs(x) > sat) x = sat * Math.sign(x);
+    if (Math.abs(v) > sat) v = sat * Math.sign(v);
+    xs[i+1] = x;
+  }
+  return xs;
+}
+
+function updateReadouts(rs) {
+  document.getElementById('aOut').textContent = currentA.toFixed(3);
+  document.getElementById('qOut').textContent = currentQ.toFixed(3);
+  const m = Math.max(magnitude(rs[0]), magnitude(rs[1]));
+  document.getElementById('rOut').textContent = m.toFixed(3);
+  const s = document.getElementById('sOut');
+  if (m < 1.02) { s.textContent = 'STABLE'; s.className = 'stable'; }
+  else if (m < 1.15) { s.textContent = 'MARGINAL'; s.className = 'marginal'; }
+  else { s.textContent = 'UNSTABLE  (in a tongue)'; s.className = 'unstable'; }
+}
+
+function recompute() {
+  trajectoryX = trajectory(currentA, currentQ, 12);
+  // Use cheap multipliers for readout update.
+  const rs = multipliersLite(currentA, currentQ);
+  updateReadouts(rs);
+  drawDiagram();
+  drawTimeseries();
+}
+
+// Audio playback.
+let audioCtx = null, audioSrc = null;
+function playAudio() {
+  if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+  // Render a longer trajectory and use it as a buffer.
+  const sr = audioCtx.sampleRate;
+  const xs = trajectory(currentA, currentQ, 80);
+  // Resample to one audio second by stretching trajectory time.
+  const dur = 1.2;
+  const len = Math.floor(sr * dur);
+  const buf = audioCtx.createBuffer(1, len, sr);
+  const ch = buf.getChannelData(0);
+  let pk = 1e-6; for (let i = 0; i < xs.length; i++) pk = Math.max(pk, Math.abs(xs[i]));
+  for (let i = 0; i < len; i++) {
+    const idx = Math.floor(i / len * xs.length);
+    ch[i] = (xs[idx] / pk) * 0.4;
+  }
+  if (audioSrc) try { audioSrc.stop(); } catch(e) {}
+  audioSrc = audioCtx.createBufferSource();
+  audioSrc.buffer = buf;
+  audioSrc.playbackRate.value = 1.0;
+  audioSrc.connect(audioCtx.destination);
+  audioSrc.start();
+}
+function stopAudio() {
+  if (audioSrc) try { audioSrc.stop(); } catch(e) {}
+  audioSrc = null;
+}
+
+// Click and drag handling.
+function clickAt(ev) {
+  const rect = canvas.getBoundingClientRect();
+  const x = ev.clientX - rect.left;
+  const y = ev.clientY - rect.top;
+  currentA = A_MIN + (A_MAX - A_MIN) * x / rect.width;
+  currentQ = Q_MIN + (Q_MAX - Q_MIN) * (1 - y / rect.height);
+  recompute();
+}
+canvas.addEventListener('mousedown', (e) => { dragging = true; clickAt(e); });
+canvas.addEventListener('mouseup', () => { dragging = false; });
+canvas.addEventListener('mouseleave', () => { dragging = false; });
+canvas.addEventListener('mousemove', (e) => { if (dragging) clickAt(e); });
+canvas.addEventListener('touchstart', (e) => { dragging = true; e.preventDefault(); clickAt(e.touches[0]); });
+canvas.addEventListener('touchmove', (e) => { if (dragging) { e.preventDefault(); clickAt(e.touches[0]); } });
+canvas.addEventListener('touchend', () => { dragging = false; });
+
+document.getElementById('playBtn').addEventListener('click', playAudio);
+document.getElementById('stopBtn').addEventListener('click', stopAudio);
+document.getElementById('centerBtn').addEventListener('click',
+  () => { currentA = 1.0; currentQ = 0.30; recompute(); });
+document.getElementById('boundBtn').addEventListener('click',
+  () => { currentA = 1.30; currentQ = 0.30; recompute(); });
+document.getElementById('outsideBtn').addEventListener('click',
+  () => { currentA = 2.20; currentQ = 0.30; recompute(); });
+
+window.addEventListener('resize', recompute);
+recompute();
+
+fetch(window.location.href).then(r => r.text()).then(html => {
+  const m = html.match(/<script>([\s\S]*?)<\/script>/);
+  if (m) document.getElementById('srcdump').textContent = m[1].trim();
+}).catch(() => {});
+</script>
+</body>
+</html>

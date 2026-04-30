@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Pumped Swing — Parametric Resonance</title>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400&family=JetBrains+Mono:wght@400;500&family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #0a0a0f; --bg-card: #12121a; --bg-code: #1a1a28;
+  --border: #2a2a3a; --text: #c8c8d8; --text-dim: #7a7a8e;
+  --text-bright: #e8e8f0;
+  --accent-stable: #4aff8b; --accent-unstable: #ff6b4a;
+  --accent-marginal: #ffe44a; --accent-multiplier: #4aadff;
+  --accent-mod: #a64aff;
+  --serif: 'Source Serif 4', Georgia, serif;
+  --mono: 'JetBrains Mono', monospace;
+  --sans: 'DM Sans', system-ui, sans-serif;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+body { background: var(--bg); color: var(--text); font-family: var(--serif); font-size: 16px; line-height: 1.6; padding: 24px 16px 80px; -webkit-font-smoothing: antialiased; }
+.container { max-width: 1100px; margin: 0 auto; }
+header { text-align:center; padding: 24px 0 32px; border-bottom: 1px solid var(--border); margin-bottom: 36px; }
+header h1 { font-size: clamp(1.6rem, 3.6vw, 2.4rem); font-weight: 700; color: var(--text-bright); letter-spacing: -0.02em; margin-bottom: 8px; }
+header .subtitle { font-family: var(--sans); color: var(--text-dim); font-size: 0.95rem; max-width: 700px; margin: 0 auto 8px; }
+header .breadcrumb { font-family: var(--mono); font-size: 0.7rem; color: var(--text-dim); letter-spacing: 0.08em; text-transform: uppercase; }
+.layout { display: grid; grid-template-columns: 320px 1fr; gap: 24px; }
+@media (max-width: 820px) { .layout { grid-template-columns: 1fr; } }
+.panel { background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px; padding: 18px; }
+.panel h3 { font-family: var(--sans); font-weight: 700; font-size: 0.78rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-bright); margin-bottom: 14px; }
+.panel h3::before { content: '▸ '; color: var(--accent-mod); }
+.slider-row { margin: 14px 0 18px; }
+.slider-row label { display: flex; justify-content: space-between; font-family: var(--mono); font-size: 0.78rem; color: var(--text); margin-bottom: 6px; }
+.slider-row label .val { color: var(--accent-marginal); }
+input[type=range] { width: 100%; -webkit-appearance: none; appearance: none; height: 4px; background: var(--bg-code); border-radius: 2px; outline: none; }
+input[type=range]::-webkit-slider-thumb { -webkit-appearance: none; width: 16px; height: 16px; border-radius: 50%; background: var(--accent-multiplier); cursor: pointer; box-shadow: 0 0 0 2px var(--bg-card); }
+input[type=range]::-moz-range-thumb { width: 16px; height: 16px; border-radius: 50%; background: var(--accent-multiplier); cursor: pointer; border: 2px solid var(--bg-card); }
+button { font-family: var(--mono); font-size: 0.8rem; padding: 9px 16px; border: 1px solid var(--accent-multiplier); background: var(--bg-code); color: var(--accent-multiplier); border-radius: 6px; cursor: pointer; letter-spacing: 0.05em; }
+button:hover { background: var(--accent-multiplier); color: var(--bg); }
+.button-row { display: flex; gap: 8px; margin-top: 8px; }
+.readout { font-family: var(--mono); font-size: 0.78rem; color: var(--text-dim); padding-top: 12px; border-top: 1px solid var(--border); margin-top: 14px; }
+.canvas-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px; padding: 12px; }
+.canvas-card h4 { font-family: var(--mono); font-size: 0.72rem; color: var(--text-dim); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 8px; }
+canvas { display: block; width: 100%; background: var(--bg-code); border-radius: 6px; }
+#swingCanvas { height: 360px; }
+#envelope { height: 140px; margin-top: 14px; }
+details { margin-top: 32px; background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px; }
+summary { padding: 16px 20px; cursor: pointer; font-family: var(--sans); font-weight: 700; color: var(--text-bright); font-size: 0.95rem; }
+details[open] summary { border-bottom: 1px solid var(--border); }
+pre { background: var(--bg-code); color: var(--text); font-family: var(--mono); font-size: 0.78rem; line-height: 1.55; padding: 18px 22px; overflow-x: auto; border-radius: 0 0 12px 12px; }
+.note { font-size: 0.85rem; color: var(--text-dim); margin-top: 16px; max-width: 760px; }
+</style>
+</head>
+<body>
+<div class="container">
+
+<header>
+  <div class="breadcrumb">media-03  ·  Floquet / Time-Modulated Loops</div>
+  <h1>The Pumped Swing</h1>
+  <p class="subtitle">Pump the pivot length at twice the swing's natural frequency.
+  Above a threshold, the swing builds amplitude — silent below, exponentially building above.
+  No external force — energy comes from inside the system, modulating one of its own parameters.</p>
+</header>
+
+<div class="layout">
+
+<aside class="panel">
+  <h3>Controls</h3>
+
+  <div class="slider-row">
+    <label>natural f<sub>0</sub>  <span class="val" id="f0val">0.50 Hz</span></label>
+    <input type="range" id="f0" min="0.30" max="0.80" step="0.01" value="0.50">
+  </div>
+
+  <div class="slider-row">
+    <label>pump rate / 2f<sub>0</sub>  <span class="val" id="rval">1.00</span></label>
+    <input type="range" id="rratio" min="0.5" max="1.5" step="0.005" value="1.00">
+    <div style="font-size:0.72rem;color:var(--text-dim);font-family:var(--mono);margin-top:4px;">
+      1.0 = exact 2:1 (canonical parametric resonance)
+    </div>
+  </div>
+
+  <div class="slider-row">
+    <label>pump depth ε  <span class="val" id="dval">0.10</span></label>
+    <input type="range" id="depth" min="0.0" max="0.4" step="0.005" value="0.10">
+    <div style="font-size:0.72rem;color:var(--text-dim);font-family:var(--mono);margin-top:4px;">
+      modulation of swing's effective length
+    </div>
+  </div>
+
+  <div class="slider-row">
+    <label>damping ζ  <span class="val" id="zval">0.020</span></label>
+    <input type="range" id="zeta" min="0.0" max="0.06" step="0.001" value="0.020">
+    <div style="font-size:0.72rem;color:var(--text-dim);font-family:var(--mono);margin-top:4px;">
+      threshold ε ≈ 4ζ — try ε just above 4ζ
+    </div>
+  </div>
+
+  <div class="button-row">
+    <button id="resetBtn">↺ kick swing</button>
+    <button id="audioBtn">🔊 audio on</button>
+  </div>
+
+  <div class="readout">
+    amplitude (peak |θ|): <span id="amp">·</span>°<br>
+    above threshold: <span id="thresh" style="color:var(--accent-marginal)">·</span>
+  </div>
+</aside>
+
+<div>
+  <div class="canvas-card">
+    <h4>swing  (pivot pumps vertically — barely visible)</h4>
+    <canvas id="swingCanvas"></canvas>
+  </div>
+  <div class="canvas-card">
+    <h4>θ(t) — last 12 seconds</h4>
+    <canvas id="envelope"></canvas>
+  </div>
+</div>
+
+</div>
+
+<p class="note">
+  This is the parametrically-pumped pendulum:
+  θ̈ + 2ζ ω₀ θ̇ + (ω₀² + a<sub>p</sub> Ω² cos(Ωt)) sin θ = 0.
+  Same structure as the Mathieu equation. The "swing" is the pendulum;
+  the "pump" modulates the effective length, which shows up as a periodic
+  coefficient on the restoring term. Set ε just above 4ζ at the canonical
+  pump rate to find the threshold. (See [[Parametric Resonance]] and
+  media-04 for the audio analog of the same threshold crossing.)
+</p>
+
+<details>
+<summary>Source — see how this is built</summary>
+<pre id="srcdump"></pre>
+</details>
+
+</div>
+
+<script>
+// =========================================================================
+// 03_pumped_swing — parametric resonance, made physical.
+//
+// Equation of motion of a pendulum whose pivot oscillates vertically
+// at amplitude `amp_pivot` and angular frequency Omega:
+//
+//     theta'' + 2*zeta*omega0*theta' + ((g + a_p*cos(Omega*t)) / L) sin(theta) = 0
+//
+// We work in dimensionless units: omega0 = 1 unless otherwise set,
+// and the "pump amplitude" parameter is presented as a depth eps =
+// a_p * Omega^2 / (g) — the relative modulation depth of the
+// effective-restoring coefficient.
+//
+// At Omega = 2*omega0, parametric resonance happens. With damping the
+// threshold for instability is approximately eps ~ 4*zeta. Above
+// threshold the swing builds exponentially even with no external
+// driving force.
+//
+// Numerical scheme: symplectic Euler at high enough rate to resolve
+// both the swing (~ 0.5 Hz) and the pump (~ 1 Hz). 60 fps animation,
+// 800 sub-steps per frame so the integrator is stable.
+// =========================================================================
+
+const swingCanvas = document.getElementById('swingCanvas');
+const envCanvas = document.getElementById('envelope');
+const sctx = swingCanvas.getContext('2d');
+const ectx = envCanvas.getContext('2d');
+
+const f0Slider = document.getElementById('f0');
+const rSlider = document.getElementById('rratio');
+const dSlider = document.getElementById('depth');
+const zSlider = document.getElementById('zeta');
+const f0Val = document.getElementById('f0val');
+const rVal = document.getElementById('rval');
+const dVal = document.getElementById('dval');
+const zVal = document.getElementById('zval');
+const ampLbl = document.getElementById('amp');
+const threshLbl = document.getElementById('thresh');
+const audioBtn = document.getElementById('audioBtn');
+
+let theta = 0.25, vtheta = 0.0;   // ~14 deg initial kick
+let tSim = 0.0;
+const HISTORY_S = 12.0;
+const FPS = 60;
+let history = [];
+
+let audioCtx = null, audioOsc = null, audioGain = null, audioOn = false;
+
+document.getElementById('resetBtn').addEventListener('click', () => {
+  theta = 0.25; vtheta = 0.0; tSim = 0.0; history = [];
+});
+
+audioBtn.addEventListener('click', () => {
+  if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+  if (!audioOn) {
+    audioOsc = audioCtx.createOscillator();
+    audioGain = audioCtx.createGain();
+    audioOsc.frequency.value = 220;
+    audioGain.gain.value = 0;
+    audioOsc.connect(audioGain).connect(audioCtx.destination);
+    audioOsc.start();
+    audioOn = true;
+    audioBtn.textContent = '🔇 audio off';
+  } else {
+    try { audioOsc.stop(); } catch(e) {}
+    audioOn = false;
+    audioBtn.textContent = '🔊 audio on';
+  }
+});
+
+function step(dt) {
+  const f0 = parseFloat(f0Slider.value);
+  const ratio = parseFloat(rSlider.value);
+  const eps = parseFloat(dSlider.value);
+  const zeta = parseFloat(zSlider.value);
+
+  const omega0 = 2 * Math.PI * f0;
+  const Omega = 2 * omega0 * ratio;   // canonical 2:1 at ratio = 1.0
+
+  const coeff = omega0 * omega0 * (1 + eps * Math.cos(Omega * tSim));
+  // Symplectic Euler with a sin(theta) restoring force.
+  const damping = 2 * zeta * omega0 * vtheta;
+  vtheta = vtheta + dt * (-coeff * Math.sin(theta) - damping);
+  theta = theta + dt * vtheta;
+  tSim += dt;
+}
+
+function frame() {
+  // Substep so the integrator is stable.
+  const dtFrame = 1.0 / FPS;
+  const SUB = 800;
+  const dt = dtFrame / SUB;
+  for (let i = 0; i < SUB; i++) step(dt);
+
+  history.push({t: tSim, theta: theta});
+  while (history.length > 1 && (tSim - history[0].t) > HISTORY_S) history.shift();
+
+  drawSwing();
+  drawEnvelope();
+  updateReadouts();
+
+  requestAnimationFrame(frame);
+}
+
+function drawSwing() {
+  const dpr = window.devicePixelRatio || 1;
+  const w = swingCanvas.clientWidth, h = swingCanvas.clientHeight;
+  swingCanvas.width = w * dpr; swingCanvas.height = h * dpr;
+  sctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  sctx.clearRect(0, 0, w, h);
+  sctx.fillStyle = '#1a1a28'; sctx.fillRect(0, 0, w, h);
+
+  const f0 = parseFloat(f0Slider.value);
+  const ratio = parseFloat(rSlider.value);
+  const eps = parseFloat(dSlider.value);
+  const omega0 = 2 * Math.PI * f0;
+  const Omega = 2 * omega0 * ratio;
+  // Visual "pivot wobble" — show small vertical motion at the pump rate.
+  const pivotWobble = 6 * eps * Math.sin(Omega * tSim);
+
+  const cx = w / 2;
+  const cy = 60 + pivotWobble;
+  const L = Math.min(h - cy - 30, 220);
+
+  // ceiling line
+  sctx.strokeStyle = '#2a2a3a'; sctx.lineWidth = 2;
+  sctx.beginPath(); sctx.moveTo(cx - 80, cy - 10); sctx.lineTo(cx + 80, cy - 10); sctx.stroke();
+  // pivot
+  sctx.fillStyle = '#a64aff';
+  sctx.beginPath(); sctx.arc(cx, cy, 5, 0, 2*Math.PI); sctx.fill();
+  // arm
+  const bx = cx + L * Math.sin(theta);
+  const by = cy + L * Math.cos(theta);
+  sctx.strokeStyle = '#7a7a8e'; sctx.lineWidth = 2;
+  sctx.beginPath(); sctx.moveTo(cx, cy); sctx.lineTo(bx, by); sctx.stroke();
+  // bob
+  sctx.fillStyle = '#ff4a6b';
+  sctx.beginPath(); sctx.arc(bx, by, 12, 0, 2*Math.PI); sctx.fill();
+  sctx.strokeStyle = '#ffe44a'; sctx.lineWidth = 1.5; sctx.stroke();
+}
+
+function drawEnvelope() {
+  const dpr = window.devicePixelRatio || 1;
+  const w = envCanvas.clientWidth, h = envCanvas.clientHeight;
+  envCanvas.width = w * dpr; envCanvas.height = h * dpr;
+  ectx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  ectx.fillStyle = '#1a1a28'; ectx.fillRect(0, 0, w, h);
+  ectx.strokeStyle = '#2a2a3a'; ectx.lineWidth = 1;
+  ectx.beginPath(); ectx.moveTo(0, h/2); ectx.lineTo(w, h/2); ectx.stroke();
+
+  if (history.length < 2) return;
+  const t0 = history[0].t;
+  const t1 = history[history.length - 1].t;
+  const span = Math.max(t1 - t0, 0.5);
+  let maxAbs = 0; for (const p of history) maxAbs = Math.max(maxAbs, Math.abs(p.theta));
+  if (maxAbs < 0.05) maxAbs = 0.05;
+
+  ectx.strokeStyle = '#4aadff'; ectx.lineWidth = 1.4;
+  ectx.beginPath();
+  for (let i = 0; i < history.length; i++) {
+    const p = history[i];
+    const sx = ((p.t - t0) / span) * w;
+    const sy = h/2 - (p.theta / maxAbs) * (h/2 - 8);
+    if (i === 0) ectx.moveTo(sx, sy); else ectx.lineTo(sx, sy);
+  }
+  ectx.stroke();
+}
+
+function updateReadouts() {
+  f0Val.textContent = parseFloat(f0Slider.value).toFixed(2) + ' Hz';
+  rVal.textContent = parseFloat(rSlider.value).toFixed(3);
+  dVal.textContent = parseFloat(dSlider.value).toFixed(3);
+  zVal.textContent = parseFloat(zSlider.value).toFixed(3);
+
+  // Peak amplitude in the last second.
+  let peak = 0;
+  for (const p of history) {
+    if (tSim - p.t < 1.0) peak = Math.max(peak, Math.abs(p.theta));
+  }
+  ampLbl.textContent = (peak * 180 / Math.PI).toFixed(1);
+
+  const eps = parseFloat(dSlider.value);
+  const zeta = parseFloat(zSlider.value);
+  const ratio = parseFloat(rSlider.value);
+  const detuning = Math.abs(ratio - 1.0);
+  const eps_thresh = 4 * zeta + 8 * detuning;  // rough — widens with detuning
+  if (eps > eps_thresh) {
+    threshLbl.textContent = `YES  (ε > ${eps_thresh.toFixed(3)})`;
+    threshLbl.style.color = 'var(--accent-unstable)';
+  } else {
+    threshLbl.textContent = `no   (ε ≤ ${eps_thresh.toFixed(3)})`;
+    threshLbl.style.color = 'var(--accent-stable)';
+  }
+
+  if (audioOn && audioGain) {
+    // Tone amplitude proportional to swing peak.
+    const target = Math.min(peak / (Math.PI / 2), 1.0) * 0.25;
+    audioGain.gain.setTargetAtTime(target, audioCtx.currentTime, 0.05);
+    audioOsc.frequency.setTargetAtTime(220 + 40 * Math.sin(theta), audioCtx.currentTime, 0.05);
+  }
+}
+
+requestAnimationFrame(frame);
+
+fetch(window.location.href).then(r => r.text()).then(html => {
+  const m = html.match(/<script>([\s\S]*?)<\/script>/);
+  if (m) document.getElementById('srcdump').textContent = m[1].trim();
+}).catch(() => {});
+</script>
+</body>
+</html>
