@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Mathieu Equation Simulator — Floquet / Time-Modulated Loops</title>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400&family=JetBrains+Mono:wght@400;500&family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #0a0a0f; --bg-card: #12121a; --bg-code: #1a1a28;
+  --border: #2a2a3a; --text: #c8c8d8; --text-dim: #7a7a8e;
+  --text-bright: #e8e8f0;
+  --accent-stable: #4aff8b; --accent-unstable: #ff6b4a;
+  --accent-marginal: #ffe44a; --accent-multiplier: #4aadff;
+  --accent-mod: #a64aff;
+  --serif: 'Source Serif 4', Georgia, serif;
+  --mono: 'JetBrains Mono', monospace;
+  --sans: 'DM Sans', system-ui, sans-serif;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+body {
+  background: var(--bg); color: var(--text);
+  font-family: var(--serif); font-size: 16px; line-height: 1.6;
+  -webkit-font-smoothing: antialiased; padding: 24px 16px 80px;
+}
+.container { max-width: 1100px; margin: 0 auto; }
+header { text-align:center; padding: 24px 0 32px; border-bottom: 1px solid var(--border); margin-bottom: 36px; }
+header h1 { font-size: clamp(1.6rem, 3.6vw, 2.4rem); font-weight: 700; color: var(--text-bright); letter-spacing: -0.02em; margin-bottom: 8px; }
+header .subtitle { font-family: var(--sans); color: var(--text-dim); font-size: 0.95rem; max-width: 700px; margin: 0 auto 8px; }
+header .breadcrumb { font-family: var(--mono); font-size: 0.7rem; color: var(--text-dim); letter-spacing: 0.08em; text-transform: uppercase; }
+.eqn { font-family: var(--mono); color: var(--accent-marginal); text-align:center; font-size: 1.05rem; margin: 12px 0 4px; }
+.layout { display: grid; grid-template-columns: 320px 1fr; gap: 24px; margin-top: 12px; }
+@media (max-width: 820px) { .layout { grid-template-columns: 1fr; } }
+.panel { background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px; padding: 18px; }
+.panel h3 { font-family: var(--sans); font-weight: 700; font-size: 0.78rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-bright); margin-bottom: 14px; }
+.panel h3::before { content: '▸ '; color: var(--accent-mod); }
+.slider-row { margin: 14px 0 18px; }
+.slider-row label { display: flex; justify-content: space-between; font-family: var(--mono); font-size: 0.78rem; color: var(--text); margin-bottom: 6px; }
+.slider-row label .val { color: var(--accent-marginal); }
+input[type=range] { width: 100%; -webkit-appearance: none; appearance: none; height: 4px; background: var(--bg-code); border-radius: 2px; outline: none; }
+input[type=range]::-webkit-slider-thumb { -webkit-appearance: none; width: 16px; height: 16px; border-radius: 50%; background: var(--accent-multiplier); cursor: pointer; box-shadow: 0 0 0 2px var(--bg-card); }
+input[type=range]::-moz-range-thumb { width: 16px; height: 16px; border-radius: 50%; background: var(--accent-multiplier); cursor: pointer; border: 2px solid var(--bg-card); }
+button { font-family: var(--mono); font-size: 0.8rem; padding: 9px 16px; border: 1px solid var(--accent-multiplier); background: var(--bg-code); color: var(--accent-multiplier); border-radius: 6px; cursor: pointer; letter-spacing: 0.05em; }
+button:hover { background: var(--accent-multiplier); color: var(--bg); }
+.button-row { display: flex; gap: 8px; margin-top: 8px; }
+.readout { font-family: var(--mono); font-size: 0.78rem; color: var(--text-dim); padding-top: 12px; border-top: 1px solid var(--border); margin-top: 14px; }
+.readout .stable { color: var(--accent-stable); } .readout .unstable { color: var(--accent-unstable); } .readout .marginal { color: var(--accent-marginal); }
+.plots { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.plot-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px; padding: 12px; }
+.plot-card h4 { font-family: var(--mono); font-size: 0.72rem; color: var(--text-dim); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 8px; }
+canvas { display: block; width: 100%; height: 200px; background: var(--bg-code); border-radius: 6px; }
+.strutt-card { grid-column: 1 / -1; }
+.strutt-card canvas { height: 240px; }
+details { margin-top: 32px; background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px; }
+summary { padding: 16px 20px; cursor: pointer; font-family: var(--sans); font-weight: 700; color: var(--text-bright); font-size: 0.95rem; }
+details[open] summary { border-bottom: 1px solid var(--border); }
+pre { background: var(--bg-code); color: var(--text); font-family: var(--mono); font-size: 0.78rem; line-height: 1.55; padding: 18px 22px; overflow-x: auto; border-radius: 0 0 12px 12px; }
+.kbd { color: var(--accent-mod); }
+.com { color: var(--text-dim); font-style: italic; }
+.fn { color: var(--accent-multiplier); }
+.num { color: var(--accent-marginal); }
+.str { color: var(--accent-stable); }
+.note { font-size: 0.85rem; color: var(--text-dim); margin-top: 16px; max-width: 760px; }
+.cross-link { font-family: var(--mono); font-size: 0.74rem; color: var(--accent-multiplier); }
+</style>
+</head>
+<body>
+<div class="container">
+
+<header>
+  <div class="breadcrumb">media-02  ·  Floquet / Time-Modulated Loops</div>
+  <h1>The Mathieu Equation Simulator</h1>
+  <p class="subtitle">Two sliders for $a$ and $q$. Watch the time series. Watch the phase space.
+  Watch a moving cursor on the Strutt diagram. Hear the result.</p>
+  <div class="eqn">x'' + (a − 2q · cos 2t) · x = 0</div>
+</header>
+
+<div class="layout">
+
+<aside class="panel">
+  <h3>Controls</h3>
+
+  <div class="slider-row">
+    <label>a  <span class="val" id="aval">1.000</span></label>
+    <input type="range" id="aslider" min="0.0" max="4.0" step="0.005" value="1.0">
+    <div style="font-size:0.72rem;color:var(--text-dim);font-family:var(--mono);margin-top:4px;">
+      squared natural frequency  (ω₀² = a)
+    </div>
+  </div>
+
+  <div class="slider-row">
+    <label>q  <span class="val" id="qval">0.000</span></label>
+    <input type="range" id="qslider" min="0.0" max="1.5" step="0.005" value="0.0">
+    <div style="font-size:0.72rem;color:var(--text-dim);font-family:var(--mono);margin-top:4px;">
+      modulation depth  (cos 2t coefficient)
+    </div>
+  </div>
+
+  <div class="slider-row">
+    <label>audio f<sub>0</sub>  <span class="val" id="fval">220 Hz</span></label>
+    <input type="range" id="fslider" min="80" max="660" step="10" value="220">
+    <div style="font-size:0.72rem;color:var(--text-dim);font-family:var(--mono);margin-top:4px;">
+      maps Mathieu time → audio time for playback
+    </div>
+  </div>
+
+  <div class="button-row">
+    <button id="playBtn">▶ play 1.5 s</button>
+    <button id="stopBtn">stop</button>
+  </div>
+
+  <div class="readout">
+    multiplier ρ:  <span id="multiplier">·</span><br>
+    |ρ|: <span id="multmag">·</span><br>
+    state: <span id="statelabel" class="stable">·</span>
+  </div>
+</aside>
+
+<div class="plots">
+  <div class="plot-card">
+    <h4>x(t) — time series</h4>
+    <canvas id="tsCanvas"></canvas>
+  </div>
+  <div class="plot-card">
+    <h4>(x, ẋ) — phase space</h4>
+    <canvas id="phaseCanvas"></canvas>
+  </div>
+  <div class="plot-card strutt-card">
+    <h4>Strutt diagram (your point in red)</h4>
+    <canvas id="struttCanvas"></canvas>
+  </div>
+</div>
+
+</div>
+
+<p class="note">
+  Stability is decided by the characteristic multiplier ρ = e<sup>μT</sup>, where μ is the
+  Floquet exponent and T = π is the modulation period. <span class="stable">|ρ| ≤ 1</span>
+  means the solution is bounded; <span class="unstable">|ρ| &gt; 1</span> means it grows
+  exponentially — you are inside a tongue. The cross-domain twin is Bloch's theorem in space:
+  see [[Bloch ↔ Floquet Duality]] (media-11).
+</p>
+
+<details>
+<summary>Source — see how this is built</summary>
+<pre id="srcdump"></pre>
+</details>
+
+</div>
+
+<script>
+// =========================================================================
+// 02_mathieu_simulator — the Mathieu equation simulator.
+//
+// Mathieu equation, dimensionless form:
+//     x'' + (a - 2q cos(2t)) x = 0
+// Modulation period T = pi (because the cos has angular freq 2,
+// period 2*pi/2 = pi). The CHARACTERISTIC MULTIPLIERS rho_1, rho_2 are
+// the eigenvalues of the monodromy matrix M = [[x_1(T), x_2(T)],
+// [v_1(T), v_2(T)]], where x_1 = trajectory from (1,0) and
+// x_2 = trajectory from (0,1) over one period.
+//
+// For Hamiltonian Mathieu det(M) = 1 always, so rho_1 * rho_2 = 1.
+// Two regimes:
+//   - rho's are a complex-conjugate pair on the unit circle: BOUNDED.
+//   - rho's are two reciprocal real numbers, one inside / one outside
+//     the unit circle: UNBOUNDED — we are inside a tongue.
+// The boundary between regimes is precisely where |rho| = 1.
+//
+// Numerical scheme: symplectic Euler with 2000 steps per modulation
+// period. Symplectic preserves the Hamiltonian structure of the
+// unmodulated case, which keeps the q=0 line on the boundary clean.
+// RK4 introduces effective damping that smears the boundary.
+// =========================================================================
+
+const T_PERIOD = Math.PI;   // modulation period of x'' + (a - 2q cos 2t)x = 0
+const STEPS_PER_PERIOD = 2000;
+
+// One symplectic-Euler step.
+function step(x, v, a, q, t, dt) {
+  const coeff = a - 2.0 * q * Math.cos(2.0 * t);
+  const vNew = v + dt * (-coeff * x);
+  const xNew = x + dt * vNew;
+  return [xNew, vNew];
+}
+
+// Build the 2x2 monodromy matrix M and return its eigenvalues (a 2x2
+// closed-form computation). For Hamiltonian Mathieu det(M) = 1 within
+// numerical precision; we still compute the determinant honestly.
+function multipliers(a, q) {
+  const dt = T_PERIOD / STEPS_PER_PERIOD;
+  function oneRun(x0, v0) {
+    let x = x0, v = v0, t = 0.0;
+    for (let i = 0; i < STEPS_PER_PERIOD; i++) {
+      [x, v] = step(x, v, a, q, t, dt); t += dt;
+    }
+    return [x, v];
+  }
+  const [m00, m10] = oneRun(1.0, 0.0);   // first column
+  const [m01, m11] = oneRun(0.0, 1.0);   // second column
+  // M = [[m00, m01], [m10, m11]]
+  const tr = m00 + m11;
+  const det = m00 * m11 - m01 * m10;
+  // 2x2 eigenvalues by quadratic formula.
+  const disc = tr * tr - 4 * det;
+  if (disc >= 0) {
+    const r = Math.sqrt(disc);
+    return [{re: (tr + r)/2, im: 0.0}, {re: (tr - r)/2, im: 0.0}];
+  } else {
+    const r = Math.sqrt(-disc);
+    return [{re: tr/2, im: r/2}, {re: tr/2, im: -r/2}];
+  }
+}
+
+// Long trajectory for plotting and audio.
+function trajectory(a, q, n_periods) {
+  const dt = T_PERIOD / STEPS_PER_PERIOD;
+  const n = n_periods * STEPS_PER_PERIOD;
+  const xs = new Float32Array(n + 1);
+  const vs = new Float32Array(n + 1);
+  let x = 1.0, v = 0.0, t = 0.0;
+  xs[0] = x; vs[0] = v;
+  for (let i = 0; i < n; i++) {
+    [x, v] = step(x, v, a, q, t, dt); t += dt;
+    // Soft saturate so unbounded growth stays plottable.
+    const SAT = 6.0;
+    x = SAT * Math.tanh(x / SAT);
+    v = SAT * Math.tanh(v / SAT);
+    xs[i+1] = x; vs[i+1] = v;
+  }
+  return {xs, vs, dt};
+}
+
+// =========================================================================
+// Plotting.
+// =========================================================================
+
+function drawTimeSeries(canvas, xs) {
+  const ctx = canvas.getContext('2d');
+  const dpr = window.devicePixelRatio || 1;
+  const w = canvas.clientWidth, h = canvas.clientHeight;
+  canvas.width = w * dpr; canvas.height = h * dpr;
+  ctx.scale(dpr, dpr);
+  ctx.fillStyle = '#1a1a28'; ctx.fillRect(0, 0, w, h);
+  // axis
+  ctx.strokeStyle = '#2a2a3a'; ctx.lineWidth = 1;
+  ctx.beginPath(); ctx.moveTo(0, h/2); ctx.lineTo(w, h/2); ctx.stroke();
+  // line
+  ctx.strokeStyle = '#4aadff'; ctx.lineWidth = 1.4;
+  ctx.beginPath();
+  let maxAbs = 0; for (let i = 0; i < xs.length; i++) maxAbs = Math.max(maxAbs, Math.abs(xs[i]));
+  if (maxAbs < 1e-6) maxAbs = 1.0;
+  for (let i = 0; i < xs.length; i++) {
+    const sx = (i / (xs.length - 1)) * w;
+    const sy = h/2 - (xs[i] / maxAbs) * (h/2 - 8);
+    if (i === 0) ctx.moveTo(sx, sy); else ctx.lineTo(sx, sy);
+  }
+  ctx.stroke();
+}
+
+function drawPhaseSpace(canvas, xs, vs) {
+  const ctx = canvas.getContext('2d');
+  const dpr = window.devicePixelRatio || 1;
+  const w = canvas.clientWidth, h = canvas.clientHeight;
+  canvas.width = w * dpr; canvas.height = h * dpr;
+  ctx.scale(dpr, dpr);
+  ctx.fillStyle = '#1a1a28'; ctx.fillRect(0, 0, w, h);
+  ctx.strokeStyle = '#2a2a3a'; ctx.lineWidth = 1;
+  ctx.beginPath(); ctx.moveTo(w/2, 0); ctx.lineTo(w/2, h); ctx.moveTo(0, h/2); ctx.lineTo(w, h/2); ctx.stroke();
+  let mx = 0; for (let i = 0; i < xs.length; i++) { mx = Math.max(mx, Math.abs(xs[i]), Math.abs(vs[i])); }
+  if (mx < 1e-6) mx = 1.0;
+  ctx.strokeStyle = '#4aff8b'; ctx.lineWidth = 1.0;
+  ctx.beginPath();
+  for (let i = 0; i < xs.length; i++) {
+    const sx = w/2 + (xs[i] / mx) * (w/2 - 8);
+    const sy = h/2 - (vs[i] / mx) * (h/2 - 8);
+    if (i === 0) ctx.moveTo(sx, sy); else ctx.lineTo(sx, sy);
+  }
+  ctx.stroke();
+}
+
+// Strutt diagram precomputed once. We sample (a, q) and run a small
+// integrator; classification is based on the spectral radius of M.
+let struttCached = null;
+function precomputeStrutt(canvas) {
+  const w = 320, h = 200;
+  const aMin = 0.0, aMax = 4.0, qMin = 0.0, qMax = 1.5;
+  const data = ctxImageDataFor(w, h);
+  for (let j = 0; j < h; j++) {
+    for (let i = 0; i < w; i++) {
+      const a = aMin + (aMax - aMin) * i / (w - 1);
+      const q = qMin + (qMax - qMin) * j / (h - 1);
+      const [r1, r2] = multipliersLite(a, q);
+      const m1 = Math.hypot(r1.re, r1.im);
+      const m2 = Math.hypot(r2.re, r2.im);
+      const m = Math.max(m1, m2);
+      let r, g, b;
+      if (m < 1.02) { r = 74; g = 255; b = 139; }       // stable green
+      else if (m < 1.1) { r = 255; g = 228; b = 74; }    // marginal yellow
+      else { r = 255; g = 107; b = 74; }                 // unstable orange-red
+      const idx = ((h - 1 - j) * w + i) * 4;
+      data.data[idx] = r; data.data[idx+1] = g;
+      data.data[idx+2] = b; data.data[idx+3] = 200;
+    }
+  }
+  return {w, h, data, aMin, aMax, qMin, qMax};
+}
+function ctxImageDataFor(w, h) {
+  const c = document.createElement('canvas'); c.width = w; c.height = h;
+  return c.getContext('2d').createImageData(w, h);
+}
+// Cheap multipliers — coarser grid for rendering only, fewer steps per period.
+function multipliersLite(a, q) {
+  const SPP = 200, dt = T_PERIOD / SPP;
+  function go(x0, v0) {
+    let x = x0, v = v0, t = 0;
+    for (let i = 0; i < SPP; i++) {
+      const c = a - 2*q*Math.cos(2*t);
+      v = v + dt * (-c * x);
+      x = x + dt * v;
+      // very loose clamp so |rho| stays finite for plotting
+      if (!isFinite(x)) x = 1e6;
+      t += dt;
+    }
+    return [x, v];
+  }
+  const [m00, m10] = go(1, 0);
+  const [m01, m11] = go(0, 1);
+  const tr = m00 + m11, det = m00 * m11 - m01 * m10;
+  const disc = tr*tr - 4*det;
+  if (disc >= 0) {
+    const r = Math.sqrt(disc);
+    return [{re:(tr+r)/2, im:0}, {re:(tr-r)/2, im:0}];
+  } else {
+    const r = Math.sqrt(-disc);
+    return [{re:tr/2, im:r/2}, {re:tr/2, im:-r/2}];
+  }
+}
+
+function drawStrutt(canvas, a, q) {
+  const ctx = canvas.getContext('2d');
+  const dpr = window.devicePixelRatio || 1;
+  const w = canvas.clientWidth, h = canvas.clientHeight;
+  canvas.width = w * dpr; canvas.height = h * dpr;
+  ctx.scale(dpr, dpr);
+  if (!struttCached) struttCached = precomputeStrutt();
+  const {w: sw, h: sh, data, aMin, aMax, qMin, qMax} = struttCached;
+  const off = document.createElement('canvas'); off.width = sw; off.height = sh;
+  off.getContext('2d').putImageData(data, 0, 0);
+  ctx.imageSmoothingEnabled = true;
+  ctx.drawImage(off, 0, 0, w, h);
+  // axes labels
+  ctx.fillStyle = '#7a7a8e'; ctx.font = '10px JetBrains Mono';
+  ctx.fillText('a →', w - 32, h - 6);
+  ctx.fillText('q ↑', 6, 14);
+  // tongue roots
+  const px = (av) => (av - aMin) / (aMax - aMin) * w;
+  const py = (qv) => h - (qv - qMin) / (qMax - qMin) * h;
+  for (const ar of [1, 4]) {
+    if (ar >= aMin && ar <= aMax) {
+      ctx.fillStyle = '#a64aff';
+      ctx.beginPath(); ctx.arc(px(ar), py(0), 3, 0, 2*Math.PI); ctx.fill();
+    }
+  }
+  // current point
+  ctx.fillStyle = '#ff4a6b';
+  ctx.strokeStyle = '#ffffff'; ctx.lineWidth = 2;
+  ctx.beginPath(); ctx.arc(px(a), py(q), 6, 0, 2*Math.PI);
+  ctx.fill(); ctx.stroke();
+}
+
+// =========================================================================
+// Audio playback.
+// =========================================================================
+let audioCtx = null;
+let audioSrc = null;
+function playAudio(xs, dt, freqHz) {
+  if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+  // Audio sample rate / Mathieu time-step mapping. A natural Hz of
+  // freqHz means the "audio period" should be 1/freqHz seconds. The
+  // dimensionless natural period is 2*pi/sqrt(a). We pick the playback
+  // sample rate so that one Mathieu period maps to one audio period.
+  const sr = audioCtx.sampleRate;
+  const targetSamples = Math.min(xs.length, sr * 1.5);
+  const buf = audioCtx.createBuffer(1, targetSamples, sr);
+  const ch = buf.getChannelData(0);
+  // Find peak for normalization.
+  let pk = 1e-6; for (let i = 0; i < targetSamples; i++) pk = Math.max(pk, Math.abs(xs[i]));
+  for (let i = 0; i < targetSamples; i++) ch[i] = (xs[i] / pk) * 0.4;
+  if (audioSrc) try { audioSrc.stop(); } catch(e) {}
+  audioSrc = audioCtx.createBufferSource();
+  audioSrc.buffer = buf;
+  // Detune to target audio frequency. A 220 Hz target means we want
+  // the resampled "Mathieu frequency" to land at 220 Hz.
+  audioSrc.playbackRate.value = freqHz / 110.0;
+  audioSrc.connect(audioCtx.destination);
+  audioSrc.start();
+}
+function stopAudio() {
+  if (audioSrc) try { audioSrc.stop(); } catch(e) {}
+  audioSrc = null;
+}
+
+// =========================================================================
+// Wire up.
+// =========================================================================
+const ts = document.getElementById('tsCanvas');
+const ph = document.getElementById('phaseCanvas');
+const st = document.getElementById('struttCanvas');
+const aS = document.getElementById('aslider');
+const qS = document.getElementById('qslider');
+const fS = document.getElementById('fslider');
+const aV = document.getElementById('aval');
+const qV = document.getElementById('qval');
+const fV = document.getElementById('fval');
+const mE = document.getElementById('multiplier');
+const mM = document.getElementById('multmag');
+const sL = document.getElementById('statelabel');
+
+function update() {
+  const a = parseFloat(aS.value);
+  const q = parseFloat(qS.value);
+  aV.textContent = a.toFixed(3);
+  qV.textContent = q.toFixed(3);
+  fV.textContent = fS.value + ' Hz';
+  const traj = trajectory(a, q, 4);
+  drawTimeSeries(ts, traj.xs);
+  drawPhaseSpace(ph, traj.xs, traj.vs);
+  drawStrutt(st, a, q);
+  // Multipliers (high-resolution).
+  const [r1, r2] = multipliers(a, q);
+  const m1 = Math.hypot(r1.re, r1.im);
+  const m2 = Math.hypot(r2.re, r2.im);
+  const m = Math.max(m1, m2);
+  mE.textContent = `${r1.re.toFixed(2)}${r1.im >= 0 ? '+' : ''}${r1.im.toFixed(2)}i,
+                    ${r2.re.toFixed(2)}${r2.im >= 0 ? '+' : ''}${r2.im.toFixed(2)}i`;
+  mM.textContent = m.toFixed(3);
+  if (m < 1.02) {
+    sL.textContent = 'STABLE  |ρ| ≈ 1  →  bounded oscillation';
+    sL.className = 'stable';
+  } else if (m < 1.10) {
+    sL.textContent = 'MARGINAL  |ρ| just above 1  →  near tongue boundary';
+    sL.className = 'marginal';
+  } else {
+    sL.textContent = 'UNSTABLE  |ρ| > 1  →  inside a tongue';
+    sL.className = 'unstable';
+  }
+}
+
+aS.addEventListener('input', update);
+qS.addEventListener('input', update);
+fS.addEventListener('input', () => { fV.textContent = fS.value + ' Hz'; });
+document.getElementById('playBtn').addEventListener('click', () => {
+  const a = parseFloat(aS.value), q = parseFloat(qS.value);
+  const traj = trajectory(a, q, 60);
+  playAudio(traj.xs, traj.dt, parseFloat(fS.value));
+});
+document.getElementById('stopBtn').addEventListener('click', stopAudio);
+
+window.addEventListener('resize', update);
+update();
+
+// Source dump for the <details> block.
+fetch(window.location.href).then(r => r.text()).then(html => {
+  const m = html.match(/<script>([\s\S]*?)<\/script>/);
+  if (m) document.getElementById('srcdump').textContent = m[1].trim();
+}).catch(() => {});
+</script>
+</body>
+</html>
