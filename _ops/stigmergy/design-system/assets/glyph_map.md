@@ -1,4 +1,4 @@
-# Glyph map — the BBS Blackboard "icon set"
+# Glyph map -- the STIGMERGY "icon set"
 
 Icons are typed, not drawn. Use these characters directly in markup.
 
