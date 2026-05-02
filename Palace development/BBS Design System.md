@@ -5,8 +5,8 @@ pillars:
   - creation
   - tools
 born: 2026-04
-last_activated: 2026-04-21
-activation_count: 1
+last_activated: 2026-05-02
+activation_count: 2
 stage: sprout
 energy: high
 forward_vector: >
@@ -33,6 +33,9 @@ links:
   - target: "[[Progressive Staging]]"
     type: mirrors
     label: phased-build
+  - target: "[[BBS Production Plan]]"
+    type: spawned
+    label: build-contract
 ---
 
 # BBS Design System
