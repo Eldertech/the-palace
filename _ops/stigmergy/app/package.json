@@ -1,0 +1,33 @@
+{
+  "name": "stigmergy",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "STIGMERGY — read-only browser terminal for the BBS Blackboard",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:e2e": "playwright test",
+    "check:phase-1": "node scripts/check-phase.js 1",
+    "check:phase-2": "node scripts/check-phase.js 2",
+    "check:phase-3": "node scripts/check-phase.js 3",
+    "check:phase-4": "node scripts/check-phase.js 4",
+    "check:phase-5": "node scripts/check-phase.js 5",
+    "check:phase-6": "node scripts/check-phase.js 6",
+    "check:all": "node scripts/check-phase.js all"
+  },
+  "dependencies": {
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.48.0",
+    "@vitejs/plugin-react": "^4.3.4",
+    "supertest": "^7.0.0",
+    "vite": "^5.4.10",
+    "vitest": "^2.1.5"
+  }
+}
