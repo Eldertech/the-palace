@@ -28,6 +28,7 @@ export default function App() {
   const [clock, setClock] = useState(formatNow());
   const [activeBoard, setActiveBoard] = useState('GENERAL');
   const [agentFilter, setAgentFilter] = useState(null);
+  const [scanlinesOn, setScanlinesOn] = useState(true);
 
   const [messages, setMessages] = useState([]);
   const [sessions, setSessions] = useState([]);
@@ -68,11 +69,10 @@ export default function App() {
     if (screen === 'board') loadAll();
   }, [screen, loadAll]);
 
-  // Hotkey support: 1-6 select boards, R reloads, Q quits.
+  // Hotkey support: 1-6 select boards, R reloads, V toggles scanlines, Q quits.
   useEffect(() => {
     if (screen !== 'board') return;
     function onKey(e) {
-      // Don't intercept while typing in inputs.
       if (e.target && /input|textarea/i.test(e.target.tagName)) return;
       const k = e.key;
       if (/^[1-6]$/.test(k)) {
@@ -80,6 +80,8 @@ export default function App() {
         if (idx >= 0 && idx < BOARDS.length) setActiveBoard(BOARDS[idx]);
       } else if (k === 'r' || k === 'R') {
         loadAll();
+      } else if (k === 'v' || k === 'V') {
+        setScanlinesOn((on) => !on);
       } else if (k === 'q' || k === 'Q') {
         setUser(null); setScreen('login');
       }
@@ -130,19 +132,30 @@ export default function App() {
     { key: '4', label: 'system' },
     { key: '5', label: 'trickster' },
     { key: '6', label: 'branches' },
+    { key: 'V', label: scanlinesOn ? 'visual off' : 'visual on' },
     { key: 'Q', label: 'quit' },
   ];
 
   function handleCommand(k) {
     if (k === 'R') return loadAll();
+    if (k === 'V') return setScanlinesOn((on) => !on);
     if (k === 'Q') { setUser(null); setScreen('login'); return; }
     const idx = parseInt(k, 10);
     if (idx >= 1 && idx <= 6) setActiveBoard(BOARDS[idx - 1]);
   }
 
   if (screen === 'login') {
+    const loginCmds = [
+      { key: 'V', label: scanlinesOn ? 'visual off' : 'visual on' },
+    ];
     return (
-      <Shell nodeName="01" clock={clock} hidePath commands={[]}>
+      <Shell
+        nodeName="01" clock={clock} hidePath
+        commands={loginCmds}
+        onCommand={(k) => { if (k === 'V') setScanlinesOn((on) => !on); }}
+        scanlinesOn={scanlinesOn}
+        vfxState={scanlinesOn ? 'on' : 'off'}
+      >
         <LoginScreen onLogin={handleLogin} />
       </Shell>
     );
@@ -150,7 +163,8 @@ export default function App() {
 
   return (
     <Shell user={user} nodeName="01" clock={clock} unread={totalFlagged}
-      commands={cmds} onCommand={handleCommand}>
+      commands={cmds} onCommand={handleCommand} scanlinesOn={scanlinesOn}
+      vfxState={scanlinesOn ? 'on' : 'off'}>
       <div style={{ maxWidth: '110ch', margin: '0 auto', width: '100%' }}>
         <Banner as="h1" strong style={{ fontSize: 32, margin: '0 0 4px' }}>
           {activeBoard.toLowerCase()} board
