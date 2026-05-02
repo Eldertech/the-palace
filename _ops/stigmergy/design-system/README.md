@@ -140,7 +140,7 @@ Full scale, semantic tokens, and CRT-glow utilities live in `colors_and_type.css
 
 ### Animation
 - **Blink** — the cursor blinks at ~1.1 Hz. Text can blink too for alerts (use sparingly).
-- **Type-on** — headers and banners "type in" character by character on first paint, ~20ms/char. This is the flagship motion.
+- **Type-on** -- headers and banners "type in" character by character on first paint. The base rate is `--dur-type: 20ms` per character, which is correct for short H1-style headers and menu rows (a 40-character heading completes in under a second). **Long multi-line ASCII banners must scale the rate down** so the user is not stuck waiting: a ~1300-character welcome banner at 20ms/char takes ~25 seconds, which is unusable. For banners of this size, scale to ~2ms/char so the banner completes in ~2 seconds. Rule of thumb: pick a per-character rate such that total type-on time lands between ~0.6s (short headers) and ~2.5s (full-screen banners). The token `--dur-type` defines the base rate; banner-scale type-on multiplies it down at the call site rather than overriding the token. This is the flagship motion -- it must feel like a teletype, not a loading screen.
 - **Scroll, not fade** — content moves on; it does not dissolve. New messages push old ones up.
 - **Easing: `steps()`**, not cubic-bezier. Motion is discrete, not smooth. `transition: opacity 60ms steps(3)` — never `ease-in-out`.
 - **Fades are rare.** When used, they're 100ms max.

@@ -17,7 +17,7 @@ function Box({ children, title, tone = "double", style = {}, pad = true }) {
       <div style={{ whiteSpace:"pre", lineHeight:1.1 }}>
         {chars.tl}{title ? `═ ${title} ${chars.h.repeat(Math.max(0, 72 - title.length))}` : chars.h.repeat(76)}{chars.tr}
       </div>
-      <div style={{ padding: pad ? "6px 12px" : 0, borderLeft:`1px ${tone==="double"?"double":"dashed"} var(--phosphor-dim)`, borderRight:`1px ${tone==="double"?"double":"dashed"} var(--phosphor-dim)`, marginLeft:"2px", marginRight:"2px" }}>
+      <div style={{ padding: pad ? "6px 12px" : 0, borderLeft:`1px ${tone==="double"?"double":"solid"} var(--phosphor-dim)`, borderRight:`1px ${tone==="double"?"double":"solid"} var(--phosphor-dim)`, marginLeft:"2px", marginRight:"2px" }}>
         {children}
       </div>
       <div style={{ whiteSpace:"pre", lineHeight:1.1 }}>{chars.bl}{chars.h.repeat(76)}{chars.br}</div>
