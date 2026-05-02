@@ -10,6 +10,9 @@ born: 2026-01
 last_activated: 2026-03
 activation_count: 1
 stage: growing
+author: Donella Meadows
+year: 2008
+medium: book
 links:
   - target: "[[FOUR PILLARS]]"
     type: deepens

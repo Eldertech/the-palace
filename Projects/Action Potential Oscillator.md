@@ -3,7 +3,7 @@ title: "Action Potential Oscillator"
 type: project
 pillars: [creation, tools, philosophy]
 born: 2026-03
-last_activated: 2026-04-01
+last_activated: 2026-04
 activation_count: 4
 stage: growing
 confidence: working
