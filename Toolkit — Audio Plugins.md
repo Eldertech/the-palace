@@ -37,7 +37,7 @@ VST3 plugin inventory from `/Library/Audio/Plug-Ins/VST3`. Organized by manufact
 - v6: Loudon direct edits integrated. AIR += Hype, Jura, Sub Factory. Baby Audio += PitchDrift. Cableguys += Snapback. Dada Life += Space In-Your-Face, Wide Awake. Dreamtonics += Vocoflex. iZotope += Equinox, Plasma, Stratus. Klevgrand += Rum. LDN += Hello World. Native Instruments += Enhanced EQ, Freak. UVI += Shade. New manufacturers: DMG Audio, Klimper, Modalics, Toolroom, Xynth.
 - v7: Verify table closed. Iona = AIR synth (not iZotope reverb). Symphony = iZotope reverb (confirmed). RC 24/RC 48 removed — not Loudon's plugins; RC-20 Retro Color (XLN) already in table. Manufacturer attribution now complete.
 
-**Loudon Live RTM Series concept:** A planned content series reading each plugin's manual and surfacing unusual, cool, or underused capabilities. See [[Toolkit — Synthesizers]] for the series description.
+**[[Loudon Live]] RTM Series concept:** A planned content series reading each plugin's manual and surfacing unusual, cool, or underused capabilities. See [[Toolkit — Synthesizers]] for the series description.
 
 ---
 
@@ -59,7 +59,7 @@ VST3 plugin inventory from `/Library/Audio/Plug-Ins/VST3`. Organized by manufact
 | **Dada Life** | Endless Smile, SausageFattener, Space In-Your-Face, Wide Awake | Dynamics / Spatial / Character | Iconic EDM tools by DJ/producer duo Dada Life; expanding into FX territory |
 | **Devious Machines** | BassFocus, Duck, Infiltrator, Multiband X6, PitchMonster, Texture | Sidechain / Multi-FX / Dynamics | Duck = sidechain/volume shaping; Infiltrator = multi-FX mangler; PitchMonster = pitch+vocoder; Texture = sample layering |
 | **DMG Audio** | TrackMeter | Metering | Precision metering tool |
-| **Dreamtonics** | Synthesizer V Studio ARA Plugin, Synthesizer V Studio Pro, Synthesizer V Studio 2 ARA Plugin, Synthesizer V Studio 2 Pro, Vocoflex | Vocal Synthesis (AI) / Vocal FX | AI vocal synthesis + Vocoflex = vocal FX; cross-domain with Loudon Live vocal work |
+| **Dreamtonics** | Synthesizer V Studio ARA Plugin, Synthesizer V Studio Pro, Synthesizer V Studio 2 ARA Plugin, Synthesizer V Studio 2 Pro, Vocoflex | Vocal Synthesis (AI) / Vocal FX | AI vocal synthesis + Vocoflex = vocal FX; cross-domain with [[Loudon Live]] vocal work |
 | **Eventide** | 2016 Stereo Room, Blackhole (+ Immersive), CrushStation, Crystals, EChannel, EQ45, EQ65, H3000 Band Delays (+ Mk II), H3000 Factory (+ Mk II), H910 Harmonizer (+ Dual), H949 Harmonizer (+ Dual), Instant Flanger Mk II, Instant Phaser Mk II, MangledVerb, MicroPitch (+ Immersive), Octavox, Omnipressor, Physion (+ Mk II), Precision Time Align, Precision Time Delay, Quadravox, Rotary Mod, SP2016 Reverb, ShimmerVerb, SplitEQ, Spring, Temperance Pro, TriceraChorus, Tverb, UltraChannel, UltraReverb, UltraTap, Undulator | Reverb / Delay / Pitch / Dynamics / EQ | Major collection; Blackhole = iconic creative reverb; H3000 Factory = prime RTM candidate |
 | **Expressive E** | Lie (lié) | Hardware Companion / MIDI Mapping | Touché controller companion — maps synth parameters to Touché's 4 pressure axes. Presence indicates Touché hardware in toolkit. |
 | **FabFilter** | Pro-L 2, Pro-MB, Pro-Q 4, Pro-R 2, Saturn 2, Twin 3, Volcano 3 | EQ / Dynamics / Saturation / Synth | Top-tier mixing and mastering tools; Pro-Q 4 = essential daily driver |
@@ -125,7 +125,7 @@ VST3 plugin inventory from `/Library/Audio/Plug-Ins/VST3`. Organized by manufact
 ## Notes for Future Sessions
 
 - **Manufacturer attribution: COMPLETE.** All plugins fully attributed as of v6. RC 24/RC 48 were removed — Loudon does not recognize them; RC-20 Retro Color (XLN Audio) is the correct plugin and already in the table.
-- **Loudon Live RTM shortlist** — Prime candidates: Eventide H3000 Factory, u-he Diva + Zebra2, Reaktor 6, Newfangled Pendulate, MeldaProduction full suite, Surge XT, Vital, Soundtoys complete bundle, Polyverse full collection, Klevgrand Tomofon.
+- **[[Loudon Live]] RTM shortlist** — Prime candidates: Eventide H3000 Factory, u-he Diva + Zebra2, Reaktor 6, Newfangled Pendulate, MeldaProduction full suite, Surge XT, Vital, Soundtoys complete bundle, Polyverse full collection, Klevgrand Tomofon.
 - **LDN full plugin list** — Hello World confirmed. Full list: click LDN in Ableton's plugin browser to see all custom exports.
 - **Custom plugin ecosystem** — Loudon builds with RNBO and Max/MSP. The LDN manufacturer tag identifies his own VST3 exports. Worth a future palace entry on the plugin-building practice itself.
 - **Expressive E / Touché** — Lié plugin is installed. Confirm Touché hardware for the MIDI Controllers category entry.

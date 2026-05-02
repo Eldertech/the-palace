@@ -5,8 +5,8 @@ pillars:
   - tools
   - practice
 born: 2026-03
-last_activated: 2026-03
-activation_count: 2
+last_activated: 2026-05
+activation_count: 3
 stage: mature
 links:
   - target: "[[SUBSTRATE]]"
@@ -18,7 +18,6 @@ links:
   - target: "[[Palace Ceremonies]]"
     type: connects-to
 ---
-<!-- Should this live in _Ops -->
 # Substrate Skill (Palace Edition)
 
 This is the authoritative ceremony specification for Claude's interaction with this knowledge organism. It lives in the palace itself.

@@ -39,7 +39,7 @@ This is a **meta-entry**: a document about the Palace itself. Its purpose is to 
 | **The link ontology** | The class hierarchy + interface contracts | The data model | The TBox (schema / type declarations) | The macro vocabulary | The Ubiquitous Language |
 | **CLAUDE.md** | The `main()` entry point / package manifest | The `MLproject` file / operational contract | The ontology header | The root document | The context map |
 | **SCHEMA.md** | The class library / type hierarchy | The data model spec | The full TBox | The genre definitions | The domain model |
-| **Substrate Skill.md** | The method library / API reference | The runbook | The inference rules | The weaving instructions | The domain service definitions |
+| **_ops/Substrate Skill.md** | The method library / API reference | The runbook | The inference rules | The weaving instructions | The domain service definitions |
 | **A Ceremony** | A method call | A pipeline run | A SPARQL query + update | A literate weave | A Domain Event handler |
 | **Harvest Ceremony** | `extract()` | ETL ingestion pipeline | Graph population run | Source weaving pass | Collection phase |
 | **Deposit Ceremony** | `insert()` / `commit()` | Data product materialization | ABox assertion batch | Document integration | Repository write |
@@ -120,7 +120,7 @@ For the authoritative decision tree and full definitions, see [[SCHEMA]]. This t
 
 **Design by Contract (Bertrand Meyer):** Methods carry preconditions, postconditions, and invariants. A method that cannot verify its postcondition has failed, even if it completed without error.
 
-**Palace rule:** Every ceremony definition in Substrate Skill.md must include at least one postcondition. After each ceremony, verify it explicitly.
+**Palace rule:** Every ceremony definition in `_ops/Substrate Skill.md` must include at least one postcondition. After each ceremony, verify it explicitly.
 
 ---
 
@@ -176,13 +176,15 @@ Each link object may carry an optional `label` field — a single word or hyphen
 The Palace/
 ├── CLAUDE.md               ← Entry point. Read first. Contains: version, ceremony table, depth index.
 ├── SCHEMA.md               ← Type system (TBox). Authoritative list of entry types, link types, YAML fields, Ceremony Linter.
-├── Substrate Skill.md      ← Full ceremony protocols. Method library. Operational instructions.
-├── Rosetta Stone.md        ← This file. Cross-tradition glossary. Self-description.
+├── ROSETTA.md              ← This file. Cross-tradition glossary. Self-description.
 ├── README - The Palace Guide.md  ← Philosophy, founding principles, palace manual.
-├── Deposit Archive.md      ← Permanent record of all deposits. Append-only.
-├── Palace Ceremonies.md    ← Canonical ceremony list with triggers and cadences.
-├── Palace To-Do.md         ← Active improvement queue for palace infrastructure.
-└── [Content entries]       ← concept, hub, project, breakthrough, source, practice, person, question, spore entries
+├── [Content entries]       ← concept, hub, project, breakthrough, source, practice, person, question, spore entries
+│
+└── _ops/                   ← Ceremony machinery + working queues. All ceremony files, their context companions, and palace operational queues live here.
+    ├── Substrate Skill.md  ← Full ceremony protocols. Method library. Operational instructions.
+    ├── Palace Ceremonies.md ← Canonical ceremony list with triggers and cadences.
+    ├── Deposit Archive.md  ← Permanent record of all deposits. Append-only.
+    └── Palace To-Do.md     ← Active improvement queue for palace infrastructure.
 ```
 
 ---
