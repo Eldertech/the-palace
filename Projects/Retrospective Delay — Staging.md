@@ -25,7 +25,7 @@ links:
 
 **Audience entry assumptions:** Students can build basic Max/MSP patches — `phasor~`, `buffer~`, `plugin~`/`plugout~`. The M4L device format is covered in Stage 1's prerequisite resources if needed.
 
-**Curriculum relationship:** Parallel to [[Compressor Design]], which uses a FILO circular buffer at ~11ms (sub-perceptual, RMS envelope). Same primitive, radically different time scale, completely different musical behavior. No dependency either direction — they reinforce each other, they don't scaffold each other. See `curriculum-map.md`.
+**Curriculum relationship:** Parallel to [[Compressor Design]], which uses a FILO circular buffer at ~11ms (sub-perceptual, RMS envelope). Same primitive, radically different time scale, completely different musical behavior. No dependency either direction — they reinforce each other, they don't scaffold each other. See `Curriculum Map.md`.
 
 ---
 

@@ -19,7 +19,7 @@ links:
 
 # Curriculum Map
 
-Cross-project scaffolding intelligence for the Loudon Live curriculum. This file tracks which projects build on which, where good entry points are, and where gaps exist.
+Cross-project scaffolding intelligence for the [[Loudon Live]] curriculum. This file tracks which projects build on which, where good entry points are, and where gaps exist.
 
 Updated whenever a project is staged. Read by the `project-stage-builder` skill during Phase 1 audit.
 
@@ -51,7 +51,7 @@ Stage 1 — Circular buffer in vanilla Max → M4L device     [entry point]
                             └── Stage 5 — RNBO → VST/AU + H90 export
 ```
 
-| Stage | Prerequisite Loudon Live | Prerequisite Knowledge | Introduces |
+| Stage | Prerequisite [[Loudon Live]] | Prerequisite Knowledge | Introduces |
 |---|---|---|---|
 | 1 — The Witness | None | Basic Max/MSP, M4L Audio Effect format | Circular buffer, phasor-as-clock, phrase memory |
 | 2 — The Séance | Stage 1 | Stage 1 patch | Gain gesture, lag parameterization, loop crossfade |
@@ -73,7 +73,7 @@ Stage 1 — Monophonic Gen~ synth in Max          [entry point — no prerequisi
                             └── Stage 5 — Full physical model + crystallographic database
 ```
 
-| Stage | Prerequisite Loudon Live | Prerequisite Knowledge | Introduces |
+| Stage | Prerequisite [[Loudon Live]] | Prerequisite Knowledge | Introduces |
 |---|---|---|---|
 | 1 — Monophonic Gen~ synth | None | Basic Max, additive synthesis | Gen~ oscillator banks, crystal partials, hypothesis-testing pedagogy |
 | 2 — Polyphonic + Portability | Stage 1 | Gen~ (from Stage 1) | RNBO, voice allocation, H90 + Faust export |

@@ -6,6 +6,8 @@ pillars:
   - tools
   - philosophy
 born: 2026-01
+last_activated: 2026-01
+activation_count: 0
 stage: growing
 forward_vector: "I want to become the recognition that the Schrödinger equation IS a synthesis system — not metaphor but isomorphism — where boundary conditions determine harmonic content and anharmonicity flows from the potential's shape, monism made audible."
 links:

@@ -1,5 +1,5 @@
 ---
-title: "Semantic Delay - Phase 1 Plan Review 2026-04-20"
+title: "Semantic Delay — Phase 1 Plan Review 2026-04-20"
 type: concept
 pillars: [creation, tools]
 born: 2026-04

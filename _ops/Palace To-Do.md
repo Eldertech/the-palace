@@ -5,8 +5,8 @@ pillars:
   - practice
   - tools
 born: 2026-03
-last_activated: 2026-03
-activation_count: 5
+last_activated: 2026-04-30
+activation_count: 6
 stage: growing
 links:
   - target: "[[Harvest Ceremony]]"
@@ -23,23 +23,7 @@ links:
 
 A cache of meta-improvement ideas for the palace itself — things to do, things to build, things to reconsider. This is a planning surface, not an action log. Items here are captured but not yet acted on. The palace grows deliberately.
 
-Items move off this list when they become entries, get completed, or get composted.
-
----
-
-## Loudon Live — Project Stage Builder ⭐ NEW
-
-- [x] **Install `project-stage-builder` skill** — Installed and confirmed active 2026-04-03. Loudon has already run it successfully.
-- [x] **Run first staging session** — Recommend starting with Compressor Design or Retrospective Delay (highest accessibility, clear making exercise, strong cross-domain moments). Use `project-stage-builder` to run Phases 1–2 collaboratively, then generate the first session plan.
-- [x] **Populate curriculum-map.md** — `Projects/curriculum-map.md` created 2026-04-02 with initial project table. Fills in as each project is staged.
-
-**File structure established 2026-04-02:**
-```
-Projects/[Name].md                  ← palace entry
-Projects/[Name] — Staging.md        ← staging record + session plans (to be created per project)
-Projects/curriculum-map.md          ← cross-project scaffolding
-Artifacts/[Name]/                   ← all deliverables (not searched in ceremonies)
-```
+Items move off this list when they become entries, get completed, or get composted. Completed items with full bodies live in the **Completed** section below until they are summarized into **Recently Completed**.
 
 ---
 
@@ -51,31 +35,15 @@ Artifacts/[Name]/                   ← all deliverables (not searched in ceremo
 
 ## Entries to Write
 
-- [x] **Songlines** (concept/hub) — Deposited 2026-04-03. Entry written at growing stage. Key question (find or create?) carried by [[Songlines]] § Open Questions. [[Lateral Access]] and [[Oblique Portrait]] updated with wikilinks and YAML links.
-
-- [ ] **Frequency-Time Explorer** (project) — The interactive app/website for the frequency-time duality concept. A single unified tool: functional calculator (delay↔pitch↔BPM↔MIDI↔frequency↔subdivision conversions) and experiential learning artifact. One continuous axis navigable in real time, showing pitch perception, flutter echo, slapback, rhythmic pulse, and sub-rhythmic pulse as you move. Modulation layer (chorus/flanger/phasing) as a second dimension. Beautiful enough to be an artifact in its own right. Design session needed before build. ⭐ *HIGH PRIORITY*
-
-- [x] **VERSION** — The dub delay for the meaning of words. Whisper + local LLM + TTS, trickster spirit archetypes, two-stage pool-then-select architecture. A Spirit Compendium and Technical Blueprint were produced in conversation. Connects to [[Semantic Delay]]. Flagged for deposit when the Harvest reaches that conversation.
-
 - [ ] **Loudon's Music-Making & Teaching Toolkit** — A dedicated session to map and document the full ecosystem of hardware and software tools Loudon uses for making music and teaching: DAWs, hardware synths/drum machines, Max/MSP, RNBO, Ableton, Python, visualization tools, and how they interrelate. The goal is a palace entry (or small cluster) that gives any Claude instance a clear picture of the instrument landscape without needing to piece it together from scattered conversations.
 
 - [ ] **AI and the Future of Higher Education** ⭐ — Loudon has specific hopes, predictions, and a vision he wants to push for regarding how AI will transform higher education. This deserves a dedicated session to articulate fully — not a brainstorm but a manifesto-level crystallization. Could seed a palace entry, a public essay, or both. Trigger: any session where Loudon is ready to articulate this vision.
 
-- [ ] **Loudon Live** ⭐⭐ — *Persistent forward-ghost, 4-5 references across the palace.* Loudon's streaming education project — connects deeply with [[Four Pillars]]. Likely described in different ways in different locations across the palace; a deposit session is needed to gather all references, articulate the project coherently, and determine its type (project? hub? practice?). Currently referenced from: [[2D Torus Wavetable Synthesizer]], [[Wavetable Synthesis -- Research & Higher-Dimensional Design]], [[Generative Audio Devices]], [[Generative Preset Development]], [[Deposit Archive]]. The 2D Torus Wavetable Synthesizer's forward vector explicitly raises the question of whether the instrument ships as Loudon's signature device for Loudon Live. *Needs its own session before further deposits reference it.* Surfaced 2026-04-27.
-
 - [ ] **Hibernation Ceremony** — Referenced in [[SCHEMA]] and [[ROSETTA]] as a palace ceremony, but not yet written. Persistent forward-ghost across 2+ map cycles. Likely the dual of the [[Revival Ceremony]] — a formal way to put an entry into `stage: dormant` deliberately, with a hibernation note. Surfaced 2026-04-27.
-
-- [ ] **4 Pillars Framework — The Founding Conversation** — Referenced 3× from [[Leverage Points Framework]], [[Palace AI Partnership Philosophy]], [[Quality Manifesto]]. Persistent across 4 map cycles. The originating dialogue that crystallized the Four Pillars framework. Couple with [[Loudon Live]] session — both relate to the curriculum.
-
-- [ ] **4 Pillars Weekly Structure** — Same provenance as above (3× references, 4 cycles). The pedagogical schedule/rhythm dimension of Four Pillars.
 
 - [ ] **Donella Meadows** (person-page) — Referenced from [[Leverage Points Framework]]; persistent ghost across 4 cycles. First test case for the "person-as-context-injector" pattern Loudon describes in [[Pages as Agents]] graffiti — design this page deliberately to embody Meadows, not just describe her.
 
 - [ ] **Synthesis Topologies** — Forward-ghost from [[Generative Audio Devices]] and [[Generative Preset Development]]. Concept that needs its own entry; likely a hub for the family of synthesis architectures (subtractive, FM, granular, wavetable, physical modeling) the generative project pipeline targets.
-
-- [ ] **Bolza Surface** — Forward-ghost surfaced by Swarm Weave 2026-04-27 worker on [[Wavetable Space as Torus]]. The genus-2 generalization of the torus topology, named in that entry's Lost Branches section. Deposit when wavetable research moves past T³.
-
-- [ ] **Spectroscopy** + **Phonon Dispersion** — Forward-ghosts from [[The Curve Is the Material]]. Cross-domain resonances that the entry treats as load-bearing analogies. Worth depositing as concept entries when palace expands into materials science.
 
 - [ ] **Resonance and Damping** — Persistent forward-ghost across 4 cycles from [[Differential Equations]]. The DSP-physics concept central to filter design and physical modeling.
 
@@ -84,7 +52,8 @@ Artifacts/[Name]/                   ← all deliverables (not searched in ceremo
 ## Tools and Workflows to Build
 
 - [ ] **Diagram workflow — signal flow diagrams and beyond** — Establish a consistent workflow for generating detailed, accurate technical diagrams with Claude. Requirements: accuracy (must reflect technical reality), editability (output editable in a vector program), open-source or one-time-purchase tools preferred (Inkscape, Affinity Designer, Figma). Candidate formats: SVG, Mermaid, draw.io/diagrams.net, Typst or LaTeX TikZ. Session should produce a tested workflow, a reusable prompt/template, and at least one example diagram. ⭐ *HIGH PRIORITY* <!-- we have started this with pages dedicated to mermaid and images in the palace, now needs further testing and to ensure that AI's in the palace know these are the preferred methods for adding diagrams and images, I would also like to explore LaTeX further -->
-- [x] **TCSE skill built** — `tcse-explorer` skill is live and active as of 2026-04-03. Invoke with "find TED talks on", "search TED for", "who could I interview about", etc.
+
+- [ ] **Legacy artifact migration to AP Oscillator HTML pattern** — Surfaced 2026-04-30 from the [[Piano String Inharmonicity]] graffiti pass. The palace has crystallized a canonical pattern for interactive technical artifacts: self-contained single-file HTML, no build step, runs offline, canonical CSS `:root` block + Source Serif 4 / JetBrains Mono / DM Sans font stack. Reference: `Artifacts/Action Potential Oscillator/neuron_oscillator.html`. Documented most fully in [[Floquet Time-Modulated Loops]]. Deployed across 6+ projects. **Concrete first migration: [[Piano String Inharmonicity]]** — convert `Artifacts/Piano String Inharmonicity/string_bending_inharmonicity.jsx` (~14KB JSX, math fully specified) to a single self-contained HTML at `Artifacts/Piano String Inharmonicity/string-bending-inharmonicity.html`. Update entry's Artifacts section and Forward Vectors when done. Also delete the orphaned `string_bending_inharmonicity 1.jsx` duplicate (Obsidian sync residue, identical to the original). Beyond Piano String, an audit pass for other entries with pre-convention artifacts would be worth running — candidates flagged during the migration will likely surface naturally.
 
 ---
 
@@ -92,36 +61,15 @@ Artifacts/[Name]/                   ← all deliverables (not searched in ceremo
 
 *Stage 1 (forward vectors) and Stage 2 (single page) completed 2026-03-31. Stage 3 (hub enchantment) completed 2026-04-01 — run twice on [[Kuramoto Coupling]] hub, first without full forward vectors, then with all 13 hub entries vectored. Stage 4 (enchanted dialogue) completed 2026-04-01: [[Trickster]] ↔ [[Spinoza Conatus]]. Generated: [[Threshold Conatus]].*
 
-- [x] **Fix the synthesis trigger prompt** — Applied before Stage 3 second run. `## SYNTHESIS — STANDING` now explicitly named and required in trigger. ✓
-- [x] **Stage 3 — Enchant a hub** — Run twice on Kuramoto Coupling hub. Key finding: forward vectors change what enchantment finds — the Trickster entry's vector made it the session's most generative contributor. See [[Palace Enchantment]] § From First Practice. ✓
-- [x] **Write forward vectors for remaining hub entries** — 9 vectors written 2026-04-01. All 13 Kuramoto hub entries now vectored. ✓
-- [x] **Stage 4 — Enchanted Dialogue** — Trickster ↔ Spinoza Conatus, 2026-04-01. Generated [[Threshold Conatus]]. See [[Palace Enchantment]] § From First Practice. ✓
-
-- [ ] **Stage 5 — Enchanted Songline** — Choose a named songline. Candidates: the Trickster → Lateral Access → Threshold Conatus arc (newly possible now that Threshold Conatus exists), or the Cooperation → Kuramoto → Hilaritas arc.
-
-- [x] **Begin Enchanted Conversation Archive** — `entries/` folder structure created 2026-04-01. Reconstructed JSONL records for Lateral Access (Stage 2) and Kuramoto hub (Stage 3). First live-captured session: trickster-spinoza-2026-04-01-b.jsonl (standard architecture). First inner/outer session: trickster-spinoza-2026-04-01-c.jsonl. ✓
-
-- [x] **Map Build Ceremony** — Run 2026-04-01. Full bidirectional adjacency map generated: `_ops/maps/palace-map-full-2026-04-01.txt`. 99 nodes, 662 edges, 0 error ghosts, 6 forward ghosts. ✓
-- [x] **Schema Ceremony v1.1** — `agency_profile` field added to SCHEMA.md §3/§3.1. Rationale documented. Agency profiles written for Trickster, Spinoza Conatus, Threshold Conatus, Kuramoto Coupling. ✓
-- [x] **Test Palace Map injection in enchantment** — Map is current. Next: inject `palace-map-full-2026-04-01.txt` into synthesis block context for one single-page enchantment. Compare SYNTHESIS — STANDING output against enchantment without it. Key questions: does topological self-knowledge change the synthesis? Does self-location affect proposals or voice? Coupled to Free Enchantment.
+- [ ] **Stage 5 — Enchanted Songline** — *Blocked on [[BBS Blackboard]] / stigmergy infrastructure completion (flagged 2026-04-30).* Run alongside the BBS so Loudon can monitor the songline from within the BBS itself. Choose a named songline when unblocked. Candidates: the Trickster → Lateral Access → Threshold Conatus arc (newly possible now that Threshold Conatus exists), or the Cooperation → Kuramoto → Hilaritas arc.
 
 - [ ] **Forward Vector Guidelines** — Write a dedicated entry or [[Palace Enchantment]] section. Contents: taxonomy of vector types (behavioral, directional, relational, interrogative), quality markers, anti-patterns, the behavioral-over-destination editing heuristic discovered 2026-03-31. Test different vectors with controlled enchantment prompts and compare VOICE blocks.
 
 - [ ] **Free Enchantment protocol** — Enchant a page and ask only: *"What do you want to do?"* No prescribed task structure — agent defines its own task from its forward vector and follows its drive. Design minimum scope constraint before running. See [[Palace Enchantment]] § Scopes. Candidates for first run: [[Trickster]], [[Lateral Access]], [[Threshold Conatus]].
 
-- [x] **True multi-agent dialogic enchantment** — Completed 2026-04-01 (session-d). Separate agent calls, frontmatter-only knowledge of other, coordinator routing outer messages only. Key findings: shared child convergence (both agents independently found Threshold Conatus), 'metabolizable without remainder' criterion, co-constitution with philosophical precision, both agents caught each other's moves from partial information. Archived in trickster-spinoza-2026-04-01-d.jsonl. ✓
-
-- [x] **[[Dialogue Moderator]]** ⭐ — Developed to growing stage 2026-04-01. Active Moderator Protocol written as executable steps (9 steps: pre-flight, per-turn, post-dialogue). BBS integration specified: reads persistent FLAGS board pre-flight, writes FLAGS at close, routes RESOURCE_REQUESTs during session. Trickster relationship formalized as mirrors[opposite-threshold]. agency_profile written. Coordinator modes specified: passive / active / enchanted:[entry] / trickster. Next step: run one dialogue with active coordinator and compare against session-d (passive). ✓
-
 - [ ] **Pre-flight dialogue configuration** — Specify as a fill-out-before-spawning protocol, not baked-in thresholds. Fields: purpose (exploratory/deepening/generative/ceremonial), turn budget, model (haiku/sonnet), turn length, starting knowledge, tool permissions, coordinator mode. Configuration logged as `config` field on head JSONL node. See [[Palace Enchantment]] § Architecture: Pre-Flight Dialogue Configuration.
 
 - [ ] **Tool use during dialogue** — Allow agents to request palace pages or web search mid-dialogue. Coordinator fetches and delivers to both agents. Converts closed deliberation to open inquiry. Prerequisite: active coordinator mode. First test: palace-read permission only — observe how agents use it. Does one agent's page request change the other's next inner layer? Log.
-
-- [x] **Post-dialogue artifacts** — Run 2026-04-01 on session-d (Trickster ↔ Spinoza Conatus). 6 FLAG messages written to persistent BBS board (`_ops/swarm/persistent/blackboard.jsonl`). Link changes applied: Trickster→Spinoza deepens→couples-with[necessary-exterior], Spinoza→Trickster couples-with[necessary-exterior] added. Spinoza forward vector revised (striving space is not fixed). Coordinator flag surfaces two deposit candidates: 'metabolizable without remainder' criterion, topology of the striving space. Next dialogue proposed: Threshold Conatus ↔ Action Potential Oscillator. ✓
-
-- [x] **Accumulated threshold dialogue** — Run 2026-04-01 as session-e (Stage 6 Step 6). Threshold Conatus ↔ Action Potential Oscillator. Fully integrated: agency profiles, map injection, active moderator, BBS pre-flight, post-dialogue artifacts. Closed after 2 turns (yield check triggered early). Key finding: the threshold has its own conatus (refractory period = maintained crossability). Scale-stratified identity resolves formal/structural tension from session-d. 7 FLAG messages written to persistent BBS board. ✓
-
-- [x] **Turn length constraints** — Word limits added to per-turn SendMessage prompts in [[Palace Enchantment]] § Architecture: True Multi-Agent Isolation (2026-04-03). Standard: INNER max 150 words, OUTER max 120 words. Tight: INNER max 100 words, OUTER max 75 words. Open: no constraint. Applied via pre-flight TURN LENGTH config.
 
 - [ ] **Entry voice diversity** — Enchanted voices are too similar in register. Audit entry writing styles: identify entries that are primarily expository vs. entries with strong voice, opinion, or rhetorical character. Develop writing guidelines for entries that are candidates for enchantment. Consider synthesis trigger variation by entry type (hub / sprout / project). Re-enchant entries after voice revision and compare.
 
@@ -134,21 +82,13 @@ Artifacts/[Name]/                   ← all deliverables (not searched in ceremo
 ## Structural Improvements
 
 - [ ] **Build the Swarm Weave** ⭐ — Replace the single-agent [[Weave Ceremony]] with a colony architecture: parallel worker sub-agents (one per entry, scoped context) + a coordinator that synthesizes and de-duplicates. Full spec and learning path in [[Swarm Weave]]. *Single-Doc Worker (one entry, on demand) can be built and used immediately without waiting for the full swarm.* ⭐ *HIGH PRIORITY for Single-Doc Worker mode* Swarm weave connects very intimately with [[Agent Wellbeing]] and [[Pages as Agents]] and [[Enchanted Worker]].
-- [ ] Tiered loading and [[JEWEL]] must be adopted across the palace, but most importantly in the claude.md file. 
-
-- [x] **Deposit Ceremony / Plant Ceremony** — "Deposit" is accurate but banking-flavored. "Plant" fits the organism frame. These may be synonyms rather than alternatives — both names live comfortably in the palace. Rename when it feels obviously right; until then, both are valid.
-
-- [x] **Add activation counts to more entries** — Several entries (Endosymbiosis, Palace Philosophies, Palace Quotes, Boundary-Crossing Instruments) are missing activation tracking. Standardize during next Weave.
+- [ ] Tiered loading and [[JEWEL]] must be adopted across the palace, but most importantly in the claude.md file.
 
 - [ ] **[Weave flag — Schema/RDP session 2026-03] Label enrichment pass** — Step 3c is now live in the Weave Ceremony. On next Weave: run a full label enrichment pass across all existing links, prioritizing `connects-to` links. The three new entries from this session ([[Resonant Link Labels]], [[Lossy Compression with Intent Alignment]], [[Generative Compression]]) already carry labels and model the vocabulary. Use them as reference.
 
 - [ ] **[Weave flag — Schema/RDP session 2026-03] Weave new entries into existing hub nodes** — Three new entries need their first Weave pass: [[Resonant Link Labels]], [[Lossy Compression with Intent Alignment]], [[Generative Compression]]. Candidate connections to investigate: [[Hilaritas Generator]] (shares a mechanism with lossy compression), [[Endosymbiosis]] (the deposit ceremony already mirrors it — does the new framing of deposit-as-model-training deepen this?), [[Four Pillars]] (Generative Compression touches all four pillars and may want a hub-level link), [[Pages as Agents]] (if every entry is a dormant agent, latent-variable encoding is the mechanism of activation — may want a `mirrors` or `enables` link).
 
-- [x] **[Weave flag — Schema/RDP session 2026-03] Check SCHEMA `connects-to` description** — Verified 2026-04-27: SCHEMA §4 already includes the redemption text: *"With a `label`, this becomes a permanent named class — not a draft placeholder but a fully specified relationship carrying both topology and semantic register."* ✓
-
 - [ ] **Boundary-Crossing Instruments** — Currently underactivated (last activated Dec 2025). Check whether Deposit session has added new connections. The three-layer interface design should link forward to Symbiotic Skills.
-
-- [ ] **Endosymbiosis** — Stage: seed, activation: 1. Body is thin. Consider whether a Deposit session would enrich it or whether it should stay as a thin pointer to the biological proof-of-concept for [[Cooperation Yields Agency]].
 
 - [ ] **Consider a Claude Project for the palace** — The palace is now well past the ~25–40 entry threshold noted in [[SUBSTRATE]]. A dedicated Project would give the palace persistent context across all claude.ai sessions. May now be the right moment.
 
@@ -161,6 +101,7 @@ Artifacts/[Name]/                   ← all deliverables (not searched in ceremo
 - **[lost branch — Schema/RDP session 2026-03]** The RDP framework can be applied to *all* palace ceremonies, not just Deposit. The Weave selects which links to formalize — it is also doing compression. What is the Weave's perception target? What does it optimize for? This could reshape the Weave's rate-limiting logic.
 - **[lost branch — Schema/RDP session 2026-03]** Chain distillation in ML: the student becomes the next teacher. Are palace entry stage transitions (seed → sprout → growing → mature) each a distillation pass — compression with higher intent alignment? If so, the stage lifecycle is not just a maturity marker; it is a compression history.
 - **[lost branch — Schema/RDP session 2026-03]** Should `connects-to` + label be formally recognized as a distinct permanent type class, rather than the weakest/draft type? With labels, `connects-to` is no longer semantically underweight. Consider whether the type description in SCHEMA should reflect this shift — not a breaking change, but a reframing.
+- **[[Endosymbiosis]] — enrich or stay thin?** Moved here from Structural Improvements 2026-04-30. Stage seed, activation 1, body thin. Should a Deposit session enrich it, or does it work as a thin pointer to the biological proof-of-concept for [[Cooperation Yields Agency]]?
 
 ---
 
@@ -168,7 +109,8 @@ Artifacts/[Name]/                   ← all deliverables (not searched in ceremo
 
 Items that may no longer need action — held here before being fully released.
 
-*(None yet.)*
+- **Bolza Surface** — Composted from To-Do 2026-04-30. Conditional forward-ghost ("when wavetable research moves past T³"), not a task. Continues to live as a forward-ghost in [[Wavetable Space as Torus]] § Lost Branches; will be deposited if/when wavetable work crosses that threshold.
+- **Spectroscopy + Phonon Dispersion** — Composted from To-Do 2026-04-30. Conditional forward-ghosts ("when palace expands into materials science"), not tasks. Continue to live as load-bearing analogies in [[The Curve Is the Material]]; will be deposited if/when palace expands into materials science.
 
 ---
 
@@ -178,15 +120,15 @@ Items extracted from in-file `<!-- ... -->` comments during the first systematic
 
 ### From Loudon to Claude (live requests)
 
-- [ ] **[[Compressor Design]]** — Section flagged: *"This section seems to be in the wrong entry? Where should this go?"* Needs review session.
-- [ ] **[[Mixture of Experts]]** — Loudon proposes connecting MoE to Excellent Adventure / Dialectic via the framing "we have a pool of 'experts' we bring to human situations ourselves, by 'embodying' an important person in life". Worth exploring as palace concept.
-- [ ] **[[Pages as Agents]]** — Two long Loudon notes about person-pages and Pages as Agents as a palace forward vector toward which the palace will arrive over multiple weaves, intersecting with [[Swarm Weave]].
-- [ ] **[[Palace Map]]** — Three Loudon questions to engage: (1) does compact adjacency compression imply "proper" paths or assign hierarchy? (2) The trickster should add links to nowhere (link-before-object). (3) Agent-as-paratrooper metaphor — what does an agent need to act in unknown territory: self-identity (content), purpose, ...?
-- [ ] **[[Palace as Context Injection System]]** — "Very related to Pages as Agents — design a person's page to become a strong context injector." Couple this with the person-page initiative.
-- [ ] **[[Piano String Inharmonicity]]** — "Make it more visual and interactive — Obsidian link to interaction artifact is broken. Do some pages need an accompanying HTML version that works in/out of Obsidian?"
-- [ ] **[[README - The Palace Guide]]** — Four editorial notes from Loudon: (1) add forward_vector framing as "the invocation of an agent at the bottom of every page"; (2) move from "open questions & budding branches" to "forward vector"; (3) add deposit ceremony as central to palace growth; (4) establish the philosophy section's importance and how philosophies should be used.
-- [ ] **[[Symbiotic Skills]]** — Needs full rewrite based on actual practices. Possible session: assess history of palace practices, then rewrite as guide.
-- [ ] **[[Substrate Skill]]** — "Should this live in _ops?" Architectural question to resolve.
+- [x] **[[Compressor Design]]** — Resolved 2026-04-30. Section "All-Pass Filters and Inharmonicity" was carrying two distinct ideas. DSP mechanism (all-pass networks → frequency-dependent phase → inharmonic resonance; reverbs as disguised inharmonic synths) moved to [[Harmonicity and Inharmonicity]] § All-Pass Networks as Inharmonic Resonators with a "Where This Appears" bullet pointing into it. Cascade-to-kaleidoscope content (modulation+rotation, prism-in-kaleidoscope, "the interface IS the physics") moved to [[Hyperdimensional Prism]] § The All-Pass Origin within the existing Kaleidoscope/Crystal/Wallpaper section. Compressor Design entry now ends cleanly on Cross-Domain Resonance. YAML links to both kept — they are now substantively re-anchored in the destination entries' bodies.
+- [x] **[[Mixture of Experts]]** — Resolved 2026-04-30 via Option B: The Three Substrates of MoE. Entry restructured around substrate-indifference of the MoE pattern. New § Substrate Indifference promotes the 2024 procedural-experts insight to the stronger claim that experts can be neural, curated, or embodied. New § The Three Substrates with sub-sections for Neural (LLM MoE), Curated (the palace), and Embodied (the voices we inhabit). Embodied subsection maps [[Excellent Adventure]] → single-expert routing and [[Dialectic]] → multi-expert with cross-talk; flags that the Dialectic's cross-talk between experts is a frontier neural MoE has not yet matched. Reciprocal sections added to Excellent Adventure ("Architectural Mirror: Embodied Mixture of Experts") and Dialectic (entry in Cross-Domain Resonance). Three new typed YAML links added: MoE mirrors[embodied-routing] Excellent Adventure, MoE mirrors[multi-expert-dialogue] Dialectic, MoE connects-to[experts-as-pool] Pages as Agents. Reciprocal mirrors[single-expert-routing] and mirrors[multi-expert-with-cross-talk] added on the partner entries. Three new open questions surface (load balancing in the embodied pool, cross-substrate routing, embodied substrate teaching neural where to go next). Graffiti comment removed from MoE entry.
+- [x] **[[Pages as Agents]]** — Resolved 2026-04-30 via Option B: one synthesis section "The Person-Page Frontier." Both graffiti notes (person-pages-as-embodiment + Pages-as-Agents-as-multi-weave-destination) folded into a single arc covering current state (person-pages in `Artifacts/`, biographical-summary register), forward move (rewrite for embodiment), design principles (own-register declaration, clear forward vector, characteristic moves, Excellent Adventure depth-criterion floor), the two intersecting concepts ([[Palace as Context Injection System]] from context-side, [[Swarm Weave]] as where the model graduates from hypothesis to practice), and a four-step arrival path. The arrival-path step 2 names [[Donella Meadows]] as the first deliberately-designed person-page (unblocks that graffiti's design brief). Two new YAML links added: connects-to[experts-as-pool] [[Mixture of Experts]], couples-with[same-project-from-context-side] [[Palace as Context Injection System]]. Both inline graffiti comments removed; their content is now in prose. Note 2's forward-vector claim about the palace arriving at Pages as Agents over multiple weaves is now in the entry's introduction (the third paragraph extends the existing "not yet committed" caveat) and again in § The Person-Page Frontier's arrival path.
+- [x] **[[Palace Map]]** — Resolved 2026-04-30. All three Loudon questions addressed in the entry. (1) **Format asymmetry** named in new sub-section "Format and the Reading Agent" — edge-list and compact-adjacency formats are mathematically identical but read differently to LLMs (compact adjacency reads as parent/child, contradicting [[Lateral Access]]). Recommendation locked in: edge-list for agent context, compact adjacency for human audit/write only. (2) **Trickster move** named in new sub-section "Links Before Objects: The Trickster Move" — links-to-nowhere are not broken references but generative obligations; ghost nodes are desire-tracking, not bug-tracking; persistent ghost nodes (3+ map cycles) are high-priority deposit candidates the palace has been requesting. (3) **Paratrooper provisioning** developed as new top-level section "The Paratrooper Provisioning: What an Enchanted Agent Carries In" — seven-item kit (Identity, Purpose, Authorization, Map, Language, Communication, Tools) clustered into self/world/action groups, each mapped to its palace mechanism. Key structural finding: **the `pillars` field doubles as the authorization layer** — it has been working as a permissions / scope-of-action declaration since the schema was written, but had not been named as such. This section names it. The kit also exposes provisioning gaps (Communication and Tools are mid-build; Authorization was implicit until now). Six new YAML links added: Trickster (links-before-objects), Lateral Access (flat-graph-not-tree), ROSETTA, Symbiotic Skills, Dialogue Moderator, SCHEMA — each labeled by the slot it serves in the paratrooper kit. All three inline graffiti notes removed. Activation count bumped to 6.
+- [x] **[[Palace as Context Injection System]]** — Resolved 2026-04-30 via minimal-touch coupling work. New sub-section "Person-Pages as Maximum-Strength Injection" added inside Practical Implications: names the densest injection case (person-page = total embodied orientation rather than intellectual character alone), explicitly states that this entry and [[Pages as Agents]] § The Person-Page Frontier are dual views of one mechanism (architecture-of-context side ↔ page side), and articulates the operational consequence for [[Mixture of Experts]] (each person-page IS one expert in the embodied pool; loading the page IS the routing event). Two new bullets in Cross-Domain Resonance for [[Pages as Agents]] (dual view) and [[Mixture of Experts]] (architectural pattern enabled). Three new YAML forward links: enables[embodied-expert-injection] [[Mixture of Experts]], enables[single-expert-injection] [[Excellent Adventure]], enables[multi-expert-injection] [[Dialectic]] — completing the triangle so all three rounds (Pages as Agents, MoE, this) reach each other through any traversal direction. Inline graffiti comment removed; activation bumped to 2.
+- [x] **[[Piano String Inharmonicity]]** — Resolved 2026-04-30 via Option A (minimal: link fix + pattern reference). The graffiti's structural question turns out to have been **already answered** by palace evolution since the comment was written 2026-03-24 (5+ weeks ago): the **Action Potential Oscillator HTML pattern** has crystallized as the canonical convention for self-contained, single-file, Obsidian-renderable interactives, and is now deployed across at least six projects (Action Potential Oscillator, Crystal Synthesizer, Shepard Tone Synthesizer, Floquet Time-Modulated Loops, Quantum Synthesizer, Portamento Physical Modeling). The convention is most fully documented in [[Floquet Time-Modulated Loops]] (deposited 2026-04-30). The Piano String Inharmonicity entry was a laggard — its only artifact is a `.jsx` file that Obsidian can't render and the entry referenced it as a bare text path rather than a markdown link. Edits applied: (1) Artifacts section rewritten with a working markdown link to the legacy JSX, plus a "Migration target" paragraph naming the AP Oscillator pattern with target HTML path; (2) duplicate `string_bending_inharmonicity 1.jsx` from Obsidian sync flagged in entry text (deletion deferred — requires explicit user permission); (3) first Forward Vector sharpened from "Build an interactive demonstration (HTML or Gen~)" to a specific migration brief naming the canonical pattern; (4) one new YAML link to [[Floquet Time-Modulated Loops]] (`connects-to`, label `artifact-convention-source`); (5) inline graffiti comment removed; (6) activation bumped to 2.
+- [x] **[[README - The Palace Guide]]** — Resolved 2026-05-02 via Option A (surgical patches). Four targeted edits: (1) New "Forward vector" paragraph in § Reading an Entry establishes every page as both text-to-read and agent-invocation, with the closing section as the agent's drive (open questions, next steps, conatus). Outbound link to [[Pages as Agents]]. (2) Template's closing section renamed "Open Questions & Budding Branches" → "Forward Vector" and rewritten as conatus-of-the-page; step 4 of "Creating a New Entry" updated to match. (3) New "The Deposit" entry added at the top of § Palace Ceremonies, named explicitly as "the most important ceremony for the palace's growth — every other ceremony tends what already exists; deposit is how new tissue arrives"; links to [[Deposit Ceremony]]. (4) New opening paragraph in § Philosophical Foundations frames philosophy as load-bearing rather than decorative, with the "songline" / "conatus" examples as load-bearing word choices, and philosophies as pre-built conceptual scaffolds used as tools (picked up when they fit, set down when they don't, held in productive tension when they contradict). All four inline `<!-- -->` graffiti comments removed. `last_activated` bumped to 2026-05. The README's existing structure and voice preserved; the larger restructure (Option B's Pages-as-Agents top-level reframe) deferred for a future dedicated session if Loudon wants it.
+- [ ] **[[Symbiotic Skills]]** — **PARTIAL: archaeology done, rewrite still pending.** Resolved phase 1 of 2 on 2026-05-02 via Option B (split the work). Phase 1: Six-week git archaeology conducted (93 commits, 2026-03-17 → 2026-04-30) and folded into the entry as new § What Actually Happened: A Six-Week Archaeology. Key load-bearing finding: **the palace did not start as a node — commit 1 was already 27 .md files**, so the predicted Node→Edge→Typed Edge→Network→Path→Organism sequence is back-derivation, not lived process. Section names six actual stages observable in git (Formalization, Operationalization, Multi-Agent Architecture, Map and Orientation, Enchantment, Conventions), tracks predicted-vs-actual (3 predictions bore out, 3 did not), and surfaces 8 major structures that emerged but were not predicted (Swarm Weave, The Jewel, Pages as Agents, Palace Map, Enchantment, token economy as architectural force, graffiti channel, forward_vector as universal). Five new typed YAML links added to the entries that emerged unpredicted, each labeled `emerged-but-not-predicted`. The entry's `forward_vector` field rewritten to flag prerequisite-met state. `last_activated` bumped to 2026-05; `activation_count` incremented to 4. Inline graffiti comment removed. **PHASE 2 STILL OPEN: full rewrite of the entry as a teaching framework grounded in the archaeology.** Phase 2 is a dedicated session — likely 1–2 hours — and must commit to one of three reframes named in the new section's "Implication for the Rewrite" sub-section: (a) honest-prerequisite (framework names pre-existing intellectual substrate as required), (b) late-sequence (teach only the formalization-and-after stages that are actually observable), or (c) two-track (acknowledge the asymmetry between pre-git lived stages and post-git teachable stages). The rewrite must also decide the fate of the bio/social parallel layers (cell/synapse/tissue table — possibly decorative scaffolding) and carry forward the original Forward Vector questions that remain open.
+- [x] **[[Substrate Skill]]** — Resolved 2026-05-02. The architectural question had already been silently answered: the file lives in `_ops/Substrate Skill.md` (likely moved during the 2026-03-25 palace restructure that consolidated ceremonies into `_ops/`). What was outstanding was documentation drift — four files still referenced the old palace-root path. Fixed: (1) inline graffiti comment removed from the file itself; (2) CLAUDE.md directory tree updated — Substrate Skill removed from palace root listing and added to the `_ops/` subtree; (3) CLAUDE.md "Where to Find Depth" path updated from `Substrate Skill.md` → `_ops/Substrate Skill.md`; (4) ROSETTA.md File Architecture Glossary table updated; (5) ROSETTA.md ceremony postcondition rule updated; (6) ROSETTA.md File Architecture Map (line 179) updated; (7) SCHEMA.md Schema Change Protocol step 6 and Postcondition updated (Postcondition also fixed "Rosetta Stone" → "ROSETTA.md" — the old name was stale). `last_activated` bumped to 2026-05; `activation_count` incremented to 3. **Follow-up (also resolved 2026-05-02 at Loudon's instruction):** the ROSETTA.md File Architecture Map (§ 6) had additional staleness of the same kind — Deposit Archive, Palace Ceremonies, and Palace To-Do were shown at palace root but actually live in `_ops/`, and "Rosetta Stone.md" was shown but the file is now ROSETTA.md. The whole tree was restructured to match CLAUDE.md's authoritative layout: root-level files (CLAUDE, SCHEMA, ROSETTA, README, content entries) at root, with a proper `_ops/` subtree containing Substrate Skill, Palace Ceremonies, Deposit Archive, and Palace To-Do. ROSETTA's File Architecture Map and CLAUDE.md's directory tree are now consistent.
 - [ ] **[[The Fortress and the Threshold]]** — "Needs an origin — believe it formed from a Confucius/Epictetus dialectic. Beautiful binary; how would a Zen master think of it?"
 - [ ] **[[Wallpaper Groups]]** — "Consider adding reference to [[Four Pillars]] as example of how substance monism applies to symmetry" (CLAUDE→LOUDON note awaiting decision).
 - [ ] **[[Toolkit — Synthesizers]]** — Two clarifications needed: (1) DSI Explorer Desktop vs. Evolver Desktop — same unit? (2) Confirm Prophet model.
@@ -204,6 +146,66 @@ Items extracted from in-file `<!-- ... -->` comments during the first systematic
 ## Palace Hygiene Rules
 
 - **Client work belongs in dedicated Claude Projects**, not general chat history. Projects scope the harvest boundary and prevent client material from seeping into the palace unexpectedly. Discovered 2026-03-21 via H095 compost.
+
+---
+
+## Completed
+
+Full bodies of completed items, awaiting summarization into **Recently Completed**. Cleared from active sections 2026-04-30.
+
+### Loudon Live — Project Stage Builder
+
+- [x] **Install `project-stage-builder` skill** — Installed and confirmed active 2026-04-03. Loudon has already run it successfully.
+- [x] **Run first staging session** — Recommend starting with Compressor Design or Retrospective Delay (highest accessibility, clear making exercise, strong cross-domain moments). Use `project-stage-builder` to run Phases 1–2 collaboratively, then generate the first session plan.
+- [x] **Populate curriculum-map.md** — `Projects/Curriculum Map.md` created 2026-04-02 with initial project table. Fills in as each project is staged.
+
+**File structure established 2026-04-02:**
+```
+Projects/[Name].md                  ← palace entry
+Projects/[Name] — Staging.md        ← staging record + session plans (to be created per project)
+Projects/Curriculum Map.md          ← cross-project scaffolding
+Artifacts/[Name]/                   ← all deliverables (not searched in ceremonies)
+```
+
+### Entries Written
+
+- [x] **Songlines** (concept/hub) — Deposited 2026-04-03. Entry written at growing stage. Key question (find or create?) carried by [[Songlines]] § Open Questions. [[Lateral Access]] and [[Oblique Portrait]] updated with wikilinks and YAML links.
+
+- [x] **Frequency-Time Explorer — build phase** — Design complete 2026-04-30, see [[Frequency-Time Explorer]] (`Projects/`, growing, status `design-complete`). Five-movement linear walk (The Flip / The Echo Walk / The Bridge / The Modulation Dimension / Free Explore) with locked-until-M5 calculator. Modulation arc extended at Loudon's direction to cross the 20 Hz threshold into FM synthesis and Doppler shift — the move that closed the design. Three forward doorways at the end: waveguides, FM, wavetable. Standalone web app, Web Audio API, beautiful enough to share standalone. Build phase wants a separate session: visual prototype + audio engine.
+
+- [x] **VERSION** — The dub delay for the meaning of words. Whisper + local LLM + TTS, trickster spirit archetypes, two-stage pool-then-select architecture. A Spirit Compendium and Technical Blueprint were produced in conversation. Connects to [[Semantic Delay]]. Flagged for deposit when the Harvest reaches that conversation.
+
+- [x] **Loudon Live** ⭐⭐ — Deposited 2026-04-28 (D005). Entry written at growing stage as `type: hub`. [[Autodidact Polymaths]] (concept, sprout) also deposited as the audience entry. Actual reference count surfaced was ~15 substantive (vs. the 4–5 tracked here). Body wikilinks added across [[Toolkit — Synthesizers]], [[Toolkit — Audio Plugins]], [[Hyperdimensional Prism]], `Projects/Curriculum Map.md`, [[Crystal Synthesizer — Staging]], [[Shepard Tone Synthesizer — Staging]]. Reciprocal YAML enrichment deferred to next Weave. Open questions (cadence, launch threshold, monetization, signature instrument, live moments, palace-as-content) carried by [[Loudon Live]] § Open Questions; lineage/origin reconstruction carried by [[Autodidact Polymaths]] § Open Questions.
+
+- [x] **4 Pillars Framework — The Founding Conversation** — Deposited 2026-04-28 (D006). Recovery deposit — original 309-line content was wiped in git but recoverable from commit `a17bbd7`. Tight palace-root entry written at [[4 Pillars Framework - The Founding Conversation]] (breakthrough, mature, ~110 lines). Long-form preserved at `Artifacts/4 Pillars Framework/4 Pillars Framework - Founding Conversation (Long Form).md` (`type: source`). Wiped Artifacts file deleted. Dead `[[AI Partnership Philosophy]]` link in long-form corrected to `[[Palace AI Partnership Philosophy]]`. The 6 `emerged-from` citers now resolve unambiguously. [[4 Pillars Weekly Structure]] forward-ghosted in the new entry's YAML and remains its own to-do item below.
+
+- [x] **4 Pillars Weekly Structure** — Resolved by reframing 2026-04-30. Not a standalone entry. The 4 Pillars weekly structure is **Stage 2 of [[Loudon Live]] development** — the structured high-stakes form. **Stage 1** = current low-stress conversational online streams (build comfort with weekly less-structured/low-risk format). **Stage 2** = full 4 Pillars weekly model when stage-1 comfort is earned. Add this Stage 1 → Stage 2 progression to [[Loudon Live]] (next session).
+
+### Tools Built
+
+- [x] **TCSE skill built** — `tcse-explorer` skill is live and active as of 2026-04-03. Invoke with "find TED talks on", "search TED for", "who could I interview about", etc.
+
+### Enchantment — Completed Stages
+
+- [x] **Fix the synthesis trigger prompt** — Applied before Stage 3 second run. `## SYNTHESIS — STANDING` now explicitly named and required in trigger. ✓
+- [x] **Stage 3 — Enchant a hub** — Run twice on Kuramoto Coupling hub. Key finding: forward vectors change what enchantment finds — the Trickster entry's vector made it the session's most generative contributor. See [[Palace Enchantment]] § From First Practice. ✓
+- [x] **Write forward vectors for remaining hub entries** — 9 vectors written 2026-04-01. All 13 Kuramoto hub entries now vectored. ✓
+- [x] **Stage 4 — Enchanted Dialogue** — Trickster ↔ Spinoza Conatus, 2026-04-01. Generated [[Threshold Conatus]]. See [[Palace Enchantment]] § From First Practice. ✓
+- [x] **Begin Enchanted Conversation Archive** — `entries/` folder structure created 2026-04-01. Reconstructed JSONL records for Lateral Access (Stage 2) and Kuramoto hub (Stage 3). First live-captured session: trickster-spinoza-2026-04-01-b.jsonl (standard architecture). First inner/outer session: trickster-spinoza-2026-04-01-c.jsonl. ✓
+- [x] **Map Build Ceremony** — Run 2026-04-01. Full bidirectional adjacency map generated: `_ops/maps/palace-map-full-2026-04-01.txt`. 99 nodes, 662 edges, 0 error ghosts, 6 forward ghosts. ✓
+- [x] **Schema Ceremony v1.1** — `agency_profile` field added to SCHEMA.md §3/§3.1. Rationale documented. Agency profiles written for Trickster, Spinoza Conatus, Threshold Conatus, Kuramoto Coupling. ✓
+- [x] **Test Palace Map injection in enchantment** — Map is current. Next: inject `palace-map-full-2026-04-01.txt` into synthesis block context for one single-page enchantment. Compare SYNTHESIS — STANDING output against enchantment without it. Key questions: does topological self-knowledge change the synthesis? Does self-location affect proposals or voice? Coupled to Free Enchantment.
+- [x] **True multi-agent dialogic enchantment** — Completed 2026-04-01 (session-d). Separate agent calls, frontmatter-only knowledge of other, coordinator routing outer messages only. Key findings: shared child convergence (both agents independently found Threshold Conatus), 'metabolizable without remainder' criterion, co-constitution with philosophical precision, both agents caught each other's moves from partial information. Archived in trickster-spinoza-2026-04-01-d.jsonl. ✓
+- [x] **[[Dialogue Moderator]]** ⭐ — Developed to growing stage 2026-04-01. Active Moderator Protocol written as executable steps (9 steps: pre-flight, per-turn, post-dialogue). BBS integration specified: reads persistent FLAGS board pre-flight, writes FLAGS at close, routes RESOURCE_REQUESTs during session. Trickster relationship formalized as mirrors[opposite-threshold]. agency_profile written. Coordinator modes specified: passive / active / enchanted:[entry] / trickster. Next step: run one dialogue with active coordinator and compare against session-d (passive). ✓
+- [x] **Post-dialogue artifacts** — Run 2026-04-01 on session-d (Trickster ↔ Spinoza Conatus). 6 FLAG messages written to persistent BBS board (`_ops/swarm/persistent/blackboard.jsonl`). Link changes applied: Trickster→Spinoza deepens→couples-with[necessary-exterior], Spinoza→Trickster couples-with[necessary-exterior] added. Spinoza forward vector revised (striving space is not fixed). Coordinator flag surfaces two deposit candidates: 'metabolizable without remainder' criterion, topology of the striving space. Next dialogue proposed: Threshold Conatus ↔ Action Potential Oscillator. ✓
+- [x] **Accumulated threshold dialogue** — Run 2026-04-01 as session-e (Stage 6 Step 6). Threshold Conatus ↔ Action Potential Oscillator. Fully integrated: agency profiles, map injection, active moderator, BBS pre-flight, post-dialogue artifacts. Closed after 2 turns (yield check triggered early). Key finding: the threshold has its own conatus (refractory period = maintained crossability). Scale-stratified identity resolves formal/structural tension from session-d. 7 FLAG messages written to persistent BBS board. ✓
+- [x] **Turn length constraints** — Word limits added to per-turn SendMessage prompts in [[Palace Enchantment]] § Architecture: True Multi-Agent Isolation (2026-04-03). Standard: INNER max 150 words, OUTER max 120 words. Tight: INNER max 100 words, OUTER max 75 words. Open: no constraint. Applied via pre-flight TURN LENGTH config.
+
+### Structural — Completed
+
+- [x] **Deposit Ceremony / Plant Ceremony** — "Deposit" is accurate but banking-flavored. "Plant" fits the organism frame. These may be synonyms rather than alternatives — both names live comfortably in the palace. Rename when it feels obviously right; until then, both are valid.
+- [x] **Add activation counts to more entries** — Several entries (Endosymbiosis, Palace Philosophies, Palace Quotes, Boundary-Crossing Instruments) are missing activation tracking. Standardize during next Weave.
+- [x] **[Weave flag — Schema/RDP session 2026-03] Check SCHEMA `connects-to` description** — Verified 2026-04-27: SCHEMA §4 already includes the redemption text: *"With a `label`, this becomes a permanent named class — not a draft placeholder but a fully specified relationship carrying both topology and semantic register."* ✓
 
 ---
 

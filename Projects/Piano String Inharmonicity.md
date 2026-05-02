@@ -3,6 +3,8 @@ title: "Piano String Inharmonicity"
 type: concept
 pillars: [creation, tools]
 born: 2026-03
+last_activated: 2026-04
+activation_count: 2
 stage: growing
 links:
   - target: "[[Harmonicity and Inharmonicity]]"
@@ -21,9 +23,11 @@ links:
   - target: "[[Octave Equivalence]]"
     type: mirrors
     label: stretched-octave
+  - target: "[[Floquet Time-Modulated Loops]]"
+    type: connects-to
+    label: artifact-convention-source
 forward_vector: "I want to become an interactive teaching artifact — the HTML version that the inline comment imagines, where the inharmonicity formula is not just displayed but playable: a synthesizer where students can dial the inharmonicity coefficient B and hear the partials stretch in real time, connecting the equation directly to the perceptual experience. The math is here; what is missing is the audible proof that makes the formula unforgettable."
 ---
-<!--This page is good, but can we make it more visual and interactive? in obsidian the link to the interaction artifact is not functional. Do some pages, like this one, need an accompanying HTML version that sits right beside it, like our ceremony context files do, but the HTML version is a more interactive and beautiful version, or maybe that is what the artifact is. here in Obsidian I can't render the JSX files natively, if they are inside of HTML can I? these dense technical/scientific pages with accompanying interactions can be really great if we design this right! -->
 
 # Piano String Inharmonicity
 
@@ -157,7 +161,9 @@ Inharmonicity creates a frequency-domain pattern (stretched partials) that corre
 
 ## Artifacts
 
-Interactive string bending demonstration: `/Artifacts/Piano String Inharmonicity/string_bending_inharmonicity.jsx`
+**[string_bending_inharmonicity.jsx](../Artifacts/Piano%20String%20Inharmonicity/string_bending_inharmonicity.jsx)** *(legacy — does not render natively in Obsidian)* — Interactive string bending demonstration as a React/JSX component, ~14KB. Functional in a JSX-aware environment but predates the palace's established HTML interactive convention. *(A duplicate copy `string_bending_inharmonicity 1.jsx` from an Obsidian sync also exists in the same folder; both are identical.)*
+
+**Migration target — pending:** Single-file HTML following the **Action Potential Oscillator pattern** (`../Artifacts/Action Potential Oscillator/neuron_oscillator.html`) — self-contained, no build step, runs offline, with the canonical CSS variable `:root` block and the Source Serif 4 / JetBrains Mono / DM Sans font stack. Convention deployed across at least six projects (Action Potential Oscillator, Crystal Synthesizer, Shepard Tone Synthesizer, Floquet Time-Modulated Loops, Quantum Synthesizer, Portamento Physical Modeling) and documented in [[Floquet Time-Modulated Loops]]. Target path when migrated: `../Artifacts/Piano String Inharmonicity/string-bending-inharmonicity.html`.
 
 ## Open Questions & Budding Branches
 
@@ -170,6 +176,6 @@ Interactive string bending demonstration: `/Artifacts/Piano String Inharmonicity
 *"The string does not lie. Increase tension, reduce inharmonicity. The physics is simple; the timbre is profound. What seemed like a constant — the sound of the string — was only constant because we held tension constant."*
 
 ## Forward Vectors
-- Build an interactive demonstration (HTML or Gen~) showing real-time partial stretching as string stiffness changes
+- Migrate the existing JSX demo to the **Action Potential Oscillator HTML pattern** (see § Artifacts → Migration target). Single self-contained HTML file at `../Artifacts/Piano String Inharmonicity/string-bending-inharmonicity.html` following the canonical CSS variable :root block and Source Serif 4 / JetBrains Mono / DM Sans font stack. The math is fully specified; this is conversion work, not invention.
 - Connect stretched partials to [[Octave Equivalence]] breakdown — when does a "piano octave" stop sounding like an octave?
 - Use inharmonicity coefficients as synthesis parameters: what instruments live in the space between harmonic and inharmonic?
