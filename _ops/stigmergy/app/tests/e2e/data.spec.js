@@ -5,16 +5,12 @@ import { test, expect } from '@playwright/test';
 // containing at least one message will satisfy these.
 
 test('after login, the app fetches /api/persistent and renders messages', async ({ page }) => {
-  await page.goto('/');
+  // Use ?demo=1 so the default GENERAL board has visible messages even
+  // against the real palace (where most data is on FLAGS / no-board).
+  await page.goto('/?demo=1');
   await expect(page.getByTestId('login-banner')).toBeVisible({ timeout: 10_000 });
-
-  // Click the [G] LURK button to enter the board view as a guest.
   await page.getByRole('button', { name: /lurk/i }).click();
-
-  // Loading state appears, then the message list.
   await expect(page.getByTestId('message-row').first()).toBeVisible({ timeout: 15_000 });
-
-  // At least one message rendered.
   const rows = await page.getByTestId('message-row').count();
   expect(rows).toBeGreaterThan(0);
 });
@@ -29,15 +25,15 @@ test('the API endpoint returns shaped data', async ({ request }) => {
 });
 
 test('flagged messages render with a red border (data-flagged="true")', async ({ page }) => {
+  // Real palace FLAG-shaped messages (the TRICKSTER-ARTIFACT entries) live
+  // on the FLAGS board but lack `schema_version` / `session_id` and use
+  // a date-only ts — they should render flagged.
   await page.goto('/');
   await expect(page.getByTestId('login-banner')).toBeVisible({ timeout: 10_000 });
   await page.getByRole('button', { name: /lurk/i }).click();
-  await expect(page.getByTestId('message-row').first()).toBeVisible({ timeout: 15_000 });
-
-  // The real persistent blackboard is full of audit-dump shape lines that
-  // are missing the required fields, so at least some messages should be
-  // flagged. (If running against a clean palace this assertion may fail —
-  // skip in that case.)
+  await expect(page.getByTestId('channel-tabs')).toBeVisible({ timeout: 15_000 });
+  await page.getByTestId('tab-flags').click();
+  await expect(page.getByTestId('message-row').first()).toBeVisible({ timeout: 10_000 });
   const flagged = await page.locator('[data-testid="message-row"][data-flagged="true"]').count();
   expect(flagged).toBeGreaterThan(0);
 });

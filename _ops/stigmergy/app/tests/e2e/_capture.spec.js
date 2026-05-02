@@ -42,14 +42,25 @@ test.describe(`phase ${PHASE} captures`, () => {
       await page.getByTestId('login-banner').waitFor({ timeout: 10_000 });
       await preloadFonts(page);
       await page.getByRole('button', { name: /lurk/i }).click();
-      // Wait for at least one message to render.
       await page.getByTestId('message-row').first().waitFor({ timeout: 15_000 });
       await page.waitForTimeout(300);
-      // Viewport-only — fullPage would stack all 113 messages into an
-      // unreadable thin column for the validator. The viewport shows the
-      // header, the empty-sessions indicator, and the first ~6 messages —
-      // exactly what the checklist needs to evaluate.
       await page.screenshot({ path: shotPath('persistent-loaded.png'), fullPage: false });
     });
+  }
+
+  if (PHASE === '3') {
+    const channels = ['general', 'flags', 'weave', 'system', 'trickster', 'branches'];
+    for (const ch of channels) {
+      test(`${ch}.png`, async ({ page }) => {
+        await page.goto('/?demo=1');
+        await page.getByTestId('login-banner').waitFor({ timeout: 10_000 });
+        await preloadFonts(page);
+        await page.getByRole('button', { name: /lurk/i }).click();
+        await page.getByTestId('channel-tabs').waitFor({ timeout: 15_000 });
+        await page.getByTestId(`tab-${ch}`).click();
+        await page.waitForTimeout(200);
+        await page.screenshot({ path: shotPath(`${ch}.png`), fullPage: false });
+      });
+    }
   }
 });

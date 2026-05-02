@@ -1,25 +1,38 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect, useCallback, useMemo } from 'react';
 import Shell from './components/Shell.jsx';
 import LoginScreen from './components/LoginScreen.jsx';
 import MessageList from './components/MessageList.jsx';
+import ChannelTabs from './components/ChannelTabs.jsx';
 import { Banner } from './components/primitives.jsx';
 import { fetchPersistent, fetchSessions } from './adapters/blackboard.js';
+import { BOARDS } from './lib/format.js';
+import { DEMO_MESSAGES } from './lib/demo-data.js';
+import { validateAll } from './lib/schema.js';
 
 function formatNow() {
   const d = new Date();
   return `${String(d.getHours()).padStart(2, '0')}:${String(d.getMinutes()).padStart(2, '0')}`;
 }
 
+function isDemoMode() {
+  if (typeof window === 'undefined') return false;
+  const params = new URLSearchParams(window.location.search);
+  return params.get('demo') === '1';
+}
+
 export default function App() {
   const [screen, setScreen] = useState('login');
   const [user, setUser] = useState(null);
   const [clock, setClock] = useState(formatNow());
+  const [activeBoard, setActiveBoard] = useState('GENERAL');
 
   const [messages, setMessages] = useState([]);
   const [sessions, setSessions] = useState([]);
-  const [loadState, setLoadState] = useState('idle'); // idle | loading | ok | error
+  const [loadState, setLoadState] = useState('idle');
   const [loadError, setLoadError] = useState(null);
   const [loadedAt, setLoadedAt] = useState(null);
+
+  const demo = isDemoMode();
 
   useEffect(() => {
     const t = setInterval(() => setClock(formatNow()), 1000);
@@ -33,7 +46,11 @@ export default function App() {
         fetchPersistent(),
         fetchSessions(),
       ]);
-      setMessages(persistent.messages || []);
+      const real = persistent.messages || [];
+      const combined = demo
+        ? [...validateAll(DEMO_MESSAGES), ...real]
+        : real;
+      setMessages(combined);
       setSessions(sessionList.sessions || []);
       setLoadedAt(new Date().toISOString());
       setLoadState('ok');
@@ -42,10 +59,30 @@ export default function App() {
       setLoadError(err?.message || String(err));
       setLoadState('error');
     }
-  }, []);
+  }, [demo]);
 
   useEffect(() => {
     if (screen === 'board') loadAll();
+  }, [screen, loadAll]);
+
+  // Hotkey support: 1-6 select boards, R reloads, Q quits.
+  useEffect(() => {
+    if (screen !== 'board') return;
+    function onKey(e) {
+      // Don't intercept while typing in inputs.
+      if (e.target && /input|textarea/i.test(e.target.tagName)) return;
+      const k = e.key;
+      if (/^[1-6]$/.test(k)) {
+        const idx = parseInt(k, 10) - 1;
+        if (idx >= 0 && idx < BOARDS.length) setActiveBoard(BOARDS[idx]);
+      } else if (k === 'r' || k === 'R') {
+        loadAll();
+      } else if (k === 'q' || k === 'Q') {
+        setUser(null); setScreen('login');
+      }
+    }
+    window.addEventListener('keydown', onKey);
+    return () => window.removeEventListener('keydown', onKey);
   }, [screen, loadAll]);
 
   function handleLogin(handle) {
@@ -53,16 +90,49 @@ export default function App() {
     setScreen('board');
   }
 
-  const flagged = messages.filter((m) => Array.isArray(m._warnings) && m._warnings.length > 0).length;
+  const totalFlagged = messages.filter((m) => Array.isArray(m._warnings) && m._warnings.length > 0).length;
+
+  // Counts per board (for tab badges) and the currently visible filtered set.
+  const counts = useMemo(() => {
+    const out = {};
+    for (const b of BOARDS) out[b] = 0;
+    for (const m of messages) if (m.board && BOARDS.includes(m.board)) out[m.board] += 1;
+    return out;
+  }, [messages]);
+
+  const filtered = useMemo(
+    () => messages.filter((m) => m.board === activeBoard),
+    [messages, activeBoard]
+  );
+
+  // Pending Trickster requests (RESOURCE_REQUESTs without a matching response).
+  const pendingTrickster = useMemo(() => {
+    const trickster = messages.filter((m) => m.board === 'TRICKSTER');
+    const responded = new Set();
+    for (const m of trickster) {
+      if ((m.type === 'RESOURCE_GRANT' || m.type === 'RESOURCE_DENY') && m.re) {
+        responded.add(m.re);
+      }
+    }
+    return trickster.filter((m) => m.type === 'RESOURCE_REQUEST' && !responded.has(m.request_id)).length;
+  }, [messages]);
 
   const cmds = [
     { key: 'R', label: 'reload' },
+    { key: '1', label: 'general' },
+    { key: '2', label: 'flags' },
+    { key: '3', label: 'weave' },
+    { key: '4', label: 'system' },
+    { key: '5', label: 'trickster' },
+    { key: '6', label: 'branches' },
     { key: 'Q', label: 'quit' },
   ];
 
   function handleCommand(k) {
-    if (k === 'R') loadAll();
-    if (k === 'Q') { setUser(null); setScreen('login'); }
+    if (k === 'R') return loadAll();
+    if (k === 'Q') { setUser(null); setScreen('login'); return; }
+    const idx = parseInt(k, 10);
+    if (idx >= 1 && idx <= 6) setActiveBoard(BOARDS[idx - 1]);
   }
 
   if (screen === 'login') {
@@ -74,15 +144,18 @@ export default function App() {
   }
 
   return (
-    <Shell user={user} nodeName="01" clock={clock} unread={flagged}
+    <Shell user={user} nodeName="01" clock={clock} unread={totalFlagged}
       commands={cmds} onCommand={handleCommand}>
       <div style={{ maxWidth: '110ch', margin: '0 auto', width: '100%' }}>
-        <Banner as="h1" strong style={{ fontSize: 32, margin: '0 0 4px' }}>persistent board</Banner>
+        <Banner as="h1" strong style={{ fontSize: 32, margin: '0 0 4px' }}>
+          {activeBoard.toLowerCase()} board
+        </Banner>
         <div style={{ color: 'var(--phosphor-dim)', textShadow: 'none', marginBottom: 4 }}>
           welcome,{' '}
           <span style={{ color: 'var(--ansi-bright-cyan)', textShadow: 'var(--glow)' }}>@{user}</span>
-          {`. ${messages.length} traces · ${flagged} flagged.`}
+          {`. ${messages.length} total traces · ${totalFlagged} flagged · ${filtered.length} on ${activeBoard}.`}
           {loadedAt ? <> · last loaded <span style={{ color: 'var(--phosphor-dim)' }}>{loadedAt.split('T')[1].split('.')[0]}Z</span></> : null}
+          {demo ? <span style={{ color: 'var(--warn)', textShadow: 'var(--glow)', marginLeft: 12 }}>· demo data prepended</span> : null}
         </div>
         <div style={{ marginBottom: 12, fontSize: 14 }} data-testid="inline-actions">
           <span
@@ -99,6 +172,14 @@ export default function App() {
             (or press R · file is the truth, edit _ops/swarm/persistent/blackboard.jsonl directly)
           </span>
         </div>
+
+        <ChannelTabs
+          active={activeBoard}
+          onSelect={setActiveBoard}
+          counts={counts}
+          pendingTrickster={pendingTrickster}
+        />
+
         {loadState === 'loading' && (
           <div data-testid="loading" style={{ color: 'var(--phosphor-dim)', textShadow: 'none' }}>
             loading...
@@ -113,7 +194,11 @@ export default function App() {
           </div>
         )}
         {loadState === 'ok' && (
-          <MessageList messages={messages} sessionsEmpty={sessions.length === 0} />
+          <MessageList
+            messages={filtered}
+            sessionsEmpty={sessions.length === 0}
+            activeBoard={activeBoard}
+          />
         )}
       </div>
     </Shell>
