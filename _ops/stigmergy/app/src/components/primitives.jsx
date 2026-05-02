@@ -23,8 +23,8 @@ export function Box({ children, title, tone = 'double', style = {}, pad = true }
       </div>
       <div style={{
         padding: pad ? '6px 12px' : 0,
-        borderLeft: `1px ${tone === 'double' ? 'double' : 'dashed'} var(--phosphor-dim)`,
-        borderRight: `1px ${tone === 'double' ? 'double' : 'dashed'} var(--phosphor-dim)`,
+        borderLeft: `1px ${tone === 'double' ? 'double' : 'solid'} var(--phosphor-dim)`,
+        borderRight: `1px ${tone === 'double' ? 'double' : 'solid'} var(--phosphor-dim)`,
         marginLeft: '2px', marginRight: '2px',
       }}>
         {children}

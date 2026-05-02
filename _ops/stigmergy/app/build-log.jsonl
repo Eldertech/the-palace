@@ -31,3 +31,8 @@
 {"ts":"2026-05-02T13:48:00Z","phase":4,"action":"gate-start"}
 {"ts":"2026-05-02T13:49:27.800Z","phase":4,"label":"Health Blocks and Agent Roster","action":"gate-start"}
 {"ts":"2026-05-02T13:50:29.441Z","phase":4,"action":"gate-end","outcome":"pass","stage":"tests+captures"}
+{"ts":"2026-05-02T13:55:00Z","phase":5,"action":"gate-start"}
+{"ts":"2026-05-02T13:58:36.921Z","phase":5,"label":"Trickster Inbox","action":"gate-start"}
+{"ts":"2026-05-02T13:59:58.184Z","phase":5,"action":"gate-end","outcome":"pass","stage":"tests+captures"}
+{"ts":"2026-05-02T14:00:00Z","phase":5,"check":"visual-validator phase-5","attempt":2,"validator_fail":"item 13 (populated) — inbox pending-item uses CSS 1px solid border, not CP437 box-drawing characters; inconsistent with WEAVE/BRANCHES PROOF cards which use the Box primitive","fix_applied":"wrapped PendingItem content in <Box tone='single'> using the existing Box primitive (┌─┐│└─┘); also replaced em-dash '—' with '--' in response-option separators (per design-system content rules)","outcome":"applied — re-running"}
+{"ts":"2026-05-02T14:05:00Z","phase":5,"check":"visual-validator phase-5","attempt":3,"validator_fail":"item 13 (populated) — Box primitive has CP437 ┌─┐ └─┘ corners but DASHED CSS verticals between, creating a visible joint mismatch","fix_applied":"changed Box primitive's tone='single' vertical from '1px dashed' to '1px solid' so the line between corners reads as continuous; tone='double' (used by WEAVE/BRANCHES PROOF cards) unchanged","outcome":"applied — re-running"}

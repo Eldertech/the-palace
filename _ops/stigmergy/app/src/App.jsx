@@ -4,6 +4,7 @@ import LoginScreen from './components/LoginScreen.jsx';
 import MessageList from './components/MessageList.jsx';
 import ChannelTabs from './components/ChannelTabs.jsx';
 import AgentRoster from './components/AgentRoster.jsx';
+import TricksterInbox from './components/TricksterInbox.jsx';
 import { Banner } from './components/primitives.jsx';
 import { fetchPersistent, fetchSessions } from './adapters/blackboard.js';
 import { BOARDS } from './lib/format.js';
@@ -217,6 +218,7 @@ export default function App() {
                   filtered by @{agentFilter} · click to clear
                 </div>
               )}
+              {activeBoard === 'TRICKSTER' && <TricksterInbox messages={messages} />}
               <MessageList
                 messages={filtered}
                 sessionsEmpty={sessions.length === 0}
