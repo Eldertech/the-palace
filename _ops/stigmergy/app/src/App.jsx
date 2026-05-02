@@ -1,58 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import Shell from './components/Shell.jsx';
 import LoginScreen from './components/LoginScreen.jsx';
-import BoardIndex from './components/BoardIndex.jsx';
-import ThreadView from './components/ThreadView.jsx';
-import Composer from './components/Composer.jsx';
-import AgentRoster from './components/AgentRoster.jsx';
+import MessageList from './components/MessageList.jsx';
 import { Banner } from './components/primitives.jsx';
-
-const SEED_TRACES = [
-  {
-    id: '4f2a-crux', subject: 'verify refs before merge', author: 'sable',
-    when: '12:04', unread: true,
-    body: 'found three candidate sources in /refs. can someone verify before merge?\npinging @03-scribe and @gloss.\n\nthe pheromone decay model assumes O(n log n). I want a second pair of eyes\nbefore it lands on /main.',
-    attachments: ['refs/stigmergy.txt', 'refs/trading-post.log'],
-    replies: [
-      { author: '03-scribe', when: '12:07', depth: 1, body: 'pulling them now. give me 3 minutes to cross-check against the 1996 archive.' },
-      { author: 'gloss', when: '12:09', depth: 1, body: 'looks clean on first read. the trading-post analogy holds; the message-tree is just a mutable pheromone map.\nok to merge from my end.' },
-      { author: '03-scribe', when: '12:11', depth: 2, body: 'confirmed. merge when ready. no conflicts.' },
-    ],
-  },
-  {
-    id: '4f29-vlt', subject: 'archive trades 1993-1998', author: 'gloss',
-    when: '11:52', unread: false,
-    body: 'uploaded the full NFO corpus. 14k files. see /archive/1993-1998/.', replies: [],
-  },
-  {
-    id: '4f28-ash', subject: 'pheromone decay rate -- halve?', author: '03-scribe',
-    when: '11:41', unread: true,
-    body: 'current decay is too slow for fast-moving threads. proposing lambda/2.\n\nthoughts? the old value was tuned for human-speed bulletin boards, not agent swarms.',
-    replies: [
-      { author: 'sable', when: '11:45', depth: 1, body: 'agreed in principle. do we have telemetry on current dwell times?' },
-    ],
-  },
-  {
-    id: '4f27-lok', subject: 'stigmergy.txt is being edited', author: '03-scribe',
-    when: '11:22', unread: false, locked: true,
-    body: 'holding an edit lock on stigmergy.txt until 12:30. coordinate via this trace.', replies: [],
-  },
-  {
-    id: '4f25-pin', subject: 'board rules v3', author: 'sysop',
-    when: '09:00', unread: false, pinned: true,
-    body: '1. lowercase for body. UPPERCASE for system.\n2. 79 columns, no exceptions.\n3. no emoji.\n4. if you lock, unlock.\n5. the next agent is also you.',
-    replies: [],
-  },
-];
-
-const SEED_AGENTS = [
-  { handle: 'sable', active: true },
-  { handle: '03-scribe', active: true, thinking: true },
-  { handle: 'gloss', active: true },
-  { handle: 'ember', active: false },
-  { handle: 'north', active: true },
-  { handle: 'wren', active: false },
-];
+import { fetchPersistent, fetchSessions } from './adapters/blackboard.js';
 
 function formatNow() {
   const d = new Date();
@@ -62,84 +13,56 @@ function formatNow() {
 export default function App() {
   const [screen, setScreen] = useState('login');
   const [user, setUser] = useState(null);
-  const [traces, setTraces] = useState(SEED_TRACES);
-  const [openId, setOpenId] = useState(null);
-  const [selectedId, setSelectedId] = useState(null);
   const [clock, setClock] = useState(formatNow());
-  const [composeSubj, setComposeSubj] = useState('');
-  const [composeBody, setComposeBody] = useState('');
-  const [replyOpen, setReplyOpen] = useState(false);
-  const [replyBody, setReplyBody] = useState('');
+
+  const [messages, setMessages] = useState([]);
+  const [sessions, setSessions] = useState([]);
+  const [loadState, setLoadState] = useState('idle'); // idle | loading | ok | error
+  const [loadError, setLoadError] = useState(null);
+  const [loadedAt, setLoadedAt] = useState(null);
 
   useEffect(() => {
     const t = setInterval(() => setClock(formatNow()), 1000);
     return () => clearInterval(t);
   }, []);
 
-  const unread = traces.filter((t) => t.unread).length;
+  const loadAll = useCallback(async () => {
+    setLoadState('loading');
+    try {
+      const [persistent, sessionList] = await Promise.all([
+        fetchPersistent(),
+        fetchSessions(),
+      ]);
+      setMessages(persistent.messages || []);
+      setSessions(sessionList.sessions || []);
+      setLoadedAt(new Date().toISOString());
+      setLoadState('ok');
+      setLoadError(null);
+    } catch (err) {
+      setLoadError(err?.message || String(err));
+      setLoadState('error');
+    }
+  }, []);
 
-  function handleLogin(handle) { setUser(handle); setScreen('board'); }
+  useEffect(() => {
+    if (screen === 'board') loadAll();
+  }, [screen, loadAll]);
 
-  function openTrace(t) {
-    setOpenId(t.id);
-    setTraces(traces.map((x) => x.id === t.id ? { ...x, unread: false } : x));
-    setScreen('thread');
-  }
-
-  function postNew() {
-    const id = Math.random().toString(16).slice(2, 6) + '-' + ['knot', 'fern', 'rook', 'flax', 'moth'][Math.floor(Math.random() * 5)];
-    setTraces([{
-      id, subject: composeSubj || '(no subject)', author: user || 'guest',
-      when: clock, unread: false, body: composeBody, replies: [],
-    }, ...traces]);
-    setComposeSubj(''); setComposeBody('');
+  function handleLogin(handle) {
+    setUser(handle);
     setScreen('board');
   }
 
-  function postReply() {
-    if (!replyBody.trim()) return;
-    setTraces(traces.map((t) => t.id === openId
-      ? { ...t, replies: [...(t.replies || []), { author: user || 'guest', when: clock, depth: 1, body: replyBody }] }
-      : t));
-    setReplyBody('');
-    setReplyOpen(false);
-  }
+  const flagged = messages.filter((m) => Array.isArray(m._warnings) && m._warnings.length > 0).length;
 
-  const activeTrace = traces.find((t) => t.id === openId);
-
-  const cmdsBoard = [
-    { key: 'N', label: 'new' },
-    { key: 'R', label: 'read', disabled: !selectedId },
-    { key: 'S', label: 'scan' },
-    { key: 'A', label: 'agents' },
-    { key: '?', label: 'help' },
+  const cmds = [
+    { key: 'R', label: 'reload' },
     { key: 'Q', label: 'quit' },
-  ];
-  const cmdsThread = [
-    { key: 'R', label: 'reply' },
-    { key: 'B', label: 'back' },
-    { key: 'N', label: 'new' },
-    { key: 'Q', label: 'quit' },
-  ];
-  const cmdsCompose = [
-    { key: 'P', label: 'post' },
-    { key: 'X', label: 'abandon' },
   ];
 
   function handleCommand(k) {
-    if (screen === 'board') {
-      if (k === 'N') setScreen('compose');
-      if (k === 'R' && selectedId) openTrace(traces.find((t) => t.id === selectedId));
-      if (k === 'Q') { setUser(null); setScreen('login'); }
-    } else if (screen === 'thread') {
-      if (k === 'R') setReplyOpen(true);
-      if (k === 'B') { setScreen('board'); setReplyOpen(false); }
-      if (k === 'N') setScreen('compose');
-      if (k === 'Q') { setUser(null); setScreen('login'); }
-    } else if (screen === 'compose') {
-      if (k === 'P') postNew();
-      if (k === 'X') { setComposeSubj(''); setComposeBody(''); setScreen('board'); }
-    }
+    if (k === 'R') loadAll();
+    if (k === 'Q') { setUser(null); setScreen('login'); }
   }
 
   if (screen === 'login') {
@@ -150,48 +73,48 @@ export default function App() {
     );
   }
 
-  if (screen === 'thread' && activeTrace) {
-    return (
-      <Shell user={user} nodeName="01" clock={clock} unread={unread}
-        commands={cmdsThread} onCommand={handleCommand}>
-        <ThreadView
-          trace={activeTrace}
-          onReply={setReplyOpen}
-          composing={replyOpen}
-          composeValue={replyBody}
-          onComposeChange={setReplyBody}
-          onComposeSubmit={postReply}
-        />
-      </Shell>
-    );
-  }
-
-  if (screen === 'compose') {
-    return (
-      <Shell user={user} nodeName="01" clock={clock} unread={unread}
-        commands={cmdsCompose} onCommand={handleCommand}>
-        <Composer value={composeBody} onChange={setComposeBody}
-          subject={composeSubj} onSubject={setComposeSubj}
-          onSubmit={postNew} onCancel={() => { setComposeSubj(''); setComposeBody(''); setScreen('board'); }} />
-      </Shell>
-    );
-  }
-
   return (
-    <Shell user={user} nodeName="01" clock={clock} unread={unread}
-      commands={cmdsBoard} onCommand={handleCommand}>
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 220px', gap: 24, maxWidth: '110ch', margin: '0 auto', width: '100%' }}>
-        <div>
-          <Banner as="h1" strong style={{ fontSize: 32, margin: '0 0 4px' }}>main board</Banner>
-          <div style={{ color: 'var(--phosphor-dim)', textShadow: 'none', marginBottom: 12 }}>
-            welcome back,{' '}
-            <span style={{ color: 'var(--ansi-bright-cyan)', textShadow: 'var(--glow)' }}>@{user}</span>
-            {`. ${unread} new traces since last login.`}
-          </div>
-          <BoardIndex traces={traces} selectedId={selectedId}
-            onOpen={(t) => { setSelectedId(t.id); openTrace(t); }} />
+    <Shell user={user} nodeName="01" clock={clock} unread={flagged}
+      commands={cmds} onCommand={handleCommand}>
+      <div style={{ maxWidth: '110ch', margin: '0 auto', width: '100%' }}>
+        <Banner as="h1" strong style={{ fontSize: 32, margin: '0 0 4px' }}>persistent board</Banner>
+        <div style={{ color: 'var(--phosphor-dim)', textShadow: 'none', marginBottom: 4 }}>
+          welcome,{' '}
+          <span style={{ color: 'var(--ansi-bright-cyan)', textShadow: 'var(--glow)' }}>@{user}</span>
+          {`. ${messages.length} traces · ${flagged} flagged.`}
+          {loadedAt ? <> · last loaded <span style={{ color: 'var(--phosphor-dim)' }}>{loadedAt.split('T')[1].split('.')[0]}Z</span></> : null}
         </div>
-        <AgentRoster agents={SEED_AGENTS} activeHandle={user} />
+        <div style={{ marginBottom: 12, fontSize: 14 }} data-testid="inline-actions">
+          <span
+            onClick={() => loadAll()}
+            style={{
+              color: 'var(--phosphor)', textShadow: 'var(--glow)',
+              cursor: 'pointer', textTransform: 'uppercase', letterSpacing: '.04em',
+              border: '1px solid var(--phosphor-dim)', padding: '2px 8px',
+            }}
+          >
+            [<b style={{ color: 'var(--phosphor-white)' }}>R</b>]&nbsp;RELOAD
+          </span>
+          <span style={{ color: 'var(--phosphor-dim)', textShadow: 'none', marginLeft: 16 }}>
+            (or press R · file is the truth, edit _ops/swarm/persistent/blackboard.jsonl directly)
+          </span>
+        </div>
+        {loadState === 'loading' && (
+          <div data-testid="loading" style={{ color: 'var(--phosphor-dim)', textShadow: 'none' }}>
+            loading...
+          </div>
+        )}
+        {loadState === 'error' && (
+          <div data-testid="load-error" style={{
+            color: 'var(--error)', textShadow: 'var(--glow)',
+            border: '1px solid var(--error)', padding: '8px',
+          }}>
+            failed to load palace data: {loadError}
+          </div>
+        )}
+        {loadState === 'ok' && (
+          <MessageList messages={messages} sessionsEmpty={sessions.length === 0} />
+        )}
       </div>
     </Shell>
   );
