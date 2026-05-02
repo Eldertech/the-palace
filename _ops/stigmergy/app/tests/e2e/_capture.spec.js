@@ -63,4 +63,19 @@ test.describe(`phase ${PHASE} captures`, () => {
       });
     }
   }
+
+  if (PHASE === '4') {
+    test('with-roster.png', async ({ page }) => {
+      await page.goto('/?demo=1');
+      await page.getByTestId('login-banner').waitFor({ timeout: 10_000 });
+      await preloadFonts(page);
+      await page.getByRole('button', { name: /lurk/i }).click();
+      await page.getByTestId('agent-roster').waitFor({ timeout: 15_000 });
+      // TRICKSTER channel showcases the most variety: yellow + red health,
+      // multiple agents, paired and unpaired requests.
+      await page.getByTestId('tab-trickster').click();
+      await page.waitForTimeout(200);
+      await page.screenshot({ path: shotPath('with-roster.png'), fullPage: false });
+    });
+  }
 });

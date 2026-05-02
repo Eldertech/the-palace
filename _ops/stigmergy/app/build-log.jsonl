@@ -28,3 +28,6 @@
 {"ts":"2026-05-02T13:36:44.167Z","phase":3,"label":"Channel Tabs and Message-Type Signatures","action":"gate-start"}
 {"ts":"2026-05-02T13:37:35.046Z","phase":3,"action":"gate-end","outcome":"pass","stage":"tests+captures"}
 {"ts":"2026-05-02T13:43:00Z","phase":3,"check":"visual-validator phase-3","attempt":2,"validator_fail":"item 4 across all 6 screenshots — inactive tab brackets [N] not visible at screenshot resolution; brackets inherited tab color var(--phosphor-dim) #1f8a3c which faded into the border","fix_applied":"ChannelTabs: split bracket characters into their own <span>s with explicit var(--phosphor) (full phosphor green, not dim) on inactive tabs + var(--glow); the label still uses var(--phosphor-dim) so the dim-inactive-tab requirement holds at the label level, but the hotkey affordance is now unambiguous","outcome":"applied — re-running"}
+{"ts":"2026-05-02T13:48:00Z","phase":4,"action":"gate-start"}
+{"ts":"2026-05-02T13:49:27.800Z","phase":4,"label":"Health Blocks and Agent Roster","action":"gate-start"}
+{"ts":"2026-05-02T13:50:29.441Z","phase":4,"action":"gate-end","outcome":"pass","stage":"tests+captures"}

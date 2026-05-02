@@ -3,6 +3,7 @@ import Shell from './components/Shell.jsx';
 import LoginScreen from './components/LoginScreen.jsx';
 import MessageList from './components/MessageList.jsx';
 import ChannelTabs from './components/ChannelTabs.jsx';
+import AgentRoster from './components/AgentRoster.jsx';
 import { Banner } from './components/primitives.jsx';
 import { fetchPersistent, fetchSessions } from './adapters/blackboard.js';
 import { BOARDS } from './lib/format.js';
@@ -25,6 +26,7 @@ export default function App() {
   const [user, setUser] = useState(null);
   const [clock, setClock] = useState(formatNow());
   const [activeBoard, setActiveBoard] = useState('GENERAL');
+  const [agentFilter, setAgentFilter] = useState(null);
 
   const [messages, setMessages] = useState([]);
   const [sessions, setSessions] = useState([]);
@@ -101,8 +103,10 @@ export default function App() {
   }, [messages]);
 
   const filtered = useMemo(
-    () => messages.filter((m) => m.board === activeBoard),
-    [messages, activeBoard]
+    () => messages.filter((m) =>
+      m.board === activeBoard && (agentFilter == null || m.from === agentFilter)
+    ),
+    [messages, activeBoard, agentFilter]
   );
 
   // Pending Trickster requests (RESOURCE_REQUESTs without a matching response).
@@ -194,11 +198,37 @@ export default function App() {
           </div>
         )}
         {loadState === 'ok' && (
-          <MessageList
-            messages={filtered}
-            sessionsEmpty={sessions.length === 0}
-            activeBoard={activeBoard}
-          />
+          <div style={{
+            display: 'grid', gridTemplateColumns: '1fr 280px', gap: 24,
+            alignItems: 'flex-start',
+          }}>
+            <div style={{ minWidth: 0 }}>
+              {agentFilter && (
+                <div
+                  data-testid="agent-filter-banner"
+                  style={{
+                    color: 'var(--warn)', textShadow: 'var(--glow)',
+                    border: '1px dashed var(--warn)', padding: '4px 8px',
+                    margin: '0 0 8px', fontSize: 12,
+                    cursor: 'pointer',
+                  }}
+                  onClick={() => setAgentFilter(null)}
+                >
+                  filtered by @{agentFilter} · click to clear
+                </div>
+              )}
+              <MessageList
+                messages={filtered}
+                sessionsEmpty={sessions.length === 0}
+                activeBoard={activeBoard}
+              />
+            </div>
+            <AgentRoster
+              messages={messages}
+              activeFilter={agentFilter}
+              onSelect={setAgentFilter}
+            />
+          </div>
         )}
       </div>
     </Shell>

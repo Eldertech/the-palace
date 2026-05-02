@@ -1,6 +1,7 @@
 import React from 'react';
 import { Rule } from './primitives.jsx';
 import { glyphFor, accentFor, formatTs } from '../lib/format.js';
+import HealthBlock from './HealthBlock.jsx';
 
 function fmtPayload(payload) {
   if (payload === undefined || payload === null) return '';
@@ -99,6 +100,7 @@ function MessageRow({ msg }) {
             </span>
           </>
         )}
+        <HealthBlock health={msg.health} />
       </div>
 
       {flagged && (
