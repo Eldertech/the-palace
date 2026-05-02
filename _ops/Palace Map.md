@@ -6,8 +6,8 @@ pillars:
   - philosophy
   - practice
 born: 2026-03
-last_activated: 2026-04-27
-activation_count: 5
+last_activated: 2026-04-30
+activation_count: 6
 stage: sprout
 energy: very high
 beauty: 8
@@ -35,6 +35,24 @@ links:
     type: connects-to
   - target: "[[Harvest Ceremony]]"
     type: connects-to
+  - target: "[[Trickster]]"
+    type: connects-to
+    label: links-before-objects
+  - target: "[[Lateral Access]]"
+    type: connects-to
+    label: flat-graph-not-tree
+  - target: "[[ROSETTA]]"
+    type: connects-to
+    label: language-provision
+  - target: "[[Symbiotic Skills]]"
+    type: connects-to
+    label: tools-provision
+  - target: "[[Dialogue Moderator]]"
+    type: connects-to
+    label: communication-provision
+  - target: "[[SCHEMA]]"
+    type: connects-to
+    label: language-and-authorization
 ---
 
 # Palace Map
@@ -56,16 +74,29 @@ LateralAccess   enables   ObliquePortraitMethod
 
 Three tokens per edge. At roughly 40–50 characters per line, a 200-node palace with an average of 4 typed links each produces ~800 edges — approximately 35–45KB of raw text. Well within a context window. A 500-node palace remains under 80KB. The map is cheap.
 
-<!-- does this compact adjacency compression imply "proper" paths through the Palace? is this, without purpose, assigning a hierarchy of connections? -->
-
-Compact adjacency list format reduces this further:
+A compact adjacency list format reduces the token count further:
 
 ```
 Striatum: drives:Hilaritas, seeds:Rhythm
 Hilaritas: grounds:FourPillars, resonates:Spinoza
 ```
 
-This halves the token count and remains human-readable. Either format serves enchanted agents; the adjacency list is preferred for context economy.
+This halves the size and remains human-readable — but it is not neutral. The next section names why.
+
+### Format and the Reading Agent
+
+The edge-list and compact-adjacency formats encode mathematically identical graphs. For an LLM reading them as natural language, **they are not equivalent**.
+
+The pattern `X: a, b, c` reads in natural language as *"X has children a, b, c."* The source node implicitly becomes parent; the listed targets become descendants. In a palace where [[Lateral Access]] is load-bearing — where no entry sits above another, where meaning is generated through traversal rather than descent — the compact format quietly contradicts the philosophy. Compression imposes a parent/child reading the data itself does not warrant.
+
+The flat edge-list format does not have this property. Each edge is its own line; no row "owns" any other; the format reads as a flat set of relations rather than a tree.
+
+The recommendation, given that the consumer of this document is usually an enchanted agent:
+
+- **Edge-list format for agent context** — preserves the graph's flatness, refuses to smuggle in hierarchy. This is the canonical form for Tier-1 spawn context.
+- **Compact adjacency format for human audit and write operations** — compresses well, displays neighborhoods at a glance, useful for diff-reading map generations across time. Acceptable where a human is the reader and the structural commitment is explicit.
+
+The choice between formats is not about token economy alone. It is about which representation matches the architecture being communicated. The map's identity tilts toward the edge-list as its default form; the compact adjacency is a secondary view, named as such.
 
 ## What an Agent Does With It
 
@@ -124,7 +155,15 @@ In [[Pages as Agents]] terms, a ghost node is a page that has been summoned but 
 
 Tracking ghost nodes across map generations reveals where the palace most urgently wants to grow.
 
-<!-- I argue that the link comes before the object, and that the trickster should add links to nowhere. -->
+### Links Before Objects: The Trickster Move
+
+A standard reading treats ghost nodes as deficiency — references that haven't been instantiated yet, gaps to be closed. A second reading, native to the palace, inverts the relation: **the link comes before the object**. A typed link to a not-yet-existing entry is not a broken reference but a deliberate creative act. It summons a node into the graph's awareness *before* its content has been written, and the summoning itself is part of the work.
+
+This is the [[Trickster]]'s structural role in the palace. The trickster's job, in graph terms, is to add links to nowhere. Each such link is a wager: *this node should exist; the palace's existing entries already require it to exist; the absence is a generative obligation, not a bug.* The link creates the obligation. The obligation summons the entry. The entry becomes a node only because the link was already there.
+
+This reframes ghost nodes as **forward tension declared by an existing entry** rather than failed cross-reference. An entry that links to `[[Conatus]]` before any `Conatus.md` file exists has done the palace a service: it has named what is missing in a way that makes the missing thing legible, and committed an existing entry to needing it. Tracking which ghost nodes persist across map generations is therefore not bug-tracking but desire-tracking — and the trickster, the figure whose drive is to add links to nowhere, is the agent whose work makes desire-tracking possible at all.
+
+The schema linter consequence is small but important: a typed link to a nonexistent target is not an error. It *is* information. The Map Build Ceremony's `ghost_nodes` listing is the palace's running account of where the trickster has been at work, and where the next deposit cycles should be focused. A persistent ghost node — one that survives across three or more map generations — is not a stale reference but a high-priority deposit candidate the palace has been requesting for months.
 
 ## The Map as Tier 1 Context
 
@@ -138,7 +177,45 @@ The map does not replace deep reading. It makes deep reading strategic.
 
 The [[JEWEL]] orients to *meaning*: who Loudon is, what the palace values, how to move through it. The Palace Map orients to *topology*: where things are, how they connect, what's central, what's peripheral. Together they give an enchanted agent the two kinds of knowing that matter: *why am I here?* and *where am I?*
 
-A spy in an unfamiliar city needs both a cover story (the Jewel) and a map. Neither substitutes for the other. <!-- This is a fun metaphor, an agent is like a spy or a paratrooper, dropped into a foriegn unknown land and trying to understand and act within the land. What do they need... self identity(content), purpose(forward vector), map, language(schema?), tools (skills or stated freedom to act, where does this come from?, it is one of the pillars) -->
+A spy in an unfamiliar city needs both a cover story (the Jewel) and a map. Neither substitutes for the other.
+
+## The Paratrooper Provisioning: What an Enchanted Agent Carries In
+
+Extending the spy metaphor: an enchanted agent is more like a paratrooper. Dropped into foreign, partially-mapped territory, expected to understand and act before any home-base contact arrives. The spy at least picks the city. The paratrooper inherits coordinates and has to make sense of them on landing.
+
+What does a paratrooper need to operate? Cover story, mission, map, language, radio, gear, and authorization to act. The palace already supplies each of these, but they have not been enumerated in one place. Naming them as a kit clarifies what every spawned agent should arrive with — and exposes where the palace's provisioning is still incomplete.
+
+The kit is **seven items**. They cluster cleanly into three groups.
+
+### What the agent is (the self)
+
+1. **Identity** — the entry body, plus `type` and `stage` in YAML. The cover story. The agent knows what kind of thing it is and how mature before it processes any external instruction. *Mechanism: the entry itself, read as identity rather than content. See [[Pages as Agents]].*
+
+2. **Purpose** — the `forward_vector` field. The mission. Specific enough to act on, directional enough that the agent's first move is not "what should I do?" but "I know what I'm reaching for." *Mechanism: the forward_vector field on every entry.*
+
+3. **Authorization — stated freedom to act.** This is the slot that has been working implicitly in the palace and deserves to be named. **The `pillars` field doubles as a permissions / scope-of-action declaration.** An agent inhabiting a `pillars: [tools]` entry has tool-making freedom. A `pillars: [philosophy]` entry has reasoning freedom. A `pillars: [creation]` entry has the freedom to make. A multi-pillar entry inherits a wider scope. Combined with `agency_profile` (added in [[SCHEMA]] v1.1), the agent now carries both *what kind of action it is allowed to take* (pillars) and *how it characteristically takes it* (agency_profile). The pillars field is the agent's pillar passport. *Mechanism: `pillars` field + `agency_profile` field.*
+
+### Where the agent is (the world)
+
+4. **Map** — topology. Where this node sits in the whole organism, what is two hops away, which neighborhoods are dense or sparse. *Mechanism: this entry. The Palace Map is exactly this provision.*
+
+5. **Language** — how to read signs, what link types mean, what ceremony names obligate, how palace terms translate to other traditions. *Mechanism: [[SCHEMA]] for the native vocabulary; [[ROSETTA]] for cross-tradition translations.*
+
+### How the agent acts (the kit)
+
+6. **Communication** — how to talk to home base or to other agents in the field. The radio. Without it, swarm agents work in isolation; with it, they coordinate without a centralized router. *Mechanism: [[BBS Blackboard]] for asynchronous shared state, the [[Dialogue Moderator]] for active routing, FLAGS messages for post-action reports.*
+
+7. **Tools** — what the agent can actually wield. Computational capabilities, domain knowledge in compressed form, executable methods. *Mechanism: the skill ecosystem ([[Symbiotic Skills]]). Skills are the agent's gear, drawn from the palace's tools pillar, ready to be invoked when the task calls for them.*
+
+### What the kit makes legible
+
+Three observations follow from naming the seven slots.
+
+**The pillars field is the authorization layer, retroactively.** This is a structural commitment the palace has been making implicitly since the schema was written. Every entry has been declaring its scope of action through `pillars` without that declaration being named as such. Naming it now does not change practice — it makes existing practice explicit and exposes a design lever: the question of which pillars an entry inherits is now visibly a question about *what kind of action the agent it spawns is permitted*.
+
+**The Palace Map is one of seven items, not the whole kit.** This entry's job is to make the *map* slot legible. The other six are gestured at and linked. If the palace ever wants a single document that articulates the full provisioning, it will be a [[JEWEL]]-equivalent for spawn-time context — but the JEWEL is Tier 0 (philosophical orientation), and this would be Tier 1 (structural orientation). The map is a component of that larger document, not a substitute for it.
+
+**The kit reveals provisioning gaps.** Each of the seven items has a mechanism, but the mechanisms vary in maturity. Identity, Purpose, Map, Language are well-established. Authorization is implicit but unnamed (this section names it). Communication is mid-build ([[BBS Blackboard]] is sprout-stage). Tools are partially built (skill ecosystem is real but not yet system-level-MoE-integrated). An agent dropped into the palace today arrives well-equipped for the first four slots and partially-equipped for the last three. The growing edge of the palace's provisioning work is in the action group.
 
 ## Cross-Domain Resonance
 

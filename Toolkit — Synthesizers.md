@@ -7,8 +7,8 @@ pillars:
   - practice
 born: 2026-04
 stage: growing
-last_activated: 2026-04
-activation_count: 1
+last_activated: 2026-05
+activation_count: 2
 links:
   - target: "[[Loudon's Toolkit]]"
     type: emerged-from
@@ -24,7 +24,7 @@ forward_vector: Grow toward a complete, annotated hardware synth inventory with 
 
 # Toolkit — Synthesizers
 
-Hardware synthesizers in Loudon's toolkit — inventory, relationships, teaching roles, and ecosystem connections. Software synthesizers are tracked separately (see the Loudon Live RTM series concept in the Toolkit — Audio Plugins entry when created).
+Hardware synthesizers in Loudon's toolkit — inventory, relationships, teaching roles, and ecosystem connections. Software synthesizers are tracked separately (see the [[Loudon Live]] RTM series concept in the Toolkit — Audio Plugins entry when created).
 
 ## Hardware Inventory
 
@@ -33,7 +33,7 @@ Hardware synthesizers in Loudon's toolkit — inventory, relationships, teaching
 **ASM Hydrasynth Explorer**
 Wavemorphing digital polysynth. Primary teaching instrument for certain clients. Very digital in character — pairs intentionally with the Prophet as an analog/digital contrast pair. Getting fluent; still much to learn. Will be part of the live performance setup.
 
-**Sequential Prophet Rev-6**
+**Sequential Prophet-6**
 Analog polysynth. Well-known, deep relationship, long-term companion. Covers the full range: bass, lead, pad. Not ideal for drum sounds. Has not yet built a comprehensive custom preset library — recognized as an important ongoing project. "We will be friends forever and keep getting to know each other."
 
 **Nord Drum 3P**
@@ -113,7 +113,7 @@ The Nord was acquired specifically to serve the drum pad role while looking dyna
 Hardware synths are used for teaching in two specific contexts:
 
 1. **One-on-one clients** — Hydrasynth Explorer is used with certain clients when hardware-specific instruction is appropriate.
-2. **Manufacturer hire** — Teaching hardware synths is primarily envisioned as manufacturer-sponsored work (Loudon Live reputation enabling this).
+2. **Manufacturer hire** — Teaching hardware synths is primarily envisioned as manufacturer-sponsored work ([[Loudon Live]] reputation enabling this).
 
 For broad online teaching, **software synthesizers are strongly preferred** — they are screenable, cheaper for students, and accessible without physical gear. This is a deliberate teaching philosophy, not a limitation.
 
@@ -131,16 +131,14 @@ The hardware synthesizers sit at the **sound generation** layer of the signal ch
 
 **Performance Configuration** — Designing and stabilizing a consistent hardware setup that can be left assembled (space is the current bottleneck). Would benefit from a diagram and deliberate routing design.
 
-**Hardware Product (long-term)** — The aspiration to build and sell original synthesizer/effects hardware is a long-term goal, timed after establishing a strong Loudon Live reputation. Everything learned about hardware synthesis feeds this.
+**Hardware Product (long-term)** — The aspiration to build and sell original synthesizer/effects hardware is a long-term goal, timed after establishing a strong [[Loudon Live]] reputation. Everything learned about hardware synthesis feeds this.
 
 ---
 
-## Loudon Live RTM Series *(concept — software synths)*
+## [[Loudon Live]] RTM Series *(concept — software synths)*
 
-A planned content series for the Loudon Live channel: *Read The Manual* — deep-dive sessions exposing unusual and cool aspects of synthesizers, approached with Loudon's always-positive, always-supportive-of-makers philosophy. Primarily targeting software synthesizers. When the software synth inventory entry is created, this series concept should be linked there.
+A planned content series for the [[Loudon Live]] channel: *Read The Manual* — deep-dive sessions exposing unusual and cool aspects of synthesizers, approached with Loudon's always-positive, always-supportive-of-makers philosophy. Primarily targeting software synthesizers. When the software synth inventory entry is created, this series concept should be linked there.
 
 ---
-
-<!-- CLAUDE → LOUDON: Two clarifications needed before this entry is fully accurate: (1) Confirm "DSI Explorer Desktop" vs. Evolver Desktop — are these one unit? (2) Confirm Prophet model: Rev-6 (6-voice analog) or Rev2? Once confirmed, update inventory accordingly. -->
 
 <!-- CLAUDE → LOUDON: The "Performance Configuration" ongoing project and "Preset Management" project are strong candidates for their own palace project entries once they develop further — each has a clear status, forward vector, and deliverable. Flag for a future deposit session. -->

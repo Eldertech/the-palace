@@ -245,10 +245,10 @@ When any of the following change, a Schema Ceremony is required:
 3. Update SCHEMA.md
 4. Update CLAUDE.md version field (increment MAJOR if breaking change, MINOR if additive)
 5. Update ROSETTA if affected
-6. Update Substrate Skill.md if affected
+6. Update `_ops/Substrate Skill.md` if affected
 7. Git commit with message: `Schema Ceremony — [what changed] — v[new version]`
 
-**Postcondition:** SCHEMA.md, CLAUDE.md, Rosetta Stone, and Substrate Skill.md are internally consistent. Git commit made with Schema Ceremony message.
+**Postcondition:** SCHEMA.md, CLAUDE.md, ROSETTA.md, and `_ops/Substrate Skill.md` are internally consistent. Git commit made with Schema Ceremony message.
 
 **Failure mode:** If a schema change is made but the commit message does not follow the Schema Ceremony format, the change is not considered a Schema Ceremony — it is an undocumented structural edit. On next Weave: flag any version increments whose git commit messages lack the Schema Ceremony format. Reconstruct the rationale from the diff and add it retroactively as a note in SCHEMA.md.
 

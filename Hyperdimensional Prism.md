@@ -49,7 +49,7 @@ This visual identity works at multiple interpretive levels:
 
 **Level 1 (Music Producer):** An oscilloscope trace, stereo Lissajous figure — immediately recognizable as audio/music
 
-**Level 2 (Learner):** A trajectory, a path through knowledge space — "Loudon Live" means motion, exploration, journey
+**Level 2 (Learner):** A trajectory, a path through knowledge space — [[Loudon Live]] means motion, exploration, journey
 
 **Level 3 (Collaborator):** A traced pattern revealing structure — the methodology itself made visible
 
@@ -82,6 +82,16 @@ A **kaleidoscope** is a prism machine made into an object. It takes a single sma
 The connection to the Four Pillars: if the higher-dimensional reality is the fundamental domain — undivided learning-through-making — then the Four Pillars are the symmetry operations (reflections, rotations, translations) that generate the four distinct projections we perceive. Creation, Tools, Philosophy, Practice are not separate substances; they are the same substance seen through four canonical symmetries. Specifying the symmetry group would formalize the metaphor: this may be the mathematical path forward for answering whether the prism model can be made precise (see [[Open Questions]]).
 
 The kaleidoscope also matters as a *teaching instrument*. You can build one. This is critical in the context of the Four Pillars: the tool that demonstrates the philosophy is itself a tool you can make and modify. The Max/MSP patch that generates the visual identity — the Lissajous pattern in a sphere — is a kaleidoscope of sorts. Students don't just learn about prisms; they build the prism machine and watch it generate new patterns as they adjust parameters. The learning happens *through the making of the machine itself*.
+
+### The All-Pass Origin
+
+The kaleidoscope interface concept did not start as a metaphor — it cascaded out of a DSP insight during [[Compressor Design]] work in late February 2026. All-pass filters in a feedback path stretch the partial spacing of resonances; an all-pass-based reverb tail is an inharmonic synthesizer in disguise (see [[Harmonicity and Inharmonicity]] § All-Pass Networks as Inharmonic Resonators for the mechanism). What made the insight cascade was recognizing that *modulation and rotation* — the network's two core operations — are also the kaleidoscope's two core operations. A prism inside a kaleidoscope: the filter network rotates phase, the feedback structure multiplies the result through symmetry, and the perceived spectrum is the projection of the higher-dimensional graph through that symmetry operation.
+
+This pulls in [[Harmonicity and Inharmonicity]], crystal formation, and wallpaper group symmetry as the same family of structures. The control surface and the signal processing are the same shape, made visible:
+
+> **The interface IS the physics.**
+
+There is no distinction between the knobs the user turns and the operations being performed. The kaleidoscope view doesn't *represent* the underlying graph — it *is* the graph, rendered as perception. This is the same move the Lissajous-patch visual identity makes: the image isn't a depiction of the patch's behavior, it's a literal rendering of its phase-space trace.
 
 ## Computational Instantiation
 

@@ -41,7 +41,6 @@ The Palace/
 ├── JEWEL.md            ← tiered loading map, orientation seed
 ├── Jewel — Context.md  ← session history for The Jewel
 ├── SUBSTRATE.md            ← palace self-model
-├── Substrate Skill.md      ← operational instructions for AI agents
 ├── README - The Palace Guide.md
 ├── ROSETTA.md        ← vocabulary cross-reference
 ├── FOUR PILLARS.md         ← Loudon's core framework
@@ -52,6 +51,7 @@ The Palace/
     ├── Deposit Ceremony.md / Harvest Ceremony.md / Walk Ceremony.md
     ├── Weave Ceremony.md / Spore Check Ceremony.md / Revival Ceremony.md
     ├── Self-Model Update Ceremony.md
+    ├── Substrate Skill.md   ← operational instructions for AI agents
     ├── [*— Context.md]     ← ceremony session history companions
     ├── Harvest Queue.md / Harvest Frontier.md
     ├── Deposit Archive.md
@@ -96,7 +96,7 @@ This is a partial list. For the complete list of all ceremonies (including Harve
 - **[[FOUR PILLARS]]** — Loudon's core framework (`Four Pillars.md`)
 - **[[ROSETTA]]** — Cross-tradition glossary connecting Palace vocabulary to OOP, Data Engineering, Semantic Web, and DDD equivalents (`ROSETTA.md`)
 - **[[Palace Ceremonies]]** — Full ceremony list with triggers and specs (`_ops/Palace Ceremonies.md`)
-- **[[Substrate Skill]]** — Full operational instructions for AI agents (`Substrate Skill.md`)
+- **[[Substrate Skill]]** — Full operational instructions for AI agents (`_ops/Substrate Skill.md`)
 
 ## In-File Comments
 
