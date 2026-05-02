@@ -77,6 +77,62 @@ test.describe(`phase ${PHASE} captures`, () => {
     });
   }
 
+  if (PHASE === '6') {
+    test('login.png', async ({ page }) => {
+      await page.goto('/');
+      await page.getByTestId('login-banner').waitFor({ timeout: 10_000 });
+      await preloadFonts(page);
+      // Wait long enough for the type-on to complete fully — banner length
+      // × 2ms/char + some slack.
+      await page.waitForTimeout(4000);
+      await page.screenshot({ path: shotPath('login.png'), fullPage: false });
+    });
+
+    test('general.png', async ({ page }) => {
+      await page.goto('/?demo=1');
+      await page.getByTestId('login-banner').waitFor({ timeout: 10_000 });
+      await preloadFonts(page);
+      await page.getByRole('button', { name: /lurk/i }).click();
+      await page.getByTestId('channel-tabs').waitFor({ timeout: 15_000 });
+      await page.waitForTimeout(200);
+      await page.screenshot({ path: shotPath('general.png'), fullPage: false });
+    });
+
+    test('flags.png', async ({ page }) => {
+      await page.goto('/?demo=1');
+      await page.getByTestId('login-banner').waitFor({ timeout: 10_000 });
+      await preloadFonts(page);
+      await page.getByRole('button', { name: /lurk/i }).click();
+      await page.getByTestId('channel-tabs').waitFor({ timeout: 15_000 });
+      await page.getByTestId('tab-flags').click();
+      await page.waitForTimeout(200);
+      await page.screenshot({ path: shotPath('flags.png'), fullPage: false });
+    });
+
+    test('trickster-inbox.png', async ({ page }) => {
+      await page.goto('/?demo=1');
+      await page.getByTestId('login-banner').waitFor({ timeout: 10_000 });
+      await preloadFonts(page);
+      await page.getByRole('button', { name: /lurk/i }).click();
+      await page.getByTestId('channel-tabs').waitFor({ timeout: 15_000 });
+      await page.getByTestId('tab-trickster').click();
+      await page.getByTestId('trickster-inbox').waitFor({ timeout: 5_000 });
+      await page.waitForTimeout(200);
+      await page.screenshot({ path: shotPath('trickster-inbox.png'), fullPage: false });
+    });
+
+    test('scanlines-off.png', async ({ page }) => {
+      await page.goto('/?demo=1');
+      await page.getByTestId('login-banner').waitFor({ timeout: 10_000 });
+      await preloadFonts(page);
+      await page.getByRole('button', { name: /lurk/i }).click();
+      await page.getByTestId('channel-tabs').waitFor({ timeout: 15_000 });
+      await page.keyboard.press('v');  // toggle scanlines off
+      await page.waitForTimeout(200);
+      await page.screenshot({ path: shotPath('scanlines-off.png'), fullPage: false });
+    });
+  }
+
   if (PHASE === '5') {
     test('populated.png', async ({ page }) => {
       await page.goto('/?demo=1');

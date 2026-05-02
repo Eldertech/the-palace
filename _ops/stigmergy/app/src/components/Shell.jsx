@@ -1,17 +1,22 @@
 import React from 'react';
 
-export default function Shell({ children, user, nodeName, clock, unread, onCommand, commands = [], hidePath }) {
+export default function Shell({
+  children, user, nodeName, clock, unread, onCommand, commands = [], hidePath,
+  scanlinesOn = true, vfxState,
+}) {
   return (
     <div style={{
       minHeight: '100vh', background: 'var(--bg)', color: 'var(--phosphor)',
       fontFamily: 'var(--font-mono)', fontSize: 13,
       display: 'flex', flexDirection: 'column', position: 'relative',
     }}>
-      <div style={{
-        position: 'fixed', inset: 0, pointerEvents: 'none', zIndex: 9999,
-        background: 'repeating-linear-gradient(to bottom, transparent 0 2px, rgba(0,0,0,.26) 2px 3px)',
-        mixBlendMode: 'multiply',
-      }} data-testid="scanlines" />
+      {scanlinesOn && (
+        <div style={{
+          position: 'fixed', inset: 0, pointerEvents: 'none', zIndex: 9999,
+          background: 'repeating-linear-gradient(to bottom, transparent 0 2px, rgba(0,0,0,.26) 2px 3px)',
+          mixBlendMode: 'multiply',
+        }} data-testid="scanlines" data-on="true" />
+      )}
       <div style={{
         position: 'fixed', inset: 0, pointerEvents: 'none', zIndex: 9998,
         background: 'radial-gradient(ellipse at center, transparent 50%, rgba(0,0,0,.6) 100%)',
@@ -40,9 +45,30 @@ export default function Shell({ children, user, nodeName, clock, unread, onComma
             <span style={{ color: 'var(--unread)' }}>* {unread} NEW</span>
           </>
         )}
-        {hidePath ? null : (
+        {hidePath ? (
           <>
             <span style={{ flex: 1 }} />
+            {vfxState ? (
+              <span data-testid="vfx-indicator" style={{
+                color: vfxState === 'on' ? 'var(--phosphor)' : 'var(--phosphor-dim)',
+                textShadow: vfxState === 'on' ? 'var(--glow)' : 'none',
+              }}>
+                VFX: {vfxState.toUpperCase()}
+              </span>
+            ) : null}
+          </>
+        ) : (
+          <>
+            <span style={{ flex: 1 }} />
+            {vfxState ? (
+              <span data-testid="vfx-indicator" style={{
+                color: vfxState === 'on' ? 'var(--phosphor)' : 'var(--phosphor-dim)',
+                textShadow: vfxState === 'on' ? 'var(--glow)' : 'none',
+                marginRight: 12,
+              }}>
+                VFX: {vfxState.toUpperCase()}
+              </span>
+            ) : null}
             <span style={{ color: 'var(--phosphor-dim)', textShadow: 'none' }}>● uplink ok</span>
           </>
         )}
