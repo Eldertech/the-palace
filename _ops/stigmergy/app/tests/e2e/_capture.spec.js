@@ -35,4 +35,21 @@ test.describe(`phase ${PHASE} captures`, () => {
       await page.screenshot({ path: shotPath('login.png'), fullPage: true });
     });
   }
+
+  if (PHASE === '2') {
+    test('persistent-loaded.png', async ({ page }) => {
+      await page.goto('/');
+      await page.getByTestId('login-banner').waitFor({ timeout: 10_000 });
+      await preloadFonts(page);
+      await page.getByRole('button', { name: /lurk/i }).click();
+      // Wait for at least one message to render.
+      await page.getByTestId('message-row').first().waitFor({ timeout: 15_000 });
+      await page.waitForTimeout(300);
+      // Viewport-only — fullPage would stack all 113 messages into an
+      // unreadable thin column for the validator. The viewport shows the
+      // header, the empty-sessions indicator, and the first ~6 messages —
+      // exactly what the checklist needs to evaluate.
+      await page.screenshot({ path: shotPath('persistent-loaded.png'), fullPage: false });
+    });
+  }
 });

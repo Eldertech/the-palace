@@ -56,6 +56,7 @@ export default function Shell({ children, user, nodeName, clock, unread, onComma
         <div data-testid="command-bar" style={{
           borderTop: '1px dashed var(--phosphor-dim)',
           padding: '6px 20px', display: 'flex', gap: 20, flexWrap: 'wrap',
+          position: 'sticky', bottom: 0, background: 'var(--bg)', zIndex: 10,
         }}>
           {commands.map((c) => (
             <span

@@ -1,14 +1,28 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
+import { resolve, dirname } from 'node:path';
+import { fileURLToPath } from 'node:url';
+import { blackboardMiddleware } from './server/middleware.js';
+
+const __dirname = dirname(fileURLToPath(import.meta.url));
+
+// PALACE_ROOT env override → use it. Otherwise: app/ is at
+// <palace>/_ops/stigmergy/app/, so palace root is three levels up.
+const PALACE_ROOT = process.env.PALACE_ROOT
+  ? resolve(process.env.PALACE_ROOT)
+  : resolve(__dirname, '../../..');
 
 export default defineConfig({
-  plugins: [react()],
+  plugins: [
+    react(),
+    blackboardMiddleware(PALACE_ROOT),
+  ],
   server: {
     port: 5173,
     strictPort: true,
     fs: {
-      // Allow serving files from the design-system directory (one level up)
-      // so the design-system's CSS @import + relative woff2 paths resolve.
+      // The design-system files we read from at dev-time live above the app/
+      // directory, so widen the served-file allow-list.
       allow: ['..'],
     },
   },
