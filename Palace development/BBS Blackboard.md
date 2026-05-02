@@ -6,8 +6,8 @@ pillars:
   - philosophy
   - practice
 born: 2026-03
-last_activated: 2026-03-28
-activation_count: 2
+last_activated: 2026-05-02
+activation_count: 3
 stage: growing
 energy: very high
 beauty: 9
@@ -37,6 +37,9 @@ links:
   - target: "[[BBS Design System]]"
     type: spawned
     label: visual-form
+  - target: "[[BBS Production Plan]]"
+    type: connects-to
+    label: executed-by
 ---
 
 # BBS Blackboard
