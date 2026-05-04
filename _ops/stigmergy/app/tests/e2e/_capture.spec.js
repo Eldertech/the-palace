@@ -136,48 +136,83 @@ test.describe(`phase ${PHASE} captures`, () => {
   }
 
   if (PHASE === '6') {
-    test('boot.png', async ({ page }) => {
-      await page.goto('/');
-      await page.getByTestId('board-screen').waitFor({ timeout: 10_000 });
-      await preloadFonts(page);
-      await page.waitForTimeout(400);
-      await page.screenshot({ path: shotPath('boot.png'), fullPage: false });
-    });
+    // Phase 6 v0.2: comprehensive final-sweep captures.
+    // All shots go to screenshots/phase-6-v0.2/.
 
-    test('general.png', async ({ page }) => {
+    test('phase-6-v0.2/general.png', async ({ page }) => {
       await page.goto('/?demo=1');
       await page.getByTestId('channel-tabs').waitFor({ timeout: 15_000 });
       await preloadFonts(page);
       await page.waitForTimeout(200);
-      await page.screenshot({ path: shotPath('general.png'), fullPage: false });
+      const dir = resolve('screenshots/phase-6-v0.2');
+      mkdirSync(dir, { recursive: true });
+      await page.screenshot({ path: resolve(dir, 'general.png'), fullPage: false });
     });
 
-    test('flags.png', async ({ page }) => {
+    test('phase-6-v0.2/flags.png', async ({ page }) => {
       await page.goto('/?demo=1');
       await page.getByTestId('channel-tabs').waitFor({ timeout: 15_000 });
       await preloadFonts(page);
       await page.getByTestId('tab-flags').click();
       await page.waitForTimeout(200);
-      await page.screenshot({ path: shotPath('flags.png'), fullPage: false });
+      const dir = resolve('screenshots/phase-6-v0.2');
+      mkdirSync(dir, { recursive: true });
+      await page.screenshot({ path: resolve(dir, 'flags.png'), fullPage: false });
     });
 
-    test('trickster-inbox.png', async ({ page }) => {
+    test('phase-6-v0.2/system.png', async ({ page }) => {
+      await page.goto('/?demo=1');
+      await page.getByTestId('channel-tabs').waitFor({ timeout: 15_000 });
+      await preloadFonts(page);
+      await page.getByTestId('tab-system').click();
+      await page.waitForTimeout(200);
+      const dir = resolve('screenshots/phase-6-v0.2');
+      mkdirSync(dir, { recursive: true });
+      await page.screenshot({ path: resolve(dir, 'system.png'), fullPage: false });
+    });
+
+    test('phase-6-v0.2/trickster.png', async ({ page }) => {
       await page.goto('/?demo=1');
       await page.getByTestId('channel-tabs').waitFor({ timeout: 15_000 });
       await preloadFonts(page);
       await page.getByTestId('tab-trickster').click();
       await page.getByTestId('trickster-inbox').waitFor({ timeout: 5_000 });
       await page.waitForTimeout(200);
-      await page.screenshot({ path: shotPath('trickster-inbox.png'), fullPage: false });
+      const dir = resolve('screenshots/phase-6-v0.2');
+      mkdirSync(dir, { recursive: true });
+      await page.screenshot({ path: resolve(dir, 'trickster.png'), fullPage: false });
     });
 
-    test('scanlines-off.png', async ({ page }) => {
+    test('phase-6-v0.2/scanlines-off.png', async ({ page }) => {
       await page.goto('/?demo=1');
       await page.getByTestId('channel-tabs').waitFor({ timeout: 15_000 });
       await preloadFonts(page);
       await page.keyboard.press('v');  // toggle scanlines off
       await page.waitForTimeout(200);
-      await page.screenshot({ path: shotPath('scanlines-off.png'), fullPage: false });
+      const dir = resolve('screenshots/phase-6-v0.2');
+      mkdirSync(dir, { recursive: true });
+      await page.screenshot({ path: resolve(dir, 'scanlines-off.png'), fullPage: false });
+    });
+
+    test('phase-6-v0.2/live-connected.png', async ({ page }) => {
+      // TRICKSTER board with the LIVE indicator visible in the status bar.
+      await page.goto('/?demo=1');
+      await page.getByTestId('channel-tabs').waitFor({ timeout: 15_000 });
+      await preloadFonts(page);
+      await page.getByTestId('tab-trickster').click();
+      await page.getByTestId('trickster-inbox').waitFor({ timeout: 5_000 });
+      // Wait for SSE to connect so the indicator shows LIVE.
+      await page.waitForFunction(
+        () => {
+          const el = document.querySelector('[data-testid="live-indicator"]');
+          return el && el.getAttribute('data-state') === 'connected';
+        },
+        { timeout: 10_000 }
+      );
+      await page.waitForTimeout(200);
+      const dir = resolve('screenshots/phase-6-v0.2');
+      mkdirSync(dir, { recursive: true });
+      await page.screenshot({ path: resolve(dir, 'live-connected.png'), fullPage: false });
     });
   }
 
