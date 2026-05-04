@@ -1,0 +1,11 @@
+{
+  "schema_version": "1.0",
+  "agents": [
+    {
+      "agent_id": "fixtures-stewards-test",
+      "home": "Generative Sample Libraries",
+      "dir": "/Users/loudonstearns/Documents/The Palace/_ops/stigmergy/orchestrator/tests/fixtures/permanent-smoke/work",
+      "registered_at": "2026-05-04T23:04:05.367Z"
+    }
+  ]
+}
