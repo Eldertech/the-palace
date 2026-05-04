@@ -1,0 +1,45 @@
+{
+  "agent_id": "fixtures-stewards-test",
+  "home": "Generative Sample Libraries",
+  "session_id": null,
+  "cycle_id": "fixtures-cycle-2-2026-05-04",
+  "mode": "long_duration_background",
+  "neighborhood": [
+    "Talking Keyboard",
+    "Generative Wavetable Libraries",
+    "Modes of Collaboration",
+    "Substrate Skill",
+    "Project Stewardship System"
+  ],
+  "model": {
+    "provider": "anthropic",
+    "name": "claude-sonnet-4-6",
+    "endpoint": "https://api.anthropic.com/v1"
+  },
+  "tool_registry": [
+    "read_palace",
+    "read_manifest",
+    "read_blackboard_persistent",
+    "write_blackboard"
+  ],
+  "stopping_conditions": {
+    "max_iterations": 1,
+    "stop_on": ["cycle_complete", "blocked_unresolved_10_cycles"]
+  },
+  "blackboard_session_path": null,
+  "blackboard_persistent_path": "_ops/swarm/persistent/blackboard.jsonl",
+  "partner_id": null,
+  "trickster_mode": "human",
+  "parallel_safe": true,
+  "stewardship": {
+    "stage_at_spawn": "growing",
+    "vector_at_spawn": "I will become a chat-driven generator of multisampled instruments — Claude conducts the interview, draws audio from any source, and renders a playable sample library in any open sampler format requested.",
+    "posture_source": "Substrate Skill § Stage as Alignment Confidence",
+    "posture_summary_at_spawn": "growing-stage posture: Build Session pace; blocking: false for routine, blocking: true for sensory verification; execute within established direction; checkpoint at sensory steps."
+  },
+  "_fixture_metadata": {
+    "purpose": "Phase 5 smoke-test fixture for resuming a permanent agent without touching the live GSL pilot. agent_id is fixtures-only to prevent REGISTRY conflict.",
+    "snapshot_of": "_ops/agents/permanent/generative-sample-libraries/manifest.json",
+    "snapshot_at": "2026-05-04"
+  }
+}

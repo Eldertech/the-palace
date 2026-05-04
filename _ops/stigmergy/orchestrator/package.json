@@ -1,0 +1,27 @@
+{
+  "name": "palace-orchestrator",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Palace Orchestrator v0.1 — deterministic helpers for the Claude-Code-resident orchestrator skill.",
+  "bin": {
+    "palace-orch": "./src/cli.js"
+  },
+  "scripts": {
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "check:phase-1": "node scripts/check-phase.js 1",
+    "check:phase-2": "node scripts/check-phase.js 2",
+    "check:phase-3": "node scripts/check-phase.js 3",
+    "check:phase-4": "node scripts/check-phase.js 4",
+    "check:phase-5": "node scripts/check-phase.js 5",
+    "check:phase-6": "node scripts/check-phase.js 6",
+    "check:all": "node scripts/check-phase.js all"
+  },
+  "dependencies": {
+    "yaml": "^2.5.1"
+  },
+  "devDependencies": {
+    "vitest": "^2.1.5"
+  }
+}

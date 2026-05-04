@@ -1,0 +1,13 @@
+{
+  "agent_id": "no-home-agent",
+  "mode": "songline",
+  "session_id": "test-session",
+  "model": {
+    "provider": "anthropic",
+    "name": "claude-sonnet-4-6",
+    "endpoint": "https://api.anthropic.com/v1"
+  },
+  "tool_registry": ["read_palace"],
+  "stopping_conditions": { "max_iterations": 1, "stop_on": ["cycle_complete"] },
+  "blackboard_persistent_path": "_ops/swarm/persistent/blackboard.jsonl"
+}
