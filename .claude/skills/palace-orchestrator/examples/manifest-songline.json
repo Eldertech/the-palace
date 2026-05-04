@@ -1,0 +1,32 @@
+{
+  "_comment": "Sample songline manifest for Cooperation -> Kuramoto -> Hilaritas. The orchestrator skill constructs one of these per agent at runtime; this file shows the expected shape.",
+  "agent_id": "Cooperation Yields Agency",
+  "home": "Cooperation Yields Agency",
+  "session_id": "songline-2026-05-04-002",
+  "mode": "songline",
+  "neighborhood": ["Kuramoto Coupling", "Hilaritas Generator"],
+  "model": {
+    "provider": "anthropic",
+    "name": "claude-sonnet-4-6",
+    "endpoint": "https://api.anthropic.com/v1"
+  },
+  "tool_registry": [
+    "read_palace",
+    "read_blackboard_session",
+    "write_blackboard"
+  ],
+  "stopping_conditions": {
+    "max_iterations": 1,
+    "stop_on": ["WEAVE_posted", "cycle_complete"]
+  },
+  "blackboard_session_path": "_ops/swarm/persistent/blackboard.jsonl",
+  "blackboard_persistent_path": "_ops/swarm/persistent/blackboard.jsonl",
+  "partner_id": null,
+  "trickster_mode": "human",
+  "parallel_safe": true,
+  "_songline_metadata": {
+    "path": ["Cooperation Yields Agency", "Kuramoto Coupling", "Hilaritas Generator"],
+    "step_number": 1,
+    "next_agent_id": "Kuramoto Coupling"
+  }
+}
