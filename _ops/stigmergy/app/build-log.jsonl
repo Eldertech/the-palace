@@ -73,3 +73,5 @@
 {"ts":"2026-05-04T13:44:43.377Z","phase":4,"action":"gate-end","outcome":"pass","stage":"tests+captures"}
 {"ts":"2026-05-04T13:54:00.179Z","phase":4,"label":"Click-to-Respond UI","action":"gate-start"}
 {"ts":"2026-05-04T13:54:19.886Z","phase":4,"action":"gate-end","outcome":"pass","stage":"tests+captures"}
+{"ts":"2026-05-04T14:01:10.540Z","phase":5,"label":"Live Tail Integration","action":"gate-start"}
+{"ts":"2026-05-04T14:01:37.295Z","phase":5,"action":"gate-end","outcome":"pass","stage":"tests+captures"}

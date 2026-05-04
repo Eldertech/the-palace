@@ -1,9 +1,35 @@
 import React from 'react';
 import CommandBar from './CommandBar.jsx';
 
+function LiveIndicator({ liveState = 'offline' }) {
+  let label, color, shadow;
+  if (liveState === 'connected') {
+    label = 'LIVE';
+    color = 'var(--phosphor)';
+    shadow = 'var(--glow)';
+  } else if (liveState === 'connecting' || liveState === 'reconnecting') {
+    label = 'RECONNECTING';
+    color = 'var(--warn)';
+    shadow = 'var(--glow)';
+  } else {
+    label = 'OFFLINE';
+    color = 'var(--error)';
+    shadow = 'var(--glow)';
+  }
+  return (
+    <span
+      data-testid="live-indicator"
+      data-state={liveState}
+      style={{ color, textShadow: shadow }}
+    >
+      {'● '}{label}
+    </span>
+  );
+}
+
 export default function Shell({
   children, user, nodeName, clock, unread, onCommand, commands = [], hidePath,
-  scanlinesOn = true, vfxState, activeBoard,
+  scanlinesOn = true, vfxState, activeBoard, liveState = 'offline',
 }) {
   return (
     <div style={{
@@ -70,7 +96,7 @@ export default function Shell({
                 VFX: {vfxState.toUpperCase()}
               </span>
             ) : null}
-            <span style={{ color: 'var(--phosphor-dim)', textShadow: 'none' }}>● uplink ok</span>
+            <LiveIndicator liveState={liveState} />
           </>
         )}
       </div>
