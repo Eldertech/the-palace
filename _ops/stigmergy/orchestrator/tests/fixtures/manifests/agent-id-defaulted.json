@@ -1,0 +1,14 @@
+{
+  "home": "Hilaritas Generator",
+  "session_id": "songline-test-defaulted",
+  "mode": "songline",
+  "model": {
+    "provider": "anthropic",
+    "name": "claude-sonnet-4-6",
+    "endpoint": "https://api.anthropic.com/v1"
+  },
+  "tool_registry": ["read_palace", "write_blackboard"],
+  "stopping_conditions": { "max_iterations": 1, "stop_on": ["cycle_complete"] },
+  "blackboard_persistent_path": "_ops/swarm/persistent/blackboard.jsonl",
+  "parallel_safe": true
+}
