@@ -35,8 +35,8 @@ const PHASES = {
   1: {
     label: 'Project Skeleton',
     vitest: [],
-    playwright: ['boot.spec.js', 'tokens.spec.js'],
-    screenshots: ['phase-1/login.png'],
+    playwright: ['boot.spec.js', 'tokens.spec.js', 'polish.spec.js', 'command-bar-active.spec.js'],
+    screenshots: ['phase-1-v0.2/general.png', 'phase-1-v0.2/flags.png', 'phase-1-v0.2/system.png', 'phase-1-v0.2/trickster.png'],
   },
   2: {
     label: 'Data Adapter',
@@ -78,6 +78,9 @@ function logRun(entry) {
 function ensureScreenshotDir(phase) {
   const dir = resolve(SCREENSHOTS_ROOT, `phase-${phase}`);
   mkdirSync(dir, { recursive: true });
+  // Also ensure v0.2 subdirs for phases that use them.
+  const v2dir = resolve(SCREENSHOTS_ROOT, `phase-${phase}-v0.2`);
+  mkdirSync(v2dir, { recursive: true });
 }
 
 function runVitest(testFiles) {

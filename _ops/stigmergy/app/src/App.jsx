@@ -134,7 +134,7 @@ export default function App() {
   return (
     <Shell nodeName="01" clock={clock} unread={totalFlagged}
       commands={cmds} onCommand={handleCommand} scanlinesOn={scanlinesOn}
-      vfxState={scanlinesOn ? 'on' : 'off'}>
+      vfxState={scanlinesOn ? 'on' : 'off'} activeBoard={activeBoard}>
       <div data-testid="board-screen" style={{ width: '100%' }}>
         <Banner as="h1" strong style={{ fontSize: 32, margin: '0 0 4px' }}>
           {activeBoard.toLowerCase()} board

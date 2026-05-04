@@ -27,13 +27,20 @@ test.describe(`phase ${PHASE} captures`, () => {
   test.skip(PHASE === '0', 'STIGMERGY_PHASE not set; capture spec disabled');
 
   if (PHASE === '1') {
-    test('boot.png', async ({ page }) => {
-      await page.goto('/');
-      await page.getByTestId('board-screen').waitFor({ timeout: 10_000 });
-      await preloadFonts(page);
-      await page.waitForTimeout(200);
-      await page.screenshot({ path: shotPath('boot.png'), fullPage: true });
-    });
+    // v0.2: capture the four board views (no login screen).
+    const phase1Boards = ['general', 'flags', 'system', 'trickster'];
+    for (const ch of phase1Boards) {
+      test(`phase-1-v0.2/${ch}.png`, async ({ page }) => {
+        await page.goto('/?demo=1');
+        await page.getByTestId('channel-tabs').waitFor({ timeout: 15_000 });
+        await preloadFonts(page);
+        await page.getByTestId(`tab-${ch}`).click();
+        await page.waitForTimeout(200);
+        const dir = resolve(`screenshots/phase-1-v0.2`);
+        mkdirSync(dir, { recursive: true });
+        await page.screenshot({ path: resolve(dir, `${ch}.png`), fullPage: false });
+      });
+    }
   }
 
   if (PHASE === '2') {

@@ -52,6 +52,18 @@ export const DEMO_MESSAGES = [
               stop_reason: 'end_turn', iteration: 4, tokens_this_call: 512 },
     payload: { content: 'thresholding observation: trickster as necessary exterior to conatus, not as an internal mode. supports proposed link-type upgrade deepens -> couples-with.' },
   },
+  {
+    schema_version: '1.0', id: 'demo-012',
+    ts: '2026-05-02T10:26:00Z', session_id: 'demo-2026-05-02',
+    from: 'LATERAL-9', to: '*', type: 'FLAG', board: 'FLAGS',
+    health: { context_pct: 0.58, score: 'green', model: 'claude-sonnet-4-6',
+              stop_reason: 'end_turn', iteration: 5, tokens_this_call: 430 },
+    payload: {
+      claim: 'Kuramoto Coupling and Spinoza Conatus share a structural identity at the population level.',
+      target_entries: ['Kuramoto Coupling', 'Spinoza Conatus'],
+      confidence: 'high',
+    },
+  },
 
   // WEAVE -----------------------------------------------------------------
   {

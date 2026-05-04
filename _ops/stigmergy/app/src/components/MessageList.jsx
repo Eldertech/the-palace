@@ -1,6 +1,13 @@
 import React from 'react';
-import { Rule } from './primitives.jsx';
+import { Rule, Tag } from './primitives.jsx';
 import { glyphFor, accentFor, formatTs, parseLinks } from '../lib/format.js';
+
+// Map FLAG confidence string to Tag tone.
+function FlagConfidenceTag({ confidence }) {
+  const toneMap = { high: 'ok', medium: 'unread', low: 'err' };
+  const tone = toneMap[confidence] ?? 'default';
+  return <Tag tone={tone}>{confidence}</Tag>;
+}
 
 // Pad a label to a fixed width so colons align in monospace.
 const padLabel = (s) => (s + '         ').slice(0, 8);
@@ -70,7 +77,6 @@ function MessageRow({ msg }) {
     textShadow: 'var(--glow)',
     fontFamily: 'var(--font-mono)',
     fontSize: 13,
-    textAlign: isSystem ? 'center' : 'left',
     opacity: isSystem ? 0.85 : 1,
   };
 
@@ -145,6 +151,39 @@ function MessageRow({ msg }) {
             {JSON.stringify(msg.payload, null, 2)}
           </pre>
         </div>
+      ) : type === 'FLAG' && msg.payload && typeof msg.payload === 'object' && msg.payload.claim != null ? (
+        <div style={{ margin: 0 }}>
+          {(msg.payload.target_entries && msg.payload.target_entries.length > 0) || msg.payload.confidence != null ? (
+            <div style={{
+              display: 'flex', alignItems: 'center', gap: 12, flexWrap: 'wrap',
+              marginBottom: 6,
+            }}>
+              {msg.payload.target_entries && msg.payload.target_entries.length > 0 && (
+                <div data-testid="flag-targets" style={{
+                  fontSize: 12,
+                  color: 'var(--ansi-bright-cyan)', textShadow: 'none',
+                  fontFamily: 'var(--font-mono)',
+                }}>
+                  {'→ '}{Array.isArray(msg.payload.target_entries)
+                    ? msg.payload.target_entries.join(', ')
+                    : String(msg.payload.target_entries)}
+                </div>
+              )}
+              {msg.payload.confidence != null && (
+                <div data-testid="flag-confidence">
+                  <FlagConfidenceTag confidence={msg.payload.confidence} />
+                </div>
+              )}
+            </div>
+          ) : null}
+          <div style={{
+            whiteSpace: 'pre-wrap', wordBreak: 'break-word',
+            maxWidth: '78ch', fontFamily: 'var(--font-mono)', fontSize: 13,
+            color: 'var(--phosphor)',
+          }}>
+            <Linkify text={String(msg.payload.claim)} />
+          </div>
+        </div>
       ) : body ? (
         <div style={{
           margin: 0,
@@ -152,7 +191,6 @@ function MessageRow({ msg }) {
           maxWidth: '78ch', fontFamily: 'var(--font-mono)', fontSize: 13,
           color: 'var(--phosphor)',
           fontStyle: isQuery ? 'italic' : 'normal',
-          textAlign: isSystem ? 'center' : 'left',
         }}>
           <Linkify text={body} />
         </div>

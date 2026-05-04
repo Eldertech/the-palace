@@ -129,7 +129,7 @@ Full scale, semantic tokens, and CRT-glow utilities live in `colors_and_type.css
 - Everything snaps to the **character cell**. 1ch horizontal × ~1.4em vertical (line-height).
 - **80-column max width** for any text surface. `max-width: 80ch`. No exceptions inside the board view.
 - Gaps between sections are measured in **blank rows**, not pixels. Use `--row: 1.4em` and multiply (1 row, 2 rows, etc).
-- Cards and panels use **ASCII box borders** built from CP437 characters (`┌─┐ │ └─┘`), not CSS borders. When CSS borders are needed, they are 1px dashed in dim green.
+- Borders use CSS styled to evoke CP437 weights -- `3px double var(--phosphor-dim)` for primary containers, `1px solid var(--phosphor-dim)` for nested cards and rules. Character-cell rendering (`╔═╗ ║ ╚═╝`) is the deprecated prior approach; do not reintroduce it.
 
 ### Backgrounds
 - **Primary background:** flat terminal black (`#050a06`).
@@ -140,7 +140,7 @@ Full scale, semantic tokens, and CRT-glow utilities live in `colors_and_type.css
 
 ### Animation
 - **Blink** — the cursor blinks at ~1.1 Hz. Text can blink too for alerts (use sparingly).
-- **Type-on** -- headers and banners "type in" character by character on first paint. The base rate is `--dur-type: 20ms` per character, which is correct for short H1-style headers and menu rows (a 40-character heading completes in under a second). **Long multi-line ASCII banners must scale the rate down** so the user is not stuck waiting: a ~1300-character welcome banner at 20ms/char takes ~25 seconds, which is unusable. For banners of this size, scale to ~2ms/char so the banner completes in ~2 seconds. Rule of thumb: pick a per-character rate such that total type-on time lands between ~0.6s (short headers) and ~2.5s (full-screen banners). The token `--dur-type` defines the base rate; banner-scale type-on multiplies it down at the call site rather than overriding the token. This is the flagship motion -- it must feel like a teletype, not a loading screen.
+- **Type-on** -- headers and banners "type in" character by character on first paint. Two tokens govern the rate: `--dur-type` (default `20ms`) is the per-character rate for short headers and menu rows (a 40-character heading completes in under a second); `--dur-type-banner` (default `2ms`) is the per-character rate for full-screen ASCII banners (a ~1300-character banner completes in ~2 seconds). Pick whichever scale puts total type-on time in the ~0.6s--~2.5s range; for in-between sizes, multiply at the call site. Rule of thumb: `--dur-type` for H1-scale strings; `--dur-type-banner` for multi-line banners. This is the flagship motion -- it must feel like a teletype, not a loading screen.
 - **Scroll, not fade** — content moves on; it does not dissolve. New messages push old ones up.
 - **Easing: `steps()`**, not cubic-bezier. Motion is discrete, not smooth. `transition: opacity 60ms steps(3)` — never `ease-in-out`.
 - **Fades are rare.** When used, they're 100ms max.
@@ -153,8 +153,9 @@ Full scale, semantic tokens, and CRT-glow utilities live in `colors_and_type.css
 - **Focus state:** a blinking underscore appears in front of the element (`_ MAIN MENU`).
 
 ### Borders
-- Use **CP437 box-drawing characters** to draw cards, panels, and dividers. Double-line (`╔═╗ ║ ╚═╝`) for primary containers; single-line (`┌─┐ │ └─┘`) for nested. Dashed (`┈┄`) for soft dividers.
-- CSS borders, when used, are `1px solid var(--dim-green)` or `1px dashed var(--dim-green)`. No rounded corners. **`border-radius: 0`** is the house rule.
+- Borders use CSS styled to evoke CP437 weights -- `3px double var(--phosphor-dim)` for primary containers, `1px solid var(--phosphor-dim)` for nested cards and rules. Character-cell rendering (`╔═╗ ║ ╚═╝`) is the deprecated prior approach; do not reintroduce it.
+- For soft dividers, use `1px dashed var(--phosphor-dim)`.
+- No rounded corners. **`border-radius: 0`** is the house rule.
 
 ### Shadows + glow
 - No drop shadows. The only "shadow" is **CRT bloom**: `text-shadow: 0 0 6px currentColor, 0 0 14px color-mix(in srgb, currentColor 40%, transparent)` on active text.
@@ -164,17 +165,9 @@ Full scale, semantic tokens, and CRT-glow utilities live in `colors_and_type.css
 - **0px everywhere.** Pixel-aligned rectangles only. This is non-negotiable.
 
 ### Cards
-A "card" is a box drawn with CP437 characters. Example:
+A "card" is a CSS-bordered box. Primary containers use `3px double var(--phosphor-dim)`; nested cards use `1px solid var(--phosphor-dim)`. The prior character-cell approach (`╔═╗ ║ ╚═╝`) is retired -- fixed-width CP437 box-drawing overflows dynamic columns when the sidebar narrows the reading area below 78ch.
 
-```
-╔══ THREAD #4f2a-crux ══════════════════════╗
-║ @sable · 12:04                            ║
-║ found three candidate sources in /refs.   ║
-║ @03-scribe, can you verify before merge?  ║
-╚═══════════════════════════════════════════╝
-```
-
-Cards never use shadow, radius, or fill. The box IS the card.
+Cards never use shadow, radius, or fill. The border IS the card.
 
 ### Transparency + blur
 - **Never blur.** Blur is alien to a text-mode terminal.
@@ -266,4 +259,4 @@ ASCII borders and column layouts must align exactly. Two rules:
 1. Render all multi-row ASCII in a single `<pre>` with `font-family: var(--font-mono)`, `letter-spacing: 0`, `font-variant-ligatures: none`, and `white-space: pre`.
 2. Count columns manually and pad with spaces. Do not mix box-drawing characters with HTML elements that change width. For colored fragments, use `<span>` only — spans do not add glyph width.
 
-Cards drawn with `╔═╗ ║ ╚═╝` must have every row the same column count. Column-table layouts must use fixed-width columns and align header hyphens to the same widths.
+Column-table layouts and multi-column ASCII art must use fixed-width columns and align header hyphens to the same widths. CP437 icon glyphs (see Iconography section) must be rendered in a single `<pre>` if they are part of a multi-row aligned layout.

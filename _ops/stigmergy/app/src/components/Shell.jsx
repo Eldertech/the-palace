@@ -1,8 +1,9 @@
 import React from 'react';
+import CommandBar from './CommandBar.jsx';
 
 export default function Shell({
   children, user, nodeName, clock, unread, onCommand, commands = [], hidePath,
-  scanlinesOn = true, vfxState,
+  scanlinesOn = true, vfxState, activeBoard,
 }) {
   return (
     <div style={{
@@ -78,41 +79,7 @@ export default function Shell({
         {children}
       </div>
 
-      {commands.length > 0 && (
-        <div data-testid="command-bar" style={{
-          borderTop: '1px dashed var(--phosphor-dim)',
-          padding: '6px 20px', display: 'flex', gap: 20, flexWrap: 'wrap',
-          position: 'sticky', bottom: 0, background: 'var(--bg)', zIndex: 10,
-        }}>
-          {commands.map((c) => (
-            <span
-              key={c.key}
-              onClick={() => onCommand?.(c.key)}
-              style={{
-                cursor: c.disabled ? 'not-allowed' : 'pointer',
-                color: c.disabled ? 'var(--fg3)' : 'var(--phosphor)',
-                textShadow: c.disabled ? 'none' : 'var(--glow)',
-              }}
-              onMouseEnter={(e) => {
-                if (!c.disabled) {
-                  e.currentTarget.style.background = 'var(--phosphor)';
-                  e.currentTarget.style.color = 'var(--bg)';
-                  e.currentTarget.style.textShadow = 'none';
-                }
-              }}
-              onMouseLeave={(e) => {
-                if (!c.disabled) {
-                  e.currentTarget.style.background = 'transparent';
-                  e.currentTarget.style.color = 'var(--phosphor)';
-                  e.currentTarget.style.textShadow = 'var(--glow)';
-                }
-              }}
-            >
-              [<b style={{ color: c.disabled ? 'var(--fg3)' : 'var(--phosphor-white)' }}>{c.key}</b>]&nbsp;{c.label}
-            </span>
-          ))}
-        </div>
-      )}
+      <CommandBar commands={commands} onCommand={onCommand} activeBoard={activeBoard} />
     </div>
   );
 }
