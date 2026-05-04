@@ -17,9 +17,15 @@ NOT need an LLM:
 
 ## Status
 
-- Phase 1: helpers complete (this directory)
-- Phase 2: skill skeleton + prompt templates (see `.claude/skills/palace-orchestrator/`)
-- Phase 3+: see `Palace development/Orchestrator Production Plan.md`
+**v0.1 complete** as of 2026-05-04. 97/97 unit + integration tests
+green. Two real-subagent smoke tests passed (songline 2-step against
+fixture entries; permanent cycle-4 against the GSL pilot snapshot).
+Spec-validator OVERALL: pass on Phases 1, 3, 5 — conditional-pass on
+Phase 2 (resolved when Phases 4-5 added the mode-workflow files SKILL.md
+forward-references) and Phase 4 (two minor anomalies, neither blocking).
+
+See [`ORCHESTRATOR-V0.1-COMPLETE.md`](./ORCHESTRATOR-V0.1-COMPLETE.md)
+for the full close-out report and smoke-test recipe.
 
 ## CLI usage
 
