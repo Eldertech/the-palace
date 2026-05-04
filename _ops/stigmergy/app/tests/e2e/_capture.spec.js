@@ -182,25 +182,107 @@ test.describe(`phase ${PHASE} captures`, () => {
   }
 
   if (PHASE === '5') {
-    test('populated.png', async ({ page }) => {
+    // Phase 5 v0.2: Live Tail Integration captures.
+
+    test('phase-5-v0.2/live-connected.png', async ({ page }) => {
+      // TRICKSTER tab with the LIVE indicator visible in the status bar.
       await page.goto('/?demo=1');
       await page.getByTestId('channel-tabs').waitFor({ timeout: 15_000 });
       await preloadFonts(page);
       await page.getByTestId('tab-trickster').click();
       await page.getByTestId('trickster-inbox').waitFor({ timeout: 5_000 });
+      // Wait for SSE to connect so the indicator shows LIVE.
+      await page.waitForFunction(
+        () => {
+          const el = document.querySelector('[data-testid="live-indicator"]');
+          return el && el.getAttribute('data-state') === 'connected';
+        },
+        { timeout: 10_000 }
+      );
       await page.waitForTimeout(200);
-      await page.screenshot({ path: shotPath('populated.png'), fullPage: false });
+      const dir = resolve('screenshots/phase-5-v0.2');
+      mkdirSync(dir, { recursive: true });
+      await page.screenshot({ path: resolve(dir, 'live-connected.png'), fullPage: false });
     });
 
-    test('empty.png', async ({ page }) => {
-      // No ?demo=1 — real palace has no TRICKSTER RESOURCE_REQUESTs.
-      await page.goto('/');
-      await page.getByTestId('channel-tabs').waitFor({ timeout: 15_000 });
-      await preloadFonts(page);
-      await page.getByTestId('tab-trickster').click();
-      await page.getByTestId('inbox-empty').waitFor({ timeout: 5_000 });
-      await page.waitForTimeout(200);
-      await page.screenshot({ path: shotPath('empty.png'), fullPage: false });
+    test('phase-5-v0.2/live-message-arrived.png', async ({ page }) => {
+      // FLAGS tab right after appending a new message via SSE;
+      // new message visible at top, count badge incremented.
+      // File-restore pattern: save original content, restore after capture.
+      const { readFileSync, writeFileSync, appendFileSync } = await import('node:fs');
+      const { resolve: res2 } = await import('node:path');
+      const { fileURLToPath: ftu } = await import('node:url');
+      const { dirname: dn } = await import('node:path');
+      const __f = ftu(import.meta.url);
+      const appRoot = res2(dn(__f), '../..');
+      // tests/e2e → tests → app → stigmergy → _ops → The Palace (3 levels up from app)
+      const palaceRoot = res2(appRoot, '../../..');
+      const bbPath = res2(palaceRoot, '_ops/swarm/persistent/blackboard.jsonl');
+      const originalContent = readFileSync(bbPath, 'utf8');
+
+      try {
+        await page.goto('/?demo=1');
+        await page.getByTestId('channel-tabs').waitFor({ timeout: 15_000 });
+        await preloadFonts(page);
+
+        // Wait for SSE connection.
+        await page.waitForFunction(
+          () => {
+            const el = document.querySelector('[data-testid="live-indicator"]');
+            return el && el.getAttribute('data-state') === 'connected';
+          },
+          { timeout: 10_000 }
+        );
+
+        await page.getByTestId('tab-flags').click();
+        await page.waitForTimeout(200);
+
+        // Append a new FLAG message.
+        const id = `capture-flag-${Date.now()}`;
+        const msg = {
+          schema_version: '1.0',
+          id,
+          ts: new Date().toISOString(),
+          session_id: 'live-tail-capture',
+          from: 'CAPTURE-AGENT',
+          to: '*',
+          type: 'FLAG',
+          board: 'FLAGS',
+          health: {
+            context_pct: 0.1,
+            stop_reason: 'end_turn',
+            iteration: 1,
+            tokens_this_call: 100,
+            model: 'test-runner',
+            score: 'green',
+          },
+          payload: {
+            claim: 'Live tail capture: SSE message arrival test',
+            target_entries: ['Hilaritas Generator'],
+            confidence: 'high',
+          },
+        };
+        appendFileSync(bbPath, JSON.stringify(msg) + '\n', 'utf8');
+
+        // Wait up to 3 seconds for the new message row to appear.
+        await page.waitForSelector(`[data-testid="message-row"][data-id="${id}"]`, { timeout: 5_000 });
+        await page.waitForTimeout(200);
+
+        const dir = res2('screenshots/phase-5-v0.2');
+        const { mkdirSync } = await import('node:fs');
+        mkdirSync(dir, { recursive: true });
+        await page.screenshot({ path: res2(dir, 'live-message-arrived.png'), fullPage: false });
+      } finally {
+        writeFileSync(bbPath, originalContent, 'utf8');
+      }
     });
+
+    // live-reconnecting.png: SKIPPED for v0.2.
+    // Capturing a genuine RECONNECTING state requires killing the dev server
+    // mid-test, which terminates all other Playwright workers. The DOM attribute
+    // data-state="reconnecting" is verified structurally in live-tail.spec.js.
+    // A manual smoke-test can confirm the amber RECONNECTING indicator by stopping
+    // the dev server while the UI is open. If a DOM-forced version is needed in
+    // a future iteration, inject via page.evaluate to set the attribute, then capture.
   }
 });

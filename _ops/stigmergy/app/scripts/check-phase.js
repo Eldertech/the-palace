@@ -57,10 +57,10 @@ const PHASES = {
     screenshots: ['phase-4-v0.2/inbox-pending.png', 'phase-4-v0.2/inbox-modal-preview.png', 'phase-4-v0.2/inbox-after-respond.png'],
   },
   5: {
-    label: 'Trickster Inbox',
-    vitest: ['parser.test.js', 'schema.test.js', 'format.test.js', 'roster.test.js', 'inbox.test.js', 'middleware.test.js'],
-    playwright: ['boot.spec.js', 'tokens.spec.js', 'data.spec.js', 'tabs.spec.js', 'types.spec.js', 'health.spec.js', 'roster.spec.js', 'inbox.spec.js'],
-    screenshots: ['phase-5/empty.png', 'phase-5/populated.png'],
+    label: 'Live Tail Integration',
+    vitest: ['validator.test.js', 'response-builder.test.js', 'post-middleware.test.js', 'live-feed.test.js', 'sse-middleware.test.js', 'parser.test.js', 'schema.test.js', 'middleware.test.js', 'format.test.js', 'roster.test.js', 'inbox.test.js'],
+    playwright: ['boot.spec.js', 'tokens.spec.js', 'data.spec.js', 'tabs.spec.js', 'types.spec.js', 'health.spec.js', 'roster.spec.js', 'inbox.spec.js', 'click-to-respond.spec.js', 'live-tail.spec.js', 'polish.spec.js', 'command-bar-active.spec.js'],
+    screenshots: ['phase-5-v0.2/live-connected.png', 'phase-5-v0.2/live-message-arrived.png'],
   },
   6: {
     label: 'Polish',

@@ -6,6 +6,8 @@ import AgentRoster from './components/AgentRoster.jsx';
 import TricksterInbox from './components/TricksterInbox.jsx';
 import { Banner } from './components/primitives.jsx';
 import { fetchPersistent, fetchSessions } from './adapters/blackboard.js';
+import { subscribeLive } from './adapters/live-tail.js';
+import { mergeLive } from './lib/live-feed.js';
 import { BOARDS } from './lib/format.js';
 import { DEMO_MESSAGES } from './lib/demo-data.js';
 import { validateAll } from './lib/schema.js';
@@ -31,13 +33,16 @@ export default function App() {
   // Optimistic responses: persisted messages from the click-to-respond flow
   // since the last full reload. Merged into the canonical messages array
   // for ALL derived state — counts, filters, inbox, tab badges — so the UI
-  // updates immediately on confirm. Phase 5 SSE will also push the same
-  // message, and live-feed.mergeLive dedupes by id.
+  // updates immediately on confirm. Phase 5 SSE also pushes the same
+  // message; live-feed.mergeLive dedupes by id, and we prune optimistic
+  // entries as SSE confirms them.
   const [optimistic, setOptimistic] = useState([]);
   const [sessions, setSessions] = useState([]);
   const [loadState, setLoadState] = useState('idle');
   const [loadError, setLoadError] = useState(null);
   const [loadedAt, setLoadedAt] = useState(null);
+  // SSE connection state: 'connecting' | 'connected' | 'reconnecting' | 'offline'
+  const [liveState, setLiveState] = useState('offline');
 
   const demo = isDemoMode();
 
@@ -74,6 +79,23 @@ export default function App() {
   useEffect(() => {
     loadAll();
   }, [loadAll]);
+
+  // Phase 5: subscribe to SSE live tail on mount. Incoming messages flow
+  // through mergeLive into the canonical messages array. If a message that
+  // arrived via SSE was already in the optimistic set (same id), we prune
+  // it from optimistic to keep the set tight.
+  useEffect(() => {
+    const close = subscribeLive({
+      target: 'persistent',
+      onMessage: (incoming) => {
+        setMessages((prev) => mergeLive(prev, incoming));
+        // Prune from optimistic once SSE confirms the message is on-disk.
+        setOptimistic((prev) => prev.filter((m) => m.id !== incoming.id));
+      },
+      onStateChange: setLiveState,
+    });
+    return close;
+  }, []);
 
   // Hotkey support: 1-6 select boards, R reloads, V toggles scanlines.
   useEffect(() => {
@@ -160,7 +182,8 @@ export default function App() {
   return (
     <Shell nodeName="01" clock={clock} unread={totalFlagged}
       commands={cmds} onCommand={handleCommand} scanlinesOn={scanlinesOn}
-      vfxState={scanlinesOn ? 'on' : 'off'} activeBoard={activeBoard}>
+      vfxState={scanlinesOn ? 'on' : 'off'} activeBoard={activeBoard}
+      liveState={liveState}>
       <div data-testid="board-screen" style={{ width: '100%' }}>
         <Banner as="h1" strong style={{ fontSize: 32, margin: '0 0 4px' }}>
           {activeBoard.toLowerCase()} board

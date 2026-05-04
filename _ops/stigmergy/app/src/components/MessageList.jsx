@@ -113,6 +113,7 @@ function MessageRow({ msg }) {
       data-type={type}
       data-board={msg.board || ''}
       data-flagged={flagged ? 'true' : 'false'}
+      data-id={msg.id ?? ''}
       style={rowStyle}
     >
       <div style={{ marginBottom: 6 }}>
