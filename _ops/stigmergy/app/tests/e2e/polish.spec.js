@@ -80,3 +80,81 @@ test('no emoji in any rendered text on the board view', async ({ page }) => {
     expect(text, `emoji found on ${ch} board`).not.toMatch(/[\u{1F300}-\u{1F9FF}]/u);
   }
 });
+
+test('SYSTEM messages are not center-justified', async ({ page }) => {
+  await page.goto('/?demo=1');
+  await expect(page.getByTestId('channel-tabs')).toBeVisible({ timeout: 15_000 });
+
+  // Navigate to the SYSTEM board.
+  await page.getByTestId('tab-system').click();
+
+  // Wait for at least one SYSTEM-board message row.
+  const systemRows = page.locator('[data-testid="message-row"][data-board="SYSTEM"]');
+  await expect(systemRows.first()).toBeVisible({ timeout: 5_000 });
+
+  // None of the SYSTEM rows should have text-align: center.
+  const centerCount = await page.evaluate(() => {
+    const rows = Array.from(document.querySelectorAll(
+      '[data-testid="message-row"][data-board="SYSTEM"]'
+    ));
+    return rows.filter((el) => getComputedStyle(el).textAlign === 'center').length;
+  });
+  expect(centerCount, 'found SYSTEM rows with text-align: center').toBe(0);
+
+  // Also check the body divs inside those rows.
+  const bodyCenterCount = await page.evaluate(() => {
+    const rows = Array.from(document.querySelectorAll(
+      '[data-testid="message-row"][data-board="SYSTEM"]'
+    ));
+    let count = 0;
+    for (const row of rows) {
+      const bodyDivs = Array.from(row.querySelectorAll('div'));
+      for (const div of bodyDivs) {
+        if (getComputedStyle(div).textAlign === 'center') count++;
+      }
+    }
+    return count;
+  });
+  expect(bodyCenterCount, 'found body divs inside SYSTEM rows with text-align: center').toBe(0);
+});
+
+test('FLAG messages render claim/targets/confidence', async ({ page }) => {
+  await page.goto('/?demo=1');
+  await expect(page.getByTestId('channel-tabs')).toBeVisible({ timeout: 15_000 });
+
+  // Navigate to the FLAGS board.
+  await page.getByTestId('tab-flags').click();
+
+  // Wait for FLAG rows to appear.
+  const flagRows = page.locator('[data-testid="message-row"][data-type="FLAG"]');
+  await expect(flagRows.first()).toBeVisible({ timeout: 5_000 });
+
+  // At least one FLAG row should have flag-targets (any structured FLAG payload).
+  const targetsEl = page.locator('[data-testid="flag-targets"]').first();
+  await expect(targetsEl).toBeVisible({ timeout: 5_000 });
+
+  // At least one FLAG row should have flag-confidence.
+  const confidenceEl = page.locator('[data-testid="flag-confidence"]').first();
+  await expect(confidenceEl).toBeVisible({ timeout: 5_000 });
+
+  // The targets element should contain at least one entry name (non-empty, prefixed with →).
+  const targetsText = await targetsEl.textContent();
+  expect(targetsText).toMatch(/→\s+\S/);
+
+  // The confidence tag should contain one of the valid confidence values.
+  const confidenceText = (await confidenceEl.textContent()) ?? '';
+  expect(confidenceText.toLowerCase()).toMatch(/high|medium|low/);
+
+  // All flag-targets elements should have non-empty content starting with the → arrow.
+  const allTargets = page.locator('[data-testid="flag-targets"]');
+  const targetCount = await allTargets.count();
+  expect(targetCount).toBeGreaterThan(0);
+
+  // Verify that the flag-confidence tag is always present alongside flag-targets
+  // by checking the first structured FLAG row contains both.
+  const structuredFlagRow = page.locator('[data-testid="message-row"][data-type="FLAG"]')
+    .filter({ has: page.locator('[data-testid="flag-targets"]') })
+    .first();
+  await expect(structuredFlagRow.locator('[data-testid="flag-targets"]')).toBeVisible();
+  await expect(structuredFlagRow.locator('[data-testid="flag-confidence"]')).toBeVisible();
+});

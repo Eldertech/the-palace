@@ -110,7 +110,8 @@
   --dur-instant: 0ms;
   --dur-blink: 1100ms;
   --dur-fade:  100ms;
-  --dur-type:  20ms;   /* per-character type-on */
+  --dur-type:  20ms;   /* per-character type-on — for short headers and menu rows */
+  --dur-type-banner: 2ms; /* per-character type-on — for full-screen ASCII banners */
 
   /* Glow / CRT bloom */
   --glow: 0 0 6px currentColor, 0 0 14px color-mix(in srgb, currentColor 40%, transparent);

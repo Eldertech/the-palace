@@ -35,7 +35,7 @@ For whichever message types appear in this screenshot:
 12. **RESOURCE_GRANT** — green check or `+` indicator; rendered dim.
 13. **RESOURCE_DENY** — red accent (`#ff4136`-family); `x` prefix.
 14. **QUERY** — visually distinct from BROADCAST (italic-equivalent in VT323/Plex Mono — likely a styling treatment, since true italic doesn't exist in these fonts).
-15. **SESSION_INIT / SESSION_CLOSE** — system-level styling: dim, centered, or otherwise visually marked as system not agent.
+15. **SESSION_INIT / SESSION_CLOSE** — system-level styling: dim and visually distinct as system (NOT centered). Left-aligned like all other messages; distinguished by reduced opacity and/or a `[SYSTEM]` prefix, not by center justification.
 16. **PAGE_UPDATE** — dim cyan with a file-path prefix.
 17. **HEALTH_NOTICE** — yellow border for `yellow` health, red border for `red` health.
 
