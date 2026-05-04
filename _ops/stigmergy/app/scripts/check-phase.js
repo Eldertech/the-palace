@@ -63,10 +63,10 @@ const PHASES = {
     screenshots: ['phase-5-v0.2/live-connected.png', 'phase-5-v0.2/live-message-arrived.png'],
   },
   6: {
-    label: 'Polish',
-    vitest: ['parser.test.js', 'schema.test.js', 'format.test.js', 'roster.test.js', 'inbox.test.js', 'middleware.test.js'],
-    playwright: ['boot.spec.js', 'tokens.spec.js', 'data.spec.js', 'tabs.spec.js', 'types.spec.js', 'health.spec.js', 'roster.spec.js', 'inbox.spec.js', 'polish.spec.js'],
-    screenshots: ['phase-6/login.png', 'phase-6/general.png', 'phase-6/flags.png', 'phase-6/trickster-inbox.png', 'phase-6/scanlines-off.png'],
+    label: 'Polish + Final Sweep',
+    vitest: ['parser.test.js', 'schema.test.js', 'format.test.js', 'roster.test.js', 'inbox.test.js', 'middleware.test.js', 'validator.test.js', 'response-builder.test.js', 'post-middleware.test.js', 'live-feed.test.js', 'sse-middleware.test.js'],
+    playwright: ['boot.spec.js', 'tokens.spec.js', 'data.spec.js', 'tabs.spec.js', 'types.spec.js', 'health.spec.js', 'roster.spec.js', 'inbox.spec.js', 'click-to-respond.spec.js', 'live-tail.spec.js', 'polish.spec.js', 'command-bar-active.spec.js'],
+    screenshots: ['phase-6-v0.2/general.png', 'phase-6-v0.2/flags.png', 'phase-6-v0.2/system.png', 'phase-6-v0.2/trickster.png', 'phase-6-v0.2/scanlines-off.png', 'phase-6-v0.2/live-connected.png'],
   },
 };
 
