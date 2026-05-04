@@ -2,8 +2,6 @@ import { test, expect } from '@playwright/test';
 
 async function gotoBoard(page, demo = false) {
   await page.goto(demo ? '/?demo=1' : '/');
-  await expect(page.getByTestId('login-banner')).toBeVisible({ timeout: 10_000 });
-  await page.getByRole('button', { name: /lurk/i }).click();
   await expect(page.getByTestId('channel-tabs')).toBeVisible({ timeout: 15_000 });
   await page.getByTestId('tab-trickster').click();
 }
@@ -58,7 +56,6 @@ test('TRICKSTER tab shows pending counter on demo (and not without it)', async (
   await expect(page.getByTestId('tab-trickster')).toContainText('PENDING');
 
   await page.goto('/');
-  await page.getByRole('button', { name: /lurk/i }).click();
   await expect(page.getByTestId('channel-tabs')).toBeVisible();
   // Without ?demo=1, no pending → no PENDING badge.
   await expect(page.getByTestId('tab-trickster')).not.toContainText('PENDING');

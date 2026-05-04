@@ -13,7 +13,7 @@ function rgbToHex(rgb) {
 
 test('phosphor green on terminal black is the base palette', async ({ page }) => {
   await page.goto('/');
-  await expect(page.getByTestId('login-banner')).toBeVisible({ timeout: 10_000 });
+  await expect(page.getByTestId('board-screen')).toBeVisible({ timeout: 10_000 });
 
   // body background should be terminal-black (#050a06)
   const bodyBg = await page.evaluate(() =>
@@ -30,7 +30,7 @@ test('phosphor green on terminal black is the base palette', async ({ page }) =>
 
 test('VT323 and IBM Plex Mono fonts are loaded', async ({ page }) => {
   await page.goto('/');
-  await expect(page.getByTestId('login-banner')).toBeVisible({ timeout: 10_000 });
+  await expect(page.getByTestId('board-screen')).toBeVisible({ timeout: 10_000 });
 
   // @font-face fonts only fetch on first use. Force-load them, then verify
   // they're available via FontFaceSet.check.
@@ -55,7 +55,7 @@ test('VT323 and IBM Plex Mono fonts are loaded', async ({ page }) => {
 
 test('font-family stack on body resolves to a monospace family', async ({ page }) => {
   await page.goto('/');
-  await expect(page.getByTestId('login-banner')).toBeVisible({ timeout: 10_000 });
+  await expect(page.getByTestId('board-screen')).toBeVisible({ timeout: 10_000 });
 
   const family = await page.evaluate(() =>
     getComputedStyle(document.body).fontFamily
@@ -65,9 +65,9 @@ test('font-family stack on body resolves to a monospace family', async ({ page }
   expect(family.toLowerCase()).toContain('monospace');
 });
 
-test('no rendered element on the login screen has rounded corners', async ({ page }) => {
+test('no rendered element on the board screen has rounded corners', async ({ page }) => {
   await page.goto('/');
-  await expect(page.getByTestId('login-banner')).toBeVisible({ timeout: 10_000 });
+  await expect(page.getByTestId('board-screen')).toBeVisible({ timeout: 10_000 });
 
   // Sample every visible element on screen and assert all border-radii are 0px.
   const violations = await page.evaluate(() => {

@@ -23,10 +23,10 @@ For each item below, return one of:
 7. **No proportional fonts.** Nothing on screen uses a proportional/sans-serif font. Everything is monospace.
 
 ### Layout & shape
-8. **80-column discipline.** The main content sits within an 80ch (or visually equivalent) max-width column, centered or left-aligned in the viewport. Not edge-to-edge on a wide monitor.
+8. **Page fills the viewport; per-line body wraps at ~78ch.** The board screen expands to use the full viewport width on a wide window — no max-width cap on the page. Within that, individual message body text still wraps at ~78ch for line-length readability. The two rules are distinct: page = viewport-wide; body line = 78ch.
 9. **No rounded corners.** Every box, button, and input has `border-radius: 0`. No pill shapes, no soft corners.
 10. **No drop shadows.** No box-shadows on cards or buttons (CRT bloom on text is allowed and expected).
-11. **CP437 box-drawing on any drawn cards.** If the login screen renders any boxed regions, they use `╔═╗ ║ ╚═╝` or `┌─┐ │ └─┘` characters, not CSS borders alone.
+11. **Single rendering mode for borders and rules.** All boxed regions and horizontal rules use the same rendering approach across the screen — CSS borders styled to evoke CP437 weight (`3px double` for primary containers, `1px solid` for nested or rules). Do NOT mix CSS-bordered and character-cell (`╔═╗ ║ ╚═╝` or `┌─┐ │ └─┘`) borders within the app — that mismatch is a v0.1.x bug. Double vs single line weight is preserved as a visual register; the character-cell approach has been retired because fixed 78ch rules overflowed dynamic columns.
 
 ### Brand & content voice
 12. **STIGMERGY name visible.** The product name "STIGMERGY" appears in the banner area or status bar. The name "BBS Blackboard" should NOT appear in user-facing copy (internal-only term).

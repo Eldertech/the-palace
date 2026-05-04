@@ -2,8 +2,6 @@ import { test, expect } from '@playwright/test';
 
 async function gotoDemoBoard(page) {
   await page.goto('/?demo=1');
-  await expect(page.getByTestId('login-banner')).toBeVisible({ timeout: 10_000 });
-  await page.getByRole('button', { name: /lurk/i }).click();
   await expect(page.getByTestId('channel-tabs')).toBeVisible({ timeout: 15_000 });
 }
 

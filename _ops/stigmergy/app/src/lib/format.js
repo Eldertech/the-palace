@@ -74,3 +74,54 @@ export function padCell(value, width) {
   if (width <= 2) return s.slice(0, width);
   return s.slice(0, width - 2) + '..';
 }
+
+// Parse a string for markdown link syntax [text](url) and bare URLs
+// (computer://, http://, https://). Returns an array of segments where each
+// segment is either { type: 'text', value } or { type: 'link', text, url }.
+//
+// Markdown links are preferred when the URL or display text contains spaces
+// (e.g. computer:/// paths with spaces); the [text](url) syntax bounds the
+// URL cleanly. Bare URLs are auto-detected as a fallback but only when they
+// contain no whitespace.
+//
+// This is intentionally minimal: no support for nested brackets in link text,
+// no escape sequences, no other markdown. The goal is clickable links in
+// rationale prose, not full markdown rendering.
+export function parseLinks(text) {
+  if (typeof text !== 'string' || !text) {
+    return [{ type: 'text', value: text == null ? '' : String(text) }];
+  }
+  const parts = [];
+  // Combined regex: markdown [text](url) OR bare URL.
+  // Bare URL schemes recognized: obsidian://, computer://, http(s)://, file://.
+  // - obsidian:// — palace files, opens in Obsidian (the canonical scheme for palace links)
+  // - computer:// — Cowork chat surface only; included so messages authored for chat
+  //   still parse, but they will not click in Chrome
+  // - http(s):// — standard web links
+  // - file:// — direct filesystem URL (browser security may block)
+  const re = /\[([^\]]+)\]\(([^)]+)\)|(obsidian:\/\/\S+|computer:\/\/[^\s\n]+|https?:\/\/\S+|file:\/\/\S+)/g;
+  let lastIndex = 0;
+  let match;
+  while ((match = re.exec(text)) !== null) {
+    if (match.index > lastIndex) {
+      parts.push({ type: 'text', value: text.slice(lastIndex, match.index) });
+    }
+    if (match[1] !== undefined) {
+      // Markdown link.
+      parts.push({ type: 'link', text: match[1], url: match[2] });
+    } else if (match[3] !== undefined) {
+      // Bare URL — trim trailing sentence punctuation.
+      const trailing = match[3].match(/[.,;:!?)]+$/);
+      const url = trailing ? match[3].slice(0, -trailing[0].length) : match[3];
+      parts.push({ type: 'link', text: url, url });
+      if (trailing) {
+        parts.push({ type: 'text', value: trailing[0] });
+      }
+    }
+    lastIndex = re.lastIndex;
+  }
+  if (lastIndex < text.length) {
+    parts.push({ type: 'text', value: text.slice(lastIndex) });
+  }
+  return parts.length > 0 ? parts : [{ type: 'text', value: text }];
+}

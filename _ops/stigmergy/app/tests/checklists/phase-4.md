@@ -22,12 +22,12 @@ Each message displays its `health` block (context_pct, model, score). Score colo
 10. **Trend display for climbing context.** If any agent has 3+ messages with rising `context_pct`, the inline trend (e.g., `18% ↗ 34% ↗ 61%`) appears. NO chart library — just numbers and arrow glyphs. If no climbing trend exists in the data, mark `n/a`.
 
 ### Layout integrity
-11. **Two-pane layout respects the grid.** Message list and roster pane each respect monospace columns. Combined width ≤ 120ch (per design-system rule).
-12. **80ch maintained on the message column.** Even with the roster on the side, the message column still respects an 80ch (or visually equivalent) max-width for body text.
+11. **Two-pane layout fills the viewport.** Message list and roster pane together expand to use the full viewport width — no fixed combined-width cap. Both panes scale up on a wide window; both stay legible on a narrow one.
+12. **Per-message body still caps at ~78ch for readability.** Even though the surrounding column may be much wider than 78ch on a wide window, individual message body text wraps at ~78ch (the long-line readability rule). Message bodies appear left-aligned within a wider card; the empty space to the right is intentional.
 
 ### Visual non-negotiables maintained
 13. **Phosphor / terminal-black palette intact.** Health colors are the only new non-phosphor accents; no other colors introduced.
-14. **CP437 borders aligned.** If the roster panel is drawn with box-drawing characters, alignment is exact.
+14. **Single rendering mode for borders and rules.** The roster panel's `AGENTS · N` rule and any cards in the message list use the same CSS-border approach as the rest of the page. The rule fills its column exactly — no overflow into the message column, no clipped underflow. Double vs single line weight signals nesting (CSS `3px double` for primary containers, `1px solid` for rules and nested cards). No character-cell `═══` or `───` rule fragments rendered as text.
 15. **No rounded corners.**
 16. **Monospace everywhere.**
 17. **No emoji.**

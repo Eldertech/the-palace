@@ -32,7 +32,7 @@ A read-only Trickster inbox surface for pending RESOURCE_REQUESTs. The algorithm
 
 ### Visual non-negotiables maintained
 12. **Phosphor / amber / red palette only.** Inbox uses phosphor for primary, amber for FLAGS-style highlights, red for blocking flags or denies, cyan for handles. No off-palette colors.
-13. **CP437 borders aligned.** Inbox cards use box-drawing characters with exact alignment.
+13. **Single rendering mode for borders and rules.** Inbox cards (single-line CSS-bordered boxes per pending request), the `TRICKSTER INBOX · N pending` rule above them, and the title-bar inside each card all use the same CSS-border approach as the rest of the app. Rule lines fill the inbox column exactly — no overflow into the agents sidebar, no underflow short of the column edge. No character-cell `═══` or `───` rule fragments rendered as text.
 14. **No rounded corners.**
 15. **Monospace everywhere.**
 16. **No emoji.**

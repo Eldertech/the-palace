@@ -48,8 +48,8 @@ For ALL screenshots, verify:
 
 ### Shape
 16. **`border-radius: 0` everywhere.** No rounded corners in any view.
-17. **CP437 box-drawing aligned across all views.** No broken joints in any rendered card.
-18. **80ch max-width on all body text.** No wrapping past 80 columns.
+17. **Single rendering mode for borders and rules across all views.** Every box, panel, and horizontal rule on every screenshot uses the same CSS-border rendering approach. No view contains character-cell ASCII rule fragments (`═══`, `───`) rendered as text alongside CSS-bordered cards. Rules and box edges fill their containers exactly; no rule overflows its column or stops short of the column edge. Double vs single line weight is preserved as a visual register (CSS `3px double` vs `1px solid`).
+18. **Per-message body wraps at ~78ch for readability.** Long lines of message body text break at ~78ch even when the containing card is wider — that's the line-length readability rule, separate from page width. The page itself fills the viewport (see #22).
 
 ### Voice
 19. **Lowercase body, UPPERCASE system.** Consistent across all views.
@@ -57,7 +57,7 @@ For ALL screenshots, verify:
 21. **No emoji anywhere.** Sweep all screenshots — zero emoji.
 
 ### Layout
-22. **Two-pane layouts respect 120ch combined width.** No overflow.
+22. **Page fills the viewport.** The board screen has no max-width cap — content (status bar, board title, channel tabs, message list + agents pane, command bar) all expand to use the full viewport width on a wide window. Empty letterboxing on either side of the content is a fail.
 23. **No drop shadows.** No box-shadows on any element. CRT bloom (text-shadow) on text is allowed.
 
 ## Smell test (the most important item)

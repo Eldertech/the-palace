@@ -4,8 +4,6 @@ const BOARDS = ['GENERAL', 'FLAGS', 'WEAVE', 'SYSTEM', 'TRICKSTER', 'BRANCHES'];
 
 async function gotoBoard(page) {
   await page.goto('/?demo=1');
-  await expect(page.getByTestId('login-banner')).toBeVisible({ timeout: 10_000 });
-  await page.getByRole('button', { name: /lurk/i }).click();
   await expect(page.getByTestId('channel-tabs')).toBeVisible({ timeout: 15_000 });
 }
 
@@ -50,8 +48,6 @@ test('hotkey 1..6 switches channels', async ({ page }) => {
 test('an empty board shows the documented empty-state copy', async ({ page }) => {
   // Without ?demo=1, most boards are empty against the real palace.
   await page.goto('/');
-  await expect(page.getByTestId('login-banner')).toBeVisible({ timeout: 10_000 });
-  await page.getByRole('button', { name: /lurk/i }).click();
   await expect(page.getByTestId('channel-tabs')).toBeVisible({ timeout: 15_000 });
   // GENERAL is unlikely to have real data; click it.
   await page.getByTestId('tab-general').click();
