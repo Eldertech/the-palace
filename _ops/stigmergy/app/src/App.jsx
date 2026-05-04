@@ -28,6 +28,12 @@ export default function App() {
   const [scanlinesOn, setScanlinesOn] = useState(true);
 
   const [messages, setMessages] = useState([]);
+  // Optimistic responses: persisted messages from the click-to-respond flow
+  // since the last full reload. Merged into the canonical messages array
+  // for ALL derived state — counts, filters, inbox, tab badges — so the UI
+  // updates immediately on confirm. Phase 5 SSE will also push the same
+  // message, and live-feed.mergeLive dedupes by id.
+  const [optimistic, setOptimistic] = useState([]);
   const [sessions, setSessions] = useState([]);
   const [loadState, setLoadState] = useState('idle');
   const [loadError, setLoadError] = useState(null);
@@ -52,6 +58,9 @@ export default function App() {
         ? [...validateAll(DEMO_MESSAGES), ...real]
         : real;
       setMessages(combined);
+      // A fresh reload subsumes any optimistic state — the persisted
+      // messages are now in the canonical set.
+      setOptimistic([]);
       setSessions(sessionList.sessions || []);
       setLoadedAt(new Date().toISOString());
       setLoadState('ok');
@@ -84,26 +93,36 @@ export default function App() {
     return () => window.removeEventListener('keydown', onKey);
   }, [loadAll]);
 
-  const totalFlagged = messages.filter((m) => Array.isArray(m._warnings) && m._warnings.length > 0).length;
+  // Canonical view: persisted messages plus any optimistic responses
+  // posted in this session but not yet covered by a reload. Dedup by id
+  // so a reload-then-optimistic edge case doesn't double-count.
+  const visibleMessages = useMemo(() => {
+    if (optimistic.length === 0) return messages;
+    const seen = new Set(messages.map((m) => m.id).filter(Boolean));
+    const extra = optimistic.filter((m) => !seen.has(m.id));
+    return extra.length === 0 ? messages : [...messages, ...extra];
+  }, [messages, optimistic]);
+
+  const totalFlagged = visibleMessages.filter((m) => Array.isArray(m._warnings) && m._warnings.length > 0).length;
 
   // Counts per board (for tab badges) and the currently visible filtered set.
   const counts = useMemo(() => {
     const out = {};
     for (const b of BOARDS) out[b] = 0;
-    for (const m of messages) if (m.board && BOARDS.includes(m.board)) out[m.board] += 1;
+    for (const m of visibleMessages) if (m.board && BOARDS.includes(m.board)) out[m.board] += 1;
     return out;
-  }, [messages]);
+  }, [visibleMessages]);
 
   const filtered = useMemo(
-    () => messages.filter((m) =>
+    () => visibleMessages.filter((m) =>
       m.board === activeBoard && (agentFilter == null || m.from === agentFilter)
     ),
-    [messages, activeBoard, agentFilter]
+    [visibleMessages, activeBoard, agentFilter]
   );
 
   // Pending Trickster requests (RESOURCE_REQUESTs without a matching response).
   const pendingTrickster = useMemo(() => {
-    const trickster = messages.filter((m) => m.board === 'TRICKSTER');
+    const trickster = visibleMessages.filter((m) => m.board === 'TRICKSTER');
     const responded = new Set();
     for (const m of trickster) {
       if ((m.type === 'RESOURCE_GRANT' || m.type === 'RESOURCE_DENY') && m.re) {
@@ -111,7 +130,14 @@ export default function App() {
       }
     }
     return trickster.filter((m) => m.type === 'RESOURCE_REQUEST' && !responded.has(m.request_id)).length;
-  }, [messages]);
+  }, [visibleMessages]);
+
+  const handleOptimisticAppend = useCallback((persistedMessage) => {
+    setOptimistic((prev) => {
+      if (prev.some((m) => m.id === persistedMessage.id)) return prev;
+      return [...prev, persistedMessage];
+    });
+  }, []);
 
   const cmds = [
     { key: 'R', label: 'reload' },
@@ -156,7 +182,7 @@ export default function App() {
             [<b style={{ color: 'var(--phosphor-white)' }}>R</b>]&nbsp;RELOAD
           </span>
           <span style={{ color: 'var(--phosphor-dim)', textShadow: 'none', marginLeft: 16 }}>
-            (or press R · file is the truth, edit _ops/swarm/persistent/blackboard.jsonl directly)
+            (or press R)
           </span>
         </div>
 
@@ -200,7 +226,12 @@ export default function App() {
                   filtered by @{agentFilter} · click to clear
                 </div>
               )}
-              {activeBoard === 'TRICKSTER' && <TricksterInbox messages={messages} />}
+              {activeBoard === 'TRICKSTER' && (
+                <TricksterInbox
+                  messages={visibleMessages}
+                  onConfirmed={handleOptimisticAppend}
+                />
+              )}
               <MessageList
                 messages={filtered}
                 sessionsEmpty={sessions.length === 0}
@@ -208,7 +239,7 @@ export default function App() {
               />
             </div>
             <AgentRoster
-              messages={messages}
+              messages={visibleMessages}
               activeFilter={agentFilter}
               onSelect={setAgentFilter}
             />

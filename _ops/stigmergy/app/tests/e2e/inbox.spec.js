@@ -24,31 +24,34 @@ test('without demo data and against an empty TRICKSTER board, inbox shows the em
   await expect(page.getByTestId('inbox-empty')).toBeVisible();
 });
 
-test('inbox shows the EDIT-the-file caption (read-only v0.1)', async ({ page }) => {
+// v0.2: edit-caption is REMOVED. The file-edit path is no longer the canonical UI affordance.
+test('inbox does NOT show the read-only edit-file caption (v0.2 interactive)', async ({ page }) => {
   await gotoBoard(page, true);
-  await expect(page.getByTestId('inbox-edit-caption'))
-    .toContainText('EDIT _ops/swarm/persistent/blackboard.jsonl TO RESPOND');
+  // inbox-edit-caption was removed in v0.2 Phase 4.
+  await expect(page.getByTestId('inbox-edit-caption')).not.toBeVisible();
 });
 
-test('inbox response options are listed as text, not interactive controls', async ({ page }) => {
+// v0.2: response options are interactive buttons, not a static list.
+test('inbox response options are interactive buttons (v0.2)', async ({ page }) => {
   await gotoBoard(page, true);
   const optsBlock = page.getByTestId('inbox-response-options').first();
   await expect(optsBlock).toBeVisible();
-  // The options are inside a <ul>; ensure no <button> lives in there.
+  // Each option is now a <button>.
   const buttons = await optsBlock.locator('button').count();
-  expect(buttons).toBe(0);
+  expect(buttons).toBeGreaterThan(0);
 });
 
 test('the inbox item displays agent metadata: from, ts, resource, blocking, agent_health, ctx', async ({ page }) => {
   await gotoBoard(page, true);
   const item = page.getByTestId('inbox-pending-item').first();
   const text = await item.textContent();
-  expect(text).toMatch(/from: @/);
-  expect(text).toMatch(/ts:/);
-  expect(text).toMatch(/resource:/);
-  expect(text).toMatch(/blocking:/);
+  // Labels are padLabel-formatted (padded to 9 chars) so match with \s* between label and colon.
+  expect(text).toMatch(/from\s*:\s*@/);
+  expect(text).toMatch(/ts\s*:/);
+  expect(text).toMatch(/resource\s*:/);
+  expect(text).toMatch(/blocking\s*:/);
   expect(text).toMatch(/ctx \d+%/);
-  expect(text).toMatch(/status:/);
+  expect(text).toMatch(/status\s*:/);
 });
 
 test('TRICKSTER tab shows pending counter on demo (and not without it)', async ({ page }) => {
@@ -57,6 +60,6 @@ test('TRICKSTER tab shows pending counter on demo (and not without it)', async (
 
   await page.goto('/');
   await expect(page.getByTestId('channel-tabs')).toBeVisible();
-  // Without ?demo=1, no pending → no PENDING badge.
+  // Without ?demo=1, no pending -- no PENDING badge.
   await expect(page.getByTestId('tab-trickster')).not.toContainText('PENDING');
 });

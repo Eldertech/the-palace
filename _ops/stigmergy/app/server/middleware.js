@@ -159,7 +159,11 @@ async function handlePost(bodyText, filePath, res) {
 
 // ── SSE helper ───────────────────────────────────────────────────────────────
 
-const SSE_HEARTBEAT_MS = parseInt(process.env.STIGMERGY_SSE_HEARTBEAT_MS ?? '25000', 10);
+// Read lazily at call time so test files can set the env var before creating
+// a server without racing against module-level evaluation.
+function getSseHeartbeatMs() {
+  return parseInt(process.env.STIGMERGY_SSE_HEARTBEAT_MS ?? '25000', 10);
+}
 
 /**
  * Read all parseable JSONL messages from `filePath`.
@@ -225,7 +229,7 @@ function setupSseStream(req, res, filePath) {
   // Heartbeat to keep proxies / NAT from closing the connection.
   const heartbeatInterval = setInterval(() => {
     res.write(': heartbeat\n\n');
-  }, SSE_HEARTBEAT_MS);
+  }, getSseHeartbeatMs());
 
   // Confirm connection after setup (even if no replay).
   res.write(': connected\n\n');

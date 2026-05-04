@@ -33,13 +33,14 @@ test('health-block format includes context %, model, and score tokens', async ({
 });
 
 test('messages without a health block render the [no health] placeholder', async ({ page }) => {
-  // Real palace audit-dump messages have no health block. Navigate to FLAGS
-  // where some real-palace messages with `board: FLAGS` live.
-  await page.goto('/');
+  // demo-no-health is a FLAGS-board demo entry with the health field
+  // intentionally omitted. The v0.1 historical messages that lacked
+  // health were cleaned from the persistent board on 2026-05-04, so the
+  // demo set carries the regression coverage going forward.
+  await page.goto('/?demo=1');
   await expect(page.getByTestId('channel-tabs')).toBeVisible({ timeout: 15_000 });
   await page.getByTestId('tab-flags').click();
   await expect(page.getByTestId('message-row').first()).toBeVisible({ timeout: 10_000 });
-  // At least one health-block on FLAGS should be the placeholder.
   const noneHealth = page.locator('[data-testid="health-block"][data-score="none"]');
   expect(await noneHealth.count()).toBeGreaterThan(0);
 });

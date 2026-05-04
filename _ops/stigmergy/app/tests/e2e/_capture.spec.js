@@ -2,7 +2,7 @@
 // Reads STIGMERGY_PHASE from env to know which phase's captures to take.
 // File starts with `_` so it sorts first; check-phase.js explicitly runs it.
 
-import { test } from '@playwright/test';
+import { test, expect } from '@playwright/test';
 import { mkdirSync } from 'node:fs';
 import { resolve } from 'node:path';
 
@@ -69,13 +69,69 @@ test.describe(`phase ${PHASE} captures`, () => {
   }
 
   if (PHASE === '4') {
-    test('with-roster.png', async ({ page }) => {
+    // Phase 4 v0.2: click-to-respond UI captures.
+    // Uses the phase-4-v0.2/ subdirectory (created by check-phase.js).
+
+    test('phase-4-v0.2/inbox-pending.png', async ({ page }) => {
       await page.goto('/?demo=1');
-      await page.getByTestId('agent-roster').waitFor({ timeout: 15_000 });
+      await page.getByTestId('channel-tabs').waitFor({ timeout: 15_000 });
       await preloadFonts(page);
       await page.getByTestId('tab-trickster').click();
+      await page.getByTestId('trickster-inbox').waitFor({ timeout: 5_000 });
       await page.waitForTimeout(200);
-      await page.screenshot({ path: shotPath('with-roster.png'), fullPage: false });
+      const dir = resolve(`screenshots/phase-4-v0.2`);
+      mkdirSync(dir, { recursive: true });
+      await page.screenshot({ path: resolve(dir, 'inbox-pending.png'), fullPage: false });
+    });
+
+    test('phase-4-v0.2/inbox-modal-preview.png', async ({ page }) => {
+      await page.goto('/?demo=1');
+      await page.getByTestId('channel-tabs').waitFor({ timeout: 15_000 });
+      await preloadFonts(page);
+      await page.getByTestId('tab-trickster').click();
+      await page.getByTestId('trickster-inbox').waitFor({ timeout: 5_000 });
+      // Open the modal for the first pending item, first option (Grant -- limited).
+      const firstItem = page.getByTestId('inbox-pending-item').first();
+      const firstBtn = firstItem.getByTestId('inbox-response-options').locator('button').first();
+      await firstBtn.click();
+      await page.getByTestId('response-modal').waitFor({ timeout: 3_000 });
+      await page.waitForTimeout(200);
+      const dir = resolve(`screenshots/phase-4-v0.2`);
+      mkdirSync(dir, { recursive: true });
+      await page.screenshot({ path: resolve(dir, 'inbox-modal-preview.png'), fullPage: false });
+    });
+
+    test('phase-4-v0.2/inbox-after-respond.png', async ({ page }) => {
+      // Clear the demo session so we start fresh.
+      const { writeFileSync, mkdirSync: mkd } = await import('node:fs');
+      const { resolve: res2 } = await import('node:path');
+      const { fileURLToPath: ftu } = await import('node:url');
+      const { dirname: dn } = await import('node:path');
+      const __f = ftu(import.meta.url);
+      const appRoot = res2(dn(__f), '../..');
+      const palaceRoot = res2(appRoot, '../../../..');
+      const sessionDir = res2(palaceRoot, '_ops/swarm/sessions/demo-2026-05-02');
+      mkd(sessionDir, { recursive: true });
+      writeFileSync(res2(sessionDir, 'blackboard.jsonl'), '', 'utf8');
+
+      await page.goto('/?demo=1');
+      await page.getByTestId('channel-tabs').waitFor({ timeout: 15_000 });
+      await preloadFonts(page);
+      await page.getByTestId('tab-trickster').click();
+      await page.getByTestId('trickster-inbox').waitFor({ timeout: 5_000 });
+
+      // Open and confirm the modal for the first pending item.
+      const firstItem = page.getByTestId('inbox-pending-item').first();
+      const firstBtn = firstItem.getByTestId('inbox-response-options').locator('button').first();
+      await firstBtn.click();
+      await page.getByTestId('response-modal').waitFor({ timeout: 3_000 });
+      await page.getByTestId('response-modal').getByRole('button', { name: /^confirm/i }).click();
+      await expect(page.getByTestId('response-modal')).not.toBeVisible({ timeout: 8_000 });
+      await page.waitForTimeout(300);
+
+      const dir = resolve(`screenshots/phase-4-v0.2`);
+      mkdirSync(dir, { recursive: true });
+      await page.screenshot({ path: resolve(dir, 'inbox-after-respond.png'), fullPage: false });
     });
   }
 

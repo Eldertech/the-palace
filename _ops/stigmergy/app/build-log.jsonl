@@ -64,3 +64,12 @@
 {"ts":"2026-05-04T13:12:40.874Z","phase":3,"label":"Read Path (SSE)","action":"gate-start"}
 {"ts":"2026-05-04T13:12:47.551Z","phase":3,"action":"gate-end","outcome":"pass","stage":"tests+captures"}
 {"ts":"2026-05-04T13:12:51.598Z","phase":3,"role":"sse-builder","attempt":1,"check":"check-phase.js 3","result":"pass","detail":"live-feed: 16 tests, sse-middleware: 10 tests, full suite: 260 tests, exit 0"}
+{"ts":"2026-05-04T13:36:24.846Z","phase":4,"label":"Click-to-Respond UI","action":"gate-start"}
+{"ts":"2026-05-04T13:36:28.023Z","phase":4,"action":"gate-end","outcome":"fail","stage":"vitest"}
+{"ts":"2026-05-04T13:37:18.508Z","phase":4,"label":"Click-to-Respond UI","action":"gate-start"}
+{"ts":"2026-05-04T13:38:18.622Z","phase":4,"action":"gate-end","outcome":"fail","stage":"playwright"}
+{"ts":"2026-05-04T13:39:53.790Z","phase":4,"label":"Click-to-Respond UI","action":"gate-end","outcome":"partial-pass","stage":"playwright","notes":"All Phase 4 new tests pass (click-to-respond.spec.js 7/7, inbox.spec.js 7/7 updated). Pre-existing failures: data.spec.js:25 (flagged-messages test depends on real palace data having schema-noncompliant entries) and health.spec.js 4/4 (health-block tests depend on real palace data format). These failures pre-existed in Phase 3 git state (confirmed by git stash test). Unit tests: 265/265 passing (was 260, +5 new). SSE heartbeat flaky test: fixed by lazy env-var read in middleware."}
+{"ts":"2026-05-04T13:44:22.278Z","phase":4,"label":"Click-to-Respond UI","action":"gate-start"}
+{"ts":"2026-05-04T13:44:43.377Z","phase":4,"action":"gate-end","outcome":"pass","stage":"tests+captures"}
+{"ts":"2026-05-04T13:54:00.179Z","phase":4,"label":"Click-to-Respond UI","action":"gate-start"}
+{"ts":"2026-05-04T13:54:19.886Z","phase":4,"action":"gate-end","outcome":"pass","stage":"tests+captures"}
