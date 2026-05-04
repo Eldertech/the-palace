@@ -6,12 +6,14 @@
 //   GET  /api/sessions/:id         — _ops/swarm/sessions/:id/blackboard.jsonl
 //   POST /api/persistent           — append one §2.2-conformant message
 //   POST /api/sessions/:id         — append to that session's blackboard.jsonl
+//   GET  /api/persistent/stream    — SSE stream for persistent blackboard
+//   GET  /api/sessions/:id/stream  — SSE stream for a session blackboard
 //
 // The palace root is derived from PALACE_ROOT env var if set; otherwise
 // from a default path resolved from the app/ directory at import time.
 // Tests pass an explicit `palaceRoot` to avoid env-var coupling.
 
-import { readFileSync, existsSync, statSync, readdirSync, mkdirSync } from 'node:fs';
+import { readFileSync, existsSync, statSync, readdirSync, mkdirSync, watch } from 'node:fs';
 import { resolve, join } from 'node:path';
 import { parseJSONL } from '../src/lib/parser.js';
 import { validateMessage } from './validator.js';
@@ -155,6 +157,109 @@ async function handlePost(bodyText, filePath, res) {
   return jsonResponse(res, 200, { ok: true, line });
 }
 
+// ── SSE helper ───────────────────────────────────────────────────────────────
+
+const SSE_HEARTBEAT_MS = parseInt(process.env.STIGMERGY_SSE_HEARTBEAT_MS ?? '25000', 10);
+
+/**
+ * Read all parseable JSONL messages from `filePath`.
+ * Returns [] if the file doesn't exist.
+ */
+function readJsonlMessages(filePath) {
+  if (!existsSync(filePath)) return [];
+  const text = readFileSync(filePath, 'utf8');
+  const { messages } = parseJSONL(text);
+  return messages;
+}
+
+/**
+ * Write SSE headers on `res`.
+ */
+function writeSseHeaders(res) {
+  res.setHeader('Content-Type', 'text/event-stream');
+  res.setHeader('Cache-Control', 'no-cache, no-transform');
+  res.setHeader('Connection', 'keep-alive');
+  res.setHeader('X-Accel-Buffering', 'no');
+}
+
+/**
+ * Emit one SSE frame for a single message object.
+ */
+function emitMessage(res, msg) {
+  const id = msg.id ?? '';
+  res.write(`id: ${id}\nevent: message\ndata: ${JSON.stringify(msg)}\n\n`);
+}
+
+/**
+ * Core SSE setup for a single blackboard file.
+ *
+ * - Reads the current file, populates seenIds (does NOT emit initial messages
+ *   unless Last-Event-ID is supplied, in which case replays messages with
+ *   id > lastEventId using lexicographic order).
+ * - Watches the file for changes, emitting only new messages (by id).
+ * - Emits a heartbeat comment every SSE_HEARTBEAT_MS ms.
+ * - Cleans up watcher + interval on req close.
+ *
+ * @param {import('node:http').IncomingMessage} req
+ * @param {import('node:http').ServerResponse}  res
+ * @param {string} filePath — absolute path to the .jsonl file
+ */
+function setupSseStream(req, res, filePath) {
+  writeSseHeaders(res);
+
+  const lastEventId = req.headers['last-event-id'] ?? null;
+  const seenIds = new Set();
+
+  // Seed seenIds from current file contents; optionally replay on reconnect.
+  const initialMessages = readJsonlMessages(filePath);
+  for (const msg of initialMessages) {
+    if (msg.id !== undefined) {
+      if (lastEventId !== null && msg.id > lastEventId) {
+        // Replay: this message arrived after the client's last known id.
+        emitMessage(res, msg);
+      }
+      seenIds.add(msg.id);
+    }
+  }
+
+  // Heartbeat to keep proxies / NAT from closing the connection.
+  const heartbeatInterval = setInterval(() => {
+    res.write(': heartbeat\n\n');
+  }, SSE_HEARTBEAT_MS);
+
+  // Confirm connection after setup (even if no replay).
+  res.write(': connected\n\n');
+
+  // Watch the file for new messages.
+  let watcher = null;
+  if (existsSync(filePath)) {
+    try {
+      watcher = watch(filePath, { persistent: false }, () => {
+        const messages = readJsonlMessages(filePath);
+        for (const msg of messages) {
+          if (msg.id !== undefined && !seenIds.has(msg.id)) {
+            seenIds.add(msg.id);
+            emitMessage(res, msg);
+          }
+        }
+      });
+    } catch (err) {
+      // If watch fails (e.g. file was removed mid-flight), log and continue.
+      console.warn('[stigmergy] SSE watcher error:', err.message);
+    }
+  }
+
+  // Cleanup on disconnect.
+  req.on('close', () => {
+    clearInterval(heartbeatInterval);
+    if (watcher) {
+      try { watcher.close(); } catch (_) {}
+      watcher = null;
+    }
+    res.end();
+  });
+}
+
 // Vite plugin factory.
 export function blackboardMiddleware(palaceRoot) {
   return {
@@ -166,6 +271,13 @@ export function blackboardMiddleware(palaceRoot) {
         const [urlPath, queryString] = rawUrl.split('?');
         const query = new URLSearchParams(queryString || '');
         const method = (req.method || 'GET').toUpperCase();
+
+        // ── GET /api/persistent/stream (SSE) ───────────────────────────────
+        if (urlPath === '/api/persistent/stream' && method === 'GET') {
+          const filePath = resolve(palaceRoot, PERSISTENT_REL);
+          setupSseStream(req, res, filePath);
+          return; // response owned by SSE handler
+        }
 
         // ── GET /api/persistent ─────────────────────────────────────────────
         if (urlPath === '/api/persistent' && method === 'GET') {
@@ -190,6 +302,24 @@ export function blackboardMiddleware(palaceRoot) {
         // ── GET /api/sessions ───────────────────────────────────────────────
         if (urlPath === '/api/sessions' && method === 'GET') {
           return jsonResponse(res, 200, listSessions(palaceRoot));
+        }
+
+        // ── GET /api/sessions/:id/stream (SSE) ─────────────────────────────
+        const mStream = urlPath.match(/^\/api\/sessions\/([^/]+)\/stream$/);
+        if (mStream && method === 'GET') {
+          const id = mStream[1];
+          // Path traversal guard.
+          if (typeof id !== 'string' || /[/\\]|\.\./.test(id)) {
+            return jsonResponse(res, 400, { error: 'invalid session id', id });
+          }
+          const filePath = resolve(palaceRoot, SESSIONS_REL, id, 'blackboard.jsonl');
+          // If file doesn't exist: 404. (Chosen over "wait-and-watch" for simplicity;
+          // see Phase 3 build report for rationale.)
+          if (!existsSync(filePath)) {
+            return jsonResponse(res, 404, { error: 'session not found', id });
+          }
+          setupSseStream(req, res, filePath);
+          return; // response owned by SSE handler
         }
 
         // ── /api/sessions/:id ───────────────────────────────────────────────
