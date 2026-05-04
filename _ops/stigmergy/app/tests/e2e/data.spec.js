@@ -23,10 +23,11 @@ test('the API endpoint returns shaped data', async ({ request }) => {
 });
 
 test('flagged messages render with a red border (data-flagged="true")', async ({ page }) => {
-  // Real palace FLAG-shaped messages (the TRICKSTER-ARTIFACT entries) live
-  // on the FLAGS board but lack `schema_version` / `session_id` and use
-  // a date-only ts — they should render flagged.
-  await page.goto('/');
+  // Demo data carries demo-flagged-1 (intentionally lacks schema_version /
+  // session_id / health) on the FLAGS board so the lenient-render warning
+  // path can be exercised. The v0.1 historical fixtures that lived in real
+  // palace data were deleted 2026-05-04; demo data carries the regression.
+  await page.goto('/?demo=1');
   await expect(page.getByTestId('channel-tabs')).toBeVisible({ timeout: 15_000 });
   await page.getByTestId('tab-flags').click();
   await expect(page.getByTestId('message-row').first()).toBeVisible({ timeout: 10_000 });

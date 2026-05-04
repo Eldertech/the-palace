@@ -48,7 +48,7 @@ export function buildResponse({ request, decision, constraints, sessionId }) {
     to: request.from,
     type,
     board: 'TRICKSTER',
-    re: request.id,
+    re: request.request_id ?? request.id,
     health: {
       context_pct: 0,
       stop_reason: 'human_decision',

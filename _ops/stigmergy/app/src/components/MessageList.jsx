@@ -90,14 +90,21 @@ function MessageRow({ msg }) {
     ['board', msg.board || '—'],
   ];
   if (isReply && msg.re) metaLines.push(['re', msg.re]);
-  if (msg.health) {
+  // Health is rendered as a metaLine for layout consistency, but the value
+  // gets a data-testid="health-block" wrapper so e2e tests and downstream
+  // tools can find it. Score is exposed as data-score; "none" when missing.
+  const hasHealth = msg.health && typeof msg.health === 'object';
+  const healthScoreAttr = hasHealth ? (typeof msg.health.score === 'string' && msg.health.score ? msg.health.score : '—') : 'none';
+  const healthValue = hasHealth ? (() => {
     const h = msg.health;
     const parts = [];
-    if (h.score) parts.push(h.score);
-    if (typeof h.context_pct === 'number') parts.push(`ctx ${Math.round(h.context_pct * 100)}%`);
-    if (h.model) parts.push(h.model);
-    if (parts.length > 0) metaLines.push(['health', parts.join(' · ')]);
-  }
+    const ctx = typeof h.context_pct === 'number' ? `ctx ${Math.round(h.context_pct * 100)}%` : 'ctx —';
+    parts.push(ctx);
+    parts.push(typeof h.model === 'string' && h.model ? h.model : '—');
+    parts.push(typeof h.score === 'string' && h.score ? h.score : '—');
+    return `[${parts.join(' · ')}]`;
+  })() : '[no health]';
+  metaLines.push(['health', { kind: 'health', text: healthValue, score: healthScoreAttr }]);
   if (flagged) metaLines.push(['flags', `! ${msg._warnings.length} warning${msg._warnings.length > 1 ? 's' : ''}`]);
 
   return (
@@ -123,10 +130,21 @@ function MessageRow({ msg }) {
           {metaLines.map(([k, v]) => (
             <div key={k}>
               <span>{padLabel(k)}: </span>
-              <span style={{
-                color: k === 'flags' ? 'var(--error)' : 'var(--phosphor)',
-                textShadow: k === 'flags' ? 'var(--glow)' : 'var(--glow)',
-              }}>{v}</span>
+              {v && typeof v === 'object' && v.kind === 'health' ? (
+                <span
+                  data-testid="health-block"
+                  data-score={v.score}
+                  style={{
+                    color: v.score === 'none' || v.score === '—' ? 'var(--phosphor-dim)' : 'var(--phosphor)',
+                    textShadow: v.score === 'none' || v.score === '—' ? 'none' : 'var(--glow)',
+                  }}
+                >{v.text}</span>
+              ) : (
+                <span style={{
+                  color: k === 'flags' ? 'var(--error)' : 'var(--phosphor)',
+                  textShadow: 'var(--glow)',
+                }}>{v}</span>
+              )}
             </div>
           ))}
         </div>

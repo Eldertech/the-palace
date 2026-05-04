@@ -51,10 +51,10 @@ const PHASES = {
     screenshots: [],
   },
   4: {
-    label: 'Health Blocks and Agent Roster',
-    vitest: ['parser.test.js', 'schema.test.js', 'format.test.js', 'roster.test.js', 'middleware.test.js'],
-    playwright: ['boot.spec.js', 'tokens.spec.js', 'data.spec.js', 'tabs.spec.js', 'types.spec.js', 'health.spec.js', 'roster.spec.js'],
-    screenshots: ['phase-4/with-roster.png'],
+    label: 'Click-to-Respond UI',
+    vitest: ['validator.test.js', 'response-builder.test.js', 'post-middleware.test.js', 'live-feed.test.js', 'sse-middleware.test.js', 'parser.test.js', 'schema.test.js', 'middleware.test.js', 'format.test.js', 'roster.test.js', 'inbox.test.js'],
+    playwright: ['boot.spec.js', 'tokens.spec.js', 'data.spec.js', 'tabs.spec.js', 'types.spec.js', 'health.spec.js', 'roster.spec.js', 'inbox.spec.js', 'click-to-respond.spec.js'],
+    screenshots: ['phase-4-v0.2/inbox-pending.png', 'phase-4-v0.2/inbox-modal-preview.png', 'phase-4-v0.2/inbox-after-respond.png'],
   },
   5: {
     label: 'Trickster Inbox',

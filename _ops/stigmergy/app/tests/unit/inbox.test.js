@@ -92,6 +92,15 @@ describe('buildInbox', () => {
     expect(item.response_options.length).toBeGreaterThanOrEqual(4);
   });
 
+  test('Phase 4 fields: _message_id and _session_id are present on each pending item', () => {
+    const r = buildInbox([REQ('r-1', '2026-04-01T15:00:00Z')]);
+    const item = r.pending_requests[0];
+    // _message_id is the source message's own id (msg-r-1 from the REQ helper).
+    expect(item._message_id).toBe('msg-r-1');
+    // _session_id comes from the source message.
+    expect(item._session_id).toBe('s');
+  });
+
   test('agent_status "continuing" when blocking is false', () => {
     const r = buildInbox([REQ('r-1', '2026-04-01T15:00:00Z',
       { payload: { resource: 'web_search', rationale: 'r', blocking: false } })]);

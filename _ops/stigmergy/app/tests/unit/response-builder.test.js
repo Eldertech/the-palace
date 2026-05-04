@@ -3,6 +3,7 @@ import { buildResponse } from '../../src/lib/response-builder.js';
 import { validateMessage } from '../../server/validator.js';
 
 // A sample RESOURCE_REQUEST for all tests to use.
+// Uses only `id` (no `request_id`) — backward-compat shape.
 const SAMPLE_REQUEST = {
   schema_version: '1.0',
   id: 'req-abc123',
@@ -21,6 +22,15 @@ const SAMPLE_REQUEST = {
     score: 'yellow',
   },
   payload: { resource: 'context_window', amount: 10000 },
+};
+
+// A request with BOTH `id` (message id) and `request_id` (correlation id).
+// This is the Phase 4 shape — request_id lives at the top-level of the
+// RESOURCE_REQUEST message, separate from the message's own `id`.
+const SAMPLE_REQUEST_WITH_REQUEST_ID = {
+  ...SAMPLE_REQUEST,
+  id: 'msg-xyz789',        // message id — NOT the correlation id
+  request_id: 'req-abc123', // correlation id — the one `re:` must reference
 };
 
 describe('buildResponse — GRANT decision', () => {
@@ -45,7 +55,7 @@ describe('buildResponse — GRANT decision', () => {
     expect(out.to).toBe(SAMPLE_REQUEST.from);
   });
 
-  test('re is set to the request id', () => {
+  test('re falls back to message id when request_id is absent', () => {
     const out = buildResponse({ request: SAMPLE_REQUEST, decision: 'GRANT' });
     expect(out.re).toBe(SAMPLE_REQUEST.id);
   });
@@ -188,5 +198,31 @@ describe('buildResponse — ts', () => {
     const out = buildResponse({ request: SAMPLE_REQUEST, decision: 'GRANT' });
     // The validator accepts Z suffix.
     expect(out.ts).toMatch(/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}\.\d+Z$/);
+  });
+});
+
+describe('buildResponse — re: correlation (Phase 2 bug fix)', () => {
+  test('prefers request_id over message id when both are present', () => {
+    const out = buildResponse({ request: SAMPLE_REQUEST_WITH_REQUEST_ID, decision: 'GRANT' });
+    // Must correlate to the request_id, not the message id.
+    expect(out.re).toBe('req-abc123');
+    expect(out.re).not.toBe('msg-xyz789');
+  });
+
+  test('prefers request_id for DENY as well', () => {
+    const out = buildResponse({ request: SAMPLE_REQUEST_WITH_REQUEST_ID, decision: 'DENY' });
+    expect(out.re).toBe('req-abc123');
+  });
+
+  test('falls back to id when request_id is absent', () => {
+    // SAMPLE_REQUEST has no request_id; re: should fall back to id.
+    const out = buildResponse({ request: SAMPLE_REQUEST, decision: 'GRANT' });
+    expect(out.re).toBe(SAMPLE_REQUEST.id);
+  });
+
+  test('output is still §2.2-valid when request_id is used for re:', () => {
+    const out = buildResponse({ request: SAMPLE_REQUEST_WITH_REQUEST_ID, decision: 'GRANT' });
+    const result = validateMessage(out);
+    expect(result.valid, JSON.stringify(result)).toBe(true);
   });
 });
