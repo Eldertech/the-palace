@@ -18,12 +18,9 @@ test('the dev server boots and the page loads with no console errors', async ({ 
   await page.goto('/');
   await expect(page).toHaveTitle(/STIGMERGY/i);
 
-  // The login screen container is mounted
-  await expect(page.getByTestId('login-screen')).toBeVisible();
-
-  // The login flow boots in the "dialing" stage and progresses to the banner.
-  // We don't depend on exact timing — we just wait for the banner to appear.
-  await expect(page.getByTestId('login-banner')).toBeVisible({ timeout: 10_000 });
+  // The board screen mounts directly — no login gate.
+  await expect(page.getByTestId('board-screen')).toBeVisible({ timeout: 10_000 });
+  await expect(page.getByTestId('channel-tabs')).toBeVisible({ timeout: 10_000 });
 
   // Status bar is present in the chrome
   await expect(page.getByTestId('status-bar')).toBeVisible();

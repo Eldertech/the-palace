@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useCallback, useMemo } from 'react';
 import Shell from './components/Shell.jsx';
-import LoginScreen from './components/LoginScreen.jsx';
 import MessageList from './components/MessageList.jsx';
 import ChannelTabs from './components/ChannelTabs.jsx';
 import AgentRoster from './components/AgentRoster.jsx';
@@ -23,8 +22,6 @@ function isDemoMode() {
 }
 
 export default function App() {
-  const [screen, setScreen] = useState('login');
-  const [user, setUser] = useState(null);
   const [clock, setClock] = useState(formatNow());
   const [activeBoard, setActiveBoard] = useState('GENERAL');
   const [agentFilter, setAgentFilter] = useState(null);
@@ -66,12 +63,11 @@ export default function App() {
   }, [demo]);
 
   useEffect(() => {
-    if (screen === 'board') loadAll();
-  }, [screen, loadAll]);
+    loadAll();
+  }, [loadAll]);
 
-  // Hotkey support: 1-6 select boards, R reloads, V toggles scanlines, Q quits.
+  // Hotkey support: 1-6 select boards, R reloads, V toggles scanlines.
   useEffect(() => {
-    if (screen !== 'board') return;
     function onKey(e) {
       if (e.target && /input|textarea/i.test(e.target.tagName)) return;
       const k = e.key;
@@ -82,18 +78,11 @@ export default function App() {
         loadAll();
       } else if (k === 'v' || k === 'V') {
         setScanlinesOn((on) => !on);
-      } else if (k === 'q' || k === 'Q') {
-        setUser(null); setScreen('login');
       }
     }
     window.addEventListener('keydown', onKey);
     return () => window.removeEventListener('keydown', onKey);
-  }, [screen, loadAll]);
-
-  function handleLogin(handle) {
-    setUser(handle);
-    setScreen('board');
-  }
+  }, [loadAll]);
 
   const totalFlagged = messages.filter((m) => Array.isArray(m._warnings) && m._warnings.length > 0).length;
 
@@ -133,46 +122,25 @@ export default function App() {
     { key: '5', label: 'trickster' },
     { key: '6', label: 'branches' },
     { key: 'V', label: scanlinesOn ? 'visual off' : 'visual on' },
-    { key: 'Q', label: 'quit' },
   ];
 
   function handleCommand(k) {
     if (k === 'R') return loadAll();
     if (k === 'V') return setScanlinesOn((on) => !on);
-    if (k === 'Q') { setUser(null); setScreen('login'); return; }
     const idx = parseInt(k, 10);
     if (idx >= 1 && idx <= 6) setActiveBoard(BOARDS[idx - 1]);
   }
 
-  if (screen === 'login') {
-    const loginCmds = [
-      { key: 'V', label: scanlinesOn ? 'visual off' : 'visual on' },
-    ];
-    return (
-      <Shell
-        nodeName="01" clock={clock} hidePath
-        commands={loginCmds}
-        onCommand={(k) => { if (k === 'V') setScanlinesOn((on) => !on); }}
-        scanlinesOn={scanlinesOn}
-        vfxState={scanlinesOn ? 'on' : 'off'}
-      >
-        <LoginScreen onLogin={handleLogin} />
-      </Shell>
-    );
-  }
-
   return (
-    <Shell user={user} nodeName="01" clock={clock} unread={totalFlagged}
+    <Shell nodeName="01" clock={clock} unread={totalFlagged}
       commands={cmds} onCommand={handleCommand} scanlinesOn={scanlinesOn}
       vfxState={scanlinesOn ? 'on' : 'off'}>
-      <div style={{ maxWidth: '110ch', margin: '0 auto', width: '100%' }}>
+      <div data-testid="board-screen" style={{ width: '100%' }}>
         <Banner as="h1" strong style={{ fontSize: 32, margin: '0 0 4px' }}>
           {activeBoard.toLowerCase()} board
         </Banner>
         <div style={{ color: 'var(--phosphor-dim)', textShadow: 'none', marginBottom: 4 }}>
-          welcome,{' '}
-          <span style={{ color: 'var(--ansi-bright-cyan)', textShadow: 'var(--glow)' }}>@{user}</span>
-          {`. ${messages.length} total traces · ${totalFlagged} flagged · ${filtered.length} on ${activeBoard}.`}
+          {`${messages.length} total traces · ${totalFlagged} flagged · ${filtered.length} on ${activeBoard}.`}
           {loadedAt ? <> · last loaded <span style={{ color: 'var(--phosphor-dim)' }}>{loadedAt.split('T')[1].split('.')[0]}Z</span></> : null}
           {demo ? <span style={{ color: 'var(--warn)', textShadow: 'var(--glow)', marginLeft: 12 }}>· demo data prepended</span> : null}
         </div>

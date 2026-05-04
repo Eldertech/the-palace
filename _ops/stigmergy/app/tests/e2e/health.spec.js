@@ -2,8 +2,6 @@ import { test, expect } from '@playwright/test';
 
 async function gotoDemoBoard(page) {
   await page.goto('/?demo=1');
-  await expect(page.getByTestId('login-banner')).toBeVisible({ timeout: 10_000 });
-  await page.getByRole('button', { name: /lurk/i }).click();
   await expect(page.getByTestId('channel-tabs')).toBeVisible({ timeout: 15_000 });
 }
 
@@ -38,8 +36,6 @@ test('messages without a health block render the [no health] placeholder', async
   // Real palace audit-dump messages have no health block. Navigate to FLAGS
   // where some real-palace messages with `board: FLAGS` live.
   await page.goto('/');
-  await expect(page.getByTestId('login-banner')).toBeVisible({ timeout: 10_000 });
-  await page.getByRole('button', { name: /lurk/i }).click();
   await expect(page.getByTestId('channel-tabs')).toBeVisible({ timeout: 15_000 });
   await page.getByTestId('tab-flags').click();
   await expect(page.getByTestId('message-row').first()).toBeVisible({ timeout: 10_000 });

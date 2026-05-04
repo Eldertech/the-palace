@@ -8,7 +8,7 @@ Applies to screenshot(s):
 - `screenshots/phase-3/trickster.png`
 - `screenshots/phase-3/branches.png`
 
-Apply this checklist to **each** screenshot. The CP437 alignment item (#10) is the highest-stakes check at this phase.
+Apply this checklist to **each** screenshot. The border-rendering consistency item (#18) is the highest-stakes check at this phase.
 
 ## What this phase delivers
 Six channel tabs (GENERAL/FLAGS/WEAVE/SYSTEM/TRICKSTER/BRANCHES). Active tab is inverted. Clicking filters messages by `board`. Each message type from Infrastructure Spec §2.4 has a distinct visual signature.
@@ -30,7 +30,7 @@ For whichever message types appear in this screenshot:
 7. **BROADCAST** — neutral phosphor, no prefix glyph.
 8. **FLAG** — amber accent (`#ffb000`-family) and a `!` prefix glyph.
 9. **REPLY** — `> ` prefix; metadata line shows `re:` target id in dim green.
-10. **PROOF** — double-line box border (`╔═╗ ║ ╚═╝`); proof object visible/expanded.
+10. **PROOF** — double-line box border (CSS `3px double`, the visual register CP437 `╔═╗ ║ ╚═╝` evoked); proof object visible/expanded.
 11. **RESOURCE_REQUEST** — gold/cyan accent on the resource handle; `?` prefix.
 12. **RESOURCE_GRANT** — green check or `+` indicator; rendered dim.
 13. **RESOURCE_DENY** — red accent (`#ff4136`-family); `x` prefix.
@@ -41,10 +41,10 @@ For whichever message types appear in this screenshot:
 
 If a type does not appear in this screenshot, mark its item `n/a`.
 
-### CP437 box-drawing alignment (HIGHEST-STAKES)
-18. **No broken box joints.** Every `╔═╗ ║ ╚═╝` or `┌─┐ │ └─┘` card has its corners and verticals aligned to the same column. No row of a card is shorter or longer than the others. No mid-line wrap that breaks the rectangle.
-19. **No mixed widths from HTML elements inside boxes.** Text inside CP437 boxes does not contain HTML elements that change glyph width (e.g., colored `<span>`s should be flagged only if they appear to misalign — usually fine; flag if alignment is visibly broken).
-20. **Consistent box style per nesting depth.** Outer cards use double-line; nested cards use single-line. No mixing within the same nesting depth.
+### Border rendering consistency (HIGHEST-STAKES)
+18. **Single rendering mode across the page.** Every box, panel, and horizontal rule on the screen uses the same rendering approach — CSS borders styled to evoke CP437 weight. No fragments of character-cell ASCII rules (`═══` or `───` lines emitted as text) survive alongside CSS-bordered cards. If you see one rule fitting its column cleanly while another rule of the same kind overflows or stretches inconsistently, that is the bug this item exists to catch.
+19. **Border weight signals nesting.** Outer cards use double-line (CSS `3px double`); nested cards use single-line (CSS `1px solid`). No mixing within the same nesting depth.
+20. **Borders meet flush at corners.** Every card is a complete rectangle: top, right, bottom, left borders all of the same weight, all visible, all meeting at right angles. No missing edges; no stylistic asymmetries.
 
 ### Visual non-negotiables maintained
 21. **Phosphor green / terminal black palette intact.** Color is reserved for status: amber for FLAGS, red for errors/DENY, cyan for handles/PAGE_UPDATE, dim for metadata. No off-palette colors.

@@ -12,38 +12,64 @@ export function Banner({ children, strong, dim, as = 'div', style = {} }) {
   );
 }
 
-export function Box({ children, title, tone = 'double', style = {}, pad = true }) {
-  const chars = tone === 'double'
-    ? { tl: '╔', tr: '╗', bl: '╚', br: '╝', h: '═', v: '║' }
-    : { tl: '┌', tr: '┐', bl: '└', br: '┘', h: '─', v: '│' };
+// Single rendering mode for the entire app: CSS borders styled to evoke CP437
+// double/single line weights. Replaces the prior character-cell box-drawing
+// (`╔═╗ ║ ╚═╝` / `┌─┐ │ └─┘`), which was fixed at 78ch and overflowed dynamic
+// columns (e.g. when the AGENTS sidebar narrowed the main reading area below
+// 78 monospace chars). CSS borders scale to the container; visual register of
+// double vs single line weight is preserved as `3px double` vs `1px solid`.
+//
+// The design system README still mandates character-cell borders. That rule
+// is on the v0.2 design-system cleanup ticket; this app is the source of
+// truth for the unified rendering until that ticket lands.
+const ruleBorder = (double) =>
+  double ? '3px double var(--phosphor-dim)' : '1px solid var(--phosphor-dim)';
+
+export function Rule({ double = false, children }) {
+  const lineStyle = { flex: 1, borderTop: ruleBorder(double), alignSelf: 'center' };
   return (
-    <div style={{ fontFamily: 'var(--font-mono)', color: 'var(--phosphor)', textShadow: 'var(--glow)', ...style }}>
-      <div style={{ whiteSpace: 'pre', lineHeight: 1.1 }}>
-        {chars.tl}{title ? `═ ${title} ${chars.h.repeat(Math.max(0, 72 - title.length))}` : chars.h.repeat(76)}{chars.tr}
-      </div>
-      <div style={{
-        padding: pad ? '6px 12px' : 0,
-        borderLeft: `1px ${tone === 'double' ? 'double' : 'solid'} var(--phosphor-dim)`,
-        borderRight: `1px ${tone === 'double' ? 'double' : 'solid'} var(--phosphor-dim)`,
-        marginLeft: '2px', marginRight: '2px',
-      }}>
-        {children}
-      </div>
-      <div style={{ whiteSpace: 'pre', lineHeight: 1.1 }}>{chars.bl}{chars.h.repeat(76)}{chars.br}</div>
+    <div style={{
+      display: 'flex', alignItems: 'center', gap: 12,
+      color: 'var(--phosphor-dim)', textShadow: 'none',
+      fontFamily: 'var(--font-mono)', lineHeight: 1, margin: '4px 0',
+    }}>
+      {children ? (
+        <>
+          <span style={{ ...lineStyle, flex: '0 0 16px' }} />
+          <span style={{ whiteSpace: 'nowrap' }}>{children}</span>
+          <span style={lineStyle} />
+        </>
+      ) : (
+        <span style={lineStyle} />
+      )}
     </div>
   );
 }
 
-export function Rule({ double = false, children }) {
-  const c = double ? '═' : '─';
-  const inner = children
-    ? `${c.repeat(2)} ${children} ${c.repeat(Math.max(0, 74 - String(children).length))}`
-    : c.repeat(78);
+export function Box({ children, title, tone = 'double', style = {}, pad = true }) {
+  const double = tone === 'double';
+  const sideBorder = double ? '3px double var(--phosphor-dim)' : '1px solid var(--phosphor-dim)';
   return (
     <div style={{
-      whiteSpace: 'pre', color: 'var(--phosphor-dim)', textShadow: 'none',
-      fontFamily: 'var(--font-mono)', lineHeight: 1,
-    }}>{inner}</div>
+      fontFamily: 'var(--font-mono)', color: 'var(--phosphor)', textShadow: 'var(--glow)',
+      borderTop: sideBorder, borderBottom: sideBorder,
+      borderLeft: sideBorder, borderRight: sideBorder,
+      ...style,
+    }}>
+      {title ? (
+        <div style={{
+          padding: '2px 12px',
+          borderBottom: sideBorder,
+          color: 'var(--phosphor-dim)', textShadow: 'none',
+          fontFamily: 'var(--font-mono)', lineHeight: 1.2,
+        }}>
+          {title}
+        </div>
+      ) : null}
+      <div style={{ padding: pad ? '6px 12px' : 0 }}>
+        {children}
+      </div>
+    </div>
   );
 }
 

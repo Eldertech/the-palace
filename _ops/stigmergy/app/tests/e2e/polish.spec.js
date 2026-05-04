@@ -1,20 +1,7 @@
 import { test, expect } from '@playwright/test';
 
-test('LoginScreen banner types on (initial frame is shorter than final)', async ({ page }) => {
-  await page.goto('/');
-  // Wait for the banner to mount (post-dialing).
-  await expect(page.getByTestId('login-banner')).toBeVisible({ timeout: 10_000 });
-  // Right after mount, the banner contains less text than after a brief wait.
-  const initial = (await page.getByTestId('login-banner').textContent()) || '';
-  await page.waitForTimeout(300);
-  const later = (await page.getByTestId('login-banner').textContent()) || '';
-  expect(later.length).toBeGreaterThan(initial.length);
-});
-
 test('scanline overlay is on by default and can be toggled off via [V]', async ({ page }) => {
   await page.goto('/?demo=1');
-  await expect(page.getByTestId('login-banner')).toBeVisible({ timeout: 10_000 });
-  await page.getByRole('button', { name: /lurk/i }).click();
   await expect(page.getByTestId('channel-tabs')).toBeVisible({ timeout: 15_000 });
 
   // Default on.
@@ -29,10 +16,8 @@ test('scanline overlay is on by default and can be toggled off via [V]', async (
   await expect(page.getByTestId('scanlines')).toHaveAttribute('data-on', 'true');
 });
 
-test('hotkeys 1..6 switch channels, R reloads, Q quits', async ({ page }) => {
+test('hotkeys 1..6 switch channels and R reloads', async ({ page }) => {
   await page.goto('/?demo=1');
-  await expect(page.getByTestId('login-banner')).toBeVisible({ timeout: 10_000 });
-  await page.getByRole('button', { name: /lurk/i }).click();
   await expect(page.getByTestId('channel-tabs')).toBeVisible({ timeout: 15_000 });
 
   await page.keyboard.press('3'); // WEAVE
@@ -41,17 +26,17 @@ test('hotkeys 1..6 switch channels, R reloads, Q quits', async ({ page }) => {
   await page.keyboard.press('5'); // TRICKSTER
   await expect(page.getByTestId('tab-trickster')).toHaveAttribute('data-active', 'true');
 
-  await page.keyboard.press('q'); // back to login
-  await expect(page.getByTestId('login-banner')).toBeVisible({ timeout: 5_000 });
+  // R re-fetches; the inline-actions block stays mounted afterward.
+  await page.keyboard.press('r');
+  await expect(page.getByTestId('inline-actions')).toBeVisible();
 });
 
 test('command bar lists all the documented hotkeys', async ({ page }) => {
   await page.goto('/?demo=1');
-  await page.getByRole('button', { name: /lurk/i }).click();
   await expect(page.getByTestId('command-bar')).toBeVisible({ timeout: 15_000 });
   const cb = await page.getByTestId('command-bar').textContent();
   for (const label of ['general', 'flags', 'weave', 'system', 'trickster', 'branches',
-                       'reload', 'quit']) {
+                       'reload']) {
     expect(cb?.toLowerCase()).toContain(label);
   }
   expect(cb?.toLowerCase()).toMatch(/visual/);
@@ -59,7 +44,6 @@ test('command bar lists all the documented hotkeys', async ({ page }) => {
 
 test('status bar contains STIGMERGY brand and current chrome', async ({ page }) => {
   await page.goto('/?demo=1');
-  await page.getByRole('button', { name: /lurk/i }).click();
   await expect(page.getByTestId('status-bar')).toBeVisible({ timeout: 15_000 });
   const sb = await page.getByTestId('status-bar').textContent();
   expect(sb).toContain('STIGMERGY');
@@ -68,7 +52,6 @@ test('status bar contains STIGMERGY brand and current chrome', async ({ page }) 
 
 test('no rounded corners across any view encountered (board view)', async ({ page }) => {
   await page.goto('/?demo=1');
-  await page.getByRole('button', { name: /lurk/i }).click();
   await expect(page.getByTestId('channel-tabs')).toBeVisible({ timeout: 15_000 });
 
   const violations = await page.evaluate(() => {
@@ -89,7 +72,6 @@ test('no rounded corners across any view encountered (board view)', async ({ pag
 
 test('no emoji in any rendered text on the board view', async ({ page }) => {
   await page.goto('/?demo=1');
-  await page.getByRole('button', { name: /lurk/i }).click();
   await expect(page.getByTestId('channel-tabs')).toBeVisible({ timeout: 15_000 });
   // Walk every channel.
   for (const ch of ['general', 'flags', 'weave', 'system', 'trickster', 'branches']) {
