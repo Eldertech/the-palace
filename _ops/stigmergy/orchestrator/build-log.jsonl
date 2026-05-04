@@ -5,3 +5,7 @@
 {"ts":"2026-05-04T22:45:20.186Z","phase":"2","check":"phase-gate","outcome":"pass","exit_code":0}
 {"ts":"2026-05-04T18:46:00Z","phase":"2","check":"unit-tests","outcome":"pass","stats":"7 files / 93 tests passed in 0.6s"}
 {"ts":"2026-05-04T18:47:00Z","phase":"2","check":"spec-validator","outcome":"conditional-pass","note":"All content-level requirements satisfied (Findings 10-13, pheromone awareness, posture table, recursion warning, audition gate). Conditional on item 3: SKILL.md references mode-workflow files (songline.md, permanent.md, runAgentCycle.md) at skill root that don't exist yet — these are Phase 3/4/5 deliverables per the Production Plan's Directory Layout. Resolves naturally as build advances."}
+{"ts":"2026-05-04T22:49:49.618Z","phase":"3","check":"phase-gate","action":"starting","targets":["tests/unit","tests/integration/full-cycle.test.js"]}
+{"ts":"2026-05-04T22:49:50.731Z","phase":"3","check":"phase-gate","outcome":"pass","exit_code":0}
+{"ts":"2026-05-04T18:50:00Z","phase":"3","check":"unit-tests+integration","outcome":"pass","stats":"8 files / 97 tests (4 integration) passed in 0.5s"}
+{"ts":"2026-05-04T18:51:00Z","phase":"3","check":"spec-validator","outcome":"pass","note":"All 20 items pass. §3.2 step-by-step coverage; Gap 1 / Gap 6 / Gap 9 enforced; Yellow compression and branch exploration explicitly deferred to v0.2-orchestrator."}
