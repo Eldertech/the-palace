@@ -39,10 +39,10 @@ const PHASES = {
     screenshots: ['phase-1-v0.2/general.png', 'phase-1-v0.2/flags.png', 'phase-1-v0.2/system.png', 'phase-1-v0.2/trickster.png'],
   },
   2: {
-    label: 'Data Adapter',
-    vitest: ['parser.test.js', 'schema.test.js', 'middleware.test.js'],
-    playwright: ['boot.spec.js', 'tokens.spec.js', 'data.spec.js'],
-    screenshots: ['phase-2/persistent-loaded.png'],
+    label: 'Write Path',
+    vitest: ['validator.test.js', 'response-builder.test.js', 'post-middleware.test.js', 'parser.test.js', 'schema.test.js', 'middleware.test.js'],
+    playwright: [],
+    screenshots: [],
   },
   3: {
     label: 'Channel Tabs and Message-Type Signatures',
