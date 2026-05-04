@@ -61,3 +61,6 @@
 {"ts":"2026-05-04T13:07:14.909Z","phase":2,"label":"Write Path","action":"gate-start"}
 {"ts":"2026-05-04T13:07:18.108Z","phase":2,"action":"gate-end","outcome":"pass","stage":"tests+captures"}
 {"phase":2,"role":"validator-author","attempt":1,"check":"check-phase-2","result":"pass","detail":"All 192 phase-2 vitest tests green + capture; exit 0. validator.test.js (116), response-builder.test.js (26), post-middleware.test.js (11), plus 39 v0.1 tests. Total suite: 234 tests all green."}
+{"ts":"2026-05-04T13:12:40.874Z","phase":3,"label":"Read Path (SSE)","action":"gate-start"}
+{"ts":"2026-05-04T13:12:47.551Z","phase":3,"action":"gate-end","outcome":"pass","stage":"tests+captures"}
+{"ts":"2026-05-04T13:12:51.598Z","phase":3,"role":"sse-builder","attempt":1,"check":"check-phase.js 3","result":"pass","detail":"live-feed: 16 tests, sse-middleware: 10 tests, full suite: 260 tests, exit 0"}

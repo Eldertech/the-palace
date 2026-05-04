@@ -45,10 +45,10 @@ const PHASES = {
     screenshots: [],
   },
   3: {
-    label: 'Channel Tabs and Message-Type Signatures',
-    vitest: ['parser.test.js', 'schema.test.js', 'format.test.js', 'middleware.test.js'],
-    playwright: ['boot.spec.js', 'tokens.spec.js', 'data.spec.js', 'tabs.spec.js', 'types.spec.js'],
-    screenshots: ['phase-3/general.png', 'phase-3/flags.png', 'phase-3/weave.png', 'phase-3/system.png', 'phase-3/trickster.png', 'phase-3/branches.png'],
+    label: 'Read Path (SSE)',
+    vitest: ['live-feed.test.js', 'sse-middleware.test.js', 'parser.test.js', 'schema.test.js', 'middleware.test.js', 'validator.test.js', 'response-builder.test.js', 'post-middleware.test.js'],
+    playwright: [],
+    screenshots: [],
   },
   4: {
     label: 'Health Blocks and Agent Roster',
