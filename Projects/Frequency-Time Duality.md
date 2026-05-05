@@ -6,7 +6,7 @@ born: 2024-06
 last_activated: 2026-03
 activation_count: 1
 stage: growing
-forward_vector: "I want to become the single explanation behind every modulation device in the toolkit — the principle that lets a learner see delay, vibrato, FM, and rhythm as coordinates on one continuous axis. I want to spawn the Frequency-Time Explorer and become the entry every modulation project links back to."
+forward_vector: "I want to become the explanation of how time-scales themselves are perceptually graduated — the principle that one continuous axis (the rate at which something repeats) crosses *perceptual* thresholds, not physical ones. The first and most foundational of these crossings is rate-becoming-pitch around 20 Hz: below it polyrhythms, above it intervals. From this single gear-shift the rest of the modulation family — delay, vibrato, FM, rhythm — emerges as named regions on the same axis. I am the prototype of every threshold-crossing that follows."
 links:
   - target: "[[Boundary-Crossing Instruments]]"
     type: enables
@@ -35,7 +35,9 @@ The continuum, traveling from high to low frequency / short to long delay:
 
 The same physical phenomenon — a signal repeating at a given rate — is perceived as fundamentally different things. The categories are not discrete; they are zones on a single continuous axis. Moving through them is moving through perceptual worlds on one dial.
 
-This is what makes it a [[Boundary-Crossing Instruments]] concept before there was a name for it: the boundary between rhythm and pitch, between time and frequency, crossed by a single continuous gesture.
+This is what makes it a [[Boundary-Crossing Instruments]] concept before there was a name for it: the boundary between rhythm and pitch, between time and frequency, crossed by a single continuous gesture. **Polyrhythms below the threshold become intervals above it.** The threshold itself is *perceptual*, not physical — the same waveform produces different worlds depending on which side of ~20 Hz it sits. This is the first and most foundational threshold-crossing in the toolkit; many others are built from it.
+
+> 🎓 *The demo that makes this a body-experience.* See [[proofs/2026-05-05-vibrato-becomes-melody|the moment vibrato becomes melody]] — a 5-minute lesson script that walks a learner from 5 Hz vibrato down to 0.5 Hz alternating melody, the crossing of the ~20 Hz boundary in real time. The script ends on a thesis: *the whole right side of the synthesizer is the left side, with a different clock.*
 
 ## Origin
 
