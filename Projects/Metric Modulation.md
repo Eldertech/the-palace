@@ -24,6 +24,9 @@ links:
     type: connects-to
   - target: "[[Semantic Delay]]"
     type: emerged-from
+  - target: "[[Wallpaper Groups]]"
+    type: deepens
+    label: temporal-tiling
 ---
 
 # Metric Modulation
