@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 460" font-family="ui-monospace, SF Mono, monospace">
+  <rect width="800" height="460" fill="#0f0f10"/>
+
+  <text x="400" y="32" fill="#f5d68b" font-size="16" font-weight="700" text-anchor="middle">PIANO STRING INHARMONICITY · stretched partial series</text>
+  <text x="400" y="52" fill="#9a9aa0" font-size="11" text-anchor="middle">f₀ = 220 Hz (A3) · n = 1..12 · partials drift sharper as B and n grow</text>
+
+  <line x1="60" y1="105" x2="740" y2="105" stroke="#2a2a30" stroke-width="1"/>
+  <line x1="60" y1="215" x2="740" y2="215" stroke="#2a2a30" stroke-width="1"/>
+  <line x1="60" y1="325" x2="740" y2="325" stroke="#2a2a30" stroke-width="1"/>
+
+  <text x="55" y="98" fill="#6dd3c7" font-size="12" font-weight="700" text-anchor="end">B = 0</text>
+  <text x="55" y="113" fill="#6dd3c7" font-size="9" text-anchor="end">ideal harmonic</text>
+  <text x="55" y="208" fill="#f5d68b" font-size="12" font-weight="700" text-anchor="end">B = 0.0004</text>
+  <text x="55" y="223" fill="#f5d68b" font-size="9" text-anchor="end">light stiffness</text>
+  <text x="55" y="318" fill="#ff6f59" font-size="12" font-weight="700" text-anchor="end">B = 0.001</text>
+  <text x="55" y="333" fill="#ff6f59" font-size="9" text-anchor="end">treble stiffness</text>
+
+  <g stroke="#6dd3c7" stroke-width="1.5">
+    <line x1="109.9" y1="92" x2="109.9" y2="118"/>
+    <line x1="159.7" y1="92" x2="159.7" y2="118"/>
+    <line x1="209.6" y1="92" x2="209.6" y2="118"/>
+    <line x1="259.5" y1="92" x2="259.5" y2="118"/>
+    <line x1="309.3" y1="92" x2="309.3" y2="118"/>
+    <line x1="359.2" y1="92" x2="359.2" y2="118"/>
+    <line x1="409.1" y1="92" x2="409.1" y2="118"/>
+    <line x1="458.9" y1="92" x2="458.9" y2="118"/>
+    <line x1="508.8" y1="92" x2="508.8" y2="118"/>
+    <line x1="558.7" y1="92" x2="558.7" y2="118"/>
+    <line x1="608.5" y1="92" x2="608.5" y2="118"/>
+    <line x1="658.4" y1="92" x2="658.4" y2="118"/>
+  </g>
+  <text x="109.9" y="138" fill="#6dd3c7" font-size="9" text-anchor="middle">n=1</text>
+  <text x="658.4" y="138" fill="#6dd3c7" font-size="9" text-anchor="middle">n=12</text>
+
+  <g stroke="#3a3a40" stroke-width="0.8" stroke-dasharray="2 2">
+    <line x1="109.9" y1="200" x2="109.9" y2="230"/>
+    <line x1="159.7" y1="200" x2="159.7" y2="230"/>
+    <line x1="209.6" y1="200" x2="209.6" y2="230"/>
+    <line x1="259.5" y1="200" x2="259.5" y2="230"/>
+    <line x1="309.3" y1="200" x2="309.3" y2="230"/>
+    <line x1="359.2" y1="200" x2="359.2" y2="230"/>
+    <line x1="409.1" y1="200" x2="409.1" y2="230"/>
+    <line x1="458.9" y1="200" x2="458.9" y2="230"/>
+    <line x1="508.8" y1="200" x2="508.8" y2="230"/>
+    <line x1="558.7" y1="200" x2="558.7" y2="230"/>
+    <line x1="608.5" y1="200" x2="608.5" y2="230"/>
+    <line x1="658.4" y1="200" x2="658.4" y2="230"/>
+  </g>
+  <g stroke="#f5d68b" stroke-width="1.5">
+    <line x1="109.9" y1="202" x2="109.9" y2="228"/>
+    <line x1="159.8" y1="202" x2="159.8" y2="228"/>
+    <line x1="209.9" y1="202" x2="209.9" y2="228"/>
+    <line x1="260.1" y1="202" x2="260.1" y2="228"/>
+    <line x1="310.6" y1="202" x2="310.6" y2="228"/>
+    <line x1="361.4" y1="202" x2="361.4" y2="228"/>
+    <line x1="412.5" y1="202" x2="412.5" y2="228"/>
+    <line x1="464.0" y1="202" x2="464.0" y2="228"/>
+    <line x1="515.9" y1="202" x2="515.9" y2="228"/>
+    <line x1="568.6" y1="202" x2="568.6" y2="228"/>
+    <line x1="621.7" y1="202" x2="621.7" y2="228"/>
+    <line x1="675.4" y1="202" x2="675.4" y2="228"/>
+  </g>
+
+  <g stroke="#3a3a40" stroke-width="0.8" stroke-dasharray="2 2">
+    <line x1="109.9" y1="310" x2="109.9" y2="340"/>
+    <line x1="159.7" y1="310" x2="159.7" y2="340"/>
+    <line x1="209.6" y1="310" x2="209.6" y2="340"/>
+    <line x1="259.5" y1="310" x2="259.5" y2="340"/>
+    <line x1="309.3" y1="310" x2="309.3" y2="340"/>
+    <line x1="359.2" y1="310" x2="359.2" y2="340"/>
+    <line x1="409.1" y1="310" x2="409.1" y2="340"/>
+    <line x1="458.9" y1="310" x2="458.9" y2="340"/>
+    <line x1="508.8" y1="310" x2="508.8" y2="340"/>
+    <line x1="558.7" y1="310" x2="558.7" y2="340"/>
+    <line x1="608.5" y1="310" x2="608.5" y2="340"/>
+    <line x1="658.4" y1="310" x2="658.4" y2="340"/>
+  </g>
+  <g stroke="#ff6f59" stroke-width="1.5">
+    <line x1="109.9" y1="312" x2="109.9" y2="338"/>
+    <line x1="159.9" y1="312" x2="159.9" y2="338"/>
+    <line x1="210.3" y1="312" x2="210.3" y2="338"/>
+    <line x1="261.1" y1="312" x2="261.1" y2="338"/>
+    <line x1="312.4" y1="312" x2="312.4" y2="338"/>
+    <line x1="364.5" y1="312" x2="364.5" y2="338"/>
+    <line x1="417.5" y1="312" x2="417.5" y2="338"/>
+    <line x1="471.7" y1="312" x2="471.7" y2="338"/>
+    <line x1="527.1" y1="312" x2="527.1" y2="338"/>
+    <line x1="583.3" y1="312" x2="583.3" y2="338"/>
+    <line x1="640.9" y1="312" x2="640.9" y2="338"/>
+    <line x1="700.1" y1="312" x2="700.1" y2="338"/>
+  </g>
+
+  <text x="60" y="375" fill="#555" font-size="9" text-anchor="middle">0 Hz</text>
+  <text x="173.3" y="375" fill="#555" font-size="9" text-anchor="middle">500</text>
+  <text x="286.7" y="375" fill="#555" font-size="9" text-anchor="middle">1000</text>
+  <text x="400" y="375" fill="#555" font-size="9" text-anchor="middle">1500</text>
+  <text x="513.3" y="375" fill="#555" font-size="9" text-anchor="middle">2000</text>
+  <text x="626.7" y="375" fill="#555" font-size="9" text-anchor="middle">2500</text>
+  <text x="740" y="375" fill="#555" font-size="9" text-anchor="middle">3000 Hz</text>
+
+  <text x="400" y="400" fill="#9a9aa0" font-size="10" text-anchor="middle">drift at n=12 (vs ideal): B=0.0004 → +75 Hz · B=0.001 → +184 Hz · the high partials are where stiffness sings sharp</text>
+
+  <text x="400" y="430" fill="#6dd3c7" font-size="14" text-anchor="middle" font-style="italic">fₙ = n · f₀ · √(1 + B·n²)</text>
+  <text x="400" y="448" fill="#555" font-size="9" text-anchor="middle">B = stiffness coefficient · ideal string: B=0 · real pianos: B ≈ 0.0001 (bass) to 0.005+ (highest treble)</text>
+</svg>
