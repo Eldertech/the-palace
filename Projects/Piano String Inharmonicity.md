@@ -39,15 +39,27 @@ Real strings have stiffness, which adds a restoring force beyond simple tension.
 
 **f_n = n · f₀ · √(1 + B · n²)**
 
+In words:
+
+> the frequency of the nth partial = the partial index × the fundamental frequency × √(1 + the inharmonicity coefficient × the partial index²)
+
 Where:
 - **f_n** = frequency of the nth partial
 - **n** = partial number (1, 2, 3, ...)
 - **f₀** = fundamental frequency
 - **B** = inharmonicity coefficient
 
+The formula's behavior is visible at a glance in [[proofs/2026-05-05-stretched-partials|this spectrum]] — three rows of partials at B = 0, 0.0004, and 0.001 with ghost lines at the harmonic positions. At n = 12 with B = 0.001, the partial sits 184 Hz sharp of where the harmonic series would have placed it; the high partials are where stiffness sings sharp.
+
+![[proofs/2026-05-05-stretched-partials.svg]]
+
 For small B (typical piano strings: B ≈ 0.0001 to 0.001), this approximates to:
 
 **f_n ≈ n · f₀ · (1 + B · n²/2)**
+
+![[proofs/2026-05-05-stretched-partials.svg]]
+
+*Three rows of partials at f₀ = 220 Hz (A3), n = 1..12, with B ∈ {0, 0.0004, 0.001}. Ghost lines on rows 2 and 3 mark where each partial would have sat at B = 0, so the drift is visible in a glance. At n = 12 with B = 0.001, the partial sits 184 Hz sharp of its harmonic position — that number is the lesson.*
 
 So the nth partial is stretched sharp by approximately **B · n³ · f₀ / 2** Hz.
 
