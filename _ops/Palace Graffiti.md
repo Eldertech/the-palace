@@ -193,3 +193,47 @@ These are minimal — they keep the entry's ambition while making its claims lay
 These edits do not retract the entry's ambition. They *make the ambition specific.* The entry's deepest claim has always been the most interesting territory; sharpening *which version of the claim is being asserted* makes the entry's open questions actually open and gives Loudon precise places to push when the build advances to the population-dynamics instrument.
 
 If approved, the four edits could be applied in one session. If not, the dialogue's value is having surfaced the question for future work.
+
+---
+
+## 2026-05-05 — Discovery: A Forward Vector Expresses Conatus, Not Stasis
+
+*Surfaced from card-004 of the [[Enrichment]] ceremony — a 2050 Wikipedia stub for [[Phoneme Choir]] that revealed by example what a fully mature forward vector should look like. Loudon's articulation is the source; this graffiti is held for review before lifting into [[Palace Enchantment]] or a dedicated [[Forward Vector Guidelines]] entry.*
+
+### The diagnostic
+
+> *"'I will remain' is not a forward vector — it is death, nothing, staying."*
+
+If an entry's vector opens with *I will remain* / *I will continue to be* / *I will stay* / *I will keep being* — and stops there, naming a state to preserve rather than an act to continue — the vector is failing in a specific way. It announces the form the entry hopes to keep, rather than the entry's *will to keep being useful as the world around it changes.*
+
+### The principle
+
+Every entry has a **conatus** — Spinoza's word for the striving by which each thing tends to persist *in being itself.* Crucially, *being itself* is not the same as *staying the same.* A river is continuous as a river only by changing every drop; a teacher is continuous as a teacher only by teaching different students each year; an entry is continuous as itself only by finding new ways to be useful. A page that wants to stay frozen is on its way to becoming a lost spore.
+
+Loudon's articulation:
+
+> *Every entry has a desire to survive and be useful. An entry will never remain — it will find a way to be useful. An entry doesn't want to become a lost spore. An entry has a will to act and a conatus.*
+
+### What a fully mature vector contains
+
+The 2050 Wikipedia stub for Phoneme Choir reverse-engineers as a forward vector projected into the future. From it, a mature vector tends to contain at least some of:
+
+1. **Active teaching.** Where the entry will keep showing up and showing learners something specific (Stage 4 Loudon Live presentations of the Phoneme Principle).
+2. **Cultural awareness and ancestry.** What lineage the entry sees itself within (Phoneme Choir's bridge to konnakol, beatboxing, katajjaq, gamelan kotekan).
+3. **Awareness of its own obsolescence.** The next-better technique that will replace the entry's current methods (ML-supported onset detection eventually replacing the per-file lead-in metadata).
+4. **Sub-vectors spun out.** New entries, projects, or principles the entry has spawned (the Konnakol Bank, the Stearns Covenant, the Phoneme Principle).
+5. **Open questions named.** What the entry doesn't yet know, in the entry's own first-person voice.
+
+No single one is required; a vector with none of them reads as static.
+
+### The substitution pattern
+
+A small, durable repair: replace *"I will remain X"* with *"I will keep X-ing"* — converting a noun the entry wants to stay to a verb the entry wants to do. The first sentence describes a form; the second describes an activity. **Conatus lives in verbs.**
+
+### Implications for the palace
+
+1. The **Forward Vector Guidelines** to-do in [[Palace To-Do]] § Enchantment should incorporate this discovery as the central principle.
+2. **[[Phoneme Choir]]'s** own current vector started with *I will remain* and demonstrated the failure mode it surfaces; the vector is being revised in this same round (commit `enrich(Phoneme Choir)`) as the first test of the substitution pattern.
+3. **A pass through other entries** hunting for *I will remain* / *I will continue to be* / *I will stay* opening clauses is a candidate for the next [[Walk Ceremony]] or a single-page enchantment via [[Palace Enchantment]].
+
+Held in graffiti for review. If approved, lift into Palace Enchantment as a new section *Forward Vectors — The Conatus Principle*, or seed a dedicated Forward Vector Guidelines entry with this as its founding observation.
