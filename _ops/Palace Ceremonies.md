@@ -44,6 +44,7 @@ The complete and canonical list of all palace ceremonies. Every ceremony has a t
 | The Weave | "Let's weave" | Monthly | Full palace structural audit, run as a **Swarm Weave** (parallel workers + coordinator synthesis). Opens with a Map Build. Reports topology, formalizes unsung paths, proposes label enrichment and new typed links. | [[Weave Ceremony]] |
 | The Spore Check | "Spore check" | Quarterly | Read all `stage: dormant` entries. Assign disposition: revive / hold / compost. | [[Spore Check Ceremony]] |
 | The Self-Model Update | "Self-model update" | As needed | Revise [[SUBSTRATE]] — update the palace's self-description to reflect current state | [[Self-Model Update Ceremony]] |
+| The Enrichment | "Let's enrich" / "Enrich [target]" / "Make-teach-move-on" / "Let's go oblique" | Whenever | Studio visit. Five-card queue of small varied artifacts — sound, image, interactive, voice act, person-to-reach-out-to, sharper vector, harder question. Each artifact carries a freeform purpose tag. Approved cards are placed inline in entries; the git log is the biography. The no-end principle: when easy moves run out, raise the stakes (harder questions, vector reconsideration). | [[Enrichment]] |
 
 ## Harvest and Deposit Ceremonies
 
@@ -56,8 +57,14 @@ The complete and canonical list of all palace ceremonies. Every ceremony has a t
 ## Revival
 
 | Ceremony | Trigger | What Happens | Full Spec |
-|---|---|---|
+|---|---|---|---|
 | The Revival | "Let's revive [entry name]" | Formally reawaken a dormant entry: re-enter its content, add Revival Note, update stage, add new typed links connecting it to current palace work. | [[Revival Ceremony]] |
+
+## Continuity Ceremonies
+
+| Ceremony | Trigger | What Happens | Full Spec |
+|---|---|---|---|
+| The Handoff | "Hand this off" / "Draft a handoff" | Capture the operating state of an in-progress move so a fresh Claude can continue without restarting. Writes to the entry's bundle. Tight and transient — archived after consumption. | [[Handoff Ceremony]] |
 
 ---
 

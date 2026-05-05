@@ -6,7 +6,7 @@ pillars:
   - practice
   - philosophy
 born: 2026-03
-version: "1.1"
+version: "1.2"
 stage: foundational
 status: canonical
 links:
@@ -146,6 +146,7 @@ seed → sprout → growing → mature → fruiting → dormant → composting
 | `links` | array of {target, type, label?} | At minimum 1 typed link before an entry is considered a sprout. Use `[[Wiki Link]]` format for targets. Each link object may carry an optional `label` — see **Link Object Fields** note below. |
 | `last_activated` | YYYY-MM | Updated each time the entry is read or meaningfully engaged in a session. |
 | `activation_count` | integer | Incremented each activation. Tracks the entry's vitality. |
+| `forward_vector` | string (one sentence, first-person) | The entry's directional desire — what it wants to become or do, voiced as the entry itself. **Forward vectors are meant to evolve.** Tweaks, refinements, and even full overhauls are encouraged during ordinary work, conversations, and Weaves — vector tuning is a regular practice, not a ceremony. The palace stays lively precisely because directional desire adapts to what entries actually become. An unchanging vector on an entry that has grown is itself a sign of drift. See [[Project Stewardship System]] for the stewardship-side framing and [[Weave Ceremony]] §Step 5b for the Weave-side beat. |
 
 **Link Object Fields:** Each link requires `target` and `type`. The optional `label` field is a single word or hyphenated phrase naming the relationship with resonance and specificity. The `type` is the structural scaffold — it handles traversal, Weave topology analysis, and ceremony linting. The `label` is the semantic compression — it names the specific register of the relationship with cultural and emotional nuance. Examples: `midwifed`, `rhymes-with`, `fermented-from`, `argues-with-love`. Labels never require ceremony. They are the compression happening at the relational level.
 
@@ -294,6 +295,51 @@ After any structural change, apply this test:
 > Could a fresh AI instance, given only the Palace folder and no prior memory, run a full Deposit Ceremony correctly?
 
 Anywhere the answer is no: that is a documentation debt. Pay it before closing the session.
+
+---
+
+## 8. Entry Bundles
+
+An **entry bundle** is an optional sibling folder, named identically to the entry (no extension), that holds the entry's owned files: handoffs, context companions, sources, sketches, enrichments. The `.md` is the canonical surface; the bundle is its private substrate. Bundles are plumbing, not ceremony — they appear when a ceremony needs a file to live somewhere, and do not require their own invocation.
+
+**Folder naming:** `[Entry].md` ↔ `[Entry]/` (exact match, no extension).
+
+**File naming inside a bundle:** `[Entry] — [type] [— qualifier].md`. The `[Entry] — ` prefix is required even though the folder appears to provide context — Obsidian's wikilink namespace is flat across the vault, and filenames must remain globally unique. The folder provides grouping, not namespacing.
+
+**Lazy creation:** A bundle exists only when something needs to live in it. Do not create empty bundles. Most entries will never have one.
+
+**Bundle files carry minimal YAML — but not none.** They are not first-class entries — they do not appear in Weave topology audits and do not require the full entry frontmatter (no `type`, `pillars`, or `stage`). But every bundle file carries at minimum:
+
+| Field | Notes |
+|---|---|
+| `title` | Matches the filename. |
+| `born` | YYYY-MM-DD when the file was created. |
+| `links` | At least one link to the parent entry. Use `connects-to` with a `label` naming the specific register (e.g., `child-of`, `handoff-for`, `context-of`). |
+| `forward_vector` | One first-person sentence stating what this file is for and what its end-state is. Boilerplate per file type is fine; self-documenting is required. |
+
+This keeps every file in the palace self-describing without conflating bundle files with entries.
+
+**Initial type vocabulary (open, not closed):**
+
+| Type | Scope |
+|---|---|
+| `handoff` | Operational state for a new Claude picking up an in-progress move on this entry. Tight, transient, archived after consumption. See [[Handoff Ceremony]]. |
+| `context` | Long-running session-history companion accumulating across multiple sessions. Generalizes the Jewel — Context pattern. |
+| `source` | Extracted, quoted, translated, or annotated source material supporting the entry. Use the qualifier slot to name which one (`Foo — source — borges.md`). |
+| `sketch` | Half-formed material not yet ready for the entry body but too substantial for an HTML comment. |
+| `enrichment` | Material added via Enrichment ceremonies. Use the qualifier slot to name which enrichment. |
+
+New types may be tried freely. When a type earns recurring use across multiple bundles, add it to this table — additions to this open vocabulary are not Schema Ceremony events. Only structural changes to the bundle pattern itself are.
+
+**Archive:** Consumed bundle files move to `[Entry]/Archive/`. Stays with the entry; git carries history.
+
+**Wikilink resolution:** Obsidian resolves `[[name]]` flatly across the vault regardless of folder. `[[Foo — handoff]]` resolves to that file inside `Foo/` without special syntax. The flat-namespace constraint is exactly why bundle filenames must carry the entry prefix.
+
+**Hubs:** The bundle pattern applies to hubs the same as any entry. Whether hub-bundle conventions diverge in practice is an open question deferred to use.
+
+**Relation to `Artifacts/`:** Cross-entry shared artifacts (HTML, images, audio) continue to live in `Artifacts/[Theme]/` per [[Deposit Ceremony]] §Filing structure. Bundles hold entry-owned files. When in doubt: if a file is owned by exactly one entry, it goes in that entry's bundle; if it serves several entries, it goes in `Artifacts/`.
+
+**Migration of existing flat companions:** Files like `Jewel — Context.md` and `Deposit Ceremony — Context.md` currently live flat in their parent's directory. They remain valid in their current location. Migration into bundles is queued for the next Weave per [[Palace To-Do]] — the Weave Ceremony's general scope includes fixing mis-located and mis-linked items.
 
 ---
 
