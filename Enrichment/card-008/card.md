@@ -11,6 +11,7 @@ artifact_type: "text"
 validator_verdict: pass
 validator_note: "\"Reflection flattens; rotation propels\" is a genuine groove-physics thesis, not decoration. Method steps are precise enough to follow without a DAW open. West African and Carnatic grounding is specific and un-hedged. Mirrors p4mm's 'compose against' move without repeating it."
 validator_iterations: 0
+archived: true
 ---
 
 A recipe-shaped card for p3 (3-fold rotation, no reflection). Uses a 12-step grid and simple shift-by-4 rotation operations. Surfaces groove-physics: rotation-only groups have momentum; reflection groups freeze it. Brief mention of West African and Carnatic ancestry (elaborated in card-009). Ends pointing at p6 as the next step in the rotation-only library.

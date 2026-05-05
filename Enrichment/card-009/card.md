@@ -11,6 +11,7 @@ artifact_type: "text"
 validator_verdict: pass
 validator_note: "Three specific, named mappings each with acoustic phenomenology attached (the 'never quite landing' feel, the 'turning' description, the groove living in the just-outside). The Alhambra hypothesis extension reframes the whole card as evidence rather than analogy. Four open invitations at the close are live rather than decorative."
 validator_iterations: 0
+archived: true
 ---
 
 A ~750-word analysis artifact answering the question Loudon raised: have Carnatic tāla, West African bell patterns, and Afro-Cuban clave naturally instantiated wallpaper group structures? Three specific mappings (Carnatic p3, West African Euclidean/p6, Clave as broken-p2). Extends the Alhambra parallel: both tiling and rhythm are independent discoveries of the same mathematical structure by practitioners trusting their senses. Closes with four open invitations that feed subsequent enrichment rounds.

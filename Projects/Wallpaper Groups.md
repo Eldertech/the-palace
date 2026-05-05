@@ -126,6 +126,25 @@ A **musical motif** is the temporal analogue: a short melodic or rhythmic cell, 
 
 A concrete method for doing this with p4mm is now on record — *([[proofs/2026-05-05-recipe-p4mm|Recipe — Cooking p4mm into an 8-bar drum phrase]])*. The recipe surfaces the central inversion: you compose *against* the group, not with it. *The group is the floor; what you remove is the music.*
 
+## Wallpaper Groups in World Music — An Initial Mapping
+
+*This section emerged from a direct question: have practitioners of Carnatic rhythm, Afro-Cuban music, and West African polyrhythm encoded wallpaper group symmetries without knowing the theory — the way Alhambra artisans encoded all 17 without language? Short answer: yes, at least three mappings appear non-metaphorical. This section is a starting point; it wants deep research and expansion.*
+
+<!-- CLAUDE → LOUDON: This section is seeded from an enrichment card. Loudon noted it is "an exciting direction for the entry to go" and wants deeper research to expand it. Consider a dedicated harvest or Walk session targeting Carnatic tāla literature and West African rhythm scholarship. -->
+
+**Carnatic tāla → p3 and its cousins.** The adi tāla (8 beats: 4+2+2) maps to p3: the drutam sections are rotations of each other, the pattern has momentum rather than a reflection axis. The *khandam* subdivision creates polyrhythm with no repeating reflection point — only rotation. Carnatic musicians describe it as *turning*, which is exactly the acoustic signature of a rotation-only group.
+
+**West African bell patterns → p6 and translation groups.** The standard Ewe bell pattern (E(5,12), accents at 1, 3, 5, 6, 8, 10, 12) is a Euclidean rhythm whose three-against-twelve skeleton is p3. The pattern's feel — *never quite landing* — is the acoustic signature of a rotation-only group with no mirror to stop the momentum. The pattern the Yoruba and Ewe composers selected by ear is the pattern group theory predicts will have the most interesting non-settling character.
+
+**Afro-Cuban clave → broken p2.** The son clave (2/3 or 3/2, 16 steps) sits just outside a clean 180° rotation symmetry. The break that prevents it from being p2 is precisely where the tension lives. Cuban musicians describe the clave as the pattern that *doesn't resolve* — which is exactly the wallpaper-group recipe's insight: the groove lives in the *just-outside*.
+
+**The extended Alhambra hypothesis.** A musician staring at tiles in a mosque and a drummer counting against twelve are solving the same group-theory problem without a theorem. The hypothesis is not that Islamic tiling *caused* Carnatic tāla. The hypothesis is that both practices are *independent discoveries of the same mathematical structure* by practitioners who trusted their senses. The structure existed before either tradition named it.
+
+**Open invitations for deeper research:**
+- Does the Alhambra's p6mm tiling (most symmetric group, "most frozen") correspond to any musical pattern? Is there a rhythmic tradition that found it unplayable?
+- Do Balkan meters (7/8, 11/8, 13/8) instantiate a specific wallpaper group?
+- Olivier Messiaen's *modes of limited transposition* are essentially time-domain wallpaper groups — does the overlap go deeper?
+
 ## Open Questions
 
 - Can you directly compose using wallpaper groups? Instead of choosing notes, choose a group, then specify a fundamental musical domain, then let the group generate the full piece?
