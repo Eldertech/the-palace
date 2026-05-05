@@ -27,6 +27,9 @@ links:
     type: connects-to
   - target: "[[FOUR PILLARS]]"
     type: connects-to
+  - target: "[[Metric Modulation]]"
+    type: spawned
+    label: tiling-becomes-technique
 ---
 
 # Wallpaper Groups

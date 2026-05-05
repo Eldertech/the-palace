@@ -11,6 +11,7 @@ artifact_type: "text"
 validator_verdict: "pass"
 validator_note: "The path is real, the evidence is specific, and the reasoning for each link direction holds — 'deepens' for Metric Modulation (technique to framework) and 'spawned' for Wallpaper Groups (principle generating technique) are both defensible. The fallback to 'couples-with' if provenance is unclear shows good schema instinct. The prose-acknowledgement suggestion is a bonus, not a hedge. This is exactly what a pre-Weave card should look like."
 validator_iterations: 0
+archived: true
 ---
 
 A bidirectional typed-link proposal. Names the prose-level reaching that already happens in both entries, proposes specific YAML edits with type and label, includes a fallback type if the primary feels too strong, and offers an optional small prose addition for whoever wants the link to also be visible to a casual reader.
