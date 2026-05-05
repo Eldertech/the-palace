@@ -147,3 +147,49 @@ The palace is the grid. Graffiti is the disruption within the grid. Both are nec
 ---
 
 *Graffiti was named on 2026-03-24 after the final harvest round. The term captures the practice better than "in-file comments" and honors the trickster philosophy that Loudon embodies in the palace.*
+
+---
+
+## 2026-05-05 — Proposed Revision: [[Action Potential Oscillator]] — handling "isomorphism"
+
+*Drafted from the philosopher-visits-the-oscillator dialogue (`Projects/Action Potential Oscillator/proofs/2026-05-05-philosopher-visits-the-oscillator.md`) per the **larger revision** path of the [[Enrichment]] ceremony. Held here for review; **not committed to the entry yet**. The card asked: "Propose specific changes that give context to 'isomorphism.'"*
+
+### Background — what "isomorphism" actually claims
+
+In math, an **isomorphism** is a structure-preserving bijective mapping between two systems — a way of saying *they are the same thing under a renaming.* Two groups, two vector spaces, two graphs are *isomorphic* when there is a one-to-one correspondence that preserves all the relevant operations. Saying *X and Y are isomorphic* claims **structural identity** at the level of the operations being preserved.
+
+In philosophy of mind and the sciences of consciousness, *isomorphism* gets used more loosely — often to claim that a model is structurally identical to what it models. The careful version of this claim has three layers, from weakest to strongest:
+
+1. **Mathematical isomorphism** — *the same equations describe both systems.* A wave equation with reflective boundary conditions describes both a guitar string and a closed pipe; nobody concludes the guitar string IS the pipe. Defensible. Also weak.
+2. **Functional isomorphism** — *the two systems produce the same input-output relationships within some domain of interest.* Stronger: the systems behave the same in observable ways. Testable.
+3. **Phenomenal/ontological identity** — *the two systems are the same kind of thing.* The strongest claim and the most contested. A computer simulating a hurricane is mathematically (and partly functionally) isomorphic to a hurricane. It is not wet. The simulation and the storm are not the same kind of thing.
+
+The action potential oscillator entry's strongest sentence — *"these are not metaphors, they are structural identities"* — is making a layer-1 claim with layer-3 confidence. The slip is small but load-bearing. Naming the layer makes the claim sharper, not weaker.
+
+### What the entry currently asserts
+
+The phrase **"not metaphor but isomorphism"** appears in `agency_profile.creation` and is echoed in the body's *Cross-Domain Isomorphisms* section ("These are not metaphors — they are structural identities"). The headline claim — *"neurons are oscillators, ion channels are synthesis parameters, consciousness is timbre"* — is the entry's most quotable line and the strongest version of the same move.
+
+### Where the philosopher's question lands
+
+The dialogue's pressure point is this: *same equations are necessary but not sufficient* for the strong version of the claim. The action potential and a synthesizer oscillator share an equation form (LIF, RC kinetics). They do not share a body, a metabolism, an evolutionary lineage, or — most importantly for the strongest version — whatever it is that consciousness is the timbre *of.* The oscillator gives you the *audible form of one substrate* of consciousness; whether that audible form *is* what consciousness is requires a separate argument the entry does not currently make.
+
+### Proposed edits
+
+These are minimal — they keep the entry's ambition while making its claims layer-1-honest. Each is small enough to land cleanly:
+
+**Edit 1 — `agency_profile.creation`** (line 49). Current: *"making the neurobiology audible — not as metaphor but as isomorphism."* Proposed: *"making the neurobiology audible through mathematical isomorphism (the same equations describing both systems), with the question of whether deeper identities follow held open as the entry's principal philosophical territory."*
+
+**Edit 2 — Body, after the central-claim sentence** (line 61–62). Current: *"The central claim: **neurons are oscillators, ion channels are synthesis parameters, consciousness is timbre.**"* Proposed: keep the sentence as-is for its rhetorical force, but follow it immediately with: *"This is the strongest version of the claim. The defensible floor — what this entry has demonstrated — is **mathematical isomorphism**: the same equations describe membrane dynamics and oscillator dynamics. Whether the strong version follows from the weak version is the entry's principal open question, kept open here on purpose."*
+
+**Edit 3 — § Cross-Domain Isomorphisms heading sentence** (line 104). Current: *"These are not metaphors — they are structural identities."* Proposed: *"These are not metaphors — they are mathematical identities at the equation level. Whether the equation-level identity grounds a deeper identity (functional, phenomenal) is the entry's open question; the mathematical-level identity itself is durable."*
+
+**Edit 4 — § Open Questions** (line 156). The existing question — *"Consciousness as timbre — where does this metaphor break down, and is the breakdown itself interesting?"* — is good but can be sharpened. Proposed: *"Consciousness as timbre — at which layer of the isomorphism (mathematical, functional, phenomenal) does the claim become unsupportable, and is the breakdown itself sonically interesting? See `proofs/2026-05-05-philosopher-visits-the-oscillator` for one version of the pushback."*
+
+**Optional Edit 5** — The phrase *"not metaphor but isomorphism"* could be replaced everywhere with *"mathematical isomorphism, with deeper identity left as open territory"* — but this loses rhetorical compression. Probably better to keep the phrase, lean on Edit 2's framing, and trust the reader to track the distinction once it has been named once.
+
+### What this revision is and isn't
+
+These edits do not retract the entry's ambition. They *make the ambition specific.* The entry's deepest claim has always been the most interesting territory; sharpening *which version of the claim is being asserted* makes the entry's open questions actually open and gives Loudon precise places to push when the build advances to the population-dynamics instrument.
+
+If approved, the four edits could be applied in one session. If not, the dialogue's value is having surfaced the question for future work.

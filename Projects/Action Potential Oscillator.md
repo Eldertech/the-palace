@@ -60,6 +60,8 @@ A progressive educational series rooted in the neurobiology of the action potent
 
 The central claim: **neurons are oscillators, ion channels are synthesis parameters, consciousness is timbre.**
 
+> 🜁 *A philosopher visits this claim and pushes on the word **isomorphism**.* See [[proofs/2026-05-05-philosopher-visits-the-oscillator|the philosopher visits the oscillator]] — a short voice-act dialogue testing the gap between *sounds like* and *is.* Held as the entry's first articulation of its own open territory; proposed companion edits to this section live in [[Palace Graffiti]] (2026-05-05).
+
 ## The Four Stages
 
 **Stage 1 — Linear integrate-and-fire**: The membrane as capacitor. Charge-to-threshold-and-reset produces a sawtooth wave. The simplest oscillator. The identical math as analog synth ramp cores.
