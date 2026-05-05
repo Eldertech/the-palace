@@ -11,6 +11,7 @@ artifact_type: "text"
 validator_verdict: pass
 validator_note: "The prompt earns its pass by doing the hard translation work — scientific macro aesthetic over fantasy neon, oat-flake tokens as source nodes, the mid-journey pulse ring as visible DSP activity, the isolated tendril as latent routing possibility. Every element maps to a specific DSP or UI concept without naming it. Specific, purposeful, entry-aware."
 validator_iterations: 0
+archived: true
 ---
 
 A Midjourney prompt (~220 words) for the petri dish view the Interface Mythology section describes. Specifies: dark agar, yellow Physarum filaments, glowing pulse rings mid-travel, red sink spot, isolated exploratory tendril reaching toward a third source. Style: scientific macro photograph. Includes negative prompts to block fantasy lighting and UI chrome. Aspect ratio 1:1. The prompt is precise enough to generate a usable interface reference image.
