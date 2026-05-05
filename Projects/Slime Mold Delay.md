@@ -81,6 +81,8 @@ The GUI is a petri dish viewed from above.
 
 The character of this delay is *organic, slow, exploratory*. The routing is never the same twice. The user surrenders precision for liveness.
 
+*([[proofs/2026-05-05-petri-dish-image-prompt|image prompt — petri dish view]])* — a model-agnostic image prompt specifying the visual scene: dark agar, yellow Physarum filaments, pulse rings mid-travel, oat-flake sources, red sink, isolated exploratory tendril. Style: scientific macro photograph, shallow depth of field, clinical-beautiful.
+
 ## DSP Architecture
 
 Implementation needs a real graph evolving in real time over an audio engine.
