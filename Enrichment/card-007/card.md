@@ -11,6 +11,7 @@ artifact_type: "text"
 validator_verdict: pass
 validator_note: "The delay-tail choreography (searching, interleaving, stabilizing, ghost arrival) enacts the slime-mold foraging arc in temporal audio structure. 'The routing is not finished' lands the FV's open-ended conatus in four words. The mood target sentence is the sharpest line."
 validator_iterations: 0
+archived: true
 ---
 
 A Suno-style prompt for a 3–4 minute ambient generative piece. Describes a single sustained source entering into silence, a second source joining, their delay tails interleaving and then settling — the routing has learned. A third tap appears at the close: the routing is not finished. Style: sparse, wet, organic, no drums, no melody. Mood target: patient intelligence.
