@@ -11,6 +11,8 @@ artifact_type: "text"
 validator_verdict: "pass"
 validator_note: "The artifact earns its length — three concrete drafts, each named for its verb, each assigned a use-context (studio build, Loudon Live, palace-graph). The postscript that the FV is a slow ceremony, not a one-shot edit, is exactly the right containment. Draft B lands hardest as a single voice: 'timbre and confinement are the same parameter wearing two coats' is the monism claim arriving sideways, which is stronger than arriving as a declaration. All three are retrievable and distinct."
 validator_iterations: 0
+archived: true
+archived_action: "forward-vector tweak — FV replaced with artifact-proof conatus form per Loudon feedback; Quantum Synthesizer.md frontmatter updated"
 ---
 
 The card is text-only and explicitly aware of the Loudon-feedback rule that mature forward vectors express conatus, not stasis. Each draft starts with *I will keep [verb]ing* — the conatus-shape Loudon's feedback memory specifies. The artifact lays out the trade-offs between the three drafts so Loudon can pick by axis (build / pedagogy / palace-graph) rather than by aesthetic alone.

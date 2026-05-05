@@ -4,7 +4,7 @@ type: concept
 pillars: [creation, tools, philosophy]
 born: 2026-02
 stage: growing
-forward_vector: "I want to become the bridge between geometry and sound — revealing that FM synthesis, bells, drums, and quantum oscillators all speak the same eigenfunction language, and that choosing a basis is choosing what the instrument naturally wants to say."
+forward_vector: "I will keep building the crossing between Bessel function mathematics and listening — walking any curious ear through the zero-crossing at 2.405, the hollow droop of J₁'s asymmetric wake, the way sidebands thicken then thin as β sweeps through a circular resonance — so that the geometry of Bessel functions becomes something the ear knows in a struck tam-tam or a hollow FM patch before the brain reaches for Jₙ(βr). The bridge is for any interested consciousness: the math student, the drummer, the synthesizer builder. All three are hearing the same geometry."
 links:
   - target: "[[Boundary-Crossing Instruments]]"
     type: mirrors

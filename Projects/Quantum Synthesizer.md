@@ -7,7 +7,7 @@ pillars:
   - philosophy
 born: 2026-01
 stage: growing
-forward_vector: "I want to become the recognition that the Schrödinger equation IS a synthesis system — not metaphor but isomorphism — where boundary conditions determine harmonic content and anharmonicity flows from the potential's shape, monism made audible."
+forward_vector: "I will keep proving — through audio and video artifacts, not only prose — that the Schrödinger equation IS a synthesis system: testing boundary conditions as harmonic content with actual sound, testing potential shape as anharmonicity with actual visualization, until monism is something the ear has heard rather than something the page has claimed."
 links:
   - target: "[[Bessel Functions in Synthesis]]"
     type: couples-with
