@@ -132,6 +132,20 @@ All entries are tagged with one or more **pillar affiliations**:
 
 Entries that touch all four pillars are likely hub nodes. Cross-pillar connections are where the deepest insights live.
 
+### Entry Bundles
+
+Some entries grow companion files — handoffs from one Claude to the next, session-history records, extracted source quotes, half-formed sketches. Rather than scattering these in `_ops/` or letting the entry's `.md` balloon, each entry can have a **bundle**: a sibling folder named identically to the entry, with no extension.
+
+`Foo.md` is the canonical surface. `Foo/` is its private substrate.
+
+Files inside the bundle keep the entry name as a prefix — `Foo — handoff.md`, `Foo — context.md`, `Foo — source — borges.md` — because Obsidian's wikilinks resolve flatly across the whole palace and need globally unique filenames.
+
+Bundles are lazy: they appear only when something needs to live in them. Most entries never grow one. When a bundle file has done its work (a handoff has been picked up, a sketch has graduated into the entry body), it moves to `Foo/Archive/` rather than being deleted — git carries the history, but locality stays with the entry.
+
+Cross-entry shared artifacts (HTML, images, audio that serve multiple entries) still live in `Artifacts/[Theme]/`. Bundles are for things owned by one entry.
+
+Bundle files carry minimal YAML — title, born, a typed link to the parent entry, and a short forward_vector — so every file in the palace remains self-describing. Full spec: [[SCHEMA]] §8.
+
 ## How to Add to the Palace
 
 ### Creating a New Entry

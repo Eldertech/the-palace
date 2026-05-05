@@ -1,5 +1,5 @@
 ---
-version: 1.5
+version: 1.6
 schema: SCHEMA.md
 last_schema_ceremony: 2026-03
 github: https://github.com/Eldertech/the-palace
@@ -41,24 +41,26 @@ The Palace/
 ├── JEWEL.md            ← tiered loading map, orientation seed
 ├── Jewel — Context.md  ← session history for The Jewel
 ├── SUBSTRATE.md            ← palace self-model
-├── Substrate Skill.md      ← operational instructions for AI agents
 ├── README - The Palace Guide.md
 ├── ROSETTA.md        ← vocabulary cross-reference
 ├── FOUR PILLARS.md         ← Loudon's core framework
 ├── [knowledge entries]     ← all concepts, hubs, projects, etc.
 │
 └── _ops/                   ← ceremony machinery + working queues
+    ├── Substrate Skill.md   ← operational instructions for AI agents
     ├── Palace Ceremonies.md
     ├── Deposit Ceremony.md / Harvest Ceremony.md / Walk Ceremony.md
     ├── Weave Ceremony.md / Spore Check Ceremony.md / Revival Ceremony.md
-    ├── Self-Model Update Ceremony.md
-    ├── [*— Context.md]     ← ceremony session history companions
+    ├── Handoff Ceremony.md / Self-Model Update Ceremony.md
+    ├── [*— Context.md]      ← ceremony session history companions
     ├── Harvest Queue.md / Harvest Frontier.md
     ├── Deposit Archive.md
     └── Palace Graffiti.md / Palace Quotes.md / Palace To-Do.md
 ```
 
 Obsidian resolves `[[wikilinks]]` by filename regardless of folder — agents must do the same. When resolving a wikilink to a file path, search recursively through the entire palace directory. Exclude `.git/`, `.claude/`, and `.obsidian/` — these contain system files, not knowledge entries. Any other subdirectory may contain valid entries. When loading files by path (e.g., in tiered context loading), use paths relative to the palace root.
+
+Knowledge entries may also have **entry bundles** — optional sibling folders named identically to the entry (e.g., `Foo.md` ↔ `Foo/`) holding the entry's owned files: handoffs, context companions, sources, sketches, enrichments. Bundles are lazy: they appear only when something needs to live in them. Most entries never grow one. See [[SCHEMA]] §8 for the full spec.
 
 ## Ceremony Triggers
 
@@ -72,6 +74,7 @@ When Loudon says any of the following, execute the corresponding ceremony immedi
 | "Spore check" | The Spore Check | Read all `stage: dormant` entries. Match against current work. Propose revivals. |
 | "Add this to the palace" | Deposit | Draft a new entry from the conversation. Show Loudon for approval before writing. |
 | "Connect this to the palace" | Connection | Propose typed links between current topic and existing entries. |
+| "Hand this off" / "Draft a handoff" | The Handoff | Capture the operating state of an in-progress move so a fresh Claude can continue without restarting. Show before writing. See [[Handoff Ceremony]]. |
 | "What does the palace say about [topic]?" | Query | Read relevant entries and synthesize. Follow typed links. |
 
 This is a partial list. For the complete list of all ceremonies (including Harvest and Deposit), see [[Palace Ceremonies]]. For full operational instructions, see [[Substrate Skill]].
@@ -96,7 +99,7 @@ This is a partial list. For the complete list of all ceremonies (including Harve
 - **[[FOUR PILLARS]]** — Loudon's core framework (`Four Pillars.md`)
 - **[[ROSETTA]]** — Cross-tradition glossary connecting Palace vocabulary to OOP, Data Engineering, Semantic Web, and DDD equivalents (`ROSETTA.md`)
 - **[[Palace Ceremonies]]** — Full ceremony list with triggers and specs (`_ops/Palace Ceremonies.md`)
-- **[[Substrate Skill]]** — Full operational instructions for AI agents (`Substrate Skill.md`)
+- **[[Substrate Skill]]** — Full operational instructions for AI agents (`_ops/Substrate Skill.md`)
 
 ## In-File Comments
 

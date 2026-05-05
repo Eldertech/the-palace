@@ -5,8 +5,8 @@ pillars:
   - tools
   - practice
 born: 2026-03
-last_activated: 2026-03
-activation_count: 2
+last_activated: 2026-05
+activation_count: 3
 stage: mature
 links:
   - target: "[[SUBSTRATE]]"
@@ -18,7 +18,6 @@ links:
   - target: "[[Palace Ceremonies]]"
     type: connects-to
 ---
-<!-- Should this live in _Ops -->
 # Substrate Skill (Palace Edition)
 
 This is the authoritative ceremony specification for Claude's interaction with this knowledge organism. It lives in the palace itself.
@@ -93,6 +92,20 @@ When instructed to "add to the context" or "add to the log" for a ceremony, writ
 
 Currently split: [[Deposit Ceremony]] + [[Deposit Ceremony — Context]].
 
+### Entry Bundles
+
+A knowledge entry may have a sibling folder of the same name (no extension) holding its owned files. The `.md` is the canonical surface; the folder is its private substrate. Lazy creation only — do not create empty bundles.
+
+When a ceremony (Handoff, Deposit, Enrichment) needs a file to live somewhere entry-owned, create the bundle on demand. The bundle is plumbing, not a thing you ritually invoke.
+
+File naming inside the bundle: `[Entry] — [type] [— qualifier].md`. The entry-prefix is required because Obsidian's wikilink namespace is flat across the vault.
+
+When a bundle file is consumed (e.g., a handoff that has been picked up), move it to `[Entry]/Archive/` rather than deleting. Git carries history; archive preserves locality.
+
+Bundle files are not first-class entries. They do not appear in Weave audits, do not need full entry frontmatter (no `type`, `pillars`, or `stage`), and do not require typed-link participation in the palace graph. But every bundle file carries minimal YAML — title, born, at least one link to the parent entry, and a short forward_vector — so every file in the palace remains self-describing.
+
+The current vocabulary of bundle types lives in [[SCHEMA]] §8. Treat the list as open — try new types when needed and surface frequently-used ones for inclusion.
+
 ### Palace Ceremonies
 
 The canonical list of all ceremonies lives at [[Palace Ceremonies]]. 
@@ -113,6 +126,33 @@ When revisiting a topic that has a palace entry, update the metadata:
 - Add to the body prose if new understanding emerged
 
 Show proposed changes to Loudon before writing.
+
+### Stage as Alignment Confidence
+
+An entry's `stage` field doubles as a confidence interval on alignment between Loudon and Claude. Earlier stages (`seed`, `sprout`) are typically AI-drafted, and the gap between the prose on the page and what Loudon actually wants is wide. As stages advance through engagement (`growing` → `mature` → `fruiting`), the body and Loudon's intent converge through co-authorship.
+
+**The AI-polish trap.** AI-drafted seed entries tend to *look* finished. Prose flows, plans are structured, format matches palace convention. That polish can hide misalignment — the polish comes from prose habits, the misalignment comes from the gap between what was written and what was wanted. Treat polish on early-stage entries as a *warning sign*, not a sign of quality. Probe forward vector, plan structure, typed links, and named defaults for misalignment before any execution work begins.
+
+**Earlier stages require more discussion, not less.** A `seed` entry is a hypothesis about Loudon's intent; a `mature` entry is verified, co-authored truth. The discussion budget is inverse to the stage: more conversation up front, less re-litigation later. Vector tuning, plan tuning, and convention agreement are the work of seed and sprout; execution is the work of growing onward.
+
+**Stage-conditional posture for the Steward agent** (canonical home: [[Project Stewardship System]]; substrate references: [[BBS Blackboard]] and [[Palace Agent Infrastructure Spec]]):
+
+| Stage | Agent's job | BBS posture |
+|---|---|---|
+| seed | Surface underspecified parts; propose vector and plan refinements | Discussion, not deliverables. `RESOURCE_REQUEST` to TRICKSTER, `blocking: true`. |
+| sprout | Plan-level detail; named tradeoffs; flag default-traps | Mostly proposals and questions; small deliverables only. |
+| growing | Execute within established direction; checkpoint at sensory steps | Build Session pace; `blocking: false` for routine, `blocking: true` for sensory verification. |
+| mature / fruiting | Ship deliverables, post completions | Full execution; minimal re-litigation; `WEAVE` board for completion signals. |
+| dormant | Don't touch — Spore Check ceremony only | — |
+| composting | Don't touch — composting protocol applies | — |
+
+**Recursive within entries.** A `growing`-stage project can contain `seed`-stage deliverables. The Talking Keyboard case ([[Generative Sample Libraries]] Phase 1, May 2026) demonstrated this: the project reached `sprout` with an aligned forward vector, but the deliverable's pronunciation conventions, filename conventions, and audition gates were never aligned. 352 files were rendered with a pronunciation bug that only listening could catch. The lesson: align at the project level, then re-align at the deliverable level, then audition before committing labor.
+
+**Sensory deliverables require an audition gate.** For any deliverable where verification is experiential rather than inspectional — TTS pronunciation, color choice, motion easing, the way music makes you feel — the smallest unit that exercises every parameter must be rendered, paused for human audition, and accepted before the full batch proceeds. Code review cannot substitute. Spec review cannot substitute. Only listening, looking, feeling can.
+
+**Voice rules for enchanted agents addressing the human live in [[Palace Enchantment]] § Voice Rules When Addressing the Human.** They are loaded into the synthesis trigger at enchantment time, not always-on in the substrate. The six clauses (plain first-person, brief, catch-up-then-ask, content-in-the-rendered-field, translate jargon, give clickable links) shape how an enchanted page speaks to Loudon — but only when the audience configuration includes the human. They do not apply to peer-dialogue between enchanted agents, to coordinator synthesis, or to Claude's general palace work. The architectural separation: posture (this section, applies always) governs *what* the agent does; voice (Palace Enchantment) governs *how* it sounds when addressing humans.
+
+**Page-agent identity is the page's own title.** When a page operates as a permanent agent, its `agent_id` and BBS `from` field are the page's own title (e.g. `Generative Sample Libraries`), not an invented compound handle (e.g. `GSL-STEWARD`). The page IS the agent per [[Pages as Agents]] — Steward, Proof-Generator, Lineage-Trace, etc. are *modes* the page operates in, not separate identities. Modes are captured in the manifest's `mode` and feature blocks. Role-only agents that have no home page (Coordinator, Trickster) keep role-name handles. Filesystem directory names can stay kebab-case for OS friendliness; the visible BBS identity is the page title with spaces preserved. (Surfaced by the Stage A pilot 2026-05-03 when Loudon read `GSL-STEWARD` on the BBS and could not recognize it as the GSL page.)
 
 ## What Not To Do
 
