@@ -121,6 +121,8 @@ A **crystal** is the 3D analogue: a unit cell repeated through 230 space groups 
 
 A **musical motif** is the temporal analogue: a short melodic or rhythmic cell, repeated through translational, inversional, or other group symmetries (canon, fugue, rondo), generating complex musical structure from minimal material.
 
+A concrete method for doing this with p4mm is now on record — *([[proofs/2026-05-05-recipe-p4mm|Recipe — Cooking p4mm into an 8-bar drum phrase]])*. The recipe surfaces the central inversion: you compose *against* the group, not with it. *The group is the floor; what you remove is the music.*
+
 ## Open Questions
 
 - Can you directly compose using wallpaper groups? Instead of choosing notes, choose a group, then specify a fundamental musical domain, then let the group generate the full piece?

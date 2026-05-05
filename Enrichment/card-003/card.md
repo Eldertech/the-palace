@@ -11,6 +11,8 @@ artifact_type: "text"
 validator_verdict: "pass"
 validator_note: "The artifact answers the avoided question with a working method, not a gloss. 'Snowflake more than a beat' names the perceptual consequence of over-symmetry with precision. The closing inversion — 'you compose against it... the group is the floor; what you remove is the music' — is a teachable principle that earns its place in the FV's making-over-formalism agenda. The p3 hook opens the library without overpromising."
 validator_iterations: 0
+archived: true
+archived_action: "deposit + more like this — artifact moved to Projects/Wallpaper Groups/proofs/2026-05-05-recipe-p4mm.md; reference added before Open Questions; siblings generated (p3 recipe card-008, cultural-mapping analysis card-009)"
 ---
 
 A recipe-shaped card in five steps that produces a working 8-bar drum phrase governed by the p4mm wallpaper group. The recipe arrives at the inversion the entry has been circling — *symmetry is the wall the rhythm leans on, never the rhythm itself.* The recipe ends by pointing at the next recipe (p3), suggesting the *more like this* direction without forcing it.
