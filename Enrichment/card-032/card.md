@@ -12,7 +12,7 @@ artifact_type: "text"
 validator_verdict: "pass"
 validator_note: "The haiku earns its visceral framing without explaining it. 'Blood narrows the gate' names the mechanism (vessel diameter = gain reduction), 'the student's hand on the knob' puts a body next to the body inside the machine, and 'finally feels it' is the pedagogical claim in four words — understanding through sensation, not derivation. All three lines pull weight specific to this entry."
 validator_iterations: 0
-archived: false
+archived: true
 ---
 
 Three lines hold the entry's full claim: mechanism, body at the machine, and the moment of understanding the entry promises its pedagogy will produce.
