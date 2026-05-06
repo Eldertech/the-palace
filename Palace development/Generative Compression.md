@@ -85,6 +85,7 @@ A Generative Compression document may later become the basis for a Deposit — b
 - Should Generative Compression become a named ceremony in the palace's ceremony infrastructure, with a formal trigger and documented steps? The current trigger is informal: Loudon ends a long productive conversation and asks Claude to compress it.
 - The clarifying questions step is the most important and least documented part of the method. What are the canonical questions? Can they be templated without losing their adaptive quality?
 - Is there a meaningful distinction between a Generative Compression that seeds a new session and one that seeds a new palace entry? Should these be named differently?
+  *Resolved (2026-05-05):* Yes, they are different — and the distinction generalizes. Session-seeding and entry-seeding are two specific cases of a broader pattern: every interface in a multi-role system is its own compression site, with its own perception target named by what the next reader needs. Session-seeding compresses for a future Director-self continuing work; entry-seeding compresses for the Palace's growth. They differ because their receivers differ. See [[Palace Agent Infrastructure Spec]] for the role-set this opens onto. ([[fv-answer-q3]])
 
 ---
 
