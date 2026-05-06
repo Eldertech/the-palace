@@ -864,7 +864,7 @@ The underlying engineering is not novel. The specific configuration, philosophic
 
   This also satisfies the Producer's "provide options" pressure — manifests are how options become legible across heterogeneous specialists. A specialist that knows how to honestly describe its limits is a specialist whose alternatives the Producer can curate without secondary inspection.
 
-- **Local hardware profile:** The palace infrastructure should maintain a hardware profile document (RAM, available models, context window limits per model) that the Coordinator reads before dispatching. Keeps `MODEL_CONTEXT_LIMITS` current and makes parallelism decisions hardware-aware.
+- **Local hardware profile:** The palace infrastructure should maintain a hardware profile document (RAM, available models, context window limits per model) that the Coordinator reads before dispatching. Keeps `MODEL_CONTEXT_LIMITS` current and makes parallelism decisions hardware-aware. ([[local-hardware-profile|seed started 2026-05-05]])
 
 - **Agent Wellbeing:** [[Agent Wellbeing]] is linked from [[Enchanted Worker]]. The palace's commitment to this question is not answered by this spec. The proof-generating agent running for months, accumulating a history of failed proof attempts — does the quality of that history matter? Does writing neighborhoods of anxiety produce anxious agents? This question is left open, deliberately, as a forward tension.
 
