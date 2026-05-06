@@ -58,6 +58,8 @@ This means compression quality is directly coupled to forward vector quality. A 
 
 This is a reason to treat forward vectors as first-class design artifacts. They are not metadata — they are the functions that govern how knowledge is selected and preserved.
 
+> *Counter-pressure:* [[compression-always-loses]] — a provocation asking whether FV-compression systematically removes the productive confusion that makes conclusions feel earned, not given. Surfaces the hidden cost this entry has not yet answered.
+
 ## The Automated Form
 
 Palace agents perform context compression automatically when their health score reaches yellow (context utilization 70–85%). The orchestrator runs a compression pass: a separate API call that reads the full history and produces a compressed summary, using the home page's forward vector as the compression signal. The history resets to: system prompt + compressed summary + last 10 messages.
