@@ -39,6 +39,9 @@ links:
     type: connects-to
   - target: "[[Generative Compression]]"
     type: connects-to
+  - target: "[[Lossy Compression with Intent Alignment]]"
+    type: deepens
+    label: gives-info-theoretic-foundation
   - target: "[[Tree of Thoughts]]"
     type: connects-to
   - target: "[[Agent Wellbeing]]"
