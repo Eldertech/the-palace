@@ -202,3 +202,7 @@ If approved, the four edits could be applied in one session. If not, the dialogu
 "The Manifest is the document that lives in the palace. The manifest is the specialist... as entry is to agent."
 
 — Loudon, on why specialist-manifest routing replaces routing functions: the entry IS the routing table; the manifest IS the specialist.
+
+---
+
+**2026-05-05** — In a maker-architecture conversation, re-derived the Trickster / Coordinator / Worker / Palace frame as Director / Producer / Specialist / Palace without first reading [[Palace Agent Infrastructure Spec]]. The re-derivation matched cleanly. Treat this as evidence the existing names hold under independent re-derivation — and as a worked instance of the failure mode the palace's "show before writing" discipline exists to prevent. The maker work that followed is an *application* of PAIS, not a new architecture.
