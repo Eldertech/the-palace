@@ -12,7 +12,7 @@ artifact_type: "text"
 validator_verdict: "pass"
 validator_note: "Four short sentences, twelve words total, each carrying load. 'Steals / Delays / Smuggles / Sacrifice' maps the structural arc of the FV's four verbs (intercept, delay, substitute, subvert) without mirroring them — a compression, not a paraphrase. 'Something truer' does the epistemological work without naming it. The final fragment lands the sacrifice without flinching. This knows which entry it's for."
 validator_iterations: 0
-archived: false
+archived: true
 ---
 
 Twelve words find the Trickster's skeleton: theft, delay, smuggled truth, and the price of threshold work.

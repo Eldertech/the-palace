@@ -46,12 +46,12 @@ links:
     label: power-to-act
 last_activated: 2026-03
 activation_count: 1
-forward_vector: "I want to become the palace's most viscerally pedagogical framework — the set of eight instruments that prove DSP mechanics are unforgettable when made physical and grotesque. I want each of my eight synthesizer concepts developed to at least a design specification: biological system, DSP operation, pedagogical framing, and interface mythology. When the Action Potential Oscillator reaches Stage 4, I want to be the hub that maps what comes next in the sequence."
+forward_vector: "I am the palace's most viscerally pedagogical framework — the set of eight instruments that prove DSP mechanics are unforgettable when made physical and grotesque."
 ---
 
 # Biomechanical Synthesis
 
-A synthesis aesthetic and philosophy that treats biological processes as DSP operations — not as metaphor but as design principles. The aesthetic is deliberately grotesque, visceral, alive. Body horror is pedagogy: making DSP mechanics physical makes them unforgettable.
+A synthesis aesthetic and philosophy that treats biological processes as DSP operations — not as metaphor but as design principles. The aesthetic is deliberately grotesque, visceral, alive. Body horror is pedagogy: making DSP mechanics physical makes them unforgettable. ([[haiku-grotesque-pedagogy|haiku]])
 
 ## Eight Synthesizer Concepts
 
