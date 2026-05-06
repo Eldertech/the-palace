@@ -12,7 +12,7 @@ artifact_type: "text"
 validator_verdict: "pass"
 validator_note: "The voice-act earns its purpose. The 'pitch is a line' framing names exactly the assumption that Shepard tones destroy, which means the illusion lands with a prepared receiver — not an explained one. The post-listen debrief ('your auditory system making a choice') seeds the Octave Equivalence theory without front-loading it. Specific to this entry, not transferable to any other psychoacoustic project."
 validator_iterations: 0
-archived: false
+archived: true
 ---
 
 The pedagogical hinge: what to say before the first Shepard tone plays, so the illusion lands as productive strangeness rather than curiosity.

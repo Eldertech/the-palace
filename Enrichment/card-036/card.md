@@ -12,7 +12,7 @@ artifact_type: "text"
 validator_verdict: "pass"
 validator_note: "The artifact does genuine philosophical work — the gardening reframe lands, the 'productive waiting' extension is genuinely uncomfortable, and the closing question is specific enough to sting. It serves the purpose by naming the paradox the entry has been circling without confronting: that designing for an uncontrollable state may be a category error. The FV's push toward deliberate AI-mediated design gets productively destabilized rather than ignored."
 validator_iterations: 0
-archived: false
+archived: true
 ---
 
 A provocation that presses the entry's hidden tension: if hilaritas cannot be commanded, only set up, then "learning architect" may be the wrong job title — and the curriculum this entry wants to build may be a curriculum in productive waiting.

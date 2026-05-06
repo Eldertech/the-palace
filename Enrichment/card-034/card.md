@@ -12,7 +12,7 @@ artifact_type: "text"
 validator_verdict: "pass"
 validator_note: "The provocation lands. It names a specific hidden cost — 'wrong shape of knowing' — and earns its final question by building genuine friction first. The confusion-as-load-bearing-content angle is not generic; it cuts directly against the ceremony's compression logic. The closing question ('who decides when the wrong turn was load-bearing?') is sharp enough to sit in the queue without further sharpening."
 validator_iterations: 0
-archived: false
+archived: true
 ---
 
 Asks whether FV-compression systematically removes what made the conclusion feel earned — and leaves the question open for the entry to answer.
