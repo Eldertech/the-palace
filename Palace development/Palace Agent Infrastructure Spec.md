@@ -48,6 +48,9 @@ links:
     label: agency-substrate
   - target: "[[Dub Lineage]]"
     type: connects-to
+  - target: "[[Project Stewardship System]]"
+    type: enables
+    label: stewardship-system-foundation
 ---
 
 # Palace Agent Infrastructure Spec
@@ -856,6 +859,10 @@ The underlying engineering is not novel. The specific configuration, philosophic
 - **Checkpoint Ceremony:** Named checkpoints at moments of maximum context density have no formal ceremony yet. When to create one, how to name it, how to store and reuse it for branch dispatch — this needs ceremony-ification. The checkpoint is the most reusable artifact in long-duration agent work.
 
 - **Model selection routing table:** The `selectModel` function in §9.2 is a sketch. A production version should be a configuration table in the manifest, not hardcoded logic — allowing the Trickster to adjust routing rules between sessions without code changes.
+
+  *Structural answer (2026-05-05):* The specialist-manifest pattern operationalizes this without a routing function. Each specialist (in the maker context: kokoro-maker, audiogen-maker, sdxl-maker, musicgen-maker) carries its own manifest declaring capabilities, limits, recommended-alternatives, and compute requirements. The Coordinator's selection logic becomes "read manifests, match to brief" rather than hardcoded `selectModel(...)`. New specialists self-register by writing their manifest; routing follows automatically.
+
+  This also satisfies the Producer's "provide options" pressure — manifests are how options become legible across heterogeneous specialists. A specialist that knows how to honestly describe its limits is a specialist whose alternatives the Producer can curate without secondary inspection.
 
 - **Local hardware profile:** The palace infrastructure should maintain a hardware profile document (RAM, available models, context window limits per model) that the Coordinator reads before dispatching. Keeps `MODEL_CONTEXT_LIMITS` current and makes parallelism decisions hardware-aware.
 
