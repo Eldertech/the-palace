@@ -17,6 +17,9 @@ links:
   - target: "[[Palace Agent Infrastructure Spec]]"
     type: connects-to
     label: "automated-by"
+  - target: "[[Palace Agent Infrastructure Spec]]"
+    type: deepens
+    label: "operates-at-every-interface-of"
   - target: "[[Swarm Weave]]"
     type: connects-to
   - target: "[[BBS Blackboard]]"
