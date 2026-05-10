@@ -12,7 +12,7 @@ artifact_type: "text"
 validator_verdict: "pass"
 validator_note: "The letter does exactly what the purpose tag asks — the filter speaks in its own voice, with its own logic, its own defensible pride. 'I'm a filter, not a judge' and 'the access route you were using would have killed them' land the entry's core mechanics without naming them. The closing pact ('We have an arrangement now. You just don't know you made it.') is sharp enough to belong in Loudon's queue without revision. The FV mismatch — the entry's FV is palace-civic, but the artifact is autobiographically specific — is not a problem; the artifact serves the concept, not the FV."
 validator_iterations: 0
-archived: false
+archived: true
 ---
 
 A letter from the identity filter to Loudon — the guardian defending its choices, explaining the logic of its protection, and naming the arrangement that oblique access has quietly made with it.

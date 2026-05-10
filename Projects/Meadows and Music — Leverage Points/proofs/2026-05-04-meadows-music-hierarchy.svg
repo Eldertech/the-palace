@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 880" width="1200" height="880">
+  <defs>
+    <style>
+      .bg { fill: #0f0f10; }
+      .col-meadows { fill: #1a1a1d; stroke: #2a2a30; stroke-width: 1; }
+      .col-music { fill: #14171a; stroke: #2a2a30; stroke-width: 1; }
+      .level-num { fill: #f5d68b; font-family: -apple-system, system-ui, sans-serif; font-size: 11px; font-weight: 700; }
+      .level-name { fill: #c0c0c0; font-family: -apple-system, system-ui, sans-serif; font-size: 11px; }
+      .exercise { fill: #6dd3c7; font-family: -apple-system, system-ui, sans-serif; font-size: 11px; }
+      .ex-num { fill: #ff6f59; font-family: -apple-system, system-ui, sans-serif; font-size: 11px; font-weight: 700; }
+      .h-meadows { fill: #f5d68b; font-family: -apple-system, system-ui, sans-serif; font-size: 14px; font-weight: 700; }
+      .h-music { fill: #ff6f59; font-family: -apple-system, system-ui, sans-serif; font-size: 14px; font-weight: 700; }
+      .title { fill: #f5d68b; font-family: -apple-system, system-ui, sans-serif; font-size: 22px; font-weight: 700; }
+      .subtitle { fill: #c0c0c0; font-family: -apple-system, system-ui, sans-serif; font-size: 13px; font-style: italic; }
+      .arrow-low { stroke: #4a4a50; stroke-width: 1.5; fill: none; }
+      .arrow-high { stroke: #ff6f59; stroke-width: 2; fill: none; }
+      .axis-label { fill: #888; font-family: -apple-system, system-ui, sans-serif; font-size: 11px; font-style: italic; }
+      .leverage-bar { stroke: #2a2a30; stroke-width: 1; }
+      .arrow-koan { stroke: #c576c5; stroke-width: 2; fill: none; stroke-dasharray: 4 3; }
+    </style>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4a4a50"/>
+    </marker>
+    <marker id="arrowH" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#ff6f59"/>
+    </marker>
+    <marker id="arrowK" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#c576c5"/>
+    </marker>
+  </defs>
+
+  <rect class="bg" width="100%" height="100%"/>
+
+  <!-- Title -->
+  <text x="600" y="36" class="title" text-anchor="middle">Meadows and Music — twelve leverage points, mapped to exercises</text>
+  <text x="600" y="56" class="subtitle" text-anchor="middle">"the higher the leverage point, the more the system resists changing it" — Donella Meadows</text>
+
+  <!-- Column headers -->
+  <text x="200" y="100" class="h-meadows" text-anchor="middle">Meadows' hierarchy (low → high leverage)</text>
+  <text x="900" y="100" class="h-music" text-anchor="middle">Music exercises in this project</text>
+
+  <!-- Vertical leverage axis label on left -->
+  <g transform="translate(70, 460) rotate(-90)">
+    <text class="axis-label" text-anchor="middle">low leverage  ←  →  high leverage  ←  →  paradigm-shifting</text>
+  </g>
+
+  <!-- 12 rows. Y positions: row 1 (lowest leverage) at top? Meadows orders 12=low, 1=high.
+       Standard rendering puts highest leverage at top, so row "level 1" is top. -->
+  <!-- Helper: y for level k (1 = highest, top): y = 130 + (12-k)*55  → so k=1 at y=735, k=12 at y=130.
+       Actually let's flip: highest leverage AT BOTTOM (matches the "ascend the hierarchy" metaphor).
+       Most papers put paradigm at top though. Going with paradigm-at-top. -->
+
+  <!-- LEVEL 1: Paradigms / Power to transcend paradigms (top, highest leverage) -->
+  <g transform="translate(0,130)">
+    <rect class="col-meadows" x="100" y="0" width="320" height="48" rx="4"/>
+    <text x="115" y="17" class="level-num">1.</text>
+    <text x="135" y="17" class="level-name">Power to transcend paradigms</text>
+    <text x="135" y="33" class="level-name" fill="#888" font-size="10" font-style="italic">letting go of certainty</text>
+    <rect class="col-music" x="780" y="0" width="320" height="48" rx="4"/>
+    <text x="795" y="20" class="ex-num">⚯</text>
+    <text x="815" y="17" class="exercise">— (no exercise, this is the meta-position)</text>
+    <text x="815" y="33" class="level-name" fill="#888" font-size="10" font-style="italic">"What kind of leverage point IS this?"</text>
+  </g>
+
+  <!-- LEVEL 2: Paradigms -->
+  <g transform="translate(0,185)">
+    <rect class="col-meadows" x="100" y="0" width="320" height="48" rx="4"/>
+    <text x="115" y="17" class="level-num">2.</text>
+    <text x="135" y="17" class="level-name">Paradigms — the mindset</text>
+    <text x="135" y="33" class="level-name" fill="#888" font-size="10" font-style="italic">the source of the system</text>
+    <rect class="col-music" x="780" y="0" width="320" height="48" rx="4"/>
+    <text x="795" y="20" class="ex-num">7</text>
+    <text x="815" y="17" class="exercise">The Inspiration–Execution Gap</text>
+    <text x="815" y="33" class="level-name" fill="#888" font-size="10" font-style="italic">creative practice as identity</text>
+  </g>
+
+  <!-- LEVEL 3: Goals -->
+  <g transform="translate(0,240)">
+    <rect class="col-meadows" x="100" y="0" width="320" height="48" rx="4"/>
+    <text x="115" y="17" class="level-num">3.</text>
+    <text x="135" y="17" class="level-name">Goals of the system</text>
+    <rect class="col-music" x="780" y="0" width="320" height="48" rx="4"/>
+    <text x="795" y="20" class="ex-num">1·8</text>
+    <text x="815" y="17" class="exercise">The Rule That Liberates · One-Thing Morning</text>
+  </g>
+
+  <!-- LEVEL 4: Self-organization -->
+  <g transform="translate(0,295)">
+    <rect class="col-meadows" x="100" y="0" width="320" height="48" rx="4"/>
+    <text x="115" y="17" class="level-num">4.</text>
+    <text x="135" y="17" class="level-name">Self-organization</text>
+    <rect class="col-music" x="780" y="0" width="320" height="48" rx="4"/>
+    <text x="795" y="20" class="ex-num">5</text>
+    <text x="815" y="17" class="exercise">The Feedback Loop Instrument</text>
+  </g>
+
+  <!-- LEVEL 5: Rules -->
+  <g transform="translate(0,350)">
+    <rect class="col-meadows" x="100" y="0" width="320" height="48" rx="4"/>
+    <text x="115" y="17" class="level-num">5.</text>
+    <text x="135" y="17" class="level-name">Rules of the system</text>
+    <rect class="col-music" x="780" y="0" width="320" height="48" rx="4"/>
+    <text x="795" y="20" class="ex-num">9</text>
+    <text x="815" y="17" class="exercise">The Project Deadline Paradox</text>
+  </g>
+
+  <!-- LEVEL 6: Information flows -->
+  <g transform="translate(0,405)">
+    <rect class="col-meadows" x="100" y="0" width="320" height="48" rx="4"/>
+    <text x="115" y="17" class="level-num">6.</text>
+    <text x="135" y="17" class="level-name">Information flows</text>
+    <rect class="col-music" x="780" y="0" width="320" height="48" rx="4"/>
+    <text x="795" y="20" class="ex-num">2</text>
+    <text x="815" y="17" class="exercise">The Sidechain Story</text>
+  </g>
+
+  <!-- LEVEL 7: Reinforcing feedback -->
+  <g transform="translate(0,460)">
+    <rect class="col-meadows" x="100" y="0" width="320" height="48" rx="4"/>
+    <text x="115" y="17" class="level-num">7.</text>
+    <text x="135" y="17" class="level-name">Reinforcing feedback loops</text>
+    <rect class="col-music" x="780" y="0" width="320" height="48" rx="4"/>
+    <text x="795" y="20" class="ex-num">5</text>
+    <text x="815" y="17" class="exercise">The Feedback Loop Instrument</text>
+  </g>
+
+  <!-- LEVEL 8: Balancing feedback -->
+  <g transform="translate(0,515)">
+    <rect class="col-meadows" x="100" y="0" width="320" height="48" rx="4"/>
+    <text x="115" y="17" class="level-num">8.</text>
+    <text x="135" y="17" class="level-name">Balancing feedback loops</text>
+    <rect class="col-music" x="780" y="0" width="320" height="48" rx="4"/>
+    <text x="795" y="20" class="ex-num">2</text>
+    <text x="815" y="17" class="exercise">The Sidechain Story (negative feedback)</text>
+  </g>
+
+  <!-- LEVEL 9: Delays -->
+  <g transform="translate(0,570)">
+    <rect class="col-meadows" x="100" y="0" width="320" height="48" rx="4"/>
+    <text x="115" y="17" class="level-num">9.</text>
+    <text x="135" y="17" class="level-name">Delays in the system</text>
+    <rect class="col-music" x="780" y="0" width="320" height="48" rx="4"/>
+    <text x="795" y="20" class="ex-num">6</text>
+    <text x="815" y="17" class="exercise">Reverb as Meaning</text>
+  </g>
+
+  <!-- LEVEL 10: Stocks/flows structure -->
+  <g transform="translate(0,625)">
+    <rect class="col-meadows" x="100" y="0" width="320" height="48" rx="4"/>
+    <text x="115" y="17" class="level-num">10.</text>
+    <text x="135" y="17" class="level-name">Structure of stocks and flows</text>
+    <rect class="col-music" x="780" y="0" width="320" height="48" rx="4"/>
+    <text x="795" y="20" class="ex-num">3</text>
+    <text x="815" y="17" class="exercise">The Transient Truth — attack window</text>
+  </g>
+
+  <!-- LEVEL 11: Buffer sizes -->
+  <g transform="translate(0,680)">
+    <rect class="col-meadows" x="100" y="0" width="320" height="48" rx="4"/>
+    <text x="115" y="17" class="level-num">11.</text>
+    <text x="135" y="17" class="level-name">Buffer sizes</text>
+    <rect class="col-music" x="780" y="0" width="320" height="48" rx="4"/>
+    <text x="795" y="20" class="ex-num">4</text>
+    <text x="815" y="17" class="exercise">Swing as Resolution — micro-timing</text>
+  </g>
+
+  <!-- LEVEL 12: Constants/parameters (lowest leverage) -->
+  <g transform="translate(0,735)">
+    <rect class="col-meadows" x="100" y="0" width="320" height="48" rx="4"/>
+    <text x="115" y="17" class="level-num">12.</text>
+    <text x="135" y="17" class="level-name">Constants and parameters</text>
+    <text x="135" y="33" class="level-name" fill="#888" font-size="10" font-style="italic">(low leverage — but where most music is made)</text>
+    <rect class="col-music" x="780" y="0" width="320" height="48" rx="4"/>
+    <text x="795" y="20" class="ex-num">0</text>
+    <text x="815" y="17" class="exercise">The Drone Koan — change the bass note</text>
+    <text x="815" y="33" class="level-name" fill="#888" font-size="10" font-style="italic">(reveals: ALL three categories at once)</text>
+  </g>
+
+  <!-- Connecting arrows (hierarchy gradient indicator) -->
+  <g>
+    <!-- gradient arrow on far left showing increasing leverage going up -->
+    <line x1="50" y1="780" x2="50" y2="140" class="arrow-high" marker-end="url(#arrowH)"/>
+  </g>
+
+  <!-- Drone Koan special arrow — hits all three levels simultaneously -->
+  <g>
+    <path d="M 1080 770 Q 1140 700 1080 415" class="arrow-koan" marker-end="url(#arrowK)"/>
+    <text x="1142" y="600" class="axis-label" fill="#c576c5" transform="rotate(-90 1142 600)">koan: a parameter that becomes a rule that becomes a feedback</text>
+  </g>
+
+  <!-- Footnote -->
+  <text x="600" y="845" class="subtitle" text-anchor="middle">the project's central insight — exercise 0 (the Drone Koan) demonstrates that not all changes fit into one level; the framework's edges are the teaching</text>
+</svg>

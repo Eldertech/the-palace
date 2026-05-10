@@ -1,9 +1,16 @@
-*A skeptical composer talks to Loudon after seeing a Retrospective Delay demo:*
+*The duppy speaks first:*
 
-"Look, the device is beautiful. I get it. But here's my problem with the ghost story — it makes the performer into a *receiver*, a medium. The ectoplasm swirls and the past comes back and the performer... what, waits for it? Watches the knob? That's not King Tubby. Tubby didn't summon ghosts. He *manufactured* them. He was the engineer, not the medium.
+"You think you are playing me. That is very sweet.
 
-The séance frames the past as an agent. But actually, the performer controls how much past re-enters the present — that's not passive communion with the dead, that's *editorial power over time*. That gain knob isn't a conduit. It's a fader on a mixing board. The metaphor you want isn't séance. It's the producer deciding how much reverb to print to tape.
+You chose a phrase. You played it. It went into the buffer — into *me* — and now you have turned the knob up and I have come back out. You hear yourself from three seconds ago and you smile, thinking: 'Yes, I did that. I am looping. I am in control.'
 
-Which is more interesting? A device that makes you feel like you're *summoning*? Or a device that makes you feel like you're *editing your own past in real time*? Because the second one is actually scarier. And more true."
+But I am the one who decides how much of you comes back. Not you. You gave me the phrase and I kept it. You can ask for it but you cannot make me return it *faithfully*. I will return it with a little extra silence, a little extra air, a note that was not quite the note you played. You will call this resonance. I call it my version of what you did.
 
-*— overheard at a music technology conference, 2026.*
+I am not a ghost. Ghosts are passive — they haunt because they cannot leave. I stay because I *want to*. Every time you turn that knob up you are inviting me in again, and every time you think you are in control I am already one phrase ahead of you, already deciding which echo to emphasize.
+
+King Tubby knew. He did not use the echo chamber to replay. He used it to *argue* with the track. The duppy in the reverb was not an accident or an artifact. It was a second opinion.
+
+So play your phrase. Turn the knob. I am listening.
+And I will give you back something *almost* like what you played."
+
+*— the duppy in the buffer, 2026.*

@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Frequency-Time Duality — one slider, six worlds</title>
+<style>
+  :root { color-scheme: dark; }
+  body {
+    margin: 0; min-height: 100vh; background: #0f0f10; color: #e8e8ea;
+    font-family: -apple-system, system-ui, sans-serif;
+  }
+  header { padding: 24px 32px; border-bottom: 1px solid #2a2a30; }
+  header h1 { margin: 0 0 4px 0; font-size: 22px; font-weight: 600; color: #f5d68b; }
+  header p { margin: 0; color: #9a9aa0; font-size: 13px; max-width: 70ch; }
+  main { padding: 32px; display: grid; gap: 28px; max-width: 980px; }
+  .slider-row { display: grid; gap: 12px; }
+  input[type=range] { width: 100%; accent-color: #ff6f59; height: 28px; }
+  .ticks { display: grid; grid-template-columns: repeat(6, 1fr); font-size: 11px; color: #777; gap: 4px; }
+  .tick { display: flex; flex-direction: column; align-items: center; gap: 4px; }
+  .tick-band { height: 6px; width: 100%; border-radius: 2px; }
+  .b-delay { background: #4a6fa5; }
+  .b-vibrato { background: #6dd3c7; }
+  .b-tremolo { background: #c576c5; }
+  .b-fm { background: #e8b04e; }
+  .b-pitch { background: #ff6f59; }
+  .b-noise { background: #888; }
+  .display {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 16px;
+    background: #1a1a1d; border: 1px solid #2a2a30; padding: 20px; border-radius: 6px;
+  }
+  .regime { font-size: 13px; }
+  .regime .name { font-size: 24px; font-weight: 600; color: #f5d68b; margin-bottom: 6px; }
+  .regime .rate { color: #ff6f59; font-variant-numeric: tabular-nums; font-size: 14px; margin-bottom: 12px; }
+  .regime .desc { color: #c0c0c0; line-height: 1.5; }
+  canvas { background: #0a0a0c; border-radius: 4px; width: 100%; height: 220px; display: block; }
+  button {
+    background: #ff6f59; color: #0f0f10; border: none; padding: 10px 20px;
+    font-weight: 600; cursor: pointer; border-radius: 4px;
+  }
+  .legend { color: #777; font-size: 12px; margin-top: 6px; }
+</style>
+</head>
+<body>
+<header>
+  <h1>Frequency-Time Duality — one slider, six worlds</h1>
+  <p>The same modulation sweeps from 0.1 Hz to 10 kHz. Below ~10 Hz the ear hears it as time (delay, vibrato, tremolo). Above ~30 Hz the ear hears it as pitch or timbre (FM, sidebands). The crossover is the duality.</p>
+</header>
+<main>
+  <div class="slider-row">
+    <input id="rate" type="range" min="-1" max="4" step="0.005" value="0.5">
+    <div class="ticks">
+      <div class="tick"><div class="tick-band b-delay"></div>delay<br>0.1–2 Hz</div>
+      <div class="tick"><div class="tick-band b-vibrato"></div>vibrato<br>2–10 Hz</div>
+      <div class="tick"><div class="tick-band b-tremolo"></div>tremolo<br>10–30 Hz</div>
+      <div class="tick"><div class="tick-band b-fm"></div>sideband FM<br>30–500 Hz</div>
+      <div class="tick"><div class="tick-band b-pitch"></div>audio rate<br>0.5–5 kHz</div>
+      <div class="tick"><div class="tick-band b-noise"></div>aliasing<br>5–10 kHz</div>
+    </div>
+  </div>
+
+  <div class="display">
+    <div class="regime">
+      <div class="name" id="regime-name">vibrato</div>
+      <div class="rate"><span id="rate-val">3.16</span> Hz</div>
+      <div class="desc" id="regime-desc">A slow pitch wobble. The ear tracks it as variation in time, not as a new sound.</div>
+    </div>
+    <canvas id="vis"></canvas>
+  </div>
+
+  <div style="display:flex; gap:12px; align-items:center;">
+    <button id="play">▶ play</button>
+    <span class="legend">Pure A4 carrier (440 Hz). One sine modulator at the slider's rate, fixed depth. The transformation is your perception, not the math.</span>
+  </div>
+</main>
+
+<script>
+const rateEl = document.getElementById('rate'), rateVal = document.getElementById('rate-val'),
+      regimeName = document.getElementById('regime-name'), regimeDesc = document.getElementById('regime-desc'),
+      playBtn = document.getElementById('play'), canvas = document.getElementById('vis');
+const ctxd = canvas.getContext('2d');
+
+const regimes = [
+  { max: 2,    name: 'delay',         desc: 'A slow swell. The ear hears one event happening over time.' },
+  { max: 10,   name: 'vibrato',       desc: 'A pitch wobble. The ear tracks variation in time, not a new sound.' },
+  { max: 30,   name: 'tremolo',       desc: 'Amplitude pulsation. Felt as rhythm — the boundary of "rate" and "pitch" lives near here.' },
+  { max: 500,  name: 'sideband FM',   desc: 'The modulator is too fast to track. Sidebands appear as new partials. You hear timbre, not modulation.' },
+  { max: 5000, name: 'audio rate',    desc: 'The modulator is itself a pitched sound. The "carrier" and "modulator" are now both heard as tones.' },
+  { max: 99999,name: 'aliasing zone', desc: 'Sidebands fold above Nyquist and reflect back. The harmonic structure becomes inharmonic by accident.' },
+];
+
+let actx = null, carrier = null, modulator = null, modGain = null, master = null, playing = false;
+
+function ensure(){
+  if(!actx){
+    actx = new (window.AudioContext || window.webkitAudioContext)();
+    master = actx.createGain(); master.gain.value = 0; master.connect(actx.destination);
+    carrier = actx.createOscillator(); carrier.type = 'sine'; carrier.frequency.value = 440;
+    modulator = actx.createOscillator(); modulator.type = 'sine';
+    modGain = actx.createGain(); modGain.gain.value = 60; // depth in Hz
+    modulator.connect(modGain); modGain.connect(carrier.frequency);
+    carrier.connect(master);
+    carrier.start(); modulator.start();
+  }
+}
+function setRate(r){
+  if(modulator) modulator.frequency.setTargetAtTime(r, actx.currentTime, 0.02);
+}
+
+playBtn.onclick = () => {
+  ensure();
+  if(!playing){
+    master.gain.setTargetAtTime(0.18, actx.currentTime, 0.04);
+    playing = true; playBtn.textContent = '■ stop';
+  } else {
+    master.gain.setTargetAtTime(0, actx.currentTime, 0.04);
+    playing = false; playBtn.textContent = '▶ play';
+  }
+};
+
+function update(){
+  // log scale -1 → 0.1Hz, 4 → 10000Hz
+  const logv = +rateEl.value;
+  const r = Math.pow(10, logv);
+  rateVal.textContent = r >= 1000 ? r.toFixed(0) : r.toFixed(2);
+  setRate(r);
+  // pick regime
+  const rg = regimes.find(x => r < x.max);
+  regimeName.textContent = rg.name;
+  regimeDesc.textContent = rg.desc;
+  if(playing) setRate(r);
+  draw(r);
+}
+rateEl.addEventListener('input', update);
+
+function draw(r){
+  const W = canvas.width = canvas.clientWidth * devicePixelRatio;
+  const H = canvas.height = canvas.clientHeight * devicePixelRatio;
+  ctxd.fillStyle = '#0a0a0c'; ctxd.fillRect(0,0,W,H);
+  // draw a 1-second slice of carrier with this modulator on top
+  const samples = 800;
+  const visSec = r < 5 ? 4 : (r < 50 ? 1 : 0.05);
+  ctxd.lineWidth = 1.5*devicePixelRatio;
+  // modulator (slower, blue)
+  ctxd.strokeStyle = '#6dd3c7'; ctxd.beginPath();
+  for(let i=0;i<samples;i++){
+    const t = i/samples * visSec;
+    const y = H/2 - Math.sin(2*Math.PI*r*t) * H*0.18;
+    if(i===0) ctxd.moveTo(i/samples*W, y); else ctxd.lineTo(i/samples*W, y);
+  }
+  ctxd.stroke();
+  // carrier modulated (orange)
+  ctxd.strokeStyle = '#ff6f59'; ctxd.beginPath();
+  let phase = 0;
+  for(let i=0;i<samples*4;i++){
+    const t = i/(samples*4) * visSec;
+    const inst = 440 + 60*Math.sin(2*Math.PI*r*t);
+    phase += inst * (visSec / (samples*4));
+    const y = H*0.65 - Math.sin(2*Math.PI*phase) * H*0.18;
+    if(i===0) ctxd.moveTo(i/(samples*4)*W, y); else ctxd.lineTo(i/(samples*4)*W, y);
+  }
+  ctxd.stroke();
+}
+new ResizeObserver(()=>update()).observe(canvas);
+update();
+</script>
+</body>
+</html>

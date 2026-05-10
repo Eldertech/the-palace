@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Curriculum Map — priority guide</title>
+<style>
+  :root { color-scheme: dark; }
+  body {
+    margin: 0; min-height: 100vh; background: #0f0f10; color: #e8e8ea;
+    font-family: -apple-system, system-ui, sans-serif;
+  }
+  header { padding: 22px 32px; border-bottom: 1px solid #2a2a30; }
+  header h1 { margin: 0 0 4px 0; font-size: 22px; font-weight: 600; color: #f5d68b; }
+  header p { margin: 0; color: #9a9aa0; font-size: 12px; max-width: 80ch; }
+  .grid { padding: 22px 32px; display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+  .col { background: #1a1a1d; border: 1px solid #2a2a30; border-radius: 6px; padding: 14px; min-height: 60vh; }
+  .col h2 { margin: 0 0 4px 0; font-size: 13px; font-weight: 700; color: #f5d68b; text-transform: uppercase; letter-spacing: 0.06em; }
+  .col .col-sub { color: #9a9aa0; font-size: 11px; margin-bottom: 14px; font-style: italic; }
+  .card {
+    background: #14171a; border: 1px solid #2a2a30; border-radius: 4px;
+    padding: 10px 12px; margin-bottom: 8px; font-size: 12px;
+  }
+  .card .title { color: #f5d68b; font-weight: 600; margin-bottom: 4px; font-size: 13px; }
+  .card .stage { color: #6dd3c7; font-size: 10px; text-transform: uppercase; letter-spacing: 0.04em; }
+  .card .next { color: #c0c0c0; font-size: 11px; margin-top: 6px; line-height: 1.4; }
+  .col-active { border-color: #ff6f59; }
+  .col-active h2 { color: #ff6f59; }
+  .col-warm { border-color: #6dd3c7; }
+  .col-warm h2 { color: #6dd3c7; }
+  .col-bg { border-color: #c576c5; }
+  .col-bg h2 { color: #c576c5; }
+  .col-hib { border-color: #4a4a50; }
+  .col-hib h2 { color: #888; }
+  .stage-fruiting { color: #ff6f59; }
+  .stage-mature { color: #f5d68b; }
+  .stage-growing { color: #6dd3c7; }
+  .stage-sprout { color: #c576c5; }
+  .stage-seed { color: #888; }
+  footer { padding: 16px 32px; border-top: 1px solid #2a2a30; color: #777; font-size: 11px; }
+</style>
+</head>
+<body>
+<header>
+  <h1>Curriculum Map — priority guide</h1>
+  <p>Helps every project get attention proportional to its rhythm. Active focus = projects asking for energy this week. Maintain momentum = projects that are healthy but want regular small contact. Background warm = projects that should not go cold but don't need weekly. Hibernation = consciously held back, revived only when the system around them changes.</p>
+</header>
+
+<div class="grid">
+  <!-- COLUMN 1: Active focus -->
+  <div class="col col-active">
+    <h2>▶ Active focus</h2>
+    <div class="col-sub">demand attention this week</div>
+
+    <div class="card">
+      <div class="stage stage-growing">growing</div>
+      <div class="title">Generative Sample Libraries</div>
+      <div class="next">Phase 2 Interview skill is at the home-decision point. Stage A pilot has nine spec gaps to close before Stage B can start.</div>
+    </div>
+    <div class="card">
+      <div class="stage stage-sprout">sprout</div>
+      <div class="title">Phoneme Choir</div>
+      <div class="next">Claude Code session needed (prompt drafted 2026-05-04) to render Stage 0 audition with Kokoro.</div>
+    </div>
+    <div class="card">
+      <div class="stage stage-fruiting">fruiting</div>
+      <div class="title">2D Torus Wavetable Synthesizer</div>
+      <div class="next">RNBO instrument validation pending. Decision pressure: ship signature device or stay pedagogical.</div>
+    </div>
+    <div class="card">
+      <div class="stage stage-growing">growing</div>
+      <div class="title">Retrospective Delay</div>
+      <div class="next">JSUI character implementation (Stage 4 target). Concept art rendered 2026-05-04.</div>
+    </div>
+  </div>
+
+  <!-- COLUMN 2: Maintain momentum -->
+  <div class="col col-warm">
+    <h2>↻ Maintain momentum</h2>
+    <div class="col-sub">healthy, want regular small contact</div>
+
+    <div class="card">
+      <div class="stage stage-fruiting">fruiting</div>
+      <div class="title">Crystal Synthesizer</div>
+      <div class="next">Birefringence mapping confirmed. Next: extend to second optical property (refraction angle? optical activity?).</div>
+    </div>
+    <div class="card">
+      <div class="stage stage-growing">growing</div>
+      <div class="title">Action Potential Oscillator</div>
+      <div class="next">Stage 4 target unlocks the Biomechanical Synthesis hub. Audio-rate rendering done; needs interface mythology pass.</div>
+    </div>
+    <div class="card">
+      <div class="stage stage-mature">mature</div>
+      <div class="title">Categorizing Inharmonicity</div>
+      <div class="next">Five-flavors visual rendered. Next: audio-only audition cycle so the categories are heard, not just seen.</div>
+    </div>
+    <div class="card">
+      <div class="stage stage-growing">growing</div>
+      <div class="title">Frequency-Time Duality</div>
+      <div class="next">Interactive sweep done. Becomes the entry every modulation project should link back to.</div>
+    </div>
+    <div class="card">
+      <div class="stage stage-growing">growing</div>
+      <div class="title">Quantum Synthesizer</div>
+      <div class="next">Three-potential audio rendered. Needs more boundary conditions to feel like a "system" rather than three examples.</div>
+    </div>
+    <div class="card">
+      <div class="stage stage-growing">growing</div>
+      <div class="title">Inharmonic Wavetable Synthesis</div>
+      <div class="next">Bending audio + spectra rendered. Next: VST instrument prototype.</div>
+    </div>
+    <div class="card">
+      <div class="stage stage-growing">growing</div>
+      <div class="title">Wallpaper Groups</div>
+      <div class="next">p4m rendered. Next: pick one more from the 17 and audio-map a wallpaper group to a temporal pattern.</div>
+    </div>
+  </div>
+
+  <!-- COLUMN 3: Background warm -->
+  <div class="col col-bg">
+    <h2>· Background warm</h2>
+    <div class="col-sub">should not cool, no weekly demand</div>
+
+    <div class="card">
+      <div class="stage stage-mature">mature</div>
+      <div class="title">Compressor Design</div>
+      <div class="next">Pedagogical retrospective drafted. Activates next time the lesson runs with students.</div>
+    </div>
+    <div class="card">
+      <div class="stage stage-mature">mature</div>
+      <div class="title">Preset Oracle</div>
+      <div class="next">New oracle prompt drafted. Activates at next student encounter; the project depends on encounter capture.</div>
+    </div>
+    <div class="card">
+      <div class="stage stage-mature">mature</div>
+      <div class="title">Biomechanical Synthesis</div>
+      <div class="next">Hub diagram rendered. Activates as each instrument advances; the hub maps the sequence.</div>
+    </div>
+    <div class="card">
+      <div class="stage stage-mature">mature</div>
+      <div class="title">Portamento and Physical Pitch Modeling</div>
+      <div class="next">Three-glides audio + image rendered. Next: real instrument case study (voice or violin).</div>
+    </div>
+    <div class="card">
+      <div class="stage stage-sprout">sprout</div>
+      <div class="title">Talking Keyboard</div>
+      <div class="next">Velocity-as-language madlib mockup drafted 2026-05-04. Next: author the full 88-key word list.</div>
+    </div>
+    <div class="card">
+      <div class="stage stage-growing">growing</div>
+      <div class="title">Bessel Functions in Synthesis</div>
+      <div class="next">Six-modes image rendered. Background until a hands-on FM-vs-physical-modeling lesson surfaces.</div>
+    </div>
+    <div class="card">
+      <div class="stage stage-growing">growing</div>
+      <div class="title">Piano String Inharmonicity</div>
+      <div class="next">B-slider interactive rendered. Background — connects to the Inharmonic Wavetable VST when that ships.</div>
+    </div>
+    <div class="card">
+      <div class="stage stage-growing">growing</div>
+      <div class="title">Meadows and Music — Leverage Points</div>
+      <div class="next">Hierarchy diagram rendered. Activates when an exercise gets taught.</div>
+    </div>
+    <div class="card">
+      <div class="stage stage-growing">growing</div>
+      <div class="title">Neural Granular Synthesis</div>
+      <div class="next">Kuramoto coherence image rendered. Background — emerges via Particle Synthesis.</div>
+    </div>
+  </div>
+
+  <!-- COLUMN 4: Hibernation -->
+  <div class="col col-hib">
+    <h2>○ Hibernation</h2>
+    <div class="col-sub">consciously held; revive on system change</div>
+
+    <div class="card">
+      <div class="stage stage-seed">seed</div>
+      <div class="title">Shimmer Cloud</div>
+      <div class="next">Concept art rendered. Vector exists, no pull yet. Revive when atmospheric reverb becomes active need.</div>
+    </div>
+    <div class="card">
+      <div class="stage stage-growing">growing</div>
+      <div class="title">Semantic Delay</div>
+      <div class="next">Substitution chain mock drafted. Stage 0 of Phase 1 build is the gating step; held until that runs.</div>
+    </div>
+    <div class="card">
+      <div class="stage stage-growing">growing</div>
+      <div class="title">Particle Synthesis</div>
+      <div class="next">Interactive mockup rendered. Held until the audio-rate version (not just visual particles) is needed.</div>
+    </div>
+    <div class="card">
+      <div class="stage stage-growing">growing</div>
+      <div class="title">Generative Wavetable Libraries</div>
+      <div class="next">Interview mock drafted. Held behind Generative Sample Libraries' Phase 2 — same architecture, different content.</div>
+    </div>
+    <div class="card">
+      <div class="stage stage-growing">growing</div>
+      <div class="title">Generative Preset Development</div>
+      <div class="next">Preset interview mock drafted. Held behind GSL Phase 2 for the same reason.</div>
+    </div>
+    <div class="card">
+      <div class="stage stage-growing">growing</div>
+      <div class="title">Metric Modulation</div>
+      <div class="next">120→180 audio rendered. Held — activate when a rhythmic pedagogy or composition pulls it forward.</div>
+    </div>
+    <div class="card">
+      <div class="stage stage-growing">growing</div>
+      <div class="title">Meadows and Music — Origin and Process</div>
+      <div class="next">Companion to Leverage Points. Held until that one activates.</div>
+    </div>
+    <div class="card">
+      <div class="stage stage-sprout">sprout</div>
+      <div class="title">Shepard Tone Synthesizer</div>
+      <div class="next">Endless ascent audio rendered. Held — useful as a teaching reference on demand.</div>
+    </div>
+  </div>
+</div>
+
+<footer>
+  v0 priority guide. Each card carries its own next move so revisiting takes seconds, not minutes. Update freely — the columns are conversational, not load-bearing schema.
+</footer>
+
+</body>
+</html>

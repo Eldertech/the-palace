@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Talking Keyboard — velocity-as-language madlib</title>
+<style>
+  :root { color-scheme: dark; }
+  body {
+    margin: 0; min-height: 100vh; background: #0f0f10; color: #e8e8ea;
+    font-family: -apple-system, system-ui, sans-serif;
+  }
+  header { padding: 20px 28px; border-bottom: 1px solid #2a2a30; }
+  header h1 { margin: 0 0 4px 0; font-size: 20px; font-weight: 600; color: #f5d68b; }
+  header p { margin: 0; color: #9a9aa0; font-size: 12px; max-width: 80ch; }
+  main { padding: 24px 28px; display: grid; gap: 22px; }
+  .lang-bar { display: flex; gap: 6px; flex-wrap: wrap; align-items: center; }
+  .lang-bar span.label { color: #c0c0c0; font-size: 13px; margin-right: 8px; }
+  .lang-chip {
+    padding: 6px 12px; border-radius: 20px; cursor: pointer;
+    border: 1px solid #2a2a30; background: #1a1a1d; color: #c0c0c0; font-size: 12px;
+    transition: all 0.1s;
+  }
+  .lang-chip.active { background: #ff6f59; border-color: #ff6f59; color: #0f0f10; font-weight: 600; }
+  .keyboard {
+    display: flex; position: relative; height: 130px; user-select: none;
+    background: #1a1a1d; border: 1px solid #2a2a30; border-radius: 6px;
+    padding: 8px; overflow-x: auto;
+  }
+  .key {
+    position: relative; height: 120px; min-width: 28px;
+    border-right: 1px solid #2a2a30; cursor: pointer;
+    background: #f0e6d2; color: #0f0f10;
+    display: flex; flex-direction: column; align-items: center; justify-content: flex-end;
+    padding-bottom: 6px; font-size: 9px; flex: 1;
+  }
+  .key.black {
+    background: #2a2a30; color: #c0c0c0; height: 75px; min-width: 18px;
+    z-index: 2; margin: 0 -10px; flex: 0 0 auto; width: 20px;
+    border-radius: 0 0 3px 3px; align-self: flex-start;
+  }
+  .key:hover { filter: brightness(1.15); }
+  .key.active { background: #ff6f59; color: #0f0f10; }
+  .key.black.active { background: #ff6f59; color: #0f0f10; }
+  .key .label-text { font-weight: 600; font-size: 10px; text-align: center; max-width: 100%; word-break: break-word; padding: 0 2px; }
+  .key .midi-label { font-size: 8px; opacity: 0.6; }
+  .composer {
+    background: #1a1a1d; border: 1px solid #2a2a30; border-radius: 6px;
+    padding: 18px 20px; min-height: 100px; font-size: 18px; line-height: 1.7;
+    color: #f5d68b; font-family: Georgia, serif;
+  }
+  .composer:empty::before { content: "click keys to compose. velocity layer determines language."; color: #555; font-size: 13px; font-family: -apple-system, system-ui, sans-serif; font-style: italic; }
+  .word-token { display: inline-block; padding: 2px 6px; margin: 0 2px; background: rgba(255,111,89,0.1); border-radius: 3px; }
+  .word-token .lang-tag { font-size: 9px; color: #6dd3c7; vertical-align: super; margin-left: 3px; opacity: 0.7; }
+  .word-token .pos-tag { font-size: 9px; color: #888; margin-right: 3px; }
+  .actions { display: flex; gap: 10px; }
+  button {
+    background: #ff6f59; color: #0f0f10; border: none; padding: 8px 16px;
+    font-weight: 600; cursor: pointer; border-radius: 4px; font-size: 13px;
+  }
+  button.ghost { background: #2a2a30; color: #c0c0c0; }
+  .legend {
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px;
+    background: #1a1a1d; border: 1px solid #2a2a30; padding: 12px 16px; border-radius: 4px;
+    font-size: 11px;
+  }
+  .legend .role { color: #6dd3c7; }
+  .legend .ex { color: #c0c0c0; }
+  footer { padding: 14px 28px; border-top: 1px solid #2a2a30; color: #777; font-size: 11px; }
+</style>
+</head>
+<body>
+<header>
+  <h1>Talking Keyboard — velocity-as-language madlib</h1>
+  <p>Each of the 88 keys is a different word. Velocity layer determines language. Compose nonsense across keys at different velocities — translations stack into mad-lib sentences. Velocity layer is set by the bar above; in the real instrument, MIDI velocity bins into the same five zones.</p>
+</header>
+<main>
+  <div class="lang-bar">
+    <span class="label">velocity layer / language:</span>
+    <div class="lang-chip" data-lang="latin">PP — Latin</div>
+    <div class="lang-chip" data-lang="japanese">P — Japanese</div>
+    <div class="lang-chip active" data-lang="english">MF — English</div>
+    <div class="lang-chip" data-lang="french">F — French</div>
+    <div class="lang-chip" data-lang="german">FF — German</div>
+  </div>
+
+  <div class="legend">
+    <div><span class="role">noun</span><br><span class="ex">person, place, thing</span></div>
+    <div><span class="role">verb</span><br><span class="ex">action</span></div>
+    <div><span class="role">adjective</span><br><span class="ex">descriptor</span></div>
+    <div><span class="role">preposition / connector</span><br><span class="ex">structural glue</span></div>
+  </div>
+
+  <div class="keyboard" id="kb"></div>
+
+  <div class="composer" id="composer"></div>
+
+  <div class="actions">
+    <button id="random">🎲 random sentence</button>
+    <button id="example1" class="ghost">example: "the moon dances under stars"</button>
+    <button id="clear" class="ghost">clear</button>
+  </div>
+</main>
+<footer>v0 mockup. Real instrument: 88-note Kokoro speech library, velocity-binned into 5 language layers. Word lists below are demonstrative — full instrument would author all 88 keys × 5 languages.</footer>
+
+<script>
+// MIDI 21 (A0) to 108 (C8) = 88 keys
+// Word roles cycle: noun, verb, adj, prep — every 4 keys
+// Demo dictionary: keys 60-72 (C4 to C5) fully populated. Other keys use placeholders.
+
+const ROLES = ['noun', 'verb', 'adj', 'prep'];
+
+// Fully authored words for keys 60..76 (one octave + a few)
+// Each entry: {role, en, fr, de, ja, la}
+const WORDS = {
+  60: {role:'noun', en:'moon',     fr:'lune',     de:'Mond',      ja:'tsuki',  la:'luna'},
+  61: {role:'verb', en:'dances',   fr:'danse',    de:'tanzt',     ja:'odoru',  la:'saltat'},
+  62: {role:'adj',  en:'silver',   fr:'argenté',  de:'silbern',   ja:'gin no', la:'argentea'},
+  63: {role:'prep', en:'under',    fr:'sous',     de:'unter',     ja:'no shita', la:'sub'},
+  64: {role:'noun', en:'river',    fr:'fleuve',   de:'Fluss',     ja:'kawa',   la:'flumen'},
+  65: {role:'verb', en:'remembers',fr:'se souvient',de:'erinnert',ja:'oboeru', la:'meminit'},
+  66: {role:'adj',  en:'ancient',  fr:'ancien',   de:'uralt',     ja:'kodai no',la:'antiqua'},
+  67: {role:'prep', en:'beside',   fr:'à côté de',de:'neben',     ja:'no soba',la:'iuxta'},
+  68: {role:'noun', en:'forest',   fr:'forêt',    de:'Wald',      ja:'mori',   la:'silva'},
+  69: {role:'verb', en:'whispers', fr:'murmure',  de:'flüstert',  ja:'sasayaku',la:'susurrat'},
+  70: {role:'adj',  en:'green',    fr:'vert',     de:'grün',      ja:'midori', la:'viridis'},
+  71: {role:'prep', en:'between',  fr:'entre',    de:'zwischen',  ja:'no aida',la:'inter'},
+  72: {role:'noun', en:'star',     fr:'étoile',   de:'Stern',     ja:'hoshi',  la:'stella'},
+  73: {role:'verb', en:'falls',    fr:'tombe',    de:'fällt',     ja:'ochiru', la:'cadit'},
+  74: {role:'adj',  en:'distant',  fr:'lointain', de:'fern',      ja:'tooi',   la:'distans'},
+  75: {role:'prep', en:'into',     fr:'dans',     de:'in',        ja:'no naka',la:'in'},
+  76: {role:'noun', en:'echo',     fr:'écho',     de:'Echo',      ja:'kodama', la:'echo'},
+};
+
+function wordForKey(midi){
+  if(WORDS[midi]) return WORDS[midi];
+  const role = ROLES[(midi - 21) % 4];
+  return {
+    role: role,
+    en: `[${role}_${midi}]`, fr:`[${role}_${midi}]`, de:`[${role}_${midi}]`,
+    ja:`[${role}_${midi}]`, la:`[${role}_${midi}]`
+  };
+}
+
+const LANG_KEY = { latin:'la', japanese:'ja', english:'en', french:'fr', german:'de' };
+const LANG_TAG = { latin:'la', japanese:'ja', english:'en', french:'fr', german:'de' };
+
+let currentLang = 'english';
+const keyDiv = document.getElementById('kb');
+const composer = document.getElementById('composer');
+
+// build keyboard
+function isBlackKey(midi){
+  const n = midi % 12;
+  return [1,3,6,8,10].includes(n);
+}
+const keyEls = {};
+for(let m=21; m<=108; m++){
+  const e = document.createElement('div');
+  e.className = 'key' + (isBlackKey(m) ? ' black' : '');
+  e.dataset.midi = m;
+  const w = wordForKey(m);
+  const noteName = ['C','C#','D','D#','E','F','F#','G','G#','A','A#','B'][m%12];
+  const oct = Math.floor(m/12)-1;
+  e.innerHTML = `
+    <div class="label-text" data-en="${w.en}">${w[LANG_KEY[currentLang]]}</div>
+    <div class="midi-label">${noteName}${oct}</div>
+  `;
+  e.addEventListener('click', () => playKey(m));
+  keyDiv.appendChild(e);
+  keyEls[m] = e;
+}
+
+function refreshKeyboard(){
+  Object.entries(keyEls).forEach(([m, e]) => {
+    const w = wordForKey(+m);
+    e.querySelector('.label-text').textContent = w[LANG_KEY[currentLang]];
+  });
+}
+
+document.querySelectorAll('.lang-chip').forEach(chip => {
+  chip.addEventListener('click', () => {
+    document.querySelectorAll('.lang-chip').forEach(c => c.classList.remove('active'));
+    chip.classList.add('active');
+    currentLang = chip.dataset.lang;
+    refreshKeyboard();
+  });
+});
+
+let composition = []; // [{midi, lang, word, role}]
+
+function playKey(midi){
+  const w = wordForKey(midi);
+  const lang = currentLang;
+  const word = w[LANG_KEY[lang]];
+  composition.push({midi, lang, word, role: w.role});
+  // light up briefly
+  const el = keyEls[midi];
+  el.classList.add('active');
+  setTimeout(() => el.classList.remove('active'), 220);
+  renderComposition();
+}
+
+function renderComposition(){
+  composer.innerHTML = '';
+  composition.forEach(item => {
+    const tok = document.createElement('span');
+    tok.className = 'word-token';
+    tok.innerHTML = `<span class="pos-tag">${item.role}</span>${item.word}<span class="lang-tag">${LANG_TAG[item.lang]}</span>`;
+    composer.appendChild(tok);
+    composer.appendChild(document.createTextNode(' '));
+  });
+}
+
+document.getElementById('clear').onclick = () => { composition = []; renderComposition(); };
+document.getElementById('random').onclick = () => {
+  composition = [];
+  const langs = ['latin','japanese','english','french','german'];
+  // random sentence pattern: noun verb adj noun
+  const pattern = [60, 61, 62, 64]; // moon dances silver river — using populated keys
+  const altPatterns = [
+    [60, 65, 70, 64], // moon remembers green river
+    [72, 73, 75, 68], // star falls into forest
+    [64, 69, 71, 60], // river whispers between moon
+    [68, 65, 66, 72], // forest remembers ancient star
+  ];
+  const p = altPatterns[Math.floor(Math.random()*altPatterns.length)];
+  p.forEach((m, i) => {
+    const lang = langs[Math.floor(Math.random()*langs.length)];
+    const w = wordForKey(m);
+    composition.push({midi:m, lang, word: w[LANG_KEY[lang]], role: w.role});
+  });
+  renderComposition();
+};
+document.getElementById('example1').onclick = () => {
+  composition = [
+    {midi:60, lang:'english', word:'moon',  role:'noun'},
+    {midi:61, lang:'english', word:'dances',role:'verb'},
+    {midi:63, lang:'english', word:'under', role:'prep'},
+    {midi:72, lang:'english', word:'stars', role:'noun'},
+  ];
+  renderComposition();
+};
+</script>
+</body>
+</html>

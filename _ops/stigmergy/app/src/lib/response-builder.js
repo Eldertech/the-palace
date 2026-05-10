@@ -60,3 +60,60 @@ export function buildResponse({ request, decision, constraints, sessionId }) {
     payload,
   };
 }
+
+/**
+ * Build a §2.2-conformant RESOURCE_GRANT for a request-supplied option.
+ *
+ * Used by the inline inbox response flow when a RESOURCE_REQUEST carries
+ * its own payload.options[] (a/b/c-style choices designed by the asker).
+ * Either optionId/optionLabel or notes (or both) may be present; at least
+ * one must be non-empty.
+ *
+ * The wire-type is RESOURCE_GRANT so the existing inbox-builder treats this
+ * as a response to the request. The actual semantics (which option was
+ * picked; what the freeform notes say) live in payload.option_id /
+ * payload.option_label / payload.notes — readable by the asking agent.
+ *
+ * @param {object} options
+ * @param {object} options.request       — the original RESOURCE_REQUEST message
+ * @param {string|null} [options.optionId]    — id of the chosen option (or null for pure freeform)
+ * @param {string|null} [options.optionLabel] — label of the chosen option (mirrors id)
+ * @param {string} [options.notes]            — freeform text (added depth or pure-freeform reply)
+ * @param {string} [options.sessionId]        — override session_id (defaults to request.session_id)
+ * @returns {object} a fully §2.2-conformant message ready for postMessage()
+ */
+export function buildRequestOptionResponse({ request, optionId, optionLabel, notes, sessionId }) {
+  const id = (typeof optionId === 'string' && optionId.trim() !== '') ? optionId : null;
+  const label = (typeof optionLabel === 'string' && optionLabel.trim() !== '') ? optionLabel : null;
+  const text = (typeof notes === 'string' && notes.trim() !== '') ? notes : '';
+
+  if (!id && !text) {
+    throw new Error('buildRequestOptionResponse requires at least one of optionId or notes');
+  }
+
+  return {
+    schema_version: '1.0',
+    id: generateId(),
+    ts: new Date().toISOString(),
+    session_id: sessionId ?? request.session_id,
+    from: 'TRICKSTER',
+    to: request.from,
+    type: 'RESOURCE_GRANT',
+    board: 'TRICKSTER',
+    re: request.request_id ?? request.id,
+    health: {
+      context_pct: 0,
+      stop_reason: 'human_decision',
+      iteration: 1,
+      tokens_this_call: 0,
+      model: 'loudon-trickster',
+      score: 'green',
+    },
+    payload: {
+      granted: true,
+      option_id: id,
+      option_label: label,
+      notes: text,
+    },
+  };
+}

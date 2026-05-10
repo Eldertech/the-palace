@@ -154,6 +154,18 @@ An entry's `stage` field doubles as a confidence interval on alignment between L
 
 **Page-agent identity is the page's own title.** When a page operates as a permanent agent, its `agent_id` and BBS `from` field are the page's own title (e.g. `Generative Sample Libraries`), not an invented compound handle (e.g. `GSL-STEWARD`). The page IS the agent per [[Pages as Agents]] — Steward, Proof-Generator, Lineage-Trace, etc. are *modes* the page operates in, not separate identities. Modes are captured in the manifest's `mode` and feature blocks. Role-only agents that have no home page (Coordinator, Trickster) keep role-name handles. Filesystem directory names can stay kebab-case for OS friendliness; the visible BBS identity is the page title with spaces preserved. (Surfaced by the Stage A pilot 2026-05-03 when Loudon read `GSL-STEWARD` on the BBS and could not recognize it as the GSL page.)
 
+### Writing Conventions
+
+**Equations in words alongside symbols.** When rendering math in a palace entry, in a chart caption, or in any artifact that surfaces a formula, follow the symbolic form with a plain-words restatement. Operators stay symbolic (×, +, √, ², etc.); variables and named coefficients become words. The reader who knows the concept but forgets which letter is which should be able to read the formula in either form and understand it.
+
+Example:
+
+> **f_n = n · f₀ · √(1 + B · n²)**
+>
+> the frequency of the nth partial = the partial index × the fundamental frequency × √(1 + the inharmonicity coefficient × the partial index²)
+
+Apply this to pedagogical entries especially (anywhere a formula is meant to teach), and to chart captions whenever an equation appears in the figure. Operators remain symbolic — the words form is for the variables and coefficients, not for the math itself.
+
 ## What Not To Do
 
 - Do not announce "the substrate skill has triggered." Just do the work.

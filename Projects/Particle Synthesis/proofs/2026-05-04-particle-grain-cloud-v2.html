@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Particle Synthesis v2 — grain cloud playground</title>
+<style>
+  :root { color-scheme: dark; }
+  body {
+    margin: 0; min-height: 100vh; background: #0f0f10; color: #e8e8ea;
+    font-family: -apple-system, system-ui, sans-serif;
+    display: grid; grid-template-rows: auto 1fr auto;
+  }
+  header { padding: 18px 28px; border-bottom: 1px solid #2a2a30; }
+  header h1 { margin: 0 0 4px 0; font-size: 20px; font-weight: 600; color: #f5d68b; }
+  header p { margin: 0; color: #9a9aa0; font-size: 12px; max-width: 75ch; }
+  .audio-banner {
+    background: rgba(255,111,89,0.12); color: #ff6f59; padding: 10px 28px; font-size: 13px;
+    text-align: center; cursor: pointer; user-select: none; border-bottom: 1px solid #2a2a30;
+  }
+  .audio-banner.live { background: rgba(109,211,199,0.10); color: #6dd3c7; }
+  main { display: grid; grid-template-columns: 1fr 280px; gap: 0; }
+  #stage { background: #0a0a0c; cursor: crosshair; display: block; width: 100%; height: 64vh; }
+  aside { padding: 18px 22px; border-left: 1px solid #2a2a30; display: grid; gap: 14px; align-content: start; }
+  aside h2 { margin: 0 0 4px 0; font-size: 13px; color: #f5d68b; text-transform: uppercase; letter-spacing: 0.05em; }
+  .row { display: grid; gap: 6px; font-size: 12px; }
+  .row label { color: #c0c0c0; display: flex; justify-content: space-between; }
+  .row label .v { color: #ff6f59; font-variant-numeric: tabular-nums; }
+  input[type=range] { width: 100%; accent-color: #ff6f59; }
+  button {
+    background: #ff6f59; color: #0f0f10; border: none; padding: 10px 14px;
+    font-weight: 600; cursor: pointer; border-radius: 4px; font-size: 13px;
+  }
+  button.off { background: #2a2a30; color: #c0c0c0; }
+  footer { padding: 12px 28px; border-top: 1px solid #2a2a30; color: #777; font-size: 11px; }
+  kbd { background: #2a2a30; padding: 2px 6px; border-radius: 3px; font-family: ui-monospace, monospace; font-size: 10px; }
+  .indicator {
+    position: absolute; right: 16px; top: 16px; font-size: 11px; color: #6dd3c7;
+    background: rgba(0,0,0,0.5); padding: 6px 10px; border-radius: 4px;
+    font-variant-numeric: tabular-nums;
+  }
+  #stage-wrap { position: relative; }
+</style>
+</head>
+<body>
+<header>
+  <h1>Particle Synthesis v2 — grain cloud playground</h1>
+  <p>Each particle on screen is a sine grain. Click and drag to spawn grains; the audio is the population. Density determines spectral richness, position determines pitch (x = pitch, y = pan & hue). v2 fix: AudioContext now bootstraps on the first mousedown — you do not need to click "enable audio" first.</p>
+</header>
+<div class="audio-banner" id="audio-banner">click anywhere on the canvas to start audio</div>
+<main>
+  <div id="stage-wrap">
+    <canvas id="stage"></canvas>
+    <div class="indicator" id="indicator">grains: 0</div>
+  </div>
+  <aside>
+    <h2>spawn</h2>
+    <div class="row">
+      <label>rate <span class="v" id="rateV">8</span></label>
+      <input id="rate" type="range" min="1" max="40" step="1" value="8">
+    </div>
+    <div class="row">
+      <label>scatter <span class="v" id="scatterV">0.30</span></label>
+      <input id="scatter" type="range" min="0" max="1" step="0.01" value="0.3">
+    </div>
+    <div class="row">
+      <label>life (s) <span class="v" id="lifeV">2.5</span></label>
+      <input id="life" type="range" min="0.5" max="6" step="0.1" value="2.5">
+    </div>
+    <h2>physics</h2>
+    <div class="row">
+      <label>drift <span class="v" id="driftV">0.30</span></label>
+      <input id="drift" type="range" min="0" max="1" step="0.01" value="0.3">
+    </div>
+    <div class="row">
+      <label>gravity <span class="v" id="gravV">0.00</span></label>
+      <input id="grav" type="range" min="-0.5" max="0.5" step="0.01" value="0">
+    </div>
+    <h2>audio</h2>
+    <div class="row">
+      <label>master <span class="v" id="ampV">0.20</span></label>
+      <input id="amp" type="range" min="0" max="0.6" step="0.005" value="0.20">
+    </div>
+    <div class="row">
+      <label>quantize</label>
+      <select id="scale" style="background:#1a1a1d; color:#e8e8ea; border:1px solid #2a2a30; padding:4px;">
+        <option value="continuous">continuous</option>
+        <option value="chromatic">12-TET</option>
+        <option value="penta" selected>pentatonic</option>
+        <option value="dorian">dorian</option>
+      </select>
+    </div>
+    <button id="clear" class="off">clear cloud</button>
+    <button id="mute" class="off">mute</button>
+  </aside>
+</main>
+<footer>hold the mouse to seed grains. up to ~200 simultaneous oscillators — older grains recycle. <kbd>m</kbd> mutes, <kbd>c</kbd> clears.</footer>
+
+<script>
+const stage = document.getElementById('stage'), ctx = stage.getContext('2d');
+const muteBtn = document.getElementById('mute'), clearBtn = document.getElementById('clear'), banner = document.getElementById('audio-banner');
+const ind = document.getElementById('indicator');
+const ctrls = {};
+['rate','scatter','life','drift','grav','amp','scale'].forEach(id => ctrls[id] = document.getElementById(id));
+['rateV','scatterV','lifeV','driftV','gravV','ampV'].forEach(id => ctrls[id] = document.getElementById(id));
+
+let actx = null, master = null;
+const MAX_GRAINS = 200;
+const grains = [];
+let mouse = {x: 0, y: 0, down: false};
+let muted = false;
+
+function ensureAudio(){
+  if(!actx){
+    try {
+      actx = new (window.AudioContext || window.webkitAudioContext)();
+      master = actx.createGain();
+      master.gain.value = +ctrls.amp.value;
+      master.connect(actx.destination);
+      banner.textContent = 'audio active — drag to spawn grains';
+      banner.classList.add('live');
+    } catch(e) {
+      banner.textContent = 'AudioContext unavailable — visuals only';
+    }
+  }
+  if(actx && actx.state === 'suspended') actx.resume();
+}
+muteBtn.onclick = () => {
+  muted = !muted;
+  if(actx) master.gain.setTargetAtTime(muted ? 0 : +ctrls.amp.value, actx.currentTime, 0.05);
+  muteBtn.textContent = muted ? 'unmute' : 'mute';
+};
+clearBtn.onclick = () => {
+  while(grains.length){ const g = grains.pop(); if(g.osc) try { g.osc.stop(); } catch(e){} }
+};
+
+ctrls.amp.oninput = () => {
+  ctrls.ampV.textContent = (+ctrls.amp.value).toFixed(3);
+  if(actx && !muted) master.gain.setTargetAtTime(+ctrls.amp.value, actx.currentTime, 0.05);
+};
+ctrls.rate.oninput = () => ctrls.rateV.textContent = ctrls.rate.value;
+ctrls.scatter.oninput = () => ctrls.scatterV.textContent = (+ctrls.scatter.value).toFixed(2);
+ctrls.life.oninput = () => ctrls.lifeV.textContent = (+ctrls.life.value).toFixed(1);
+ctrls.drift.oninput = () => ctrls.driftV.textContent = (+ctrls.drift.value).toFixed(2);
+ctrls.grav.oninput = () => ctrls.gravV.textContent = (+ctrls.grav.value).toFixed(2);
+
+stage.addEventListener('mousedown', e => { ensureAudio(); mouse.down = true; updateMouse(e); });
+stage.addEventListener('touchstart', e => { e.preventDefault(); ensureAudio(); mouse.down = true; updateTouch(e); });
+window.addEventListener('mouseup', () => mouse.down = false);
+window.addEventListener('touchend', () => mouse.down = false);
+stage.addEventListener('mousemove', updateMouse);
+stage.addEventListener('touchmove', e => { e.preventDefault(); updateTouch(e); });
+banner.addEventListener('click', ensureAudio);
+window.addEventListener('keydown', e => {
+  if(e.code === 'KeyM'){ muteBtn.click(); }
+  if(e.code === 'KeyC'){ clearBtn.click(); }
+});
+function updateMouse(e){
+  const r = stage.getBoundingClientRect();
+  mouse.x = (e.clientX - r.left) / r.width;
+  mouse.y = (e.clientY - r.top) / r.height;
+}
+function updateTouch(e){
+  if(!e.touches.length) return;
+  const t = e.touches[0]; const r = stage.getBoundingClientRect();
+  mouse.x = (t.clientX - r.left) / r.width;
+  mouse.y = (t.clientY - r.top) / r.height;
+}
+
+const SCALES = {
+  continuous: null,
+  chromatic: [0,1,2,3,4,5,6,7,8,9,10,11],
+  penta: [0,2,4,7,9],
+  dorian: [0,2,3,5,7,9,10],
+};
+function pitchFromX(x){
+  const midi = 36 + x*60;
+  const scale = SCALES[ctrls.scale.value];
+  if(!scale) return 440 * Math.pow(2, (midi-69)/12);
+  const oct = Math.floor(midi/12) - 6;
+  const note = midi % 12;
+  let best = scale[0], bestDist = 12;
+  for(const s of scale){ const d = Math.abs(s - note); if(d < bestDist){ bestDist = d; best = s; } }
+  const final = 36 + (oct+5)*12 + best;
+  return 440 * Math.pow(2, (final-69)/12);
+}
+
+function spawnGrain(){
+  if(grains.length >= MAX_GRAINS){
+    const g = grains.shift();
+    if(g.osc) try { g.osc.stop(); } catch(e){}
+  }
+  const scatter = +ctrls.scatter.value * 0.08;
+  const x = Math.max(0, Math.min(1, mouse.x + (Math.random()-0.5)*scatter*2));
+  const y = Math.max(0, Math.min(1, mouse.y + (Math.random()-0.5)*scatter*2));
+  const angle = Math.random()*Math.PI*2;
+  const speed = (+ctrls.drift.value) * 0.0015;
+  const g = {
+    x, y, vx: Math.cos(angle)*speed, vy: Math.sin(angle)*speed,
+    born: performance.now()/1000, life: +ctrls.life.value,
+    osc: null, gain: null, hue: 20 + 200 * y
+  };
+  if(actx){
+    try {
+      g.osc = actx.createOscillator(); g.osc.type = 'sine';
+      g.osc.frequency.value = pitchFromX(x);
+      g.gain = actx.createGain(); g.gain.gain.value = 0;
+      const pan = actx.createStereoPanner ? actx.createStereoPanner() : null;
+      g.osc.connect(g.gain);
+      if(pan){ pan.pan.value = (x-0.5)*1.4; g.gain.connect(pan); pan.connect(master); }
+      else g.gain.connect(master);
+      const grainAmp = 1.0 / Math.sqrt(Math.max(8, MAX_GRAINS/8));
+      g.gain.gain.setValueAtTime(0, actx.currentTime);
+      g.gain.gain.linearRampToValueAtTime(grainAmp, actx.currentTime + 0.025);
+      g.gain.gain.linearRampToValueAtTime(0, actx.currentTime + g.life);
+      g.osc.start(); g.osc.stop(actx.currentTime + g.life + 0.05);
+    } catch(e) { /* swallow */ }
+  }
+  grains.push(g);
+}
+
+let lastSpawn = 0;
+function tick(){
+  const now = performance.now()/1000;
+  if(mouse.down){
+    const rate = +ctrls.rate.value;
+    if(rate > 0){
+      const interval = 1.0/rate;
+      while(now - lastSpawn > interval){ spawnGrain(); lastSpawn += interval; }
+    }
+  } else { lastSpawn = now; }
+  const grav = +ctrls.grav.value * 0.00005;
+  for(let i=grains.length-1;i>=0;i--){
+    const g = grains[i];
+    g.x += g.vx; g.y += g.vy; g.vy += grav;
+    if(now - g.born > g.life){ grains.splice(i,1); }
+  }
+  draw(now);
+  requestAnimationFrame(tick);
+}
+function draw(now){
+  const W = stage.width = stage.clientWidth * devicePixelRatio;
+  const H = stage.height = stage.clientHeight * devicePixelRatio;
+  ctx.fillStyle = 'rgba(10,10,12,0.18)'; ctx.fillRect(0,0,W,H);
+  for(const g of grains){
+    const age = (now - g.born) / g.life;
+    const alpha = (1 - age) * 0.85;
+    const r = (1 - age*0.6) * 6 * devicePixelRatio;
+    ctx.fillStyle = `hsla(${g.hue}, 80%, 60%, ${alpha})`;
+    ctx.beginPath(); ctx.arc(g.x*W, g.y*H, r, 0, Math.PI*2); ctx.fill();
+  }
+  if(mouse.down){
+    const grad = ctx.createRadialGradient(mouse.x*W, mouse.y*H, 0, mouse.x*W, mouse.y*H, 60*devicePixelRatio);
+    grad.addColorStop(0, 'rgba(255,111,89,0.18)');
+    grad.addColorStop(1, 'rgba(255,111,89,0)');
+    ctx.fillStyle = grad;
+    ctx.fillRect(mouse.x*W - 60*devicePixelRatio, mouse.y*H - 60*devicePixelRatio, 120*devicePixelRatio, 120*devicePixelRatio);
+  }
+  ind.textContent = `grains: ${grains.length}`;
+}
+tick();
+</script>
+</body>
+</html>

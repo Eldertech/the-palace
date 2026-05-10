@@ -77,10 +77,11 @@ export default function ResponseModal({ request, option, sessionId, onConfirmed,
     setSending(true);
     setErrors([]);
     try {
-      const target = request._session_id
-        ? { session: request._session_id }
-        : 'persistent';
-      const persisted = await postMessage(preview, target);
+      // Always route to the persistent board — see TricksterInbox.jsx
+      // InlineResponse for the rationale. The session-id-based routing
+      // misroutes permanent-agent responses onto session boards where
+      // the original request can't see them.
+      const persisted = await postMessage(preview, 'persistent');
       onConfirmed(persisted);
     } catch (err) {
       if (err instanceof InvalidMessageError) {

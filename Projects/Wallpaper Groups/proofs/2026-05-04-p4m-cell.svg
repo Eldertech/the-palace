@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 720" width="720" height="720">
+  <defs>
+    <style>
+      .bg { fill: #0f0f10; }
+      .motif { fill: #e8b04e; stroke: #f5d68b; stroke-width: 1.2; }
+      .lattice { fill: none; stroke: #2a2a30; stroke-width: 1; }
+      .mirror { stroke: #6dd3c7; stroke-width: 1.2; stroke-dasharray: 5 4; opacity: 0.7; }
+      .rot4 { fill: #ff6f59; }
+      .rot2 { fill: #6dd3c7; }
+      .label { fill: #c0c0c0; font-family: -apple-system, system-ui, sans-serif; font-size: 13px; }
+      .title { fill: #f5d68b; font-family: -apple-system, system-ui, sans-serif; font-size: 22px; font-weight: 600; }
+    </style>
+    <!-- One asymmetric "comma" motif, anchored bottom-left of fundamental triangle -->
+    <g id="motif">
+      <path class="motif" d="M 5 30 Q 5 5 30 5 L 30 12 Q 12 12 12 30 Z"/>
+    </g>
+    <!-- One 90-degree fundamental cell: 8 copies of motif via the p4m group -->
+    <g id="cell">
+      <!-- cell square (light outline for orientation, removed in production) -->
+      <rect x="0" y="0" width="120" height="120" class="lattice"/>
+      <!-- generate p4m by reflecting/rotating the motif. p4m = D4 acting on a square. -->
+      <use href="#motif"/>
+      <use href="#motif" transform="translate(120,0) scale(-1,1)"/>
+      <use href="#motif" transform="translate(0,120) scale(1,-1)"/>
+      <use href="#motif" transform="translate(120,120) scale(-1,-1)"/>
+      <use href="#motif" transform="translate(60,60) rotate(90) translate(-60,-60)"/>
+      <use href="#motif" transform="translate(60,60) rotate(90) translate(-60,-60) translate(120,0) scale(-1,1)"/>
+      <use href="#motif" transform="translate(60,60) rotate(90) translate(-60,-60) translate(0,120) scale(1,-1)"/>
+      <use href="#motif" transform="translate(60,60) rotate(90) translate(-60,-60) translate(120,120) scale(-1,-1)"/>
+    </g>
+  </defs>
+
+  <rect class="bg" width="100%" height="100%"/>
+
+  <!-- 5x5 lattice of cells -->
+  <g transform="translate(60,80)">
+    <g>
+      <use href="#cell" x="0"   y="0"/>
+      <use href="#cell" x="120" y="0"/>
+      <use href="#cell" x="240" y="0"/>
+      <use href="#cell" x="360" y="0"/>
+      <use href="#cell" x="480" y="0"/>
+      <use href="#cell" x="0"   y="120"/>
+      <use href="#cell" x="120" y="120"/>
+      <use href="#cell" x="240" y="120"/>
+      <use href="#cell" x="360" y="120"/>
+      <use href="#cell" x="480" y="120"/>
+      <use href="#cell" x="0"   y="240"/>
+      <use href="#cell" x="120" y="240"/>
+      <use href="#cell" x="240" y="240"/>
+      <use href="#cell" x="360" y="240"/>
+      <use href="#cell" x="480" y="240"/>
+      <use href="#cell" x="0"   y="360"/>
+      <use href="#cell" x="120" y="360"/>
+      <use href="#cell" x="240" y="360"/>
+      <use href="#cell" x="360" y="360"/>
+      <use href="#cell" x="480" y="360"/>
+      <use href="#cell" x="0"   y="480"/>
+      <use href="#cell" x="120" y="480"/>
+      <use href="#cell" x="240" y="480"/>
+      <use href="#cell" x="360" y="480"/>
+      <use href="#cell" x="480" y="480"/>
+    </g>
+
+    <!-- Annotation overlay on the central cell to expose the symmetries -->
+    <g transform="translate(240,240)">
+      <rect x="0" y="0" width="120" height="120" fill="none" stroke="#f5d68b" stroke-width="1.5"/>
+      <!-- 4-fold rotation centers (at corners of cell) -->
+      <circle class="rot4" cx="0"   cy="0"   r="5"/>
+      <circle class="rot4" cx="120" cy="0"   r="5"/>
+      <circle class="rot4" cx="0"   cy="120" r="5"/>
+      <circle class="rot4" cx="120" cy="120" r="5"/>
+      <!-- 4-fold center at cell center -->
+      <circle class="rot4" cx="60"  cy="60"  r="5"/>
+      <!-- 2-fold rotation centers (midpoints of edges) -->
+      <circle class="rot2" cx="60"  cy="0"   r="4"/>
+      <circle class="rot2" cx="60"  cy="120" r="4"/>
+      <circle class="rot2" cx="0"   cy="60"  r="4"/>
+      <circle class="rot2" cx="120" cy="60"  r="4"/>
+      <!-- mirror lines: horizontal, vertical, both diagonals through center -->
+      <line class="mirror" x1="60"  y1="-15" x2="60"  y2="135"/>
+      <line class="mirror" x1="-15" y1="60"  x2="135" y2="60"/>
+      <line class="mirror" x1="-15" y1="-15" x2="135" y2="135"/>
+      <line class="mirror" x1="-15" y1="135" x2="135" y2="-15"/>
+    </g>
+  </g>
+
+  <!-- Title and legend -->
+  <text x="60" y="48" class="title">p4m — square lattice with full D₄ symmetry at every node</text>
+  <text x="60" y="690" class="label">
+    <tspan x="60" dy="0">●</tspan>
+    <tspan dx="6" fill="#ff6f59">4-fold rotation centers</tspan>
+    <tspan dx="20" fill="#6dd3c7">●</tspan>
+    <tspan dx="6">2-fold rotation centers</tspan>
+    <tspan dx="20">— — —</tspan>
+    <tspan dx="6">mirror lines (4 per cell)</tspan>
+  </text>
+  <text x="60" y="710" class="label">one of 17 — the most symmetric of all wallpaper groups; the square's full dihedral group D₄ acts at every lattice point</text>
+</svg>

@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Piano String Inharmonicity — B Slider</title>
+<style>
+  :root { color-scheme: dark; }
+  body {
+    margin: 0; min-height: 100vh; background: #0f0f10; color: #e8e8ea;
+    font-family: -apple-system, system-ui, sans-serif;
+    display: grid; grid-template-rows: auto 1fr auto; gap: 0;
+  }
+  header { padding: 24px 32px; border-bottom: 1px solid #2a2a30; }
+  header h1 { margin: 0 0 4px 0; font-size: 22px; font-weight: 600; color: #f5d68b; }
+  header p { margin: 0; color: #9a9aa0; font-size: 13px; max-width: 70ch; }
+  main { padding: 24px 32px; display: grid; gap: 24px; align-content: start; }
+  .controls { display: grid; gap: 14px; max-width: 640px; }
+  .row { display: grid; grid-template-columns: 130px 1fr 80px; gap: 16px; align-items: center; }
+  .row label { color: #c0c0c0; font-size: 13px; }
+  .row .val { color: #f5d68b; font-variant-numeric: tabular-nums; font-size: 13px; text-align: right; }
+  input[type=range] { width: 100%; accent-color: #ff6f59; }
+  button {
+    background: #ff6f59; color: #0f0f10; border: none; padding: 10px 18px;
+    font-weight: 600; font-size: 14px; cursor: pointer; border-radius: 4px;
+  }
+  button.off { background: #2a2a30; color: #c0c0c0; }
+  canvas { background: #1a1a1d; border: 1px solid #2a2a30; width: 100%; max-width: 800px; height: 240px; display: block; }
+  .partials { display: grid; grid-template-columns: repeat(8, 1fr); gap: 4px; max-width: 800px; font-size: 11px; color: #888; font-variant-numeric: tabular-nums; }
+  .partials div { background: #1a1a1d; padding: 6px 8px; border-radius: 3px; }
+  footer { padding: 16px 32px; border-top: 1px solid #2a2a30; color: #777; font-size: 12px; }
+  kbd { background: #2a2a30; padding: 2px 6px; border-radius: 3px; font-family: ui-monospace, monospace; font-size: 11px; }
+</style>
+</head>
+<body>
+<header>
+  <h1>Piano String Inharmonicity — hear the formula</h1>
+  <p>fₙ = n·f₀·√(1 + B·n²). Real piano strings have B ≈ 0.0001 (bass) to 0.004 (treble). Move the slider; listen to the partials stretch above pure harmonics.</p>
+</header>
+<main>
+  <div class="controls">
+    <div class="row">
+      <label>fundamental f₀</label>
+      <input id="f0" type="range" min="55" max="440" step="1" value="110">
+      <div class="val"><span id="f0v">110</span> Hz</div>
+    </div>
+    <div class="row">
+      <label>inharmonicity B</label>
+      <input id="B" type="range" min="0" max="0.004" step="0.00002" value="0.0008">
+      <div class="val"><span id="Bv">0.00080</span></div>
+    </div>
+    <div class="row">
+      <label># partials</label>
+      <input id="N" type="range" min="4" max="24" step="1" value="14">
+      <div class="val"><span id="Nv">14</span></div>
+    </div>
+    <div class="row">
+      <label>amplitude</label>
+      <input id="amp" type="range" min="0" max="1" step="0.01" value="0.18">
+      <div class="val"><span id="ampv">0.18</span></div>
+    </div>
+    <div style="display:flex; gap:12px; margin-top:8px;">
+      <button id="play">▶ play</button>
+      <button id="strike" class="off">strike (envelope)</button>
+    </div>
+  </div>
+
+  <canvas id="spec"></canvas>
+  <div class="partials" id="ptable"></div>
+</main>
+<footer>
+  press <kbd>space</kbd> to strike. The bottom strip shows where each partial lands; gold = harmonic position, orange = stretched.
+</footer>
+
+<script>
+const f0el = document.getElementById('f0'), Bel = document.getElementById('B'),
+      Nel = document.getElementById('N'), ampel = document.getElementById('amp'),
+      f0v = document.getElementById('f0v'), Bv = document.getElementById('Bv'),
+      Nv = document.getElementById('Nv'), ampv = document.getElementById('ampv'),
+      playBtn = document.getElementById('play'), strikeBtn = document.getElementById('strike'),
+      canvas = document.getElementById('spec'), ptable = document.getElementById('ptable');
+const ctxd = canvas.getContext('2d');
+
+let actx = null, master = null, oscs = [], gains = [];
+let playing = false;
+
+function ensure(){
+  if(!actx){
+    actx = new (window.AudioContext || window.webkitAudioContext)();
+    master = actx.createGain();
+    master.gain.value = 0;
+    master.connect(actx.destination);
+  }
+}
+function partials(){
+  const f0 = +f0el.value, B = +Bel.value, N = +Nel.value;
+  const fs = []; for(let n=1;n<=N;n++){ fs.push(n * f0 * Math.sqrt(1 + B*n*n)); }
+  return fs;
+}
+function rebuildOsc(){
+  if(!actx) return;
+  oscs.forEach(o=>o.stop()); oscs=[]; gains=[];
+  const fs = partials();
+  fs.forEach((f, i) => {
+    const o = actx.createOscillator(); o.type = 'sine'; o.frequency.value = f;
+    const g = actx.createGain(); g.gain.value = 1.0/(i+1)/2.5;
+    o.connect(g); g.connect(master); o.start();
+    oscs.push(o); gains.push(g);
+  });
+}
+function tunePartials(){
+  if(!oscs.length) return;
+  const fs = partials();
+  fs.forEach((f, i) => { if(oscs[i]) oscs[i].frequency.setTargetAtTime(f, actx.currentTime, 0.02); });
+}
+function setMaster(v){
+  if(!actx) return;
+  master.gain.cancelScheduledValues(actx.currentTime);
+  master.gain.linearRampToValueAtTime(v, actx.currentTime + 0.04);
+}
+function strike(){
+  ensure(); if(!oscs.length) rebuildOsc();
+  const a = +ampel.value;
+  master.gain.cancelScheduledValues(actx.currentTime);
+  master.gain.setValueAtTime(0, actx.currentTime);
+  master.gain.linearRampToValueAtTime(a, actx.currentTime + 0.005);
+  master.gain.exponentialRampToValueAtTime(0.0001, actx.currentTime + 3.0);
+}
+
+playBtn.onclick = () => {
+  ensure();
+  if(!playing){
+    if(!oscs.length) rebuildOsc();
+    setMaster(+ampel.value);
+    playing = true; playBtn.textContent = '■ stop'; playBtn.classList.add('off');
+  } else {
+    setMaster(0);
+    playing = false; playBtn.textContent = '▶ play'; playBtn.classList.remove('off');
+  }
+};
+strikeBtn.onclick = strike;
+window.addEventListener('keydown', e => { if(e.code === 'Space'){ e.preventDefault(); strike(); } });
+
+[f0el, Bel, Nel].forEach(el => el.addEventListener('input', () => {
+  f0v.textContent = f0el.value;
+  Bv.textContent = (+Bel.value).toFixed(5);
+  Nv.textContent = Nel.value;
+  if(playing || oscs.length){ if(+Nel.value !== oscs.length){ rebuildOsc(); } else tunePartials(); }
+  draw();
+}));
+ampel.addEventListener('input', () => {
+  ampv.textContent = (+ampel.value).toFixed(2);
+  if(playing) setMaster(+ampel.value);
+});
+
+function draw(){
+  const W = canvas.width = canvas.clientWidth * devicePixelRatio;
+  const H = canvas.height = canvas.clientHeight * devicePixelRatio;
+  ctxd.fillStyle = '#1a1a1d'; ctxd.fillRect(0,0,W,H);
+  const f0 = +f0el.value, N = +Nel.value, fs = partials();
+  const fmax = Math.max(fs[fs.length-1], N*f0) * 1.05;
+  // pure harmonic refs
+  ctxd.strokeStyle = '#f5d68b'; ctxd.lineWidth = 2*devicePixelRatio;
+  for(let n=1;n<=N;n++){
+    const x = (n*f0/fmax)*W;
+    ctxd.globalAlpha = 0.35;
+    ctxd.beginPath(); ctxd.moveTo(x, H); ctxd.lineTo(x, H*0.55); ctxd.stroke();
+  }
+  // actual stretched partials
+  ctxd.globalAlpha = 1.0; ctxd.strokeStyle = '#ff6f59';
+  fs.forEach((f, i) => {
+    const x = (f/fmax)*W;
+    const h = H * (0.95 - 0.6*i/N);
+    ctxd.beginPath(); ctxd.moveTo(x, H); ctxd.lineTo(x, h); ctxd.stroke();
+  });
+  // axis labels
+  ctxd.globalAlpha = 0.9; ctxd.fillStyle = '#888'; ctxd.font = (12*devicePixelRatio)+'px system-ui';
+  ctxd.fillText('0', 4*devicePixelRatio, H-6*devicePixelRatio);
+  ctxd.fillText(Math.round(fmax)+' Hz', W - 70*devicePixelRatio, H-6*devicePixelRatio);
+  // table
+  ptable.innerHTML = '';
+  fs.forEach((f, i) => {
+    const ideal = (i+1)*f0;
+    const cents = 1200 * Math.log2(f/ideal);
+    const div = document.createElement('div');
+    div.innerHTML = `n=${i+1}<br><span style="color:#ff6f59">${f.toFixed(1)}Hz</span><br><span style="color:#9a9aa0">+${cents.toFixed(1)}¢</span>`;
+    ptable.appendChild(div);
+  });
+}
+new ResizeObserver(draw).observe(canvas);
+draw();
+</script>
+</body>
+</html>

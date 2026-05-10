@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Proof Showcase v2 — 2026-05-04</title>
+<style>
+  :root { color-scheme: dark; }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; min-height: 100vh; background: #0f0f10; color: #e8e8ea;
+    font-family: -apple-system, system-ui, "Segoe UI", sans-serif;
+    line-height: 1.5;
+  }
+  header {
+    position: sticky; top: 0; z-index: 100;
+    background: rgba(15,15,16,0.96); backdrop-filter: blur(8px);
+    border-bottom: 1px solid #2a2a30; padding: 16px 32px;
+    display: grid; grid-template-columns: 1fr auto; gap: 16px; align-items: center;
+  }
+  header .title-block h1 { margin: 0; font-size: 18px; font-weight: 700; color: #f5d68b; }
+  header .title-block p { margin: 2px 0 0 0; font-size: 12px; color: #9a9aa0; }
+  header .actions { display: flex; gap: 8px; }
+  button {
+    background: #ff6f59; color: #0f0f10; border: none; padding: 8px 14px;
+    font-weight: 600; cursor: pointer; border-radius: 4px; font-size: 12px;
+  }
+  button.ghost { background: #2a2a30; color: #c0c0c0; }
+  button:hover { filter: brightness(1.1); }
+  main { max-width: 980px; margin: 0 auto; padding: 28px 32px 80px; }
+  section { margin-bottom: 56px; }
+  section > h2 {
+    font-size: 14px; font-weight: 700; color: #f5d68b;
+    text-transform: uppercase; letter-spacing: 0.08em;
+    border-bottom: 1px solid #2a2a30; padding-bottom: 8px; margin: 0 0 20px 0;
+  }
+  .card {
+    background: #14171a; border: 1px solid #2a2a30; border-radius: 8px;
+    margin-bottom: 24px; overflow: hidden;
+  }
+  .card.v2 { border-color: rgba(109,211,199,0.4); }
+  .card.confirmed { border-color: rgba(255,111,89,0.35); }
+  .card.new-entry { border-color: rgba(245,214,139,0.4); }
+  .card-header { padding: 14px 18px; border-bottom: 1px solid #2a2a30; display: flex; gap: 10px; align-items: baseline; flex-wrap: wrap; }
+  .card-header .project { font-size: 16px; font-weight: 600; color: #f5d68b; }
+  .card-header .stage {
+    font-size: 10px; padding: 2px 8px; border-radius: 10px;
+    text-transform: uppercase; letter-spacing: 0.06em;
+  }
+  .stage-fruiting { background: rgba(255,111,89,0.15); color: #ff6f59; }
+  .stage-mature   { background: rgba(245,214,139,0.15); color: #f5d68b; }
+  .stage-growing  { background: rgba(109,211,199,0.15); color: #6dd3c7; }
+  .stage-sprout   { background: rgba(197,118,197,0.15); color: #c576c5; }
+  .stage-seed     { background: rgba(136,136,136,0.20); color: #aaaaaa; }
+  .v-badge { font-size: 10px; padding: 2px 8px; border-radius: 10px; font-weight: 700; letter-spacing: 0.04em; }
+  .v-badge.v2 { background: #6dd3c7; color: #0f0f10; }
+  .v-badge.confirmed { background: rgba(255,111,89,0.85); color: #0f0f10; }
+  .v-badge.new { background: #f5d68b; color: #0f0f10; }
+  .feedback-quote {
+    background: rgba(197,118,197,0.06);
+    border-left: 3px solid #c576c5;
+    color: #c0c0c0;
+    font-size: 12px; padding: 8px 12px; margin: 10px 0 0;
+    font-style: italic;
+  }
+  .feedback-quote::before { content: '"'; color: #c576c5; font-weight: bold; }
+  .feedback-quote::after { content: '"'; color: #c576c5; font-weight: bold; }
+  .change-note {
+    background: rgba(109,211,199,0.07); border-left: 3px solid #6dd3c7;
+    color: #c0c0c0; padding: 8px 12px; margin: 0; font-size: 12px;
+  }
+  .change-note strong { color: #6dd3c7; }
+  .card-media { padding: 14px 18px; background: #0f0f10; border-bottom: 1px solid #2a2a30; }
+  .card-media img { max-width: 100%; height: auto; display: block; border-radius: 4px; }
+  .card-media audio { width: 100%; }
+  .card-media iframe { width: 100%; height: 540px; border: 1px solid #2a2a30; border-radius: 4px; background: #0a0a0c; }
+  .card-media .text-preview {
+    background: #1a1a1d; border: 1px solid #2a2a30; border-radius: 4px;
+    padding: 12px 16px; font-size: 13px; color: #c0c0c0; line-height: 1.6;
+    max-height: 240px; overflow: hidden; position: relative;
+  }
+  .card-media .text-preview::after {
+    content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 60px;
+    background: linear-gradient(to bottom, transparent, #1a1a1d);
+    pointer-events: none;
+  }
+  .card-caption { padding: 10px 18px; font-size: 12px; color: #c0c0c0; }
+  .card-caption .listen-for { color: #f5d68b; font-weight: 600; }
+  .card-links { padding: 0 18px 8px; font-size: 11px; }
+  .card-links a { color: #6dd3c7; text-decoration: none; margin-right: 14px; }
+  .card-links a:hover { text-decoration: underline; }
+  .multi-files { padding: 0 18px 12px; font-size: 11px; color: #888; }
+  .multi-files a { color: #6dd3c7; text-decoration: none; margin-right: 12px; }
+  .card-feedback { padding: 12px 18px 18px; }
+  .card-feedback label { display: block; font-size: 11px; color: #9a9aa0; margin-bottom: 6px; text-transform: uppercase; letter-spacing: 0.04em; }
+  .card-feedback textarea {
+    width: 100%; min-height: 60px; resize: vertical;
+    background: #0a0a0c; color: #e8e8ea; border: 1px solid #2a2a30; border-radius: 4px;
+    padding: 10px 12px; font-family: inherit; font-size: 13px; line-height: 1.5;
+  }
+  .card-feedback textarea:focus { outline: none; border-color: #ff6f59; }
+  .card-feedback .saved { font-size: 10px; color: #6dd3c7; margin-top: 4px; opacity: 0; transition: opacity 0.3s; }
+  .card-feedback .saved.show { opacity: 1; }
+  .toast {
+    position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%);
+    background: #ff6f59; color: #0f0f10; padding: 10px 18px; border-radius: 6px;
+    font-weight: 600; font-size: 13px; opacity: 0; transition: opacity 0.3s;
+    pointer-events: none; z-index: 200;
+  }
+  .toast.show { opacity: 1; }
+  .stat-row { display: flex; gap: 22px; font-size: 11px; color: #9a9aa0; margin-top: 2px; flex-wrap: wrap; }
+  .stat-row .v { color: #f5d68b; font-weight: 600; }
+  .summary-box {
+    background: #14171a; border: 1px solid #2a2a30; border-radius: 8px;
+    padding: 18px 22px; margin-bottom: 28px; font-size: 13px; line-height: 1.6;
+  }
+  .summary-box h3 { margin: 0 0 10px 0; color: #6dd3c7; font-size: 14px; }
+  .summary-box ul { margin: 8px 0; padding-left: 22px; color: #c0c0c0; }
+  .summary-box li { margin-bottom: 4px; }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="title-block">
+    <h1>Proof Showcase v2 — 2026-05-04</h1>
+    <div class="stat-row">
+      <span><span class="v" id="total-count">28</span> artifacts in this round</span>
+      <span><span class="v">17</span> reworked from v1</span>
+      <span><span class="v">3</span> new palace entries</span>
+      <span>feedback autosaves; <strong>Copy All</strong> at the top right</span>
+    </div>
+  </div>
+  <div class="actions">
+    <button id="copyAll">⬇ Copy All Feedback</button>
+    <button id="clearAll" class="ghost">clear</button>
+  </div>
+</header>
+
+<main>
+
+<div class="summary-box">
+  <h3>What changed since v1</h3>
+  <ul>
+    <li><strong>Bug fixes:</strong> Particle Synthesis audio (AudioContext now bootstraps on click), Talking Keyboard (keys widened, words now visible)</li>
+    <li><strong>Direction redirects:</strong> Frequency-Time Duality rebuilt around DELAY (not modulation). Metric Modulation redone with rhythmic anchor. Inharmonic Wavetable bending dramatically increased + 36 partials.</li>
+    <li><strong>Visual upgrades:</strong> Wallpaper Groups now interactive animated explorer. Bessel correlation explicitly to FM. Piano String shows real piano B values + bending curve. Neural Granular pedagogically annotated. Retrospective Delay extended to 7 frames. Shepard Tone clean (no clicks) + explanation chart.</li>
+    <li><strong>Audio expansion:</strong> Categorizing Inharmonicity now 5 separate WAVs.</li>
+    <li><strong>New palace entries:</strong> Blood Compressor, Slime Mold Delay (per Biomechanical hub feedback), Meadows and an Artist's Career (per refocus feedback).</li>
+    <li><strong>Claude Code handoff:</strong> single batched prompt for all narration tasks (Crystal catalog, Quantum, Portamento) + AP Generative Sample Library.</li>
+  </ul>
+</div>
+
+<section>
+  <h2>● Audio (v2 reworks)</h2>
+  <div id="audio-cards"></div>
+</section>
+
+<section>
+  <h2>◇ Visual (v2 reworks + new charts)</h2>
+  <div id="visual-cards"></div>
+</section>
+
+<section>
+  <h2>◐ Interactive (v2 fixes + animation)</h2>
+  <div id="interactive-cards"></div>
+</section>
+
+<section>
+  <h2>≡ Text (carried from v1, + new entries)</h2>
+  <div id="text-cards"></div>
+</section>
+
+<section>
+  <h2>◆ New palace entries</h2>
+  <div id="new-entries"></div>
+</section>
+
+<section>
+  <h2>↗ Claude Code handoff</h2>
+  <div id="handoff"></div>
+</section>
+
+</main>
+
+<div class="toast" id="toast">copied to clipboard</div>
+
+<script>
+const ARTIFACTS = [
+  // ============ AUDIO v2 ============
+  { id:"v2-metric-mod", section:"audio", v:"v2",
+    project:"Metric Modulation", stage:"growing",
+    quote:"This audio example doesn't follow the rules of metric modulation that is in the document, try again!",
+    change:"Now uses a true rhythmic anchor: 4 bars at 120 BPM with kick on quarters and bell on dotted-quarters. Pivot bar drops the kick. Then 4 bars at 80 BPM where the bell — at the SAME absolute timing as before — now reads as the new quarter pulse. The dotted-quarter at 120 = quarter at 80 = 0.75s exactly. Same audio reframed.",
+    src:"Projects/Metric Modulation/proofs/2026-05-04-pivot-via-bell-v2.wav",
+    listenFor:"Listen for the bell — it does not change rate. Only the kick around it changes. The bell's role transforms from 'subdivision in 120 BPM' to 'pulse of 80 BPM' as your ear lets go of the kick." },
+  { id:"v2-inharmonic", section:"audio", v:"v2",
+    project:"Inharmonic Wavetable Synthesis", stage:"growing",
+    quote:"Increase the amount of bending, I hear it, but it isn't dramatic enough, and include 2-4 times as many harmonics.",
+    change:"36 partials (was 14). B sweeps 0 → 0.005 (was 0 → 0.0015). Curve weighted toward second half so the bending becomes obvious. Companion image now has 4 spectrum slices instead of 3.",
+    src:"Projects/Inharmonic Wavetable Synthesis/proofs/2026-05-04-bending-the-line-v2.wav",
+    listenFor:"The first 3 seconds sound like a normal harmonic series. Around halfway through, the upper partials start sliding upward. By the end, the partials are stretched far past harmonic positions — the timbre has become bell-like.",
+    extra:{ type:"image", src:"Projects/Inharmonic Wavetable Synthesis/proofs/2026-05-04-bending-spectra-v2.png", note:"4 time slices showing the line bending into a curve" } },
+  { id:"v2-shepard", section:"audio", v:"v2",
+    project:"Shepard Tone Synthesizer", stage:"sprout",
+    quote:"I am hearing clicks at a few moments... lets make a really good chart of how this synthesis works.",
+    change:"Per-partial wrapping with phase reset at the wrap point (where amplitude is ~0). The clicks came from all 8 octaves snapping back simultaneously at the loop boundary. New version: each partial wraps independently when ITS amplitude is near zero — invisible to the ear.",
+    src:"Projects/Shepard Tone Synthesizer/proofs/2026-05-04-endless-ascent-v2.wav",
+    listenFor:"You should hear a smooth endless rise with no audible jumps or clicks. If you still hear clicks, the issue is rendering on your end, not the audio.",
+    extra:{ type:"image", src:"Projects/Shepard Tone Synthesizer/proofs/2026-05-04-shepard-explanation.png", note:"How it works: 10 partials rising in lockstep through a fixed Gaussian amplitude window" } },
+  { id:"v2-inharmonicity-files", section:"audio", v:"v2",
+    project:"Categorizing Inharmonicity", stage:"mature",
+    quote:"This is fantastic! Lets make audio files for each one of these.",
+    change:"Five separate WAV files, one per inharmonicity type. Each is 4 seconds at f₀=220 Hz with 16 partials and exponential decay.",
+    multiSrc:[
+      { label:"01 harmonic", src:"Projects/Categorizing Inharmonicity/proofs/2026-05-04-01-harmonic.wav" },
+      { label:"02 stretched", src:"Projects/Categorizing Inharmonicity/proofs/2026-05-04-02-stretched.wav" },
+      { label:"03 bessel", src:"Projects/Categorizing Inharmonicity/proofs/2026-05-04-03-bessel.wav" },
+      { label:"04 stochastic", src:"Projects/Categorizing Inharmonicity/proofs/2026-05-04-04-stochastic.wav" },
+      { label:"05 chaotic", src:"Projects/Categorizing Inharmonicity/proofs/2026-05-04-05-chaotic.wav" },
+    ],
+    listenFor:"Compare them side by side. Harmonic = pure tone. Stretched = slightly bell-like. Bessel = drum-like, missing harmonics. Stochastic = roughly tonal but noisy. Chaotic = the strangest, with detuned partials." },
+
+  { id:"v1-crystal-confirmed", section:"audio", v:"confirmed",
+    project:"Crystal Synthesizer", stage:"fruiting",
+    quote:"bifrengence is perfect",
+    change:"Direction confirmed. v1 stays. Next step: narrated catalog (sent to Claude Code).",
+    src:"Projects/Crystal Synthesizer/proofs/2026-05-04-calcite-vs-quartz.wav",
+    listenFor:"Birefringence as audible beating between paired ordinary/extraordinary partials. Calcite (Δn=0.172) rings hard; quartz (Δn=0.009) is almost-pure." },
+  { id:"v1-quantum", section:"audio", v:"v1",
+    project:"Quantum Synthesizer", stage:"growing",
+    quote:"I'd like to have an audio narration of what these are and how they relate to quantum synthesis.",
+    change:"Sent to Claude Code prompt. v1 audio stays available; narrated version will arrive from your local Kokoro session.",
+    src:"Projects/Quantum Synthesizer/proofs/2026-05-04-three-potentials.wav",
+    listenFor:"Three potentials at the same f₀: harmonic oscillator (evenly spaced), square well (n²), Coulomb-asymptotic." },
+  { id:"v1-portamento", section:"audio", v:"v1",
+    project:"Portamento and Physical Pitch Modeling", stage:"mature",
+    quote:"I'd love to hear this with an AI narration, simple a few words.",
+    change:"Sent to Claude Code prompt. v1 audio stays.",
+    src:"Projects/Portamento and Physical Pitch Modeling/proofs/2026-05-04-three-glides.wav",
+    listenFor:"Three glides C4 → G4: linear (toy), 2nd-order overdamped, 2nd-order underdamped with overshoot." },
+
+  { id:"v1-action-potential-greatocs", section:"audio", v:"confirmed",
+    project:"Action Potential Oscillator", stage:"growing",
+    quote:"This is a great oscillator, lets build a Generative Sampled library out of it.",
+    change:"Direction confirmed and expanded. v1 oscillator validated. Sample library build sent to Claude Code (88 notes × 4 velocity layers via FitzHugh-Nagumo input current variation).",
+    src:"Projects/Action Potential Oscillator/proofs/2026-05-04-spike-oscillator.wav",
+    listenFor:"FitzHugh-Nagumo cycle as one A2 waveform period, slowly morphing through the bifurcation zone (I = 0.45 → 0.85). The waveform itself IS the action potential shape." },
+
+  // ============ VISUAL v2 ============
+  { id:"v2-bessel-fm", section:"visual", v:"v2",
+    project:"Bessel Functions in Synthesis", stage:"growing",
+    quote:"how can we make this even more carefully correlated to FM synthesis?",
+    change:"New chart explicitly mapping Bessel functions to FM sideband amplitudes. Top: J_n(β) curves for n=0..6. Bottom row: actual FM spectra at β=2/4/6 with each peak labeled by its J_n. The point: J_n(β) IS the amplitude of the nth sideband.",
+    type:"image",
+    src:"Projects/Bessel Functions in Synthesis/proofs/2026-05-04-bessel-fm-correlation.png",
+    listenFor:"At β=2 most energy is in J_0 and J_1 (carrier and first sideband). At β=4 the carrier almost vanishes (J_0 ≈ -0.4) and many sidebands become loud. At β=6 you get a wide spread of comparable-amplitude partials." },
+  { id:"v2-piano", section:"visual", v:"v2",
+    project:"Piano String Inharmonicity", stage:"growing",
+    quote:"can you show or tell where actual piano inharmonicity sits? Add in another graphic that shows a straight line and a curve...",
+    change:"Two-panel chart. Top: real piano B values across all 88 keys (A0 ≈ 0.0001 to C8 ≈ 0.05+) on log scale, with the interactive's range highlighted. Bottom: harmonic-line vs bending-curve plot showing partial frequencies as the line bends, with cents-deviation annotations at three points.",
+    type:"image",
+    src:"Projects/Piano String Inharmonicity/proofs/2026-05-04-real-piano-and-bending-curve.png",
+    listenFor:"In a real piano: bass strings are huge and wound, so B is tiny. Treble strings are short and stiff, so B explodes. The interactive demo's B=0.0008 corresponds to roughly mid-keyboard." },
+  { id:"v2-shepard-explain", section:"visual", v:"v2", parentOf:"v2-shepard",
+    project:"Shepard Tone Synthesizer", stage:"sprout",
+    quote:"Lets make a really good chart of how this synthesis works.",
+    change:"Two-panel diagram. Top: 10 partials rising through log-frequency over time, colored by amplitude. Right edge shows the fixed Gaussian amplitude window. Bottom: just the Gaussian envelope on a log-frequency axis.",
+    type:"image",
+    src:"Projects/Shepard Tone Synthesizer/proofs/2026-05-04-shepard-explanation.png",
+    listenFor:"Each partial enters quietly at the bottom of the audible band, gets louder as it climbs through the center, fades as it exits at the top. New partials spawn at the bottom. The illusion: rising forever within a fixed window." },
+  { id:"v2-neural-gran", section:"visual", v:"v2",
+    project:"Neural Granular Synthesis", stage:"growing",
+    quote:"I am not quite following the graphics, but I am intrigued, keep going and help me understand!",
+    change:"Three-row pedagogical chart instead of one row. Top row: phases on unit circle with mean-field arrow (as before). Middle row: time-domain waveform of the population's summed audio, showing what each regime SOUNDS like. Bottom row: caption explaining what's happening + what it sounds like (noise floor / rough timbre / pure tone).",
+    type:"image",
+    src:"Projects/Neural Granular Synthesis/proofs/2026-05-04-kuramoto-explained-v2.png",
+    listenFor:"As coupling K rises (left → right), the population goes from random phases (which cancel into noise) to phase-locked (which fuse into one tone). The waveform row is the audible consequence." },
+  { id:"v2-cat-frames", section:"visual", v:"v2",
+    project:"Retrospective Delay", stage:"growing",
+    quote:"Great job, lets make more steps in between each image.",
+    change:"7 frames instead of 3: 0% (sleeping) → 17% (stirring, eyes open) → 33% (sensing, first ectoplasm) → 50% (reaching, paw extended) → 67% (possessed, arms wide) → 84% (channeling, stars in eyes) → 100% (ascended, full séance). The morph is now visible.",
+    type:"image",
+    src:"Projects/Retrospective Delay/proofs/2026-05-04-seance-cat-poses-v2-7frames.svg",
+    listenFor:"The morph happens in the eyes, the ears, the arms, the ectoplasm density. By frame 4 (50%) you can see the character has fully crossed from passive to active." },
+
+  // Carried over from v1 unchanged
+  { id:"v1-inharmonicity-grid", section:"visual", v:"v1+files",
+    project:"Categorizing Inharmonicity (overview)", stage:"mature",
+    change:"v1 spectrogram grid retained. v2 added 5 separate audio files (above).",
+    type:"image",
+    src:"Projects/Categorizing Inharmonicity/proofs/2026-05-04-five-flavors.png",
+    listenFor:"Side-by-side STFTs of all five flavors at f₀=220Hz." },
+  { id:"v1-bessel-modes", section:"visual", v:"v1",
+    project:"Bessel Functions — six modes", stage:"growing",
+    change:"v1 retained alongside the new FM correlation chart.",
+    type:"image",
+    src:"Projects/Bessel Functions in Synthesis/proofs/2026-05-04-six-modes.png",
+    listenFor:"First six (m,n) modes on a circular drumhead." },
+  { id:"v1-torus", section:"visual", v:"v1",
+    project:"2D Torus Wavetable Synthesizer", stage:"fruiting",
+    change:"No feedback yet. v1 retained.",
+    type:"image",
+    src:"Projects/2D Torus Wavetable Synthesizer/proofs/2026-05-04-seven-surfaces.png",
+    listenFor:"Seven candidate surfaces. The 7 of which 7 are the right 7 is the open question." },
+  { id:"v1-biomech", section:"visual", v:"v1+entries",
+    project:"Biomechanical Synthesis", stage:"mature",
+    change:"v1 hub diagram retained. Per your feedback, two new sub-projects fully spec'd: Blood Compressor and Slime Mold Delay (see New Palace Entries section).",
+    type:"image",
+    src:"Projects/Biomechanical Synthesis/proofs/2026-05-04-eight-instrument-hub.svg",
+    listenFor:"Hub of 8 instruments. The 'specified' tier (4 instruments) is now reduced — Blood Compressor and Slime Mold Delay have moved to having full project entries." },
+  { id:"v1-shimmer", section:"visual", v:"v1",
+    project:"Shimmer Cloud", stage:"seed",
+    change:"No feedback yet. v1 concept art retained.",
+    type:"image",
+    src:"Projects/Shimmer Cloud/proofs/2026-05-04-prism-dispersion.png",
+    listenFor:"Concept: input pulse dispersed through a prism into a pitched grain cloud." },
+  { id:"v1-meadows", section:"visual", v:"v1",
+    project:"Meadows and Music — Leverage Points (original)", stage:"growing",
+    change:"v1 hierarchy diagram retained. Per your feedback, a SIBLING entry now exists: Meadows and an Artist's Career (see New Palace Entries).",
+    type:"image",
+    src:"Projects/Meadows and Music — Leverage Points/proofs/2026-05-04-meadows-music-hierarchy.svg",
+    listenFor:"12 leverage points → 9 music exercises. Companion entry now applies the same hierarchy to careers." },
+
+  // ============ INTERACTIVE v2 ============
+  { id:"v2-particle", section:"interactive", v:"v2",
+    project:"Particle Synthesis", stage:"growing",
+    quote:"I am not hearing this, but the concept is great, fix bugs and re-submit.",
+    change:"AudioContext now bootstraps on first click on the canvas (was: required separate \"enable audio\" button click first). Master gain set to 0.20 by default. Banner clearly indicates audio state. Touch support added. Keyboard shortcuts m/c.",
+    type:"iframe",
+    src:"Projects/Particle Synthesis/proofs/2026-05-04-particle-grain-cloud-v2.html",
+    listenFor:"Click and hold on the canvas. Audio should start immediately. Each grain you spawn is a sine grain at the position's pitch." },
+  { id:"v2-keyboard", section:"interactive", v:"v2",
+    project:"Talking Keyboard", stage:"sprout",
+    quote:"when I hit piano keys I don't see words, does this need a bug fix?",
+    change:"Keys widened from 28px → 56px (white) / 36px (black) — words now actually fit on the keys. Auto-scroll centers on middle C on load. Unpopulated keys show '—' instead of placeholder code. Tooltip on hover shows full word + role. Composer area always visible above the keyboard.",
+    type:"iframe",
+    src:"Projects/Talking Keyboard/proofs/2026-05-04-velocity-language-madlib-v2.html",
+    listenFor:"Click any populated key (around middle C) and the word should appear in the composer above. Switch language chips to retranslate. Try the random sentence button." },
+  { id:"v2-freq-time", section:"interactive", v:"v2",
+    project:"Frequency-Time Duality", stage:"growing",
+    quote:"there is incorrect terminology and an unfocused direction, keep developing this, not with modulation, but with delay.",
+    change:"Complete rebuild around delay (per project doc). Was: carrier+modulator FM at varying mod rate. Now: noise pulses through a delay line with feedback, slider sweeps DELAY TIME from 0.5ms (pitch) → flutter → slapback → distinct echo → rhythmic pulse. Six perceptual zones with proper terminology from the project entry.",
+    type:"iframe",
+    src:"Projects/Frequency-Time Duality/proofs/2026-05-04-delay-time-axis-v2.html",
+    listenFor:"Press play. Drag the delay slider all the way left. You should hear the noise burst become tonal — the delay coloring acts like a comb filter. Drag right. The repeats become audibly separate — first as flutter, then as distinct echoes, then as a rhythm." },
+  { id:"v2-wallpaper", section:"interactive", v:"v2",
+    project:"Wallpaper Groups", stage:"growing",
+    quote:"This is beautiful! can it be animated or made interactive in a beautiful way?",
+    change:"Animated explorer for 11 of the 17 wallpaper groups (p1 → p6m). Pick a group from the sidebar; watch the symmetry operations apply in stages: base motif → first symmetry op → second symmetry op → translation tiling. Speed and replay controls.",
+    type:"iframe",
+    src:"Projects/Wallpaper Groups/proofs/2026-05-04-animated-explorer-v2.html",
+    listenFor:"The motif is asymmetric (chiral 'L' shape with a head-dot) so you can SEE handedness flip when reflections happen. Click p4m for the most dramatic build-up." },
+  { id:"v1-piano-string-interactive", section:"interactive", v:"v1+chart",
+    project:"Piano String Inharmonicity (B slider)", stage:"growing",
+    change:"v1 interactive retained. v2 chart added (above in Visual section) showing real piano B values + bending curve.",
+    type:"iframe",
+    src:"Projects/Piano String Inharmonicity/proofs/2026-05-04-B-slider.html",
+    listenFor:"Press play, drag B from 0 to 0.004 (the high-treble piano range). Each partial's cents deviation from harmonic shows in the bottom strip." },
+  { id:"v1-curriculum", section:"interactive", v:"confirmed",
+    project:"Curriculum Map", stage:"sprout",
+    quote:"Love this! A general status board is a fantastic idea.",
+    change:"Direction confirmed. v1 priority guide retained. This pattern can extend to other status board needs.",
+    type:"iframe",
+    src:"Projects/curriculum-map/proofs/2026-05-04-priority-guide.html",
+    listenFor:"All 23 projects placed in 4 priority tiers with one-line next-move per project." },
+
+  // ============ TEXT v1 retained ============
+  { id:"v1-semantic", section:"text", v:"v1",
+    project:"Semantic Delay", stage:"growing",
+    change:"No specific feedback yet. v1 retained.",
+    type:"text",
+    src:"Projects/Semantic Delay/proofs/2026-05-04-substitution-chain.md",
+    preview:"Six taps from r=0.05 (synonym) to r=0.95 (antipode). \"the river remembers everything it has touched\" → \"the silence answers each cry it has swallowed\"." },
+  { id:"v1-compressor", section:"text", v:"v1",
+    project:"Compressor Design", stage:"mature",
+    change:"No feedback yet. v1 retained — the Blood Compressor entry now extends this work.",
+    type:"text",
+    src:"Projects/Compressor Design/proofs/2026-05-04-pedagogical-retrospective.md",
+    preview:"Three teaching beats: 500-sample window as time you can feel; attack/release as desire/reluctance; sidechain as the conductor." },
+  { id:"v1-oracle", section:"text", v:"v1",
+    project:"Preset Oracle", stage:"mature",
+    change:"No feedback yet. v1 retained.",
+    type:"text",
+    src:"Projects/Preset Oracle/proofs/2026-05-04-new-oracle-prompt.md",
+    preview:"\"A glassblower remembering an argument with their teacher\" — sibling oracle prompt to Parmenides Dying Alone in a Warehouse." },
+  { id:"v1-gen-wavetable", section:"text", v:"v1",
+    project:"Generative Wavetable Libraries", stage:"sprout",
+    change:"No feedback yet. v1 interview-mock retained.",
+    type:"text",
+    src:"Projects/Generative Wavetable Libraries/proofs/2026-05-04-interview-mock.md",
+    preview:"Bell-deformation interview as spec-by-example for the future Interview skill." },
+  { id:"v1-gen-preset", section:"text", v:"v1",
+    project:"Generative Preset Development", stage:"growing",
+    change:"No feedback yet. v1 preset interview retained.",
+    type:"text",
+    src:"Projects/Generative Preset Development/proofs/2026-05-04-preset-interview-mock.md",
+    preview:"\"the moment before someone admits something\" → body / tension / threshold / breath / withhold macros." },
+  { id:"v1-phoneme-prompt", section:"text", v:"v1",
+    project:"Phoneme Choir (Claude Code prompt)", stage:"sprout",
+    change:"v1 prompt retained. Stage 0 audition still the next move (in your Claude Code session).",
+    type:"text",
+    src:"Projects/Phoneme Choir/proofs/2026-05-04-claude-code-handoff-prompt.md",
+    preview:"40-file Stage 0 audition (10 phonemes × 4 velocity layers) with audition gate before any full bank." },
+
+  // ============ NEW PALACE ENTRIES ============
+  { id:"new-blood", section:"new-entries", v:"new",
+    project:"Blood Compressor", stage:"sprout",
+    quote:"lets build out a complete new entry for Blood Compressor",
+    change:"New project entry. Spec covers: cardiovascular parameter mapping (threshold = systolic, attack = baroreceptor delay, etc.), interface mythology (vessel cross-section + beating heart), DSP architecture (RMS detector, soft knee, sympathetic activation knob, vessel age parameter), pedagogical framing (compression as the body's pressure regulation), 5 forward-vector stages.",
+    type:"text",
+    src:"Projects/Blood Compressor.md",
+    preview:"A compressor whose interface and behavior model the human cardiovascular system. The audio signal is the heartbeat. The threshold is systolic pressure. Vasoconstriction is gain reduction. The performer learns compression by feeling, on screen, what their body already does forty times a minute." },
+  { id:"new-slime", section:"new-entries", v:"new",
+    project:"Slime Mold Delay", stage:"sprout",
+    quote:"lets build out a complete new entry for slime Mold Delay",
+    change:"New project entry. Spec covers: Physarum biological substrate, mapping (food sources = audio inputs, plasmodium tubes = delay lines, tube diameter = feedback gain), interface mythology (petri dish + yellow tubes + audio pulses showing as bright dye), DSP architecture (topology engine + audio engine + flow tracking), pedagogical framing (emergent routing vs designed routing).",
+    type:"text",
+    src:"Projects/Slime Mold Delay.md",
+    preview:"A feedback delay network whose topology is grown by simulating the foraging of Physarum polycephalum. The user places sources and sinks; the slime mold connects them. As audio plays, the slime mold continues to optimize — pruning paths that are not used, reinforcing paths that carry signal — so the delay's routing learns the music." },
+  { id:"new-meadows-career", section:"new-entries", v:"new",
+    project:"Meadows and an Artist's Career", stage:"sprout",
+    quote:"I'd like to re-focus this around Meadows hierarchy in an artist's career, instead of as in music production.",
+    change:"New SIBLING entry to the original Meadows project. Same 12-level hierarchy, applied to careers instead of audio. Each level is paired with a career-shaping question (\"What is this career FOR?\" at level 3, \"What does it mean to be an artist?\" at level 2). Includes a diagnostic showing how most artists' attention is inverted relative to where the leverage actually lives.",
+    type:"text",
+    src:"Projects/Meadows and an Artist's Career.md",
+    preview:"A pivot of Meadows and Music — Leverage Points. The same hierarchy applied to the system that produces music: the artist's career as a system. Where do you put your energy? What kind of intervention is 'buy a new compressor' versus 'rewrite the goals of my practice'? Most artists waste their lives at the bottom of the hierarchy." },
+
+  // ============ CLAUDE CODE HANDOFF ============
+  { id:"handoff-batch", section:"handoff", v:"new",
+    project:"Claude Code batch — 4 narration tasks + AP Sample Library", stage:"sprout",
+    change:"Single batched prompt for your local Claude Code session. Handles: Crystal narrated catalog (6 crystals), Quantum narration (3 potentials), Portamento narration (3 glides), AP Generative Sample Library (88 notes × 4 velocity layers via FitzHugh-Nagumo input current variation, with SFZ output). Prompt enforces audition gates and the Talking Keyboard pronunciation-bug constraints.",
+    type:"text",
+    src:"_ops/claude-code-prompts/2026-05-04-batch-narration-and-AP-sample-library.md",
+    preview:"Cowork rendered the audio for these projects but cannot run Kokoro or any local TTS. This single Claude Code session handles all four narration tasks plus a generative sample library build. Audition gate is named at every task boundary. Filename scheme is 'ask, don't invent.' Mathematical notation flagged for Kokoro mispronunciation." },
+];
+
+function escapeHTML(s){ return String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
+function urlSafe(s){ return encodeURI(s); }
+
+function renderCard(a){
+  let mediaHTML = '';
+
+  if(a.section === 'audio'){
+    if(a.multiSrc){
+      mediaHTML = '<div class="card-media">';
+      a.multiSrc.forEach(f => {
+        mediaHTML += `<div style="margin-bottom:8px;"><div style="font-size:11px;color:#888;margin-bottom:2px;">${escapeHTML(f.label)}</div><audio controls preload="none" src="${urlSafe(f.src)}"></audio></div>`;
+      });
+      mediaHTML += '</div>';
+    } else if(a.src){
+      mediaHTML = `<div class="card-media"><audio controls preload="none" src="${urlSafe(a.src)}"></audio></div>`;
+    }
+    if(a.extra && a.extra.type === 'image'){
+      mediaHTML += `<div class="card-media" style="border-bottom:none;"><img loading="lazy" src="${urlSafe(a.extra.src)}" alt="companion image"></div>`;
+      mediaHTML += `<div class="card-caption" style="padding-top:0; color:#9a9aa0; font-style:italic;">${escapeHTML(a.extra.note)}</div>`;
+    }
+  } else if(a.type === 'image'){
+    mediaHTML = `<div class="card-media"><img loading="lazy" src="${urlSafe(a.src)}" alt="${escapeHTML(a.project)}"></div>`;
+  } else if(a.type === 'iframe'){
+    mediaHTML = `<div class="card-media"><iframe loading="lazy" src="${urlSafe(a.src)}" sandbox="allow-scripts allow-same-origin"></iframe></div>`;
+  } else if(a.type === 'text'){
+    mediaHTML = `<div class="card-media"><div class="text-preview">${escapeHTML(a.preview)}</div></div>`;
+  }
+
+  const quoteHTML = a.quote ? `<div class="feedback-quote">${escapeHTML(a.quote)}</div>` : '';
+  const changeHTML = a.change ? `<div class="change-note"><strong>${a.v === 'v2' ? 'v2 change:' : (a.v === 'confirmed' ? 'confirmed:' : (a.v === 'new' ? 'new:' : 'note:'))}</strong> ${escapeHTML(a.change)}</div>` : '';
+  const captionHTML = a.listenFor ? `<div class="card-caption"><span class="listen-for">${a.section === 'audio' ? 'Listen for: ' : (a.type === 'image' ? 'See: ' : 'Try: ')}</span>${escapeHTML(a.listenFor)}</div>` : '';
+  const linksHTML = a.src ? `<div class="card-links"><a href="${urlSafe(a.src)}" target="_blank">↗ open in new tab</a></div>` : '';
+  const multiLinksHTML = a.multiSrc ? `<div class="multi-files">${a.multiSrc.map(f => `<a href="${urlSafe(f.src)}" target="_blank">${escapeHTML(f.label)}</a>`).join(' ')}</div>` : '';
+
+  let badgeClass = 'v2', badgeText = a.v;
+  if(a.v === 'confirmed'){ badgeClass = 'confirmed'; badgeText = '✓ confirmed'; }
+  else if(a.v === 'new'){ badgeClass = 'new'; badgeText = '★ new'; }
+  else if(a.v === 'v1' || a.v === 'v1+files' || a.v === 'v1+chart' || a.v === 'v1+entries'){
+    badgeClass = ''; badgeText = a.v;
+  }
+
+  let cardClass = 'card';
+  if(a.v === 'v2') cardClass += ' v2';
+  else if(a.v === 'confirmed') cardClass += ' confirmed';
+  else if(a.v === 'new') cardClass += ' new-entry';
+
+  return `
+    <div class="${cardClass}">
+      <div class="card-header">
+        <span class="project">${escapeHTML(a.project)}</span>
+        ${a.stage ? `<span class="stage stage-${a.stage}">${a.stage}</span>` : ''}
+        ${badgeText ? `<span class="v-badge ${badgeClass}">${escapeHTML(badgeText)}</span>` : ''}
+      </div>
+      ${quoteHTML}
+      ${changeHTML}
+      ${mediaHTML}
+      ${multiLinksHTML}
+      ${captionHTML}
+      ${linksHTML}
+      <div class="card-feedback">
+        <label>round 2 feedback — does the v2 land? what next?</label>
+        <textarea data-id="${a.id}" placeholder="…"></textarea>
+        <div class="saved" data-saved="${a.id}">saved</div>
+      </div>
+    </div>
+  `;
+}
+
+function placeCards(){
+  const sections = {
+    audio:'audio-cards',
+    visual:'visual-cards',
+    interactive:'interactive-cards',
+    text:'text-cards',
+    'new-entries':'new-entries',
+    handoff:'handoff'
+  };
+  Object.values(sections).forEach(id => { const el = document.getElementById(id); if(el) el.innerHTML = ''; });
+  ARTIFACTS.forEach(a => {
+    const targetId = sections[a.section];
+    if(targetId){
+      const el = document.getElementById(targetId);
+      if(el) el.insertAdjacentHTML('beforeend', renderCard(a));
+    }
+  });
+  document.querySelectorAll('textarea[data-id]').forEach(t => {
+    const v = localStorage.getItem('feedback-v2-' + t.dataset.id);
+    if(v) t.value = v;
+    t.addEventListener('input', e => {
+      localStorage.setItem('feedback-v2-' + t.dataset.id, t.value);
+      const saved = document.querySelector(`[data-saved="${t.dataset.id}"]`);
+      if(saved){ saved.classList.add('show'); clearTimeout(saved._t); saved._t = setTimeout(()=>saved.classList.remove('show'), 1500); }
+    });
+  });
+}
+
+document.getElementById('total-count').textContent = ARTIFACTS.length;
+
+document.getElementById('copyAll').addEventListener('click', async () => {
+  const lines = [`# Proof Showcase v2 Feedback — 2026-05-04`, ''];
+  let any = false;
+  ARTIFACTS.forEach(a => {
+    const v = localStorage.getItem('feedback-v2-' + a.id);
+    if(v && v.trim()){
+      lines.push(`## ${a.project}`);
+      lines.push(v.trim());
+      lines.push('');
+      any = true;
+    }
+  });
+  const text = any ? lines.join('\n') : '# No feedback entered yet.';
+  try {
+    await navigator.clipboard.writeText(text);
+    showToast(any ? 'copied to clipboard — paste back to me' : 'no feedback yet');
+  } catch(e) {
+    const ta = document.createElement('textarea');
+    ta.value = text; document.body.appendChild(ta); ta.select();
+    try { document.execCommand('copy'); showToast('copied'); } catch(e2){ alert(text); }
+    document.body.removeChild(ta);
+  }
+});
+
+document.getElementById('clearAll').addEventListener('click', () => {
+  if(!confirm('Clear all v2 feedback locally? (does not affect saved files)')) return;
+  ARTIFACTS.forEach(a => localStorage.removeItem('feedback-v2-' + a.id));
+  document.querySelectorAll('textarea[data-id]').forEach(t => t.value = '');
+  showToast('cleared');
+});
+
+function showToast(msg){
+  const t = document.getElementById('toast');
+  t.textContent = msg; t.classList.add('show');
+  clearTimeout(t._tm); t._tm = setTimeout(()=>t.classList.remove('show'), 1800);
+}
+
+placeCards();
+</script>
+
+</body>
+</html>

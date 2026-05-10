@@ -1,0 +1,14 @@
+// Phoneme Choir AUDITION — MIDI 56 (G#3) = 'knock', 4 velocity layers
+// Drag into sforzando, hammer G#3 at varying velocities.
+// Onset trim: -30 dBFS threshold, 1 ms forward into sound. Fade-in: 3 ms.
+<group>
+  ampeg_attack=0.003 ampeg_release=0.05
+
+// gentle/breathy v1  voice=bf_isabella  onset=138ms  offset=139ms (3330smp)
+<region> sample=samples/phon_036_knock_bf_isabella.wav lokey=56 hikey=56 pitch_keycenter=56 lovel=1 hivel=32 offset=3330
+// warm v2  voice=bm_lewis  onset=47ms  offset=48ms (1145smp)
+<region> sample=samples/phon_036_knock_bm_lewis.wav lokey=56 hikey=56 pitch_keycenter=56 lovel=33 hivel=64 offset=1145
+// characterful v3  voice=am_puck  onset=31ms  offset=32ms (774smp)
+<region> sample=samples/phon_036_knock_am_puck.wav lokey=56 hikey=56 pitch_keycenter=56 lovel=65 hivel=96 offset=774
+// bold v4  voice=am_fenrir  onset=32ms  offset=33ms (781smp)
+<region> sample=samples/phon_036_knock_am_fenrir.wav lokey=56 hikey=56 pitch_keycenter=56 lovel=97 hivel=127 offset=781

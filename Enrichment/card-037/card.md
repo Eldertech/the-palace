@@ -12,7 +12,7 @@ artifact_type: "text"
 validator_verdict: pass
 validator_note: "Roads' voice lands with authority — the grain-cloud-as-slow-delay pivot is exact, not ornamental, and 'the map has rooms only because we need rooms to sleep in' earns its place. The voice-act does first-person reflection without explaining the entry in third person. The compression-mechanism paragraph adds something Roads could plausibly have said but didn't, which is the right kind of fictional generosity. Serves the FV's threshold-crossing framing from a credible outside angle."
 validator_iterations: 0
-archived: false
+archived: true
 ---
 
 Curtis Roads encounters the 20 Hz threshold — his nine time scales revealed as rooms on the same continuous axis Frequency-Time Duality describes.

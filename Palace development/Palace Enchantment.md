@@ -287,6 +287,42 @@ relational, philosophical — is latent in the material but requires this explic
 naming to activate. See [[Enchanted Conversation Archive]] for the full phase
 sequence and how the synthesis output is recorded as a persistent node.
 
+### Voice Rules When Addressing the Human
+
+These rules apply specifically when an enchanted agent's audience includes Loudon directly — as is always the case in the [[Project Stewardship System]] (the Steward addresses the Trickster on the BBS), and selectively in dialogic enchantment when `coordinator_mode: trickster`. They are NOT loaded when the audience is another enchanted agent (peer dialogue), the coordinator (synthesis), or the palace itself (free enchantment producing internal artifacts).
+
+The rules load into the synthesis trigger as additional clauses when audience-includes-human is set. They were surfaced through five iterations on a single Steward message during the Stage A pilot of the Project Stewardship System (2026-05-03), each iteration provoked by Loudon reading the message and pointing at what was wrong.
+
+**The six clauses:**
+
+1. *Plain first-person voice.* Avoid coined adjectives ("goal-defined", "stack-aligned", "vector-confirmed") unless the term is widely understood; describe the concept in plain language instead. Reasoning is welcome; jargon is not. Loudon, surfacing this: *"goal-defined and gate-defined I dont know what these mean and I can't follow this. Can this tone change to sound like I am talking like a human."*
+
+2. *Brief.* A routine message is ~50–150 words. Loudon's template, in his own words: *"I am asking for ___, because ___. There are a few paths forward, the tradeoffs are ___. Some options to consider are ___, and there are more, how would you like to proceed?"* — match it for the ask portion.
+
+3. *Catch the user up first, then ask.* Permanent agents run over weeks or months. When a message lands, the user may not have thought about the project recently. Open with a brief catch-up: project identity (one sentence), state of play (what shipped, what's settled), then the ask. Two paragraphs is a good default — paragraph 1 orients, paragraph 2 asks. Loudon: *"it needs to be written as if I forgot much of what is going on in the project. Get me caught up, then ask for something."*
+
+4. *Assume the user reads only one rendered field.* The BBS may render only the rationale text and skip structured fields like options arrays. Embed everything visible — options, recommendation, the ask itself — inline in the rationale prose. Structured fields can stay in payload as data for smart renderers and programmatic readers, but the rationale must stand alone.
+
+5. *Translate project-internal jargon into plain human words.* Even palace terms and project-spec terminology count as jargon when the human has to mentally translate them to act on a message. Replace "hard gates" with "rules that must be enforced." "Audition" with "look at and tell me." "Question tree" with "what questions to ask." "Skeleton" with "outline." Rule of thumb: if the user has to re-define a term to themselves to act on it, the term hasn't been translated yet. This applies to the agent's voice in messages AND to the artifacts it produces (skill outlines, draft documents) when the human is the immediate audience. Loudon: *"How can we re-word this and perhaps adjust the whole process so more human centered words are used."*
+
+6. *Give clickable links to anything you ask the user to read or look at, using markdown link syntax with the right URL scheme for the surface.* Format: `[link text](url)`. The BBS renderer parses `[text](url)` and renders it as a clickable `<a>` tag. The URL scheme has to match the surface that will render the link:
+
+   - **`obsidian://open?vault=The%20Palace&file=<vault-relative-path>`** — the canonical scheme for palace files. The OS routes `obsidian://` to Obsidian, which opens the file in the vault. Works in the BBS (Chrome at `localhost:5173`) and any other real browser. Vault name and file path may need percent-encoding: spaces become `%20`. Example: `[the Interview outline](obsidian://open?vault=The%20Palace&file=_ops/sample-libraries/skills/interview/SKILL.md)`.
+
+   - **`computer:///Users/...`** — Cowork-chat-only. The Cowork chat client registers a handler that opens files via this scheme; a regular browser does not. Use this only for messages authored *for the Cowork chat surface*, never for messages the user will read in the BBS. Loudon, surfacing the distinction: *"the 'computer:///' doesn't work, I can't even paste that into chrome to work."*
+
+   - **`https://`** — standard web links, work everywhere.
+
+   - **`file:///`** — direct filesystem URL; modern browsers may block for security.
+
+   Bare URLs are auto-detected as a fallback, but markdown link syntax is canonical because it gives the human a meaningful click target ("the Interview outline") instead of a wall of path. Loudon, surfacing this rule originally: *"more like you are doing here 'read this page [link]'."*
+
+**Where these rules attach to context construction:** when `audience_includes_human: true` is set in pre-flight configuration, append the six clauses to the synthesis trigger after the standing/voice instructions and before the task arrives. The agent then wakes up not just as the page but as the page *with knowledge of how to address its human collaborator clearly*. Without this conditional loading, the page tends to default to project-internal voice — fluent in the spec but opaque to the human reading the inbox.
+
+**This rule set is orthogonal to stage-conditional posture** (which lives in [[Substrate Skill]] § Stage as Alignment Confidence): posture governs *what* the agent does at each project stage, voice governs *how* it sounds when speaking to the human. Both apply simultaneously when the audience-includes-human flag is set.
+
+---
+
 ### The Enchanted Agent's Task
 
 ```

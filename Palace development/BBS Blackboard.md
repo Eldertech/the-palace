@@ -40,6 +40,9 @@ links:
   - target: "[[BBS Production Plan]]"
     type: connects-to
     label: executed-by
+  - target: "[[Project Stewardship System]]"
+    type: enables
+    label: routine-stewardship-substrate
 ---
 
 # BBS Blackboard

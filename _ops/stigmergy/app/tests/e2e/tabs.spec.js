@@ -38,7 +38,7 @@ test('messages on each tab match its board (no leakage)', async ({ page }) => {
 
 test('hotkey 1..6 switches channels', async ({ page }) => {
   await gotoBoard(page);
-  // start on GENERAL (key 1), switch to FLAGS via key 2
+  // start on TRICKSTER (default), switch to FLAGS via key 2
   await page.keyboard.press('2');
   await expect(page.getByTestId('tab-flags')).toHaveAttribute('data-active', 'true');
   await page.keyboard.press('5');

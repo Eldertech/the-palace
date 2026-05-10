@@ -166,3 +166,11 @@ Eight named crystals — diamond, ruby, amethyst, fluorite, emerald, topaz, labr
 - Explore whether [[Wallpaper Groups]] can generate timbral palettes that are perceptually "crystalline" vs "amorphous"
 - Test the hypothesis: a crystal structure's point group maps to a specific spectral fingerprint
 
+---
+
+> *calcite splits the light*
+> *two indices in one stone —*
+> *hear it: paired partials*
+
+— haiku, surfaced via [[Enrichment]] 2026-05-05
+

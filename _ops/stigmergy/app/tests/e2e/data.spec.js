@@ -5,9 +5,12 @@ import { test, expect } from '@playwright/test';
 // containing at least one message will satisfy these.
 
 test('on boot, the app fetches /api/persistent and renders messages', async ({ page }) => {
-  // Use ?demo=1 so the default GENERAL board has visible messages even
-  // against the real palace (where most data is on FLAGS / no-board).
+  // Use ?demo=1 so a known-populated board has visible messages even against
+  // the real palace (where most data is on FLAGS / no-board). The default
+  // tab is TRICKSTER (the inbox), so navigate to GENERAL — the demo-data
+  // target — to verify fetch+render.
   await page.goto('/?demo=1');
+  await page.getByTestId('tab-general').click();
   await expect(page.getByTestId('message-row').first()).toBeVisible({ timeout: 15_000 });
   const rows = await page.getByTestId('message-row').count();
   expect(rows).toBeGreaterThan(0);
