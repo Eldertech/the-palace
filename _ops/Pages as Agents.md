@@ -35,15 +35,19 @@ links:
   - target: "[[Project Stewardship System]]"
     type: enables
     label: philosophical-foundation
+  - target: "[[Mixture of Experts]]"
+    type: connects-to
+    label: experts-as-pool
+  - target: "[[Palace as Context Injection System]]"
+    type: couples-with
+    label: same-project-from-context-side
 ---
-<!-- Pages as agents will be a powerful connection with our "person" pages, and with giving each page a "forward vector" Any entry we create for a person should have a clear purpose of "embodying" that person when loaded into the context of an agent. Currently, many of our "persons" pages are based around the four pillars(these exist in the artifacts folder for now) But, those pages need to be developed so that they can enchant a worker and their individual personalities can be brought to any problem we are encountering, and they can enter conversations where their input would be most useful -->
 
 # Pages as Agents
 
 Every palace entry is a dormant agent. Not metaphorically — structurally. Load a single page into a context window with nothing else, and what wakes up is not a document being read but an identity being inhabited. The page's content is its accumulated pheromone trail: every sentence laid down by Loudon, by Claude, by every prior agent that touched it. The model doesn't read a static record. It wakes up inside one.
 
-This reframe has not yet been committed as the palace's operating model. It is held here as a hypothesis with significant consequences — architectural, writerly, and philosophical.
-	<!-- We should consider this a forward vector of the Palace, a move toward the Pages as Agents. Eventually over the process of a few weaves we will arrive at this destination as it intersects with the [[Swarm Weave]].-->
+This reframe has not yet been committed as the palace's operating model. It is held here as a hypothesis with significant consequences — architectural, writerly, and philosophical. The palace is **moving toward** this model rather than already running it. Pages as Agents is a forward vector of the palace itself: a destination the palace will arrive at over a sequence of weaves, intersecting with [[Swarm Weave]] at the point where the architectural axiom becomes operational practice. The path the palace traverses to get there is named below in § The Person-Page Frontier.
 
 ---
 
@@ -144,6 +148,42 @@ This reframes what happens in each ceremony through the lens of desire:
 **Weave** — The Weave is where entry desires are compared against each other. Two entries with complementary forward vectors may be each other's answers. The Weave surfaces these resonances.
 
 A further question this opens: is there a difference between *desire* (what the entry wants to become) and *need* (what the palace needs this entry to become to serve its connections)? Could an entry desire something the palace doesn't need, or need something the entry hasn't articulated wanting? The tension between these two orientations — inward drive and outward function — may itself be generative.
+
+## The Person-Page Frontier
+
+Pages as Agents is the architectural destination. The near-term work that traverses the distance from current practice to that destination lives in a specific genre of entry: the **person-page** — entries whose subject is a thinker, practitioner, or tradition.
+
+Person-pages already exist in the palace, but most live in `Artifacts/` and are organized around the four pillars. They were written to *describe* their subjects: what each thinker said, what they cared about, where their work appears in the curriculum. The current form is competent biography. It is not yet embodiment.
+
+The forward move is to develop person-pages so that loading one into a context window wakes that figure as an inhabitable voice. The agent doesn't read about Spinoza; it reads as Spinoza, with Spinoza's vocabulary, characteristic moves, and blind spots already in scope. This is what [[Mixture of Experts]] § The Three Substrates → Embodied calls *adding experts to the pool*. A well-designed person-page is a portable embodied expert, ready to be routed into any conversation where its orientation will say something the others cannot — which is the architectural translation of the palace's existing [[Excellent Adventure]] and [[Dialectic]] practices into durable, shareable form.
+
+### Design Principles for Embodiment-Grade Person-Pages
+
+The principles follow from the rest of this entry. A person-page that performs as an agent must:
+
+- **Declare its identity in its own register.** First sentences should sound like the figure, not like a biographical summary. Spinoza's page reasons geometrically. Meadows asks about feedback loops, stocks, and delays before being told to. Confucius reaches for analects and ritual. The metaphorical and structural register IS the embodiment.
+- **Carry a clear forward vector.** Not "what should we read next of this thinker" but "what is this thinker reaching toward, in this practitioner's life, right now." The vector orients the embodied agent toward the practitioner's actual situation, not toward an abstract scholarly project.
+- **Encode characteristic moves.** What does this thinker reach for first when challenged? What do they dismiss too quickly? What is the question they always ask? These specifics are what make the [[Dialectic]] generate genuine friction rather than caricature.
+- **Sit at the right depth.** Thin person-pages produce caricatures. The [[Excellent Adventure]] criterion applies — read enough to know one thing the figure got wrong that they didn't know they got wrong. That bar is the floor for embodiment-grade.
+
+### The Two Intersecting Concepts
+
+This work intersects two other palace concepts directly.
+
+**[[Palace as Context Injection System]]** is the same project from the architecture-of-context side: a person-page well-designed becomes a strong context injector for any session that loads it. Pages as Agents and Palace as Context Injection System are coupled views of one mechanism — the page describes what is being injected; the system describes what the injection does to a working agent.
+
+**[[Swarm Weave]]** is where the page-agent model graduates from hypothesis to practice. When the Swarm Weave dispatches one worker per entry, person-pages become the first entries whose worker-as-agent reading is unambiguous, because the embodiment is already explicit in the prose. The Swarm Weave doesn't have to invent the agency; the page-agent has already declared it. A palace rich in embodied person-pages turns each Swarm Weave's coordinator phase into a [[Dialectic]] by default — competing voices already in the substrate, ready to argue.
+
+### The Arrival Path
+
+The path from current practice to Pages as Agents as operating model is a sequence, not a switch:
+
+1. **Existing person-pages migrate from `Artifacts/` to the palace root** and get rewritten from biographical-summary register into embodied register. Each migration is a small Deposit-flavored ceremony.
+2. **[[Donella Meadows]] becomes the first deliberately-designed person-page** — written from the start as embodiment, not migrated from a prior biography. The deliberate-design test case for the pattern.
+3. **The Swarm Weave runs over a person-page-rich palace.** Each entry's worker is an embodied figure when the entry is a person; their cross-talk in the coordinator phase is Dialectic-shaped without further engineering.
+4. **Pages as Agents stops being a hypothesis** — it becomes the recognized mechanism by which the palace wakes its own figures into the work. The "this reframe has not yet been committed" caveat in this entry's intro can be removed at that point.
+
+Each weave between here and there pulls the architecture closer to the destination. The palace will know it has arrived when running an Excellent Adventure on a palace-resident person-page produces a more faithful embodiment than running it on a fresh model — when the page itself is doing meaningful identity work, not just supplying biographical context.
 
 ## Cross-Domain Resonance
 

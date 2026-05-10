@@ -1,0 +1,180 @@
+// =====================================================================
+// mathieu_resonator.codebox
+//
+// Stage 1 instrument for the [[Floquet Time-Modulated Loops]] project.
+// A 2nd-order resonant filter whose center frequency is being modulated
+// periodically at audio rate — a faithful audio implementation of the
+// Mathieu equation
+//
+//     x'' + (a - 2 q cos(omega_mod * t)) x = 0
+//
+// with a deliberate tanh saturation on the output (and a mild soft-clip
+// on state) so in-tongue exponential growth becomes a finite, designed
+// timbre rather than a numerical explosion.
+//
+// PEDAGOGICAL CLAIM:
+//   Sweep q with mod_rate_ratio = 2.0 (canonical Mathieu pumping at
+//   twice the natural frequency). Below the threshold the filter is
+//   silent (just absorbing the noise input). Above the threshold the
+//   noise gets exponentially amplified into ringing oscillation, then
+//   saturated by tanh into a designed timbre. The threshold is the
+//   audible parametric bifurcation — see media-04 (audio triple) and
+//   media-06 (Strutt explorer) for the same phenomenon.
+//
+// PATCHER WIRING REQUIRED (outside this codebox~):
+//   1. [noise~] -> codebox~ in1   (excitation; small level)
+//   2. codebox~ out1 -> [scope~] / [ezdac~] / [spectroscope~]
+//   3. codebox~ out2 -> [plot~]   (the velocity v, for phase-space view)
+//   4. [param freq], [param q_depth], [param mod_rate_ratio], [param gain]
+//      driven from sliders / number boxes.
+//
+// A/B HARNESS (outside the rnbo~ subpatcher):
+//   The same noise source feeds:
+//     (A) the rnbo~ subpatcher containing this codebox~
+//     (B) the Python reference implementation in mathieu_reference.py
+//         (offline render to audio/19_reference_output.wav, played back
+//          via [sfplay~])
+//   Patch both into a [matrix~ 2 1] for instant A/B switching.
+//   Subtract A - B and meter the difference; if everything is right
+//   the difference should be at numerical-noise floor (under -90 dB)
+//   for short windows. Long-term drift is acceptable — Python and
+//   codebox use independent random number generators for the noise
+//   input, so over many seconds the two paths will diverge.
+//
+//   To zero out the noise difference:
+//     - drive both implementations with a stored noise BUFFER (fixed
+//       seed) instead of live [noise~]. See README — Mathieu Resonator.
+// =====================================================================
+
+// --- Parameters ---
+// freq:           the resonator's natural frequency in Hz.
+//                 omega_0 = 2*pi*freq/samplerate (rad/sample).
+// q_depth:        modulation depth, 0..1. Threshold for n=1 tongue
+//                 with the canonical 2:1 pumping is approximately
+//                 q_depth ≈ 4 * damping_zeta — for zeta = 0.025
+//                 (Q ≈ 33) threshold sits near 0.10.
+// mod_rate_ratio: the modulation frequency divided by omega_0. The
+//                 canonical Mathieu form has mod_rate_ratio = 2.0
+//                 (pump at twice the natural frequency).  Other ratios
+//                 select different tongues (n=2 tongue at ratio = 1,
+//                 n=1 main tongue at ratio = 2).
+// gain:           output level scaling.
+// noise_level:    excitation amplitude. Below threshold the system is
+//                 dominated by the noise floor; above threshold the
+//                 parametric pump amplifies it.
+// damping_zeta:   linear damping coefficient. Sets the threshold q
+//                 (zeta = 0 means tongue covers all q > 0 at canonical
+//                 ratio — no audible threshold).
+
+@param({ min: 20.0,   max: 4000.0 }) freq           = 220.0;
+@param({ min: 0.0,    max: 1.0    }) q_depth        = 0.0;
+@param({ min: 0.5,    max: 4.0    }) mod_rate_ratio = 2.0;
+@param({ min: 0.0,    max: 1.0    }) gain           = 0.5;
+@param({ min: 0.0,    max: 0.01   }) noise_level    = 0.001;
+@param({ min: 0.0,    max: 0.1    }) damping_zeta   = 0.025;
+
+// --- State ---
+// x:    position
+// v:    velocity
+// phi:  modulation phase accumulator (radians, free-running, modulo 2pi)
+@state x   = 0.0;
+@state v   = 0.0;
+@state phi = 0.0;
+
+// --- Constants ---
+const TWO_PI      = 6.283185307179586;
+const SAT_AMP     = 8.0;       // soft-clip threshold for state
+const INV_SAT     = 0.125;     // 1/SAT_AMP
+
+// --- Per-sample tick ---
+
+// Compute the natural angular frequency in rad/sample.
+let omega_0 = TWO_PI * freq / samplerate;
+// The dimensionless "a" parameter in this discretization is omega_0^2.
+let a = omega_0 * omega_0;
+// q scales with a so that q_depth = 1 means modulation depth equal to
+// the squared natural frequency itself — full-strength pump.
+let q = q_depth * a;
+// Modulation phase advance per sample.
+let omega_mod = mod_rate_ratio * omega_0;
+phi = phi + omega_mod;
+if (phi >= TWO_PI) phi = phi - TWO_PI;
+
+// The cosine-Mathieu modulator. Stage 4 will replace this line with a
+// wavetable lookup (and become the general Hill equation).
+let m = cos(phi);
+
+// Time-varying restoring coefficient.
+let coeff = a - 2.0 * q * m;
+
+// Excitation: white noise. Scaled small so the system is quiet below
+// threshold and only gets loud when the parametric pump kicks in.
+let n_in = noise_level * (random() * 2.0 - 1.0);
+
+// Symplectic Euler:
+//   v_new = v + (-coeff*x - 2*zeta*omega_0*v + noise)
+//   x_new = x + v_new
+// The symplectic property — using v_new (not v_old) in the position
+// update — preserves the Hamiltonian structure of the un-modulated
+// case, keeping the q=0 line clean. RK4 introduces effective damping
+// that smears the threshold.
+let damping_term = 2.0 * damping_zeta * omega_0 * v;
+let v_new = v + (-coeff * x - damping_term + n_in);
+let x_new = x + v_new;
+
+// Soft-clip the state itself so the in-tongue regime stays finite
+// instead of overflowing. tanh-shaped state saturator at SAT_AMP.
+x = SAT_AMP * tanh(x_new * INV_SAT);
+v = SAT_AMP * tanh(v_new * INV_SAT);
+
+// Output: tanh of state (the "designed saturation" of the Stage 1
+// instrument). out2 carries the velocity for phase-space visualization.
+out1 = tanh(x) * gain;
+out2 = tanh(v) * gain;
+
+// =====================================================================
+// VERIFICATION CHECKLIST  (run in this order)
+//
+// 1. Unmodulated test.  Set q_depth = 0, freq = 220 Hz. Excite with
+//    [noise~] at noise_level = 0.001. The output should be a clean
+//    band-passed ring at 220 Hz with the Q set by damping_zeta. Spec
+//    analyzer should show a single peak. With damping_zeta = 0.025,
+//    Q ≈ 33 — a slightly woody resonator.
+//
+// 2. Below-threshold modulation.  q_depth = 0.05, mod_rate_ratio = 2.0.
+//    Output should be a dim noise-driven ring. The system is in the
+//    parametric pumping regime but below threshold for instability —
+//    the pump can't overcome the damping.
+//
+// 3. Threshold crossing.  Sweep q_depth from 0.0 to 0.5 over 10
+//    seconds with mod_rate_ratio held at 2.0. Listen for the *crack*
+//    around q_depth ≈ 0.10 (= 4 * zeta for zeta = 0.025). Below the
+//    crack: silence-with-coloration; above it: rising ring that
+//    saturates into a designed in-tongue timbre.
+//
+// 4. Sub-harmonic check.  At q_depth = 0.30, mod_rate_ratio = 2.0,
+//    feed [spectroscope~] from out1. The strong fundamental sits at
+//    freq (the resonator's own frequency, NOT the modulation rate at
+//    2*freq). Sidebands appear at freq + n * 2*freq for integer n —
+//    this is the Floquet sideband ladder for cosine modulation. The
+//    fundamental being at freq, not at the modulation rate, is the
+//    signature of *parametric* (vs. driven) resonance.
+//
+// 5. Tongue boundary mapping.  Park freq = 220 Hz, mod_rate_ratio =
+//    2.0, q_depth above threshold. Now slowly detune mod_rate_ratio
+//    away from 2.0 (e.g. 1.95, 1.90). At each detuning the threshold
+//    q_depth is HIGHER (the tongue narrows away from its tip). The
+//    n=1 tongue's shape is being mapped audibly. See [[media-07]]
+//    (the static tongue-anatomy zoom) for the boundary curves.
+//
+// 6. Saturation check.  Push q_depth to 0.8 with mod_rate_ratio = 2.0.
+//    Output should hit tanh saturation cleanly — no NaN, no Inf, no
+//    silent stuck states. Heavy harmonic content; useful timbre.
+//    The saturator timbre IS part of the Stage 1 sound.
+//
+// 7. A/B reference match.  Set parameters to (freq=220, q_depth=0.30,
+//    mod_rate_ratio=2.0, gain=0.5, noise_level=0.001, zeta=0.025)
+//    and compare against audio/19_reference_output.wav. The two should
+//    be sample-identical when fed the same stored noise buffer (see
+//    README).
+// =====================================================================

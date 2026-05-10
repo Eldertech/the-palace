@@ -61,14 +61,6 @@ The quadratic is not arbitrary. A sharp discontinuity in the gain curve is infin
 
 Each edge case is a teaching moment. By the time a student implements all four, they have internalized the topology.
 
-## All-Pass Filters and Inharmonicity
-<!-- This section seems to be in the wrong entry? Where should this go? -->
-The connection to [[Hyperdimensional Prism]] emerged in late February: all-pass filters shift phase without changing amplitude. Seemingly neutral. But a network of all-pass filters in a feedback path creates frequency-dependent phase accumulation. Different frequencies accumulate different total phase shift per round trip. This changes the period of resonance for each frequency independently, stretching or compressing the partial spacing.
-
-An all-pass-based reverb tail is an inharmonic synthesizer in disguise.
-
-This insight cascaded into the kaleidoscope interface concept: modulation and rotation as core functions, prism inside a kaleidoscope, natural connections to [[Harmonicity and Inharmonicity]], crystal formation, wallpaper group symmetry. The interface IS the physics. There is no distinction between the control surface and the signal processing — they are the same shape, made visible.
-
 ## Cross-Domain Resonance
 
 The soft knee's quadratic blend is structurally identical to the easing curves used in animation and UI design. A designer and a DSP engineer are solving the same mathematical problem: how to smoothly transition between two states without introducing artifacts. This connection, once seen, cannot be unseen. It appears in [[Boundary-Crossing Instruments]] — the recognition that signal flow and information flow are the same topology, expressed in different materials.

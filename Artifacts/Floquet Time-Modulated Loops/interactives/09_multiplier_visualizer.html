@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Multiplier Visualizer — Floquet / Time-Modulated Loops</title>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400&family=JetBrains+Mono:wght@400;500&family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #0a0a0f; --bg-card: #12121a; --bg-code: #1a1a28;
+  --border: #2a2a3a; --text: #c8c8d8; --text-dim: #7a7a8e;
+  --text-bright: #e8e8f0;
+  --accent-stable: #4aff8b; --accent-unstable: #ff6b4a;
+  --accent-marginal: #ffe44a; --accent-multiplier: #4aadff;
+  --accent-mod: #a64aff;
+  --serif: 'Source Serif 4', Georgia, serif;
+  --mono: 'JetBrains Mono', monospace;
+  --sans: 'DM Sans', system-ui, sans-serif;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+body { background: var(--bg); color: var(--text); font-family: var(--serif); font-size: 16px; line-height: 1.6; padding: 24px 16px 80px; -webkit-font-smoothing: antialiased; }
+.container { max-width: 1100px; margin: 0 auto; }
+header { text-align:center; padding: 24px 0 32px; border-bottom: 1px solid var(--border); margin-bottom: 32px; }
+header h1 { font-size: clamp(1.6rem, 3.6vw, 2.4rem); font-weight: 700; color: var(--text-bright); letter-spacing: -0.02em; margin-bottom: 8px; }
+header .subtitle { font-family: var(--sans); color: var(--text-dim); font-size: 0.95rem; max-width: 760px; margin: 0 auto 8px; }
+header .breadcrumb { font-family: var(--mono); font-size: 0.7rem; color: var(--text-dim); letter-spacing: 0.08em; text-transform: uppercase; }
+.layout { display: grid; grid-template-columns: 320px 1fr; gap: 24px; }
+@media (max-width: 820px) { .layout { grid-template-columns: 1fr; } }
+.panel { background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px; padding: 18px; }
+.panel h3 { font-family: var(--sans); font-weight: 700; font-size: 0.78rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text-bright); margin-bottom: 14px; }
+.panel h3::before { content: '▸ '; color: var(--accent-multiplier); }
+.slider-row { margin: 14px 0 18px; }
+.slider-row label { display: flex; justify-content: space-between; font-family: var(--mono); font-size: 0.78rem; color: var(--text); margin-bottom: 6px; }
+.slider-row label .val { color: var(--accent-marginal); }
+input[type=range] { width: 100%; -webkit-appearance: none; appearance: none; height: 4px; background: var(--bg-code); border-radius: 2px; outline: none; }
+input[type=range]::-webkit-slider-thumb { -webkit-appearance: none; width: 16px; height: 16px; border-radius: 50%; background: var(--accent-multiplier); cursor: pointer; box-shadow: 0 0 0 2px var(--bg-card); }
+input[type=range]::-moz-range-thumb { width: 16px; height: 16px; border-radius: 50%; background: var(--accent-multiplier); cursor: pointer; border: 2px solid var(--bg-card); }
+.canvas-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px; padding: 14px; }
+.canvas-card h4 { font-family: var(--mono); font-size: 0.72rem; color: var(--text-dim); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 8px; }
+canvas { display: block; width: 100%; background: var(--bg-code); border-radius: 6px; }
+#multCanvas { height: 460px; }
+.readout { font-family: var(--mono); font-size: 0.78rem; color: var(--text-dim); padding-top: 12px; border-top: 1px solid var(--border); margin-top: 14px; }
+.readout .stable { color: var(--accent-stable); }
+.readout .unstable { color: var(--accent-unstable); }
+.readout .marginal { color: var(--accent-marginal); }
+details { margin-top: 32px; background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px; }
+summary { padding: 16px 20px; cursor: pointer; font-family: var(--sans); font-weight: 700; color: var(--text-bright); font-size: 0.95rem; }
+details[open] summary { border-bottom: 1px solid var(--border); }
+pre { background: var(--bg-code); color: var(--text); font-family: var(--mono); font-size: 0.78rem; line-height: 1.55; padding: 18px 22px; overflow-x: auto; border-radius: 0 0 12px 12px; }
+.note { font-size: 0.85rem; color: var(--text-dim); margin: 16px 0; max-width: 760px; }
+</style>
+</head>
+<body>
+<div class="container">
+
+<header>
+  <div class="breadcrumb">media-09  ·  Floquet / Time-Modulated Loops</div>
+  <h1>Multiplier Visualizer</h1>
+  <p class="subtitle">Adjust (a, q). Watch the two characteristic multipliers ρ₁, ρ₂ live in the
+  complex plane. Crossing into a tongue: one multiplier slides outside the unit circle. The unit
+  circle is the bifurcation.</p>
+</header>
+
+<div class="layout">
+
+<aside class="panel">
+  <h3>Controls</h3>
+  <div class="slider-row">
+    <label>a  <span class="val" id="aval">1.000</span></label>
+    <input type="range" id="aslider" min="0.0" max="4.0" step="0.005" value="1.0">
+  </div>
+  <div class="slider-row">
+    <label>q  <span class="val" id="qval">0.300</span></label>
+    <input type="range" id="qslider" min="0.0" max="1.5" step="0.005" value="0.30">
+  </div>
+  <div class="readout">
+    ρ₁: <span id="r1">·</span><br>
+    ρ₂: <span id="r2">·</span><br>
+    |ρ| (max): <span id="rmag">·</span><br>
+    state: <span id="state" class="stable">·</span><br>
+    det(M): <span id="det" style="color:var(--text-dim)">·</span>
+    <p style="margin-top:10px;font-size:0.72rem;color:var(--text-dim);">
+      For Hamiltonian Mathieu det(M) = 1 always. Confirms the math is right.
+    </p>
+  </div>
+</aside>
+
+<div class="canvas-card">
+  <h4>Characteristic multipliers ρ₁, ρ₂  in the complex plane</h4>
+  <canvas id="multCanvas"></canvas>
+</div>
+
+</div>
+
+<p class="note">
+  The two multipliers always satisfy ρ₁·ρ₂ = 1 (because the Mathieu equation is Hamiltonian).
+  Two regimes: either they're a complex-conjugate pair on the unit circle (BOUNDED — system is
+  stable, oscillating); or they're two real reciprocals, one inside / one outside the circle
+  (UNBOUNDED — we are inside a tongue). The boundary is the moment the pair on the circle
+  collides on the real axis at ρ = ±1 and splits into the real-reciprocal pair. (See media-08
+  for the static side-by-side and [[Floquet Theory]] for the deeper treatment.)
+</p>
+
+<details>
+<summary>Source — see how this is built</summary>
+<pre id="srcdump"></pre>
+</details>
+
+</div>
+
+<script>
+// =========================================================================
+// 09_multiplier_visualizer — adjust (a, q) and see the multipliers move.
+//
+// Build the 2x2 monodromy matrix M by integrating two trajectories
+// over one period:  trajectory 1 from (1, 0), trajectory 2 from (0, 1).
+// Stack the results as the two columns of M. Then eigenvalues are the
+// closed-form 2x2 quadratic-formula roots.
+//
+// Mathieu equation:  x'' + (a - 2q cos(2t)) x = 0.   Period T = pi.
+// Symplectic Euler with 1500 steps per period gives clean precision
+// across the parameter range we expose.
+// =========================================================================
+
+const T_PERIOD = Math.PI;
+const SPP = 1500;
+
+const canvas = document.getElementById('multCanvas');
+const ctx = canvas.getContext('2d');
+
+function step(x, v, a, q, t, dt) {
+  const c = a - 2 * q * Math.cos(2 * t);
+  const vNew = v + dt * (-c * x);
+  const xNew = x + dt * vNew;
+  return [xNew, vNew];
+}
+
+function monodromy(a, q) {
+  const dt = T_PERIOD / SPP;
+  function go(x0, v0) {
+    let x = x0, v = v0, t = 0.0;
+    for (let i = 0; i < SPP; i++) {
+      [x, v] = step(x, v, a, q, t, dt); t += dt;
+    }
+    return [x, v];
+  }
+  const [m00, m10] = go(1, 0);
+  const [m01, m11] = go(0, 1);
+  return [[m00, m01], [m10, m11]];
+}
+
+function eigsOf2x2(M) {
+  const tr = M[0][0] + M[1][1];
+  const det = M[0][0] * M[1][1] - M[0][1] * M[1][0];
+  const disc = tr*tr - 4*det;
+  if (disc >= 0) {
+    const r = Math.sqrt(disc);
+    return [{re:(tr+r)/2, im:0}, {re:(tr-r)/2, im:0}];
+  } else {
+    const r = Math.sqrt(-disc) / 2;
+    return [{re:tr/2, im:r}, {re:tr/2, im:-r}];
+  }
+}
+
+function complex_str(z) {
+  const re = z.re.toFixed(2);
+  const im = z.im;
+  if (Math.abs(im) < 1e-6) return re;
+  return `${re}${im>=0?'+':''}${im.toFixed(2)}i`;
+}
+
+const aS = document.getElementById('aslider');
+const qS = document.getElementById('qslider');
+
+function draw() {
+  const a = parseFloat(aS.value);
+  const q = parseFloat(qS.value);
+  document.getElementById('aval').textContent = a.toFixed(3);
+  document.getElementById('qval').textContent = q.toFixed(3);
+
+  const M = monodromy(a, q);
+  const eigs = eigsOf2x2(M);
+  const det = M[0][0]*M[1][1] - M[0][1]*M[1][0];
+  const m1 = Math.hypot(eigs[0].re, eigs[0].im);
+  const m2 = Math.hypot(eigs[1].re, eigs[1].im);
+  const mMax = Math.max(m1, m2);
+
+  document.getElementById('r1').innerHTML = complex_str(eigs[0]) + `   <span style="color:var(--text-dim)">|ρ₁|=${m1.toFixed(3)}</span>`;
+  document.getElementById('r2').innerHTML = complex_str(eigs[1]) + `   <span style="color:var(--text-dim)">|ρ₂|=${m2.toFixed(3)}</span>`;
+  document.getElementById('rmag').textContent = mMax.toFixed(3);
+  document.getElementById('det').textContent = det.toFixed(4);
+  const sEl = document.getElementById('state');
+  if (mMax < 1.02) { sEl.textContent = 'STABLE  |ρ| ≤ 1'; sEl.className = 'stable'; }
+  else if (mMax < 1.10) { sEl.textContent = 'MARGINAL  near boundary'; sEl.className = 'marginal'; }
+  else { sEl.textContent = 'UNSTABLE  |ρ| > 1  inside a tongue'; sEl.className = 'unstable'; }
+
+  // Draw the complex plane.
+  const dpr = window.devicePixelRatio || 1;
+  const W = canvas.clientWidth, H = canvas.clientHeight;
+  canvas.width = W * dpr; canvas.height = H * dpr;
+  ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  ctx.fillStyle = '#1a1a28'; ctx.fillRect(0, 0, W, H);
+
+  const cx = W / 2, cy = H / 2;
+  const span = 2.5;  // plot range ±span
+  const sc = Math.min(W, H) / (2 * span);
+
+  // Grid + axes.
+  ctx.strokeStyle = '#2a2a3a'; ctx.lineWidth = 1;
+  ctx.beginPath(); ctx.moveTo(0, cy); ctx.lineTo(W, cy);
+  ctx.moveTo(cx, 0); ctx.lineTo(cx, H); ctx.stroke();
+  for (let g = -2; g <= 2; g++) {
+    if (g === 0) continue;
+    ctx.strokeStyle = '#22222e'; ctx.lineWidth = 0.5;
+    ctx.beginPath(); ctx.moveTo(0, cy - g*sc); ctx.lineTo(W, cy - g*sc);
+    ctx.moveTo(cx + g*sc, 0); ctx.lineTo(cx + g*sc, H); ctx.stroke();
+  }
+
+  // Unit circle.
+  ctx.strokeStyle = '#4aadff'; ctx.lineWidth = 2.0;
+  ctx.beginPath(); ctx.arc(cx, cy, sc, 0, 2*Math.PI); ctx.stroke();
+  ctx.fillStyle = '#4aadff'; ctx.font = '11px JetBrains Mono';
+  ctx.fillText('|ρ| = 1', cx + sc + 6, cy + 14);
+
+  // Axis labels.
+  ctx.fillStyle = '#7a7a8e'; ctx.font = '10px JetBrains Mono';
+  ctx.fillText('Re(ρ) →', W - 50, cy - 6);
+  ctx.fillText('Im(ρ) ↑', cx + 8, 14);
+
+  // Plot ρ₁ and ρ₂.
+  const pts = [
+    {z: eigs[0], color: mMax < 1.02 ? '#4aff8b' : (mMax < 1.10 ? '#ffe44a' : '#ff6b4a')},
+    {z: eigs[1], color: mMax < 1.02 ? '#4aff8b' : (mMax < 1.10 ? '#ffe44a' : '#ff6b4a')}
+  ];
+  for (const p of pts) {
+    const px = cx + p.z.re * sc;
+    const py = cy - p.z.im * sc;
+    ctx.fillStyle = p.color;
+    ctx.strokeStyle = '#0a0a0f'; ctx.lineWidth = 2;
+    ctx.beginPath(); ctx.arc(px, py, 8, 0, 2*Math.PI);
+    ctx.fill(); ctx.stroke();
+  }
+
+  // Trace product ρ₁ρ₂ = det(M) check (drawn as faint connecting line).
+  ctx.strokeStyle = '#7a7a8e'; ctx.lineWidth = 0.8; ctx.setLineDash([3, 3]);
+  ctx.beginPath();
+  ctx.moveTo(cx + pts[0].z.re * sc, cy - pts[0].z.im * sc);
+  ctx.lineTo(cx + pts[1].z.re * sc, cy - pts[1].z.im * sc);
+  ctx.stroke(); ctx.setLineDash([]);
+}
+
+aS.addEventListener('input', draw);
+qS.addEventListener('input', draw);
+window.addEventListener('resize', draw);
+draw();
+
+fetch(window.location.href).then(r => r.text()).then(html => {
+  const m = html.match(/<script>([\s\S]*?)<\/script>/);
+  if (m) document.getElementById('srcdump').textContent = m[1].trim();
+}).catch(() => {});
+</script>
+</body>
+</html>

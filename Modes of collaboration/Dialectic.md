@@ -7,8 +7,8 @@ pillars:
   - creation
 born: 2026-03
 stage: growing
-last_activated: 2026-03
-activation_count: 1
+last_activated: 2026-05
+activation_count: 2
 links:
   - target: "[[Excellent Adventure]]"
     type: emerged-from
@@ -22,6 +22,9 @@ links:
     type: enables
   - target: "[[Modes of Collaboration]]"
     type: connects-to
+  - target: "[[Mixture of Experts]]"
+    type: mirrors
+    label: multi-expert-with-cross-talk
 forward_vector: "I want to become a fully documented, executable method — precise enough that any agent can initiate a Dialectic without having participated in one before. My next development: a protocol document specifying how to choose the council (how many voices, which traditions, what selection criteria), how to research each voice before embodying it, and how to know when the dialogue has done its work versus when it has merely produced a summary of competing positions."
 ---
 
@@ -65,6 +68,12 @@ Where the Excellent Adventure produces immersive encounter with a single perspec
 - What questions work best? Systems design, pedagogical philosophy, architectural decisions, ethical questions in creative practice. Questions where the disagreement is structural, not factual.
 - How to handle historical figures on contemporary problems? Explicitly acknowledge the anachronism and let it generate energy rather than trying to resolve it. Meadows never encountered LLMs. That gap is productive.
 
+## Named Examples
+
+- **Zhuangzi, Epictetus, and Confucius on the End of the Self** (2026-05-02) — the palace's first deliberately archived Dialectic. Three voices, written rather than lived, around the question *where does the self end?* Produced a fourth pole (working name *The Drift*) that the binary it served did not previously hold. Full text: [[zhuangzi-epictetus-confucius-on-the-self]]. Serves [[The Fortress and the Threshold]].
+
+Two earlier Dialectics happened in conversation but were not archived: the **Fire at Nicopolis** (Epictetus + Confucius, 2026-03 — produced [[The Fortress and the Threshold]], [[Stoicism]], [[Confucianism]]) and the **Confucianism/Stoicism/Zen trialogue** (Confucius, Marcus Aurelius, nameless Zen master, 2026-03 — the method's first three-way encounter). Both live only in unrecovered chat history. Their existence is a forward vector for harvest.
+
 ## Cross-Domain Resonance
 
 **[[Excellent Adventure]]** — Parent practice: embodied historical dialogue as AI learning technique.
@@ -76,6 +85,8 @@ Where the Excellent Adventure produces immersive encounter with a single perspec
 **[[Hilaritas Generator]]** — The Dialectic consistently produces the conditions for hilaritas: surprise, genuine discovery, positions that behave unexpectedly under pressure. It is a reliable method for generating the friction that good thinking requires.
 
 **[[Modes of Collaboration]]** — The Dialectic is one of the named modes. It has a distinct rhythm, power dynamic, and ideal use case that sits alongside the Mentor/Quiz, Excellent Adventure, and Philosophical Dialogue modes.
+
+**[[Mixture of Experts]]** — Architectural mirror at the embodied substrate. The Dialectic is multi-expert MoE *with cross-talk between experts* — a structure neural MoE has only just begun to approach via system-level planner/executor architectures. The Dialectic does it natively because the experts share a latent space (the situated present of the question) and can hear each other's outputs. The selection of competing rather than aligned voices is also a manual load-balancing move: it deliberately routes away from the practitioner's most-used expert. See [[Mixture of Experts]] § The Three Substrates → Embodied.
 
 ## Forward Vectors
 

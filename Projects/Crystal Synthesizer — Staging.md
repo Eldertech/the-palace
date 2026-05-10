@@ -43,7 +43,7 @@ The full project is the scientific method made audible:
 ---
 
 ## Stage 1: Monophonic Crystal Synthesizer
-*Loudon Live Session — estimated 75–90 minutes*
+*[[Loudon Live]] Session — estimated 75–90 minutes*
 
 ### Session Arc
 
@@ -85,7 +85,7 @@ Students need: basic Max/MSP fluency, some additive synthesis exposure, Gen~ ins
 *AI catch-up prompt:*
 > "I'm learning to build synthesizers in Max/MSP using Gen~. Explain what Gen~ is, how it differs from regular Max patching, and walk me through building a simple additive oscillator bank with 4 partials at fixed frequency ratios. Assume I know Max basics but haven't used Gen~ before."
 
-Prior Loudon Live prerequisite: none for Stage 1.
+Prior [[Loudon Live]] prerequisite: none for Stage 1.
 
 ### Materials
 - [`session-1-interactive.html`](../Artifacts/Crystal%20Synthesizer/session-1-interactive.html) — HTML framing artifact
@@ -94,7 +94,7 @@ Prior Loudon Live prerequisite: none for Stage 1.
 ---
 
 ## Stage 2: Polyphonic + Portability
-*Loudon Live Session — estimated 75–90 minutes*
+*[[Loudon Live]] Session — estimated 75–90 minutes*
 *Status: planned, not yet developed*
 
 ### Scope
@@ -128,7 +128,7 @@ Interface development begins here in earnest. The performance gesture question b
 ### Notes for development
 - Q-factor derivation from anharmonic decay rate — see [[Bessel Functions in Synthesis]] entry as preparation
 - The Stage 3 interface is the first place where the "3D rotating wireframe" visual from the entry's interface note becomes buildable
-- Prerequisite Loudon Live: Stage 2
+- Prerequisite [[Loudon Live]]: Stage 2
 
 ---
 
@@ -144,7 +144,7 @@ Full VST plugin with a sophisticated interface that shows crystals — the optic
 ### Notes for development
 - The dispersion filter is the closest Stage to the optical-sonic bridge metaphor — the most teachable version of "same physics, different material"
 - Interface scope is the largest of any stage — warrants its own design session before development begins
-- Prerequisite Loudon Live: Stage 3
+- Prerequisite [[Loudon Live]]: Stage 3
 
 ---
 

@@ -5,7 +5,7 @@ pillars: [creation, tools]
 born: 2026-03
 last_activated: 2026-03
 activation_count: 1
-stage: seed
+stage: dormant
 confidence: hypothesis
 energy: medium
 hook_quality: 8

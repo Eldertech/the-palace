@@ -42,7 +42,7 @@ Someone reading this file and [[Shepard Tone Synthesizer]] has everything needed
 
 ## Stage 1: The Illusion
 *"Escher's Impossible Staircase in Sound"*
-*Loudon Live Session — estimated 60–75 minutes*
+*[[Loudon Live]] Session — estimated 60–75 minutes*
 
 ### Session Arc
 
