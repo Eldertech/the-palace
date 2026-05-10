@@ -6,7 +6,7 @@ pillars:
   - practice
   - philosophy
 born: 2026-03
-version: "1.2"
+version: "1.3"
 stage: foundational
 status: canonical
 links:
@@ -48,15 +48,17 @@ Every entry must declare exactly one `type` in its YAML frontmatter.
 If you are unsure which type to use, follow this path:
 
 1. Is this entry about the palace itself (architecture, ceremonies, infrastructure)? → **meta**
-2. Is this an external artifact (paper, book, tool, song) that the palace draws from? → **source**
-3. Is this something currently being built or created? → **project**
-4. Did a specific moment of understanding shift everything? → **breakthrough**
-5. Is this a question being actively carried, not yet resolved? → **question**
-6. Is this an idea preserved for future revival, currently inactive? → **spore**
-7. Does this node organize a dense region of the graph (5+ typed links)? → **hub**
-8. Is this a recurring method, workflow, ritual, or embodied way of working? → **practice**
-9. Is this a thinker, maker, or collaborator whose ideas are in active dialogue with the palace? → **person**
-10. Otherwise: → **concept**
+2. Is this a wrapper around an external creative tool, with operational anatomy (Charter, Tiers, Job Contract, accumulated Gotchas)? → **specialist**
+3. Is this an orchestrator/foreman for a roster of Specialists, holding house standards and dispatch logic? → **maker**
+4. Is this an external artifact (paper, book, tool, song) that the palace draws from? → **source**
+5. Is this something currently being built or created? → **project**
+6. Did a specific moment of understanding shift everything? → **breakthrough**
+7. Is this a question being actively carried, not yet resolved? → **question**
+8. Is this an idea preserved for future revival, currently inactive? → **spore**
+9. Does this node organize a dense region of the graph (5+ typed links)? → **hub**
+10. Is this a recurring method, workflow, ritual, or embodied way of working? → **practice**
+11. Is this a thinker, maker, or collaborator whose ideas are in active dialogue with the palace? → **person**
+12. Otherwise: → **concept**
 
 ---
 
@@ -101,6 +103,16 @@ If you are unsure which type to use, follow this path:
 - Required fields: adds `revival_conditions`
 - Example entries: Short Story (revival: Loudon ready to return to fiction)
 
+**`specialist`** — A wrapper around an external creative tool, with operational anatomy: Charter, Voice, Tiers (cost-quality cascade), Job Contract (typed input/output for dispatch), Iteration Character, Self-Check, Resource Footprint, accumulated Gotchas, Recipes, Test Suite. The Specialist *is* its entry — the entry doesn't describe the tool, it constitutes the tool-citizen who has accumulated working wisdom across jobs. Distinct from `practice` because the Specialist binds to a versioned external tool, exposes a typed dispatch surface, and accounts for resources. Distinct from `source` because the Specialist holds operational machinery, not just provenance.
+- Required fields: adds `status` (alive | stub), `medium` (sound | image | motion | interactive | plumbing | other), `tool` (the wrapped tool's canonical name), `tool_version` (for reproducibility)
+- `pillars` is **optional** for this type — Specialists are tool-citizens; auto-tagging every Specialist `[tools]` would dilute the pillar signal. Add pillars only when a Specialist genuinely participates in another pillar (e.g. a Specialist whose practice has matured into a teaching artifact)
+- Example entries: Shop/Kokoro, Shop/Manim CE, Shop/ComfyUI, Shop/ffmpeg
+
+**`maker`** — An orchestrator/foreman for a roster of Specialists. Holds house standards, brief intake patterns, selection heuristics, tier vocabulary, comparison-mode logic, and resource scheduling. The Maker is the front door to an operational sub-system; Specialists are dispatched from it. Distinct from `meta` because the Maker is about an operational sub-system within the palace, not about the palace itself — and could plausibly recur (a future "Studio" sub-system would have its own Maker). Distinct from `concept` because the Maker dispatches; it does not just reason. Distinct from `practice` because the Maker holds a Roster, not a method.
+- Required fields: adds `status` (alive | stub)
+- `pillars` is **optional** for this type, for the same reason as `specialist` — Makers are operational citizens, not idea-citizens
+- Example entries: Shop/Maker
+
 ---
 
 ## 2. Development Stages
@@ -135,9 +147,9 @@ seed → sprout → growing → mature → fruiting → dormant → composting
 |---|---|---|
 | `title` | string | The entry's canonical name. Must match the filename (minus .md). |
 | `type` | enum | See Section 1. |
-| `pillars` | array | One or more of: creation, tools, philosophy, practice |
+| `pillars` | array | One or more of: creation, tools, philosophy, practice. **Optional for `specialist` and `maker`** — see those type definitions for rationale. |
 | `born` | YYYY-MM | Month the entry was created. |
-| `stage` | enum | See Section 2. |
+| `stage` | enum | See Section 2. **Optional for `specialist` and `maker`** — these types use `status` (alive \| stub) instead of the seed→fruiting lifecycle. |
 
 ### Strongly Recommended Fields
 
@@ -159,6 +171,8 @@ seed → sprout → growing → mature → fruiting → dormant → composting
 | `spore` | `revival_conditions`: string describing what would trigger revival |
 | `person` | `domains`: array of intellectual fields |
 | `meta` | `version` for schema-level entries (CLAUDE, SCHEMA, Substrate Skill) |
+| `specialist` | `status`: alive \| stub; `medium`: sound \| image \| motion \| interactive \| plumbing \| other; `tool`: canonical tool name; `tool_version`: for reproducibility |
+| `maker` | `status`: alive \| stub |
 
 ### Optional Fields (used selectively)
 
@@ -201,6 +215,26 @@ All four sub-fields are optional within the object — include only the dimensio
 **Use in enchantment:** Coordinators read the `agency_profile` before spawning enchanted agents. The `tools` sub-field makes resource estimates legible before the dialogue opens. The `philosophy` sub-field informs the moderator's framing of opening tension. The `practice` sub-field surfaces self-revision needs that the agent can act on during Free Enchantment.
 
 **Use in BBS:** `tools` sub-field content translates directly to `RESOURCE_REQUEST` messages on the TRICKSTER board — the estimated cost is already specified. An agent with a well-formed `agency_profile.tools` can post a precise resource request without deliberating.
+
+---
+
+### 3.2 The `specialist` and `maker` Types
+
+**Schema Ceremony rationale (2026-05-09, v1.3):** [[The Shop]] introduced an operational pattern that the existing type vocabulary could not carry without distortion. Every creative tool wrapped as its own palace entry — Charter, Voice, Tiers (Sketch / Study / Piece), Job Contract, Iteration Character, Self-Check, Resource Footprint, accumulated Gotchas, Recipes, Test Suite — and a single foreman entry above them holding house standards and dispatch logic. The pre-deposit conversations used `type: specialist` and `type: maker` informally; this ceremony formalizes them.
+
+**Why not reuse `practice`?** A practice is a method-as-it-is-done — *the depth-over-coverage discipline*, *the review-before-write rule*. A Specialist binds to a versioned external tool, exposes a typed Job Contract for dispatch, accounts for resources (CPU/GPU/license/credits), and accumulates gotchas across jobs. The Specialist is operational machinery, not just a way of working. Forcing Specialists into `practice` would erode both types — practices would dilute into "anything we do" and Specialists would lose the operational anatomy that makes them useful.
+
+**Why not reuse `meta`?** Meta is for entries about the palace itself: CLAUDE.md, SCHEMA, Substrate. The Maker is about an operational sub-system *within* the palace — the Shop. Future sub-systems (a Studio for finished works, a Library for archived sources, a Lab for active research) might each grow their own Maker. Reserving `meta` for palace-self-description keeps that vocabulary precise.
+
+**Why two types and not one?** A Specialist is a tool-citizen — bound to an external tool, with a single dispatch surface. A Maker is an orchestrator — holds many Specialists in a Roster, dispatches across them, mediates briefs, enforces house standards. The two roles have genuinely different anatomies: a Specialist has Tiers and a Job Contract; a Maker has a Roster and Selection Heuristics. Collapsing them would lose the structural distinction that makes the Shop pattern legible.
+
+**The `pillars` exception.** Both types are tool-citizens. The Four Pillars (creation, tools, philosophy, practice) describe types of human activity. Auto-tagging every Specialist `[tools]` would be uninformative — the field would carry no signal beyond what `type: specialist` already carries. The exception keeps `pillars` meaningful where it appears and absent where its presence would be noise. A Specialist *may* declare pillars when it genuinely participates in another (e.g. a teaching-tool Specialist whose practice has matured into pedagogy).
+
+**The `stage` exception.** Concepts go from seed to mature; questions either become concepts or compost; spores wait dormant. Specialists and Makers don't follow that lifecycle — they are operational entities that are either alive (in active use, accumulating gotchas) or stub (entry exists, awaiting first job). The `status: alive | stub` field carries the same signal more accurately than the seed→fruiting stages would. Specialists may eventually deprecate (the wrapped tool dies, the Maker stops dispatching to them); deprecation is recorded with `status: deprecated` if the need arises (not part of v1.2; add when first encountered).
+
+**Validation:** As of this ceremony, 14 specialist entries and 1 maker entry exist in `Shop/`. All were schema-violating before v1.2; all validate after. No existing entries of other types are affected. No link types are added or changed. The change is strictly additive.
+
+**Forward vector:** Watch how the Shop's Roster grows. If a second sub-system (Studio, Library, Lab) emerges with its own foreman, the `maker` type's plurality is exercised and the schema's reach is confirmed. If the Specialist anatomy starts being applied to non-creative-tool domains (e.g. a "Knowledge Specialist" wrapping a search tool), revisit whether the type's binding to external creative tools needs loosening or whether a sibling type is warranted.
 
 ---
 
