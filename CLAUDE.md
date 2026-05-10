@@ -1,7 +1,7 @@
 ---
-version: 1.6
+version: 1.7
 schema: SCHEMA.md
-last_schema_ceremony: 2026-03
+last_schema_ceremony: 2026-05
 github: https://github.com/Eldertech/the-palace
 github_raw: https://raw.githubusercontent.com/Eldertech/the-palace/main
 ---
@@ -87,7 +87,7 @@ This is a partial list. For the complete list of all ceremonies (including Harve
 
 **Typed links** — YAML frontmatter links name the relationship: `connects-to`, `mirrors`, `enables`, `deepens`, `spawned`, `emerged-from`, `contradicts`, `couples-with`. Do not create new link types without discussion. Each link may carry an optional `label` field — a single evocative word naming the relationship's specific register (e.g. `midwifed`, `rhymes-with`, `fermented-from`). Labels never require ceremony. See [[Resonant Link Labels]].
 
-**Entry types** — `hub`, `concept`, `project`, `breakthrough`, `meta`, `question`, `spore`, `source`
+**Entry types** — `concept`, `hub`, `project`, `breakthrough`, `source`, `meta`, `practice`, `person`, `question`, `spore`, `specialist`, `maker`. The last two were added in the v1.3 Schema Ceremony (2026-05-09) to formalize [[The Shop]] pattern — see [[SCHEMA]] §3.2.
 
 **Development stages** — `seed` → `sprout` → `growing` → `mature` → `fruiting` → `dormant` → `composting`
 
