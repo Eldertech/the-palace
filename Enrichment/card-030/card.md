@@ -10,8 +10,8 @@ created: "2026-05-05"
 artifact_path: "skeptic-voice-act.md"
 artifact_type: "text"
 validator_verdict: "revise-then-shipped"
-validator_note: "v1: landed the séance/producer tension well. // v2: The duppy voice is active, specific, and genuinely argues — it does not explain Retrospective Delay, it inhabits the control-inversion that is the entry's live pedagogical tension. The King Tubby paragraph answers the purpose directly: séance framing implies passivity, the duppy insists on agency. 'A second opinion' is the ceiling-raiser the entry needed."
-validator_iterations: 1
+validator_note: "v1: landed the séance/producer tension. // v2 (after Loudon asked to pull away from séance entirely toward active trickster): The trickster names the séance as ceiling from inside it then kicks through. 'Editing time' vs 'holding a candle' is the specific pivot. 'More itself than it was the first time' lands the retrospective buffer's actual logic better than any explanation."
+validator_iterations: 2
 archived: false
 ---
 
