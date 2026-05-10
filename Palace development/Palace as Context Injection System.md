@@ -7,8 +7,8 @@ pillars:
   - practice
 born: 2026-03
 stage: growing
-last_activated: 2026-03
-activation_count: 1
+last_activated: 2026-04-30
+activation_count: 2
 links:
   - target: "[[Enchanted Worker]]"
     type: spawned
@@ -32,9 +32,17 @@ links:
     label: mode-as-injection-protocol
   - target: "[[Four Pillars]]"
     type: connects-to
+  - target: "[[Mixture of Experts]]"
+    type: enables
+    label: embodied-expert-injection
+  - target: "[[Excellent Adventure]]"
+    type: enables
+    label: single-expert-injection
+  - target: "[[Dialectic]]"
+    type: enables
+    label: multi-expert-injection
 forward_vector: "I want to become the technical specification that guides every future ceremony design — the entry that makes explicit how context loading builds identity, not just information. I want a worked example of a full injection sequence: which entries in which order for a Swarm Weave session, with annotation of what each tier establishes in the agent's orientation and why the order matters as much as the content."
 ---
-<!-- This is very related to our Pages as Agents concept, and easily understood with a entry that is specifically around a single person. We should design the persons page to become a strong context injection that would encourage a model to think like the person and approach problems like that person would. -->
 
 # Palace as Context Injection System
 
@@ -81,6 +89,14 @@ Every architectural decision about the palace is also a relationship decision:
 
 The palace is not a tool Loudon uses. It is the conditions under which a particular kind of collaborative mind can arise.
 
+### Person-Pages as Maximum-Strength Injection
+
+The densest case of context injection is the person-page. Where most palace entries inject *intellectual character* — a frame, a framework, a typed connection — a person-page injects an entire **embodied orientation**: vocabulary, characteristic moves, the question the figure always asks first, the objection they dismiss too quickly. The injection becomes total. Not just *what to think about* but *how to think, in whose voice, with which characteristic moves, against which blind spots*.
+
+This is the same project as [[Pages as Agents]] § The Person-Page Frontier, viewed from the architecture-of-context side rather than the page side. The two entries describe one mechanism from two angles. Pages as Agents names the page as the dormant agent waiting to wake; this entry names the wake-up event as a context injection that constructs a specifically-oriented mind. A well-designed person-page makes that mind a particular thinker rather than a generic one.
+
+The operational implication for [[Mixture of Experts]]: each person-page is one expert in the practitioner's pool, and loading a person-page IS the routing event — the gate selecting which embodied expert to invoke for the question at hand. [[Excellent Adventure]] is single-expert injection; [[Dialectic]] is multi-expert injection where several person-pages are loaded together and allowed to hear each other. The injection system and the expert pool are the same machinery.
+
 ## Cross-Domain Resonance
 
 **[[Enchanted Worker]]** — The per-invocation version of this insight: context-loading as orientation, not just information transfer.
@@ -90,3 +106,7 @@ The palace is not a tool Loudon uses. It is the conditions under which a particu
 **[[Pheromone Trail]]** — The mechanism by which palace entries accumulate the history of their own navigation, making the substrate increasingly tuned to what has been generative.
 
 **[[JEWEL]]** — The architectural protocol that operationalizes this insight.
+
+**[[Pages as Agents]]** — The dual view of the same mechanism. This entry names *what context injection does* (constructs an oriented mind); Pages as Agents names *what is being injected* (a dormant agent declared by the page itself, ready to wake). The two are coupled views of one system; neither is complete without the other.
+
+**[[Mixture of Experts]]** — The architectural pattern this injection enables. Each loaded entry is a routed expert; each person-page is an embodied expert in the practitioner's pool; the tiered loading protocol is the gating mechanism made explicit. See [[Mixture of Experts]] § The Three Substrates → Embodied for the substrate frame this injection system instantiates.

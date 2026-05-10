@@ -3,6 +3,8 @@ title: Particle Synthesis
 type: concept
 pillars: [creation, tools, philosophy]
 born: 2026-01
+last_activated: 2026-01
+activation_count: 0
 stage: growing
 links:
   - target: "[[Granular Synthesis]]"

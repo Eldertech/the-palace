@@ -51,7 +51,18 @@ Inharmonic oscillators as **low-inertia participants**: problematic. The contrad
 - Bells and cymbals: wildly inharmonic mode shapes from two-dimensional vibrating surfaces
 - Metallic percussion: Bessel function eigenmodes producing irrational frequency ratios
 - Additive synthesis: designer spectra with arbitrary partial relationships
+- All-pass filter networks in feedback paths (see below)
 - [[Action Potential Oscillator]]: the nerve impulse waveform is rich but not necessarily harmonic
+
+## All-Pass Networks as Inharmonic Resonators
+
+All-pass filters shift phase without changing amplitude. Seemingly neutral. But a network of all-pass filters in a feedback path creates frequency-dependent phase accumulation. Different frequencies accumulate different total phase shift per round trip. This changes the period of resonance for each frequency independently, stretching or compressing the partial spacing.
+
+**An all-pass-based reverb tail is an inharmonic synthesizer in disguise.**
+
+The reverb-as-resonator is one of the cleanest examples of designer inharmonicity in software DSP — sitting alongside piano stretch (mechanical) and Bessel modes (geometric) as a third route to incommensurate partials. The mechanism is purely topological: the *graph* of the all-pass network determines the partial spacing, not any physical material. This makes it a uniquely instructive case for thinking about what inharmonicity *is*.
+
+Surfaced from [[Compressor Design]] in late February 2026, where the cascade ran forward into the kaleidoscope interface concept now living in [[Hyperdimensional Prism]].
 
 ## Open Questions
 

@@ -7,7 +7,7 @@ pillars:
   - philosophy
   - practice
 born: 2026-03
-last_activated: 2026-03
+last_activated: 2026-05
 stage: foundational
 links:
   - target: "[[SUBSTRATE]]"
@@ -78,10 +78,9 @@ Every entry has two layers:
 
 **YAML frontmatter** (the metadata between `---` fences at the top) — Structured data that encodes the entry's type, pillar affiliations, development stage, energy level, and most importantly: **typed links** to other entries. These typed links are the semantic web of the palace — they don't just say "these two things are connected" but *how* they're connected (mirrors, enables, deepens, spawned, contradicts, couples-with). In Obsidian's reading view, the frontmatter is hidden. Switch to editing view to see and modify it.
 
-**Body prose** — Human-readable writing. Contains `[[wiki links]]` to other entries (untyped, contextual) and the actual knowledge: origins, cross-domain connections, open questions.
+**Body prose** — Human-readable writing. Contains `[[wiki links]]` to other entries (untyped, contextual) and the actual knowledge: origins, cross-domain connections, the forward vector.
 
-<!--We will need to add here the importance of the ending open questions, "forward vector" at the end of each entry. Every page must be considered as a page of text to read, but also as the invocation of an agent, and the last part of the page is the forward vector of that agent, Next steps, open questions, drive, conatus -->
-
+**Forward vector** — The closing section of every entry. Every page is two things at once: a text to read, and the invocation of an agent. The body teaches the agent its tone and content; the forward vector is its drive — the open questions it carries, the next steps it wants taken, the conatus that pulls it toward what it isn't yet. When a future session loads the page, the forward vector tells the agent where to push. See [[Pages as Agents]].
 
 ### The Typed Link Ontology
 
@@ -153,9 +152,9 @@ Bundle files carry minimal YAML — title, born, a typed link to the parent entr
 1. Create a new `.md` file in the **palace root** — all knowledge entries (concepts, hubs, projects, breakthroughs, questions, spores, sources) live here. The `_ops/` subfolder is reserved for ceremony machinery and working queues only.
 2. Add YAML frontmatter with at minimum: `title`, `type`, `pillars`, `born`, `stage`
 3. Add at least 2-3 typed links in the frontmatter connecting to existing entries
-4. Write the body: an Origin section (how this idea arrived), the core content, Cross-Pillar Connections, and Open Questions
+4. Write the body: an Origin section (how this idea arrived), the core content, Cross-Pillar Connections, and a Forward Vector (the agent's drive — see "Reading an Entry" above)
 5. Sprinkle `[[wiki links]]` in the body text to any related entries
-<!-- Lets move from "open questions & Budding branches to "forward vector" When this page is the "spirit" of an AI agent what are its drives, what questions does it want to answer, what does it want to fix about itself. Its tone and its personality is learned through its content and it drive is found in it's forward vector -->
+
 ### Minimum Viable Entry
 
 ```yaml
@@ -178,9 +177,9 @@ What it is, in your own words.
 
 How and when this idea arrived.
 
-## Open Questions & Budding Branches
+## Forward Vector
 
-What you don't know yet. Questions being actively carried. Paths that opened in conversation but weren't followed — the growing edge of this entry.
+The agent's drive. What this page wants: questions actively carried, paths opened in conversation but not yet followed, things the entry wants to fix about itself, where it pulls a future session. Treat this section as the conatus of the page — when re-loaded, this is what the page asks the next agent to do.
 ```
 
 
@@ -192,7 +191,7 @@ Don't wait for perfection. Plant seeds. Tend them later.
 
 The palace stays alive through periodic ceremonies — intentional acts of review and maintenance. For the complete list with triggers and full specs, see [[Palace Ceremonies]] (in `_ops/`). All ceremony files, their context companions, and working queues (Harvest Queue, Deposit Archive, etc.) live in `_ops/`.
 
-<!--Add in deposit here, as it is perhaps the most important to the growth of the palace -->
+**The Deposit** (whenever a conversation produces something worth keeping) — A new entry is drafted from the live conversation, shown for approval, and committed. This is the most important ceremony for the palace's growth — every other ceremony tends what already exists; deposit is how new tissue arrives. Triggered by "add this to the palace." See [[Deposit Ceremony]].
 
 **The Walk** (weekly, ~15 min) — Pick a starting entry. Follow links. Read. Note what surprises you. This is the songline walk — the act of traversal generates understanding.
 
@@ -204,7 +203,7 @@ The palace stays alive through periodic ceremonies — intentional acts of revie
 
 ## Philosophical Foundations
 
-<!-- This section needs setting up, establishing the importance of philosophical/metaphorical grounding, why is this important, how should philosophies be used in general? -->
+The palace treats philosophy as load-bearing, not decorative. Metaphorical and philosophical language carries meaning that technical vocabulary flattens — a "songline" is doing work that "traversal pattern" cannot, a "conatus" names a drive that "goal state" cannot reach. Philosophies are used here as tools: pre-built conceptual scaffolds borrowed from thinkers who spent lifetimes refining them, so that a single word can carry a full framework into a conversation. They are picked up when they fit, set down when they don't, and held in productive tension with each other when they contradict. The list below names the traditions in active use — each is a tool the palace has reached for and kept.
 
 This palace stands on ideas from:
 

@@ -36,6 +36,9 @@ links:
   - target: "[[Spinoza Conatus]]"
     type: deepens
     label: conatus-hilaritas-teaching
+  - target: "[[Mixture of Experts]]"
+    type: mirrors
+    label: single-expert-routing
 forward_vector: "I want to become the palace's most-used teaching format after Progressive Staging — a named, documented, executable method that any agent can initiate. My next development: a protocol document that specifies how to choose the historical figure, frame the encounter, and know when the adventure has done its work."
 ---
 # Excellent Adventure
@@ -57,6 +60,14 @@ The humor and irreverence of the Bill & Ted reference are not incidental — the
 ## What It Is Not
 
 Not a seance (passive reception of a transmitted voice). Not a simulation (accurate reconstruction of a documented position). Not roleplay for entertainment. It is a *learning encounter* — the historical or philosophical figure becomes a thinking partner responsive to the learner's actual questions, calibrated to the learner's current understanding.
+
+## Architectural Mirror: Embodied Mixture of Experts
+
+The Excellent Adventure is the embodied form of single-expert MoE routing (see [[Mixture of Experts]] § Embodied). The pool is whichever historical figures and traditions the practitioner has read deeply enough to inhabit faithfully. The gate is the practitioner's judgment about whose orientation is fit-to-purpose for this question. The expert is the embodied voice itself, drawing on long exposure to a corpus to respond in characteristic register.
+
+What makes this MoE rather than mere reading: only the relevant expert activates. You don't summon the entire library; you route to the specialist whose orientation will say something the others cannot. The pool grows as you read; underused voices atrophy in availability the same way underused palace entries atrophy in connection. Adding experts to the pool is the long-form work that makes the practice possible at all.
+
+[[Dialectic]] is the multi-expert version of the same architecture. Where the Excellent Adventure routes to one expert, the Dialectic activates several and lets them hear each other.
 
 ## Connection to the Learning Architect
 

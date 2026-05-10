@@ -3,8 +3,8 @@ title: "Wallpaper Groups"
 type: concept
 pillars: [philosophy, tools, creation]
 born: 2026-02
-last_activated: 2026-02
-activation_count: 1
+last_activated: 2026-05
+activation_count: 2
 stage: growing
 confidence: working
 energy: high
@@ -39,8 +39,6 @@ There are exactly 17 ways to tile an infinite plane with a repeating pattern. No
 The groups encode every possible combination of **translation, rotation, reflection, and glide reflection** (translation + reflection simultaneously). These operations form *groups*—closed sets where any two operations composed yield another operation in the set. The 17 groups represent all possible group structures consistent with 2D periodicity.
 
 This is not a metaphor or organizational tool. It is a discovered *ceiling*, a complete enumeration of what's possible. Every tiling in nature, every repeating pattern ever made by human hands, belongs to one of these 17 groups. Trying to invent an 18th is mathematically impossible—like trying to invent a new primary color.
-
-<!-- CLAUDE → LOUDON: Consider adding reference to connection with [[Four Pillars]] as example of how substance monism applies to symmetry -->
 
 ## The Seventeen Symmetries
 
@@ -107,6 +105,8 @@ The wallpaper groups enact this structure. The *substance* is the pattern of rep
 These are not separate phenomena. They are one substance viewed through different observational frames. Rotate a wallpaper pattern 90°, and if it looks identical, you've discovered a rotational symmetry. That same rotation, interpreted temporally, would be a rhythmic structure. Interpreted in a crystal, it would be a reciprocal lattice vector. They're all the same transformation, perceived differently.
 
 The monism resolves the apparent multiplicity: there is no "visual symmetry" and "musical symmetry" and "crystallographic symmetry." There is one group operation, appearing in multiple domains.
+
+The same monism organizes the [[FOUR PILLARS]]. Loudon's framework names Creation, Tools, Philosophy, and Practice as *"four projections of a single higher-dimensional reality, cast by the light of curiosity into comprehensible dimensions."* The wallpaper groups make this move in geometry; the Four Pillars make it in a maker's life. The substance differs — a periodic pattern versus a person making things — but the structure is the same: one underlying reality, multiple attributes, no hierarchy among them, generative tension at the intersections. Both entries anchor on [[Hyperdimensional Prism]] for this reason. The Granada artisans encoding all 17 wallpaper groups in tile work without language is the same kind of move as a polymath holding all four pillars simultaneously without needing the framework to name them — direct embodied knowledge of monism, prior to formalism.
 
 ## The Prism Machine Principle
 
