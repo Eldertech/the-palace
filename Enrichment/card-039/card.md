@@ -12,7 +12,7 @@ artifact_type: "text"
 validator_verdict: pass
 validator_note: "Twelve words, counted. 'Bending' picks up the FV's own metaphor ('bend it') and returns it compressed — the entry speaking its own language back at itself. 'Every material' anchors the physics claim without explaining it. 'That bending is the instrument' collapses synthesis architecture into pedagogy in four words. It knows exactly which entry it's for."
 validator_iterations: 0
-archived: false
+archived: true
 ---
 
 The full VST specification — architecture, pedagogy, physics library — compressed to 12 words by returning the entry's own metaphor at maximum density.
