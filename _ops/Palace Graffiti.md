@@ -206,3 +206,57 @@ If approved, the four edits could be applied in one session. If not, the dialogu
 ---
 
 **2026-05-05** — In a maker-architecture conversation, re-derived the Trickster / Coordinator / Worker / Palace frame as Director / Producer / Specialist / Palace without first reading [[Palace Agent Infrastructure Spec]]. The re-derivation matched cleanly. Treat this as evidence the existing names hold under independent re-derivation — and as a worked instance of the failure mode the palace's "show before writing" discipline exists to prevent. The maker work that followed is an *application* of PAIS, not a new architecture.
+
+---
+
+## Larger revision proposal — untangling [[Retrospective Delay]] and [[Semantic Delay]]
+
+*(2026-05-09 — from Enrichment card-030 response. Drafted as graffiti per the larger-revision protocol; not yet committed to either entry. Loudon to review before any edits land.)*
+
+### The tangle, as Loudon named it
+
+> "We are tangled between the semantic delay and the retrospective delay. Propose a way to untangle them. Let's put all of the duppy and king tubby and perhaps séance stuff over in the Semantic Delay, where the real trickery happens. And the Retrospective Delay is all about a trick of *looping the past* so we can say 'I just played something cool, loop it' instead of 'I am about to play something cool, set up a loop'. The looping-the-past framework is innovative and amazing on its own; let one entry hold that innovation, and the Semantic Delay be a more weird and experimental delay focused on words and where we can involve all the trickster spirits."
+
+### What the cut actually is
+
+The two entries currently both reach for dub mythology — King Tubby, Lee Scratch Perry, séance/medium framings, Duppy as a spirit. The result is that neither entry holds its strongest claim cleanly:
+
+- **Retrospective Delay** is *the looping-the-past trick* — a temporal inversion of the standard "set up a loop, then play into it" workflow. That single-knob act of pulling the past forward is the genuine engineering innovation. Right now the entry buries it under a séance metaphor that frames the performer as a *passive medium* — exactly opposite to King Tubby as active producer/editor. The mythology is doing work the engineering insight should be doing.
+- **Semantic Delay** is *the trickster delay* — words mutated through spirit-routed transformation, where the dub lineage of haunting and possession is the literal subject matter (a duppy-machine that swaps the voice, then in Phase 2 swaps the meaning). It earns the trickster pantheon because tricksters are *what it does*. It currently shares that pantheon with Retrospective Delay and is therefore softer than it needs to be.
+
+### Proposed division of inheritance
+
+| Stays with [[Retrospective Delay]] | Moves to [[Semantic Delay]] |
+|---|---|
+| The 1-measure circular buffer architecture | All trickster spirits (Anansi, Eshu, Huehuecoyotl, Duppy, Loki, Kitsune, Coyote) |
+| The single-gain-knob temporal-inversion gesture | The Duppy / King Tubby / Lee Scratch Perry / Black Ark lineage prose |
+| "Looping the past" as the entry's headline | The séance framing, mediumship, ectoplasm, summoning |
+| The cartoon-character JSUI animation (re-skinned away from spiritualist-medium toward *time-editor / tape-rewinder / past-grabber*) | The "haunting" framing — this is the Semantic Delay's literal job |
+| `couples-with` link to [[Progressive Staging]] | Strengthen `emerged-from [[Dub Lineage]]` — Semantic Delay becomes Dub Lineage's primary heir |
+
+### Concrete edits to draft (not yet apply)
+
+**Retrospective Delay:**
+1. Rewrite the headline paragraph from *"plays back entire phrases — temporal ghosts"* to something like *"the workflow inversion: 'I just played something cool, loop it' replacing 'I am about to play something cool, set up a loop'."* The buffer is always recording; the gain knob is the act of *deciding retroactively* that what just happened was worth keeping.
+2. Replace `## The Ghost Metaphor` section entirely with `## The Temporal Inversion` — a section naming the workflow trick directly. The performer is not a medium; the performer is a *time-editor* who chooses, post-hoc, to keep what was just made. (King Tubby's actual practice — listening to a tape and deciding what to fade up — is closer to this than to séance.)
+3. Rewrite `## Interface Design Philosophy` so the JSUI character is no longer a spiritualist guide. New character register: a tape-rewinder, a clock-hand-puller, a cat batting at the past. Open question to surface: *what is the gesture of "yes, that — keep that"?*
+4. Drop the `[[Dub Lineage]] emerged-from` link (or weaken to `connects-to`) — the dub lineage's actual home is now Semantic Delay.
+5. FV revision: *"I want to become a fully staged Loudon Live teaching instrument whose central pedagogical move is the temporal inversion — every workflow is faster when the loop is set up retroactively. My innovation is the workflow, not the mythology; the trickster pantheon belongs next door at Semantic Delay."*
+
+**Semantic Delay:**
+1. Promote the existing `## Lineage` paragraph (King Tubby, Lee Scratch Perry, Black Ark) to a fuller section, absorbing the séance/ectoplasm framing currently living in Retrospective Delay. Re-cast the séance as *the literal mechanism* — a Semantic Delay tap IS a séance, because it summons a transformed voice from the recorded phrase.
+2. Add the Duppy explicitly as the *named primary spirit* of Phase 1 (voice-swap with no meaning change = a duppy returning in someone else's voice). The other six tricksters earn their seats in Phase 2 when the LLM transform re-enters.
+3. Resolve the "Naming Problem" section toward *Duppy Machine* as the working name — once Retrospective Delay is no longer competing for that mythology, the cultural pressure on Semantic Delay's name relaxes.
+4. Strengthen the typed link to [[Trickster]] from `connects-to` (currently absent — only via Retrospective Delay's `deepens [[Trickster]]` link) to a direct `deepens` link. Retrospective Delay's `deepens [[Trickster]]` link should be retired: it does not deepen the Trickster concept once the workflow inversion is the entry's primary claim.
+
+### What this revision is and isn't
+
+It is *not* a deletion of mythology — every line of trickster prose currently in Retrospective Delay finds a richer home in Semantic Delay. It is *not* a downgrade of Retrospective Delay — the workflow-inversion claim is sharper than the séance claim ever was, and the entry becomes the palace's named home for *retroactive editing as a creative gesture* (a frame that could grow far beyond delay plugins).
+
+It *is* a recognition that the two entries were sharing a single supply of Dub Lineage inheritance and both growing weaker as a result. Cleanly cut, each becomes itself.
+
+### What to do next
+
+If approved: schedule a focused session to apply edits 1–5 to Retrospective Delay and 1–4 to Semantic Delay in one commit pair. The JSUI character work is the largest dependency — a new character register would need its own enrichment pass.
+
+If declined or partially approved: name which axis of the proposed cut Loudon disagrees with. The two most likely fault lines are (a) whether King Tubby is *medium* or *editor* (the séance vs. workflow-inversion question), and (b) whether the Duppy-Machine name lands without Retrospective Delay's mythological cover.
