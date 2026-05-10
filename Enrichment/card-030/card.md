@@ -12,7 +12,7 @@ artifact_type: "text"
 validator_verdict: "revise-then-shipped"
 validator_note: "v1: landed the séance/producer tension. // v2 (after Loudon asked to pull away from séance entirely toward active trickster): The trickster names the séance as ceiling from inside it then kicks through. 'Editing time' vs 'holding a candle' is the specific pivot. 'More itself than it was the first time' lands the retrospective buffer's actual logic better than any explanation."
 validator_iterations: 2
-archived: false
+archived: true
 ---
 
 A skeptic asks whether the séance metaphor is the entry's true self or its first draft. The FV already knows the answer — King Tubby was a producer, not a medium.
