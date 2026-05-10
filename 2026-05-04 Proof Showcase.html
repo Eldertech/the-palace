@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Proof Showcase — 2026-05-04</title>
+<style>
+  :root { color-scheme: dark; }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; min-height: 100vh; background: #0f0f10; color: #e8e8ea;
+    font-family: -apple-system, system-ui, "Segoe UI", sans-serif;
+    line-height: 1.5;
+  }
+  header {
+    position: sticky; top: 0; z-index: 100;
+    background: rgba(15,15,16,0.96); backdrop-filter: blur(8px);
+    border-bottom: 1px solid #2a2a30; padding: 16px 32px;
+    display: grid; grid-template-columns: 1fr auto; gap: 16px; align-items: center;
+  }
+  header .title-block h1 { margin: 0; font-size: 18px; font-weight: 700; color: #f5d68b; }
+  header .title-block p { margin: 2px 0 0 0; font-size: 12px; color: #9a9aa0; }
+  header .actions { display: flex; gap: 8px; }
+  button {
+    background: #ff6f59; color: #0f0f10; border: none; padding: 8px 14px;
+    font-weight: 600; cursor: pointer; border-radius: 4px; font-size: 12px;
+  }
+  button.ghost { background: #2a2a30; color: #c0c0c0; }
+  button:hover { filter: brightness(1.1); }
+  main { max-width: 980px; margin: 0 auto; padding: 28px 32px 80px; }
+  section { margin-bottom: 56px; }
+  section > h2 {
+    font-size: 14px; font-weight: 700; color: #f5d68b;
+    text-transform: uppercase; letter-spacing: 0.08em;
+    border-bottom: 1px solid #2a2a30; padding-bottom: 8px; margin: 0 0 20px 0;
+  }
+  .card {
+    background: #14171a; border: 1px solid #2a2a30; border-radius: 8px;
+    margin-bottom: 24px; overflow: hidden;
+  }
+  .card-header { padding: 14px 18px; border-bottom: 1px solid #2a2a30; display: flex; gap: 12px; align-items: baseline; flex-wrap: wrap; }
+  .card-header .project { font-size: 16px; font-weight: 600; color: #f5d68b; }
+  .card-header .stage {
+    font-size: 10px; padding: 2px 8px; border-radius: 10px;
+    text-transform: uppercase; letter-spacing: 0.06em;
+  }
+  .stage-fruiting { background: rgba(255,111,89,0.15); color: #ff6f59; }
+  .stage-mature   { background: rgba(245,214,139,0.15); color: #f5d68b; }
+  .stage-growing  { background: rgba(109,211,199,0.15); color: #6dd3c7; }
+  .stage-sprout   { background: rgba(197,118,197,0.15); color: #c576c5; }
+  .stage-seed     { background: rgba(136,136,136,0.20); color: #aaaaaa; }
+  .card-header .vector {
+    font-size: 11px; color: #9a9aa0; font-style: italic; flex-basis: 100%;
+    margin-top: 4px; max-width: 80ch;
+  }
+  .card-media { padding: 14px 18px; background: #0f0f10; border-bottom: 1px solid #2a2a30; }
+  .card-media img { max-width: 100%; height: auto; display: block; border-radius: 4px; }
+  .card-media audio { width: 100%; }
+  .card-media iframe { width: 100%; height: 540px; border: 1px solid #2a2a30; border-radius: 4px; background: #0a0a0c; }
+  .card-media .text-preview {
+    background: #1a1a1d; border: 1px solid #2a2a30; border-radius: 4px;
+    padding: 12px 16px; font-size: 13px; color: #c0c0c0; line-height: 1.6;
+    max-height: 220px; overflow: hidden; position: relative;
+  }
+  .card-media .text-preview::after {
+    content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 60px;
+    background: linear-gradient(to bottom, transparent, #1a1a1d);
+    pointer-events: none;
+  }
+  .card-caption { padding: 8px 18px; font-size: 12px; color: #9a9aa0; font-style: italic; }
+  .card-links { padding: 0 18px 8px; font-size: 11px; }
+  .card-links a { color: #6dd3c7; text-decoration: none; margin-right: 14px; }
+  .card-links a:hover { text-decoration: underline; }
+  .card-feedback { padding: 12px 18px 18px; }
+  .card-feedback label { display: block; font-size: 11px; color: #9a9aa0; margin-bottom: 6px; text-transform: uppercase; letter-spacing: 0.04em; }
+  .card-feedback textarea {
+    width: 100%; min-height: 64px; resize: vertical;
+    background: #0a0a0c; color: #e8e8ea; border: 1px solid #2a2a30; border-radius: 4px;
+    padding: 10px 12px; font-family: inherit; font-size: 13px; line-height: 1.5;
+  }
+  .card-feedback textarea:focus { outline: none; border-color: #ff6f59; }
+  .card-feedback .saved { font-size: 10px; color: #6dd3c7; margin-top: 4px; opacity: 0; transition: opacity 0.3s; }
+  .card-feedback .saved.show { opacity: 1; }
+  .followup .card-header .project { color: #c576c5; }
+  .followup-q { padding: 10px 18px; font-size: 13px; color: #c0c0c0; background: rgba(197,118,197,0.06); border-bottom: 1px solid #2a2a30; }
+  .followup-q strong { color: #c576c5; }
+  .toast {
+    position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%);
+    background: #ff6f59; color: #0f0f10; padding: 10px 18px; border-radius: 6px;
+    font-weight: 600; font-size: 13px; opacity: 0; transition: opacity 0.3s;
+    pointer-events: none; z-index: 200;
+  }
+  .toast.show { opacity: 1; }
+  .stat-row { display: flex; gap: 22px; font-size: 11px; color: #9a9aa0; margin-top: 2px; }
+  .stat-row .v { color: #f5d68b; font-weight: 600; }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="title-block">
+    <h1>Proof Showcase — 2026-05-04</h1>
+    <div class="stat-row">
+      <span><span class="v" id="total-count">28</span> artifacts</span>
+      <span><span class="v">23</span> projects</span>
+      <span>feedback autosaves locally; <strong>Copy All Feedback</strong> when ready</span>
+    </div>
+  </div>
+  <div class="actions">
+    <button id="copyAll">⬇ Copy All Feedback</button>
+    <button id="clearAll" class="ghost">clear</button>
+  </div>
+</header>
+
+<main>
+
+<!-- =================== AUDIO =================== -->
+<section>
+  <h2>● Audio</h2>
+  <div id="audio-cards"></div>
+</section>
+
+<!-- =================== VISUAL =================== -->
+<section>
+  <h2>◇ Visual</h2>
+  <div id="visual-cards"></div>
+</section>
+
+<!-- =================== INTERACTIVE =================== -->
+<section>
+  <h2>◐ Interactive</h2>
+  <div id="interactive-cards"></div>
+</section>
+
+<!-- =================== TEXT =================== -->
+<section>
+  <h2>≡ Text</h2>
+  <div id="text-cards"></div>
+</section>
+
+<!-- =================== FOLLOW-UPS =================== -->
+<section>
+  <h2>? Skipped — quick decisions</h2>
+  <div id="followup-cards"></div>
+</section>
+
+</main>
+
+<div class="toast" id="toast">copied to clipboard</div>
+
+<script>
+const ARTIFACTS = [
+  // ============ AUDIO ============
+  { id:"action-potential", section:"audio",
+    project:"Action Potential Oscillator", stage:"growing",
+    vector:"I build the bridge between neurobiology and synthesis parameter by parameter — making each ion channel a knob.",
+    src:"Projects/Action Potential Oscillator/proofs/2026-05-04-spike-oscillator.wav",
+    caption:"6s, FitzHugh-Nagumo cycle as one A2 waveform period, slowly morphing through the bifurcation zone (I = 0.45 → 0.85)." },
+  { id:"crystal", section:"audio",
+    project:"Crystal Synthesizer", stage:"fruiting",
+    vector:"I will become a synthesizer that makes audible the optical properties of crystals.",
+    src:"Projects/Crystal Synthesizer/proofs/2026-05-04-calcite-vs-quartz.wav",
+    caption:"Calcite (Δn=0.172) rings hard; quartz (Δn=0.009) is almost-pure. Birefringence as paired ordinary/extraordinary partials beating against each other. ✓ confirmed direction." },
+  { id:"quantum", section:"audio",
+    project:"Quantum Synthesizer", stage:"growing",
+    vector:"the Schrödinger equation IS a synthesis system — boundary conditions determine harmonic content.",
+    src:"Projects/Quantum Synthesizer/proofs/2026-05-04-three-potentials.wav",
+    caption:"Same f₀, three potentials: harmonic oscillator (evenly spaced), square well (n²), Coulomb-asymptotic (convergent)." },
+  { id:"metric-mod", section:"audio",
+    project:"Metric Modulation", stage:"growing",
+    vector:"the technique that reframes the temporal grid itself — clock time vs felt time.",
+    src:"Projects/Metric Modulation/proofs/2026-05-04-120-to-180.wav",
+    caption:"120 bpm clicks → dotted-quarter pivot → 180 bpm. The ear's reset is the lesson." },
+  { id:"inharmonic-wt-audio", section:"audio",
+    project:"Inharmonic Wavetable Synthesis", stage:"growing",
+    vector:"a working VST instrument and a Four Pillars lesson simultaneously — the synthesizer is the pedagogy.",
+    src:"Projects/Inharmonic Wavetable Synthesis/proofs/2026-05-04-bending-the-line.wav",
+    caption:"14 partials, B sweeps 0 → 0.0015 over 8s. The horizontal line bending in real time.",
+    extra:{ type:"image", src:"Projects/Inharmonic Wavetable Synthesis/proofs/2026-05-04-bending-spectra.png", note:"Three time slices: harmonic / gentle stretch / piano-treble" } },
+  { id:"shepard", section:"audio",
+    project:"Shepard Tone Synthesizer", stage:"sprout",
+    vector:"endless ascending — pure psychoacoustic illusion as base case.",
+    src:"Projects/Shepard Tone Synthesizer/proofs/2026-05-04-endless-ascent.wav",
+    caption:"12s, 8-octave Gaussian-windowed stack, 4s per octave-rise loop." },
+  { id:"portamento-audio", section:"audio",
+    project:"Portamento and Physical Pitch Modeling", stage:"mature",
+    vector:"an interactive teaching artifact where pitch glide physics become audible.",
+    src:"Projects/Portamento and Physical Pitch Modeling/proofs/2026-05-04-three-glides.wav",
+    caption:"Three glides C4 → G4: linear (toy), 2nd-order overdamped (slide whistle), 2nd-order underdamped with overshoot (voice / string).",
+    extra:{ type:"image", src:"Projects/Portamento and Physical Pitch Modeling/proofs/2026-05-04-three-glides.png", note:"Pitch trajectories" } },
+
+  // ============ VISUAL ============
+  { id:"inharmonicity", section:"visual",
+    project:"Categorizing Inharmonicity", stage:"mature",
+    vector:"map the space of inharmonicity types, giving designers a palette of forms.",
+    type:"image",
+    src:"Projects/Categorizing Inharmonicity/proofs/2026-05-04-five-flavors.png",
+    caption:"Spectrograms side by side: harmonic / stretched / Bessel / stochastic / chaotic. f₀=220Hz, 16 partials." },
+  { id:"bessel", section:"visual",
+    project:"Bessel Functions in Synthesis", stage:"growing",
+    vector:"the bridge between geometry and sound — FM, bells, drums, quantum oscillators speak the same eigenfunction language.",
+    type:"image",
+    src:"Projects/Bessel Functions in Synthesis/proofs/2026-05-04-six-modes.png",
+    caption:"First six (m,n) modes on a circular drumhead, contour-rendered." },
+  { id:"wallpaper", section:"visual",
+    project:"Wallpaper Groups", stage:"growing",
+    vector:"the discovered ceilings of symmetry — the 17 groups taught through making.",
+    type:"image",
+    src:"Projects/Wallpaper Groups/proofs/2026-05-04-p4m-cell.svg",
+    caption:"p4m — square lattice, full D₄ at every node. Rotation centers and mirror lines marked." },
+  { id:"neural-gran", section:"visual",
+    project:"Neural Granular Synthesis", stage:"growing",
+    vector:"stable timbres emerge from populations rather than individual grains.",
+    type:"image",
+    src:"Projects/Neural Granular Synthesis/proofs/2026-05-04-kuramoto-coherence.png",
+    caption:"600 grains, Kuramoto coupling at K=0 (incoherent), K=1.5 (partial sync), K=5 (full coherence)." },
+  { id:"seance-cat", section:"visual",
+    project:"Retrospective Delay", stage:"growing",
+    vector:"a fully staged Loudon Live teaching instrument with séance medium / dub engineer mythology.",
+    type:"image",
+    src:"Projects/Retrospective Delay/proofs/2026-05-04-seance-cat-poses.svg",
+    caption:"The séance cat at gain=0 (sleeping), gain=mid (reaching), gain=peak (ascended). Stage 4 JSUI target." },
+  { id:"torus", section:"visual",
+    project:"2D Torus Wavetable Synthesizer", stage:"fruiting",
+    vector:"a working RNBO instrument with the seven-surface library validated.",
+    type:"image",
+    src:"Projects/2D Torus Wavetable Synthesizer/proofs/2026-05-04-seven-surfaces.png",
+    caption:"Seven candidate surfaces — sine sweep, partial stack, duty morph, membrane, Chladni ghost, theta surface, stiff string." },
+  { id:"biomech", section:"visual",
+    project:"Biomechanical Synthesis", stage:"mature",
+    vector:"the palace's most viscerally pedagogical framework — eight instruments that prove DSP mechanics are unforgettable when made physical.",
+    type:"image",
+    src:"Projects/Biomechanical Synthesis/proofs/2026-05-04-eight-instrument-hub.svg",
+    caption:"All eight instruments arranged as a hub — biological / DSP / status pairing. Built (1), specified (5), seed (2)." },
+  { id:"shimmer", section:"visual",
+    project:"Shimmer Cloud", stage:"seed",
+    vector:"a reverb that is also a prism — dispersing input into pitch-shifted granular populations.",
+    type:"image",
+    src:"Projects/Shimmer Cloud/proofs/2026-05-04-prism-dispersion.png",
+    caption:"Concept art. Input pulse → prism reverb → pitched grain cloud." },
+  { id:"meadows-leverage", section:"visual",
+    project:"Meadows and Music — Leverage Points", stage:"growing",
+    vector:"twelve leverage points mapped to musical exercises — making system theory hands-on.",
+    type:"image",
+    src:"Projects/Meadows and Music — Leverage Points/proofs/2026-05-04-meadows-music-hierarchy.svg",
+    caption:"Donella Meadows' 12 leverage levels, each linked to one of your 9 exercises. The Drone Koan hits multiple levels — the project's central insight." },
+
+  // ============ INTERACTIVE ============
+  { id:"piano-string", section:"interactive",
+    project:"Piano String Inharmonicity", stage:"growing",
+    vector:"an interactive teaching artifact where the inharmonicity coefficient B is playable.",
+    type:"iframe",
+    src:"Projects/Piano String Inharmonicity/proofs/2026-05-04-B-slider.html",
+    caption:"Press play, drag B. Each partial's cents deviation from harmonic shown live." },
+  { id:"freq-time", section:"interactive",
+    project:"Frequency-Time Duality", stage:"growing",
+    vector:"the single explanation behind every modulation device — delay, vibrato, FM as one continuous axis.",
+    type:"iframe",
+    src:"Projects/Frequency-Time Duality/proofs/2026-05-04-mod-rate-sweep.html",
+    caption:"One log slider 0.1Hz → 10kHz. Regime label updates as you cross perceptual thresholds." },
+  { id:"particle", section:"interactive",
+    project:"Particle Synthesis", stage:"growing",
+    vector:"each particle is a grain; population density is the spectral control surface.",
+    type:"iframe",
+    src:"Projects/Particle Synthesis/proofs/2026-05-04-particle-grain-cloud.html",
+    caption:"Click and hold to seed grains. Each is a sine; x=pitch, y=pan. Up to 200 simultaneous." },
+  { id:"talking-keyboard", section:"interactive",
+    project:"Talking Keyboard", stage:"sprout", isNew:true,
+    vector:"velocity = language layers; 88 keys = 88 madlib-able words. (per your 2026-05-04 redirect)",
+    type:"iframe",
+    src:"Projects/Talking Keyboard/proofs/2026-05-04-velocity-language-madlib.html",
+    caption:"v0 mockup. 17 keys fully populated across 5 languages (Latin/Japanese/English/French/German). Click a velocity chip then click keys to compose." },
+  { id:"curriculum", section:"interactive",
+    project:"Curriculum Map", stage:"sprout", isNew:true,
+    vector:"a priority guide that helps every topic get attention proportional to its rhythm. (per your 2026-05-04 clarification)",
+    type:"iframe",
+    src:"Projects/curriculum-map/proofs/2026-05-04-priority-guide.html",
+    caption:"Active focus / Maintain momentum / Background warm / Hibernation. All 23 projects placed with a one-line next move each." },
+
+  // ============ TEXT ============
+  { id:"semantic-delay", section:"text",
+    project:"Semantic Delay", stage:"growing",
+    vector:"delay-as-semantic-distance — each tap pulls a substitute from further across embedding space.",
+    type:"text",
+    src:"Projects/Semantic Delay/proofs/2026-05-04-substitution-chain.md",
+    preview:"Six taps from r=0.05 (synonym, \"recalls\") to r=0.95 (antipode, \"the silence answers each cry it has swallowed\"). The phrase \"the river remembers everything it has touched\" walked across embedding space." },
+  { id:"compressor", section:"text",
+    project:"Compressor Design", stage:"mature",
+    vector:"the entry that captures why every design choice was made to make the invisible visible.",
+    type:"text",
+    src:"Projects/Compressor Design/proofs/2026-05-04-pedagogical-retrospective.md",
+    preview:"Three teaching beats: (1) the 500-sample window as time you can feel; (2) attack and release as desire and reluctance; (3) the sidechain as the conductor. Each captured as setup → move → student response → why-this-lands." },
+  { id:"oracle", section:"text",
+    project:"Preset Oracle", stage:"mature",
+    vector:"the encounter between the philosophical challenge and the maker — captured.",
+    type:"text",
+    src:"Projects/Preset Oracle/proofs/2026-05-04-new-oracle-prompt.md",
+    preview:"\"A glassblower remembering an argument with their teacher\" — a sibling oracle prompt to Parmenides Dying Alone in a Warehouse. Designed to provoke philosophical commitment-via-timbre." },
+  { id:"gen-wavetable", section:"text",
+    project:"Generative Wavetable Libraries", stage:"sprout",
+    vector:"a chat-driven generator of wavetables — Claude conducts the interview.",
+    type:"text",
+    src:"Projects/Generative Wavetable Libraries/proofs/2026-05-04-interview-mock.md",
+    preview:"User asks for \"a buried bell.\" Claude disambiguates with three structural options, sources partials from a parametric bell-shell deformation, audition-gates before commit. Spec-by-example for the future Interview skill." },
+  { id:"gen-preset", section:"text",
+    project:"Generative Preset Development", stage:"growing",
+    vector:"single emotional prompt → preset bank, with macros mapped to interpretive handles.",
+    type:"text",
+    src:"Projects/Generative Preset Development/proofs/2026-05-04-preset-interview-mock.md",
+    preview:"User: \"a pad that feels like the moment before someone admits something they've been holding back.\" Claude maps to body / tension / threshold / breath / withhold macros for Serum." },
+  { id:"phoneme-prompt", section:"text",
+    project:"Phoneme Choir", stage:"sprout", isNew:true,
+    vector:"prove Kokoro's competence at percussive transient utterances. (you redirected: hand off to Claude Code)",
+    type:"text",
+    src:"Projects/Phoneme Choir/proofs/2026-05-04-claude-code-handoff-prompt.md",
+    preview:"A Claude Code prompt that loads Phoneme Choir + GSL + the Talking Keyboard pronunciation-bug constraints, then renders a 40-file Stage 0 audition (10 phonemes × 4 velocity layers) with audition gate before any full bank." },
+
+  // ============ FOLLOW-UPS ============
+  { id:"gsl-followup", section:"followup",
+    project:"Generative Sample Libraries", stage:"growing",
+    question:"This was already piloted (the Stage A run on 2026-05-03 produced two BBS messages). I skipped a fresh proof to avoid duplicating the Wavetable / Preset interview mocks. Want a fresh artifact (different angle than interview-shape), or hold this one until Phase 2's Interview skill home is settled?" },
+  { id:"meadows-origin-followup", section:"followup",
+    project:"Meadows and Music — Origin and Process", stage:"growing",
+    question:"Companion to Leverage Points. I skipped because it's a process-essay project and \"make\" doesn't fit cleanly. What shape would forward motion take here? A diagram of the origin story? A short audio talk-through? Something else?" },
+];
+
+// ============ RENDERING ============
+function escapeHTML(s){ return s.replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
+function urlSafe(s){ return encodeURI(s); }
+
+function renderCard(a){
+  const isFollowup = a.section === 'followup';
+  const newBadge = a.isNew ? ' <span style="font-size:9px;background:#ff6f59;color:#0f0f10;padding:2px 6px;border-radius:8px;margin-left:6px;font-weight:700;letter-spacing:0.04em;">NEW</span>' : '';
+  let mediaHTML = '';
+
+  if(a.section === 'audio'){
+    mediaHTML = `<div class="card-media"><audio controls preload="none" src="${urlSafe(a.src)}"></audio></div>`;
+    if(a.extra && a.extra.type === 'image'){
+      mediaHTML += `<div class="card-media" style="border-bottom:none;"><img loading="lazy" src="${urlSafe(a.extra.src)}" alt="companion image"></div>`;
+      mediaHTML += `<div class="card-caption" style="padding-top:0;">${escapeHTML(a.extra.note)}</div>`;
+    }
+  } else if(a.type === 'image'){
+    mediaHTML = `<div class="card-media"><img loading="lazy" src="${urlSafe(a.src)}" alt="${escapeHTML(a.project)}"></div>`;
+  } else if(a.type === 'iframe'){
+    mediaHTML = `<div class="card-media"><iframe loading="lazy" src="${urlSafe(a.src)}" sandbox="allow-scripts allow-same-origin"></iframe></div>`;
+  } else if(a.type === 'text'){
+    mediaHTML = `<div class="card-media"><div class="text-preview">${escapeHTML(a.preview)}</div></div>`;
+  }
+
+  const captionHTML = a.caption ? `<div class="card-caption">${escapeHTML(a.caption)}</div>` : '';
+  const linksHTML = a.src ? `<div class="card-links"><a href="${urlSafe(a.src)}" target="_blank">↗ open in new tab</a></div>` : '';
+
+  if(isFollowup){
+    return `
+      <div class="card followup">
+        <div class="card-header">
+          <span class="project">${escapeHTML(a.project)}${newBadge}</span>
+          <span class="stage stage-${a.stage}">${a.stage}</span>
+        </div>
+        <div class="followup-q"><strong>?</strong> ${escapeHTML(a.question)}</div>
+        <div class="card-feedback">
+          <label>your answer</label>
+          <textarea data-id="${a.id}" placeholder="…"></textarea>
+          <div class="saved" data-saved="${a.id}">saved</div>
+        </div>
+      </div>
+    `;
+  }
+
+  return `
+    <div class="card">
+      <div class="card-header">
+        <span class="project">${escapeHTML(a.project)}${newBadge}</span>
+        <span class="stage stage-${a.stage}">${a.stage}</span>
+        <div class="vector">${escapeHTML(a.vector || '')}</div>
+      </div>
+      ${mediaHTML}
+      ${captionHTML}
+      ${linksHTML}
+      <div class="card-feedback">
+        <label>your feedback — what's right, what's wrong, what to do next</label>
+        <textarea data-id="${a.id}" placeholder="…"></textarea>
+        <div class="saved" data-saved="${a.id}">saved</div>
+      </div>
+    </div>
+  `;
+}
+
+function placeCards(){
+  const sections = { audio:'audio-cards', visual:'visual-cards', interactive:'interactive-cards', text:'text-cards', followup:'followup-cards' };
+  Object.values(sections).forEach(id => document.getElementById(id).innerHTML = '');
+  ARTIFACTS.forEach(a => {
+    const targetId = sections[a.section];
+    if(targetId){
+      document.getElementById(targetId).insertAdjacentHTML('beforeend', renderCard(a));
+    }
+  });
+  // load saved feedback
+  document.querySelectorAll('textarea[data-id]').forEach(t => {
+    const v = localStorage.getItem('feedback-' + t.dataset.id);
+    if(v) t.value = v;
+    t.addEventListener('input', e => {
+      localStorage.setItem('feedback-' + t.dataset.id, t.value);
+      const saved = document.querySelector(`[data-saved="${t.dataset.id}"]`);
+      if(saved){ saved.classList.add('show'); clearTimeout(saved._t); saved._t = setTimeout(()=>saved.classList.remove('show'), 1500); }
+    });
+  });
+}
+
+document.getElementById('total-count').textContent = ARTIFACTS.filter(a => a.section !== 'followup').length;
+
+document.getElementById('copyAll').addEventListener('click', async () => {
+  const lines = [`# Proof Showcase Feedback — 2026-05-04`, ''];
+  let any = false;
+  ARTIFACTS.forEach(a => {
+    const v = localStorage.getItem('feedback-' + a.id);
+    if(v && v.trim()){
+      lines.push(`## ${a.project}`);
+      lines.push(v.trim());
+      lines.push('');
+      any = true;
+    }
+  });
+  const text = any ? lines.join('\n') : '# No feedback entered yet.';
+  try {
+    await navigator.clipboard.writeText(text);
+    showToast(any ? 'copied to clipboard — paste back to me' : 'no feedback yet');
+  } catch(e) {
+    // fallback: select-and-copy
+    const ta = document.createElement('textarea');
+    ta.value = text; document.body.appendChild(ta); ta.select();
+    try { document.execCommand('copy'); showToast('copied'); } catch(e2){ alert(text); }
+    document.body.removeChild(ta);
+  }
+});
+
+document.getElementById('clearAll').addEventListener('click', () => {
+  if(!confirm('Clear all feedback locally? (does not affect saved files)')) return;
+  ARTIFACTS.forEach(a => localStorage.removeItem('feedback-' + a.id));
+  document.querySelectorAll('textarea[data-id]').forEach(t => t.value = '');
+  showToast('cleared');
+});
+
+function showToast(msg){
+  const t = document.getElementById('toast');
+  t.textContent = msg; t.classList.add('show');
+  clearTimeout(t._tm); t._tm = setTimeout(()=>t.classList.remove('show'), 1800);
+}
+
+placeCards();
+</script>
+
+</body>
+</html>

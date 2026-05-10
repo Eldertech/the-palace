@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Wallpaper Groups v2 — animated explorer</title>
+<style>
+  :root { color-scheme: dark; }
+  body {
+    margin: 0; min-height: 100vh; background: #0f0f10; color: #e8e8ea;
+    font-family: -apple-system, system-ui, sans-serif;
+  }
+  header { padding: 20px 28px; border-bottom: 1px solid #2a2a30; }
+  header h1 { margin: 0 0 4px 0; font-size: 22px; font-weight: 600; color: #f5d68b; }
+  header p { margin: 0; color: #9a9aa0; font-size: 13px; max-width: 80ch; }
+  main { display: grid; grid-template-columns: 220px 1fr; gap: 0; min-height: 70vh; }
+  aside {
+    padding: 20px; border-right: 1px solid #2a2a30; background: #14171a;
+    display: grid; gap: 8px; align-content: start;
+  }
+  aside h2 { margin: 0 0 8px 0; font-size: 12px; color: #f5d68b; text-transform: uppercase; letter-spacing: 0.06em; }
+  .group-btn {
+    background: #1a1a1d; border: 1px solid #2a2a30; color: #c0c0c0;
+    padding: 10px 12px; text-align: left; cursor: pointer; border-radius: 4px;
+    font-size: 12px; font-family: inherit;
+    display: grid; grid-template-columns: 50px 1fr; gap: 8px; align-items: baseline;
+  }
+  .group-btn:hover { border-color: #6dd3c7; color: #e8e8ea; }
+  .group-btn.active { background: #ff6f59; color: #0f0f10; border-color: #ff6f59; font-weight: 600; }
+  .group-btn .code { font-weight: 700; }
+  .group-btn .desc { font-size: 10px; color: #888; }
+  .group-btn.active .desc { color: rgba(15,15,16,0.7); }
+  .stage-area { display: grid; grid-template-rows: 1fr auto; }
+  canvas { background: #0a0a0c; width: 100%; height: 100%; display: block; }
+  .info-bar {
+    padding: 16px 24px; background: #14171a; border-top: 1px solid #2a2a30;
+    display: grid; gap: 6px;
+  }
+  .info-bar h3 { margin: 0; color: #f5d68b; font-size: 16px; }
+  .info-bar .gen { color: #6dd3c7; font-size: 12px; font-family: ui-monospace, monospace; }
+  .info-bar .desc { color: #c0c0c0; font-size: 13px; }
+  .controls {
+    padding: 12px 24px; background: #14171a; border-top: 1px solid #2a2a30;
+    display: flex; gap: 14px; align-items: center; flex-wrap: wrap;
+  }
+  button.action {
+    background: #ff6f59; color: #0f0f10; border: none; padding: 8px 16px;
+    font-weight: 600; cursor: pointer; border-radius: 4px; font-size: 13px;
+  }
+  button.action.ghost { background: #2a2a30; color: #c0c0c0; }
+  .controls label { color: #c0c0c0; font-size: 12px; display: flex; gap: 8px; align-items: center; }
+  input[type=range] { accent-color: #ff6f59; width: 140px; }
+</style>
+</head>
+<body>
+<header>
+  <h1>Wallpaper Groups v2 — animated explorer</h1>
+  <p>The 17 wallpaper groups are the only possible symmetries of an infinite 2D pattern. v2 redirect: now interactive. Pick a group, watch the symmetry operations animate from a single motif, see the pattern build.</p>
+</header>
+<main>
+  <aside>
+    <h2>The 17 groups</h2>
+    <div id="group-list"></div>
+  </aside>
+  <div class="stage-area">
+    <canvas id="canvas"></canvas>
+    <div class="info-bar">
+      <h3 id="info-name">p1 — translation only</h3>
+      <div class="gen" id="info-gen">generators: { τ_x, τ_y }</div>
+      <div class="desc" id="info-desc">The simplest group. The motif is repeated by horizontal and vertical translation only — no rotations, no reflections.</div>
+    </div>
+    <div class="controls">
+      <button class="action" id="restart">↻ replay animation</button>
+      <button class="action ghost" id="step">step (next operation)</button>
+      <label>speed <input type="range" id="speed" min="0.3" max="3" step="0.1" value="1.0"></label>
+      <label><input type="checkbox" id="auto" checked> auto-loop</label>
+    </div>
+  </div>
+</main>
+
+<script>
+const canvas = document.getElementById('canvas');
+const ctx = canvas.getContext('2d');
+
+// Group definitions: a list of group objects, each with name/desc/generators producing motif copies
+// generators[] is a list of "stages" — each stage is a list of transformation matrices to apply
+// to the previous stage's motifs. Each animation step applies one stage.
+const GROUPS = [
+  {code:'p1',  name:'p1 — translation only',
+   desc:'The simplest group. The motif is repeated by horizontal and vertical translation only — no rotations, no reflections.',
+   gen:'{ τ_x, τ_y }',
+   stages: [translate_xy()]},
+  {code:'p2',  name:'p2 — 2-fold rotation',
+   desc:'Half-turn rotation centers at the lattice points. No reflections. The motif and its 180° rotation tile the plane.',
+   gen:'{ τ_x, τ_y, R₂ }',
+   stages: [rot([0,0], 2)], stagesAfterTrans: true},
+  {code:'pm',  name:'pm — single mirror',
+   desc:'A vertical mirror line. The motif and its reflection alternate horizontally; rows translate vertically.',
+   gen:'{ τ_x, τ_y, M_y }',
+   stages: [reflect('y')], stagesAfterTrans: true},
+  {code:'pg',  name:'pg — glide reflection',
+   desc:'A glide reflection: reflect, then translate by half a period. No simple mirror; the motif "walks" sideways as it flips.',
+   gen:'{ τ_x, τ_y, G }',
+   stages: [glide('y', 60)], stagesAfterTrans: true},
+  {code:'cm',  name:'cm — centered rectangular',
+   desc:'A mirror plus a glide. The lattice is a rhombic centered cell.',
+   gen:'{ τ_x, τ_y, M, G }',
+   stages: [reflect('y'), glide('y', 30)], stagesAfterTrans: true},
+  {code:'pmm', name:'pmm — orthogonal mirrors',
+   desc:'Two perpendicular mirror lines. Each cell becomes 4 copies via horizontal and vertical reflection.',
+   gen:'{ τ_x, τ_y, M_x, M_y }',
+   stages: [reflect('x'), reflect('y')], stagesAfterTrans: true},
+  {code:'p4',  name:'p4 — 4-fold rotation',
+   desc:'Quarter-turn rotation centers. Four copies of the motif cycle around each rotation center.',
+   gen:'{ τ_x, τ_y, R₄ }',
+   stages: [rot([0,0], 4)], stagesAfterTrans: true},
+  {code:'p4m', name:'p4m — square symmetry full',
+   desc:'The most symmetric of the 17 — full square dihedral D₄ at every lattice point. Eight motif copies per cell.',
+   gen:'{ τ_x, τ_y, R₄, M }',
+   stages: [rot([0,0], 4), reflect('y')], stagesAfterTrans: true},
+  {code:'p3',  name:'p3 — 3-fold rotation',
+   desc:'Three-fold rotation only. Triangular tiling, no reflections. Each motif has two rotated companions.',
+   gen:'{ τ_a, τ_b, R₃ }', triangular: true,
+   stages: [rot([0,0], 3)], stagesAfterTrans: true},
+  {code:'p6',  name:'p6 — 6-fold rotation',
+   desc:'Hexagonal tiling. Six motifs around each rotation center.',
+   gen:'{ τ_a, τ_b, R₆ }', triangular: true,
+   stages: [rot([0,0], 6)], stagesAfterTrans: true},
+  {code:'p6m', name:'p6m — full hexagonal',
+   desc:'Maximum hexagonal symmetry — 12 motif copies per hexagonal cell. Mirrors, 6-fold rotation, glides combined.',
+   gen:'{ τ_a, τ_b, R₆, M }', triangular: true,
+   stages: [rot([0,0], 6), reflect('y')], stagesAfterTrans: true},
+];
+
+function translate_xy(){ return null; } // placeholder — translation is always last
+
+function rot(center, n){
+  const ops = [];
+  for(let k=1; k<n; k++){
+    ops.push({type:'rotate', angle: k * 2*Math.PI/n, cx: center[0], cy: center[1]});
+  }
+  return ops;
+}
+function reflect(axis){ return [{type:'reflect', axis}]; }
+function glide(axis, dist){ return [{type:'glide', axis, dist}]; }
+
+function applyTransform(p, op, sx, sy){
+  if(op.type === 'rotate'){
+    const c = Math.cos(op.angle), s = Math.sin(op.angle);
+    const dx = p.x - op.cx*sx, dy = p.y - op.cy*sy;
+    return { x: op.cx*sx + c*dx - s*dy, y: op.cy*sy + s*dx + c*dy, r: p.r + op.angle, mirrored: p.mirrored };
+  }
+  if(op.type === 'reflect'){
+    if(op.axis === 'y') return { x: -p.x, y: p.y, r: -p.r, mirrored: !p.mirrored };
+    return { x: p.x, y: -p.y, r: -p.r, mirrored: !p.mirrored };
+  }
+  if(op.type === 'glide'){
+    if(op.axis === 'y') return { x: -p.x + op.dist, y: p.y, r: -p.r, mirrored: !p.mirrored };
+    return { x: p.x, y: -p.y + op.dist, r: -p.r, mirrored: !p.mirrored };
+  }
+  return p;
+}
+
+// Animation state
+let currentGroup = GROUPS[0];
+let stagedMotifs = []; // [[motifs at stage 0], [motifs at stage 1+], ...]
+let animationT = 0; // seconds
+let speed = 1.0;
+let autoLoop = true;
+let startTime = 0;
+
+function buildMotifSet(group){
+  // Start with a base motif at origin
+  let motifs = [{x:0, y:0, r:0, mirrored:false}];
+  const stages = [motifs.slice()];
+
+  if(group.stages){
+    for(const opSet of group.stages){
+      if(!opSet) continue;
+      const newMotifs = [...motifs];
+      for(const op of opSet){
+        for(const m of motifs){
+          newMotifs.push(applyTransform(m, op, 1, 1));
+        }
+      }
+      motifs = newMotifs;
+      stages.push(motifs.slice());
+    }
+  }
+
+  // Final stage: tile via translations
+  const tiled = [];
+  const tilesX = group.triangular ? 7 : 7;
+  const tilesY = group.triangular ? 5 : 5;
+  for(let i=-3; i<tilesX-3; i++){
+    for(let j=-2; j<tilesY-2; j++){
+      let dx = i, dy = j;
+      if(group.triangular){
+        dx = i + j*0.5; dy = j * Math.sqrt(3)/2;
+      }
+      for(const m of motifs){
+        tiled.push({x: m.x + dx, y: m.y + dy, r: m.r, mirrored: m.mirrored});
+      }
+    }
+  }
+  stages.push(tiled);
+  return stages;
+}
+
+function selectGroup(group){
+  currentGroup = group;
+  document.querySelectorAll('.group-btn').forEach(b => b.classList.remove('active'));
+  const btn = document.querySelector(`.group-btn[data-code="${group.code}"]`);
+  if(btn) btn.classList.add('active');
+  document.getElementById('info-name').textContent = group.name;
+  document.getElementById('info-desc').textContent = group.desc;
+  document.getElementById('info-gen').textContent = `generators: ${group.gen}`;
+  stagedMotifs = buildMotifSet(group);
+  startTime = performance.now() / 1000;
+  animationT = 0;
+}
+
+document.getElementById('restart').onclick = () => {
+  startTime = performance.now() / 1000;
+  animationT = 0;
+};
+document.getElementById('step').onclick = () => {
+  // Jump to next stage
+  const stageDuration = 1.2 / speed;
+  const currentStage = Math.floor(animationT / stageDuration);
+  startTime = performance.now()/1000 - (currentStage + 1) * stageDuration;
+};
+document.getElementById('speed').oninput = e => { speed = +e.target.value; };
+document.getElementById('auto').onchange = e => { autoLoop = e.target.checked; };
+
+// Render groups list
+const list = document.getElementById('group-list');
+GROUPS.forEach(g => {
+  const btn = document.createElement('button');
+  btn.className = 'group-btn';
+  btn.dataset.code = g.code;
+  btn.innerHTML = `<span class="code">${g.code}</span><span class="desc">${g.desc.slice(0,42)}...</span>`;
+  btn.onclick = () => selectGroup(g);
+  list.appendChild(btn);
+});
+
+selectGroup(GROUPS[0]);
+
+// Motif drawing — an asymmetric "comma" so you can see chirality
+function drawMotif(ctx, m, scale, alpha){
+  ctx.save();
+  ctx.translate(m.x * scale, m.y * scale);
+  ctx.rotate(m.r);
+  if(m.mirrored) ctx.scale(-1, 1);
+  ctx.fillStyle = `rgba(232, 176, 78, ${alpha})`;
+  ctx.strokeStyle = `rgba(245, 214, 139, ${alpha*0.9})`;
+  ctx.lineWidth = 1.2 * scale/45;
+  ctx.beginPath();
+  // simple "L" shape with hook — chiral
+  const r = scale*0.35;
+  ctx.moveTo(-r*0.6, -r*0.6);
+  ctx.lineTo( r*0.4, -r*0.6);
+  ctx.lineTo( r*0.4, -r*0.2);
+  ctx.lineTo(-r*0.2, -r*0.2);
+  ctx.lineTo(-r*0.2,  r*0.4);
+  ctx.lineTo(-r*0.6,  r*0.4);
+  ctx.closePath();
+  ctx.fill();
+  ctx.stroke();
+  // small dot indicating "head"
+  ctx.fillStyle = `rgba(255, 111, 89, ${alpha})`;
+  ctx.beginPath();
+  ctx.arc(r*0.05, -r*0.4, scale*0.06, 0, Math.PI*2); ctx.fill();
+  ctx.restore();
+}
+
+function animate(){
+  const W = canvas.width = canvas.clientWidth * devicePixelRatio;
+  const H = canvas.height = canvas.clientHeight * devicePixelRatio;
+  ctx.fillStyle = 'rgba(10,10,12,0.18)';
+  ctx.fillRect(0,0,W,H);
+
+  const now = performance.now() / 1000;
+  const elapsed = (now - startTime) * speed;
+  const stageDuration = 1.2;
+  const totalStages = stagedMotifs.length;
+  let stageIndex = Math.floor(elapsed / stageDuration);
+  let stageProgress = (elapsed % stageDuration) / stageDuration;
+
+  if(stageIndex >= totalStages){
+    if(autoLoop){
+      // hold final state for a beat, then restart
+      if(elapsed > totalStages * stageDuration + 1.5){
+        startTime = now;
+      }
+      stageIndex = totalStages - 1;
+      stageProgress = 1;
+    } else {
+      stageIndex = totalStages - 1;
+      stageProgress = 1;
+    }
+  }
+
+  // Draw all motifs from previous stages at full alpha
+  const cx = W/2, cy = H/2;
+  const scale = Math.min(W, H) / 11;
+
+  ctx.save();
+  ctx.translate(cx, cy);
+
+  for(let s = 0; s < stageIndex; s++){
+    const motifs = stagedMotifs[s];
+    for(const m of motifs){
+      drawMotif(ctx, m, scale, 0.95);
+    }
+  }
+  // Current stage: fade in motifs that are NEW (not in previous stage)
+  if(stageIndex < totalStages){
+    const prev = stageIndex > 0 ? stagedMotifs[stageIndex - 1] : [];
+    const curr = stagedMotifs[stageIndex];
+    const prevSet = new Set(prev.map(p => p.x.toFixed(3)+','+p.y.toFixed(3)));
+    for(const m of curr){
+      const k = m.x.toFixed(3)+','+m.y.toFixed(3);
+      if(prevSet.has(k)){
+        drawMotif(ctx, m, scale, 0.95);
+      } else {
+        drawMotif(ctx, m, scale, stageProgress * 0.95);
+      }
+    }
+  }
+  ctx.restore();
+
+  // stage indicator
+  ctx.fillStyle = 'rgba(245,214,139,0.7)';
+  ctx.font = (12*devicePixelRatio)+'px system-ui';
+  const stageLabels = ['base motif', 'first symmetry op applied', 'second symmetry op applied', 'translation tiling'];
+  const labelIdx = Math.min(stageIndex, stageLabels.length - 1);
+  ctx.fillText(`stage ${stageIndex+1}/${totalStages}: ${stageLabels[labelIdx]}`, 16*devicePixelRatio, 24*devicePixelRatio);
+
+  requestAnimationFrame(animate);
+}
+animate();
+</script>
+</body>
+</html>

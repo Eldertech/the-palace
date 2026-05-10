@@ -32,6 +32,9 @@ links:
     type: mirrors
   - target: "[[Palace Enchantment]]"
     type: spawned
+  - target: "[[Project Stewardship System]]"
+    type: enables
+    label: philosophical-foundation
 ---
 <!-- Pages as agents will be a powerful connection with our "person" pages, and with giving each page a "forward vector" Any entry we create for a person should have a clear purpose of "embodying" that person when loaded into the context of an agent. Currently, many of our "persons" pages are based around the four pillars(these exist in the artifacts folder for now) But, those pages need to be developed so that they can enchant a worker and their individual personalities can be brought to any problem we are encountering, and they can enter conversations where their input would be most useful -->
 

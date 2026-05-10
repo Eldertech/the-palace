@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Frequency-Time Duality v2 — one delay, six worlds</title>
+<style>
+  :root { color-scheme: dark; }
+  body {
+    margin: 0; min-height: 100vh; background: #0f0f10; color: #e8e8ea;
+    font-family: -apple-system, system-ui, sans-serif;
+  }
+  header { padding: 22px 28px; border-bottom: 1px solid #2a2a30; }
+  header h1 { margin: 0 0 4px 0; font-size: 22px; font-weight: 600; color: #f5d68b; }
+  header p { margin: 0; color: #9a9aa0; font-size: 13px; max-width: 76ch; }
+  main { padding: 28px; display: grid; gap: 24px; max-width: 980px; }
+  .slider-row { display: grid; gap: 12px; }
+  input[type=range] { width: 100%; accent-color: #ff6f59; height: 28px; }
+  .ticks { display: grid; grid-template-columns: repeat(6, 1fr); font-size: 11px; color: #777; gap: 4px; }
+  .tick { display: flex; flex-direction: column; align-items: center; gap: 4px; text-align: center; }
+  .tick-band { height: 6px; width: 100%; border-radius: 2px; }
+  .b-pitch    { background: #ff6f59; }
+  .b-flutter  { background: #e8b04e; }
+  .b-comb     { background: #c576c5; }
+  .b-slap     { background: #6dd3c7; }
+  .b-echo     { background: #4a6fa5; }
+  .b-rhythm   { background: #888; }
+  .display {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 16px;
+    background: #1a1a1d; border: 1px solid #2a2a30; padding: 20px; border-radius: 6px;
+  }
+  .regime { font-size: 13px; }
+  .regime .name { font-size: 24px; font-weight: 600; color: #f5d68b; margin-bottom: 6px; }
+  .regime .rate { color: #ff6f59; font-variant-numeric: tabular-nums; font-size: 14px; margin-bottom: 12px; }
+  .regime .desc { color: #c0c0c0; line-height: 1.5; }
+  canvas { background: #0a0a0c; border-radius: 4px; width: 100%; height: 220px; display: block; }
+  button {
+    background: #ff6f59; color: #0f0f10; border: none; padding: 10px 20px;
+    font-weight: 600; cursor: pointer; border-radius: 4px;
+  }
+  button.ghost { background: #2a2a30; color: #c0c0c0; }
+  .legend { color: #777; font-size: 12px; }
+  .controls-row { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; }
+  .param-row { display: grid; grid-template-columns: 130px 1fr 80px; gap: 14px; align-items: center; font-size: 12px; }
+  .param-row label { color: #c0c0c0; }
+  .param-row .v { color: #f5d68b; font-variant-numeric: tabular-nums; text-align: right; }
+</style>
+</head>
+<body>
+<header>
+  <h1>Frequency-Time Duality v2 — one delay, six worlds</h1>
+  <p>The single continuous axis is <em>repeat rate / delay time</em>. Same physical phenomenon — a signal repeating at a given rate — perceived as fundamentally different things depending on the rate. v2 redirect: now built around delay (per project doc), not modulation. Click play, then drag the delay-time slider through six perceptual zones. Source = continuous low-density noise pulses through a delay line with feedback.</p>
+</header>
+<main>
+  <div class="slider-row">
+    <input id="delay" type="range" min="-3.3" max="0.7" step="0.005" value="-2">
+    <div class="ticks">
+      <div class="tick"><div class="tick-band b-pitch"></div>pitch<br>0.5–10ms</div>
+      <div class="tick"><div class="tick-band b-comb"></div>comb / flutter<br>10–30ms</div>
+      <div class="tick"><div class="tick-band b-flutter"></div>flutter echo<br>30–80ms</div>
+      <div class="tick"><div class="tick-band b-slap"></div>slapback<br>80–150ms</div>
+      <div class="tick"><div class="tick-band b-echo"></div>distinct echo<br>150–800ms</div>
+      <div class="tick"><div class="tick-band b-rhythm"></div>rhythmic pulse<br>0.8–5s</div>
+    </div>
+  </div>
+
+  <div class="display">
+    <div class="regime">
+      <div class="name" id="regime-name">slapback</div>
+      <div class="rate"><span id="rate-val">10</span> ms · <span id="freq-val">100</span> Hz equivalent</div>
+      <div class="desc" id="regime-desc">A single tight echo. 30–120ms is rockabilly territory — the ear hears one event followed by another, not a fused tone.</div>
+    </div>
+    <canvas id="vis"></canvas>
+  </div>
+
+  <div class="controls-row">
+    <button id="play">▶ play</button>
+    <button id="impulse" class="ghost">single click</button>
+    <span class="legend">f = 1/T. As you sweep the delay time slider, the SAME signal becomes pitch / echo / rhythm.</span>
+  </div>
+
+  <div style="display:grid; gap:10px; max-width:600px;">
+    <div class="param-row">
+      <label>feedback</label>
+      <input id="fb" type="range" min="0" max="0.92" step="0.01" value="0.55">
+      <div class="v"><span id="fbV">0.55</span></div>
+    </div>
+    <div class="param-row">
+      <label>source rate (Hz)</label>
+      <input id="src" type="range" min="0.5" max="20" step="0.1" value="3">
+      <div class="v"><span id="srcV">3.0</span></div>
+    </div>
+    <div class="param-row">
+      <label>master</label>
+      <input id="amp" type="range" min="0" max="0.4" step="0.01" value="0.18">
+      <div class="v"><span id="ampV">0.18</span></div>
+    </div>
+  </div>
+</main>
+
+<script>
+const delayEl = document.getElementById('delay'), rateVal = document.getElementById('rate-val'),
+      freqVal = document.getElementById('freq-val'),
+      regimeName = document.getElementById('regime-name'), regimeDesc = document.getElementById('regime-desc'),
+      playBtn = document.getElementById('play'), impulseBtn = document.getElementById('impulse'),
+      canvas = document.getElementById('vis');
+const ctxd = canvas.getContext('2d');
+const fbEl = document.getElementById('fb'), srcEl = document.getElementById('src'), ampEl = document.getElementById('amp');
+const fbV = document.getElementById('fbV'), srcV = document.getElementById('srcV'), ampV = document.getElementById('ampV');
+
+const regimes = [
+  { maxMs: 10,    name:'pitch',         desc:'Below ~20ms the delay\'s repetition rate is in the audio range (>50 Hz). The delay becomes a comb filter coloration; with feedback, a tuned tone. The ear perceives pitch.' },
+  { maxMs: 30,    name:'comb / flutter',desc:'10–30ms: the delay is at the edge of pitch perception. Comb filtering colors the signal; with high feedback, a low pitched ringing emerges. Flutter is what fills the gap.' },
+  { maxMs: 80,    name:'flutter echo',  desc:'30–80ms: discrete repetitions begin to lose pitch quality and become heard as fast taps. The room-acoustic territory of parallel walls.' },
+  { maxMs: 150,   name:'slapback',      desc:'80–150ms: a single tight echo. Rockabilly, dub, the early tape-delay aesthetic. The ear hears two events instead of one fused tone.' },
+  { maxMs: 800,   name:'distinct echo', desc:'150–800ms: clear separation. The repeating signal becomes a spatial cue — depth, distance, ricochet. With feedback, polyrhythmic textures.' },
+  { maxMs: 99999, name:'rhythmic pulse',desc:'>800ms: the repeats are now the pulse. The delay establishes meter. At several seconds, structural time — the delay defines a bar or phrase.' },
+];
+
+let actx = null, master = null, src = null, srcGain = null, delayNode = null, fbNode = null, playing = false;
+
+function ensure(){
+  if(!actx){
+    actx = new (window.AudioContext || window.webkitAudioContext)();
+    master = actx.createGain(); master.gain.value = 0; master.connect(actx.destination);
+    // noise source: AudioBufferSourceNode loop with white noise
+    const buf = actx.createBuffer(1, actx.sampleRate, actx.sampleRate);
+    const data = buf.getChannelData(0);
+    for(let i=0;i<data.length;i++) data[i] = (Math.random()*2-1) * 0.6;
+    src = actx.createBufferSource(); src.buffer = buf; src.loop = true;
+    // gate the noise into pulses based on src rate
+    srcGain = actx.createGain(); srcGain.gain.value = 0;
+    src.connect(srcGain);
+    delayNode = actx.createDelay(5.0); delayNode.delayTime.value = 0.01;
+    fbNode = actx.createGain(); fbNode.gain.value = +fbEl.value;
+    // wet path: src -> delay -> master (with feedback loop)
+    srcGain.connect(delayNode);
+    delayNode.connect(fbNode);
+    fbNode.connect(delayNode);
+    // dry + wet
+    srcGain.connect(master);
+    delayNode.connect(master);
+    src.start();
+    pulseSchedule();
+  }
+}
+function pulseSchedule(){
+  if(!actx) return;
+  const rate = +srcEl.value;
+  const period = 1.0 / rate;
+  const pulseDur = Math.min(0.020, period*0.3);
+  let next = actx.currentTime + 0.05;
+  function tick(){
+    if(!actx) return;
+    while(next < actx.currentTime + 0.1){
+      srcGain.gain.cancelScheduledValues(next);
+      srcGain.gain.setValueAtTime(0, next);
+      srcGain.gain.linearRampToValueAtTime(0.5, next + 0.001);
+      srcGain.gain.linearRampToValueAtTime(0, next + pulseDur);
+      next += 1.0 / Math.max(0.5, +srcEl.value);
+    }
+    setTimeout(tick, 50);
+  }
+  tick();
+}
+function setDelayMs(ms){
+  if(!actx) return;
+  delayNode.delayTime.setTargetAtTime(ms/1000, actx.currentTime, 0.01);
+}
+function setMaster(v){
+  if(!actx) return;
+  master.gain.cancelScheduledValues(actx.currentTime);
+  master.gain.linearRampToValueAtTime(v, actx.currentTime + 0.04);
+}
+
+playBtn.onclick = () => {
+  ensure();
+  if(!playing){
+    setMaster(+ampEl.value);
+    playing = true; playBtn.textContent = '■ stop';
+  } else {
+    setMaster(0);
+    playing = false; playBtn.textContent = '▶ play';
+  }
+};
+impulseBtn.onclick = () => {
+  ensure();
+  // a single short click into the delay line
+  const t = actx.currentTime;
+  srcGain.gain.cancelScheduledValues(t);
+  srcGain.gain.setValueAtTime(0, t);
+  srcGain.gain.linearRampToValueAtTime(0.8, t + 0.001);
+  srcGain.gain.linearRampToValueAtTime(0, t + 0.005);
+  if(!playing){ setMaster(+ampEl.value); setTimeout(() => setMaster(0), 1500); }
+};
+
+fbEl.oninput = () => {
+  fbV.textContent = (+fbEl.value).toFixed(2);
+  if(fbNode) fbNode.gain.setTargetAtTime(+fbEl.value, actx.currentTime, 0.02);
+};
+srcEl.oninput = () => { srcV.textContent = (+srcEl.value).toFixed(1); };
+ampEl.oninput = () => {
+  ampV.textContent = (+ampEl.value).toFixed(2);
+  if(playing) setMaster(+ampEl.value);
+};
+
+function update(){
+  // log scale: -3.3 → 0.5ms, 0.7 → 5000ms
+  const logv = +delayEl.value;
+  const ms = Math.pow(10, logv) * 1000;  // logv in seconds
+  rateVal.textContent = ms < 10 ? ms.toFixed(2) : ms.toFixed(0);
+  const eqHz = 1000 / ms;
+  freqVal.textContent = eqHz < 1 ? eqHz.toFixed(2) : (eqHz < 10 ? eqHz.toFixed(1) : eqHz.toFixed(0));
+  setDelayMs(ms);
+  const rg = regimes.find(x => ms < x.maxMs);
+  regimeName.textContent = rg.name;
+  regimeDesc.textContent = rg.desc;
+  draw(ms);
+}
+delayEl.addEventListener('input', update);
+
+function draw(ms){
+  const W = canvas.width = canvas.clientWidth * devicePixelRatio;
+  const H = canvas.height = canvas.clientHeight * devicePixelRatio;
+  ctxd.fillStyle = '#0a0a0c'; ctxd.fillRect(0,0,W,H);
+  // Visualize: a stem at t=0 (the input click), then repeats at delay intervals, decaying by feedback
+  const visSec = Math.min(2.5, Math.max(0.05, ms/1000 * 6));
+  const fb = +fbEl.value;
+  ctxd.lineWidth = 2*devicePixelRatio;
+  // input
+  ctxd.strokeStyle = '#f5d68b';
+  ctxd.beginPath(); ctxd.moveTo(8, H); ctxd.lineTo(8, H*0.2); ctxd.stroke();
+  // echoes
+  ctxd.strokeStyle = '#ff6f59';
+  let amp = 1;
+  let t = ms/1000;
+  while(t < visSec && amp > 0.02){
+    amp *= fb;
+    const x = (t / visSec) * (W - 20) + 10;
+    ctxd.globalAlpha = amp;
+    ctxd.beginPath(); ctxd.moveTo(x, H); ctxd.lineTo(x, H*(1 - 0.7*amp)); ctxd.stroke();
+    t += ms/1000;
+  }
+  ctxd.globalAlpha = 1;
+  ctxd.fillStyle = '#888'; ctxd.font = (11*devicePixelRatio)+'px system-ui';
+  ctxd.fillText('0', 4*devicePixelRatio, H-6*devicePixelRatio);
+  ctxd.fillText(visSec.toFixed(2)+'s', W - 56*devicePixelRatio, H-6*devicePixelRatio);
+}
+new ResizeObserver(()=>update()).observe(canvas);
+update();
+</script>
+</body>
+</html>

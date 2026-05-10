@@ -457,15 +457,22 @@ describe('validateMessage — error accumulation', () => {
   });
 });
 
-// ── Integration: all 14 real blackboard messages must pass ──────────────────
+// ── Integration: every real blackboard message must pass ───────────────────
+//
+// The board grows as new schema-strict messages get appended (e.g. Steward
+// cycles posting RESOURCE_REQUESTs, Trickster responses landing inline).
+// The point of this test is that EVERY line on the live persistent board
+// is §2.2-conformant — not that the board has any specific length. The
+// post-reset baseline of 14 messages from session 'songline-2026-05-04-001'
+// is preserved as a lower bound.
 
-describe('integration — live blackboard.jsonl (songline-2026-05-04-001)', () => {
-  test('all 14 conformant messages pass the strict validator', () => {
+describe('integration — live blackboard.jsonl (post-2026-05-04 reset)', () => {
+  test('every message on the live persistent board passes the strict validator', () => {
     const PALACE_ROOT = resolve(__dirname, '../../../../../');
     const bbPath = resolve(PALACE_ROOT, '_ops/swarm/persistent/blackboard.jsonl');
     const text = readFileSync(bbPath, 'utf8');
     const lines = text.split('\n').filter((l) => l.trim().length > 0);
-    expect(lines.length).toBe(14);
+    expect(lines.length).toBeGreaterThanOrEqual(14);
     for (const line of lines) {
       const m = JSON.parse(line);
       const result = validateMessage(m);

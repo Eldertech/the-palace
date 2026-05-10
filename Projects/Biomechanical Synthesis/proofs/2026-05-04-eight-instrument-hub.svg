@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 1100" width="1100" height="1100">
+  <defs>
+    <style>
+      .bg { fill: #0f0f10; }
+      .center-ring { fill: none; stroke: #2a2a30; stroke-width: 1.5; stroke-dasharray: 4 4; }
+      .node-bg { fill: #1a1a1d; stroke: #2a2a30; stroke-width: 1.5; }
+      .node-built { stroke: #ff6f59; stroke-width: 2.5; }
+      .node-spec  { stroke: #6dd3c7; stroke-width: 1.5; stroke-dasharray: 5 4; }
+      .node-seed  { stroke: #444; stroke-width: 1.5; stroke-dasharray: 2 4; }
+      .num { fill: #f5d68b; font-family: -apple-system, system-ui, sans-serif; font-size: 14px; font-weight: 700; }
+      .name { fill: #f5d68b; font-family: -apple-system, system-ui, sans-serif; font-size: 13px; font-weight: 600; }
+      .bio { fill: #6dd3c7; font-family: -apple-system, system-ui, sans-serif; font-size: 11px; font-style: italic; }
+      .dsp { fill: #c0c0c0; font-family: -apple-system, system-ui, sans-serif; font-size: 11px; }
+      .center-title { fill: #f5d68b; font-family: -apple-system, system-ui, sans-serif; font-size: 22px; font-weight: 700; }
+      .center-sub { fill: #c0c0c0; font-family: -apple-system, system-ui, sans-serif; font-size: 12px; font-style: italic; }
+      .legend-text { fill: #c0c0c0; font-family: -apple-system, system-ui, sans-serif; font-size: 12px; }
+      .stage-built { fill: #ff6f59; font-weight: 700; }
+      .stage-spec { fill: #6dd3c7; }
+      .stage-seed { fill: #888; }
+      .arm { stroke: #2a2a30; stroke-width: 1; }
+    </style>
+  </defs>
+
+  <rect class="bg" width="100%" height="100%"/>
+
+  <!-- center -->
+  <g transform="translate(550,520)">
+    <circle class="center-ring" cx="0" cy="0" r="160"/>
+    <circle class="center-ring" cx="0" cy="0" r="320"/>
+    <text x="0" y="-12" text-anchor="middle" class="center-title">Biomechanical Synthesis</text>
+    <text x="0" y="14" text-anchor="middle" class="center-sub">eight visceral instruments</text>
+    <text x="0" y="34" text-anchor="middle" class="center-sub">"DSP mechanics are unforgettable when made physical and grotesque"</text>
+  </g>
+
+  <!-- 8 nodes positioned in a circle (radius 320) at angles starting from -90° -->
+  <!-- Helper: positions calculated for 8 nodes -->
+  <!-- (cos,sin) * 320: angle = -90 + 45*i for i=0..7 -->
+  <!-- 0: (0, -320)   1: (226, -226)   2: (320, 0)   3: (226, 226) -->
+  <!-- 4: (0, 320)    5: (-226, 226)   6: (-320, 0)  7: (-226, -226) -->
+
+  <!-- Connection lines from center to each node -->
+  <g transform="translate(550,520)">
+    <line class="arm" x1="0" y1="0" x2="0"    y2="-320"/>
+    <line class="arm" x1="0" y1="0" x2="226"  y2="-226"/>
+    <line class="arm" x1="0" y1="0" x2="320"  y2="0"/>
+    <line class="arm" x1="0" y1="0" x2="226"  y2="226"/>
+    <line class="arm" x1="0" y1="0" x2="0"    y2="320"/>
+    <line class="arm" x1="0" y1="0" x2="-226" y2="226"/>
+    <line class="arm" x1="0" y1="0" x2="-320" y2="0"/>
+    <line class="arm" x1="0" y1="0" x2="-226" y2="-226"/>
+  </g>
+
+  <!-- Node 1: Neural oscillator (top) -->
+  <g transform="translate(550, 200)">
+    <rect class="node-bg node-built" x="-105" y="-50" width="210" height="100" rx="8"/>
+    <text class="num" x="-95" y="-32">01</text>
+    <text class="name" x="0" y="-28" text-anchor="middle">Neural Oscillator</text>
+    <text class="bio" x="0" y="-8" text-anchor="middle">membrane voltage</text>
+    <text class="dsp" x="0" y="9" text-anchor="middle">→ audio waveform</text>
+    <text class="dsp stage-built" x="0" y="34" text-anchor="middle">▶ BUILT</text>
+  </g>
+
+  <!-- Node 2: Crystal resonator (top-right) -->
+  <g transform="translate(776, 294)">
+    <rect class="node-bg node-spec" x="-105" y="-50" width="210" height="100" rx="8"/>
+    <text class="num" x="-95" y="-32">02</text>
+    <text class="name" x="0" y="-28" text-anchor="middle">Crystal Resonator</text>
+    <text class="bio" x="0" y="-8" text-anchor="middle">lattice vibrational modes</text>
+    <text class="dsp" x="0" y="9" text-anchor="middle">→ partials + filter topology</text>
+    <text class="dsp stage-spec" x="0" y="34" text-anchor="middle">◇ specified</text>
+  </g>
+
+  <!-- Node 3: Mycelial Network (right) -->
+  <g transform="translate(870, 520)">
+    <rect class="node-bg node-seed" x="-105" y="-50" width="210" height="100" rx="8"/>
+    <text class="num" x="-95" y="-32">03</text>
+    <text class="name" x="0" y="-28" text-anchor="middle">Mycelial Network</text>
+    <text class="bio" x="0" y="-8" text-anchor="middle">hyphae routing</text>
+    <text class="dsp" x="0" y="9" text-anchor="middle">→ spectral path search</text>
+    <text class="dsp stage-seed" x="0" y="34" text-anchor="middle">○ seed</text>
+  </g>
+
+  <!-- Node 4: Blood hydraulics compressor (bottom-right) -->
+  <g transform="translate(776, 746)">
+    <rect class="node-bg node-spec" x="-105" y="-50" width="210" height="100" rx="8"/>
+    <text class="num" x="-95" y="-32">04</text>
+    <text class="name" x="0" y="-28" text-anchor="middle">Blood Compressor</text>
+    <text class="bio" x="0" y="-8" text-anchor="middle">vessel pressure / pulse</text>
+    <text class="dsp" x="0" y="9" text-anchor="middle">→ gain / attack</text>
+    <text class="dsp stage-spec" x="0" y="34" text-anchor="middle">◇ specified</text>
+  </g>
+
+  <!-- Node 5: Slime mold delay (bottom) -->
+  <g transform="translate(550, 840)">
+    <rect class="node-bg node-spec" x="-105" y="-50" width="210" height="100" rx="8"/>
+    <text class="num" x="-95" y="-32">05</text>
+    <text class="name" x="0" y="-28" text-anchor="middle">Slime Mold Delay</text>
+    <text class="bio" x="0" y="-8" text-anchor="middle">plasmodium foraging</text>
+    <text class="dsp" x="0" y="9" text-anchor="middle">→ feedback topology</text>
+    <text class="dsp stage-spec" x="0" y="34" text-anchor="middle">◇ specified</text>
+  </g>
+
+  <!-- Node 6: Carnivorous plant gate (bottom-left) -->
+  <g transform="translate(324, 746)">
+    <rect class="node-bg node-spec" x="-105" y="-50" width="210" height="100" rx="8"/>
+    <text class="num" x="-95" y="-32">06</text>
+    <text class="name" x="0" y="-28" text-anchor="middle">Flytrap Gate</text>
+    <text class="bio" x="0" y="-8" text-anchor="middle">trigger hairs hysteresis</text>
+    <text class="dsp" x="0" y="9" text-anchor="middle">→ noise gate</text>
+    <text class="dsp stage-spec" x="0" y="34" text-anchor="middle">◇ specified</text>
+  </g>
+
+  <!-- Node 7: Bioluminescent phase bank (left) -->
+  <g transform="translate(230, 520)">
+    <rect class="node-bg node-seed" x="-105" y="-50" width="210" height="100" rx="8"/>
+    <text class="num" x="-95" y="-32">07</text>
+    <text class="name" x="0" y="-28" text-anchor="middle">Lumin. Phase Bank</text>
+    <text class="bio" x="0" y="-8" text-anchor="middle">chemiluminescent timing</text>
+    <text class="dsp" x="0" y="9" text-anchor="middle">→ phase coherence</text>
+    <text class="dsp stage-seed" x="0" y="34" text-anchor="middle">○ seed</text>
+  </g>
+
+  <!-- Node 8: Cochlear implant vocoder (top-left) -->
+  <g transform="translate(324, 294)">
+    <rect class="node-bg node-spec" x="-105" y="-50" width="210" height="100" rx="8"/>
+    <text class="num" x="-95" y="-32">08</text>
+    <text class="name" x="0" y="-28" text-anchor="middle">Cochlear Vocoder</text>
+    <text class="bio" x="0" y="-8" text-anchor="middle">basilar membrane filterbank</text>
+    <text class="dsp" x="0" y="9" text-anchor="middle">→ vocoder bands</text>
+    <text class="dsp stage-spec" x="0" y="34" text-anchor="middle">◇ specified</text>
+  </g>
+
+  <!-- Legend -->
+  <g transform="translate(60, 1020)">
+    <rect class="node-bg node-built" x="0" y="-15" width="22" height="22" rx="3"/>
+    <text class="legend-text" x="32" y="0">▶ BUILT</text>
+    <rect class="node-bg node-spec" x="120" y="-15" width="22" height="22" rx="3"/>
+    <text class="legend-text" x="152" y="0">◇ specified (design doc only)</text>
+    <rect class="node-bg node-seed" x="380" y="-15" width="22" height="22" rx="3"/>
+    <text class="legend-text" x="412" y="0">○ seed (concept only)</text>
+    <text class="legend-text" x="640" y="0">forward vector: when node 01 reaches Stage 4, this hub maps what comes next</text>
+  </g>
+</svg>

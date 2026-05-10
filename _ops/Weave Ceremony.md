@@ -60,12 +60,13 @@ The single-agent protocol below remains valid for: palaces under ~20 entries, qu
 1. A topology report has been produced covering: total entry count, hub nodes, orphan entries, most-connected nodes, cross-pillar bridges, dormant entries, stale metadata
 2a. An **unsung paths** audit has been completed: all plain-text body references to known entry titles have been surfaced and formalized as YAML frontmatter links. Any that should NOT be formalized have been flagged with a one-line reason. Unsung paths are mandatory — the prose already asserts the connection; the YAML is simply catching up.
 3. **New introductions** have been proposed — new typed links between entries that do not yet mention each other in prose. No more than 5 per Weave. These are genuine growth events and deserve deliberate curation.
-4. Any confirmed metadata updates have been written to entry files
-5. Git commit made: `Weave — [date] — [N links added, N entries promoted, N orphans flagged]`
+4. **Vector tuning has been invited** for entries whose `forward_vector` has visibly drifted from the entry's current content, connections, or pace. Forward vectors are meant to evolve; the Weave is a natural occasion to surface drift and propose tweaks or full overhauls.
+5. Any confirmed metadata updates have been written to entry files
+6. Git commit made: `Weave — [date] — [N links added, N entries promoted, N orphans flagged, N vectors tuned]`
 
 **Failure mode:** If the palace is only partially readable (some files inaccessible), produce a partial topology report and note which entries were unreachable. A partial Weave is valid. Do not commit until all accessible files have been processed.
 
-**Git commit:** `Weave — [date] — [N links added, N entries promoted, N orphans flagged]`
+**Git commit:** `Weave — [date] — [N links added, N entries promoted, N orphans flagged, N vectors tuned]`
 
 ---
 
@@ -164,6 +165,26 @@ For any entries whose stage seems wrong given their content and connection densi
 
 Show all proposed transitions to Loudon before applying.
 
+**Step 5b: Invite vector tuning**
+
+Forward vectors are meant to evolve. The palace stays lively because directional desire adapts to what entries actually become. The Weave is a natural occasion to surface vector drift — gently, not exhaustively. This step is an *invitation*, not an audit.
+
+Scan entries for vector drift. The candidates worth proposing:
+
+- An entry whose stage has advanced since the vector was written, and the vector still describes the earlier stage's ambition (e.g. a `growing` entry whose vector reads as a `seed`-stage hope)
+- An entry whose connections have shifted the center of gravity (new `couples-with` or `emerged-from` links suggest a different forward arc than the vector currently names)
+- An entry whose body content already contradicts or outgrows its stated vector (the prose is doing something the vector hasn't caught up to)
+- An entry whose vector reads as generic where the entry has acquired specificity, or as overspecified where the entry has broadened
+
+For each candidate, present:
+- The current `forward_vector` (verbatim)
+- A one-sentence diagnosis of the drift
+- A proposed tweak, refinement, or — when appropriate — a full overhaul
+
+**Rate limit: no more than 8 vector-tuning proposals per Weave.** Tuning a vector is a real authorial decision; too many at once turns the Weave into a vector-rewriting marathon and dilutes deliberation. Choose the entries where the drift is most visible. Loudon may also volunteer vectors he wants tuned — those don't count against the limit.
+
+Apply confirmed vector edits to entry frontmatter.
+
 **Step 6: Note deposit candidates**
 
 Flag any ideas currently living only in conversations or in the Palace To-Do that should be deposited. Add them to Palace To-Do if not already there.
@@ -198,6 +219,9 @@ After all confirmed changes are written: `Weave — [date] — [N links added, N
 1. [[Entry A]] —[type]→ [[Entry B]] — [one-line rationale]
 
 **Proposed stage transitions:** [list]
+
+**Vector tuning proposals:** [N findings, max 8]
+1. [[Entry]] — current vector: "[verbatim]" — drift: [one-sentence diagnosis] — proposed: "[new vector]"
 
 **Deposit candidates flagged:** [list]
 

@@ -24,6 +24,9 @@ links:
   - target: "[[Cooperation Yields Agency]]"
     type: mirrors
     label: shared-emergence
+  - target: "[[Kuramoto Coupling]]"
+    type: connects-to
+    label: physics-of-firing
   - target: "[[Symbiotic Skills]]"
     type: enables
     label: skill-via-joy

@@ -9,9 +9,9 @@ reasoning: "The entry's FV names King Tubby and the mixing board as the target m
 created: "2026-05-05"
 artifact_path: "skeptic-voice-act.md"
 artifact_type: "text"
-validator_verdict: "pass"
-validator_note: "This lands because the FV already names the King Tubby connection as an explicit goal — and the skeptic arrives as the exact pressure that reveals the gap between where the entry is (passive séance medium) and where it wants to go (Tubby's board). 'Editing your own past in real time' is a sharper formulation than the entry currently carries. The fictional attribution and conference setting give it just enough distance to sting without preaching."
-validator_iterations: 0
+validator_verdict: "revise-then-shipped"
+validator_note: "v1: landed the séance/producer tension well. // v2: The duppy voice is active, specific, and genuinely argues — it does not explain Retrospective Delay, it inhabits the control-inversion that is the entry's live pedagogical tension. The King Tubby paragraph answers the purpose directly: séance framing implies passivity, the duppy insists on agency. 'A second opinion' is the ceiling-raiser the entry needed."
+validator_iterations: 1
 archived: false
 ---
 

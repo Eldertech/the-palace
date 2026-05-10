@@ -1,0 +1,2114 @@
+{
+  "phon_001_pop_af_heart.wav": {
+    "offset_sample": 931,
+    "onset_sample": 907,
+    "sample_rate": 24000,
+    "total_samples": 14336
+  },
+  "phon_001_pop_af_nova.wav": {
+    "offset_sample": 2526,
+    "onset_sample": 2502,
+    "sample_rate": 24000,
+    "total_samples": 15704
+  },
+  "phon_001_pop_am_michael.wav": {
+    "offset_sample": 3062,
+    "onset_sample": 3038,
+    "sample_rate": 24000,
+    "total_samples": 13824
+  },
+  "phon_001_pop_bf_emma.wav": {
+    "offset_sample": 1944,
+    "onset_sample": 1920,
+    "sample_rate": 24000,
+    "total_samples": 12704
+  },
+  "phon_002_tap_af_bella.wav": {
+    "offset_sample": 934,
+    "onset_sample": 910,
+    "sample_rate": 24000,
+    "total_samples": 14848
+  },
+  "phon_002_tap_af_sky.wav": {
+    "offset_sample": 2836,
+    "onset_sample": 2812,
+    "sample_rate": 24000,
+    "total_samples": 17920
+  },
+  "phon_002_tap_am_adam.wav": {
+    "offset_sample": 1429,
+    "onset_sample": 1405,
+    "sample_rate": 24000,
+    "total_samples": 11264
+  },
+  "phon_002_tap_bm_george.wav": {
+    "offset_sample": 1228,
+    "onset_sample": 1204,
+    "sample_rate": 24000,
+    "total_samples": 14848
+  },
+  "phon_003_pat_am_fenrir.wav": {
+    "offset_sample": 856,
+    "onset_sample": 832,
+    "sample_rate": 24000,
+    "total_samples": 11776
+  },
+  "phon_003_pat_am_puck.wav": {
+    "offset_sample": 921,
+    "onset_sample": 897,
+    "sample_rate": 24000,
+    "total_samples": 12800
+  },
+  "phon_003_pat_bf_isabella.wav": {
+    "offset_sample": 1510,
+    "onset_sample": 1486,
+    "sample_rate": 24000,
+    "total_samples": 13312
+  },
+  "phon_003_pat_bm_lewis.wav": {
+    "offset_sample": 1018,
+    "onset_sample": 994,
+    "sample_rate": 24000,
+    "total_samples": 13824
+  },
+  "phon_004_tip_af_heart.wav": {
+    "offset_sample": 1011,
+    "onset_sample": 987,
+    "sample_rate": 24000,
+    "total_samples": 14848
+  },
+  "phon_004_tip_af_nova.wav": {
+    "offset_sample": 2124,
+    "onset_sample": 2100,
+    "sample_rate": 24000,
+    "total_samples": 16904
+  },
+  "phon_004_tip_am_michael.wav": {
+    "offset_sample": 1407,
+    "onset_sample": 1383,
+    "sample_rate": 24000,
+    "total_samples": 13824
+  },
+  "phon_004_tip_bf_emma.wav": {
+    "offset_sample": 1906,
+    "onset_sample": 1882,
+    "sample_rate": 24000,
+    "total_samples": 12104
+  },
+  "phon_005_top_af_bella.wav": {
+    "offset_sample": 802,
+    "onset_sample": 778,
+    "sample_rate": 24000,
+    "total_samples": 13312
+  },
+  "phon_005_top_af_sky.wav": {
+    "offset_sample": 2977,
+    "onset_sample": 2953,
+    "sample_rate": 24000,
+    "total_samples": 17408
+  },
+  "phon_005_top_am_adam.wav": {
+    "offset_sample": 678,
+    "onset_sample": 654,
+    "sample_rate": 24000,
+    "total_samples": 10656
+  },
+  "phon_005_top_bm_george.wav": {
+    "offset_sample": 878,
+    "onset_sample": 854,
+    "sample_rate": 24000,
+    "total_samples": 13824
+  },
+  "phon_006_dot_am_fenrir.wav": {
+    "offset_sample": 1117,
+    "onset_sample": 1093,
+    "sample_rate": 24000,
+    "total_samples": 12288
+  },
+  "phon_006_dot_am_puck.wav": {
+    "offset_sample": 988,
+    "onset_sample": 964,
+    "sample_rate": 24000,
+    "total_samples": 12288
+  },
+  "phon_006_dot_bf_isabella.wav": {
+    "offset_sample": 1621,
+    "onset_sample": 1597,
+    "sample_rate": 24000,
+    "total_samples": 14848
+  },
+  "phon_006_dot_bm_lewis.wav": {
+    "offset_sample": 1201,
+    "onset_sample": 1177,
+    "sample_rate": 24000,
+    "total_samples": 16384
+  },
+  "phon_007_dap_af_heart.wav": {
+    "offset_sample": 904,
+    "onset_sample": 880,
+    "sample_rate": 24000,
+    "total_samples": 14848
+  },
+  "phon_007_dap_af_nova.wav": {
+    "offset_sample": 1321,
+    "onset_sample": 1297,
+    "sample_rate": 24000,
+    "total_samples": 16384
+  },
+  "phon_007_dap_am_michael.wav": {
+    "offset_sample": 1993,
+    "onset_sample": 1969,
+    "sample_rate": 24000,
+    "total_samples": 15360
+  },
+  "phon_007_dap_bf_emma.wav": {
+    "offset_sample": 1749,
+    "onset_sample": 1725,
+    "sample_rate": 24000,
+    "total_samples": 11504
+  },
+  "phon_008_dab_af_bella.wav": {
+    "offset_sample": 597,
+    "onset_sample": 573,
+    "sample_rate": 24000,
+    "total_samples": 14336
+  },
+  "phon_008_dab_af_sky.wav": {
+    "offset_sample": 3473,
+    "onset_sample": 3449,
+    "sample_rate": 24000,
+    "total_samples": 18944
+  },
+  "phon_008_dab_am_adam.wav": {
+    "offset_sample": 701,
+    "onset_sample": 677,
+    "sample_rate": 24000,
+    "total_samples": 13312
+  },
+  "phon_008_dab_bm_george.wav": {
+    "offset_sample": 789,
+    "onset_sample": 765,
+    "sample_rate": 24000,
+    "total_samples": 15360
+  },
+  "phon_009_bop_am_fenrir.wav": {
+    "offset_sample": 943,
+    "onset_sample": 919,
+    "sample_rate": 24000,
+    "total_samples": 9216
+  },
+  "phon_009_bop_am_puck.wav": {
+    "offset_sample": 920,
+    "onset_sample": 896,
+    "sample_rate": 24000,
+    "total_samples": 10752
+  },
+  "phon_009_bop_bf_isabella.wav": {
+    "offset_sample": 1438,
+    "onset_sample": 1414,
+    "sample_rate": 24000,
+    "total_samples": 14336
+  },
+  "phon_009_bop_bm_lewis.wav": {
+    "offset_sample": 1397,
+    "onset_sample": 1373,
+    "sample_rate": 24000,
+    "total_samples": 14848
+  },
+  "phon_010_bub_af_heart.wav": {
+    "offset_sample": 1241,
+    "onset_sample": 1217,
+    "sample_rate": 24000,
+    "total_samples": 15872
+  },
+  "phon_010_bub_af_nova.wav": {
+    "offset_sample": 3212,
+    "onset_sample": 3188,
+    "sample_rate": 24000,
+    "total_samples": 16216
+  },
+  "phon_010_bub_am_michael.wav": {
+    "offset_sample": 2242,
+    "onset_sample": 2218,
+    "sample_rate": 24000,
+    "total_samples": 14848
+  },
+  "phon_010_bub_bf_emma.wav": {
+    "offset_sample": 2495,
+    "onset_sample": 2471,
+    "sample_rate": 24000,
+    "total_samples": 12104
+  },
+  "phon_011_dub_af_bella.wav": {
+    "offset_sample": 856,
+    "onset_sample": 832,
+    "sample_rate": 24000,
+    "total_samples": 14848
+  },
+  "phon_011_dub_af_sky.wav": {
+    "offset_sample": 3294,
+    "onset_sample": 3270,
+    "sample_rate": 24000,
+    "total_samples": 18944
+  },
+  "phon_011_dub_am_adam.wav": {
+    "offset_sample": 703,
+    "onset_sample": 679,
+    "sample_rate": 24000,
+    "total_samples": 13312
+  },
+  "phon_011_dub_bm_george.wav": {
+    "offset_sample": 944,
+    "onset_sample": 920,
+    "sample_rate": 24000,
+    "total_samples": 16896
+  },
+  "phon_012_nub_am_fenrir.wav": {
+    "offset_sample": 802,
+    "onset_sample": 778,
+    "sample_rate": 24000,
+    "total_samples": 12800
+  },
+  "phon_012_nub_am_puck.wav": {
+    "offset_sample": 1174,
+    "onset_sample": 1150,
+    "sample_rate": 24000,
+    "total_samples": 13312
+  },
+  "phon_012_nub_bf_isabella.wav": {
+    "offset_sample": 5217,
+    "onset_sample": 5193,
+    "sample_rate": 24000,
+    "total_samples": 19456
+  },
+  "phon_012_nub_bm_lewis.wav": {
+    "offset_sample": 1441,
+    "onset_sample": 1417,
+    "sample_rate": 24000,
+    "total_samples": 15360
+  },
+  "phon_013_snap_af_heart.wav": {
+    "offset_sample": 913,
+    "onset_sample": 889,
+    "sample_rate": 24000,
+    "total_samples": 17920
+  },
+  "phon_013_snap_af_nova.wav": {
+    "offset_sample": 3846,
+    "onset_sample": 3822,
+    "sample_rate": 24000,
+    "total_samples": 15872
+  },
+  "phon_013_snap_am_michael.wav": {
+    "offset_sample": 2083,
+    "onset_sample": 2059,
+    "sample_rate": 24000,
+    "total_samples": 17408
+  },
+  "phon_013_snap_bf_emma.wav": {
+    "offset_sample": 2076,
+    "onset_sample": 2052,
+    "sample_rate": 24000,
+    "total_samples": 12792
+  },
+  "phon_014_clap_af_bella.wav": {
+    "offset_sample": 891,
+    "onset_sample": 867,
+    "sample_rate": 24000,
+    "total_samples": 14848
+  },
+  "phon_014_clap_af_sky.wav": {
+    "offset_sample": 2274,
+    "onset_sample": 2250,
+    "sample_rate": 24000,
+    "total_samples": 17920
+  },
+  "phon_014_clap_am_adam.wav": {
+    "offset_sample": 963,
+    "onset_sample": 939,
+    "sample_rate": 24000,
+    "total_samples": 11264
+  },
+  "phon_014_clap_bm_george.wav": {
+    "offset_sample": 1154,
+    "onset_sample": 1130,
+    "sample_rate": 24000,
+    "total_samples": 15360
+  },
+  "phon_015_slap_am_fenrir.wav": {
+    "offset_sample": 1051,
+    "onset_sample": 1027,
+    "sample_rate": 24000,
+    "total_samples": 12800
+  },
+  "phon_015_slap_am_puck.wav": {
+    "offset_sample": 1337,
+    "onset_sample": 1313,
+    "sample_rate": 24000,
+    "total_samples": 14336
+  },
+  "phon_015_slap_bf_isabella.wav": {
+    "offset_sample": 5020,
+    "onset_sample": 4996,
+    "sample_rate": 24000,
+    "total_samples": 18432
+  },
+  "phon_015_slap_bm_lewis.wav": {
+    "offset_sample": 1711,
+    "onset_sample": 1687,
+    "sample_rate": 24000,
+    "total_samples": 15872
+  },
+  "phon_016_flap_af_heart.wav": {
+    "offset_sample": 1220,
+    "onset_sample": 1196,
+    "sample_rate": 24000,
+    "total_samples": 17408
+  },
+  "phon_016_flap_af_nova.wav": {
+    "offset_sample": 3585,
+    "onset_sample": 3561,
+    "sample_rate": 24000,
+    "total_samples": 15872
+  },
+  "phon_016_flap_am_michael.wav": {
+    "offset_sample": 3091,
+    "onset_sample": 3067,
+    "sample_rate": 24000,
+    "total_samples": 16384
+  },
+  "phon_016_flap_bf_emma.wav": {
+    "offset_sample": 1999,
+    "onset_sample": 1975,
+    "sample_rate": 24000,
+    "total_samples": 12104
+  },
+  "phon_017_trap_af_bella.wav": {
+    "offset_sample": 793,
+    "onset_sample": 769,
+    "sample_rate": 24000,
+    "total_samples": 14848
+  },
+  "phon_017_trap_af_sky.wav": {
+    "offset_sample": 2280,
+    "onset_sample": 2256,
+    "sample_rate": 24000,
+    "total_samples": 17920
+  },
+  "phon_017_trap_am_adam.wav": {
+    "offset_sample": 946,
+    "onset_sample": 922,
+    "sample_rate": 24000,
+    "total_samples": 12288
+  },
+  "phon_017_trap_bm_george.wav": {
+    "offset_sample": 1236,
+    "onset_sample": 1212,
+    "sample_rate": 24000,
+    "total_samples": 15872
+  },
+  "phon_018_clip_am_fenrir.wav": {
+    "offset_sample": 1046,
+    "onset_sample": 1022,
+    "sample_rate": 24000,
+    "total_samples": 10240
+  },
+  "phon_018_clip_am_puck.wav": {
+    "offset_sample": 1467,
+    "onset_sample": 1443,
+    "sample_rate": 24000,
+    "total_samples": 9728
+  },
+  "phon_018_clip_bf_isabella.wav": {
+    "offset_sample": 4066,
+    "onset_sample": 4042,
+    "sample_rate": 24000,
+    "total_samples": 18432
+  },
+  "phon_018_clip_bm_lewis.wav": {
+    "offset_sample": 1356,
+    "onset_sample": 1332,
+    "sample_rate": 24000,
+    "total_samples": 14848
+  },
+  "phon_019_slip_af_heart.wav": {
+    "offset_sample": 964,
+    "onset_sample": 940,
+    "sample_rate": 24000,
+    "total_samples": 17408
+  },
+  "phon_019_slip_af_nova.wav": {
+    "offset_sample": 3818,
+    "onset_sample": 3794,
+    "sample_rate": 24000,
+    "total_samples": 17408
+  },
+  "phon_019_slip_am_michael.wav": {
+    "offset_sample": 2613,
+    "onset_sample": 2589,
+    "sample_rate": 24000,
+    "total_samples": 15872
+  },
+  "phon_019_slip_bf_emma.wav": {
+    "offset_sample": 1246,
+    "onset_sample": 1222,
+    "sample_rate": 24000,
+    "total_samples": 12792
+  },
+  "phon_020_snip_af_bella.wav": {
+    "offset_sample": 1020,
+    "onset_sample": 996,
+    "sample_rate": 24000,
+    "total_samples": 12800
+  },
+  "phon_020_snip_af_sky.wav": {
+    "offset_sample": 2408,
+    "onset_sample": 2384,
+    "sample_rate": 24000,
+    "total_samples": 17408
+  },
+  "phon_020_snip_am_adam.wav": {
+    "offset_sample": 1420,
+    "onset_sample": 1396,
+    "sample_rate": 24000,
+    "total_samples": 13312
+  },
+  "phon_020_snip_bm_george.wav": {
+    "offset_sample": 1142,
+    "onset_sample": 1118,
+    "sample_rate": 24000,
+    "total_samples": 14848
+  },
+  "phon_021_drip_am_fenrir.wav": {
+    "offset_sample": 910,
+    "onset_sample": 886,
+    "sample_rate": 24000,
+    "total_samples": 10752
+  },
+  "phon_021_drip_am_puck.wav": {
+    "offset_sample": 1001,
+    "onset_sample": 977,
+    "sample_rate": 24000,
+    "total_samples": 11264
+  },
+  "phon_021_drip_bf_isabella.wav": {
+    "offset_sample": 3975,
+    "onset_sample": 3951,
+    "sample_rate": 24000,
+    "total_samples": 17408
+  },
+  "phon_021_drip_bm_lewis.wav": {
+    "offset_sample": 1230,
+    "onset_sample": 1206,
+    "sample_rate": 24000,
+    "total_samples": 14848
+  },
+  "phon_022_plop_af_heart.wav": {
+    "offset_sample": 842,
+    "onset_sample": 818,
+    "sample_rate": 24000,
+    "total_samples": 16384
+  },
+  "phon_022_plop_af_nova.wav": {
+    "offset_sample": 1949,
+    "onset_sample": 1925,
+    "sample_rate": 24000,
+    "total_samples": 16384
+  },
+  "phon_022_plop_am_michael.wav": {
+    "offset_sample": 2454,
+    "onset_sample": 2430,
+    "sample_rate": 24000,
+    "total_samples": 16896
+  },
+  "phon_022_plop_bf_emma.wav": {
+    "offset_sample": 2110,
+    "onset_sample": 2086,
+    "sample_rate": 24000,
+    "total_samples": 13824
+  },
+  "phon_023_blip_af_bella.wav": {
+    "offset_sample": 665,
+    "onset_sample": 641,
+    "sample_rate": 24000,
+    "total_samples": 13824
+  },
+  "phon_023_blip_af_sky.wav": {
+    "offset_sample": 3357,
+    "onset_sample": 3333,
+    "sample_rate": 24000,
+    "total_samples": 18432
+  },
+  "phon_023_blip_am_adam.wav": {
+    "offset_sample": 1021,
+    "onset_sample": 997,
+    "sample_rate": 24000,
+    "total_samples": 12800
+  },
+  "phon_023_blip_bm_george.wav": {
+    "offset_sample": 947,
+    "onset_sample": 923,
+    "sample_rate": 24000,
+    "total_samples": 15872
+  },
+  "phon_024_blop_am_fenrir.wav": {
+    "offset_sample": 1000,
+    "onset_sample": 976,
+    "sample_rate": 24000,
+    "total_samples": 12288
+  },
+  "phon_024_blop_am_puck.wav": {
+    "offset_sample": 1175,
+    "onset_sample": 1151,
+    "sample_rate": 24000,
+    "total_samples": 14848
+  },
+  "phon_024_blop_bf_isabella.wav": {
+    "offset_sample": 3562,
+    "onset_sample": 3538,
+    "sample_rate": 24000,
+    "total_samples": 17920
+  },
+  "phon_024_blop_bm_lewis.wav": {
+    "offset_sample": 1768,
+    "onset_sample": 1744,
+    "sample_rate": 24000,
+    "total_samples": 16384
+  },
+  "phon_025_plonk_af_heart.wav": {
+    "offset_sample": 930,
+    "onset_sample": 906,
+    "sample_rate": 24000,
+    "total_samples": 17920
+  },
+  "phon_025_plonk_af_nova.wav": {
+    "offset_sample": 3512,
+    "onset_sample": 3488,
+    "sample_rate": 24000,
+    "total_samples": 17408
+  },
+  "phon_025_plonk_am_michael.wav": {
+    "offset_sample": 1988,
+    "onset_sample": 1964,
+    "sample_rate": 24000,
+    "total_samples": 16896
+  },
+  "phon_025_plonk_bf_emma.wav": {
+    "offset_sample": 2193,
+    "onset_sample": 2169,
+    "sample_rate": 24000,
+    "total_samples": 13824
+  },
+  "phon_026_plink_af_bella.wav": {
+    "offset_sample": 688,
+    "onset_sample": 664,
+    "sample_rate": 24000,
+    "total_samples": 15360
+  },
+  "phon_026_plink_af_sky.wav": {
+    "offset_sample": 2972,
+    "onset_sample": 2948,
+    "sample_rate": 24000,
+    "total_samples": 19456
+  },
+  "phon_026_plink_am_adam.wav": {
+    "offset_sample": 573,
+    "onset_sample": 549,
+    "sample_rate": 24000,
+    "total_samples": 12800
+  },
+  "phon_026_plink_bm_george.wav": {
+    "offset_sample": 739,
+    "onset_sample": 715,
+    "sample_rate": 24000,
+    "total_samples": 15872
+  },
+  "phon_027_plunk_am_fenrir.wav": {
+    "offset_sample": 1567,
+    "onset_sample": 1543,
+    "sample_rate": 24000,
+    "total_samples": 13312
+  },
+  "phon_027_plunk_am_puck.wav": {
+    "offset_sample": 1532,
+    "onset_sample": 1508,
+    "sample_rate": 24000,
+    "total_samples": 14336
+  },
+  "phon_027_plunk_bf_isabella.wav": {
+    "offset_sample": 3403,
+    "onset_sample": 3379,
+    "sample_rate": 24000,
+    "total_samples": 18944
+  },
+  "phon_027_plunk_bm_lewis.wav": {
+    "offset_sample": 1014,
+    "onset_sample": 990,
+    "sample_rate": 24000,
+    "total_samples": 15360
+  },
+  "phon_028_clink_af_heart.wav": {
+    "offset_sample": 799,
+    "onset_sample": 775,
+    "sample_rate": 24000,
+    "total_samples": 19456
+  },
+  "phon_028_clink_af_nova.wav": {
+    "offset_sample": 2415,
+    "onset_sample": 2391,
+    "sample_rate": 24000,
+    "total_samples": 17920
+  },
+  "phon_028_clink_am_michael.wav": {
+    "offset_sample": 2978,
+    "onset_sample": 2954,
+    "sample_rate": 24000,
+    "total_samples": 17920
+  },
+  "phon_028_clink_bf_emma.wav": {
+    "offset_sample": 1535,
+    "onset_sample": 1511,
+    "sample_rate": 24000,
+    "total_samples": 14848
+  },
+  "phon_029_clank_af_bella.wav": {
+    "offset_sample": 906,
+    "onset_sample": 882,
+    "sample_rate": 24000,
+    "total_samples": 15872
+  },
+  "phon_029_clank_af_sky.wav": {
+    "offset_sample": 2383,
+    "onset_sample": 2359,
+    "sample_rate": 24000,
+    "total_samples": 18944
+  },
+  "phon_029_clank_am_adam.wav": {
+    "offset_sample": 980,
+    "onset_sample": 956,
+    "sample_rate": 24000,
+    "total_samples": 12288
+  },
+  "phon_029_clank_bm_george.wav": {
+    "offset_sample": 802,
+    "onset_sample": 778,
+    "sample_rate": 24000,
+    "total_samples": 16384
+  },
+  "phon_030_clonk_am_fenrir.wav": {
+    "offset_sample": 1584,
+    "onset_sample": 1560,
+    "sample_rate": 24000,
+    "total_samples": 12288
+  },
+  "phon_030_clonk_am_puck.wav": {
+    "offset_sample": 1575,
+    "onset_sample": 1551,
+    "sample_rate": 24000,
+    "total_samples": 13824
+  },
+  "phon_030_clonk_bf_isabella.wav": {
+    "offset_sample": 3937,
+    "onset_sample": 3913,
+    "sample_rate": 24000,
+    "total_samples": 19456
+  },
+  "phon_030_clonk_bm_lewis.wav": {
+    "offset_sample": 850,
+    "onset_sample": 826,
+    "sample_rate": 24000,
+    "total_samples": 15360
+  },
+  "phon_031_clunk_af_heart.wav": {
+    "offset_sample": 637,
+    "onset_sample": 613,
+    "sample_rate": 24000,
+    "total_samples": 18432
+  },
+  "phon_031_clunk_af_nova.wav": {
+    "offset_sample": 2423,
+    "onset_sample": 2399,
+    "sample_rate": 24000,
+    "total_samples": 18432
+  },
+  "phon_031_clunk_am_michael.wav": {
+    "offset_sample": 2986,
+    "onset_sample": 2962,
+    "sample_rate": 24000,
+    "total_samples": 16896
+  },
+  "phon_031_clunk_bf_emma.wav": {
+    "offset_sample": 1537,
+    "onset_sample": 1513,
+    "sample_rate": 24000,
+    "total_samples": 14848
+  },
+  "phon_032_clock_af_bella.wav": {
+    "offset_sample": 885,
+    "onset_sample": 861,
+    "sample_rate": 24000,
+    "total_samples": 14848
+  },
+  "phon_032_clock_af_sky.wav": {
+    "offset_sample": 2344,
+    "onset_sample": 2320,
+    "sample_rate": 24000,
+    "total_samples": 18944
+  },
+  "phon_032_clock_am_adam.wav": {
+    "offset_sample": 984,
+    "onset_sample": 960,
+    "sample_rate": 24000,
+    "total_samples": 12288
+  },
+  "phon_032_clock_bm_george.wav": {
+    "offset_sample": 1197,
+    "onset_sample": 1173,
+    "sample_rate": 24000,
+    "total_samples": 16384
+  },
+  "phon_033_click_am_fenrir.wav": {
+    "offset_sample": 1074,
+    "onset_sample": 1050,
+    "sample_rate": 24000,
+    "total_samples": 11776
+  },
+  "phon_033_click_am_puck.wav": {
+    "offset_sample": 1538,
+    "onset_sample": 1514,
+    "sample_rate": 24000,
+    "total_samples": 12288
+  },
+  "phon_033_click_bf_isabella.wav": {
+    "offset_sample": 3438,
+    "onset_sample": 3414,
+    "sample_rate": 24000,
+    "total_samples": 17408
+  },
+  "phon_033_click_bm_lewis.wav": {
+    "offset_sample": 913,
+    "onset_sample": 889,
+    "sample_rate": 24000,
+    "total_samples": 14336
+  },
+  "phon_034_clack_af_heart.wav": {
+    "offset_sample": 948,
+    "onset_sample": 924,
+    "sample_rate": 24000,
+    "total_samples": 16896
+  },
+  "phon_034_clack_af_nova.wav": {
+    "offset_sample": 2457,
+    "onset_sample": 2433,
+    "sample_rate": 24000,
+    "total_samples": 15872
+  },
+  "phon_034_clack_am_michael.wav": {
+    "offset_sample": 2066,
+    "onset_sample": 2042,
+    "sample_rate": 24000,
+    "total_samples": 15872
+  },
+  "phon_034_clack_bf_emma.wav": {
+    "offset_sample": 2747,
+    "onset_sample": 2723,
+    "sample_rate": 24000,
+    "total_samples": 12704
+  },
+  "phon_035_cluck_af_bella.wav": {
+    "offset_sample": 891,
+    "onset_sample": 867,
+    "sample_rate": 24000,
+    "total_samples": 14848
+  },
+  "phon_035_cluck_af_sky.wav": {
+    "offset_sample": 2860,
+    "onset_sample": 2836,
+    "sample_rate": 24000,
+    "total_samples": 18432
+  },
+  "phon_035_cluck_am_adam.wav": {
+    "offset_sample": 970,
+    "onset_sample": 946,
+    "sample_rate": 24000,
+    "total_samples": 11264
+  },
+  "phon_035_cluck_bm_george.wav": {
+    "offset_sample": 1202,
+    "onset_sample": 1178,
+    "sample_rate": 24000,
+    "total_samples": 16384
+  },
+  "phon_036_knock_am_fenrir.wav": {
+    "offset_sample": 781,
+    "onset_sample": 757,
+    "sample_rate": 24000,
+    "total_samples": 12288
+  },
+  "phon_036_knock_am_puck.wav": {
+    "offset_sample": 774,
+    "onset_sample": 750,
+    "sample_rate": 24000,
+    "total_samples": 11776
+  },
+  "phon_036_knock_bf_isabella.wav": {
+    "offset_sample": 3330,
+    "onset_sample": 3306,
+    "sample_rate": 24000,
+    "total_samples": 17408
+  },
+  "phon_036_knock_bm_lewis.wav": {
+    "offset_sample": 1145,
+    "onset_sample": 1121,
+    "sample_rate": 24000,
+    "total_samples": 16896
+  },
+  "phon_037_thunk_af_heart.wav": {
+    "offset_sample": 1032,
+    "onset_sample": 1008,
+    "sample_rate": 24000,
+    "total_samples": 16896
+  },
+  "phon_037_thunk_af_nova.wav": {
+    "offset_sample": 2946,
+    "onset_sample": 2922,
+    "sample_rate": 24000,
+    "total_samples": 15872
+  },
+  "phon_037_thunk_am_michael.wav": {
+    "offset_sample": 3769,
+    "onset_sample": 3745,
+    "sample_rate": 24000,
+    "total_samples": 16384
+  },
+  "phon_037_thunk_bf_emma.wav": {
+    "offset_sample": 1585,
+    "onset_sample": 1561,
+    "sample_rate": 24000,
+    "total_samples": 12704
+  },
+  "phon_038_tonk_af_bella.wav": {
+    "offset_sample": 1019,
+    "onset_sample": 995,
+    "sample_rate": 24000,
+    "total_samples": 16384
+  },
+  "phon_038_tonk_af_sky.wav": {
+    "offset_sample": 2817,
+    "onset_sample": 2793,
+    "sample_rate": 24000,
+    "total_samples": 19968
+  },
+  "phon_038_tonk_am_adam.wav": {
+    "offset_sample": 929,
+    "onset_sample": 905,
+    "sample_rate": 24000,
+    "total_samples": 12800
+  },
+  "phon_038_tonk_bm_george.wav": {
+    "offset_sample": 1018,
+    "onset_sample": 994,
+    "sample_rate": 24000,
+    "total_samples": 16896
+  },
+  "phon_039_tock_am_fenrir.wav": {
+    "offset_sample": 825,
+    "onset_sample": 801,
+    "sample_rate": 24000,
+    "total_samples": 11264
+  },
+  "phon_039_tock_am_puck.wav": {
+    "offset_sample": 999,
+    "onset_sample": 975,
+    "sample_rate": 24000,
+    "total_samples": 11776
+  },
+  "phon_039_tock_bf_isabella.wav": {
+    "offset_sample": 2406,
+    "onset_sample": 2382,
+    "sample_rate": 24000,
+    "total_samples": 14848
+  },
+  "phon_039_tock_bm_lewis.wav": {
+    "offset_sample": 1071,
+    "onset_sample": 1047,
+    "sample_rate": 24000,
+    "total_samples": 15360
+  },
+  "phon_040_tick_af_heart.wav": {
+    "offset_sample": 650,
+    "onset_sample": 626,
+    "sample_rate": 24000,
+    "total_samples": 14848
+  },
+  "phon_040_tick_af_nova.wav": {
+    "offset_sample": 1582,
+    "onset_sample": 1558,
+    "sample_rate": 24000,
+    "total_samples": 14416
+  },
+  "phon_040_tick_am_michael.wav": {
+    "offset_sample": 1427,
+    "onset_sample": 1403,
+    "sample_rate": 24000,
+    "total_samples": 14336
+  },
+  "phon_040_tick_bf_emma.wav": {
+    "offset_sample": 1685,
+    "onset_sample": 1661,
+    "sample_rate": 24000,
+    "total_samples": 10992
+  },
+  "phon_041_tank_af_bella.wav": {
+    "offset_sample": 950,
+    "onset_sample": 926,
+    "sample_rate": 24000,
+    "total_samples": 15360
+  },
+  "phon_041_tank_af_sky.wav": {
+    "offset_sample": 3719,
+    "onset_sample": 3695,
+    "sample_rate": 24000,
+    "total_samples": 19456
+  },
+  "phon_041_tank_am_adam.wav": {
+    "offset_sample": 913,
+    "onset_sample": 889,
+    "sample_rate": 24000,
+    "total_samples": 11776
+  },
+  "phon_041_tank_bm_george.wav": {
+    "offset_sample": 1150,
+    "onset_sample": 1126,
+    "sample_rate": 24000,
+    "total_samples": 15360
+  },
+  "phon_042_dink_am_fenrir.wav": {
+    "offset_sample": 978,
+    "onset_sample": 954,
+    "sample_rate": 24000,
+    "total_samples": 11264
+  },
+  "phon_042_dink_am_puck.wav": {
+    "offset_sample": 931,
+    "onset_sample": 907,
+    "sample_rate": 24000,
+    "total_samples": 12800
+  },
+  "phon_042_dink_bf_isabella.wav": {
+    "offset_sample": 2696,
+    "onset_sample": 2672,
+    "sample_rate": 24000,
+    "total_samples": 16896
+  },
+  "phon_042_dink_bm_lewis.wav": {
+    "offset_sample": 1209,
+    "onset_sample": 1185,
+    "sample_rate": 24000,
+    "total_samples": 15360
+  },
+  "phon_043_dong_af_heart.wav": {
+    "offset_sample": 1028,
+    "onset_sample": 1004,
+    "sample_rate": 24000,
+    "total_samples": 16384
+  },
+  "phon_043_dong_af_nova.wav": {
+    "offset_sample": 2568,
+    "onset_sample": 2544,
+    "sample_rate": 24000,
+    "total_samples": 16384
+  },
+  "phon_043_dong_am_michael.wav": {
+    "offset_sample": 1537,
+    "onset_sample": 1513,
+    "sample_rate": 24000,
+    "total_samples": 17408
+  },
+  "phon_043_dong_bf_emma.wav": {
+    "offset_sample": 2876,
+    "onset_sample": 2852,
+    "sample_rate": 24000,
+    "total_samples": 14336
+  },
+  "phon_044_ding_af_bella.wav": {
+    "offset_sample": 1026,
+    "onset_sample": 1002,
+    "sample_rate": 24000,
+    "total_samples": 14848
+  },
+  "phon_044_ding_af_sky.wav": {
+    "offset_sample": 2449,
+    "onset_sample": 2425,
+    "sample_rate": 24000,
+    "total_samples": 18944
+  },
+  "phon_044_ding_am_adam.wav": {
+    "offset_sample": 993,
+    "onset_sample": 969,
+    "sample_rate": 24000,
+    "total_samples": 14336
+  },
+  "phon_044_ding_bm_george.wav": {
+    "offset_sample": 944,
+    "onset_sample": 920,
+    "sample_rate": 24000,
+    "total_samples": 17920
+  },
+  "phon_045_ping_am_fenrir.wav": {
+    "offset_sample": 1523,
+    "onset_sample": 1499,
+    "sample_rate": 24000,
+    "total_samples": 12800
+  },
+  "phon_045_ping_am_puck.wav": {
+    "offset_sample": 922,
+    "onset_sample": 898,
+    "sample_rate": 24000,
+    "total_samples": 12288
+  },
+  "phon_045_ping_bf_isabella.wav": {
+    "offset_sample": 4136,
+    "onset_sample": 4112,
+    "sample_rate": 24000,
+    "total_samples": 16384
+  },
+  "phon_045_ping_bm_lewis.wav": {
+    "offset_sample": 1094,
+    "onset_sample": 1070,
+    "sample_rate": 24000,
+    "total_samples": 14848
+  },
+  "phon_046_pang_af_heart.wav": {
+    "offset_sample": 623,
+    "onset_sample": 599,
+    "sample_rate": 24000,
+    "total_samples": 16896
+  },
+  "phon_046_pang_af_nova.wav": {
+    "offset_sample": 2202,
+    "onset_sample": 2178,
+    "sample_rate": 24000,
+    "total_samples": 17408
+  },
+  "phon_046_pang_am_michael.wav": {
+    "offset_sample": 1524,
+    "onset_sample": 1500,
+    "sample_rate": 24000,
+    "total_samples": 16896
+  },
+  "phon_046_pang_bf_emma.wav": {
+    "offset_sample": 1385,
+    "onset_sample": 1361,
+    "sample_rate": 24000,
+    "total_samples": 12192
+  },
+  "phon_047_pong_af_bella.wav": {
+    "offset_sample": 742,
+    "onset_sample": 718,
+    "sample_rate": 24000,
+    "total_samples": 14848
+  },
+  "phon_047_pong_af_sky.wav": {
+    "offset_sample": 2691,
+    "onset_sample": 2667,
+    "sample_rate": 24000,
+    "total_samples": 19968
+  },
+  "phon_047_pong_am_adam.wav": {
+    "offset_sample": 696,
+    "onset_sample": 672,
+    "sample_rate": 24000,
+    "total_samples": 14336
+  },
+  "phon_047_pong_bm_george.wav": {
+    "offset_sample": 849,
+    "onset_sample": 825,
+    "sample_rate": 24000,
+    "total_samples": 17920
+  },
+  "phon_048_bang_am_fenrir.wav": {
+    "offset_sample": 1095,
+    "onset_sample": 1071,
+    "sample_rate": 24000,
+    "total_samples": 13312
+  },
+  "phon_048_bang_am_puck.wav": {
+    "offset_sample": 1220,
+    "onset_sample": 1196,
+    "sample_rate": 24000,
+    "total_samples": 13312
+  },
+  "phon_048_bang_bf_isabella.wav": {
+    "offset_sample": 3969,
+    "onset_sample": 3945,
+    "sample_rate": 24000,
+    "total_samples": 16896
+  },
+  "phon_048_bang_bm_lewis.wav": {
+    "offset_sample": 1196,
+    "onset_sample": 1172,
+    "sample_rate": 24000,
+    "total_samples": 15360
+  },
+  "phon_049_bong_af_heart.wav": {
+    "offset_sample": 1236,
+    "onset_sample": 1212,
+    "sample_rate": 24000,
+    "total_samples": 17408
+  },
+  "phon_049_bong_af_nova.wav": {
+    "offset_sample": 2720,
+    "onset_sample": 2696,
+    "sample_rate": 24000,
+    "total_samples": 17408
+  },
+  "phon_049_bong_am_michael.wav": {
+    "offset_sample": 2354,
+    "onset_sample": 2330,
+    "sample_rate": 24000,
+    "total_samples": 17920
+  },
+  "phon_049_bong_bf_emma.wav": {
+    "offset_sample": 3063,
+    "onset_sample": 3039,
+    "sample_rate": 24000,
+    "total_samples": 14336
+  },
+  "phon_050_bonk_af_bella.wav": {
+    "offset_sample": 865,
+    "onset_sample": 841,
+    "sample_rate": 24000,
+    "total_samples": 14848
+  },
+  "phon_050_bonk_af_sky.wav": {
+    "offset_sample": 2922,
+    "onset_sample": 2898,
+    "sample_rate": 24000,
+    "total_samples": 18944
+  },
+  "phon_050_bonk_am_adam.wav": {
+    "offset_sample": 1017,
+    "onset_sample": 993,
+    "sample_rate": 24000,
+    "total_samples": 12800
+  },
+  "phon_050_bonk_bm_george.wav": {
+    "offset_sample": 1237,
+    "onset_sample": 1213,
+    "sample_rate": 24000,
+    "total_samples": 17408
+  },
+  "phon_051_bunk_am_fenrir.wav": {
+    "offset_sample": 1055,
+    "onset_sample": 1031,
+    "sample_rate": 24000,
+    "total_samples": 11776
+  },
+  "phon_051_bunk_am_puck.wav": {
+    "offset_sample": 1097,
+    "onset_sample": 1073,
+    "sample_rate": 24000,
+    "total_samples": 12800
+  },
+  "phon_051_bunk_bf_isabella.wav": {
+    "offset_sample": 4074,
+    "onset_sample": 4050,
+    "sample_rate": 24000,
+    "total_samples": 16896
+  },
+  "phon_051_bunk_bm_lewis.wav": {
+    "offset_sample": 1380,
+    "onset_sample": 1356,
+    "sample_rate": 24000,
+    "total_samples": 14848
+  },
+  "phon_052_boom_af_heart.wav": {
+    "offset_sample": 749,
+    "onset_sample": 725,
+    "sample_rate": 24000,
+    "total_samples": 17408
+  },
+  "phon_052_boom_af_nova.wav": {
+    "offset_sample": 2678,
+    "onset_sample": 2654,
+    "sample_rate": 24000,
+    "total_samples": 17408
+  },
+  "phon_052_boom_am_michael.wav": {
+    "offset_sample": 2515,
+    "onset_sample": 2491,
+    "sample_rate": 24000,
+    "total_samples": 14848
+  },
+  "phon_052_boom_bf_emma.wav": {
+    "offset_sample": 2586,
+    "onset_sample": 2562,
+    "sample_rate": 24000,
+    "total_samples": 13392
+  },
+  "phon_053_blam_af_bella.wav": {
+    "offset_sample": 890,
+    "onset_sample": 866,
+    "sample_rate": 24000,
+    "total_samples": 15872
+  },
+  "phon_053_blam_af_sky.wav": {
+    "offset_sample": 2955,
+    "onset_sample": 2931,
+    "sample_rate": 24000,
+    "total_samples": 20992
+  },
+  "phon_053_blam_am_adam.wav": {
+    "offset_sample": 1437,
+    "onset_sample": 1413,
+    "sample_rate": 24000,
+    "total_samples": 12800
+  },
+  "phon_053_blam_bm_george.wav": {
+    "offset_sample": 789,
+    "onset_sample": 765,
+    "sample_rate": 24000,
+    "total_samples": 19968
+  },
+  "phon_054_wham_am_fenrir.wav": {
+    "offset_sample": 809,
+    "onset_sample": 785,
+    "sample_rate": 24000,
+    "total_samples": 13312
+  },
+  "phon_054_wham_am_puck.wav": {
+    "offset_sample": 1147,
+    "onset_sample": 1123,
+    "sample_rate": 24000,
+    "total_samples": 15360
+  },
+  "phon_054_wham_bf_isabella.wav": {
+    "offset_sample": 3149,
+    "onset_sample": 3125,
+    "sample_rate": 24000,
+    "total_samples": 18432
+  },
+  "phon_054_wham_bm_lewis.wav": {
+    "offset_sample": 1444,
+    "onset_sample": 1420,
+    "sample_rate": 24000,
+    "total_samples": 15872
+  },
+  "phon_055_bash_af_heart.wav": {
+    "offset_sample": 1213,
+    "onset_sample": 1189,
+    "sample_rate": 24000,
+    "total_samples": 17920
+  },
+  "phon_055_bash_af_nova.wav": {
+    "offset_sample": 1601,
+    "onset_sample": 1577,
+    "sample_rate": 24000,
+    "total_samples": 16384
+  },
+  "phon_055_bash_am_michael.wav": {
+    "offset_sample": 1957,
+    "onset_sample": 1933,
+    "sample_rate": 24000,
+    "total_samples": 16896
+  },
+  "phon_055_bash_bf_emma.wav": {
+    "offset_sample": 1422,
+    "onset_sample": 1398,
+    "sample_rate": 24000,
+    "total_samples": 12704
+  },
+  "phon_056_crash_af_bella.wav": {
+    "offset_sample": 964,
+    "onset_sample": 940,
+    "sample_rate": 24000,
+    "total_samples": 13824
+  },
+  "phon_056_crash_af_sky.wav": {
+    "offset_sample": 2858,
+    "onset_sample": 2834,
+    "sample_rate": 24000,
+    "total_samples": 20480
+  },
+  "phon_056_crash_am_adam.wav": {
+    "offset_sample": 1478,
+    "onset_sample": 1454,
+    "sample_rate": 24000,
+    "total_samples": 13312
+  },
+  "phon_056_crash_bm_george.wav": {
+    "offset_sample": 760,
+    "onset_sample": 736,
+    "sample_rate": 24000,
+    "total_samples": 16896
+  },
+  "phon_057_smash_am_fenrir.wav": {
+    "offset_sample": 1919,
+    "onset_sample": 1895,
+    "sample_rate": 24000,
+    "total_samples": 15360
+  },
+  "phon_057_smash_am_puck.wav": {
+    "offset_sample": 1867,
+    "onset_sample": 1843,
+    "sample_rate": 24000,
+    "total_samples": 15872
+  },
+  "phon_057_smash_bf_isabella.wav": {
+    "offset_sample": 1736,
+    "onset_sample": 1712,
+    "sample_rate": 24000,
+    "total_samples": 17408
+  },
+  "phon_057_smash_bm_lewis.wav": {
+    "offset_sample": 1479,
+    "onset_sample": 1455,
+    "sample_rate": 24000,
+    "total_samples": 16896
+  },
+  "phon_058_zap_af_heart.wav": {
+    "offset_sample": 867,
+    "onset_sample": 843,
+    "sample_rate": 24000,
+    "total_samples": 15360
+  },
+  "phon_058_zap_af_nova.wav": {
+    "offset_sample": 1604,
+    "onset_sample": 1580,
+    "sample_rate": 24000,
+    "total_samples": 16384
+  },
+  "phon_058_zap_am_michael.wav": {
+    "offset_sample": 1439,
+    "onset_sample": 1415,
+    "sample_rate": 24000,
+    "total_samples": 15872
+  },
+  "phon_058_zap_bf_emma.wav": {
+    "offset_sample": 1347,
+    "onset_sample": 1323,
+    "sample_rate": 24000,
+    "total_samples": 12192
+  },
+  "phon_059_zip_af_bella.wav": {
+    "offset_sample": 599,
+    "onset_sample": 575,
+    "sample_rate": 24000,
+    "total_samples": 13312
+  },
+  "phon_059_zip_af_sky.wav": {
+    "offset_sample": 2985,
+    "onset_sample": 2961,
+    "sample_rate": 24000,
+    "total_samples": 18432
+  },
+  "phon_059_zip_am_adam.wav": {
+    "offset_sample": 1157,
+    "onset_sample": 1133,
+    "sample_rate": 24000,
+    "total_samples": 11776
+  },
+  "phon_059_zip_bm_george.wav": {
+    "offset_sample": 950,
+    "onset_sample": 926,
+    "sample_rate": 24000,
+    "total_samples": 13824
+  },
+  "phon_060_zoom_am_fenrir.wav": {
+    "offset_sample": 1272,
+    "onset_sample": 1248,
+    "sample_rate": 24000,
+    "total_samples": 14336
+  },
+  "phon_060_zoom_am_puck.wav": {
+    "offset_sample": 1249,
+    "onset_sample": 1225,
+    "sample_rate": 24000,
+    "total_samples": 13312
+  },
+  "phon_060_zoom_bf_isabella.wav": {
+    "offset_sample": 5253,
+    "onset_sample": 5229,
+    "sample_rate": 24000,
+    "total_samples": 19968
+  },
+  "phon_060_zoom_bm_lewis.wav": {
+    "offset_sample": 1488,
+    "onset_sample": 1464,
+    "sample_rate": 24000,
+    "total_samples": 16384
+  },
+  "phon_061_dum_af_heart.wav": {
+    "offset_sample": 892,
+    "onset_sample": 868,
+    "sample_rate": 24000,
+    "total_samples": 16384
+  },
+  "phon_061_dum_af_nova.wav": {
+    "offset_sample": 2501,
+    "onset_sample": 2477,
+    "sample_rate": 24000,
+    "total_samples": 16384
+  },
+  "phon_061_dum_am_michael.wav": {
+    "offset_sample": 1520,
+    "onset_sample": 1496,
+    "sample_rate": 24000,
+    "total_samples": 16384
+  },
+  "phon_061_dum_bf_emma.wav": {
+    "offset_sample": 1442,
+    "onset_sample": 1418,
+    "sample_rate": 24000,
+    "total_samples": 13824
+  },
+  "phon_062_dom_af_bella.wav": {
+    "offset_sample": 1398,
+    "onset_sample": 1374,
+    "sample_rate": 24000,
+    "total_samples": 15360
+  },
+  "phon_062_dom_af_sky.wav": {
+    "offset_sample": 2935,
+    "onset_sample": 2911,
+    "sample_rate": 24000,
+    "total_samples": 18944
+  },
+  "phon_062_dom_am_adam.wav": {
+    "offset_sample": 1192,
+    "onset_sample": 1168,
+    "sample_rate": 24000,
+    "total_samples": 13824
+  },
+  "phon_062_dom_bm_george.wav": {
+    "offset_sample": 781,
+    "onset_sample": 757,
+    "sample_rate": 24000,
+    "total_samples": 16896
+  },
+  "phon_063_tom_am_fenrir.wav": {
+    "offset_sample": 804,
+    "onset_sample": 780,
+    "sample_rate": 24000,
+    "total_samples": 12800
+  },
+  "phon_063_tom_am_puck.wav": {
+    "offset_sample": 806,
+    "onset_sample": 782,
+    "sample_rate": 24000,
+    "total_samples": 12288
+  },
+  "phon_063_tom_bf_isabella.wav": {
+    "offset_sample": 3422,
+    "onset_sample": 3398,
+    "sample_rate": 24000,
+    "total_samples": 16896
+  },
+  "phon_063_tom_bm_lewis.wav": {
+    "offset_sample": 1043,
+    "onset_sample": 1019,
+    "sample_rate": 24000,
+    "total_samples": 15360
+  },
+  "phon_064_bim_af_heart.wav": {
+    "offset_sample": 1234,
+    "onset_sample": 1210,
+    "sample_rate": 24000,
+    "total_samples": 16384
+  },
+  "phon_064_bim_af_nova.wav": {
+    "offset_sample": 2633,
+    "onset_sample": 2609,
+    "sample_rate": 24000,
+    "total_samples": 16896
+  },
+  "phon_064_bim_am_michael.wav": {
+    "offset_sample": 1585,
+    "onset_sample": 1561,
+    "sample_rate": 24000,
+    "total_samples": 15872
+  },
+  "phon_064_bim_bf_emma.wav": {
+    "offset_sample": 2536,
+    "onset_sample": 2512,
+    "sample_rate": 24000,
+    "total_samples": 12704
+  },
+  "phon_065_bom_af_bella.wav": {
+    "offset_sample": 925,
+    "onset_sample": 901,
+    "sample_rate": 24000,
+    "total_samples": 11264
+  },
+  "phon_065_bom_af_sky.wav": {
+    "offset_sample": 2877,
+    "onset_sample": 2853,
+    "sample_rate": 24000,
+    "total_samples": 16896
+  },
+  "phon_065_bom_am_adam.wav": {
+    "offset_sample": 1312,
+    "onset_sample": 1288,
+    "sample_rate": 24000,
+    "total_samples": 11776
+  },
+  "phon_065_bom_bm_george.wav": {
+    "offset_sample": 752,
+    "onset_sample": 728,
+    "sample_rate": 24000,
+    "total_samples": 13824
+  },
+  "phon_066_kim_am_fenrir.wav": {
+    "offset_sample": 1942,
+    "onset_sample": 1918,
+    "sample_rate": 24000,
+    "total_samples": 12288
+  },
+  "phon_066_kim_am_puck.wav": {
+    "offset_sample": 1857,
+    "onset_sample": 1833,
+    "sample_rate": 24000,
+    "total_samples": 12800
+  },
+  "phon_066_kim_bf_isabella.wav": {
+    "offset_sample": 3986,
+    "onset_sample": 3962,
+    "sample_rate": 24000,
+    "total_samples": 16384
+  },
+  "phon_066_kim_bm_lewis.wav": {
+    "offset_sample": 659,
+    "onset_sample": 635,
+    "sample_rate": 24000,
+    "total_samples": 14336
+  },
+  "phon_067_kum_af_heart.wav": {
+    "offset_sample": 892,
+    "onset_sample": 868,
+    "sample_rate": 24000,
+    "total_samples": 16896
+  },
+  "phon_067_kum_af_nova.wav": {
+    "offset_sample": 3466,
+    "onset_sample": 3442,
+    "sample_rate": 24000,
+    "total_samples": 16896
+  },
+  "phon_067_kum_am_michael.wav": {
+    "offset_sample": 1914,
+    "onset_sample": 1890,
+    "sample_rate": 24000,
+    "total_samples": 15872
+  },
+  "phon_067_kum_bf_emma.wav": {
+    "offset_sample": 1088,
+    "onset_sample": 1064,
+    "sample_rate": 24000,
+    "total_samples": 12792
+  },
+  "phon_068_gum_af_bella.wav": {
+    "offset_sample": 1020,
+    "onset_sample": 996,
+    "sample_rate": 24000,
+    "total_samples": 15360
+  },
+  "phon_068_gum_af_sky.wav": {
+    "offset_sample": 2468,
+    "onset_sample": 2444,
+    "sample_rate": 24000,
+    "total_samples": 18944
+  },
+  "phon_068_gum_am_adam.wav": {
+    "offset_sample": 1063,
+    "onset_sample": 1039,
+    "sample_rate": 24000,
+    "total_samples": 13312
+  },
+  "phon_068_gum_bm_george.wav": {
+    "offset_sample": 1040,
+    "onset_sample": 1016,
+    "sample_rate": 24000,
+    "total_samples": 17920
+  },
+  "phon_069_woof_am_fenrir.wav": {
+    "offset_sample": 822,
+    "onset_sample": 798,
+    "sample_rate": 24000,
+    "total_samples": 11264
+  },
+  "phon_069_woof_am_puck.wav": {
+    "offset_sample": 1069,
+    "onset_sample": 1045,
+    "sample_rate": 24000,
+    "total_samples": 10752
+  },
+  "phon_069_woof_bf_isabella.wav": {
+    "offset_sample": 4906,
+    "onset_sample": 4882,
+    "sample_rate": 24000,
+    "total_samples": 19968
+  },
+  "phon_069_woof_bm_lewis.wav": {
+    "offset_sample": 1151,
+    "onset_sample": 1127,
+    "sample_rate": 24000,
+    "total_samples": 14848
+  },
+  "phon_070_ruff_af_heart.wav": {
+    "offset_sample": 1009,
+    "onset_sample": 985,
+    "sample_rate": 24000,
+    "total_samples": 16384
+  },
+  "phon_070_ruff_af_nova.wav": {
+    "offset_sample": 1166,
+    "onset_sample": 1142,
+    "sample_rate": 24000,
+    "total_samples": 16384
+  },
+  "phon_070_ruff_am_michael.wav": {
+    "offset_sample": 1329,
+    "onset_sample": 1305,
+    "sample_rate": 24000,
+    "total_samples": 14336
+  },
+  "phon_070_ruff_bf_emma.wav": {
+    "offset_sample": 1339,
+    "onset_sample": 1315,
+    "sample_rate": 24000,
+    "total_samples": 12704
+  },
+  "phon_071_arf_af_bella.wav": {
+    "offset_sample": 722,
+    "onset_sample": 698,
+    "sample_rate": 24000,
+    "total_samples": 12800
+  },
+  "phon_071_arf_af_sky.wav": {
+    "offset_sample": 3441,
+    "onset_sample": 3417,
+    "sample_rate": 24000,
+    "total_samples": 19968
+  },
+  "phon_071_arf_am_adam.wav": {
+    "offset_sample": 696,
+    "onset_sample": 672,
+    "sample_rate": 24000,
+    "total_samples": 11776
+  },
+  "phon_071_arf_bm_george.wav": {
+    "offset_sample": 1371,
+    "onset_sample": 1347,
+    "sample_rate": 24000,
+    "total_samples": 14848
+  },
+  "phon_072_yip_am_fenrir.wav": {
+    "offset_sample": 989,
+    "onset_sample": 965,
+    "sample_rate": 24000,
+    "total_samples": 11776
+  },
+  "phon_072_yip_am_puck.wav": {
+    "offset_sample": 1251,
+    "onset_sample": 1227,
+    "sample_rate": 24000,
+    "total_samples": 12800
+  },
+  "phon_072_yip_bf_isabella.wav": {
+    "offset_sample": 1176,
+    "onset_sample": 1152,
+    "sample_rate": 24000,
+    "total_samples": 13312
+  },
+  "phon_072_yip_bm_lewis.wav": {
+    "offset_sample": 1145,
+    "onset_sample": 1121,
+    "sample_rate": 24000,
+    "total_samples": 13824
+  },
+  "phon_073_yap_af_heart.wav": {
+    "offset_sample": 1257,
+    "onset_sample": 1233,
+    "sample_rate": 24000,
+    "total_samples": 16896
+  },
+  "phon_073_yap_af_nova.wav": {
+    "offset_sample": 1311,
+    "onset_sample": 1287,
+    "sample_rate": 24000,
+    "total_samples": 16384
+  },
+  "phon_073_yap_am_michael.wav": {
+    "offset_sample": 2465,
+    "onset_sample": 2441,
+    "sample_rate": 24000,
+    "total_samples": 15872
+  },
+  "phon_073_yap_bf_emma.wav": {
+    "offset_sample": 1008,
+    "onset_sample": 984,
+    "sample_rate": 24000,
+    "total_samples": 12192
+  },
+  "phon_074_bark_af_bella.wav": {
+    "offset_sample": 648,
+    "onset_sample": 624,
+    "sample_rate": 24000,
+    "total_samples": 14848
+  },
+  "phon_074_bark_af_sky.wav": {
+    "offset_sample": 3349,
+    "onset_sample": 3325,
+    "sample_rate": 24000,
+    "total_samples": 19968
+  },
+  "phon_074_bark_am_adam.wav": {
+    "offset_sample": 1023,
+    "onset_sample": 999,
+    "sample_rate": 24000,
+    "total_samples": 13312
+  },
+  "phon_074_bark_bm_george.wav": {
+    "offset_sample": 871,
+    "onset_sample": 847,
+    "sample_rate": 24000,
+    "total_samples": 15360
+  },
+  "phon_075_mew_am_fenrir.wav": {
+    "offset_sample": 876,
+    "onset_sample": 852,
+    "sample_rate": 24000,
+    "total_samples": 13824
+  },
+  "phon_075_mew_am_puck.wav": {
+    "offset_sample": 1250,
+    "onset_sample": 1226,
+    "sample_rate": 24000,
+    "total_samples": 13312
+  },
+  "phon_075_mew_bf_isabella.wav": {
+    "offset_sample": 2247,
+    "onset_sample": 2223,
+    "sample_rate": 24000,
+    "total_samples": 15872
+  },
+  "phon_075_mew_bm_lewis.wav": {
+    "offset_sample": 1159,
+    "onset_sample": 1135,
+    "sample_rate": 24000,
+    "total_samples": 15872
+  },
+  "phon_076_peep_af_heart.wav": {
+    "offset_sample": 1012,
+    "onset_sample": 988,
+    "sample_rate": 24000,
+    "total_samples": 14336
+  },
+  "phon_076_peep_af_nova.wav": {
+    "offset_sample": 1822,
+    "onset_sample": 1798,
+    "sample_rate": 24000,
+    "total_samples": 15704
+  },
+  "phon_076_peep_am_michael.wav": {
+    "offset_sample": 3017,
+    "onset_sample": 2993,
+    "sample_rate": 24000,
+    "total_samples": 13312
+  },
+  "phon_076_peep_bf_emma.wav": {
+    "offset_sample": 1446,
+    "onset_sample": 1422,
+    "sample_rate": 24000,
+    "total_samples": 12192
+  },
+  "phon_077_chirp_af_bella.wav": {
+    "offset_sample": 665,
+    "onset_sample": 641,
+    "sample_rate": 24000,
+    "total_samples": 15872
+  },
+  "phon_077_chirp_af_sky.wav": {
+    "offset_sample": 2725,
+    "onset_sample": 2701,
+    "sample_rate": 24000,
+    "total_samples": 18432
+  },
+  "phon_077_chirp_am_adam.wav": {
+    "offset_sample": 1205,
+    "onset_sample": 1181,
+    "sample_rate": 24000,
+    "total_samples": 12288
+  },
+  "phon_077_chirp_bm_george.wav": {
+    "offset_sample": 1068,
+    "onset_sample": 1044,
+    "sample_rate": 24000,
+    "total_samples": 14848
+  },
+  "phon_078_oink_am_fenrir.wav": {
+    "offset_sample": 991,
+    "onset_sample": 967,
+    "sample_rate": 24000,
+    "total_samples": 13312
+  },
+  "phon_078_oink_am_puck.wav": {
+    "offset_sample": 963,
+    "onset_sample": 939,
+    "sample_rate": 24000,
+    "total_samples": 13824
+  },
+  "phon_078_oink_bf_isabella.wav": {
+    "offset_sample": 3831,
+    "onset_sample": 3807,
+    "sample_rate": 24000,
+    "total_samples": 19968
+  },
+  "phon_078_oink_bm_lewis.wav": {
+    "offset_sample": 980,
+    "onset_sample": 956,
+    "sample_rate": 24000,
+    "total_samples": 15360
+  },
+  "phon_079_ha_af_heart.wav": {
+    "offset_sample": 801,
+    "onset_sample": 777,
+    "sample_rate": 24000,
+    "total_samples": 15360
+  },
+  "phon_079_ha_af_nova.wav": {
+    "offset_sample": 2921,
+    "onset_sample": 2897,
+    "sample_rate": 24000,
+    "total_samples": 19456
+  },
+  "phon_079_ha_am_michael.wav": {
+    "offset_sample": 2639,
+    "onset_sample": 2615,
+    "sample_rate": 24000,
+    "total_samples": 17408
+  },
+  "phon_079_ha_bf_emma.wav": {
+    "offset_sample": 1375,
+    "onset_sample": 1351,
+    "sample_rate": 24000,
+    "total_samples": 16896
+  },
+  "phon_080_ho_af_bella.wav": {
+    "offset_sample": 927,
+    "onset_sample": 903,
+    "sample_rate": 24000,
+    "total_samples": 14336
+  },
+  "phon_080_ho_af_sky.wav": {
+    "offset_sample": 2773,
+    "onset_sample": 2749,
+    "sample_rate": 24000,
+    "total_samples": 19456
+  },
+  "phon_080_ho_am_adam.wav": {
+    "offset_sample": 1637,
+    "onset_sample": 1613,
+    "sample_rate": 24000,
+    "total_samples": 14848
+  },
+  "phon_080_ho_bm_george.wav": {
+    "offset_sample": 1565,
+    "onset_sample": 1541,
+    "sample_rate": 24000,
+    "total_samples": 18944
+  },
+  "phon_081_hey_am_fenrir.wav": {
+    "offset_sample": 1383,
+    "onset_sample": 1359,
+    "sample_rate": 24000,
+    "total_samples": 12288
+  },
+  "phon_081_hey_am_puck.wav": {
+    "offset_sample": 1418,
+    "onset_sample": 1394,
+    "sample_rate": 24000,
+    "total_samples": 13824
+  },
+  "phon_081_hey_bf_isabella.wav": {
+    "offset_sample": 1771,
+    "onset_sample": 1747,
+    "sample_rate": 24000,
+    "total_samples": 24064
+  },
+  "phon_081_hey_bm_lewis.wav": {
+    "offset_sample": 1906,
+    "onset_sample": 1882,
+    "sample_rate": 24000,
+    "total_samples": 14336
+  },
+  "phon_082_yo_af_heart.wav": {
+    "offset_sample": 1231,
+    "onset_sample": 1207,
+    "sample_rate": 24000,
+    "total_samples": 16384
+  },
+  "phon_082_yo_af_nova.wav": {
+    "offset_sample": 1790,
+    "onset_sample": 1766,
+    "sample_rate": 24000,
+    "total_samples": 22016
+  },
+  "phon_082_yo_am_michael.wav": {
+    "offset_sample": 1660,
+    "onset_sample": 1636,
+    "sample_rate": 24000,
+    "total_samples": 17408
+  },
+  "phon_082_yo_bf_emma.wav": {
+    "offset_sample": 1328,
+    "onset_sample": 1304,
+    "sample_rate": 24000,
+    "total_samples": 18944
+  },
+  "phon_083_hup_af_bella.wav": {
+    "offset_sample": 788,
+    "onset_sample": 764,
+    "sample_rate": 24000,
+    "total_samples": 13312
+  },
+  "phon_083_hup_af_sky.wav": {
+    "offset_sample": 3064,
+    "onset_sample": 3040,
+    "sample_rate": 24000,
+    "total_samples": 18432
+  },
+  "phon_083_hup_am_adam.wav": {
+    "offset_sample": 1609,
+    "onset_sample": 1585,
+    "sample_rate": 24000,
+    "total_samples": 12288
+  },
+  "phon_083_hup_bm_george.wav": {
+    "offset_sample": 1334,
+    "onset_sample": 1310,
+    "sample_rate": 24000,
+    "total_samples": 15360
+  },
+  "phon_084_hut_am_fenrir.wav": {
+    "offset_sample": 1781,
+    "onset_sample": 1757,
+    "sample_rate": 24000,
+    "total_samples": 11776
+  },
+  "phon_084_hut_am_puck.wav": {
+    "offset_sample": 1194,
+    "onset_sample": 1170,
+    "sample_rate": 24000,
+    "total_samples": 12288
+  },
+  "phon_084_hut_bf_isabella.wav": {
+    "offset_sample": 1543,
+    "onset_sample": 1519,
+    "sample_rate": 24000,
+    "total_samples": 22016
+  },
+  "phon_084_hut_bm_lewis.wav": {
+    "offset_sample": 1359,
+    "onset_sample": 1335,
+    "sample_rate": 24000,
+    "total_samples": 14336
+  },
+  "phon_085_ouch_af_heart.wav": {
+    "offset_sample": 1012,
+    "onset_sample": 988,
+    "sample_rate": 24000,
+    "total_samples": 17408
+  },
+  "phon_085_ouch_af_nova.wav": {
+    "offset_sample": 2015,
+    "onset_sample": 1991,
+    "sample_rate": 24000,
+    "total_samples": 22016
+  },
+  "phon_085_ouch_am_michael.wav": {
+    "offset_sample": 2994,
+    "onset_sample": 2970,
+    "sample_rate": 24000,
+    "total_samples": 19968
+  },
+  "phon_085_ouch_bf_emma.wav": {
+    "offset_sample": 1900,
+    "onset_sample": 1876,
+    "sample_rate": 24000,
+    "total_samples": 18432
+  },
+  "phon_086_eek_af_bella.wav": {
+    "offset_sample": 1074,
+    "onset_sample": 1050,
+    "sample_rate": 24000,
+    "total_samples": 12800
+  },
+  "phon_086_eek_af_sky.wav": {
+    "offset_sample": 2420,
+    "onset_sample": 2396,
+    "sample_rate": 24000,
+    "total_samples": 18432
+  },
+  "phon_086_eek_am_adam.wav": {
+    "offset_sample": 1020,
+    "onset_sample": 996,
+    "sample_rate": 24000,
+    "total_samples": 13824
+  },
+  "phon_086_eek_bm_george.wav": {
+    "offset_sample": 736,
+    "onset_sample": 712,
+    "sample_rate": 24000,
+    "total_samples": 15360
+  },
+  "phon_087_tsk_am_fenrir.wav": {
+    "offset_sample": 1517,
+    "onset_sample": 1493,
+    "sample_rate": 24000,
+    "total_samples": 13824
+  },
+  "phon_087_tsk_am_puck.wav": {
+    "offset_sample": 1462,
+    "onset_sample": 1438,
+    "sample_rate": 24000,
+    "total_samples": 14336
+  },
+  "phon_087_tsk_bf_isabella.wav": {
+    "offset_sample": 1936,
+    "onset_sample": 1912,
+    "sample_rate": 24000,
+    "total_samples": 26112
+  },
+  "phon_087_tsk_bm_lewis.wav": {
+    "offset_sample": 1232,
+    "onset_sample": 1208,
+    "sample_rate": 24000,
+    "total_samples": 15872
+  },
+  "phon_088_tut_af_heart.wav": {
+    "offset_sample": 776,
+    "onset_sample": 752,
+    "sample_rate": 24000,
+    "total_samples": 16384
+  },
+  "phon_088_tut_af_nova.wav": {
+    "offset_sample": 3187,
+    "onset_sample": 3163,
+    "sample_rate": 24000,
+    "total_samples": 20480
+  },
+  "phon_088_tut_am_michael.wav": {
+    "offset_sample": 2385,
+    "onset_sample": 2361,
+    "sample_rate": 24000,
+    "total_samples": 16384
+  },
+  "phon_088_tut_bf_emma.wav": {
+    "offset_sample": 1560,
+    "onset_sample": 1536,
+    "sample_rate": 24000,
+    "total_samples": 18432
+  }
+}

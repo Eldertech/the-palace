@@ -23,7 +23,7 @@ links:
     label: cross-domain-projection
   - target: "[[Hilaritas Generator]]"
     type: connects-to
-    label: synchrony-as-joy
+    label: approaching-synchrony-as-joy
   - target: "[[Spinoza Conatus]]"
     type: mirrors
     label: persistence-through-coupling

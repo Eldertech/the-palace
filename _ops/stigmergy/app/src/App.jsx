@@ -25,7 +25,11 @@ function isDemoMode() {
 
 export default function App() {
   const [clock, setClock] = useState(formatNow());
-  const [activeBoard, setActiveBoard] = useState('GENERAL');
+  // Default board is TRICKSTER — the inbox is the page that earns its keep
+  // moment-to-moment. Pending RESOURCE_REQUESTs from Stewards land here and
+  // need answering; everything else is read-and-skim. Loudon's preference
+  // (2026-05-04, after the cycle 4 inline-response UI landed and proved out).
+  const [activeBoard, setActiveBoard] = useState('TRICKSTER');
   const [agentFilter, setAgentFilter] = useState(null);
   const [scanlinesOn, setScanlinesOn] = useState(true);
 

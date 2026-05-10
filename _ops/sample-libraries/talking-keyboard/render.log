@@ -1,0 +1,30 @@
+============================================================
+Talking Keyboard - Phase 1 generator
+============================================================
+Loading Kokoro ONNX model from /Users/loudonstearns/documents/TTS/kokoro-v1.0.onnx...
+Model loaded.
+  [1/352] kokoro_A0_v1.wav  (1s elapsed, ~309s remaining)
+  [2/352] kokoro_A0_v2.wav  (2s elapsed, ~301s remaining)
+  [3/352] kokoro_A0_v3.wav  (2s elapsed, ~276s remaining)
+  [4/352] kokoro_A0_v4.wav  (3s elapsed, ~288s remaining)
+  [20/352] kokoro_Cs1_v4.wav  (20s elapsed, ~328s remaining)
+  [40/352] kokoro_Fs1_v4.wav  (39s elapsed, ~303s remaining)
+  [60/352] kokoro_B1_v4.wav  (58s elapsed, ~281s remaining)
+  [80/352] kokoro_E2_v4.wav  (77s elapsed, ~263s remaining)
+  [100/352] kokoro_A2_v4.wav  (95s elapsed, ~239s remaining)
+  [120/352] kokoro_D3_v4.wav  (114s elapsed, ~221s remaining)
+  [140/352] kokoro_G3_v4.wav  (135s elapsed, ~204s remaining)
+  [160/352] kokoro_C4_v4.wav  (147s elapsed, ~177s remaining)
+  [180/352] kokoro_F4_v4.wav  (156s elapsed, ~149s remaining)
+  [200/352] kokoro_As4_v4.wav  (165s elapsed, ~125s remaining)
+  [220/352] kokoro_Ds5_v4.wav  (174s elapsed, ~104s remaining)
+  [240/352] kokoro_Gs5_v4.wav  (184s elapsed, ~86s remaining)
+  [260/352] kokoro_Cs6_v4.wav  (194s elapsed, ~69s remaining)
+  [280/352] kokoro_Fs6_v4.wav  (202s elapsed, ~52s remaining)
+  [300/352] kokoro_B6_v4.wav  (209s elapsed, ~36s remaining)
+  [320/352] kokoro_E7_v4.wav  (216s elapsed, ~22s remaining)
+  [340/352] kokoro_A7_v4.wav  (223s elapsed, ~8s remaining)
+  [352/352] kokoro_C8_v4.wav  (227s elapsed, ~0s remaining)
+Wrote SFZ: /Users/loudonstearns/Documents/The Palace/_ops/sample-libraries/talking-keyboard/talking_keyboard.sfz
+Wrote build log: /Users/loudonstearns/Documents/The Palace/_ops/sample-libraries/talking-keyboard/build-log.md
+Done.
