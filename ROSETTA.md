@@ -70,6 +70,8 @@ For the authoritative decision tree and full definitions, see [[SCHEMA]]. This t
 | `person` | A thinker whose ideas are in active dialogue with the Palace | Agent / foaf:Person | Actor |
 | `question` | An unresolved question being actively carried | Open world assertion | Domain uncertainty |
 | `spore` | A dormant idea preserved for future revival | Suspended named individual | Deferred aggregate |
+| `specialist` | A wrapper around an external creative tool with operational anatomy (Charter, Tiers, Job Contract, Gotchas) | Class with method dispatch + accumulated state | Service / Adapter (with embedded knowledge) |
+| `maker` | An orchestrator/foreman for a roster of Specialists, holding house standards and dispatch logic | Coordinator class / mediator | Aggregate root over Service Adapters |
 
 ---
 
@@ -182,7 +184,8 @@ The Palace/
 ├── Deposit Archive.md      ← Permanent record of all deposits. Append-only.
 ├── Palace Ceremonies.md    ← Canonical ceremony list with triggers and cadences.
 ├── Palace To-Do.md         ← Active improvement queue for palace infrastructure.
-└── [Content entries]       ← concept, hub, project, breakthrough, source, practice, person, question, spore entries
+├── [Content entries]       ← concept, hub, project, breakthrough, source, practice, person, question, spore entries
+└── Shop/                   ← Operational sub-system: specialist + maker entries (added v1.2, 2026-05)
 ```
 
 ---

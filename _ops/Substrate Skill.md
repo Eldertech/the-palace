@@ -38,10 +38,10 @@ When Loudon says "add this to the palace" or when a conversation produces someth
 ```yaml
 ---
 title: "Entry Title"
-type: concept | project | breakthrough | question | spore | source
-pillars: [relevant pillars]
+type: concept | hub | project | breakthrough | source | meta | practice | person | question | spore | specialist | maker
+pillars: [relevant pillars]   # optional for specialist | maker
 born: YYYY-MM
-stage: seed | sprout
+stage: seed | sprout           # for specialist | maker, use status: alive | stub instead
 links:
   - target: "[[Existing Entry]]"
     type: link-type
