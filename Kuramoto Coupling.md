@@ -6,8 +6,8 @@ pillars:
   - philosophy
   - creation
 born: 2025-11
-last_activated: 2026-03
-activation_count: 16
+last_activated: 2026-05
+activation_count: 17
 stage: mature
 confidence: demonstrated
 energy: high
@@ -76,6 +76,16 @@ The Kuramoto model describes how populations of oscillators with different natur
 
 The coupling constant **K** is the key parameter: it determines how strongly each oscillator influences its neighbors. K too low → independence, no cooperation. K too high → one oscillator dominates, the rest follow (control, not cooperation). The critical K → the phase transition where synchronization emerges. In this sense K is also a **threshold of self-model revision**: below it, each oscillator maintains the identity it knows; above it, each discovers its frequency was always in relation to the others. Synchronization is not surrender — it is self-model expansion. See [[Threshold Conatus]].
 
+> **Two phasors, uncoupled** — a Sketch-tier teaching artifact for the sub-threshold case. Indigo at 1.00 Hz, amber at 1.07 Hz, free-running. They begin in phase, drift apart by the close-but-detectable frequency gap, and never re-align. This is K = 0: independence, no cooperation.
+>
+> ![[two-phasors-uncoupled-manim.mp4]]
+>
+> A Matplotlib variant of the same scene exists alongside — [[two-phasors-uncoupled-matplotlib.mp4|the comparison artifact]] — kept because the Cowork-era sandbox forced a non-canonical render that turned out to have its own visual character worth holding.
+
+> **Couple the two phasors and find K_c yourself.** The same two oscillators, but K is now a slider. Critical coupling for this pair is K_c ≈ 0.220 — drag the slider across that threshold and watch the two go from drift to lock. The order parameter R is the small vector in the middle: |R| → 1 is the formal signature of synchrony.
+>
+> [Two-phasor coupling explorer →](two-phasors-coupling-explorer.html)
+
 ## Origin
 
 Studied across an 8-lesson progressive series, building from the simplest case (two oscillators) to populations, phase portraits, and the order parameter. The work originated in Loudon's neurological synthesizer research — a granular-additive hybrid architecture where sine grains couple to a controllable additive spectrum as a harmonic attractor field.
@@ -111,6 +121,8 @@ This concept appears everywhere once you see it:
 **The quarter cycle as maximum effort** — At the critical coupling threshold, locked oscillators sit at π/2 phase offset — the point where sin(φ) = 1, maximum coupling force. This is the same π/2 that appears in swing-pushing (maximum energy transfer), resonant driven oscillators, reactive circuits, and tidal friction. The quarter cycle is the universal signature of a sinusoidal system under maximum strain.
 
 **Speech rhythm and groove coupling** — When a speaker's phrases fall into a groove with a listener's attention cycles, comprehension increases and the interaction feels effortless. This is Kuramoto coupling: the listener's attention has a natural frequency (related to working memory refresh rate, approximately 4–8 Hz in the theta band), and a well-paced speaker entrains to it. In music: groove is the condition where the rhythmic information density matches the listener's coupled attention oscillators. A drummer who drags or rushes is detuning the coupling. The coupling constant K is phrasing density and rhythmic clarity.
+
+![[speech-rhythm-and-groove-narration.wav]]
 
 ## In Our Instruments
 
@@ -171,3 +183,4 @@ The musical mapping becomes explicit:
 - Chimera states: can a population of identical oscillators spontaneously split into a synchronized core and an incoherent cloud? This would be emergent timbre from pure dynamics.
 - Adaptive/Hebbian coupling (dKᵢⱼ/dt = ε(sin(θⱼ - θᵢ) - Kᵢⱼ)): a system that discovers its own harmonic structure. What prevents it from converging to a single rigid state?
 - Hysteresis near Kc: sweeping K up produces synchronization at one threshold; sweeping down, coherence persists longer before breaking. Can this asymmetry be musically exploited?
+

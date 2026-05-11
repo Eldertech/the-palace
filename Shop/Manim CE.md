@@ -3,10 +3,10 @@ type: specialist
 status: alive
 medium: motion
 tool: manim-ce
-tool_version: 0.18.x
+tool_version: 0.20.1
 adopted: 2026-05-06
-last_tested:
-last_gotcha:
+last_tested: 2026-05-10
+last_gotcha: 2026-05-10
 license: MIT
 links:
   - { label: "wraps", target: "manim-ce (external)" }
@@ -97,7 +97,7 @@ The studio's mathematical illustrator. Slow but exact. Loves LaTeX, loves precis
 
 ### Output
 - Video file at `out_path` (or PNG if a single frame is requested)
-- Source code archived alongside in `Artifacts/<project>/source/<scene_class>.py`
+- Source code archived alongside the output as `<descriptive-slug>.py` at the bundle root (e.g., `Kuramoto Coupling/two-phasors-uncoupled.py`). The pre-Enrichment-v1.5 convention `source/<scene_class>.py` was retired in favor of descriptive flat filenames; the scene class name lives inside the file, not in the path.
 - Standards report:
   - `duration_sec` (float)
   - `resolution` (w × h)
@@ -146,9 +146,28 @@ Any miss appears in the standards report's `gotchas_hit` list and sets `status` 
 
 The Maker should not run two Piece-tier renders in parallel on a typical laptop. Sketch + Study in parallel is fine.
 
+### Install (host capability)
+
+**macOS arm64 (canonical Loudon machine).** `pip install manim` requires three Homebrew system deps first (`pycairo` is source-only on PyPI, `manimpango` likewise links to `pango`):
+
+```sh
+brew install cairo pkg-config pango
+pipx install manim --python /opt/homebrew/bin/python3.13
+```
+
+Then `manim` is on PATH. Per-Specialist pipx isolation keeps Manim's dependency tree from contaminating other Python work.
+
+**Python 3.14 is too new (as of 2026-05).** `pycairo` has no Python 3.14 wheels — and since it has no arm64 wheels for *any* Python version, source build is forced; the source build needs `pkg-config` + `cairo` headers regardless of Python version. Use Python 3.13 until pycairo publishes arm64 wheels.
+
+**Linux arm64 in a sandboxed/no-sudo container** (e.g. Cowork sandbox): cannot install. `manimpango` has no aarch64 wheels and the build requires `libpangocairo-dev` which is sudo-only. Route the brief to Matplotlib as a fallback (see `Shop/Matplotlib`) or defer to a host that has Manim installed.
+
 ## Gotchas
 
-*(Empty until first job. Patterns to watch for, based on Manim community wisdom — confirmed and dated only on first encounter:)*
+**2026-05-10 — pycairo is source-only on PyPI.** No wheels for any Python version on macOS arm64. `pip install manim` always triggers a source build of `pycairo`. The build fails with a confusing `meson` error (`Did not find pkg-config`) unless `brew install cairo pkg-config pango` has been run first. Surfaced on the Round 1 install pass; symptoms identical across Python 3.13 and 3.14.
+
+**2026-05-10 — Python 3.14 is too new for the dependency tree.** Even with system cairo installed, several manim transitive deps lack 3.14 wheels (May 2026). Use Python 3.13 via Homebrew. Revisit when pycairo publishes 3.14 wheels.
+
+*(Patterns below from Manim community wisdom — not yet confirmed on a job; dates will land when first encountered:)*
 
 - LaTeX errors render as "could not compile TeX" with no useful trace; isolate by reducing `MathTex` content until it compiles
 - `Transform` between mobjects with mismatched submobject counts produces visual artifacts; use `TransformMatchingShapes` or `ReplacementTransform`
@@ -158,7 +177,9 @@ The Maker should not run two Piece-tier renders in parallel on a typical laptop.
 
 ## Recipes
 
-Links to working examples in `Artifacts/Shop/Manim CE/recipes/` once they exist. Likely first set: a Kuramoto coupling visual, a sine-wave decomposition, a Floquet pump portrait.
+**2026-05-10 — Two phasors, uncoupled** (Sketch tier, 480p15). Two oscillators at 1.00 / 1.07 Hz, phasor circles top of frame, sine traces below on a shared time axis with color-matched current-sample dots and dashed projection lines from each phasor tip down to its sample. Source: [Kuramoto Coupling/two-phasors-uncoupled.py](../Kuramoto Coupling/two-phasors-uncoupled.py). Output: [Kuramoto Coupling/two-phasors-uncoupled-manim.mp4](../Kuramoto Coupling/two-phasors-uncoupled-manim.mp4). Render time on M-series + Python 3.13: ~5 s wall-clock after caching disabled. Houses the Round 1 calibration brief: descriptive flat-bundle filenames, no `source/` or `proofs/` subfolders.
+
+Future recipes in `Artifacts/Shop/Manim CE/recipes/` once they accumulate beyond the bundle pattern.
 
 ## Test Suite
 
