@@ -1,0 +1,329 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Two Phasors, Coupling Explorer — Kuramoto Step 2</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="https://cdn.jsdelivr.net/npm/p5@1.10.0/lib/p5.min.js"></script>
+<style>
+  :root {
+    --bg: #0B0B10;
+    --axis: #9CA3AF;
+    --ink: #E5E7EB;
+    --A: #6366F1;
+    --B: #F59E0B;
+    --panel: #15151D;
+  }
+  html, body { margin: 0; padding: 0; background: var(--bg); color: var(--ink);
+    font: 13px/1.4 ui-sans-serif, system-ui, -apple-system, sans-serif; }
+  main { max-width: 1100px; margin: 0 auto; padding: 18px; }
+  h1 { font: 600 16px/1.3 ui-sans-serif, system-ui; margin: 0 0 4px; color: var(--ink); }
+  p.lede { color: var(--axis); margin: 0 0 16px; max-width: 70ch; }
+  .canvas-host { background: var(--bg); border: 1px solid #1F1F2A; border-radius: 6px; }
+  .controls { display: grid; grid-template-columns: auto 1fr auto; gap: 12px 14px;
+    align-items: center; padding: 14px 16px; margin-top: 12px;
+    background: var(--panel); border: 1px solid #1F1F2A; border-radius: 6px; }
+  .controls label { color: var(--axis); justify-self: end; font-variant-numeric: tabular-nums; }
+  .controls input[type=range] { accent-color: var(--A); width: 100%; }
+  .controls .value { font-variant-numeric: tabular-nums; color: var(--ink); min-width: 4.5em;
+    text-align: right; }
+  .controls button { background: transparent; color: var(--ink); border: 1px solid var(--axis);
+    padding: 5px 12px; border-radius: 4px; cursor: pointer; font: inherit; }
+  .controls button:hover { border-color: var(--A); color: var(--A); }
+  .readouts { display: flex; gap: 22px; margin-top: 10px; color: var(--axis);
+    font-variant-numeric: tabular-nums; font-size: 12px; }
+  .readouts b { color: var(--ink); font-weight: 600; }
+  .note { color: var(--axis); font-size: 11px; margin-top: 6px; }
+  .swatch-A { color: var(--A); }
+  .swatch-B { color: var(--B); }
+</style>
+</head>
+<body>
+<main>
+  <h1>Two Phasors, Coupling Explorer</h1>
+  <p class="lede">
+    <span class="swatch-A">A</span> at 1.00 Hz, <span class="swatch-B">B</span> at 1.07 Hz.
+    Drag <code>K</code> up from zero. Below the critical threshold (<code>K<sub>c</sub> ≈ 0.220</code>),
+    the two run free. Above it, they phase-lock — different natural frequencies, one shared rhythm.
+  </p>
+  <div id="sketch" class="canvas-host"></div>
+  <div class="controls">
+    <label for="K">Coupling K</label>
+    <input id="K" type="range" min="0" max="1.5" step="0.005" value="0">
+    <span class="value" id="Kval">0.000</span>
+
+    <label for="speed">Time speed</label>
+    <input id="speed" type="range" min="0.1" max="3" step="0.05" value="1">
+    <span class="value" id="speedval">1.00×</span>
+
+    <span></span>
+    <span></span>
+    <button id="reset">Reset phases</button>
+  </div>
+  <div class="readouts">
+    <span>Order parameter <b id="R">0.000</b></span>
+    <span>Δθ <b id="dphi">0.000</b> rad</span>
+    <span>Effective frequencies <b id="feff">1.000 / 1.070</b> Hz</span>
+  </div>
+  <div class="note">
+    Symmetric Kuramoto, two oscillators: dθᵢ/dt = ωᵢ + K sin(θⱼ − θᵢ).
+    Critical coupling Kc = |Δω| / 2 = π · 0.07 ≈ 0.220.
+  </div>
+</main>
+
+<script>
+'use strict';
+
+const COLOR_BG = '#0B0B10';
+const COLOR_AXIS = '#9CA3AF';
+const COLOR_A = '#6366F1';
+const COLOR_B = '#F59E0B';
+const COLOR_INK = '#E5E7EB';
+
+const F_A = 1.00;
+const F_B = 1.07;
+const TWO_PI_LOCAL = Math.PI * 2;
+
+const sketch = (p) => {
+  const W = 1080;
+  const H = 480;
+
+  const RADIUS = 56;
+  const TOP_Y = 90;
+  const A_X = 180;
+  const B_X = 900;
+
+  const TRACE_LEFT = 80;
+  const TRACE_RIGHT = 1000;
+  const TRACE_MID_Y = 320;
+  const TRACE_HALF_H = 90;
+  const WINDOW_SEC = 8;
+  const SAMPLES_PER_SEC = 120;
+
+  let thetaA = 0;
+  let thetaB = 0;
+  let lastTime = 0;
+  let elapsed = 0;
+
+  const traceA = [];
+  const traceB = [];
+
+  let K = 0;
+  let speed = 1;
+
+  const phaseDots = [];
+  const ORDER_AVG_WINDOW = 60;
+
+  const slider = document.getElementById('K');
+  const sliderVal = document.getElementById('Kval');
+  const speedSlider = document.getElementById('speed');
+  const speedVal = document.getElementById('speedval');
+  const resetBtn = document.getElementById('reset');
+  const rOut = document.getElementById('R');
+  const dphiOut = document.getElementById('dphi');
+  const feffOut = document.getElementById('feff');
+
+  slider.addEventListener('input', () => {
+    K = parseFloat(slider.value);
+    sliderVal.textContent = K.toFixed(3);
+  });
+  speedSlider.addEventListener('input', () => {
+    speed = parseFloat(speedSlider.value);
+    speedVal.textContent = speed.toFixed(2) + '×';
+  });
+  resetBtn.addEventListener('click', () => {
+    thetaA = 0;
+    thetaB = 0;
+    elapsed = 0;
+    traceA.length = 0;
+    traceB.length = 0;
+    phaseDots.length = 0;
+  });
+
+  p.setup = () => {
+    const canvas = p.createCanvas(W, H);
+    canvas.parent('sketch');
+    p.frameRate(60);
+    lastTime = p.millis() / 1000;
+  };
+
+  p.draw = () => {
+    const now = p.millis() / 1000;
+    const dtReal = Math.min(now - lastTime, 0.05);
+    lastTime = now;
+    const dt = dtReal * speed;
+    elapsed += dt;
+
+    const omegaA = TWO_PI_LOCAL * F_A;
+    const omegaB = TWO_PI_LOCAL * F_B;
+    const dThetaA = omegaA + K * Math.sin(thetaB - thetaA);
+    const dThetaB = omegaB + K * Math.sin(thetaA - thetaB);
+    thetaA += dThetaA * dt;
+    thetaB += dThetaB * dt;
+
+    traceA.push({ t: elapsed, y: Math.sin(thetaA) });
+    traceB.push({ t: elapsed, y: Math.sin(thetaB) });
+    const cutoff = elapsed - WINDOW_SEC;
+    while (traceA.length && traceA[0].t < cutoff) traceA.shift();
+    while (traceB.length && traceB[0].t < cutoff) traceB.shift();
+
+    const dPhi = ((thetaB - thetaA + Math.PI) % TWO_PI_LOCAL + TWO_PI_LOCAL) % TWO_PI_LOCAL - Math.PI;
+    const cx = (Math.cos(thetaA) + Math.cos(thetaB)) / 2;
+    const cy = (Math.sin(thetaA) + Math.sin(thetaB)) / 2;
+    const R = Math.sqrt(cx * cx + cy * cy);
+    phaseDots.push({ R, dThetaA, dThetaB });
+    if (phaseDots.length > ORDER_AVG_WINDOW) phaseDots.shift();
+    const Ravg = phaseDots.reduce((s, d) => s + d.R, 0) / phaseDots.length;
+    const feffA = (phaseDots.reduce((s, d) => s + d.dThetaA, 0) / phaseDots.length) / TWO_PI_LOCAL;
+    const feffB = (phaseDots.reduce((s, d) => s + d.dThetaB, 0) / phaseDots.length) / TWO_PI_LOCAL;
+
+    rOut.textContent = Ravg.toFixed(3);
+    dphiOut.textContent = (dPhi >= 0 ? ' ' : '') + dPhi.toFixed(3);
+    feffOut.textContent = feffA.toFixed(3) + ' / ' + feffB.toFixed(3);
+
+    drawScene(thetaA, thetaB);
+  };
+
+  function drawScene(tA, tB) {
+    p.background(COLOR_BG);
+
+    drawPhasor(A_X, TOP_Y, RADIUS, tA, COLOR_A, 'A : 1.00 Hz');
+    drawPhasor(B_X, TOP_Y, RADIUS, tB, COLOR_B, 'B : 1.07 Hz');
+
+    drawTraceAxes();
+    drawTrace(traceA, COLOR_A);
+    drawTrace(traceB, COLOR_B);
+
+    const sampleY_A = TRACE_MID_Y - TRACE_HALF_H * Math.sin(tA);
+    const sampleY_B = TRACE_MID_Y - TRACE_HALF_H * Math.sin(tB);
+    const tMin = Math.max(0, elapsed - WINDOW_SEC);
+    const tMax = Math.max(WINDOW_SEC, elapsed);
+    const sampleX = TRACE_LEFT + (TRACE_RIGHT - TRACE_LEFT) * (elapsed - tMin) / (tMax - tMin);
+
+    p.noFill();
+    p.stroke(COLOR_A);
+    p.drawingContext.setLineDash([4, 4]);
+    p.drawingContext.globalAlpha = 0.45;
+    const tipAx = A_X + RADIUS * Math.cos(tA);
+    const tipAy = TOP_Y - RADIUS * Math.sin(tA);
+    p.line(tipAx, tipAy, sampleX, sampleY_A);
+    p.stroke(COLOR_B);
+    const tipBx = B_X + RADIUS * Math.cos(tB);
+    const tipBy = TOP_Y - RADIUS * Math.sin(tB);
+    p.line(tipBx, tipBy, sampleX, sampleY_B);
+    p.drawingContext.setLineDash([]);
+    p.drawingContext.globalAlpha = 1.0;
+
+    p.noStroke();
+    p.fill(COLOR_A);
+    p.circle(sampleX, sampleY_A, 8);
+    p.fill(COLOR_B);
+    p.circle(sampleX, sampleY_B, 8);
+
+    drawKThresholdMarker();
+    drawOrderParameterDot(tA, tB);
+  }
+
+  function drawPhasor(cx, cy, r, theta, color, label) {
+    p.noFill();
+    p.stroke(COLOR_AXIS);
+    p.strokeWeight(1);
+    p.circle(cx, cy, r * 2);
+
+    p.stroke(color);
+    p.strokeWeight(3);
+    const tx = cx + r * Math.cos(theta);
+    const ty = cy - r * Math.sin(theta);
+    p.line(cx, cy, tx, ty);
+
+    p.noStroke();
+    p.fill(color);
+    p.circle(tx, ty, 9);
+    p.fill(COLOR_AXIS);
+    p.circle(cx, cy, 4);
+
+    p.fill(color);
+    p.textAlign(p.CENTER, p.TOP);
+    p.textSize(13);
+    p.text(label, cx, cy + r + 12);
+  }
+
+  function drawTraceAxes() {
+    p.stroke(COLOR_AXIS);
+    p.strokeWeight(1);
+    p.line(TRACE_LEFT, TRACE_MID_Y, TRACE_RIGHT, TRACE_MID_Y);
+    p.line(TRACE_LEFT, TRACE_MID_Y - TRACE_HALF_H, TRACE_LEFT, TRACE_MID_Y + TRACE_HALF_H);
+
+    p.fill(COLOR_AXIS);
+    p.noStroke();
+    p.textAlign(p.RIGHT, p.CENTER);
+    p.textSize(10);
+    p.text('+1', TRACE_LEFT - 6, TRACE_MID_Y - TRACE_HALF_H);
+    p.text(' 0', TRACE_LEFT - 6, TRACE_MID_Y);
+    p.text('−1', TRACE_LEFT - 6, TRACE_MID_Y + TRACE_HALF_H);
+
+    p.textAlign(p.RIGHT, p.TOP);
+    p.text('time →', TRACE_RIGHT, TRACE_MID_Y + TRACE_HALF_H + 8);
+  }
+
+  function drawTrace(samples, color) {
+    if (samples.length < 2) return;
+    const tMin = Math.max(0, elapsed - WINDOW_SEC);
+    const tMax = Math.max(WINDOW_SEC, elapsed);
+    p.noFill();
+    p.stroke(color);
+    p.strokeWeight(2);
+    p.beginShape();
+    for (const s of samples) {
+      const x = TRACE_LEFT + (TRACE_RIGHT - TRACE_LEFT) * (s.t - tMin) / (tMax - tMin);
+      const y = TRACE_MID_Y - TRACE_HALF_H * s.y;
+      p.vertex(x, y);
+    }
+    p.endShape();
+  }
+
+  function drawKThresholdMarker() {
+    const Kc = Math.PI * (F_B - F_A);
+    p.noStroke();
+    p.fill(COLOR_AXIS);
+    p.textAlign(p.LEFT, p.TOP);
+    p.textSize(11);
+    const status = K < Kc ? 'below threshold (drift)' :
+                   K < Kc * 1.6 ? 'near threshold (slow lock)' :
+                                  'above threshold (locked)';
+    p.text(`K = ${K.toFixed(3)}    Kc ≈ 0.220    ${status}`, TRACE_LEFT, TRACE_MID_Y + TRACE_HALF_H + 28);
+  }
+
+  function drawOrderParameterDot(tA, tB) {
+    const cx = (Math.cos(tA) + Math.cos(tB)) / 2;
+    const cy = (Math.sin(tA) + Math.sin(tB)) / 2;
+    const R = Math.sqrt(cx * cx + cy * cy);
+    const x0 = 540;
+    const y0 = TOP_Y;
+    const r = 38;
+    p.noFill();
+    p.stroke(COLOR_AXIS);
+    p.strokeWeight(1);
+    p.circle(x0, y0, r * 2);
+    p.fill(COLOR_AXIS);
+    p.noStroke();
+    p.textAlign(p.CENTER, p.TOP);
+    p.textSize(11);
+    p.text('order parameter', x0, y0 + r + 8);
+    p.text('R = ' + R.toFixed(3), x0, y0 + r + 22);
+
+    p.stroke(COLOR_INK);
+    p.strokeWeight(2);
+    const ex = x0 + r * cx;
+    const ey = y0 - r * cy;
+    p.line(x0, y0, ex, ey);
+    p.noStroke();
+    p.fill(COLOR_INK);
+    p.circle(ex, ey, 7);
+  }
+};
+
+new p5(sketch);
+</script>
+</body>
+</html>

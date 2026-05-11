@@ -3,10 +3,10 @@ type: specialist
 status: alive
 medium: sound
 tool: kokoro
-tool_version: 0.19.x
+tool_version: 0.9.4
 adopted: 2026-05-06
-last_tested:
-last_gotcha:
+last_tested: 2026-05-10
+last_gotcha: 2026-05-10
 license: Apache-2.0
 links:
   - { label: "wraps", target: "kokoro-tts (external)" }
@@ -55,14 +55,14 @@ The shop-floor narrator. Steady, unshowy, technically clean. Doesn't have opinio
 ## Tiers
 
 ### Sketch
-- Parameters: `voice=af_default`, no normalization, no post
-- Time: ~2s wall-clock per sentence on M-series CPU
-- Output: 16kHz mono, unnormalized
+- Parameters: `voice=af_heart`, no normalization, no post, optional 250ms inter-sentence silence
+- Time: ~25s wall-clock for ~36s of audio on M-series CPU (steady-state, after first-run model download)
+- Output: 24kHz mono, unnormalized
 - Use when: the Maker is decoding a brief and needs an audible draft, internal review only
 - Sacrifices: prosody quality, voice consistency at edges, narrator presence
 
 ### Study *(default)*
-- Parameters: `voice=af_bella`, EBU R128 normalize to −16 LUFS, 250ms inter-sentence pause
+- Parameters: `voice=af_bella` (verify before first job — voice catalog drifted from earlier Specialist version), EBU R128 normalize to −16 LUFS, 250ms inter-sentence pause
 - Time: ~5s wall-clock per sentence
 - Output: 24kHz mono, −16 LUFS integrated, −1 dBTP true peak
 - Use when: most working drafts, in-progress Loudon Live, embedded narration in Manim previews
@@ -125,21 +125,42 @@ Any miss appears in the standards report's `gotchas_hit` list and sets `status` 
 ## Resource Footprint
 
 - CPU: 1–2 cores, modest
-- RAM: ~500 MB resident
-- GPU: not required
-- Disk: ~150 MB for model weights (one-time), ~1 MB per minute of output
-- Network: none
+- RAM: ~500 MB resident (steady-state); ~2 GB during model load
+- GPU: not required (CPU path is fast enough at Sketch/Study); MPS-accelerated on Mac arm64 if torch detects it
+- Disk: ~330 MB on first run (Kokoro-82M weights via HF hub + `en_core_web_sm` spaCy model + torch wheel), ~3 MB per minute of 24 kHz mono output thereafter
+- Network: required on first run (HF model download + spaCy model download); subsequent runs offline
 - API keys: none
 
 Safe to run two Kokoro jobs in parallel on a typical laptop. Three pushes the bench.
 
+### Install (host capability)
+
+**macOS arm64 (canonical Loudon machine).** Per-Specialist venv on Python 3.12 (not 3.13 — see gotcha below):
+
+```sh
+python3.12 -m venv ~/.venvs/kokoro
+~/.venvs/kokoro/bin/pip install kokoro soundfile
+```
+
+Dispatch by calling the venv's Python directly: `~/.venvs/kokoro/bin/python <script>.py`. No system deps required beyond Python 3.12 from Homebrew.
+
+**First-run downloads** (~330 MB total): Kokoro-82M from `hexgrad/Kokoro-82M`, spaCy `en_core_web_sm` 3.8.0, torch 2.x wheel. Disk space is not a Sketch-tier concern but watch the first-run latency (~30–60 s of download before any audio renders).
+
 ## Gotchas
 
-*(Empty until first job.)*
+**2026-05-10 — Python 3.13 install fails on `blis`/spaCy compile.** Kokoro's transitive deps reach `spacy → thinc → blis`. On Python 3.13 the blis wheel build fails (clang errors during native compile). Python 3.12 has prebuilt wheels for the entire dependency tree. Use 3.12.
+
+**2026-05-10 — The Specialist's documented voice IDs were wrong.** Entry pre-2026-05-10 said `voice=af_default` for Sketch tier and `voice=af_bella` for Study. The published Kokoro voice catalog (as of `kokoro` 0.9.4) does not include `af_default`. The working defaults are `af_heart` (warm, default in the README), `af_bella`, `af_nicole`, etc. Sketch tier now defaults to `af_heart`. Study tier `af_bella` confirmed to exist but not yet tested.
+
+**2026-05-10 — Output sample rate is 24 kHz, not configurable below.** Kokoro 0.9.4 renders natively at 24 kHz mono. The Specialist entry's Sketch tier originally said 16 kHz — that would have required a downsample post-step that costs more than it earns at Sketch tier. Aligned the spec to the natural output. If 16 kHz is genuinely needed for a video-sync downstream, do it via `ffmpeg -ar 16000` in the Maker's delivery pipeline rather than inside Kokoro.
+
+**2026-05-10 — API surface is `KPipeline`, not a CLI.** Kokoro 0.9.4 exposes a Python `KPipeline(lang_code='a')(text, voice=..., speed=...)` generator yielding `(graphemes, phonemes, audio)` per chunk. The Specialist entry's Job Contract implies a CLI dispatch; in reality the Maker dispatches a small Python script that imports `KPipeline`. Concatenate the per-chunk audio (with optional inter-sentence silence) before writing the WAV.
+
+**2026-05-10 — Audio is `numpy.ndarray | torch.Tensor` depending on version.** Some Kokoro versions yield numpy arrays directly; others yield torch tensors. Defensive: `audio.detach().cpu().numpy() if hasattr(audio, 'detach') else np.asarray(audio)`. See `speech-rhythm-and-groove-narration.py` for the working pattern.
 
 ## Recipes
 
-Links to working examples in `Artifacts/Shop/Kokoro/recipes/` once they exist.
+**2026-05-10 — Speech rhythm and groove narration** (Sketch tier, 24 kHz mono, ~36 s). The first Kokoro job. Reads the *speech rhythm and groove coupling* paragraph from [[Kuramoto Coupling]] with voice `af_heart` at default speed. No phoneme overrides (Sketch tier). Word "Kuramoto" pronounced fluently without override. Source: [Kuramoto Coupling/speech-rhythm-and-groove-narration.py](../Kuramoto Coupling/speech-rhythm-and-groove-narration.py). Output: [Kuramoto Coupling/speech-rhythm-and-groove-narration.wav](../Kuramoto Coupling/speech-rhythm-and-groove-narration.wav). Render time on M-series + Python 3.12: ~25 s wall-clock for ~36 s of audio (first-run total includes ~30 s of model downloads).
 
 ## Test Suite
 

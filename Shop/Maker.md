@@ -2,7 +2,7 @@
 type: maker
 status: alive
 adopted: 2026-05-06
-last_tested:
+last_tested: 2026-05-10
 links:
   - { label: "directs", target: "Shop/Kokoro" }
   - { label: "directs", target: "Shop/Midjourney" }
@@ -153,7 +153,9 @@ More to come as briefs reveal need: Plotly, Graphviz, Three.js, HTML/React Artif
 
 Whole-brief examples and how they were resolved. Each one is a teaching example for future intakes.
 
-*(Empty until first finished job.)*
+**2026-05-10 — Kuramoto Coupling Sketch arc, Round 1.** Three-step pedagogical brief: (1) two phasors uncoupled, (2) interactive coupling explorer with K slider, (3) narration of the speech-rhythm/groove paragraph. Routing: Manim CE for the static motion (math content → Manim), p5.js for the interactive (parameter explorer → p5.js), Kokoro for narration (Kokoro default). Sketch tier across the board (calibration round). Comparison-Mode wedge: Step 1's Cowork-era Matplotlib fallback retained alongside the canonical Manim render. House taste decisions: indigo / amber palette (`#6366F1` / `#F59E0B`), dark background `#0B0B10`, close-but-detectable frequencies (1.00 / 1.07 Hz), descriptive flat-bundle filenames. Bundle: [Kuramoto Coupling/](../Kuramoto Coupling/).
+
+Future recipes added as briefs finish.
 
 ## Test Suite
 
@@ -163,7 +165,9 @@ Last run: never.
 
 ## Gotchas
 
-*(Empty.)*
+**2026-05-10 — No host-capability check before dispatch.** During Round 1 (Kuramoto Sketch arc), Cowork's Linux arm64 sandbox could not host Manim (`manimpango` had no aarch64 wheel and required sudo for `libpangocairo-dev`). The brief was decoded, the Specialist was selected, and the dispatch only failed at install time — wasted intake work. The Job Contract intake should run a `host_capability_check` step that confirms each Specialist's wrapped tool is reachable on the dispatching host before any Specialist runs. Per-medium fallback Specialists (e.g., Manim CE → Matplotlib for sandboxed Linux, Kokoro → Loudon's voice recording for offline Mac) make the check actionable.
+
+**2026-05-10 — "Sketch" tier under host failure is genuinely useful.** The Cowork sandbox forced a Matplotlib fallback of the two-phasors-uncoupled Sketch. The result was substantively different from the canonical Manim render — different typography, different stroke weight, higher pixel resolution. Loudon's call was to keep both as a Comparison-Mode artifact rather than discard the fallback. Lesson: when a host capability check fails and a fallback Specialist produces the work, do not auto-archive the fallback once the canonical Specialist is later available — surface both and let the brief author decide.
 
 ## Open Questions
 
