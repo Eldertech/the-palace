@@ -6,7 +6,7 @@ pillars:
   - philosophy
   - creation
 born: 2026-04
-stage: seed
+stage: sprout
 energy: high
 hook_quality: 9
 beauty: 8

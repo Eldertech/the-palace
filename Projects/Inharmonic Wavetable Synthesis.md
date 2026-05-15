@@ -38,13 +38,13 @@ links:
     type: connects-to
   - target: "[[Wavetable Synthesis -- Research & Higher-Dimensional Design]]"
     type: deepens
+    label: cube-emergence
   - target: "[[Kuramoto Coupling]]"
     type: enables
     label: bifurcation-control
   - target: "[[Crystal Synthesizer]]"
     type: mirrors
     label: phonon-vs-harmonic
-    label: cube-emergence
   - target: "[[Wavetable Space as Torus]]"
     type: connects-to
     label: topological-reframe
