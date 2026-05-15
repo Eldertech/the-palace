@@ -6,7 +6,7 @@ pillars:
   - practice
   - philosophy
 born: 2026-03
-version: "1.3"
+version: "1.7"
 stage: foundational
 status: canonical
 links:
@@ -220,7 +220,7 @@ All four sub-fields are optional within the object — include only the dimensio
 
 ### 3.2 The `specialist` and `maker` Types
 
-**Schema Ceremony rationale (2026-05-09, v1.3):** [[The Shop]] introduced an operational pattern that the existing type vocabulary could not carry without distortion. Every creative tool wrapped as its own palace entry — Charter, Voice, Tiers (Sketch / Study / Piece), Job Contract, Iteration Character, Self-Check, Resource Footprint, accumulated Gotchas, Recipes, Test Suite — and a single foreman entry above them holding house standards and dispatch logic. The pre-deposit conversations used `type: specialist` and `type: maker` informally; this ceremony formalizes them.
+**Schema Ceremony rationale (2026-05-09, v1.6):** [[The Shop]] introduced an operational pattern that the existing type vocabulary could not carry without distortion. Every creative tool wrapped as its own palace entry — Charter, Voice, Tiers (Sketch / Study / Piece), Job Contract, Iteration Character, Self-Check, Resource Footprint, accumulated Gotchas, Recipes, Test Suite — and a single foreman entry above them holding house standards and dispatch logic. The pre-deposit conversations used `type: specialist` and `type: maker` informally; this ceremony formalizes them.
 
 **Why not reuse `practice`?** A practice is a method-as-it-is-done — *the depth-over-coverage discipline*, *the review-before-write rule*. A Specialist binds to a versioned external tool, exposes a typed Job Contract for dispatch, accounts for resources (CPU/GPU/license/credits), and accumulates gotchas across jobs. The Specialist is operational machinery, not just a way of working. Forcing Specialists into `practice` would erode both types — practices would dilute into "anything we do" and Specialists would lose the operational anatomy that makes them useful.
 
@@ -230,9 +230,9 @@ All four sub-fields are optional within the object — include only the dimensio
 
 **The `pillars` exception.** Both types are tool-citizens. The Four Pillars (creation, tools, philosophy, practice) describe types of human activity. Auto-tagging every Specialist `[tools]` would be uninformative — the field would carry no signal beyond what `type: specialist` already carries. The exception keeps `pillars` meaningful where it appears and absent where its presence would be noise. A Specialist *may* declare pillars when it genuinely participates in another (e.g. a teaching-tool Specialist whose practice has matured into pedagogy).
 
-**The `stage` exception.** Concepts go from seed to mature; questions either become concepts or compost; spores wait dormant. Specialists and Makers don't follow that lifecycle — they are operational entities that are either alive (in active use, accumulating gotchas) or stub (entry exists, awaiting first job). The `status: alive | stub` field carries the same signal more accurately than the seed→fruiting stages would. Specialists may eventually deprecate (the wrapped tool dies, the Maker stops dispatching to them); deprecation is recorded with `status: deprecated` if the need arises (not part of v1.2; add when first encountered).
+**The `stage` exception.** Concepts go from seed to mature; questions either become concepts or compost; spores wait dormant. Specialists and Makers don't follow that lifecycle — they are operational entities that are either alive (in active use, accumulating gotchas) or stub (entry exists, awaiting first job). The `status: alive | stub` field carries the same signal more accurately than the seed→fruiting stages would. Specialists may eventually deprecate (the wrapped tool dies, the Maker stops dispatching to them); deprecation is recorded with `status: deprecated` if the need arises (not part of v1.6; add when first encountered).
 
-**Validation:** As of this ceremony, 14 specialist entries and 1 maker entry exist in `Shop/`. All were schema-violating before v1.2; all validate after. No existing entries of other types are affected. No link types are added or changed. The change is strictly additive.
+**Validation:** As of this ceremony, 14 specialist entries and 1 maker entry exist in `Shop/`. All were schema-violating before v1.6; all validate after. No existing entries of other types are affected. No link types are added or changed. The change is strictly additive.
 
 **Forward vector:** Watch how the Shop's Roster grows. If a second sub-system (Studio, Library, Lab) emerges with its own foreman, the `maker` type's plurality is exercised and the schema's reach is confirmed. If the Specialist anatomy starts being applied to non-creative-tool domains (e.g. a "Knowledge Specialist" wrapping a search tool), revisit whether the type's binding to external creative tools needs loosening or whether a sibling type is warranted.
 

@@ -1,5 +1,5 @@
 ---
-title: Wu Wei — Water as Pedagogical Architecture
+title: Like Water
 type: concept
 pillars:
   - philosophy

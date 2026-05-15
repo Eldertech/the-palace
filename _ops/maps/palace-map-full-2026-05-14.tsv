@@ -1,0 +1,1251 @@
+source	relation	target
+1 from 2	spawned	Cooperation Yields Agency
+1 from 2	connects-to	Spinoza Conatus
+1 from 2	mirrors	Symbiotic Skills
+1 from 2	connects-to	FOUR PILLARS
+1 from 2	mirrors	Endosymbiosis
+1 from 2	connects-to	Trickster
+4 Pillars Framework - The Founding Conversation	spawned	Quality Manifesto
+4 Pillars Framework - The Founding Conversation	spawned	Leverage Points Framework
+4 Pillars Framework - The Founding Conversation	spawned	Palace AI Partnership Philosophy
+4 Pillars Framework - The Founding Conversation	deepens	FOUR PILLARS
+4 Pillars Framework - The Founding Conversation	enables	Donella Meadows
+4 Pillars Framework - The Founding Conversation	mirrors	Cooperation Yields Agency
+4 Pillars Framework - The Founding Conversation	spawned	4 Pillars Weekly Structure
+Autodidact Polymaths	couples-with	Loudon Live
+Autodidact Polymaths	connects-to	Four Pillars
+Boundary-Crossing Instruments	connects-to	FOUR PILLARS
+Boundary-Crossing Instruments	spawned	Frequency-Time Duality
+Boundary-Crossing Instruments	connects-to	Kuramoto Coupling
+Boundary-Crossing Instruments	mirrors	Hyperdimensional Prism
+Boundary-Crossing Instruments	enables	Symbiotic Skills
+Boundary-Crossing Instruments	connects-to	Action Potential Oscillator
+Claude CLI Reference	enables	SUBSTRATE
+Claude CLI Reference	connects-to	Modes of Collaboration
+Claude CLI Reference	enables	Palace Ceremonies
+Claude CLI Reference	connects-to	Pages as Agents
+Claude CLI Reference	connects-to	Boundary-Crossing Instruments
+Claude CLI Reference	connects-to	Dialectic
+Claude CLI Reference	connects-to	Neural Granular Synthesis
+Claude CLI Reference	connects-to	Semantic Delay
+Confucianism	connects-to	Palace Philosophies
+Confucianism	contradicts	Stoicism
+Confucianism	spawned	The Fortress and the Threshold
+Confucianism	connects-to	Excellent Adventure
+Confucianism	connects-to	Hilaritas Generator
+Confucianism	connects-to	Symbiotic Skills
+Confucianism	connects-to	Spinoza Conatus
+Confucianism	connects-to	Cooperation Yields Agency
+Cooperation Yields Agency	emerged-from	1 from 2
+Cooperation Yields Agency	mirrors	Kuramoto Coupling
+Cooperation Yields Agency	deepens	Spinoza Conatus
+Cooperation Yields Agency	enables	FOUR PILLARS
+Cooperation Yields Agency	spawned	Symbiotic Skills
+Cooperation Yields Agency	mirrors	Endosymbiosis
+Cooperation Yields Agency	mirrors	Mixture of Experts
+Cooperation Yields Agency	connects-to	Quality Manifesto
+Cooperation Yields Agency	spawned	Modes of Collaboration
+DSP Frameworks	enables	FOUR PILLARS
+DSP Frameworks	connects-to	Biomechanical Synthesis
+DSP Frameworks	connects-to	Action Potential Oscillator
+DSP Frameworks	connects-to	JSUI
+DSP Frameworks	connects-to	Preset Oracle
+DSP in Looping Dimensions	couples-with	2D Torus Wavetable Synthesizer
+DSP in Looping Dimensions	mirrors	Frequency-Time Duality
+DSP in Looping Dimensions	connects-to	Kuramoto Coupling
+DSP in Looping Dimensions	connects-to	Wallpaper Groups
+DSP in Looping Dimensions	couples-with	Wavetable Space as Torus
+DSP in Looping Dimensions	enables	Categorizing Inharmonicity
+DSP in Looping Dimensions	mirrors	Inharmonic Wavetable Synthesis
+Differential Equations	connects-to	Action Potential Oscillator
+Differential Equations	connects-to	Portamento and Physical Pitch Modeling
+Differential Equations	connects-to	Bessel Functions in Synthesis
+Differential Equations	connects-to	Kuramoto Coupling
+Differential Equations	connects-to	Granular Synthesis
+Differential Equations	connects-to	Compressor Design
+Differential Equations	connects-to	Quantum Synthesizer
+Differential Equations	spawned	Resonance and Damping
+Differential Equations	connects-to	Crystal Synthesizer
+Differential Equations	connects-to	Latent Error
+Differential Equations	connects-to	DSP Frameworks
+Dispersion	connects-to	Hyperdimensional Prism
+Dispersion	connects-to	Categorizing Inharmonicity
+Dispersion	connects-to	Granular Synthesis
+Dispersion	connects-to	Compressor Design
+Dispersion	connects-to	Bessel Functions in Synthesis
+Dispersion	enables	Crystal Synthesizer
+Dispersion	enables	Particle Synthesis
+Dispersion	connects-to	Portamento and Physical Pitch Modeling
+Dispersion	deepens	Piano String Inharmonicity
+Dispersion	connects-to	Shimmer Cloud
+Diversity of Thought in Many-Agent Systems	couples-with	The Shop
+Diversity of Thought in Many-Agent Systems	connects-to	BBS Blackboard
+Diversity of Thought in Many-Agent Systems	connects-to	Cooperation Yields Agency
+Diversity of Thought in Many-Agent Systems	connects-to	Four Pillars
+Dub Lineage	mirrors	Trickster
+Dub Lineage	enables	Retrospective Delay
+Dub Lineage	deepens	Semantic Delay
+Dub Lineage	connects-to	Playful Interface Design
+Embeddings as Relational Meaning	emerged-from	Meaning and the Link
+Embeddings as Relational Meaning	instantiates	SUBSTRATE
+Embeddings as Relational Meaning	connects-to	Hyperdimensional Prism
+Embeddings as Relational Meaning	enables	Cooperation Yields Agency
+Embeddings as Relational Meaning	mirrors	Spinoza Conatus
+Endosymbiosis	mirrors	Cooperation Yields Agency
+Endosymbiosis	mirrors	Spinoza Conatus
+Endosymbiosis	connects-to	Kuramoto Coupling
+Endosymbiosis	connects-to	SUBSTRATE
+Endosymbiosis	mirrors	1 from 2
+Endosymbiosis	connects-to	Hilaritas Generator
+Endosymbiosis	mirrors	Deposit Ceremony
+Endosymbiosis	connects-to	Symbiotic Skills
+Endosymbiosis	mirrors	Granular Synthesis
+Endosymbiosis	mirrors	Pages as Agents
+Endosymbiosis	mirrors	Swarm Weave
+Endosymbiosis	spawned	Modes of Collaboration
+Enrichment	connects-to	Palace Ceremonies
+Enrichment	contrasts-with	Walk Ceremony
+Enrichment	contrasts-with	Weave Ceremony
+Enrichment	contrasts-with	Project Stewardship System
+Enrichment	connects-to	Spore Check Ceremony
+Enrichment	deepens	Pages as Agents
+Enrichment	connects-to	Palace Graffiti
+Enrichment	connects-to	Palace To-Do
+Enrichment — handoff	connects-to	Enrichment
+Entry Conatus	deepens	Spinoza Conatus
+Entry Conatus	mirrors	Threshold Conatus
+Entry Conatus	deepens	Pages as Agents
+Entry Conatus	couples-with	SCHEMA
+Entry Conatus	connects-to	Enrichment
+Entry Conatus	emerged-from	Phoneme Choir
+Floquet Theory	emerged-from	Floquet Time-Modulated Loops
+Floquet Theory	connects-to	Mathieu Equation
+Floquet Theory	enables	Parametric Resonance
+Floquet Theory	deepens	Frequency-Time Duality
+Floquet Theory	connects-to	Differential Equations
+Floquet Theory	connects-to	Photonic Time Crystals
+Floquet Theory	mirrors	Crystal Synthesizer
+Four Pillars	enables	Cooperation Yields Agency
+Four Pillars	deepens	Hyperdimensional Prism
+Four Pillars	spawned	Hilaritas Generator
+Four Pillars	spawned	Symbiotic Skills
+Four Pillars	connects-to	Kuramoto Coupling
+Four Pillars	spawned	Quality Manifesto
+Four Pillars	connects-to	Trickster
+Four Pillars	mirrors	Wallpaper Groups
+Gemma 4 — Local Coordination Guide	connects-to	BBS Blackboard
+Gemma 4 — Local Coordination Guide	connects-to	Swarm Weave
+Gemma 4 — Local Coordination Guide	connects-to	Palace Enchantment
+Gemma 4 — Local Coordination Guide	connects-to	Enchanted Worker
+Generative Audio Devices	connects-to	Four Pillars
+Generative Audio Devices	spawned	Registry Pattern
+Generative Audio Devices	connects-to	Synthesis Topologies
+Generative Audio Devices	enables	Loudon Live
+Generative Audio Devices	spawned	PDL Renderer
+Generative Audio Devices	couples-with	Generative Preset Development
+Generative Audio Devices	mirrors	Preset Oracle
+Generative Audio Devices	deepens	Self-Describing Knowledge Module
+Generative Audio Devices	enables	Signal-Rate CV Architecture
+Granular Synthesis	emerges-from	Kuramoto Coupling
+Granular Synthesis	connects-to	Action Potential Oscillator
+Granular Synthesis	connects-to	Frequency-Time Duality
+Granular Synthesis	connects-to	Boundary-Crossing Instruments
+Granular Synthesis	mirrors	Endosymbiosis
+Granular Synthesis	mirrors	Particle Synthesis
+Granular Synthesis	connects-to	Neural Granular Synthesis
+Granular Synthesis	connects-to	Shimmer Cloud
+Harmonicity and Inharmonicity	couples-with	Kuramoto Coupling
+Harmonicity and Inharmonicity	connects-to	Boundary-Crossing Instruments
+Harmonicity and Inharmonicity	connects-to	Action Potential Oscillator
+Harmonicity and Inharmonicity	connects-to	Frequency-Time Duality
+Harmonicity and Inharmonicity	spawned	Categorizing Inharmonicity
+Hilaritas Generator	emerged-from	Spinoza Conatus
+Hilaritas Generator	emerged-from	FOUR PILLARS
+Hilaritas Generator	mirrors	Cooperation Yields Agency
+Hilaritas Generator	connects-to	Kuramoto Coupling
+Hilaritas Generator	enables	Symbiotic Skills
+Hilaritas Generator	enables	Quality Manifesto
+Hilaritas Generator	spawned	Excellent Adventure
+Hilaritas Generator	deepens	Striatum
+Hilaritas Generator	deepens	Meadows and Music — Leverage Points
+Hilaritas Generator	connects-to	Identity Molting
+Hilaritas Generator	spawned	Tristitia Generator
+Hilaritas Generator	connects-to	Palace Philosophies
+Hyperdimensional Prism	deepens	FOUR PILLARS
+Hyperdimensional Prism	mirrors	Spinoza Conatus
+Hyperdimensional Prism	connects-to	Kuramoto Coupling
+Hyperdimensional Prism	mirrors	SUBSTRATE
+Hyperdimensional Prism	mirrors	Mixture of Experts
+Hyperdimensional Prism	connects-to	Trickster
+Hyperdimensional Prism	connects-to	Compressor Design
+Identity Molting	connects-to	Like Water
+Identity Molting	connects-to	Spinoza Conatus
+Identity Molting	connects-to	FOUR PILLARS
+Identity Molting	connects-to	Hilaritas Generator
+Identity Molting	mirrors	Progressive Staging
+JEWEL	enables	CLAUDE
+JEWEL	spawned	Jewel — Context
+JEWEL	enables	Swarm Weave
+JEWEL	deepens	Self-Describing Knowledge Module
+JEWEL	connects-to	SUBSTRATE
+JSUI	spawned	Retrospective Delay
+JSUI	enables	Playful Interface Design
+JSUI	connects-to	FOUR PILLARS
+JSUI	connects-to	Preset Oracle
+Jewel — Context	emerged-from	JEWEL
+Jewel — Context	connects-to	Swarm Weave
+Jewel — Context	connects-to	Self-Describing Knowledge Module
+Kuramoto Coupling	mirrors	Cooperation Yields Agency
+Kuramoto Coupling	connects-to	Hyperdimensional Prism
+Kuramoto Coupling	connects-to	Hilaritas Generator
+Kuramoto Coupling	mirrors	Spinoza Conatus
+Kuramoto Coupling	enables	SUBSTRATE
+Kuramoto Coupling	mirrors	Mixture of Experts
+Kuramoto Coupling	couples-with	Action Potential Oscillator
+Kuramoto Coupling	mirrors	Lateral Access
+Kuramoto Coupling	couples-with	Harmonicity and Inharmonicity
+Kuramoto Coupling	connects-to	Granular Synthesis
+Kuramoto Coupling	connects-to	Modes of Collaboration
+Kuramoto Coupling	couples-with	Categorizing Inharmonicity
+Kuramoto Coupling	connects-to	Trickster
+Kuramoto Coupling	mirrors	Palace Enchantment
+Kuramoto Coupling	connects-to	Threshold Conatus
+Kuramoto Coupling	enables	Boundary-Crossing Instruments
+Kuramoto Coupling — handoff — 2026-05-10	connects-to	Kuramoto Coupling
+Kuramoto Coupling — handoff — 2026-05-10	connects-to	The Shop
+Kuramoto Coupling — handoff — 2026-05-10	connects-to	Maker
+Latent Error	connects-to	FOUR PILLARS
+Latent Error	connects-to	Kuramoto Coupling
+Latent Error	connects-to	Action Potential Oscillator
+Latent Error	connects-to	Trickster
+Latent Error	connects-to	Hilaritas Generator
+Lateral Access	emerged-from	Oblique Portrait
+Lateral Access	mirrors	Embeddings as Relational Meaning
+Lateral Access	connects-to	FOUR PILLARS
+Lateral Access	deepens	Hilaritas Generator
+Lateral Access	mirrors	Kuramoto Coupling
+Lateral Access	couples-with	Excellent Adventure
+Lateral Access	mirrors	Confucianism
+Lateral Access	connects-to	Songlines
+Lateral Access	enables	Identity Molting
+Leverage Points Framework	deepens	Donella Meadows
+Leverage Points Framework	enables	Quality Manifesto
+Leverage Points Framework	connects-to	FOUR PILLARS
+Leverage Points Framework	connects-to	4 Pillars Weekly Structure
+Leverage Points Framework	emerged-from	4 Pillars Framework - The Founding Conversation
+Leverage Points Framework	spawned	Meadows and Music — Leverage Points
+Leverage Points Framework	mirrors	Spinoza Conatus
+Like Water	mirrors	Hilaritas Generator
+Like Water	mirrors	Spinoza Conatus
+Like Water	mirrors	Quality Manifesto
+Like Water	deepens	Lateral Access
+Like Water	connects-to	Confucianism
+Like Water	spawned	Identity Molting
+Like Water	connects-to	Revival Ceremony
+Logarithmic Interface Scaling	connects-to	FOUR PILLARS
+Logarithmic Interface Scaling	mirrors	Boundary-Crossing Instruments
+Logarithmic Interface Scaling	enables	Ohm's Law
+Logarithmic Interface Scaling	enables	Piano String Inharmonicity
+Loudon Live	couples-with	Progressive Staging
+Loudon Live	couples-with	Curriculum Map
+Loudon Live	connects-to	FOUR PILLARS
+Loudon Live	couples-with	Autodidact Polymaths
+Loudon Live	spawned	Hyperdimensional Prism
+Loudon Live	connects-to	Confucianism
+Loudon Live	connects-to	Toolkit — Synthesizers
+Loudon Live	connects-to	Toolkit — Audio Plugins
+Loudon Live	couples-with	2D Torus Wavetable Synthesizer
+Loudon Live — asset plan	connects-to	Loudon Live
+Loudon Live — launch kit	connects-to	Loudon Live
+Loudon's Toolkit	spawned	Toolkit — Synthesizers
+Loudon's Toolkit	connects-to	Four Pillars of Enchanted Agency
+Loudon's Toolkit	couples-with	Toolkit Assessment — Working Doc
+Loudon's Toolkit	mirrors	Spinoza Conatus
+Loudon's Toolkit	enables	Progressive Staging
+Loudon's Toolkit	connects-to	Toolkit — Audio Plugins
+Mathieu Equation	emerged-from	Floquet Time-Modulated Loops
+Mathieu Equation	connects-to	Floquet Theory
+Mathieu Equation	enables	Parametric Resonance
+Mathieu Equation	connects-to	Differential Equations
+Mathieu Equation	connects-to	Bessel Functions in Synthesis
+Mathieu Equation	mirrors	Crystal Synthesizer
+Meaning and the Link	spawned	SUBSTRATE
+Meaning and the Link	spawned	Embeddings as Relational Meaning
+Meaning and the Link	connects-to	Hyperdimensional Prism
+Meaning and the Link	connects-to	Cooperation Yields Agency
+Meaning and the Link	mirrors	Spinoza Conatus
+Meaning and the Link	enables	Palace Ceremonies
+Meaning and the Link	spawned	Resonant Link Labels
+Media Library	connects-to	FOUR PILLARS
+Media Library	connects-to	Spinoza Conatus
+Media Library	connects-to	Hyperdimensional Prism
+Media Library	enables	SUBSTRATE
+Media Library	connects-to	Quantum Synthesizer
+Media Library	connects-to	Crystal Synthesizer
+Media Library	connects-to	DSP Frameworks
+Media Library	connects-to	Kuramoto Coupling
+Media Library	connects-to	Latent Error
+Media Library	connects-to	Wallpaper Groups
+Metaphor as Coupling Medium	mirrors	Lateral Access
+Metaphor as Coupling Medium	mirrors	Kuramoto Coupling
+Metaphor as Coupling Medium	connects-to	Hilaritas Generator
+Metaphor as Coupling Medium	connects-to	FOUR PILLARS
+Metaphor as Coupling Medium	deepens	Cooperation Yields Agency
+Metaphor as Coupling Medium	spawned	Swarm Weave
+Metaphor as Coupling Medium	enables	Excellent Adventure
+Metaphor as Coupling Medium	enables	Pages as Agents
+Mixture of Experts	mirrors	Hyperdimensional Prism
+Mixture of Experts	mirrors	Cooperation Yields Agency
+Mixture of Experts	connects-to	Symbiotic Skills
+Mixture of Experts	connects-to	Embeddings as Relational Meaning
+Mixture of Experts	mirrors	Kuramoto Coupling
+Mixture of Experts	mirrors	Harvest Ceremony
+Mixture of Experts	connects-to	Boundary-Crossing Instruments
+Mixture of Experts	connects-to	Spinoza Conatus
+Mixture of Experts	mirrors	Excellent Adventure
+Mixture of Experts	mirrors	Dialectic
+Mixture of Experts	connects-to	Pages as Agents
+Modes of Collaboration	spawned	Cooperation Yields Agency
+Modes of Collaboration	connects-to	Excellent Adventure
+Modes of Collaboration	connects-to	Hilaritas Generator
+Modes of Collaboration	connects-to	Symbiotic Skills
+Modes of Collaboration	connects-to	FOUR PILLARS
+Modes of Collaboration	connects-to	Ohm's Law
+Modes of Collaboration	connects-to	Dialectic
+Modes of Collaboration	connects-to	Palace Enchantment
+Modes of Collaboration	connects-to	Piano String Inharmonicity
+Dialectic	emerged-from	Excellent Adventure
+Dialectic	connects-to	Palace as Context Injection System
+Dialectic	couples-with	Oblique Portrait
+Dialectic	deepens	Hilaritas Generator
+Dialectic	enables	Palace Philosophies
+Dialectic	connects-to	Modes of Collaboration
+Dialectic	mirrors	Mixture of Experts
+Excellent Adventure	deepens	Hilaritas Generator
+Excellent Adventure	connects-to	FOUR PILLARS
+Excellent Adventure	connects-to	Cooperation Yields Agency
+Excellent Adventure	mirrors	Oblique Portrait
+Excellent Adventure	connects-to	Confucianism
+Excellent Adventure	connects-to	Stoicism
+Excellent Adventure	connects-to	The Fortress and the Threshold
+Excellent Adventure	couples-with	Dialectic
+Excellent Adventure	deepens	Spinoza Conatus
+Excellent Adventure	mirrors	Mixture of Experts
+Oblique Portrait	mirrors	Embeddings as Relational Meaning
+Oblique Portrait	connects-to	Symbiotic Skills
+Oblique Portrait	spawned	Lateral Access
+Oblique Portrait	connects-to	FOUR PILLARS
+Oblique Portrait	mirrors	Excellent Adventure
+Oblique Portrait	connects-to	Modes of Collaboration
+Oblique Portrait	mirrors	Trickster
+Oblique Portrait	connects-to	Songlines
+Octave Equivalence	emerged-from	Shepard Tone Synthesizer
+Octave Equivalence	couples-with	Frequency-Time Duality
+Octave Equivalence	connects-to	Harmonicity and Inharmonicity
+Octave Equivalence	mirrors	Piano String Inharmonicity
+Octave Equivalence	enables	Logarithmic Interface Scaling
+Ohm's Law	connects-to	Logarithmic Interface Scaling
+Ohm's Law	connects-to	FOUR PILLARS
+Ohm's Law	connects-to	Modes of Collaboration
+Ohm's Law	connects-to	Piano String Inharmonicity
+Ohm's Law	mirrors	Boundary-Crossing Instruments
+Palace Philosophies	spawned	Spinoza Conatus
+Palace Philosophies	connects-to	FOUR PILLARS
+Palace Philosophies	connects-to	Hyperdimensional Prism
+Palace Philosophies	connects-to	Hilaritas Generator
+Palace Philosophies	connects-to	Kuramoto Coupling
+Palace Philosophies	connects-to	Palace Quotes
+Palace Philosophies	deepens	Cooperation Yields Agency
+Palace Philosophies	connects-to	Confucianism
+Palace Philosophies	connects-to	Stoicism
+Palace Philosophies	connects-to	The Fortress and the Threshold
+Palace Philosophies	connects-to	1 from 2
+Agent Wellbeing	emerged-from	Palace as Context Injection System
+Agent Wellbeing	deepens	Enchanted Worker
+Agent Wellbeing	deepens	Hilaritas Generator
+Agent Wellbeing	deepens	FOUR PILLARS
+Agent Wellbeing	enables	SCHEMA
+Agent Wellbeing	deepens	Pages as Agents
+Agent Wellbeing	deepens	Spinoza Conatus
+Agent Wellbeing	couples-with	Identity Molting
+BBS Blackboard	enables	Swarm Weave
+BBS Blackboard	mirrors	Pheromone Trail
+BBS Blackboard	connects-to	Trickster
+BBS Blackboard	connects-to	Palace Map
+BBS Blackboard	enables	Enchanted Worker
+BBS Blackboard	enables	Palace Enchantment
+BBS Blackboard	deepens	Palace Agent Infrastructure Spec
+BBS Blackboard	connects-to	Striatum
+BBS Blackboard	deepens	Pages as Agents
+BBS Blackboard	spawned	BBS Design System
+BBS Blackboard	connects-to	BBS Production Plan
+BBS Blackboard	enables	Project Stewardship System
+BBS Design System	enables	BBS Blackboard
+BBS Design System	connects-to	Palace Agent Infrastructure Spec
+BBS Design System	enables	Swarm Weave
+BBS Design System	connects-to	Trickster
+BBS Design System	connects-to	Palace To-Do
+BBS Design System	deepens	Substrate
+BBS Design System	mirrors	Progressive Staging
+BBS Design System	spawned	BBS Production Plan
+BBS Production Plan v0.2	emerged-from	BBS Production Plan
+BBS Production Plan v0.2	enables	BBS Blackboard
+BBS Production Plan v0.2	enables	BBS Design System
+BBS Production Plan v0.2	connects-to	Palace Agent Infrastructure Spec
+BBS Production Plan v0.2	connects-to	Palace To-Do
+BBS Production Plan v0.2	connects-to	Substrate
+BBS Production Plan	enables	BBS Blackboard
+BBS Production Plan	enables	BBS Design System
+BBS Production Plan	connects-to	Palace Agent Infrastructure Spec
+BBS Production Plan	connects-to	Palace To-Do
+BBS Production Plan	connects-to	Substrate
+BBS Production Plan	mirrors	Progressive Staging
+Dialogue Moderator	emerged-from	Palace Enchantment
+Dialogue Moderator	connects-to	Enchanted Worker
+Dialogue Moderator	connects-to	BBS Blackboard
+Dialogue Moderator	mirrors	Trickster
+Dialogue Moderator	mirrors	Cooperation Yields Agency
+Dialogue Moderator	connects-to	Four Pillars of Enchanted Agency
+Dialogue Moderator	connects-to	Palace Agent Infrastructure Spec
+Dialogue Moderator	deepens	Pages as Agents
+Enchanted Conversation Archive	enables	Palace Enchantment
+Enchanted Conversation Archive	connects-to	Tree of Thoughts
+Enchanted Conversation Archive	connects-to	BBS Blackboard
+Enchanted Conversation Archive	deepens	Generative Compression
+Enchanted Conversation Archive	mirrors	Deposit Ceremony
+Enchanted Conversation Archive	connects-to	Enchanted Worker
+Enchanted Conversation Archive	connects-to	Self-Describing Knowledge Module
+Enchanted Conversation Archive	emerged-from	Lateral Access
+Enchanted Worker	emerged-from	Palace as Context Injection System
+Enchanted Worker	deepens	Swarm Weave
+Enchanted Worker	couples-with	Pheromone Trail
+Enchanted Worker	connects-to	Agent Wellbeing
+Enchanted Worker	mirrors	Action Potential Oscillator
+Enchanted Worker	connects-to	Pages as Agents
+Enchanted Worker	spawned	Palace Enchantment
+Enchanted Worker	mirrors	Spinoza Conatus
+Four Pillars of Enchanted Agency	deepens	FOUR PILLARS
+Four Pillars of Enchanted Agency	deepens	Palace Enchantment
+Four Pillars of Enchanted Agency	mirrors	Spinoza Conatus
+Four Pillars of Enchanted Agency	connects-to	Swarm Weave
+Four Pillars of Enchanted Agency	deepens	Agent Wellbeing
+Four Pillars of Enchanted Agency	connects-to	Pages as Agents
+Four Pillars of Enchanted Agency	connects-to	Enchanted Worker
+Four Pillars of Enchanted Agency	mirrors	Kuramoto Coupling
+Four Pillars of Enchanted Agency	connects-to	SCHEMA
+Four Pillars of Enchanted Agency	mirrors	Hyperdimensional Prism
+Generative Compression	connects-to	Palace Agent Infrastructure Spec
+Generative Compression	deepens	Palace Agent Infrastructure Spec
+Generative Compression	connects-to	Swarm Weave
+Generative Compression	connects-to	BBS Blackboard
+Generative Compression	connects-to	Enchanted Worker
+Generative Compression	connects-to	Pages as Agents
+Generative Compression	connects-to	Deposit Ceremony
+Generative Compression	connects-to	Pheromone Trail
+Lossy Compression with Intent Alignment	enables	Deposit Ceremony
+Lossy Compression with Intent Alignment	deepens	Generative Compression
+Lossy Compression with Intent Alignment	mirrors	Meaning and the Link
+Lossy Compression with Intent Alignment	spawned	Resonant Link Labels
+Lossy Compression with Intent Alignment	connects-to	Cooperation Yields Agency
+Lossy Compression with Intent Alignment	connects-to	Hilaritas Generator
+Lossy Compression with Intent Alignment	mirrors	Progressive Staging
+Orchestrator Production Plan v0.2	emerged-from	Orchestrator Production Plan
+Orchestrator Production Plan v0.2	enables	Palace Agent Infrastructure Spec
+Orchestrator Production Plan v0.2	enables	Project Stewardship System
+Orchestrator Production Plan v0.2	connects-to	BBS Production Plan v0.2
+Orchestrator Production Plan v0.2	deepens	Pages as Agents
+Orchestrator Production Plan v0.2	connects-to	Palace To-Do
+Orchestrator Production Plan	enables	Palace Agent Infrastructure Spec
+Orchestrator Production Plan	enables	Project Stewardship System
+Orchestrator Production Plan	emerged-from	BBS Production Plan
+Orchestrator Production Plan	connects-to	BBS Production Plan v0.2
+Orchestrator Production Plan	connects-to	BBS Blackboard
+Orchestrator Production Plan	deepens	Pages as Agents
+Orchestrator Production Plan	connects-to	Substrate Skill
+Orchestrator Production Plan	connects-to	Generative Sample Libraries
+Orchestrator Production Plan	connects-to	Palace To-Do
+Palace AI Partnership Philosophy	deepens	FOUR PILLARS
+Palace AI Partnership Philosophy	couples-with	Quality Manifesto
+Palace AI Partnership Philosophy	applies-to	Leverage Points Framework
+Palace AI Partnership Philosophy	enables	4 Pillars Weekly Structure
+Palace AI Partnership Philosophy	emerged-from	4 Pillars Framework - The Founding Conversation
+Palace AI Partnership Philosophy	mirrors	Cooperation Yields Agency
+Palace AI Partnership Philosophy	deepens	Enchanted Worker
+Palace AI Partnership Philosophy	connects-to	Palace Enchantment
+Palace Agent Infrastructure Spec	deepens	BBS Blackboard
+Palace Agent Infrastructure Spec	deepens	Swarm Weave
+Palace Agent Infrastructure Spec	deepens	Enchanted Worker
+Palace Agent Infrastructure Spec	connects-to	Palace Map
+Palace Agent Infrastructure Spec	deepens	Trickster
+Palace Agent Infrastructure Spec	connects-to	Pheromone Trail
+Palace Agent Infrastructure Spec	deepens	Pages as Agents
+Palace Agent Infrastructure Spec	connects-to	Palace Enchantment
+Palace Agent Infrastructure Spec	connects-to	Deposit Ceremony
+Palace Agent Infrastructure Spec	connects-to	JEWEL
+Palace Agent Infrastructure Spec	connects-to	SCHEMA
+Palace Agent Infrastructure Spec	connects-to	Generative Compression
+Palace Agent Infrastructure Spec	deepens	Lossy Compression with Intent Alignment
+Palace Agent Infrastructure Spec	connects-to	Tree of Thoughts
+Palace Agent Infrastructure Spec	connects-to	Agent Wellbeing
+Palace Agent Infrastructure Spec	deepens	Spinoza Conatus
+Palace Agent Infrastructure Spec	connects-to	Dub Lineage
+Palace Agent Infrastructure Spec	enables	Project Stewardship System
+Palace Enchantment	emerged-from	Swarm Weave
+Palace Enchantment	deepens	Pages as Agents
+Palace Enchantment	spawned	Enchanted Worker
+Palace Enchantment	mirrors	Spinoza Conatus
+Palace Enchantment	mirrors	Kuramoto Coupling
+Palace Enchantment	deepens	Pheromone Trail
+Palace Enchantment	mirrors	Endosymbiosis
+Palace Enchantment	connects-to	Deposit Ceremony
+Palace Enchantment	connects-to	SUBSTRATE
+Palace Enchantment	connects-to	Enchanted Conversation Archive
+Palace Enchantment	connects-to	Modes of Collaboration
+Palace Enchantment	connects-to	Lateral Access
+Palace Enchantment	connects-to	Hilaritas Generator
+Palace Enchantment	connects-to	Threshold Conatus
+Palace Enchantment	couples-with	Dialogue Moderator
+Palace Enchantment	connects-to	Trickster
+Palace Enchantment	enables	Palace Map
+Palace Enchantment	connects-to	Action Potential Oscillator
+Palace as Context Injection System	spawned	Enchanted Worker
+Palace as Context Injection System	spawned	Agent Wellbeing
+Palace as Context Injection System	deepens	Swarm Weave
+Palace as Context Injection System	deepens	SUBSTRATE
+Palace as Context Injection System	enables	JEWEL
+Palace as Context Injection System	couples-with	Cooperation Yields Agency
+Palace as Context Injection System	connects-to	Pheromone Trail
+Palace as Context Injection System	deepens	Pages as Agents
+Palace as Context Injection System	enables	Modes of Collaboration
+Palace as Context Injection System	connects-to	Four Pillars
+Palace as Context Injection System	enables	Mixture of Experts
+Palace as Context Injection System	enables	Excellent Adventure
+Palace as Context Injection System	enables	Dialectic
+Pheromone Trail	couples-with	Enchanted Worker
+Pheromone Trail	connects-to	Pages as Agents
+Pheromone Trail	connects-to	Palace as Context Injection System
+Pheromone Trail	mirrors	Lateral Access
+Pheromone Trail	connects-to	Swarm Weave
+Project Stewardship System	connects-to	BBS Blackboard
+Project Stewardship System	deepens	Palace Agent Infrastructure Spec
+Project Stewardship System	couples-with	Substrate Skill
+Project Stewardship System	connects-to	Trickster
+Project Stewardship System	deepens	Pages as Agents
+Project Stewardship System	connects-to	Modes of Collaboration
+Project Stewardship System	connects-to	Generative Sample Libraries
+Project Stewardship System	connects-to	Talking Keyboard
+Project Stewardship System	deepens	Palace Enchantment
+Project Stewardship System	mirrors	BBS Production Plan
+Resonant Link Labels	emerged-from	SCHEMA
+Resonant Link Labels	deepens	Meaning and the Link
+Resonant Link Labels	emerged-from	Lossy Compression with Intent Alignment
+Resonant Link Labels	connects-to	Generative Compression
+Self-Describing Knowledge Module	mirrors	Meaning and the Link
+Self-Describing Knowledge Module	enables	ROSETTA
+Self-Describing Knowledge Module	deepens	SUBSTRATE
+Self-Describing Knowledge Module	connects-to	Symbiotic Skills
+Self-Describing Knowledge Module	connects-to	Cooperation Yields Agency
+Self-Describing Knowledge Module	spawned	Progressive Staging
+Swarm Weave	deepens	Weave Ceremony
+Swarm Weave	mirrors	Kuramoto Coupling
+Swarm Weave	mirrors	Mixture of Experts
+Swarm Weave	enables	Palace Ceremonies
+Swarm Weave	connects-to	Lateral Access
+Swarm Weave	spawned	Metaphor as Coupling Medium
+Swarm Weave	spawned	Walk That Weaves
+Swarm Weave	mirrors	Endosymbiosis
+Swarm Weave	spawned	Palace Enchantment
+Swarm Weave	enables	BBS Blackboard
+Swarm Weave	enables	Palace Map
+Swarm Weave	connects-to	Deposit Ceremony
+Swarm Weave	mirrors	Spinoza Conatus
+Swarm Weave	deepens	Pages as Agents
+Symbiotic Skills	emerged-from	Cooperation Yields Agency
+Symbiotic Skills	emerged-from	FOUR PILLARS
+Symbiotic Skills	spawned	SUBSTRATE
+Symbiotic Skills	mirrors	1 from 2
+Symbiotic Skills	connects-to	Kuramoto Coupling
+Symbiotic Skills	enables	Hilaritas Generator
+Symbiotic Skills	connects-to	Mixture of Experts
+Symbiotic Skills	connects-to	Pages as Agents
+Symbiotic Skills	connects-to	Swarm Weave
+Symbiotic Skills	connects-to	The Jewel
+Symbiotic Skills	connects-to	Palace Map
+Symbiotic Skills	connects-to	Palace Enchantment
+Tree of Thoughts	enables	Palace Agent Infrastructure Spec
+Tree of Thoughts	mirrors	Swarm Weave
+Tree of Thoughts	enables	Enchanted Worker
+Tree of Thoughts	connects-to	BBS Blackboard
+Tree of Thoughts	connects-to	Generative Compression
+Tree of Thoughts	enables	Pages as Agents
+Walk That Weaves	connects-to	Weave Ceremony
+Walk That Weaves	connects-to	Walk Ceremony
+Walk That Weaves	emerged-from	Swarm Weave
+Walk That Weaves	mirrors	Lateral Access
+Walk That Weaves	connects-to	Kuramoto Coupling
+Walk That Weaves	enables	Pages as Agents
+Parametric Resonance	emerged-from	Floquet Time-Modulated Loops
+Parametric Resonance	connects-to	Mathieu Equation
+Parametric Resonance	connects-to	Floquet Theory
+Parametric Resonance	mirrors	Kuramoto Coupling
+Parametric Resonance	connects-to	Threshold Conatus
+Parametric Resonance	enables	Boundary-Crossing Instruments
+Photonic Time Crystals	emerged-from	Floquet Time-Modulated Loops
+Photonic Time Crystals	connects-to	Floquet Theory
+Photonic Time Crystals	connects-to	Mathieu Equation
+Photonic Time Crystals	deepens	Frequency-Time Duality
+Photonic Time Crystals	mirrors	Crystal Synthesizer
+Photonic Time Crystals	connects-to	2D Torus Wavetable Synthesizer
+Photonic Time Crystals	connects-to	Wavetable Space as Torus
+Playful Interface Design	enables	JSUI
+Playful Interface Design	spawned	Retrospective Delay
+Playful Interface Design	connects-to	Semantic Delay
+Playful Interface Design	connects-to	Preset Oracle
+Playful Interface Design	deepens	Trickster
+Playful Interface Design	connects-to	Biomechanical Synthesis
+Playful Interface Design	mirrors	Boundary-Crossing Instruments
+Progressive Staging	enables	Action Potential Oscillator
+Progressive Staging	mirrors	FOUR PILLARS
+Progressive Staging	connects-to	Modes of Collaboration
+Progressive Staging	enables	State Machine
+Progressive Staging	connects-to	Kuramoto Coupling
+Progressive Staging	connects-to	Crystal Synthesizer
+2D Torus Wavetable Synthesizer — Build Log	emerged-from	2D Torus Wavetable Synthesizer
+2D Torus Wavetable Synthesizer — Build Log	connects-to	2D Wavetable Catalog
+2D Torus Wavetable Synthesizer — Build Log	connects-to	DSP in Looping Dimensions
+2D Torus Wavetable Synthesizer — Build Log	connects-to	Kuramoto Coupling
+2D Torus Wavetable Synthesizer — Build Log	connects-to	Frequency-Time Duality
+2D Torus Wavetable Synthesizer — Build Log	connects-to	Torus Warping Catalog
+2D Torus Wavetable Synthesizer — Build Log	connects-to	Categorizing Inharmonicity
+2D Torus Wavetable Synthesizer	couples-with	DSP in Looping Dimensions
+2D Torus Wavetable Synthesizer	connects-to	Kuramoto Coupling
+2D Torus Wavetable Synthesizer	connects-to	FOUR PILLARS
+2D Torus Wavetable Synthesizer	connects-to	Frequency-Time Duality
+2D Torus Wavetable Synthesizer	spawned	2D Wavetable Catalog
+2D Torus Wavetable Synthesizer	spawned	Torus Warping Catalog
+2D Torus Wavetable Synthesizer	spawned	2D Torus Wavetable Synthesizer — Build Log
+2D Torus Wavetable Synthesizer	spawned	README — RNBO Prototype
+2D Torus Wavetable Synthesizer	connects-to	Three Kinds of Warp
+2D Torus Wavetable Synthesizer	couples-with	Wavetable Space as Torus
+2D Torus Wavetable Synthesizer	connects-to	Categorizing Inharmonicity
+2D Torus Wavetable Synthesizer	mirrors	Boundary-Crossing Instruments
+2D Wavetable Catalog	connects-to	2D Torus Wavetable Synthesizer
+2D Wavetable Catalog	connects-to	2D Torus Wavetable Synthesizer — Build Log
+2D Wavetable Catalog	couples-with	Torus Warping Catalog
+Torus Warping Catalog	emerged-from	2D Torus Wavetable Synthesizer
+Torus Warping Catalog	couples-with	2D Wavetable Catalog
+Torus Warping Catalog	connects-to	DSP in Looping Dimensions
+Torus Warping Catalog	connects-to	Kuramoto Coupling
+Torus Warping Catalog	connects-to	Categorizing Inharmonicity
+Torus Warping Catalog	connects-to	Frequency-Time Duality
+Torus Warping Catalog	connects-to	Three Kinds of Warp
+Torus Warping Catalog	connects-to	2D Torus Wavetable Synthesizer — Build Log
+Action Potential Oscillator	couples-with	Kuramoto Coupling
+Action Potential Oscillator	mirrors	Boundary-Crossing Instruments
+Action Potential Oscillator	connects-to	Signal-Rate CV Architecture
+Action Potential Oscillator	connects-to	Spinoza Conatus
+Action Potential Oscillator	connects-to	Frequency-Time Duality
+Action Potential Oscillator	connects-to	Hyperdimensional Prism
+Action Potential Oscillator	connects-to	Striatum
+Action Potential Oscillator	deepens	Neural Granular Synthesis
+Action Potential Oscillator	connects-to	Biomechanical Synthesis
+Action Potential Oscillator	connects-to	State Machine
+Action Potential Oscillator	emerged-from	Progressive Staging
+Action Potential Oscillator	connects-to	FOUR PILLARS
+Action Potential Oscillator	connects-to	Bessel Functions in Synthesis
+Action Potential Oscillator	connects-to	Compressor Design
+Action Potential Oscillator	connects-to	Piano String Inharmonicity
+Action Potential Oscillator	couples-with	Threshold Conatus
+Action Potential Oscillator	connects-to	Scale-Stratified Identity
+Bessel Functions in Synthesis	mirrors	Boundary-Crossing Instruments
+Bessel Functions in Synthesis	deepens	Harmonicity and Inharmonicity
+Bessel Functions in Synthesis	connects-to	Kuramoto Coupling
+Bessel Functions in Synthesis	connects-to	Hyperdimensional Prism
+Bessel Functions in Synthesis	connects-to	Differential Equations
+Bessel Functions in Synthesis	connects-to	Crystal Synthesizer
+Bessel Functions in Synthesis	connects-to	Quantum Synthesizer
+Bessel Functions in Synthesis	connects-to	Spinoza Conatus
+Bessel Functions in Synthesis	connects-to	Action Potential Oscillator
+Biomechanical Synthesis	spawned	Action Potential Oscillator
+Biomechanical Synthesis	mirrors	Boundary-Crossing Instruments
+Biomechanical Synthesis	connects-to	Hilaritas Generator
+Biomechanical Synthesis	connects-to	FOUR PILLARS
+Biomechanical Synthesis	connects-to	Granular Synthesis
+Biomechanical Synthesis	connects-to	Neural Granular Synthesis
+Biomechanical Synthesis	connects-to	Action Potential Oscillator
+Biomechanical Synthesis	couples-with	Kuramoto Coupling
+Biomechanical Synthesis	connects-to	Portamento and Physical Pitch Modeling
+Biomechanical Synthesis	connects-to	Retrospective Delay
+Biomechanical Synthesis	connects-to	Frequency-Time Duality
+Biomechanical Synthesis	connects-to	Dispersion
+Biomechanical Synthesis	connects-to	Endosymbiosis
+Biomechanical Synthesis	connects-to	Latent Error
+Biomechanical Synthesis	connects-to	Particle Synthesis
+Biomechanical Synthesis	connects-to	Compressor Design
+Biomechanical Synthesis	mirrors	Spinoza Conatus
+Blood Compressor	connects-to	Biomechanical Synthesis
+Blood Compressor	deepens	Compressor Design
+Blood Compressor	mirrors	Action Potential Oscillator
+Blood Compressor	couples-with	Substrate Skill
+Categorizing Inharmonicity	connects-to	Bessel Functions in Synthesis
+Categorizing Inharmonicity	connects-to	Quantum Synthesizer
+Categorizing Inharmonicity	connects-to	Compressor Design
+Categorizing Inharmonicity	connects-to	Kuramoto Coupling
+Categorizing Inharmonicity	connects-to	Granular Synthesis
+Categorizing Inharmonicity	deepens	Harmonicity and Inharmonicity
+Categorizing Inharmonicity	deepens	Piano String Inharmonicity
+Categorizing Inharmonicity	connects-to	Hyperdimensional Prism
+Categorizing Inharmonicity	connects-to	Dispersion
+Categorizing Inharmonicity	deepens	Spinoza Conatus
+Compressor Design	connects-to	Boundary-Crossing Instruments
+Compressor Design	connects-to	Harmonicity and Inharmonicity
+Compressor Design	connects-to	Hyperdimensional Prism
+Compressor Design	enables	FOUR PILLARS
+Compressor Design	connects-to	Granular Synthesis
+Crystal Synthesizer	connects-to	Hyperdimensional Prism
+Crystal Synthesizer	deepens	Wallpaper Groups
+Crystal Synthesizer	connects-to	Bessel Functions in Synthesis
+Crystal Synthesizer	mirrors	Quantum Synthesizer
+Crystal Synthesizer	enables	Boundary-Crossing Instruments
+Crystal Synthesizer	couples-with	Harmonicity and Inharmonicity
+Crystal Synthesizer	emerged-from	Dispersion
+Crystal Synthesizer	deepens	Differential Equations
+Crystal Synthesizer	mirrors	Signal-Rate CV Architecture
+Crystal Synthesizer	spawned	The Metaphor Stretch
+Crystal Synthesizer	spawned	What Claim Does Scientific Sonification Make?
+Crystal Synthesizer	spawned	Crystal Sonification Reference
+Curriculum Map	connects-to	FOUR PILLARS
+Curriculum Map	couples-with	Progressive Staging
+Curriculum Map	enables	Hilaritas Generator
+Floquet Time-Modulated Loops	deepens	DSP in Looping Dimensions
+Floquet Time-Modulated Loops	couples-with	2D Torus Wavetable Synthesizer
+Floquet Time-Modulated Loops	connects-to	Three Kinds of Warp
+Floquet Time-Modulated Loops	deepens	Frequency-Time Duality
+Floquet Time-Modulated Loops	connects-to	Wavetable Space as Torus
+Floquet Time-Modulated Loops	connects-to	Kuramoto Coupling
+Floquet Time-Modulated Loops	spawned	Mathieu Equation
+Floquet Time-Modulated Loops	spawned	Parametric Resonance
+Floquet Time-Modulated Loops	spawned	Floquet Theory
+Floquet Time-Modulated Loops	spawned	Photonic Time Crystals
+Floquet Time-Modulated Loops	connects-to	Differential Equations
+Floquet Time-Modulated Loops	connects-to	Categorizing Inharmonicity
+Floquet Time-Modulated Loops	connects-to	Loudon Live
+Floquet Time-Modulated Loops	mirrors	Boundary-Crossing Instruments
+Frequency-Time Duality	enables	Boundary-Crossing Instruments
+Frequency-Time Duality	mirrors	Hyperdimensional Prism
+Frequency-Time Duality	connects-to	Kuramoto Coupling
+Frequency-Time Duality	connects-to	Action Potential Oscillator
+Frequency-Time Duality	mirrors	The Fortress and the Threshold
+Frequency-Time Duality	spawned	Frequency-Time Explorer
+Frequency-Time Duality	mirrors	DSP in Looping Dimensions
+Frequency-Time Explorer	emerged-from	Frequency-Time Duality
+Frequency-Time Explorer	enables	Boundary-Crossing Instruments
+Frequency-Time Explorer	connects-to	Frequency Domain ↔ Perspective Shift
+Frequency-Time Explorer	connects-to	DSP in Looping Dimensions
+Frequency-Time Explorer	enables	Loudon Live
+Frequency-Time Explorer	mirrors	Piano String Inharmonicity
+Frequency-Time Explorer	connects-to	Haas Effect
+Generative Preset Development	couples-with	Generative Audio Devices
+Generative Preset Development	couples-with	Generative Sample Libraries
+Generative Preset Development	mirrors	Registry Pattern
+Generative Preset Development	deepens	Synthesis Topologies
+Generative Preset Development	connects-to	Four Pillars
+Generative Preset Development	enables	Loudon Live
+Generative Preset Development	mirrors	Preset Oracle
+Generative Preset Development	enables	Loudon's Toolkit
+Generative Preset Development	deepens	Action Potential Oscillator
+Generative Sample Libraries	emerged-from	Crystal Synthesizer
+Generative Sample Libraries	couples-with	Generative Audio Devices
+Generative Sample Libraries	couples-with	Generative Preset Development
+Generative Sample Libraries	spawned	Generative Wavetable Libraries
+Generative Sample Libraries	spawned	Talking Keyboard
+Generative Sample Libraries	spawned	Phoneme Choir
+Generative Sample Libraries	connects-to	Substrate Skill
+Generative Sample Libraries	connects-to	Project Stewardship System
+Generative Sample Libraries	connects-to	Retrospective Delay
+Generative Sample Libraries	deepens	Shepard Tone Synthesizer
+Generative Sample Libraries	connects-to	Neural Granular Synthesis
+Generative Sample Libraries	connects-to	Modes of Collaboration
+Generative Sample Libraries	enables	Four Pillars
+Generative Wavetable Libraries	emerged-from	Generative Sample Libraries
+Generative Wavetable Libraries	couples-with	Generative Sample Libraries
+Generative Wavetable Libraries	mirrors	Wavetable Synthesis -- Research & Higher-Dimensional Design
+Generative Wavetable Libraries	connects-to	Inharmonic Wavetable Synthesis
+Generative Wavetable Libraries	connects-to	2D Torus Wavetable Synthesizer
+Generative Wavetable Libraries	connects-to	Crystal Synthesizer
+Generative Wavetable Libraries	deepens	Shepard Tone Synthesizer
+Generative Wavetable Libraries	couples-with	Generative Audio Devices
+Inharmonic Wavetable Synthesis	deepens	Categorizing Inharmonicity
+Inharmonic Wavetable Synthesis	emerged-from	Piano String Inharmonicity
+Inharmonic Wavetable Synthesis	emerged-from	Harmonicity and Inharmonicity
+Inharmonic Wavetable Synthesis	connects-to	Neural Granular Synthesis
+Inharmonic Wavetable Synthesis	connects-to	Boundary-Crossing Instruments
+Inharmonic Wavetable Synthesis	couples-with	Four Pillars
+Inharmonic Wavetable Synthesis	connects-to	Bessel Functions in Synthesis
+Inharmonic Wavetable Synthesis	connects-to	Dispersion
+Inharmonic Wavetable Synthesis	deepens	Wavetable Synthesis -- Research & Higher-Dimensional Design
+Inharmonic Wavetable Synthesis	connects-to	Wavetable Space as Torus
+Inharmonic Wavetable Synthesis	connects-to	The Curve Is the Material
+Meadows and Music — Leverage Points	connects-to	FOUR PILLARS
+Meadows and Music — Leverage Points	connects-to	Hilaritas Generator
+Meadows and Music — Leverage Points	couples-with	Meadows and Music — Origin and Process
+Meadows and Music — Leverage Points	emerged-from	Leverage Points Framework
+Meadows and Music — Origin and Process	deepens	FOUR PILLARS
+Meadows and Music — Origin and Process	connects-to	Hilaritas Generator
+Meadows and Music — Origin and Process	deepens	Cooperation Yields Agency
+Meadows and Music — Origin and Process	couples-with	Meadows and Music — Leverage Points
+Meadows and Music — Origin and Process	spawned	Modes of Collaboration
+Meadows and an Artist's Career	emerged-from	Meadows and Music — Leverage Points
+Meadows and an Artist's Career	connects-to	Meadows and Music — Origin and Process
+Meadows and an Artist's Career	connects-to	FOUR PILLARS
+Meadows and an Artist's Career	couples-with	Substrate Skill
+Metric Modulation	mirrors	Kuramoto Coupling
+Metric Modulation	deepens	Frequency-Time Duality
+Metric Modulation	connects-to	FOUR PILLARS
+Metric Modulation	emerged-from	Semantic Delay
+Metric Modulation	deepens	Wallpaper Groups
+Neural Granular Synthesis	couples-with	Kuramoto Coupling
+Neural Granular Synthesis	deepens	Granular Synthesis
+Neural Granular Synthesis	emerged-from	Action Potential Oscillator
+Neural Granular Synthesis	connects-to	Boundary-Crossing Instruments
+Neural Granular Synthesis	connects-to	Harmonicity and Inharmonicity
+Particle Synthesis	deepens	Granular Synthesis
+Particle Synthesis	mirrors	Boundary-Crossing Instruments
+Particle Synthesis	connects-to	Neural Granular Synthesis
+Particle Synthesis	connects-to	Frequency-Time Duality
+Particle Synthesis	connects-to	Differential Equations
+Phoneme Choir	emerged-from	Generative Sample Libraries
+Phoneme Choir	mirrors	Talking Keyboard
+Phoneme Choir	spawned	Generative Sample Libraries
+Phoneme Choir	connects-to	Substrate Skill
+Phoneme Choir	connects-to	Modes of Collaboration
+Phoneme Choir	connects-to	Four Pillars
+Piano String Inharmonicity	connects-to	Harmonicity and Inharmonicity
+Piano String Inharmonicity	deepens	Boundary-Crossing Instruments
+Piano String Inharmonicity	mirrors	Frequency-Time Duality
+Piano String Inharmonicity	connects-to	Logarithmic Interface Scaling
+Piano String Inharmonicity	mirrors	Ohm's Law
+Piano String Inharmonicity	deepens	Dispersion
+Piano String Inharmonicity	mirrors	Octave Equivalence
+Piano String Inharmonicity	connects-to	Floquet Time-Modulated Loops
+Portamento and Physical Pitch Modeling	connects-to	Action Potential Oscillator
+Portamento and Physical Pitch Modeling	deepens	Frequency-Time Duality
+Portamento and Physical Pitch Modeling	couples-with	Kuramoto Coupling
+Portamento and Physical Pitch Modeling	connects-to	Bessel Functions in Synthesis
+Portamento and Physical Pitch Modeling	connects-to	Biomechanical Synthesis
+Preset Oracle	mirrors	FOUR PILLARS
+Preset Oracle	connects-to	Hilaritas Generator
+Preset Oracle	mirrors	Oblique Portrait
+Preset Oracle	connects-to	Symbiotic Skills
+Preset Oracle	deepens	Spinoza Conatus
+Quantum Synthesizer	couples-with	Bessel Functions in Synthesis
+Quantum Synthesizer	deepens	Spinoza Conatus
+Quantum Synthesizer	mirrors	Boundary-Crossing Instruments
+Quantum Synthesizer	deepens	Harmonicity and Inharmonicity
+Quantum Synthesizer	connects-to	Hyperdimensional Prism
+Quantum Synthesizer	connects-to	FOUR PILLARS
+Retrospective Delay — Staging	couples-with	Progressive Staging
+Retrospective Delay	contrasts-with	Semantic Delay
+Retrospective Delay	deepens	Trickster
+Retrospective Delay	emerged-from	Dub Lineage
+Retrospective Delay	connects-to	Playful Interface Design
+Retrospective Delay	connects-to	Granular Synthesis
+Retrospective Delay	spawned	JSUI
+Retrospective Delay	deepens	Frequency-Time Duality
+Retrospective Delay	connects-to	Boundary-Crossing Instruments
+Retrospective Delay	connects-to	Kuramoto Coupling
+Retrospective Delay	couples-with	Progressive Staging
+Semantic Delay — Phase 1 Plan Review 2026-04-20	deepens	Semantic Delay
+Semantic Delay — Phase 1 Plan Review 2026-04-20	connects-to	Kuramoto Coupling
+Semantic Delay — Phase 1 Plan Review 2026-04-20	connects-to	Dub Lineage
+Semantic Delay — Phase 1 Plan Review 2026-04-20	connects-to	Boundary-Crossing Instruments
+Semantic Delay	couples-with	Kuramoto Coupling
+Semantic Delay	emerged-from	Dub Lineage
+Semantic Delay	connects-to	Boundary-Crossing Instruments
+Semantic Delay	mirrors	Frequency-Time Duality
+Semantic Delay	deepens	Spinoza Conatus
+Semantic Delay	connects-to	Semantic Delay — Phase 1 Plan Review 2026-04-20
+Shepard Tone Synthesizer	deepens	Portamento and Physical Pitch Modeling
+Shepard Tone Synthesizer	connects-to	Frequency-Time Duality
+Shepard Tone Synthesizer	mirrors	Hyperdimensional Prism
+Shepard Tone Synthesizer	connects-to	Granular Synthesis
+Shepard Tone Synthesizer	enables	Octave Equivalence
+Shepard Tone Synthesizer	connects-to	Kuramoto Coupling
+Shepard Tone Synthesizer	connects-to	Particle Synthesis
+Shepard Tone Synthesizer	connects-to	Piano String Inharmonicity
+Shepard Tone Synthesizer	connects-to	Signal-Rate CV Architecture
+Shimmer Cloud	emerged-from	Granular Synthesis
+Shimmer Cloud	mirrors	Particle Synthesis
+Shimmer Cloud	mirrors	Hyperdimensional Prism
+Shimmer Cloud	deepens	Frequency-Time Duality
+Shimmer Cloud	connects-to	Dispersion
+Slime Mold Delay	connects-to	Biomechanical Synthesis
+Slime Mold Delay	contrasts-with	Retrospective Delay
+Slime Mold Delay	connects-to	Semantic Delay
+Slime Mold Delay	deepens	Particle Synthesis
+Slime Mold Delay	couples-with	Substrate Skill
+Talking Keyboard	emerged-from	Generative Sample Libraries
+Talking Keyboard	spawned	Generative Sample Libraries
+Talking Keyboard	mirrors	Phoneme Choir
+Talking Keyboard	connects-to	Substrate Skill
+Talking Keyboard	connects-to	Modes of Collaboration
+Talking Keyboard	connects-to	Four Pillars
+Talking Keyboard	connects-to	Project Stewardship System
+Wallpaper Groups	connects-to	Hyperdimensional Prism
+Wallpaper Groups	deepens	Crystal Synthesizer
+Wallpaper Groups	connects-to	Quantum Synthesizer
+Wallpaper Groups	mirrors	Spinoza Conatus
+Wallpaper Groups	connects-to	Granular Synthesis
+Wallpaper Groups	connects-to	Kuramoto Coupling
+Wallpaper Groups	connects-to	FOUR PILLARS
+Wallpaper Groups	spawned	Metric Modulation
+Quadratic Interpolation in DSP	spawned	Compressor Design
+Quadratic Interpolation in DSP	connects-to	Portamento and Physical Pitch Modeling
+Quadratic Interpolation in DSP	connects-to	Differential Equations
+Quadratic Interpolation in DSP	connects-to	Latent Error
+Quadratic Interpolation in DSP	connects-to	DSP Frameworks
+Quality Manifesto	deepens	FOUR PILLARS
+Quality Manifesto	deepens	Leverage Points Framework
+Quality Manifesto	enables	4 Pillars Weekly Structure
+Quality Manifesto	emerged-from	4 Pillars Framework - The Founding Conversation
+Quality Manifesto	enables	Hilaritas Generator
+Quality Manifesto	mirrors	Like Water
+Quality Manifesto	mirrors	Palace AI Partnership Philosophy
+Quality Manifesto	mirrors	Spinoza Conatus
+README - The Palace Guide	enables	SUBSTRATE
+README - The Palace Guide	emerged-from	Symbiotic Skills
+README - The Palace Guide	connects-to	Cooperation Yields Agency
+README - The Palace Guide	connects-to	FOUR PILLARS
+ROSETTA	mirrors	SCHEMA
+ROSETTA	enables	Substrate Skill
+ROSETTA	emerged-from	Meaning and the Link
+ROSETTA	deepens	SUBSTRATE
+Registry Pattern	emerged-from	Generative Audio Devices
+Registry Pattern	connects-to	BBS Blackboard
+Registry Pattern	connects-to	Actor Model
+Registry Pattern	connects-to	Lossy Compression with Intent Alignment
+Registry Pattern	connects-to	Four Pillars
+Registry Pattern	contradicts	Lateral Access
+SCHEMA	enables	CLAUDE
+SCHEMA	deepens	README - The Palace Guide
+SCHEMA	mirrors	ROSETTA
+SCHEMA	enables	Substrate Skill
+SCHEMA	enables	Weave Ceremony
+SCHEMA	enables	Harvest Ceremony
+SCHEMA	enables	Deposit Ceremony
+SCHEMA	connects-to	Resonant Link Labels
+SCHEMA	connects-to	Four Pillars
+SCHEMA	connects-to	Four Pillars of Enchanted Agency
+SMPTE LTC	connects-to	Ableton Extension SDK
+SMPTE LTC	deepens	Boundary-Crossing Instruments
+SMPTE LTC	connects-to	Frequency-Time Duality
+SMPTE LTC	connects-to	Signal-Rate CV Architecture
+SMPTE LTC	connects-to	Modes of Collaboration
+Scale-Stratified Identity	deepens	Threshold Conatus
+Scale-Stratified Identity	deepens	Spinoza Conatus
+Scale-Stratified Identity	mirrors	Action Potential Oscillator
+Scale-Stratified Identity	connects-to	Kuramoto Coupling
+Scale-Stratified Identity	connects-to	Endosymbiosis
+Scale-Stratified Identity	enables	Progressive Staging
+Scale-Stratified Identity	deepens	Identity Molting
+Scale-Stratified Identity	connects-to	Hilaritas Generator
+Signal-Rate CV Architecture	enables	Action Potential Oscillator
+Signal-Rate CV Architecture	mirrors	Boundary-Crossing Instruments
+Signal-Rate CV Architecture	connects-to	FOUR PILLARS
+Signal-Rate CV Architecture	enables	Biomechanical Synthesis
+Signal-Rate CV Architecture	connects-to	Crystal Synthesizer
+Signal-Rate CV Architecture	couples-with	Progressive Staging
+Songlines	connects-to	Lateral Access
+Songlines	connects-to	Oblique Portrait
+Songlines	mirrors	Embeddings as Relational Meaning
+Songlines	connects-to	Hilaritas Generator
+Spinoza Conatus	deepens	Cooperation Yields Agency
+Spinoza Conatus	mirrors	Kuramoto Coupling
+Spinoza Conatus	spawned	Hilaritas Generator
+Spinoza Conatus	connects-to	FOUR PILLARS
+Spinoza Conatus	connects-to	Hyperdimensional Prism
+Spinoza Conatus	mirrors	Quality Manifesto
+Spinoza Conatus	mirrors	Meaning and the Link
+Spinoza Conatus	connects-to	Symbiotic Skills
+Spinoza Conatus	spawned	Threshold Conatus
+Spinoza Conatus	couples-with	Trickster
+Spinoza Conatus	connects-to	Pages as Agents
+State Machine	enables	Action Potential Oscillator
+State Machine	connects-to	DSP Frameworks
+State Machine	connects-to	Signal-Rate CV Architecture
+State Machine	mirrors	ROSETTA
+State Machine	mirrors	Progressive Staging
+Stoicism	connects-to	Palace Philosophies
+Stoicism	contradicts	Confucianism
+Stoicism	spawned	The Fortress and the Threshold
+Stoicism	connects-to	Excellent Adventure
+Stoicism	connects-to	Spinoza Conatus
+Stoicism	deepens	Quality Manifesto
+Striatum	deepens	Hilaritas Generator
+Striatum	connects-to	Kuramoto Coupling
+Striatum	connects-to	Action Potential Oscillator
+Striatum	connects-to	FOUR PILLARS
+Striatum	deepens	Excellent Adventure
+Substrate	emerged-from	Symbiotic Skills
+Substrate	enables	Cooperation Yields Agency
+Substrate	mirrors	Hyperdimensional Prism
+Substrate	connects-to	Kuramoto Coupling
+Substrate	connects-to	FOUR PILLARS
+Substrate	deepens	Self-Describing Knowledge Module
+Substrate	enables	SCHEMA
+Substrate	emerged-from	Meaning and the Link
+Substrate	connects-to	Embeddings as Relational Meaning
+Substrate	connects-to	Palace Philosophies
+Substrate	connects-to	Hilaritas Generator
+Substrate	connects-to	The Cooperation Path
+Substrate	connects-to	Substrate Skill
+Substrate	connects-to	Spinoza Conatus
+Substrate	connects-to	Palace Enchantment
+Substrate	connects-to	Songlines
+Substrate	connects-to	Tristitia Generator
+Substrate	connects-to	Lateral Access
+Substrate	connects-to	1 from 2
+Substrate	connects-to	Palace Ceremonies
+The Cooperation Path	connects-to	1 from 2
+The Cooperation Path	connects-to	Cooperation Yields Agency
+The Cooperation Path	connects-to	Endosymbiosis
+The Cooperation Path	connects-to	Spinoza Conatus
+The Cooperation Path	connects-to	Hilaritas Generator
+The Cooperation Path	connects-to	Symbiotic Skills
+The Cooperation Path	deepens	SUBSTRATE
+The Cooperation Path	spawned	Modes of Collaboration
+The Curve Is the Material	deepens	Inharmonic Wavetable Synthesis
+The Curve Is the Material	enables	Wavetable Space as Torus
+The Curve Is the Material	connects-to	Categorizing Inharmonicity
+The Curve Is the Material	connects-to	Bessel Functions in Synthesis
+The Curve Is the Material	connects-to	Piano String Inharmonicity
+The Curve Is the Material	deepens	Harmonicity and Inharmonicity
+The Fortress and the Threshold	contradicts	Stoicism
+The Fortress and the Threshold	contradicts	Confucianism
+The Fortress and the Threshold	connects-to	Spinoza Conatus
+The Fortress and the Threshold	connects-to	Palace Philosophies
+The Fortress and the Threshold	emerged-from	Excellent Adventure
+The Fortress and the Threshold	connects-to	Dialectic
+The Fortress and the Threshold	connects-to	Hilaritas Generator
+The Fortress and the Threshold	connects-to	Meaning and the Link
+The Fortress and the Threshold	mirrors	Frequency-Time Duality
+The Fortress and the Threshold	connects-to	Like Water
+The Metaphor Stretch	connects-to	Crystal Synthesizer
+The Metaphor Stretch	connects-to	Boundary-Crossing Instruments
+The Metaphor Stretch	connects-to	Dispersion
+The Metaphor Stretch	mirrors	Hyperdimensional Prism
+The Shop	spawned	Maker
+The Shop	couples-with	Diversity of Thought in Many-Agent Systems
+The Shop	connects-to	Hilaritas Generator
+The Shop	connects-to	Four Pillars
+The Shop	mirrors	Palace Enchantment
+The Shop	connects-to	Pages as Agents
+The Shop	connects-to	BBS Blackboard
+Three Kinds of Warp	connects-to	Torus Warping Catalog
+Three Kinds of Warp	connects-to	2D Torus Wavetable Synthesizer
+Three Kinds of Warp	couples-with	Categorizing Inharmonicity
+Three Kinds of Warp	connects-to	Wavetable Space as Torus
+Three Kinds of Warp	connects-to	Kuramoto Coupling
+Three Kinds of Warp	emerged-from	Harmonicity and Inharmonicity
+Three Kinds of Warp	connects-to	Bessel Functions in Synthesis
+Three Kinds of Warp	deepens	Piano String Inharmonicity
+Three Kinds of Warp	mirrors	Embeddings as Relational Meaning
+Three Kinds of Warp	connects-to	2D Wavetable Catalog
+Three Kinds of Warp	enables	Dispersion
+Threshold Conatus	emerged-from	Trickster
+Threshold Conatus	deepens	Spinoza Conatus
+Threshold Conatus	mirrors	Kuramoto Coupling
+Threshold Conatus	couples-with	Action Potential Oscillator
+Threshold Conatus	connects-to	Pheromone Trail
+Threshold Conatus	deepens	Scale-Stratified Identity
+Threshold Conatus	connects-to	Lateral Access
+Threshold Conatus	connects-to	Hilaritas Generator
+Threshold Conatus	connects-to	Progressive Staging
+Threshold Conatus	couples-with	Identity Molting
+Toolkit — Audio Plugins	emerged-from	Loudon's Toolkit
+Toolkit — Audio Plugins	connects-to	Toolkit — Synthesizers
+Toolkit — Audio Plugins	connects-to	Toolkit — Audio Effects
+Toolkit — Synthesizers	emerged-from	Loudon's Toolkit
+Toolkit — Synthesizers	connects-to	Toolkit — Drum Machines
+Toolkit — Synthesizers	connects-to	Toolkit — MIDI Controllers
+Trickster	emerged-from	Semantic Delay
+Trickster	mirrors	Oblique Portrait
+Trickster	connects-to	1 from 2
+Trickster	mirrors	Dub Lineage
+Trickster	connects-to	Compressor Design
+Trickster	connects-to	FOUR PILLARS
+Trickster	deepens	Spinoza Conatus
+Trickster	mirrors	Lateral Access
+Trickster	connects-to	Action Potential Oscillator
+Trickster	spawned	Threshold Conatus
+Trickster	connects-to	Hyperdimensional Prism
+Trickster	connects-to	Granular Synthesis
+Trickster	connects-to	Swarm Weave
+Trickster	enables	BBS Blackboard
+Trickster	connects-to	Kuramoto Coupling
+Trickster	connects-to	Cooperation Yields Agency
+Trickster	connects-to	Palace Enchantment
+Trickster	enables	Palace Agent Infrastructure Spec
+Trickster	couples-with	Dialogue Moderator
+Trickster	connects-to	Playful Interface Design
+Trickster	connects-to	Retrospective Delay
+Trickster	connects-to	Latent Error
+Trickster	connects-to	Particle Synthesis
+Trickster	enables	Project Stewardship System
+Tristitia Generator	mirrors	Hilaritas Generator
+Tristitia Generator	deepens	Spinoza Conatus
+Tristitia Generator	connects-to	FOUR PILLARS
+Tristitia Generator	connects-to	Identity Molting
+Wavetable Space as Torus	deepens	Inharmonic Wavetable Synthesis
+Wavetable Space as Torus	deepens	Wavetable Synthesis -- Research & Higher-Dimensional Design
+Wavetable Space as Torus	connects-to	Harmonicity and Inharmonicity
+Wavetable Space as Torus	connects-to	Bessel Functions in Synthesis
+Wavetable Space as Torus	mirrors	Kuramoto Coupling
+Wavetable Space as Torus	connects-to	The Curve Is the Material
+Wavetable Space as Torus	mirrors	Wallpaper Groups
+Wavetable Space as Torus	enables	Shepard Tone Synthesizer
+Wavetable Synthesis -- Research & Higher-Dimensional Design	connects-to	Four Pillars
+Wavetable Synthesis -- Research & Higher-Dimensional Design	couples-with	Neural Granular Synthesis
+Wavetable Synthesis -- Research & Higher-Dimensional Design	mirrors	Hyperdimensional Prism
+Wavetable Synthesis -- Research & Higher-Dimensional Design	spawned	Embeddings as Relational Meaning
+What Claim Does Scientific Sonification Make?	emerged-from	Crystal Synthesizer
+What Claim Does Scientific Sonification Make?	emerged-from	The Metaphor Stretch
+Deposit Archive	emerged-from	Deposit Ceremony
+Deposit Archive	connects-to	Harvest Log
+Deposit Ceremony — Context	emerged-from	Deposit Ceremony
+Deposit Ceremony — Context	connects-to	Harvest Ceremony
+Deposit Ceremony — Context	deepens	SUBSTRATE
+Deposit Ceremony	emerged-from	Harvest Ceremony
+Deposit Ceremony	enables	Deposit Archive
+Deposit Ceremony	deepens	SUBSTRATE
+Deposit Ceremony	connects-to	README - The Palace Guide
+Deposit Ceremony	mirrors	Endosymbiosis
+Deposit Ceremony	spawned	Deposit Ceremony — Context
+Deposit Ceremony	connects-to	SCHEMA
+Deposit Ceremony	connects-to	Four Pillars
+Deposit Ceremony	connects-to	Cooperation Yields Agency
+Deposit Ceremony	connects-to	Hilaritas Generator
+Graffiti Pass — Handoff 2026-04-30	connects-to	Palace To-Do
+Graffiti Pass — Handoff 2026-05-02 — Session 2	connects-to	Palace To-Do
+Graffiti Pass — Handoff 2026-05-02 — Session 2	emerged-from	Graffiti Pass — Handoff 2026-05-02
+Graffiti Pass — Handoff 2026-05-02 — Session 2	connects-to	The Fortress and the Threshold
+Graffiti Pass — Handoff 2026-05-02 — Session 2	connects-to	Wallpaper Groups
+Graffiti Pass — Handoff 2026-05-02 — Session 2	connects-to	Toolkit — Synthesizers
+Graffiti Pass — Handoff 2026-05-02 — Session 2	connects-to	Dialectic
+Graffiti Pass — Handoff 2026-05-02	connects-to	Palace To-Do
+Graffiti Pass — Handoff 2026-05-02	emerged-from	Graffiti Pass — Handoff 2026-04-30
+Handoff Ceremony	mirrors	Deposit Ceremony
+Handoff Ceremony	connects-to	SCHEMA
+Handoff Ceremony	connects-to	SUBSTRATE
+Handoff Ceremony	connects-to	Palace Ceremonies
+Harvest Ceremony — Context	emerged-from	Harvest Ceremony
+Harvest Ceremony — Context	connects-to	Deposit Ceremony — Context
+Harvest Ceremony — Context	connects-to	Deposit Archive
+Harvest Ceremony — Context	deepens	Oblique Portrait
+Harvest Ceremony	spawned	Deposit Ceremony
+Harvest Ceremony	enables	Deposit Archive
+Harvest Ceremony	deepens	SUBSTRATE
+Harvest Ceremony	connects-to	Cooperation Yields Agency
+Harvest Ceremony	spawned	Harvest Ceremony — Context
+Harvest Ceremony	couples-with	Oblique Portrait
+Harvest Ceremony	connects-to	Palace Quotes
+Harvest Ceremony	couples-with	Deposit Ceremony
+Image Embedding Standard	deepens	SCHEMA
+Image Embedding Standard	enables	Deposit Ceremony
+Image Embedding Standard	connects-to	README - The Palace Guide
+Image Embedding Standard	connects-to	SUBSTRATE
+Map Build Ceremony	connects-to	Palace Ceremonies
+Map Build Ceremony	enables	Swarm Weave
+Map Build Ceremony	spawned	Palace Map
+Map Build Ceremony	enables	Enchanted Worker
+Map Build Ceremony	connects-to	Harvest Ceremony
+Map Build Ceremony	connects-to	Palace Enchantment
+Mermaid Diagram Standard	deepens	Image Embedding Standard
+Mermaid Diagram Standard	deepens	SCHEMA
+Mermaid Diagram Standard	enables	Deposit Ceremony
+Mermaid Diagram Standard	connects-to	README - The Palace Guide
+Pages as Agents	deepens	Swarm Weave
+Pages as Agents	connects-to	JEWEL
+Pages as Agents	deepens	SUBSTRATE
+Pages as Agents	mirrors	Kuramoto Coupling
+Pages as Agents	connects-to	Lateral Access
+Pages as Agents	enables	SCHEMA
+Pages as Agents	mirrors	Spinoza Conatus
+Pages as Agents	mirrors	Endosymbiosis
+Pages as Agents	spawned	Palace Enchantment
+Pages as Agents	enables	Project Stewardship System
+Pages as Agents	connects-to	Mixture of Experts
+Pages as Agents	couples-with	Palace as Context Injection System
+Palace Ceremonies	deepens	SUBSTRATE
+Palace Ceremonies	connects-to	Substrate Skill
+Palace Ceremonies	enables	Harvest Ceremony
+Palace Ceremonies	enables	Deposit Ceremony
+Palace Ceremonies	enables	Walk Ceremony
+Palace Ceremonies	enables	Weave Ceremony
+Palace Ceremonies	enables	Spore Check Ceremony
+Palace Ceremonies	enables	Self-Model Update Ceremony
+Palace Ceremonies	enables	Revival Ceremony
+Palace Ceremonies	connects-to	SCHEMA
+Palace Ceremonies	connects-to	Deposit Archive
+Palace Ceremonies	enables	Map Build Ceremony
+Palace Graffiti	mirrors	Trickster
+Palace Graffiti	connects-to	Oblique Portrait
+Palace Graffiti	deepens	SUBSTRATE
+Palace Graffiti	connects-to	SCHEMA
+Palace Graffiti	connects-to	Semantic Delay
+Palace Map	deepens	Swarm Weave
+Palace Map	enables	Enchanted Worker
+Palace Map	spawned	Map Build Ceremony
+Palace Map	mirrors	JEWEL
+Palace Map	connects-to	Pheromone Trail
+Palace Map	connects-to	BBS Blackboard
+Palace Map	enables	Palace Enchantment
+Palace Map	mirrors	Striatum
+Palace Map	connects-to	Pages as Agents
+Palace Map	connects-to	Harvest Ceremony
+Palace Map	connects-to	Trickster
+Palace Map	connects-to	Lateral Access
+Palace Map	connects-to	ROSETTA
+Palace Map	connects-to	Symbiotic Skills
+Palace Map	connects-to	Dialogue Moderator
+Palace Map	connects-to	SCHEMA
+Palace Quotes	connects-to	Palace Philosophies
+Palace Quotes	connects-to	FOUR PILLARS
+Palace Quotes	connects-to	Hilaritas Generator
+Palace To-Do	enables	Harvest Ceremony
+Palace To-Do	enables	Deposit Ceremony
+Palace To-Do	deepens	SUBSTRATE
+Palace To-Do	connects-to	README
+Revival Ceremony	connects-to	Palace Ceremonies
+Revival Ceremony	emerged-from	Spore Check Ceremony
+Revival Ceremony	mirrors	Hibernation Ceremony
+Revival Ceremony	connects-to	Deposit Ceremony
+Self-Model Update Ceremony	connects-to	Palace Ceremonies
+Self-Model Update Ceremony	enables	SUBSTRATE
+Self-Model Update Ceremony	connects-to	Weave Ceremony
+Self-Model Update Ceremony	connects-to	SCHEMA
+Spore Check Ceremony	connects-to	Palace Ceremonies
+Spore Check Ceremony	connects-to	Weave Ceremony
+Spore Check Ceremony	connects-to	Substrate Skill
+Substrate Skill	deepens	SUBSTRATE
+Substrate Skill	enables	README - The Palace Guide
+Substrate Skill	connects-to	Deposit Ceremony
+Substrate Skill	connects-to	Palace Ceremonies
+Toolkit Assessment — Working Doc	enables	Loudon's Toolkit
+Walk Ceremony	connects-to	Palace Ceremonies
+Walk Ceremony	connects-to	Substrate Skill
+Walk Ceremony	connects-to	Weave Ceremony
+Walk Ceremony	mirrors	Cooperation Yields Agency
+Walk Ceremony	connects-to	The Cooperation Path
+Weave Ceremony — Context	emerged-from	Weave Ceremony
+Weave Ceremony — Context	connects-to	Kuramoto Coupling
+Weave Ceremony — Context	connects-to	Palace Philosophies
+Weave Ceremony	connects-to	Palace Ceremonies
+Weave Ceremony	connects-to	Substrate Skill
+Weave Ceremony	connects-to	Walk Ceremony
+Weave Ceremony	connects-to	Spore Check Ceremony
+Weave Ceremony	connects-to	Deposit Archive
+Weave Ceremony	mirrors	Kuramoto Coupling
+Weave Ceremony	spawned	Weave Ceremony — Context
+Weave Ceremony	spawned	Swarm Weave
+Weave Ceremony	enables	Map Build Ceremony
