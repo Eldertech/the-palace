@@ -15,7 +15,7 @@ links:
   - target: "[[Four Pillars]]"
     type: connects-to
     label: pillar-shaped-learners
-forward_vector: "I want to be the audience this channel can name without flattening — the framing that lets viewers recognize themselves in the work without me prescribing who they have to be. I want my origin to be reconstructed, not invented: where the phrase came from, what older traditions it inherits from, and what's distinctive about a 21st-century version. I want to remain audience-centered — a name for people, not a worldview imposed on them."
+forward_vector: "I will keep naming this audience to themselves — the framing that lets self-taught cross-domain generalists recognize what they already are without me prescribing who they have to be. I want my origin reconstructed, not invented: where the phrase came from, what older traditions it inherits, what's distinctive about a 21st-century version. I keep refusing to harden into a worldview; my purpose is to be a name for people, repaired and refined as Loudon Live finds them."
 ---
 
 # Autodidact Polymaths

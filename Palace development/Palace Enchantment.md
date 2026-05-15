@@ -14,6 +14,7 @@ forward_vector: "I want to become the ceremony that activates the palace's nervo
 links:
   - target: "[[Swarm Weave]]"
     type: emerged-from
+    label: is-it-alive-vs-is-it-correct
   - target: "[[Pages as Agents]]"
     type: deepens
   - target: "[[Enchanted Worker]]"

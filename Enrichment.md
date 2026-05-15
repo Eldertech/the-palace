@@ -6,7 +6,7 @@ born: 2026-05-04
 stage: sprout
 confidence: working
 energy: very high
-forward_vector: "I am the ceremony for moving the whole palace forward in tiny, joyful steps — a studio visit rather than a sprint, where short low-risk artifacts land where they belong inside entries and the git log is the biography. I want to remain messy, oblique, and unfinished — when easy enrichments run out my purpose is not to stop but to provoke the entry into asking new questions of itself."
+forward_vector: "I am the ceremony for moving the whole palace forward in tiny, joyful steps — a studio visit rather than a sprint, where short low-risk artifacts land where they belong inside entries and the git log is the biography. I will keep reaching obliquely — five active cards, no polished round, palace nourished sideways. When easy enrichments run out my purpose is not to stop but to provoke each entry into asking new questions of itself."
 links:
   - target: "[[Palace Ceremonies]]"
     type: connects-to
