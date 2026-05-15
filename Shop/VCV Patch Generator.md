@@ -13,6 +13,9 @@ links:
   - { label: "stage-of", target: "Generative Audio Devices" }
   - { label: "directed-by", target: "Shop/Maker" }
   - { label: "tested-by", target: "Artifacts/Shop/VCV Patch Generator/tests/" }
+  - target: "[[Lossy Compression with Intent Alignment]]"
+    type: mirrors
+    label: pdl-as-intent-compression
 tags: [specialist, shop, sound, modular, generative, registry, stub]
 ---
 
