@@ -21,6 +21,9 @@ links:
     label: "interrogates"
   - target: "[[Four Pillars]]"
     type: connects-to
+  - target: "[[The Shop]]"
+    type: emerged-from
+    label: architectural-collapse-provoked-question
 ---
 
 # Diversity of Thought in Many-Agent Systems

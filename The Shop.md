@@ -35,6 +35,12 @@ links:
   - target: "[[Quality Manifesto]]"
     type: connects-to
     label: "tier-as-quality-boundary"
+  - target: "[[Palace Agent Infrastructure Spec]]"
+    type: enables
+    label: "operationalizes-agency"
+  - target: "[[Lossy Compression with Intent Alignment]]"
+    type: mirrors
+    label: "tier-as-compression"
 ---
 
 # The Shop

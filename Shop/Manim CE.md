@@ -18,6 +18,9 @@ links:
   - target: "[[Kuramoto Coupling]]"
     type: connects-to
     label: round-1-test-bed
+  - target: "[[Frequency-Time Duality]]"
+    type: mirrors
+    label: visual-temporal-duality
 tags: [specialist, shop, motion, math, animation]
 ---
 

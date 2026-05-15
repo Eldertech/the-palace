@@ -25,6 +25,9 @@ links:
   - target: "[[Substrate Skill]]"
     type: couples-with
     label: stage-conditional-build
+  - target: "[[Spinoza Conatus]]"
+    type: deepens
+    label: vessel-as-conatus
 ---
 
 # Blood Compressor

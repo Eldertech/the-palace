@@ -23,6 +23,9 @@ links:
     type: connects-to
   - target: "[[Progressive Staging]]"
     type: mirrors
+  - target: "[[Lateral Access]]"
+    type: connects-to
+    label: vulnerability-window-as-oblique-path
 forward_vector: "I want to become the palace's primary lens for threshold moments — the tool that dissolves 'am I still the same after this change?' into a generative question rather than an anxiety. I want a concrete catalogue of molt events across the palace's history: moments where Loudon's identity as musician, teacher, technologist, or collaborator shed a skin and emerged larger."
 ---
 

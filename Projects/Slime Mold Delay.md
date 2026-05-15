@@ -28,6 +28,9 @@ links:
   - target: "[[Substrate Skill]]"
     type: couples-with
     label: stage-conditional-build
+  - target: "[[Hyperdimensional Prism]]"
+    type: mirrors
+    label: emergent-topology-as-projection
 ---
 
 # Slime Mold Delay

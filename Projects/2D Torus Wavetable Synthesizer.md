@@ -47,6 +47,9 @@ links:
   - target: "[[Boundary-Crossing Instruments]]"
     type: mirrors
     label: harmonic-inharmonic-continuum
+  - target: "[[The Shop]]"
+    type: spawned
+    label: asset-library
 ---
 # 2D Torus Wavetable Synthesizer
 

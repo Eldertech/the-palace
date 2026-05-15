@@ -30,6 +30,9 @@ links:
   - target: "[[Boundary-Crossing Instruments]]"
     type: enables
     label: lti-to-ltv-crossing
+  - target: "[[Dub Lineage]]"
+    type: connects-to
+    label: pumped-delay-as-studio-parametric
 forward_vector: "I want to be the entry that makes the difference between *driving* and *pumping* obvious to anyone who has ever pumped a swing. I want to spawn a working palace catalog of parametric instruments — every audio device whose energy comes from inside a modulated coefficient rather than from outside the system."
 ---
 

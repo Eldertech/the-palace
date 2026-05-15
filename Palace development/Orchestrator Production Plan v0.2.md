@@ -38,6 +38,9 @@ links:
     type: deepens
   - target: "[[Palace To-Do]]"
     type: connects-to
+  - target: "[[Substrate Skill]]"
+    type: couples-with
+    label: stage-conditional-dispatch
 ---
 
 # Orchestrator Production Plan v0.2

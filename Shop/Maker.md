@@ -14,6 +14,9 @@ links:
   - { label: "answers-to", target: "Trickster (Loudon)" }
   - { label: "embodies", target: "Hilaritas Generator" }
   - { label: "follows", target: "Four Pillars" }
+  - target: "[[Lateral Access]]"
+    type: mirrors
+    label: taste-as-laterality
 tags: [maker, shop, foreman, studio]
 ---
 

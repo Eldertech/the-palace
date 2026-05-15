@@ -31,6 +31,9 @@ links:
   - target: "[[Phoneme Choir]]"
     type: emerged-from
     label: card-004-2026-05-05
+  - target: "[[Weave Ceremony]]"
+    type: connects-to
+    label: vector-linting
 ---
 
 # Entry Conatus

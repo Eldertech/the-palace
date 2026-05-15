@@ -32,6 +32,15 @@ links:
   - target: "[[Palace To-Do]]"
     type: connects-to
     label: todo-as-action
+  - target: "[[Hilaritas Generator]]"
+    type: deepens
+    label: ceremony-joy
+  - target: "[[Quality Manifesto]]"
+    type: mirrors
+    label: artifact-as-measure
+  - target: "[[Cooperation Yields Agency]]"
+    type: couples-with
+    label: distributed-care-as-parallel-agents
 ---
 
 # Enrichment
