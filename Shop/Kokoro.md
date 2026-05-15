@@ -14,6 +14,9 @@ links:
   - { label: "pairs-with", target: "Shop/Whisper" }
   - { label: "feeds", target: "Shop/Manim CE" }
   - { label: "tested-by", target: "Artifacts/Shop/Kokoro/tests/" }
+  - target: "[[Kuramoto Coupling]]"
+    type: connects-to
+    label: phoneme-tested-on
 tags: [specialist, shop, sound, narration, tts]
 ---
 
