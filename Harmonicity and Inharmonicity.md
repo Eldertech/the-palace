@@ -20,6 +20,9 @@ links:
     type: connects-to
   - target: "[[Categorizing Inharmonicity]]"
     type: spawned
+  - target: "[[Piano String Inharmonicity]]"
+    type: emerged-from
+    label: b-coefficient-anchor
 forward_vector: "I ask what happens to coupling when the relationships break — how inharmonic partials create frustrated forces — and I use that frustration to clarify both instrument design and the physics of coherence."
 ---
 

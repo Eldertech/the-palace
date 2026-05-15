@@ -32,6 +32,9 @@ links:
   - target: "[[BBS Blackboard]]"
     type: connects-to
     label: "alternative-to"
+  - target: "[[Quality Manifesto]]"
+    type: connects-to
+    label: "tier-as-quality-boundary"
 ---
 
 # The Shop
