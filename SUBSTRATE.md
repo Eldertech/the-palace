@@ -1,5 +1,5 @@
 ---
-title: Substrate
+title: SUBSTRATE
 type: meta
 pillars:
   - tools
