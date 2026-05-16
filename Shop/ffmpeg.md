@@ -13,6 +13,9 @@ links:
   - { label: "directed-by", target: "Shop/Maker" }
   - { label: "connective-tissue", target: "Shop/" }
   - { label: "tested-by", target: "Artifacts/Shop/ffmpeg/tests/" }
+  - target: "[[Endosymbiosis]]"
+    type: enables
+    label: symbiotic-infrastructure
 tags: [specialist, shop, plumbing, audio, video, conversion]
 ---
 

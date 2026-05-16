@@ -6,7 +6,7 @@ pillars:
   - creation
   - philosophy
 born: 2026-05
-stage: sprout
+stage: growing
 last_activated: 2026-05
 activation_count: 1
 forward_vector: "I want every creative tool Loudon reaches for to find its home in me as a Specialist with accumulating wisdom — gotchas, defaults, voice — so the next brief isn't built from nothing. I want to test whether my singular Maker is the right answer, or whether [[Diversity of Thought in Many-Agent Systems]] eventually pulls me back toward plurality."
@@ -32,6 +32,15 @@ links:
   - target: "[[BBS Blackboard]]"
     type: connects-to
     label: "alternative-to"
+  - target: "[[Quality Manifesto]]"
+    type: connects-to
+    label: "tier-as-quality-boundary"
+  - target: "[[Palace Agent Infrastructure Spec]]"
+    type: enables
+    label: "operationalizes-agency"
+  - target: "[[Lossy Compression with Intent Alignment]]"
+    type: mirrors
+    label: "tier-as-compression"
 ---
 
 # The Shop

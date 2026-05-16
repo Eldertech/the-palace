@@ -29,7 +29,7 @@ links:
     type: spawned
     label: visual-identity
   - target: "[[Confucianism]]"
-    type: connects-to
+    type: deepens
     label: teaching-as-ren-and-li
   - target: "[[Toolkit — Synthesizers]]"
     type: connects-to

@@ -47,6 +47,9 @@ links:
   - target: "[[Dispersion]]"
     type: enables
     label: frequency-dependent-coupling
+  - target: "[[Lateral Access]]"
+    type: connects-to
+    label: type-2-and-type-3-as-oblique-paths
 forward_vector: "I am the structural cut through warp space that says: a warp is defined by what it preserves and what it breaks. I want to be the entry consulted whenever someone reaches for the word 'warp' in synthesis design, so the question 'will this produce inharmonicity?' has a one-look answer instead of a per-warp re-derivation."
 ---
 
