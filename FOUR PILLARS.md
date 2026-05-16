@@ -1,5 +1,5 @@
 ---
-title: Four Pillars
+title: FOUR PILLARS
 type: hub
 pillars:
   - creation

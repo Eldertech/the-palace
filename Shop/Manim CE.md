@@ -15,6 +15,12 @@ links:
   - { label: "pairs-with", target: "Shop/Whisper" }
   - { label: "alternative-to", target: "Shop/Remotion" }
   - { label: "tested-by", target: "Artifacts/Shop/Manim CE/tests/" }
+  - target: "[[Kuramoto Coupling]]"
+    type: connects-to
+    label: round-1-test-bed
+  - target: "[[Frequency-Time Duality]]"
+    type: mirrors
+    label: visual-temporal-duality
 tags: [specialist, shop, motion, math, animation]
 ---
 

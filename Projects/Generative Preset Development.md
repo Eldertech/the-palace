@@ -37,6 +37,9 @@ links:
   - target: "[[Action Potential Oscillator]]"
     type: deepens
     label: oscillator-synthesis-case
+  - target: "[[Floquet Theory]]"
+    type: mirrors
+    label: parameter-space-periodicity
 forward_vector: "I will become a pipeline capable of reading any synthesizer's preset format, building a deep 'profile' of its parameter space, and then — from a single abstract musical or emotional prompt — generating banks of custom presets, analyzing existing presets in modular synthesis language, and modifying them according to the user's aesthetic direction."
 ---
 

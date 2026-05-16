@@ -5,7 +5,7 @@ pillars:
   - tools
   - philosophy
 born: 2026-04
-stage: seed
+stage: sprout
 energy: high
 hook_quality: 10
 beauty: 9
@@ -32,6 +32,9 @@ links:
   - target: "[[Wavetable Space as Torus]]"
     type: connects-to
     label: temporal-floquet-kernel-twin
+  - target: "[[Shimmer Cloud]]"
+    type: mirrors
+    label: frequency-dependent-amplification
 forward_vector: "I want to be the physical anchor for the Floquet-in-time claim — the entry that points to a real laboratory where 'Bloch in time' is not a metaphor but a measured spectrum. I want to keep current with the experimental literature and stay the bridge from audio Floquet to its frontier-physics analog."
 ---
 

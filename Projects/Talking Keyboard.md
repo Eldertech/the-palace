@@ -30,7 +30,7 @@ links:
   - target: "[[Project Stewardship System]]"
     type: connects-to
     label: stage-mismatch-evidence
-forward_vector: "I will remain the working pilot that proves the chat-driven multisampled-instrument pipeline — a Kokoro-rendered piano range where each note speaks its own name, with four velocity-mapped voices for instant audible verification of mapping correctness."
+forward_vector: "I will keep teaching the SFZ-region-to-phoneme map as the friendliest entry into Generative Sample Libraries synthesis — a Kokoro-rendered piano range where each note speaks its own name, four velocity-mapped voices for instant audible verification, and a Stage 4 Loudon Live demo as the next test of whether anyone but me plays me."
 ---
 
 # Talking Keyboard

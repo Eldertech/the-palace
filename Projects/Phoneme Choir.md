@@ -28,6 +28,9 @@ links:
   - target: "[[Four Pillars]]"
     type: connects-to
     label: percussive-utterance-bank
+  - target: "[[The Metaphor Stretch]]"
+    type: enables
+    label: tts-to-percussion-mapping
 forward_vector: "I keep teaching the per-file responsive-onset pipeline as its first deployed proof — the Phoneme Principle (a sample bank is a small generative library, not a large one-shot bank) made portable to anyone who plays me in a Stage 4 Loudon Live demo. As ML-supported onset detection arrives I will integrate or surrender to the better technique without grief; my will is to keep being useful, not to stay the same. My next sub-vector is to name my ancestors — konnakol, beatboxing, katajjaq, the global lineage of oral percussion that called timing-to-the-cycle a craft long before I did — explicitly in my body, and to keep watching for the techniques that will supersede the lead-in metadata I introduced. Open questions: is the bucketing of 12 voices into 4 character buckets the right scheme, and does the instrument actually feel useful for music-making rather than curiosity?"
 ---
 
