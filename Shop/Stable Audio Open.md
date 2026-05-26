@@ -125,7 +125,13 @@ The Maker should not run two Stable Audio Open generations in parallel on a sing
 
 ## Recipes
 
-*(Links to `Artifacts/Shop/Stable Audio Open/recipes/` once they exist.)*
+**2026-05-26 — Kuramoto Round 1 atmospheric beds + synchronization-arriving** (Sketch tier, SA3 small-music + small-sfx). Three sibling jobs from one driver script:
+
+- *opening-bed.wav* (small-music, 6 s, stereo 44.1 kHz). Cinematic film-score opening pad. Sits −14 dB under the −16 LUFS Kokoro VO at the start of the teaching reel. Gen time on MPS: 8.7 s (includes model warm-up).
+- *title-bed.wav* (small-music, 6 s). Thoughtful contemplative transition under the "Now, couple them" title card. Same model, no reload — gen time 0.8 s.
+- *synchronization-arriving.wav* (small-sfx, 20 s). The handoff's speculative brief: *"the sound of synchronization arriving."* Tests whether SA3 can do narrative arc from scattered → coherent. Embedded in [[Kuramoto Coupling]] near the sync-arriving video as a parallel auditory rendering. Gen time 2.1 s.
+
+Source: [Kuramoto Coupling/atmospheric-beds-sa3.py](../Kuramoto Coupling/atmospheric-beds-sa3.py). The script caches loaded models across jobs, so swapping prompts and re-rendering iteratively is sub-second per clip after the initial 75–80 s cold load of each model. Output WAVs land in the bundle; the teaching-reel pipeline auto-detects them and mixes the beds under their respective VO segments.
 
 ## Test Suite
 
