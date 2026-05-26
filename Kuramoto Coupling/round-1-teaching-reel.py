@@ -128,25 +128,31 @@ def concat_with_audio() -> tuple[float, float, float]:
     has_opening_bed = OPENING_BED.exists()
     has_title_bed = TITLE_BED.exists()
 
+    # Track ffmpeg input indices explicitly — `-f lavfi -t X -i anullsrc=...`
+    # is one input but six argv tokens, so counting via `len(inputs) // 2`
+    # silently miscounts. The 7 fixed inputs are always present in this order:
     inputs: list[str] = [
-        "-i", str(UNCOUPLED_NORM),       # 0: uncoupled video
-        "-i", str(TITLE_CLIP),           # 1: title video
-        "-i", str(SYNC_ARRIVING),        # 2: sync video+audio
-        "-i", str(UNCOUPLED_NARRATION),  # 3: uncoupled VO
-        "-i", str(TITLE_NARRATION),      # 4: title VO
+        "-i", str(UNCOUPLED_NORM),       # input 0: uncoupled video
+        "-i", str(TITLE_CLIP),           # input 1: title video
+        "-i", str(SYNC_ARRIVING),        # input 2: sync video+audio
+        "-i", str(UNCOUPLED_NARRATION),  # input 3: uncoupled VO
+        "-i", str(TITLE_NARRATION),      # input 4: title VO
         "-f", "lavfi", "-t", f"{pad_uncoupled_tail:.3f}",
-        "-i", "anullsrc=channel_layout=mono:sample_rate=48000",  # 5: silent tail under uncoupled
+        "-i", "anullsrc=channel_layout=mono:sample_rate=48000",  # input 5
         "-f", "lavfi", "-t", f"{pad_title_tail:.3f}",
-        "-i", "anullsrc=channel_layout=mono:sample_rate=48000",  # 6: silent tail under title VO
+        "-i", "anullsrc=channel_layout=mono:sample_rate=48000",  # input 6
     ]
+    next_input_idx = 7
     bed_inputs_idx_opening = None
     bed_inputs_idx_title = None
     if has_opening_bed:
-        bed_inputs_idx_opening = (len(inputs) // 2)  # next input index
-        inputs += ["-i", str(OPENING_BED)]           # opening bed
+        bed_inputs_idx_opening = next_input_idx
+        inputs += ["-i", str(OPENING_BED)]
+        next_input_idx += 1
     if has_title_bed:
-        bed_inputs_idx_title = (len(inputs) // 2)
-        inputs += ["-i", str(TITLE_BED)]             # title bed
+        bed_inputs_idx_title = next_input_idx
+        inputs += ["-i", str(TITLE_BED)]
+        next_input_idx += 1
 
     bed_gain_amp = 10 ** (SAO_BED_GAIN_DB / 20)
 
