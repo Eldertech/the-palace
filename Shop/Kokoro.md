@@ -5,8 +5,8 @@ medium: sound
 tool: kokoro
 tool_version: 0.9.4
 adopted: 2026-05-06
-last_tested: 2026-05-10
-last_gotcha: 2026-05-10
+last_tested: 2026-05-26
+last_gotcha: 2026-05-26
 license: Apache-2.0
 links:
   - { label: "wraps", target: "kokoro-tts (external)" }
@@ -159,9 +159,15 @@ Dispatch by calling the venv's Python directly: `~/.venvs/kokoro/bin/python <scr
 
 **2026-05-10 — API surface is `KPipeline`, not a CLI.** Kokoro 0.9.4 exposes a Python `KPipeline(lang_code='a')(text, voice=..., speed=...)` generator yielding `(graphemes, phonemes, audio)` per chunk. The Specialist entry's Job Contract implies a CLI dispatch; in reality the Maker dispatches a small Python script that imports `KPipeline`. Concatenate the per-chunk audio (with optional inter-sentence silence) before writing the WAV.
 
+**2026-05-26 — pyloudnorm alone cannot hit Study spec; a true-peak limiter is required.** Kokoro 0.9.4 output (af_heart, 24 kHz mono) at default speed lands at ≈−25.6 LUFS pre-normalization, with a crest factor high enough that simple gain-up to −16 LUFS pushes peaks above −1 dBTP. `pyloudnorm` only does gain-shift, so its true-peak ceiling clamp pulls the final integrated loudness back down to ≈−22 LUFS — a Self-Check `spec_miss`. The working pattern is **two-pass ffmpeg `loudnorm`**: pass 1 measures `input_i / input_tp / input_lra / input_thresh / target_offset`, pass 2 applies with `measured_*` filled in plus `linear=true`. Two-pass loudnorm has a built-in true-peak limiter and lands within ~0.1 LUFS of target while honoring TP ≤ −1 dBTP. See `Kuramoto Coupling/speech-rhythm-and-groove-narration-study.py` for the reference implementation.
+
+**2026-05-26 — Self-Check correctly fires `spec_miss` outside ±0.5 LUFS — verified.** The standing assertion from the Specialist entry that Kokoro's Self-Check would catch loudness misses was unverified before this job. The first Study-tier render landed at −22.36 LUFS (single-pass pyloudnorm hitting the TP clamp) and the script returned `status: spec_miss` correctly. The verification path: render → measure → compare to target ±0.5 LUFS → emit `spec_miss` if outside. The check also needs a small (~0.1 dB) rounding tolerance on the true-peak ceiling so that a delivered TP printed as exactly `-1.00 dBTP` isn't flagged spuriously when the underlying value is microscopically above the limit.
+
 **2026-05-10 — Audio is `numpy.ndarray | torch.Tensor` depending on version.** Some Kokoro versions yield numpy arrays directly; others yield torch tensors. Defensive: `audio.detach().cpu().numpy() if hasattr(audio, 'detach') else np.asarray(audio)`. See `speech-rhythm-and-groove-narration.py` for the working pattern.
 
 ## Recipes
+
+**2026-05-26 — Speech rhythm and groove narration, Study tier re-render** (24 kHz mono, 36.475 s, −16.1 LUFS, −1.0 dBTP). Same text as the 2026-05-10 Sketch, same voice (`af_heart`), with EBU R128 two-pass `loudnorm` post (target I=−16, TP=−1, LRA=11, `linear=true`). Pre-loudness measured −25.58 LUFS; post-loudness −16.10 LUFS — inside ±0.5 LUFS. Self-Check passed `ok`. Replaces the Sketch artifact as the canonical narration for the Manim sync-arriving scene. Source: [Kuramoto Coupling/speech-rhythm-and-groove-narration-study.py](../Kuramoto Coupling/speech-rhythm-and-groove-narration-study.py). Report alongside: `.report.json`.
 
 **2026-05-10 — Speech rhythm and groove narration** (Sketch tier, 24 kHz mono, ~36 s). The first Kokoro job. Reads the *speech rhythm and groove coupling* paragraph from [[Kuramoto Coupling]] with voice `af_heart` at default speed. No phoneme overrides (Sketch tier). Word "Kuramoto" pronounced fluently without override. Source: [Kuramoto Coupling/speech-rhythm-and-groove-narration.py](../Kuramoto Coupling/speech-rhythm-and-groove-narration.py). Output: [Kuramoto Coupling/speech-rhythm-and-groove-narration.wav](../Kuramoto Coupling/speech-rhythm-and-groove-narration.wav). Render time on M-series + Python 3.12: ~25 s wall-clock for ~36 s of audio (first-run total includes ~30 s of model downloads).
 

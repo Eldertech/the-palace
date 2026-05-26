@@ -11,6 +11,13 @@
 __pycache__/
 *.pyc
 
+# Manim render cache (regenerable from source .py + Manim version)
+_manim_media/
+**/_manim_media/
+
+# Per-Specialist venvs (Kokoro, Whisper, etc. live in .venvs/<specialist>/)
+.venvs/
+
 # Enrichment server / worker runtime artifacts (logs, PIDs, started markers)
 Enrichment/.server.log
 Enrichment/.server.pid

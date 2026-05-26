@@ -1,12 +1,12 @@
 ---
 type: specialist
-status: stub
+status: alive
 medium: image
 tool: mermaid
 tool_version: 11.x
 adopted: 2026-05-09
-last_tested:
-last_gotcha:
+last_tested: 2026-05-26
+last_gotcha: 2026-05-26
 license: MIT
 links:
   - { label: "wraps", target: "mermaid-cli (external)" }
@@ -17,8 +17,6 @@ tags: [specialist, shop, image, diagram, stub]
 ---
 
 # Mermaid
-
-*This entry is a stub. Sections are present but lightly written. The first real job will fill it in.*
 
 ## Charter
 
@@ -97,11 +95,13 @@ Trivial. Local CLI or browser. No GPU. No network beyond initial install. No API
 
 ## Gotchas
 
-*(Empty until first job.)*
+**2026-05-26 — Obsidian-inline rendering is the Sketch-tier delivery path.** No `mmdc` install required; a fenced ```mermaid block embedded near the relevant prose renders inline in Obsidian and satisfies the Enrichment placement protocol without producing an SVG artifact in the bundle. For Study/Piece tiers where the diagram travels outside Obsidian (Loudon Live, exports), install `@mermaid-js/mermaid-cli` and produce an SVG into the bundle.
+
+**2026-05-26 — `<` and `>` inside node labels must be HTML-escaped.** Mermaid's parser treats raw `<` / `>` as tag delimiters and the diagram silently fails to render. Use `&lt;` / `&gt;` (the Kuramoto regime diagram needed `K &lt; K_c`, `K &gt; K_c`). `<br/>` for line breaks inside labels is fine — that's the one tag Mermaid passes through.
 
 ## Recipes
 
-*(Links to `Artifacts/Shop/Mermaid/recipes/` once they exist.)*
+**2026-05-26 — Kuramoto coupling-regime diagram (Sketch, Obsidian-inline).** Three-state flowchart of `K<K_c` (drift) / `K≈K_c` (critical) / `K>K_c` (lock) with bidirectional transitions, palette `#6366F1` (indigo) / `#F59E0B` (amber) / `#0B0B10` (background) matching the Kuramoto arc. Embedded inline in [[Kuramoto Coupling]] near the K-regime paragraph. Classes used: `drift` (indigo stroke), `crit` (amber dashed stroke), `lock` (amber filled). Pattern is reusable for any three-regime phase-transition diagram.
 
 ## Test Suite
 

@@ -5,8 +5,8 @@ medium: sound
 tool: whisper
 tool_version: large-v3
 adopted: 2026-05-09
-last_tested:
-last_gotcha:
+last_tested: 2026-05-26
+last_gotcha: 2026-05-26
 license: MIT
 links:
   - { label: "wraps", target: "openai-whisper (external)" }
@@ -146,17 +146,22 @@ The Maker should not run a `large-v3` Whisper transcription in parallel with a M
 
 ## Gotchas
 
-*(Empty until first job. Patterns to watch for, based on Whisper community wisdom — confirmed and dated only on first encounter:)*
+**2026-05-26 — "Kuramoto" transcribes as "curimodo" at `base` model.** Confirms the standing warning that technical vocabulary gets phonetically approximated. The Kokoro-rendered narration with no phoneme override produced this exact miss. Two fixes available: (1) phoneme override on the Kokoro side (`[Kuramoto](/k uw r ah m oh t oh/)` style) before rendering; (2) Whisper `--initial_prompt "Kuramoto coupling, oscillator, theta band"` to bias the language model toward the project vocabulary. For round-trip integrity testing the override should live on the *Kokoro* side — that's where the pronunciation actually wants to be correct.
+
+**2026-05-26 — "entrains to it" → "in trains to it" at `base` model.** Compound verbs with rare technical use ("entrain", "phase-lock", "couple") fragment into common-word lookalikes. Same fix path as above — project-glossary initial_prompt or a Piece-tier `large-v3` pass.
+
+**2026-05-26 — `base` model is sufficient for clean Kokoro narration sync.** Decided the standing open question. For Study-tier text-to-speech-to-text round-trips on a 24 kHz mono Kokoro WAV (no noise, no accent, no reverb), `base` (~150 MB) gives monotonic word timing with mean segment avg_logprob = −0.15, end-of-audio detection within 1 second of true duration. Word-timing precision is well inside the ±10ms `manim-voiceover` needs at this length. Reserve `small` for accented speech or low-SNR sources; reserve `large-v3` for Piece-tier published work and for technical-vocabulary recovery.
 
 - Long silences trigger hallucinated phrases (`"thank you for watching"`, `"please subscribe"`). VAD pre-pass is the standard fix
 - Word timing drifts by 50–200ms on audio with very dense speech or significant reverb; `whisperx` realigns at the cost of an extra step
-- Technical vocabulary (`Floquet`, `Kuramoto`, `RNBO`) gets phonetically approximated — the transcript is "Floky," "Kuramotor," "rin-bo." Maintain a project glossary for `Piece`-tier review
 - Speaker diarization with `whisperx --diarize` is sensitive to overlapping speech; clean turn-taking gives accurate boundaries, talk-over does not
 - Model version drift is real — pinning `large-v3` does not pin every checkpoint hash; archive the model weights alongside Piece-tier transcripts for true reproducibility
 
 ## Recipes
 
-Links to working examples in `Artifacts/Shop/Whisper/recipes/` once they exist. Likely first set: a `manim-voiceover` sync recipe (Kokoro WAV → Whisper word timing → Manim animation), a Loudon Live captioning recipe, a low-SNR phone-recording recovery recipe.
+**2026-05-26 — Kokoro → Whisper round-trip on Kuramoto narration** (Study tier, `base` model, 36.5s audio). Input: `Kuramoto Coupling/speech-rhythm-and-groove-narration-study.wav` (af_heart, −16 LUFS). Command: `whisper <wav> --model base --language en --word_timestamps True --output_format json`. Output: 9 segments / 92 words, monotonic timing, last word ends at 35.8s. Mean segment avg_logprob: −0.15. Wall-clock on M-series CPU after model download: ~7s (well under real-time). Round-trip text loss: "Kuramoto" → "curimodo", "entrains" → "in trains" — both predicted technical-vocab misses; the rest of the transcript is verbatim. Output JSON consumed downstream by `manim-voiceover` for the sync-arriving scene.
+
+Future recipes: a Loudon Live captioning recipe, a low-SNR phone-recording recovery recipe.
 
 ## Test Suite
 
