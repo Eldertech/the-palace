@@ -156,7 +156,7 @@ This concept appears everywhere once you see it:
 >
 > ![[sync-arriving.mp4]]
 
-> **Round 1 teaching reel.** The whole arc end-to-end — two phasors uncoupled (no audio), a title-card pivot (*Now couple them*), the sync-arriving Manim+narration. Built by ffmpeg from the upstream specialist outputs; one teaching reel as the connective-tissue proof for the Shop.
+> **Round 1 teaching reel.** The whole arc end-to-end — two phasors uncoupled (with narration), a title-card pivot (*Now couple them*), the sync-arriving Manim+narration. Built by ffmpeg from the upstream specialist outputs; one teaching reel as the connective-tissue proof for the Shop.
 >
 > ![[round-1-teaching-reel.mp4]]
 

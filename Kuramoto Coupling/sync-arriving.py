@@ -42,7 +42,7 @@ DIM = ManimColor("#3F3F46")
 TEXT_DIM = ManimColor("#E5E7EB")
 BG = ManimColor("#0B0B10")
 
-DURATION = 36.475
+DURATION = 36.38
 N = 8
 SIGMA = 0.30                       # rad/s — std-dev of natural frequencies
 K_C = 2.0 * SIGMA * np.sqrt(2.0 / np.pi)   # analytic K_c for a Gaussian g(ω)
@@ -86,7 +86,13 @@ def at(arr: np.ndarray, t: float):
 
 class SyncArriving(Scene):
     def construct(self) -> None:
-        title = Text("Synchronization arriving", font_size=36, color=TEXT_DIM)
+        # Georgia is installed system-wide on macOS and has tighter kerning than
+        # Manim's default Pango font (DejaVu Sans), which left a visible gap
+        # between the 'iv' pair in "arriving" — caught on first review.
+        title = Text(
+            "Synchronization arriving",
+            font="Georgia", font_size=38, color=TEXT_DIM,
+        )
         title.to_edge(UP, buff=0.4)
         self.add(title)
 
@@ -110,6 +116,19 @@ class SyncArriving(Scene):
             for j in range(N)
         ])
         self.add(circles)
+
+        # Label the row of dials so a first-time viewer knows what they are.
+        # Manim default font here (not Georgia) — Pango drops inter-word spaces
+        # when rendering Georgia at sizes below ~22 in Manim CE 0.20.1.
+        dials_label = Text(
+            f"{N} oscillator phase dials",
+            font_size=22, color=TEXT_DIM,
+        ).next_to(circles, UP, buff=0.20)
+        dials_sub = Text(
+            "each arrow is one oscillator's instantaneous phase angle",
+            font_size=16, color=DIM, slant="ITALIC",
+        ).next_to(dials_label, UP, buff=0.08)
+        self.add(dials_label, dials_sub)
 
         def make_arrow(j: int):
             def factory() -> Arrow:
@@ -138,8 +157,17 @@ class SyncArriving(Scene):
         R_center = np.array([0.0, -2.2, 0.0])
         R_radius = 1.1
         unit = Circle(radius=R_radius, color=DIM, stroke_width=2).move_to(R_center)
-        r_label = Text("R", font_size=22, color=TEXT_DIM).next_to(unit, UR, buff=0.15)
-        self.add(unit, r_label)
+        # Explicit labels for the central dial — the viewer needs to know
+        # this is the population's collective coherence, not another oscillator.
+        r_main_label = Text(
+            "order parameter |R|",
+            font_size=22, color=TEXT_DIM,
+        ).next_to(unit, UP, buff=0.18)
+        r_sub_label = Text(
+            "the mean phase vector of all 8 dials  ·  |R| → 1 means locked",
+            font_size=15, color=DIM, slant="ITALIC",
+        ).next_to(r_main_label, UP, buff=0.08)
+        self.add(unit, r_main_label, r_sub_label)
 
         def r_vector_factory() -> Arrow:
             t = float(clock.get_value())
@@ -161,13 +189,15 @@ class SyncArriving(Scene):
         # HUD readouts.
         def k_text() -> Text:
             K_now = float(at(K_VALS, clock.get_value()))
-            return Text(f"K = {K_now:.2f}", font_size=22, color=AMBER) \
-                .to_corner(UL, buff=0.4)
+            return Text(
+                f"K = {K_now:.2f}", font_size=22, color=AMBER,
+            ).to_corner(UL, buff=0.4)
 
         def r_text() -> Text:
             R_now = float(at(R_VALS, clock.get_value()))
-            return Text(f"|R| = {R_now:.2f}", font_size=22, color=AMBER) \
-                .to_corner(UL, buff=0.4).shift(np.array([0.0, -0.4, 0.0]))
+            return Text(
+                f"|R| = {R_now:.2f}", font_size=22, color=AMBER,
+            ).to_corner(UL, buff=0.4).shift(np.array([0.0, -0.4, 0.0]))
 
         kc_caption = Text(
             f"K_c ≈ {K_C:.2f}  (Gaussian ω, σ = {SIGMA:.2f} rad/s)",

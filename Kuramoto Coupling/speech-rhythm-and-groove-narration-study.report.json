@@ -1,16 +1,12 @@
 {
-  "duration_sec": 36.475,
+  "slug": "speech-rhythm-and-groove-narration-study",
+  "duration_sec": 36.375,
   "sample_rate_hz": 24000,
   "channels": 1,
   "voice_used": "af_heart",
   "tier_used": "study",
-  "loudness_lufs_pre": -25.58,
-  "loudness_lufs": -16.1,
-  "loudness_target_lufs": -16.0,
-  "loudness_tolerance_lufs": 0.5,
+  "loudness_lufs_pre": -25.63,
+  "loudness_lufs": -16.09,
   "peak_dbtp": -1.0,
-  "true_peak_ceiling_dbtp": -1.0,
-  "gotchas_hit": [],
-  "status": "ok",
-  "notes": "pre=-25.58 LUFS  post=-16.10 LUFS  peak=-1.00 dBTP  target=-16.0\u00b10.5"
+  "status": "ok"
 }
