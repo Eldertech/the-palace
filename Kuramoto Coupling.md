@@ -184,3 +184,7 @@ The musical mapping becomes explicit:
 - Adaptive/Hebbian coupling (dKᵢⱼ/dt = ε(sin(θⱼ - θᵢ) - Kᵢⱼ)): a system that discovers its own harmonic structure. What prevents it from converging to a single rigid state?
 - Hysteresis near Kc: sweeping K up produces synchronization at one threshold; sweeping down, coherence persists longer before breaking. Can this asymmetry be musically exploited?
 
+## Active Handoff
+
+[[Kuramoto Coupling — handoff]] — drafted 2026-05-26. Carries Round 1's continuation: Track B (Kokoro→Whisper→Manim coordination test — the Shop's architecture proof, which also re-renders the narration at the correct −16 LUFS) and Track A (first jobs for the remaining sweep Specialists: Mermaid, Tone.js, ffmpeg, ComfyUI, Stable Audio Open, Remotion). Matplotlib was credited alive this session for its fallback render.
+
