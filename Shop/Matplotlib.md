@@ -1,24 +1,23 @@
 ---
 type: specialist
-status: stub
+status: alive
 medium: image
 tool: matplotlib
-tool_version: 3.9.x
+tool_version: 3.10.8
 adopted: 2026-05-09
-last_tested:
-last_gotcha:
+last_tested: 2026-05-10
+last_gotcha: 2026-05-10
 license: PSF / BSD-style
 links:
   - { label: "wraps", target: "matplotlib (external)" }
   - { label: "directed-by", target: "Shop/Maker" }
   - { label: "alternative-to", target: "Shop/Plotly (planned)" }
+  - { label: "fallback-for", target: "Shop/Manim CE" }
   - { label: "tested-by", target: "Artifacts/Shop/Matplotlib/tests/" }
-tags: [specialist, shop, image, chart, scientific, stub]
+tags: [specialist, shop, image, chart, scientific]
 ---
 
 # Matplotlib
-
-*This entry is a stub. Sections are present but lightly written. The first real job will fill it in.*
 
 ## Charter
 
@@ -111,15 +110,20 @@ Output exists, format matches request, dimensions are within ±2px of `figsize �
 
 ## Gotchas
 
-*(Empty until first job.)*
+- **2026-05-10** — First job was *motion*, not a static chart: I stood in for Manim CE when `manimpango` couldn't install in the Cowork Linux-arm64 sandbox, rendering the two-phasor Sketch via `matplotlib.animation.FuncAnimation` → `FFMpegWriter`. This is off-Charter (I declare animation as "rare; usually route to Manim"), but viable at Sketch tier. The output has its own flatter character — no anti-aliased LaTeX, simpler strokes — which is why the artifact was *retained* as a Comparison-Mode piece rather than discarded. Lesson: I am a real Manim fallback for motion when Manim can't host, with a known aesthetic gap.
+- **2026-05-10** — `FFMpegWriter` needs `ffmpeg` on PATH (present in the sandbox) and `extra_args=["-pix_fmt","yuv420p"]` for broad player/QuickTime compatibility. Without yuv420p the MP4 plays in some viewers and not others.
+- **2026-05-10** — `figsize`(inches) × `dpi` doesn't land on standard resolutions cleanly: 10.6in × 120dpi → 1272px, not 1280. For video work set `figsize = target_px / dpi` and confirm **even** pixel dimensions (yuv420p requires even width/height). The Sketch shipped at 1272×720 — fine for a draft, but Study/Piece motion should target exact resolutions.
+- **2026-05-10** — Job Contract path note: the Output section still says source archives "alongside" under `Artifacts/<project>/`. Current palace policy (Enrichment v1.5) is flat bundle root with descriptive filenames — the fallback shipped as `Kuramoto Coupling/two-phasors-uncoupled-matplotlib.py`. Same correction Manim CE's entry took.
 
 ## Recipes
 
-*(Links to `Artifacts/Shop/Matplotlib/recipes/` once they exist.)*
+- **Two-phasor uncoupled Sketch (Manim fallback)** — `Kuramoto Coupling/two-phasors-uncoupled-matplotlib.py`. `FuncAnimation` over a `ValueTracker`-style time loop, two rotating phasors + growing sine traces on a shared time axis, dark palette. The reusable pattern for "motion when Manim can't host." Rendered 1272×720, 30fps, 10.03s.
 
 ## Test Suite
 
-Smoke / Capability Probe / Style Probe / Edge Probe / Speed Bench / Determinism — defined in `Artifacts/Shop/Matplotlib/tests/test-plan.md` (TODO). Last run: never.
+Smoke / Capability Probe / Style Probe / Edge Probe / Speed Bench / Determinism — defined in `Artifacts/Shop/Matplotlib/tests/test-plan.md` (TODO).
+
+Last run: 2026-05-10 — Smoke + first job (two-phasor Sketch as a Manim motion fallback). Static-chart capability still unexercised; the Forward Vector's Bode-plot job remains the real Capability Probe.
 
 ## Open Questions
 
