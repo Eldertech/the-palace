@@ -1,0 +1,13 @@
+{
+  "slug": "synchronization-arriving",
+  "model_id": "small-sfx",
+  "prompt": "the sound of synchronization arriving, scattered ticking and beating pulses at slightly different rates that gradually pull into a shared rhythm and lock together, mechanical to organic, phase-locking, coherence emerging from incoherence, ambient texture with a clear arc from chaos to order",
+  "duration_sec": 20,
+  "sample_rate_hz": 44100,
+  "channels": 2,
+  "device": "mps",
+  "generation_time_sec": 2.14,
+  "peak_dbfs": -1.0,
+  "tier_used": "sketch",
+  "status": "ok"
+}

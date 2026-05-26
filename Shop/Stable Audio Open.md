@@ -1,12 +1,14 @@
 ---
 type: specialist
-status: installed
+status: alive
 medium: sound
-tool: stable-audio-open
-tool_version: 1.0
+tool: stable-audio-3
+tool_version: 3.0
 adopted: 2026-05-09
-last_tested:
-last_gotcha:
+migrated_from: stable-audio-open-1.0
+migrated_at: 2026-05-26
+last_tested: 2026-05-26
+last_gotcha: 2026-05-26
 license: Stability AI Community License (research/commercial conditional)
 links:
   - { label: "wraps", target: "stable-audio-open-1.0 (external)" }
@@ -18,7 +20,7 @@ tags: [specialist, shop, sound, generative, music, sfx, stub]
 
 # Stable Audio Open
 
-*Installed on 2026-05-26. First job (the "sound of synchronization arriving" brief) is queued for the next session.*
+*Migrated 2026-05-26 from Stable Audio Open 1.0 to Stable Audio 3 — Loudon noticed mid-install that SA3 had been released ten days earlier and called the pivot. The file name `Shop/Stable Audio Open.md` is now historical; a future Schema Ceremony will likely rename it to `Shop/Stable Audio.md` once the rest of the palace's wikilinks have been audited.*
 
 ## Charter
 
@@ -111,7 +113,13 @@ The Maker should not run two Stable Audio Open generations in parallel on a sing
 
 ## Gotchas
 
-**2026-05-26 — Install requires Python 3.10 specifically; the published `requires_python: <3.11,>=3.10` constraint is real.** The first attempt on Python 3.12 (where the rest of the Shop's sound stack lives — Kokoro, Whisper) failed with a pandas wheel build error. The root cause isn't pandas: it's `stable-audio-tools 0.0.20` pinning Python <3.11 in its metadata, which pip resolves around by attempting to source-build older deps that don't have 3.12 wheels. Fix path: `brew install python@3.10`, then `python3.10 -m venv .venvs/stable-audio-310 && pip install stable-audio-tools`. Clean install in ~3 min, no pandas in the base install (pandas only appears under the `[train]` extra, which the Shop doesn't need for inference jobs). The Specialist now has its own venv outside the kokoro one — a Shop pattern: per-Specialist venvs let each tool pin its Python and dep set without contaminating its neighbors.
+**2026-05-26 — Migrated from `stable-audio-tools` (SAO 1.0) to `stable-audio-3` (SA3 family).** SA3 launched 2026-05-16 with a different library (`pip`-installable as a git checkout, not on PyPI), a different model family (`small-music`, `small-sfx`, `medium`, with `medium` being CUDA-only), and a clean two-line API (`StableAudioModel.from_pretrained("small-music")` + `model.generate(prompt=..., duration=...)`). Install path on Mac: `git clone https://github.com/Stability-AI/stable-audio-3 _tools/stable-audio-3 && cd _tools/stable-audio-3 && uv sync` produces a working `.venv` with the `hf` CLI for HF auth. Generation on Mac MPS: cold model load ≈ 75–80 s the first time each model is loaded; subsequent renders are fast (0.8 s for a 6 s music clip, 2.1 s for a 20 s SFX clip on M-series). Total install footprint ~3 GB (model weights cached at `~/.cache/huggingface/hub/`).
+
+**2026-05-26 — `small-music` and `small-sfx` are 433M-param sibling models with different training corpora.** small-music handles sustained pads, tonal content, instrumental textures cleanly. small-sfx handles scattered/textural/non-tonal content — ticks, beats, pulses, ambient SFX with structure. The Maker's selection heuristic: brief mentions melody / chord / pad / mood → small-music; brief mentions effect / scatter / impact / texture → small-sfx. Both models share the SAME-Small autoencoder, so a future workflow could feed small-music output through small-sfx for hybrid texture. Medium is musically the strongest but requires CUDA — out of scope for Mac local until Stability ships a CoreML variant.
+
+**2026-05-26 — `flash_attn` warnings on Mac are expected, not errors.** The package prints `No module named 'flash_attn'` / `disabling Flash Attention` at import time — this is the small model paths taking their non-flash fast path. The warnings are harmless and the model runs cleanly without flash-attn. Only the `medium` model genuinely needs flash-attn (and only on CUDA, where it's installable via the pre-built wheels the SA3 README links).
+
+**2026-05-26 — The earlier SAO 1.0 install attempts were wasted work (~3 min total).** The `pandas`-build failure on Python 3.12 was a symptom of `stable-audio-tools`' `requires_python: <3.11,>=3.10` constraint; the `python@3.10` + `.venvs/stable-audio-310/` venv I built around it was discarded before any generation, replaced by SA3's `uv`-managed environment. Lesson: when a model family has been superseded for ten days, ask "is there a newer one?" before committing install time to the older one — Loudon's question pivoted the work and saved the next round. The first attempt on Python 3.12 (where the rest of the Shop's sound stack lives — Kokoro, Whisper) failed with a pandas wheel build error. The root cause isn't pandas: it's `stable-audio-tools 0.0.20` pinning Python <3.11 in its metadata, which pip resolves around by attempting to source-build older deps that don't have 3.12 wheels. Fix path: `brew install python@3.10`, then `python3.10 -m venv .venvs/stable-audio-310 && pip install stable-audio-tools`. Clean install in ~3 min, no pandas in the base install (pandas only appears under the `[train]` extra, which the Shop doesn't need for inference jobs). The Specialist now has its own venv outside the kokoro one — a Shop pattern: per-Specialist venvs let each tool pin its Python and dep set without contaminating its neighbors.
 
 **2026-05-26 — Host-capability check (resolved on a new Python).** The first Track-A brief that would have exercised this Specialist — a speculative *"the sound of synchronization arriving"*, ~20 s, scattered → coherent — bounced at the host-capability-check step. No `stable-audio-tools` package, no checkpoint cached. Install cost: a Python venv with `torch` + `stable-audio-tools` + a 4–5 GB model checkpoint from Hugging Face (requires accepting the Stability AI Community License at first download). Marking the Specialist as awaiting install rather than dispatching a synthetic stub. The speculative brief is preserved in open questions for the next install pass — it's a real test of whether the model produces narrative arc or only texture.
 

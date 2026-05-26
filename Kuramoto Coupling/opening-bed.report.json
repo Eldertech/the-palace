@@ -1,0 +1,13 @@
+{
+  "slug": "opening-bed",
+  "model_id": "small-music",
+  "prompt": "cinematic film-score opening, ethereal sustained pad, dark contemplative atmosphere, warm low strings rising slowly, subtle low bell tones, educational documentary intro, no melody just texture, builds gently then settles, no percussion",
+  "duration_sec": 6,
+  "sample_rate_hz": 44100,
+  "channels": 2,
+  "device": "mps",
+  "generation_time_sec": 8.72,
+  "peak_dbfs": -1.0,
+  "tier_used": "sketch",
+  "status": "ok"
+}

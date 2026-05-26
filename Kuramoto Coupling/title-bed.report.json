@@ -1,0 +1,13 @@
+{
+  "slug": "title-bed",
+  "model_id": "small-music",
+  "prompt": "thoughtful contemplative transition, gentle synthesizer pad with a soft bell strike at the start, suspended chord that hints at coming resolution, calm anticipation, atmospheric texture, warm amber feel, spacious and patient, no rhythm, no melody",
+  "duration_sec": 6,
+  "sample_rate_hz": 44100,
+  "channels": 2,
+  "device": "mps",
+  "generation_time_sec": 0.79,
+  "peak_dbfs": -1.0,
+  "tier_used": "sketch",
+  "status": "ok"
+}
