@@ -15,6 +15,10 @@ __pycache__/
 _manim_media/
 **/_manim_media/
 
+# ffmpeg pipeline intermediates inside bundles (regenerable from the .py)
+**/_*.mp4
+**/_*.png
+
 # Per-Specialist venvs (Kokoro, Whisper, etc. live in .venvs/<specialist>/)
 .venvs/
 

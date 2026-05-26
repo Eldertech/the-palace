@@ -5,8 +5,9 @@ medium: plumbing
 tool: ffmpeg
 tool_version: 7.x
 adopted: 2026-05-09
-last_tested:
-last_gotcha:
+last_tested: 2026-05-26
+last_gotcha: 2026-05-26
+status: alive
 license: LGPL-2.1+ / GPL-2+ (build-dependent)
 links:
   - { label: "wraps", target: "ffmpeg (external)" }
@@ -144,7 +145,13 @@ The Maker may run ffmpeg in parallel with most other Specialists — it doesn't 
 
 ## Gotchas
 
-*(Empty until first job. Patterns to watch for, based on ffmpeg community wisdom — confirmed and dated only on first encounter:)*
+**2026-05-26 — Homebrew ffmpeg ships without `drawtext` (no libfreetype/libharfbuzz).** `brew install ffmpeg` produces a build with `--disable-libfreetype`. Any filtergraph using `drawtext=...` fails immediately with `No such filter: 'drawtext'`. The workaround is to generate text content as a PNG in another tool (Matplotlib worked cleanly for the Kuramoto reel's title card) and `-loop 1 -i title.png -t <seconds>` into a still-clip. For real drawtext support, either install `ffmpeg --HEAD --with-...` from a custom tap, or use the `homebrew-ffmpeg/ffmpeg/ffmpeg` tap with `--with-freetype`. The PNG-as-clip path is preferable for the Shop: title cards become a Matplotlib Specialist job that produces a versioned source artifact instead of a baked-in string buried in the ffmpeg command.
+
+**2026-05-26 — The `concat` filter consumes referenced streams in full each appearance, not bounded by the paired video segment's duration.** Surfaced on the Kuramoto teaching-reel job. A filtergraph that referenced a single 13 s silent track `[3:a]` twice — once paired with the 10 s uncoupled clip, once with the 3 s title card — produced a 62.5 s output instead of the expected 49.5 s: the silent track was played to its full 13 s length on each of its two appearances inside `concat=n=3:v=1:a=1`, then the 36.5 s narration was appended after. The fix is one silent source per silent segment, lengths matched to their video pairs (`-f lavfi -t 10 -i anullsrc=... -f lavfi -t 3 -i anullsrc=...`). Lesson: `concat` does not trim audio to match its paired video; the Maker's job spec must size each audio input precisely. An `asplit` of one source into N equal copies has the same issue — each branch still plays the full source.
+
+**2026-05-26 — `loudnorm` two-pass upsamples internally to 96/192 kHz and propagates that rate to the encoder unless `-ar` pins it.** The first teaching-reel render delivered a clean −16.15 LUFS / −0.94 dBTP audio track — but at 96 kHz, against the house finished-mix standard of 48 kHz stereo. The fix is to add `-ar 48000` (or whatever the brief targets) to the final encode pass; `loudnorm` itself doesn't expose an output sample rate. If the standards report doesn't surface sample rate explicitly, this drift will pass unnoticed. The Specialist's Self-Check now treats sample rate as part of the spec.
+
+*(Patterns below from ffmpeg community wisdom — confirmed and dated only on first encounter:)*
 
 - Stream copy fails silently (or worse, succeeds with garbage) when codec parameters mismatch across concat inputs. Always `ffprobe` inputs before concat-stream-copy
 - The default `aac` encoder has a quality ceiling around 256 kbps; `libfdk_aac` is materially better but is not in every ffmpeg build. Verify via `ffmpeg -codecs | grep aac` before relying on it
@@ -155,7 +162,7 @@ The Maker may run ffmpeg in parallel with most other Specialists — it doesn't 
 
 ## Recipes
 
-Links to working examples in `Artifacts/Shop/ffmpeg/recipes/` once they exist. Likely first set: a Kokoro-narration-into-Manim-render concat recipe, a multi-clip Loudon Live timeline assembly, an EBU R128 loudness pipeline.
+**2026-05-26 — Kuramoto Round 1 teaching reel** (Study tier, 1280×720@30, 49.5 s, −16.15 LUFS). Concats the two-phasors-uncoupled Manim clip (854×480@15, 10 s, silent), a Matplotlib-generated title card stretched into a 3 s still-clip, and the sync-arriving narrated animation (1280×720@30, 36.5 s, Kokoro Study narration). Pipeline (Python script): make title PNG via Matplotlib → encode title PNG as 3 s H.264 clip → re-encode uncoupled clip to 1280×720@30 with letterbox padding (matches sync-arriving's geometry; required by `concat` re-encode) → `concat=n=3:v=1:a=1` with per-segment silent audio sources (one `anullsrc` per silent video, sized exactly to that video's duration) → two-pass `loudnorm` to −16 LUFS / −1 dBTP with `linear=true` → final encode at H.264/AAC, 48 kHz audio. Source: [Kuramoto Coupling/round-1-teaching-reel.py](../Kuramoto Coupling/round-1-teaching-reel.py). Output: [Kuramoto Coupling/round-1-teaching-reel.mp4](../Kuramoto Coupling/round-1-teaching-reel.mp4). Report: `.report.json` next to output. First successful end-to-end Kuramoto teaching reel; closes the ffmpeg connective-tissue role for Round 1.
 
 ## Test Suite
 

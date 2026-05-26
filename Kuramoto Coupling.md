@@ -144,9 +144,13 @@ This concept appears everywhere once you see it:
 
 ![[speech-rhythm-and-groove-narration.wav]]
 
-> **Sync arriving.** Eight oscillators with slightly different natural frequencies; K ramps from zero to ~1.2 over the narration. Phase arrows fade from indigo to amber as each falls into the lock; the central order-parameter vector |R| climbs from near-zero to near-one as the population coheres. The same narration above is the soundtrack — text rendered to speech (Kokoro, af_heart, −16 LUFS), speech read back to word timings (Whisper base), and the Manim scene timed against those readings. Drift over 36 s: 25 ms.
+> **Sync arriving.** Eight oscillators with slightly different natural frequencies; K ramps from zero across the narration. Phase arrows fade from indigo to amber as each falls into the lock; the central order-parameter vector |R| climbs from near-zero to near-one as the population coheres. The same narration above is the soundtrack — text rendered to speech (Kokoro, af_heart, −16 LUFS), speech read back to word timings (Whisper base), and the Manim scene timed against those readings. Drift over 36 s: 25 ms.
 >
 > ![[sync-arriving.mp4]]
+
+> **Round 1 teaching reel.** The whole arc end-to-end — two phasors uncoupled (no audio), a title-card pivot (*Now couple them*), the sync-arriving Manim+narration. Built by ffmpeg from the upstream specialist outputs; one teaching reel as the connective-tissue proof for the Shop.
+>
+> ![[round-1-teaching-reel.mp4]]
 
 ## In Our Instruments
 
