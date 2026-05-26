@@ -1,0 +1,14 @@
+{
+  "duration_sec": 110.38,
+  "checkpoint": "sd_xl_base_1.0.safetensors",
+  "seed": 7,
+  "steps": 30,
+  "cfg": 7.0,
+  "sampler": "euler",
+  "scheduler": "normal",
+  "width": 1216,
+  "height": 832,
+  "comfy_filename": "fireflies-pond_00001_.png",
+  "tier_used": "sketch",
+  "status": "ok"
+}

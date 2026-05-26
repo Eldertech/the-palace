@@ -1,6 +1,6 @@
 ---
 type: specialist
-status: awaiting-install
+status: alive
 medium: image
 tool: comfyui
 tool_version: 0.3.x
@@ -159,7 +159,11 @@ When local VRAM stops being enough (Flux Pro, video generation, batch Pieces) th
 
 ## Gotchas
 
-**2026-05-26 — Host-capability check: not installed on the canonical Loudon machine.** The first Track-A job that would have exercised this Specialist — a "fireflies synchronizing over a forest pond at dusk" image at the Kuramoto arc's palette — bounced at the host-capability-check step. No ComfyUI in `~/ComfyUI` or `/Applications`, no `comfyui` on PATH. Install cost is real: `git clone` ComfyUI, a Python venv with torch + xformers + 30+ custom-node dependencies, and at minimum one checkpoint (SDXL ~7 GB, Flux Dev ~24 GB). Marking the Specialist as awaiting install rather than dispatching anyway. The frontier brief — fireflies over a forest pond — is captured in the open questions for the next install pass.
+**2026-05-26 — Install path on Mac arm64 confirmed: `_tools/ComfyUI/` checkout + Python 3.12 venv + `pip install -r requirements.txt` + SDXL checkpoint (~6.9 GB) in `models/checkpoints/`.** Torch 2.12.0 picks up MPS automatically (`torch.backends.mps.is_available()` returns True), no Metal-specific install needed. ComfyUI server starts with `python main.py --listen 127.0.0.1 --port 8188` and `system_stats` reports `device: mps / type: mps`. Total disk footprint after first model: ~8 GB (venv 1 GB + ComfyUI source 200 MB + SDXL 6.9 GB). The Specialist's wrapped tool is now reachable from the Maker's dispatch path.
+
+**2026-05-26 — Polling silence during MPS model load is normal.** First render after starting the server stayed in "queued" state for ~100 s before the ComfyUI history endpoint returned any progress, then completed in another ~10 s. Subsequent renders should be faster because the checkpoint stays in unified memory. The poll loop should not interpret a long queued state as an error — set a generous timeout (10 min for first-render SDXL at 30 steps / 1216×832 on MPS) and let it cook. The `fireflies-pond-render.py` driver lives in the bundle as a reference implementation.
+
+**2026-05-26 — Host-capability check (resolved).** The earlier 2026-05-26 host-capability gotcha is now resolved — the install steps are above, and the Specialist is alive with a real first recipe. The first Track-A job that would have exercised this Specialist — a "fireflies synchronizing over a forest pond at dusk" image at the Kuramoto arc's palette — bounced at the host-capability-check step. No ComfyUI in `~/ComfyUI` or `/Applications`, no `comfyui` on PATH. Install cost is real: `git clone` ComfyUI, a Python venv with torch + xformers + 30+ custom-node dependencies, and at minimum one checkpoint (SDXL ~7 GB, Flux Dev ~24 GB). Marking the Specialist as awaiting install rather than dispatching anyway. The frontier brief — fireflies over a forest pond — is captured in the open questions for the next install pass.
 
 *(Patterns below from ComfyUI community wisdom — confirmed and dated only on first encounter:)*
 
@@ -171,7 +175,7 @@ When local VRAM stops being enough (Flux Pro, video generation, batch Pieces) th
 
 ## Recipes
 
-Links to working examples in `Artifacts/Shop/ComfyUI/recipes/` once they exist. Likely first set: a Loudon Live header workflow (Flux Dev + IP-Adapter), an SDXL palette-anchor template, a ControlNet composition template.
+**2026-05-26 — Fireflies pond, dusk atmospheric** (Sketch tier, SDXL base 1.0, 1216×832, 30 steps euler/normal, seed=7, cfg=7.0). First ComfyUI job on the new local install. Prompt anchors palette via word choice — *"indigo blue sky reflecting in dark water, warm amber firefly light"* — rather than a strict palette LoRA, which is the right call for Sketch tier. Result: a painterly forest-pond scene with sky points (read as either fireflies or stars depending on viewer prior), an amber dusk sun anchor on the horizon, and reflective water carrying the indigo/amber pair down. The fireflies-over-water specifically may want IP-Adapter or ControlNet on a Study-tier follow-up; for the cross-domain-mirror reference it serves as-is. Render time on MPS: 110 s (first render; warm renders should be faster). Source: [Kuramoto Coupling/fireflies-pond-workflow.json](../Kuramoto Coupling/fireflies-pond-workflow.json) (the reproducibility artifact) + [Kuramoto Coupling/fireflies-pond-render.py](../Kuramoto Coupling/fireflies-pond-render.py) (the Maker's dispatch driver). Output: [Kuramoto Coupling/fireflies-pond.png](../Kuramoto Coupling/fireflies-pond.png).
 
 ## Test Suite
 
