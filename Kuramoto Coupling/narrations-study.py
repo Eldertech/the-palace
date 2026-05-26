@@ -64,6 +64,14 @@ JOBS = (
         ),
     ),
     Job(
+        slug="title-narration",
+        text=(
+            "Now, couple them. "
+            "K rises from zero across the next thirty-six seconds — "
+            "watch the order parameter R climb."
+        ),
+    ),
+    Job(
         slug="speech-rhythm-and-groove-narration-study",
         text=(
             "When a speaker's phrases fall into a groove with a listener's attention cycles, "

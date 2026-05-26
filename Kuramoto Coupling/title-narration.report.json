@@ -1,0 +1,12 @@
+{
+  "slug": "title-narration",
+  "duration_sec": 7.8,
+  "sample_rate_hz": 24000,
+  "channels": 1,
+  "voice_used": "af_heart",
+  "tier_used": "study",
+  "loudness_lufs_pre": -25.82,
+  "loudness_lufs": -16.07,
+  "peak_dbtp": -1.0,
+  "status": "ok"
+}

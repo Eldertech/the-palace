@@ -35,9 +35,17 @@ REPORT = BUNDLE / "round-1-teaching-reel.report.json"
 
 UNCOUPLED = BUNDLE / "two-phasors-uncoupled-extended.mp4"
 UNCOUPLED_NARRATION = BUNDLE / "uncoupled-narration.wav"
+TITLE_NARRATION = BUNDLE / "title-narration.wav"
+OPENING_BED = BUNDLE / "opening-bed.wav"    # Stable Audio Open; optional
+TITLE_BED = BUNDLE / "title-bed.wav"        # Stable Audio Open; optional
 SYNC_ARRIVING = BUNDLE / "sync-arriving.mp4"
 
-TITLE_LEN_SEC = 3.0
+# Title card extended from 3 s → 8 s to fit the title VO (7.8 s) plus
+# a brief settling beat at the end. Per Loudon's rule
+# ("every section of an educational video has voiceover, including
+#  title cards") the silent 3 s title card was a failure mode.
+TITLE_LEN_SEC = 8.0
+SAO_BED_GAIN_DB = -14.0  # SAO atmospheric beds sit -14 dB under -16 LUFS VO
 TARGET_FPS = 30
 TARGET_W, TARGET_H = 1280, 720
 LUFS_TARGET = -16.0
@@ -62,10 +70,6 @@ def make_title_card() -> None:
             "Watch the order parameter |R| climb.",
             ha="center", va="center", fontsize=18,
             color="#6366F1", family="serif")
-    ax.text(0.5, 0.12,
-            "Drag the K slider in the interactive explorer for the in-between.",
-            ha="center", va="center", fontsize=14,
-            color="#71717A", family="serif")
     fig.savefig(TITLE_PNG, dpi=100, facecolor="#0B0B10",
                 edgecolor="none", bbox_inches=None, pad_inches=0)
     plt.close(fig)
@@ -100,38 +104,85 @@ def normalize_uncoupled() -> None:
     ])
 
 
-def concat_with_audio() -> None:
-    """concat filter (re-encode) is required because the three clips
-    arrive with mismatched audio presence — uncoupled and title are
-    silent, sync-arriving carries the narration. Generate silent audio
-    tracks for the silent clips and concat all three."""
+def concat_with_audio() -> tuple[float, float, float]:
+    """Builds the reel video AND its audio bed:
+
+      0 .. uncoupled_dur            : uncoupled video + uncoupled VO (+ opening SAO bed
+                                       under the head if available)
+      uncoupled_dur .. + TITLE_LEN  : title video + title VO (+ title SAO bed
+                                       under the head if available)
+      then ..                       : sync-arriving video + its built-in VO
+
+    SAO beds are optional — if their WAVs aren't present yet (gated model
+    not downloaded), the script falls back to silent audio there. The VO
+    is always present, never optional — per the new Shop rule.
+    """
     uncoupled_dur = float(ffprobe_duration(UNCOUPLED_NORM))
     sync_dur = float(ffprobe_duration(SYNC_ARRIVING))
     uncoupled_narr_dur = float(ffprobe_duration(UNCOUPLED_NARRATION))
-    # The uncoupled clip is 16 s; the uncoupled narration is ~16 s; if
-    # the narration is shorter than the clip we pad it with silence to the
-    # clip's length, then concat. The title card stays fully silent
-    # (Loudon: "now couple them is a fine length"), so its audio is a
-    # 3 s anullsrc sized exactly to the title clip.
-    pad_tail = max(0.0, uncoupled_dur - uncoupled_narr_dur)
+    title_narr_dur = float(ffprobe_duration(TITLE_NARRATION))
+
+    pad_uncoupled_tail = max(0.0, uncoupled_dur - uncoupled_narr_dur)
+    pad_title_tail = max(0.0, TITLE_LEN_SEC - title_narr_dur)
+
+    has_opening_bed = OPENING_BED.exists()
+    has_title_bed = TITLE_BED.exists()
+
+    inputs: list[str] = [
+        "-i", str(UNCOUPLED_NORM),       # 0: uncoupled video
+        "-i", str(TITLE_CLIP),           # 1: title video
+        "-i", str(SYNC_ARRIVING),        # 2: sync video+audio
+        "-i", str(UNCOUPLED_NARRATION),  # 3: uncoupled VO
+        "-i", str(TITLE_NARRATION),      # 4: title VO
+        "-f", "lavfi", "-t", f"{pad_uncoupled_tail:.3f}",
+        "-i", "anullsrc=channel_layout=mono:sample_rate=48000",  # 5: silent tail under uncoupled
+        "-f", "lavfi", "-t", f"{pad_title_tail:.3f}",
+        "-i", "anullsrc=channel_layout=mono:sample_rate=48000",  # 6: silent tail under title VO
+    ]
+    bed_inputs_idx_opening = None
+    bed_inputs_idx_title = None
+    if has_opening_bed:
+        bed_inputs_idx_opening = (len(inputs) // 2)  # next input index
+        inputs += ["-i", str(OPENING_BED)]           # opening bed
+    if has_title_bed:
+        bed_inputs_idx_title = (len(inputs) // 2)
+        inputs += ["-i", str(TITLE_BED)]             # title bed
+
+    bed_gain_amp = 10 ** (SAO_BED_GAIN_DB / 20)
+
+    # Build the uncoupled audio: VO followed by a silent tail to match the
+    # video clip's full duration, then optionally mixed with the opening bed
+    # (which sits under just the first ~6 s).
+    filter_parts = [
+        "[3:a][5:a]concat=n=2:v=0:a=1[u_vo]",
+        "[4:a][6:a]concat=n=2:v=0:a=1[t_vo]",
+    ]
+    uncoupled_audio_label = "[u_vo]"
+    if bed_inputs_idx_opening is not None:
+        filter_parts.append(
+            f"[{bed_inputs_idx_opening}:a]volume={bed_gain_amp:.4f},apad=whole_dur={uncoupled_dur:.3f}[o_bed_padded]"
+        )
+        filter_parts.append("[u_vo][o_bed_padded]amix=inputs=2:duration=first:normalize=0[u_mix]")
+        uncoupled_audio_label = "[u_mix]"
+
+    title_audio_label = "[t_vo]"
+    if bed_inputs_idx_title is not None:
+        filter_parts.append(
+            f"[{bed_inputs_idx_title}:a]volume={bed_gain_amp:.4f},apad=whole_dur={TITLE_LEN_SEC:.3f}[t_bed_padded]"
+        )
+        filter_parts.append("[t_vo][t_bed_padded]amix=inputs=2:duration=first:normalize=0[t_mix]")
+        title_audio_label = "[t_mix]"
+
+    filter_parts.append(
+        f"[0:v]{uncoupled_audio_label}[1:v]{title_audio_label}[2:v][2:a]"
+        "concat=n=3:v=1:a=1[v][a]"
+    )
+    filter_complex = ";".join(filter_parts)
+
     run([
         "ffmpeg", "-y",
-        "-i", str(UNCOUPLED_NORM),                                # 0: uncoupled video
-        "-i", str(TITLE_CLIP),                                    # 1: title video
-        "-i", str(SYNC_ARRIVING),                                 # 2: sync video+audio
-        "-i", str(UNCOUPLED_NARRATION),                           # 3: uncoupled narration audio
-        "-f", "lavfi", "-t", str(TITLE_LEN_SEC),                  # 4: silent title audio
-        "-i", "anullsrc=channel_layout=mono:sample_rate=24000",
-        "-f", "lavfi", "-t", f"{pad_tail:.3f}",                   # 5: silent tail under uncoupled
-        "-i", "anullsrc=channel_layout=mono:sample_rate=24000",
-        "-filter_complex",
-        (
-            # Build the uncoupled audio: [3:a] then [5:a] (silent tail), concat=n=2.
-            "[3:a][5:a]concat=n=2:v=0:a=1[u_a];"
-            # Then the full reel concat:
-            "[0:v][u_a][1:v][4:a][2:v][2:a]"
-            "concat=n=3:v=1:a=1[v][a]"
-        ),
+        *inputs,
+        "-filter_complex", filter_complex,
         "-map", "[v]", "-map", "[a]",
         "-c:v", "libx264", "-preset", "fast", "-crf", "20",
         "-c:a", "aac", "-b:a", "192k",
