@@ -1,12 +1,12 @@
 {
-  "duration_sec": 60.4,
-  "expected_duration_sec": 60.375,
+  "duration_sec": 68.4,
+  "expected_duration_sec": 68.375,
   "container": "mp4",
   "video_codec": "h264",
   "resolution": "1280x720",
   "frame_rate": "30/1",
   "audio_codec": "aac",
-  "audio_bitrate_kbps": 172,
+  "audio_bitrate_kbps": 170,
   "sample_rate_hz": 48000,
   "channels": 1,
   "loudness_lufs_pre": -16.07,
@@ -15,5 +15,5 @@
   "tier_used": "study",
   "gotchas_hit": [],
   "status": "ok",
-  "notes": "uncoupled=16.00s + title=8.0s + sync=36.38s = 60.38s; actual=60.40s"
+  "notes": "intro=8.00s + uncoupled=16.00s + title=8.0s + sync=36.38s = 68.38s; actual=68.40s"
 }

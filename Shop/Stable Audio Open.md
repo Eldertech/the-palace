@@ -20,7 +20,7 @@ tags: [specialist, shop, sound, generative, music, sfx, stub]
 
 # Stable Audio Open
 
-*Migrated 2026-05-26 from Stable Audio Open 1.0 to Stable Audio 3 — Loudon noticed mid-install that SA3 had been released ten days earlier and called the pivot. The file name `Shop/Stable Audio Open.md` is now historical; a future Schema Ceremony will likely rename it to `Shop/Stable Audio.md` once the rest of the palace's wikilinks have been audited.*
+*Migrated 2026-05-26 from Stable Audio Open 1.0 to Stable Audio 3 — Loudon noticed mid-install that SA3 had been released ten days earlier and called the pivot. The file name `Shop/Stable Audio Open.md` is deliberately kept (no rename) so future Stability versions land on the same Specialist without churning palace wikilinks. "Open" is the open-weights line and stays generic across versions.*
 
 ## Charter
 
@@ -129,7 +129,7 @@ The Maker should not run two Stable Audio Open generations in parallel on a sing
 
 - *opening-bed.wav* (small-music, 6 s, stereo 44.1 kHz). Cinematic film-score opening pad. Sits −14 dB under the −16 LUFS Kokoro VO at the start of the teaching reel. Gen time on MPS: 8.7 s (includes model warm-up).
 - *title-bed.wav* (small-music, 6 s). Thoughtful contemplative transition under the "Now, couple them" title card. Same model, no reload — gen time 0.8 s.
-- *synchronization-arriving.wav* (small-sfx, 20 s). The handoff's speculative brief: *"the sound of synchronization arriving."* Tests whether SA3 can do narrative arc from scattered → coherent. Embedded in [[Kuramoto Coupling]] near the sync-arriving video as a parallel auditory rendering. Gen time 2.1 s.
+- *synchronization-arriving.wav* (small-sfx, 20 s). The handoff's speculative brief: *"the sound of synchronization arriving."* Tests whether SA3 can do narrative arc from scattered → coherent. Embedded in [[Kuramoto Coupling]] near the sync-arriving video as a parallel auditory rendering. Gen time 2.1 s.  **On narrative-arc capability after this first listen: perhaps — needs more study and always confirm when used this way.** A single render doesn't settle the question; future briefs that ask for time-evolving structure should be checked manually before declaring done, not assumed to land cleanly.
 
 Source: [Kuramoto Coupling/atmospheric-beds-sa3.py](../Kuramoto Coupling/atmospheric-beds-sa3.py). The script caches loaded models across jobs, so swapping prompts and re-rendering iteratively is sub-second per clip after the initial 75–80 s cold load of each model. Output WAVs land in the bundle; the teaching-reel pipeline auto-detects them and mixes the beds under their respective VO segments.
 

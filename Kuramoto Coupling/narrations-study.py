@@ -55,6 +55,14 @@ class Job:
 
 JOBS = (
     Job(
+        slug="intro-narration",
+        text=(
+            "[Kuramoto](/kˌuɹəmˈOtO/) coupling — "
+            "how populations of oscillators find a shared rhythm. "
+            "We'll watch eight of them go from drift, to lock."
+        ),
+    ),
+    Job(
         slug="uncoupled-narration",
         text=(
             "Two oscillators with slightly different natural frequencies. "
