@@ -1,6 +1,6 @@
 ---
 type: specialist
-status: stub
+status: awaiting-install
 medium: sound
 tool: stable-audio-open
 tool_version: 1.0
@@ -18,7 +18,7 @@ tags: [specialist, shop, sound, generative, music, sfx, stub]
 
 # Stable Audio Open
 
-*This entry is a stub. Sections are present but lightly written. The first real job will fill it in.*
+*Entry awaits its first install. Sections are present; the host-capability-check gotcha records the gap.*
 
 ## Charter
 
@@ -111,7 +111,7 @@ The Maker should not run two Stable Audio Open generations in parallel on a sing
 
 ## Gotchas
 
-*(Empty until first job.)*
+**2026-05-26 — Host-capability check: not installed on the canonical Loudon machine.** The first Track-A brief that would have exercised this Specialist — a speculative *"the sound of synchronization arriving"*, ~20 s, scattered → coherent — bounced at the host-capability-check step. No `stable-audio-tools` package, no checkpoint cached. Install cost: a Python venv with `torch` + `stable-audio-tools` + a 4–5 GB model checkpoint from Hugging Face (requires accepting the Stability AI Community License at first download). Marking the Specialist as awaiting install rather than dispatching a synthetic stub. The speculative brief is preserved in open questions for the next install pass — it's a real test of whether the model produces narrative arc or only texture.
 
 ## Recipes
 
