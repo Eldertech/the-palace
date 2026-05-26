@@ -1,6 +1,6 @@
 ---
 type: specialist
-status: awaiting-install
+status: installed
 medium: sound
 tool: stable-audio-open
 tool_version: 1.0
@@ -18,7 +18,7 @@ tags: [specialist, shop, sound, generative, music, sfx, stub]
 
 # Stable Audio Open
 
-*Entry awaits its first install. Sections are present; the host-capability-check gotcha records the gap.*
+*Installed on 2026-05-26. First job (the "sound of synchronization arriving" brief) is queued for the next session.*
 
 ## Charter
 
@@ -111,7 +111,9 @@ The Maker should not run two Stable Audio Open generations in parallel on a sing
 
 ## Gotchas
 
-**2026-05-26 — Host-capability check: not installed on the canonical Loudon machine.** The first Track-A brief that would have exercised this Specialist — a speculative *"the sound of synchronization arriving"*, ~20 s, scattered → coherent — bounced at the host-capability-check step. No `stable-audio-tools` package, no checkpoint cached. Install cost: a Python venv with `torch` + `stable-audio-tools` + a 4–5 GB model checkpoint from Hugging Face (requires accepting the Stability AI Community License at first download). Marking the Specialist as awaiting install rather than dispatching a synthetic stub. The speculative brief is preserved in open questions for the next install pass — it's a real test of whether the model produces narrative arc or only texture.
+**2026-05-26 — Install requires Python 3.10 specifically; the published `requires_python: <3.11,>=3.10` constraint is real.** The first attempt on Python 3.12 (where the rest of the Shop's sound stack lives — Kokoro, Whisper) failed with a pandas wheel build error. The root cause isn't pandas: it's `stable-audio-tools 0.0.20` pinning Python <3.11 in its metadata, which pip resolves around by attempting to source-build older deps that don't have 3.12 wheels. Fix path: `brew install python@3.10`, then `python3.10 -m venv .venvs/stable-audio-310 && pip install stable-audio-tools`. Clean install in ~3 min, no pandas in the base install (pandas only appears under the `[train]` extra, which the Shop doesn't need for inference jobs). The Specialist now has its own venv outside the kokoro one — a Shop pattern: per-Specialist venvs let each tool pin its Python and dep set without contaminating its neighbors.
+
+**2026-05-26 — Host-capability check (resolved on a new Python).** The first Track-A brief that would have exercised this Specialist — a speculative *"the sound of synchronization arriving"*, ~20 s, scattered → coherent — bounced at the host-capability-check step. No `stable-audio-tools` package, no checkpoint cached. Install cost: a Python venv with `torch` + `stable-audio-tools` + a 4–5 GB model checkpoint from Hugging Face (requires accepting the Stability AI Community License at first download). Marking the Specialist as awaiting install rather than dispatching a synthetic stub. The speculative brief is preserved in open questions for the next install pass — it's a real test of whether the model produces narrative arc or only texture.
 
 ## Recipes
 

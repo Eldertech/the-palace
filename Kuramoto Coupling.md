@@ -142,6 +142,9 @@ This concept appears everywhere once you see it:
 
 **[[Spinoza Conatus]]** — The conatus is each being's drive to persist in its own nature. Coupled oscillators persist in their natural frequencies while being influenced toward coherence. The tension between individual frequency and collective phase IS the tension between autonomy and cooperation.
 
+![[fireflies-pond.png]]
+*Fireflies over a forest pond at dusk — the first natural image people reach for when they want to feel coupled oscillators. SDXL render at the Kuramoto arc's indigo / amber palette.*
+
 **Mycorrhizal resource flow** — Chemical signals propagating through a forest's fungal network, causing trees to synchronize their resource allocation seasonally. The network IS the coupling medium.
 
 **[[Cooperation Yields Agency]]** — The Kuramoto model is the mathematical formalization of this principle. Cooperation = coupled oscillation. Agency = the emergent coherent behavior. The critical K = the threshold where cooperation becomes possible.

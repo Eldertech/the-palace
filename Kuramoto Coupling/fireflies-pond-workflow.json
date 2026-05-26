@@ -1,0 +1,60 @@
+{
+  "_comment": "ComfyUI workflow — fireflies synchronizing over a forest pond at dusk. SDXL base, palette anchored to the Kuramoto arc's indigo (#6366F1) and amber (#F59E0B). Seed=7 to match the bundle's RNG seed for cross-artifact consistency.",
+  "3": {
+    "inputs": {
+      "seed": 7,
+      "steps": 30,
+      "cfg": 7.0,
+      "sampler_name": "euler",
+      "scheduler": "normal",
+      "denoise": 1.0,
+      "model": ["4", 0],
+      "positive": ["6", 0],
+      "negative": ["7", 0],
+      "latent_image": ["5", 0]
+    },
+    "class_type": "KSampler"
+  },
+  "4": {
+    "inputs": {
+      "ckpt_name": "sd_xl_base_1.0.safetensors"
+    },
+    "class_type": "CheckpointLoaderSimple"
+  },
+  "5": {
+    "inputs": {
+      "width": 1216,
+      "height": 832,
+      "batch_size": 1
+    },
+    "class_type": "EmptyLatentImage"
+  },
+  "6": {
+    "inputs": {
+      "text": "fireflies synchronizing over a still forest pond at dusk, hundreds of tiny glowing bioluminescent points beginning to pulse in unison, indigo blue sky reflecting in dark water, warm amber firefly light, painterly atmospheric, soft mist between trees, romantic depth, cinematic lighting, oil painting quality",
+      "clip": ["4", 1]
+    },
+    "class_type": "CLIPTextEncode"
+  },
+  "7": {
+    "inputs": {
+      "text": "blurry, low quality, cartoon, watermark, text, signature, deformed, ugly, oversaturated, neon, garish, harsh lighting, daylight, snow",
+      "clip": ["4", 1]
+    },
+    "class_type": "CLIPTextEncode"
+  },
+  "8": {
+    "inputs": {
+      "samples": ["3", 0],
+      "vae": ["4", 2]
+    },
+    "class_type": "VAEDecode"
+  },
+  "9": {
+    "inputs": {
+      "filename_prefix": "fireflies-pond",
+      "images": ["8", 0]
+    },
+    "class_type": "SaveImage"
+  }
+}
