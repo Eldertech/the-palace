@@ -1,12 +1,12 @@
 ---
 type: specialist
-status: stub
+status: alive
 medium: motion
 tool: remotion
-tool_version: 4.x
+tool_version: 4.0.380
 adopted: 2026-05-06
-last_tested:
-last_gotcha:
+last_tested: 2026-05-26
+last_gotcha: 2026-05-26
 license: Remotion License (free for individuals; commercial requires paid license)
 links:
   - { label: "wraps", target: "remotion (external)" }
@@ -17,8 +17,6 @@ tags: [specialist, shop, motion, ui, react, stub]
 ---
 
 # Remotion
-
-*This entry is a stub. Sections are present but lightly written. The first real job will fill it in.*
 
 ## Charter
 
@@ -114,11 +112,15 @@ Output exists, dimensions match, frame rate matches, duration consistent with `f
 
 ## Gotchas
 
-*(Empty until first job.)*
+**2026-05-26 — Install is lighter than expected; 184 packages, 7 s.** A minimal hand-rolled Remotion 4.0.380 project (package.json, tsconfig.json, src/{index,Root,PhenomenaWalk}.tsx, remotion.config.ts) installs in under 10 s on a warm npm cache. The Specialist's standing intuition that Remotion projects are heavy was based on `create-video` scaffolds that pull in ESLint, Tailwind, and other defaults the brief doesn't need. For Sketch / Study work in the Shop, hand-write the four files instead — the install is ~100 MB of node_modules and renders boot in a second.
+
+**2026-05-26 — `Sequence` + `localFrame` is the right pattern for a card-walk.** Each card animates against a local frame counter (`frame - i * CARD_FRAMES`) inside its `Sequence`, so the same `TitleCard` component handles its own intro spring, body fade-in, and outro fade independently. No per-card timeline arithmetic in the parent. This is the analogue of Manim's per-`Scene` isolation but at the React level — the parent composes; the child knows its own animation.
 
 ## Recipes
 
-*(Links to `Artifacts/Shop/Remotion/recipes/` once they exist.)*
+**2026-05-26 — Phenomena walk** (Study tier, 1280×720@30, 16.04 s, four cards × 4 s each). Cross-domain Kuramoto mirrors as a titled UI card walk: fireflies, neurons, jazz bassist, tidal friction. Each card has a kicker (amber, uppercase, letter-spaced), a 62 px serif title with a spring-y entrance from below, a body paragraph fading in 0.4 s after, and an italic indigo `K = ...` caption naming the coupling parameter for that domain. Last 0.5 s of each card fades out to the black palace background. Palette: `#6366F1` / `#F59E0B` / `#0B0B10` matching the Kuramoto arc.
+
+Render command: `npx remotion render PhenomenaWalk ../phenomena-walk.mp4 --codec h264 --crf 20`. Render time on M-series + Node 25.9: ~25 s end-to-end (frames + encode). Source: [Kuramoto Coupling/phenomena-walk/](../Kuramoto Coupling/phenomena-walk/) (TSX project root). Output: [Kuramoto Coupling/phenomena-walk.mp4](../Kuramoto Coupling/phenomena-walk.mp4). No audio in this Sketch/Study version; a Piece-tier follow-up would pair each card with a Kokoro-narrated sentence and use `<Audio>` + `<Sequence>` for sync.
 
 ## Test Suite
 

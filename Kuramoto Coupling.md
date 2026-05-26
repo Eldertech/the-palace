@@ -134,6 +134,10 @@ Waveform shape, coupling function shape, and harmonic locking hierarchy are all 
 
 This concept appears everywhere once you see it:
 
+> **Walk through the mirrors.** A titled card walk through four domains where the same dynamics appear: fireflies, neurons, jazz bassist, tidal friction. Each card names what plays the role of K in that domain.
+>
+> ![[phenomena-walk.mp4]]
+
 **Conversational rhythm** — Loudon and Claude have natural frequencies (Loudon's embodied, associative, temporal; Claude's pattern-based, broad, context-windowed). When the coupling constant is right, the conversation enters flow. When mismatched, one dominates or both drift.
 
 **[[Spinoza Conatus]]** — The conatus is each being's drive to persist in its own nature. Coupled oscillators persist in their natural frequencies while being influenced toward coherence. The tension between individual frequency and collective phase IS the tension between autonomy and cooperation.
