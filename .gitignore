@@ -22,6 +22,9 @@ _manim_media/
 # Per-Specialist venvs (Kokoro, Whisper, etc. live in .venvs/<specialist>/)
 .venvs/
 
+# External tool checkouts (ComfyUI source, model weights, etc.)
+_tools/
+
 # Remotion project node_modules + Remotion build cache (regenerable via `npm install`)
 **/node_modules/
 **/.remotion/

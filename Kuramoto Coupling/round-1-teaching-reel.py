@@ -33,7 +33,8 @@ PRENORM = BUNDLE / "_round-1-prenorm.mp4"
 OUT = BUNDLE / "round-1-teaching-reel.mp4"
 REPORT = BUNDLE / "round-1-teaching-reel.report.json"
 
-UNCOUPLED = BUNDLE / "two-phasors-uncoupled-manim.mp4"
+UNCOUPLED = BUNDLE / "two-phasors-uncoupled-extended.mp4"
+UNCOUPLED_NARRATION = BUNDLE / "uncoupled-narration.wav"
 SYNC_ARRIVING = BUNDLE / "sync-arriving.mp4"
 
 TITLE_LEN_SEC = 3.0
@@ -86,15 +87,13 @@ def png_to_clip() -> None:
 
 
 def normalize_uncoupled() -> None:
-    """Scale 854x480@15 → 1280x720@30 with letterbox padding to match
-    sync-arriving's geometry exactly. concat demuxer requires identical
-    streams."""
+    """The extended uncoupled clip is already 1280x720@30 (Manim -qm), so
+    this is now a pass-through copy. Kept as a step for the recipe — when
+    we route in a different uncoupled source, this is where it gets
+    geometry-normalized."""
     run([
         "ffmpeg", "-y", "-i", str(UNCOUPLED),
-        "-vf",
-        (f"scale={TARGET_W}:{TARGET_H}:force_original_aspect_ratio=decrease:flags=lanczos,"
-         f"pad={TARGET_W}:{TARGET_H}:(ow-iw)/2:(oh-ih)/2:color=#0B0B10,"
-         f"fps={TARGET_FPS},format=yuv420p"),
+        "-vf", f"format=yuv420p,fps={TARGET_FPS}",
         "-c:v", "libx264", "-preset", "fast", "-crf", "20",
         "-an", str(UNCOUPLED_NORM),
         "-loglevel", "error",
@@ -108,21 +107,31 @@ def concat_with_audio() -> None:
     tracks for the silent clips and concat all three."""
     uncoupled_dur = float(ffprobe_duration(UNCOUPLED_NORM))
     sync_dur = float(ffprobe_duration(SYNC_ARRIVING))
-    # Two separate silent sources — reusing a single [N:a] inside concat
-    # plays the full source each time it appears (real ffmpeg gotcha; the
-    # filter doesn't trim to match the paired video segment's length).
+    uncoupled_narr_dur = float(ffprobe_duration(UNCOUPLED_NARRATION))
+    # The uncoupled clip is 16 s; the uncoupled narration is ~16 s; if
+    # the narration is shorter than the clip we pad it with silence to the
+    # clip's length, then concat. The title card stays fully silent
+    # (Loudon: "now couple them is a fine length"), so its audio is a
+    # 3 s anullsrc sized exactly to the title clip.
+    pad_tail = max(0.0, uncoupled_dur - uncoupled_narr_dur)
     run([
         "ffmpeg", "-y",
-        "-i", str(UNCOUPLED_NORM),
-        "-i", str(TITLE_CLIP),
-        "-i", str(SYNC_ARRIVING),
-        "-f", "lavfi", "-t", str(uncoupled_dur),
+        "-i", str(UNCOUPLED_NORM),                                # 0: uncoupled video
+        "-i", str(TITLE_CLIP),                                    # 1: title video
+        "-i", str(SYNC_ARRIVING),                                 # 2: sync video+audio
+        "-i", str(UNCOUPLED_NARRATION),                           # 3: uncoupled narration audio
+        "-f", "lavfi", "-t", str(TITLE_LEN_SEC),                  # 4: silent title audio
         "-i", "anullsrc=channel_layout=mono:sample_rate=24000",
-        "-f", "lavfi", "-t", str(TITLE_LEN_SEC),
+        "-f", "lavfi", "-t", f"{pad_tail:.3f}",                   # 5: silent tail under uncoupled
         "-i", "anullsrc=channel_layout=mono:sample_rate=24000",
         "-filter_complex",
-        ("[0:v][3:a][1:v][4:a][2:v][2:a]"
-         "concat=n=3:v=1:a=1[v][a]"),
+        (
+            # Build the uncoupled audio: [3:a] then [5:a] (silent tail), concat=n=2.
+            "[3:a][5:a]concat=n=2:v=0:a=1[u_a];"
+            # Then the full reel concat:
+            "[0:v][u_a][1:v][4:a][2:v][2:a]"
+            "concat=n=3:v=1:a=1[v][a]"
+        ),
         "-map", "[v]", "-map", "[a]",
         "-c:v", "libx264", "-preset", "fast", "-crf", "20",
         "-c:a", "aac", "-b:a", "192k",
