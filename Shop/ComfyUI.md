@@ -1,6 +1,6 @@
 ---
 type: specialist
-status: alive
+status: awaiting-install
 medium: image
 tool: comfyui
 tool_version: 0.3.x
@@ -159,7 +159,9 @@ When local VRAM stops being enough (Flux Pro, video generation, batch Pieces) th
 
 ## Gotchas
 
-*(Empty until first job. Patterns to watch for, based on ComfyUI community wisdom — confirmed and dated only on first encounter:)*
+**2026-05-26 — Host-capability check: not installed on the canonical Loudon machine.** The first Track-A job that would have exercised this Specialist — a "fireflies synchronizing over a forest pond at dusk" image at the Kuramoto arc's palette — bounced at the host-capability-check step. No ComfyUI in `~/ComfyUI` or `/Applications`, no `comfyui` on PATH. Install cost is real: `git clone` ComfyUI, a Python venv with torch + xformers + 30+ custom-node dependencies, and at minimum one checkpoint (SDXL ~7 GB, Flux Dev ~24 GB). Marking the Specialist as awaiting install rather than dispatching anyway. The frontier brief — fireflies over a forest pond — is captured in the open questions for the next install pass.
+
+*(Patterns below from ComfyUI community wisdom — confirmed and dated only on first encounter:)*
 
 - Custom nodes drift; a workflow saved today may break six months from now if a custom node updates incompatibly. Pin custom node versions when archiving Piece-tier work.
 - IP-Adapter weights need to match the base model architecture (SD 1.5, SDXL, Flux all need different IP-Adapter weights — they are not interchangeable)
