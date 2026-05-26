@@ -1,0 +1,249 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Two Oscillators, Audio Coupling Explorer — Kuramoto (Tone.js)</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="https://cdn.jsdelivr.net/npm/tone@15.0.4/build/Tone.js"></script>
+<style>
+  :root {
+    --bg: #0B0B10;
+    --axis: #9CA3AF;
+    --ink: #E5E7EB;
+    --A: #6366F1;
+    --B: #F59E0B;
+    --panel: #15151D;
+    --border: #1F1F2A;
+  }
+  html, body { margin: 0; padding: 0; background: var(--bg); color: var(--ink);
+    font: 13px/1.4 ui-sans-serif, system-ui, -apple-system, sans-serif; }
+  main { max-width: 880px; margin: 0 auto; padding: 18px; }
+  h1 { font: 600 16px/1.3 ui-sans-serif, system-ui; margin: 0 0 4px; color: var(--ink); }
+  p.lede { color: var(--axis); margin: 0 0 16px; max-width: 70ch; }
+  .scope-host { background: var(--bg); border: 1px solid var(--border); border-radius: 6px;
+    padding: 0; line-height: 0; }
+  canvas { display: block; width: 100%; height: 220px; }
+  .controls { display: grid; grid-template-columns: auto 1fr auto; gap: 12px 14px;
+    align-items: center; padding: 14px 16px; margin-top: 12px;
+    background: var(--panel); border: 1px solid var(--border); border-radius: 6px; }
+  .controls label { color: var(--axis); justify-self: end; font-variant-numeric: tabular-nums; }
+  .controls input[type=range] { accent-color: var(--A); width: 100%; }
+  .controls .value { font-variant-numeric: tabular-nums; color: var(--ink); min-width: 5.5em;
+    text-align: right; }
+  .controls button { background: transparent; color: var(--ink); border: 1px solid var(--axis);
+    padding: 5px 12px; border-radius: 4px; cursor: pointer; font: inherit;
+    grid-column: 1 / -1; justify-self: start; }
+  .controls button:hover { border-color: var(--A); color: var(--A); }
+  .controls button[aria-pressed="true"] { border-color: var(--B); color: var(--B); }
+  .readouts { display: flex; gap: 22px; margin-top: 10px; color: var(--axis);
+    font-variant-numeric: tabular-nums; font-size: 12px; flex-wrap: wrap; }
+  .readouts b { color: var(--ink); font-weight: 600; }
+  .swatch-A { color: var(--A); }
+  .swatch-B { color: var(--B); }
+  .note { color: var(--axis); font-size: 11px; margin-top: 8px; max-width: 70ch; }
+  .lock { color: var(--B); }
+  .drift { color: var(--A); }
+</style>
+</head>
+<body>
+<main>
+  <h1>Two oscillators, audio coupling explorer</h1>
+  <p class="lede">
+    Hear what the math says. Two audio-rate oscillators with slightly different natural
+    frequencies. K is the coupling strength: at K = 0 they slide past each other and you
+    hear the beating envelope as they drift in and out of phase. Raise K past
+    K_c ≈ |f<sub>B</sub> &minus; f<sub>A</sub>| / 2 and the beating slows, then stops:
+    they lock to a shared frequency. Tap <em>Start</em> to unlock audio.
+  </p>
+
+  <div class="scope-host"><canvas id="scope" width="1760" height="440"></canvas></div>
+
+  <div class="controls">
+    <button id="toggle" type="button" aria-pressed="false">Start</button>
+
+    <label for="fA" class="swatch-A">f<sub>A</sub></label>
+    <input id="fA" type="range" min="120" max="320" step="1" value="220">
+    <span class="value swatch-A" id="fA-v">220.0 Hz</span>
+
+    <label for="fB" class="swatch-B">f<sub>B</sub></label>
+    <input id="fB" type="range" min="120" max="320" step="1" value="222">
+    <span class="value swatch-B" id="fB-v">222.0 Hz</span>
+
+    <label for="K">K</label>
+    <input id="K" type="range" min="0" max="6" step="0.01" value="0">
+    <span class="value" id="K-v">0.00 Hz</span>
+
+    <label for="vol">volume</label>
+    <input id="vol" type="range" min="-50" max="-10" step="1" value="-22">
+    <span class="value" id="vol-v">&minus;22 dB</span>
+  </div>
+
+  <div class="readouts">
+    <span>K<sub>c</sub> ≈ <b id="Kc">1.00 Hz</b></span>
+    <span>Δf (natural): <b id="df">2.00 Hz</b></span>
+    <span>instantaneous beating rate: <b id="beat">2.00 Hz</b></span>
+    <span>state: <b id="state" class="drift">drift</b></span>
+  </div>
+  <p class="note">
+    What the slider does: each animation frame (≈60 Hz) the page updates both
+    oscillators' instantaneous frequency to f<sub>j</sub> + (K / 2π) · sin(θ<sub>other</sub> &minus; θ<sub>j</sub>),
+    Kuramoto's two-oscillator equation in the kinematic approximation. The audio thread reads the
+    new frequencies through <code>setValueAtTime(value, Tone.now())</code>, which sidesteps
+    Tone's musical-clock vs. UI-clock reconciliation — Tone treats parameter writes as wall-clock
+    events, not bar-relative ones.
+  </p>
+</main>
+
+<script>
+'use strict';
+
+// --- Tone.js audio graph ---
+let oscA = null, oscB = null, gain = null, analyser = null;
+let running = false;
+
+// --- Kuramoto state (UI thread) ---
+let fA = 220, fB = 222, K = 0;
+let thetaA = 0, thetaB = 0;
+let lastT = null;
+let beatRate = Math.abs(fB - fA);
+
+// --- DOM ---
+const $ = (id) => document.getElementById(id);
+const fAEl = $('fA'), fBEl = $('fB'), KEl = $('K'), volEl = $('vol');
+const fAVal = $('fA-v'), fBVal = $('fB-v'), KVal = $('K-v'), volVal = $('vol-v');
+const KcEl = $('Kc'), dfEl = $('df'), beatEl = $('beat'), stateEl = $('state');
+const toggleEl = $('toggle');
+
+const scope = $('scope');
+const ctx = scope.getContext('2d');
+// Backing-store size for crisp lines on hi-DPI.
+function resizeScope() {
+  const ratio = window.devicePixelRatio || 1;
+  const cssW = scope.clientWidth, cssH = scope.clientHeight;
+  scope.width = Math.round(cssW * ratio);
+  scope.height = Math.round(cssH * ratio);
+  ctx.setTransform(ratio, 0, 0, ratio, 0, 0);
+}
+window.addEventListener('resize', resizeScope);
+
+function refreshReadouts() {
+  fAVal.textContent = fA.toFixed(1) + ' Hz';
+  fBVal.textContent = fB.toFixed(1) + ' Hz';
+  KVal.textContent  = K.toFixed(2) + ' Hz';
+  const df = Math.abs(fB - fA);
+  const Kc = df / 2;
+  dfEl.textContent = df.toFixed(2) + ' Hz';
+  KcEl.textContent = Kc.toFixed(2) + ' Hz';
+}
+
+fAEl.addEventListener('input', () => { fA = parseFloat(fAEl.value); refreshReadouts(); });
+fBEl.addEventListener('input', () => { fB = parseFloat(fBEl.value); refreshReadouts(); });
+KEl .addEventListener('input', () => { K  = parseFloat(KEl.value);  refreshReadouts(); });
+volEl.addEventListener('input', () => {
+  const v = parseInt(volEl.value, 10);
+  volVal.textContent = (v < 0 ? '−' : '') + Math.abs(v) + ' dB';
+  if (gain) gain.gain.rampTo(Tone.dbToGain(v), 0.05);
+});
+
+async function startAudio() {
+  await Tone.start();
+  oscA = new Tone.Oscillator(fA, 'sine');
+  oscB = new Tone.Oscillator(fB, 'sine');
+  gain = new Tone.Gain(Tone.dbToGain(parseInt(volEl.value, 10)));
+  analyser = new Tone.Analyser('waveform', 2048);
+  oscA.connect(gain); oscB.connect(gain);
+  gain.connect(analyser); gain.toDestination();
+  oscA.start(); oscB.start();
+  lastT = performance.now() / 1000;
+  running = true;
+  toggleEl.textContent = 'Stop';
+  toggleEl.setAttribute('aria-pressed', 'true');
+}
+
+function stopAudio() {
+  if (!running) return;
+  oscA.stop(); oscB.stop();
+  oscA.dispose(); oscB.dispose(); gain.dispose(); analyser.dispose();
+  oscA = oscB = gain = analyser = null;
+  running = false;
+  toggleEl.textContent = 'Start';
+  toggleEl.setAttribute('aria-pressed', 'false');
+  // Clear scope.
+  ctx.clearRect(0, 0, scope.clientWidth, scope.clientHeight);
+}
+
+toggleEl.addEventListener('click', () => {
+  if (running) stopAudio(); else startAudio();
+});
+
+function tick() {
+  requestAnimationFrame(tick);
+  if (!running) return;
+  const now = performance.now() / 1000;
+  const dt = Math.min(0.05, now - lastT);
+  lastT = now;
+
+  // Kuramoto two-oscillator update, in Hz units.
+  // Convert K (Hz) and frequencies (Hz) to angular: ω_j = 2π f_j; coupling
+  // term contributes K · sin(Δθ) to dθ/dt in rad/s. Effective instantaneous
+  // frequency: f_inst_j = f_j + (K / 2π) · sin(θ_other − θ_j).
+  const omegaA = 2 * Math.PI * fA;
+  const omegaB = 2 * Math.PI * fB;
+  const kRad = 2 * Math.PI * K;
+  const dThetaBA = thetaB - thetaA;
+  const dThetaAB = thetaA - thetaB;
+  const fInstA = fA + (K) * Math.sin(dThetaBA);
+  const fInstB = fB + (K) * Math.sin(dThetaAB);
+
+  // Advance phases on the UI thread (kinematic — sample-accurate locking is
+  // not required because the audio thread is just reading frequency values).
+  thetaA = (thetaA + (omegaA + kRad * Math.sin(dThetaBA)) * dt) % (2 * Math.PI);
+  thetaB = (thetaB + (omegaB + kRad * Math.sin(dThetaAB)) * dt) % (2 * Math.PI);
+
+  // Push to oscillators. setValueAtTime with Tone.now() is the
+  // wall-clock-relative parameter write that sidesteps Tone.Transport's
+  // musical clock entirely (Transport isn't running here).
+  if (oscA && oscB) {
+    oscA.frequency.setValueAtTime(fInstA, Tone.now());
+    oscB.frequency.setValueAtTime(fInstB, Tone.now());
+  }
+
+  beatRate = Math.abs(fInstA - fInstB);
+  beatEl.textContent = beatRate.toFixed(3) + ' Hz';
+  const Kc = Math.abs(fB - fA) / 2;
+  const locked = K >= Kc && beatRate < 0.05;
+  stateEl.textContent = locked ? 'lock' : (K >= Kc ? 'pulling in' : 'drift');
+  stateEl.className = locked || K >= Kc ? 'lock' : 'drift';
+
+  drawScope();
+}
+
+function drawScope() {
+  const W = scope.clientWidth, H = scope.clientHeight;
+  ctx.fillStyle = '#0B0B10';
+  ctx.fillRect(0, 0, W, H);
+
+  // Zero axis.
+  ctx.strokeStyle = '#1F1F2A';
+  ctx.lineWidth = 1;
+  ctx.beginPath();
+  ctx.moveTo(0, H / 2); ctx.lineTo(W, H / 2); ctx.stroke();
+
+  const buf = analyser.getValue();
+  ctx.strokeStyle = '#E5E7EB';
+  ctx.lineWidth = 1.25;
+  ctx.beginPath();
+  for (let i = 0; i < buf.length; i++) {
+    const x = (i / (buf.length - 1)) * W;
+    const y = H / 2 - buf[i] * (H / 2 - 8);
+    if (i === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y);
+  }
+  ctx.stroke();
+}
+
+resizeScope();
+refreshReadouts();
+tick();
+</script>
+</body>
+</html>

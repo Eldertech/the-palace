@@ -1,12 +1,12 @@
 ---
 type: specialist
-status: stub
+status: alive
 medium: interactive
 tool: tone.js
-tool_version: 15.x
+tool_version: 15.0.4
 adopted: 2026-05-09
-last_tested:
-last_gotcha:
+last_tested: 2026-05-26
+last_gotcha: 2026-05-26
 license: MIT
 links:
   - { label: "wraps", target: "tone.js (external)" }
@@ -18,8 +18,6 @@ tags: [specialist, shop, interactive, audio, web, music, stub]
 ---
 
 # Tone.js
-
-*This entry is a stub. Sections are present but lightly written. The first real job will fill it in.*
 
 ## Charter
 
@@ -114,7 +112,11 @@ HTML loads without console errors, audio context unlocks correctly on first user
 
 ## Gotchas
 
-*(Empty until first job. Patterns to watch for, based on Tone.js community wisdom — confirmed and dated only on first encounter:)*
+**2026-05-26 — Tone's musical clock and the browser's `requestAnimationFrame` clock don't need reconciling when `Tone.Transport` is not running.** The standing open question of how to reconcile Tone's musical time with p5/UI draw time has a simple answer for parameter-write traffic from the UI thread: use `param.setValueAtTime(value, Tone.now())`. `Tone.now()` returns the audio context's wall-clock time (not bar-relative), and that's what every other Tone scheduler reads. When the brief doesn't need musical timing (sequence playback, tempo-quantized events), don't start `Tone.Transport` at all — the audio thread reads parameter changes the moment they arrive, and the UI thread's `requestAnimationFrame` cadence (~60 Hz) is fine for live frequency/modulation updates on audio-rate oscillators. The reconciliation problem appears only when both clocks are scheduling events; for parameter feeding, they're independent.
+
+**2026-05-26 — `Tone.Oscillator` + `setValueAtTime` at UI rate is enough to feel Kuramoto locking on two audio-rate sines.** Surfaced on the Kuramoto two-oscillator audio explorer. Kuramoto's dθ/dt = ω + K sin(Δθ) was integrated on the UI thread (`requestAnimationFrame`-paced, ~60 Hz), then both oscillators' instantaneous frequencies were pushed via `osc.frequency.setValueAtTime(fInst, Tone.now())`. Audible result: at K=0 the listener hears beating at |Δf| Hz; raising K past K_c = |Δf|/2 first slows the beating, then collapses it as the two oscillators lock to a shared frequency. No need to drive phase per-sample via a custom `AudioWorkletNode` — the kinematic UI-rate update is sample-coherent enough for audio-rate carriers in the 100–500 Hz range because the parameter automation is rendered at audio rate by Web Audio's internal scheduling.
+
+*(Patterns below from Tone.js community wisdom — confirmed and dated only on first encounter:)*
 
 - Audio context starts in `suspended` state on most browsers; first sound requires user gesture (click, touch, keypress) to unlock
 - iOS Safari has stricter audio context rules than desktop Safari; verify on a real device
@@ -124,7 +126,9 @@ HTML loads without console errors, audio context unlocks correctly on first user
 
 ## Recipes
 
-*(Links to `Artifacts/Shop/Tone.js/recipes/` once they exist.)*
+**2026-05-26 — Two-oscillator audio coupling explorer** (Study tier, standalone HTML, ~5 KB script). Two `Tone.Oscillator` sines driven by Kuramoto's two-oscillator dynamics. Sliders: f<sub>A</sub>, f<sub>B</sub> (120–320 Hz), K (0–6 Hz), output volume. A `Tone.Analyser('waveform')` feeds a `requestAnimationFrame`-driven oscilloscope below the controls. Lock criterion exposed in a HUD: K_c = |f_B − f_A|/2, state reads `drift` / `pulling in` / `lock`. Palette matches the Kuramoto arc's `#6366F1` / `#F59E0B` / `#0B0B10`. Source = output: [Kuramoto Coupling/two-oscillators-coupling-explorer-audio.html](../Kuramoto Coupling/two-oscillators-coupling-explorer-audio.html). Tone.js loaded from CDN (`tone@15.0.4`). Pairs with the existing p5.js visual coupling explorer; the same K_c threshold can be felt both ways. Open question from the entry — Tone-clock vs UI-clock reconciliation — resolved as the first dated gotcha above.
+
+*Final-mile note:* the artifact has been syntax-checked (`node --check`) and the math has been worked through, but in-browser audio confirmation belongs to whoever opens it first. The Specialist's Self-Check explicitly requires Chrome-minimum verification before claiming a Piece tier; this is a Study and the smoke test is "audio context unlocks, both sliders affect the heard tone, beating slows visibly on the oscilloscope as K crosses K_c."
 
 ## Test Suite
 

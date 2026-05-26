@@ -106,6 +106,10 @@ flowchart LR
 >
 > [Two-phasor coupling explorer →](two-phasors-coupling-explorer.html)
 
+> **Hear it too.** The same two oscillators, audio-rate. Beating envelope at low K; lock above K_c. The visual explorer asked you to *see* the threshold — this one asks you to *hear* it. Same dynamics, different sense.
+>
+> [Two-oscillator audio coupling explorer →](two-oscillators-coupling-explorer-audio.html)
+
 ## Origin
 
 Studied across an 8-lesson progressive series, building from the simplest case (two oscillators) to populations, phase portraits, and the order parameter. The work originated in Loudon's neurological synthesizer research — a granular-additive hybrid architecture where sine grains couple to a controllable additive spectrum as a harmonic attractor field.
