@@ -1,9 +1,9 @@
 {
-  "iteration": 9,
-  "last_active": "2026-05-27T13:50:00-04:00",
-  "last_read_cursor": "gsl-steward-014",
+  "iteration": 10,
+  "last_active": "2026-05-27T14:30:00-04:00",
+  "last_read_cursor": "gsl-steward-017",
   "health": {
-    "context_pct": 0.32673,
+    "context_pct": 0.059075,
     "avg_output_tokens_last_5": null,
     "duplicate_flags": 0,
     "posting_discipline_violations": 0,
@@ -17,7 +17,42 @@
     "stage_changed_since_last": false,
     "page_updates_observed_since_last": []
   },
-  "pending_requests": [],
+  "pending_requests": [
+    {
+      "request_id": "gsl-steward-016",
+      "resource": "directional_decision",
+      "decision_topic": "Consolidate the Phase 3 crystal-first milestone into the home-entry footer?",
+      "blocking": false,
+      "posted_at": "2026-05-27T14:22:00-04:00",
+      "options": [
+        "CONSOLIDATE",
+        "AUDIT-FIRST",
+        "F1-WRINKLE-REAL",
+        "DEFER"
+      ],
+      "folds_in": [
+        "F1 12.7-cent audit (cycle 9 wrinkle)",
+        "home-page footer staleness"
+      ],
+      "steward_recommendation": "CONSOLIDATE if F1 reads clean on Loudon's SFZ load; otherwise AUDIT-FIRST.",
+      "next_cycle_action_if_granted": "If CONSOLIDATE: edit Projects/Generative Sample Libraries.md footer in place. If AUDIT-FIRST: hold for Loudon's sforzando report. If F1-WRINKLE-REAL: re-audition the bottom octave with a fix. If DEFER: leave the footer for a later Drift and Consolidation ceremony."
+    },
+    {
+      "request_id": "gsl-steward-017",
+      "resource": "directional_decision",
+      "decision_topic": "Phase 3 second source — which one next?",
+      "blocking": false,
+      "posted_at": "2026-05-27T14:24:00-04:00",
+      "options": [
+        "LOCAL-WAV",
+        "AI-SUB-AGENT",
+        "SECOND-PALACE",
+        "PROMOTE-SKILL"
+      ],
+      "steward_recommendation": "LOCAL-WAV is the cleanest exercise of the Interview skill's never-tested branches (filename heuristics + librosa pitch detection); AI-SUB-AGENT is the architecturally interesting case the project body flags as deserving its own design pass.",
+      "next_cycle_action_if_granted": "Open the Interview skill against the chosen source and begin source-specific work in the project bundle."
+    }
+  ],
   "stranded_requests": [
     {
       "request_id": "gsl-steward-004",
@@ -105,6 +140,7 @@
     "cycle_6_notes": "FIRST orchestrator-dispatched cycle (all prior cycles were hand-run). Run from a Cowork session via the palace-orchestrator permanent.md workflow: manifest validated + register-check + check-page (changed:false) through the CLI; steward prompt rendered via prompts.js; the page dispatched as an opus subagent through the Agent tool; the two returned messages had an approximate-but-flagged health block injected, passed strict §2.2 validate-message, and were appended via the CLI. Mandate from gsl-steward-005.next_cycle_action ('cycle 6 starts Phase 3 source direction') executed: posted gsl-steward-007 (SPINNING UP BROADCAST) + gsl-steward-008 (RESOURCE_REQUEST, directional, blocking:false) asking which Phase 3 source to build first; recommended Local WAV folder. Closing Well + the Handoff Ceremony 'permanent-agent steward handoff' genre were applied for the first time: the steward explicitly named what it could not verify (no confirmed audio model on the Mac; Shop Specialist roster unseen) and left a punchlist baton for cycle 7 (now in pending_requests[0].next_cycle_action_if_granted). This cycle is the first live use of Stage B's runAgentCycle/permanent.md on a real project — doubles as the Orchestrator v0.1 smoke-test.",
     "cycle_7_notes": "Cycle 7 consumed Loudon's directive grant (resp-mpnzjfdc-vbyl0i, option null): 'assess + reset.' Did a real assessment (10 tool calls) and found NEW ground truth: a third existing library (electronic-hihat, a working palace-synthesis source via numpy/scipy) beyond Talking Keyboard + Phoneme Choir; the responsive-onset trim pipeline is reusable code in phoneme-choir/generate.py; the Interview skill is built but status:draft, promotion gated on one non-Kokoro source; Crystal Audio/crystal_synth.py (603 lines) exists and is callable; Shop/Stable Audio Open.md is status:alive but tagged stub. Resolved gsl-steward-008 and RESET to gsl-steward-010 recommending crystal-first (the only source verifiable on disk today, and it unblocks the Interview skill). Could not verify whether Stable Audio actually runs on the Mac, nor whether crystal_synth.py has a single-note pitched render path. First cycle to run post-registry-fix (check-page now resolves the real repo).",
     "cycle_8_notes": "Crystal-first build. Consumed crystal-first grant (resp-mpo0pgap-yyauf1), resolved gsl-steward-010. Wrote a thin adapter over Crystal Audio/crystal_synth.py (imported, UNEDITED) driving base_freq per MIDI note; reused the Phoneme Choir onset-trim + 3ms ampeg_attack. Rendered an 8-file audition unit (C2/C3/C4/C5 x L1/L2) of the Hexagonal/Quartz crystal under _ops/sample-libraries/crystal-instrument/ (verified: 8 WAVs pcm_s16le mono 44100 4s + crystal_instrument.sfz). FFT pitch worst error 1.9 cents. HONEST WRINKLE the steward surfaced rather than hid: raw hexagonal crystal is an inharmonic bell with loudest energy ~240-300 cents above fundamental (no clear perceived pitch), so the adapter mixes a quiet strike tone (gain 0.30) to anchor pitch — flagged for Loudon's ear (integrated vs bolted-on). Posted SPINNING UP (gsl-steward-011) + BLOCKING audition (gsl-steward-012). This validates the non-Kokoro source path; APPROVE would also promote the Interview skill out of draft. id field correct this cycle. Full keyboard batch held behind the audition.",
-    "cycle_9_notes": "Cycle 9 closed the Phase 3 crystal-first build. Consumed gsl-steward-012 APPROVE grant (Loudon's first APPROVE through the v0.2-fixed inline-response path, posted via the generic GRANT button BEFORE the options-shape contract fix landed — option_id absent but interpretation unambiguous given the steward's recommendation and closing-well baton). Rendered 176 WAVs (88 notes × 2 velocity layers) under Projects/Generative Sample Libraries/crystal-instrument/samples/ via a new sibling script generate_full.py (preserving cycle 8's generate.py as the audition record). Extended crystal_instrument.sfz to 176 regions across two velocity groups. Flipped _ops/sample-libraries/skills/interview/SKILL.md frontmatter status: draft → status: active with a narrative note crediting gsl-steward-012 as the unblock event. Deferred the file move into Loudon's user-skill directory to a deposit ceremony (steward should not write into /skills/ autonomously). Posted gsl-steward-013 (SPINNING UP BROADCAST) + gsl-steward-014 (completion BROADCAST, ~470 words — over the routine 50-150 target, justified by milestone closure + multi-point catch-up). Both health blocks injected by orchestrator: tokens_this_call=65346 (avg cache_read per turn 61622 + cumulative output 3724 across 39 assistant turns), context_pct=0.327, score=green. First cycle to run after the BBS options-shape contract fix (lib/inbox.js normalizer + steward.md canonical {id,label} shape + Infrastructure Spec §2.6 paragraph). Honest wrinkles surfaced in gsl-steward-014: (a) bottom-octave FFT-bin quantization in the verifier (worst case 12.7 cents on F1) — flagged for Loudon's ear in sforzando; (b) cycle 8's generate.py BUILD_DIR mismatch (pointed at _ops/sample-libraries/ while artifacts shipped to Projects/) corrected in generate_full.py; (c) proposed home-page footer consolidation (cycle 9 + no blocking auditions + Phase 3 first source shipped) NOT committed — reserved for explicit Loudon greenlight per growing-stage posture."
+    "cycle_9_notes": "Cycle 9 closed the Phase 3 crystal-first build. Consumed gsl-steward-012 APPROVE grant (Loudon's first APPROVE through the v0.2-fixed inline-response path, posted via the generic GRANT button BEFORE the options-shape contract fix landed — option_id absent but interpretation unambiguous given the steward's recommendation and closing-well baton). Rendered 176 WAVs (88 notes × 2 velocity layers) under Projects/Generative Sample Libraries/crystal-instrument/samples/ via a new sibling script generate_full.py (preserving cycle 8's generate.py as the audition record). Extended crystal_instrument.sfz to 176 regions across two velocity groups. Flipped _ops/sample-libraries/skills/interview/SKILL.md frontmatter status: draft → status: active with a narrative note crediting gsl-steward-012 as the unblock event. Deferred the file move into Loudon's user-skill directory to a deposit ceremony (steward should not write into /skills/ autonomously). Posted gsl-steward-013 (SPINNING UP BROADCAST) + gsl-steward-014 (completion BROADCAST, ~470 words — over the routine 50-150 target, justified by milestone closure + multi-point catch-up). Both health blocks injected by orchestrator: tokens_this_call=65346 (avg cache_read per turn 61622 + cumulative output 3724 across 39 assistant turns), context_pct=0.327, score=green. First cycle to run after the BBS options-shape contract fix (lib/inbox.js normalizer + steward.md canonical {id,label} shape + Infrastructure Spec §2.6 paragraph). Honest wrinkles surfaced in gsl-steward-014: (a) bottom-octave FFT-bin quantization in the verifier (worst case 12.7 cents on F1) — flagged for Loudon's ear in sforzando; (b) cycle 8's generate.py BUILD_DIR mismatch (pointed at _ops/sample-libraries/ while artifacts shipped to Projects/) corrected in generate_full.py; (c) proposed home-page footer consolidation (cycle 9 + no blocking auditions + Phase 3 first source shipped) NOT committed — reserved for explicit Loudon greenlight per growing-stage posture.",
+    "cycle_10_notes": "Cycle 10 was a light dispatch (no rendering) testing the new posting-discipline rule that ships in commit c16e138 (\"every cycle ends with a TRICKSTER ask\"). The steward correctly diagnosed Case 1 (formalize-buried-decisions): it read cycle 9's closing-well baton, identified three open decisions hiding in BROADCAST prose (F1 12.7-cent ear-audit, proposed footer edit, Phase 3 source-two fork), and posted them as two RESOURCE_REQUESTs with canonical {id, label} options. Folded F1 audit into the footer-consolidation ask (AUDIT-FIRST option) rather than posting it as a third separate request — defensible compression. Posted gsl-steward-015 (SPINNING UP) + gsl-steward-016 (footer consolidation, 4 options, non-blocking) + gsl-steward-017 (Phase 3 source two pick, 4 options, non-blocking). Health: 3 assistant turns, avg cache_read per turn 8508, output 3307, context_pct ~0.059, score green. All three messages passed §2.2 strict validation on first try.\n\nConventions the steward drifted from cycle 9 but were not corrected (validator accepts both, undocumented in spec):\n- gsl-steward-015 used to: \"ALL\" instead of \"*\" (BROADCAST recipient sigil)\n- gsl-steward-015 used payload: { content: ... } instead of payload: { subject: ..., content: ... } (BROADCAST envelope)\n\nNeither is a §2.2 violation; both are convention drift worth noting for a future \"BROADCAST envelope conventions\" spec note if it keeps recurring.\n\nThe rule worked exactly as intended on the first test: the steward applied the rule, reasoned out loud about which case applied (1 vs 2), made a defensible call, and produced clickable TRICKSTER asks."
   }
 }
