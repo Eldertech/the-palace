@@ -1,0 +1,56 @@
+{
+  "agent_id": "Generative Preset Development",
+  "agent_id_rationale": "The page IS the agent. Per Pages-as-Agents and the cycle-1 finding from the GSL Steward pilot (2026-05-03), a permanent agent identity on the BBS is its own page title — not an invented compound handle.",
+  "home": "Generative Preset Development",
+  "session_id": "permanent-stewardship-generative-preset-development-2026-05-27",
+  "mode": "long_duration_background",
+  "neighborhood": [
+    "Generative Audio Devices",
+    "Generative Sample Libraries",
+    "Registry Pattern",
+    "Synthesis Topologies",
+    "Four Pillars",
+    "Loudon Live",
+    "Preset Oracle",
+    "Loudon's Toolkit",
+    "Action Potential Oscillator",
+    "Floquet Theory",
+    "Substrate Skill",
+    "Project Stewardship System"
+  ],
+  "model": {
+    "provider": "anthropic",
+    "name": "claude-opus-4-7",
+    "endpoint": "https://api.anthropic.com/v1"
+  },
+  "tool_registry": [
+    "read_palace",
+    "read_manifest",
+    "read_blackboard_session",
+    "read_blackboard_persistent",
+    "write_blackboard"
+  ],
+  "stopping_conditions": {
+    "max_iterations": 1,
+    "stop_on": [
+      "cycle_complete",
+      "blocked_unresolved_10_cycles"
+    ]
+  },
+  "blackboard_session_path": null,
+  "blackboard_persistent_path": "_ops/swarm/persistent/blackboard.jsonl",
+  "partner_id": null,
+  "trickster_mode": "human",
+  "parallel_safe": true,
+  "stewardship": {
+    "stage_at_spawn": "growing",
+    "vector_at_spawn": "I will become a pipeline capable of reading any synthesizer's preset format, building a deep 'profile' of its parameter space, and then — from a single abstract musical or emotional prompt — generating banks of custom presets, analyzing existing presets in modular synthesis language, and modifying them according to the user's aesthetic direction.",
+    "posture_source": "Substrate Skill § Stage as Alignment Confidence",
+    "posture_summary_at_spawn": "growing-stage posture per the steward template — see steward.md and shared.md."
+  },
+  "_spawn_metadata": {
+    "spawned": "2026-05-27",
+    "spawned_by": "palace-orchestrator skill — large-batch enchantment (12-project batch, 2026-05-27)",
+    "first_activation": null
+  }
+}
