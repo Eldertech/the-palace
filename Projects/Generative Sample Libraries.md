@@ -317,3 +317,16 @@ Wavetable formats moved to [[Generative Wavetable Libraries]] on 2026-05-02.
 - For AI-audio sub-agents specifically: does Claude critique the candidate audio before regenerating, or does Loudon? Probably Loudon-led with Claude offering analysis. Worth testing both in Phase 3.
 - When we generate sample libraries for student use, what is the right licensing model? Original synthesis is owned outright. Sampled or AI-generated content has more complex provenance.
 - ~~Where does the Interview skill (Phase 2) live in the palace's skill ecosystem?~~ **Settled 2026-05-03:** project-local at `_ops/sample-libraries/skills/interview/SKILL.md`. Promotion to user-skill space deferred until Phase 3 multi-source validation (see Phase 2 § Home).
+
+---
+
+## Under Active Stewardship
+
+This page is tended by a permanent steward and **may lag its live state** — the steward has made decisions and built artifacts not yet consolidated into the body above. Current truth lives in the log:
+
+- **Steward state + history:** `_ops/agents/permanent/generative-sample-libraries/`
+- **Live thread (BBS):** session `permanent-stewardship-2026-05-03` — open in STIGMERGY
+- **As of last consolidation:** cycle 8 (2026-05-27) · 1 blocking audition open (`gsl-steward-012`)
+- **Not yet folded in here:** Phase 3 opened with palace synthesis (`crystal-first`); a Crystal (Hexagonal) instrument audition unit is built at `Projects/Generative Sample Libraries/crystal-instrument/`; the cycle-7 assessment found a third existing library (`electronic-hihat`), a reusable onset-trim pipeline, and that the Interview skill is gated in draft until a non-Kokoro source validates it.
+
+This footer is placed at enchantment and pruned at consolidation. See [[Drift and Consolidation]].

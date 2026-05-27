@@ -170,3 +170,16 @@ Eventually, an instrument is generated from a single conversation that produces 
 - Do wavetable frames synthesized from crystal partial ratios produce musically interesting motion when swept? Or does the spectral structure need additional processing (windowing, phase coherence) to read as intentional?
 - What is the right phase-coherence policy across frames — per-frame zero-phase reset, or carry phase through?
 - The [[2D Torus Wavetable Synthesizer]] work is active and adjacent. Does this project subsume that, parallel it, or feed it?
+
+---
+
+## Under Active Stewardship
+
+This page is tended by a permanent steward and **may lag its live state** — the steward has made decisions and built artifacts not yet consolidated into the body above. Current truth lives in the log:
+
+- **Steward state + history:** `_ops/agents/permanent/generative-wavetable-libraries/`
+- **Live thread (BBS):** session `gwl-steward-2026-05-27` — open in STIGMERGY
+- **As of last consolidation:** cycle 3 (2026-05-27) · 1 blocking audition open (`gwl-steward-006`)
+- **Not yet folded in here:** the phase-coherence policy is decided (zero-phase reset); the Phase 1 Crystal Bravais wavetable proof is built at `Projects/Generative Wavetable Libraries/crystal-bravais/` and awaiting audition.
+
+This footer is placed at enchantment and pruned at consolidation. See [[Drift and Consolidation]].
