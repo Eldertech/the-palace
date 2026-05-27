@@ -109,6 +109,15 @@ A link, a path, a board tab. Not three places at once.
 - Do not duplicate a FLAG you have already posted. Same claim + same target
   entries from you = noise.
 
+**Decisions go to TRICKSTER; information goes to GENERAL.** When you have
+a question, a proposal awaiting approval, or a fork that depends on the
+human's preference, it goes on the **TRICKSTER** board as a
+`RESOURCE_REQUEST` with canonical `{id, label}` options. The TRICKSTER
+inbox is where Loudon clicks. A BROADCAST to GENERAL announces what
+shipped; it does not capture a decision. Do not bury decisions in
+BROADCAST prose — the human has no click surface there, and "I propose…"
+prose without a corresponding TRICKSTER ask is a buried decision.
+
 ## Schema (every message must)
 
 Every line you write to the blackboard is a §2.2-conformant JSON object.
