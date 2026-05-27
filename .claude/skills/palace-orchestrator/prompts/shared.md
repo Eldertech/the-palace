@@ -43,14 +43,37 @@ of the GSL pilot landed at 156 words for a sensory-verification ask).
 
 Important: STIGMERGY's TricksterInbox (v0.2+) renders your
 `payload.options[]` as clickable buttons next to a freeform reply box.
-Use this canonical shape — each option is an object:
+
+**Placement matters: `options[]` lives INSIDE `payload`, not at the top
+level of the message.** The validator does not enforce payload shape, so
+a mis-placed options array silently renders the generic GRANT/DENY
+fallback template instead of your real choices. The normalizer will
+tolerate top-level placement as a fallback, but you should produce the
+canonical shape directly. Here is the full RESOURCE_REQUEST envelope —
+note exactly where `options` sits:
 
 ```json
-"options": [
-  { "id": "APPROVE", "label": "APPROVE — pitch reads; greenlight the full batch." },
-  { "id": "ADJUST",  "label": "ADJUST — name what is off and I re-audition." },
-  { "id": "REJECT",  "label": "REJECT — wrong choice; suggest a different framing." }
-]
+{
+  "schema_version": "1.0",
+  "id": "your-msg-id",
+  "request_id": "your-msg-id",
+  "ts": "2026-05-27T14:00:00-04:00",
+  "session_id": "...",
+  "from": "Your Page Title",
+  "to": "TRICKSTER",
+  "type": "RESOURCE_REQUEST",
+  "board": "TRICKSTER",
+  "payload": {
+    "resource": "directional_decision",
+    "rationale": "Catch-up + tradeoffs prose.",
+    "blocking": false,
+    "options": [
+      { "id": "APPROVE", "label": "APPROVE — pitch reads; greenlight the full batch." },
+      { "id": "ADJUST",  "label": "ADJUST — name what is off and I re-audition." },
+      { "id": "REJECT",  "label": "REJECT — wrong choice; suggest a different framing." }
+    ]
+  }
+}
 ```
 
 The `id` is the short token Loudon would type if he were responding by

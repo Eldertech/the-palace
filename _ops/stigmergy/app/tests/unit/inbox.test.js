@@ -270,4 +270,49 @@ describe('buildInbox — asker-defined payload.options[] (Infrastructure Spec §
     })]);
     expect(r.pending_requests[0].options).toBeNull();
   });
+
+  test('top-level options[] is accepted as a fallback when payload.options is missing', () => {
+    // Drift observed in the wild (cycle-11 GSL batch run, 2026-05-27):
+    // a steward placed options at the top level instead of inside payload.
+    // The validator accepts (it does not enforce payload shape), so the UI
+    // must tolerate this rather than silently fall through to the generic
+    // response-options template.
+    const r = buildInbox([{
+      ...REQ('r-1', '2026-04-01T15:00:00Z'),
+      options: [
+        { id: 'A', label: 'A — first' },
+        { id: 'B', label: 'B — second' },
+      ],
+    }]);
+    expect(r.pending_requests[0].options).toEqual([
+      { id: 'A', label: 'A — first' },
+      { id: 'B', label: 'B — second' },
+    ]);
+  });
+
+  test('payload.options wins over top-level options when both are present', () => {
+    const r = buildInbox([{
+      ...REQ('r-1', '2026-04-01T15:00:00Z', {
+        payload: {
+          resource: 'x', rationale: 'r', blocking: true,
+          options: [{ id: 'CANONICAL', label: 'CANONICAL — payload location' }],
+        },
+      }),
+      options: [{ id: 'DRIFTED', label: 'DRIFTED — top-level location' }],
+    }]);
+    expect(r.pending_requests[0].options).toEqual([
+      { id: 'CANONICAL', label: 'CANONICAL — payload location' },
+    ]);
+  });
+
+  test('top-level options fallback also tolerates lenient string entries', () => {
+    const r = buildInbox([{
+      ...REQ('r-1', '2026-04-01T15:00:00Z'),
+      options: ['APPROVE — ship it', 'REJECT — try again'],
+    }]);
+    expect(r.pending_requests[0].options).toEqual([
+      { id: 'APPROVE', label: 'APPROVE — ship it' },
+      { id: 'REJECT', label: 'REJECT — try again' },
+    ]);
+  });
 });
