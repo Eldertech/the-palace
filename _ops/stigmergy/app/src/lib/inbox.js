@@ -120,7 +120,14 @@ export function buildInbox(messages) {
         // its own response shape; null when the request relies on the static
         // RESPONSE_OPTIONS. The UI prefers `options` when non-null and renders
         // them inline; falls back to `response_options` otherwise.
-        options: normalizeRequestOptions(payload.options),
+        //
+        // Canonical location is `payload.options`. The fallback to top-level
+        // `m.options` exists because stewards have empirically drifted to that
+        // location (cycle-11 GSL batch run, 2026-05-27) — the validator does
+        // not enforce payload shape, so a mis-placed options array would
+        // otherwise silently render the generic response-options template.
+        // The normalizer prefers payload.options when it yields a usable list.
+        options: normalizeRequestOptions(payload.options) ?? normalizeRequestOptions(m.options),
         // Source message fields needed by ResponseModal / inline send to
         // build the response.
         // _message_id: the source message's own `id` field (not the correlation id).
