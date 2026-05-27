@@ -4,9 +4,9 @@ type: project
 pillars: [tools, practice, philosophy]
 status: active
 born: 2026-05
-last_activated: 2026-05-03
-activation_count: 3
-stage: sprout
+last_activated: 2026-05-26
+activation_count: 4
+stage: growing
 confidence: proposed
 energy: very high
 links:
@@ -40,6 +40,12 @@ links:
   - target: "[[BBS Production Plan]]"
     type: mirrors
     label: build-contract-pattern
+  - target: "[[Orchestrator Production Plan]]"
+    type: spawned
+    label: stage-b-build-contract
+  - target: "[[Orchestrator Production Plan v0.2]]"
+    type: spawned
+    label: stage-c-build-contract
 forward_vector: "I will become the working specification for routine, stage-aware project stewardship — a permanent agent that advances each palace project at the rhythm appropriate to its stage, posts status, blocks, and questions to the BBS, with the Trickster (Loudon directly, or an automated proxy with escalation rules) handling triage one decision at a time."
 ---
 
@@ -48,6 +54,18 @@ forward_vector: "I will become the working specification for routine, stage-awar
 A specification for an agent that routinely tends to the palace's `Projects/`, advancing each project according to its stage and forward vector, surfacing decisions to a triage layer rather than blocking on them. The agent doesn't manage projects in the corporate sense — it stewards them, with care for the pace each one wants.
 
 This entry is the deposited form of a 2026-05-02 conversation that began as "design an automated project management system" and ended in a richer place: the system isn't entirely new, the alignment problem is harder than initially framed, and the agent's posture must vary by stage of the project it is tending.
+
+## Status (as of 2026-05-26)
+
+The body below describes the system as conceived; this block records where the build actually stands. The five-stage plan has moved well past where the rest of this page reads:
+
+- **Stage A (hand-run pilot)** — done, and past its original scope. The [[Generative Sample Libraries]] steward ran five cycles (2026-05-03 → 2026-05-04), shipped Phase 2 (the Interview skill), and wrote back to its own page. All four of its RESOURCE_REQUESTs resolved.
+- **Stage B (Orchestrator v0.1)** — build-complete (2026-05-04): all six phases green, 97/97 tests, songline + permanent modes, two real-subagent smoke tests passed. It sits on an unpushed local branch awaiting Loudon's own smoke-test + review, and has not yet run on a live project via the skill. See [[Orchestrator Production Plan]].
+- **Stage C (schedule the orchestrator)** — specced, not built. [[Orchestrator Production Plan v0.2]] is a ready autonomous-build contract (batch-cycle, cadence, spawn-from-project, scheduled-task recipes), blocked on the Stage B smoke-test gate.
+- **Stage D (STIGMERGY v0.2 Trickster posting)** — shipped (2026-05-04). Operational board, strict §2.2 validator, click-to-respond. One routing bug surfaced through the pilot and was fixed.
+- **Stage E (automated Trickster)** — not started; still unspecced.
+
+The live frontier is the Stage B smoke-test gate, not a build. The natural next move is to advance the GSL steward to cycle 6 through the orchestrator skill (it doubles as smoke-test and first real use), then push.
 
 ## The Original Question
 
@@ -114,7 +132,7 @@ The Steward is not a new substrate — it is a **mode** of the existing permanen
 
 Each stage closes a real gap. Order matters: each unblocks the next.
 
-### Stage A — Hand-run a permanent agent on one project ✓ Piloted (2026-05-03)
+### Stage A — Hand-run a permanent agent on one project ✓ Done — 5 cycles (2026-05-03 → 2026-05-04)
 
 Pick one project and write its manifest by hand per Infrastructure Spec §3.1. Run one cycle by hand — load context per the spawn discipline, generate a response per the stage-conditional posture above, append to history, append a spec-conformant message to the persistent blackboard. No orchestrator, no schedule, no automation. The output is an artifact + lessons that scope Stage B.
 
@@ -199,25 +217,27 @@ The Stage B Production Plan is itself a deposit-worthy artifact in the autonomou
 
 These are natural Stage B test cases.
 
+**Update (2026-05-26):** subsequent hand-run cycles (the pilot reached cycle 5) covered most of this list. Multi-cycle continuity, cross-cycle cursor use, and forward_vector change detection all ran; the deposit-back path was validated when the steward wrote Phase 2 closure directly to the GSL page (`gsl-steward-006`). Two operational scars surfaced and were resolved: a BBS schema-strict reset between cycles 3–4 wiped the persistent board (purging the 113 legacy loose-format messages and stranding `gsl-steward-004`, cleanly superseded by `gsl-steward-005`); and a STIGMERGY v0.2 routing bug sent `session_id`-tagged responses to session boards instead of the persistent board (fixed in `TricksterInbox.jsx` + `ResponseModal.jsx`). The live pilot is parked at cycle 6, awaiting a Phase 3 source decision.
+
 #### Recommended next move
 
 Loudon responds to `gsl-steward-002` on the BBS — picks (a), (b), (c), or volunteers another location. Response can come via a future Cowork session (Steward reads it on next activation) or by direct hand-edit appending a `RESOURCE_GRANT` message to the persistent blackboard with `re: "gsl-steward-002"`. Then either: run another Stage A cycle (tests cross-activation continuity by drafting the Interview skill skeleton at the chosen home), or move to writing the Stage B Production Plan now.
 
-### Stage B — Build `runAgentCycle`
+### Stage B — Build `runAgentCycle` ✅ Build-complete (2026-05-04) — awaiting smoke-test + push
 
 The orchestrator. This deserves its own production plan, modeled on [[BBS Production Plan]] (the autonomous build contract that produced STIGMERGY v0.1) — phased verify gates, stop-reports, vision-validator-equivalent for the spec layer. Likely Node, sibling to STIGMERGY at `_ops/stigmergy/orchestrator/`. Health score, git change detection, posting discipline enforcement, schema validation on every BBS write all live here. The §3.2 sketch in [[Palace Agent Infrastructure Spec]] is detailed enough that this is largely transcription, not invention.
 
 Schema drift on the existing persistent board (only 3 of 113 messages spec-conformant per BBS Production Plan v0.1 closure notes) gets normalized as part of this stage — either a one-time migration or a quarantine policy for legacy lines.
 
-### Stage C — Schedule the orchestrator
+### Stage C — Schedule the orchestrator — specced, not built (see [[Orchestrator Production Plan v0.2]])
 
 A scheduled task invokes `runAgentCycle` once per project-Steward per interval. Start with one Steward, daily, on the project Stage A piloted. Tune from observation. Adding more Stewards is just adding directories — no schema or orchestrator change.
 
-### Stage D — STIGMERGY v0.2: Trickster posting
+### Stage D — STIGMERGY v0.2: Trickster posting ✅ Shipped (2026-05-04)
 
 The current STIGMERGY viewer is read-only. Triage requires writes — `POST /api/persistent`, click-to-respond on the Trickster Inbox. Without this, every Trickster response requires hand-editing `.jsonl` files. Already on the STIGMERGY roadmap as v0.2 per [[BBS Production Plan]] § What's Deferred.
 
-### Stage E — Automated Trickster
+### Stage E — Automated Trickster — not started; unspecced
 
 Per Infrastructure Spec §12 forward vector, the rules engine is unspecced. This is the original "supervisor" piece: rule-based auto-grant of routine requests (read_palace), auto-deny of routine bans (web_search outside daily budget), escalation of novel cases to Loudon via push notification or batched daily digest. Needs its own design pass — a small Production Plan in the same shape as the BBS one.
 
@@ -236,7 +256,8 @@ Per Infrastructure Spec §12 forward vector, the rules engine is unspecced. This
 
 ## What's Open
 
-- **When to start Stage B.** Stage A is now piloted (2026-05-03 on Generative Sample Libraries). Nine spec gaps and four content findings surfaced (see Stage A — Piloted subsection above). Stage B's Production Plan can now be scoped against real evidence rather than spec extrapolation. Open question: write the Stage B Production Plan now, or run another Stage A cycle first to test the multi-activation continuity claims that the single-cycle pilot couldn't exercise?
+- **The Stage B smoke-test gate (current frontier, as of 2026-05-26).** Orchestrator v0.1 is build-complete but sits on an unpushed local branch awaiting Loudon's own smoke-test + review (see [[Orchestrator Production Plan]] close-out). It has never run on a live project via the skill. Cleanest next move: advance the GSL steward to cycle 6 through the skill — it doubles as smoke-test and first real use — then push the branch.
+- **Whether to build v0.2 (Stage C enablers) now.** [[Orchestrator Production Plan v0.2]] (batch-cycle, cadence, spawn-from-project, scheduled-task recipes) is a ready autonomous-build contract at seed stage. Its Phase 1 reads v0.1's closure report, so it is blocked on the smoke-test gate above. Decision: build it to make stewardship operational, or run stewards by hand longer to learn the right cadence first?
 - **Automated Trickster rule shape.** The escalation protocol, the rules engine format, and the conditions for routing to Loudon are unspecified. Design when first overnight session is needed.
 - **Vector tuning practice as palace-wide norm.** Vector tuning is settled as a process, not a ceremony (see What's Decided). What's still open: how to make the invitation visible — does the Weave Ceremony spec need an explicit "vector edits welcome" beat? Does [[SCHEMA]] want a one-line note that forward vectors are meant to evolve? Probably yes to both, as small follow-on edits.
 - **Schedule cadence.** Daily? Weekly? Per-project? Probably configurable per Steward via manifest, with a sensible default that the orchestrator can override.
@@ -251,9 +272,9 @@ If you are a Claude reading this entry for the first time and Loudon wants to co
 3. Read [[Substrate Skill]] § Stage as Alignment Confidence — the operating posture.
 4. Read [[BBS Production Plan]] for the autonomous build contract pattern (template for Stage B).
 5. Read [[Generative Sample Libraries]] and [[Talking Keyboard]] — the case study where stage-mismatch was first surfaced empirically.
-6. Ask Loudon: which stage are we ready for? Stage A (hand-run on one project) is the natural first move; we have not yet done it.
+6. Ask Loudon: which stage are we ready for? **As of 2026-05-26: Stage A is done (5 cycles), Stage B (Orchestrator v0.1) is build-complete and awaiting smoke-test, Stage D shipped.** The live frontier is the Stage B smoke-test gate — advance the GSL steward to cycle 6 through the orchestrator skill, then push the branch.
 
-The most likely pickup point is Stage A on a chosen project. After Stage A produces lessons, Stage B becomes scopable as its own Production Plan in the BBS-Production-Plan shape.
+After that, the open decision is whether to build [[Orchestrator Production Plan v0.2]] (the Stage C enablers). The historical pickup notes below are kept for the record but no longer describe the frontier.
 
 ## Conversational History
 

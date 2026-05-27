@@ -37,3 +37,10 @@ Enrichment/.worker.started
 
 # Test-touch / scratch markers
 .claude/agents-test-touch
+
+# Vitest config timestamp temp files (transient)
+**/vitest.config.js.timestamp-*.mjs
+# Cowork scratch — relocated junk Cowork couldn't delete (not knowledge)
+_ops/scratch/
+# Cowork local settings
+.claude/settings.local.json

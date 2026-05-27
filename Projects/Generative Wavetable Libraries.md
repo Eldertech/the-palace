@@ -5,8 +5,8 @@ pillars: [creation, tools, philosophy]
 status: active
 born: 2026-05
 last_activated: 2026-05
-stage: sprout
-confidence: proposed
+stage: growing
+confidence: working
 energy: medium
 links:
   - target: "[[Generative Sample Libraries]]"

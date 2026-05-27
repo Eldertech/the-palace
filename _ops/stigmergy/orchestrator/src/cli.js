@@ -18,6 +18,7 @@
 import { argv, exit, stdout, stderr } from 'node:process';
 import { readFileSync } from 'node:fs';
 import { resolve } from 'node:path';
+import { fileURLToPath } from 'node:url';
 import { loadManifest } from './manifest.js';
 import { validateForPosting } from './posting.js';
 import { appendMessage, readJsonl } from './append.js';
@@ -25,7 +26,11 @@ import { registerAgent, readRegistry, checkUnique } from './registry.js';
 import { checkPageChange } from './git.js';
 import { buildHealthBlock } from './health.js';
 
-const PALACE_ROOT_DEFAULT = resolve(new URL('.', import.meta.url).pathname, '../../../..');
+// Use fileURLToPath (not URL.pathname) so palace roots containing spaces —
+// e.g. "The Palace" — resolve to a real filesystem path, not a percent-encoded
+// one ("The%20Palace"). The encoded form silently mislocated REGISTRY.json and
+// broke check-page's git detection. (Bug found 2026-05-27 during GWL cycle 1.)
+const PALACE_ROOT_DEFAULT = resolve(fileURLToPath(new URL('.', import.meta.url)), '../../../..');
 const REGISTRY_DEFAULT = resolve(PALACE_ROOT_DEFAULT, '_ops/agents/permanent/REGISTRY.json');
 
 function parseArgs(argv) {
