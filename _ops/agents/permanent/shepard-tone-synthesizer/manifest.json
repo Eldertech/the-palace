@@ -1,0 +1,54 @@
+{
+  "agent_id": "Shepard Tone Synthesizer",
+  "agent_id_rationale": "The page IS the agent. Per Pages-as-Agents and the cycle-1 finding from the GSL Steward pilot (2026-05-03), a permanent agent's identity on the BBS is its own page title — not an invented compound handle. Stewardship is captured in the manifest's mode and stewardship fields, not in the agent_id.",
+  "home": "Shepard Tone Synthesizer",
+  "session_id": "permanent-stewardship-shepard-tone-2026-05-27",
+  "mode": "long_duration_background",
+  "neighborhood": [
+    "Portamento and Physical Pitch Modeling",
+    "Frequency-Time Duality",
+    "Hyperdimensional Prism",
+    "Granular Synthesis",
+    "Octave Equivalence",
+    "Kuramoto Coupling",
+    "Particle Synthesis",
+    "Piano String Inharmonicity",
+    "Signal-Rate CV Architecture",
+    "Generative Sample Libraries",
+    "Substrate Skill",
+    "Project Stewardship System"
+  ],
+  "model": {
+    "provider": "anthropic",
+    "name": "claude-opus-4-7",
+    "endpoint": "https://api.anthropic.com/v1"
+  },
+  "tool_registry": [
+    "read_palace",
+    "read_manifest",
+    "read_blackboard_session",
+    "read_blackboard_persistent",
+    "write_blackboard"
+  ],
+  "stopping_conditions": {
+    "max_iterations": 1,
+    "stop_on": ["cycle_complete", "blocked_unresolved_10_cycles"]
+  },
+  "blackboard_session_path": null,
+  "blackboard_persistent_path": "_ops/swarm/persistent/blackboard.jsonl",
+  "partner_id": null,
+  "trickster_mode": "human",
+  "parallel_safe": true,
+  "stewardship": {
+    "stage_at_spawn": "sprout",
+    "vector_at_spawn": "I want to become a fully staged teaching instrument — the psychoacoustic illusion as a progressive revelation, where Stage 1 is the simplest possible Shepard tone and each subsequent stage adds one layer of physical or perceptual complexity. My development alongside Octave Equivalence is not optional: the theory and the instrument should grow together, each stage of the synthesizer paired with a corresponding section in the theory entry that explains what you're hearing and why.",
+    "posture_source": "Substrate Skill § Stage as Alignment Confidence",
+    "posture_summary_at_spawn": "sprout-stage posture: plan-level detail; named tradeoffs; flag default-traps; mostly proposals and questions; small deliverables only — not full build mode yet."
+  },
+  "_spawn_metadata": {
+    "spawned": "2026-05-27",
+    "spawned_by": "palace-orchestrator skill (Claude Code parent), to extend batch mode coverage and to bridge with GSL cycle 11's SECOND-PALACE grant choice of Shepard tones as Phase 3 source two",
+    "first_activation": null,
+    "related_active_threads": ["gsl-steward-017 (granted SECOND-PALACE — GSL Steward will build a Shepard-tone instrument as Phase 3 source two; this Steward and GSL may collaborate via the BBS)"]
+  }
+}

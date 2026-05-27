@@ -22,8 +22,14 @@
 // from cycling the same steward twice in a few hours.
 //
 // Usage:
-//   node batch-plan.js [--root <palace-root>] [--min-age-hours N] [--no-unenchanted]
-// Output: JSON { generated_at, debounce_hours, due[], skipped[], unenchanted[] }
+//   node batch-plan.js [--root <palace-root>] [--min-age-hours N] [--no-unenchanted] [--ignore-debounce]
+// Output: JSON { generated_at, debounce_hours, due[], skipped[], unenchanted[], ignore_debounce? }
+//
+// --ignore-debounce: bypass the recency check for this run, treating every
+// non-dormant enchanted steward as due regardless of last_active. Use for
+// interactive validation runs ("re-test batch mode now") and for first-time
+// catch-up after a long pause. The cron-scheduled run never sets this; the
+// debounce is the safety against accidental double-runs.
 
 import fs from 'fs';
 import path from 'path';
@@ -42,6 +48,7 @@ function arg(name, def) {
 const palaceRoot = path.resolve(arg('--root', path.resolve(__dirname, '../../../..')));
 const debounceHours = parseFloat(arg('--min-age-hours', '12'));
 const showUnenchanted = !argv.includes('--no-unenchanted');
+const ignoreDebounce = argv.includes('--ignore-debounce');
 
 const SKIP_STAGES = new Set(['dormant', 'composting']);
 const permDir = path.join(palaceRoot, '_ops/agents/permanent');
@@ -86,6 +93,7 @@ const now = Date.now();
 const plan = {
   generated_at: new Date().toISOString(),
   debounce_hours: debounceHours,
+  ignore_debounce: ignoreDebounce,
   due: [],
   skipped: [],
   unenchanted: [],
@@ -131,7 +139,7 @@ for (const dir of stewardDirs) {
   if (!homeFile) { rec.reason = 'home_page_not_found'; plan.skipped.push(rec); continue; }
   if (SKIP_STAGES.has(stage)) { rec.reason = `stage_${stage}_do_not_touch`; plan.skipped.push(rec); continue; }
   if (status !== 'active' && status !== 'unknown') { rec.reason = `status_${status}`; plan.skipped.push(rec); continue; }
-  if (rec.last_active) {
+  if (rec.last_active && !ignoreDebounce) {
     const ageH = (now - Date.parse(rec.last_active)) / 3.6e6;
     if (isFinite(ageH) && ageH < debounceHours) {
       rec.reason = `cycled_${ageH.toFixed(1)}h_ago_within_debounce`;
