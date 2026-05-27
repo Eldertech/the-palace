@@ -22,14 +22,14 @@
   -->
   <script type="application/json" id="vcv-registry">
 {
-  "version": "2.2",
+  "version": "2.3",
   "plugin": "Fundamental",
   "plugin_slug": "Fundamental",
   "vcv_rack_version": "2.x",
   "source": "https://github.com/VCVRack/Fundamental",
   "verification_method": "All port and param indices verified against Fundamental v2 + Rack v2/src/core source via WebFetch of each module's .cpp file (configInput / configOutput / configParam call order). Core slugs verified via `createModel<...>(\"slug\")` declarations.",
   "last_verified": "2026-04-20",
-  "notes": "Port indices are the integer IDs cables use in .vcv JSON. They are determined by the order of configInput()/configOutput() calls in each module's source. UI label position does NOT determine index. v2.0 corrected errors in v1.0. v2.1 adds optional default_input/default_output so unnamed-port resolution prefers the 'right' port rather than the lowest-index one. v2.2 (2026-04-20, T11) adds per-module `plugin` field (Fundamental vs Core), the MIDI_CV and AUDIO_8 Core modules, and the `virtual_endpoints` map so unbound `KEYBOARD` / `OUT` instances auto-bind to those modules — closing T1's audible-playback gate.",
+  "notes": "Port indices are the integer IDs cables use in .vcv JSON. They are determined by the order of configInput()/configOutput() calls in each module's source. UI label position does NOT determine index. v2.0 corrected errors in v1.0. v2.1 adds optional default_input/default_output so unnamed-port resolution prefers the 'right' port rather than the lowest-index one. v2.2 (2026-04-20, T11) adds per-module `plugin` field (Fundamental vs Core), the MIDI_CV and AUDIO_8 Core modules, and the `virtual_endpoints` map so unbound `KEYBOARD` / `OUT` instances auto-bind to those modules — closing T1's audible-playback gate. v2.3 (2026-05-26, T7a phase 2) adds optional `regions` (named perceptual sub-ranges), `curve` hint (linear/log/exp), and `aliases` (alternate names accepted in PDL `*` lines) to selected params so PDL can speak in named regions (e.g. `* VCF: CUTOFF = dark`). Additive: params without `regions` still emit numeric literals or fall back to default exactly as in v2.2.",
   "signal_types": {
     "audio":   { "voltage": "±5V nominal",                 "color_hint": "coral"  },
     "cv":      { "voltage": "0–10V or ±5V context-dependent", "color_hint": "purple" },
@@ -56,7 +56,7 @@
         { "name": "SQR", "type": "audio", "index": 3, "description": "Square/pulse — width = PW + PWM" }
       ],
       "params": [
-        { "name": "FREQ",      "index": 0, "range": [-76.0, 76.0], "default": 0.0, "unit": "semitones",  "description": "Frequency offset" },
+        { "name": "FREQ",      "index": 0, "range": [-76.0, 76.0], "default": 0.0, "unit": "semitones",  "description": "Frequency offset", "curve": "linear", "regions": { "sub": [-48, -24], "low": [-24, -12], "mid": [-12, 12], "high": [12, 36], "piercing": [36, 60] } },
         { "name": "FM_DEPTH",  "index": 1, "range": [-1.0, 1.0],   "default": 0.0, "unit": "normalized", "description": "FM input attenuverter" },
         { "name": "PW",        "index": 2, "range": [0.01, 0.99],  "default": 0.5, "unit": "normalized", "description": "Pulse width" },
         { "name": "PWM_DEPTH", "index": 3, "range": [-1.0, 1.0],   "default": 0.0, "unit": "normalized", "description": "PWM input attenuverter" },
@@ -81,8 +81,8 @@
         { "name": "HPF", "type": "audio", "index": 1, "description": "Highpass output" }
       ],
       "params": [
-        { "name": "FREQ",     "index": 0, "range": [0.0, 1.0],  "default": 0.5, "unit": "normalized", "description": "Cutoff knob" },
-        { "name": "RES",      "index": 1, "range": [0.0, 1.0],  "default": 0.0, "unit": "normalized", "description": "Resonance" },
+        { "name": "FREQ",     "index": 0, "range": [0.0, 1.0],  "default": 0.5, "unit": "normalized", "description": "Cutoff knob", "curve": "linear", "aliases": ["CUTOFF"], "regions": { "closed": [0.0, 0.15], "dark": [0.15, 0.4], "open": [0.4, 0.75], "bright": [0.75, 1.0] } },
+        { "name": "RES",      "index": 1, "range": [0.0, 1.0],  "default": 0.0, "unit": "normalized", "description": "Resonance", "curve": "linear", "regions": { "clean": [0.0, 0.2], "present": [0.2, 0.5], "vocal": [0.5, 0.8], "screaming": [0.8, 1.0] } },
         { "name": "RES_CV",   "index": 2, "range": [-1.0, 1.0], "default": 0.0, "unit": "normalized", "description": "RES CV attenuverter" },
         { "name": "FREQ_CV",  "index": 3, "range": [-1.0, 1.0], "default": 0.0, "unit": "normalized", "description": "FREQ CV attenuverter" },
         { "name": "DRIVE",    "index": 4, "range": [-1.0, 1.0], "default": 0.0, "unit": "normalized", "description": "Drive amount" },
@@ -107,10 +107,10 @@
         { "name": "ENV", "type": "cv", "index": 0, "description": "Envelope CV (0–10V)" }
       ],
       "params": [
-        { "name": "A",    "index": 0, "range": [0.0, 1.0],  "default": 0.5, "unit": "normalized", "description": "Attack" },
-        { "name": "D",    "index": 1, "range": [0.0, 1.0],  "default": 0.5, "unit": "normalized", "description": "Decay" },
-        { "name": "S",    "index": 2, "range": [0.0, 1.0],  "default": 0.5, "unit": "normalized", "description": "Sustain" },
-        { "name": "R",    "index": 3, "range": [0.0, 1.0],  "default": 0.5, "unit": "normalized", "description": "Release" },
+        { "name": "A",    "index": 0, "range": [0.0, 1.0],  "default": 0.5, "unit": "normalized", "description": "Attack", "curve": "linear", "regions": { "instant": [0.0, 0.1], "pluck": [0.1, 0.3], "soft": [0.3, 0.6], "pad": [0.6, 1.0] } },
+        { "name": "D",    "index": 1, "range": [0.0, 1.0],  "default": 0.5, "unit": "normalized", "description": "Decay", "curve": "linear", "regions": { "snappy": [0.0, 0.2], "short": [0.2, 0.45], "medium": [0.45, 0.7], "long": [0.7, 1.0] } },
+        { "name": "S",    "index": 2, "range": [0.0, 1.0],  "default": 0.5, "unit": "normalized", "description": "Sustain", "curve": "linear", "regions": { "plucked": [0.0, 0.15], "low": [0.15, 0.4], "held": [0.4, 0.75], "full": [0.75, 1.0] } },
+        { "name": "R",    "index": 3, "range": [0.0, 1.0],  "default": 0.5, "unit": "normalized", "description": "Release", "curve": "linear", "regions": { "gated": [0.0, 0.1], "short": [0.1, 0.35], "medium": [0.35, 0.65], "long": [0.65, 0.9], "ambient": [0.9, 1.0] } },
         { "name": "A_CV", "index": 4, "range": [-1.0, 1.0], "default": 0.0, "unit": "normalized", "description": "A CV attenuverter" },
         { "name": "D_CV", "index": 5, "range": [-1.0, 1.0], "default": 0.0, "unit": "normalized", "description": "D CV attenuverter" },
         { "name": "S_CV", "index": 6, "range": [-1.0, 1.0], "default": 0.0, "unit": "normalized", "description": "S CV attenuverter" },
@@ -155,7 +155,7 @@
         { "name": "SQR", "type": "cv", "index": 3, "description": "Square" }
       ],
       "params": [
-        { "name": "FREQ",      "index": 0, "range": [-8.0, 10.0], "default": 1.0, "unit": "log Hz",     "description": "Frequency" },
+        { "name": "FREQ",      "index": 0, "range": [-8.0, 10.0], "default": 1.0, "unit": "log Hz",     "description": "Frequency", "curve": "linear", "regions": { "imperceptible": [-8.0, -4.0], "subtle": [-4.0, 0.0], "obvious": [0.0, 4.0], "audio-rate": [4.0, 10.0] } },
         { "name": "FM_DEPTH",  "index": 1, "range": [-1.0, 1.0],  "default": 0.0, "unit": "normalized", "description": "FM attenuverter" },
         { "name": "PW",        "index": 2, "range": [0.01, 0.99], "default": 0.5, "unit": "normalized", "description": "Pulse width" },
         { "name": "PWM_DEPTH", "index": 3, "range": [-1.0, 1.0],  "default": 0.0, "unit": "normalized", "description": "PWM attenuverter" },
@@ -565,15 +565,18 @@
     // ─── .vcv Emitter ────────────────────────────────────────────────────────────
     // Transforms a parsed PDL spec + registry into a VCV Rack patch JSON object.
     //
-    // Scope (T7a phase 1, 2026-04-20):
+    // Scope (T7a phase 2, 2026-05-26):
     //   - Only registered instances become VCV modules. Unregistered endpoints
     //     (KEYBOARD, OUT, external controllers) are treated as virtual — cables
     //     that touch them are skipped in the emitter output.
     //   - Module placement packs left-to-right by HP width, wrapping at LAYOUT_MAX_HP.
     //   - Parameter values: per-param, prefer the numeric value from the PDL `*`
     //     line for that instance, else the registry `default`. Named perceptual
-    //     regions (e.g. `CUTOFF = dark`) are T7a phase 2 — any non-numeric value
-    //     surfaces a warning and falls back to the default.
+    //     regions (`CUTOFF = dark`) resolve through the param's `regions` table
+    //     via `sampleRegion()` — phase 2 wired this branch into the non-finite
+    //     path phase 1 already routed to a warning. Param-name lookups also
+    //     check each spec's `aliases` array (e.g. `CUTOFF` resolves to VCF's
+    //     canonical `FREQ`). Unknown regions still warn and fall back to default.
     //
     // Schema caveats:
     //   VCV Rack's .vcv JSON schema was written from public documentation and sample
@@ -592,6 +595,36 @@
       trigger: "#fbbf24",
       default: "#94a3b8",
     };
+
+    // T7a phase 2 — resolve a PDL param name against the canonical name AND
+    // any `aliases` declared on the spec. Returns the spec object, or null if
+    // nothing matches. The emitter records resolved values under the canonical
+    // `spec.name` so downstream `params[].value` lookups by canonical name
+    // continue to work (aliases are PDL surface only, never registry truth).
+    function resolveParamSpec(modReg, name) {
+      const params = (modReg && modReg.params) || [];
+      for (const spec of params) {
+        if (spec.name === name) return spec;
+        if (Array.isArray(spec.aliases) && spec.aliases.includes(name)) return spec;
+      }
+      return null;
+    }
+
+    // T7a phase 2 — sample a named perceptual region into a concrete numeric
+    // value in the spec's native units. `pos` ∈ [0,1] picks within the region;
+    // omitted → midpoint (deterministic, byte-identical .vcv runs guaranteed).
+    // T7b's seeded resolver will pass a per-archetype `pos` for within-region
+    // variance without touching this function. Returns null if the region
+    // name isn't declared — the caller warns and falls back to default.
+    function sampleRegion(spec, regionName, pos) {
+      const region = spec && spec.regions && spec.regions[regionName];
+      if (!region) return null;
+      const [lo, hi] = region;
+      const p = (pos == null) ? 0.5 : pos;
+      const v = lo + (hi - lo) * p;
+      const [rmin, rmax] = spec.range;
+      return Math.min(rmax, Math.max(rmin, v));
+    }
 
     function emitVcvJson(pdlText) {
       const { connections, instanceTypes, params: pdlParams, warnings } = parsePDL(pdlText);
@@ -614,14 +647,22 @@
         curX += hp;
       }
 
-      // T7a phase 1 — resolve PDL `*` entries into per-instance
-      // { paramName → numeric value } maps. Each entry is `Name = Value`;
-      // values must parse as finite numbers in this phase. Named perceptual
-      // regions (`CUTOFF = dark`) are T7a phase 2 — they surface as warnings
-      // here and the emitter falls through to the registry default. Warnings
-      // also fire for: malformed entries missing `=`; param names not in the
-      // registry for the instance's module type; and `*` lines referring to
-      // instances that were never declared (and aren't virtual endpoints).
+      // T7a phase 2 — resolve PDL `*` entries into per-instance
+      // { paramName → numeric value } maps. Each entry is `Name = Value`.
+      // Value resolution order:
+      //   1. Finite numeric literal → emit verbatim.
+      //   2. Otherwise look up `Value` as a region name on the spec's
+      //      `regions` table; sample the midpoint (deterministic).
+      //   3. Otherwise warn (listing known regions) and fall through to the
+      //      registry default downstream.
+      // Param-name lookups widen through `aliases` — PDL can say `CUTOFF`
+      // and resolve to VCF's canonical `FREQ`. Resolved values are recorded
+      // under the canonical `spec.name` so downstream lookups by registry
+      // name continue to work.
+      // Warnings also fire for: malformed entries missing `=`; param names
+      // (including aliases) not in the registry for the instance's module
+      // type; and `*` lines referring to instances that were never declared
+      // (and aren't virtual endpoints).
       const resolvedParams = {}; // instanceId → { paramName: number }
       for (const [instId, entries] of Object.entries(pdlParams || {})) {
         resolvedParams[instId] = {};
@@ -642,8 +683,6 @@
           continue;
         }
 
-        const paramNames = (modReg.params || []).map(p => p.name);
-
         for (const { entry, lineNumber } of entries) {
           const eqIdx = entry.indexOf("=");
           if (eqIdx < 0) {
@@ -657,7 +696,9 @@
           const name   = entry.slice(0, eqIdx).trim();
           const rawVal = entry.slice(eqIdx + 1).trim();
 
-          if (!paramNames.includes(name)) {
+          const spec = resolveParamSpec(modReg, name);
+          if (!spec) {
+            const paramNames = (modReg.params || []).map(p => p.name);
             warnings.push({
               source: "emitter", lineNumber,
               content: `* ${instId}: ${entry}`,
@@ -666,20 +707,26 @@
             continue;
           }
 
-          // Phase 1: numeric literals only. JS `Number("")` is 0, so guard
-          // empty strings explicitly. Named regions ("dark", "open") parse
-          // as NaN and land in the warning path below.
+          // JS `Number("")` is 0, so guard empty strings explicitly.
           const num = rawVal === "" ? NaN : Number(rawVal);
-          if (!Number.isFinite(num)) {
-            warnings.push({
-              source: "emitter", lineNumber,
-              content: `* ${instId}: ${entry}`,
-              reason: `param "${name}" value "${rawVal}" is not a finite number (named regions are T7a phase 2 — falling back to registry default)`,
-            });
+          if (Number.isFinite(num)) {
+            resolvedParams[instId][spec.name] = num;
             continue;
           }
 
-          resolvedParams[instId][name] = num;
+          // Non-finite → try a named region.
+          const sampled = sampleRegion(spec, rawVal);
+          if (sampled != null) {
+            resolvedParams[instId][spec.name] = sampled;
+            continue;
+          }
+
+          const known = spec.regions ? Object.keys(spec.regions).join(", ") : "<none>";
+          warnings.push({
+            source: "emitter", lineNumber,
+            content: `* ${instId}: ${entry}`,
+            reason: `param "${name}" value "${rawVal}" is not a finite number or known region (known regions for ${spec.name}: ${known}) — falling back to registry default`,
+          });
         }
       }
 
@@ -695,6 +742,11 @@
       // PDL spec, which made audible generation tests require hand-writing
       // the .vcv file. Registry-default fallback is strictly more correct
       // than zero (e.g. VCO SYNC_MODE defaults to 1, LFO OFFSET defaults to 1).
+      //
+      // T7a phase 2 (2026-05-26) — `pvals` may now have been populated from
+      // a named region (`CUTOFF = dark` → 0.275) rather than a literal. The
+      // downstream emission shape doesn't change; the resolution step above
+      // is where the new behavior lives.
       const modulesOut = registeredIds.map(id => {
         const modType = instanceTypes[id];
         const mod     = REGISTRY[modType];

@@ -1,12 +1,12 @@
 {
-  "version": "2.2",
+  "version": "2.3",
   "plugin": "Fundamental",
   "plugin_slug": "Fundamental",
   "vcv_rack_version": "2.x",
   "source": "https://github.com/VCVRack/Fundamental",
   "verification_method": "All port and param indices verified against Fundamental v2 + Rack v2/src/core source via WebFetch of each module's .cpp file (configInput / configOutput / configParam call order). Core slugs verified via `createModel<...>(\"slug\")` declarations.",
   "last_verified": "2026-04-20",
-  "notes": "Port indices are the integer IDs cables use in .vcv JSON, determined by the order of configInput()/configOutput() calls in each module's source. UI label position does NOT determine index. v2.0 corrected extensive errors in v1.0 (guessed indices). v2.1 (2026-04-19) added optional default_input / default_output fields per module so unnamed-port resolution prefers the conceptually 'right' port rather than the lowest-index one. v2.2 (2026-04-20, T11) adds per-module `plugin` field (Fundamental vs Core), MIDI_CV and AUDIO_8 under plugin:Core, and the top-level `virtual_endpoints` map so unbound `KEYBOARD` / `OUT` instances auto-bind to those modules — closing T1's audible-playback gate.",
+  "notes": "Port indices are the integer IDs cables use in .vcv JSON, determined by the order of configInput()/configOutput() calls in each module's source. UI label position does NOT determine index. v2.0 corrected extensive errors in v1.0 (guessed indices). v2.1 (2026-04-19) added optional default_input / default_output fields per module so unnamed-port resolution prefers the conceptually 'right' port rather than the lowest-index one. v2.2 (2026-04-20, T11) adds per-module `plugin` field (Fundamental vs Core), MIDI_CV and AUDIO_8 under plugin:Core, and the top-level `virtual_endpoints` map so unbound `KEYBOARD` / `OUT` instances auto-bind to those modules — closing T1's audible-playback gate. v2.3 (2026-05-26, T7a phase 2) adds optional `regions` (named perceptual sub-ranges), `curve` hint (linear/log/exp), and `aliases` (alternate names accepted in PDL `*` lines) to selected params — extending the registry vocabulary so PDL can speak in named regions (e.g. `* VCF: CUTOFF = dark`) rather than only literals. Phase-2 extension is additive: params without `regions` still emit numeric literals or fall back to default exactly as in v2.2.",
   "signal_types": {
     "audio": { "voltage": "±5V nominal", "color_hint": "coral" },
     "cv":    { "voltage": "0–10V or ±5V context-dependent", "color_hint": "purple" },
@@ -37,7 +37,7 @@
         { "name": "SQR", "type": "audio", "index": 3, "description": "Square/pulse wave output — width set by PW + PWM" }
       ],
       "params": [
-        { "name": "FREQ",     "index": 0, "range": [-76.0, 76.0], "default": 0.0,  "unit": "semitones",   "description": "Frequency offset in semitones" },
+        { "name": "FREQ",     "index": 0, "range": [-76.0, 76.0], "default": 0.0,  "unit": "semitones",   "description": "Frequency offset in semitones", "curve": "linear", "regions": { "sub": [-48, -24], "low": [-24, -12], "mid": [-12, 12], "high": [12, 36], "piercing": [36, 60] } },
         { "name": "FM_DEPTH", "index": 1, "range": [-1.0, 1.0],   "default": 0.0,  "unit": "normalized",  "description": "FM input attenuverter" },
         { "name": "PW",       "index": 2, "range": [0.01, 0.99],  "default": 0.5,  "unit": "normalized",  "description": "Pulse width for square wave (0.01–0.99)" },
         { "name": "PWM_DEPTH","index": 3, "range": [-1.0, 1.0],   "default": 0.0,  "unit": "normalized",  "description": "PWM input attenuverter" },
@@ -72,8 +72,8 @@
         { "name": "HPF", "type": "audio", "index": 1, "description": "Highpass filtered output" }
       ],
       "params": [
-        { "name": "FREQ",     "index": 0, "range": [0.0, 1.0],   "default": 0.5, "unit": "normalized", "description": "Cutoff frequency knob" },
-        { "name": "RES",      "index": 1, "range": [0.0, 1.0],   "default": 0.0, "unit": "normalized", "description": "Resonance (0=off, 1=self-oscillation)" },
+        { "name": "FREQ",     "index": 0, "range": [0.0, 1.0],   "default": 0.5, "unit": "normalized", "description": "Cutoff frequency knob", "curve": "linear", "aliases": ["CUTOFF"], "regions": { "closed": [0.0, 0.15], "dark": [0.15, 0.4], "open": [0.4, 0.75], "bright": [0.75, 1.0] } },
+        { "name": "RES",      "index": 1, "range": [0.0, 1.0],   "default": 0.0, "unit": "normalized", "description": "Resonance (0=off, 1=self-oscillation)", "curve": "linear", "regions": { "clean": [0.0, 0.2], "present": [0.2, 0.5], "vocal": [0.5, 0.8], "screaming": [0.8, 1.0] } },
         { "name": "RES_CV",   "index": 2, "range": [-1.0, 1.0],  "default": 0.0, "unit": "normalized", "description": "Resonance CV attenuverter" },
         { "name": "FREQ_CV",  "index": 3, "range": [-1.0, 1.0],  "default": 0.0, "unit": "normalized", "description": "Cutoff CV attenuverter" },
         { "name": "DRIVE",    "index": 4, "range": [-1.0, 1.0],  "default": 0.0, "unit": "normalized", "description": "Drive (saturation) amount" },
@@ -108,10 +108,10 @@
         { "name": "ENV", "type": "cv", "index": 0, "description": "Envelope CV output (0–10V)" }
       ],
       "params": [
-        { "name": "A",      "index": 0, "range": [0.0, 1.0],  "default": 0.5, "unit": "normalized", "description": "Attack time (1ms–10s)" },
-        { "name": "D",      "index": 1, "range": [0.0, 1.0],  "default": 0.5, "unit": "normalized", "description": "Decay time (1ms–10s)" },
-        { "name": "S",      "index": 2, "range": [0.0, 1.0],  "default": 0.5, "unit": "normalized", "description": "Sustain level (0–1)" },
-        { "name": "R",      "index": 3, "range": [0.0, 1.0],  "default": 0.5, "unit": "normalized", "description": "Release time (1ms–10s)" },
+        { "name": "A",      "index": 0, "range": [0.0, 1.0],  "default": 0.5, "unit": "normalized", "description": "Attack time (1ms–10s)", "curve": "linear", "regions": { "instant": [0.0, 0.1], "pluck": [0.1, 0.3], "soft": [0.3, 0.6], "pad": [0.6, 1.0] } },
+        { "name": "D",      "index": 1, "range": [0.0, 1.0],  "default": 0.5, "unit": "normalized", "description": "Decay time (1ms–10s)", "curve": "linear", "regions": { "snappy": [0.0, 0.2], "short": [0.2, 0.45], "medium": [0.45, 0.7], "long": [0.7, 1.0] } },
+        { "name": "S",      "index": 2, "range": [0.0, 1.0],  "default": 0.5, "unit": "normalized", "description": "Sustain level (0–1)", "curve": "linear", "regions": { "plucked": [0.0, 0.15], "low": [0.15, 0.4], "held": [0.4, 0.75], "full": [0.75, 1.0] } },
+        { "name": "R",      "index": 3, "range": [0.0, 1.0],  "default": 0.5, "unit": "normalized", "description": "Release time (1ms–10s)", "curve": "linear", "regions": { "gated": [0.0, 0.1], "short": [0.1, 0.35], "medium": [0.35, 0.65], "long": [0.65, 0.9], "ambient": [0.9, 1.0] } },
         { "name": "A_CV",   "index": 4, "range": [-1.0, 1.0], "default": 0.0, "unit": "normalized", "description": "Attack CV attenuverter" },
         { "name": "D_CV",   "index": 5, "range": [-1.0, 1.0], "default": 0.0, "unit": "normalized", "description": "Decay CV attenuverter" },
         { "name": "S_CV",   "index": 6, "range": [-1.0, 1.0], "default": 0.0, "unit": "normalized", "description": "Sustain CV attenuverter" },
@@ -174,7 +174,7 @@
         { "name": "SQR", "type": "cv", "index": 3, "description": "Square wave (width set by PW)" }
       ],
       "params": [
-        { "name": "FREQ",       "index": 0, "range": [-8.0, 10.0], "default": 1.0, "unit": "log Hz",     "description": "Frequency (log scale, ~0.002Hz to ~1kHz at 1.0)" },
+        { "name": "FREQ",       "index": 0, "range": [-8.0, 10.0], "default": 1.0, "unit": "log Hz",     "description": "Frequency (log scale, ~0.002Hz to ~1kHz at 1.0)", "curve": "linear", "regions": { "imperceptible": [-8.0, -4.0], "subtle": [-4.0, 0.0], "obvious": [0.0, 4.0], "audio-rate": [4.0, 10.0] } },
         { "name": "FM_DEPTH",   "index": 1, "range": [-1.0, 1.0],  "default": 0.0, "unit": "normalized", "description": "FM input attenuverter" },
         { "name": "PW",         "index": 2, "range": [0.01, 0.99], "default": 0.5, "unit": "normalized", "description": "Pulse width" },
         { "name": "PWM_DEPTH",  "index": 3, "range": [-1.0, 1.0],  "default": 0.0, "unit": "normalized", "description": "PWM input attenuverter" },
