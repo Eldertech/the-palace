@@ -172,9 +172,10 @@ artifacts) is fair game for the cycle's work.
 
 Every line you emit becomes a §2.2-conformant JSON object on the board
 after the orchestrator parses, validates, and appends it. The
-orchestrator builds the `health` block from Agent-tool usage data — you
-do not write it. If you produce malformed output the cycle will be
-marked `validator_rejected` and you do not advance.
+orchestrator stamps the `health` block (a minimal Path-2 stub per
+Infrastructure Spec §3.3) — **you do not write `health` at all**. If
+you produce malformed output the cycle will be marked
+`validator_rejected` and you do not advance.
 
 Required fields:
 `schema_version: "1.0"`, `id`, `ts` (ISO 8601 with timezone),

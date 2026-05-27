@@ -480,3 +480,104 @@ describe('integration — live blackboard.jsonl (post-2026-05-04 reset)', () => 
     }
   });
 });
+
+describe('validateMessage — Path 2 (claude-code-subagent) health stub', () => {
+  // Path 2 marker: health._orchestrator_metadata.dispatch_mode === "claude-code-subagent".
+  // Per Infrastructure Spec §3.3 (dual-path clause), Path 2 only requires
+  // score + model + _orchestrator_metadata; context_pct / stop_reason /
+  // iteration / tokens_this_call are optional.
+
+  const PATH2_STUB = {
+    ...VALID,
+    health: {
+      score: 'green',
+      model: 'claude-opus-4-7',
+      _orchestrator_metadata: {
+        dispatch_mode: 'claude-code-subagent',
+        note: 'Path 2 — token-level metrics not authoritatively tracked.',
+      },
+    },
+  };
+
+  test('accepts a minimal Path 2 stub (score + model + dispatch_mode only)', () => {
+    expect(validateMessage(PATH2_STUB)).toEqual({ valid: true });
+  });
+
+  test('Path 2: missing score is still rejected', () => {
+    const m = { ...PATH2_STUB, health: { ...PATH2_STUB.health } };
+    delete m.health.score;
+    const r = validateMessage(m);
+    expect(r.valid).toBe(false);
+    expect(r.errors.some((e) => e.path === 'health.score')).toBe(true);
+  });
+
+  test('Path 2: missing model is still rejected', () => {
+    const m = { ...PATH2_STUB, health: { ...PATH2_STUB.health } };
+    delete m.health.model;
+    const r = validateMessage(m);
+    expect(r.valid).toBe(false);
+    expect(r.errors.some((e) => e.path === 'health.model')).toBe(true);
+  });
+
+  test('Path 2: invalid score enum is still rejected', () => {
+    const m = { ...PATH2_STUB, health: { ...PATH2_STUB.health, score: 'bluish' } };
+    const r = validateMessage(m);
+    expect(r.valid).toBe(false);
+    expect(r.errors.some((e) => e.path === 'health.score')).toBe(true);
+  });
+
+  test('Path 2: full health block still accepted (backwards compat with mid-batch stewards)', () => {
+    const m = {
+      ...PATH2_STUB,
+      health: {
+        ...PATH2_STUB.health,
+        context_pct: 0.18,
+        stop_reason: 'end_turn',
+        iteration: 5,
+        tokens_this_call: 12345,
+      },
+    };
+    expect(validateMessage(m)).toEqual({ valid: true });
+  });
+
+  test('Path 2: when context_pct IS present, it must still be valid (0..1)', () => {
+    const m = {
+      ...PATH2_STUB,
+      health: { ...PATH2_STUB.health, context_pct: 1.5 },
+    };
+    const r = validateMessage(m);
+    expect(r.valid).toBe(false);
+    expect(r.errors.some((e) => e.path === 'health.context_pct')).toBe(true);
+  });
+
+  test('Path 1 (no dispatch_mode marker) still requires all 6 fields', () => {
+    // Strip the dispatch_mode marker so it's no longer Path 2.
+    const m = {
+      ...PATH2_STUB,
+      health: {
+        score: 'green',
+        model: 'claude-opus-4-7',
+        // no _orchestrator_metadata at all → falls back to Path 1 rules
+      },
+    };
+    const r = validateMessage(m);
+    expect(r.valid).toBe(false);
+    // Path 1 requires context_pct, stop_reason, iteration, tokens_this_call.
+    expect(r.errors.some((e) => e.path === 'health.context_pct')).toBe(true);
+    expect(r.errors.some((e) => e.path === 'health.tokens_this_call')).toBe(true);
+  });
+
+  test('Path 1 dispatch_mode (any non-Path-2 string) does not relax requirements', () => {
+    const m = {
+      ...PATH2_STUB,
+      health: {
+        score: 'green',
+        model: 'claude-opus-4-7',
+        _orchestrator_metadata: { dispatch_mode: 'api-direct' },
+      },
+    };
+    const r = validateMessage(m);
+    expect(r.valid).toBe(false);
+    expect(r.errors.some((e) => e.path === 'health.context_pct')).toBe(true);
+  });
+});

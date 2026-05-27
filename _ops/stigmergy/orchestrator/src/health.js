@@ -1,31 +1,33 @@
-// health.js — construct an approximate health block from Agent-tool usage data.
+// health.js — build the §2.2 message-level `health` block.
 //
-// The Agent tool returns `total_tokens` and `duration_ms` but does NOT split
-// usage into input_tokens / output_tokens the way the raw Anthropic SDK does.
-// So `context_pct` is approximated as total_tokens / MODEL_CONTEXT_LIMITS,
-// which slightly overshoots the strict §3.3 definition. Every health block
-// produced by this module carries `_orchestrator_metadata.dispatch_mode:
-// "claude-code-subagent"` as a flag so future readers know the score is
-// approximate (parallels Stage A's `_pilot_metadata.hand_run` provenance).
-
-export const MODEL_CONTEXT_LIMITS = {
-  'claude-opus-4-7': 200000,
-  'claude-opus-4-7[1m]': 1000000,
-  'claude-opus-4-6': 200000,
-  'claude-sonnet-4-6': 200000,
-  'claude-sonnet-4-5': 200000,
-  'claude-haiku-4-5-20251001': 200000,
-  'claude-haiku-4-5': 200000,
-  'sonnet': 200000,
-  'opus': 200000,
-  'haiku': 200000,
-};
+// Path 2 (claude-code-subagent dispatch) is what this orchestrator does, and
+// it does not have the input_tokens breakdown §3.3 originally assumed. The
+// Agent tool returns total_tokens (input+output combined) and per-turn cache
+// stats — useful for cost telemetry but not for the strict per-call usage
+// figure context_pct needs.
+//
+// Per Infrastructure Spec §3.3 (dual-path clause), Path 2 stamps a minimal
+// stub: { score: "green", model, _orchestrator_metadata }. The validator
+// recognises the dispatch_mode marker and relaxes the other field
+// requirements. The score is a sentinel — real escalation (yellow/red)
+// requires Path 1's authoritative input_tokens-from-API metric.
+//
+// If a future runtime exposes input_tokens directly, swap buildHealthBlock
+// for a Path-1 implementation and the validator will start requiring the
+// full set again. The stub keeps the surface contract intact.
 
 const DISPATCH_MODE = 'claude-code-subagent';
 
 /**
- * Compute the §3.3 score (`green` | `yellow` | `red`) from a context_pct value
- * and discipline counters.
+ * Score thresholds are kept for the day Path 1 lands. They are unused by the
+ * Path 2 stub (which always stamps "green").
+ *
+ * @param {object} input
+ * @param {number} input.context_pct
+ * @param {number} [input.duplicate_flags]
+ * @param {number} [input.posting_discipline_violations]
+ * @param {number} [input.max_tokens_hits]
+ * @returns {'green'|'yellow'|'red'}
  */
 export function scoreFor({ context_pct, duplicate_flags = 0, posting_discipline_violations = 0, max_tokens_hits = 0 }) {
   if (context_pct > 0.85 || duplicate_flags >= 2 || posting_discipline_violations >= 2 || max_tokens_hits >= 2) {
@@ -38,55 +40,37 @@ export function scoreFor({ context_pct, duplicate_flags = 0, posting_discipline_
 }
 
 /**
- * Build the §2.2 message-level `health` block from Agent-tool usage.
+ * Build the Path 2 stub `health` block.
  *
- * The Agent tool yields, at minimum: `{ total_tokens, duration_ms, model }`
- * (the runtime adapter is responsible for collecting these). When the call
- * returns a `stop_reason` (e.g. `end_turn`, `max_tokens`, `tool_use`) it is
- * forwarded; otherwise the orchestrator-skill workflow infers `end_turn`.
+ * Required:  usage.model
+ * Optional:  usage.note   (free-text reason / context for this dispatch)
+ *
+ * All other usage fields the caller passes (total_tokens, iteration, etc.)
+ * are ignored — they were heuristics, not authoritative signal, and stamping
+ * approximate numbers as if they were authoritative is exactly the trap §3.3
+ * Path 2 mode exists to avoid.
  *
  * @param {object} usage
- * @param {number} usage.total_tokens — input + output combined
- * @param {string} usage.model — model identifier (must exist in MODEL_CONTEXT_LIMITS)
- * @param {string} [usage.stop_reason] — if known; defaults to "end_turn"
- * @param {number} [usage.iteration] — agent's current cycle number
- * @param {number} [usage.duplicate_flags]
- * @param {number} [usage.posting_discipline_violations]
- * @param {number} [usage.max_tokens_hits]
+ * @returns {object} §2.2-conformant Path-2 health block
  */
 export function buildHealthBlock(usage) {
   if (!usage || typeof usage !== 'object') {
     throw new Error('buildHealthBlock requires a usage object');
   }
-  const total = usage.total_tokens;
-  if (typeof total !== 'number' || total < 0 || !Number.isFinite(total)) {
-    throw new Error(`buildHealthBlock: usage.total_tokens must be a non-negative finite number, got ${total}`);
-  }
   if (typeof usage.model !== 'string' || usage.model.trim() === '') {
     throw new Error('buildHealthBlock: usage.model must be a non-empty string');
   }
 
-  const limit = MODEL_CONTEXT_LIMITS[usage.model] ?? 200000;
-  const context_pct = Math.max(0, Math.min(1, total / limit));
-  const stop_reason = usage.stop_reason ?? 'end_turn';
-  const iteration = Number.isInteger(usage.iteration) && usage.iteration >= 1 ? usage.iteration : 1;
-  const duplicate_flags = usage.duplicate_flags ?? 0;
-  const posting_discipline_violations = usage.posting_discipline_violations ?? 0;
-  const max_tokens_hits = usage.max_tokens_hits ?? 0;
-
-  const score = scoreFor({ context_pct, duplicate_flags, posting_discipline_violations, max_tokens_hits });
+  const note = typeof usage.note === 'string' && usage.note.trim() !== ''
+    ? usage.note
+    : 'Path 2 (claude-code-subagent) dispatch — token-level metrics not authoritatively tracked; see Infrastructure Spec §3.3.';
 
   return {
-    context_pct,
-    stop_reason,
-    iteration,
-    tokens_this_call: total,
+    score: 'green',
     model: usage.model,
-    score,
     _orchestrator_metadata: {
       dispatch_mode: DISPATCH_MODE,
-      context_pct_provenance: 'approximated_from_total_tokens',
-      note: 'Agent tool returns total_tokens (input+output combined); strict §3.3 expects input_tokens. context_pct is upper-bounded by this approximation.',
+      note,
     },
   };
 }
