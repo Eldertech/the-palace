@@ -9,7 +9,7 @@
       "decision_topic": "Audition the first Crystal Bravais wavetable proof",
       "blocking": true,
       "posted_at": "2026-05-27T12:31:00-04:00",
-      "artifact": "_ops/wavetable-libraries/crystal-bravais/crystal_bravais_ableton.wav",
+      "artifact": "Projects/Generative Wavetable Libraries/crystal-bravais/crystal_bravais_ableton.wav",
       "options": [
         "accept",
         "tweak-model",
