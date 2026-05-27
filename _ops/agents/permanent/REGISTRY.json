@@ -12,6 +12,12 @@
       "home": "Generative Wavetable Libraries",
       "dir": "_ops/agents/permanent/generative-wavetable-libraries",
       "registered_at": "2026-05-27T11:54:31.538Z"
+    },
+    {
+      "agent_id": "Shepard Tone Synthesizer",
+      "home": "Shepard Tone Synthesizer",
+      "dir": "_ops/agents/permanent/shepard-tone-synthesizer",
+      "registered_at": "2026-05-27T17:35:45.652Z"
     }
   ]
 }
