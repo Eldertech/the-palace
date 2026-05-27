@@ -14,7 +14,8 @@
 // Tests pass an explicit `palaceRoot` to avoid env-var coupling.
 
 import { readFileSync, existsSync, statSync, readdirSync, mkdirSync, watch } from 'node:fs';
-import { resolve, join } from 'node:path';
+import { resolve, join, sep } from 'node:path';
+import { execFile } from 'node:child_process';
 import { parseJSONL } from '../src/lib/parser.js';
 import { validateMessage } from './validator.js';
 import { appendJsonLine } from './append.js';
@@ -27,6 +28,20 @@ function jsonResponse(res, status, payload) {
   res.setHeader('Content-Type', 'application/json; charset=utf-8');
   res.end(JSON.stringify(payload));
 }
+
+// Resolve a palace-relative path to an absolute path, refusing anything that
+// escapes the palace root (path traversal, absolute paths, null bytes).
+// Returns the absolute path, or null if the input is unsafe/empty.
+export function resolveInsidePalace(palaceRoot, rel) {
+  if (typeof rel !== 'string' || rel === '' || rel.includes('\0')) return null;
+  const root = resolve(palaceRoot);
+  const abs = resolve(root, rel);
+  if (abs !== root && !abs.startsWith(root + sep)) return null;
+  return abs;
+}
+
+// Native open command: macOS `open`, otherwise `xdg-open` (Linux).
+const OPEN_CMD = process.platform === 'darwin' ? 'open' : 'xdg-open';
 
 export function readPersistent(palaceRoot) {
   const path = resolve(palaceRoot, PERSISTENT_REL);
@@ -293,6 +308,35 @@ export function blackboardMiddleware(palaceRoot) {
             });
           }
           return jsonResponse(res, 200, data);
+        }
+
+        // ── GET /api/open ─ open a palace file in its native app ────────────
+        // `open:` links in messages resolve here so a rendered artifact (e.g. a
+        // WAV) opens in the OS default app / DAW. Path must be palace-relative;
+        // ?reveal=1 reveals in Finder instead of opening. Returns 204 so an <a>
+        // click fires the open without navigating the BBS away.
+        if (urlPath === '/api/open' && method === 'GET') {
+          const rel = query.get('path');
+          const abs = resolveInsidePalace(palaceRoot, rel);
+          if (!abs) {
+            return jsonResponse(res, 400, {
+              error: 'invalid or missing path (must be palace-relative, no traversal)',
+              path: rel,
+            });
+          }
+          if (!existsSync(abs)) {
+            return jsonResponse(res, 404, { error: 'file not found', path: rel });
+          }
+          const reveal = query.get('reveal') === '1' || query.get('reveal') === 'true';
+          execFile(OPEN_CMD, reveal ? ['-R', abs] : [abs], (err) => {
+            if (err) {
+              jsonResponse(res, 500, { error: 'open failed', detail: err.message });
+              return;
+            }
+            res.statusCode = 204;
+            res.end();
+          });
+          return; // response owned by the execFile callback
         }
 
         // ── POST /api/persistent ────────────────────────────────────────────

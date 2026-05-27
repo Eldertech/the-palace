@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Box, Rule, Button } from './primitives.jsx';
 import { buildInbox } from '../lib/inbox.js';
-import { healthColor, formatTs, parseLinks } from '../lib/format.js';
+import { healthColor, formatTs, parseLinks, hrefFor } from '../lib/format.js';
 import { buildRequestOptionResponse } from '../lib/response-builder.js';
 import { postMessage, InvalidMessageError } from '../adapters/blackboard.js';
 import ResponseModal from './ResponseModal.jsx';
@@ -18,7 +18,7 @@ function Linkify({ text }) {
       : (
         <a
           key={i}
-          href={p.url}
+          href={hrefFor(p.url)}
           style={{
             color: 'var(--ansi-bright-cyan)',
             textShadow: 'var(--glow)',

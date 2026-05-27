@@ -1,6 +1,6 @@
 import React from 'react';
 import { Rule, Tag } from './primitives.jsx';
-import { glyphFor, accentFor, formatTs, parseLinks } from '../lib/format.js';
+import { glyphFor, accentFor, formatTs, parseLinks, hrefFor } from '../lib/format.js';
 
 // Map FLAG confidence string to Tag tone.
 function FlagConfidenceTag({ confidence }) {
@@ -21,7 +21,7 @@ function Linkify({ text }) {
       : (
         <a
           key={i}
-          href={p.url}
+          href={hrefFor(p.url)}
           style={{
             color: 'var(--ansi-bright-cyan)',
             textShadow: 'var(--glow)',

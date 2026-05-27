@@ -125,3 +125,25 @@ export function parseLinks(text) {
   }
   return parts.length > 0 ? parts : [{ type: 'text', value: text }];
 }
+
+// Map a parsed link url to the actual href used in the <a> tag.
+//
+// The `open:` pseudo-scheme points at a palace-relative file that the BBS
+// server can open in its native app via GET /api/open (e.g. open a rendered
+// WAV in your DAW, or `open:...?reveal` to reveal it in Finder). Authors write
+// `[listen](open:Projects/Foo/bar.wav)`; this rewrites it to the API call.
+// All other schemes (obsidian://, http(s)://, file://, computer://) pass
+// through unchanged.
+export function hrefFor(url) {
+  if (typeof url !== 'string' || !url.startsWith('open:')) return url;
+  let rel = url.slice('open:'.length);
+  let reveal = false;
+  // Optional trailing "?reveal" marker on the pseudo-scheme.
+  const q = rel.indexOf('?');
+  if (q !== -1) {
+    reveal = /(^|[?&])reveal(=1|=true)?($|&)/.test(rel.slice(q));
+    rel = rel.slice(0, q);
+  }
+  const base = `/api/open?path=${encodeURIComponent(rel)}`;
+  return reveal ? `${base}&reveal=1` : base;
+}
