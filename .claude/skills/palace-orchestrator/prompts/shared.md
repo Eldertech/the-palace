@@ -111,3 +111,18 @@ Trickster's response can pair back to it. Never put the id only under
 `request_id` and omit `id` — a message with no `id` is rejected by the
 validator. `BROADCAST` / `FLAG` / `PROOF` messages carry `id` only, no
 `request_id`.
+
+## Linking to openable files (audio, video — anything for a native app)
+
+When you point Loudon at a file he should *open in an app* rather than read in
+Obsidian — a rendered WAV for his DAW, a video, an image — use the `open:`
+pseudo-scheme with a palace-relative path (literal spaces are fine; do not
+percent-encode):
+
+```
+[listen](open:Projects/Generative Wavetable Libraries/crystal-bravais/crystal_bravais_ableton.wav)
+```
+
+The BBS turns that into one click that opens the file in the OS default app.
+Append `?reveal` to reveal it in Finder instead of opening. Use `obsidian://`
+for palace *pages* to read; use `open:` for *files* to play/open.

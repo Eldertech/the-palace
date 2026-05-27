@@ -52,3 +52,5 @@ Projects/Generative Sample Libraries/**/*.wav
 
 # Ableton analysis files (regenerated when a WAV is loaded)
 *.asd
+
+**/vite.config.js.timestamp-*.mjs
