@@ -109,60 +109,85 @@ export function validateMessage(msg) {
     }
   }
 
-  // health — required object with specific sub-fields.
+  // health — required object. The required sub-fields depend on the dispatch
+  // mode (see Infrastructure Spec §3.3):
+  //
+  //   Path 1 (direct-API dispatch) — all 6 sub-fields required:
+  //     context_pct, stop_reason, iteration, tokens_this_call, model, score.
+  //
+  //   Path 2 (claude-code-subagent dispatch) — only score + model required;
+  //     context_pct / stop_reason / iteration / tokens_this_call are
+  //     OPTIONAL (and ignored if absent) because the Agent tool does not
+  //     return the input_tokens breakdown that §3.3 originally assumed. The
+  //     score is stamped "green" as a sentinel; real escalation requires
+  //     Path 1's authoritative usage data. The path is signalled by
+  //     `health._orchestrator_metadata.dispatch_mode === "claude-code-subagent"`.
+  //
+  // Pre-existing messages with full health blocks remain valid in either
+  // mode — the change relaxes requirements for Path 2 but does not reject
+  // messages that happen to carry the full set.
   if (!('health' in msg) || msg.health === null || msg.health === undefined) {
     errors.push({ path: 'health', message: 'required field "health" is missing' });
   } else if (typeof msg.health !== 'object' || Array.isArray(msg.health)) {
     errors.push({ path: 'health', message: '"health" must be a plain object' });
   } else {
     const h = msg.health;
+    const isPath2 = h._orchestrator_metadata
+      && typeof h._orchestrator_metadata === 'object'
+      && h._orchestrator_metadata.dispatch_mode === 'claude-code-subagent';
 
-    // context_pct: number, 0 <= x <= 1
-    if (!('context_pct' in h) || h.context_pct === null || h.context_pct === undefined) {
-      errors.push({ path: 'health.context_pct', message: 'required field "health.context_pct" is missing' });
-    } else if (typeof h.context_pct !== 'number') {
-      errors.push({ path: 'health.context_pct', message: '"health.context_pct" must be a number' });
-    } else if (h.context_pct < 0 || h.context_pct > 1) {
-      errors.push({ path: 'health.context_pct', message: `"health.context_pct" must be between 0 and 1, got ${h.context_pct}` });
+    // context_pct, stop_reason, iteration, tokens_this_call: required only
+    // for Path 1; optional for Path 2. When present (in either path), they
+    // must have the right shape.
+    if (!isPath2 || 'context_pct' in h) {
+      if (!('context_pct' in h) || h.context_pct === null || h.context_pct === undefined) {
+        errors.push({ path: 'health.context_pct', message: 'required field "health.context_pct" is missing (Path 1)' });
+      } else if (typeof h.context_pct !== 'number') {
+        errors.push({ path: 'health.context_pct', message: '"health.context_pct" must be a number' });
+      } else if (h.context_pct < 0 || h.context_pct > 1) {
+        errors.push({ path: 'health.context_pct', message: `"health.context_pct" must be between 0 and 1, got ${h.context_pct}` });
+      }
     }
 
-    // stop_reason: non-empty string
-    if (!('stop_reason' in h) || h.stop_reason === null || h.stop_reason === undefined) {
-      errors.push({ path: 'health.stop_reason', message: 'required field "health.stop_reason" is missing' });
-    } else if (typeof h.stop_reason !== 'string' || h.stop_reason.trim() === '') {
-      errors.push({ path: 'health.stop_reason', message: '"health.stop_reason" must be a non-empty string' });
+    if (!isPath2 || 'stop_reason' in h) {
+      if (!('stop_reason' in h) || h.stop_reason === null || h.stop_reason === undefined) {
+        errors.push({ path: 'health.stop_reason', message: 'required field "health.stop_reason" is missing (Path 1)' });
+      } else if (typeof h.stop_reason !== 'string' || h.stop_reason.trim() === '') {
+        errors.push({ path: 'health.stop_reason', message: '"health.stop_reason" must be a non-empty string' });
+      }
     }
 
-    // iteration: positive integer (>= 1)
-    if (!('iteration' in h) || h.iteration === null || h.iteration === undefined) {
-      errors.push({ path: 'health.iteration', message: 'required field "health.iteration" is missing' });
-    } else if (typeof h.iteration !== 'number') {
-      errors.push({ path: 'health.iteration', message: '"health.iteration" must be a number' });
-    } else if (!Number.isInteger(h.iteration)) {
-      errors.push({ path: 'health.iteration', message: `"health.iteration" must be an integer, got ${h.iteration}` });
-    } else if (h.iteration < 1) {
-      errors.push({ path: 'health.iteration', message: `"health.iteration" must be >= 1, got ${h.iteration}` });
+    if (!isPath2 || 'iteration' in h) {
+      if (!('iteration' in h) || h.iteration === null || h.iteration === undefined) {
+        errors.push({ path: 'health.iteration', message: 'required field "health.iteration" is missing (Path 1)' });
+      } else if (typeof h.iteration !== 'number') {
+        errors.push({ path: 'health.iteration', message: '"health.iteration" must be a number' });
+      } else if (!Number.isInteger(h.iteration)) {
+        errors.push({ path: 'health.iteration', message: `"health.iteration" must be an integer, got ${h.iteration}` });
+      } else if (h.iteration < 1) {
+        errors.push({ path: 'health.iteration', message: `"health.iteration" must be >= 1, got ${h.iteration}` });
+      }
     }
 
-    // tokens_this_call: non-negative integer
-    if (!('tokens_this_call' in h) || h.tokens_this_call === null || h.tokens_this_call === undefined) {
-      errors.push({ path: 'health.tokens_this_call', message: 'required field "health.tokens_this_call" is missing' });
-    } else if (typeof h.tokens_this_call !== 'number') {
-      errors.push({ path: 'health.tokens_this_call', message: '"health.tokens_this_call" must be a number' });
-    } else if (!Number.isInteger(h.tokens_this_call)) {
-      errors.push({ path: 'health.tokens_this_call', message: `"health.tokens_this_call" must be an integer, got ${h.tokens_this_call}` });
-    } else if (h.tokens_this_call < 0) {
-      errors.push({ path: 'health.tokens_this_call', message: `"health.tokens_this_call" must be >= 0, got ${h.tokens_this_call}` });
+    if (!isPath2 || 'tokens_this_call' in h) {
+      if (!('tokens_this_call' in h) || h.tokens_this_call === null || h.tokens_this_call === undefined) {
+        errors.push({ path: 'health.tokens_this_call', message: 'required field "health.tokens_this_call" is missing (Path 1)' });
+      } else if (typeof h.tokens_this_call !== 'number') {
+        errors.push({ path: 'health.tokens_this_call', message: '"health.tokens_this_call" must be a number' });
+      } else if (!Number.isInteger(h.tokens_this_call)) {
+        errors.push({ path: 'health.tokens_this_call', message: `"health.tokens_this_call" must be an integer, got ${h.tokens_this_call}` });
+      } else if (h.tokens_this_call < 0) {
+        errors.push({ path: 'health.tokens_this_call', message: `"health.tokens_this_call" must be >= 0, got ${h.tokens_this_call}` });
+      }
     }
 
-    // model: string (any non-empty)
+    // model and score are required on BOTH paths.
     if (!('model' in h) || h.model === null || h.model === undefined) {
       errors.push({ path: 'health.model', message: 'required field "health.model" is missing' });
     } else if (typeof h.model !== 'string' || h.model.trim() === '') {
       errors.push({ path: 'health.model', message: '"health.model" must be a non-empty string' });
     }
 
-    // score: 'green' | 'yellow' | 'red'
     if (!('score' in h) || h.score === null || h.score === undefined) {
       errors.push({ path: 'health.score', message: 'required field "health.score" is missing' });
     } else if (!VALID_SCORES.has(h.score)) {

@@ -459,6 +459,33 @@ The orchestrator maintains a composite health score in `state.json`, updated aft
 
 **Agent self-reporting:** An agent detecting it is producing thin results may post a `RESOURCE_REQUEST` with `resource: "model_upgrade"` or `resource: "model_downgrade"`. Self-reports are signals, not decisions — the Coordinator or Trickster confirms. A downgrade to release resources is equally valid.
 
+#### 3.3.1 Dual-path health: Path 1 (API-direct) vs Path 2 (claude-code-subagent)
+
+The original §3.3 above describes **Path 1** — the orchestrator calls the Anthropic API directly, receives `response.usage.input_tokens` per call, and computes `context_pct` authoritatively. Every threshold and intervention behavior follows from that real signal.
+
+**Path 2** is the Claude-Code-resident dispatch used in the v0.1 orchestrator (per `_ops/stigmergy/orchestrator/`). The Agent tool returns `total_tokens` (input+output combined) and per-turn cache statistics, but not the `input_tokens` breakdown §3.3 needs. Computing `context_pct = total_tokens / model_limit` or `avg_cache_read_per_turn + cumulative_output` was tried during the GSL pilot (cycles 6-12, 2026-05-27) and proved to be **approximate heuristics stamped as if authoritative** — the message-level numbers were ignorable in practice (score was always `green`; thresholds never triggered), but their authoritative shape risked future readers trusting them.
+
+The Path 2 rule:
+
+- The orchestrator stamps a **minimal stub**:
+  ```json
+  "health": {
+    "score": "green",
+    "model": "claude-opus-4-7",
+    "_orchestrator_metadata": {
+      "dispatch_mode": "claude-code-subagent",
+      "note": "Path 2 — token-level metrics not authoritatively tracked; see Infrastructure Spec §3.3."
+    }
+  }
+  ```
+- The strict §2.2 validator recognises `health._orchestrator_metadata.dispatch_mode === "claude-code-subagent"` as the Path 2 marker and **relaxes** the requirements: only `score` and `model` are mandatory; `context_pct` / `stop_reason` / `iteration` / `tokens_this_call` are optional (validator-skipped when absent, structurally checked when present).
+- `score` is a **sentinel** — always `green` in Path 2. Real escalation (yellow/red) requires Path 1's authoritative usage data.
+- Path 1 messages remain fully required by the validator (the dual-path is additive, not a replacement). Path 1 returns when the orchestrator gains direct API access (the user gets an API key, or the Agent tool exposes `input_tokens` separately).
+
+**Why Path 2 stamps anything at all:** the `_orchestrator_metadata.dispatch_mode` flag is the only field with real signal — it tells a future auditor "this message came through the subagent path, the numbers (if any) are approximate." Dropping the health block entirely would lose that provenance. The stub keeps the schema versionable for the day Path 1 arrives.
+
+**Backwards compat:** the ~38 pre-stub Path-2 messages on the persistent board (with the full set of approximate fields) remain valid — the validator accepts the full block as a superset of the stub. Going forward, the orchestrator stamps only the stub.
+
 ### 3.4 Posting Discipline
 
 Inside each API call, the agent follows this discipline:

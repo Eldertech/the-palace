@@ -218,7 +218,7 @@ function main() {
       '                                                           Check whether agent_id is taken without registering',
       '  check-page <entry-name> <since-iso> [--palace-root <path>]',
       '                                                           Detect git changes to a palace entry since a timestamp',
-      '  health <usage.json>                                      Build an approximate §2.2 health block from Agent-tool usage',
+      '  health <usage.json>                                      Build a §2.2 Path-2 health stub (score + model + dispatch_mode)',
       '',
     ].join('\n'));
     exit(0);

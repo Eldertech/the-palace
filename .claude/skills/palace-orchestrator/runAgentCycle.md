@@ -10,7 +10,7 @@ Render the system prompt from the appropriate template (`songline` or `steward`)
 
 - **Validate the manifest first** with `palace-orch validate`. If it fails, stop — do not dispatch.
 - **Permanent stewards only:** run `palace-orch register-check` before first spawn. If `forward_vector` has changed since `state.last_active`, stop and post a `DIRECTIVE_REQUEST` (RESOURCE_REQUEST type with `payload.directive: true`) to the TRICKSTER board instead of dispatching. Songline workers skip both checks.
-- **The orchestrator builds the `health` block.** The subagent does not write its own health. Strip any `health` field the subagent emits and replace with one constructed via `palace-orch health '{"total_tokens": N, "model": "..."}'` from the Agent tool's reported usage.
+- **The orchestrator stamps the `health` block** as a Path-2 stub per Infrastructure Spec §3.3.1: `{score: "green", model, _orchestrator_metadata.dispatch_mode: "claude-code-subagent"}`. The subagent does not write its own health. Strip any `health` field the subagent emits and replace with one constructed via `palace-orch health '{"model": "..."}'`. The per-call usage fields (`context_pct`, `tokens_this_call`, etc.) are deliberately omitted in Path 2 — they were approximate heuristics, not authoritative signal. Score is always `"green"` in Path 2; real escalation needs Path 1 (API-direct dispatch with real `input_tokens` per call).
 - **Strict §2.2 enforcement is non-negotiable.** Run `palace-orch validate-message --prior-board <bb> --agent-id <id>` on every outgoing message before append. Drop the rejected ones; valid ones in the same batch still proceed to append.
 - **`agent_id` defaults to `home`** (the page title — Finding 11). Do not invent compound handles like `GSL-STEWARD` or `KURAMOTO-1`.
 - **`request_id` is top-level** on RESOURCE_REQUEST, never inside `payload` (Gap 9 — highest-priority spec gap).
@@ -25,7 +25,7 @@ CLI at `_ops/stigmergy/orchestrator/src/cli.js` — invoke as `node _ops/stigmer
 - `append <msg.json> --target persistent --persistent-path <path> [--agent-id <id>] [--prior-board <path>]` — atomic append (re-validates before write)
 - `register <id> <home> --dir <dir>` and `register-check <id> [--dir <dir>]` — Gap 7 uniqueness
 - `check-page <entry-name> <since-iso>` — git-detected changes since last activation
-- `health '{"total_tokens": N, "model": "..."}'` — §2.2-conformant health block with `_orchestrator_metadata.dispatch_mode: "claude-code-subagent"`
+- `health '{"model": "..."}'` — §2.2 Path-2 health stub (score: "green" + model + `_orchestrator_metadata.dispatch_mode: "claude-code-subagent"`)
 
 System-prompt rendering (no CLI — fast enough for inline use):
 

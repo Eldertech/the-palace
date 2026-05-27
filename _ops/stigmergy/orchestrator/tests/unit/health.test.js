@@ -1,9 +1,14 @@
-// health.test.js — approximate health block construction from Agent-tool usage.
+// health.test.js — Path 2 (claude-code-subagent) stub health block.
+//
+// Per Infrastructure Spec §3.3 dual-path clause, Path 2 dispatch stamps a
+// minimal stub: { score: "green", model, _orchestrator_metadata }. The
+// validator recognizes the dispatch_mode marker and relaxes the other
+// per-call usage requirements.
 
 import { describe, it, expect } from 'vitest';
-import { buildHealthBlock, scoreFor, MODEL_CONTEXT_LIMITS } from '../../src/health.js';
+import { buildHealthBlock, scoreFor } from '../../src/health.js';
 
-describe('scoreFor', () => {
+describe('scoreFor (kept for Path 1, unused by Path 2 stub)', () => {
   it('green when context is low and no anomalies', () => {
     expect(scoreFor({ context_pct: 0.3 })).toBe('green');
   });
@@ -21,89 +26,60 @@ describe('scoreFor', () => {
   });
 });
 
-describe('buildHealthBlock', () => {
-  it('builds a green health block for typical sonnet usage', () => {
-    const h = buildHealthBlock({ total_tokens: 5000, model: 'claude-sonnet-4-6' });
+describe('buildHealthBlock — Path 2 stub', () => {
+  it('builds a minimal stub: score + model + _orchestrator_metadata only', () => {
+    const h = buildHealthBlock({ model: 'claude-opus-4-7' });
     expect(h.score).toBe('green');
-    expect(h.context_pct).toBeCloseTo(5000 / 200000, 5);
-    expect(h.stop_reason).toBe('end_turn');
-    expect(h.iteration).toBe(1);
-    expect(h.tokens_this_call).toBe(5000);
-    expect(h.model).toBe('claude-sonnet-4-6');
-  });
-
-  it('always sets _orchestrator_metadata.dispatch_mode to claude-code-subagent (Decisions table)', () => {
-    const h = buildHealthBlock({ total_tokens: 100, model: 'claude-sonnet-4-6' });
-    expect(h._orchestrator_metadata).toBeDefined();
+    expect(h.model).toBe('claude-opus-4-7');
     expect(h._orchestrator_metadata.dispatch_mode).toBe('claude-code-subagent');
-    expect(h._orchestrator_metadata.context_pct_provenance).toBe('approximated_from_total_tokens');
+    expect(typeof h._orchestrator_metadata.note).toBe('string');
+    // No per-call usage fields are emitted in Path 2 — those were
+    // approximate heuristics and §3.3 Path 2 says don't stamp them.
+    expect(h.context_pct).toBeUndefined();
+    expect(h.tokens_this_call).toBeUndefined();
+    expect(h.iteration).toBeUndefined();
+    expect(h.stop_reason).toBeUndefined();
   });
 
-  it('applies model-specific context limits', () => {
-    const opus1m = buildHealthBlock({ total_tokens: 200000, model: 'claude-opus-4-7[1m]' });
-    expect(opus1m.context_pct).toBeCloseTo(200000 / 1000000, 5);
-    expect(opus1m.score).toBe('green');
-  });
-
-  it('forwards stop_reason and iteration when provided', () => {
+  it('ignores legacy usage fields (total_tokens, stop_reason, iteration)', () => {
+    // Callers may still pass these for backwards-compat; the stub ignores
+    // them rather than stamping them on the output, because §3.3 Path 2
+    // forbids stamping approximate numbers as if authoritative.
     const h = buildHealthBlock({
-      total_tokens: 5000,
       model: 'claude-sonnet-4-6',
-      stop_reason: 'tool_use',
-      iteration: 3,
+      total_tokens: 5000,
+      stop_reason: 'end_turn',
+      iteration: 5,
+      duplicate_flags: 7,
     });
-    expect(h.stop_reason).toBe('tool_use');
-    expect(h.iteration).toBe(3);
+    expect(h.score).toBe('green');
+    expect(h.model).toBe('claude-sonnet-4-6');
+    expect(h.context_pct).toBeUndefined();
+    expect(h.iteration).toBeUndefined();
+    expect(h.tokens_this_call).toBeUndefined();
   });
 
-  it('clamps context_pct to [0, 1] for very high token counts', () => {
-    const h = buildHealthBlock({ total_tokens: 999999999, model: 'claude-sonnet-4-6' });
-    expect(h.context_pct).toBe(1);
-    expect(h.score).toBe('red');
+  it('accepts an optional note for cycle-specific provenance', () => {
+    const h = buildHealthBlock({
+      model: 'claude-opus-4-7',
+      note: 'GSL cycle 13 — first cycle after Path 2 stub landed; light dispatch.',
+    });
+    expect(h._orchestrator_metadata.note).toMatch(/GSL cycle 13/);
   });
 
-  it('uses default 200k limit for unknown models', () => {
-    const h = buildHealthBlock({ total_tokens: 100000, model: 'some-future-model' });
-    expect(h.context_pct).toBeCloseTo(0.5, 5);
+  it('falls back to a generic spec-reference note when none given', () => {
+    const h = buildHealthBlock({ model: 'claude-opus-4-7' });
+    expect(h._orchestrator_metadata.note).toMatch(/Infrastructure Spec §3\.3/);
   });
 
-  it('rejects negative or non-finite total_tokens', () => {
-    expect(() => buildHealthBlock({ total_tokens: -1, model: 'claude-sonnet-4-6' })).toThrow();
-    expect(() => buildHealthBlock({ total_tokens: NaN, model: 'claude-sonnet-4-6' })).toThrow();
+  it('throws on missing usage object', () => {
+    expect(() => buildHealthBlock(null)).toThrow(/usage object/);
+    expect(() => buildHealthBlock(undefined)).toThrow(/usage object/);
   });
 
-  it('rejects empty model', () => {
-    expect(() => buildHealthBlock({ total_tokens: 100, model: '' })).toThrow();
-  });
-
-  it('produces a §2.2-conformant health block when paired with the validator', async () => {
-    // Round-trip: build a health block, drop it into a §2.2 message, validate.
-    const { validateMessage } = await import('../../src/posting.js');
-    const h = buildHealthBlock({ total_tokens: 5000, model: 'claude-sonnet-4-6' });
-    const msg = {
-      schema_version: '1.0',
-      id: 'h-test',
-      ts: '2026-05-04T08:00:00Z',
-      session_id: 'test',
-      from: 'TEST',
-      to: '*',
-      type: 'BROADCAST',
-      board: 'GENERAL',
-      health: h,
-      payload: { content: 'x' },
-    };
-    const r = validateMessage(msg);
-    if (!r.valid) {
-      throw new Error('§2.2 rejected the health block: ' + JSON.stringify(r.errors));
-    }
-    expect(r.valid).toBe(true);
-  });
-});
-
-describe('MODEL_CONTEXT_LIMITS', () => {
-  it('has entries for the models the orchestrator dispatches', () => {
-    expect(MODEL_CONTEXT_LIMITS['claude-sonnet-4-6']).toBe(200000);
-    expect(MODEL_CONTEXT_LIMITS['claude-opus-4-7']).toBe(200000);
-    expect(MODEL_CONTEXT_LIMITS['claude-haiku-4-5-20251001']).toBe(200000);
+  it('throws on missing model', () => {
+    expect(() => buildHealthBlock({})).toThrow(/model/);
+    expect(() => buildHealthBlock({ model: '' })).toThrow(/model/);
+    expect(() => buildHealthBlock({ model: '   ' })).toThrow(/model/);
   });
 });
