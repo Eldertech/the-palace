@@ -2,7 +2,7 @@
 name: sample-library-interview
 description: Conducts the chat-driven interview that turns a request into a deployment-ready sampled instrument. Trigger when the user wants to generate a sample library — palace synthesis, local WAV folder, AI audio sub-agents, web sources. Enforces convention agreement before rendering and audition cycle before any full batch.
 location: _ops/sample-libraries/skills/interview/
-status: draft — body filled in 2026-05-03 by GSL Steward cycle 3, awaiting Trickster audition (gsl-steward-004)
+status: active — promoted out of draft on 2026-05-27 (GSL cycle 9) after Phase 3's first non-Kokoro source (Hexagonal Crystal via Crystal Audio/crystal_synth.py) passed Loudon's ear audition (gsl-steward-012 APPROVE). Project-local home retained; promotion to user-skill space (`/skills/sample-library-interview/`) deferred to a deposit ceremony.
 home_project: "[[Generative Sample Libraries]]"
 phase: 2
 promotion_path: "/skills/sample-library-interview/ once Phase 3 has tested the question tree against at least one non-Kokoro source"

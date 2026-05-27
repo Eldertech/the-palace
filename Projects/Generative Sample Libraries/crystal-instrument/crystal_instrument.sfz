@@ -1,12 +1,13 @@
 // Crystal Instrument — Phase 3 of Generative Sample Libraries
 // First non-Kokoro source: Hexagonal (Quartz) from Crystal Audio/crystal_synth.py
-// 4 notes (C2,C3,C4,C5) x 2 velocity layers = 8 regions (AUDITION UNIT).
+// FULL CHROMATIC: 88 notes (A0..C8) x 2 velocity layers = 176 regions.
 //
 // Pitch: base_freq set per MIDI note; FREQ_ANCHOR='lowest_mode' anchors
 // the lowest phonon at base_freq, and a quiet strike tone (adapter-level)
 // makes that the perceived pitch. pitch_keytrack=0: each region plays its
 // own pre-pitched sample.
 // Onset trim: -30 dBFS, -1 ms cushion. Fade-in: 3 ms.
+// Strike-tone gain (adapter): 0.3 — approved on gsl-steward-012.
 
 <control>
 default_path=samples/
@@ -20,16 +21,184 @@ amp_veltrack=0
 // Layer 1 (vel 1-63): soft strike (long shimmer)
 <group>
   lovel=1 hivel=63
+<region> sample=crystal_A0_L1.wav lokey=21 hikey=21 pitch_keycenter=21 offset=44
+<region> sample=crystal_A#0_L1.wav lokey=22 hikey=22 pitch_keycenter=22 offset=44
+<region> sample=crystal_B0_L1.wav lokey=23 hikey=23 pitch_keycenter=23 offset=44
+<region> sample=crystal_C1_L1.wav lokey=24 hikey=24 pitch_keycenter=24 offset=44
+<region> sample=crystal_C#1_L1.wav lokey=25 hikey=25 pitch_keycenter=25 offset=44
+<region> sample=crystal_D1_L1.wav lokey=26 hikey=26 pitch_keycenter=26 offset=44
+<region> sample=crystal_D#1_L1.wav lokey=27 hikey=27 pitch_keycenter=27 offset=44
+<region> sample=crystal_E1_L1.wav lokey=28 hikey=28 pitch_keycenter=28 offset=44
+<region> sample=crystal_F1_L1.wav lokey=29 hikey=29 pitch_keycenter=29 offset=44
+<region> sample=crystal_F#1_L1.wav lokey=30 hikey=30 pitch_keycenter=30 offset=44
+<region> sample=crystal_G1_L1.wav lokey=31 hikey=31 pitch_keycenter=31 offset=44
+<region> sample=crystal_G#1_L1.wav lokey=32 hikey=32 pitch_keycenter=32 offset=44
+<region> sample=crystal_A1_L1.wav lokey=33 hikey=33 pitch_keycenter=33 offset=44
+<region> sample=crystal_A#1_L1.wav lokey=34 hikey=34 pitch_keycenter=34 offset=44
+<region> sample=crystal_B1_L1.wav lokey=35 hikey=35 pitch_keycenter=35 offset=44
 <region> sample=crystal_C2_L1.wav lokey=36 hikey=36 pitch_keycenter=36 offset=44
+<region> sample=crystal_C#2_L1.wav lokey=37 hikey=37 pitch_keycenter=37 offset=44
+<region> sample=crystal_D2_L1.wav lokey=38 hikey=38 pitch_keycenter=38 offset=44
+<region> sample=crystal_D#2_L1.wav lokey=39 hikey=39 pitch_keycenter=39 offset=44
+<region> sample=crystal_E2_L1.wav lokey=40 hikey=40 pitch_keycenter=40 offset=44
+<region> sample=crystal_F2_L1.wav lokey=41 hikey=41 pitch_keycenter=41 offset=44
+<region> sample=crystal_F#2_L1.wav lokey=42 hikey=42 pitch_keycenter=42 offset=44
+<region> sample=crystal_G2_L1.wav lokey=43 hikey=43 pitch_keycenter=43 offset=44
+<region> sample=crystal_G#2_L1.wav lokey=44 hikey=44 pitch_keycenter=44 offset=44
+<region> sample=crystal_A2_L1.wav lokey=45 hikey=45 pitch_keycenter=45 offset=44
+<region> sample=crystal_A#2_L1.wav lokey=46 hikey=46 pitch_keycenter=46 offset=44
+<region> sample=crystal_B2_L1.wav lokey=47 hikey=47 pitch_keycenter=47 offset=44
 <region> sample=crystal_C3_L1.wav lokey=48 hikey=48 pitch_keycenter=48 offset=44
+<region> sample=crystal_C#3_L1.wav lokey=49 hikey=49 pitch_keycenter=49 offset=44
+<region> sample=crystal_D3_L1.wav lokey=50 hikey=50 pitch_keycenter=50 offset=44
+<region> sample=crystal_D#3_L1.wav lokey=51 hikey=51 pitch_keycenter=51 offset=44
+<region> sample=crystal_E3_L1.wav lokey=52 hikey=52 pitch_keycenter=52 offset=44
+<region> sample=crystal_F3_L1.wav lokey=53 hikey=53 pitch_keycenter=53 offset=44
+<region> sample=crystal_F#3_L1.wav lokey=54 hikey=54 pitch_keycenter=54 offset=44
+<region> sample=crystal_G3_L1.wav lokey=55 hikey=55 pitch_keycenter=55 offset=44
+<region> sample=crystal_G#3_L1.wav lokey=56 hikey=56 pitch_keycenter=56 offset=44
+<region> sample=crystal_A3_L1.wav lokey=57 hikey=57 pitch_keycenter=57 offset=44
+<region> sample=crystal_A#3_L1.wav lokey=58 hikey=58 pitch_keycenter=58 offset=44
+<region> sample=crystal_B3_L1.wav lokey=59 hikey=59 pitch_keycenter=59 offset=44
 <region> sample=crystal_C4_L1.wav lokey=60 hikey=60 pitch_keycenter=60 offset=44
+<region> sample=crystal_C#4_L1.wav lokey=61 hikey=61 pitch_keycenter=61 offset=44
+<region> sample=crystal_D4_L1.wav lokey=62 hikey=62 pitch_keycenter=62 offset=44
+<region> sample=crystal_D#4_L1.wav lokey=63 hikey=63 pitch_keycenter=63 offset=44
+<region> sample=crystal_E4_L1.wav lokey=64 hikey=64 pitch_keycenter=64 offset=44
+<region> sample=crystal_F4_L1.wav lokey=65 hikey=65 pitch_keycenter=65 offset=44
+<region> sample=crystal_F#4_L1.wav lokey=66 hikey=66 pitch_keycenter=66 offset=44
+<region> sample=crystal_G4_L1.wav lokey=67 hikey=67 pitch_keycenter=67 offset=44
+<region> sample=crystal_G#4_L1.wav lokey=68 hikey=68 pitch_keycenter=68 offset=44
+<region> sample=crystal_A4_L1.wav lokey=69 hikey=69 pitch_keycenter=69 offset=44
+<region> sample=crystal_A#4_L1.wav lokey=70 hikey=70 pitch_keycenter=70 offset=44
+<region> sample=crystal_B4_L1.wav lokey=71 hikey=71 pitch_keycenter=71 offset=44
 <region> sample=crystal_C5_L1.wav lokey=72 hikey=72 pitch_keycenter=72 offset=44
+<region> sample=crystal_C#5_L1.wav lokey=73 hikey=73 pitch_keycenter=73 offset=44
+<region> sample=crystal_D5_L1.wav lokey=74 hikey=74 pitch_keycenter=74 offset=44
+<region> sample=crystal_D#5_L1.wav lokey=75 hikey=75 pitch_keycenter=75 offset=44
+<region> sample=crystal_E5_L1.wav lokey=76 hikey=76 pitch_keycenter=76 offset=44
+<region> sample=crystal_F5_L1.wav lokey=77 hikey=77 pitch_keycenter=77 offset=44
+<region> sample=crystal_F#5_L1.wav lokey=78 hikey=78 pitch_keycenter=78 offset=44
+<region> sample=crystal_G5_L1.wav lokey=79 hikey=79 pitch_keycenter=79 offset=44
+<region> sample=crystal_G#5_L1.wav lokey=80 hikey=80 pitch_keycenter=80 offset=44
+<region> sample=crystal_A5_L1.wav lokey=81 hikey=81 pitch_keycenter=81 offset=44
+<region> sample=crystal_A#5_L1.wav lokey=82 hikey=82 pitch_keycenter=82 offset=44
+<region> sample=crystal_B5_L1.wav lokey=83 hikey=83 pitch_keycenter=83 offset=44
+<region> sample=crystal_C6_L1.wav lokey=84 hikey=84 pitch_keycenter=84 offset=44
+<region> sample=crystal_C#6_L1.wav lokey=85 hikey=85 pitch_keycenter=85 offset=44
+<region> sample=crystal_D6_L1.wav lokey=86 hikey=86 pitch_keycenter=86 offset=44
+<region> sample=crystal_D#6_L1.wav lokey=87 hikey=87 pitch_keycenter=87 offset=44
+<region> sample=crystal_E6_L1.wav lokey=88 hikey=88 pitch_keycenter=88 offset=44
+<region> sample=crystal_F6_L1.wav lokey=89 hikey=89 pitch_keycenter=89 offset=44
+<region> sample=crystal_F#6_L1.wav lokey=90 hikey=90 pitch_keycenter=90 offset=44
+<region> sample=crystal_G6_L1.wav lokey=91 hikey=91 pitch_keycenter=91 offset=44
+<region> sample=crystal_G#6_L1.wav lokey=92 hikey=92 pitch_keycenter=92 offset=44
+<region> sample=crystal_A6_L1.wav lokey=93 hikey=93 pitch_keycenter=93 offset=44
+<region> sample=crystal_A#6_L1.wav lokey=94 hikey=94 pitch_keycenter=94 offset=44
+<region> sample=crystal_B6_L1.wav lokey=95 hikey=95 pitch_keycenter=95 offset=44
+<region> sample=crystal_C7_L1.wav lokey=96 hikey=96 pitch_keycenter=96 offset=44
+<region> sample=crystal_C#7_L1.wav lokey=97 hikey=97 pitch_keycenter=97 offset=44
+<region> sample=crystal_D7_L1.wav lokey=98 hikey=98 pitch_keycenter=98 offset=44
+<region> sample=crystal_D#7_L1.wav lokey=99 hikey=99 pitch_keycenter=99 offset=44
+<region> sample=crystal_E7_L1.wav lokey=100 hikey=100 pitch_keycenter=100 offset=44
+<region> sample=crystal_F7_L1.wav lokey=101 hikey=101 pitch_keycenter=101 offset=44
+<region> sample=crystal_F#7_L1.wav lokey=102 hikey=102 pitch_keycenter=102 offset=44
+<region> sample=crystal_G7_L1.wav lokey=103 hikey=103 pitch_keycenter=103 offset=44
+<region> sample=crystal_G#7_L1.wav lokey=104 hikey=104 pitch_keycenter=104 offset=44
+<region> sample=crystal_A7_L1.wav lokey=105 hikey=105 pitch_keycenter=105 offset=44
+<region> sample=crystal_A#7_L1.wav lokey=106 hikey=106 pitch_keycenter=106 offset=44
+<region> sample=crystal_B7_L1.wav lokey=107 hikey=107 pitch_keycenter=107 offset=44
+<region> sample=crystal_C8_L1.wav lokey=108 hikey=108 pitch_keycenter=108 offset=44
 
 // Layer 2 (vel 64-127): hard strike (sharper, drier)
 <group>
   lovel=64 hivel=127
+<region> sample=crystal_A0_L2.wav lokey=21 hikey=21 pitch_keycenter=21 offset=44
+<region> sample=crystal_A#0_L2.wav lokey=22 hikey=22 pitch_keycenter=22 offset=44
+<region> sample=crystal_B0_L2.wav lokey=23 hikey=23 pitch_keycenter=23 offset=44
+<region> sample=crystal_C1_L2.wav lokey=24 hikey=24 pitch_keycenter=24 offset=44
+<region> sample=crystal_C#1_L2.wav lokey=25 hikey=25 pitch_keycenter=25 offset=44
+<region> sample=crystal_D1_L2.wav lokey=26 hikey=26 pitch_keycenter=26 offset=44
+<region> sample=crystal_D#1_L2.wav lokey=27 hikey=27 pitch_keycenter=27 offset=44
+<region> sample=crystal_E1_L2.wav lokey=28 hikey=28 pitch_keycenter=28 offset=44
+<region> sample=crystal_F1_L2.wav lokey=29 hikey=29 pitch_keycenter=29 offset=44
+<region> sample=crystal_F#1_L2.wav lokey=30 hikey=30 pitch_keycenter=30 offset=44
+<region> sample=crystal_G1_L2.wav lokey=31 hikey=31 pitch_keycenter=31 offset=44
+<region> sample=crystal_G#1_L2.wav lokey=32 hikey=32 pitch_keycenter=32 offset=44
+<region> sample=crystal_A1_L2.wav lokey=33 hikey=33 pitch_keycenter=33 offset=44
+<region> sample=crystal_A#1_L2.wav lokey=34 hikey=34 pitch_keycenter=34 offset=44
+<region> sample=crystal_B1_L2.wav lokey=35 hikey=35 pitch_keycenter=35 offset=44
 <region> sample=crystal_C2_L2.wav lokey=36 hikey=36 pitch_keycenter=36 offset=44
+<region> sample=crystal_C#2_L2.wav lokey=37 hikey=37 pitch_keycenter=37 offset=44
+<region> sample=crystal_D2_L2.wav lokey=38 hikey=38 pitch_keycenter=38 offset=44
+<region> sample=crystal_D#2_L2.wav lokey=39 hikey=39 pitch_keycenter=39 offset=44
+<region> sample=crystal_E2_L2.wav lokey=40 hikey=40 pitch_keycenter=40 offset=44
+<region> sample=crystal_F2_L2.wav lokey=41 hikey=41 pitch_keycenter=41 offset=44
+<region> sample=crystal_F#2_L2.wav lokey=42 hikey=42 pitch_keycenter=42 offset=44
+<region> sample=crystal_G2_L2.wav lokey=43 hikey=43 pitch_keycenter=43 offset=44
+<region> sample=crystal_G#2_L2.wav lokey=44 hikey=44 pitch_keycenter=44 offset=44
+<region> sample=crystal_A2_L2.wav lokey=45 hikey=45 pitch_keycenter=45 offset=44
+<region> sample=crystal_A#2_L2.wav lokey=46 hikey=46 pitch_keycenter=46 offset=44
+<region> sample=crystal_B2_L2.wav lokey=47 hikey=47 pitch_keycenter=47 offset=44
 <region> sample=crystal_C3_L2.wav lokey=48 hikey=48 pitch_keycenter=48 offset=44
+<region> sample=crystal_C#3_L2.wav lokey=49 hikey=49 pitch_keycenter=49 offset=44
+<region> sample=crystal_D3_L2.wav lokey=50 hikey=50 pitch_keycenter=50 offset=44
+<region> sample=crystal_D#3_L2.wav lokey=51 hikey=51 pitch_keycenter=51 offset=44
+<region> sample=crystal_E3_L2.wav lokey=52 hikey=52 pitch_keycenter=52 offset=44
+<region> sample=crystal_F3_L2.wav lokey=53 hikey=53 pitch_keycenter=53 offset=44
+<region> sample=crystal_F#3_L2.wav lokey=54 hikey=54 pitch_keycenter=54 offset=44
+<region> sample=crystal_G3_L2.wav lokey=55 hikey=55 pitch_keycenter=55 offset=44
+<region> sample=crystal_G#3_L2.wav lokey=56 hikey=56 pitch_keycenter=56 offset=44
+<region> sample=crystal_A3_L2.wav lokey=57 hikey=57 pitch_keycenter=57 offset=44
+<region> sample=crystal_A#3_L2.wav lokey=58 hikey=58 pitch_keycenter=58 offset=44
+<region> sample=crystal_B3_L2.wav lokey=59 hikey=59 pitch_keycenter=59 offset=44
 <region> sample=crystal_C4_L2.wav lokey=60 hikey=60 pitch_keycenter=60 offset=44
+<region> sample=crystal_C#4_L2.wav lokey=61 hikey=61 pitch_keycenter=61 offset=44
+<region> sample=crystal_D4_L2.wav lokey=62 hikey=62 pitch_keycenter=62 offset=44
+<region> sample=crystal_D#4_L2.wav lokey=63 hikey=63 pitch_keycenter=63 offset=44
+<region> sample=crystal_E4_L2.wav lokey=64 hikey=64 pitch_keycenter=64 offset=44
+<region> sample=crystal_F4_L2.wav lokey=65 hikey=65 pitch_keycenter=65 offset=44
+<region> sample=crystal_F#4_L2.wav lokey=66 hikey=66 pitch_keycenter=66 offset=44
+<region> sample=crystal_G4_L2.wav lokey=67 hikey=67 pitch_keycenter=67 offset=44
+<region> sample=crystal_G#4_L2.wav lokey=68 hikey=68 pitch_keycenter=68 offset=44
+<region> sample=crystal_A4_L2.wav lokey=69 hikey=69 pitch_keycenter=69 offset=44
+<region> sample=crystal_A#4_L2.wav lokey=70 hikey=70 pitch_keycenter=70 offset=44
+<region> sample=crystal_B4_L2.wav lokey=71 hikey=71 pitch_keycenter=71 offset=44
 <region> sample=crystal_C5_L2.wav lokey=72 hikey=72 pitch_keycenter=72 offset=44
+<region> sample=crystal_C#5_L2.wav lokey=73 hikey=73 pitch_keycenter=73 offset=44
+<region> sample=crystal_D5_L2.wav lokey=74 hikey=74 pitch_keycenter=74 offset=44
+<region> sample=crystal_D#5_L2.wav lokey=75 hikey=75 pitch_keycenter=75 offset=44
+<region> sample=crystal_E5_L2.wav lokey=76 hikey=76 pitch_keycenter=76 offset=44
+<region> sample=crystal_F5_L2.wav lokey=77 hikey=77 pitch_keycenter=77 offset=44
+<region> sample=crystal_F#5_L2.wav lokey=78 hikey=78 pitch_keycenter=78 offset=44
+<region> sample=crystal_G5_L2.wav lokey=79 hikey=79 pitch_keycenter=79 offset=44
+<region> sample=crystal_G#5_L2.wav lokey=80 hikey=80 pitch_keycenter=80 offset=44
+<region> sample=crystal_A5_L2.wav lokey=81 hikey=81 pitch_keycenter=81 offset=44
+<region> sample=crystal_A#5_L2.wav lokey=82 hikey=82 pitch_keycenter=82 offset=44
+<region> sample=crystal_B5_L2.wav lokey=83 hikey=83 pitch_keycenter=83 offset=44
+<region> sample=crystal_C6_L2.wav lokey=84 hikey=84 pitch_keycenter=84 offset=44
+<region> sample=crystal_C#6_L2.wav lokey=85 hikey=85 pitch_keycenter=85 offset=44
+<region> sample=crystal_D6_L2.wav lokey=86 hikey=86 pitch_keycenter=86 offset=44
+<region> sample=crystal_D#6_L2.wav lokey=87 hikey=87 pitch_keycenter=87 offset=44
+<region> sample=crystal_E6_L2.wav lokey=88 hikey=88 pitch_keycenter=88 offset=44
+<region> sample=crystal_F6_L2.wav lokey=89 hikey=89 pitch_keycenter=89 offset=44
+<region> sample=crystal_F#6_L2.wav lokey=90 hikey=90 pitch_keycenter=90 offset=44
+<region> sample=crystal_G6_L2.wav lokey=91 hikey=91 pitch_keycenter=91 offset=44
+<region> sample=crystal_G#6_L2.wav lokey=92 hikey=92 pitch_keycenter=92 offset=44
+<region> sample=crystal_A6_L2.wav lokey=93 hikey=93 pitch_keycenter=93 offset=44
+<region> sample=crystal_A#6_L2.wav lokey=94 hikey=94 pitch_keycenter=94 offset=44
+<region> sample=crystal_B6_L2.wav lokey=95 hikey=95 pitch_keycenter=95 offset=44
+<region> sample=crystal_C7_L2.wav lokey=96 hikey=96 pitch_keycenter=96 offset=44
+<region> sample=crystal_C#7_L2.wav lokey=97 hikey=97 pitch_keycenter=97 offset=44
+<region> sample=crystal_D7_L2.wav lokey=98 hikey=98 pitch_keycenter=98 offset=44
+<region> sample=crystal_D#7_L2.wav lokey=99 hikey=99 pitch_keycenter=99 offset=44
+<region> sample=crystal_E7_L2.wav lokey=100 hikey=100 pitch_keycenter=100 offset=44
+<region> sample=crystal_F7_L2.wav lokey=101 hikey=101 pitch_keycenter=101 offset=44
+<region> sample=crystal_F#7_L2.wav lokey=102 hikey=102 pitch_keycenter=102 offset=44
+<region> sample=crystal_G7_L2.wav lokey=103 hikey=103 pitch_keycenter=103 offset=44
+<region> sample=crystal_G#7_L2.wav lokey=104 hikey=104 pitch_keycenter=104 offset=44
+<region> sample=crystal_A7_L2.wav lokey=105 hikey=105 pitch_keycenter=105 offset=44
+<region> sample=crystal_A#7_L2.wav lokey=106 hikey=106 pitch_keycenter=106 offset=44
+<region> sample=crystal_B7_L2.wav lokey=107 hikey=107 pitch_keycenter=107 offset=44
+<region> sample=crystal_C8_L2.wav lokey=108 hikey=108 pitch_keycenter=108 offset=44
 
