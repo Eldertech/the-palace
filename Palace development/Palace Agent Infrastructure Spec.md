@@ -305,6 +305,18 @@ The Trickster inbox is the filtered view of the TRICKSTER board presenting only 
 
 The inbox is rebuilt by scanning the blackboard from the beginning and tracking which `request_id`s have received responses. Unresponded requests are pending. Health warnings and model upgrade requests surface in the same inbox alongside resource requests. The UI rendering (phosphor-green terminal, clickable response options, real-time streaming) is a forward vector — the data structure above is the protocol; the interface design follows from it.
 
+**Asker-defined options (v0.2+).** A `RESOURCE_REQUEST` may carry its own `payload.options[]` — a finite, structured list of choices the asker designed, distinct from the static `response_options` rendered by the inbox builder. When present, the v0.2+ TricksterInbox renders these options as clickable buttons (each clickable, with a freeform notes field beside them) and posts a `RESOURCE_GRANT` carrying `payload.option_id` and `payload.option_label` to record which one the Trickster picked. The canonical shape is an array of objects:
+
+```json
+"options": [
+  { "id": "APPROVE", "label": "APPROVE — pitch reads; greenlight the full batch." },
+  { "id": "ADJUST",  "label": "ADJUST — name what is off and I re-audition." },
+  { "id": "REJECT",  "label": "REJECT — wrong choice; suggest a different framing." }
+]
+```
+
+`id` is a short stable token (the Trickster's machine-pairable choice — `APPROVE`, `tweak-model`, `try-carry-phase`). `label` is the full one-line tradeoff sentence shown on the button. An optional `next` field, when set, names a follow-up question the inbox surfaces after the option is selected. Steward output is always written in this canonical object shape; the inbox normalizer additionally tolerates lenient string entries (`"APPROVE — ..."`) by deriving `id` from the leading token before the separator (em-dash, en-dash, hyphen, or colon) and using the full string as `label`. The lenient path exists so that an LLM page-agent producing imperfect output still renders an approximate id rather than silently falling through to the generic `response_options` template — but the canonical object shape is the contract stewards should produce.
+
 ### 2.7 The Read Cursor
 
 Each agent maintains `last_read_cursor` in its `state.json` — the `id` of the last message it processed. On each board read, the orchestrator reads only lines after this cursor, updates the cursor, and scans for:

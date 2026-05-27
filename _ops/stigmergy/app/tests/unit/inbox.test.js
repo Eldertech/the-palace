@@ -122,3 +122,152 @@ describe('buildInbox', () => {
     expect(() => buildInbox([{}, null, { board: 'TRICKSTER' }])).not.toThrow();
   });
 });
+
+describe('buildInbox — asker-defined payload.options[] (Infrastructure Spec §2.6)', () => {
+  test('absent options[] yields options: null on the item', () => {
+    const r = buildInbox([REQ('r-1')]);
+    expect(r.pending_requests[0].options).toBeNull();
+  });
+
+  test('canonical object form {id, label} is preserved', () => {
+    const r = buildInbox([REQ('r-1', '2026-04-01T15:00:00Z', {
+      payload: {
+        resource: 'audition', rationale: 'r', blocking: true,
+        options: [
+          { id: 'APPROVE', label: 'APPROVE — ship it' },
+          { id: 'ADJUST', label: 'ADJUST — re-voice and re-audition' },
+        ],
+      },
+    })]);
+    expect(r.pending_requests[0].options).toEqual([
+      { id: 'APPROVE', label: 'APPROVE — ship it' },
+      { id: 'ADJUST', label: 'ADJUST — re-voice and re-audition' },
+    ]);
+  });
+
+  test('canonical form preserves the optional next field', () => {
+    const r = buildInbox([REQ('r-1', '2026-04-01T15:00:00Z', {
+      payload: {
+        resource: 'audition', rationale: 'r', blocking: true,
+        options: [
+          { id: 'ADJUST', label: 'ADJUST', next: 'What should I change?' },
+        ],
+      },
+    })]);
+    expect(r.pending_requests[0].options).toEqual([
+      { id: 'ADJUST', label: 'ADJUST', next: 'What should I change?' },
+    ]);
+  });
+
+  test('lenient string form: ID derived from leading token before em-dash', () => {
+    const r = buildInbox([REQ('r-1', '2026-04-01T15:00:00Z', {
+      payload: {
+        resource: 'audition', rationale: 'r', blocking: true,
+        options: [
+          'APPROVE — pitch reads and timbre is good; greenlight the full batch.',
+          'ADJUST — name what is off and I re-audition.',
+          'REJECT — wrong choice; suggest a different framing.',
+        ],
+      },
+    })]);
+    expect(r.pending_requests[0].options).toEqual([
+      { id: 'APPROVE', label: 'APPROVE — pitch reads and timbre is good; greenlight the full batch.' },
+      { id: 'ADJUST', label: 'ADJUST — name what is off and I re-audition.' },
+      { id: 'REJECT', label: 'REJECT — wrong choice; suggest a different framing.' },
+    ]);
+  });
+
+  test('lenient string form: hyphenated leading tokens stay intact', () => {
+    const r = buildInbox([REQ('r-1', '2026-04-01T15:00:00Z', {
+      payload: {
+        resource: 'audition', rationale: 'r', blocking: true,
+        options: [
+          'accept — sweep reads as intentional; proceed',
+          'tweak-model — motion is there but partials need reshaping',
+          'try-carry-phase — too tame; build a carry_phase_through variant',
+        ],
+      },
+    })]);
+    expect(r.pending_requests[0].options.map((o) => o.id)).toEqual([
+      'accept', 'tweak-model', 'try-carry-phase',
+    ]);
+  });
+
+  test('lenient string form: ASCII hyphen separator works', () => {
+    const r = buildInbox([REQ('r-1', '2026-04-01T15:00:00Z', {
+      payload: {
+        resource: 'x', rationale: 'r', blocking: true,
+        options: ['yes - do it'],
+      },
+    })]);
+    expect(r.pending_requests[0].options[0].id).toBe('yes');
+  });
+
+  test('lenient string form: colon separator works', () => {
+    const r = buildInbox([REQ('r-1', '2026-04-01T15:00:00Z', {
+      payload: {
+        resource: 'x', rationale: 'r', blocking: true,
+        options: ['proceed: full keyboard batch'],
+      },
+    })]);
+    expect(r.pending_requests[0].options[0].id).toBe('proceed');
+  });
+
+  test('lenient string form: no separator falls back to truncated string as id', () => {
+    const r = buildInbox([REQ('r-1', '2026-04-01T15:00:00Z', {
+      payload: {
+        resource: 'x', rationale: 'r', blocking: true,
+        options: ['just one bare option with no separator'],
+      },
+    })]);
+    expect(r.pending_requests[0].options[0].id).toBe('just one bare option with no sep');
+    expect(r.pending_requests[0].options[0].label).toBe('just one bare option with no separator');
+  });
+
+  test('mixed shapes: object and string entries in one array both parse', () => {
+    const r = buildInbox([REQ('r-1', '2026-04-01T15:00:00Z', {
+      payload: {
+        resource: 'x', rationale: 'r', blocking: true,
+        options: [
+          { id: 'A', label: 'A — canonical' },
+          'B — lenient string',
+        ],
+      },
+    })]);
+    expect(r.pending_requests[0].options).toEqual([
+      { id: 'A', label: 'A — canonical' },
+      { id: 'B', label: 'B — lenient string' },
+    ]);
+  });
+
+  test('malformed entries are dropped, valid ones survive', () => {
+    const r = buildInbox([REQ('r-1', '2026-04-01T15:00:00Z', {
+      payload: {
+        resource: 'x', rationale: 'r', blocking: true,
+        options: [
+          null,
+          { id: '', label: 'empty id' },
+          { id: 'A', label: '' },
+          [],
+          '',
+          'C — survivor',
+          { id: 'D', label: 'survivor object' },
+        ],
+      },
+    })]);
+    expect(r.pending_requests[0].options).toEqual([
+      { id: 'C', label: 'C — survivor' },
+      { id: 'D', label: 'survivor object' },
+    ]);
+  });
+
+  test('all entries malformed: options is null (not empty array)', () => {
+    const r = buildInbox([REQ('r-1', '2026-04-01T15:00:00Z', {
+      payload: {
+        resource: 'x', rationale: 'r', blocking: true,
+        options: [null, '', { id: '' }],
+      },
+    })]);
+    expect(r.pending_requests[0].options).toBeNull();
+  });
+});

@@ -41,10 +41,29 @@ ___. How would you like to proceed?* Aim for ~50–150 words in `rationale`.
 Slightly longer is acceptable when catch-up paragraphs justify it (cycle 3
 of the GSL pilot landed at 156 words for a sensory-verification ask).
 
-Important: STIGMERGY's TricksterInbox renderer reads `rationale` text but
-does not render structured `options[]` fields. Write your tradeoffs into
-the rationale prose itself. Keep `options[]` populated for v0.2+
-smart renderers, but do not rely on it for visibility today.
+Important: STIGMERGY's TricksterInbox (v0.2+) renders your
+`payload.options[]` as clickable buttons next to a freeform reply box.
+Use this canonical shape — each option is an object:
+
+```json
+"options": [
+  { "id": "APPROVE", "label": "APPROVE — pitch reads; greenlight the full batch." },
+  { "id": "ADJUST",  "label": "ADJUST — name what is off and I re-audition." },
+  { "id": "REJECT",  "label": "REJECT — wrong choice; suggest a different framing." }
+]
+```
+
+The `id` is the short token Loudon would type if he were responding by
+hand — UPPER_CASE verbs (`APPROVE`) or kebab-case (`tweak-model`,
+`try-carry-phase`) both read well. The `label` carries the full tradeoff
+sentence (lead with the id so the button text is self-explanatory). Use
+`{ id, label }` always — never bare strings, never `{ value, text }` or
+other ad-hoc shapes. The asker-defined `options[]` shape is normative;
+see Infrastructure Spec §2.6.
+
+Still summarize the same tradeoffs in `rationale` prose — a reader
+skimming the rationale should see the same fork the buttons offer. The
+`options[]` is the click surface; the rationale is the explanation.
 
 ## 4 — Catch the user up before you ask
 
