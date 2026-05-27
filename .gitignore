@@ -44,3 +44,11 @@ Enrichment/.worker.started
 _ops/scratch/
 # Cowork local settings
 .claude/settings.local.json
+
+# Generated audio renders inside generative-instrument bundles
+# (heavy + regenerable from the bundle's generate.py — commit the recipe, not the bytes)
+Projects/Generative Wavetable Libraries/**/*.wav
+Projects/Generative Sample Libraries/**/*.wav
+
+# Ableton analysis files (regenerated when a WAV is loaded)
+*.asd

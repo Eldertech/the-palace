@@ -24,7 +24,7 @@
       "decision_topic": "Audition the 8-file Crystal (Hexagonal/Quartz) unit — pitch + timbre",
       "blocking": true,
       "posted_at": "2026-05-27T12:46:00-04:00",
-      "artifact": "_ops/sample-libraries/crystal-instrument/ (8 WAVs + crystal_instrument.sfz)",
+      "artifact": "Projects/Generative Sample Libraries/crystal-instrument/ (8 WAVs + crystal_instrument.sfz)",
       "options": [
         "APPROVE",
         "ADJUST",
