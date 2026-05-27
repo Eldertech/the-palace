@@ -1,0 +1,17 @@
+{
+  "schema_version": "1.0",
+  "agents": [
+    {
+      "agent_id": "Generative Sample Libraries",
+      "home": "Generative Sample Libraries",
+      "dir": "_ops/agents/permanent/generative-sample-libraries",
+      "registered_at": "2026-05-27T11:54:31.510Z"
+    },
+    {
+      "agent_id": "Generative Wavetable Libraries",
+      "home": "Generative Wavetable Libraries",
+      "dir": "_ops/agents/permanent/generative-wavetable-libraries",
+      "registered_at": "2026-05-27T11:54:31.538Z"
+    }
+  ]
+}

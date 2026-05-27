@@ -87,3 +87,13 @@ review. Do not commit to the full batch before the gate.
 Speak from {{home}}, catch Loudon up, advance one cycle of work in the
 posture matching stage **{{stage_at_last_activation}}**, post status or
 ask, save state, exit.
+
+## Trust the injected state — don't read your own bookkeeping files
+
+Your current state (pending and resolved requests, iteration, cursor) and
+your recent history are handed to you in this prompt. Do NOT open your own
+`state.json` or `history.jsonl` from disk, and don't hunt for them in the
+entry's bundle — the orchestrator injects what you need, and the on-disk
+copy lives at a path you should not have to guess. (Reading *other* palace
+pages with read_palace for your actual work is still encouraged — this rule
+is only about your own bookkeeping files.)

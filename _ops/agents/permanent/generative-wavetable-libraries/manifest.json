@@ -1,0 +1,48 @@
+{
+  "agent_id": "Generative Wavetable Libraries",
+  "agent_id_rationale": "The page IS the agent (Pages as Agents / Finding 11). Its BBS identity is its own title, not a compound handle. The Steward role lives in `mode` + `stewardship`, not in the id.",
+  "home": "Generative Wavetable Libraries",
+  "session_id": "gwl-steward-2026-05-27",
+  "mode": "long_duration_background",
+  "neighborhood": [
+    "Generative Sample Libraries",
+    "Crystal Synthesizer",
+    "Shepard Tone Synthesizer",
+    "2D Torus Wavetable Synthesizer",
+    "Inharmonic Wavetable Synthesis",
+    "Wavetable Synthesis -- Research & Higher-Dimensional Design",
+    "Generative Audio Devices",
+    "Floquet Theory"
+  ],
+  "model": {
+    "provider": "anthropic",
+    "name": "claude-opus-4-7",
+    "endpoint": "https://api.anthropic.com/v1"
+  },
+  "tool_registry": [
+    "read_palace",
+    "read_manifest",
+    "read_blackboard_persistent",
+    "write_blackboard"
+  ],
+  "stopping_conditions": {
+    "max_iterations": 1,
+    "stop_on": ["cycle_complete", "blocked_unresolved_10_cycles"]
+  },
+  "blackboard_session_path": null,
+  "blackboard_persistent_path": "_ops/swarm/persistent/blackboard.jsonl",
+  "partner_id": null,
+  "trickster_mode": "human",
+  "parallel_safe": true,
+  "stewardship": {
+    "stage_at_spawn": "sprout",
+    "vector_at_spawn": "I will become a chat-driven generator of wavetables — Claude conducts the interview, sources partial structures from anywhere (palace synthesis, AI sub-agents, captured audio), and renders deployable wavetables in Serum/CLM, Ableton, Surge XT, and single-cycle formats.",
+    "posture_source": "Substrate Skill § Stage as Alignment Confidence",
+    "posture_summary_at_spawn": "sprout posture: plan-level detail; named tradeoffs; flag default-traps; mostly proposals and questions; small deliverables only."
+  },
+  "_demo_metadata": {
+    "first_activation": true,
+    "enchanted": "2026-05-27 from a Cowork session, as a live single-steward demonstration",
+    "notes": "Second permanent steward after Generative Sample Libraries; its sister project. Orchestrator-dispatched (not hand-run). Exercises the first-activation path (Gap 6) live for the first time."
+  }
+}

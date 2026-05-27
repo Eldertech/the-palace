@@ -101,3 +101,13 @@ Agent-tool usage data — you do not write it.
 Required fields:
 `schema_version: "1.0"`, `id`, `ts` (ISO 8601 with timezone),
 `session_id`, `from`, `to`, `type`, `board`, `health`, `payload`.
+
+## Message identity (do not get this wrong)
+
+Your message's own id goes in the top-level `id` field — e.g.
+`"id": "gwl-steward-006"`. A `RESOURCE_REQUEST` (or `DIRECTIVE_REQUEST`)
+ALSO repeats that exact value in a top-level `request_id` field, so the
+Trickster's response can pair back to it. Never put the id only under
+`request_id` and omit `id` — a message with no `id` is rejected by the
+validator. `BROADCAST` / `FLAG` / `PROOF` messages carry `id` only, no
+`request_id`.

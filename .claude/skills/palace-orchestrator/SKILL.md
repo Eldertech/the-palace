@@ -192,3 +192,13 @@ that to Loudon.
 - `Palace development/Orchestrator Production Plan.md` — build contract
 - `Palace development/Palace Agent Infrastructure Spec.md` — §3
 - `Palace development/Project Stewardship System.md` — Stage A lessons
+
+## Batch mode (Stage C — added 2026-05-26)
+
+`batch.md` adds a thin "cycle the folder on a schedule" loop over the
+permanent-steward cycle. Invoke when Loudon says "run my steward batch",
+"cycle the projects", or when the weekly scheduled task fires. It runs
+`_ops/stigmergy/orchestrator/src/batch-plan.js` to find due stewards, then
+follows `permanent.md` once per due steward. No new substrate; no cadence
+enum / digest / lifecycle (see batch.md "What batch deliberately does NOT
+do"). The weekly scheduled task uses cron `0 6 * * 1`.

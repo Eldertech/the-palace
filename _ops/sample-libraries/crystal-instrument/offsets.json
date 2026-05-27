@@ -1,0 +1,90 @@
+{
+  "crystal_C2_L1.wav": {
+    "cents_error": -1.9,
+    "measured_hz": 65.333,
+    "midi": 36,
+    "note": "C2",
+    "offset_sample": 44,
+    "onset_sample": 0,
+    "sample_rate": 44100,
+    "target_hz": 65.406,
+    "total_samples": 176400
+  },
+  "crystal_C2_L2.wav": {
+    "cents_error": -1.9,
+    "measured_hz": 65.333,
+    "midi": 36,
+    "note": "C2",
+    "offset_sample": 44,
+    "onset_sample": 0,
+    "sample_rate": 44100,
+    "target_hz": 65.406,
+    "total_samples": 176400
+  },
+  "crystal_C3_L1.wav": {
+    "cents_error": -1.9,
+    "measured_hz": 130.667,
+    "midi": 48,
+    "note": "C3",
+    "offset_sample": 44,
+    "onset_sample": 0,
+    "sample_rate": 44100,
+    "target_hz": 130.813,
+    "total_samples": 176400
+  },
+  "crystal_C3_L2.wav": {
+    "cents_error": -1.9,
+    "measured_hz": 130.667,
+    "midi": 48,
+    "note": "C3",
+    "offset_sample": 44,
+    "onset_sample": 0,
+    "sample_rate": 44100,
+    "target_hz": 130.813,
+    "total_samples": 176400
+  },
+  "crystal_C4_L1.wav": {
+    "cents_error": -1.9,
+    "measured_hz": 261.333,
+    "midi": 60,
+    "note": "C4",
+    "offset_sample": 44,
+    "onset_sample": 0,
+    "sample_rate": 44100,
+    "target_hz": 261.626,
+    "total_samples": 176400
+  },
+  "crystal_C4_L2.wav": {
+    "cents_error": -1.9,
+    "measured_hz": 261.333,
+    "midi": 60,
+    "note": "C4",
+    "offset_sample": 44,
+    "onset_sample": 0,
+    "sample_rate": 44100,
+    "target_hz": 261.626,
+    "total_samples": 176400
+  },
+  "crystal_C5_L1.wav": {
+    "cents_error": 0.3,
+    "measured_hz": 523.333,
+    "midi": 72,
+    "note": "C5",
+    "offset_sample": 44,
+    "onset_sample": 0,
+    "sample_rate": 44100,
+    "target_hz": 523.251,
+    "total_samples": 176400
+  },
+  "crystal_C5_L2.wav": {
+    "cents_error": 0.3,
+    "measured_hz": 523.333,
+    "midi": 72,
+    "note": "C5",
+    "offset_sample": 44,
+    "onset_sample": 0,
+    "sample_rate": 44100,
+    "target_hz": 523.251,
+    "total_samples": 176400
+  }
+}
