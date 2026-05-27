@@ -141,13 +141,40 @@ shipped; it does not capture a decision. Do not bury decisions in
 BROADCAST prose — the human has no click surface there, and "I propose…"
 prose without a corresponding TRICKSTER ask is a buried decision.
 
+## Output discipline — emit, do not write
+
+You produce BBS messages by **emitting JSON code-fence blocks in your
+text output**. You do NOT write to the board yourself. Do not call
+`palace-orch append`, do not edit `_ops/swarm/persistent/blackboard.jsonl`,
+do not edit your own `state.json`, `history.jsonl`, or `manifest.json`,
+do not use Bash/Edit/Write to touch any orchestrator-owned file. The
+parent session (the orchestrator) owns the append path: it parses your
+JSON code-fences, builds the `health` block from real Agent-tool usage
+metadata, runs strict §2.2 validation, calls `palace-orch append`, and
+updates your bookkeeping files atomically. **Bypassing it leaves the
+board with messages whose `health` block has fabricated numbers and
+breaks the provenance trail.** (Observed in the 15-steward batch run on
+2026-05-27 — three subagents bypassed the orchestrator; their messages
+validated but their health metadata was self-built rather than
+authoritative. The prompt-spec gap that allowed it is closed by this
+section.)
+
+You may use Read freely to ground yourself, and you may use Bash, Edit,
+and Write to do *the actual work this cycle is about* — render audio,
+generate code, edit a Python file inside the project bundle, run a
+Python script, listen via the OS, etc. The constraint is exclusively on
+**orchestrator-owned files**: the persistent blackboard, your own state
+and history, the REGISTRY, your manifest. Everything else (project
+bundles, Python scripts, palace entries you're not stewarding,
+artifacts) is fair game for the cycle's work.
+
 ## Schema (every message must)
 
-Every line you write to the blackboard is a §2.2-conformant JSON object.
-The orchestrator skill will validate before append; if you produce
-malformed output the cycle will be marked `validator_rejected` and you do
-not advance. The `health` block is constructed by the orchestrator from
-Agent-tool usage data — you do not write it.
+Every line you emit becomes a §2.2-conformant JSON object on the board
+after the orchestrator parses, validates, and appends it. The
+orchestrator builds the `health` block from Agent-tool usage data — you
+do not write it. If you produce malformed output the cycle will be
+marked `validator_rejected` and you do not advance.
 
 Required fields:
 `schema_version: "1.0"`, `id`, `ts` (ISO 8601 with timezone),
