@@ -29,16 +29,52 @@ const RESPONSE_OPTIONS = [
 // Validate and normalize a request's payload.options[] to inbox shape.
 // Returns null if the field is absent or malformed.
 // Each normalized option is { id, label, next? }.
+//
+// Two input shapes are accepted, both producing the same output shape:
+//
+//   1. Canonical object form:  { id, label, next? }
+//
+//   2. Lenient string form:    "ID — full description"
+//      The id is the leading token before whitespace + em-dash, en-dash,
+//      hyphen, or colon (e.g. "APPROVE", "tweak-model", "accept"); the
+//      label is the entire original string. The leading-token convention
+//      keeps the click surface concise while preserving the asker's prose.
+//      If no separator is present, the whole string is used as both id
+//      and label (truncated id at 32 chars).
+//
+// The lenient string form exists because asker-defined options are written
+// by stewards (LLM page-agents) — a stricter contract would silently drop
+// imperfect output and fall back to the generic response-options template,
+// which is worse than rendering an approximate id. See Infrastructure Spec
+// §2.6 (asker-defined options[]).
 function normalizeRequestOptions(raw) {
   if (!Array.isArray(raw) || raw.length === 0) return null;
   const out = [];
   for (const o of raw) {
-    if (o === null || typeof o !== 'object' || Array.isArray(o)) continue;
-    const id = typeof o.id === 'string' && o.id.trim() !== '' ? o.id : null;
-    const label = typeof o.label === 'string' && o.label.trim() !== '' ? o.label : null;
-    if (!id || !label) continue;
-    const next = typeof o.next === 'string' && o.next.trim() !== '' ? o.next : null;
-    out.push(next ? { id, label, next } : { id, label });
+    if (o === null || o === undefined) continue;
+
+    // Canonical object form: { id, label, next? }.
+    if (typeof o === 'object' && !Array.isArray(o)) {
+      const id = typeof o.id === 'string' && o.id.trim() !== '' ? o.id : null;
+      const label = typeof o.label === 'string' && o.label.trim() !== '' ? o.label : null;
+      if (!id || !label) continue;
+      const next = typeof o.next === 'string' && o.next.trim() !== '' ? o.next : null;
+      out.push(next ? { id, label, next } : { id, label });
+      continue;
+    }
+
+    // Lenient string form: "ID — full description".
+    if (typeof o === 'string' && o.trim() !== '') {
+      const s = o.trim();
+      // Leading id token: letters/digits/underscore/hyphen, then optional
+      // whitespace + separator (em-dash, en-dash, ASCII hyphen, colon),
+      // then mandatory whitespace. The mandatory trailing whitespace keeps
+      // hyphenated ids like "tweak-model" intact.
+      const m = s.match(/^([A-Za-z0-9][A-Za-z0-9_-]*)\s*[—–\-:]\s+/);
+      const id = m ? m[1] : s.slice(0, 32);
+      out.push({ id, label: s });
+      continue;
+    }
   }
   return out.length > 0 ? out : null;
 }
