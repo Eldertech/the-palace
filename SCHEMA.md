@@ -318,7 +318,6 @@ When a ceremony file exceeds ~8KB, split it into two files:
 - [[Deposit Ceremony]] + [[Deposit Ceremony — Context]]
 - [[Harvest Ceremony]] + [[Harvest Ceremony — Context]]
 - [[Weave Ceremony]] + [[Weave Ceremony — Context]]
-- [[Hibernation Ceremony]] + [[Hibernation Ceremony — Context]]
 
 ---
 

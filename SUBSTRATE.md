@@ -104,9 +104,13 @@ For full ceremony instructions, see [[Substrate Skill]].
 
 ## Current State
 
-*Updated 2026-03-31 following first Palace Enchantment session.*
+*Counts refreshed 2026-05-28 (audit). The narrative below is a 2026-03-31 snapshot — hub nodes, dormant/growth notes, and enchantment status are due a full [[Self-Model Update Ceremony]].*
 
-The palace has 58 root entries, plus 18 entries in `Palace development/`, 3 in `Modes of collaboration/`, and ~20 operational files in `_ops/`. Total tracked knowledge: ~99 files.
+The palace has 90 root entries, plus 31 in `Palace development/`, 93 in `Projects/`, 101 in `Artifacts/`, 15 in `Shop/`, 3 in `Modes of collaboration/`, and ~69 operational files in `_ops/`. Total real knowledge entries: ~485 (2026-05-28 audit scan).
+
+<!-- CLAUDE → LOUDON: only the counts were refreshed in the 2026-05-28 audit. The Current State narrative (hubs, "newest growth 2026-03-31", the "~37 entries" open question below) is two months stale and wants a real Self-Model Update — flagged, not done, since guessing current hubs/growth would inject errors. -->
+
+A full Weave was completed 2026-03-30 (56 links added, 4 entries promoted, 2 orphans resolved). The first Swarm Weave workers have been run across the Palace development folder (16 entries, 18 link changes applied, Haiku model guidance documented in the coordinator template).
 
 A full Weave was completed 2026-03-30 (56 links added, 4 entries promoted, 2 orphans resolved). The first Swarm Weave workers have been run across the Palace development folder (16 entries, 18 link changes applied, Haiku model guidance documented in the coordinator template).
 
