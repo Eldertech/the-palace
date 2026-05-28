@@ -3,9 +3,18 @@
 Crystal Bravais wavetable — Phase 1 listenable proof.
 
 Sweeps the seven Bravais crystal lattice systems (cubic -> triclinic) as one
-wavetable position. Pure-numpy synthesis + interpolation. Writes the
-Ableton-Wavetable fallback format (mono 16-bit, 1024 samples/frame, no
-metadata chunk) using only the stdlib `wave` module.
+wavetable position. Pure-numpy synthesis + interpolation. Writes BOTH:
+
+  - crystal_bravais_ableton.wav  (mono 16-bit, 1024 samples/frame, no
+                                  metadata; the Ableton Wavetable fallback)
+  - crystal_bravais.wav           (Serum/CLM format, 32-bit float,
+                                   2048 samples/frame, 'clm ' chunk)
+
+Cycle 6 (2026-05-27): added the Serum/CLM rendering after Loudon pointed
+at the Serum 2 factory wavetable folder
+(/Library/Audio/Presets/Xfer Records/Serum 2 Presets/Tables/Analog/).
+The writer in clm_writer.py reproduces that factory format byte-for-byte
+against the reference Basic Shapes.wav fixture.
 
 This is a FIRST PROOF, not a physically rigorous lattice model. The partial
 recipes are a deliberately simplified mapping from lattice symmetry to timbre:
@@ -18,22 +27,25 @@ starting from phase 0 (sines start at 0, all partials phase-locked to the
 fundamental). This is Loudon's chosen policy (gwl-steward-004): clean,
 predictable sweeps with no phase drift between frames. Carry-through phase can
 be exposed later if the motion feels tame.
-
-NO CLM/Serum binary writer here — that is held until a known-good reference
-Serum WAV is confirmed on the Mac.
 """
 
 import wave
 import struct
 import numpy as np
 
+from clm_writer import write_clm_wav, SERUM_FRAME_SIZE
+
 # ----------------------------------------------------------------------------
 # Format constants — Ableton Wavetable fallback
 # ----------------------------------------------------------------------------
-SAMPLES_PER_FRAME = 1024
+SAMPLES_PER_FRAME = 1024       # Ableton's frame size
 N_FRAMES = 64
 SAMPLE_RATE = 44100            # nominal; Ableton reads the table by frame, not Hz
 OUT_NAME = "crystal_bravais_ableton.wav"
+
+# Serum/CLM target
+SERUM_OUT_NAME = "crystal_bravais.wav"
+SERUM_SAMPLES_PER_FRAME = SERUM_FRAME_SIZE   # 2048, required by Serum
 
 # ----------------------------------------------------------------------------
 # The seven Bravais crystal systems, ordered most -> least symmetric.
@@ -69,7 +81,8 @@ def cents_to_ratio(cents):
     return 2.0 ** (cents / 1200.0)
 
 
-def synth_frame(n_partials, rolloff, detune_cents, odd_bias):
+def synth_frame(n_partials, rolloff, detune_cents, odd_bias,
+                samples_per_frame=SAMPLES_PER_FRAME):
     """
     Synthesize one single-cycle frame for a Bravais system.
 
@@ -80,9 +93,12 @@ def synth_frame(n_partials, rolloff, detune_cents, odd_bias):
     coherent frame-to-frame. (This is the predictable-sweep tradeoff Loudon
     asked for; the small edge discontinuity from detuned partials is the price
     of audibly "inharmonic" low-symmetry systems.)
+
+    `samples_per_frame` defaults to 1024 (Ableton fallback) but is parametric
+    so the same synthesis function feeds the 2048-per-frame Serum render too.
     """
-    t = np.linspace(0.0, 2.0 * np.pi, SAMPLES_PER_FRAME, endpoint=False)
-    frame = np.zeros(SAMPLES_PER_FRAME, dtype=np.float64)
+    t = np.linspace(0.0, 2.0 * np.pi, samples_per_frame, endpoint=False)
+    frame = np.zeros(samples_per_frame, dtype=np.float64)
 
     for k in range(1, n_partials + 1):
         # Amplitude: power-law rolloff over partial index.
@@ -111,13 +127,14 @@ def normalize(frame):
     return frame / peak
 
 
-def build_keyframes():
+def build_keyframes(samples_per_frame=SAMPLES_PER_FRAME):
     """Synthesize the 7 normalized single-cycle keyframes (one per system)."""
     keyframes = []
     for name, n_partials, rolloff, detune, odd_bias in BRAVAIS_SYSTEMS:
-        f = synth_frame(n_partials, rolloff, detune, odd_bias)
+        f = synth_frame(n_partials, rolloff, detune, odd_bias,
+                        samples_per_frame=samples_per_frame)
         keyframes.append(normalize(f))
-    return np.array(keyframes)  # shape (7, 1024)
+    return np.array(keyframes)  # shape (7, samples_per_frame)
 
 
 def interpolate_table(keyframes, n_frames):
@@ -168,20 +185,40 @@ def write_ableton_wav(table, path):
 
 
 def main():
-    keyframes = build_keyframes()
-    table = interpolate_table(keyframes, N_FRAMES)
-    n_samples = write_ableton_wav(table, OUT_NAME)
+    # ---- Ableton fallback render (1024 samples/frame, 16-bit) ----
+    keyframes_ab = build_keyframes(SAMPLES_PER_FRAME)
+    table_ab = interpolate_table(keyframes_ab, N_FRAMES)
+    n_samples_ab = write_ableton_wav(table_ab, OUT_NAME)
 
     print("Crystal Bravais wavetable — proof rendered")
     print(f"  systems (keyframes): {len(BRAVAIS_SYSTEMS)} "
           f"({', '.join(s[0] for s in BRAVAIS_SYSTEMS)})")
     print(f"  frames:              {N_FRAMES}")
-    print(f"  samples/frame:       {SAMPLES_PER_FRAME}")
-    print(f"  total samples:       {n_samples} "
+    print()
+    print("  ABLETON WAVETABLE FALLBACK")
+    print(f"    samples/frame:     {SAMPLES_PER_FRAME}")
+    print(f"    total samples:     {n_samples_ab} "
           f"(= {N_FRAMES} x {SAMPLES_PER_FRAME})")
-    print(f"  format:              mono 16-bit PCM @ {SAMPLE_RATE} Hz, no metadata chunk")
+    print(f"    format:            mono 16-bit PCM @ {SAMPLE_RATE} Hz, no metadata chunk")
+    print(f"    output:            {OUT_NAME}")
+
+    # ---- Serum / CLM render (2048 samples/frame, 32-bit float, clm chunk) ----
+    keyframes_se = build_keyframes(SERUM_SAMPLES_PER_FRAME)
+    table_se = interpolate_table(keyframes_se, N_FRAMES)
+    serum_bytes = write_clm_wav(table_se, SERUM_OUT_NAME,
+                                sample_rate=SAMPLE_RATE)
+    total_samples_se = N_FRAMES * SERUM_SAMPLES_PER_FRAME
+
+    print()
+    print("  SERUM / CLM (also reads in Vital, Surge XT, Pigments, Phase Plant, Falcon)")
+    print(f"    samples/frame:     {SERUM_SAMPLES_PER_FRAME}")
+    print(f"    total samples:     {total_samples_se} "
+          f"(= {N_FRAMES} x {SERUM_SAMPLES_PER_FRAME})")
+    print(f"    format:            mono 32-bit float @ {SAMPLE_RATE} Hz, clm chunk")
+    print(f"    file size:         {serum_bytes} bytes")
+    print(f"    output:            {SERUM_OUT_NAME}")
+    print()
     print(f"  phase policy:        ZERO_PHASE_RESET")
-    print(f"  output:              {OUT_NAME}")
 
 
 if __name__ == "__main__":

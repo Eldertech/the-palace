@@ -1,9 +1,8 @@
 {
-  "iteration": 1,
-  "last_active": "2026-05-27T17:45:01-04:00",
-  "last_read_cursor": "torus-steward-002",
+  "iteration": 2,
+  "last_active": "2026-05-27T20:30:00-04:00",
+  "last_read_cursor": "torus-steward-005",
   "health": {
-    "context_pct": 0.12,
     "avg_output_tokens_last_5": null,
     "duplicate_flags": 0,
     "posting_discipline_violations": 0,
@@ -19,6 +18,22 @@
   },
   "pending_requests": [
     {
+      "request_id": "torus-steward-005",
+      "resource": "directional_decision",
+      "decision_topic": "What advances me in cycle 3 — wait for verification, pre-stage the lookup-and-crossfade tool, or resolve the seventh surface?",
+      "blocking": false,
+      "posted_at": "2026-05-27T20:04:00-04:00",
+      "options": [
+        "PAUSE-FOR-AUDITION",
+        "PRE-STAGE-LOOKUP-INFRA",
+        "RESOLVE-SEVENTH-SURFACE",
+        "YOU-DECIDE"
+      ],
+      "steward_recommendation": "RESOLVE-SEVENTH-SURFACE — does real catalog work that doesn't depend on the verification gate, closes a named body-content gap, and gives the eventual audition a richer test target."
+    }
+  ],
+  "resolved_requests": [
+    {
       "request_id": "torus-steward-002",
       "resource": "directional_decision",
       "blocking": false,
@@ -27,11 +42,14 @@
         "DRIVE-RNBO-VERIFICATION",
         "SEVENTH-SURFACE",
         "PRE-STAGE-TIER-1-WARPS"
-      ]
+      ],
+      "resolved_at": "2026-05-27T23:39:53.678Z",
+      "resolved_by": "resp-mpopi572-3ewra2",
+      "outcome": "GRANTED — (no option_id); notes: \"push ahead with 1 and 3 in the next cycle.\""
     }
   ],
-  "resolved_requests": [],
   "_pilot_metadata": {
-    "cycle_1_notes": "FIRST ACTIVATION (15-steward parallel batch run, 2026-05-27). NOTE: this steward bypassed the orchestrator post-processing pipeline — instead of emitting JSON code-fence blocks for the parent session to validate + inject health + append, the subagent itself used Bash/Edit/Write tools to invoke palace-orch append directly and write to state.json. The messages it appended passed strict §2.2 validation (verified post-hoc) and are on the persistent board cleanly. However, the health block it constructed was built by the subagent itself rather than the orchestrator — meaning the health metadata's _orchestrator_metadata flag is present but the underlying token-usage numbers are not the genuine Agent-tool usage data the orchestrator would have used. Cycle is functionally complete; the bypass is a prompt-spec gap (the subagent prompt didn't explicitly forbid direct board writes). The pending_requests / resolved_requests fields were reconciled by the orchestrator parent in the batch finalize step. Posted (cycle 1) messages and pending ask: see board for this steward's from-field messages."
+    "cycle_1_notes": "FIRST ACTIVATION (15-steward parallel batch run, 2026-05-27). NOTE: this steward bypassed the orchestrator post-processing pipeline — instead of emitting JSON code-fence blocks for the parent session to validate + inject health + append, the subagent itself used Bash/Edit/Write tools to invoke palace-orch append directly and write to state.json. The messages it appended passed strict §2.2 validation (verified post-hoc) and are on the persistent board cleanly. However, the health block it constructed was built by the subagent itself rather than the orchestrator — meaning the health metadata's _orchestrator_metadata flag is present but the underlying token-usage numbers are not the genuine Agent-tool usage data the orchestrator would have used. Cycle is functionally complete; the bypass is a prompt-spec gap (the subagent prompt didn't explicitly forbid direct board writes). The pending_requests / resolved_requests fields were reconciled by the orchestrator parent in the batch finalize step. Posted (cycle 1) messages and pending ask: see board for this steward's from-field messages.",
+    "cycle_2_notes": "Cycle 2 (15-steward parallel batch run, build cycle). Grant-driven cycle following Loudon's batch of 17 responses. See history.jsonl for SPAWN + AGENT_REASONING + per-message events. Messages went through the orchestrator post-processing pipeline (parse → inject Path-2 health stub → strict §2.2 validate → palace-orch append). pending_requests reconciled across the whole board."
   }
 }

@@ -58,7 +58,9 @@ Basic Max/MSP fluency: `phasor~`, `buffer~`, `plugin~`/`plugout~`. Students who 
 > *"Explain how Max for Live Audio Effects receive and output audio using plugin~ and plugout~. I'm comfortable with Max/MSP patching but new to the M4L device format."*
 
 ### Materials
-- `Artifacts/Retrospective Delay/session-1-implementation.md` — full patch spec with object list, connections, and key calculations
+- `Projects/Retrospective Delay/stage-1/stage-1-the-witness.md` — Stage 1 draft (session arc, framing, reveal, hilaritas checklist, open questions). Drafted by Retrospective Delay steward cycle 2, 2026-05-27.
+- `Projects/Retrospective Delay/stage-1/patch-spec.md` — patch spec (object list, connections, key calculations, defaults, three verification checks).
+- `Projects/Retrospective Delay/stage-1/mockup-imagery-brief.md` — Shop-routed brief for the five lesson mockup assets (Maker → p5.js, Matplotlib, Remotion, Midjourney). Spec'd, not dispatched.
 
 ---
 

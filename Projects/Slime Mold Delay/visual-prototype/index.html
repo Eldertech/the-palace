@@ -1,0 +1,638 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Slime Mold Delay — Visual Prototype (Stage 2)</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<script src="https://cdn.jsdelivr.net/npm/p5@1.9.4/lib/p5.min.js"></script>
+<style>
+  :root {
+    --bg: #0b0a08;
+    --panel: #14120e;
+    --ink: #f5e9c4;
+    --dim: #8a7e58;
+    --accent: #f4c542;
+    --sink: #e6483d;
+    --edge: #2a2620;
+    --mono: ui-monospace, "SF Mono", "Menlo", "Consolas", monospace;
+  }
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0; padding: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--mono);
+    font-size: 12px;
+    line-height: 1.4;
+    overflow: hidden;
+    height: 100vh;
+  }
+  #app {
+    display: grid;
+    grid-template-columns: 1fr 340px;
+    height: 100vh;
+    width: 100vw;
+  }
+  #canvas-host {
+    position: relative;
+    background: #000;
+  }
+  #canvas-host canvas {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+  #overlay {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    padding: 14px 18px;
+    color: var(--dim);
+    font-size: 11px;
+  }
+  #overlay .title {
+    color: var(--accent);
+    font-size: 13px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+  #overlay .sub {
+    color: var(--ink);
+    margin-top: 4px;
+    max-width: 580px;
+  }
+  #overlay .stats {
+    position: absolute;
+    left: 18px; bottom: 14px;
+    color: var(--ink);
+  }
+  #overlay .stats span { color: var(--accent); }
+  #panel {
+    background: var(--panel);
+    border-left: 1px solid var(--edge);
+    padding: 14px 16px 18px;
+    overflow-y: auto;
+  }
+  #panel h2 {
+    color: var(--accent);
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin: 18px 0 6px;
+    border-bottom: 1px solid var(--edge);
+    padding-bottom: 4px;
+  }
+  #panel h2:first-child { margin-top: 0; }
+  .row {
+    display: grid;
+    grid-template-columns: 1fr 56px;
+    gap: 6px;
+    align-items: center;
+    margin: 6px 0;
+  }
+  .row label {
+    color: var(--ink);
+    cursor: pointer;
+  }
+  .row .val {
+    color: var(--accent);
+    text-align: right;
+    font-variant-numeric: tabular-nums;
+  }
+  .row input[type="range"] {
+    grid-column: 1 / -1;
+    width: 100%;
+    accent-color: var(--accent);
+    margin: 0;
+    height: 14px;
+  }
+  .eq {
+    color: var(--dim);
+    font-size: 10.5px;
+    margin: 4px 0 8px;
+    padding: 4px 6px;
+    background: #0e0d0a;
+    border-left: 2px solid var(--accent);
+    border-radius: 2px;
+    line-height: 1.5;
+  }
+  .eq b { color: var(--ink); font-weight: normal; }
+  .eq i { color: var(--accent); font-style: normal; }
+  .btn-row {
+    display: flex;
+    gap: 6px;
+    margin: 8px 0 4px;
+  }
+  button {
+    flex: 1;
+    background: #1b1812;
+    color: var(--ink);
+    border: 1px solid var(--edge);
+    padding: 6px 8px;
+    font-family: var(--mono);
+    font-size: 11px;
+    cursor: pointer;
+    border-radius: 2px;
+  }
+  button:hover { border-color: var(--accent); color: var(--accent); }
+  button.active { background: var(--accent); color: #1b1812; border-color: var(--accent); }
+  .legend {
+    display: grid;
+    grid-template-columns: 14px 1fr;
+    gap: 8px;
+    align-items: center;
+    margin: 4px 0;
+    color: var(--ink);
+  }
+  .swatch {
+    width: 14px; height: 14px; border-radius: 50%;
+  }
+  .swatch.food { background: var(--accent); box-shadow: 0 0 6px var(--accent); }
+  .swatch.sink { background: var(--sink); box-shadow: 0 0 6px var(--sink); }
+  .swatch.trail { background: linear-gradient(180deg, #2a1e08, #f4c542); border-radius: 2px; }
+  .footnote {
+    color: var(--dim);
+    font-size: 10px;
+    margin-top: 12px;
+    line-height: 1.5;
+  }
+  .footnote a { color: var(--accent); text-decoration: none; }
+</style>
+</head>
+<body>
+<div id="app">
+  <div id="canvas-host">
+    <div id="overlay">
+      <div class="title">Slime Mold Delay — visual prototype</div>
+      <div class="sub">
+        Click the petri dish to place <b style="color:var(--accent)">food</b>
+        (audio sources). Shift-click to place a <b style="color:var(--sink)">sink</b>
+        (audio output). The plasmodium grows toward food and reinforces tubes that
+        connect sources to sinks. Sound is deferred — this is the topology engine
+        only.
+      </div>
+      <div class="stats">
+        agents: <span id="stat-agents">0</span> &nbsp;
+        food: <span id="stat-food">0</span> &nbsp;
+        sinks: <span id="stat-sinks">0</span> &nbsp;
+        fps: <span id="stat-fps">0</span>
+      </div>
+    </div>
+  </div>
+
+  <div id="panel">
+    <h2>Mode</h2>
+    <div class="btn-row">
+      <button id="btn-food" class="active">place food</button>
+      <button id="btn-sink">place sink</button>
+    </div>
+    <div class="btn-row">
+      <button id="btn-pause">pause</button>
+      <button id="btn-reset">reset trail</button>
+      <button id="btn-clear">clear all</button>
+    </div>
+
+    <h2>1 — Agent behaviour</h2>
+    <div class="eq">
+      Each agent reads three sensors at angle <i>±θ_s</i> and 0, distance
+      <i>r_s</i>. It rotates toward the strongest reading by <i>θ_r</i>, then
+      steps forward by <i>v</i>. <b>This is Jeff Jones' classic Physarum agent
+      model (2010).</b>
+    </div>
+    <div class="row"><label for="s-num">N (agents)</label><div class="val" id="v-num">8000</div>
+      <input type="range" id="s-num" min="500" max="40000" step="500" value="8000" />
+    </div>
+    <div class="row"><label for="s-sa">θ_s — sensor angle (°)</label><div class="val" id="v-sa">22</div>
+      <input type="range" id="s-sa" min="5" max="90" step="1" value="22" />
+    </div>
+    <div class="row"><label for="s-ra">θ_r — rotation per step (°)</label><div class="val" id="v-ra">45</div>
+      <input type="range" id="s-ra" min="1" max="90" step="1" value="45" />
+    </div>
+    <div class="row"><label for="s-sd">r_s — sensor distance (px)</label><div class="val" id="v-sd">9</div>
+      <input type="range" id="s-sd" min="2" max="30" step="1" value="9" />
+    </div>
+    <div class="row"><label for="s-v">v — step speed (px/frame)</label><div class="val" id="v-v">1.0</div>
+      <input type="range" id="s-v" min="0.2" max="3" step="0.1" value="1.0" />
+    </div>
+
+    <h2>2 — Chemical field</h2>
+    <div class="eq">
+      At each pixel: <b>T'</b> = ( <i>diffuse</i>(T) ) × (1 − <i>decay</i>)
+      + <i>deposit</i>·agents_here. Food sources add <i>food_strength</i>
+      directly to T every frame, creating attractive wells.
+    </div>
+    <div class="row"><label for="s-dep">deposit per agent</label><div class="val" id="v-dep">5</div>
+      <input type="range" id="s-dep" min="1" max="20" step="1" value="5" />
+    </div>
+    <div class="row"><label for="s-dec">decay (1 - retention)</label><div class="val" id="v-dec">0.07</div>
+      <input type="range" id="s-dec" min="0.01" max="0.3" step="0.005" value="0.07" />
+    </div>
+    <div class="row"><label for="s-dif">diffuse (3×3 blur weight)</label><div class="val" id="v-dif">0.55</div>
+      <input type="range" id="s-dif" min="0" max="1" step="0.05" value="0.55" />
+    </div>
+    <div class="row"><label for="s-food">food_strength</label><div class="val" id="v-food">200</div>
+      <input type="range" id="s-food" min="20" max="500" step="10" value="200" />
+    </div>
+
+    <h2>3 — Display</h2>
+    <div class="row"><label for="s-show-agents">show agents</label><div class="val" id="v-show-agents">on</div>
+      <input type="range" id="s-show-agents" min="0" max="1" step="1" value="1" />
+    </div>
+    <div class="row"><label for="s-bright">brightness gain</label><div class="val" id="v-bright">1.4</div>
+      <input type="range" id="s-bright" min="0.3" max="3" step="0.1" value="1.4" />
+    </div>
+
+    <h2>Legend</h2>
+    <div class="legend"><div class="swatch food"></div><div>food (audio source)</div></div>
+    <div class="legend"><div class="swatch sink"></div><div>sink (audio output)</div></div>
+    <div class="legend"><div class="swatch trail"></div><div>chemical trail T(x,y)</div></div>
+
+    <div class="footnote">
+      Stage 2 of the Slime Mold Delay forward vector: a non-realtime
+      visual prototype. Audio engine (Stage 3+) is deliberately deferred.
+      Algorithm reference: Jeff Jones, "Characteristics of pattern formation
+      and evolution in approximations of Physarum transport networks,"
+      Artificial Life, 2010.
+    </div>
+  </div>
+</div>
+
+<script>
+// ───────────────────────────────────────────────────────────────────────
+// Slime Mold Delay — visual prototype (Stage 2)
+// Agent-based Physarum simulation. Pure topology engine, no audio.
+// ───────────────────────────────────────────────────────────────────────
+
+let sim;        // simulation singleton
+let lastFps = 0;
+let fpsAccum = 0;
+let fpsFrames = 0;
+
+const TEX_SCALE = 1; // 1 = field at full resolution; raise for perf
+
+class Physarum {
+  constructor(w, h) {
+    this.W = Math.floor(w / TEX_SCALE);
+    this.H = Math.floor(h / TEX_SCALE);
+    this.field   = new Float32Array(this.W * this.H);
+    this.fieldB  = new Float32Array(this.W * this.H);
+
+    // agents: position, heading
+    this.maxAgents = 40000;
+    this.x = new Float32Array(this.maxAgents);
+    this.y = new Float32Array(this.maxAgents);
+    this.h = new Float32Array(this.maxAgents);
+    this.N = 0;
+
+    // settings (mirrored from sliders)
+    this.s = {
+      num: 8000,
+      sensorAngle: 22 * Math.PI / 180,
+      rotateAngle: 45 * Math.PI / 180,
+      sensorDist: 9,
+      speed: 1.0,
+      deposit: 5,
+      decay: 0.07,
+      diffuse: 0.55,
+      foodStrength: 200,
+      showAgents: true,
+      brightness: 1.4,
+    };
+    this.foods = []; // [{x, y}, ...]
+    this.sinks = [];
+    this.paused = false;
+
+    this.spawn(this.s.num);
+  }
+
+  spawn(target) {
+    // (re)spawn N agents at random positions, random heading
+    this.N = Math.min(target, this.maxAgents);
+    const cx = this.W / 2, cy = this.H / 2;
+    const r = Math.min(this.W, this.H) * 0.25;
+    for (let i = 0; i < this.N; i++) {
+      // bias initial spawn near center so they immediately interact
+      const a = Math.random() * Math.PI * 2;
+      const d = Math.random() * r;
+      this.x[i] = cx + Math.cos(a) * d;
+      this.y[i] = cy + Math.sin(a) * d;
+      this.h[i] = Math.random() * Math.PI * 2;
+    }
+  }
+
+  resetField() {
+    this.field.fill(0);
+    this.fieldB.fill(0);
+  }
+
+  clearAll() {
+    this.foods.length = 0;
+    this.sinks.length = 0;
+    this.resetField();
+  }
+
+  idx(x, y) {
+    // toroidal wrap for cleaner boundary behaviour
+    const W = this.W, H = this.H;
+    let ix = x | 0; let iy = y | 0;
+    if (ix < 0) ix += W; else if (ix >= W) ix -= W;
+    if (iy < 0) iy += H; else if (iy >= H) iy -= H;
+    return iy * W + ix;
+  }
+
+  sample(x, y) {
+    return this.field[this.idx(x, y)];
+  }
+
+  step() {
+    if (this.paused) return;
+    const s = this.s;
+    const W = this.W, H = this.H;
+    const F = this.field;
+
+    // 1. Sense + rotate + step (the agent rule)
+    const sA = s.sensorAngle;
+    const rA = s.rotateAngle;
+    const sD = s.sensorDist;
+    const v  = s.speed;
+
+    for (let i = 0; i < this.N; i++) {
+      const xi = this.x[i], yi = this.y[i], hi = this.h[i];
+      const cx = Math.cos(hi), sy = Math.sin(hi);
+      // three sensors: -sA, 0, +sA
+      const c0x = xi + cx * sD, c0y = yi + sy * sD;
+      const cLh = hi - sA, cRh = hi + sA;
+      const cLx = xi + Math.cos(cLh) * sD, cLy = yi + Math.sin(cLh) * sD;
+      const cRx = xi + Math.cos(cRh) * sD, cRy = yi + Math.sin(cRh) * sD;
+      const f0 = F[this.idx(c0x, c0y)];
+      const fL = F[this.idx(cLx, cLy)];
+      const fR = F[this.idx(cRx, cRy)];
+
+      let nh = hi;
+      if (f0 > fL && f0 > fR) {
+        // straight ahead — keep heading
+      } else if (f0 < fL && f0 < fR) {
+        // both sides better — random L/R turn
+        nh += (Math.random() < 0.5 ? -rA : rA);
+      } else if (fL > fR) {
+        nh -= rA;
+      } else if (fR > fL) {
+        nh += rA;
+      }
+      this.h[i] = nh;
+
+      let nx = xi + Math.cos(nh) * v;
+      let ny = yi + Math.sin(nh) * v;
+      // wrap
+      if (nx < 0) nx += W; else if (nx >= W) nx -= W;
+      if (ny < 0) ny += H; else if (ny >= H) ny -= H;
+      this.x[i] = nx;
+      this.y[i] = ny;
+
+      // deposit
+      const k = this.idx(nx, ny);
+      F[k] += s.deposit;
+    }
+
+    // 2. Food sources continually pump chemical into the field
+    const fs = s.foodStrength;
+    for (let f = 0; f < this.foods.length; f++) {
+      const fx = this.foods[f].x, fy = this.foods[f].y;
+      // small disc of deposit, falloff radius
+      const R = 3;
+      for (let dy = -R; dy <= R; dy++) {
+        for (let dx = -R; dx <= R; dx++) {
+          const d2 = dx*dx + dy*dy;
+          if (d2 > R*R) continue;
+          const w = 1 - Math.sqrt(d2) / R;
+          F[this.idx(fx + dx, fy + dy)] += fs * w;
+        }
+      }
+    }
+    // Sinks act as weaker attractors too — gives the plasmodium a reason
+    // to actually grow toward them. Half-strength of food.
+    for (let f = 0; f < this.sinks.length; f++) {
+      const fx = this.sinks[f].x, fy = this.sinks[f].y;
+      const R = 3;
+      for (let dy = -R; dy <= R; dy++) {
+        for (let dx = -R; dx <= R; dx++) {
+          const d2 = dx*dx + dy*dy;
+          if (d2 > R*R) continue;
+          const w = 1 - Math.sqrt(d2) / R;
+          F[this.idx(fx + dx, fy + dy)] += fs * 0.5 * w;
+        }
+      }
+    }
+
+    // 3. Diffuse + decay (a 3×3 box blur weighted by `diffuse`, then *(1-decay))
+    const B = this.fieldB;
+    const diff = s.diffuse;
+    const keep = 1 - diff;
+    const decayMul = 1 - s.decay;
+    for (let y = 0; y < H; y++) {
+      const ym = (y - 1 + H) % H;
+      const yp = (y + 1) % H;
+      for (let x = 0; x < W; x++) {
+        const xm = (x - 1 + W) % W;
+        const xp = (x + 1) % W;
+        const sum =
+          F[ym*W + xm] + F[ym*W + x] + F[ym*W + xp] +
+          F[y *W + xm] + F[y *W + x] + F[y *W + xp] +
+          F[yp*W + xm] + F[yp*W + x] + F[yp*W + xp];
+        const blurred = sum / 9;
+        B[y*W + x] = (keep * F[y*W + x] + diff * blurred) * decayMul;
+      }
+    }
+    // swap
+    this.field.set(B);
+  }
+
+  draw(p) {
+    const s = this.s;
+    const W = this.W, H = this.H;
+    const F = this.field;
+
+    p.loadPixels();
+    const px = p.pixels;
+    const Pw = p.width, Ph = p.height;
+    const sx = W / Pw, sy = H / Ph;
+    const bri = s.brightness;
+
+    for (let y = 0; y < Ph; y++) {
+      const fy = (y * sy) | 0;
+      const row = fy * W;
+      for (let x = 0; x < Pw; x++) {
+        const fx = (x * sx) | 0;
+        const v = F[row + fx] * bri * 0.01;
+        // map to a yellow/amber petri palette
+        // base dark agar
+        const t = Math.min(1, v);
+        // amber: r=244,g=197,b=66
+        const r = 12 + (244 - 12) * t;
+        const g = 11 + (197 - 11) * t;
+        const b =  8 + ( 66 -  8) * t;
+        const k = (y * Pw + x) * 4;
+        px[k]   = r;
+        px[k+1] = g;
+        px[k+2] = b;
+        px[k+3] = 255;
+      }
+    }
+    p.updatePixels();
+
+    // food
+    p.noStroke();
+    for (const f of this.foods) {
+      const x = f.x / sx, y = f.y / sy;
+      // glow
+      p.fill(244, 197, 66, 60);
+      p.ellipse(x, y, 22, 22);
+      p.fill(244, 197, 66, 220);
+      p.ellipse(x, y, 9, 9);
+    }
+    // sinks
+    for (const f of this.sinks) {
+      const x = f.x / sx, y = f.y / sy;
+      p.fill(230, 72, 61, 60);
+      p.ellipse(x, y, 22, 22);
+      p.fill(230, 72, 61, 230);
+      p.ellipse(x, y, 9, 9);
+    }
+
+    // agents as faint dots (optional — they're visible in the trail anyway)
+    if (s.showAgents) {
+      p.fill(255, 245, 200, 60);
+      for (let i = 0; i < this.N; i += 4) {
+        p.rect(this.x[i] / sx, this.y[i] / sy, 1, 1);
+      }
+    }
+  }
+}
+
+// ── p5 sketch ────────────────────────────────────────────────────────
+let mode = 'food'; // 'food' | 'sink'
+
+function setup() {
+  const host = document.getElementById('canvas-host');
+  const c = createCanvas(host.clientWidth, host.clientHeight);
+  c.parent(host);
+  pixelDensity(1);
+  noSmooth();
+  sim = new Physarum(width, height);
+  wireUI();
+}
+
+function windowResized() {
+  const host = document.getElementById('canvas-host');
+  resizeCanvas(host.clientWidth, host.clientHeight);
+  // rebuild sim at new resolution; preserve placed food/sinks proportionally
+  const oldW = sim.W, oldH = sim.H;
+  const foods = sim.foods.map(f => ({ x: f.x / oldW, y: f.y / oldH }));
+  const sinks = sim.sinks.map(f => ({ x: f.x / oldW, y: f.y / oldH }));
+  const settings = sim.s;
+  sim = new Physarum(width, height);
+  sim.s = settings;
+  sim.foods = foods.map(f => ({ x: f.x * sim.W, y: f.y * sim.H }));
+  sim.sinks = sinks.map(f => ({ x: f.x * sim.W, y: f.y * sim.H }));
+  sim.spawn(sim.s.num);
+}
+
+function draw() {
+  background(0);
+  sim.step();
+  sim.draw(this);
+
+  // fps
+  fpsAccum += deltaTime; fpsFrames++;
+  if (fpsAccum > 500) {
+    lastFps = Math.round(1000 * fpsFrames / fpsAccum);
+    fpsAccum = 0; fpsFrames = 0;
+    document.getElementById('stat-fps').textContent = lastFps;
+    document.getElementById('stat-agents').textContent = sim.N;
+    document.getElementById('stat-food').textContent = sim.foods.length;
+    document.getElementById('stat-sinks').textContent = sim.sinks.length;
+  }
+}
+
+function mousePressed(ev) {
+  if (!sim) return;
+  // ignore clicks on the side panel
+  const host = document.getElementById('canvas-host');
+  const r = host.getBoundingClientRect();
+  if (ev.clientX < r.left || ev.clientX > r.right ||
+      ev.clientY < r.top  || ev.clientY > r.bottom) return;
+  const cx = (ev.clientX - r.left) * (sim.W / r.width);
+  const cy = (ev.clientY - r.top)  * (sim.H / r.height);
+  if (ev.shiftKey || mode === 'sink') {
+    sim.sinks.push({ x: cx, y: cy });
+  } else {
+    sim.foods.push({ x: cx, y: cy });
+  }
+}
+
+// ── UI wiring ────────────────────────────────────────────────────────
+function wireUI() {
+  const bind = (id, key, mul = 1, fmt = v => v) => {
+    const el = document.getElementById(id);
+    const lbl = document.getElementById('v-' + id.slice(2));
+    const update = () => {
+      const v = parseFloat(el.value);
+      sim.s[key] = v * mul;
+      lbl.textContent = fmt(v);
+    };
+    el.addEventListener('input', update);
+    update();
+  };
+  // agents
+  const sNum = document.getElementById('s-num');
+  const vNum = document.getElementById('v-num');
+  sNum.addEventListener('input', () => {
+    const n = parseInt(sNum.value, 10);
+    sim.s.num = n;
+    vNum.textContent = n;
+    sim.spawn(n);
+  });
+  vNum.textContent = sNum.value;
+
+  bind('s-sa', 'sensorAngle', Math.PI / 180, v => v + '°');
+  bind('s-ra', 'rotateAngle', Math.PI / 180, v => v + '°');
+  bind('s-sd', 'sensorDist', 1, v => v);
+  bind('s-v',  'speed', 1, v => v.toFixed(1));
+  bind('s-dep','deposit', 1, v => v);
+  bind('s-dec','decay', 1, v => v.toFixed(3));
+  bind('s-dif','diffuse', 1, v => v.toFixed(2));
+  bind('s-food','foodStrength', 1, v => v);
+  bind('s-bright','brightness', 1, v => v.toFixed(1));
+
+  const sShow = document.getElementById('s-show-agents');
+  const vShow = document.getElementById('v-show-agents');
+  sShow.addEventListener('input', () => {
+    sim.s.showAgents = sShow.value === '1';
+    vShow.textContent = sim.s.showAgents ? 'on' : 'off';
+  });
+
+  // mode + buttons
+  const bFood = document.getElementById('btn-food');
+  const bSink = document.getElementById('btn-sink');
+  bFood.addEventListener('click', () => {
+    mode = 'food';
+    bFood.classList.add('active');
+    bSink.classList.remove('active');
+  });
+  bSink.addEventListener('click', () => {
+    mode = 'sink';
+    bSink.classList.add('active');
+    bFood.classList.remove('active');
+  });
+  const bPause = document.getElementById('btn-pause');
+  bPause.addEventListener('click', () => {
+    sim.paused = !sim.paused;
+    bPause.textContent = sim.paused ? 'resume' : 'pause';
+    bPause.classList.toggle('active', sim.paused);
+  });
+  document.getElementById('btn-reset').addEventListener('click', () => sim.resetField());
+  document.getElementById('btn-clear').addEventListener('click', () => sim.clearAll());
+}
+</script>
+</body>
+</html>
