@@ -32,27 +32,7 @@ links:
 
 Latent error is a **human factors engineering** concept with deep roots in systems thinking and control theory. It is a practice of *looking through* the visible failure to the structural precondition that made failure possible. The discipline is: when something breaks, ask not "what went wrong?" but "what condition *allowed* this to go wrong?"
 
-This entry began with a question about a video on Instagram philosophy and traces to James Reason's Swiss Cheese Model, control theory (integral action), and how this thinking applies to teaching, tool design, and creative practice.
-
----
-
-## The Human Factors Origin: James Reason's Swiss Cheese Model
-
-In the 1990s, **James Reason**, a cognitive psychologist specializing in human error, proposed the **Swiss Cheese Model** to explain how accidents and catastrophic failures occur in complex systems (aviation, nuclear plants, medical surgery, manufacturing).
-
-**The core insight:** Accidents are rarely caused by a single error. Instead, multiple layers of defense exist in a well-designed system. Each layer is like a slice of Swiss cheese — it has holes, but the holes don't usually align. A catastrophic failure happens when holes *do* align: when multiple independent failures occur simultaneously, creating a straight path through all layers.
-
-**Two classes of errors:**
-
-1. **Active errors**: The immediate, visible mistakes made by operators. A pilot misreading an instrument. A surgeon making a wrong incision. A driver not paying attention. These are the "holes" you can see.
-
-2. **Latent errors**: Hidden weaknesses in the system's design, training, procedures, or culture. These are the *preconditions* that allow active errors to become catastrophic. Latent errors are "holes" in the layers of defense — they don't cause failure by themselves, but they create the *capacity* for failure.
-
-**Example: the two similar levers problem**
-
-Two lever shapes side-by-side in a cockpit: one ejects the canopy (catastrophic), one toggles landing gear (routine). They are nearly identical in shape and position. A distracted pilot could grab the wrong one. The active error is the distraction. The latent error is the design: the system *permits* confusion. A well-designed system would make the eject lever distinct in shape, position, and tactile feedback. It would be *impossible* to confuse.
-
-The philosophy is: **Don't blame the pilot for being distracted. Redesign the system to accept that pilots *will* be distracted.**
+James Reason's Swiss Cheese Model (1990s human factors engineering) names the distinction: **active errors** are the visible operator mistakes; **latent errors** are the pre-existing structural weaknesses that allow active errors to become catastrophic. Systems fail when these "holes" align across layers. The cockpit eject-lever problem is the classic illustration — identical-looking levers for ejection and landing gear aren't a pilot-attention problem, they're a design latent error. The philosophy: don't design for idealized attention, redesign so failure requires more than one simultaneous mistake.
 
 ---
 

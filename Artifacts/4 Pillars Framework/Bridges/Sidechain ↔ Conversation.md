@@ -251,24 +251,6 @@ That's when they've internalized the pattern. They're now using production langu
 
 Encourage these connections. Pattern recognition is the skill being developed.
 
-## The Max Patch
-
-**Build:** Visual sidechain demonstrator
-
-```
-[adc~ 1] (kick input)
-    |
-[env~]  (envelope follower - measures kick loudness)
-    |
-[scale 0. 1. 1. 0.]  (invert: loud kick = low multiplier)
-    |
-    └─[*~] ← [adc~ 2] (bass input)
-         |
-    [dac~] (output: bass ducks when kick plays)
-```
-
-**The insight:** The envelope follower "listens" to the kick, then tells the bass to duck. It's literally a listening mechanism.
-
 ## Success Metrics (By Our Definition)
 
 **Not:** "Students can set up sidechain compression"

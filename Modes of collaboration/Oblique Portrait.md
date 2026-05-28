@@ -204,59 +204,15 @@ didn't know they were living in.
 
 ## Research Directions
 
-The following fields and researchers are directly relevant to what this method
-does and why it works. This is not a reading list — it is a map of the
-psychological territory this practice inhabits.
+The psychological territory this method inhabits:
 
-**Projective techniques and indirect elicitation**
-The Thematic Apperception Test (TAT), Rorschach, and sentence completion
-methods all operate on the same principle: bypass the self-monitoring of
-direct questioning by giving the subject something oblique to respond to.
-The subject's projections reveal more than their considered answers would.
-*Key figure: Henry Murray (TAT).*
-
-**Implicit Association Test (IAT)**
-Measures implicit attitudes — preferences and associations the subject
-genuinely doesn't have conscious access to — by testing reaction times to
-pairings, not by asking. The subject cannot strategically manage their
-response because the test doesn't feel like it's about the thing it's
-measuring. *Key figure: Anthony Greenwald.*
-
-**Focusing and felt sense**
-Eugene Gendlin's Focusing technique accesses felt knowledge that resists
-direct articulation — the "felt sense" of a problem or experience that
-exists in the body before it exists in language. The method: attend to the
-edge of what you can say, not the center of what you already know.
-*Key figure: Eugene Gendlin, Focusing (1978).*
-
-**Narrative identity and autobiographical memory**
-The self is constructed from stories, not facts. How a person narrates their
-past — what they emphasize, what they skip, what they frame as formative —
-is itself a portrait of who they are now. Oblique questioning surfaces
-narrative material the subject hasn't consciously organized into self-story.
-*Key figures: Dan McAdams, Martin Conway.*
-
-**The Johari Window**
-A model of self-knowledge with four quadrants: known to self + others /
-known to self, unknown to others / unknown to self, known to others /
-unknown to both. The oblique portrait method operates specifically in the
-third quadrant — surfacing what others (or a sufficiently observant AI) can
-see that the subject cannot.
-
-**Defensive forgetting vs. inaccessibility**
-Psychodynamic tradition distinguishes between material that is actively
-suppressed (defended against) and material that is simply inaccessible
-through the paths the subject habitually uses. Loudon's childhood memories
-are not repressed — they arrive when approached from the side. The attic
-bedroom was always there. The question just had to not be about the attic
-bedroom.
-
-**Play therapy and the permissive frame**
-Children access emotional material in play that they cannot access in direct
-conversation. Adults too: games, creative constraints, and structured
-ambiguity lower the self-monitoring that blocks genuine response. The
-oblique method's playful register ("playfully absurd," "almost too personal")
-is not decorative — it creates the permissive frame.
+- **Projective techniques** (TAT, Rorschach) — Henry Murray: indirect stimulus bypasses self-monitoring; projections outrun considered answers.
+- **Implicit Association Test** — Anthony Greenwald: measures attitudes the subject has no conscious access to, by making the test not feel like the thing it's measuring.
+- **Focusing / felt sense** — Eugene Gendlin: attend to the edge of what you can say, not the center of what you already know.
+- **Narrative identity** — Dan McAdams: what a person emphasizes, skips, or frames as formative *is* their portrait — oblique questioning surfaces material not yet organized into self-story.
+- **Johari Window** — the method operates in quadrant 3: what others can see that the subject cannot.
+- **Inaccessibility vs. suppression** — psychodynamic distinction: Loudon's memories weren't repressed; the question just had to not be about the attic bedroom.
+- **Play therapy / permissive frame** — D.W. Winnicott: playful register isn't decorative; it lowers the self-monitoring that blocks genuine response.
 
 ---
 

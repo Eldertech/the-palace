@@ -38,62 +38,7 @@ This isn't metaphor—it's **structural identity**. Both are about reducing dist
 
 ## The Technical Side
 
-### Dynamic Range Compression
-
-**What compression does:**
-- Reduces volume of loud parts
-- Brings up quiet parts (makeup gain)
-- **Reduces dynamic range (difference between loud and quiet)**
-
-**The parameters:**
-- **Threshold:** Level where compression starts
-- **Ratio:** How much to compress (4:1 = 4dB over becomes 1dB over)
-- **Attack:** How fast compression responds
-- **Release:** How fast compression lets go
-- **Makeup Gain:** Restore overall level
-
-**The result:** Everything lives in a narrower dynamic window.
-
-### Compression Makes Things Feel Close
-
-**Why compressed vocals sound intimate:**
-
-**Uncompressed vocal:**
-```
-Quiet parts: -30dB (whispers barely audible)
-Loud parts: -10dB (shouts too loud)
-Dynamic range: 20dB difference
-```
-
-**Compressed vocal:**
-```
-Quiet parts: -18dB (whispers now audible)
-Loud parts: -15dB (shouts now controlled)
-Dynamic range: 3dB difference
-Makeup gain: +12dB
-```
-
-**What changed:**
-- Whispers audible without turning up volume
-- Shouts controlled without distortion
-- **Everything feels closer to the listener**
-
-**The phenomenon:** When dynamic range shrinks, **perceived distance decreases**.
-
-### The Physics
-
-**Natural distance cues:**
-- Far away: Large dynamic range (quiet reverb + loud direct)
-- Close: Small dynamic range (everything at similar level)
-
-**Our ears interpret small dynamic range as "close":**
-- Whisper in your ear: Can hear breathing, tongue clicks (minimal dynamic range)
-- Shout across field: Can't hear subtle details (large dynamic range)
-
-**Compression mimics proximity:**
-- Brings whispers up to conversational level
-- Brings shouts down to conversational level
-- **Creates illusion of close-mic'd intimacy**
+A compressor reduces the volume of loud peaks, brings up quiet details with makeup gain, and narrows the overall dynamic range. Our ears interpret small dynamic range as proximity — a whispered voice in your ear has minimal range; a shout across a field has enormous range. Compression mimics closeness by making the gap between loud and quiet feel like the gap between far and near. See [[Kick Drum ↔ Foundation]] for a related discussion of how low-frequency anchor points work.
 
 ## The Conceptual Side
 
@@ -220,29 +165,6 @@ Answer: **Dynamic range matched proximity. Close enough to hear details, not so 
 
 **The lesson:** **Amount of compression = amount of intimacy you want listener to feel.**
 
-## Why This Resonance Works
-
-### 1. Physically Observable
-Compression is **measurable:**
-- Input level vs output level graphs
-- Gain reduction meters show it happening
-- Before/after waveforms prove it
-- **Concrete demonstration of abstract principle**
-
-### 2. Viscerally Experienced
-Everyone knows the feeling:
-- ASMR: Heavily compressed, hyper-intimate
-- Pop vocals: Compressed to feel close
-- Audiobooks: Compression makes narrator feel present
-- **Direct emotional experience of technical choice**
-
-### 3. Socially Universal
-Everyone has intimacy experience:
-- Sharing secrets (revealing quiet thoughts)
-- Controlling anger (reducing loud reactions)
-- Building trust (adjusting threshold)
-- **Same structure in all human relationships**
-
 ## Advanced Applications
 
 ### Serial Compression (Multiple Stages)
@@ -312,61 +234,9 @@ Everyone has intimacy experience:
 
 ## Common Student Discoveries
 
-### "Compression is why podcasts feel intimate"
-
-**Observation:** Podcasts heavily compressed.
-
-**Why:**
-- Quiet breaths audible (like they're in your ear)
-- Volume consistent (don't need to adjust)
-- Dynamic range minimal (feels like close conversation)
-- **Technical choice creates parasocial intimacy**
-
-### "I compress my personality around strangers"
-
-**Realization:** Social compression is real.
-
-**The behavior:**
-- Hide eccentric thoughts (compress loud peaks)
-- Small talk instead of real talk (compress quiet parts)
-- **Maintain "professional" dynamic range**
-
-**With close friends:**
-- Let weird thoughts through (wider dynamic range)
-- Share vulnerable moments (quieter parts heard)
-- **Authentic range = intimacy**
-
-### "ASMR is maximum compression"
-
-**Discovery:** ASMR videos hyper-compressed.
-
-**Why it works:**
-- Whispers become loud (extreme makeup gain)
-- Tiny sounds audible (tapping, brushing)
-- Dynamic range near zero (everything same level)
-- **Simulates being centimeters from someone**
-
-**The insight:** **Hyper-compression = hyper-intimacy.**
+Students notice that podcasts feel intimate because heavy compression makes quiet breaths audible — the dynamic range matches the proximity of close conversation. ASMR pushes this to its extreme: near-zero range simulates centimeters of distance. And students recognize that they "compress their personality" around strangers — hiding eccentric thoughts, keeping to safe topics — then widen the range with close friends.
 
 ## The Deeper Principle: Distance and Dynamics
-
-### Natural Dynamic Range by Distance
-
-**Close proximity (0-30cm):**
-- Can hear breathing: Dynamic range includes very quiet
-- Shouts would be painfully loud: Naturally compressed
-
-**Conversation distance (1-2m):**
-- Moderate dynamic range
-- Whispers not audible
-- Shouts not painful
-
-**Across room (5m+):**
-- Large dynamic range
-- Need to shout to be heard
-- Whispers lost
-
-**Compression creates artificial proximity** by mimicking the dynamic range of closeness.
 
 ### The Rubin Principle
 
@@ -384,46 +254,7 @@ Rick Rubin (*The Creative Act*): "Compression brings listener and artist closer 
 
 ## Teaching Notes
 
-### The Demonstration
-
-**Play three versions of same vocal:**
-
-**Version 1: No compression**
-- Whispers disappear
-- Shouts jump
-- Feels distant
-
-**Version 2: Appropriate compression (4:1)**
-- Everything audible
-- Controlled but natural
-- Feels intimate
-
-**Version 3: Over-compressed (20:1)**
-- Lifeless
-- Robotic
-- Feels processed
-
-**Ask:** "Which felt most intimate? Why?"
-
-**Answer:** Version 2—**close enough to hear everything, natural enough to feel real.**
-
-### Common Student Struggles
-
-**"I want it loud AND intimate"**
-- Loudness ≠ intimacy
-- Intimacy = controlled dynamic range
-- **You can have both (compressed + makeup gain)**
-
-**"How much compression is too much?"**
-- When it sounds processed
-- When dynamics feel lifeless
-- **When technical choice becomes obvious**
-
-**"Is intimacy always good?"**
-- No—context matters
-- Epic music needs dynamics (distance)
-- Aggressive music needs peaks (intensity)
-- **Match compression to intention**
+Play three versions of the same vocal — uncompressed (distant), 4:1 compressed (intimate), 20:1 over-compressed (lifeless) — and ask: "Which felt most intimate?" The middle version: close enough to hear everything, natural enough to feel real. Students who insist "I want it loud AND intimate" need the reminder that loudness ≠ intimacy; compressed + makeup gain gives you both.
 
 ### The Breakthrough
 

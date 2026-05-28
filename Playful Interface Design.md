@@ -91,159 +91,26 @@ The interface teaches: this instrument has agency. It's not just a tool respondi
 
 ---
 
-## The Palette: Tools for Playful Interface Design
+## Implementation Palette
 
-### JSUI (Max/MSP)
-
-JavaScript inside Max. Draw, animate, respond to messages, send messages back to the patcher. Mature, stable, integrated directly into Max.
-
-**Capabilities:**
-- 2D drawing (shapes, lines, text)
-- Mouse and keyboard interaction
-- Timer-based animation
-- Message sending/receiving to Max
-- Image rendering and sprite sheets
-
-**Ideal for:** Animation-driven interfaces, character animation, interactive graphics that need to stay synced with Max DSP.
-
-**Example:** The ghost emerging from the crystal ball is drawn dynamically in JSUI, with size, opacity, and position driven by the gain knob value.
-
-### Canvas (HTML5)
-
-JavaScript-driven 2D drawing in a browser. Extremely fast, highly flexible, your native tongue.
-
-**Capabilities:**
-- Smooth animation (60+ fps)
-- Sprite-based animation (pre-rendered frames)
-- Layered drawing
-- Shader integration (WebGL)
-- Touch and mouse interaction
-
-**Ideal for:** Web-based instruments, interactive demos, educational tools, when the interface and DSP are in the same codebase.
-
-**Example:** A fortune teller character drawn as SVG or Canvas, with animation frames triggered by Web Audio parameter changes.
-
-### WebGL / Shaders
-
-GPU-accelerated graphics. For visual effects that demand performance: particle systems, fluid simulations, reactive fields.
-
-**Capabilities:**
-- Real-time visual effects
-- Particle systems
-- Field visualizations
-- Complex lighting and color transformations
-
-**Ideal for:** When the interface itself is a data visualization (pressure fields, phase space trajectories, neural activation patterns).
-
-**Example:** The membrane potential of a neuron visualized as a real-time oscilloscope drawn with WebGL, with surrounding particles responding to spike events.
-
-### SVG Animation
-
-Scalable vector graphics with animation. Lightweight, resolution-independent, easily integrated with Canvas or HTML.
-
-**Capabilities:**
-- Smooth scaling to any resolution
-- Keyframe and procedural animation
-- Vector shape deformation
-- Embedded in HTML or Canvas
-
-**Ideal for:** Iconic characters, logo-like UI elements, animations that benefit from vector clarity.
-
-**Example:** A stylized ghost or trickster character defined as SVG, with animated strokes and fills responding to parameter changes.
-
-### AI-Generated Frames (Leonardo.ai)
-
-Generate animation frames with an AI image generation tool. Extract frames from a video or create discrete key poses. Use as sprite sheets in JSUI or Canvas.
-
-**Capabilities:**
-- Consistent character design across frames
-- Reliable style and lighting
-- Faster than hand-drawing
-- Iterative refinement via prompts
-
-**Ideal for:** Building character animation libraries, creating the initial visual style, prototyping look-and-feel before committing to code.
-
-**Example:** Generate 20 key poses of a fortune teller at a crystal ball (from bored to ecstatic), use as frames in a JSUI sprite animator.
+The primary tools: **[[JSUI]]** (JavaScript inside Max/MSP — mature, stable, synced to DSP; draw the ghost in JSUI, drive size/opacity from the gain knob), **HTML5 Canvas** (fast animation, native for web instruments; animation frames triggered by Web Audio parameter changes), **WebGL/Shaders** (GPU-accelerated for data visualizations — pressure fields, neural activation patterns), **SVG animation** (resolution-independent, ideal for iconic characters), and **AI-generated frames** (Leonardo.ai → 20 key poses of a fortune teller from bored to ecstatic → sprite sheet → JSUI animator). The choice follows the deployment target: Max plugin → JSUI; web instrument → Canvas or WebGL.
 
 ---
 
-## Interface as Pedagogy: Teaching Through Character
+## Workflow
 
-When an interface has personality, it teaches through **embodiment rather than explanation.**
-
-### Example: The Gain Knob as Séance Medium
-
-Instead of:
-> "Gain controls the amplitude of the recalled audio. Range: 0 to 1."
-
-You design:
-- At gain 0, the interface is dark and still
-- At gain 0.25, a faint glow appears
-- At gain 0.5, ectoplasm swirls are visible
-- At gain 0.75, ghost outlines emerge
-- At gain 1.0, ghosts are fully realized
-
-The player adjusts the gain and watches the ghost materialize. They are not reading a parameter; they are *seeing the effect in real time*. The interface is the lesson.
-
-### Example: Feedback Path as Trickster Spirit
-
-Instead of:
-> "Feedback amount controls how much output re-enters the delay buffer. Higher values = more repetitions."
-
-You design:
-- Each feedback path is a distinct character
-- As feedback amount increases, the character animates more energetically
-- Different characters have different visual personalities (one is smooth, one is jittery, one phases in and out)
-
-The player increases feedback and watches the trickster spirit become more active. They learn not just "more feedback = more repetition" but "this particular feedback path has a personality, a character, a flavor." The musical implications become visceral.
-
----
-
-## Building a Playful Interface: The Workflow
-
-### Phase 1: Character Concept
-
-Define the character archetype: What mythology does this instrument embody? What emotional/conceptual core is it expressing?
-
-**For the retrospective delay:** Fortune teller, crystal ball, reaching into memory.
-
-**For a neural synthesizer:** A single neuron, a threshold-crossing being, an oscillator that "fires" with intention.
-
-### Phase 2: Visual Style Development
-
-Use AI image generation (Leonardo.ai) or hand-drawing to establish the look:
-- Visual identity (colors, shapes, proportions)
-- Emotional tone (eerie, playful, scientific, organic?)
-- Animation potential (what gestures and poses make sense?)
-
-**Generate 20-30 key poses** that span the full range of the control parameter (e.g., boredom to ecstasy for the séance medium).
-
-### Phase 3: Mapping Parameter to Animation
-
-Define the relationship between control inputs and visual state:
+1. **Character concept** — what mythology does this instrument embody? (Retrospective delay: fortune teller reaching into memory. Neural synthesizer: a threshold-crossing being that fires with intention.)
+2. **Visual style** — generate 20–30 key poses spanning the control's full range; establish identity, tone, animation vocabulary.
+3. **Parameter-to-animation mapping** — define the relationship (not necessarily linear; a remapped curve can make the response feel more alive):
 
 | Parameter Value | Visual State |
 |---|---|
 | 0.0 | Frame 0 (base pose) |
-| 0.25 | Frame 5 (earliest engagement) |
 | 0.5 | Frame 12 (midpoint intensity) |
-| 0.75 | Frame 17 (high intensity) |
 | 1.0 | Frame 20 (maximum) |
 
-The mapping doesn't have to be linear. A non-linear response curve (gain remapped through a curve before selecting animation frame) can make the response feel more alive.
-
-### Phase 4: Implementation
-
-Choose your tool:
-- **JSUI:** Use generated frames as a sprite sheet. Map the gain knob to frame selection.
-- **Canvas:** Embed the sprite sheet in an HTML canvas, animate frame by frame.
-- **WebGL:** For effects-heavy interfaces, use shaders to transform the character in response to parameters.
-
-### Phase 5: Testing and Refinement
-
-Play the instrument. Does the character respond in a way that invites play? Does the visual feedback tell you something about the music you're making?
-
-If the ghost emerges slowly and hesitantly, do you play more tentatively? If a trickster spirit is jittery, do you engage with it more playfully? **The interface should guide your playing without words.**
+4. **Implementation** — JSUI sprite sheet, Canvas frame-by-frame, or WebGL shader per the deployment target.
+5. **Test by playing** — does the character guide your playing without words? If the ghost emerges hesitantly, do you play more tentatively?
 
 ---
 

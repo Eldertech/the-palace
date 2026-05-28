@@ -54,28 +54,7 @@ The transition was motivated by a desire to understand the signal flow visually 
 
 ## Technical Architecture
 
-**Generating the LTC bitstream:**
-- Start with hours, minutes, seconds, frames (e.g., 01:34:27:18).
-- Pack into 80-bit frame structure: user bits (user data field), timecode value (binary BCD encoding of HH:MM:SS:FF), status bits, parity.
-- Encode using biphase mark code: each bit becomes a phase transition (clock edge) and a data transition (data edge). Clock always transitions; data transition depends on bit value.
-
-**Converting bitstream to audio:**
-- Biphase at the selected frame rate yields the bit rate: 1920 Hz clock at 24 fps, 2000 Hz at 25 fps, etc.
-- Each bit cell is subdivided: clock transition happens early in the cell, data transition (if needed) happens late.
-- Generate a square wave or sine wave that follows this pattern. The result is a complex waveform rich in the harmonic series around the clock frequency and data harmonics.
-
-**Frame rate variants:**
-- 24 fps: Standard film frame rate.
-- 25 fps: PAL video (Europe, Asia).
-- 29.97 fps: NTSC standard (North America, Japan) — actually 30000/1001 fps, often notated as 29.97.
-- 30 fps: Drop-frame NTSC: compensates for the 29.97 reality by occasionally skipping frame numbers (a trickster convention in the spec itself).
-
-Each variant has a slightly different bit rate and biphase clock frequency, and therefore a different audio spectrum. The decoder must be told the expected frame rate or detect it from the incoming signal.
-
-**Implementation considerations:**
-- Precision: Time must advance by exactly one frame per sample block, no drift over long runs.
-- Latency: The LTC stream should be generated ahead of or exactly coincident with the audio being locked to it. Latency mismatches cause sync drift.
-- Transposition: LTC is often scaled by ±6 dB for transmission over noisy channels or long cable runs, but the waveform shape must be preserved for phase detection to work.
+Each video frame produces 80 bits packed as HH:MM:SS:FF in BCD plus user and status bits. These are encoded via **biphase mark code**: every bit boundary gets a clock transition; a mid-cell transition also occurs for a `1` bit, none for a `0`. This produces a self-clocking waveform — phase transitions carry both timing and data — at rates of 1920 bit/s (24 fps), 2000 bit/s (25 fps), or 2397.6 bit/s (29.97 fps). The decoder detects phase transitions, reconstructs the bit stream, and locks transport to it. Critical constraints: no sample drift over long runs; generation latency must be zero or exactly compensated; waveform shape preserved through any level-scaling. Drop-frame NTSC (29.97) skips frame-number counts at minute boundaries to maintain wall-clock alignment — a trickster convention in the spec itself.
 
 ## Why It Matters for Loudon
 

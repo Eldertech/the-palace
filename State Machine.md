@@ -109,64 +109,42 @@ if (phase == 0) {
 }
 ```
 
-In JavaScript (Web Audio `AudioWorkletProcessor.process()`), the same pattern applies but with class-level state:
+The pattern is identical across all four languages — state memory, transition conditions, state-specific behavior, transition actions. Only the syntax and the mechanism for persistent state differ:
 
 ```javascript
-// state persists across process() calls
+// JavaScript — state persists across AudioWorkletProcessor.process() calls
 if (this.phase === 0) {
     this.v += (drive - this.v / leakTau) * dt;
-    if (this.v >= 1.0) {
-        this.phase = 1;
-        this.timer = 0;
-    }
+    if (this.v >= 1.0) { this.phase = 1; this.timer = 0; }
 }
 ```
 
-In Python (offline rendering or NumPy per-sample loop), state is an instance attribute:
-
 ```python
-# per-sample update
+# Python — state is an instance attribute; same per-sample logic
 if self.phase == 0:
     self.v += (drive - self.v / leak_tau) * dt
     if self.v >= 1.0:
-        self.phase = 1
-        self.timer = 0
+        self.phase = 1; self.timer = 0
 ```
 
-In Faust, the functional paradigm requires a different approach — state is threaded through recursive `letrec` or `~` feedback:
-
 ```
-// Faust — state carried as feedback signals
+// Faust — state threaded through recursive feedback; no mutable variables
 phase, V, timer = neuron(freq, leak_tau, ...)
     with {
-        // transition logic expressed as conditional signal selection
         next_phase = ba.if(phase==0 & V>=1.0, 1,
-                     ba.if(phase==1 & timer>=rise_samps, 2,
-                     ...));
+                     ba.if(phase==1 & timer>=rise_samps, 2, ...));
     };
 ```
 
-**The pattern is identical across all four languages.** State memory, transition conditions, state-specific behavior, transition actions. Only the syntax and the mechanism for persistent state differ. This is what makes the state machine a [[ROSETTA]] concept — learn it in one language, recognize it in all of them.
+<!-- FLAG: The 4 code blocks above are kept in full per task instructions. The JS and Python blocks are condensed single-state excerpts; the full per-language oscillator implementations could move to a bundle sketch (State Machine/) if they grow. The Faust block is the only one that shows a structurally different approach (functional state threading) — keep it. -->
+
+This is what makes the state machine a [[ROSETTA]] concept — learn it in one language, recognize it in all of them.
 
 ## When to Cross the Line
 
-The transition from visual to textual is not about preference. It's about a measurable threshold:
+Stay visual when state count is ≤ 3 and students need to see all branches simultaneously. Move to text when state count reaches 4+, transition actions are coupled, or debugging requires reading logic flow rather than tracing wires.
 
-**Stay visual when:**
-
-- The state count is ≤ 3
-- Students need to see all branches simultaneously
-- Probing individual signals with `number~` is part of the learning
-- The visual layout fits on one screen without scrolling
-
-**Move to text when:**
-
-- The state count reaches 4+
-- Transition actions are coupled (one transition sets multiple variables)
-- The parallel-compute overhead becomes wasteful or confusing
-- Debugging requires reading logic flow, not tracing wires
-
-In the [[Action Potential Oscillator]], Stage 3 (3 states) was built in Gen~ modules. Stage 4 (4 states) moved to codebox. That boundary was the right place — and the transition itself became a teaching moment: the students see the same math work both ways, and they experience firsthand why textual representation wins at a certain complexity threshold.
+In the [[Action Potential Oscillator]], Stage 3 (3 states) was built in Gen~ modules; Stage 4 (4 states) moved to codebox. The transition itself became a teaching moment — students see the same math work both ways and experience firsthand why textual representation wins at that threshold.
 
 ## Cross-Domain Resonance
 

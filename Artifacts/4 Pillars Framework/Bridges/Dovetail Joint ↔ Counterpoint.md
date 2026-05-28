@@ -36,39 +36,7 @@ This isn't metaphor. It's **structural principle**: strength through complementa
 
 ## The Technical Side
 
-### The Dovetail Joint
-
-**Structure:**
-```
-Tail board:  ▽▽▽▽▽  (wedge-shaped protrusions)
-Pin board:   △△△△△  (wedge-shaped recesses)
-Assembled:   ⊠⊠⊠⊠⊠  (interlocked, inseparable)
-```
-
-**Why it works:**
-- Tails and pins are cut at angles (typically 1:8 or 1:6 slope)
-- Pulling the joint apart requires wood fibers to compress or shear
-- The wood will break before the joint separates
-- No glue required (though often used for longevity)
-
-**The key:** Each piece is shaped specifically to receive the other. They're **designed for each other**.
-
-### Two-Voice Counterpoint
-
-**Structure:**
-```
-Voice 1: C  - E  - D  - C  (melody line)
-Voice 2: E  - C  - B  - C  (countermelody)
-Result:  I  - I⁶ - V⁶ - I  (harmony emerges from interaction)
-```
-
-**Why it works:**
-- When Voice 1 moves up, Voice 2 moves down (contrary motion)
-- When Voice 1 rests, Voice 2 moves (rhythmic independence)
-- Consonances on strong beats, dissonances resolve (harmonic support)
-- No separate harmonic layer needed
-
-**The key:** Each voice is written specifically to complement the other. They're **designed for each other**.
+A dovetail joint works because its angled tails and pins are cut to receive each other: pulling the joint apart would require shearing through the wood itself, so no glue is needed. Two-voice counterpoint works the same way — when one voice moves up, the other moves down; when one rests, the other moves; dissonances resolve on strong beats. No separate harmonic layer is needed because the voices are written *for each other*. The key phrase in both cases is the same: **designed for each other**.
 
 ## The Structural Identity
 
@@ -101,25 +69,7 @@ Not cooperation—**co-design**. Each element exists to make the other stronger.
 
 Both avoid **external support** by designing **internal interdependence**.
 
-### The Force Diagram
-
-**In woodworking:**
-```
-Pull force →
-Tail board: ▽ ← resisted by wedge angle
-Pin board: △ ← pushes back against tail
-Result: Force distributed, joint holds
-```
-
-**In counterpoint:**
-```
-Melodic tension →
-Voice 1: dissonant note ← creates tension
-Voice 2: consonant resolution ← releases tension
-Result: Harmonic motion, line continues
-```
-
-Both use **opposing forces** to create **stable structure**.
+Both use **opposing forces** to create **stable structure**: the wedge converts pulling force into perpendicular compression; contrary motion converts melodic tension into harmonic resolution.
 
 ## Teaching the Resonance
 
@@ -259,39 +209,6 @@ Your eye recognizes **elegant structural solutions** even if you don't conscious
 **Good collaboration:** Each person's work is shaped to complement others' (dovetail)
 
 Design for **mutual support** from the start, not external coordination afterward.
-
-## The Physics and Music Theory
-
-### Why Wedges Work (Physics)
-```
-Force perpendicular to wedge surface:
-F_normal = F_pull / sin(angle)
-
-For typical dovetail angle (8°):
-F_normal = F_pull / 0.139 = 7.2 × F_pull
-
-The joint multiplies resistance by 7×
-```
-
-The wedge **converts pulling force into perpendicular compression**. The harder you pull, the tighter it grips.
-
-### Why Voice Leading Works (Music Theory)
-```
-Dissonance tension:
-D-F-A = unstable (includes tritone)
-
-Resolve by contrary motion:
-D→C (down by step)
-F→E (down by step)
-A→E (stays)
-= C-E-G = stable (consonant triad)
-
-The voices resolve by moving **toward** each other
-```
-
-The contrary motion **converts melodic tension into harmonic resolution**. The stronger the dissonance, the more satisfying the resolution.
-
-**Same principle:** Forces opposing each other create stable equilibrium.
 
 ## Teaching Notes
 

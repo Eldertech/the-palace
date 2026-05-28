@@ -40,14 +40,6 @@ R = Resistance (ohms) — opposition to flow
 
 Equivalently: **I = V / R** or **R = V / I**
 
-## Historical Note: Why "I" for Current?
-
-Current uses the symbol **I** from French "intensité" (intensity), the historical term for "strength of flow." This causes confusion because in modern English:
-- **Current** = flow rate (amperes)
-- **Intensity** = power per area (W/m²)
-
-They're different concepts, but the symbol stuck from old French usage.
-
 ## Cross-Domain Understanding
 
 The same relationship pattern appears across many fields:
@@ -79,25 +71,6 @@ Higher pressure → faster particle motion. Dense medium → more resistance.
 - **R** (Resistance) = Box weight / friction
 
 More force → more work done. Heavier boxes → less throughput.
-
-## The Core Intuition Pattern
-
-For any equation of the form **A = B × C** or **A = B / C**:
-
-**Multiplication (A = B × C):**
-- If C is constant and B doubles → A doubles (direct proportion)
-- If C is constant and B halves → A halves
-
-**Division (A = B / C):**
-- If C is constant and B doubles → A doubles (numerator direct)
-- If B is constant and C doubles → A halves (denominator inverse)
-
-This pattern applies to:
-- Speed = Distance / Time
-- Density = Mass / Volume
-- Pressure = Force / Area
-- Frequency = 1 / Period
-- **Inharmonicity: B ∝ 1 / Tension** (inverse relationship)
 
 ## Interactive Learning Tool
 <!-- Link to the html -->

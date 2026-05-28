@@ -40,125 +40,15 @@ This isn't metaphor—it's **physics**. Reverb is space-time made audible.
 
 ## The Physics
 
-### Reverb: Time from Space
+Each room reflection arrives at a time proportional to the distance it traveled: `t = d / 343 m/s`. A wall 10 meters away returns its reflection 29 milliseconds late. Your brain reads those arrival times as geometry — a cathedral's first reflection at 50–100ms signals large space; a bathroom's at 5–10ms signals small space. You are literally **hearing geometry**.
 
-**What happens:**
-1. Sound source emits
-2. Direct sound reaches ear (shortest path, first arrival)
-3. Reflections hit walls, bounce back (longer paths, delayed arrivals)
-4. Each reflection arrives at time proportional to distance traveled
-5. Brain interprets timing differences as spatial information
-
-**The equation:**
-```
-time_delay = distance / speed_of_sound
-t = d / 343 m/s (at 20°C)
-
-Example:
-Wall 10 meters away:
-t = 10 / 343 = 29 milliseconds delay
-```
-
-**The insight:** Time delay IS distance. They're mathematically identical.
-
-### Early Reflections: Space Signature
-
-**Cathedral (large room):**
-- First reflection: 50-100ms (walls are far)
-- Dense reflections: Smooth, lush tail
-- Reverb time: 3-8 seconds
-- **You hear:** LARGE space
-
-**Bathroom (small room):**
-- First reflection: 5-10ms (walls are close)
-- Sparse reflections: Individual echoes
-- Reverb time: 0.5-1 second
-- **You hear:** SMALL space
-
-**Your brain calculates:** time between arrivals → distance to walls → room size
-
-You're literally **hearing geometry**.
-
-### Pre-Delay: Moving the Walls
-
-**Reverb with 0ms pre-delay:**
-- Sound and space are unified
-- Source feels inside the room
-
-**Reverb with 50ms pre-delay:**
-- Gap between direct sound and first reflection
-- Source feels pushed forward, space behind
-
-**You've moved the wall** by adding time.
+Pre-delay makes this manipulable: add 50ms of pre-delay and you've pushed the virtual wall back, moving the source forward in a space that now exists behind it. <!-- show and tell --> <!-- Help me understand how defining room dimensions and room size work together, and how well they can represent real spaces. -->
 
 ## The Relativity Connection
 
-### Einstein's Spacetime
+In special relativity, space and time are not separate dimensions but aspects of a single spacetime fabric — interchangeable depending on reference frame. Reverb demonstrates the same unification through sound: distant wall → long reflection time → perceived large space; close wall → short reflection → perceived small room. Time and space convert into each other through the speed of sound, exactly as they convert through the speed of light. The Haas Effect makes this visceral: delay one speaker 10–30ms and you create perceived stereo width with no spatial separation at all — **time difference becomes spatial perception**.
 
-In special relativity, space and time aren't separate:
-
-**Classical physics:** (x, y, z) space coordinates + t time coordinate = 4 separate dimensions
-
-**Relativity:** (x, y, z, t) = spacetime coordinates = one unified 4D fabric
-
-**The key:** Time and space are **interchangeable** depending on reference frame.
-
-### In Reverb
-<!-- show and tell -->
-**Time → Space:**
-- Add delay → Create perceived distance
-- Early reflections → Define room dimensions
-- Decay time → Indicate room size
-<!-- Help me understand how defining room dimensions and room size work together, and how well they can represent real spaces. -->
-**Space → Time:**
-- Distant wall → Long reflection time
-- Close wall → Short reflection time
-- Room size → Reverb duration
-
-They convert into each other through speed of sound, just like space and time convert through speed of light.
-
-### The Haas Effect: Time Creates Width
-
-**Haas Effect (precedence effect):**
-- Same sound sent to both speakers
-- Delay one side by 10-30ms
-- Result: Sound appears to come from un-delayed side
-- But: Sound feels WIDER
-
-**You created stereo width using TIME.**
-
-No actual spatial separation in the recording—just timing difference. Time difference creates spatial perception.
-
-## The Perceptual Reality
-
-### How Your Brain Builds Space
-
-**Inputs:**
-- Interaural Time Difference (ITD): Sound arrives at ears at different times
-- Interaural Level Difference (ILD): Sound is louder in one ear
-- Spectral cues: High frequencies blocked by head/shoulders
-- Reverb pattern: Room reflections
-
-**Output:**
-- 3D spatial map of sound sources
-- Sense of room size
-- Distance to sources
-- Sense of "being there"
-
-**Your brain is doing acoustic geometry in real-time.**
-
-### The Cocktail Party Effect
-
-In a crowded room:
-- Many voices overlap
-- Your brain separates them by:
-  - Timing differences (voices bounce off surfaces differently)
-  - Spatial location (voices come from different places)
-  - Reverb patterns (close voice has different reverb than distant)
-
-You're using **acoustic reflections to separate voices in space**.
-
-Reverb isn't decoration—it's **spatial information**.
+Your brain does acoustic geometry in real-time, reading interaural time differences (ITD), level differences (ILD), and reverb patterns to construct a 3D spatial map. Reverb isn't decoration — it's the information your brain uses to know where it is.
 
 ## Teaching the Resonance
 
@@ -212,35 +102,6 @@ Answer: **You're adding SPACE. The wetness IS the space.**
 - Relativity: Time and space unified through light
 
 Different domains, same principle: **space and time are interchangeable**.
-
-## Why This Resonance Works
-
-### 1. Invisible Made Visible
-
-**Space** is invisible—you can't see air
-**Reverb** makes space audible—you can hear the room
-
-**Time** is invisible—you can't see duration
-**Reflections** make time audible—you hear the delay
-
-Reverb makes **invisible dimensions perceptible**.
-
-### 2. Deeply Intuitive
-
-Everyone has heard:
-- Echo in a canyon (space made audible)
-- Shower singing (small bright space)
-- Church acoustics (large diffuse space)
-
-You already know reverb = space. This resonance just makes it **explicit and transferable**.
-
-### 3. Connects Art and Science
-
-**Artistic use:** Create mood, depth, atmosphere
-**Scientific reality:** Acoustic physics, psychoacoustics
-**Philosophical depth:** Heidegger on dwelling in space
-
-One phenomenon, three lenses. That's 4 Pillars teaching.
 
 ## Advanced Applications
 
@@ -359,35 +220,7 @@ They're thinking spatially, not parametrically. They're placing sounds in **spac
 
 ## The Mathematical Beauty
 
-### Speed of Sound
-
-```
-v = 343 m/s (at 20°C, sea level)
-
-Convert time to distance:
-30ms delay = 0.030s × 343 m/s = 10.3 meters
-
-Convert distance to time:
-5 meter wall = 5m / 343 m/s = 14.6ms
-```
-
-**You can translate freely between time and space.**
-
-### The Reverb Time Equation (Sabine)
-
-```
-RT60 = 0.161 × V / A
-
-Where:
-RT60 = Time for reverb to decay 60dB
-V = Room volume (cubic meters)
-A = Total absorption (surface area × absorption coefficient)
-```
-
-**Bigger volume → Longer time**
-**More absorption → Shorter time**
-
-Space (volume) EQUALS time (decay). Direct mathematical relationship.
+Time and space translate freely through speed of sound: 30ms delay = 10.3 meters; a 5-meter wall returns its reflection in 14.6ms. The Sabine equation (`RT60 = 0.161 × V / A`) makes the same equivalence formal: bigger volume means longer decay time. Space (volume) equals time (decay) — not metaphorically, mathematically.
 
 ## Success Metrics (By Our Definition)
 
