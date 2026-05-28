@@ -1,6 +1,7 @@
 ---
 title: "Slime Mold Delay"
 type: project
+status: active
 pillars: [creation, tools, philosophy]
 born: 2026-05
 last_activated: 2026-05
@@ -17,7 +18,7 @@ links:
     type: connects-to
     label: instrument-05
   - target: "[[Retrospective Delay]]"
-    type: contrasts-with
+    type: connects-to
     label: thinking-vs-remembering
   - target: "[[Semantic Delay]]"
     type: connects-to

@@ -20,9 +20,11 @@ links:
   - target: "[[Quality Manifesto]]"
     type: couples-with
   - target: "[[Leverage Points Framework]]"
-    type: applies-to
-  - target: "[[4 Pillars Weekly Structure]]"
-    type: enables
+    type: connects-to
+    label: applies-to
+  - target: "[[Loudon Live]]"
+    type: connects-to
+    label: weekly-cadence
   - target: "[[4 Pillars Framework - The Founding Conversation]]"
     type: emerged-from
   - target: "[[Cooperation Yields Agency]]"

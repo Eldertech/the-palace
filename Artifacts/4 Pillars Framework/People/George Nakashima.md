@@ -1,6 +1,6 @@
 ---
 title: George Nakashima
-type: source
+type: person
 pillars:
   - philosophy
   - practice
@@ -16,9 +16,11 @@ who_leads: shared
 domain: Maker/Craftsman
 links:
   - target: "[[Source Library]]"
-    type: member-of
+    type: connects-to
+    label: member-of
   - target: "[[FOUR PILLARS]]"
-    type: informs
+    type: connects-to
+    label: informs
 ---
 
 # George Nakashima
@@ -79,38 +81,3 @@ Material as teacher. The synthesizer tells you what it wants to sound like - lis
 
 ### Practice Pillar
 Slow craft approach: Spend a month on one patch. Let it reveal itself gradually.
-
----
-
-## Teaching Integration
-
-**For weekly themes:**
-- Reference George Nakashima's work when themes align with these concepts
-- Use quotes as prompts for reflection
-- Assign reading from key works during relevant months
-- Build exercises that apply concepts to music production
-
-**For student discovery:**
-- Encourage students to find connections between George Nakashima's work and their practice
-- Document how concepts transfer across domains
-- Share examples of applying these ideas in production
-
-**For deeper study:**
-- Dedicate 3-month arc to George Nakashima (following Source Library structure)
-- Read primary sources, not summaries
-- Create projects directly influenced by their philosophy
-- Journal throughout: What shifts in your practice?
-
----
-
-## Why This Source Matters
-
-George Nakashima provides essential perspective on the 4 Pillars framework because their work demonstrates how Live edge appears across all creative domains.
-
-Their approach teaches that the same patterns exist whether you're maker/craftsman, making music, building tools, or developing daily practice.
-
-This is cross-domain resonance in action.
-
----
-
-*George Nakashima. Maker/Craftsman. Same patterns, different materials. That's what the 4 Pillars framework reveals.*

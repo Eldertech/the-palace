@@ -20,9 +20,11 @@ difficulty: fundamental
 philosopher: Maurice Merleau-Ponty
 links:
   - target: "[[Weekly Themes Database]]"
-    type: member-of
+    type: connects-to
+    label: member-of
   - target: "[[FOUR PILLARS]]"
-    type: exemplifies
+    type: connects-to
+    label: exemplifies
 ---
 
 # Panning and Perspective

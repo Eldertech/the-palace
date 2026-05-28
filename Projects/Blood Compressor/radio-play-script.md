@@ -10,7 +10,7 @@ voices: [NARRATOR, BODY, ENGINEER]
 session_format: loudon-live
 links:
   - target: "[[Blood Compressor]]"
-    type: spawned-from
+    type: connects-to
     label: lesson-first-deliverable
   - target: "[[Compressor Design]]"
     type: deepens

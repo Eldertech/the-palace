@@ -15,7 +15,7 @@ links:
   - target: "[[Shop/Maker|Maker]]"
     type: connects-to
     label: dispatch-source
-  - target: "[[Retrospective Delay — Stage 1 The Witness|Stage 1 — The Witness]]"
+  - target: "[[stage-1-the-witness|Stage 1 — The Witness]]"
     type: deepens
     label: lesson-imagery-spec
 ---

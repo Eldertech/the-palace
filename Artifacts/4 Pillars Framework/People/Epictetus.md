@@ -1,6 +1,6 @@
 ---
 title: Epictetus
-type: source
+type: person
 pillars:
   - philosophy
   - practice
@@ -16,9 +16,11 @@ who_leads: shared
 domain: Philosopher
 links:
   - target: "[[Source Library]]"
-    type: member-of
+    type: connects-to
+    label: member-of
   - target: "[[FOUR PILLARS]]"
-    type: informs
+    type: connects-to
+    label: informs
 ---
 
 # Epictetus
@@ -78,38 +80,3 @@ Stoic producer: React to feedback with equanimity. Plays don't define quality - 
 
 ### Practice Pillar
 Daily dichotomy practice: List what's in/out of your control today. Focus energy accordingly.
-
----
-
-## Teaching Integration
-
-**For weekly themes:**
-- Reference Epictetus's work when themes align with these concepts
-- Use quotes as prompts for reflection
-- Assign reading from key works during relevant months
-- Build exercises that apply concepts to music production
-
-**For student discovery:**
-- Encourage students to find connections between Epictetus's work and their practice
-- Document how concepts transfer across domains
-- Share examples of applying these ideas in production
-
-**For deeper study:**
-- Dedicate 3-month arc to Epictetus (following Source Library structure)
-- Read primary sources, not summaries
-- Create projects directly influenced by their philosophy
-- Journal throughout: What shifts in your practice?
-
----
-
-## Why This Source Matters
-
-Epictetus provides essential perspective on the 4 Pillars framework because their work demonstrates how Dichotomy of control appears across all creative domains.
-
-Their approach teaches that the same patterns exist whether you're philosopher, making music, building tools, or developing daily practice.
-
-This is cross-domain resonance in action.
-
----
-
-*Epictetus. Philosopher. Same patterns, different materials. That's what the 4 Pillars framework reveals.*

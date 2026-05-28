@@ -13,7 +13,8 @@ energy: very high
 beauty: 10
 links:
   - target: "[[Lateral Access]]"
-    type: mirrors
+    type: connects-to
+    label: oblique-cousin
   - target: "[[Kuramoto Coupling]]"
     type: mirrors
   - target: "[[Hilaritas Generator]]"

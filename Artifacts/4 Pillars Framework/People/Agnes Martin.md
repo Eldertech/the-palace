@@ -1,6 +1,6 @@
 ---
 title: Agnes Martin
-type: source
+type: person
 pillars:
   - philosophy
   - practice
@@ -16,9 +16,11 @@ who_leads: shared
 domain: Artist
 links:
   - target: "[[Source Library]]"
-    type: member-of
+    type: connects-to
+    label: member-of
   - target: "[[FOUR PILLARS]]"
-    type: informs
+    type: connects-to
+    label: informs
 ---
 
 # Agnes Martin
@@ -79,38 +81,3 @@ Artist as witness, not author. Music comes through you, not from you. Innocence 
 
 ### Practice Pillar
 Daily grid meditation: Draw lines, notice variations. Or: Loop same 4 bars, notice endless difference.
-
----
-
-## Teaching Integration
-
-**For weekly themes:**
-- Reference Agnes Martin's work when themes align with these concepts
-- Use quotes as prompts for reflection
-- Assign reading from key works during relevant months
-- Build exercises that apply concepts to music production
-
-**For student discovery:**
-- Encourage students to find connections between Agnes Martin's work and their practice
-- Document how concepts transfer across domains
-- Share examples of applying these ideas in production
-
-**For deeper study:**
-- Dedicate 3-month arc to Agnes Martin (following Source Library structure)
-- Read primary sources, not summaries
-- Create projects directly influenced by their philosophy
-- Journal throughout: What shifts in your practice?
-
----
-
-## Why This Source Matters
-
-Agnes Martin provides essential perspective on the 4 Pillars framework because their work demonstrates how Grids as meditation appears across all creative domains.
-
-Their approach teaches that the same patterns exist whether you're artist, making music, building tools, or developing daily practice.
-
-This is cross-domain resonance in action.
-
----
-
-*Agnes Martin. Artist. Same patterns, different materials. That's what the 4 Pillars framework reveals.*

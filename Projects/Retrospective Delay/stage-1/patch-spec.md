@@ -8,14 +8,14 @@ links:
   - target: "[[Retrospective Delay]]"
     type: spawned
     label: stage-1-implementation
-  - target: "[[Retrospective Delay — Stage 1 The Witness|Stage 1 — The Witness]]"
+  - target: "[[stage-1-the-witness|Stage 1 — The Witness]]"
     type: deepens
     label: implementation-detail
 ---
 
 # Stage 1 — Patch Spec (Vanilla Max → M4L Audio Effect)
 
-This is the working spec the **Make** block of [[Retrospective Delay — Stage 1 The Witness|Stage 1]] builds against. Object-by-object, connection-by-connection, with the key calculations isolated so the instructor can re-derive them with the student at the board.
+This is the working spec the **Make** block of [[stage-1-the-witness|Stage 1]] builds against. Object-by-object, connection-by-connection, with the key calculations isolated so the instructor can re-derive them with the student at the board.
 
 ## Top-Level Patch
 

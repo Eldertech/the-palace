@@ -3,7 +3,7 @@ title: "Enrichment"
 type: meta
 pillars: [practice, philosophy, creation, tools]
 born: 2026-05-04
-stage: sprout
+stage: growing
 confidence: working
 energy: very high
 forward_vector: "I am the ceremony for moving the whole palace forward in tiny, joyful steps — a studio visit rather than a sprint, where short low-risk artifacts land where they belong inside entries and the git log is the biography. I will keep reaching obliquely — five active cards, no polished round, palace nourished sideways. When easy enrichments run out my purpose is not to stop but to provoke each entry into asking new questions of itself."
@@ -12,13 +12,13 @@ links:
     type: connects-to
     label: ceremony-registry
   - target: "[[Walk Ceremony]]"
-    type: contrasts-with
+    type: connects-to
     label: breadth-vs-thread
   - target: "[[Weave Ceremony]]"
-    type: contrasts-with
+    type: connects-to
     label: artifacts-not-links
   - target: "[[Project Stewardship System]]"
-    type: contrasts-with
+    type: connects-to
     label: oblique-vs-procedural
   - target: "[[Spore Check Ceremony]]"
     type: connects-to

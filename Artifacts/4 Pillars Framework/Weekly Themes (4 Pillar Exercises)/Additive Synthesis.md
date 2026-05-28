@@ -20,9 +20,11 @@ difficulty: deep
 philosopher: Joseph Fourier
 links:
   - target: "[[Weekly Themes Database]]"
-    type: member-of
+    type: connects-to
+    label: member-of
   - target: "[[FOUR PILLARS]]"
-    type: exemplifies
+    type: connects-to
+    label: exemplifies
 ---
 
 # Additive Synthesis

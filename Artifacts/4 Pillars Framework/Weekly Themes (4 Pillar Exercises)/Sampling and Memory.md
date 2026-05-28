@@ -20,9 +20,11 @@ difficulty: fundamental
 philosopher: Walter Benjamin
 links:
   - target: "[[Weekly Themes Database]]"
-    type: member-of
+    type: connects-to
+    label: member-of
   - target: "[[FOUR PILLARS]]"
-    type: exemplifies
+    type: connects-to
+    label: exemplifies
 ---
 
 # The Sample

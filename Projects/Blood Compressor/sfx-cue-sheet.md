@@ -7,7 +7,7 @@ tier: study
 status: draft
 links:
   - target: "[[Blood Compressor]]"
-    type: spawned-from
+    type: connects-to
     label: lesson-first-sfx-spec
   - target: "[[Shop/Stable Audio Open]]"
     type: enables

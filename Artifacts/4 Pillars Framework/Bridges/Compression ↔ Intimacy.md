@@ -18,9 +18,11 @@ links:
   - target: "[[Cross-Domain Resonances]]"
     type: connects-to
   - target: "[[FOUR PILLARS]]"
-    type: exemplifies
+    type: connects-to
+    label: exemplifies
   - target: "[[Rick Rubin]]"
-    type: informed-by
+    type: connects-to
+    label: informed-by
 ---
 
 # Compression ↔ Intimacy

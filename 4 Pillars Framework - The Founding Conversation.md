@@ -34,9 +34,9 @@ links:
   - target: "[[Cooperation Yields Agency]]"
     type: mirrors
     label: dialogic-emergence
-  - target: "[[4 Pillars Weekly Structure]]"
-    type: spawned
-    label: weekly-rhythm
+  - target: "[[Loudon Live]]"
+    type: connects-to
+    label: weekly-cadence-folded-here
 forward_vector: "I want to be the unmistakable origin marker for the palace's operating paradigm — read once, returned to rarely, but pointed at often. I want to remain the breakthrough, not the manual: the long-form expansion lives in Artifacts as the transcript; I am the node the link graph reaches when entries declare 'I emerged-from this.' My job is to make the moment of crystallization legible so future entries can locate themselves relative to it."
 ---
 
@@ -64,7 +64,7 @@ That's the breakthrough moment. Everything downstream is its formalization.
 | [[Quality Manifesto]] | The paradigm itself, stated as operating covenant: quality is furtherance of *our* goals, not theirs. |
 | [[Leverage Points Framework]] | The decision lens — Meadows' 12 leverage points adapted to creative practice, with paradigm (#2) as where to operate from. |
 | [[Palace AI Partnership Philosophy]] | The collaboration doctrine — using AI to *become* better, not just *do* more. |
-| [[4 Pillars Weekly Structure]] | The pedagogical cadence (referenced; entry pending). |
+| [[Loudon Live]] | The pedagogical cadence — folded in as Loudon Live's Stage 2 weekly structure. |
 | [[FOUR PILLARS]] (deepened) | The four pillars, articulated as a single integrated framework rather than four parallel concerns. |
 
 ## The Leverage-Point Analysis of Itself

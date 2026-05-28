@@ -7,7 +7,7 @@ pillars:
   - philosophy
   - practice
 born: 2026-03
-stage: mature
+stage: seed
 last_activated: 2026-03
 activation_count: 1
 confidence: working
@@ -20,9 +20,11 @@ difficulty: deep
 philosopher: Jean-Philippe Rameau
 links:
   - target: "[[Weekly Themes Database]]"
-    type: member-of
+    type: connects-to
+    label: member-of
   - target: "[[FOUR PILLARS]]"
-    type: exemplifies
+    type: connects-to
+    label: exemplifies
 ---
 
 # The Overtone Series

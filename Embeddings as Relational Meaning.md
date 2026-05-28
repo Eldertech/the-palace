@@ -12,7 +12,7 @@ links:
   - target: "[[Meaning and the Link]]"
     type: emerged-from
   - target: "[[SUBSTRATE]]"
-    type: instantiates
+    type: connects-to
     label: wiki-substrate
   - target: "[[Hyperdimensional Prism]]"
     type: connects-to

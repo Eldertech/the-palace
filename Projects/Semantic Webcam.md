@@ -1,6 +1,7 @@
 ---
 title: "Semantic Webcam"
 type: project
+status: active
 pillars: [creation, tools, philosophy, practice]
 born: 2026-05-27
 stage: growing

@@ -115,6 +115,13 @@ Items move off this list when they become entries, get completed, or get compost
 
 - [ ] **Consider a Claude Project for the palace** — The palace is now well past the ~25–40 entry threshold noted in [[SUBSTRATE]]. A dedicated Project would give the palace persistent context across all claude.ai sessions. May now be the right moment.
 
+- [ ] **Link-type vocabulary — schema-change decision data** ⭐ — Surfaced 2026-05-28 during the [[Palace Audit — 2026-05-28]]. All non-canonical frontmatter link *types* were normalized to `connects-to` + `label:` (the original word preserved), per Loudon's directive — but the usage counts are recorded here so a schema change can be **considered carefully, not reflexively**. The canonical set is 8 (`connects-to, mirrors, enables, deepens, spawned, emerged-from, contradicts, couples-with`). Non-canonical types found and normalized, by frequency:
+  - `exemplifies` **×50** — concentrated in Bridges + Weekly Themes → [[FOUR PILLARS]]. **Strong schema-change candidate.**
+  - `member-of` **×48** — People + Interview Subjects collection membership. **Strong schema-change candidate.**
+  - `informs` ×12 · `contrasts-with` ×5 · `applies-to` ×4 · `informed-by` ×3 · `spawned-from` ×3 (Blood Compressor bundle) · `instantiates` ×1 · `applies` ×1.
+  - `emerges-from` ×1 was a typo of canonical `emerged-from` (fixed, not normalized).
+  **Decision to make:** `exemplifies` and `member-of` are clearly load-bearing collection/membership relations (98 uses between them) that the 4 Pillars subtree evolved independently. Worth a dedicated Schema Ceremony to decide whether to ratify them as canonical types (vs. leaving them as labeled `connects-to`). Loudon's instruction: *really consider before changing the schema.*
+
 ---
 
 ## Questions Being Carried

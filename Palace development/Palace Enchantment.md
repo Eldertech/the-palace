@@ -1,6 +1,7 @@
 ---
 title: Palace Enchantment
 type: project
+status: active
 pillars:
   - philosophy
   - tools

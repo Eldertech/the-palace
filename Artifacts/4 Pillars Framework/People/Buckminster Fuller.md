@@ -1,6 +1,6 @@
 ---
 title: Buckminster Fuller
-type: source
+type: person
 pillars:
   - philosophy
   - practice
@@ -16,9 +16,11 @@ who_leads: shared
 domain: Systems Thinker
 links:
   - target: "[[Source Library]]"
-    type: member-of
+    type: connects-to
+    label: member-of
   - target: "[[FOUR PILLARS]]"
-    type: informs
+    type: connects-to
+    label: informs
 ---
 
 # Buckminster Fuller
@@ -79,38 +81,3 @@ Spaceship Earth = sustainable creative practice. You can't throw anything away (
 
 ### Practice Pillar
 Design science mindset: Always ask 'how can I do more with less?' Anticipate needs before they arise.
-
----
-
-## Teaching Integration
-
-**For weekly themes:**
-- Reference Buckminster Fuller's work when themes align with these concepts
-- Use quotes as prompts for reflection
-- Assign reading from key works during relevant months
-- Build exercises that apply concepts to music production
-
-**For student discovery:**
-- Encourage students to find connections between Buckminster Fuller's work and their practice
-- Document how concepts transfer across domains
-- Share examples of applying these ideas in production
-
-**For deeper study:**
-- Dedicate 3-month arc to Buckminster Fuller (following Source Library structure)
-- Read primary sources, not summaries
-- Create projects directly influenced by their philosophy
-- Journal throughout: What shifts in your practice?
-
----
-
-## Why This Source Matters
-
-Buckminster Fuller provides essential perspective on the 4 Pillars framework because their work demonstrates how Synergetics appears across all creative domains.
-
-Their approach teaches that the same patterns exist whether you're systems thinker, making music, building tools, or developing daily practice.
-
-This is cross-domain resonance in action.
-
----
-
-*Buckminster Fuller. Systems Thinker. Same patterns, different materials. That's what the 4 Pillars framework reveals.*

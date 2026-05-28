@@ -1,6 +1,7 @@
 ---
 title: "Blood Compressor"
 type: project
+status: active
 pillars: [creation, tools, philosophy]
 born: 2026-05
 last_activated: 2026-05

@@ -1,6 +1,6 @@
 ---
 title: Natalie Goldberg
-type: source
+type: person
 pillars:
   - philosophy
   - practice
@@ -16,9 +16,11 @@ who_leads: shared
 domain: Writer
 links:
   - target: "[[Source Library]]"
-    type: member-of
+    type: connects-to
+    label: member-of
   - target: "[[FOUR PILLARS]]"
-    type: informs
+    type: connects-to
+    label: informs
 ---
 
 # Natalie Goldberg
@@ -79,38 +81,3 @@ Practice as meditation. Monkey mind is normal - work with it. The point is showi
 
 ### Practice Pillar
 Daily 10-minute jams. Timer running, keep creating, no editing. Build fluency through volume.
-
----
-
-## Teaching Integration
-
-**For weekly themes:**
-- Reference Natalie Goldberg's work when themes align with these concepts
-- Use quotes as prompts for reflection
-- Assign reading from key works during relevant months
-- Build exercises that apply concepts to music production
-
-**For student discovery:**
-- Encourage students to find connections between Natalie Goldberg's work and their practice
-- Document how concepts transfer across domains
-- Share examples of applying these ideas in production
-
-**For deeper study:**
-- Dedicate 3-month arc to Natalie Goldberg (following Source Library structure)
-- Read primary sources, not summaries
-- Create projects directly influenced by their philosophy
-- Journal throughout: What shifts in your practice?
-
----
-
-## Why This Source Matters
-
-Natalie Goldberg provides essential perspective on the 4 Pillars framework because their work demonstrates how Writing practice appears across all creative domains.
-
-Their approach teaches that the same patterns exist whether you're writer, making music, building tools, or developing daily practice.
-
-This is cross-domain resonance in action.
-
----
-
-*Natalie Goldberg. Writer. Same patterns, different materials. That's what the 4 Pillars framework reveals.*

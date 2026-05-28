@@ -5,8 +5,8 @@ medium: image
 tool: comfyui
 tool_version: 0.3.x
 adopted: 2026-05-06
-last_tested:
-last_gotcha:
+last_tested: 2026-05-26
+last_gotcha: 2026-05-26
 license: GPL-3.0
 links:
   - { label: "wraps", target: "comfyui (external)" }

@@ -18,11 +18,14 @@ links:
   - target: "[[Cross-Domain Resonances]]"
     type: connects-to
   - target: "[[FOUR PILLARS]]"
-    type: exemplifies
+    type: connects-to
+    label: exemplifies
   - target: "[[Donella Meadows]]"
-    type: informed-by
+    type: connects-to
+    label: informed-by
   - target: "[[Brian Eno]]"
-    type: informed-by
+    type: connects-to
+    label: informed-by
 ---
 
 # Synthesis ↔ Emergence

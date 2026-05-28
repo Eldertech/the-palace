@@ -7,7 +7,7 @@ tier: study
 status: draft
 links:
   - target: "[[Blood Compressor]]"
-    type: spawned-from
+    type: connects-to
     label: lesson-first-visuals-spec
   - target: "[[Shop/p5.js]]"
     type: enables
