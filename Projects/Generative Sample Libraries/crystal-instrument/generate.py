@@ -3,7 +3,7 @@
 Crystal Instrument — Phase 3 build script for Generative Sample Libraries.
 
 This is the FIRST non-Kokoro source adapter. It proves the Interview pipeline
-works against a palace-synthesis source: Crystal Audio/crystal_synth.py.
+works against a palace-synthesis source: Projects/Generative Sample Libraries/crystal-audio/crystal_synth.py.
 
 What the adapter does
 ---------------------
@@ -56,7 +56,7 @@ SFZ_PATH = BUILD_DIR / "crystal_instrument.sfz"
 OFFSETS_PATH = BUILD_DIR / "offsets.json"
 LOG_PATH = BUILD_DIR / "build-log.md"
 
-CRYSTAL_SYNTH_PATH = PALACE_ROOT / "Crystal Audio" / "crystal_synth.py"
+CRYSTAL_SYNTH_PATH = PALACE_ROOT / "Projects" / "Generative Sample Libraries" / "crystal-audio" / "crystal_synth.py"
 
 SAMPLE_RATE = 44100
 NOTE_DURATION = 4.0   # seconds per rendered note
@@ -263,7 +263,7 @@ def main():
 def write_sfz(offsets):
     lines = [
         "// Crystal Instrument — Phase 3 of Generative Sample Libraries",
-        f"// First non-Kokoro source: {INSTRUMENT_NAME} from Crystal Audio/crystal_synth.py",
+        f"// First non-Kokoro source: {INSTRUMENT_NAME} from Projects/Generative Sample Libraries/crystal-audio/crystal_synth.py",
         "// 4 notes (C2,C3,C4,C5) x 2 velocity layers = 8 regions (AUDITION UNIT).",
         "//",
         "// Pitch: base_freq set per MIDI note; FREQ_ANCHOR='lowest_mode' anchors",
@@ -312,7 +312,7 @@ Built: {datetime.datetime.now().isoformat(timespec='seconds')}
 
 ## What this proves
 The Interview pipeline now runs against a NON-Kokoro source: palace synthesis
-({INSTRUMENT_NAME}) from `Crystal Audio/crystal_synth.py`. The adapter imports
+({INSTRUMENT_NAME}) from `Projects/Generative Sample Libraries/crystal-audio/crystal_synth.py`. The adapter imports
 `synthesize_strike()` unedited and drives `base_freq` per MIDI note. This
 unblocks promotion of the Interview skill out of draft.
 

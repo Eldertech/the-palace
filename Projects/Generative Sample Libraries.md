@@ -239,7 +239,7 @@ ConvertWithMoss (open source, Java, free) converts between: WAV folders, SFZ, So
 
 **What we build (one source per sub-phase, in priority order):**
 - *Local WAV folder*: read filenames or detect pitch with librosa, map onto keyboard, generate SFZ. The simplest external source after palace synthesis.
-- *Palace synthesis*: wire up the existing `Crystal Audio/crystal_synth.py` and any other palace synthesis modules, generalize the interview to ask about synthesis parameters.
+- *Palace synthesis*: wire up the existing `Projects/Generative Sample Libraries/crystal-audio/crystal_synth.py` and any other palace synthesis modules, generalize the interview to ask about synthesis parameters.
 - *AI audio sub-agents*: call generative audio models from inside the interview loop, with iterative critique-regenerate before committing to multisample.
 - *Web libraries*: download with explicit user permission, then process as local audio.
 
