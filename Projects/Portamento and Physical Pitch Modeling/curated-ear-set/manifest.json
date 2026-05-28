@@ -1,0 +1,391 @@
+{
+  "set": "curated-ear-set",
+  "project": "Portamento and Physical Pitch Modeling",
+  "generator": "render.py",
+  "examples": [
+    {
+      "idx": 1,
+      "slug": "01-overdamped",
+      "wav": "audio/01-overdamped.wav",
+      "spectrogram": "spectrograms/01-overdamped.png",
+      "regime": "overdamped",
+      "name": "trombone slide, slow and surrendering",
+      "physical_system": "trombone \u2014 heavy slide, long air column, brass damps overshoot",
+      "f0_hz": 220.0,
+      "f_target_hz": 329.63,
+      "zeta": 1.6,
+      "wn_rad_per_s": 10.0,
+      "harmonics": [
+        [
+          2.0,
+          0.25,
+          1.0
+        ],
+        [
+          3.0,
+          0.15,
+          1.0
+        ],
+        [
+          4.0,
+          0.08,
+          1.0
+        ]
+      ],
+      "teaching_note": "Smooth exponential approach \u2014 no overshoot, no ripple. Listen for the lack of arrival 'thump'."
+    },
+    {
+      "idx": 2,
+      "slug": "02-overdamped",
+      "wav": "audio/02-overdamped.wav",
+      "spectrogram": "spectrograms/02-overdamped.png",
+      "regime": "overdamped",
+      "name": "theremin glide, hand drifting through space",
+      "physical_system": "theremin \u2014 capacitive coupling, no mechanical inertia, glide rate set by hand motion",
+      "f0_hz": 440.0,
+      "f_target_hz": 660.0,
+      "zeta": 1.3,
+      "wn_rad_per_s": 7.5,
+      "harmonics": [
+        [
+          2.0,
+          0.12,
+          1.0
+        ]
+      ],
+      "teaching_note": "Heavy overdamping. The pitch sneaks up on the target. Theremins almost always sound this way."
+    },
+    {
+      "idx": 3,
+      "slug": "03-overdamped",
+      "wav": "audio/03-overdamped.wav",
+      "spectrogram": "spectrograms/03-overdamped.png",
+      "regime": "overdamped",
+      "name": "cello slow portamento between long notes",
+      "physical_system": "cello \u2014 bowed string, finger slides slowly with steady bow",
+      "f0_hz": 174.61,
+      "f_target_hz": 261.63,
+      "zeta": 1.4,
+      "wn_rad_per_s": 12.0,
+      "harmonics": [
+        [
+          2.0,
+          0.4,
+          1.0
+        ],
+        [
+          3.0,
+          0.22,
+          1.0
+        ],
+        [
+          4.0,
+          0.12,
+          1.0
+        ],
+        [
+          5.0,
+          0.06,
+          1.0
+        ]
+      ],
+      "teaching_note": "String harmonics ride the smooth glide. No overshoot \u2014 the bow stabilizes the trajectory."
+    },
+    {
+      "idx": 4,
+      "slug": "04-overdamped",
+      "wav": "audio/04-overdamped.wav",
+      "spectrogram": "spectrograms/04-overdamped.png",
+      "regime": "overdamped",
+      "name": "lap steel sustained slide",
+      "physical_system": "pedal/lap steel \u2014 heavy bar, slow controlled finger motion",
+      "f0_hz": 196.0,
+      "f_target_hz": 246.94,
+      "zeta": 2.0,
+      "wn_rad_per_s": 8.0,
+      "harmonics": [
+        [
+          2.0,
+          0.3,
+          1.0
+        ],
+        [
+          3.0,
+          0.18,
+          1.0
+        ],
+        [
+          4.0,
+          0.1,
+          1.0
+        ]
+      ],
+      "teaching_note": "Even heavier damping than the cello \u2014 clearly languid, surrender-like."
+    },
+    {
+      "idx": 5,
+      "slug": "05-critically-damped",
+      "wav": "audio/05-critically-damped.wav",
+      "spectrogram": "spectrograms/05-critically-damped.png",
+      "regime": "critically_damped",
+      "name": "purposeful synth glide",
+      "physical_system": "synthesizer \u2014 engineered glide circuit tuned for fastest no-overshoot arrival",
+      "f0_hz": 220.0,
+      "f_target_hz": 440.0,
+      "zeta": 1.0,
+      "wn_rad_per_s": 20.0,
+      "harmonics": [
+        [
+          2.0,
+          0.2,
+          1.0
+        ],
+        [
+          3.0,
+          0.1,
+          1.0
+        ]
+      ],
+      "teaching_note": "Arrives decisively and stops. No ringing, no lag. Classic Moog-style portamento."
+    },
+    {
+      "idx": 6,
+      "slug": "06-critically-damped",
+      "wav": "audio/06-critically-damped.wav",
+      "spectrogram": "spectrograms/06-critically-damped.png",
+      "regime": "critically_damped",
+      "name": "trained singer landing on the note",
+      "physical_system": "trained vocalist \u2014 disciplined laryngeal control, arrives without overshoot",
+      "f0_hz": 261.63,
+      "f_target_hz": 392.0,
+      "zeta": 1.0,
+      "wn_rad_per_s": 18.0,
+      "harmonics": [
+        [
+          2.0,
+          0.45,
+          1.0
+        ],
+        [
+          3.0,
+          0.28,
+          1.0
+        ],
+        [
+          4.0,
+          0.18,
+          1.0
+        ],
+        [
+          5.0,
+          0.1,
+          1.0
+        ],
+        [
+          6.0,
+          0.05,
+          1.0
+        ]
+      ],
+      "teaching_note": "A controlled vocal arrival \u2014 no perceptible overshoot. Compare to example #10 (untrained singer)."
+    },
+    {
+      "idx": 7,
+      "slug": "07-critically-damped",
+      "wav": "audio/07-critically-damped.wav",
+      "spectrogram": "spectrograms/07-critically-damped.png",
+      "regime": "critically_damped",
+      "name": "kalimba tine settling after pluck",
+      "physical_system": "kalimba \u2014 tine has high stiffness and clamped boundary, settles fast",
+      "f0_hz": 523.25,
+      "f_target_hz": 659.25,
+      "zeta": 1.0,
+      "wn_rad_per_s": 35.0,
+      "harmonics": [
+        [
+          2.0,
+          0.15,
+          1.0
+        ],
+        [
+          3.0,
+          0.07,
+          1.0
+        ]
+      ],
+      "teaching_note": "The settling time is very short \u2014 a quick decisive arrival, almost like a plucked attack."
+    },
+    {
+      "idx": 8,
+      "slug": "08-critically-damped",
+      "wav": "audio/08-critically-damped.wav",
+      "spectrogram": "spectrograms/08-critically-damped.png",
+      "regime": "critically_damped",
+      "name": "acoustic guitar string bend, controlled release",
+      "physical_system": "guitar \u2014 bend released with discipline, string tension settles fast",
+      "f0_hz": 330.0,
+      "f_target_hz": 247.0,
+      "zeta": 1.0,
+      "wn_rad_per_s": 22.0,
+      "harmonics": [
+        [
+          2.0,
+          0.3,
+          1.0
+        ],
+        [
+          3.0,
+          0.18,
+          1.0
+        ],
+        [
+          4.0,
+          0.1,
+          1.0
+        ]
+      ],
+      "teaching_note": "Downward critically-damped \u2014 same regime, different direction. Listen for the lack of ring-back."
+    },
+    {
+      "idx": 9,
+      "slug": "09-underdamped",
+      "wav": "audio/09-underdamped.wav",
+      "spectrogram": "spectrograms/09-underdamped.png",
+      "regime": "underdamped",
+      "name": "bell strike, retuned by a transient blow",
+      "physical_system": "bell \u2014 light strike that detunes; resonance rings around target",
+      "f0_hz": 587.33,
+      "f_target_hz": 440.0,
+      "zeta": 0.18,
+      "wn_rad_per_s": 14.0,
+      "harmonics": [
+        [
+          2.43,
+          0.5,
+          0.95
+        ],
+        [
+          3.86,
+          0.3,
+          0.92
+        ],
+        [
+          5.5,
+          0.18,
+          0.88
+        ]
+      ],
+      "teaching_note": "Underdamped + inharmonic. The pitch rings BELOW target and bounces back \u2014 hear the wobble."
+    },
+    {
+      "idx": 10,
+      "slug": "10-underdamped",
+      "wav": "audio/10-underdamped.wav",
+      "spectrogram": "spectrograms/10-underdamped.png",
+      "regime": "underdamped",
+      "name": "untrained singer overshooting from below",
+      "physical_system": "untrained vocalist \u2014 laryngeal muscle ramp overshoots; settles slightly flat then sharp",
+      "f0_hz": 220.0,
+      "f_target_hz": 329.63,
+      "zeta": 0.3,
+      "wn_rad_per_s": 12.0,
+      "harmonics": [
+        [
+          2.0,
+          0.45,
+          1.0
+        ],
+        [
+          3.0,
+          0.28,
+          1.0
+        ],
+        [
+          4.0,
+          0.18,
+          1.0
+        ],
+        [
+          5.0,
+          0.1,
+          1.0
+        ]
+      ],
+      "teaching_note": "Audible overshoot above the target, then settle. This is the *characteristic* aliveness of an untrained voice."
+    },
+    {
+      "idx": 11,
+      "slug": "11-underdamped",
+      "wav": "audio/11-underdamped.wav",
+      "spectrogram": "spectrograms/11-underdamped.png",
+      "regime": "underdamped",
+      "name": "electric guitar fast bend with finger vibrato",
+      "physical_system": "guitar \u2014 fast bend, string tension overshoots, finger relaxes back",
+      "f0_hz": 440.0,
+      "f_target_hz": 523.25,
+      "zeta": 0.25,
+      "wn_rad_per_s": 16.0,
+      "harmonics": [
+        [
+          2.0,
+          0.35,
+          1.0
+        ],
+        [
+          3.0,
+          0.22,
+          1.0
+        ],
+        [
+          4.0,
+          0.14,
+          1.0
+        ],
+        [
+          5.0,
+          0.08,
+          1.0
+        ]
+      ],
+      "teaching_note": "Listen for the sharp arrival then return \u2014 this is the 'cry' character of an expressive bend."
+    },
+    {
+      "idx": 12,
+      "slug": "12-underdamped",
+      "wav": "audio/12-underdamped.wav",
+      "spectrogram": "spectrograms/12-underdamped.png",
+      "regime": "underdamped",
+      "name": "prepared piano string \u2014 complex inharmonic settling",
+      "physical_system": "prepared piano \u2014 object on string changes mode geometry, each mode rings at its own rate",
+      "f0_hz": 146.83,
+      "f_target_hz": 220.0,
+      "zeta": 0.4,
+      "wn_rad_per_s": 10.0,
+      "harmonics": [
+        [
+          2.1,
+          0.5,
+          0.85
+        ],
+        [
+          3.4,
+          0.3,
+          0.72
+        ],
+        [
+          4.8,
+          0.2,
+          0.6
+        ],
+        [
+          6.3,
+          0.12,
+          0.5
+        ]
+      ],
+      "teaching_note": "Multi-modal: each harmonic settles at its own zeta/wn. The TIMBRE changes during the glide."
+    }
+  ],
+  "sample_rate_hz": 44100,
+  "clip_duration_s": 3.0
+}

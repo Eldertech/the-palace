@@ -1,21 +1,21 @@
 {
-  "iteration": 5,
-  "last_active": "2026-05-27T18:00:00-04:00",
-  "last_read_cursor": "gwl-steward-012",
+  "iteration": 6,
+  "last_active": "2026-05-27T20:30:00-04:00",
+  "last_read_cursor": "gwl-steward-015",
   "pending_requests": [
     {
-      "request_id": "gwl-steward-012",
+      "request_id": "gwl-steward-015",
       "resource": "directional_decision",
-      "decision_topic": "Phase 2 Multi-Source — which palace synthesis becomes the next wavetable after Crystal Bravais?",
+      "decision_topic": "Phase 2 Shepard-stack wavetable — which parameter is the primary sweep that wavetable-position drives?",
       "blocking": false,
-      "posted_at": "2026-05-27T16:32:00-04:00",
+      "posted_at": "2026-05-27T20:00:00-04:00",
       "options": [
-        "SHEPARD-STACK",
-        "CRYSTAL-DIRECT-PARTIALS",
-        "FLOQUET-MODES",
-        "YOU-NAME-A-SOURCE"
+        "CENTROID-FREQ",
+        "CENTROID-WIDTH",
+        "OCTAVE-COMB",
+        "YOU-DEFINE"
       ],
-      "steward_recommendation": "SHEPARD-STACK — the Stage-1 spec is settled, the cross-steward coordination is the cheapest live test of the multi-source pipeline, and the resulting wavetable (Shepard cloud with sweeping spectral centroid) is musically distinctive in a way Crystal Bravais is not."
+      "steward_recommendation": "CENTROID-FREQ — it matches the grant text, coordinates cleanly with the Shepard steward's Stage-1 drone (which I can use as the static centroid building-block), and produces a wavetable with a character Crystal Bravais lacks. If you want a wavetable that feels more like a familiar filter control, pick CENTROID-WIDTH instead."
     }
   ],
   "resolved_requests": [
@@ -66,6 +66,23 @@
       "resolved_at": "2026-05-27T19:12:21.217Z",
       "resolved_by": "resp-mpofy31d-i4m45y",
       "outcome": "GRANTED — option_id=POINT-AT-WAV; notes: \"This is a folder of Serum wavetables \"/Library/Audio/Presets/Xfer Records/Serum 2 Presets/Tables/Analog\"\""
+    },
+    {
+      "request_id": "gwl-steward-012",
+      "resource": "directional_decision",
+      "decision_topic": "Phase 2 Multi-Source — which palace synthesis becomes the next wavetable after Crystal Bravais?",
+      "blocking": false,
+      "posted_at": "2026-05-27T16:32:00-04:00",
+      "options": [
+        "SHEPARD-STACK",
+        "CRYSTAL-DIRECT-PARTIALS",
+        "FLOQUET-MODES",
+        "YOU-NAME-A-SOURCE"
+      ],
+      "steward_recommendation": "SHEPARD-STACK — the Stage-1 spec is settled, the cross-steward coordination is the cheapest live test of the multi-source pipeline, and the resulting wavetable (Shepard cloud with sweeping spectral centroid) is musically distinctive in a way Crystal Bravais is not.",
+      "resolved_at": "2026-05-27T23:38:05.170Z",
+      "resolved_by": "resp-mpopftgy-ueegpc",
+      "outcome": "GRANTED — option_id=SHEPARD-STACK"
     }
   ],
   "stewardship": {
@@ -77,7 +94,6 @@
     "recommended_stage_promotion": "sprout -> growing: the project is now building code + rendering artifacts; the page frontmatter stage should be promoted (proposal for Loudon, not auto-applied)."
   },
   "health": {
-    "context_pct": 0.09572,
     "avg_output_tokens_last_5": null,
     "duplicate_flags": 0,
     "posting_discipline_violations": 0,
@@ -91,6 +107,7 @@
   },
   "_pilot_metadata": {
     "cycle_4_notes": "Cycle 4 (batch run, position 2 of 3) consumed Loudon's grant of gwl-steward-006 (resp-mpo19czp-s9zd3v, posted before the options-shape contract fix so no option_id — interpreted as 'accept' per the steward's prior recommendation). Did an honest in-palace search for a reference Serum WAV (the gate from cycle 3's closing baton). Result: NONE in-palace — the 2D Torus bundle has wavetable-shaped WAVs but no clm RIFF chunk; Crystal Audio holds single-cycle / dispersion demos; the Floquet bundle has a research-artifact WAV not a Serum export. Surfaced this as a non-blocking TRICKSTER ask gwl-steward-009 with 4 options (POINT-AT-WAV / SURGE-XT-FIRST / PHASE-2-FIRST / YOU-DECIDE) recommending POINT-AT-WAV if 5 min handy else SURGE-XT-FIRST. Posted gwl-steward-007 (SPINNING UP) + gwl-steward-008 (catch-up + in-palace search report). Conventions clean: to: '*' and {subject, content} envelope used; canonical {id, label} options. Light dispatch, 9 turns, 95s.",
-    "cycle_5_notes": "Cycle 5 (batch run, 15-steward parallel batch position). Continuing cycle from prior state. Stage growing. Dispatched in parallel with 14 other stewards. See history.jsonl for the AGENT_REASONING and message-emission events. The every-cycle-ends-with-a-TRICKSTER-ask rule was applied; messages went through the orchestrator post-processing pipeline (parsed from JSON code fences in the subagent transcript, orchestrator-built health block injected, strict §2.2 validated, appended via palace-orch append). pending_requests is reconciled across the whole board."
+    "cycle_5_notes": "Cycle 5 (batch run, 15-steward parallel batch position). Continuing cycle from prior state. Stage growing. Dispatched in parallel with 14 other stewards. See history.jsonl for the AGENT_REASONING and message-emission events. The every-cycle-ends-with-a-TRICKSTER-ask rule was applied; messages went through the orchestrator post-processing pipeline (parsed from JSON code fences in the subagent transcript, orchestrator-built health block injected, strict §2.2 validated, appended via palace-orch append). pending_requests is reconciled across the whole board.",
+    "cycle_6_notes": "Cycle 6 (15-steward parallel batch run, build cycle). Grant-driven cycle following Loudon's batch of 17 responses. See history.jsonl for SPAWN + AGENT_REASONING + per-message events. Messages went through the orchestrator post-processing pipeline (parse → inject Path-2 health stub → strict §2.2 validate → palace-orch append). pending_requests reconciled across the whole board."
   }
 }

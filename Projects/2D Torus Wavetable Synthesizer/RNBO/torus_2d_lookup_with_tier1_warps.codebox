@@ -1,0 +1,187 @@
+// =====================================================================
+// torus_2d_lookup_with_tier1_warps.codebox
+//
+// 2D torus wavetable scanner WITH Tier-1 warps folded in:
+//   1. Per-axis phase bend (catalog #1)
+//   6. Variable-rate phase shear (catalog #6)
+//  12. Self-displacement (catalog #12)
+//
+// This is the SECOND prototype, NOT the first. Use it only after the
+// bare prototype in torus_2d_lookup.codebox has passed the five-step
+// A/B verification against [2d.wave~] (see "Verification Prep Checklist").
+//
+// At default parameters (all warp amounts at zero) this codebox produces
+// IDENTICAL output to the bare prototype — that is a unit test.
+// Confirm difference monitor is silent against the bare prototype before
+// dialing any warp away from zero.
+//
+// WARP CHAIN: bend → shear → displace
+// All three are phase-space warps applied before the bilinear lookup.
+// Order matters (they do not commute); this order matches catalog
+// tier ordering and front-panel-to-deep-architecture progression.
+//
+// PATCHER WIRING — identical to bare prototype, with six extra params:
+//   bendX, bendY, shearAmount, shearShape, displaceAmount, displaceMode
+// =====================================================================
+
+// --- Surface dimensions (must match the WAV) ---
+const SURFACE_W = 1024;
+const SURFACE_H = 1024;
+const SURFACE_LEN = 1048576;
+
+// --- Core parameters ---
+@param({ min: 20.0,   max: 2000.0 }) baseHz = 220.0;
+@param({ min: 0.1,    max: 4.0    }) ratio  = 1.500625;
+@param({ min: 0.0,    max: 1.0    }) gain   = 0.5;
+
+// --- Warp parameters (all zero = bare prototype) ---
+@param({ min: -1.0,   max: 1.0    }) bendX = 0.0;
+@param({ min: -1.0,   max: 1.0    }) bendY = 0.0;
+@param({ min: -1.0,   max: 1.0    }) shearAmount = 0.0;
+@param({ min: 0,      max: 3      }) shearShape  = 0;   // 0=sine 1=tri 2=ramp 3=sq
+@param({ min: 0.0,    max: 0.1    }) displaceAmount = 0.0;
+@param({ min: 0,      max: 1      }) displaceMode   = 0; // 0=grad 1=rot-grad
+
+// --- Phase accumulators ---
+@state phi1 = 0.0;
+@state phi2 = 0.0;
+
+// --- Bilinear lookup helper (unchanged from bare prototype) ---
+function lookup2D(pos1, pos2) {
+    let p1 = pos1 - floor(pos1);
+    let p2 = pos2 - floor(pos2);
+
+    let xf = p1 * SURFACE_W;
+    let yf = p2 * SURFACE_H;
+
+    let x0 = floor(xf);
+    let y0 = floor(yf);
+    let xfrac = xf - x0;
+    let yfrac = yf - y0;
+
+    let x1 = x0 + 1; if (x1 >= SURFACE_W) x1 = 0;
+    let y1 = y0 + 1; if (y1 >= SURFACE_H) y1 = 0;
+
+    let idx00 = y0 * SURFACE_W + x0;
+    let idx10 = y0 * SURFACE_W + x1;
+    let idx01 = y1 * SURFACE_W + x0;
+    let idx11 = y1 * SURFACE_W + x1;
+
+    let s00 = peek("tablebuf", idx00, 0);
+    let s10 = peek("tablebuf", idx10, 0);
+    let s01 = peek("tablebuf", idx01, 0);
+    let s11 = peek("tablebuf", idx11, 0);
+
+    let row0 = s00 + xfrac * (s10 - s00);
+    let row1 = s01 + xfrac * (s11 - s01);
+    let s    = row0 + yfrac * (row1 - row0);
+
+    return s;
+}
+
+// --- Warp 1: per-axis phase bend ---
+// tanh-shaped knee; b ∈ [-1, 1]; 0 = identity.
+function bend(phi, b) {
+    if (b == 0.0) return phi;
+    let k = 4.0 * b;
+    let u = 2.0 * phi - 1.0;
+    let v = tanh(k * u) / tanh(k);
+    return 0.5 * (v + 1.0);
+}
+
+// --- Warp 6: variable-rate phase shear ---
+function shearSchedule(phi, shape) {
+    let twopi = 6.283185307179586;
+    if (shape == 0) {
+        return sin(twopi * phi);
+    } else if (shape == 1) {
+        let p = phi - floor(phi);
+        return 4.0 * abs(p - 0.5) - 1.0;
+    } else if (shape == 2) {
+        let p = phi - floor(phi);
+        return 2.0 * p - 1.0;
+    } else {
+        let p = phi - floor(phi);
+        return p < 0.5 ? 1.0 : -1.0;
+    }
+}
+
+function variableShear(p1, p2, amount, shape) {
+    if (amount == 0.0) return p2;
+    let s = shearSchedule(p1, shape);
+    let p2new = p2 + amount * s * p1;
+    return p2new - floor(p2new);
+}
+
+// --- Warp 12: self-displacement ---
+// Gradient via centered finite differences.
+function surfaceGradient(p1, p2) {
+    let step = 1.0 / 1024.0;
+    let p1m = p1 - step; if (p1m < 0.0) p1m = p1m + 1.0;
+    let p1p = p1 + step; if (p1p >= 1.0) p1p = p1p - 1.0;
+    let p2m = p2 - step; if (p2m < 0.0) p2m = p2m + 1.0;
+    let p2p = p2 + step; if (p2p >= 1.0) p2p = p2p - 1.0;
+    let gx = (lookup2D(p1p, p2) - lookup2D(p1m, p2)) * 512.0;
+    let gy = (lookup2D(p1, p2p) - lookup2D(p1, p2m)) * 512.0;
+    return [gx, gy];
+}
+
+function selfDisplace(p1, p2, amount, mode) {
+    if (amount == 0.0) return [p1, p2];
+    let g = surfaceGradient(p1, p2);
+    let d1; let d2;
+    if (mode == 0) {
+        d1 = g[0]; d2 = g[1];
+    } else {
+        d1 =  g[1]; d2 = -g[0];
+    }
+    let p1new = p1 + amount * d1;
+    let p2new = p2 + amount * d2;
+    p1new = p1new - floor(p1new);
+    p2new = p2new - floor(p2new);
+    return [p1new, p2new];
+}
+
+// --- Per-sample tick ---
+let f1 = baseHz;
+let f2 = baseHz * ratio;
+phi1 = phi1 + f1 / samplerate;
+phi2 = phi2 + f2 / samplerate;
+if (phi1 >= 1.0) phi1 = phi1 - floor(phi1);
+if (phi2 >= 1.0) phi2 = phi2 - floor(phi2);
+
+// Warp chain.
+let p1_bent    = bend(phi1, bendX);
+let p2_bent    = bend(phi2, bendY);
+let p2_sheared = variableShear(p1_bent, p2_bent, shearAmount, shearShape);
+let displaced  = selfDisplace(p1_bent, p2_sheared, displaceAmount, displaceMode);
+
+let y = lookup2D(displaced[0], displaced[1]);
+out1 = y * gain;
+
+// =====================================================================
+// UNIT TEST BEFORE AUDITIONING ANY WARP:
+//
+//   bendX = 0, bendY = 0, shearAmount = 0, displaceAmount = 0
+//
+// In this state, this codebox MUST produce sample-identical output to
+// the bare torus_2d_lookup.codebox. Wire both in parallel against the
+// same buffer/params, subtract, meter — the difference should sit at
+// numerical-noise floor.
+//
+// If non-zero: one of the warp helpers has a sign error or an
+// early-return condition is wrong. Bisect by turning on one warp at a
+// time and verifying each individually.
+//
+// AUDITION ORDER (after the unit test passes):
+//   1. Sweep bendX 0 → 1 at baseHz=220, ratio=1.5. Closed orbit stays
+//      closed; timbre brightens.
+//   2. Sweep shearAmount 0 → 0.5 at the same setting. Closed orbit
+//      opens into sidebands.
+//   3. Sweep displaceAmount 0 → 0.05 at the same setting. Halos
+//      around each partial.
+//   4. Switch to ratio = 1.500625 and repeat — Kronecker shimmer
+//      thickens with each warp.
+//   5. Swap the surface (Membrane, Theta) and repeat — self-displace
+//      should produce qualitatively different sound per surface.
+// =====================================================================

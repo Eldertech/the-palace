@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portamento Ear Training — Curated Set</title>
+<style>
+    body {
+        margin: 0;
+        padding: 20px;
+        font-family: 'Courier New', monospace;
+        background: #0a0a0a;
+        color: #00ff00;
+        min-height: 100vh;
+    }
+    h1 {
+        margin: 0 0 8px 0;
+        font-size: 26px;
+        text-align: center;
+        color: #00ff00;
+        text-shadow: 0 0 10px #00ff00;
+    }
+    .subtitle {
+        text-align: center;
+        color: #00aa00;
+        font-size: 13px;
+        margin-bottom: 24px;
+    }
+    .container {
+        display: grid;
+        grid-template-columns: 360px 1fr;
+        gap: 20px;
+        max-width: 1280px;
+        margin: 0 auto;
+    }
+    .panel {
+        background: #1a1a1a;
+        border: 2px solid #00ff00;
+        border-radius: 8px;
+        padding: 20px;
+    }
+    .panel h2 {
+        margin: 0 0 14px 0;
+        font-size: 16px;
+        border-bottom: 1px solid #00ff00;
+        padding-bottom: 6px;
+    }
+    .progress {
+        font-size: 14px;
+        margin-bottom: 12px;
+        color: #00aa00;
+    }
+    .progress-bar {
+        height: 8px;
+        background: #0a0a0a;
+        border: 1px solid #00ff00;
+        border-radius: 4px;
+        overflow: hidden;
+        margin-bottom: 16px;
+    }
+    .progress-fill {
+        height: 100%;
+        background: #00ff00;
+        width: 0%;
+        transition: width 0.3s;
+    }
+    button {
+        background: #1a1a1a;
+        color: #00ff00;
+        border: 2px solid #00ff00;
+        padding: 12px 16px;
+        cursor: pointer;
+        font-family: 'Courier New', monospace;
+        font-size: 14px;
+        font-weight: bold;
+        border-radius: 4px;
+        transition: all 0.1s;
+    }
+    button:hover:not(:disabled) {
+        background: #00ff00;
+        color: #0a0a0a;
+        box-shadow: 0 0 12px #00ff00;
+    }
+    button:disabled {
+        opacity: 0.4;
+        cursor: not-allowed;
+    }
+    .play-row {
+        display: flex;
+        gap: 10px;
+        margin-bottom: 16px;
+    }
+    .play-row button { flex: 1; }
+    .label {
+        font-size: 11px;
+        color: #00aa00;
+        margin-bottom: 6px;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+    }
+    .regime-buttons {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 8px;
+        margin-bottom: 18px;
+    }
+    .regime-buttons button {
+        text-align: left;
+    }
+    .regime-buttons button.selected {
+        background: #002a00;
+        box-shadow: inset 0 0 12px #00ff00;
+    }
+    select, textarea {
+        width: 100%;
+        background: #0a0a0a;
+        color: #00ff00;
+        border: 1px solid #00ff00;
+        border-radius: 4px;
+        padding: 10px;
+        font-family: 'Courier New', monospace;
+        font-size: 13px;
+        box-sizing: border-box;
+    }
+    textarea { resize: vertical; min-height: 60px; }
+    .submit-row {
+        margin-top: 16px;
+        display: flex;
+        gap: 10px;
+    }
+    .submit-row button { flex: 1; padding: 14px; }
+    #submitBtn {
+        background: #003300;
+        border-color: #00ff88;
+        color: #00ff88;
+    }
+    #submitBtn:hover:not(:disabled) {
+        background: #00ff88;
+        color: #0a0a0a;
+        box-shadow: 0 0 16px #00ff88;
+    }
+    .feedback {
+        margin-top: 16px;
+        padding: 14px;
+        border-radius: 4px;
+        font-size: 13px;
+        line-height: 1.5;
+        display: none;
+    }
+    .feedback.correct { background: #002a00; border: 1px solid #00ff00; color: #aaffaa; }
+    .feedback.wrong   { background: #2a0000; border: 1px solid #ff4444; color: #ffaaaa; }
+    .feedback strong { color: #fff; }
+    .spec-wrap {
+        background: #0a0a0a;
+        border: 2px solid #00ff00;
+        border-radius: 6px;
+        padding: 8px;
+        text-align: center;
+        min-height: 380px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        overflow: hidden;
+    }
+    .spec-wrap img {
+        max-width: 100%;
+        max-height: 460px;
+        display: block;
+        filter: blur(28px) saturate(1.2);
+        transition: filter 0.4s ease;
+    }
+    .spec-wrap.revealed img { filter: none; }
+    .spec-overlay {
+        position: absolute;
+        background: rgba(10,10,10,0.85);
+        color: #00aa00;
+        font-size: 12px;
+        padding: 10px 14px;
+        border: 1px dashed #00aa00;
+        border-radius: 4px;
+        pointer-events: none;
+    }
+    .spec-wrap.revealed .spec-overlay { display: none; }
+    .stats {
+        margin-top: 18px;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 10px;
+    }
+    .stat {
+        background: #0a0a0a;
+        border: 1px solid #00aa00;
+        border-radius: 4px;
+        padding: 10px;
+        text-align: center;
+    }
+    .stat-label {
+        font-size: 10px;
+        color: #00aa00;
+        margin-bottom: 4px;
+        text-transform: uppercase;
+    }
+    .stat-value {
+        font-size: 22px;
+        font-weight: bold;
+        color: #00ff00;
+    }
+    .summary {
+        margin-top: 20px;
+        font-size: 13px;
+        line-height: 1.6;
+        color: #00cc00;
+    }
+    .summary table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 10px;
+        font-size: 12px;
+    }
+    .summary th, .summary td {
+        border: 1px solid #006600;
+        padding: 6px 8px;
+        text-align: left;
+    }
+    .summary th { background: #002a00; color: #aaffaa; }
+    .summary td.hit  { color: #aaffaa; }
+    .summary td.miss { color: #ffaaaa; }
+    .footnote {
+        font-size: 11px;
+        color: #006600;
+        margin-top: 24px;
+        text-align: center;
+        line-height: 1.5;
+    }
+    .footnote a { color: #00aa00; }
+</style>
+</head>
+<body>
+
+<h1>PORTAMENTO EAR TRAINING — CURATED SET</h1>
+<div class="subtitle">12 examples · 3 damping regimes · physical-system identification · randomized order</div>
+
+<div class="container">
+
+    <div class="panel" id="quizPanel">
+        <h2>Listening Booth</h2>
+        <div class="progress" id="progress">example 1 of 12</div>
+        <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+
+        <div class="play-row">
+            <button id="playBtn">PLAY</button>
+            <button id="replayBtn">REPLAY</button>
+        </div>
+
+        <div class="label">1 · damping regime</div>
+        <div class="regime-buttons">
+            <button class="regime-btn" data-r="overdamped">OVERDAMPED — smooth, surrender-like, no ringing</button>
+            <button class="regime-btn" data-r="critically_damped">CRITICALLY DAMPED — decisive arrival, no overshoot</button>
+            <button class="regime-btn" data-r="underdamped">UNDERDAMPED — overshoots, rings back, alive</button>
+        </div>
+
+        <div class="label">2 · physical system (best guess)</div>
+        <select id="physicalSel">
+            <option value="">-- choose one --</option>
+            <option>trombone — heavy slide, long air column, brass damps overshoot</option>
+            <option>theremin — capacitive coupling, no mechanical inertia, glide rate set by hand motion</option>
+            <option>cello — bowed string, finger slides slowly with steady bow</option>
+            <option>pedal/lap steel — heavy bar, slow controlled finger motion</option>
+            <option>synthesizer — engineered glide circuit tuned for fastest no-overshoot arrival</option>
+            <option>trained vocalist — disciplined laryngeal control, arrives without overshoot</option>
+            <option>kalimba — tine has high stiffness and clamped boundary, settles fast</option>
+            <option>guitar — bend released with discipline, string tension settles fast</option>
+            <option>bell — light strike that detunes; resonance rings around target</option>
+            <option>untrained vocalist — laryngeal muscle ramp overshoots; settles slightly flat then sharp</option>
+            <option>guitar — fast bend, string tension overshoots, finger relaxes back</option>
+            <option>prepared piano — object on string changes mode geometry, each mode rings at its own rate</option>
+        </select>
+
+        <div class="submit-row">
+            <button id="submitBtn" disabled>SUBMIT &amp; REVEAL</button>
+            <button id="nextBtn" disabled>NEXT &raquo;</button>
+        </div>
+
+        <div class="feedback" id="feedback"></div>
+
+        <div class="stats">
+            <div class="stat">
+                <div class="stat-label">heard</div>
+                <div class="stat-value" id="statHeard">0</div>
+            </div>
+            <div class="stat">
+                <div class="stat-label">regime ✓</div>
+                <div class="stat-value" id="statRegime">0</div>
+            </div>
+            <div class="stat">
+                <div class="stat-label">system ✓</div>
+                <div class="stat-value" id="statSystem">0</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="panel">
+        <h2>Wavelet-style Spectrogram</h2>
+        <div class="spec-wrap" id="specWrap">
+            <img id="specImg" src="" alt="spectrogram">
+            <div class="spec-overlay" id="specOverlay">
+                hidden until you submit · listen first, then look
+            </div>
+        </div>
+        <div class="summary" id="summary"></div>
+    </div>
+
+</div>
+
+<div class="footnote">
+    Set generated by render.py · second-order damped-oscillator pitch model · STFT spectrograms (close cousin to the wavelet view).<br>
+    Built around tool-10 (Damping Regime Ear Training) from the Portamento Physical Modeling artifact set.
+</div>
+
+<script>
+const REGIME_LABELS = {
+    overdamped: "OVERDAMPED",
+    critically_damped: "CRITICALLY DAMPED",
+    underdamped: "UNDERDAMPED",
+};
+
+let examples = [];        // shuffled deck
+let cursor = 0;
+let pickedRegime = null;
+let stats = { heard: 0, regime: 0, system: 0 };
+let history = [];         // per-example outcome
+let audio = new Audio();
+
+function shuffle(a) {
+    for (let i = a.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [a[i], a[j]] = [a[j], a[i]];
+    }
+    return a;
+}
+
+async function init() {
+    const res = await fetch("manifest.json");
+    const data = await res.json();
+    examples = shuffle(data.examples.slice());
+    loadCurrent();
+    document.getElementById("playBtn").onclick = play;
+    document.getElementById("replayBtn").onclick = play;
+    document.getElementById("submitBtn").onclick = submit;
+    document.getElementById("nextBtn").onclick = next;
+    document.querySelectorAll(".regime-btn").forEach(btn => {
+        btn.onclick = () => {
+            pickedRegime = btn.dataset.r;
+            document.querySelectorAll(".regime-btn").forEach(b => b.classList.remove("selected"));
+            btn.classList.add("selected");
+            maybeEnableSubmit();
+        };
+    });
+    document.getElementById("physicalSel").onchange = maybeEnableSubmit;
+}
+
+function loadCurrent() {
+    if (cursor >= examples.length) { showFinalSummary(); return; }
+    const ex = examples[cursor];
+    document.getElementById("progress").textContent = `example ${cursor + 1} of ${examples.length}`;
+    document.getElementById("progressFill").style.width = `${(cursor / examples.length) * 100}%`;
+    audio.src = ex.wav;
+    document.getElementById("specImg").src = ex.spectrogram;
+    document.getElementById("specWrap").classList.remove("revealed");
+    document.getElementById("feedback").style.display = "none";
+    document.getElementById("submitBtn").disabled = true;
+    document.getElementById("nextBtn").disabled = true;
+    pickedRegime = null;
+    document.querySelectorAll(".regime-btn").forEach(b => b.classList.remove("selected"));
+    document.getElementById("physicalSel").value = "";
+}
+
+function play() {
+    audio.currentTime = 0;
+    audio.play().catch(() => {});
+    stats.heard++;
+    document.getElementById("statHeard").textContent = stats.heard;
+}
+
+function maybeEnableSubmit() {
+    const sysChosen = document.getElementById("physicalSel").value !== "";
+    document.getElementById("submitBtn").disabled = !(pickedRegime && sysChosen);
+}
+
+function submit() {
+    const ex = examples[cursor];
+    const sysChoice = document.getElementById("physicalSel").value;
+    const regimeOk = pickedRegime === ex.regime;
+    const sysOk = sysChoice === ex.physical_system;
+    if (regimeOk) { stats.regime++; document.getElementById("statRegime").textContent = stats.regime; }
+    if (sysOk)    { stats.system++; document.getElementById("statSystem").textContent = stats.system; }
+
+    history.push({
+        idx: ex.idx, name: ex.name, regime_actual: ex.regime,
+        regime_picked: pickedRegime, regime_ok: regimeOk,
+        system_actual: ex.physical_system, system_picked: sysChoice, system_ok: sysOk,
+    });
+
+    const fb = document.getElementById("feedback");
+    fb.className = "feedback " + (regimeOk && sysOk ? "correct" : (regimeOk ? "correct" : "wrong"));
+    fb.innerHTML = `
+        <div><strong>regime:</strong> ${regimeOk ? "✓" : "✗"} actual = ${REGIME_LABELS[ex.regime]}</div>
+        <div><strong>system:</strong> ${sysOk ? "✓" : "✗"} actual = ${escapeHtml(ex.physical_system)}</div>
+        <div style="margin-top:8px"><em>${escapeHtml(ex.teaching_note)}</em></div>
+        <div style="margin-top:6px;color:#00aa00">f₀ = ${ex.f0_hz.toFixed(2)} Hz → f_target = ${ex.f_target_hz.toFixed(2)} Hz · ζ = ${ex.zeta.toFixed(2)} · ωₙ = ${ex.wn_rad_per_s.toFixed(1)} rad/s</div>
+    `;
+    fb.style.display = "block";
+
+    document.getElementById("specWrap").classList.add("revealed");
+    document.getElementById("submitBtn").disabled = true;
+    document.getElementById("nextBtn").disabled = false;
+}
+
+function next() {
+    cursor++;
+    loadCurrent();
+}
+
+function showFinalSummary() {
+    document.getElementById("progress").textContent = "complete · 12 of 12";
+    document.getElementById("progressFill").style.width = "100%";
+    document.getElementById("playBtn").disabled = true;
+    document.getElementById("replayBtn").disabled = true;
+    document.getElementById("submitBtn").disabled = true;
+    document.getElementById("nextBtn").disabled = true;
+    document.querySelectorAll(".regime-btn").forEach(b => b.disabled = true);
+    document.getElementById("physicalSel").disabled = true;
+    document.getElementById("feedback").style.display = "none";
+
+    let rows = history.map(h => `
+        <tr>
+          <td>#${h.idx}</td>
+          <td>${escapeHtml(h.name)}</td>
+          <td class="${h.regime_ok ? 'hit' : 'miss'}">${h.regime_ok ? '✓' : '✗'} ${REGIME_LABELS[h.regime_actual]}</td>
+          <td class="${h.system_ok ? 'hit' : 'miss'}">${h.system_ok ? '✓' : '✗'}</td>
+        </tr>`).join('');
+    document.getElementById("summary").innerHTML = `
+        <p><strong>You're done.</strong> Regime: ${stats.regime}/12. System: ${stats.system}/12. Plays used: ${stats.heard}.</p>
+        <p>Look at the spectrograms again — now that you know the answers, the underdamped ridge ripple and the multi-modal timbral drift should be visible.</p>
+        <table>
+            <thead><tr><th>#</th><th>example</th><th>regime</th><th>system</th></tr></thead>
+            <tbody>${rows}</tbody>
+        </table>
+    `;
+}
+
+function escapeHtml(s) {
+    return String(s).replace(/[&<>"']/g, c => ({
+        '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'
+    }[c]));
+}
+
+init();
+</script>
+</body>
+</html>

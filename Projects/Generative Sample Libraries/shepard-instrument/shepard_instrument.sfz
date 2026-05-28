@@ -1,0 +1,184 @@
+// Shepard Instrument — Phase 3 source-two of Generative Sample Libraries
+// Stage 1 MINIMUM-ILLUSION: 12 static drones, one per pitch class.
+// Each MIDI note 0..127 maps to the drone of its pitch class.
+// Every recording is a 7-octave Gaussian-enveloped stack
+// (sigma=1.0 oct, centered at C4; Shepard's Stage-1 defaults).
+// Source: shepard_synth.py from the Shepard Tone Synthesizer page.
+//
+// NB: pitch_keytrack=0 — the drone IS the note's pitch class; we do not
+// transpose the sample across the keyboard. Loop continuous so the
+// drone sustains as long as the key is held.
+
+<control>
+default_path=samples/
+
+<global>
+loop_mode=loop_continuous
+pitch_keytrack=0
+ampeg_attack=0.003 ampeg_release=0.2
+amp_veltrack=0
+
+// Pitch class C (pc=0): shepard_C.wav
+<group>
+<region> sample=shepard_C.wav lokey=0 hikey=0 pitch_keycenter=0 offset=38
+<region> sample=shepard_C.wav lokey=12 hikey=12 pitch_keycenter=12 offset=38
+<region> sample=shepard_C.wav lokey=24 hikey=24 pitch_keycenter=24 offset=38
+<region> sample=shepard_C.wav lokey=36 hikey=36 pitch_keycenter=36 offset=38
+<region> sample=shepard_C.wav lokey=48 hikey=48 pitch_keycenter=48 offset=38
+<region> sample=shepard_C.wav lokey=60 hikey=60 pitch_keycenter=60 offset=38
+<region> sample=shepard_C.wav lokey=72 hikey=72 pitch_keycenter=72 offset=38
+<region> sample=shepard_C.wav lokey=84 hikey=84 pitch_keycenter=84 offset=38
+<region> sample=shepard_C.wav lokey=96 hikey=96 pitch_keycenter=96 offset=38
+<region> sample=shepard_C.wav lokey=108 hikey=108 pitch_keycenter=108 offset=38
+<region> sample=shepard_C.wav lokey=120 hikey=120 pitch_keycenter=120 offset=38
+
+// Pitch class C# (pc=1): shepard_Cs.wav
+<group>
+<region> sample=shepard_Cs.wav lokey=1 hikey=1 pitch_keycenter=1 offset=48
+<region> sample=shepard_Cs.wav lokey=13 hikey=13 pitch_keycenter=13 offset=48
+<region> sample=shepard_Cs.wav lokey=25 hikey=25 pitch_keycenter=25 offset=48
+<region> sample=shepard_Cs.wav lokey=37 hikey=37 pitch_keycenter=37 offset=48
+<region> sample=shepard_Cs.wav lokey=49 hikey=49 pitch_keycenter=49 offset=48
+<region> sample=shepard_Cs.wav lokey=61 hikey=61 pitch_keycenter=61 offset=48
+<region> sample=shepard_Cs.wav lokey=73 hikey=73 pitch_keycenter=73 offset=48
+<region> sample=shepard_Cs.wav lokey=85 hikey=85 pitch_keycenter=85 offset=48
+<region> sample=shepard_Cs.wav lokey=97 hikey=97 pitch_keycenter=97 offset=48
+<region> sample=shepard_Cs.wav lokey=109 hikey=109 pitch_keycenter=109 offset=48
+<region> sample=shepard_Cs.wav lokey=121 hikey=121 pitch_keycenter=121 offset=48
+
+// Pitch class D (pc=2): shepard_D.wav
+<group>
+<region> sample=shepard_D.wav lokey=2 hikey=2 pitch_keycenter=2 offset=38
+<region> sample=shepard_D.wav lokey=14 hikey=14 pitch_keycenter=14 offset=38
+<region> sample=shepard_D.wav lokey=26 hikey=26 pitch_keycenter=26 offset=38
+<region> sample=shepard_D.wav lokey=38 hikey=38 pitch_keycenter=38 offset=38
+<region> sample=shepard_D.wav lokey=50 hikey=50 pitch_keycenter=50 offset=38
+<region> sample=shepard_D.wav lokey=62 hikey=62 pitch_keycenter=62 offset=38
+<region> sample=shepard_D.wav lokey=74 hikey=74 pitch_keycenter=74 offset=38
+<region> sample=shepard_D.wav lokey=86 hikey=86 pitch_keycenter=86 offset=38
+<region> sample=shepard_D.wav lokey=98 hikey=98 pitch_keycenter=98 offset=38
+<region> sample=shepard_D.wav lokey=110 hikey=110 pitch_keycenter=110 offset=38
+<region> sample=shepard_D.wav lokey=122 hikey=122 pitch_keycenter=122 offset=38
+
+// Pitch class D# (pc=3): shepard_Ds.wav
+<group>
+<region> sample=shepard_Ds.wav lokey=3 hikey=3 pitch_keycenter=3 offset=27
+<region> sample=shepard_Ds.wav lokey=15 hikey=15 pitch_keycenter=15 offset=27
+<region> sample=shepard_Ds.wav lokey=27 hikey=27 pitch_keycenter=27 offset=27
+<region> sample=shepard_Ds.wav lokey=39 hikey=39 pitch_keycenter=39 offset=27
+<region> sample=shepard_Ds.wav lokey=51 hikey=51 pitch_keycenter=51 offset=27
+<region> sample=shepard_Ds.wav lokey=63 hikey=63 pitch_keycenter=63 offset=27
+<region> sample=shepard_Ds.wav lokey=75 hikey=75 pitch_keycenter=75 offset=27
+<region> sample=shepard_Ds.wav lokey=87 hikey=87 pitch_keycenter=87 offset=27
+<region> sample=shepard_Ds.wav lokey=99 hikey=99 pitch_keycenter=99 offset=27
+<region> sample=shepard_Ds.wav lokey=111 hikey=111 pitch_keycenter=111 offset=27
+<region> sample=shepard_Ds.wav lokey=123 hikey=123 pitch_keycenter=123 offset=27
+
+// Pitch class E (pc=4): shepard_E.wav
+<group>
+<region> sample=shepard_E.wav lokey=4 hikey=4 pitch_keycenter=4 offset=18
+<region> sample=shepard_E.wav lokey=16 hikey=16 pitch_keycenter=16 offset=18
+<region> sample=shepard_E.wav lokey=28 hikey=28 pitch_keycenter=28 offset=18
+<region> sample=shepard_E.wav lokey=40 hikey=40 pitch_keycenter=40 offset=18
+<region> sample=shepard_E.wav lokey=52 hikey=52 pitch_keycenter=52 offset=18
+<region> sample=shepard_E.wav lokey=64 hikey=64 pitch_keycenter=64 offset=18
+<region> sample=shepard_E.wav lokey=76 hikey=76 pitch_keycenter=76 offset=18
+<region> sample=shepard_E.wav lokey=88 hikey=88 pitch_keycenter=88 offset=18
+<region> sample=shepard_E.wav lokey=100 hikey=100 pitch_keycenter=100 offset=18
+<region> sample=shepard_E.wav lokey=112 hikey=112 pitch_keycenter=112 offset=18
+<region> sample=shepard_E.wav lokey=124 hikey=124 pitch_keycenter=124 offset=18
+
+// Pitch class F (pc=5): shepard_F.wav
+<group>
+<region> sample=shepard_F.wav lokey=5 hikey=5 pitch_keycenter=5 offset=9
+<region> sample=shepard_F.wav lokey=17 hikey=17 pitch_keycenter=17 offset=9
+<region> sample=shepard_F.wav lokey=29 hikey=29 pitch_keycenter=29 offset=9
+<region> sample=shepard_F.wav lokey=41 hikey=41 pitch_keycenter=41 offset=9
+<region> sample=shepard_F.wav lokey=53 hikey=53 pitch_keycenter=53 offset=9
+<region> sample=shepard_F.wav lokey=65 hikey=65 pitch_keycenter=65 offset=9
+<region> sample=shepard_F.wav lokey=77 hikey=77 pitch_keycenter=77 offset=9
+<region> sample=shepard_F.wav lokey=89 hikey=89 pitch_keycenter=89 offset=9
+<region> sample=shepard_F.wav lokey=101 hikey=101 pitch_keycenter=101 offset=9
+<region> sample=shepard_F.wav lokey=113 hikey=113 pitch_keycenter=113 offset=9
+<region> sample=shepard_F.wav lokey=125 hikey=125 pitch_keycenter=125 offset=9
+
+// Pitch class F# (pc=6): shepard_Fs.wav
+<group>
+<region> sample=shepard_Fs.wav lokey=6 hikey=6 pitch_keycenter=6 offset=3
+<region> sample=shepard_Fs.wav lokey=18 hikey=18 pitch_keycenter=18 offset=3
+<region> sample=shepard_Fs.wav lokey=30 hikey=30 pitch_keycenter=30 offset=3
+<region> sample=shepard_Fs.wav lokey=42 hikey=42 pitch_keycenter=42 offset=3
+<region> sample=shepard_Fs.wav lokey=54 hikey=54 pitch_keycenter=54 offset=3
+<region> sample=shepard_Fs.wav lokey=66 hikey=66 pitch_keycenter=66 offset=3
+<region> sample=shepard_Fs.wav lokey=78 hikey=78 pitch_keycenter=78 offset=3
+<region> sample=shepard_Fs.wav lokey=90 hikey=90 pitch_keycenter=90 offset=3
+<region> sample=shepard_Fs.wav lokey=102 hikey=102 pitch_keycenter=102 offset=3
+<region> sample=shepard_Fs.wav lokey=114 hikey=114 pitch_keycenter=114 offset=3
+<region> sample=shepard_Fs.wav lokey=126 hikey=126 pitch_keycenter=126 offset=3
+
+// Pitch class G (pc=7): shepard_G.wav
+<group>
+<region> sample=shepard_G.wav lokey=7 hikey=7 pitch_keycenter=7 offset=14
+<region> sample=shepard_G.wav lokey=19 hikey=19 pitch_keycenter=19 offset=14
+<region> sample=shepard_G.wav lokey=31 hikey=31 pitch_keycenter=31 offset=14
+<region> sample=shepard_G.wav lokey=43 hikey=43 pitch_keycenter=43 offset=14
+<region> sample=shepard_G.wav lokey=55 hikey=55 pitch_keycenter=55 offset=14
+<region> sample=shepard_G.wav lokey=67 hikey=67 pitch_keycenter=67 offset=14
+<region> sample=shepard_G.wav lokey=79 hikey=79 pitch_keycenter=79 offset=14
+<region> sample=shepard_G.wav lokey=91 hikey=91 pitch_keycenter=91 offset=14
+<region> sample=shepard_G.wav lokey=103 hikey=103 pitch_keycenter=103 offset=14
+<region> sample=shepard_G.wav lokey=115 hikey=115 pitch_keycenter=115 offset=14
+<region> sample=shepard_G.wav lokey=127 hikey=127 pitch_keycenter=127 offset=14
+
+// Pitch class G# (pc=8): shepard_Gs.wav
+<group>
+<region> sample=shepard_Gs.wav lokey=8 hikey=8 pitch_keycenter=8 offset=11
+<region> sample=shepard_Gs.wav lokey=20 hikey=20 pitch_keycenter=20 offset=11
+<region> sample=shepard_Gs.wav lokey=32 hikey=32 pitch_keycenter=32 offset=11
+<region> sample=shepard_Gs.wav lokey=44 hikey=44 pitch_keycenter=44 offset=11
+<region> sample=shepard_Gs.wav lokey=56 hikey=56 pitch_keycenter=56 offset=11
+<region> sample=shepard_Gs.wav lokey=68 hikey=68 pitch_keycenter=68 offset=11
+<region> sample=shepard_Gs.wav lokey=80 hikey=80 pitch_keycenter=80 offset=11
+<region> sample=shepard_Gs.wav lokey=92 hikey=92 pitch_keycenter=92 offset=11
+<region> sample=shepard_Gs.wav lokey=104 hikey=104 pitch_keycenter=104 offset=11
+<region> sample=shepard_Gs.wav lokey=116 hikey=116 pitch_keycenter=116 offset=11
+
+// Pitch class A (pc=9): shepard_A.wav
+<group>
+<region> sample=shepard_A.wav lokey=9 hikey=9 pitch_keycenter=9 offset=5
+<region> sample=shepard_A.wav lokey=21 hikey=21 pitch_keycenter=21 offset=5
+<region> sample=shepard_A.wav lokey=33 hikey=33 pitch_keycenter=33 offset=5
+<region> sample=shepard_A.wav lokey=45 hikey=45 pitch_keycenter=45 offset=5
+<region> sample=shepard_A.wav lokey=57 hikey=57 pitch_keycenter=57 offset=5
+<region> sample=shepard_A.wav lokey=69 hikey=69 pitch_keycenter=69 offset=5
+<region> sample=shepard_A.wav lokey=81 hikey=81 pitch_keycenter=81 offset=5
+<region> sample=shepard_A.wav lokey=93 hikey=93 pitch_keycenter=93 offset=5
+<region> sample=shepard_A.wav lokey=105 hikey=105 pitch_keycenter=105 offset=5
+<region> sample=shepard_A.wav lokey=117 hikey=117 pitch_keycenter=117 offset=5
+
+// Pitch class A# (pc=10): shepard_As.wav
+<group>
+<region> sample=shepard_As.wav lokey=10 hikey=10 pitch_keycenter=10 offset=1
+<region> sample=shepard_As.wav lokey=22 hikey=22 pitch_keycenter=22 offset=1
+<region> sample=shepard_As.wav lokey=34 hikey=34 pitch_keycenter=34 offset=1
+<region> sample=shepard_As.wav lokey=46 hikey=46 pitch_keycenter=46 offset=1
+<region> sample=shepard_As.wav lokey=58 hikey=58 pitch_keycenter=58 offset=1
+<region> sample=shepard_As.wav lokey=70 hikey=70 pitch_keycenter=70 offset=1
+<region> sample=shepard_As.wav lokey=82 hikey=82 pitch_keycenter=82 offset=1
+<region> sample=shepard_As.wav lokey=94 hikey=94 pitch_keycenter=94 offset=1
+<region> sample=shepard_As.wav lokey=106 hikey=106 pitch_keycenter=106 offset=1
+<region> sample=shepard_As.wav lokey=118 hikey=118 pitch_keycenter=118 offset=1
+
+// Pitch class B (pc=11): shepard_B.wav
+<group>
+<region> sample=shepard_B.wav lokey=11 hikey=11 pitch_keycenter=11 offset=4
+<region> sample=shepard_B.wav lokey=23 hikey=23 pitch_keycenter=23 offset=4
+<region> sample=shepard_B.wav lokey=35 hikey=35 pitch_keycenter=35 offset=4
+<region> sample=shepard_B.wav lokey=47 hikey=47 pitch_keycenter=47 offset=4
+<region> sample=shepard_B.wav lokey=59 hikey=59 pitch_keycenter=59 offset=4
+<region> sample=shepard_B.wav lokey=71 hikey=71 pitch_keycenter=71 offset=4
+<region> sample=shepard_B.wav lokey=83 hikey=83 pitch_keycenter=83 offset=4
+<region> sample=shepard_B.wav lokey=95 hikey=95 pitch_keycenter=95 offset=4
+<region> sample=shepard_B.wav lokey=107 hikey=107 pitch_keycenter=107 offset=4
+<region> sample=shepard_B.wav lokey=119 hikey=119 pitch_keycenter=119 offset=4
+

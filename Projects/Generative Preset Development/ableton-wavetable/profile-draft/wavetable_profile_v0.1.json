@@ -1,0 +1,1448 @@
+{
+  "schema_version": "0.1",
+  "synth": "Ableton Wavetable",
+  "live_version_observed": "12.4d1",
+  "preset_format": {
+    "extensions": [
+      ".adv"
+    ],
+    "wrapper_extensions": [
+      ".adg"
+    ],
+    "compression": "gzip",
+    "inner_format": "XML (Ableton instrument tree)",
+    "root_element": "Ableton",
+    "instrument_root": "InstrumentVector",
+    "schema_change_count": 1
+  },
+  "architecture": {
+    "topology": "fixed",
+    "oscillators": {
+      "wavetable": 2,
+      "sub": 1,
+      "noise": "via Voice_Modulators_TimeScale / Lfo shape Noise type"
+    },
+    "filters": 2,
+    "envelopes": 3,
+    "lfos": 2,
+    "fx_per_oscillator": 2,
+    "post_fx_chain": false,
+    "unison_modes": true,
+    "filter_routings": "Voice_Global_FilterRouting (serial/parallel/split)"
+  },
+  "parameter_count_full_form": 84,
+  "parameter_count_enum_form": 5,
+  "parameter_count_total": 89,
+  "sections": {
+    "envelope_2": [
+      "Voice_Modulators_Envelope2_LoopMode",
+      "Voice_Modulators_Envelope2_Slopes_Attack",
+      "Voice_Modulators_Envelope2_Slopes_Decay",
+      "Voice_Modulators_Envelope2_Slopes_Release",
+      "Voice_Modulators_Envelope2_Times_Attack",
+      "Voice_Modulators_Envelope2_Times_Decay",
+      "Voice_Modulators_Envelope2_Times_Release",
+      "Voice_Modulators_Envelope2_Values_Final",
+      "Voice_Modulators_Envelope2_Values_Initial",
+      "Voice_Modulators_Envelope2_Values_Peak",
+      "Voice_Modulators_Envelope2_Values_Sustain"
+    ],
+    "envelope_3": [
+      "Voice_Modulators_Envelope3_LoopMode",
+      "Voice_Modulators_Envelope3_Slopes_Attack",
+      "Voice_Modulators_Envelope3_Slopes_Decay",
+      "Voice_Modulators_Envelope3_Slopes_Release",
+      "Voice_Modulators_Envelope3_Times_Attack",
+      "Voice_Modulators_Envelope3_Times_Decay",
+      "Voice_Modulators_Envelope3_Times_Release",
+      "Voice_Modulators_Envelope3_Values_Final",
+      "Voice_Modulators_Envelope3_Values_Initial",
+      "Voice_Modulators_Envelope3_Values_Peak",
+      "Voice_Modulators_Envelope3_Values_Sustain"
+    ],
+    "envelope_amp": [
+      "Voice_Modulators_AmpEnvelope_LoopMode",
+      "Voice_Modulators_AmpEnvelope_Slopes_Attack",
+      "Voice_Modulators_AmpEnvelope_Slopes_Decay",
+      "Voice_Modulators_AmpEnvelope_Slopes_Release",
+      "Voice_Modulators_AmpEnvelope_Sustain",
+      "Voice_Modulators_AmpEnvelope_Times_Attack",
+      "Voice_Modulators_AmpEnvelope_Times_Decay",
+      "Voice_Modulators_AmpEnvelope_Times_Release"
+    ],
+    "filter_1": [
+      "Voice_Filter1_CircuitBpNoMo",
+      "Voice_Filter1_CircuitLpHp",
+      "Voice_Filter1_Drive",
+      "Voice_Filter1_Frequency",
+      "Voice_Filter1_Morph",
+      "Voice_Filter1_On",
+      "Voice_Filter1_Resonance",
+      "Voice_Filter1_Slope"
+    ],
+    "filter_2": [
+      "Voice_Filter2_CircuitBpNoMo",
+      "Voice_Filter2_CircuitLpHp",
+      "Voice_Filter2_Drive",
+      "Voice_Filter2_Frequency",
+      "Voice_Filter2_Morph",
+      "Voice_Filter2_On",
+      "Voice_Filter2_Resonance",
+      "Voice_Filter2_Slope"
+    ],
+    "global": [
+      "Voice_Global_FilterRouting",
+      "Voice_Global_Glide",
+      "Voice_Global_Transpose"
+    ],
+    "lfo_1": [
+      "Voice_Modulators_Lfo1_Retrigger",
+      "Voice_Modulators_Lfo1_Shape_Amount",
+      "Voice_Modulators_Lfo1_Shape_PhaseOffset",
+      "Voice_Modulators_Lfo1_Shape_Shaping",
+      "Voice_Modulators_Lfo1_Time_AttackTime",
+      "Voice_Modulators_Lfo1_Time_Rate",
+      "Voice_Modulators_Lfo1_Time_Sync",
+      "Voice_Modulators_Lfo1_Time_SyncedRate"
+    ],
+    "lfo_2": [
+      "Voice_Modulators_Lfo2_Retrigger",
+      "Voice_Modulators_Lfo2_Shape_Amount",
+      "Voice_Modulators_Lfo2_Shape_PhaseOffset",
+      "Voice_Modulators_Lfo2_Shape_Shaping",
+      "Voice_Modulators_Lfo2_Time_AttackTime",
+      "Voice_Modulators_Lfo2_Time_Rate",
+      "Voice_Modulators_Lfo2_Time_Sync",
+      "Voice_Modulators_Lfo2_Time_SyncedRate"
+    ],
+    "modulators_global": [
+      "Voice_Modulators_Amount",
+      "Voice_Modulators_TimeScale"
+    ],
+    "oscillator_1": [
+      "Voice_Oscillator1_Effects_Effect1",
+      "Voice_Oscillator1_Effects_Effect2",
+      "Voice_Oscillator1_Effects_EffectMode",
+      "Voice_Oscillator1_Gain",
+      "Voice_Oscillator1_On",
+      "Voice_Oscillator1_Pan",
+      "Voice_Oscillator1_Pitch_Detune",
+      "Voice_Oscillator1_Wavetables_WavePosition"
+    ],
+    "oscillator_2": [
+      "Voice_Oscillator2_Effects_Effect1",
+      "Voice_Oscillator2_Effects_Effect2",
+      "Voice_Oscillator2_Effects_EffectMode",
+      "Voice_Oscillator2_Gain",
+      "Voice_Oscillator2_On",
+      "Voice_Oscillator2_Pan",
+      "Voice_Oscillator2_Pitch_Detune",
+      "Voice_Oscillator2_Wavetables_WavePosition"
+    ],
+    "sub_oscillator": [
+      "Voice_SubOscillator_Gain",
+      "Voice_SubOscillator_On",
+      "Voice_SubOscillator_Transpose"
+    ],
+    "unison": [
+      "Voice_Unison_Amount",
+      "Voice_Unison_Mode",
+      "Voice_Unison_VoiceCount"
+    ]
+  },
+  "parameter_vocabulary": {
+    "Voice_Filter1_CircuitBpNoMo": {
+      "section": "filter_1",
+      "range_min": 0.0,
+      "range_max": 1.0,
+      "default_observed_in_factory_default": 0.0,
+      "observed_value_min": 0.0,
+      "observed_value_max": 0.0,
+      "observed_value_mean": 0.0,
+      "perceptual_regions": null,
+      "appears_in_presets": 14
+    },
+    "Voice_Filter1_CircuitLpHp": {
+      "section": "filter_1",
+      "range_min": 0.0,
+      "range_max": 4.0,
+      "default_observed_in_factory_default": 0.0,
+      "observed_value_min": 0.0,
+      "observed_value_max": 4.0,
+      "observed_value_mean": 1.2857142857142858,
+      "perceptual_regions": null,
+      "appears_in_presets": 14
+    },
+    "Voice_Filter1_Drive": {
+      "section": "filter_1",
+      "range_min": 0.0,
+      "range_max": 24.0,
+      "default_observed_in_factory_default": 0.0,
+      "observed_value_min": 0.0,
+      "observed_value_max": 10.3125,
+      "observed_value_mean": 2.9598214285714284,
+      "perceptual_regions": null,
+      "appears_in_presets": 14
+    },
+    "Voice_Filter1_Frequency": {
+      "section": "filter_1",
+      "range_min": 19.9999981,
+      "range_max": 20479.998,
+      "default_observed_in_factory_default": 4154.19971,
+      "observed_value_min": 20.0000706,
+      "observed_value_max": 20479.998,
+      "observed_value_mean": 2810.9393147,
+      "perceptual_regions": null,
+      "appears_in_presets": 14
+    },
+    "Voice_Filter1_Morph": {
+      "section": "filter_1",
+      "range_min": 0.0,
+      "range_max": 1.0,
+      "default_observed_in_factory_default": 0.0,
+      "observed_value_min": 0.0,
+      "observed_value_max": 0.0,
+      "observed_value_mean": 0.0,
+      "perceptual_regions": null,
+      "appears_in_presets": 14
+    },
+    "Voice_Filter1_On": {
+      "section": "filter_1",
+      "range_min": 0.0,
+      "range_max": 4.0,
+      "default_observed_in_factory_default": 1.0,
+      "observed_value_min": 1.0,
+      "observed_value_max": 1.0,
+      "observed_value_mean": 1.0,
+      "perceptual_regions": null,
+      "appears_in_presets": 14
+    },
+    "Voice_Filter1_Resonance": {
+      "section": "filter_1",
+      "range_min": 0.0,
+      "range_max": 1.25,
+      "default_observed_in_factory_default": 0.0,
+      "observed_value_min": 0.0,
+      "observed_value_max": 1.25,
+      "observed_value_mean": 0.36638504319285714,
+      "perceptual_regions": null,
+      "appears_in_presets": 14
+    },
+    "Voice_Filter1_Slope": {
+      "section": "filter_1",
+      "range_min": 0.0,
+      "range_max": 1.0,
+      "default_observed_in_factory_default": 0.0,
+      "observed_value_min": 0.0,
+      "observed_value_max": 1.0,
+      "observed_value_mean": 0.21428571428571427,
+      "perceptual_regions": null,
+      "appears_in_presets": 14
+    },
+    "Voice_Filter2_CircuitBpNoMo": {
+      "section": "filter_2",
+      "range_min": 0.0,
+      "range_max": 1.0,
+      "default_observed_in_factory_default": 0.0,
+      "observed_value_min": 0.0,
+      "observed_value_max": 0.0,
+      "observed_value_mean": 0.0,
+      "perceptual_regions": null,
+      "appears_in_presets": 14
+    },
+    "Voice_Filter2_CircuitLpHp": {
+      "section": "filter_2",
+      "range_min": 0.0,
+      "range_max": 4.0,
+      "default_observed_in_factory_default": 0.0,
+      "observed_value_min": 0.0,
+      "observed_value_max": 4.0,
+      "observed_value_mean": 1.2142857142857142,
+      "perceptual_regions": null,
+      "appears_in_presets": 14
+    },
+    "Voice_Filter2_Drive": {
+      "section": "filter_2",
+      "range_min": 0.0,
+      "range_max": 24.0,
+      "default_observed_in_factory_default": 0.0,
+      "observed_value_min": 0.0,
+      "observed_value_max": 10.3937016,
+      "observed_value_mean": 2.403121542857143,
+      "perceptual_regions": null,
+      "appears_in_presets": 14
+    },
+    "Voice_Filter2_Frequency": {
+      "section": "filter_2",
+      "range_min": 19.9999981,
+      "range_max": 20479.998,
+      "default_observed_in_factory_default": 280.423279,
+      "observed_value_min": 20.000309,
+      "observed_value_max": 20000.1035,
+      "observed_value_mean": 3079.6673755357147,
+      "perceptual_regions": null,
+      "appears_in_presets": 14
+    },
+    "Voice_Filter2_Morph": {
+      "section": "filter_2",
+      "range_min": 0.0,
+      "range_max": 1.0,
+      "default_observed_in_factory_default": 0.0,
+      "observed_value_min": 0.0,
+      "observed_value_max": 0.0,
+      "observed_value_mean": 0.0,
+      "perceptual_regions": null,
+      "appears_in_presets": 14
+    },
+    "Voice_Filter2_On": {
+      "section": "filter_2",
+      "range_min": 0.0,
+      "range_max": 4.0,
+      "default_observed_in_factory_default": 1.0,
+      "observed_value_min": 0.0,
+      "observed_value_max": 1.0,
+      "observed_value_mean": 0.8571428571428571,
+      "perceptual_regions": null,
+      "appears_in_presets": 14
+    },
+    "Voice_Filter2_Resonance": {
+      "section": "filter_2",
+      "range_min": 0.0,
+      "range_max": 1.25,
+      "default_observed_in_factory_default": 0.0,
+      "observed_value_min": 0.0,
+      "observed_value_max": 1.20039678,
+      "observed_value_mean": 0.349036804,
+      "perceptual_regions": null,
+      "appears_in_presets": 14
+    },
+    "Voice_Filter2_Slope": {
+      "section": "filter_2",
+      "range_min": 0.0,
+      "range_max": 1.0,
+      "default_observed_in_factory_default": 0.0,
+      "observed_value_min": 0.0,
+      "observed_value_max": 1.0,
+      "observed_value_mean": 0.07142857142857142,
+      "perceptual_regions": null,
+      "appears_in_presets": 14
+    },
+    "Voice_Global_FilterRouting": {
+      "section": "global",
+      "observed_values": [
+        0.0,
+        2.0
+      ],
+      "value_kind": "enum_or_flag",
+      "perceptual_regions": null,
+      "appears_in_presets": null
+    },
+    "Voice_Global_Glide": {
+      "section": "global",
+      "range_min": 0.0,
+      "range_max": 20.0,
+      "default_observed_in_factory_default": 0.0,
+      "observed_value_min": 0.0,
+      "observed_value_max": 0.1723647863,
+      "observed_value_mean": 0.028938235980714287,
+      "perceptual_regions": null,
+      "appears_in_presets": 14
+    },
+    "Voice_Global_Transpose": {
+      "section": "global",
+      "range_min": -48.0,
+      "range_max": 48.0,
+      "default_observed_in_factory_default": 0.0,
+      "observed_value_min": -32.0,
+      "observed_value_max": 12.0,
+      "observed_value_mean": -3.857142857142857,
+      "perceptual_regions": null,
+      "appears_in_presets": 14
+    },
+    "Voice_Modulators_Amount": {
+      "section": "modulators_global",
+      "range_min": 0.0,
+      "range_max": 2.0,
+      "default_observed_in_factory_default": 1.0,
+      "observed_value_min": 0.34375,
+      "observed_value_max": 1.1468749,
+      "observed_value_mean": 0.9301339214285714,
+      "perceptual_regions": null,
+      "appears_in_presets": 14
+    },
+    "Voice_Modulators_AmpEnvelope_LoopMode": {
+      "section": "envelope_amp",
+      "range_min": 0.0,
+      "range_max": 2.0,
+      "default_observed_in_factory_default": 0.0,
+      "observed_value_min": 0.0,
+      "observed_value_max": 1.0,
+      "observed_value_mean": 0.07142857142857142,
+      "perceptual_regions": null,
+      "appears_in_presets": 14
+    },
+    "Voice_Modulators_AmpEnvelope_Slopes_Attack": {
+      "section": "envelope_amp",
+      "range_min": -1.0,
+      "range_max": 1.0,
+      "default_observed_in_factory_default": -0.461538434,
+      "observed_value_min": -0.461538434,
+      "observed_value_max": 0.59375,
+      "observed_value_mean": 0.029532969,
+      "perceptual_regions": null,
+      "appears_in_presets": 14
+    },
+    "Voice_Modulators_AmpEnvelope_Slopes_Decay": {
+      "section": "envelope_amp",
+      "range_min": -1.0,
+      "range_max": 1.0,
+      "default_observed_in_factory_default": 0.5,
+      "observed_value_min": -0.5,
+      "observed_value_max": 1.0,
+      "observed_value_mean": 0.46603545120714285,
+      "perceptual_regions": null,
+      "appears_in_presets": 14
+    },
+    "Voice_Modulators_AmpEnvelope_Slopes_Release": {
+      "section": "envelope_amp",
+      "range_min": -1.0,
+      "range_max": 1.0,
+      "default_observed_in_factory_default": 0.5,
+      "observed_value_min": 0.234375,
+      "observed_value_max": 0.953125,
+      "observed_value_mean": 0.5216450180357143,
+      "perceptual_regions": null,
+      "appears_in_presets": 14
+    },
+    "Voice_Modulators_AmpEnvelope_Sustain": {
+      "section": "envelope_amp",
+      "range_min": 0.0,
+      "range_max": 1.0,
+      "default_observed_in_factory_default": 1.0,
+      "observed_value_min": 0.0,
+      "observed_value_max": 1.0,
+      "observed_value_mean": 0.6349867071428571,
+      "perceptual_regions": null,
+      "appears_in_presets": 14
+    },
+    "Voice_Modulators_AmpEnvelope_Times_Attack": {
+      "section": "envelope_amp",
+      "range_min": 0.0,
+      "range_max": 20.0,
+      "default_observed_in_factory_default": 0.9655952454,
+      "observed_value_min": 0.0,
+      "observed_value_max": 0.9655952454,
+      "observed_value_mean": 0.1448365172881357,
+      "perceptual_regions": null,
+      "appears_in_presets": 14
+    },
+    "Voice_Modulators_AmpEnvelope_Times_Decay": {
+      "section": "envelope_amp",
+      "range_min": 0.001500000013,
+      "range_max": 20.0,
+      "default_observed_in_factory_default": 0.5999999642,
+      "observed_value_min": 0.1945080608,
+      "observed_value_max": 15.4498663,
+      "observed_value_mean": 4.018619492278572,
+      "perceptual_regions": null,
+      "appears_in_presets": 14
+    },
+    "Voice_Modulators_AmpEnvelope_Times_Release": {
+      "section": "envelope_amp",
+      "range_min": 0.001500000013,
+      "range_max": 20.0,
+      "default_observed_in_factory_default": 3.20849013,
+      "observed_value_min": 0.03060164861,
+      "observed_value_max": 3.20849013,
+      "observed_value_mean": 0.7236313957871429,
+      "perceptual_regions": null,
+      "appears_in_presets": 14
+    },
+    "Voice_Modulators_Envelope2_LoopMode": {
+      "section": "envelope_2",
+      "range_min": 0.0,
+      "range_max": 2.0,
+      "default_observed_in_factory_default": 0.0,
+      "observed_value_min": 0.0,
+      "observed_value_max": 0.0,
+      "observed_value_mean": 0.0,
+      "perceptual_regions": null,
+      "appears_in_presets": 14
+    },
+    "Voice_Modulators_Envelope2_Slopes_Attack": {
+      "section": "envelope_2",
+      "range_min": -1.0,
+      "range_max": 1.0,
+      "default_observed_in_factory_default": 0.0,
+      "observed_value_min": -0.28125,
+      "observed_value_max": 0.5698925257,
+      "observed_value_mean": 0.02611183268857143,
+      "perceptual_regions": null,
+      "appears_in_presets": 14
+    },
+    "Voice_Modulators_Envelope2_Slopes_Decay": {
+      "section": "envelope_2",
+      "range_min": -1.0,
+      "range_max": 1.0,
+      "default_observed_in_factory_default": 0.5,
+      "observed_value_min": 0.02857148647,
+      "observed_value_max": 1.0,
+      "observed_value_mean": 0.6022746648121429,
+      "perceptual_regions": null,
+      "appears_in_presets": 14
+    },
+    "Voice_Modulators_Envelope2_Slopes_Release": {
+      "section": "envelope_2",
+      "range_min": -1.0,
+      "range_max": 1.0,
+      "default_observed_in_factory_default": 0.5,
+      "observed_value_min": -0.375,
+      "observed_value_max": 0.5,
+      "observed_value_mean": 0.34250992110714285,
+      "perceptual_regions": null,
+      "appears_in_presets": 14
+    },
+    "Voice_Modulators_Envelope2_Times_Attack": {
+      "section": "envelope_2",
+      "range_min": 0.0,
+      "range_max": 20.0,
+      "default_observed_in_factory_default": 0.007821321487,
+      "observed_value_min": 0.0,
+      "observed_value_max": 5.57342148,
+      "observed_value_mean": 1.0764931754149285,
+      "perceptual_regions": null,
+      "appears_in_presets": 14
+    },
+    "Voice_Modulators_Envelope2_Times_Decay": {
+      "section": "envelope_2",
+      "range_min": 0.001500000013,
+      "range_max": 20.0,
+      "default_observed_in_factory_default": 0.5999999642,
+      "observed_value_min": 0.2807340026,
+      "observed_value_max": 20.0,
+      "observed_value_mean": 6.703135700164286,
+      "perceptual_regions": null,
+      "appears_in_presets": 14
+    },
+    "Voice_Modulators_Envelope2_Times_Release": {
+      "section": "envelope_2",
+      "range_min": 0.001500000013,
+      "range_max": 20.0,
+      "default_observed_in_factory_default": 4.88945961,
+      "observed_value_min": 0.0223482158,
+      "observed_value_max": 4.88945961,
+      "observed_value_mean": 1.0716395728214285,
+      "perceptual_regions": null,
+      "appears_in_presets": 14
+    },
+    "Voice_Modulators_Envelope2_Values_Final": {
+      "section": "envelope_2",
+      "range_min": 0.0,
+      "range_max": 1.0,
+      "default_observed_in_factory_default": 0.0,
+      "observed_value_min": 0.0,
+      "observed_value_max": 0.0,
+      "observed_value_mean": 0.0,
+      "perceptual_regions": null,
+      "appears_in_presets": 14
+    },
+    "Voice_Modulators_Envelope2_Values_Initial": {
+      "section": "envelope_2",
+      "range_min": 0.0,
+      "range_max": 1.0,
+      "default_observed_in_factory_default": 0.0,
+      "observed_value_min": 0.0,
+      "observed_value_max": 1.0,
+      "observed_value_mean": 0.17801339285714285,
+      "perceptual_regions": null,
+      "appears_in_presets": 14
+    },
+    "Voice_Modulators_Envelope2_Values_Peak": {
+      "section": "envelope_2",
+      "range_min": 0.0,
+      "range_max": 1.0,
+      "default_observed_in_factory_default": 1.0,
+      "observed_value_min": 0.1400966197,
+      "observed_value_max": 1.0,
+      "observed_value_mean": 0.9010783316785714,
+      "perceptual_regions": null,
+      "appears_in_presets": 14
+    },
+    "Voice_Modulators_Envelope2_Values_Sustain": {
+      "section": "envelope_2",
+      "range_min": 0.0,
+      "range_max": 1.0,
+      "default_observed_in_factory_default": 0.9921875,
+      "observed_value_min": 0.0,
+      "observed_value_max": 1.0,
+      "observed_value_mean": 0.5418200535428571,
+      "perceptual_regions": null,
+      "appears_in_presets": 14
+    },
+    "Voice_Modulators_Envelope3_LoopMode": {
+      "section": "envelope_3",
+      "range_min": 0.0,
+      "range_max": 2.0,
+      "default_observed_in_factory_default": 2.0,
+      "observed_value_min": 0.0,
+      "observed_value_max": 2.0,
+      "observed_value_mean": 0.5,
+      "perceptual_regions": null,
+      "appears_in_presets": 14
+    },
+    "Voice_Modulators_Envelope3_Slopes_Attack": {
+      "section": "envelope_3",
+      "range_min": -1.0,
+      "range_max": 1.0,
+      "default_observed_in_factory_default": -0.1692307591,
+      "observed_value_min": -0.171875,
+      "observed_value_max": 0.0,
+      "observed_value_mean": -0.04776785628857143,
+      "perceptual_regions": null,
+      "appears_in_presets": 14
+    },
+    "Voice_Modulators_Envelope3_Slopes_Decay": {
+      "section": "envelope_3",
+      "range_min": -1.0,
+      "range_max": 1.0,
+      "default_observed_in_factory_default": -0.03076922894,
+      "observed_value_min": -0.34375,
+      "observed_value_max": 0.703125,
+      "observed_value_mean": 0.36291309765428575,
+      "perceptual_regions": null,
+      "appears_in_presets": 14
+    },
+    "Voice_Modulators_Envelope3_Slopes_Release": {
+      "section": "envelope_3",
+      "range_min": -1.0,
+      "range_max": 1.0,
+      "default_observed_in_factory_default": 0.5,
+      "observed_value_min": 0.5,
+      "observed_value_max": 0.5,
+      "observed_value_mean": 0.5,
+      "perceptual_regions": null,
+      "appears_in_presets": 14
+    },
+    "Voice_Modulators_Envelope3_Times_Attack": {
+      "section": "envelope_3",
+      "range_min": 0.0,
+      "range_max": 20.0,
+      "default_observed_in_factory_default": 0.5878866315,
+      "observed_value_min": 0.0,
+      "observed_value_max": 6.45893526,
+      "observed_value_mean": 0.88743910618365,
+      "perceptual_regions": null,
+      "appears_in_presets": 14
+    },
+    "Voice_Modulators_Envelope3_Times_Decay": {
+      "section": "envelope_3",
+      "range_min": 0.001500000013,
+      "range_max": 20.0,
+      "default_observed_in_factory_default": 1.59441721,
+      "observed_value_min": 0.5999999642,
+      "observed_value_max": 16.3742027,
+      "observed_value_mean": 4.451201755485714,
+      "perceptual_regions": null,
+      "appears_in_presets": 14
+    },
+    "Voice_Modulators_Envelope3_Times_Release": {
+      "section": "envelope_3",
+      "range_min": 0.001500000013,
+      "range_max": 20.0,
+      "default_observed_in_factory_default": 0.07961914688,
+      "observed_value_min": 0.006382446736,
+      "observed_value_max": 4.59553337,
+      "observed_value_mean": 0.9067643001725714,
+      "perceptual_regions": null,
+      "appears_in_presets": 14
+    },
+    "Voice_Modulators_Envelope3_Values_Final": {
+      "section": "envelope_3",
+      "range_min": 0.0,
+      "range_max": 1.0,
+      "default_observed_in_factory_default": 0.0,
+      "observed_value_min": 0.0,
+      "observed_value_max": 0.6328125,
+      "observed_value_mean": 0.045200892857142856,
+      "perceptual_regions": null,
+      "appears_in_presets": 14
+    },
+    "Voice_Modulators_Envelope3_Values_Initial": {
+      "section": "envelope_3",
+      "range_min": 0.0,
+      "range_max": 1.0,
+      "default_observed_in_factory_default": 0.0,
+      "observed_value_min": 0.0,
+      "observed_value_max": 0.640625,
+      "observed_value_mean": 0.08314732142857142,
+      "perceptual_regions": null,
+      "appears_in_presets": 14
+    },
+    "Voice_Modulators_Envelope3_Values_Peak": {
+      "section": "envelope_3",
+      "range_min": 0.0,
+      "range_max": 1.0,
+      "default_observed_in_factory_default": 1.0,
+      "observed_value_min": 0.09375,
+      "observed_value_max": 1.0,
+      "observed_value_mean": 0.9044986239571429,
+      "perceptual_regions": null,
+      "appears_in_presets": 14
+    },
+    "Voice_Modulators_Envelope3_Values_Sustain": {
+      "section": "envelope_3",
+      "range_min": 0.0,
+      "range_max": 1.0,
+      "default_observed_in_factory_default": 0.3125,
+      "observed_value_min": 0.0,
+      "observed_value_max": 0.8671875,
+      "observed_value_mean": 0.4087215736856429,
+      "perceptual_regions": null,
+      "appears_in_presets": 14
+    },
+    "Voice_Modulators_Lfo1_Retrigger": {
+      "section": "lfo_1",
+      "range_min": 0.0,
+      "range_max": 4.0,
+      "default_observed_in_factory_default": 1.0,
+      "observed_value_min": 1.0,
+      "observed_value_max": 1.0,
+      "observed_value_mean": 1.0,
+      "perceptual_regions": null,
+      "appears_in_presets": 14
+    },
+    "Voice_Modulators_Lfo1_Shape_Amount": {
+      "section": "lfo_1",
+      "range_min": 0.0,
+      "range_max": 1.0,
+      "default_observed_in_factory_default": 1.0,
+      "observed_value_min": 0.1953125,
+      "observed_value_max": 1.0,
+      "observed_value_mean": 0.7427455357142857,
+      "perceptual_regions": null,
+      "appears_in_presets": 14
+    },
+    "Voice_Modulators_Lfo1_Shape_PhaseOffset": {
+      "section": "lfo_1",
+      "range_min": 0.0,
+      "range_max": 360.0,
+      "default_observed_in_factory_default": 0.0,
+      "observed_value_min": 0.0,
+      "observed_value_max": 219.375,
+      "observed_value_mean": 38.169642857142854,
+      "perceptual_regions": null,
+      "appears_in_presets": 14
+    },
+    "Voice_Modulators_Lfo1_Shape_Shaping": {
+      "section": "lfo_1",
+      "range_min": -1.0,
+      "range_max": 1.0,
+      "default_observed_in_factory_default": -0.546875,
+      "observed_value_min": -0.796875,
+      "observed_value_max": 0.703125,
+      "observed_value_mean": -0.0078125,
+      "perceptual_regions": null,
+      "appears_in_presets": 14
+    },
+    "Voice_Modulators_Lfo1_Time_AttackTime": {
+      "section": "lfo_1",
+      "range_min": 0.0,
+      "range_max": 20.0,
+      "default_observed_in_factory_default": 0.0,
+      "observed_value_min": 0.0,
+      "observed_value_max": 2.48567581,
+      "observed_value_mean": 0.2995268892882143,
+      "perceptual_regions": null,
+      "appears_in_presets": 14
+    },
+    "Voice_Modulators_Lfo1_Time_Rate": {
+      "section": "lfo_1",
+      "range_min": 0.009999999776,
+      "range_max": 30.0,
+      "default_observed_in_factory_default": 0.06857421994,
+      "observed_value_min": 0.06857421994,
+      "observed_value_max": 3.09887481,
+      "observed_value_mean": 0.8214337876942857,
+      "perceptual_regions": null,
+      "appears_in_presets": 14
+    },
+    "Voice_Modulators_Lfo1_Time_Sync": {
+      "section": "lfo_1",
+      "range_min": 0.0,
+      "range_max": 1.0,
+      "default_observed_in_factory_default": 0.0,
+      "observed_value_min": 0.0,
+      "observed_value_max": 1.0,
+      "observed_value_mean": 0.5,
+      "perceptual_regions": null,
+      "appears_in_presets": 14
+    },
+    "Voice_Modulators_Lfo1_Time_SyncedRate": {
+      "section": "lfo_1",
+      "range_min": 0.0,
+      "range_max": 21.0,
+      "default_observed_in_factory_default": 15.0,
+      "observed_value_min": 2.0,
+      "observed_value_max": 21.0,
+      "observed_value_mean": 13.571428571428571,
+      "perceptual_regions": null,
+      "appears_in_presets": 14
+    },
+    "Voice_Modulators_Lfo2_Retrigger": {
+      "section": "lfo_2",
+      "range_min": 0.0,
+      "range_max": 4.0,
+      "default_observed_in_factory_default": 1.0,
+      "observed_value_min": 1.0,
+      "observed_value_max": 1.0,
+      "observed_value_mean": 1.0,
+      "perceptual_regions": null,
+      "appears_in_presets": 14
+    },
+    "Voice_Modulators_Lfo2_Shape_Amount": {
+      "section": "lfo_2",
+      "range_min": 0.0,
+      "range_max": 1.0,
+      "default_observed_in_factory_default": 1.0,
+      "observed_value_min": 0.0625,
+      "observed_value_max": 1.0,
+      "observed_value_mean": 0.7338169642857143,
+      "perceptual_regions": null,
+      "appears_in_presets": 14
+    },
+    "Voice_Modulators_Lfo2_Shape_PhaseOffset": {
+      "section": "lfo_2",
+      "range_min": 0.0,
+      "range_max": 360.0,
+      "default_observed_in_factory_default": 0.0,
+      "observed_value_min": 0.0,
+      "observed_value_max": 309.375,
+      "observed_value_mean": 47.20982142857143,
+      "perceptual_regions": null,
+      "appears_in_presets": 14
+    },
+    "Voice_Modulators_Lfo2_Shape_Shaping": {
+      "section": "lfo_2",
+      "range_min": -1.0,
+      "range_max": 1.0,
+      "default_observed_in_factory_default": -0.125,
+      "observed_value_min": -0.78125,
+      "observed_value_max": 0.59375,
+      "observed_value_mean": 0.021205357142857144,
+      "perceptual_regions": null,
+      "appears_in_presets": 14
+    },
+    "Voice_Modulators_Lfo2_Time_AttackTime": {
+      "section": "lfo_2",
+      "range_min": 0.0,
+      "range_max": 20.0,
+      "default_observed_in_factory_default": 0.0,
+      "observed_value_min": 0.0,
+      "observed_value_max": 1.8933177,
+      "observed_value_mean": 0.17173708553764286,
+      "perceptual_regions": null,
+      "appears_in_presets": 14
+    },
+    "Voice_Modulators_Lfo2_Time_Rate": {
+      "section": "lfo_2",
+      "range_min": 0.009999999776,
+      "range_max": 30.0,
+      "default_observed_in_factory_default": 0.02042494528,
+      "observed_value_min": 0.02042494528,
+      "observed_value_max": 3.75874996,
+      "observed_value_mean": 0.8869355452121429,
+      "perceptual_regions": null,
+      "appears_in_presets": 14
+    },
+    "Voice_Modulators_Lfo2_Time_Sync": {
+      "section": "lfo_2",
+      "range_min": 0.0,
+      "range_max": 1.0,
+      "default_observed_in_factory_default": 0.0,
+      "observed_value_min": 0.0,
+      "observed_value_max": 1.0,
+      "observed_value_mean": 0.35714285714285715,
+      "perceptual_regions": null,
+      "appears_in_presets": 14
+    },
+    "Voice_Modulators_Lfo2_Time_SyncedRate": {
+      "section": "lfo_2",
+      "range_min": 0.0,
+      "range_max": 21.0,
+      "default_observed_in_factory_default": 15.0,
+      "observed_value_min": 4.0,
+      "observed_value_max": 17.0,
+      "observed_value_mean": 14.071428571428571,
+      "perceptual_regions": null,
+      "appears_in_presets": 14
+    },
+    "Voice_Modulators_TimeScale": {
+      "section": "modulators_global",
+      "range_min": -1.0,
+      "range_max": 1.0,
+      "default_observed_in_factory_default": 0.0,
+      "observed_value_min": -0.1031250954,
+      "observed_value_max": 0.46875,
+      "observed_value_mean": 0.041741064614285714,
+      "perceptual_regions": null,
+      "appears_in_presets": 14
+    },
+    "Voice_Oscillator1_Effects_Effect1": {
+      "section": "oscillator_1",
+      "range_min": -1.0,
+      "range_max": 1.0,
+      "default_observed_in_factory_default": 0.0,
+      "observed_value_min": -0.28125,
+      "observed_value_max": 0.953125,
+      "observed_value_mean": 0.03125,
+      "perceptual_regions": null,
+      "appears_in_presets": 14
+    },
+    "Voice_Oscillator1_Effects_Effect2": {
+      "section": "oscillator_1",
+      "range_min": 0.0,
+      "range_max": 1.0,
+      "default_observed_in_factory_default": 0.421875,
+      "observed_value_min": 0.0,
+      "observed_value_max": 1.0,
+      "observed_value_mean": 0.14397321428571427,
+      "perceptual_regions": null,
+      "appears_in_presets": 14
+    },
+    "Voice_Oscillator1_Effects_EffectMode": {
+      "section": "oscillator_1",
+      "observed_values": [
+        0.0,
+        1.0,
+        2.0,
+        3.0
+      ],
+      "value_kind": "enum_or_flag",
+      "perceptual_regions": null,
+      "appears_in_presets": null
+    },
+    "Voice_Oscillator1_Gain": {
+      "section": "oscillator_1",
+      "range_min": 0.0,
+      "range_max": 1.0,
+      "default_observed_in_factory_default": 0.8991596699,
+      "observed_value_min": 0.6806722879,
+      "observed_value_max": 1.0,
+      "observed_value_mean": 0.8718227531214285,
+      "perceptual_regions": null,
+      "appears_in_presets": 14
+    },
+    "Voice_Oscillator1_On": {
+      "section": "oscillator_1",
+      "range_min": -24.0,
+      "range_max": 24.0,
+      "default_observed_in_factory_default": 1.0,
+      "observed_value_min": 1.0,
+      "observed_value_max": 1.0,
+      "observed_value_mean": 1.0,
+      "perceptual_regions": null,
+      "appears_in_presets": 14
+    },
+    "Voice_Oscillator1_Pan": {
+      "section": "oscillator_1",
+      "range_min": -1.0,
+      "range_max": 1.0,
+      "default_observed_in_factory_default": -0.34375,
+      "observed_value_min": -0.71875,
+      "observed_value_max": 0.0,
+      "observed_value_mean": -0.28236607142857145,
+      "perceptual_regions": null,
+      "appears_in_presets": 14
+    },
+    "Voice_Oscillator1_Pitch_Detune": {
+      "section": "oscillator_1",
+      "range_min": -0.5,
+      "range_max": 0.5,
+      "default_observed_in_factory_default": 0.0,
+      "observed_value_min": -0.1171875,
+      "observed_value_max": 0.078125,
+      "observed_value_mean": -0.020089285714285716,
+      "perceptual_regions": null,
+      "appears_in_presets": 14
+    },
+    "Voice_Oscillator1_Wavetables_WavePosition": {
+      "section": "oscillator_1",
+      "range_min": 0.0,
+      "range_max": 1.0,
+      "default_observed_in_factory_default": 0.4369747937,
+      "observed_value_min": 0.0,
+      "observed_value_max": 0.8786126971,
+      "observed_value_mean": 0.4374705531785715,
+      "perceptual_regions": null,
+      "appears_in_presets": 14
+    },
+    "Voice_Oscillator2_Effects_Effect1": {
+      "section": "oscillator_2",
+      "range_min": -1.0,
+      "range_max": 1.0,
+      "default_observed_in_factory_default": 0.0,
+      "observed_value_min": -1.0,
+      "observed_value_max": 0.203125,
+      "observed_value_mean": -0.15178571428571427,
+      "perceptual_regions": null,
+      "appears_in_presets": 14
+    },
+    "Voice_Oscillator2_Effects_Effect2": {
+      "section": "oscillator_2",
+      "range_min": 0.0,
+      "range_max": 1.0,
+      "default_observed_in_factory_default": 0.0,
+      "observed_value_min": 0.0,
+      "observed_value_max": 0.6953125,
+      "observed_value_mean": 0.1496326636,
+      "perceptual_regions": null,
+      "appears_in_presets": 14
+    },
+    "Voice_Oscillator2_Effects_EffectMode": {
+      "section": "oscillator_2",
+      "observed_values": [
+        0.0,
+        1.0,
+        2.0,
+        3.0
+      ],
+      "value_kind": "enum_or_flag",
+      "perceptual_regions": null,
+      "appears_in_presets": null
+    },
+    "Voice_Oscillator2_Gain": {
+      "section": "oscillator_2",
+      "range_min": 0.0,
+      "range_max": 1.0,
+      "default_observed_in_factory_default": 0.731092453,
+      "observed_value_min": 0.2184873968,
+      "observed_value_max": 1.0,
+      "observed_value_mean": 0.7726056032999999,
+      "perceptual_regions": null,
+      "appears_in_presets": 14
+    },
+    "Voice_Oscillator2_On": {
+      "section": "oscillator_2",
+      "range_min": -24.0,
+      "range_max": 24.0,
+      "default_observed_in_factory_default": 1.0,
+      "observed_value_min": 0.0,
+      "observed_value_max": 1.0,
+      "observed_value_mean": 0.8571428571428571,
+      "perceptual_regions": null,
+      "appears_in_presets": 14
+    },
+    "Voice_Oscillator2_Pan": {
+      "section": "oscillator_2",
+      "range_min": -1.0,
+      "range_max": 1.0,
+      "default_observed_in_factory_default": 0.765625,
+      "observed_value_min": 0.0,
+      "observed_value_max": 0.765625,
+      "observed_value_mean": 0.2533482142857143,
+      "perceptual_regions": null,
+      "appears_in_presets": 14
+    },
+    "Voice_Oscillator2_Pitch_Detune": {
+      "section": "oscillator_2",
+      "range_min": -0.5,
+      "range_max": 0.5,
+      "default_observed_in_factory_default": 0.0703125,
+      "observed_value_min": -0.15625,
+      "observed_value_max": 0.1675000191,
+      "observed_value_mean": 0.019218751364285715,
+      "perceptual_regions": null,
+      "appears_in_presets": 14
+    },
+    "Voice_Oscillator2_Wavetables_WavePosition": {
+      "section": "oscillator_2",
+      "range_min": 0.0,
+      "range_max": 1.0,
+      "default_observed_in_factory_default": 0.1764705926,
+      "observed_value_min": 0.0,
+      "observed_value_max": 0.6950354576,
+      "observed_value_mean": 0.3627962715,
+      "perceptual_regions": null,
+      "appears_in_presets": 14
+    },
+    "Voice_SubOscillator_Gain": {
+      "section": "sub_oscillator",
+      "range_min": 0.0,
+      "range_max": 1.0,
+      "default_observed_in_factory_default": 0.2265625,
+      "observed_value_min": 0.0,
+      "observed_value_max": 0.53125,
+      "observed_value_mean": 0.3116624461714285,
+      "perceptual_regions": null,
+      "appears_in_presets": 14
+    },
+    "Voice_SubOscillator_On": {
+      "section": "sub_oscillator",
+      "range_min": 0.0,
+      "range_max": 1.0,
+      "default_observed_in_factory_default": 1.0,
+      "observed_value_min": 0.0,
+      "observed_value_max": 1.0,
+      "observed_value_mean": 0.7857142857142857,
+      "perceptual_regions": null,
+      "appears_in_presets": 14
+    },
+    "Voice_SubOscillator_Transpose": {
+      "section": "sub_oscillator",
+      "range_min": 0.0,
+      "range_max": 2.0,
+      "default_observed_in_factory_default": 1.0,
+      "observed_value_min": 0.0,
+      "observed_value_max": 2.0,
+      "observed_value_mean": 0.6428571428571429,
+      "perceptual_regions": null,
+      "appears_in_presets": 14
+    },
+    "Voice_Unison_Amount": {
+      "section": "unison",
+      "range_min": 0.0,
+      "range_max": 1.0,
+      "default_observed_in_factory_default": 0.2265625,
+      "observed_value_min": 0.0,
+      "observed_value_max": 0.96875,
+      "observed_value_mean": 0.3467633937071429,
+      "perceptual_regions": null,
+      "appears_in_presets": 14
+    },
+    "Voice_Unison_Mode": {
+      "section": "unison",
+      "observed_values": [
+        0.0,
+        1.0,
+        2.0,
+        3.0,
+        4.0,
+        5.0,
+        6.0
+      ],
+      "value_kind": "enum_or_flag",
+      "perceptual_regions": null,
+      "appears_in_presets": null
+    },
+    "Voice_Unison_VoiceCount": {
+      "section": "unison",
+      "observed_values": [
+        2.0,
+        3.0,
+        4.0,
+        5.0,
+        6.0
+      ],
+      "value_kind": "enum_or_flag",
+      "perceptual_regions": null,
+      "appears_in_presets": null
+    }
+  },
+  "modulation_matrix": {
+    "shape": "target_rows x source_slots",
+    "target_rows": 52,
+    "source_slots": 13,
+    "source_slot_meaning": {
+      "_note": "Source slot identity is inferred from usage patterns and Ableton's documented Wavetable mod-source list \u2014 needs ear-confirmation. Wavetable's mod sources per Ableton manual are: Env2, Env3, LFO1, LFO2, MIDI Note, Velocity, Aftertouch, Pitch Bend, ModWheel, Random, Note-On Random, plus internal flag sources.",
+      "0_candidate": "Envelope 2",
+      "1_candidate": "Envelope 3",
+      "2_candidate": "LFO 1",
+      "3_candidate": "LFO 2",
+      "4_candidate": "MIDI Note (key tracking)",
+      "5_candidate": "Velocity",
+      "6_candidate": "Aftertouch",
+      "7_candidate": "Pitch Bend",
+      "8_candidate": "Mod Wheel",
+      "9_candidate": "Random (per note)",
+      "10_candidate": "Random (S&H continuous)",
+      "11_candidate": "Constant / internal",
+      "12_candidate": "Constant / internal",
+      "confirmation_method": "Compare slot usage against a preset known to use only one mod source."
+    },
+    "targets": [
+      {
+        "slot_id": 0,
+        "target_param": "Voice_Oscillator1_Pitch_PitchModulation",
+        "display_name": "Osc 1 Pitch"
+      },
+      {
+        "slot_id": 1,
+        "target_param": "Voice_Oscillator1_Wavetables_WavePosition",
+        "display_name": "Osc 1 Pos"
+      },
+      {
+        "slot_id": 2,
+        "target_param": "Voice_Oscillator1_Effects_Effect1",
+        "display_name": "Osc 1 Warp"
+      },
+      {
+        "slot_id": 3,
+        "target_param": "Voice_Oscillator1_Effects_Effect2",
+        "display_name": "Osc 1 Fold"
+      },
+      {
+        "slot_id": 4,
+        "target_param": "Voice_Oscillator1_Pan",
+        "display_name": "Osc 1 Pan"
+      },
+      {
+        "slot_id": 5,
+        "target_param": "Voice_Oscillator1_Gain",
+        "display_name": "Osc 1 Gain"
+      },
+      {
+        "slot_id": 6,
+        "target_param": "Voice_Oscillator2_Pitch_PitchModulation",
+        "display_name": "Osc 2 Pitch"
+      },
+      {
+        "slot_id": 7,
+        "target_param": "Voice_Oscillator2_Wavetables_WavePosition",
+        "display_name": "Osc 2 Pos"
+      },
+      {
+        "slot_id": 8,
+        "target_param": "Voice_Oscillator2_Effects_Effect1",
+        "display_name": "Osc 2 Warp"
+      },
+      {
+        "slot_id": 9,
+        "target_param": "Voice_Oscillator2_Effects_Effect2",
+        "display_name": "Osc 2 Fold"
+      },
+      {
+        "slot_id": 10,
+        "target_param": "Voice_Oscillator2_Pan",
+        "display_name": "Osc 2 Pan"
+      },
+      {
+        "slot_id": 11,
+        "target_param": "Voice_Oscillator2_Gain",
+        "display_name": "Osc 2 Gain"
+      },
+      {
+        "slot_id": 12,
+        "target_param": "Voice_SubOscillator_Tone",
+        "display_name": "Sub Tone"
+      },
+      {
+        "slot_id": 13,
+        "target_param": "Voice_SubOscillator_Gain",
+        "display_name": "Sub Gain"
+      },
+      {
+        "slot_id": 14,
+        "target_param": "Voice_Filter1_Frequency",
+        "display_name": "Filter 1 Freq"
+      },
+      {
+        "slot_id": 15,
+        "target_param": "Voice_Filter1_Resonance",
+        "display_name": "Filter 1 Res"
+      },
+      {
+        "slot_id": 16,
+        "target_param": "Voice_Filter1_Drive",
+        "display_name": "Filter 1 Drive"
+      },
+      {
+        "slot_id": 17,
+        "target_param": "Voice_Filter1_Morph",
+        "display_name": "Filter 1 Morph"
+      },
+      {
+        "slot_id": 18,
+        "target_param": "Voice_Filter2_Frequency",
+        "display_name": "Filter 2 Freq"
+      },
+      {
+        "slot_id": 19,
+        "target_param": "Voice_Filter2_Resonance",
+        "display_name": "Filter 2 Res"
+      },
+      {
+        "slot_id": 20,
+        "target_param": "Voice_Filter2_Drive",
+        "display_name": "Filter 2 Drive"
+      },
+      {
+        "slot_id": 21,
+        "target_param": "Voice_Filter2_Morph",
+        "display_name": "Filter 2 Morph"
+      },
+      {
+        "slot_id": 22,
+        "target_param": "Voice_Modulators_AmpEnvelope_Times_Attack",
+        "display_name": "Amp Attack"
+      },
+      {
+        "slot_id": 23,
+        "target_param": "Voice_Modulators_AmpEnvelope_Times_Decay",
+        "display_name": "Amp Decay"
+      },
+      {
+        "slot_id": 24,
+        "target_param": "Voice_Modulators_AmpEnvelope_Times_Release",
+        "display_name": "Amp Release"
+      },
+      {
+        "slot_id": 25,
+        "target_param": "Voice_Modulators_AmpEnvelope_Sustain",
+        "display_name": "Amp Sustain"
+      },
+      {
+        "slot_id": 26,
+        "target_param": "Voice_Modulators_Envelope2_Times_Attack",
+        "display_name": "Env 2 Attack"
+      },
+      {
+        "slot_id": 27,
+        "target_param": "Voice_Modulators_Envelope2_Times_Decay",
+        "display_name": "Env 2 Decay"
+      },
+      {
+        "slot_id": 28,
+        "target_param": "Voice_Modulators_Envelope2_Times_Release",
+        "display_name": "Env 2 Release"
+      },
+      {
+        "slot_id": 29,
+        "target_param": "Voice_Modulators_Envelope2_Values_Initial",
+        "display_name": "Env 2 Initial"
+      },
+      {
+        "slot_id": 30,
+        "target_param": "Voice_Modulators_Envelope2_Values_Peak",
+        "display_name": "Env 2 Peak"
+      },
+      {
+        "slot_id": 31,
+        "target_param": "Voice_Modulators_Envelope2_Values_Sustain",
+        "display_name": "Env 2 Sustain"
+      },
+      {
+        "slot_id": 32,
+        "target_param": "Voice_Modulators_Envelope2_Values_Final",
+        "display_name": "Env 2 Final"
+      },
+      {
+        "slot_id": 33,
+        "target_param": "Voice_Modulators_Envelope3_Times_Attack",
+        "display_name": "Env 3 Attack"
+      },
+      {
+        "slot_id": 34,
+        "target_param": "Voice_Modulators_Envelope3_Times_Decay",
+        "display_name": "Env 3 Decay"
+      },
+      {
+        "slot_id": 35,
+        "target_param": "Voice_Modulators_Envelope3_Times_Release",
+        "display_name": "Env 3 Release"
+      },
+      {
+        "slot_id": 36,
+        "target_param": "Voice_Modulators_Envelope3_Values_Initial",
+        "display_name": "Env 3 Initial"
+      },
+      {
+        "slot_id": 37,
+        "target_param": "Voice_Modulators_Envelope3_Values_Peak",
+        "display_name": "Env 3 Peak"
+      },
+      {
+        "slot_id": 38,
+        "target_param": "Voice_Modulators_Envelope3_Values_Sustain",
+        "display_name": "Env 3 Sustain"
+      },
+      {
+        "slot_id": 39,
+        "target_param": "Voice_Modulators_Envelope3_Values_Final",
+        "display_name": "Env 3 Final"
+      },
+      {
+        "slot_id": 40,
+        "target_param": "Voice_Modulators_Lfo1_Shape_Amount",
+        "display_name": "LFO 1 Amount"
+      },
+      {
+        "slot_id": 41,
+        "target_param": "Voice_Modulators_Lfo1_Shape_Shaping",
+        "display_name": "LFO 1 Shaping"
+      },
+      {
+        "slot_id": 42,
+        "target_param": "Voice_Modulators_Lfo1_Time_UnifiedRateModulation",
+        "display_name": "LFO 1 Rate"
+      },
+      {
+        "slot_id": 43,
+        "target_param": "Voice_Modulators_Lfo2_Shape_Amount",
+        "display_name": "LFO 2 Amount"
+      },
+      {
+        "slot_id": 44,
+        "target_param": "Voice_Modulators_Lfo2_Shape_Shaping",
+        "display_name": "LFO 2 Shaping"
+      },
+      {
+        "slot_id": 45,
+        "target_param": "Voice_Modulators_Lfo2_Time_UnifiedRateModulation",
+        "display_name": "LFO 2 Rate"
+      },
+      {
+        "slot_id": 46,
+        "target_param": "Voice_Modulators_TimeScale",
+        "display_name": "Time"
+      },
+      {
+        "slot_id": 47,
+        "target_param": "Voice_Modulators_Amount",
+        "display_name": "Global Mod Amount"
+      },
+      {
+        "slot_id": 48,
+        "target_param": "Voice_Unison_Amount",
+        "display_name": "Unison Amount"
+      },
+      {
+        "slot_id": 49,
+        "target_param": "Voice_Global_AmpModulation",
+        "display_name": "Amp"
+      },
+      {
+        "slot_id": 50,
+        "target_param": "Voice_Global_PitchModulation",
+        "display_name": "Pitch"
+      },
+      {
+        "slot_id": 51,
+        "target_param": "Voice_Global_Glide",
+        "display_name": "Glide"
+      }
+    ]
+  },
+  "presets_analyzed": [
+    "Ambient & Evolving__Descenting Dreams.xml",
+    "Bass__Abdominal Bass.xml",
+    "Brass__Alphalog Brass.xml",
+    "Effects__Airplane Wave.xml",
+    "Guitar & Plucked__Arpeggiate Me.xml",
+    "Instruments__Wavetable.xml",
+    "Mallets__A Brief History of Chime.xml",
+    "Percussive__Bunker Kick.xml",
+    "Piano & Keys__FM Piano Detuned.xml",
+    "Synth Keys__12 CC's and Counting.xml",
+    "Synth Lead__37th Street.xml",
+    "Synth Pad__Aqueous Pad.xml",
+    "Synth Pad__Vocal Territory.xml",
+    "Synth Rhythmic__A Wobble Modwheel.xml"
+  ],
+  "perceptual_regions_status": "EMPTY \u2014 needs by-ear pass in next cycle",
+  "next_cycle_actions": [
+    "Confirm the 13 source slot identities by auditioning a slot-isolated preset.",
+    "Hand-label perceptual regions for the highest-leverage params first: Voice_Filter1_Frequency (cutoff: closed/dark/open/bright/full-open), Voice_Modulators_AmpEnvelope_Times_Attack (punchy/soft/pad), Voice_Modulators_Lfo1_Time_Rate (imperceptible/subtle/obvious/audio-rate), Voice_Filter1_Resonance (clean/colored/edge/screaming).",
+    "Identify architectural enum values for Voice_Filter1_Type, Voice_Oscillator1_Effects_EffectMode, Voice_Modulators_Lfo1_Shape_Type, Voice_Global_FilterRouting (cross-reference Ableton manual).",
+    "Build a tiny writer-side proof: round-trip a preset (decompress \u2192 mutate one known parameter \u2192 recompress \u2192 load in Live \u2192 confirm change audible) to validate the format-write path."
+  ]
+}

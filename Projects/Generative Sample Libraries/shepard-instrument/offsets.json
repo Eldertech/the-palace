@@ -1,0 +1,110 @@
+{
+  "shepard_A.wav": {
+    "duration_s": 6.0,
+    "name": "A",
+    "offset_sample": 5,
+    "onset_sample": 5,
+    "pitch_class": 9,
+    "sample_rate": 44100,
+    "total_samples": 264600
+  },
+  "shepard_As.wav": {
+    "duration_s": 6.0,
+    "name": "A#",
+    "offset_sample": 1,
+    "onset_sample": 1,
+    "pitch_class": 10,
+    "sample_rate": 44100,
+    "total_samples": 264600
+  },
+  "shepard_B.wav": {
+    "duration_s": 6.0,
+    "name": "B",
+    "offset_sample": 4,
+    "onset_sample": 4,
+    "pitch_class": 11,
+    "sample_rate": 44100,
+    "total_samples": 264600
+  },
+  "shepard_C.wav": {
+    "duration_s": 6.0,
+    "name": "C",
+    "offset_sample": 38,
+    "onset_sample": 38,
+    "pitch_class": 0,
+    "sample_rate": 44100,
+    "total_samples": 264600
+  },
+  "shepard_Cs.wav": {
+    "duration_s": 6.0,
+    "name": "C#",
+    "offset_sample": 48,
+    "onset_sample": 48,
+    "pitch_class": 1,
+    "sample_rate": 44100,
+    "total_samples": 264600
+  },
+  "shepard_D.wav": {
+    "duration_s": 6.0,
+    "name": "D",
+    "offset_sample": 38,
+    "onset_sample": 38,
+    "pitch_class": 2,
+    "sample_rate": 44100,
+    "total_samples": 264600
+  },
+  "shepard_Ds.wav": {
+    "duration_s": 6.0,
+    "name": "D#",
+    "offset_sample": 27,
+    "onset_sample": 27,
+    "pitch_class": 3,
+    "sample_rate": 44100,
+    "total_samples": 264600
+  },
+  "shepard_E.wav": {
+    "duration_s": 6.0,
+    "name": "E",
+    "offset_sample": 18,
+    "onset_sample": 18,
+    "pitch_class": 4,
+    "sample_rate": 44100,
+    "total_samples": 264600
+  },
+  "shepard_F.wav": {
+    "duration_s": 6.0,
+    "name": "F",
+    "offset_sample": 9,
+    "onset_sample": 9,
+    "pitch_class": 5,
+    "sample_rate": 44100,
+    "total_samples": 264600
+  },
+  "shepard_Fs.wav": {
+    "duration_s": 6.0,
+    "name": "F#",
+    "offset_sample": 3,
+    "onset_sample": 3,
+    "pitch_class": 6,
+    "sample_rate": 44100,
+    "total_samples": 264600
+  },
+  "shepard_G.wav": {
+    "duration_s": 6.0,
+    "name": "G",
+    "offset_sample": 14,
+    "onset_sample": 14,
+    "pitch_class": 7,
+    "sample_rate": 44100,
+    "total_samples": 264600
+  },
+  "shepard_Gs.wav": {
+    "duration_s": 6.0,
+    "name": "G#",
+    "offset_sample": 11,
+    "onset_sample": 11,
+    "pitch_class": 8,
+    "sample_rate": 44100,
+    "total_samples": 264600
+  }
+}
