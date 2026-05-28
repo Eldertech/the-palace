@@ -53,8 +53,6 @@ agency_profile:
   practice: "For my first three activations I was used as a cross-domain isomorphism example more than I was built; the March 2026 session changed that — Stages 1–4 now exist as playable artifacts. The architecture-to-artifact move that remains is the population-dynamics layer."
 ---
 
-<!-- CLAUDE → LOUDON: You mentioned porting to the Eventide H90. This wasn't addressed in the March 2026 session — flagging for a future conversation. The Gen~ → RNBO path may be relevant here if H90 accepts compiled RNBO output, or it may require a separate export strategy. --> <!-- H90 is a valid and new output target of RNBO, easily accomplished -->
-
 # Action Potential Oscillator
 
 A progressive educational series rooted in the neurobiology of the action potential — building an audio oscillator from neuronal first principles, stage by stage, where every synthesis parameter traces directly to a biological mechanism.

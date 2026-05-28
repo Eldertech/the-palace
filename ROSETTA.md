@@ -166,7 +166,6 @@ Each link object may carry an optional `label` field — a single word or hyphen
 | **Weave** | "Let's weave" | ≥5 entries + filesystem access | Orient to recent deposits → full topology report → propose links → propose stage transitions | Topology report produced; ≥3 links proposed; commit made | [[Weave Ceremony]] |
 | **Spore Check** | "Spore check" | ≥1 dormant entry | Review all dormant entries; assign revive / hold / compost | Every dormant entry has a disposition; commit made | [[Spore Check Ceremony]] |
 | **Revival** | "Let's revive [entry]" | Named entry is dormant; revival rationale is statable | Re-enter dormant entry; add Revival Note; update stage; add new typed links | Stage updated; Revival Note written; new links added; commit made | [[Revival Ceremony]] |
-| **Hibernation** | "Nothing left unsaid" | Deposit is complete | Write closing note; signal intent to commit | Closing note in thread; deferred commit | [[Hibernation Ceremony]] |
 | **Self-Model Update** | "Self-model update" | Substrate.md is readable; palace state has changed | Read current Substrate.md; compare to actual state; draft and apply corrections | Substrate.md reflects current reality; commit made | [[Self-Model Update Ceremony]] |
 | **Schema Ceremony** | "Let's update the schema" | Current SCHEMA.md version on record | Deliberate on change → document rationale → update SCHEMA.md → update CLAUDE.md version → update Rosetta Stone | SCHEMA.md, CLAUDE.md, Rosetta Stone internally consistent; commit made | [[SCHEMA]] |
 

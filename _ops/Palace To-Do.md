@@ -31,7 +31,7 @@ Items move off this list when they become entries, get completed, or get compost
 
 - [ ] **Spore check on Short Story** — [[1 from 2]] is dormant. Revival conditions: Loudon ready to return to fiction writing. Check whether current work has changed the conditions.
 
-- [ ] **Migrate flat-file companions to entry bundles** ⭐ — As of 2026-05-05 ([[SCHEMA]] §8, v1.2), entries can have sibling bundle folders. Existing flat-file companions are migration candidates: `Jewel — Context.md` → `JEWEL/Jewel — Context.md`; ceremony Context companions in `_ops/` (`Deposit Ceremony — Context.md`, `Harvest Ceremony — Context.md`, `Weave Ceremony — Context.md`, `Hibernation Ceremony — Context.md`) → bundle folders alongside their parent ceremony files. Per Loudon's directive 2026-05-05, the Weave Ceremony's general scope includes fixing mis-located and mis-linked items — this migration is queued for the next Weave. After migration, the existing files only need minimal YAML (title, born, parent link, forward_vector) per [[SCHEMA]] §8 — strip excess if present.
+- [ ] **Migrate flat-file companions to entry bundles** ⭐ — As of 2026-05-05 ([[SCHEMA]] §8, v1.2), entries can have sibling bundle folders. Existing flat-file companions are migration candidates: `Jewel — Context.md` → `JEWEL/Jewel — Context.md`; ceremony Context companions in `_ops/` (`Deposit Ceremony — Context.md`, `Harvest Ceremony — Context.md`, `Weave Ceremony — Context.md`) → bundle folders alongside their parent ceremony files. Per Loudon's directive 2026-05-05, the Weave Ceremony's general scope includes fixing mis-located and mis-linked items — this migration is queued for the next Weave. After migration, the existing files only need minimal YAML (title, born, parent link, forward_vector) per [[SCHEMA]] §8 — strip excess if present.
 
 ---
 
@@ -40,8 +40,6 @@ Items move off this list when they become entries, get completed, or get compost
 - [ ] **Loudon's Music-Making & Teaching Toolkit** — A dedicated session to map and document the full ecosystem of hardware and software tools Loudon uses for making music and teaching: DAWs, hardware synths/drum machines, Max/MSP, RNBO, Ableton, Python, visualization tools, and how they interrelate. The goal is a palace entry (or small cluster) that gives any Claude instance a clear picture of the instrument landscape without needing to piece it together from scattered conversations.
 
 - [ ] **AI and the Future of Higher Education** ⭐ — Loudon has specific hopes, predictions, and a vision he wants to push for regarding how AI will transform higher education. This deserves a dedicated session to articulate fully — not a brainstorm but a manifesto-level crystallization. Could seed a palace entry, a public essay, or both. Trigger: any session where Loudon is ready to articulate this vision.
-
-- [ ] **Hibernation Ceremony** — Referenced in [[SCHEMA]] and [[ROSETTA]] as a palace ceremony, but not yet written. Persistent forward-ghost across 2+ map cycles. Likely the dual of the [[Revival Ceremony]] — a formal way to put an entry into `stage: dormant` deliberately, with a hibernation note. Surfaced 2026-04-27.
 
 - [ ] **Donella Meadows** (person-page) — Referenced from [[Leverage Points Framework]]; persistent ghost across 4 cycles. First test case for the "person-as-context-injector" pattern Loudon describes in [[Pages as Agents]] graffiti — design this page deliberately to embody Meadows, not just describe her.
 
