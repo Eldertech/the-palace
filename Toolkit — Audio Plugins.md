@@ -1,6 +1,6 @@
 ---
 title: Toolkit — Audio Plugins
-type: concept
+type: meta
 pillars:
   - tools
   - creation

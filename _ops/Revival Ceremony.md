@@ -11,8 +11,6 @@ links:
     type: connects-to
   - target: "[[Spore Check Ceremony]]"
     type: emerged-from
-  - target: "[[Hibernation Ceremony]]"
-    type: mirrors
   - target: "[[Deposit Ceremony]]"
     type: connects-to
 ---

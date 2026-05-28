@@ -154,7 +154,7 @@ Loudon wants to learn more fun ways to interact — the CLI is one of many. See 
 
 - **[[Dialectic]]** — Competing philosophies as people in genuine dialogue — the joint search for truth.
 - **The Excellent Adventure** — Historical dialogue as learning technique.
-- **Ceremony modes** — Deposit, Harvest, Weave, Walk, Spore Check, Hibernation.
+- **Ceremony modes** — Deposit, Harvest, Weave, Walk, Spore Check.
 - **Slow synthesis** — Systems thinking over multiple sessions.
 
 The CLI is the command-line vector for all of these. It does not replace the web interface (claude.ai) or Cowork; it extends the palette.

@@ -1,6 +1,6 @@
 ---
 title: Toolkit — Synthesizers
-type: concept
+type: meta
 pillars:
   - tools
   - creation
