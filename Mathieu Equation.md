@@ -71,17 +71,7 @@ For the audio synthesis use case, the closed-form Mathieu functions are not the 
 
 ## Where it appears
 
-Mathieu's equation governs:
-
-- **Parametric pendula and pumped swings.** A pendulum whose pivot oscillates vertically; a swing pumped by squat-stand motion. The simplest mechanical incarnation of [[Parametric Resonance]].
-- **Faraday waves.** Each spatial Fourier mode of a vertically-vibrated fluid surface obeys a Mathieu equation. The patterns that appear above the Faraday threshold are the modes whose tongues the drive enters.
-- **Quadrupole ion traps (Paul traps).** Ions confined by oscillating electric fields obey Mathieu equations in each spatial direction. The trap's "stability diagram" is literally the Strutt diagram. Ion-trap quantum computing relies on engineering parameters into the stable region.
-- **Quantum cold-atom lattices.** Time-modulated optical lattices for cold atoms; the band structure of the modulated lattice is the Mathieu band structure. Used to engineer Hamiltonians that don't exist statically.
-- **Photonic time crystals.** Time-modulated refractive index in a photonic medium; the bandgap structure is exactly the tongue structure of the equivalent Mathieu equation.
-- **Aeroelastic flutter.** Wings vibrating in a flow; the equations of motion for some flutter modes reduce to Mathieu form.
-- **Electrical oscillators with time-varying capacitance.** The original electrical parametric amplifiers; LC circuits with one element periodically modulated.
-
-The recurrence of the Mathieu equation across these contexts is not coincidence. It is the simplest second-order linear ODE with a periodic coefficient. Any approximately-periodic modulation, expanded to its dominant Fourier component and applied to a near-harmonic oscillator, gives the Mathieu form. Mathematically the equation is universal in the sense that other special functions are universal: it is the building-block solution to a class of problems that recurs because the ingredients (periodic coefficient, harmonic restoring force) recur.
+The Mathieu equation is universal because it is the simplest second-order linear ODE with a periodic coefficient: any approximately-periodic modulation applied to a near-harmonic oscillator yields this form. It governs parametric pendula, Faraday waves, quadrupole ion traps (Paul traps, whose "stability diagram" is literally the Strutt diagram), cold-atom optical lattices, photonic time crystals, aeroelastic flutter, and parametric electrical amplifiers — a range that reflects the recurrence of the ingredients (periodic coefficient, harmonic restoring force), not coincidence.
 
 ## In the palace
 

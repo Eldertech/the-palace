@@ -35,84 +35,7 @@ This isn't metaphor—it's **harmonic enrichment through controlled non-linearit
 
 ## The Technical Side
 
-### What Saturation Does
-
-**Linear system:** Output is proportional to input
-- Input × 2 = Output × 2
-- Perfect reproduction
-- **No harmonic content added**
-
-**Saturated system:** Output compresses as input increases
-- Input × 2 = Output × 1.8 (for example)
-- Adds harmonics
-- **Creates new frequency content**
-
-**Visual representation:**
-```
-Linear:     ___/
-Saturated:  ___/‾‾
-            (curve at top = saturation)
-```
-
-**The curve = non-linearity = harmonics added**
-
-### Even vs. Odd Order Harmonics
-
-**Even-order (2nd, 4th, 6th harmonics):**
-- Musical (octave, double-octave relationships)
-- Warm, full, rich
-- Analog tape, tubes
-- **Adds warmth without aggression**
-
-**Odd-order (3rd, 5th, 7th harmonics):**
-- Non-octave relationships
-- Edge, grit, presence
-- Transformers, certain solid-state
-- **Adds character and bite**
-
-**Example:**
-- Fundamental: 100Hz
-- 2nd harmonic: 200Hz (octave up) = warm
-- 3rd harmonic: 300Hz = edge
-- **Both add richness, different flavors**
-
-### Types of Saturation
-
-**Tape saturation:**
-- Smooth, musical
-- Mostly even-order harmonics
-- Compresses transients naturally
-- **Classic warmth**
-
-**Tube saturation:**
-- Rich, creamy
-- Complex harmonic structure
-- Even-order dominant
-- **Vintage character**
-
-**Transformer saturation:**
-- Punchy, present
-- Odd-order harmonics
-- Adds thickness
-- **Analog console vibe**
-
-**Digital saturation:**
-- Can emulate all above
-- Or create new types
-- Precise control
-- **Modern flexibility**
-
-### The Saturation Sweet Spot
-
-**Too little:** Clean but sterile
-**Just right:** Warm, rich, full
-**Too much:** Distorted, harsh, broken
-
-**How to find it:**
-- Start clean
-- Add saturation gradually
-- Stop when it sounds "right"
-- **Pull back slightly from "too much"**
+Saturation is controlled non-linearity: where a linear system reproduces input exactly, a saturated system compresses as input increases, generating harmonic content that wasn't there. Even-order harmonics (2nd, 4th) produce octave-related warmth — the sound of tape and tubes. Odd-order harmonics (3rd, 5th) produce edge and grit — the sound of transformers and certain solid-state circuits. The sweet spot is the same in all cases: too little = clean but sterile; just right = warm and full; too much = distorted and broken. Start clean, add gradually, stop just before it sounds wrong.
 
 ## The Philosophical Side
 
@@ -246,43 +169,6 @@ Saturated:  ___/‾‾
 - **Use adds harmonics**
 
 **The observation:** **Richness comes from history, use, stress.**
-
-## Why This Resonance Works
-
-### 1. Physical Phenomenon
-**Saturation is measurable:**
-- Spectrum analyzer shows added harmonics
-- Oscilloscope shows waveform change
-- **Not subjective—objective**
-
-This makes the principle CONCRETE, then transferable.
-
-### 2. Universal Aesthetic
-**Everyone recognizes "warmth":**
-- Vinyl vs. CD
-- Film vs. digital photo
-- Acoustic vs. electronic
-- **We intuitively prefer slight imperfection**
-
-**Saturation explains WHY:**
-- Added harmonics = perceived warmth
-- Non-linearity = character
-- **The "better" sound has MORE, not less**
-
-### 3. Optimization Paradox
-**Counterintuitive:** Adding "imperfection" improves quality.
-
-**Traditional thinking:**
-- Cleaner = better
-- More perfect = superior
-- Digital precision = ideal
-
-**Saturation teaches:**
-- Slight imperfection = richer
-- Controlled non-linearity = warmer
-- **Pristine can be sterile**
-
-This challenges perfectionism.
 
 ## Advanced Applications
 

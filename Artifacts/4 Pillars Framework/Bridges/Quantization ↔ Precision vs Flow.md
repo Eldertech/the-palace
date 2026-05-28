@@ -35,59 +35,7 @@ This isn't metaphor—it's **rounding error with aesthetic consequences**. Quant
 
 ## The Technical Side
 
-### Quantization in Digital Audio
-
-**Bit depth determines resolution:**
-- 1-bit: 2 levels (0 or 1)
-- 8-bit: 256 levels
-- 16-bit: 65,536 levels  
-- 24-bit: 16,777,216 levels
-
-**Example: Recording at 3-bit (8 levels)**
-```
-Actual voltage: 0.637
-Available levels: 0, 0.143, 0.286, 0.429, 0.571, 0.714, 0.857, 1.0
-Quantized to: 0.571 (nearest level)
-Error: 0.066 (lost forever)
-```
-<!-- SHOW & TELL audio examples that can have creative output, exports a sample matrix. -->
-**This error is called quantization noise.**
-
-**Key insight:** **Higher bit depth = smaller rounding error = quieter noise floor.**
-
-### MIDI Quantization
-
-**Timing quantization:**
-```
-Grid: 16th notes at 120 BPM = 0.125 second spacing
-Recorded note: 0.537 seconds
-Quantized note: 0.500 seconds (4th 16th note)
-Timing deviation: 0.037 seconds removed
-```
-
-**What's lost:** Micro-timing, groove, human feel, swing
-**What's gained:** Perfect alignment, easier editing, metronomic precision
-
-**The question:** Was 0.037 seconds ahead of the beat...
-- A mistake to be corrected?
-- Or intentional expression to be preserved?
-
-**Quantization assumes: mistake.** But what if it was **feel**?
-
-### Velocity Quantization
-
-**MIDI velocity: 0-127**
-```
-Played velocity: 73
-Quantize to steps of 16: 64 or 80
-Result: Either too soft or too loud
-Nuance lost: 9 levels of dynamic expression
-```
-
-**Fixed velocity (all notes = 100):**
-- Perfect consistency
-- Zero expression
-- **Precision achieved, musicality destroyed**
+Quantization is rounding: a note played at 0.537s snaps to the nearest 16th note at 0.500s, and the 0.037s deviation is gone forever. A velocity played at 73 snaps to 64 or 80, and nine levels of dynamic nuance disappear. In audio recording, bit depth determines how fine the rounding grid is — 24-bit gives 16 million levels, 1-bit gives two. The bridge question is always the same: **was the deviation a mistake to correct, or expression to preserve?** Quantization assumes mistake. <!-- SHOW & TELL audio examples that can have creative output, exports a sample matrix. -->
 
 ## The Conceptual Side
 
@@ -225,37 +173,6 @@ Nuance lost: 9 levels of dynamic expression
 - Planning: Do you outline rigidly? Why?
 - Execution: Do you force ideas into predetermined form? Why?
 - **Question the default setting**
-
-## Why This Resonance Works
-
-### 1. Immediate Sonic Consequence
-Quantization has **audible results:**
-- Press button, hear difference instantly
-- Undo, hear original feel return
-- **Direct feedback loop**
-
-Compare to:
-- EQ: Subtle changes, takes trained ears
-- Compression: Complex interaction
-- Quantization: **Obvious even to beginners**
-
-### 2. Universal Creative Tension
-Every creative person faces:
-- Spontaneity vs craft
-- Inspiration vs revision  
-- Chaos vs order
-- **Quantization makes this tension literal**
-
-### 3. Adjustable in Real-Time
-Modern DAWs offer **quantization strength:**
-- Not binary (on/off)
-- Continuous slider (0-100%)
-- **Same as life: degrees of structure**
-
-You can hear "50% quantization"—halfway between free and grid.
-
-**Transfers to:** "How much should I plan before creating?"
-Answer: Somewhere between 0% and 100%. Find your sweet spot.
 
 ## Advanced Applications
 
@@ -422,23 +339,7 @@ When quantization becomes conscious choice, not automatic habit—**the resonanc
 
 ## The Final Insight: Resolution Determines Expression
 
-**Bit depth in audio:**
-- 1-bit: Only extreme (0 or 1, on or off)
-- 24-bit: Subtle gradations possible
-- **More levels = more nuance preserved**
-
-**Structure in life:**
-- Binary thinking: This or that, right or wrong
-- Nuanced thinking: Gradations, maybes, context
-- **More complexity = more truth captured**
-
-**Quantization to coarse grid = flattening reality**
-**Quantization to fine grid = preserving detail**
-
-The question isn't "to quantize or not."
-The question is: "**To what resolution should I quantize?**"
-
-That depends on what you're trying to preserve.
+Coarse quantization flattens reality; fine quantization preserves detail. Binary thinking quantizes life to two levels — right or wrong, in or out. Nuanced thinking works at 24-bit resolution. The question isn't "to quantize or not." It's: **to what resolution?** That depends entirely on what you're trying to preserve.
 
 ---
 

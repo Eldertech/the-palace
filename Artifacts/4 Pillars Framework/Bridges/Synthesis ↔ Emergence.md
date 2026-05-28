@@ -41,83 +41,7 @@ This isn't metaphor—it's **emergent complexity**. The phenomenon is identical.
 
 ## The Technical Side
 
-### What Is Synthesis?
-
-**Definition:** Creating complex sounds from simple building blocks.
-
-**The basic elements:**
-- **Oscillators:** Generate simple waveforms (sine, saw, square)
-- **Filters:** Shape frequency content
-- **Envelopes:** Shape behavior over time
-- **Modulation:** Connect elements to each other
-
-**The magic:** Simple elements, complex interactions, emergent timbre.
-
-### FM Synthesis (The Clearest Example)
-
-**Frequency Modulation:** One oscillator (modulator) changes frequency of another (carrier).
-
-**Simple setup:**
-```
-Modulator: Sine wave at 200 Hz
-Carrier: Sine wave at 400 Hz
-Modulation depth: Varies
-```
-
-**What emerges:**
-- Depth = 0: Just the carrier (400 Hz sine wave)
-- Depth = 1: Rich harmonic spectrum (sounds like brass)
-- Depth = 5: Complex inharmonic spectrum (sounds like bell)
-- **Same two sine waves, wildly different timbres**
-
-**Why it's emergence:**
-- Input: Two simplest possible waveforms
-- Process: One modulates frequency of the other
-- Output: **Sounds you cannot predict without calculating the math**
-- **The interaction creates something neither part contains**
-
-### The Mathematical Truth
-
-**Sine wave formula:**
-```
-y = sin(2πft)
-```
-
-**FM formula:**
-```
-y = sin(2πf_carrier·t + I·sin(2πf_modulator·t))
-```
-
-**What this creates:**
-- Sidebands at: f_carrier ± (n × f_modulator) for all integers n
-- Infinite series of new frequencies
-- **None existed in either original sine wave**
-
-**The phenomenon:** Interaction creates **genuinely new information**.
-
-### Other Synthesis Methods Show Same Pattern
-
-**Subtractive synthesis:**
-- Start: Harmonically rich waveform (sawtooth)
-- Process: Filter removes frequencies
-- Emerge: **Infinite timbral variations from one waveform**
-
-**Additive synthesis: <!-- generative synthesis, of course -->**
-- Start: Multiple sine waves
-- Process: Combine with different amplitudes/phases
-- Emerge: **Any possible timbre (Fourier proves this)**
-
-**Granular synthesis:**
-- Start: Tiny grains of audio
-- Process: Playback rate, position, density vary
-- Emerge: **Textures impossible to create any other way**
-
-**Wavetable synthesis:**
-- Start: Morphing between stored waveforms
-- Process: Interpolation + modulation
-- Emerge: **Smooth timbral evolution**
-
-**The universal principle:** Simple elements + interaction rules = emergent complexity.
+Synthesis creates complex sounds from simple building blocks — oscillators, filters, envelopes, and modulation routing between them. FM synthesis is the clearest demonstration of emergence: a carrier sine wave at 400Hz, modulated in frequency by another sine at 200Hz, produces sidebands at `f_carrier ± (n × f_modulator)` for all integers n — an infinite series of new frequencies that existed in neither original wave. At modulation depth 0 you hear a sine; at depth 1 it sounds like brass; at depth 5 like a bell. Same two simplest-possible waveforms, wildly different timbres. **The interaction creates information neither part contained.** <!-- generative synthesis, of course --> The same principle drives every synthesis method: subtractive filtering reveals latent timbres in a sawtooth; granular playback generates textures that no single grain contains; wavetable morphing evolves through spaces between stored shapes.
 
 ## The Conceptual Side
 
@@ -157,22 +81,7 @@ y = sin(2πf_carrier·t + I·sin(2πf_modulator·t))
 
 ### Non-Linearity Is Key
 
-**Linear system:**
-- 2 oscillators at 200Hz and 400Hz
-- Add them together
-- Get: 200Hz and 400Hz
-- **Sum equals parts**
-
-**Non-linear system (FM):**
-- 2 oscillators at 200Hz and 400Hz
-- Modulate frequency
-- Get: 200Hz, 400Hz, 600Hz, 800Hz, 1000Hz... (infinite sidebands)
-- **Sum exceeds parts—new information created**
-
-**In systems:**
-- Linear: Add more people = proportionally more output
-- Non-linear: Add more people = communication overhead, emergence
-- **Interaction creates complexity beyond addition**
+Linear addition: two oscillators at 200Hz and 400Hz added together give you 200Hz and 400Hz. FM modulation: same two oscillators give you 200Hz, 400Hz, 600Hz, 800Hz, 1000Hz... and infinitely more — **sum exceeds parts, new information created**. In systems: add more people and you get proportionally more output (linear) or communication overhead and emergent culture (non-linear). Interaction creates complexity beyond addition.
 
 ## The Structural Identity
 
@@ -240,27 +149,6 @@ y = sin(2πf_carrier·t + I·sin(2πf_modulator·t))
 
 **The lesson:** **Design the interactions, let behavior emerge.**
 
-## Why This Resonance Works
-
-### 1. Mathematically Proven
-FM synthesis is **proof** of emergence:
-- Bessel functions predict sidebands
-- Math confirms: output ≠ sum of inputs
-- **Rigorous demonstration that interaction creates novelty**
-
-### 2. Immediately Audible
-You can **hear** emergence:
-- Two sine waves (simple, predictable)
-- FM modulation
-- **Bell sounds, brass sounds—obviously emergent**
-
-### 3. Universally Applicable
-Once you understand emergence:
-- Music: Counterpoint creates harmony (emergent from melodic lines)
-- Cooking: Flavors combine non-linearly (emergent from ingredients)
-- Teams: Collaboration creates ideas no individual had
-- **Same structure everywhere**
-
 ## Advanced Applications
 
 ### Feedback FM (Circular Causation)
@@ -277,41 +165,9 @@ Once you understand emergence:
 - Ecosystems: Predators affect prey affect predators
 - **Self-reinforcing emergence**
 
-### Multiple Operator FM (Complex Interactions)
+### Multiple Operator FM and Network Effects
 
-**DX7 architecture:**
-- 6 operators
-- Each can modulate others
-- 32 algorithms (connection patterns)
-
-**What emerges:**
-- Infinite timbral palette
-- Organic evolution
-- **Complex from simple, but interaction complexity matters**
-
-**The insight:** **Pattern of connections determines emergent behavior.**
-
-**In organizations:**
-- Same people, different org chart = different culture
-- **Structure of interactions shapes emergence**
-
-### Modulation Matrix (Network Effects)
-
-**Modern synths:**
-- Any source can modulate any destination
-- Create feedback loops
-- Create parallel paths
-- **Network of interactions**
-
-**What emerges:**
-- Living, breathing sounds
-- Evolving timbres
-- **Behavior that seems intelligent**
-
-**In complex systems:**
-- Neural networks: Connection pattern creates capability
-- Internet: Network structure creates emergent phenomena
-- **Topology determines emergence**
+The DX7's 6-operator architecture with 32 algorithms demonstrates that the *pattern of connections* determines emergent behavior — same operators, different routing, completely different timbres. The same logic holds in organizations: same people, different org chart, different culture. Modern modular synths with open modulation matrices make this visceral: feedback loops and parallel paths produce sounds that seem to breathe on their own. **Topology determines emergence.** Neural networks, the internet, and ecosystem food webs follow the same principle.
 
 ## Common Student Discoveries
 

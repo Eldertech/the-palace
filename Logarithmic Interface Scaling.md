@@ -87,64 +87,9 @@ The key: in log space, distances are equal (log₁₀(0.1) = -1, log₁₀(1.0) 
 
 ## When to Use This Pattern
 
-### Use logarithmic interface scaling when:
+Use logarithmic scaling when the control range spans 2+ orders of magnitude and user operations are multiplicative ("double the volume," "half the speed"). Use linear scaling when the range is small or operations are additive. The diagnostic: does doubling feel like the same gesture as halving? If not, the mapping is wrong.
 
-1. **Control range spans 2+ orders of magnitude**
-   - Volume: 0.001 to 1.0
-   - Frequency: 20 Hz to 20,000 Hz  
-   - Zoom: 10% to 1000%
-
-2. **User operations are multiplicative**
-   - "Double the volume"
-   - "Half the speed"
-   - "10× zoom"
-
-3. **Symmetric feel around a reference value is desired**
-   - Brightness: 0.1× to 10× (reference = 1.0)
-   - Pitch shift: -2 octaves to +2 octaves (reference = 0)
-   - Gain: -20 dB to +20 dB (reference = 0 dB)
-
-### Use linear interface scaling when:
-
-1. **Control range is small (less than 2× range)**
-   - Temperature: 20°C to 30°C
-   - Opacity: 0% to 100%
-   - Position: 0 to 500 pixels
-
-2. **User operations are additive**
-   - "Add 5 degrees"
-   - "Move 10 pixels to the right"
-
-## Professional Interface Examples
-
-This pattern appears in controls across every technical domain:
-
-### Audio Engineering: Volume Faders (dB)
-Every DAW volume fader uses logarithmic mapping to decibels. Moving the fader equal distances always changes power by the same ratio:
-- -12 dB to -6 dB: doubles power
-- -6 dB to 0 dB: doubles power again
-
-### Photography: Exposure Controls (F-stops)
-Camera exposure compensation wheels use logarithmic stops:
-- Each click = same light ratio (2× or 0.5×)
-- +1 stop = double the light
-- -1 stop = half the light
-
-### Chemistry: pH Meters
-pH scale interfaces (though often just numeric entry) map logarithmically:
-- Each unit = 10× change in hydrogen ion concentration
-- Equal movements = equal ratio changes
-
-### Music Software: Pitch Controls (Octaves/Semitones)
-Pitch bend wheels and transpose controls use log mapping:
-- Equal physical movement = equal frequency ratios
-- 12 semitones = octave = 2× frequency
-
-### Design Software: Zoom Controls
-Zoom sliders in Figma, Photoshop, etc. use logarithmic scaling:
-- Each click or slider movement = consistent zoom ratio
-- 100% naturally sits in the middle
-- 10% to 1000% range feels balanced
+The pattern appears in every technical domain — DAW volume faders (dB), camera f-stops, pitch bend wheels (semitones = equal frequency ratios), zoom sliders. In each case, equal physical movements produce equal multipliers.
 
 ## Interface Design Best Practices
 

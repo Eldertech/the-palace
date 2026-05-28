@@ -122,14 +122,6 @@ All of these are solving differential equations. They're the same shape. They're
 - Kuramoto coupling: driven oscillators synchronize when the driving frequency is close to their natural frequency.
 - A synth oscillator driven by a modulation signal: the modulation depth controls the amplitude of the driving force.
 
-## The Notation
-
-- `dy/dt` = "dee-y dee-t" = "the derivative of y with respect to time" = velocity = rate of change
-- `d²y/dt²` = "dee-two-y dee-t-squared" = "the second derivative" = acceleration = rate of change of velocity
-- `y` = position, displacement, amplitude, voltage — whatever we're tracking
-
-The notation is a *fraction-like symbol* but **you don't manipulate it like fractions in calculus**. It's a single operator meaning "take the derivative."
-
 ## Where They Live: The Palace Connections
 
 **Direct DE Solvers (these ARE second-order underdamped DEs):**
@@ -149,19 +141,6 @@ The notation is a *fraction-like symbol* but **you don't manipulate it like frac
 **Related Concepts:**
 - [[DSP Frameworks]] — discrete approximations (difference equations) solve DEs on computers
 - [[Crystal Synthesizer]] — geometric constraints as generative constraints (DEs are constraints on how systems must evolve)
-
-## The Learning Path: Loudon's Quiz
-
-Loudon worked through differential equations via a quiz format, building from definition through application:
-
-1. **Starting point:** What is a DE? Examples with trig functions (sine/cosine are their own derivatives with sign flip).
-2. **Notation:** Why is dy/dt written that way? What does d²y/dt² mean physically?
-3. **Concrete numbers:** Mass-spring systems with actual kg, N/m, initial conditions.
-4. **Interpretation:** When you see `d²y/dt² + 6(dy/dt) + 25y = 0`, what physical setup is this? (A mass with spring and damper.)
-5. **Proportionality:** What does "proportional" mean? Directly? Inversely? Neither?
-6. **Application:** A guitar string is plucked. Here's its DE. What's the damping force when the string passes through equilibrium at maximum velocity? (Zero — restoring force is zero at equilibrium.)
-7. **Causality:** Does damping force cause amplitude to decrease, or does decreasing amplitude cause damping force to decrease? (Neither alone; they're coupled through velocity.)
-8. **Filter design:** A filter's response can be written as a DE. Why does it ring at certain frequencies? (Resonance: driving frequency near natural frequency.)
 
 ## Loudon's Insight: The Isomorphism
 

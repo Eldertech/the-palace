@@ -142,12 +142,7 @@ The Maker tracks credit consumption per session and flags to Loudon when a sessi
 
 ## Gotchas
 
-*(Empty until first job. Patterns to watch for, based on common Midjourney behavior — these will be confirmed and dated as gotchas only on first encounter, not before:)*
-
-- Prompt order matters more than weight; lead with the most important subject
-- `--stylize` higher than ~250 starts to override prompt content
-- Style references do not survive aspect ratio shifts cleanly; re-anchor when changing AR
-- Model version drift can break seed reproducibility within months; Pieces should archive the model version at time of generation
+*(Empty until first job. Will be confirmed and dated on first encounter.)*
 
 ## Recipes
 

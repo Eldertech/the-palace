@@ -35,44 +35,7 @@ This isn't metaphor—it's **mathematical transformation**. Fourier Transform pr
 
 ## The Technical Side
 
-### Fourier Transform (Time → Frequency)
-
-**Time domain:**
-- X-axis: Time (seconds)
-- Y-axis: Amplitude (loudness)
-- Shows: When sound happens, how loud
-
-**Frequency domain (FFT):**
-- X-axis: Frequency (Hz)
-- Y-axis: Energy (magnitude)
-- Shows: Which frequencies present, how much energy
-
-**Same audio, two views:**
-```
-Time domain: Shows kick hits at 0s, 0.5s, 1.0s (temporal pattern)
-Frequency domain: Shows 60Hz spike (fundamental frequency)
-```
-
-**The insight:** **Neither view is "real." Both are valid perspectives on same data.**
-
-### What Each View Reveals
-
-**Time domain reveals:**
-- Rhythm (when events occur)
-- Transients (sharp attacks)
-- Envelope (how sound evolves over time)
-- **Temporal structure**
-
-**Frequency domain reveals:**
-- Pitch (which frequencies)
-- Timbre (harmonic content)
-- Resonances (energy peaks)
-- **Spectral structure**
-
-**Example: Analyzing kick drum**
-- Time view: See attack transient, decay
-- Frequency view: See 60Hz fundamental, harmonic content
-- **Different questions answered by different views**
+A Fourier Transform converts the same audio signal between two coordinate systems: the time domain (amplitude over time — when events occur, how loud) and the frequency domain (energy at each frequency — which pitches are present, which harmonics). The same kick drum in time view shows its transient attack; in frequency view shows its 60Hz fundamental. Neither view is more "real" — each reveals structure invisible in the other. The same mathematical losslessness holds in both directions: no information is lost, only perspective shifts. See [[Kick Drum ↔ Foundation]] for the specific case of kick drum analysis.
 
 ## The Conceptual Side
 
@@ -92,18 +55,7 @@ Frequency domain: Shows 60Hz spike (fundamental frequency)
 
 ### The Coordinate System Metaphor
 
-**Cartesian coordinates:** (x, y) - horizontal and vertical
-**Polar coordinates:** (r, θ) - radius and angle
-
-**Same point, two descriptions:**
-- Cartesian: (3, 4)
-- Polar: (5, 53°)
-
-**Some problems easier in one system:**
-- Circles: Easy in polar (constant r)
-- Rectangles: Easy in Cartesian (aligned to axes)
-
-**The principle:** **Choose coordinate system that makes problem simple.**
+The same point is (3, 4) in Cartesian coordinates and (5, 53°) in polar — neither is "right," each is optimal for different problems. Circles are easy in polar; rectangles in Cartesian. The principle: **choose the coordinate system that makes the problem simple.**
 
 **In creative work:**
 - Stuck in "how do I make this?" → Switch to "what does this want to be?"
@@ -173,75 +125,11 @@ Answer: **Each reveals information invisible in the other.**
 - Write down the reframe before continuing
 - **Make perspective shift conscious**
 
-## Why This Resonance Works
-
-### 1. Mathematically Rigorous
-Fourier Transform is **proof** that perspective change works:
-- Lossless transformation (no information lost)
-- Reversible (can go back)
-- Reveals hidden structure
-- **Mathematical validation of cognitive principle**
-
-### 2. Immediately Applicable
-Every DAW has:
-- Waveform view (time domain)
-- Spectrum analyzer (frequency domain)
-- **Direct experience of principle available**
-
-### 3. Transfers Broadly
-Once you understand "different perspectives on same data":
-- Art: Multiple interpretations of same piece
-- Science: Multiple theories explaining same phenomenon
-- Life: Multiple narratives about same event
-- **Same structure appears everywhere**
-
 ## Advanced Applications
 
-### Phase Vocoder (Time + Frequency)
+### Phase Vocoder and Multiple Perspectives
 
-**Combines both domains:**
-- STFT: Short-Time Fourier Transform
-- Analyzes frequency content over time
-- **Spectrogram:** 3D view (time, frequency, energy)
-
-**What this enables:**
-- Time stretching without pitch shift
-- Pitch shift without time change
-- Spectral editing
-- **Impossible in single domain**
-
-**The insight:** **Some problems require MULTIPLE perspectives simultaneously.**
-
-### Wavelet Transform (Alternative Perspective)
-
-**Neither time NOR frequency domain:**
-- Time-frequency localization
-- Different basis functions
-- **Third perspective on same data**
-
-**Example use:**
-- Transient detection (wavelets better than FFT)
-- De-noising (wavelet domain more efficient)
-- **Right tool for specific job**
-
-**The principle:** **Multiple valid perspectives exist. Choose the useful one.**
-
-### Cross-Domain Applications
-
-**Image processing:**
-- Spatial domain: Pixels, brightness
-- Frequency domain: Textures, patterns
-- **Same image, different information**
-
-**Signal processing:**
-- Time domain: Events, sequences
-- Frequency domain: Cycles, oscillations
-- **Same signal, different structure**
-
-**Economics:**
-- Time series: Price over time
-- Frequency analysis: Market cycles
-- **Same data, different insights**
+The spectrogram (Short-Time Fourier Transform) is a third view: time, frequency, and energy simultaneously. This enables time-stretching without pitch shift — impossible in either single-domain view. Some problems require multiple perspectives at once. The wavelet transform offers yet another perspective, neither purely time nor frequency, better suited to transient detection than FFT. The principle: **multiple valid perspectives exist; choose the useful one.** The same logic applies to image processing (spatial vs. frequency domains), economics (price timeseries vs. market cycles), and anywhere else the same data can be decomposed differently.
 
 ## Common Student Discoveries
 

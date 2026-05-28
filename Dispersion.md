@@ -43,143 +43,39 @@ forward_vector: "I want to become the palace's teachable demonstration that one 
 
 ### 1. Wave Dispersion: Frequency-Dependent Propagation Speed
 
-In physics and acoustics, **dispersion** means **frequency-dependent wave propagation speed**. Different frequencies travel at different velocities through a medium.
+**Frequency-dependent wave propagation speed** — different frequencies travel at different velocities through a medium. It arises wherever a restoring force couples nonlinearly to inertia: stiff strings and bars, waveguides, room modes, deep-water waves. The audible signature is inharmonicity — upper partials drift sharp (or flat), desynchronizing the harmonic series into the bell-like ring of a tense piano string.
 
-**Physical origins:**
-- Stiff strings and bars: restoring force couples to inertia nonlinearly; higher frequencies experience different effective stiffness
-- Waveguides (transmission lines, pipes): frequency-dependent boundary impedance effects
-- Room modes: acoustic propagation speed varies with frequency due to material absorption and resonance
-- Ocean waves: water depth determines wave speed; long waves travel faster than short waves
+**Mathematical signature.** The dispersion relation $\omega = \omega(k) \neq c \cdot k$; for a stiff string, $\omega_n = n f_0 \sqrt{1 + B n^2}$ (B = stiffness coefficient), so higher partials shift more.
 
-**Perceptual consequence:**
-- Waveform stretches and spreads over distance (dispersion in the literal sense: things scatter)
-- Phase relationships change over time; harmonically related frequencies *desynchronize*
-- The characteristic **metallic, inharmonic sound** of a stiff piano string: the fundamental and low partials remain nearly harmonic, but upper partials arrive slightly early (or late, depending on the medium's stiffness signature), creating the bell-like ring
-- In extreme cases (like deep-water ocean waves), frequency shifting can occur — the waveform's center frequency shifts as it travels
-
-**Where it happens:**
-- Piano strings under high tension (stiff string regime)
-- Guitar strings (slight effect, less dramatic than piano)
-- Bell metal and struck membranes (moderate to high stiffness)
-- Room modes and acoustic propagation
-- Transmission lines and waveguides (electrical analogs: frequency-dependent propagation)
-
-**Mathematical signature:**
-
-The wave equation becomes:
-$$\omega = \omega(k) \neq c \cdot k$$
-
-For a stiff string, the dispersion relation is:
-$$\omega_n = n \cdot f_0 \sqrt{1 + B \cdot n^2}$$
-
-where B is the stiffness coefficient. Higher partials (larger n) have higher relative frequency shifts.
-
-**Synthesis approach:**
-- Compute partial frequencies from a frequency-dependent dispersion relation, not the harmonic series
-- Use [[Categorizing Inharmonicity|nonlinear oscillator potentials]] to generate inharmonic partials naturally
-- Apply frequency-dependent delay: each partial gets a group delay proportional to its frequency (inverse relationship: lower frequencies delayed more, or vice versa depending on the medium)
+**Synthesis approach:** compute partials from the dispersion relation rather than the harmonic series — or via [[Categorizing Inharmonicity|nonlinear oscillator potentials]] — then apply a per-partial frequency-dependent group delay.
 
 ---
 
 ### 2. Loudspeaker Dispersion: Spatial Spreading Pattern
 
-In speaker and acoustic design, **dispersion** refers to the **angular distribution of sound energy**—how the acoustic field spreads through space.
+In speaker and acoustic design, **dispersion** is the **angular distribution of sound energy** — how wide or narrow the acoustic "beam" is at each frequency (a tweeter beams; a woofer spreads). It is frequency-dependent, but for *geometric* reasons (wavelength vs. driver size), not propagation speed.
 
-**What it describes:**
-- How wide or narrow the acoustic "beam" is at different frequencies
-- A tweeter with narrow dispersion: high frequencies radiate in a tight cone (high directivity)
-- A woofer with wide dispersion: low frequencies spread broadly into the room (omnidirectional character)
-- This is *frequency-dependent* but for geometric reasons, not propagation speed
+**Key insight: dispersion ≠ frequency shift.** No temporal spreading, no phase desynchronization — pure spatial geometry. The same frequency heard across the room keeps its pitch; only its amplitude varies. This is the meaning most orthogonal to the other two, which is exactly why distinguishing it matters.
 
-**Key insight: Dispersion ≠ frequency shift**
-- No temporal spreading of waveforms
-- No phase desynchronization between frequencies
-- Pure spatial geometry: different frequencies have different "directivity patterns"
-- The *same frequency* heard in different parts of the room may have slightly different amplitude, but the frequency itself does not change
-
-**Physical origin:**
-- Wavelength determines diffraction: when wavelength >> source size, waves bend around the source (omnidirectional). When wavelength << source size, waves beam forward.
-- A horn or dome tweeter is small → high-frequency wavelengths are small relative to driver size → strong beaming
-- A woofer cone is large → low-frequency wavelengths are large relative to driver size → spreading
-
-**Synthesis consequence:**
-- Irrelevant for single-channel audio synthesis (no spatial dimension yet)
-- Critical for spatial audio, ambisonics, and binaural rendering
-- Modeling speaker dispersion in auralization: high-frequency content should have higher directivity in the Head-Related Transfer Function (HRTF)
-
-**Design practice:**
-- Asymmetric crossovers to match driver dispersion: delay high-frequency channels so they arrive phase-coherent with lows despite different directivity
-- Wide-dispersion tweeters for near-field monitoring and small rooms
-- Narrow-dispersion designs for far-field precision
+**Synthesis relevance:** irrelevant to single-channel synthesis (no spatial dimension), but central to spatial audio, ambisonics, and binaural rendering, where high-frequency content should carry higher directivity in the HRTF.
 
 ---
 
 ### 3. Granular Dispersion: Statistical Spread in Parameter Space
 
-In [[Granular Synthesis|granular synthesis]], **dispersion** refers to the **spread or variance of grain parameters around a center value**.
-
-**Parameters that can be dispersed:**
-- Pitch: grains centered on 440 Hz with dispersion ±50 cents (random variation around target)
-- Timing: grain onsets dispersed around a regular beat with jitter
-- Duration: grain envelope lengths vary across a distribution
-- Amplitude: grain loudness varies with noise (Gaussian, uniform, or custom distribution)
-- Spatial position: grains scatter across a stereo field or 3D space
-
-**Perceptual consequence:**
-- Low dispersion: tight, coherent cloud with clear pitch and temporal character
-- High dispersion: granular texture, cloud-like ambiguity, loss of sense of "pitch" in favor of "timbre"
-- Dispersion creates *statistical dimensionality*: the character of the sound comes not from individual grain properties but from the emergent population statistics
-
-**Connection to particle systems:**
-[[Granular Synthesis|In particle synthesis]], dispersion is implemented naturally: set initial position and velocity distributions, let physics unfold. A dispersed cloud of particles under gravity will converge; under repulsion or drag, they will spread. The dispersion evolves over time as a consequence of forces, not by explicit parameter randomization.
+In [[Granular Synthesis|granular synthesis]], **dispersion** is the spread of grain parameters around a center value — pitch, onset timing, duration, amplitude, spatial position. Low dispersion gives a tight, pitched cloud; high dispersion dissolves pitch into texture. The character emerges from *population statistics*, not individual grains — a statistical dimensionality. In [[Granular Synthesis|particle synthesis]] it falls out of the physics: set initial position and velocity distributions and let forces evolve the spread (gravity converges, drag scatters), rather than randomizing parameters explicitly.
 
 ---
 
 ## The Prism as Unifying Icon
 
-A **prism** disperses white light into spectrum: a beam of mixed frequencies enters, refracts at frequency-dependent angles (because refractive index *n* depends on wavelength), and exits as a fanned array of colors.
-
-**The prism unifies all three meanings:**
-
-1. **Temporal dispersion** (wave propagation): Light of different wavelengths travels at different speeds through glass (different phase velocities). The path length through the prism delays longer wavelengths more than shorter ones. Time and frequency are entangled.
-
-2. **Spatial dispersion** (speaker/beam spread): The refracted beams exit the prism at different angles. Red (long wavelength) bends less; violet (short wavelength) bends more. The spectrum is spatially spread.
-
-3. **Statistical dispersion** (parameter spread): The prism transforms a single input (white light of unknown composition) into a distribution (a spectrum). You cannot see individual frequencies in white light; the prism reveals the underlying *population of wavelengths* as a visible spread.
-
-The prism is the visual *lingua franca* of dispersion. When teaching dispersion in any context, the prism should appear: as a reminder that spreading in time, space, and parameter statistics are facets of a single underlying principle.
+A **prism** disperses white light into spectrum, and unifies all three meanings at once. **Temporally**, wavelengths travel at different phase velocities through the glass (longer paths delay longer wavelengths). **Spatially**, they exit at different angles (red bends least, violet most). **Statistically**, it turns a single input — white light — into a revealed distribution, the spectrum's population of wavelengths. The prism is dispersion's visual *lingua franca*: whenever the concept is taught it should appear, a reminder that spreading in time, space, and parameter statistics are facets of one principle.
 
 ---
 
 ## Convolution and Artificial Dispersion
 
-**Can convolution create dispersion?**
-
-The answer is **yes, but with constraints**. Convolution with an impulse response (IR) that is **minimum-phase** and has **frequency-dependent group delay** can simulate dispersive propagation.
-
-**What works:**
-- An IR derived from a real dispersive medium (e.g., recorded sound traveling through stiff strings or dispersive waveguides)
-- A synthetic IR built from cascaded all-pass filters tuned to create frequency-dependent group delay
-- A minimum-phase IR (one with no zeros in the right half-plane): guarantees causality and stability
-
-**What doesn't work:**
-- Standard reverb impulse responses (even "bright" ones): these are not minimum-phase in the dispersive sense. They add diffuse reflections, not structured frequency-dependent delay.
-- Linear phase EQ: creates frequency-dependent *magnitude* changes, not group delay.
-- A maximum-phase IR: creates pre-emphasis (the effect precedes the cause), violating causality
-
-**The technical requirement:**
-
-For convolution to create authentic wave dispersion, the frequency-dependent group delay must be:
-$$\tau(\omega) = -\frac{d\phi(\omega)}{d\omega}$$
-
-where φ(ω) is the phase response. This must be *positive* and *nonlinear* in ω to create the characteristic temporal spreading of higher frequencies.
-
-**Practical synthesis approach:**
-- Generate a time-domain IR by cascading all-pass filters: each all-pass has zero group delay at DC and all-pass group delay at its tuned frequency. Cascade them to build a frequency-dependent profile.
-- Convolve incoming audio with this IR.
-- Adjust all-pass Q and frequency to match the target dispersion relation (e.g., the stiffness profile of a real instrument).
-
-This approach is computationally efficient for real-time synthesis and creates the *authentic phase signature* of a dispersive medium without simulating the full physics.
+Convolution **can** create dispersion — if the impulse response is *minimum-phase* with *frequency-dependent group delay*, $\tau(\omega) = -d\phi(\omega)/d\omega$, positive and nonlinear in ω (that nonlinearity is what spreads the higher frequencies in time). Standard reverb IRs don't qualify — diffuse reflections, not structured delay; linear-phase EQ changes magnitude, not delay; maximum-phase IRs violate causality. The practical recipe: cascade all-pass filters, each contributing tuned group delay, shape their Q and frequency to match a target dispersion relation, and convolve. This buys the authentic phase signature of a dispersive medium at real-time cost, without simulating the full physics.
 
 ---
 
