@@ -4,7 +4,7 @@ Crystal Instrument — Phase 3 full chromatic build script.
 
 Cycle 9 of the GSL permanent steward. Loudon approved the cycle-8 audition
 (8-file Hexagonal/Quartz unit) with option_id=APPROVE. This script is the
-GREEN-LIGHT batch: the same adapter over Crystal Audio/crystal_synth.py,
+GREEN-LIGHT batch: the same adapter over Projects/Generative Sample Libraries/crystal-audio/crystal_synth.py,
 extended to the full 88-note chromatic keyboard (A0..C8) x 2 velocity layers
 = 176 WAVs. All voicing settings are unchanged from the approved audition:
     FUNDAMENTAL_GAIN = 0.30
@@ -39,7 +39,7 @@ SFZ_PATH = BUILD_DIR / "crystal_instrument.sfz"
 OFFSETS_PATH = BUILD_DIR / "offsets.json"
 LOG_PATH = BUILD_DIR / "build-log.md"
 
-CRYSTAL_SYNTH_PATH = PALACE_ROOT / "Crystal Audio" / "crystal_synth.py"
+CRYSTAL_SYNTH_PATH = PALACE_ROOT / "Projects" / "Generative Sample Libraries" / "crystal-audio" / "crystal_synth.py"
 
 SAMPLE_RATE = 44100
 NOTE_DURATION = 4.0   # seconds per rendered note
@@ -227,7 +227,7 @@ def main():
 def write_sfz(offsets):
     lines = [
         "// Crystal Instrument — Phase 3 of Generative Sample Libraries",
-        f"// First non-Kokoro source: {INSTRUMENT_NAME} from Crystal Audio/crystal_synth.py",
+        f"// First non-Kokoro source: {INSTRUMENT_NAME} from Projects/Generative Sample Libraries/crystal-audio/crystal_synth.py",
         f"// FULL CHROMATIC: {len(NOTES)} notes ({NOTES[0][1]}..{NOTES[-1][1]}) "
         f"x {len(VELOCITY_LAYERS)} velocity layers = {len(NOTES) * len(VELOCITY_LAYERS)} regions.",
         "//",
