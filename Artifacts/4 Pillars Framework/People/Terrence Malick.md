@@ -1,6 +1,6 @@
 ---
 title: Terrence Malick
-type: source
+type: person
 pillars:
   - philosophy
   - practice
@@ -16,9 +16,11 @@ who_leads: shared
 domain: Filmmaker
 links:
   - target: "[[Source Library]]"
-    type: member-of
+    type: connects-to
+    label: member-of
   - target: "[[FOUR PILLARS]]"
-    type: informs
+    type: connects-to
+    label: informs
 ---
 
 # Terrence Malick
@@ -79,38 +81,3 @@ Transcendence through craft. Music as spiritual experience. Beauty found in natu
 
 ### Practice Pillar
 Patient creation: Work on one ambient piece for months. Add texture weekly. Let it evolve slowly.
-
----
-
-## Teaching Integration
-
-**For weekly themes:**
-- Reference Terrence Malick's work when themes align with these concepts
-- Use quotes as prompts for reflection
-- Assign reading from key works during relevant months
-- Build exercises that apply concepts to music production
-
-**For student discovery:**
-- Encourage students to find connections between Terrence Malick's work and their practice
-- Document how concepts transfer across domains
-- Share examples of applying these ideas in production
-
-**For deeper study:**
-- Dedicate 3-month arc to Terrence Malick (following Source Library structure)
-- Read primary sources, not summaries
-- Create projects directly influenced by their philosophy
-- Journal throughout: What shifts in your practice?
-
----
-
-## Why This Source Matters
-
-Terrence Malick provides essential perspective on the 4 Pillars framework because their work demonstrates how Visual poetry over narrative appears across all creative domains.
-
-Their approach teaches that the same patterns exist whether you're filmmaker, making music, building tools, or developing daily practice.
-
-This is cross-domain resonance in action.
-
----
-
-*Terrence Malick. Filmmaker. Same patterns, different materials. That's what the 4 Pillars framework reveals.*

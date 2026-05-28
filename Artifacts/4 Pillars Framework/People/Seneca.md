@@ -1,6 +1,6 @@
 ---
 title: Seneca
-type: source
+type: person
 pillars:
   - philosophy
   - practice
@@ -16,9 +16,11 @@ who_leads: shared
 domain: Philosopher
 links:
   - target: "[[Source Library]]"
-    type: member-of
+    type: connects-to
+    label: member-of
   - target: "[[FOUR PILLARS]]"
-    type: informs
+    type: connects-to
+    label: informs
 ---
 
 # Seneca
@@ -79,38 +81,3 @@ Negative visualization: Imagine losing ability to make music. Appreciate it now.
 
 ### Practice Pillar
 Daily time audit: Where did creative hours go? Wasted or invested?
-
----
-
-## Teaching Integration
-
-**For weekly themes:**
-- Reference Seneca's work when themes align with these concepts
-- Use quotes as prompts for reflection
-- Assign reading from key works during relevant months
-- Build exercises that apply concepts to music production
-
-**For student discovery:**
-- Encourage students to find connections between Seneca's work and their practice
-- Document how concepts transfer across domains
-- Share examples of applying these ideas in production
-
-**For deeper study:**
-- Dedicate 3-month arc to Seneca (following Source Library structure)
-- Read primary sources, not summaries
-- Create projects directly influenced by their philosophy
-- Journal throughout: What shifts in your practice?
-
----
-
-## Why This Source Matters
-
-Seneca provides essential perspective on the 4 Pillars framework because their work demonstrates how Time as most valuable resource appears across all creative domains.
-
-Their approach teaches that the same patterns exist whether you're philosopher, making music, building tools, or developing daily practice.
-
-This is cross-domain resonance in action.
-
----
-
-*Seneca. Philosopher. Same patterns, different materials. That's what the 4 Pillars framework reveals.*

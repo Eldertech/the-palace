@@ -19,7 +19,8 @@ links:
   - target: "[[FOUR PILLARS]]"
     type: deepens
   - target: "[[Quality Manifesto]]"
-    type: applies-to
+    type: connects-to
+    label: applies-to
   - target: "[[Weekly Themes Database]]"
     type: enables
   - target: "[[4 Pillars Framework - The Founding Conversation]]"

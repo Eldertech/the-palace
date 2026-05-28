@@ -1,6 +1,6 @@
 ---
 type: specialist
-status: alive
+status: stub
 medium: image
 tool: midjourney
 tool_version: v6.x

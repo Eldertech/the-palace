@@ -19,8 +19,9 @@ links:
   - target: "[[Leverage Points Framework]]"
     type: deepens
     label: paradigm-application
-  - target: "[[4 Pillars Weekly Structure]]"
-    type: enables
+  - target: "[[Loudon Live]]"
+    type: connects-to
+    label: weekly-cadence
   - target: "[[4 Pillars Framework - The Founding Conversation]]"
     type: emerged-from
   - target: "[[Hilaritas Generator]]"
@@ -209,7 +210,7 @@ But you have evidence:
 This manifesto connects to:
 - [[Leverage Points Framework]] - paradigm-level intervention
 - [[FOUR PILLARS]] - integration of life and work
-- [[4 Pillars Weekly Structure]] - operationalizing these values
+- [[Loudon Live]] - operationalizing these values in the weekly teaching cadence
 - [[Palace AI Partnership Philosophy]] - using AI for becoming, not just producing
 
 The manifesto isn't aspirational—it's operational. Every decision is filtered through these statements. Every week is evaluated by these metrics. The paradigm is protected by making it explicit.

@@ -1,6 +1,7 @@
 ---
 title: "Meadows and an Artist's Career"
 type: project
+status: active
 pillars: [philosophy, practice, creation]
 born: 2026-05
 last_activated: 2026-05

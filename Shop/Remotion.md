@@ -13,7 +13,7 @@ links:
   - { label: "directed-by", target: "Shop/Maker" }
   - { label: "alternative-to", target: "Shop/Manim CE" }
   - { label: "tested-by", target: "Artifacts/Shop/Remotion/tests/" }
-tags: [specialist, shop, motion, ui, react, stub]
+tags: [specialist, shop, motion, ui, react]
 ---
 
 # Remotion

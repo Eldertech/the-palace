@@ -44,7 +44,7 @@ links:
   - target: "[[Swarm Weave]]"
     type: connects-to
   - target: "[[BBS Blackboard]]"
-    type: enables
+    type: connects-to
   - target: "[[Kuramoto Coupling]]"
     type: connects-to
   - target: "[[Cooperation Yields Agency]]"
@@ -52,7 +52,7 @@ links:
   - target: "[[Palace Enchantment]]"
     type: connects-to
   - target: "[[Palace Agent Infrastructure Spec]]"
-    type: enables
+    type: connects-to
     label: seed-of
   - target: "[[Dialogue Moderator]]"
     type: couples-with

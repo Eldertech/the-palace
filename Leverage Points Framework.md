@@ -20,8 +20,9 @@ links:
     type: enables
   - target: "[[FOUR PILLARS]]"
     type: connects-to
-  - target: "[[4 Pillars Weekly Structure]]"
+  - target: "[[Loudon Live]]"
     type: connects-to
+    label: weekly-cadence
   - target: "[[4 Pillars Framework - The Founding Conversation]]"
     type: emerged-from
   - target: "[[Meadows and Music — Leverage Points]]"

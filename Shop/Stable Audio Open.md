@@ -15,7 +15,7 @@ links:
   - { label: "directed-by", target: "Shop/Maker" }
   - { label: "post-processed-by", target: "Shop/ffmpeg" }
   - { label: "tested-by", target: "Artifacts/Shop/Stable Audio Open/tests/" }
-tags: [specialist, shop, sound, generative, music, sfx, stub]
+tags: [specialist, shop, sound, generative, music, sfx]
 ---
 
 # Stable Audio Open

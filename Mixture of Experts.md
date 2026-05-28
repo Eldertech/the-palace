@@ -17,8 +17,9 @@ links:
     type: connects-to
   - target: "[[Kuramoto Coupling]]"
     type: mirrors
-  - target: "[[Harvest Ceremony]]"
+  - target: "[[Weave Ceremony]]"
     type: mirrors
+    label: load-balancing-audit
   - target: "[[Boundary-Crossing Instruments]]"
     type: connects-to
   - target: "[[Spinoza Conatus]]"

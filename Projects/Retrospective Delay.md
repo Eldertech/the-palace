@@ -1,6 +1,7 @@
 ---
 title: "Retrospective Delay"
 type: project
+status: active
 pillars: [creation, tools]
 born: 2026-01
 last_activated: 2026-03
@@ -13,7 +14,8 @@ beauty: 8
 who_leads: loudon
 links:
   - target: "[[Semantic Delay]]"
-    type: contrasts-with
+    type: connects-to
+    label: contrasts-with
   - target: "[[Trickster]]"
     type: deepens
   - target: "[[Dub Lineage]]"

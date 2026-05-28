@@ -11,7 +11,7 @@ beauty: 7
 who_leads: shared
 links:
   - target: "[[Kuramoto Coupling]]"
-    type: emerges-from
+    type: emerged-from
     label: phase-scatter
   - target: "[[Action Potential Oscillator]]"
     type: connects-to
@@ -94,4 +94,4 @@ Particle synthesis is not a metaphor for neural dynamics — it's the literal sa
 
 ---
 
-*This entry is a seed. The concept spans decades of music technology; these notes capture the palace's specific angle — granular synthesis as a population of coupled oscillators, not just a texture generator.*
+*The concept spans decades of music technology; these notes capture the palace's specific angle — granular synthesis as a population of coupled oscillators, not just a texture generator.*

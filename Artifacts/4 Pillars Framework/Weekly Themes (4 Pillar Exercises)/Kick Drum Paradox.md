@@ -19,11 +19,13 @@ links:
   - target: "[[Weekly Themes Database]]"
     type: connects-to
   - target: "[[Leverage Points Framework]]"
-    type: applies
+    type: connects-to
+    label: applies
   - target: "[[Donella Meadows]]"
     type: deepens
   - target: "[[FOUR PILLARS]]"
-    type: exemplifies
+    type: connects-to
+    label: exemplifies
   - target: "[[4 Pillars Framework - The Founding Conversation]]"
     type: emerged-from
 ---

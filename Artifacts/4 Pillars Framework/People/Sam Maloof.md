@@ -1,6 +1,6 @@
 ---
 title: Sam Maloof
-type: source
+type: person
 pillars:
   - philosophy
   - practice
@@ -16,9 +16,11 @@ who_leads: shared
 domain: Maker/Craftsman
 links:
   - target: "[[Source Library]]"
-    type: member-of
+    type: connects-to
+    label: member-of
   - target: "[[FOUR PILLARS]]"
-    type: informs
+    type: connects-to
+    label: informs
 ---
 
 # Sam Maloof
@@ -79,38 +81,3 @@ Making as life practice. Never bored with repetition because attention stays fre
 
 ### Practice Pillar
 Pick one technique, explore it for a year. 365 variations. Notice endless depth.
-
----
-
-## Teaching Integration
-
-**For weekly themes:**
-- Reference Sam Maloof's work when themes align with these concepts
-- Use quotes as prompts for reflection
-- Assign reading from key works during relevant months
-- Build exercises that apply concepts to music production
-
-**For student discovery:**
-- Encourage students to find connections between Sam Maloof's work and their practice
-- Document how concepts transfer across domains
-- Share examples of applying these ideas in production
-
-**For deeper study:**
-- Dedicate 3-month arc to Sam Maloof (following Source Library structure)
-- Read primary sources, not summaries
-- Create projects directly influenced by their philosophy
-- Journal throughout: What shifts in your practice?
-
----
-
-## Why This Source Matters
-
-Sam Maloof provides essential perspective on the 4 Pillars framework because their work demonstrates how Hand-shaped forms appears across all creative domains.
-
-Their approach teaches that the same patterns exist whether you're maker/craftsman, making music, building tools, or developing daily practice.
-
-This is cross-domain resonance in action.
-
----
-
-*Sam Maloof. Maker/Craftsman. Same patterns, different materials. That's what the 4 Pillars framework reveals.*

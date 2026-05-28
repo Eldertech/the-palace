@@ -1,6 +1,7 @@
 ---
 title: Symbiotic Skills
 type: project
+status: active
 pillars:
   - creation
   - tools
@@ -36,7 +37,7 @@ links:
   - target: "[[Swarm Weave]]"
     type: connects-to
     label: emerged-but-not-predicted
-  - target: "[[The Jewel]]"
+  - target: "[[JEWEL|The Jewel]]"
     type: connects-to
     label: emerged-but-not-predicted
   - target: "[[Palace Map]]"

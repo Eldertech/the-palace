@@ -1,6 +1,6 @@
 ---
 title: R. Murray Schafer
-type: source
+type: person
 pillars:
   - philosophy
   - practice
@@ -16,9 +16,11 @@ who_leads: shared
 domain: Musician/Composer
 links:
   - target: "[[Source Library]]"
-    type: member-of
+    type: connects-to
+    label: member-of
   - target: "[[FOUR PILLARS]]"
-    type: informs
+    type: connects-to
+    label: informs
 ---
 
 # R. Murray Schafer
@@ -79,38 +81,3 @@ Everything is already music. Production = selection + framing, not creation ex n
 
 ### Practice Pillar
 Daily soundwalk: 10 minutes listening without recording. Notice keynote, signals, soundmarks.
-
----
-
-## Teaching Integration
-
-**For weekly themes:**
-- Reference R. Murray Schafer's work when themes align with these concepts
-- Use quotes as prompts for reflection
-- Assign reading from key works during relevant months
-- Build exercises that apply concepts to music production
-
-**For student discovery:**
-- Encourage students to find connections between R. Murray Schafer's work and their practice
-- Document how concepts transfer across domains
-- Share examples of applying these ideas in production
-
-**For deeper study:**
-- Dedicate 3-month arc to R. Murray Schafer (following Source Library structure)
-- Read primary sources, not summaries
-- Create projects directly influenced by their philosophy
-- Journal throughout: What shifts in your practice?
-
----
-
-## Why This Source Matters
-
-R. Murray Schafer provides essential perspective on the 4 Pillars framework because their work demonstrates how Soundscape appears across all creative domains.
-
-Their approach teaches that the same patterns exist whether you're musician/composer, making music, building tools, or developing daily practice.
-
-This is cross-domain resonance in action.
-
----
-
-*R. Murray Schafer. Musician/Composer. Same patterns, different materials. That's what the 4 Pillars framework reveals.*

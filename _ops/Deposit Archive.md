@@ -9,8 +9,9 @@ status: canonical
 links:
   - target: "[[Deposit Ceremony]]"
     type: emerged-from
-  - target: "[[Harvest Log]]"
+  - target: "[[Harvest Ceremony]]"
     type: connects-to
+    label: archive-of
 ---
 
 # Deposit Archive

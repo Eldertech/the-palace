@@ -18,7 +18,8 @@ links:
   - target: "[[Cross-Domain Resonances]]"
     type: connects-to
   - target: "[[FOUR PILLARS]]"
-    type: exemplifies
+    type: connects-to
+    label: exemplifies
 ---
 
 # Saturation ↔ Richness
