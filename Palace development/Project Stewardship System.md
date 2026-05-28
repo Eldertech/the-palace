@@ -55,17 +55,21 @@ A specification for an agent that routinely tends to the palace's `Projects/`, a
 
 This entry is the deposited form of a 2026-05-02 conversation that began as "design an automated project management system" and ended in a richer place: the system isn't entirely new, the alignment problem is harder than initially framed, and the agent's posture must vary by stage of the project it is tending.
 
-## Status (as of 2026-05-26)
+## Status (as of 2026-05-27 evening)
 
-The body below describes the system as conceived; this block records where the build actually stands. The five-stage plan has moved well past where the rest of this page reads:
+The body below describes the system as conceived; this block records where the build actually stands. The five-stage plan has moved well past where the rest of this page reads — the system has crossed from "test it" into "use it."
 
-- **Stage A (hand-run pilot)** — done, and past its original scope. The [[Generative Sample Libraries]] steward ran five cycles (2026-05-03 → 2026-05-04), shipped Phase 2 (the Interview skill), and wrote back to its own page. All four of its RESOURCE_REQUESTs resolved.
-- **Stage B (Orchestrator v0.1)** — build-complete (2026-05-04): all six phases green, 97/97 tests, songline + permanent modes, two real-subagent smoke tests passed. It sits on an unpushed local branch awaiting Loudon's own smoke-test + review, and has not yet run on a live project via the skill. See [[Orchestrator Production Plan]].
-- **Stage C (schedule the orchestrator)** — specced, not built. [[Orchestrator Production Plan v0.2]] is a ready autonomous-build contract (batch-cycle, cadence, spawn-from-project, scheduled-task recipes), blocked on the Stage B smoke-test gate.
-- **Stage D (STIGMERGY v0.2 Trickster posting)** — shipped (2026-05-04). Operational board, strict §2.2 validator, click-to-respond. One routing bug surfaced through the pilot and was fixed.
-- **Stage E (automated Trickster)** — not started; still unspecced.
+- **Stage A (hand-run pilot)** — done. Original pilot, [[Generative Sample Libraries]] (5 hand-run cycles 2026-05-03 → 2026-05-04), shipped Phase 2 and wrote back to its own page.
+- **Stage B (Orchestrator v0.1)** — done, in production. 15 stewards run through it across multiple batches. The `cli.js` encoded-path bug (Cowork-discovered) is fixed; the skill at `.claude/skills/palace-orchestrator/` is the canonical invocation surface. 97/97 orchestrator tests + 297/297 STIGMERGY app tests green (counts grew this session).
+- **Stage C (batch mode)** — thin path shipped (`batch-plan.js` + `batch.md`). `--ignore-debounce` flag added 2026-05-27 for interactive validation runs. **15-steward parallel dispatch + sequential post-processing demonstrated twice**, ~10 min wall time per batch (heaviest cycle dominates). The weekly scheduled task is still staged not created — that's the only remaining Stage C piece.
+- **Stage D (STIGMERGY v0.2 Trickster posting)** — shipped, plus four named contract fixes this session: (1) lenient options-shape normalizer accepts both `{id,label}` and strings; (2) "every cycle ends with a TRICKSTER ask" steward rule; (3) top-level `options[]` accepted as fallback; (4) "emit, do not write" output discipline forbidding direct board/state writes. All five fixes are committed and validated under load.
+- **Stage E (automated Trickster)** — not started; still unspecced. Loudon remains the human Trickster; the 15-steward cadence has not yet hit a bandwidth wall that demands automation.
 
-The live frontier is the Stage B smoke-test gate, not a build. The natural next move is to advance the GSL steward to cycle 6 through the orchestrator skill (it doubles as smoke-test and first real use), then push.
+**Other infrastructure this session:** Infrastructure Spec gained §3.3.1 (dual-path health block). Path 1 keeps the original strict 6-field block for the day API-direct dispatch returns; Path 2 (current Claude-Code-resident) stamps a minimal `{score: "green", model, _orchestrator_metadata}` stub because the Agent tool doesn't return the `input_tokens` breakdown §3.3 originally assumed. Validator recognizes the dispatch_mode marker and relaxes the other field requirements. `health.js` shrinks from a token-averaging machine to a stub builder.
+
+**15 stewards currently enchanted** (REGISTRY.json authoritative): Generative Sample Libraries (cycle 13), Generative Wavetable Libraries (cycle 6), Shepard Tone Synthesizer (cycle 3), 2D Torus Wavetable Synthesizer (cycle 2), Action Potential Oscillator (cycle 2), Blood Compressor (cycle 2), Crystal Synthesizer (cycle 2), Generative Preset Development (cycle 2), Inharmonic Wavetable Synthesis (cycle 2), Meadows and an Artist's Career (cycle 2), Portamento and Physical Pitch Modeling (cycle 2), Retrospective Delay (cycle 2), Semantic Delay (cycle 2), Semantic Webcam (cycle 2), Slime Mold Delay (cycle 2). Cycle 2 across most of these produced real deliverables (audible birefringence proof, Faust prototypes, p5.js sims, ear-training quizzes, daemon specs, sample libraries, etc.).
+
+The live frontier is no longer technical — it's **operational bandwidth**. The system produces artifacts and asks faster than a single human Trickster can audition them; the 17-pending-decisions inbox is the new constraint. The next deferred build piece is the Drift and Consolidation steward beat — see [[Drift and Consolidation]]. Active handoff for the operational state is at [[Project Stewardship System — handoff]].
 
 ## The Original Question
 
