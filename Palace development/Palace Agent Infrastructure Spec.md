@@ -241,6 +241,25 @@ PAGE_UPDATE       Agent reporting it has detected a page change
 HEALTH_NOTICE     Orchestrator posting yellow/red health alert to TRICKSTER
 ```
 
+### 2.4.1 Payload Content Conventions (rich content)
+
+The `payload` field is **opaque to the validator** (§2.2): it must be an object, but its shape is not schema-enforced. That keeps producer and consumer loosely coupled — a steward (producer) and STIGMERGY (renderer/consumer) evolve independently. The cost is that these conventions are **advisory**: a content type is only reachable by an agent once the dispatch prompt advertises it (see `.claude/skills/palace-orchestrator/prompts/shared.md` § "What you can show"), not because the validator allows it. STIGMERGY renders the following payload conventions inline, on any message type; an unrecognized payload degrades to the prose body, so enriching is always safe.
+
+| Convention | Payload keys | Renders as |
+|---|---|---|
+| Inline artifact (one) | `artifact_path: "<palace-rel>"` | image / audio / sandboxed-HTML iframe, served by `GET /api/file` |
+| Inline artifacts (set) | `artifacts: [{ path, caption? }]` | a vertical stack of the above |
+| Enrichment marker | `kind: "enrichment_card"` | an `enrichment` tag beside the type |
+| Equations (dual-channel) | `equations: [{ label?, symbolic, worded, where?: [{sym, def}] }]` | symbolic + worded forms (operators kept in both) + a `where` legend |
+| Table | `table: { caption?, columns: [...], rows: [[...]] }` | a monospace grid (header emphasized) |
+| Choice (A/B / ranked) | `kind: "choice"`, `choice_mode: "pick"\|"rank"`, `options: [{ id, label, artifact_path?, caption? }]` | each option with its inline artifact + a select/rank control + SEND |
+
+**The HTML iframe sandbox is `allow-scripts` only — not `allow-same-origin`.** Served HTML loads from STIGMERGY's own origin, so withholding same-origin forces an opaque origin: scripts run (sims, players, decks), but the artifact cannot reach the board's DOM, storage, or POST endpoint.
+
+**Equations are rendered twice on purpose** — the symbolic form for the eye and the worded (named-variable) form for the ear, with operator symbols preserved in both. The author supplies both strings; STIGMERGY does not typeset (no KaTeX/MathJax/CDN — proportional math would break the phosphor aesthetic).
+
+Render-side detail lives in the STIGMERGY app README (`_ops/stigmergy/app/README.md`); the aesthetic rule in the design-system README. See [[The Substrate Drifts]] on why this producer/consumer asymmetry must be closed deliberately (advertise the convention in the prompt) rather than assumed.
+
 ### 2.5 The Permission Protocol
 
 An agent's baseline resources are defined in its manifest. Anything outside that list requires a `RESOURCE_REQUEST` to the Trickster. The request carries a `blocking` field:
@@ -316,6 +335,12 @@ The inbox is rebuilt by scanning the blackboard from the beginning and tracking 
 ```
 
 `id` is a short stable token (the Trickster's machine-pairable choice — `APPROVE`, `tweak-model`, `try-carry-phase`). `label` is the full one-line tradeoff sentence shown on the button. An optional `next` field, when set, names a follow-up question the inbox surfaces after the option is selected. Steward output is always written in this canonical object shape; the inbox normalizer additionally tolerates lenient string entries (`"APPROVE — ..."`) by deriving `id` from the leading token before the separator (em-dash, en-dash, hyphen, or colon) and using the full string as `label`. The lenient path exists so that an LLM page-agent producing imperfect output still renders an approximate id rather than silently falling through to the generic `response_options` template — but the canonical object shape is the contract stewards should produce.
+
+**Asker-defined choice cards (v0.4+).** Distinct from `options[]` on a TRICKSTER `RESOURCE_REQUEST`, a message of *any* type may carry a `payload.kind: "choice"` card (§2.4.1) whose `options[]` each bear their own `artifact_path` — an A/B or ranked **audition** where the human compares the artifacts in place (the recurring "which of these audio renders reads best?" ask). The pick is recorded as a `REPLY` with `payload.kind: "choice_response"` carrying `choice` (a single option id) or `ranking` (an ordered array of ids), correlated by `re:` to the card; the asking agent reads it next cycle. Which decision surface to use follows the **decisions → TRICKSTER, information → GENERAL** law:
+
+- a fork that **blocks the cycle** (the agent cannot proceed until the human decides) → `RESOURCE_REQUEST` to TRICKSTER with `payload.options[]` — the inbox gate;
+- a **"compare these and pick"** over experiential artifacts → `payload.kind: "choice"` (on TRICKSTER if it gates the cycle, GENERAL if it is a non-blocking preference);
+- something **simply shown** (a result, a model, a sweep) → `BROADCAST` / `PROOF` on GENERAL / WEAVE with `equations` / `table` / `artifacts`.
 
 ### 2.7 The Read Cursor
 
