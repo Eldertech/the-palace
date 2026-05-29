@@ -1,0 +1,92 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<link rel="stylesheet" href="card.css">
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Space+Grotesk:wght@300;500&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  .swatch { display:grid; grid-template-columns: 1.4fr 1fr 1fr 1fr 1fr 0.7fr; gap:3px; height:90px; }
+  .sw { padding: 10px 12px; display:flex; flex-direction:column; justify-content:space-between; border-radius: 2px; }
+  .sw .k { font-family: 'JetBrains Mono', monospace; font-size:9px; letter-spacing:0.12em; text-transform:uppercase; opacity:0.8; }
+  .sw .v { font-family: 'JetBrains Mono', monospace; font-size:10px; }
+
+  .spec {
+    background: #08163d;
+    border-radius: 2px;
+    padding: 22px 24px;
+    min-height: 180px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: inset 0 0 90px rgba(0,0,0,0.4);
+  }
+  .spec::after {
+    content: '';
+    position: absolute; inset: 0; pointer-events: none;
+    background: repeating-linear-gradient(180deg, rgba(232,236,255,0.03) 0 1px, transparent 1px 3px);
+  }
+  .spec::before {
+    content: '';
+    position: absolute; inset: 0; pointer-events: none;
+    background: radial-gradient(140% 110% at 50% 50%, transparent 50%, rgba(0,0,0,0.65) 100%);
+  }
+  .role {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: #a8e040;
+    text-shadow: 0 0 6px rgba(168,224,64,0.7), 0 0 14px rgba(168,224,64,0.35);
+  }
+  .role::before {
+    content: '';
+    display: inline-block;
+    width: 8px; height: 8px;
+    background: #a8e040; border-radius: 50%;
+    margin-right: 8px;
+    box-shadow: 0 0 8px #a8e040;
+  }
+  .lockup {
+    font-family: 'Anton', sans-serif;
+    font-weight: 400;
+    font-size: 80px;
+    line-height: 0.9;
+    letter-spacing: 0.005em;
+    color: #e8ecff;
+    text-transform: uppercase;
+    margin-top: 14px;
+    text-shadow: 0 0 12px rgba(232,236,255,0.35);
+  }
+  .lockup .slash  { color: #7882b0; margin: 0 4px; }
+  .lockup .accent {
+    color: #a8e040;
+    text-shadow: 0 0 12px rgba(168,224,64,0.6), 0 0 24px rgba(168,224,64,0.25);
+  }
+  .readout {
+    margin-top: 14px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.06em;
+    color: #c0c6e4;
+    line-height: 1.7;
+  }
+  .readout .dim { color: #5a6694; }
+  .readout .hi  { color: #a8e040; text-shadow: 0 0 6px rgba(168,224,64,0.5); }
+</style></head>
+<body class="card">
+<div class="eyebrow" style="color:#a8e040;text-shadow:0 0 6px rgba(168,224,64,0.45)">Palette · Cobalt Grid · lab / mathematics / scope-on-blueprint</div>
+
+<div class="swatch">
+  <div class="sw" style="background:#0e1f4d;color:#e8ecff;border:1px solid #1c3066"><span class="k">bg</span><span class="v">#0e1f4d</span></div>
+  <div class="sw" style="background:#14275c;color:#e8ecff"><span class="k">elev</span><span class="v">#14275c</span></div>
+  <div class="sw" style="background:#e8ecff;color:#0e1f4d"><span class="k">fg-1</span><span class="v">#e8ecff</span></div>
+  <div class="sw" style="background:#c0c6e4;color:#0e1f4d"><span class="k">fg-2</span><span class="v">#c0c6e4</span></div>
+  <div class="sw" style="background:#7882b0;color:#0e1f4d"><span class="k">fg-3</span><span class="v">#7882b0</span></div>
+  <div class="sw" style="background:#a8e040;color:#0e1f4d"><span class="k">acc</span><span class="v">#a8e040</span></div>
+</div>
+
+<div class="spec">
+  <div class="role">CRT · CH1 LOCKED · 22.05 kHz · 5V/DIV</div>
+  <div class="lockup">LOUDON<span class="slash">/</span><span class="accent">LIVE</span></div>
+  <div class="readout">
+    <span class="dim">&gt;</span> sweep <span class="hi">220 → 1760 Hz</span> · 1.0 oct/sec<br>
+    <span class="dim">  </span>partials = 6 · window = hann · centre = 2 kHz
+  </div>
+</div>
+</body></html>

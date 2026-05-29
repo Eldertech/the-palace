@@ -1,0 +1,121 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<link rel="stylesheet" href="card.css">
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Manrope:wght@300;500;700&family=JetBrains+Mono:wght@500&family=Silkscreen&display=swap" rel="stylesheet">
+<style>
+  body.card { gap: 14px; }
+
+  /* Single combined bar — topic on top, brand + status on bottom */
+  .bar {
+    background: rgba(8,8,12,0.96);
+    border: 1.5px solid #4a4a5e;
+    border-radius: 2px;
+    overflow: hidden;
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.05);
+  }
+
+  .bar .topic {
+    padding: 12px 18px 10px;
+    border-bottom: 1px solid #2a2a3a;
+    display: flex; gap: 14px; align-items: baseline;
+  }
+  .bar .topic .key {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px; font-weight: 500;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: var(--accent);
+  }
+  .bar .topic .value {
+    font-family: 'Manrope', sans-serif;
+    font-weight: 500;
+    font-size: 17px;
+    color: var(--fg-1);
+    letter-spacing: -0.005em;
+  }
+  .bar .topic .value em {
+    font-style: italic;
+    font-weight: 300;
+    color: var(--accent);
+  }
+
+  .bar .strip {
+    padding: 12px 18px;
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    gap: 18px;
+  }
+
+  /* Prominent LOUDON/LIVE — left of bar, with the on-air dot baked in */
+  .bar .strip .brand {
+    font-family: 'Anton', sans-serif;
+    font-weight: 400;
+    font-size: 38px;
+    line-height: 1;
+    letter-spacing: 0.005em;
+    text-transform: uppercase;
+    color: var(--fg-1);
+    display: inline-flex;
+    align-items: center;
+    gap: 14px;
+  }
+  .bar .strip .brand::before {
+    content: '';
+    width: 12px; height: 12px;
+    border-radius: 50%;
+    background: #ff2a2a;
+    box-shadow:
+      0 0 6px rgba(255,42,42,0.95),
+      0 0 14px rgba(255,42,42,0.75),
+      0 0 32px rgba(255,42,42,0.40);
+    animation: pulse 1.6s ease-in-out infinite;
+  }
+  @keyframes pulse { 50% { opacity: 0.5; } }
+  .bar .strip .brand .slash  { color: var(--fg-3); margin: 0 4px; }
+  .bar .strip .brand .accent {
+    color: var(--accent);
+    text-shadow: 0 0 14px rgba(232,184,74,0.65), 0 0 28px rgba(232,184,74,0.30);
+  }
+
+  .bar .strip .params { display: flex; gap: 6px; justify-content: flex-end; }
+  .bar .strip .param {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: var(--info);
+    background: rgba(74,143,255,0.06);
+    border: 1.5px solid rgba(74,143,255,0.55);
+    border-radius: 1px;
+    padding: 2px 7px;
+    letter-spacing: 0.04em;
+  }
+
+  .bar .strip .elapsed {
+    font-family: 'Silkscreen', monospace;
+    font-size: 18px;
+    letter-spacing: 0.06em;
+    color: var(--accent);
+    text-shadow: 0 0 6px rgba(232,184,74,0.45);
+    text-transform: uppercase;
+  }
+</style></head>
+<body class="card">
+<div class="eyebrow">Stream metadata bar · single combined bar · topic up top · LOUDON/LIVE prominent</div>
+
+<div class="bar">
+  <div class="topic">
+    <span class="key">▸ today</span>
+    <span class="value">All-pass loops &amp; <em>inharmonic</em> resonators</span>
+  </div>
+  <div class="strip">
+    <span class="brand">LOUDON<span class="slash">/</span><span class="accent">LIVE</span></span>
+    <span class="params">
+      <span class="param">f₀ = 220 Hz</span>
+      <span class="param">τ = 12 ms</span>
+      <span class="param">Q = 0.707</span>
+    </span>
+    <span class="elapsed">▸ 47:12</span>
+  </div>
+</div>
+
+<div class="label" style="line-height:1.5">One bar instead of two · topic carries the row that needs to stay visible · LOUDON/LIVE doubled as the brand mark <em style="color:var(--accent);font-style:normal">and</em> the live indicator via the pulsing dot · stream number dropped — the live state speaks for itself · elapsed in pixel font as a soft clock-display.</div>
+</body></html>

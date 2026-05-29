@@ -1,0 +1,193 @@
+<!doctype html>
+<html lang="en" class="skin-graphite">
+<head>
+<meta charset="utf-8">
+<title>Loudon Live · channel banner</title>
+<link rel="stylesheet" href="../colors_and_type.css">
+<style>
+  html, body { background: #000; height: 100%; overflow: hidden; margin: 0; }
+  * { box-sizing: border-box; }
+
+  .stage { position: fixed; inset: 0; display: flex; align-items: center; justify-content: center; }
+  .slide {
+    width: 2560px;
+    height: 1440px;
+    position: relative;
+    background: var(--bg);
+    color: var(--fg-1);
+    overflow: hidden;
+    transform-origin: center center;
+  }
+
+  /* Generative element — full bleed Lissajous bundle, dimmed */
+  .gen {
+    position: absolute; inset: 0; z-index: 0;
+    opacity: 0.30;
+  }
+  .gen img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+  /* Soft vignette so edges fall off and the safe area reads */
+  .vignette {
+    position: absolute; inset: 0; z-index: 1; pointer-events: none;
+    background: radial-gradient(95% 75% at 50% 50%, transparent 30%, rgba(10,10,15,0.78) 100%);
+  }
+
+  /* Subtle scanline veil — pulls in the CRT register without recoloring */
+  .scan {
+    position: absolute; inset: 0; z-index: 1; pointer-events: none;
+    background: repeating-linear-gradient(180deg, rgba(232,184,74,0.02) 0 1px, transparent 1px 4px);
+    opacity: 0.6;
+  }
+
+  /* Safe zone — 1546 × 423 centered. Visible only as a hairline in dev. */
+  .safe {
+    position: absolute;
+    left: 50%; top: 50%;
+    width: 1546px; height: 423px;
+    transform: translate(-50%, -50%);
+    z-index: 3;
+    display: grid;
+    grid-template-rows: auto auto auto auto;
+    gap: 18px;
+    align-content: center;
+    justify-items: center;
+  }
+
+  /* Mono eyebrow */
+  .eyebrow {
+    font-family: var(--mono);
+    font-size: 26px;
+    font-weight: 500;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--fg-3);
+    white-space: nowrap;
+  }
+  .eyebrow .accent { color: var(--accent); }
+  .eyebrow::before {
+    content: '';
+    display: inline-block;
+    width: 12px; height: 12px;
+    background: radial-gradient(circle at 38% 38%, #ff8a7a 0%, #ff2a2a 45%, #c00e1a 100%);
+    border-radius: 50%;
+    margin-right: 16px;
+    transform: translateY(1px);
+    box-shadow: 0 0 8px rgba(255,42,42,0.9), 0 0 22px rgba(255,42,42,0.55);
+  }
+
+  /* Wordmark — Anton, sized to fit the 1546-px safe zone */
+  .wordmark {
+    font-family: var(--display);
+    font-weight: 400;
+    font-size: 230px;
+    line-height: 0.88;
+    letter-spacing: 0.005em;
+    color: var(--fg-1);
+    text-transform: uppercase;
+    text-shadow: 0 0 28px rgba(10,10,15,0.65);
+    white-space: nowrap;
+  }
+  .wordmark .slash {
+    color: var(--fg-3);
+    margin: 0 12px;
+  }
+  .wordmark .accent {
+    color: var(--accent);
+    text-shadow:
+      0 0 18px rgba(232,184,74,0.65),
+      0 0 42px rgba(232,184,74,0.35),
+      0 0 96px rgba(232,184,74,0.18);
+  }
+
+  /* Thin accent rule — the brand's "italic-light Live" trick translated to a rule */
+  .rule {
+    width: 540px; height: 1px;
+    background: var(--accent);
+    opacity: 0.55;
+    box-shadow: 0 0 16px rgba(232,184,74,0.35);
+  }
+
+  /* Tagline — sized to fit safe zone */
+  .tag {
+    font-family: var(--mono);
+    font-size: 22px;
+    font-weight: 500;
+    letter-spacing: 0.30em;
+    text-transform: uppercase;
+    color: var(--fg-2);
+    display: flex;
+    gap: 14px;
+    align-items: baseline;
+    white-space: nowrap;
+  }
+  .tag .dot {
+    width: 6px; height: 6px;
+    background: var(--accent);
+    border-radius: 50%;
+    transform: translateY(-4px);
+  }
+
+  /* Bottom-anchored Silkscreen line — sits outside the safe area, in the
+     channel-page "subtitle" region YouTube hides on mobile. */
+  .schedule {
+    position: absolute;
+    bottom: 110px; left: 50%;
+    transform: translateX(-50%);
+    font-family: var(--pixel);
+    font-size: 22px;
+    letter-spacing: 0.06em;
+    color: var(--accent);
+    text-transform: uppercase;
+    text-shadow: 0 0 8px rgba(232,184,74,0.45);
+    z-index: 3;
+  }
+
+  /* Footer signature — Autodidact Polymaths */
+  .sig {
+    position: absolute;
+    bottom: 56px; left: 50%;
+    transform: translateX(-50%);
+    font-family: var(--mono);
+    font-size: 16px;
+    letter-spacing: 0.32em;
+    color: var(--fg-3);
+    text-transform: uppercase;
+    z-index: 3;
+  }
+  .sig em { color: var(--accent); font-style: normal; }
+</style>
+</head>
+<body>
+<div class="stage">
+  <div class="slide" data-screen-label="Channel Banner">
+    <div class="gen"><img src="../assets/generators/lissajous-bundle.fullbleed.svg" alt=""></div>
+    <div class="scan"></div>
+    <div class="vignette"></div>
+
+    <div class="safe">
+      <div class="eyebrow">sound · first <span class="accent">principles</span> · out loud</div>
+      <div class="wordmark">LOUDON<span class="slash">/</span><span class="accent">LIVE</span></div>
+      <div class="rule"></div>
+      <div class="tag">synths<span class="dot"></span>effects<span class="dot"></span>DSP<span class="dot"></span>built on stream</div>
+    </div>
+
+    <div class="schedule">▸ streams whenever the wall comes down</div>
+    <div class="sig">Loudon Live <em>·</em> Autodidact Polymaths</div>
+  </div>
+</div>
+
+<script>
+(function () {
+  function fit() {
+    const slide = document.querySelector('.slide');
+    if (!slide) return;
+    const s = Math.min(window.innerWidth / 2560, window.innerHeight / 1440);
+    slide.style.transform = 'scale(' + s + ')';
+  }
+  window.addEventListener('resize', fit);
+  window.addEventListener('load', fit);
+  fit();
+})();
+</script>
+</body>
+</html>

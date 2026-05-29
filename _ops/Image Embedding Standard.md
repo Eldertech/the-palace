@@ -55,6 +55,8 @@ No images belong in the palace root. No images are embedded from external URLs �
 
 The demo image embedded at the end of this entry lives at `Artifacts/Images/palace-typed-link-graph-demo.svg` and was created specifically to serve as a living example of these standards.
 
+**Generated technical diagrams keep their source beside the render.** A LaTeX/TikZ figure — signal flow, DSP block diagram, math, or plotted curve — files its `.tex` source alongside the rendered `.svg`, per [[Technical Diagram Standard]]. The source is the text-first artifact (git-diffable, searchable, regenerable); the SVG is its embeddable shadow. This is the one case where two files travel together as one figure.
+
 ---
 
 ## Naming Convention

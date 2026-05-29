@@ -1,5 +1,5 @@
 ---
-version: 1.7
+version: 1.8
 schema: SCHEMA.md
 last_schema_ceremony: 2026-05
 github: https://github.com/Eldertech/the-palace
@@ -53,7 +53,6 @@ The Palace/
     ├── Weave Ceremony.md / Spore Check Ceremony.md / Revival Ceremony.md
     ├── Handoff Ceremony.md / Self-Model Update Ceremony.md
     ├── [*— Context.md]      ← ceremony session history companions
-    ├── Harvest Queue.md / Harvest Frontier.md
     ├── Deposit Archive.md
     └── Palace Graffiti.md / Palace Quotes.md / Palace To-Do.md
 ```
@@ -79,13 +78,21 @@ When Loudon says any of the following, execute the corresponding ceremony immedi
 
 This is a partial list. For the complete list of all ceremonies (including Harvest and Deposit), see [[Palace Ceremonies]]. For full operational instructions, see [[Substrate Skill]].
 
+## Artifact Aesthetic — Default
+
+Every HTML artifact, slide, session page, learning material, web prototype, or visual deliverable the palace makes defaults to the **[[Loudon Live Design System]]** — locked grammar (Anton display, Cormorant body, Manrope UI, JetBrains Mono metadata) over six per-stream skins (Graphite default · Amber Lab · CRT · Strobe · Cobalt Grid · Drafting). The agent-readable manifest lives at `_ops/loudon-live/design-system/SKILL.md`; invoke it before generating any artifact.
+
+**Override carve-out:** when a context has its own established visual language, that system wins. Currently only [[BBS Design System]] (STIGMERGY swarm terminal) qualifies. New overrides require a deliberate decision documented in the artifact's parent entry.
+
+The footer of any shipped artifact reads `Loudon Live · Autodidact Polymaths`. No emoji, no CDN icon libraries, no cyan, no outcome promises in titles. See [[Loudon Live Design System]] for the full rule set.
+
 ## Key Vocabulary
 
 > For cross-tradition translations of all terms below (OOP, Data Engineering, Semantic Web, DDD equivalents), see [[ROSETTA]] (`ROSETTA.md`).
 
 **Four Pillars** — All entries are tagged with pillar affiliations: `creation` (Music), `tools` (Technology), `philosophy`, `practice`.
 
-**Typed links** — YAML frontmatter links name the relationship: `connects-to`, `mirrors`, `enables`, `deepens`, `spawned`, `emerged-from`, `contradicts`, `couples-with`. Do not create new link types without discussion. Each link may carry an optional `label` field — a single evocative word naming the relationship's specific register (e.g. `midwifed`, `rhymes-with`, `fermented-from`). Labels never require ceremony. See [[Resonant Link Labels]].
+**Typed links** — YAML frontmatter links name the relationship: `connects-to`, `mirrors`, `enables`, `deepens`, `spawned`, `emerged-from`, `contradicts`, `couples-with`, `exemplifies` (A is an instance of B), `member-of` (A belongs to collection B). Do not create new link types without discussion. Each link may carry an optional `label` field — a single evocative word naming the relationship's specific register (e.g. `midwifed`, `rhymes-with`, `fermented-from`). Labels never require ceremony. See [[Resonant Link Labels]].
 
 **Entry types** — `concept`, `hub`, `project`, `breakthrough`, `source`, `meta`, `practice`, `person`, `question`, `spore`, `specialist`, `maker`. The last two were added in the v1.3 Schema Ceremony (2026-05-09) to formalize [[The Shop]] pattern — see [[SCHEMA]] §3.2.
 

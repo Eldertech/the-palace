@@ -1,0 +1,31 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<link rel="stylesheet" href="card.css">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+  body.card { gap: 14px; font-family: 'Space Grotesk', sans-serif; }
+  .ss-display { font-family: 'Space Grotesk', sans-serif; font-weight: 400; font-size: 30px; letter-spacing: -0.005em; color: var(--fg-1); line-height: 1.15; }
+  .ss-body    { font-family: 'Space Grotesk', sans-serif; font-weight: 300; font-size: 15px; line-height: 1.55; color: var(--fg-2); max-width: 580px; letter-spacing: 0.005em; }
+  .ss-caption { font-family: 'Space Grotesk', sans-serif; font-weight: 300; font-style: italic; font-size: 13px; color: var(--fg-3); }
+  .ss-tiny    { font-family: 'Space Grotesk', sans-serif; font-weight: 500; font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--fg-3); }
+  .crosshair { display:inline-flex; gap:4px; align-items:center; margin-left:8px; }
+  .crosshair span { width:10px; height:1px; background:var(--fg-3); display:inline-block; }
+  .crosshair span.v { width:1px; height:10px; }
+  .meta { display:flex; gap:16px; align-items:baseline; padding-top:8px; border-top:1px solid var(--border); }
+</style></head>
+<body class="card">
+  <div class="eyebrow">UI sans · Space Grotesk light · architectural / drafting</div>
+
+  <div class="ss-display">Back in a minute</div>
+
+  <div class="ss-body">Today · phase noise, all-pass loops, and what your ears do when the spectrum stops being harmonic. The wall comes down when we plot it.</div>
+
+  <div style="display:flex;gap:24px;align-items:baseline">
+    <span class="ss-caption">caption · 13 · italic 300</span>
+    <span class="ss-tiny">label · 11 · 500 · +0.16em<span class="crosshair"><span></span><span class="v"></span><span></span></span></span>
+  </div>
+
+  <div class="meta">
+    <span class="ss-tiny" style="color:var(--accent)">SET</span>
+    <span style="font-family:'Space Grotesk',sans-serif;font-weight:300;font-size:13px;color:var(--fg-3);letter-spacing:0.04em">300 light · 400 regular · 500 label · 700 strong · italic 300 for caption</span>
+  </div>
+</body></html>

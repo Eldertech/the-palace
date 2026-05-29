@@ -1,0 +1,163 @@
+<!doctype html><html lang="en" class="skin-graphite"><head><meta charset="utf-8">
+<title>Loudon Live · Topic Title</title>
+<link rel="stylesheet" href="stage.css">
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Manrope:wght@300;400;500&family=Cormorant+Garamond:ital,wght@0,300;1,300&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+  /* No full-bleed gen — graphic is a contained header band. */
+  .gen { display: none; }
+
+  /* ── title bar — wordmark now lives here as the right column ── */
+  .titlebar {
+    position: absolute;
+    top: 32px;
+    left: 120px; right: 120px;
+    height: 80px;
+    background: rgba(8,8,12,0.96);
+    border: 0;
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    padding: 0 28px;
+    z-index: 3;
+  }
+  .titlebar .tb-left, .titlebar .tb-center, .titlebar .tb-right {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 18px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--fg-3);
+    font-weight: 500;
+  }
+  .titlebar .tb-center { text-align: center; color: var(--accent); }
+  .titlebar .tb-right {
+    text-align: right;
+    font-family: 'Anton', sans-serif;
+    font-weight: 400;
+    font-size: 38px;
+    letter-spacing: 0.005em;
+    text-transform: uppercase;
+    color: var(--fg-1);
+    line-height: 1;
+  }
+  .titlebar .tb-right .slash  { color: var(--fg-3); margin: 0 4px; }
+  .titlebar .tb-right .accent {
+    color: var(--accent);
+    text-shadow: 0 0 12px rgba(232,184,74,0.55), 0 0 24px rgba(232,184,74,0.25);
+  }
+  .titlebar .live::before {
+    content: '';
+    display: inline-block;
+    width: 10px; height: 10px;
+    background: #ff2a2a;
+    border-radius: 50%;
+    margin-right: 10px;
+    box-shadow: 0 0 8px #ff2a2a;
+    transform: translateY(1px);
+  }
+
+  /* line removed — redundant with the panel edges */
+  .tb-rule { display: none; }
+
+  /* header image — same gutter as title bar */
+  .header-image {
+    position: absolute;
+    top: 132px;
+    left: 120px; right: 120px;
+    height: 280px;
+    background: var(--bg-elev-2);
+    border: 0;
+    overflow: hidden;
+  }
+  .header-image img {
+    width: 100%; height: 100%; object-fit: cover; display: block;
+  }
+
+  /* ── content sits below the image band ── */
+  .content { padding: 0; }
+  .below-image {
+    position: absolute;
+    top: 460px;
+    left: 120px; right: 120px;
+  }
+  .below-image .eyebrow-big { display: block; margin-bottom: 14px; }
+  .eyebrow-big {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    font-style: italic;
+    font-size: 38px;
+    letter-spacing: 0.005em;
+    text-transform: none;
+    color: var(--accent);
+  }
+  .headline {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    font-size: 200px;
+    letter-spacing: -0.02em;
+    line-height: 0.85;
+    color: var(--fg-1);
+    margin-top: 24px;
+  }
+  .headline em { font-style: italic; font-weight: 300; color: var(--accent); }
+  .subhead {
+    font-family: 'Manrope', sans-serif;
+    font-weight: 300;
+    font-size: 30px;
+    color: var(--fg-2);
+    margin-top: 28px;
+    letter-spacing: 0.005em;
+    max-width: 1100px;
+  }
+
+  /* bottom strip — clearly divided footer section */
+  .bottom-strip {
+    position: absolute;
+    left: 120px; right: 120px;
+    bottom: 64px;
+    padding-top: 18px;
+    border-top: 1px solid var(--border);
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: baseline;
+    gap: 24px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 18px;
+    letter-spacing: 0.18em;
+    color: var(--fg-3);
+    text-transform: uppercase;
+    font-weight: 500;
+    z-index: 3;
+  }
+  .bottom-strip .bs-center { text-align: center; color: var(--accent); }
+  .bottom-strip .bs-right  { text-align: right; }
+  .bottom-strip .bs-right em { color: var(--accent); font-style: normal; }
+
+  .footer-right { display: none; }
+  .footer-left  { display: none; }
+</style></head>
+<body>
+<div class="stage"><div class="slide" data-screen-label="Topic Title Card">
+  <div class="titlebar">
+    <span class="tb-left"><span class="live">LIVE · STREAM 003 · 47:12</span></span>
+    <span class="tb-center">Chapter 02 / 04</span>
+    <span class="tb-right">LOUDON<span class="slash">/</span><span class="accent">LIVE</span></span>
+  </div>
+
+  <div class="header-image"><img src="../assets/generators/spectral-bands.svg" alt=""></div>
+
+  <div class="below-image">
+    <div class="eyebrow-big">The leaky integrator</div>
+    <div class="headline">A time<br>constant <em>τ</em></div>
+    <div class="subhead">A single new parameter turns a linear ramp into a waveshape with character. Set τ → ∞ to recover Stage 1 exactly.</div>
+  </div>
+
+  <div class="footer-left"></div>
+
+  <div class="bottom-strip">
+    <span class="bs-left">PROGRESSIVE STAGING</span>
+    <span class="bs-center">▸ STAGE 02</span>
+    <span class="bs-right">SHEPARD TONE · <em>SESSION 1</em></span>
+  </div>
+</div></div>
+<script src="stage.js"></script>
+</body></html>

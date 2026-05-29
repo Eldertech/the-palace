@@ -171,6 +171,7 @@ On approval, write new entries as `.md` files to the palace root. Apply updates 
 **Filing structure:**
 - Palace entries (`.md`) → palace root
 - Non-markdown artifacts (HTML, images) → `The Palace/Artifacts/[Theme]/[filename]`
+- Technical diagrams (signal flow, DSP, math, plots) → author in LaTeX/TikZ and file the `.tex` source beside the rendered `.svg`, per [[Technical Diagram Standard]]
 - Do not create an `assets/` folder — the canonical folder is `Artifacts/`
 
 **Step 7: Close**
@@ -188,7 +189,7 @@ Wait for Loudon's confirmation.
 
 Write a final message into the conversation thread. This marks the thread as complete for any future Claude that encounters it — do not deposit this conversation again.
 
-> *This conversation has hibernated.*
+> *This conversation has come to rest.*
 >
 > *What was built here lives in the palace:*
 > *— [Entry title] at [filename]*

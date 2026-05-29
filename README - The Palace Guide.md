@@ -145,6 +145,10 @@ Cross-entry shared artifacts (HTML, images, audio that serve multiple entries) s
 
 Bundle files carry minimal YAML — title, born, a typed link to the parent entry, and a short forward_vector — so every file in the palace remains self-describing. Full spec: [[SCHEMA]] §8.
 
+### The Visual Language
+
+The palace draws in three registers, each with its own standard. [[Mermaid Diagram Standard]] governs relationship and concept graphs — typed-link fragments, ceremony flows — text-first and rendered live by Obsidian. [[Technical Diagram Standard]] governs technical and quantitative figures — signal-flow graphs, DSP block diagrams, math, plotted curves — authored in LaTeX/TikZ and rendered to editable SVG, with the source kept text-first. [[Image Embedding Standard]] governs how every image and SVG is filed, named, and captioned. The rule of thumb: reach for Mermaid for relationships, LaTeX for engineering and math, and hand-authored SVG only for bespoke visual grammar neither of those covers.
+
 ## How to Add to the Palace
 
 ### Creating a New Entry

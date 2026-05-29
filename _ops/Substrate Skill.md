@@ -79,6 +79,8 @@ Use only these relationship types in YAML frontmatter links:
 - `emerged-from` — historical origin
 - `contradicts` — productive tension
 - `couples-with` — ideas that oscillate together
+- `exemplifies` — A is a concrete instance of the more general B (directed A→B)
+- `member-of` — A belongs to a named collection, family, or registry B (directed A→B)
 
 Do not introduce new link types without discussing with Loudon. When unsure, use `connects-to`.
 
@@ -165,6 +167,18 @@ Example:
 > the frequency of the nth partial = the partial index × the fundamental frequency × √(1 + the inharmonicity coefficient × the partial index²)
 
 Apply this to pedagogical entries especially (anywhere a formula is meant to teach), and to chart captions whenever an equation appears in the figure. Operators remain symbolic — the words form is for the variables and coefficients, not for the math itself.
+
+### Artifact Aesthetic (the palace default)
+
+Every visual artifact the palace produces — HTML pages, slide decks, session artifacts, learning posters, OBS scene cards, web prototypes, throwaway sketches — defaults to the **[[Loudon Live Design System]]**. Before generating any artifact, invoke the skill manifest at `_ops/loudon-live/design-system/SKILL.md` to load brand guidance into context. The CSS source-of-truth is `_ops/loudon-live/design-system/colors_and_type.css`; set one of `skin-graphite | skin-amber-lab | skin-crt | skin-strobe | skin-cobalt-grid | skin-drafting` on `<html>` (Graphite is the default).
+
+The locked grammar (Anton display, Cormorant body, Manrope UI, JetBrains Mono metadata, Silkscreen for technical garnish only) does not vary across artifacts. The per-stream skin rotates. The wordmark, italic-light *Live*, typographic-glyph iconography (no emoji, no CDN icons), and the `Loudon Live · Autodidact Polymaths` footer survive every variant.
+
+**Override carve-out:** when an artifact lives inside a context with its own established visual language, that context's system applies instead. Currently only [[BBS Design System]] (the STIGMERGY swarm-coordination terminal) qualifies — VT323 + IBM Plex Mono, CP437 borders, phosphor green on terminal black. New override contexts require a deliberate decision documented in the artifact's parent entry, not silent drift.
+
+**Skin selection (provisional rubric):** Graphite for default / workshop / dim-light artifacts; Amber Lab for philosophical / long-form / quote-driven pieces; CRT for DSP / first-principles / oscilloscope-thinking; Strobe for performance / dance / live; Cobalt Grid for mathematics / blueprint / formal theory; Drafting for build instructions / schematics / signal flow. When in doubt: Graphite.
+
+**Adoption is a typed-link event.** When an artifact adopts the system, link it back to [[Loudon Live Design System]] with `connects-to` and a label naming the surface (e.g. `learning-poster`, `session-artifact`, `slide-deck`). When an artifact deliberately overrides, link to whichever system it chose instead with a label naming the reason.
 
 ## What Not To Do
 

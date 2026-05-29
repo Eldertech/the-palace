@@ -11,7 +11,7 @@ stage: sprout
 status: active
 confidence: working
 energy: high
-forward_vector: "I will be Loudon's primary public teaching space, where sound and music techniques are explored alongside the building of instruments, and where the channel itself models a way of working in public that is rigorous about craft, unpretentious about progress, and is honestly presenting Loudon as an autodidact polymath."
+forward_vector: "I keep growing into Loudon's primary public teaching space — exploring sound and music technique alongside the building of instruments, and modeling a way of working in public that is rigorous about craft, unpretentious about progress, and honest in presenting Loudon as an autodidact polymath."
 links:
   - target: "[[Progressive Staging]]"
     type: couples-with
@@ -40,6 +40,9 @@ links:
   - target: "[[2D Torus Wavetable Synthesizer]]"
     type: couples-with
     label: signature-instrument-candidate
+  - target: "[[Loudon Live Design System]]"
+    type: spawned
+    label: visual-system-now-palace-default
 ---
 
 # Loudon Live
@@ -78,7 +81,7 @@ Within the channel, a planned content series sits alongside the project staging:
 
 ## The visual identity
 
-The channel's visual signature is the Lissajous trace inside a sphere, generated in Max/MSP/Jitter — see [[Hyperdimensional Prism]] for the full identity essay. The image works at multiple interpretive depths simultaneously: an oscilloscope trace to a music producer, a path through knowledge space to a learner, a methodology made visible to a collaborator, a point tracing hyperdimensional space to a peer. Critically, the patch that *generates* the logo is itself a pedagogical artifact — students can download, modify, and run it. The visual identity is not decoration; it is a teaching object.
+The channel's visual signature is the Lissajous trace inside a sphere — see [[Hyperdimensional Prism]] for the full identity essay. The image works at multiple interpretive depths simultaneously: an oscilloscope trace to a music producer, a path through knowledge space to a learner, a methodology made visible to a collaborator, a point tracing hyperdimensional space to a peer. Critically, the patch that *generates* the logo is itself a pedagogical artifact — students can download, modify, and run it. The visual identity is not decoration; it is a teaching object.
 
 ## The audience
 

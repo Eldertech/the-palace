@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Loudon Live · live logo sketch</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.4/p5.min.js"></script>
+<style>
+  body { margin:0; background:#0a0a0f; display:flex; align-items:center; justify-content:center; min-height:100vh; }
+  canvas { display:block; }
+</style>
+</head>
+<body>
+<script>
+/* ─────────────────────────────────────────────────────────────────────
+   Loudon Live — Lissajous-in-sphere logo, live p5.js sketch.
+   Canonical source for the brand's visual signature (per
+   `The Palace/Hyperdimensional Prism.md` § "The Visual Identity").
+
+   The trace IS the logo — students can run, modify, and export it.
+   Three coupled oscillations projected onto a sphere; the figure
+   slowly rotates so the higher-dimensional object reveals itself
+   through accumulated motion.
+
+   Knobs (change inline; or wrap with sliders for a teaching artifact):
+     a, b, c     — integer frequency ratios (3:4:6 is the default)
+     delta       — phase offset between oscillators
+     speed       — rotation rate
+     trail       — afterimage opacity
+   ───────────────────────────────────────────────────────────────────── */
+
+let a = 3.011, b = 4.013, c = 6.007;   // ← slightly off integers so the
+                                       //   figure precesses as it rotates
+let delta = Math.PI / 2;
+let speed = 0.0025;
+let trail = 38;          // 0–255 fade alpha (lower = longer trail)
+let pts = [];
+let phase = 0;
+let rotX = 0.4, rotY = -0.3;
+
+const BG     = [10, 10, 15];
+const STROKE = [232, 184, 74];  // signal-amber, the channel's gold
+
+function setup() {
+  const sz = Math.min(windowWidth, windowHeight);
+  createCanvas(sz, sz);
+  noFill();
+  background(...BG);
+  // pre-fill the trace so we open with a full figure
+  for (let i = 0; i < 2400; i++) {
+    const t = (i / 2400) * TWO_PI;
+    pts.push(project(t));
+  }
+}
+function windowResized() {
+  const sz = Math.min(windowWidth, windowHeight);
+  resizeCanvas(sz, sz);
+  background(...BG);
+}
+
+function project(t) {
+  // 3D Lissajous
+  let x = Math.sin(a * t);
+  let y = Math.sin(b * t + delta);
+  let z = Math.sin(c * t + 2 * delta);
+  // rotate in 3D so the figure feels volumetric
+  const cosx = Math.cos(rotX), sinx = Math.sin(rotX);
+  const cosy = Math.cos(rotY), siny = Math.sin(rotY);
+  [y, z] = [y * cosx - z * sinx, y * sinx + z * cosx];
+  [x, z] = [x * cosy + z * siny, -x * siny + z * cosy];
+  return { x, y, z };
+}
+
+function draw() {
+  // soft fade for trail
+  noStroke();
+  fill(BG[0], BG[1], BG[2], trail);
+  rect(0, 0, width, height);
+
+  // slow rotation — same patch, different angle of curiosity
+  rotY += speed;
+
+  // refresh the figure with current rotation
+  pts = [];
+  const N = 2200;
+  for (let i = 0; i < N; i++) {
+    const t = (i / N) * TWO_PI + phase;
+    pts.push(project(t));
+  }
+
+  // trace
+  const cx = width / 2, cy = height / 2;
+  // Cap the figure radius so rotation never pushes the trace past the canvas
+  // edges (3D-rotated Lissajous points reach up to sqrt(2) of unit-radius).
+  const R = Math.min(width, height) * 0.32;
+  // containing sphere — the bounded space the trace walks
+  stroke(STROKE[0], STROKE[1], STROKE[2], 36);
+  strokeWeight(1);
+  noFill();
+  circle(cx, cy, R * 2.1);
+
+  // trace
+  for (let i = 1; i < pts.length; i++) {
+    const p0 = pts[i - 1], p1 = pts[i];
+    const d  = (p0.z + p1.z) * 0.5;       // mean depth, -1..1
+    const k  = (d + 1) * 0.5;             // 0..1
+    const op = 50 + k * 180;
+    const w  = 0.6 + k * 1.4;
+    stroke(STROKE[0], STROKE[1], STROKE[2], op);
+    strokeWeight(w);
+    line(cx + p0.x * R, cy + p0.y * R, cx + p1.x * R, cy + p1.y * R);
+  }
+}
+</script>
+</body>
+</html>

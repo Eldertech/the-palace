@@ -1,0 +1,30 @@
+% Magnitude response of the Direct Form II low-pass biquad (f0/fs=0.1, Q=2)
+% Data computed in Python -> biquad-lowpass-magnitude-response.dat ; typeset by pgfplots.
+% Compile: pdflatex biquad-lowpass-magnitude-response.tex ; dvisvgm --pdf --no-fonts biquad-lowpass-magnitude-response.pdf
+\documentclass[border=6pt]{standalone}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.16}
+\begin{document}
+\begin{tikzpicture}
+\begin{axis}[
+  width=11cm, height=7cm,
+  xlabel={Normalized frequency \ ($\omega/\pi$, fraction of Nyquist)},
+  ylabel={Magnitude \ (decibels)},
+  title={Low-pass biquad magnitude response \ ($f_0/f_s = 0.1$, quality factor $Q = 2$)},
+  xmin=0, xmax=1, ymin=-60, ymax=12,
+  grid=both, major grid style={gray!30}, minor grid style={gray!12},
+  minor tick num=1,
+  tick align=outside,
+  every axis plot/.append style={line width=1pt},
+]
+  % the response curve
+  \addplot[blue!70!black] table[x index=0, y index=1] {biquad-lowpass-magnitude-response.dat};
+  % -3 dB reference and cutoff marker
+  \draw[dashed, gray] (axis cs:0,-3) -- (axis cs:1,-3)
+        node[pos=0.02, above, black, font=\small] {$-3$ dB};
+  \draw[dotted, red!70!black] (axis cs:0.2,-60) -- (axis cs:0.2,12)
+        node[pos=0.93, right, black, font=\small] {cutoff $\omega_0$};
+\end{axis}
+\end{tikzpicture}
+\end{document}

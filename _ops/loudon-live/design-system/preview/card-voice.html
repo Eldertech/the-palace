@@ -1,0 +1,47 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<link rel="stylesheet" href="card.css">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;500&family=JetBrains+Mono:wght@500&family=Cormorant+Garamond:ital,wght@1,300&display=swap" rel="stylesheet">
+<style>
+  body.card { gap: 12px; }
+  .col2 { display:grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .panel { background: var(--bg-elev-1); border: 1.5px solid var(--border); border-radius: 2px; padding: 14px 16px; }
+  .panel .head { display:flex; gap:8px; align-items:baseline; font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; }
+  .panel .head .dot { width:8px; height:8px; border-radius:50%; display:inline-block; }
+  .panel ul { list-style: none; padding: 10px 0 0; margin: 0; font-family: 'Manrope', sans-serif; font-weight: 300; font-size: 13px; line-height: 1.55; color: var(--fg-2); letter-spacing: 0.005em; }
+  .panel li { padding: 4px 0; }
+  .panel .em { font-family: 'Cormorant Garamond', serif; font-style: italic; color: var(--fg-1); font-size: 14px; }
+  .ok  .dot { background:#00ff66; box-shadow: 0 0 8px rgba(0,255,102,0.7); }
+  .no  .dot { background:#ff2a2a; box-shadow: 0 0 8px rgba(255,42,42,0.6); }
+  .ok  .head { color:#00ff66; }
+  .no  .head { color:#ff2a2a; }
+</style></head>
+<body class="card">
+<div class="eyebrow">Voice · first-person · studio register · no emoji · the working is the deliverable</div>
+
+<div class="col2">
+  <div class="panel ok">
+    <div class="head"><span class="dot"></span><span>do</span></div>
+    <ul>
+      <li>"Live build · synth lab, session 1"</li>
+      <li>"Let's explore." · "Hang out."</li>
+      <li>"Working on something synth-shaped."</li>
+      <li class="em">"The working is the deliverable."</li>
+      <li>Sketch · Study · Piece</li>
+      <li>Snare · Hats · Perc (full words)</li>
+    </ul>
+  </div>
+  <div class="panel no">
+    <div class="head"><span class="dot"></span><span>don't</span></div>
+    <ul>
+      <li><s>"Finishing the synth in one hour"</s></li>
+      <li><s>"I'll teach you"</s> · <s>"subscribe and hit the bell"</s></li>
+      <li><s>Students · followers · audience</s></li>
+      <li><s>MVP · v1 · final · launch · ship</s></li>
+      <li><s>SNR · HAT · PRC (cryptic abbrevs)</s></li>
+      <li><s>🎶 · 🔥 · ✨ (emoji of any kind)</s></li>
+    </ul>
+  </div>
+</div>
+
+<div class="label" style="font-style:italic;line-height:1.5">Studio register, not commercial production · italic-light <em style="color:var(--accent);font-style:normal">Live</em> is the only italicised word in the wordmark · "How do you feel?" not "How many views?"</div>
+</body></html>

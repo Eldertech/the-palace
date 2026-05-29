@@ -17,6 +17,9 @@ links:
   - target: "[[Lateral Access]]"
     type: mirrors
     label: taste-as-laterality
+  - target: "[[Loudon Live Design System]]"
+    type: connects-to
+    label: palace-base-spec
 tags: [maker, shop, foreman, studio]
 ---
 
@@ -82,13 +85,41 @@ When two routes are both reasonable, I tell you and propose Comparison Mode rath
 
 These flow down into every job spec automatically. Specialists honor them or flag a deviation in their standards report.
 
+**Mechanical floor** (this layer's authority):
+
 - Aspect ratio: 1920×1080 (motion), variable (image)
 - Frame rate: 30fps motion; 60fps for interactive demos with smooth animation
 - Audio loudness: −16 LUFS integrated, −1 dBTP true peak, EBU R128
 - Sample rate: 24kHz mono for narration, 48kHz stereo for finished mixes
-- Palette: project palette if a project is named in the brief; **palace base palette** otherwise (defined in `Style/Palace Base Palette.md` — TODO entry)
-- Type: project font stack if a project is named; system serif + system mono otherwise
-- Easing: cubic-bezier(.4, 0, .2, 1) for ordinary motion; spring physics only with explicit brief request
+
+**Visual / typographic / motion** (deferred to [[Loudon Live Design System]] — the palace-base spec):
+
+- Palette: project palette if a project is named in the brief; the active [[Loudon Live Design System]] skin otherwise (Graphite is the channel default; Amber Lab / CRT / Strobe / Cobalt Grid / Drafting per project register)
+- Type: project font stack if a project is named; the locked Loudon Live stack otherwise — **Anton** (display / wordmark), **Cormorant Garamond** (body serif), **Manrope** (UI sans), **JetBrains Mono** (metadata), **Silkscreen** (technical garnish only)
+- Easing: per [[Loudon Live Design System]] — `cubic-bezier(.4, 0, .2, 1)` at 220ms ordinary, `.2 .9 .2 1` at 550ms emphasised; spring physics only with explicit brief request
+- Iconography: typographic glyphs (`● ▸ · ◐ ◇`) and the Lissajous trace. **No emoji. No CDN icon library.**
+- Footer: every shipped artifact carries `Loudon Live · Autodidact Polymaths`.
+
+When the active artifact context has its own design language (currently only [[BBS Design System]] for STIGMERGY), that system overrides the palace base. The cascade is articulated in the next section.
+
+## Articulated Cascade
+
+The three-layer cascade [[The Shop]] anticipated now has its middle layer populated. Before any Specialist dispatches, I resolve the cascade in this order — deepest specificity wins:
+
+| Layer | Owns | Holds |
+|---|---|---|
+| **1. Mechanical floor** | This entry (Maker) | Aspect ratio, frame rate, sample rate, loudness target — the medium-mechanical defaults a Specialist needs but the brief shouldn't repeat. |
+| **2. Palace base** | [[Loudon Live Design System]] | Palette (six skins), type stack, voice register, iconography, motion easing, hard rules (no emoji, no cyan, no outcome promises, italic-light *Live*, footer signature). |
+| **3. Project override** | Project entry frontmatter | Per-project skin choice (`skin: amber-lab`), tier-vocabulary renaming (`tier_vocabulary: {sketch: Demo, …}`), any deliberate design-system deviation (with `deviation_reason`). |
+| **4. Brief override** | The brief itself, in the conversation | One-off deviations a project doesn't want to bake in — argued in the moment, surfaced in the standards report. |
+
+**Resolution semantics.** I read the brief, find the project's design-system declaration (or accept the palace base if the project is silent), apply any brief-level overrides, then write the resolved values into the Job Contract. Specialists never see the unresolved cascade — they receive concrete values for every parameter their medium consumes. This keeps Specialist entries clean and reusable across projects, and concentrates taste decisions in the resolution step, where I can name them.
+
+**Override semantics: silence ≠ deviation.** A project that picks Amber Lab is choosing a palace-base option, not deviating. A project that uses a palette outside the six skins **is** deviating, and the project entry needs a one-line `deviation_reason` so future Claude can read why. Same for type: choosing a project font stack is fine; choosing system serif is a deviation now that the palace base specifies the locked stack.
+
+**Stigmergy is the only currently-recognized override context.** Artifacts living inside [[STIGMERGY]] honor [[BBS Design System]] instead of the palace base — VT323/IBM Plex Mono, CP437 borders, phosphor green on terminal black. The architectural reason: STIGMERGY is a coordination terminal, not a teaching artifact, and the terminal aesthetic IS the medium. New override contexts require deliberate declaration in the artifact's parent entry, not silent drift.
+
+**The cascade is the negotiation surface.** When a brief and a project disagree, or when a project's chosen skin doesn't fit a particular job, the cascade is where the conversation happens. I name the layers; we decide together which override is the right call. The cascade isn't authority; it's the structure that makes the negotiation legible.
 
 ## Tier Vocabulary
 
@@ -157,6 +188,9 @@ More to come as briefs reveal need: Plotly, Graphviz, Three.js, HTML/React Artif
 Whole-brief examples and how they were resolved. Each one is a teaching example for future intakes.
 
 **2026-05-10 — Kuramoto Coupling Sketch arc, Round 1.** Three-step pedagogical brief: (1) two phasors uncoupled, (2) interactive coupling explorer with K slider, (3) narration of the speech-rhythm/groove paragraph. Routing: Manim CE for the static motion (math content → Manim), p5.js for the interactive (parameter explorer → p5.js), Kokoro for narration (Kokoro default). Sketch tier across the board (calibration round). Comparison-Mode wedge: Step 1's Cowork-era Matplotlib fallback retained alongside the canonical Manim render. House taste decisions: indigo / amber palette (`#6366F1` / `#F59E0B`), dark background `#0B0B10`, close-but-detectable frequencies (1.00 / 1.07 Hz), descriptive flat-bundle filenames. Bundle: [Kuramoto Coupling/](../Kuramoto Coupling/).
+
+<!-- CLAUDE → LOUDON: this recipe's palette pre-dates the [[Loudon Live Design System]] (deposited 2026-05-28). The indigo `#6366F1` / amber `#F59E0B` / `#0B0B10` background does not match any of the six locked skins. Options: (a) annotate as deliberate pre-system deviation; (b) re-render against Cobalt Grid (`#0e1f4d` bg, lime `#a8e040` accent) or Graphite (`#0a0a0f` bg, signal-amber `#e8b84a` accent), which would map closest to the existing visual intent; (c) leave as-is and treat as a historical recipe. Worth a call before the next Kuramoto round uses this as its taste anchor. -->
+
 
 Future recipes added as briefs finish.
 

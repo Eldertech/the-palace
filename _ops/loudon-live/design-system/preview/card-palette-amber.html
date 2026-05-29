@@ -1,0 +1,37 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<link rel="stylesheet" href="card.css">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=Manrope:wght@300;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  .bg     { background: #f4ecdc; }
+  .ink    { color: #2a1d10; }
+  .ink-2  { color: #3d2a18; }
+  .ink-3  { color: #6e5a45; }
+  .border { border: 1px solid #d6c9b0; }
+  .accent { color: #e8651b; }
+  .swatch { display:grid; grid-template-columns: 1.4fr 1fr 1fr 1fr 1fr 0.7fr; gap:3px; height:90px; }
+  .sw { padding: 10px 12px; display:flex; flex-direction:column; justify-content:space-between; }
+  .sw .k { font-family: 'JetBrains Mono', monospace; font-size:9px; letter-spacing:0.12em; text-transform:uppercase; opacity:0.75; }
+  .sw .v { font-family: 'JetBrains Mono', monospace; font-size:10px; }
+  .spec { padding: 16px 18px; }
+  .spec .role { font-family: 'JetBrains Mono', monospace; font-size:10px; letter-spacing:0.18em; text-transform:uppercase; color:#e8651b; }
+  .spec .quote { font-family: 'Cormorant Garamond', serif; font-weight:300; font-style:italic; font-size:21px; line-height:1.4; color:#2a1d10; margin-top:8px; letter-spacing:0.005em; padding-left:14px; border-left:2px solid #e8651b; }
+  .spec .attrib { font-family: 'Manrope', sans-serif; font-weight:500; font-size:11px; letter-spacing:0.14em; text-transform:uppercase; color:#6e5a45; margin-top:10px; }
+</style></head>
+<body class="card">
+  <div class="eyebrow" style="color:#e8651b">Palette · Amber Lab · the parchment / philosophical register</div>
+
+  <div class="swatch">
+    <div class="sw" style="background:#f4ecdc;border:1px solid rgba(0,0,0,0.08);border-radius:6px"><span class="k ink-3">bg</span><span class="v ink">#f4ecdc</span></div>
+    <div class="sw" style="background:#ece2cd;border-radius:6px"><span class="k ink-3">elev</span><span class="v ink">#ece2cd</span></div>
+    <div class="sw" style="background:#2a1d10;border-radius:6px;color:#f4ecdc"><span class="k" style="color:#d6c9b0">fg-1</span><span class="v">#2a1d10</span></div>
+    <div class="sw" style="background:#3d2a18;border-radius:6px;color:#f4ecdc"><span class="k" style="color:#d6c9b0">fg-2</span><span class="v">#3d2a18</span></div>
+    <div class="sw" style="background:#6e5a45;border-radius:6px;color:#f4ecdc"><span class="k" style="color:#d6c9b0">fg-3</span><span class="v">#6e5a45</span></div>
+    <div class="sw" style="background:#e8651b;border-radius:6px;color:#f4ecdc"><span class="k" style="color:#fce7d3">acc</span><span class="v">#e8651b</span></div>
+  </div>
+
+  <div class="spec bg" style="border-radius:8px">
+    <div class="role">Philosophy · long-form · for contemplative passages</div>
+    <div class="quote">Hilaritas is not a side effect of good teaching — <em style="color:#e8651b">it IS the teaching</em>. When a student experiences it, the increased power-to-act is the learning.</div>
+    <div class="attrib">After Spinoza · Hilaritas Generator</div>
+  </div>
+</body></html>
