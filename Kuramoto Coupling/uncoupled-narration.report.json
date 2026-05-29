@@ -5,7 +5,7 @@
   "channels": 1,
   "voice_used": "af_heart",
   "tier_used": "study",
-  "loudness_lufs_pre": -25.28,
+  "loudness_lufs_pre": -25.29,
   "loudness_lufs": -16.08,
   "peak_dbtp": -1.01,
   "status": "ok"
