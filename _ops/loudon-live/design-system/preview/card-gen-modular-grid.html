@@ -1,0 +1,107 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<link rel="stylesheet" href="card.css">
+<link href="https://fonts.googleapis.com/css2?family=Silkscreen:wght@400;700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+  body.card { gap: 10px; }
+  .grid-svg {
+    width: 100%;
+    height: auto;
+    background: #0a0a0f;
+    border: 1px solid var(--border);
+    border-radius: 2px;
+    display: block;
+  }
+  .legend {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 2px;
+  }
+  .px {
+    font-family: 'Silkscreen', monospace;
+    font-weight: 400;
+    font-size: 13px;
+    color: var(--fg-3);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+  .px .accent { color: var(--accent); }
+</style></head>
+<body class="card">
+<div class="eyebrow">Generator · Modular grid · step-sequencer · pixel legends only</div>
+
+<svg class="grid-svg" viewBox="0 0 1200 300" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="300" fill="#0a0a0f"/>
+
+  <!-- track labels (clean mono — not pixel) -->
+  <g font-family="JetBrains Mono, monospace" font-size="13" fill="#8a8aa0" letter-spacing="0.14em">
+    <text x="20" y="60">KICK</text>
+    <text x="20" y="125">SNARE</text>
+    <text x="20" y="190">HATS</text>
+    <text x="20" y="255">PERC</text>
+  </g>
+
+  <!-- 16-step grid · KICK on 1/5/9/13 -->
+  <g stroke="#3a3a4a" stroke-width="1">
+    <g fill="#202030">
+      <rect x="100" y="40" width="60" height="40"/><rect x="170" y="40" width="60" height="40"/><rect x="240" y="40" width="60" height="40"/><rect x="310" y="40" width="60" height="40"/>
+      <rect x="380" y="40" width="60" height="40"/><rect x="450" y="40" width="60" height="40"/><rect x="520" y="40" width="60" height="40"/><rect x="590" y="40" width="60" height="40"/>
+      <rect x="660" y="40" width="60" height="40"/><rect x="730" y="40" width="60" height="40"/><rect x="800" y="40" width="60" height="40"/><rect x="870" y="40" width="60" height="40"/>
+      <rect x="940" y="40" width="60" height="40"/><rect x="1010" y="40" width="60" height="40"/><rect x="1080" y="40" width="60" height="40"/><rect x="1150" y="40" width="60" height="40"/>
+    </g>
+    <g fill="#e8b84a" stroke="none">
+      <rect x="100" y="40" width="60" height="40"/>
+      <rect x="380" y="40" width="60" height="40"/>
+      <rect x="660" y="40" width="60" height="40"/>
+      <rect x="940" y="40" width="60" height="40"/>
+    </g>
+
+    <!-- SNARE row -->
+    <g fill="#202030">
+      <rect x="100" y="105" width="60" height="40"/><rect x="170" y="105" width="60" height="40"/><rect x="240" y="105" width="60" height="40"/><rect x="310" y="105" width="60" height="40"/>
+      <rect x="380" y="105" width="60" height="40"/><rect x="450" y="105" width="60" height="40"/><rect x="520" y="105" width="60" height="40"/><rect x="590" y="105" width="60" height="40"/>
+      <rect x="660" y="105" width="60" height="40"/><rect x="730" y="105" width="60" height="40"/><rect x="800" y="105" width="60" height="40"/><rect x="870" y="105" width="60" height="40"/>
+      <rect x="940" y="105" width="60" height="40"/><rect x="1010" y="105" width="60" height="40"/><rect x="1080" y="105" width="60" height="40"/><rect x="1150" y="105" width="60" height="40"/>
+    </g>
+    <g fill="#ff2a2a" stroke="none">
+      <rect x="380" y="105" width="60" height="40"/>
+      <rect x="940" y="105" width="60" height="40"/>
+    </g>
+
+    <!-- HATS row -->
+    <g fill="#202030">
+      <rect x="100" y="170" width="60" height="40"/><rect x="170" y="170" width="60" height="40"/><rect x="240" y="170" width="60" height="40"/><rect x="310" y="170" width="60" height="40"/>
+      <rect x="380" y="170" width="60" height="40"/><rect x="450" y="170" width="60" height="40"/><rect x="520" y="170" width="60" height="40"/><rect x="590" y="170" width="60" height="40"/>
+      <rect x="660" y="170" width="60" height="40"/><rect x="730" y="170" width="60" height="40"/><rect x="800" y="170" width="60" height="40"/><rect x="870" y="170" width="60" height="40"/>
+      <rect x="940" y="170" width="60" height="40"/><rect x="1010" y="170" width="60" height="40"/><rect x="1080" y="170" width="60" height="40"/><rect x="1150" y="170" width="60" height="40"/>
+    </g>
+    <g fill="#00ff66" stroke="none">
+      <rect x="100" y="170" width="60" height="40"/><rect x="240" y="170" width="60" height="40"/>
+      <rect x="380" y="170" width="60" height="40"/><rect x="520" y="170" width="60" height="40"/>
+      <rect x="660" y="170" width="60" height="40"/><rect x="800" y="170" width="60" height="40"/>
+      <rect x="940" y="170" width="60" height="40"/><rect x="1080" y="170" width="60" height="40"/>
+    </g>
+
+    <!-- PRC row -->
+    <g fill="#202030">
+      <rect x="100" y="235" width="60" height="40"/><rect x="170" y="235" width="60" height="40"/><rect x="240" y="235" width="60" height="40"/><rect x="310" y="235" width="60" height="40"/>
+      <rect x="380" y="235" width="60" height="40"/><rect x="450" y="235" width="60" height="40"/><rect x="520" y="235" width="60" height="40"/><rect x="590" y="235" width="60" height="40"/>
+      <rect x="660" y="235" width="60" height="40"/><rect x="730" y="235" width="60" height="40"/><rect x="800" y="235" width="60" height="40"/><rect x="870" y="235" width="60" height="40"/>
+      <rect x="940" y="235" width="60" height="40"/><rect x="1010" y="235" width="60" height="40"/><rect x="1080" y="235" width="60" height="40"/><rect x="1150" y="235" width="60" height="40"/>
+    </g>
+    <g fill="#4a8fff" stroke="none">
+      <rect x="310" y="235" width="60" height="40"/>
+      <rect x="730" y="235" width="60" height="40"/>
+      <rect x="1150" y="235" width="60" height="40"/>
+    </g>
+  </g>
+
+  <!-- playhead -->
+  <line x1="403" y1="32" x2="403" y2="285" stroke="#ff2a2a" stroke-width="1.5" stroke-dasharray="4,4" opacity="0.65"/>
+</svg>
+
+<div class="legend">
+  <span class="px"><span class="accent">▸</span> 124 BPM</span>
+  <span class="px">A · 02 / 04</span>
+</div>
+</body></html>

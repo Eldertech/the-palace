@@ -1,0 +1,416 @@
+@import url('../../colors_and_type.css');
+
+/* ─────────────────────────────────────────────────────────────────────
+   Session Artifact · brought up to date with the latest decisions:
+   • Cormorant Garamond Light (300) for serif body + display
+   • Manrope (300/400/500) for UI sans
+   • Anton (display) for the LOUDON/LIVE wordmark footer
+   • JetBrains Mono (500) for eyebrows/meta
+   • r-md ≤ 4 px · 1.5 px stronger border colour for legibility
+   • Phosphor green (#00ff66) for success · phosphor red (#ff2a2a) for danger
+   • Glow on the LIVE accent · accent rule (left, 2 px) for identity quotes
+   • Header left-aligned · beat-titles right-aligned (Tufte marginalia)
+   • No cyan anywhere
+   ───────────────────────────────────────────────────────────────────── */
+
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Manrope:wght@300;400;500&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=JetBrains+Mono:wght@400;500;600&family=Silkscreen&display=swap');
+
+body {
+  --serif: 'Cormorant Garamond', 'Source Serif 4', Georgia, serif;
+  --sans:  'Manrope', system-ui, sans-serif;
+  --display: 'Anton', sans-serif;
+  --mono:  'JetBrains Mono', monospace;
+  --border: #4a4a5e;
+  --border-hover: rgba(232,184,74,0.55);
+  --r-md: 3px;
+  --r-sm: 2px;
+  --danger: #ff2a2a;
+  --success: #00ff66;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  background: var(--bg);
+  color: var(--fg-2);
+  font-family: var(--sans);
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 1.6;
+  letter-spacing: 0.005em;
+  -webkit-font-smoothing: antialiased;
+}
+.session {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 64px 24px 120px;
+}
+
+/* ── header ───────────────────────────────────────────────────────── */
+.session-header {
+  text-align: left;
+  padding: 56px 0 40px;
+  border-bottom: 1.5px solid var(--border);
+  margin-bottom: 64px;
+  position: relative;
+}
+.session-header .stage-label { display: none; }
+.session-stage-trailer {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 24px;
+}
+.session-stage-trailer .stage-label {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--accent);
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+.session-header .stage-label {
+  font-family: var(--mono);
+  font-size: 12px;
+  color: var(--accent);
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  margin-bottom: 24px;
+  font-weight: 500;
+}
+.session-header h1 {
+  font-family: var(--serif);
+  font-size: clamp(2.5rem, 6vw, 4.25rem);
+  font-weight: 300;
+  color: var(--fg-1);
+  line-height: 1.05;
+  margin-bottom: 22px;
+  letter-spacing: -0.02em;
+}
+.session-header h1 em {
+  font-style: italic;
+  font-weight: 300;
+  color: var(--accent);
+  text-shadow: 0 0 14px rgba(232,184,74,0.45), 0 0 32px rgba(232,184,74,0.20);
+}
+.session-header .subtitle {
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 300;
+  font-size: 22px;
+  color: var(--fg-2);
+  margin: 0 0 28px;
+  max-width: 640px;
+  line-height: 1.4;
+  letter-spacing: 0.005em;
+}
+.session-header .meta {
+  font-family: var(--mono);
+  font-size: 12px;
+  color: var(--fg-3);
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+
+/* ── section labels ───────────────────────────────────────────────── */
+section { margin-bottom: 72px; }
+.section-label {
+  font-family: var(--mono);
+  font-size: 12px;
+  color: var(--fg-3);
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  margin-bottom: 28px;
+  padding-bottom: 12px;
+  border-bottom: 1.5px solid var(--border);
+  font-weight: 500;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+section h2 {
+  font-family: var(--serif);
+  font-size: 32px;
+  font-weight: 300;
+  color: var(--fg-1);
+  margin-bottom: 16px;
+  letter-spacing: -0.01em;
+  line-height: 1.1;
+}
+section h2 em { font-style: italic; color: var(--accent); }
+section p {
+  margin-bottom: 1em;
+  color: var(--fg-2);
+  font-family: var(--sans);
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+/* ── escher split ─────────────────────────────────────────────────── */
+.escher-split {
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  gap: 48px;
+  align-items: start;
+  margin-top: 28px;
+}
+.escher-canvas {
+  background: var(--bg-elev-1);
+  border: 1.5px solid var(--border);
+  border-radius: 3px;
+  padding: 16px;
+  aspect-ratio: 1;
+  display: flex; align-items: center; justify-content: center;
+  overflow: hidden;
+}
+.escher-canvas img { width: 100%; height: 100%; display: block; }
+
+.escher-text .identity {
+  font-family: var(--serif);
+  font-size: 16px;
+  font-style: italic;
+  font-weight: 300;
+  color: var(--fg-2);
+  line-height: 1.5;
+  margin-bottom: 32px;
+  padding-left: 0;
+  border-left: 0;
+  letter-spacing: 0.005em;
+  text-align: left;
+  max-width: 100%;
+}
+.escher-text .identity::before {
+  content: '';
+  display: block;
+  width: 56px; height: 2px;
+  background: var(--accent);
+  margin-bottom: 18px;
+  box-shadow: 0 0 12px rgba(232,184,74,0.35);
+}
+
+.escher-text .beat {
+  margin-bottom: 16px;
+  display: block;
+}
+.escher-text .beat-title {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--accent);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  text-align: left;
+  font-weight: 500;
+  margin-bottom: 4px;
+  display: block;
+}
+.escher-text .beat p {
+  font-family: var(--serif);
+  font-weight: 300;
+  font-size: 16px;
+  color: var(--fg-2);
+  margin: 0;
+  text-align: left;
+  letter-spacing: 0.005em;
+  line-height: 1.5;
+}
+
+/* ── canvas wrap ──────────────────────────────────────────────────── */
+.canvas-wrap {
+  background: var(--bg-elev-1);
+  border: 1.5px solid var(--border);
+  border-radius: 3px;
+  padding: 24px;
+  margin-top: 28px;
+}
+.canvas-wrap img { width: 100%; height: auto; display: block; border-radius: 2px; }
+.canvas-caption {
+  font-family: var(--sans);
+  font-weight: 300;
+  font-size: 13px;
+  color: var(--fg-3);
+  margin-top: 14px;
+  text-align: center;
+  font-style: italic;
+}
+
+/* ── build steps ──────────────────────────────────────────────────── */
+.build-steps { display: flex; flex-direction: column; gap: 14px; margin-top: 28px; }
+.step-card {
+  background: var(--bg-elev-1);
+  border: 1.5px solid var(--border);
+  border-radius: 3px;
+  padding: 18px 22px;
+  display: grid;
+  grid-template-columns: 36px 1fr;
+  gap: 16px;
+  align-items: start;
+  transition: border-color 220ms cubic-bezier(.4,0,.2,1);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.05);
+}
+.step-card:hover { border-color: var(--border-hover); }
+.step-num {
+  font-family: var(--mono);
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--accent);
+  background: rgba(232,184,74,0.10);
+  border: 1.5px solid rgba(232,184,74,0.50);
+  border-radius: 2px;
+  width: 32px; height: 32px;
+  display: flex; align-items: center; justify-content: center;
+}
+.step-title {
+  font-family: var(--sans);
+  font-weight: 500;
+  font-size: 16px;
+  color: var(--fg-1);
+  margin-bottom: 4px;
+  letter-spacing: -0.005em;
+}
+.step-detail {
+  font-family: var(--sans);
+  font-weight: 300;
+  font-size: 14px;
+  color: var(--fg-3);
+  margin: 0;
+  line-height: 1.55;
+}
+.step-params {
+  margin-top: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.param-tag {
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--info);
+  background: rgba(74,143,255,0.06);
+  border: 1.5px solid rgba(74,143,255,0.55);
+  border-radius: 1px;
+  padding: 2px 8px;
+  letter-spacing: 0.02em;
+}
+
+/* ── tuning grid ──────────────────────────────────────────────────── */
+.tuning-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 14px;
+  margin-top: 28px;
+}
+.tuning-card {
+  background: var(--bg-elev-1);
+  border: 1.5px solid var(--border);
+  border-radius: 3px;
+  padding: 20px;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.05);
+}
+.tuning-title {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--fg-3);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  font-weight: 500;
+  margin-bottom: 10px;
+}
+.tuning-value {
+  font-family: var(--mono);
+  font-size: 24px;
+  color: var(--accent);
+  font-weight: 500;
+  margin-bottom: 10px;
+  letter-spacing: 0.005em;
+}
+.tuning-note {
+  font-family: var(--sans);
+  font-weight: 300;
+  font-size: 13px;
+  color: var(--fg-3);
+  line-height: 1.5;
+}
+
+/* ── pillquote · identity rule ────────────────────────────────────── */
+.pillquote {
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 300;
+  font-size: 22px;
+  color: var(--info);
+  line-height: 1.45;
+  padding: 6px 0 6px 24px;
+  border-left: 2px solid var(--info);
+  margin: 28px 0;
+  letter-spacing: 0.005em;
+}
+
+/* ── callouts (no cyan) ───────────────────────────────────────────── */
+.callout-quote {
+  background: rgba(197,118,197,0.06);
+  border-left: 2px solid #c576c5;
+  font-style: italic;
+  font-family: var(--serif);
+  font-weight: 300;
+  font-size: 16px;
+  color: var(--fg-2);
+  padding: 12px 16px;
+  margin: 14px 0;
+  letter-spacing: 0.005em;
+}
+.callout-change {
+  background: rgba(74,143,255,0.06);
+  border-left: 2px solid var(--info);
+  font-family: var(--serif);
+  font-weight: 300;
+  font-size: 16px;
+  color: var(--fg-2);
+  padding: 12px 16px;
+  margin: 14px 0;
+  letter-spacing: 0.005em;
+}
+.callout-change strong {
+  color: var(--info);
+  font-family: var(--sans);
+  font-weight: 500;
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  margin-right: 8px;
+}
+
+/* ── session footer · the brand signature ─────────────────────────── */
+.session-footer {
+  margin-top: 96px;
+  padding-top: 28px;
+  border-top: 1.5px solid var(--border);
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+.session-footer .sig-mono {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--fg-3);
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+.session-footer .sig-mono em { color: var(--accent); font-style: normal; }
+.session-footer .wordmark {
+  font-family: var(--display);
+  font-weight: 400;
+  font-size: 28px;
+  letter-spacing: 0.005em;
+  color: var(--fg-1);
+  text-transform: uppercase;
+  line-height: 1;
+}
+.session-footer .wordmark .slash  { color: var(--fg-3); margin: 0 4px; }
+.session-footer .wordmark .accent {
+  color: var(--accent);
+  text-shadow: 0 0 10px rgba(232,184,74,0.55), 0 0 22px rgba(232,184,74,0.25);
+}

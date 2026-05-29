@@ -1,0 +1,33 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<link rel="stylesheet" href="card.css">
+<style>
+  .grid { display:grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
+  .sw { background: var(--bg-elev-1); border: 1px solid var(--border); border-radius: 6px; padding: 12px; display:flex; flex-direction:column; gap:6px; }
+  .swatch { height: 32px; border-radius: 4px; box-shadow: 0 0 12px var(--glow, transparent); }
+  .name { font-family: var(--mono); font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; }
+  .hex  { font-family: var(--mono); font-size: 10px; color: var(--fg-3); }
+  .role { font-family: var(--sans); font-size: 11px; color: var(--fg-3); font-style: italic; }
+  .live-line { background: #000; border-radius: 6px; padding: 12px 16px; display:flex; gap:14px; align-items:center; }
+  .live-line .label { font-family: var(--mono); font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; }
+  .live-line .ok  { color: #00ff66; text-shadow: 0 0 6px rgba(0,255,102,0.75); }
+  .live-line .err { color: #ff2a2a; text-shadow: 0 0 6px rgba(255,42,42,0.80); }
+  .live-line .acc { color: #e8b84a; text-shadow: 0 0 6px rgba(232,184,74,0.45); }
+  .live-line .info{ color: #4a8fff; text-shadow: 0 0 6px rgba(74,143,255,0.45); }
+</style></head>
+<body class="card">
+<div class="eyebrow">Semantic colors · all phosphor-saturated · accent stays warm</div>
+
+<div class="grid">
+  <div class="sw"><div class="swatch" style="background:#e8b84a;--glow:rgba(232,184,74,0.45)"></div><div class="name" style="color:#e8b84a">accent</div><div class="hex">#e8b84a · signal-amber</div><div class="role">the today eyebrow · primary CTA</div></div>
+  <div class="sw"><div class="swatch" style="background:#4a8fff;--glow:rgba(74,143,255,0.40)"></div><div class="name" style="color:#4a8fff">info</div><div class="hex">#4a8fff · parameter-blue</div><div class="role">tuning knob · 440 Hz</div></div>
+  <div class="sw"><div class="swatch" style="background:#00ff66;--glow:rgba(0,255,102,0.65)"></div><div class="name" style="color:#00ff66">success</div><div class="hex">#00ff66 · CRT-phosphor green</div><div class="role">tests passing · trace alive</div></div>
+  <div class="sw"><div class="swatch" style="background:#ff2a2a;--glow:rgba(255,42,42,0.65)"></div><div class="name" style="color:#ff2a2a">danger</div><div class="hex">#ff2a2a · phosphor red</div><div class="role">regression · clip · alarm</div></div>
+</div>
+
+<div class="live-line">
+  <span class="label acc">● TODAY</span>
+  <span class="label info">fc = 440 Hz</span>
+  <span class="label ok">● PASS · 12 / 12</span>
+  <span class="label err">● CLIP · CH1</span>
+</div>
+</body></html>

@@ -53,6 +53,8 @@ Mermaid is preferred but not universal. SVG earns its place when:
 
 When you choose SVG over Mermaid, note why in the entry's prose or in a `<!-- CLAUDE → LOUDON: -->` comment. The choice should be visible and reasoned, not silent.
 
+**One case is not SVG's at all: technical and quantitative diagrams.** Signal-flow graphs, DSP block diagrams, filter topologies, pole-zero plots, magnitude/phase responses, annotated equations, and plotted curves belong to [[Technical Diagram Standard]] — authored in LaTeX (TikZ and pgfplots), rendered to editable SVG, with the `.tex` source kept text-first. Do not hand-author raw SVG for these. Raw SVG remains the escape hatch only for bespoke visual grammar that neither Mermaid nor LaTeX expresses.
+
 ---
 
 ## Diagram Types and Their Uses in the Palace

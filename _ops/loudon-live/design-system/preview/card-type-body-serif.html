@@ -1,0 +1,31 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<link rel="stylesheet" href="card.css">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet">
+<style>
+  body.card { gap: 14px; }
+  .specimen {
+    font-family: 'Cormorant Garamond', 'Source Serif 4', Georgia, serif;
+    font-weight: 300;
+    font-size: 22px;
+    line-height: 1.55;
+    color: var(--fg-2);
+    max-width: 580px;
+    letter-spacing: 0.005em;
+  }
+  .specimen em { font-style: italic; font-weight: 300; color: var(--fg-1); }
+  .meta-row { display:flex; justify-content:space-between; gap:24px; align-items:baseline; padding-top:8px; border-top:1px solid var(--border); }
+  .meta-row .label { font-family: var(--mono); font-size: 11px; letter-spacing: 0.14em; color: var(--fg-3); text-transform: uppercase; }
+  .meta-row .crosshair { display:flex; gap:6px; align-items:center; }
+  .meta-row .crosshair span { width:14px; height:1px; background:var(--fg-3); display:inline-block; }
+  .meta-row .crosshair span.v { width:1px; height:14px; }
+</style></head>
+<body class="card">
+<div class="eyebrow">Body serif · Cormorant Garamond light · 22 / 1.55 · drafting register</div>
+
+<div class="specimen">A neuron's complexity is itself layered: passive membrane properties, active ion channels, spike dynamics, recovery dynamics. The pedagogy mirrors the biology, which mirrors the synthesis. <em>The student learns about neurons, about oscillators, and about incremental engineering simultaneously — because they are the same structure at different scales.</em></div>
+
+<div class="meta-row">
+  <span class="label">300 · 0.005em tracking · italic for emphasis</span>
+  <span class="crosshair"><span></span><span class="v"></span><span></span></span>
+</div>
+</body></html>

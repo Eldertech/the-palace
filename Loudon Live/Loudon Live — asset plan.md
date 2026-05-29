@@ -5,6 +5,9 @@ links:
   - target: "[[Loudon Live]]"
     type: connects-to
     label: child-of
+  - target: "[[Loudon Live Design System]]"
+    type: spawned
+    label: cemented-into
 forward_vector: "I am the visual system and variant-rendering plan for Loudon Live. I want to grow into a working pipeline — palette library, generator catalog, render scripts — that produces a fresh stream pack with one command, and that hooks into the maker specialists once they exist."
 ---
 

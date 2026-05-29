@@ -1,0 +1,105 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<link rel="stylesheet" href="card.css">
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Manrope:wght@300;400;500&family=Cormorant+Garamond:ital,wght@0,300;1,300&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  .swatch { display:grid; grid-template-columns: 1.4fr 1fr 1fr 1fr 1fr 0.7fr; gap:3px; height:90px; }
+  .sw { padding: 10px 12px; display:flex; flex-direction:column; justify-content:space-between; border-radius: 2px; }
+  .sw .k { font-family: 'JetBrains Mono', monospace; font-size:9px; letter-spacing:0.12em; text-transform:uppercase; opacity:0.8; }
+  .sw .v { font-family: 'JetBrains Mono', monospace; font-size:10px; }
+
+  .spec {
+    background:
+      linear-gradient(#f0eee5, #f0eee5),
+      repeating-linear-gradient(0deg, transparent 0 23px, rgba(26,25,22,0.05) 23px 24px),
+      repeating-linear-gradient(90deg, transparent 0 23px, rgba(26,25,22,0.05) 23px 24px);
+    background-blend-mode: multiply;
+    background-color: #f0eee5;
+    border-radius: 2px;
+    padding: 22px 26px 24px;
+    position: relative;
+    min-height: 180px;
+    overflow: hidden;
+  }
+  .reg { position: absolute; width: 18px; height: 18px; border: 1px solid #c8261a; }
+  .reg.tl { top: 8px;  left: 8px;  border-right: 0; border-bottom: 0; }
+  .reg.tr { top: 8px;  right: 8px; border-left:  0; border-bottom: 0; }
+  .reg.bl { bottom:8px;left:  8px; border-right: 0; border-top:    0; }
+  .reg.br { bottom:8px;right: 8px; border-left:  0; border-top:    0; }
+
+  .role {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: #c8261a;
+    font-weight: 500;
+  }
+  .lockup {
+    font-family: 'Anton', sans-serif;
+    font-weight: 400;
+    font-size: 76px;
+    line-height: 0.9;
+    letter-spacing: 0.005em;
+    color: #1a1916;
+    text-transform: uppercase;
+    margin-top: 12px;
+  }
+  .lockup .slash { color: #6a6862; margin: 0 4px; }
+  .lockup .accent { color: #c8261a; }
+
+  .specrow {
+    margin-top: 14px;
+    display: flex;
+    gap: 18px;
+    font-family: 'Manrope', sans-serif;
+    font-weight: 500;
+    font-size: 12px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: #3a3a35;
+  }
+  .specrow strong { color: #c8261a; font-weight: 600; }
+
+  .callout {
+    position: absolute;
+    right: 26px;
+    bottom: 22px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #c8261a;
+  }
+  .callout .pointer {
+    display: inline-block; width: 36px; height: 1px;
+    background: #c8261a;
+    vertical-align: middle;
+    margin-right: 8px;
+  }
+</style></head>
+<body class="card">
+<div class="eyebrow" style="color:#c8261a">Palette · Drafting · paper / schematic / engineering register</div>
+
+<div class="swatch">
+  <div class="sw" style="background:#f0eee5;color:#1a1916;border:1px solid #d8d4c6"><span class="k">bg</span><span class="v">#f0eee5</span></div>
+  <div class="sw" style="background:#e6e3d7;color:#1a1916"><span class="k">elev</span><span class="v">#e6e3d7</span></div>
+  <div class="sw" style="background:#1a1916;color:#f0eee5"><span class="k">fg-1</span><span class="v">#1a1916</span></div>
+  <div class="sw" style="background:#3a3a35;color:#f0eee5"><span class="k">fg-2</span><span class="v">#3a3a35</span></div>
+  <div class="sw" style="background:#6a6862;color:#f0eee5"><span class="k">fg-3</span><span class="v">#6a6862</span></div>
+  <div class="sw" style="background:#c8261a;color:#f0eee5"><span class="k">acc</span><span class="v">#c8261a</span></div>
+</div>
+
+<div class="spec">
+  <div class="reg tl"></div><div class="reg tr"></div><div class="reg bl"></div><div class="reg br"></div>
+
+  <div class="role">SHEET 02 / 04 · A4 · 1:1 · REV C</div>
+  <div class="lockup">LOUDON<span class="slash">/</span><span class="accent">LIVE</span></div>
+  <div class="specrow">
+    <span><strong>SIG</strong> 220 Hz</span>
+    <span><strong>τ</strong> 12 ms</span>
+    <span><strong>Q</strong> 0.707</span>
+  </div>
+
+  <div class="callout"><span class="pointer"></span>signal in</div>
+</div>
+</body></html>

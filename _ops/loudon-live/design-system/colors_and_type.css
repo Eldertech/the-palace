@@ -1,0 +1,194 @@
+/* ────────────────────────────────────────────────────────────────────────
+   Loudon Live · Design Tokens · LOCKED
+   ────────────────────────────────────────────────────────────────────────
+   The system as cemented through review. Locked grammar (type, color,
+   spacing, motion); per-stream skin (palette + generative element).
+   Default palette is Graphite.
+
+   Type system
+     • Anton           → display / wordmark (LOUDON / LIVE)
+     • Cormorant Garamond → drafting serif body (300/400, italic 300)
+     • Manrope         → Avenir-like architectural sans (300/400/500/700)
+     • JetBrains Mono  → metadata, labels, params, code
+     • Silkscreen      → pixel font for legends / smaller technical text only
+                          (never main body — pixelation is a register, not a default)
+
+   No cyan. Pixel fonts only in small legends/dividers. Italic-light
+   "Live" is the only italicised word in the wordmark family.
+   ───────────────────────────────────────────────────────────────────── */
+
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Manrope:wght@200;300;400;500;700&family=JetBrains+Mono:wght@400;500;600&family=Silkscreen:wght@400;700&display=swap');
+
+:root {
+  /* ── type families ───────────────────────────────────────────────── */
+  --serif:    'Cormorant Garamond', 'Source Serif 4', Georgia, serif;
+  --sans:     'Manrope', system-ui, -apple-system, 'Segoe UI', Helvetica, sans-serif;
+  --display:  'Anton', 'Bebas Neue', 'Space Grotesk', sans-serif;
+  --mono:     'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
+  --pixel:    'Silkscreen', 'JetBrains Mono', monospace;
+
+  /* ── type scale ──────────────────────────────────────────────────── */
+  --t-eyebrow:    11px;
+  --t-meta:       12px;
+  --t-caption:    13px;
+  --t-body:       16px;
+  --t-body-lg:    17px;
+  --t-lead:       20px;
+  --t-h4:         22px;
+  --t-h3:         28px;
+  --t-h2:         36px;
+  --t-h1:         52px;
+  --t-display:    96px;
+  --t-display-xl: 156px;
+
+  /* ── line heights / tracking ─────────────────────────────────────── */
+  --lh-tight:   1.05;
+  --lh-snug:    1.2;
+  --lh-normal:  1.5;
+  --lh-reading: 1.6;
+  --tr-display:  0.005em;   /* Anton looks best slightly *positive* */
+  --tr-tight:   -0.01em;
+  --tr-normal:   0em;
+  --tr-soft:     0.005em;   /* Cormorant body */
+  --tr-eyebrow:  0.18em;    /* mono eyebrows — bumped from 0.14em */
+  --tr-overline: 0.22em;    /* widest tracking, top-row mono labels */
+
+  /* ── weights ─────────────────────────────────────────────────────── */
+  --w-light:   300;
+  --w-regular: 400;
+  --w-medium:  500;
+  --w-semi:    600;
+  --w-bold:    700;
+
+  /* ─────────────────────────────────────────────────────────────────
+     PALETTE — Graphite (default channel skin)
+     ───────────────────────────────────────────────────────────────── */
+  --bg:           #0a0a0f;
+  --bg-elev-1:    #12121a;
+  --bg-elev-2:    #1a1a28;
+  --bg-elev-3:    #22222e;
+  --border:       #4a4a5e;            /* bumped for visible separation on dark */
+  --border-soft:  rgba(255,255,255,0.06);
+  --border-hover: rgba(232,184,74,0.55);
+
+  --fg-1:         #e8e8f0;
+  --fg-2:         #c8c8d8;
+  --fg-3:         #8a8aa0;            /* bumped for legibility */
+  --fg-4:         #4a4a5a;
+  --fg-on-accent: #0a0a0f;
+
+  /* signal/semantic — phosphor-saturated, no cyan */
+  --accent:       #e8b84a;
+  --accent-dim:   #7a6030;
+  --accent-soft:  rgba(232,184,74,0.10);
+  --accent-line:  rgba(232,184,74,0.50);
+
+  --info:         #4a8fff;
+  --info-soft:    rgba(74,143,255,0.06);
+  --info-line:    rgba(74,143,255,0.55);
+
+  --success:      #00ff66;             /* CRT phosphor green */
+  --success-soft: rgba(0,255,102,0.08);
+  --success-line: rgba(0,255,102,0.50);
+
+  --warn:         #ff9b4a;
+
+  --danger:       #ff2a2a;             /* phosphor red */
+  --danger-soft:  rgba(255,42,42,0.08);
+  --danger-line:  rgba(255,42,42,0.55);
+
+  /* ── radii — 4 px is the ceiling. Pill only for status-shape controls. */
+  --r-xs:  1px;
+  --r-sm:  2px;     /* default for cards, params */
+  --r-md:  4px;     /* ceiling */
+  --r-pill: 999px;
+
+  /* ── spacing (4 px base) ─────────────────────────────────────────── */
+  --s-1:  4px;
+  --s-2:  8px;
+  --s-3:  12px;
+  --s-4:  16px;
+  --s-5:  20px;
+  --s-6:  24px;
+  --s-7:  32px;
+  --s-8:  40px;
+  --s-9:  48px;
+  --s-10: 64px;
+  --s-11: 80px;
+  --s-12: 120px;
+
+  /* ── elevation — top-edge inset highlight + dark drop ─────────────── */
+  --shadow-1: inset 0 1px 0 rgba(255,255,255,0.05), 0 1px 2px rgba(0,0,0,0.55);
+  --shadow-2: inset 0 1px 0 rgba(255,255,255,0.07), 0 6px 16px rgba(0,0,0,0.55), 0 1px 2px rgba(0,0,0,0.50);
+  --shadow-3: inset 0 1px 0 rgba(255,255,255,0.10), 0 18px 40px -8px rgba(0,0,0,0.70), 0 4px 10px rgba(0,0,0,0.45);
+  --glow-accent: inset 0 1px 0 rgba(232,184,74,0.25), 0 0 32px rgba(232,184,74,0.32), 0 0 4px rgba(232,184,74,0.45);
+  --glow-danger: 0 0 14px rgba(255,42,42,0.70), 0 0 32px rgba(255,42,42,0.40), 0 0 64px rgba(255,42,42,0.25);
+  --glow-success: 0 0 8px rgba(0,255,102,0.75), 0 0 16px rgba(0,255,102,0.40);
+
+  /* text glow on the wordmark's "LIVE" */
+  --text-glow-accent: 0 0 12px rgba(232,184,74,0.55), 0 0 24px rgba(232,184,74,0.25);
+  --text-glow-danger: 0 0 14px rgba(255,42,42,0.70), 0 0 32px rgba(255,42,42,0.40);
+
+  /* ── motion ──────────────────────────────────────────────────────── */
+  --ease:        cubic-bezier(.4, 0, .2, 1);
+  --ease-out:    cubic-bezier(.2, .9, .2, 1);
+  --t-fast:      120ms;
+  --t-base:      220ms;
+  --t-slow:      550ms;
+
+  /* ── layout ──────────────────────────────────────────────────────── */
+  --card-w: 1920px;
+  --card-h: 1080px;
+  --card-margin: 120px;
+  --grid-gutter: 24px;
+}
+
+/* ─────────────────────────────────────────────────────────────────────
+   PER-STREAM SKINS — apply on <html> or <body>
+   ───────────────────────────────────────────────────────────────────── */
+
+.skin-amber-lab {
+  --bg: #f4ecdc; --bg-elev-1: #ece2cd; --bg-elev-2: #e4d8be;
+  --border: #c8b994; --border-soft: rgba(0,0,0,0.06);
+  --fg-1: #2a1d10; --fg-2: #3d2a18; --fg-3: #6e5a45; --fg-4: #a59880;
+  --accent: #e8651b; --accent-dim: #b54a0e;
+  --accent-soft: rgba(232,101,27,0.10); --accent-line: rgba(232,101,27,0.50);
+  --fg-on-accent: #f4ecdc;
+}
+
+/* CRT — phosphor green on stark black; scope / DSP / signal-watching */
+.skin-crt, .skin-teal-patch {
+  --bg: #000000; --bg-elev-1: #060d09; --bg-elev-2: #0a1a10;
+  --border: #1f5a2a;
+  --fg-1: #b8ffb8; --fg-2: #66dd66; --fg-3: #2d7a3d; --fg-4: #1f4a23;
+  --accent: #00ff66; --accent-dim: #008a37;
+  --accent-soft: rgba(0,255,102,0.10); --accent-line: rgba(0,255,102,0.50);
+}
+
+/* Strobe — black + white + phosphor red; dance / performance / live */
+.skin-strobe, .skin-dusk-tape {
+  --bg: #000000; --bg-elev-1: #0a0a0a; --bg-elev-2: #141414;
+  --border: #2a2a2a;
+  --fg-1: #ffffff; --fg-2: #d8d8d8; --fg-3: #8a8a8a; --fg-4: #4a4a4a;
+  --accent: #ff2a2a; --accent-dim: #a01818;
+  --accent-soft: rgba(255,42,42,0.08); --accent-line: rgba(255,42,42,0.50);
+}
+
+/* Cobalt Grid — lab / mathematics / blueprint */
+.skin-cobalt-grid {
+  --bg: #0e1f4d; --bg-elev-1: #14275c; --bg-elev-2: #1c3066;
+  --border: #2a4080;
+  --fg-1: #e8ecff; --fg-2: #c0c6e4; --fg-3: #8a92c4; --fg-4: #5a6694;
+  --accent: #a8e040; --accent-dim: #6f9626;
+  --accent-soft: rgba(168,224,64,0.10); --accent-line: rgba(168,224,64,0.50);
+}
+
+/* Drafting — paper / schematic / engineering */
+.skin-drafting, .skin-bone-synth {
+  --bg: #f0eee5; --bg-elev-1: #e6e3d7; --bg-elev-2: #dcd9ca;
+  --border: #b8b09a; --border-soft: rgba(26,25,22,0.10);
+  --fg-1: #1a1916; --fg-2: #3a3a35; --fg-3: #6a6862; --fg-4: #a59f90;
+  --accent: #c8261a; --accent-dim: #8a1a12;
+  --accent-soft: rgba(200,38,26,0.08); --accent-line: rgba(200,38,26,0.50);
+  --fg-on-accent: #f0eee5;
+}

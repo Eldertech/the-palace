@@ -1,0 +1,118 @@
+/* Loudon Live slide stage — fixed 1920×1080 inner canvas, scaled to fit
+   any viewport via CSS. Use as a shared base for OBS cards and topic
+   title cards. Apply a .skin-* class to <html> to switch palette. */
+
+@import url('../colors_and_type.css');
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html, body {
+  background: #000;
+  height: 100%;
+  overflow: hidden;
+}
+.stage {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.slide {
+  width: 1920px;
+  height: 1080px;
+  position: relative;
+  background: var(--bg);
+  color: var(--fg-1);
+  overflow: hidden;
+  /* scale via JS to fit viewport; fallback: clamp to 100vw with aspect-ratio */
+  transform-origin: center center;
+}
+/* Inner content layer — sits above the generative bg */
+.frame {
+  position: absolute;
+  inset: 64px;
+  border: 1px solid var(--border);
+  opacity: 0.4;
+  pointer-events: none;
+}
+.gen {
+  position: absolute;
+  inset: 320px 0 60px 0;
+  overflow: hidden;
+}
+.gen svg { width: 100%; height: 100%; display: block; }
+.content {
+  position: absolute;
+  inset: 0;
+  padding: 120px 120px 96px;
+  display: flex;
+  flex-direction: column;
+}
+.headline {
+  font-family: var(--serif);
+  font-size: 156px;
+  font-weight: 700;
+  letter-spacing: -3px;
+  line-height: 0.95;
+  color: var(--fg-1);
+}
+.headline em {
+  font-style: italic;
+  font-weight: 300;
+  color: var(--accent);
+}
+.subhead {
+  font-family: var(--sans);
+  font-size: 32px;
+  font-weight: 400;
+  color: var(--fg-2);
+  margin-top: 14px;
+  letter-spacing: 0.01em;
+}
+.eyebrow {
+  font-family: var(--mono);
+  font-size: 26px;
+  font-weight: 600;
+  color: var(--accent);
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  margin-top: 28px;
+}
+.footer-left {
+  position: absolute;
+  left: 120px;
+  bottom: 90px;
+  font-family: var(--mono);
+  font-size: 22px;
+  letter-spacing: 0.18em;
+  color: var(--fg-3);
+  text-transform: uppercase;
+}
+.footer-right {
+  position: absolute;
+  right: 120px;
+  bottom: 78px;
+  font-family: var(--serif);
+  font-size: 40px;
+  font-weight: 700;
+  letter-spacing: -0.015em;
+  color: var(--fg-1);
+}
+.footer-right em {
+  font-style: italic;
+  font-weight: 300;
+  color: var(--accent);
+}
+.dot-live {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+}
+.dot-live::before {
+  content: '';
+  width: 14px; height: 14px;
+  border-radius: 50%;
+  background: var(--danger);
+  box-shadow: 0 0 16px var(--danger);
+  display: inline-block;
+}

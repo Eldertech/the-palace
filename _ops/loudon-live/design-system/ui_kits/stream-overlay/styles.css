@@ -1,0 +1,317 @@
+@import url('../../colors_and_type.css');
+
+/* Stream Overlay · brought up to latest decisions
+   • Anton lockup, italic-light "Live" glow
+   • Manrope for chat / UI text
+   • JetBrains Mono for live-tag, topic strap, technical labels
+   • Phosphor red on-air dot, animated pulse
+   • Square corners (≤ 2 px), 1.5 px borders, no cyan
+   • Lower-third uses serif italic for emphasis (Cormorant) */
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html, body { background: #000; height: 100%; overflow: hidden; }
+
+.scene-stage {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.scene {
+  position: relative;
+  width: 1920px;
+  height: 1080px;
+  background: #08080a;
+  overflow: hidden;
+  transform-origin: center center;
+}
+
+/* ── background (mock screen-share) ─────────────────────────────── */
+.bg-screen {
+  position: absolute;
+  inset: 0;
+  background: var(--bg);
+  display: flex; align-items: center; justify-content: center;
+  padding: 156px 88px 88px;
+}
+.bg-screen .placeholder {
+  width: 100%; height: 100%;
+  background: linear-gradient(180deg, #0e0e16 0%, #14141d 100%);
+  border: 1.5px solid var(--border);
+  border-radius: 2px;
+  overflow: hidden;
+  position: relative;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.04);
+}
+.bg-screen .placeholder .ide-bar {
+  height: 38px;
+  background: #0b0b12;
+  border-bottom: 1px solid var(--border);
+  display: flex; align-items: center; padding: 0 18px; gap: 10px;
+}
+.bg-screen .placeholder .ide-bar span {
+  font-family: var(--mono);
+  font-size: 12px;
+  color: var(--fg-3);
+  letter-spacing: 0.18em;
+}
+.bg-screen .placeholder .ide-body {
+  padding: 28px 40px;
+  font-family: var(--mono);
+  font-size: 16px;
+  line-height: 1.7;
+  color: var(--fg-2);
+  height: calc(100% - 38px);
+  overflow: hidden;
+  letter-spacing: 0.02em;
+}
+.bg-screen .placeholder .ide-body .k { color: var(--accent); }
+.bg-screen .placeholder .ide-body .c { color: var(--fg-3); font-style: italic; }
+.bg-screen .placeholder .ide-body .s { color: var(--success); }
+
+/* ── live tag (top-left) ────────────────────────────────────────── */
+.live-tag {
+  position: absolute;
+  top: 28px;
+  left: 32px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  background: rgba(8,8,12,0.85);
+  backdrop-filter: blur(8px);
+  border: 1.5px solid var(--border);
+  border-radius: 2px;
+  padding: 12px 16px;
+  font-family: var(--mono);
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--fg-2);
+  z-index: 5;
+}
+.live-tag .dot {
+  width: 12px; height: 12px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 38% 38%, #ff8a7a 0%, #ff2a2a 45%, #c00e1a 100%);
+  box-shadow:
+    0 0 6px rgba(255,42,42,0.95),
+    0 0 14px rgba(255,42,42,0.75),
+    0 0 32px rgba(255,42,42,0.40);
+  animation: live-pulse 1.6s ease-in-out infinite;
+}
+@keyframes live-pulse { 50% { opacity: 0.5; } }
+.live-tag .accent { color: var(--danger); }
+
+/* ── topic strap ────────────────────────────────────────────────── */
+.topic-strap {
+  position: absolute;
+  top: 92px;
+  left: 32px;
+  font-family: var(--mono);
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--fg-3);
+  z-index: 5;
+}
+.topic-strap .accent { color: var(--accent); }
+
+/* ── cam frame (lower-right) ────────────────────────────────────── */
+.cam-frame {
+  position: absolute;
+  right: 32px;
+  bottom: 32px;
+  width: 480px;
+  height: 360px;
+  border: 3px solid var(--accent);
+  border-radius: 2px;
+  background: #1a1a22;
+  overflow: hidden;
+  box-shadow: var(--shadow-3),
+              0 0 32px rgba(232,184,74,0.18);
+  z-index: 4;
+}
+.cam-frame .placeholder {
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse at 50% 40%, #2a2330 0%, #16121c 100%);
+  display: flex; align-items: center; justify-content: center;
+}
+.cam-frame .placeholder::before {
+  content: '';
+  position: absolute;
+  top: 35%;
+  width: 140px; height: 140px;
+  background: rgba(232,184,74,0.08);
+  border-radius: 50%;
+}
+.cam-frame .placeholder::after {
+  content: 'cam';
+  position: absolute;
+  bottom: 14px;
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--fg-3);
+  letter-spacing: 0.3em;
+}
+.cam-frame .live-dot {
+  position: absolute;
+  top: 12px; left: 12px;
+  width: 10px; height: 10px;
+  background: var(--danger);
+  border-radius: 50%;
+  box-shadow: 0 0 8px var(--danger);
+  animation: live-pulse 1.6s ease-in-out infinite;
+}
+.cam-frame .cam-tag {
+  position: absolute;
+  top: 12px; right: 12px;
+  font-family: var(--pixel);
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  color: var(--accent);
+  text-shadow: 0 0 6px rgba(232,184,74,0.55);
+  text-transform: uppercase;
+}
+
+/* ── lower-third ────────────────────────────────────────────────── */
+.lower-third {
+  position: absolute;
+  left: 32px;
+  bottom: 32px;
+  display: flex;
+  background: rgba(8,8,12,0.92);
+  border: 1.5px solid var(--border);
+  border-radius: 2px;
+  overflow: hidden;
+  box-shadow: var(--shadow-2);
+  z-index: 4;
+}
+.lower-third .lt-label {
+  background: var(--accent);
+  color: var(--bg);
+  font-family: var(--mono);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  padding: 18px 22px;
+  display: flex;
+  align-items: center;
+}
+.lower-third .lt-value {
+  padding: 16px 26px;
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 300;
+  font-style: italic;
+  font-size: 26px;
+  color: var(--fg-1);
+  letter-spacing: 0.005em;
+  display: flex;
+  align-items: center;
+  line-height: 1.2;
+}
+
+/* ── watermark (top-right) ──────────────────────────────────────── */
+.watermark {
+  position: absolute;
+  top: 28px;
+  right: 32px;
+  font-family: var(--display);
+  font-weight: 400;
+  font-size: 38px;
+  letter-spacing: 0.005em;
+  color: var(--fg-1);
+  text-transform: uppercase;
+  line-height: 1;
+  text-shadow: 0 2px 12px rgba(0,0,0,0.6);
+  z-index: 5;
+}
+.watermark .slash  { color: var(--fg-3); margin: 0 4px; }
+.watermark .accent {
+  color: var(--accent);
+  text-shadow: 0 0 14px rgba(232,184,74,0.65), 0 0 28px rgba(232,184,74,0.30);
+}
+
+/* ── chat column ────────────────────────────────────────────────── */
+.chat-col {
+  position: absolute;
+  top: 156px;
+  right: 32px;
+  width: 360px;
+  height: 540px;
+  background: rgba(8,8,12,0.86);
+  backdrop-filter: blur(8px);
+  border: 1.5px solid var(--border);
+  border-radius: 2px;
+  padding: 16px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  overflow: hidden;
+  z-index: 4;
+}
+.chat-col .chat-head {
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--fg-3);
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 10px;
+  margin-bottom: 2px;
+}
+.chat-col .chat-head .accent { color: var(--accent); }
+.chat-msg {
+  font-family: 'Manrope', sans-serif;
+  font-weight: 300;
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--fg-2);
+  letter-spacing: 0.005em;
+}
+.chat-msg .chat-name { color: var(--accent); font-weight: 500; margin-right: 6px; }
+.chat-msg .chat-name.alt-a { color: var(--success); }
+.chat-msg .chat-name.alt-b { color: var(--info); }
+.chat-msg .chat-name.alt-c { color: #c576c5; }
+
+/* ── tweaks panel ───────────────────────────────────────────────── */
+.tweaks {
+  position: fixed;
+  bottom: 16px;
+  left: 16px;
+  background: rgba(8,8,12,0.92);
+  border: 1.5px solid var(--border);
+  border-radius: 2px;
+  padding: 10px 14px;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--fg-3);
+  letter-spacing: 0.18em;
+  z-index: 10;
+}
+.tweaks button {
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  background: var(--bg-elev-2);
+  color: var(--fg-2);
+  border: 1.5px solid var(--border);
+  border-radius: 1px;
+  padding: 6px 10px;
+  cursor: pointer;
+}
+.tweaks button.on {
+  background: var(--accent);
+  color: var(--bg);
+  border-color: var(--accent);
+  box-shadow: var(--glow-accent);
+}

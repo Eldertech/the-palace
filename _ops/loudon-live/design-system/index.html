@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Loudon Live · Design System</title>
+<link rel="stylesheet" href="colors_and_type.css">
+<style>
+  * { box-sizing: border-box; }
+  body { background: var(--bg); color: var(--fg-2); font-family: var(--sans); font-weight: 300; margin: 0; padding: 0; }
+  .page { max-width: 980px; margin: 0 auto; padding: 80px 32px 120px; }
+  .eyebrow { font-family: var(--mono); font-size: 12px; font-weight: 500; color: var(--accent); letter-spacing: 0.22em; text-transform: uppercase; }
+  h1 { font-family: var(--display); font-weight: 400; font-size: 120px; line-height: 0.95; letter-spacing: 0.005em; text-transform: uppercase; color: var(--fg-1); margin: 14px 0 18px; }
+  h1 .slash { color: var(--fg-3); margin: 0 6px; }
+  h1 .accent { color: var(--accent); text-shadow: 0 0 22px rgba(232,184,74,0.65), 0 0 48px rgba(232,184,74,0.30); }
+  .tag { font-family: var(--mono); font-size: 14px; font-weight: 500; color: var(--fg-3); letter-spacing: 0.28em; text-transform: uppercase; }
+  .lede { font-family: 'Cormorant Garamond', serif; font-style: italic; font-weight: 300; font-size: 24px; color: var(--fg-1); line-height: 1.45; max-width: 56ch; margin: 32px 0 56px; padding-left: 24px; border-left: 2px solid var(--accent); letter-spacing: 0.005em; }
+  h2 { font-family: var(--mono); font-size: 12px; font-weight: 500; color: var(--fg-3); letter-spacing: 0.22em; text-transform: uppercase; border-bottom: 1.5px solid var(--border); padding-bottom: 12px; margin: 64px 0 24px; }
+  .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .tile { display: block; background: var(--bg-elev-1); border: 1.5px solid var(--border); border-radius: 2px; padding: 18px 22px; text-decoration: none; color: inherit; transition: border-color 220ms cubic-bezier(.4,0,.2,1); box-shadow: inset 0 1px 0 rgba(255,255,255,0.05); }
+  .tile:hover { border-color: var(--border-hover); }
+  .tile-title { font-family: var(--sans); font-size: 15px; font-weight: 500; color: var(--fg-1); letter-spacing: -0.005em; }
+  .tile-sub { font-family: var(--mono); font-size: 11px; color: var(--fg-3); margin-top: 6px; letter-spacing: 0.18em; text-transform: uppercase; }
+  .sig { margin-top: 96px; padding-top: 24px; border-top: 1.5px solid var(--border); font-family: var(--mono); font-size: 11px; color: var(--fg-3); letter-spacing: 0.22em; text-transform: uppercase; text-align: center; }
+  .sig em { color: var(--accent); font-style: normal; }
+  .hero { display: grid; grid-template-columns: 260px 1fr; gap: 40px; align-items: center; margin-bottom: 24px; }
+  .hero-logo { width: 260px; height: 260px; border: 1.5px solid var(--border); border-radius: 50%; overflow: hidden; position: relative; }
+  .hero-logo iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; transform: scale(1.05); }
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="hero">
+    <div class="hero-logo"><iframe src="assets/logo-lissajous.live.html" loading="lazy"></iframe></div>
+    <div>
+      <div class="eyebrow">▸ Design System</div>
+      <h1>LOUDON<span class="slash">/</span><span class="accent">LIVE</span></h1>
+      <div class="tag">sound · first principles · out loud</div>
+    </div>
+  </div>
+
+  <p class="lede">Locked grammar, fresh skin. Type, layout, and the wordmark never change. Per stream, the palette and one generative element rotate. The Lissajous trace is the brand's reminder that the higher-dimensional object reveals itself through accumulated motion.</p>
+
+  <h2>Foundations</h2>
+  <div class="grid">
+    <a class="tile" href="README.md"><div class="tile-title">README · context, voice, visual foundations</div><div class="tile-sub">README.md</div></a>
+    <a class="tile" href="colors_and_type.css"><div class="tile-title">Tokens · type, palettes, spacing, motion</div><div class="tile-sub">colors_and_type.css</div></a>
+    <a class="tile" href="SKILL.md"><div class="tile-title">Skill manifest · Claude Code</div><div class="tile-sub">SKILL.md</div></a>
+    <a class="tile" href="assets/logo-lissajous.live.html"><div class="tile-title">Live logo sketch · p5.js</div><div class="tile-sub">assets/logo-lissajous.live.html</div></a>
+  </div>
+
+  <h2>Slides</h2>
+  <div class="grid">
+    <a class="tile" href="slides/index.html"><div class="tile-title">▸ Slide gallery</div><div class="tile-sub">slides/index.html</div></a>
+    <a class="tile" href="slides/starting-soon.html"><div class="tile-title">Starting Soon</div><div class="tile-sub">slides/starting-soon.html</div></a>
+    <a class="tile" href="slides/brb.html"><div class="tile-title">BRB</div><div class="tile-sub">slides/brb.html</div></a>
+    <a class="tile" href="slides/stream-ended.html"><div class="tile-title">Stream Ended</div><div class="tile-sub">slides/stream-ended.html</div></a>
+    <a class="tile" href="slides/topic-card.html"><div class="tile-title">Topic Title</div><div class="tile-sub">slides/topic-card.html</div></a>
+    <a class="tile" href="slides/topic-card-amber.html"><div class="tile-title">Topic Title · Philosophy</div><div class="tile-sub">slides/topic-card-amber.html</div></a>
+    <a class="tile" href="slides/channel-banner.html"><div class="tile-title">Channel Banner · 2560 × 1440</div><div class="tile-sub">slides/channel-banner.html</div></a>
+  </div>
+
+  <h2>UI kits</h2>
+  <div class="grid">
+    <a class="tile" href="ui_kits/session-artifact/index.html"><div class="tile-title">Session artifact · long-form session HTML</div><div class="tile-sub">ui_kits/session-artifact/</div></a>
+    <a class="tile" href="ui_kits/stream-overlay/index.html"><div class="tile-title">Stream overlay · OBS live composite</div><div class="tile-sub">ui_kits/stream-overlay/</div></a>
+  </div>
+
+  <div class="sig">Loudon Live <em>·</em> Autodidact Polymaths</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,111 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<link rel="stylesheet" href="card.css">
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Space+Grotesk:wght@300;500;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  .swatch { display:grid; grid-template-columns: 1.4fr 1fr 1fr 1fr 1fr 0.7fr; gap:3px; height:90px; }
+  .sw { padding: 10px 12px; display:flex; flex-direction:column; justify-content:space-between; border-radius: 2px; }
+  .sw .k { font-family: 'JetBrains Mono', monospace; font-size:9px; letter-spacing:0.12em; text-transform:uppercase; opacity:0.8; }
+  .sw .v { font-family: 'JetBrains Mono', monospace; font-size:10px; }
+
+  .spec {
+    background: #000;
+    border-radius: 2px;
+    padding: 22px 24px;
+    min-height: 170px;
+    position: relative;
+    overflow: hidden;
+  }
+  .spec::after {
+    content: '';
+    position: absolute; inset: 0; pointer-events: none;
+    background: repeating-linear-gradient(180deg, rgba(255,255,255,0.025) 0 1px, transparent 1px 4px);
+  }
+  .spec .role {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: #ff2a2a;
+    text-shadow: 0 0 8px rgba(255,42,42,0.5);
+  }
+  .spec .role::before {
+    content: '';
+    display: inline-block;
+    width: 12px; height: 12px;
+    background: radial-gradient(circle at 38% 38%, #ff8a7a 0%, #ff2a2a 45%, #c00e1a 100%);
+    border-radius: 50%;
+    margin-right: 12px;
+    transform: translateY(1px);
+    box-shadow:
+      0 0 6px  rgba(255,42,42,0.95),
+      0 0 14px rgba(255,42,42,0.80),
+      0 0 32px rgba(255,42,42,0.55),
+      0 0 72px rgba(255,42,42,0.30),
+      inset 0 0 4px rgba(255,255,255,0.4);
+    animation: live-pulse 1.6s ease-in-out infinite;
+  }
+  @keyframes live-pulse {
+    50% {
+      box-shadow:
+        0 0 4px  rgba(255,42,42,0.85),
+        0 0 10px rgba(255,42,42,0.65),
+        0 0 24px rgba(255,42,42,0.40),
+        0 0 56px rgba(255,42,42,0.20),
+        inset 0 0 3px rgba(255,255,255,0.3);
+    }
+  }
+  .lockup {
+    font-family: 'Anton', sans-serif;
+    font-weight: 400;
+    font-size: 84px;
+    line-height: 0.9;
+    letter-spacing: 0.005em;
+    color: #ffffff;
+    text-transform: uppercase;
+    margin-top: 14px;
+  }
+  .lockup .slash  { color: #6a6a6a; margin: 0 4px; }
+  .lockup .accent {
+    color: #ff2a2a;
+    text-shadow:
+      0 0 14px rgba(255,42,42,0.70),
+      0 0 32px rgba(255,42,42,0.40),
+      0 0 64px rgba(255,42,42,0.25);
+  }
+  .meta-strip {
+    margin-top: 16px;
+    display: flex;
+    gap: 18px;
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 500;
+    font-size: 13px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+  }
+  .meta-strip .ms-1 { color: #ffffff; }
+  .meta-strip .ms-2 { color: #d8d8d8; }
+  .meta-strip .ms-3 { color: #6a6a6a; }
+</style></head>
+<body class="card">
+<div class="eyebrow" style="color:#ff2a2a">Palette · Strobe · high-contrast · dance / performance / live</div>
+
+<div class="swatch">
+  <div class="sw" style="background:#000;color:#fff;border:1px solid #1a1a1a"><span class="k">bg</span><span class="v">#000000</span></div>
+  <div class="sw" style="background:#0a0a0a;color:#fff"><span class="k">elev</span><span class="v">#0a0a0a</span></div>
+  <div class="sw" style="background:#ffffff;color:#000"><span class="k">fg-1</span><span class="v">#ffffff</span></div>
+  <div class="sw" style="background:#d8d8d8;color:#000"><span class="k">fg-2</span><span class="v">#d8d8d8</span></div>
+  <div class="sw" style="background:#6a6a6a;color:#fff"><span class="k">fg-3</span><span class="v">#6a6a6a</span></div>
+  <div class="sw" style="background:#ff2a2a;color:#000"><span class="k">acc</span><span class="v">#ff2a2a</span></div>
+</div>
+
+<div class="spec">
+  <div class="role">ON AIR · 22:14 · SET 03</div>
+  <div class="lockup">LOUDON<span class="slash">/</span><span class="accent">LIVE</span></div>
+  <div class="meta-strip">
+    <span class="ms-1">DANGER</span>
+    <span class="ms-2">TECHNO</span>
+    <span class="ms-2">DANCE</span>
+    <span class="ms-3">· stream 014</span>
+  </div>
+</div>
+</body></html>

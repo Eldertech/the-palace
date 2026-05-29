@@ -1,0 +1,49 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<link rel="stylesheet" href="card.css">
+<style>
+  body.card { gap: 14px; }
+  .grid { display:grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .swatch {
+    background: var(--bg-elev-1);
+    padding: 16px 18px;
+    border-radius: 2px;            /* near-square */
+    display:flex; flex-direction:column; gap:4px;
+  }
+  .swatch .k { font-family: var(--mono); font-size: 11px; letter-spacing: 0.06em; color: var(--fg-2); }
+  .swatch .v { font-family: var(--mono); font-size: 11px; color: var(--fg-3); }
+  .b-solid { border: 1px solid var(--border); }
+  .b-soft  { border: 1px solid rgba(255,255,255,0.06); }
+  .b-hover { border: 1px solid rgba(232,184,74,0.40); }
+  .b-accent-rule { border-left: 2px solid var(--accent); border-radius: 0; padding-left: 18px; }
+  .b-accent-rule .k { color: var(--accent); }
+</style></head>
+<body class="card">
+<div class="eyebrow">Borders · 1px hairlines · near-square corners (radius ≤ 2px)</div>
+
+<div class="grid">
+  <div class="swatch b-solid">
+    <span class="k">--border</span>
+    <span class="v">1 px solid #2a2a3a · panel edge</span>
+  </div>
+  <div class="swatch b-soft">
+    <span class="k">--border-soft</span>
+    <span class="v">1 px solid rgba(255,255,255,0.06)</span>
+  </div>
+  <div class="swatch b-hover">
+    <span class="k" style="color:var(--accent)">--border-hover</span>
+    <span class="v">1 px solid gold-dim @ 0.40</span>
+  </div>
+  <div class="swatch b-accent-rule">
+    <span class="k">accent rule</span>
+    <span class="v">2 px left · for identity quotes, change-notes</span>
+  </div>
+</div>
+
+<div style="display:flex;gap:10px;align-items:center;font-family:var(--mono);font-size:11px;letter-spacing:0.08em;color:var(--fg-3);padding-top:8px;border-top:1px solid var(--border)">
+  <span style="color:var(--fg-2)">radii</span>
+  <span style="background:var(--bg-elev-1);border:1px solid var(--border);border-radius:0;padding:4px 8px">0 · square</span>
+  <span style="background:var(--bg-elev-1);border:1px solid var(--border);border-radius:2px;padding:4px 8px">2 · default</span>
+  <span style="background:var(--bg-elev-1);border:1px solid var(--border);border-radius:3px;padding:4px 8px">3 · cards</span>
+  <span style="background:var(--bg-elev-1);border:1px solid var(--border);border-radius:6px;padding:4px 8px">6 · ceiling</span>
+</div>
+</body></html>

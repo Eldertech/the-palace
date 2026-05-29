@@ -1,0 +1,33 @@
+/* Preview-card shared styles. Each card targets ~700×<varies>.
+   Cards are small, decoration-light specimens — the asset name renders
+   outside the card, so we never duplicate it inside. */
+
+@import url('../colors_and_type.css');
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html, body {
+  background: var(--bg);
+  color: var(--fg-2);
+  font-family: var(--sans);
+}
+body.card {
+  width: 700px;
+  padding: 28px 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+/* generic helpers used by many cards */
+.row    { display: flex; gap: 16px; align-items: center; }
+.col    { display: flex; flex-direction: column; gap: 8px; }
+.grid   { display: grid; gap: 12px; }
+.eyebrow {
+  font-family: var(--mono);
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--fg-3);
+}
+.label { font-family: var(--mono); font-size: 11px; color: var(--fg-3); }
+.value { font-family: var(--mono); font-size: 11px; color: var(--fg-2); }

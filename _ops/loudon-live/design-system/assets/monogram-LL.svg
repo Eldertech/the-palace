@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+  <rect width="200" height="200" fill="#0a0a0f"></rect>
+  <g transform="translate(40,40)">
+    
+    <text x="0" y="100" font-family="Source Serif 4, Georgia, serif" font-size="140" font-weight="700" letter-spacing="-6" fill="#e8e8f0">LL</text>
+    <text x="2" y="100" font-family="Source Serif 4, Georgia, serif" font-size="140" font-weight="300" font-style="italic" letter-spacing="-6" fill="#e8b84a" fill-opacity="0.55">LL</text>
+  </g>
+  <circle cx="100" cy="100" r="92" fill="none" stroke="#2a2a3a" stroke-width="1"></circle>
+</svg>

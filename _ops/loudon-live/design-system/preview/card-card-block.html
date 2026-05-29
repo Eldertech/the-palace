@@ -1,0 +1,63 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<link rel="stylesheet" href="card.css">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600&family=Cormorant+Garamond:wght@300;400&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+  .panel {
+    background: var(--bg-elev-1);
+    border: 1.5px solid #3a3a4d;        /* stronger than --border #2a2a3a */
+    border-radius: 2px;                  /* near-square */
+    padding: 18px 22px;
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.06);
+  }
+  .stage {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: var(--accent);
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+  .title {
+    font-family: 'Manrope', sans-serif;
+    font-size: 22px;
+    font-weight: 500;
+    color: var(--fg-1);
+    margin-top: 8px;
+    letter-spacing: -0.01em;
+    line-height: 1.2;
+  }
+  .body {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    font-size: 16px;
+    color: var(--fg-2);
+    margin-top: 10px;
+    line-height: 1.55;
+    letter-spacing: 0.005em;
+  }
+  .params { display: flex; gap: 6px; margin-top: 14px; flex-wrap: wrap; }
+  .param {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: #4a8fff;
+    background: rgba(74,143,255,0.06);
+    border: 1.5px solid rgba(74,143,255,0.55);
+    border-radius: 1px;
+    padding: 2px 8px;
+    letter-spacing: 0.02em;
+  }
+</style></head>
+<body class="card">
+<div class="eyebrow">Card block · sans-headline · square edges · bolder rule</div>
+
+<div class="panel">
+  <div class="stage">Stage 2 · the leak</div>
+  <div class="title">Exponential decay through a time constant</div>
+  <div class="body">A single new parameter — the membrane time constant — turns a linear ramp into a waveshape with character.</div>
+  <div class="params">
+    <span class="param">leak_τ = 12 ms</span>
+    <span class="param">threshold = 1.0</span>
+    <span class="param">v_reset = 0</span>
+  </div>
+</div>
+</body></html>
