@@ -22,9 +22,9 @@
    ──────────────────────────────────────────────────────────────────────── */
 (function (global) {
   // Lighten a hex toward white by amt∈[0,1]. Used to derive the bright end of
-  // the ordered series ramp from the skin accent — keeps data colour on-palette
-  // without adding a new locked token. (Unordered categorical needs a richer
-  // palette; that's a candidate design-system addition, flagged not made.)
+  // the ORDERED series ramp from the skin accent — keeps sequential data colour
+  // on-palette. (For UNORDERED categories, use .categorical / palaceCategorical(),
+  // backed by the locked --cat-1..6 tokens added 2026-05-29.)
   function lighten(hex, amt) {
     const m = /^#?([0-9a-f]{3}|[0-9a-f]{6})$/i.exec((hex || '').trim());
     if (!m) return hex;
@@ -54,11 +54,15 @@
       pixel: g('--pixel') || 'monospace',
       ease: g('--ease') || 'cubic-bezier(.4, 0, .2, 1)',
       easeOut: g('--ease-out') || 'cubic-bezier(.2, .9, .2, 1)',
-      // ordered ramp: dim → accent → light. Encodes magnitude as brightness.
-      series: [accentDim, accent, lighten(accent, 0.38)]
+      // ORDERED ramp: dim → accent → light. Encodes magnitude as brightness.
+      series: [accentDim, accent, lighten(accent, 0.38)],
+      // UNORDERED categorical: the locked --cat-1..6 set (skin-aware). Empty
+      // slots (a skin that defines fewer) are dropped.
+      categorical: [g('--cat-1'), g('--cat-2'), g('--cat-3'), g('--cat-4'), g('--cat-5'), g('--cat-6')].filter(Boolean)
     };
   }
 
   global.palaceTokens = palaceTokens;
-  global.palaceSeries = root => palaceTokens(root).series;
+  global.palaceSeries = root => palaceTokens(root).series;          // ordered (sequential)
+  global.palaceCategorical = root => palaceTokens(root).categorical; // unordered (qualitative)
 })(typeof window !== 'undefined' ? window : this);
