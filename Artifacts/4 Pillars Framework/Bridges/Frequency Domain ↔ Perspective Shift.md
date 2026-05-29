@@ -18,8 +18,7 @@ links:
   - target: "[[Cross-Domain Resonances]]"
     type: connects-to
   - target: "[[FOUR PILLARS]]"
-    type: connects-to
-    label: exemplifies
+    type: exemplifies
 ---
 
 # Frequency Domain ↔ Perspective Shift

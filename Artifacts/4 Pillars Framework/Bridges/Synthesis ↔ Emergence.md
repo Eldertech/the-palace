@@ -18,8 +18,7 @@ links:
   - target: "[[Cross-Domain Resonances]]"
     type: connects-to
   - target: "[[FOUR PILLARS]]"
-    type: connects-to
-    label: exemplifies
+    type: exemplifies
   - target: "[[Donella Meadows]]"
     type: connects-to
     label: informed-by

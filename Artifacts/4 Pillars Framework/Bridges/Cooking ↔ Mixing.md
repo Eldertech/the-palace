@@ -21,8 +21,7 @@ links:
   - target: "[[Lao Tzu]]"
     type: deepens
   - target: "[[FOUR PILLARS]]"
-    type: connects-to
-    label: exemplifies
+    type: exemplifies
   - target: "[[High Pass Low Pass]]"
     type: connects-to
 ---

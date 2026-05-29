@@ -24,8 +24,7 @@ links:
   - target: "[[Donella Meadows]]"
     type: deepens
   - target: "[[FOUR PILLARS]]"
-    type: connects-to
-    label: exemplifies
+    type: exemplifies
   - target: "[[4 Pillars Framework - The Founding Conversation]]"
     type: emerged-from
 ---

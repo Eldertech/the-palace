@@ -6,7 +6,7 @@ pillars:
   - practice
   - philosophy
 born: 2026-03
-version: "1.7"
+version: "1.8"
 stage: foundational
 status: canonical
 links:
@@ -256,10 +256,14 @@ Use only these relationship types:
 | `emerged-from` | directed A→B | B crystallized from A through synthesis | When B grew from A but the relationship is diffuse, not direct. |
 | `contradicts` | symmetric | Productive tension | Blake's contraries: both true, generative friction between them. |
 | `couples-with` | symmetric | Mutual reinforcement, co-activation | Ideas always active together; Kuramoto-style coupling. |
+| `exemplifies` | directed A→B | A is a concrete instance of the more general B | When an entry is a worked example or case of a principle, framework, or pattern (e.g. a Bridge → [[FOUR PILLARS]]). |
+| `member-of` | directed A→B | A belongs to a named collection, family, or registry B | When an entry is a catalogued member of a set (e.g. a person → [[Source Library]]). |
 
 **The `label` field:** Each link object may carry an optional `label` — a single word or hyphenated phrase naming the relationship's specific register. The `type` handles topological traversal and ceremony linting; the `label` carries the semantic compression that makes a link generative rather than merely classificatory. A `mirrors` link may mirror in the register of `rhymes-with`, `echoes`, `refracts`, or `shadows` — these are not synonyms. A `contradicts` link may contradict in the register of `argues-with-love`, `mourns`, `refuses`, or `breaks-open`. Label vocabulary: lower-case, evocative over clinical, single word or hyphenated phrase. Suggested vocabulary per family lives in [[Resonant Link Labels]]. New labels never require ceremony.
 
 **Adding a new link type** requires a Schema Ceremony. The link ontology is the palace's semantic vocabulary. Inflation cheapens all existing types. When in doubt, use `connects-to` and differentiate in a later Weave.
+
+**Schema Ceremony rationale (2026-05-28, v1.8): added `exemplifies` + `member-of`.** The 2026-05-28 audit normalized all non-canonical frontmatter types to `connects-to` + `label`; the two most-used labels by a wide margin were `exemplifies` (50) and `member-of` (48) — ~4× any other. They carry **taxonomy** (instance-of, set-membership) that the prior eight types — resonance, causation, lineage, tension — could not express, and they are predominantly hub-directed (entries → [[FOUR PILLARS]], people → [[Source Library]]). Ratification describes existing reality rather than inventing vocabulary. Both are directed A→B with no forced reciprocal on the hub side (the Map computes inbound degree). Full rationale + cost: [[Schema Ceremony Proposal — exemplifies + member-of]].
 
 ---
 

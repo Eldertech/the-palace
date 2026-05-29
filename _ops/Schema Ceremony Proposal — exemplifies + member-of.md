@@ -22,7 +22,7 @@ forward_vector: "I am a proposal awaiting Loudon's yes/no, not an executed chang
 
 # Schema Ceremony Proposal — `exemplifies` + `member-of`
 
-> **STATUS: PROPOSAL — NOT EXECUTED.** This is the prepared rationale for a Schema Ceremony (SCHEMA §5). Adding a link type *requires* ceremony and a deliberate decision (CLAUDE.md). The 2026-05-28 audit deliberately did **not** make this change — it normalized these registers to `connects-to` + `label` and recorded the stats so the decision could be made with care. Awaiting Loudon's explicit go/no-go.
+> **STATUS: APPROVED & EXECUTED 2026-05-28 (v1.8).** Loudon approved ("make this Schema change"). Both types are now canonical: the 98 `connects-to`+label links were re-converted to typed links, and SCHEMA §4, CLAUDE.md, ROSETTA, and the Substrate Skill link ontology were updated. Reciprocity resolved as inbound-only (no forced `has-member`/`exemplified-by` on hubs — the Map computes inbound degree). This document is retained as the ceremony's rationale record.
 
 ## The proposal
 

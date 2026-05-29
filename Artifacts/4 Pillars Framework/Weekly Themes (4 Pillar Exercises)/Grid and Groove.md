@@ -20,11 +20,9 @@ difficulty: fundamental
 philosopher: Henri Bergson
 links:
   - target: "[[Weekly Themes Database]]"
-    type: connects-to
-    label: member-of
+    type: member-of
   - target: "[[FOUR PILLARS]]"
-    type: connects-to
-    label: exemplifies
+    type: exemplifies
 ---
 
 # The Grid and the Groove

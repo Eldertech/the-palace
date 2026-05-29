@@ -21,8 +21,7 @@ links:
   - target: "[[Martin Heidegger]]"
     type: deepens
   - target: "[[FOUR PILLARS]]"
-    type: connects-to
-    label: exemplifies
+    type: exemplifies
 ---
 
 # Reverb ↔ Space-Time

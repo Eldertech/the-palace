@@ -21,8 +21,7 @@ links:
   - target: "[[Marcus Aurelius]]"
     type: deepens
   - target: "[[FOUR PILLARS]]"
-    type: connects-to
-    label: exemplifies
+    type: exemplifies
 ---
 
 # The First Sound

@@ -21,8 +21,7 @@ links:
   - target: "[[Kick Drum Paradox]]"
     type: deepens
   - target: "[[FOUR PILLARS]]"
-    type: connects-to
-    label: exemplifies
+    type: exemplifies
 ---
 
 # Kick Drum ↔ Foundation

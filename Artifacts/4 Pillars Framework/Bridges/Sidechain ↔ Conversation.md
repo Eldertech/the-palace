@@ -21,8 +21,7 @@ links:
   - target: "[[Shunryu Suzuki]]"
     type: deepens
   - target: "[[FOUR PILLARS]]"
-    type: connects-to
-    label: exemplifies
+    type: exemplifies
   - target: "[[Sidechain Dialogue]]"
     type: connects-to
 ---
