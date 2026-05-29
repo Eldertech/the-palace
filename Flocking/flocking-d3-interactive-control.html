@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Flocking — D3.js interactive control (Sketch)</title>
+<!--
+  FLOCKING SHOOT-OUT · D3.js Specialist · Interactive-control lens · Sketch tier
+  Reynolds (1986) boids. Determinism contract (shared verbatim across the three
+  Specimens — D3 / Observable Plot / p5.js):
+    PRNG  Mulberry32, SEED = 7      N = 80 boids
+    domain 960×540, toroidal wrap   neighbor radius R = 50 px (all three rules)
+    max speed 3 px/frame            max steering force 0.05 px/frame²
+    default weights  separation 1.5 · alignment 1.0 · cohesion 1.0
+    integration  one fixed step per rendered frame (units are px/frame)
+  D3 note: the Reynolds physics runs as a custom force registered via
+  simulation.force("reynolds", …). To make d3-force's relaxation integrator
+  reproduce the kinematic Reynolds step exactly, friction and cooling are
+  disabled (velocityDecay 0, alphaDecay 0, alphaMin 0) and the force REPLACES
+  each node's velocity rather than accumulating into it; d3-force then does the
+  x += vx step and the tick handler wraps. Same seed → same trajectory as the
+  p5 and Plot Specimens.
+-->
+<style>
+  :root { --bg:#0B0B10; --indigo:#6366F1; --amber:#F59E0B; --ink:#E5E7EB; }
+  * { box-sizing: border-box; }
+  html, body { margin:0; background:var(--bg); color:var(--ink);
+    font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace; }
+  .wrap { max-width: 960px; margin: 0 auto; padding: 20px 16px 40px; }
+  h1 { font-size: 15px; font-weight: 600; letter-spacing: .04em; margin: 0 0 2px;
+    color: var(--ink); text-transform: uppercase; }
+  .sub { font-size: 11px; color: #8b8b9a; margin: 0 0 14px; }
+  .stage { position: relative; width: 960px; max-width: 100%; }
+  svg { display:block; width:100%; height:auto; background:var(--bg);
+    border:1px solid #23232e; border-radius:4px; }
+  .readout { position:absolute; top:10px; left:12px; font-size:12px; line-height:1.5;
+    color:#8b8b9a; pointer-events:none; }
+  .readout b { color: var(--amber); }
+  .readout .R { color: var(--ink); font-size: 20px; }
+  .controls { display:grid; grid-template-columns: 1fr 1fr 1fr; gap:14px 22px;
+    margin-top:16px; }
+  .ctl { font-size: 11px; color:#8b8b9a; }
+  .ctl label { display:flex; justify-content:space-between; margin-bottom:5px; }
+  .ctl .val { color: var(--indigo); }
+  input[type=range] { width:100%; accent-color: var(--indigo); }
+  .row { display:flex; align-items:center; gap:8px; margin-top:14px; font-size:11px;
+    color:#8b8b9a; }
+  input[type=checkbox] { accent-color: var(--amber); }
+  .foot { margin-top:22px; font-size:10px; color:#52525e; letter-spacing:.05em; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Flocking · D3.js · interactive control</h1>
+  <p class="sub">Reynolds boids · custom d3-force · move the rule weights, watch the flock re-shape · seed 7</p>
+
+  <div class="stage">
+    <svg id="stage" viewBox="0 0 960 540" preserveAspectRatio="xMidYMid meet"></svg>
+    <div class="readout">
+      polarization <span class="R" id="R">0.00</span><br />
+      <b id="regime">drifting</b>
+    </div>
+  </div>
+
+  <div class="controls">
+    <div class="ctl">
+      <label>separation <span class="val" id="vSep">1.50</span></label>
+      <input type="range" id="sep" min="0" max="3" step="0.05" value="1.5" />
+    </div>
+    <div class="ctl">
+      <label>alignment <span class="val" id="vAli">1.00</span></label>
+      <input type="range" id="ali" min="0" max="3" step="0.05" value="1.0" />
+    </div>
+    <div class="ctl">
+      <label>cohesion <span class="val" id="vCoh">1.00</span></label>
+      <input type="range" id="coh" min="0" max="3" step="0.05" value="1.0" />
+    </div>
+  </div>
+  <div class="row">
+    <input type="checkbox" id="overlay" />
+    <label for="overlay">show per-boid steering-force vectors (amber)</label>
+  </div>
+
+  <p class="foot">Loudon Live · Autodidact Polymaths</p>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
+<script>
+/* ===== SHARED FLOCKING MODEL — identical across D3 / Observable Plot / p5.js ===== */
+const SEED = 7;
+const N = 80;
+const WIDTH = 960, HEIGHT = 540;
+const NEIGHBOR_R = 50, NEIGHBOR_R2 = NEIGHBOR_R * NEIGHBOR_R;
+const MAX_SPEED = 3, MAX_FORCE = 0.05;
+
+function mulberry32(a) {
+  return function () {
+    a |= 0; a = (a + 0x6D2B79F5) | 0;
+    let t = Math.imul(a ^ (a >>> 15), 1 | a);
+    t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t;
+    return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+  };
+}
+function initBoids() {
+  const rng = mulberry32(SEED);
+  const boids = [];
+  for (let i = 0; i < N; i++) {
+    const x = rng() * WIDTH;
+    const y = rng() * HEIGHT;
+    const angle = rng() * Math.PI * 2;
+    const sp = 0.5 * MAX_SPEED + rng() * 0.5 * MAX_SPEED; // [1.5, 3]
+    boids.push({ x, y, vx: Math.cos(angle) * sp, vy: Math.sin(angle) * sp, steerX: 0, steerY: 0 });
+  }
+  return boids;
+}
+function toroidalDelta(ax, ay, bx, by) {
+  let dx = bx - ax, dy = by - ay;
+  if (dx > WIDTH * 0.5) dx -= WIDTH; else if (dx < -WIDTH * 0.5) dx += WIDTH;
+  if (dy > HEIGHT * 0.5) dy -= HEIGHT; else if (dy < -HEIGHT * 0.5) dy += HEIGHT;
+  return [dx, dy];
+}
+function setMag(x, y, mag) { const m = Math.hypot(x, y); return m > 0 ? [x / m * mag, y / m * mag] : [0, 0]; }
+function limitMag(x, y, max) { const m = Math.hypot(x, y); return (m > max && m > 0) ? [x / m * max, y / m * max] : [x, y]; }
+
+// Snapshot-correct: read all old positions/velocities, write nothing back.
+function computeVelocities(boids, w) {
+  const nvx = new Float64Array(N), nvy = new Float64Array(N);
+  const sxA = new Float64Array(N), syA = new Float64Array(N);
+  for (let i = 0; i < N; i++) {
+    const b = boids[i];
+    let sepX = 0, sepY = 0, sepN = 0, aliX = 0, aliY = 0, aliN = 0, cohX = 0, cohY = 0, cohN = 0;
+    for (let j = 0; j < N; j++) {
+      if (i === j) continue;
+      const o = boids[j];
+      const [dx, dy] = toroidalDelta(b.x, b.y, o.x, o.y);
+      const d2 = dx * dx + dy * dy;
+      if (d2 > 0 && d2 < NEIGHBOR_R2) {
+        sepX -= dx / d2; sepY -= dy / d2; sepN++;
+        aliX += o.vx; aliY += o.vy; aliN++;
+        cohX += dx; cohY += dy; cohN++;
+      }
+    }
+    let fx = 0, fy = 0;
+    if (sepN > 0) { const [dx, dy] = setMag(sepX, sepY, MAX_SPEED); const [sx, sy] = limitMag(dx - b.vx, dy - b.vy, MAX_FORCE); fx += w.sep * sx; fy += w.sep * sy; }
+    if (aliN > 0) { const [dx, dy] = setMag(aliX / aliN, aliY / aliN, MAX_SPEED); const [sx, sy] = limitMag(dx - b.vx, dy - b.vy, MAX_FORCE); fx += w.ali * sx; fy += w.ali * sy; }
+    if (cohN > 0) { const [dx, dy] = setMag(cohX / cohN, cohY / cohN, MAX_SPEED); const [sx, sy] = limitMag(dx - b.vx, dy - b.vy, MAX_FORCE); fx += w.coh * sx; fy += w.coh * sy; }
+    let vx = b.vx + fx, vy = b.vy + fy;
+    [vx, vy] = limitMag(vx, vy, MAX_SPEED);
+    nvx[i] = vx; nvy[i] = vy; sxA[i] = fx; syA[i] = fy;
+  }
+  return { nvx, nvy, sxA, syA };
+}
+function polarization(boids) {
+  let sx = 0, sy = 0;
+  for (const b of boids) { const m = Math.hypot(b.vx, b.vy); if (m > 0) { sx += b.vx / m; sy += b.vy / m; } }
+  return Math.hypot(sx, sy) / N;
+}
+/* ===== END SHARED MODEL ===== */
+
+const weights = { sep: 1.5, ali: 1.0, coh: 1.0 };
+const boids = initBoids();
+
+// Reynolds as a custom d3-force. d3-force is a relaxation solver, not a kinematic
+// integrator: it adds force contributions to vx/vy then damps. We neutralise the
+// damping (velocityDecay 0) and never cool (alphaDecay 0, alphaMin 0), and this
+// force REPLACES velocity with the clamped Reynolds step. d3-force then applies
+// x += vx; the tick handler wraps. Result is bit-identical to the p5/Plot Euler loop.
+function reynoldsForce() {
+  let nodes;
+  function force() {
+    const v = computeVelocities(nodes, weights);
+    for (let i = 0; i < N; i++) {
+      nodes[i].vx = v.nvx[i]; nodes[i].vy = v.nvy[i];
+      nodes[i].steerX = v.sxA[i]; nodes[i].steerY = v.syA[i];
+    }
+  }
+  force.initialize = (n) => { nodes = n; };
+  return force;
+}
+
+const svg = d3.select("#stage");
+const boidLayer = svg.append("g");
+const arrowLayer = svg.append("g").attr("stroke", "#F59E0B").attr("stroke-width", 1).attr("opacity", 0.7);
+
+const sim = d3.forceSimulation(boids)
+  .velocityDecay(0)     // no friction — vx carries frame to frame
+  .alphaDecay(0)        // never cools
+  .alphaMin(0)          // never auto-stops
+  .force("reynolds", reynoldsForce())
+  .on("tick", render);
+
+const elR = document.getElementById("R");
+const elRegime = document.getElementById("regime");
+const elOverlay = document.getElementById("overlay");
+
+function render() {
+  for (const b of boids) {           // toroidal wrap (d3-force has already done x += vx)
+    b.x = ((b.x % WIDTH) + WIDTH) % WIDTH;
+    b.y = ((b.y % HEIGHT) + HEIGHT) % HEIGHT;
+  }
+  const sel = boidLayer.selectAll("path").data(boids);
+  sel.join(
+    enter => enter.append("path").attr("fill", "#6366F1"),
+    update => update,
+    exit => exit.remove()
+  ).attr("transform", b => `translate(${b.x},${b.y}) rotate(${Math.atan2(b.vy, b.vx) * 180 / Math.PI})`)
+   .attr("d", "M5,0 L-4,3 L-2,0 L-4,-3 Z");
+
+  if (elOverlay.checked) {
+    const a = arrowLayer.selectAll("line").data(boids);
+    a.join("line")
+      .attr("x1", b => b.x).attr("y1", b => b.y)
+      .attr("x2", b => b.x + b.steerX * 220).attr("y2", b => b.y + b.steerY * 220);
+  } else {
+    arrowLayer.selectAll("line").remove();
+  }
+
+  const R = polarization(boids);
+  elR.textContent = R.toFixed(2);
+  elRegime.textContent = R < 0.35 ? "drifting" : R < 0.75 ? "milling / partial flow" : "coherent flock";
+}
+
+function bindSlider(id, key, valId) {
+  const el = document.getElementById(id), out = document.getElementById(valId);
+  el.addEventListener("input", () => { weights[key] = +el.value; out.textContent = (+el.value).toFixed(2); });
+}
+bindSlider("sep", "sep", "vSep");
+bindSlider("ali", "ali", "vAli");
+bindSlider("coh", "coh", "vCoh");
+</script>
+</body>
+</html>
