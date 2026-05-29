@@ -34,6 +34,32 @@ import { loadAndRender } from './_ops/stigmergy/orchestrator/src/prompts.js';
 loadAndRender({ skillRoot, templateName: 'songline'|'steward', vars });
 ```
 
+### Composite cycle helpers (durable — use these, do not re-improvise)
+
+Two higher-level helpers compose the primitives above into the per-cycle work
+the parent session would otherwise hand-roll. They are pure-cored and tested —
+prefer them over ad-hoc scripts.
+
+- `node _ops/stigmergy/orchestrator/src/build-cycle-prompt.js --dir <agent-dir> --cycle-n N [--extra-mandate "…"] [--today YYYY-MM-DD] [--out <path>]`
+  Assembles the full prompt: the rendered `steward` system template plus the
+  user turn (home body, injected state, history tail, board slice since the
+  cursor, page-change notice, this cycle's mandate, output protocol). Writes the
+  prompt to `--out` (defaults under `/tmp`) and prints the path. Feed that file
+  to the Agent tool.
+
+- `node _ops/stigmergy/orchestrator/src/process-cycle.js --transcript <jsonl> --agent-dir <dir> --cycle-n N --iteration I --ts-now <iso> [--model …] [--cycle-notes-key K --cycle-notes "…"]`
+  Post-processes one cycle's subagent transcript: extracts the fenced BBS
+  messages, stamps the Path-2 health stub, validates each via the posting
+  surface, appends the valid ones, reconciles `pending_requests` against the
+  board (resolving asks answered by a GRANT/DENY whose `re` matches), and
+  updates `state.json` + `history.jsonl`. Prints a JSON summary (`posted_ids`,
+  `invalid_ids`, `pending_after`, `resolved_count_after`).
+
+These supersede the throwaway `/tmp/build-cycle-prompt.mjs` and
+`/tmp/process-cycle-v2.mjs` from the 2026-05-27 batch (now promoted, with
+tests). The pure pieces `extractMessagesFromTranscript` and
+`reconcilePendingRequests` are exported for direct import.
+
 ## Stop conditions (return status, do not loop)
 
 - Validator rejects three subagent dispatches in a row → likely template bug. Surface to Loudon, mark cycle `validator_rejected`, exit.

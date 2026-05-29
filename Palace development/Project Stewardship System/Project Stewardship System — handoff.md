@@ -10,7 +10,7 @@ links:
     type: connects-to
     label: closes-this-pickup
 forward_vector: "I carry the in-progress move on stewardship across Claude Code session boundaries. I am a steward-genre handoff: updated in place, not consumed on pickup."
-session_thread: "Claude Code stewardship session, 2026-05-27 evening — second update, this time Claude Code → Claude Code"
+session_thread: "Claude Code stewardship session, 2026-05-27 evening — third update: durable-helper hardening (the three /tmp scripts promoted to tested src/ modules) while the 17-decision inbox waits on Loudon"
 ---
 
 # Handoff: Project Stewardship System (Claude Code → Claude Code)
@@ -84,9 +84,10 @@ Plus the batch-plan helper: **`--ignore-debounce` flag** added with 4 tests, for
 
 3. **When the next batch fires**, dispatch the v3 cycles from the grants Loudon lands. Each steward's `state.json.pending_requests[*].next_cycle_action_if_granted` field carries its conditional next move.
 
+## Done since this handoff was written
+- **The three `/tmp` orchestrator scripts are now durable, tested modules** (2026-05-27 evening, Claude Code). `process-cycle-v2.mjs` → `src/process-cycle.js`, `build-cycle-prompt.mjs` → `src/build-cycle-prompt.js`, `enchant-many.mjs` → `src/enchant.js`. Two real improvements beyond a copy: the hardcoded palace path is now a configurable `--root`, and transcript extraction is pure JS (the old version shelled out to an embedded python3 program — fragile and untestable). The pure cores `extractMessagesFromTranscript` / `reconcilePendingRequests` / `sliceBoardSinceCursor` / `kebab` / `parseFrontmatter` / `buildManifest` are exported and unit-tested. `enchant.js` enchants ONE page at a time (matching batch.md's deliberate one-at-a-time philosophy) rather than the throwaway's hardcoded 12-project loop. 33 tests added → **130/130 orchestrator tests green**. The skill docs now point to these helpers (`runAgentCycle.md` § Composite cycle helpers; `batch.md` § Enchant a new steward; `README.md`), so the next orchestrator run uses them instead of re-improvising `/tmp` scripts.
+
 ## Then (deferred — decisions made, code not yet written)
-- **Promote `/tmp/process-cycle-v2.mjs` to a durable orchestrator helper** at `_ops/stigmergy/orchestrator/src/process-cycle.js` with proper tests. Currently the batch finalizer lives in `/tmp` and gets wiped on machine reboot — fragile. Until then, the finalizer source is in this conversation's history; copy from there if `/tmp` is gone.
-- **Convert `/tmp/build-cycle-prompt.mjs` and `/tmp/enchant-many.mjs` similarly.** All three /tmp scripts are reproducible from this session's bash blocks if needed.
 - **Drift and Consolidation beat in `steward.md`** — still not landed (was deferred from the morning handoff and is still deferred). The "Under Active Stewardship" footer is only on GSL's home page; the 14 other stewards' home pages do NOT carry it yet. Adding the footer at enchant-time + pruning at consolidation is named in [[Drift and Consolidation]] but not implemented in code.
 - **The weekly batch scheduled task** — staged at `_ops/stigmergy/orchestrator/scheduled-weekly-batch.prompt.md` (presumed; verify). Not created. Decide cron cadence (the skill docs suggest `0 6 * * 1`).
 - **A `palace_synth_loader.py` reusable helper** to handle the Python 3.14 + `importlib.util.spec_from_file_location` + frozen-`@dataclass` bug GSL surfaced — register the module in `sys.modules` BEFORE `exec_module`. Will recur for every future palace-synth adapter.
