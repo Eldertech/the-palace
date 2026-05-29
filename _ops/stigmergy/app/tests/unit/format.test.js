@@ -1,5 +1,5 @@
 import { describe, test, expect } from 'vitest';
-import { BOARDS, TYPE_GLYPHS, glyphFor, accentFor, healthColor, formatTs, padCell } from '../../src/lib/format.js';
+import { BOARDS, TYPE_GLYPHS, glyphFor, accentFor, healthColor, formatTs, padCell, tsToEpoch, tsCompare } from '../../src/lib/format.js';
 
 describe('BOARDS', () => {
   test('exposes the six channels in the documented order', () => {
@@ -115,5 +115,56 @@ describe('padCell', () => {
   test('handles undefined / null gracefully', () => {
     expect(padCell(undefined, 4)).toBe('    ');
     expect(padCell(null, 4)).toBe('    ');
+  });
+});
+
+describe('tsToEpoch', () => {
+  test('parses full ISO with Z and with explicit offset', () => {
+    expect(tsToEpoch('2026-05-04T07:46:00Z')).toBe(Date.parse('2026-05-04T07:46:00Z'));
+    expect(tsToEpoch('2026-05-27T19:56:00-04:00')).toBe(Date.parse('2026-05-27T19:56:00-04:00'));
+  });
+  test('parses date-only strings', () => {
+    expect(tsToEpoch('2026-04-30')).toBe(Date.parse('2026-04-30'));
+  });
+  test('returns -Infinity for missing / empty / non-string / unparseable', () => {
+    expect(tsToEpoch(undefined)).toBe(-Infinity);
+    expect(tsToEpoch(null)).toBe(-Infinity);
+    expect(tsToEpoch('')).toBe(-Infinity);
+    expect(tsToEpoch('   ')).toBe(-Infinity);
+    expect(tsToEpoch('not a date')).toBe(-Infinity);
+    expect(tsToEpoch(42)).toBe(-Infinity);
+  });
+});
+
+describe('tsCompare', () => {
+  test('orders older before newer within the same timezone', () => {
+    expect(tsCompare('2026-04-01T14:00:00Z', '2026-04-01T15:00:00Z')).toBeLessThan(0);
+    expect(tsCompare('2026-04-01T15:00:00Z', '2026-04-01T14:00:00Z')).toBeGreaterThan(0);
+    expect(tsCompare('2026-04-01T15:00:00Z', '2026-04-01T15:00:00Z')).toBe(0);
+  });
+  test('is CHRONOLOGICAL, not lexical, across mixed timezone offsets', () => {
+    // 19:30-04:00 = 23:30Z is later than 23:00Z, though "19" < "23" lexically.
+    const eastern = '2026-04-01T19:30:00-04:00';
+    const utc = '2026-04-01T23:00:00Z';
+    expect(tsCompare(eastern, utc)).toBeGreaterThan(0);          // eastern is newer
+    expect(String(eastern).localeCompare(String(utc))).toBeLessThan(0); // lexical disagrees
+  });
+  test('newest-first sort puts the latest message on top', () => {
+    const msgs = [
+      { id: 'a', ts: '2026-04-01T10:00:00Z' },
+      { id: 'b', ts: '2026-04-01T12:00:00Z' },
+      { id: 'c', ts: '2026-04-01T11:00:00Z' },
+    ];
+    const sorted = [...msgs].sort((x, y) => tsCompare(y.ts, x.ts));
+    expect(sorted.map((m) => m.id)).toEqual(['b', 'c', 'a']);
+  });
+  test('missing/invalid ts sink to the bottom of a newest-first sort (no NaN)', () => {
+    const msgs = [
+      { id: 'noTs' },
+      { id: 'real', ts: '2026-04-01T10:00:00Z' },
+      { id: 'bad', ts: 'garbage' },
+    ];
+    const sorted = [...msgs].sort((x, y) => tsCompare(y.ts, x.ts));
+    expect(sorted[0].id).toBe('real');
   });
 });

@@ -1,6 +1,6 @@
 // Agent roster derivation — reduce a flat message list to per-agent state.
 
-import { healthColor } from './format.js';
+import { healthColor, tsCompare } from './format.js';
 
 /**
  * Build an agent-roster entry per unique `from` field across messages.
@@ -32,8 +32,9 @@ export function buildRoster(messages) {
   }
   const entries = [];
   for (const [agent_id, msgs] of byAgent) {
-    // Sort agent's messages chronologically by ts (string compare on ISO).
-    msgs.sort((a, b) => String(a.ts).localeCompare(String(b.ts)));
+    // Sort agent's messages chronologically by ts (parsed epoch, tz-safe), so
+    // the last entry is the agent's genuinely most-recent message.
+    msgs.sort((a, b) => tsCompare(a.ts, b.ts));
     const last = msgs[msgs.length - 1];
     const lastThree = msgs.slice(-3);
     const ctxs = lastThree
@@ -55,7 +56,7 @@ export function buildRoster(messages) {
       context_trend,
     });
   }
-  entries.sort((a, b) => String(b.last_ts).localeCompare(String(a.last_ts)));
+  entries.sort((a, b) => tsCompare(b.last_ts, a.last_ts));
   return entries;
 }
 

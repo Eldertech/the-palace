@@ -108,14 +108,25 @@ describe('buildInbox', () => {
     expect(r.pending_requests[0].blocking).toBe(false);
   });
 
-  test('inbox is sorted by ts ascending (oldest first)', () => {
+  test('inbox is sorted by ts descending (newest first)', () => {
     const r = buildInbox([
       REQ('r-late', '2026-04-01T16:00:00Z'),
       REQ('r-early', '2026-04-01T14:00:00Z'),
       REQ('r-mid', '2026-04-01T15:00:00Z'),
     ]);
     expect(r.pending_requests.map((p) => p.request_id))
-      .toEqual(['r-early', 'r-mid', 'r-late']);
+      .toEqual(['r-late', 'r-mid', 'r-early']);
+  });
+
+  test('inbox newest-first is chronological, not lexical (mixed timezones)', () => {
+    // r-eastern is 19:30-04:00 = 23:30Z — chronologically AFTER r-utc (23:00Z),
+    // even though it sorts BEFORE lexically ("19" < "23").
+    const r = buildInbox([
+      REQ('r-utc', '2026-04-01T23:00:00Z'),
+      REQ('r-eastern', '2026-04-01T19:30:00-04:00'),
+    ]);
+    expect(r.pending_requests.map((p) => p.request_id))
+      .toEqual(['r-eastern', 'r-utc']);
   });
 
   test('does not throw on messages with missing fields', () => {

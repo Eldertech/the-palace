@@ -112,3 +112,5 @@
 {"ts":"2026-05-29T19:28:13.927Z","phase":9,"action":"gate-end","outcome":"pass","stage":"tests+captures"}
 {"ts":"2026-05-29T19:33:20.644Z","phase":9,"label":"v0.3 Phase 3 — Round-trip + Final Sweep","action":"gate-start"}
 {"ts":"2026-05-29T19:34:08.705Z","phase":9,"action":"gate-end","outcome":"pass","stage":"tests+captures"}
+{"ts":"2026-05-29T19:48:17.875Z","phase":9,"label":"v0.3 Phase 3 — Round-trip + Final Sweep","action":"gate-start"}
+{"ts":"2026-05-29T19:49:10.946Z","phase":9,"action":"gate-end","outcome":"pass","stage":"tests+captures"}

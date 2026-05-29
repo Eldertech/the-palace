@@ -19,6 +19,8 @@
 // choices), the inbox UI renders those instead and posts an inline response.
 // The static four remain as the fallback for legacy requests with no options[].
 
+import { tsCompare } from './format.js';
+
 const RESPONSE_OPTIONS = [
   { label: 'Grant -- limited',   type: 'RESOURCE_GRANT', constraints: '<your constraints>' },
   { label: 'Grant -- unlimited', type: 'RESOURCE_GRANT', constraints: null },
@@ -137,7 +139,11 @@ export function buildInbox(messages) {
       };
     });
 
-  // Sort by ts ascending — oldest pending request first (longest waiting).
-  pending_requests.sort((a, b) => String(a.ts).localeCompare(String(b.ts)));
+  // Sort newest-first (chronological, timezone-safe) so the latest request sits
+  // at the top of the inbox — consistent with the message boards, so the
+  // operator sees the newest pending decision the moment they open TRICKSTER.
+  // (Was oldest-first / longest-waiting; flipped per operator preference
+  // 2026-05-29.)
+  pending_requests.sort((a, b) => tsCompare(b.ts, a.ts));
   return { pending_requests };
 }

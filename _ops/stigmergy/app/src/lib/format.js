@@ -54,6 +54,29 @@ export function healthColor(score) {
   }
 }
 
+// Parse a ts (ISO 8601 with/without timezone, or date-only) to epoch
+// milliseconds for chronological sorting. Returns -Infinity for missing or
+// unparseable values so they sink to the bottom of a newest-first list.
+//
+// This is correct where a lexical string compare is NOT: when timestamps on the
+// same board mix timezone offsets (e.g. a "...Z" message next to a "...-04:00"
+// message), string order disagrees with real chronological order — and the live
+// palace board carries both.
+export function tsToEpoch(ts) {
+  if (typeof ts !== 'string' || ts.trim() === '') return -Infinity;
+  const t = Date.parse(ts);
+  return Number.isNaN(t) ? -Infinity : t;
+}
+
+// Chronological comparator for two ts strings. Returns <0 when aTs is OLDER,
+// >0 when newer, 0 when equal or both-unknown. Safe with -Infinity (never NaN),
+// so `sort((a, b) => tsCompare(b.ts, a.ts))` yields a stable newest-first order.
+export function tsCompare(aTs, bTs) {
+  const ea = tsToEpoch(aTs);
+  const eb = tsToEpoch(bTs);
+  return ea < eb ? -1 : ea > eb ? 1 : 0;
+}
+
 // Format an ISO 8601 ts (or fragment) for display: hh:mm:ssZ if full ISO,
 // otherwise return the original string. Never throws.
 export function formatTs(ts) {
