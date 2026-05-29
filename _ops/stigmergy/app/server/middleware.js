@@ -13,8 +13,8 @@
 // from a default path resolved from the app/ directory at import time.
 // Tests pass an explicit `palaceRoot` to avoid env-var coupling.
 
-import { readFileSync, existsSync, statSync, readdirSync, mkdirSync, watch } from 'node:fs';
-import { resolve, join, sep } from 'node:path';
+import { readFileSync, existsSync, statSync, readdirSync, mkdirSync, watch, createReadStream } from 'node:fs';
+import { resolve, join, sep, extname } from 'node:path';
 import { execFile } from 'node:child_process';
 import { parseJSONL } from '../src/lib/parser.js';
 import { validateMessage } from './validator.js';
@@ -42,6 +42,23 @@ export function resolveInsidePalace(palaceRoot, rel) {
 
 // Native open command: macOS `open`, otherwise `xdg-open` (Linux).
 const OPEN_CMD = process.platform === 'darwin' ? 'open' : 'xdg-open';
+
+// Content-type table for GET /api/file. Mirrors Enrichment/server.py:_guess_type
+// so the two review surfaces serve the same bytes with the same headers.
+const CONTENT_TYPES = {
+  '.wav': 'audio/wav', '.mp3': 'audio/mpeg', '.ogg': 'audio/ogg',
+  '.m4a': 'audio/mp4', '.flac': 'audio/flac',
+  '.png': 'image/png', '.jpg': 'image/jpeg', '.jpeg': 'image/jpeg',
+  '.gif': 'image/gif', '.svg': 'image/svg+xml', '.webp': 'image/webp',
+  '.html': 'text/html; charset=utf-8', '.htm': 'text/html; charset=utf-8',
+  '.css': 'text/css', '.js': 'application/javascript',
+  '.md': 'text/markdown; charset=utf-8', '.txt': 'text/plain; charset=utf-8',
+  '.json': 'application/json',
+};
+
+export function contentTypeFor(absPath) {
+  return CONTENT_TYPES[extname(absPath).toLowerCase()] ?? 'application/octet-stream';
+}
 
 export function readPersistent(palaceRoot) {
   const path = resolve(palaceRoot, PERSISTENT_REL);
@@ -337,6 +354,40 @@ export function blackboardMiddleware(palaceRoot) {
             res.end();
           });
           return; // response owned by the execFile callback
+        }
+
+        // ── GET /api/file ─ stream a palace file for inline rendering ───────
+        // The read-side counterpart to the strict write-side validator:
+        // lenient about WHAT it serves, strict about WHERE it reads from.
+        // Mirrors Enrichment/server.py:_serve_file. The renderer's iframe
+        // sandbox is `allow-scripts` only (no allow-same-origin), so served
+        // HTML cannot reach STIGMERGY's origin even though it loads from here.
+        if (urlPath === '/api/file' && method === 'GET') {
+          const rel = query.get('path');
+          const abs = resolveInsidePalace(palaceRoot, rel);
+          if (!abs) {
+            return jsonResponse(res, 400, {
+              error: 'invalid or missing path (must be palace-relative, no traversal)',
+              path: rel,
+            });
+          }
+          if (!existsSync(abs)) {
+            return jsonResponse(res, 404, { error: 'file not found', path: rel });
+          }
+          const stat = statSync(abs);
+          if (stat.isDirectory()) {
+            return jsonResponse(res, 400, { error: 'path is a directory, not a file', path: rel });
+          }
+          res.statusCode = 200;
+          res.setHeader('Content-Type', contentTypeFor(abs));
+          res.setHeader('Content-Length', String(stat.size));
+          res.setHeader('Cache-Control', 'no-cache');
+          const stream = createReadStream(abs);
+          // A mid-stream read error must not crash the dev server. Headers are
+          // already sent, so the cleanest recovery is to drop the connection.
+          stream.on('error', () => { try { res.destroy(); } catch (_) {} });
+          stream.pipe(res);
+          return; // response owned by the stream
         }
 
         // ── POST /api/persistent ────────────────────────────────────────────

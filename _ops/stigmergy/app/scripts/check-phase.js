@@ -68,6 +68,26 @@ const PHASES = {
     playwright: ['boot.spec.js', 'tokens.spec.js', 'data.spec.js', 'tabs.spec.js', 'types.spec.js', 'health.spec.js', 'roster.spec.js', 'inbox.spec.js', 'click-to-respond.spec.js', 'live-tail.spec.js', 'polish.spec.js', 'command-bar-active.spec.js'],
     screenshots: ['phase-6-v0.2/general.png', 'phase-6-v0.2/flags.png', 'phase-6-v0.2/system.png', 'phase-6-v0.2/trickster.png', 'phase-6-v0.2/scanlines-off.png', 'phase-6-v0.2/live-connected.png'],
   },
+  // ── v0.3 (Rich Content). Gate keys 7/8/9 = v0.3 Phases 1/2/3, reusing the
+  // next integer keys so v0.2's phase numbers don't shift. ─────────────────
+  7: {
+    label: 'v0.3 Phase 1 — File Endpoint',
+    vitest: ['artifact.test.js', 'file-middleware.test.js', 'open-and-links.test.js', 'validator.test.js', 'response-builder.test.js', 'post-middleware.test.js', 'live-feed.test.js', 'sse-middleware.test.js', 'parser.test.js', 'schema.test.js', 'middleware.test.js'],
+    playwright: [],
+    screenshots: [],
+  },
+  8: {
+    label: 'v0.3 Phase 2 — Inline Render',
+    vitest: ['artifact.test.js', 'file-middleware.test.js', 'open-and-links.test.js', 'format.test.js', 'parser.test.js', 'schema.test.js', 'middleware.test.js', 'validator.test.js'],
+    playwright: ['boot.spec.js', 'tokens.spec.js', 'data.spec.js', 'tabs.spec.js', 'types.spec.js', 'rich-content.spec.js'],
+    screenshots: ['phase-8-v0.3/general-artifacts.png', 'phase-8-v0.3/iframe-artifact.png'],
+  },
+  9: {
+    label: 'v0.3 Phase 3 — Round-trip + Final Sweep',
+    vitest: ['artifact.test.js', 'file-middleware.test.js', 'open-and-links.test.js', 'parser.test.js', 'schema.test.js', 'format.test.js', 'roster.test.js', 'inbox.test.js', 'middleware.test.js', 'validator.test.js', 'response-builder.test.js', 'post-middleware.test.js', 'live-feed.test.js', 'sse-middleware.test.js'],
+    playwright: ['boot.spec.js', 'tokens.spec.js', 'data.spec.js', 'tabs.spec.js', 'types.spec.js', 'health.spec.js', 'roster.spec.js', 'inbox.spec.js', 'click-to-respond.spec.js', 'live-tail.spec.js', 'polish.spec.js', 'command-bar-active.spec.js', 'rich-content.spec.js', 'rich-content-roundtrip.spec.js'],
+    screenshots: ['phase-9-v0.3/general-artifacts.png', 'phase-9-v0.3/iframe-artifact.png', 'phase-9-v0.3/flags.png', 'phase-9-v0.3/trickster.png'],
+  },
 };
 
 function logRun(entry) {
@@ -78,9 +98,11 @@ function logRun(entry) {
 function ensureScreenshotDir(phase) {
   const dir = resolve(SCREENSHOTS_ROOT, `phase-${phase}`);
   mkdirSync(dir, { recursive: true });
-  // Also ensure v0.2 subdirs for phases that use them.
+  // Also ensure v0.2 / v0.3 subdirs for phases that use them.
   const v2dir = resolve(SCREENSHOTS_ROOT, `phase-${phase}-v0.2`);
   mkdirSync(v2dir, { recursive: true });
+  const v3dir = resolve(SCREENSHOTS_ROOT, `phase-${phase}-v0.3`);
+  mkdirSync(v3dir, { recursive: true });
 }
 
 function runVitest(testFiles) {
@@ -141,10 +163,15 @@ function checkPhase(phaseId) {
     return pwResult.exitCode;
   }
 
-  const capResult = runCaptures(phaseId);
-  if (capResult.exitCode !== 0) {
-    logRun({ phase: phaseId, action: 'gate-end', outcome: 'fail', stage: 'captures' });
-    return capResult.exitCode;
+  // Plumbing phases declare no screenshots — there is nothing for the capture
+  // spec to shoot, and running it would error ("No tests found") for a phase
+  // with no matching capture branch.
+  if (phase.screenshots && phase.screenshots.length > 0) {
+    const capResult = runCaptures(phaseId);
+    if (capResult.exitCode !== 0) {
+      logRun({ phase: phaseId, action: 'gate-end', outcome: 'fail', stage: 'captures' });
+      return capResult.exitCode;
+    }
   }
 
   logRun({ phase: phaseId, action: 'gate-end', outcome: 'pass', stage: 'tests+captures' });
@@ -159,7 +186,7 @@ function main() {
     process.exit(2);
   }
   if (arg === 'all') {
-    for (const p of [1, 2, 3, 4, 5, 6]) {
+    for (const p of [1, 2, 3, 4, 5, 6, 7, 8, 9]) {
       const code = checkPhase(p);
       if (code !== 0) process.exit(code);
     }

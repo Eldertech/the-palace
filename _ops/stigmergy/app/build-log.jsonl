@@ -78,3 +78,7 @@
 {"ts":"2026-05-04T14:10:18.184Z","phase":6,"label":"Polish + Final Sweep","action":"gate-start"}
 {"ts":"2026-05-04T14:10:47.663Z","phase":6,"action":"gate-end","outcome":"pass","stage":"tests+captures"}
 {"ts": "2026-05-04T14:10:56.000Z", "phase": 6, "label": "Polish + Final Sweep", "action": "gate-end", "outcome": "pass", "stage": "tests+captures", "unit_tests": 265, "e2e_tests": 61, "screenshots": 6, "notes": "All 4 file updates applied: README.md v0.2 section, check-phase.js Phase 6 definition, _capture.spec.js Phase 6 block, design-system README already had both required items"}
+{"ts":"2026-05-29T14:35:54.611Z","phase":7,"label":"v0.3 Phase 1 — File Endpoint","action":"gate-start"}
+{"ts":"2026-05-29T14:35:57.717Z","phase":7,"action":"gate-end","outcome":"fail","stage":"captures"}
+{"ts":"2026-05-29T14:36:24.164Z","phase":7,"label":"v0.3 Phase 1 — File Endpoint","action":"gate-start"}
+{"ts":"2026-05-29T14:36:25.580Z","phase":7,"action":"gate-end","outcome":"pass","stage":"tests+captures"}
