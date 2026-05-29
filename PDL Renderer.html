@@ -22,14 +22,14 @@
   -->
   <script type="application/json" id="vcv-registry">
 {
-  "version": "2.3",
+  "version": "2.4",
   "plugin": "Fundamental",
   "plugin_slug": "Fundamental",
   "vcv_rack_version": "2.x",
   "source": "https://github.com/VCVRack/Fundamental",
   "verification_method": "All port and param indices verified against Fundamental v2 + Rack v2/src/core source via WebFetch of each module's .cpp file (configInput / configOutput / configParam call order). Core slugs verified via `createModel<...>(\"slug\")` declarations.",
-  "last_verified": "2026-04-20",
-  "notes": "Port indices are the integer IDs cables use in .vcv JSON. They are determined by the order of configInput()/configOutput() calls in each module's source. UI label position does NOT determine index. v2.0 corrected errors in v1.0. v2.1 adds optional default_input/default_output so unnamed-port resolution prefers the 'right' port rather than the lowest-index one. v2.2 (2026-04-20, T11) adds per-module `plugin` field (Fundamental vs Core), the MIDI_CV and AUDIO_8 Core modules, and the `virtual_endpoints` map so unbound `KEYBOARD` / `OUT` instances auto-bind to those modules — closing T1's audible-playback gate. v2.3 (2026-05-26, T7a phase 2) adds optional `regions` (named perceptual sub-ranges), `curve` hint (linear/log/exp), and `aliases` (alternate names accepted in PDL `*` lines) to selected params so PDL can speak in named regions (e.g. `* VCF: CUTOFF = dark`). Additive: params without `regions` still emit numeric literals or fall back to default exactly as in v2.2.",
+  "last_verified": "2026-05-26",
+  "notes": "Port indices are the integer IDs cables use in .vcv JSON. They are determined by the order of configInput()/configOutput() calls in each module's source. UI label position does NOT determine index. v2.0 corrected errors in v1.0. v2.1 adds optional default_input/default_output so unnamed-port resolution prefers the 'right' port rather than the lowest-index one. v2.2 (2026-04-20, T11) adds per-module `plugin` field (Fundamental vs Core), the MIDI_CV and AUDIO_8 Core modules, and the `virtual_endpoints` map so unbound `KEYBOARD` / `OUT` instances auto-bind to those modules — closing T1's audible-playback gate. v2.3 (2026-05-26, T7a phase 2) adds optional `regions` (named perceptual sub-ranges), `curve` hint (linear/log/exp), and `aliases` (alternate names accepted in PDL `*` lines) to selected params so PDL can speak in named regions (e.g. `* VCF: CUTOFF = dark`). Additive: params without `regions` still emit numeric literals or fall back to default exactly as in v2.2. v2.4 (2026-05-26, SEQ3 reconciliation) syncs this embedded block to add the four post-2.0.0 SEQ3 outputs (STEPS_OUT, CLOCK_OUT, RUN_OUT, RESET_OUT at indices 12–15) that were already present in vcv_fundamental_registry.json, and corrects SEQ3 param STEPS from index 5 (a step-CV knob) to its actual enum index 3 (TRIG_PARAM, labeled `Steps`) in both copies. Behavior-affecting: any prior `* SEQ3: STEPS = N` was silently writing to the wrong knob.",
   "signal_types": {
     "audio":   { "voltage": "±5V nominal",                 "color_hint": "coral"  },
     "cv":      { "voltage": "0–10V or ±5V context-dependent", "color_hint": "purple" },
@@ -166,8 +166,8 @@
     },
     "SEQ3": {
       "slug": "SEQ3", "plugin": "Fundamental", "name": "SEQ 3", "hp": 26,
-      "description": "Three-channel 8-step sequencer. Output 0 is master TRIG; CV1-3 are at indices 1-3; per-step triggers at 4-11.",
-      "verification": "verified against src/SEQ3.cpp (2026-04-19)",
+      "description": "Three-channel 8-step sequencer. Output 0 is master TRIG; CV1-3 at 1-3; per-step triggers at 4-11; STEPS_OUT/CLOCK_OUT/RUN_OUT/RESET_OUT at 12-15 (added in Fundamental 2.0.0).",
+      "verification": "verified against src/SEQ3.cpp (2026-05-26)",
       "default_input": "CLOCK", "default_output": "CV1",
       "inputs": [
         { "name": "TEMPO", "type": "cv",      "index": 0, "description": "Tempo CV (internal clock)" },
@@ -177,22 +177,26 @@
         { "name": "RUN",   "type": "trigger", "index": 4, "description": "Run/stop gate" }
       ],
       "outputs": [
-        { "name": "TRIG",  "type": "trigger", "index": 0,  "description": "Master per-step trigger" },
-        { "name": "CV1",   "type": "cv",      "index": 1,  "description": "Channel 1 CV" },
-        { "name": "CV2",   "type": "cv",      "index": 2,  "description": "Channel 2 CV" },
-        { "name": "CV3",   "type": "cv",      "index": 3,  "description": "Channel 3 CV" },
-        { "name": "STEP1", "type": "trigger", "index": 4,  "description": "Step 1 trig" },
-        { "name": "STEP2", "type": "trigger", "index": 5,  "description": "Step 2 trig" },
-        { "name": "STEP3", "type": "trigger", "index": 6,  "description": "Step 3 trig" },
-        { "name": "STEP4", "type": "trigger", "index": 7,  "description": "Step 4 trig" },
-        { "name": "STEP5", "type": "trigger", "index": 8,  "description": "Step 5 trig" },
-        { "name": "STEP6", "type": "trigger", "index": 9,  "description": "Step 6 trig" },
-        { "name": "STEP7", "type": "trigger", "index": 10, "description": "Step 7 trig" },
-        { "name": "STEP8", "type": "trigger", "index": 11, "description": "Step 8 trig" }
+        { "name": "TRIG",      "type": "trigger", "index": 0,  "description": "Master per-step trigger" },
+        { "name": "CV1",       "type": "cv",      "index": 1,  "description": "Channel 1 CV" },
+        { "name": "CV2",       "type": "cv",      "index": 2,  "description": "Channel 2 CV" },
+        { "name": "CV3",       "type": "cv",      "index": 3,  "description": "Channel 3 CV" },
+        { "name": "STEP1",     "type": "trigger", "index": 4,  "description": "Step 1 trig" },
+        { "name": "STEP2",     "type": "trigger", "index": 5,  "description": "Step 2 trig" },
+        { "name": "STEP3",     "type": "trigger", "index": 6,  "description": "Step 3 trig" },
+        { "name": "STEP4",     "type": "trigger", "index": 7,  "description": "Step 4 trig" },
+        { "name": "STEP5",     "type": "trigger", "index": 8,  "description": "Step 5 trig" },
+        { "name": "STEP6",     "type": "trigger", "index": 9,  "description": "Step 6 trig" },
+        { "name": "STEP7",     "type": "trigger", "index": 10, "description": "Step 7 trig" },
+        { "name": "STEP8",     "type": "trigger", "index": 11, "description": "Step 8 trig" },
+        { "name": "STEPS_OUT", "type": "cv",      "index": 12, "description": "Current step count out" },
+        { "name": "CLOCK_OUT", "type": "trigger", "index": 13, "description": "Clock thru output" },
+        { "name": "RUN_OUT",   "type": "trigger", "index": 14, "description": "Run state output" },
+        { "name": "RESET_OUT", "type": "trigger", "index": 15, "description": "Reset thru output" }
       ],
       "params": [
         { "name": "TEMPO", "index": 0, "range": [-2.0, 4.0], "default": 1.0, "unit": "log",     "description": "Internal tempo" },
-        { "name": "STEPS", "index": 5, "range": [1, 8],      "default": 8,   "unit": "integer", "description": "Active step count" }
+        { "name": "STEPS", "index": 3, "range": [1, 8],      "default": 8,   "unit": "integer", "description": "Active step count (1-8). Source enum: TRIG_PARAM — labeled `Steps` in the UI." }
       ],
       "perceptual_index": ["sequencer","sequence","pattern","melody","arpeggio","step","clock","rhythm","loop","cycle","melodic pattern","bassline","motif","phrase"]
     },

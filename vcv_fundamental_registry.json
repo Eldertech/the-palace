@@ -1,12 +1,12 @@
 {
-  "version": "2.3",
+  "version": "2.4",
   "plugin": "Fundamental",
   "plugin_slug": "Fundamental",
   "vcv_rack_version": "2.x",
   "source": "https://github.com/VCVRack/Fundamental",
   "verification_method": "All port and param indices verified against Fundamental v2 + Rack v2/src/core source via WebFetch of each module's .cpp file (configInput / configOutput / configParam call order). Core slugs verified via `createModel<...>(\"slug\")` declarations.",
-  "last_verified": "2026-04-20",
-  "notes": "Port indices are the integer IDs cables use in .vcv JSON, determined by the order of configInput()/configOutput() calls in each module's source. UI label position does NOT determine index. v2.0 corrected extensive errors in v1.0 (guessed indices). v2.1 (2026-04-19) added optional default_input / default_output fields per module so unnamed-port resolution prefers the conceptually 'right' port rather than the lowest-index one. v2.2 (2026-04-20, T11) adds per-module `plugin` field (Fundamental vs Core), MIDI_CV and AUDIO_8 under plugin:Core, and the top-level `virtual_endpoints` map so unbound `KEYBOARD` / `OUT` instances auto-bind to those modules — closing T1's audible-playback gate. v2.3 (2026-05-26, T7a phase 2) adds optional `regions` (named perceptual sub-ranges), `curve` hint (linear/log/exp), and `aliases` (alternate names accepted in PDL `*` lines) to selected params — extending the registry vocabulary so PDL can speak in named regions (e.g. `* VCF: CUTOFF = dark`) rather than only literals. Phase-2 extension is additive: params without `regions` still emit numeric literals or fall back to default exactly as in v2.2.",
+  "last_verified": "2026-05-26",
+  "notes": "Port indices are the integer IDs cables use in .vcv JSON, determined by the order of configInput()/configOutput() calls in each module's source. UI label position does NOT determine index. v2.0 corrected extensive errors in v1.0 (guessed indices). v2.1 (2026-04-19) added optional default_input / default_output fields per module so unnamed-port resolution prefers the conceptually 'right' port rather than the lowest-index one. v2.2 (2026-04-20, T11) adds per-module `plugin` field (Fundamental vs Core), MIDI_CV and AUDIO_8 under plugin:Core, and the top-level `virtual_endpoints` map so unbound `KEYBOARD` / `OUT` instances auto-bind to those modules — closing T1's audible-playback gate. v2.3 (2026-05-26, T7a phase 2) adds optional `regions` (named perceptual sub-ranges), `curve` hint (linear/log/exp), and `aliases` (alternate names accepted in PDL `*` lines) to selected params — extending the registry vocabulary so PDL can speak in named regions (e.g. `* VCF: CUTOFF = dark`) rather than only literals. Phase-2 extension is additive: params without `regions` still emit numeric literals or fall back to default exactly as in v2.2. v2.4 (2026-05-26, SEQ3 reconciliation) re-verifies SEQ3 against src/SEQ3.cpp: corrects SEQ3 param STEPS from index 5 (which is CV_PARAMS+1, a step-CV knob) to its actual enum index 3 (TRIG_PARAM, labeled `Steps` in the UI), and syncs the embedded `<script id=\"vcv-registry\">` block inside PDL Renderer.html to include the four post-2.0.0 outputs (STEPS_OUT, CLOCK_OUT, RUN_OUT, RESET_OUT at indices 12–15) that were already present here. Behavior-affecting: any prior `* SEQ3: STEPS = N` was silently writing to a step-CV knob, not the active-step-count knob.",
   "signal_types": {
     "audio": { "voltage": "±5V nominal", "color_hint": "coral" },
     "cv":    { "voltage": "0–10V or ±5V context-dependent", "color_hint": "purple" },
@@ -193,8 +193,8 @@
       "plugin": "Fundamental",
       "name": "SEQ 3",
       "hp": 26,
-      "description": "Three-channel 8-step sequencer. Internal clock or external clock. Three CV outputs (one per channel) plus per-step trigger outputs.",
-      "verification": "verified against src/SEQ3.cpp (2026-04-19)",
+      "description": "Three-channel 8-step sequencer. Internal clock or external clock. Three CV outputs (one per channel), per-step trigger outputs, plus utility outputs added in Fundamental 2.0.0 (current step count, clock thru, run state, reset thru).",
+      "verification": "verified against src/SEQ3.cpp (2026-05-26)",
       "default_input": "CLOCK",
       "default_output": "CV1",
       "inputs": [
@@ -224,7 +224,7 @@
       ],
       "params": [
         { "name": "TEMPO", "index": 0, "range": [-2.0, 4.0], "default": 1.0, "unit": "log",        "description": "Internal tempo" },
-        { "name": "STEPS", "index": 5, "range": [1, 8],      "default": 8,   "unit": "integer",    "description": "Active step count (1–8)" }
+        { "name": "STEPS", "index": 3, "range": [1, 8],      "default": 8,   "unit": "integer",    "description": "Active step count (1–8). Source enum: TRIG_PARAM — labeled `Steps` in the UI." }
       ],
       "perceptual_index": [
         "sequencer", "sequence", "pattern", "melody", "arpeggio",
