@@ -70,14 +70,20 @@ A whole-palace editor's pass — shorten generic content, repair/prune links, co
 
 **Commits this session:** `b64e4f5` (passes 1–3 checkpoint), `a950c38` (T2 shortening), `de37c73` (T7 + schema proposal), `50d3448` (enrichment archive). The parallel design-system/visual-language and stigmergy workstreams were deliberately left uncommitted (not part of the audit).
 
-### Deferred from pass 3 (need Loudon / own focused pass)
-- **T3 Toolkit — Audio Plugins `concept`→`meta`:** held. Its sibling `Toolkit — Synthesizers` is also `concept`; switching only this one creates a *new* inconsistency, `meta` vs `hub` for an inventory is genuinely ambiguous, and there was no explicit `<!--APPROVE-->`. Decide the whole Toolkit family's type together.
-- **Schema ratification of `exemplifies` (50) + `member-of` (48):** NOT done on autopilot — reverses this audit's own normalization and requires the Schema Change Protocol + documented rationale. Full proposal ready at `_ops/Schema Ceremony Proposal — exemplifies + member-of.md`. See §"Schema decision" below.
-- **T4 loose-artifacts migration (`Artifacts/<Entry>/` → `Projects/<Entry>/` bundles):** deferred to a dedicated pass — it's a large move and several files are referenced by in-body paths (e.g. AP Oscillator → `Artifacts/Action Potential Oscillator/neural_oscillator_dev_plan.md`); moving without updating every reference breaks them.
-- **T4 `Crystal Audio/`:** do NOT stash blindly — research found it's referenced by path from the active Generative Sample Libraries steward (it's a sample-source, not enrichment debris). Either leave it, or move to `Projects/Generative Sample Libraries/crystal-audio/` *and* update the reference. Loudon's call.
-- **T7 ceremony splits (Handoff 12KB, Weave 13KB > 8KB):** deferred. Handoff Ceremony is mid-edit in the design-system workstream; a split is a structural operation deserving its own pass.
-- **ROSETTA Hibernation row:** left as-is and flagged — interpretive (dead row vs. planned-ceremony placeholder), and it brushes the LEAVE-section's "leave the Hibernation ghost" instruction.
-- **T3 Action Potential Oscillator H90 comment:** Loudon answered the Claude→Loudon H90 note ("valid RNBO target, easily accomplished"); the resolved comment exchange can be cleaned up next time the entry is touched.
+### Pass 3 continued — Loudon's deferred-item rulings, executed 2026-05-28
+- **Toolkit type → `meta` (DONE, `4777299`):** both `Toolkit — Audio Plugins` and `Toolkit — Synthesizers` (both inventories) retyped `concept`→`meta`; `Loudon's Toolkit` stays the hub. Family is now consistent.
+- **Schema ratification of `exemplifies` + `member-of` (DONE — Schema Ceremony `83e6775`, v1.8):** 98 links re-converted `connects-to`+label → typed; SCHEMA §4 (+2 rows, +rationale, v1.8), ROSETTA, proposal doc updated. CLAUDE.md + Substrate Skill link-ontology updated **on disk** but committed with the design-system workstream (mixed files). Reciprocity: inbound-only.
+- **`Crystal Audio/` → GSL bundle (DONE, `933c54f`):** moved to `Projects/Generative Sample Libraries/crystal-audio/`; updated `generate.py`/`generate_full.py` `CRYSTAL_SYNTH_PATH` + provenance strings + the GSL entry prose. (Dated build-map scripts' stale NODE_DIR entry left — harmless empty scan; flag for next map build.)
+- **Remove all Hibernation (DONE, `4777299`):** dropped the ROSETTA row, Claude CLI Reference mode, Revival's `mirrors` ghost link, and 2 Palace To-Do entries; 0 `[[Hibernation Ceremony]]` links remain. Kept the historical record (Map Log, Harvest-Context "Hibernation Absorption", bear metaphor). Deposit closing-ritual phrase "hibernated"→"come to rest" (on disk, rides with design-system commit — mixed file).
+- **AP Oscillator H90 comment (DONE, `4777299`):** resolved Claude→Loudon exchange removed (answer lives in the forward_vector).
+- **Ceremony splits — EXPLAIN requested, not done.** See the reply to Loudon (Handoff/Weave exceed the §6 ~8KB split threshold; "split" = move history into a `— Context.md` companion, keep the operational card lean). Awaiting Loudon's go.
+
+### Still open — the one big remaining item
+- **T4 loose-artifacts migration (`Artifacts/<Entry>/` → `Projects/<Entry>/` bundles):** Loudon asked for this ASAP, but on scoping it is **bigger and more collision-prone than the punch-list implied** — flagged for a dedicated, verify-as-you-go pass (ideally fresh context, since a half-finished sweep is worse than none):
+  - **22** `Artifacts/` subdirs, not ~6. Several are NOT per-entry bundles and must be excluded: `Images/` (shared assets), `Tools/` (tool guides), `4 Pillars Framework/` (holds live Bridges/People/Weekly-Theme entries), `Full Claude conversation backup/`.
+  - **8 collisions** where `Projects/<Entry>/` already exists with content (`proofs/`, code, `.md`): Action Potential Oscillator, Crystal Synthesizer, Floquet, Piano String Inharmonicity, Quantum Synthesizer, Retrospective Delay, Shepard Tone Synthesizer, Shimmer Cloud — merge without overwrite.
+  - ~20+ in-body path references + HTML interactives with relative `charts/`/`audio/`/`images/` assets (move as units; update every reference).
+  - Moved `.md` bundle files should gain minimal frontmatter + a `child-of` parent link; the map's `EXCLUDE_DIRS` Artifacts entry will need revisiting once Artifacts empties.
 
 ---
 
