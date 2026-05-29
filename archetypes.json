@@ -1,0 +1,125 @@
+{
+  "version": "0.1",
+  "notes": "T7b synth archetype library for the VCV/PDL pipeline. An archetype is a param-cloud projection onto EXISTING topology — it never injects modules. Region names reference the per-param perceptual regions defined in vcv_fundamental_registry.json (v2.3+). The seeded resolver (resolveArchetype in PDL Renderer.html) maps archetype roles to declared PDL instances by name convention (or explicit {role=INST} binding), samples each region at a deterministic position derived from (seed, archetype, instance, param), then applies constraints. Emit precedence: explicit PDL `*` line > archetype param > registry default. Schema is project data with its own `version`; not palace ontology (same rationale that closed T7a phase 2's ceremony question).",
+  "role_conventions": {
+    "AMP_ENV": "amp_env",
+    "PITCH_ENV": "pitch_env",
+    "FILT_ENV": "filt_env",
+    "MOD_ENV": "mod_env",
+    "OSC": "vco",
+    "VCO": "vco",
+    "OSC1": "vco",
+    "OSC2": "vco2",
+    "SUB": "sub",
+    "FILT": "vcf",
+    "VCF": "vcf",
+    "AMP": "amp",
+    "VCA": "amp",
+    "LFO": "lfo",
+    "LFO1": "lfo",
+    "LFO2": "lfo2"
+  },
+  "archetypes": {
+    "kick": {
+      "perceptual_index": ["kick", "drum", "punchy", "808", "thump", "boom", "bass drum"],
+      "topology": {
+        "roles": { "amp_env": "ADSR", "pitch_env": "ADSR", "vco": "VCO", "amp": "VCA" },
+        "required": ["amp_env", "vco", "amp"]
+      },
+      "params": {
+        "amp_env":   { "A": "instant", "D": "snappy", "S": "plucked", "R": "gated" },
+        "pitch_env": { "A": "instant", "D": "snappy", "S": "plucked", "R": "gated" },
+        "vco":       { "FREQ": "sub" }
+      },
+      "constraints": [
+        { "kind": "copy", "from": "pitch_env.D", "to": "amp_env.D",
+          "label": "pitch-fall decay matches amp decay (the kick punch)" }
+      ]
+    },
+    "sub_bass": {
+      "perceptual_index": ["sub", "sub bass", "808 bass", "low", "deep", "bass", "rumble"],
+      "topology": {
+        "roles": { "vco": "VCO", "vcf": "VCF", "amp_env": "ADSR", "amp": "VCA" },
+        "required": ["vco", "vcf", "amp_env", "amp"]
+      },
+      "params": {
+        "vco":     { "FREQ": "low" },
+        "vcf":     { "FREQ": "dark", "RES": "clean" },
+        "amp_env": { "A": "instant", "D": "medium", "S": "held", "R": "short" }
+      }
+    },
+    "warm_pad": {
+      "perceptual_index": ["pad", "warm", "lush", "ambient", "strings", "swell", "evolving"],
+      "topology": {
+        "roles": { "vco": "VCO", "vcf": "VCF", "amp_env": "ADSR", "lfo": "LFO", "amp": "VCA" },
+        "required": ["vco", "vcf", "amp_env", "lfo", "amp"]
+      },
+      "params": {
+        "vco":     { "FREQ": "mid" },
+        "vcf":     { "FREQ": "open", "RES": "present" },
+        "amp_env": { "A": "pad", "D": "medium", "S": "held", "R": "ambient" },
+        "lfo":     { "FREQ": "subtle" }
+      }
+    },
+    "pluck": {
+      "perceptual_index": ["pluck", "plucky", "short", "percussive", "marimba", "harp", "mallet"],
+      "topology": {
+        "roles": { "vco": "VCO", "vcf": "VCF", "amp_env": "ADSR", "amp": "VCA" },
+        "required": ["vco", "vcf", "amp_env", "amp"]
+      },
+      "params": {
+        "vco":     { "FREQ": "mid" },
+        "vcf":     { "FREQ": "dark", "RES": "present" },
+        "amp_env": { "A": "instant", "D": "short", "S": "plucked", "R": "short" }
+      }
+    },
+    "bright_lead": {
+      "perceptual_index": ["lead", "bright", "cutting", "solo", "melody", "sharp", "present"],
+      "topology": {
+        "roles": { "vco": "VCO", "vcf": "VCF", "amp_env": "ADSR", "amp": "VCA" },
+        "required": ["vco", "vcf", "amp_env", "amp"]
+      },
+      "params": {
+        "vco":     { "FREQ": "mid" },
+        "vcf":     { "FREQ": "bright", "RES": "present" },
+        "amp_env": { "A": "instant", "D": "medium", "S": "full", "R": "short" }
+      }
+    },
+    "acid_lead": {
+      "perceptual_index": ["acid", "303", "tb-303", "squelch", "resonant", "screaming", "bassline"],
+      "topology": {
+        "roles": { "vco": "VCO", "vcf": "VCF", "amp_env": "ADSR", "amp": "VCA" },
+        "required": ["vco", "vcf", "amp_env", "amp"]
+      },
+      "params": {
+        "vco":     { "FREQ": "low" },
+        "vcf":     { "FREQ": "dark", "RES": "screaming" },
+        "amp_env": { "A": "instant", "D": "short", "S": "plucked", "R": "short" }
+      }
+    },
+    "stab": {
+      "perceptual_index": ["stab", "hit", "organ stab", "chord stab", "house stab", "punch"],
+      "topology": {
+        "roles": { "vco": "VCO", "vcf": "VCF", "amp_env": "ADSR", "amp": "VCA" },
+        "required": ["vco", "vcf", "amp_env", "amp"]
+      },
+      "params": {
+        "vco":     { "FREQ": "mid" },
+        "vcf":     { "FREQ": "open", "RES": "present" },
+        "amp_env": { "A": "instant", "D": "short", "S": "held", "R": "short" }
+      }
+    },
+    "drone": {
+      "perceptual_index": ["drone", "sustained", "held", "ambient", "texture", "bed", "detune"],
+      "topology": {
+        "roles": { "vco": "VCO", "lfo": "LFO", "amp": "VCA", "vcf": "VCF" },
+        "required": ["vco", "lfo", "amp"]
+      },
+      "params": {
+        "vco": { "FREQ": "low" },
+        "lfo": { "FREQ": "subtle" },
+        "vcf": { "FREQ": "open" }
+      }
+    }
+  }
+}

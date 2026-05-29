@@ -1,0 +1,16 @@
+// pluck — T7b archetype audition (seed 1)
+// Instant attack, short decay, dark filter — a plucked subtractive voice.
+@OSC     = VCO
+@FILT    = VCF
+@AMP_ENV = ADSR
+@AMP     = VCA
+
+KEYBOARD -> OSC
+KEYBOARD:GATE -> AMP_ENV:GATE
+OSC:SAW -> FILT:IN
+FILT:LPF -> AMP:IN
+AMP_ENV -> AMP:CV
+AMP:OUT -> OUT:IN1
+AMP:OUT -> OUT:IN2
+
+# archetype: pluck #seed=1
