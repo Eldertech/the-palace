@@ -72,7 +72,15 @@ record; STIGMERGY shows them.
 ## Enchant a new steward (the one-at-a-time act, done by hand)
 
 Batch only loops what exists. To add a project to the rotation, create its
-steward directory once:
+steward directory once. The durable helper does steps 1-3 in one call (reads
+the page's frontmatter, writes the dir, validates the manifest, registers it):
+
+```bash
+node _ops/stigmergy/orchestrator/src/enchant.js "<Page Title>"
+```
+
+It enchants exactly one project (deliberate, one-at-a-time) and is a no-op if
+the steward dir already exists. The manual equivalent, for reference:
 
 1. `mkdir _ops/agents/permanent/<kebab-name>/`
 2. Write `manifest.json` modeled on
