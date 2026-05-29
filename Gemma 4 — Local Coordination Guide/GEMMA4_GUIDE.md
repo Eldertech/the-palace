@@ -1,3 +1,13 @@
+---
+title: "Gemma 4 — Claude's Working Guide"
+born: 2026-04-21
+links:
+  - target: "[[Gemma 4 — Local Coordination Guide]]"
+    type: connects-to
+    label: child-of
+forward_vector: "I am the working reference for [[Gemma 4 — Local Coordination Guide]] — how to coordinate local Gemma 4 instances, their tool use and file access. I stay current as the architecture and APIs evolve; when I drift, refresh me."
+---
+
 # Gemma 4 — Claude's Working Guide
 ## Coordinating Local Gemma 4 Instances, Tool Use & File Access
 
