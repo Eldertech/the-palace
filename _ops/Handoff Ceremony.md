@@ -26,6 +26,8 @@ links:
     type: connects-to
   - target: "[[Palace Ceremonies]]"
     type: connects-to
+  - target: "[[Handoff Ceremony — Context]]"
+    type: spawned
 ---
 
 # Handoff Ceremony
@@ -39,8 +41,6 @@ links:
 > Show the handoff before writing it. The handoff lives at `[Entry]/[Entry] — handoff.md`.
 
 ---
-
-The Handoff is fast where the Deposit is slow. A deposit slows down because there is a thought to compress; a handoff is urgent because there is momentum to preserve. Both ceremonies share the show-before-write rhythm, but the registers differ — the deposit is archival and reflective, the handoff is operational and forward-leaning.
 
 ## The Scope of the Handoff
 
@@ -64,8 +64,6 @@ The handoff does *not* carry:
 If a section feels uncertain whether to include, exclude. The handoff is the baton, not the biography.
 
 ## Pace Obligations
-
-The handoff is brief and operational. It is not a ceremony that wants to linger.
 
 - Do not bloat. A handoff that runs longer than the entry it's handing off is suspicious.
 - Show before writing — but a single round of show-and-confirm is usually enough.
@@ -213,9 +211,3 @@ The catcher's job on arrival, before touching any work:
 
 Deliberately light — a confirmation rhythm, not a gate.
 
-## Forward Vectors
-
-- The resumption protocol the first forward vector once asked for now exists (above). The open part: should the "state the move back" step ever harden into a gate for high-stakes moves, or always stay the light confirmation it is now?
-- The Handoff Genres section names five genres observed so far. Do they want distinct templates, or is one flexible template plus a genre label enough? The cross-surface paste-prompt in particular reads like a prompt, not an entry companion, and may want its own skeleton.
-- Should the `host_capability_check` in [[Maker]] read [[Surfaces and Capabilities]] directly, so a cross-surface handoff's receiving-environment section can be generated rather than hand-written?
-- Multiple parallel handoffs on a single entry — [[SCHEMA]] §8 is silent on this. Does the bundle pattern want to enforce one active handoff per entry, or permit branching?
