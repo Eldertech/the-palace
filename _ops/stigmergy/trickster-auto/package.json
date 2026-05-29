@@ -1,0 +1,24 @@
+{
+  "name": "palace-trickster-auto",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Automated Trickster (Stage E) — a deterministic, declarative rules engine that triages the BBS TRICKSTER inbox: auto-grant / auto-deny / escalate, with a ranked digest of escalations. Shadow-mode by default. Never auto-grants auditions or irreversible actions.",
+  "bin": {
+    "trickster-auto": "./src/cli.js"
+  },
+  "scripts": {
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "check:phase-0": "node scripts/check-phase.js 0",
+    "check:phase-1": "node scripts/check-phase.js 1",
+    "check:phase-2": "node scripts/check-phase.js 2",
+    "check:phase-3": "node scripts/check-phase.js 3",
+    "check:phase-4": "node scripts/check-phase.js 4",
+    "check:phase-5": "node scripts/check-phase.js 5",
+    "check:all": "node scripts/check-phase.js all"
+  },
+  "devDependencies": {
+    "vitest": "^2.1.5"
+  }
+}

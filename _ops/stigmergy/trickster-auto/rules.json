@@ -1,0 +1,47 @@
+{
+  "version": "0.1",
+  "_about": "The Automated Trickster ruleset (Stage E). Declarative and Loudon-editable — change rules here without a deploy. The engine evaluates a request against these rules IN ORDER; the first matching rule wins. If no rule matches, default_verb applies. TWO things this file CANNOT override: (1) the audition/irreversible HARD GATE (audition-gate.js) runs BEFORE any rule and always escalates sensory auditions and irreversible/destructive actions; (2) when the daily budget is exhausted, an auto-grant rule is downgraded to escalate. Both are code, not rules, on purpose.",
+  "_q1_decision": "v0 auto-grants ONLY non-blocking directional forks that carry the steward's own recommendation. The strawman's 'advances forward_vector + cost below threshold' is encoded as the deterministic proxies the engine can actually check from a message: blocking:false + has steward_recommendation + within daily budget. blocking:true, every audition, every irreversible action, and every unmatched resource escalate. read_palace (grant) and web_search-over-budget (deny) rules are DORMANT — no such requests are on the board today; they carry the vocabulary forward.",
+  "default_verb": "escalate",
+  "match_predicates_supported": [
+    "resource_in (array of resource tokens; coalesced top-level||payload)",
+    "resource_equals (string)",
+    "blocking (exact boolean match)",
+    "has_steward_recommendation (boolean)",
+    "has_options (boolean)",
+    "from_in (array of agent/page ids)",
+    "over_daily_budget (boolean; requires a live budget state)"
+  ],
+  "rules": [
+    {
+      "id": "grant-nonblocking-recommended-fork",
+      "verb": "auto-grant",
+      "match": {
+        "resource_in": ["directional_decision"],
+        "blocking": false,
+        "has_steward_recommendation": true
+      },
+      "grant_option": "steward_recommendation",
+      "rationale": "Non-blocking directional fork carrying the steward's own recommendation. blocking:false means the steward already proceeded on its best guess and is not suspended; the grant ratifies its recommended direction. Lowest-stakes automatable decision. Subject to the daily auto-grant budget."
+    },
+    {
+      "id": "dormant-grant-palace-read",
+      "verb": "auto-grant",
+      "match": {
+        "resource_in": ["read_palace", "palace_semantic_search", "palace_internal_search"]
+      },
+      "grant_option": "first",
+      "rationale": "Palace-internal read / semantic search: no external cost, fully reversible, no creative or directional commitment. DORMANT — zero such requests on the live board today; this rule fires only if that resource type later appears."
+    },
+    {
+      "id": "dormant-deny-websearch-over-budget",
+      "verb": "auto-deny",
+      "match": {
+        "resource_in": ["web_search"],
+        "over_daily_budget": true
+      },
+      "deny_reason": "Daily web_search budget exhausted. Use palace material, or this can be escalated to Loudon for an explicit grant.",
+      "rationale": "External web_search beyond the daily search budget. DORMANT — zero web_search requests on the live board today. When the budget is NOT exhausted this rule does not match, so a within-budget web_search falls through to default_verb (escalate) rather than being auto-granted — external reach always gets a human or an explicit dormant grant rule, never a silent auto-grant."
+    }
+  ]
+}
