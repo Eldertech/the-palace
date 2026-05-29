@@ -10,3 +10,4 @@
 {"event":"check-phase","phase":"4","ok":true,"ts_note":"stamped by runner"}
 {"event":"check-phase","phase":"3","ok":true,"ts_note":"stamped by runner"}
 {"event":"check-phase","phase":"4","ok":true,"ts_note":"stamped by runner"}
+{"event":"check-phase","phase":"all","ok":true,"ts_note":"stamped by runner"}

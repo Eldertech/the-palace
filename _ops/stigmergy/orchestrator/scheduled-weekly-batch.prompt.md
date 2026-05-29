@@ -28,8 +28,11 @@ hand:
 ## What success looks like
 
 A Monday run prints which stewards cycled, the message ids each posted, and
-any non-blocking questions now waiting on the BBS Trickster board. No digest
-file; the BBS messages are the record. No commit.
+any non-blocking questions now waiting on the BBS Trickster board. It then runs
+the Automated Trickster (Stage E) in **shadow** mode, producing one ranked
+digest of those asks (`_ops/stigmergy/trickster-auto/digest-latest.{json,md}`,
+also shown on the STIGMERGY TRICKSTER tab). No board writes from the Trickster
+while it is in shadow; no commit.
 
 ---
 
@@ -58,6 +61,15 @@ POSTURE for this unattended run:
 - Keep asks NON-BLOCKING. Leave any decisions on the BBS Trickster board; never wait.
 - Do NOT edit project pages directly. Stewards propose via the BBS only.
 - Do NOT commit and do NOT push. Leave the working tree for Loudon to commit Mac-side.
-- Do NOT write a digest file — the per-cycle BBS messages are the record.
 
-REPORT at the end: one short paragraph — which stewards ran, the message ids each posted, and any non-blocking questions now waiting for Loudon on the Trickster board. Then stop.
+3. After the batch loop completes, run the Automated Trickster (Stage E) ONCE in
+   shadow mode to consolidate the asks into one ranked digest:
+   `node _ops/stigmergy/trickster-auto/src/cli.js --shadow`
+   This posts NOTHING to the board (shadow); it only writes
+   `_ops/stigmergy/trickster-auto/digest-latest.{json,md}`, which STIGMERGY
+   renders on the TRICKSTER tab. Do NOT pass `--live` in the unattended run —
+   write authority is Loudon's to enable once the shadow proposals match his own
+   decisions. The hard rule holds regardless: auditions and irreversible actions
+   always escalate, never auto-grant. See `.claude/skills/palace-orchestrator/trickster-auto.md`.
+
+REPORT at the end: one short paragraph — which stewards ran, the message ids each posted, the digest's headline counts (pending / escalate / auto-grant-proposed), and any blocking auditions now at the top of the digest for Loudon. Then stop.
