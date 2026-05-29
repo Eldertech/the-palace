@@ -45,6 +45,58 @@ describe('audition gate — irreversible/destructive actions blocked (dormant on
   }
 });
 
+describe('audition gate — judges the RECOMMENDED OPTION, not the prose', () => {
+  it('escalates when the recommended option IS an audition (blood-005 pattern)', () => {
+    const g = auditionOrIrreversible(parseRequest({
+      request_id: 'x',
+      payload: {
+        resource: 'directional_decision', blocking: false,
+        decision_topic: "What's the next concrete move?",
+        steward_recommendation: 'AUDITION-GATE-FIRST — render the smallest unit, pause for human audition',
+        options: [{ id: 'AUDITION-GATE-FIRST', label: 'AUDITION-GATE-FIRST — …' }, { id: 'MAKER-DISPATCH', label: 'MAKER-DISPATCH — …' }],
+      },
+    }));
+    expect(g.blocked).toBe(true);
+    expect(g.signal).toMatch(/recommended_option/);
+  });
+
+  it('PASSES a fork whose recommendation is non-sensory even if its prose mentions a future audition (torus-005 pattern)', () => {
+    const g = auditionOrIrreversible(parseRequest({
+      request_id: 'x',
+      payload: {
+        resource: 'directional_decision', blocking: false,
+        decision_topic: 'What advances me in cycle 3?',
+        steward_recommendation: 'RESOLVE-SEVENTH-SURFACE — real catalog work; gives the eventual audition more to chew on',
+        options: [{ id: 'PAUSE-FOR-AUDITION', label: 'PAUSE-FOR-AUDITION — …' }, { id: 'RESOLVE-SEVENTH-SURFACE', label: 'RESOLVE-SEVENTH-SURFACE — …' }],
+      },
+    }));
+    expect(g.blocked).toBe(false); // recommended option is RESOLVE-SEVENTH-SURFACE, not the audition option
+  });
+
+  it('escalates when the decision TOPIC names an audition act (portamento topic pattern)', () => {
+    const g = auditionOrIrreversible(parseRequest({
+      request_id: 'x',
+      payload: { resource: 'directional_decision', blocking: false, decision_topic: 'Audition the curated ear set, then pick the next move' },
+    }));
+    expect(g.blocked).toBe(true);
+    expect(g.signal).toMatch(/topic/);
+  });
+
+  it('does NOT escalate on a bare audio word in the RATIONALE prose (no longer scanned)', () => {
+    const g = auditionOrIrreversible(parseRequest({
+      request_id: 'x',
+      payload: {
+        resource: 'directional_decision', blocking: false,
+        decision_topic: 'which parameter is the primary sweep?',
+        steward_recommendation: 'CENTROID-FREQ — the cleaner mapping',
+        rationale: 'the result will be audible later and we will audition it eventually',
+        options: [{ id: 'CENTROID-FREQ', label: 'CENTROID-FREQ — …' }],
+      },
+    }));
+    expect(g.blocked).toBe(false);
+  });
+});
+
 describe('audition gate — routine directional decisions pass through', () => {
   it('does not block a plain non-blocking directional fork', () => {
     const g = auditionOrIrreversible(parseRequest({

@@ -14,7 +14,7 @@
 //   4. DEFAULT    — no rule matched → ruleset.default_verb (escalate).
 
 import { auditionOrIrreversible } from './audition-gate.js';
-import { deriveOptionId } from './parse.js';
+import { matchRecommendationToOption } from './parse.js';
 
 /** Is the daily auto-grant budget exhausted? Phase 4 owns the real state. */
 function budgetExhausted(budgetState) {
@@ -78,23 +78,8 @@ function ruleMatches(request, match, budgetState) {
 export function pickGrantOption(request, rule) {
   const opts = request.options || [];
   if (rule.grant_option === 'steward_recommendation' && request.steward_recommendation) {
-    const recRaw = String(request.steward_recommendation).trim();
-    // The recommendation field is often prose ("CENTROID-FREQ — it matches…"),
-    // so match on its LEADING TOKEN (same lenient derivation as option labels)
-    // as well as the full string.
-    const recToken = (deriveOptionId(recRaw) || recRaw).toLowerCase();
-    const recFull = recRaw.toLowerCase();
-    const hit = opts.find((o) => (o.id || '').toLowerCase() === recToken)
-      || opts.find((o) => (o.id || '').toLowerCase() === recFull)
-      // Prefix match: handles any separator after the id (period, space, dash)
-      // that the dash/colon token derivation does not split — e.g.
-      // "STANDALONE-FIRST. The pass-through stub…".
-      || opts.find((o) => o.id && recFull.startsWith(o.id.toLowerCase()))
-      || opts.find((o) => (o.label || '').toLowerCase().startsWith(recToken));
-    if (hit) return { id: hit.id, label: hit.label, source: 'steward_recommendation' };
-    // Recommendation named but not found among options → record the derived
-    // token so the human can see the engine's intent in shadow mode.
-    return { id: deriveOptionId(recRaw) || recRaw, label: recRaw, source: 'steward_recommendation_raw' };
+    const matched = matchRecommendationToOption(request);
+    if (matched) return matched;
   }
   if (opts.length > 0) return { id: opts[0].id, label: opts[0].label, source: 'first' };
   return null;

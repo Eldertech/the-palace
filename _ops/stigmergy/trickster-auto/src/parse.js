@@ -64,6 +64,34 @@ export function normalizeOptions(rawOptions) {
     .filter(Boolean);
 }
 
+/**
+ * Resolve a steward's recommendation to the option it points at. The
+ * recommendation field is often prose ("CENTROID-FREQ — it matches…",
+ * "STANDALONE-FIRST. The stub…"), so match on its leading token and on an
+ * id-prefix as well as exact id. Single source of truth shared by the grant
+ * picker (evaluate.js) and the audition gate (audition-gate.js) — the gate
+ * must judge sensory-ness by the recommended OPTION's identity, not by audio
+ * words in the surrounding prose.
+ *
+ * @param {object} request — a parseRequest() record (or a raw msg with options/steward_recommendation)
+ * @returns {{id:string, label:string, source:'steward_recommendation'|'steward_recommendation_raw'}|null}
+ */
+export function matchRecommendationToOption(request) {
+  const opts = (request && request.options) || [];
+  const rec = request && request.steward_recommendation;
+  if (!rec) return null;
+  const recRaw = String(rec).trim();
+  const recToken = (deriveOptionId(recRaw) || recRaw).toLowerCase();
+  const recFull = recRaw.toLowerCase();
+  const hit = opts.find((o) => (o.id || '').toLowerCase() === recToken)
+    || opts.find((o) => (o.id || '').toLowerCase() === recFull)
+    || opts.find((o) => o.id && recFull.startsWith(o.id.toLowerCase()))
+    || opts.find((o) => (o.label || '').toLowerCase().startsWith(recToken));
+  if (hit) return { id: hit.id, label: hit.label, source: 'steward_recommendation' };
+  // Recommendation named but not among options → the derived token stands in.
+  return { id: deriveOptionId(recRaw) || recRaw, label: recRaw, source: 'steward_recommendation_raw' };
+}
+
 /** Coalesce a field that may live at top-level OR inside payload. */
 function coalesce(msg, field) {
   if (msg && Object.prototype.hasOwnProperty.call(msg, field) && msg[field] != null) {

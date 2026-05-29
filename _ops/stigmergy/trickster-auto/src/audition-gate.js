@@ -20,6 +20,8 @@
 // over-escalation merely reaches Loudon; an under-escalation is a contract
 // violation. So the keyword scans are deliberately broad.
 
+import { matchRecommendationToOption } from './parse.js';
+
 // Any resource token containing one of these substrings is sensory → escalate.
 export const SENSORY_SUBSTRINGS = [
   'audition', // catches audition, content_audition, audition_verification, sensory_audition_gate
@@ -39,21 +41,38 @@ export const IRREVERSIBLE_SUBSTRINGS = [
   'migrate', 'rm_', 'force', 'irreversible', 'destructive',
 ];
 
-// Free-text backstop (scanned over decision_topic / subject / rationale) for an
-// audition MISLABELED as a routine resource. CURATED on the live board: this
-// palace is overwhelmingly audio/synth work, so bare domain words ("audible",
-// "playback", "hear it") appear in almost every rationale and are NOT signal —
-// matching them escalated everything and starved the auto-grant path. Instead
-// we match the literal act-word "audition" plus phrases where the DECISION
-// ITSELF is sensory or gated ("sensory deliverable", "needs a gate", "your
-// ear", "before I commit labor"). Verified split (2026-05-29): catches the
-// genuinely mislabeled auditions (apo-004 "sensory deliverable that needs a
-// gate", portamento-006 "Audition the ear set") while leaving true design
-// forks (gwl-015 "which parameter is the primary sweep", semantic-delay-004
-// "wire the model vs build standalone") grantable. This backstop is a tunable
-// SAFETY net, not request-reasoning; Loudon validates its escalations in
-// shadow mode. False escalations are acceptable; false grants are not.
-export const SENSORY_DECISION_TEXT = /\b(audition|sensory deliverable|sensory gate|needs? a gate|gate before|your ear|by ear|survives? your ear|survived your ear|needs? a listen|have a listen|give it a listen|a listen would|audition target|before i commit labor)\b/i;
+// Mislabeled-audition backstop, retuned 2026-05-29 (Loudon shadow review #1:
+// "I agree with the grants and would grant more"). This palace is overwhelmingly
+// audio/synth work, so audio words ("audition", "audible", "before I commit
+// labor") appear in nearly every rationale as PASSING discussion of future
+// sensory steps — scanning the rationale prose for them escalated genuine
+// directional forks (torus-005, semantic-webcam-004) and starved the grant path.
+//
+// The principled signal is NOT "audio words in the prose" but THREE precise
+// checks, in order of reliability:
+//   1. SENSORY resource token (audition/sensory)                — primary.
+//   2. The RECOMMENDED OPTION's identity is itself an audition  — catches
+//      blood-005 (recommends AUDITION-GATE-FIRST) while passing torus-005
+//      (recommends RESOLVE-SEVENTH-SURFACE, even though its prose says
+//      "the eventual audition…"). Judge the option, not the prose.
+//   3. The DECISION TOPIC (the short declarative field, NOT the rationale)
+//      names an audition as the act                              — catches
+//      portamento-006 "Audition the curated ear set".
+// Plus a small set of strong gate-PHRASES scanned across all fields for the
+// "this whole request is a sensory gate" case (apo-004 "sensory deliverable
+// that needs a gate"). This backstop is a tunable SAFETY net, not request
+// reasoning; Loudon validates its escalations in shadow. False escalations are
+// acceptable; false grants are not.
+
+// Sensory cue in the short, declarative topic/subject fields (NOT the rationale).
+export const TOPIC_SENSORY_TEXT = /\b(audition|sensory|your ear|by ear|have a listen|give it a listen|a listen would)\b/i;
+
+// Strong "the request itself is a sensory gate" phrases — safe to scan across
+// all fields because they are specific enough not to fire on passing mentions.
+export const STRONG_GATE_PHRASES = /\b(sensory deliverable|sensory gate|audition gate|needs? a sensory|pause for (?:human )?audition)\b/i;
+
+// A recommended OPTION whose id token names an audition/sensory act.
+export const SENSORY_OPTION_ID = /audition|sensory|by[-_ ]?ear/i;
 
 function tokenHas(token, substrings) {
   if (typeof token !== 'string') return null;
@@ -96,18 +115,44 @@ export function auditionOrIrreversible(request) {
     };
   }
 
-  // 3. Sensory/gated DECISION cue in the decision text (curated backstop for a
-  // mislabeled audition; see SENSORY_DECISION_TEXT note above).
-  const text = [request?.decision_topic, request?.subject, request?.rationale]
-    .filter((s) => typeof s === 'string')
-    .join('  ');
-  const tm = text.match(SENSORY_DECISION_TEXT);
+  // 3. The RECOMMENDED OPTION is itself an audition/sensory act. Judge the
+  // option's identity, not the surrounding prose — this passes a directional
+  // fork whose recommendation is non-sensory even if it mentions a future
+  // audition (torus-005 → RESOLVE-SEVENTH-SURFACE) and catches a fork whose
+  // recommendation IS to run an audition (blood-005 → AUDITION-GATE-FIRST).
+  const recOpt = matchRecommendationToOption(request);
+  if (recOpt && SENSORY_OPTION_ID.test(recOpt.id || '')) {
+    return {
+      blocked: true,
+      kind: 'audition',
+      signal: `recommended_option~"${recOpt.id}"`,
+      reason: `The steward's recommended option is itself a sensory/audition act ("${recOpt.id}"): auto-grant would commit to an audition. Escalated.`,
+    };
+  }
+
+  // 4. Sensory cue in the short DECLARATIVE topic/subject fields (not rationale).
+  const topicText = [request?.decision_topic, request?.subject]
+    .filter((s) => typeof s === 'string').join('  ');
+  const tm = topicText.match(TOPIC_SENSORY_TEXT);
   if (tm) {
     return {
       blocked: true,
       kind: 'audition',
-      signal: `text~"${tm[0]}"`,
-      reason: `Sensory/gated decision cue in text ("${tm[0]}"): a request whose resource looks routine but whose own framing says the decision is sensory/gated. Treated as an audition and escalated.`,
+      signal: `topic~"${tm[0]}"`,
+      reason: `The decision topic names a sensory act ("${tm[0]}"): treated as an audition and escalated.`,
+    };
+  }
+
+  // 5. Strong "this request is a sensory gate" phrases (any field).
+  const allText = [request?.decision_topic, request?.subject, request?.rationale]
+    .filter((s) => typeof s === 'string').join('  ');
+  const sg = allText.match(STRONG_GATE_PHRASES);
+  if (sg) {
+    return {
+      blocked: true,
+      kind: 'audition',
+      signal: `phrase~"${sg[0]}"`,
+      reason: `Sensory-gate phrase ("${sg[0]}"): the request frames itself as a sensory gate. Escalated.`,
     };
   }
 
