@@ -89,6 +89,26 @@ controls in v0.3); HTML → `<iframe sandbox="allow-scripts">` (deliberately
 **no** `allow-same-origin`, so a served artifact cannot reach STIGMERGY's DOM,
 storage, or POST endpoint); anything else → an open-link via `GET /api/open`.
 
+## v0.4 — comparison, table, math
+
+Three more renderable content types, all keyed on the (opaque) `payload`, all
+rendering on any message type, no validator/schema change:
+
+- **Equations (dual-channel math).** `payload.equations: [{ label?, symbolic,
+  worded, where?: [{sym, def}] }]`. Renders each equation TWICE — the symbolic
+  form and the worded (named-variable) form, operators kept in both — plus an
+  optional `where` legend. Terminal-native monospace Unicode; no KaTeX/MathJax/CDN.
+- **Tables.** `payload.table: { caption?, columns: [...], rows: [[...], ...] }`.
+  Renders a phosphor monospace grid (header emphasized, CP437-weight cell
+  borders, no rounded corners). Rows are padded/truncated to the column count.
+- **Choice (A/B or ranked pick).** `payload.kind: "choice"`,
+  `payload.choice_mode: "pick" | "rank"`, `payload.options: [{ id, label,
+  artifact_path?, caption? }]`. Each option renders with its inline artifact
+  (so you can audition the candidates), a select/rank control, and a `SEND`
+  button that POSTs a §2.2 `REPLY` (`payload.kind: "choice_response"` carrying
+  `choice` or `ranking`) correlated to the card — the asking agent reads the
+  result. Picking writes only on `SEND`.
+
 ## Run
 
 From this directory (`_ops/stigmergy/app/`):

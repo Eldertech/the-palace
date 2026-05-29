@@ -88,6 +88,13 @@ const PHASES = {
     playwright: ['boot.spec.js', 'tokens.spec.js', 'data.spec.js', 'tabs.spec.js', 'types.spec.js', 'health.spec.js', 'roster.spec.js', 'inbox.spec.js', 'click-to-respond.spec.js', 'live-tail.spec.js', 'polish.spec.js', 'command-bar-active.spec.js', 'rich-content.spec.js', 'rich-content-roundtrip.spec.js', 'ordering.spec.js'],
     screenshots: ['phase-9-v0.3/general-artifacts.png', 'phase-9-v0.3/iframe-artifact.png', 'phase-9-v0.3/flags.png', 'phase-9-v0.3/trickster.png'],
   },
+  // ── v0.4 (Comparison / Table / Math). Gate key 10. ────────────────────────
+  10: {
+    label: 'v0.4 — Comparison / Table / Math',
+    vitest: ['richcontent.test.js', 'format.test.js', 'parser.test.js', 'schema.test.js', 'validator.test.js'],
+    playwright: ['boot.spec.js', 'tokens.spec.js', 'rich-content2.spec.js', 'ordering.spec.js'],
+    screenshots: ['phase-10-v0.4/equation.png', 'phase-10-v0.4/table.png', 'phase-10-v0.4/choice.png'],
+  },
 };
 
 function logRun(entry) {
@@ -103,6 +110,8 @@ function ensureScreenshotDir(phase) {
   mkdirSync(v2dir, { recursive: true });
   const v3dir = resolve(SCREENSHOTS_ROOT, `phase-${phase}-v0.3`);
   mkdirSync(v3dir, { recursive: true });
+  const v4dir = resolve(SCREENSHOTS_ROOT, `phase-${phase}-v0.4`);
+  mkdirSync(v4dir, { recursive: true });
 }
 
 function runVitest(testFiles) {
@@ -186,7 +195,7 @@ function main() {
     process.exit(2);
   }
   if (arg === 'all') {
-    for (const p of [1, 2, 3, 4, 5, 6, 7, 8, 9]) {
+    for (const p of [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]) {
       const code = checkPhase(p);
       if (code !== 0) process.exit(code);
     }

@@ -114,3 +114,37 @@
 {"ts":"2026-05-29T19:34:08.705Z","phase":9,"action":"gate-end","outcome":"pass","stage":"tests+captures"}
 {"ts":"2026-05-29T19:48:17.875Z","phase":9,"label":"v0.3 Phase 3 — Round-trip + Final Sweep","action":"gate-start"}
 {"ts":"2026-05-29T19:49:10.946Z","phase":9,"action":"gate-end","outcome":"pass","stage":"tests+captures"}
+{"ts":"2026-05-29T20:31:59.999Z","phase":10,"label":"v0.4 — Comparison / Table / Math","action":"gate-start"}
+{"ts":"2026-05-29T20:32:17.835Z","phase":10,"action":"gate-end","outcome":"fail","stage":"playwright"}
+{"ts":"2026-05-29T20:32:41.311Z","phase":10,"label":"v0.4 — Comparison / Table / Math","action":"gate-start"}
+{"ts":"2026-05-29T20:32:58.572Z","phase":10,"action":"gate-end","outcome":"pass","stage":"tests+captures"}
+{"ts":"2026-05-29T20:33:47.615Z","phase":1,"label":"Project Skeleton","action":"gate-start"}
+{"ts":"2026-05-29T20:34:05.429Z","phase":1,"action":"gate-end","outcome":"pass","stage":"tests+captures"}
+{"ts":"2026-05-29T20:34:05.429Z","phase":2,"label":"Write Path","action":"gate-start"}
+{"ts":"2026-05-29T20:34:06.596Z","phase":2,"action":"gate-end","outcome":"pass","stage":"tests+captures"}
+{"ts":"2026-05-29T20:34:06.596Z","phase":3,"label":"Read Path (SSE)","action":"gate-start"}
+{"ts":"2026-05-29T20:34:08.221Z","phase":3,"action":"gate-end","outcome":"pass","stage":"tests+captures"}
+{"ts":"2026-05-29T20:34:08.221Z","phase":4,"label":"Click-to-Respond UI","action":"gate-start"}
+{"ts":"2026-05-29T20:35:39.509Z","phase":4,"action":"gate-end","outcome":"fail","stage":"captures"}
+{"ts":"2026-05-29T20:37:44.323Z","phase":4,"label":"Click-to-Respond UI","action":"gate-start"}
+{"ts":"2026-05-29T20:38:15.175Z","phase":4,"action":"gate-end","outcome":"pass","stage":"tests+captures"}
+{"ts":"2026-05-29T20:38:23.475Z","phase":1,"label":"Project Skeleton","action":"gate-start"}
+{"ts":"2026-05-29T20:38:41.541Z","phase":1,"action":"gate-end","outcome":"pass","stage":"tests+captures"}
+{"ts":"2026-05-29T20:38:41.541Z","phase":2,"label":"Write Path","action":"gate-start"}
+{"ts":"2026-05-29T20:38:42.692Z","phase":2,"action":"gate-end","outcome":"pass","stage":"tests+captures"}
+{"ts":"2026-05-29T20:38:42.692Z","phase":3,"label":"Read Path (SSE)","action":"gate-start"}
+{"ts":"2026-05-29T20:38:44.272Z","phase":3,"action":"gate-end","outcome":"pass","stage":"tests+captures"}
+{"ts":"2026-05-29T20:38:44.272Z","phase":4,"label":"Click-to-Respond UI","action":"gate-start"}
+{"ts":"2026-05-29T20:39:15.187Z","phase":4,"action":"gate-end","outcome":"pass","stage":"tests+captures"}
+{"ts":"2026-05-29T20:39:15.188Z","phase":5,"label":"Live Tail Integration","action":"gate-start"}
+{"ts":"2026-05-29T20:39:57.896Z","phase":5,"action":"gate-end","outcome":"pass","stage":"tests+captures"}
+{"ts":"2026-05-29T20:39:57.896Z","phase":6,"label":"Polish + Final Sweep","action":"gate-start"}
+{"ts":"2026-05-29T20:40:44.641Z","phase":6,"action":"gate-end","outcome":"pass","stage":"tests+captures"}
+{"ts":"2026-05-29T20:40:44.641Z","phase":7,"label":"v0.3 Phase 1 — File Endpoint","action":"gate-start"}
+{"ts":"2026-05-29T20:40:46.316Z","phase":7,"action":"gate-end","outcome":"pass","stage":"tests+captures"}
+{"ts":"2026-05-29T20:40:46.316Z","phase":8,"label":"v0.3 Phase 2 — Inline Render","action":"gate-start"}
+{"ts":"2026-05-29T20:41:07.294Z","phase":8,"action":"gate-end","outcome":"pass","stage":"tests+captures"}
+{"ts":"2026-05-29T20:41:07.294Z","phase":9,"label":"v0.3 Phase 3 — Round-trip + Final Sweep","action":"gate-start"}
+{"ts":"2026-05-29T20:42:00.809Z","phase":9,"action":"gate-end","outcome":"pass","stage":"tests+captures"}
+{"ts":"2026-05-29T20:42:00.810Z","phase":10,"label":"v0.4 — Comparison / Table / Math","action":"gate-start"}
+{"ts":"2026-05-29T20:42:17.811Z","phase":10,"action":"gate-end","outcome":"pass","stage":"tests+captures"}
