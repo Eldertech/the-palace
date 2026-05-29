@@ -61,7 +61,7 @@ For each $(a, q)$, solutions are either bounded for all time (stable) or grow ex
 
 The unstable regions form **tongues** rooted on the $q = 0$ axis at integer-square values $a = n^2$ for $n = 1, 2, 3, \ldots$. The first tongue at $a = 1$ is the strongest; subsequent tongues weaken rapidly. The widening of each tongue with $q$ is the modulation's *capture range* — the range of natural frequencies the modulation can excite at that depth.
 
-The full diagram is shown in `Artifacts/Floquet Time-Modulated Loops/static/05_strutt_diagram.png`.
+The full diagram is shown in `Projects/Floquet Time-Modulated Loops/static/05_strutt_diagram.png`.
 
 ## Closed-form structure
 

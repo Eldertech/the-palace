@@ -1,3 +1,13 @@
+---
+title: "Logarithmic Scaling in Interface Design"
+born: 2026-03-24
+links:
+  - target: "[[Logarithmic Interface Scaling]]"
+    type: connects-to
+    label: child-of
+forward_vector: "I am the design guide for [[Logarithmic Interface Scaling]] — when and why to scale a control logarithmically, with the perceptual reasoning worked through. I stay the place a builder reaches for the rationale, not just the formula."
+---
+
 # Logarithmic Scaling in Interface Design
 
 ## The Problem You Discovered

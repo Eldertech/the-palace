@@ -67,7 +67,7 @@ The operational kit — channel copy, stream-card templates, asset variant syste
 
 ## The form: a session is the unit
 
-Every Loudon Live release is a **session** — roughly 60–90 minutes, one stage of one project. Sessions are not divided by topic but by **what gets built**. A session begins with a clear pedagogical target (the illusion of an infinite staircase, a polyphonic crystal, a Stage 4 theatrical interface) and ends with a working instrument that demonstrates it. The Stage 1 *Shepard Tone Synthesizer* artifact (`Artifacts/Shepard Tone Synthesizer/session-1-interactive.html`) is the existing reference for what a finished session looks like — interactive HTML framing, ~60–75 minutes, no Max required, footer reading *Loudon Live · Autodidact Polymaths*.
+Every Loudon Live release is a **session** — roughly 60–90 minutes, one stage of one project. Sessions are not divided by topic but by **what gets built**. A session begins with a clear pedagogical target (the illusion of an infinite staircase, a polyphonic crystal, a Stage 4 theatrical interface) and ends with a working instrument that demonstrates it. The Stage 1 *Shepard Tone Synthesizer* artifact (`Projects/Shepard Tone Synthesizer/session-1-interactive.html`) is the existing reference for what a finished session looks like — interactive HTML framing, ~60–75 minutes, no Max required, footer reading *Loudon Live · Autodidact Polymaths*.
 
 ## The curriculum: project-fueled, stage-shaped, pillar-organized
 

@@ -5,8 +5,8 @@ pillars:
   - tools
   - practice
 born: 2026-05-28
-stage: seed
-status: active
+stage: composting
+status: done
 links:
   - target: "[[Palace Audit — 2026-05-28]]"
     type: emerged-from
@@ -18,6 +18,8 @@ forward_vector: "I carry the one audit task too big to rush at the tail of a mar
 ---
 
 # Artifacts → Projects Migration — handoff
+
+> **COMPLETED 2026-05-28.** All per-entry artifact dirs folded into their bundles across eight commits. Two cases departed from the original scope: **Oblique Harvest** turned out to be a composted Harvest-Ceremony technique with no entry — its renders were archived to `_ops/Harvest Ceremony/Archive/` (Loudon's call); the **Loudon Live** `toolchain/` is stream-ops machinery that Loudon chose to keep in `Artifacts/`. The orphan artifacts resolved to clear owners (Meadows Exercise Reflection Tool → *Origin and Process*; the `t2_product_of_circles` image → *2D Torus Wavetable Synthesizer*). `Artifacts/` now holds only the four excluded category dirs, the Loudon Live toolchain, and the cross-entry *Meaning and the Link* PDF. Residual `Artifacts/<entry>` strings in `.md` are all intentional: historical logs, illustrative examples in the standards, and hypothetical-future questions. This handoff is composted.
 
 **For a fresh Claude with clean context.** Loudon wants the loose `Artifacts/<Entry>/` artifact dirs folded into their entry's bundle. The 2026-05-28 audit deferred this because, on inspection, it's bigger and more collision-prone than first scoped — and rushing it risks breaking HTML interactives or overwriting files. Do it carefully, per-entry, verifying each before moving on.
 

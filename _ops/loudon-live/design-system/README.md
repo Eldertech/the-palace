@@ -24,7 +24,7 @@ Synthesised from Loudon's personal knowledge base **"The Palace"** (mounted via 
 | `Loudon Live/Loudon Live — launch kit.md` | Channel copy, OBS scene specs, asset list |
 | `Loudon Live/Loudon Live — asset plan.md` | The variant system — 6 palettes × 6 generators × seed |
 | `Artifacts/Loudon Live/toolchain/render_starting_soon.py` | Reference palette + generator code |
-| `Artifacts/Shepard Tone Synthesizer/session-1-interactive.html` | Canonical session-artifact reference |
+| `Projects/Shepard Tone Synthesizer/session-1-interactive.html` | Canonical session-artifact reference |
 | `Hyperdimensional Prism.md` | The Lissajous-in-sphere visual-identity essay |
 | `FOUR PILLARS.md` · `Autodidact Polymaths.md` · `Progressive Staging.md` | Pedagogical spine |
 | `Hilaritas Generator.md` · `Quality Manifesto.md` · `Trickster.md` · `Palace Philosophies.md` · `Playful Interface Design.md` · `The Shop.md` · `Shop/Maker.md` · `Oblique Enrichment.md` | Voice, tone, taste |

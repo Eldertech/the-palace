@@ -1,3 +1,13 @@
+---
+title: "Logarithmic Slider — Python & Pseudocode"
+born: 2026-03-24
+links:
+  - target: "[[Logarithmic Interface Scaling]]"
+    type: connects-to
+    label: child-of
+forward_vector: "I am the reference implementation for [[Logarithmic Interface Scaling]] — the log-slider math as runnable Python and language-agnostic pseudocode. I stay copy-pasteable so the mapping can drop into any interface build."
+---
+
 # Logarithmic Slider - Python & Pseudocode
 
 ## Python Implementation

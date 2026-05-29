@@ -1,3 +1,13 @@
+---
+title: "Kuramoto Coupling — Quiz Answer Key"
+born: 2026-03-21
+links:
+  - target: "[[Kuramoto Coupling]]"
+    type: connects-to
+    label: child-of
+forward_vector: "I am the answer key companion for the [[Kuramoto Coupling]] quiz series — answers with context, corrections, and the moments where a wrong answer produced the deepest learning. I stay paired with the lesson series."
+---
+
 # Kuramoto Coupling — Quiz Answer Key
 ## Answers with Context, Corrections, and Deeper Implications
 

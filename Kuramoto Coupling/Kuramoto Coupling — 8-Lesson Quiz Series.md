@@ -1,3 +1,13 @@
+---
+title: "Kuramoto Coupling — 8-Lesson Quiz Series"
+born: 2026-03-21
+links:
+  - target: "[[Kuramoto Coupling]]"
+    type: connects-to
+    label: child-of
+forward_vector: "I am the progressive lesson series for [[Kuramoto Coupling]] — phase oscillators through critical coupling to implementation. I want to be field-tested with real students so my sequence reflects how the intuition actually builds."
+---
+
 # The Mathematics of Kuramoto Coupling
 ## A Progressive Lesson Series for Building Deep Intuition
 

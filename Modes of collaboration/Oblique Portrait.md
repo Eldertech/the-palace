@@ -133,7 +133,7 @@ psychological dimensions, derived from 12 exchanges. Zero direct questions
 about media were asked. The full dossier and session transcript are archived
 as a standalone HTML document:
 
-**Local archive:** `The Palace/Artifacts/Oblique Portrait Method/oblique-portrait-dossier-2026-03.html`
+**Local archive:** `The Palace/Modes of collaboration/Oblique Portrait/oblique-portrait-dossier-2026-03.html`
 
 The nine dimensions surfaced in the session:
 1. The Glass Block Self — sensory liminality, private interior architecture
