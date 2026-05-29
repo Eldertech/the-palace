@@ -72,7 +72,7 @@ function inferRole(instId) {
   return ROLE_CONV[instId.toUpperCase()] || null;
 }
 
-function resolveArchetype(archDef, archetypeName, seed, instanceTypes, bindings) {
+function resolveArchetype(archDef, archetypeName, seed, instanceTypes, bindings, connections) {
   const out = {};
   const warnings = [];
   const roles    = (archDef.topology && archDef.topology.roles) || {};
@@ -100,26 +100,41 @@ function resolveArchetype(archDef, archetypeName, seed, instanceTypes, bindings)
       warnings.push({ source: "archetype", reason: `archetype "${archetypeName}" requires role "${role}" (${roles[role]}) but no matching instance was found — its params are skipped` });
     }
   }
-  // 4. sample params
+  // 4. sample params (v0.2: numeric literal = pinned/clamped; string = region-sampled)
   for (const [role, paramMap] of Object.entries(archDef.params || {})) {
     const inst = roleToInst[role];
     if (!inst) continue;
     const modReg = REGISTRY[instanceTypes[inst]];
     out[inst] = out[inst] || {};
-    for (const [pname, regionName] of Object.entries(paramMap)) {
+    for (const [pname, value] of Object.entries(paramMap)) {
       const spec = resolveParamSpec(modReg, pname);
       if (!spec) {
         warnings.push({ source: "archetype", reason: `archetype "${archetypeName}" role ${role}: param "${pname}" not in registry for ${instanceTypes[inst]}` });
         continue;
       }
+      if (typeof value === "number") {
+        out[inst][spec.name] = clampToParam(modReg, spec.name, value);
+        continue;
+      }
       const pos = archetypeHash(seed, archetypeName, inst, spec.name);
-      const val = sampleRegion(spec, regionName, pos);
+      const val = sampleRegion(spec, value, pos);
       if (val == null) {
         const known = spec.regions ? Object.keys(spec.regions).join(", ") : "<none>";
-        warnings.push({ source: "archetype", reason: `archetype "${archetypeName}" role ${role}: region "${regionName}" unknown for ${spec.name} (known: ${known})` });
+        warnings.push({ source: "archetype", reason: `archetype "${archetypeName}" role ${role}: region "${value}" unknown for ${spec.name} (known: ${known})` });
         continue;
       }
       out[inst][spec.name] = val;
+    }
+  }
+  // 4b. recommended-cable contract — warn (never inject) when an identity cable is absent
+  for (const rc of (archDef.recommended_cables || [])) {
+    const fromInst = roleToInst[rc.from];
+    const toInst   = roleToInst[rc.to];
+    if (!fromInst || !toInst) continue;
+    const present = (connections || []).some(c =>
+      c.from === fromInst && c.to === toInst && (!rc.to_port || c.toPort === rc.to_port));
+    if (!present) {
+      warnings.push({ source: "archetype", reason: `archetype "${archetypeName}" recommends a cable ${fromInst} -> ${toInst}${rc.to_port ? ":" + rc.to_port : ""} that is not in the patch — ${rc.label || "its modulation has no effect without it"}` });
     }
   }
   // 5. constraints (after the per-param sampling pass, in declaration order)
@@ -146,6 +161,7 @@ function parsePDL(text) {
   const instanceTypes = {};
   const params = {};
   const archetypes = [];
+  const connections = [];
   const lines = text.split("\n");
   for (let i = 0; i < lines.length; i++) {
     let line = lines[i].replace(/\/\/.*$/, "").trim();
@@ -174,15 +190,21 @@ function parsePDL(text) {
         params[inst] = params[inst] || [];
         m[2].split("|").map(s => s.trim()).filter(Boolean).forEach(e => params[inst].push({ entry: e, lineNumber: i + 1 }));
       }
+      continue;
+    }
+    // Connection: A(:port)? -> B(:port)?  — enough for the recommended-cable check.
+    const cm = line.match(/^([\w\s/]+?)(?::([^->\[\]]+))?\s*->\s*([\w\s/]+?)(?::([^->\[\]]+))?\s*(?:\[(\w+)\])?$/);
+    if (cm) {
+      connections.push({ from: cm[1].trim(), fromPort: cm[2]?.trim() || null, to: cm[3].trim(), toPort: cm[4]?.trim() || null });
     }
   }
-  return { instanceTypes, params, archetypes };
+  return { instanceTypes, params, archetypes, connections };
 }
 
 // Mirror of emitVcvJson's resolution + precedence merge:
 //   archetype overlay first (lower precedence) → explicit `*` lines overwrite.
 function resolve(pdl) {
-  const { instanceTypes, params, archetypes } = parsePDL(pdl);
+  const { instanceTypes, params, archetypes, connections } = parsePDL(pdl);
   const warnings = [];
   const resolvedParams = {};
 
@@ -192,7 +214,7 @@ function resolve(pdl) {
       warnings.push({ source: "emitter", lineNumber: a.lineNumber, reason: `unknown archetype "${a.name}" (known: ${Object.keys(ARCHETYPES).join(", ")})` });
       continue;
     }
-    const { params: ap, warnings: aw } = resolveArchetype(def, a.name, a.seed, instanceTypes, a.bindings);
+    const { params: ap, warnings: aw } = resolveArchetype(def, a.name, a.seed, instanceTypes, a.bindings, connections);
     aw.forEach(w => warnings.push({ ...w, lineNumber: a.lineNumber }));
     for (const [inst, pmap] of Object.entries(ap)) {
       resolvedParams[inst] = resolvedParams[inst] || {};
@@ -232,15 +254,17 @@ function inRegion(modType, paramName, regionName, value) {
 }
 
 // ─── Happy-path PDL per archetype (conventional instance names) ───────────────
+// v0.2: each fixture now includes the archetype's recommended_cables, so a clean
+// happy path means "topology satisfies the archetype's identity-cable contract."
 const HAPPY = {
-  kick:        "@AMP_ENV = ADSR\n@PITCH_ENV = ADSR\n@OSC = VCO\n@AMP = VCA\n# archetype: kick",
+  kick:        "@AMP_ENV = ADSR\n@PITCH_ENV = ADSR\n@OSC = VCO\n@AMP = VCA\nPITCH_ENV -> OSC:FM\n# archetype: kick",
   sub_bass:    "@OSC = VCO\n@FILT = VCF\n@AMP_ENV = ADSR\n@AMP = VCA\n# archetype: sub_bass",
-  warm_pad:    "@OSC = VCO\n@FILT = VCF\n@AMP_ENV = ADSR\n@LFO = LFO\n@AMP = VCA\n# archetype: warm_pad",
-  pluck:       "@OSC = VCO\n@FILT = VCF\n@AMP_ENV = ADSR\n@AMP = VCA\n# archetype: pluck",
+  warm_pad:    "@OSC = VCO\n@FILT = VCF\n@AMP_ENV = ADSR\n@LFO = LFO\n@AMP = VCA\nLFO -> FILT:FREQ\n# archetype: warm_pad",
+  pluck:       "@OSC = VCO\n@FILT = VCF\n@AMP_ENV = ADSR\n@AMP = VCA\nAMP_ENV -> FILT:FREQ\n# archetype: pluck",
   bright_lead: "@OSC = VCO\n@FILT = VCF\n@AMP_ENV = ADSR\n@AMP = VCA\n# archetype: bright_lead",
-  acid_lead:   "@OSC = VCO\n@FILT = VCF\n@AMP_ENV = ADSR\n@AMP = VCA\n# archetype: acid_lead",
+  acid_lead:   "@OSC = VCO\n@FILT = VCF\n@AMP_ENV = ADSR\n@AMP = VCA\nAMP_ENV -> FILT:FREQ\n# archetype: acid_lead",
   stab:        "@OSC = VCO\n@FILT = VCF\n@AMP_ENV = ADSR\n@AMP = VCA\n# archetype: stab",
-  drone:       "@OSC = VCO\n@FILT = VCF\n@LFO = LFO\n@AMP = VCA\n# archetype: drone",
+  drone:       "@OSC = VCO\n@FILT = VCF\n@LFO = LFO\n@AMP = VCA\nLFO -> OSC:FM\n# archetype: drone",
 };
 
 // ─── Tests ───────────────────────────────────────────────────────────────────
@@ -250,60 +274,87 @@ function assert(cond, msg) {
   else      { fail++; console.log(`  FAIL ${msg}`); }
 }
 
-console.log(`T7b — archetypes v${ARCH_DATA.version}, registry v${REGISTRY_DATA.version}`);
+console.log(`T7c — archetypes v${ARCH_DATA.version}, registry v${REGISTRY_DATA.version}`);
 
-// 1. every archetype resolves clean on its happy path
+// 1. every archetype resolves clean on its happy path (incl. recommended cables)
 for (const name of Object.keys(ARCHETYPES)) {
   const { warnings } = resolve(HAPPY[name]);
   assert(warnings.length === 0, `${name}: happy-path resolves with zero warnings (got ${warnings.length}${warnings.length ? " — " + warnings[0].reason : ""})`);
 }
 
-// 2. kick regions
+// 2. kick: v0.2 pins FREQ=0 (keyboard-tracking) and S=0 (one-shot); A/R sampled
 {
   const { resolvedParams } = resolve(HAPPY.kick);
-  assert(inRegion("VCO", "FREQ", "sub", resolvedParams.OSC.FREQ), `kick VCO.FREQ in sub region (got ${resolvedParams.OSC.FREQ})`);
-  assert(inRegion("ADSR", "A", "instant", resolvedParams.AMP_ENV.A), `kick AMP_ENV.A in instant region (got ${resolvedParams.AMP_ENV.A})`);
-  assert(inRegion("ADSR", "S", "plucked", resolvedParams.AMP_ENV.S), `kick AMP_ENV.S in plucked region (got ${resolvedParams.AMP_ENV.S})`);
-  assert(inRegion("ADSR", "R", "gated", resolvedParams.AMP_ENV.R), `kick AMP_ENV.R in gated region (got ${resolvedParams.AMP_ENV.R})`);
+  assert(resolvedParams.OSC.FREQ === 0, `kick VCO.FREQ pinned to 0 / keyboard-tracking (got ${resolvedParams.OSC.FREQ})`);
+  assert(resolvedParams.AMP_ENV.S === 0, `kick AMP_ENV.S pinned to 0 / one-shot (got ${resolvedParams.AMP_ENV.S})`);
+  assert(inRegion("ADSR", "A", "instant", resolvedParams.AMP_ENV.A), `kick AMP_ENV.A still sampled in instant region (got ${resolvedParams.AMP_ENV.A})`);
+  assert(inRegion("ADSR", "R", "gated", resolvedParams.AMP_ENV.R), `kick AMP_ENV.R still sampled in gated region (got ${resolvedParams.AMP_ENV.R})`);
 }
 
-// 3. copy constraint: AMP_ENV.D === PITCH_ENV.D byte-identical
+// 3. modulation depth is emitted (the v0.1 silent-modulation bug, now fixed)
+{
+  const pluck = resolve(HAPPY.pluck).resolvedParams;
+  assert(pluck.FILT.FREQ_CV === 0.38, `pluck VCF.FREQ_CV pinned to 0.38 (got ${pluck.FILT.FREQ_CV})`);
+  const kick = resolve(HAPPY.kick).resolvedParams;
+  assert(kick.OSC.FM_DEPTH === 0.5, `kick VCO.FM_DEPTH pinned to 0.5 (got ${kick.OSC.FM_DEPTH})`);
+  const pad = resolve(HAPPY.warm_pad).resolvedParams;
+  assert(pad.FILT.FREQ_CV === 0.03, `warm_pad VCF.FREQ_CV pinned to 0.03 (got ${pad.FILT.FREQ_CV})`);
+}
+
+// 4. copy constraint still holds (D sampled from `short`, copied amp<-pitch)
 {
   const { resolvedParams } = resolve(HAPPY.kick);
   assert(resolvedParams.AMP_ENV.D === resolvedParams.PITCH_ENV.D,
     `kick copy: AMP_ENV.D === PITCH_ENV.D (${resolvedParams.AMP_ENV.D} vs ${resolvedParams.PITCH_ENV.D})`);
+  assert(inRegion("ADSR", "D", "short", resolvedParams.AMP_ENV.D), `kick decay sampled in short region — v0.2 gives it body, not a click (got ${resolvedParams.AMP_ENV.D})`);
 }
 
-// 4. determinism
+// 5. determinism
 {
   const a = JSON.stringify(resolve(HAPPY.warm_pad).resolvedParams);
   const b = JSON.stringify(resolve(HAPPY.warm_pad).resolvedParams);
   assert(a === b, "determinism: two runs byte-identical");
 }
 
-// 5. seed variance, still in-region
+// 6. seed varies sampled params but NOT pinned ones
 {
-  const s1 = resolve("@AMP_ENV = ADSR\n@PITCH_ENV = ADSR\n@OSC = VCO\n@AMP = VCA\n# archetype: kick #seed=1").resolvedParams;
-  const s2 = resolve("@AMP_ENV = ADSR\n@PITCH_ENV = ADSR\n@OSC = VCO\n@AMP = VCA\n# archetype: kick #seed=2").resolvedParams;
-  assert(JSON.stringify(s1) !== JSON.stringify(s2), "seed 1 vs 2 produce different values");
-  assert(inRegion("VCO", "FREQ", "sub", s1.OSC.FREQ) && inRegion("VCO", "FREQ", "sub", s2.OSC.FREQ),
-    "both seeds keep VCO.FREQ inside sub region (variance is bounded)");
+  const s1 = resolve("@AMP_ENV = ADSR\n@PITCH_ENV = ADSR\n@OSC = VCO\n@AMP = VCA\nPITCH_ENV -> OSC:FM\n# archetype: kick #seed=1").resolvedParams;
+  const s2 = resolve("@AMP_ENV = ADSR\n@PITCH_ENV = ADSR\n@OSC = VCO\n@AMP = VCA\nPITCH_ENV -> OSC:FM\n# archetype: kick #seed=2").resolvedParams;
+  assert(s1.AMP_ENV.A !== s2.AMP_ENV.A, "sampled param (AMP_ENV.A) varies with seed");
+  assert(s1.OSC.FREQ === 0 && s2.OSC.FREQ === 0, "pinned param (VCO.FREQ) does NOT vary with seed");
+  assert(s1.OSC.FM_DEPTH === 0.5 && s2.OSC.FM_DEPTH === 0.5, "pinned depth (FM_DEPTH) does NOT vary with seed");
+  assert(inRegion("ADSR", "A", "instant", s1.AMP_ENV.A) && inRegion("ADSR", "A", "instant", s2.AMP_ENV.A),
+    "both seeds keep the sampled param inside its region (variance bounded)");
 }
 
-// 6. precedence: explicit * overrides archetype
+// 7. precedence: explicit * overrides archetype (even a pinned value)
 {
-  const { resolvedParams } = resolve("@AMP_ENV = ADSR\n@PITCH_ENV = ADSR\n@OSC = VCO\n@AMP = VCA\n# archetype: kick\n* AMP_ENV: D = 0.9");
-  assert(resolvedParams.AMP_ENV.D === 0.9, `explicit * AMP_ENV: D = 0.9 overrides archetype (got ${resolvedParams.AMP_ENV.D})`);
+  const { resolvedParams } = resolve("@AMP_ENV = ADSR\n@PITCH_ENV = ADSR\n@OSC = VCO\n@AMP = VCA\nPITCH_ENV -> OSC:FM\n# archetype: kick\n* AMP_ENV: S = 0.7");
+  assert(resolvedParams.AMP_ENV.S === 0.7, `explicit * AMP_ENV: S = 0.7 overrides the archetype's pinned 0 (got ${resolvedParams.AMP_ENV.S})`);
 }
 
-// 7. missing required role warns, no crash
+// 8. recommended-cable contract: warns when the identity cable is absent, clean when present
 {
-  const { resolvedParams, warnings } = resolve("@AMP_ENV = ADSR\n@PITCH_ENV = ADSR\n@OSC = VCO\n# archetype: kick");
+  // pluck WITHOUT the envelope->cutoff cable
+  const without = resolve("@OSC = VCO\n@FILT = VCF\n@AMP_ENV = ADSR\n@AMP = VCA\n# archetype: pluck");
+  const w = without.warnings.find(x => /recommends a cable .*->.*FREQ/.test(x.reason));
+  assert(!!w, "pluck without env->cutoff cable warns about the missing identity cable");
+  assert(/AMP_ENV -> FILT:FREQ/.test(w.reason), `recommended-cable warning names the resolved instances (got: ${w && w.reason})`);
+  // pluck WITH it (the happy path) does not warn
+  const withCable = resolve(HAPPY.pluck);
+  assert(!withCable.warnings.some(x => /recommends a cable/.test(x.reason)), "pluck with the cable present does not warn");
+  // depth is still emitted even when the cable is missing (param vs topology are independent)
+  assert(without.resolvedParams.FILT.FREQ_CV === 0.38, "depth param still emitted when the cable is missing (warn-don't-block)");
+}
+
+// 9. missing required role warns, no crash
+{
+  const { resolvedParams, warnings } = resolve("@AMP_ENV = ADSR\n@PITCH_ENV = ADSR\n@OSC = VCO\nPITCH_ENV -> OSC:FM\n# archetype: kick");
   assert(warnings.some(w => /requires role "amp"/.test(w.reason)), "missing VCA warns about required role amp");
-  assert(resolvedParams.OSC && inRegion("VCO", "FREQ", "sub", resolvedParams.OSC.FREQ), "other params still resolve when a required role is missing");
+  assert(resolvedParams.OSC && resolvedParams.OSC.FREQ === 0, "other params still resolve when a required role is missing");
 }
 
-// 8. unknown archetype warns with a line number
+// 10. unknown archetype warns with a line number
 {
   const { warnings } = resolve("@OSC = VCO\n# archetype: nonesuch");
   const w = warnings.find(x => /unknown archetype "nonesuch"/.test(x.reason));
@@ -311,15 +362,15 @@ for (const name of Object.keys(ARCHETYPES)) {
   assert(w && w.lineNumber === 2, `unknown-archetype warning carries the line number (got ${w && w.lineNumber})`);
 }
 
-// 9. explicit binding resolves unconventional instance names
+// 11. explicit binding resolves unconventional instance names (+ its recommended cable)
 {
-  const pdl = "@E1 = ADSR\n@E2 = ADSR\n@SAWOSC = VCO\n@OUTAMP = VCA\n# archetype: kick {amp_env=E1, pitch_env=E2, vco=SAWOSC, amp=OUTAMP}";
+  const pdl = "@E1 = ADSR\n@E2 = ADSR\n@SAWOSC = VCO\n@OUTAMP = VCA\nE2 -> SAWOSC:FM\n# archetype: kick {amp_env=E1, pitch_env=E2, vco=SAWOSC, amp=OUTAMP}";
   const { resolvedParams, warnings } = resolve(pdl);
   assert(warnings.length === 0, `explicit binding resolves clean (got ${warnings.length}${warnings.length ? " — " + warnings[0].reason : ""})`);
   assert(resolvedParams.E1 && resolvedParams.E1.D === resolvedParams.E2.D, "bound roles honor the copy constraint");
 }
 
-// 10. region coverage on two more archetypes
+// 12. region coverage still works on sampled (non-pinned) params
 {
   const acid = resolve(HAPPY.acid_lead).resolvedParams;
   assert(inRegion("VCF", "RES", "screaming", acid.FILT.RES), `acid_lead FILT.RES in screaming region (got ${acid.FILT.RES})`);

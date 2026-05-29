@@ -1,5 +1,7 @@
-// pluck — T7b archetype audition (seed 1)
+// pluck — T7c archetype audition (seed 1)
 // Instant attack, short decay, dark filter — a plucked subtractive voice.
+// v0.2: the amp envelope ALSO sweeps the cutoff per note (the recommended cable)
+// — this is the pluck character the v0.1 audition was missing.
 @OSC     = VCO
 @FILT    = VCF
 @AMP_ENV = ADSR
@@ -8,6 +10,7 @@
 KEYBOARD -> OSC
 KEYBOARD:GATE -> AMP_ENV:GATE
 OSC:SAW -> FILT:IN
+AMP_ENV -> FILT:FREQ
 FILT:LPF -> AMP:IN
 AMP_ENV -> AMP:CV
 AMP:OUT -> OUT:IN1

@@ -1,6 +1,6 @@
 # VCV Patch Generator — Test Plan
 
-The probes the Specialist runs to declare a job done. Mirrors the Specialist's Self-Check and the Determinism guarantee. Last run: **2026-05-29** (T7b archetype audition, first Piece-tier job).
+The probes the Specialist runs to declare a job done. Mirrors the Specialist's Self-Check and the Determinism guarantee. Last run: **2026-05-29** (T7c archetype-schema v0.2 — re-emitted after the first Rack audition; recipes now carry modulation depth, pinned percussive sustains, keyboard-tracking pitch, and the pluck's env→cutoff identity cable).
 
 ## Smoke
 Default PDL parses, emits a `.vcv` that is valid JSON, with `module_count > 0`, `cable_count > 0`, zero `skipped` cables, zero `warnings`.
