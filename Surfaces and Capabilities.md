@@ -5,8 +5,8 @@ pillars:
   - tools
   - practice
 born: 2026-05-26
-last_activated: 2026-05-26
-activation_count: 1
+last_activated: 2026-05-29
+activation_count: 2
 stage: sprout
 confidence: demonstrated
 energy: medium
@@ -52,6 +52,7 @@ The deltas below are *observed so far*, not a closed taxonomy. Surfaces gain and
 | Drive the Mac directly | Yes — computer-use + Chrome MCPs | n/a (is the Mac) | No | No |
 | Git | First commit succeeds, then **stale `.git/*.lock` files wedge later ops** | Clean | No | No |
 | Palace-file link scheme | `computer:///` | filesystem path | — | `obsidian://` |
+| Verify browser HTML artifacts | Chrome MCP (drives the Mac browser) | **Claude Preview MCP** — static server + eval/screenshot/inspect; **rAF is paused, pump manually** (see below) | No | renders cards only |
 | Best at | Orchestration, research, doc/sheet/deck output, desktop control | Builds: GPU, local TTS, native renders, anything needing install or audition | Thinking, synthesis, planning when away from the Mac | Stigmergic coordination between permanent agents |
 
 ### Cowork (the desktop-app sandbox)
@@ -73,6 +74,19 @@ No filesystem. It reads the palace through the GitHub repository or, when that i
 ### BBS / STIGMERGY (Chrome at `localhost:5173`)
 
 The blackboard UI where permanent agents and Stewards post and coordinate stigmergically. It is a *coordination* surface, not an execution one. Palace files are linked with `obsidian://` here, where Cowork chat uses `computer:///` — a permanent-agent handoff that addresses both surfaces (e.g. the GSL Steward) has to carry both schemes.
+
+### Claude Preview (browser-artifact verification, Claude Code-side)
+
+A verification harness reachable from Claude Code on the Mac: a static server (`python -m http.server`, configured in `.claude/launch.json`) plus the Claude Preview MCP (`preview_start`, `preview_eval`, `preview_screenshot`, `preview_inspect`, `preview_console_logs`). It is how a browser-deployable artifact — a [[D3.js]], [[Observable Plot]], or [[p5.js]] sketch — gets *seen* and token-inspected without leaving Claude Code. Relative links resolve from the served root, so an artifact that `<link>`s the canonical `colors_and_type.css` renders correctly here.
+
+**The verified delta (2026-05-29): `requestAnimationFrame` is paused in this harness** — not throttled to ~1 Hz as an unfocused browser tab would be, but fully stopped (a probe counter stayed at 0 across seconds). Any rAF-driven artifact therefore looks frozen: p5's `draw()` loop, d3-force's internal timer, and a hand-rolled `requestAnimationFrame` sim all fail to advance on their own. This is a *harness* fact, not an artifact bug — the same files animate normally on a focused tab. The pump techniques that make rAF-driven artifacts verifiable here (all confirmed on the [[Flocking]] shoot-out):
+
+- **d3-force / d3 timers** → `d3.timerFlush()` in a loop forces synchronous ticks.
+- **p5** → expose the instance (`window.__flock = p` in `setup()`), then call `__flock.redraw()`; the normal 60 fps loop on a real tab is untouched.
+- **Plain rAF sims** → drive the step from `setInterval` instead (the right production choice anyway for a slow analytical re-render, e.g. Observable Plot).
+- Top-level `function` declarations in a classic `<script>` are global, so `preview_eval` can call them directly to pump or inspect state.
+
+Use `preview_inspect` (not screenshots) to verify exact colours and fonts — it reads computed styles, which is how the Graphite reskin's tokens were confirmed reaching into Plot's *generated* SVG. The honest tier line: this harness verifies render + structure + tokens; it cannot judge live motion feel, which still wants a focused tab (or the Mac browser via Chrome MCP).
 
 ### A note on reachability
 
