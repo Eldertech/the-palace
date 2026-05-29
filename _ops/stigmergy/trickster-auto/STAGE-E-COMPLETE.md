@@ -24,8 +24,25 @@ for: the palace's aggregated self-advocacy was out-running its human's bandwidth
 | 5 | Standalone CLI + post-batch pairing + skill doc | dry-run documented in the skill | ✅ |
 | Q2 | STIGMERGY `DigestPanel` on the TRICKSTER tab | 13 e2e specs pass incl. boot-no-console-errors | ✅ |
 
-**Tests:** 71 (trickster-auto) · 339 (app, was 332 — +7, no regression) · 130
+**Tests:** 78 (trickster-auto) · 339 (app, was 332 — +7, no regression) · 130
 (orchestrator, untouched).
+
+### Shadow review #1 (2026-05-29, Loudon)
+
+Loudon read the first shadow digest: *"I agree with the grants and would grant
+more."* Retuned the audition gate around a sharper principle — **judge the
+recommended OPTION's identity, not audio words in the prose.** The old backstop
+scanned the rationale, where audio stewards mention "audition/audible" in passing,
+which false-positived genuine forks. Now the gate escalates when (1) the resource
+token is sensory, (2) the **recommended option** is itself an audition act, (3) the
+short decision topic names an audition, or (4) a strong sensory-gate phrase appears.
+Result: shadow split moved **3 → 5 auto-grant / 11 escalate**. New grants:
+`torus-005 → RESOLVE-SEVENTH-SURFACE`, `semantic-webcam-004 → NAME-THE-CONCEPT`
+(recommendations are non-sensory). `blood-005` (recommends `AUDITION-GATE-FIRST`)
+and `portamento-006` (recommends `AUDITION-PASS`) correctly stay escalated — their
+recommended options ARE auditions. The 4 remaining non-audition escalations have
+**no steward recommendation**, so the grant rule (which requires one) defers them
+to Loudon — the right floor, not a bug.
 
 ## Decisions made this session
 
@@ -55,17 +72,19 @@ for: the palace's aggregated self-advocacy was out-running its human's bandwidth
 - All 6 audition-flavoured requests carry a `resource` containing "audition" and
   are `blocking:true`. Zero irreversible/destructive requests on the board — that
   half of the gate is present but dormant.
-- Live inbox at build time: 16 pending → shadow split **3 auto-grant / 13
-  escalate** (3 grants are genuine non-sensory design/roadmap/sequencing forks;
-  the mislabeled-audition cases like apo-004 "sensory deliverable that needs a
-  gate" correctly escalate).
+- Live inbox at build time: 16 pending → shadow split **5 auto-grant / 11
+  escalate** (after shadow review #1; was 3/13 at first build). Grants are
+  genuine non-sensory design/roadmap/sequencing forks; the mislabeled-audition
+  cases (apo-004 "sensory deliverable", blood-005 recommending AUDITION-GATE-FIRST,
+  portamento-006 recommending AUDITION-PASS) correctly escalate.
 
 ## The non-negotiable, honored
 
 The audition/irreversible gate is hard-coded (`src/audition-gate.js`), runs
 before any rule, and cannot be overridden by editing `rules.json`. A live
-round-trip on a throwaway copy of the real board posted 3 directional grants and
-**zero auditions**.
+round-trip on a throwaway copy of the real board posted directional grants and
+**zero auditions** (the gate held blood-005 and portamento-006 because their
+recommended options are auditions).
 
 ## What Loudon does next
 

@@ -7,7 +7,7 @@ import { resolve, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { existsSync } from 'node:fs';
 import { readJsonl } from '../../../orchestrator/src/append.js';
-import { parseRequest, normalizeOptions, deriveOptionId } from '../../src/parse.js';
+import { parseRequest, normalizeOptions, deriveOptionId, matchRecommendationToOption } from '../../src/parse.js';
 import { buildInbox } from '../../src/inbox.js';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
@@ -52,6 +52,20 @@ describe('normalizeOptions — object and string shapes', () => {
   it('returns [] for missing options', () => {
     expect(normalizeOptions(undefined)).toEqual([]);
     expect(normalizeOptions(null)).toEqual([]);
+  });
+});
+
+describe('matchRecommendationToOption — resolves prose rec to an option id', () => {
+  const req = (rec, opts) => parseRequest({ request_id: 'x', payload: { steward_recommendation: rec, options: opts } });
+  const OPTS = [{ id: 'CENTROID-FREQ', label: 'CENTROID-FREQ — a' }, { id: 'STANDALONE-FIRST', label: 'STANDALONE-FIRST — b' }];
+  it('matches a dash-separated prose recommendation by leading token', () => {
+    expect(matchRecommendationToOption(req('CENTROID-FREQ — it matches', OPTS)).id).toBe('CENTROID-FREQ');
+  });
+  it('matches a period-separated recommendation by id prefix', () => {
+    expect(matchRecommendationToOption(req('STANDALONE-FIRST. The stub is great', OPTS)).id).toBe('STANDALONE-FIRST');
+  });
+  it('returns null when there is no recommendation', () => {
+    expect(matchRecommendationToOption(req(undefined, OPTS))).toBe(null);
   });
 });
 
