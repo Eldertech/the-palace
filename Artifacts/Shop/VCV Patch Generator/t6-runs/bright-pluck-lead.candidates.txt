@@ -1,0 +1,80 @@
+=== CANDIDATE: classic-pluck ===
+The "plucky / short / percussive" language maps straight onto the pluck archetype — saw osc, envelope-swept lowpass for the per-note bite, fast amp envelope with no sustain.
+```pdl
+// Bright plucky lead — pluck archetype
+// Saw oscillator -> envelope-swept lowpass -> VCA -> stereo out
+@OSC = VCO
+@VCF = VCF
+@AMP_ENV = ADSR
+@AMP = VCA
+
+// control path: keyboard pitch tracks the osc, gate fires the envelope
+KEYBOARD -> OSC:V/OCT
+KEYBOARD -> AMP_ENV:GATE
+
+// audio path
+OSC:SAW -> VCF:IN
+VCF:LPF -> AMP:IN
+AMP -> OUT:IN1
+AMP -> OUT:IN2
+
+// amp envelope shapes loudness
+AMP_ENV -> AMP:CV
+
+// recommended cable: amp envelope also sweeps the cutoff per note — THE pluck character
+AMP_ENV -> VCF:FREQ
+
+# archetype: pluck
+```
+
+=== CANDIDATE: bright-cutting-lead ===
+Leans on "bright" + "lead / melodic hook" — the bright_lead archetype opens the filter wide and holds a little sustain so the hook cuts and sings rather than dies instantly.
+```pdl
+// Bright cutting lead — bright_lead archetype
+// Open/bright lowpass, present resonance, some sustain so the melody carries
+@OSC = VCO
+@VCF = VCF
+@AMP_ENV = ADSR
+@AMP = VCA
+
+// control path
+KEYBOARD -> OSC:V/OCT
+KEYBOARD -> AMP_ENV:GATE
+
+// audio path
+OSC:SAW -> VCF:IN
+VCF:LPF -> AMP:IN
+AMP -> OUT:IN1
+AMP -> OUT:IN2
+
+// amp envelope controls level
+AMP_ENV -> AMP:CV
+
+# archetype: bright_lead
+```
+
+=== CANDIDATE: square-stab-hook ===
+Reads "short and percussive hook" as a stab — square-wave osc for a hollow, hooky tone and the stab envelope (snappy attack, short decay, brief hold) for a tight rhythmic punch.
+```pdl
+// Square-wave stab — stab archetype
+// Pulse osc into an open filter, short percussive amp shape
+@OSC = VCO
+@VCF = VCF
+@AMP_ENV = ADSR
+@AMP = VCA
+
+// control path
+KEYBOARD -> OSC:V/OCT
+KEYBOARD -> AMP_ENV:GATE
+
+// audio path — square output for the hollow stab timbre
+OSC:SQR -> VCF:IN
+VCF:LPF -> AMP:IN
+AMP -> OUT:IN1
+AMP -> OUT:IN2
+
+// amp envelope controls level
+AMP_ENV -> AMP:CV
+
+# archetype: stab
+```

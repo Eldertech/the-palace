@@ -1,0 +1,9 @@
+T6 generation-prompt verification — 2026-05-29
+Fresh Claude subagents given PROMPT + vcv_fundamental_registry.json + archetypes.json + one description each.
+Every candidate run through the real emitVcvJson (the oracle). Pass = 0 warnings, 0 skipped, only registry modules, archetype applied, recommended cables present, reaches OUT. Description passes at >=2 distinct passing topologies.
+
+Round 1: pluck PASS (3/3); kick FAIL (slug VCA-1 as type key, port 'Out' miscased); pad FAIL (slug VCMixer as type key).
+Prompt fix: embedded the exact legal module KEYS, the slug-vs-key trap, case-sensitive port names + a per-module port reference, and 'no noise/delay/reverb module exists'.
+Round 2: pluck PASS (3/3, control); kick PASS (3/3); pad PASS (3/3, incl. a 2-osc detuned stack through MIXER — the exact construct that failed in round 1).
+
+Result: 9/9 candidates clean across 3 descriptions; each description >=2 distinct topologies. End-to-end pipeline closed.

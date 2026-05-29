@@ -1,0 +1,76 @@
+=== CANDIDATE: classic-808-kick ===
+The canonical kick: a sine VCO whose pitch is punched by a fast pitch envelope (the recommended kick cable), with a matching amp envelope shaping the body into the VCA.
+```pdl
+// 808-style kick — sine osc, pitch-env punch into FM, amp-env shapes the body
+@AMP_ENV = ADSR
+@PITCH_ENV = ADSR
+@VCO = VCO
+@AMP = VCA
+
+// control path — gate fires both envelopes, pitch tracks keyboard
+KEYBOARD -> AMP_ENV:GATE
+KEYBOARD -> PITCH_ENV:GATE
+KEYBOARD -> VCO:V/OCT
+
+// the kick punch: pitch envelope sweeps VCO pitch via FM (recommended cable)
+PITCH_ENV -> VCO:FM
+
+// signal path: sine body -> VCA (amp-shaped) -> out
+VCO:SIN -> AMP:IN
+AMP_ENV -> AMP:CV
+AMP:OUT -> OUT:IN1
+AMP:OUT -> OUT:IN2
+
+# archetype: kick
+```
+
+=== CANDIDATE: deep-sub-thump ===
+Reads "deep low thump" as sub_bass: a low-tuned VCO through a dark lowpass VCF for a rounded, weighty boom rather than a transient-led hit.
+```pdl
+// deep-thump kick read as sub_bass — low VCO, dark filter, rounded body
+@VCO = VCO
+@VCF = VCF
+@AMP_ENV = ADSR
+@AMP = VCA
+
+// control path — played pitch + gate
+KEYBOARD -> VCO:V/OCT
+KEYBOARD -> AMP_ENV:GATE
+
+// signal path: low sine -> dark lowpass -> VCA -> out
+VCO:SIN -> VCF:IN
+VCF:LPF -> AMP:IN
+AMP_ENV -> AMP:CV
+AMP:OUT -> OUT:IN1
+AMP:OUT -> OUT:IN2
+
+# archetype: sub_bass
+```
+
+=== CANDIDATE: filtered-808-kick ===
+Hybrid: the kick archetype's pitch-env punch plus a lowpass VCF to tame the click and deepen the thump — punchy attack with a rounded low tail.
+```pdl
+// 808 kick with a lowpass to deepen the thump and soften the transient click
+@AMP_ENV = ADSR
+@PITCH_ENV = ADSR
+@VCO = VCO
+@VCF = VCF
+@AMP = VCA
+
+// control path — gate both envelopes, pitch tracks keyboard
+KEYBOARD -> AMP_ENV:GATE
+KEYBOARD -> PITCH_ENV:GATE
+KEYBOARD -> VCO:V/OCT
+
+// kick punch: pitch envelope into VCO FM (recommended cable)
+PITCH_ENV -> VCO:FM
+
+// signal path: sine -> lowpass (deep thump) -> VCA -> out
+VCO:SIN -> VCF:IN
+VCF:LPF -> AMP:IN
+AMP_ENV -> AMP:CV
+AMP:OUT -> OUT:IN1
+AMP:OUT -> OUT:IN2
+
+# archetype: kick
+```

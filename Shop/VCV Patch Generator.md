@@ -146,7 +146,7 @@ The Determinism test is straightforward and load-bearing: same PDL + same regist
 ## Open Questions
 
 - Registry expansion priorities — which VCV plugins after Fundamental + Core? Audible Instruments, Bogaudio, Befaco are likely candidates. The Maker's call per brief
-- Coupling between this Specialist and the natural-language → PDL prompt (T6) — the Specialist takes PDL; the upstream prompt produces PDL. Where does the prompt live? Currently in the Generative Audio Devices project; the Specialist receives PDL from the Maker who runs the prompt
+- ~~Coupling between this Specialist and the natural-language → PDL prompt (T6)~~ **Resolved 2026-05-29:** the prompt lives in its own entry [[PDL Generation Prompt]]; the Maker runs it (description → 2–3 candidate PDL blocks), then hands a chosen PDL to this Specialist for emission/audition. T6 was verified by fresh-agent runs through the real emitter (9/9 clean) — see the T6 entry in [[Generative Audio Devices]] and the fixtures under `t6-runs/`.
 - Audition automation — currently audition requires loading in Rack manually. A headless Rack render path would close the loop on Piece-tier audio capture; threshold for building it: when audition becomes the bottleneck
 
 ## Lost Branches
