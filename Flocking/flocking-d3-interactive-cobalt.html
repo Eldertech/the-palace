@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en" class="skin-cobalt-grid">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Flocking — interactive control · Cobalt Grid</title>
+<!--
+  FLOCKING SHOOT-OUT · D3.js · interactive-control lens · Loudon Live skin: COBALT GRID
+  (lab / mathematics / blueprint register — fits the phase-space framing).
+  Update-safe build: chrome uses CSS vars from the linked colors_and_type.css; the SVG
+  boids/arrows/readout read palaceTokens() at render time. Zero hardcoded token values —
+  swap <html class="skin-*"> or edit colors_and_type.css and this follows on reload.
+  Reynolds physics runs as a custom d3-force (see file header notes in the Sketch version).
+-->
+<link rel="stylesheet" href="../_ops/loudon-live/design-system/colors_and_type.css" />
+<style>
+  * { box-sizing: border-box; }
+  html, body { margin: 0; background: var(--bg); color: var(--fg-2); }
+  body { font-family: var(--sans); font-weight: var(--w-light); }
+  .wrap { max-width: 1000px; margin: 0 auto; padding: var(--s-8) var(--s-6) var(--s-10); }
+
+  .topline { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: var(--s-6); }
+  .eyebrow { font-family: var(--mono); font-weight: var(--w-medium); font-size: var(--t-eyebrow);
+    letter-spacing: var(--tr-eyebrow); text-transform: uppercase; color: var(--fg-3); }
+  .wordmark { font-size: var(--t-h4); line-height: 1; white-space: nowrap; }
+  .wordmark .lo { font-family: var(--display); color: var(--fg-1); letter-spacing: var(--tr-display); }
+  .wordmark .sl { color: var(--fg-3); margin: 0 .28em; font-family: var(--sans); font-weight: var(--w-light); }
+  .wordmark .li { font-family: var(--serif); font-style: italic; font-weight: var(--w-light);
+    color: var(--accent); text-shadow: var(--text-glow-accent); }
+
+  h1 { font-family: var(--display); font-weight: var(--w-regular); letter-spacing: var(--tr-display);
+    font-size: var(--t-h1); line-height: var(--lh-tight); color: var(--fg-1); margin: 0 0 var(--s-3); text-transform: uppercase; }
+  .lead { font-family: var(--serif); font-weight: var(--w-light); font-size: var(--t-lead); line-height: var(--lh-reading);
+    letter-spacing: var(--tr-soft); color: var(--fg-2); max-width: 60ch; margin: 0 0 var(--s-5); }
+  .lead em { font-style: italic; color: var(--fg-1); }
+
+  .stage { position: relative; width: 100%; background: var(--bg-elev-1); border: 1px solid var(--border);
+    border-radius: var(--r-sm); box-shadow: var(--shadow-1); overflow: hidden; }
+  svg { display: block; width: 100%; height: auto; }
+  .readout { position: absolute; top: var(--s-3); left: var(--s-4); pointer-events: none;
+    font-family: var(--mono); font-size: var(--t-meta); color: var(--fg-3); line-height: 1.5; }
+  .readout .R { color: var(--fg-1); font-size: var(--t-h3); }
+  .readout .regime { color: var(--accent); }
+
+  .controls { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: var(--s-4) var(--s-6); margin-top: var(--s-5); }
+  .ctl { font-family: var(--mono); font-size: var(--t-eyebrow); color: var(--fg-3); }
+  .ctl label { display: flex; justify-content: space-between; text-transform: uppercase;
+    letter-spacing: var(--tr-eyebrow); margin-bottom: 6px; }
+  .ctl .val { color: var(--accent); }
+  input[type=range] { width: 100%; accent-color: var(--accent); }
+  .row { display: flex; align-items: center; gap: var(--s-2); margin-top: var(--s-4);
+    font-family: var(--mono); font-size: var(--t-meta); color: var(--fg-3); }
+  input[type=checkbox] { accent-color: var(--accent); }
+
+  .foot { margin-top: var(--s-7); padding-top: var(--s-4); border-top: 1px solid var(--border-soft);
+    font-family: var(--mono); font-size: var(--t-meta); color: var(--fg-3); letter-spacing: .04em; }
+  .foot .lo { font-family: var(--display); color: var(--fg-2); }
+  .foot .li { font-family: var(--serif); font-style: italic; font-weight: var(--w-light); color: var(--accent); }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="topline">
+    <span class="eyebrow">Flocking · interactive control · Cobalt Grid</span>
+    <span class="wordmark"><span class="lo">LOUDON</span><span class="sl">/</span><span class="li">Live</span></span>
+  </div>
+
+  <h1>Tune the three rules</h1>
+  <p class="lead">The same seed-7 flock, with the rule weights in <em>your</em> hands. Drag a slider and watch the
+    regime cross from drift to lock; show the steering field to see the three local forces resolve into one arrow
+    per agent. The corner number is the order parameter.</p>
+
+  <div class="stage">
+    <svg id="stage" viewBox="0 0 960 540" preserveAspectRatio="xMidYMid meet"></svg>
+    <div class="readout">polarization <span class="R" id="R">0.00</span><br /><span class="regime" id="regime">drifting</span></div>
+  </div>
+
+  <div class="controls">
+    <div class="ctl"><label>separation <span class="val" id="vSep">1.50</span></label><input type="range" id="sep" min="0" max="3" step="0.05" value="1.5" /></div>
+    <div class="ctl"><label>alignment <span class="val" id="vAli">1.00</span></label><input type="range" id="ali" min="0" max="3" step="0.05" value="1.0" /></div>
+    <div class="ctl"><label>cohesion <span class="val" id="vCoh">1.00</span></label><input type="range" id="coh" min="0" max="3" step="0.05" value="1.0" /></div>
+  </div>
+  <div class="row"><input type="checkbox" id="overlay" /><label for="overlay">show per-agent steering-force field</label></div>
+
+  <p class="foot"><span class="lo">LOUDON</span> <span class="li">Live</span> · Autodidact Polymaths</p>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
+<script src="../_ops/loudon-live/design-system/palace-tokens.js"></script>
+<script>
+/* ===== SHARED FLOCKING MODEL — identical across all Specimens ===== */
+const SEED = 7, N = 80, WIDTH = 960, HEIGHT = 540;
+const NEIGHBOR_R = 50, NEIGHBOR_R2 = NEIGHBOR_R * NEIGHBOR_R, MAX_SPEED = 3, MAX_FORCE = 0.05;
+function mulberry32(a) { return function () { a |= 0; a = (a + 0x6D2B79F5) | 0; let t = Math.imul(a ^ (a >>> 15), 1 | a); t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t; return ((t ^ (t >>> 14)) >>> 0) / 4294967296; }; }
+function initBoids() { const rng = mulberry32(SEED), b = []; for (let i = 0; i < N; i++) { const x = rng() * WIDTH, y = rng() * HEIGHT, a = rng() * Math.PI * 2, sp = 0.5 * MAX_SPEED + rng() * 0.5 * MAX_SPEED; b.push({ x, y, vx: Math.cos(a) * sp, vy: Math.sin(a) * sp, steerX: 0, steerY: 0 }); } return b; }
+function toroidalDelta(ax, ay, bx, by) { let dx = bx - ax, dy = by - ay; if (dx > WIDTH * 0.5) dx -= WIDTH; else if (dx < -WIDTH * 0.5) dx += WIDTH; if (dy > HEIGHT * 0.5) dy -= HEIGHT; else if (dy < -HEIGHT * 0.5) dy += HEIGHT; return [dx, dy]; }
+function setMag(x, y, m) { const k = Math.hypot(x, y); return k > 0 ? [x / k * m, y / k * m] : [0, 0]; }
+function limitMag(x, y, mx) { const k = Math.hypot(x, y); return (k > mx && k > 0) ? [x / k * mx, y / k * mx] : [x, y]; }
+function computeVelocities(boids, w) {
+  const nvx = new Float64Array(N), nvy = new Float64Array(N), sxA = new Float64Array(N), syA = new Float64Array(N);
+  for (let i = 0; i < N; i++) {
+    const b = boids[i]; let sepX = 0, sepY = 0, sepN = 0, aliX = 0, aliY = 0, aliN = 0, cohX = 0, cohY = 0, cohN = 0;
+    for (let j = 0; j < N; j++) { if (i === j) continue; const o = boids[j], [dx, dy] = toroidalDelta(b.x, b.y, o.x, o.y), d2 = dx * dx + dy * dy; if (d2 > 0 && d2 < NEIGHBOR_R2) { sepX -= dx / d2; sepY -= dy / d2; sepN++; aliX += o.vx; aliY += o.vy; aliN++; cohX += dx; cohY += dy; cohN++; } }
+    let fx = 0, fy = 0;
+    if (sepN > 0) { const [dx, dy] = setMag(sepX, sepY, MAX_SPEED), [sx, sy] = limitMag(dx - b.vx, dy - b.vy, MAX_FORCE); fx += w.sep * sx; fy += w.sep * sy; }
+    if (aliN > 0) { const [dx, dy] = setMag(aliX / aliN, aliY / aliN, MAX_SPEED), [sx, sy] = limitMag(dx - b.vx, dy - b.vy, MAX_FORCE); fx += w.ali * sx; fy += w.ali * sy; }
+    if (cohN > 0) { const [dx, dy] = setMag(cohX / cohN, cohY / cohN, MAX_SPEED), [sx, sy] = limitMag(dx - b.vx, dy - b.vy, MAX_FORCE); fx += w.coh * sx; fy += w.coh * sy; }
+    b.steerX = fx; b.steerY = fy; let vx = b.vx + fx, vy = b.vy + fy; [vx, vy] = limitMag(vx, vy, MAX_SPEED); nvx[i] = vx; nvy[i] = vy; sxA[i] = fx; syA[i] = fy;
+  }
+  return { nvx, nvy, sxA, syA };
+}
+function polarization(boids) { let sx = 0, sy = 0; for (const b of boids) { const m = Math.hypot(b.vx, b.vy); if (m > 0) { sx += b.vx / m; sy += b.vy / m; } } return Math.hypot(sx, sy) / N; }
+/* ===== END SHARED MODEL ===== */
+
+const weights = { sep: 1.5, ali: 1.0, coh: 1.0 };
+const boids = initBoids();
+
+// Reynolds as a custom d3-force (relaxation solver neutralised — see the Sketch's notes).
+function reynoldsForce() {
+  let nodes;
+  function force() { const v = computeVelocities(nodes, weights); for (let i = 0; i < N; i++) { nodes[i].vx = v.nvx[i]; nodes[i].vy = v.nvy[i]; nodes[i].steerX = v.sxA[i]; nodes[i].steerY = v.syA[i]; } }
+  force.initialize = n => { nodes = n; };
+  return force;
+}
+
+const svg = d3.select("#stage");
+const boidLayer = svg.append("g");
+const arrowLayer = svg.append("g");
+const sim = d3.forceSimulation(boids).velocityDecay(0).alphaDecay(0).alphaMin(0).force("reynolds", reynoldsForce()).on("tick", render);
+const elR = document.getElementById("R"), elRegime = document.getElementById("regime"), elOverlay = document.getElementById("overlay");
+
+function render() {
+  const T = palaceTokens();                         // active skin, read each tick
+  for (const b of boids) { b.x = ((b.x % WIDTH) + WIDTH) % WIDTH; b.y = ((b.y % HEIGHT) + HEIGHT) % HEIGHT; }
+  boidLayer.selectAll("path").data(boids).join(
+    enter => enter.append("path"), update => update, exit => exit.remove()
+  ).attr("fill", T.accent)
+   .attr("transform", b => `translate(${b.x},${b.y}) rotate(${Math.atan2(b.vy, b.vx) * 180 / Math.PI})`)
+   .attr("d", "M5,0 L-4,3 L-2,0 L-4,-3 Z");
+  if (elOverlay.checked) {
+    arrowLayer.selectAll("line").data(boids).join("line")
+      .attr("stroke", T.fg2).attr("stroke-width", 1).attr("opacity", 0.8)
+      .attr("x1", b => b.x).attr("y1", b => b.y).attr("x2", b => b.x + b.steerX * 220).attr("y2", b => b.y + b.steerY * 220);
+  } else { arrowLayer.selectAll("line").remove(); }
+  const R = polarization(boids);
+  elR.textContent = R.toFixed(2);
+  elRegime.textContent = R < 0.35 ? "drifting" : R < 0.75 ? "milling / partial flow" : "coherent flock";
+}
+function bind(id, key, vid) { const el = document.getElementById(id), out = document.getElementById(vid); el.addEventListener("input", () => { weights[key] = +el.value; out.textContent = (+el.value).toFixed(2); }); }
+bind("sep", "sep", "vSep"); bind("ali", "ali", "vAli"); bind("coh", "coh", "vCoh");
+</script>
+</body>
+</html>

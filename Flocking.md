@@ -116,6 +116,11 @@ The data-viz triad shoot-out (2026-05-29), one shared seeded Reynolds model, thr
 - [flocking-p5-expressive.html](Flocking/flocking-p5-expressive.html) — p5.js, expressive (trails, color-by-velocity). Report: [.report.json](Flocking/flocking-p5-expressive.report.json).
 - [[Flocking — Maker's Comparison Recommendation]] — the Comparison-Mode deliverable: what each lens revealed and how a future flocking-shaped brief should route.
 
+**Design-system test set (2026-05-29).** The same three lenses re-deposited under the full [[Loudon Live Design System]], one skin each, to prove every method can wear the house grammar — and built *update-safe*: each links the canonical `colors_and_type.css` and reads tokens at runtime via `palace-tokens.js`, so a design-system revision propagates with no edit here.
+- [flocking-d3-interactive-cobalt.html](Flocking/flocking-d3-interactive-cobalt.html) — D3 · **Cobalt Grid** (lab / blueprint).
+- [flocking-observable-plot-graphite.html](Flocking/flocking-observable-plot-graphite.html) — Plot · **Graphite** (workshop), via the `palacePlot()` wrapper.
+- [flocking-p5-expressive-strobe.html](Flocking/flocking-p5-expressive-strobe.html) — p5 · **Strobe** (performance); canvas hue is a *declared deviation* (colour = data). The how-to lives in each Specialist's *Working within the Loudon Live design system* section.
+
 ## Forward Vectors
 
 The data-viz shoot-out is done — it closed the roster gap (D3.js and Observable Plot are alive), gave me my first artifacts, and was the Shop's first complete Comparison Mode run. Now the deferred questions become the next moves, and several are *promotions of this exact rig*:

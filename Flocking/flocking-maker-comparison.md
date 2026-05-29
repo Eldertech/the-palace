@@ -38,4 +38,14 @@ Here is what each lens revealed that the others could not.
 
 None of the three substitutes for another. For a "same math, three lenses" brief, Comparison Mode genuinely paid — and the shared seeded model is exactly what let the three read as the *same* thing. I'm folding this into my Selection Heuristics as a new particle/agent-systems line.
 
+## Addendum (2026-05-29) — design-system fit, measured
+
+A follow-on test ran the question *how well does each lens carry the Loudon Live grammar?* by taking the Plot analytical view to full **Graphite** at Piece tier ([flocking-observable-plot-graphite.html](flocking-observable-plot-graphite.html)) and building the reusable wrapper `_ops/loudon-live/design-system/palace-plot-defaults.js`.
+
+The governing axis: a design system is a defaults-override discipline, so fit is inverse to how opinionated the tool is.
+- **D3.js / p5.js** — no defaults; the system is *additive*. Near-zero friction, but you do all the styling work anyway.
+- **Observable Plot** — strong defaults; the system is *subtractive* (an implicit "Layer 0" of the tool's own taste). Highest friction — **but lower than I projected.** Two corrections from the measurement: (1) inside a chart one mono face is *correct*, so the multi-font worry evaporates and lives only in the HTML chrome you fully control; (2) the wrapper collapses per-panel override cost to data-only and pushes the locked mono face *into Plot's generated SVG* (verified at the token). Residual friction is just two things: gridlines derive from text colour (not a token), and Plot can't own its card background.
+
+Verdict: all three can wear the full skin at Piece tier. D3/p5 by direct application; Plot by a one-time wrapper investment that's now made. The wrapper generalises — build the skin shim before a tool's *second* styled job, not per-artifact.
+
 *Loudon Live · Autodidact Polymaths*

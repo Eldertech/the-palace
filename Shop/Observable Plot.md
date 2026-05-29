@@ -137,13 +137,27 @@ HTML loads without console errors, the chart renders at requested dimensions, al
 
 **2026-05-29 — Reynolds boids, analytical view** (Sketch tier, single HTML file). The same seed-7 model the other two Specimens paint, made legible as math: (1) polarization-R-over-time line for the default weights, (2) neighbor-density histogram via `rectY` + `binX`, (3) a parameter-sweep small-multiples panel — three R(t) curves at w_align ∈ {0.3, 1.0, 2.0} via `fx` faceting on a shared `y: {domain:[0,1]}`. Three independent runs share the seed-7 start and differ only in alignment weight, so the sweep is honest. CDN d3@7 **then** Plot 0.6.17 (load order matters — Gotchas); model stepped on `setInterval`, figure re-rendered at ~6 Hz. Verified the in-browser final R-by-alignment matches the Node reference to 3 decimals ({0.3: 0.583, 1.0: 0.953, 2.0: 0.995}). Source + deliverable: [Flocking/flocking-observable-plot-analytical.html](../Flocking/flocking-observable-plot-analytical.html). Standards report: [flocking-observable-plot-analytical.report.json](../Flocking/flocking-observable-plot-analytical.report.json).
 
+**2026-05-29 — Same analytical view, full Graphite skin (Piece-tier design-system test).** The Sketch above re-rendered under the complete Loudon Live Graphite grammar via the new `palacePlot()` wrapper: Anton wordmark with italic-light *Live*, Cormorant lead, JetBrains-Mono eyebrows + param chips, a Silkscreen `SEED · 07` marker, elevated card panels (`bg-elev-1`, 1 px `#4a4a5e` border, 2 px radius, inset+drop shadow), amber-monochrome data (R line `--accent`, histogram bars `--accent-dim`, sweep an `--accent-dim → --accent → light` brightness ramp encoding alignment magnitude). Finding: Plot's friction with a strong house grammar is **lower than projected** — inside a chart, one mono face is *correct*, so the multi-font problem evaporates and lives only in the (fully-controllable) HTML chrome. Source: [Flocking/flocking-observable-plot-graphite.html](../Flocking/flocking-observable-plot-graphite.html). Wrapper: `_ops/loudon-live/design-system/palace-plot-defaults.js`.
+
+## Working within the Loudon Live design system
+
+Canonical sources in `_ops/loudon-live/design-system/`: `colors_and_type.css` (tokens + six skins), `palace-tokens.js` (runtime reader), and `palace-plot-defaults.js` (`palacePlot()` — the Plot-specific wrapper). Plot is the **subtractive** case (it ships strong defaults), so the wrapper does the overriding once and reads tokens at call time — it holds no palette copy of its own.
+
+**The update-safe pattern:**
+1. Load order matters: `colors_and_type.css` (link) → d3 → `plot.umd.min.js` → `palace-tokens.js` → `palace-plot-defaults.js`. Set `<html class="skin-graphite">`.
+2. Call `palacePlot(spec)` instead of `Plot.plot(spec)` — it injects transparent background, fg-3 text, the locked mono face, and a token-coloured `Plot.frame()` from the active skin. A skin swap or a `colors_and_type.css` edit follows on reload.
+3. Caller still owns data colour — pass `palaceTokens().accent` / `.accentDim` / `palaceSeries()` (the ordered dim→accent→light ramp). **No hex literals.**
+4. Two residual frictions to know: gridlines derive from `style.color` (for an exact token add `Plot.gridY({ stroke: palaceTokens().borderSoft })`); and Plot can't paint its own card background — the chrome owns the ground.
+
+A chart legitimately wants ONE mono face for all numerals, so the multi-font worry never reaches *inside* the plot — it lives only in the (fully controllable) HTML chrome. Exemplar: [flocking-observable-plot-graphite.html](../Flocking/flocking-observable-plot-graphite.html).
+
 ## Test Suite
 
 Smoke / Capability Probe / Style Probe / Edge Probe / Speed Bench / Determinism — defined in `Artifacts/Shop/Observable Plot/tests/test-plan.md` (TODO). Last run: never (informal verification 2026-05-29 — see report.json: 3 panels rendered, 3 sweep facets, R-by-alignment matched Node reference, no console errors after the d3 load-order fix).
 
 ## Open Questions
 
-- House Plot defaults file (palette, marginPadding, font) — declare a `palace-plot-defaults.js` and import everywhere? Defer to second job
+- ~~House Plot defaults file (palette, marginPadding, font) — declare a `palace-plot-defaults.js` and import everywhere?~~ **Resolved 2026-05-29.** Built: `_ops/loudon-live/design-system/palace-plot-defaults.js` — `palacePlot(spec, skin)` injects background / fg-3 text colour / JetBrains-Mono / a token-coloured `Plot.frame()` into every call, plus `palaceSeries(skin)` for an on-palette categorical ramp. All six skins baked. Measured effect (Graphite reskin): per-panel override code dropped to data-only (stroke/fill); the locked mono face propagated *into Plot's generated SVG text* (verified at the token). Remaining genuine friction is exactly two things — gridlines derive from `style.color` rather than a token (add explicit `Plot.gridY({stroke})` for an exact match), and Plot can't own its card background (the chrome must). See [[Flocking — Maker's Comparison Recommendation]] addendum.
 - Plot vs. Vega-Lite as the grammar-of-graphics Specialist — chose Plot because the escape to D3 is cleaner and the API is simpler; revisit if Vega-Lite proves to win on a specific brief
 
 ## Lost Branches

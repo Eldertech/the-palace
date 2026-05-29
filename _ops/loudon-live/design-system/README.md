@@ -36,6 +36,8 @@ Snapshots of the most useful sources live under `_reference/` for offline use.
 | Path | Contents |
 |---|---|
 | `colors_and_type.css` | Locked tokens — type, palettes (Graphite default + 5 skin classes), spacing, radii, motion |
+| `palace-tokens.js` | Runtime token reader — `palaceTokens()` reads the active skin's values from `colors_and_type.css` into JS so D3 / Plot / p5 charts stay update-safe (never hardcode a hex). Read by any JS-driven visual. |
+| `palace-plot-defaults.js` | Observable Plot house-defaults wrapper — `palacePlot()` bakes the active skin (bg / fg-3 text / mono face / token frame) into every chart. Built on `palace-tokens.js`. |
 | `assets/` | Brand marks — Lissajous logos, wordmark, LL monogram, avatar, watermark |
 | `assets/logo-lissajous.live.html` | The canonical p5.js live Lissajous sketch (the patch IS the logo) |
 | `assets/generators/` | Six per-stream generative SVGs |
