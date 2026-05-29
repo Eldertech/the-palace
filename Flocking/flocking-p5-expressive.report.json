@@ -1,0 +1,44 @@
+{
+  "artifact": "flocking-p5-expressive.html",
+  "specialist": "p5.js",
+  "lens": "expressive interpretation",
+  "dimensions": "960x540 (canvas; pixelDensity 2 -> 1920x1080 backing store)",
+  "framerate_target": "60 (p5 native draw() loop)",
+  "libraries_loaded": ["p5@1.10.0 (jsDelivr)"],
+  "inputs_supported": [],
+  "tier_used": "sketch",
+  "model": {
+    "rules": "Reynolds separation + alignment + cohesion (no predator, no leader)",
+    "prng": "Mulberry32",
+    "seed": 7,
+    "N": 80,
+    "domain": "960x540 toroidal",
+    "neighbor_radius_px": 50,
+    "max_speed_px_per_frame": 3,
+    "max_force_px_per_frame2": 0.05,
+    "default_weights": { "separation": 1.5, "alignment": 1.0, "cohesion": 1.0 },
+    "integration": "one fixed Euler step per draw() frame; velocity clamped to max_speed",
+    "polarization": "magnitude of mean unit-velocity vector"
+  },
+  "render": {
+    "trails": "semi-transparent veil (HSB fill alpha 14) drawn each frame, NOT background()/clear",
+    "color": "by velocity — hue mapped from heading angle (-pi..pi -> 0..360)",
+    "shape": "oriented dart per boid; no chrome, no labels, no controls"
+  },
+  "gotchas_hit": [
+    "Trails: lay a low-alpha rect each frame; background()/clear() each frame destroys the trail. (Confirmed visually — the faint trail web is present.)",
+    "Background-tab rAF throttling / pause: p5's draw() loop is rAF-driven. In a headless/unfocused harness rAF can be paused entirely (the documented Sketch-tier limit). Added a labeled verification seam (window.__flock = the p5 instance) so frames can be forced via __flock.redraw() when rAF is unavailable; the normal 60 fps loop on a focused tab is untouched.",
+    "colorMode(HSB) must be set in setup before any fill; the dark background is then expressed in HSB (240, 30, 6)."
+  ],
+  "verification": {
+    "method": "static server + headless eval/screenshot; window.__flock.redraw() pumped 450 frames (rAF paused in harness)",
+    "frames_pumped": 450,
+    "frameCount": 450,
+    "R_after_pump": 0.771,
+    "trails_visible": true,
+    "color_by_heading_visible": true,
+    "console_errors": "none"
+  },
+  "status": "pass",
+  "notes": "Same shared model block as the D3 and Plot Specimens (byte-identical computeVelocities; Node-proven deterministic). Trajectory provably identical to the other two. Color-by-velocity makes alignment directly legible as hue coherence — boids on a shared heading share a hue, so a coherent flock reads as a colour field. Sketch tier: focus required for live behaviour."
+}

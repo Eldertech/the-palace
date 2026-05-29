@@ -1,0 +1,41 @@
+{
+  "artifact": "flocking-observable-plot-analytical.html",
+  "specialist": "Observable Plot",
+  "lens": "analytical view",
+  "dimensions": "960-wide responsive; panels 440x230 (R-over-time, histogram), 900x220 (sweep)",
+  "plot_version": "0.6.17",
+  "marks_used": ["lineY", "rectY", "binX", "frame", "ruleY"],
+  "facets": { "channel": "fx", "by": "w_align label", "panels": ["w_align = 0.3", "w_align = 1.0", "w_align = 2.0"], "shared_y_domain": [0, 1] },
+  "data_rows": "rolling 30 s window; ~91 samples per series at the moment captured (3 series)",
+  "tier_used": "sketch",
+  "model": {
+    "rules": "Reynolds separation + alignment + cohesion (no predator, no leader)",
+    "prng": "Mulberry32",
+    "seed": 7,
+    "N": 80,
+    "domain": "960x540 toroidal",
+    "neighbor_radius_px": 50,
+    "max_speed_px_per_frame": 3,
+    "max_force_px_per_frame2": 0.05,
+    "default_weights": { "separation": 1.5, "alignment": 1.0, "cohesion": 1.0 },
+    "sweep": "three independent runs, same seed-7 start, w_align in {0.3, 1.0, 2.0}, sep 1.5 / coh 1.0 held",
+    "integration": "fixed-rate setInterval (~33 Hz step, ~6 Hz re-render); step sequence identical to D3/p5",
+    "polarization": "magnitude of mean unit-velocity vector"
+  },
+  "gotchas_hit": [
+    "Plot's UMD bundle (dist/plot.umd.min.js) EXTERNALISES d3 — it expects window.d3 to already exist. Loading only the Plot script leaves window.Plot = {} (the UMD factory throws on the missing d3 dependency, and the throw does NOT surface in the console). Symptom downstream: 'Plot.frame is not a function'. Fix: load d3@7 BEFORE the Plot script.",
+    "Plot has no native animation: the model is stepped on a setInterval and Plot re-renders the whole figure on a slow tick via replaceChildren(Plot.plot(...)). For a slow analytical view this is the right shape; a fixed-rate timer also dodges the background-tab rAF-throttle that bites the 60 fps Specimens.",
+    "Faceted small-multiples need an explicit shared y-domain (y: {domain: [0,1]}) so the three R curves are visually comparable; without it each facet auto-scales and the comparison lies.",
+    "Histogram x-domain must be set from the live max neighbor count, else empty high bins clip or the axis jumps frame-to-frame."
+  ],
+  "verification": {
+    "method": "static server + headless eval/screenshot; stepOnce() pumped 900x then draw() (setInterval throttled in background tab)",
+    "panels_rendered": 3,
+    "sweep_line_paths": 3,
+    "final_R_by_w_align": { "0.3": 0.583, "1.0": 0.953, "2.0": 0.995 },
+    "node_reference_R_by_w_align": { "0.3": 0.579, "1.0": 0.953, "2.0": 0.995 },
+    "console_errors": "none (after d3 load-order fix)"
+  },
+  "status": "pass",
+  "notes": "Final R-by-alignment matches the Node reference for the identical model to 3 decimals — confirms the in-browser sims run the same deterministic trajectory as the other two Specimens. This is the brief that earns grammar-of-graphics its keep: three small multiples from essentially one Plot.plot() call via fx faceting. The grammar's beautiful defaults read visibly different from D3/p5 — that difference is part of what the Comparison reveals."
+}

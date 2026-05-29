@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Flocking — p5.js expressive interpretation (Sketch)</title>
+<!--
+  FLOCKING SHOOT-OUT · p5.js Specialist · Expressive lens · Sketch tier
+  Reynolds (1986) boids. Determinism contract (shared verbatim across the three
+  Specimens — D3 / Observable Plot / p5.js):
+    PRNG  Mulberry32, SEED = 7      N = 80 boids
+    domain 960×540, toroidal wrap   neighbor radius R = 50 px (all three rules)
+    max speed 3 px/frame            max steering force 0.05 px/frame²
+    default weights  separation 1.5 · alignment 1.0 · cohesion 1.0
+    integration  one fixed step per rendered frame (units are px/frame)
+  Expressive render: fading trails via a semi-transparent fill each frame (NOT
+  background()/clear), colour-by-velocity (hue = heading angle). No chrome, no
+  controls — the flock as algorithmic art. Same seed → same trajectory as the
+  D3 and Plot Specimens.
+-->
+<style>
+  html, body { margin:0; background:#0B0B10; }
+  main { display:flex; justify-content:center; padding:18px 0; }
+  canvas { border:1px solid #23232e; border-radius:4px; display:block; }
+  .foot { text-align:center; color:#52525e; font-size:10px; letter-spacing:.05em;
+    font-family: "JetBrains Mono", ui-monospace, monospace; padding-bottom:24px; }
+</style>
+</head>
+<body>
+<main id="sketch"></main>
+<p class="foot">Loudon Live · Autodidact Polymaths</p>
+
+<script src="https://cdn.jsdelivr.net/npm/p5@1.10.0/lib/p5.min.js"></script>
+<script>
+/* ===== SHARED FLOCKING MODEL — identical across D3 / Observable Plot / p5.js ===== */
+const SEED = 7;
+const N = 80;
+const WIDTH = 960, HEIGHT = 540;
+const NEIGHBOR_R = 50, NEIGHBOR_R2 = NEIGHBOR_R * NEIGHBOR_R;
+const MAX_SPEED = 3, MAX_FORCE = 0.05;
+
+function mulberry32(a) {
+  return function () {
+    a |= 0; a = (a + 0x6D2B79F5) | 0;
+    let t = Math.imul(a ^ (a >>> 15), 1 | a);
+    t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t;
+    return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+  };
+}
+function initBoids() {
+  const rng = mulberry32(SEED);
+  const boids = [];
+  for (let i = 0; i < N; i++) {
+    const x = rng() * WIDTH;
+    const y = rng() * HEIGHT;
+    const angle = rng() * Math.PI * 2;
+    const sp = 0.5 * MAX_SPEED + rng() * 0.5 * MAX_SPEED; // [1.5, 3]
+    boids.push({ x, y, vx: Math.cos(angle) * sp, vy: Math.sin(angle) * sp, steerX: 0, steerY: 0 });
+  }
+  return boids;
+}
+function toroidalDelta(ax, ay, bx, by) {
+  let dx = bx - ax, dy = by - ay;
+  if (dx > WIDTH * 0.5) dx -= WIDTH; else if (dx < -WIDTH * 0.5) dx += WIDTH;
+  if (dy > HEIGHT * 0.5) dy -= HEIGHT; else if (dy < -HEIGHT * 0.5) dy += HEIGHT;
+  return [dx, dy];
+}
+function setMag(x, y, mag) { const m = Math.hypot(x, y); return m > 0 ? [x / m * mag, y / m * mag] : [0, 0]; }
+function limitMag(x, y, max) { const m = Math.hypot(x, y); return (m > max && m > 0) ? [x / m * max, y / m * max] : [x, y]; }
+function computeVelocities(boids, w) {
+  const nvx = new Float64Array(N), nvy = new Float64Array(N);
+  const sxA = new Float64Array(N), syA = new Float64Array(N);
+  for (let i = 0; i < N; i++) {
+    const b = boids[i];
+    let sepX = 0, sepY = 0, sepN = 0, aliX = 0, aliY = 0, aliN = 0, cohX = 0, cohY = 0, cohN = 0;
+    for (let j = 0; j < N; j++) {
+      if (i === j) continue;
+      const o = boids[j];
+      const [dx, dy] = toroidalDelta(b.x, b.y, o.x, o.y);
+      const d2 = dx * dx + dy * dy;
+      if (d2 > 0 && d2 < NEIGHBOR_R2) {
+        sepX -= dx / d2; sepY -= dy / d2; sepN++;
+        aliX += o.vx; aliY += o.vy; aliN++;
+        cohX += dx; cohY += dy; cohN++;
+      }
+    }
+    let fx = 0, fy = 0;
+    if (sepN > 0) { const [dx, dy] = setMag(sepX, sepY, MAX_SPEED); const [sx, sy] = limitMag(dx - b.vx, dy - b.vy, MAX_FORCE); fx += w.sep * sx; fy += w.sep * sy; }
+    if (aliN > 0) { const [dx, dy] = setMag(aliX / aliN, aliY / aliN, MAX_SPEED); const [sx, sy] = limitMag(dx - b.vx, dy - b.vy, MAX_FORCE); fx += w.ali * sx; fy += w.ali * sy; }
+    if (cohN > 0) { const [dx, dy] = setMag(cohX / cohN, cohY / cohN, MAX_SPEED); const [sx, sy] = limitMag(dx - b.vx, dy - b.vy, MAX_FORCE); fx += w.coh * sx; fy += w.coh * sy; }
+    let vx = b.vx + fx, vy = b.vy + fy;
+    [vx, vy] = limitMag(vx, vy, MAX_SPEED);
+    nvx[i] = vx; nvy[i] = vy; sxA[i] = fx; syA[i] = fy;
+  }
+  return { nvx, nvy, sxA, syA };
+}
+function commit(boids, v) {
+  for (let i = 0; i < N; i++) {
+    const b = boids[i];
+    b.vx = v.nvx[i]; b.vy = v.nvy[i]; b.steerX = v.sxA[i]; b.steerY = v.syA[i];
+    b.x = (b.x + b.vx + WIDTH) % WIDTH;
+    b.y = (b.y + b.vy + HEIGHT) % HEIGHT;
+  }
+}
+function stepBoids(boids, w) { commit(boids, computeVelocities(boids, w)); }
+function polarization(boids) {
+  let sx = 0, sy = 0;
+  for (const b of boids) { const m = Math.hypot(b.vx, b.vy); if (m > 0) { sx += b.vx / m; sy += b.vy / m; } }
+  return Math.hypot(sx, sy) / N;
+}
+/* ===== END SHARED MODEL ===== */
+
+const weights = { sep: 1.5, ali: 1.0, coh: 1.0 };
+let boids;
+
+const sketch = (p) => {
+  p.setup = () => {
+    const c = p.createCanvas(WIDTH, HEIGHT);
+    c.parent("sketch");
+    p.colorMode(p.HSB, 360, 100, 100, 100);
+    p.background(240, 30, 6);          // #0B0B10-ish in HSB
+    boids = initBoids();
+    window.__flock = p;                // verification seam: force frames via __flock.redraw() when rAF is paused
+  };
+
+  p.draw = () => {
+    // Fading trails: lay a low-alpha veil each frame (NOT background()/clear).
+    p.noStroke();
+    p.fill(240, 30, 6, 14);
+    p.rect(0, 0, WIDTH, HEIGHT);
+
+    stepBoids(boids, weights);
+
+    for (const b of boids) {
+      const heading = Math.atan2(b.vy, b.vx);          // -π … π
+      const hue = ((heading + Math.PI) / (2 * Math.PI)) * 360; // colour by velocity
+      p.push();
+      p.translate(b.x, b.y);
+      p.rotate(heading);
+      p.fill(hue, 80, 95, 92);
+      p.noStroke();
+      p.beginShape();                                   // a small dart
+      p.vertex(6, 0); p.vertex(-5, 3.2); p.vertex(-2.5, 0); p.vertex(-5, -3.2);
+      p.endShape(p.CLOSE);
+      p.pop();
+    }
+  };
+};
+
+new p5(sketch);
+</script>
+</body>
+</html>

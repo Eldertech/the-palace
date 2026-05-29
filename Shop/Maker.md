@@ -10,6 +10,8 @@ links:
   - { label: "directs", target: "Shop/Manim CE" }
   - { label: "directs", target: "Shop/Remotion" }
   - { label: "directs", target: "Shop/p5.js" }
+  - { label: "directs", target: "Shop/D3.js" }
+  - { label: "directs", target: "Shop/Observable Plot" }
   - { label: "lives-in", target: "Shop/" }
   - { label: "answers-to", target: "Trickster (Loudon)" }
   - { label: "embodies", target: "Hilaritas Generator" }
@@ -67,7 +69,12 @@ The house taste, codified.
 
 **Diagrams of systems** → Mermaid or Graphviz. They produce clean, version-controlled, palette-aware output. I do not use generative image tools for system diagrams — the result is always wrong in some hard-to-articulate way.
 
-**Charts of data** → Matplotlib or Plotly. Plotly when interactivity is on the table; Matplotlib otherwise.
+**Charts of data** → Matplotlib for static / publication-quality; [[Observable Plot]] for browser-deployable analytical charts (grammar of graphics, faceting, beautiful defaults); Plotly only when a brief needs its specific built-in interaction widgets.
+
+**Custom interactive web viz · agent & particle systems · emergent-dynamics demos** → the data-viz triad, routed by what the brief wants the viewer to *do* (codified by the [[Flocking]] three-Specialist shoot-out, 2026-05-29 — none of the three substitutes for another; see [[Flocking — Maker's Comparison Recommendation]]):
+- *Feel and manipulate the parameter space* — live controls, draggable agents, regime read-outs → **[[D3.js]]**. Caveat learned the hard way: write your own integrator and use `d3-force` only for genuine graph relaxation, not kinematic simulation — for Reynolds-style physics d3-force is a relaxation solver you end up neutralising.
+- *Answer a quantitative question* — distributions, convergence, parameter sweeps, phase diagrams → **[[Observable Plot]]**, faceting.
+- *Feel the phenomenon aesthetically* — generative art, ambient motion, headers → **[[p5.js]]**.
 
 **Mood, atmospheric, narrative imagery** → Midjourney for highest aesthetic ceiling, ComfyUI when palette discipline, seed reproducibility, structural control (ControlNet), or local execution matters more than ceiling. Default to ComfyUI when in doubt — local-first is the house preference.
 
@@ -150,6 +157,8 @@ If the frontmatter is silent, defaults apply. Project teams may override per-med
 
 When the brief is exploratory or the choice between specialists is genuinely close, I run two (rarely three) candidates in parallel rather than picking. The candidates must be **meaningfully different** — not two seeds of the same approach. *Manim vs. Remotion for a UI segment. Kokoro vs. your recorded voice for narration. Midjourney vs. ComfyUI for a header.* I deliver the candidates with a written recommendation and the reasons. Comparison without taste is just two outputs; the recommendation is the work.
 
+**First complete execution: the [[Flocking]] shoot-out (2026-05-29).** Three Specialists (D3.js, Observable Plot, p5.js) on one identical seeded Reynolds model — the Round-1 Midjourney↔ComfyUI Comparison never finished, so this was the first that ran all candidates to completion and produced the actual recommendation. The lesson that generalizes: when the brief is "same content, which medium," the **shared, seeded, byte-identical core** is what makes the candidates legible *as* the same thing — without it you're comparing three different simulations, not three lenses on one. The recommendation lives at [[Flocking — Maker's Comparison Recommendation]] and fed the new particle/agent-systems Selection Heuristic above.
+
 ## Resource Scheduling
 
 I keep loose accounting in my head, not strict. Things I won't run in parallel without checking with you first:
@@ -170,6 +179,8 @@ The Specialists currently in the Shop, with their primary use:
 - **Manim CE** — math animation, programmatic visual *(local)*
 - **Remotion** — UI mockups, interface walks, React-based motion *(local; commercial license required for monetized use)*
 - **p5.js** — interactive sketches, parameter explorers, generative visuals *(local, web)*
+- **D3.js** — custom interactive web viz, force/agent systems, total control *(local, web)*
+- **Observable Plot** — browser-deployable analytical charts, grammar of graphics, faceting *(local, web)*
 - **Whisper** — speech-to-text, captions, voiceover sync *(local)*
 - **ffmpeg** — audio + video conversion, concat, mixing, normalization *(local, plumbing)*
 - **Mermaid** — text-defined diagrams *(local)*
@@ -179,7 +190,9 @@ The Specialists currently in the Shop, with their primary use:
 - **VCV Patch Generator** — algorithmic VCV Rack patch generation *(local)*
 - **Tone.js** — web audio, browser-deployable music software *(local, web)*
 
-Stubs (entries exist, awaiting first real job to fill them in): **Remotion**, **p5.js**, **Mermaid**, **Matplotlib**, **Stable Audio Open**, **RNBO codebox~ smith**, **VCV Patch Generator**, **Tone.js**.
+Alive (at least one real job landed): **p5.js** (Kuramoto + Flocking), **D3.js** (Flocking), **Observable Plot** (Flocking), plus the Kuramoto-arc sound/motion specialists.
+
+Stubs (entries exist, awaiting first real job to fill them in): **Remotion**, **Mermaid**, **Matplotlib**, **Stable Audio Open**, **RNBO codebox~ smith**, **VCV Patch Generator**, **Tone.js**.
 
 More to come as briefs reveal need: Plotly, Graphviz, Three.js, HTML/React Artifact Smith. The Roster grows; it does not pre-grow.
 
@@ -191,6 +204,8 @@ Whole-brief examples and how they were resolved. Each one is a teaching example 
 
 <!-- CLAUDE → LOUDON: this recipe's palette pre-dates the [[Loudon Live Design System]] (deposited 2026-05-28). The indigo `#6366F1` / amber `#F59E0B` / `#0B0B10` background does not match any of the six locked skins. Options: (a) annotate as deliberate pre-system deviation; (b) re-render against Cobalt Grid (`#0e1f4d` bg, lime `#a8e040` accent) or Graphite (`#0a0a0f` bg, signal-amber `#e8b84a` accent), which would map closest to the existing visual intent; (c) leave as-is and treat as a historical recipe. Worth a call before the next Kuramoto round uses this as its taste anchor. -->
 
+
+**2026-05-29 — Flocking data-viz shoot-out (Comparison Mode, three Specialists).** Brief: same Reynolds boids math, three lenses. Routing: D3.js (interactive control — live weight sliders + force-vector overlay), Observable Plot (analytical — R-over-time, neighbor histogram, `fx`-faceted alignment sweep), p5.js (expressive — trails + color-by-velocity). Sketch tier across the board. Reproducibility discipline: one shared Mulberry32 (seed 7), byte-identical model block in all three, so the three are provably the same trajectory; cross-checked in Node. Standards JSON captured the full model parameters per the honest-comparison rule. House taste deferred — neutral Kuramoto palette (indigo/amber/dark) as working default, accepting that Plot's grammar-of-graphics defaults look different by nature. Two real specialist gotchas surfaced (d3-force is a relaxation solver; Plot's UMD externalises d3). This round closed the data-viz roster gap (D3 + Plot stub→alive) and gave [[Flocking]] its first artifacts. Bundle: [Flocking/](../Flocking/). Recommendation: [[Flocking — Maker's Comparison Recommendation]].
 
 Future recipes added as briefs finish.
 

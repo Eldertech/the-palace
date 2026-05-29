@@ -1,0 +1,45 @@
+{
+  "artifact": "flocking-d3-interactive-control.html",
+  "specialist": "D3.js",
+  "lens": "interactive control",
+  "viewport_size": "960x540 (responsive viewBox)",
+  "fps_typical": "60 (browser rAF; d3-force internal timer)",
+  "d3_version": "7.x (jsDelivr d3@7)",
+  "render_path": "svg",
+  "interactions_implemented": [
+    "separation weight slider (0-3)",
+    "alignment weight slider (0-3)",
+    "cohesion weight slider (0-3)",
+    "per-boid steering-force vector overlay toggle (amber arrows)",
+    "live polarization R readout + regime label"
+  ],
+  "tier_used": "sketch",
+  "model": {
+    "rules": "Reynolds separation + alignment + cohesion (no predator, no leader)",
+    "prng": "Mulberry32",
+    "seed": 7,
+    "N": 80,
+    "domain": "960x540 toroidal",
+    "neighbor_radius_px": 50,
+    "max_speed_px_per_frame": 3,
+    "max_force_px_per_frame2": 0.05,
+    "default_weights": { "separation": 1.5, "alignment": 1.0, "cohesion": 1.0 },
+    "integration": "one fixed Euler step per frame; velocity clamped to max_speed",
+    "polarization": "magnitude of mean unit-velocity vector (Kuramoto order-parameter analog)"
+  },
+  "gotchas_hit": [
+    "d3-force is a relaxation solver, not a kinematic integrator: to reproduce the Reynolds max-speed Euler step exactly we set velocityDecay(0), alphaDecay(0), alphaMin(0) and the custom force REPLACES velocity rather than accumulating into it. The naive add-to-vx-with-default-decay approach cools toward zero and will not match the p5/Plot trajectory.",
+    "Snapshot correctness: the Reynolds step must read all old positions/velocities before writing any new velocity. Three separate accumulating d3 forces (sep/align/cohesion) would let alignment read velocities already mutated by separation within the same tick, breaking the honest-comparison discipline. Implemented as ONE two-pass force.",
+    "d3-force reserves node.fx / node.fy for FIXED positions. Naming a steering-force field fx/fy silently pins every boid in place. Used steerX/steerY instead.",
+    "Toroidal wrap done in the tick handler after d3-force's x += vx; the minimum-image delta is computed inside the neighbor search, not only on position update."
+  ],
+  "verification": {
+    "method": "static server + headless eval/screenshot; d3.timerFlush() pumped (rAF paused in harness)",
+    "boids_rendered": 80,
+    "R_observed_climbing": "0.00 -> 0.68 -> 0.77 (coheres as expected)",
+    "overlay_lines_rendered": 80,
+    "console_errors": "none"
+  },
+  "status": "pass",
+  "notes": "Determinism cross-checked in Node against the identical shared model block (bit-identical trajectories across runs; speed cap honored at 3.0000). Trajectory provably identical to the Plot and p5 Specimens (same seed, same shared computeVelocities). Sketch tier: no mobile, no ARIA, no keyboard nav."
+}
