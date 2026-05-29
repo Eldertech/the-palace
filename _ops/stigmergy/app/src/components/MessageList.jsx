@@ -1,6 +1,6 @@
 import React from 'react';
 import { Rule, Tag } from './primitives.jsx';
-import { glyphFor, accentFor, formatTs, parseLinks, hrefFor } from '../lib/format.js';
+import { glyphFor, accentFor, formatTs, parseLinks, hrefFor, tsCompare } from '../lib/format.js';
 import ArtifactSlot from './ArtifactSlot.jsx';
 
 // Map FLAG confidence string to Tag tone.
@@ -115,6 +115,7 @@ function MessageRow({ msg }) {
       data-board={msg.board || ''}
       data-flagged={flagged ? 'true' : 'false'}
       data-id={msg.id ?? ''}
+      data-ts={msg.ts ?? ''}
       style={rowStyle}
     >
       <div style={{ marginBottom: 6 }}>
@@ -230,11 +231,10 @@ export default function MessageList({ messages, sessionsEmpty, activeBoard }) {
   const heading = activeBoard
     ? `${activeBoard} BOARD · ${messages.length} traces`
     : `PERSISTENT BOARD · ${messages.length} traces`;
-  // Newest-first ordering for display. ISO 8601 strings sort lexically; loose
-  // date-only ts strings (e.g. "2026-04-01") sort against full ISO consistently.
-  const sorted = [...messages].sort((a, b) =>
-    String(b?.ts || '').localeCompare(String(a?.ts || ''))
-  );
+  // Newest-first ordering for display, compared CHRONOLOGICALLY (by parsed
+  // epoch), not lexically — the live board mixes timezone offsets ("...Z" and
+  // "...-04:00"), where string order would put the wrong message on top.
+  const sorted = [...messages].sort((a, b) => tsCompare(b?.ts, a?.ts));
   return (
     <div style={{ fontFamily: 'var(--font-mono)', color: 'var(--phosphor)' }}>
       <Rule double>{heading}</Rule>

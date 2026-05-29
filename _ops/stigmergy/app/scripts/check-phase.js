@@ -85,7 +85,7 @@ const PHASES = {
   9: {
     label: 'v0.3 Phase 3 — Round-trip + Final Sweep',
     vitest: ['artifact.test.js', 'file-middleware.test.js', 'open-and-links.test.js', 'parser.test.js', 'schema.test.js', 'format.test.js', 'roster.test.js', 'inbox.test.js', 'middleware.test.js', 'validator.test.js', 'response-builder.test.js', 'post-middleware.test.js', 'live-feed.test.js', 'sse-middleware.test.js'],
-    playwright: ['boot.spec.js', 'tokens.spec.js', 'data.spec.js', 'tabs.spec.js', 'types.spec.js', 'health.spec.js', 'roster.spec.js', 'inbox.spec.js', 'click-to-respond.spec.js', 'live-tail.spec.js', 'polish.spec.js', 'command-bar-active.spec.js', 'rich-content.spec.js', 'rich-content-roundtrip.spec.js'],
+    playwright: ['boot.spec.js', 'tokens.spec.js', 'data.spec.js', 'tabs.spec.js', 'types.spec.js', 'health.spec.js', 'roster.spec.js', 'inbox.spec.js', 'click-to-respond.spec.js', 'live-tail.spec.js', 'polish.spec.js', 'command-bar-active.spec.js', 'rich-content.spec.js', 'rich-content-roundtrip.spec.js', 'ordering.spec.js'],
     screenshots: ['phase-9-v0.3/general-artifacts.png', 'phase-9-v0.3/iframe-artifact.png', 'phase-9-v0.3/flags.png', 'phase-9-v0.3/trickster.png'],
   },
 };
