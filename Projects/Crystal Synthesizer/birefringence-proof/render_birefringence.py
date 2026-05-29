@@ -46,7 +46,7 @@ smallest possible test of the optical-acoustic bridge:
 
 Author: Crystal Synthesizer steward, cycle 2 (2026-05-27)
 Grant:  resp-mpopik57-w02up5 — PROVE-BIREFRINGENCE
-Recipe: Artifacts/Crystal Synthesizer/Crystal Sonification Reference.md §Ruby
+Recipe: Projects/Crystal Synthesizer/Crystal Sonification Reference.md §Ruby
 """
 
 import os

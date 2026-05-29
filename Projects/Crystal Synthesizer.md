@@ -152,7 +152,7 @@ This connects to [[Hyperdimensional Prism]]: the crystal is a prism machine. Its
 
 ## Mineral Palette
 
-Eight named crystals — diamond, ruby, amethyst, fluorite, emerald, topaz, labradorite, and obsidian — with full partial ratio tables, spectral character descriptions, creative mapping parameters, and image and audio generation prompts for each. See [[Crystal Sonification Reference]] (`Artifacts/Crystal Synthesizer/Crystal Sonification Reference.md`).
+Eight named crystals — diamond, ruby, amethyst, fluorite, emerald, topaz, labradorite, and obsidian — with full partial ratio tables, spectral character descriptions, creative mapping parameters, and image and audio generation prompts for each. See [[Crystal Sonification Reference]] (`Projects/Crystal Synthesizer/Crystal Sonification Reference.md`).
 
 ## Open Questions
 

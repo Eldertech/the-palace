@@ -1,3 +1,13 @@
+---
+title: "Crystal Sonification Reference"
+born: 2026-04-21
+links:
+  - target: "[[Crystal Synthesizer]]"
+    type: connects-to
+    label: child-of
+forward_vector: "I am the mineral palette for [[Crystal Synthesizer]] — physical properties, spectral ratios, and generation prompts for the eight crystals. I keep the partial tables canonical so the instrument and its media stay physically honest."
+---
+
 # Crystal Sonification Reference
 *A mineral palette for the Crystal Synthesizer — physical properties, spectral ratios, image prompts, and audio examples*
 
@@ -447,7 +457,7 @@ These are not AI-generated. The plot *is* the math — bars are placed at the ex
 
 **Verification:** Code review only. The script that generates the chart is the ground truth — if the ratio values in the script match the tables in this document, the chart is correct. Each chart script will include a printed verification table: `mode name | ω (cm⁻¹) | r_n (source) | r_n (plotted) | match`.
 
-**Output format:** PNG, dark background, wide format where indicated. Saved to `Artifacts/Crystal Synthesizer/charts/`.
+**Output format:** PNG, dark background, wide format where indicated. Saved to `Projects/Crystal Synthesizer/charts/`.
 
 #### Chart orientation decision — 2026-04-12
 
@@ -480,7 +490,7 @@ Max error: 0.02 Hz  ✓ PASS
 
 The tolerance threshold is 0.5 Hz at any pitch. Files that fail verification are flagged and not delivered.
 
-**Output:** Saved to `Artifacts/Crystal Synthesizer/audio/`. Filename convention: `[crystal]_[descriptor]_[MIDI-note].wav` — e.g. `diamond_sustained_G3.wav`, `ruby_vs_diamond_comparison_A3.wav`.
+**Output:** Saved to `Projects/Crystal Synthesizer/audio/`. Filename convention: `[crystal]_[descriptor]_[MIDI-note].wav` — e.g. `diamond_sustained_G3.wav`, `ruby_vs_diamond_comparison_A3.wav`.
 
 ---
 
@@ -494,7 +504,7 @@ The tolerance threshold is 0.5 Hz at any pitch. Files that fail verification are
 
 **Note on the scientific diagram prompts** (transposition concept infographic, parameter sweep instrument panel): These contain mathematical content (axis labels, ratio numbers, knob ranges). For these, the Python chart pipeline (Type A) is preferred over AI image generation — they will be generated programmatically to guarantee the numbers are correct. The AI image prompts for these serve as layout/style references only.
 
-**Output:** Saved to `Artifacts/Crystal Synthesizer/images/`.
+**Output:** Saved to `Projects/Crystal Synthesizer/images/`.
 
 ---
 
@@ -512,7 +522,7 @@ The tolerance threshold is 0.5 Hz at any pitch. Files that fail verification are
 | Audio synthesis | Python, numpy, scipy | All available in session sandbox |
 | Audio verification | numpy.fft, scipy.signal | Built-in to same pipeline |
 | Crystal images | HuggingFace FLUX.2-dev space | Via HF MCP (connected) |
-| File output | Write to `Artifacts/Crystal Synthesizer/` | Palace path confirmed |
+| File output | Write to `Projects/Crystal Synthesizer/` | Palace path confirmed |
 
 ### Production Status
 
