@@ -1,0 +1,98 @@
+=== CANDIDATE: classic_warm_pad ===
+Canonical warm_pad: a single saw voice through a lowpass filter with the slow LFO breathing the cutoff for the lush, evolving swell.
+```pdl
+// "a slowly evolving warm pad — lush and ambient, breathing over time"
+// Classic warm_pad: saw -> lowpass VCF -> VCA -> OUT, slow LFO breathes the cutoff.
+@OSC = VCO
+@VCF = VCF
+@AMP_ENV = ADSR
+@LFO = LFO
+@AMP = VCA
+
+// control path: played voice
+KEYBOARD -> OSC          // 1V/oct pitch
+KEYBOARD -> AMP_ENV:GATE // gate the amp envelope
+
+// signal path
+OSC:SAW -> VCF:IN
+VCF:LPF -> AMP:IN
+AMP -> OUT:IN1
+AMP -> OUT:IN2
+
+// envelope opens the amp (long attack/release = the swell)
+AMP_ENV -> AMP:CV
+
+// recommended cable: LFO breathes the cutoff — the slow evolution
+LFO -> VCF:FREQ
+
+# archetype: warm_pad
+```
+
+=== CANDIDATE: detuned_stack_pad ===
+Two slightly detuned saw oscillators summed before the filter for a thicker, chorused lushness — same warm_pad voicing, wider topology.
+```pdl
+// "a slowly evolving warm pad — lush and ambient, breathing over time"
+// Two-oscillator detuned stack -> mixer -> lowpass VCF -> VCA -> OUT.
+@OSC1 = VCO
+@OSC2 = VCO
+@MIX = MIXER
+@VCF = VCF
+@AMP_ENV = ADSR
+@LFO = LFO
+@AMP = VCA
+
+// control path: both oscillators track the keyboard
+KEYBOARD -> OSC1
+KEYBOARD -> OSC2
+KEYBOARD -> AMP_ENV:GATE
+
+// fatten by detuning the second oscillator slightly
+* OSC2: FREQ = 0.1
+
+// signal path: sum the two saws, filter, amplify
+OSC1:SAW -> MIX:IN1
+OSC2:SAW -> MIX:IN2
+MIX -> VCF:IN
+VCF:LPF -> AMP:IN
+AMP -> OUT:IN1
+AMP -> OUT:IN2
+
+// long swelling amp envelope
+AMP_ENV -> AMP:CV
+
+// recommended cable: LFO breathes the cutoff
+LFO -> VCF:FREQ
+
+# archetype: warm_pad {vco=OSC1, vcf=VCF, amp_env=AMP_ENV, lfo=LFO, amp=AMP}
+```
+
+=== CANDIDATE: ambient_drone_bed ===
+Reads "ambient, breathing over time" as a sustained drone: the LFO modulates oscillator pitch (slow detune drift) instead of the filter, for a continuous evolving texture.
+```pdl
+// "a slowly evolving warm pad — lush and ambient, breathing over time"
+// Drone interpretation: sustained voice, slow LFO into VCO FM for evolving detune drift.
+@OSC = VCO
+@VCF = VCF
+@LFO = LFO
+@AMP_ENV = ADSR
+@AMP = VCA
+
+// played pitch + gate hold the drone
+KEYBOARD -> OSC
+KEYBOARD -> AMP_ENV:GATE
+
+// long, slow amp swell so the bed breathes in and out
+* AMP_ENV: A = pad | R = ambient | S = held
+
+// signal path
+OSC:SAW -> VCF:IN
+VCF:LPF -> AMP:IN
+AMP_ENV -> AMP:CV
+AMP -> OUT:IN1
+AMP -> OUT:IN2
+
+// recommended cable: slow LFO into VCO FM = the drone's evolving detune/movement
+LFO -> OSC:FM
+
+# archetype: drone
+```
