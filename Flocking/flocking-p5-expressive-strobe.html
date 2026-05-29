@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en" class="skin-strobe">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Flocking — expressive interpretation · Strobe</title>
+<!--
+  FLOCKING SHOOT-OUT · p5.js · expressive lens · Loudon Live skin: STROBE
+  (performance / live register). Update-safe build: chrome + canvas ground read from the
+  linked colors_and_type.css via palaceTokens(); nothing hardcodes a token value.
+
+  DECLARED DEVIATION: the canvas interior uses full-spectrum hue (colour-by-velocity) —
+  this is the expressive lens's signature, a *data encoding*, not decoration, so it
+  intentionally leaves the skin palette. The skin still owns the ground colour, the chrome,
+  and the wordmark. This is the model for expressive sketches: skin the frame, declare the
+  interior. deviation_reason: heading angle is the information; hue is its only honest channel.
+-->
+<link rel="stylesheet" href="../_ops/loudon-live/design-system/colors_and_type.css" />
+<style>
+  * { box-sizing: border-box; }
+  html, body { margin: 0; background: var(--bg); color: var(--fg-2); }
+  body { font-family: var(--sans); font-weight: var(--w-light); }
+  .wrap { max-width: 1000px; margin: 0 auto; padding: var(--s-8) var(--s-6) var(--s-10); }
+
+  .topline { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: var(--s-5); }
+  .eyebrow { font-family: var(--mono); font-weight: var(--w-medium); font-size: var(--t-eyebrow);
+    letter-spacing: var(--tr-eyebrow); text-transform: uppercase; color: var(--fg-3); }
+  .wordmark { font-size: var(--t-h4); line-height: 1; white-space: nowrap; }
+  .wordmark .lo { font-family: var(--display); color: var(--fg-1); letter-spacing: var(--tr-display); }
+  .wordmark .sl { color: var(--fg-3); margin: 0 .28em; font-family: var(--sans); font-weight: var(--w-light); }
+  .wordmark .li { font-family: var(--serif); font-style: italic; font-weight: var(--w-light);
+    color: var(--accent); text-shadow: var(--text-glow-accent); }
+
+  h1 { font-family: var(--display); font-weight: var(--w-regular); letter-spacing: var(--tr-display);
+    font-size: var(--t-h1); line-height: var(--lh-tight); color: var(--fg-1); margin: 0 0 var(--s-3); text-transform: uppercase; }
+  .lead { font-family: var(--serif); font-weight: var(--w-light); font-size: var(--t-lead); line-height: var(--lh-reading);
+    letter-spacing: var(--tr-soft); color: var(--fg-2); max-width: 62ch; margin: 0 0 var(--s-5); }
+  .lead em { font-style: italic; color: var(--fg-1); }
+
+  .stage { background: var(--bg-elev-1); border: 1px solid var(--border); border-radius: var(--r-sm);
+    box-shadow: var(--shadow-1); padding: 1px; line-height: 0; overflow: hidden; }
+  #sketch canvas { display: block; width: 100% !important; height: auto !important; }
+  .deviation { margin-top: var(--s-3); font-family: var(--mono); font-size: var(--t-meta); color: var(--fg-3);
+    letter-spacing: .03em; }
+  .deviation b { color: var(--accent); font-weight: var(--w-medium); }
+
+  .foot { margin-top: var(--s-7); padding-top: var(--s-4); border-top: 1px solid var(--border-soft);
+    font-family: var(--mono); font-size: var(--t-meta); color: var(--fg-3); letter-spacing: .04em; }
+  .foot .lo { font-family: var(--display); color: var(--fg-2); }
+  .foot .li { font-family: var(--serif); font-style: italic; font-weight: var(--w-light); color: var(--accent); }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="topline">
+    <span class="eyebrow">Flocking · expressive interpretation · Strobe</span>
+    <span class="wordmark"><span class="lo">LOUDON</span><span class="sl">/</span><span class="li">Live</span></span>
+  </div>
+
+  <h1>The flock as a colour field</h1>
+  <p class="lead">No chrome inside the frame — just the same seed-7 flock, drawn as algorithmic art. Each agent's
+    <em>hue is its heading</em>, so alignment becomes colour agreement: a coherent flock reads as one tone before
+    any number is computed. Trails fade against the skin's own ground.</p>
+
+  <div class="stage"><div id="sketch"></div></div>
+  <p class="deviation">DECLARED DEVIATION · the canvas leaves the skin palette on purpose — <b>hue encodes heading</b>,
+    a data channel, not decoration. The skin still owns the ground, the chrome, and the wordmark.</p>
+
+  <p class="foot"><span class="lo">LOUDON</span> <span class="li">Live</span> · Autodidact Polymaths</p>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/p5@1.10.0/lib/p5.min.js"></script>
+<script src="../_ops/loudon-live/design-system/palace-tokens.js"></script>
+<script>
+/* ===== SHARED FLOCKING MODEL — identical across all Specimens ===== */
+const SEED = 7, N = 80, WIDTH = 960, HEIGHT = 540;
+const NEIGHBOR_R = 50, NEIGHBOR_R2 = NEIGHBOR_R * NEIGHBOR_R, MAX_SPEED = 3, MAX_FORCE = 0.05;
+function mulberry32(a) { return function () { a |= 0; a = (a + 0x6D2B79F5) | 0; let t = Math.imul(a ^ (a >>> 15), 1 | a); t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t; return ((t ^ (t >>> 14)) >>> 0) / 4294967296; }; }
+function initBoids() { const rng = mulberry32(SEED), b = []; for (let i = 0; i < N; i++) { const x = rng() * WIDTH, y = rng() * HEIGHT, a = rng() * Math.PI * 2, sp = 0.5 * MAX_SPEED + rng() * 0.5 * MAX_SPEED; b.push({ x, y, vx: Math.cos(a) * sp, vy: Math.sin(a) * sp }); } return b; }
+function toroidalDelta(ax, ay, bx, by) { let dx = bx - ax, dy = by - ay; if (dx > WIDTH * 0.5) dx -= WIDTH; else if (dx < -WIDTH * 0.5) dx += WIDTH; if (dy > HEIGHT * 0.5) dy -= HEIGHT; else if (dy < -HEIGHT * 0.5) dy += HEIGHT; return [dx, dy]; }
+function setMag(x, y, m) { const k = Math.hypot(x, y); return k > 0 ? [x / k * m, y / k * m] : [0, 0]; }
+function limitMag(x, y, mx) { const k = Math.hypot(x, y); return (k > mx && k > 0) ? [x / k * mx, y / k * mx] : [x, y]; }
+function computeVelocities(boids, w) {
+  const nvx = new Float64Array(N), nvy = new Float64Array(N);
+  for (let i = 0; i < N; i++) {
+    const b = boids[i]; let sepX = 0, sepY = 0, sepN = 0, aliX = 0, aliY = 0, aliN = 0, cohX = 0, cohY = 0, cohN = 0;
+    for (let j = 0; j < N; j++) { if (i === j) continue; const o = boids[j], [dx, dy] = toroidalDelta(b.x, b.y, o.x, o.y), d2 = dx * dx + dy * dy; if (d2 > 0 && d2 < NEIGHBOR_R2) { sepX -= dx / d2; sepY -= dy / d2; sepN++; aliX += o.vx; aliY += o.vy; aliN++; cohX += dx; cohY += dy; cohN++; } }
+    let fx = 0, fy = 0;
+    if (sepN > 0) { const [dx, dy] = setMag(sepX, sepY, MAX_SPEED), [sx, sy] = limitMag(dx - b.vx, dy - b.vy, MAX_FORCE); fx += w.sep * sx; fy += w.sep * sy; }
+    if (aliN > 0) { const [dx, dy] = setMag(aliX / aliN, aliY / aliN, MAX_SPEED), [sx, sy] = limitMag(dx - b.vx, dy - b.vy, MAX_FORCE); fx += w.ali * sx; fy += w.ali * sy; }
+    if (cohN > 0) { const [dx, dy] = setMag(cohX / cohN, cohY / cohN, MAX_SPEED), [sx, sy] = limitMag(dx - b.vx, dy - b.vy, MAX_FORCE); fx += w.coh * sx; fy += w.coh * sy; }
+    let vx = b.vx + fx, vy = b.vy + fy; [vx, vy] = limitMag(vx, vy, MAX_SPEED); nvx[i] = vx; nvy[i] = vy;
+  }
+  return { nvx, nvy };
+}
+function stepBoids(boids, w) { const v = computeVelocities(boids, w); for (let i = 0; i < N; i++) { const b = boids[i]; b.vx = v.nvx[i]; b.vy = v.nvy[i]; b.x = (b.x + b.vx + WIDTH) % WIDTH; b.y = (b.y + b.vy + HEIGHT) % HEIGHT; } }
+/* ===== END SHARED MODEL ===== */
+
+function hexRGB(hex) { const h = (hex || '#000').replace('#', ''); const n = h.length === 3 ? h.split('').map(c => c + c).join('') : h; return [parseInt(n.slice(0, 2), 16), parseInt(n.slice(2, 4), 16), parseInt(n.slice(4, 6), 16)]; }
+
+const weights = { sep: 1.5, ali: 1.0, coh: 1.0 };
+let boids, groundRGB = [0, 0, 0];
+
+new p5((p) => {
+  p.setup = () => {
+    const c = p.createCanvas(WIDTH, HEIGHT); c.parent("sketch");
+    groundRGB = hexRGB(palaceTokens().bg);        // canvas ground = the skin's --bg, read at runtime
+    p.colorMode(p.RGB, 255); p.background(groundRGB[0], groundRGB[1], groundRGB[2]);
+    boids = initBoids();
+    window.__flock = p;                            // verification seam (force frames when rAF is paused)
+  };
+  p.draw = () => {
+    // fading trails: low-alpha veil in the skin ground colour (NOT background()/clear)
+    p.push(); p.colorMode(p.RGB, 255); p.noStroke();
+    p.fill(groundRGB[0], groundRGB[1], groundRGB[2], 26); p.rect(0, 0, WIDTH, HEIGHT); p.pop();
+
+    stepBoids(boids, weights);
+
+    // DECLARED DEVIATION: colour-by-velocity (hue = heading) — a data channel, off-palette on purpose
+    p.push(); p.colorMode(p.HSB, 360, 100, 100, 100); p.noStroke();
+    for (const b of boids) {
+      const heading = Math.atan2(b.vy, b.vx);
+      const hue = ((heading + Math.PI) / (2 * Math.PI)) * 360;
+      p.push(); p.translate(b.x, b.y); p.rotate(heading); p.fill(hue, 82, 100, 92);
+      p.beginShape(); p.vertex(6, 0); p.vertex(-5, 3.2); p.vertex(-2.5, 0); p.vertex(-5, -3.2); p.endShape(p.CLOSE);
+      p.pop();
+    }
+    p.pop();
+  };
+});
+</script>
+</body>
+</html>
