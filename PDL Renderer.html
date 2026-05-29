@@ -315,6 +315,139 @@
 }
   </script>
 
+  <!--
+    Single source of truth for the T7b synth archetype library.
+    Same data as archetypes.json — keep them in sync.
+    Read via document.getElementById("archetypes").
+  -->
+  <script type="application/json" id="archetypes">
+{
+  "version": "0.1",
+  "notes": "T7b synth archetype library for the VCV/PDL pipeline. An archetype is a param-cloud projection onto EXISTING topology — it never injects modules. Region names reference the per-param perceptual regions defined in vcv_fundamental_registry.json (v2.3+). The seeded resolver (resolveArchetype in PDL Renderer.html) maps archetype roles to declared PDL instances by name convention (or explicit {role=INST} binding), samples each region at a deterministic position derived from (seed, archetype, instance, param), then applies constraints. Emit precedence: explicit PDL `*` line > archetype param > registry default. Schema is project data with its own `version`; not palace ontology (same rationale that closed T7a phase 2's ceremony question).",
+  "role_conventions": {
+    "AMP_ENV": "amp_env",
+    "PITCH_ENV": "pitch_env",
+    "FILT_ENV": "filt_env",
+    "MOD_ENV": "mod_env",
+    "OSC": "vco",
+    "VCO": "vco",
+    "OSC1": "vco",
+    "OSC2": "vco2",
+    "SUB": "sub",
+    "FILT": "vcf",
+    "VCF": "vcf",
+    "AMP": "amp",
+    "VCA": "amp",
+    "LFO": "lfo",
+    "LFO1": "lfo",
+    "LFO2": "lfo2"
+  },
+  "archetypes": {
+    "kick": {
+      "perceptual_index": ["kick", "drum", "punchy", "808", "thump", "boom", "bass drum"],
+      "topology": {
+        "roles": { "amp_env": "ADSR", "pitch_env": "ADSR", "vco": "VCO", "amp": "VCA" },
+        "required": ["amp_env", "vco", "amp"]
+      },
+      "params": {
+        "amp_env":   { "A": "instant", "D": "snappy", "S": "plucked", "R": "gated" },
+        "pitch_env": { "A": "instant", "D": "snappy", "S": "plucked", "R": "gated" },
+        "vco":       { "FREQ": "sub" }
+      },
+      "constraints": [
+        { "kind": "copy", "from": "pitch_env.D", "to": "amp_env.D",
+          "label": "pitch-fall decay matches amp decay (the kick punch)" }
+      ]
+    },
+    "sub_bass": {
+      "perceptual_index": ["sub", "sub bass", "808 bass", "low", "deep", "bass", "rumble"],
+      "topology": {
+        "roles": { "vco": "VCO", "vcf": "VCF", "amp_env": "ADSR", "amp": "VCA" },
+        "required": ["vco", "vcf", "amp_env", "amp"]
+      },
+      "params": {
+        "vco":     { "FREQ": "low" },
+        "vcf":     { "FREQ": "dark", "RES": "clean" },
+        "amp_env": { "A": "instant", "D": "medium", "S": "held", "R": "short" }
+      }
+    },
+    "warm_pad": {
+      "perceptual_index": ["pad", "warm", "lush", "ambient", "strings", "swell", "evolving"],
+      "topology": {
+        "roles": { "vco": "VCO", "vcf": "VCF", "amp_env": "ADSR", "lfo": "LFO", "amp": "VCA" },
+        "required": ["vco", "vcf", "amp_env", "lfo", "amp"]
+      },
+      "params": {
+        "vco":     { "FREQ": "mid" },
+        "vcf":     { "FREQ": "open", "RES": "present" },
+        "amp_env": { "A": "pad", "D": "medium", "S": "held", "R": "ambient" },
+        "lfo":     { "FREQ": "subtle" }
+      }
+    },
+    "pluck": {
+      "perceptual_index": ["pluck", "plucky", "short", "percussive", "marimba", "harp", "mallet"],
+      "topology": {
+        "roles": { "vco": "VCO", "vcf": "VCF", "amp_env": "ADSR", "amp": "VCA" },
+        "required": ["vco", "vcf", "amp_env", "amp"]
+      },
+      "params": {
+        "vco":     { "FREQ": "mid" },
+        "vcf":     { "FREQ": "dark", "RES": "present" },
+        "amp_env": { "A": "instant", "D": "short", "S": "plucked", "R": "short" }
+      }
+    },
+    "bright_lead": {
+      "perceptual_index": ["lead", "bright", "cutting", "solo", "melody", "sharp", "present"],
+      "topology": {
+        "roles": { "vco": "VCO", "vcf": "VCF", "amp_env": "ADSR", "amp": "VCA" },
+        "required": ["vco", "vcf", "amp_env", "amp"]
+      },
+      "params": {
+        "vco":     { "FREQ": "mid" },
+        "vcf":     { "FREQ": "bright", "RES": "present" },
+        "amp_env": { "A": "instant", "D": "medium", "S": "full", "R": "short" }
+      }
+    },
+    "acid_lead": {
+      "perceptual_index": ["acid", "303", "tb-303", "squelch", "resonant", "screaming", "bassline"],
+      "topology": {
+        "roles": { "vco": "VCO", "vcf": "VCF", "amp_env": "ADSR", "amp": "VCA" },
+        "required": ["vco", "vcf", "amp_env", "amp"]
+      },
+      "params": {
+        "vco":     { "FREQ": "low" },
+        "vcf":     { "FREQ": "dark", "RES": "screaming" },
+        "amp_env": { "A": "instant", "D": "short", "S": "plucked", "R": "short" }
+      }
+    },
+    "stab": {
+      "perceptual_index": ["stab", "hit", "organ stab", "chord stab", "house stab", "punch"],
+      "topology": {
+        "roles": { "vco": "VCO", "vcf": "VCF", "amp_env": "ADSR", "amp": "VCA" },
+        "required": ["vco", "vcf", "amp_env", "amp"]
+      },
+      "params": {
+        "vco":     { "FREQ": "mid" },
+        "vcf":     { "FREQ": "open", "RES": "present" },
+        "amp_env": { "A": "instant", "D": "short", "S": "held", "R": "short" }
+      }
+    },
+    "drone": {
+      "perceptual_index": ["drone", "sustained", "held", "ambient", "texture", "bed", "detune"],
+      "topology": {
+        "roles": { "vco": "VCO", "lfo": "LFO", "amp": "VCA", "vcf": "VCF" },
+        "required": ["vco", "lfo", "amp"]
+      },
+      "params": {
+        "vco": { "FREQ": "low" },
+        "lfo": { "FREQ": "subtle" },
+        "vcf": { "FREQ": "open" }
+      }
+    }
+  }
+}
+  </script>
+
   <script type="text/babel">
     const { useState } = React;
 
@@ -332,6 +465,13 @@
     // lets the parser auto-bind unregistered-but-referenced instances so patches
     // emit sound-ready without requiring `@KEYBOARD = MIDI_CV` boilerplate.
     const VIRTUAL_ENDPOINTS = REGISTRY_DATA.virtual_endpoints || {};
+
+    // ─── Archetype Bootstrap (T7b) ───────────────────────────────────────────────
+    // Synth archetype library — param-cloud projections onto existing topology,
+    // keyed by musical identity. Mirrors archetypes.json — keep them in sync.
+    const ARCHETYPES_DATA            = JSON.parse(document.getElementById("archetypes").textContent);
+    const ARCHETYPES                 = ARCHETYPES_DATA.archetypes || {};
+    const ARCHETYPE_ROLE_CONVENTIONS = ARCHETYPES_DATA.role_conventions || {};
 
     // Build lookup maps from the registry for fast port-type resolution
     function buildRegistryLookup(registry) {
@@ -417,6 +557,7 @@
       const moduleSet     = new Set();
       const instanceTypes = {}; // instanceId → registry module type key
       const warnings      = []; // { source, lineNumber, content, reason }
+      const archetypes    = []; // { name, bindings, seed, lineNumber } (T7b)
 
       const rawLines = text.split("\n");
       for (let i = 0; i < rawLines.length; i++) {
@@ -430,6 +571,26 @@
         const stripped = rawLine.replace(/\/\/.*$/, "");
         const line = stripped.trim();
         if (!line) continue;
+
+        // Archetype pragma (T7b):  # archetype: name {role=INST, ...} #seed=N
+        // Collected here, resolved at emit time at lower precedence than `*` lines.
+        if (line.startsWith("#")) {
+          const am = line.match(/^#\s*archetype\s*:\s*([A-Za-z0-9_]+)\s*(\{[^}]*\})?\s*(?:#\s*seed\s*=\s*(-?\d+))?\s*$/);
+          if (am) {
+            const bindings = {};
+            if (am[2]) am[2].slice(1, -1).split(",").map(s => s.trim()).filter(Boolean).forEach(pair => {
+              const [role, inst] = pair.split("=").map(x => x.trim());
+              if (role && inst) bindings[role] = inst;
+            });
+            archetypes.push({ name: am[1], bindings, seed: am[3] != null ? parseInt(am[3], 10) : 0, lineNumber });
+          } else {
+            warnings.push({
+              source: "parser", lineNumber, content: rawLine,
+              reason: "malformed `# archetype` pragma (expected `# archetype: name {role=INST} #seed=N`)",
+            });
+          }
+          continue;
+        }
 
         // Instance declaration:  @INSTANCE = ModuleType
         if (line.startsWith("@")) {
@@ -563,7 +724,7 @@
         return { ...c, toPort, fromPort, type };
       });
 
-      return { connections: resolvedConnections, params, modules: [...moduleSet], instanceTypes, warnings };
+      return { connections: resolvedConnections, params, modules: [...moduleSet], instanceTypes, archetypes, warnings };
     }
 
     // ─── .vcv Emitter ────────────────────────────────────────────────────────────
@@ -630,8 +791,106 @@
       return Math.min(rmax, Math.max(rmin, v));
     }
 
+    // ─── Archetype resolver (T7b) ────────────────────────────────────────────────
+    // An archetype is a param-cloud projection onto EXISTING topology — it never
+    // injects modules. Roles map to declared instances by name convention (or an
+    // explicit {role=INST} binding); each region samples at a deterministic
+    // position from (seed, archetype, instance, param); constraints run last.
+    // Emit precedence: explicit `*` line > archetype param > registry default.
+    // Mirrored by verify_t7b.js — keep the two in sync.
+    function archetypeHash(seed, archetypeName, instId, paramName) {
+      const str = seed + ":" + archetypeName + ":" + instId + ":" + paramName;
+      let h = 1779033703 ^ str.length;
+      for (let i = 0; i < str.length; i++) {
+        h = Math.imul(h ^ str.charCodeAt(i), 3432918353);
+        h = (h << 13) | (h >>> 19);
+      }
+      h = Math.imul(h ^ (h >>> 16), 2246822507);
+      h = Math.imul(h ^ (h >>> 13), 3266489909);
+      h ^= h >>> 16;
+      return (h >>> 0) / 4294967296;
+    }
+
+    function inferRole(instId) {
+      return ARCHETYPE_ROLE_CONVENTIONS[instId.toUpperCase()] || null;
+    }
+
+    function clampToParam(modReg, name, v) {
+      const spec = resolveParamSpec(modReg, name);
+      if (!spec || !spec.range) return v;
+      return Math.min(spec.range[1], Math.max(spec.range[0], v));
+    }
+
+    function resolveArchetype(archDef, archetypeName, seed, instanceTypes, bindings) {
+      const out = {};
+      const warnings = [];
+      const roles    = (archDef.topology && archDef.topology.roles) || {};
+      const required = (archDef.topology && archDef.topology.required) || [];
+      const roleToInst = {};
+
+      // Explicit bindings win.
+      for (const [role, inst] of Object.entries(bindings || {})) {
+        if (instanceTypes[inst]) roleToInst[role] = inst;
+        else warnings.push({ source: "archetype", reason: `archetype "${archetypeName}" binding ${role}=${inst} but "${inst}" is not a declared instance` });
+      }
+      // Convention inference for unbound roles (name -> role, type must match).
+      for (const role of Object.keys(roles)) {
+        if (roleToInst[role]) continue;
+        for (const [inst, type] of Object.entries(instanceTypes)) {
+          if (inferRole(inst) === role && type === roles[role] && !Object.values(roleToInst).includes(inst)) {
+            roleToInst[role] = inst;
+            break;
+          }
+        }
+      }
+      // Required roles present?
+      for (const role of required) {
+        if (!roleToInst[role]) {
+          warnings.push({ source: "archetype", reason: `archetype "${archetypeName}" requires role "${role}" (${roles[role]}) but no matching instance was found — its params are skipped` });
+        }
+      }
+      // Sample each role's param cloud at its deterministic position.
+      for (const [role, paramMap] of Object.entries(archDef.params || {})) {
+        const inst = roleToInst[role];
+        if (!inst) continue;
+        const modReg = REGISTRY[instanceTypes[inst]];
+        out[inst] = out[inst] || {};
+        for (const [pname, regionName] of Object.entries(paramMap)) {
+          const spec = resolveParamSpec(modReg, pname);
+          if (!spec) {
+            warnings.push({ source: "archetype", reason: `archetype "${archetypeName}" role ${role}: param "${pname}" not in registry for ${instanceTypes[inst]}` });
+            continue;
+          }
+          const pos = archetypeHash(seed, archetypeName, inst, spec.name);
+          const val = sampleRegion(spec, regionName, pos);
+          if (val == null) {
+            const known = spec.regions ? Object.keys(spec.regions).join(", ") : "<none>";
+            warnings.push({ source: "archetype", reason: `archetype "${archetypeName}" role ${role}: region "${regionName}" unknown for ${spec.name} (known: ${known})` });
+            continue;
+          }
+          out[inst][spec.name] = val;
+        }
+      }
+      // Constraints run after sampling, in declaration order.
+      for (const c of (archDef.constraints || [])) {
+        const from = (c.from || "").split(".");
+        const to   = (c.to   || "").split(".");
+        const fromInst = roleToInst[from[0]];
+        const toInst   = roleToInst[to[0]];
+        if (!fromInst || !toInst) continue;
+        const fromVal = out[fromInst] && out[fromInst][from[1]];
+        if (fromVal == null) continue;
+        out[toInst] = out[toInst] || {};
+        let v = fromVal;
+        if (c.kind === "offset")            v = fromVal + (c.delta  || 0);
+        else if (c.kind === "proportional") v = fromVal * (c.factor || 1);
+        out[toInst][to[1]] = clampToParam(REGISTRY[instanceTypes[toInst]], to[1], v);
+      }
+      return { params: out, warnings };
+    }
+
     function emitVcvJson(pdlText) {
-      const { connections, instanceTypes, params: pdlParams, warnings } = parsePDL(pdlText);
+      const { connections, instanceTypes, params: pdlParams, archetypes: pdlArchetypes, warnings } = parsePDL(pdlText);
 
       // Only registered instances become VCV modules.
       const registeredIds = Object.keys(instanceTypes).filter(id => REGISTRY[instanceTypes[id]]);
@@ -668,8 +927,29 @@
       // type; and `*` lines referring to instances that were never declared
       // (and aren't virtual endpoints).
       const resolvedParams = {}; // instanceId → { paramName: number }
+
+      // T7b — overlay archetype params first so explicit `*` lines (below) always
+      // win. Multiple `# archetype:` directives apply in order; later overwrites.
+      for (const a of (pdlArchetypes || [])) {
+        const archDef = ARCHETYPES[a.name];
+        if (!archDef) {
+          warnings.push({
+            source: "emitter", lineNumber: a.lineNumber,
+            content: `# archetype: ${a.name}`,
+            reason: `unknown archetype "${a.name}" (known: ${Object.keys(ARCHETYPES).join(", ") || "<none>"})`,
+          });
+          continue;
+        }
+        const { params: archParams, warnings: archWarns } = resolveArchetype(archDef, a.name, a.seed, instanceTypes, a.bindings);
+        for (const w of archWarns) warnings.push({ ...w, lineNumber: a.lineNumber });
+        for (const [inst, pmap] of Object.entries(archParams)) {
+          resolvedParams[inst] = resolvedParams[inst] || {};
+          Object.assign(resolvedParams[inst], pmap);
+        }
+      }
+
       for (const [instId, entries] of Object.entries(pdlParams || {})) {
-        resolvedParams[instId] = {};
+        resolvedParams[instId] = resolvedParams[instId] || {};
         const modType = instanceTypes[instId];
         const modReg  = modType && REGISTRY[modType];
 

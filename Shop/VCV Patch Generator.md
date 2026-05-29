@@ -1,12 +1,12 @@
 ---
 type: specialist
-status: stub
+status: active
 medium: sound
 tool: vcv-patch-generator
-tool_version: registry v2.2 (2026-04-20)
+tool_version: registry v2.4 + archetypes v0.1 (2026-05-29)
 adopted: 2026-05-09
-last_tested:
-last_gotcha:
+last_tested: 2026-05-29
+last_gotcha: "kick needs two ADSRs declared (amp_env + pitch_env) or the copy constraint has nothing to bind — a one-ADSR kick loads but lands without the pitch-drop punch"
 license: VCV Rack 2 (free); plugins per their own terms
 links:
   - { label: "wraps", target: "VCV Rack (external)" }
@@ -21,7 +21,7 @@ tags: [specialist, shop, sound, modular, generative, registry, stub]
 
 # VCV Patch Generator
 
-*This entry is a stub. Sections are present but lightly written. The first real job will fill it in. The generator wraps Stage 1 of [[Generative Audio Devices]] — the registry-pattern-constrained pipeline that emits loadable VCV Rack patches from a Patch Description Language (PDL).*
+*The generator wraps Stage 1 of [[Generative Audio Devices]] — the registry-pattern-constrained pipeline that emits loadable VCV Rack patches from a Patch Description Language (PDL). First Piece-tier job ran 2026-05-29: the T7b archetype audition, which filled in the bundle below. The Rack audio audition is the one open human step.*
 
 ## Charter
 
@@ -43,7 +43,9 @@ When asked an open question, answers in PDL first and English second. *"Try `@FI
 - Type-aware default port resolution (`KEYBOARD -> ENV:GATE` routes to KEYBOARD:GATE, not the default PITCH)
 - `.vcv` JSON emission with auto-laid-out modules, color-coded cables by signal type
 - Numeric parameter emission via `*` lines (T7a phase 1, closed 2026-04-20)
-- Warning surface for: orphan instance, missing `=`, unknown param name, non-finite value — all with source line numbers for click-to-jump
+- Named perceptual regions (`* VCF: CUTOFF = dark`) resolve to sampled values (T7a phase 2, closed 2026-05-26)
+- **Whole-instrument archetypes** via `# archetype: name {role=INST} #seed=N` (T7b, closed 2026-05-29): 8 archetypes (kick, sub_bass, warm_pad, pluck, bright_lead, acid_lead, stab, drone), seeded for family-consistent variance, precedence `explicit * > archetype > default`
+- Warning surface for: orphan instance, missing `=`, unknown param name, non-finite value, unknown archetype, missing required role, malformed `# archetype` pragma — all with source line numbers for click-to-jump
 - Registry source-verified against VCV plugin `.cpp` files
 
 ## Strengths
@@ -60,8 +62,8 @@ When asked an open question, answers in PDL first and English second. *"Try `@FI
 - Registry is currently 10 modules — vast majority of VCV plugins are not yet covered
 - PDL is target-agnostic in principle but only VCV is implemented; other targets (RNBO, Max, Pure Data) are project goals, not Specialist features yet
 - Auto-layout is opinionated (topological depth); complex patches may want manual layout in Rack after load
-- Parameter Intelligence (T7a phase 2: regions + curves on each param) is not yet implemented — `CUTOFF = dark` warns and falls back; tomorrow it resolves through a named perceptual region
-- VCV Rack required for testing/audition — the Specialist generates files, but auditioning them needs the Rack app
+- VCV Rack required for *audio* audition — the Specialist generates and structurally verifies files (parse, region membership, determinism), but confirming an archetype *sounds* right on load needs the Rack app on a Mac. This is the standing seam between what the tool proves and what only the ear settles
+- Archetypes project onto existing topology; they never add modules. A patch missing a required role (e.g. a kick with no second ADSR) still loads but lands without that role's contribution — by design, not a bug
 
 ## Tiers
 
@@ -99,7 +101,7 @@ When asked an open question, answers in PDL first and English second. *"Try `@FI
 
 Deterministic given PDL input + registry version. Same PDL → byte-identical `.vcv`. Refinement happens by editing the PDL, expanding the registry (when a brief reaches past current coverage), or adjusting parameter values via `*` lines.
 
-When perceptual regions land (T7a phase 2), `*FILT.CUTOFF = dark` will resolve through a named region rather than warning. Until then, that sentence is a forward-vector statement, not a current capability.
+Two grains of control now sit above raw numbers: named regions (`* FILT: CUTOFF = dark`) for a single param, and `# archetype: kick #seed=N` for a whole instrument. The seed is the variance knob — same archetype, different seed → an audibly distinct but family-consistent patch; same seed → byte-identical `.vcv`. Refinement is: pick an archetype, turn the seed, then override individual params with explicit `*` lines (which always win).
 
 ## Self-Check
 
@@ -117,20 +119,25 @@ When perceptual regions land (T7a phase 2), `*FILT.CUTOFF = dark` will resolve t
 
 ## Gotchas
 
-*(Empty until first job. Patterns to watch for, surfaced from the Generative Audio Devices project work — confirmed and dated only on first encounter through the Specialist:)*
-
+- **(2026-05-29, first job) `kick` needs two ADSRs declared.** The `kick` archetype's punch is a `copy` constraint binding `pitch_env.D` to `amp_env.D` — if the PDL declares only one envelope, the `pitch_env` role goes unfilled, the resolver warns, and the patch loads *without the pitch drop*. It still makes sound; it just isn't a kick. Declare `@AMP_ENV = ADSR` **and** `@PITCH_ENV = ADSR` (the names the convention map infers) and route the pitch envelope to `OSC:FM`. The kick recipe in the bundle shows the shape.
 - Custom VCV plugins drift; a registry pinned to a specific plugin version may break when the plugin updates. Pin plugin versions when archiving Piece-tier work
 - Parameter values outside registry-declared ranges currently warn and fall back to default; this is conservative behavior worth keeping but the Maker should verify the warning was intended
+- The embedded `<script id="vcv-registry">` / `<script id="archetypes">` blocks in `PDL Renderer.html` mirror the on-disk JSON files — a data change has to land in *both* copies or the renderer and the Node harnesses disagree (this is how the v2.4 SEQ3 STEPS-index bug hid)
 
 ## Recipes
 
-*(Links to `Artifacts/Shop/VCV Patch Generator/recipes/` once they exist. The PDL source files at the palace root — `house_bass.pdl`, `house_bass.vcv` — are reference pairs from the project's verification work.)*
+In `Artifacts/Shop/VCV Patch Generator/recipes/` — the T7b audition triple, each a hand-written subtractive PDL plus one `# archetype:` pragma, emitted through the real `PDL Renderer.html` code path:
+- `kick-seed-1.{pdl,vcv}` — sub VCO, two ADSRs, pitch-drop punch (copy constraint)
+- `warm_pad-seed-1.{pdl,vcv}` — slow LFO breathing on cutoff, pad attack/release
+- `pluck-seed-1.{pdl,vcv}` — instant attack, short decay, dark filter
+
+The palace-root PDL pair `house_bass.pdl` / `house_bass.vcv` remains the pre-archetype reference from the project's verification work.
 
 ## Test Suite
 
-Smoke / Capability Probe / Style Probe / Edge Probe / Speed Bench / Determinism — defined in `Artifacts/Shop/VCV Patch Generator/tests/test-plan.md` (TODO). Last run: never.
+Smoke / Capability Probe / Style Probe / Edge Probe / Speed Bench / Determinism — defined in `Artifacts/Shop/VCV Patch Generator/tests/test-plan.md`. Last run: **2026-05-29** (T7b audition). Determinism proof at `tests/determinism.txt` — all three audition patches byte-identical across reruns, zero warnings, zero skipped cables.
 
-The Determinism test is straightforward and load-bearing: same PDL + same registry version → byte-identical `.vcv`. The test confirms this; any divergence is a registry-versioning issue, not a tool issue.
+The Determinism test is straightforward and load-bearing: same PDL + same registry version + same archetype seed → byte-identical `.vcv`. The harness confirms this; any divergence is a versioning or seed-path issue, not acceptable nondeterminism. The one probe the harness *can't* close is the Style Probe — whether the three archetypes are audibly distinct on load — which needs Rack on a Mac.
 
 ## Open Questions
 
@@ -145,4 +152,4 @@ The Determinism test is straightforward and load-bearing: same PDL + same regist
 
 ## Forward Vector
 
-First job: a Sketch-tier patch from a one-line PDL prompt — a simple subtractive voice (VCO → VCF → VCA, with ADSR on VCA) — exported and loaded in Rack to verify the round-trip. After that, second job is the same brief expressed in natural language and routed through the upstream prompt, producing PDL that flows into me. The result calibrates the prompt-to-PDL boundary and surfaces the first batch of registry-coverage gaps.
+First job ran 2026-05-29 — the T7b archetype audition, Piece-tier: kick / warm_pad / pluck at `#seed=1`, emitted through the real code path, structurally verified, staged in the bundle. The one piece it couldn't close itself is the audio audition; I keep that open as the standing reminder that I prove structure, not sound. **Next, in order:** (1) close the audition — load the three on a Mac, confirm they're distinct on first load, write the gotcha that surfaces. (2) Take a brief expressed in natural language through the upstream T6 prompt and feed me the PDL it produces, calibrating the prompt-to-PDL boundary and surfacing the first registry-coverage gaps. (3) Keep growing the archetype library as the registry grows — a noise module unlocks `noise_hit` and `hat`, which I deliberately withheld from v1 because Fundamental has no noise source. My standing question: where does the natural-language → PDL prompt live relative to me — does the Maker run it and hand me PDL, or do I eventually swallow it?

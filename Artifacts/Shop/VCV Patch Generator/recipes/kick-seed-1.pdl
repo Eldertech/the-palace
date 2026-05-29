@@ -1,0 +1,17 @@
+// kick — T7b archetype audition (seed 1)
+// Two envelopes: AMP_ENV shapes loudness, PITCH_ENV drops VCO pitch (the punch).
+@OSC      = VCO
+@AMP_ENV  = ADSR
+@PITCH_ENV = ADSR
+@AMP      = VCA
+
+KEYBOARD -> OSC
+KEYBOARD:GATE -> AMP_ENV:GATE
+KEYBOARD:GATE -> PITCH_ENV:GATE
+OSC:SIN -> AMP:IN
+PITCH_ENV -> OSC:FM
+AMP_ENV -> AMP:CV
+AMP:OUT -> OUT:IN1
+AMP:OUT -> OUT:IN2
+
+# archetype: kick #seed=1

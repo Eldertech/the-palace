@@ -1,0 +1,18 @@
+// warm_pad — T7b archetype audition (seed 1)
+// Slow LFO breathing on the filter cutoff; pad attack/release.
+@OSC     = VCO
+@FILT    = VCF
+@AMP_ENV = ADSR
+@LFO     = LFO
+@AMP     = VCA
+
+KEYBOARD -> OSC
+KEYBOARD:GATE -> AMP_ENV:GATE
+OSC:SAW -> FILT:IN
+LFO -> FILT:FREQ
+FILT:LPF -> AMP:IN
+AMP_ENV -> AMP:CV
+AMP:OUT -> OUT:IN1
+AMP:OUT -> OUT:IN2
+
+# archetype: warm_pad #seed=1
