@@ -70,10 +70,12 @@ test.describe(`phase ${PHASE} captures`, () => {
 
   if (PHASE === '4') {
     // Phase 4 v0.2: click-to-respond UI captures.
-    // Uses the phase-4-v0.2/ subdirectory (created by check-phase.js).
+    // Hermetic: ?demo=only so the first pending item is the canonical option-less
+    // demo request (req-demo-002) with the modal-driven inbox-response-options
+    // block — not whatever Steward request the live board currently sorts on top.
 
     test('phase-4-v0.2/inbox-pending.png', async ({ page }) => {
-      await page.goto('/?demo=1');
+      await page.goto('/?demo=only');
       await page.getByTestId('channel-tabs').waitFor({ timeout: 15_000 });
       await preloadFonts(page);
       await page.getByTestId('tab-trickster').click();
@@ -85,7 +87,7 @@ test.describe(`phase ${PHASE} captures`, () => {
     });
 
     test('phase-4-v0.2/inbox-modal-preview.png', async ({ page }) => {
-      await page.goto('/?demo=1');
+      await page.goto('/?demo=only');
       await page.getByTestId('channel-tabs').waitFor({ timeout: 15_000 });
       await preloadFonts(page);
       await page.getByTestId('tab-trickster').click();
@@ -102,36 +104,37 @@ test.describe(`phase ${PHASE} captures`, () => {
     });
 
     test('phase-4-v0.2/inbox-after-respond.png', async ({ page }) => {
-      // Clear the demo session so we start fresh.
-      const { writeFileSync, mkdirSync: mkd } = await import('node:fs');
-      const { resolve: res2 } = await import('node:path');
+      // Confirm posts a RESOURCE_GRANT to the real persistent board; snapshot it
+      // and restore afterward so the capture leaves no trace.
+      const { readFileSync, writeFileSync } = await import('node:fs');
+      const { resolve: res2, dirname: dn } = await import('node:path');
       const { fileURLToPath: ftu } = await import('node:url');
-      const { dirname: dn } = await import('node:path');
-      const __f = ftu(import.meta.url);
-      const appRoot = res2(dn(__f), '../..');
-      const palaceRoot = res2(appRoot, '../../../..');
-      const sessionDir = res2(palaceRoot, '_ops/swarm/sessions/demo-2026-05-02');
-      mkd(sessionDir, { recursive: true });
-      writeFileSync(res2(sessionDir, 'blackboard.jsonl'), '', 'utf8');
+      const palaceRoot = res2(dn(ftu(import.meta.url)), '../../../../..'); // tests/e2e → app → stigmergy → _ops → palace
+      const bb = res2(palaceRoot, '_ops/swarm/persistent/blackboard.jsonl');
+      const snapshot = readFileSync(bb, 'utf8');
 
-      await page.goto('/?demo=1');
-      await page.getByTestId('channel-tabs').waitFor({ timeout: 15_000 });
-      await preloadFonts(page);
-      await page.getByTestId('tab-trickster').click();
-      await page.getByTestId('trickster-inbox').waitFor({ timeout: 5_000 });
+      try {
+        await page.goto('/?demo=only');
+        await page.getByTestId('channel-tabs').waitFor({ timeout: 15_000 });
+        await preloadFonts(page);
+        await page.getByTestId('tab-trickster').click();
+        await page.getByTestId('trickster-inbox').waitFor({ timeout: 5_000 });
 
-      // Open and confirm the modal for the first pending item.
-      const firstItem = page.getByTestId('inbox-pending-item').first();
-      const firstBtn = firstItem.getByTestId('inbox-response-options').locator('button').first();
-      await firstBtn.click();
-      await page.getByTestId('response-modal').waitFor({ timeout: 3_000 });
-      await page.getByTestId('response-modal').getByRole('button', { name: /^confirm/i }).click();
-      await expect(page.getByTestId('response-modal')).not.toBeVisible({ timeout: 8_000 });
-      await page.waitForTimeout(300);
+        // Open and confirm the modal for the first pending item.
+        const firstItem = page.getByTestId('inbox-pending-item').first();
+        const firstBtn = firstItem.getByTestId('inbox-response-options').locator('button').first();
+        await firstBtn.click();
+        await page.getByTestId('response-modal').waitFor({ timeout: 3_000 });
+        await page.getByTestId('response-modal').getByRole('button', { name: /^confirm/i }).click();
+        await expect(page.getByTestId('response-modal')).not.toBeVisible({ timeout: 8_000 });
+        await page.waitForTimeout(300);
 
-      const dir = resolve(`screenshots/phase-4-v0.2`);
-      mkdirSync(dir, { recursive: true });
-      await page.screenshot({ path: resolve(dir, 'inbox-after-respond.png'), fullPage: false });
+        const dir = resolve(`screenshots/phase-4-v0.2`);
+        mkdirSync(dir, { recursive: true });
+        await page.screenshot({ path: resolve(dir, 'inbox-after-respond.png'), fullPage: false });
+      } finally {
+        writeFileSync(bb, snapshot, 'utf8');
+      }
     });
   }
 
@@ -277,6 +280,27 @@ test.describe(`phase ${PHASE} captures`, () => {
       mkdirSync(dir, { recursive: true });
       await page.screenshot({ path: resolve(dir, 'trickster.png'), fullPage: false });
     });
+  }
+
+  if (PHASE === '10') {
+    // v0.4: comparison / table / math captures — element shots of each demo card.
+    const v4dir = 'screenshots/phase-10-v0.4';
+    const cards = [['equation', 'demo-eqn'], ['table', 'demo-table'], ['choice', 'demo-choice']];
+    for (const [name, id] of cards) {
+      test(`phase-10-v0.4/${name}.png`, async ({ page }) => {
+        await page.goto('/?demo=1');
+        await page.getByTestId('channel-tabs').waitFor({ timeout: 15_000 });
+        await preloadFonts(page);
+        await page.getByTestId('tab-general').click();
+        const card = page.locator(`[data-testid="message-row"][data-id="${id}"]`);
+        await card.waitFor({ timeout: 10_000 });
+        await card.scrollIntoViewIfNeeded();
+        await page.waitForTimeout(500);
+        const dir = resolve(v4dir);
+        mkdirSync(dir, { recursive: true });
+        await card.screenshot({ path: resolve(dir, `${name}.png`) });
+      });
+    }
   }
 
   if (PHASE === '5') {

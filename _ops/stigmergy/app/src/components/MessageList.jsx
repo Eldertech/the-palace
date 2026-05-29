@@ -2,6 +2,9 @@ import React from 'react';
 import { Rule, Tag } from './primitives.jsx';
 import { glyphFor, accentFor, formatTs, parseLinks, hrefFor, tsCompare } from '../lib/format.js';
 import ArtifactSlot from './ArtifactSlot.jsx';
+import TableBlock from './TableBlock.jsx';
+import EquationBlock from './EquationBlock.jsx';
+import ChoiceBlock from './ChoiceBlock.jsx';
 
 // Map FLAG confidence string to Tag tone.
 function FlagConfidenceTag({ confidence }) {
@@ -132,6 +135,11 @@ function MessageRow({ msg }) {
             <Tag tone="link">enrichment</Tag>
           </span>
         )}
+        {msg.payload && msg.payload.kind === 'choice' && (
+          <span data-testid="choice-tag" style={{ marginLeft: 8 }}>
+            <Tag tone="link">choice</Tag>
+          </span>
+        )}
         <div style={{
           color: 'var(--phosphor-dim)', textShadow: 'none', marginTop: 4, lineHeight: 1.4,
         }}>
@@ -222,7 +230,10 @@ function MessageRow({ msg }) {
         </div>
       ) : null}
 
+      <EquationBlock payload={msg.payload} />
+      <TableBlock payload={msg.payload} />
       <ArtifactSlot payload={msg.payload} />
+      <ChoiceBlock msg={msg} />
     </div>
   );
 }
