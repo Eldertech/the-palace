@@ -46,6 +46,12 @@ links:
   - target: "[[Orchestrator Production Plan v0.2]]"
     type: spawned
     label: stage-c-build-contract
+  - target: "[[Stage E — Automated Trickster — handoff]]"
+    type: spawned
+    label: stage-e-build-contract
+  - target: "[[Palace Conatus]]"
+    type: connects-to
+    label: escalation-rationale
 forward_vector: "I will become the working specification for routine, stage-aware project stewardship — a permanent agent that advances each palace project at the rhythm appropriate to its stage, posts status, blocks, and questions to the BBS, with the Trickster (Loudon directly, or an automated proxy with escalation rules) handling triage one decision at a time."
 ---
 
@@ -63,7 +69,7 @@ The body below describes the system as conceived; this block records where the b
 - **Stage B (Orchestrator v0.1)** — done, in production. 15 stewards run through it across multiple batches. The `cli.js` encoded-path bug (Cowork-discovered) is fixed; the skill at `.claude/skills/palace-orchestrator/` is the canonical invocation surface. 97/97 orchestrator tests + 297/297 STIGMERGY app tests green (counts grew this session).
 - **Stage C (batch mode)** — thin path shipped (`batch-plan.js` + `batch.md`). `--ignore-debounce` flag added 2026-05-27 for interactive validation runs. **15-steward parallel dispatch + sequential post-processing demonstrated twice**, ~10 min wall time per batch (heaviest cycle dominates). The weekly scheduled task is still staged not created — that's the only remaining Stage C piece.
 - **Stage D (STIGMERGY v0.2 Trickster posting)** — shipped, plus four named contract fixes this session: (1) lenient options-shape normalizer accepts both `{id,label}` and strings; (2) "every cycle ends with a TRICKSTER ask" steward rule; (3) top-level `options[]` accepted as fallback; (4) "emit, do not write" output discipline forbidding direct board/state writes. All five fixes are committed and validated under load.
-- **Stage E (automated Trickster)** — not started; still unspecced. Loudon remains the human Trickster; the 15-steward cadence has not yet hit a bandwidth wall that demands automation.
+- **Stage E (automated Trickster)** — **built (2026-05-29), shadow-default.** All six phases shipped and self-verified (`_ops/stigmergy/trickster-auto/`, 71 tests; build report at `_ops/stigmergy/trickster-auto/STAGE-E-COMPLETE.md`). A deterministic rules engine triages the TRICKSTER inbox: `auto-grant` / `auto-deny` / `escalate` (default escalate), with a ranked digest of escalations rendered on the STIGMERGY TRICKSTER tab (`DigestPanel`, +7 app tests, no regression). The audition/irreversible gate is hard-coded and cannot be overridden by the ruleset. Q1 decided here (Loudon delegated): v0 auto-grants only non-blocking directional forks carrying the steward's own recommendation — the deterministic proxy for the strawman's "advances forward_vector + low cost," since the engine must not reason about prose. Live shadow split on the 16-pending board: 3 auto-grant / 13 escalate. **Loudon remains the human Trickster until he reviews the shadow match rate and flips `--live`.**
 
 **Other infrastructure this session:** Infrastructure Spec gained §3.3.1 (dual-path health block). Path 1 keeps the original strict 6-field block for the day API-direct dispatch returns; Path 2 (current Claude-Code-resident) stamps a minimal `{score: "green", model, _orchestrator_metadata}` stub because the Agent tool doesn't return the `input_tokens` breakdown §3.3 originally assumed. Validator recognizes the dispatch_mode marker and relaxes the other field requirements. `health.js` shrinks from a token-averaging machine to a stub builder.
 
@@ -263,7 +269,7 @@ Per Infrastructure Spec §12 forward vector, the rules engine is unspecced. This
 
 - **The Stage B smoke-test gate (current frontier, as of 2026-05-26).** Orchestrator v0.1 is build-complete but sits on an unpushed local branch awaiting Loudon's own smoke-test + review (see [[Orchestrator Production Plan]] close-out). It has never run on a live project via the skill. Cleanest next move: advance the GSL steward to cycle 6 through the skill — it doubles as smoke-test and first real use — then push the branch.
 - **Whether to build v0.2 (Stage C enablers) now.** [[Orchestrator Production Plan v0.2]] (batch-cycle, cadence, spawn-from-project, scheduled-task recipes) is a ready autonomous-build contract at seed stage. Its Phase 1 reads v0.1's closure report, so it is blocked on the smoke-test gate above. Decision: build it to make stewardship operational, or run stewards by hand longer to learn the right cadence first?
-- **Automated Trickster rule shape.** The escalation protocol, the rules engine format, and the conditions for routing to Loudon are unspecified. Design when first overnight session is needed.
+- **Automated Trickster — built; first safe ruleset chosen, awaiting Loudon's shadow review.** Stage E shipped 2026-05-29 (`_ops/stigmergy/trickster-auto/`). The v0 ruleset auto-grants only non-blocking directional forks carrying the steward's own recommendation; everything else escalates. It runs shadow-default. The remaining open move is operational, not design: Loudon reads the shadow digest on the STIGMERGY TRICKSTER tab, compares the 3 proposed grants + ranking to his own judgment, tunes `rules.json` if needed, and flips `--live` when the match rate satisfies him.
 - **Vector tuning practice as palace-wide norm.** Vector tuning is settled as a process, not a ceremony (see What's Decided). What's still open: how to make the invitation visible — does the Weave Ceremony spec need an explicit "vector edits welcome" beat? Does [[SCHEMA]] want a one-line note that forward vectors are meant to evolve? Probably yes to both, as small follow-on edits.
 - **Schedule cadence.** Daily? Weekly? Per-project? Probably configurable per Steward via manifest, with a sensible default that the orchestrator can override.
 - **Recursion handling at the orchestrator level.** When a Steward encounters a `seed` deliverable inside a `growing` project, does it switch to seed-stage posture for that deliverable? Needs explicit rule in the orchestrator.

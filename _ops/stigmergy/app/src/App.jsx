@@ -4,6 +4,7 @@ import MessageList from './components/MessageList.jsx';
 import ChannelTabs from './components/ChannelTabs.jsx';
 import AgentRoster from './components/AgentRoster.jsx';
 import TricksterInbox from './components/TricksterInbox.jsx';
+import DigestPanel from './components/DigestPanel.jsx';
 import { Banner } from './components/primitives.jsx';
 import { fetchPersistent, fetchSessions } from './adapters/blackboard.js';
 import { subscribeLive } from './adapters/live-tail.js';
@@ -268,10 +269,13 @@ export default function App() {
                 </div>
               )}
               {activeBoard === 'TRICKSTER' && (
-                <TricksterInbox
-                  messages={visibleMessages}
-                  onConfirmed={handleOptimisticAppend}
-                />
+                <>
+                  <DigestPanel />
+                  <TricksterInbox
+                    messages={visibleMessages}
+                    onConfirmed={handleOptimisticAppend}
+                  />
+                </>
               )}
               <MessageList
                 messages={filtered}
