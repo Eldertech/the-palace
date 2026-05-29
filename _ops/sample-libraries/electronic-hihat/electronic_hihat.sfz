@@ -1,0 +1,162 @@
+//-----------------------------------------------------------------------------
+// Electronic Hi-Hat
+// One octave (C2-B2, MIDI 36-47) of subtle inharmonic variants across
+// 8 velocity layers. 96 unique samples total.
+//
+// Length and brightness are baked per layer — the sample IS the velocity
+// result. Per (note, layer) gets its own centroid-preserving partial set,
+// so every one of the 96 cells is a unique inharmonic 'chord' sharing the
+// same 6028.6 Hz spectral centroid.
+//
+// SFZ does NO velocity tracking on envelope/filter/amplitude — the user's
+// sampler is free to apply its own amplitude curve and envelope shaping.
+//
+// Source samples: 48 kHz / 24-bit / mono / 700 ms, peak -1 dBFS, linear
+// decay envelope to true silence. See BUILD.md for full design.
+//-----------------------------------------------------------------------------
+
+<control>
+default_path=samples/
+
+<global>
+loop_mode=one_shot
+pitch_keytrack=0
+ampeg_attack=0
+amp_veltrack=0
+
+// Layer 1 — tightest closed (70 ms, 4500-6500 Hz)
+<group>
+lovel=1
+hivel=15
+<region> sample=hihat_C2_L1.wav        lokey=36 hikey=36 pitch_keycenter=36
+<region> sample=hihat_C#2_L1.wav       lokey=37 hikey=37 pitch_keycenter=37
+<region> sample=hihat_D2_L1.wav        lokey=38 hikey=38 pitch_keycenter=38
+<region> sample=hihat_D#2_L1.wav       lokey=39 hikey=39 pitch_keycenter=39
+<region> sample=hihat_E2_L1.wav        lokey=40 hikey=40 pitch_keycenter=40
+<region> sample=hihat_F2_L1.wav        lokey=41 hikey=41 pitch_keycenter=41
+<region> sample=hihat_F#2_L1.wav       lokey=42 hikey=42 pitch_keycenter=42
+<region> sample=hihat_G2_L1.wav        lokey=43 hikey=43 pitch_keycenter=43
+<region> sample=hihat_G#2_L1.wav       lokey=44 hikey=44 pitch_keycenter=44
+<region> sample=hihat_A2_L1.wav        lokey=45 hikey=45 pitch_keycenter=45
+<region> sample=hihat_A#2_L1.wav       lokey=46 hikey=46 pitch_keycenter=46
+<region> sample=hihat_B2_L1.wav        lokey=47 hikey=47 pitch_keycenter=47
+
+// Layer 2 — tight closed (110 ms, 4200-7500 Hz)
+<group>
+lovel=16
+hivel=31
+<region> sample=hihat_C2_L2.wav        lokey=36 hikey=36 pitch_keycenter=36
+<region> sample=hihat_C#2_L2.wav       lokey=37 hikey=37 pitch_keycenter=37
+<region> sample=hihat_D2_L2.wav        lokey=38 hikey=38 pitch_keycenter=38
+<region> sample=hihat_D#2_L2.wav       lokey=39 hikey=39 pitch_keycenter=39
+<region> sample=hihat_E2_L2.wav        lokey=40 hikey=40 pitch_keycenter=40
+<region> sample=hihat_F2_L2.wav        lokey=41 hikey=41 pitch_keycenter=41
+<region> sample=hihat_F#2_L2.wav       lokey=42 hikey=42 pitch_keycenter=42
+<region> sample=hihat_G2_L2.wav        lokey=43 hikey=43 pitch_keycenter=43
+<region> sample=hihat_G#2_L2.wav       lokey=44 hikey=44 pitch_keycenter=44
+<region> sample=hihat_A2_L2.wav        lokey=45 hikey=45 pitch_keycenter=45
+<region> sample=hihat_A#2_L2.wav       lokey=46 hikey=46 pitch_keycenter=46
+<region> sample=hihat_B2_L2.wav        lokey=47 hikey=47 pitch_keycenter=47
+
+// Layer 3 — closed / loose (150 ms, 4000-8500 Hz)
+<group>
+lovel=32
+hivel=47
+<region> sample=hihat_C2_L3.wav        lokey=36 hikey=36 pitch_keycenter=36
+<region> sample=hihat_C#2_L3.wav       lokey=37 hikey=37 pitch_keycenter=37
+<region> sample=hihat_D2_L3.wav        lokey=38 hikey=38 pitch_keycenter=38
+<region> sample=hihat_D#2_L3.wav       lokey=39 hikey=39 pitch_keycenter=39
+<region> sample=hihat_E2_L3.wav        lokey=40 hikey=40 pitch_keycenter=40
+<region> sample=hihat_F2_L3.wav        lokey=41 hikey=41 pitch_keycenter=41
+<region> sample=hihat_F#2_L3.wav       lokey=42 hikey=42 pitch_keycenter=42
+<region> sample=hihat_G2_L3.wav        lokey=43 hikey=43 pitch_keycenter=43
+<region> sample=hihat_G#2_L3.wav       lokey=44 hikey=44 pitch_keycenter=44
+<region> sample=hihat_A2_L3.wav        lokey=45 hikey=45 pitch_keycenter=45
+<region> sample=hihat_A#2_L3.wav       lokey=46 hikey=46 pitch_keycenter=46
+<region> sample=hihat_B2_L3.wav        lokey=47 hikey=47 pitch_keycenter=47
+
+// Layer 4 — loose (200 ms, 3800-9500 Hz)
+<group>
+lovel=48
+hivel=63
+<region> sample=hihat_C2_L4.wav        lokey=36 hikey=36 pitch_keycenter=36
+<region> sample=hihat_C#2_L4.wav       lokey=37 hikey=37 pitch_keycenter=37
+<region> sample=hihat_D2_L4.wav        lokey=38 hikey=38 pitch_keycenter=38
+<region> sample=hihat_D#2_L4.wav       lokey=39 hikey=39 pitch_keycenter=39
+<region> sample=hihat_E2_L4.wav        lokey=40 hikey=40 pitch_keycenter=40
+<region> sample=hihat_F2_L4.wav        lokey=41 hikey=41 pitch_keycenter=41
+<region> sample=hihat_F#2_L4.wav       lokey=42 hikey=42 pitch_keycenter=42
+<region> sample=hihat_G2_L4.wav        lokey=43 hikey=43 pitch_keycenter=43
+<region> sample=hihat_G#2_L4.wav       lokey=44 hikey=44 pitch_keycenter=44
+<region> sample=hihat_A2_L4.wav        lokey=45 hikey=45 pitch_keycenter=45
+<region> sample=hihat_A#2_L4.wav       lokey=46 hikey=46 pitch_keycenter=46
+<region> sample=hihat_B2_L4.wav        lokey=47 hikey=47 pitch_keycenter=47
+
+// Layer 5 — half-open (280 ms, 3700-10500 Hz)
+<group>
+lovel=64
+hivel=79
+<region> sample=hihat_C2_L5.wav        lokey=36 hikey=36 pitch_keycenter=36
+<region> sample=hihat_C#2_L5.wav       lokey=37 hikey=37 pitch_keycenter=37
+<region> sample=hihat_D2_L5.wav        lokey=38 hikey=38 pitch_keycenter=38
+<region> sample=hihat_D#2_L5.wav       lokey=39 hikey=39 pitch_keycenter=39
+<region> sample=hihat_E2_L5.wav        lokey=40 hikey=40 pitch_keycenter=40
+<region> sample=hihat_F2_L5.wav        lokey=41 hikey=41 pitch_keycenter=41
+<region> sample=hihat_F#2_L5.wav       lokey=42 hikey=42 pitch_keycenter=42
+<region> sample=hihat_G2_L5.wav        lokey=43 hikey=43 pitch_keycenter=43
+<region> sample=hihat_G#2_L5.wav       lokey=44 hikey=44 pitch_keycenter=44
+<region> sample=hihat_A2_L5.wav        lokey=45 hikey=45 pitch_keycenter=45
+<region> sample=hihat_A#2_L5.wav       lokey=46 hikey=46 pitch_keycenter=46
+<region> sample=hihat_B2_L5.wav        lokey=47 hikey=47 pitch_keycenter=47
+
+// Layer 6 — open (380 ms, 3600-11500 Hz)
+<group>
+lovel=80
+hivel=95
+<region> sample=hihat_C2_L6.wav        lokey=36 hikey=36 pitch_keycenter=36
+<region> sample=hihat_C#2_L6.wav       lokey=37 hikey=37 pitch_keycenter=37
+<region> sample=hihat_D2_L6.wav        lokey=38 hikey=38 pitch_keycenter=38
+<region> sample=hihat_D#2_L6.wav       lokey=39 hikey=39 pitch_keycenter=39
+<region> sample=hihat_E2_L6.wav        lokey=40 hikey=40 pitch_keycenter=40
+<region> sample=hihat_F2_L6.wav        lokey=41 hikey=41 pitch_keycenter=41
+<region> sample=hihat_F#2_L6.wav       lokey=42 hikey=42 pitch_keycenter=42
+<region> sample=hihat_G2_L6.wav        lokey=43 hikey=43 pitch_keycenter=43
+<region> sample=hihat_G#2_L6.wav       lokey=44 hikey=44 pitch_keycenter=44
+<region> sample=hihat_A2_L6.wav        lokey=45 hikey=45 pitch_keycenter=45
+<region> sample=hihat_A#2_L6.wav       lokey=46 hikey=46 pitch_keycenter=46
+<region> sample=hihat_B2_L6.wav        lokey=47 hikey=47 pitch_keycenter=47
+
+// Layer 7 — bright open (490 ms, 3500-13000 Hz)
+<group>
+lovel=96
+hivel=111
+<region> sample=hihat_C2_L7.wav        lokey=36 hikey=36 pitch_keycenter=36
+<region> sample=hihat_C#2_L7.wav       lokey=37 hikey=37 pitch_keycenter=37
+<region> sample=hihat_D2_L7.wav        lokey=38 hikey=38 pitch_keycenter=38
+<region> sample=hihat_D#2_L7.wav       lokey=39 hikey=39 pitch_keycenter=39
+<region> sample=hihat_E2_L7.wav        lokey=40 hikey=40 pitch_keycenter=40
+<region> sample=hihat_F2_L7.wav        lokey=41 hikey=41 pitch_keycenter=41
+<region> sample=hihat_F#2_L7.wav       lokey=42 hikey=42 pitch_keycenter=42
+<region> sample=hihat_G2_L7.wav        lokey=43 hikey=43 pitch_keycenter=43
+<region> sample=hihat_G#2_L7.wav       lokey=44 hikey=44 pitch_keycenter=44
+<region> sample=hihat_A2_L7.wav        lokey=45 hikey=45 pitch_keycenter=45
+<region> sample=hihat_A#2_L7.wav       lokey=46 hikey=46 pitch_keycenter=46
+<region> sample=hihat_B2_L7.wav        lokey=47 hikey=47 pitch_keycenter=47
+
+// Layer 8 — full open (600 ms, 3500-15000 Hz)
+<group>
+lovel=112
+hivel=127
+<region> sample=hihat_C2_L8.wav        lokey=36 hikey=36 pitch_keycenter=36
+<region> sample=hihat_C#2_L8.wav       lokey=37 hikey=37 pitch_keycenter=37
+<region> sample=hihat_D2_L8.wav        lokey=38 hikey=38 pitch_keycenter=38
+<region> sample=hihat_D#2_L8.wav       lokey=39 hikey=39 pitch_keycenter=39
+<region> sample=hihat_E2_L8.wav        lokey=40 hikey=40 pitch_keycenter=40
+<region> sample=hihat_F2_L8.wav        lokey=41 hikey=41 pitch_keycenter=41
+<region> sample=hihat_F#2_L8.wav       lokey=42 hikey=42 pitch_keycenter=42
+<region> sample=hihat_G2_L8.wav        lokey=43 hikey=43 pitch_keycenter=43
+<region> sample=hihat_G#2_L8.wav       lokey=44 hikey=44 pitch_keycenter=44
+<region> sample=hihat_A2_L8.wav        lokey=45 hikey=45 pitch_keycenter=45
+<region> sample=hihat_A#2_L8.wav       lokey=46 hikey=46 pitch_keycenter=46
+<region> sample=hihat_B2_L8.wav        lokey=47 hikey=47 pitch_keycenter=47
+
