@@ -314,6 +314,134 @@ def _worker_log_tail(n=12):
         return []
 
 
+# Detection patterns for the worker-fire banner. Conservative on purpose:
+# we classify a fire only when we see a known signal; everything else is
+# treated as in-flight (banner shows the previous committed fire's status,
+# if any). Add patterns as new modes are observed in practice — let
+# categories emerge.
+_WORKER_FIRE_RE = re.compile(r"^--- worker fire (.+) ---\s*$")
+_WORKER_EXIT_RE = re.compile(r"^--- worker exit pid \d+ at (.+) ---\s*$")
+_WORKER_FAILURE_PATTERNS = (
+    "Failed to authenticate",   # OAuth token expired (401 from anthropic API)
+    "API Error:",               # any API-side failure surfaced by claude -p
+    "ERROR:",                   # spawn errors written by server.py itself
+)
+# Round-complete signals the supervisor itself writes. These let us
+# recognize a successful fire even when the cleanup daemon thread didn't
+# get to write its exit line — which happens whenever the server is
+# restarted between worker exit and cleanup, or while the worker is still
+# running. The "→ reload http://..." line is the supervisor's explicit
+# round-end marker.
+_WORKER_SUCCESS_MARKERS = (
+    "→ reload http://localhost",
+    "→ reload http://127.0.0.1",
+)
+
+
+def _last_fire_status():
+    """Inspect the tail of .worker.log and report the most recent *committed*
+    worker fire's status.
+
+    A fire is "committed" when its log block contains any of:
+      - a recognized failure pattern (auth, API, spawn error) → failed
+      - the supervisor's success marker ("→ reload http://...")  → ok
+      - a matching exit line with no failure pattern             → ok
+
+    A fire that has none of these is in flight (truly mid-round) and is
+    skipped — we walk backward to the previous committed fire instead.
+    This keeps the banner from flickering mid-round AND prevents stale
+    failure displays when the cleanup daemon thread didn't write the
+    exit line for a successful round.
+
+    Returns one of:
+        {"status": "ok",     "fire_ts": ..., "exit_ts": ... or None}
+        {"status": "failed", "fire_ts": ..., "exit_ts": ... or None, "error_line": ...}
+        {"status": "none"}                                                  -- never fired
+    """
+    if not WORKER_LOG_FILE.exists():
+        return {"status": "none"}
+
+    # 32KB tail is plenty even for verbose round summaries.
+    try:
+        size = WORKER_LOG_FILE.stat().st_size
+        with open(WORKER_LOG_FILE, "rb") as f:
+            f.seek(max(0, size - 32768))
+            data = f.read().decode("utf-8", errors="ignore")
+    except OSError:
+        return {"status": "none"}
+
+    lines = data.splitlines()
+
+    # Index every fire and exit line in the tail.
+    fires = []  # list of (line_idx, ts)
+    exits = []  # list of (line_idx, ts)
+    for i, line in enumerate(lines):
+        m_fire = _WORKER_FIRE_RE.match(line)
+        if m_fire:
+            fires.append((i, m_fire.group(1).strip()))
+            continue
+        m_exit = _WORKER_EXIT_RE.match(line)
+        if m_exit:
+            exits.append((i, m_exit.group(1).strip()))
+
+    if not fires:
+        return {"status": "none"}
+
+    # Walk fires from newest to oldest. Classify each block; return the
+    # first committed verdict (ok or failed). A block runs from its fire
+    # line to the next fire line (or end of log). The matching exit line,
+    # if any, is the first exit-line index inside that block.
+    for k in range(len(fires) - 1, -1, -1):
+        fire_idx, fire_ts = fires[k]
+        next_fire_idx = fires[k + 1][0] if k + 1 < len(fires) else len(lines)
+        block = lines[fire_idx + 1 : next_fire_idx]
+
+        exit_ts = None
+        for ei, ets in exits:
+            if fire_idx < ei < next_fire_idx:
+                exit_ts = ets
+                break
+
+        # Failure first — errors should never be silenced by a later
+        # success marker in the same block.
+        error_line = None
+        for line in block:
+            stripped = line.strip()
+            if not stripped:
+                continue
+            for pat in _WORKER_FAILURE_PATTERNS:
+                if pat in stripped:
+                    error_line = stripped
+                    break
+            if error_line:
+                break
+        if error_line:
+            return {
+                "status": "failed",
+                "fire_ts": fire_ts,
+                "exit_ts": exit_ts,
+                "error_line": error_line,
+            }
+
+        # Then explicit success markers from the supervisor.
+        for line in block:
+            for marker in _WORKER_SUCCESS_MARKERS:
+                if marker in line:
+                    return {"status": "ok", "fire_ts": fire_ts, "exit_ts": exit_ts}
+
+        # Then a clean exit line with no failure pattern detected — treat
+        # as ok. (Some early supervisor versions may exit without writing
+        # a "→ reload" line; an exit line is still a strong commit signal.)
+        if exit_ts is not None:
+            return {"status": "ok", "fire_ts": fire_ts, "exit_ts": exit_ts}
+
+        # Otherwise the block is in-flight — fall through to the previous fire.
+
+    # All fires in flight (extremely unusual — would require multiple
+    # concurrent workers, which the global PID-file lock prevents).
+    return {"status": "none"}
+
+
 def _worker_status_dict():
     running, pid = _worker_alive()
     started = None
@@ -327,6 +455,7 @@ def _worker_status_dict():
         "pid": pid,
         "started_at": started,
         "log_tail": _worker_log_tail(8),
+        "last_fire": _last_fire_status(),
     }
 
 
@@ -678,6 +807,43 @@ INDEX_HTML = r"""<!DOCTYPE html>
     50% { opacity: 1; }
   }
 
+  /* Worker-fire failure banner — appears when the most recent completed
+     fire exited with a known failure pattern (auth error, API error,
+     spawn error). Disappears automatically when the next fire succeeds.
+     Orange CP437 frame to distinguish from the gold header. */
+  .worker-banner {
+    margin: 14px 18px 0; padding: 12px 16px;
+    background: var(--bg-2);
+    border: 1px solid var(--orange);
+    outline: 1px solid var(--orange);
+    outline-offset: -4px;
+    display: none;
+  }
+  .worker-banner.show { display: block; }
+  .worker-banner .head {
+    color: var(--orange); font-weight: 700;
+    letter-spacing: 0.08em; font-size: 13px;
+  }
+  .worker-banner .ts {
+    color: var(--fg-faint); font-size: 11px;
+    letter-spacing: 0.06em; margin-top: 2px;
+  }
+  .worker-banner pre.error {
+    background: var(--bg-3); border: 1px solid var(--border);
+    padding: 8px 12px; margin: 8px 0 6px;
+    font-size: 12px; color: var(--fg);
+    white-space: pre-wrap; word-break: break-word;
+    max-width: 78ch;
+  }
+  .worker-banner .hint {
+    color: var(--fg-dim); font-size: 12px; margin-top: 4px;
+    max-width: 78ch;
+  }
+  .worker-banner .hint code {
+    background: var(--bg-3); border: 1px solid var(--border);
+    padding: 1px 6px; color: var(--teal); font-size: 11px;
+  }
+
   /* Validator verbose strip on each card */
   .validator {
     padding: 8px 18px; border-top: 1px dashed var(--border);
@@ -703,6 +869,13 @@ INDEX_HTML = r"""<!DOCTYPE html>
   </div>
   <button id="reload-btn" title="reload queue from disk">↻ reload</button>
 </header>
+
+<div id="worker-banner" class="worker-banner" role="alert" aria-live="polite">
+  <div class="head">! last worker fire failed</div>
+  <div class="ts" id="worker-banner-ts"></div>
+  <pre class="error" id="worker-banner-error"></pre>
+  <div class="hint">if this is a 401, run <code>claude /login</code> in a terminal to refresh the OAuth token, then click ▶ on any card to retry. for other errors check <code>Enrichment/.worker.log</code>.</div>
+</div>
 
 <main id="cards"></main>
 
@@ -746,23 +919,14 @@ function renderArtifact(card){
   return `<a href="${url}" target="_blank" style="color:var(--teal)">↗ open file</a>`;
 }
 
-// Verbose-mode validator strip — shown on every card during v1 testing.
-// Hidden later once calibration is proven.
+// Validator strip — hidden 2026-05-09 once calibration was proven.
+// The validator still runs on every fresh/revised card and writes its
+// verdict + note into the card's frontmatter (validator_verdict,
+// validator_iterations, validator_note); the API still serves these
+// fields. The strip is only hidden on the BBS surface — to re-enable,
+// remove the early return below.
 function renderValidator(card){
-  const v = (card.validator_verdict || '').trim();
-  if (!v) return '';
-  const cls = v.startsWith('revise') ? 'v-revise' : 'v-pass';
-  const verdictText = v;  // raw value, e.g. 'pass' or 'revise-then-shipped'
-  const iter = (card.validator_iterations || '').toString().trim();
-  const iterLabel = iter && iter !== '0' ? ` · iter ${iter}` : '';
-  const note = (card.validator_note || '').trim();
-  return `
-    <div class="validator">
-      <span class="${cls}">validator: ${escapeHTML(verdictText)}</span>
-      <span class="v-iter">${escapeHTML(iterLabel)}</span>
-      ${note ? `<span class="v-note">${escapeHTML(note)}</span>` : ''}
-    </div>
-  `;
+  return '';
 }
 
 function renderCard(card){
@@ -916,12 +1080,28 @@ loadCards();
 // ---- Worker status polling ----
 // Polls /api/worker-status every few seconds. When the worker transitions
 // from active → idle, automatically reloads the queue so revised/fresh
-// cards appear without the user having to click reload.
+// cards appear without the user having to click reload. Also surfaces
+// the failure banner when the last completed fire exited with a known
+// failure pattern (auth, API, spawn).
 const workerEl = document.getElementById('worker-status');
 const workerLbl = workerEl.querySelector('.lbl');
+const bannerEl    = document.getElementById('worker-banner');
+const bannerTsEl  = document.getElementById('worker-banner-ts');
+const bannerErrEl = document.getElementById('worker-banner-error');
 let lastWorkerActive = false;
 let workerPollMs = 2500;
 let workerStartedTs = null;
+
+function updateBanner(lastFire){
+  if (!lastFire || lastFire.status !== 'failed') {
+    bannerEl.classList.remove('show');
+    return;
+  }
+  const ts = lastFire.exit_ts || lastFire.fire_ts || '';
+  bannerTsEl.textContent = ts ? `last fire exited ${ts}` : '';
+  bannerErrEl.textContent = lastFire.error_line || '(no error line captured)';
+  bannerEl.classList.add('show');
+}
 
 async function pollWorker(){
   try {
@@ -941,6 +1121,7 @@ async function pollWorker(){
       workerEl.classList.remove('active');
       workerLbl.textContent = 'worker idle';
     }
+    updateBanner(d.last_fire);
     // Active→idle transition: reload the queue so any new/revised cards appear
     if (lastWorkerActive && !active) {
       loadCards();
