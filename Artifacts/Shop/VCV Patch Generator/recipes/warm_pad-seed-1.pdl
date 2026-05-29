@@ -1,4 +1,4 @@
-// warm_pad — T7b archetype audition (seed 1)
+// warm_pad — T7c archetype audition (seed 1)
 // Slow LFO breathing on the filter cutoff; pad attack/release.
 @OSC     = VCO
 @FILT    = VCF
