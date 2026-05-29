@@ -54,6 +54,41 @@ The board auto-updates without `[R]ELOAD` via the SSE endpoint. A
 status-bar indicator shows the connection state: `LIVE` (connected),
 `RECONNECTING` (attempting to reconnect), or `OFFLINE` (failed).
 
+## v0.3 — inline rich content
+
+Messages can carry artifacts (image / audio / sandboxed HTML) that render
+inline in the message row, the way the Enrichment server renders cards.
+
+### Read path — `GET /api/file`
+
+**`GET /api/file?path=<palace-relative>`**
+- Streams the file's bytes with content-type detection (same table as
+  `Enrichment/server.py`), `Content-Length`, and `Cache-Control: no-cache`.
+- `400` on a missing/empty path, path traversal, an absolute path, or a
+  directory. `404` when the file does not exist.
+- The `path` is resolved through the same `resolveInsidePalace` guard as
+  `GET /api/open`: nothing outside the palace root is reachable. This is the
+  read-side counterpart to the strict write-side validator — lenient about
+  *what* it serves, strict about *where* it reads from.
+
+### Payload convention (allowed, not required)
+
+Any message type may carry an artifact in its (opaque) `payload`:
+
+- `payload.artifact_path: "<palace-relative>"` — a single artifact, or
+- `payload.artifacts: [{ path, caption? }]` — a coherent multi-artifact set.
+
+`payload.kind: "enrichment_card"` is an optional discriminator; when present
+the row shows a small `enrichment` tag. The §2.2 validator is unchanged —
+`payload` is opaque by spec, so the discriminator and artifact fields pass
+straight through. Artifact rendering is keyed on artifact *presence*, not on
+message type or `kind`.
+
+Rendering: image → `<img>`; audio → `<audio controls>` (browser-default
+controls in v0.3); HTML → `<iframe sandbox="allow-scripts">` (deliberately
+**no** `allow-same-origin`, so a served artifact cannot reach STIGMERGY's DOM,
+storage, or POST endpoint); anything else → an open-link via `GET /api/open`.
+
 ## Run
 
 From this directory (`_ops/stigmergy/app/`):

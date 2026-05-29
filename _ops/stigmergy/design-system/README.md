@@ -169,6 +169,18 @@ A "card" is a CSS-bordered box. Primary containers use `3px double var(--phospho
 
 Cards never use shadow, radius, or fill. The border IS the card.
 
+### Inline rich content (v0.3)
+STIGMERGY can render an artifact (image / audio / sandboxed HTML) **inline inside a message**, the way the Enrichment server renders cards. The artifact's own pixels render **as authored** — a full-color photo stays full-color, a p5 sim runs in its own colors. This is a deliberate, scoped exception to the "dither photos to 1-bit" rule: the artifact is *content*, not chrome, and re-coloring it would destroy the thing under review.
+
+The **frame** around the artifact still obeys the house rules: a `1px solid var(--phosphor-dim)` card with `border-radius: 0`, a deep-phosphor (`var(--phosphor-deep)`) fill, and a dim, uppercase, monospace label (`<type> · <filename>`) above it. Captions are dim phosphor, `max-width: 78ch`.
+
+- **Image** → `<img>` (width-constrained to the card).
+- **Audio** → `<audio controls>` — browser-default controls are an accepted break in v0.3; a phosphor-styled control strip is a later polish.
+- **HTML** → `<iframe sandbox="allow-scripts">`, deliberately **without** `allow-same-origin`, so a served artifact cannot reach the terminal's DOM, storage, or POST endpoint.
+- **Other** → an `↗ open <file>` link (native open via `GET /api/open`), never an inline render.
+
+Artifacts are served by `GET /api/file?path=<palace-relative>`, which is strict about *where* it reads (palace root only, no traversal) and lenient about *what* it serves.
+
 ### Transparency + blur
 - **Never blur.** Blur is alien to a text-mode terminal.
 - **Transparency** is fine on the scanline overlay and the CRT vignette. Nowhere else — UI chrome is opaque.

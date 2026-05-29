@@ -88,3 +88,27 @@
 {"ts":"2026-05-29T14:42:01.376Z","phase":8,"action":"gate-end","outcome":"pass","stage":"tests+captures"}
 {"ts":"2026-05-29T14:46:25.816Z","phase":8,"label":"v0.3 Phase 2 — Inline Render","action":"gate-start"}
 {"ts":"2026-05-29T14:46:44.030Z","phase":8,"action":"gate-end","outcome":"pass","stage":"tests+captures"}
+{"ts":"2026-05-29T14:48:15.178Z","phase":9,"label":"v0.3 Phase 3 — Round-trip + Final Sweep","action":"gate-start"}
+{"ts":"2026-05-29T14:50:41.846Z","phase":9,"action":"gate-end","outcome":"fail","stage":"playwright"}
+{"ts":"2026-05-29T19:23:18.017Z","phase":9,"label":"v0.3 Phase 3 — Round-trip + Final Sweep","action":"gate-start"}
+{"ts":"2026-05-29T19:24:07.122Z","phase":9,"action":"gate-end","outcome":"pass","stage":"tests+captures"}
+{"ts":"2026-05-29T19:24:37.783Z","phase":1,"label":"Project Skeleton","action":"gate-start"}
+{"ts":"2026-05-29T19:24:57.255Z","phase":1,"action":"gate-end","outcome":"pass","stage":"tests+captures"}
+{"ts":"2026-05-29T19:24:57.255Z","phase":2,"label":"Write Path","action":"gate-start"}
+{"ts":"2026-05-29T19:24:58.311Z","phase":2,"action":"gate-end","outcome":"pass","stage":"tests+captures"}
+{"ts":"2026-05-29T19:24:58.312Z","phase":3,"label":"Read Path (SSE)","action":"gate-start"}
+{"ts":"2026-05-29T19:24:59.936Z","phase":3,"action":"gate-end","outcome":"pass","stage":"tests+captures"}
+{"ts":"2026-05-29T19:24:59.936Z","phase":4,"label":"Click-to-Respond UI","action":"gate-start"}
+{"ts":"2026-05-29T19:25:31.675Z","phase":4,"action":"gate-end","outcome":"pass","stage":"tests+captures"}
+{"ts":"2026-05-29T19:25:31.676Z","phase":5,"label":"Live Tail Integration","action":"gate-start"}
+{"ts":"2026-05-29T19:26:15.010Z","phase":5,"action":"gate-end","outcome":"pass","stage":"tests+captures"}
+{"ts":"2026-05-29T19:26:15.011Z","phase":6,"label":"Polish + Final Sweep","action":"gate-start"}
+{"ts":"2026-05-29T19:27:00.427Z","phase":6,"action":"gate-end","outcome":"pass","stage":"tests+captures"}
+{"ts":"2026-05-29T19:27:00.427Z","phase":7,"label":"v0.3 Phase 1 — File Endpoint","action":"gate-start"}
+{"ts":"2026-05-29T19:27:02.051Z","phase":7,"action":"gate-end","outcome":"pass","stage":"tests+captures"}
+{"ts":"2026-05-29T19:27:02.052Z","phase":8,"label":"v0.3 Phase 2 — Inline Render","action":"gate-start"}
+{"ts":"2026-05-29T19:27:25.053Z","phase":8,"action":"gate-end","outcome":"pass","stage":"tests+captures"}
+{"ts":"2026-05-29T19:27:25.054Z","phase":9,"label":"v0.3 Phase 3 — Round-trip + Final Sweep","action":"gate-start"}
+{"ts":"2026-05-29T19:28:13.927Z","phase":9,"action":"gate-end","outcome":"pass","stage":"tests+captures"}
+{"ts":"2026-05-29T19:33:20.644Z","phase":9,"label":"v0.3 Phase 3 — Round-trip + Final Sweep","action":"gate-start"}
+{"ts":"2026-05-29T19:34:08.705Z","phase":9,"action":"gate-end","outcome":"pass","stage":"tests+captures"}
