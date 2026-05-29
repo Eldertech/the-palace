@@ -21,8 +21,7 @@ links:
   - target: "[[Shunryu Suzuki]]"
     type: deepens
   - target: "[[FOUR PILLARS]]"
-    type: connects-to
-    label: exemplifies
+    type: exemplifies
 ---
 # Four on the Floor
 ## Repetition as Meditation

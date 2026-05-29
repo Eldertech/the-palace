@@ -20,11 +20,9 @@ difficulty: deep
 philosopher: Immanuel Kant
 links:
   - target: "[[Weekly Themes Database]]"
-    type: connects-to
-    label: member-of
+    type: member-of
   - target: "[[FOUR PILLARS]]"
-    type: connects-to
-    label: exemplifies
+    type: exemplifies
 ---
 
 # The Haas Effect

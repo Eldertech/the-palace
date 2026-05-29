@@ -12,8 +12,7 @@ links:
   - target: "[[Weekly Themes Database]]"
     type: enables
   - target: "[[FOUR PILLARS]]"
-    type: connects-to
-    label: member-of
+    type: member-of
 ---
 
 # Interview Subjects — Book and Web Series

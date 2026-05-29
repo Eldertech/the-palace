@@ -21,8 +21,7 @@ links:
   - target: "[[Brian Eno]]"
     type: deepens
   - target: "[[FOUR PILLARS]]"
-    type: connects-to
-    label: exemplifies
+    type: exemplifies
 ---
 
 # The 808

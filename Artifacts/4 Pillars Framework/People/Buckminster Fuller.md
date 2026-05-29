@@ -16,8 +16,7 @@ who_leads: shared
 domain: Systems Thinker
 links:
   - target: "[[Source Library]]"
-    type: connects-to
-    label: member-of
+    type: member-of
   - target: "[[FOUR PILLARS]]"
     type: connects-to
     label: informs
