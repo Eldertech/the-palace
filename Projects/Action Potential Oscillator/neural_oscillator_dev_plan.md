@@ -1,3 +1,13 @@
+---
+title: "Neural Oscillator — Gen~ Development Plan"
+born: 2026-03-24
+links:
+  - target: "[[Action Potential Oscillator]]"
+    type: connects-to
+    label: child-of
+forward_vector: "I am the 4-stage Gen~/RNBO development plan for [[Action Potential Oscillator]] — per-sample pseudocode, input guards, testing criteria, citations. I stay buildable so any future session can reconstruct the oscillator stage by stage."
+---
+
 # Neural Oscillator — Gen~ Development Plan
 
 **4 Stages of Action Potential Synthesis**

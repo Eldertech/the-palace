@@ -79,11 +79,11 @@ The Gen~ development progresses through the four stages sequentially, each produ
 
 Faust remains a candidate for the production population-dynamics instrument (NeuroPulse), where `par(i, N, neuron(i))` provides first-class parallelism for large neuron populations. The Gen~ path and the Faust path may converge or remain complementary — the single-neuron oscillator in Gen~ feeds the educational series; the Faust population engine feeds the performance instrument.
 
-A complete Gen~ development plan with per-sample pseudocode, input guards, testing criteria, and citation verification lives at `Artifacts/Action Potential Oscillator/neural_oscillator_dev_plan.md`.
+A complete Gen~ development plan with per-sample pseudocode, input guards, testing criteria, and citation verification lives at `Projects/Action Potential Oscillator/neural_oscillator_dev_plan.md`.
 
 ## Implementation Status (March 2026)
 
-Stages 1–4 are implemented and playable. Stages 1–3 were built in Gen~ modules (visual dataflow); Stage 4 moved to Gen~ codebox as a deliberate pedagogical transition — the 4-state [[State Machine]] exceeded the visual paradigm's complexity threshold. The complete Stage 4 codebox code and educational interface text (intro paragraph, 4 phase descriptions, 8 parameter descriptions with biological ranges) are archived at `Artifacts/Action Potential Oscillator/`.
+Stages 1–4 are implemented and playable. Stages 1–3 were built in Gen~ modules (visual dataflow); Stage 4 moved to Gen~ codebox as a deliberate pedagogical transition — the 4-state [[State Machine]] exceeded the visual paradigm's complexity threshold. The complete Stage 4 codebox code and educational interface text (intro paragraph, 4 phase descriptions, 8 parameter descriptions with biological ranges) are archived at `Projects/Action Potential Oscillator/`.
 
 Key implementation decisions documented during the build:
 - **Frequency compensation**: spike and refractory durations are subtracted from the target period before computing drive current, so the `freq` input behaves as true pitch control regardless of spike_peak or refractory_ms settings.
@@ -94,7 +94,7 @@ The staging method itself — each stage complete, playable, and educational bef
 
 ## The Artifact
 
-The primary research artifact is `Artifacts/Action Potential Oscillator/neuron_oscillator.html` — a self-contained interactive document with 8 Canvas-rendered visualizations (static graphs + real-time interactive controls). Fixed 20ms time windows so parameter changes are immediately legible as waveform compression/expansion. Color-coded by ion species: Na⁺ orange, K⁺ blue, spike red, resting green, leak amber, hyperpolarization purple, charge yellow.
+The primary research artifact is `Projects/Action Potential Oscillator/neuron_oscillator.html` — a self-contained interactive document with 8 Canvas-rendered visualizations (static graphs + real-time interactive controls). Fixed 20ms time windows so parameter changes are immediately legible as waveform compression/expansion. Color-coded by ion species: Na⁺ orange, K⁺ blue, spike red, resting green, leak amber, hyperpolarization purple, charge yellow.
 
 The Stage 2 interactive shows the LIF waveform with τ and drive sliders — drive below 1.0× rheobase enters subthreshold regime (neuron goes silent). The Stage 4 interactive exposes all four phases (charge, spike rise, spike fall, refractory recovery) with τ, spike peak, hyperpolarization depth, recovery damping, and frequency controls. Both show real-time Hz / MIDI note readout. The biological maximum firing rate ceiling is visualized when frequency exceeds the spike+refractory duration.
 
