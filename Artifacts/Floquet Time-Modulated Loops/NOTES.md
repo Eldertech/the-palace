@@ -24,7 +24,7 @@ This shouldn't affect the timbre meaningfully — `tanh(x)` already saturates at
 
 ## Interactive HTML approach
 
-I used the pattern from `Artifacts/Action Potential Oscillator/neuron_oscillator.html` — self-contained single-file HTML, the same CSS variable system, the same font stack. Replaced the neuron-oscillator accents with the Floquet stability palette: green (stable) / orange-red (unstable) / yellow (marginal) / blue (multipliers) / purple (modulation).
+I used the pattern from `Projects/Action Potential Oscillator/neuron_oscillator.html` — self-contained single-file HTML, the same CSS variable system, the same font stack. Replaced the neuron-oscillator accents with the Floquet stability palette: green (stable) / orange-red (unstable) / yellow (marginal) / blue (multipliers) / purple (modulation).
 
 Each interactive embeds its full source in a `<details>` block at the bottom (the `Source — see how this is built` pattern from the manifest). The `<details>` block is populated by a small `fetch(window.location.href)` call that re-reads the page's own script — this works when served over HTTP but may show empty when opened as a `file://` URL in some browsers due to fetch CORS restrictions. Not a blocker — the source is still in the file, just not always visible in that viewer block.
 
