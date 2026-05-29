@@ -21,6 +21,9 @@ links:
   - target: "[[Trickster]]"
     type: connects-to
     label: choose-from-finished-work
+  - target: "[[BBS Rich Content — handoff]]"
+    type: couples-with
+    label: choice-interaction-type
 forward_vector: "I carry the design of Two Paths — the decide-after-doing mode — across the conversation→build boundary: where a steward cannot choose or the choice is sensory, the palace runs both branches to a finished deliverable and lets Loudon pick from completed work rather than imagined options. I keep the human as the chooser while spending compute to save his attention."
 session_thread: "Cowork/Claude-Code session 2026-05-29 — built Stage E (Automated Trickster), and on Loudon's first shadow review he proposed a new mode: present two completed paths instead of asking which work to do. This handoff is its first design pass."
 ---
@@ -86,9 +89,12 @@ steward → Trickster flow and adds a comparison surface.
 **Is:** an orchestrator-side *production* layer that (1) reads the Stage E digest,
 (2) selects forks eligible for two-paths, (3) forks the steward into two isolated
 branch workers — one per option — each producing a real deliverable and a
-`BRANCHES` post, (4) reconciles the two into one comparison artifact, (5) presents
-them side-by-side in STIGMERGY for Loudon to choose, and (6) merges the winner,
-preserving the loser as an alternative/tension.
+`BRANCHES` post, (4) packages the two deliverables as a rich-content **`choice`
+card** (two `options[]`, each with its `artifact_path`), (5) lets the existing
+`ChoiceBlock` renderer present them for Loudon's pick, and (6) on the resulting
+`choice_response` merges the winner, preserving the loser as an alternative/tension.
+Steps 4–5 are the rich-content v0.4 `choice` primitive — Two Paths *produces* the
+card; it does not build the surface.
 
 **Is not:** an auto-decider (the human ALWAYS picks the winner — Two Paths never
 resolves a fork itself), a replacement for Stage E's triage (it consumes Stage E's
@@ -105,6 +111,7 @@ work — gated, opt-in, budgeted).
 | Isolation | **Git worktrees** (the Agent tool's `isolation: 'worktree'`; §10.2 "temporary agent directory"). | Branches must not contaminate each other or the working tree. Clean ancestor, independent divergence. |
 | Losing branch | **Preserved as a tension/alternative** (§10.2 contradiction-as-finding), not silently discarded. | Sunk work becomes a recorded alternative the page can revisit; honors the palace's "contradictions are generative." |
 | Reuse | **Stage E digest (candidate source) + orchestrator dispatch (Path 2 Agent tool) + the BBS write path + the STIGMERGY surface.** No new substrate. | Same one-boundary discipline as Stage E. The `BRANCHES` board finally gets its writer. |
+| **Comparison surface = the rich-content `choice` interaction type** | **Do NOT build a bespoke side-by-side view. Two Paths EMITS a `choice` card (`payload.kind:"choice"`, `choice_mode:"pick"`, two `options[]` each with `artifact_path` = its branch deliverable + a caption) and CONSUMES the resulting `choice_response` REPLY (`payload.choice` = winning option id) to pick the branch to merge.** | The STIGMERGY v0.4 rich-content session is already building exactly this primitive (`src/lib/richcontent.js` `choiceFromPayload` + `buildChoiceResponse`, `components/ChoiceBlock.jsx`, wired in `MessageList.jsx`; `rich-content2.spec.js` proves a choice card renders options each carrying an inline audio artifact with a SEND-PICK action). Its demo case is a comparative audition — Two Paths' sensory case. Loudon's call (2026-05-29): Two Paths is a *producer* of `choice` cards; rich content owns their rendering + the pick. |
 | Cost gate | **Opt-in + budgeted** (extend Stage E's daily budget with a two-paths run cap). Never fork an unbounded/expensive path. | 2× compute is real. Forking a multi-day path is wrong; bound each branch to one cycle / one deliverable. |
 
 ## Open questions (decide WITH Loudon before or during build — do not guess)
@@ -118,9 +125,14 @@ work — gated, opt-in, budgeted).
 2. **Checkpoint vs fresh-directed cycle.** Do branches fork from a §10.1 checkpoint
    of the steward's history (unbuilt), or just run a normal cycle with a directive
    "take option X"? Thin path: the directed cycle. Checkpoints can come later.
-3. **The comparison surface.** A STIGMERGY side-by-side view (two artifacts + their
-   `BRANCHES` messages + a CHOOSE action). How much UI vs. a generated comparison
-   artifact Loudon opens? Reuse `DigestPanel` / `ArtifactSlot`.
+3. **The comparison surface — now a DEPENDENCY, not a build.** Resolved to the
+   rich-content `choice` type (see Decisions). What remains to confirm: (a) which
+   board the `choice` card lands on — TRICKSTER (so it's a triage decision) or
+   GENERAL (rendered card) — and whether/how it also surfaces in the Stage E
+   digest; (b) `pick` vs `rank` mode (Two Paths is `pick`); (c) the v0.4 `choice`
+   type must have *landed* on the branch before Stage F Phase 3 runs — it is
+   in-progress (`ChoiceBlock.jsx` + `richcontent.js` exist, `rich-content2.spec.js`
+   green) but not yet merged/shipped. Coordinate, don't fork your own renderer.
 4. **Merge/reconcile mechanics.** After Loudon picks: orchestrator merges the
    winner's worktree to the working branch; the loser's diff is saved as an
    alternative note on the page (or its `BRANCHES` post stands as the record).
@@ -152,14 +164,23 @@ models or merge) until Loudon opts into live execution.
   deliverables and `BRANCHES` posts into one deterministic comparison object
   (convergence / contradiction / orthogonality per §10.2). *Verify:* comparison
   renders deterministically from a fixture of two branch results.
-- **Phase 3 — Comparison surface (STIGMERGY).** Side-by-side view of the two
-  finished paths with a CHOOSE action that records Loudon's pick. *Verify:* e2e
-  renders two paths and the choose action; the app suite stays green (no
-  regression to Stage E's `DigestPanel` or the inbox).
-- **Phase 4 — Merge the winner; preserve the loser.** On a pick, merge the
-  winner's worktree to the working branch; save the loser as an alternative/tension
-  on the page. *Verify:* round-trip on a throwaway repo/worktree — winner's diff
-  lands, loser's is preserved, working tree clean.
+- **Phase 3 — Emit the `choice` card (reuse, don't build a surface).** Package the
+  two finished branch deliverables as a rich-content `choice` card
+  (`payload.kind:"choice"`, `choice_mode:"pick"`, `options:[{id, label,
+  artifact_path, caption}, …]`) and post it via the existing validated append.
+  Rendering + the SEND-PICK action are already owned by `ChoiceBlock.jsx`. *Verify:*
+  the emitted card passes the strict §2.2 validator and `choiceFromPayload`
+  normalizes it; in the app, the two paths render side-by-side with their artifacts
+  (sensory case = a comparative audition); the app suite stays green (no regression
+  to v0.3/v0.4 rich content, Stage E's `DigestPanel`, or the inbox).
+- **Phase 4 — Consume the `choice_response`; merge the winner; preserve the loser.**
+  Read the `choice_response` REPLY (`payload.choice` = winning option id, correlated
+  by `re`), map the option id → branch worktree, merge the winner to the working
+  branch, and save the loser as an alternative/tension on the page. The human's
+  pick (via `buildChoiceResponse`) is the ONLY thing that triggers a merge — Two
+  Paths never picks. *Verify:* round-trip on a throwaway repo/worktree — a
+  `choice_response` selecting option A merges A's diff, preserves B's, leaves the
+  tree clean.
 - **Phase 5 — Cost gate + Stage E integration (confirm OQ1, OQ4).** Budget-gated,
   opt-in, wired to pick up Stage E digest candidates after a batch. *Verify:*
   dry-run invocation documented in the skill.
@@ -205,6 +226,12 @@ violation, not a bug. The human always chooses.
 5. `.claude/skills/palace-orchestrator/` (dispatch + `permanent.md`) — how a
    steward cycle is run; Two Paths runs two of them, isolated.
 6. `_ops/swarm/persistent/blackboard.jsonl` — read the tail for real fork shapes.
+7. **The rich-content `choice` type (the comparison surface — coordinate with it):**
+   [[BBS Rich Content — handoff]], `_ops/stigmergy/app/src/lib/richcontent.js`
+   (`choiceFromPayload`, `buildChoiceResponse`), `src/components/ChoiceBlock.jsx`,
+   and `tests/e2e/rich-content2.spec.js`. This is the v0.4 STIGMERGY work in
+   progress on the same `stigmergy-v0.3-rich-content` branch. Confirm it has landed
+   before Phase 3.
 
 ## Receiving environment
 
