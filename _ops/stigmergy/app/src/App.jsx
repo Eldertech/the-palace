@@ -17,10 +17,17 @@ function formatNow() {
   return `${String(d.getHours()).padStart(2, '0')}:${String(d.getMinutes()).padStart(2, '0')}`;
 }
 
-function isDemoMode() {
-  if (typeof window === 'undefined') return false;
-  const params = new URLSearchParams(window.location.search);
-  return params.get('demo') === '1';
+// Demo mode from the ?demo= query param:
+//   '1'     → demo data PREPENDED onto live palace data (the default showcase)
+//   'only'  → demo data ONLY, excluding the live board (hermetic + deterministic;
+//             used by inbox/click-to-respond e2e so they don't depend on whatever
+//             RESOURCE_REQUESTs the live palace board happens to carry)
+//   'empty' → no data at all (hermetic empty board for empty-state / no-pending tests)
+//   (absent) → live palace data only
+function demoMode() {
+  if (typeof window === 'undefined') return null;
+  const v = new URLSearchParams(window.location.search).get('demo');
+  return v === '1' || v === 'only' || v === 'empty' ? v : null;
 }
 
 export default function App() {
@@ -48,7 +55,7 @@ export default function App() {
   // SSE connection state: 'connecting' | 'connected' | 'reconnecting' | 'offline'
   const [liveState, setLiveState] = useState('offline');
 
-  const demo = isDemoMode();
+  const demo = demoMode();
 
   useEffect(() => {
     const t = setInterval(() => setClock(formatNow()), 1000);
@@ -63,9 +70,16 @@ export default function App() {
         fetchSessions(),
       ]);
       const real = persistent.messages || [];
-      const combined = demo
-        ? [...validateAll(DEMO_MESSAGES), ...real]
-        : real;
+      let combined;
+      if (demo === 'empty') {
+        combined = [];
+      } else if (demo === 'only') {
+        combined = validateAll(DEMO_MESSAGES);
+      } else if (demo === '1') {
+        combined = [...validateAll(DEMO_MESSAGES), ...real];
+      } else {
+        combined = real;
+      }
       setMessages(combined);
       // A fresh reload subsumes any optimistic state — the persisted
       // messages are now in the canonical set.
@@ -195,7 +209,7 @@ export default function App() {
         <div style={{ color: 'var(--phosphor-dim)', textShadow: 'none', marginBottom: 4 }}>
           {`${messages.length} total traces · ${totalFlagged} flagged · ${filtered.length} on ${activeBoard}.`}
           {loadedAt ? <> · last loaded <span style={{ color: 'var(--phosphor-dim)' }}>{loadedAt.split('T')[1].split('.')[0]}Z</span></> : null}
-          {demo ? <span style={{ color: 'var(--warn)', textShadow: 'var(--glow)', marginLeft: 12 }}>· demo data prepended</span> : null}
+          {demo === '1' ? <span style={{ color: 'var(--warn)', textShadow: 'var(--glow)', marginLeft: 12 }}>· demo data prepended</span> : null}
         </div>
         <div style={{ marginBottom: 12, fontSize: 14 }} data-testid="inline-actions">
           <span

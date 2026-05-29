@@ -1,36 +1,49 @@
 // click-to-respond.spec.js — Phase 4 e2e tests for the interactive Trickster inbox.
 //
-// POST cleanup strategy: option (a). Before each test that posts, the demo
-// session file (demo-2026-05-02/blackboard.jsonl) is truncated to an empty
-// file. This prevents accumulated writes from tests that ran earlier in the
-// suite from affecting inbox state (a second GRANT for the same request_id
-// would make the item disappear before we open the modal).
+// Hermetic strategy (v0.3): these tests run in ?demo=only mode, so the visible
+// data is the demo set ALONE (no live palace board). That makes the pending set
+// deterministic — exactly one option-less demo request (req-demo-002), which
+// renders the modal-driven `inbox-response-options` block. The confirm tests
+// POST a RESOURCE_GRANT to the real persistent board (the UI always posts to
+// /api/persistent); to leave no trace, we snapshot the persistent blackboard
+// once and restore it after every test.
 //
-// The session directory is created by the middleware on first POST; subsequent
-// tests clear only the file, not the directory.
+// Why this changed: under ?demo=1 the live palace board's Steward
+// RESOURCE_REQUESTs (which carry payload.options[] and render the InlineResponse
+// form, not inbox-response-options) sort above the demo request, and confirm
+// tests left orphan GRANTs on the live board — both made these tests flaky as
+// the live board evolved. See V0.3-COMPLETE.md "live-board drift".
 
 import { test, expect } from '@playwright/test';
-import { writeFileSync, mkdirSync, existsSync } from 'node:fs';
-import { resolve } from 'node:path';
+import { readFileSync, writeFileSync } from 'node:fs';
+import { resolve, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { dirname } from 'node:path';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
-// Palace root — two levels above the app directory (app/ is under _ops/stigmergy/).
+// app/ is at <palace>/_ops/stigmergy/app, so the palace root is three levels up.
 const APP_ROOT = resolve(__dirname, '../..');
-const PALACE_ROOT = resolve(APP_ROOT, '../../../..');
-const DEMO_SESSION_DIR = resolve(PALACE_ROOT, '_ops/swarm/sessions/demo-2026-05-02');
-const DEMO_SESSION_FILE = resolve(DEMO_SESSION_DIR, 'blackboard.jsonl');
+const PALACE_ROOT = resolve(APP_ROOT, '../../..');
+const PERSISTENT_BB = resolve(PALACE_ROOT, '_ops/swarm/persistent/blackboard.jsonl');
 
-function clearDemoSession() {
-  mkdirSync(DEMO_SESSION_DIR, { recursive: true });
-  writeFileSync(DEMO_SESSION_FILE, '', 'utf8');
-}
+let boardSnapshot = '';
+test.beforeAll(() => {
+  boardSnapshot = readFileSync(PERSISTENT_BB, 'utf8');
+});
+// Restore after every test so a confirmed RESOURCE_GRANT never lingers on the
+// live board (and so tests don't interfere with each other). afterAll repeats
+// the restore as belt-and-suspenders: under check:all the dev server is reused
+// across phases, so a phase that ends clean keeps the next phase's snapshot clean.
+test.afterEach(() => {
+  writeFileSync(PERSISTENT_BB, boardSnapshot, 'utf8');
+});
+test.afterAll(() => {
+  writeFileSync(PERSISTENT_BB, boardSnapshot, 'utf8');
+});
 
 async function gotoTrickster(page) {
-  await page.goto('/?demo=1');
+  await page.goto('/?demo=only');
   await expect(page.getByTestId('channel-tabs')).toBeVisible({ timeout: 15_000 });
   await page.getByTestId('tab-trickster').click();
   await expect(page.getByTestId('trickster-inbox')).toBeVisible({ timeout: 5_000 });
@@ -47,7 +60,6 @@ test('TRICKSTER tab loads with pending requests visible', async ({ page }) => {
 // ── 2. Click Grant-limited -> modal opens with preview JSON ──────────────────
 
 test('Click a Grant -- limited button opens modal with RESOURCE_GRANT preview JSON', async ({ page }) => {
-  clearDemoSession();
   await gotoTrickster(page);
 
   // Get the first pending item and its first response button (Grant -- limited).
@@ -80,7 +92,6 @@ test('Click a Grant -- limited button opens modal with RESOURCE_GRANT preview JS
 // ── 3. Cancel closes the modal, pending item still present ───────────────────
 
 test('Cancel button closes the modal without posting', async ({ page }) => {
-  clearDemoSession();
   await gotoTrickster(page);
 
   const firstItem = page.getByTestId('inbox-pending-item').first();
@@ -104,7 +115,6 @@ test('Cancel button closes the modal without posting', async ({ page }) => {
 // ── 4. Confirm sends; request disappears from pending list ───────────────────
 
 test('Confirm sends and the request disappears from the pending list', async ({ page }) => {
-  clearDemoSession();
   await gotoTrickster(page);
 
   // Record how many pending items there are before.
@@ -132,16 +142,11 @@ test('Confirm sends and the request disappears from the pending list', async ({ 
 
 // ── 5. Validation errors — skipped; see note below ──────────────────────────
 // The buildResponse output is §2.2-conformant by construction, so triggering
-// a real 400 from the server requires injecting a malformed message. In v0.2
-// there is no test-escape-hatch for this (mocking fetch in Playwright requires
-// page.route, which would mock at the network level rather than testing the
-// actual UI error path). This test is deferred to Phase 6 / v0.3 when a
-// test-mode hook can be added.
+// a real 400 from the server requires injecting a malformed message. Deferred.
 
 // ── 6. Custom response uses typed text as constraints ────────────────────────
 
 test('Custom response uses the typed text as constraints in the preview', async ({ page }) => {
-  clearDemoSession();
   await gotoTrickster(page);
 
   const firstItem = page.getByTestId('inbox-pending-item').first();
@@ -168,7 +173,6 @@ test('Custom response uses the typed text as constraints in the preview', async 
 // ── 7. ESC key cancels ────────────────────────────────────────────────────────
 
 test('ESC key cancels the modal', async ({ page }) => {
-  clearDemoSession();
   await gotoTrickster(page);
 
   const firstItem = page.getByTestId('inbox-pending-item').first();
@@ -185,7 +189,6 @@ test('ESC key cancels the modal', async ({ page }) => {
 // ── 8. ENTER key confirms ─────────────────────────────────────────────────────
 
 test('ENTER key confirms and posts', async ({ page }) => {
-  clearDemoSession();
   await gotoTrickster(page);
 
   // Record pending count before.
