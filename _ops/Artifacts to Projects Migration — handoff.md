@@ -21,6 +21,14 @@ forward_vector: "I carry the one audit task too big to rush at the tail of a mar
 
 **For a fresh Claude with clean context.** Loudon wants the loose `Artifacts/<Entry>/` artifact dirs folded into their entry's bundle. The 2026-05-28 audit deferred this because, on inspection, it's bigger and more collision-prone than first scoped — and rushing it risks breaking HTML interactives or overwriting files. Do it carefully, per-entry, verifying each before moving on.
 
+## What you're actually doing (the bundle concept — read this first)
+This is not file-shuffling; it is **making the entry-bundle convention real where a legacy layout never caught up to it.** Per [[SCHEMA]] §8, an entry `Foo.md` owns a sibling folder `Foo/` — named identically, sitting *right next to the entry file* — holding the files that entry owns (handoffs, context companions, sources, sketches, rendered artifacts, dev plans). `Artifacts/` is the **pre-bundle holding area**: before §8 existed, an entry's supporting files were dumped into `Artifacts/<EntryName>/`, a folder that *looks* like a bundle but lives in the wrong tree. Your job is to move each such stranded folder to its entry's real bundle location, so it stops being an orphaned look-alike and becomes a proper bundle. This reframes the whole task:
+- **Collisions** = the entry already has a real bundle *and* a stranded legacy one → merge the legacy content in (no overwrites).
+- **Excludes** = `Artifacts/` dirs that were never per-entry bundles (shared assets, tool guides, dirs holding live entries) → leave them.
+- **Reference updates** = entry bodies still point at the old `Artifacts/...` paths.
+- **Precedent:** the audit already did one instance of exactly this — `Crystal Audio/` → `Projects/Generative Sample Libraries/crystal-audio/` (commit `933c54f`) with its path references fixed. Use it as a worked example.
+- **Sibling task:** [[Palace To-Do]]'s "Migrate flat-file companions to entry bundles" is the same move applied to flat `— Context.md` companions; if you touch those, apply the same principle.
+
 ## Goal & principle
 Fold each per-entry artifact directory under `Artifacts/<Entry>/` into that entry's bundle, so the entry is self-describing and ceremonies can see its artifacts. `Artifacts/` should end up holding only genuinely shared/cross-entry assets. **Add a new entry only when creating new original content or connections** (Loudon's standing rule) — this pass is a *move*, not an authoring pass.
 
