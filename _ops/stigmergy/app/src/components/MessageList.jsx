@@ -1,6 +1,7 @@
 import React from 'react';
 import { Rule, Tag } from './primitives.jsx';
 import { glyphFor, accentFor, formatTs, parseLinks, hrefFor } from '../lib/format.js';
+import ArtifactSlot from './ArtifactSlot.jsx';
 
 // Map FLAG confidence string to Tag tone.
 function FlagConfidenceTag({ confidence }) {
@@ -125,6 +126,11 @@ function MessageRow({ msg }) {
         <span style={{ color: accent, textShadow: 'var(--glow)', fontWeight: 600 }}>
           {type}
         </span>
+        {msg.payload && msg.payload.kind === 'enrichment_card' && (
+          <span data-testid="enrichment-tag" style={{ marginLeft: 8 }}>
+            <Tag tone="link">enrichment</Tag>
+          </span>
+        )}
         <div style={{
           color: 'var(--phosphor-dim)', textShadow: 'none', marginTop: 4, lineHeight: 1.4,
         }}>
@@ -214,6 +220,8 @@ function MessageRow({ msg }) {
           <Linkify text={body} />
         </div>
       ) : null}
+
+      <ArtifactSlot payload={msg.payload} />
     </div>
   );
 }
