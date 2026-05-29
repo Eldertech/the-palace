@@ -33,6 +33,8 @@ Items move off this list when they become entries, get completed, or get compost
 
 - [ ] **Migrate flat-file companions to entry bundles** ⭐ — As of 2026-05-05 ([[SCHEMA]] §8, v1.2), entries can have sibling bundle folders. Existing flat-file companions are migration candidates: `Jewel — Context.md` → `JEWEL/Jewel — Context.md`; ceremony Context companions in `_ops/` (`Deposit Ceremony — Context.md`, `Harvest Ceremony — Context.md`, `Weave Ceremony — Context.md`) → bundle folders alongside their parent ceremony files. Per Loudon's directive 2026-05-05, the Weave Ceremony's general scope includes fixing mis-located and mis-linked items — this migration is queued for the next Weave. After migration, the existing files only need minimal YAML (title, born, parent link, forward_vector) per [[SCHEMA]] §8 — strip excess if present.
 
+- [ ] **Migrate `Artifacts/<Entry>/` → `Projects/<Entry>/` bundles** ⭐ — Fold each per-entry artifact dir into its entry's bundle so entries are self-describing. Surfaced + scoped by the 2026-05-28 audit; deferred from that session as too big/collision-prone to rush (22 dirs, 8 Projects-bundle collisions, category dirs to exclude, HTML relative-asset risk). **Full plan, scope, collisions, and safe per-entry procedure are in the handoff: [[Artifacts to Projects Migration — handoff]]** (`_ops/Artifacts to Projects Migration — handoff.md`). Do it in fresh context, per-entry, verifying as you go.
+
 ---
 
 ## Entries to Write
