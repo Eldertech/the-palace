@@ -13,6 +13,12 @@ links:
   - target: "[[Deposit Ceremony]]"
     type: mirrors
     label: "shares-show-before-write"
+  - target: "[[Closing Well]]"
+    type: mirrors
+    label: "every-handoff-closes-well"
+  - target: "[[Surfaces and Capabilities]]"
+    type: connects-to
+    label: "capability-delta-source"
   - target: "[[SCHEMA]]"
     type: connects-to
     label: "governed-by"
@@ -45,6 +51,7 @@ The handoff carries:
 - The current state in front of us — the half-written sentence, the unfinished link, the open question
 - The next move or the open question
 - Tacit calibrations from this session that diverge from defaults — the conversation residue
+- The receiving surface and its capability delta, *when the handoff crosses surfaces* — what the catching tool can do that this one can't, and the surface-specific gotcha (git locks, GPU, local-only tool, link scheme). See [[Surfaces and Capabilities]].
 - A tiered context list of what files the new Claude should load to be ready
 
 The handoff does *not* carry:
@@ -63,6 +70,18 @@ The handoff is brief and operational. It is not a ceremony that wants to linger.
 - Do not bloat. A handoff that runs longer than the entry it's handing off is suspicious.
 - Show before writing — but a single round of show-and-confirm is usually enough.
 - If the move is small enough that the next Claude could reconstruct it from the entry alone, no handoff is needed. Tell Loudon and stop.
+
+## Handoff Genres
+
+This ceremony was written for the *entry-bundle handoff* — a move on a single entry, handed off at `[Entry]/[Entry] — handoff.md`, consumed and archived. That is the default, and the steps below assume it. But handoffs in practice come in several genres, and the genre changes where the file lives and whether it is consumed or kept alive:
+
+- **Entry-bundle** (default) — one entry's in-progress move. Lives in the entry's bundle; consumed and archived on pickup.
+- **Cross-surface paste-prompt** — a prompt handed to another surface, most often Cowork → Claude Code for a build the sandbox can't run. Lives where the work lives (`Projects/.../` or `_ops/claude-code-prompts/`). Its distinctive content is the receiving-surface capability delta and an explicit *what NOT to do*. See [[Surfaces and Capabilities]].
+- **Session-queue continuation** — picking up a multi-session sweep (a graffiti pass, a deposit run). Carries "how we've been working" and a resume protocol, not just one move. Lives in `_ops/`.
+- **Swarm phase baton** — handing the apply-phase of a completed Swarm Weave to a fresh Claude. Lives in `_ops/swarm/sessions/`.
+- **Permanent-agent steward handoff** — a Steward (a page operating as an agent) handed across sessions. *Updated in place, never consumed*, and carries per-surface conventions for every surface it addresses.
+
+The genre flexes the location and the lifecycle. It does not flex the discipline: carry the move, the negative space, the receiving surface, and what the catcher loads first.
 
 ---
 
@@ -108,10 +127,13 @@ The actual reason — the specific tradeoff, the specific constraint — not the
 Bulleted list of paths considered and ruled out this session, with one-line reasons. The fewer the better, but completeness here is the handoff's most distinctive value.
 
 ## Current state
-What's literally in front of us right now. The half-written sentence, the unfinished link, the open question. Quote, don't summarize.
+What's literally in front of us right now. The half-written sentence, the unfinished link, the open question. Quote, don't summarize. When the handoff carries a near-finished deliverable, this section is also the closing-well punchlist — file paths, the named risk per item, and what you couldn't verify. See [[Closing Well]]; reference it, don't restate it.
 
 ## Next move
 What the next Claude should do first. One short paragraph.
+
+## Receiving environment
+*Cross-surface handoffs only; omit for same-surface.* Name the receiving surface and the capability delta that matters for *this* move — why it's being handed here, and the surface-specific gotcha (git locks, GPU, local-only tool, link scheme). Point to [[Surfaces and Capabilities]] for the full picture; carry only the deltas this move actually hits.
 
 ## Calibrations from this session
 Anything Loudon corrected, accepted, or surprised you with that diverges from defaults. Bullets, terse.
@@ -179,8 +201,21 @@ If the incoming Claude finds the handoff incoherent, stale, or insufficient: sto
 
 ---
 
+## Resumption Protocol (incoming side)
+
+The catcher's job on arrival, before touching any work:
+
+1. **Read the whole handoff, then the entry.** Most-load-bearing first, per *Load these files first*.
+2. **State the move back in one sentence.** If you can't, the baton wasn't caught — say so to Loudon and ask, rather than improvising.
+3. **Check the receiving environment.** If the handoff names a capability delta, confirm it holds before relying on it — the catalog in [[Surfaces and Capabilities]] can be stale. A build that was supposed to run here but can't is a finding to report, not a failure to hide.
+4. **Archive the handoff as your first act** (entry-bundle and most genres): move it to `[Entry]/Archive/[Entry] — handoff — YYYY-MM-DD.md` and remove the "Active Handoff" section from the entry. Steward handoffs are the exception — they are updated in place, not archived.
+5. **Then act on the move,** holding the calibrations the handoff carried.
+
+Deliberately light — a confirmation rhythm, not a gate.
+
 ## Forward Vectors
 
-- Should there be a *resumption protocol* — a structured way for the incoming Claude to verify with Loudon that they've caught the move correctly before acting on it?
-- The vocabulary of bundle types ([[SCHEMA]] §8) is open. Do recurring handoff *patterns* (stuck-decision, midstream-draft, verification-pending) want their own conventions, or do they all fit one template?
-- Multiple parallel handoffs on a single entry — SCHEMA §8 is silent on this. Does the bundle pattern want to enforce one active handoff per entry, or permit branching?
+- The resumption protocol the first forward vector once asked for now exists (above). The open part: should the "state the move back" step ever harden into a gate for high-stakes moves, or always stay the light confirmation it is now?
+- The Handoff Genres section names five genres observed so far. Do they want distinct templates, or is one flexible template plus a genre label enough? The cross-surface paste-prompt in particular reads like a prompt, not an entry companion, and may want its own skeleton.
+- Should the `host_capability_check` in [[Maker]] read [[Surfaces and Capabilities]] directly, so a cross-surface handoff's receiving-environment section can be generated rather than hand-written?
+- Multiple parallel handoffs on a single entry — [[SCHEMA]] §8 is silent on this. Does the bundle pattern want to enforce one active handoff per entry, or permit branching?
