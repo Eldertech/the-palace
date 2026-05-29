@@ -49,7 +49,7 @@ The full project is the scientific method made audible:
 
 **Framing (≈20 min) — HTML-led**
 
-Open `Artifacts/Crystal Synthesizer/session-1-interactive.html` on stream. Three beats:
+Open `Projects/Crystal Synthesizer/session-1-interactive.html` on stream. Three beats:
 
 1. *The optical fact* — rotating crystal dispersing white light. "Crystals don't create color — they reveal what's already there. The geometry determines which frequencies go where."
 2. *The pivot question* — "If we move from light to sound, what would a crystal do?" Show the basic math: THz phonon modes scaled into audio Hz. The dispersion curve shape before anyone builds anything.
@@ -88,8 +88,8 @@ Students need: basic Max/MSP fluency, some additive synthesis exposure, Gen~ ins
 Prior [[Loudon Live]] prerequisite: none for Stage 1.
 
 ### Materials
-- [`session-1-interactive.html`](../Artifacts/Crystal%20Synthesizer/session-1-interactive.html) — HTML framing artifact
-- [`session-1-implementation.md`](../Artifacts/Crystal%20Synthesizer/session-1-implementation.md) — Gen~ patch architecture, pseudocode, mode ratio tables
+- [`session-1-interactive.html`](Crystal%20Synthesizer/session-1-interactive.html) — HTML framing artifact
+- [`session-1-implementation.md`](Crystal%20Synthesizer/session-1-implementation.md) — Gen~ patch architecture, pseudocode, mode ratio tables
 
 ---
 

@@ -1,3 +1,13 @@
+---
+title: "Crystal Synthesizer — Stage 1 Implementation"
+born: 2026-04-21
+links:
+  - target: "[[Crystal Synthesizer]]"
+    type: connects-to
+    label: child-of
+forward_vector: "I am the Stage 1 Gen~ patch architecture for [[Crystal Synthesizer]] — the monophonic partial selector, its pseudocode and mode-ratio tables. I stay faithful to the built patch so a future session can rebuild or extend it."
+---
+
 # Crystal Synthesizer — Stage 1 Implementation
 ## Monophonic Crystal Partial Selector in Gen~ / Max
 
@@ -174,6 +184,6 @@ That's the portability question, and it opens the RNBO conversation.
 
 | File | Location | Description |
 |---|---|---|
-| `session-1-interactive.html` | `Artifacts/Crystal Synthesizer/` | HTML framing artifact for stream |
-| `session-1-implementation.md` | `Artifacts/Crystal Synthesizer/` | This file — patch architecture |
+| `session-1-interactive.html` | `Projects/Crystal Synthesizer/` | HTML framing artifact for stream |
+| `session-1-implementation.md` | `Projects/Crystal Synthesizer/` | This file — patch architecture |
 | `Crystal Synthesizer — Staging.md` | `Projects/` | Full staging record |
