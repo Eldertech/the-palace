@@ -180,7 +180,30 @@ export function evaluate(request, ruleset, budgetState = null) {
   };
 }
 
-/** Convenience: evaluate a whole list of parsed requests. */
+/** Convenience: evaluate a whole list of parsed requests (no budget threading). */
 export function evaluateAll(requests, ruleset, budgetState = null) {
   return requests.map((r) => ({ request: r, verdict: evaluate(r, ruleset, budgetState) }));
+}
+
+/**
+ * Evaluate a batch while THREADING the daily budget: each auto-grant consumes
+ * one unit of a working copy of the remaining budget, so the (cap+1)-th
+ * grantable request in a single run flips to escalate (budget-exhausted). The
+ * caller's persisted budget is NOT mutated — only this run's working copy.
+ *
+ * @param {Array<object>} requests
+ * @param {object} ruleset
+ * @param {object|null} budgetState — { autoGrantsRemaining, ... } or null
+ */
+export function evaluateBatch(requests, ruleset, budgetState = null) {
+  const working = budgetState
+    ? { ...budgetState }
+    : null;
+  return requests.map((r) => {
+    const verdict = evaluate(r, ruleset, working);
+    if (verdict.verb === 'auto-grant' && working && typeof working.autoGrantsRemaining === 'number') {
+      working.autoGrantsRemaining -= 1;
+    }
+    return { request: r, verdict };
+  });
 }
