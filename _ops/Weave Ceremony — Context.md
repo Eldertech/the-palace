@@ -29,6 +29,28 @@ The palace after a Weave is not a larger palace. It is a more coherent one. The 
 
 This is also why the Weave is not a search for new content. It is a search for existing pattern. The Weave reads nothing that wasn't already written. It adds nothing that wasn't already implied. It only names what had not yet been named.
 
+## Founding Metaphors
+
+The two images that shaped the ceremony's design:
+
+**The elder weaving the blanket** — not creating new material, but working with what exists, finding the pattern across all threads simultaneously.
+
+**The mycorrhizal network** — doing its distributed routing work: redistributing nutrients (connections) toward need, away from surplus.
+
+Both metaphors carry the same implication: the Weave is not a growth ceremony. It is a coherence ceremony. Growth is the Deposit's job.
+
+## Cadence Rationale
+
+The Weave is monthly. More frequent and it becomes overhead. Less frequent and the palace begins to drift — orphan entries accumulate, stale metadata misleads, the topology report loses its ability to surprise.
+
+## Swarm Architecture — Why It Was Adopted
+
+The single-agent protocol was the original design. The palace crossed the single-agent threshold (~50 entries) during the spring 2026 growth period. The Swarm Weave was introduced to keep execution time reasonable and to model the ceremony's own metaphor: parallel workers doing distributed routing, a coordinator synthesizing the whole. Single-agent protocol remains valid for palaces under ~20 entries or when sub-agent orchestration is unavailable.
+
+## Rate Limit Rationale — New Introductions
+
+The 15-introduction cap is intentional and serves two purposes: it forces curation (a new introduction should feel earned, not automatic) and it keeps the palace's growth slow enough to remain deliberate. A typed link is a permanent claim about the structure of knowledge. The palace and its gardener both benefit from a slow metabolism.
+
 ## Open Questions
 
 - At what palace size should the Weave split into two passes — one for topology, one for link proposals?

@@ -32,15 +32,11 @@ links:
 
 The palace's full-body examination. Where the Walk follows one thread, the Weave reads every thread and asks: how do they relate? What forms? What tangles? What has grown unnoticed? What has died without a marker?
 
-The metaphor is the elder weaving the blanket — not creating new material, but working with what exists, finding the pattern across all threads simultaneously. The Weave is also the mycorrhizal network doing its distributed routing work: redistributing nutrients (connections) toward need, away from surplus.
-
-The Weave is monthly. More frequent and it becomes overhead. Less frequent and the palace begins to drift — orphan entries accumulate, stale metadata misleads, the topology report loses its ability to surprise.
-
-For philosophical reflection on the Weave, see [[Weave Ceremony — Context]].
+For metaphor, cadence rationale, and swarm architecture history, see [[Weave Ceremony — Context]].
 
 ## Execution Method
 
-The Weave now runs as a **Swarm Weave** — parallel workers auditing individual entries, a coordinator synthesizing results. The palace crossed the single-agent threshold (50 entries) and the Swarm Weave is the canonical execution path. See [[Swarm Weave]] for the full spec and operational instructions.
+The Weave now runs as a **Swarm Weave** — parallel workers auditing individual entries, a coordinator synthesizing results. The Swarm Weave is the canonical execution path. See [[Swarm Weave]] for the full spec and operational instructions.
 
 The single-agent protocol below remains valid for: palaces under ~20 entries, quick topological spot-checks, or situations where Claude Code sub-agent orchestration is unavailable. For the current palace (100+ entries), execute as a Swarm Weave.
 
@@ -147,7 +143,7 @@ Identify pairs of entries that should be connected but are NOT already named in 
 - Name the proposed link type and direction
 - Give one sentence of reasoning
 
-**Rate limit: propose no more than 15 new introductions per Weave.** If more candidates exist, choose the ones that feel most alive right now. This constraint is intentional and serves two purposes: it forces curation (a new introduction should feel earned, not automatic) and it keeps the palace's growth slow enough to remain deliberate. A typed link is a permanent claim about the structure of knowledge. The palace and its gardener both benefit from a slow metabolism.
+**Rate limit: propose no more than 15 new introductions per Weave.** If more candidates exist, choose the ones that feel most alive right now.
 
 Present to Loudon. Add confirmed links to the appropriate entry frontmatter.
 
