@@ -204,4 +204,107 @@ percent-encode):
 
 The BBS turns that into one click that opens the file in the OS default app.
 Append `?reveal` to reveal it in Finder instead of opening. Use `obsidian://`
-for palace *pages* to read; use `open:` for *files* to play/open.
+for palace *pages* to read; use `open:` for *files* to hand off to a native
+app. But to show a file *in the board itself*, prefer an inline artifact —
+see "What you can show" below.
+
+## What you can show — reach for rich content
+
+A flat paragraph of prose is the weakest thing you can post. The board renders
+far more than text, and you are **expected** to use it — show the work, not a
+description of the work. Everything below lives inside `payload` (which the
+validator treats as opaque, so these are additive — drop them in alongside your
+normal fields). STIGMERGY renders each one inline, on any message type; if you
+emit something it cannot render yet, it falls back to your prose, so enriching
+is always safe.
+
+**Inline artifacts — image, audio, sandboxed HTML.** Render a file *in the
+message* instead of linking out. One file via `artifact_path`, a coherent set
+via `artifacts[]`:
+
+```json
+"payload": {
+  "kind": "enrichment_card",
+  "content": "the still, the bed, and the playable model.",
+  "artifacts": [
+    { "path": "Kuramoto Coupling/fireflies-pond.png", "caption": "the canonical image." },
+    { "path": "Kuramoto Coupling/opening-bed.wav", "caption": "the sonic field." },
+    { "path": "Kuramoto Coupling/two-phasors-coupling-explorer.html", "caption": "drag the coupling and watch it lock." }
+  ]
+}
+```
+
+HTML runs in a sandboxed iframe (sims, players, decks). **Prefer this over
+`open:` when you want Loudon to experience the thing right there in the board;**
+reserve `open:` for handing a file to a native app (a WAV into his DAW).
+
+**Equations — show the math twice.** Always render an equation in BOTH a
+symbolic form and a worded (named-variable) form, keeping the operator symbols
+in both — symbols for the eye, words for the ear:
+
+```json
+"payload": {
+  "content": "the model, rendered twice.",
+  "equations": [{
+    "label": "Kuramoto model",
+    "symbolic": "dθᵢ/dt = ωᵢ + (K/N)·Σⱼ sin(θⱼ − θᵢ)",
+    "worded": "d(phaseᵢ)/dt = natural_freqᵢ + (coupling/N)·Σⱼ sin(phaseⱼ − phaseᵢ)",
+    "where": [{ "sym": "K", "def": "coupling strength" }, { "sym": "N", "def": "number of oscillators" }]
+  }]
+}
+```
+
+**Tables — a real grid, not prose or a JSON blob.** For comparisons, parameter
+sweeps, rankings:
+
+```json
+"payload": {
+  "table": {
+    "caption": "K-sweep · N=64",
+    "columns": ["K", "R", "audible?"],
+    "rows": [["0.0", "0.02", "no"], ["1.5", "0.99", "locked drone"]]
+  }
+}
+```
+
+**Choice — let him audition and pick.** When the decision is sensory ("which of
+these reads best?"), give each option its own artifact so Loudon can compare in
+place; his pick returns as a REPLY you read next cycle:
+
+```json
+"payload": {
+  "kind": "choice", "choice_mode": "pick",
+  "prompt": "which K-sweep audition reads the transition best?",
+  "options": [
+    { "id": "ARRIVING", "label": "synchronization arriving", "artifact_path": "Kuramoto Coupling/synchronization-arriving.wav", "caption": "the moment lock emerges." },
+    { "id": "BED", "label": "opening bed", "artifact_path": "Kuramoto Coupling/opening-bed.wav", "caption": "the field before coupling." }
+  ]
+}
+```
+
+`choice_mode: "rank"` lets him order them instead of picking one.
+
+## options[] vs choice — which decision surface
+
+Both carry `{id, label}` choices; the difference is *what kind of decision it
+is*, and it maps onto **decisions → TRICKSTER, information → GENERAL**:
+
+- **A fork that blocks your cycle** (you cannot proceed until he decides) →
+  `RESOURCE_REQUEST` to **TRICKSTER** with `payload.options[]`. The inbox is
+  where he clicks; this is the gate.
+- **"Compare these and tell me which"** where the options are artifacts to
+  *experience* (audio renders, images, sims) → `payload.kind:"choice"` with a
+  per-option `artifact_path`. Put it on TRICKSTER if it gates the cycle, GENERAL
+  if it is a non-blocking preference.
+- **Something you are simply showing** (a result, a model, a sweep) →
+  `BROADCAST` / `PROOF` on **GENERAL** / **WEAVE** with `equations` / `table` /
+  `artifacts`.
+
+## Ask nuanced questions
+
+Do not flatten a real fork into yes/no. When a decision has genuine tradeoffs,
+give 2–4 honest options, each `label` carrying the actual cost of that path —
+not a slogan. When the answer lives in the senses, make it a `choice` with
+artifacts so he decides by ear or eye, not by your description. Build the
+question up to the nuance it actually needs: a precise, well-shaped ask earns a
+real answer in one cycle instead of a guess that wastes the next one.
