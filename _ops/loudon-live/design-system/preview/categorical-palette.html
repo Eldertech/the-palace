@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en" class="skin-graphite">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Loudon Live · data-viz categorical palette specimen</title>
+<!--
+  Specimen for the data-viz palettes added 2026-05-29:
+    • ORDERED ramp     → palaceSeries()      (accent dim→accent→light)
+    • CATEGORICAL set   → palaceCategorical() (locked --cat-1..6, skin-aware)
+  Switch the skin to see both palettes adapt. All values are read live from
+  colors_and_type.css — nothing here hardcodes a hex.
+-->
+<link rel="stylesheet" href="../colors_and_type.css" />
+<style>
+  * { box-sizing: border-box; }
+  html, body { margin: 0; background: var(--bg); color: var(--fg-2); }
+  body { font-family: var(--sans); font-weight: var(--w-light); }
+  .wrap { max-width: 900px; margin: 0 auto; padding: var(--s-8) var(--s-6) var(--s-10); }
+  .topline { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: var(--s-6); gap: var(--s-4); }
+  .eyebrow { font-family: var(--mono); font-weight: var(--w-medium); font-size: var(--t-eyebrow);
+    letter-spacing: var(--tr-eyebrow); text-transform: uppercase; color: var(--fg-3); }
+  .wordmark { font-size: var(--t-h4); line-height: 1; white-space: nowrap; }
+  .wordmark .lo { font-family: var(--display); color: var(--fg-1); letter-spacing: var(--tr-display); }
+  .wordmark .sl { color: var(--fg-3); margin: 0 .28em; }
+  .wordmark .li { font-family: var(--serif); font-style: italic; font-weight: var(--w-light); color: var(--accent); text-shadow: var(--text-glow-accent); }
+  h1 { font-family: var(--display); font-weight: var(--w-regular); letter-spacing: var(--tr-display); font-size: var(--t-h2);
+    line-height: var(--lh-tight); color: var(--fg-1); margin: 0 0 var(--s-2); text-transform: uppercase; }
+  .lead { font-family: var(--serif); font-weight: var(--w-light); font-size: var(--t-lead); line-height: var(--lh-reading);
+    color: var(--fg-2); max-width: 60ch; margin: 0 0 var(--s-5); }
+  .skinpick { font-family: var(--mono); font-size: var(--t-meta); color: var(--fg-3); display: inline-flex; gap: var(--s-2); align-items: center; }
+  select { font-family: var(--mono); font-size: var(--t-meta); background: var(--bg-elev-1); color: var(--fg-1);
+    border: 1px solid var(--border); border-radius: var(--r-sm); padding: 4px 8px; }
+  h2 { font-family: var(--mono); font-weight: var(--w-medium); font-size: var(--t-eyebrow); letter-spacing: var(--tr-eyebrow);
+    text-transform: uppercase; color: var(--fg-3); margin: var(--s-6) 0 var(--s-3); }
+  .swatches { display: flex; flex-wrap: wrap; gap: var(--s-3); }
+  .sw { width: 116px; }
+  .sw .chip { height: 56px; border-radius: var(--r-sm); border: 1px solid var(--border-soft); }
+  .sw .lab { font-family: var(--mono); font-size: var(--t-meta); color: var(--fg-3); margin-top: 6px; }
+  .sw .lab b { color: var(--fg-1); font-weight: var(--w-medium); }
+  .panel { background: var(--bg-elev-1); border: 1px solid var(--border); border-radius: var(--r-sm); box-shadow: var(--shadow-1); padding: var(--s-4); margin-top: var(--s-3); }
+  .foot { margin-top: var(--s-8); padding-top: var(--s-4); border-top: 1px solid var(--border-soft); font-family: var(--mono); font-size: var(--t-meta); color: var(--fg-3); }
+  .foot .lo { font-family: var(--display); color: var(--fg-2); }
+  .foot .li { font-family: var(--serif); font-style: italic; font-weight: var(--w-light); color: var(--accent); }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="topline">
+    <span class="eyebrow">Design system · data-viz palettes</span>
+    <span class="wordmark"><span class="lo">LOUDON</span><span class="sl">/</span><span class="li">Live</span></span>
+  </div>
+  <h1>Categorical &amp; ordered</h1>
+  <p class="lead">Two data palettes, both skin-aware and read live from the locked tokens. <b>Categorical</b>
+    (<code>--cat-1..6</code>) for unordered series; <b>ordered</b> (the accent ramp) for sequential ones.
+    Switch the skin to watch both adapt.</p>
+  <label class="skinpick">skin
+    <select id="skin">
+      <option value="skin-graphite">Graphite</option>
+      <option value="skin-cobalt-grid">Cobalt Grid</option>
+      <option value="skin-crt">CRT</option>
+      <option value="skin-strobe">Strobe</option>
+      <option value="skin-amber-lab">Amber Lab</option>
+      <option value="skin-drafting">Drafting</option>
+    </select>
+  </label>
+
+  <h2>Categorical — palaceCategorical() · --cat-1..6</h2>
+  <div class="swatches" id="catSwatches"></div>
+
+  <h2>Ordered — palaceSeries() · accent ramp</h2>
+  <div class="swatches" id="ordSwatches"></div>
+
+  <h2>Demo — six unordered series</h2>
+  <div class="panel"><div id="chart"></div></div>
+
+  <p class="foot"><span class="lo">LOUDON</span> <span class="li">Live</span> · Autodidact Polymaths</p>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
+<script src="https://cdn.jsdelivr.net/npm/@observablehq/plot@0.6/dist/plot.umd.min.js"></script>
+<script src="../palace-tokens.js"></script>
+<script src="../palace-plot-defaults.js"></script>
+<script>
+// six separable demo series (phase-shifted) — purely illustrative
+const DEMO = [];
+for (let k = 0; k < 6; k++) for (let x = 0; x <= 30; x++) DEMO.push({ cat: 'series ' + (k + 1), x, y: 2 + Math.sin(x / 4 + k) + k * 0.6 });
+
+function swatch(hex, label) {
+  return `<div class="sw"><div class="chip" style="background:${hex}"></div><div class="lab"><b>${label}</b><br>${hex}</div></div>`;
+}
+function render() {
+  const T = palaceTokens();
+  document.getElementById('catSwatches').innerHTML = T.categorical.map((h, i) => swatch(h, '--cat-' + (i + 1))).join('');
+  document.getElementById('ordSwatches').innerHTML = T.series.map((h, i) => swatch(h, ['dim', 'accent', 'light'][i] || ('s' + i))).join('');
+  const cats = [...new Set(DEMO.map(d => d.cat))];
+  document.getElementById('chart').replaceChildren(palacePlot({
+    width: 820, height: 280, marginLeft: 36, marginBottom: 30,
+    x: { label: null, grid: false }, y: { label: null, grid: true },
+    color: { domain: cats, range: palaceCategorical(), legend: true },
+    marks: [ Plot.ruleY([0], { stroke: palaceTokens().border }), Plot.lineY(DEMO, { x: 'x', y: 'y', stroke: 'cat', strokeWidth: 1.6 }) ]
+  }));
+}
+document.getElementById('skin').addEventListener('change', e => { document.documentElement.className = e.target.value; render(); });
+render();
+</script>
+</body>
+</html>

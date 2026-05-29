@@ -146,7 +146,7 @@ Canonical sources in `_ops/loudon-live/design-system/`: `colors_and_type.css` (t
 **The update-safe pattern:**
 1. Load order matters: `colors_and_type.css` (link) → d3 → `plot.umd.min.js` → `palace-tokens.js` → `palace-plot-defaults.js`. Set `<html class="skin-graphite">`.
 2. Call `palacePlot(spec)` instead of `Plot.plot(spec)` — it injects transparent background, fg-3 text, the locked mono face, and a token-coloured `Plot.frame()` from the active skin. A skin swap or a `colors_and_type.css` edit follows on reload.
-3. Caller still owns data colour — pass `palaceTokens().accent` / `.accentDim` / `palaceSeries()` (the ordered dim→accent→light ramp). **No hex literals.**
+3. Caller still owns data colour — and the choice encodes the data's shape: `palaceSeries()` (ordered dim→accent→light ramp) for *sequential* series like a parameter sweep; `palaceCategorical()` (the locked `--cat-1..6` set) for *unordered* categories; single accents via `palaceTokens().accent` / `.accentDim`. **No hex literals.**
 4. Two residual frictions to know: gridlines derive from `style.color` (for an exact token add `Plot.gridY({ stroke: palaceTokens().borderSoft })`); and Plot can't paint its own card background — the chrome owns the ground.
 
 A chart legitimately wants ONE mono face for all numerals, so the multi-font worry never reaches *inside* the plot — it lives only in the (fully controllable) HTML chrome. Exemplar: [flocking-observable-plot-graphite.html](../Flocking/flocking-observable-plot-graphite.html).

@@ -97,6 +97,30 @@
   --danger-soft:  rgba(255,42,42,0.08);
   --danger-line:  rgba(255,42,42,0.55);
 
+  /* ── data-viz · CATEGORICAL palette ───────────────────────────────────
+     A qualitative set for distinguishing UNORDERED series in a chart (one
+     colour per category). Six well-separated hues, no cyan, tuned for the
+     dark default ground. Read in JS via palaceTokens().categorical /
+     palaceCategorical() — never hardcode.
+       Usage rule:
+       • ORDERED / sequential data (a sweep, a ramp) → use the accent ramp
+         (palaceSeries(): dim → accent → light), NOT these hues.
+       • UNORDERED categories → these, in order, up to six. Beyond six, bin
+         or facet — the register does not want a confetti chart.
+       • Semantic colours (info / success / danger) keep their meaning; do
+         not reuse them as category colours, and don't read these as signals.
+       • On the monochromatic registers (CRT, Strobe) a multi-hue categorical
+         chart is a deliberate DEPARTURE from the register — declare it, the
+         way an expressive p5 canvas declares colour-as-data.
+     Light skins (Amber Lab, Drafting) override below with deeper values that
+     hold contrast on a cream ground. */
+  --cat-1: #e8b84a;   /* amber  */
+  --cat-2: #6bd45a;   /* green  */
+  --cat-3: #4a8fff;   /* blue   */
+  --cat-4: #b07cff;   /* violet */
+  --cat-5: #ff6fae;   /* magenta */
+  --cat-6: #ff6b5a;   /* coral  */
+
   /* ── radii — 4 px is the ceiling. Pill only for status-shape controls. */
   --r-xs:  1px;
   --r-sm:  2px;     /* default for cards, params */
@@ -154,6 +178,8 @@
   --accent: #e8651b; --accent-dim: #b54a0e;
   --accent-soft: rgba(232,101,27,0.10); --accent-line: rgba(232,101,27,0.50);
   --fg-on-accent: #f4ecdc;
+  /* categorical — deeper values for contrast on the parchment ground */
+  --cat-1: #b07d10; --cat-2: #3f8f3a; --cat-3: #2b62c4; --cat-4: #7a4fc0; --cat-5: #c23a78; --cat-6: #c0432e;
 }
 
 /* CRT — phosphor green on stark black; scope / DSP / signal-watching */
@@ -191,4 +217,6 @@
   --accent: #c8261a; --accent-dim: #8a1a12;
   --accent-soft: rgba(200,38,26,0.08); --accent-line: rgba(200,38,26,0.50);
   --fg-on-accent: #f0eee5;
+  /* categorical — deeper values for contrast on the paper ground */
+  --cat-1: #a8730a; --cat-2: #3a7d2c; --cat-3: #2b5fb0; --cat-4: #6a47b8; --cat-5: #b3356b; --cat-6: #b83a26;
 }
