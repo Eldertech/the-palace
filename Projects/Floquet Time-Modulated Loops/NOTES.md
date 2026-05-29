@@ -1,3 +1,13 @@
+---
+title: "Floquet / Time-Modulated Loops — Build Notes"
+born: 2026-04-30
+links:
+  - target: "[[Floquet Time-Modulated Loops]]"
+    type: connects-to
+    label: child-of
+forward_vector: "I hold the judgment calls and deviations from the build manifest for [[Floquet Time-Modulated Loops]] — the places where implementation diverged from spec and why. I stay until Loudon has reviewed each flagged choice."
+---
+
 # Build Notes — Floquet / Time-Modulated Loops
 
 Notes from the autonomous build run for review by Loudon. Items where I had to make a judgment call the manifest didn't fully specify, or where an implementation detail deserves a second look.

@@ -102,7 +102,7 @@ The lock buttons work as radio buttons (only one locked at a time), making the c
 
 ## Artifacts
 
-Interactive Ohm's Law explorer with lock mechanism: `/Artifacts/Ohms Law/ohms_law_intuition.jsx`
+Interactive Ohm's Law explorer with lock mechanism: `Ohm's Law/ohms_law_intuition.jsx`
 
 ---
 

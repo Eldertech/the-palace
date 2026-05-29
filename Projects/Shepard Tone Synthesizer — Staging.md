@@ -50,7 +50,7 @@ Someone reading this file and [[Shepard Tone Synthesizer]] has everything needed
 Open Meld. Play the Shepard tone. No framing first — the illusion does its own setup. Students hear infinite ascent before they know what it is.
 
 **The Escher Frame (≈10 min)**
-Show Escher's impossible staircase (open `Artifacts/Shepard Tone Synthesizer/session-1-interactive.html`). Name the structural identity: a finite system, infinite perceived motion. The physical reality cycles; the perception climbs forever. Barber pole, Escher staircase, Shepard tone — same structure, different materials. The HTML visualizes the mechanism before anyone builds anything.
+Show Escher's impossible staircase (open `Projects/Shepard Tone Synthesizer/session-1-interactive.html`). Name the structural identity: a finite system, infinite perceived motion. The physical reality cycles; the perception climbs forever. Barber pole, Escher staircase, Shepard tone — same structure, different materials. The HTML visualizes the mechanism before anyone builds anything.
 
 **Build it in Ableton (≈35–40 min)**
 1. Create a MIDI Effect Rack
@@ -86,7 +86,7 @@ DAW fluency only. No Max, no coding, no synthesis theory. Students with any Able
 None required. Students who want deeper context on psychoacoustics before the session can ask an AI: *"Explain the Shepard tone illusion — how does octave stacking and amplitude shaping create the perception of infinite pitch ascent?"*
 
 ### Materials
-- [session-1-interactive.html](../Artifacts/Shepard%20Tone%20Synthesizer/session-1-interactive.html) — Escher frame + mechanism visualization + Ableton build guide + reflecting surface seeds
+- [session-1-interactive.html](Shepard%20Tone%20Synthesizer/session-1-interactive.html) — Escher frame + mechanism visualization + Ableton build guide + reflecting surface seeds
 
 ---
 

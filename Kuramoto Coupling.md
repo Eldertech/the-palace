@@ -175,8 +175,8 @@ The [[Granular Synthesis]] attractor hybrid architecture extends this: an additi
 
 ## Artifacts
 
-- [[Kuramoto Coupling — 8-Lesson Quiz Series]] — Progressive lesson document covering phase oscillators, coupling terms, order parameter, critical coupling, two-oscillator dynamics, frequency distributions, extensions, and implementation. Filed in `Artifacts/Kuramoto Coupling/`.
-- [[Kuramoto Coupling — Quiz Answer Key]] — Answers with context, corrections, and deeper implications from the live quiz session. Particular attention to where corrections produced the deepest learning. Filed in `Artifacts/Kuramoto Coupling/`.
+- [[Kuramoto Coupling — 8-Lesson Quiz Series]] — Progressive lesson document covering phase oscillators, coupling terms, order parameter, critical coupling, two-oscillator dynamics, frequency distributions, extensions, and implementation. Filed in the `Kuramoto Coupling/` bundle.
+- [[Kuramoto Coupling — Quiz Answer Key]] — Answers with context, corrections, and deeper implications from the live quiz session. Particular attention to where corrections produced the deepest learning. Filed in the `Kuramoto Coupling/` bundle.
 
 ## Asymmetric Coupling: The Stubbornness Parameter
 

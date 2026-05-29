@@ -350,7 +350,7 @@ All variable names match the symbols above where possible. Comments are dense an
 
 ### The `codebox~` source itself
 
-Built last. `Artifacts/Floquet Time-Modulated Loops/RNBO/mathieu_resonator.codebox`. The Build Manifest at the end of this document includes the prompt that produces it, and lists the verification checklist that gates its acceptance.
+Built last. `Projects/Floquet Time-Modulated Loops/RNBO/mathieu_resonator.codebox`. The Build Manifest at the end of this document includes the prompt that produces it, and lists the verification checklist that gates its acceptance.
 
 ### Testing protocol (mirrors the Torus project's)
 
@@ -491,11 +491,11 @@ The deeper aspiration: *to be the entry every periodically-modulated audio objec
 
 *This section is the handoff to the next Claude. Each numbered item is a self-contained build prompt. Items can be executed in parallel by sub-agents where there are no cross-dependencies; dependencies are flagged. Each item names the file path it produces, its teaching purpose, the implementation approach, and the acceptance criteria the build is gated on. The last items (codebox source + parent patch documentation) gate on all preceding media being validated.*
 
-**Operating context for the next Claude.** You are running in Claude Code with sub-agent / Task tool capability. You have read this entry and the four supporting concept entries (`Mathieu Equation.md`, `Parametric Resonance.md`, `Floquet Theory.md`, `Photonic Time Crystals.md`). The palace is at `/Users/loudonstearns/Documents/The Palace/`. The artifacts directory for this project is `Artifacts/Floquet Time-Modulated Loops/` — create it and its subdirectories before starting.
+**Operating context for the next Claude.** You are running in Claude Code with sub-agent / Task tool capability. You have read this entry and the four supporting concept entries (`Mathieu Equation.md`, `Parametric Resonance.md`, `Floquet Theory.md`, `Photonic Time Crystals.md`). The palace is at `/Users/loudonstearns/Documents/The Palace/`. The artifacts directory for this project is `Projects/Floquet Time-Modulated Loops/` — create it and its subdirectories before starting.
 
 **Directory structure to create first:**
 ```
-Artifacts/Floquet Time-Modulated Loops/
+Projects/Floquet Time-Modulated Loops/
 ├── interactives/         (HTML files)
 ├── static/               (PNG files)
 ├── audio/                (WAV files + their generating Python)
@@ -947,7 +947,7 @@ After all 20 media items + the codebox source are built and individually validat
 1. **Cross-reference check.** Walk through the entry text section by section. For every reference like "see `media-NN`," confirm the artifact exists, opens correctly, and teaches what the section claims.
 2. **Style check.** Confirm all interactives use the project palette and font stack consistently. Confirm all PNGs render at adequate DPI. Confirm all WAVs have consistent normalization and channel format.
 3. **Pedagogy check.** Sample three random media items and ask: "if a student knew nothing about Floquet theory and saw only this artifact and read its caption, what would they walk away with?" If the answer is something coherent and matches the intended teaching purpose, pass. If not, iterate.
-4. **Build a manifest summary.** Produce a final `BUILD_SUMMARY.md` in `Artifacts/Floquet Time-Modulated Loops/` that lists every artifact with its file path, file size, and a one-sentence description. This becomes the project's index for future reference.
+4. **Build a manifest summary.** Produce a final `BUILD_SUMMARY.md` in `Projects/Floquet Time-Modulated Loops/` that lists every artifact with its file path, file size, and a one-sentence description. This becomes the project's index for future reference.
 
 Once all four checks pass, Stage 1 is complete and ready for Loudon to walk through.
 

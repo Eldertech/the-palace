@@ -1,3 +1,13 @@
+---
+title: "Floquet / Time-Modulated Loops — Build Summary"
+born: 2026-04-30
+links:
+  - target: "[[Floquet Time-Modulated Loops]]"
+    type: connects-to
+    label: child-of
+forward_vector: "I am the build index for [[Floquet Time-Modulated Loops]] — every rendered artifact with its path, size, and one-line description. I stay synchronized with the bundle so the project's media remain discoverable."
+---
+
 # Floquet / Time-Modulated Loops — Build Summary
 
 Built by Claude Code from the manifest in `Projects/Floquet Time-Modulated Loops.md`. Branch: `floquet-build-manifest`. Build date: 2026-04-30.

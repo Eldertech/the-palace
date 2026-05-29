@@ -167,8 +167,8 @@ Examples: [[Piano String Inharmonicity]] (B ∝ 1/T), filter frequency controls,
 
 ## Artifacts
 
-- Python implementation with pseudocode: `/Artifacts/Logarithmic Interface Scaling/log_slider_python_pseudocode.md`
-- Comprehensive design guide: `/Artifacts/Logarithmic Interface Scaling/logarithmic_scaling_guide.md`
+- Python implementation with pseudocode: `Logarithmic Interface Scaling/log_slider_python_pseudocode.md`
+- Comprehensive design guide: `Logarithmic Interface Scaling/logarithmic_scaling_guide.md`
 
 ---
 

@@ -1,3 +1,13 @@
+---
+title: "Retrospective Delay — Stage 1 Implementation"
+born: 2026-04-21
+links:
+  - target: "[[Retrospective Delay]]"
+    type: connects-to
+    label: child-of
+forward_vector: "I am the Stage 1 build spec for [[Retrospective Delay]] — 'The Witness,' the vanilla Max/MSP → M4L effect that plays back what you played one half-note ago. I stay faithful to the mechanism so the patch can be rebuilt from me alone."
+---
+
 # Retrospective Delay — Stage 1 Implementation
 ## "The Witness" — Vanilla Max/MSP → M4L Audio Effect
 

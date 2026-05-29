@@ -195,7 +195,7 @@ This is a high-dimensional coupled system, but it too can be modeled as coupled 
 
 Ten interactive HTML tools have been extracted from an extended conversation on wavelet analysis and portamento (January 6, 2026). These artifacts are located at:
 
-`/Artifacts/Portamento Physical Modeling/portamento-tool-01.html` through `portamento-tool-10.html`
+`Projects/Portamento and Physical Pitch Modeling/portamento-tool-01.html` through `portamento-tool-10.html`
 
 Each tool demonstrates a specific aspect:
 
