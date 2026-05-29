@@ -322,8 +322,8 @@
   -->
   <script type="application/json" id="archetypes">
 {
-  "version": "0.1",
-  "notes": "T7b synth archetype library for the VCV/PDL pipeline. An archetype is a param-cloud projection onto EXISTING topology — it never injects modules. Region names reference the per-param perceptual regions defined in vcv_fundamental_registry.json (v2.3+). The seeded resolver (resolveArchetype in PDL Renderer.html) maps archetype roles to declared PDL instances by name convention (or explicit {role=INST} binding), samples each region at a deterministic position derived from (seed, archetype, instance, param), then applies constraints. Emit precedence: explicit PDL `*` line > archetype param > registry default. Schema is project data with its own `version`; not palace ontology (same rationale that closed T7a phase 2's ceremony question).",
+  "version": "0.2",
+  "notes": "T7c synth archetype library for the VCV/PDL pipeline. An archetype is a param-cloud projection onto EXISTING topology — it never injects modules. v0.2 (2026-05-29), shaped by the first Rack audition of the v0.1 patches: (1) a param-cloud value may be a REGION NAME (string → seed-sampled at a deterministic position, the expressive axis) OR a NUMERIC LITERAL (pinned, clamped to the param's range, the identity axis) — so the seed varies what should vary and leaves identity-critical settings fixed; (2) clouds now set MODULATION DEPTH (attenuverter params like VCF.FREQ_CV, VCO.FM_DEPTH), because v0.1 set destination knobs but left depths at zero, making cabled modulation silent — depth values for pluck/warm_pad are calibrated from Loudon's hand-refinements (FREQ_CV ≈0.38 / ≈0.03); (3) each archetype declares RECOMMENDED_CABLES between roles — the emitter WARNS (T12 'make failure loud') when an identity cable is absent, without injecting it, because topology stays a PDL/T6 decision; (4) base oscillator FREQ is pinned to keyboard-tracking (0) for played voices so a static multi-octave offset can't fight the played pitch — drone keeps a FREQ region as the documented unplayed/sustained exception, and sub_bass pins a -12 octave offset as an intentional register choice. Region names reference perceptual regions in vcv_fundamental_registry.json (v2.3+). Resolver: resolveArchetype in PDL Renderer.html. Emit precedence: explicit PDL `*` line > archetype param > registry default. Project data with its own `version`; not palace ontology.",
   "role_conventions": {
     "AMP_ENV": "amp_env",
     "PITCH_ENV": "pitch_env",
@@ -350,13 +350,17 @@
         "required": ["amp_env", "vco", "amp"]
       },
       "params": {
-        "amp_env":   { "A": "instant", "D": "snappy", "S": "plucked", "R": "gated" },
-        "pitch_env": { "A": "instant", "D": "snappy", "S": "plucked", "R": "gated" },
-        "vco":       { "FREQ": "sub" }
+        "amp_env":   { "A": "instant", "D": "short", "S": 0.0, "R": "gated" },
+        "pitch_env": { "A": "instant", "D": "short", "S": 0.0, "R": "gated" },
+        "vco":       { "FREQ": 0.0, "FM_DEPTH": 0.5 }
       },
       "constraints": [
         { "kind": "copy", "from": "pitch_env.D", "to": "amp_env.D",
           "label": "pitch-fall decay matches amp decay (the kick punch)" }
+      ],
+      "recommended_cables": [
+        { "from": "pitch_env", "to": "vco", "to_port": "FM",
+          "label": "pitch envelope sweeps VCO pitch via FM — this is the kick's punch; without it FM_DEPTH modulates nothing" }
       ]
     },
     "sub_bass": {
@@ -366,7 +370,7 @@
         "required": ["vco", "vcf", "amp_env", "amp"]
       },
       "params": {
-        "vco":     { "FREQ": "low" },
+        "vco":     { "FREQ": -12.0 },
         "vcf":     { "FREQ": "dark", "RES": "clean" },
         "amp_env": { "A": "instant", "D": "medium", "S": "held", "R": "short" }
       }
@@ -378,11 +382,15 @@
         "required": ["vco", "vcf", "amp_env", "lfo", "amp"]
       },
       "params": {
-        "vco":     { "FREQ": "mid" },
-        "vcf":     { "FREQ": "open", "RES": "present" },
-        "amp_env": { "A": "pad", "D": "medium", "S": "held", "R": "ambient" },
+        "vco":     { "FREQ": 0.0 },
+        "vcf":     { "FREQ": "open", "RES": "present", "FREQ_CV": 0.03 },
+        "amp_env": { "A": "pad", "D": "medium", "S": "held", "R": "long" },
         "lfo":     { "FREQ": "subtle" }
-      }
+      },
+      "recommended_cables": [
+        { "from": "lfo", "to": "vcf", "to_port": "FREQ",
+          "label": "LFO breathes the cutoff — the pad's slow evolution; without it FREQ_CV modulates nothing" }
+      ]
     },
     "pluck": {
       "perceptual_index": ["pluck", "plucky", "short", "percussive", "marimba", "harp", "mallet"],
@@ -391,10 +399,14 @@
         "required": ["vco", "vcf", "amp_env", "amp"]
       },
       "params": {
-        "vco":     { "FREQ": "mid" },
-        "vcf":     { "FREQ": "dark", "RES": "present" },
-        "amp_env": { "A": "instant", "D": "short", "S": "plucked", "R": "short" }
-      }
+        "vco":     { "FREQ": 0.0 },
+        "vcf":     { "FREQ": "dark", "RES": "present", "FREQ_CV": 0.38 },
+        "amp_env": { "A": "instant", "D": "medium", "S": 0.0, "R": "medium" }
+      },
+      "recommended_cables": [
+        { "from": "amp_env", "to": "vcf", "to_port": "FREQ",
+          "label": "envelope sweeps the cutoff per note — THE pluck character; reuse the amp envelope into VCF:FREQ. Without it the patch is a static-filter blip, not a pluck" }
+      ]
     },
     "bright_lead": {
       "perceptual_index": ["lead", "bright", "cutting", "solo", "melody", "sharp", "present"],
@@ -403,7 +415,7 @@
         "required": ["vco", "vcf", "amp_env", "amp"]
       },
       "params": {
-        "vco":     { "FREQ": "mid" },
+        "vco":     { "FREQ": 0.0 },
         "vcf":     { "FREQ": "bright", "RES": "present" },
         "amp_env": { "A": "instant", "D": "medium", "S": "full", "R": "short" }
       }
@@ -415,10 +427,14 @@
         "required": ["vco", "vcf", "amp_env", "amp"]
       },
       "params": {
-        "vco":     { "FREQ": "low" },
-        "vcf":     { "FREQ": "dark", "RES": "screaming" },
-        "amp_env": { "A": "instant", "D": "short", "S": "plucked", "R": "short" }
-      }
+        "vco":     { "FREQ": 0.0 },
+        "vcf":     { "FREQ": "dark", "RES": "screaming", "FREQ_CV": 0.6 },
+        "amp_env": { "A": "instant", "D": "short", "S": 0.0, "R": "short" }
+      },
+      "recommended_cables": [
+        { "from": "amp_env", "to": "vcf", "to_port": "FREQ",
+          "label": "envelope drives the resonant sweep — the 303 squelch; deep FREQ_CV is meaningless without this cable" }
+      ]
     },
     "stab": {
       "perceptual_index": ["stab", "hit", "organ stab", "chord stab", "house stab", "punch"],
@@ -427,7 +443,7 @@
         "required": ["vco", "vcf", "amp_env", "amp"]
       },
       "params": {
-        "vco":     { "FREQ": "mid" },
+        "vco":     { "FREQ": 0.0 },
         "vcf":     { "FREQ": "open", "RES": "present" },
         "amp_env": { "A": "instant", "D": "short", "S": "held", "R": "short" }
       }
@@ -439,10 +455,14 @@
         "required": ["vco", "lfo", "amp"]
       },
       "params": {
-        "vco": { "FREQ": "low" },
+        "vco": { "FREQ": "low", "FM_DEPTH": 0.1 },
         "lfo": { "FREQ": "subtle" },
         "vcf": { "FREQ": "open" }
-      }
+      },
+      "recommended_cables": [
+        { "from": "lfo", "to": "vco", "to_port": "FM",
+          "label": "slow LFO into VCO FM gives the drone its slow detune/movement; FM_DEPTH is silent without it" }
+      ]
     }
   }
 }
@@ -734,7 +754,10 @@
     //   - Only registered instances become VCV modules. Unregistered endpoints
     //     (KEYBOARD, OUT, external controllers) are treated as virtual — cables
     //     that touch them are skipped in the emitter output.
-    //   - Module placement packs left-to-right by HP width, wrapping at LAYOUT_MAX_HP.
+    //   - Module placement (T7d): two rows — row 0 is the signal path (MIDI
+    //     controller hard-left → audio modules in topological order → audio sink
+    //     rightmost), row 1 is modulators (envelopes/LFOs) below. Matches the
+    //     hand-layout Loudon's audition refinements converged on.
     //   - Parameter values: per-param, prefer the numeric value from the PDL `*`
     //     line for that instance, else the registry `default`. Named perceptual
     //     regions (`CUTOFF = dark`) resolve through the param's `regions` table
@@ -751,7 +774,6 @@
     //   modules[] with {id, plugin, model, version, params, pos} and cables[] with
     //   {id, outputModuleId, outputId, inputModuleId, inputId, color} — is stable.
 
-    const LAYOUT_MAX_HP = 120;
     const CABLE_COLORS_VCV = {
       audio:   "#f28b6e",
       cv:      "#a78bfa",
@@ -821,7 +843,7 @@
       return Math.min(spec.range[1], Math.max(spec.range[0], v));
     }
 
-    function resolveArchetype(archDef, archetypeName, seed, instanceTypes, bindings) {
+    function resolveArchetype(archDef, archetypeName, seed, instanceTypes, bindings, connections) {
       const out = {};
       const warnings = [];
       const roles    = (archDef.topology && archDef.topology.roles) || {};
@@ -849,26 +871,50 @@
           warnings.push({ source: "archetype", reason: `archetype "${archetypeName}" requires role "${role}" (${roles[role]}) but no matching instance was found — its params are skipped` });
         }
       }
-      // Sample each role's param cloud at its deterministic position.
+      // Sample each role's param cloud. v0.2: a cloud value is EITHER a numeric
+      // literal (pinned — clamped to the param's range, the identity axis) OR a
+      // region name (seed-sampled at a deterministic position, the expressive
+      // axis). Pinning lets the seed vary what should vary while identity-critical
+      // settings (sustain=0 for a one-shot, a calibrated modulation depth) stay put.
       for (const [role, paramMap] of Object.entries(archDef.params || {})) {
         const inst = roleToInst[role];
         if (!inst) continue;
         const modReg = REGISTRY[instanceTypes[inst]];
         out[inst] = out[inst] || {};
-        for (const [pname, regionName] of Object.entries(paramMap)) {
+        for (const [pname, value] of Object.entries(paramMap)) {
           const spec = resolveParamSpec(modReg, pname);
           if (!spec) {
             warnings.push({ source: "archetype", reason: `archetype "${archetypeName}" role ${role}: param "${pname}" not in registry for ${instanceTypes[inst]}` });
             continue;
           }
+          if (typeof value === "number") {
+            out[inst][spec.name] = clampToParam(modReg, spec.name, value);
+            continue;
+          }
           const pos = archetypeHash(seed, archetypeName, inst, spec.name);
-          const val = sampleRegion(spec, regionName, pos);
+          const val = sampleRegion(spec, value, pos);
           if (val == null) {
             const known = spec.regions ? Object.keys(spec.regions).join(", ") : "<none>";
-            warnings.push({ source: "archetype", reason: `archetype "${archetypeName}" role ${role}: region "${regionName}" unknown for ${spec.name} (known: ${known})` });
+            warnings.push({ source: "archetype", reason: `archetype "${archetypeName}" role ${role}: region "${value}" unknown for ${spec.name} (known: ${known})` });
             continue;
           }
           out[inst][spec.name] = val;
+        }
+      }
+      // Recommended-cable contract (v0.2): some archetypes need a specific cable
+      // to mean anything (the pluck's envelope->cutoff sweep, the pad's LFO->cutoff
+      // breath). Archetypes never inject topology — that stays a PDL/T6 decision —
+      // so the resolver only WARNS when an identity cable is absent, mapping the
+      // role endpoints to their resolved instances and checking the parsed
+      // connections. The T12 "make failure loud" move, one layer up.
+      for (const rc of (archDef.recommended_cables || [])) {
+        const fromInst = roleToInst[rc.from];
+        const toInst   = roleToInst[rc.to];
+        if (!fromInst || !toInst) continue; // unfilled role already warned above
+        const present = (connections || []).some(c =>
+          c.from === fromInst && c.to === toInst && (!rc.to_port || c.toPort === rc.to_port));
+        if (!present) {
+          warnings.push({ source: "archetype", reason: `archetype "${archetypeName}" recommends a cable ${fromInst} -> ${toInst}${rc.to_port ? ":" + rc.to_port : ""} that is not in the patch — ${rc.label || "its modulation has no effect without it"}` });
         }
       }
       // Constraints run after sampling, in declaration order.
@@ -899,16 +945,66 @@
       const moduleId = {};
       registeredIds.forEach((id, i) => { moduleId[id] = i + 1; });
 
-      // Layout: left-to-right HP packing with row wrap.
-      const positions = {};
-      let curX = 0, curRow = 0;
-      for (const id of registeredIds) {
-        const mod = REGISTRY[instanceTypes[id]];
-        const hp  = mod.hp || 1;
-        if (curX + hp > LAYOUT_MAX_HP && curX > 0) { curRow++; curX = 0; }
-        positions[id] = [curX, curRow];
-        curX += hp;
+      // T7d — layout intelligence (2026-05-29, audition-driven). Two rows that
+      // match the hand-layout Loudon's refinements converged on:
+      //   row 0 = the signal path, left→right in topological order: the MIDI
+      //           controller hard-left, audio modules in signal order, the audio
+      //           sink rightmost.
+      //   row 1 = modulators (envelopes, LFOs, sequencers) BELOW the audio path.
+      // This is layout intelligence, a sibling to parameter intelligence: it
+      // changes how the patch is arranged on the rack, not what it sounds like.
+      // Touches only `positions`; no param/archetype/registry logic.
+      //
+      // A module's row comes from its registry shape, not a hardcoded list:
+      //   controller = zero inputs (MIDI_CV);  audio = has an audio-typed output
+      //   (VCO/VCF/VCA/mixers, and AUDIO_8 the sink);  modulator = everything else
+      //   (ADSR/LFO/SEQ3). Column order is topological depth along registered
+      //   cables (longest path from a source), so VCO→VCF→VCA→OUT falls out
+      //   left-to-right and the controller (depth 0) pins left.
+      const moduleClass = (modType) => {
+        const m = REGISTRY[modType];
+        if (!m) return "audio";
+        if ((m.inputs || []).length === 0) return "controller";
+        if ((m.outputs || []).some(p => p.type === "audio")) return "audio";
+        return "modulator";
+      };
+
+      const depth = {};
+      {
+        const parents = {};
+        for (const id of registeredIds) parents[id] = [];
+        for (const c of connections) {
+          if (instanceTypes[c.from] && instanceTypes[c.to] && c.from !== c.to && parents[c.to]) parents[c.to].push(c.from);
+        }
+        const computing = {};
+        const compute = (id) => {
+          if (depth[id] != null) return depth[id];
+          if (computing[id]) return 0; // cycle guard (e.g. FM feedback)
+          computing[id] = true;
+          let d = 0;
+          for (const p of (parents[id] || [])) d = Math.max(d, compute(p) + 1);
+          computing[id] = false;
+          return (depth[id] = d);
+        };
+        for (const id of registeredIds) compute(id);
       }
+
+      const orderIndex = Object.fromEntries(registeredIds.map((id, i) => [id, i]));
+      const row0 = [], row1 = [];
+      for (const id of registeredIds) (moduleClass(instanceTypes[id]) === "modulator" ? row1 : row0).push(id);
+      // Row 0: controller hard-left (tiebreak), then by topological depth, then
+      // by declaration order. Row 1: modulators by depth, then declaration order.
+      const ctrlRank = (id) => moduleClass(instanceTypes[id]) === "controller" ? -1 : 0;
+      row0.sort((a, b) => ctrlRank(a) - ctrlRank(b) || depth[a] - depth[b] || orderIndex[a] - orderIndex[b]);
+      row1.sort((a, b) => depth[a] - depth[b] || orderIndex[a] - orderIndex[b]);
+
+      const positions = {};
+      const layRow = (ids, row) => {
+        let x = 0;
+        for (const id of ids) { positions[id] = [x, row]; x += (REGISTRY[instanceTypes[id]].hp || 1); }
+      };
+      layRow(row0, 0);
+      layRow(row1, 1);
 
       // T7a phase 2 — resolve PDL `*` entries into per-instance
       // { paramName → numeric value } maps. Each entry is `Name = Value`.
@@ -940,7 +1036,7 @@
           });
           continue;
         }
-        const { params: archParams, warnings: archWarns } = resolveArchetype(archDef, a.name, a.seed, instanceTypes, a.bindings);
+        const { params: archParams, warnings: archWarns } = resolveArchetype(archDef, a.name, a.seed, instanceTypes, a.bindings, connections);
         for (const w of archWarns) warnings.push({ ...w, lineNumber: a.lineNumber });
         for (const [inst, pmap] of Object.entries(archParams)) {
           resolvedParams[inst] = resolvedParams[inst] || {};

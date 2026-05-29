@@ -44,7 +44,7 @@
       "rightModuleId": -1,
       "data": {},
       "pos": [
-        0,
+        9,
         0
       ]
     },
@@ -95,8 +95,8 @@
       "rightModuleId": -1,
       "data": {},
       "pos": [
-        12,
-        0
+        0,
+        1
       ]
     },
     {
@@ -146,8 +146,8 @@
       "rightModuleId": -1,
       "data": {},
       "pos": [
-        20,
-        0
+        8,
+        1
       ]
     },
     {
@@ -169,7 +169,7 @@
       "rightModuleId": -1,
       "data": {},
       "pos": [
-        28,
+        21,
         0
       ]
     },
@@ -183,7 +183,7 @@
       "rightModuleId": -1,
       "data": {},
       "pos": [
-        31,
+        0,
         0
       ]
     },
@@ -197,7 +197,7 @@
       "rightModuleId": -1,
       "data": {},
       "pos": [
-        40,
+        24,
         0
       ]
     }
