@@ -1,0 +1,5 @@
+node_modules/
+# Regenerable run artifacts (live state, not source)
+digest-latest.json
+digest-latest.md
+state/budget.json
