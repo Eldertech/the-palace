@@ -82,7 +82,9 @@ Execution**, finally given a purpose in the stewardship loop:
   tension or discarded.
 
 Stage F does not invent a substrate. It wires existing, unbuilt plumbing into the
-steward → Trickster flow and adds a comparison surface.
+steward → Trickster flow and emits its two finished paths to the rich-content
+`choice` surface (built by the parallel v0.4 session) — it does **not** build its
+own comparison view.
 
 ## What Stage F is (and is not)
 
@@ -133,10 +135,11 @@ work — gated, opt-in, budgeted).
    type must have *landed* on the branch before Stage F Phase 3 runs — it is
    in-progress (`ChoiceBlock.jsx` + `richcontent.js` exist, `rich-content2.spec.js`
    green) but not yet merged/shipped. Coordinate, don't fork your own renderer.
-4. **Merge/reconcile mechanics.** After Loudon picks: orchestrator merges the
-   winner's worktree to the working branch; the loser's diff is saved as an
-   alternative note on the page (or its `BRANCHES` post stands as the record).
-   Confirm the merge discipline and who runs it.
+4. **Where the loser rests, and who triggers the merge.** Phase 4 nails the merge
+   *trigger* (the `choice_response` → winner's worktree merges). Still open: does
+   the losing branch live as an explicit alternative note on the page, or does its
+   `BRANCHES` post simply stand as the record? And does a human run the merge step
+   or does the orchestrator do it automatically on seeing the `choice_response`?
 5. **Eligibility precision + the audition rule.** A sensory two-paths run produces
    two sensory deliverables and STILL escalates the choice to Loudon — consistent
    with the hard rule (never auto-resolve an audition). Confirm: Two Paths may
@@ -151,6 +154,17 @@ attempts per failing check, then a `STOP-REPORT.md`. Write `STAGE-F-COMPLETE.md`
 on success. Default to a **dry-run** (plan the branch dispatches; do not run
 models or merge) until Loudon opts into live execution.
 
+**Build order under the v0.4 dependency (the one thing the rich-content coupling
+changes about *how* to build this).** Phases 0–2 — candidate selection, branch
+dispatch, reconciliation — touch only Stage E + the orchestrator and are buildable
+**now, autonomously**, regardless of rich content. Phases 3–4 — emit the `choice`
+card, consume the `choice_response` — are **gated on the v0.4 `choice` type having
+landed/merged** (it is in progress, not shipped). So this is NOT a single
+cold-start autonomous build: do 0–2 now; pause before 3 until the `choice` type is
+on the branch (or confirm with Loudon). A cold session cannot "coordinate" with a
+parallel one — it can only check whether `choiceFromPayload`/`ChoiceBlock` are
+present and stop if not.
+
 - **Phase 0 — Candidate selection.** Extend the Stage E digest so each escalation
   carries a `two_paths_eligible` flag (rec=n OR sensory) and the two concrete
   options extracted (meta-options excluded). *Verify:* over the live board, the
@@ -160,10 +174,11 @@ models or merge) until Loudon opts into live execution.
   two branch directives (option A / option B), two isolated worktrees, and the
   steward-cycle prompts that send the page down each path. *Verify:* dry-run
   prints the two dispatch plans + worktree paths; no models run, no writes.
-- **Phase 2 — Reconciliation + comparison artifact.** Collect both branches'
-  deliverables and `BRANCHES` posts into one deterministic comparison object
-  (convergence / contradiction / orthogonality per §10.2). *Verify:* comparison
-  renders deterministically from a fixture of two branch results.
+- **Phase 2 — Reconciliation object.** Collect both branches' deliverables and
+  `BRANCHES` posts into one deterministic reconciliation object (convergence /
+  contradiction / orthogonality per §10.2). This object is the *input* the Phase 3
+  `choice` card is built from — not a separate rendered surface. *Verify:* the
+  reconciliation object is deterministic from a fixture of two branch results.
 - **Phase 3 — Emit the `choice` card (reuse, don't build a surface).** Package the
   two finished branch deliverables as a rich-content `choice` card
   (`payload.kind:"choice"`, `choice_mode:"pick"`, `options:[{id, label,
