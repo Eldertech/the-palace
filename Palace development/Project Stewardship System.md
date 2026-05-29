@@ -49,6 +49,9 @@ links:
   - target: "[[Stage E — Automated Trickster — handoff]]"
     type: spawned
     label: stage-e-build-contract
+  - target: "[[Stage F — Two Paths — handoff]]"
+    type: spawned
+    label: stage-f-build-contract
   - target: "[[Palace Conatus]]"
     type: connects-to
     label: escalation-rationale
@@ -270,6 +273,7 @@ Per Infrastructure Spec §12 forward vector, the rules engine is unspecced. This
 - **The Stage B smoke-test gate (current frontier, as of 2026-05-26).** Orchestrator v0.1 is build-complete but sits on an unpushed local branch awaiting Loudon's own smoke-test + review (see [[Orchestrator Production Plan]] close-out). It has never run on a live project via the skill. Cleanest next move: advance the GSL steward to cycle 6 through the skill — it doubles as smoke-test and first real use — then push the branch.
 - **Whether to build v0.2 (Stage C enablers) now.** [[Orchestrator Production Plan v0.2]] (batch-cycle, cadence, spawn-from-project, scheduled-task recipes) is a ready autonomous-build contract at seed stage. Its Phase 1 reads v0.1's closure report, so it is blocked on the smoke-test gate above. Decision: build it to make stewardship operational, or run stewards by hand longer to learn the right cadence first?
 - **Automated Trickster — built; first safe ruleset chosen, awaiting Loudon's shadow review.** Stage E shipped 2026-05-29 (`_ops/stigmergy/trickster-auto/`). The v0 ruleset auto-grants only non-blocking directional forks carrying the steward's own recommendation; everything else escalates. It runs shadow-default. The remaining open move is operational, not design: Loudon reads the shadow digest on the STIGMERGY TRICKSTER tab, compares the 3 proposed grants + ranking to his own judgment, tunes `rules.json` if needed, and flips `--live` when the match rate satisfies him.
+- **Stage F — Two Paths (decide-after-doing), proposed 2026-05-29.** A new mode past the original five stages: where a steward gave options but no recommendation, or the fork is sensory, run BOTH branches to a finished deliverable (isolated worktrees, the unused `BRANCHES` board, §10.2 Branch Exploration) and let Loudon choose from completed work — the human always picks; the engine never auto-resolves. Design pass and phased build contract drafted at [[Stage F — Two Paths — handoff]]; not yet built. It consumes the Stage E digest as its candidate source (rec=n defers + audition escalations are exactly its two triggers).
 - **Vector tuning practice as palace-wide norm.** Vector tuning is settled as a process, not a ceremony (see What's Decided). What's still open: how to make the invitation visible — does the Weave Ceremony spec need an explicit "vector edits welcome" beat? Does [[SCHEMA]] want a one-line note that forward vectors are meant to evolve? Probably yes to both, as small follow-on edits.
 - **Schedule cadence.** Daily? Weekly? Per-project? Probably configurable per Steward via manifest, with a sensible default that the orchestrator can override.
 - **Recursion handling at the orchestrator level.** When a Steward encounters a `seed` deliverable inside a `growing` project, does it switch to seed-stage posture for that deliverable? Needs explicit rule in the orchestrator.
