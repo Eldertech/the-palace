@@ -82,3 +82,9 @@
 {"ts":"2026-05-29T14:35:57.717Z","phase":7,"action":"gate-end","outcome":"fail","stage":"captures"}
 {"ts":"2026-05-29T14:36:24.164Z","phase":7,"label":"v0.3 Phase 1 — File Endpoint","action":"gate-start"}
 {"ts":"2026-05-29T14:36:25.580Z","phase":7,"action":"gate-end","outcome":"pass","stage":"tests+captures"}
+{"ts":"2026-05-29T14:39:41.544Z","phase":8,"label":"v0.3 Phase 2 — Inline Render","action":"gate-start"}
+{"ts":"2026-05-29T14:40:17.156Z","phase":8,"action":"gate-end","outcome":"fail","stage":"playwright"}
+{"ts":"2026-05-29T14:41:39.527Z","phase":8,"label":"v0.3 Phase 2 — Inline Render","action":"gate-start"}
+{"ts":"2026-05-29T14:42:01.376Z","phase":8,"action":"gate-end","outcome":"pass","stage":"tests+captures"}
+{"ts":"2026-05-29T14:46:25.816Z","phase":8,"label":"v0.3 Phase 2 — Inline Render","action":"gate-start"}
+{"ts":"2026-05-29T14:46:44.030Z","phase":8,"action":"gate-end","outcome":"pass","stage":"tests+captures"}

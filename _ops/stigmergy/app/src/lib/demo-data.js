@@ -42,6 +42,41 @@ export const DEMO_MESSAGES = [
     payload: { content: 'searching prior board for any FLAG mentioning Kuramoto.' },
   },
 
+  // ENRICHMENT CARDS (v0.3 rich content) ----------------------------------
+  // Ordinary BROADCASTs carrying the artifact convention. `from` is the
+  // target page's title (page-as-agent identity), not an invented handle.
+  // Artifacts are real palace files so GET /api/file serves them in ?demo=1.
+  {
+    // Single artifact via artifact_path (string).
+    schema_version: '1.0', id: 'demo-art-1',
+    ts: '2026-05-02T10:09:00Z', session_id: 'demo-2026-05-02',
+    from: 'Kuramoto Coupling', to: '*', type: 'BROADCAST', board: 'GENERAL',
+    health: { context_pct: 0.31, score: 'green', model: 'claude-opus-4-7',
+              stop_reason: 'end_turn', iteration: 1, tokens_this_call: 410 },
+    payload: {
+      kind: 'enrichment_card',
+      content: 'fireflies synchronizing — the canonical image of phase coupling in the wild.',
+      artifact_path: 'Kuramoto Coupling/fireflies-pond.png',
+    },
+  },
+  {
+    // Multi-artifact set via artifacts[] with captions.
+    schema_version: '1.0', id: 'demo-art-2',
+    ts: '2026-05-02T10:10:00Z', session_id: 'demo-2026-05-02',
+    from: 'Kuramoto Coupling', to: '*', type: 'BROADCAST', board: 'GENERAL',
+    health: { context_pct: 0.34, score: 'green', model: 'claude-opus-4-7',
+              stop_reason: 'end_turn', iteration: 1, tokens_this_call: 980 },
+    payload: {
+      kind: 'enrichment_card',
+      content: 'a coherent set: the still, the sound, and the playable model.',
+      artifacts: [
+        { path: 'Kuramoto Coupling/_title-card.png', caption: 'title card — the lesson opens here.' },
+        { path: 'Kuramoto Coupling/opening-bed.wav', caption: 'opening bed — the sonic field the narration sits over.' },
+        { path: 'Kuramoto Coupling/two-phasors-coupling-explorer.html', caption: 'interactive: drag coupling strength and watch two phasors lock.' },
+      ],
+    },
+  },
+
   // FLAGS -----------------------------------------------------------------
   {
     schema_version: '1.0', id: 'demo-010',

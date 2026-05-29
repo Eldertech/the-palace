@@ -216,6 +216,69 @@ test.describe(`phase ${PHASE} captures`, () => {
     });
   }
 
+  if (PHASE === '8' || PHASE === '9') {
+    // v0.3: inline rich-content captures. The demo enrichment cards
+    // (demo-art-1 / demo-art-2) live on GENERAL.
+    const v3dir = `screenshots/phase-${PHASE}-v0.3`;
+
+    test(`phase-${PHASE}-v0.3/general-artifacts.png`, async ({ page }) => {
+      await page.goto('/?demo=1');
+      await page.getByTestId('channel-tabs').waitFor({ timeout: 15_000 });
+      await preloadFonts(page);
+      await page.getByTestId('tab-general').click();
+      const card = page.locator('[data-testid="message-row"][data-id="demo-art-1"]');
+      await card.getByTestId('artifact-img').waitFor({ timeout: 10_000 });
+      await card.scrollIntoViewIfNeeded();
+      await page.waitForTimeout(400);
+      const dir = resolve(v3dir);
+      mkdirSync(dir, { recursive: true });
+      // Element shot of the single-image card — focused and small (a fullPage
+      // shot of the whole GENERAL board would be a ~10MB binary).
+      await card.screenshot({ path: resolve(dir, 'general-artifacts.png') });
+    });
+
+    test(`phase-${PHASE}-v0.3/iframe-artifact.png`, async ({ page }) => {
+      await page.goto('/?demo=1');
+      await page.getByTestId('channel-tabs').waitFor({ timeout: 15_000 });
+      await preloadFonts(page);
+      await page.getByTestId('tab-general').click();
+      const iframe = page.locator('[data-testid="message-row"][data-id="demo-art-2"] [data-testid="artifact-iframe"]');
+      await iframe.scrollIntoViewIfNeeded();
+      await iframe.waitFor({ timeout: 10_000 });
+      await page.waitForTimeout(600);
+      const dir = resolve(v3dir);
+      mkdirSync(dir, { recursive: true });
+      await page.locator('[data-testid="message-row"][data-id="demo-art-2"]')
+        .screenshot({ path: resolve(dir, 'iframe-artifact.png') });
+    });
+  }
+
+  if (PHASE === '9') {
+    // v0.3 final-sweep: FLAGS + TRICKSTER board captures for regression review.
+    test('phase-9-v0.3/flags.png', async ({ page }) => {
+      await page.goto('/?demo=1');
+      await page.getByTestId('channel-tabs').waitFor({ timeout: 15_000 });
+      await preloadFonts(page);
+      await page.getByTestId('tab-flags').click();
+      await page.waitForTimeout(300);
+      const dir = resolve('screenshots/phase-9-v0.3');
+      mkdirSync(dir, { recursive: true });
+      await page.screenshot({ path: resolve(dir, 'flags.png'), fullPage: false });
+    });
+
+    test('phase-9-v0.3/trickster.png', async ({ page }) => {
+      await page.goto('/?demo=1');
+      await page.getByTestId('channel-tabs').waitFor({ timeout: 15_000 });
+      await preloadFonts(page);
+      await page.getByTestId('tab-trickster').click();
+      await page.getByTestId('trickster-inbox').waitFor({ timeout: 5_000 });
+      await page.waitForTimeout(300);
+      const dir = resolve('screenshots/phase-9-v0.3');
+      mkdirSync(dir, { recursive: true });
+      await page.screenshot({ path: resolve(dir, 'trickster.png'), fullPage: false });
+    });
+  }
+
   if (PHASE === '5') {
     // Phase 5 v0.2: Live Tail Integration captures.
 
