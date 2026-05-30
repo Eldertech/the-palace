@@ -22,6 +22,7 @@
     "check:phase-9": "node scripts/check-phase.js 9",
     "check:phase-10": "node scripts/check-phase.js 10",
     "check:phase-11": "node scripts/check-phase.js 11",
+    "check:phase-12": "node scripts/check-phase.js 12",
     "check:all": "node scripts/check-phase.js all"
   },
   "dependencies": {

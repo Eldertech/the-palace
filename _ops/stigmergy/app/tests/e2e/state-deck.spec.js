@@ -34,11 +34,11 @@ test.describe('STATE deck — chrome', () => {
     await expect(page.getByTestId('deck-queue')).toHaveAttribute('data-active', 'true');
   });
 
-  test('L hotkey shows the LOG stub (Phase 2 placeholder)', async ({ page }) => {
+  test('L hotkey shows the LOG deck (git explorer)', async ({ page }) => {
     await page.goto('/');
     await page.keyboard.press('l');
-    await expect(page.getByTestId('log-deck-stub')).toBeVisible({ timeout: 5_000 });
-    await expect(page.getByTestId('log-deck-stub')).toContainText(/v1\.0 phase 2/i);
+    await expect(page.getByTestId('log-deck')).toBeVisible({ timeout: 5_000 });
+    await expect(page.getByTestId('log-deck')).toContainText(/the git record/i);
   });
 
   test('S hotkey returns to STATE', async ({ page }) => {

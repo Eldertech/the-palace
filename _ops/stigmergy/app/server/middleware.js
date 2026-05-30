@@ -20,6 +20,7 @@ import { parseJSONL } from '../src/lib/parser.js';
 import { validateMessage } from './validator.js';
 import { appendJsonLine } from './append.js';
 import { listEntries, readEntry } from '../src/lib/entries.js';
+import { readLog, readCommit, readUncommitted } from './git.js';
 
 const SESSIONS_REL = '_ops/swarm/sessions';
 const PERSISTENT_REL = '_ops/swarm/persistent/blackboard.jsonl';
@@ -418,6 +419,48 @@ export function blackboardMiddleware(palaceRoot) {
             return jsonResponse(res, 404, { error: 'entry not found or excluded', path: rel });
           }
           return jsonResponse(res, 200, entry);
+        }
+
+        // ── GET /api/log ─ the commit stream (LOG deck) ─────────────────────
+        // ?limit=N caps the stream; ?path=<rel> filters to one entry's history.
+        // Each commit is classified (kind/scope/trailers/entries) and carries
+        // a diffstat. Pre-spec history is tolerated -- kind is inferred when
+        // no trailer/declared-subject is present.
+        if (urlPath === '/api/log' && method === 'GET') {
+          try {
+            const limit = query.get('limit') ?? '100';
+            const pathspec = query.get('path');
+            const result = await readLog(palaceRoot, { limit, pathspec });
+            if (result.error) return jsonResponse(res, 400, { error: result.error });
+            return jsonResponse(res, 200, { ...result, ts: new Date().toISOString() });
+          } catch (err) {
+            return jsonResponse(res, 500, { error: `git log failed: ${err.message}` });
+          }
+        }
+
+        // ── GET /api/commit?sha=<ref> ─ one commit's palace-aware diff ──────
+        // Frontmatter changes render field-level; body as a changed flag;
+        // media additions flagged for inline render.
+        if (urlPath === '/api/commit' && method === 'GET') {
+          const sha = query.get('sha');
+          if (!sha) return jsonResponse(res, 400, { error: 'missing ?sha' });
+          try {
+            const commit = await readCommit(palaceRoot, sha);
+            if (!commit) return jsonResponse(res, 404, { error: 'commit not found or invalid ref', sha });
+            return jsonResponse(res, 200, commit);
+          } catch (err) {
+            return jsonResponse(res, 500, { error: `git show failed: ${err.message}` });
+          }
+        }
+
+        // ── GET /api/uncommitted ─ the working-tree delta (the banner) ──────
+        if (urlPath === '/api/uncommitted' && method === 'GET') {
+          try {
+            const delta = await readUncommitted(palaceRoot);
+            return jsonResponse(res, 200, { ...delta, ts: new Date().toISOString() });
+          } catch (err) {
+            return jsonResponse(res, 500, { error: `git status failed: ${err.message}` });
+          }
         }
 
         // ── POST /api/persistent ────────────────────────────────────────────

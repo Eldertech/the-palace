@@ -118,6 +118,23 @@ const PHASES = {
       'phase-11-v1.0/log-deck-stub.png',
     ],
   },
+  12: {
+    label: 'v1.0 Phase 2 — LOG read',
+    vitest: [
+      'commit-parse.test.js', 'git-log-parse.test.js', 'frontmatter-diff.test.js',
+      'log-filter.test.js', 'yaml-frontmatter.test.js',
+      'parser.test.js', 'schema.test.js', 'middleware.test.js', 'validator.test.js',
+    ],
+    integration: ['git-middleware.test.js'],
+    playwright: [
+      'boot.spec.js', 'tokens.spec.js', 'state-deck.spec.js', 'log-deck.spec.js',
+    ],
+    screenshots: [
+      'phase-12-v1.0/log-stream.png',
+      'phase-12-v1.0/log-commit-diff.png',
+      'phase-12-v1.0/log-filtered.png',
+    ],
+  },
 };
 
 function logRun(entry) {
@@ -226,7 +243,7 @@ function main() {
     process.exit(2);
   }
   if (arg === 'all') {
-    for (const p of [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]) {
+    for (const p of [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]) {
       const code = checkPhase(p);
       if (code !== 0) process.exit(code);
     }
