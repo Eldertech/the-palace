@@ -124,7 +124,7 @@ Render command: `npx remotion render PhenomenaWalk ../phenomena-walk.mp4 --codec
 
 ## Test Suite
 
-Smoke / Capability Probe / Style Probe / Edge Probe / Speed Bench / Determinism — defined in `Artifacts/Shop/Remotion/tests/test-plan.md` (TODO). Last run: never.
+Smoke / Capability Probe / Style Probe / Edge Probe / Speed Bench / Determinism — defined in [Artifacts/Shop/Remotion/tests/test-plan.md](../Artifacts/Shop/Remotion/tests/test-plan.md). Last run **2026-05-30** — Smoke pass via existing-artifact verification (Kuramoto Round 1 `phenomena-walk.mp4` + source dir present). Live re-render deferred; byte-determinism documented from Remotion's deterministic-rendering contract, not asserted live this round.
 
 ## Open Questions
 

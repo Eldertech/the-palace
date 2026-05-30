@@ -121,9 +121,9 @@ Output exists, format matches request, dimensions are within ±2px of `figsize �
 
 ## Test Suite
 
-Smoke / Capability Probe / Style Probe / Edge Probe / Speed Bench / Determinism — defined in `Artifacts/Shop/Matplotlib/tests/test-plan.md` (TODO).
+Smoke / Capability Probe / Style Probe / Edge Probe / Speed Bench / Determinism — defined in [Artifacts/Shop/Matplotlib/tests/test-plan.md](../Artifacts/Shop/Matplotlib/tests/test-plan.md).
 
-Last run: 2026-05-10 — Smoke + first job (two-phasor Sketch as a Manim motion fallback). Static-chart capability still unexercised; the Forward Vector's Bode-plot job remains the real Capability Probe.
+Last run: **2026-05-30** — Smoke + Determinism both pass (byte-identical PNG SHA256 `4f46b0a9…` across two runs of the same script with stripped metadata). Capability Probe covers the Manim-fallback static-frame role (Kuramoto 2026-05-10 historical); multi-panel publication chart and standalone phase diagram still unverified. Style Probe is degenerate until a house-defaults wrapper analogous to the Plot wrapper exists — Matplotlib's Layer-0 typography/padding is not yet bridged to Loudon Live tokens.
 
 ## Open Questions
 

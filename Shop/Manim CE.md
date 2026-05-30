@@ -215,9 +215,11 @@ Future recipes in `Artifacts/Shop/Manim CE/recipes/` once they accumulate beyond
 
 ## Test Suite
 
-Smoke / Capability Probe / Style Probe / Edge Probe / Speed Bench / Determinism — defined in `Artifacts/Shop/Manim CE/tests/test-plan.md` (TODO).
+Smoke / Capability Probe / Style Probe / Edge Probe / Speed Bench / Determinism — defined in [Artifacts/Shop/Manim CE/tests/test-plan.md](../Artifacts/Shop/Manim CE/tests/test-plan.md).
 
 The Determinism test for Manim is the strongest of any specialist's: same `.py` + same Manim version → byte-identical output. The test confirms this and flags any divergence as a build-environment issue rather than a tool problem.
+
+Last run: **2026-05-30** — Smoke pass (12 KB MP4 at 480p15 in 1.45 s); **Determinism pass — byte-identical SHA256 `3715c0c5…` across two runs of the same trivial scene** (strong-determinism claim confirmed). Capability Probe covers all five claims (ValueTracker, always_redraw factories, MathTex+LaTeX, manim-voiceover, eased FadeIns) via Phase A + Kuramoto Round 1 artifacts. Tier costs documented in entry's 2026-05-30 gotcha (Sketch 5.4 s · Study 11.2 s · Piece 15.9 s warm).
 
 Last run: never.
 

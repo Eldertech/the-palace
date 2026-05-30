@@ -132,7 +132,7 @@ HTML loads without console errors, audio context unlocks correctly on first user
 
 ## Test Suite
 
-Smoke / Capability Probe / Style Probe / Edge Probe / Speed Bench / Determinism — defined in `Artifacts/Shop/Tone.js/tests/test-plan.md` (TODO). Last run: never.
+Smoke / Capability Probe / Style Probe / Edge Probe / Speed Bench / Determinism — defined in [Artifacts/Shop/Tone.js/tests/test-plan.md](../Artifacts/Shop/Tone.js/tests/test-plan.md). Last run **2026-05-30** — Smoke pass via `node --experimental-vm-modules Artifacts/Shop/web-smoke.mjs "Kuramoto Coupling/two-oscillators-coupling-explorer-audio.html"` (1 inline script, 0 fail). Audible-correctness check is human-only and was confirmed during 2026-05-26 Kuramoto Round 1 (drift → pulling-in → lock distinguishable by ear at K_c). Determinism N/A in the byte sense — Web Audio scheduling has run-to-run jitter; reproducibility artifact is source + pinned `tone@15.0.4` + any algorithmic seed.
 
 ## Open Questions
 

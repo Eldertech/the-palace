@@ -165,11 +165,11 @@ The Maker may run ffmpeg in parallel with most other Specialists — it doesn't 
 
 ## Test Suite
 
-Smoke / Capability Probe / Style Probe / Edge Probe / Speed Bench / Determinism — defined in `Artifacts/Shop/ffmpeg/tests/test-plan.md` (TODO).
+Smoke / Capability Probe / Style Probe / Edge Probe / Speed Bench / Determinism — defined in [Artifacts/Shop/ffmpeg/tests/test-plan.md](../Artifacts/Shop/ffmpeg/tests/test-plan.md).
 
 The Determinism test for ffmpeg is straightforward and should pass without exception: same command + same input → byte-identical output. The test confirms this and flags any divergence as a build-environment issue (codec library version drift) rather than a tool problem.
 
-Last run: never.
+Last run: **2026-05-30** — Smoke + Determinism both pass (byte-identical SHA256 `70cdc22d…` across two `testsrc` runs with `-fflags +bitexact -flags +bitexact -map_metadata -1`). Capability Probe covers mux + concat + loudnorm via historical Shop jobs; HEVC re-encode marked unverified.
 
 ## Open Questions
 
