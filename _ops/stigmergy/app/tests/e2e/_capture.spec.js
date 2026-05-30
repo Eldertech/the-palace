@@ -467,15 +467,63 @@ test.describe(`phase ${PHASE} captures`, () => {
     });
 
     test('phase-11-v1.0/log-deck-stub.png', async ({ page }) => {
+      // LOG was a stub in Phase 1; Phase 2 replaced it with the real git
+      // explorer. Capture the real deck so check:all stays green.
       await page.goto('/');
       await page.getByTestId('deck-tabs').waitFor({ timeout: 10_000 });
       await preloadFonts(page);
       await page.keyboard.press('l');
-      await page.getByTestId('log-deck-stub').waitFor({ timeout: 5_000 });
+      await page.getByTestId('log-deck').waitFor({ timeout: 5_000 });
       await page.waitForTimeout(300);
       const dir = resolve('screenshots/phase-11-v1.0');
       mkdirSync(dir, { recursive: true });
       await page.screenshot({ path: resolve(dir, 'log-deck-stub.png'), fullPage: false });
+    });
+  }
+
+  if (PHASE === '12') {
+    // v1.0 Phase 2 — LOG read captures, against the live palace history.
+
+    test('phase-12-v1.0/log-stream.png', async ({ page }) => {
+      await page.goto('/');
+      await page.getByTestId('deck-tabs').waitFor({ timeout: 10_000 });
+      await preloadFonts(page);
+      await page.keyboard.press('l');
+      await page.getByTestId('commit-stream').waitFor({ timeout: 15_000 });
+      await page.waitForTimeout(400);
+      const dir = resolve('screenshots/phase-12-v1.0');
+      mkdirSync(dir, { recursive: true });
+      await page.screenshot({ path: resolve(dir, 'log-stream.png'), fullPage: false });
+    });
+
+    test('phase-12-v1.0/log-commit-diff.png', async ({ page }) => {
+      await page.goto('/');
+      await page.getByTestId('deck-tabs').waitFor({ timeout: 10_000 });
+      await preloadFonts(page);
+      await page.keyboard.press('l');
+      await page.getByTestId('log-filters').waitFor({ timeout: 15_000 });
+      await page.getByTestId('filter-text').fill('Two Batons');
+      await page.waitForTimeout(400);
+      await page.locator('[data-testid="commit-card"] [data-testid="commit-summary"]').first().click();
+      await page.getByTestId('commit-diff').waitFor({ timeout: 10_000 });
+      await page.waitForTimeout(400);
+      const dir = resolve('screenshots/phase-12-v1.0');
+      mkdirSync(dir, { recursive: true });
+      await page.screenshot({ path: resolve(dir, 'log-commit-diff.png'), fullPage: false });
+    });
+
+    test('phase-12-v1.0/log-filtered.png', async ({ page }) => {
+      await page.goto('/');
+      await page.getByTestId('deck-tabs').waitFor({ timeout: 10_000 });
+      await preloadFonts(page);
+      await page.keyboard.press('l');
+      await page.getByTestId('log-filters').waitFor({ timeout: 15_000 });
+      // Click the first kind chip to show a filtered stream.
+      await page.locator('[data-testid^="filter-kind-"]').first().click();
+      await page.waitForTimeout(400);
+      const dir = resolve('screenshots/phase-12-v1.0');
+      mkdirSync(dir, { recursive: true });
+      await page.screenshot({ path: resolve(dir, 'log-filtered.png'), fullPage: false });
     });
   }
 });

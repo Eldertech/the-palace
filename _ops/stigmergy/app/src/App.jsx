@@ -8,7 +8,7 @@ import DigestPanel from './components/DigestPanel.jsx';
 import DeckTabs from './components/DeckTabs.jsx';
 import { DECKS } from './lib/decks.js';
 import StateDeck from './components/state/StateDeck.jsx';
-import LogDeckStub from './components/state/LogDeckStub.jsx';
+import LogDeck from './components/log/LogDeck.jsx';
 import { Banner } from './components/primitives.jsx';
 import { fetchPersistent, fetchSessions } from './adapters/blackboard.js';
 import { subscribeLive } from './adapters/live-tail.js';
@@ -268,7 +268,7 @@ export default function App() {
       <DeckTabs active={deck} onSelect={setDeck} />
 
       {deck === 'STATE' && <StateDeck />}
-      {deck === 'LOG' && <LogDeckStub />}
+      {deck === 'LOG' && <LogDeck />}
       {deck === 'QUEUE' && (
         <div data-testid="board-screen" style={{ width: '100%' }}>
           <Banner as="h1" strong style={{ fontSize: 32, margin: '0 0 4px' }}>

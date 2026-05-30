@@ -150,3 +150,9 @@
 {"ts":"2026-05-29T20:42:17.811Z","phase":10,"action":"gate-end","outcome":"pass","stage":"tests+captures"}
 {"ts":"2026-05-30T17:18:44.296Z","phase":11,"label":"v1.0 Phase 1 — STATE read","action":"gate-start"}
 {"ts":"2026-05-30T17:19:10.532Z","phase":11,"action":"gate-end","outcome":"pass","stage":"tests+captures"}
+{"ts":"2026-05-30T17:49:42.098Z","phase":12,"label":"v1.0 Phase 2 — LOG read","action":"gate-start"}
+{"ts":"2026-05-30T17:49:43.890Z","phase":12,"action":"gate-end","outcome":"fail","stage":"vitest"}
+{"ts":"2026-05-30T18:29:34.464Z","phase":12,"label":"v1.0 Phase 2 — LOG read","action":"gate-start"}
+{"ts":"2026-05-30T18:29:36.769Z","phase":12,"action":"gate-end","outcome":"fail","stage":"vitest"}
+{"ts":"2026-05-30T18:36:54.400Z","phase":12,"label":"v1.0 Phase 2 — LOG read","action":"gate-start"}
+{"ts":"2026-05-30T18:37:34.240Z","phase":12,"action":"gate-end","outcome":"fail","stage":"playwright"}

@@ -1,0 +1,198 @@
+// Git adapter (server-side). Spawns `git` against the palace root with
+// argument arrays (never a shell string), so a path or ref can never be
+// interpreted as a shell command. Hands raw stdout to the pure parsers in
+// src/lib/git-log-parse.js + commit-parse.js.
+//
+// The LOG deck is the retrospective surface; git is the work's record, so
+// this adapter is read-only -- it never commits, resets, or mutates the
+// working tree. (Writing structured commits is Phase 3's palace-commit.)
+
+import { execFile } from 'node:child_process';
+import { resolve, sep } from 'node:path';
+import {
+  LOG_FORMAT, parseLogMeta, parseNumstat, parsePorcelain, RECORD_SEP, FIELD_SEP,
+} from '../src/lib/git-log-parse.js';
+import { classifyCommit } from '../src/lib/commit-parse.js';
+import { diffEntryText } from '../src/lib/frontmatter-diff.js';
+
+const MAX_BUFFER = 64 * 1024 * 1024; // 64 MB -- the full palace log fits easily
+
+// Promisified execFile. Resolves { stdout, stderr }, rejects on non-zero exit.
+function git(palaceRoot, args, { allowFail = false } = {}) {
+  return new Promise((resolvePromise, rejectPromise) => {
+    execFile('git', args, {
+      cwd: resolve(palaceRoot),
+      maxBuffer: MAX_BUFFER,
+      windowsHide: true,
+    }, (err, stdout, stderr) => {
+      if (err && !allowFail) {
+        err.stderr = stderr;
+        rejectPromise(err);
+        return;
+      }
+      resolvePromise({ stdout: stdout ?? '', stderr: stderr ?? '', failed: !!err });
+    });
+  });
+}
+
+// Validate a palace-relative path for use as a git pathspec. Must stay inside
+// the palace root, no traversal, no leading slash. Returns the cleaned
+// relative path or null.
+export function safePathspec(palaceRoot, rel) {
+  if (typeof rel !== 'string' || rel === '' || rel.includes('\0')) return null;
+  const root = resolve(palaceRoot);
+  const abs = resolve(root, rel);
+  if (abs !== root && !abs.startsWith(root + sep)) return null;
+  return abs.slice(root.length + 1).replaceAll(sep, '/');
+}
+
+// Validate a commit-ish (sha or ref). Conservative allow-list: hex shas,
+// and a few safe symbolic refs. Rejects anything with shell-ish or
+// option-like characters so it can't be read as a flag.
+export function safeRef(ref) {
+  if (typeof ref !== 'string' || ref === '') return null;
+  if (/^[0-9a-fA-F]{4,40}$/.test(ref)) return ref;
+  if (/^(HEAD|HEAD~\d+|HEAD\^\d*)$/.test(ref)) return ref;
+  return null;
+}
+
+// Fetch the commit stream. `limit` caps the number of commits; `pathspec`
+// (optional, palace-relative) filters to a single entry's history. Returns
+// an array of fully classified commit cards, newest first.
+export async function readLog(palaceRoot, { limit = 100, pathspec = null } = {}) {
+  const safeLimit = Math.max(1, Math.min(2000, parseInt(limit, 10) || 100));
+  const baseArgs = ['log', `-n`, String(safeLimit), '--no-color'];
+
+  let pathArgs = [];
+  if (pathspec) {
+    const ps = safePathspec(palaceRoot, pathspec);
+    if (!ps) return { commits: [], error: 'invalid pathspec' };
+    pathArgs = ['--', ps];
+  }
+
+  // Pass 1: metadata (hash/author/date/subject/body).
+  const metaArgs = [...baseArgs, `--format=${LOG_FORMAT}`, ...pathArgs];
+  // Pass 2: numstat keyed by hash.
+  const statArgs = [...baseArgs, `--format=${RECORD_SEP}%H`, '--numstat', ...pathArgs];
+
+  const [metaRes, statRes] = await Promise.all([
+    git(palaceRoot, metaArgs),
+    git(palaceRoot, statArgs),
+  ]);
+
+  const meta = parseLogMeta(metaRes.stdout);
+  const stats = parseNumstat(statRes.stdout);
+
+  const commits = meta.map((c) => {
+    const stat = stats.get(c.hash) ?? { files: [], added: 0, deleted: 0 };
+    const paths = stat.files.map((f) => f.path);
+    const classified = classifyCommit({ subject: c.subject, body: c.body, paths });
+    return {
+      hash: c.hash,
+      shortHash: c.shortHash,
+      author: c.authorName,
+      authorEmail: c.authorEmail,
+      date: c.authorDate,
+      subject: c.subject,
+      body: c.body,
+      files: stat.files,
+      added: stat.added,
+      deleted: stat.deleted,
+      fileCount: stat.files.length,
+      ...classified,
+    };
+  });
+
+  return { commits, count: commits.length };
+}
+
+// Fetch one commit's palace-aware diff. For each changed .md file we read its
+// before/after content via `git show <sha>^:<path>` and `git show <sha>:<path>`
+// and compute field-level frontmatter changes + a body-changed flag. Non-md
+// files report their numstat only; newly-added media inside a bundle are
+// flagged so the UI can render them inline.
+export async function readCommit(palaceRoot, sha) {
+  const ref = safeRef(sha);
+  if (!ref) return null;
+
+  // Metadata for this single commit.
+  const metaRes = await git(palaceRoot, ['show', '-s', `--format=${LOG_FORMAT}`, '--no-color', ref], { allowFail: true });
+  if (metaRes.failed) return null;
+  const [meta] = parseLogMeta(metaRes.stdout);
+  if (!meta) return null;
+
+  // numstat for the commit.
+  const statRes = await git(palaceRoot, ['show', `--format=${RECORD_SEP}%H`, '--numstat', '--no-color', ref], { allowFail: true });
+  const stats = parseNumstat(statRes.stdout);
+  const stat = stats.get(meta.hash) ?? { files: [], added: 0, deleted: 0 };
+
+  // Per-file palace-aware diffs.
+  const fileDiffs = [];
+  for (const f of stat.files) {
+    const isMd = f.path.toLowerCase().endsWith('.md');
+    const mediaExts = /\.(png|jpe?g|gif|svg|webp|wav|mp3|ogg|m4a|flac|mp4|webm|mov)$/i;
+    const isMedia = mediaExts.test(f.path);
+
+    if (isMd) {
+      const ps = safePathspec(palaceRoot, f.path);
+      let beforeText = '';
+      let afterText = '';
+      if (ps) {
+        const [b, a] = await Promise.all([
+          git(palaceRoot, ['show', `${ref}^:${ps}`], { allowFail: true }),
+          git(palaceRoot, ['show', `${ref}:${ps}`], { allowFail: true }),
+        ]);
+        beforeText = b.failed ? '' : b.stdout;
+        afterText = a.failed ? '' : a.stdout;
+      }
+      const d = diffEntryText(beforeText, afterText);
+      fileDiffs.push({
+        path: f.path, kind: 'md', added: f.added, deleted: f.deleted, binary: f.binary,
+        frontmatterChanges: d.frontmatterChanges,
+        bodyChanged: d.bodyChanged,
+        wasAdded: beforeText === '' && afterText !== '',
+        wasRemoved: beforeText !== '' && afterText === '',
+      });
+    } else if (isMedia) {
+      fileDiffs.push({
+        path: f.path, kind: 'media', added: f.added, deleted: f.deleted, binary: f.binary,
+        wasAdded: f.deleted === 0 && f.binary, // best-effort; the UI renders it inline regardless
+      });
+    } else {
+      fileDiffs.push({
+        path: f.path, kind: 'file', added: f.added, deleted: f.deleted, binary: f.binary,
+      });
+    }
+  }
+
+  const classified = classifyCommit({
+    subject: meta.subject, body: meta.body, paths: stat.files.map((f) => f.path),
+  });
+
+  return {
+    hash: meta.hash,
+    shortHash: meta.shortHash,
+    author: meta.authorName,
+    authorEmail: meta.authorEmail,
+    date: meta.authorDate,
+    subject: meta.subject,
+    body: meta.body,
+    added: stat.added,
+    deleted: stat.deleted,
+    fileCount: stat.files.length,
+    fileDiffs,
+    ...classified,
+  };
+}
+
+// The working-tree delta -- uncommitted work, the invisible-dive hazard made
+// visible. Returns the porcelain breakdown plus a count.
+export async function readUncommitted(palaceRoot) {
+  // NB: `git status --porcelain` takes no `--no-color` flag (porcelain output
+  // is never colored); passing it makes git error out, so we omit it.
+  const res = await git(palaceRoot, ['status', '--porcelain=v1'], { allowFail: true });
+  if (res.failed) return { staged: [], unstaged: [], untracked: [], total: 0, error: res.stderr || 'git status failed' };
+  const parsed = parsePorcelain(res.stdout);
+  const total = parsed.staged.length + parsed.unstaged.length + parsed.untracked.length;
+  return { ...parsed, total };
+}

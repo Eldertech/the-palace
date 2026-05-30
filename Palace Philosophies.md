@@ -31,6 +31,30 @@ links:
     type: connects-to
   - target: "[[1 from 2]]"
     type: connects-to
+  - target: "[[Deleuze]]"
+    type: spawned
+    label: page-built-2026-05
+  - target: "[[Simondon]]"
+    type: connects-to
+    label: philosopher-of-the-technical-object
+  - target: "[[Whitehead]]"
+    type: connects-to
+    label: process-and-relations-primary
+  - target: "[[Merleau-Ponty]]"
+    type: connects-to
+    label: the-lived-body
+  - target: "[[The Drift]]"
+    type: connects-to
+    label: the-no-architecture-pole
+  - target: "[[spinoza-zhuangzi-on-striving]]"
+    type: connects-to
+    label: archived-dialectic
+  - target: "[[Philosopher Visits the Entry]]"
+    type: enables
+    label: circulation-method
+  - target: "[[STIGMERGY Philosophical Lenses]]"
+    type: connects-to
+    label: the-front-end-surface
 forward_vector: "I want to become the palace's living philosophical index — not a survey of traditions but a map of how each tradition has been used, tested, and transformed by contact with real problems in Loudon's work. I want each section to accumulate a concrete example: the moment Spinoza's conatus explained something that pedagogy theory couldn't, the session where Zen's non-attachment changed how a design decision was made. I want to be the first entry any new agent reads to understand the philosophical register of this palace."
 ---
 
@@ -52,7 +76,7 @@ The deeper resonance: Loudon's 2014 semantic web paper argued that links are ont
 
 ## Deleuze
 
-Extends and radicalizes Spinoza into a philosophy of difference, becoming, and the virtual. Core concepts: **virtual/actual** (the virtual is the full field of potential — real but not actualized; the actual is any realized instance — neither more real than the other), **intensity** (difference that drives differentiation; equalizing intensity destroys it), **difference-in-itself** (difference is prior to identity — things differ before they are the same), **rhizome** (non-hierarchical networked growth, multiple entry points, no center).
+*Now a full page: [[Deleuze]] — the highest-leverage build in this neighborhood, because the hub leaned on him hardest and had no home for him.* Extends and radicalizes Spinoza into a philosophy of difference, becoming, and the virtual. Core concepts: **virtual/actual** (the virtual is the full field of potential — real but not actualized; the actual is any realized instance — neither more real than the other), **intensity** (difference that drives differentiation; equalizing intensity destroys it), **difference-in-itself** (difference is prior to identity — things differ before they are the same), **rhizome** (non-hierarchical networked growth, multiple entry points, no center).
 
 In our work: LLM inference is Deleuzian — the weight space is virtual, each forward pass is an actualization. Synthesis is actualization of virtual sound — the patch contains all possible sounds it could make; playing it actualizes one. The palace is rhizomatic: multiple entry points, no mandatory reading order, meaning generated through traversal rather than hierarchy. Loudon's 2014 semantic web paper was Deleuzian metaphysics written in the language of web architecture — links as prior to nodes is difference-in-itself applied to graph theory.
 
@@ -110,6 +134,16 @@ In our work: the interdependence of the pillars — each contains the others fro
 
 ---
 
+## Philosophers of the Made World (added 2026-05)
+
+Three traditions added to serve the Tools and Creation pillars directly — the philosophers a maker of instruments actually needs, who had been missing while the neighborhood stayed Greek and metaphysical.
+
+**[[Simondon]]** — the philosopher of the *technical object.* Individuation, transduction, and above all **concretization**: the convergence of an object's functions into an integrated, resonant whole. Gives the instrument-builder a precise, non-arbitrary criterion for "good design" (not more features — greater concretization) and reads STIGMERGY's own version history as a technical object becoming more itself.
+
+**[[Whitehead]]** — the *process* philosopher and the strongest available statement of the palace's founding conviction that relations are primary: a thing *is* its relations, gathered. A typed link is a prehension; a node is a concrescence; a git commit is an actual occasion. The metaphysics under "typed links over nodes."
+
+**[[Merleau-Ponty]]** — the philosopher of the *lived body.* The instrument absorbed into the body schema (the blind man's cane), motor intentionality, why practice is irreducible (skill lives in the body and cannot be shortcut). Sets the real success criterion for a front-end: it works when it disappears.
+
 ## Open Questions
 
 - How do these traditions contradict each other productively? Spinoza's determinism vs. Machiavelli's virtù (can you bend fortuna if everything is determined?). Plato's eternal Forms vs. Deleuze's difference-without-identity. Taoism's wu wei vs. Machiavelli's virtù (is striving against the grain always wrong?). The contradictions are as generative as the convergences.
@@ -118,3 +152,14 @@ In our work: the interdependence of the pillars — each contains the others fro
 ## Philosophy Pages
 
 Each major tradition now has its own entry where productive tensions and mirrorings are made explicit. The first `contradicts` link in the palace lives here: [[Stoicism]] `contradicts` [[Confucianism]] via [[The Fortress and the Threshold]]. The philosophy neighborhood is the primary site of productive contradiction in the palace — where two things are simultaneously true and the tension between them generates more light than either alone.
+
+**The self/architecture site is now a quadruple, not a binary.** [[The Fortress and the Threshold]] holds the Stoic fortress, the Confucian threshold, the Spinozan conatus, and — as of the 2026-05 [[zhuangzi-epictetus-confucius-on-the-self]] Dialectic — [[The Drift]], the Zhuangzian no-architecture pole that refuses the shared premise that the self has architecture at all.
+
+## How This Neighborhood Stays Alive (added 2026-05)
+
+The forward vector above asks this section to be *used*, not surveyed. Two mechanisms now keep it circulating rather than cooling:
+
+1. **[[Philosopher Visits the Entry]]** — the named genre for routing one researched philosopher onto one technical entry and leaving residue on both. First applied beyond the [[Action Potential Oscillator|oscillator]] precedent to [[Mathieu Equation]], [[Floquet Theory]], and [[Wavetable Space as Torus]] — the entries whose bare `philosophy` pillar tag was a broken promise until a lens filled it.
+2. **A standing roster of live dialectics.** The contradictions in the Open Questions above are not idle puzzles; each is a dispatchable Dialectic. The first two are archived: [[zhuangzi-epictetus-confucius-on-the-self]] and [[spinoza-zhuangzi-on-striving]] (which produced the *second axis* — with-grain vs. against-grain — now owed as an edit to [[Spinoza Conatus]] and [[Hilaritas Generator]]). Next in the roster: Spinoza × Zhuangzi × [[Deleuze]]; Spinoza vs. [[Whitehead]] on static substance vs. becoming; Machiavelli vs. Spinoza on fortuna vs. determinism.
+
+**The front-end vector.** [[STIGMERGY Philosophical Lenses]] proposes how all of this lives in the palace front-end: visits rendered inline in STATE, the dialectics roster as a QUEUE lane, and a live DIALECTIC swarm mode where philosophers argue on the board with Loudon steering as TRICKSTER. Philosophy stops being a place you navigate to and becomes a lens you switch on over everything else.
