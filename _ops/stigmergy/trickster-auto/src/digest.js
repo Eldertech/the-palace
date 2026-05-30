@@ -22,6 +22,8 @@
 //                                the vector is the engine that keeps it speaking.
 // Within a tier: oldest ts first (longest out of phase), then request_id.
 
+import { selectTwoPaths } from './two-paths.js';
+
 const TIER_META = {
   1: { key: 'blocking_audition', label: 'Blocking audition', signature: 'stranded conatus + sensory gate — a deliverable is fruiting but stalled on your ear' },
   2: { key: 'blocking_stall', label: 'Blocking stall', signature: 'stalled thread — a steward is suspended on a decision it cannot make alone' },
@@ -71,12 +73,16 @@ function compareEscalations(a, b) {
 export function buildDigest(results, meta = {}) {
   const escalations = [];
   const autoDecisions = [];
-  const counts = { pending: results.length, escalate: 0, auto_grant: 0, auto_deny: 0 };
+  const counts = { pending: results.length, escalate: 0, auto_grant: 0, auto_deny: 0, two_paths_eligible: 0 };
 
   for (const { request, verdict } of results) {
     if (verdict.verb === 'escalate') {
       counts.escalate += 1;
       const tier = tierOf(request, verdict);
+      // Stage F: is this escalation a Two Paths candidate (run both options to a
+      // finished deliverable and let Loudon pick), and which two options?
+      const tp = selectTwoPaths({ request, verdict });
+      if (tp.eligible) counts.two_paths_eligible += 1;
       escalations.push({
         tier,
         tier_key: TIER_META[tier].key,
@@ -93,6 +99,14 @@ export function buildDigest(results, meta = {}) {
         options: optionsSummary(request),
         rationale: verdict.rationale,
         age_ts: request.ts,
+        two_paths: {
+          eligible: tp.eligible,
+          category: tp.category,
+          shape: tp.shape,
+          options: tp.options,
+          borderline: tp.borderline,
+          reason: tp.reason,
+        },
       });
     } else if (verdict.verb === 'auto-grant') {
       counts.auto_grant += 1;
@@ -137,7 +151,8 @@ export function renderDigestMarkdown(digest) {
   if (digest.board) L.push(`Board: \`${digest.board}\``);
   L.push('');
   const c = digest.counts;
-  L.push(`**${c.pending} pending** → ${c.escalate} for you, ${c.auto_grant} auto-grant${digest.mode === 'shadow' ? ' (proposed)' : ''}, ${c.auto_deny} auto-deny${digest.mode === 'shadow' ? ' (proposed)' : ''}.`);
+  const tpReady = c.two_paths_eligible ? ` · ${c.two_paths_eligible} **Two Paths–ready**` : '';
+  L.push(`**${c.pending} pending** → ${c.escalate} for you, ${c.auto_grant} auto-grant${digest.mode === 'shadow' ? ' (proposed)' : ''}, ${c.auto_deny} auto-deny${digest.mode === 'shadow' ? ' (proposed)' : ''}${tpReady}.`);
   L.push('');
   L.push('---');
   L.push('');
@@ -159,6 +174,11 @@ export function renderDigestMarkdown(digest) {
       const opts = e.options.length ? `  ·  options: ${e.options.join(' / ')}` : '';
       L.push(`- **#${e.rank}** [${e.from}] ${e.headline}${blk}`);
       L.push(`  \`${e.request_id}\` · ${e.resource}${opts}`);
+      if (e.two_paths && e.two_paths.eligible) {
+        const ab = e.two_paths.options.map((o) => o.id).join('  vs  ');
+        const flag = e.two_paths.borderline ? ' _(borderline)_' : '';
+        L.push(`  ↳ **Two Paths** (${e.two_paths.category}): build both → ${ab}${flag}`);
+      }
     }
   }
   L.push('');
