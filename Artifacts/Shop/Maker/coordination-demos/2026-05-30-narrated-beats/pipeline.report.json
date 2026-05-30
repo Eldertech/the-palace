@@ -1,0 +1,23 @@
+{
+  "pipeline": "kokoro -> whisper -> manim -> ffmpeg",
+  "gates_held": true,
+  "step_seconds": {
+    "kokoro": 7.61,
+    "whisper": 4.49,
+    "manim": 5.47,
+    "mux": 0.17
+  },
+  "total_seconds": 17.74,
+  "narration_duration_sec": 10.55,
+  "narration_sample_rate_hz": 24000,
+  "whisper_words": 27,
+  "required_cues": [
+    "phasors",
+    "frequencies",
+    "drift",
+    "sum",
+    "beat",
+    "listen"
+  ],
+  "final_clip": "Artifacts/Shop/Maker/coordination-demos/2026-05-30-narrated-beats/narrated-beats.mp4"
+}
