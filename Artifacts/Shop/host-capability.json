@@ -1,0 +1,26 @@
+{
+  "$schema_note": "Host-capability manifest for the Shop. The Maker reads this before dispatch to confirm a Specialist's wrapped tool is reachable on the dispatching host, and to resolve a fallback when it isn't. Implementation surface for host_capability_check(specialist, host). Authored 2026-05-30; update in lockstep with the Maker Roster and each Specialist's frontmatter.",
+  "host_classes": {
+    "mac": "Loudon's machine. Full tier — MPS GPU, Max/MSP, VCV Rack, Chromium, LaTeX. Everything runs.",
+    "sandbox": "Cowork Linux arm64, no sudo, no GPU. Web specialists, Matplotlib, Mermaid, ffmpeg, Whisper (CPU).",
+    "cloud": "API-reachable services. Currently Midjourney only."
+  },
+  "specialists": {
+    "Kokoro":              { "medium": "sound",       "requires": ["local-tts-model"],            "hosts": ["mac"],                          "fallback": "loudon-voice-recording", "fallback_note": "Use Loudon's recording when the piece is published as Loudon; otherwise defer to mac." },
+    "Whisper":             { "medium": "sound",       "requires": ["cpu"],                         "hosts": ["mac", "sandbox"],               "fallback": null,                     "fallback_note": "CPU-bound; slow on sandbox but runs." },
+    "Stable Audio Open":   { "medium": "sound",       "requires": ["local-gpu"],                   "hosts": ["mac"],                          "fallback": null,                     "fallback_note": "No substitute. Defer to mac or drop the bed for the tier." },
+    "RNBO codebox~ smith": { "medium": "sound",       "requires": ["max-msp"],                     "hosts": ["mac"],                          "fallback": null,                     "fallback_note": "Mac-only by nature; never dispatched off-mac." },
+    "VCV Patch Generator": { "medium": "sound",       "requires": ["vcv-rack"],                    "hosts": ["mac"],                          "fallback": null,                     "fallback_note": "PDL→.vcv emission is host-agnostic; the Rack AUDITION is mac-only." },
+    "Midjourney":          { "medium": "image",       "requires": ["cloud-key"],                   "hosts": ["cloud"],                        "fallback": "ComfyUI",                "fallback_note": "Swap to local ComfyUI when control/palette matters more than ceiling." },
+    "ComfyUI":             { "medium": "image",       "requires": ["local-gpu"],                   "hosts": ["mac"],                          "fallback": "Midjourney",             "fallback_note": "Cloud Midjourney for ceiling; Mermaid/Matplotlib when the image is really a diagram/chart." },
+    "Matplotlib":          { "medium": "image",       "requires": ["cpu"],                         "hosts": ["mac", "sandbox"],               "fallback": null,                     "fallback_note": "Broadly available; also the Manim static-frame fallback." },
+    "Mermaid":             { "medium": "image",       "requires": ["node"],                        "hosts": ["mac", "sandbox"],               "fallback": null,                     "fallback_note": "Text-defined diagrams; broadly available." },
+    "Manim CE":            { "medium": "motion",      "requires": ["manimpango", "cairo", "latex"],"hosts": ["mac"],                          "fallback": "Matplotlib",             "fallback_note": "Matplotlib for static math frames; defer motion to mac. manimpango has no aarch64 wheel + needs sudo." },
+    "Remotion":            { "medium": "motion",      "requires": ["chromium", "node"],            "hosts": ["mac"],                          "fallback": null,                     "fallback_note": "Defer to mac; Manim only if content is math not UI." },
+    "p5.js":               { "medium": "interactive", "requires": ["browser"],                     "hosts": ["mac", "sandbox"],               "fallback": null,                     "fallback_note": "Host-agnostic; authored as static HTML, verified headlessly via a redraw seam." },
+    "D3.js":               { "medium": "interactive", "requires": ["browser"],                     "hosts": ["mac", "sandbox"],               "fallback": null,                     "fallback_note": "Host-agnostic." },
+    "Observable Plot":     { "medium": "interactive", "requires": ["browser"],                     "hosts": ["mac", "sandbox"],               "fallback": null,                     "fallback_note": "Host-agnostic; load d3 before the Plot UMD bundle." },
+    "Tone.js":             { "medium": "interactive", "requires": ["browser"],                     "hosts": ["mac", "sandbox"],               "fallback": null,                     "fallback_note": "Host-agnostic; in-browser audio confirmation is a human step." },
+    "ffmpeg":              { "medium": "plumbing",    "requires": ["ffmpeg-binary"],               "hosts": ["mac", "sandbox"],               "fallback": null,                     "fallback_note": "Connective tissue; broadly available." }
+  }
+}

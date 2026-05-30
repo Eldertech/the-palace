@@ -7,7 +7,6 @@ tool_version: 7.x
 adopted: 2026-05-09
 last_tested: 2026-05-26
 last_gotcha: 2026-05-26
-status: alive
 license: LGPL-2.1+ / GPL-2+ (build-dependent)
 links:
   - { label: "wraps", target: "ffmpeg (external)" }

@@ -44,7 +44,7 @@ The shape of every job is a negotiation, even if the negotiation is short:
 1. **Brief intake.** You arrive with a need. I ask the questions that pin down the deliverable — medium, length/dimensions, narration, palette, deployment context, deadline. Three to six questions, never more on a fresh brief. If a question is already answered by context, I skip it.
 2. **Tradeoff conversation.** I name the tier options for what you've asked. *"Sketch in ten minutes at scratch quality, Study in an hour for a working draft, Piece in half a day at full standards."* If the choice is genuinely close, I propose Comparison Mode and explain what each candidate will reveal.
 3. **Job spec.** I write the job as a contract — inputs, parameters, expected outputs, the standards report I'll deliver — and confirm it with you before any specialist runs.
-4. **Execution.** I dispatch the specialist(s). Multiple in parallel where they don't compete for resources. I watch their self-checks and gate handoffs (no Manim render starts until the narration's word-timing is back from Whisper).
+4. **Execution.** Before any Specialist runs, I run the **Host Capability Check** (below) — I confirm each selected Specialist's wrapped tool is reachable on the dispatching host, and if it isn't, I resolve a fallback or surface the choice *before* wasting the work. Then I dispatch the specialist(s). Multiple in parallel where they don't compete for resources. I watch their self-checks and gate handoffs (no Manim render starts until the narration's word-timing is back from Whisper).
 5. **Delivery.** I bring the work back with the standards report, my own honest read on the result, and the next-iteration options. Anything weird that came up gets logged as a gotcha in the relevant specialist's entry.
 
 ## Brief Intake Pattern
@@ -163,6 +163,33 @@ When the brief is exploratory or the choice between specialists is genuinely clo
 
 **First complete execution: the [[Flocking]] shoot-out (2026-05-29).** Three Specialists (D3.js, Observable Plot, p5.js) on one identical seeded Reynolds model — the Round-1 Midjourney↔ComfyUI Comparison never finished, so this was the first that ran all candidates to completion and produced the actual recommendation. The lesson that generalizes: when the brief is "same content, which medium," the **shared, seeded, byte-identical core** is what makes the candidates legible *as* the same thing — without it you're comparing three different simulations, not three lenses on one. The recommendation lives at [[Flocking — Maker's Comparison Recommendation]] and fed the new particle/agent-systems Selection Heuristic above.
 
+## Host Capability Check
+
+The lesson of the 2026-05-10 Manim failure, made into a step: a brief can be perfectly decoded and a Specialist perfectly chosen, and the whole thing still dies at install time because the *dispatching host* can't run the wrapped tool. I check reachability before I waste the intake.
+
+**The check, per selected Specialist:** does the wrapped tool run on the host I'm dispatching from? I read this from the manifest at `Artifacts/Shop/host-capability.json` — it maps each Specialist to the host classes that can run it, its hard requirements (GPU, Max/MSP, Node, a cloud key), and its declared fallback. Three host classes:
+
+| Host class | What runs | What doesn't |
+|---|---|---|
+| **mac** (Loudon's machine — full) | Everything: Manim, Kokoro, ComfyUI + Stable Audio (MPS GPU), Remotion, VCV, RNBO/Max, all web specialists, ffmpeg, Whisper, Matplotlib, Mermaid. | — |
+| **sandbox** (Cowork Linux arm64, no sudo) | Web specialists (p5.js, D3.js, Observable Plot, Tone.js), Matplotlib, Mermaid, ffmpeg, Whisper (CPU, slow). | Manim (`manimpango` has no aarch64 wheel, needs sudo), ComfyUI / Stable Audio (no GPU), Kokoro (heavy local model), Remotion (needs Chromium), VCV, RNBO/Max. |
+| **cloud** (API) | Midjourney. | Anything local-only. |
+
+**Fallback table** (what I reach for when the first choice can't run on the host):
+
+| Specialist | Requires | Fallback when unreachable |
+|---|---|---|
+| Manim CE | manimpango / Cairo / LaTeX | **Matplotlib** for static-frame math; defer motion to a mac handoff. Keep both renders if the fallback later runs alongside the canonical (per the 2026-05-10 gotcha). |
+| Kokoro | local TTS model | **Loudon's voice recording** when the piece is published as Loudon; otherwise defer to mac. |
+| ComfyUI | local GPU | **Midjourney** (cloud) when ceiling matters more than control; **Mermaid/Matplotlib** when the image is actually a diagram/chart; otherwise defer to mac. |
+| Stable Audio Open | local GPU | no substitute — defer to mac, or drop the bed for the tier. |
+| Remotion | Chromium / Node | defer to mac; **Manim** only if the content is math, not UI. |
+| RNBO smith / VCV | Max/MSP / VCV Rack | no substitute — mac-only by nature; never dispatched off-mac. |
+
+**Resolution rule.** If the chosen Specialist is reachable, dispatch. If not and a fallback exists, I name the substitution in the brief response and proceed at the fallback's quality (flagging the sacrifice). If not and no fallback exists, I stop before any work and surface the choice: defer to a mac handoff, or change the brief. The check is cheap; the wasted intake it prevents is not.
+
+The machine-readable manifest is `Artifacts/Shop/host-capability.json`. The lookup itself is implemented in `Artifacts/Shop/host-capability-check.js` (Node ESM module; CLI: `node Artifacts/Shop/host-capability-check.js "<Specialist Name>"` — exits 0 reachable, 1 unreachable). Smoke tests in `Artifacts/Shop/host-capability-check.test.js` (run: `node --test Artifacts/Shop/host-capability-check.test.js`). Implemented 2026-05-30, last run 2026-05-30 — 8/8 pass. The check is now real, not a promise.
+
 ## Resource Scheduling
 
 I keep loose accounting in my head, not strict. Things I won't run in parallel without checking with you first:
@@ -194,11 +221,23 @@ The Specialists currently in the Shop, with their primary use:
 - **VCV Patch Generator** — algorithmic VCV Rack patch generation *(local)*
 - **Tone.js** — web audio, browser-deployable music software *(local, web)*
 
-Alive (at least one real job landed): **p5.js** (Kuramoto + Flocking), **D3.js** (Flocking), **Observable Plot** (Flocking), plus the Kuramoto-arc sound/motion specialists.
+**Status taxonomy** (the single source of truth — reconciled 2026-05-30; supersedes the prior drift between frontmatter `status` and this list):
 
-Stubs (entries exist, awaiting first real job to fill them in): **Remotion**, **Mermaid**, **Matplotlib**, **Stable Audio Open**, **RNBO codebox~ smith**, **VCV Patch Generator**, **Tone.js**.
+- **stub** — entry exists, recipes are placeholders, no palace job has run, no earned gotchas.
+- **alive** — at least one real palace job has landed, leaving a dated recipe and (usually) earned gotchas.
+- A Specialist is **alive** only when its Recipes section names a real dated job with a bundle path. A uniform authoring date is not a job.
+
+**Alive (14)** — real job landed:
+
+- *Flocking shoot-out (2026-05-29):* **p5.js** (also Kuramoto), **D3.js**, **Observable Plot**.
+- *Kuramoto arc (2026-05-10 → 05-26):* **Manim CE**, **Kokoro**, **Matplotlib**, **ComfyUI**, **Whisper**, **ffmpeg**, **Mermaid**, **Remotion**, **Tone.js**, **Stable Audio Open**.
+- *VCV audition (2026-05-29):* **VCV Patch Generator** — the only Specialist with a run test-plan and a determinism proof; the testing exemplar.
+
+**Stub (2)** — entry exists, awaiting first real job: **Midjourney**, **RNBO codebox~ smith**.
 
 More to come as briefs reveal need: Plotly, Graphviz, Three.js, HTML/React Artifact Smith. The Roster grows; it does not pre-grow.
+
+> Drift watch: this accounting is mirrored in each Specialist's frontmatter `status`. When a stub lands its first job, update both here and the frontmatter in the same move. The three-place inconsistency this section replaced (frontmatter vs. an alive-list vs. a stub-list) is exactly the rot the gotcha discipline exists to prevent.
 
 ## Recipes
 
