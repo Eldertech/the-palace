@@ -177,9 +177,9 @@ Dispatch by calling the venv's Python directly: `~/.venvs/kokoro/bin/python <scr
 
 ## Test Suite
 
-Smoke / Capability Probe / Style Probe / Edge Probe / Speed Bench / Determinism — defined in `Artifacts/Shop/Kokoro/tests/test-plan.md` (TODO).
+Smoke / Capability Probe / Style Probe / Edge Probe / Speed Bench / Determinism — defined in [Artifacts/Shop/Kokoro/tests/test-plan.md](../Artifacts/Shop/Kokoro/tests/test-plan.md).
 
-Last run: never.
+Last run: **2026-05-30** — Smoke pass (Phase B narration render: 10.55 s mono @ 24 kHz, −16.77 LUFS within tolerance). **Determinism finding (load-bearing): Kokoro is NOT byte-deterministic** — two runs of the identical `kokoro_render.py` produced byte-different WAVs (SHA256 `3d7d2fc0…` vs `fe06da50…`; integrated loudness drifted -16.71 → -16.77 LUFS). Audible output is the same; bytes are not. Reproducibility artifact is `(text, voice, kokoro_version, LUFS_TARGET)`, NOT the WAV bytes.
 
 ## Open Questions
 

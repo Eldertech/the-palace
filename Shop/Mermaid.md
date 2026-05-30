@@ -105,7 +105,7 @@ Trivial. Local CLI or browser. No GPU. No network beyond initial install. No API
 
 ## Test Suite
 
-Smoke / Capability Probe / Style Probe / Edge Probe / Speed Bench / Determinism — defined in `Artifacts/Shop/Mermaid/tests/test-plan.md` (TODO). Last run: never.
+Smoke / Capability Probe / Style Probe / Edge Probe / Speed Bench / Determinism — defined in [Artifacts/Shop/Mermaid/tests/test-plan.md](../Artifacts/Shop/Mermaid/tests/test-plan.md). Last run **2026-05-30** — Smoke pass via `npx -y -p @mermaid-js/mermaid-cli mmdc ...`; **finding: `mmdc` is not globally installed on the canonical Mac, `npx` is the recommended invocation pattern** (first-run ~23 s cold-cache cost, ~1–2 s warm). Style Probe degenerate until the `--cssFile` house wrapper is built. Determinism not byte-checked this round.
 
 ## Open Questions
 

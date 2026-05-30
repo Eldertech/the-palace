@@ -179,11 +179,11 @@ When local VRAM stops being enough (Flux Pro, video generation, batch Pieces) th
 
 ## Test Suite
 
-Smoke / Capability Probe / Style Probe / Edge Probe / Speed Bench / Determinism — defined in `Artifacts/Shop/ComfyUI/tests/test-plan.md` (TODO).
+Smoke / Capability Probe / Style Probe / Edge Probe / Speed Bench / Determinism — defined in [Artifacts/Shop/ComfyUI/tests/test-plan.md](../Artifacts/Shop/ComfyUI/tests/test-plan.md).
 
 The Determinism test for ComfyUI is the strongest of the image specialists: same workflow + same seed + same model = byte-identical output. The test confirms this and flags any divergence as a build-environment issue (model version drift, node update) rather than a tool problem.
 
-Last run: never.
+Last run: **2026-05-30** — Smoke pass via existing-artifact verification (`Kuramoto Coupling/fireflies-pond.png` + `fireflies-pond-workflow.json` + `fireflies-pond.report.json` all present, well-formed, reproducibility package intact). Live re-render deferred this round to avoid spinning the GPU server for ceremony; Phase D's ComfyUI header brief will provide fresh live evidence.
 
 ## Open Questions
 

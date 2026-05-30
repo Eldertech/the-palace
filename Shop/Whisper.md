@@ -165,11 +165,11 @@ Future recipes: a Loudon Live captioning recipe, a low-SNR phone-recording recov
 
 ## Test Suite
 
-Smoke / Capability Probe / Style Probe / Edge Probe / Speed Bench / Determinism — defined in `Artifacts/Shop/Whisper/tests/test-plan.md` (TODO).
+Smoke / Capability Probe / Style Probe / Edge Probe / Speed Bench / Determinism — defined in [Artifacts/Shop/Whisper/tests/test-plan.md](../Artifacts/Shop/Whisper/tests/test-plan.md).
 
-The Determinism test for Whisper is straightforward: same audio + same model + same parameters → byte-identical JSON. The test confirms this and flags any divergence as a model-checkpoint or library-version issue.
+The Determinism test for Whisper: same audio + same model + same parameters → text + word boundaries identical at 2-decimal precision. (Sub-frame jitter at the 3rd decimal is possible across runs due to FP precision in the alignment pass — not a divergence, a documented characteristic.)
 
-Last run: never.
+Last run: **2026-05-30** — Smoke + Determinism both pass on the Phase B narration WAV (27 words, all cue words present; two back-to-back runs produced identical text and identical word boundaries at 2-decimal precision).
 
 ## Open Questions
 

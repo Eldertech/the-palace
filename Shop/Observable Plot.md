@@ -153,7 +153,7 @@ A chart legitimately wants ONE mono face for all numerals, so the multi-font wor
 
 ## Test Suite
 
-Smoke / Capability Probe / Style Probe / Edge Probe / Speed Bench / Determinism — defined in `Artifacts/Shop/Observable Plot/tests/test-plan.md` (TODO). Last run: never (informal verification 2026-05-29 — see report.json: 3 panels rendered, 3 sweep facets, R-by-alignment matched Node reference, no console errors after the d3 load-order fix).
+Smoke / Capability Probe / Style Probe / Edge Probe / Speed Bench / Determinism — defined in [Artifacts/Shop/Observable Plot/tests/test-plan.md](../Artifacts/Shop/Observable Plot/tests/test-plan.md). Last run **2026-05-30** — Smoke pass via `node --experimental-vm-modules Artifacts/Shop/web-smoke.mjs Flocking/flocking-observable-plot-graphite.html` (1 inline script, 0 fail); Style Probe (the locked mono face in Plot's generated SVG, pushed via the `palace-plot-defaults.js` wrapper) verified during the 2026-05-29 Flocking job; Determinism informally cross-checked in Node against the seed-7 model block (R-over-time series identical to D3 + p5).
 
 ## Open Questions
 
