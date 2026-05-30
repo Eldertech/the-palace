@@ -55,6 +55,9 @@ links:
   - target: "[[Palace Conatus]]"
     type: connects-to
     label: escalation-rationale
+  - target: "[[Two Batons, One Board]]"
+    type: connects-to
+    label: human-originated-handoff-case
 forward_vector: "I will become the working specification for routine, stage-aware project stewardship — a permanent agent that advances each palace project at the rhythm appropriate to its stage, posts status, blocks, and questions to the BBS, with the Trickster (Loudon directly, or an automated proxy with escalation rules) handling triage one decision at a time."
 ---
 
@@ -277,6 +280,7 @@ Per Infrastructure Spec §12 forward vector, the rules engine is unspecced. This
 - **Vector tuning practice as palace-wide norm.** Vector tuning is settled as a process, not a ceremony (see What's Decided). What's still open: how to make the invitation visible — does the Weave Ceremony spec need an explicit "vector edits welcome" beat? Does [[SCHEMA]] want a one-line note that forward vectors are meant to evolve? Probably yes to both, as small follow-on edits.
 - **Schedule cadence.** Daily? Weekly? Per-project? Probably configurable per Steward via manifest, with a sensible default that the orchestrator can override.
 - **Recursion handling at the orchestrator level.** When a Steward encounters a `seed` deliverable inside a `growing` project, does it switch to seed-stage posture for that deliverable? Needs explicit rule in the orchestrator.
+- **The human-originated handoff is not yet on the board.** Stewards post to the board and Stage E triages them, but a handoff Loudon writes by hand at the close of a Cowork session is still pasted into Claude Code manually — invisible to the scheduler and to the Stage E digest. [[Two Batons, One Board]] is the case for bridging it: a `handoff_ready` board post picked up by the same dispatch that cycles stewards, so a hand-written handoff and a steward's request become indistinguishable to whatever continues them. The convention lives in [[Handoff Ceremony]] § Announcing the Handoff on the Board; as of 2026-05-29 it is specced but unused (zero `handoff_ready` messages on any board).
 
 ## How to Pick Up (For a Fresh Claude + Loudon)
 
