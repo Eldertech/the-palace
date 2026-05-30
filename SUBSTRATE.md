@@ -45,6 +45,9 @@ links:
     type: connects-to
   - target: "[[Palace Enchantment]]"
     type: connects-to
+  - target: "[[Palace Conatus]]"
+    type: connects-to
+    label: my-drive-named
   - target: "[[Songlines]]"
     type: connects-to
   - target: "[[Tristitia Generator]]"

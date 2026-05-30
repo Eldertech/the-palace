@@ -32,6 +32,9 @@ links:
     type: connects-to
   - target: "[[Hyperdimensional Prism]]"
     type: mirrors
+  - target: "[[Palace Conatus]]"
+    type: spawned
+    label: the-palaces-own-conatus
 ---
 
 # Four Pillars of Enchanted Agency

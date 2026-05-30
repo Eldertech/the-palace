@@ -54,6 +54,9 @@ links:
     label: map-injection
   - target: "[[Action Potential Oscillator]]"
     type: connects-to
+  - target: "[[Palace Conatus]]"
+    type: spawned
+    label: palace-scale-conatus
 ---
 
 # Palace Enchantment
