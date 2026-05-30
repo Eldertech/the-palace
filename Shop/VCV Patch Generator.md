@@ -1,6 +1,6 @@
 ---
 type: specialist
-status: active
+status: alive
 medium: sound
 tool: vcv-patch-generator
 tool_version: registry v2.4 + archetypes v0.1 (2026-05-29)
