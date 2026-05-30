@@ -1,0 +1,37 @@
+// Adapter for the STATE deck's data fetches.
+//
+// fetchEntries() pulls the recursive index from GET /api/entries.
+// fetchEntry(relPath) pulls one entry's full read shape from GET /api/entry.
+// Both return null on network/HTTP failure rather than throwing — the UI
+// renders an inline error band instead of a runtime exception.
+
+export async function fetchEntries() {
+  try {
+    const res = await fetch('/api/entries', { headers: { Accept: 'application/json' } });
+    if (!res.ok) {
+      return { ok: false, status: res.status, error: `http ${res.status}` };
+    }
+    const data = await res.json();
+    return { ok: true, ...data };
+  } catch (err) {
+    return { ok: false, error: err?.message ?? String(err) };
+  }
+}
+
+export async function fetchEntry(relPath) {
+  if (typeof relPath !== 'string' || relPath === '') {
+    return { ok: false, error: 'missing path' };
+  }
+  try {
+    const res = await fetch(`/api/entry?path=${encodeURIComponent(relPath)}`, {
+      headers: { Accept: 'application/json' },
+    });
+    if (!res.ok) {
+      return { ok: false, status: res.status, error: `http ${res.status}` };
+    }
+    const data = await res.json();
+    return { ok: true, ...data };
+  } catch (err) {
+    return { ok: false, error: err?.message ?? String(err) };
+  }
+}

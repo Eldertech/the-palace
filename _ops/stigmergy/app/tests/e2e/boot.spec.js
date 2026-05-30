@@ -18,7 +18,14 @@ test('the dev server boots and the page loads with no console errors', async ({ 
   await page.goto('/');
   await expect(page).toHaveTitle(/STIGMERGY/i);
 
-  // The board screen mounts directly — no login gate.
+  // v1.0: three-deck navigation mounts directly — no login gate. Default
+  // deck is STATE (present -- what is). QUEUE / LOG reachable via Q / L.
+  await expect(page.getByTestId('deck-tabs')).toBeVisible({ timeout: 10_000 });
+  await expect(page.getByTestId('state-deck')).toBeVisible({ timeout: 10_000 });
+
+  // Switching to QUEUE surfaces the existing board screen + channel tabs
+  // (the v0.x surface is preserved as QUEUE's content until Phase 4 reframes).
+  await page.keyboard.press('q');
   await expect(page.getByTestId('board-screen')).toBeVisible({ timeout: 10_000 });
   await expect(page.getByTestId('channel-tabs')).toBeVisible({ timeout: 10_000 });
 

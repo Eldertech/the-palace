@@ -95,6 +95,29 @@ const PHASES = {
     playwright: ['boot.spec.js', 'tokens.spec.js', 'rich-content2.spec.js', 'ordering.spec.js'],
     screenshots: ['phase-10-v0.4/equation.png', 'phase-10-v0.4/table.png', 'phase-10-v0.4/choice.png'],
   },
+  // ── v1.0 (Palace Front-End: STATE / QUEUE / LOG). Phase keys 11..19. ────────
+  // v1.0 phases extend the existing integer-keyed sequence so v0.x numbers
+  // don't shift. Subagent dispatch and STOP-REPORT discipline mirror v0.x.
+  11: {
+    label: 'v1.0 Phase 1 — STATE read',
+    vitest: [
+      'yaml-frontmatter.test.js', 'entries.test.js', 'bundle.test.js',
+      'pulse.test.js', 'wikilink.test.js',
+      'parser.test.js', 'schema.test.js', 'middleware.test.js', 'validator.test.js',
+    ],
+    integration: ['entries-middleware.test.js'],
+    playwright: [
+      'boot.spec.js', 'tokens.spec.js', 'tabs.spec.js', 'data.spec.js',
+      'state-deck.spec.js',
+    ],
+    screenshots: [
+      'phase-11-v1.0/state-deck-pulse.png',
+      'phase-11-v1.0/state-deck-entry-reader.png',
+      'phase-11-v1.0/state-deck-bundle-media.png',
+      'phase-11-v1.0/state-deck-typed-links.png',
+      'phase-11-v1.0/log-deck-stub.png',
+    ],
+  },
 };
 
 function logRun(entry) {
@@ -112,16 +135,24 @@ function ensureScreenshotDir(phase) {
   mkdirSync(v3dir, { recursive: true });
   const v4dir = resolve(SCREENSHOTS_ROOT, `phase-${phase}-v0.4`);
   mkdirSync(v4dir, { recursive: true });
+  const v1dir = resolve(SCREENSHOTS_ROOT, `phase-${phase}-v1.0`);
+  mkdirSync(v1dir, { recursive: true });
 }
 
-function runVitest(testFiles) {
-  if (!testFiles || testFiles.length === 0) {
+function runVitest(testFiles, integrationFiles) {
+  const all = [...(testFiles ?? [])];
+  // Allow phases to declare integration-only files (e.g. entries-middleware
+  // exists only under tests/integration/ and has no unit twin).
+  const integOnly = [...(integrationFiles ?? [])];
+  if (all.length === 0 && integOnly.length === 0) {
     return { exitCode: 0, skipped: true };
   }
-  // Build vitest arg list — pass the explicit file basenames.
   const args = ['vitest', 'run', '--reporter=default'];
-  for (const f of testFiles) {
+  for (const f of all) {
     args.push(`tests/unit/${f}`, `tests/integration/${f}`);
+  }
+  for (const f of integOnly) {
+    args.push(`tests/integration/${f}`);
   }
   const res = spawnSync('npx', args, { cwd: APP_ROOT, stdio: 'inherit' });
   return { exitCode: res.status ?? 1 };
@@ -160,7 +191,7 @@ function checkPhase(phaseId) {
   ensureScreenshotDir(phaseId);
   logRun({ phase: phaseId, label: phase.label, action: 'gate-start' });
 
-  const vitestResult = runVitest(phase.vitest);
+  const vitestResult = runVitest(phase.vitest, phase.integration);
   if (vitestResult.exitCode !== 0) {
     logRun({ phase: phaseId, action: 'gate-end', outcome: 'fail', stage: 'vitest' });
     return vitestResult.exitCode;
@@ -195,7 +226,7 @@ function main() {
     process.exit(2);
   }
   if (arg === 'all') {
-    for (const p of [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]) {
+    for (const p of [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]) {
       const code = checkPhase(p);
       if (code !== 0) process.exit(code);
     }

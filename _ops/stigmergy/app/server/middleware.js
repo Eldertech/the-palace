@@ -19,6 +19,7 @@ import { execFile } from 'node:child_process';
 import { parseJSONL } from '../src/lib/parser.js';
 import { validateMessage } from './validator.js';
 import { appendJsonLine } from './append.js';
+import { listEntries, readEntry } from '../src/lib/entries.js';
 
 const SESSIONS_REL = '_ops/swarm/sessions';
 const PERSISTENT_REL = '_ops/swarm/persistent/blackboard.jsonl';
@@ -388,6 +389,35 @@ export function blackboardMiddleware(palaceRoot) {
           stream.on('error', () => { try { res.destroy(); } catch (_) {} });
           stream.pipe(res);
           return; // response owned by the stream
+        }
+
+        // ── GET /api/entries ─ recursive index of palace .md entries ────────
+        // Walks the palace once, parses each entry's frontmatter, returns
+        // a compact summary array for the STATE deck's PULSE lens. Excludes
+        // machinery dirs (.git, .claude, .obsidian, node_modules, stigmergy
+        // app, swarm sessions, Enrichment cards). See src/lib/entries.js.
+        if (urlPath === '/api/entries' && method === 'GET') {
+          const entries = listEntries(palaceRoot);
+          return jsonResponse(res, 200, {
+            entries,
+            count: entries.length,
+            ts: new Date().toISOString(),
+          });
+        }
+
+        // ── GET /api/entry?path=<rel> ─ one entry's full read shape ────────
+        // Returns { path, title, frontmatter, body, links, bundle, summary }.
+        // 404 when not found / excluded / outside the palace.
+        if (urlPath === '/api/entry' && method === 'GET') {
+          const rel = query.get('path');
+          if (!rel) {
+            return jsonResponse(res, 400, { error: 'missing ?path' });
+          }
+          const entry = readEntry(palaceRoot, rel);
+          if (!entry) {
+            return jsonResponse(res, 404, { error: 'entry not found or excluded', path: rel });
+          }
+          return jsonResponse(res, 200, entry);
         }
 
         // ── POST /api/persistent ────────────────────────────────────────────

@@ -51,7 +51,8 @@ test('an enrichment-shaped message round-trips: POST → persist → render inli
     expect(res.status(), await res.text()).toBe(200);
 
     // Read it back and render it inline.
-    await page.goto('/');
+    // v1.0: land on the QUEUE deck (where the existing board UI lives).
+    await page.goto('/?deck=QUEUE');
     await page.getByTestId('channel-tabs').waitFor({ timeout: 15_000 });
     await page.getByTestId('tab-general').click();
 

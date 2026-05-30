@@ -6,6 +6,12 @@
       "runtimeExecutable": "python3",
       "runtimeArgs": ["-m", "http.server", "8099"],
       "port": 8099
+    },
+    {
+      "name": "stigmergy",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["--prefix", "_ops/stigmergy/app", "run", "dev"],
+      "port": 5173
     }
   ]
 }

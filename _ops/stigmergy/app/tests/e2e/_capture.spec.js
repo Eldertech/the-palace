@@ -45,7 +45,7 @@ test.describe(`phase ${PHASE} captures`, () => {
 
   if (PHASE === '2') {
     test('persistent-loaded.png', async ({ page }) => {
-      await page.goto('/');
+      await page.goto('/?deck=QUEUE');
       await page.getByTestId('channel-tabs').waitFor({ timeout: 15_000 });
       await preloadFonts(page);
       await page.getByTestId('message-row').first().waitFor({ timeout: 15_000 });
@@ -406,5 +406,76 @@ test.describe(`phase ${PHASE} captures`, () => {
     // A manual smoke-test can confirm the amber RECONNECTING indicator by stopping
     // the dev server while the UI is open. If a DOM-forced version is needed in
     // a future iteration, inject via page.evaluate to set the attribute, then capture.
+  }
+
+  if (PHASE === '11') {
+    // v1.0 Phase 1 — STATE read captures. Drive against the live palace so
+    // the validator sees real entries (the gate explicitly says "5 real
+    // entries incl. one with a bundle + media enrichment").
+
+    test('phase-11-v1.0/state-deck-pulse.png', async ({ page }) => {
+      await page.goto('/');
+      await page.getByTestId('pulse-header').waitFor({ timeout: 20_000 });
+      await preloadFonts(page);
+      await page.waitForTimeout(300);
+      const dir = resolve('screenshots/phase-11-v1.0');
+      mkdirSync(dir, { recursive: true });
+      await page.screenshot({ path: resolve(dir, 'state-deck-pulse.png'), fullPage: false });
+    });
+
+    test('phase-11-v1.0/state-deck-entry-reader.png', async ({ page }) => {
+      await page.goto('/');
+      await page.getByTestId('pulse-header').waitFor({ timeout: 20_000 });
+      await preloadFonts(page);
+      await page.locator('[data-testid="pulse-row"][data-path="Kuramoto Coupling.md"]').click();
+      await page.getByTestId('entry-reader').waitFor({ timeout: 10_000 });
+      await page.waitForTimeout(400);
+      const dir = resolve('screenshots/phase-11-v1.0');
+      mkdirSync(dir, { recursive: true });
+      await page.screenshot({ path: resolve(dir, 'state-deck-entry-reader.png'), fullPage: false });
+    });
+
+    test('phase-11-v1.0/state-deck-bundle-media.png', async ({ page }) => {
+      await page.goto('/');
+      await page.getByTestId('pulse-header').waitFor({ timeout: 20_000 });
+      await preloadFonts(page);
+      await page.locator('[data-testid="pulse-row"][data-path="Kuramoto Coupling.md"]').click();
+      await page.getByTestId('entry-reader').waitFor({ timeout: 10_000 });
+      // Scroll the bundle panel into view and capture just that region.
+      const mediaList = page.getByTestId('bundle-media-list');
+      await mediaList.waitFor({ timeout: 10_000 });
+      await mediaList.scrollIntoViewIfNeeded();
+      await page.waitForTimeout(500);
+      const dir = resolve('screenshots/phase-11-v1.0');
+      mkdirSync(dir, { recursive: true });
+      await page.screenshot({ path: resolve(dir, 'state-deck-bundle-media.png'), fullPage: false });
+    });
+
+    test('phase-11-v1.0/state-deck-typed-links.png', async ({ page }) => {
+      await page.goto('/');
+      await page.getByTestId('pulse-header').waitFor({ timeout: 20_000 });
+      await preloadFonts(page);
+      await page.locator('[data-testid="pulse-row"][data-path="Kuramoto Coupling.md"]').click();
+      await page.getByTestId('entry-reader').waitFor({ timeout: 10_000 });
+      const rail = page.getByTestId('entry-rail');
+      await rail.waitFor({ timeout: 5_000 });
+      await rail.scrollIntoViewIfNeeded();
+      await page.waitForTimeout(400);
+      const dir = resolve('screenshots/phase-11-v1.0');
+      mkdirSync(dir, { recursive: true });
+      await page.screenshot({ path: resolve(dir, 'state-deck-typed-links.png'), fullPage: false });
+    });
+
+    test('phase-11-v1.0/log-deck-stub.png', async ({ page }) => {
+      await page.goto('/');
+      await page.getByTestId('deck-tabs').waitFor({ timeout: 10_000 });
+      await preloadFonts(page);
+      await page.keyboard.press('l');
+      await page.getByTestId('log-deck-stub').waitFor({ timeout: 5_000 });
+      await page.waitForTimeout(300);
+      const dir = resolve('screenshots/phase-11-v1.0');
+      mkdirSync(dir, { recursive: true });
+      await page.screenshot({ path: resolve(dir, 'log-deck-stub.png'), fullPage: false });
+    });
   }
 });
