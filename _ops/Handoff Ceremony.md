@@ -74,7 +74,7 @@ If a section feels uncertain whether to include, exclude. The handoff is the bat
 This ceremony was written for the *entry-bundle handoff* — a move on a single entry, handed off at `[Entry]/[Entry] — handoff.md`, consumed and archived. That is the default, and the steps below assume it. But handoffs in practice come in several genres, and the genre changes where the file lives and whether it is consumed or kept alive:
 
 - **Entry-bundle** (default) — one entry's in-progress move. Lives in the entry's bundle; consumed and archived on pickup.
-- **Cross-surface paste-prompt** — a prompt handed to another surface, most often Cowork → Claude Code for a build the sandbox can't run. Lives where the work lives (`Projects/.../` or `_ops/claude-code-prompts/`). Its distinctive content is the receiving-surface capability delta and an explicit *what NOT to do*. See [[Surfaces and Capabilities]].
+- **Cross-surface paste-prompt** — a prompt handed to another surface, most often Cowork → Claude Code for a build the sandbox can't run. Lives where the work lives (`Projects/.../` or `_ops/claude-code-prompts/`). Its distinctive content is the receiving-surface capability delta and an explicit *what NOT to do*. See [[Surfaces and Capabilities]]. This genre is the one that also gets *announced on the board* — see § Announcing the Handoff on the Board.
 - **Session-queue continuation** — picking up a multi-session sweep (a graffiti pass, a deposit run). Carries "how we've been working" and a resume protocol, not just one move. Lives in `_ops/`.
 - **Swarm phase baton** — handing the apply-phase of a completed Swarm Weave to a fresh Claude. Lives in `_ops/swarm/sessions/`.
 - **Permanent-agent steward handoff** — a Steward (a page operating as an agent) handed across sessions. *Updated in place, never consumed*, and carries per-surface conventions for every surface it addresses.
@@ -174,6 +174,53 @@ Wait for confirmation that the next session has caught the baton, or for Loudon 
 When the next Claude has picked up the move, the handoff has done its job. Move it to `[Entry]/Archive/[Entry] — handoff — YYYY-MM-DD.md` and remove the "Active Handoff" section from the entry.
 
 Archival is usually performed by the *incoming* Claude as their first act, not by the outgoing Claude. The outgoing Claude can note in the closing message that the incoming Claude should archive on pickup.
+
+---
+
+## Announcing the Handoff on the Board
+
+*Cross-surface handoffs only. Optional today, load-bearing once a scheduler exists.*
+
+A handoff filed in a bundle is invisible to everything but a human who knows to go read it. When the move crosses to a surface that the [[Project Stewardship System]] coordinates — Claude Code on the Mac, picked up by a future scheduled dispatch — announce the handoff on the persistent blackboard so it lives on the same surface as every steward's request. See [[Two Batons, One Board]] for why the two batons belong together.
+
+This announcement does **not** replace writing the handoff file (Steps 1–4). It is a pointer to it, posted to the [[BBS Blackboard]] so the board becomes the one place "what is ready to continue" lives.
+
+**The convention (not a new message type).** A handoff announcement is a `BROADCAST` to `GENERAL` carrying `payload.kind: "handoff_ready"`. It is deliberately *not* a new `HANDOFF_READY` type — the palace lets categories prove themselves across many runs before hardening them into schema. The `from` field is the entry's own title (the page is the agent; see [[Pages as Agents]]). Health uses the Path 2 stub, since the message is hand-authored or subagent-dispatched, not measured against a direct API call (see [[Palace Agent Infrastructure Spec]] §3.3.1).
+
+```json
+{
+  "schema_version": "1.0",
+  "id": "semantic-delay-handoff-001",
+  "ts": "2026-05-29T14:30:00-04:00",
+  "session_id": "handoff-2026-05-29",
+  "from": "Semantic Delay",
+  "to": "*",
+  "type": "BROADCAST",
+  "board": "GENERAL",
+  "health": {
+    "score": "green",
+    "model": "claude-opus-4-8",
+    "_orchestrator_metadata": {
+      "dispatch_mode": "claude-code-subagent",
+      "note": "Hand-authored at session close; Path 2 stub health, see Infrastructure Spec §3.3.1."
+    }
+  },
+  "payload": {
+    "kind": "handoff_ready",
+    "entry": "Semantic Delay",
+    "handoff_path": "Semantic Delay/Semantic Delay — handoff.md",
+    "receiving_surface": "Claude Code (Mac, palace root)",
+    "move": "Wire the feedback-path saturation stage; decide pre/post filter placement.",
+    "invocation": "Read Semantic Delay.md and the handoff, then pick up the move."
+  }
+}
+```
+
+**Pairing, the way `RESOURCE_REQUEST`/`GRANT` pair.** When the catcher picks the move up, it posts a `REPLY` carrying `re: "<the handoff_ready id>"` and `payload.kind: "handoff_picked_up"`. Pending work is then exactly: every `handoff_ready` with no matching `handoff_picked_up`. This mirrors the inbox-builder logic already used for resource requests (§2.6), so a future scheduled poller — or Loudon scanning `GENERAL` — reads the open handoffs with the same scan that finds open asks.
+
+**How to post.** From Cowork or Claude Code, append one valid §2.2 line to `_ops/swarm/persistent/blackboard.jsonl` (the board renders it on reload / live-tail), or `POST /api/persistent` when the STIGMERGY dev server is running. Either way the strict validator (`_ops/stigmergy/app/server/validator.js`) gates the write — a malformed announcement is rejected, not coerced.
+
+**The honest limit.** Until the scheduled dispatch of Stage C exists, this post is for *visibility* — it surfaces the ready handoff on the board for Loudon, but a human still triggers the pickup. The post is the trail; the scheduler is the ant. Announcing now is still worth it: it builds the convention and the board history that the scheduler will later read. See [[Two Batons, One Board]] § The board is a pheromone field, not an actuator.
 
 ---
 
