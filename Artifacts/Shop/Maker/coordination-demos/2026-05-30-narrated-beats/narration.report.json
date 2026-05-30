@@ -1,0 +1,10 @@
+{
+  "voice": "af_heart",
+  "sample_rate": 24000,
+  "duration_sec": 10.55,
+  "integrated_lufs": -16.72,
+  "true_peak_dbtp": -0.99,
+  "lufs_target": -16.0,
+  "true_peak_ceiling_dbtp": -1.0,
+  "text": "Two phasors. Slightly different frequencies. As they drift in and out of phase, their sum produces a beat \u2014 a slow pulse built from their tiny difference. Listen."
+}
