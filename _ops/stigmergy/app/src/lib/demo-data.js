@@ -279,6 +279,36 @@ export const DEMO_MESSAGES = [
               stop_reason: 'max_tokens', iteration: 18, tokens_this_call: 4096 },
     payload: { content: 'context > 85%. recommend compression or downgrade.' },
   },
+  {
+    // Stage F — Two Paths: a steward's fork run down BOTH options to a finished
+    // deliverable; Loudon picks from completed work. This is the EXACT shape
+    // orchestrator/src/two-paths-card.js buildTwoPathsChoiceCard() emits — a
+    // rich-content `choice` card (pick mode, two options each carrying its branch
+    // artifact) landing on TRICKSTER. Picking posts a choice_response REPLY that
+    // Phase 4 (two-paths-merge.js) merges on. Reuses two of the demo audition
+    // artifacts so the comparison is a real audio audition.
+    schema_version: '1.0', id: 'demo-two-paths',
+    ts: '2026-05-02T10:30:00Z', session_id: 'demo-2026-05-02',
+    from: 'Action Potential Oscillator', to: 'TRICKSTER', type: 'BROADCAST', board: 'TRICKSTER',
+    health: { context_pct: 0, stop_reason: 'two_paths_ready', iteration: 1, tokens_this_call: 0,
+              model: 'loudon-two-paths', score: 'green',
+              _orchestrator_metadata: { dispatch_mode: 'claude-code-subagent' } },
+    payload: {
+      kind: 'choice',
+      choice_mode: 'pick',
+      request_id: 'apo-steward-004',
+      prompt: 'Two paths were built for "Is the Kuramoto coupling audible?". Both are finished — pick the one that reads best.',
+      content: 'Each option carries its branch deliverable. Picking merges that branch; the other is kept as an alternative.',
+      options: [
+        { id: 'K-SWEEP', label: 'K-SWEEP — single-axis coupling sweep',
+          artifact_path: 'Kuramoto Coupling/synchronization-arriving.wav',
+          caption: '30s render, K linear 0→1; the lock emerges cleanly.' },
+        { id: 'DUAL-SWEEP', label: 'DUAL-SWEEP — coupling + pitch glide',
+          artifact_path: 'Kuramoto Coupling/opening-bed.wav',
+          caption: 'two axes at once; busier, lock is harder to hear.' },
+      ],
+    },
+  },
 
   // BRANCHES --------------------------------------------------------------
   {
