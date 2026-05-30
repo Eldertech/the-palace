@@ -5,6 +5,10 @@ import ChannelTabs from './components/ChannelTabs.jsx';
 import AgentRoster from './components/AgentRoster.jsx';
 import TricksterInbox from './components/TricksterInbox.jsx';
 import DigestPanel from './components/DigestPanel.jsx';
+import DeckTabs from './components/DeckTabs.jsx';
+import { DECKS } from './lib/decks.js';
+import StateDeck from './components/state/StateDeck.jsx';
+import LogDeckStub from './components/state/LogDeckStub.jsx';
 import { Banner } from './components/primitives.jsx';
 import { fetchPersistent, fetchSessions } from './adapters/blackboard.js';
 import { subscribeLive } from './adapters/live-tail.js';
@@ -31,12 +35,34 @@ function demoMode() {
   return v === '1' || v === 'only' || v === 'empty' ? v : null;
 }
 
+// Pick the default deck from ?deck= when present (e2e tests use it to land
+// directly on a specific deck without keyboard navigation). Falls back to
+// STATE -- the v1.0 thesis is that the present is what loads first.
+//
+// Backwards-compat heuristic: when ?demo= is present (the v0.x board-view
+// showcase + most existing e2e tests), default to QUEUE. The demo modes
+// only carry board messages, so landing on STATE would render an empty
+// PULSE lens; landing on QUEUE keeps the existing tests + showcase usable
+// without per-test patches.
+function initialDeck() {
+  if (typeof window === 'undefined') return 'STATE';
+  const params = new URLSearchParams(window.location.search);
+  const v = params.get('deck');
+  if (typeof v === 'string') {
+    const up = v.toUpperCase();
+    if (DECKS.includes(up)) return up;
+  }
+  if (params.get('demo')) return 'QUEUE';
+  return 'STATE';
+}
+
 export default function App() {
   const [clock, setClock] = useState(formatNow());
-  // Default board is TRICKSTER — the inbox is the page that earns its keep
-  // moment-to-moment. Pending RESOURCE_REQUESTs from Stewards land here and
-  // need answering; everything else is read-and-skim. Loudon's preference
-  // (2026-05-04, after the cycle 4 inline-response UI landed and proved out).
+  // Top-level deck: STATE (present, default), QUEUE (future), LOG (past).
+  // The retro/prospective discipline as navigation, per the v1.0 thesis.
+  const [deck, setDeck] = useState(initialDeck());
+  // Default board (when QUEUE is active) is TRICKSTER -- the inbox is the
+  // page that earns its keep moment-to-moment.
   const [activeBoard, setActiveBoard] = useState('TRICKSTER');
   const [agentFilter, setAgentFilter] = useState(null);
   const [scanlinesOn, setScanlinesOn] = useState(true);
@@ -116,12 +142,20 @@ export default function App() {
     return close;
   }, []);
 
-  // Hotkey support: 1-6 select boards, R reloads, V toggles scanlines.
+  // Hotkey support:
+  //   S / Q / L → switch deck (STATE / QUEUE / LOG)
+  //   1-6 → select board (only meaningful when QUEUE is active)
+  //   R → reload (deck-aware: reloads board on QUEUE, no-op stub elsewhere
+  //       until the deck adds its own reload affordance)
+  //   V → toggle scanlines
   useEffect(() => {
     function onKey(e) {
       if (e.target && /input|textarea/i.test(e.target.tagName)) return;
       const k = e.key;
-      if (/^[1-6]$/.test(k)) {
+      if (k === 's' || k === 'S') return setDeck('STATE');
+      if (k === 'q' || k === 'Q') return setDeck('QUEUE');
+      if (k === 'l' || k === 'L') return setDeck('LOG');
+      if (deck === 'QUEUE' && /^[1-6]$/.test(k)) {
         const idx = parseInt(k, 10) - 1;
         if (idx >= 0 && idx < BOARDS.length) setActiveBoard(BOARDS[idx]);
       } else if (k === 'r' || k === 'R') {
@@ -132,7 +166,7 @@ export default function App() {
     }
     window.addEventListener('keydown', onKey);
     return () => window.removeEventListener('keydown', onKey);
-  }, [loadAll]);
+  }, [loadAll, deck]);
 
   // Canonical view: persisted messages plus any optimistic responses
   // posted in this session but not yet covered by a reload. Dedup by id
@@ -180,117 +214,151 @@ export default function App() {
     });
   }, []);
 
-  const cmds = [
-    { key: 'R', label: 'reload' },
-    { key: '1', label: 'general' },
-    { key: '2', label: 'flags' },
-    { key: '3', label: 'weave' },
-    { key: '4', label: 'system' },
-    { key: '5', label: 'trickster' },
-    { key: '6', label: 'branches' },
-    { key: 'V', label: scanlinesOn ? 'visual off' : 'visual on' },
-  ];
+  // Deck-aware command bar:
+  //   S / Q / L always available (and inverted when active to match the
+  //   ChannelTabs idiom); 1-6 only when QUEUE is active; R + V always.
+  // CommandBar's `activeBoard` is reused as the inversion signal — we pass
+  // the active deck label when on STATE/LOG so the deck button highlights.
+  const cmds = useMemo(() => {
+    const deckCmds = [
+      { key: 'S', label: 'state' },
+      { key: 'Q', label: 'queue' },
+      { key: 'L', label: 'log' },
+    ];
+    const trailing = [
+      { key: 'R', label: 'reload' },
+      { key: 'V', label: scanlinesOn ? 'visual off' : 'visual on' },
+    ];
+    if (deck === 'QUEUE') {
+      const boardCmds = [
+        { key: '1', label: 'general' },
+        { key: '2', label: 'flags' },
+        { key: '3', label: 'weave' },
+        { key: '4', label: 'system' },
+        { key: '5', label: 'trickster' },
+        { key: '6', label: 'branches' },
+      ];
+      return [...deckCmds, ...boardCmds, ...trailing];
+    }
+    return [...deckCmds, ...trailing];
+  }, [deck, scanlinesOn]);
 
   function handleCommand(k) {
+    if (k === 'S') return setDeck('STATE');
+    if (k === 'Q') return setDeck('QUEUE');
+    if (k === 'L') return setDeck('LOG');
     if (k === 'R') return loadAll();
     if (k === 'V') return setScanlinesOn((on) => !on);
-    const idx = parseInt(k, 10);
-    if (idx >= 1 && idx <= 6) setActiveBoard(BOARDS[idx - 1]);
+    if (deck === 'QUEUE') {
+      const idx = parseInt(k, 10);
+      if (idx >= 1 && idx <= 6) setActiveBoard(BOARDS[idx - 1]);
+    }
   }
+
+  // The CommandBar inverts the entry whose key matches its `activeBoard` prop.
+  // For STATE/LOG decks we surface the deck letter (S/L); for QUEUE we keep
+  // the existing board-letter behavior so the active board stays inverted.
+  const commandBarActive = deck === 'QUEUE' ? activeBoard : deck === 'STATE' ? 'S' : 'L';
 
   return (
     <Shell nodeName="01" clock={clock} unread={totalFlagged}
       commands={cmds} onCommand={handleCommand} scanlinesOn={scanlinesOn}
-      vfxState={scanlinesOn ? 'on' : 'off'} activeBoard={activeBoard}
+      vfxState={scanlinesOn ? 'on' : 'off'} activeBoard={commandBarActive}
       liveState={liveState}>
-      <div data-testid="board-screen" style={{ width: '100%' }}>
-        <Banner as="h1" strong style={{ fontSize: 32, margin: '0 0 4px' }}>
-          {activeBoard.toLowerCase()} board
-        </Banner>
-        <div style={{ color: 'var(--phosphor-dim)', textShadow: 'none', marginBottom: 4 }}>
-          {`${messages.length} total traces · ${totalFlagged} flagged · ${filtered.length} on ${activeBoard}.`}
-          {loadedAt ? <> · last loaded <span style={{ color: 'var(--phosphor-dim)' }}>{loadedAt.split('T')[1].split('.')[0]}Z</span></> : null}
-          {demo === '1' ? <span style={{ color: 'var(--warn)', textShadow: 'var(--glow)', marginLeft: 12 }}>· demo data prepended</span> : null}
-        </div>
-        <div style={{ marginBottom: 12, fontSize: 14 }} data-testid="inline-actions">
-          <span
-            onClick={() => loadAll()}
-            style={{
-              color: 'var(--phosphor)', textShadow: 'var(--glow)',
-              cursor: 'pointer', textTransform: 'uppercase', letterSpacing: '.04em',
-              border: '1px solid var(--phosphor-dim)', padding: '2px 8px',
-            }}
-          >
-            [<b style={{ color: 'var(--phosphor-white)' }}>R</b>]&nbsp;RELOAD
-          </span>
-          <span style={{ color: 'var(--phosphor-dim)', textShadow: 'none', marginLeft: 16 }}>
-            (or press R)
-          </span>
-        </div>
+      <DeckTabs active={deck} onSelect={setDeck} />
 
-        <ChannelTabs
-          active={activeBoard}
-          onSelect={setActiveBoard}
-          counts={counts}
-          pendingTrickster={pendingTrickster}
-        />
+      {deck === 'STATE' && <StateDeck />}
+      {deck === 'LOG' && <LogDeckStub />}
+      {deck === 'QUEUE' && (
+        <div data-testid="board-screen" style={{ width: '100%' }}>
+          <Banner as="h1" strong style={{ fontSize: 32, margin: '0 0 4px' }}>
+            queue -- {activeBoard.toLowerCase()} board
+          </Banner>
+          <div style={{ color: 'var(--phosphor-dim)', textShadow: 'none', marginBottom: 4 }}>
+            {`${messages.length} total traces · ${totalFlagged} flagged · ${filtered.length} on ${activeBoard}.`}
+            {loadedAt ? <> · last loaded <span style={{ color: 'var(--phosphor-dim)' }}>{loadedAt.split('T')[1].split('.')[0]}Z</span></> : null}
+            {demo === '1' ? <span style={{ color: 'var(--warn)', textShadow: 'var(--glow)', marginLeft: 12 }}>· demo data prepended</span> : null}
+          </div>
+          <div style={{ marginBottom: 12, fontSize: 14 }} data-testid="inline-actions">
+            <span
+              onClick={() => loadAll()}
+              style={{
+                color: 'var(--phosphor)', textShadow: 'var(--glow)',
+                cursor: 'pointer', textTransform: 'uppercase', letterSpacing: '.04em',
+                border: '1px solid var(--phosphor-dim)', padding: '2px 8px',
+              }}
+            >
+              [<b style={{ color: 'var(--phosphor-white)' }}>R</b>]&nbsp;RELOAD
+            </span>
+            <span style={{ color: 'var(--phosphor-dim)', textShadow: 'none', marginLeft: 16 }}>
+              (or press R)
+            </span>
+          </div>
 
-        {loadState === 'loading' && (
-          <div data-testid="loading" style={{ color: 'var(--phosphor-dim)', textShadow: 'none' }}>
-            loading...
-          </div>
-        )}
-        {loadState === 'error' && (
-          <div data-testid="load-error" style={{
-            color: 'var(--error)', textShadow: 'var(--glow)',
-            border: '1px solid var(--error)', padding: '8px',
-          }}>
-            failed to load palace data: {loadError}
-          </div>
-        )}
-        {loadState === 'ok' && (
-          <div style={{
-            display: 'grid', gridTemplateColumns: '1fr 280px', gap: 24,
-            alignItems: 'flex-start',
-          }}>
-            <div style={{ minWidth: 0 }}>
-              {agentFilter && (
-                <div
-                  data-testid="agent-filter-banner"
-                  style={{
-                    color: 'var(--warn)', textShadow: 'var(--glow)',
-                    border: '1px dashed var(--warn)', padding: '4px 8px',
-                    margin: '0 0 8px', fontSize: 12,
-                    cursor: 'pointer',
-                  }}
-                  onClick={() => setAgentFilter(null)}
-                >
-                  filtered by @{agentFilter} · click to clear
-                </div>
-              )}
-              {activeBoard === 'TRICKSTER' && (
-                <>
-                  <DigestPanel />
-                  <TricksterInbox
-                    messages={visibleMessages}
-                    onConfirmed={handleOptimisticAppend}
-                  />
-                </>
-              )}
-              <MessageList
-                messages={filtered}
-                sessionsEmpty={sessions.length === 0}
-                activeBoard={activeBoard}
+          <ChannelTabs
+            active={activeBoard}
+            onSelect={setActiveBoard}
+            counts={counts}
+            pendingTrickster={pendingTrickster}
+          />
+
+          {loadState === 'loading' && (
+            <div data-testid="loading" style={{ color: 'var(--phosphor-dim)', textShadow: 'none' }}>
+              loading...
+            </div>
+          )}
+          {loadState === 'error' && (
+            <div data-testid="load-error" style={{
+              color: 'var(--error)', textShadow: 'var(--glow)',
+              border: '1px solid var(--error)', padding: '8px',
+            }}>
+              failed to load palace data: {loadError}
+            </div>
+          )}
+          {loadState === 'ok' && (
+            <div style={{
+              display: 'grid', gridTemplateColumns: '1fr 280px', gap: 24,
+              alignItems: 'flex-start',
+            }}>
+              <div style={{ minWidth: 0 }}>
+                {agentFilter && (
+                  <div
+                    data-testid="agent-filter-banner"
+                    style={{
+                      color: 'var(--warn)', textShadow: 'var(--glow)',
+                      border: '1px dashed var(--warn)', padding: '4px 8px',
+                      margin: '0 0 8px', fontSize: 12,
+                      cursor: 'pointer',
+                    }}
+                    onClick={() => setAgentFilter(null)}
+                  >
+                    filtered by @{agentFilter} · click to clear
+                  </div>
+                )}
+                {activeBoard === 'TRICKSTER' && (
+                  <>
+                    <DigestPanel />
+                    <TricksterInbox
+                      messages={visibleMessages}
+                      onConfirmed={handleOptimisticAppend}
+                    />
+                  </>
+                )}
+                <MessageList
+                  messages={filtered}
+                  sessionsEmpty={sessions.length === 0}
+                  activeBoard={activeBoard}
+                />
+              </div>
+              <AgentRoster
+                messages={visibleMessages}
+                activeFilter={agentFilter}
+                onSelect={setAgentFilter}
               />
             </div>
-            <AgentRoster
-              messages={visibleMessages}
-              activeFilter={agentFilter}
-              onSelect={setAgentFilter}
-            />
-          </div>
-        )}
-      </div>
+          )}
+        </div>
+      )}
     </Shell>
   );
 }
