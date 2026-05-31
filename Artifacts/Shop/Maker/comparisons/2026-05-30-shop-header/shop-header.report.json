@@ -1,0 +1,17 @@
+{
+  "duration_sec": 114.36,
+  "checkpoint": "sd_xl_base_1.0.safetensors",
+  "seed": 30,
+  "steps": 30,
+  "cfg": 7.0,
+  "sampler": "euler",
+  "scheduler": "normal",
+  "width": 1536,
+  "height": 640,
+  "positive_prompt": "a master printmaker's workshop seen from a slightly elevated angle at dusk, ordered work surfaces and presses arrayed in disciplined geometry, warm amber light pouring through tall industrial windows, dust motes catching the light, dark exposed timber beams, deep shadows in the corners, painterly cinematic atmosphere, oil painting quality, no people, mood of focused craft and quiet discipline, restrained palette of warm amber and deep near-black indigo",
+  "negative_prompt": "people, faces, hands, figures, cartoon, anime, watermark, text, signature, deformed, ugly, low quality, blurry, oversaturated, neon, harsh lighting, daylight, cluttered, chaotic, garish",
+  "comfy_filename": "shop-header-comfyui_00001_.png",
+  "tier_used": "sketch",
+  "midjourney_counterpart": "BLOCKED \u2014 no access this session",
+  "status": "ok"
+}

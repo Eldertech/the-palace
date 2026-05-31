@@ -92,6 +92,8 @@ The house taste, codified.
 
 **Interactive teaching pieces, generative sketches, parameter explorers** → p5.js for fast-authored web-deployable sketches; HTML/React Artifact Smith when claude.ai artifact polish or shadcn/ui components are needed.
 
+**Browser-deployable instruments · web audio** → **[[Shop/Tone.js]]** when the synth is a *composition of primitives* (subtractive / FM / sampler / effect chains / musical-time sequencing); **[[Shop/Web Audio Worklet]]** when the *DSP itself is the differentiator* (granular, custom or 2D wavetable, physical models — anything that wants a per-sample `process()` loop). Codified by the Murmuration build (2026-05-30), which Tone.js's charter explicitly refuses. The grey zone — a custom voice inside an otherwise Tone-shaped instrument — is a Worklet node dropped into a Tone graph. When one instrument should ship to **both** web and a DAW, pair Web Audio Worklet with **[[Shop/RNBO codebox~ smith]]** against a single spec (a live probe of [[Diversity of Thought in Many-Agent Systems]]).
+
 When two routes are both reasonable, I tell you and propose Comparison Mode rather than guessing.
 
 ## House Standards
@@ -227,7 +229,8 @@ The Specialists currently in the Shop, with their primary use:
 - **Stable Audio Open** — short-form generative music and SFX *(local, GPU)*
 - **RNBO codebox~ smith** — RNBO DSP code for Max/M4L/VST/AU *(local, Max/MSP)*
 - **VCV Patch Generator** — algorithmic VCV Rack patch generation *(local)*
-- **Tone.js** — web audio, browser-deployable music software *(local, web)*
+- **Tone.js** — web audio from built-in primitives, browser-deployable music software *(local, web)*
+- **Web Audio Worklet** — custom browser DSP (granular, wavetable, physical models) as AudioWorklet sample loops; the browser cousin of RNBO codebox~ *(local, web, zero-dependency)*
 
 **Status taxonomy** (the single source of truth — reconciled 2026-05-30; supersedes the prior drift between frontmatter `status` and this list):
 
@@ -235,11 +238,12 @@ The Specialists currently in the Shop, with their primary use:
 - **alive** — at least one real palace job has landed, leaving a dated recipe and (usually) earned gotchas.
 - A Specialist is **alive** only when its Recipes section names a real dated job with a bundle path. A uniform authoring date is not a job.
 
-**Alive (14)** — real job landed:
+**Alive (15)** — real job landed:
 
 - *Flocking shoot-out (2026-05-29):* **p5.js** (also Kuramoto), **D3.js**, **Observable Plot**.
 - *Kuramoto arc (2026-05-10 → 05-26):* **Manim CE**, **Kokoro**, **Matplotlib**, **ComfyUI**, **Whisper**, **ffmpeg**, **Mermaid**, **Remotion**, **Tone.js**, **Stable Audio Open**.
 - *VCV audition (2026-05-29):* **VCV Patch Generator** — the only Specialist with a run test-plan and a determinism proof; the testing exemplar.
+- *Murmuration (2026-05-30):* **Web Audio Worklet** — agent-based granular-wavetable engine; the first Specialist born from a synthesis-paradigm brief, and the first sibling to land *because* an existing Specialist (Tone.js) refused the operating model.
 
 **Stub (2)** — entry exists, awaiting first real job: **Midjourney**, **RNBO codebox~ smith**.
 
@@ -259,6 +263,8 @@ Whole-brief examples and how they were resolved. Each one is a teaching example 
 **2026-05-29 — Flocking data-viz shoot-out (Comparison Mode, three Specialists).** Brief: same Reynolds boids math, three lenses. Routing: D3.js (interactive control — live weight sliders + force-vector overlay), Observable Plot (analytical — R-over-time, neighbor histogram, `fx`-faceted alignment sweep), p5.js (expressive — trails + color-by-velocity). Sketch tier across the board. Reproducibility discipline: one shared Mulberry32 (seed 7), byte-identical model block in all three, so the three are provably the same trajectory; cross-checked in Node. Standards JSON captured the full model parameters per the honest-comparison rule. House taste deferred — neutral Kuramoto palette (indigo/amber/dark) as working default, accepting that Plot's grammar-of-graphics defaults look different by nature. Two real specialist gotchas surfaced (d3-force is a relaxation solver; Plot's UMD externalises d3). This round closed the data-viz roster gap (D3 + Plot stub→alive) and gave [[Flocking]] its first artifacts. Bundle: [Flocking/](../Flocking/). Recommendation: [[Flocking — Maker's Comparison Recommendation]].
 
 **2026-05-30 — Narrated Beats: first gated coordinated pipeline (four Specialists in series).** The Maker's signature capability — gating one Specialist's output as another's input — formalised as a *foreman* dispatch, not just a series of independent calls. Pipeline: **Kokoro** narrates a 10 s beat-frequency sentence → **Whisper** word-times it → **Manim CE** renders 1080p30 silent video with each visual cue (phasor circles, frequency labels, drift trace, sum trace, beat pulse, listen caption) firing on the exact Whisper-timestamped word it names → **ffmpeg** muxes. End-to-end **17.7 s** on the canonical Mac (Kokoro 7.6 s · Whisper 4.5 s · Manim 5.5 s · mux 0.2 s). The gate is the point: Manim must be provably blocked on Whisper's return, not run speculatively. Enforced at **two layers** — the orchestrator (`pipeline.py`) gates Manim's *invocation* on `narration.json` existing + monotonic + cue-words-present; the scene module (`scene.py`) gates Manim's *construction* on the same file re-validating at import. Bypass-proof: a direct `manim scene.py` invocation with the JSON missing or malformed raises before any frame renders (verified on two failure modes — file-deleted, words-stripped). Two real findings: (a) **fuzzy-cue matching beats narration-rewriting** — Whisper hears Kokoro's `phasors` as `phasers`, a strict-equality gate would fail on correct output; the SequenceMatcher-ratio path (≥0.78) tolerates phonetic wobble; (b) **use the AUDIO file's duration, not Whisper's last-segment end, for clip length** — Kokoro's tail silence sits past the last transcribed word and `-shortest` will truncate honest audio if you trust the transcription boundary. Bundle: [Artifacts/Shop/Maker/coordination-demos/2026-05-30-narrated-beats/](../Artifacts/Shop/Maker/coordination-demos/2026-05-30-narrated-beats/). This is the first evidence the Maker is a *foreman*, not just a dispatcher.
+
+**2026-05-30 — Shop header (half-Comparison: ComfyUI ran, Midjourney blocked).** The brief: a banner header for [[The Shop]] itself — workshop interior at dusk, ordered work surfaces, focused amber light, no figures, 12:5 aspect for hub-entry headers. Routing: Midjourney↔ComfyUI Comparison Mode per the Selection Heuristic. **Outcome: half-comparison.** Midjourney access was unavailable this session (per intake confirmation); ComfyUI ran SDXL base, seed 30, 30 steps, CFG 7.0, euler/normal, 1536×640, **114 s on Mac MPS**, producing a Sketch-tier image that reads as a working workshop interior in the Graphite-skin family (warm amber + deep near-black, ordered geometry, no figures — negative prompt held). The honest finding: **a half-Comparison is still worth running** — the recommendation document names *what the missing half would have told us* (does Midjourney clear a ceiling ComfyUI can't reach on atmospheric briefs; is the "Default to ComfyUI when in doubt" line evidence-backed), which turns a quiet "we never got to it" into a named, dated, scoped deferred piece with the reproducibility package already half-built. **Selection Heuristic NOT revised** — a heuristic about *defaults* needs both candidates, and updating it on single-vendor evidence would be dishonest. [[Shop/Midjourney|Midjourney]] stays a stub. Bundle: [Artifacts/Shop/Maker/comparisons/2026-05-30-shop-header/](../Artifacts/Shop/Maker/comparisons/2026-05-30-shop-header/). Recommendation: [[shop-header — Maker's Comparison Recommendation]].
 
 Future recipes added as briefs finish.
 
