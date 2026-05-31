@@ -1,0 +1,60 @@
+{
+  "_comment": "ComfyUI workflow — header art for [[The Shop]]. SDXL base, 1536×640 banner (≈12:5 aspect, SDXL-trained dims). Palette anchored to the [[Loudon Live Design System]] Graphite skin via prompt: warm amber accent (#e8b84a), dark ground (#0a0a0f). Seed=30 (the build-session date). Phase D of SHOP-BUILD-SESSION-2026-05-30.md — ComfyUI half only (Midjourney access blocked this session).",
+  "3": {
+    "inputs": {
+      "seed": 30,
+      "steps": 30,
+      "cfg": 7.0,
+      "sampler_name": "euler",
+      "scheduler": "normal",
+      "denoise": 1.0,
+      "model": ["4", 0],
+      "positive": ["6", 0],
+      "negative": ["7", 0],
+      "latent_image": ["5", 0]
+    },
+    "class_type": "KSampler"
+  },
+  "4": {
+    "inputs": {
+      "ckpt_name": "sd_xl_base_1.0.safetensors"
+    },
+    "class_type": "CheckpointLoaderSimple"
+  },
+  "5": {
+    "inputs": {
+      "width": 1536,
+      "height": 640,
+      "batch_size": 1
+    },
+    "class_type": "EmptyLatentImage"
+  },
+  "6": {
+    "inputs": {
+      "text": "a master printmaker's workshop seen from a slightly elevated angle at dusk, ordered work surfaces and presses arrayed in disciplined geometry, warm amber light pouring through tall industrial windows, dust motes catching the light, dark exposed timber beams, deep shadows in the corners, painterly cinematic atmosphere, oil painting quality, no people, mood of focused craft and quiet discipline, restrained palette of warm amber and deep near-black indigo",
+      "clip": ["4", 1]
+    },
+    "class_type": "CLIPTextEncode"
+  },
+  "7": {
+    "inputs": {
+      "text": "people, faces, hands, figures, cartoon, anime, watermark, text, signature, deformed, ugly, low quality, blurry, oversaturated, neon, harsh lighting, daylight, cluttered, chaotic, garish",
+      "clip": ["4", 1]
+    },
+    "class_type": "CLIPTextEncode"
+  },
+  "8": {
+    "inputs": {
+      "samples": ["3", 0],
+      "vae": ["4", 2]
+    },
+    "class_type": "VAEDecode"
+  },
+  "9": {
+    "inputs": {
+      "filename_prefix": "shop-header-comfyui",
+      "images": ["8", 0]
+    },
+    "class_type": "SaveImage"
+  }
+}
