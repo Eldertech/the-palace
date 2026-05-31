@@ -23,6 +23,7 @@ import { listEntries, readEntry } from '../src/lib/entries.js';
 import { readLog, readCommit, readUncommitted } from './git.js';
 import { createActuator } from './actuator.js';
 import { readCards, appendInboxBlock, CARD_ACTIONS } from './cards.js';
+import { composePreview } from './entry-save.js';
 
 // The supervisor prompt the fired worker runs as (the Enrichment ceremony's
 // headless `claude -p` brief). Read at fire time so edits take effect without
@@ -583,6 +584,33 @@ export function blackboardMiddleware(palaceRoot, opts = {}) {
             ok: true, inbox: wrote.msg, fired: fired.fired, worker_msg: fired.msg,
             ...actuator.status(),
           });
+        }
+
+        // ── POST /api/entry/save ─ Phase 5 Stage A: dry-run preview ────────
+        // Body: { path, frontmatter, body, kind?, summary, verify, scope?,
+        // body_message?, author? }. The endpoint NEVER writes the file and
+        // NEVER commits -- it composes the structured commit STIGMERGY WOULD
+        // make if armed, and returns { subject, trailers[], message, udiff,
+        // frontmatterChanges, bodyChanged } for the preview panel. Allow-list
+        // refuses .git/, .claude/, _ops/ machinery, and canon files (CLAUDE,
+        // SCHEMA, SUBSTRATE, ROSETTA, ceremony cards) -- canon edits flow
+        // through Claude conversation under show-before-write.
+        if (urlPath === '/api/entry/save' && method === 'POST') {
+          const bodyText = await readBody(req, res);
+          if (bodyText === null) return; // 413 already sent
+          let parsed;
+          try { parsed = JSON.parse(bodyText); } catch (e) {
+            return jsonResponse(res, 400, { error: `malformed JSON: ${e.message}` });
+          }
+          const result = composePreview({ palaceRoot, ...(parsed || {}), relPath: parsed?.path });
+          if (!result.ok) {
+            return jsonResponse(res, result.status || 400, {
+              error: result.error,
+              errors: result.errors,
+              warnings: result.warnings,
+            });
+          }
+          return jsonResponse(res, 200, { ok: true, preview: result.preview });
         }
 
         // ── POST /api/persistent ────────────────────────────────────────────

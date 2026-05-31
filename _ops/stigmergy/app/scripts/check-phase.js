@@ -197,6 +197,23 @@ const PHASES = {
       'phase-16-v1.0/card-detail.png',
     ],
   },
+  17: {
+    label: 'v1.0 Phase 5 Stage A — STATE write (dry-run)',
+    vitest: [
+      'yaml-emit.test.js', 'entry-edit.test.js',
+      'commit-spec.test.js', 'commit-parse.test.js', 'frontmatter-diff.test.js',
+      'yaml-frontmatter.test.js', 'parser.test.js', 'schema.test.js',
+      'middleware.test.js', 'validator.test.js',
+    ],
+    integration: ['entry-save-middleware.test.js', 'entries-middleware.test.js'],
+    playwright: [
+      'boot.spec.js', 'tokens.spec.js', 'state-editor.spec.js',
+    ],
+    screenshots: [
+      'phase-17-v1.0/state-edit-form.png',
+      'phase-17-v1.0/state-edit-preview.png',
+    ],
+  },
 };
 
 function logRun(entry) {
@@ -305,7 +322,7 @@ function main() {
     process.exit(2);
   }
   if (arg === 'all') {
-    for (const p of [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]) {
+    for (const p of [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17]) {
       const code = checkPhase(p);
       if (code !== 0) process.exit(code);
     }

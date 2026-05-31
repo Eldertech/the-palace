@@ -4,6 +4,7 @@ import TypedLinkPanel from './TypedLinkPanel.jsx';
 import BundlePanel from './BundlePanel.jsx';
 import EntryBody from './EntryBody.jsx';
 import { fetchEntry } from '../../adapters/entries.js';
+import { checkAllowList } from '../../lib/entry-edit.js';
 
 // One entry's full read shape, rendered:
 //   - FrontmatterHeader (title, type, stage, pillars, forward_vector,
@@ -16,7 +17,7 @@ import { fetchEntry } from '../../adapters/entries.js';
 // on failure shows an inline error band and a back button. Errors never
 // escape this component -- the deck stays usable.
 
-export default function EntryReader({ path, index, onNavigate, onBack }) {
+export default function EntryReader({ path, index, onNavigate, onBack, onEdit }) {
   const [state, setState] = useState({ kind: 'loading' });
 
   useEffect(() => {
@@ -61,6 +62,7 @@ export default function EntryReader({ path, index, onNavigate, onBack }) {
   }
 
   const { entry } = state;
+  const editAllow = checkAllowList(entry.path);
 
   return (
     <div data-testid="entry-reader" data-path={entry.path}>
@@ -77,6 +79,23 @@ export default function EntryReader({ path, index, onNavigate, onBack }) {
             }}
           >
             [<b style={{ color: 'var(--phosphor-white)' }}>B</b>]&nbsp;back to pulse
+          </span>
+        ) : null}
+        {onEdit ? (
+          <span
+            data-testid="open-editor"
+            onClick={editAllow.allowed ? onEdit : undefined}
+            title={editAllow.allowed ? 'edit this entry (dry-run)' : editAllow.reason}
+            style={{
+              marginLeft: 8,
+              cursor: editAllow.allowed ? 'pointer' : 'not-allowed',
+              opacity: editAllow.allowed ? 1 : 0.4,
+              color: 'var(--phosphor)', textShadow: 'var(--glow)',
+              border: '1px solid var(--phosphor-dim)', padding: '2px 8px',
+              textTransform: 'uppercase', letterSpacing: '.04em', fontSize: 12,
+            }}
+          >
+            [<b style={{ color: 'var(--phosphor-white)' }}>E</b>]&nbsp;edit
           </span>
         ) : null}
         <span style={{

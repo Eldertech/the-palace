@@ -18,6 +18,27 @@ export async function fetchEntries() {
   }
 }
 
+// POST /api/entry/save — dry-run preview (Stage A).
+// Body: { path, frontmatter, body, summary, verify, kind?, scope?, body_message?, author? }
+// Returns { ok: true, preview } or { ok: false, status, error?, errors?, warnings? }.
+// Never writes the file; never commits. Refused for canon / machinery paths.
+export async function previewEntrySave(payload) {
+  try {
+    const res = await fetch('/api/entry/save', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+      body: JSON.stringify(payload || {}),
+    });
+    const data = await res.json().catch(() => ({}));
+    if (!res.ok) {
+      return { ok: false, status: res.status, ...data };
+    }
+    return { ok: true, ...data };
+  } catch (err) {
+    return { ok: false, error: err?.message ?? String(err) };
+  }
+}
+
 export async function fetchEntry(relPath) {
   if (typeof relPath !== 'string' || relPath === '') {
     return { ok: false, error: 'missing path' };

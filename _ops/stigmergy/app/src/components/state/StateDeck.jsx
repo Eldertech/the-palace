@@ -1,6 +1,7 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import EntryList from './EntryList.jsx';
 import EntryReader from './EntryReader.jsx';
+import EntryEditor from './EntryEditor.jsx';
 import { fetchEntries } from '../../adapters/entries.js';
 import { buildIndex } from '../../lib/wikilink.js';
 import { Banner } from '../primitives.jsx';
@@ -17,6 +18,7 @@ import { Banner } from '../primitives.jsx';
 export default function StateDeck() {
   const [state, setState] = useState({ kind: 'loading' });
   const [selected, setSelected] = useState(null);
+  const [editing, setEditing] = useState(false);
 
   useEffect(() => {
     let cancelled = false;
@@ -49,12 +51,19 @@ export default function StateDeck() {
 
   return (
     <div data-testid="state-deck">
-      {selected ? (
+      {selected && editing ? (
+        <EntryEditor
+          path={selected}
+          index={wikilinkIndex}
+          onCancel={() => setEditing(false)}
+        />
+      ) : selected ? (
         <EntryReader
           path={selected}
           index={wikilinkIndex}
-          onNavigate={(p) => setSelected(p)}
-          onBack={() => setSelected(null)}
+          onNavigate={(p) => { setEditing(false); setSelected(p); }}
+          onBack={() => { setEditing(false); setSelected(null); }}
+          onEdit={() => setEditing(true)}
         />
       ) : (
         <>
