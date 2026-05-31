@@ -595,4 +595,37 @@ test.describe(`phase ${PHASE} captures`, () => {
       await page.screenshot({ path: resolve(dir, 'queue-resolved.png'), fullPage: true });
     });
   }
+
+  if (PHASE === '16') {
+    // v1.0 Phase 4.5 — Enrichment consolidation. Captures the absorbed card
+    // queue against the LIVE palace cards (read-only; no card actions clicked,
+    // so no inbox write / worker fire).
+
+    test('phase-16-v1.0/card-queue.png', async ({ page }) => {
+      await page.goto('/?demo=only&deck=QUEUE');
+      await page.getByTestId('board-screen').waitFor({ timeout: 10_000 });
+      await preloadFonts(page);
+      await page.getByTestId('card-queue').waitFor({ timeout: 15_000 });
+      await page.waitForTimeout(600);
+      const dir = resolve('screenshots/phase-16-v1.0');
+      mkdirSync(dir, { recursive: true });
+      await page.screenshot({ path: resolve(dir, 'card-queue.png'), fullPage: true });
+    });
+
+    test('phase-16-v1.0/card-detail.png', async ({ page }) => {
+      await page.goto('/?demo=only&deck=QUEUE');
+      await page.getByTestId('board-screen').waitFor({ timeout: 10_000 });
+      await preloadFonts(page);
+      await page.getByTestId('card-queue').waitFor({ timeout: 15_000 });
+      // Scroll the first card into view so its artifact + verdict + actions frame.
+      const first = page.locator('[data-testid="card-item"]').first();
+      if (await first.count()) {
+        await first.scrollIntoViewIfNeeded();
+        await page.waitForTimeout(400);
+      }
+      const dir = resolve('screenshots/phase-16-v1.0');
+      mkdirSync(dir, { recursive: true });
+      await page.screenshot({ path: resolve(dir, 'card-detail.png'), fullPage: false });
+    });
+  }
 });

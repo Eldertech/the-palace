@@ -1,8 +1,10 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import { Box } from '../primitives.jsx';
 import QueueItem from './QueueItem.jsx';
+import CardItem from './CardItem.jsx';
 import { buildQueue, reconcileQueue, partitionQueue, laneCounts } from '../../lib/queue-model.js';
 import { fetchLog } from '../../adapters/log.js';
+import { fetchCards, respondToCard } from '../../adapters/cards.js';
 
 // QueuePanel — the unified, honest, ranked queue (Phase 4).
 //
@@ -22,11 +24,35 @@ export default function QueuePanel({ messages, onJumpEntry }) {
   const [laneFilter, setLaneFilter] = useState(null);
   const [dismissed, setDismissed] = useState(() => new Set());
   const [showResolved, setShowResolved] = useState(true);
+  // Enrichment cards (Phase 4.5): the absorbed Enrichment card queue.
+  const [cards, setCards] = useState([]);
+  const [cardBusy, setCardBusy] = useState(false);
+  const [cardNote, setCardNote] = useState(null); // last response feedback
 
   const loadCommits = () => {
     fetchLog({ limit: 200 }).then((r) => { if (r.ok) setCommits(r.commits || []); });
   };
-  useEffect(() => { loadCommits(); }, []);
+  const loadCards = () => {
+    fetchCards().then((r) => { if (r.ok) setCards(r.cards || []); });
+  };
+  useEffect(() => { loadCommits(); loadCards(); }, []);
+
+  // Respond to a card: POST writes the inbox block + fires the supervisor
+  // through the actuator. On success we refresh cards after a beat (the worker
+  // drains the inbox + tops the queue asynchronously).
+  const respondCard = async (response) => {
+    setCardBusy(true);
+    setCardNote(null);
+    const r = await respondToCard(response);
+    if (r.ok) {
+      setCardNote({ tone: 'ok', text: `${response.action} sent${r.fired ? ' -- supervisor fired' : ' -- queued (worker busy)'}` });
+    } else {
+      setCardNote({ tone: 'err', text: r.error || `respond failed (${r.status ?? '?'})` });
+    }
+    setCardBusy(false);
+    // Give the worker a moment, then refresh the card list.
+    setTimeout(loadCards, 1500);
+  };
 
   const items = useMemo(() => {
     const built = buildQueue(messages);
@@ -124,6 +150,36 @@ export default function QueuePanel({ messages, onJumpEntry }) {
           ) : null}
         </div>
       ) : null}
+
+      {/* Enrichment cards (Phase 4.5): the absorbed Enrichment card queue.
+          Render-and-act -- deposit/revise/discard write the inbox block and
+          fire the supervisor through the actuator. */}
+      <div data-testid="card-queue" style={{ marginTop: 10, borderTop: '1px solid var(--phosphor-dim)', paddingTop: 8 }}>
+        <div style={{ display: 'flex', gap: 10, alignItems: 'baseline', marginBottom: 6 }}>
+          <span style={{ color: 'var(--ansi-bright-magenta)', textShadow: 'var(--glow)', fontSize: 12, textTransform: 'uppercase', letterSpacing: '.06em' }}>
+            enrichment cards
+          </span>
+          <span style={{ color: 'var(--phosphor-dim)', textShadow: 'none', fontSize: 11 }}>{cards.length} in queue</span>
+          <span
+            onClick={loadCards}
+            style={{ cursor: 'pointer', color: 'var(--ansi-bright-cyan)', textShadow: 'var(--glow)', textDecoration: 'underline', fontSize: 11 }}
+          >refresh</span>
+          {cardNote ? (
+            <span data-testid="card-feedback" style={{ color: cardNote.tone === 'ok' ? 'var(--phosphor)' : 'var(--error)', textShadow: 'var(--glow)', fontSize: 11 }}>
+              {cardNote.text}
+            </span>
+          ) : null}
+        </div>
+        {cards.length === 0 ? (
+          <div data-testid="card-queue-empty" style={{ color: 'var(--phosphor-dim)', textShadow: 'none', fontStyle: 'italic', fontSize: 12 }}>
+            no enrichment cards in the queue.
+          </div>
+        ) : (
+          cards.map((c) => (
+            <CardItem key={c.id} card={c} onRespond={respondCard} busy={cardBusy} />
+          ))
+        )}
+      </div>
     </Box>
   );
 }

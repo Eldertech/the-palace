@@ -170,3 +170,7 @@
 {"ts":"2026-05-31T14:06:01.445Z","phase":15,"action":"gate-end","outcome":"fail","stage":"playwright"}
 {"ts":"2026-05-31T18:27:38.040Z","phase":15,"label":"v1.0 Phase 4 — QUEUE reframe","action":"gate-start"}
 {"ts":"2026-05-31T18:27:53.308Z","phase":15,"action":"gate-end","outcome":"pass","stage":"tests+captures"}
+{"ts":"2026-05-31T19:31:54.019Z","phase":16,"label":"v1.0 Phase 4.5 — Enrichment consolidation","action":"gate-start"}
+{"ts":"2026-05-31T19:31:56.127Z","phase":16,"action":"gate-end","outcome":"fail","stage":"vitest"}
+{"ts":"2026-05-31T19:39:23.877Z","phase":16,"label":"v1.0 Phase 4.5 — Enrichment consolidation","action":"gate-start"}
+{"ts":"2026-05-31T19:39:33.910Z","phase":16,"action":"gate-end","outcome":"pass","stage":"tests+captures"}
