@@ -54,3 +54,6 @@ Projects/Generative Sample Libraries/**/*.wav
 *.asd
 
 **/vite.config.js.timestamp-*.mjs
+
+# STIGMERGY actuator runtime state (the fired-worker pid/log/started files)
+_ops/stigmergy/.actuator/
