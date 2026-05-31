@@ -151,6 +151,18 @@ const PHASES = {
       'phase-13-v1.0/actuator-fired.png',
     ],
   },
+  14: {
+    label: 'v1.0 Phase 3 — Commit spec (plumbing; no screenshots)',
+    vitest: [
+      'commit-spec.test.js', 'commit-parse.test.js', 'frontmatter-diff.test.js',
+      'git-log-parse.test.js', 'worker-log.test.js', 'log-filter.test.js',
+      'yaml-frontmatter.test.js', 'parser.test.js', 'schema.test.js',
+      'middleware.test.js', 'validator.test.js',
+    ],
+    integration: ['commit-msg-hook.test.js', 'palace-commit.test.js', 'git-middleware.test.js'],
+    playwright: [],
+    screenshots: [],
+  },
 };
 
 function logRun(entry) {
@@ -259,7 +271,7 @@ function main() {
     process.exit(2);
   }
   if (arg === 'all') {
-    for (const p of [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13]) {
+    for (const p of [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]) {
       const code = checkPhase(p);
       if (code !== 0) process.exit(code);
     }
