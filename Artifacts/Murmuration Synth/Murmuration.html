@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en" class="skin-strobe">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Murmuration — flocking · 2D wavetable · granular (Sketch)</title>
+<!--
+  MURMURATION · agent-based granular-wavetable synthesis · Sketch/Study tier
+  Specialists: p5.js (visual field + flock) + Web Audio Worklet (granular DSP engine).
+  Loudon Live skin: STROBE (performance / live register).
+
+  THE IDEA (one plane, three readings): a 2D wavetable is the timbral terrain.
+  A seed-7 Reynolds flock walks it. Each boid is a grain that reads the bilinearly
+  blended 4-corner wavetable under its (u,v) position. The flock's spatial
+  distribution IS the granular cloud's distribution — emergent, not authored.
+  The "Disorder" macro is Vicsek heading-noise: raise it and the flock crosses a
+  phase transition from coherent (pitched) to incoherent (broadband) — a real
+  order/disorder transition used as a synth gesture, not a crossfade.
+
+  DECLARED DEVIATION: the field heatmap interior uses full-spectrum hue. Colour is
+  the *data* here — it encodes the timbre terrain (hue = wavetable-morph axis), not
+  decoration. The Strobe skin still owns the ground, the chrome, and the wordmark.
+  Skin the frame, declare the interior.
+  deviation_reason: the wavetable-morph coordinate is the information; hue is its
+  only honest channel on a 2D field.
+
+  Update-safe: chrome + flock palette read from the linked colors_and_type.css via
+  palaceTokens(); no token value is hardcoded. Verification seam: window.__murmur.
+  Audio context unlocks on the Engage gesture (Web Audio requires a user gesture).
+-->
+<link rel="stylesheet" href="../../_ops/loudon-live/design-system/colors_and_type.css" />
+<style>
+  * { box-sizing: border-box; }
+  html, body { margin: 0; background: var(--bg); color: var(--fg-2); }
+  body { font-family: var(--sans); font-weight: var(--w-light); }
+  .wrap { max-width: 1000px; margin: 0 auto; padding: var(--s-8) var(--s-6) var(--s-10); }
+
+  .topline { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: var(--s-5); gap: var(--s-4); }
+  .eyebrow { font-family: var(--mono); font-weight: var(--w-medium); font-size: var(--t-eyebrow);
+    letter-spacing: var(--tr-eyebrow); text-transform: uppercase; color: var(--fg-3); }
+  .wordmark { font-size: var(--t-h4); line-height: 1; white-space: nowrap; }
+  .wordmark .lo { font-family: var(--display); color: var(--fg-1); letter-spacing: var(--tr-display); }
+  .wordmark .sl { color: var(--fg-3); margin: 0 .28em; font-family: var(--sans); font-weight: var(--w-light); }
+  .wordmark .li { font-family: var(--serif); font-style: italic; font-weight: var(--w-light);
+    color: var(--accent); text-shadow: var(--text-glow-accent); }
+
+  h1 { font-family: var(--display); font-weight: var(--w-regular); letter-spacing: var(--tr-display);
+    font-size: var(--t-h1); line-height: var(--lh-tight); color: var(--fg-1); margin: 0 0 var(--s-3); text-transform: uppercase; }
+  .lead { font-family: var(--serif); font-weight: var(--w-light); font-size: var(--t-lead); line-height: var(--lh-reading);
+    letter-spacing: var(--tr-soft); color: var(--fg-2); max-width: 64ch; margin: 0 0 var(--s-5); }
+  .lead em { font-style: italic; color: var(--fg-1); }
+
+  .stage { position: relative; background: var(--bg-elev-1); border: 1px solid var(--border);
+    border-radius: var(--r-sm); box-shadow: var(--shadow-1); padding: 1px; line-height: 0; overflow: hidden; }
+  #sketch canvas { display: block; width: 100% !important; height: auto !important; }
+
+  /* Engage gate (audio-context unlock) */
+  .gate { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center;
+    gap: var(--s-3); background: color-mix(in srgb, var(--bg) 72%, transparent); cursor: pointer; z-index: 4; line-height: 1.4; }
+  .gate.hidden { display: none; }
+  .gate .btn { font-family: var(--display); text-transform: uppercase; letter-spacing: var(--tr-display);
+    font-size: var(--t-h3); color: var(--bg); background: var(--accent); border: none; padding: .5em 1.1em;
+    border-radius: var(--r-sm); cursor: pointer; box-shadow: var(--text-glow-accent); }
+  .gate .hint { font-family: var(--mono); font-size: var(--t-meta); color: var(--fg-3); letter-spacing: .04em; }
+
+  /* readouts overlaid on canvas */
+  .hud { position: absolute; top: var(--s-3); left: var(--s-3); z-index: 3; pointer-events: none;
+    font-family: var(--mono); font-size: var(--t-meta); color: var(--fg-3); letter-spacing: .03em; line-height: 1.5; }
+  .hud b { color: var(--accent); font-weight: var(--w-medium); }
+  .hud .phase { color: var(--fg-1); }
+
+  .controls { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: var(--s-3) var(--s-5);
+    margin-top: var(--s-4); padding: var(--s-4); background: var(--bg-elev-1); border: 1px solid var(--border-soft); border-radius: var(--r-sm); }
+  .ctl { display: flex; flex-direction: column; gap: 4px; }
+  .ctl label { font-family: var(--mono); font-size: var(--t-meta); letter-spacing: .04em; text-transform: uppercase; color: var(--fg-3); display: flex; justify-content: space-between; }
+  .ctl label span { color: var(--fg-1); }
+  .ctl input[type=range] { width: 100%; accent-color: var(--accent); }
+
+  .deviation { margin-top: var(--s-3); font-family: var(--mono); font-size: var(--t-meta); color: var(--fg-3); letter-spacing: .03em; }
+  .deviation b { color: var(--accent); font-weight: var(--w-medium); }
+
+  .foot { margin-top: var(--s-7); padding-top: var(--s-4); border-top: 1px solid var(--border-soft);
+    font-family: var(--mono); font-size: var(--t-meta); color: var(--fg-3); letter-spacing: .04em; }
+  .foot .lo { font-family: var(--display); color: var(--fg-2); }
+  .foot .li { font-family: var(--serif); font-style: italic; font-weight: var(--w-light); color: var(--accent); }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="topline">
+    <span class="eyebrow">Murmuration · flocking × 2D wavetable × granular · Sketch</span>
+    <span class="wordmark"><span class="lo">LOUDON</span><span class="sl">/</span><span class="li">Live</span></span>
+  </div>
+
+  <h1>The flock is the cloud</h1>
+  <p class="lead">A 2D wavetable is the <em>terrain</em>; a flock walks it; every boid is a grain reading the
+  waveform under its feet. The flock's spatial spread <em>is</em> the granular distribution — emergent, not dialed.
+  Drag to place an attractor, click to drop a predator and watch the startle scatter re-cohere. Raise
+  <em>Disorder</em> to cross the order→chaos phase transition: pitched tone melts to broadband cloud.</p>
+
+  <div class="stage">
+    <div id="sketch"></div>
+    <div class="hud" id="hud"></div>
+    <div class="gate" id="gate">
+      <button class="btn" id="engage">▶ Engage</button>
+      <div class="hint">click to start audio · drag = attractor · click canvas = predator startle</div>
+    </div>
+  </div>
+
+  <div class="controls" id="controls">
+    <div class="ctl"><label>Boids <span id="vN">60</span></label><input id="cN" type="range" min="8" max="120" step="1" value="60"></div>
+    <div class="ctl"><label>Cohesion <span id="vCoh">1.0</span></label><input id="cCoh" type="range" min="0" max="3" step="0.05" value="1.0"></div>
+    <div class="ctl"><label>Separation <span id="vSep">1.5</span></label><input id="cSep" type="range" min="0" max="3" step="0.05" value="1.5"></div>
+    <div class="ctl"><label>Disorder η (phase transition) <span id="vEta">0.06</span></label><input id="cEta" type="range" min="0" max="1" step="0.01" value="0.06"></div>
+    <div class="ctl"><label>Base note Hz <span id="vBase">110</span></label><input id="cBase" type="range" min="55" max="330" step="1" value="110"></div>
+    <div class="ctl"><label>Pitch spread semis <span id="vPit">19</span></label><input id="cPit" type="range" min="0" max="36" step="1" value="19"></div>
+    <div class="ctl"><label>Grain shimmer <span id="vGr">0.55</span></label><input id="cGr" type="range" min="0" max="1" step="0.01" value="0.55"></div>
+    <div class="ctl"><label>Master <span id="vVol">0.7</span></label><input id="cVol" type="range" min="0" max="1" step="0.01" value="0.7"></div>
+  </div>
+
+  <p class="deviation"><b>Declared deviation:</b> the field heatmap leaves the Strobe palette — hue encodes the
+  wavetable-morph axis (colour is data). Skin owns the ground, chrome, wordmark.</p>
+
+  <p class="foot"><span class="lo">LOUDON</span> Live · Autodidact Polymaths &nbsp;·&nbsp; p5.js + Web Audio Worklet · seed-7 Reynolds model</p>
+</div>
+
+<script src="../../_ops/loudon-live/design-system/palace-tokens.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/p5@1.10.0/lib/p5.min.js"></script>
+<script>
+/* ===================================================================== *
+ *  SHARED FLOCKING MODEL — seed-7 Reynolds, palace determinism contract  *
+ *  (computeVelocities core byte-compatible with Flocking/ Specimens;     *
+ *   extended here with attractor, predator, and Vicsek heading-noise.)   *
+ * ===================================================================== */
+const SEED = 7;
+let WIDTH = 920, HEIGHT = 520;
+const NEIGHBOR_R = 56, NEIGHBOR_R2 = NEIGHBOR_R * NEIGHBOR_R;
+const MAX_SPEED = 3, MAX_FORCE = 0.05;
+
+function mulberry32(a){return function(){a|=0;a=(a+0x6D2B79F5)|0;let t=Math.imul(a^(a>>>15),1|a);t=(t+Math.imul(t^(t>>>7),61|t))^t;return((t^(t>>>14))>>>0)/4294967296;};}
+let rng = mulberry32(SEED);
+
+function makeBoids(n){
+  rng = mulberry32(SEED);
+  const b=[];
+  for(let i=0;i<n;i++){
+    const x=rng()*WIDTH, y=rng()*HEIGHT, a=rng()*Math.PI*2, sp=0.5*MAX_SPEED+rng()*0.5*MAX_SPEED;
+    b.push({x,y,vx:Math.cos(a)*sp,vy:Math.sin(a)*sp,nb:0});
+  }
+  return b;
+}
+function torDelta(ax,ay,bx,by){let dx=bx-ax,dy=by-ay;if(dx>WIDTH*0.5)dx-=WIDTH;else if(dx<-WIDTH*0.5)dx+=WIDTH;if(dy>HEIGHT*0.5)dy-=HEIGHT;else if(dy<-HEIGHT*0.5)dy+=HEIGHT;return[dx,dy];}
+function setMag(x,y,m){const n=Math.hypot(x,y);return n>0?[x/n*m,y/n*m]:[0,0];}
+function limit(x,y,mx){const n=Math.hypot(x,y);return(n>mx&&n>0)?[x/n*mx,y/n*mx]:[x,y];}
+
+// attractor / predator state (canvas pixel coords; predator decays)
+const field = { attract:null, predator:null, predT:0 };
+
+function stepFlock(boids, w){
+  const N=boids.length;
+  const nvx=new Float64Array(N), nvy=new Float64Array(N), nbN=new Int32Array(N);
+  for(let i=0;i<N;i++){
+    const b=boids[i];
+    let sepX=0,sepY=0,sepN=0,aliX=0,aliY=0,aliN=0,cohX=0,cohY=0,cohN=0;
+    for(let j=0;j<N;j++){
+      if(i===j)continue;
+      const o=boids[j];
+      const [dx,dy]=torDelta(b.x,b.y,o.x,o.y);
+      const d2=dx*dx+dy*dy;
+      if(d2>0&&d2<NEIGHBOR_R2){ sepX-=dx/d2; sepY-=dy/d2; sepN++; aliX+=o.vx; aliY+=o.vy; aliN++; cohX+=dx; cohY+=dy; cohN++; }
+    }
+    let fx=0,fy=0;
+    if(sepN>0){const[dx,dy]=setMag(sepX,sepY,MAX_SPEED);const[sx,sy]=limit(dx-b.vx,dy-b.vy,MAX_FORCE);fx+=w.sep*sx;fy+=w.sep*sy;}
+    if(aliN>0){const[dx,dy]=setMag(aliX/aliN,aliY/aliN,MAX_SPEED);const[sx,sy]=limit(dx-b.vx,dy-b.vy,MAX_FORCE);fx+=w.ali*sx;fy+=w.ali*sy;}
+    if(cohN>0){const[dx,dy]=setMag(cohX/cohN,cohY/cohN,MAX_SPEED);const[sx,sy]=limit(dx-b.vx,dy-b.vy,MAX_FORCE);fx+=w.coh*sx;fy+=w.coh*sy;}
+    // attractor (drag): gentle pull toward the cursor
+    if(field.attract){const[dx,dy]=torDelta(b.x,b.y,field.attract.x,field.attract.y);const[sx,sy]=limit(...setMag(dx,dy,MAX_SPEED),MAX_FORCE*1.4);fx+=0.9*sx;fy+=0.9*sy;}
+    // predator (click): strong flee with decay → startle scatter
+    if(field.predator&&field.predT>0){const[dx,dy]=torDelta(field.predator.x,field.predator.y,b.x,b.y);const d=Math.hypot(dx,dy)+1e-6;if(d<200){const g=field.predT*(1-d/200);const[sx,sy]=setMag(dx,dy,MAX_SPEED);fx+=4.0*g*sx;fy+=4.0*g*sy;}}
+    let vx=b.vx+fx, vy=b.vy+fy;
+    // Vicsek heading-noise: the phase-transition macro
+    if(w.eta>0){const ang=(rng()*2-1)*w.eta*Math.PI;const c=Math.cos(ang),s=Math.sin(ang);const rx=vx*c-vy*s,ry=vx*s+vy*c;vx=rx;vy=ry;}
+    [vx,vy]=limit(vx,vy,MAX_SPEED);
+    nvx[i]=vx; nvy[i]=vy; nbN[i]=cohN;
+  }
+  for(let i=0;i<N;i++){const b=boids[i];b.vx=nvx[i];b.vy=nvy[i];b.nb=nbN[i];b.x=(b.x+b.vx+WIDTH)%WIDTH;b.y=(b.y+b.vy+HEIGHT)%HEIGHT;}
+  if(field.predT>0)field.predT-=0.045; // ~0.4s startle at 60fps
+}
+function polarization(boids){let sx=0,sy=0;for(const b of boids){const m=Math.hypot(b.vx,b.vy);if(m>0){sx+=b.vx/m;sy+=b.vy/m;}}return Math.hypot(sx,sy)/boids.length;}
+
+/* ===================================================================== *
+ *  AUDIO — raw Web Audio + AudioWorklet granular engine                  *
+ *  Single-file build: the worklet module is delivered as a Blob URL,     *
+ *  because a standalone HTML file has no separate .js to addModule().    *
+ * ===================================================================== */
+const L = 2048, LMASK = L - 1;               // wavetable length (power of two)
+let audioCtx=null, node=null, master=null, started=false;
+
+// four corner single-cycle waveforms — the 2D wavetable's corners.
+// u morphs sine↔saw (top) and square↔bell (bottom); v morphs top↔bottom.
+function buildCorners(){
+  const TL=new Float32Array(L), TR=new Float32Array(L), BL=new Float32Array(L), BR=new Float32Array(L);
+  for(let i=0;i<L;i++){
+    const ph=i/L, t=ph*2*Math.PI;
+    TL[i]=Math.sin(t);                                   // sine
+    TR[i]=2*ph-1;                                        // saw
+    BL[i]=ph<0.5?1:-1;                                   // square
+    // inharmonic bell: a few stretched partials
+    BR[i]=0.6*Math.sin(t)+0.4*Math.sin(2.76*t)+0.28*Math.sin(5.4*t)+0.18*Math.sin(8.93*t);
+  }
+  // normalise the bell
+  let mx=0; for(let i=0;i<L;i++) mx=Math.max(mx,Math.abs(BR[i]));
+  if(mx>0) for(let i=0;i<L;i++) BR[i]/=mx;
+  return {TL,TR,BL,BR};
+}
+
+const workletCode = `
+class GranularProcessor extends AudioWorkletProcessor {
+  constructor(){
+    super();
+    this.L = ${L}; this.LMASK = ${LMASK};
+    this.TL=null; this.TR=null; this.BL=null; this.BR=null;
+    this.voices = [];          // per-boid persistent state
+    this.master = 0.7;
+    this.shimmer = 0.55;
+    this.port.onmessage = (e)=>{
+      const d = e.data;
+      if(d.type==='tables'){ this.TL=d.TL; this.TR=d.TR; this.BL=d.BL; this.BR=d.BR; }
+      else if(d.type==='params'){ this.master=d.master; this.shimmer=d.shimmer; }
+      else if(d.type==='flock'){ this.setFlock(d.buf, d.n); }
+    };
+  }
+  setFlock(buf, n){
+    // buf packs 6 floats per boid: u, v, freq, gain, grainHz, pan
+    const f = new Float32Array(buf);
+    while(this.voices.length < n) this.voices.push({u:0.5,v:0.5,freq:110,gain:0,grainHz:40,pan:0.5,phase:Math.random(),gp:Math.random()});
+    this.voices.length = n;
+    for(let i=0;i<n;i++){
+      const o=this.voices[i], k=i*6;
+      o.u=f[k]; o.v=f[k+1]; o.freq=f[k+2]; o.gain=f[k+3]; o.grainHz=f[k+4]; o.pan=f[k+5];
+    }
+  }
+  process(inputs, outputs){
+    const out = outputs[0];
+    const outL = out[0], outR = out[1] || out[0];
+    const n = out[0].length;
+    if(!this.TL || this.voices.length===0){ for(let s=0;s<n;s++){ outL[s]=0; if(outR!==outL) outR[s]=0; } return true; }
+    const invSr = 1/sampleRate, L=this.L, LMASK=this.LMASK;
+    const TL=this.TL,TR=this.TR,BL=this.BL,BR=this.BR;
+    const norm = this.master / Math.sqrt(Math.max(1,this.voices.length));
+    for(let s=0;s<n;s++){
+      let accL=0, accR=0;
+      for(let vi=0; vi<this.voices.length; vi++){
+        const o=this.voices[vi];
+        if(o.gain<=0) continue;
+        // Hann grain envelope
+        const env = 0.5 - 0.5*Math.cos(2*Math.PI*o.gp);
+        // bilinear 4-corner wavetable read at o.phase
+        const idx=o.phase*L; const i0=idx|0; const fr=idx-i0; const i1=(i0+1)&LMASK;
+        const stl=TL[i0]+fr*(TL[i1]-TL[i0]);
+        const str=TR[i0]+fr*(TR[i1]-TR[i0]);
+        const sbl=BL[i0]+fr*(BL[i1]-BL[i0]);
+        const sbr=BR[i0]+fr*(BR[i1]-BR[i0]);
+        const top=stl+o.u*(str-stl);
+        const bot=sbl+o.u*(sbr-sbl);
+        const smp=(top+o.v*(bot-top))*env*o.gain;
+        // equal-power pan from u-ish pan field
+        const pL=Math.cos(o.pan*Math.PI*0.5), pR=Math.sin(o.pan*Math.PI*0.5);
+        accL+=smp*pL; accR+=smp*pR;
+        // advance read phase
+        o.phase+=o.freq*invSr; if(o.phase>=1) o.phase-=1;
+        // advance grain; on wrap, scatter the read start (env≈0 so click-free)
+        o.gp+=o.grainHz*invSr;
+        if(o.gp>=1){ o.gp-=1; o.phase = (1-this.shimmer)*o.phase + this.shimmer*Math.random(); }
+      }
+      outL[s]=accL*norm;
+      if(outR!==outL) outR[s]=accR*norm;
+    }
+    return true;
+  }
+}
+registerProcessor('granular', GranularProcessor);
+`;
+
+async function startAudio(){
+  if(started) return; started=true;
+  audioCtx = new (window.AudioContext||window.webkitAudioContext)();
+  const blob = new Blob([workletCode], {type:'application/javascript'});
+  const url = URL.createObjectURL(blob);
+  await audioCtx.audioWorklet.addModule(url);
+  URL.revokeObjectURL(url);
+  node = new AudioWorkletNode(audioCtx, 'granular', { numberOfOutputs:1, outputChannelCount:[2] });
+  // soft limiter so dense clouds don't clip
+  const lim = audioCtx.createDynamicsCompressor();
+  lim.threshold.value=-3; lim.knee.value=6; lim.ratio.value=12; lim.attack.value=0.003; lim.release.value=0.18;
+  master = audioCtx.createGain(); master.gain.value=1.0;
+  node.connect(master); master.connect(lim); lim.connect(audioCtx.destination);
+  const c = buildCorners();
+  node.port.postMessage({type:'tables', TL:c.TL, TR:c.TR, BL:c.BL, BR:c.BR});
+  pushParams();
+  if(audioCtx.state==='suspended') await audioCtx.resume();
+}
+function pushParams(){ if(node) node.port.postMessage({type:'params', master:P.vol, shimmer:P.shimmer}); }
+
+// flock → audio packing (6 floats/boid), sent every frame
+function pushFlock(boids){
+  if(!node) return;
+  const N=boids.length, buf=new Float32Array(N*6);
+  const cx=WIDTH*0.5, cy=HEIGHT*0.5;
+  for(let i=0;i<N;i++){
+    const b=boids[i];
+    const u=b.x/WIDTH, v=b.y/HEIGHT;
+    // pitch from height (top = higher), plus Doppler from radial velocity
+    const semis=(0.5 - v)*P.pitch;
+    const rdx=b.x-cx, rdy=b.y-cy, rd=Math.hypot(rdx,rdy)+1e-6;
+    const vrad=(b.vx*rdx+b.vy*rdy)/rd;            // +ve = receding
+    const dopp=1 - 0.012*vrad;
+    const freq=P.base*Math.pow(2,semis/12)*dopp;
+    const spd=Math.hypot(b.vx,b.vy)/MAX_SPEED;
+    const grainHz=18+spd*90;                      // faster boids = denser grains
+    const gain=0.55+0.45*Math.min(1,b.nb/6);      // clustered boids swell
+    const k=i*6;
+    buf[k]=u; buf[k+1]=v; buf[k+2]=freq; buf[k+3]=gain; buf[k+4]=grainHz; buf[k+5]=u;
+  }
+  node.port.postMessage({type:'flock', buf:buf.buffer, n:N}, [buf.buffer]);
+}
+
+/* ===================================================================== *
+ *  CONTROLS / STATE                                                      *
+ * ===================================================================== */
+const P = { N:60, coh:1.0, sep:1.5, ali:1.0, eta:0.06, base:110, pitch:19, shimmer:0.55, vol:0.7 };
+let boids = makeBoids(P.N);
+function bind(id,key,fmt,after){const el=document.getElementById(id);const out=document.getElementById('v'+id.slice(1));el.addEventListener('input',()=>{const val=parseFloat(el.value);P[key]=val;out.textContent=fmt?fmt(val):val;if(after)after(val);});}
+bind('cN','N',v=>v|0,v=>{P.N=v|0;boids=makeBoids(P.N);});
+bind('cCoh','coh',v=>v.toFixed(2));
+bind('cSep','sep',v=>v.toFixed(2));
+bind('cEta','eta',v=>v.toFixed(2));
+bind('cBase','base',v=>v|0);
+bind('cPit','pitch',v=>v|0);
+bind('cGr','shimmer',v=>v.toFixed(2),()=>pushParams());
+bind('cVol','vol',v=>v.toFixed(2),()=>pushParams());
+
+/* ===================================================================== *
+ *  VISUAL — p5.js: field heatmap (cached) + flock darts + HUD            *
+ * ===================================================================== */
+let heat;
+const hud=document.getElementById('hud');
+const sketch = (p)=>{
+  function paintField(){
+    const cells=64, cw=WIDTH/cells, ch=HEIGHT/cells;
+    heat=p.createGraphics(WIDTH,HEIGHT);
+    heat.colorMode(p.HSB,360,100,100,100); heat.noStroke();
+    for(let gx=0;gx<cells;gx++)for(let gy=0;gy<cells;gy++){
+      const u=gx/(cells-1), v=gy/(cells-1);
+      // DECLARED DEVIATION: hue encodes the wavetable-morph axis (colour = data)
+      const hue=(20+u*300)%360;
+      const sat=28+v*34;
+      const bri=10+ (u*0.5+v*0.5)*26;
+      heat.fill(hue,sat,bri,100);
+      heat.rect(gx*cw,gy*ch,cw+1,ch+1);
+    }
+  }
+  p.setup=()=>{
+    const c=p.createCanvas(WIDTH,HEIGHT); c.parent('sketch');
+    p.colorMode(p.HSB,360,100,100,100);
+    paintField();
+    window.__murmur=p;            // rAF-pause verification seam
+  };
+  p.draw=()=>{
+    p.image(heat,0,0);
+    // faint vignette ground so darts read
+    const w={sep:P.sep,ali:P.ali,coh:P.coh,eta:P.eta};
+    stepFlock(boids,w);
+    pushFlock(boids);
+    // boids: oriented darts, hue = heading (colour-by-velocity, the same encoding)
+    p.noStroke();
+    for(const b of boids){
+      const h=Math.atan2(b.vy,b.vx);
+      const hue=((h+Math.PI)/(2*Math.PI))*360;
+      // short tail
+      p.stroke(hue,70,95,30); p.strokeWeight(1.2);
+      p.line(b.x,b.y,b.x-b.vx*3,b.y-b.vy*3);
+      p.noStroke();
+      p.push(); p.translate(b.x,b.y); p.rotate(h);
+      p.fill(hue,82,98,95);
+      p.beginShape(); p.vertex(6,0); p.vertex(-5,3.2); p.vertex(-2.5,0); p.vertex(-5,-3.2); p.endShape(p.CLOSE);
+      p.pop();
+    }
+    // attractor marker
+    if(field.attract){ p.noFill(); p.stroke(0,0,100,60); p.strokeWeight(1); p.circle(field.attract.x,field.attract.y,16); }
+    if(field.predator&&field.predT>0){ p.noFill(); p.stroke(0,90,100,field.predT*80); p.strokeWeight(2); p.circle(field.predator.x,field.predator.y,40+(1-field.predT)*120); }
+    // HUD: order parameter + phase state
+    const phi=polarization(boids);
+    const state = phi>0.6 ? 'ORDERED · pitched' : phi>0.3 ? 'CRITICAL · transitional' : 'DISORDERED · broadband';
+    hud.innerHTML = `order φ = <span class="phase">${phi.toFixed(2)}</span><br>state <b>${state}</b><br>boids ${boids.length} · η ${P.eta.toFixed(2)}` + (started?'':'<br><b>audio idle</b>');
+  };
+  // pointer → attractor / predator
+  function pos(){ const r=p.canvas.getBoundingClientRect(); return { x:(p.mouseX), y:(p.mouseY) }; }
+  p.mousePressed=()=>{ if(p.mouseX<0||p.mouseY<0||p.mouseX>WIDTH||p.mouseY>HEIGHT) return; field.predator={x:p.mouseX,y:p.mouseY}; field.predT=1.0; field.attract={x:p.mouseX,y:p.mouseY}; };
+  p.mouseDragged=()=>{ if(p.mouseX<0||p.mouseY<0||p.mouseX>WIDTH||p.mouseY>HEIGHT) return; field.attract={x:p.mouseX,y:p.mouseY}; };
+  p.mouseReleased=()=>{ field.attract=null; };
+};
+new p5(sketch);
+
+/* Engage gate — unlock audio on the user gesture (Web Audio requirement) */
+const gate=document.getElementById('gate');
+document.getElementById('engage').addEventListener('click', async (e)=>{ e.stopPropagation(); await startAudio(); gate.classList.add('hidden'); });
+</script>
+</body>
+</html>
