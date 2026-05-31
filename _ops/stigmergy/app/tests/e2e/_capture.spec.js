@@ -560,4 +560,39 @@ test.describe(`phase ${PHASE} captures`, () => {
       await page.screenshot({ path: resolve(dir, 'actuator-fired.png'), fullPage: false });
     });
   }
+
+  if (PHASE === '15') {
+    // v1.0 Phase 4 — QUEUE reframe. The hermetic ?demo=only feed carries two
+    // handoff_ready posts (one auto-resolves against real git, one stays open).
+
+    test('phase-15-v1.0/queue-inbox.png', async ({ page }) => {
+      await page.goto('/?demo=only&deck=QUEUE');
+      await page.getByTestId('board-screen').waitFor({ timeout: 10_000 });
+      await preloadFonts(page);
+      await page.locator('[data-testid="queue-open"], [data-testid="queue-resolved"]').first().waitFor({ timeout: 15_000 });
+      await page.waitForTimeout(500);
+      const dir = resolve('screenshots/phase-15-v1.0');
+      mkdirSync(dir, { recursive: true });
+      await page.screenshot({ path: resolve(dir, 'queue-inbox.png'), fullPage: false });
+    });
+
+    test('phase-15-v1.0/queue-resolved.png', async ({ page }) => {
+      await page.goto('/?demo=only&deck=QUEUE');
+      await page.getByTestId('board-screen').waitFor({ timeout: 10_000 });
+      await preloadFonts(page);
+      // Wait for the resolved (looks-done) item, then scroll it into view so the
+      // greyed card -- its "looks done" reason naming the resolving commit, and
+      // its "clear it?" affordance -- is actually IN FRAME (it sits below the
+      // fold behind the fixed status bar otherwise). fullPage captures the whole
+      // panel so the prospective->retrospective crossing is visible, not just the
+      // summary counter.
+      const resolvedCard = page.locator('[data-testid="queue-item"][data-resolved="true"]').first();
+      await resolvedCard.waitFor({ timeout: 15_000 });
+      await resolvedCard.scrollIntoViewIfNeeded();
+      await page.waitForTimeout(400);
+      const dir = resolve('screenshots/phase-15-v1.0');
+      mkdirSync(dir, { recursive: true });
+      await page.screenshot({ path: resolve(dir, 'queue-resolved.png'), fullPage: true });
+    });
+  }
 });
