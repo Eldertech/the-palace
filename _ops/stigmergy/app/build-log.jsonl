@@ -164,3 +164,9 @@
 {"ts":"2026-05-31T13:16:57.217Z","phase":13,"action":"gate-end","outcome":"pass","stage":"tests+captures"}
 {"ts":"2026-05-31T13:38:53.855Z","phase":14,"label":"v1.0 Phase 3 — Commit spec (plumbing; no screenshots)","action":"gate-start"}
 {"ts":"2026-05-31T13:38:56.027Z","phase":14,"action":"gate-end","outcome":"fail","stage":"vitest"}
+{"ts":"2026-05-31T13:41:02.391Z","phase":14,"label":"v1.0 Phase 3 — Commit spec (plumbing; no screenshots)","action":"gate-start"}
+{"ts":"2026-05-31T13:41:04.556Z","phase":14,"action":"gate-end","outcome":"pass","stage":"tests+captures"}
+{"ts":"2026-05-31T14:05:17.319Z","phase":15,"label":"v1.0 Phase 4 — QUEUE reframe","action":"gate-start"}
+{"ts":"2026-05-31T14:06:01.445Z","phase":15,"action":"gate-end","outcome":"fail","stage":"playwright"}
+{"ts":"2026-05-31T18:27:38.040Z","phase":15,"label":"v1.0 Phase 4 — QUEUE reframe","action":"gate-start"}
+{"ts":"2026-05-31T18:27:53.308Z","phase":15,"action":"gate-end","outcome":"pass","stage":"tests+captures"}

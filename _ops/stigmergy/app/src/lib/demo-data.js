@@ -349,4 +349,45 @@ export const DEMO_MESSAGES = [
     // No health field — exercises the [no health] placeholder rendering.
     payload: { content: 'reporting from striatum. health-block intentionally omitted on this demo entry.' },
   },
+  {
+    // Phase 4 (QUEUE): a handoff_ready whose entry HAS later commits in the
+    // real palace git history -- so QUEUE's git reconciliation marks it "looks
+    // done" against live git, proving the prospective->retrospective crossing.
+    id: 'demo-handoff-resolved',
+    schema_version: '1.0',
+    ts: '2026-01-01T00:00:00Z',
+    session_id: 'demo-session',
+    from: '@Two Batons, One Board',
+    to: '*',
+    type: 'BROADCAST',
+    board: 'GENERAL',
+    health: { context_pct: 0, stop_reason: 'handoff', iteration: 1, tokens_this_call: 0, model: 'demo', score: 'green' },
+    payload: {
+      kind: 'handoff_ready',
+      entry: 'Two Batons, One Board',
+      handoff_path: 'Two Batons, One Board/x -- handoff.md',
+      summary: 'demo: mid-move handed off (auto-resolves against real git)',
+      stale_if: 'a commit touches Two Batons, One Board after 2026-01-01',
+    },
+  },
+  {
+    // Phase 4 (QUEUE): a handoff_ready whose entry has NO resolving commit, so
+    // it stays open -- the honest "still waiting" state.
+    id: 'demo-handoff-open',
+    schema_version: '1.0',
+    ts: '2026-05-29T09:00:00Z',
+    session_id: 'demo-session',
+    from: '@Nonexistent Demo Entry ZZZ',
+    to: '*',
+    type: 'BROADCAST',
+    board: 'GENERAL',
+    health: { context_pct: 0, stop_reason: 'handoff', iteration: 1, tokens_this_call: 0, model: 'demo', score: 'green' },
+    payload: {
+      kind: 'handoff_ready',
+      entry: 'Nonexistent Demo Entry ZZZ',
+      handoff_path: 'Nonexistent Demo Entry ZZZ/x -- handoff.md',
+      summary: 'demo: open handoff, awaiting pickup',
+      stale_if: 'a commit touches Nonexistent Demo Entry ZZZ after this',
+    },
+  },
 ];

@@ -10,6 +10,7 @@ import { DECKS } from './lib/decks.js';
 import StateDeck from './components/state/StateDeck.jsx';
 import LogDeck from './components/log/LogDeck.jsx';
 import ActuatorPanel from './components/queue/ActuatorPanel.jsx';
+import QueuePanel from './components/queue/QueuePanel.jsx';
 import { Banner } from './components/primitives.jsx';
 import { fetchPersistent, fetchSessions } from './adapters/blackboard.js';
 import { subscribeLive } from './adapters/live-tail.js';
@@ -277,6 +278,7 @@ export default function App() {
           </Banner>
           <div style={{ marginBottom: 10 }}>
             <ActuatorPanel />
+            <QueuePanel messages={visibleMessages} onJumpEntry={() => setDeck('STATE')} />
           </div>
           <div style={{ color: 'var(--phosphor-dim)', textShadow: 'none', marginBottom: 4 }}>
             {`${messages.length} total traces · ${totalFlagged} flagged · ${filtered.length} on ${activeBoard}.`}
