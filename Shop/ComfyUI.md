@@ -13,6 +13,7 @@ links:
   - { label: "directed-by", target: "Shop/Maker" }
   - { label: "alternative-to", target: "Shop/Midjourney" }
   - { label: "tested-by", target: "Artifacts/Shop/ComfyUI/tests/" }
+  - { label: "control-mastery", target: "ControlNet Workflow Mastery" }
 tags: [specialist, shop, image, generative, local]
 ---
 
@@ -191,6 +192,7 @@ Last run: **2026-05-30** — Smoke pass via existing-artifact verification (`Kur
 - Should the Shop maintain a library of base workflow JSONs (`sketch.json`, `study.json`, `piece.json`) that the Maker injects prompts into? This is the right answer for reproducibility, and it's how the tier presets actually work mechanically.
 - Training a Loudon Live LoRA on a small reference set — when does this become worth the effort? Open question for the first Piece-tier ComfyUI job.
 - When does the Maker route to cloud (RunComfy etc.) vs. local? Likely: any Piece needing Flux Pro, any batch over ~20 Pieces, any render that would block other work for over an hour.
+- **ControlNet is being exercised for the first time** via [[ControlNet Workflow Mastery]] — a four-modality (lineart / canny / scribble / depth) control-modality shootout on SDXL + ControlNet-Union. The capability was listed from day one but never run; that practice entry and its bundle harness close the gap, pending the Mac run.
 
 ## Lost Branches
 
