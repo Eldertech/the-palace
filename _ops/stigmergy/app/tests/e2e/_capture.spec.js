@@ -526,4 +526,38 @@ test.describe(`phase ${PHASE} captures`, () => {
       await page.screenshot({ path: resolve(dir, 'log-filtered.png'), fullPage: false });
     });
   }
+
+  if (PHASE === '13') {
+    // v1.0 Phase 2.5 — The Actuator captures. The "idle" shot needs only the
+    // QUEUE deck. The "fired" shot fires a worker, but ONLY when the server is
+    // stub-backed (STIGMERGY_STUB_WORKER=1) -- otherwise it falls back to the
+    // idle view, so a non-stub capture run never spawns a real claude.
+
+    test('phase-13-v1.0/actuator-idle.png', async ({ page }) => {
+      await page.goto('/?deck=QUEUE');
+      await page.getByTestId('worker-status').waitFor({ timeout: 10_000 });
+      await preloadFonts(page);
+      await page.waitForTimeout(300);
+      const dir = resolve('screenshots/phase-13-v1.0');
+      mkdirSync(dir, { recursive: true });
+      await page.screenshot({ path: resolve(dir, 'actuator-idle.png'), fullPage: false });
+    });
+
+    test('phase-13-v1.0/actuator-fired.png', async ({ page, request }) => {
+      await page.goto('/?deck=QUEUE');
+      await page.getByTestId('worker-status').waitFor({ timeout: 10_000 });
+      await preloadFonts(page);
+      const status = await request.get('/api/worker').then((r) => r.json()).catch(() => ({}));
+      const dir = resolve('screenshots/phase-13-v1.0');
+      mkdirSync(dir, { recursive: true });
+      if (status.stubbed) {
+        await page.getByTestId('actuator-prompt').fill('stub fire for the capture');
+        await page.getByTestId('actuator-fire').click();
+        // Catch it mid-flight: log streaming, status alive.
+        await page.getByTestId('actuator-log').waitFor({ timeout: 5_000 });
+        await page.waitForTimeout(400);
+      }
+      await page.screenshot({ path: resolve(dir, 'actuator-fired.png'), fullPage: false });
+    });
+  }
 });

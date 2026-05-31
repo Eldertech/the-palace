@@ -156,3 +156,9 @@
 {"ts":"2026-05-30T18:29:36.769Z","phase":12,"action":"gate-end","outcome":"fail","stage":"vitest"}
 {"ts":"2026-05-30T18:36:54.400Z","phase":12,"label":"v1.0 Phase 2 — LOG read","action":"gate-start"}
 {"ts":"2026-05-30T18:37:34.240Z","phase":12,"action":"gate-end","outcome":"fail","stage":"playwright"}
+{"ts":"2026-05-30T18:48:21.677Z","phase":12,"label":"v1.0 Phase 2 — LOG read","action":"gate-start"}
+{"ts":"2026-05-30T18:49:03.660Z","phase":12,"action":"gate-end","outcome":"pass","stage":"tests+captures"}
+{"ts":"2026-05-31T01:48:44.151Z","phase":13,"label":"v1.0 Phase 2.5 — The Actuator","action":"gate-start"}
+{"ts":"2026-05-31T01:48:54.510Z","phase":13,"action":"gate-end","outcome":"pass","stage":"tests+captures"}
+{"ts":"2026-05-31T13:16:46.644Z","phase":13,"label":"v1.0 Phase 2.5 — The Actuator","action":"gate-start"}
+{"ts":"2026-05-31T13:16:57.217Z","phase":13,"action":"gate-end","outcome":"pass","stage":"tests+captures"}

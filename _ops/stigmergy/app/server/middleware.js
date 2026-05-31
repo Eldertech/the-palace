@@ -21,6 +21,7 @@ import { validateMessage } from './validator.js';
 import { appendJsonLine } from './append.js';
 import { listEntries, readEntry } from '../src/lib/entries.js';
 import { readLog, readCommit, readUncommitted } from './git.js';
+import { createActuator } from './actuator.js';
 
 const SESSIONS_REL = '_ops/swarm/sessions';
 const PERSISTENT_REL = '_ops/swarm/persistent/blackboard.jsonl';
@@ -298,8 +299,29 @@ function setupSseStream(req, res, filePath) {
   });
 }
 
-// Vite plugin factory.
-export function blackboardMiddleware(palaceRoot) {
+// Vite plugin factory. `opts.actuator` allows tests to inject a stub-backed
+// actuator so the test path NEVER spawns a real `claude -p` worker; production
+// uses the default (real-worker) actuator.
+export function blackboardMiddleware(palaceRoot, opts = {}) {
+  // One global actuator for this palace root (scar #4: single global worker
+  // per lane). The lane state lives under _ops/stigmergy/.actuator/.
+  //
+  // Safety gate: when STIGMERGY_STUB_WORKER is set, the actuator fires a
+  // harmless stub instead of a real `claude -p` -- so an e2e run (or a curious
+  // smoke-test) can exercise the full fire->log->reap cycle without spawning
+  // an autonomous agent. The default (env unset) fires the real worker.
+  let actuator = opts.actuator;
+  if (!actuator) {
+    if (process.env.STIGMERGY_STUB_WORKER) {
+      const stub = resolve(palaceRoot, '_ops/stigmergy/app/tests/fixtures/stub-worker.mjs');
+      actuator = createActuator({
+        palaceRoot,
+        buildArgv: () => ['node', stub, '--permission-mode', 'bypassPermissions', '--sleep', '700', '--emit', 'success'],
+      });
+    } else {
+      actuator = createActuator({ palaceRoot });
+    }
+  }
   return {
     name: 'stigmergy-blackboard-middleware',
     configureServer(server) {
@@ -461,6 +483,44 @@ export function blackboardMiddleware(palaceRoot) {
           } catch (err) {
             return jsonResponse(res, 500, { error: `git status failed: ${err.message}` });
           }
+        }
+
+        // ── GET /api/worker ─ the actuator's status (running / last fire) ────
+        // The QUEUE deck polls this to show whether a fired worker is alive,
+        // and to render the last fire's verdict. Read-only. `stubbed` tells a
+        // test whether THIS server fires the harmless stub vs a real claude --
+        // so a fire-through e2e/capture can refuse to run against a real-worker
+        // server (never spawning a real autonomous agent by accident).
+        if (urlPath === '/api/worker' && method === 'GET') {
+          return jsonResponse(res, 200, {
+            ...actuator.status(),
+            stubbed: !!process.env.STIGMERGY_STUB_WORKER || !!opts.actuator,
+            ts: new Date().toISOString(),
+          });
+        }
+
+        // ── POST /api/worker/fire ─ fire a `claude -p` worker (THE actuator) ─
+        // Body: { prompt: "<the worker prompt>" }. Refuses (409) when a worker
+        // is already alive (scar #4: single global worker). The board becomes
+        // an actuator here -- this is the keystone the board always lacked.
+        if (urlPath === '/api/worker/fire' && method === 'POST') {
+          const bodyText = await readBody(req, res);
+          if (bodyText === null) return; // 413 already sent
+          let body;
+          try { body = JSON.parse(bodyText); } catch (e) {
+            return jsonResponse(res, 400, { error: `malformed JSON: ${e.message}` });
+          }
+          const prompt = body && typeof body.prompt === 'string' ? body.prompt : '';
+          if (prompt.trim() === '') {
+            return jsonResponse(res, 400, { error: 'missing or empty prompt' });
+          }
+          const result = actuator.fire(prompt);
+          if (!result.fired) {
+            // Refused because one is alive -> 409 Conflict; otherwise 500.
+            const status = /already running/.test(result.msg) ? 409 : 500;
+            return jsonResponse(res, status, { ...result, ...actuator.status() });
+          }
+          return jsonResponse(res, 200, { ...result, ...actuator.status() });
         }
 
         // ── POST /api/persistent ────────────────────────────────────────────

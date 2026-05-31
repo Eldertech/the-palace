@@ -135,6 +135,22 @@ const PHASES = {
       'phase-12-v1.0/log-filtered.png',
     ],
   },
+  13: {
+    label: 'v1.0 Phase 2.5 — The Actuator',
+    vitest: [
+      'worker-log.test.js', 'commit-parse.test.js', 'git-log-parse.test.js',
+      'frontmatter-diff.test.js', 'log-filter.test.js', 'yaml-frontmatter.test.js',
+      'parser.test.js', 'schema.test.js', 'middleware.test.js', 'validator.test.js',
+    ],
+    integration: ['actuator.test.js', 'worker-middleware.test.js', 'git-middleware.test.js'],
+    playwright: [
+      'boot.spec.js', 'tokens.spec.js', 'actuator.spec.js',
+    ],
+    screenshots: [
+      'phase-13-v1.0/actuator-idle.png',
+      'phase-13-v1.0/actuator-fired.png',
+    ],
+  },
 };
 
 function logRun(entry) {
@@ -243,7 +259,7 @@ function main() {
     process.exit(2);
   }
   if (arg === 'all') {
-    for (const p of [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]) {
+    for (const p of [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13]) {
       const code = checkPhase(p);
       if (code !== 0) process.exit(code);
     }
