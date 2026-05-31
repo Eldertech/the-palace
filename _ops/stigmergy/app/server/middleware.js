@@ -22,6 +22,18 @@ import { appendJsonLine } from './append.js';
 import { listEntries, readEntry } from '../src/lib/entries.js';
 import { readLog, readCommit, readUncommitted } from './git.js';
 import { createActuator } from './actuator.js';
+import { readCards, appendInboxBlock, CARD_ACTIONS } from './cards.js';
+
+// The supervisor prompt the fired worker runs as (the Enrichment ceremony's
+// headless `claude -p` brief). Read at fire time so edits take effect without
+// a server restart. Falls back to a minimal instruction if the file is gone.
+function readSupervisorPrompt(palaceRoot) {
+  const p = resolve(palaceRoot, 'Enrichment/supervisor-prompt.md');
+  if (existsSync(p)) {
+    try { return readFileSync(p, 'utf8'); } catch (_) { /* fall through */ }
+  }
+  return 'Run the Enrichment ceremony: read Enrichment/inbox.md, act on each card-block per the ceremony spec, then clear the inbox and top the queue to five.';
+}
 
 const SESSIONS_REL = '_ops/swarm/sessions';
 const PERSISTENT_REL = '_ops/swarm/persistent/blackboard.jsonl';
@@ -521,6 +533,56 @@ export function blackboardMiddleware(palaceRoot, opts = {}) {
             return jsonResponse(res, status, { ...result, ...actuator.status() });
           }
           return jsonResponse(res, 200, { ...result, ...actuator.status() });
+        }
+
+        // ── GET /api/cards ─ the Enrichment card queue (Phase 4.5) ──────────
+        // QUEUE absorbs the Enrichment card loop. This reads Enrichment/card-*
+        // folders (the same source the retired Flask server read) and returns
+        // normalized cards with their validator verdicts + inline artifacts.
+        if (urlPath === '/api/cards' && method === 'GET') {
+          try {
+            const data = readCards(palaceRoot);
+            return jsonResponse(res, 200, { ...data, ts: new Date().toISOString() });
+          } catch (err) {
+            return jsonResponse(res, 500, { error: `read cards failed: ${err.message}` });
+          }
+        }
+
+        // ── POST /api/cards/respond ─ respond to a card + fire the supervisor ─
+        // Body: { cardId, action, note?, targetName?, purpose? }. Writes the
+        // response block to Enrichment/inbox.md, then fires the supervisor
+        // worker through the Phase 2.5 actuator to act on it. The fire is the
+        // same guarded primitive (stub-gated in tests; real only when armed),
+        // so this never spawns a real `claude` during the build/test path.
+        if (urlPath === '/api/cards/respond' && method === 'POST') {
+          const bodyText = await readBody(req, res);
+          if (bodyText === null) return; // 413 already sent
+          let body;
+          try { body = JSON.parse(bodyText); } catch (e) {
+            return jsonResponse(res, 400, { error: `malformed JSON: ${e.message}` });
+          }
+          const { cardId, action, note, targetName, purpose } = body || {};
+          if (typeof cardId !== 'string' || cardId.trim() === '') {
+            return jsonResponse(res, 400, { error: 'missing cardId' });
+          }
+          if (!CARD_ACTIONS.includes(action)) {
+            return jsonResponse(res, 400, { error: `action must be one of ${CARD_ACTIONS.join('|')}` });
+          }
+          const wrote = appendInboxBlock(palaceRoot, {
+            cardId, action, note, targetName, purpose, ts: new Date().toISOString(),
+          });
+          if (!wrote.ok) return jsonResponse(res, 500, { error: wrote.msg });
+
+          // Fire the supervisor to drain the inbox + top up the queue. The
+          // prompt is the supervisor-prompt.md the worker runs as.
+          const supervisorPrompt = readSupervisorPrompt(palaceRoot);
+          const fired = actuator.fire(supervisorPrompt);
+          // A refused fire (one already running) is NOT an error here -- the
+          // inbox write succeeded and the live worker will pick it up.
+          return jsonResponse(res, 200, {
+            ok: true, inbox: wrote.msg, fired: fired.fired, worker_msg: fired.msg,
+            ...actuator.status(),
+          });
         }
 
         // ── POST /api/persistent ────────────────────────────────────────────
