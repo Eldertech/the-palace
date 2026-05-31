@@ -33,7 +33,11 @@ test.describe('LOG deck — chrome + stream', () => {
 
   test('the uncommitted banner reflects the working tree', async ({ page }) => {
     await gotoLog(page);
-    // Exactly one of the two banners shows (clean or dirty), never neither.
+    // The banner renders only after the /api/uncommitted fetch resolves, so
+    // wait for EITHER state to appear before counting (else we race the fetch
+    // and see neither). Exactly one of the two shows -- never both, never zero.
+    const either = page.locator('[data-testid="uncommitted-banner"], [data-testid="uncommitted-clean"]');
+    await expect(either.first()).toBeVisible({ timeout: 10_000 });
     const dirty = await page.locator('[data-testid="uncommitted-banner"]').count();
     const clean = await page.locator('[data-testid="uncommitted-clean"]').count();
     expect(dirty + clean).toBe(1);
