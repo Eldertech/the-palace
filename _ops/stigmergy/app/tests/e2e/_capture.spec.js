@@ -628,4 +628,71 @@ test.describe(`phase ${PHASE} captures`, () => {
       await page.screenshot({ path: resolve(dir, 'card-detail.png'), fullPage: false });
     });
   }
+
+  if (PHASE === '17') {
+    // v1.0 Phase 5 Stage A — STATE write (dry-run). Captures the editor form
+    // open against a real entry, and the structured-commit preview that the
+    // dry-run save composes. NEVER writes the file (Stage A guarantee).
+
+    test('phase-17-v1.0/state-edit-form.png', async ({ page }) => {
+      await page.goto('/?deck=STATE');
+      await page.getByTestId('state-deck').waitFor({ timeout: 10_000 });
+      await preloadFonts(page);
+      // Open Kuramoto Coupling, then the editor.
+      const rows = page.locator('[data-testid="pulse-row"]');
+      const kuramoto = rows.filter({ hasText: 'Kuramoto Coupling' }).first();
+      await kuramoto.click();
+      await page.getByTestId('entry-reader').waitFor({ timeout: 10_000 });
+      // The edit button is a clickable span -- target it by testid.
+      await page.evaluate(() => {
+        const el = document.querySelector('[data-testid="open-editor"]');
+        const fiberKey = el && Object.keys(el).find((k) => k.startsWith('__reactProps$'));
+        if (fiberKey && el[fiberKey].onClick) el[fiberKey].onClick();
+      });
+      await page.getByTestId('entry-editor').waitFor({ timeout: 10_000 });
+      await page.waitForTimeout(400);
+      const dir = resolve('screenshots/phase-17-v1.0');
+      mkdirSync(dir, { recursive: true });
+      await page.screenshot({ path: resolve(dir, 'state-edit-form.png'), fullPage: false });
+    });
+
+    test('phase-17-v1.0/state-edit-preview.png', async ({ page }) => {
+      await page.goto('/?deck=STATE');
+      await page.getByTestId('state-deck').waitFor({ timeout: 10_000 });
+      await preloadFonts(page);
+      const rows = page.locator('[data-testid="pulse-row"]');
+      const kuramoto = rows.filter({ hasText: 'Kuramoto Coupling' }).first();
+      await kuramoto.click();
+      await page.getByTestId('entry-reader').waitFor({ timeout: 10_000 });
+      await page.evaluate(() => {
+        const el = document.querySelector('[data-testid="open-editor"]');
+        const fiberKey = el && Object.keys(el).find((k) => k.startsWith('__reactProps$'));
+        if (fiberKey && el[fiberKey].onClick) el[fiberKey].onClick();
+      });
+      await page.getByTestId('entry-editor').waitFor({ timeout: 10_000 });
+      // Change stage from mature to fruiting, fill summary, click save.
+      await page.evaluate(() => {
+        const stageBtn = document.querySelector('[data-testid="editor-frontmatter-stage-fruiting"]');
+        const fk = stageBtn && Object.keys(stageBtn).find((k) => k.startsWith('__reactProps$'));
+        if (fk && stageBtn[fk].onClick) stageBtn[fk].onClick();
+      });
+      await page.getByTestId('editor-summary').fill('mark fruiting after capture spec — Stage A');
+      await page.evaluate(() => {
+        const btn = document.querySelector('[data-testid="editor-save"]');
+        const fk = btn && Object.keys(btn).find((k) => k.startsWith('__reactProps$'));
+        if (fk && btn[fk].onClick) btn[fk].onClick();
+      });
+      await page.getByTestId('commit-preview').waitFor({ timeout: 10_000 });
+      await page.getByTestId('commit-preview-subject').waitFor({ timeout: 5_000 });
+      // Scroll the preview into view so the capture frames it.
+      await page.evaluate(() => {
+        const p = document.querySelector('[data-testid="commit-preview"]');
+        if (p) p.scrollIntoView({ block: 'start', behavior: 'instant' });
+      });
+      await page.waitForTimeout(400);
+      const dir = resolve('screenshots/phase-17-v1.0');
+      mkdirSync(dir, { recursive: true });
+      await page.screenshot({ path: resolve(dir, 'state-edit-preview.png'), fullPage: true });
+    });
+  }
 });
