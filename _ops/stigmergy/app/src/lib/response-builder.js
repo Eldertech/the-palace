@@ -27,7 +27,7 @@ function generateId() {
  * @param {string} [options.sessionId]    — override session_id (defaults to request.session_id)
  * @returns {object} a fully §2.2-conformant message ready for postMessage()
  */
-export function buildResponse({ request, decision, constraints, sessionId }) {
+export function buildResponse({ request, decision, constraints, notes, sessionId }) {
   if (decision !== 'GRANT' && decision !== 'DENY') {
     throw new Error(`decision must be 'GRANT' or 'DENY', got "${decision}"`);
   }
@@ -38,6 +38,13 @@ export function buildResponse({ request, decision, constraints, sessionId }) {
     decision === 'GRANT'
       ? { granted: true, constraints: constraints ?? 'no constraints' }
       : { granted: false, reason: constraints ?? 'no reason given' };
+
+  // notes is a free-form addendum the human typed in the modal. Match the
+  // existing convention (see buildRequestOptionResponse) -- a separate
+  // payload key the asking agent can read on top of the structured fields.
+  if (typeof notes === 'string' && notes.trim() !== '') {
+    payload.notes = notes.trim();
+  }
 
   return {
     schema_version: '1.0',

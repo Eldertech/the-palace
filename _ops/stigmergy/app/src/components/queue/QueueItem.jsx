@@ -163,9 +163,13 @@ export default function QueueItem({ item, onJump, onClear, onRespond }) {
         </div>
       ) : null}
 
-      {/* Action row: jump to STATE / board, plus Grant / Deny / asker options. */}
+      {/* Action row: Grant / Deny / asker options + (when meaningful) jump.
+          The jump chip is only meaningful for handoff_ready items pointing
+          at a palace entry -- for resource_request items the pointer is
+          back to the current board, which is redundant since the QUEUE
+          deck IS that board. Hiding it keeps the action row about action. */}
       <div style={{ marginTop: 10, display: 'flex', gap: 8, alignItems: 'center', flexWrap: 'wrap' }}>
-        {item.pointer ? (
+        {item.pointer && item.pointer.type === 'entry' ? (
           <span
             data-testid="queue-item-jump"
             onClick={() => onJump?.(item.pointer)}
@@ -174,9 +178,9 @@ export default function QueueItem({ item, onJump, onClear, onRespond }) {
               color: 'var(--ansi-bright-cyan)', textShadow: 'var(--glow)', fontSize: 11,
               border: '1px dashed var(--phosphor-dim)', padding: '2px 8px',
             }}
-            title={item.pointer.type === 'entry' ? `open ${item.pointer.target} in STATE` : `go to ${item.pointer.target}`}
+            title={`open ${item.pointer.target} in STATE`}
           >
-            {item.pointer.type === 'entry' ? `STATE: ${item.pointer.target}` : `board: ${item.pointer.target}`}
+            STATE: {item.pointer.target}
           </span>
         ) : null}
 

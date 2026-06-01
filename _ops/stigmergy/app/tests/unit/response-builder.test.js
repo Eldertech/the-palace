@@ -226,3 +226,44 @@ describe('buildResponse — re: correlation (Phase 2 bug fix)', () => {
     expect(result.valid, JSON.stringify(result)).toBe(true);
   });
 });
+
+describe('buildResponse — notes addendum', () => {
+  test('GRANT carries notes as a separate payload field when provided', () => {
+    const out = buildResponse({
+      request: SAMPLE_REQUEST,
+      decision: 'GRANT',
+      notes: 'Excited to see the curves work.',
+    });
+    expect(out.payload.notes).toBe('Excited to see the curves work.');
+    expect(out.payload.granted).toBe(true);
+    expect(out.payload.constraints).toBe('no constraints');
+  });
+
+  test('DENY carries notes alongside reason', () => {
+    const out = buildResponse({
+      request: SAMPLE_REQUEST,
+      decision: 'DENY',
+      constraints: 'budget exhausted',
+      notes: 'try again next month',
+    });
+    expect(out.payload.notes).toBe('try again next month');
+    expect(out.payload.reason).toBe('budget exhausted');
+    expect(out.payload.granted).toBe(false);
+  });
+
+  test('empty / whitespace notes do not leak into the payload', () => {
+    const out1 = buildResponse({ request: SAMPLE_REQUEST, decision: 'GRANT', notes: '' });
+    expect('notes' in out1.payload).toBe(false);
+    const out2 = buildResponse({ request: SAMPLE_REQUEST, decision: 'GRANT', notes: '   ' });
+    expect('notes' in out2.payload).toBe(false);
+  });
+
+  test('notes are trimmed of surrounding whitespace', () => {
+    const out = buildResponse({
+      request: SAMPLE_REQUEST,
+      decision: 'GRANT',
+      notes: '   keep going   ',
+    });
+    expect(out.payload.notes).toBe('keep going');
+  });
+});

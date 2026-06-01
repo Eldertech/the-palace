@@ -13,13 +13,35 @@
 
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { Banner, Button, Field } from './primitives.jsx';
-import { buildResponse } from '../lib/response-builder.js';
+import { buildResponse, buildRequestOptionResponse } from '../lib/response-builder.js';
 import { postMessage, InvalidMessageError } from '../adapters/blackboard.js';
 
 const padLabel = (s) => (s + '          ').slice(0, 9);
 
 // Build the preview message given the current state of the modal.
-function buildPreview({ request, option, customText, sessionId }) {
+//
+// Three response shapes:
+//   - asker-supplied option (option.option_id present) -> buildRequestOptionResponse
+//     payload: { granted, option_id, option_label, notes }
+//   - freetext  -> buildResponse with customText as constraints
+//     payload: { granted, constraints, notes? }
+//   - generic Grant / Deny / Grant-limited -> buildResponse
+//     payload: { granted, constraints | reason, notes? }
+function buildPreview({ request, option, customText, notes, sessionId }) {
+  if (option.option_id || option.option_label) {
+    return buildRequestOptionResponse({
+      request: {
+        id: request._message_id,
+        from: request.from,
+        request_id: request.request_id,
+        session_id: request._session_id,
+      },
+      optionId: option.option_id,
+      optionLabel: option.option_label,
+      notes,
+      sessionId: sessionId ?? request._session_id,
+    });
+  }
   const decision = option.type === 'RESOURCE_DENY' ? 'DENY' : 'GRANT';
   const constraints =
     option.type === 'freetext'
@@ -35,14 +57,17 @@ function buildPreview({ request, option, customText, sessionId }) {
     },
     decision,
     constraints,
+    notes,
     sessionId: sessionId ?? request._session_id,
   });
 }
 
 export default function ResponseModal({ request, option, sessionId, onConfirmed, onCancel }) {
   const [customText, setCustomText] = useState('');
+  const [notes, setNotes] = useState('');
   const [sending, setSending] = useState(false);
   const [errors, setErrors] = useState([]);
+  const notesRef = useRef(null);        // textarea ref, focused on mount
   const confirmBtnRef = useRef(null);   // ref on the wrapper <div> around the confirm button
   const backdropRef = useRef(null);
 
@@ -50,7 +75,7 @@ export default function ResponseModal({ request, option, sessionId, onConfirmed,
   let preview = null;
   let previewError = null;
   try {
-    preview = buildPreview({ request, option, customText, sessionId });
+    preview = buildPreview({ request, option, customText, notes, sessionId });
   } catch (e) {
     previewError = e.message;
   }
@@ -62,10 +87,15 @@ export default function ResponseModal({ request, option, sessionId, onConfirmed,
     return () => { document.body.style.overflow = prev; };
   }, []);
 
-  // Focus the Confirm button when the modal opens.
+  // Focus the notes textarea when the modal opens so Loudon can type
+  // immediately. Enter inside the textarea submits; Shift+Enter inserts a
+  // newline. Escape on the backdrop cancels.
   useEffect(() => {
-    const btn = confirmBtnRef.current?.querySelector('button');
-    if (btn) btn.focus();
+    const el = notesRef.current;
+    if (el) {
+      el.focus();
+      el.setSelectionRange(el.value.length, el.value.length);
+    }
   }, []);
 
   const handleCancel = useCallback(() => {
@@ -96,11 +126,22 @@ export default function ResponseModal({ request, option, sessionId, onConfirmed,
     }
   }, [sending, preview, request, onConfirmed]);
 
-  // Keyboard: Escape = cancel; Enter = confirm (if not sending).
+  // Keyboard:
+  //   Escape          -> cancel
+  //   Enter           -> confirm (also fires from inside the notes textarea
+  //                      so Loudon types notes + hits Enter to send)
+  //   Shift+Enter     -> newline inside the textarea (does NOT submit)
+  //   Cmd/Ctrl+Enter  -> also submits (for parity with chat apps)
   useEffect(() => {
     const onKey = (e) => {
-      if (e.key === 'Escape') handleCancel();
-      if (e.key === 'Enter' && !sending) handleConfirm();
+      if (e.key === 'Escape') { handleCancel(); return; }
+      if (e.key === 'Enter' && !e.shiftKey && !sending) {
+        // Submit unless this is a multi-line break in the textarea
+        // (Shift+Enter is the newline gesture). Default behavior in the
+        // textarea is "insert newline" -- preventDefault and confirm.
+        e.preventDefault();
+        handleConfirm();
+      }
     };
     window.addEventListener('keydown', onKey);
     return () => window.removeEventListener('keydown', onKey);
@@ -164,21 +205,49 @@ export default function ResponseModal({ request, option, sessionId, onConfirmed,
             </div>
           </div>
 
-          {/* Custom text input (only for freetext option) */}
+          {/* Constraints field for freetext option. */}
           {isCustom && (
             <div>
               <div style={{ color: 'var(--phosphor-dim)', textShadow: 'none', marginBottom: 4, fontSize: 11, textTransform: 'uppercase', letterSpacing: '.05em' }}>
-                constraints / notes (posted as RESOURCE_GRANT with your text as constraints)
+                constraints (posted as RESOURCE_GRANT with your text)
               </div>
               <Field
                 prompt=">"
                 value={customText}
                 onChange={setCustomText}
-                placeholder="enter constraints or notes"
-                autoFocus
+                placeholder="constraints"
               />
             </div>
           )}
+
+          {/* Notes textarea -- available for every option. Auto-focused on
+              modal open; Enter submits, Shift+Enter inserts a newline. */}
+          <div>
+            <div style={{ color: 'var(--phosphor-dim)', textShadow: 'none', marginBottom: 4, fontSize: 11, textTransform: 'uppercase', letterSpacing: '.05em' }}>
+              notes (optional) -- Enter to send, Shift+Enter for newline
+            </div>
+            <textarea
+              ref={notesRef}
+              data-testid="response-modal-notes"
+              value={notes}
+              onChange={(e) => setNotes(e.target.value)}
+              placeholder="add a note for the agent..."
+              rows={3}
+              style={{
+                width: '100%',
+                background: 'var(--bg, #000)',
+                color: 'var(--phosphor)',
+                textShadow: 'var(--glow)',
+                border: '1px solid var(--phosphor-dim)',
+                padding: '6px 10px',
+                fontFamily: 'var(--font-mono, monospace)',
+                fontSize: 13,
+                lineHeight: 1.4,
+                resize: 'vertical',
+                boxSizing: 'border-box',
+              }}
+            />
+          </div>
 
           {/* JSON preview */}
           <div>
