@@ -2,6 +2,7 @@ import React, { useEffect, useMemo, useState } from 'react';
 import { Box } from '../primitives.jsx';
 import QueueItem from './QueueItem.jsx';
 import CardItem from './CardItem.jsx';
+import ResponseModal from '../ResponseModal.jsx';
 import { buildQueue, reconcileQueue, partitionQueue, laneCounts } from '../../lib/queue-model.js';
 import { fetchLog } from '../../adapters/log.js';
 import { fetchCards, respondToCard } from '../../adapters/cards.js';
@@ -24,10 +25,34 @@ export default function QueuePanel({ messages, onJumpEntry }) {
   const [laneFilter, setLaneFilter] = useState(null);
   const [dismissed, setDismissed] = useState(() => new Set());
   const [showResolved, setShowResolved] = useState(true);
+  // Response modal state: { request, option } when open, null when closed.
+  const [respondingTo, setRespondingTo] = useState(null);
   // Enrichment cards (Phase 4.5): the absorbed Enrichment card queue.
   const [cards, setCards] = useState([]);
   const [cardBusy, setCardBusy] = useState(false);
   const [cardNote, setCardNote] = useState(null); // last response feedback
+
+  // Open the response modal for a queue item. Builds the shape ResponseModal
+  // expects from the item's raw message + the chosen option.
+  function respondToItem(item, option) {
+    const raw = item.raw || {};
+    setRespondingTo({
+      request: {
+        _message_id: raw.id,
+        _session_id: item.sessionId || raw.session_id || null,
+        request_id: item.id,
+        from: item.from,
+      },
+      option,
+    });
+  }
+
+  function closeRespond() { setRespondingTo(null); }
+  function handleResponded() {
+    setRespondingTo(null);
+    // The new message will arrive via SSE; reconcile against the new log too.
+    loadCommits();
+  }
 
   const loadCommits = () => {
     fetchLog({ limit: 200 }).then((r) => { if (r.ok) setCommits(r.commits || []); });
@@ -129,7 +154,7 @@ export default function QueuePanel({ messages, onJumpEntry }) {
 
       <div data-testid="queue-open">
         {open.map((it) => (
-          <QueueItem key={it.id} item={it} onJump={jump} onClear={clearItem} />
+          <QueueItem key={it.id} item={it} onJump={jump} onClear={clearItem} onRespond={respondToItem} />
         ))}
       </div>
 
@@ -144,7 +169,7 @@ export default function QueuePanel({ messages, onJumpEntry }) {
           {showResolved ? (
             <div data-testid="queue-resolved">
               {resolved.map((it) => (
-                <QueueItem key={it.id} item={it} onJump={jump} onClear={clearItem} />
+                <QueueItem key={it.id} item={it} onJump={jump} onClear={clearItem} onRespond={respondToItem} />
               ))}
             </div>
           ) : null}
@@ -180,6 +205,20 @@ export default function QueuePanel({ messages, onJumpEntry }) {
           ))
         )}
       </div>
+
+      {/* Response modal: opens when the human clicks Grant/Deny/option on a
+          queue item; on confirm it POSTs a RESOURCE_GRANT or RESOURCE_DENY
+          to the persistent blackboard. The item then auto-clears on the
+          next render (the buildQueue pass treats it as responded-to). */}
+      {respondingTo ? (
+        <ResponseModal
+          request={respondingTo.request}
+          option={respondingTo.option}
+          sessionId={respondingTo.request._session_id}
+          onConfirmed={handleResponded}
+          onCancel={closeRespond}
+        />
+      ) : null}
     </Box>
   );
 }

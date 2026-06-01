@@ -1,6 +1,6 @@
 import { describe, it, expect } from 'vitest';
 import {
-  buildQueue, reconcileQueue, partitionQueue, rankQueue, laneCounts, vantage,
+  buildQueue, reconcileQueue, partitionQueue, rankQueue, laneCounts, vantage, deriveAsk,
 } from '../../src/lib/queue-model.js';
 
 function reqMsg(over = {}) {
@@ -153,5 +153,107 @@ describe('vantage', () => {
   });
   it('degrades gracefully', () => {
     expect(vantage({})).toMatch(/from \?/);
+  });
+});
+
+describe('deriveAsk — turn a request payload into a human ask', () => {
+  it('prefers decision_topic (the asker\'s explicit question)', () => {
+    expect(deriveAsk({
+      decision_topic: 'Where do I start?',
+      subject: 'something else',
+      rationale: 'long context...',
+      resource: 'directional_decision',
+    })).toBe('Where do I start?');
+  });
+
+  it('falls back to decision_needed when decision_topic absent', () => {
+    expect(deriveAsk({
+      decision_needed: 'Approve audition?',
+      rationale: 'long...',
+    })).toBe('Approve audition?');
+  });
+
+  it('falls back to subject when no decision form', () => {
+    expect(deriveAsk({
+      subject: 'First move for the engine',
+      rationale: 'context',
+    })).toBe('First move for the engine');
+  });
+
+  it('falls back to first sentence of rationale', () => {
+    expect(deriveAsk({
+      rationale: 'Quick catch-up: I am Foo. Then more details here.',
+      resource: 'sensory_audition_gate',
+    })).toBe('Quick catch-up: I am Foo.');
+  });
+
+  it('caps the rationale fallback at ~200 chars', () => {
+    const long = `${'A'.repeat(300)} short sentence.`;
+    const r = deriveAsk({ rationale: long });
+    expect(r.length).toBeLessThanOrEqual(200);
+    expect(r.endsWith('...')).toBe(true);
+  });
+
+  it('falls back to the technical resource type only when nothing else exists', () => {
+    expect(deriveAsk({ resource: 'sensory_audition_gate' })).toBe('sensory_audition_gate');
+  });
+
+  it('returns null on empty / non-object', () => {
+    expect(deriveAsk(null)).toBe(null);
+    expect(deriveAsk({})).toBe(null);
+    expect(deriveAsk('not an object')).toBe(null);
+  });
+});
+
+describe('buildQueue — the new ask/resourceType/rationale fields', () => {
+  it('exposes ask, resourceType, rationale, recommendation, options, sessionId on resource_request items', () => {
+    const msg = {
+      id: 'inh-005',
+      request_id: 'inh-005',
+      type: 'RESOURCE_REQUEST',
+      from: 'Inharmonic Wavetable Synthesis',
+      ts: '2026-05-27T20:21:00-04:00',
+      board: 'TRICKSTER',
+      session_id: 'permanent-stewardship-inharmonic-2026-05-27',
+      payload: {
+        resource: 'sensory_audition_gate',
+        rationale: 'Quick catch-up: I am the dual-wavetable synth.',
+        decision_topic: 'Audition the dual-wavetable prototype?',
+        steward_recommendation: 'ARCHITECTURE-VERIFIED',
+        blocking: true,
+        options: [
+          { id: 'A', label: 'A — verified' },
+          { id: 'B', label: 'B — tune curves' },
+        ],
+      },
+    };
+    const items = buildQueue([msg]);
+    expect(items.length).toBe(1);
+    const it = items[0];
+    expect(it.from).toBe('Inharmonic Wavetable Synthesis');
+    expect(it.ask).toBe('Audition the dual-wavetable prototype?');
+    expect(it.resourceType).toBe('sensory_audition_gate');
+    expect(it.rationale).toContain('dual-wavetable synth');
+    expect(it.recommendation).toBe('ARCHITECTURE-VERIFIED');
+    expect(it.options).toEqual([
+      { id: 'A', label: 'A — verified' },
+      { id: 'B', label: 'B — tune curves' },
+    ]);
+    expect(it.sessionId).toBe('permanent-stewardship-inharmonic-2026-05-27');
+    expect(it.blocking).toBe(true);
+    // Legacy `summary` still exposes the resource type for older callers.
+    expect(it.summary).toBe('sensory_audition_gate');
+  });
+
+  it('handoff_ready items leave the new ask/resourceType fields undefined', () => {
+    const msg = {
+      id: 'h1', type: 'BROADCAST', from: 'Foo', ts: '2026-05-29T10:00:00Z', board: 'GENERAL',
+      payload: { kind: 'handoff_ready', summary: 'hand off Foo', entry: 'Foo' },
+    };
+    const items = buildQueue([msg]);
+    expect(items.length).toBe(1);
+    expect(items[0].kind).toBe('handoff_ready');
+    expect(items[0].ask).toBeUndefined();
+    expect(items[0].resourceType).toBeUndefined();
   });
 });
