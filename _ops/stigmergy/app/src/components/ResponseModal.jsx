@@ -12,11 +12,19 @@
 //   onCancel     {fn}      — called when the user cancels
 
 import React, { useState, useEffect, useRef, useCallback } from 'react';
-import { Banner, Button, Field } from './primitives.jsx';
+import { Banner, Button } from './primitives.jsx';
 import { buildResponse, buildRequestOptionResponse } from '../lib/response-builder.js';
 import { postMessage, InvalidMessageError } from '../adapters/blackboard.js';
 
-const padLabel = (s) => (s + '          ').slice(0, 9);
+// Human-language label for what the human is about to do. The chrome shows
+// this in the modal subtitle so the user sees "granting" / "denying" /
+// "responding" rather than the RESOURCE_GRANT wire type.
+function decisionVerb(option) {
+  if (option.option_id || option.option_label) return 'granting an option';
+  if (option.type === 'RESOURCE_DENY') return 'denying';
+  if (option.type === 'freetext') return 'responding';
+  return 'granting';
+}
 
 // Build the preview message given the current state of the modal.
 //
@@ -27,7 +35,7 @@ const padLabel = (s) => (s + '          ').slice(0, 9);
 //     payload: { granted, constraints, notes? }
 //   - generic Grant / Deny / Grant-limited -> buildResponse
 //     payload: { granted, constraints | reason, notes? }
-function buildPreview({ request, option, customText, notes, sessionId }) {
+function buildPreview({ request, option, notes, sessionId }) {
   if (option.option_id || option.option_label) {
     return buildRequestOptionResponse({
       request: {
@@ -43,10 +51,13 @@ function buildPreview({ request, option, customText, notes, sessionId }) {
     });
   }
   const decision = option.type === 'RESOURCE_DENY' ? 'DENY' : 'GRANT';
-  const constraints =
-    option.type === 'freetext'
-      ? (customText || '')
-      : option.constraints ?? option.reason ?? null;
+  // For the freetext "custom response" option the notes textarea IS the
+  // response -- there was no second "constraints" field to merge from. For
+  // generic Grant / Grant-limited / Deny, the option carries its own
+  // constraints/reason and notes is the optional addendum.
+  const constraints = option.type === 'freetext'
+    ? (notes || '')
+    : option.constraints ?? option.reason ?? null;
 
   return buildResponse({
     request: {
@@ -57,13 +68,14 @@ function buildPreview({ request, option, customText, notes, sessionId }) {
     },
     decision,
     constraints,
-    notes,
+    // For freetext the notes-as-constraints is the whole response; don't
+    // duplicate the same text into payload.notes.
+    notes: option.type === 'freetext' ? null : notes,
     sessionId: sessionId ?? request._session_id,
   });
 }
 
 export default function ResponseModal({ request, option, sessionId, onConfirmed, onCancel }) {
-  const [customText, setCustomText] = useState('');
   const [notes, setNotes] = useState('');
   const [sending, setSending] = useState(false);
   const [errors, setErrors] = useState([]);
@@ -76,7 +88,7 @@ export default function ResponseModal({ request, option, sessionId, onConfirmed,
   let preview = null;
   let previewError = null;
   try {
-    preview = buildPreview({ request, option, customText, notes, sessionId });
+    preview = buildPreview({ request, option, notes, sessionId });
   } catch (e) {
     previewError = e.message;
   }
@@ -174,66 +186,42 @@ export default function ResponseModal({ request, option, sessionId, onConfirmed,
         background: 'var(--bg)',
         overflow: 'hidden',
       }}>
-        {/* Title bar */}
+        {/* Title bar -- leads with WHO you're responding to and the choice
+            you've already made on the card. No "RESPOND --" boilerplate. */}
         <div style={{
           borderBottom: '3px double var(--phosphor-dim)',
-          padding: '6px 12px',
+          padding: '8px 12px',
           flexShrink: 0,
         }}>
-          <Banner strong>RESPOND -- {option.label}</Banner>
+          <Banner strong>{request.from || 'agent'}</Banner>
+          <div style={{
+            color: 'var(--phosphor-dim)', textShadow: 'none',
+            fontSize: 12, marginTop: 2,
+          }}>
+            {decisionVerb(option)}{option.option_label ? ` · ${option.option_label}` : option.label && !option.option_label ? ` · ${option.label.toLowerCase()}` : ''}
+          </div>
         </div>
 
         {/* Scrollable body */}
-        <div style={{ overflowY: 'auto', flex: 1, padding: '10px 12px', display: 'flex', flexDirection: 'column', gap: 10 }}>
+        <div style={{ overflowY: 'auto', flex: 1, padding: '12px 12px', display: 'flex', flexDirection: 'column', gap: 10 }}>
 
-          {/* Request summary */}
-          <div>
-            <div style={{ color: 'var(--phosphor-dim)', textShadow: 'none', marginBottom: 4, fontSize: 11, textTransform: 'uppercase', letterSpacing: '.05em' }}>
-              request
-            </div>
-            <div style={{ color: 'var(--phosphor-dim)', textShadow: 'none', lineHeight: 1.5 }}>
-              {[
-                ['from', `@${request.from || '--'}`],
-                ['request_id', request.request_id || '--'],
-                ['resource', request.resource || '--'],
-                ['blocking', request.blocking ? 'yes' : 'no'],
-              ].map(([k, v]) => (
-                <div key={k}>
-                  <span>{padLabel(k)}: </span>
-                  <span style={{ color: 'var(--phosphor)', textShadow: 'var(--glow)' }}>{v}</span>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* Constraints field for freetext option. */}
-          {isCustom && (
-            <div>
-              <div style={{ color: 'var(--phosphor-dim)', textShadow: 'none', marginBottom: 4, fontSize: 11, textTransform: 'uppercase', letterSpacing: '.05em' }}>
-                constraints (posted as RESOURCE_GRANT with your text)
-              </div>
-              <Field
-                prompt=">"
-                value={customText}
-                onChange={setCustomText}
-                placeholder="constraints"
-              />
-            </div>
-          )}
-
-          {/* Notes textarea -- the primary affordance, given more room than
-              before (was 3 rows, now 8) so multi-line notes type cleanly. */}
+          {/* Notes textarea -- the single typing surface. For the freetext
+              "custom response" option it IS the response; for everything else
+              it's a free-form addendum on top of the option_id / grant / deny
+              that came from the card click. Auto-focused; Enter submits. */}
           <div style={{ flex: 1, display: 'flex', flexDirection: 'column' }}>
             <div style={{ color: 'var(--phosphor-dim)', textShadow: 'none', marginBottom: 4, fontSize: 11, textTransform: 'uppercase', letterSpacing: '.05em' }}>
-              notes (optional) -- Enter to send, Shift+Enter for newline
+              {isCustom
+                ? 'your response -- Enter to send, Shift+Enter for newline'
+                : 'add a note (optional) -- Enter to send, Shift+Enter for newline'}
             </div>
             <textarea
               ref={notesRef}
               data-testid="response-modal-notes"
               value={notes}
               onChange={(e) => setNotes(e.target.value)}
-              placeholder="add a note for the agent..."
-              rows={8}
+              placeholder={isCustom ? 'type your response...' : 'add a note for the agent...'}
+              rows={10}
               style={{
                 width: '100%',
                 background: 'var(--bg, #000)',
