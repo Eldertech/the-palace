@@ -17,7 +17,7 @@ import { checkAllowList } from '../../lib/entry-edit.js';
 // on failure shows an inline error band and a back button. Errors never
 // escape this component -- the deck stays usable.
 
-export default function EntryReader({ path, index, onNavigate, onBack, onEdit }) {
+export default function EntryReader({ path, index, onNavigate, onBack, onEdit, onGoBack }) {
   const [state, setState] = useState({ kind: 'loading' });
 
   useEffect(() => {
@@ -67,6 +67,22 @@ export default function EntryReader({ path, index, onNavigate, onBack, onEdit })
   return (
     <div data-testid="entry-reader" data-path={entry.path}>
       <div style={{ marginBottom: 8 }}>
+        {onGoBack ? (
+          <span
+            data-testid="go-back"
+            onClick={onGoBack}
+            title="back one step (browser history)"
+            style={{
+              cursor: 'pointer',
+              marginRight: 6,
+              color: 'var(--phosphor)', textShadow: 'var(--glow)',
+              border: '1px solid var(--phosphor-dim)', padding: '2px 8px',
+              textTransform: 'uppercase', letterSpacing: '.04em', fontSize: 12,
+            }}
+          >
+            [<b style={{ color: 'var(--phosphor-white)' }}>&lt;</b>]&nbsp;back
+          </span>
+        ) : null}
         {onBack ? (
           <span
             data-testid="back-to-index"
@@ -78,7 +94,7 @@ export default function EntryReader({ path, index, onNavigate, onBack, onEdit })
               textTransform: 'uppercase', letterSpacing: '.04em', fontSize: 12,
             }}
           >
-            [<b style={{ color: 'var(--phosphor-white)' }}>B</b>]&nbsp;back to pulse
+            [<b style={{ color: 'var(--phosphor-white)' }}>B</b>]&nbsp;pulse
           </span>
         ) : null}
         {onEdit ? (
