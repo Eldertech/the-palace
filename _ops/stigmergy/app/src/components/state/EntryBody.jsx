@@ -111,133 +111,264 @@ function blocks(text) {
   return out;
 }
 
-// Inline renderer. Walks the text and emits React nodes for wikilinks,
-// markdown links, code spans, bold, italic. Order matters: code spans
-// first (they swallow other syntax), then wikilinks, then bold/italic,
-// then links/URLs via parseLinks.
-function renderInline(text, { index, onNavigate, keyPrefix = '' }) {
+// Inline renderer. Emphasis (bold/italic) can span any "atomic" element
+// (code spans, wikilinks, markdown/bare links) -- the author writes
+// `*see the [[Foo]] post for details*` and expects the whole thing
+// italicized. To make that work we tokenize atomics first into opaque
+// placeholders, run emphasis on the placeholder-bearing text, then expand
+// placeholders back to their React nodes.
+//
+// Placeholders use \x00..\x00 — a null-byte delimited slot that emphasis
+// regexes (which only exclude `*` and `\n`) won't break.
+function renderInline(text, ctx) {
   if (typeof text !== 'string' || text === '') return null;
+  const { index, onNavigate, keyPrefix = '' } = ctx || {};
 
-  // Step 1: split on code spans.
-  const spanRe = /`([^`\n]+)`/g;
-  const codeParts = [];
-  let lastIdx = 0;
-  let m;
-  while ((m = spanRe.exec(text)) !== null) {
-    if (m.index > lastIdx) codeParts.push({ kind: 'text', value: text.slice(lastIdx, m.index) });
-    codeParts.push({ kind: 'code', value: m[1] });
-    lastIdx = spanRe.lastIndex;
-  }
-  if (lastIdx < text.length) codeParts.push({ kind: 'text', value: text.slice(lastIdx) });
-
-  const nodes = [];
-  codeParts.forEach((p, ci) => {
-    if (p.kind === 'code') {
-      nodes.push(
-        <code key={`${keyPrefix}c${ci}`} style={{
-          background: 'var(--phosphor-deep)',
-          color: 'var(--phosphor-bright)',
-          textShadow: 'var(--glow)',
-          padding: '0 4px',
-          fontFamily: 'var(--font-mono)',
-          fontSize: '0.95em',
-        }}>{p.value}</code>
-      );
-      return;
-    }
-    // Step 2: wikilinks.
-    const wlRe = /\[\[([^\]\n]+?)\]\]/g;
-    const subParts = [];
-    let li = 0;
-    let wm;
-    while ((wm = wlRe.exec(p.value)) !== null) {
-      if (wm.index > li) subParts.push({ kind: 'mdtext', value: p.value.slice(li, wm.index) });
-      const inside = wm[1].trim();
-      const pipe = inside.indexOf('|');
-      const name = pipe === -1 ? inside : inside.slice(0, pipe).trim();
-      const display = pipe === -1 ? name : inside.slice(pipe + 1).trim();
-      subParts.push({ kind: 'wikilink', name, display });
-      li = wlRe.lastIndex;
-    }
-    if (li < p.value.length) subParts.push({ kind: 'mdtext', value: p.value.slice(li) });
-
-    subParts.forEach((sp, si) => {
-      if (sp.kind === 'wikilink') {
-        const resolved = index?.get?.(sp.name) ?? null;
-        const known = resolved !== null;
-        nodes.push(
-          <span
-            key={`${keyPrefix}c${ci}-w${si}`}
-            data-testid="body-wikilink"
-            data-resolved={known ? 'true' : 'false'}
-            onClick={() => { if (known && onNavigate) onNavigate(resolved); }}
-            style={{
-              color: known ? 'var(--link)' : 'var(--phosphor-dim)',
-              textShadow: known ? 'var(--glow)' : 'none',
-              cursor: known && onNavigate ? 'pointer' : 'default',
-              borderBottom: known ? '1px dashed currentColor' : '1px dotted currentColor',
-            }}
-            title={known ? sp.name : `${sp.name} (unresolved)`}
-          >{sp.display}</span>
-        );
-      } else {
-        // Step 3: bold/italic on plain text, then link parsing.
-        const value = sp.value;
-        // Bold first (**...**) so it doesn't get eaten by italic.
-        const formatted = formatEmphasis(value, `${keyPrefix}c${ci}-s${si}`);
-        formatted.forEach((node, fi) => {
-          if (typeof node === 'string') {
-            // Final pass: markdown/bare URLs become <a>.
-            const linkParts = parseLinks(node);
-            linkParts.forEach((lp, lpi) => {
-              if (lp.type === 'link') {
-                nodes.push(
-                  <a
-                    key={`${keyPrefix}c${ci}-s${si}-f${fi}-l${lpi}`}
-                    href={hrefFor(lp.url)}
-                    target="_blank" rel="noopener noreferrer"
-                    style={{
-                      color: 'var(--link)', textShadow: 'var(--glow)',
-                      textDecoration: 'none', borderBottom: '1px dashed currentColor',
-                    }}
-                  >{lp.text}</a>
-                );
-              } else {
-                nodes.push(<span key={`${keyPrefix}c${ci}-s${si}-f${fi}-t${lpi}`}>{lp.value}</span>);
-              }
-            });
-          } else {
-            nodes.push(node);
-          }
-        });
+  // ── Tokenize atomics into placeholders ────────────────────────────────
+  const atoms = [];
+  let tokenized = '';
+  let i = 0;
+  while (i < text.length) {
+    // Code span: `...`
+    if (text[i] === '`') {
+      const end = text.indexOf('`', i + 1);
+      const nl = text.indexOf('\n', i + 1);
+      if (end !== -1 && (nl === -1 || end < nl)) {
+        const id = atoms.length;
+        atoms.push({ kind: 'code', value: text.slice(i + 1, end) });
+        tokenized += `\x00${id}\x00`;
+        i = end + 1;
+        continue;
       }
-    });
+    }
+    // Wikilink: [[name|display]]
+    if (text[i] === '[' && text[i + 1] === '[') {
+      const end = text.indexOf(']]', i + 2);
+      const nl = text.indexOf('\n', i + 2);
+      if (end !== -1 && (nl === -1 || end < nl)) {
+        const inside = text.slice(i + 2, end).trim();
+        const pipe = inside.indexOf('|');
+        const name = pipe === -1 ? inside : inside.slice(0, pipe).trim();
+        const display = pipe === -1 ? name : inside.slice(pipe + 1).trim();
+        if (name) {
+          const id = atoms.length;
+          atoms.push({ kind: 'wikilink', name, display });
+          tokenized += `\x00${id}\x00`;
+          i = end + 2;
+          continue;
+        }
+      }
+    }
+    tokenized += text[i];
+    i += 1;
+  }
+
+  // ── Run emphasis on the tokenized text ────────────────────────────────
+  // Captured content is recursively expanded so placeholders inside
+  // emphasis resolve to their atoms.
+  const emphNodes = formatEmphasis(
+    tokenized,
+    `${keyPrefix}-`,
+    (innerText, innerKey) => expandPlaceholders(innerText, atoms, ctx, innerKey),
+  );
+
+  const out = [];
+  emphNodes.forEach((en, ei) => {
+    if (typeof en === 'string') {
+      out.push(...expandPlaceholders(en, atoms, ctx, `${keyPrefix}-e${ei}`));
+    } else {
+      out.push(en);
+    }
   });
-  return nodes;
+  return out;
 }
 
-// Split text on **bold** and *italic*. Returns a mix of strings and JSX
-// nodes (caller passes strings through link parsing).
-function formatEmphasis(text, keyPrefix) {
+// Expand placeholders in a string back to their atomic React nodes,
+// applying URL/link parsing to the surrounding plain text.
+function expandPlaceholders(text, atoms, ctx, keyPrefix) {
+  if (typeof text !== 'string' || text === '') return [];
   const out = [];
-  let rest = text;
-  // **bold**
-  const boldRe = /\*\*([^*\n]+?)\*\*/g;
+  const re = /\x00(\d+)\x00/g;
   let last = 0;
   let m;
   let i = 0;
-  while ((m = boldRe.exec(rest)) !== null) {
-    if (m.index > last) out.push(rest.slice(last, m.index));
-    out.push(
-      <strong key={`${keyPrefix}-b${i}`} style={{
-        color: 'var(--phosphor-white)', textShadow: 'var(--glow)',
-      }}>{m[1]}</strong>
-    );
-    last = boldRe.lastIndex;
+  while ((m = re.exec(text)) !== null) {
+    if (m.index > last) {
+      pushTextWithLinks(text.slice(last, m.index), `${keyPrefix}-t${i}`, ctx, out);
+    }
+    const atom = atoms[parseInt(m[1], 10)];
+    if (atom) out.push(renderAtom(atom, `${keyPrefix}-a${i}`, ctx));
+    last = re.lastIndex;
     i += 1;
   }
-  if (last < rest.length) out.push(rest.slice(last));
+  if (last < text.length) {
+    pushTextWithLinks(text.slice(last), `${keyPrefix}-t${i}`, ctx, out);
+  }
   return out;
+}
+
+function pushTextWithLinks(text, keyPrefix, ctx, out) {
+  const parts = parseLinks(text);
+  parts.forEach((lp, lpi) => {
+    if (lp.type === 'link') {
+      out.push(
+        <a
+          key={`${keyPrefix}-l${lpi}`}
+          href={hrefFor(lp.url)}
+          target="_blank" rel="noopener noreferrer"
+          style={{
+            color: 'var(--link)', textShadow: 'var(--glow)',
+            textDecoration: 'none', borderBottom: '1px dashed currentColor',
+          }}
+        >{lp.text}</a>
+      );
+    } else {
+      out.push(<span key={`${keyPrefix}-s${lpi}`}>{lp.value}</span>);
+    }
+  });
+}
+
+function renderAtom(atom, key, ctx) {
+  const { index, onNavigate } = ctx || {};
+  if (atom.kind === 'code') {
+    return (
+      <code key={key} style={{
+        background: 'var(--phosphor-deep)',
+        color: 'var(--phosphor-bright)',
+        textShadow: 'var(--glow)',
+        padding: '0 4px',
+        fontFamily: 'var(--font-mono)',
+        fontSize: '0.95em',
+      }}>{atom.value}</code>
+    );
+  }
+  if (atom.kind === 'wikilink') {
+    const resolved = index?.get?.(atom.name) ?? null;
+    const known = resolved !== null;
+    return (
+      <span
+        key={key}
+        data-testid="body-wikilink"
+        data-resolved={known ? 'true' : 'false'}
+        onClick={() => { if (known && onNavigate) onNavigate(resolved); }}
+        style={{
+          color: known ? 'var(--link)' : 'var(--phosphor-dim)',
+          textShadow: known ? 'var(--glow)' : 'none',
+          cursor: known && onNavigate ? 'pointer' : 'default',
+          borderBottom: known ? '1px dashed currentColor' : '1px dotted currentColor',
+        }}
+        title={known ? atom.name : `${atom.name} (unresolved)`}
+      >{atom.display}</span>
+    );
+  }
+  return null;
+}
+
+
+// Split text on **bold**, *italic*, ***bold-italic***, and the palace-
+// specific `**word *trail***` (bold-around-italic-at-end) pattern. Returns
+// a mix of strings and JSX nodes (caller passes strings through link
+// parsing).
+//
+// The passes run in order, each splitting the surviving string segments:
+//   1. ***foo*** -> <strong><em>foo</em></strong>
+//   2. **word *trail*** -> <strong>word <em>trail</em></strong>   (palace idiom)
+//   3. **bold** (relaxed: single `*` allowed inside, e.g. `**.git/*.lock**`)
+//   4. *italic* (open/close asterisks adjacent to non-whitespace)
+//
+// Unmatched single asterisks pass through as literal characters -- the
+// palace uses `*` as glyph (a glob, a multiplication symbol, a footnote).
+function formatEmphasis(text, keyPrefix, renderChildren) {
+  let nodes = [text];
+  let counter = 0;
+  // Default: emit captured content as a plain string node. The caller
+  // (renderInline) overrides this with renderWikilinksAndLinks so wikilinks
+  // inside bold/italic still resolve.
+  const renderInner = typeof renderChildren === 'function'
+    ? renderChildren
+    : (inner) => inner;
+
+  // Pass 1: ***foo*** -> bold+italic.
+  nodes = splitStringsByPattern(nodes, /\*\*\*([^*\n]+?)\*\*\*/g, (match) => {
+    counter += 1;
+    const k = `${keyPrefix}-bi${counter}`;
+    return (
+      <strong key={k} style={{
+        color: 'var(--phosphor-white)', textShadow: 'var(--glow)',
+      }}>
+        <em style={{ fontStyle: 'italic' }}>{renderInner(match, `${k}-c`)}</em>
+      </strong>
+    );
+  });
+
+  // Pass 2: **head *tail*** -> bold(head)+italic(tail). Palace idiom.
+  nodes = splitStringsByPattern(nodes, /\*\*([^*\n]*?)\*([^*\n]+?)\*\*\*/g, (_g1, _i, _full, groups) => {
+    counter += 1;
+    const head = groups[0];
+    const tail = groups[1];
+    const k = `${keyPrefix}-bbi${counter}`;
+    return (
+      <strong key={k} style={{
+        color: 'var(--phosphor-white)', textShadow: 'var(--glow)',
+      }}>
+        {renderInner(head, `${k}-h`)}
+        <em style={{ fontStyle: 'italic' }}>{renderInner(tail, `${k}-t`)}</em>
+      </strong>
+    );
+  });
+
+  // Pass 3: **bold** with single `*` allowed inside (e.g. `**.git/*.lock**`).
+  nodes = splitStringsByPattern(nodes, /\*\*((?:[^*\n]|\*(?!\*))+?)\*\*/g, (match) => {
+    counter += 1;
+    const k = `${keyPrefix}-b${counter}`;
+    return (
+      <strong key={k} style={{
+        color: 'var(--phosphor-white)', textShadow: 'var(--glow)',
+      }}>{renderInner(match, `${k}-c`)}</strong>
+    );
+  });
+
+  // Pass 4: *italic*. Open/close asterisks must be adjacent to non-whitespace
+  // and not part of `**`. Unmatched single `*` pass through literally.
+  nodes = splitStringsByPattern(nodes, /(?<!\*)\*(?!\s)([^*\n]+?)(?<!\s)\*(?!\*)/g, (match) => {
+    counter += 1;
+    const k = `${keyPrefix}-i${counter}`;
+    return (
+      <em key={k} style={{
+        color: 'var(--phosphor-bright, var(--phosphor))', fontStyle: 'italic',
+      }}>{renderInner(match, `${k}-c`)}</em>
+    );
+  });
+
+  return nodes;
+}
+
+// Walk an array of (string | node) and split each string by the pattern,
+// invoking nodeFor(captureGroup1, index, fullMatch, allGroups) to build a
+// replacement node for each hit. Non-string elements pass through.
+function splitStringsByPattern(items, pattern, nodeFor) {
+  const out = [];
+  for (const item of items) {
+    if (typeof item !== 'string') { out.push(item); continue; }
+    pattern.lastIndex = 0;
+    let last = 0;
+    let m;
+    let i = 0;
+    while ((m = pattern.exec(item)) !== null) {
+      if (m.index > last) out.push(item.slice(last, m.index));
+      out.push(nodeFor(m[1], i, m[0], m.slice(1)));
+      last = pattern.lastIndex;
+      i += 1;
+      if (pattern.lastIndex === m.index) pattern.lastIndex += 1; // safety
+    }
+    if (last < item.length) out.push(item.slice(last));
+  }
+  return out;
+}
+
+// (legacy helper kept for any external import — unused now)
+function splitOnPattern(text, pattern, nodeFor) {
+  return splitStringsByPattern([text], pattern, (g, i, _full) => nodeFor(g, i));
 }
 
 function renderBlock(block, ctx, key) {
