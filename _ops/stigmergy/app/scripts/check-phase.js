@@ -217,7 +217,7 @@ const PHASES = {
   18: {
     label: 'v1.0 Phase 5.5 — Topology Lens',
     vitest: [
-      'topology.test.js', 'entry-sort.test.js', 'pulse.test.js',
+      'topology.test.js', 'topology-roles.test.js', 'entry-sort.test.js', 'pulse.test.js',
     ],
     playwright: [
       'boot.spec.js', 'tokens.spec.js', 'topology-lens.spec.js',

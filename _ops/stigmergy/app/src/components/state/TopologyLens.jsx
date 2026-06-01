@@ -4,6 +4,7 @@ import {
 } from 'd3-force';
 import { Box } from '../primitives.jsx';
 import { fetchTopology } from '../../adapters/topology.js';
+import { assignRoles, roleCounts } from '../../lib/topology-roles.js';
 
 // TOPOLOGY -- the typed-link graph lens. Renders the freshest
 // palace-map-full-*.json as a force-directed canvas. Clicking a node
@@ -19,10 +20,21 @@ const HEIGHT = 720;
 const NODE_RADIUS = 3;
 const HOVER_RADIUS = 6;
 
+// Per-role visual: { fill, ring, radius }. Stays in JS (canvas can't read
+// CSS vars directly) — keep aligned with --phosphor / --phosphor-bright /
+// --phosphor-dim and the ANSI accent tokens.
+const ROLE_STYLE = {
+  hub:     { fill: '#aaffaa', ring: '#ccffcc', radius: 6.5 },
+  default: { fill: '#3ee07c', ring: null,      radius: 3.0 },
+  orphan:  { fill: '#1a4a30', ring: null,      radius: 2.0 },
+};
+const HOVER_FILL = '#ffffff';
+const HOVER_RING = '#aaffff';
+
 function prepareGraph(raw) {
   // d3-force will mutate source/target on the link objects (string -> node
   // object). Clone everything so the input data stays untouched.
-  const nodes = (raw?.nodes ?? []).map((n) => ({
+  const baseNodes = (raw?.nodes ?? []).map((n) => ({
     id: n.id,
     path: n.path,
     type: n.type ?? null,
@@ -31,6 +43,7 @@ function prepareGraph(raw) {
     inbound: n.inbound_count ?? 0,
     degree: (n.outbound_count ?? 0) + (n.inbound_count ?? 0),
   }));
+  const nodes = assignRoles(baseNodes);
   const ids = new Set(nodes.map((n) => n.id));
   // Drop ghost edges (targets that don't exist as nodes) so d3-force doesn't
   // throw on link resolution. The map's meta.ghost_taxonomy explains them.
@@ -57,6 +70,14 @@ export default function TopologyLens({ onSelect }) {
     });
     return () => { cancelled = true; };
   }, []);
+
+  // Role counts are derived from the prepared graph; we recompute here
+  // (cheap) so the legend renders before the canvas useEffect mounts.
+  const roleStats = useMemo(() => {
+    if (state.kind !== 'ok') return null;
+    const g = prepareGraph(state.raw);
+    return roleCounts(g.nodes);
+  }, [state]);
 
   useEffect(() => {
     if (state.kind !== 'ok') return;
@@ -93,20 +114,20 @@ export default function TopologyLens({ onSelect }) {
         ctx.lineTo(t.x, t.y);
       }
       ctx.stroke();
-      // nodes
+      // nodes — role-driven size + color; hover overrides both.
       for (const n of graph.nodes) {
         if (typeof n.x !== 'number') continue;
         const isHover = hoverRef.current && hoverRef.current.id === n.id;
-        const r = isHover ? HOVER_RADIUS : NODE_RADIUS + Math.min(3, Math.log2(n.degree + 1) / 1.5);
+        const style = ROLE_STYLE[n.role] ?? ROLE_STYLE.default;
+        const r = isHover ? HOVER_RADIUS : style.radius;
         ctx.beginPath();
         ctx.arc(n.x, n.y, r, 0, Math.PI * 2);
-        ctx.fillStyle = isHover ? 'var(--phosphor-bright)' : '#00ff66';
-        // CSS vars don't resolve inside canvas; use literal values.
-        ctx.fillStyle = isHover ? '#aaffaa' : '#3ee07c';
+        ctx.fillStyle = isHover ? HOVER_FILL : style.fill;
         ctx.fill();
-        if (isHover) {
-          ctx.lineWidth = 1.5;
-          ctx.strokeStyle = '#aaffff';
+        const ringColor = isHover ? HOVER_RING : style.ring;
+        if (ringColor) {
+          ctx.lineWidth = isHover ? 1.5 : 1;
+          ctx.strokeStyle = ringColor;
           ctx.stroke();
         }
       }
@@ -134,7 +155,9 @@ export default function TopologyLens({ onSelect }) {
       const n = nodeAt(ev.clientX, ev.clientY);
       if (n !== hoverRef.current) {
         hoverRef.current = n;
-        setHoverInfo(n ? { id: n.id, type: n.type, stage: n.stage, degree: n.degree, path: n.path } : null);
+        setHoverInfo(n ? {
+          id: n.id, type: n.type, stage: n.stage, degree: n.degree, role: n.role, path: n.path,
+        } : null);
         // re-draw immediately so hover feedback isn't tied to sim tick
         draw();
       }
@@ -180,6 +203,7 @@ export default function TopologyLens({ onSelect }) {
   const edgeCount = state.meta?.edge_count ?? '?';
   return (
     <Box title={`TOPOLOGY  --  typed-link graph  (${nodeCount} nodes, ${edgeCount} edges from ${state.source ?? '?'})`} tone="double">
+      <Legend roleStats={roleStats} />
       <div style={{ position: 'relative' }}>
         <canvas
           data-testid="topology-canvas"
@@ -195,11 +219,38 @@ export default function TopologyLens({ onSelect }) {
           }}>
             <div><strong>{hoverInfo.id}</strong></div>
             <div style={{ color: 'var(--phosphor-dim)', textShadow: 'none' }}>
-              {hoverInfo.type ?? '--'} · {hoverInfo.stage ?? '--'} · degree {hoverInfo.degree}
+              {hoverInfo.type ?? '--'} · {hoverInfo.stage ?? '--'} · degree {hoverInfo.degree} · {hoverInfo.role}
             </div>
           </div>
         ) : null}
       </div>
     </Box>
+  );
+}
+
+function Dot({ style }) {
+  return (
+    <span style={{
+      display: 'inline-block', width: 10, height: 10, borderRadius: '50%',
+      background: style.fill,
+      border: style.ring ? `1px solid ${style.ring}` : 'none',
+      marginRight: 6, verticalAlign: 'middle',
+    }} />
+  );
+}
+
+function Legend({ roleStats }) {
+  if (!roleStats) return null;
+  return (
+    <div data-testid="topology-legend" style={{
+      display: 'flex', gap: 18, alignItems: 'center',
+      fontSize: 11, color: 'var(--phosphor-dim)', textShadow: 'none',
+      marginBottom: 8, paddingBottom: 6,
+      borderBottom: '1px dashed var(--phosphor-dim)',
+    }}>
+      <span><Dot style={ROLE_STYLE.hub} /><strong style={{ color: 'var(--phosphor)' }}>{roleStats.hub}</strong> hubs <span style={{ opacity: 0.6 }}>(top 5% by degree, floor 8)</span></span>
+      <span><Dot style={ROLE_STYLE.default} /><strong style={{ color: 'var(--phosphor)' }}>{roleStats.default}</strong> connected</span>
+      <span><Dot style={ROLE_STYLE.orphan} /><strong style={{ color: 'var(--phosphor)' }}>{roleStats.orphan}</strong> orphans <span style={{ opacity: 0.6 }}>(degree 0)</span></span>
+    </div>
   );
 }
