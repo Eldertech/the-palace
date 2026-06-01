@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import FrontmatterHeader from './FrontmatterHeader.jsx';
+import FrontmatterHeader, { ForwardVectorHero } from './FrontmatterHeader.jsx';
 import TypedLinkPanel from './TypedLinkPanel.jsx';
 import BundlePanel from './BundlePanel.jsx';
 import EntryBody from './EntryBody.jsx';
@@ -138,6 +138,10 @@ export default function EntryReader({ path, index, onNavigate, onBack, onEdit, o
         gap: 24, alignItems: 'flex-start',
       }}>
         <div style={{ minWidth: 0 }}>
+          {/* Forward vector hero sits at the top of the body column so the
+              right rail (typed links + bundle) starts at the same vertical
+              position rather than getting pushed down by a full-width hero. */}
+          <ForwardVectorHero forward_vector={entry.frontmatter?.forward_vector} />
           <EntryBody body={entry.body} index={index} onNavigate={onNavigate} />
         </div>
         <div data-testid="entry-rail" style={{

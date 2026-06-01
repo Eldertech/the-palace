@@ -51,16 +51,49 @@ function PillarChip({ name }) {
   );
 }
 
+// The forward_vector quote -- exposed as its own component so EntryReader
+// can place it in the grid's left column (parallel with the typed-link
+// rail) rather than in a full-width strip that pushes the rail downward.
+export function ForwardVectorHero({ forward_vector }) {
+  if (!forward_vector) return null;
+  return (
+    <div
+      data-testid="forward-vector"
+      style={{
+        border: '3px double var(--phosphor-dim)',
+        padding: '10px 16px',
+        margin: '0 0 16px',
+        background: 'var(--phosphor-deep)',
+        maxWidth: '78ch',
+      }}
+    >
+      <div style={{
+        color: 'var(--phosphor-dim)', textShadow: 'none',
+        fontSize: 10, letterSpacing: '.12em',
+        textTransform: 'uppercase', marginBottom: 4,
+      }}>
+        forward vector -- the entry's conatus
+      </div>
+      <div style={{
+        color: 'var(--phosphor)', textShadow: 'var(--glow)',
+        fontSize: 15, lineHeight: 1.5,
+        fontStyle: 'italic',
+      }}>
+        "{forward_vector}"
+      </div>
+    </div>
+  );
+}
+
 export default function FrontmatterHeader({ title, frontmatter = {}, summary = {} }) {
   const {
     type, stage, status, energy, confidence, who_leads,
     born, last_activated, activation_count, version,
-    forward_vector,
   } = frontmatter;
   const pillars = summary.pillars ?? [];
 
   return (
-    <div data-testid="frontmatter-header" style={{ marginBottom: 18 }}>
+    <div data-testid="frontmatter-header" style={{ marginBottom: 14 }}>
       <Banner as="h1" strong style={{ fontSize: 32, margin: '0 0 6px' }}>
         {(title ?? '').toLowerCase()}
       </Banner>
@@ -82,34 +115,6 @@ export default function FrontmatterHeader({ title, frontmatter = {}, summary = {
           </div>
         ) : null}
       </div>
-
-      {forward_vector ? (
-        <div
-          data-testid="forward-vector"
-          style={{
-            border: '3px double var(--phosphor-dim)',
-            padding: '10px 16px',
-            margin: '0 0 12px',
-            background: 'var(--phosphor-deep)',
-            maxWidth: '78ch',
-          }}
-        >
-          <div style={{
-            color: 'var(--phosphor-dim)', textShadow: 'none',
-            fontSize: 10, letterSpacing: '.12em',
-            textTransform: 'uppercase', marginBottom: 4,
-          }}>
-            forward vector -- the entry's conatus
-          </div>
-          <div style={{
-            color: 'var(--phosphor)', textShadow: 'var(--glow)',
-            fontSize: 15, lineHeight: 1.5,
-            fontStyle: 'italic',
-          }}>
-            "{forward_vector}"
-          </div>
-        </div>
-      ) : null}
 
       <div style={{
         display: 'flex', gap: 18, flexWrap: 'wrap',
