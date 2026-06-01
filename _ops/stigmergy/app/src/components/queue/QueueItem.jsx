@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { vantage } from '../../lib/queue-model.js';
+import InlineProse from '../../lib/inline-prose.jsx';
 
 // One honest QUEUE item. The hierarchy leads with WHO is asking, then the
 // human-language ASK, then a small dim row for the technical resource type
@@ -136,16 +137,18 @@ export default function QueueItem({ item, onJump, onClear, onRespond }) {
               borderLeft: '2px solid var(--phosphor-dim)',
               color: 'var(--phosphor)', textShadow: 'none',
               fontSize: 12, lineHeight: 1.45, maxWidth: '78ch',
-              whiteSpace: 'pre-wrap',
             }}>
-              {item.rationale}
+              <InlineProse text={item.rationale} keyPrefix={`rat-${item.id}`} />
               {item.recommendation ? (
                 <div style={{
                   marginTop: 8, padding: '4px 8px',
                   borderLeft: '2px solid var(--ansi-bright-cyan)',
                   color: 'var(--ansi-bright-cyan)', fontSize: 11,
                 }}>
-                  steward recommends: {item.recommendation}
+                  steward recommends: <InlineProse
+                    text={item.recommendation}
+                    keyPrefix={`rec-${item.id}`}
+                  />
                 </div>
               ) : null}
             </div>

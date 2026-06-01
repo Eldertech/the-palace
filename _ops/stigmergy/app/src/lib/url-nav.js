@@ -17,6 +17,61 @@
 
 import { useCallback, useEffect, useRef, useState } from 'react';
 
+// Parse `?commit=<sha>` from the URL. Returns the sha or null. SSR-safe.
+export function parseCommitFromUrl(searchString) {
+  if (typeof searchString !== 'string') return null;
+  const sha = new URLSearchParams(searchString).get('commit');
+  return sha && sha !== '' ? sha : null;
+}
+
+// Build a new search string preserving all params except `commit`, which is
+// overwritten by `sha` (or cleared when sha is null).
+export function buildCommitSearch(searchString, sha) {
+  const params = new URLSearchParams(searchString || '');
+  params.delete('commit');
+  if (sha) params.set('commit', sha);
+  const s = params.toString();
+  return s === '' ? '' : `?${s}`;
+}
+
+// React hook: keeps `commit` in sync with the URL. pushState on open, native
+// history.back() for the [<] back chip in commit-detail chrome.
+export function useCommitNavigation() {
+  const initial = typeof window === 'undefined'
+    ? null
+    : parseCommitFromUrl(window.location.search);
+  const [sha, setSha] = useState(initial);
+  const fromPop = useRef(false);
+
+  useEffect(() => {
+    if (typeof window === 'undefined') return undefined;
+    function onPop() {
+      fromPop.current = true;
+      setSha(parseCommitFromUrl(window.location.search));
+    }
+    window.addEventListener('popstate', onPop);
+    return () => window.removeEventListener('popstate', onPop);
+  }, []);
+
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+    if (fromPop.current) { fromPop.current = false; return; }
+    const nextSearch = buildCommitSearch(window.location.search, sha);
+    const currentSearch = window.location.search || '';
+    if (nextSearch === currentSearch) return;
+    const nextUrl = `${window.location.pathname}${nextSearch}${window.location.hash}`;
+    window.history.pushState({ commit: sha }, '', nextUrl);
+  }, [sha]);
+
+  const openCommit = useCallback((nextSha) => setSha(nextSha || null), []);
+  const closeCommit = useCallback(() => setSha(null), []);
+  const goBack = useCallback(() => {
+    if (typeof window !== 'undefined') window.history.back();
+  }, []);
+
+  return { commit: sha, openCommit, closeCommit, goBack };
+}
+
 // Parse the current location into { path, edit } where path is the entry
 // rel-path or null and edit is a boolean. SSR-safe (returns nulls).
 export function parseEntryFromUrl(searchString) {

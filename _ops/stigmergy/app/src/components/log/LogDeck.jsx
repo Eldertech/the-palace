@@ -7,6 +7,7 @@ import LogFilters from './LogFilters.jsx';
 import { fetchLog, fetchUncommitted } from '../../adapters/log.js';
 import { fetchEntries } from '../../adapters/entries.js';
 import { filterCommits, groupByCampaign } from '../../lib/log-filter.js';
+import { useCommitNavigation } from '../../lib/url-nav.js';
 
 // LOG deck -- the git explorer. The retrospective surface; honest by
 // construction because git is the work's record, not a projection of it.
@@ -48,7 +49,12 @@ export default function LogDeck() {
   const [uncommitted, setUncommitted] = useState(null);
   const [pathPillars, setPathPillars] = useState(null);
   const [filter, setFilter] = useState({});
-  const [openSha, setOpenSha] = useState(null);
+  // URL drives the open commit: ?commit=<sha>. Browser back/forward
+  // traverse the open/close history; deep-linked commit URLs land directly
+  // on the diff view.
+  const commitNav = useCommitNavigation();
+  const openSha = commitNav.commit;
+  const setOpenSha = commitNav.openCommit;
 
   const load = () => {
     setLogState({ kind: 'loading' });
@@ -89,6 +95,7 @@ export default function LogDeck() {
         <CommitDiff
           sha={openSha}
           onBack={() => setOpenSha(null)}
+          onGoBack={commitNav.goBack}
           onFilterEntry={(e) => { setFilter((f) => ({ ...f, entry: e })); setOpenSha(null); }}
         />
       </div>
