@@ -61,7 +61,20 @@ export function buildQueue(messages) {
         from: m.from,
         ts: m.ts,
         board: m.board,
+        sessionId: m.session_id || null,
+        // Keep `summary` for legacy callers (the technical resource type).
         summary: p.resource || p.rationale || 'resource request',
+        // `ask` is the human-language question the card LEADS with.
+        // Prefer the explicit decision form, then subject, then a first-
+        // sentence trim of the rationale, falling back to resource type.
+        ask: deriveAsk(p),
+        // `resourceType` is the technical label (e.g. "sensory_audition_gate")
+        // -- demoted to dim metadata in the card.
+        resourceType: typeof p.resource === 'string' ? p.resource : null,
+        rationale: typeof p.rationale === 'string' ? p.rationale : null,
+        recommendation: typeof p.steward_recommendation === 'string' ? p.steward_recommendation : null,
+        // Asker-designed a/b/c options (already normalized upstream).
+        options: Array.isArray(p.options) ? p.options : null,
         entry: typeof p.entry === 'string' ? p.entry : null,
         stale_if: 'a RESOURCE_GRANT or RESOURCE_DENY answers this request',
         pointer: { type: 'board', target: 'TRICKSTER' },
@@ -179,6 +192,29 @@ export function laneCounts(items) {
     out.set(b, (out.get(b) ?? 0) + 1);
   }
   return out;
+}
+
+// Derive a human-language "ask" from a request payload. Preference order:
+//   1. decision_topic / decision_needed -- the asker's explicit question
+//   2. subject                          -- a short one-liner
+//   3. first sentence of rationale      -- trimmed at the first period or 200 chars
+//   4. the technical resource type      -- absolute fallback
+// Returns a non-empty string or null.
+export function deriveAsk(payload) {
+  if (!payload || typeof payload !== 'object') return null;
+  const pick = (v) => (typeof v === 'string' && v.trim() !== '' ? v.trim() : null);
+  const fromExplicit = pick(payload.decision_topic)
+    || pick(payload.decision_needed)
+    || pick(payload.subject);
+  if (fromExplicit) return fromExplicit;
+  const rationale = pick(payload.rationale);
+  if (rationale) {
+    // Trim to first sentence (period followed by space or end), cap at 200.
+    const match = rationale.match(/^(.+?[.?!])(\s|$)/);
+    const head = match ? match[1] : rationale;
+    return head.length > 200 ? `${head.slice(0, 197)}...` : head;
+  }
+  return pick(payload.resource);
 }
 
 // A short human vantage string: "announced HH:MM:SSZ, from X".
