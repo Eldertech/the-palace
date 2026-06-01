@@ -141,6 +141,61 @@ test.describe('STATE deck — entry reader (Kuramoto Coupling, the bundle + medi
   });
 });
 
+test.describe('STATE deck — URL-driven navigation', () => {
+  test('opening an entry pushes ?entry= to the URL; browser back returns to the previous entry', async ({ page }) => {
+    await page.goto('/?deck=STATE');
+    await expect(page.getByTestId('pulse-header')).toBeVisible({ timeout: 20_000 });
+
+    // Open Kuramoto Coupling via filter + row click.
+    await page.getByTestId('pulse-filter').fill('Kuramoto Coupling');
+    await page.locator('[data-testid="pulse-row"][data-path="Kuramoto Coupling.md"]').click();
+    await expect(page.getByTestId('entry-reader')).toBeVisible({ timeout: 8_000 });
+    expect(page.url()).toContain('entry=Kuramoto+Coupling.md');
+
+    // Click a resolved body wikilink — should land on a different entry,
+    // and that entry must show in the URL.
+    const resolvedLinks = page.locator('[data-testid="body-wikilink"][data-resolved="true"]');
+    await expect(resolvedLinks.first()).toBeVisible({ timeout: 5_000 });
+    const wikiText = await resolvedLinks.first().textContent();
+    await resolvedLinks.first().click();
+    await expect(page.getByTestId('entry-reader')).toHaveAttribute(
+      'data-path',
+      new RegExp(`${wikiText.replace(/[.*+?^${}()|[\\]\\\\]/g, '\\\\$&')}\\.md$`),
+      { timeout: 8_000 },
+    );
+    const secondUrl = page.url();
+    expect(secondUrl).not.toContain('Kuramoto+Coupling.md');
+    expect(secondUrl).toContain('entry=');
+
+    // Browser back → returns to Kuramoto Coupling.
+    await page.goBack();
+    await expect(page.getByTestId('entry-reader')).toHaveAttribute(
+      'data-path', 'Kuramoto Coupling.md', { timeout: 5_000 },
+    );
+    expect(page.url()).toContain('entry=Kuramoto+Coupling.md');
+
+    // Browser forward → returns to the wikilink target.
+    await page.goForward();
+    expect(page.url()).toBe(secondUrl);
+  });
+
+  test('deep link ?entry=Path lands directly on the entry', async ({ page }) => {
+    await page.goto('/?deck=STATE&entry=Kuramoto%20Coupling.md');
+    await expect(page.getByTestId('entry-reader')).toBeVisible({ timeout: 10_000 });
+    await expect(page.getByTestId('entry-reader')).toHaveAttribute('data-path', 'Kuramoto Coupling.md');
+  });
+
+  test('the [<] back chip is present and the [B] pulse chip returns to the list', async ({ page }) => {
+    await page.goto('/?deck=STATE&entry=Kuramoto%20Coupling.md');
+    await expect(page.getByTestId('entry-reader')).toBeVisible({ timeout: 10_000 });
+    await expect(page.getByTestId('go-back')).toBeVisible();
+    await expect(page.getByTestId('back-to-index')).toBeVisible();
+    await page.getByTestId('back-to-index').click();
+    await expect(page.getByTestId('pulse-header')).toBeVisible();
+    expect(page.url()).not.toContain('entry=');
+  });
+});
+
 test.describe('STATE deck — mermaid in entry body', () => {
   test('Kuramoto Coupling renders its mermaid flowchart as SVG (not raw pre)', async ({ page }) => {
     await page.goto('/');

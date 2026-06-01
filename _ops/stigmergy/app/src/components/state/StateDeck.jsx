@@ -4,6 +4,7 @@ import EntryReader from './EntryReader.jsx';
 import EntryEditor from './EntryEditor.jsx';
 import { fetchEntries } from '../../adapters/entries.js';
 import { buildIndex } from '../../lib/wikilink.js';
+import { useEntryNavigation } from '../../lib/url-nav.js';
 import { Banner } from '../primitives.jsx';
 
 // STATE deck shell. Holds the entries index, and toggles between the
@@ -17,8 +18,12 @@ import { Banner } from '../primitives.jsx';
 
 export default function StateDeck() {
   const [state, setState] = useState({ kind: 'loading' });
-  const [selected, setSelected] = useState(null);
-  const [editing, setEditing] = useState(false);
+  // URL drives which entry is open and whether the editor is showing.
+  // Browser back/forward traverses the visit sequence for free; deep-linked
+  // ?entry=<path> URLs open straight to that entry.
+  const nav = useEntryNavigation();
+  const selected = nav.path;
+  const editing = nav.edit;
 
   useEffect(() => {
     let cancelled = false;
@@ -55,15 +60,16 @@ export default function StateDeck() {
         <EntryEditor
           path={selected}
           index={wikilinkIndex}
-          onCancel={() => setEditing(false)}
+          onCancel={nav.closeEditor}
         />
       ) : selected ? (
         <EntryReader
           path={selected}
           index={wikilinkIndex}
-          onNavigate={(p) => { setEditing(false); setSelected(p); }}
-          onBack={() => { setEditing(false); setSelected(null); }}
-          onEdit={() => setEditing(true)}
+          onNavigate={nav.openEntry}
+          onBack={nav.backToPulse}
+          onEdit={nav.openEditor}
+          onGoBack={nav.goBack}
         />
       ) : (
         <>
@@ -79,7 +85,7 @@ export default function StateDeck() {
             entries={state.kind === 'ok' ? state.entries : []}
             loadState={state.kind === 'ok' ? 'ok' : 'loading'}
             error={null}
-            onSelect={(path) => setSelected(path)}
+            onSelect={nav.openEntry}
           />
         </>
       )}
