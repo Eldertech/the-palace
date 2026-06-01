@@ -4,6 +4,7 @@ import {
   normalizeLinks,
   stripWikiBrackets,
   normalizePillars,
+  detectArrayStyles,
 } from '../../src/lib/yaml-frontmatter.js';
 
 describe('parseFrontmatter', () => {
@@ -137,5 +138,44 @@ describe('normalizePillars', () => {
   it('returns [] for null/undefined', () => {
     expect(normalizePillars(null)).toEqual([]);
     expect(normalizePillars(undefined)).toEqual([]);
+  });
+});
+
+describe('detectArrayStyles', () => {
+  it('detects inline pillars', () => {
+    const text = '---\ntitle: X\npillars: [tools, philosophy]\n---\n# body\n';
+    expect(detectArrayStyles(text).pillars).toBe('inline');
+  });
+
+  it('detects block pillars', () => {
+    const text = '---\ntitle: X\npillars:\n  - creation\n  - tools\n---\n# body\n';
+    expect(detectArrayStyles(text).pillars).toBe('block');
+  });
+
+  it('detects block links', () => {
+    const text = '---\nlinks:\n  - target: "[[Foo]]"\n    type: connects-to\n---\n# body\n';
+    expect(detectArrayStyles(text).links).toBe('block');
+  });
+
+  it('detects inline tags vs block pillars in the same entry', () => {
+    const text = '---\ntags: [a, b, c]\npillars:\n  - tools\n---\n';
+    const styles = detectArrayStyles(text);
+    expect(styles.tags).toBe('inline');
+    expect(styles.pillars).toBe('block');
+  });
+
+  it('returns {} for text without frontmatter', () => {
+    expect(detectArrayStyles('just a body\n')).toEqual({});
+  });
+
+  it('returns {} for empty input', () => {
+    expect(detectArrayStyles('')).toEqual({});
+    expect(detectArrayStyles(null)).toEqual({});
+  });
+
+  it('does not mistake a nested object for an array', () => {
+    const text = '---\nagency_profile:\n  creation: foo\n  tools: bar\n---\n';
+    // agency_profile is an object, not an array — should not be hinted.
+    expect(detectArrayStyles(text).agency_profile).toBeUndefined();
   });
 });

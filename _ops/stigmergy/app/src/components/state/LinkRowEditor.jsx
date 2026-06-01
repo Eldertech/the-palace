@@ -1,5 +1,6 @@
 import React, { useMemo, useRef, useState } from 'react';
 import { LINK_TYPES } from '../../lib/entry-edit.js';
+import { stripWikiBrackets } from '../../lib/yaml-frontmatter.js';
 
 // One repeatable typed-link row: target autocomplete + type dropdown + label.
 // The target field shows live autocomplete against the wikilink index so
@@ -17,9 +18,13 @@ export default function LinkRowEditor({ link, index, onChange, onRemove, testId 
   const [showPopup, setShowPopup] = useState(false);
   const [selected, setSelected] = useState(0);
 
+  // Palace links are commonly stored bracketed -- target: "[[Foo]]" -- but
+  // the wikilink index keys are bare names. Strip brackets before matching.
+  const bareTarget = useMemo(() => stripWikiBrackets(link.target || ''), [link.target]);
+
   const candidates = useMemo(() => {
     if (!index || !index.keys) return [];
-    const q = (link.target || '').toLowerCase();
+    const q = bareTarget.toLowerCase();
     const out = [];
     for (const name of index.keys()) {
       if (q === '' || name.toLowerCase().includes(q)) {
@@ -28,14 +33,18 @@ export default function LinkRowEditor({ link, index, onChange, onRemove, testId 
       }
     }
     return out;
-  }, [index, link.target]);
+  }, [index, bareTarget]);
 
   function setField(key, value) {
     onChange({ ...link, [key]: value });
   }
 
   function apply(name) {
-    setField('target', name);
+    // Wikilink-pick writes the canonical bracketed form so the link round-
+    // trips as a wikilink, matching how palace entries are linked on disk.
+    // A user wanting a free-text target can still type one bare and skip
+    // the autocomplete -- the lookup ignores bare-text targets.
+    setField('target', `[[${name}]]`);
     setShowPopup(false);
     requestAnimationFrame(() => { if (inputRef.current) inputRef.current.focus(); });
   }
@@ -53,7 +62,20 @@ export default function LinkRowEditor({ link, index, onChange, onRemove, testId 
     }
   }
 
-  const known = index && index.has && index.has(link.target);
+  // A target is "known" when its bare name resolves to a palace entry.
+  // Empty targets are not flagged unknown (those are just incomplete rows).
+  // Non-wikilink free-text targets (e.g. "three.js (external)") are not
+  // expected to resolve and should not be flagged unknown either -- the
+  // index lookup tells us only whether a palace entry with this name
+  // exists, and absence is meaningful only when the user is reaching for
+  // a wikilink (the canonical bracketed form, or the autocomplete popup
+  // matched a candidate). For Stage A we flag only when the target IS
+  // bracketed AND no entry resolves -- that is the "dangling wikilink"
+  // condition the form is meant to make impossible.
+  const looksBracketed = (link.target || '').trim().startsWith('[[');
+  const known = !bareTarget
+    || !looksBracketed
+    || (index && index.has && index.has(bareTarget));
 
   return (
     <div data-testid={testId} style={{

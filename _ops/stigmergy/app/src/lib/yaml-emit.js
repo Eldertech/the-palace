@@ -76,11 +76,18 @@ const ALWAYS_QUOTE = new Set(['forward_vector', 'session_thread', 'summary']);
 
 // Emit a YAML document body (without the --- fences) from an object.
 // Returns a string ending in a single newline.
-export function emitYaml(obj) {
+//
+// `options.styleHints` is a `{ field: 'inline' | 'block' }` map. When the
+// composer reads the on-disk YAML it detects the array style each top-level
+// field used and passes it here -- so a save that does not touch `pillars`
+// emits it in the same style it came in, and the unified diff stays signal-
+// only. Without hints, the default rule (INLINE_ARRAY_FIELDS) applies.
+export function emitYaml(obj, options = {}) {
   if (!obj || typeof obj !== 'object' || Array.isArray(obj)) return '';
   const lines = [];
+  const styleHints = options.styleHints || {};
   for (const key of orderedKeys(obj)) {
-    emitField(lines, key, obj[key], 0);
+    emitField(lines, key, obj[key], 0, styleHints);
   }
   if (lines.length === 0) return '';
   return lines.join('\n') + '\n';
@@ -93,8 +100,8 @@ export function emitYaml(obj) {
 // whitespace in the body, so the round-trip contract is "the parsed body
 // goes back in cleanly and the emitter restores the blank-line separator."
 // Bodies passed in with leading whitespace are normalized.
-export function emitEntryFile(frontmatter, body) {
-  const yaml = emitYaml(frontmatter);
+export function emitEntryFile(frontmatter, body, options = {}) {
+  const yaml = emitYaml(frontmatter, options);
   const bodyText = typeof body === 'string' ? body.replace(/^\s+/, '') : '';
   if (!yaml) return bodyText;
   return `---\n${yaml}---\n\n${bodyText}`;
@@ -109,7 +116,7 @@ function orderedKeys(obj) {
   return [...known, ...rest];
 }
 
-function emitField(lines, key, value, depth) {
+function emitField(lines, key, value, depth, styleHints = {}) {
   const indent = ' '.repeat(depth * 2);
   if (value === undefined) return;
 
@@ -119,14 +126,14 @@ function emitField(lines, key, value, depth) {
   }
 
   if (Array.isArray(value)) {
-    emitArray(lines, key, value, depth);
+    emitArray(lines, key, value, depth, styleHints);
     return;
   }
 
   if (typeof value === 'object') {
     lines.push(`${indent}${key}:`);
     for (const childKey of orderedKeys(value)) {
-      emitField(lines, childKey, value[childKey], depth + 1);
+      emitField(lines, childKey, value[childKey], depth + 1, styleHints);
     }
     return;
   }
@@ -134,7 +141,7 @@ function emitField(lines, key, value, depth) {
   lines.push(`${indent}${key}: ${formatScalar(value, key)}`);
 }
 
-function emitArray(lines, key, arr, depth) {
+function emitArray(lines, key, arr, depth, styleHints = {}) {
   const indent = ' '.repeat(depth * 2);
 
   if (arr.length === 0) {
@@ -142,8 +149,15 @@ function emitArray(lines, key, arr, depth) {
     return;
   }
 
-  // Inline-flow for simple symbolic arrays (pillars, tags).
-  if (INLINE_ARRAY_FIELDS.has(key) && arr.every(isSimpleScalar)) {
+  // Style precedence: explicit on-disk style (the hint) wins over the
+  // INLINE_ARRAY_FIELDS default. Nested arrays (depth > 0) ignore hints,
+  // since the hint scan only catches column-0 fields.
+  const hinted = depth === 0 ? styleHints[key] : null;
+  const wantsInline = hinted === 'inline'
+    || (hinted == null && INLINE_ARRAY_FIELDS.has(key));
+  const wantsBlock = hinted === 'block';
+
+  if (wantsInline && !wantsBlock && arr.every(isSimpleScalar)) {
     const items = arr.map((v) => formatScalar(v, null)).join(', ');
     lines.push(`${indent}${key}: [${items}]`);
     return;
