@@ -1,5 +1,6 @@
 import React from 'react';
 import { parseLinks, hrefFor } from '../../lib/format.js';
+import MermaidBlock from './MermaidBlock.jsx';
 
 // Minimal markdown renderer for entry bodies. Intentionally scoped: the
 // goal is "a reader can audit an entry" -- not Obsidian-parity rendering.
@@ -260,6 +261,11 @@ function renderBlock(block, ctx, key) {
       );
     }
     case 'code':
+      // `mermaid` fences render as phosphor-themed SVG (lazy-loaded).
+      // Other code fences stay as the dim <pre> register.
+      if (block.lang === 'mermaid') {
+        return <MermaidBlock key={key} source={block.text} />;
+      }
       return (
         <pre
           key={key}
