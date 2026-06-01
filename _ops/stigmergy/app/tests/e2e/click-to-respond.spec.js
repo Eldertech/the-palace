@@ -160,9 +160,11 @@ test('Custom response uses the typed text as constraints in the preview', async 
   const modal = page.getByTestId('response-modal');
   await expect(modal).toBeVisible({ timeout: 3_000 });
 
-  // Type into the custom field.
+  // Type into the notes textarea -- for the custom response option the
+  // notes IS the response (gets posted as RESOURCE_GRANT payload.constraints).
+  // The separate "constraints" input was merged away once notes existed.
   const customText = 'max 2 external calls only';
-  await modal.locator('input').fill(customText);
+  await page.getByTestId('response-modal-notes').fill(customText);
 
   // Payload preview is collapsed by default; expand it to verify the text
   // makes it into the constraints field.
