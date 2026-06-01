@@ -141,6 +141,30 @@ test.describe('STATE deck — entry reader (Kuramoto Coupling, the bundle + medi
   });
 });
 
+test.describe('STATE deck — mermaid in entry body', () => {
+  test('Kuramoto Coupling renders its mermaid flowchart as SVG (not raw pre)', async ({ page }) => {
+    await page.goto('/');
+    await expect(page.getByTestId('pulse-header')).toBeVisible({ timeout: 20_000 });
+    await page.getByTestId('pulse-filter').fill('Kuramoto Coupling');
+    const row = page.locator('[data-testid="pulse-row"][data-path="Kuramoto Coupling.md"]');
+    await row.click();
+    await expect(page.getByTestId('entry-reader')).toBeVisible({ timeout: 8_000 });
+    // The mermaid block resolves to an SVG within a couple seconds (lazy-load).
+    const block = page.getByTestId('mermaid-block').first();
+    await expect(block).toBeVisible({ timeout: 15_000 });
+    const svg = block.locator('svg').first();
+    await expect(svg).toBeVisible({ timeout: 10_000 });
+    // The SVG must have non-zero size in a real viewport.
+    const box = await svg.boundingBox();
+    expect(box).not.toBeNull();
+    expect(box.width).toBeGreaterThan(100);
+    expect(box.height).toBeGreaterThan(20);
+    // No raw ``` mermaid pre block leaked through.
+    const mermaidPres = page.locator('[data-testid="code-block"][data-lang="mermaid"]');
+    await expect(mermaidPres).toHaveCount(0);
+  });
+});
+
 test.describe('STATE deck — robustness against real palace shape', () => {
   test('renders five distinct foundational entries without crashing', async ({ page }) => {
     const entries = [
