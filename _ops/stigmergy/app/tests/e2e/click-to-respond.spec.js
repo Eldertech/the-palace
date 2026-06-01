@@ -79,6 +79,9 @@ test('Click a Grant -- limited button opens modal with RESOURCE_GRANT preview JS
   const modal = page.getByTestId('response-modal');
   await expect(modal).toBeVisible({ timeout: 3_000 });
 
+  // Payload preview is collapsed by default; expand it.
+  await page.getByTestId('response-modal-preview-toggle').click();
+
   // Preview should contain RESOURCE_GRANT.
   const preview = page.getByTestId('response-modal-preview');
   await expect(preview).toContainText('RESOURCE_GRANT');
@@ -161,7 +164,9 @@ test('Custom response uses the typed text as constraints in the preview', async 
   const customText = 'max 2 external calls only';
   await modal.locator('input').fill(customText);
 
-  // Preview should update to include the custom text.
+  // Payload preview is collapsed by default; expand it to verify the text
+  // makes it into the constraints field.
+  await page.getByTestId('response-modal-preview-toggle').click();
   const preview = page.getByTestId('response-modal-preview');
   await expect(preview).toContainText(customText);
 

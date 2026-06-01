@@ -67,6 +67,7 @@ export default function ResponseModal({ request, option, sessionId, onConfirmed,
   const [notes, setNotes] = useState('');
   const [sending, setSending] = useState(false);
   const [errors, setErrors] = useState([]);
+  const [showPayloadPreview, setShowPayloadPreview] = useState(false);
   const notesRef = useRef(null);        // textarea ref, focused on mount
   const confirmBtnRef = useRef(null);   // ref on the wrapper <div> around the confirm button
   const backdropRef = useRef(null);
@@ -220,9 +221,9 @@ export default function ResponseModal({ request, option, sessionId, onConfirmed,
             </div>
           )}
 
-          {/* Notes textarea -- available for every option. Auto-focused on
-              modal open; Enter submits, Shift+Enter inserts a newline. */}
-          <div>
+          {/* Notes textarea -- the primary affordance, given more room than
+              before (was 3 rows, now 8) so multi-line notes type cleanly. */}
+          <div style={{ flex: 1, display: 'flex', flexDirection: 'column' }}>
             <div style={{ color: 'var(--phosphor-dim)', textShadow: 'none', marginBottom: 4, fontSize: 11, textTransform: 'uppercase', letterSpacing: '.05em' }}>
               notes (optional) -- Enter to send, Shift+Enter for newline
             </div>
@@ -232,28 +233,40 @@ export default function ResponseModal({ request, option, sessionId, onConfirmed,
               value={notes}
               onChange={(e) => setNotes(e.target.value)}
               placeholder="add a note for the agent..."
-              rows={3}
+              rows={8}
               style={{
                 width: '100%',
                 background: 'var(--bg, #000)',
                 color: 'var(--phosphor)',
                 textShadow: 'var(--glow)',
                 border: '1px solid var(--phosphor-dim)',
-                padding: '6px 10px',
+                padding: '8px 10px',
                 fontFamily: 'var(--font-mono, monospace)',
                 fontSize: 13,
-                lineHeight: 1.4,
+                lineHeight: 1.45,
                 resize: 'vertical',
                 boxSizing: 'border-box',
+                minHeight: 180,
               }}
             />
           </div>
 
-          {/* JSON preview */}
+          {/* JSON payload preview -- collapsed by default; expand on demand. */}
           <div>
-            <div style={{ color: 'var(--phosphor-dim)', textShadow: 'none', marginBottom: 4, fontSize: 11, textTransform: 'uppercase', letterSpacing: '.05em' }}>
-              message preview
-            </div>
+            <span
+              data-testid="response-modal-preview-toggle"
+              onClick={() => setShowPayloadPreview((v) => !v)}
+              style={{
+                cursor: 'pointer',
+                color: 'var(--phosphor-dim)', textShadow: 'none',
+                fontSize: 11, letterSpacing: '.05em', textTransform: 'uppercase',
+                borderBottom: '1px dotted currentColor',
+              }}
+            >
+              {showPayloadPreview ? '[-] hide payload preview' : '[+] show payload preview'}
+            </span>
+          </div>
+          {showPayloadPreview ? (
             <div
               data-testid="response-modal-preview"
               style={{
@@ -278,7 +291,7 @@ export default function ResponseModal({ request, option, sessionId, onConfirmed,
                 </pre>
               )}
             </div>
-          </div>
+          ) : null}
 
           {/* Validation errors (shown after a failed POST) */}
           {errors.length > 0 && (

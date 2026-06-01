@@ -72,6 +72,28 @@ export default function FrontmatterForm({ value, onChange, index, warnings = {},
         />
       </Field>
 
+      {/* forward_vector lives near the top -- it is the field Loudon edits
+          most often (vector tuning is a regular practice, per SCHEMA §3).
+          Bigger box than the type-specific fields so a multi-line conatus
+          statement reads cleanly while editing. */}
+      <Field label="forward_vector" hint="conatus: striving-verbs, not stasis">
+        <textarea
+          data-testid={`${testId}-forward-vector`}
+          value={fm.forward_vector || ''}
+          onChange={(e) => set('forward_vector', e.target.value)}
+          rows={7}
+          placeholder="I will keep teaching, spawning, integrating, casting..."
+          style={{
+            ...inputStyle(),
+            fontFamily: 'var(--font-mono, monospace)',
+            lineHeight: 1.5,
+            resize: 'vertical',
+            minHeight: 140,
+          }}
+        />
+        {warnings.forward_vector ? <Warn>{warnings.forward_vector}</Warn> : null}
+      </Field>
+
       <Field label="type" required hint="SCHEMA §1">
         <select
           data-testid={`${testId}-type`}
@@ -196,18 +218,6 @@ export default function FrontmatterForm({ value, onChange, index, warnings = {},
           ))}
         </div>
       ) : null}
-
-      <Field label="forward_vector" hint="conatus: striving-verbs, not stasis">
-        <textarea
-          data-testid={`${testId}-forward-vector`}
-          value={fm.forward_vector || ''}
-          onChange={(e) => set('forward_vector', e.target.value)}
-          rows={3}
-          placeholder="I will keep teaching, spawning, integrating, casting..."
-          style={{ ...inputStyle(), fontFamily: 'var(--font-mono, monospace)', resize: 'vertical' }}
-        />
-        {warnings.forward_vector ? <Warn>{warnings.forward_vector}</Warn> : null}
-      </Field>
 
       <Field label="links" hint="SCHEMA §4: the 10 typed link types">
         <div data-testid={`${testId}-links`}>

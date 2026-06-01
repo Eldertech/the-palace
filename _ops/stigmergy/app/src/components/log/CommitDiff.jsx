@@ -114,7 +114,7 @@ function FileDiff({ fd }) {
   );
 }
 
-export default function CommitDiff({ sha, onBack, onFilterEntry }) {
+export default function CommitDiff({ sha, onBack, onGoBack, onFilterEntry }) {
   const [state, setState] = useState({ kind: 'loading' });
 
   useEffect(() => {
@@ -146,13 +146,29 @@ export default function CommitDiff({ sha, onBack, onFilterEntry }) {
   return (
     <div data-testid="commit-diff" data-hash={c.shortHash}>
       <div style={{ marginBottom: 8 }}>
+        {onGoBack ? (
+          <span
+            data-testid="commit-go-back"
+            onClick={onGoBack}
+            title="back one step (browser history)"
+            style={{
+              cursor: 'pointer',
+              marginRight: 6,
+              color: 'var(--phosphor)', textShadow: 'var(--glow)',
+              border: '1px solid var(--phosphor-dim)', padding: '2px 8px',
+              textTransform: 'uppercase', letterSpacing: '.04em', fontSize: 12,
+            }}
+          >
+            [<b style={{ color: 'var(--phosphor-white)' }}>&lt;</b>]&nbsp;back
+          </span>
+        ) : null}
         {onBack ? (
           <span data-testid="back-to-log" onClick={onBack} style={{
             cursor: 'pointer', color: 'var(--phosphor)', textShadow: 'var(--glow)',
             border: '1px solid var(--phosphor-dim)', padding: '2px 8px',
             textTransform: 'uppercase', letterSpacing: '.04em', fontSize: 12,
           }}>
-            [<b style={{ color: 'var(--phosphor-white)' }}>B</b>]&nbsp;back to log
+            [<b style={{ color: 'var(--phosphor-white)' }}>B</b>]&nbsp;log
           </span>
         ) : null}
         <span style={{ marginLeft: 12, color: 'var(--phosphor-dim)', textShadow: 'none', fontSize: 11 }}>
