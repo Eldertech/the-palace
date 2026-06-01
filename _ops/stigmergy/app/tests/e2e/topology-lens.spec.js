@@ -27,6 +27,16 @@ test.describe('STATE deck — Topology Lens (Phase 5.5)', () => {
     await expect(heading).toBeVisible();
   });
 
+  test('the legend reports hub / connected / orphan counts', async ({ page }) => {
+    await page.goto('/?deck=STATE');
+    await page.getByTestId('state-lens-topology').click();
+    const legend = page.getByTestId('topology-legend');
+    await expect(legend).toBeVisible({ timeout: 15_000 });
+    await expect(legend).toContainText(/\d+\s+hubs/);
+    await expect(legend).toContainText(/\d+\s+connected/);
+    await expect(legend).toContainText(/\d+\s+orphans/);
+  });
+
   test('hovering a node surfaces a tooltip with its id and degree', async ({ page }) => {
     await page.goto('/?deck=STATE');
     await page.getByTestId('state-lens-topology').click();
