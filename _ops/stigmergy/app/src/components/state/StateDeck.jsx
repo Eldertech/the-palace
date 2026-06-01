@@ -78,7 +78,7 @@ export default function StateDeck() {
           </Banner>
           <div style={{ color: 'var(--phosphor-dim)', textShadow: 'none', marginBottom: 12 }}>
             {state.kind === 'ok'
-              ? `${state.count} entries indexed. pulse-sorted, most alive first.`
+              ? `${state.count} entries indexed. click a column to sort.`
               : 'walking the palace...'}
           </div>
           <EntryList
