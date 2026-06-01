@@ -156,6 +156,45 @@ describe('yaml-emit', () => {
     });
   });
 
+  describe('emitYaml — styleHints preserve on-disk array style', () => {
+    it('preserves block style for pillars when hinted', () => {
+      const out = emitYaml(
+        { pillars: ['creation', 'tools'] },
+        { styleHints: { pillars: 'block' } },
+      );
+      expect(out).toContain('pillars:');
+      expect(out).toContain('  - creation');
+      expect(out).toContain('  - tools');
+      expect(out).not.toMatch(/pillars: \[/);
+    });
+
+    it('preserves inline style for tags when hinted', () => {
+      const out = emitYaml(
+        { tags: ['specialist', 'shop'] },
+        { styleHints: { tags: 'inline' } },
+      );
+      expect(out).toContain('tags: [specialist, shop]');
+    });
+
+    it('falls back to INLINE_ARRAY_FIELDS default when no hint', () => {
+      const out = emitYaml({ pillars: ['tools'] });
+      expect(out).toContain('pillars: [tools]');
+    });
+
+    it('hints override the default both ways', () => {
+      const outBlock = emitYaml(
+        { tags: ['a', 'b'] },
+        { styleHints: { tags: 'block' } },
+      );
+      expect(outBlock).toContain('  - a');
+      const outInline = emitYaml(
+        { pillars: ['tools', 'practice'] },
+        { styleHints: { pillars: 'inline' } },
+      );
+      expect(outInline).toContain('pillars: [tools, practice]');
+    });
+  });
+
   describe('round-trip', () => {
     const FIXTURES = [
       {

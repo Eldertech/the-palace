@@ -22,6 +22,7 @@ import { existsSync, readFileSync, mkdtempSync, writeFileSync, rmSync } from 'no
 import { tmpdir } from 'node:os';
 import { checkAllowList, validateFrontmatter } from '../src/lib/entry-edit.js';
 import { emitEntryFile } from '../src/lib/yaml-emit.js';
+import { detectArrayStyles } from '../src/lib/yaml-frontmatter.js';
 import { diffEntryText } from '../src/lib/frontmatter-diff.js';
 import { deriveTrailers, formatCommitMessage } from '../src/lib/commit-spec.js';
 
@@ -85,7 +86,12 @@ export function composePreview(opts) {
   // Read the current file (HEAD blob preferred; falls back to working-tree
   // file; empty string if it's a new entry).
   const beforeText = readCurrentEntry(palaceRoot, relPath);
-  const afterText = emitEntryFile(frontmatter, body);
+  // Detect the on-disk array style for each top-level field so the emitter
+  // preserves it -- a stage edit shouldn't restyle pillars or tags as a
+  // side effect. The hint map is empty for new entries (no on-disk text),
+  // and the emitter falls back to its defaults.
+  const styleHints = detectArrayStyles(beforeText);
+  const afterText = emitEntryFile(frontmatter, body, { styleHints });
 
   if (beforeText === afterText) {
     return {

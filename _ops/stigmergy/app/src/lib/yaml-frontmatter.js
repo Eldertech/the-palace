@@ -93,3 +93,47 @@ export function normalizePillars(rawPillars) {
   }
   return [];
 }
+
+// Walk the raw frontmatter text and detect the style each top-level array
+// uses on disk -- 'inline' (`key: [a, b]`) vs 'block' (`key:\n  - a\n  - b`).
+// The emitter consults this so a save through STATE doesn't restyle arrays
+// the user didn't touch -- "stage: mature->fruiting" should diff in one
+// line, not eight, when pillars and tags are unchanged.
+//
+// Pure scan: only inspects column-0 keys. Nested arrays (inside agency_profile,
+// inside link objects) keep the emitter default. Returns a plain object keyed
+// by field name to 'inline' | 'block'.
+export function detectArrayStyles(text) {
+  const out = {};
+  if (typeof text !== 'string' || text === '') return out;
+  // Strip any leading `---` fences so we only look at the YAML body.
+  let body = text;
+  if (FENCE.test(body)) {
+    const afterOpen = body.replace(FENCE, '');
+    const closeIdx = afterOpen.search(/\r?\n---\s*(\r?\n|$)/);
+    body = closeIdx === -1 ? afterOpen : afterOpen.slice(0, closeIdx);
+  }
+  const lines = body.split(/\r?\n/);
+  for (let i = 0; i < lines.length; i += 1) {
+    const line = lines[i];
+    // Column-0 key only (`key:` with no leading whitespace).
+    const m = line.match(/^([A-Za-z_][A-Za-z0-9_]*):\s*(.*)$/);
+    if (!m) continue;
+    const key = m[1];
+    const rest = m[2];
+    if (rest.startsWith('[')) {
+      out[key] = 'inline';
+    } else if (rest === '' || rest === '|' || rest === '>') {
+      // Look at the next non-empty line; if it begins with `- ` (indented),
+      // this is a block array. If it begins with two-space-indented `key:`,
+      // it's a nested object (not an array), so leave it alone.
+      for (let j = i + 1; j < lines.length; j += 1) {
+        const nl = lines[j];
+        if (nl.trim() === '') continue;
+        if (/^\s+-\s/.test(nl)) out[key] = 'block';
+        break;
+      }
+    }
+  }
+  return out;
+}

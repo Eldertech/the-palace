@@ -50,6 +50,32 @@ function makeTempPalace() {
     ].join('\n'),
     'utf8',
   );
+  // A second entry that uses BLOCK-style pillars on disk -- the diff for
+  // a stage edit must NOT churn the pillars block.
+  writeFileSync(
+    resolve(root, 'Symbiotic Skills.md'),
+    [
+      '---',
+      'title: Symbiotic Skills',
+      'type: project',
+      'status: active',
+      'pillars:',
+      '  - creation',
+      '  - tools',
+      '  - philosophy',
+      '  - practice',
+      'born: 2026-03',
+      'stage: growing',
+      'forward_vector: "I will keep weaving symbiosis."',
+      '---',
+      '',
+      '# Symbiotic Skills',
+      '',
+      'Body.',
+      '',
+    ].join('\n'),
+    'utf8',
+  );
   return root;
 }
 
@@ -243,6 +269,62 @@ describe('POST /api/entry/save — Phase 5 Stage A dry-run preview', () => {
       .set('Content-Type', 'application/json');
     expect(res.status).toBe(422);
     expect(res.body.errors.some((e) => /nothing changed/i.test(e))).toBe(true);
+  });
+
+  test('preserves on-disk block-style pillars when only stage changed (no style churn)', async () => {
+    const res = await request(server)
+      .post('/api/entry/save')
+      .send({
+        path: 'Symbiotic Skills.md',
+        frontmatter: {
+          title: 'Symbiotic Skills',
+          type: 'project',
+          status: 'active',
+          pillars: ['creation', 'tools', 'philosophy', 'practice'],
+          born: '2026-03',
+          stage: 'fruiting',
+          forward_vector: 'I will keep weaving symbiosis.',
+        },
+        body: '# Symbiotic Skills\n\nBody.\n',
+        summary: 'mark fruiting',
+        verify: 'verified',
+      })
+      .set('Content-Type', 'application/json');
+    expect(res.status).toBe(200);
+    const diff = res.body.preview.udiff;
+    // The diff must show ONLY the stage transition. Pillars must NOT appear
+    // as removed (block) and re-added (inline) lines.
+    expect(diff).toMatch(/-stage: growing/);
+    expect(diff).toMatch(/\+stage: fruiting/);
+    expect(diff).not.toMatch(/-pillars:/);
+    expect(diff).not.toMatch(/\+pillars:/);
+    expect(diff).not.toMatch(/-  - creation/);
+  });
+
+  test('preserves on-disk inline-style pillars when only stage changed', async () => {
+    // Symmetric: Kuramoto Coupling uses inline pillars on disk; a stage
+    // change must not restyle them either.
+    const res = await request(server)
+      .post('/api/entry/save')
+      .send({
+        path: 'Kuramoto Coupling.md',
+        frontmatter: {
+          title: 'Kuramoto Coupling',
+          type: 'concept',
+          pillars: ['tools', 'philosophy'],
+          born: '2026-03',
+          stage: 'fruiting',
+          forward_vector: 'I will keep teaching synchronization.',
+        },
+        body: '# Kuramoto Coupling\n\nBody.\n',
+        summary: 'mark fruiting',
+        verify: 'verified',
+      })
+      .set('Content-Type', 'application/json');
+    expect(res.status).toBe(200);
+    const diff = res.body.preview.udiff;
+    expect(diff).not.toMatch(/-pillars:/);
+    expect(diff).not.toMatch(/\+pillars:/);
   });
 
   test('returns 422 when summary or verify missing', async () => {
