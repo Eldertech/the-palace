@@ -1,5 +1,6 @@
 import React from 'react';
 import { detectArtifactType, fileUrl, artifactsFromPayload, basenameOf } from '../lib/artifact.js';
+import PhosphorAudio from './PhosphorAudio.jsx';
 
 // One rendered artifact. The element depends on the detected type; the frame
 // is the same BBS phosphor card for all of them.
@@ -19,10 +20,14 @@ function ArtifactBody({ path }) {
     );
   }
   if (type === 'audio') {
-    // Browser-default controls are an accepted v0.3 break; a phosphor control
-    // strip is v0.4 polish (see BBS Production Plan v0.3).
+    // Phosphor control strip in lieu of the browser's white/grey default
+    // chrome. The native player is hidden inside PhosphorAudio; our
+    // controls drive it programmatically. The wrapping <div> keeps the
+    // existing data-testid so v0.3/v0.4 e2e tests still find the slot.
     return (
-      <audio data-testid="artifact-audio" controls preload="none" src={url} style={{ width: '100%' }} />
+      <div data-testid="artifact-audio">
+        <PhosphorAudio src={url} />
+      </div>
     );
   }
   if (type === 'iframe') {
