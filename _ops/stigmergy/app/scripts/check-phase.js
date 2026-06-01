@@ -214,6 +214,19 @@ const PHASES = {
       'phase-17-v1.0/state-edit-preview.png',
     ],
   },
+  18: {
+    label: 'v1.0 Phase 5.5 — Topology Lens',
+    vitest: [
+      'topology.test.js', 'entry-sort.test.js', 'pulse.test.js',
+    ],
+    playwright: [
+      'boot.spec.js', 'tokens.spec.js', 'topology-lens.spec.js',
+    ],
+    screenshots: [
+      'phase-18-v1.0/topology-overview.png',
+      'phase-18-v1.0/topology-clicked-node.png',
+    ],
+  },
 };
 
 function logRun(entry) {
@@ -322,7 +335,7 @@ function main() {
     process.exit(2);
   }
   if (arg === 'all') {
-    for (const p of [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17]) {
+    for (const p of [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18]) {
       const code = checkPhase(p);
       if (code !== 0) process.exit(code);
     }

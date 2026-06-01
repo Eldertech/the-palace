@@ -20,6 +20,7 @@ import { parseJSONL } from '../src/lib/parser.js';
 import { validateMessage } from './validator.js';
 import { appendJsonLine } from './append.js';
 import { listEntries, readEntry } from '../src/lib/entries.js';
+import { readLatestMap } from '../src/lib/topology.js';
 import { readLog, readCommit, readUncommitted } from './git.js';
 import { createActuator } from './actuator.js';
 import { readCards, appendInboxBlock, CARD_ACTIONS } from './cards.js';
@@ -439,6 +440,17 @@ export function blackboardMiddleware(palaceRoot, opts = {}) {
             count: entries.length,
             ts: new Date().toISOString(),
           });
+        }
+
+        // ── GET /api/topology ─ the freshest palace-map-full-*.json ────────
+        // Returns { meta, nodes, edges, source } from the most recent Map
+        // Build snapshot in _ops/maps/. 404 if no maps are available.
+        if (urlPath === '/api/topology' && method === 'GET') {
+          const map = readLatestMap(palaceRoot);
+          if (!map) {
+            return jsonResponse(res, 404, { error: 'no palace-map-full-*.json found in _ops/maps/' });
+          }
+          return jsonResponse(res, 200, map);
         }
 
         // ── GET /api/entry?path=<rel> ─ one entry's full read shape ────────

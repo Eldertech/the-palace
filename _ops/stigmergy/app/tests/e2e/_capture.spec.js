@@ -695,4 +695,59 @@ test.describe(`phase ${PHASE} captures`, () => {
       await page.screenshot({ path: resolve(dir, 'state-edit-preview.png'), fullPage: true });
     });
   }
+
+  if (PHASE === '18') {
+    // v1.0 Phase 5.5 — Topology Lens. Captures the typed-link graph against
+    // the freshest palace-map-full-*.json (force-directed canvas), plus the
+    // entry reader landed via a node click.
+
+    test('phase-18-v1.0/topology-overview.png', async ({ page }) => {
+      await page.goto('/?deck=STATE');
+      await page.getByTestId('state-deck').waitFor({ timeout: 10_000 });
+      await preloadFonts(page);
+      await page.getByTestId('state-lens-topology').click();
+      await page.getByTestId('topology-canvas').waitFor({ timeout: 15_000 });
+      // Let the force simulation settle so the cluster has shape.
+      await page.waitForTimeout(2500);
+      const dir = resolve('screenshots/phase-18-v1.0');
+      mkdirSync(dir, { recursive: true });
+      await page.screenshot({ path: resolve(dir, 'topology-overview.png'), fullPage: false });
+    });
+
+    test('phase-18-v1.0/topology-clicked-node.png', async ({ page }) => {
+      await page.goto('/?deck=STATE');
+      await page.getByTestId('state-deck').waitFor({ timeout: 10_000 });
+      await preloadFonts(page);
+      await page.getByTestId('state-lens-topology').click();
+      await page.getByTestId('topology-canvas').waitFor({ timeout: 15_000 });
+      await page.waitForTimeout(2500);
+      // Scan for any hoverable node near the cluster center, then click it.
+      const target = await page.evaluate(async () => {
+        const canvas = document.querySelector('[data-testid="topology-canvas"]');
+        const r = canvas.getBoundingClientRect();
+        for (let dx = -200; dx <= 200; dx += 5) {
+          for (let dy = -150; dy <= 150; dy += 5) {
+            const cx = r.left + r.width/2 + dx;
+            const cy = r.top + r.height/2 + dy;
+            canvas.dispatchEvent(new MouseEvent('mousemove', { clientX: cx, clientY: cy, bubbles: true }));
+            await new Promise((res) => setTimeout(res, 0));
+            const hover = document.querySelector('[data-testid="topology-hover"]');
+            if (hover) return { cx, cy };
+          }
+        }
+        return null;
+      });
+      if (target) {
+        await page.evaluate(({ cx, cy }) => {
+          const canvas = document.querySelector('[data-testid="topology-canvas"]');
+          canvas.dispatchEvent(new MouseEvent('click', { clientX: cx, clientY: cy, bubbles: true }));
+        }, target);
+        await page.getByTestId('entry-reader').waitFor({ timeout: 10_000 });
+      }
+      await page.waitForTimeout(400);
+      const dir = resolve('screenshots/phase-18-v1.0');
+      mkdirSync(dir, { recursive: true });
+      await page.screenshot({ path: resolve(dir, 'topology-clicked-node.png'), fullPage: false });
+    });
+  }
 });
