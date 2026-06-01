@@ -5,6 +5,7 @@ import {
 import { Box } from '../primitives.jsx';
 import { fetchTopology } from '../../adapters/topology.js';
 import { assignRoles, roleCounts } from '../../lib/topology-roles.js';
+import { buildPillarsByPath, annotateBridges, bridgeCounts } from '../../lib/topology-bridges.js';
 
 // TOPOLOGY -- the typed-link graph lens. Renders the freshest
 // palace-map-full-*.json as a force-directed canvas. Clicking a node
@@ -30,8 +31,14 @@ const ROLE_STYLE = {
 };
 const HOVER_FILL = '#ffffff';
 const HOVER_RING = '#aaffff';
+// Cross-pillar bridge edges — amber, slightly stronger than the dim
+// phosphor used for in-pillar / unaffiliated edges.
+const EDGE_STYLE = {
+  default: { color: 'rgba(0, 200, 80, 0.18)', width: 0.6 },
+  bridge:  { color: 'rgba(255, 184, 64, 0.55)', width: 0.9 },
+};
 
-function prepareGraph(raw) {
+function prepareGraph(raw, pillarsByPath) {
   // d3-force will mutate source/target on the link objects (string -> node
   // object). Clone everything so the input data stays untouched.
   const baseNodes = (raw?.nodes ?? []).map((n) => ({
@@ -43,23 +50,29 @@ function prepareGraph(raw) {
     inbound: n.inbound_count ?? 0,
     degree: (n.outbound_count ?? 0) + (n.inbound_count ?? 0),
   }));
-  const nodes = assignRoles(baseNodes);
-  const ids = new Set(nodes.map((n) => n.id));
+  const withRoles = assignRoles(baseNodes);
+  const ids = new Set(withRoles.map((n) => n.id));
   // Drop ghost edges (targets that don't exist as nodes) so d3-force doesn't
   // throw on link resolution. The map's meta.ghost_taxonomy explains them.
-  const links = (raw?.edges ?? [])
+  const rawLinks = (raw?.edges ?? [])
     .filter((e) => ids.has(e.source) && ids.has(e.target))
     .map((e) => ({ source: e.source, target: e.target, type: e.type, label: e.label }));
-  return { nodes, links };
+  // Annotate each link with crossPillar (computed against the entries
+  // catalog's pillar sets). Node objects pick up a `pillars` Set too.
+  return annotateBridges({ nodes: withRoles, links: rawLinks }, pillarsByPath);
 }
 
-export default function TopologyLens({ onSelect }) {
+export default function TopologyLens({ onSelect, entries = [] }) {
   const [state, setState] = useState({ kind: 'loading' });
   const canvasRef = useRef(null);
   const simRef = useRef(null);
   const graphRef = useRef(null);
   const hoverRef = useRef(null);
   const [hoverInfo, setHoverInfo] = useState(null);
+
+  // Build the path -> pillars Set lookup once per entries fetch. Stable
+  // across lens-switches so we don't re-walk on hover repaints.
+  const pillarsByPath = useMemo(() => buildPillarsByPath(entries), [entries]);
 
   useEffect(() => {
     let cancelled = false;
@@ -71,13 +84,14 @@ export default function TopologyLens({ onSelect }) {
     return () => { cancelled = true; };
   }, []);
 
-  // Role counts are derived from the prepared graph; we recompute here
-  // (cheap) so the legend renders before the canvas useEffect mounts.
-  const roleStats = useMemo(() => {
+  // Role + bridge counts are derived from the prepared graph; we
+  // recompute here (cheap) so the legend renders before the canvas
+  // useEffect mounts.
+  const legendStats = useMemo(() => {
     if (state.kind !== 'ok') return null;
-    const g = prepareGraph(state.raw);
-    return roleCounts(g.nodes);
-  }, [state]);
+    const g = prepareGraph(state.raw, pillarsByPath);
+    return { roles: roleCounts(g.nodes), bridges: bridgeCounts(g.links) };
+  }, [state, pillarsByPath]);
 
   useEffect(() => {
     if (state.kind !== 'ok') return;
@@ -91,7 +105,7 @@ export default function TopologyLens({ onSelect }) {
     const ctx = canvas.getContext('2d');
     ctx.scale(dpr, dpr);
 
-    const graph = prepareGraph(state.raw);
+    const graph = prepareGraph(state.raw, pillarsByPath);
     graphRef.current = graph;
 
     const sim = forceSimulation(graph.nodes)
@@ -103,17 +117,22 @@ export default function TopologyLens({ onSelect }) {
 
     function draw() {
       ctx.clearRect(0, 0, WIDTH, HEIGHT);
-      // edges
-      ctx.lineWidth = 0.6;
-      ctx.strokeStyle = 'rgba(0, 200, 80, 0.18)';
-      ctx.beginPath();
-      for (const l of graph.links) {
-        const s = l.source; const t = l.target;
-        if (!s || !t || typeof s.x !== 'number' || typeof t.x !== 'number') continue;
-        ctx.moveTo(s.x, s.y);
-        ctx.lineTo(t.x, t.y);
+      // edges -- two passes so cross-pillar bridges paint over the default
+      // tissue and stay visible against the dense cluster.
+      for (const kind of ['default', 'bridge']) {
+        const style = EDGE_STYLE[kind];
+        ctx.lineWidth = style.width;
+        ctx.strokeStyle = style.color;
+        ctx.beginPath();
+        for (const l of graph.links) {
+          if (!!l.crossPillar !== (kind === 'bridge')) continue;
+          const s = l.source; const t = l.target;
+          if (!s || !t || typeof s.x !== 'number' || typeof t.x !== 'number') continue;
+          ctx.moveTo(s.x, s.y);
+          ctx.lineTo(t.x, t.y);
+        }
+        ctx.stroke();
       }
-      ctx.stroke();
       // nodes — role-driven size + color; hover overrides both.
       for (const n of graph.nodes) {
         if (typeof n.x !== 'number') continue;
@@ -157,6 +176,7 @@ export default function TopologyLens({ onSelect }) {
         hoverRef.current = n;
         setHoverInfo(n ? {
           id: n.id, type: n.type, stage: n.stage, degree: n.degree, role: n.role, path: n.path,
+          pillars: n.pillars ? [...n.pillars] : [],
         } : null);
         // re-draw immediately so hover feedback isn't tied to sim tick
         draw();
@@ -179,7 +199,7 @@ export default function TopologyLens({ onSelect }) {
       simRef.current = null;
       graphRef.current = null;
     };
-  }, [state, onSelect]);
+  }, [state, onSelect, pillarsByPath]);
 
   if (state.kind === 'loading') {
     return (
@@ -203,7 +223,7 @@ export default function TopologyLens({ onSelect }) {
   const edgeCount = state.meta?.edge_count ?? '?';
   return (
     <Box title={`TOPOLOGY  --  typed-link graph  (${nodeCount} nodes, ${edgeCount} edges from ${state.source ?? '?'})`} tone="double">
-      <Legend roleStats={roleStats} />
+      <Legend stats={legendStats} />
       <div style={{ position: 'relative' }}>
         <canvas
           data-testid="topology-canvas"
@@ -220,6 +240,9 @@ export default function TopologyLens({ onSelect }) {
             <div><strong>{hoverInfo.id}</strong></div>
             <div style={{ color: 'var(--phosphor-dim)', textShadow: 'none' }}>
               {hoverInfo.type ?? '--'} · {hoverInfo.stage ?? '--'} · degree {hoverInfo.degree} · {hoverInfo.role}
+            </div>
+            <div style={{ color: 'var(--phosphor-dim)', textShadow: 'none' }}>
+              pillars: {hoverInfo.pillars.length ? hoverInfo.pillars.join(' / ') : '--'}
             </div>
           </div>
         ) : null}
@@ -239,18 +262,33 @@ function Dot({ style }) {
   );
 }
 
-function Legend({ roleStats }) {
-  if (!roleStats) return null;
+function EdgeSwatch({ color, width }) {
+  return (
+    <span style={{
+      display: 'inline-block', width: 16, height: 0, marginRight: 6, verticalAlign: 'middle',
+      borderTop: `${Math.max(1, width * 2)}px solid ${color}`,
+    }} />
+  );
+}
+
+function Legend({ stats }) {
+  if (!stats) return null;
+  const { roles, bridges } = stats;
   return (
     <div data-testid="topology-legend" style={{
-      display: 'flex', gap: 18, alignItems: 'center',
+      display: 'flex', flexWrap: 'wrap', gap: 18, alignItems: 'center',
       fontSize: 11, color: 'var(--phosphor-dim)', textShadow: 'none',
       marginBottom: 8, paddingBottom: 6,
       borderBottom: '1px dashed var(--phosphor-dim)',
     }}>
-      <span><Dot style={ROLE_STYLE.hub} /><strong style={{ color: 'var(--phosphor)' }}>{roleStats.hub}</strong> hubs <span style={{ opacity: 0.6 }}>(top 5% by degree, floor 8)</span></span>
-      <span><Dot style={ROLE_STYLE.default} /><strong style={{ color: 'var(--phosphor)' }}>{roleStats.default}</strong> connected</span>
-      <span><Dot style={ROLE_STYLE.orphan} /><strong style={{ color: 'var(--phosphor)' }}>{roleStats.orphan}</strong> orphans <span style={{ opacity: 0.6 }}>(degree 0)</span></span>
+      <span><Dot style={ROLE_STYLE.hub} /><strong style={{ color: 'var(--phosphor)' }}>{roles.hub}</strong> hubs <span style={{ opacity: 0.6 }}>(top 5% by degree, floor 8)</span></span>
+      <span><Dot style={ROLE_STYLE.default} /><strong style={{ color: 'var(--phosphor)' }}>{roles.default}</strong> connected</span>
+      <span><Dot style={ROLE_STYLE.orphan} /><strong style={{ color: 'var(--phosphor)' }}>{roles.orphan}</strong> orphans <span style={{ opacity: 0.6 }}>(degree 0)</span></span>
+      <span data-testid="topology-legend-bridges">
+        <EdgeSwatch color={EDGE_STYLE.bridge.color} width={EDGE_STYLE.bridge.width} />
+        <strong style={{ color: 'var(--phosphor)' }}>{bridges.cross}</strong> cross-pillar bridges
+        <span style={{ opacity: 0.6 }}> / {bridges.total} edges</span>
+      </span>
     </div>
   );
 }

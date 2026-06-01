@@ -91,7 +91,10 @@ export default function StateDeck() {
           </div>
           <LensToggle lens={lens} onChange={setLens} />
           {lens === 'topology' ? (
-            <TopologyLens onSelect={nav.openEntry} />
+            <TopologyLens
+              onSelect={nav.openEntry}
+              entries={state.kind === 'ok' ? state.entries : []}
+            />
           ) : (
             <EntryList
               entries={state.kind === 'ok' ? state.entries : []}
