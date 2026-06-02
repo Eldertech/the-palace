@@ -1,5 +1,8 @@
 import { describe, it, expect } from 'vitest';
-import { parseEntryFromUrl, buildEntrySearch } from '../../src/lib/url-nav.js';
+import {
+  parseEntryFromUrl, buildEntrySearch,
+  parseLensFromUrl, buildLensSearch,
+} from '../../src/lib/url-nav.js';
 
 describe('parseEntryFromUrl', () => {
   it('returns null path for empty search', () => {
@@ -68,5 +71,41 @@ describe('buildEntrySearch', () => {
   it('encodes path with spaces and slashes', () => {
     expect(buildEntrySearch('', { path: 'Palace development/Two Batons.md' }))
       .toBe('?entry=Palace+development%2FTwo+Batons.md');
+  });
+});
+
+describe('parseLensFromUrl', () => {
+  it('defaults to pulse for empty / missing param', () => {
+    expect(parseLensFromUrl('')).toBe('pulse');
+    expect(parseLensFromUrl('?deck=STATE')).toBe('pulse');
+  });
+  it('reads ?lens=topology', () => {
+    expect(parseLensFromUrl('?lens=topology')).toBe('topology');
+  });
+  it('coerces unknown lens values to pulse', () => {
+    expect(parseLensFromUrl('?lens=bogus')).toBe('pulse');
+    expect(parseLensFromUrl('?lens=PULSE')).toBe('pulse'); // case-strict
+  });
+  it('SSR-safe for non-string input', () => {
+    expect(parseLensFromUrl(null)).toBe('pulse');
+    expect(parseLensFromUrl(undefined)).toBe('pulse');
+  });
+});
+
+describe('buildLensSearch', () => {
+  it('omits lens=pulse (the implicit default) to keep URLs clean', () => {
+    expect(buildLensSearch('?lens=topology', 'pulse')).toBe('');
+    expect(buildLensSearch('', 'pulse')).toBe('');
+  });
+  it('writes lens=topology', () => {
+    expect(buildLensSearch('', 'topology')).toBe('?lens=topology');
+  });
+  it('preserves other params (deck, entry, edit)', () => {
+    expect(buildLensSearch('?deck=STATE&entry=Foo.md', 'topology'))
+      .toBe('?deck=STATE&entry=Foo.md&lens=topology');
+  });
+  it('replaces an existing lens param', () => {
+    expect(buildLensSearch('?lens=topology&deck=STATE', 'pulse'))
+      .toBe('?deck=STATE');
   });
 });

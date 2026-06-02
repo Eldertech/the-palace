@@ -65,6 +65,26 @@ test.describe('STATE deck — Topology Lens (Phase 5.5)', () => {
     await expect(page.getByTestId('topology-hover')).toContainText(/degree \d+/);
   });
 
+  test('?lens=topology deep-link lands directly on the graph; switching lens pushes URL', async ({ page }) => {
+    // Deep link lands on topology.
+    await page.goto('/?deck=STATE&lens=topology');
+    await expect(page.getByTestId('state-lens-topology')).toHaveAttribute('data-active', '1');
+    await expect(page.getByTestId('topology-canvas')).toBeVisible({ timeout: 15_000 });
+
+    // Switching to PULSE clears the URL param (pulse is the implicit default).
+    await page.getByTestId('state-lens-pulse').click();
+    await expect(page.getByTestId('state-lens-pulse')).toHaveAttribute('data-active', '1');
+    expect(page.url()).not.toMatch(/lens=/);
+
+    // Switching back to topology pushes ?lens=topology again.
+    await page.getByTestId('state-lens-topology').click();
+    expect(page.url()).toMatch(/lens=topology/);
+
+    // Browser back returns to pulse.
+    await page.goBack();
+    await expect(page.getByTestId('state-lens-pulse')).toHaveAttribute('data-active', '1');
+  });
+
   test('clicking a node opens that entry in STATE (entry reader mounts)', async ({ page }) => {
     await page.goto('/?deck=STATE');
     await page.getByTestId('state-lens-topology').click();

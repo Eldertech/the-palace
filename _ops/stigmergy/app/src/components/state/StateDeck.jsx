@@ -5,7 +5,7 @@ import EntryEditor from './EntryEditor.jsx';
 import TopologyLens from './TopologyLens.jsx';
 import { fetchEntries } from '../../adapters/entries.js';
 import { buildIndex } from '../../lib/wikilink.js';
-import { useEntryNavigation } from '../../lib/url-nav.js';
+import { useEntryNavigation, useLensNavigation } from '../../lib/url-nav.js';
 import { Banner } from '../primitives.jsx';
 
 // STATE deck shell. Holds the entries index, and toggles between the
@@ -20,10 +20,10 @@ import { Banner } from '../primitives.jsx';
 export default function StateDeck() {
   const [state, setState] = useState({ kind: 'loading' });
   // STATE has two lenses: PULSE (the ranked list, default) and TOPOLOGY
-  // (the typed-link graph). The lens choice is local UI state -- entry nav
-  // (?entry=, ?edit=) survives a lens switch but the lens itself does not
-  // persist across reloads (deliberate for v1).
-  const [lens, setLens] = useState('pulse');
+  // (the typed-link graph). Lens choice is URL-driven (?lens=topology), so
+  // deep-links land on the right lens and browser back/forward traverses
+  // lens switches. PULSE is the implicit default and is omitted from URLs.
+  const { lens, setLens } = useLensNavigation();
   // URL drives which entry is open and whether the editor is showing.
   // Browser back/forward traverses the visit sequence for free; deep-linked
   // ?entry=<path> URLs open straight to that entry.
