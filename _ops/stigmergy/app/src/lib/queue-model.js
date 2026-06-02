@@ -11,9 +11,13 @@
 //   - it never declares present truth
 //
 // Items come from board messages:
-//   - RESOURCE_REQUEST without a matching GRANT/DENY  → 'resource_request'
-//   - BROADCAST with payload.kind 'handoff_ready'      → 'handoff_ready'
-//   (proposals + audition gates are later item types; the shape is open.)
+//   - RESOURCE_REQUEST without a matching GRANT/DENY    → 'resource_request'
+//   - BROADCAST with payload.kind 'handoff_ready'        → 'handoff_ready'
+//   - BROADCAST with payload.kind 'vector_proposal'      → 'vector_proposal'
+//     (Weave swarm's proposals — promote-unsung, new-typed-link, label-
+//      enrichment, stage-transition, vector-tuning. Render as cards in
+//      QUEUE; resolve via the existing RESOURCE_GRANT/RESOURCE_DENY flow
+//      referencing the proposal's message id.)
 //
 // reconcileQueue() layers git resolution on top: given the LOG commits, it
 // marks an item resolved when its stale_if is satisfied — the prospective →
@@ -32,7 +36,9 @@ export function buildQueue(messages) {
   if (!Array.isArray(messages)) return [];
   const items = [];
 
-  // Resource requests: unanswered ones become queue items.
+  // Resource requests + vector proposals are both answered by RESOURCE_GRANT
+  // / RESOURCE_DENY messages that carry `re: <message_id>`. One shared set
+  // covers both (the dedup is by the answered message's id).
   const responded = new Set();
   for (const m of messages) {
     if ((m?.type === 'RESOURCE_GRANT' || m?.type === 'RESOURCE_DENY') && m.re) {
@@ -78,6 +84,47 @@ export function buildQueue(messages) {
         entry: typeof p.entry === 'string' ? p.entry : null,
         stale_if: 'a RESOURCE_GRANT or RESOURCE_DENY answers this request',
         pointer: { type: 'board', target: 'TRICKSTER' },
+        resolved: { done: false, reason: null, commit: null },
+        blocking: p.blocking === true,
+        health: m.health || null,
+        raw: m,
+      });
+      continue;
+    }
+
+    if (p.kind === 'vector_proposal' && !responded.has(m.id)) {
+      const proposalType = typeof p.proposal_type === 'string' ? p.proposal_type : 'unknown';
+      const source = typeof p.source_entry === 'string' ? p.source_entry : null;
+      const target = typeof p.target_entry === 'string' ? p.target_entry : null;
+      const proposed = typeof p.proposed_change === 'string' ? p.proposed_change : null;
+      // The card LEADS with proposed_change; if absent, synthesize a
+      // human-language ask from the proposal_type + source/target.
+      const ask = proposed || synthesizeProposalAsk(proposalType, source, target);
+      items.push({
+        id: m.id,
+        sourceId: m.id,
+        kind: 'vector_proposal',
+        from: m.from,
+        ts: m.ts,
+        board: m.board,
+        sessionId: m.session_id || null,
+        proposal_type: proposalType,
+        source_entry: source,
+        target_entry: target,
+        ask,
+        summary: ask,
+        rationale: typeof p.rationale === 'string' ? p.rationale : null,
+        evidence: p.evidence ?? null,
+        // No grant/deny yet -- by the same logic as resource_request: a
+        // committed edit to the source entry would coarsely close it, but
+        // the canonical resolution is a RESOURCE_GRANT/DENY referencing
+        // this message id. The reconciler covers the entry-touch path.
+        stale_if: typeof p.stale_if === 'string' && p.stale_if !== ''
+          ? p.stale_if
+          : (source
+              ? `a RESOURCE_GRANT/DENY answers this proposal, or a commit touches ${source}`
+              : 'a RESOURCE_GRANT or RESOURCE_DENY answers this proposal'),
+        pointer: source ? { type: 'entry', target: source } : { type: 'board', target: m.board },
         resolved: { done: false, reason: null, commit: null },
         blocking: p.blocking === true,
         health: m.health || null,
@@ -215,6 +262,27 @@ export function deriveAsk(payload) {
     return head.length > 200 ? `${head.slice(0, 197)}...` : head;
   }
   return pick(payload.resource);
+}
+
+// Synthesize a human-language ask from a vector_proposal's structured
+// fields when the proposer didn't supply a `proposed_change` string.
+export function synthesizeProposalAsk(proposalType, source, target) {
+  const s = source ? `[[${source.replace(/\.md$/, '')}]]` : 'an entry';
+  const t = target ? `[[${target.replace(/\.md$/, '')}]]` : 'another entry';
+  switch (proposalType) {
+    case 'promote_unsung':
+      return `promote the body wikilink ${s} → ${t} to a typed link`;
+    case 'new_typed_link':
+      return `add a typed link ${s} → ${t}`;
+    case 'label_enrichment':
+      return `add a resonant link label to a link from ${s}`;
+    case 'stage_transition':
+      return `propose a stage transition for ${s}`;
+    case 'vector_tuning':
+      return `propose a forward-vector revision for ${s}`;
+    default:
+      return `Weave proposal on ${s}`;
+  }
 }
 
 // A short human vantage string: "announced HH:MM:SSZ, from X".

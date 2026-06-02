@@ -29,6 +29,24 @@ test.describe('QUEUE panel — the ranked inbox', () => {
     await expect(page.getByText('queue -- the ranked inbox')).toBeVisible();
   });
 
+  test('a vector_proposal renders as a WEAVE PROPOSAL card with source -> target metadata', async ({ page }) => {
+    await gotoQueue(page);
+    // Switch to the WEAVE lane so the proposal card is visible.
+    await page.getByTestId('queue-lane-WEAVE').click();
+    const proposal = page.locator('[data-testid="queue-item"][data-kind="vector_proposal"]').first();
+    await expect(proposal).toBeVisible();
+    await expect(proposal).toContainText(/WEAVE PROPOSAL/);
+    await expect(proposal).toContainText(/Kuramoto Coupling/);
+    await expect(proposal).toContainText(/Spinoza Conatus/);
+    await expect(proposal.getByTestId('queue-item-proposal-type')).toContainText(/promote unsung path/);
+    await expect(proposal.getByTestId('queue-item-proposal-edge')).toContainText(/Kuramoto Coupling.*-->.*Spinoza Conatus/);
+    // Grant / deny actions are available, same as resource_request.
+    await expect(proposal.getByTestId('queue-item-grant')).toBeVisible();
+    await expect(proposal.getByTestId('queue-item-deny')).toBeVisible();
+    // Pointer chip jumps to STATE for the source entry.
+    await expect(proposal.getByTestId('queue-item-jump')).toContainText(/Kuramoto Coupling/);
+  });
+
   test('a handoff_ready appears as a QUEUE item', async ({ page }) => {
     await gotoQueue(page);
     const items = page.locator('[data-testid="queue-item"][data-kind="handoff_ready"]');

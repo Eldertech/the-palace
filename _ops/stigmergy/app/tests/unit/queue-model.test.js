@@ -1,6 +1,7 @@
 import { describe, it, expect } from 'vitest';
 import {
   buildQueue, reconcileQueue, partitionQueue, rankQueue, laneCounts, vantage, deriveAsk,
+  synthesizeProposalAsk,
 } from '../../src/lib/queue-model.js';
 
 function reqMsg(over = {}) {
@@ -8,6 +9,23 @@ function reqMsg(over = {}) {
     id: 'm1', request_id: 'req-1', type: 'RESOURCE_REQUEST', from: '@Steward',
     ts: '2026-05-29T10:00:00Z', board: 'TRICKSTER',
     payload: { resource: 'GPU minutes', rationale: 'render a sim', blocking: false },
+    ...over,
+  };
+}
+
+function proposalMsg(over = {}) {
+  return {
+    id: 'vp-1', type: 'BROADCAST', from: '@weave-swarm',
+    ts: '2026-06-01T10:00:00Z', board: 'WEAVE', session_id: 'weave-2026-06-01',
+    payload: {
+      kind: 'vector_proposal',
+      proposal_type: 'promote_unsung',
+      source_entry: 'Kuramoto Coupling.md',
+      target_entry: 'Spinoza Conatus.md',
+      proposed_change: 'promote the body wikilink [[Spinoza Conatus]] in [[Kuramoto Coupling]] to a typed connects-to link',
+      rationale: 'Kuramoto Coupling references Spinoza Conatus in prose but lacks a YAML typed link.',
+      stale_if: 'Kuramoto Coupling YAML adds a typed link to Spinoza Conatus',
+    },
     ...over,
   };
 }
@@ -73,6 +91,62 @@ describe('buildQueue', () => {
 
   it('returns [] for non-array', () => {
     expect(buildQueue(null)).toEqual([]);
+  });
+
+  it('turns a vector_proposal BROADCAST into an item with proposal fields + pointer to source', () => {
+    const q = buildQueue([proposalMsg()]);
+    expect(q).toHaveLength(1);
+    expect(q[0].kind).toBe('vector_proposal');
+    expect(q[0].id).toBe('vp-1');
+    expect(q[0].proposal_type).toBe('promote_unsung');
+    expect(q[0].source_entry).toBe('Kuramoto Coupling.md');
+    expect(q[0].target_entry).toBe('Spinoza Conatus.md');
+    expect(q[0].ask).toMatch(/promote.*Spinoza/i);
+    expect(q[0].pointer).toEqual({ type: 'entry', target: 'Kuramoto Coupling.md' });
+    expect(q[0].stale_if).toMatch(/Spinoza/);
+  });
+
+  it('drops a vector_proposal that has been answered by a RESOURCE_GRANT', () => {
+    const grant = { id: 'g-vp', type: 'RESOURCE_GRANT', re: 'vp-1', board: 'WEAVE', ts: '2026-06-01T11:00:00Z' };
+    expect(buildQueue([proposalMsg(), grant])).toHaveLength(0);
+  });
+
+  it('drops a vector_proposal that has been answered by a RESOURCE_DENY', () => {
+    const deny = { id: 'd-vp', type: 'RESOURCE_DENY', re: 'vp-1', board: 'WEAVE', ts: '2026-06-01T11:00:00Z' };
+    expect(buildQueue([proposalMsg(), deny])).toHaveLength(0);
+  });
+
+  it('synthesizes an ask when proposed_change is missing', () => {
+    const q = buildQueue([proposalMsg({
+      payload: {
+        kind: 'vector_proposal',
+        proposal_type: 'new_typed_link',
+        source_entry: 'Foo.md',
+        target_entry: 'Bar.md',
+      },
+    })]);
+    expect(q[0].ask).toMatch(/add a typed link.*Foo.*Bar/i);
+  });
+
+  it('falls back to board pointer when source_entry is absent', () => {
+    const q = buildQueue([proposalMsg({
+      payload: {
+        kind: 'vector_proposal',
+        proposal_type: 'label_enrichment',
+      },
+    })]);
+    expect(q[0].pointer).toEqual({ type: 'board', target: 'WEAVE' });
+  });
+});
+
+describe('synthesizeProposalAsk', () => {
+  it('formats a promote_unsung ask with source and target', () => {
+    expect(synthesizeProposalAsk('promote_unsung', 'Foo.md', 'Bar.md'))
+      .toMatch(/promote.*\[\[Foo\]\].*\[\[Bar\]\]/);
+  });
+  it('handles unknown proposal_type with a generic fallback', () => {
+    expect(synthesizeProposalAsk('made_up_kind', 'Foo.md', null))
+      .toMatch(/Weave proposal/i);
   });
 });
 

@@ -390,4 +390,31 @@ export const DEMO_MESSAGES = [
       stale_if: 'a commit touches Nonexistent Demo Entry ZZZ after this',
     },
   },
+  {
+    // Phase 5.5 (QUEUE): a Weave vector_proposal -- the Topology Lens
+    // surfaces structural findings; the swarm posts them here; the human
+    // grants or denies in QUEUE. This one proposes promoting a body
+    // wikilink to a typed link (the most common follow-up after the lens
+    // shows N unsung paths).
+    id: 'demo-vector-proposal-1',
+    schema_version: '1.0',
+    ts: '2026-05-30T14:00:00Z',
+    session_id: 'demo-weave-2026-05-30',
+    from: '@weave-swarm',
+    to: '*',
+    type: 'BROADCAST',
+    board: 'WEAVE',
+    health: { context_pct: 0, stop_reason: 'proposal', iteration: 1, tokens_this_call: 0, model: 'demo', score: 'green' },
+    payload: {
+      kind: 'vector_proposal',
+      proposal_type: 'promote_unsung',
+      source_entry: 'Kuramoto Coupling.md',
+      target_entry: 'Spinoza Conatus.md',
+      proposed_change:
+        'promote the body wikilink [[Spinoza Conatus]] in [[Kuramoto Coupling]] to a typed connects-to link',
+      rationale:
+        'Kuramoto Coupling references Spinoza Conatus in three body passages but has no YAML typed link. The Topology Lens flagged this as an unsung path on 2026-05-30.',
+      stale_if: 'a Kuramoto Coupling commit adds a typed link to Spinoza Conatus',
+    },
+  },
 ];

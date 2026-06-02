@@ -16,10 +16,20 @@ import InlineProse from '../../lib/inline-prose.jsx';
 const KIND_LABEL = {
   resource_request: 'RESOURCE REQUEST',
   handoff_ready: 'HANDOFF READY',
+  vector_proposal: 'WEAVE PROPOSAL',
 };
 const KIND_COLOR = {
   resource_request: 'var(--ansi-bright-cyan)',
   handoff_ready: 'var(--warn)',
+  vector_proposal: 'var(--ansi-bright-magenta)',
+};
+
+const PROPOSAL_TYPE_LABEL = {
+  promote_unsung: 'promote unsung path',
+  new_typed_link: 'new typed link',
+  label_enrichment: 'label enrichment',
+  stage_transition: 'stage transition',
+  vector_tuning: 'forward-vector tuning',
 };
 
 export default function QueueItem({ item, onJump, onClear, onRespond }) {
@@ -28,7 +38,7 @@ export default function QueueItem({ item, onJump, onClear, onRespond }) {
   const [showRationale, setShowRationale] = useState(false);
 
   const canRespond = !resolved
-    && item.kind === 'resource_request'
+    && (item.kind === 'resource_request' || item.kind === 'vector_proposal')
     && typeof onRespond === 'function';
 
   return (
@@ -108,6 +118,28 @@ export default function QueueItem({ item, onJump, onClear, onRespond }) {
               fontFamily: 'var(--font-mono)',
             }}>
               resource: {item.resourceType}
+            </span>
+          ) : null}
+          <span>{vantage(item)}</span>
+        </div>
+      ) : item.kind === 'vector_proposal' ? (
+        <div style={{
+          display: 'flex', gap: 10, alignItems: 'center', flexWrap: 'wrap',
+          fontSize: 11, color: 'var(--phosphor-dim)', textShadow: 'none',
+          marginBottom: 6,
+        }}>
+          {item.proposal_type ? (
+            <span data-testid="queue-item-proposal-type" style={{
+              border: '1px dotted var(--phosphor-dim)', padding: '0 6px',
+              fontFamily: 'var(--font-mono)',
+            }}>
+              proposal: {PROPOSAL_TYPE_LABEL[item.proposal_type] || item.proposal_type}
+            </span>
+          ) : null}
+          {item.source_entry || item.target_entry ? (
+            <span data-testid="queue-item-proposal-edge" style={{ fontFamily: 'var(--font-mono)' }}>
+              {item.source_entry ? item.source_entry.replace(/\.md$/, '') : '?'}
+              {item.target_entry ? ` --> ${item.target_entry.replace(/\.md$/, '')}` : ''}
             </span>
           ) : null}
           <span>{vantage(item)}</span>
