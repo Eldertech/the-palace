@@ -5,13 +5,15 @@ adopted: 2026-05-06
 last_tested: 2026-05-10
 links:
   - { label: "directs", target: "Shop/Kokoro" }
-  - { label: "directs", target: "Shop/Midjourney" }
+  - { label: "directed-deprecated", target: "Shop/Midjourney" }
+  - { label: "directs", target: "Shop/FLUX (Hugging Face)" }
   - { label: "directs", target: "Shop/ComfyUI" }
   - { label: "directs", target: "Shop/Manim CE" }
   - { label: "directs", target: "Shop/Remotion" }
   - { label: "directs", target: "Shop/p5.js" }
   - { label: "directs", target: "Shop/D3.js" }
   - { label: "directs", target: "Shop/Observable Plot" }
+  - { label: "directs", target: "Shop/Three.js" }
   - { label: "lives-in", target: "Shop/" }
   - { label: "answers-to", target: "Trickster (Loudon)" }
   - { label: "embodies", target: "Hilaritas Generator" }
@@ -76,7 +78,7 @@ The house taste, codified.
 - *Answer a quantitative question* — distributions, convergence, parameter sweeps, phase diagrams → **[[Observable Plot]]**, faceting.
 - *Feel the phenomenon aesthetically* — generative art, ambient motion, headers → **[[p5.js]]**.
 
-**Mood, atmospheric, narrative imagery** → Midjourney for highest aesthetic ceiling, ComfyUI when palette discipline, seed reproducibility, structural control (ControlNet), or local execution matters more than ceiling. Default to ComfyUI when in doubt — local-first is the house preference.
+**Mood, atmospheric, narrative imagery** → **[[Shop/FLUX (Hugging Face)|FLUX-Krea via Hugging Face]]** when the brief leans on lighting / atmosphere / mood the prompt names (FLUX-Krea renders prompt-specified mood details — dusk, dust motes, light shafts — that SDXL flattens; see [[shop-header — Maker's Comparison Recommendation]] for the 2026-05-30 head-to-head). **[[Shop/ComfyUI]] (SDXL)** when palette discipline, fixed-seed structural reproducibility, ControlNet / LoRA conditioning, or fully-offline execution matters more than mood fidelity. The old "default to ComfyUI when in doubt — local-first" heuristic was retired 2026-05-30 (Phase D-2) — FLUX-Krea via HF Inference is free at Shop volumes, so the local-first reflex's *cost* premise is gone; the default is now brief-shape-dependent, not local-first-by-reflex. [[Shop/Midjourney|Midjourney]] is deprecated (superseded by FLUX).
 
 **UI mockups, interface walks, palace navigation** → Remotion. Manim's UI rendering is grim.
 
@@ -91,6 +93,8 @@ The house taste, codified.
 - *Raw Web Audio API, no library* → **not a Specialist.** This was considered and rejected (Tone.js's value is the abstraction over manual graph wiring); drop down to raw Web Audio *inside* a Tone.js job when a built-in won't do.
 
 **Interactive teaching pieces, generative sketches, parameter explorers** → p5.js for fast-authored web-deployable sketches; HTML/React Artifact Smith when claude.ai artifact polish or shadcn/ui components are needed.
+
+**Real-time 3D** → **[[Three.js]]** (R3F + drei default; raw r128 for a single-file artifact). Route here only when the third dimension earns itself — spatial/relational structure 2D can't show, geometry driven by data/input/audio, instruments whose interface *is* a moving object. Do *not* route 2D-in-perspective here: that's [[p5.js]] (expressive) or [[D3.js]] (data-bound). Three.js renders state; it is never the audio engine — when 3D drives sound, the DSP lives in an AudioWorklet or [[Tone.js]] and Three.js reads its state (the [[Waveguide Synthesizer]] pattern). Offline photoreal 3D has no specialist yet (Blender gap) — say so rather than fake it with a real-time engine.
 
 **Browser-deployable instruments · web audio** → **[[Shop/Tone.js]]** when the synth is a *composition of primitives* (subtractive / FM / sampler / effect chains / musical-time sequencing); **[[Shop/Web Audio Worklet]]** when the *DSP itself is the differentiator* (granular, custom or 2D wavetable, physical models — anything that wants a per-sample `process()` loop). Codified by the Murmuration build (2026-05-30), which Tone.js's charter explicitly refuses. The grey zone — a custom voice inside an otherwise Tone-shaped instrument — is a Worklet node dropped into a Tone graph. When one instrument should ship to **both** web and a DAW, pair Web Audio Worklet with **[[Shop/RNBO codebox~ smith]]** against a single spec (a live probe of [[Diversity of Thought in Many-Agent Systems]]).
 
@@ -238,18 +242,22 @@ The Specialists currently in the Shop, with their primary use:
 
 - **stub** — entry exists, recipes are placeholders, no palace job has run, no earned gotchas.
 - **alive** — at least one real palace job has landed, leaving a dated recipe and (usually) earned gotchas.
+- **deprecated** — was on the roster, no real job landed before a substitute filled the slot; kept as a lineage record, never dispatched.
 - A Specialist is **alive** only when its Recipes section names a real dated job with a bundle path. A uniform authoring date is not a job.
 
-**Alive (15)** — real job landed:
+**Alive (16)** — real job landed:
 
 - *Flocking shoot-out (2026-05-29):* **p5.js** (also Kuramoto), **D3.js**, **Observable Plot**.
 - *Kuramoto arc (2026-05-10 → 05-26):* **Manim CE**, **Kokoro**, **Matplotlib**, **ComfyUI**, **Whisper**, **ffmpeg**, **Mermaid**, **Remotion**, **Tone.js**, **Stable Audio Open**.
 - *VCV audition (2026-05-29):* **VCV Patch Generator** — the only Specialist with a run test-plan and a determinism proof; the testing exemplar.
 - *Murmuration (2026-05-30):* **Web Audio Worklet** — agent-based granular-wavetable engine; the first Specialist born from a synthesis-paradigm brief, and the first sibling to land *because* an existing Specialist (Tone.js) refused the operating model.
+- *Shop header (Phase D-2, 2026-05-30):* **FLUX (Hugging Face)** — cloud-side image generation via HF Inference free tier; took [[Shop/Midjourney|Midjourney]]'s slot when subscription cost made Midjourney untenable. First job revised the Maker's Mood/atmospheric Selection Heuristic — FLUX-Krea reads mood-specific prompt details that ComfyUI's SDXL flattens.
 
-**Stub (2)** — entry exists, awaiting first real job: **Midjourney**, **RNBO codebox~ smith**.
+**Stub (2)** — entry exists, awaiting first real job: **RNBO codebox~ smith**, **Three.js** (created 2026-05-30 against the [[Waveguide Synthesizer]] brief; alive on first build).
 
-More to come as briefs reveal need: Plotly, Graphviz, Three.js, HTML/React Artifact Smith. The Roster grows; it does not pre-grow.
+**Deprecated (1)** — [[Shop/Midjourney|Midjourney]], 2026-05-30 — too expensive; never landed a real palace job; superseded by **FLUX (Hugging Face)** as the cloud-aesthetic-ceiling slot. Entry kept as a lineage record.
+
+More to come as briefs reveal need: Plotly, Graphviz, HTML/React Artifact Smith, **Blender** (offline/photoreal 3D — the gap [[Three.js]] can't fill), **game engines** (Godot-first, on a real interactive-3D-application brief). The Roster grows; it does not pre-grow.
 
 > Drift watch: this accounting is mirrored in each Specialist's frontmatter `status`. When a stub lands its first job, update both here and the frontmatter in the same move. The three-place inconsistency this section replaced (frontmatter vs. an alive-list vs. a stub-list) is exactly the rot the gotcha discipline exists to prevent.
 

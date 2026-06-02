@@ -1,10 +1,12 @@
 ---
 type: specialist
-status: stub
+status: deprecated
 medium: image
 tool: midjourney
 tool_version: v6.x
 adopted: 2026-05-06
+deprecated: 2026-05-30
+superseded_by: "Shop/FLUX (Hugging Face)"
 last_tested:
 last_gotcha:
 license: proprietary (subscription required)
@@ -12,11 +14,16 @@ links:
   - { label: "wraps", target: "midjourney (external service)" }
   - { label: "directed-by", target: "Shop/Maker" }
   - { label: "alternative-to", target: "Shop/ComfyUI" }
+  - { label: "superseded-by", target: "Shop/FLUX (Hugging Face)" }
   - { label: "tested-by", target: "Artifacts/Shop/Midjourney/tests/" }
-tags: [specialist, shop, image, generative]
+tags: [specialist, shop, image, generative, deprecated]
 ---
 
 # Midjourney
+
+> **Deprecated 2026-05-30 — superseded by [[Shop/FLUX (Hugging Face)]].** Midjourney never landed a real palace job (no recipe, no dated gotcha — the Round-1 Midjourney↔ComfyUI Comparison stalled twice on access). When Loudon flagged the $10–30/month subscription as too expensive on 2026-05-30 (Phase D-2), FLUX-Krea via Hugging Face Inference took the cloud-aesthetic-ceiling slot — it's free at Shop volumes, ~40× faster than local SDXL, and on the founding job (the Shop header) it read the brief's mood details (dusk, amber light, dust motes) more faithfully than ComfyUI did. The cost question stopped being load-bearing once a free alternative cleared the ceiling.
+>
+> This entry is kept as a lineage record — when a future Shop session reaches for "the cloud image Specialist," the path is `Shop/Midjourney → see Shop/FLUX (Hugging Face)`. The Charter / Voice / Tiers below are preserved as the *original brief shape* Midjourney was chosen to fill; FLUX inherited that shape without inheriting Midjourney's tool-specific syntax (`--ar`, `--sref`, `--no`, Discord-only API). See [[shop-header — Maker's Comparison Recommendation]] for the actual head-to-head evidence.
 
 ## Charter
 
