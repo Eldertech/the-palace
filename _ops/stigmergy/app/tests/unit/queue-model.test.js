@@ -139,6 +139,37 @@ describe('buildQueue', () => {
   });
 });
 
+describe('reconcileQueue — vector_proposal', () => {
+  it('resolves a vector_proposal when a commit touches its source entry AFTER it was posted', () => {
+    const q = buildQueue([proposalMsg()]);
+    const commits = [{
+      shortHash: 'abc123', date: '2026-06-01T12:00:00Z',
+      entries: ['Kuramoto Coupling.md'], resolves: [],
+    }];
+    const out = reconcileQueue(q, commits);
+    expect(out[0].resolved.done).toBe(true);
+    expect(out[0].resolved.reason).toMatch(/abc123.*Kuramoto/);
+  });
+  it('leaves a vector_proposal open when no commit touches its source entry', () => {
+    const q = buildQueue([proposalMsg()]);
+    const commits = [{
+      shortHash: 'def456', date: '2026-06-01T12:00:00Z',
+      entries: ['Some Other Entry.md'], resolves: [],
+    }];
+    const out = reconcileQueue(q, commits);
+    expect(out[0].resolved.done).toBe(false);
+  });
+  it('resolves via explicit Palace-Resolves: <proposal-id> in a commit', () => {
+    const q = buildQueue([proposalMsg()]);
+    const commits = [{
+      shortHash: 'aaa999', date: '2026-06-01T12:00:00Z',
+      entries: [], resolves: ['vp-1'],
+    }];
+    const out = reconcileQueue(q, commits);
+    expect(out[0].resolved.done).toBe(true);
+  });
+});
+
 describe('synthesizeProposalAsk', () => {
   it('formats a promote_unsung ask with source and target', () => {
     expect(synthesizeProposalAsk('promote_unsung', 'Foo.md', 'Bar.md'))

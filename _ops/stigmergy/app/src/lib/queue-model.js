@@ -111,6 +111,9 @@ export function buildQueue(messages) {
         proposal_type: proposalType,
         source_entry: source,
         target_entry: target,
+        // `entry` aliases source_entry so reconcileQueue's entry-touch path
+        // closes the proposal when the source entry is committed.
+        entry: source,
         ask,
         summary: ask,
         rationale: typeof p.rationale === 'string' ? p.rationale : null,
