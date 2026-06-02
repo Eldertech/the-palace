@@ -3,7 +3,7 @@ import {
   forceSimulation, forceLink, forceManyBody, forceCenter, forceCollide,
 } from 'd3-force';
 import { Box } from '../primitives.jsx';
-import { fetchTopology } from '../../adapters/topology.js';
+import { fetchTopology, fetchUnsungPaths } from '../../adapters/topology.js';
 import { assignRoles, roleCounts } from '../../lib/topology-roles.js';
 import { buildPillarsByPath, annotateBridges, bridgeCounts } from '../../lib/topology-bridges.js';
 
@@ -36,9 +36,14 @@ const HOVER_RING = '#aaffff';
 const EDGE_STYLE = {
   default: { color: 'rgba(0, 200, 80, 0.18)', width: 0.6 },
   bridge:  { color: 'rgba(255, 184, 64, 0.55)', width: 0.9 },
+  // Unsung paths: body wikilinks not in YAML. Dashed dim cyan — visibly
+  // distinct from both the typed-link tissue (green) and the cross-pillar
+  // bridges (amber). The dash says "the prose claims this; the graph hasn't
+  // ratified it."
+  unsung:  { color: 'rgba(120, 220, 255, 0.22)', width: 0.5, dash: [2, 3] },
 };
 
-function prepareGraph(raw, pillarsByPath) {
+function prepareGraph(raw, pillarsByPath, unsungEdges) {
   // d3-force will mutate source/target on the link objects (string -> node
   // object). Clone everything so the input data stays untouched.
   const baseNodes = (raw?.nodes ?? []).map((n) => ({
@@ -59,7 +64,23 @@ function prepareGraph(raw, pillarsByPath) {
     .map((e) => ({ source: e.source, target: e.target, type: e.type, label: e.label }));
   // Annotate each link with crossPillar (computed against the entries
   // catalog's pillar sets). Node objects pick up a `pillars` Set too.
-  return annotateBridges({ nodes: withRoles, links: rawLinks }, pillarsByPath);
+  const annotated = annotateBridges({ nodes: withRoles, links: rawLinks }, pillarsByPath);
+
+  // Unsung paths: body-wikilink edges. Server returns them keyed by path;
+  // resolve to the node objects from the annotated graph so the draw loop
+  // can read live .x/.y as the simulation ticks them. These are drawn-only
+  // — they do NOT feed the force simulation, so they can't distort the
+  // typed-link layout.
+  const nodeByPath = new Map();
+  for (const n of annotated.nodes) if (n.path) nodeByPath.set(n.path, n);
+  const unsungLinks = [];
+  for (const e of unsungEdges ?? []) {
+    const sNode = nodeByPath.get(e.source);
+    const tNode = nodeByPath.get(e.target_path);
+    if (!sNode || !tNode || sNode === tNode) continue;
+    unsungLinks.push({ source: sNode, target: tNode, target_name: e.target_name });
+  }
+  return { ...annotated, unsungLinks };
 }
 
 export default function TopologyLens({ onSelect, entries = [] }) {
@@ -76,21 +97,36 @@ export default function TopologyLens({ onSelect, entries = [] }) {
 
   useEffect(() => {
     let cancelled = false;
-    fetchTopology().then((r) => {
+    Promise.all([fetchTopology(), fetchUnsungPaths()]).then(([topo, unsung]) => {
       if (cancelled) return;
-      if (r.ok) setState({ kind: 'ok', meta: r.meta, source: r.source, raw: r });
-      else setState({ kind: 'err', error: r.error ?? 'unknown error' });
+      if (!topo.ok) {
+        setState({ kind: 'err', error: topo.error ?? 'unknown error' });
+        return;
+      }
+      setState({
+        kind: 'ok',
+        meta: topo.meta,
+        source: topo.source,
+        raw: topo,
+        // Unsung paths are best-effort -- if the endpoint errors (e.g. some
+        // entry can't be read), the lens still works without them.
+        unsungEdges: unsung.ok ? (unsung.edges ?? []) : [],
+      });
     });
     return () => { cancelled = true; };
   }, []);
 
-  // Role + bridge counts are derived from the prepared graph; we
-  // recompute here (cheap) so the legend renders before the canvas
+  // Role + bridge + unsung counts are derived from the prepared graph;
+  // we recompute here (cheap) so the legend renders before the canvas
   // useEffect mounts.
   const legendStats = useMemo(() => {
     if (state.kind !== 'ok') return null;
-    const g = prepareGraph(state.raw, pillarsByPath);
-    return { roles: roleCounts(g.nodes), bridges: bridgeCounts(g.links) };
+    const g = prepareGraph(state.raw, pillarsByPath, state.unsungEdges);
+    return {
+      roles: roleCounts(g.nodes),
+      bridges: bridgeCounts(g.links),
+      unsung: g.unsungLinks.length,
+    };
   }, [state, pillarsByPath]);
 
   useEffect(() => {
@@ -105,7 +141,7 @@ export default function TopologyLens({ onSelect, entries = [] }) {
     const ctx = canvas.getContext('2d');
     ctx.scale(dpr, dpr);
 
-    const graph = prepareGraph(state.raw, pillarsByPath);
+    const graph = prepareGraph(state.raw, pillarsByPath, state.unsungEdges);
     graphRef.current = graph;
 
     const sim = forceSimulation(graph.nodes)
@@ -117,8 +153,24 @@ export default function TopologyLens({ onSelect, entries = [] }) {
 
     function draw() {
       ctx.clearRect(0, 0, WIDTH, HEIGHT);
-      // edges -- two passes so cross-pillar bridges paint over the default
-      // tissue and stay visible against the dense cluster.
+      // edges -- three passes, painted bottom-up so the most-ratified
+      // layer sits on top:
+      //   1. unsung paths (dashed cyan undercoat — the prose's hint)
+      //   2. typed default (green tissue — the YAML's ratification)
+      //   3. cross-pillar bridges (amber — the rhizome's reaches)
+      const us = EDGE_STYLE.unsung;
+      ctx.lineWidth = us.width;
+      ctx.strokeStyle = us.color;
+      ctx.setLineDash(us.dash);
+      ctx.beginPath();
+      for (const l of graph.unsungLinks ?? []) {
+        const s = l.source; const t = l.target;
+        if (!s || !t || typeof s.x !== 'number' || typeof t.x !== 'number') continue;
+        ctx.moveTo(s.x, s.y);
+        ctx.lineTo(t.x, t.y);
+      }
+      ctx.stroke();
+      ctx.setLineDash([]);
       for (const kind of ['default', 'bridge']) {
         const style = EDGE_STYLE[kind];
         ctx.lineWidth = style.width;
@@ -262,11 +314,11 @@ function Dot({ style }) {
   );
 }
 
-function EdgeSwatch({ color, width }) {
+function EdgeSwatch({ color, width, dashed }) {
   return (
     <span style={{
       display: 'inline-block', width: 16, height: 0, marginRight: 6, verticalAlign: 'middle',
-      borderTop: `${Math.max(1, width * 2)}px solid ${color}`,
+      borderTop: `${Math.max(1, width * 2)}px ${dashed ? 'dashed' : 'solid'} ${color}`,
     }} />
   );
 }
@@ -288,6 +340,11 @@ function Legend({ stats }) {
         <EdgeSwatch color={EDGE_STYLE.bridge.color} width={EDGE_STYLE.bridge.width} />
         <strong style={{ color: 'var(--phosphor)' }}>{bridges.cross}</strong> cross-pillar bridges
         <span style={{ opacity: 0.6 }}> / {bridges.total} edges</span>
+      </span>
+      <span data-testid="topology-legend-unsung">
+        <EdgeSwatch color={EDGE_STYLE.unsung.color} width={EDGE_STYLE.unsung.width} dashed />
+        <strong style={{ color: 'var(--phosphor)' }}>{stats.unsung}</strong> unsung paths
+        <span style={{ opacity: 0.6 }}> (body wikilinks not in YAML)</span>
       </span>
     </div>
   );

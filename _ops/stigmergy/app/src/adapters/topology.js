@@ -14,3 +14,18 @@ export async function fetchTopology() {
     return { ok: false, error: err?.message ?? String(err) };
   }
 }
+
+// Unsung paths — body wikilinks not in YAML, computed live from the
+// palace's current state (not from the dated map snapshot).
+export async function fetchUnsungPaths() {
+  try {
+    const res = await fetch('/api/unsung-paths', { headers: { Accept: 'application/json' } });
+    if (!res.ok) {
+      return { ok: false, status: res.status, error: `http ${res.status}` };
+    }
+    const data = await res.json();
+    return { ok: true, ...data };
+  } catch (err) {
+    return { ok: false, error: err?.message ?? String(err) };
+  }
+}

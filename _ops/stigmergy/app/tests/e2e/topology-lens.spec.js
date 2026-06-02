@@ -27,7 +27,7 @@ test.describe('STATE deck — Topology Lens (Phase 5.5)', () => {
     await expect(heading).toBeVisible();
   });
 
-  test('the legend reports hub / connected / orphan / bridge counts', async ({ page }) => {
+  test('the legend reports hub / connected / orphan / bridge / unsung counts', async ({ page }) => {
     await page.goto('/?deck=STATE');
     await page.getByTestId('state-lens-topology').click();
     const legend = page.getByTestId('topology-legend');
@@ -37,6 +37,8 @@ test.describe('STATE deck — Topology Lens (Phase 5.5)', () => {
     await expect(legend).toContainText(/\d+\s+orphans/);
     await expect(page.getByTestId('topology-legend-bridges')).toContainText(/cross-pillar bridges/);
     await expect(page.getByTestId('topology-legend-bridges')).toContainText(/\d+\s+edges/);
+    await expect(page.getByTestId('topology-legend-unsung')).toContainText(/unsung paths/);
+    await expect(page.getByTestId('topology-legend-unsung')).toContainText(/body wikilinks not in YAML/);
   });
 
   test('hovering a node surfaces a tooltip with its id and degree', async ({ page }) => {
@@ -102,5 +104,21 @@ test.describe('STATE deck — Topology API', () => {
     expect(Array.isArray(data.edges)).toBe(true);
     expect(data.nodes.length).toBeGreaterThan(50);
     expect(data.edges.length).toBeGreaterThan(50);
+  });
+
+  test('GET /api/unsung-paths returns body-wikilink-not-in-YAML edges', async ({ request }) => {
+    const res = await request.get('/api/unsung-paths');
+    expect(res.ok()).toBe(true);
+    const data = await res.json();
+    expect(Array.isArray(data.edges)).toBe(true);
+    expect(typeof data.entry_count).toBe('number');
+    expect(typeof data.edge_count).toBe('number');
+    expect(data.edge_count).toBeGreaterThan(0);
+    // Every edge has source/target_path resolving to a .md file.
+    for (const e of data.edges.slice(0, 5)) {
+      expect(e.source).toMatch(/\.md$/);
+      expect(e.target_path).toMatch(/\.md$/);
+      expect(typeof e.target_name).toBe('string');
+    }
   });
 });
