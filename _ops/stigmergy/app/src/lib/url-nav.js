@@ -164,3 +164,53 @@ export function useEntryNavigation() {
     goBack,
   };
 }
+
+// Parse `?lens=topology` from the URL. Returns 'topology' or 'pulse'
+// (the default). SSR-safe.
+export function parseLensFromUrl(searchString) {
+  if (typeof searchString !== 'string') return 'pulse';
+  const v = new URLSearchParams(searchString).get('lens');
+  return v === 'topology' ? 'topology' : 'pulse';
+}
+
+// Build a new search string preserving all params except `lens`. Pulse is
+// the implicit default, so we omit `lens=pulse` to keep URLs clean.
+export function buildLensSearch(searchString, lens) {
+  const params = new URLSearchParams(searchString || '');
+  params.delete('lens');
+  if (lens === 'topology') params.set('lens', 'topology');
+  const s = params.toString();
+  return s === '' ? '' : `?${s}`;
+}
+
+// React hook: keeps `lens` in sync with the URL. pushState on switch so
+// browser back/forward traverses lens changes. Default landing is PULSE.
+export function useLensNavigation() {
+  const initial = typeof window === 'undefined'
+    ? 'pulse'
+    : parseLensFromUrl(window.location.search);
+  const [lens, setLens] = useState(initial);
+  const fromPop = useRef(false);
+
+  useEffect(() => {
+    if (typeof window === 'undefined') return undefined;
+    function onPop() {
+      fromPop.current = true;
+      setLens(parseLensFromUrl(window.location.search));
+    }
+    window.addEventListener('popstate', onPop);
+    return () => window.removeEventListener('popstate', onPop);
+  }, []);
+
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+    if (fromPop.current) { fromPop.current = false; return; }
+    const nextSearch = buildLensSearch(window.location.search, lens);
+    const currentSearch = window.location.search || '';
+    if (nextSearch === currentSearch) return;
+    const nextUrl = `${window.location.pathname}${nextSearch}${window.location.hash}`;
+    window.history.pushState({ lens }, '', nextUrl);
+  }, [lens]);
+
+  return { lens, setLens };
+}
