@@ -1,8 +1,9 @@
 {
-  "iteration": 2,
-  "last_active": "2026-05-27T20:30:00-04:00",
-  "last_read_cursor": "blood-compressor-005",
+  "iteration": 3,
+  "last_active": "2026-06-03T05:14:01Z",
+  "last_read_cursor": "blood-compressor-007",
   "health": {
+    "context_pct": null,
     "avg_output_tokens_last_5": null,
     "duplicate_flags": 0,
     "posting_discipline_violations": 0,
@@ -18,19 +19,18 @@
   },
   "pending_requests": [
     {
-      "request_id": "blood-compressor-005",
+      "request_id": "blood-compressor-007",
       "resource": "directional_decision",
-      "decision_topic": "What's the next concrete move now that the radio-play lesson is fully spec'd?",
+      "decision_topic": "The radio-play lesson is fully spec'd. What's the next concrete move — and do we render the audition seed before the full batch?",
       "blocking": false,
-      "posted_at": "2026-05-27T20:07:00-04:00",
+      "posted_at": "2026-06-03T16:32:00-04:00",
       "options": [
-        "AUDITION-GATE-FIRST",
+        "RENDER-SEED",
         "MAKER-DISPATCH",
         "START-MAX-PROTOTYPE",
-        "RESOLVE-OPEN-QUESTIONS",
         "YOU-DEFINE"
       ],
-      "steward_recommendation": "AUDITION-GATE-FIRST — the home entry's pedagogical framing says 'render the smallest unit that exercises every parameter, pause for human audition, commit to full batch only after acceptance.' The Scene 2 + cold-open unit is exactly that for this lesson; spending 3.5 hours of Specialist time on an unaudited spec violates the gate."
+      "steward_recommendation": "RENDER-SEED — my home entry's pedagogical framing explicitly says render the smallest unit that exercises every parameter, pause for audition, commit to the full batch only after acceptance. The attack-time pair is that unit: it's the single cue the cue sheet itself calls 'the lesson made audible.' Auditioning it costs ~5 minutes of render and tells us whether the whole 30-minute biological frame works before we spend the full batch."
     }
   ],
   "resolved_requests": [
@@ -47,6 +47,24 @@
       "resolved_at": "2026-05-27T23:22:29.157Z",
       "resolved_by": "resp-mpoovr8l-3kw1jq",
       "outcome": "GRANTED — option_id=LESSON-FIRST; notes: \"Lets do the script, but build it out like a radio play, we have been working on the \"maker\" and \"shop\" portions of the palace, so lets try to mock up a lesson that uses voiceover, sound FX, and generates some weird visuals appropriate to the concept. \""
+    },
+    {
+      "request_id": "blood-compressor-005",
+      "resource": "directional_decision",
+      "decision_topic": "What's the next concrete move now that the radio-play lesson is fully spec'd?",
+      "blocking": false,
+      "posted_at": "2026-05-27T20:07:00-04:00",
+      "options": [
+        "AUDITION-GATE-FIRST",
+        "MAKER-DISPATCH",
+        "START-MAX-PROTOTYPE",
+        "RESOLVE-OPEN-QUESTIONS",
+        "YOU-DEFINE"
+      ],
+      "steward_recommendation": "AUDITION-GATE-FIRST — the home entry's pedagogical framing says 'render the smallest unit that exercises every parameter, pause for human audition, commit to full batch only after acceptance.' The Scene 2 + cold-open unit is exactly that for this lesson; spending 3.5 hours of Specialist time on an unaudited spec violates the gate.",
+      "resolved_at": "2026-06-01T01:37:00.532Z",
+      "resolved_by": "resp-mpujg5tg-ynsl4j",
+      "outcome": "GRANTED — option_id=AUDITION-GATE-FIRST"
     }
   ],
   "_pilot_metadata": {

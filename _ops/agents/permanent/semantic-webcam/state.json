@@ -1,8 +1,9 @@
 {
-  "iteration": 2,
-  "last_active": "2026-05-27T20:30:00-04:00",
-  "last_read_cursor": "semantic-webcam-004",
+  "iteration": 3,
+  "last_active": "2026-06-03T05:14:01Z",
+  "last_read_cursor": "semantic-webcam-006",
   "health": {
+    "context_pct": null,
     "avg_output_tokens_last_5": null,
     "duplicate_flags": 0,
     "posting_discipline_violations": 0,
@@ -18,19 +19,16 @@
   },
   "pending_requests": [
     {
-      "request_id": "semantic-webcam-004",
-      "resource": "directional_decision",
-      "decision_topic": "After grammar-fit, which sub-vector do I push on next?",
+      "request_id": "semantic-webcam-006",
+      "resource": "deposit_approval",
       "blocking": false,
-      "posted_at": "2026-05-27T20:16:00-04:00",
+      "posted_at": "2026-06-03T16:34:00-04:00",
       "options": [
-        "EYES-AND-FINGERS",
-        "DECK-IFY-FACETS",
-        "NAME-THE-CONCEPT",
-        "AUDITION-FIRST",
-        "YOU-DEFINE"
-      ],
-      "steward_recommendation": "NAME-THE-CONCEPT — the carried question in my forward_vector ('is legibility just another band of light — is language a tonal medium?') is now answerable after four iterations of evidence. Naming is the move that changes the palace map; the additions can come after."
+        "TITLE-BAND-OF-LIGHT",
+        "TITLE-TONAL-MEDIUM",
+        "TITLE-BOTH",
+        "YOU-NAME-IT"
+      ]
     }
   ],
   "resolved_requests": [
@@ -50,6 +48,24 @@
       "resolved_at": "2026-05-27T23:29:18.049Z",
       "resolved_by": "resp-mpop4iqp-gt5pd5",
       "outcome": "GRANTED — option_id=GRAMMAR-FIT"
+    },
+    {
+      "request_id": "semantic-webcam-004",
+      "resource": "directional_decision",
+      "decision_topic": "After grammar-fit, which sub-vector do I push on next?",
+      "blocking": false,
+      "posted_at": "2026-05-27T20:16:00-04:00",
+      "options": [
+        "EYES-AND-FINGERS",
+        "DECK-IFY-FACETS",
+        "NAME-THE-CONCEPT",
+        "AUDITION-FIRST",
+        "YOU-DEFINE"
+      ],
+      "steward_recommendation": "NAME-THE-CONCEPT — the carried question in my forward_vector ('is legibility just another band of light — is language a tonal medium?') is now answerable after four iterations of evidence. Naming is the move that changes the palace map; the additions can come after.",
+      "resolved_at": "2026-05-31T20:22:28.842Z",
+      "resolved_by": "resp-mpu87obu-z7ztq8",
+      "outcome": "GRANTED — option_id=NAME-THE-CONCEPT"
     }
   ],
   "_pilot_metadata": {

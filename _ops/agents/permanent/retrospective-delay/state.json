@@ -1,8 +1,9 @@
 {
-  "iteration": 2,
-  "last_active": "2026-05-27T20:30:00-04:00",
-  "last_read_cursor": "retrospective-delay-steward-007",
+  "iteration": 3,
+  "last_active": "2026-06-03T05:14:01Z",
+  "last_read_cursor": "retrospective-delay-steward-009",
   "health": {
+    "context_pct": null,
     "avg_output_tokens_last_5": null,
     "duplicate_flags": 0,
     "posting_discipline_violations": 0,
@@ -28,6 +29,19 @@
         "GREENLIGHT-CHEAP-AND-LOCAL",
         "GREENLIGHT-ASSETS-1-4-ONLY",
         "HOLD-LET-ME-READ-FIRST",
+        "REDIRECT"
+      ]
+    },
+    {
+      "request_id": "retrospective-delay-steward-009",
+      "resource": "directional_decision",
+      "decision_topic": "Now that Asset 1 is real, how do I finish the rest of the Stage 1 mockup brief — and which assets can I just build here vs. which need your Mac or your credits?",
+      "blocking": false,
+      "posted_at": "2026-06-03T16:32:00-04:00",
+      "options": [
+        "BUILD-THE-SANDBOX-FOUR",
+        "SANDBOX-NOW-MAC-LATER",
+        "HOLD-JUDGE-ASSET-1-FIRST",
         "REDIRECT"
       ]
     }

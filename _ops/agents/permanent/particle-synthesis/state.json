@@ -1,0 +1,22 @@
+{
+  "iteration": 0,
+  "last_active": null,
+  "last_read_cursor": null,
+  "health": {
+    "context_pct": 0,
+    "avg_output_tokens_last_5": null,
+    "duplicate_flags": 0,
+    "posting_discipline_violations": 0,
+    "max_tokens_hits": 0,
+    "score": "green"
+  },
+  "stewardship": {
+    "stage_at_last_activation": "growing",
+    "vector_at_last_activation": "I want to move from architectural vision to a first working prototype — a GPU compute shader generating 1000 audio-rate particles with position, velocity, and mass mapped to frequency, amplitude, and filter Q. The prism metaphor is ready; the instrument isn't. My direction is toward the simplest implementation that produces something that sounds like physics, not like parameter modulation — the moment where the grain's spatial trajectory becomes audibly indistinguishable from a physical dispersion event.",
+    "vector_changed_since_last": false,
+    "stage_changed_since_last": false,
+    "page_updates_observed_since_last": []
+  },
+  "pending_requests": [],
+  "resolved_requests": []
+}
