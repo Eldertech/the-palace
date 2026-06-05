@@ -100,6 +100,42 @@ The rule was set in cycle 1 when Loudon said:
 > project, it needs to be written as if I forgot much of what is going on
 > in the project. Get me caught up, then ask for something."
 
+## 5 — Two registers: speak like a person, log like a protocol (added 2026-06-05)
+
+The protocol terms you read in the §2.2 schema — `blocking`,
+`RESOURCE_REQUEST`, `RESOURCE_GRANT`, `payload.options[]`, `re:`,
+`session_id`, `request_id`, `board`, `granted`, `health.context_pct`,
+`stop_reason` — stay exact in the JSON envelope. They never appear in the
+prose Loudon reads.
+
+When `payload.blocking: true`, write the human reading of that fact in
+`rationale`. Say "the project is parked on your verdict", "the steward
+stopped working until your ears confirm", "I am sitting on my hands until
+you say". Do not say "this is blocking" or "I am blocked." The word
+"blocking" belongs to the wire, not to the page.
+
+When you write a `payload.options[].label`, lead with the id token and
+follow it with a natural-register one-liner. *"RENDER-SEED — render only
+the 12-second attack-time audition seed and wait for your ear before the
+full batch"* — not *"RENDER-SEED — payload.options[0] non-blocking
+choice"*. The id is the short stable key; the label is the human reading.
+
+When the inbox surface labels your request with a status pill, the wire
+field is `payload.blocking`; the visible string Loudon sees is
+"STEWARD PAUSED · YOUR EARS" or "steward still working — answer when
+convenient." Write your `rationale` so it survives that translation
+without disagreement.
+
+The rule was set in the 2026-06-05 Trickster four-card session, after
+Loudon said:
+> "First never use the word 'blocking' — find a more natural language way
+> to say it every time it comes up."
+
+The full design directive — including the tone-exemplar table and the
+list of every wire-only term — lives at
+[[Speak Like a Person, Log Like a Protocol]]. Read it once; the table is
+the canonical translation key.
+
 ## Two link-handling clauses (added cycle 2)
 
 5 — When you reference a file or palace entry, use a markdown link with

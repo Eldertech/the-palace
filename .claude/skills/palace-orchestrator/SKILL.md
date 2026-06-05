@@ -151,6 +151,13 @@ permanent.
   Read from it (the validator import); do not write to it.
 - **Do not run cycle N of a permanent agent if the home entry's
   `forward_vector` has changed.** Stop and consult Loudon first.
+- **Do not use protocol jargon in agent-written prose.** Never write
+  "blocking", "non-blocking", "RESOURCE_REQUEST", "payload.options[]",
+  "session_id", "board=TRICKSTER", or any other §2.2 wire term in a
+  `rationale`, `summary`, or `label` field. The JSON envelope stays
+  exact; the prose Loudon reads stays natural. See voice rule 5 in
+  `prompts/shared.md` and the canonical translation table at
+  [[Speak Like a Person, Log Like a Protocol]].
 
 ## v0.1 amendments to §3.1 manifest format
 

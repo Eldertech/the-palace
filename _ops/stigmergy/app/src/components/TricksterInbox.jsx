@@ -4,6 +4,7 @@ import { buildInbox } from '../lib/inbox.js';
 import { healthColor, formatTs, parseLinks, hrefFor } from '../lib/format.js';
 import { buildRequestOptionResponse } from '../lib/response-builder.js';
 import { postMessage, InvalidMessageError } from '../adapters/blackboard.js';
+import { t, pauseShort, pauseLong } from '../lib/lexicon.js';
 import ResponseModal from './ResponseModal.jsx';
 
 // Pad a label to a fixed width so colons align in monospace.
@@ -179,24 +180,26 @@ function PendingItem({ item, onOptionClick, onConfirmed }) {
     : '--';
   const titleParts = [
     `req: ${item.request_id || '--'}`,
-    item.blocking ? 'blocking' : 'non-blocking',
+    pauseShort(item.blocking),
     item.agent_health || '--',
   ].join(' · ');
   // Vertical key:value metadata -- text-rendered, aligned colons.
+  // Field names + values both go through the lexicon so the wire schema
+  // (payload.blocking, msg.type, etc.) never leaks to Loudon's eyes.
   const metaLines = [
-    ['from', `@${item.from || '--'}`],
-    ['ts', formatTs(item.ts)],
-    ['resource', item.resource || '--'],
-    ['blocking', String(item.blocking)],
-    ['health', `${item.agent_health || '--'} · ctx ${ctx}`],
-    ['status', item.agent_status || '--'],
+    [t('field.from'), `@${item.from || '--'}`],
+    [t('field.ts'), formatTs(item.ts)],
+    [t('field.resource'), item.resource || '--'],
+    [t('pause.field.label'), pauseLong(item.blocking)],
+    [t('field.health'), `${item.agent_health || '--'} · ctx ${ctx}`],
+    [t('field.status'), item.agent_status || '--'],
   ];
   return (
     <div data-testid="inbox-pending-item" style={{ margin: '6px 0' }}>
     <Box tone="single" title={titleParts} pad>
       <div style={{ marginBottom: 6 }}>
         <span style={{ color: 'var(--ansi-bright-cyan)', textShadow: 'var(--glow)', fontWeight: 600 }}>
-          ? PENDING TRICKSTER DECISION
+          {t('trickster.pending.heading')}
         </span>
       </div>
       <div style={{
@@ -206,8 +209,8 @@ function PendingItem({ item, onOptionClick, onConfirmed }) {
           <div key={k}>
             <span>{padLabel(k)}: </span>
             <span style={{
-              color: k === 'blocking' && item.blocking ? 'var(--error)' :
-                     k === 'health' ? healthColor(item.agent_health) :
+              color: k === t('pause.field.label') && item.blocking ? 'var(--error)' :
+                     k === t('field.health') ? healthColor(item.agent_health) :
                      'var(--phosphor)',
               textShadow: 'var(--glow)',
             }}>{v}</span>
@@ -280,13 +283,13 @@ export default function TricksterInbox({ messages, onConfirmed }) {
 
   return (
     <div data-testid="trickster-inbox" style={{ marginBottom: 12 }}>
-      <Rule double>{`TRICKSTER INBOX · ${pending_requests.length} pending`}</Rule>
+      <Rule double>{`${t('trickster.inbox.title')} · ${pending_requests.length}`}</Rule>
       {pending_requests.length === 0 ? (
         <div data-testid="inbox-empty" style={{
           color: 'var(--phosphor-dim)', textShadow: 'none',
           padding: '8px 0', fontSize: 13,
         }}>
-          NO PENDING REQUESTS. ALL AGENTS UNBLOCKED.
+          {t('trickster.inbox.empty')}
         </div>
       ) : (
         pending_requests.map((p) => (
