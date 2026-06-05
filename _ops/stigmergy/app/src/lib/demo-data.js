@@ -417,4 +417,29 @@ export const DEMO_MESSAGES = [
       stale_if: 'a Kuramoto Coupling commit adds a typed link to Spinoza Conatus',
     },
   },
+  {
+    // weave_flag v1.0: a deposit-ceremony flag asking the next Weave to
+    // audit a backlink target. Sibling to vector_proposal -- renders as a
+    // WEAVE FLAG card in QUEUE, closes via RESOURCE_GRANT/RESOURCE_DENY or
+    // a commit touching any of source_entries. The OPEN demo: a target
+    // that has NO resolving commit, so it stays open in the queue.
+    id: 'demo-weave-flag-1',
+    schema_version: '1.0',
+    ts: '2026-06-05T13:45:00Z',
+    session_id: 'demo-deposit-BATCH01',
+    from: 'deposit-ceremony',
+    to: 'weave-ceremony',
+    type: 'BROADCAST',
+    board: 'WEAVE',
+    health: { context_pct: 0, stop_reason: 'deposit', iteration: 1, tokens_this_call: 0, model: 'demo', score: 'green' },
+    payload: {
+      kind: 'weave_flag',
+      flag_type: 'backlink_audit',
+      source_deposit_id: 'DEMO-BATCH01',
+      source_entries: ['Floquet Theory (demo nonexistent)', 'Kuramoto Coupling (demo nonexistent)'],
+      target_entry: 'Phase Reduction (demo nonexistent)',
+      proposed_action: 'Add couples-with link from each hub to Phase Reduction with label `bridge-via-PRC`.',
+      rationale: 'Phase Reduction names the bridge between the two existing hubs (PRC as Floquet eigenvector data; Kuramoto as the phase-reduced shadow of a population of limit cycles). Both hubs deserve inbound links.',
+    },
+  },
 ];
