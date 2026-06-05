@@ -33,10 +33,10 @@ links:
     type: deepens
     label: constraint-as-pillar-method
   - target: "[[Oblique Enrichment]]"
-    type: spawned
+    type: connects-to
     label: oblique-strategies-principle
   - target: "[[Semantic Webcam]]"
-    type: deepens
+    type: connects-to
     label: constraints-as-creative-force
 ---
 

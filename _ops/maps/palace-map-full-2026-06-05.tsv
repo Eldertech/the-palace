@@ -18,17 +18,20 @@ Audition Gate	connects-to	Quality Manifesto
 Audition Gate	connects-to	Substrate Skill
 Audition Gate	enables	Generative Sample Libraries
 Autodidact Polymaths	couples-with	Loudon Live
-Autodidact Polymaths	connects-to	Four Pillars
+Autodidact Polymaths	connects-to	FOUR PILLARS
 Boundary-Crossing Instruments	connects-to	FOUR PILLARS
 Boundary-Crossing Instruments	spawned	Frequency-Time Duality
 Boundary-Crossing Instruments	connects-to	Kuramoto Coupling
 Boundary-Crossing Instruments	mirrors	Hyperdimensional Prism
 Boundary-Crossing Instruments	enables	Symbiotic Skills
 Boundary-Crossing Instruments	connects-to	Action Potential Oscillator
+Boundary-Crossing Instruments	connects-to	2D Torus Wavetable Synthesizer
+Boundary-Crossing Instruments	mirrors	DSP in Looping Dimensions
 Chebyshev is Fourier	enables	2D Torus Wavetable Synthesizer
 Chebyshev is Fourier	connects-to	Wallpaper Groups
 Chebyshev is Fourier	connects-to	Three Kinds of Warp
 Chebyshev is Fourier	connects-to	DSP in Looping Dimensions
+Chebyshev is Fourier	member-of	Dissolutions
 Claude CLI Reference	enables	SUBSTRATE
 Claude CLI Reference	connects-to	Modes of Collaboration
 Claude CLI Reference	enables	Palace Ceremonies
@@ -42,7 +45,7 @@ Closing Well	enables	The Shop
 Closing Well	enables	Handoff Ceremony
 Closing Well	mirrors	Cooperation Yields Agency
 Closing Well	connects-to	Hilaritas Generator
-Closing Well	connects-to	Four Pillars
+Closing Well	connects-to	FOUR PILLARS
 Closing Well	couples-with	SUBSTRATE
 Confucianism	connects-to	Palace Philosophies
 Confucianism	contradicts	Stoicism
@@ -98,6 +101,13 @@ Dispersion Table	deepens	DSP in Looping Dimensions
 Dispersion Table	couples-with	Three Kinds of Warp
 Dispersion Table	connects-to	Dispersion
 Dispersion Table	emerged-from	Waveguide Synthesizer
+Dispersion Table	mirrors	Volterra Kernels and the Torus
+Dispersion Table	mirrors	Linear Predictive Coding
+Dispersion Table	couples-with	Rank-N Lattice Analysis
+Dispersion Table	couples-with	Exponential Decay Curvature
+Dispersion Table	connects-to	Chebyshev is Fourier
+Dispersion Table	couples-with	Phase Reduction
+Dispersion Table	member-of	Dissolutions
 Dispersion	connects-to	Hyperdimensional Prism
 Dispersion	connects-to	Categorizing Inharmonicity
 Dispersion	connects-to	Granular Synthesis
@@ -108,9 +118,12 @@ Dispersion	enables	Particle Synthesis
 Dispersion	connects-to	Portamento and Physical Pitch Modeling
 Dispersion	deepens	Piano String Inharmonicity
 Dispersion	connects-to	Shimmer Cloud
+Dissolutions	emerged-from	Boundary-Crossing Instruments
+Dissolutions	mirrors	Hyperdimensional Prism
+Dissolutions	connects-to	Frequency-Time Duality
 Diversity of Thought in Many-Agent Systems	connects-to	BBS Blackboard
 Diversity of Thought in Many-Agent Systems	connects-to	Cooperation Yields Agency
-Diversity of Thought in Many-Agent Systems	connects-to	Four Pillars
+Diversity of Thought in Many-Agent Systems	connects-to	FOUR PILLARS
 Diversity of Thought in Many-Agent Systems	emerged-from	The Shop
 Donella Meadows	spawned	Leverage Points Framework
 Donella Meadows	connects-to	Meadows and Music — Leverage Points
@@ -157,6 +170,8 @@ Enrichment	connects-to	Palace To-Do
 Enrichment	deepens	Hilaritas Generator
 Enrichment	mirrors	Quality Manifesto
 Enrichment	couples-with	Cooperation Yields Agency
+Enrichment	couples-with	Oblique Enrichment
+Enrichment	connects-to	Semantic Webcam
 haiku-grotesque-pedagogy	connects-to	Biomechanical Synthesis
 Enrichment — handoff	connects-to	Enrichment
 Entry Conatus	deepens	Spinoza Conatus
@@ -170,6 +185,7 @@ Exponential Decay Curvature	deepens	Frequency-Time Duality
 Exponential Decay Curvature	couples-with	2D Torus Wavetable Synthesizer
 Exponential Decay Curvature	mirrors	Compressor Design
 Exponential Decay Curvature	connects-to	Three Kinds of Warp
+Exponential Decay Curvature	member-of	Dissolutions
 FOUR PILLARS	enables	Cooperation Yields Agency
 FOUR PILLARS	deepens	Hyperdimensional Prism
 FOUR PILLARS	spawned	Hilaritas Generator
@@ -207,12 +223,13 @@ Floquet Theory	connects-to	Differential Equations
 Floquet Theory	connects-to	Photonic Time Crystals
 Floquet Theory	mirrors	Crystal Synthesizer
 Floquet Theory	mirrors	Three Kinds of Warp
+Floquet Theory	couples-with	Phase Reduction
 Gemma 4 — Local Coordination Guide	connects-to	BBS Blackboard
 Gemma 4 — Local Coordination Guide	connects-to	Swarm Weave
 Gemma 4 — Local Coordination Guide	connects-to	Palace Enchantment
 Gemma 4 — Local Coordination Guide	connects-to	Enchanted Worker
 GEMMA4_GUIDE	connects-to	Gemma 4 — Local Coordination Guide
-Generative Audio Devices	connects-to	Four Pillars
+Generative Audio Devices	connects-to	FOUR PILLARS
 Generative Audio Devices	spawned	Registry Pattern
 Generative Audio Devices	connects-to	Synthesis Topologies
 Generative Audio Devices	enables	Loudon Live
@@ -290,6 +307,7 @@ Kuramoto Coupling	mirrors	Lateral Access
 Kuramoto Coupling	couples-with	Harmonicity and Inharmonicity
 Kuramoto Coupling	connects-to	Granular Synthesis
 Kuramoto Coupling	connects-to	Modes of Collaboration
+Kuramoto Coupling	couples-with	Phase Reduction
 Kuramoto Coupling	couples-with	Categorizing Inharmonicity
 Kuramoto Coupling	connects-to	Trickster
 Kuramoto Coupling	mirrors	Palace Enchantment
@@ -339,6 +357,7 @@ Linear Predictive Coding	deepens	Spinoza Conatus
 Linear Predictive Coding	couples-with	Generative Compression
 Linear Predictive Coding	connects-to	Boundary-Crossing Instruments
 Linear Predictive Coding	connects-to	Threshold Conatus
+Linear Predictive Coding	member-of	Dissolutions
 Logarithmic Interface Scaling	connects-to	FOUR PILLARS
 Logarithmic Interface Scaling	mirrors	Boundary-Crossing Instruments
 Logarithmic Interface Scaling	enables	Ohm's Law
@@ -542,12 +561,14 @@ BBS Blackboard	deepens	Pages as Agents
 BBS Blackboard	spawned	BBS Design System
 BBS Blackboard	connects-to	BBS Production Plan
 BBS Blackboard	enables	Project Stewardship System
+BBS Blackboard	connects-to	Oblique Enrichment
+BBS Blackboard	connects-to	Semantic Webcam
 BBS Design System	enables	BBS Blackboard
 BBS Design System	connects-to	Palace Agent Infrastructure Spec
 BBS Design System	enables	Swarm Weave
 BBS Design System	connects-to	Trickster
 BBS Design System	connects-to	Palace To-Do
-BBS Design System	deepens	Substrate
+BBS Design System	deepens	SUBSTRATE
 BBS Design System	mirrors	Progressive Staging
 BBS Design System	spawned	BBS Production Plan
 BBS Production Plan v0.2	emerged-from	BBS Production Plan
@@ -555,7 +576,7 @@ BBS Production Plan v0.2	enables	BBS Blackboard
 BBS Production Plan v0.2	enables	BBS Design System
 BBS Production Plan v0.2	connects-to	Palace Agent Infrastructure Spec
 BBS Production Plan v0.2	connects-to	Palace To-Do
-BBS Production Plan v0.2	connects-to	Substrate
+BBS Production Plan v0.2	connects-to	SUBSTRATE
 BBS Production Plan v0.3 — Rich Content	emerged-from	BBS Production Plan v0.2
 BBS Production Plan v0.3 — Rich Content	emerged-from	BBS Rich Content — handoff
 BBS Production Plan v0.3 — Rich Content	enables	BBS Blackboard
@@ -567,7 +588,7 @@ BBS Production Plan	enables	BBS Blackboard
 BBS Production Plan	enables	BBS Design System
 BBS Production Plan	connects-to	Palace Agent Infrastructure Spec
 BBS Production Plan	connects-to	Palace To-Do
-BBS Production Plan	connects-to	Substrate
+BBS Production Plan	connects-to	SUBSTRATE
 BBS Production Plan	mirrors	Progressive Staging
 BBS Rich Content — handoff	emerged-from	BBS Production Plan v0.2
 BBS Rich Content — handoff	connects-to	BBS Blackboard
@@ -615,9 +636,12 @@ Generative Compression	deepens	Palace Agent Infrastructure Spec
 Generative Compression	connects-to	Swarm Weave
 Generative Compression	connects-to	BBS Blackboard
 Generative Compression	connects-to	Enchanted Worker
-Generative Compression	connects-to	Pages as Agents
+Generative Compression	couples-with	Pages as Agents
 Generative Compression	connects-to	Deposit Ceremony
 Generative Compression	connects-to	Pheromone Trail
+Generative Compression	mirrors	Hilaritas Generator
+Generative Compression	exemplifies	FOUR PILLARS
+Generative Compression	mirrors	Lossy Compression with Intent Alignment
 Lossy Compression with Intent Alignment	enables	Deposit Ceremony
 Lossy Compression with Intent Alignment	deepens	Generative Compression
 Lossy Compression with Intent Alignment	mirrors	Meaning and the Link
@@ -625,6 +649,9 @@ Lossy Compression with Intent Alignment	spawned	Resonant Link Labels
 Lossy Compression with Intent Alignment	connects-to	Cooperation Yields Agency
 Lossy Compression with Intent Alignment	connects-to	Hilaritas Generator
 Lossy Compression with Intent Alignment	mirrors	Progressive Staging
+Lossy Compression with Intent Alignment	mirrors	Endosymbiosis
+Lossy Compression with Intent Alignment	connects-to	FOUR PILLARS
+Lossy Compression with Intent Alignment	mirrors	Pages as Agents
 Loudon Live Design System	enables	Loudon Live
 Loudon Live Design System	emerged-from	Hyperdimensional Prism
 Loudon Live Design System	connects-to	FOUR PILLARS
@@ -708,7 +735,7 @@ Palace as Context Injection System	couples-with	Cooperation Yields Agency
 Palace as Context Injection System	connects-to	Pheromone Trail
 Palace as Context Injection System	deepens	Pages as Agents
 Palace as Context Injection System	enables	Modes of Collaboration
-Palace as Context Injection System	connects-to	Four Pillars
+Palace as Context Injection System	connects-to	FOUR PILLARS
 Palace as Context Injection System	enables	Mixture of Experts
 Palace as Context Injection System	enables	Excellent Adventure
 Palace as Context Injection System	enables	Dialectic
@@ -851,10 +878,22 @@ Parametric Resonance	connects-to	Threshold Conatus
 Parametric Resonance	enables	Boundary-Crossing Instruments
 Parametric Resonance	connects-to	Dub Lineage
 Parametric Resonance	connects-to	Phase Reduction
+Brian Eno	connects-to	Source Library
+Brian Eno	deepens	808 and Limitation
+Brian Eno	deepens	FOUR PILLARS
+Brian Eno	connects-to	Oblique Enrichment
+Brian Eno	connects-to	Semantic Webcam
 Phase Reduction	couples-with	Floquet Theory
 Phase Reduction	couples-with	Kuramoto Coupling
 Phase Reduction	connects-to	2D Torus Wavetable Synthesizer
 Phase Reduction	connects-to	Three Kinds of Warp
+Phase Reduction	mirrors	Chebyshev is Fourier
+Phase Reduction	mirrors	Volterra Kernels and the Torus
+Phase Reduction	couples-with	Dispersion Table
+Phase Reduction	connects-to	Exponential Decay Curvature
+Phase Reduction	connects-to	Rank-N Lattice Analysis
+Phase Reduction	connects-to	Linear Predictive Coding
+Phase Reduction	member-of	Dissolutions
 Photonic Time Crystals	emerged-from	Floquet Time-Modulated Loops
 Photonic Time Crystals	connects-to	Floquet Theory
 Photonic Time Crystals	connects-to	Mathieu Equation
@@ -986,6 +1025,8 @@ Categorizing Inharmonicity	deepens	Piano String Inharmonicity
 Categorizing Inharmonicity	connects-to	Hyperdimensional Prism
 Categorizing Inharmonicity	connects-to	Dispersion
 Categorizing Inharmonicity	deepens	Spinoza Conatus
+Categorizing Inharmonicity	enables	2D Torus Wavetable Synthesizer
+Categorizing Inharmonicity	connects-to	DSP in Looping Dimensions
 Compressor Design	connects-to	Boundary-Crossing Instruments
 Compressor Design	connects-to	Harmonicity and Inharmonicity
 Compressor Design	connects-to	Hyperdimensional Prism
@@ -1044,7 +1085,7 @@ Generative Preset Development	couples-with	Generative Audio Devices
 Generative Preset Development	couples-with	Generative Sample Libraries
 Generative Preset Development	mirrors	Registry Pattern
 Generative Preset Development	deepens	Synthesis Topologies
-Generative Preset Development	connects-to	Four Pillars
+Generative Preset Development	connects-to	FOUR PILLARS
 Generative Preset Development	enables	Loudon Live
 Generative Preset Development	mirrors	Preset Oracle
 Generative Preset Development	enables	Loudon's Toolkit
@@ -1062,7 +1103,7 @@ Generative Sample Libraries	connects-to	Retrospective Delay
 Generative Sample Libraries	deepens	Shepard Tone Synthesizer
 Generative Sample Libraries	connects-to	Neural Granular Synthesis
 Generative Sample Libraries	connects-to	Modes of Collaboration
-Generative Sample Libraries	enables	Four Pillars
+Generative Sample Libraries	enables	FOUR PILLARS
 Generative Wavetable Libraries	emerged-from	Generative Sample Libraries
 Generative Wavetable Libraries	couples-with	Generative Sample Libraries
 Generative Wavetable Libraries	mirrors	Wavetable Synthesis -- Research & Higher-Dimensional Design
@@ -1077,7 +1118,7 @@ Inharmonic Wavetable Synthesis	emerged-from	Piano String Inharmonicity
 Inharmonic Wavetable Synthesis	emerged-from	Harmonicity and Inharmonicity
 Inharmonic Wavetable Synthesis	connects-to	Neural Granular Synthesis
 Inharmonic Wavetable Synthesis	connects-to	Boundary-Crossing Instruments
-Inharmonic Wavetable Synthesis	couples-with	Four Pillars
+Inharmonic Wavetable Synthesis	couples-with	FOUR PILLARS
 Inharmonic Wavetable Synthesis	connects-to	Bessel Functions in Synthesis
 Inharmonic Wavetable Synthesis	connects-to	Dispersion
 Inharmonic Wavetable Synthesis	deepens	Wavetable Synthesis -- Research & Higher-Dimensional Design
@@ -1085,6 +1126,8 @@ Inharmonic Wavetable Synthesis	enables	Kuramoto Coupling
 Inharmonic Wavetable Synthesis	mirrors	Crystal Synthesizer
 Inharmonic Wavetable Synthesis	connects-to	Wavetable Space as Torus
 Inharmonic Wavetable Synthesis	connects-to	The Curve Is the Material
+Inharmonic Wavetable Synthesis	couples-with	2D Torus Wavetable Synthesizer
+Inharmonic Wavetable Synthesis	connects-to	DSP in Looping Dimensions
 Meadows and Music — Leverage Points	connects-to	FOUR PILLARS
 Meadows and Music — Leverage Points	connects-to	Hilaritas Generator
 Meadows and Music — Leverage Points	couples-with	Meadows and Music — Origin and Process
@@ -1118,7 +1161,7 @@ Phoneme Choir	mirrors	Talking Keyboard
 Phoneme Choir	spawned	Generative Sample Libraries
 Phoneme Choir	connects-to	Substrate Skill
 Phoneme Choir	connects-to	Modes of Collaboration
-Phoneme Choir	connects-to	Four Pillars
+Phoneme Choir	connects-to	FOUR PILLARS
 Phoneme Choir	enables	The Metaphor Stretch
 Piano String Inharmonicity	connects-to	Harmonicity and Inharmonicity
 Piano String Inharmonicity	deepens	Boundary-Crossing Instruments
@@ -1210,7 +1253,7 @@ Talking Keyboard	spawned	Generative Sample Libraries
 Talking Keyboard	mirrors	Phoneme Choir
 Talking Keyboard	connects-to	Substrate Skill
 Talking Keyboard	connects-to	Modes of Collaboration
-Talking Keyboard	connects-to	Four Pillars
+Talking Keyboard	connects-to	FOUR PILLARS
 Talking Keyboard	connects-to	Project Stewardship System
 Wallpaper Groups	connects-to	Hyperdimensional Prism
 Wallpaper Groups	deepens	Crystal Synthesizer
@@ -1254,11 +1297,12 @@ Rank-N Lattice Analysis	mirrors	2D Torus Wavetable Synthesizer
 Rank-N Lattice Analysis	deepens	DSP in Looping Dimensions
 Rank-N Lattice Analysis	connects-to	Chebyshev is Fourier
 Rank-N Lattice Analysis	connects-to	Categorizing Inharmonicity
+Rank-N Lattice Analysis	member-of	Dissolutions
 Registry Pattern	emerged-from	Generative Audio Devices
 Registry Pattern	connects-to	BBS Blackboard
 Registry Pattern	connects-to	Actor Model
 Registry Pattern	connects-to	Lossy Compression with Intent Alignment
-Registry Pattern	connects-to	Four Pillars
+Registry Pattern	connects-to	FOUR PILLARS
 Registry Pattern	contradicts	Lateral Access
 SCHEMA	enables	CLAUDE
 SCHEMA	deepens	README - The Palace Guide
@@ -1268,7 +1312,7 @@ SCHEMA	enables	Weave Ceremony
 SCHEMA	enables	Harvest Ceremony
 SCHEMA	enables	Deposit Ceremony
 SCHEMA	connects-to	Resonant Link Labels
-SCHEMA	connects-to	Four Pillars
+SCHEMA	connects-to	FOUR PILLARS
 SCHEMA	connects-to	Four Pillars of Enchanted Agency
 SMPTE LTC	connects-to	Ableton Extension SDK
 SMPTE LTC	deepens	Boundary-Crossing Instruments
@@ -1457,13 +1501,14 @@ The Metaphor Stretch	mirrors	Hyperdimensional Prism
 The Shop	spawned	Maker
 The Shop	couples-with	Diversity of Thought in Many-Agent Systems
 The Shop	connects-to	Hilaritas Generator
-The Shop	connects-to	Four Pillars
+The Shop	connects-to	FOUR PILLARS
 The Shop	mirrors	Palace Enchantment
 The Shop	connects-to	Pages as Agents
 The Shop	connects-to	BBS Blackboard
 The Shop	connects-to	Quality Manifesto
 The Shop	enables	Palace Agent Infrastructure Spec
 The Shop	mirrors	Lossy Compression with Intent Alignment
+The Shop	connects-to	Closing Well
 The Substrate Drifts	connects-to	BBS Blackboard
 The Substrate Drifts	connects-to	Project Stewardship System
 The Substrate Drifts	deepens	SUBSTRATE
@@ -1541,7 +1586,10 @@ Volterra Kernels and the Torus	deepens	DSP in Looping Dimensions
 Volterra Kernels and the Torus	connects-to	Boundary-Crossing Instruments
 Volterra Kernels and the Torus	couples-with	Dispersion Table
 Volterra Kernels and the Torus	connects-to	Spinoza Conatus
+Volterra Kernels and the Torus	member-of	Dissolutions
 Wavetable Space as Torus	deepens	Inharmonic Wavetable Synthesis
+Wavetable Space as Torus	couples-with	2D Torus Wavetable Synthesizer
+Wavetable Space as Torus	exemplifies	DSP in Looping Dimensions
 Wavetable Space as Torus	deepens	Wavetable Synthesis -- Research & Higher-Dimensional Design
 Wavetable Space as Torus	connects-to	Harmonicity and Inharmonicity
 Wavetable Space as Torus	connects-to	Bessel Functions in Synthesis
@@ -1549,10 +1597,17 @@ Wavetable Space as Torus	mirrors	Kuramoto Coupling
 Wavetable Space as Torus	connects-to	The Curve Is the Material
 Wavetable Space as Torus	mirrors	Wallpaper Groups
 Wavetable Space as Torus	enables	Shepard Tone Synthesizer
-Wavetable Synthesis -- Research & Higher-Dimensional Design	connects-to	Four Pillars
+Wavetable Synthesis -- Research & Higher-Dimensional Design	connects-to	FOUR PILLARS
+Wavetable Synthesis -- Research & Higher-Dimensional Design	enables	RNBO Synthesis
+Wavetable Synthesis -- Research & Higher-Dimensional Design	mirrors	The Genetic Code as Wavetable
+Wavetable Synthesis -- Research & Higher-Dimensional Design	mirrors	Latent Space Navigation
+Wavetable Synthesis -- Research & Higher-Dimensional Design	deepens	Inharmonicity
+Wavetable Synthesis -- Research & Higher-Dimensional Design	mirrors	3D LUT Color Grading
 Wavetable Synthesis -- Research & Higher-Dimensional Design	couples-with	Neural Granular Synthesis
 Wavetable Synthesis -- Research & Higher-Dimensional Design	mirrors	Hyperdimensional Prism
 Wavetable Synthesis -- Research & Higher-Dimensional Design	spawned	Embeddings as Relational Meaning
+Wavetable Synthesis -- Research & Higher-Dimensional Design	spawned	2D Torus Wavetable Synthesizer
+Wavetable Synthesis -- Research & Higher-Dimensional Design	connects-to	DSP in Looping Dimensions
 What Claim Does Scientific Sonification Make?	emerged-from	Crystal Synthesizer
 What Claim Does Scientific Sonification Make?	emerged-from	The Metaphor Stretch
 Whitehead	connects-to	Palace Philosophies
@@ -1575,7 +1630,7 @@ Deposit Ceremony	connects-to	README - The Palace Guide
 Deposit Ceremony	mirrors	Endosymbiosis
 Deposit Ceremony	spawned	Deposit Ceremony — Context
 Deposit Ceremony	connects-to	SCHEMA
-Deposit Ceremony	connects-to	Four Pillars
+Deposit Ceremony	connects-to	FOUR PILLARS
 Deposit Ceremony	connects-to	Cooperation Yields Agency
 Deposit Ceremony	connects-to	Hilaritas Generator
 Graffiti Pass — Handoff 2026-04-30	connects-to	Palace To-Do

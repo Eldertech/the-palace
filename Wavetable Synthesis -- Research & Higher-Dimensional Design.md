@@ -10,7 +10,7 @@ tags: [synthesis, DSP, wavetable, inharmonicity, higher-dimensional, cross-disci
 forward_vector: "I want to become the master research index that holds every speculative wavetable direction — neural latent tables, granular hybrids, T^N geometry, perceptual coordinates — until each branch is mature enough to fork into its own entry. I want every wavetable project to test itself against my open questions before claiming completeness."
 links:
   - target: "[[FOUR PILLARS]]"
-    type: deepens
+    type: connects-to
     label: creation-pillar
   - target: "[[RNBO Synthesis]]"
     type: enables
@@ -40,7 +40,7 @@ links:
     type: spawned
     label: hyperspace-incarnation
   - target: "[[DSP in Looping Dimensions]]"
-    type: deepens
+    type: connects-to
     label: mathematical-substrate
 ---
 

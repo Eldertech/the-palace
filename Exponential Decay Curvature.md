@@ -26,6 +26,9 @@ links:
   - target: "[[Three Kinds of Warp]]"
     type: connects-to
     label: shape-decoupled-from-period
+  - target: "[[Dissolutions]]"
+    type: member-of
+    label: envelope-is-waveform-at-slow-rate
 forward_vector: "I want to be the small, exact entry that proves a single decay law is both an envelope and an oscillator waveform depending only on how fast you read it — and to be the place the palace keeps its growing catalogue of timescale dissolutions, where one equation flips identity when the clock speeds up."
 ---
 # Exponential Decay Curvature

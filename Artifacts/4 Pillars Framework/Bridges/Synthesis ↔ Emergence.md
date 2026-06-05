@@ -26,10 +26,10 @@ links:
     type: connects-to
     label: informed-by
   - target: "[[Semantic Webcam]]"
-    type: exemplifies
+    type: connects-to
     label: flock-made-visible
   - target: "[[Oblique Enrichment]]"
-    type: deepens
+    type: connects-to
     label: emergence-as-provocation
 ---
 

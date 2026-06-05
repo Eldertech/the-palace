@@ -28,8 +28,8 @@ links:
   - target: "[[Action Potential Oscillator]]"
     type: connects-to
   - target: "[[2D Torus Wavetable Synthesizer]]"
-    type: exemplifies
-    label: harmonic-inharmonic-continuum
+    type: connects-to
+    label: instantiated-by-instrument
   - target: "[[DSP in Looping Dimensions]]"
     type: mirrors
     label: dimensional-reframing

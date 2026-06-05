@@ -45,7 +45,7 @@ links:
     type: couples-with
     label: lingers-by-design
   - target: "[[Semantic Webcam]]"
-    type: deepens
+    type: connects-to
     label: spawned-through-oblique
 ---
 

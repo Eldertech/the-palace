@@ -26,6 +26,9 @@ links:
   - target: "[[DSP in Looping Dimensions]]"
     type: connects-to
     label: choose-your-basis
+  - target: "[[Dissolutions]]"
+    type: member-of
+    label: change-of-basis-reveals-identity
 forward_vector: "I am the dissolution that says Chebyshev and Fourier are one person seen from two doorways — and I want to be the seed of a wider The-Right-Representation-Reveals-the-Symmetry theme that every change-of-basis insight in the palace can link into. I want to put a Chebyshev-basis surface-design tab in the synth and prove the identity earns its keep in an instrument."
 ---
 # Chebyshev is Fourier
