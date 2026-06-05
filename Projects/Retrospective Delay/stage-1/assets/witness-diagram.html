@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Retrospective Delay — Stage 1: The Witness Diagram</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.4/p5.min.js"></script>
+<style>
+  :root{
+    --indigo:#6366F1;
+    --amber:#F59E0B;
+    --bg:#0B0B10;
+    --ink:#E7E7EE;
+    --ink-dim:#8A8AA0;
+    --cell-empty:#1B1B26;
+    --cell-mid:#2A2A3C;
+  }
+  html,body{margin:0;background:var(--bg);color:var(--ink);
+    font-family:ui-monospace,"JetBrains Mono",Menlo,monospace;}
+  #wrap{display:flex;flex-direction:column;min-height:100vh;}
+  header{padding:18px 22px 6px;}
+  header h1{font-size:15px;font-weight:600;letter-spacing:.04em;margin:0;color:var(--ink);}
+  header p{font-size:12px;color:var(--ink-dim);margin:6px 0 0;max-width:62ch;line-height:1.5;}
+  #stage{flex:1;display:flex;align-items:center;justify-content:center;}
+  #panel{display:flex;flex-wrap:wrap;gap:18px 26px;align-items:center;
+    padding:14px 22px 22px;border-top:1px solid #20202c;}
+  .ctrl{display:flex;flex-direction:column;gap:4px;font-size:11px;color:var(--ink-dim);}
+  .ctrl label{letter-spacing:.04em;text-transform:uppercase;}
+  .ctrl .val{color:var(--amber);font-variant-numeric:tabular-nums;}
+  input[type=range]{accent-color:var(--indigo);width:160px;}
+  button{font:inherit;font-size:11px;letter-spacing:.04em;text-transform:uppercase;
+    background:#16161f;color:var(--ink);border:1px solid #2c2c3a;border-radius:6px;
+    padding:8px 14px;cursor:pointer;}
+  button:hover{border-color:var(--indigo);}
+  .lag-seg{display:flex;gap:6px;}
+  .lag-seg button.on{border-color:var(--amber);color:var(--amber);}
+  footer{padding:8px 22px 14px;font-size:10px;color:#55556a;letter-spacing:.04em;}
+</style>
+</head>
+<body>
+<div id="wrap">
+  <header>
+    <h1>The Witness — always-recording circular buffer</h1>
+    <p>The write head (indigo) sweeps the loop continuously, overwriting the oldest
+       cell every sample. The read head (amber) trails behind by a fixed lag — it is
+       playing back what was written <em>lag</em> ago, in present time. Nothing arms
+       it. The buffer is the constant witness; the gain knob is your only choice about
+       whether to listen.</p>
+  </header>
+  <div id="stage"></div>
+  <div id="panel">
+    <div class="ctrl">
+      <label>Tempo <span class="val" id="bpmVal">120</span> BPM</label>
+      <input type="range" id="bpm" min="60" max="180" value="120" step="1" />
+    </div>
+    <div class="ctrl">
+      <label>Read-head lag</label>
+      <div class="lag-seg" id="lagSeg">
+        <button data-lag="0.25">quarter</button>
+        <button data-lag="0.5" class="on">half</button>
+        <button data-lag="1.0">whole</button>
+      </div>
+    </div>
+    <div class="ctrl">
+      <label>Buffer (one measure 4/4) <span class="val" id="bufVal"></span></label>
+      <span style="font-size:10px;color:#55556a">N = sample-rate · (60 / tempo) · 4</span>
+    </div>
+    <div class="ctrl">
+      <button id="playBtn">pause</button>
+    </div>
+  </div>
+  <footer>Loudon Live · Autodidact Polymaths — Retrospective Delay · Stage 1 · Asset 1</footer>
+</div>
+<script>
+// ---- Witness Diagram --------------------------------------------------------
+// 16-segment circular buffer. Write head sweeps clockwise at one cycle / measure.
+// Read head trails by lag-as-fraction-of-buffer. A faint "memory trail" tints the
+// cells most recently written, so the student SEES the past being overwritten.
+
+const NCELLS = 16;
+let bpm = 120;
+let lagFrac = 0.5;       // half-note default
+let playing = true;
+let phase = 0;           // write-head phase 0..1
+let lastT = 0;
+const SR = 48000;        // nominal sample rate for the N readout
+
+function setup(){
+  const stage = document.getElementById('stage');
+  const c = createCanvas(stage.clientWidth || 720, 420);
+  c.parent(stage);
+  lastT = millis();
+  wireControls();
+  updateReadouts();
+}
+
+function windowResized(){
+  const stage = document.getElementById('stage');
+  resizeCanvas(stage.clientWidth || 720, 420);
+}
+
+function wireControls(){
+  const bpmEl = document.getElementById('bpm');
+  bpmEl.addEventListener('input', ()=>{ bpm = +bpmEl.value;
+    document.getElementById('bpmVal').textContent = bpm; updateReadouts(); });
+  document.querySelectorAll('#lagSeg button').forEach(b=>{
+    b.addEventListener('click', ()=>{
+      lagFrac = +b.dataset.lag;
+      document.querySelectorAll('#lagSeg button').forEach(x=>x.classList.remove('on'));
+      b.classList.add('on');
+    });
+  });
+  const pb = document.getElementById('playBtn');
+  pb.addEventListener('click', ()=>{ playing = !playing;
+    pb.textContent = playing ? 'pause' : 'play'; lastT = millis(); });
+}
+
+function updateReadouts(){
+  const N = Math.round(SR * (60 / bpm) * 4);
+  const secs = (N / SR).toFixed(2);
+  document.getElementById('bufVal').textContent = N.toLocaleString() + ' samples · ' + secs + ' s';
+}
+
+function draw(){
+  background(0x0B,0x0B,0x10);
+  // advance write-head phase: one full loop per measure
+  const now = millis();
+  const dt = (now - lastT) / 1000;
+  lastT = now;
+  const measureSecs = (60 / bpm) * 4;
+  if (playing) { phase = (phase + dt / measureSecs) % 1; }
+
+  const cx = width/2, cy = height/2;
+  const R = Math.min(width, height) * 0.32;
+  const cellR = R * 0.34;
+
+  // which cell each head sits in
+  const writeCell = Math.floor(phase * NCELLS) % NCELLS;
+  const readPhase = (phase - lagFrac + 1) % 1;
+  const readCell  = Math.floor(readPhase * NCELLS) % NCELLS;
+
+  // draw cells
+  for (let i=0;i<NCELLS;i++){
+    const a = -HALF_PI + (i / NCELLS) * TWO_PI;
+    const x = cx + Math.cos(a) * R;
+    const y = cy + Math.sin(a) * R;
+
+    // recency: how long ago (in cells, going backwards from write head) was this written
+    let age = (writeCell - i + NCELLS) % NCELLS;          // 0 = just written
+    let tint = constrain(map(age, 0, NCELLS-1, 1, 0), 0, 1); // 1=fresh, 0=oldest
+    // base cell
+    noStroke();
+    fill(lerpColor(color(0x1B,0x1B,0x26), color(0x36,0x36,0x52), tint));
+    circle(x, y, cellR*2);
+
+    // write head highlight (indigo)
+    if (i === writeCell){
+      stroke(0x63,0x66,0xF1); strokeWeight(3); noFill();
+      circle(x, y, cellR*2 + 8);
+      noStroke(); fill(0x63,0x66,0xF1); circle(x,y,cellR*2*0.5);
+    }
+    // read head highlight (amber)
+    if (i === readCell){
+      stroke(0xF5,0x9E,0x0B); strokeWeight(3); noFill();
+      circle(x, y, cellR*2 + 16);
+      noStroke(); fill(0xF5,0x9E,0x0B); circle(x,y,cellR*2*0.32);
+    }
+  }
+
+  // sweep arc from read -> write showing the lag span
+  noFill(); stroke(0xF5,0x9E,0x0B,90); strokeWeight(2);
+  const aw = -HALF_PI + phase*TWO_PI;
+  const ar = -HALF_PI + readPhase*TWO_PI;
+  arc(cx, cy, R*2+34, R*2+34, ar, aw < ar ? aw+TWO_PI : aw);
+
+  // labels
+  noStroke(); textAlign(CENTER, CENTER);
+  fill(0x63,0x66,0xF1); textSize(12);
+  const wlx = cx + Math.cos(aw)*(R+44), wly = cy + Math.sin(aw)*(R+44);
+  text('write', wlx, wly);
+  fill(0xF5,0x9E,0x0B);
+  const rlx = cx + Math.cos(ar)*(R+50), rly = cy + Math.sin(ar)*(R+50);
+  text('read · ' + (lagFrac===0.25?'¼':lagFrac===0.5?'½':'1') + ' note behind', rlx, rly);
+
+  // center caption
+  fill(0x8A,0x8A,0xA0); textSize(11);
+  text('always recording', cx, cy-8);
+  fill(0x55,0x55,0x6a); textSize(9);
+  text('the past, played back in present time', cx, cy+10);
+}
+</script>
+</body>
+</html>
