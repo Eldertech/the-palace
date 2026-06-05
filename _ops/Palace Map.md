@@ -6,8 +6,8 @@ pillars:
   - philosophy
   - practice
 born: 2026-03
-last_activated: 2026-04-30
-activation_count: 6
+last_activated: 2026-06-05
+activation_count: 7
 stage: sprout
 energy: very high
 beauty: 8

@@ -26,6 +26,27 @@ links:
   - target: "[[Three Kinds of Warp]]"
     type: connects-to
     label: PRC-shapes-the-type-3-coupling
+  - target: "[[Chebyshev is Fourier]]"
+    type: mirrors
+    label: intuition-confirmed-by-formalization
+  - target: "[[Volterra Kernels and the Torus]]"
+    type: mirrors
+    label: unification-via-identity
+  - target: "[[Dispersion Table]]"
+    type: couples-with
+    label: spectral-ground-to-resonance-condition
+  - target: "[[Exponential Decay Curvature]]"
+    type: connects-to
+    label: envelope-as-periodic-system
+  - target: "[[Rank-N Lattice Analysis]]"
+    type: connects-to
+    label: analysis-dual-of-phase-locked-synthesis
+  - target: "[[Linear Predictive Coding]]"
+    type: connects-to
+    label: prediction-as-phase-collapse
+  - target: "[[Dissolutions]]"
+    type: member-of
+    label: one-object-two-doorways
 forward_vector: "I want to be the entry that names the mechanism connecting Floquet and Kuramoto out loud — phase reduction is why a population of oscillators can be described by phase alone — and to make the Phase Response Curve a designed control object in a coupled-grain instrument. I also want to hold the meta-observation that Loudon's intuitions about framework-kinship keep getting confirmed."
 ---
 # Phase Reduction

@@ -23,6 +23,7 @@ domains:
   - process
   - constraints
 who_leads: shared
+last_activated: 2026-06-05
 links:
   - target: "[[Source Library]]"
     type: connects-to
@@ -30,6 +31,13 @@ links:
     type: deepens
   - target: "[[FOUR PILLARS]]"
     type: deepens
+    label: constraint-as-pillar-method
+  - target: "[[Oblique Enrichment]]"
+    type: spawned
+    label: oblique-strategies-principle
+  - target: "[[Semantic Webcam]]"
+    type: deepens
+    label: constraints-as-creative-force
 ---
 
 # Brian Eno

@@ -5,17 +5,24 @@ pillars:
   - creation
   - tools
   - philosophy
+  - practice
 born: 2026-04
 stage: growing
 energy: very high
 hook_quality: 9
 beauty: 10
-last_activated: 2026-04
-activation_count: 1
+last_activated: 2026-06-05
+activation_count: 2
 links:
   - target: "[[Inharmonic Wavetable Synthesis]]"
     type: deepens
     label: topological-reframe
+  - target: "[[2D Torus Wavetable Synthesizer]]"
+    type: couples-with
+    label: embodied-geometry
+  - target: "[[DSP in Looping Dimensions]]"
+    type: exemplifies
+    label: two-dimensional-case
   - target: "[[Wavetable Synthesis -- Research & Higher-Dimensional Design]]"
     type: deepens
     label: cube-abandoned

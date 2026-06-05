@@ -48,6 +48,9 @@ links:
   - target: "[[Modes of Collaboration]]"
     type: connects-to
     label: collaboration-as-coupling
+  - target: "[[Phase Reduction]]"
+    type: couples-with
+    label: bridge-via-PRC
   - target: "[[Categorizing Inharmonicity]]"
     type: couples-with
     label: direct-coupling

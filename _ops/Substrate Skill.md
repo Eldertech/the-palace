@@ -180,6 +180,34 @@ The locked grammar (Anton display, Cormorant body, Manrope UI, JetBrains Mono me
 
 **Adoption is a typed-link event.** When an artifact adopts the system, link it back to [[Loudon Live Design System]] with `connects-to` and a label naming the surface (e.g. `learning-poster`, `session-artifact`, `slide-deck`). When an artifact deliberately overrides, link to whichever system it chose instead with a label naming the reason.
 
+## Closing Punchlist Scaffold
+
+Generic close-of-session checklist that any palace AI can adopt and parameterize per role (Specialist, ceremony, steward). Adapted from [[Closing Well]]; this is the scaffold, not the per-role version.
+
+```
+[ ] Verify the deliverable to best ability — the specific check is role-defined
+    (a Specialist auditions its output; a ceremony verifies its postcondition; a
+    steward confirms the next steward can pick up cold).
+
+[ ] Dual-channel check — audio AND silent moving image; voice AND artifact; prose
+    AND YAML. If the work has two channels, both should land. Note any channel
+    that didn't.
+
+[ ] Punchlist of known gotchas — surface what the role learned this session that
+    the next invocation would benefit from. One line each. These accrete into
+    the role's body over time, not into a separate log.
+
+[ ] Forward vector check — is the role's stated vector still accurate? If this
+    session revealed drift, propose the tweak inline.
+
+[ ] Handback line — one sentence naming what the next invocation should start
+    with. Not a summary of what was done; a pointer to what comes next.
+```
+
+Specialists fill the bracket with their domain-specific check; ceremonies fill it with their postcondition; stewards fill it with the next-steward's first action. The scaffold is identical; the parameters are role-specific. Add to a role's entry as `## Closing Punchlist` and let it specialize.
+
+When in doubt about whether to ship: a Closing Punchlist that mentions a known gap is better than a session that ships silently. See [[Closing Well]] for the full discipline this scaffold instantiates.
+
 ## What Not To Do
 
 - Do not announce "the substrate skill has triggered." Just do the work.

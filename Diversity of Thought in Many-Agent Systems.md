@@ -16,7 +16,7 @@ links:
   - target: "[[Cooperation Yields Agency]]"
     type: connects-to
     label: "interrogates"
-  - target: "[[Four Pillars]]"
+  - target: "[[FOUR PILLARS]]"
     type: connects-to
   - target: "[[The Shop]]"
     type: emerged-from

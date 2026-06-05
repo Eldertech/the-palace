@@ -29,6 +29,27 @@ links:
   - target: "[[Waveguide Synthesizer]]"
     type: emerged-from
     label: loop-round-trip-condition
+  - target: "[[Volterra Kernels and the Torus]]"
+    type: mirrors
+    label: one-field-two-reads
+  - target: "[[Linear Predictive Coding]]"
+    type: mirrors
+    label: reading-mechanism-is-the-instrument
+  - target: "[[Rank-N Lattice Analysis]]"
+    type: couples-with
+    label: analysis-is-synthesis-read-backward
+  - target: "[[Exponential Decay Curvature]]"
+    type: couples-with
+    label: timescale-reads-the-same-equation
+  - target: "[[Chebyshev is Fourier]]"
+    type: connects-to
+    label: change-of-basis-reveals-the-lattice
+  - target: "[[Phase Reduction]]"
+    type: couples-with
+    label: spectral-ground-to-resonance-condition
+  - target: "[[Dissolutions]]"
+    type: member-of
+    label: one-object-two-doorways
 forward_vector: "I want to be the entry that makes 'store phase-response curves, not waveforms' an obvious move rather than a leap — the surface where a single warp knob selects which inharmonic mode-structure a resonator will admit. I want to spawn a Wavetable Oscillator entry that finally states the lossless-loop identity plainly, and to earn a place as a first-class control axis in the synth interface."
 ---
 # Dispersion Table

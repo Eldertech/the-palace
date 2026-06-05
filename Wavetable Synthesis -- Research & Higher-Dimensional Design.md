@@ -1,34 +1,32 @@
 ---
 title: "Wavetable Synthesis — Deep Research & Higher-Dimensional Design"
 type: concept
-stage: growing
+stage: mature
 pillars: [creation, tools, philosophy]
-connects-to:
-  - target: "FOUR PILLARS"
-    relation: deepens
-  - target: "RNBO Synthesis"
-    relation: enables
-    label: substrate
-  - target: "The Genetic Code as Wavetable"
-    relation: mirrors
-    label: isomorphic
-  - target: "Latent Space Navigation"
-    relation: mirrors
-    label: higher-order-form
-  - target: "Inharmonicity"
-    relation: deepens
-    label: tension
-  - target: "3D LUT Color Grading"
-    relation: mirrors
-    label: structural-twin
-spawned: "2026-04-21"
+born: "2026-04-21"
+last_activated: 2026-06-05
+activation_count: 2
 tags: [synthesis, DSP, wavetable, inharmonicity, higher-dimensional, cross-disciplinary, design-plan]
 forward_vector: "I want to become the master research index that holds every speculative wavetable direction — neural latent tables, granular hybrids, T^N geometry, perceptual coordinates — until each branch is mature enough to fork into its own entry. I want every wavetable project to test itself against my open questions before claiming completeness."
 links:
-  - target: "[[Four Pillars]]"
-    type: connects-to
+  - target: "[[FOUR PILLARS]]"
+    type: deepens
     label: creation-pillar
-
+  - target: "[[RNBO Synthesis]]"
+    type: enables
+    label: substrate
+  - target: "[[The Genetic Code as Wavetable]]"
+    type: mirrors
+    label: isomorphic
+  - target: "[[Latent Space Navigation]]"
+    type: mirrors
+    label: higher-order-form
+  - target: "[[Inharmonicity]]"
+    type: deepens
+    label: tension
+  - target: "[[3D LUT Color Grading]]"
+    type: mirrors
+    label: structural-twin
   - target: "[[Neural Granular Synthesis]]"
     type: couples-with
     label: aperiodicity
@@ -38,6 +36,12 @@ links:
   - target: "[[Embeddings as Relational Meaning]]"
     type: spawned
     label: latent-table
+  - target: "[[2D Torus Wavetable Synthesizer]]"
+    type: spawned
+    label: hyperspace-incarnation
+  - target: "[[DSP in Looping Dimensions]]"
+    type: deepens
+    label: mathematical-substrate
 ---
 
 # Wavetable Synthesis — Deep Research & Higher-Dimensional Design

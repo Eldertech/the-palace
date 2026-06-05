@@ -26,7 +26,7 @@ links:
     type: enables
   - target: "[[Resonant Link Labels]]"
     type: connects-to
-  - target: "[[Four Pillars]]"
+  - target: "[[FOUR PILLARS]]"
     type: connects-to
   - target: "[[Four Pillars of Enchanted Agency]]"
     type: connects-to
