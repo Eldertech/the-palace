@@ -116,7 +116,6 @@ Dispersion	connects-to	Bessel Functions in Synthesis
 Dispersion	enables	Crystal Synthesizer
 Dispersion	enables	Particle Synthesis
 Dispersion	connects-to	Portamento and Physical Pitch Modeling
-Dispersion	deepens	Piano String Inharmonicity
 Dispersion	connects-to	Shimmer Cloud
 Dissolutions	emerged-from	Boundary-Crossing Instruments
 Dissolutions	mirrors	Hyperdimensional Prism
@@ -187,7 +186,6 @@ Exponential Decay Curvature	mirrors	Compressor Design
 Exponential Decay Curvature	connects-to	Three Kinds of Warp
 Exponential Decay Curvature	member-of	Dissolutions
 FOUR PILLARS	enables	Cooperation Yields Agency
-FOUR PILLARS	deepens	Hyperdimensional Prism
 FOUR PILLARS	spawned	Hilaritas Generator
 FOUR PILLARS	spawned	Symbiotic Skills
 FOUR PILLARS	connects-to	Kuramoto Coupling
@@ -555,7 +553,6 @@ BBS Blackboard	connects-to	Trickster
 BBS Blackboard	connects-to	Palace Map
 BBS Blackboard	enables	Enchanted Worker
 BBS Blackboard	enables	Palace Enchantment
-BBS Blackboard	deepens	Palace Agent Infrastructure Spec
 BBS Blackboard	connects-to	Striatum
 BBS Blackboard	deepens	Pages as Agents
 BBS Blackboard	spawned	BBS Design System
@@ -821,7 +818,6 @@ STIGMERGY — Weave Flag Item Type Build Plan	enables	BBS Design System
 STIGMERGY — Weave Flag Item Type Build Plan	connects-to	Drift and Consolidation
 Self-Describing Knowledge Module	mirrors	Meaning and the Link
 Self-Describing Knowledge Module	enables	ROSETTA
-Self-Describing Knowledge Module	deepens	SUBSTRATE
 Self-Describing Knowledge Module	connects-to	Symbiotic Skills
 Self-Describing Knowledge Module	connects-to	Cooperation Yields Agency
 Self-Describing Knowledge Module	spawned	Progressive Staging
@@ -1256,7 +1252,6 @@ Talking Keyboard	connects-to	Modes of Collaboration
 Talking Keyboard	connects-to	FOUR PILLARS
 Talking Keyboard	connects-to	Project Stewardship System
 Wallpaper Groups	connects-to	Hyperdimensional Prism
-Wallpaper Groups	deepens	Crystal Synthesizer
 Wallpaper Groups	connects-to	Quantum Synthesizer
 Wallpaper Groups	mirrors	Spinoza Conatus
 Wallpaper Groups	connects-to	Granular Synthesis
@@ -1340,7 +1335,6 @@ SUBSTRATE	connects-to	Tristitia Generator
 SUBSTRATE	connects-to	Lateral Access
 SUBSTRATE	connects-to	1 from 2
 SUBSTRATE	connects-to	Palace Ceremonies
-Scale-Stratified Identity	deepens	Threshold Conatus
 Scale-Stratified Identity	deepens	Spinoza Conatus
 Scale-Stratified Identity	mirrors	Action Potential Oscillator
 Scale-Stratified Identity	connects-to	Kuramoto Coupling
@@ -1380,7 +1374,6 @@ Songlines	connects-to	Lateral Access
 Songlines	connects-to	Oblique Portrait
 Songlines	mirrors	Embeddings as Relational Meaning
 Songlines	connects-to	Hilaritas Generator
-Spinoza Conatus	deepens	Cooperation Yields Agency
 Spinoza Conatus	mirrors	Kuramoto Coupling
 Spinoza Conatus	spawned	Hilaritas Generator
 Spinoza Conatus	connects-to	FOUR PILLARS
@@ -1422,7 +1415,6 @@ Stoicism	deepens	Quality Manifesto
 Stoicism	connects-to	Excellent Adventure
 Stoicism	connects-to	Marcus Aurelius
 Stoicism	connects-to	Epictetus
-Striatum	deepens	Hilaritas Generator
 Striatum	connects-to	Kuramoto Coupling
 Striatum	connects-to	Action Potential Oscillator
 Striatum	connects-to	FOUR PILLARS
@@ -1676,7 +1668,6 @@ Mermaid Diagram Standard	deepens	Image Embedding Standard
 Mermaid Diagram Standard	deepens	SCHEMA
 Mermaid Diagram Standard	enables	Deposit Ceremony
 Mermaid Diagram Standard	connects-to	README - The Palace Guide
-Pages as Agents	deepens	Swarm Weave
 Pages as Agents	connects-to	JEWEL
 Pages as Agents	deepens	SUBSTRATE
 Pages as Agents	mirrors	Kuramoto Coupling

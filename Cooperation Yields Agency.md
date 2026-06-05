@@ -22,6 +22,7 @@ links:
     type: mirrors
   - target: "[[Spinoza Conatus]]"
     type: deepens
+    label: agency-as-power-increase
   - target: "[[FOUR PILLARS]]"
     type: enables
   - target: "[[Symbiotic Skills]]"

@@ -12,8 +12,6 @@ confidence: emerging
 energy: medium
 who_leads: shared
 links:
-  - target: "[[Hilaritas Generator]]"
-    type: deepens
   - target: "[[Kuramoto Coupling]]"
     type: connects-to
   - target: "[[Action Potential Oscillator]]"

@@ -17,6 +17,7 @@ forward_vector: "I want to become the canonical technical foundation that any ag
 links:
   - target: "[[BBS Blackboard]]"
     type: deepens
+    label: specifies
   - target: "[[Swarm Weave]]"
     type: deepens
   - target: "[[Enchanted Worker]]"

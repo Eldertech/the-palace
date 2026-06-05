@@ -26,9 +26,6 @@ links:
     type: enables
   - target: "[[Palace Enchantment]]"
     type: enables
-  - target: "[[Palace Agent Infrastructure Spec]]"
-    type: deepens
-    label: specced-by
   - target: "[[Striatum]]"
     type: connects-to
   - target: "[[Pages as Agents]]"

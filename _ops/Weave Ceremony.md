@@ -79,7 +79,7 @@ Pay particular attention to **§4 typed-link directionality**, the most error-pr
 
 - **`member-of`** is directed **member → collection**, with *no forced reciprocal on the hub side* (the Map computes the hub's inbound degree). A hub **never emits `member-of` at its own members** — the members declare membership pointing in. Putting `member-of` on the hub is inverted and forbidden.
 - **`exemplifies`** is directed **instance → general** (an entry → [[FOUR PILLARS]]; a person → a registry). A general principle must never `exemplifies` a specific instance.
-- **`deepens`** and **`emerged-from`** directionality is applied inconsistently across the palace, and the §4 table wording disagrees with the README example. When a directed type is contestable or you are unsure which way the arrow points, fall back to **`connects-to` + label** — SCHEMA §4 explicitly sanctions this as the tool for "a real relationship named by its label." Do not guess a directed type.
+- **`deepens`** and **`emerged-from`** point from the derived thing *back to its ground* (canonized in the v1.9 Schema Ceremony, 2026-06-05): `A deepens B` means A elaborates the more-foundational B; `A emerged-from B` means A grew from the origin B. Foundational primitives (Spinoza Conatus, FOUR PILLARS, Wallpaper Groups) are *targets*, not sources, of these links. If you find a foundational entry *emitting* `deepens`/`emerged-from` at a derivative, the arrow is backwards. When a directed type is still contestable, fall back to **`connects-to` + label** — SCHEMA §4 sanctions this as the tool for "a real relationship named by its label." Do not guess a directed type.
 
 Read each proposed link aloud as `home → type → target` and check the arrow points the right way before writing it.
 
