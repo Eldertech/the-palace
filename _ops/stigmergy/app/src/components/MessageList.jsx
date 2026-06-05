@@ -1,6 +1,7 @@
 import React from 'react';
 import { Rule, Tag } from './primitives.jsx';
 import { glyphFor, accentFor, formatTs, parseLinks, hrefFor, tsCompare } from '../lib/format.js';
+import { t, boardName, typeName } from '../lib/lexicon.js';
 import ArtifactSlot from './ArtifactSlot.jsx';
 import TableBlock from './TableBlock.jsx';
 import EquationBlock from './EquationBlock.jsx';
@@ -87,13 +88,17 @@ function MessageRow({ msg }) {
   const body = fmtPayload(msg.payload);
 
   // Build the metadata as vertical key:value lines — text-rendered, aligned colons.
+  // Field names AND wire-enum values both go through the lexicon so the §2.2
+  // schema vocabulary (BROADCAST, RESOURCE_REQUEST, board=TRICKSTER, etc.)
+  // never reaches Loudon's eyes. The data-layer reads above (msg.type,
+  // msg.board) stay exact — only the rendered surface is translated.
   const metaLines = [
-    ['from', msg.from ? `@${msg.from}` : '@—'],
-    ['ts', formatTs(msg.ts)],
-    ['type', type],
-    ['board', msg.board || '—'],
+    [t('field.from'), msg.from ? `@${msg.from}` : '@—'],
+    [t('field.ts'), formatTs(msg.ts)],
+    [t('type.label'), typeName(type)],
+    [t('board.label'), boardName(msg.board) || '—'],
   ];
-  if (isReply && msg.re) metaLines.push(['re', msg.re]);
+  if (isReply && msg.re) metaLines.push([t('field.session'), msg.re]);
   // Health is rendered as a metaLine for layout consistency, but the value
   // gets a data-testid="health-block" wrapper so e2e tests and downstream
   // tools can find it. Score is exposed as data-score; "none" when missing.
