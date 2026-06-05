@@ -40,7 +40,7 @@ The Weave now runs as a **Swarm Weave** — parallel workers auditing individual
 
 The single-agent protocol below remains valid for: palaces under ~20 entries, quick topological spot-checks, or situations where Claude Code sub-agent orchestration is unavailable. For the current palace (100+ entries), execute as a Swarm Weave.
 
-**Standard opening step:** Before dispatching workers, run a [[Map Build Ceremony]] (`"Let's build the map"`) to produce a fresh `palace-map-full-[date].json`. Workers use this map for neighbor resolution; the coordinator uses it for topology reporting. A Weave run without a fresh map is operating on stale topology.
+**Standard opening steps:** Before dispatching workers, do two things in order. **First, load the foundation** (Protocol Step 0) — the Weave writes typed links and may promote or create entries, all of which [[SCHEMA]] governs; a Weave run without §4 in context is operating blind to the rules it is about to apply. **Second, run a [[Map Build Ceremony]]** (`"Let's build the map"`) to produce a fresh `palace-map-full-[date].json`. Workers use this map for neighbor resolution; the coordinator uses it for topology reporting. A Weave run without a fresh map is operating on stale topology.
 
 ## Ceremony Contract
 
@@ -51,6 +51,7 @@ The single-agent protocol below remains valid for: palaces under ~20 entries, qu
 **Preconditions:**
 1. Palace has at least 5 entries (fewer and the topology report has nothing to say)
 2. Full filesystem read access is available
+3. The foundation is loaded this session — [[SCHEMA]] (especially §4 typed-link ontology and directionality) has been read **before any link is written**. The Weave creates typed links and may promote or create entries; both are schema-governed. See Protocol Step 0.
 
 **Postconditions:**
 1. A topology report has been produced covering: total entry count, hub nodes, orphan entries, most-connected nodes, cross-pillar bridges, dormant entries, stale metadata
@@ -70,7 +71,19 @@ The single-agent protocol below remains valid for: palaces under ~20 entries, qu
 
 ## Protocol
 
-**Step 0: Orientation check**
+**Step 0 — Load the foundation**
+
+Before anything else — before the map build, before dispatching a single worker — read the foundational set into context if it is not already there this session: [[CLAUDE]], [[SCHEMA]], [[FOUR PILLARS]], [[ROSETTA]], [[SUBSTRATE]], [[README - The Palace Guide]], [[JEWEL]]. The Weave is a *write* ceremony: it formalizes typed links, proposes stage transitions, and may spawn hub entries. Every one of those is governed by SCHEMA. "Read before touching" is inviolable; a Weave that proposes links before SCHEMA §4 is in context is touching before reading.
+
+Pay particular attention to **§4 typed-link directionality**, the most error-prone surface, and carry it into worker dispatch and synthesis. Swarm workers (especially Haiku) routinely propose a directed `type` whose `label` actually describes the *reverse* relationship — audit every directed link against §4 before formalizing. Known traps, learned the hard way:
+
+- **`member-of`** is directed **member → collection**, with *no forced reciprocal on the hub side* (the Map computes the hub's inbound degree). A hub **never emits `member-of` at its own members** — the members declare membership pointing in. Putting `member-of` on the hub is inverted and forbidden.
+- **`exemplifies`** is directed **instance → general** (an entry → [[FOUR PILLARS]]; a person → a registry). A general principle must never `exemplifies` a specific instance.
+- **`deepens`** and **`emerged-from`** directionality is applied inconsistently across the palace, and the §4 table wording disagrees with the README example. When a directed type is contestable or you are unsure which way the arrow points, fall back to **`connects-to` + label** — SCHEMA §4 explicitly sanctions this as the tool for "a real relationship named by its label." Do not guess a directed type.
+
+Read each proposed link aloud as `home → type → target` and check the arrow points the right way before writing it.
+
+**Step 0b — Orientation check**
 
 Before reading palace entries, do a quick scan for recently deposited entries that haven't yet been woven in:
 - Any `.md` files in the palace root with `stage: seed` and no inbound links from other entries are likely recent deposits waiting for their first Weave
