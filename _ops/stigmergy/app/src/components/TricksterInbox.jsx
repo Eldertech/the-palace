@@ -197,39 +197,93 @@ function PendingItem({ item, onOptionClick, onConfirmed }) {
   return (
     <div data-testid="inbox-pending-item" style={{ margin: '6px 0' }}>
     <Box tone="single" title={titleParts} pad>
+      {/* Catchup-first layout (voice rule 6): headline + ground render at
+          the top in human prose; the longform rationale + field rows fold
+          under "more from the steward". When a steward hasn't written
+          headline+ground (legacy data, no override), the renderer surfaces
+          a dim "no catchup written" pill and falls back to rationale
+          full-width below. */}
       <div style={{ marginBottom: 6 }}>
         <span style={{ color: 'var(--ansi-bright-cyan)', textShadow: 'var(--glow)', fontWeight: 600 }}>
           {t('trickster.pending.heading')}
         </span>
+        {!item.headline && !item.ground ? (
+          <span data-testid="no-catchup-pill" style={{
+            marginLeft: 10, color: 'var(--phosphor-dim)', textShadow: 'none',
+            fontSize: 10, letterSpacing: '.08em', textTransform: 'uppercase',
+            border: '1px solid var(--phosphor-dim)', padding: '1px 5px',
+          }}>steward emitted no catchup — using rationale</span>
+        ) : null}
       </div>
-      <div style={{
-        color: 'var(--phosphor-dim)', textShadow: 'none', lineHeight: 1.4, marginBottom: 6,
-      }}>
-        {metaLines.map(([k, v]) => (
-          <div key={k}>
-            <span>{padLabel(k)}: </span>
-            <span style={{
-              color: k === t('pause.field.label') && item.blocking ? 'var(--error)' :
-                     k === t('field.health') ? healthColor(item.agent_health) :
-                     'var(--phosphor)',
-              textShadow: 'var(--glow)',
-            }}>{v}</span>
-          </div>
-        ))}
-      </div>
-      {item.rationale ? (
-        <div style={{ margin: '4px 0', color: 'var(--phosphor)' }}>
-          <div style={{ color: 'var(--phosphor-dim)', textShadow: 'none' }}>{padLabel('rationale')}:</div>
-          <div style={{ marginTop: 2, whiteSpace: 'pre-wrap' }}>
-            <Linkify text={item.rationale} />
-          </div>
-        </div>
+
+      {/* Headline: the question in one sentence. Large body font.
+          Falls back to absent — the dim pill above is the cue. */}
+      {item.headline ? (
+        <div data-testid="inbox-headline" style={{
+          margin: '4px 0 4px',
+          fontFamily: 'var(--font-body, "Cormorant Garamond", Georgia, serif)',
+          fontSize: 19, lineHeight: 1.35, color: 'var(--phosphor-white)',
+          textShadow: 'var(--glow)',
+        }}>{item.headline}</div>
       ) : null}
-      {item.query_intent ? (
-        <div style={{ margin: '4px 0', color: 'var(--phosphor-dim)', textShadow: 'none' }}>
-          {padLabel('intent')}: {item.query_intent}
-        </div>
+
+      {/* Ground: the breadcrumb. State · what's pinned · steward's lean.
+          Small mono dim. The fastest read-and-scroll line. */}
+      {item.ground ? (
+        <div data-testid="inbox-ground" style={{
+          margin: '0 0 8px',
+          fontFamily: 'var(--font-mono)', fontSize: 12, lineHeight: 1.4,
+          color: 'var(--phosphor-dim)', textShadow: 'none',
+        }}>{item.ground}</div>
       ) : null}
+
+      {/* Folded longform: opens to show the original rationale + metadata
+          rows. Default-collapsed when catchup fields are present, so the
+          card stays scannable; default-open when no catchup exists so the
+          legacy data still reads as before. */}
+      <details
+        data-testid="inbox-more-fold"
+        open={!item.headline && !item.ground}
+        style={{ margin: '4px 0' }}
+      >
+        <summary style={{
+          cursor: 'pointer',
+          color: 'var(--phosphor-dim)', textShadow: 'none',
+          fontFamily: 'var(--font-ui, "Manrope", sans-serif)',
+          fontSize: 10, letterSpacing: '.12em', textTransform: 'uppercase',
+          padding: '2px 0',
+        }}>▸ more from the steward</summary>
+
+        <div style={{
+          color: 'var(--phosphor-dim)', textShadow: 'none', lineHeight: 1.4,
+          marginTop: 6, marginBottom: 6,
+        }}>
+          {metaLines.map(([k, v]) => (
+            <div key={k}>
+              <span>{padLabel(k)}: </span>
+              <span style={{
+                color: k === t('pause.field.label') && item.blocking ? 'var(--error)' :
+                       k === t('field.health') ? healthColor(item.agent_health) :
+                       'var(--phosphor)',
+                textShadow: 'var(--glow)',
+              }}>{v}</span>
+            </div>
+          ))}
+        </div>
+        {item.rationale ? (
+          <div style={{ margin: '4px 0', color: 'var(--phosphor)' }}>
+            <div style={{ color: 'var(--phosphor-dim)', textShadow: 'none' }}>{padLabel(t('field.rationale', 'reasoning'))}:</div>
+            <div style={{ marginTop: 2, whiteSpace: 'pre-wrap' }}>
+              <Linkify text={item.rationale} />
+            </div>
+          </div>
+        ) : null}
+        {item.query_intent ? (
+          <div style={{ margin: '4px 0', color: 'var(--phosphor-dim)', textShadow: 'none' }}>
+            {padLabel(t('field.intent', 'intent'))}: {item.query_intent}
+          </div>
+        ) : null}
+      </details>
 
       {/* Response area: inline if the request supplied its own options[],
           otherwise the existing modal-driven Grant/Deny/Custom flow. */}

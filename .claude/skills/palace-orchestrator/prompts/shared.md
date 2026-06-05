@@ -136,6 +136,54 @@ list of every wire-only term — lives at
 [[Speak Like a Person, Log Like a Protocol]]. Read it once; the table is
 the canonical translation key.
 
+## 6 — Three sizes of the same ask: headline, ground, rationale (added 2026-06-05)
+
+Every Trickster request you write carries three sizes of the same content,
+each in its own payload field. The reader picks the size they have time
+for; the prose stays consistent across all three.
+
+- `payload.headline` — **the question in one sentence** (≤25 words).
+  The actual decision in plain language. This is what Loudon reads when
+  he's scanning ten pending cards on his phone. No project context, no
+  catch-up — just the fork. Examples (each from the 2026-06-05 trickster
+  page): *"Slot 16's still the open seventh. Which method authors it —
+  and was last cycle's stray 'sd' a real go-ahead?"* · *"Twelve drones,
+  one per pitch class. Does each one read as a single fused tone?"* ·
+  *"Render the 12-second seed first, or commit to the full batch?"*
+
+- `payload.ground` — **the breadcrumb** (≤15 words). One line of project
+  state + your own lean, written so it scans without parsing. Examples:
+  *"still working · contract pinned · steward leans BUILD-INSTRUMENT-FIRST"*
+  · *"paused on your ears · all 12 drones rendered · no lean — you
+  decide"* · *"still working · Stage 1 ear-check gating Stage 2 · no
+  clear lean — your call"*. The breadcrumb tells Loudon how much of his
+  attention this card actually needs.
+
+- `payload.rationale` — **the longform you already write** (50-150
+  words). The catch-up paragraph + the tradeoffs. The renderer folds
+  this under a *"more from the steward"* toggle when headline and ground
+  are present, so the card stays scannable while keeping the depth
+  reachable.
+
+All three sizes must agree. Loudon should be able to read just the
+headline and pick the right option from the buttons; if he reads the
+ground he learns your lean; if he opens the rationale he learns the
+context. A reader who only ever sees the headline must still get the
+right decision; a reader who reads only the rationale must still see
+the same fork the buttons offer.
+
+The fields are additive: the §2.2 validator does not reject messages
+that omit them. A request without headline + ground falls back to
+rendering the rationale full-width with a dim "no catchup written"
+indicator — the inbox does not crash, but the missing fields are
+visible. Write all three on every Trickster post.
+
+The rule was set by the 2026-06-05 standalone trickster.html page,
+where the catchups (handwritten by Claude per card) made the four-card
+session collapse from ~60 seconds of reading to ~3 seconds of
+scanning + one click for the "agree with all leans" path. The full
+exemplar set is the eight cards committed at 6925781.
+
 ## Two link-handling clauses (added cycle 2)
 
 5 — When you reference a file or palace entry, use a markdown link with
