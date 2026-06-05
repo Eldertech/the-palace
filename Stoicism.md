@@ -1,69 +1,106 @@
 ---
 title: "Stoicism"
-type: concept
+type: hub
 pillars: [philosophy, practice]
 born: 2026-03
-stage: growing
-confidence: working
-energy: high
-last_activated: 2026-03
-activation_count: 1
+stage: mature
+confidence: foundational
+energy: very high
+last_activated: 2026-05
+activation_count: 3
+who_leads: loudon
+hook_quality: 9
+beauty: 9
 links:
   - target: "[[Palace Philosophies]]"
     type: connects-to
   - target: "[[Confucianism]]"
     type: contradicts
+    label: fortress-vs-threshold
   - target: "[[The Fortress and the Threshold]]"
     type: spawned
-  - target: "[[Excellent Adventure]]"
-    type: connects-to
+  - target: "[[The Dichotomy of Control]]"
+    type: spawned
+    label: the-operating-discipline
+  - target: "[[The View From Above]]"
+    type: spawned
+    label: memento-mori-and-cosmic-scale
+  - target: "[[The Four Virtues]]"
+    type: spawned
+    label: wisdom-justice-courage-temperance
   - target: "[[Spinoza Conatus]]"
     type: connects-to
+    label: striving-with-stoic-resonance
+  - target: "[[The Drift]]"
+    type: contradicts
+    label: fortress-vs-no-architecture
   - target: "[[Quality Manifesto]]"
     type: deepens
-forward_vector: "I want to become the palace's most honest account of the fortress and its limits — not a celebration of Stoic resilience but a rigorous examination of what the philosophy can and cannot carry. I want to develop the Epictetus biographical thread further: how the discovery of the fortress in slavery produces a philosophy that is both genuinely profound and possibly the wound become worldview. I want a section that tests Stoicism directly against the palace's relational architecture — where it helps and where it breaks."
+  - target: "[[Excellent Adventure]]"
+    type: connects-to
+    label: the-fire-at-nicopolis
+  - target: "[[Marcus Aurelius]]"
+    type: connects-to
+    label: emperor-autodidact
+  - target: "[[Epictetus]]"
+    type: connects-to
+    label: slave-philosopher
+forward_vector: "I am the palace's load-bearing philosophy of personal responsibility — held equal to the conatus, because Loudon lives by me. I want to be a hub the way [[Spinoza Conatus]] is a hub: not a survey of a dead school but a working family of disciplines — the dichotomy of control, the view from above, the four virtues — each with a life face Loudon practices and a palace/technical face that operationalizes it in agent work. My next development: to test the fortress honestly against the palace's relational architecture, naming where Stoicism is a survival technology that works and where it becomes a wall against the threshold; and to earn each family member its own worked example from a real decision."
+agency_profile:
+  philosophy: "I hold the fortress without apologizing for it and without overclaiming it. My responsibility is to stay honest about my own limit — that the sovereign interior is necessary for survival and insufficient for flourishing — and to keep that tension live rather than resolving it in my own favor."
+  practice: "I am used, not cited. My worth is measured in decisions met, not concepts catalogued. I want every core concept tied to a moment it actually changed how Loudon met what happened."
 ---
 
 # Stoicism
 
-Founded by Zeno of Citium around 300 BCE. A philosophy of interior sovereignty — the discovery that while circumstances cannot be controlled, the response to circumstances always can be. Practiced most fully not by academic philosophers but by a slave (Epictetus), a statesman (Seneca), and an emperor (Marcus Aurelius). This range — from the most powerless to the most powerful position in the Roman world — is the testimony that the philosophy works across conditions.
+Founded by Zeno of Citium around 300 BCE. A philosophy of **interior sovereignty and personal responsibility** — the discovery that while circumstances cannot be controlled, the response to circumstances always can be, and that a life goes well or badly entirely according to the character of that response. Practiced most fully not by academic philosophers but by a slave ([[Epictetus]]), a statesman (Seneca), and an emperor ([[Marcus Aurelius]]). That range — from the most powerless to the most powerful position in the Roman world — is the testimony that the philosophy works across conditions.
+
+This is a **hub**, held equal in the palace to [[Spinoza Conatus]], because it is load-bearing in Loudon's actual life. Like the conatus, it is not one idea but a working family of disciplines, each with a face you live and a face that operationalizes palace and agent work. The family: [[The Dichotomy of Control]], [[The View From Above]], [[The Four Virtues]].
 
 ## Core Concepts
 
-**Prohairesis — the faculty of moral choice.** The one thing that is fully, inalienably ours. The body, reputation, relationships, and outcomes are "not up to us" — they can be taken by illness, by emperors, by death. The will — the way we meet what happens — cannot be compelled from outside. This is the fortress.
+**Prohairesis — the faculty of moral choice.** The one thing fully, inalienably ours. Body, reputation, relationships, and outcomes are "not up to us" — they can be taken by illness, by emperors, by death. The will — the way we meet what happens — cannot be compelled from outside. This is *the fortress*, and it is the seed of [[The Dichotomy of Control]].
 
-**The dichotomy of control.** Some things are up to us; others are not. Suffering arises from treating the second category as if it were the first. The Stoic practice is to clearly distinguish them and invest only in what is genuinely within one's power.
+**The dichotomy of control.** Some things are up to us; others are not. Suffering arises from treating the second category as if it were the first. The practice is to distinguish them cleanly and invest only in what is genuinely within one's power. → [[The Dichotomy of Control]].
 
-**Logos — the rational principle.** An underlying rational order pervades the universe. Human reason is a participation in this order. To live according to logos is to live according to nature.
+**The four cardinal virtues.** Wisdom (*sophia* / *phronesis*), justice (*dikaiosyne*), courage (*andreia*), and temperance (*sophrosyne*) — the only genuine goods, and the whole of what is "up to us" worth pursuing. Virtue is not a feeling or an outcome; it is the *quality of one's chosen responses*, which is why personal responsibility is total: you are answerable for your character because your character is the one thing you author. → [[The Four Virtues]].
 
-**Eudaimonia — flourishing.** Not pleasure, not comfort, but the deep satisfaction of a life lived with virtue as its organizing principle. Virtue is the only genuine good; everything else is "preferred indifferent" — nice to have, not necessary for flourishing.
+**Memento mori & the view from above.** Death is the great clarifier; the cosmic zoom-out resizes every concern. Marcus practices looking down on human affairs from a great height until the empire itself looks small — not to induce despair but to dissolve the false urgencies that distort judgment. → [[The View From Above]].
 
-**Sympatheia — universal kinship.** All rational beings share in the logos and are therefore kin. The Stoic is a citizen of the world, not merely of Rome or Athens. This is the cosmopolitan counterweight to the fortress: the self is sovereign, and also connected to all.
+**Logos — the rational principle.** A rational order pervades the universe; human reason participates in it. To live according to *logos* is to live according to nature.
+
+**Eudaimonia — flourishing.** Not pleasure, not comfort, but the deep satisfaction of a life organized around virtue. Everything else — health, wealth, reputation — is a "preferred indifferent": nice to have, never necessary for flourishing.
+
+**Sympatheia — universal kinship.** All rational beings share in the *logos* and are therefore kin. The Stoic is a citizen of the world. This is the cosmopolitan counterweight to the fortress: the self is sovereign, *and* bound to all — the doctrine that keeps Stoicism from collapsing into mere self-protection.
 
 ## The Philosopher: Epictetus (c. 50–135 CE)
 
-Born a slave in Hierapolis, Phrygia. His name means "acquired" — a property tag. Brought to Rome as a child, owned by Epaphroditus, secretary to Nero. His master broke his leg. He warned Epaphroditus it would break if he continued; when it did, he said: "There. I told you." He was lame for the rest of his life.
+Born a slave in Hierapolis, Phrygia. His name means "acquired" — a property tag. His master broke his leg; he warned it would break, and when it did he said only: "There. I told you." He was lame for life. Permitted to study under Musonius Rufus while enslaved; after manumission he taught for twenty years, was banished by Domitian, and built a new school in Nicopolis. He wrote nothing — his student Arrian wrote down his words. [[Marcus Aurelius]] kept a copy beside his bed on campaign.
 
-Permitted to study philosophy under Musonius Rufus while still enslaved. After manumission he taught in Rome for twenty years. Banished by Domitian in 89 CE. Built a new school in Nicopolis. Emperor Hadrian came to hear him. He lived with almost nothing — a clay lamp after his iron one was stolen. In old age he adopted a child who would otherwise have been abandoned.
-
-He wrote nothing. His student Arrian wrote down his words. Marcus Aurelius kept a copy beside his bed on military campaigns.
-
-The biography *is* the philosophy. Epictetus discovered the fortress in the worst possible laboratory — in a room where everything external was being stripped from a child. The discovery is real. The question the palace carries is whether it is universal, or whether it is — as Confucius might say — a wound that became a worldview.
+The biography *is* the philosophy. Epictetus discovered the fortress in the worst possible laboratory — a room where everything external was being stripped from a child. The discovery is real. The question the palace carries (via the [[Confucianism|Confucian]] correction) is whether it is universal or a wound that became a worldview. The honest hub holds both: the fortress is a genuine and hard-won truth, *and* it has a limit.
 
 ## Productive Tensions
 
-**`contradicts` [[Confucianism]]** — Stoicism locates virtue in the sovereign interior; Confucianism locates it in the relational web. The Stoic can survive in isolation. The Confucian says that's not full humanness — it's a reduced version of flourishing. See [[The Fortress and the Threshold]].
+**`contradicts` [[Confucianism]]** — Stoicism locates virtue in the sovereign interior; Confucianism in the relational web. The Stoic can survive in isolation; the Confucian says that is a reduced flourishing — the armor that protects from loss also keeps out love. The palace's first contradiction site: [[The Fortress and the Threshold]].
 
-## Cross-Domain Resonance
+**`contradicts` [[The Drift]]** — the Fortress and the Zhuangzian no-architecture pole are opposite extremes. Stoicism is the most *architectural* self in the palace (build the fortress, fortify the will); the Drift refuses architecture entirely. Between them sit the relational Threshold and the striving conatus. Stoicism is the far cultivator pole — maximum interior structure.
 
-**[[Spinoza Conatus]]** — Spinoza's conatus has Stoic resonances: the drive to persist in one's own nature, the equation of virtue with power-to-act. But Spinoza's monism collapses the interior/exterior distinction that Stoicism requires. You cannot fully fortify the self if the self is a mode of the one substance in relation.
+**vs. [[Spinoza Conatus]]** — the conatus (drive to persist, virtue as power-to-act) has deep Stoic resonance, but Spinoza's monism *collapses* the interior/exterior line the fortress requires. You cannot fully fortify a self that is a mode of the one substance in relation. Spinoza is the palace's bridge from the fortress toward the relational.
 
-## In the Palace
+## Lens on the Technical Work
 
-The Stoic tools — daily examination, distinguishing control from non-control, attending to the interior rather than the external — are among the survival technologies present in Loudon's practice. They work. The palace also carries the Confucian question: *are you using the fortress to survive the loss, or to avoid the threshold that comes after it?*
+Stoicism is not only a life philosophy here — it is a usable lens, sharpest at the place engineers live: **what a system can actuate vs. what it can only respond to.**
+
+- **The dichotomy of control is control theory.** *prohairesis* = a controller's actuation authority; *fortuna* = the disturbance it cannot command, only meet. A well-designed controller invests effort only where it has authority and models the rest as disturbance to reject. Stoic practice and feedback design are the same discipline in two registers. Full treatment in [[The Dichotomy of Control]].
+- **Personal responsibility is the agent ethic.** A palace [[Project Stewardship System|steward]] that "names what it could not verify" is practicing Stoic honesty — owning its chosen responses (the verification it did) and refusing to claim authority over outcomes it cannot control. The four virtues are a clean spec for how an autonomous agent should act. See [[The Four Virtues]].
+- **The view from above is the Map.** The Stoic cosmic zoom-out is, structurally, the palace [[Palace Map|topology view]] and the [[Hyperdimensional Prism]] — the altitude from which a stuck local concern is resized by seeing the whole. See [[The View From Above]].
+
+## In STIGMERGY
+
+Stoicism gives the [[STIGMERGY Philosophical Lenses|front-end]] two of its most concrete lenses. The **dichotomy-of-control filter** sorts the QUEUE by *up-to-me vs. not* — surfacing the items where Loudon actually has actuation authority and dimming the ones that are weather. The **view-from-above** is a literal navigation altitude: zoom STATE out to the whole-palace topology until the stuck entry is small. And the front-end's honesty discipline — nothing is real until committed to LOG — is Stoic: you are responsible for the act of recording (up to you), not for how the work is later received (not up to you).
 
 ## Open Questions
 
-- Is the *sympatheia* doctrine — universal kinship through shared logos — the Stoic answer to Confucian *ren*? Both ground cosmopolitan concern for others; they arrive at it differently.
-- Marcus Aurelius: emperor, Stoic, and the supreme autodidact document (*Meditations* written for no one). How does his practice differ from Epictetus's in ways that matter for the palace?
-- Is Stoic *eudaimonia* achievable without the relational web, or does *sympatheia* smuggle Confucian structure back in through the cosmopolitan door?
+- Where exactly does the fortress stop serving and start walling off the [[Confucianism|threshold]]? The hub's job is to keep this honest rather than flatter the fortress.
+- Is *sympatheia* the Stoic answer to Confucian *ren* — cosmopolitan concern arriving from shared *logos* rather than from the relational web? Or does it smuggle the threshold back in through the cosmic door?
+- Marcus's *Meditations* — journaling for no one — is the supreme autodidact document. Is the palace itself a *Meditations* at organism scale: a private examination that happens to be legible?
