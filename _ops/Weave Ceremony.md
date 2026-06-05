@@ -58,6 +58,7 @@ The single-agent protocol below remains valid for: palaces under ~20 entries, qu
 2a. An **unsung paths** audit has been completed: all plain-text body references to known entry titles have been surfaced and formalized as YAML frontmatter links. Any that should NOT be formalized have been flagged with a one-line reason. Unsung paths are mandatory — the prose already asserts the connection; the YAML is simply catching up.
 2b. The **`weave_flag` inbox** has been read from the persistent board, and every open flag has either been acted on by the Weave or had an explicit decision recorded in the commit body.
 2c. A **substrate sweep** has been completed: uncommitted edits, stashes, dangling commits, unmerged branches, and recent rewrites have been triaged per finding (recover / discard / leave). Recoveries are additive only; discards are recorded so the LOG stays honest.
+2d. The **link-direction linter** (`_ops/swarm/lint-link-directions.py`) has been run against a freshly rebuilt map. It reports **no link-direction errors introduced by this Weave** — E1 reciprocal contradictions for asymmetric types, E2 hubs emitting `member-of`. Pre-existing errors the Weave chose not to resolve are listed in the commit body with a one-line reason; a silent red linter violates the LOG. This is the checkable directional postcondition that the 2026-06-05 schema-compliance miss showed the Weave needed.
 3. **New introductions** have been proposed — new typed links between entries that do not yet mention each other in prose. No more than 5 per Weave. These are genuine growth events and deserve deliberate curation.
 4. **Vector tuning has been invited** for entries whose `forward_vector` has visibly drifted from the entry's current content, connections, or pace. Forward vectors are meant to evolve; the Weave is a natural occasion to surface drift and propose tweaks or full overhauls.
 5. Any confirmed metadata updates have been written to entry files
@@ -225,6 +226,22 @@ Apply confirmed vector edits to entry frontmatter.
 **Step 6: Note deposit candidates**
 
 Flag any ideas currently living only in conversations or in the Palace To-Do that should be deposited. Add them to Palace To-Do if not already there.
+
+**Step 6.5: Lint link directions**
+
+After all confirmed edits are written, rebuild the map and run the link-direction linter:
+
+```bash
+python3 _ops/swarm/build-map-<date>.py
+python3 _ops/swarm/lint-link-directions.py
+```
+
+The linter is the Weave's mechanical check on §4 directionality — it catches what a hand audit of dozens of worker-proposed links misses. It reports:
+- **E1** — reciprocal contradiction (an asymmetric type used both ways between a pair). Always a bug.
+- **E2** — a `hub` entry emitting `member-of`. Always a bug (members declare membership; the hub never does).
+- **W1 / W2** — heuristic reviews (a ground emitting a lineage link; `member-of`/`exemplifies` toward a less-central target). Not all are bugs — `deepens`-chains legitimately trip W1.
+
+Resolve every error this Weave introduced. Any pre-existing error left standing is named in the commit body with a one-line reason. Do not commit a Weave that *added* a directional error.
 
 **Step 7: Commit**
 
