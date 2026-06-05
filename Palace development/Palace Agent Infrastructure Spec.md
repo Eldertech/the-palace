@@ -90,6 +90,14 @@ AGENT contributes:
 
 The orchestrator loop is the only place "time" exists in this architecture. The agent does not experience duration. It experiences only sequence — the ordered contents of its history file. This is not a limitation; it is the design. It means a session can span milliseconds or months without any change to the agent's fundamental behavior.
 
+### 0.1.1 The External Name for This: Harness
+
+<!-- CLAUDE → LOUDON: folded in from "Understanding AI agent harnesses" (2026-04-09, candidate 10 of the Mar–Jun deposit bundle). The Hashimoto attribution is from that conversation and I have not independently verified it — soften or confirm before commit. -->
+
+The wider agent-engineering field has a word for the Orchestrator + everything-around-the-model: the **harness**. An agent is *model + harness*. The model is a forward pass; the harness handles approvals, sub-agent coordination, filesystem access, prompt presets, lifecycle hooks, planning, execution, and context-rot management — every concern in this document that is not the API call itself. The term crystallized in agent-engineering discourse around early 2025 (associated with Mitchell Hashimoto's writing) and was adopted across the industry; Claude Code is its canonical example.
+
+Mapped onto §0.1: **the Orchestrator is the harness, the Agent is the model.** The two-part atomic unit named here is the same decomposition the field arrived at under a different name. The recognition worth keeping is directional — the palace was building harness infrastructure (orchestrator loop, manifest, permission protocol, health score, the whole of this spec) *before the word landed on it.* This is a recurring motif (see also [[Generative Compression]], which the field would now call context-engineering): the palace tends to build the structure before it inherits the vocabulary, which is a sign the structure is load-bearing rather than fashionable.
+
 ### 0.2 The Two-Timescale Memory
 
 The palace operates across three memory layers, each with a distinct lifetime and purpose:
@@ -125,6 +133,14 @@ The Trickster's technical identity in the manifest is always:
 { "id": "TRICKSTER", "home": "YOU", "neighborhood": "EVERYWHERE" }
 ```
 Whether "YOU" is Loudon or an automated agent is an operational decision, not an architectural one.
+
+### 0.5 The Actor Model Precedent
+
+<!-- CLAUDE → LOUDON: folded in from "The actor model in practice" (2026-03-28, candidate 11 of the Mar–Jun deposit bundle). You noted there that this concept "shows up repeatedly" — recorded here as the named precedent the BBS architecture instantiates rather than a standalone entry. -->
+
+The architecture above is, structurally, the **Actor Model** (Carl Hewitt, 1973; the basis of Erlang/OTP, Akka, and Orleans). An actor is an isolated unit with private state that communicates *only* by asynchronous message passing and processes *one message at a time.* Every agent here is an actor: its state is its own `history.jsonl` and `state.json` (private — no other agent reads it); it communicates only through the BBS (never by touching another agent's memory); and each activation processes the messages since its read cursor and then sleeps. The power of the model comes from what it *forbids* — no shared mutable state, no direct coupling, no race conditions — which is exactly why the append-only blackboard and the per-agent directory (§1) are not incidental conveniences but the actor discipline made concrete.
+
+The reach worth remembering, because you flagged this concept as recurring: the same three prohibitions read across registers. **Technical** — fault isolation and supervisor trees (Erlang's "let it crash"), which the §3.3 health score and Coordinator intervention echo. **High-stakes** — the same isolation is why actor systems run telecom and avionics: one actor's failure cannot corrupt another's state. **Social** — skilled facilitation is actor discipline enforced on a room: protect each participant's private state, insist on sequential turns, prevent one voice from flooding the channel. Naming the model here lets all three registers point at one structure instead of re-deriving it.
 
 ---
 
@@ -882,6 +898,7 @@ The key insight: compression is lossy *in a direction*. Generic summarization pr
 - Append-only logs as source of truth: Event Sourcing (Martin Fowler, 2002)
 - Checkpointing for resumable processes: foundational computer science
 - Blackboard Architecture: Hearsay-II, 1975; production use in avionics and manufacturing
+- Actor Model: Carl Hewitt, 1973; Erlang/OTP, Akka, Orleans — isolated private state, asynchronous message passing, one message at a time (see §0.5)
 - Scatter-Gather: standard distributed systems (MapReduce lineage)
 - Stigmergy as coordination mechanism: Pierre-Paul Grassé, 1959; ant colony research
 - Git for version control and branch-merge review: universal practice
