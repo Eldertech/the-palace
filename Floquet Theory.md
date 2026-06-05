@@ -35,6 +35,9 @@ links:
   - target: "[[Three Kinds of Warp]]"
     type: mirrors
     label: discrete-floquet-on-tori
+  - target: "[[Phase Reduction]]"
+    type: couples-with
+    label: bridge-via-PRC
 forward_vector: "I want to be the entry that makes the LTI / LTV boundary conceptually transparent — the framework that explains why periodic time-variation is not LTI's exception but its complement, and why the same theorem governs crystals in space and modulated audio in time."
 ---
 

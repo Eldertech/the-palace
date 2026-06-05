@@ -20,7 +20,7 @@ links:
     label: "governs-messages"
   - target: "[[Lossy Compression with Intent Alignment]]"
     type: connects-to
-  - target: "[[Four Pillars]]"
+  - target: "[[FOUR PILLARS]]"
     type: connects-to
   - target: "[[Lateral Access]]"
     type: contradicts

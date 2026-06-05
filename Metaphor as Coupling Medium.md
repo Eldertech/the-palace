@@ -23,8 +23,6 @@ links:
     type: connects-to
   - target: "[[Cooperation Yields Agency]]"
     type: deepens
-  - target: "[[Swarm Weave]]"
-    type: spawned
   - target: "[[Excellent Adventure]]"
     type: enables
   - target: "[[Pages as Agents]]"

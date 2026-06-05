@@ -2,6 +2,7 @@ import React, { useMemo, useState } from 'react';
 import { Box } from '../primitives.jsx';
 import StageGlyph from './StageGlyph.jsx';
 import { pulseSort } from '../../lib/pulse.js';
+import { sortEntries, DEFAULT_DIR, SORT_KEYS } from '../../lib/entry-sort.js';
 
 // PULSE: the vitality lens that is STATE's default index. Entries sorted
 // by how alive they are right now (recency * activation_count * stage *
@@ -99,8 +100,25 @@ function EntryRow({ entry, onSelect }) {
 
 export default function EntryList({ entries = [], loadState, error, onSelect }) {
   const [filter, setFilter] = useState('');
+  const [sortKey, setSortKey] = useState('pulse');
+  const [sortDir, setSortDir] = useState(DEFAULT_DIR.pulse);
 
-  const sorted = useMemo(() => pulseSort(entries), [entries]);
+  // Always pulse-stamp first (the dot meter shows score regardless of sort
+  // column), then apply the column sort on top.
+  const stamped = useMemo(() => pulseSort(entries), [entries]);
+  const sorted = useMemo(
+    () => sortEntries(stamped, { key: sortKey, dir: sortDir }),
+    [stamped, sortKey, sortDir],
+  );
+
+  const onHeaderClick = (key) => {
+    if (key === sortKey) {
+      setSortDir((d) => (d === 'asc' ? 'desc' : 'asc'));
+    } else {
+      setSortKey(key);
+      setSortDir(DEFAULT_DIR[key] ?? 'desc');
+    }
+  };
 
   const filtered = useMemo(() => {
     const q = filter.trim().toLowerCase();
@@ -162,11 +180,36 @@ export default function EntryList({ entries = [], loadState, error, onSelect }) 
         color: 'var(--phosphor-dim)', textShadow: 'none', fontSize: 10,
         letterSpacing: '.08em', textTransform: 'uppercase',
       }}>
-        <span>pulse</span>
-        <span>type</span>
-        <span>title</span>
-        <span>stage</span>
-        <span>activity</span>
+        {SORT_KEYS.map((key) => {
+          const active = key === sortKey;
+          const glyph = active ? (sortDir === 'asc' ? '^' : 'v') : ' ';
+          return (
+            <span
+              key={key}
+              data-testid={`pulse-header-${key}`}
+              data-active={active ? '1' : '0'}
+              data-dir={active ? sortDir : ''}
+              role="button"
+              tabIndex={0}
+              onClick={() => onHeaderClick(key)}
+              onKeyDown={(e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                  e.preventDefault();
+                  onHeaderClick(key);
+                }
+              }}
+              style={{
+                cursor: 'pointer',
+                userSelect: 'none',
+                color: active ? 'var(--phosphor)' : 'var(--phosphor-dim)',
+                textShadow: active ? 'var(--glow)' : 'none',
+              }}
+            >
+              {key === 'activity' ? 'activity' : key}
+              <span style={{ marginLeft: 4, fontFamily: 'var(--font-mono)' }}>{glyph}</span>
+            </span>
+          );
+        })}
       </div>
 
       <div style={{ maxHeight: '60vh', overflowY: 'auto' }}>

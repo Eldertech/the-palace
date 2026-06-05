@@ -29,6 +29,49 @@ test.describe('QUEUE panel — the ranked inbox', () => {
     await expect(page.getByText('queue -- the ranked inbox')).toBeVisible();
   });
 
+  test('a vector_proposal renders as a WEAVE PROPOSAL card with source -> target metadata', async ({ page }) => {
+    await gotoQueue(page);
+    // Switch to the WEAVE lane so the proposal card is visible.
+    await page.getByTestId('queue-lane-WEAVE').click();
+    const proposal = page.locator('[data-testid="queue-item"][data-kind="vector_proposal"]').first();
+    await expect(proposal).toBeVisible();
+    await expect(proposal).toContainText(/WEAVE PROPOSAL/);
+    await expect(proposal).toContainText(/Kuramoto Coupling/);
+    await expect(proposal).toContainText(/Spinoza Conatus/);
+    await expect(proposal.getByTestId('queue-item-proposal-type')).toContainText(/promote unsung path/);
+    await expect(proposal.getByTestId('queue-item-proposal-edge')).toContainText(/Kuramoto Coupling.*-->.*Spinoza Conatus/);
+    // Grant / deny actions are available, same as resource_request.
+    await expect(proposal.getByTestId('queue-item-grant')).toBeVisible();
+    await expect(proposal.getByTestId('queue-item-deny')).toBeVisible();
+    // Pointer chip jumps to STATE for the source entry.
+    await expect(proposal.getByTestId('queue-item-jump')).toContainText(/Kuramoto Coupling/);
+  });
+
+  test('a weave_flag renders as a WEAVE FLAG card with flag_type, deposit, sources, and target', async ({ page }) => {
+    await gotoQueue(page);
+    // Switch to the WEAVE lane so the flag card is visible alongside the proposal.
+    await page.getByTestId('queue-lane-WEAVE').click();
+    const flag = page.locator('[data-testid="queue-item"][data-kind="weave_flag"]').first();
+    await expect(flag).toBeVisible();
+    await expect(flag).toContainText(/WEAVE FLAG/);
+    // The flag_type chip carries the human-language label.
+    await expect(flag.getByTestId('queue-item-flag-type')).toContainText(/backlink audit/);
+    // The source deposit id is surfaced so the human can trace provenance.
+    await expect(flag.getByTestId('queue-item-flag-deposit')).toContainText(/DEMO-BATCH01/);
+    // Source entries and the target entry both render in the metadata row.
+    await expect(flag.getByTestId('queue-item-flag-sources'))
+      .toContainText(/Floquet Theory.*Kuramoto Coupling/);
+    await expect(flag.getByTestId('queue-item-flag-target')).toContainText(/Phase Reduction/);
+    // The card LEADS with proposed_action (the human-language ask).
+    await expect(flag.getByTestId('queue-item-ask'))
+      .toContainText(/couples-with.*Phase Reduction/);
+    // Grant / Deny actions are available, same as vector_proposal.
+    await expect(flag.getByTestId('queue-item-grant')).toBeVisible();
+    await expect(flag.getByTestId('queue-item-deny')).toBeVisible();
+    // Pointer chip jumps to STATE for the first source entry.
+    await expect(flag.getByTestId('queue-item-jump')).toContainText(/Floquet Theory/);
+  });
+
   test('a handoff_ready appears as a QUEUE item', async ({ page }) => {
     await gotoQueue(page);
     const items = page.locator('[data-testid="queue-item"][data-kind="handoff_ready"]');

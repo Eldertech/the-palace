@@ -25,6 +25,12 @@ links:
   - target: "[[Brian Eno]]"
     type: connects-to
     label: informed-by
+  - target: "[[Semantic Webcam]]"
+    type: connects-to
+    label: flock-made-visible
+  - target: "[[Oblique Enrichment]]"
+    type: connects-to
+    label: emergence-as-provocation
 ---
 
 # Synthesis ↔ Emergence

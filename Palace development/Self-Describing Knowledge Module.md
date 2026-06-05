@@ -14,8 +14,6 @@ links:
     type: mirrors
   - target: "[[ROSETTA]]"
     type: enables
-  - target: "[[SUBSTRATE]]"
-    type: deepens
   - target: "[[Symbiotic Skills]]"
     type: connects-to
   - target: "[[Cooperation Yields Agency]]"

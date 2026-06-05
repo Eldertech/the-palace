@@ -1,9 +1,12 @@
 ---
 title: Crystal Synthesizer — Staging
-project: "[[Crystal Synthesizer]]"
+born: 2026-04-21
 loudon-live-status: planning
-stage: growing
-last-updated: 2026-04
+links:
+  - target: "[[Crystal Synthesizer]]"
+    type: connects-to
+    label: staging-of
+forward_vector: I hold the Loudon Live staging plan for Crystal Synthesizer — the stage-by-stage path from concept to taught session — so the parent project's steward can advance presentation readiness without re-deriving the arc.
 ---
 
 # Crystal Synthesizer — Staging

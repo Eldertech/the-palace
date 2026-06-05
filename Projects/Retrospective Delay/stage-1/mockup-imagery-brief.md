@@ -172,4 +172,18 @@ Per [[Shop/Maker|Maker]] standards, this brief inherits the palace base layer:
 
 ## Dispatch Status
 
-**NOT DISPATCHED.** This cycle (Retrospective Delay cycle 2) is a planning cycle. Loudon's cycle-1 grant said *create some mock up interfaces and appropriate imagery*, and the spirit of that grant is honored by **spec'ing the brief through the Shop and asking before the Specialists run** — this is exactly the Maker's intake-then-confirm step before any execution. The TRICKSTER ask for this cycle captures the dispatch decision and the per-asset routing choices.
+**PARTIALLY BUILT (cycle 4, 2026-06-04).** Four of the five assets are now real on disk — all built locally with sandbox-friendly Specialists, no credits, no Mac required:
+
+| # | Asset | Built with | File | Status |
+|---|-------|-----------|------|--------|
+| 1 | Witness diagram (interactive) | p5.js | `assets/witness-diagram.html` | built (cycle 3) |
+| 2 | Phrase vs. tap waveform | Matplotlib | `assets/phrase-vs-tap.png` | built (cycle 4) |
+| 3 | Stage-1 M4L device mockup | Matplotlib (license-clean fallback) | `assets/device-mockup.png` | built (cycle 4) |
+| 4 | Cross-domain buffer table | Matplotlib | `assets/cross-domain-buffer-table.png` | built (cycle 4) |
+| 5 | Frame-block opening image | Midjourney (Study) | `assets/frame-block-opener.png` | **not built — needs Loudon's credits/Mac** |
+
+Cycle 4 took the Matplotlib route for Asset 3 (the device mockup) rather than Remotion, because Remotion's commercial-license complexity is not worth it for a single still frame and the sandbox can build a clean Max-styled panel directly. If Stage 2's UI mockup arrives and wants a reusable React scaffold, that is a fresh decision then — it does not block Stage 1.
+
+Asset 5 is the only remaining asset and the only credit-consuming one. It needs Loudon's Midjourney subscription (or a ComfyUI run on his Mac); the Cowork sandbox cannot run either. The cycle-4 TRICKSTER ask consolidates the two prior open questions into a single decision about Asset 5.
+
+**Original planning note:** This brief began as a cycle-2 planning artifact. Loudon's cycle-1 grant said *create some mock up interfaces and appropriate imagery*, honored by spec'ing through the Shop and asking before Specialists ran. Cycle 4 then executed every asset that did not require Loudon's resources.

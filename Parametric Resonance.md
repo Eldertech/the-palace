@@ -33,6 +33,9 @@ links:
   - target: "[[Dub Lineage]]"
     type: connects-to
     label: pumped-delay-as-studio-parametric
+  - target: "[[Phase Reduction]]"
+    type: connects-to
+    label: pump-phase-lives-in-the-floquet-eigenvector
 forward_vector: "I want to be the entry that makes the difference between *driving* and *pumping* obvious to anyone who has ever pumped a swing. I want to spawn a working palace catalog of parametric instruments — every audio device whose energy comes from inside a modulated coefficient rather than from outside the system."
 ---
 
@@ -67,6 +70,19 @@ Parametric resonance has a sharp **threshold**. For modulation depth $\epsilon$ 
 The threshold is a **bifurcation** — a point in parameter space where the system's qualitative character flips. This is the same kind of mathematical event as the [[Kuramoto Coupling]] critical $K$ — below $K_c$, oscillators are independent; above, synchrony explodes into existence. The Mathieu and Kuramoto thresholds are cousins, and the audible "crack" of crossing each one is structurally similar: a system that was silent (or chaotic, or ringing weakly) suddenly becomes alive.
 
 In [[Threshold Conatus]] terms, the parametric threshold is a moment of self-model revision. Below threshold, the oscillator is a passive object — it remembers its initial condition and slowly forgets it. Above threshold, the oscillator becomes an *active* object — it spontaneously generates oscillation from infinitesimal noise, and the modulation has become its source of life rather than a perturbation.
+
+## Where the phase lives
+
+<!-- CLAUDE → LOUDON: folded in from the "Euler's number and DSP" session (2026-05-08, candidate 12 of the Mar–Jun deposit bundle). It answers a question you raised in that thread. Verify it reads true before commit. -->
+
+A question worth asking of the standard presentation: the [[Mathieu Equation|Strutt diagram]] classifies instability purely by $(a, q)$ — by *frequency ratio* and *modulation depth*. The phase of the pump relative to the oscillator never appears. Yet the pumped swing is explicitly a *phase* prescription — squat at the bottom, stand at the peaks. If you pump at the wrong phase you brake the swing instead of building it. So where did phase go?
+
+It lives in two places, neither of which is the stability diagram:
+
+- **In the Floquet eigenstructure.** The two [[Floquet Theory|Floquet modes]] of the pumped oscillator have a *fixed* phase relationship to the pump — one mode grows (it is the one whose energy injection is in phase with the modulation), the other decays. Which is which is set by the pump's phase, but the *existence* of a growing mode is not. The pump phase rotates the basis; it does not decide whether a growing direction exists.
+- **In the initial conditions.** Whether a *particular* starting state actually grows depends on how much of it projects onto the growing Floquet mode — i.e., on the phase alignment between the oscillator's initial state and the growing mode. Start exactly on the decaying mode and you sit in an unstable tongue and still decay (briefly), until noise leaks you onto the growing direction.
+
+The stability diagram is phase-blind on purpose: it asks only whether *any* growing mode exists for the given $(a, q)$, which is a property of the monodromy's eigenvalues alone. The "pump at the bottom of the swing" rule is the separate statement of *how to align your energy injection with the growing Floquet mode* — a statement about the eigenvectors, not the eigenvalues. This is exactly the object a [[Phase Reduction|Phase Response Curve]] makes explicit: the PRC is the eigenvector data that says *when in the cycle* a kick lands in phase with the growing mode. Phase didn't disappear from the Mathieu picture; it moved from the stability chart into the Floquet modes the chart summarizes over.
 
 ## What makes the energy
 

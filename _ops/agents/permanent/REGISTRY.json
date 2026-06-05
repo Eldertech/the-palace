@@ -90,6 +90,30 @@
       "home": "Slime Mold Delay",
       "dir": "/Users/loudonstearns/Documents/The Palace/_ops/agents/permanent/slime-mold-delay",
       "registered_at": "2026-05-27T21:41:16.087Z"
+    },
+    {
+      "agent_id": "Waveguide Synthesizer",
+      "home": "Waveguide Synthesizer",
+      "dir": "_ops/agents/permanent/waveguide-synthesizer",
+      "registered_at": "2026-06-04T13:43:57.028Z"
+    },
+    {
+      "agent_id": "Quantum Synthesizer",
+      "home": "Quantum Synthesizer",
+      "dir": "_ops/agents/permanent/quantum-synthesizer",
+      "registered_at": "2026-06-05T03:56:53.678Z"
+    },
+    {
+      "agent_id": "Neural Granular Synthesis",
+      "home": "Neural Granular Synthesis",
+      "dir": "_ops/agents/permanent/neural-granular-synthesis",
+      "registered_at": "2026-06-05T03:56:53.817Z"
+    },
+    {
+      "agent_id": "Particle Synthesis",
+      "home": "Particle Synthesis",
+      "dir": "_ops/agents/permanent/particle-synthesis",
+      "registered_at": "2026-06-05T03:56:53.955Z"
     }
   ]
 }

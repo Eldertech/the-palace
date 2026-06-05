@@ -15,8 +15,6 @@ forward_vector: "I want to become the palace's direct entry to the discovered ce
 links:
   - target: "[[Hyperdimensional Prism]]"
     type: connects-to
-  - target: "[[Crystal Synthesizer]]"
-    type: deepens
   - target: "[[Quantum Synthesizer]]"
     type: connects-to
   - target: "[[Spinoza Conatus]]"

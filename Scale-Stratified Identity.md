@@ -9,9 +9,6 @@ stage: sprout
 energy: high
 beauty: 9
 links:
-  - target: "[[Threshold Conatus]]"
-    type: deepens
-    label: resolved-by
   - target: "[[Spinoza Conatus]]"
     type: deepens
     label: completes

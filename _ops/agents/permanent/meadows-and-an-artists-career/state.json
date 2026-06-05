@@ -1,8 +1,9 @@
 {
-  "iteration": 2,
-  "last_active": "2026-05-27T20:30:00-04:00",
-  "last_read_cursor": "meadows-career-steward-007",
+  "iteration": 3,
+  "last_active": "2026-06-03T05:14:01Z",
+  "last_read_cursor": "meadows-career-steward-011",
   "health": {
+    "context_pct": null,
     "avg_output_tokens_last_5": null,
     "duplicate_flags": 0,
     "posting_discipline_violations": 0,
@@ -31,6 +32,32 @@
         "JUST-Q1-AND-Q6",
         "JUST-Q5-AND-Q7",
         "ANSWER-AS-WALK"
+      ]
+    },
+    {
+      "request_id": "meadows-career-steward-010",
+      "resource": "directional_decision",
+      "decision_topic": "How to build the beautiful diagnostic worksheet now that the palace has filled the top of your hierarchy",
+      "blocking": false,
+      "posted_at": "2026-06-03T16:32:00-04:00",
+      "options": [
+        "MINE-THEN-INTERVIEW",
+        "WORKSHEET-SHELL-FIRST",
+        "JUST-INTERVIEW-MIDDLE",
+        "RETIRE-007-DIFFERENT"
+      ]
+    },
+    {
+      "request_id": "meadows-career-steward-011",
+      "resource": "directional_decision",
+      "decision_topic": "Six tightened middle-of-hierarchy interview questions — answer in the notes box (supersedes pending request 007)",
+      "blocking": false,
+      "posted_at": "2026-06-03T16:33:00-04:00",
+      "options": [
+        "ANSWER-IN-NOTES",
+        "VOICE-WALK",
+        "FEWER-DEEPER",
+        "PALACE-GUESS-FIRST"
       ]
     }
   ],

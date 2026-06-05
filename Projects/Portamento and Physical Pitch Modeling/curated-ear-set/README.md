@@ -15,7 +15,8 @@ spectrogram.
 | `manifest.json` | Machine-readable description of all 12 examples (regime, ζ, ωₙ, harmonics, teaching note). The quiz HTML reads this. |
 | `audio/NN-<regime>.wav` | 3-second 44.1 kHz mono WAVs, normalized to ~-3 dBFS. |
 | `spectrograms/NN-<regime>.png` | STFT spectrograms (the wavelet view's close cousin; visually shows ridge + ripple). |
-| `quiz.html` | The ear-training UI. Open in a browser; it fetches manifest.json and randomizes the deck. |
+| `quiz.html` | The single-stimulus ear-training UI. Open in a browser; it fetches manifest.json and randomizes the deck. |
+| `paired-exercises.html` | The A-vs-B discrimination UI. Eight curated pairs; you hear two glides back to back and answer a discrimination question (which is which / same regime or different / which rings longer), then justify it in one sentence before the model answer reveals. This is the forward vector's "pairs" deliverable. Reads manifest.json; pair logic lives in the file. |
 
 ## The 12 examples
 
@@ -51,3 +52,14 @@ physics is already here; the pedagogy needs its exercises.* Tool-10
 with no physical-system context; this set keeps the random play, adds
 the physical-system layer, triples the deck size, and reveals the
 spectrogram as part of the answer feedback.
+
+The forward vector names two skills, not one: identify the regime AND
+explain what physical system produced the trajectory. `quiz.html` trains
+the first (single-stimulus naming). `paired-exercises.html` trains the
+harder second skill the vector explicitly calls for — *pairs* of glides
+where the student tells two near-neighbors apart and names the physical
+difference: trained vs. untrained voice (same gesture, different damping),
+two critically-damped systems (same regime, ζ vs. ωₙ), bell vs.
+prepared-piano (both underdamped, but one drifts timbre), and the
+direction-is-a-trap pair. Single naming is the floor; A/B discrimination
+is the skill that survives contact with real music.

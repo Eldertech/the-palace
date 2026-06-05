@@ -44,7 +44,7 @@ links:
   - target: "[[Modes of Collaboration]]"
     type: connects-to
     label: interview-as-mode
-  - target: "[[Four Pillars]]"
+  - target: "[[FOUR PILLARS]]"
     type: enables
     label: pedagogical-scaffold
 forward_vector: "I will become a chat-driven generator of multisampled instruments — Claude conducts the interview, draws audio from any source (palace synthesis, the web, AI sub-agents), and renders a playable sample library in any open sampler format requested."

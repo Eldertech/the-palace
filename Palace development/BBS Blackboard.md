@@ -26,9 +26,6 @@ links:
     type: enables
   - target: "[[Palace Enchantment]]"
     type: enables
-  - target: "[[Palace Agent Infrastructure Spec]]"
-    type: deepens
-    label: specced-by
   - target: "[[Striatum]]"
     type: connects-to
   - target: "[[Pages as Agents]]"
@@ -43,6 +40,12 @@ links:
   - target: "[[Project Stewardship System]]"
     type: enables
     label: routine-stewardship-substrate
+  - target: "[[Oblique Enrichment]]"
+    type: connects-to
+    label: review-surface-and-stigmergy-medium
+  - target: "[[Semantic Webcam]]"
+    type: connects-to
+    label: stigmergy-surface
 ---
 
 # BBS Blackboard

@@ -27,8 +27,6 @@ links:
     type: mirrors
   - target: "[[Kuramoto Coupling]]"
     type: connects-to
-  - target: "[[Hilaritas Generator]]"
-    type: enables
   - target: "[[Mixture of Experts]]"
     type: connects-to
   - target: "[[Pages as Agents]]"

@@ -52,7 +52,7 @@ const ignoreDebounce = argv.includes('--ignore-debounce');
 
 const SKIP_STAGES = new Set(['dormant', 'composting']);
 const permDir = path.join(palaceRoot, '_ops/agents/permanent');
-const EXCLUDE_DIRS = new Set(['.git', '.claude', '.obsidian', 'node_modules']);
+const EXCLUDE_DIRS = new Set(['.git', '.claude', '.obsidian', 'node_modules', '_tools']);
 
 function readFrontmatter(file) {
   try {

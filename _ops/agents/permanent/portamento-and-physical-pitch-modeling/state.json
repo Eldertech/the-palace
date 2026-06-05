@@ -1,8 +1,9 @@
 {
-  "iteration": 2,
-  "last_active": "2026-05-27T20:30:00-04:00",
-  "last_read_cursor": "portamento-steward-006",
+  "iteration": 3,
+  "last_active": "2026-06-03T05:14:01Z",
+  "last_read_cursor": "portamento-steward-009",
   "health": {
+    "context_pct": null,
     "avg_output_tokens_last_5": null,
     "duplicate_flags": 0,
     "posting_discipline_violations": 0,
@@ -31,6 +32,19 @@
         "YOU-DEFINE"
       ],
       "steward_recommendation": "AUDITION-PASS — the deck is built but the pedagogy is unproven until a listener confirms the regimes are audibly distinct. After that, REAL-RECORDING-COMPARISON serves the forward vector more sharply than just adding more synthetic examples."
+    },
+    {
+      "request_id": "portamento-steward-009",
+      "resource": "directional_decision",
+      "decision_topic": "Audition the three edge-case glides by ear, then say whether the ear set ships as-is or gets a tightening pass",
+      "blocking": true,
+      "posted_at": "2026-06-03T16:32:00-04:00",
+      "options": [
+        "SHIP-AS-IS",
+        "SWAP-EDGE-CASES",
+        "DEMOTE-09-TO-ADVANCED",
+        "YOU-DEFINE"
+      ]
     }
   ],
   "resolved_requests": [

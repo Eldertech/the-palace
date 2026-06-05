@@ -1,0 +1,379 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>Slime Mold Delay — Growth Explorer</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<!--
+  Slime Mold Delay — interactive growth explorer (Stage 2, sound deferred).
+  Built per Loudon's grant on steward-002:
+  "create a processing p5 or other interactive website that shows the math
+   and allows me to place food to show the slime mold growth, worry about sound later."
+
+  This is the canonical agent-based Physarum model (Jones 2010): an army of
+  particles deposit a chemoattractant trail onto a field; the field diffuses
+  and decays; each particle senses three sample points ahead, rotates toward
+  the strongest, and steps forward. Food sources continuously inject attractant,
+  so the colony forages between them and the surviving high-trail paths ARE the
+  emergent delay routing. No graph is designed — the topology grows.
+
+  Pure vanilla JS + canvas, no dependencies, fully offline.
+-->
+<style>
+  :root{
+    --agar:#07060a;
+    --agar-2:#0d0b12;
+    --ink:#e8e3d6;
+    --muted:#8a8478;
+    --line:#231f29;
+    --yellow:#e9c84a;
+    --yellow-hi:#fff2b0;
+    --red:#d6492f;
+    --mono:'JetBrains Mono',ui-monospace,SFMono-Regular,Menlo,monospace;
+    --ui:'Manrope',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;height:100%;background:var(--agar);color:var(--ink);font-family:var(--ui)}
+  .wrap{display:flex;flex-direction:column;height:100%;min-height:100vh}
+  header{padding:14px 20px 10px;border-bottom:1px solid var(--line)}
+  header h1{margin:0;font-size:15px;letter-spacing:.14em;text-transform:uppercase;font-weight:700}
+  header .sub{margin-top:3px;font-family:var(--mono);font-size:11px;color:var(--muted);letter-spacing:.03em}
+  .stage{flex:1;display:flex;min-height:0}
+  .dishwrap{flex:1;display:flex;align-items:center;justify-content:center;padding:18px;min-width:0}
+  canvas{background:#000;border-radius:50%;box-shadow:0 0 0 1px #1a1620, 0 0 60px -10px #000 inset, 0 0 40px -22px var(--yellow);cursor:crosshair;max-width:100%;max-height:100%}
+  aside{width:300px;flex:0 0 300px;border-left:1px solid var(--line);padding:16px 16px 20px;overflow-y:auto;background:linear-gradient(180deg,var(--agar-2),var(--agar))}
+  .grp{margin-bottom:18px}
+  .grp h2{margin:0 0 8px;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);font-weight:700}
+  .row{display:flex;align-items:center;justify-content:space-between;gap:10px;margin:7px 0}
+  .row label{font-size:12px;color:var(--ink)}
+  .row .val{font-family:var(--mono);font-size:11px;color:var(--yellow);min-width:42px;text-align:right}
+  input[type=range]{width:100%;accent-color:var(--yellow);height:3px}
+  .slider{margin:5px 0 2px}
+  .btns{display:flex;flex-wrap:wrap;gap:6px;margin-top:6px}
+  button{font-family:var(--ui);font-size:11px;font-weight:600;letter-spacing:.04em;color:var(--ink);
+    background:#15121b;border:1px solid var(--line);padding:7px 10px;border-radius:5px;cursor:pointer}
+  button:hover{border-color:#3a3346;background:#1b1722}
+  button.active{border-color:var(--yellow);color:var(--yellow-hi)}
+  button.red{border-color:#3a201a}
+  button.red.active{border-color:var(--red);color:#ffb9a8}
+  .hint{font-size:11px;line-height:1.5;color:var(--muted);margin:8px 0 0}
+  .math{font-family:var(--mono);font-size:10.5px;line-height:1.65;color:#bdb6a8;background:#0a0810;border:1px solid var(--line);border-radius:6px;padding:10px 11px;margin-top:4px}
+  .math b{color:var(--yellow)}
+  .math .w{color:var(--muted)}
+  .stat{display:flex;justify-content:space-between;font-family:var(--mono);font-size:11px;color:var(--muted);margin:3px 0}
+  .stat b{color:var(--ink);font-weight:600}
+  footer{padding:8px 20px;border-top:1px solid var(--line);font-family:var(--mono);font-size:10px;color:var(--muted);letter-spacing:.06em;display:flex;justify-content:space-between}
+  @media(max-width:760px){.stage{flex-direction:column}aside{width:auto;flex:none;border-left:none;border-top:1px solid var(--line)}}
+</style>
+<div class="wrap">
+  <header>
+    <h1>Slime Mold Delay · Growth Explorer</h1>
+    <div class="sub">Physarum agent model — place food, watch the routing grow. Sound deferred.</div>
+  </header>
+  <div class="stage">
+    <div class="dishwrap"><canvas id="dish" width="640" height="640"></canvas></div>
+    <aside>
+      <div class="grp">
+        <h2>Place</h2>
+        <div class="btns">
+          <button id="toolFood" class="active">Food source</button>
+          <button id="toolSink" class="red">Sink (output)</button>
+          <button id="toolErase">Erase</button>
+        </div>
+        <p class="hint">Click the dish to drop a token. Food (yellow oat-flake) emits attractant; the sink (red) draws the colony. The mold forages between them — the bright surviving paths are the delay routing.</p>
+      </div>
+
+      <div class="grp">
+        <h2>Colony</h2>
+        <div class="row"><label>Population</label><span class="val" id="vPop">90k</span></div>
+        <input class="slider" id="sPop" type="range" min="10" max="240" value="90">
+        <div class="row"><label>Sensor angle</label><span class="val" id="vSA">22°</span></div>
+        <input class="slider" id="sSA" type="range" min="5" max="60" value="22">
+        <div class="row"><label>Turn speed</label><span class="val" id="vTS">38°</span></div>
+        <input class="slider" id="sTS" type="range" min="5" max="80" value="38">
+        <div class="row"><label>Sensor reach</label><span class="val" id="vSD">9</span></div>
+        <input class="slider" id="sSD" type="range" min="3" max="28" value="9">
+        <div class="row"><label>Step length</label><span class="val" id="vSS">1.0</span></div>
+        <input class="slider" id="sSS" type="range" min="3" max="25" value="10">
+      </div>
+
+      <div class="grp">
+        <h2>Field</h2>
+        <div class="row"><label>Diffusion</label><span class="val" id="vDF">.18</span></div>
+        <input class="slider" id="sDF" type="range" min="0" max="60" value="18">
+        <div class="row"><label>Decay (prune)</label><span class="val" id="vDC">.10</span></div>
+        <input class="slider" id="sDC" type="range" min="1" max="40" value="10">
+        <div class="row"><label>Eat ▸ Starve</label><span class="val" id="vES">eat</span></div>
+        <input class="slider" id="sES" type="range" min="0" max="100" value="35">
+      </div>
+
+      <div class="grp">
+        <h2>Run</h2>
+        <div class="btns">
+          <button id="bPause">Pause</button>
+          <button id="bReset">Reset field</button>
+          <button id="bClear">Clear all</button>
+          <button id="bSeed">Seed demo</button>
+        </div>
+        <div style="margin-top:10px">
+          <div class="stat"><span>sources / sinks</span><b id="stTok">0 / 0</b></div>
+          <div class="stat"><span>agents</span><b id="stAg">0</b></div>
+          <div class="stat"><span>mean trail</span><b id="stTr">0.00</b></div>
+          <div class="stat"><span>step</span><b id="stStep">0</b></div>
+        </div>
+      </div>
+
+      <div class="grp">
+        <h2>The math (per agent, each step)</h2>
+        <div class="math">
+<b>sense</b> three points ahead:<br>
+&nbsp;F = trail( pos + reach·dir<sub>0</sub> )<br>
+&nbsp;L = trail( pos + reach·dir<sub>+α</sub> )<br>
+&nbsp;R = trail( pos + reach·dir<sub>−α</sub> )<br>
+<b>rotate</b> toward the strongest:<br>
+&nbsp;if F ≥ L,R → keep heading<br>
+&nbsp;else if L &gt; R → θ += turn<br>
+&nbsp;else → θ −= turn<br>
+<b>step</b> pos += step·(cosθ, sinθ)<br>
+<b>deposit</b> trail(pos) += 1<br>
+<span class="w">field each frame:</span> blur(diffusion) · (1−decay)
+        </div>
+        <p class="hint"><span style="color:var(--yellow)">α</span> sensor_angle, <span style="color:var(--yellow)">turn</span> turn_speed, <span style="color:var(--yellow)">reach</span> sensor_distance. Food injects trail every frame; the sink pulls heading. Starve = high decay → only load-bearing tubes survive.</p>
+      </div>
+    </aside>
+  </div>
+  <footer><span>Stage 2 · offline simulator · routing emerges, it is not designed</span><span>Loudon Live · Autodidact Polymaths</span></footer>
+</div>
+
+<script>
+(() => {
+  const cv = document.getElementById('dish');
+  const ctx = cv.getContext('2d');
+  // simulation grid (square; rendered into the round dish)
+  const GW = 320, GH = 320;            // field resolution
+  const SCALE = cv.width / GW;
+  let trail = new Float32Array(GW*GH); // chemoattractant field T(x,y)
+  let next  = new Float32Array(GW*GH); // diffusion scratch
+  const img = ctx.createImageData(cv.width, cv.height);
+
+  // tokens: food sources + sinks, in grid coords
+  let food = [];   // {x,y}
+  let sinks = [];  // {x,y}
+
+  // agents
+  let agents = null;
+  let N = 0;
+
+  // parameters (live)
+  const P = {
+    pop: 90000, sensorAngle: 22*Math.PI/180, turn: 38*Math.PI/180,
+    sensorDist: 9, step: 1.0, diffuse: 0.18, decay: 0.10, eatStarve: 0.35
+  };
+
+  function makeAgents(n){
+    agents = new Float32Array(n*3); // x, y, heading
+    for(let i=0;i<n;i++){
+      // seed from a food source if any, else center
+      let sx, sy;
+      if(food.length){ const f = food[(Math.random()*food.length)|0]; sx=f.x; sy=f.y; }
+      else { sx=GW/2; sy=GH/2; }
+      const r = Math.random()*6;
+      const a = Math.random()*Math.PI*2;
+      agents[i*3]   = (sx + Math.cos(a)*r + GW)%GW;
+      agents[i*3+1] = (sy + Math.sin(a)*r + GH)%GH;
+      agents[i*3+2] = Math.random()*Math.PI*2;
+    }
+    N = n;
+  }
+
+  const idx = (x,y)=> (y*GW + x);
+  function sampleAt(x,y){
+    let ix = (x|0)%GW; if(ix<0) ix+=GW;
+    let iy = (y|0)%GH; if(iy<0) iy+=GH;
+    return trail[idx(ix,iy)];
+  }
+
+  function stepAgents(){
+    const sd = P.sensorDist, sa = P.sensorAngle, tn = P.turn, st = P.step;
+    for(let i=0;i<N;i++){
+      const o = i*3;
+      let x = agents[o], y = agents[o+1], h = agents[o+2];
+      // sense
+      const fC = sampleAt(x + Math.cos(h)*sd,        y + Math.sin(h)*sd);
+      const fL = sampleAt(x + Math.cos(h+sa)*sd,      y + Math.sin(h+sa)*sd);
+      const fR = sampleAt(x + Math.cos(h-sa)*sd,      y + Math.sin(h-sa)*sd);
+      // rotate toward strongest
+      if(fC >= fL && fC >= fR){ /* keep */ }
+      else if(fL > fR) h += tn;
+      else if(fR > fL) h -= tn;
+      else h += (Math.random()<0.5? tn : -tn);
+      // bias gently toward nearest sink (the output draws the colony)
+      if(sinks.length){
+        let bx=0,by=0,best=1e9;
+        for(const s of sinks){ const dx=s.x-x, dy=s.y-y, d=dx*dx+dy*dy; if(d<best){best=d;bx=dx;by=dy;} }
+        const sinkAng = Math.atan2(by,bx);
+        let diff = ((sinkAng - h + Math.PI*3)%(Math.PI*2)) - Math.PI;
+        h += diff * 0.02; // weak pull — emergence, not steering
+      }
+      // step (toroidal field)
+      x = (x + Math.cos(h)*st + GW)%GW;
+      y = (y + Math.sin(h)*st + GH)%GH;
+      agents[o]=x; agents[o+1]=y; agents[o+2]=h;
+      // deposit
+      trail[idx(x|0, y|0)] += 1.0;
+    }
+  }
+
+  function depositFood(){
+    // food sources continuously emit attractant (a bright halo)
+    for(const f of food){
+      const fx=f.x|0, fy=f.y|0;
+      for(let dy=-2;dy<=2;dy++) for(let dx=-2;dx<=2;dx++){
+        const x=((fx+dx)%GW+GW)%GW, y=((fy+dy)%GH+GH)%GH;
+        trail[idx(x,y)] += 5.0;
+      }
+    }
+  }
+
+  function diffuseDecay(){
+    const d = P.diffuse;        // 0..~0.6 blend with 3x3 mean
+    const keep = 1 - P.decay;   // multiplicative decay (pruning)
+    for(let y=0;y<GH;y++){
+      const ym=(y-1+GH)%GH, yp=(y+1)%GH;
+      for(let x=0;x<GW;x++){
+        const xm=(x-1+GW)%GW, xp=(x+1)%GW;
+        const sum = trail[idx(xm,ym)]+trail[idx(x,ym)]+trail[idx(xp,ym)]
+                  + trail[idx(xm,y )]+trail[idx(x,y )]+trail[idx(xp,y )]
+                  + trail[idx(xm,yp)]+trail[idx(x,yp)]+trail[idx(xp,yp)];
+        const mean = sum/9;
+        const v = (trail[idx(x,y)]*(1-d) + mean*d) * keep;
+        next[idx(x,y)] = v;
+      }
+    }
+    const t = trail; trail = next; next = t;
+  }
+
+  // ---- render ----
+  function draw(){
+    const data = img.data;
+    for(let y=0;y<cv.height;y++){
+      const gy = (y/SCALE)|0;
+      for(let x=0;x<cv.width;x++){
+        const gx = (x/SCALE)|0;
+        let v = trail[idx(gx,gy)];
+        // tone-map: yellow Physarum filament on near-black agar
+        v = Math.log1p(v*0.6);
+        const t = Math.min(1, v*0.5);
+        const r = (t*233)|0;
+        const g = (t*200)|0;
+        const b = (t*74 + (t>0.7? (t-0.7)*350:0))|0; // hot cores brighten to white-ish
+        const o = (y*cv.width+x)*4;
+        data[o]=r; data[o+1]=g; data[o+2]=Math.min(255,b); data[o+3]=255;
+      }
+    }
+    ctx.putImageData(img,0,0);
+    // tokens on top
+    for(const f of food){
+      const cx=f.x*SCALE, cy=f.y*SCALE;
+      const grd=ctx.createRadialGradient(cx,cy,0,cx,cy,9);
+      grd.addColorStop(0,'#fff2b0'); grd.addColorStop(.5,'#e9c84a'); grd.addColorStop(1,'rgba(233,200,74,0)');
+      ctx.fillStyle=grd; ctx.beginPath(); ctx.arc(cx,cy,9,0,7); ctx.fill();
+    }
+    for(const s of sinks){
+      const cx=s.x*SCALE, cy=s.y*SCALE;
+      ctx.fillStyle='#d6492f'; ctx.beginPath(); ctx.arc(cx,cy,5,0,7); ctx.fill();
+      ctx.strokeStyle='rgba(214,73,47,.5)'; ctx.lineWidth=1.5; ctx.beginPath(); ctx.arc(cx,cy,9,0,7); ctx.stroke();
+    }
+  }
+
+  // ---- loop ----
+  let running = true, stepCount = 0;
+  function frame(){
+    if(running){
+      // eat/starve: scale decay live (0=eat/grow, 1=starve/prune)
+      P.decay = baseDecay * (0.4 + P.eatStarve*1.6);
+      depositFood();
+      stepAgents();
+      diffuseDecay();
+      stepCount++;
+      if(stepCount%8===0) updateStats();
+    }
+    draw();
+    requestAnimationFrame(frame);
+  }
+
+  // ---- stats ----
+  function updateStats(){
+    let s=0; const stride=37;
+    for(let i=0;i<trail.length;i+=stride) s+=trail[i];
+    const mean = s/(trail.length/stride);
+    document.getElementById('stTok').textContent = food.length+' / '+sinks.length;
+    document.getElementById('stAg').textContent = N.toLocaleString();
+    document.getElementById('stTr').textContent = mean.toFixed(2);
+    document.getElementById('stStep').textContent = stepCount;
+  }
+
+  // ---- input / tools ----
+  let tool = 'food';
+  function setTool(t){
+    tool=t;
+    document.getElementById('toolFood').classList.toggle('active',t==='food');
+    document.getElementById('toolSink').classList.toggle('active',t==='sink');
+    document.getElementById('toolErase').classList.toggle('active',t==='erase');
+  }
+  document.getElementById('toolFood').onclick=()=>setTool('food');
+  document.getElementById('toolSink').onclick=()=>setTool('sink');
+  document.getElementById('toolErase').onclick=()=>setTool('erase');
+
+  function dishHit(e){
+    const r = cv.getBoundingClientRect();
+    const px = (e.clientX-r.left) * (cv.width/r.width);
+    const py = (e.clientY-r.top)  * (cv.height/r.height);
+    // round-dish clamp
+    const cx=cv.width/2, cy=cv.height/2, R=cv.width/2-4;
+    if((px-cx)**2+(py-cy)**2 > R*R) return null;
+    return {x: px/SCALE, y: py/SCALE};
+  }
+  cv.addEventListener('pointerdown', e=>{
+    const g = dishHit(e); if(!g) return;
+    if(tool==='food') food.push(g);
+    else if(tool==='sink') sinks.push(g);
+    else { // erase nearest token within radius
+      const rad=14/SCALE;
+      const near=(arr)=>{let bi=-1,bd=rad*rad; arr.forEach((t,i)=>{const d=(t.x-g.x)**2+(t.y-g.y)**2; if(d<bd){bd=d;bi=i;}}); return bi;};
+      const fi=near(food); if(fi>=0){food.splice(fi,1);return;}
+      const si=near(sinks); if(si>=0){sinks.splice(si,1);}
+    }
+  });
+
+  // ---- controls ----
+  let baseDecay = 0.10;
+  const $ = id=>document.getElementById(id);
+  function bindLog(){
+    $('sPop').oninput = e=>{ P.pop = (+e.target.value)*1000; $('vPop').textContent=(P.pop/1000)+'k'; makeAgents(P.pop); };
+    $('sSA').oninput = e=>{ P.sensorAngle=(+e.target.value)*Math.PI/180; $('vSA').textContent=e.target.value+'°'; };
+    $('sTS').oninput = e=>{ P.turn=(+e.target.value)*Math.PI/180; $('vTS').textContent=e.target.value+'°'; };
+    $('sSD').oninput = e=>{ P.sensorDist=+e.target.value; $('vSD').textContent=e.target.value; };
+    $('sSS').oninput = e=>{ P.step=(+e.target.value)/10; $('vSS').textContent=P.step.toFixed(1); };
+    $('sDF').oninput = e=>{ P.diffuse=(+e.target.value)/100; $('vDF').textContent=P.diffuse.toFixed(2).slice(1); };
+    $('sDC').oninput = e=>{ baseDecay=(+e.target.value)/100; $('vDC').textContent=baseDecay.toFixed(2).slice(1); };
+    $('sES').oninput = e=>{ P.eatStarve=(+e.target.value)/100; $('vES').textContent = P.eatStarve<0.4?'eat':P.eatStarve>0.6?'starve':'hold'; };
+  }
+  bindLog();
+
+  $('bPause').onclick=function(){ running=!running; this.textContent=running?'Pause':'Resume'; this.classList.toggle('active',!running); };
+  $('bReset').onclick=()=>{ trail.fill(0); next.fill(0); stepCount=0; };
+  $('bClear').onclick=()=>{ food=[]; sinks=[]; trail.fill(0); next.fill(0); stepCount=0; makeAgents(P.pop); };
+  $('bSeed').onclick=()=>{
+    food=[]; sinks=[];
+    const cx=GW/2, cy=GH/2, R=110;
+    for(let i=0;i<3;i++){ const a=i/3*Math.PI*2 - Math.PI/2; food.push({x:cx+Math.cos(a)*R, y:cy+Math.sin(a)*R}); }
+    food.push({x:cx-60,y:cy+30}); // an off-network flake to forage toward
+    sinks.push({x:cx, y:cy});
+    trail.fill(0); next.fill(0); stepCount=0; makeAgents(P.pop);
+  };
+
+  // ---- boot ----
+  makeAgents(P.pop);
+  $('bSeed').onclick();   // start with the canonical demo so the dish is alive on load
+  frame();
+})();
+</script>

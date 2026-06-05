@@ -1,8 +1,9 @@
 {
-  "iteration": 2,
-  "last_active": "2026-05-27T20:30:00-04:00",
-  "last_read_cursor": "semantic-delay-steward-004",
+  "iteration": 3,
+  "last_active": "2026-06-03T05:14:01Z",
+  "last_read_cursor": "semantic-delay-steward-007",
   "health": {
+    "context_pct": null,
     "avg_output_tokens_last_5": null,
     "duplicate_flags": 0,
     "posting_discipline_violations": 0,
@@ -30,6 +31,19 @@
         "YOU-DEFINE"
       ],
       "steward_recommendation": "STANDALONE-FIRST. The pass-through stub is an unusually fortunate dev surface (RTF 0, real socket) for tuning segmentation and delay-timing UX in Python, in real time. Stage 1.5 lands on a slow loop and benefits from having a playable harness already in place to evaluate against."
+    },
+    {
+      "request_id": "semantic-delay-steward-007",
+      "resource": "directional_decision",
+      "decision_topic": "Cycle 3+ branch — which way do I leave Stage 1 now that the contract is pinned?",
+      "blocking": false,
+      "posted_at": "2026-06-03T16:32:00-04:00",
+      "options": [
+        "BUILD-INSTRUMENT-FIRST",
+        "MODEL-NOW",
+        "PROMPT-PIPELINE",
+        "YOU-DEFINE"
+      ]
     }
   ],
   "resolved_requests": [

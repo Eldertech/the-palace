@@ -12,9 +12,6 @@ links:
   - target: "[[Generative Sample Libraries]]"
     type: emerged-from
     label: phase-1-pilot
-  - target: "[[Generative Sample Libraries]]"
-    type: spawned
-    label: lessons-feedback
   - target: "[[Phoneme Choir]]"
     type: mirrors
     label: sister-build
@@ -24,7 +21,7 @@ links:
   - target: "[[Modes of Collaboration]]"
     type: connects-to
     label: build-session-instance
-  - target: "[[Four Pillars]]"
+  - target: "[[FOUR PILLARS]]"
     type: connects-to
     label: autodidact-keyboard
   - target: "[[Project Stewardship System]]"

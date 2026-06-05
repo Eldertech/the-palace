@@ -1,0 +1,181 @@
+<!-- Loudon Live Design System · Drafting skin (schematic / build-instructions register) -->
+<!-- Meadows and an Artist's Career — self-diagnostic worksheet, draft 1 -->
+<!-- Pre-filled column sourced from Quality Manifesto.md; placements are the steward's guesses awaiting Loudon's correction. -->
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Anton&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Manrope:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+
+  :root{
+    --bg:#f0eee5; --paper:#f7f5ee; --fg-1:#1a1814; --fg-2:#3d3a32; --fg-3:#8a857a;
+    --rule:#cbc6b8; --accent:#c8261a; --accent-soft:#e8d3cd;
+    --grid:#ddd8ca;
+  }
+  *{box-sizing:border-box}
+  .ll-sheet{
+    background:var(--bg); color:var(--fg-1);
+    font-family:'Cormorant Garamond',Georgia,serif; font-size:17px; line-height:1.5;
+    padding:32px 28px 40px; max-width:980px; margin:0 auto;
+    background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);
+    background-size:24px 24px; background-position:-1px -1px;
+  }
+  .ll-sheet .eyebrow{font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:.16em; text-transform:uppercase; color:var(--accent); margin:0 0 6px}
+  .ll-sheet h1{font-family:'Anton',sans-serif; font-weight:400; font-size:40px; line-height:.98; letter-spacing:.01em; margin:0 0 8px; text-transform:none}
+  .ll-sheet .sub{font-family:'Manrope',sans-serif; font-size:14px; color:var(--fg-2); max-width:62ch; margin:0 0 4px}
+  .ll-sheet .meta{font-family:'JetBrains Mono',monospace; font-size:11px; color:var(--fg-3); margin:10px 0 24px; letter-spacing:.04em}
+  .ll-sheet .legend{display:flex; gap:20px; flex-wrap:wrap; font-family:'Manrope',sans-serif; font-size:12px; color:var(--fg-2); margin:0 0 22px; align-items:center}
+  .ll-sheet .chip{display:inline-block; width:11px; height:11px; border:1px solid var(--fg-2); margin-right:6px; vertical-align:-1px}
+  .chip.theirs{background:repeating-linear-gradient(45deg,var(--fg-3),var(--fg-3) 2px,transparent 2px,transparent 4px)}
+  .chip.mine{background:var(--accent-soft); border-color:var(--accent)}
+
+  .ll-sheet table{width:100%; border-collapse:collapse; background:var(--paper); font-family:'Manrope',sans-serif}
+  .ll-sheet thead th{font-family:'JetBrains Mono',monospace; font-size:10.5px; letter-spacing:.1em; text-transform:uppercase; color:var(--fg-3); text-align:left; padding:8px 10px; border-bottom:1.5px solid var(--fg-2); font-weight:500; vertical-align:bottom}
+  .ll-sheet td{padding:10px; border-bottom:1px solid var(--rule); vertical-align:top; font-size:13.5px; line-height:1.42}
+  .ll-sheet tr.band-high td{background:rgba(200,38,26,.05)}
+  .ll-sheet .lvl{font-family:'Anton',sans-serif; font-size:22px; color:var(--accent); width:34px; text-align:center; line-height:1}
+  .ll-sheet .lvl small{display:block; font-family:'JetBrains Mono',monospace; font-size:8px; color:var(--fg-3); letter-spacing:.08em; margin-top:3px}
+  .ll-sheet .name{font-weight:700; color:var(--fg-1); font-size:13.5px}
+  .ll-sheet .q{color:var(--fg-2); font-style:italic; font-family:'Cormorant Garamond',serif; font-size:15px}
+  .ll-sheet .placed{background:var(--accent-soft); border-left:2px solid var(--accent); padding:7px 9px; font-size:13px; color:var(--fg-1)}
+  .ll-sheet .placed .src{display:block; font-family:'JetBrains Mono',monospace; font-size:9px; color:var(--accent); letter-spacing:.06em; margin-top:5px; text-transform:uppercase}
+  .ll-sheet .yours{min-width:130px}
+  .ll-sheet .blank{display:block; min-height:46px; border:1px dashed var(--rule); border-radius:2px; background:#fffdf7}
+
+  .ll-sheet .divider{font-family:'JetBrains Mono',monospace; font-size:9.5px; letter-spacing:.12em; text-transform:uppercase; color:var(--accent); padding:6px 10px !important; background:var(--bg) !important; border-bottom:1px solid var(--accent)}
+
+  .ll-sheet .note{font-family:'Manrope',sans-serif; font-size:12.5px; color:var(--fg-2); background:var(--paper); border-left:2px solid var(--accent); padding:12px 14px; margin:22px 0 0; max-width:70ch}
+  .ll-sheet .note b{color:var(--fg-1)}
+  .ll-sheet .footer{font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:.12em; color:var(--fg-3); text-transform:uppercase; margin-top:28px; padding-top:12px; border-top:1px solid var(--rule)}
+  .ll-sheet .footer .slash{color:var(--fg-3)}
+</style>
+
+<div class="ll-sheet">
+  <p class="eyebrow">● Self-diagnostic · draft 1</p>
+  <h1>Where is the leverage in my career?</h1>
+  <p class="sub">Donella Meadows ranked twelve places to push on a system — weakest (tweak a number) to strongest (let go of what the whole thing is for). This sheet places <b>your own</b> career on that ladder, then leaves the next column blank for you to argue with.</p>
+  <p class="meta">SOURCE: Quality Manifesto.md · placements are the page's reading of you, not your word yet · today 2026-06-04</p>
+
+  <div class="legend">
+    <span><span class="chip theirs"></span>their question — the optimisation everyone hands you</span>
+    <span><span class="chip mine"></span>where the palace already places <b>you</b> (from the Quality Manifesto)</span>
+  </div>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Lvl</th>
+        <th style="width:24%">The lever</th>
+        <th style="width:30%">Their question</th>
+        <th style="width:28%">Where the palace places you</th>
+        <th class="yours">Your correction</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="divider"><td colspan="5">↓ Lower leverage · feels productive · changes little ↓</td></tr>
+
+      <tr>
+        <td class="lvl">12<small>param</small></td>
+        <td class="name">Constants &amp; parameters</td>
+        <td class="q">"What gear, what price, what DAW, what posting time?"</td>
+        <td><div class="placed">You've largely walked away from here. The Manifesto explicitly refuses thumbnail-optimisation and daily metric-checking as "serving the old paradigm."<span class="src">manifesto · their-quality table</span></div></td>
+        <td><span class="blank"></span></td>
+      </tr>
+
+      <tr>
+        <td class="lvl">11<small>buffer</small></td>
+        <td class="name">Buffer sizes</td>
+        <td class="q">"How much runway, how many gigs booked ahead?"</td>
+        <td><div class="placed">Already solved, and that's the hinge: "financial comfort buys choice — you've won by their rules and chose a different game." The buffer exists so you can ignore level 12.<span class="src">manifesto · the confidence this requires</span></div></td>
+        <td><span class="blank"></span></td>
+      </tr>
+
+      <tr>
+        <td class="lvl">10<small>stock</small></td>
+        <td class="name">Stocks &amp; flows</td>
+        <td class="q">"What's the ratio of paid work to making, teaching to recording?"</td>
+        <td><div class="placed">An active restructure: "I teach to fund my recording" is being inverted toward life-and-work-as-one-practice, where cooking, the Saturday build, and the walk are not overhead — they are the flow.<span class="src">manifesto · life and work are one practice</span></div></td>
+        <td><span class="blank"></span></td>
+      </tr>
+
+      <tr>
+        <td class="lvl">9<small>delay</small></td>
+        <td class="name">Delays</td>
+        <td class="q">"How fast from idea to shipped? How long is the lag?"</td>
+        <td><div class="placed">Deliberately long where it counts: "month-long philosophy arcs over 52 shallow topics," "learning deeply is never wasted time." You've slowed the loop on purpose to deepen it.<span class="src">manifesto · learning deeply</span></div></td>
+        <td><span class="blank"></span></td>
+      </tr>
+
+      <tr class="divider"><td colspan="5">↑ Operational layer · most artists live here ↑ &nbsp;|&nbsp; ↓ This is where you actually operate ↓</td></tr>
+
+      <tr class="band-high">
+        <td class="lvl">8<small>balance</small></td>
+        <td class="name">Balancing feedback loops</td>
+        <td class="q">"What stops me before burnout? What pulls me back from extremes?"</td>
+        <td><div class="placed">Heavily invested: "peaceful, never rushing," "rushing destroys what we're building," the Saturday no-screen rule, "Emily happy at dinner is the metric." These are your brakes, named and protected.<span class="src">manifesto · on practice</span></div></td>
+        <td><span class="blank"></span></td>
+      </tr>
+
+      <tr class="band-high">
+        <td class="lvl">7<small>reinforce</small></td>
+        <td class="name">Reinforcing feedback loops</td>
+        <td class="q">"What compounds? What makes the next step easier than the last?"</td>
+        <td><div class="placed">Your central engine: Practice → Commitment → Integrity → Wellbeing → better Practice. Plus "depth attracts depth" — the right people compound the work. You protect the loop instead of chasing reach.<span class="src">manifesto · the self-reinforcing loop</span></div></td>
+        <td><span class="blank"></span></td>
+      </tr>
+
+      <tr class="band-high">
+        <td class="lvl">6<small>info</small></td>
+        <td class="name">Information flows</td>
+        <td class="q">"Who tells me the truth? Which metric do I actually trust?"</td>
+        <td><div class="placed">You've swapped the channel: out with Spotify streams and view-counts, in with "how you feel," "one student transformed," "Emily at dinner." You changed what the system is allowed to hear.<span class="src">manifesto · wellbeing over metrics</span></div></td>
+        <td><span class="blank"></span></td>
+      </tr>
+
+      <tr class="band-high">
+        <td class="lvl">5<small>rules</small></td>
+        <td class="name">Rules of the system</td>
+        <td class="q">"What do I refuse? What work won't I take?"</td>
+        <td><div class="placed">Explicit and load-bearing: turn down the high-paying misaligned collab; "integrity over optimisation"; no work that asks you to lie about what you make. These rules are how you protect the paradigm.<span class="src">manifesto · integrity over optimization</span></div></td>
+        <td><span class="blank"></span></td>
+      </tr>
+
+      <tr class="divider"><td colspan="5">↓ Highest leverage · feels hardest · pays back most · the 1% layer ↓</td></tr>
+
+      <tr class="band-high">
+        <td class="lvl">4<small>self-org</small></td>
+        <td class="name">Self-organisation</td>
+        <td class="q">"How am I redesigning my own structure?"</td>
+        <td><div class="placed">Mid-transformation: "I used to be a producer; I've become an instrument designer." The Shop, the swarm, the palace itself are you growing a new structure that takes new kinds of work. Self-organisation in progress.<span class="src">vector · self-organization example</span></div></td>
+        <td><span class="blank"></span></td>
+      </tr>
+
+      <tr class="band-high">
+        <td class="lvl">3<small>goal</small></td>
+        <td class="name">Goals of the system</td>
+        <td class="q">"What is this career actually FOR?"</td>
+        <td><div class="placed">Already re-chosen: not "make a living from music," not "be famous," but "an integrated creative life + depth relationships." The goal is wellbeing and the right hundred — and everything downstream is tuned to it.<span class="src">manifesto · your paradigm · goal</span></div></td>
+        <td><span class="blank"></span></td>
+      </tr>
+
+      <tr class="band-high">
+        <td class="lvl">2<small>paradigm</small></td>
+        <td class="name">Paradigm</td>
+        <td class="q">"What does it even mean, for me, to be an artist?"</td>
+        <td><div class="placed">The whole Quality Manifesto IS this move: "Quality is furtherance of our goals, not theirs." It names itself as a Meadows level-2 intervention — changing the mindset the career arises from. This is the work you've already done.<span class="src">manifesto · opening line</span></div></td>
+        <td><span class="blank"></span></td>
+      </tr>
+
+      <tr class="band-high">
+        <td class="lvl">1<small>transcend</small></td>
+        <td class="name">Power to transcend paradigms</td>
+        <td class="q">"Can I hold any answer to 'what's it for' — and put it down when it stops being true?"</td>
+        <td><div class="placed">The open edge. You've moved producer → designer → teacher → palace-keeper; that mobility is the level-1 capacity forming. The honest question this sheet can't answer for you: have you done it enough times to hold the next answer loosely?<span class="src">palace · open question</span></div></td>
+        <td><span class="blank"></span></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="note">
+    <b>The diagnostic, in one line:</b> most artists spend ~80% of their attention at level 12 and ~1% at levels 1–4 — the leverage is upside down. Your placements run the opposite way: the bottom of the ladder is where you've stopped looking, and your real work lives in levels 1–8. <b>That is itself the finding worth testing</b> — either you've genuinely climbed, or the Manifesto describes who you intend to be more than where today's hours actually go. The blank column is where you settle that. Fill in one row where the placement is wrong, and that single correction will teach the page more than the whole interview.
+  </div>
+
+  <p class="footer">Loudon Live <span class="slash">·</span> Autodidact Polymaths</p>
+</div>

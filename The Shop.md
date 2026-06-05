@@ -20,7 +20,7 @@ links:
   - target: "[[Hilaritas Generator]]"
     type: connects-to
     label: "serves"
-  - target: "[[Four Pillars]]"
+  - target: "[[FOUR PILLARS]]"
     type: connects-to
     label: "instantiates-tools"
   - target: "[[Palace Enchantment]]"
@@ -41,6 +41,9 @@ links:
   - target: "[[Lossy Compression with Intent Alignment]]"
     type: mirrors
     label: "tier-as-compression"
+  - target: "[[Closing Well]]"
+    type: connects-to
+    label: shop-wide-standard
 ---
 
 # The Shop

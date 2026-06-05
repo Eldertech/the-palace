@@ -1,6 +1,11 @@
 ---
 title: "BBS Rich Content — handoff"
+type: meta
+pillars:
+  - tools
+  - practice
 born: 2026-05-29
+stage: sprout
 links:
   - target: "[[BBS Production Plan v0.2]]"
     type: emerged-from

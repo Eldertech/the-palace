@@ -1,7 +1,8 @@
 ---
 type: specialist
 status: stub
-medium: 3d
+medium: interactive
+submedium: 3d
 tool: three.js
 tool_version: "r128 (CDN / claude.ai artifact); latest via npm for R3F builds"
 adopted: 2026-05-30

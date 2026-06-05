@@ -30,7 +30,7 @@ links:
     label: derives-from
   - target: "[[Palace To-Do]]"
     type: connects-to
-  - target: "[[Substrate]]"
+  - target: "[[SUBSTRATE]]"
     type: connects-to
     label: technical-substrate
   - target: "[[Progressive Staging]]"

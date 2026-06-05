@@ -24,9 +24,6 @@ links:
     type: connects-to
   - target: "[[Granular Synthesis]]"
     type: connects-to
-  - target: "[[JSUI]]"
-    type: spawned
-    label: proof-of-concept
   - target: "[[Frequency-Time Duality]]"
     type: deepens
   - target: "[[Boundary-Crossing Instruments]]"

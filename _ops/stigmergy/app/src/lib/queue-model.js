@@ -11,9 +11,19 @@
 //   - it never declares present truth
 //
 // Items come from board messages:
-//   - RESOURCE_REQUEST without a matching GRANT/DENY  → 'resource_request'
-//   - BROADCAST with payload.kind 'handoff_ready'      → 'handoff_ready'
-//   (proposals + audition gates are later item types; the shape is open.)
+//   - RESOURCE_REQUEST without a matching GRANT/DENY    → 'resource_request'
+//   - BROADCAST with payload.kind 'handoff_ready'        → 'handoff_ready'
+//   - BROADCAST with payload.kind 'vector_proposal'      → 'vector_proposal'
+//     (Weave swarm's proposals — promote-unsung, new-typed-link, label-
+//      enrichment, stage-transition, vector-tuning. Render as cards in
+//      QUEUE; resolve via the existing RESOURCE_GRANT/RESOURCE_DENY flow
+//      referencing the proposal's message id.)
+//   - BROADCAST with payload.kind 'weave_flag'           → 'weave_flag'
+//     (Deposit Ceremony's flags for a future Weave — backlink_audit,
+//      missing_connection_audit, section_expansion, hub_candidate,
+//      mirror_link_sweep, standard_reference. Carries source_entries: [string]
+//      so a commit touching any one of them closes it via reconcileQueue.
+//      Same RESOURCE_GRANT/RESOURCE_DENY close path as vector_proposal.)
 //
 // reconcileQueue() layers git resolution on top: given the LOG commits, it
 // marks an item resolved when its stale_if is satisfied — the prospective →
@@ -32,7 +42,9 @@ export function buildQueue(messages) {
   if (!Array.isArray(messages)) return [];
   const items = [];
 
-  // Resource requests: unanswered ones become queue items.
+  // Resource requests + vector proposals are both answered by RESOURCE_GRANT
+  // / RESOURCE_DENY messages that carry `re: <message_id>`. One shared set
+  // covers both (the dedup is by the answered message's id).
   const responded = new Set();
   for (const m of messages) {
     if ((m?.type === 'RESOURCE_GRANT' || m?.type === 'RESOURCE_DENY') && m.re) {
@@ -78,6 +90,97 @@ export function buildQueue(messages) {
         entry: typeof p.entry === 'string' ? p.entry : null,
         stale_if: 'a RESOURCE_GRANT or RESOURCE_DENY answers this request',
         pointer: { type: 'board', target: 'TRICKSTER' },
+        resolved: { done: false, reason: null, commit: null },
+        blocking: p.blocking === true,
+        health: m.health || null,
+        raw: m,
+      });
+      continue;
+    }
+
+    if (p.kind === 'vector_proposal' && !responded.has(m.id)) {
+      const proposalType = typeof p.proposal_type === 'string' ? p.proposal_type : 'unknown';
+      const source = typeof p.source_entry === 'string' ? p.source_entry : null;
+      const target = typeof p.target_entry === 'string' ? p.target_entry : null;
+      const proposed = typeof p.proposed_change === 'string' ? p.proposed_change : null;
+      // The card LEADS with proposed_change; if absent, synthesize a
+      // human-language ask from the proposal_type + source/target.
+      const ask = proposed || synthesizeProposalAsk(proposalType, source, target);
+      items.push({
+        id: m.id,
+        sourceId: m.id,
+        kind: 'vector_proposal',
+        from: m.from,
+        ts: m.ts,
+        board: m.board,
+        sessionId: m.session_id || null,
+        proposal_type: proposalType,
+        source_entry: source,
+        target_entry: target,
+        // `entry` aliases source_entry so reconcileQueue's entry-touch path
+        // closes the proposal when the source entry is committed.
+        entry: source,
+        ask,
+        summary: ask,
+        rationale: typeof p.rationale === 'string' ? p.rationale : null,
+        evidence: p.evidence ?? null,
+        // No grant/deny yet -- by the same logic as resource_request: a
+        // committed edit to the source entry would coarsely close it, but
+        // the canonical resolution is a RESOURCE_GRANT/DENY referencing
+        // this message id. The reconciler covers the entry-touch path.
+        stale_if: typeof p.stale_if === 'string' && p.stale_if !== ''
+          ? p.stale_if
+          : (source
+              ? `a RESOURCE_GRANT/DENY answers this proposal, or a commit touches ${source}`
+              : 'a RESOURCE_GRANT or RESOURCE_DENY answers this proposal'),
+        pointer: source ? { type: 'entry', target: source } : { type: 'board', target: m.board },
+        resolved: { done: false, reason: null, commit: null },
+        blocking: p.blocking === true,
+        health: m.health || null,
+        raw: m,
+      });
+      continue;
+    }
+
+    if (p.kind === 'weave_flag' && !responded.has(m.id)) {
+      // source_entries is an array of entry titles. We expose it as `entries`
+      // on the queue item so reconcileQueue's array-aware entry-touch path
+      // can close the flag when a commit touches any one of them. We also
+      // populate the singular `entry` with the first title for backward-
+      // compat with code that reads `item.entry` (the pointer chip, etc.).
+      const sourceEntries = Array.isArray(p.source_entries)
+        ? p.source_entries.filter((e) => typeof e === 'string' && e.trim() !== '')
+        : [];
+      const flagType = typeof p.flag_type === 'string' ? p.flag_type : 'unknown';
+      const targetEntry = typeof p.target_entry === 'string' ? p.target_entry : null;
+      const proposedAction = typeof p.proposed_action === 'string' ? p.proposed_action : null;
+      const ask = proposedAction || synthesizeFlagAsk(flagType, sourceEntries, targetEntry);
+      const primary = sourceEntries[0] || null;
+      items.push({
+        id: m.id,
+        sourceId: m.id,
+        kind: 'weave_flag',
+        from: m.from,
+        ts: m.ts,
+        board: m.board,
+        sessionId: m.session_id || null,
+        flag_type: flagType,
+        source_deposit_id: typeof p.source_deposit_id === 'string' ? p.source_deposit_id : null,
+        source_entries: sourceEntries,
+        target_entry: targetEntry,
+        ask,
+        summary: ask,
+        rationale: typeof p.rationale === 'string' ? p.rationale : null,
+        // `entry` aliases the primary source entry; `entries` carries the full
+        // set for reconcileQueue's array-aware entry-touch matching.
+        entry: primary,
+        entries: sourceEntries,
+        stale_if: typeof p.stale_if === 'string' && p.stale_if !== ''
+          ? p.stale_if
+          : (sourceEntries.length > 0
+              ? `a commit touches any of [${sourceEntries.join(', ')}], or a RESOURCE_GRANT/DENY answers this flag`
+              : 'a RESOURCE_GRANT or RESOURCE_DENY answers this flag'),
+        pointer: primary ? { type: 'entry', target: primary } : { type: 'board', target: m.board },
         resolved: { done: false, reason: null, commit: null },
         blocking: p.blocking === true,
         health: m.health || null,
@@ -149,21 +252,33 @@ export function reconcileQueue(items, commits) {
     }
 
     // (2) stale_if: a commit touched the item's entry after it was posted.
-    if (item.entry) {
+    // Items with `entries: [string]` (e.g. weave_flag) close when a commit
+    // touches ANY of those titles; singular `entry` is also honored.
+    const watchEntries = (Array.isArray(item.entries) && item.entries.length > 0)
+      ? item.entries
+      : (item.entry ? [item.entry] : []);
+    if (watchEntries.length > 0) {
       const itemEpoch = tsToEpoch(item.ts);
+      const watchLower = watchEntries.map((e) => e.toLowerCase());
+      let matchedEntry = null;
       const touch = cs.find((c) => {
         if (!Array.isArray(c.entries)) return false;
-        if (!c.entries.some((e) => e.toLowerCase() === item.entry.toLowerCase())) return false;
+        const hit = c.entries.find((e) => watchLower.includes(e.toLowerCase()));
+        if (!hit) return false;
         const cEpoch = tsToEpoch(c.date);
-        // Only commits strictly AFTER the item's vantage retire it.
-        return Number.isFinite(cEpoch) && Number.isFinite(itemEpoch) && cEpoch > itemEpoch;
+        if (!(Number.isFinite(cEpoch) && Number.isFinite(itemEpoch) && cEpoch > itemEpoch)) {
+          return false;
+        }
+        // Preserve the canonical-cased title from the watch list for the reason string.
+        matchedEntry = watchEntries.find((w) => w.toLowerCase() === hit.toLowerCase()) || hit;
+        return true;
       });
       if (touch) {
         return {
           ...item,
           resolved: {
             done: true,
-            reason: `a commit (${touch.shortHash}) touched ${item.entry} after this was posted`,
+            reason: `a commit (${touch.shortHash}) touched ${matchedEntry} after this was posted`,
             commit: touch.shortHash,
           },
         };
@@ -215,6 +330,59 @@ export function deriveAsk(payload) {
     return head.length > 200 ? `${head.slice(0, 197)}...` : head;
   }
   return pick(payload.resource);
+}
+
+// Synthesize a human-language ask from a vector_proposal's structured
+// fields when the proposer didn't supply a `proposed_change` string.
+export function synthesizeProposalAsk(proposalType, source, target) {
+  const s = source ? `[[${source.replace(/\.md$/, '')}]]` : 'an entry';
+  const t = target ? `[[${target.replace(/\.md$/, '')}]]` : 'another entry';
+  switch (proposalType) {
+    case 'promote_unsung':
+      return `promote the body wikilink ${s} → ${t} to a typed link`;
+    case 'new_typed_link':
+      return `add a typed link ${s} → ${t}`;
+    case 'label_enrichment':
+      return `add a resonant link label to a link from ${s}`;
+    case 'stage_transition':
+      return `propose a stage transition for ${s}`;
+    case 'vector_tuning':
+      return `propose a forward-vector revision for ${s}`;
+    default:
+      return `Weave proposal on ${s}`;
+  }
+}
+
+// Synthesize a human-language ask from a weave_flag's structured fields
+// when the author didn't supply a `proposed_action` string. The flag_type
+// enum is open; renderer falls back to "Weave flag" for unknown types.
+export function synthesizeFlagAsk(flagType, sourceEntries, targetEntry) {
+  const srcs = Array.isArray(sourceEntries) ? sourceEntries.filter(Boolean) : [];
+  const wikilink = (s) => `[[${String(s).replace(/\.md$/, '')}]]`;
+  const srcList = srcs.length > 0
+    ? srcs.map(wikilink).join(srcs.length === 2 ? ' and ' : ', ')
+    : 'an entry';
+  const tgt = targetEntry ? wikilink(targetEntry) : null;
+  switch (flagType) {
+    case 'backlink_audit':
+      return tgt
+        ? `audit backlinks: add inbound links from ${srcList} pointing at ${tgt}`
+        : `audit backlinks across ${srcList}`;
+    case 'missing_connection_audit':
+      return `audit ${srcList} for missing connections`;
+    case 'section_expansion':
+      return `expand a section in ${srcList}`;
+    case 'hub_candidate':
+      return `evaluate ${srcList} as a hub candidate`;
+    case 'mirror_link_sweep':
+      return `sweep ${srcList} for mirror / same-object links`;
+    case 'standard_reference':
+      return tgt
+        ? `reference ${tgt} as a standard from ${srcList}`
+        : `reference ${srcList} as a standard`;
+    default:
+      return `Weave flag on ${srcList}`;
+  }
 }
 
 // A short human vantage string: "announced HH:MM:SSZ, from X".
