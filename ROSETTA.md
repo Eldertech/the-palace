@@ -146,9 +146,9 @@ Each link between entries carries a **predicate** — a named relationship type.
 | `connects-to` | symmetric | Structural or conceptual proximity | `owl:related` |
 | `mirrors` | symmetric | Same structure in different domains | `owl:equivalentClass` (loose) |
 | `enables` | directed | A is a precondition or generative force for B | `schema:enablesAction` |
-| `deepens` | directed | B is a more developed articulation of A | `skos:narrower` |
+| `deepens` | directed | A is a more developed articulation of B (the ground) | `skos:broader` (target is the broader concept) |
 | `spawned` | directed | A produced B as a direct output | `prov:wasDerivedFrom` |
-| `emerged-from` | directed | B crystallized from A through synthesis | `prov:wasInfluencedBy` |
+| `emerged-from` | directed | A crystallized from B (the origin) through synthesis | `prov:wasInfluencedBy` |
 | `contradicts` | symmetric | Productive tension | `owl:disjointWith` (loose) |
 | `couples-with` | symmetric | Mutual reinforcement, co-constitution | `owl:complementOf` (loose) |
 | `exemplifies` | directed | A is a concrete instance of the more general B | `rdf:type` |

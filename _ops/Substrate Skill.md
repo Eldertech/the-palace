@@ -73,10 +73,10 @@ Use only these relationship types in YAML frontmatter links:
 
 - `connects-to` — general association (default, weakest)
 - `mirrors` — deep structural identity across different domains
-- `enables` — understanding X is needed for Y
-- `deepens` — more nuanced version of another idea
-- `spawned` — one idea gave birth to another
-- `emerged-from` — historical origin
+- `enables` — A is a precondition or generative force for B (directed A→B)
+- `deepens` — A is a more developed articulation of the more-foundational B (directed A→B; source elaborates, target is the ground)
+- `spawned` — A directly produced B as output (directed A→B; origin → product)
+- `emerged-from` — A crystallized from its origin B (directed A→B; source is the result, target is the origin)
 - `contradicts` — productive tension
 - `couples-with` — ideas that oscillate together
 - `exemplifies` — A is a concrete instance of the more general B (directed A→B)

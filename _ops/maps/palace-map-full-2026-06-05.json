@@ -4,7 +4,7 @@
     "scope": "full",
     "node_count": 383,
     "ops_node_count": 35,
-    "edge_count": 1778,
+    "edge_count": 1769,
     "ghost_taxonomy": {
       "error_ghosts": [],
       "ops_ghosts": [],
@@ -498,7 +498,7 @@
       "has_forward_vector": true,
       "last_activated": "2026-05-02",
       "activation_count": "3",
-      "outbound_count": 14,
+      "outbound_count": 13,
       "inbound_count": 34
     },
     {
@@ -774,7 +774,7 @@
       "last_activated": "2026-03",
       "activation_count": "14",
       "outbound_count": 9,
-      "inbound_count": 35
+      "inbound_count": 34
     },
     {
       "id": "Crystal Sonification Reference",
@@ -796,7 +796,7 @@
       "last_activated": "2026-04",
       "activation_count": "2",
       "outbound_count": 12,
-      "inbound_count": 17
+      "inbound_count": 16
     },
     {
       "id": "Crystal Synthesizer \u2014 Staging",
@@ -938,7 +938,7 @@
       "has_forward_vector": true,
       "last_activated": "2026-03",
       "activation_count": "2",
-      "outbound_count": 10,
+      "outbound_count": 9,
       "inbound_count": 10
     },
     {
@@ -1125,7 +1125,7 @@
       "has_forward_vector": true,
       "last_activated": "2026-05",
       "activation_count": "33",
-      "outbound_count": 8,
+      "outbound_count": 7,
       "inbound_count": 67
     },
     {
@@ -1434,7 +1434,7 @@
       "last_activated": "2026-03",
       "activation_count": "9",
       "outbound_count": 12,
-      "inbound_count": 44
+      "inbound_count": 43
     },
     {
       "id": "History",
@@ -1456,7 +1456,7 @@
       "last_activated": "2026-03",
       "activation_count": "10",
       "outbound_count": 7,
-      "inbound_count": 31
+      "inbound_count": 30
     },
     {
       "id": "Identity Molting",
@@ -2126,7 +2126,7 @@
       "has_forward_vector": true,
       "last_activated": "2026-03",
       "activation_count": "1",
-      "outbound_count": 12,
+      "outbound_count": 11,
       "inbound_count": 34
     },
     {
@@ -2149,7 +2149,7 @@
       "last_activated": "2026-03-28",
       "activation_count": "1",
       "outbound_count": 18,
-      "inbound_count": 17
+      "inbound_count": 16
     },
     {
       "id": "Palace Audit \u2014 2026-05-28",
@@ -2347,7 +2347,7 @@
       "last_activated": "2026-04",
       "activation_count": "2",
       "outbound_count": 8,
-      "inbound_count": 13
+      "inbound_count": 12
     },
     {
       "id": "Playful Interface Design",
@@ -2754,7 +2754,7 @@
       "last_activated": "2026-03",
       "activation_count": "5",
       "outbound_count": 21,
-      "inbound_count": 33
+      "inbound_count": 32
     },
     {
       "id": "Scale-Stratified Identity",
@@ -2764,7 +2764,7 @@
       "has_forward_vector": true,
       "last_activated": null,
       "activation_count": null,
-      "outbound_count": 9,
+      "outbound_count": 8,
       "inbound_count": 2
     },
     {
@@ -2786,7 +2786,7 @@
       "has_forward_vector": true,
       "last_activated": "2026-03",
       "activation_count": "1",
-      "outbound_count": 6,
+      "outbound_count": 5,
       "inbound_count": 5
     },
     {
@@ -2929,7 +2929,7 @@
       "has_forward_vector": true,
       "last_activated": "2026-04-01",
       "activation_count": "12",
-      "outbound_count": 11,
+      "outbound_count": 10,
       "inbound_count": 56
     },
     {
@@ -3017,7 +3017,7 @@
       "has_forward_vector": true,
       "last_activated": "2026-03",
       "activation_count": "1",
-      "outbound_count": 5,
+      "outbound_count": 4,
       "inbound_count": 4
     },
     {
@@ -3051,7 +3051,7 @@
       "last_activated": "2026-03",
       "activation_count": "1",
       "outbound_count": 14,
-      "inbound_count": 24
+      "inbound_count": 23
     },
     {
       "id": "Symbiotic Skills",
@@ -3260,7 +3260,7 @@
       "last_activated": null,
       "activation_count": null,
       "outbound_count": 10,
-      "inbound_count": 12
+      "inbound_count": 11
     },
     {
       "id": "Tier Vocabulary Glossary",
@@ -3424,7 +3424,7 @@
       "has_forward_vector": true,
       "last_activated": "2026-05",
       "activation_count": "2",
-      "outbound_count": 8,
+      "outbound_count": 7,
       "inbound_count": 8
     },
     {
@@ -4782,7 +4782,7 @@
       "source": "Cooperation Yields Agency",
       "type": "deepens",
       "target": "Spinoza Conatus",
-      "label": null
+      "label": "agency-as-power-increase"
     },
     {
       "source": "Cooperation Yields Agency",
@@ -5130,12 +5130,6 @@
       "source": "Dispersion",
       "type": "connects-to",
       "target": "Portamento and Physical Pitch Modeling",
-      "label": null
-    },
-    {
-      "source": "Dispersion",
-      "type": "deepens",
-      "target": "Piano String Inharmonicity",
       "label": null
     },
     {
@@ -5556,12 +5550,6 @@
       "source": "FOUR PILLARS",
       "type": "enables",
       "target": "Cooperation Yields Agency",
-      "label": null
-    },
-    {
-      "source": "FOUR PILLARS",
-      "type": "deepens",
-      "target": "Hyperdimensional Prism",
       "label": null
     },
     {
@@ -7768,12 +7756,6 @@
     },
     {
       "source": "BBS Blackboard",
-      "type": "deepens",
-      "target": "Palace Agent Infrastructure Spec",
-      "label": "specced-by"
-    },
-    {
-      "source": "BBS Blackboard",
       "type": "connects-to",
       "target": "Striatum",
       "label": null
@@ -8574,7 +8556,7 @@
       "source": "Palace Agent Infrastructure Spec",
       "type": "deepens",
       "target": "BBS Blackboard",
-      "label": null
+      "label": "specifies"
     },
     {
       "source": "Palace Agent Infrastructure Spec",
@@ -9360,12 +9342,6 @@
       "source": "Self-Describing Knowledge Module",
       "type": "enables",
       "target": "ROSETTA",
-      "label": null
-    },
-    {
-      "source": "Self-Describing Knowledge Module",
-      "type": "deepens",
-      "target": "SUBSTRATE",
       "label": null
     },
     {
@@ -11974,12 +11950,6 @@
     },
     {
       "source": "Wallpaper Groups",
-      "type": "deepens",
-      "target": "Crystal Synthesizer",
-      "label": null
-    },
-    {
-      "source": "Wallpaper Groups",
       "type": "connects-to",
       "target": "Quantum Synthesizer",
       "label": null
@@ -12479,12 +12449,6 @@
     {
       "source": "Scale-Stratified Identity",
       "type": "deepens",
-      "target": "Threshold Conatus",
-      "label": "resolved-by"
-    },
-    {
-      "source": "Scale-Stratified Identity",
-      "type": "deepens",
       "target": "Spinoza Conatus",
       "label": "completes"
     },
@@ -12715,12 +12679,6 @@
       "type": "connects-to",
       "target": "Hilaritas Generator",
       "label": "new-country"
-    },
-    {
-      "source": "Spinoza Conatus",
-      "type": "deepens",
-      "target": "Cooperation Yields Agency",
-      "label": "agency-as-power-increase"
     },
     {
       "source": "Spinoza Conatus",
@@ -12967,12 +12925,6 @@
       "type": "connects-to",
       "target": "Epictetus",
       "label": "slave-philosopher"
-    },
-    {
-      "source": "Striatum",
-      "type": "deepens",
-      "target": "Hilaritas Generator",
-      "label": null
     },
     {
       "source": "Striatum",
@@ -14490,12 +14442,6 @@
       "source": "Mermaid Diagram Standard",
       "type": "connects-to",
       "target": "README - The Palace Guide",
-      "label": null
-    },
-    {
-      "source": "Pages as Agents",
-      "type": "deepens",
-      "target": "Swarm Weave",
       "label": null
     },
     {

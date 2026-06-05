@@ -1,7 +1,7 @@
 ---
-version: 1.8
+version: 1.9
 schema: SCHEMA.md
-last_schema_ceremony: 2026-05
+last_schema_ceremony: 2026-06-05
 github: https://github.com/Eldertech/the-palace
 github_raw: https://raw.githubusercontent.com/Eldertech/the-palace/main
 ---
