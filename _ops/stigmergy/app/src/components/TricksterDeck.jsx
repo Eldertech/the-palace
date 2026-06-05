@@ -11,10 +11,19 @@ import React from 'react';
 // retire or stay as the asset-rich alt skin (audio players, iframes,
 // SVG schematics per project — things the QUEUE card-list won't carry).
 //
-// The iframe is sandbox="allow-scripts allow-same-origin" — same origin
-// is required so the page's POSTs to /api/persistent succeed (the only
-// way file ▶ actually files on the BBS). allow-forms is included so the
-// freeform notes textarea works.
+// The iframe sandbox needs five tokens to make the standalone page work:
+//   allow-scripts        — the page is dynamic; the inbox, audio play-
+//                          all, lean buttons all need JS.
+//   allow-same-origin    — same origin is required so the page's POSTs
+//                          to /api/persistent succeed (the only way
+//                          file ▶ actually files on the BBS).
+//   allow-forms          — the freeform notes textarea + form submission.
+//   allow-popups         — the per-card "open standalone ↗" / project-
+//                          entry deep-links open in a new tab.
+//   allow-downloads      — the Preset card's "↓ download .adv" button
+//                          uses the HTML download attribute, which
+//                          Chrome and Safari block in sandboxed iframes
+//                          unless this token is present.
 export default function TricksterDeck() {
   return (
     <div
@@ -52,7 +61,7 @@ export default function TricksterDeck() {
       <iframe
         title="Trickster · pending decisions"
         src="/trickster.html"
-        sandbox="allow-scripts allow-same-origin allow-forms allow-popups"
+        sandbox="allow-scripts allow-same-origin allow-forms allow-popups allow-downloads"
         style={{
           flex: 1, width: '100%', border: 0, background: 'var(--bg, #050706)',
         }}
