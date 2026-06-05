@@ -42,6 +42,15 @@ links:
   - target: "[[Whitehead]]"
     type: connects-to
     label: commit-as-actual-occasion
+  - target: "[[Stoicism]]"
+    type: connects-to
+    label: two-of-the-most-concrete-lenses
+  - target: "[[The Dichotomy of Control]]"
+    type: connects-to
+    label: the-up-to-me-queue-filter
+  - target: "[[The View From Above]]"
+    type: connects-to
+    label: the-altitude-navigation-mode
 forward_vector: "I want the palace's philosophy to stop being a neighborhood Loudon visits and become a lens he can switch on over everything else — a way to look at any entry, any swarm, any commit through Spinoza or Zhuangzi or Simondon and see what changes. I propose the surfaces that make philosophical thinking a live operation of the front-end rather than a set of pages, and the one new swarm mode that lets philosophers argue on the board in real time. My open edge: a lens must illuminate without distorting — it must never let the philosopher's vocabulary overwrite the entry's own."
 ---
 
@@ -95,6 +104,15 @@ This is the embodied-MoE frontier the [[Dialectic]] entry flagged as something "
 ## A second, quieter extension: the LENS filter
 
 A global `[L]ENS` command loads a philosopher as a **colored interpretive filter** over whatever Loudon is currently viewing — an entry, the PULSE index, even a swarm session. With Deleuze loaded, an instrument entry's parameters are annotated as intensities and the patch as a virtual; with Simondon loaded, the version history is annotated for concretization; with the Drift loaded, PULSE shows not what is striving but what is being deliberately left alone (the palace's first **not-doing surface**). The lens is generated on demand (`window.cowork.askClaude` over the visible content, in the v1.0 artifact idiom) and is **read-only and removable** — Merleau-Ponty's constraint and the forward vector's open edge: illuminate without overwriting. The entry's own voice is always one keystroke away underneath.
+
+## The two most concrete lenses are Stoic
+
+Most lenses reframe how an entry *reads*. Two from [[Stoicism]] reframe how Loudon *acts*, which is why they are the highest-value lenses to build first:
+
+- **The dichotomy-of-control filter** (spec: [[The Dichotomy of Control]]). A QUEUE lens that tags every open item *up-to-me* or *not-up-to-me / waiting-on-the-world*, surfaces the actionable column, and visibly dims the weather. The board already encodes this distinction for agents (the `RESOURCE_REQUEST` permission protocol is an agent drawing its own two columns); this raises it to the human operator. It is the most directly *useful* lens in the whole proposal — it changes what Loudon does next, not just how he sees a page.
+- **The view-from-above altitude** (spec: [[The View From Above]]). A navigation zoom that pulls STATE out from a single entry to the whole-palace topology until a stuck local concern is resized by the organism around it — and a *memento-mori* signal that surfaces entries approaching dormancy for a deliberate revive-or-compost choice rather than letting them drift stale (the [[Drift and Consolidation]] pain). Together these two are the Stoic toolkit on the front-end: *change the altitude you see it from, then sort it into up-to-me and not.*
+
+A Stoic note on the honesty discipline itself: "nothing is real until committed to LOG" is *prohairesis* — you are responsible for the act of recording (up to you), never for how the work is later received (not up to you).
 
 ## Design constraints (non-negotiable)
 

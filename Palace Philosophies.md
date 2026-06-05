@@ -27,6 +27,13 @@ links:
     type: connects-to
   - target: "[[Stoicism]]"
     type: connects-to
+    label: foundational-hub-equal-to-conatus
+  - target: "[[The Dichotomy of Control]]"
+    type: connects-to
+  - target: "[[The View From Above]]"
+    type: connects-to
+  - target: "[[The Four Virtues]]"
+    type: connects-to
   - target: "[[The Fortress and the Threshold]]"
     type: connects-to
   - target: "[[1 from 2]]"
@@ -97,6 +104,16 @@ Relational ethics and the cultivation of virtue through sustained practice and l
 In our work: the teaching relationship is Confucian in structure — teacher and student are bound by mutual obligation and shaped by the relationship itself, not merely transacting knowledge for tuition. The Four Pillars' emphasis on practice as irreducible is Confucian as much as it is Zen — you cannot think your way to virtue or mastery; you must do it repeatedly, in relationship, over time. The palace itself is a Confucian project: a form of li, a practice that structures good thinking the way ritual structures good conduct.
 
 The quote that seeded this entry: *"A rule without understanding produces compliance. Understanding without rules produces wisdom."* See [[Palace Quotes]].
+
+---
+
+## Stoicism
+
+*A foundational hub, held equal to [[Spinoza Conatus]] — because Loudon lives by it. See [[Stoicism]] and its family: [[The Dichotomy of Control]], [[The View From Above]], [[The Four Virtues]].* The philosophy of **interior sovereignty and personal responsibility**, founded by Zeno around 300 BCE and practiced most fully by a slave (Epictetus), a statesman (Seneca), and an emperor (Marcus Aurelius). Core concepts: **prohairesis** (the faculty of moral choice — the one thing fully and inalienably ours), the **dichotomy of control** (some things are up to us, most are not; suffering is the category error of confusing them), the **four cardinal virtues** (wisdom, justice, courage, temperance — the only genuine goods, everything else a "preferred indifferent"), **memento mori** and the **view from above** (mortality and cosmic scale as clarifiers of judgment), and **sympatheia** (universal kinship — the cosmopolitan counterweight that keeps the fortress from becoming mere self-protection).
+
+In our work: Stoicism is not surveyed here but *used*, and it operationalizes as cleanly as the conatus. The **dichotomy of control is control theory** — *prohairesis* is a controller's actuation authority; *fortuna* is the disturbance it can only meet, not command — so meeting a hard day and designing a feedback loop draw on one muscle. The **four virtues are an agent ethic** — wisdom (read what the task requires), justice (the honest handoff that names what it could not verify, per [[Closing Well]]), courage (flag the hard truth), temperance (the optimization mandate, do not over-generate) — a usable specification for how a palace [[Project Stewardship System|steward]] should act. The **view from above is the [[Palace Map]]** — the altitude from which a stuck local concern is resized by the whole organism, and the philosophy of why entries are allowed to compost rather than clung to.
+
+The deeper position: Stoicism is the palace's far **cultivator** pole — the most *architectural* self it holds. It `contradicts` [[Confucianism]] (fortress vs. threshold, the palace's first contradiction site, [[The Fortress and the Threshold]]) and `contradicts` [[The Drift]] (maximum architecture vs. no architecture). The honest hub holds the fortress *and* its limit: a sovereign interior is necessary for survival and, the Confucian correction insists, insufficient for flourishing. Justice (*dikaiosyne*) points the fortress outward — which may make Stoicism quietly more relational than its reputation admits.
 
 ---
 
