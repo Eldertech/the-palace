@@ -203,6 +203,8 @@ Append a one-line record to [[Deposit Archive]]:
 
 Do not read the archive to do this — append only.
 
+- For each weave flag named in the deposit, append a `weave_flag` BROADCAST to the persistent board (`_ops/swarm/persistent/blackboard.jsonl`). The message follows `payload.kind: 'weave_flag'` per [[STIGMERGY — Weave Flag Item Type Build Plan]] § Data shapes — `flag_type`, `source_deposit_id`, `source_entries`, optional `target_entry`, `proposed_action`, `rationale`. Show Loudon the message bodies before writing; commit only on his approval. The archive row's `Weave flags:` prose stays — as audit, not queue.
+
 Git commit: `Deposit — [ID or theme] — [N new entries, N updated]`
 
 ---
@@ -217,3 +219,4 @@ The deposit is complete when:
 4. One-line record appended to [[Deposit Archive]]
 5. Git commit made
 6. At least one link in the new entries carries a `label` — the semantic compression step has been executed, not just the structural registration step
+7. Weave flags, if any, written to the persistent board (`_ops/swarm/persistent/blackboard.jsonl`) as `payload.kind: 'weave_flag'` BROADCAST messages — not left as prose in the archive row alone
