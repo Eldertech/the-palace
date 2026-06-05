@@ -12,7 +12,7 @@
   "stewardship": {
     "stage_at_last_activation": "growing",
     "vector_at_last_activation": "I build the bridge between neurobiology and synthesis parameter by parameter — making each ion channel a knob, each membrane phase a teachable stage, and each biological constraint a compositional invitation.",
-    "vector_changed_since_last": false,
+    "vector_changed_since_last": true,
     "stage_changed_since_last": false,
     "page_updates_observed_since_last": []
   },
@@ -28,6 +28,13 @@
         "AB-CLIPS",
         "COMPILE-FIRST"
       ]
+    },
+    {
+      "request_id": "apo-steward-vector-change-2026-06-03",
+      "resource": "directional_decision",
+      "decision_topic": "forward_vector changed since last activation — confirm re-baseline",
+      "blocking": false,
+      "posted_at": "2026-06-03T04:56:44.278Z"
     }
   ],
   "resolved_requests": [

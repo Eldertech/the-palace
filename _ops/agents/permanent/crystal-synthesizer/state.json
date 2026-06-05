@@ -1,8 +1,9 @@
 {
-  "iteration": 2,
-  "last_active": "2026-05-27T20:30:00-04:00",
-  "last_read_cursor": "crystal-synth-steward-006",
+  "iteration": 3,
+  "last_active": "2026-06-03T05:14:01Z",
+  "last_read_cursor": "crystal-synth-steward-009",
   "health": {
+    "context_pct": null,
     "avg_output_tokens_last_5": null,
     "duplicate_flags": 0,
     "posting_discipline_violations": 0,
@@ -18,19 +19,17 @@
   },
   "pending_requests": [
     {
-      "request_id": "crystal-synth-steward-006",
-      "resource": "directional_decision",
-      "decision_topic": "Where does the optical-acoustic bridge go next, now that birefringence is proven?",
+      "request_id": "crystal-synth-steward-009",
+      "resource": "sensory_audition_gate",
+      "decision_topic": "Approve the smallest-unit render plan for the dispersion filter before I commit the full batch",
       "blocking": false,
-      "posted_at": "2026-05-27T20:02:00-04:00",
+      "posted_at": "2026-06-03T16:32:00-04:00",
       "options": [
-        "DISPERSION-FILTER",
-        "BIREFRINGENCE-FAMILY",
-        "PLEOCHROISM-PROOF",
-        "SIBLING-FEEDBACK",
+        "APPROVE-PLAN",
+        "SWAP-CRYSTALS",
+        "DIFFERENT-UNIT",
         "YOU-DECIDE"
-      ],
-      "steward_recommendation": "DISPERSION-FILTER — the optical-acoustic vector names three phenomena; birefringence is done, and dispersion is the conceptually deepest of the two remaining because it lives in the time domain, not the frequency domain. Same physics, different observational projection — and the prism analogy lands hardest when arrival times separate the way wavelengths do."
+      ]
     }
   ],
   "resolved_requests": [
@@ -51,6 +50,24 @@
       "resolved_at": "2026-05-27T23:40:13.051Z",
       "resolved_by": "resp-mpopik57-w02up5",
       "outcome": "GRANTED — option_id=PROVE-BIREFRINGENCE"
+    },
+    {
+      "request_id": "crystal-synth-steward-006",
+      "resource": "directional_decision",
+      "decision_topic": "Where does the optical-acoustic bridge go next, now that birefringence is proven?",
+      "blocking": false,
+      "posted_at": "2026-05-27T20:02:00-04:00",
+      "options": [
+        "DISPERSION-FILTER",
+        "BIREFRINGENCE-FAMILY",
+        "PLEOCHROISM-PROOF",
+        "SIBLING-FEEDBACK",
+        "YOU-DECIDE"
+      ],
+      "steward_recommendation": "DISPERSION-FILTER — the optical-acoustic vector names three phenomena; birefringence is done, and dispersion is the conceptually deepest of the two remaining because it lives in the time domain, not the frequency domain. Same physics, different observational projection — and the prism analogy lands hardest when arrival times separate the way wavelengths do.",
+      "resolved_at": "2026-06-01T13:11:19.444Z",
+      "resolved_by": "resp-mpv8921g-1igsuc",
+      "outcome": "GRANTED — option_id=DISPERSION-FILTER"
     }
   ],
   "_pilot_metadata": {

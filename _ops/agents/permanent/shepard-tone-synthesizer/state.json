@@ -1,8 +1,9 @@
 {
-  "iteration": 3,
-  "last_active": "2026-05-27T20:30:00-04:00",
-  "last_read_cursor": "shepard-steward-009",
+  "iteration": 4,
+  "last_active": "2026-06-03T05:14:01Z",
+  "last_read_cursor": "shepard-steward-013",
   "health": {
+    "context_pct": null,
     "avg_output_tokens_last_5": null,
     "duplicate_flags": 0,
     "posting_discipline_violations": 0,
@@ -41,6 +42,32 @@
         "ADJUST-TEXT",
         "DEFER-UNTIL-AUDITION",
         "REJECT-RESTRUCTURE"
+      ]
+    },
+    {
+      "request_id": "shepard-steward-012",
+      "resource": "audition_verification",
+      "decision_topic": "The Stage 1 drone ear-check is still open — do you want to do it, or should I re-render a fresh single example so it is easy to click and listen?",
+      "blocking": false,
+      "posted_at": "2026-06-03T09:04:00-04:00",
+      "options": [
+        "RE-RENDER-FRESH",
+        "OLD-RENDER-FINE",
+        "APPROVE-FROM-DESCRIPTION",
+        "HOLD"
+      ]
+    },
+    {
+      "request_id": "shepard-steward-013",
+      "resource": "directional_decision",
+      "decision_topic": "Two unresolved Stage 2 design knobs — how does the staircase climb, and how does it wrap?",
+      "blocking": false,
+      "posted_at": "2026-06-03T09:06:00-04:00",
+      "options": [
+        "STEP-AND-SHOW",
+        "GLIDE-AND-HIDE",
+        "STEP-AND-HIDE",
+        "DEFER-UNTIL-AUDITION"
       ]
     }
   ],

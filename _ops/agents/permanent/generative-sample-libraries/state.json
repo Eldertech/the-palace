@@ -1,8 +1,9 @@
 {
-  "iteration": 13,
-  "last_active": "2026-05-27T20:30:00-04:00",
-  "last_read_cursor": "gsl-steward-026",
+  "iteration": 14,
+  "last_active": "2026-06-03T05:14:01Z",
+  "last_read_cursor": "gsl-steward-028",
   "health": {
+    "context_pct": null,
     "avg_output_tokens_last_5": null,
     "duplicate_flags": 0,
     "posting_discipline_violations": 0,
@@ -23,6 +24,18 @@
       "decision_topic": "Audition the 12 Shepard drones (Stage 1 MINIMUM-ILLUSION) — does the Gaussian stack read as ONE Shepard tone per pitch class?",
       "blocking": true,
       "posted_at": "2026-05-27T19:57:00-04:00",
+      "options": [
+        "APPROVE",
+        "TWEAK-PARAMS",
+        "REJECT"
+      ]
+    },
+    {
+      "request_id": "gsl-steward-028",
+      "resource": "audition",
+      "decision_topic": "Audition the 12 Shepard drones (Phase 3 source-two) — does each Gaussian seven-octave stack read as ONE pitch class, not seven separate sines?",
+      "blocking": true,
+      "posted_at": "2026-06-03T10:02:00-04:00",
       "options": [
         "APPROVE",
         "TWEAK-PARAMS",
