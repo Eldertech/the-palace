@@ -9,6 +9,7 @@
 // See: Shop/Maker.md § Host Capability Check, Artifacts/Shop/host-capability.json.
 
 import fs from 'node:fs';
+import os from 'node:os';
 import path from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 
@@ -46,13 +47,30 @@ export function detectHost(options = {}) {
 // cloud Specialist needs, so we accept any of a small known set plus a
 // blanket SHOP_CLOUD_AVAILABLE=1 override for sessions where Loudon has
 // confirmed the cloud half is live.
-function cloudKeyAvailable(specialist) {
+//
+// 'FLUX (Hugging Face)' also accepts the cached huggingface token at
+// ~/.cache/huggingface/token — the path `huggingface-cli login` writes to.
+// The file check is host-gated: only consulted when the dispatching host is
+// 'mac' (the file lives on Loudon's local machine). When simulating
+// `host: 'sandbox'` the file lookup is skipped — otherwise running the
+// sandbox-simulation tests on the real Mac would falsely report reachable.
+function cloudKeyAvailable(specialist, host) {
   if (process.env.SHOP_CLOUD_AVAILABLE === '1') return true;
-  const known = {
-    Midjourney: ['MIDJOURNEY_TOKEN', 'MIDJOURNEY_API_KEY', 'MIDJOURNEY_SESSION'],
+  const knownEnv = {
+    'Midjourney':          ['MIDJOURNEY_TOKEN', 'MIDJOURNEY_API_KEY', 'MIDJOURNEY_SESSION'],
+    'FLUX (Hugging Face)': ['HF_TOKEN', 'HUGGINGFACE_TOKEN', 'HUGGING_FACE_HUB_TOKEN'],
   };
-  const envs = known[specialist] ?? [];
-  return envs.some((k) => process.env[k] && process.env[k].length > 0);
+  const envs = knownEnv[specialist] ?? [];
+  if (envs.some((k) => process.env[k] && process.env[k].length > 0)) return true;
+  // File-based fallback for HF, mac only.
+  if (specialist === 'FLUX (Hugging Face)' && host === 'mac') {
+    const tokenFile = path.join(os.homedir(), '.cache', 'huggingface', 'token');
+    try {
+      const stat = fs.statSync(tokenFile);
+      if (stat.isFile() && stat.size > 0) return true;
+    } catch { /* not present — fall through */ }
+  }
+  return false;
 }
 
 export function check(specialist, options = {}) {
@@ -71,7 +89,7 @@ export function check(specialist, options = {}) {
   }
   const hosts = spec.hosts ?? [];
   const localReachable = hosts.includes(host);
-  const cloudReachable = hosts.includes('cloud') && cloudKeyAvailable(specialist);
+  const cloudReachable = hosts.includes('cloud') && cloudKeyAvailable(specialist, host);
   if (localReachable || cloudReachable) {
     return {
       reachable: true,
@@ -84,7 +102,7 @@ export function check(specialist, options = {}) {
     };
   }
   // Not reachable. Surface the fallback so the Maker can substitute or stop.
-  const reason = hosts.includes('cloud') && !cloudKeyAvailable(specialist)
+  const reason = hosts.includes('cloud') && !cloudKeyAvailable(specialist, host)
     ? `cloud-only Specialist; no credential present (set SHOP_CLOUD_AVAILABLE=1 or a known env var to confirm)`
     : `not reachable from host '${host}' (allowed hosts: ${hosts.join(', ') || 'none'})`;
   return {

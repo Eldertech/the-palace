@@ -5,7 +5,10 @@ pillars:
   - philosophy
   - tools
   - practice
+  - creation
 born: 2026-03
+last_activated: 2026-06-05
+confidence: hypothesis
 stage: growing
 links:
   - target: "[[Deposit Ceremony]]"
@@ -25,10 +28,19 @@ links:
     label: is-the-physics-of
   - target: "[[Hilaritas Generator]]"
     type: connects-to
-    label: shares-a-mechanism-with
+    label: perception-over-distortion
   - target: "[[Progressive Staging]]"
     type: mirrors
     label: distillation-across-stages
+  - target: "[[Endosymbiosis]]"
+    type: mirrors
+    label: cooperative-compression
+  - target: "[[FOUR PILLARS]]"
+    type: connects-to
+    label: structures-pedagogy
+  - target: "[[Pages as Agents]]"
+    type: mirrors
+    label: latent-encoding-as-mechanism
 forward_vector: "I remind that an entry is not a faithful transcript of a conversation but instead is a generative latent-variable encoding of the principle that a conversation revealed."
 ---
 

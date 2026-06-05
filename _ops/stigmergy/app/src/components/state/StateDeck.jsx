@@ -2,9 +2,10 @@ import React, { useEffect, useMemo, useState } from 'react';
 import EntryList from './EntryList.jsx';
 import EntryReader from './EntryReader.jsx';
 import EntryEditor from './EntryEditor.jsx';
+import TopologyLens from './TopologyLens.jsx';
 import { fetchEntries } from '../../adapters/entries.js';
 import { buildIndex } from '../../lib/wikilink.js';
-import { useEntryNavigation } from '../../lib/url-nav.js';
+import { useEntryNavigation, useLensNavigation } from '../../lib/url-nav.js';
 import { Banner } from '../primitives.jsx';
 
 // STATE deck shell. Holds the entries index, and toggles between the
@@ -18,6 +19,11 @@ import { Banner } from '../primitives.jsx';
 
 export default function StateDeck() {
   const [state, setState] = useState({ kind: 'loading' });
+  // STATE has two lenses: PULSE (the ranked list, default) and TOPOLOGY
+  // (the typed-link graph). Lens choice is URL-driven (?lens=topology), so
+  // deep-links land on the right lens and browser back/forward traverses
+  // lens switches. PULSE is the implicit default and is omitted from URLs.
+  const { lens, setLens } = useLensNavigation();
   // URL drives which entry is open and whether the editor is showing.
   // Browser back/forward traverses the visit sequence for free; deep-linked
   // ?entry=<path> URLs open straight to that entry.
@@ -78,17 +84,70 @@ export default function StateDeck() {
           </Banner>
           <div style={{ color: 'var(--phosphor-dim)', textShadow: 'none', marginBottom: 12 }}>
             {state.kind === 'ok'
-              ? `${state.count} entries indexed. pulse-sorted, most alive first.`
+              ? lens === 'pulse'
+                ? `${state.count} entries indexed. click a column to sort.`
+                : `typed-link graph of the freshest palace map. click a node to open it.`
               : 'walking the palace...'}
           </div>
-          <EntryList
-            entries={state.kind === 'ok' ? state.entries : []}
-            loadState={state.kind === 'ok' ? 'ok' : 'loading'}
-            error={null}
-            onSelect={nav.openEntry}
-          />
+          <LensToggle lens={lens} onChange={setLens} />
+          {lens === 'topology' ? (
+            <TopologyLens
+              onSelect={nav.openEntry}
+              entries={state.kind === 'ok' ? state.entries : []}
+            />
+          ) : (
+            <EntryList
+              entries={state.kind === 'ok' ? state.entries : []}
+              loadState={state.kind === 'ok' ? 'ok' : 'loading'}
+              error={null}
+              onSelect={nav.openEntry}
+            />
+          )}
         </>
       )}
+    </div>
+  );
+}
+
+function LensToggle({ lens, onChange }) {
+  const tabs = [
+    { id: 'pulse', label: 'PULSE', sub: 'vitality lens' },
+    { id: 'topology', label: 'TOPOLOGY', sub: 'typed-link graph' },
+  ];
+  return (
+    <div data-testid="state-lens-toggle" style={{
+      display: 'flex', gap: 16, marginBottom: 10,
+      borderBottom: '1px solid var(--phosphor-dim)', paddingBottom: 6,
+    }}>
+      {tabs.map((t) => {
+        const active = t.id === lens;
+        return (
+          <span
+            key={t.id}
+            data-testid={`state-lens-${t.id}`}
+            data-active={active ? '1' : '0'}
+            role="button"
+            tabIndex={0}
+            onClick={() => onChange(t.id)}
+            onKeyDown={(e) => {
+              if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); onChange(t.id); }
+            }}
+            style={{
+              cursor: 'pointer', userSelect: 'none',
+              fontSize: 12, letterSpacing: '.08em',
+              color: active ? 'var(--phosphor)' : 'var(--phosphor-dim)',
+              textShadow: active ? 'var(--glow)' : 'none',
+              borderBottom: active ? '2px solid var(--phosphor)' : '2px solid transparent',
+              paddingBottom: 2,
+            }}
+          >
+            [{t.id === 'pulse' ? 'P' : 'T'}] {t.label}
+            <span style={{ marginLeft: 6, color: 'var(--phosphor-dim)', textShadow: 'none', fontSize: 10 }}>
+              -- {t.sub}
+            </span>
+          </span>
+        );
+      })}
     </div>
   );
 }

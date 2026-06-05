@@ -73,10 +73,10 @@ Use only these relationship types in YAML frontmatter links:
 
 - `connects-to` — general association (default, weakest)
 - `mirrors` — deep structural identity across different domains
-- `enables` — understanding X is needed for Y
-- `deepens` — more nuanced version of another idea
-- `spawned` — one idea gave birth to another
-- `emerged-from` — historical origin
+- `enables` — A is a precondition or generative force for B (directed A→B)
+- `deepens` — A is a more developed articulation of the more-foundational B (directed A→B; source elaborates, target is the ground)
+- `spawned` — A directly produced B as output (directed A→B; origin → product)
+- `emerged-from` — A crystallized from its origin B (directed A→B; source is the result, target is the origin)
 - `contradicts` — productive tension
 - `couples-with` — ideas that oscillate together
 - `exemplifies` — A is a concrete instance of the more general B (directed A→B)
@@ -179,6 +179,34 @@ The locked grammar (Anton display, Cormorant body, Manrope UI, JetBrains Mono me
 **Skin selection (provisional rubric):** Graphite for default / workshop / dim-light artifacts; Amber Lab for philosophical / long-form / quote-driven pieces; CRT for DSP / first-principles / oscilloscope-thinking; Strobe for performance / dance / live; Cobalt Grid for mathematics / blueprint / formal theory; Drafting for build instructions / schematics / signal flow. When in doubt: Graphite.
 
 **Adoption is a typed-link event.** When an artifact adopts the system, link it back to [[Loudon Live Design System]] with `connects-to` and a label naming the surface (e.g. `learning-poster`, `session-artifact`, `slide-deck`). When an artifact deliberately overrides, link to whichever system it chose instead with a label naming the reason.
+
+## Closing Punchlist Scaffold
+
+Generic close-of-session checklist that any palace AI can adopt and parameterize per role (Specialist, ceremony, steward). Adapted from [[Closing Well]]; this is the scaffold, not the per-role version.
+
+```
+[ ] Verify the deliverable to best ability — the specific check is role-defined
+    (a Specialist auditions its output; a ceremony verifies its postcondition; a
+    steward confirms the next steward can pick up cold).
+
+[ ] Dual-channel check — audio AND silent moving image; voice AND artifact; prose
+    AND YAML. If the work has two channels, both should land. Note any channel
+    that didn't.
+
+[ ] Punchlist of known gotchas — surface what the role learned this session that
+    the next invocation would benefit from. One line each. These accrete into
+    the role's body over time, not into a separate log.
+
+[ ] Forward vector check — is the role's stated vector still accurate? If this
+    session revealed drift, propose the tweak inline.
+
+[ ] Handback line — one sentence naming what the next invocation should start
+    with. Not a summary of what was done; a pointer to what comes next.
+```
+
+Specialists fill the bracket with their domain-specific check; ceremonies fill it with their postcondition; stewards fill it with the next-steward's first action. The scaffold is identical; the parameters are role-specific. Add to a role's entry as `## Closing Punchlist` and let it specialize.
+
+When in doubt about whether to ship: a Closing Punchlist that mentions a known gap is better than a session that ships silently. See [[Closing Well]] for the full discipline this scaffold instantiates.
 
 ## What Not To Do
 

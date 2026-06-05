@@ -18,8 +18,6 @@ who_leads: loudon
 links:
   - target: "[[Cooperation Yields Agency]]"
     type: enables
-  - target: "[[Hyperdimensional Prism]]"
-    type: deepens
   - target: "[[Hilaritas Generator]]"
     type: spawned
   - target: "[[Symbiotic Skills]]"

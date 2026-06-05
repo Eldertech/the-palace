@@ -81,6 +81,32 @@ test.describe('STATE deck — PULSE lens (index of real palace entries)', () => 
     const firstText = await rows.first().textContent();
     expect(firstText?.toLowerCase()).toContain('kuramoto');
   });
+
+  test('clicking a column header sorts by that column; clicking again toggles direction', async ({ page }) => {
+    await page.goto('/');
+    await expect(page.getByTestId('pulse-header')).toBeVisible({ timeout: 20_000 });
+
+    // Default: pulse desc.
+    const pulseHeader = page.getByTestId('pulse-header-pulse');
+    await expect(pulseHeader).toHaveAttribute('data-active', '1');
+    await expect(pulseHeader).toHaveAttribute('data-dir', 'desc');
+
+    // Click title → title asc (its natural default).
+    await page.getByTestId('pulse-header-title').click();
+    await expect(page.getByTestId('pulse-header-title')).toHaveAttribute('data-active', '1');
+    await expect(page.getByTestId('pulse-header-title')).toHaveAttribute('data-dir', 'asc');
+    await expect(page.getByTestId('pulse-header-pulse')).toHaveAttribute('data-active', '0');
+
+    // Click title again → toggle to desc.
+    await page.getByTestId('pulse-header-title').click();
+    await expect(page.getByTestId('pulse-header-title')).toHaveAttribute('data-dir', 'desc');
+
+    // Click activity → activity desc (its natural default).
+    await page.getByTestId('pulse-header-activity').click();
+    await expect(page.getByTestId('pulse-header-activity')).toHaveAttribute('data-active', '1');
+    await expect(page.getByTestId('pulse-header-activity')).toHaveAttribute('data-dir', 'desc');
+    await expect(page.getByTestId('pulse-header-title')).toHaveAttribute('data-active', '0');
+  });
 });
 
 test.describe('STATE deck — entry reader (Kuramoto Coupling, the bundle + media test case)', () => {

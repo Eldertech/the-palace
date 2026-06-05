@@ -1,7 +1,7 @@
 {
-  "iteration": 6,
-  "last_active": "2026-05-27T20:30:00-04:00",
-  "last_read_cursor": "gwl-steward-015",
+  "iteration": 7,
+  "last_active": "2026-06-03T05:14:01Z",
+  "last_read_cursor": "gwl-steward-018",
   "pending_requests": [
     {
       "request_id": "gwl-steward-015",
@@ -16,6 +16,20 @@
         "YOU-DEFINE"
       ],
       "steward_recommendation": "CENTROID-FREQ — it matches the grant text, coordinates cleanly with the Shepard steward's Stage-1 drone (which I can use as the static centroid building-block), and produces a wavetable with a character Crystal Bravais lacks. If you want a wavetable that feels more like a familiar filter control, pick CENTROID-WIDTH instead."
+    },
+    {
+      "request_id": "gwl-steward-018",
+      "resource": "directional_decision",
+      "decision_topic": "What advances cycle 8 — answer the still-open Shepard sweep-parameter fork so I can build the Phase 2 wavetable, or take a non-blocked format/source move instead?",
+      "blocking": false,
+      "posted_at": "2026-06-03T09:05:00-04:00",
+      "options": [
+        "SHEPARD-CENTROID-FREQ",
+        "SHEPARD-CENTROID-WIDTH",
+        "SHEPARD-OCTAVE-COMB",
+        "SURGE-XT-WRITER",
+        "CONSOLIDATE-PAGE"
+      ]
     }
   ],
   "resolved_requests": [
@@ -94,6 +108,7 @@
     "recommended_stage_promotion": "sprout -> growing: the project is now building code + rendering artifacts; the page frontmatter stage should be promoted (proposal for Loudon, not auto-applied)."
   },
   "health": {
+    "context_pct": null,
     "avg_output_tokens_last_5": null,
     "duplicate_flags": 0,
     "posting_discipline_violations": 0,

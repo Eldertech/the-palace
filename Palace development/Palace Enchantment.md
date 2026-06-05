@@ -49,9 +49,6 @@ links:
     label: active-coordinator
   - target: "[[Trickster]]"
     type: connects-to
-  - target: "[[Palace Map]]"
-    type: enables
-    label: map-injection
   - target: "[[Action Potential Oscillator]]"
     type: connects-to
   - target: "[[Palace Conatus]]"

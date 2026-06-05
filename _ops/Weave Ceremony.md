@@ -3,8 +3,8 @@ title: "Weave Ceremony"
 type: practice
 pillars: [practice, tools, philosophy]
 born: 2026-03
-last_activated: 2026-04-27
-activation_count: 3
+last_activated: 2026-06-05
+activation_count: 5
 stage: mature
 links:
   - target: "[[Palace Ceremonies]]"
@@ -40,7 +40,7 @@ The Weave now runs as a **Swarm Weave** — parallel workers auditing individual
 
 The single-agent protocol below remains valid for: palaces under ~20 entries, quick topological spot-checks, or situations where Claude Code sub-agent orchestration is unavailable. For the current palace (100+ entries), execute as a Swarm Weave.
 
-**Standard opening step:** Before dispatching workers, run a [[Map Build Ceremony]] (`"Let's build the map"`) to produce a fresh `palace-map-full-[date].json`. Workers use this map for neighbor resolution; the coordinator uses it for topology reporting. A Weave run without a fresh map is operating on stale topology.
+**Standard opening steps:** Before dispatching workers, do two things in order. **First, load the foundation** (Protocol Step 0) — the Weave writes typed links and may promote or create entries, all of which [[SCHEMA]] governs; a Weave run without §4 in context is operating blind to the rules it is about to apply. **Second, run a [[Map Build Ceremony]]** (`"Let's build the map"`) to produce a fresh `palace-map-full-[date].json`. Workers use this map for neighbor resolution; the coordinator uses it for topology reporting. A Weave run without a fresh map is operating on stale topology.
 
 ## Ceremony Contract
 
@@ -51,24 +51,40 @@ The single-agent protocol below remains valid for: palaces under ~20 entries, qu
 **Preconditions:**
 1. Palace has at least 5 entries (fewer and the topology report has nothing to say)
 2. Full filesystem read access is available
+3. The foundation is loaded this session — [[SCHEMA]] (especially §4 typed-link ontology and directionality) has been read **before any link is written**. The Weave creates typed links and may promote or create entries; both are schema-governed. See Protocol Step 0.
 
 **Postconditions:**
 1. A topology report has been produced covering: total entry count, hub nodes, orphan entries, most-connected nodes, cross-pillar bridges, dormant entries, stale metadata
 2a. An **unsung paths** audit has been completed: all plain-text body references to known entry titles have been surfaced and formalized as YAML frontmatter links. Any that should NOT be formalized have been flagged with a one-line reason. Unsung paths are mandatory — the prose already asserts the connection; the YAML is simply catching up.
+2b. The **`weave_flag` inbox** has been read from the persistent board, and every open flag has either been acted on by the Weave or had an explicit decision recorded in the commit body.
+2c. A **substrate sweep** has been completed: uncommitted edits, stashes, dangling commits, unmerged branches, and recent rewrites have been triaged per finding (recover / discard / leave). Recoveries are additive only; discards are recorded so the LOG stays honest.
+2d. The **link-direction linter** (`_ops/swarm/lint-link-directions.py`) has been run against a freshly rebuilt map. It reports **no link-direction errors introduced by this Weave** — E1 reciprocal contradictions for asymmetric types, E2 hubs emitting `member-of`. Pre-existing errors the Weave chose not to resolve are listed in the commit body with a one-line reason; a silent red linter violates the LOG. This is the checkable directional postcondition that the 2026-06-05 schema-compliance miss showed the Weave needed.
 3. **New introductions** have been proposed — new typed links between entries that do not yet mention each other in prose. No more than 5 per Weave. These are genuine growth events and deserve deliberate curation.
 4. **Vector tuning has been invited** for entries whose `forward_vector` has visibly drifted from the entry's current content, connections, or pace. Forward vectors are meant to evolve; the Weave is a natural occasion to surface drift and propose tweaks or full overhauls.
 5. Any confirmed metadata updates have been written to entry files
-6. Git commit made: `Weave — [date] — [N links added, N entries promoted, N orphans flagged, N vectors tuned]`
+6. Git commit made: `Weave — [date] — [N links added, N entries promoted, N orphans flagged, N vectors tuned, N flags closed, N orphans recovered/discarded]`
 
 **Failure mode:** If the palace is only partially readable (some files inaccessible), produce a partial topology report and note which entries were unreachable. A partial Weave is valid. Do not commit until all accessible files have been processed.
 
-**Git commit:** `Weave — [date] — [N links added, N entries promoted, N orphans flagged, N vectors tuned]`
+**Git commit:** `Weave — [date] — [N links added, N entries promoted, N orphans flagged, N vectors tuned, N flags closed, N orphans recovered/discarded]`
 
 ---
 
 ## Protocol
 
-**Step 0: Orientation check**
+**Step 0 — Load the foundation**
+
+Before anything else — before the map build, before dispatching a single worker — read the foundational set into context if it is not already there this session: [[CLAUDE]], [[SCHEMA]], [[FOUR PILLARS]], [[ROSETTA]], [[SUBSTRATE]], [[README - The Palace Guide]], [[JEWEL]]. The Weave is a *write* ceremony: it formalizes typed links, proposes stage transitions, and may spawn hub entries. Every one of those is governed by SCHEMA. "Read before touching" is inviolable; a Weave that proposes links before SCHEMA §4 is in context is touching before reading.
+
+Pay particular attention to **§4 typed-link directionality**, the most error-prone surface, and carry it into worker dispatch and synthesis. Swarm workers (especially Haiku) routinely propose a directed `type` whose `label` actually describes the *reverse* relationship — audit every directed link against §4 before formalizing. Known traps, learned the hard way:
+
+- **`member-of`** is directed **member → collection**, with *no forced reciprocal on the hub side* (the Map computes the hub's inbound degree). A hub **never emits `member-of` at its own members** — the members declare membership pointing in. Putting `member-of` on the hub is inverted and forbidden.
+- **`exemplifies`** is directed **instance → general** (an entry → [[FOUR PILLARS]]; a person → a registry). A general principle must never `exemplifies` a specific instance.
+- **`deepens`** and **`emerged-from`** point from the derived thing *back to its ground* (canonized in the v1.9 Schema Ceremony, 2026-06-05): `A deepens B` means A elaborates the more-foundational B; `A emerged-from B` means A grew from the origin B. Foundational primitives (Spinoza Conatus, FOUR PILLARS, Wallpaper Groups) are *targets*, not sources, of these links. If you find a foundational entry *emitting* `deepens`/`emerged-from` at a derivative, the arrow is backwards. When a directed type is still contestable, fall back to **`connects-to` + label** — SCHEMA §4 sanctions this as the tool for "a real relationship named by its label." Do not guess a directed type.
+
+Read each proposed link aloud as `home → type → target` and check the arrow points the right way before writing it.
+
+**Step 0b — Orientation check**
 
 Before reading palace entries, do a quick scan for recently deposited entries that haven't yet been woven in:
 - Any `.md` files in the palace root with `stage: seed` and no inbound links from other entries are likely recent deposits waiting for their first Weave
@@ -104,6 +120,12 @@ Collect all unsung paths and add them to the Topology Report. They are resolved 
 
 The Weave always runs with full filesystem access. No GitHub URL fallback.
 
+**Step 1c: Read the `weave_flag` inbox**
+
+Read `_ops/swarm/persistent/blackboard.jsonl` and filter for unresolved `weave_flag` BROADCASTs on the `WEAVE` board (the channel established by [[STIGMERGY — Weave Flag Item Type Build Plan]]). Each flag carries `flag_type`, `source_entries`, `target_entry`, `proposed_action`, `rationale`, and `source_deposit_id`. Pass each flag to the worker assigned to `source_entries[0]` as a directed prompt — *"a deposit asked you to do X — confirm, refuse, or refine."* These are the Weave's first-class inputs, not free-form discoveries; the work of seeing the connection has already happened in the deposit, and the YAML/topology just hasn't caught up.
+
+A flag is resolved either by the Weave taking the proposed action (the commit touches an entry in `source_entries` — the existing entry-touch auto-close in `queue-model.js` retires the card) or by an explicit decision recorded in the Weave's commit body (`Declined flag msg-<id>: <reason>` — acknowledging keeps the LOG honest).
+
 **Step 2: Produce the topology report**
 
 Report on:
@@ -116,6 +138,26 @@ Report on:
 - **Dormant entries** — `stage: dormant`. Have conditions changed? Any ready for revival?
 - **Stale metadata** — entries missing `last_activated`, `activation_count`, or with stage that seems wrong given content.
 - **Composting candidates** — entries at `stage: composting` from a prior Weave. Confirm deletion or revive.
+
+**Step 2.5: Substrate sweep**
+
+The Weave is the palace's full-body exam, and git is where work either lives or is lost. Before proposing changes to the graph, audit the substrate that records them. A 30-second pre-flight scan, five commands, one report block:
+
+```bash
+git status --porcelain                            # uncommitted edits
+git stash list --date=iso                         # stashes, oldest first
+git fsck --no-reflogs --unreachable --lost-found  # dangling commits / blobs
+git branch -a --no-merged main                    # unmerged branches
+git reflog --date=iso | grep -E 'reset|amend'     # recent rewrites
+```
+
+Present every finding as one row in a table with a proposed disposition. Loudon confirms one of three:
+
+- **recover** — the work has unique value. Always *additive*: cherry-pick a dangling commit into a fresh recovery branch, write its tree to `_ops/lost-and-found/<sha>/` for review, or rebase a stash onto current HEAD. Never `git reset` away from current state to recover.
+- **discard** — the work is captured elsewhere or superseded. Record the disposition in the Weave's commit body (`Discarded stash@{N} — superseded by <sha>` / `Deleted branch parked/foo — merged in <sha>`). Acknowledging the loss is what keeps the LOG honest.
+- **leave** — active in-progress work, or branches still being iterated. Note in the report, no action.
+
+The sweep is read-only until Loudon has triaged. Repairs land as part of the Weave's commit (or in their own commit if the recovery is substantial enough to deserve its own LOG card). If the working tree was dirty when the Weave started, the dirty paths are surfaced here — not silently included in the Weave commit.
 
 **Step 3a: Formalize unsung paths**
 
@@ -185,9 +227,27 @@ Apply confirmed vector edits to entry frontmatter.
 
 Flag any ideas currently living only in conversations or in the Palace To-Do that should be deposited. Add them to Palace To-Do if not already there.
 
+**Step 6.5: Lint link directions**
+
+After all confirmed edits are written, rebuild the map and run the link-direction linter:
+
+```bash
+python3 _ops/swarm/build-map-<date>.py
+python3 _ops/swarm/lint-link-directions.py
+```
+
+The linter is the Weave's mechanical check on §4 directionality — it catches what a hand audit of dozens of worker-proposed links misses. It reports:
+- **E1** — reciprocal contradiction (an asymmetric type used both ways between a pair). Always a bug.
+- **E2** — a `hub` entry emitting `member-of`. Always a bug (members declare membership; the hub never does).
+- **W1 / W2** — heuristic reviews (a ground emitting a lineage link; `member-of`/`exemplifies` toward a less-central target). Not all are bugs — `deepens`-chains legitimately trip W1.
+
+Resolve every error this Weave introduced. Any pre-existing error left standing is named in the commit body with a one-line reason. Do not commit a Weave that *added* a directional error.
+
 **Step 7: Commit**
 
-After all confirmed changes are written: `Weave — [date] — [N links added, N entries promoted, N orphans flagged]`
+After all confirmed changes are written: `Weave — [date] — [N links added, N entries promoted, N orphans flagged, N vectors tuned, N flags closed, N orphans recovered/discarded]`
+
+The commit body lists every substrate disposition (one line each) and every declined `weave_flag` with a one-line reason. The LOG is the record; silent discards violate it.
 
 ## The Topology Report Format
 
@@ -195,6 +255,17 @@ After all confirmed changes are written: `Weave — [date] — [N links added, N
 ## Weave Report — [YYYY-MM-DD]
 
 **Palace state:** [N] entries | [N] typed links | [N] orphans
+
+**Inbox — `weave_flag` pending:** [N]
+1. [flag_type] from [source_deposit_id] → [[source_entry]] (target: [[target_entry]]) — [proposed_action]
+
+**Substrate sweep:**
+- Uncommitted: [list of paths, or "clean"]
+- Stashes: [count, oldest age]
+- Dangling commits: [count, with one-line subject of each, or "none"]
+- Unmerged branches: [count, names]
+- Recent rewrites (reflog): [count in last N days]
+- Dispositions: [N recover · N discard · N leave]
 
 **Hubs:** [list entries with ≥5 links and their counts]
 

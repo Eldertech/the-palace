@@ -1,9 +1,10 @@
 ---
 title: "Neural Granular Synthesis"
-type: concept
+type: project
 pillars: [creation, tools, philosophy, practice]
 born: 2026-02
 stage: growing
+status: active
 forward_vector: "I want to become the architecture where stable timbres emerge from populations rather than individual grains — a shader-parallel neuron model where statistical emergence and biological constraint meet, making the crowd's coherence the primary control surface."
 links:
   - target: "[[Kuramoto Coupling]]"

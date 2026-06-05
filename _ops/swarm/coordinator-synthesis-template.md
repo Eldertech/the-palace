@@ -1,3 +1,21 @@
+---
+title: Coordinator Synthesis Template
+type: meta
+pillars:
+  - tools
+  - practice
+born: 2026-04
+stage: growing
+links:
+  - target: "[[Swarm Weave]]"
+    type: connects-to
+    label: synthesis-protocol
+  - target: "[[Weave Ceremony]]"
+    type: connects-to
+    label: coordinator-phase
+forward_vector: "I am the template a coordinator (human or agent) follows after dispatching workers and collecting their JSON audit reports. I keep the synthesis protocol consistent across Weave cycles; when the protocol evolves, I update."
+---
+
 # Coordinator Synthesis Template
 
 > After dispatching workers and collecting their JSON audit reports, the coordinator (human or agent) uses this template to synthesize findings.

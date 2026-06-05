@@ -27,7 +27,7 @@ links:
     label: inbox-surface
   - target: "[[Palace To-Do]]"
     type: connects-to
-  - target: "[[Substrate]]"
+  - target: "[[SUBSTRATE]]"
     type: deepens
     label: technical-substrate
   - target: "[[Progressive Staging]]"

@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portamento Paired Exercises — A vs B Discrimination</title>
+<style>
+    body {
+        margin: 0;
+        padding: 20px;
+        font-family: 'Courier New', monospace;
+        background: #0a0a0a;
+        color: #00ff00;
+        min-height: 100vh;
+    }
+    h1 {
+        margin: 0 0 8px 0;
+        font-size: 24px;
+        text-align: center;
+        color: #00ff00;
+        text-shadow: 0 0 10px #00ff00;
+    }
+    .subtitle {
+        text-align: center;
+        color: #00aa00;
+        font-size: 13px;
+        margin-bottom: 24px;
+        line-height: 1.5;
+    }
+    .container {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+        max-width: 1280px;
+        margin: 0 auto;
+    }
+    .panel {
+        background: #1a1a1a;
+        border: 2px solid #00ff00;
+        border-radius: 8px;
+        padding: 20px;
+    }
+    .panel h2 {
+        margin: 0 0 14px 0;
+        font-size: 16px;
+        border-bottom: 1px solid #00ff00;
+        padding-bottom: 6px;
+    }
+    .progress { font-size: 14px; margin-bottom: 12px; color: #00aa00; }
+    .progress-bar {
+        height: 8px; background: #0a0a0a; border: 1px solid #00ff00;
+        border-radius: 4px; overflow: hidden; margin-bottom: 16px;
+    }
+    .progress-fill { height: 100%; background: #00ff00; width: 0%; transition: width 0.3s; }
+    button {
+        background: #1a1a1a; color: #00ff00; border: 2px solid #00ff00;
+        padding: 12px 16px; cursor: pointer; font-family: 'Courier New', monospace;
+        font-size: 14px; font-weight: bold; border-radius: 4px; transition: all 0.1s;
+    }
+    button:hover:not(:disabled) { background: #00ff00; color: #0a0a0a; box-shadow: 0 0 12px #00ff00; }
+    button:disabled { opacity: 0.4; cursor: not-allowed; }
+    .prompt-box {
+        background: #002a00; border: 1px solid #00ff00; border-radius: 4px;
+        padding: 14px; margin-bottom: 18px; font-size: 14px; line-height: 1.5; color: #aaffaa;
+    }
+    .prompt-box .qtype {
+        font-size: 10px; text-transform: uppercase; letter-spacing: 1px;
+        color: #00aa00; margin-bottom: 6px;
+    }
+    .ab-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 18px; }
+    .ab-cell { background: #0a0a0a; border: 1px solid #006600; border-radius: 6px; padding: 14px; text-align: center; }
+    .ab-cell .ab-tag { font-size: 20px; font-weight: bold; color: #00ff00; margin-bottom: 8px; }
+    .ab-cell button { width: 100%; }
+    .label {
+        font-size: 11px; color: #00aa00; margin: 14px 0 6px 0;
+        text-transform: uppercase; letter-spacing: 0.5px;
+    }
+    .answer-buttons { display: grid; grid-template-columns: 1fr; gap: 8px; margin-bottom: 8px; }
+    .answer-buttons button { text-align: left; }
+    .answer-buttons button.selected { background: #003a00; box-shadow: inset 0 0 12px #00ff00; }
+    textarea {
+        width: 100%; background: #0a0a0a; color: #00ff00; border: 1px solid #00ff00;
+        border-radius: 4px; padding: 10px; font-family: 'Courier New', monospace;
+        font-size: 13px; box-sizing: border-box; resize: vertical; min-height: 64px;
+    }
+    .submit-row { margin-top: 16px; display: flex; gap: 10px; }
+    .submit-row button { flex: 1; padding: 14px; }
+    #submitBtn { background: #003300; border-color: #00ff88; color: #00ff88; }
+    #submitBtn:hover:not(:disabled) { background: #00ff88; color: #0a0a0a; box-shadow: 0 0 16px #00ff88; }
+    .feedback {
+        margin-top: 16px; padding: 14px; border-radius: 4px;
+        font-size: 13px; line-height: 1.55; display: none;
+    }
+    .feedback.correct { background: #002a00; border: 1px solid #00ff00; color: #aaffaa; }
+    .feedback.wrong   { background: #2a0000; border: 1px solid #ff4444; color: #ffaaaa; }
+    .feedback strong { color: #fff; }
+    .feedback .model-answer {
+        margin-top: 10px; padding-top: 10px; border-top: 1px dashed #006600; color: #00cc00;
+    }
+    .spec-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    .spec-wrap {
+        background: #0a0a0a; border: 1px solid #006600; border-radius: 6px; padding: 6px;
+        text-align: center; position: relative; overflow: hidden; min-height: 220px;
+        display: flex; align-items: center; justify-content: center;
+    }
+    .spec-wrap .spec-cap { font-size: 11px; color: #00aa00; margin-bottom: 4px; }
+    .spec-wrap img {
+        max-width: 100%; max-height: 240px; display: block;
+        filter: blur(26px) saturate(1.2); transition: filter 0.4s ease;
+    }
+    .spec-wrap.revealed img { filter: none; }
+    .spec-overlay {
+        position: absolute; background: rgba(10,10,10,0.85); color: #00aa00;
+        font-size: 11px; padding: 8px 10px; border: 1px dashed #00aa00;
+        border-radius: 4px; pointer-events: none;
+    }
+    .spec-wrap.revealed .spec-overlay { display: none; }
+    .stats { margin-top: 18px; display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }
+    .stat { background: #0a0a0a; border: 1px solid #00aa00; border-radius: 4px; padding: 10px; text-align: center; }
+    .stat-label { font-size: 10px; color: #00aa00; margin-bottom: 4px; text-transform: uppercase; }
+    .stat-value { font-size: 22px; font-weight: bold; color: #00ff00; }
+    .summary { margin-top: 20px; font-size: 13px; line-height: 1.6; color: #00cc00; }
+    .footnote { font-size: 11px; color: #006600; margin-top: 24px; text-align: center; line-height: 1.5; }
+</style>
+</head>
+<body>
+
+<h1>PORTAMENTO PAIRED EXERCISES — A vs B</h1>
+<div class="subtitle">
+    Eight curated pairs. You hear two glides back to back and answer a discrimination question —<br>
+    which is which, what physical difference produced it, what regime each belongs to.<br>
+    Single-stimulus naming is the floor; telling two near-neighbors apart is the skill the ear actually needs.
+</div>
+
+<div class="container">
+
+    <div class="panel" id="quizPanel">
+        <h2>Listening Booth</h2>
+        <div class="progress" id="progress">pair 1 of 8</div>
+        <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+
+        <div class="prompt-box">
+            <div class="qtype" id="qType">discrimination</div>
+            <div id="qPrompt">—</div>
+        </div>
+
+        <div class="ab-row">
+            <div class="ab-cell">
+                <div class="ab-tag">A</div>
+                <button id="playA">PLAY A</button>
+            </div>
+            <div class="ab-cell">
+                <div class="ab-tag">B</div>
+                <button id="playB">PLAY B</button>
+            </div>
+        </div>
+
+        <div class="label" id="answerLabel">your answer</div>
+        <div class="answer-buttons" id="answerButtons"></div>
+
+        <div class="label">why? — name the physical difference you hear (one sentence)</div>
+        <textarea id="reason" placeholder="e.g. A overshoots and rings back, B arrives clean — A is the looser, less-damped system..."></textarea>
+
+        <div class="submit-row">
+            <button id="submitBtn" disabled>SUBMIT &amp; REVEAL</button>
+            <button id="nextBtn" disabled>NEXT &raquo;</button>
+        </div>
+
+        <div class="feedback" id="feedback"></div>
+
+        <div class="stats">
+            <div class="stat">
+                <div class="stat-label">pairs heard</div>
+                <div class="stat-value" id="statHeard">0</div>
+            </div>
+            <div class="stat">
+                <div class="stat-label">correct</div>
+                <div class="stat-value" id="statCorrect">0</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="panel">
+        <h2>Spectrograms — A &amp; B side by side</h2>
+        <div class="spec-pair">
+            <div class="spec-wrap" id="specWrapA">
+                <img id="specImgA" src="" alt="spectrogram A">
+                <div class="spec-overlay">A · hidden until submit</div>
+            </div>
+            <div class="spec-wrap" id="specWrapB">
+                <img id="specImgB" src="" alt="spectrogram B">
+                <div class="spec-overlay">B · hidden until submit</div>
+            </div>
+        </div>
+        <div class="summary" id="summary"></div>
+    </div>
+
+</div>
+
+<div class="footnote">
+    Pairs curated from the 12-example curated-ear-set · second-order damped-oscillator pitch model · STFT spectrograms.<br>
+    Reads manifest.json for audio + spectrogram paths; the pair logic lives in this file. Serve over http to allow the fetch.
+</div>
+
+<script>
+const REGIME_LABELS = {
+    overdamped: "OVERDAMPED",
+    critically_damped: "CRITICALLY DAMPED",
+    underdamped: "UNDERDAMPED",
+};
+
+// Eight curated pairs, keyed by manifest idx. Each pair poses ONE discrimination
+// question whose answer is a physical fact, not a label-matching exercise.
+// answer_kind: "which" (A or B) or "regime_same" (same vs different regime).
+const PAIRS = [
+    {
+        a: 6, b: 10,
+        qtype: "same regime? different bodies",
+        prompt: "Both of these are a voice sliding UP onto a note. One singer is trained, one is not. Which one is the UNTRAINED voice?",
+        answer_kind: "which",
+        options: [
+            { id: "A", label: "A is the untrained voice" },
+            { id: "B", label: "B is the untrained voice" },
+        ],
+        correct_is: "untrained",   // resolved at load by checking which idx is the underdamped one
+        model: "The untrained voice overshoots — it lands sharp and settles (underdamped, ζ≈0.3). The trained voice arrives clean with no perceptible overshoot (critically damped, ζ=1). Same gesture, different damping; the overshoot IS the aliveness."
+    },
+    {
+        a: 5, b: 7,
+        qtype: "same regime, different system",
+        prompt: "These two are the SAME damping regime. Both arrive decisively with no ring-back. So what tells them apart? Which one SETTLES FASTER (higher ωₙ — shorter trajectory)?",
+        answer_kind: "which",
+        options: [
+            { id: "A", label: "A reaches its target faster" },
+            { id: "B", label: "B reaches its target faster" },
+        ],
+        correct_is: "higher_wn",
+        model: "Both are critically damped (ζ=1), so neither overshoots — regime alone can't separate them. The kalimba tine (ωₙ=35) snaps to target far faster than the synth glide (ωₙ=20). Same regime, different natural frequency: ζ sets the SHAPE, ωₙ sets the SPEED."
+    },
+    {
+        a: 1, b: 9,
+        qtype: "the two extremes",
+        prompt: "One of these is the most heavily damped glide in the set; the other is the most lightly damped. Which one RINGS — overshoots its target and wobbles back?",
+        answer_kind: "which",
+        options: [
+            { id: "A", label: "A rings / wobbles" },
+            { id: "B", label: "B rings / wobbles" },
+        ],
+        correct_is: "underdamped",
+        model: "The trombone slide (ζ=1.6) is overdamped — it sneaks up on the note and stops dead. The retuned bell (ζ=0.18) is deeply underdamped AND inharmonic — it overshoots BELOW target and rings around it. This is the widest ζ gap in the set: surrender vs. resonance."
+    },
+    {
+        a: 3, b: 11,
+        qtype: "string vs string",
+        prompt: "Both are string instruments. One is a slow bowed cello slide, one is a fast electric-guitar bend. Which one OVERSHOOTS the target?",
+        answer_kind: "which",
+        options: [
+            { id: "A", label: "A overshoots" },
+            { id: "B", label: "B overshoots" },
+        ],
+        correct_is: "underdamped",
+        model: "Same family (strings), opposite regimes. The bowed cello (ζ=1.4) is overdamped — the steady bow stabilizes the trajectory, no overshoot. The fast guitar bend (ζ=0.25) is underdamped — the tension overshoots and the finger relaxes back: that's the 'cry' of an expressive bend."
+    },
+    {
+        a: 9, b: 12,
+        qtype: "both ring — but differently",
+        prompt: "Both of these overshoot and ring (both underdamped). But ONE changes TIMBRE during the slide because its modes settle at different rates. Which one is the multi-modal case?",
+        answer_kind: "which",
+        options: [
+            { id: "A", label: "A — its timbre shifts mid-glide" },
+            { id: "B", label: "B — its timbre shifts mid-glide" },
+        ],
+        correct_is: "prepared_piano",
+        model: "Both ring, so 'underdamped' doesn't separate them. The retuned bell rings around ONE target. The prepared-piano string has an object on it: each mode has its own ζ and ωₙ, so the partials settle at different rates and the TIMBRE drifts during the glide. That timbral evolution is the tell — it's the Kuramoto-coupling perspective made audible."
+    },
+    {
+        a: 2, b: 5,
+        qtype: "lazy vs decisive",
+        prompt: "Both glide UP without ringing. One sneaks up on the note over a long, lazy approach; the other arrives as fast as it can without overshoot. Which is the heavily OVERDAMPED, lazy one?",
+        answer_kind: "which",
+        options: [
+            { id: "A", label: "A is the lazy / overdamped one" },
+            { id: "B", label: "B is the lazy / overdamped one" },
+        ],
+        correct_is: "overdamped",
+        model: "Neither rings, so the ear has to judge APPROACH, not overshoot. The theremin (ζ=1.3) is overdamped — it drifts onto the pitch, languid. The synth glide (ζ=1) is critically damped — fastest possible no-overshoot arrival. The line between overdamped and critically damped is the subtlest call in the set; listen for lingering vs. snap."
+    },
+    {
+        a: 4, b: 8,
+        qtype: "direction is a trap",
+        prompt: "One of these glides UP, the other glides DOWN. Does direction change the REGIME? Pick: are these the SAME regime or DIFFERENT?",
+        answer_kind: "regime_same",
+        options: [
+            { id: "SAME", label: "SAME regime — direction is irrelevant" },
+            { id: "DIFF", label: "DIFFERENT regime" },
+        ],
+        correct_is: "same",
+        model: "They're DIFFERENT regimes here (lap steel ζ=2.0 overdamped vs. guitar release ζ=1.0 critically damped) — but the lesson is that DIRECTION is the trap, not the answer. Up or down doesn't set the regime; ζ does. A downward critically-damped glide is still critically damped. Don't let 'it went down' fool you into hearing a different physical mechanism."
+    },
+    {
+        a: 10, b: 11,
+        qtype: "two voices of overshoot",
+        prompt: "Both overshoot and ring (both underdamped). One is a voice, one is a guitar. Which RINGS LONGER — has the lower damping, so more visible wobble?",
+        answer_kind: "which",
+        options: [
+            { id: "A", label: "A rings longer" },
+            { id: "B", label: "B rings longer" },
+        ],
+        correct_is: "lower_zeta",
+        model: "Both underdamped, so the regime is shared — the question is DEGREE. The guitar bend (ζ=0.25) is less damped than the untrained voice (ζ=0.3), so it overshoots more and rings longer. Small ζ differences are audible as more vs. less 'wobble' — this is the perceptual threshold the home entry's open question #2 asks about."
+    },
+];
+
+let pairs = [];
+let manifestById = {};
+let cursor = 0;
+let picked = null;
+let stats = { heard: 0, correct: 0 };
+let history = [];
+let audio = new Audio();
+
+async function init() {
+    const res = await fetch("manifest.json");
+    const data = await res.json();
+    data.examples.forEach(ex => { manifestById[ex.idx] = ex; });
+    pairs = PAIRS.slice();
+    loadCurrent();
+    document.getElementById("playA").onclick = () => playOne("a");
+    document.getElementById("playB").onclick = () => playOne("b");
+    document.getElementById("submitBtn").onclick = submit;
+    document.getElementById("nextBtn").onclick = next;
+    document.getElementById("reason").oninput = maybeEnableSubmit;
+}
+
+// Resolve which side (A or B) is the correct answer, from the manifest physics.
+function correctSide(pair) {
+    const A = manifestById[pair.a], B = manifestById[pair.b];
+    switch (pair.correct_is) {
+        case "untrained":      return A.regime === "underdamped" ? "A" : "B";
+        case "underdamped":    return A.regime === "underdamped" ? "A" : "B";
+        case "overdamped":     return A.regime === "overdamped" ? "A" : "B";
+        case "higher_wn":      return A.wn_rad_per_s > B.wn_rad_per_s ? "A" : "B";
+        case "lower_zeta":     return A.zeta < B.zeta ? "A" : "B";
+        case "prepared_piano": return /prepared piano/.test(A.physical_system) ? "A" : "B";
+        case "same":           return (A.regime === B.regime) ? "SAME" : "DIFF";
+        default:               return "A";
+    }
+}
+
+function loadCurrent() {
+    if (cursor >= pairs.length) { showFinalSummary(); return; }
+    const p = pairs[cursor];
+    const A = manifestById[p.a], B = manifestById[p.b];
+    document.getElementById("progress").textContent = `pair ${cursor + 1} of ${pairs.length}`;
+    document.getElementById("progressFill").style.width = `${(cursor / pairs.length) * 100}%`;
+    document.getElementById("qType").textContent = p.qtype;
+    document.getElementById("qPrompt").textContent = p.prompt;
+
+    audio.pause();
+    document.getElementById("specImgA").src = A.spectrogram;
+    document.getElementById("specImgB").src = B.spectrogram;
+    document.getElementById("specWrapA").classList.remove("revealed");
+    document.getElementById("specWrapB").classList.remove("revealed");
+
+    const ab = document.getElementById("answerButtons");
+    ab.innerHTML = "";
+    p.options.forEach(opt => {
+        const btn = document.createElement("button");
+        btn.textContent = opt.label;
+        btn.dataset.id = opt.id;
+        btn.onclick = () => {
+            picked = opt.id;
+            [...ab.children].forEach(c => c.classList.remove("selected"));
+            btn.classList.add("selected");
+            maybeEnableSubmit();
+        };
+        ab.appendChild(btn);
+    });
+
+    document.getElementById("answerLabel").textContent =
+        p.answer_kind === "regime_same" ? "same regime, or different?" : "which one?";
+    document.getElementById("reason").value = "";
+    document.getElementById("feedback").style.display = "none";
+    document.getElementById("submitBtn").disabled = true;
+    document.getElementById("nextBtn").disabled = true;
+    picked = null;
+    // a-side/b-side cached on the audio element via dataset
+    audio.dataset.aSrc = A.wav;
+    audio.dataset.bSrc = B.wav;
+}
+
+function playOne(side) {
+    const p = pairs[cursor];
+    const A = manifestById[p.a], B = manifestById[p.b];
+    audio.src = side === "a" ? A.wav : B.wav;
+    audio.currentTime = 0;
+    audio.play().catch(() => {});
+}
+
+function maybeEnableSubmit() {
+    const reasoned = document.getElementById("reason").value.trim().length >= 8;
+    document.getElementById("submitBtn").disabled = !(picked && reasoned);
+}
+
+function submit() {
+    const p = pairs[cursor];
+    const A = manifestById[p.a], B = manifestById[p.b];
+    const correct = correctSide(p);
+    const ok = picked === correct;
+    stats.heard++;
+    if (ok) stats.correct++;
+    document.getElementById("statHeard").textContent = stats.heard;
+    document.getElementById("statCorrect").textContent = stats.correct;
+
+    history.push({ idx: cursor + 1, qtype: p.qtype, picked, correct, ok });
+
+    const fb = document.getElementById("feedback");
+    fb.className = "feedback " + (ok ? "correct" : "wrong");
+    const correctLabel = p.options.find(o => o.id === correct).label;
+    fb.innerHTML = `
+        <div><strong>${ok ? "✓ correct" : "✗ not quite"}</strong> — answer: ${escapeHtml(correctLabel)}</div>
+        <div style="margin-top:8px;color:#00aa00">
+          A = ${escapeHtml(A.name)} (ζ=${A.zeta.toFixed(2)}, ωₙ=${A.wn_rad_per_s.toFixed(1)}, ${REGIME_LABELS[A.regime]})<br>
+          B = ${escapeHtml(B.name)} (ζ=${B.zeta.toFixed(2)}, ωₙ=${B.wn_rad_per_s.toFixed(1)}, ${REGIME_LABELS[B.regime]})
+        </div>
+        <div class="model-answer"><strong>the physical answer:</strong> ${escapeHtml(p.model)}</div>
+    `;
+    fb.style.display = "block";
+
+    document.getElementById("specWrapA").classList.add("revealed");
+    document.getElementById("specWrapB").classList.add("revealed");
+    document.getElementById("submitBtn").disabled = true;
+    document.getElementById("nextBtn").disabled = false;
+}
+
+function next() { cursor++; loadCurrent(); }
+
+function showFinalSummary() {
+    document.getElementById("progress").textContent = `complete · ${pairs.length} of ${pairs.length}`;
+    document.getElementById("progressFill").style.width = "100%";
+    document.getElementById("playA").disabled = true;
+    document.getElementById("playB").disabled = true;
+    document.getElementById("submitBtn").disabled = true;
+    document.getElementById("nextBtn").disabled = true;
+    document.getElementById("feedback").style.display = "none";
+    document.getElementById("summary").innerHTML = `
+        <p><strong>Done.</strong> ${stats.correct}/${pairs.length} discriminations correct.</p>
+        <p>The single-example quiz teaches you to NAME a regime. These pairs teach you to tell
+        near-neighbors apart — same regime / different body, same body / different regime, and the
+        degree-of-damping calls (how much wobble = which ζ). That second skill is what actually
+        survives contact with real music.</p>
+        <p>Re-listen with the spectrograms revealed: the overshoot ripple, the speed difference,
+        and the multi-modal timbral drift should now be visible side by side.</p>
+    `;
+}
+
+function escapeHtml(s) {
+    return String(s).replace(/[&<>"']/g, c => ({
+        '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'
+    }[c]));
+}
+
+init();
+</script>
+</body>
+</html>

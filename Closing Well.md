@@ -25,7 +25,7 @@ links:
   - target: "[[Hilaritas Generator]]"
     type: connects-to
     label: joyful-handoffs
-  - target: "[[Four Pillars]]"
+  - target: "[[FOUR PILLARS]]"
     type: connects-to
     label: practice-pillar-instance
   - target: "[[SUBSTRATE]]"

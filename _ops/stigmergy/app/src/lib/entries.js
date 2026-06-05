@@ -144,6 +144,28 @@ export function listEntries(palaceRoot) {
   return out;
 }
 
+// Walk every knowledge entry yielding { path, title, links, body } — used
+// by /api/unsung-paths to compute body-wikilink-not-in-YAML edges. Same
+// exclusions as listEntries; carries the body so wikilinks can be scanned.
+export function* walkEntryRecords(palaceRoot) {
+  const root = resolve(palaceRoot);
+  for (const rel of walkMarkdownFiles(root)) {
+    const abs = join(root, rel);
+    let text;
+    try { text = readFileSync(abs, 'utf8'); } catch (_) { continue; }
+    const { frontmatter, body } = parseFrontmatter(text);
+    const title = typeof frontmatter.title === 'string' && frontmatter.title.trim() !== ''
+      ? frontmatter.title
+      : basename(rel, '.md');
+    yield {
+      path: rel,
+      title,
+      links: normalizeLinks(frontmatter.links),
+      body: typeof body === 'string' ? body : '',
+    };
+  }
+}
+
 // Resolve a palace-relative entry path and return the full read shape:
 //   { path, title, frontmatter (raw), body, bundle: {dir, files} | null,
 //     summary, links (normalized), error? }

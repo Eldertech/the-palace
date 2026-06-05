@@ -6,6 +6,8 @@ pillars:
   - tools
   - practice
 born: 2026-03
+last_activated: 2026-06-05
+activation_count: 1
 stage: growing
 links:
   - target: "[[SCHEMA]]"

@@ -22,7 +22,7 @@ links:
   - target: "[[Synthesis Topologies]]"
     type: deepens
     label: topology-made-fixed
-  - target: "[[Four Pillars]]"
+  - target: "[[FOUR PILLARS]]"
     type: connects-to
     label: structured-by
   - target: "[[Loudon Live]]"

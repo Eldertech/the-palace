@@ -1,6 +1,6 @@
 ---
 title: Quantum Synthesizer
-type: concept
+type: project
 pillars:
   - creation
   - tools
@@ -9,6 +9,7 @@ born: 2026-01
 last_activated: 2026-01
 activation_count: 0
 stage: growing
+status: active
 forward_vector: "I will keep proving — through audio and video artifacts, not only prose — that the Schrödinger equation IS a synthesis system: testing boundary conditions as harmonic content with actual sound, testing potential shape as anharmonicity with actual visualization, until monism is something the ear has heard rather than something the page has claimed."
 links:
   - target: "[[Bessel Functions in Synthesis]]"

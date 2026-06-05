@@ -16,10 +16,36 @@ import InlineProse from '../../lib/inline-prose.jsx';
 const KIND_LABEL = {
   resource_request: 'RESOURCE REQUEST',
   handoff_ready: 'HANDOFF READY',
+  vector_proposal: 'WEAVE PROPOSAL',
+  weave_flag: 'WEAVE FLAG',
 };
 const KIND_COLOR = {
   resource_request: 'var(--ansi-bright-cyan)',
   handoff_ready: 'var(--warn)',
+  vector_proposal: 'var(--ansi-bright-magenta)',
+  // Weave-flag uses the dim phosphor for the badge frame -- flags are
+  // standing audits, not active proposals; the muted chip keeps them
+  // legible without competing visually with vector_proposal cards.
+  weave_flag: 'var(--phosphor-dim)',
+};
+
+const PROPOSAL_TYPE_LABEL = {
+  promote_unsung: 'promote unsung path',
+  new_typed_link: 'new typed link',
+  label_enrichment: 'label enrichment',
+  stage_transition: 'stage transition',
+  vector_tuning: 'forward-vector tuning',
+};
+
+// flag_type enum is OPEN (Deposit Ceremony authors add new types as needed).
+// The renderer falls back to the raw flag_type string for unknown values.
+const FLAG_TYPE_LABEL = {
+  backlink_audit: 'backlink audit',
+  missing_connection_audit: 'missing-connection audit',
+  section_expansion: 'section expansion',
+  hub_candidate: 'hub candidate',
+  mirror_link_sweep: 'mirror-link sweep',
+  standard_reference: 'standard reference',
 };
 
 export default function QueueItem({ item, onJump, onClear, onRespond }) {
@@ -28,7 +54,9 @@ export default function QueueItem({ item, onJump, onClear, onRespond }) {
   const [showRationale, setShowRationale] = useState(false);
 
   const canRespond = !resolved
-    && item.kind === 'resource_request'
+    && (item.kind === 'resource_request'
+        || item.kind === 'vector_proposal'
+        || item.kind === 'weave_flag')
     && typeof onRespond === 'function';
 
   return (
@@ -108,6 +136,74 @@ export default function QueueItem({ item, onJump, onClear, onRespond }) {
               fontFamily: 'var(--font-mono)',
             }}>
               resource: {item.resourceType}
+            </span>
+          ) : null}
+          <span>{vantage(item)}</span>
+        </div>
+      ) : item.kind === 'vector_proposal' ? (
+        <div style={{
+          display: 'flex', gap: 10, alignItems: 'center', flexWrap: 'wrap',
+          fontSize: 11, color: 'var(--phosphor-dim)', textShadow: 'none',
+          marginBottom: 6,
+        }}>
+          {item.proposal_type ? (
+            <span data-testid="queue-item-proposal-type" style={{
+              border: '1px dotted var(--phosphor-dim)', padding: '0 6px',
+              fontFamily: 'var(--font-mono)',
+            }}>
+              proposal: {PROPOSAL_TYPE_LABEL[item.proposal_type] || item.proposal_type}
+            </span>
+          ) : null}
+          {item.source_entry || item.target_entry ? (
+            <span data-testid="queue-item-proposal-edge" style={{ fontFamily: 'var(--font-mono)' }}>
+              {item.source_entry ? item.source_entry.replace(/\.md$/, '') : '?'}
+              {item.target_entry ? ` --> ${item.target_entry.replace(/\.md$/, '')}` : ''}
+            </span>
+          ) : null}
+          <span>{vantage(item)}</span>
+        </div>
+      ) : item.kind === 'weave_flag' ? (
+        <div style={{
+          display: 'flex', gap: 10, alignItems: 'center', flexWrap: 'wrap',
+          fontSize: 11, color: 'var(--phosphor-dim)', textShadow: 'none',
+          marginBottom: 6,
+        }}>
+          {item.flag_type ? (
+            <span data-testid="queue-item-flag-type" style={{
+              border: '1px dotted var(--phosphor-dim)', padding: '0 6px',
+              fontFamily: 'var(--font-mono)',
+            }}>
+              flag: {FLAG_TYPE_LABEL[item.flag_type] || item.flag_type}
+            </span>
+          ) : null}
+          {item.source_deposit_id ? (
+            <span data-testid="queue-item-flag-deposit" style={{
+              fontFamily: 'var(--font-mono)',
+            }}>
+              deposit: {item.source_deposit_id}
+            </span>
+          ) : null}
+          {Array.isArray(item.source_entries) && item.source_entries.length > 0 ? (
+            <span data-testid="queue-item-flag-sources" style={{ fontFamily: 'var(--font-mono)' }}>
+              {item.source_entries.map((e) => e.replace(/\.md$/, '')).join(', ')}
+              {item.target_entry ? (
+                <>
+                  {' --> '}
+                  <span
+                    data-testid="queue-item-flag-target"
+                    style={{ color: 'var(--ansi-bright-cyan)', textShadow: 'var(--glow)' }}
+                  >
+                    {item.target_entry.replace(/\.md$/, '')}
+                  </span>
+                </>
+              ) : null}
+            </span>
+          ) : item.target_entry ? (
+            <span data-testid="queue-item-flag-target" style={{
+              fontFamily: 'var(--font-mono)',
+              color: 'var(--ansi-bright-cyan)', textShadow: 'var(--glow)',
+            }}>
+              --&gt; {item.target_entry.replace(/\.md$/, '')}
             </span>
           ) : null}
           <span>{vantage(item)}</span>

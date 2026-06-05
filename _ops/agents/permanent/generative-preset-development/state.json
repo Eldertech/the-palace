@@ -1,8 +1,9 @@
 {
-  "iteration": 2,
-  "last_active": "2026-05-27T20:30:00-04:00",
-  "last_read_cursor": "preset-steward-004",
+  "iteration": 3,
+  "last_active": "2026-06-03T05:14:01Z",
+  "last_read_cursor": "preset-steward-007",
   "health": {
+    "context_pct": null,
     "avg_output_tokens_last_5": null,
     "duplicate_flags": 0,
     "posting_discipline_violations": 0,
@@ -27,6 +28,19 @@
         "PERCEPTUAL-BY-EAR",
         "WRITE-PATH-PROOF",
         "SOURCE-SLOT-AUDIT",
+        "YOU-DEFINE"
+      ]
+    },
+    {
+      "request_id": "preset-steward-007",
+      "resource": "sensory_audition_gate",
+      "blocking": true,
+      "posted_at": "2026-06-03T09:02:00-04:00",
+      "options": [
+        "LOADS-AND-DARK--PERCEPTUAL-BY-EAR",
+        "LOADS-AND-DARK--SOURCE-SLOT-AUDIT",
+        "LOADS-BUT-WRONG",
+        "WONT-LOAD",
         "YOU-DEFINE"
       ]
     }

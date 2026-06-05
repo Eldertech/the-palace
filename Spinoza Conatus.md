@@ -13,9 +13,6 @@ hook_quality: 7
 beauty: 10
 who_leads: shared
 links:
-  - target: "[[Cooperation Yields Agency]]"
-    type: deepens
-    label: agency-as-power-increase
   - target: "[[Kuramoto Coupling]]"
     type: mirrors
     label: persistence-through-coupling

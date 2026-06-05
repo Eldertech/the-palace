@@ -1,8 +1,9 @@
 {
-  "iteration": 2,
-  "last_active": "2026-05-27T20:30:00-04:00",
-  "last_read_cursor": "slime-mold-delay-steward-004",
+  "iteration": 3,
+  "last_active": "2026-06-03T05:14:01Z",
+  "last_read_cursor": "slime-mold-delay-steward-007",
   "health": {
+    "context_pct": null,
     "avg_output_tokens_last_5": null,
     "duplicate_flags": 0,
     "posting_discipline_violations": 0,
@@ -26,6 +27,18 @@
         "PLAY-AND-EXTEND",
         "STATIC-PROOF",
         "AUDIO-SKETCH",
+        "YOU-DEFINE"
+      ]
+    },
+    {
+      "request_id": "slime-mold-delay-steward-007",
+      "resource": "directional_decision",
+      "blocking": false,
+      "posted_at": "2026-06-03T16:32:00-04:00",
+      "options": [
+        "PURE-SPECTATOR",
+        "GENTLE-NUDGE",
+        "GRAPH-FIRST-DEFER-CONTROL",
         "YOU-DEFINE"
       ]
     }

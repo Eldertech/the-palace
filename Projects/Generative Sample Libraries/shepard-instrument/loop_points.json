@@ -1,0 +1,98 @@
+{
+  "A": {
+    "len_ms": 381.8,
+    "loop_end": 60938,
+    "loop_start": 44100,
+    "seam_env_db": -0.0,
+    "slope_mismatch": 0.0,
+    "val_jump": 0.00656
+  },
+  "As": {
+    "len_ms": 463.4,
+    "loop_end": 64707,
+    "loop_start": 44273,
+    "seam_env_db": 0.0,
+    "slope_mismatch": 0.0,
+    "val_jump": 0.00073
+  },
+  "B": {
+    "len_ms": 388.8,
+    "loop_end": 61255,
+    "loop_start": 44111,
+    "seam_env_db": -0.001,
+    "slope_mismatch": 3.0517578125e-05,
+    "val_jump": 0.00394
+  },
+  "C": {
+    "len_ms": 397.5,
+    "loop_end": 61693,
+    "loop_start": 44163,
+    "seam_env_db": -0.001,
+    "slope_mismatch": 0.0,
+    "val_jump": 0.01413
+  },
+  "Cs": {
+    "len_ms": 461.8,
+    "loop_end": 64595,
+    "loop_start": 44230,
+    "seam_env_db": 0.0,
+    "slope_mismatch": 0.0,
+    "val_jump": 0.00311
+  },
+  "D": {
+    "len_ms": 463.1,
+    "loop_end": 64573,
+    "loop_start": 44150,
+    "seam_env_db": -0.004,
+    "slope_mismatch": 0.0,
+    "val_jump": 0.01013
+  },
+  "Ds": {
+    "len_ms": 385.7,
+    "loop_end": 61232,
+    "loop_start": 44223,
+    "seam_env_db": -0.002,
+    "slope_mismatch": 0.0,
+    "val_jump": 0.00482
+  },
+  "E": {
+    "len_ms": 449.0,
+    "loop_end": 63950,
+    "loop_start": 44149,
+    "seam_env_db": -0.03,
+    "slope_mismatch": 0.0,
+    "val_jump": 0.00125
+  },
+  "F": {
+    "len_ms": 504.0,
+    "loop_end": 66422,
+    "loop_start": 44197,
+    "seam_env_db": 0.037,
+    "slope_mismatch": 0.0,
+    "val_jump": 0.00024
+  },
+  "Fs": {
+    "len_ms": 356.8,
+    "loop_end": 59834,
+    "loop_start": 44100,
+    "seam_env_db": -0.064,
+    "slope_mismatch": 6.103515625e-05,
+    "val_jump": 0.00034
+  },
+  "G": {
+    "len_ms": 387.8,
+    "loop_end": 61200,
+    "loop_start": 44100,
+    "seam_env_db": -0.003,
+    "slope_mismatch": 0.0,
+    "val_jump": 0.0072
+  },
+  "Gs": {
+    "len_ms": 385.3,
+    "loop_end": 61163,
+    "loop_start": 44173,
+    "seam_env_db": 0.001,
+    "slope_mismatch": 0.0,
+    "val_jump": 0.00235
+  }
+}

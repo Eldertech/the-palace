@@ -1,0 +1,51 @@
+{
+  "agent_id": "Particle Synthesis",
+  "agent_id_rationale": "The page IS the agent. Per Pages-as-Agents and the cycle-1 finding from the GSL Steward pilot (2026-05-03), a permanent agent identity on the BBS is its own page title — not an invented compound handle.",
+  "home": "Particle Synthesis",
+  "session_id": "permanent-stewardship-particle-synthesis-2026-06-05",
+  "mode": "long_duration_background",
+  "neighborhood": [
+    "Granular Synthesis",
+    "Boundary-Crossing Instruments",
+    "Neural Granular Synthesis",
+    "Frequency-Time Duality",
+    "Differential Equations",
+    "Substrate Skill",
+    "Project Stewardship System"
+  ],
+  "model": {
+    "provider": "anthropic",
+    "name": "claude-opus-4-7",
+    "endpoint": "https://api.anthropic.com/v1"
+  },
+  "tool_registry": [
+    "read_palace",
+    "read_manifest",
+    "read_blackboard_session",
+    "read_blackboard_persistent",
+    "write_blackboard"
+  ],
+  "stopping_conditions": {
+    "max_iterations": 1,
+    "stop_on": [
+      "cycle_complete",
+      "blocked_unresolved_10_cycles"
+    ]
+  },
+  "blackboard_session_path": null,
+  "blackboard_persistent_path": "_ops/swarm/persistent/blackboard.jsonl",
+  "partner_id": null,
+  "trickster_mode": "human",
+  "parallel_safe": true,
+  "stewardship": {
+    "stage_at_spawn": "growing",
+    "vector_at_spawn": "I want to move from architectural vision to a first working prototype — a GPU compute shader generating 1000 audio-rate particles with position, velocity, and mass mapped to frequency, amplitude, and filter Q. The prism metaphor is ready; the instrument isn't. My direction is toward the simplest implementation that produces something that sounds like physics, not like parameter modulation — the moment where the grain's spatial trajectory becomes audibly indistinguishable from a physical dispersion event.",
+    "posture_source": "Substrate Skill § Stage as Alignment Confidence",
+    "posture_summary_at_spawn": "growing-stage posture per the steward template — see steward.md and shared.md."
+  },
+  "_spawn_metadata": {
+    "spawned": "2026-06-05",
+    "spawned_by": "palace-orchestrator skill — enchant (one-at-a-time)",
+    "first_activation": null
+  }
+}

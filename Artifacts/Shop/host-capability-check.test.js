@@ -18,7 +18,14 @@ const manifest = loadManifest(MANIFEST);
 
 // Hermetic: stash any cloud env vars set in the live shell so the Midjourney
 // test sees a clean no-key world. Restored at the end of each test.
-const cloudEnv = ['SHOP_CLOUD_AVAILABLE', 'MIDJOURNEY_TOKEN', 'MIDJOURNEY_API_KEY', 'MIDJOURNEY_SESSION'];
+// (The cached HF token at ~/.cache/huggingface/token is a SEPARATE FLUX
+// reachability signal — tests that need a clean FLUX world should also use
+// `host: 'sandbox'` to bypass it, since the file is mac-local.)
+const cloudEnv = [
+  'SHOP_CLOUD_AVAILABLE',
+  'MIDJOURNEY_TOKEN', 'MIDJOURNEY_API_KEY', 'MIDJOURNEY_SESSION',
+  'HF_TOKEN', 'HUGGINGFACE_TOKEN', 'HUGGING_FACE_HUB_TOKEN',
+];
 function withCleanCloud(fn) {
   const saved = Object.fromEntries(cloudEnv.map((k) => [k, process.env[k]]));
   cloudEnv.forEach((k) => { delete process.env[k]; });
@@ -50,19 +57,39 @@ test('p5.js is reachable on both mac and sandbox', () => {
   }
 });
 
-test('Midjourney needs cloud: unreachable from mac with no credential', () => {
+test('Midjourney is deprecated; fallback now points to FLUX (Hugging Face)', () => {
   withCleanCloud(() => {
     const r = check('Midjourney', { host: 'mac', manifest });
+    assert.equal(r.reachable, false);
+    assert.equal(r.fallback, 'FLUX (Hugging Face)');
+    assert.match(r.note, /cloud-only Specialist/);
+  });
+});
+
+test('FLUX (Hugging Face) is unreachable from sandbox with no credential', () => {
+  // Use sandbox host so the mac-local ~/.cache/huggingface/token file
+  // check doesn't accidentally make it reachable in the live shell.
+  withCleanCloud(() => {
+    const r = check('FLUX (Hugging Face)', { host: 'sandbox', manifest });
     assert.equal(r.reachable, false);
     assert.equal(r.fallback, 'ComfyUI');
     assert.match(r.note, /cloud-only Specialist/);
   });
 });
 
-test('Midjourney becomes reachable when SHOP_CLOUD_AVAILABLE=1', () => {
+test('FLUX (Hugging Face) becomes reachable when HF_TOKEN is set', () => {
+  withCleanCloud(() => {
+    process.env.HF_TOKEN = 'hf_dummy_for_test';
+    const r = check('FLUX (Hugging Face)', { host: 'sandbox', manifest });
+    assert.equal(r.reachable, true);
+    assert.equal(r.via, 'cloud');
+  });
+});
+
+test('FLUX (Hugging Face) becomes reachable when SHOP_CLOUD_AVAILABLE=1', () => {
   withCleanCloud(() => {
     process.env.SHOP_CLOUD_AVAILABLE = '1';
-    const r = check('Midjourney', { host: 'mac', manifest });
+    const r = check('FLUX (Hugging Face)', { host: 'sandbox', manifest });
     assert.equal(r.reachable, true);
     assert.equal(r.via, 'cloud');
   });

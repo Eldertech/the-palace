@@ -6,8 +6,8 @@ pillars:
   - creation
   - philosophy
 born: 2025-08
-last_activated: 2026-03
-activation_count: 7
+last_activated: 2026-06-05
+activation_count: 8
 stage: mature
 confidence: demonstrated
 energy: medium
@@ -27,6 +27,12 @@ links:
     type: enables
   - target: "[[Action Potential Oscillator]]"
     type: connects-to
+  - target: "[[2D Torus Wavetable Synthesizer]]"
+    type: connects-to
+    label: instantiated-by-instrument
+  - target: "[[DSP in Looping Dimensions]]"
+    type: mirrors
+    label: dimensional-reframing
 forward_vector: "I want to become the palace's named pattern for apparent discontinuities that dissolve when you find the right coordinate system — with a growing catalogue of specific instances: compression ratio as slope, frequency-time as a single axis, octave equivalence as a circular space. I want to be the first entry a designer reads when a parameter seems to hit a wall, because the wall is usually in the representation, not the phenomenon."
 ---
 

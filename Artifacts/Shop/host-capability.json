@@ -3,7 +3,7 @@
   "host_classes": {
     "mac": "Loudon's machine. Full tier — MPS GPU, Max/MSP, VCV Rack, Chromium, LaTeX. Everything runs.",
     "sandbox": "Cowork Linux arm64, no sudo, no GPU. Web specialists, Matplotlib, Mermaid, ffmpeg, Whisper (CPU).",
-    "cloud": "API-reachable services. Currently Midjourney only."
+    "cloud": "API-reachable services. Currently FLUX (Hugging Face Inference); Midjourney deprecated 2026-05-30 in favour of FLUX."
   },
   "specialists": {
     "Kokoro":              { "medium": "sound",       "requires": ["local-tts-model"],            "hosts": ["mac"],                          "fallback": "loudon-voice-recording", "fallback_note": "Use Loudon's recording when the piece is published as Loudon; otherwise defer to mac." },
@@ -11,8 +11,9 @@
     "Stable Audio Open":   { "medium": "sound",       "requires": ["local-gpu"],                   "hosts": ["mac"],                          "fallback": null,                     "fallback_note": "No substitute. Defer to mac or drop the bed for the tier." },
     "RNBO codebox~ smith": { "medium": "sound",       "requires": ["max-msp"],                     "hosts": ["mac"],                          "fallback": null,                     "fallback_note": "Mac-only by nature; never dispatched off-mac." },
     "VCV Patch Generator": { "medium": "sound",       "requires": ["vcv-rack"],                    "hosts": ["mac"],                          "fallback": null,                     "fallback_note": "PDL→.vcv emission is host-agnostic; the Rack AUDITION is mac-only." },
-    "Midjourney":          { "medium": "image",       "requires": ["cloud-key"],                   "hosts": ["cloud"],                        "fallback": "ComfyUI",                "fallback_note": "Swap to local ComfyUI when control/palette matters more than ceiling." },
-    "ComfyUI":             { "medium": "image",       "requires": ["local-gpu"],                   "hosts": ["mac"],                          "fallback": "Midjourney",             "fallback_note": "Cloud Midjourney for ceiling; Mermaid/Matplotlib when the image is really a diagram/chart." },
+    "Midjourney":          { "medium": "image",       "requires": ["cloud-key"],                   "hosts": ["cloud"],                        "fallback": "FLUX (Hugging Face)",    "fallback_note": "DEPRECATED 2026-05-30 — too expensive; superseded by FLUX (Hugging Face). Kept in manifest as a lineage record; never dispatch.", "status": "deprecated" },
+    "FLUX (Hugging Face)": { "medium": "image",       "requires": ["hf-inference-token"],          "hosts": ["cloud"],                        "fallback": "ComfyUI",                "fallback_note": "Local ComfyUI SDXL when palette/seed/ControlNet matter more than mood fidelity. FLUX-Krea-dev via HF Inference free tier; auth via ~/.cache/huggingface/token or HF_TOKEN env." },
+    "ComfyUI":             { "medium": "image",       "requires": ["local-gpu"],                   "hosts": ["mac"],                          "fallback": "FLUX (Hugging Face)",    "fallback_note": "Cloud FLUX-Krea for atmospheric/mood briefs; Mermaid/Matplotlib when the image is really a diagram/chart." },
     "Matplotlib":          { "medium": "image",       "requires": ["cpu"],                         "hosts": ["mac", "sandbox"],               "fallback": null,                     "fallback_note": "Broadly available; also the Manim static-frame fallback." },
     "Mermaid":             { "medium": "image",       "requires": ["node"],                        "hosts": ["mac", "sandbox"],               "fallback": null,                     "fallback_note": "Text-defined diagrams; broadly available." },
     "Manim CE":            { "medium": "motion",      "requires": ["manimpango", "cairo", "latex"],"hosts": ["mac"],                          "fallback": "Matplotlib",             "fallback_note": "Matplotlib for static math frames; defer motion to mac. manimpango has no aarch64 wheel + needs sudo." },
@@ -21,6 +22,7 @@
     "D3.js":               { "medium": "interactive", "requires": ["browser"],                     "hosts": ["mac", "sandbox"],               "fallback": null,                     "fallback_note": "Host-agnostic." },
     "Observable Plot":     { "medium": "interactive", "requires": ["browser"],                     "hosts": ["mac", "sandbox"],               "fallback": null,                     "fallback_note": "Host-agnostic; load d3 before the Plot UMD bundle." },
     "Tone.js":             { "medium": "interactive", "requires": ["browser"],                     "hosts": ["mac", "sandbox"],               "fallback": null,                     "fallback_note": "Host-agnostic; in-browser audio confirmation is a human step." },
+    "Three.js":            { "medium": "interactive", "requires": ["browser", "webgl-gpu"],         "hosts": ["mac", "sandbox"],               "fallback": null,                     "fallback_note": "Authoring host-agnostic; the deliverable is frame rate, so the GPU-tier check is a HUMAN step on the real deployment target. r128 is the claude.ai-artifact ceiling." },
     "ffmpeg":              { "medium": "plumbing",    "requires": ["ffmpeg-binary"],               "hosts": ["mac", "sandbox"],               "fallback": null,                     "fallback_note": "Connective tissue; broadly available." }
   }
 }

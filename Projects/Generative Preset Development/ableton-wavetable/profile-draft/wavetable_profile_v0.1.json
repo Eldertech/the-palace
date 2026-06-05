@@ -1157,7 +1157,18 @@
       "10_candidate": "Random (S&H continuous)",
       "11_candidate": "Constant / internal",
       "12_candidate": "Constant / internal",
-      "confirmation_method": "Compare slot usage against a preset known to use only one mod source."
+      "confirmation_method": "Compare slot usage against a preset known to use only one mod source.",
+      "_corpus_revision": {
+        "source": "analyze_mod_usage.py census across all 14 decompressed presets (mod_slot_census.json)",
+        "summary": "The single-preset (Aqueous Pad) inference was wrong in three specific places. No slot is empty across the corpus, so the earlier 'slots 6/10/12 empty' read was a single-preset artifact.",
+        "revised_candidates": {
+          "0": "Envelope 3 (was Env2) — used in only 4/14 presets, drives Osc Pos/Fold/Sync + filter freq; secondary-envelope usage shape.",
+          "1": "Envelope 2 (was Env3) — used in 13/14 presets, 28 targets including Amp and Env2's own Attack/Decay; this is the primary amp/mod-envelope signature.",
+          "11": "Pitch Bend (was Constant/internal) — used in 12/14 presets but drives exactly ONE target, 'Pitch'. An always-present source wired only to pitch is Pitch Bend, not a dead constant.",
+          "12": "real broadly-routed modulator, NOT a constant (was Constant/internal) — used in 9/14, 8 varied targets (filter freqs, LFO rates). Likely a second Random or a global; the 'two internal constants at 11/12' guess is rejected by the data."
+        },
+        "still_needs_ear_audit": "The census narrows KINDS, not the exact 1:1 label. Confirm the 0<->1 swap and the true identity of slots 7, 11, 12 by routing one source to one target in Live and watching which index lights."
+      }
     },
     "targets": [
       {
