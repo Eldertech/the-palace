@@ -1,3 +1,24 @@
+---
+title: Single-Doc Worker Prompt Template
+type: meta
+pillars:
+  - tools
+  - practice
+born: 2026-04
+stage: growing
+links:
+  - target: "[[Swarm Weave]]"
+    type: connects-to
+    label: worker-dispatch
+  - target: "[[Palace Enchantment]]"
+    type: connects-to
+    label: enchanted-worker-prompt
+  - target: "[[Coordinator Synthesis Template]]"
+    type: couples-with
+    label: coordinator-counterpart
+forward_vector: "I am the prompt scaffold a coordinator fills before dispatching a single-document worker to audit one palace entry. I keep worker context consistent across runs; when the audit task expands, I expand with it."
+---
+
 # Single-Doc Worker Prompt Template
 
 > This template is used by the coordinator (human or agent) to construct prompts for sub-agent workers. Replace all `{{PLACEHOLDER}}` values before dispatching.

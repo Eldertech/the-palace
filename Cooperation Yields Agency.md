@@ -23,8 +23,6 @@ links:
   - target: "[[Spinoza Conatus]]"
     type: deepens
     label: agency-as-power-increase
-  - target: "[[FOUR PILLARS]]"
-    type: enables
   - target: "[[Symbiotic Skills]]"
     type: spawned
   - target: "[[Endosymbiosis]]"

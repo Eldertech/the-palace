@@ -12,9 +12,6 @@ links:
   - target: "[[Generative Sample Libraries]]"
     type: emerged-from
     label: phase-1-pilot
-  - target: "[[Generative Sample Libraries]]"
-    type: spawned
-    label: lessons-feedback
   - target: "[[Phoneme Choir]]"
     type: mirrors
     label: sister-build

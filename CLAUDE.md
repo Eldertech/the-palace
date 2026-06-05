@@ -1,9 +1,31 @@
 ---
+title: CLAUDE
+type: meta
+pillars:
+  - tools
+  - practice
+  - philosophy
+born: 2026-03
+stage: foundational
 version: 1.9
 schema: SCHEMA.md
 last_schema_ceremony: 2026-06-05
 github: https://github.com/Eldertech/the-palace
 github_raw: https://raw.githubusercontent.com/Eldertech/the-palace/main
+links:
+  - target: "[[SCHEMA]]"
+    type: connects-to
+    label: read-after-me
+  - target: "[[SUBSTRATE]]"
+    type: connects-to
+    label: self-model
+  - target: "[[FOUR PILLARS]]"
+    type: connects-to
+    label: foundational-framework
+  - target: "[[Palace Ceremonies]]"
+    type: connects-to
+    label: ceremony-index
+forward_vector: "I am the entry vector — the first thing any fresh Claude reads. I keep the read-before-touching discipline alive, route to SCHEMA before any write, and stay short enough that re-reading me is cheap. When new operational machinery lands, I update so the next agent sees the current organism, not yesterday's."
 ---
 # The Palace — Claude Entry Point
 

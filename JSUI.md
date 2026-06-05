@@ -17,8 +17,6 @@ revival_conditions: Continued work with Max/MSP and JavaScript — building inte
 links:
   - target: "[[Retrospective Delay]]"
     type: spawned
-  - target: "[[Playful Interface Design]]"
-    type: enables
   - target: "[[FOUR PILLARS]]"
     type: connects-to
   - target: "[[Preset Oracle]]"

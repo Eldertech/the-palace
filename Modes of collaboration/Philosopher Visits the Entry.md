@@ -21,9 +21,6 @@ links:
     label: sibling-method
   - target: "[[Modes of Collaboration]]"
     type: connects-to
-  - target: "[[Palace Philosophies]]"
-    type: enables
-    label: circulation-mechanism
   - target: "[[Enrichment]]"
     type: connects-to
     label: a-card-genre

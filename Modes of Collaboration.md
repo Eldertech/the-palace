@@ -13,9 +13,6 @@ hook_quality: 8
 beauty: 7
 who_leads: shared
 links:
-  - target: "[[Cooperation Yields Agency]]"
-    type: spawned
-    label: collaboration-modes
   - target: "[[Excellent Adventure]]"
     type: connects-to
   - target: "[[Hilaritas Generator]]"
