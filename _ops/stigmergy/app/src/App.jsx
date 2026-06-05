@@ -9,6 +9,7 @@ import DeckTabs from './components/DeckTabs.jsx';
 import { DECKS } from './lib/decks.js';
 import StateDeck from './components/state/StateDeck.jsx';
 import LogDeck from './components/log/LogDeck.jsx';
+import TricksterDeck from './components/TricksterDeck.jsx';
 import ActuatorPanel from './components/queue/ActuatorPanel.jsx';
 import QueuePanel from './components/queue/QueuePanel.jsx';
 import { Banner } from './components/primitives.jsx';
@@ -157,6 +158,7 @@ export default function App() {
       if (k === 's' || k === 'S') return setDeck('STATE');
       if (k === 'q' || k === 'Q') return setDeck('QUEUE');
       if (k === 'l' || k === 'L') return setDeck('LOG');
+      if (k === 't' || k === 'T') return setDeck('TRICKSTER');
       if (deck === 'QUEUE' && /^[1-6]$/.test(k)) {
         const idx = parseInt(k, 10) - 1;
         if (idx >= 0 && idx < BOARDS.length) setActiveBoard(BOARDS[idx]);
@@ -249,6 +251,7 @@ export default function App() {
     if (k === 'S') return setDeck('STATE');
     if (k === 'Q') return setDeck('QUEUE');
     if (k === 'L') return setDeck('LOG');
+    if (k === 'T') return setDeck('TRICKSTER');
     if (k === 'R') return loadAll();
     if (k === 'V') return setScanlinesOn((on) => !on);
     if (deck === 'QUEUE') {
@@ -260,7 +263,10 @@ export default function App() {
   // The CommandBar inverts the entry whose key matches its `activeBoard` prop.
   // For STATE/LOG decks we surface the deck letter (S/L); for QUEUE we keep
   // the existing board-letter behavior so the active board stays inverted.
-  const commandBarActive = deck === 'QUEUE' ? activeBoard : deck === 'STATE' ? 'S' : 'L';
+  const commandBarActive = deck === 'QUEUE' ? activeBoard
+    : deck === 'STATE' ? 'S'
+    : deck === 'TRICKSTER' ? 'T'
+    : 'L';
 
   return (
     <Shell nodeName="01" clock={clock} unread={totalFlagged}
@@ -271,6 +277,7 @@ export default function App() {
 
       {deck === 'STATE' && <StateDeck />}
       {deck === 'LOG' && <LogDeck />}
+      {deck === 'TRICKSTER' && <TricksterDeck />}
       {deck === 'QUEUE' && (
         <div data-testid="board-screen" style={{ width: '100%' }}>
           <Banner as="h1" strong style={{ fontSize: 32, margin: '0 0 4px' }}>
