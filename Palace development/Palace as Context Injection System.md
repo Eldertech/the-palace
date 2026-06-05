@@ -30,7 +30,7 @@ links:
   - target: "[[Modes of Collaboration]]"
     type: enables
     label: mode-as-injection-protocol
-  - target: "[[Four Pillars]]"
+  - target: "[[FOUR PILLARS]]"
     type: connects-to
   - target: "[[Mixture of Experts]]"
     type: enables

@@ -41,6 +41,12 @@ links:
   - target: "[[Cooperation Yields Agency]]"
     type: couples-with
     label: distributed-care-as-parallel-agents
+  - target: "[[Oblique Enrichment]]"
+    type: couples-with
+    label: lingers-by-design
+  - target: "[[Semantic Webcam]]"
+    type: deepens
+    label: spawned-through-oblique
 ---
 
 # Enrichment

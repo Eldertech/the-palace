@@ -24,7 +24,7 @@ links:
   - target: "[[Modes of Collaboration]]"
     type: connects-to
     label: build-session-instance
-  - target: "[[Four Pillars]]"
+  - target: "[[FOUR PILLARS]]"
     type: connects-to
     label: autodidact-keyboard
   - target: "[[Project Stewardship System]]"

@@ -43,6 +43,12 @@ links:
   - target: "[[Project Stewardship System]]"
     type: enables
     label: routine-stewardship-substrate
+  - target: "[[Oblique Enrichment]]"
+    type: connects-to
+    label: review-surface-and-stigmergy-medium
+  - target: "[[Semantic Webcam]]"
+    type: connects-to
+    label: stigmergy-surface
 ---
 
 # BBS Blackboard

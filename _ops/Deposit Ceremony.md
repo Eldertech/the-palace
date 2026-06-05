@@ -25,7 +25,7 @@ links:
   - target: "[[SCHEMA]]"
     type: connects-to
     label: "governed-by"
-  - target: "[[Four Pillars]]"
+  - target: "[[FOUR PILLARS]]"
     type: connects-to
   - target: "[[Cooperation Yields Agency]]"
     type: connects-to

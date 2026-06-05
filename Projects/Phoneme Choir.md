@@ -25,7 +25,7 @@ links:
   - target: "[[Modes of Collaboration]]"
     type: connects-to
     label: build-session-with-pivot
-  - target: "[[Four Pillars]]"
+  - target: "[[FOUR PILLARS]]"
     type: connects-to
     label: percussive-utterance-bank
   - target: "[[The Metaphor Stretch]]"

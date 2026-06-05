@@ -9,7 +9,7 @@ born: 2026-04
 stage: sprout
 status: active
 links:
-  - target: "[[Four Pillars]]"
+  - target: "[[FOUR PILLARS]]"
     type: connects-to
     label: "structured-by"
   - target: "[[Registry Pattern]]"
