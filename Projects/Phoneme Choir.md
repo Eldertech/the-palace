@@ -16,9 +16,6 @@ links:
   - target: "[[Talking Keyboard]]"
     type: mirrors
     label: sister-build
-  - target: "[[Generative Sample Libraries]]"
-    type: spawned
-    label: responsive-onset-step
   - target: "[[Substrate Skill]]"
     type: connects-to
     label: kokoro-syllabification-evidence

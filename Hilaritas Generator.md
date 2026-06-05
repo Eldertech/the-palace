@@ -30,9 +30,6 @@ links:
   - target: "[[Symbiotic Skills]]"
     type: enables
     label: skill-via-joy
-  - target: "[[Quality Manifesto]]"
-    type: enables
-    label: quality-as-feedback
   - target: "[[Excellent Adventure]]"
     type: spawned
     label: hilaritas-in-practice

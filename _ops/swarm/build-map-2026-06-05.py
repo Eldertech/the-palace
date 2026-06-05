@@ -45,10 +45,30 @@ EXCLUDE_DIRS = {
     PALACE / "_ops" / "maps",
     PALACE / "_ops" / "swarm" / "sessions",
     PALACE / "_ops" / "swarm" / "persistent",
+    PALACE / "_ops" / "swarm" / "experiments",
     PALACE / "_ops" / "stigmergy",
+    PALACE / "_ops" / "agents",
+    PALACE / "_ops" / "sample-libraries",
+    PALACE / "_ops" / "loudon-live",
+    PALACE / "_tools",
     PALACE / "Projects" / "2D Torus Wavetable Synthesizer" / "Wavetables",
     PALACE / "Projects" / "2D Torus Wavetable Synthesizer" / "RNBO",
     PALACE / "Projects" / "2D Torus Wavetable Synthesizer" / "Tools",
+}
+
+# Name-based exclusions — any directory matching these names is skipped wherever it appears.
+# Catches vendored deps (node_modules), virtualenvs, build/cache dirs that appear under bundles.
+EXCLUDE_DIR_NAMES = {
+    "node_modules",
+    "venv",
+    ".venv",
+    ".venvs",
+    "__pycache__",
+    "dist",
+    "build",
+    ".next",
+    ".cache",
+    "site-packages",
 }
 
 FRONTMATTER_RE = re.compile(r"^---\n(.*?)\n---", re.DOTALL)
@@ -58,12 +78,33 @@ LINK_TYPE_RE = re.compile(r'type:\s*([a-z\-]+)', re.IGNORECASE)
 
 def is_excluded(path: Path) -> bool:
     p = path.resolve()
+    # Path-rooted exclusions
     for ex in EXCLUDE_DIRS:
         try:
             p.relative_to(ex)
             return True
         except ValueError:
             continue
+    # Name-based exclusions — any segment matching is enough
+    for part in p.parts:
+        if part in EXCLUDE_DIR_NAMES:
+            return True
+    return False
+
+
+def is_bundle_file(path: Path, all_entry_stems: set[str]) -> bool:
+    """A .md is a bundle file if any parent directory's name matches an existing entry's filename stem.
+    Per SCHEMA §8: entry bundles are sibling folders named identically to the entry. Files inside
+    them are bundle content, not first-class nodes."""
+    # Walk up from the file; if any parent dir name matches an entry stem, treat as bundle.
+    for parent in path.parents:
+        if parent == PALACE:
+            break
+        if parent.name in all_entry_stems:
+            return True
+        # Also handle Archive/ subdirectory inside a bundle
+        if parent.name == "Archive" and parent.parent.name in all_entry_stems:
+            return True
     return False
 
 
@@ -160,6 +201,13 @@ def main():
     # Deduplicate (in case a file matched twice)
     node_files = sorted(set(node_files), key=lambda p: str(p))
     ops_files = sorted(set(ops_files), key=lambda p: str(p))
+
+    # Bundle-file filter: a .md is an entry-bundle file (SCHEMA §8) when any ancestor folder
+    # matches another entry's stem. Compute on the candidate set itself so the rule is
+    # self-defining: every sibling [Entry].md spawns a bundle namespace.
+    all_stems = {p.stem for p in node_files} | {p.stem for p in ops_files}
+    node_files = [p for p in node_files if not is_bundle_file(p, all_stems)]
+    ops_files = [p for p in ops_files if not is_bundle_file(p, all_stems)]
 
     node_ids = {filename_to_id(p): p for p in node_files}
     ops_ids = {filename_to_id(p): p for p in ops_files}

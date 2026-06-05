@@ -7,7 +7,7 @@ pillars:
   - practice
 born: 2026-03
 last_activated: 2026-06-05
-activation_count: 7
+activation_count: 8
 stage: sprout
 energy: very high
 beauty: 8
@@ -18,8 +18,6 @@ links:
     type: deepens
   - target: "[[Enchanted Worker]]"
     type: enables
-  - target: "[[Map Build Ceremony]]"
-    type: spawned
   - target: "[[JEWEL]]"
     type: mirrors
   - target: "[[Pheromone Trail]]"

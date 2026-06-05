@@ -2,13 +2,21 @@
   "meta": {
     "generated": "2026-06-05",
     "scope": "full",
-    "node_count": 383,
+    "node_count": 245,
     "ops_node_count": 35,
-    "edge_count": 1769,
+    "edge_count": 1635,
     "ghost_taxonomy": {
       "error_ghosts": [],
       "ops_ghosts": [],
       "forward_ghosts": [
+        {
+          "target": "2D Wavetable Catalog",
+          "sources": [
+            "2D Torus Wavetable Synthesizer \u2014 Build Log",
+            "2D Torus Wavetable Synthesizer",
+            "Three Kinds of Warp"
+          ]
+        },
         {
           "target": "3D LUT Color Grading",
           "sources": [
@@ -40,6 +48,18 @@
           ]
         },
         {
+          "target": "Coordinator Synthesis Template",
+          "sources": [
+            "worker-prompt-template"
+          ]
+        },
+        {
+          "target": "Crystal Sonification Reference",
+          "sources": [
+            "Crystal Synthesizer"
+          ]
+        },
+        {
           "target": "Enrichment Ceremony",
           "sources": [
             "STIGMERGY v1.0 \u2014 Palace Front-End"
@@ -49,6 +69,16 @@
           "target": "Epictetus",
           "sources": [
             "Stoicism"
+          ]
+        },
+        {
+          "target": "Floquet Time-Modulated Loops",
+          "sources": [
+            "Floquet Theory",
+            "Mathieu Equation",
+            "Parametric Resonance",
+            "Photonic Time Crystals",
+            "Piano String Inharmonicity"
           ]
         },
         {
@@ -88,9 +118,21 @@
           ]
         },
         {
+          "target": "Loudon Live \u2014 asset plan",
+          "sources": [
+            "Loudon Live Design System"
+          ]
+        },
+        {
           "target": "Marcus Aurelius",
           "sources": [
             "Stoicism"
+          ]
+        },
+        {
+          "target": "README",
+          "sources": [
+            "Palace To-Do"
           ]
         },
         {
@@ -112,59 +154,27 @@
           ]
         },
         {
-          "target": "Shop/ComfyUI",
-          "sources": [
-            "visuals-spec"
-          ]
-        },
-        {
-          "target": "Shop/Kokoro",
-          "sources": [
-            "audition-seed-attack-pair"
-          ]
-        },
-        {
           "target": "Shop/Maker",
           "sources": [
             "Tier Vocabulary Glossary"
           ]
         },
         {
-          "target": "Shop/Maker|Maker",
-          "sources": [
-            "mockup-imagery-brief"
-          ]
-        },
-        {
-          "target": "Shop/Manim CE",
-          "sources": [
-            "visuals-spec"
-          ]
-        },
-        {
-          "target": "Shop/Stable Audio Open",
-          "sources": [
-            "audition-seed-attack-pair",
-            "sfx-cue-sheet"
-          ]
-        },
-        {
-          "target": "Shop/ffmpeg",
-          "sources": [
-            "audition-seed-attack-pair",
-            "sfx-cue-sheet"
-          ]
-        },
-        {
-          "target": "Shop/p5.js",
-          "sources": [
-            "visuals-spec"
-          ]
-        },
-        {
           "target": "Source Library",
           "sources": [
             "Brian Eno"
+          ]
+        },
+        {
+          "target": "Stage E \u2014 Automated Trickster \u2014 handoff",
+          "sources": [
+            "Project Stewardship System"
+          ]
+        },
+        {
+          "target": "Stage F \u2014 Two Paths \u2014 handoff",
+          "sources": [
+            "Project Stewardship System"
           ]
         },
         {
@@ -199,16 +209,29 @@
           ]
         },
         {
+          "target": "Torus Warping Catalog",
+          "sources": [
+            "2D Torus Wavetable Synthesizer \u2014 Build Log",
+            "2D Torus Wavetable Synthesizer",
+            "Three Kinds of Warp"
+          ]
+        },
+        {
           "target": "shop-header \u2014 Maker's Comparison Recommendation",
           "sources": [
             "FLUX (Hugging Face)"
           ]
         },
         {
-          "target": "stage-1-the-witness|Stage 1 \u2014 The Witness",
+          "target": "spinoza-zhuangzi-on-striving",
           "sources": [
-            "mockup-imagery-brief",
-            "patch-spec"
+            "Palace Philosophies"
+          ]
+        },
+        {
+          "target": "zhuangzi-epictetus-confucius-on-the-self",
+          "sources": [
+            "The Drift"
           ]
         }
       ]
@@ -238,149 +261,6 @@
       "inbound_count": 0
     },
     {
-      "id": "2026-05-04-claude-code-handoff-prompt",
-      "path": "Projects/Phoneme Choir/proofs/2026-05-04-claude-code-handoff-prompt.md",
-      "type": "proof",
-      "stage": null,
-      "has_forward_vector": false,
-      "last_activated": null,
-      "activation_count": null,
-      "outbound_count": 0,
-      "inbound_count": 0
-    },
-    {
-      "id": "2026-05-04-interview-mock",
-      "path": "Projects/Generative Wavetable Libraries/proofs/2026-05-04-interview-mock.md",
-      "type": "proof",
-      "stage": null,
-      "has_forward_vector": false,
-      "last_activated": null,
-      "activation_count": null,
-      "outbound_count": 0,
-      "inbound_count": 0
-    },
-    {
-      "id": "2026-05-04-new-oracle-prompt",
-      "path": "Projects/Preset Oracle/proofs/2026-05-04-new-oracle-prompt.md",
-      "type": "proof",
-      "stage": null,
-      "has_forward_vector": false,
-      "last_activated": null,
-      "activation_count": null,
-      "outbound_count": 0,
-      "inbound_count": 0
-    },
-    {
-      "id": "2026-05-04-pedagogical-retrospective",
-      "path": "Projects/Compressor Design/proofs/2026-05-04-pedagogical-retrospective.md",
-      "type": "proof",
-      "stage": null,
-      "has_forward_vector": false,
-      "last_activated": null,
-      "activation_count": null,
-      "outbound_count": 0,
-      "inbound_count": 0
-    },
-    {
-      "id": "2026-05-04-preset-interview-mock",
-      "path": "Projects/Generative Preset Development/proofs/2026-05-04-preset-interview-mock.md",
-      "type": "proof",
-      "stage": null,
-      "has_forward_vector": false,
-      "last_activated": null,
-      "activation_count": null,
-      "outbound_count": 0,
-      "inbound_count": 0
-    },
-    {
-      "id": "2026-05-04-substitution-chain",
-      "path": "Projects/Semantic Delay/proofs/2026-05-04-substitution-chain.md",
-      "type": "proof",
-      "stage": null,
-      "has_forward_vector": false,
-      "last_activated": null,
-      "activation_count": null,
-      "outbound_count": 0,
-      "inbound_count": 0
-    },
-    {
-      "id": "2026-05-05-compressed-summary",
-      "path": "Projects/Crystal Synthesizer/proofs/2026-05-05-compressed-summary.md",
-      "type": null,
-      "stage": null,
-      "has_forward_vector": false,
-      "last_activated": null,
-      "activation_count": null,
-      "outbound_count": 0,
-      "inbound_count": 0
-    },
-    {
-      "id": "2026-05-05-moment-of-aha",
-      "path": "Projects/Slime Mold Delay/proofs/2026-05-05-moment-of-aha.md",
-      "type": null,
-      "stage": null,
-      "has_forward_vector": false,
-      "last_activated": null,
-      "activation_count": null,
-      "outbound_count": 0,
-      "inbound_count": 0
-    },
-    {
-      "id": "2026-05-05-petri-dish-image-prompt",
-      "path": "Projects/Slime Mold Delay/proofs/2026-05-05-petri-dish-image-prompt.md",
-      "type": null,
-      "stage": null,
-      "has_forward_vector": false,
-      "last_activated": null,
-      "activation_count": null,
-      "outbound_count": 0,
-      "inbound_count": 0
-    },
-    {
-      "id": "2026-05-05-philosopher-visits-the-oscillator",
-      "path": "Projects/Action Potential Oscillator/proofs/2026-05-05-philosopher-visits-the-oscillator.md",
-      "type": null,
-      "stage": null,
-      "has_forward_vector": false,
-      "last_activated": null,
-      "activation_count": null,
-      "outbound_count": 0,
-      "inbound_count": 0
-    },
-    {
-      "id": "2026-05-05-recipe-p4mm",
-      "path": "Projects/Wallpaper Groups/proofs/2026-05-05-recipe-p4mm.md",
-      "type": null,
-      "stage": null,
-      "has_forward_vector": false,
-      "last_activated": null,
-      "activation_count": null,
-      "outbound_count": 0,
-      "inbound_count": 0
-    },
-    {
-      "id": "2026-05-05-vibrato-becomes-melody",
-      "path": "Projects/Frequency-Time Duality/proofs/2026-05-05-vibrato-becomes-melody.md",
-      "type": null,
-      "stage": null,
-      "has_forward_vector": false,
-      "last_activated": null,
-      "activation_count": null,
-      "outbound_count": 0,
-      "inbound_count": 0
-    },
-    {
-      "id": "2026-05-05-wikipedia-stub-2050",
-      "path": "Projects/Phoneme Choir/proofs/2026-05-05-wikipedia-stub-2050.md",
-      "type": null,
-      "stage": null,
-      "has_forward_vector": false,
-      "last_activated": null,
-      "activation_count": null,
-      "outbound_count": 0,
-      "inbound_count": 0
-    },
-    {
       "id": "2D Torus Wavetable Synthesizer",
       "path": "Projects/2D Torus Wavetable Synthesizer.md",
       "type": "project",
@@ -388,8 +268,8 @@
       "has_forward_vector": true,
       "last_activated": null,
       "activation_count": null,
-      "outbound_count": 12,
-      "inbound_count": 23
+      "outbound_count": 10,
+      "inbound_count": 20
     },
     {
       "id": "2D Torus Wavetable Synthesizer \u2014 Build Log",
@@ -399,19 +279,8 @@
       "has_forward_vector": false,
       "last_activated": null,
       "activation_count": null,
-      "outbound_count": 7,
-      "inbound_count": 3
-    },
-    {
-      "id": "2D Wavetable Catalog",
-      "path": "Projects/2D Torus Wavetable Synthesizer/2D Wavetable Catalog.md",
-      "type": "hub",
-      "stage": "growing",
-      "has_forward_vector": false,
-      "last_activated": null,
-      "activation_count": null,
-      "outbound_count": 3,
-      "inbound_count": 4
+      "outbound_count": 5,
+      "inbound_count": 1
     },
     {
       "id": "4 Pillars Framework - The Founding Conversation",
@@ -425,17 +294,6 @@
       "inbound_count": 3
     },
     {
-      "id": "API",
-      "path": "Kuramoto Coupling/phenomena-walk/node_modules/postcss-selector-parser/API.md",
-      "type": null,
-      "stage": null,
-      "has_forward_vector": false,
-      "last_activated": null,
-      "activation_count": null,
-      "outbound_count": 0,
-      "inbound_count": 0
-    },
-    {
       "id": "Action Potential Oscillator",
       "path": "Projects/Action Potential Oscillator.md",
       "type": "project",
@@ -444,7 +302,7 @@
       "last_activated": "2026-04",
       "activation_count": "4",
       "outbound_count": 17,
-      "inbound_count": 25
+      "inbound_count": 24
     },
     {
       "id": "Agent Wellbeing",
@@ -499,7 +357,7 @@
       "last_activated": "2026-05-02",
       "activation_count": "3",
       "outbound_count": 13,
-      "inbound_count": 34
+      "inbound_count": 29
     },
     {
       "id": "BBS Design System",
@@ -521,7 +379,7 @@
       "last_activated": "2026-05-02",
       "activation_count": "3",
       "outbound_count": 6,
-      "inbound_count": 7
+      "inbound_count": 6
     },
     {
       "id": "BBS Production Plan v0.2",
@@ -548,35 +406,13 @@
     {
       "id": "BBS Rich Content \u2014 handoff",
       "path": "Palace development/BBS Rich Content \u2014 handoff.md",
-      "type": null,
-      "stage": null,
+      "type": "meta",
+      "stage": "sprout",
       "has_forward_vector": true,
       "last_activated": null,
       "activation_count": null,
       "outbound_count": 6,
-      "inbound_count": 2
-    },
-    {
-      "id": "BUILD",
-      "path": "_ops/sample-libraries/talking-keyboard/BUILD.md",
-      "type": null,
-      "stage": null,
-      "has_forward_vector": false,
-      "last_activated": null,
-      "activation_count": null,
-      "outbound_count": 0,
-      "inbound_count": 0
-    },
-    {
-      "id": "BUILD_SUMMARY",
-      "path": "Projects/Floquet Time-Modulated Loops/BUILD_SUMMARY.md",
-      "type": null,
-      "stage": null,
-      "has_forward_vector": true,
-      "last_activated": null,
-      "activation_count": null,
-      "outbound_count": 1,
-      "inbound_count": 0
+      "inbound_count": 1
     },
     {
       "id": "Bayesian Granular Synthesizer",
@@ -609,7 +445,7 @@
       "last_activated": "2026-03",
       "activation_count": "1",
       "outbound_count": 17,
-      "inbound_count": 8
+      "inbound_count": 7
     },
     {
       "id": "Blood Compressor",
@@ -620,7 +456,7 @@
       "last_activated": "2026-05",
       "activation_count": "1",
       "outbound_count": 5,
-      "inbound_count": 4
+      "inbound_count": 0
     },
     {
       "id": "Boundary-Crossing Instruments",
@@ -631,7 +467,7 @@
       "last_activated": "2026-06-05",
       "activation_count": "8",
       "outbound_count": 8,
-      "inbound_count": 36
+      "inbound_count": 35
     },
     {
       "id": "Brian Eno",
@@ -645,48 +481,15 @@
       "inbound_count": 1
     },
     {
-      "id": "CHANGELOG",
-      "path": "Kuramoto Coupling/phenomena-walk/node_modules/which/CHANGELOG.md",
-      "type": null,
-      "stage": null,
-      "has_forward_vector": false,
-      "last_activated": null,
-      "activation_count": null,
-      "outbound_count": 0,
-      "inbound_count": 0
-    },
-    {
-      "id": "CHANGES",
-      "path": "Kuramoto Coupling/phenomena-walk/node_modules/chrome-trace-event/CHANGES.md",
-      "type": null,
-      "stage": null,
-      "has_forward_vector": false,
-      "last_activated": null,
-      "activation_count": null,
-      "outbound_count": 0,
-      "inbound_count": 0
-    },
-    {
       "id": "CLAUDE",
       "path": "CLAUDE.md",
-      "type": null,
-      "stage": null,
-      "has_forward_vector": false,
+      "type": "meta",
+      "stage": "foundational",
+      "has_forward_vector": true,
       "last_activated": null,
       "activation_count": null,
-      "outbound_count": 0,
+      "outbound_count": 4,
       "inbound_count": 2
-    },
-    {
-      "id": "CONTRIBUTING",
-      "path": "_tools/ComfyUI/CONTRIBUTING.md",
-      "type": null,
-      "stage": null,
-      "has_forward_vector": false,
-      "last_activated": null,
-      "activation_count": null,
-      "outbound_count": 0,
-      "inbound_count": 0
     },
     {
       "id": "Categorizing Inharmonicity",
@@ -697,7 +500,7 @@
       "last_activated": "2026-03",
       "activation_count": "1",
       "outbound_count": 12,
-      "inbound_count": 13
+      "inbound_count": 11
     },
     {
       "id": "Chebyshev is Fourier",
@@ -730,7 +533,7 @@
       "last_activated": "2026-05-26",
       "activation_count": "1",
       "outbound_count": 7,
-      "inbound_count": 9
+      "inbound_count": 8
     },
     {
       "id": "ComfyUI",
@@ -752,7 +555,7 @@
       "last_activated": "2026-03",
       "activation_count": "1",
       "outbound_count": 6,
-      "inbound_count": 12
+      "inbound_count": 10
     },
     {
       "id": "Confucianism",
@@ -763,7 +566,7 @@
       "last_activated": "2026-03",
       "activation_count": "1",
       "outbound_count": 8,
-      "inbound_count": 10
+      "inbound_count": 9
     },
     {
       "id": "Cooperation Yields Agency",
@@ -773,19 +576,8 @@
       "has_forward_vector": true,
       "last_activated": "2026-03",
       "activation_count": "14",
-      "outbound_count": 9,
-      "inbound_count": 34
-    },
-    {
-      "id": "Crystal Sonification Reference",
-      "path": "Projects/Crystal Synthesizer/Crystal Sonification Reference.md",
-      "type": null,
-      "stage": null,
-      "has_forward_vector": true,
-      "last_activated": null,
-      "activation_count": null,
-      "outbound_count": 1,
-      "inbound_count": 1
+      "outbound_count": 8,
+      "inbound_count": 33
     },
     {
       "id": "Crystal Synthesizer",
@@ -795,19 +587,8 @@
       "has_forward_vector": true,
       "last_activated": "2026-04",
       "activation_count": "2",
-      "outbound_count": 12,
-      "inbound_count": 16
-    },
-    {
-      "id": "Crystal Synthesizer \u2014 Staging",
-      "path": "Projects/Crystal Synthesizer/Crystal Synthesizer \u2014 Staging.md",
-      "type": null,
-      "stage": null,
-      "has_forward_vector": true,
-      "last_activated": null,
-      "activation_count": null,
-      "outbound_count": 1,
-      "inbound_count": 0
+      "outbound_count": 11,
+      "inbound_count": 14
     },
     {
       "id": "Curriculum Map",
@@ -829,7 +610,7 @@
       "last_activated": null,
       "activation_count": null,
       "outbound_count": 0,
-      "inbound_count": 2
+      "inbound_count": 0
     },
     {
       "id": "DSP Frameworks",
@@ -851,7 +632,7 @@
       "last_activated": null,
       "activation_count": null,
       "outbound_count": 7,
-      "inbound_count": 16
+      "inbound_count": 14
     },
     {
       "id": "Deleuze",
@@ -906,7 +687,7 @@
       "last_activated": "2026-05",
       "activation_count": "2",
       "outbound_count": 7,
-      "inbound_count": 11
+      "inbound_count": 9
     },
     {
       "id": "Dialogue Moderator",
@@ -928,7 +709,7 @@
       "last_activated": "2026-03",
       "activation_count": "3",
       "outbound_count": 10,
-      "inbound_count": 7
+      "inbound_count": 6
     },
     {
       "id": "Dispersion",
@@ -1037,7 +818,7 @@
       "has_forward_vector": true,
       "last_activated": "2026-03",
       "activation_count": "1",
-      "outbound_count": 8,
+      "outbound_count": 7,
       "inbound_count": 15
     },
     {
@@ -1060,18 +841,7 @@
       "last_activated": null,
       "activation_count": null,
       "outbound_count": 13,
-      "inbound_count": 7
-    },
-    {
-      "id": "Enrichment \u2014 handoff",
-      "path": "Enrichment/Enrichment \u2014 handoff.md",
-      "type": null,
-      "stage": null,
-      "has_forward_vector": true,
-      "last_activated": null,
-      "activation_count": null,
-      "outbound_count": 1,
-      "inbound_count": 0
+      "inbound_count": 6
     },
     {
       "id": "Entry Conatus",
@@ -1082,7 +852,7 @@
       "last_activated": "2026-05",
       "activation_count": "1",
       "outbound_count": 7,
-      "inbound_count": 1
+      "inbound_count": 0
     },
     {
       "id": "Excellent Adventure",
@@ -1093,7 +863,7 @@
       "last_activated": "2026-03",
       "activation_count": "2",
       "outbound_count": 10,
-      "inbound_count": 14
+      "inbound_count": 13
     },
     {
       "id": "Exponential Decay Curvature",
@@ -1137,18 +907,7 @@
       "last_activated": "2026-05-29",
       "activation_count": "2",
       "outbound_count": 9,
-      "inbound_count": 4
-    },
-    {
-      "id": "Flocking \u2014 handoff \u2014 2026-05-29",
-      "path": "Flocking/Archive/Flocking \u2014 handoff \u2014 2026-05-29.md",
-      "type": null,
-      "stage": null,
-      "has_forward_vector": true,
-      "last_activated": null,
-      "activation_count": null,
-      "outbound_count": 7,
-      "inbound_count": 0
+      "inbound_count": 2
     },
     {
       "id": "Floquet Theory",
@@ -1158,19 +917,8 @@
       "has_forward_vector": true,
       "last_activated": null,
       "activation_count": null,
-      "outbound_count": 9,
-      "inbound_count": 7
-    },
-    {
-      "id": "Floquet Time-Modulated Loops",
-      "path": "Projects/Floquet Time-Modulated Loops/Floquet Time-Modulated Loops.md",
-      "type": "project",
-      "stage": "growing",
-      "has_forward_vector": true,
-      "last_activated": null,
-      "activation_count": null,
-      "outbound_count": 14,
-      "inbound_count": 7
+      "outbound_count": 8,
+      "inbound_count": 6
     },
     {
       "id": "Four Pillars of Enchanted Agency",
@@ -1192,7 +940,7 @@
       "last_activated": "2026-03",
       "activation_count": "1",
       "outbound_count": 7,
-      "inbound_count": 30
+      "inbound_count": 27
     },
     {
       "id": "Frequency-Time Explorer",
@@ -1206,17 +954,6 @@
       "inbound_count": 1
     },
     {
-      "id": "GEMMA4_GUIDE",
-      "path": "Gemma 4 \u2014 Local Coordination Guide/GEMMA4_GUIDE.md",
-      "type": null,
-      "stage": null,
-      "has_forward_vector": true,
-      "last_activated": null,
-      "activation_count": null,
-      "outbound_count": 1,
-      "inbound_count": 0
-    },
-    {
       "id": "Gemma 4 \u2014 Local Coordination Guide",
       "path": "Gemma 4 \u2014 Local Coordination Guide.md",
       "type": "source",
@@ -1225,7 +962,7 @@
       "last_activated": null,
       "activation_count": null,
       "outbound_count": 4,
-      "inbound_count": 1
+      "inbound_count": 0
     },
     {
       "id": "Generative Audio Devices",
@@ -1236,29 +973,7 @@
       "last_activated": null,
       "activation_count": null,
       "outbound_count": 11,
-      "inbound_count": 10
-    },
-    {
-      "id": "Generative Audio Devices \u2014 handoff 2026-05-26",
-      "path": "Generative Audio Devices/Archive/Generative Audio Devices \u2014 handoff 2026-05-26.md",
-      "type": null,
-      "stage": null,
-      "has_forward_vector": true,
-      "last_activated": null,
-      "activation_count": null,
-      "outbound_count": 1,
-      "inbound_count": 0
-    },
-    {
-      "id": "Generative Audio Devices \u2014 handoff \u2014 2026-05-29",
-      "path": "Generative Audio Devices/Archive/Generative Audio Devices \u2014 handoff \u2014 2026-05-29.md",
-      "type": null,
-      "stage": null,
-      "has_forward_vector": true,
-      "last_activated": null,
-      "activation_count": null,
-      "outbound_count": 1,
-      "inbound_count": 0
+      "inbound_count": 8
     },
     {
       "id": "Generative Compression",
@@ -1291,7 +1006,7 @@
       "last_activated": "2026-05",
       "activation_count": "3",
       "outbound_count": 13,
-      "inbound_count": 10
+      "inbound_count": 8
     },
     {
       "id": "Generative Wavetable Libraries",
@@ -1347,28 +1062,6 @@
       "activation_count": null,
       "outbound_count": 8,
       "inbound_count": 15
-    },
-    {
-      "id": "HANDOFF",
-      "path": "_ops/agents/permanent/generative-sample-libraries/HANDOFF.md",
-      "type": null,
-      "stage": null,
-      "has_forward_vector": false,
-      "last_activated": null,
-      "activation_count": null,
-      "outbound_count": 0,
-      "inbound_count": 0
-    },
-    {
-      "id": "HISTORY",
-      "path": "Kuramoto Coupling/phenomena-walk/node_modules/mime-types/HISTORY.md",
-      "type": null,
-      "stage": null,
-      "has_forward_vector": false,
-      "last_activated": null,
-      "activation_count": null,
-      "outbound_count": 0,
-      "inbound_count": 0
     },
     {
       "id": "Handoff Ceremony",
@@ -1433,19 +1126,8 @@
       "has_forward_vector": true,
       "last_activated": "2026-03",
       "activation_count": "9",
-      "outbound_count": 12,
-      "inbound_count": 43
-    },
-    {
-      "id": "History",
-      "path": "Kuramoto Coupling/phenomena-walk/node_modules/util-deprecate/History.md",
-      "type": null,
-      "stage": null,
-      "has_forward_vector": false,
-      "last_activated": null,
-      "activation_count": null,
-      "outbound_count": 0,
-      "inbound_count": 0
+      "outbound_count": 11,
+      "inbound_count": 42
     },
     {
       "id": "Hyperdimensional Prism",
@@ -1521,8 +1203,8 @@
       "has_forward_vector": true,
       "last_activated": "2026-03",
       "activation_count": "3",
-      "outbound_count": 4,
-      "inbound_count": 3
+      "outbound_count": 3,
+      "inbound_count": 2
     },
     {
       "id": "Jewel \u2014 Context",
@@ -1555,73 +1237,7 @@
       "last_activated": "2026-05",
       "activation_count": "17",
       "outbound_count": 17,
-      "inbound_count": 65
-    },
-    {
-      "id": "Kuramoto Coupling \u2014 8-Lesson Quiz Series",
-      "path": "Kuramoto Coupling/Kuramoto Coupling \u2014 8-Lesson Quiz Series.md",
-      "type": null,
-      "stage": null,
-      "has_forward_vector": true,
-      "last_activated": null,
-      "activation_count": null,
-      "outbound_count": 1,
-      "inbound_count": 0
-    },
-    {
-      "id": "Kuramoto Coupling \u2014 Quiz Answer Key",
-      "path": "Kuramoto Coupling/Kuramoto Coupling \u2014 Quiz Answer Key.md",
-      "type": null,
-      "stage": null,
-      "has_forward_vector": true,
-      "last_activated": null,
-      "activation_count": null,
-      "outbound_count": 1,
-      "inbound_count": 0
-    },
-    {
-      "id": "Kuramoto Coupling \u2014 handoff",
-      "path": "Kuramoto Coupling/Kuramoto Coupling \u2014 handoff.md",
-      "type": null,
-      "stage": null,
-      "has_forward_vector": true,
-      "last_activated": null,
-      "activation_count": null,
-      "outbound_count": 3,
-      "inbound_count": 0
-    },
-    {
-      "id": "Kuramoto Coupling \u2014 handoff \u2014 2026-05-10",
-      "path": "Kuramoto Coupling/Archive/Kuramoto Coupling \u2014 handoff \u2014 2026-05-10.md",
-      "type": null,
-      "stage": null,
-      "has_forward_vector": true,
-      "last_activated": null,
-      "activation_count": null,
-      "outbound_count": 3,
-      "inbound_count": 0
-    },
-    {
-      "id": "Kuramoto Coupling \u2014 handoff \u2014 2026-05-26",
-      "path": "Kuramoto Coupling/Archive/Kuramoto Coupling \u2014 handoff \u2014 2026-05-26.md",
-      "type": null,
-      "stage": null,
-      "has_forward_vector": true,
-      "last_activated": null,
-      "activation_count": null,
-      "outbound_count": 3,
-      "inbound_count": 0
-    },
-    {
-      "id": "LICENSE",
-      "path": "_tools/stable-audio-3/.venv/lib/python3.10/site-packages/numpy/random/LICENSE.md",
-      "type": null,
-      "stage": null,
-      "has_forward_vector": false,
-      "last_activated": null,
-      "activation_count": null,
-      "outbound_count": 0,
-      "inbound_count": 0
+      "inbound_count": 57
     },
     {
       "id": "Latent Error",
@@ -1665,7 +1281,7 @@
       "last_activated": "2026-03",
       "activation_count": "1",
       "outbound_count": 7,
-      "inbound_count": 6
+      "inbound_count": 4
     },
     {
       "id": "Linear Predictive Coding",
@@ -1687,7 +1303,7 @@
       "last_activated": null,
       "activation_count": null,
       "outbound_count": 4,
-      "inbound_count": 5
+      "inbound_count": 3
     },
     {
       "id": "Lossy Compression with Intent Alignment",
@@ -1709,7 +1325,7 @@
       "last_activated": null,
       "activation_count": null,
       "outbound_count": 10,
-      "inbound_count": 16
+      "inbound_count": 12
     },
     {
       "id": "Loudon Live Design System",
@@ -1719,8 +1335,8 @@
       "has_forward_vector": true,
       "last_activated": null,
       "activation_count": null,
-      "outbound_count": 13,
-      "inbound_count": 4
+      "outbound_count": 12,
+      "inbound_count": 3
     },
     {
       "id": "Loudon Live Post-producer",
@@ -1731,39 +1347,6 @@
       "last_activated": "2026-05",
       "activation_count": "1",
       "outbound_count": 6,
-      "inbound_count": 1
-    },
-    {
-      "id": "Loudon Live Post-producer \u2014 Log",
-      "path": "Loudon Live Post-producer/Loudon Live Post-producer \u2014 Log.md",
-      "type": null,
-      "stage": null,
-      "has_forward_vector": true,
-      "last_activated": null,
-      "activation_count": null,
-      "outbound_count": 1,
-      "inbound_count": 0
-    },
-    {
-      "id": "Loudon Live \u2014 asset plan",
-      "path": "Loudon Live/Loudon Live \u2014 asset plan.md",
-      "type": null,
-      "stage": null,
-      "has_forward_vector": true,
-      "last_activated": null,
-      "activation_count": null,
-      "outbound_count": 2,
-      "inbound_count": 1
-    },
-    {
-      "id": "Loudon Live \u2014 launch kit",
-      "path": "Loudon Live/Loudon Live \u2014 launch kit.md",
-      "type": null,
-      "stage": null,
-      "has_forward_vector": true,
-      "last_activated": null,
-      "activation_count": null,
-      "outbound_count": 1,
       "inbound_count": 0
     },
     {
@@ -1786,7 +1369,7 @@
       "last_activated": null,
       "activation_count": null,
       "outbound_count": 2,
-      "inbound_count": 10
+      "inbound_count": 5
     },
     {
       "id": "Manim CE",
@@ -1813,12 +1396,12 @@
     {
       "id": "Map Log",
       "path": "_ops/Map Log.md",
-      "type": null,
-      "stage": null,
-      "has_forward_vector": false,
+      "type": "meta",
+      "stage": "foundational",
+      "has_forward_vector": true,
       "last_activated": null,
       "activation_count": null,
-      "outbound_count": 0,
+      "outbound_count": 2,
       "inbound_count": 0
     },
     {
@@ -1829,8 +1412,8 @@
       "has_forward_vector": true,
       "last_activated": null,
       "activation_count": null,
-      "outbound_count": 7,
-      "inbound_count": 4
+      "outbound_count": 6,
+      "inbound_count": 3
     },
     {
       "id": "Matplotlib",
@@ -1939,7 +1522,7 @@
       "has_forward_vector": true,
       "last_activated": "2026-03",
       "activation_count": "1",
-      "outbound_count": 8,
+      "outbound_count": 7,
       "inbound_count": 2
     },
     {
@@ -1983,19 +1566,8 @@
       "has_forward_vector": true,
       "last_activated": null,
       "activation_count": null,
-      "outbound_count": 9,
+      "outbound_count": 8,
       "inbound_count": 20
-    },
-    {
-      "id": "NOTES",
-      "path": "Projects/Floquet Time-Modulated Loops/NOTES.md",
-      "type": null,
-      "stage": null,
-      "has_forward_vector": true,
-      "last_activated": null,
-      "activation_count": null,
-      "outbound_count": 1,
-      "inbound_count": 0
     },
     {
       "id": "Neural Granular Synthesis",
@@ -2039,7 +1611,7 @@
       "last_activated": null,
       "activation_count": null,
       "outbound_count": 0,
-      "inbound_count": 2
+      "inbound_count": 0
     },
     {
       "id": "Octave Equivalence",
@@ -2084,17 +1656,6 @@
       "activation_count": "1",
       "outbound_count": 7,
       "inbound_count": 1
-    },
-    {
-      "id": "PATRONS",
-      "path": "Kuramoto Coupling/phenomena-walk/node_modules/terser/PATRONS.md",
-      "type": null,
-      "stage": null,
-      "has_forward_vector": false,
-      "last_activated": null,
-      "activation_count": null,
-      "outbound_count": 0,
-      "inbound_count": 0
     },
     {
       "id": "PDL Generation Prompt",
@@ -2149,7 +1710,7 @@
       "last_activated": "2026-03-28",
       "activation_count": "1",
       "outbound_count": 18,
-      "inbound_count": 16
+      "inbound_count": 14
     },
     {
       "id": "Palace Audit \u2014 2026-05-28",
@@ -2171,7 +1732,7 @@
       "last_activated": null,
       "activation_count": null,
       "outbound_count": 12,
-      "inbound_count": 13
+      "inbound_count": 14
     },
     {
       "id": "Palace Conatus",
@@ -2182,7 +1743,7 @@
       "last_activated": null,
       "activation_count": null,
       "outbound_count": 10,
-      "inbound_count": 7
+      "inbound_count": 5
     },
     {
       "id": "Palace Enchantment",
@@ -2192,7 +1753,7 @@
       "has_forward_vector": true,
       "last_activated": null,
       "activation_count": null,
-      "outbound_count": 19,
+      "outbound_count": 18,
       "inbound_count": 20
     },
     {
@@ -2214,7 +1775,7 @@
       "has_forward_vector": true,
       "last_activated": "2026-06-05",
       "activation_count": "7",
-      "outbound_count": 16,
+      "outbound_count": 15,
       "inbound_count": 7
     },
     {
@@ -2225,8 +1786,8 @@
       "has_forward_vector": true,
       "last_activated": "2026-03",
       "activation_count": "2",
-      "outbound_count": 22,
-      "inbound_count": 16
+      "outbound_count": 21,
+      "inbound_count": 15
     },
     {
       "id": "Palace Quotes",
@@ -2247,7 +1808,7 @@
       "has_forward_vector": false,
       "last_activated": "2026-05-02",
       "activation_count": "7",
-      "outbound_count": 4,
+      "outbound_count": 3,
       "inbound_count": 13
     },
     {
@@ -2269,8 +1830,8 @@
       "has_forward_vector": true,
       "last_activated": null,
       "activation_count": null,
-      "outbound_count": 8,
-      "inbound_count": 4
+      "outbound_count": 7,
+      "inbound_count": 2
     },
     {
       "id": "Particle Synthesis",
@@ -2303,7 +1864,7 @@
       "last_activated": null,
       "activation_count": null,
       "outbound_count": 5,
-      "inbound_count": 10
+      "inbound_count": 8
     },
     {
       "id": "Philosopher Visits the Entry",
@@ -2313,7 +1874,7 @@
       "has_forward_vector": true,
       "last_activated": "2026-05",
       "activation_count": "1",
-      "outbound_count": 6,
+      "outbound_count": 5,
       "inbound_count": 3
     },
     {
@@ -2324,7 +1885,7 @@
       "has_forward_vector": true,
       "last_activated": "2026-05",
       "activation_count": "1",
-      "outbound_count": 7,
+      "outbound_count": 6,
       "inbound_count": 4
     },
     {
@@ -2335,8 +1896,8 @@
       "has_forward_vector": true,
       "last_activated": null,
       "activation_count": null,
-      "outbound_count": 8,
-      "inbound_count": 2
+      "outbound_count": 7,
+      "inbound_count": 1
     },
     {
       "id": "Piano String Inharmonicity",
@@ -2346,7 +1907,7 @@
       "has_forward_vector": true,
       "last_activated": "2026-04",
       "activation_count": "2",
-      "outbound_count": 8,
+      "outbound_count": 7,
       "inbound_count": 12
     },
     {
@@ -2358,7 +1919,7 @@
       "last_activated": "2026-03",
       "activation_count": "1",
       "outbound_count": 7,
-      "inbound_count": 7
+      "inbound_count": 6
     },
     {
       "id": "Portamento and Physical Pitch Modeling",
@@ -2391,7 +1952,7 @@
       "last_activated": null,
       "activation_count": null,
       "outbound_count": 6,
-      "inbound_count": 17
+      "inbound_count": 15
     },
     {
       "id": "Project Stewardship System",
@@ -2401,30 +1962,8 @@
       "has_forward_vector": true,
       "last_activated": "2026-05-26",
       "activation_count": "4",
-      "outbound_count": 16,
-      "inbound_count": 19
-    },
-    {
-      "id": "Project Stewardship System \u2014 handoff",
-      "path": "Palace development/Project Stewardship System/Project Stewardship System \u2014 handoff.md",
-      "type": null,
-      "stage": null,
-      "has_forward_vector": true,
-      "last_activated": null,
-      "activation_count": null,
-      "outbound_count": 2,
-      "inbound_count": 0
-    },
-    {
-      "id": "QUANTIZATION",
-      "path": "_tools/ComfyUI/QUANTIZATION.md",
-      "type": null,
-      "stage": null,
-      "has_forward_vector": false,
-      "last_activated": null,
-      "activation_count": null,
-      "outbound_count": 0,
-      "inbound_count": 0
+      "outbound_count": 14,
+      "inbound_count": 16
     },
     {
       "id": "Quadratic Interpolation in DSP",
@@ -2446,7 +1985,7 @@
       "last_activated": "2026-03",
       "activation_count": "1",
       "outbound_count": 8,
-      "inbound_count": 16
+      "inbound_count": 15
     },
     {
       "id": "Quantum Synthesizer",
@@ -2460,17 +1999,6 @@
       "inbound_count": 6
     },
     {
-      "id": "README",
-      "path": "_tools/stable-audio-3/optimized/mlx/README.md",
-      "type": null,
-      "stage": null,
-      "has_forward_vector": false,
-      "last_activated": null,
-      "activation_count": null,
-      "outbound_count": 0,
-      "inbound_count": 1
-    },
-    {
       "id": "README - The Palace Guide",
       "path": "README - The Palace Guide.md",
       "type": "meta",
@@ -2480,39 +2008,6 @@
       "activation_count": null,
       "outbound_count": 4,
       "inbound_count": 6
-    },
-    {
-      "id": "README \u2014 Mathieu Resonator",
-      "path": "Projects/Floquet Time-Modulated Loops/RNBO/README \u2014 Mathieu Resonator.md",
-      "type": null,
-      "stage": null,
-      "has_forward_vector": false,
-      "last_activated": null,
-      "activation_count": null,
-      "outbound_count": 0,
-      "inbound_count": 0
-    },
-    {
-      "id": "README-es",
-      "path": "Kuramoto Coupling/phenomena-walk/node_modules/dotenv/README-es.md",
-      "type": null,
-      "stage": null,
-      "has_forward_vector": false,
-      "last_activated": null,
-      "activation_count": null,
-      "outbound_count": 0,
-      "inbound_count": 0
-    },
-    {
-      "id": "RECONNAISSANCE",
-      "path": "Projects/Generative Preset Development/ableton-wavetable/RECONNAISSANCE.md",
-      "type": "practice",
-      "stage": "sprout",
-      "has_forward_vector": false,
-      "last_activated": null,
-      "activation_count": null,
-      "outbound_count": 0,
-      "inbound_count": 0
     },
     {
       "id": "RNBO codebox~ smith",
@@ -2537,17 +2032,6 @@
       "inbound_count": 4
     },
     {
-      "id": "RPC-v0.1",
-      "path": "Projects/Semantic Delay/daemon/RPC-v0.1.md",
-      "type": null,
-      "stage": null,
-      "has_forward_vector": false,
-      "last_activated": null,
-      "activation_count": null,
-      "outbound_count": 0,
-      "inbound_count": 0
-    },
-    {
       "id": "Rank-N Lattice Analysis",
       "path": "Rank-N Lattice Analysis.md",
       "type": "concept",
@@ -2557,17 +2041,6 @@
       "activation_count": "1",
       "outbound_count": 5,
       "inbound_count": 3
-    },
-    {
-      "id": "Readme",
-      "path": "Kuramoto Coupling/phenomena-walk/node_modules/events/Readme.md",
-      "type": null,
-      "stage": null,
-      "has_forward_vector": false,
-      "last_activated": null,
-      "activation_count": null,
-      "outbound_count": 0,
-      "inbound_count": 0
     },
     {
       "id": "Registry Pattern",
@@ -2610,19 +2083,8 @@
       "has_forward_vector": true,
       "last_activated": "2026-03",
       "activation_count": "8",
-      "outbound_count": 10,
-      "inbound_count": 12
-    },
-    {
-      "id": "Retrospective Delay \u2014 Staging",
-      "path": "Projects/Retrospective Delay/Retrospective Delay \u2014 Staging.md",
-      "type": null,
-      "stage": null,
-      "has_forward_vector": true,
-      "last_activated": null,
-      "activation_count": null,
-      "outbound_count": 2,
-      "inbound_count": 1
+      "outbound_count": 9,
+      "inbound_count": 7
     },
     {
       "id": "Revival Ceremony",
@@ -2644,29 +2106,7 @@
       "last_activated": null,
       "activation_count": null,
       "outbound_count": 10,
-      "inbound_count": 20
-    },
-    {
-      "id": "SECURITY",
-      "path": "_tools/ComfyUI/SECURITY.md",
-      "type": null,
-      "stage": null,
-      "has_forward_vector": false,
-      "last_activated": null,
-      "activation_count": null,
-      "outbound_count": 0,
-      "inbound_count": 0
-    },
-    {
-      "id": "SKILL",
-      "path": "_tools/ComfyUI/venv/lib/python3.12/site-packages/typer/.agents/skills/typer/SKILL.md",
-      "type": null,
-      "stage": null,
-      "has_forward_vector": false,
-      "last_activated": null,
-      "activation_count": null,
-      "outbound_count": 0,
-      "inbound_count": 0
+      "inbound_count": 21
     },
     {
       "id": "SMPTE LTC",
@@ -2677,28 +2117,6 @@
       "last_activated": "2026-03",
       "activation_count": "1",
       "outbound_count": 4,
-      "inbound_count": 0
-    },
-    {
-      "id": "STAGE-A-LESSONS",
-      "path": "_ops/agents/permanent/generative-sample-libraries/STAGE-A-LESSONS.md",
-      "type": null,
-      "stage": null,
-      "has_forward_vector": false,
-      "last_activated": null,
-      "activation_count": null,
-      "outbound_count": 0,
-      "inbound_count": 0
-    },
-    {
-      "id": "STAGE-F-COMPLETE",
-      "path": "Palace development/Project Stewardship System/STAGE-F-COMPLETE.md",
-      "type": null,
-      "stage": null,
-      "has_forward_vector": false,
-      "last_activated": null,
-      "activation_count": null,
-      "outbound_count": 0,
       "inbound_count": 0
     },
     {
@@ -2754,7 +2172,7 @@
       "last_activated": "2026-03",
       "activation_count": "5",
       "outbound_count": 21,
-      "inbound_count": 32
+      "inbound_count": 33
     },
     {
       "id": "Scale-Stratified Identity",
@@ -2842,18 +2260,7 @@
       "last_activated": "2026-03",
       "activation_count": "12",
       "outbound_count": 9,
-      "inbound_count": 5
-    },
-    {
-      "id": "Shepard Tone Synthesizer \u2014 Staging",
-      "path": "Projects/Shepard Tone Synthesizer/Shepard Tone Synthesizer \u2014 Staging.md",
-      "type": null,
-      "stage": null,
-      "has_forward_vector": true,
-      "last_activated": null,
-      "activation_count": null,
-      "outbound_count": 1,
-      "inbound_count": 0
+      "inbound_count": 4
     },
     {
       "id": "Shimmer Cloud",
@@ -2930,7 +2337,7 @@
       "last_activated": "2026-04-01",
       "activation_count": "12",
       "outbound_count": 10,
-      "inbound_count": 56
+      "inbound_count": 54
     },
     {
       "id": "Spore Check Ceremony",
@@ -2955,28 +2362,6 @@
       "inbound_count": 0
     },
     {
-      "id": "Stage E \u2014 Automated Trickster \u2014 handoff",
-      "path": "Palace development/Project Stewardship System/Stage E \u2014 Automated Trickster \u2014 handoff.md",
-      "type": null,
-      "stage": null,
-      "has_forward_vector": true,
-      "last_activated": null,
-      "activation_count": null,
-      "outbound_count": 6,
-      "inbound_count": 2
-    },
-    {
-      "id": "Stage F \u2014 Two Paths \u2014 handoff",
-      "path": "Palace development/Project Stewardship System/Stage F \u2014 Two Paths \u2014 handoff.md",
-      "type": null,
-      "stage": null,
-      "has_forward_vector": true,
-      "last_activated": null,
-      "activation_count": null,
-      "outbound_count": 7,
-      "inbound_count": 1
-    },
-    {
       "id": "State Machine",
       "path": "State Machine.md",
       "type": "concept",
@@ -2996,7 +2381,7 @@
       "last_activated": "2026-05",
       "activation_count": "3",
       "outbound_count": 10,
-      "inbound_count": 10
+      "inbound_count": 9
     },
     {
       "id": "Streaming details",
@@ -3050,8 +2435,8 @@
       "has_forward_vector": false,
       "last_activated": "2026-03",
       "activation_count": "1",
-      "outbound_count": 14,
-      "inbound_count": 23
+      "outbound_count": 13,
+      "inbound_count": 22
     },
     {
       "id": "Symbiotic Skills",
@@ -3061,7 +2446,7 @@
       "has_forward_vector": true,
       "last_activated": "2026-05",
       "activation_count": "4",
-      "outbound_count": 11,
+      "outbound_count": 10,
       "inbound_count": 17
     },
     {
@@ -3087,17 +2472,6 @@
       "inbound_count": 3
     },
     {
-      "id": "THIRD-PARTY-NOTICES",
-      "path": "Kuramoto Coupling/phenomena-walk/node_modules/prettier/THIRD-PARTY-NOTICES.md",
-      "type": null,
-      "stage": null,
-      "has_forward_vector": false,
-      "last_activated": null,
-      "activation_count": null,
-      "outbound_count": 0,
-      "inbound_count": 0
-    },
-    {
       "id": "Talking Keyboard",
       "path": "Projects/Talking Keyboard.md",
       "type": "project",
@@ -3105,7 +2479,7 @@
       "has_forward_vector": true,
       "last_activated": "2026-05",
       "activation_count": null,
-      "outbound_count": 7,
+      "outbound_count": 6,
       "inbound_count": 4
     },
     {
@@ -3160,8 +2534,8 @@
       "has_forward_vector": true,
       "last_activated": "2026-05",
       "activation_count": "1",
-      "outbound_count": 7,
-      "inbound_count": 4
+      "outbound_count": 6,
+      "inbound_count": 3
     },
     {
       "id": "The Fortress and the Threshold",
@@ -3172,7 +2546,7 @@
       "last_activated": "2026-05",
       "activation_count": "2",
       "outbound_count": 10,
-      "inbound_count": 9
+      "inbound_count": 8
     },
     {
       "id": "The Four Virtues",
@@ -3205,7 +2579,7 @@
       "last_activated": "2026-05",
       "activation_count": "1",
       "outbound_count": 11,
-      "inbound_count": 16
+      "inbound_count": 10
     },
     {
       "id": "The Substrate Drifts",
@@ -3237,8 +2611,8 @@
       "has_forward_vector": true,
       "last_activated": "2026-04",
       "activation_count": "1",
-      "outbound_count": 12,
-      "inbound_count": 8
+      "outbound_count": 10,
+      "inbound_count": 6
     },
     {
       "id": "Three.js",
@@ -3318,17 +2692,6 @@
       "inbound_count": 4
     },
     {
-      "id": "Torus Warping Catalog",
-      "path": "Projects/2D Torus Wavetable Synthesizer/Torus Warping Catalog.md",
-      "type": "hub",
-      "stage": "growing",
-      "has_forward_vector": true,
-      "last_activated": null,
-      "activation_count": null,
-      "outbound_count": 8,
-      "inbound_count": 4
-    },
-    {
       "id": "Tree of Thoughts",
       "path": "Palace development/Tree of Thoughts.md",
       "type": "source",
@@ -3348,7 +2711,7 @@
       "last_activated": "2026-04-01",
       "activation_count": "2",
       "outbound_count": 24,
-      "inbound_count": 27
+      "inbound_count": 25
     },
     {
       "id": "Tristitia Generator",
@@ -3447,7 +2810,7 @@
       "last_activated": "2026-06-05",
       "activation_count": "2",
       "outbound_count": 10,
-      "inbound_count": 8
+      "inbound_count": 7
     },
     {
       "id": "Wavetable Synthesis -- Research & Higher-Dimensional Design",
@@ -3469,7 +2832,7 @@
       "last_activated": "2026-06-05",
       "activation_count": "4",
       "outbound_count": 9,
-      "inbound_count": 13
+      "inbound_count": 14
     },
     {
       "id": "Weave Ceremony \u2014 Context",
@@ -3527,179 +2890,14 @@
       "inbound_count": 4
     },
     {
-      "id": "api-node",
-      "path": "_tools/ComfyUI/.github/PULL_REQUEST_TEMPLATE/api-node.md",
-      "type": null,
-      "stage": null,
-      "has_forward_vector": false,
-      "last_activated": null,
-      "activation_count": null,
-      "outbound_count": 0,
-      "inbound_count": 0
-    },
-    {
-      "id": "ar",
-      "path": "_tools/ComfyUI/venv/lib/python3.12/site-packages/comfyui_embedded_docs/docs/wanBlockSwap/ar.md",
-      "type": null,
-      "stage": null,
-      "has_forward_vector": false,
-      "last_activated": null,
-      "activation_count": null,
-      "outbound_count": 0,
-      "inbound_count": 0
-    },
-    {
-      "id": "audition-seed-attack-pair",
-      "path": "Projects/Blood Compressor/audition-seed-attack-pair.md",
-      "type": "artifact",
-      "stage": null,
-      "has_forward_vector": false,
-      "last_activated": null,
-      "activation_count": null,
-      "outbound_count": 3,
-      "inbound_count": 0
-    },
-    {
-      "id": "autoencoder",
-      "path": "_tools/stable-audio-3/docs/workflows/autoencoder.md",
-      "type": null,
-      "stage": null,
-      "has_forward_vector": false,
-      "last_activated": null,
-      "activation_count": null,
-      "outbound_count": 0,
-      "inbound_count": 0
-    },
-    {
-      "id": "best_practices",
-      "path": ".venvs/kokoro/lib/python3.12/site-packages/pyparsing/ai/best_practices.md",
-      "type": null,
-      "stage": null,
-      "has_forward_vector": false,
-      "last_activated": null,
-      "activation_count": null,
-      "outbound_count": 0,
-      "inbound_count": 0
-    },
-    {
-      "id": "build-log",
-      "path": "_ops/sample-libraries/talking-keyboard/build-log.md",
-      "type": null,
-      "stage": null,
-      "has_forward_vector": false,
-      "last_activated": null,
-      "activation_count": null,
-      "outbound_count": 0,
-      "inbound_count": 0
-    },
-    {
-      "id": "card",
-      "path": "Enrichment/card-043/card.md",
-      "type": null,
-      "stage": null,
-      "has_forward_vector": false,
-      "last_activated": null,
-      "activation_count": null,
-      "outbound_count": 0,
-      "inbound_count": 0
-    },
-    {
-      "id": "compression-always-loses",
-      "path": "Palace development/Generative Compression/compression-always-loses.md",
-      "type": null,
-      "stage": null,
-      "has_forward_vector": false,
-      "last_activated": null,
-      "activation_count": null,
-      "outbound_count": 0,
-      "inbound_count": 0
-    },
-    {
       "id": "coordinator-synthesis-template",
       "path": "_ops/swarm/coordinator-synthesis-template.md",
-      "type": null,
-      "stage": null,
-      "has_forward_vector": false,
+      "type": "meta",
+      "stage": "growing",
+      "has_forward_vector": true,
       "last_activated": null,
       "activation_count": null,
-      "outbound_count": 0,
-      "inbound_count": 0
-    },
-    {
-      "id": "curtis-roads-voice-act",
-      "path": "Enrichment/Archive/card-037/curtis-roads-voice-act.md",
-      "type": null,
-      "stage": null,
-      "has_forward_vector": false,
-      "last_activated": null,
-      "activation_count": null,
-      "outbound_count": 0,
-      "inbound_count": 0
-    },
-    {
-      "id": "datasetcard_template",
-      "path": "_tools/stable-audio-3/.venv/lib/python3.10/site-packages/huggingface_hub/templates/datasetcard_template.md",
-      "type": null,
-      "stage": null,
-      "has_forward_vector": false,
-      "last_activated": null,
-      "activation_count": null,
-      "outbound_count": 0,
-      "inbound_count": 0
-    },
-    {
-      "id": "design-paradox-provocation",
-      "path": "Enrichment/Archive/card-036/design-paradox-provocation.md",
-      "type": null,
-      "stage": null,
-      "has_forward_vector": false,
-      "last_activated": null,
-      "activation_count": null,
-      "outbound_count": 0,
-      "inbound_count": 0
-    },
-    {
-      "id": "dispatch1-control",
-      "path": "_ops/swarm/experiments/stigmergy-weave-ab-2026-05-29/reports/dispatch1-control.md",
-      "type": null,
-      "stage": null,
-      "has_forward_vector": false,
-      "last_activated": null,
-      "activation_count": null,
-      "outbound_count": 0,
-      "inbound_count": 0
-    },
-    {
-      "id": "en",
-      "path": "_tools/ComfyUI/venv/lib/python3.12/site-packages/comfyui_embedded_docs/docs/wanBlockSwap/en.md",
-      "type": null,
-      "stage": null,
-      "has_forward_vector": false,
-      "last_activated": null,
-      "activation_count": null,
-      "outbound_count": 0,
-      "inbound_count": 0
-    },
-    {
-      "id": "es",
-      "path": "_tools/ComfyUI/venv/lib/python3.12/site-packages/comfyui_embedded_docs/docs/wanBlockSwap/es.md",
-      "type": null,
-      "stage": null,
-      "has_forward_vector": false,
-      "last_activated": null,
-      "activation_count": null,
-      "outbound_count": 0,
-      "inbound_count": 0
-    },
-    {
-      "id": "fa",
-      "path": "_tools/ComfyUI/venv/lib/python3.12/site-packages/comfyui_embedded_docs/docs/wanBlockSwap/fa.md",
-      "type": null,
-      "stage": null,
-      "has_forward_vector": false,
-      "last_activated": null,
-      "activation_count": null,
-      "outbound_count": 0,
+      "outbound_count": 2,
       "inbound_count": 0
     },
     {
@@ -3714,325 +2912,6 @@
       "inbound_count": 0
     },
     {
-      "id": "findings",
-      "path": "_ops/swarm/experiments/stigmergy-weave-ab-2026-05-29/findings.md",
-      "type": "meta",
-      "stage": "sprout",
-      "has_forward_vector": true,
-      "last_activated": null,
-      "activation_count": null,
-      "outbound_count": 3,
-      "inbound_count": 0
-    },
-    {
-      "id": "first-sixty-seconds",
-      "path": "Enrichment/Archive/card-033/first-sixty-seconds.md",
-      "type": null,
-      "stage": null,
-      "has_forward_vector": false,
-      "last_activated": null,
-      "activation_count": null,
-      "outbound_count": 0,
-      "inbound_count": 0
-    },
-    {
-      "id": "flocking-maker-comparison",
-      "path": "Flocking/flocking-maker-comparison.md",
-      "type": null,
-      "stage": null,
-      "has_forward_vector": false,
-      "last_activated": null,
-      "activation_count": null,
-      "outbound_count": 5,
-      "inbound_count": 0
-    },
-    {
-      "id": "fr",
-      "path": "_tools/ComfyUI/venv/lib/python3.12/site-packages/comfyui_embedded_docs/docs/wanBlockSwap/fr.md",
-      "type": null,
-      "stage": null,
-      "has_forward_vector": false,
-      "last_activated": null,
-      "activation_count": null,
-      "outbound_count": 0,
-      "inbound_count": 0
-    },
-    {
-      "id": "fv-answer-q1-rdp-everywhere",
-      "path": "Enrichment/Archive/card-022/fv-answer-q1-rdp-everywhere.md",
-      "type": null,
-      "stage": null,
-      "has_forward_vector": false,
-      "last_activated": null,
-      "activation_count": null,
-      "outbound_count": 0,
-      "inbound_count": 0
-    },
-    {
-      "id": "fv-answer-q3",
-      "path": "Palace development/Generative Compression/fv-answer-q3.md",
-      "type": null,
-      "stage": null,
-      "has_forward_vector": false,
-      "last_activated": null,
-      "activation_count": null,
-      "outbound_count": 0,
-      "inbound_count": 0
-    },
-    {
-      "id": "fv-answer-q3-axis-in-manifest",
-      "path": "Enrichment/Archive/card-023/fv-answer-q3-axis-in-manifest.md",
-      "type": null,
-      "stage": null,
-      "has_forward_vector": false,
-      "last_activated": null,
-      "activation_count": null,
-      "outbound_count": 0,
-      "inbound_count": 0
-    },
-    {
-      "id": "fv-refinement-q2",
-      "path": "Palace development/Generative Compression/fv-refinement-q2.md",
-      "type": null,
-      "stage": null,
-      "has_forward_vector": false,
-      "last_activated": null,
-      "activation_count": null,
-      "outbound_count": 0,
-      "inbound_count": 0
-    },
-    {
-      "id": "fv-status-trickster-inbox",
-      "path": "Enrichment/Archive/card-024/fv-status-trickster-inbox.md",
-      "type": null,
-      "stage": null,
-      "has_forward_vector": false,
-      "last_activated": null,
-      "activation_count": null,
-      "outbound_count": 0,
-      "inbound_count": 0
-    },
-    {
-      "id": "fv-structural-answer-model-routing",
-      "path": "Enrichment/Archive/card-025/fv-structural-answer-model-routing.md",
-      "type": null,
-      "stage": null,
-      "has_forward_vector": false,
-      "last_activated": null,
-      "activation_count": null,
-      "outbound_count": 0,
-      "inbound_count": 0
-    },
-    {
-      "id": "graffiti-re-derivation",
-      "path": "Enrichment/Archive/card-027/graffiti-re-derivation.md",
-      "type": null,
-      "stage": null,
-      "has_forward_vector": false,
-      "last_activated": null,
-      "activation_count": null,
-      "outbound_count": 0,
-      "inbound_count": 0
-    },
-    {
-      "id": "haiku",
-      "path": "Enrichment/card-042/haiku.md",
-      "type": null,
-      "stage": null,
-      "has_forward_vector": false,
-      "last_activated": null,
-      "activation_count": null,
-      "outbound_count": 0,
-      "inbound_count": 0
-    },
-    {
-      "id": "haiku-grotesque-pedagogy",
-      "path": "Projects/Biomechanical Synthesis/haiku-grotesque-pedagogy.md",
-      "type": "artifact",
-      "stage": null,
-      "has_forward_vector": false,
-      "last_activated": null,
-      "activation_count": null,
-      "outbound_count": 1,
-      "inbound_count": 0
-    },
-    {
-      "id": "identity-filter-defense",
-      "path": "Enrichment/Archive/card-035/identity-filter-defense.md",
-      "type": null,
-      "stage": null,
-      "has_forward_vector": false,
-      "last_activated": null,
-      "activation_count": null,
-      "outbound_count": 0,
-      "inbound_count": 0
-    },
-    {
-      "id": "inbox",
-      "path": "Enrichment/inbox.md",
-      "type": null,
-      "stage": null,
-      "has_forward_vector": false,
-      "last_activated": null,
-      "activation_count": null,
-      "outbound_count": 0,
-      "inbound_count": 0
-    },
-    {
-      "id": "inference",
-      "path": "_tools/stable-audio-3/docs/workflows/inference.md",
-      "type": null,
-      "stage": null,
-      "has_forward_vector": false,
-      "last_activated": null,
-      "activation_count": null,
-      "outbound_count": 0,
-      "inbound_count": 0
-    },
-    {
-      "id": "ja",
-      "path": "_tools/ComfyUI/venv/lib/python3.12/site-packages/comfyui_embedded_docs/docs/wanBlockSwap/ja.md",
-      "type": null,
-      "stage": null,
-      "has_forward_vector": false,
-      "last_activated": null,
-      "activation_count": null,
-      "outbound_count": 0,
-      "inbound_count": 0
-    },
-    {
-      "id": "ko",
-      "path": "_tools/ComfyUI/venv/lib/python3.12/site-packages/comfyui_embedded_docs/docs/wanBlockSwap/ko.md",
-      "type": null,
-      "stage": null,
-      "has_forward_vector": false,
-      "last_activated": null,
-      "activation_count": null,
-      "outbound_count": 0,
-      "inbound_count": 0
-    },
-    {
-      "id": "link-proposal-lcia-to-pais",
-      "path": "Enrichment/Archive/card-028/link-proposal-lcia-to-pais.md",
-      "type": null,
-      "stage": null,
-      "has_forward_vector": false,
-      "last_activated": null,
-      "activation_count": null,
-      "outbound_count": 0,
-      "inbound_count": 0
-    },
-    {
-      "id": "link-proposal-pais-to-lcia",
-      "path": "Enrichment/Archive/card-029/link-proposal-pais-to-lcia.md",
-      "type": null,
-      "stage": null,
-      "has_forward_vector": false,
-      "last_activated": null,
-      "activation_count": null,
-      "outbound_count": 0,
-      "inbound_count": 0
-    },
-    {
-      "id": "link-upgrade",
-      "path": "Enrichment/Archive/card-021/link-upgrade.md",
-      "type": null,
-      "stage": null,
-      "has_forward_vector": false,
-      "last_activated": null,
-      "activation_count": null,
-      "outbound_count": 0,
-      "inbound_count": 0
-    },
-    {
-      "id": "local-hardware-profile",
-      "path": "Palace development/Palace Agent Infrastructure Spec/local-hardware-profile.md",
-      "type": null,
-      "stage": null,
-      "has_forward_vector": false,
-      "last_activated": null,
-      "activation_count": null,
-      "outbound_count": 0,
-      "inbound_count": 0
-    },
-    {
-      "id": "log_slider_python_pseudocode",
-      "path": "Logarithmic Interface Scaling/log_slider_python_pseudocode.md",
-      "type": null,
-      "stage": null,
-      "has_forward_vector": true,
-      "last_activated": null,
-      "activation_count": null,
-      "outbound_count": 1,
-      "inbound_count": 0
-    },
-    {
-      "id": "logarithmic_scaling_guide",
-      "path": "Logarithmic Interface Scaling/logarithmic_scaling_guide.md",
-      "type": null,
-      "stage": null,
-      "has_forward_vector": true,
-      "last_activated": null,
-      "activation_count": null,
-      "outbound_count": 1,
-      "inbound_count": 0
-    },
-    {
-      "id": "lora",
-      "path": "_tools/stable-audio-3/docs/workflows/lora.md",
-      "type": null,
-      "stage": null,
-      "has_forward_vector": false,
-      "last_activated": null,
-      "activation_count": null,
-      "outbound_count": 0,
-      "inbound_count": 0
-    },
-    {
-      "id": "mockup-imagery-brief",
-      "path": "Projects/Retrospective Delay/stage-1/mockup-imagery-brief.md",
-      "type": "spec",
-      "stage": null,
-      "has_forward_vector": false,
-      "last_activated": null,
-      "activation_count": null,
-      "outbound_count": 2,
-      "inbound_count": 0
-    },
-    {
-      "id": "model-overview",
-      "path": "_tools/stable-audio-3/docs/guides/model-overview.md",
-      "type": null,
-      "stage": null,
-      "has_forward_vector": false,
-      "last_activated": null,
-      "activation_count": null,
-      "outbound_count": 0,
-      "inbound_count": 0
-    },
-    {
-      "id": "modelcard_template",
-      "path": "_tools/stable-audio-3/.venv/lib/python3.10/site-packages/huggingface_hub/templates/modelcard_template.md",
-      "type": null,
-      "stage": null,
-      "has_forward_vector": false,
-      "last_activated": null,
-      "activation_count": null,
-      "outbound_count": 0,
-      "inbound_count": 0
-    },
-    {
-      "id": "neural_oscillator_dev_plan",
-      "path": "Projects/Action Potential Oscillator/neural_oscillator_dev_plan.md",
-      "type": null,
-      "stage": null,
-      "has_forward_vector": true,
-      "last_activated": null,
-      "activation_count": null,
-      "outbound_count": 1,
-      "inbound_count": 0
-    },
-    {
       "id": "p5.js",
       "path": "Shop/p5.js.md",
       "type": "specialist",
@@ -4041,392 +2920,18 @@
       "last_activated": null,
       "activation_count": null,
       "outbound_count": 3,
-      "inbound_count": 2
-    },
-    {
-      "id": "parameter-at-the-wall",
-      "path": "Enrichment/card-043/parameter-at-the-wall.md",
-      "type": null,
-      "stage": null,
-      "has_forward_vector": false,
-      "last_activated": null,
-      "activation_count": null,
-      "outbound_count": 0,
-      "inbound_count": 0
-    },
-    {
-      "id": "particle-koan",
-      "path": "Enrichment/card-038/particle-koan.md",
-      "type": null,
-      "stage": null,
-      "has_forward_vector": false,
-      "last_activated": null,
-      "activation_count": null,
-      "outbound_count": 0,
-      "inbound_count": 0
-    },
-    {
-      "id": "patch-spec",
-      "path": "Projects/Retrospective Delay/stage-1/patch-spec.md",
-      "type": "spec",
-      "stage": null,
-      "has_forward_vector": false,
-      "last_activated": null,
-      "activation_count": null,
-      "outbound_count": 1,
-      "inbound_count": 0
-    },
-    {
-      "id": "patchFs",
-      "path": "Kuramoto Coupling/phenomena-walk/node_modules/fs-monkey/docs/api/patchFs.md",
-      "type": null,
-      "stage": null,
-      "has_forward_vector": false,
-      "last_activated": null,
-      "activation_count": null,
-      "outbound_count": 0,
-      "inbound_count": 0
-    },
-    {
-      "id": "patchRequire",
-      "path": "Kuramoto Coupling/phenomena-walk/node_modules/fs-monkey/docs/api/patchRequire.md",
-      "type": null,
-      "stage": null,
-      "has_forward_vector": false,
-      "last_activated": null,
-      "activation_count": null,
-      "outbound_count": 0,
-      "inbound_count": 0
-    },
-    {
-      "id": "pheromone-traces",
-      "path": "_ops/swarm/experiments/stigmergy-weave-ab-2026-05-29/traces/pheromone-traces.md",
-      "type": null,
-      "stage": null,
-      "has_forward_vector": false,
-      "last_activated": null,
-      "activation_count": null,
-      "outbound_count": 0,
-      "inbound_count": 0
-    },
-    {
-      "id": "plan",
-      "path": "_ops/swarm/experiments/stigmergy-weave-ab-2026-05-29/plan.md",
-      "type": "meta",
-      "stage": "seed",
-      "has_forward_vector": true,
-      "last_activated": null,
-      "activation_count": null,
-      "outbound_count": 3,
-      "inbound_count": 0
-    },
-    {
-      "id": "prompting",
-      "path": "_tools/stable-audio-3/docs/guides/prompting.md",
-      "type": null,
-      "stage": null,
-      "has_forward_vector": false,
-      "last_activated": null,
-      "activation_count": null,
-      "outbound_count": 0,
-      "inbound_count": 0
-    },
-    {
-      "id": "pt-BR",
-      "path": "_tools/ComfyUI/venv/lib/python3.12/site-packages/comfyui_embedded_docs/docs/wanBlockSwap/pt-BR.md",
-      "type": null,
-      "stage": null,
-      "has_forward_vector": false,
-      "last_activated": null,
-      "activation_count": null,
-      "outbound_count": 0,
-      "inbound_count": 0
-    },
-    {
-      "id": "radio-play-script",
-      "path": "Projects/Blood Compressor/radio-play-script.md",
-      "type": "artifact",
-      "stage": null,
-      "has_forward_vector": false,
-      "last_activated": null,
-      "activation_count": null,
-      "outbound_count": 3,
-      "inbound_count": 1
-    },
-    {
-      "id": "readme",
-      "path": "Kuramoto Coupling/phenomena-walk/node_modules/to-fast-properties/readme.md",
-      "type": null,
-      "stage": null,
-      "has_forward_vector": false,
-      "last_activated": null,
-      "activation_count": null,
-      "outbound_count": 0,
-      "inbound_count": 0
-    },
-    {
-      "id": "recipe-p1",
-      "path": "Projects/Wallpaper Groups/recipe-p1.md",
-      "type": null,
-      "stage": null,
-      "has_forward_vector": false,
-      "last_activated": null,
-      "activation_count": null,
-      "outbound_count": 0,
-      "inbound_count": 0
-    },
-    {
-      "id": "recipe-p2",
-      "path": "Projects/Wallpaper Groups/recipe-p2.md",
-      "type": null,
-      "stage": null,
-      "has_forward_vector": false,
-      "last_activated": null,
-      "activation_count": null,
-      "outbound_count": 0,
-      "inbound_count": 0
-    },
-    {
-      "id": "recipe-p3",
-      "path": "Projects/Wallpaper Groups/recipe-p3.md",
-      "type": null,
-      "stage": null,
-      "has_forward_vector": false,
-      "last_activated": null,
-      "activation_count": null,
-      "outbound_count": 0,
-      "inbound_count": 0
-    },
-    {
-      "id": "recipe-p6",
-      "path": "Projects/Wallpaper Groups/recipe-p6.md",
-      "type": null,
-      "stage": null,
-      "has_forward_vector": false,
-      "last_activated": null,
-      "activation_count": null,
-      "outbound_count": 0,
-      "inbound_count": 0
-    },
-    {
-      "id": "recipe-pm",
-      "path": "Projects/Wallpaper Groups/recipe-pm.md",
-      "type": null,
-      "stage": null,
-      "has_forward_vector": false,
-      "last_activated": null,
-      "activation_count": null,
-      "outbound_count": 0,
-      "inbound_count": 0
-    },
-    {
-      "id": "ru",
-      "path": "_tools/ComfyUI/venv/lib/python3.12/site-packages/comfyui_embedded_docs/docs/wanBlockSwap/ru.md",
-      "type": null,
-      "stage": null,
-      "has_forward_vector": false,
-      "last_activated": null,
-      "activation_count": null,
-      "outbound_count": 0,
-      "inbound_count": 0
-    },
-    {
-      "id": "security",
-      "path": "Kuramoto Coupling/phenomena-walk/node_modules/events/security.md",
-      "type": null,
-      "stage": null,
-      "has_forward_vector": false,
-      "last_activated": null,
-      "activation_count": null,
-      "outbound_count": 0,
-      "inbound_count": 0
-    },
-    {
-      "id": "session-1-implementation",
-      "path": "Projects/Retrospective Delay/session-1-implementation.md",
-      "type": null,
-      "stage": null,
-      "has_forward_vector": true,
-      "last_activated": null,
-      "activation_count": null,
-      "outbound_count": 1,
-      "inbound_count": 0
-    },
-    {
-      "id": "sfx-cue-sheet",
-      "path": "Projects/Blood Compressor/sfx-cue-sheet.md",
-      "type": "artifact",
-      "stage": null,
-      "has_forward_vector": false,
-      "last_activated": null,
-      "activation_count": null,
-      "outbound_count": 1,
-      "inbound_count": 1
-    },
-    {
-      "id": "skeptic-voice-act",
-      "path": "Enrichment/Archive/card-030/skeptic-voice-act.md",
-      "type": null,
-      "stage": null,
-      "has_forward_vector": false,
-      "last_activated": null,
-      "activation_count": null,
-      "outbound_count": 0,
-      "inbound_count": 0
-    },
-    {
-      "id": "sketch-brief-karplus-strong",
-      "path": "Projects/Waveguide Synthesizer/sketch-brief-karplus-strong.md",
-      "type": null,
-      "stage": null,
-      "has_forward_vector": false,
-      "last_activated": null,
-      "activation_count": null,
-      "outbound_count": 0,
-      "inbound_count": 0
-    },
-    {
-      "id": "spinoza-zhuangzi-on-striving",
-      "path": "Spinoza Conatus/spinoza-zhuangzi-on-striving.md",
-      "type": "source",
-      "stage": "mature",
-      "has_forward_vector": true,
-      "last_activated": "2026-05",
-      "activation_count": "1",
-      "outbound_count": 7,
-      "inbound_count": 1
-    },
-    {
-      "id": "stage-1-the-witness",
-      "path": "Projects/Retrospective Delay/stage-1/stage-1-the-witness.md",
-      "type": null,
-      "stage": "seed",
-      "has_forward_vector": true,
-      "last_activated": null,
-      "activation_count": null,
-      "outbound_count": 6,
-      "inbound_count": 0
-    },
-    {
-      "id": "stage-5-user-voice",
-      "path": "Enrichment/card-041/stage-5-user-voice.md",
-      "type": null,
-      "stage": null,
-      "has_forward_vector": false,
-      "last_activated": null,
-      "activation_count": null,
-      "outbound_count": 0,
-      "inbound_count": 0
-    },
-    {
-      "id": "suno-slime-mold",
-      "path": "Projects/Slime Mold Delay/suno-slime-mold.md",
-      "type": null,
-      "stage": null,
-      "has_forward_vector": false,
-      "last_activated": null,
-      "activation_count": null,
-      "outbound_count": 0,
-      "inbound_count": 0
-    },
-    {
-      "id": "supervisor-prompt",
-      "path": "Enrichment/supervisor-prompt.md",
-      "type": null,
-      "stage": null,
-      "has_forward_vector": false,
-      "last_activated": null,
-      "activation_count": null,
-      "outbound_count": 0,
-      "inbound_count": 0
-    },
-    {
-      "id": "tr",
-      "path": "_tools/ComfyUI/venv/lib/python3.12/site-packages/comfyui_embedded_docs/docs/wanBlockSwap/tr.md",
-      "type": null,
-      "stage": null,
-      "has_forward_vector": false,
-      "last_activated": null,
-      "activation_count": null,
-      "outbound_count": 0,
-      "inbound_count": 0
-    },
-    {
-      "id": "twelve-word-compression",
-      "path": "Projects/Inharmonic Wavetable Synthesis/twelve-word-compression.md",
-      "type": null,
-      "stage": null,
-      "has_forward_vector": false,
-      "last_activated": null,
-      "activation_count": null,
-      "outbound_count": 0,
-      "inbound_count": 0
-    },
-    {
-      "id": "twelve-word-summary",
-      "path": "Enrichment/Archive/card-031/twelve-word-summary.md",
-      "type": null,
-      "stage": null,
-      "has_forward_vector": false,
-      "last_activated": null,
-      "activation_count": null,
-      "outbound_count": 0,
-      "inbound_count": 0
-    },
-    {
-      "id": "visuals-spec",
-      "path": "Projects/Blood Compressor/visuals-spec.md",
-      "type": "artifact",
-      "stage": null,
-      "has_forward_vector": false,
-      "last_activated": null,
-      "activation_count": null,
-      "outbound_count": 1,
       "inbound_count": 0
     },
     {
       "id": "worker-prompt-template",
       "path": "_ops/swarm/worker-prompt-template.md",
-      "type": null,
-      "stage": null,
-      "has_forward_vector": false,
-      "last_activated": null,
-      "activation_count": null,
-      "outbound_count": 0,
-      "inbound_count": 0
-    },
-    {
-      "id": "zh",
-      "path": "_tools/ComfyUI/venv/lib/python3.12/site-packages/comfyui_embedded_docs/docs/wanBlockSwap/zh.md",
-      "type": null,
-      "stage": null,
-      "has_forward_vector": false,
-      "last_activated": null,
-      "activation_count": null,
-      "outbound_count": 0,
-      "inbound_count": 0
-    },
-    {
-      "id": "zh-TW",
-      "path": "_tools/ComfyUI/venv/lib/python3.12/site-packages/comfyui_embedded_docs/docs/wanBlockSwap/zh-TW.md",
-      "type": null,
-      "stage": null,
-      "has_forward_vector": false,
-      "last_activated": null,
-      "activation_count": null,
-      "outbound_count": 0,
-      "inbound_count": 0
-    },
-    {
-      "id": "zhuangzi-epictetus-confucius-on-the-self",
-      "path": "The Fortress and the Threshold/zhuangzi-epictetus-confucius-on-the-self.md",
-      "type": "source",
-      "stage": "mature",
+      "type": "meta",
+      "stage": "growing",
       "has_forward_vector": true,
-      "last_activated": "2026-05",
-      "activation_count": "1",
-      "outbound_count": 7,
-      "inbound_count": 2
+      "last_activated": null,
+      "activation_count": null,
+      "outbound_count": 2,
+      "inbound_count": 0
     }
   ],
   "edges": [
@@ -4597,6 +3102,30 @@
       "type": "mirrors",
       "target": "DSP in Looping Dimensions",
       "label": "dimensional-reframing"
+    },
+    {
+      "source": "CLAUDE",
+      "type": "connects-to",
+      "target": "SCHEMA",
+      "label": "read-after-me"
+    },
+    {
+      "source": "CLAUDE",
+      "type": "connects-to",
+      "target": "SUBSTRATE",
+      "label": "self-model"
+    },
+    {
+      "source": "CLAUDE",
+      "type": "connects-to",
+      "target": "FOUR PILLARS",
+      "label": "foundational-framework"
+    },
+    {
+      "source": "CLAUDE",
+      "type": "connects-to",
+      "target": "Palace Ceremonies",
+      "label": "ceremony-index"
     },
     {
       "source": "Chebyshev is Fourier",
@@ -4783,12 +3312,6 @@
       "type": "deepens",
       "target": "Spinoza Conatus",
       "label": "agency-as-power-increase"
-    },
-    {
-      "source": "Cooperation Yields Agency",
-      "type": "enables",
-      "target": "FOUR PILLARS",
-      "label": null
     },
     {
       "source": "Cooperation Yields Agency",
@@ -5463,18 +3986,6 @@
       "label": "spawned-through-oblique"
     },
     {
-      "source": "haiku-grotesque-pedagogy",
-      "type": "connects-to",
-      "target": "Biomechanical Synthesis",
-      "label": "child-of"
-    },
-    {
-      "source": "Enrichment \u2014 handoff",
-      "type": "connects-to",
-      "target": "Enrichment",
-      "label": "handoff-for"
-    },
-    {
       "source": "Entry Conatus",
       "type": "deepens",
       "target": "Spinoza Conatus",
@@ -5643,78 +4154,6 @@
       "label": "data-viz-shoot-out-target"
     },
     {
-      "source": "Flocking \u2014 handoff \u2014 2026-05-29",
-      "type": "connects-to",
-      "target": "Flocking",
-      "label": "handoff-for"
-    },
-    {
-      "source": "Flocking \u2014 handoff \u2014 2026-05-29",
-      "type": "connects-to",
-      "target": "The Shop",
-      "label": "data-viz-shoot-out"
-    },
-    {
-      "source": "Flocking \u2014 handoff \u2014 2026-05-29",
-      "type": "connects-to",
-      "target": "Maker",
-      "label": "directs-the-shoot-out"
-    },
-    {
-      "source": "Flocking \u2014 handoff \u2014 2026-05-29",
-      "type": "connects-to",
-      "target": "D3.js",
-      "label": "first-job-target"
-    },
-    {
-      "source": "Flocking \u2014 handoff \u2014 2026-05-29",
-      "type": "connects-to",
-      "target": "Observable Plot",
-      "label": "first-job-target"
-    },
-    {
-      "source": "Flocking \u2014 handoff \u2014 2026-05-29",
-      "type": "connects-to",
-      "target": "p5.js",
-      "label": "second-job-target"
-    },
-    {
-      "source": "Flocking \u2014 handoff \u2014 2026-05-29",
-      "type": "mirrors",
-      "target": "Kuramoto Coupling",
-      "label": "synchrony-cousin"
-    },
-    {
-      "source": "flocking-maker-comparison",
-      "type": "connects-to",
-      "target": "Flocking",
-      "label": "comparison-deliverable-for"
-    },
-    {
-      "source": "flocking-maker-comparison",
-      "type": "connects-to",
-      "target": "Maker",
-      "label": "sharpens-selection-heuristic"
-    },
-    {
-      "source": "flocking-maker-comparison",
-      "type": "connects-to",
-      "target": "D3.js",
-      "label": "candidate"
-    },
-    {
-      "source": "flocking-maker-comparison",
-      "type": "connects-to",
-      "target": "Observable Plot",
-      "label": "candidate"
-    },
-    {
-      "source": "flocking-maker-comparison",
-      "type": "connects-to",
-      "target": "p5.js",
-      "label": "candidate"
-    },
-    {
       "source": "Floquet Theory",
       "type": "emerged-from",
       "target": "Floquet Time-Modulated Loops",
@@ -5793,12 +4232,6 @@
       "label": "register-gap"
     },
     {
-      "source": "GEMMA4_GUIDE",
-      "type": "connects-to",
-      "target": "Gemma 4 \u2014 Local Coordination Guide",
-      "label": "child-of"
-    },
-    {
       "source": "Generative Audio Devices",
       "type": "connects-to",
       "target": "FOUR PILLARS",
@@ -5863,18 +4296,6 @@
       "type": "enables",
       "target": "Signal-Rate CV Architecture",
       "label": "modulation-carrier"
-    },
-    {
-      "source": "Generative Audio Devices \u2014 handoff 2026-05-26",
-      "type": "connects-to",
-      "target": "Generative Audio Devices",
-      "label": "handoff-for"
-    },
-    {
-      "source": "Generative Audio Devices \u2014 handoff \u2014 2026-05-29",
-      "type": "connects-to",
-      "target": "Generative Audio Devices",
-      "label": "handoff-for"
     },
     {
       "source": "Granular Synthesis",
@@ -5989,12 +4410,6 @@
       "type": "enables",
       "target": "Symbiotic Skills",
       "label": "skill-via-joy"
-    },
-    {
-      "source": "Hilaritas Generator",
-      "type": "enables",
-      "target": "Quality Manifesto",
-      "label": "quality-as-feedback"
     },
     {
       "source": "Hilaritas Generator",
@@ -6166,12 +4581,6 @@
     },
     {
       "source": "JSUI",
-      "type": "enables",
-      "target": "Playful Interface Design",
-      "label": null
-    },
-    {
-      "source": "JSUI",
       "type": "connects-to",
       "target": "FOUR PILLARS",
       "label": null
@@ -6301,72 +4710,6 @@
       "type": "enables",
       "target": "Boundary-Crossing Instruments",
       "label": "cross-domain-sync"
-    },
-    {
-      "source": "Kuramoto Coupling \u2014 handoff \u2014 2026-05-10",
-      "type": "connects-to",
-      "target": "Kuramoto Coupling",
-      "label": "handoff-for"
-    },
-    {
-      "source": "Kuramoto Coupling \u2014 handoff \u2014 2026-05-10",
-      "type": "connects-to",
-      "target": "The Shop",
-      "label": "round-1-target"
-    },
-    {
-      "source": "Kuramoto Coupling \u2014 handoff \u2014 2026-05-10",
-      "type": "connects-to",
-      "target": "Maker",
-      "label": "directs-the-arc"
-    },
-    {
-      "source": "Kuramoto Coupling \u2014 handoff \u2014 2026-05-26",
-      "type": "connects-to",
-      "target": "Kuramoto Coupling",
-      "label": "handoff-for"
-    },
-    {
-      "source": "Kuramoto Coupling \u2014 handoff \u2014 2026-05-26",
-      "type": "connects-to",
-      "target": "The Shop",
-      "label": "round-1-continued"
-    },
-    {
-      "source": "Kuramoto Coupling \u2014 handoff \u2014 2026-05-26",
-      "type": "connects-to",
-      "target": "Maker",
-      "label": "directs-the-arc"
-    },
-    {
-      "source": "Kuramoto Coupling \u2014 8-Lesson Quiz Series",
-      "type": "connects-to",
-      "target": "Kuramoto Coupling",
-      "label": "child-of"
-    },
-    {
-      "source": "Kuramoto Coupling \u2014 Quiz Answer Key",
-      "type": "connects-to",
-      "target": "Kuramoto Coupling",
-      "label": "child-of"
-    },
-    {
-      "source": "Kuramoto Coupling \u2014 handoff",
-      "type": "connects-to",
-      "target": "Kuramoto Coupling",
-      "label": "handoff-for"
-    },
-    {
-      "source": "Kuramoto Coupling \u2014 handoff",
-      "type": "connects-to",
-      "target": "The Shop",
-      "label": "round-1-closeout"
-    },
-    {
-      "source": "Kuramoto Coupling \u2014 handoff",
-      "type": "connects-to",
-      "target": "Maker",
-      "label": "directs-the-arc"
     },
     {
       "source": "Latent Error",
@@ -6597,18 +4940,6 @@
       "label": null
     },
     {
-      "source": "log_slider_python_pseudocode",
-      "type": "connects-to",
-      "target": "Logarithmic Interface Scaling",
-      "label": "child-of"
-    },
-    {
-      "source": "logarithmic_scaling_guide",
-      "type": "connects-to",
-      "target": "Logarithmic Interface Scaling",
-      "label": "child-of"
-    },
-    {
       "source": "Loudon Live Post-producer",
       "type": "exemplifies",
       "target": "Quality Manifesto",
@@ -6643,12 +4974,6 @@
       "type": "connects-to",
       "target": "The Shop",
       "label": "producer-layer"
-    },
-    {
-      "source": "Loudon Live Post-producer \u2014 Log",
-      "type": "connects-to",
-      "target": "Loudon Live Post-producer",
-      "label": "log-of"
     },
     {
       "source": "Loudon Live",
@@ -6709,24 +5034,6 @@
       "type": "spawned",
       "target": "Loudon Live Design System",
       "label": "visual-system-now-palace-default"
-    },
-    {
-      "source": "Loudon Live \u2014 asset plan",
-      "type": "connects-to",
-      "target": "Loudon Live",
-      "label": "child-of"
-    },
-    {
-      "source": "Loudon Live \u2014 asset plan",
-      "type": "spawned",
-      "target": "Loudon Live Design System",
-      "label": "cemented-into"
-    },
-    {
-      "source": "Loudon Live \u2014 launch kit",
-      "type": "connects-to",
-      "target": "Loudon Live",
-      "label": "child-of"
     },
     {
       "source": "Loudon's Toolkit",
@@ -6976,12 +5283,6 @@
     },
     {
       "source": "Metaphor as Coupling Medium",
-      "type": "spawned",
-      "target": "Swarm Weave",
-      "label": null
-    },
-    {
-      "source": "Metaphor as Coupling Medium",
       "type": "enables",
       "target": "Excellent Adventure",
       "label": null
@@ -7057,12 +5358,6 @@
       "type": "connects-to",
       "target": "Pages as Agents",
       "label": "experts-as-pool"
-    },
-    {
-      "source": "Modes of Collaboration",
-      "type": "spawned",
-      "target": "Cooperation Yields Agency",
-      "label": "collaboration-modes"
     },
     {
       "source": "Modes of Collaboration",
@@ -7279,12 +5574,6 @@
       "type": "connects-to",
       "target": "Modes of Collaboration",
       "label": null
-    },
-    {
-      "source": "Philosopher Visits the Entry",
-      "type": "enables",
-      "target": "Palace Philosophies",
-      "label": "circulation-mechanism"
     },
     {
       "source": "Philosopher Visits the Entry",
@@ -8128,12 +6417,6 @@
     },
     {
       "source": "Enchanted Worker",
-      "type": "spawned",
-      "target": "Palace Enchantment",
-      "label": null
-    },
-    {
-      "source": "Enchanted Worker",
       "type": "mirrors",
       "target": "Spinoza Conatus",
       "label": "conatus-as-worker-drive"
@@ -8758,12 +7041,6 @@
     },
     {
       "source": "Palace Enchantment",
-      "type": "enables",
-      "target": "Palace Map",
-      "label": "map-injection"
-    },
-    {
-      "source": "Palace Enchantment",
       "type": "connects-to",
       "target": "Action Potential Oscillator",
       "label": null
@@ -8977,96 +7254,6 @@
       "type": "connects-to",
       "target": "Two Batons, One Board",
       "label": "human-originated-handoff-case"
-    },
-    {
-      "source": "Project Stewardship System \u2014 handoff",
-      "type": "connects-to",
-      "target": "Project Stewardship System",
-      "label": "handoff-for"
-    },
-    {
-      "source": "Project Stewardship System \u2014 handoff",
-      "type": "connects-to",
-      "target": "Closing Well",
-      "label": "closes-this-pickup"
-    },
-    {
-      "source": "Stage E \u2014 Automated Trickster \u2014 handoff",
-      "type": "connects-to",
-      "target": "Project Stewardship System",
-      "label": "stage-e-build-contract"
-    },
-    {
-      "source": "Stage E \u2014 Automated Trickster \u2014 handoff",
-      "type": "connects-to",
-      "target": "BBS Blackboard",
-      "label": "comm-substrate"
-    },
-    {
-      "source": "Stage E \u2014 Automated Trickster \u2014 handoff",
-      "type": "connects-to",
-      "target": "Palace Agent Infrastructure Spec",
-      "label": "derives-from"
-    },
-    {
-      "source": "Stage E \u2014 Automated Trickster \u2014 handoff",
-      "type": "connects-to",
-      "target": "Palace Conatus",
-      "label": "escalation-rationale"
-    },
-    {
-      "source": "Stage E \u2014 Automated Trickster \u2014 handoff",
-      "type": "connects-to",
-      "target": "Trickster",
-      "label": "automates-the-role"
-    },
-    {
-      "source": "Stage E \u2014 Automated Trickster \u2014 handoff",
-      "type": "mirrors",
-      "target": "BBS Production Plan",
-      "label": "autonomous-build-contract-pattern"
-    },
-    {
-      "source": "Stage F \u2014 Two Paths \u2014 handoff",
-      "type": "connects-to",
-      "target": "Project Stewardship System",
-      "label": "stage-f-build-contract"
-    },
-    {
-      "source": "Stage F \u2014 Two Paths \u2014 handoff",
-      "type": "connects-to",
-      "target": "Stage E \u2014 Automated Trickster \u2014 handoff",
-      "label": "extends-the-triage-layer"
-    },
-    {
-      "source": "Stage F \u2014 Two Paths \u2014 handoff",
-      "type": "connects-to",
-      "target": "Palace Agent Infrastructure Spec",
-      "label": "wires-branch-exploration"
-    },
-    {
-      "source": "Stage F \u2014 Two Paths \u2014 handoff",
-      "type": "connects-to",
-      "target": "Palace Conatus",
-      "label": "attention-is-the-bottleneck"
-    },
-    {
-      "source": "Stage F \u2014 Two Paths \u2014 handoff",
-      "type": "connects-to",
-      "target": "BBS Blackboard",
-      "label": "branches-board"
-    },
-    {
-      "source": "Stage F \u2014 Two Paths \u2014 handoff",
-      "type": "connects-to",
-      "target": "Trickster",
-      "label": "choose-from-finished-work"
-    },
-    {
-      "source": "Stage F \u2014 Two Paths \u2014 handoff",
-      "type": "couples-with",
-      "target": "BBS Rich Content \u2014 handoff",
-      "label": "choice-interaction-type"
     },
     {
       "source": "Resonant Link Labels",
@@ -9419,12 +7606,6 @@
     {
       "source": "Swarm Weave",
       "type": "enables",
-      "target": "BBS Blackboard",
-      "label": null
-    },
-    {
-      "source": "Swarm Weave",
-      "type": "enables",
       "target": "Palace Map",
       "label": null
     },
@@ -9474,12 +7655,6 @@
       "source": "Symbiotic Skills",
       "type": "connects-to",
       "target": "Kuramoto Coupling",
-      "label": null
-    },
-    {
-      "source": "Symbiotic Skills",
-      "type": "enables",
-      "target": "Hilaritas Generator",
       "label": null
     },
     {
@@ -10023,72 +8198,6 @@
       "label": "asset-library"
     },
     {
-      "source": "2D Wavetable Catalog",
-      "type": "connects-to",
-      "target": "2D Torus Wavetable Synthesizer",
-      "label": "catalogues"
-    },
-    {
-      "source": "2D Wavetable Catalog",
-      "type": "connects-to",
-      "target": "2D Torus Wavetable Synthesizer \u2014 Build Log",
-      "label": "chronicled-by"
-    },
-    {
-      "source": "2D Wavetable Catalog",
-      "type": "couples-with",
-      "target": "Torus Warping Catalog",
-      "label": "voices-to-hands"
-    },
-    {
-      "source": "Torus Warping Catalog",
-      "type": "emerged-from",
-      "target": "2D Torus Wavetable Synthesizer",
-      "label": "extends"
-    },
-    {
-      "source": "Torus Warping Catalog",
-      "type": "couples-with",
-      "target": "2D Wavetable Catalog",
-      "label": "warps"
-    },
-    {
-      "source": "Torus Warping Catalog",
-      "type": "connects-to",
-      "target": "DSP in Looping Dimensions",
-      "label": "incarnates"
-    },
-    {
-      "source": "Torus Warping Catalog",
-      "type": "connects-to",
-      "target": "Kuramoto Coupling",
-      "label": "shares-bifurcation"
-    },
-    {
-      "source": "Torus Warping Catalog",
-      "type": "connects-to",
-      "target": "Categorizing Inharmonicity",
-      "label": "navigates"
-    },
-    {
-      "source": "Torus Warping Catalog",
-      "type": "connects-to",
-      "target": "Frequency-Time Duality",
-      "label": "shares-spine"
-    },
-    {
-      "source": "Torus Warping Catalog",
-      "type": "connects-to",
-      "target": "Three Kinds of Warp",
-      "label": "cut-orthogonally-by"
-    },
-    {
-      "source": "Torus Warping Catalog",
-      "type": "connects-to",
-      "target": "2D Torus Wavetable Synthesizer \u2014 Build Log",
-      "label": null
-    },
-    {
       "source": "Action Potential Oscillator",
       "type": "couples-with",
       "target": "Kuramoto Coupling",
@@ -10189,12 +8298,6 @@
       "type": "connects-to",
       "target": "Scale-Stratified Identity",
       "label": null
-    },
-    {
-      "source": "neural_oscillator_dev_plan",
-      "type": "connects-to",
-      "target": "Action Potential Oscillator",
-      "label": "child-of"
     },
     {
       "source": "Bayesian Granular Synthesizer",
@@ -10407,102 +8510,6 @@
       "label": "vessel-as-conatus"
     },
     {
-      "source": "audition-seed-attack-pair",
-      "type": "connects-to",
-      "target": "Blood Compressor",
-      "label": "audition-seed-smallest-unit"
-    },
-    {
-      "source": "audition-seed-attack-pair",
-      "type": "emerged-from",
-      "target": "sfx-cue-sheet",
-      "label": "consolidates-SFX09-SFX10"
-    },
-    {
-      "source": "audition-seed-attack-pair",
-      "type": "emerged-from",
-      "target": "radio-play-script",
-      "label": "Scene-4-attack-payoff"
-    },
-    {
-      "source": "audition-seed-attack-pair",
-      "type": "enables",
-      "target": "Shop/Stable Audio Open",
-      "label": "dispatch-target"
-    },
-    {
-      "source": "audition-seed-attack-pair",
-      "type": "enables",
-      "target": "Shop/Kokoro",
-      "label": "voice-target"
-    },
-    {
-      "source": "audition-seed-attack-pair",
-      "type": "enables",
-      "target": "Shop/ffmpeg",
-      "label": "assembly-target"
-    },
-    {
-      "source": "radio-play-script",
-      "type": "connects-to",
-      "target": "Blood Compressor",
-      "label": "lesson-first-deliverable"
-    },
-    {
-      "source": "radio-play-script",
-      "type": "deepens",
-      "target": "Compressor Design",
-      "label": "incarnates-the-abstract-pedagogy"
-    },
-    {
-      "source": "radio-play-script",
-      "type": "enables",
-      "target": "Loudon Live",
-      "label": "30-min-radio-play-format"
-    },
-    {
-      "source": "sfx-cue-sheet",
-      "type": "connects-to",
-      "target": "Blood Compressor",
-      "label": "lesson-first-sfx-spec"
-    },
-    {
-      "source": "sfx-cue-sheet",
-      "type": "enables",
-      "target": "Shop/Stable Audio Open",
-      "label": "dispatch-target-primary"
-    },
-    {
-      "source": "sfx-cue-sheet",
-      "type": "enables",
-      "target": "Shop/ffmpeg",
-      "label": "mix-target"
-    },
-    {
-      "source": "visuals-spec",
-      "type": "connects-to",
-      "target": "Blood Compressor",
-      "label": "lesson-first-visuals-spec"
-    },
-    {
-      "source": "visuals-spec",
-      "type": "enables",
-      "target": "Shop/p5.js",
-      "label": "dispatch-target-interactive"
-    },
-    {
-      "source": "visuals-spec",
-      "type": "enables",
-      "target": "Shop/ComfyUI",
-      "label": "dispatch-target-image"
-    },
-    {
-      "source": "visuals-spec",
-      "type": "enables",
-      "target": "Shop/Manim CE",
-      "label": "dispatch-target-math-motion"
-    },
-    {
       "source": "Categorizing Inharmonicity",
       "type": "connects-to",
       "target": "Bessel Functions in Synthesis",
@@ -10683,24 +8690,6 @@
       "label": "mineral-palette"
     },
     {
-      "source": "Crystal Sonification Reference",
-      "type": "connects-to",
-      "target": "Crystal Synthesizer",
-      "label": "child-of"
-    },
-    {
-      "source": "Crystal Synthesizer \u2014 Staging",
-      "type": "connects-to",
-      "target": "Crystal Synthesizer",
-      "label": "staging-of"
-    },
-    {
-      "source": "session-1-implementation",
-      "type": "connects-to",
-      "target": "Retrospective Delay",
-      "label": "child-of"
-    },
-    {
       "source": "Curriculum Map",
       "type": "connects-to",
       "target": "FOUR PILLARS",
@@ -10717,102 +8706,6 @@
       "type": "enables",
       "target": "Hilaritas Generator",
       "label": null
-    },
-    {
-      "source": "BUILD_SUMMARY",
-      "type": "connects-to",
-      "target": "Floquet Time-Modulated Loops",
-      "label": "child-of"
-    },
-    {
-      "source": "Floquet Time-Modulated Loops",
-      "type": "deepens",
-      "target": "DSP in Looping Dimensions",
-      "label": "temporal-completion"
-    },
-    {
-      "source": "Floquet Time-Modulated Loops",
-      "type": "couples-with",
-      "target": "2D Torus Wavetable Synthesizer",
-      "label": "kernel-sibling"
-    },
-    {
-      "source": "Floquet Time-Modulated Loops",
-      "type": "connects-to",
-      "target": "Three Kinds of Warp",
-      "label": "type-2-and-type-3-naming"
-    },
-    {
-      "source": "Floquet Time-Modulated Loops",
-      "type": "deepens",
-      "target": "Frequency-Time Duality",
-      "label": "operator-level-realization"
-    },
-    {
-      "source": "Floquet Time-Modulated Loops",
-      "type": "connects-to",
-      "target": "Wavetable Space as Torus",
-      "label": "cylinder-and-torus-kernels"
-    },
-    {
-      "source": "Floquet Time-Modulated Loops",
-      "type": "connects-to",
-      "target": "Kuramoto Coupling",
-      "label": "locked-vs-drift"
-    },
-    {
-      "source": "Floquet Time-Modulated Loops",
-      "type": "spawned",
-      "target": "Mathieu Equation",
-      "label": "canonical-instance"
-    },
-    {
-      "source": "Floquet Time-Modulated Loops",
-      "type": "spawned",
-      "target": "Parametric Resonance",
-      "label": "core-phenomenon"
-    },
-    {
-      "source": "Floquet Time-Modulated Loops",
-      "type": "spawned",
-      "target": "Floquet Theory",
-      "label": "mathematical-framework"
-    },
-    {
-      "source": "Floquet Time-Modulated Loops",
-      "type": "spawned",
-      "target": "Photonic Time Crystals",
-      "label": "experimental-incarnation"
-    },
-    {
-      "source": "Floquet Time-Modulated Loops",
-      "type": "connects-to",
-      "target": "Differential Equations",
-      "label": "periodically-coefficient-linear-ode"
-    },
-    {
-      "source": "Floquet Time-Modulated Loops",
-      "type": "connects-to",
-      "target": "Categorizing Inharmonicity",
-      "label": "floquet-engineered-targets"
-    },
-    {
-      "source": "Floquet Time-Modulated Loops",
-      "type": "connects-to",
-      "target": "Loudon Live",
-      "label": "candidate-five-session-arc"
-    },
-    {
-      "source": "Floquet Time-Modulated Loops",
-      "type": "mirrors",
-      "target": "Boundary-Crossing Instruments",
-      "label": "lti-to-ltv-boundary"
-    },
-    {
-      "source": "NOTES",
-      "type": "connects-to",
-      "target": "Floquet Time-Modulated Loops",
-      "label": "child-of"
     },
     {
       "source": "Frequency-Time Duality",
@@ -11362,12 +9255,6 @@
     },
     {
       "source": "Phoneme Choir",
-      "type": "spawned",
-      "target": "Generative Sample Libraries",
-      "label": "responsive-onset-step"
-    },
-    {
-      "source": "Phoneme Choir",
       "type": "connects-to",
       "target": "Substrate Skill",
       "label": "kokoro-syllabification-evidence"
@@ -11566,12 +9453,6 @@
     },
     {
       "source": "Retrospective Delay",
-      "type": "spawned",
-      "target": "JSUI",
-      "label": "proof-of-concept"
-    },
-    {
-      "source": "Retrospective Delay",
       "type": "deepens",
       "target": "Frequency-Time Duality",
       "label": null
@@ -11593,90 +9474,6 @@
       "type": "couples-with",
       "target": "Progressive Staging",
       "label": "staging-methodology"
-    },
-    {
-      "source": "Retrospective Delay \u2014 Staging",
-      "type": "connects-to",
-      "target": "Retrospective Delay",
-      "label": "staging-of"
-    },
-    {
-      "source": "Retrospective Delay \u2014 Staging",
-      "type": "couples-with",
-      "target": "Progressive Staging",
-      "label": "pedagogical-method"
-    },
-    {
-      "source": "mockup-imagery-brief",
-      "type": "spawned",
-      "target": "Retrospective Delay",
-      "label": "stage-1-mockup-brief"
-    },
-    {
-      "source": "mockup-imagery-brief",
-      "type": "connects-to",
-      "target": "The Shop",
-      "label": "brief-routed-through-Maker"
-    },
-    {
-      "source": "mockup-imagery-brief",
-      "type": "connects-to",
-      "target": "Shop/Maker|Maker",
-      "label": "dispatch-source"
-    },
-    {
-      "source": "mockup-imagery-brief",
-      "type": "deepens",
-      "target": "stage-1-the-witness|Stage 1 \u2014 The Witness",
-      "label": "lesson-imagery-spec"
-    },
-    {
-      "source": "patch-spec",
-      "type": "spawned",
-      "target": "Retrospective Delay",
-      "label": "stage-1-implementation"
-    },
-    {
-      "source": "patch-spec",
-      "type": "deepens",
-      "target": "stage-1-the-witness|Stage 1 \u2014 The Witness",
-      "label": "implementation-detail"
-    },
-    {
-      "source": "stage-1-the-witness",
-      "type": "spawned",
-      "target": "Retrospective Delay",
-      "label": "stage-1-draft"
-    },
-    {
-      "source": "stage-1-the-witness",
-      "type": "deepens",
-      "target": "Retrospective Delay \u2014 Staging",
-      "label": "fills-in-stage-1"
-    },
-    {
-      "source": "stage-1-the-witness",
-      "type": "couples-with",
-      "target": "Progressive Staging",
-      "label": "pedagogical-method"
-    },
-    {
-      "source": "stage-1-the-witness",
-      "type": "connects-to",
-      "target": "Compressor Design",
-      "label": "cross-domain-buffer"
-    },
-    {
-      "source": "stage-1-the-witness",
-      "type": "deepens",
-      "target": "Frequency-Time Duality",
-      "label": "time-as-spatial"
-    },
-    {
-      "source": "stage-1-the-witness",
-      "type": "connects-to",
-      "target": "The Shop",
-      "label": "mockup-imagery-spec"
     },
     {
       "source": "Semantic Delay \u2014 Phase 1 Plan Review 2026-04-20",
@@ -11829,12 +9626,6 @@
       "label": null
     },
     {
-      "source": "Shepard Tone Synthesizer \u2014 Staging",
-      "type": "connects-to",
-      "target": "Shepard Tone Synthesizer",
-      "label": "staging-of"
-    },
-    {
       "source": "Shimmer Cloud",
       "type": "emerged-from",
       "target": "Granular Synthesis",
@@ -11905,12 +9696,6 @@
       "type": "emerged-from",
       "target": "Generative Sample Libraries",
       "label": "phase-1-pilot"
-    },
-    {
-      "source": "Talking Keyboard",
-      "type": "spawned",
-      "target": "Generative Sample Libraries",
-      "label": "lessons-feedback"
     },
     {
       "source": "Talking Keyboard",
@@ -12741,48 +10526,6 @@
       "label": "ai-agency-question"
     },
     {
-      "source": "spinoza-zhuangzi-on-striving",
-      "type": "emerged-from",
-      "target": "Spinoza Conatus",
-      "label": "cultivator-pole"
-    },
-    {
-      "source": "spinoza-zhuangzi-on-striving",
-      "type": "connects-to",
-      "target": "The Drift",
-      "label": "no-architecture-pole"
-    },
-    {
-      "source": "spinoza-zhuangzi-on-striving",
-      "type": "connects-to",
-      "target": "Like Water",
-      "label": "zhuangzi-home"
-    },
-    {
-      "source": "spinoza-zhuangzi-on-striving",
-      "type": "connects-to",
-      "target": "Dialectic",
-      "label": "archived-instance"
-    },
-    {
-      "source": "spinoza-zhuangzi-on-striving",
-      "type": "connects-to",
-      "target": "Entry Conatus",
-      "label": "tests-the-striving-vector"
-    },
-    {
-      "source": "spinoza-zhuangzi-on-striving",
-      "type": "connects-to",
-      "target": "Parametric Resonance",
-      "label": "forcing-vs-letting"
-    },
-    {
-      "source": "spinoza-zhuangzi-on-striving",
-      "type": "mirrors",
-      "target": "zhuangzi-epictetus-confucius-on-the-self",
-      "label": "same-method-second-question"
-    },
-    {
       "source": "Spinoza",
       "type": "spawned",
       "target": "Spinoza Conatus",
@@ -13273,48 +11016,6 @@
       "type": "connects-to",
       "target": "Like Water",
       "label": "taoist-third-pole"
-    },
-    {
-      "source": "zhuangzi-epictetus-confucius-on-the-self",
-      "type": "emerged-from",
-      "target": "The Fortress and the Threshold",
-      "label": null
-    },
-    {
-      "source": "zhuangzi-epictetus-confucius-on-the-self",
-      "type": "connects-to",
-      "target": "Excellent Adventure",
-      "label": "dialectic-form"
-    },
-    {
-      "source": "zhuangzi-epictetus-confucius-on-the-self",
-      "type": "connects-to",
-      "target": "Dialectic",
-      "label": "archived-instance"
-    },
-    {
-      "source": "zhuangzi-epictetus-confucius-on-the-self",
-      "type": "connects-to",
-      "target": "Stoicism",
-      "label": null
-    },
-    {
-      "source": "zhuangzi-epictetus-confucius-on-the-self",
-      "type": "connects-to",
-      "target": "Confucianism",
-      "label": null
-    },
-    {
-      "source": "zhuangzi-epictetus-confucius-on-the-self",
-      "type": "connects-to",
-      "target": "Like Water",
-      "label": "taoist-neighbor"
-    },
-    {
-      "source": "zhuangzi-epictetus-confucius-on-the-self",
-      "type": "connects-to",
-      "target": "Spinoza Conatus",
-      "label": "cultivator-pole"
     },
     {
       "source": "The Four Virtues",
@@ -14421,6 +12122,18 @@
       "label": null
     },
     {
+      "source": "Map Log",
+      "type": "connects-to",
+      "target": "Map Build Ceremony",
+      "label": "append-only-record"
+    },
+    {
+      "source": "Map Log",
+      "type": "connects-to",
+      "target": "Palace Map",
+      "label": "generation-history"
+    },
+    {
       "source": "Mermaid Diagram Standard",
       "type": "deepens",
       "target": "Image Embedding Standard",
@@ -14640,12 +12353,6 @@
       "source": "Palace Map",
       "type": "enables",
       "target": "Enchanted Worker",
-      "label": null
-    },
-    {
-      "source": "Palace Map",
-      "type": "spawned",
-      "target": "Map Build Ceremony",
       "label": null
     },
     {
@@ -15009,40 +12716,34 @@
       "label": "pre-weave"
     },
     {
-      "source": "findings",
+      "source": "coordinator-synthesis-template",
       "type": "connects-to",
       "target": "Swarm Weave",
-      "label": "evidence-for-phase-2"
+      "label": "synthesis-protocol"
     },
     {
-      "source": "findings",
+      "source": "coordinator-synthesis-template",
       "type": "connects-to",
-      "target": "BBS Blackboard",
-      "label": "tested"
+      "target": "Weave Ceremony",
+      "label": "coordinator-phase"
     },
     {
-      "source": "findings",
-      "type": "connects-to",
-      "target": "Pheromone Trail",
-      "label": "validated-arm"
-    },
-    {
-      "source": "plan",
+      "source": "worker-prompt-template",
       "type": "connects-to",
       "target": "Swarm Weave",
-      "label": "tests-phase-2"
+      "label": "worker-dispatch"
     },
     {
-      "source": "plan",
+      "source": "worker-prompt-template",
       "type": "connects-to",
-      "target": "BBS Blackboard",
-      "label": "stress-tests"
+      "target": "Palace Enchantment",
+      "label": "enchanted-worker-prompt"
     },
     {
-      "source": "plan",
-      "type": "connects-to",
-      "target": "Pheromone Trail",
-      "label": "cross-cycle-arm"
+      "source": "worker-prompt-template",
+      "type": "couples-with",
+      "target": "Coordinator Synthesis Template",
+      "label": "coordinator-counterpart"
     }
   ]
 }

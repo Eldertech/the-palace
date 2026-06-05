@@ -32,8 +32,6 @@ links:
     type: mirrors
   - target: "[[Palace Enchantment]]"
     type: spawned
-  - target: "[[BBS Blackboard]]"
-    type: enables
   - target: "[[Palace Map]]"
     type: enables
   - target: "[[Deposit Ceremony]]"

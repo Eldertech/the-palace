@@ -21,8 +21,6 @@ links:
     type: mirrors
   - target: "[[Pages as Agents]]"
     type: connects-to
-  - target: "[[Palace Enchantment]]"
-    type: spawned
   - target: "[[Spinoza Conatus]]"
     type: mirrors
     label: conatus-as-worker-drive
