@@ -20,6 +20,7 @@
 // The static four remain as the fallback for legacy requests with no options[].
 
 import { tsCompare } from './format.js';
+import { CATCHUP_OVERRIDES } from './catchup-overrides.js';
 
 const RESPONSE_OPTIONS = [
   { label: 'Grant -- limited',   type: 'RESOURCE_GRANT', constraints: '<your constraints>' },
@@ -104,11 +105,24 @@ export function buildInbox(messages) {
     .filter((m) => m.type === 'RESOURCE_REQUEST' && !responded.has(m.request_id))
     .map((m) => {
       const payload = m.payload || {};
+      // Catchup fields — see voice rule 6 in prompts/shared.md.
+      // Priority: native payload fields > override map (for legacy requests
+      // written before voice rule 6 existed) > null (renderer shows the
+      // "no catchup written" dim indicator + falls back to rationale).
+      // The override map is data-shaped and shrinks to empty as stewards
+      // start emitting headline+ground natively on every cycle.
+      const override = CATCHUP_OVERRIDES[m.request_id] || {};
+      const headline =
+        (typeof payload.headline === 'string' && payload.headline.trim()) || override.headline || null;
+      const ground =
+        (typeof payload.ground === 'string' && payload.ground.trim()) || override.ground || null;
       return {
         request_id: m.request_id,
         from: m.from,
         ts: m.ts,
         resource: payload.resource,
+        headline,
+        ground,
         rationale: payload.rationale,
         query_intent: payload.query_intent,
         blocking: payload.blocking === true,
