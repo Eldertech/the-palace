@@ -36,7 +36,7 @@ links:
     type: mirrors
     label: cooperative-compression
   - target: "[[FOUR PILLARS]]"
-    type: deepens
+    type: connects-to
     label: structures-pedagogy
   - target: "[[Pages as Agents]]"
     type: mirrors

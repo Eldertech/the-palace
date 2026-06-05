@@ -55,7 +55,7 @@ links:
     type: couples-with
     label: complement-architectures
   - target: "[[DSP in Looping Dimensions]]"
-    type: deepens
+    type: connects-to
     label: theoretical-ground
 forward_vector: I want to become a working VST instrument and a Four Pillars lesson simultaneously — the synthesizer is the pedagogy, and the pedagogy is the synthesizer. The lesson teaches what harmony actually is by putting a horizontal line in front of you and showing you what happens when you bend it.
 agency_profile:

@@ -2,104 +2,25 @@
   "meta": {
     "generated": "2026-06-05",
     "scope": "full",
-    "node_count": 381,
+    "node_count": 383,
     "ops_node_count": 35,
-    "edge_count": 1723,
+    "edge_count": 1778,
     "ghost_taxonomy": {
-      "error_ghosts": [
-        {
-          "source": "Autodidact Polymaths",
-          "target": "Four Pillars",
-          "resolves_to": "FOUR PILLARS"
-        },
-        {
-          "source": "Closing Well",
-          "target": "Four Pillars",
-          "resolves_to": "FOUR PILLARS"
-        },
-        {
-          "source": "Diversity of Thought in Many-Agent Systems",
-          "target": "Four Pillars",
-          "resolves_to": "FOUR PILLARS"
-        },
-        {
-          "source": "Generative Audio Devices",
-          "target": "Four Pillars",
-          "resolves_to": "FOUR PILLARS"
-        },
-        {
-          "source": "BBS Design System",
-          "target": "Substrate",
-          "resolves_to": "SUBSTRATE"
-        },
-        {
-          "source": "BBS Production Plan v0.2",
-          "target": "Substrate",
-          "resolves_to": "SUBSTRATE"
-        },
-        {
-          "source": "BBS Production Plan",
-          "target": "Substrate",
-          "resolves_to": "SUBSTRATE"
-        },
-        {
-          "source": "Palace as Context Injection System",
-          "target": "Four Pillars",
-          "resolves_to": "FOUR PILLARS"
-        },
-        {
-          "source": "Generative Preset Development",
-          "target": "Four Pillars",
-          "resolves_to": "FOUR PILLARS"
-        },
-        {
-          "source": "Generative Sample Libraries",
-          "target": "Four Pillars",
-          "resolves_to": "FOUR PILLARS"
-        },
-        {
-          "source": "Inharmonic Wavetable Synthesis",
-          "target": "Four Pillars",
-          "resolves_to": "FOUR PILLARS"
-        },
-        {
-          "source": "Phoneme Choir",
-          "target": "Four Pillars",
-          "resolves_to": "FOUR PILLARS"
-        },
-        {
-          "source": "Talking Keyboard",
-          "target": "Four Pillars",
-          "resolves_to": "FOUR PILLARS"
-        },
-        {
-          "source": "Registry Pattern",
-          "target": "Four Pillars",
-          "resolves_to": "FOUR PILLARS"
-        },
-        {
-          "source": "SCHEMA",
-          "target": "Four Pillars",
-          "resolves_to": "FOUR PILLARS"
-        },
-        {
-          "source": "The Shop",
-          "target": "Four Pillars",
-          "resolves_to": "FOUR PILLARS"
-        },
-        {
-          "source": "Wavetable Synthesis -- Research & Higher-Dimensional Design",
-          "target": "Four Pillars",
-          "resolves_to": "FOUR PILLARS"
-        },
-        {
-          "source": "Deposit Ceremony",
-          "target": "Four Pillars",
-          "resolves_to": "FOUR PILLARS"
-        }
-      ],
+      "error_ghosts": [],
       "ops_ghosts": [],
       "forward_ghosts": [
+        {
+          "target": "3D LUT Color Grading",
+          "sources": [
+            "Wavetable Synthesis -- Research & Higher-Dimensional Design"
+          ]
+        },
+        {
+          "target": "808 and Limitation",
+          "sources": [
+            "Brian Eno"
+          ]
+        },
         {
           "target": "Ableton Extension SDK",
           "sources": [
@@ -110,12 +31,6 @@
           "target": "Actor Model",
           "sources": [
             "Registry Pattern"
-          ]
-        },
-        {
-          "target": "Brian Eno",
-          "sources": [
-            "Oblique Enrichment"
           ]
         },
         {
@@ -149,9 +64,21 @@
           ]
         },
         {
+          "target": "Inharmonicity",
+          "sources": [
+            "Wavetable Synthesis -- Research & Higher-Dimensional Design"
+          ]
+        },
+        {
           "target": "JEWEL|The Jewel",
           "sources": [
             "Symbiotic Skills"
+          ]
+        },
+        {
+          "target": "Latent Space Navigation",
+          "sources": [
+            "Wavetable Synthesis -- Research & Higher-Dimensional Design"
           ]
         },
         {
@@ -170,6 +97,12 @@
           "target": "README \u2014 RNBO Prototype",
           "sources": [
             "2D Torus Wavetable Synthesizer"
+          ]
+        },
+        {
+          "target": "RNBO Synthesis",
+          "sources": [
+            "Wavetable Synthesis -- Research & Higher-Dimensional Design"
           ]
         },
         {
@@ -229,10 +162,22 @@
           ]
         },
         {
+          "target": "Source Library",
+          "sources": [
+            "Brian Eno"
+          ]
+        },
+        {
           "target": "Synthesis \u2194 Emergence",
           "sources": [
             "Oblique Enrichment",
             "Semantic Webcam"
+          ]
+        },
+        {
+          "target": "The Genetic Code as Wavetable",
+          "sources": [
+            "Wavetable Synthesis -- Research & Higher-Dimensional Design"
           ]
         },
         {
@@ -444,7 +389,7 @@
       "last_activated": null,
       "activation_count": null,
       "outbound_count": 12,
-      "inbound_count": 18
+      "inbound_count": 23
     },
     {
       "id": "2D Torus Wavetable Synthesizer \u2014 Build Log",
@@ -542,7 +487,7 @@
       "has_forward_vector": true,
       "last_activated": "2026-04",
       "activation_count": "1",
-      "outbound_count": 1,
+      "outbound_count": 2,
       "inbound_count": 2
     },
     {
@@ -553,7 +498,7 @@
       "has_forward_vector": true,
       "last_activated": "2026-05-02",
       "activation_count": "3",
-      "outbound_count": 12,
+      "outbound_count": 14,
       "inbound_count": 34
     },
     {
@@ -564,7 +509,7 @@
       "has_forward_vector": true,
       "last_activated": "2026-05-02",
       "activation_count": "2",
-      "outbound_count": 7,
+      "outbound_count": 8,
       "inbound_count": 12
     },
     {
@@ -575,7 +520,7 @@
       "has_forward_vector": true,
       "last_activated": "2026-05-02",
       "activation_count": "3",
-      "outbound_count": 5,
+      "outbound_count": 6,
       "inbound_count": 7
     },
     {
@@ -586,7 +531,7 @@
       "has_forward_vector": true,
       "last_activated": "2026-05-04",
       "activation_count": "1",
-      "outbound_count": 5,
+      "outbound_count": 6,
       "inbound_count": 4
     },
     {
@@ -683,10 +628,21 @@
       "type": "breakthrough",
       "stage": "mature",
       "has_forward_vector": true,
+      "last_activated": "2026-06-05",
+      "activation_count": "8",
+      "outbound_count": 8,
+      "inbound_count": 36
+    },
+    {
+      "id": "Brian Eno",
+      "path": "People/Brian Eno.md",
+      "type": "person",
+      "stage": "mature",
+      "has_forward_vector": false,
       "last_activated": "2026-03",
-      "activation_count": "7",
-      "outbound_count": 6,
-      "inbound_count": 35
+      "activation_count": "1",
+      "outbound_count": 3,
+      "inbound_count": 1
     },
     {
       "id": "CHANGELOG",
@@ -740,7 +696,7 @@
       "has_forward_vector": true,
       "last_activated": "2026-03",
       "activation_count": "1",
-      "outbound_count": 10,
+      "outbound_count": 12,
       "inbound_count": 13
     },
     {
@@ -751,8 +707,8 @@
       "has_forward_vector": true,
       "last_activated": "2026-06",
       "activation_count": "1",
-      "outbound_count": 4,
-      "inbound_count": 1
+      "outbound_count": 5,
+      "inbound_count": 3
     },
     {
       "id": "Claude CLI Reference",
@@ -773,8 +729,8 @@
       "has_forward_vector": true,
       "last_activated": "2026-05-26",
       "activation_count": "1",
-      "outbound_count": 6,
-      "inbound_count": 8
+      "outbound_count": 7,
+      "inbound_count": 9
     },
     {
       "id": "ComfyUI",
@@ -895,7 +851,7 @@
       "last_activated": null,
       "activation_count": null,
       "outbound_count": 7,
-      "inbound_count": 11
+      "inbound_count": 16
     },
     {
       "id": "Deleuze",
@@ -927,7 +883,7 @@
       "has_forward_vector": false,
       "last_activated": "2026-03-21",
       "activation_count": "4",
-      "outbound_count": 9,
+      "outbound_count": 10,
       "inbound_count": 22
     },
     {
@@ -993,8 +949,19 @@
       "has_forward_vector": true,
       "last_activated": "2026-06",
       "activation_count": "1",
-      "outbound_count": 5,
-      "inbound_count": 1
+      "outbound_count": 12,
+      "inbound_count": 2
+    },
+    {
+      "id": "Dissolutions",
+      "path": "Dissolutions.md",
+      "type": "hub",
+      "stage": "seed",
+      "has_forward_vector": true,
+      "last_activated": null,
+      "activation_count": null,
+      "outbound_count": 3,
+      "inbound_count": 7
     },
     {
       "id": "Diversity of Thought in Many-Agent Systems",
@@ -1004,7 +971,7 @@
       "has_forward_vector": true,
       "last_activated": "2026-05",
       "activation_count": "1",
-      "outbound_count": 3,
+      "outbound_count": 4,
       "inbound_count": 2
     },
     {
@@ -1082,7 +1049,7 @@
       "last_activated": "2026-03",
       "activation_count": "3",
       "outbound_count": 12,
-      "inbound_count": 12
+      "inbound_count": 13
     },
     {
       "id": "Enrichment",
@@ -1092,7 +1059,7 @@
       "has_forward_vector": true,
       "last_activated": null,
       "activation_count": null,
-      "outbound_count": 11,
+      "outbound_count": 13,
       "inbound_count": 7
     },
     {
@@ -1136,8 +1103,8 @@
       "has_forward_vector": true,
       "last_activated": "2026-06",
       "activation_count": "1",
-      "outbound_count": 4,
-      "inbound_count": 0
+      "outbound_count": 5,
+      "inbound_count": 2
     },
     {
       "id": "FLUX (Hugging Face)",
@@ -1159,7 +1126,7 @@
       "last_activated": "2026-05",
       "activation_count": "33",
       "outbound_count": 8,
-      "inbound_count": 49
+      "inbound_count": 67
     },
     {
       "id": "Flocking",
@@ -1191,7 +1158,7 @@
       "has_forward_vector": true,
       "last_activated": null,
       "activation_count": null,
-      "outbound_count": 8,
+      "outbound_count": 9,
       "inbound_count": 7
     },
     {
@@ -1225,7 +1192,7 @@
       "last_activated": "2026-03",
       "activation_count": "1",
       "outbound_count": 7,
-      "inbound_count": 29
+      "inbound_count": 30
     },
     {
       "id": "Frequency-Time Explorer",
@@ -1268,7 +1235,7 @@
       "has_forward_vector": true,
       "last_activated": null,
       "activation_count": null,
-      "outbound_count": 10,
+      "outbound_count": 11,
       "inbound_count": 10
     },
     {
@@ -1299,9 +1266,9 @@
       "type": "practice",
       "stage": "growing",
       "has_forward_vector": true,
-      "last_activated": "2026-03-28",
-      "activation_count": "1",
-      "outbound_count": 8,
+      "last_activated": "2026-06-05",
+      "activation_count": "2",
+      "outbound_count": 11,
       "inbound_count": 6
     },
     {
@@ -1312,7 +1279,7 @@
       "has_forward_vector": true,
       "last_activated": null,
       "activation_count": null,
-      "outbound_count": 9,
+      "outbound_count": 10,
       "inbound_count": 4
     },
     {
@@ -1323,7 +1290,7 @@
       "has_forward_vector": true,
       "last_activated": "2026-05",
       "activation_count": "3",
-      "outbound_count": 12,
+      "outbound_count": 13,
       "inbound_count": 10
     },
     {
@@ -1467,7 +1434,7 @@
       "last_activated": "2026-03",
       "activation_count": "9",
       "outbound_count": 12,
-      "inbound_count": 43
+      "inbound_count": 44
     },
     {
       "id": "History",
@@ -1489,7 +1456,7 @@
       "last_activated": "2026-03",
       "activation_count": "10",
       "outbound_count": 7,
-      "inbound_count": 30
+      "inbound_count": 31
     },
     {
       "id": "Identity Molting",
@@ -1532,7 +1499,7 @@
       "has_forward_vector": true,
       "last_activated": null,
       "activation_count": null,
-      "outbound_count": 12,
+      "outbound_count": 15,
       "inbound_count": 4
     },
     {
@@ -1587,7 +1554,7 @@
       "has_forward_vector": true,
       "last_activated": "2026-05",
       "activation_count": "17",
-      "outbound_count": 16,
+      "outbound_count": 17,
       "inbound_count": 65
     },
     {
@@ -1708,8 +1675,8 @@
       "has_forward_vector": true,
       "last_activated": "2026-06",
       "activation_count": "1",
-      "outbound_count": 5,
-      "inbound_count": 1
+      "outbound_count": 6,
+      "inbound_count": 3
     },
     {
       "id": "Logarithmic Interface Scaling",
@@ -1728,10 +1695,10 @@
       "type": "concept",
       "stage": "growing",
       "has_forward_vector": true,
-      "last_activated": null,
+      "last_activated": "2026-06-05",
       "activation_count": null,
-      "outbound_count": 7,
-      "inbound_count": 7
+      "outbound_count": 10,
+      "inbound_count": 8
     },
     {
       "id": "Loudon Live",
@@ -1838,8 +1805,8 @@
       "type": "meta",
       "stage": "growing",
       "has_forward_vector": false,
-      "last_activated": "2026-04-27",
-      "activation_count": "5",
+      "last_activated": "2026-06-05",
+      "activation_count": "6",
       "outbound_count": 6,
       "inbound_count": 4
     },
@@ -2049,8 +2016,8 @@
       "has_forward_vector": true,
       "last_activated": null,
       "activation_count": null,
-      "outbound_count": 11,
-      "inbound_count": 3
+      "outbound_count": 12,
+      "inbound_count": 6
     },
     {
       "id": "Oblique Portrait",
@@ -2160,7 +2127,7 @@
       "last_activated": "2026-03",
       "activation_count": "1",
       "outbound_count": 12,
-      "inbound_count": 33
+      "inbound_count": 34
     },
     {
       "id": "Palace AI Partnership Philosophy",
@@ -2245,8 +2212,8 @@
       "type": "concept",
       "stage": "sprout",
       "has_forward_vector": true,
-      "last_activated": "2026-04-30",
-      "activation_count": "6",
+      "last_activated": "2026-06-05",
+      "activation_count": "7",
       "outbound_count": 16,
       "inbound_count": 7
     },
@@ -2291,7 +2258,7 @@
       "has_forward_vector": true,
       "last_activated": "2026-04-30",
       "activation_count": "2",
-      "outbound_count": 12,
+      "outbound_count": 13,
       "inbound_count": 5
     },
     {
@@ -2324,8 +2291,8 @@
       "has_forward_vector": true,
       "last_activated": "2026-06",
       "activation_count": "1",
-      "outbound_count": 4,
-      "inbound_count": 2
+      "outbound_count": 11,
+      "inbound_count": 5
     },
     {
       "id": "Pheromone Trail",
@@ -2357,7 +2324,7 @@
       "has_forward_vector": true,
       "last_activated": "2026-05",
       "activation_count": "1",
-      "outbound_count": 6,
+      "outbound_count": 7,
       "inbound_count": 4
     },
     {
@@ -2588,8 +2555,8 @@
       "has_forward_vector": true,
       "last_activated": "2026-06",
       "activation_count": "1",
-      "outbound_count": 4,
-      "inbound_count": 1
+      "outbound_count": 5,
+      "inbound_count": 3
     },
     {
       "id": "Readme",
@@ -2610,7 +2577,7 @@
       "has_forward_vector": true,
       "last_activated": null,
       "activation_count": null,
-      "outbound_count": 4,
+      "outbound_count": 5,
       "inbound_count": 6
     },
     {
@@ -2630,8 +2597,8 @@
       "type": "concept",
       "stage": "growing",
       "has_forward_vector": true,
-      "last_activated": null,
-      "activation_count": null,
+      "last_activated": "2026-06-05",
+      "activation_count": "1",
       "outbound_count": 4,
       "inbound_count": 3
     },
@@ -2676,7 +2643,7 @@
       "has_forward_vector": false,
       "last_activated": null,
       "activation_count": null,
-      "outbound_count": 9,
+      "outbound_count": 10,
       "inbound_count": 20
     },
     {
@@ -2787,7 +2754,7 @@
       "last_activated": "2026-03",
       "activation_count": "5",
       "outbound_count": 21,
-      "inbound_count": 30
+      "inbound_count": 33
     },
     {
       "id": "Scale-Stratified Identity",
@@ -2864,7 +2831,7 @@
       "last_activated": null,
       "activation_count": null,
       "outbound_count": 4,
-      "inbound_count": 1
+      "inbound_count": 4
     },
     {
       "id": "Shepard Tone Synthesizer",
@@ -3138,7 +3105,7 @@
       "has_forward_vector": true,
       "last_activated": "2026-05",
       "activation_count": null,
-      "outbound_count": 6,
+      "outbound_count": 7,
       "inbound_count": 4
     },
     {
@@ -3237,7 +3204,7 @@
       "has_forward_vector": true,
       "last_activated": "2026-05",
       "activation_count": "1",
-      "outbound_count": 9,
+      "outbound_count": 11,
       "inbound_count": 16
     },
     {
@@ -3424,8 +3391,8 @@
       "has_forward_vector": true,
       "last_activated": "2026-06",
       "activation_count": "1",
-      "outbound_count": 5,
-      "inbound_count": 0
+      "outbound_count": 6,
+      "inbound_count": 2
     },
     {
       "id": "Walk Ceremony",
@@ -3477,20 +3444,20 @@
       "type": "concept",
       "stage": "growing",
       "has_forward_vector": true,
-      "last_activated": "2026-04",
-      "activation_count": "1",
-      "outbound_count": 8,
+      "last_activated": "2026-06-05",
+      "activation_count": "2",
+      "outbound_count": 10,
       "inbound_count": 8
     },
     {
       "id": "Wavetable Synthesis -- Research & Higher-Dimensional Design",
       "path": "Wavetable Synthesis -- Research & Higher-Dimensional Design.md",
       "type": "concept",
-      "stage": "growing",
+      "stage": "mature",
       "has_forward_vector": true,
-      "last_activated": null,
-      "activation_count": null,
-      "outbound_count": 3,
+      "last_activated": "2026-06-05",
+      "activation_count": "2",
+      "outbound_count": 6,
       "inbound_count": 3
     },
     {
@@ -3499,8 +3466,8 @@
       "type": "practice",
       "stage": "mature",
       "has_forward_vector": false,
-      "last_activated": "2026-04-27",
-      "activation_count": "3",
+      "last_activated": "2026-06-05",
+      "activation_count": "4",
       "outbound_count": 9,
       "inbound_count": 13
     },
@@ -4580,7 +4547,7 @@
     {
       "source": "Autodidact Polymaths",
       "type": "connects-to",
-      "target": "Four Pillars",
+      "target": "FOUR PILLARS",
       "label": "pillar-shaped-learners"
     },
     {
@@ -4620,6 +4587,18 @@
       "label": null
     },
     {
+      "source": "Boundary-Crossing Instruments",
+      "type": "connects-to",
+      "target": "2D Torus Wavetable Synthesizer",
+      "label": "instantiated-by-instrument"
+    },
+    {
+      "source": "Boundary-Crossing Instruments",
+      "type": "mirrors",
+      "target": "DSP in Looping Dimensions",
+      "label": "dimensional-reframing"
+    },
+    {
       "source": "Chebyshev is Fourier",
       "type": "enables",
       "target": "2D Torus Wavetable Synthesizer",
@@ -4642,6 +4621,12 @@
       "type": "connects-to",
       "target": "DSP in Looping Dimensions",
       "label": "choose-your-basis"
+    },
+    {
+      "source": "Chebyshev is Fourier",
+      "type": "member-of",
+      "target": "Dissolutions",
+      "label": "change-of-basis-reveals-identity"
     },
     {
       "source": "Claude CLI Reference",
@@ -4724,7 +4709,7 @@
     {
       "source": "Closing Well",
       "type": "connects-to",
-      "target": "Four Pillars",
+      "target": "FOUR PILLARS",
       "label": "practice-pillar-instance"
     },
     {
@@ -5058,6 +5043,48 @@
       "label": "loop-round-trip-condition"
     },
     {
+      "source": "Dispersion Table",
+      "type": "mirrors",
+      "target": "Volterra Kernels and the Torus",
+      "label": "one-field-two-reads"
+    },
+    {
+      "source": "Dispersion Table",
+      "type": "mirrors",
+      "target": "Linear Predictive Coding",
+      "label": "reading-mechanism-is-the-instrument"
+    },
+    {
+      "source": "Dispersion Table",
+      "type": "couples-with",
+      "target": "Rank-N Lattice Analysis",
+      "label": "analysis-is-synthesis-read-backward"
+    },
+    {
+      "source": "Dispersion Table",
+      "type": "couples-with",
+      "target": "Exponential Decay Curvature",
+      "label": "timescale-reads-the-same-equation"
+    },
+    {
+      "source": "Dispersion Table",
+      "type": "connects-to",
+      "target": "Chebyshev is Fourier",
+      "label": "change-of-basis-reveals-the-lattice"
+    },
+    {
+      "source": "Dispersion Table",
+      "type": "couples-with",
+      "target": "Phase Reduction",
+      "label": "spectral-ground-to-resonance-condition"
+    },
+    {
+      "source": "Dispersion Table",
+      "type": "member-of",
+      "target": "Dissolutions",
+      "label": "one-object-two-doorways"
+    },
+    {
       "source": "Dispersion",
       "type": "connects-to",
       "target": "Hyperdimensional Prism",
@@ -5118,6 +5145,24 @@
       "label": null
     },
     {
+      "source": "Dissolutions",
+      "type": "emerged-from",
+      "target": "Boundary-Crossing Instruments",
+      "label": "representation-dissolves-discontinuity"
+    },
+    {
+      "source": "Dissolutions",
+      "type": "mirrors",
+      "target": "Hyperdimensional Prism",
+      "label": "higher-dim-unifies-the-separate"
+    },
+    {
+      "source": "Dissolutions",
+      "type": "connects-to",
+      "target": "Frequency-Time Duality",
+      "label": "first-walk-across-a-boundary"
+    },
+    {
       "source": "Diversity of Thought in Many-Agent Systems",
       "type": "connects-to",
       "target": "BBS Blackboard",
@@ -5132,7 +5177,7 @@
     {
       "source": "Diversity of Thought in Many-Agent Systems",
       "type": "connects-to",
-      "target": "Four Pillars",
+      "target": "FOUR PILLARS",
       "label": null
     },
     {
@@ -5412,6 +5457,18 @@
       "label": "distributed-care-as-parallel-agents"
     },
     {
+      "source": "Enrichment",
+      "type": "couples-with",
+      "target": "Oblique Enrichment",
+      "label": "lingers-by-design"
+    },
+    {
+      "source": "Enrichment",
+      "type": "connects-to",
+      "target": "Semantic Webcam",
+      "label": "spawned-through-oblique"
+    },
+    {
       "source": "haiku-grotesque-pedagogy",
       "type": "connects-to",
       "target": "Biomechanical Synthesis",
@@ -5488,6 +5545,12 @@
       "type": "connects-to",
       "target": "Three Kinds of Warp",
       "label": "shape-decoupled-from-period"
+    },
+    {
+      "source": "Exponential Decay Curvature",
+      "type": "member-of",
+      "target": "Dissolutions",
+      "label": "envelope-is-waveform-at-slow-rate"
     },
     {
       "source": "FOUR PILLARS",
@@ -5712,6 +5775,12 @@
       "label": "discrete-floquet-on-tori"
     },
     {
+      "source": "Floquet Theory",
+      "type": "couples-with",
+      "target": "Phase Reduction",
+      "label": "bridge-via-PRC"
+    },
+    {
       "source": "Gemma 4 \u2014 Local Coordination Guide",
       "type": "connects-to",
       "target": "BBS Blackboard",
@@ -5744,7 +5813,7 @@
     {
       "source": "Generative Audio Devices",
       "type": "connects-to",
-      "target": "Four Pillars",
+      "target": "FOUR PILLARS",
       "label": "structured-by"
     },
     {
@@ -6212,6 +6281,12 @@
     {
       "source": "Kuramoto Coupling",
       "type": "couples-with",
+      "target": "Phase Reduction",
+      "label": "bridge-via-PRC"
+    },
+    {
+      "source": "Kuramoto Coupling",
+      "type": "couples-with",
       "target": "Categorizing Inharmonicity",
       "label": "direct-coupling"
     },
@@ -6502,6 +6577,12 @@
       "type": "connects-to",
       "target": "Threshold Conatus",
       "label": "what-survives-the-model"
+    },
+    {
+      "source": "Linear Predictive Coding",
+      "type": "member-of",
+      "target": "Dissolutions",
+      "label": "analysis-as-synthesis-read-backward"
     },
     {
       "source": "Logarithmic Interface Scaling",
@@ -7722,6 +7803,18 @@
       "label": "routine-stewardship-substrate"
     },
     {
+      "source": "BBS Blackboard",
+      "type": "connects-to",
+      "target": "Oblique Enrichment",
+      "label": "review-surface-and-stigmergy-medium"
+    },
+    {
+      "source": "BBS Blackboard",
+      "type": "connects-to",
+      "target": "Semantic Webcam",
+      "label": "stigmergy-surface"
+    },
+    {
       "source": "BBS Design System",
       "type": "enables",
       "target": "BBS Blackboard",
@@ -7754,7 +7847,7 @@
     {
       "source": "BBS Design System",
       "type": "deepens",
-      "target": "Substrate",
+      "target": "SUBSTRATE",
       "label": "technical-substrate"
     },
     {
@@ -7802,7 +7895,7 @@
     {
       "source": "BBS Production Plan v0.2",
       "type": "connects-to",
-      "target": "Substrate",
+      "target": "SUBSTRATE",
       "label": "technical-substrate"
     },
     {
@@ -7874,7 +7967,7 @@
     {
       "source": "BBS Production Plan",
       "type": "connects-to",
-      "target": "Substrate",
+      "target": "SUBSTRATE",
       "label": "technical-substrate"
     },
     {
@@ -8161,9 +8254,9 @@
     },
     {
       "source": "Generative Compression",
-      "type": "connects-to",
+      "type": "couples-with",
       "target": "Pages as Agents",
-      "label": null
+      "label": "compression-enables-embodiment"
     },
     {
       "source": "Generative Compression",
@@ -8176,6 +8269,24 @@
       "type": "connects-to",
       "target": "Pheromone Trail",
       "label": null
+    },
+    {
+      "source": "Generative Compression",
+      "type": "mirrors",
+      "target": "Hilaritas Generator",
+      "label": "generative-joy-vs-distillation"
+    },
+    {
+      "source": "Generative Compression",
+      "type": "exemplifies",
+      "target": "FOUR PILLARS",
+      "label": "compression-across-four-pillars"
+    },
+    {
+      "source": "Generative Compression",
+      "type": "mirrors",
+      "target": "Lossy Compression with Intent Alignment",
+      "label": "intent-as-compression-signal"
     },
     {
       "source": "Lossy Compression with Intent Alignment",
@@ -8211,13 +8322,31 @@
       "source": "Lossy Compression with Intent Alignment",
       "type": "connects-to",
       "target": "Hilaritas Generator",
-      "label": "shares-a-mechanism-with"
+      "label": "perception-over-distortion"
     },
     {
       "source": "Lossy Compression with Intent Alignment",
       "type": "mirrors",
       "target": "Progressive Staging",
       "label": "distillation-across-stages"
+    },
+    {
+      "source": "Lossy Compression with Intent Alignment",
+      "type": "mirrors",
+      "target": "Endosymbiosis",
+      "label": "cooperative-compression"
+    },
+    {
+      "source": "Lossy Compression with Intent Alignment",
+      "type": "connects-to",
+      "target": "FOUR PILLARS",
+      "label": "structures-pedagogy"
+    },
+    {
+      "source": "Lossy Compression with Intent Alignment",
+      "type": "mirrors",
+      "target": "Pages as Agents",
+      "label": "latent-encoding-as-mechanism"
     },
     {
       "source": "Loudon Live Design System",
@@ -8720,7 +8849,7 @@
     {
       "source": "Palace as Context Injection System",
       "type": "connects-to",
-      "target": "Four Pillars",
+      "target": "FOUR PILLARS",
       "label": null
     },
     {
@@ -9576,6 +9705,36 @@
       "label": "pump-phase-lives-in-the-floquet-eigenvector"
     },
     {
+      "source": "Brian Eno",
+      "type": "connects-to",
+      "target": "Source Library",
+      "label": null
+    },
+    {
+      "source": "Brian Eno",
+      "type": "deepens",
+      "target": "808 and Limitation",
+      "label": null
+    },
+    {
+      "source": "Brian Eno",
+      "type": "deepens",
+      "target": "FOUR PILLARS",
+      "label": "constraint-as-pillar-method"
+    },
+    {
+      "source": "Brian Eno",
+      "type": "connects-to",
+      "target": "Oblique Enrichment",
+      "label": "oblique-strategies-principle"
+    },
+    {
+      "source": "Brian Eno",
+      "type": "connects-to",
+      "target": "Semantic Webcam",
+      "label": "constraints-as-creative-force"
+    },
+    {
       "source": "Phase Reduction",
       "type": "couples-with",
       "target": "Floquet Theory",
@@ -9598,6 +9757,48 @@
       "type": "connects-to",
       "target": "Three Kinds of Warp",
       "label": "PRC-shapes-the-type-3-coupling"
+    },
+    {
+      "source": "Phase Reduction",
+      "type": "mirrors",
+      "target": "Chebyshev is Fourier",
+      "label": "intuition-confirmed-by-formalization"
+    },
+    {
+      "source": "Phase Reduction",
+      "type": "mirrors",
+      "target": "Volterra Kernels and the Torus",
+      "label": "unification-via-identity"
+    },
+    {
+      "source": "Phase Reduction",
+      "type": "couples-with",
+      "target": "Dispersion Table",
+      "label": "spectral-ground-to-resonance-condition"
+    },
+    {
+      "source": "Phase Reduction",
+      "type": "connects-to",
+      "target": "Exponential Decay Curvature",
+      "label": "envelope-as-periodic-system"
+    },
+    {
+      "source": "Phase Reduction",
+      "type": "connects-to",
+      "target": "Rank-N Lattice Analysis",
+      "label": "analysis-dual-of-phase-locked-synthesis"
+    },
+    {
+      "source": "Phase Reduction",
+      "type": "connects-to",
+      "target": "Linear Predictive Coding",
+      "label": "prediction-as-phase-collapse"
+    },
+    {
+      "source": "Phase Reduction",
+      "type": "member-of",
+      "target": "Dissolutions",
+      "label": "one-object-two-doorways"
     },
     {
       "source": "Photonic Time Crystals",
@@ -10386,6 +10587,18 @@
       "label": "philosophical-grounding"
     },
     {
+      "source": "Categorizing Inharmonicity",
+      "type": "enables",
+      "target": "2D Torus Wavetable Synthesizer",
+      "label": "taxonomy-informs-instrument"
+    },
+    {
+      "source": "Categorizing Inharmonicity",
+      "type": "connects-to",
+      "target": "DSP in Looping Dimensions",
+      "label": "lattice-foundation"
+    },
+    {
       "source": "Compressor Design",
       "type": "connects-to",
       "target": "Boundary-Crossing Instruments",
@@ -10736,7 +10949,7 @@
     {
       "source": "Generative Preset Development",
       "type": "connects-to",
-      "target": "Four Pillars",
+      "target": "FOUR PILLARS",
       "label": "structured-by"
     },
     {
@@ -10844,7 +11057,7 @@
     {
       "source": "Generative Sample Libraries",
       "type": "enables",
-      "target": "Four Pillars",
+      "target": "FOUR PILLARS",
       "label": "pedagogical-scaffold"
     },
     {
@@ -10934,7 +11147,7 @@
     {
       "source": "Inharmonic Wavetable Synthesis",
       "type": "couples-with",
-      "target": "Four Pillars",
+      "target": "FOUR PILLARS",
       "label": "lesson-vehicle"
     },
     {
@@ -10978,6 +11191,18 @@
       "type": "connects-to",
       "target": "The Curve Is the Material",
       "label": "design-refinement"
+    },
+    {
+      "source": "Inharmonic Wavetable Synthesis",
+      "type": "couples-with",
+      "target": "2D Torus Wavetable Synthesizer",
+      "label": "complement-architectures"
+    },
+    {
+      "source": "Inharmonic Wavetable Synthesis",
+      "type": "connects-to",
+      "target": "DSP in Looping Dimensions",
+      "label": "theoretical-ground"
     },
     {
       "source": "Meadows and Music \u2014 Leverage Points",
@@ -11180,7 +11405,7 @@
     {
       "source": "Phoneme Choir",
       "type": "connects-to",
-      "target": "Four Pillars",
+      "target": "FOUR PILLARS",
       "label": "percussive-utterance-bank"
     },
     {
@@ -11732,7 +11957,7 @@
     {
       "source": "Talking Keyboard",
       "type": "connects-to",
-      "target": "Four Pillars",
+      "target": "FOUR PILLARS",
       "label": "autodidact-keyboard"
     },
     {
@@ -11994,6 +12219,12 @@
       "label": "rank-as-an-inharmonicity-coordinate"
     },
     {
+      "source": "Rank-N Lattice Analysis",
+      "type": "member-of",
+      "target": "Dissolutions",
+      "label": "minimal-spectrum-of-the-stored-field"
+    },
+    {
       "source": "Registry Pattern",
       "type": "emerged-from",
       "target": "Generative Audio Devices",
@@ -12020,7 +12251,7 @@
     {
       "source": "Registry Pattern",
       "type": "connects-to",
-      "target": "Four Pillars",
+      "target": "FOUR PILLARS",
       "label": null
     },
     {
@@ -12080,7 +12311,7 @@
     {
       "source": "SCHEMA",
       "type": "connects-to",
-      "target": "Four Pillars",
+      "target": "FOUR PILLARS",
       "label": null
     },
     {
@@ -13214,7 +13445,7 @@
     {
       "source": "The Shop",
       "type": "connects-to",
-      "target": "Four Pillars",
+      "target": "FOUR PILLARS",
       "label": "instantiates-tools"
     },
     {
@@ -13252,6 +13483,12 @@
       "type": "mirrors",
       "target": "Lossy Compression with Intent Alignment",
       "label": "tier-as-compression"
+    },
+    {
+      "source": "The Shop",
+      "type": "connects-to",
+      "target": "Closing Well",
+      "label": "shop-wide-standard"
     },
     {
       "source": "The Substrate Drifts",
@@ -13716,10 +13953,28 @@
       "label": "single-substance-lens"
     },
     {
+      "source": "Volterra Kernels and the Torus",
+      "type": "member-of",
+      "target": "Dissolutions",
+      "label": "synthesis-is-processing-one-substance"
+    },
+    {
       "source": "Wavetable Space as Torus",
       "type": "deepens",
       "target": "Inharmonic Wavetable Synthesis",
       "label": "topological-reframe"
+    },
+    {
+      "source": "Wavetable Space as Torus",
+      "type": "couples-with",
+      "target": "2D Torus Wavetable Synthesizer",
+      "label": "embodied-geometry"
+    },
+    {
+      "source": "Wavetable Space as Torus",
+      "type": "exemplifies",
+      "target": "DSP in Looping Dimensions",
+      "label": "two-dimensional-case"
     },
     {
       "source": "Wavetable Space as Torus",
@@ -13766,8 +14021,38 @@
     {
       "source": "Wavetable Synthesis -- Research & Higher-Dimensional Design",
       "type": "connects-to",
-      "target": "Four Pillars",
+      "target": "FOUR PILLARS",
       "label": "creation-pillar"
+    },
+    {
+      "source": "Wavetable Synthesis -- Research & Higher-Dimensional Design",
+      "type": "enables",
+      "target": "RNBO Synthesis",
+      "label": "substrate"
+    },
+    {
+      "source": "Wavetable Synthesis -- Research & Higher-Dimensional Design",
+      "type": "mirrors",
+      "target": "The Genetic Code as Wavetable",
+      "label": "isomorphic"
+    },
+    {
+      "source": "Wavetable Synthesis -- Research & Higher-Dimensional Design",
+      "type": "mirrors",
+      "target": "Latent Space Navigation",
+      "label": "higher-order-form"
+    },
+    {
+      "source": "Wavetable Synthesis -- Research & Higher-Dimensional Design",
+      "type": "deepens",
+      "target": "Inharmonicity",
+      "label": "tension"
+    },
+    {
+      "source": "Wavetable Synthesis -- Research & Higher-Dimensional Design",
+      "type": "mirrors",
+      "target": "3D LUT Color Grading",
+      "label": "structural-twin"
     },
     {
       "source": "Wavetable Synthesis -- Research & Higher-Dimensional Design",
@@ -13786,6 +14071,18 @@
       "type": "spawned",
       "target": "Embeddings as Relational Meaning",
       "label": "latent-table"
+    },
+    {
+      "source": "Wavetable Synthesis -- Research & Higher-Dimensional Design",
+      "type": "spawned",
+      "target": "2D Torus Wavetable Synthesizer",
+      "label": "hyperspace-incarnation"
+    },
+    {
+      "source": "Wavetable Synthesis -- Research & Higher-Dimensional Design",
+      "type": "connects-to",
+      "target": "DSP in Looping Dimensions",
+      "label": "mathematical-substrate"
     },
     {
       "source": "What Claim Does Scientific Sonification Make?",
@@ -13922,7 +14219,7 @@
     {
       "source": "Deposit Ceremony",
       "type": "connects-to",
-      "target": "Four Pillars",
+      "target": "FOUR PILLARS",
       "label": null
     },
     {

@@ -12,27 +12,6 @@ energy: high
 who_leads: shared
 forward_vector: "I am the palace's catalogue of places where seemingly separate frameworks collapse into a single object seen from different doorways. I want to grow as each new dissolution lands — analysis-is-synthesis-read-backward, wavetable-is-waveguide-loop, envelope-is-waveform-at-slow-rate — and to be the hub a designer reads when two things in their head feel suspiciously similar."
 links:
-  - target: "[[Dispersion Table]]"
-    type: member-of
-    label: phase-response-axis-of-the-loop
-  - target: "[[Phase Reduction]]"
-    type: member-of
-    label: floquet-as-kuramoto-collapsed
-  - target: "[[Chebyshev is Fourier]]"
-    type: member-of
-    label: change-of-basis-reveals-identity
-  - target: "[[Volterra Kernels and the Torus]]"
-    type: member-of
-    label: synthesis-is-processing-one-substance
-  - target: "[[Exponential Decay Curvature]]"
-    type: member-of
-    label: envelope-is-waveform-at-slow-rate
-  - target: "[[Linear Predictive Coding]]"
-    type: member-of
-    label: analysis-as-synthesis-read-backward
-  - target: "[[Rank-N Lattice Analysis]]"
-    type: member-of
-    label: minimal-spectrum-of-the-stored-field
   - target: "[[Boundary-Crossing Instruments]]"
     type: emerged-from
     label: representation-dissolves-discontinuity
@@ -40,9 +19,12 @@ links:
     type: mirrors
     label: higher-dim-unifies-the-separate
   - target: "[[Frequency-Time Duality]]"
-    type: exemplifies
+    type: connects-to
     label: first-walk-across-a-boundary
 ---
+
+<!-- Membership is declared on the member side: each member entry carries `member-of: [[Dissolutions]]`. Per SCHEMA §4 (v1.8), member-of is directed member→collection with no forced reciprocal on the hub side — the Map computes the hub's inbound degree. The catalogue below is the human-readable roster; the YAML membership lives in the members. -->
+
 
 # Dissolutions
 
