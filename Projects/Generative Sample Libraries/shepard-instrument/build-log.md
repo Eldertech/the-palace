@@ -50,5 +50,25 @@ questions only the ear can answer for a Stage 1 drone:
 1. Does the 7-octave Gaussian stack sound coherent — one tone, not seven?
 2. Are the pitch-class identities clear when adjacent classes are played?
 
-The full 132-region SFZ ships in the same pass because there is no per-note
-rendering — the audition unit IS the full library. There is only one batch.
+The full 128-region SFZ (every MIDI note 0..127 → its pitch-class drone)
+ships in the same pass because there is no per-note rendering — the audition
+unit IS the full library. There is only one batch.
+
+## Loop-point fix (GSL cycle 15, 2026-06-04)
+The original SFZ declared `loop_mode=loop_continuous` but gave NO
+`loop_start`/`loop_end`, so sforzando looped the WHOLE 6 s file. Analysis of
+the renders this cycle found the synthesis applies a short fade-in at sample 0
+(first 30 ms ramps from ~-39 dBFS up to the ~-11 dBFS steady body) but no
+matching fade-out — so a whole-file loop wraps the loud tail straight onto the
+quiet fade-in once per loop: an audible amplitude pump / tick every 6 s on any
+held key. That breaks the one thing Stage 1 has to sell — a drone that
+sustains forever and seamlessly.
+
+Fix: each region now carries an explicit interior `loop_start`/`loop_end`
+chosen at matched rising zero-crossings inside the steady body (~1.0 s in, a
+~0.38–0.46 s window). Measured seam quality across all twelve: slope mismatch
+~0 (max 6e-5), envelope discontinuity < 0.07 dB (worst F# at -0.064 dB) —
+inaudible. F and F# were re-optimized for value-at-crossing as well. Per-file
+loop points recorded in `loop_points.json`. Note count is 128, not the 132 the
+original log claimed (the 0..127 → pitch-class mapping yields 8×11 + 4×10 = 128
+regions); corrected here.

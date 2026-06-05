@@ -83,6 +83,48 @@
     font-family: var(--mono); font-size: var(--t-meta); color: var(--fg-3); letter-spacing: .04em; }
   .foot .lo { font-family: var(--display); color: var(--fg-2); }
   .foot .li { font-family: var(--serif); font-style: italic; font-weight: var(--w-light); color: var(--accent); }
+
+  /* ============ REVIEW LAYER — toggle-able commenting surface ============ */
+  /* Set REVIEW_MODE=false (in script) when we commit to the final product. */
+  .cmt-pin { display: inline-flex; align-items: center; justify-content: center; cursor: pointer;
+    font-family: var(--mono); font-size: 11px; line-height: 1; color: var(--fg-3); background: transparent;
+    border: 1px solid var(--border); border-radius: 3px; width: 17px; height: 17px; margin-left: 6px;
+    vertical-align: middle; transition: color .12s, border-color .12s; user-select: none; pointer-events: auto; }
+  .cmt-pin:hover { color: var(--accent); border-color: var(--accent); }
+  .cmt-pin.filled { color: var(--bg); background: var(--accent); border-color: var(--accent); }
+
+  #review { position: fixed; top: 0; right: 0; height: 100vh; width: 326px; z-index: 20;
+    display: flex; flex-direction: column; background: color-mix(in srgb, var(--bg-elev-2) 94%, transparent);
+    border-left: 1px solid var(--border); box-shadow: -8px 0 28px rgba(0,0,0,.4);
+    transform: translateX(0); transition: transform .22s var(--ease, ease); }
+  #review.collapsed { transform: translateX(326px); }
+  #review .rv-head { padding: 14px 14px 10px; border-bottom: 1px solid var(--border-soft); }
+  #review .rv-title { font-family: var(--mono); text-transform: uppercase; letter-spacing: .08em; font-size: 11px; color: var(--accent); }
+  #review .rv-sub { font-family: var(--mono); font-size: 10px; color: var(--fg-3); margin-top: 4px; letter-spacing: .03em; }
+  #review .rv-body { flex: 1; overflow-y: auto; padding: 6px 12px 12px; }
+  #review .rv-row { padding: 9px 0 7px; border-bottom: 1px solid var(--border-soft); }
+  #review .rv-row label { display: flex; align-items: baseline; justify-content: space-between; gap: 8px;
+    font-family: var(--sans); font-weight: var(--w-medium); font-size: 12.5px; color: var(--fg-1); cursor: pointer; }
+  #review .rv-row .tag { font-family: var(--mono); font-size: 9px; text-transform: uppercase; letter-spacing: .06em;
+    color: var(--fg-3); border: 1px solid var(--border-soft); border-radius: 2px; padding: 1px 4px; white-space: nowrap; }
+  #review textarea { width: 100%; margin-top: 6px; background: var(--bg); color: var(--fg-1); border: 1px solid var(--border);
+    border-radius: var(--r-sm); font-family: var(--mono); font-size: 11.5px; line-height: 1.45; padding: 6px 7px;
+    resize: vertical; min-height: 0; height: 30px; transition: height .12s, border-color .12s; }
+  #review textarea:focus { outline: none; border-color: var(--accent); height: 64px; }
+  #review textarea.has { height: 56px; border-color: var(--accent-dim); }
+  #review .rv-foot { padding: 10px 12px; border-top: 1px solid var(--border-soft); display: flex; flex-wrap: wrap; gap: 6px; }
+  #review .rv-foot button { font-family: var(--mono); font-size: 10.5px; letter-spacing: .04em; text-transform: uppercase;
+    cursor: pointer; border: 1px solid var(--border); background: var(--bg-elev-1); color: var(--fg-2); padding: 6px 9px; border-radius: var(--r-sm); }
+  #review .rv-foot button.primary { background: var(--accent); color: var(--bg); border-color: var(--accent); font-weight: var(--w-medium); }
+  #review .rv-foot button:hover { border-color: var(--accent); }
+  #rv-tab { position: fixed; top: 14px; right: 14px; z-index: 21; font-family: var(--mono); font-size: 10.5px;
+    text-transform: uppercase; letter-spacing: .06em; cursor: pointer; padding: 6px 10px; border-radius: var(--r-sm);
+    border: 1px solid var(--border); background: var(--bg-elev-1); color: var(--fg-2); }
+  #rv-tab:hover { border-color: var(--accent); color: var(--accent); }
+  #rv-toast { position: fixed; bottom: 18px; right: 18px; z-index: 30; font-family: var(--mono); font-size: 11px;
+    background: var(--accent); color: var(--bg); padding: 8px 12px; border-radius: var(--r-sm); opacity: 0; transition: opacity .2s; pointer-events: none; }
+  #rv-toast.show { opacity: 1; }
+  body.review-off .cmt-pin, body.review-off #review, body.review-off #rv-tab { display: none !important; }
 </style>
 </head>
 <body>
@@ -405,6 +447,110 @@ new p5(sketch);
 /* Engage gate — unlock audio on the user gesture (Web Audio requirement) */
 const gate=document.getElementById('gate');
 document.getElementById('engage').addEventListener('click', async (e)=>{ e.stopPropagation(); await startAudio(); gate.classList.add('hidden'); });
+
+/* ===================================================================== *
+ *  REVIEW LAYER — per-moment commenting surface (palace habit)           *
+ *  First version of any build ships with this. Flip REVIEW_MODE=false    *
+ *  (or remove this block) once we commit to the final product.           *
+ * ===================================================================== */
+const REVIEW_MODE = true;                 // ← set false to ship the clean final
+const REVIEW_ROUND = 1;                   // bump each revision round
+const RV_KEY = 'murmuration-review-v1';
+
+// Every commentable "moment". sel = DOM anchor for an inline pin; tag groups it.
+const MOMENTS = [
+  { id:'concept',  label:'Concept & framing (the lead)',        tag:'text',   sel:'.lead' },
+  { id:'skin',     label:'Visual design / Strobe skin',         tag:'design', sel:'.topline' },
+  { id:'field',    label:'The wavetable field (heatmap)',       tag:'canvas' },
+  { id:'flock',    label:'Flock rendering — darts, colour, tails', tag:'canvas' },
+  { id:'attractor',label:'Attractor gesture (drag)',            tag:'canvas' },
+  { id:'predator', label:'Predator startle (click)',            tag:'canvas' },
+  { id:'hud',      label:'Order-parameter HUD / state readout',  tag:'ui' },
+  { id:'phase',    label:'Disorder η — the phase transition',   tag:'control',sel:'#cEta' },
+  { id:'pitch',    label:'Pitch mapping (height + Doppler)',    tag:'control',sel:'#cBase' },
+  { id:'grain',    label:'Grain character (shimmer, density)',  tag:'control',sel:'#cGr' },
+  { id:'corners',  label:'The four wavetable corners (sine/saw/square/bell)', tag:'sound' },
+  { id:'sound',    label:'Overall sound & mix',                 tag:'sound' },
+];
+
+(function review(){
+  if(!REVIEW_MODE){ document.body.classList.add('review-off'); return; }
+  let store = {};
+  try { store = JSON.parse(localStorage.getItem(RV_KEY)) || {}; } catch(e){ store = {}; }
+  const save = ()=>{ try{ localStorage.setItem(RV_KEY, JSON.stringify(store)); }catch(e){} };
+  const count = ()=> Object.values(store).filter(v=>v&&v.trim()).length;
+
+  // panel
+  const panel=document.createElement('div'); panel.id='review';
+  panel.innerHTML =
+    `<div class="rv-head"><div class="rv-title">Review · Round ${REVIEW_ROUND}</div>
+       <div class="rv-sub" id="rv-sub"></div></div>
+     <div class="rv-body" id="rv-body"></div>
+     <div class="rv-foot">
+       <button class="primary" id="rv-copy">Copy for Claude</button>
+       <button id="rv-dl">Download .md</button>
+       <button id="rv-hide">Hide</button>
+       <button id="rv-clear">Clear all</button>
+     </div>`;
+  document.body.appendChild(panel);
+  const tab=document.createElement('div'); tab.id='rv-tab'; tab.textContent='◇ Review'; document.body.appendChild(tab);
+  const toast=document.createElement('div'); toast.id='rv-toast'; document.body.appendChild(toast);
+  const body=panel.querySelector('#rv-body'), sub=panel.querySelector('#rv-sub');
+  const flash=(m)=>{ toast.textContent=m; toast.classList.add('show'); setTimeout(()=>toast.classList.remove('show'),1400); };
+  const refreshSub=()=>{ sub.textContent = `${count()} of ${MOMENTS.length} moments noted`; };
+
+  const areas={}, pins={};
+  MOMENTS.forEach(m=>{
+    const row=document.createElement('div'); row.className='rv-row';
+    row.innerHTML=`<label>${m.label}<span class="tag">${m.tag}</span></label>`;
+    const ta=document.createElement('textarea'); ta.placeholder='note for next round…'; ta.value=store[m.id]||'';
+    if(ta.value.trim()) ta.classList.add('has');
+    ta.addEventListener('input',()=>{ store[m.id]=ta.value; if(ta.value.trim()) ta.classList.add('has'); else ta.classList.remove('has'); save(); syncPin(m.id); refreshSub(); });
+    row.appendChild(ta); body.appendChild(row); areas[m.id]=ta;
+
+    // inline pin next to the anchored DOM element
+    if(m.sel){
+      const el=document.querySelector(m.sel);
+      if(el){
+        const pin=document.createElement('span'); pin.className='cmt-pin'; pin.title='Comment on this'; pin.textContent='◇';
+        pin.addEventListener('click',(e)=>{ e.preventDefault(); e.stopPropagation(); openTo(m.id); });
+        // place pins on controls next to the label, otherwise append to the element
+        const host = el.matches('input') ? el.closest('.ctl').querySelector('label') : el;
+        (host||el).appendChild(pin); pins[m.id]=pin; syncPin(m.id);
+      }
+    }
+  });
+  function syncPin(id){ const p=pins[id]; if(!p) return; const has=(store[id]||'').trim(); p.textContent=has?'◆':'◇'; p.classList.toggle('filled',!!has); }
+  function openTo(id){ panel.classList.remove('collapsed'); const ta=areas[id]; if(ta){ ta.scrollIntoView({block:'center'}); ta.focus(); } }
+
+  function buildMarkdown(){
+    const d=new Date().toISOString().slice(0,10);
+    let md=`# Murmuration — Round ${REVIEW_ROUND} review notes\n_${count()} of ${MOMENTS.length} moments · ${d}_\n`;
+    let any=false;
+    MOMENTS.forEach(m=>{ const v=(store[m.id]||'').trim(); if(v){ any=true; md+=`\n## ${m.label}\n${v}\n`; } });
+    if(!any) md+=`\n_(no notes yet)_\n`;
+    return md;
+  }
+  panel.querySelector('#rv-copy').addEventListener('click', async ()=>{
+    const md=buildMarkdown();
+    try { await navigator.clipboard.writeText(md); flash('Copied — paste to Claude'); return; } catch(e){}
+    // file:// fallback
+    const t=document.createElement('textarea'); t.value=md; document.body.appendChild(t); t.select();
+    try { document.execCommand('copy'); flash('Copied — paste to Claude'); } catch(e){ flash('Copy blocked — use Download'); }
+    t.remove();
+  });
+  panel.querySelector('#rv-dl').addEventListener('click', ()=>{
+    const blob=new Blob([buildMarkdown()],{type:'text/markdown'}); const url=URL.createObjectURL(blob);
+    const a=document.createElement('a'); a.href=url; a.download=`murmuration-review-round${REVIEW_ROUND}.md`; a.click(); URL.revokeObjectURL(url); flash('Downloaded');
+  });
+  panel.querySelector('#rv-clear').addEventListener('click', ()=>{
+    if(!confirm('Clear all notes for this round?')) return;
+    store={}; save(); MOMENTS.forEach(m=>{ areas[m.id].value=''; areas[m.id].classList.remove('has'); syncPin(m.id); }); refreshSub();
+  });
+  panel.querySelector('#rv-hide').addEventListener('click', ()=> panel.classList.add('collapsed'));
+  tab.addEventListener('click', ()=> panel.classList.toggle('collapsed'));
+  refreshSub();
+})();
 </script>
 </body>
 </html>
