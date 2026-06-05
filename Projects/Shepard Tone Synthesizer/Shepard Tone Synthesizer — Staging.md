@@ -1,9 +1,12 @@
 ---
 title: Shepard Tone Synthesizer — Staging
-project: "[[Shepard Tone Synthesizer]]"
+born: 2026-04-21
 loudon-live-status: planning
-stage: growing
-last-updated: 2026-04
+links:
+  - target: "[[Shepard Tone Synthesizer]]"
+    type: connects-to
+    label: staging-of
+forward_vector: I hold the Loudon Live staging plan for the Shepard Tone Synthesizer — the progressive-revelation stage sequence pairing each synth stage with its Octave Equivalence theory section — so the parent project's steward can advance it without re-deriving the arc.
 ---
 
 # Shepard Tone Synthesizer — Staging

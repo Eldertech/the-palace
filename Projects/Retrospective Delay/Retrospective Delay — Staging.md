@@ -1,13 +1,15 @@
 ---
 title: Retrospective Delay — Staging
-project: "[[Retrospective Delay]]"
+born: 2026-04-07
 loudon-live-status: planning
-stage: seed
-last-updated: 2026-04
 links:
+  - target: "[[Retrospective Delay]]"
+    type: connects-to
+    label: staging-of
   - target: "[[Progressive Staging]]"
     type: couples-with
     label: pedagogical-method
+forward_vector: I hold the Loudon Live staging plan for Retrospective Delay — the staged pedagogical arc from buffer mechanism to dub-lineage framing — so the parent project's steward can advance it without re-deriving the path.
 ---
 
 ## Alignment Record
