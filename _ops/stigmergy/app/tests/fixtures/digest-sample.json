@@ -1,0 +1,118 @@
+{
+  "schema": "trickster-auto-digest/0.1",
+  "generated_at": "2026-06-03T05:14:15.003Z",
+  "mode": "shadow",
+  "board": "/fake/path/blackboard.jsonl",
+  "counts": {
+    "pending": 4,
+    "escalate": 3,
+    "auto_grant": 2,
+    "auto_deny": 0,
+    "two_paths_eligible": 1
+  },
+  "ranked_escalations": [
+    {
+      "rank": 1,
+      "tier": 1,
+      "tier_key": "blocking_audition",
+      "tier_label": "Blocking audition",
+      "disharmony_signature": "stranded conatus + sensory gate — a deliverable is fruiting but stalled on your ear",
+      "request_id": "shepard-steward-008",
+      "from": "Shepard Tone Synthesizer",
+      "resource": "audition_verification",
+      "blocking": true,
+      "gate_kind": "audition",
+      "gate_signal": "resource~\"audition\"",
+      "rule_id": "HARD-GATE:audition",
+      "headline": "Does the Stage 1 MINIMUM-ILLUSION drone read as one pitch class, not seven sines?",
+      "options": ["APPROVE-RENDER-TWELVE", "ADJUST-ENVELOPE", "REJECT-RECIPE"],
+      "rationale": "Sensory audition: a deliverable needs Loudon's ear/eye. The audition gate is sacred — always escalates, never auto-grants.",
+      "age_ts": "2026-05-27T19:51:00-04:00",
+      "two_paths": {
+        "eligible": false,
+        "category": "sensory",
+        "shape": null,
+        "options": [],
+        "borderline": false,
+        "reason": "verdict fork — stays single-path triage"
+      }
+    },
+    {
+      "rank": 2,
+      "tier": 1,
+      "tier_key": "blocking_audition",
+      "tier_label": "Blocking audition",
+      "disharmony_signature": "stranded conatus + sensory gate — a deliverable is fruiting but stalled on your ear",
+      "request_id": "gsl-steward-026",
+      "from": "Generative Sample Libraries",
+      "resource": "audition",
+      "blocking": true,
+      "gate_kind": "audition",
+      "gate_signal": "resource~\"audition\"",
+      "rule_id": "HARD-GATE:audition",
+      "headline": "Audition the 12 Shepard drones — does the Gaussian stack read as ONE Shepard tone per pitch class?",
+      "options": ["APPROVE", "TWEAK-PARAMS", "REJECT"],
+      "rationale": "Sensory audition: a deliverable needs Loudon's ear/eye.",
+      "age_ts": "2026-05-27T19:57:00-04:00",
+      "two_paths": {
+        "eligible": false,
+        "category": "sensory",
+        "shape": null,
+        "options": [],
+        "borderline": false,
+        "reason": "verdict fork — stays single-path triage"
+      }
+    },
+    {
+      "rank": 3,
+      "tier": 4,
+      "tier_key": "routine_fork",
+      "tier_label": "Routine directional fork",
+      "disharmony_signature": "routine fork — a steward re-finding its forward vector",
+      "request_id": "torus-steward-008",
+      "from": "2D Torus Wavetable Synthesizer",
+      "resource": "directional_decision",
+      "blocking": false,
+      "gate_kind": null,
+      "gate_signal": null,
+      "rule_id": "default-no-match",
+      "headline": "Which generating logic should the seventh surface fill, and do I render it now or hold for the RNBO gate?",
+      "options": ["KURAMOTO-BLOOM", "MATERN-FIELD", "FISHER-RIDGE", "HOLD-FOR-RNBO"],
+      "rationale": "No rule matched; a novel/unrecognized request escalates to Loudon by default.",
+      "age_ts": "2026-06-03T16:34:00-04:00",
+      "two_paths": {
+        "eligible": true,
+        "category": "rec_n",
+        "shape": "build-both",
+        "options": [
+          { "id": "KURAMOTO-BLOOM", "label": "KURAMOTO-BLOOM — frozen coupled-oscillator dynamics (recommended)" },
+          { "id": "MATERN-FIELD", "label": "MATERN-FIELD — statistics-specified random field" }
+        ],
+        "borderline": false,
+        "reason": "rec=n directional fork with ≥2 buildable paths"
+      }
+    }
+  ],
+  "auto_decisions": [
+    {
+      "request_id": "gwl-steward-015",
+      "from": "Generative Wavetable Libraries",
+      "resource": "directional_decision",
+      "verb": "auto-grant",
+      "rule_id": "grant-nonblocking-recommended-fork",
+      "option_id": "CENTROID-FREQ",
+      "option_label": "CENTROID-FREQ — position sweeps the Gaussian centre frequency low-to-high (recommended)",
+      "rationale": "Non-blocking directional fork carrying the steward's own recommendation."
+    },
+    {
+      "request_id": "semantic-delay-steward-004",
+      "from": "Semantic Delay",
+      "resource": "directional_decision",
+      "verb": "auto-grant",
+      "rule_id": "grant-nonblocking-recommended-fork",
+      "option_id": "STANDALONE-FIRST",
+      "option_label": "STANDALONE-FIRST — build Stage 2 against the stub daemon (recommended)",
+      "rationale": "Non-blocking directional fork carrying the steward's own recommendation."
+    }
+  ]
+}

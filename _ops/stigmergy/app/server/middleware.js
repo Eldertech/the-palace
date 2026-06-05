@@ -24,6 +24,8 @@ import { readLog, readCommit, readUncommitted } from './git.js';
 import { createActuator } from './actuator.js';
 import { readCards, appendInboxBlock, CARD_ACTIONS } from './cards.js';
 import { composePreview } from './entry-save.js';
+import { appendVerdict, readVerdicts } from './digest-verdicts.js';
+import { validateVerdict, matchStats } from '../src/lib/digest-verdicts.js';
 
 // The supervisor prompt the fired worker runs as (the Enrichment ceremony's
 // headless `claude -p` brief). Read at fire time so edits take effect without
@@ -584,6 +586,42 @@ export function blackboardMiddleware(palaceRoot, opts = {}) {
             ok: true, inbox: wrote.msg, fired: fired.fired, worker_msg: fired.msg,
             ...actuator.status(),
           });
+        }
+
+        // ── POST /api/digest/verdict ─ alignment-review write ──────────────
+        // Body: one verdict record (see src/lib/digest-verdicts.js for shape).
+        // Append-only; never mutates prior records. Re-marking the same
+        // (run_generated_at, request_id) appends a new line and dedupeLatest
+        // collapses to latest at read time. Out-of-contract for the engine:
+        // does NOT touch trickster-auto, does NOT post to the blackboard.
+        if (urlPath === '/api/digest/verdict' && method === 'POST') {
+          const bodyText = await readBody(req, res);
+          if (bodyText === null) return; // 413 already sent
+          let record;
+          try { record = JSON.parse(bodyText); } catch (e) {
+            return jsonResponse(res, 400, { error: `malformed JSON: ${e.message}` });
+          }
+          const v = validateVerdict(record);
+          if (!v.valid) return jsonResponse(res, 400, { errors: v.errors });
+          try {
+            const line = await appendVerdict(palaceRoot, record);
+            return jsonResponse(res, 200, { ok: true, line });
+          } catch (err) {
+            return jsonResponse(res, 500, { error: `verdict write failed: ${err.message}` });
+          }
+        }
+
+        // ── GET /api/digest/verdicts ─ alignment-review read ───────────────
+        // Returns { verdicts, stats } where stats is { overall, byRule } per
+        // matchStats. Powers the panel's header band + per-rule readout.
+        if (urlPath === '/api/digest/verdicts' && method === 'GET') {
+          try {
+            const verdicts = readVerdicts(palaceRoot);
+            const stats = matchStats(verdicts);
+            return jsonResponse(res, 200, { verdicts, stats });
+          } catch (err) {
+            return jsonResponse(res, 500, { error: `verdict read failed: ${err.message}` });
+          }
         }
 
         // ── POST /api/entry/save ─ Phase 5 Stage A: dry-run preview ────────
