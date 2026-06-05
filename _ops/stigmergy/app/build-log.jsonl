@@ -178,3 +178,21 @@
 {"ts":"2026-05-31T23:48:08.959Z","phase":17,"action":"gate-end","outcome":"pass","stage":"tests+captures"}
 {"ts":"2026-06-01T00:12:04.695Z","phase":17,"label":"v1.0 Phase 5 Stage A — STATE write (dry-run)","action":"gate-start"}
 {"ts":"2026-06-01T00:12:15.597Z","phase":17,"action":"gate-end","outcome":"pass","stage":"tests+captures"}
+{"ts":"2026-06-01T13:12:27.427Z","phase":17,"label":"v1.0 Phase 5 Stage A — STATE write (dry-run)","action":"gate-start"}
+{"ts":"2026-06-01T13:12:40.711Z","phase":17,"action":"gate-end","outcome":"pass","stage":"tests+captures"}
+{"ts":"2026-06-01T13:22:02.675Z","phase":18,"label":"v1.0 Phase 5.5 — Topology Lens","action":"gate-start"}
+{"ts":"2026-06-01T13:22:20.974Z","phase":18,"action":"gate-end","outcome":"pass","stage":"tests+captures"}
+{"ts":"2026-06-01T13:22:29.236Z","phase":17,"label":"v1.0 Phase 5 Stage A — STATE write (dry-run)","action":"gate-start"}
+{"ts":"2026-06-01T13:22:40.237Z","phase":17,"action":"gate-end","outcome":"pass","stage":"tests+captures"}
+{"ts":"2026-06-01T13:30:36.749Z","phase":18,"label":"v1.0 Phase 5.5 — Topology Lens","action":"gate-start"}
+{"ts":"2026-06-01T13:30:54.954Z","phase":18,"action":"gate-end","outcome":"pass","stage":"tests+captures"}
+{"ts":"2026-06-01T13:36:56.327Z","phase":18,"label":"v1.0 Phase 5.5 — Topology Lens","action":"gate-start"}
+{"ts":"2026-06-01T13:37:14.467Z","phase":18,"action":"gate-end","outcome":"pass","stage":"tests+captures"}
+{"ts":"2026-06-02T00:22:32.395Z","phase":18,"label":"v1.0 Phase 5.5 — Topology Lens","action":"gate-start"}
+{"ts":"2026-06-02T00:22:51.013Z","phase":18,"action":"gate-end","outcome":"pass","stage":"tests+captures"}
+{"ts":"2026-06-02T01:25:26.256Z","phase":18,"label":"v1.0 Phase 5.5 — Topology Lens","action":"gate-start"}
+{"ts":"2026-06-02T01:25:47.070Z","phase":18,"action":"gate-end","outcome":"pass","stage":"tests+captures"}
+{"ts":"2026-06-02T01:33:38.355Z","phase":17,"label":"v1.0 Phase 5 Stage A — STATE write (dry-run)","action":"gate-start"}
+{"ts":"2026-06-02T01:33:49.923Z","phase":17,"action":"gate-end","outcome":"pass","stage":"tests+captures"}
+{"ts":"2026-06-02T01:33:50.000Z","phase":18,"label":"v1.0 Phase 5.5 — Topology Lens","action":"gate-start"}
+{"ts":"2026-06-02T01:34:09.652Z","phase":18,"action":"gate-end","outcome":"pass","stage":"tests+captures"}
