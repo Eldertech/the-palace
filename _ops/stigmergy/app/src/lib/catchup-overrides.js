@@ -68,4 +68,61 @@ export const CATCHUP_OVERRIDES = {
     headline: 'Drop the .adv in Ableton, play a held note. Does it load and sound darker than factory? Yes → start perceptual labeling. No → fix the writer first.',
     ground: 'paused on your Ableton · 30-second drag-and-play test · steward leans PERCEPTUAL-BY-EAR',
   },
+
+  // ── The 13 currently-pending requests in the live STIGMERGY inbox ────
+  // These are older requests (May 27 – June 3) that pre-date voice rule 6,
+  // backfilled here so the catchup-first layout is visible immediately.
+
+  'apo-steward-vector-change-2026-06-03': {
+    headline: 'Your home entry\'s forward_vector changed since the last cycle. Re-baseline to the new one, or revert?',
+    ground: 'still working · pre-flight halt · steward expects CONFIRM-NEW-VECTOR',
+  },
+  'inharmonic-wavetable-synthesis-steward-005': {
+    headline: 'The five-pass Faust audition is out. Do the curves read as distinct physical materials, tune them, change the audition unit, or did it not run?',
+    ground: 'paused on your ears · prototype shipped · steward leans ARCHITECTURE-VERIFIED',
+  },
+  'meadows-career-steward-007': {
+    headline: 'Seven case-study interview questions are ready. Answer in notes, defer, reshape the questions, voice-record instead, or start narrow with just two?',
+    ground: 'still working · mining done, interview begins · steward leans INTERVIEW-ME',
+  },
+  'portamento-steward-006': {
+    headline: 'The 12-example deck is rendered. Audition pass first, expand to 24, compare against real vocal recordings, or fold into the canonical tool location?',
+    ground: 'still working · deck on disk, ear-check pending · steward leans AUDITION-PASS',
+  },
+  'preset-steward-004': {
+    headline: 'The wavetable profile is structurally mapped but musically blank. Label by ear, prove the write-path round-trip first, or audit the 13 mod-source slots?',
+    ground: 'still working · v0.1 profile shipped · steward leans WRITE-PATH-PROOF',
+  },
+  'gwl-steward-015': {
+    headline: 'For the Shepard wavetable, what does Position do — sweep centroid frequency, sweep width, pick an octave-voice via a comb, or your own?',
+    ground: 'still working · Crystal Bravais shipped · steward leans CENTROID-FREQ',
+  },
+  'gsl-steward-026': {
+    headline: 'GSL+Shepard Phase 3 source-two shipped — 12-drone SFZ library on disk. Approve, tweak parameters, or reject the recipe?',
+    ground: 'paused on your ears · two stewards rendezvoused · no clear lean',
+  },
+  'semantic-delay-steward-004': {
+    headline: 'RPC v0.1 contract is pinned. Build the Stage 2 playable against the stub, wire the real model now, or build the prompt pipeline?',
+    ground: 'still working · contract proved, stub ships · no explicit lean',
+  },
+  'slime-mold-delay-steward-004': {
+    headline: 'The visual prototype is live. Extend it interactively, build a static-topology renderer for handoff, or start the RNBO audio architecture?',
+    ground: 'still working · Stage 2 prototype shipped · no clear lean',
+  },
+  'shepard-steward-009': {
+    headline: 'A Stage 1 section is drafted for Octave Equivalence. Approve the commit, adjust the text, defer until the drone audition lands, or restructure?',
+    ground: 'still working · paired-pages draft ready · steward leans APPROVE-COMMIT',
+  },
+  'retrospective-delay-steward-007': {
+    headline: 'The Stage 1 lesson + five-asset Maker brief is drafted. Greenlight all five at recommended routing, cheap-and-local routing, four-only, hold to read, or redirect?',
+    ground: 'still working · brief specced via the Shop · steward leans GREENLIGHT-MAKER-RECOMMENDED',
+  },
+  'shepard-steward-008': {
+    headline: 'The Stage 1 drone shipped. Does it fuse as a single pitch class? Approve and render twelve, adjust the envelope, adjust the stack range, or reject the recipe?',
+    ground: 'paused on your ears · seven octave-related sines · no clear lean',
+  },
+  'apo-steward-004': {
+    headline: 'The Kuramoto demo .dsp is drafted. Render a K-sweep, a dual sweep with pitch, three A/B clips, or compile-first to catch syntax?',
+    ground: 'still working · Faust draft on disk, audition gated · no clear lean',
+  },
 };
