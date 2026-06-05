@@ -1,7 +1,7 @@
 import { describe, it, expect } from 'vitest';
 import {
   buildQueue, reconcileQueue, partitionQueue, rankQueue, laneCounts, vantage, deriveAsk,
-  synthesizeProposalAsk,
+  synthesizeProposalAsk, synthesizeFlagAsk,
 } from '../../src/lib/queue-model.js';
 
 function reqMsg(over = {}) {
@@ -167,6 +167,166 @@ describe('reconcileQueue — vector_proposal', () => {
     }];
     const out = reconcileQueue(q, commits);
     expect(out[0].resolved.done).toBe(true);
+  });
+});
+
+function flagMsg(over = {}) {
+  return {
+    schema_version: '1.0',
+    id: 'wf-1', type: 'BROADCAST', from: 'deposit-ceremony',
+    to: 'weave-ceremony',
+    ts: '2026-06-05T13:45:00.000Z', board: 'WEAVE', session_id: 'deposit-BATCH01',
+    health: {
+      context_pct: 0, stop_reason: 'deposit', iteration: 1,
+      tokens_this_call: 0, model: 'deposit', score: 'green',
+    },
+    payload: {
+      kind: 'weave_flag',
+      flag_type: 'backlink_audit',
+      source_deposit_id: 'BATCH01',
+      source_entries: ['Floquet Theory', 'Kuramoto Coupling'],
+      target_entry: 'Phase Reduction',
+      proposed_action: 'Add couples-with link from each hub to Phase Reduction with label `bridge-via-PRC`.',
+      rationale: 'Phase Reduction names the bridge between the two existing hubs.',
+    },
+    ...over,
+  };
+}
+
+describe('buildQueue — weave_flag', () => {
+  it('turns a weave_flag BROADCAST into a queue item with array source_entries', () => {
+    const q = buildQueue([flagMsg()]);
+    expect(q).toHaveLength(1);
+    const it = q[0];
+    expect(it.kind).toBe('weave_flag');
+    expect(it.id).toBe('wf-1');
+    expect(it.flag_type).toBe('backlink_audit');
+    expect(it.source_deposit_id).toBe('BATCH01');
+    expect(it.source_entries).toEqual(['Floquet Theory', 'Kuramoto Coupling']);
+    expect(it.target_entry).toBe('Phase Reduction');
+    expect(it.ask).toMatch(/couples-with/);
+    expect(it.summary).toBe(it.ask);
+    // Primary entry aliasing for the pointer chip; full array for reconciler.
+    expect(it.entry).toBe('Floquet Theory');
+    expect(it.entries).toEqual(['Floquet Theory', 'Kuramoto Coupling']);
+    expect(it.pointer).toEqual({ type: 'entry', target: 'Floquet Theory' });
+    expect(it.stale_if).toMatch(/Floquet Theory|Kuramoto Coupling/);
+  });
+
+  it('drops a weave_flag answered by RESOURCE_GRANT', () => {
+    const grant = {
+      id: 'g-wf', type: 'RESOURCE_GRANT', re: 'wf-1', board: 'WEAVE',
+      ts: '2026-06-05T14:00:00Z',
+    };
+    expect(buildQueue([flagMsg(), grant])).toHaveLength(0);
+  });
+
+  it('drops a weave_flag answered by RESOURCE_DENY', () => {
+    const deny = {
+      id: 'd-wf', type: 'RESOURCE_DENY', re: 'wf-1', board: 'WEAVE',
+      ts: '2026-06-05T14:00:00Z',
+    };
+    expect(buildQueue([flagMsg(), deny])).toHaveLength(0);
+  });
+
+  it('synthesizes an ask from flag_type + source_entries when proposed_action is absent', () => {
+    const q = buildQueue([flagMsg({
+      payload: {
+        kind: 'weave_flag',
+        flag_type: 'mirror_link_sweep',
+        source_entries: ['Foo', 'Bar'],
+      },
+    })]);
+    expect(q[0].ask).toMatch(/sweep.*Foo.*Bar/i);
+  });
+
+  it('falls back to a board pointer when source_entries is empty', () => {
+    const q = buildQueue([flagMsg({
+      payload: {
+        kind: 'weave_flag',
+        flag_type: 'section_expansion',
+        source_entries: [],
+      },
+    })]);
+    expect(q[0].pointer).toEqual({ type: 'board', target: 'WEAVE' });
+  });
+});
+
+describe('reconcileQueue — weave_flag', () => {
+  it('resolves when a commit touches the FIRST source entry', () => {
+    const q = buildQueue([flagMsg()]);
+    const commits = [{
+      shortHash: 'abc123', date: '2026-06-05T15:00:00Z',
+      entries: ['Floquet Theory'], resolves: [],
+    }];
+    const out = reconcileQueue(q, commits);
+    expect(out[0].resolved.done).toBe(true);
+    expect(out[0].resolved.reason).toMatch(/abc123.*Floquet Theory/);
+  });
+
+  it('resolves when a commit touches a NON-FIRST source entry (array reconcile)', () => {
+    const q = buildQueue([flagMsg()]);
+    const commits = [{
+      shortHash: 'def456', date: '2026-06-05T15:00:00Z',
+      entries: ['Kuramoto Coupling'], resolves: [],
+    }];
+    const out = reconcileQueue(q, commits);
+    expect(out[0].resolved.done).toBe(true);
+    expect(out[0].resolved.reason).toMatch(/def456.*Kuramoto Coupling/);
+  });
+
+  it('leaves the flag open when no commit touches any of source_entries', () => {
+    const q = buildQueue([flagMsg()]);
+    const commits = [{
+      shortHash: 'xxx', date: '2026-06-05T15:00:00Z',
+      entries: ['Some Other Entry'], resolves: [],
+    }];
+    expect(reconcileQueue(q, commits)[0].resolved.done).toBe(false);
+  });
+
+  it('matches source_entries case-insensitively', () => {
+    const q = buildQueue([flagMsg()]);
+    const commits = [{
+      shortHash: 'case01', date: '2026-06-05T15:00:00Z',
+      entries: ['kuramoto coupling'], resolves: [],
+    }];
+    expect(reconcileQueue(q, commits)[0].resolved.done).toBe(true);
+  });
+
+  it('does NOT resolve when the touching commit predates the flag (honest staleness)', () => {
+    const q = buildQueue([flagMsg()]);
+    const commits = [{
+      shortHash: 'old01', date: '2026-06-05T13:00:00Z',
+      entries: ['Floquet Theory'], resolves: [],
+    }];
+    expect(reconcileQueue(q, commits)[0].resolved.done).toBe(false);
+  });
+
+  it('resolves via explicit Palace-Resolves: <flag-id>', () => {
+    const q = buildQueue([flagMsg()]);
+    const commits = [{
+      shortHash: 'aaa999', date: '2026-06-05T15:00:00Z',
+      entries: [], resolves: ['wf-1'],
+    }];
+    expect(reconcileQueue(q, commits)[0].resolved.done).toBe(true);
+  });
+});
+
+describe('synthesizeFlagAsk', () => {
+  it('formats backlink_audit with source list and target', () => {
+    expect(synthesizeFlagAsk('backlink_audit', ['Floquet Theory', 'Kuramoto Coupling'], 'Phase Reduction'))
+      .toMatch(/audit backlinks.*Floquet.*Kuramoto.*Phase Reduction/i);
+  });
+  it('formats missing_connection_audit', () => {
+    expect(synthesizeFlagAsk('missing_connection_audit', ['Foo'], null))
+      .toMatch(/audit \[\[Foo\]\] for missing connections/i);
+  });
+  it('formats hub_candidate', () => {
+    expect(synthesizeFlagAsk('hub_candidate', ['Dissolutions'], null))
+      .toMatch(/hub candidate/i);
+  });
+  it('falls back generically for unknown flag_type', () => {
+    expect(synthesizeFlagAsk('made_up', ['Foo'], null)).toMatch(/Weave flag/i);
   });
 });
 

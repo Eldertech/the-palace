@@ -18,6 +18,12 @@
 //      enrichment, stage-transition, vector-tuning. Render as cards in
 //      QUEUE; resolve via the existing RESOURCE_GRANT/RESOURCE_DENY flow
 //      referencing the proposal's message id.)
+//   - BROADCAST with payload.kind 'weave_flag'           → 'weave_flag'
+//     (Deposit Ceremony's flags for a future Weave — backlink_audit,
+//      missing_connection_audit, section_expansion, hub_candidate,
+//      mirror_link_sweep, standard_reference. Carries source_entries: [string]
+//      so a commit touching any one of them closes it via reconcileQueue.
+//      Same RESOURCE_GRANT/RESOURCE_DENY close path as vector_proposal.)
 //
 // reconcileQueue() layers git resolution on top: given the LOG commits, it
 // marks an item resolved when its stale_if is satisfied — the prospective →
@@ -136,6 +142,53 @@ export function buildQueue(messages) {
       continue;
     }
 
+    if (p.kind === 'weave_flag' && !responded.has(m.id)) {
+      // source_entries is an array of entry titles. We expose it as `entries`
+      // on the queue item so reconcileQueue's array-aware entry-touch path
+      // can close the flag when a commit touches any one of them. We also
+      // populate the singular `entry` with the first title for backward-
+      // compat with code that reads `item.entry` (the pointer chip, etc.).
+      const sourceEntries = Array.isArray(p.source_entries)
+        ? p.source_entries.filter((e) => typeof e === 'string' && e.trim() !== '')
+        : [];
+      const flagType = typeof p.flag_type === 'string' ? p.flag_type : 'unknown';
+      const targetEntry = typeof p.target_entry === 'string' ? p.target_entry : null;
+      const proposedAction = typeof p.proposed_action === 'string' ? p.proposed_action : null;
+      const ask = proposedAction || synthesizeFlagAsk(flagType, sourceEntries, targetEntry);
+      const primary = sourceEntries[0] || null;
+      items.push({
+        id: m.id,
+        sourceId: m.id,
+        kind: 'weave_flag',
+        from: m.from,
+        ts: m.ts,
+        board: m.board,
+        sessionId: m.session_id || null,
+        flag_type: flagType,
+        source_deposit_id: typeof p.source_deposit_id === 'string' ? p.source_deposit_id : null,
+        source_entries: sourceEntries,
+        target_entry: targetEntry,
+        ask,
+        summary: ask,
+        rationale: typeof p.rationale === 'string' ? p.rationale : null,
+        // `entry` aliases the primary source entry; `entries` carries the full
+        // set for reconcileQueue's array-aware entry-touch matching.
+        entry: primary,
+        entries: sourceEntries,
+        stale_if: typeof p.stale_if === 'string' && p.stale_if !== ''
+          ? p.stale_if
+          : (sourceEntries.length > 0
+              ? `a commit touches any of [${sourceEntries.join(', ')}], or a RESOURCE_GRANT/DENY answers this flag`
+              : 'a RESOURCE_GRANT or RESOURCE_DENY answers this flag'),
+        pointer: primary ? { type: 'entry', target: primary } : { type: 'board', target: m.board },
+        resolved: { done: false, reason: null, commit: null },
+        blocking: p.blocking === true,
+        health: m.health || null,
+        raw: m,
+      });
+      continue;
+    }
+
     if (p.kind === 'handoff_ready' && !ackedHandoffs.has(m.id)) {
       const entry = typeof p.entry === 'string' ? p.entry : null;
       items.push({
@@ -199,21 +252,33 @@ export function reconcileQueue(items, commits) {
     }
 
     // (2) stale_if: a commit touched the item's entry after it was posted.
-    if (item.entry) {
+    // Items with `entries: [string]` (e.g. weave_flag) close when a commit
+    // touches ANY of those titles; singular `entry` is also honored.
+    const watchEntries = (Array.isArray(item.entries) && item.entries.length > 0)
+      ? item.entries
+      : (item.entry ? [item.entry] : []);
+    if (watchEntries.length > 0) {
       const itemEpoch = tsToEpoch(item.ts);
+      const watchLower = watchEntries.map((e) => e.toLowerCase());
+      let matchedEntry = null;
       const touch = cs.find((c) => {
         if (!Array.isArray(c.entries)) return false;
-        if (!c.entries.some((e) => e.toLowerCase() === item.entry.toLowerCase())) return false;
+        const hit = c.entries.find((e) => watchLower.includes(e.toLowerCase()));
+        if (!hit) return false;
         const cEpoch = tsToEpoch(c.date);
-        // Only commits strictly AFTER the item's vantage retire it.
-        return Number.isFinite(cEpoch) && Number.isFinite(itemEpoch) && cEpoch > itemEpoch;
+        if (!(Number.isFinite(cEpoch) && Number.isFinite(itemEpoch) && cEpoch > itemEpoch)) {
+          return false;
+        }
+        // Preserve the canonical-cased title from the watch list for the reason string.
+        matchedEntry = watchEntries.find((w) => w.toLowerCase() === hit.toLowerCase()) || hit;
+        return true;
       });
       if (touch) {
         return {
           ...item,
           resolved: {
             done: true,
-            reason: `a commit (${touch.shortHash}) touched ${item.entry} after this was posted`,
+            reason: `a commit (${touch.shortHash}) touched ${matchedEntry} after this was posted`,
             commit: touch.shortHash,
           },
         };
@@ -285,6 +350,38 @@ export function synthesizeProposalAsk(proposalType, source, target) {
       return `propose a forward-vector revision for ${s}`;
     default:
       return `Weave proposal on ${s}`;
+  }
+}
+
+// Synthesize a human-language ask from a weave_flag's structured fields
+// when the author didn't supply a `proposed_action` string. The flag_type
+// enum is open; renderer falls back to "Weave flag" for unknown types.
+export function synthesizeFlagAsk(flagType, sourceEntries, targetEntry) {
+  const srcs = Array.isArray(sourceEntries) ? sourceEntries.filter(Boolean) : [];
+  const wikilink = (s) => `[[${String(s).replace(/\.md$/, '')}]]`;
+  const srcList = srcs.length > 0
+    ? srcs.map(wikilink).join(srcs.length === 2 ? ' and ' : ', ')
+    : 'an entry';
+  const tgt = targetEntry ? wikilink(targetEntry) : null;
+  switch (flagType) {
+    case 'backlink_audit':
+      return tgt
+        ? `audit backlinks: add inbound links from ${srcList} pointing at ${tgt}`
+        : `audit backlinks across ${srcList}`;
+    case 'missing_connection_audit':
+      return `audit ${srcList} for missing connections`;
+    case 'section_expansion':
+      return `expand a section in ${srcList}`;
+    case 'hub_candidate':
+      return `evaluate ${srcList} as a hub candidate`;
+    case 'mirror_link_sweep':
+      return `sweep ${srcList} for mirror / same-object links`;
+    case 'standard_reference':
+      return tgt
+        ? `reference ${tgt} as a standard from ${srcList}`
+        : `reference ${srcList} as a standard`;
+    default:
+      return `Weave flag on ${srcList}`;
   }
 }
 
