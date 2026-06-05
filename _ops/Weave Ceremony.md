@@ -55,14 +55,16 @@ The single-agent protocol below remains valid for: palaces under ~20 entries, qu
 **Postconditions:**
 1. A topology report has been produced covering: total entry count, hub nodes, orphan entries, most-connected nodes, cross-pillar bridges, dormant entries, stale metadata
 2a. An **unsung paths** audit has been completed: all plain-text body references to known entry titles have been surfaced and formalized as YAML frontmatter links. Any that should NOT be formalized have been flagged with a one-line reason. Unsung paths are mandatory — the prose already asserts the connection; the YAML is simply catching up.
+2b. The **`weave_flag` inbox** has been read from the persistent board, and every open flag has either been acted on by the Weave or had an explicit decision recorded in the commit body.
+2c. A **substrate sweep** has been completed: uncommitted edits, stashes, dangling commits, unmerged branches, and recent rewrites have been triaged per finding (recover / discard / leave). Recoveries are additive only; discards are recorded so the LOG stays honest.
 3. **New introductions** have been proposed — new typed links between entries that do not yet mention each other in prose. No more than 5 per Weave. These are genuine growth events and deserve deliberate curation.
 4. **Vector tuning has been invited** for entries whose `forward_vector` has visibly drifted from the entry's current content, connections, or pace. Forward vectors are meant to evolve; the Weave is a natural occasion to surface drift and propose tweaks or full overhauls.
 5. Any confirmed metadata updates have been written to entry files
-6. Git commit made: `Weave — [date] — [N links added, N entries promoted, N orphans flagged, N vectors tuned]`
+6. Git commit made: `Weave — [date] — [N links added, N entries promoted, N orphans flagged, N vectors tuned, N flags closed, N orphans recovered/discarded]`
 
 **Failure mode:** If the palace is only partially readable (some files inaccessible), produce a partial topology report and note which entries were unreachable. A partial Weave is valid. Do not commit until all accessible files have been processed.
 
-**Git commit:** `Weave — [date] — [N links added, N entries promoted, N orphans flagged, N vectors tuned]`
+**Git commit:** `Weave — [date] — [N links added, N entries promoted, N orphans flagged, N vectors tuned, N flags closed, N orphans recovered/discarded]`
 
 ---
 
@@ -104,6 +106,12 @@ Collect all unsung paths and add them to the Topology Report. They are resolved 
 
 The Weave always runs with full filesystem access. No GitHub URL fallback.
 
+**Step 1c: Read the `weave_flag` inbox**
+
+Read `_ops/swarm/persistent/blackboard.jsonl` and filter for unresolved `weave_flag` BROADCASTs on the `WEAVE` board (the channel established by [[STIGMERGY — Weave Flag Item Type Build Plan]]). Each flag carries `flag_type`, `source_entries`, `target_entry`, `proposed_action`, `rationale`, and `source_deposit_id`. Pass each flag to the worker assigned to `source_entries[0]` as a directed prompt — *"a deposit asked you to do X — confirm, refuse, or refine."* These are the Weave's first-class inputs, not free-form discoveries; the work of seeing the connection has already happened in the deposit, and the YAML/topology just hasn't caught up.
+
+A flag is resolved either by the Weave taking the proposed action (the commit touches an entry in `source_entries` — the existing entry-touch auto-close in `queue-model.js` retires the card) or by an explicit decision recorded in the Weave's commit body (`Declined flag msg-<id>: <reason>` — acknowledging keeps the LOG honest).
+
 **Step 2: Produce the topology report**
 
 Report on:
@@ -116,6 +124,26 @@ Report on:
 - **Dormant entries** — `stage: dormant`. Have conditions changed? Any ready for revival?
 - **Stale metadata** — entries missing `last_activated`, `activation_count`, or with stage that seems wrong given content.
 - **Composting candidates** — entries at `stage: composting` from a prior Weave. Confirm deletion or revive.
+
+**Step 2.5: Substrate sweep**
+
+The Weave is the palace's full-body exam, and git is where work either lives or is lost. Before proposing changes to the graph, audit the substrate that records them. A 30-second pre-flight scan, five commands, one report block:
+
+```bash
+git status --porcelain                            # uncommitted edits
+git stash list --date=iso                         # stashes, oldest first
+git fsck --no-reflogs --unreachable --lost-found  # dangling commits / blobs
+git branch -a --no-merged main                    # unmerged branches
+git reflog --date=iso | grep -E 'reset|amend'     # recent rewrites
+```
+
+Present every finding as one row in a table with a proposed disposition. Loudon confirms one of three:
+
+- **recover** — the work has unique value. Always *additive*: cherry-pick a dangling commit into a fresh recovery branch, write its tree to `_ops/lost-and-found/<sha>/` for review, or rebase a stash onto current HEAD. Never `git reset` away from current state to recover.
+- **discard** — the work is captured elsewhere or superseded. Record the disposition in the Weave's commit body (`Discarded stash@{N} — superseded by <sha>` / `Deleted branch parked/foo — merged in <sha>`). Acknowledging the loss is what keeps the LOG honest.
+- **leave** — active in-progress work, or branches still being iterated. Note in the report, no action.
+
+The sweep is read-only until Loudon has triaged. Repairs land as part of the Weave's commit (or in their own commit if the recovery is substantial enough to deserve its own LOG card). If the working tree was dirty when the Weave started, the dirty paths are surfaced here — not silently included in the Weave commit.
 
 **Step 3a: Formalize unsung paths**
 
@@ -187,7 +215,9 @@ Flag any ideas currently living only in conversations or in the Palace To-Do tha
 
 **Step 7: Commit**
 
-After all confirmed changes are written: `Weave — [date] — [N links added, N entries promoted, N orphans flagged]`
+After all confirmed changes are written: `Weave — [date] — [N links added, N entries promoted, N orphans flagged, N vectors tuned, N flags closed, N orphans recovered/discarded]`
+
+The commit body lists every substrate disposition (one line each) and every declined `weave_flag` with a one-line reason. The LOG is the record; silent discards violate it.
 
 ## The Topology Report Format
 
@@ -195,6 +225,17 @@ After all confirmed changes are written: `Weave — [date] — [N links added, N
 ## Weave Report — [YYYY-MM-DD]
 
 **Palace state:** [N] entries | [N] typed links | [N] orphans
+
+**Inbox — `weave_flag` pending:** [N]
+1. [flag_type] from [source_deposit_id] → [[source_entry]] (target: [[target_entry]]) — [proposed_action]
+
+**Substrate sweep:**
+- Uncommitted: [list of paths, or "clean"]
+- Stashes: [count, oldest age]
+- Dangling commits: [count, with one-line subject of each, or "none"]
+- Unmerged branches: [count, names]
+- Recent rewrites (reflog): [count in last N days]
+- Dispositions: [N recover · N discard · N leave]
 
 **Hubs:** [list entries with ≥5 links and their counts]
 
