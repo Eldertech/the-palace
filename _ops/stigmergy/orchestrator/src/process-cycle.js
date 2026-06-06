@@ -1,5 +1,6 @@
-#!/usr/bin/env node
 // process-cycle.js — per-cycle post-processor for a permanent-steward dispatch.
+// (Invoked via `node <file>`; no shebang so it bundles cleanly when the app
+// server imports it through vite/esbuild — esbuild does not strip shebangs.)
 //
 // Given the JSONL transcript of a single subagent cycle, this:
 //   1. extracts the fenced `json` BBS messages the steward emitted,

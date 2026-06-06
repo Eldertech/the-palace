@@ -57,3 +57,5 @@ Projects/Generative Sample Libraries/**/*.wav
 
 # STIGMERGY actuator runtime state (the fired-worker pid/log/started files)
 _ops/stigmergy/.actuator/
+# STIGMERGY steward lane runtime state (pid/log + per-cycle transcripts + last-cycle)
+_ops/stigmergy/.actuator-steward/

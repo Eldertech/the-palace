@@ -12,6 +12,7 @@ import LogDeck from './components/log/LogDeck.jsx';
 import TricksterDeck from './components/TricksterDeck.jsx';
 import ActuatorPanel from './components/queue/ActuatorPanel.jsx';
 import QueuePanel from './components/queue/QueuePanel.jsx';
+import StewardsDeck from './components/stewards/StewardsDeck.jsx';
 import { Banner } from './components/primitives.jsx';
 import { fetchPersistent, fetchSessions } from './adapters/blackboard.js';
 import { subscribeLive } from './adapters/live-tail.js';
@@ -159,6 +160,7 @@ export default function App() {
       if (k === 'q' || k === 'Q') return setDeck('QUEUE');
       if (k === 'l' || k === 'L') return setDeck('LOG');
       if (k === 't' || k === 'T') return setDeck('TRICKSTER');
+      if (k === 'w' || k === 'W') return setDeck('STEWARDS');
       if (deck === 'QUEUE' && /^[1-6]$/.test(k)) {
         const idx = parseInt(k, 10) - 1;
         if (idx >= 0 && idx < BOARDS.length) setActiveBoard(BOARDS[idx]);
@@ -277,6 +279,7 @@ export default function App() {
 
       {deck === 'STATE' && <StateDeck />}
       {deck === 'LOG' && <LogDeck />}
+      {deck === 'STEWARDS' && <StewardsDeck />}
       {deck === 'TRICKSTER' && (
         <TricksterDeck
           messages={visibleMessages}
