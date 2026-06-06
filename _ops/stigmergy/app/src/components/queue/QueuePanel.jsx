@@ -1,11 +1,13 @@
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { Box } from '../primitives.jsx';
 import QueueItem from './QueueItem.jsx';
 import CardItem from './CardItem.jsx';
 import ResponseModal from '../ResponseModal.jsx';
-import { buildQueue, reconcileQueue, partitionQueue, laneCounts } from '../../lib/queue-model.js';
+import { buildQueue, reconcileQueue, partitionQueue, laneCounts, rankQueue } from '../../lib/queue-model.js';
 import { fetchLog } from '../../adapters/log.js';
 import { fetchCards, respondToCard } from '../../adapters/cards.js';
+import { buildResponse, buildRequestOptionResponse } from '../../lib/response-builder.js';
+import { postMessage } from '../../adapters/blackboard.js';
 
 // QueuePanel — the unified, honest, ranked queue (Phase 4).
 //
@@ -25,30 +27,142 @@ export default function QueuePanel({ messages, onJumpEntry }) {
   const [laneFilter, setLaneFilter] = useState(null);
   const [dismissed, setDismissed] = useState(() => new Set());
   const [showResolved, setShowResolved] = useState(true);
-  // Response modal state: { request, option } when open, null when closed.
+  // Response modal state: { item, verb, detail, request, option } when open,
+  // null when closed. Only deny / grant--limited / custom open it now.
   const [respondingTo, setRespondingTo] = useState(null);
+  // Decisions made this session: itemId -> { verb, detail, pending, error }.
+  // buildQueue drops an answered request (it is no longer "open"), so we keep
+  // a snapshot + the decision and re-attach it below, so the chosen verdict
+  // (GRANTED / DENIED / RESPONDED) stays visible until the human clears it.
+  const [decisions, setDecisions] = useState(() => new Map());
+  const [snapshots, setSnapshots] = useState(() => new Map());
+  const [decisionNote, setDecisionNote] = useState(null); // grant-error feedback
+  // Pending auto-clear timers (itemId -> timeout). Once a verdict is confirmed,
+  // the card lingers ~10s so you can read it, then tidies itself away.
+  const autoClearTimers = useRef(new Map());
+  const AUTO_CLEAR_MS = 10_000;
   // Enrichment cards (Phase 4.5): the absorbed Enrichment card queue.
   const [cards, setCards] = useState([]);
   const [cardBusy, setCardBusy] = useState(false);
   const [cardNote, setCardNote] = useState(null); // last response feedback
 
-  // Open the response modal for a queue item. Builds the shape ResponseModal
-  // expects from the item's raw message + the chosen option.
-  function respondToItem(item, option) {
-    const raw = item.raw || {};
-    setRespondingTo({
-      request: {
-        _message_id: raw.id,
-        _session_id: item.sessionId || raw.session_id || null,
-        request_id: item.id,
-        from: item.from,
-      },
-      option,
+  // Record (or update) the verdict badge for an item, snapshotting the item so
+  // it keeps rendering after buildQueue drops the now-answered request.
+  function recordDecision(item, patch) {
+    setDecisions((prev) => {
+      const next = new Map(prev);
+      next.set(item.id, { ...(next.get(item.id) || {}), ...patch });
+      return next;
     });
+    setSnapshots((prev) => {
+      if (prev.has(item.id)) return prev;
+      const next = new Map(prev);
+      next.set(item.id, item);
+      return next;
+    });
+  }
+
+  // Drop an optimistic decision (a failed POST) so the action row returns.
+  function revertDecision(item) {
+    setDecisions((prev) => {
+      if (!prev.has(item.id)) return prev;
+      const next = new Map(prev);
+      next.delete(item.id);
+      return next;
+    });
+    setSnapshots((prev) => {
+      if (!prev.has(item.id)) return prev;
+      const next = new Map(prev);
+      next.delete(item.id);
+      return next;
+    });
+  }
+
+  // The verb the card shows once an item is answered.
+  function decisionVerb(option) {
+    if (option.type === 'RESOURCE_DENY') return 'DENIED';
+    if (option.type === 'freetext') return 'RESPONDED';
+    return 'GRANTED'; // plain grant, grant--limited, or an asker-supplied option
+  }
+  function decisionDetail(option) {
+    if (option.option_label) return option.option_label;
+    if (option.type === 'RESOURCE_GRANT' && option.constraints != null) return 'limited';
+    return null;
+  }
+
+  // A "complete" grant needs no typed input -- plain grant, or an asker-
+  // supplied a/b/c option. These fire immediately, no modal. Deny /
+  // grant--limited / custom carry a placeholder the human must fill, so they
+  // still open the ResponseModal (kept for its typing surface + payload preview).
+  function isInstantGrant(option) {
+    return option.type === 'RESOURCE_GRANT' && option.constraints == null;
+  }
+
+  // Build the §2.2 response for an instant grant straight from the item.
+  function buildInstantResponse(item, option) {
+    const raw = item.raw || {};
+    const request = {
+      id: raw.id,
+      from: item.from,
+      request_id: item.id, // the value buildQueue's `responded` set keys on
+      session_id: item.sessionId || raw.session_id || null,
+    };
+    if (option.option_id || option.option_label) {
+      return buildRequestOptionResponse({
+        request,
+        optionId: option.option_id ?? null,
+        optionLabel: option.option_label ?? null,
+        notes: '',
+        sessionId: request.session_id,
+      });
+    }
+    return buildResponse({
+      request, decision: 'GRANT', constraints: null, notes: null,
+      sessionId: request.session_id,
+    });
+  }
+
+  // The single action handler QueueItem calls. Complete grants POST straight
+  // away (optimistic badge); anything needing typed input opens the modal.
+  async function respondToItem(item, option) {
+    const verb = decisionVerb(option);
+    const detail = decisionDetail(option);
+    if (!isInstantGrant(option)) {
+      const raw = item.raw || {};
+      setRespondingTo({
+        item, verb, detail,
+        request: {
+          _message_id: raw.id,
+          _session_id: item.sessionId || raw.session_id || null,
+          request_id: item.id,
+          from: item.from,
+        },
+        option,
+      });
+      return;
+    }
+    setDecisionNote(null);
+    recordDecision(item, { verb, detail, pending: true, error: null });
+    try {
+      await postMessage(buildInstantResponse(item, option), 'persistent');
+      recordDecision(item, { pending: false, error: null });
+      // The new message will arrive via SSE; reconcile against the new log too.
+      loadCommits();
+    } catch (err) {
+      revertDecision(item);
+      setDecisionNote({ tone: 'err', text: `grant failed -- ${err.message || 'post error'}` });
+    }
   }
 
   function closeRespond() { setRespondingTo(null); }
   function handleResponded() {
+    // The modal posted a deny / grant--limited / custom response. Stamp the
+    // badge from the intent captured when the modal opened.
+    if (respondingTo?.item) {
+      recordDecision(respondingTo.item, {
+        verb: respondingTo.verb, detail: respondingTo.detail, pending: false, error: null,
+      });
+    }
     setRespondingTo(null);
     // The new message will arrive via SSE; reconcile against the new log too.
     loadCommits();
@@ -61,6 +175,33 @@ export default function QueuePanel({ messages, onJumpEntry }) {
     fetchCards().then((r) => { if (r.ok) setCards(r.cards || []); });
   };
   useEffect(() => { loadCommits(); loadCards(); }, []);
+
+  // Auto-clear: once a verdict is confirmed (not pending, no error), schedule
+  // the decided card to tidy itself ~10s later -- long enough to read it.
+  // Manual "clear" still works and cancels the timer (see clearItem).
+  useEffect(() => {
+    for (const [id, d] of decisions) {
+      const settled = d && d.pending === false && !d.error;
+      if (settled && !autoClearTimers.current.has(id) && !dismissed.has(id)) {
+        const t = setTimeout(() => {
+          autoClearTimers.current.delete(id);
+          setDismissed((prev) => {
+            if (prev.has(id)) return prev;
+            const next = new Set(prev);
+            next.add(id);
+            return next;
+          });
+        }, AUTO_CLEAR_MS);
+        autoClearTimers.current.set(id, t);
+      }
+    }
+  }, [decisions, dismissed]);
+
+  // Clear any pending auto-clear timers on unmount.
+  useEffect(() => {
+    const timers = autoClearTimers.current;
+    return () => { for (const t of timers.values()) clearTimeout(t); timers.clear(); };
+  }, []);
 
   // Respond to a card: POST writes the inbox block + fires the supervisor
   // through the actuator. On success we refresh cards after a beat (the worker
@@ -82,14 +223,29 @@ export default function QueuePanel({ messages, onJumpEntry }) {
   const items = useMemo(() => {
     const built = buildQueue(messages);
     const reconciled = reconcileQueue(built, commits);
-    return reconciled.filter((it) => !dismissed.has(it.id));
-  }, [messages, commits, dismissed]);
+    // Re-attach decided items buildQueue has since dropped (a GRANT/DENY landed
+    // on the board), so their verdict badge survives until the human clears it.
+    const present = new Set(reconciled.map((it) => it.id));
+    const merged = [...reconciled];
+    for (const [id, snap] of snapshots) {
+      if (!present.has(id) && !dismissed.has(id)) merged.push(snap);
+    }
+    return rankQueue(merged)
+      .filter((it) => !dismissed.has(it.id))
+      .map((it) => (decisions.has(it.id) ? { ...it, decision: decisions.get(it.id) } : it));
+  }, [messages, commits, dismissed, decisions, snapshots]);
 
   const lanes = useMemo(() => laneCounts(items), [items]);
   const laneFiltered = laneFilter ? items.filter((i) => i.board === laneFilter) : items;
   const { open, resolved } = partitionQueue(laneFiltered);
+  // Decided items still partition as "open" (not git-resolved); split them out
+  // for the status counts so "open" means genuinely-awaiting-you.
+  const liveOpen = open.filter((it) => !it.decision);
+  const decidedOpen = open.filter((it) => it.decision);
 
   const clearItem = (item) => {
+    const t = autoClearTimers.current.get(item.id);
+    if (t) { clearTimeout(t); autoClearTimers.current.delete(item.id); }
     setDismissed((prev) => {
       const next = new Set(prev);
       next.add(item.id);
@@ -107,9 +263,17 @@ export default function QueuePanel({ messages, onJumpEntry }) {
         display: 'flex', gap: 10, alignItems: 'baseline', flexWrap: 'wrap', marginBottom: 8,
         color: 'var(--phosphor-dim)', textShadow: 'none', fontSize: 12,
       }}>
-        <span><strong style={{ color: 'var(--phosphor)' }}>{open.length}</strong> open</span>
+        <span><strong style={{ color: 'var(--phosphor)' }}>{liveOpen.length}</strong> open</span>
+        {decidedOpen.length > 0 ? (
+          <span data-testid="queue-decided-count"><strong style={{ color: 'var(--phosphor)' }}>{decidedOpen.length}</strong> decided</span>
+        ) : null}
         {resolved.length > 0 ? (
           <span><strong style={{ color: 'var(--phosphor-dim)' }}>{resolved.length}</strong> looks-done</span>
+        ) : null}
+        {decisionNote ? (
+          <span data-testid="queue-decision-note" style={{ color: 'var(--error)', textShadow: 'var(--glow)' }}>
+            {decisionNote.text}
+          </span>
         ) : null}
         <span
           onClick={loadCommits}
@@ -206,10 +370,11 @@ export default function QueuePanel({ messages, onJumpEntry }) {
         )}
       </div>
 
-      {/* Response modal: opens when the human clicks Grant/Deny/option on a
-          queue item; on confirm it POSTs a RESOURCE_GRANT or RESOURCE_DENY
-          to the persistent blackboard. The item then auto-clears on the
-          next render (the buildQueue pass treats it as responded-to). */}
+      {/* Response modal: opens only for the answers that need typed input --
+          deny, grant--limited, and custom. (Plain grant and asker-supplied
+          options post immediately, no modal.) On confirm it POSTs a
+          RESOURCE_GRANT or RESOURCE_DENY to the persistent blackboard, and
+          handleResponded stamps the verdict badge on the card. */}
       {respondingTo ? (
         <ResponseModal
           request={respondingTo.request}

@@ -37,6 +37,23 @@ const PROPOSAL_TYPE_LABEL = {
   vector_tuning: 'forward-vector tuning',
 };
 
+// Decision badge palette -- the verdict shown once the human answers an item.
+// Granted reads as the affirmative phosphor/ok; denied as the warn red;
+// responded (a freetext reply) as the cyan used for links/handles.
+const DECISION_COLOR = {
+  GRANTED: 'var(--ok, var(--phosphor))',
+  DENIED: 'var(--warn)',
+  RESPONDED: 'var(--ansi-bright-cyan)',
+};
+
+// A leading ASCII marker so the verdict reads at a glance (no emoji -- on
+// aesthetic with the terminal grammar): + granted, x denied, > responded.
+const DECISION_MARK = {
+  GRANTED: '+',
+  DENIED: 'x',
+  RESPONDED: '>',
+};
+
 // flag_type enum is OPEN (Deposit Ceremony authors add new types as needed).
 // The renderer falls back to the raw flag_type string for unknown values.
 const FLAG_TYPE_LABEL = {
@@ -50,10 +67,16 @@ const FLAG_TYPE_LABEL = {
 
 export default function QueueItem({ item, onJump, onClear, onRespond }) {
   const resolved = item.resolved?.done;
+  // A decision is the human's answer (GRANTED / DENIED / RESPONDED), recorded
+  // by QueuePanel. It survives buildQueue dropping the answered item so the
+  // chosen verdict stays visible until the human clears it.
+  const decision = item.decision || null;
+  const decided = !!decision;
+  const dColor = decided ? (DECISION_COLOR[decision.verb] || 'var(--phosphor)') : null;
   const accent = KIND_COLOR[item.kind] || 'var(--phosphor)';
   const [showRationale, setShowRationale] = useState(false);
 
-  const canRespond = !resolved
+  const canRespond = !resolved && !decided
     && (item.kind === 'resource_request'
         || item.kind === 'vector_proposal'
         || item.kind === 'weave_flag')
@@ -64,13 +87,14 @@ export default function QueueItem({ item, onJump, onClear, onRespond }) {
       data-testid="queue-item"
       data-kind={item.kind}
       data-resolved={resolved ? 'true' : 'false'}
+      data-decided={decided ? 'true' : 'false'}
       style={{
         border: '1px solid var(--phosphor-dim)',
-        borderLeft: `3px solid ${resolved ? 'var(--phosphor-dim)' : accent}`,
+        borderLeft: `3px solid ${decided ? dColor : resolved ? 'var(--phosphor-dim)' : accent}`,
         padding: '10px 14px',
         marginBottom: 10,
         background: 'var(--phosphor-deep)',
-        opacity: resolved ? 0.55 : 1,
+        opacity: decided ? 0.85 : resolved ? 0.55 : 1,
       }}
     >
       {/* Top strip: kind chip on the left, blocking on the right. */}
@@ -334,7 +358,49 @@ export default function QueueItem({ item, onJump, onClear, onRespond }) {
           </>
         ) : null}
 
-        {resolved ? (
+        {/* Decision verdict: once answered, the action row becomes a badge that
+            names what the human chose (GRANTED / DENIED / RESPONDED), plus the
+            chosen option label when there was one. Stays until cleared. */}
+        {decided ? (
+          <span
+            data-testid="queue-item-decision"
+            data-verb={decision.verb}
+            style={{ marginLeft: 'auto', display: 'inline-flex', gap: 8, alignItems: 'baseline' }}
+          >
+            <span style={{
+              // Confirmed verdicts are inverted (filled + bold) so the answer
+              // reads as a hard signal; while the POST is in flight it stays a
+              // dim outline ("sending...").
+              background: decision.pending ? 'transparent' : dColor,
+              color: decision.pending ? dColor : 'var(--bg)',
+              border: `1px solid ${dColor}`,
+              padding: '2px 8px',
+              textShadow: decision.pending ? 'var(--glow)' : 'none',
+              fontWeight: decision.pending ? 'normal' : 'bold',
+              fontSize: 11, textTransform: 'uppercase', letterSpacing: '.05em',
+            }}>
+              {decision.pending
+                ? 'sending...'
+                : `${DECISION_MARK[decision.verb] || ''} ${decision.verb}`.trim()}
+              {!decision.pending && decision.detail ? ` -- ${decision.detail}` : ''}
+            </span>
+            {!decision.pending ? (
+              <span
+                data-testid="queue-item-decision-clear"
+                onClick={() => onClear?.(item)}
+                style={{
+                  cursor: onClear ? 'pointer' : 'default',
+                  color: 'var(--phosphor-dim)', textShadow: 'none',
+                  fontSize: 11, textDecoration: 'underline',
+                }}
+              >
+                clear
+              </span>
+            ) : null}
+          </span>
+        ) : null}
+
+        {resolved && !decided ? (
           <span data-testid="queue-item-resolved" style={{
             color: 'var(--phosphor)', textShadow: 'var(--glow)', fontSize: 11,
             marginLeft: 'auto',

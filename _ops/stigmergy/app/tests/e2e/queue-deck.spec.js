@@ -113,4 +113,55 @@ test.describe('QUEUE panel — the ranked inbox', () => {
     const items = page.locator('[data-testid="queue-item"]');
     expect(await items.count()).toBeGreaterThanOrEqual(1);
   });
+
+  // ── Inline grant (no separate window) + visible verdict ────────────────────
+  // Clicking grant posts immediately -- no ResponseModal -- and the card's
+  // action row becomes a GRANTED badge that stays until cleared.
+
+  test('clicking grant answers in place: no modal, a GRANTED verdict appears', async ({ page }) => {
+    await gotoQueue(page);
+    await page.getByTestId('queue-lane-WEAVE').click();
+    const proposal = page.locator('[data-testid="queue-item"][data-kind="vector_proposal"]').first();
+    await expect(proposal).toBeVisible();
+    await proposal.getByTestId('queue-item-grant').click();
+    // No pop-up window opens.
+    await expect(page.getByTestId('response-modal')).toHaveCount(0);
+    // The chosen verdict is shown clearly on the card.
+    const verdict = proposal.getByTestId('queue-item-decision');
+    await expect(verdict).toBeVisible();
+    await expect(verdict).toHaveAttribute('data-verb', 'GRANTED');
+    await expect(verdict).toContainText(/GRANTED/);
+    // The card is now marked decided and its action buttons are gone.
+    await expect(proposal).toHaveAttribute('data-decided', 'true');
+    await expect(proposal.getByTestId('queue-item-grant')).toHaveCount(0);
+    // The status line reflects one decided item.
+    await expect(page.getByTestId('queue-decided-count')).toContainText(/decided/);
+  });
+
+  test('deny still opens the modal (typed reason preserved)', async ({ page }) => {
+    await gotoQueue(page);
+    await page.getByTestId('queue-lane-WEAVE').click();
+    const proposal = page.locator('[data-testid="queue-item"][data-kind="vector_proposal"]').first();
+    await expect(proposal).toBeVisible();
+    await proposal.getByTestId('queue-item-deny').click();
+    // Deny needs a reason, so the pop-up is intentionally kept.
+    await expect(page.getByTestId('response-modal')).toBeVisible();
+    // Cancel leaves the item untouched (no verdict, still answerable).
+    await page.keyboard.press('Escape');
+    await expect(page.getByTestId('response-modal')).toHaveCount(0);
+    await expect(proposal.getByTestId('queue-item-deny')).toBeVisible();
+  });
+
+  test('a granted verdict can be cleared from the view', async ({ page }) => {
+    await gotoQueue(page);
+    await page.getByTestId('queue-lane-WEAVE').click();
+    const proposal = page.locator('[data-testid="queue-item"][data-kind="vector_proposal"]').first();
+    await proposal.getByTestId('queue-item-grant').click();
+    const verdict = proposal.getByTestId('queue-item-decision');
+    await expect(verdict).toBeVisible();
+    await verdict.getByTestId('queue-item-decision-clear').click();
+    await page.waitForTimeout(200);
+    // The decided card is tidied away.
+    await expect(page.locator('[data-testid="queue-item"][data-kind="vector_proposal"]')).toHaveCount(0);
+  });
 });
