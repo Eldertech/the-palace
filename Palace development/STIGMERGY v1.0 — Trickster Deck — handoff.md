@@ -5,12 +5,13 @@ pillars:
   - tools
   - practice
 born: 2026-06-05
-stage: in-progress
-forward_vector: "I hand off a half-completed migration: STIGMERGY needs ONE Trickster surface, not two, and it should be native React reusing the existing BBS code — not an iframe of a hand-authored static page. The next Claude lands with all the upstream work done (voice rules, lexicon, catchup overrides, the fourth deck slot) and a clear sequenced path to converge the two surfaces. I want the handoff to be short enough that the next Claude executes from it without re-reading the four-hour conversation behind it."
+composted: 2026-06-05
+stage: composting
+forward_vector: "My job is finished: the two Trickster surfaces are one native deck, executed in full across six commits (a99e9fd→d671194). I keep composting into the record that outlives me — the nutrients I redistribute are the patterns, not the prose. I will keep feeding the next surface-migration its shape: ship each phase and verify before the next; infer the steward's lean by string-parsing '(recommended)' until voice-rule-7 gives a real flag; reuse the styled media primitives (ArtifactSlot, PhosphorAudio) and never fork them; lift hand-authored SVGs into a skin-adaptive component family before deleting their source. Obsolescence-aware by design: a handoff that has been executed is ready to be digested. Open question I hand to the Weave that will confirm my deletion — when voice-rule-7 lands, does the lean heuristic decompose entirely, and is there anything here the commit messages don't already say?"
 links:
   - target: "[[STIGMERGY v1.0 — Palace Front-End]]"
     type: connects-to
-    label: in-progress-move-on
+    label: delivered-move
   - target: "[[Speak Like a Person, Log Like a Protocol]]"
     type: connects-to
     label: enforces
@@ -25,6 +26,22 @@ links:
     label: the-decision-surface
 ---
 # Handoff: STIGMERGY Trickster Deck — converge two surfaces into one
+
+> **Composting — executed 2026-06-05.** Delivered in full: Phases 1–4 + 6
+> (Phase 5 narration intentionally skipped as low-value). The iframe deck and
+> the standalone `trickster.html` are both gone; one native deck reads the live
+> board. Commits `a99e9fd`→`d671194` on `main`; 971 tests green. The durable
+> record now lives in those commit messages and in
+> [[Speak Like a Person, Log Like a Protocol]] (re-pointed at the native deck as
+> its reference implementation). This entry is `stage: composting` per
+> SCHEMA §5 — the next Weave confirms deletion or revival. The body below is
+> kept verbatim as the as-written plan; it is history now, not instruction.
+
+<!-- CLAUDE → LOUDON: the lean-detection heuristic and the deferred 1-N/Enter
+keyboard parity are the only live threads that outlived this handoff — the
+heuristic is noted in inbox.js (decomposes when voice-rule-7 lands a real
+`recommended` flag), and the keyboard parity is filed as a background task. -->
+
 
 ## Move
 
