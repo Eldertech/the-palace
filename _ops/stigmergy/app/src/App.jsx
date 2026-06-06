@@ -1,5 +1,6 @@
-import React, { useState, useEffect, useCallback, useMemo } from 'react';
+import React, { useState, useEffect, useCallback, useMemo, useRef } from 'react';
 import Shell from './components/Shell.jsx';
+import { PalaceRefProvider } from './lib/palace-ref.jsx';
 import MessageList from './components/MessageList.jsx';
 import ChannelTabs from './components/ChannelTabs.jsx';
 import AgentRoster from './components/AgentRoster.jsx';
@@ -70,6 +71,18 @@ export default function App() {
   const [activeBoard, setActiveBoard] = useState('TRICKSTER');
   const [agentFilter, setAgentFilter] = useState(null);
   const [scanlinesOn, setScanlinesOn] = useState(true);
+  // Cross-deck entry jump: clicking [BUN] on a name outside STATE (e.g. a
+  // Trickster card's @steward) flips to STATE and opens that entry. The nonce
+  // lets the same entry be re-jumped and keeps StateDeck's open-effect from
+  // firing on ordinary re-renders.
+  const [jumpTarget, setJumpTarget] = useState(null);
+  const jumpNonce = useRef(0);
+  const openEntryInState = useCallback((path) => {
+    if (!path) return;
+    jumpNonce.current += 1;
+    setJumpTarget({ path, nonce: jumpNonce.current });
+    setDeck('STATE');
+  }, []);
 
   const [messages, setMessages] = useState([]);
   // Optimistic responses: persisted messages from the click-to-respond flow
@@ -275,9 +288,10 @@ export default function App() {
       commands={cmds} onCommand={handleCommand} scanlinesOn={scanlinesOn}
       vfxState={scanlinesOn ? 'on' : 'off'} activeBoard={commandBarActive}
       liveState={liveState}>
+      <PalaceRefProvider vault="The Palace" openEntryInState={openEntryInState}>
       <DeckTabs active={deck} onSelect={setDeck} />
 
-      {deck === 'STATE' && <StateDeck />}
+      {deck === 'STATE' && <StateDeck jumpTarget={jumpTarget} />}
       {deck === 'LOG' && <LogDeck />}
       {deck === 'STEWARDS' && <StewardsDeck />}
       {deck === 'TRICKSTER' && (
@@ -383,6 +397,7 @@ export default function App() {
           )}
         </div>
       )}
+      </PalaceRefProvider>
     </Shell>
   );
 }
