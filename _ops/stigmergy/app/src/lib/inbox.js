@@ -86,6 +86,69 @@ function ifPresent(v, dflt) {
   return v === undefined || v === null ? dflt : v;
 }
 
+// ── Steward-lean detection (Phase 2) ──────────────────────────────────────
+//
+// The wire schema carries no `recommended` flag yet (voice-rule-7, pending),
+// so the steward's recommended option is inferred from prose. Two signals,
+// in precedence order:
+//
+//   1. An option LABEL carrying an explicit marker. '(recommended)' is the
+//      live convention (52× on the board 2026-06-05); the rarer phrasings are
+//      honored too. This is the strongest signal — the steward tagged the
+//      option itself.
+//   2. A lean token in the GROUND / rationale prose: "steward leans X" /
+//      "steward expects X". Cross-referenced against the option ids/labels.
+//      Used only when no label marker is present.
+//
+// Cards whose prose says "no lean" match neither and stay leanless on purpose
+// — FILE ALL must never auto-file a decision the steward left to the human.
+// When voice-rule-7 lands, replace pass 1 with a direct payload flag read.
+const LEAN_LABEL_MARKER = /\((?:recommended|my lean|my pick|my call|expected|default)\)/i;
+const GROUND_LEAN = /\bsteward\s+(?:leans|expects)\s+([A-Za-z][A-Za-z0-9_-]*)/i;
+
+// Tag the recommended option (if any) on a normalized options[] list.
+// Returns { options, recommendedOption, leanSource }:
+//   - options: the same list with `recommended: true` on at most one entry
+//   - recommendedOption: { id, label } | null
+//   - leanSource: 'label' | 'ground' | null (kept for transparency / no silent caps)
+export function tagRecommendation(options, { ground, rationale } = {}) {
+  if (!Array.isArray(options) || options.length === 0) {
+    return { options, recommendedOption: null, leanSource: null };
+  }
+
+  // Pass 1 — explicit marker on an option label.
+  let recIdx = options.findIndex(
+    (o) => typeof o.label === 'string' && LEAN_LABEL_MARKER.test(o.label)
+  );
+  let leanSource = recIdx >= 0 ? 'label' : null;
+
+  // Pass 2 — lean token parsed from ground/rationale prose.
+  if (recIdx < 0) {
+    const prose = `${ground || ''}\n${rationale || ''}`;
+    const m = prose.match(GROUND_LEAN);
+    if (m) {
+      const token = m[1].toLowerCase();
+      recIdx = options.findIndex(
+        (o) =>
+          (typeof o.id === 'string' && o.id.toLowerCase() === token) ||
+          (typeof o.label === 'string' && o.label.toLowerCase().startsWith(token))
+      );
+      if (recIdx >= 0) leanSource = 'ground';
+    }
+  }
+
+  if (recIdx < 0) {
+    return { options, recommendedOption: null, leanSource: null };
+  }
+
+  const tagged = options.map((o, i) => (i === recIdx ? { ...o, recommended: true } : o));
+  return {
+    options: tagged,
+    recommendedOption: { id: tagged[recIdx].id, label: tagged[recIdx].label },
+    leanSource,
+  };
+}
+
 export function buildInbox(messages) {
   if (!Array.isArray(messages)) return { pending_requests: [] };
 
@@ -116,6 +179,11 @@ export function buildInbox(messages) {
         (typeof payload.headline === 'string' && payload.headline.trim()) || override.headline || null;
       const ground =
         (typeof payload.ground === 'string' && payload.ground.trim()) || override.ground || null;
+      // Normalize request-supplied options, then detect the steward's lean.
+      const normalizedOptions =
+        normalizeRequestOptions(payload.options) ?? normalizeRequestOptions(m.options);
+      const { options: taggedOptions, recommendedOption, leanSource } =
+        tagRecommendation(normalizedOptions, { ground, rationale: payload.rationale });
       return {
         request_id: m.request_id,
         from: m.from,
@@ -143,7 +211,13 @@ export function buildInbox(messages) {
         // not enforce payload shape, so a mis-placed options array would
         // otherwise silently render the generic response-options template.
         // The normalizer prefers payload.options when it yields a usable list.
-        options: normalizeRequestOptions(payload.options) ?? normalizeRequestOptions(m.options),
+        // Each option may carry `recommended: true` (see tagRecommendation).
+        options: taggedOptions,
+        // The steward's detected lean: { id, label } | null, plus the signal
+        // it was inferred from ('label' | 'ground' | null). Drives the lean
+        // panel + FILE ALL; null means a deliberately human-only decision.
+        recommended_option: recommendedOption,
+        lean_source: leanSource,
         // Source message fields needed by ResponseModal / inline send to
         // build the response.
         // _message_id: the source message's own `id` field (not the correlation id).
