@@ -34,7 +34,7 @@ import { createActuator } from './actuator.js';
 import { buildCyclePrompt } from '../../orchestrator/src/build-cycle-prompt.js';
 import { processCycle, reconcilePendingRequests } from '../../orchestrator/src/process-cycle.js';
 import { readRegistry, findAgent } from '../../orchestrator/src/registry.js';
-import { readJsonl } from '../../orchestrator/src/append.js';
+import { readJsonl } from '@stigmergy/core/blackboard';
 
 const DEFAULT_REGISTRY_REL = '_ops/agents/permanent/REGISTRY.json';
 const DEFAULT_STATE_DIR_REL = '_ops/stigmergy/.actuator-steward';

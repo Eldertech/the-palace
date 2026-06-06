@@ -4,7 +4,7 @@ import { describe, it, expect, beforeEach } from 'vitest';
 import { mkdtempSync, writeFileSync, readFileSync, existsSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
-import { appendMessage, readJsonl } from '../../src/append.js';
+import { appendMessage, readJsonl } from '@stigmergy/core/blackboard';
 
 let tmp;
 beforeEach(() => {

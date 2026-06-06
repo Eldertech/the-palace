@@ -5,7 +5,7 @@
 
 import { resolve, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { readJsonl } from '../../orchestrator/src/append.js';
+import { readJsonl } from '@stigmergy/core/blackboard';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 

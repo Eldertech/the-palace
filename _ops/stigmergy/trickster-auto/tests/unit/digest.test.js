@@ -4,7 +4,7 @@
 import { describe, it, expect } from 'vitest';
 import { resolve, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { readJsonl } from '../../../orchestrator/src/append.js';
+import { readJsonl } from '@stigmergy/core/blackboard';
 import { buildInbox } from '../../src/inbox.js';
 import { loadRuleset } from '../../src/ruleset.js';
 import { evaluateAll } from '../../src/evaluate.js';

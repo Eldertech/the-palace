@@ -15,7 +15,7 @@
 // posted. The audition/irreversible gate has already run in evaluate(); an
 // escalate verdict never reaches here.
 
-import { appendMessage } from '../../orchestrator/src/append.js';
+import { appendMessage } from '@stigmergy/core/blackboard';
 import { validateForPosting } from '../../orchestrator/src/posting.js';
 
 export const AUTO_TRICKSTER_FROM = 'TRICKSTER (auto)';

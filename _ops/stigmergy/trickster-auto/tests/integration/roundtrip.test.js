@@ -7,7 +7,7 @@ import { resolve, dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { mkdtempSync, copyFileSync, readFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
-import { readJsonl, appendMessage } from '../../../orchestrator/src/append.js';
+import { readJsonl, appendMessage } from '@stigmergy/core/blackboard';
 import { validateMessage } from '@stigmergy/core/schema';
 import { validateForPosting } from '../../../orchestrator/src/posting.js';
 import { buildInbox as appBuildInbox } from '../../../app/src/lib/inbox.js';

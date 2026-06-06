@@ -7,7 +7,7 @@ import { describe, it, expect } from 'vitest';
 import { fileURLToPath } from 'node:url';
 import { dirname, resolve } from 'node:path';
 import { validateForPosting, validateMessage } from '../../src/posting.js';
-import { readJsonl } from '../../src/append.js';
+import { readJsonl } from '@stigmergy/core/blackboard';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const SONGLINE_FIXTURE = resolve(__dirname, '..', 'fixtures', 'blackboard', 'songline-2026-05-04-001.jsonl');

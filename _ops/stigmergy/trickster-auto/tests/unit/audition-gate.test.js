@@ -4,7 +4,7 @@
 import { describe, it, expect } from 'vitest';
 import { auditionOrIrreversible } from '../../src/audition-gate.js';
 import { parseRequest } from '../../src/parse.js';
-import { readJsonl } from '../../../orchestrator/src/append.js';
+import { readJsonl } from '@stigmergy/core/blackboard';
 import { resolve, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
