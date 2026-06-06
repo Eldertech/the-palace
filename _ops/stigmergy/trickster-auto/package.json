@@ -7,6 +7,9 @@
   "bin": {
     "trickster-auto": "./src/cli.js"
   },
+  "dependencies": {
+    "@stigmergy/core": "*"
+  },
   "scripts": {
     "test": "vitest run",
     "test:watch": "vitest",

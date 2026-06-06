@@ -1,0 +1,12 @@
+{
+  "name": "stigmergy-workspace",
+  "version": "0.1.0",
+  "private": true,
+  "description": "STIGMERGY workspace root — core (the shared §2.2 coordination substrate) + app, orchestrator, trickster-auto. One install, real package boundaries, no cross-package ../../ reaches.",
+  "workspaces": [
+    "core",
+    "app",
+    "orchestrator",
+    "trickster-auto"
+  ]
+}
