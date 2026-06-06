@@ -18,10 +18,17 @@ describe('Schematic dispatcher', () => {
     }
   });
 
-  it('exposes exactly the four currently-surfacing schematics', () => {
-    expect(SCHEMATIC_NAMES.sort()).toEqual(
-      ['gsl-keyboard', 'gwl-position', 'semantic-stage2', 'shepard-stage1-drone']
-    );
+  it('exposes all eight schematics extracted from the standalone page', () => {
+    expect(SCHEMATIC_NAMES.sort()).toEqual([
+      'gsl-keyboard',
+      'gwl-position',
+      'preset-cutoff',
+      'retro-five-asset-brief',
+      'semantic-stage2',
+      'shepard-stage1-drone',
+      'shepard-stage2-staircase',
+      'slime-tubes',
+    ]);
   });
 
   it('renders nothing for an unknown or absent name', () => {
