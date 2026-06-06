@@ -17,7 +17,7 @@ import { readFileSync, existsSync, statSync, readdirSync, mkdirSync, watch, crea
 import { resolve, join, sep, extname } from 'node:path';
 import { execFile } from 'node:child_process';
 import { parseJSONL } from '../src/lib/parser.js';
-import { validateMessage } from './validator.js';
+import { validateMessage } from '@stigmergy/core/schema';
 import { appendJsonLine } from './append.js';
 import { listEntries, readEntry, walkEntryRecords } from '../src/lib/entries.js';
 import { readLatestMap } from '../src/lib/topology.js';

@@ -5,7 +5,7 @@
 
 import { describe, it, expect } from 'vitest';
 import { buildLeanGrants } from '../../src/lib/trickster-grants.js';
-import { validateMessage } from '../../server/validator.js';
+import { validateMessage } from '@stigmergy/core/schema';
 
 // Pending items in the shape buildInbox() produces (only the fields the
 // grant builder reads, plus recommended_option from tagRecommendation).

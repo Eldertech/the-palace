@@ -13,7 +13,7 @@
 //     the TRICKSTER board. SESSION_INIT/SESSION_CLOSE must go to SYSTEM. PROOF
 //     must go to WEAVE.
 
-import { validateMessage } from '../../app/server/validator.js';
+import { validateMessage } from '@stigmergy/core/schema';
 
 export { validateMessage };
 

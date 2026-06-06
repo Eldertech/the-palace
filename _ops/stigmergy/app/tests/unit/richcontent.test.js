@@ -5,7 +5,7 @@ import {
   choiceFromPayload,
   buildChoiceResponse,
 } from '../../src/lib/richcontent.js';
-import { validateMessage } from '../../server/validator.js';
+import { validateMessage } from '@stigmergy/core/schema';
 
 describe('tableFromPayload', () => {
   it('normalizes a well-formed table', () => {

@@ -20,8 +20,11 @@
 // -- they share one board). A small in-memory FIFO queue gives batch advance:
 // the reap fires the next queued steward.
 //
-// The orchestrator modules import with ZERO new deps (Node built-ins + relative
-// imports; posting.js already reaches back into this app's server/validator.js).
+// The orchestrator modules import with ZERO new deps (Node built-ins + the
+// shared @stigmergy/core substrate). The old back-edge -- posting.js reaching
+// into this app's server/validator.js -- is gone: the strict §2.2 validator now
+// lives in @stigmergy/core/schema, so app -> orchestrator is a one-way edge
+// (cycle helpers only), not a circular dependency.
 
 import { existsSync, readFileSync, writeFileSync, appendFileSync } from 'node:fs';
 import { resolve, join, basename } from 'node:path';

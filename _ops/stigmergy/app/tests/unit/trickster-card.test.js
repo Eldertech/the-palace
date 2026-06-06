@@ -13,7 +13,7 @@ import { describe, it, expect } from 'vitest';
 import React from 'react';
 import { renderToStaticMarkup } from 'react-dom/server';
 import TricksterCard, { buildCardGrant } from '../../src/components/trickster/TricksterCard.jsx';
-import { validateMessage } from '../../server/validator.js';
+import { validateMessage } from '@stigmergy/core/schema';
 import { t } from '../../src/lib/lexicon.js';
 
 // A pending_requests[] entry in the shape buildInbox() produces.
