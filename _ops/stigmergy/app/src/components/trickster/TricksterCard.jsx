@@ -1,10 +1,13 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Box, Button, Tag } from '../primitives.jsx';
 import { healthColor, formatTs, parseLinks, hrefFor } from '../../lib/format.js';
 import { postMessage, InvalidMessageError } from '../../adapters/blackboard.js';
 import { advanceSteward } from '../../adapters/stewards.js';
 import { t, pauseShort, pauseLong } from '../../lib/lexicon.js';
 import { buildCardGrant } from '../../lib/trickster-grants.js';
+import EntryRefChips from '../EntryRefChips.jsx';
+import { usePalaceRef } from '../../lib/palace-ref.jsx';
+import { resolveRef } from '../../lib/entry-ref.js';
 import { assetsFor } from '../../lib/trickster-assets.js';
 import LeanPanel from './LeanPanel.jsx';
 import AuditionStrip from './AuditionStrip.jsx';
@@ -71,6 +74,16 @@ export default function TricksterCard({ item, onConfirmed, onRun, focused = fals
   const [sending, setSending] = useState(false);
   const [running, setRunning] = useState(false);
   const [errors, setErrors] = useState([]);
+
+  // The steward handle (@from) is the title of the palace entry the steward
+  // inhabits. Resolve it so the header carries the same [OBS]/[BUN] links as a
+  // name in STATE; coordinator handles (KURAMOTO-1, COORDINATOR) won't resolve
+  // and render no chips.
+  const palace = usePalaceRef();
+  // Trigger the one-time palace-index walk only now that a card is on screen
+  // (lazy: board-only views never pay for it). See palace-ref.jsx.
+  useEffect(() => { palace?.ensureLoaded?.(); }, [palace?.ensureLoaded]);
+  const fromRef = palace && palace.refIndex ? resolveRef(palace.refIndex, item.from) : null;
 
   const options = item.options || [];
   // Inline assets come from two sources, payload-first:
@@ -202,6 +215,12 @@ export default function TricksterCard({ item, onConfirmed, onRun, focused = fals
             color: 'var(--phosphor-white)', textShadow: 'var(--glow)',
             fontFamily: 'var(--font-mono)', fontSize: 14, fontWeight: 600,
           }}>@{item.from || '--'}</span>
+          <EntryRefChips
+            resolved={fromRef}
+            onOpen={palace?.openEntryInState}
+            vault={palace?.vault}
+            size={10}
+          />
           <span style={{
             color: 'var(--phosphor-dim)', textShadow: 'none',
             fontFamily: 'var(--font-mono)', fontSize: 11,

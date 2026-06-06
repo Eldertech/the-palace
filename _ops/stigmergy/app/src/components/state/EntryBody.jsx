@@ -1,6 +1,8 @@
 import React from 'react';
 import { parseLinks, hrefFor } from '../../lib/format.js';
 import MermaidBlock from './MermaidBlock.jsx';
+import EntryRefChips from '../EntryRefChips.jsx';
+import { resolveRef } from '../../lib/entry-ref.js';
 
 // Minimal markdown renderer for entry bodies. Intentionally scoped: the
 // goal is "a reader can audit an entry" -- not Obsidian-parity rendering.
@@ -229,7 +231,7 @@ function pushTextWithLinks(text, keyPrefix, ctx, out) {
 }
 
 function renderAtom(atom, key, ctx) {
-  const { index, onNavigate } = ctx || {};
+  const { index, refIndex, onNavigate } = ctx || {};
   if (atom.kind === 'code') {
     return (
       <code key={key} style={{
@@ -245,20 +247,26 @@ function renderAtom(atom, key, ctx) {
   if (atom.kind === 'wikilink') {
     const resolved = index?.get?.(atom.name) ?? null;
     const known = resolved !== null;
+    // The name span is untouched (keeps its testid + in-deck click). The
+    // [OBS]/[BUN] chips ride alongside it as siblings, resolved against the
+    // richer refIndex; onOpen navigates in-deck to the entry's STATE view.
+    const ref = resolveRef(refIndex, atom.name);
     return (
-      <span
-        key={key}
-        data-testid="body-wikilink"
-        data-resolved={known ? 'true' : 'false'}
-        onClick={() => { if (known && onNavigate) onNavigate(resolved); }}
-        style={{
-          color: known ? 'var(--link)' : 'var(--phosphor-dim)',
-          textShadow: known ? 'var(--glow)' : 'none',
-          cursor: known && onNavigate ? 'pointer' : 'default',
-          borderBottom: known ? '1px dashed currentColor' : '1px dotted currentColor',
-        }}
-        title={known ? atom.name : `${atom.name} (unresolved)`}
-      >{atom.display}</span>
+      <React.Fragment key={key}>
+        <span
+          data-testid="body-wikilink"
+          data-resolved={known ? 'true' : 'false'}
+          onClick={() => { if (known && onNavigate) onNavigate(resolved); }}
+          style={{
+            color: known ? 'var(--link)' : 'var(--phosphor-dim)',
+            textShadow: known ? 'var(--glow)' : 'none',
+            cursor: known && onNavigate ? 'pointer' : 'default',
+            borderBottom: known ? '1px dashed currentColor' : '1px dotted currentColor',
+          }}
+          title={known ? atom.name : `${atom.name} (unresolved)`}
+        >{atom.display}</span>
+        <EntryRefChips resolved={ref} onOpen={onNavigate} />
+      </React.Fragment>
     );
   }
   return null;
@@ -465,7 +473,7 @@ function renderBlock(block, ctx, key) {
   }
 }
 
-export default function EntryBody({ body, index, onNavigate }) {
+export default function EntryBody({ body, index, refIndex, onNavigate }) {
   if (typeof body !== 'string' || body.trim() === '') {
     return (
       <div data-testid="entry-body" style={{ color: 'var(--phosphor-dim)', textShadow: 'none' }}>
@@ -475,7 +483,7 @@ export default function EntryBody({ body, index, onNavigate }) {
   }
   const clean = stripHtmlComments(body);
   const blocksList = blocks(clean);
-  const ctx = { index, onNavigate };
+  const ctx = { index, refIndex, onNavigate };
   return (
     <div data-testid="entry-body">
       {blocksList.map((b, j) => renderBlock(b, ctx, `b${j}`))}

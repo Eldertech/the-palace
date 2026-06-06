@@ -1,5 +1,7 @@
 import React from 'react';
 import { Box } from '../primitives.jsx';
+import EntryRefChips from '../EntryRefChips.jsx';
+import { resolveRef } from '../../lib/entry-ref.js';
 
 // SCHEMA §4 made visible: frontmatter links (the semantic web) render as
 // a typed-relation panel; body wikilinks (the conversational fabric) render
@@ -31,9 +33,10 @@ const TYPE_COLOR = {
   'connects-to': 'var(--phosphor-dim)',
 };
 
-function LinkRow({ link, onNavigate, index }) {
+function LinkRow({ link, onNavigate, index, refIndex }) {
   const resolvedPath = index?.get?.(link.target) ?? null;
   const known = resolvedPath !== null;
+  const ref = resolveRef(refIndex, link.target);
   const typeColor = TYPE_COLOR[link.type] ?? 'var(--phosphor-dim)';
   return (
     <div
@@ -56,22 +59,27 @@ function LinkRow({ link, onNavigate, index }) {
         textShadow: 'none', fontSize: 12, fontStyle: 'italic',
         whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis',
       }}>{link.label ? `(${link.label})` : '--'}</span>
-      <span
-        style={{
-          color: known ? 'var(--link)' : 'var(--phosphor-dim)',
-          textShadow: known ? 'var(--glow)' : 'none',
-          cursor: known && onNavigate ? 'pointer' : 'default',
-          borderBottom: known ? '1px dashed currentColor' : 'none',
-        }}
-        onClick={() => { if (known && onNavigate) onNavigate(resolvedPath); }}
-      >
-        {known ? `-> ${link.target}` : `?? ${link.target}`}
+      <span style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'baseline', minWidth: 0 }}>
+        <span
+          style={{
+            color: known ? 'var(--link)' : 'var(--phosphor-dim)',
+            textShadow: known ? 'var(--glow)' : 'none',
+            cursor: known && onNavigate ? 'pointer' : 'default',
+            borderBottom: known ? '1px dashed currentColor' : 'none',
+          }}
+          onClick={() => { if (known && onNavigate) onNavigate(resolvedPath); }}
+        >
+          {known ? `-> ${link.target}` : `?? ${link.target}`}
+        </span>
+        {/* [OBS]/[BUN] ride the resolved target. onOpen navigates in-deck to
+            the target's STATE view (where its bundle renders). */}
+        <EntryRefChips resolved={ref} onOpen={onNavigate} />
       </span>
     </div>
   );
 }
 
-export default function TypedLinkPanel({ links = [], onNavigate, index }) {
+export default function TypedLinkPanel({ links = [], onNavigate, index, refIndex }) {
   if (!Array.isArray(links) || links.length === 0) {
     return (
       <Box title="TYPED LINKS" tone="single">
@@ -99,7 +107,7 @@ export default function TypedLinkPanel({ links = [], onNavigate, index }) {
       {orderedTypes.map((t) => (
         <div key={t} style={{ marginBottom: 4 }}>
           {byType.get(t).map((l, i) => (
-            <LinkRow key={`${t}-${i}`} link={l} onNavigate={onNavigate} index={index} />
+            <LinkRow key={`${t}-${i}`} link={l} onNavigate={onNavigate} index={index} refIndex={refIndex} />
           ))}
         </div>
       ))}

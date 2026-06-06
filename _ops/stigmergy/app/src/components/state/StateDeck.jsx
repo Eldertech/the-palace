@@ -5,6 +5,7 @@ import EntryEditor from './EntryEditor.jsx';
 import TopologyLens from './TopologyLens.jsx';
 import { fetchEntries } from '../../adapters/entries.js';
 import { buildIndex } from '../../lib/wikilink.js';
+import { buildRefIndex } from '../../lib/entry-ref.js';
 import { useEntryNavigation, useLensNavigation } from '../../lib/url-nav.js';
 import { Banner } from '../primitives.jsx';
 
@@ -17,7 +18,7 @@ import { Banner } from '../primitives.jsx';
 // is in-memory (the EntryReader fetches the chosen entry's full read
 // shape via /api/entry).
 
-export default function StateDeck() {
+export default function StateDeck({ jumpTarget = null }) {
   const [state, setState] = useState({ kind: 'loading' });
   // STATE has two lenses: PULSE (the ranked list, default) and TOPOLOGY
   // (the typed-link graph). Lens choice is URL-driven (?lens=topology), so
@@ -49,6 +50,23 @@ export default function StateDeck() {
     return buildIndex(state.entries);
   }, [state]);
 
+  // The richer ref index (name -> { path, hasBundle }) backs the [OBS]/[BUN]
+  // chips on typed-link targets and body wikilinks. Same catalog, one extra
+  // pass; the has_bundle flag is already in each summary.
+  const refIndex = useMemo(() => {
+    if (state.kind !== 'ok') return new Map();
+    return buildRefIndex(state.entries);
+  }, [state]);
+
+  // A cross-deck jump (e.g. clicking [BUN] on a Trickster card's @steward)
+  // sets jumpTarget and flips the deck to STATE; open that entry when it
+  // arrives. Keyed on the nonce so the same entry can be re-jumped, and so an
+  // ordinary StateDeck re-render never re-fires the open.
+  useEffect(() => {
+    if (jumpTarget && jumpTarget.path) nav.openEntry(jumpTarget.path);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [jumpTarget?.nonce]);
+
   if (state.kind === 'err') {
     return (
       <div data-testid="state-deck-error" style={{
@@ -72,6 +90,7 @@ export default function StateDeck() {
         <EntryReader
           path={selected}
           index={wikilinkIndex}
+          refIndex={refIndex}
           onNavigate={nav.openEntry}
           onBack={nav.backToPulse}
           onEdit={nav.openEditor}

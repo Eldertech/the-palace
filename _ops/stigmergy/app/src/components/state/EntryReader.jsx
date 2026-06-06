@@ -17,7 +17,7 @@ import { checkAllowList } from '../../lib/entry-edit.js';
 // on failure shows an inline error band and a back button. Errors never
 // escape this component -- the deck stays usable.
 
-export default function EntryReader({ path, index, onNavigate, onBack, onEdit, onGoBack }) {
+export default function EntryReader({ path, index, refIndex, onNavigate, onBack, onEdit, onGoBack }) {
   const [state, setState] = useState({ kind: 'loading' });
 
   useEffect(() => {
@@ -142,7 +142,7 @@ export default function EntryReader({ path, index, onNavigate, onBack, onEdit, o
               right rail (typed links + bundle) starts at the same vertical
               position rather than getting pushed down by a full-width hero. */}
           <ForwardVectorHero forward_vector={entry.frontmatter?.forward_vector} />
-          <EntryBody body={entry.body} index={index} onNavigate={onNavigate} />
+          <EntryBody body={entry.body} index={index} refIndex={refIndex} onNavigate={onNavigate} />
         </div>
         <div data-testid="entry-rail" style={{
           display: 'flex', flexDirection: 'column', gap: 12,
@@ -151,6 +151,7 @@ export default function EntryReader({ path, index, onNavigate, onBack, onEdit, o
           <TypedLinkPanel
             links={entry.links}
             index={index}
+            refIndex={refIndex}
             onNavigate={onNavigate}
           />
           <BundlePanel bundle={entry.bundle} />
