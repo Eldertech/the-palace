@@ -204,4 +204,82 @@ describe('processCycle (integration)', () => {
     const board = readFileSync(path.join(root, '_ops/swarm/persistent/blackboard.jsonl'), 'utf8').trim();
     expect(board).toBe('');
   });
+
+  // A §2.2-valid RESOURCE_REQUEST emitted with NO artifacts; a media file the
+  // steward rendered this cycle sits in the project bundle. The Layer 2 backstop
+  // should inject it so the card (Layer 1) can render it.
+  function resourceRequest(extraPayload = {}) {
+    return {
+      schema_version: '1.0', id: 'tr-1', request_id: 'tr-1', ts: '2026-05-27T16:00:00-04:00',
+      session_id: 'sess-1', from: 'Test Steward', to: 'TRICKSTER', type: 'RESOURCE_REQUEST', board: 'TRICKSTER',
+      payload: { resource: 'human_ear_check', rationale: 'does it read?', blocking: true, ...extraPayload },
+    };
+  }
+
+  test('Layer 2 backstop injects undeclared cycle media into the RESOURCE_REQUEST on the board', () => {
+    const { agentDir } = makePalace();
+    // Previous-cycle stamp = window lower bound; tsNow in the future = upper bound
+    // safely after the file's real mtime.
+    const state = JSON.parse(readFileSync(path.join(root, agentDir, 'state.json'), 'utf8'));
+    state.last_active = '2026-05-27T10:00:00-04:00';
+    writeFileSync(path.join(root, agentDir, 'state.json'), JSON.stringify(state));
+    // Render a media file (and a non-media script) into the project bundle.
+    const bundle = path.join(root, 'Projects/Test Steward');
+    mkdirSync(bundle, { recursive: true });
+    writeFileSync(path.join(bundle, 'render.wav'), 'audio-bytes');
+    writeFileSync(path.join(bundle, 'build.py'), 'print(1)');
+
+    const transcriptPath = path.join(root, 'transcript.jsonl');
+    writeFileSync(transcriptPath, assistantLine([resourceRequest()]));
+
+    const summary = processCycle({
+      palaceRoot: root, transcriptPath, agentDir, cycleN: 2, iteration: 2, tsNow: '2026-12-31T23:59:59-04:00',
+    });
+
+    expect(summary.posted_ids).toEqual(['tr-1']);
+    expect(summary.backstop).toEqual([{ request_id: 'tr-1', added: ['Projects/Test Steward/render.wav'], dropped: 0 }]);
+
+    const board = readFileSync(path.join(root, '_ops/swarm/persistent/blackboard.jsonl'), 'utf8').trim().split('\n').map((l) => JSON.parse(l));
+    expect(board[0].payload.artifacts).toEqual([{ path: 'Projects/Test Steward/render.wav', caption: null }]);
+    // The script was filtered out (not media).
+    expect(JSON.stringify(board[0].payload.artifacts)).not.toContain('build.py');
+
+    const history = readFileSync(path.join(root, agentDir, 'history.jsonl'), 'utf8').trim().split('\n').map((l) => JSON.parse(l));
+    expect(history.some((e) => e.event === 'ARTIFACT_BACKSTOP' && e.request_id === 'tr-1')).toBe(true);
+  });
+
+  test('first cycle (no last_active window) does not inject — backstop stays empty', () => {
+    const { agentDir } = makePalace(); // last_active defaults to null
+    const bundle = path.join(root, 'Projects/Test Steward');
+    mkdirSync(bundle, { recursive: true });
+    writeFileSync(path.join(bundle, 'render.wav'), 'audio-bytes');
+
+    const transcriptPath = path.join(root, 'transcript.jsonl');
+    writeFileSync(transcriptPath, assistantLine([resourceRequest()]));
+
+    const summary = processCycle({
+      palaceRoot: root, transcriptPath, agentDir, cycleN: 1, iteration: 1, tsNow: '2026-12-31T23:59:59-04:00',
+    });
+
+    expect(summary.backstop).toEqual([]);
+    const board = readFileSync(path.join(root, '_ops/swarm/persistent/blackboard.jsonl'), 'utf8').trim().split('\n').map((l) => JSON.parse(l));
+    expect(board[0].payload.artifacts).toBeUndefined();
+  });
+
+  test('Layer 3 lint warns when a declared artifact is never referenced in prose', () => {
+    const { agentDir } = makePalace();
+    const transcriptPath = path.join(root, 'transcript.jsonl');
+    // Declares an artifact; prose has no anchor to it → warn.
+    writeFileSync(transcriptPath, assistantLine([resourceRequest({
+      headline: 'a generic question', rationale: 'nothing that names the file',
+      artifacts: [{ path: 'Projects/Test Steward/zzzz.wav', caption: 'the orphaned drone' }],
+    })]));
+
+    const summary = processCycle({
+      palaceRoot: root, transcriptPath, agentDir, cycleN: 1, iteration: 1, tsNow: '2026-05-27T16:05:00-04:00',
+    });
+    expect(summary.artifact_lint_warnings).toHaveLength(1);
+    expect(summary.artifact_lint_warnings[0].request_id).toBe('tr-1');
+    expect(summary.artifact_lint_warnings[0].warn).toBe(true);
+  });
 });
