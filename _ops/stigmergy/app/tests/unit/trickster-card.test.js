@@ -86,6 +86,137 @@ describe('TricksterCard — render', () => {
   });
 });
 
+// Selection is now CONTROLLED by the deck (Phase 2 keyboard story): the card
+// takes `selectedId` + `onSelectOption` props instead of owning the state, so
+// the keyboard's 1-N/Enter and the mouse clicks share one source of truth.
+// Click→onSelectOption wiring is event-driven (an e2e concern); here we assert
+// the render reflects the lifted prop. The card has no lean (ITEM defines no
+// recommended_option), so the only default-tone Buttons are the option grid and
+// the only disable-able control is the FILE button — which keeps these counts
+// unambiguous.
+describe('TricksterCard — controlled selection', () => {
+  // Button default tone renders a phosphor-dim border; primary (selected)
+  // renders a phosphor border. Count the dim option borders to see how many
+  // options sit in the default (unselected) register.
+  const countDefaultOptionBorders = (html) =>
+    (html.match(/2px solid var\(--phosphor-dim\)/g) || []).length;
+
+  it('moves exactly one option into the selected register for the lifted selectedId', () => {
+    const none = render({ selectedId: null });
+    const picked = render({ selectedId: 'TWEAK' });
+    expect(countDefaultOptionBorders(none) - countDefaultOptionBorders(picked)).toBe(1);
+  });
+
+  it('keeps every option in the default register when nothing is picked', () => {
+    const none = render({ selectedId: null });
+    const all = render({ selectedId: 'NOPE-not-an-option' });
+    // An unknown selectedId selects nothing, so the dim-border count is stable.
+    expect(countDefaultOptionBorders(none)).toBe(countDefaultOptionBorders(all));
+  });
+
+  it('disables the FILE button until an option is picked (or a note typed)', () => {
+    // Use a request_id that matches no inline-asset registry entry, so the only
+    // disable-able control is the FILE button (asset players carry their own
+    // disabled state and would otherwise confound the proxy).
+    const plain = (props) =>
+      renderToStaticMarkup(React.createElement(TricksterCard, {
+        item: { ...ITEM, request_id: 'plain-req-keyboard-001' },
+        ...props,
+      }));
+    // Nothing picked + no note → FILE button is the lone disabled control.
+    expect(plain({ selectedId: null })).toContain('disabled=""');
+    // A lifted pick makes the card fileable → no disabled control remains.
+    expect(plain({ selectedId: 'SHIP' })).not.toContain('disabled=""');
+  });
+});
+
+// FILE & RUN — the fast path that files the grant AND advances the asking
+// steward by a cycle. Click→advanceSteward wiring is event-driven (an e2e
+// concern); here we assert the button renders alongside FILE and shares FILE's
+// fileable gate. (Run-outcome formatting lives in the deck — see
+// trickster-run.test.js.)
+describe('TricksterCard — file & run', () => {
+  it('offers a FILE & RUN button beside the FILE button', () => {
+    const html = render({ selectedId: 'SHIP' });
+    expect(html).toContain(t('trickster.card.file'));
+    // renderToStaticMarkup HTML-escapes the ampersand ('&' → '&amp;'); the
+    // browser DOM still shows "file & run ▶". Match the serialized form.
+    expect(html).toContain(t('trickster.card.fileandrun').replace(/&/g, '&amp;'));
+  });
+
+  it('gates FILE & RUN on the same fileable condition as FILE', () => {
+    // A request_id that matches no inline-asset registry entry, so FILE and
+    // FILE & RUN are the only disable-able controls.
+    const plain = (props) =>
+      renderToStaticMarkup(React.createElement(TricksterCard, {
+        item: { ...ITEM, request_id: 'plain-req-run-001' },
+        ...props,
+      }));
+    // Nothing picked + no note → both buttons disabled.
+    expect((plain({ selectedId: null }).match(/disabled=""/g) || []).length).toBe(2);
+    // A lifted pick makes the card fileable → no disabled control remains.
+    expect(plain({ selectedId: 'SHIP' })).not.toContain('disabled=""');
+  });
+});
+
+// Inline assets, payload-first (the inline-assets wire-through, 2026-06-06):
+// the card renders artifacts the steward declared on the wire (item.artifacts,
+// produced by buildInbox from payload.artifacts) ahead of the hand-curated
+// trickster-assets registry. The registry stays as a fallback; its `schematic`
+// slot renders regardless because authored diagrams are not steward-rendered
+// files. renderToStaticMarkup is enough — these are presence/precedence checks.
+describe('TricksterCard — inline assets (payload-first)', () => {
+  const renderItem = (overrides) =>
+    renderToStaticMarkup(React.createElement(TricksterCard, { item: { ...ITEM, ...overrides } }));
+
+  it('renders payload artifacts via ArtifactSlot with NO registry entry needed', () => {
+    // 'crystal-synth-steward-012' matches no trickster-assets registry key, so
+    // the only way the player appears is the wire-declared artifacts.
+    const html = renderItem({
+      request_id: 'crystal-synth-steward-012',
+      artifacts: [
+        { path: 'Projects/Crystal Synthesizer/dispersion-filter/01_dry_click.wav', caption: '01 dry click — the control.' },
+      ],
+    });
+    expect(html).toContain('data-testid="card-assets"');
+    expect(html).toContain('data-testid="artifact-slot"');
+    // The full caption survives (ArtifactSlot shows it under the player).
+    expect(html).toContain('01 dry click — the control.');
+  });
+
+  it('falls back to the registry audition when the wire carries no artifacts', () => {
+    // 'portamento-steward-' is a registry prefix carrying an audition strip.
+    const html = renderItem({ request_id: 'portamento-steward-009', artifacts: [] });
+    expect(html).toContain('data-testid="audition-strip"');
+  });
+
+  it('payload artifacts win over a registry audition for the same request', () => {
+    const html = renderItem({
+      request_id: 'portamento-steward-009', // registry audition exists…
+      artifacts: [{ path: 'Projects/Foo/bar.wav', caption: 'wire audio' }], // …but the wire wins
+    });
+    expect(html).toContain('data-testid="artifact-slot"');
+    expect(html).not.toContain('data-testid="audition-strip"');
+  });
+
+  it('still renders the registry schematic alongside payload artifacts (authored art)', () => {
+    // 'gsl-steward-' carries both a schematic and an audition. With payload
+    // artifacts present: schematic stays, audition is suppressed, payload renders.
+    const html = renderItem({
+      request_id: 'gsl-steward-028',
+      artifacts: [{ path: 'Projects/GSL/shepard_C.wav', caption: 'C drone' }],
+    });
+    expect(html).toContain('data-schematic="gsl-keyboard"');
+    expect(html).toContain('data-testid="artifact-slot"');
+    expect(html).not.toContain('data-testid="audition-strip"');
+  });
+
+  it('renders no asset block when neither the wire nor the registry has anything', () => {
+    const html = renderItem({ request_id: 'plain-req-no-assets-001', artifacts: [] });
+    expect(html).not.toContain('data-testid="card-assets"');
+  });
+});
+
 describe('buildCardGrant — message building', () => {
   it('builds a §2.2-valid RESOURCE_GRANT from a chosen option', () => {
     const msg = buildCardGrant(ITEM, {

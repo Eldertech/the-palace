@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Box, Button, Tag } from '../primitives.jsx';
 import { healthColor, formatTs, parseLinks, hrefFor } from '../../lib/format.js';
 import { postMessage, InvalidMessageError } from '../../adapters/blackboard.js';
+import { advanceSteward } from '../../adapters/stewards.js';
 import { t, pauseShort, pauseLong } from '../../lib/lexicon.js';
 import { buildCardGrant } from '../../lib/trickster-grants.js';
 import { assetsFor } from '../../lib/trickster-assets.js';
@@ -60,13 +61,28 @@ function Linkify({ text }) {
   );
 }
 
-export default function TricksterCard({ item, onConfirmed, focused = false }) {
-  const [selectedId, setSelectedId] = useState(null);
+// Selection is CONTROLLED by the deck (TricksterDeck owns a per-request_id
+// `selections` map) so the keyboard layer's 1-N/Enter and the mouse clicks
+// drive one source of truth. `selectedId` is the deck's current pick for this
+// card; `onSelectOption(optionId)` reports a click up for the deck to toggle.
+// `notes` stays local — the freeform note is a per-card, mouse-only field.
+export default function TricksterCard({ item, onConfirmed, onRun, focused = false, selectedId = null, onSelectOption }) {
   const [notes, setNotes] = useState('');
   const [sending, setSending] = useState(false);
+  const [running, setRunning] = useState(false);
   const [errors, setErrors] = useState([]);
 
   const options = item.options || [];
+  // Inline assets come from two sources, payload-first:
+  //   1. item.artifacts — declared on the wire by the steward (the canonical
+  //      path; buildInbox() reads payload.artifacts straight off the message).
+  //   2. assetsFor(request_id) — the hand-curated trickster-assets registry,
+  //      now a LEGACY FALLBACK that ratchets toward empty (mirrors the
+  //      headline ?? override.headline precedence in inbox.js).
+  // The registry's `schematic` slot is the exception: schematics are authored
+  // diagrams, not steward-rendered files, so they render regardless of payload.
+  const payloadArtifacts = item.artifacts || [];
+  const hasPayloadArtifacts = payloadArtifacts.length > 0;
   const assets = assetsFor(item.request_id);
   const selectedOption = options.find((o) => o.id === selectedId) || null;
   // Fileable once the human has expressed something: a chosen option, or a
@@ -86,21 +102,39 @@ export default function TricksterCard({ item, onConfirmed, focused = false }) {
     [t('field.status'), item.agent_status || '--'],
   ];
 
-  // The single write path for this card. Both the options-grid FILE button and
-  // the LeanPanel's FILE LEAN flow through here. Always the persistent board —
-  // permanent stewards carry a session_id label even though their requests live
-  // on persistent; routing by session_id would misfile the grant where the
-  // asker can't see it. (Same rationale as TricksterInbox's InlineResponse.)
-  async function fileGrant({ optionId, optionLabel, notes: noteText }) {
+  // The single write path for this card. The options-grid FILE button, the
+  // FILE & RUN button, and the LeanPanel's FILE LEAN flow all run through here.
+  // Always the persistent board — permanent stewards carry a session_id label
+  // even though their requests live on persistent; routing by session_id would
+  // misfile the grant where the asker can't see it. (Same rationale as
+  // TricksterInbox's InlineResponse.)
+  //
+  // `run`: after the grant lands, advance the asking steward (item.from) by one
+  // cycle so it consumes this fresh grant immediately — the "file and run"
+  // shortcut for moving one card forward without a detour through the stewards
+  // deck. postMessage() awaits the server append, so the grant is on the board
+  // before advanceSteward() fires; the steward lane reads the same persistent
+  // board when it builds the cycle prompt. advanceSteward() never throws (404 /
+  // 409 / errors come back as a structured result), so the outcome is reported
+  // up via onRun() and the file still counts — a failed run never un-files a
+  // landed grant. The cycle-fire returns as soon as the worker spawns; we don't
+  // wait out the whole cycle.
+  async function fileGrant({ optionId, optionLabel, notes: noteText, run = false }) {
     if (sending) return;
     setSending(true);
+    if (run) setRunning(true);
     setErrors([]);
     try {
       const message = buildCardGrant(item, { optionId, optionLabel, notes: noteText });
       const persisted = await postMessage(message, 'persistent');
+      if (run) {
+        const result = await advanceSteward(item.from);
+        if (onRun) onRun(result, item.from);
+      }
       if (onConfirmed) onConfirmed(persisted);
-      // The parent will drop this card on re-derive; reset is belt-and-braces.
-      setSelectedId(null);
+      // The parent drops this card on re-derive (and its lifted selection
+      // orphans harmlessly — read only by a still-pending request_id). Reset
+      // the local note as belt-and-braces.
       setNotes('');
     } catch (err) {
       if (err instanceof InvalidMessageError) {
@@ -114,6 +148,7 @@ export default function TricksterCard({ item, onConfirmed, focused = false }) {
       }
     } finally {
       setSending(false);
+      setRunning(false);
     }
   }
 
@@ -123,6 +158,19 @@ export default function TricksterCard({ item, onConfirmed, focused = false }) {
       optionId: selectedId,
       optionLabel: selectedOption ? selectedOption.label : null,
       notes,
+    });
+  }
+
+  // FILE & RUN — file the human's current pick (or note), then advance the
+  // asking steward by one cycle so it consumes the grant straight away. Same
+  // inputs as handleFile; the `run` flag is what differs.
+  function handleFileAndRun() {
+    if (!canFile) return;
+    fileGrant({
+      optionId: selectedId,
+      optionLabel: selectedOption ? selectedOption.label : null,
+      notes,
+      run: true,
     });
   }
 
@@ -194,14 +242,28 @@ export default function TricksterCard({ item, onConfirmed, focused = false }) {
 
         {/* Inline assets — the evidence the decision needs, surfaced between
             the question and the affordances: hear the audition, see the
-            prototype, open the artifact to try. Embeds/files go through the
-            shared ArtifactSlot (sandboxed iframe / open-in-native-app);
-            sequenced audio keeps AuditionStrip for the play-all + note labels. */}
-        {assets ? (
+            prototype, open the artifact to try.
+
+            Payload-first: when the steward declared artifacts on the wire
+            (item.artifacts), render them through the shared ArtifactSlot — the
+            same renderer the message boards use, so audio→PhosphorAudio,
+            image→<img>, html→sandboxed iframe, anything else→open-in-native, each
+            with its full caption. Only when the wire carries nothing does the
+            legacy trickster-assets registry fall in (audition strips for the
+            stable per-steward libraries, embed/file artifacts). The registry
+            `schematic` slot renders either way — it's authored art, not a
+            steward-rendered file. */}
+        {(assets || hasPayloadArtifacts) ? (
           <div data-testid="card-assets">
-            {assets.schematic ? <Schematic name={assets.schematic} /> : null}
-            {assets.audition ? <AuditionStrip {...assets.audition} /> : null}
-            {assets.artifacts ? <ArtifactSlot payload={{ artifacts: assets.artifacts }} /> : null}
+            {assets?.schematic ? <Schematic name={assets.schematic} /> : null}
+            {hasPayloadArtifacts ? (
+              <ArtifactSlot payload={{ artifacts: payloadArtifacts }} />
+            ) : (
+              <>
+                {assets?.audition ? <AuditionStrip {...assets.audition} /> : null}
+                {assets?.artifacts ? <ArtifactSlot payload={{ artifacts: assets.artifacts }} /> : null}
+              </>
+            )}
           </div>
         ) : null}
 
@@ -227,7 +289,7 @@ export default function TricksterCard({ item, onConfirmed, focused = false }) {
                 key={opt.id}
                 hot={String(i + 1)}
                 tone={opt.id === selectedId ? 'primary' : 'default'}
-                onClick={() => setSelectedId(opt.id === selectedId ? null : opt.id)}
+                onClick={() => onSelectOption && onSelectOption(opt.id)}
                 disabled={sending}
               >
                 {opt.label}
@@ -262,10 +324,15 @@ export default function TricksterCard({ item, onConfirmed, focused = false }) {
           />
         </div>
 
-        {/* File row */}
+        {/* File row. FILE files the grant and leaves the steward where it is;
+            FILE & RUN files it AND advances that steward by a cycle so it picks
+            the grant up now — the fast path for moving one card forward. */}
         <div style={{ display: 'flex', justifyContent: 'flex-end', gap: 8, alignItems: 'center' }}>
           <Button tone="primary" onClick={handleFile} disabled={!canFile}>
-            {sending ? t('trickster.card.filing') : t('trickster.card.file')}
+            {sending && !running ? t('trickster.card.filing') : t('trickster.card.file')}
+          </Button>
+          <Button tone="warn" onClick={handleFileAndRun} disabled={!canFile}>
+            {running ? t('trickster.card.running') : t('trickster.card.fileandrun')}
           </Button>
         </div>
 

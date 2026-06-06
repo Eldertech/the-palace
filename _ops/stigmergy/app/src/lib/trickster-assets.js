@@ -1,5 +1,14 @@
 // trickster-assets.js — per-project inline asset registry for the deck.
 //
+// LEGACY FALLBACK as of the inline-assets wire-through (2026-06-06). The card
+// now renders artifacts declared on the wire (payload.artifacts → item.artifacts,
+// via ArtifactSlot) FIRST; this registry only fills in when a request carries no
+// payload artifacts. It ratchets toward empty the way catchup-overrides.js does:
+// move `audition` / `artifacts` rows to the wire as stewards declare them, and
+// drop the row once its request self-serves. The one slot that STAYS here is
+// `schematic` — authored diagrams are not steward-rendered files, so the card
+// renders them regardless of payload.
+//
 // Maps a pending request to the evidence its decision needs: an audio audition
 // to hear, an embedded prototype to see, a file to download and try. The card
 // renders these inline so Loudon can audition without leaving the page — the

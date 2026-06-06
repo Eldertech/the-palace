@@ -327,3 +327,38 @@ describe('buildInbox — asker-defined payload.options[] (Infrastructure Spec §
     ]);
   });
 });
+
+describe('buildInbox — inline artifacts from the wire (payload.artifacts)', () => {
+  test('absent artifacts yields an empty array (never null/undefined)', () => {
+    const item = buildInbox([REQ('r-1')]).pending_requests[0];
+    expect(item.artifacts).toEqual([]);
+  });
+
+  test('payload.artifacts[] flows onto the item as {path, caption}', () => {
+    const item = buildInbox([REQ('r-1', '2026-04-01T15:00:00Z', {
+      payload: {
+        resource: 'human_ear_check', rationale: 'r', blocking: true,
+        artifacts: [
+          { path: 'Projects/Crystal Synthesizer/dispersion-filter/01_dry_click.wav', caption: '01 dry click' },
+          { path: 'Projects/Crystal Synthesizer/dispersion-filter/02_dispersed_click.wav' },
+        ],
+      },
+    })]).pending_requests[0];
+    expect(item.artifacts).toEqual([
+      { path: 'Projects/Crystal Synthesizer/dispersion-filter/01_dry_click.wav', caption: '01 dry click' },
+      { path: 'Projects/Crystal Synthesizer/dispersion-filter/02_dispersed_click.wav', caption: null },
+    ]);
+  });
+
+  test('legacy payload.artifact_path (string) is normalized to a single-entry array', () => {
+    const item = buildInbox([REQ('r-1', '2026-04-01T15:00:00Z', {
+      payload: {
+        resource: 'audition', rationale: 'r', blocking: true,
+        artifact_path: 'Projects/Slime Mold Delay/slime-mold-webaudio-bench.html',
+      },
+    })]).pending_requests[0];
+    expect(item.artifacts).toEqual([
+      { path: 'Projects/Slime Mold Delay/slime-mold-webaudio-bench.html', caption: null },
+    ]);
+  });
+});
