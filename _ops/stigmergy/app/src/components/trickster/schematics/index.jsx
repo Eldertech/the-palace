@@ -3,21 +3,30 @@ import GslKeyboard from './GslKeyboard.jsx';
 import GwlPosition from './GwlPosition.jsx';
 import SemanticStage2 from './SemanticStage2.jsx';
 import ShepardStage1Drone from './ShepardStage1Drone.jsx';
+import ShepardStage2Staircase from './ShepardStage2Staircase.jsx';
+import RetroFiveAssetBrief from './RetroFiveAssetBrief.jsx';
+import SlimeTubes from './SlimeTubes.jsx';
+import PresetCutoff from './PresetCutoff.jsx';
 
-// The schematic component family — hand-authored SVG diagrams lifted out of the
-// standalone trickster.html into reusable React components, so the same art can
-// render on a Trickster card, a STATE-deck entry page, or a LOG card. Colors
-// come from CSS vars (currentColor + per-region `color`), so each diagram
-// follows the active skin without a tone prop.
+// The schematic component family — all eight hand-authored SVG diagrams lifted
+// out of the (now-retired) standalone trickster.html into reusable React
+// components, so the same art can render on a Trickster card, a STATE-deck
+// entry page, or a LOG card. Colors come from CSS vars (currentColor +
+// per-region `color`), so each diagram follows the active skin without a tone
+// prop.
 //
-// Deferred (mechanical drop-ins when their cycles recur or a STATE/LOG consumer
-// wants them): shepard-stage2-staircase, retro-five-asset-brief, slime-tubes,
-// preset-cutoff. They depict requests not in the current pending set.
+// The first four attach to currently-pending cards; the last four are exact-
+// keyed to their origin requests (not currently pending) and preserved here so
+// the art survived the deletion of trickster.html (Phase 6).
 const SCHEMATICS = {
   'gsl-keyboard': GslKeyboard,
   'gwl-position': GwlPosition,
   'semantic-stage2': SemanticStage2,
   'shepard-stage1-drone': ShepardStage1Drone,
+  'shepard-stage2-staircase': ShepardStage2Staircase,
+  'retro-five-asset-brief': RetroFiveAssetBrief,
+  'slime-tubes': SlimeTubes,
+  'preset-cutoff': PresetCutoff,
 };
 
 export const SCHEMATIC_NAMES = Object.keys(SCHEMATICS);

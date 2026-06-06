@@ -107,6 +107,12 @@ const REGISTRY = {
   'shepard-steward-008': { schematic: 'shepard-stage1-drone' },
   'shepard-steward-012': { schematic: 'shepard-stage1-drone' },
 
+  // Preserved schematics, exact-keyed to their origin requests (not currently
+  // pending). Extracted from trickster.html before its deletion so the art
+  // survives as reusable components.
+  'shepard-steward-013': { schematic: 'shepard-stage2-staircase' },
+  'slime-mold-delay-steward-007': { schematic: 'slime-tubes' },
+
   // ── Embedded prototypes → rendered by ArtifactSlot as sandboxed iframes ──
   // (both HTML files are self-contained: no relative refs, no same-origin APIs,
   // so /api/file + allow-scripts-only is safe.) The descriptive title rides in
@@ -120,6 +126,7 @@ const REGISTRY = {
   // The Witness Diagram was built for retrospective-delay-steward-009 — pinned
   // exact (later cycles ask different things).
   'retrospective-delay-steward-009': {
+    schematic: 'retro-five-asset-brief',
     artifacts: [
       { path: `${PUB}/witness/witness-diagram.html`, caption: 'Asset 1 — the Witness Diagram' },
     ],
@@ -129,6 +136,7 @@ const REGISTRY = {
   // native-app (Ableton) file; the caption carries the try-it instructions.
   // Pinned exact to preset-steward-007's write-path test.
   'preset-steward-007': {
+    schematic: 'preset-cutoff',
     artifacts: [
       {
         path: `${PUB}/preset/Aqueous Pad - dark cutoff.adv`,
