@@ -59,3 +59,7 @@ Projects/Generative Sample Libraries/**/*.wav
 _ops/stigmergy/.actuator/
 # STIGMERGY steward lane runtime state (pid/log + per-cycle transcripts + last-cycle)
 _ops/stigmergy/.actuator-steward/
+
+# Atomic-write temp files (state.json.tmp etc. — transient write-then-rename
+# intermediates left behind if a write is interrupted; never knowledge)
+**/*.json.tmp
