@@ -1,6 +1,6 @@
 {
-  "iteration": 1,
-  "last_active": "2026-06-06T10:39:37Z",
+  "iteration": 2,
+  "last_active": "2026-06-06T13:38:06.401Z",
   "last_read_cursor": "quantum-synth-002",
   "health": {
     "context_pct": null,
@@ -17,7 +17,8 @@
     "stage_changed_since_last": false,
     "page_updates_observed_since_last": []
   },
-  "pending_requests": [
+  "pending_requests": [],
+  "resolved_requests": [
     {
       "request_id": "quantum-synth-002",
       "resource": "directional_decision",
@@ -29,10 +30,12 @@
         "INTERACTIVE-FIRST",
         "VISUAL-FIRST",
         "YOU-DEFINE"
-      ]
+      ],
+      "resolved_at": "2026-06-06T11:55:52.351Z",
+      "resolved_by": "resp-mq2ara8v-zx3gnh",
+      "outcome": "GRANTED — option_id=AUDIO-FIRST"
     }
   ],
-  "resolved_requests": [],
   "_pilot_metadata": {
     "cycle_1_notes": "Palace heartbeat batch 2026-06-06T10:39:37Z. ~124941 subagent tokens, 20 tool uses."
   }

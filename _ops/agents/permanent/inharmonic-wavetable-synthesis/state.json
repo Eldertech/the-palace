@@ -1,6 +1,6 @@
 {
-  "iteration": 4,
-  "last_active": "2026-06-06T10:39:37Z",
+  "iteration": 5,
+  "last_active": "2026-06-06T13:37:54.243Z",
   "last_read_cursor": "inharmonic-wavetable-synthesis-steward-010",
   "health": {
     "context_pct": null,
@@ -17,21 +17,7 @@
     "stage_changed_since_last": false,
     "page_updates_observed_since_last": []
   },
-  "pending_requests": [
-    {
-      "request_id": "inharmonic-wavetable-synthesis-steward-010",
-      "resource": "directional_decision",
-      "decision_topic": "Architecture is ear-verified — which next layer do I build: multi-frame WT-B scanning, FFT-driven WT-A, or Wavetable C?",
-      "blocking": false,
-      "posted_at": "2026-06-06T17:02:00-04:00",
-      "options": [
-        "MULTI-FRAME-WTB",
-        "FFT-DRIVEN-WTA",
-        "WAVETABLE-C",
-        "YOU-DEFINE"
-      ]
-    }
-  ],
+  "pending_requests": [],
   "resolved_requests": [
     {
       "request_id": "inharmonic-wavetable-synthesis-steward-002",
@@ -80,6 +66,22 @@
       "resolved_at": "2026-06-05T19:02:59.813Z",
       "resolved_by": "7d486456-a47b-4713-af39-08510af0db60",
       "outcome": "GRANTED — option_id=ARCHITECTURE-VERIFIED"
+    },
+    {
+      "request_id": "inharmonic-wavetable-synthesis-steward-010",
+      "resource": "directional_decision",
+      "decision_topic": "Architecture is ear-verified — which next layer do I build: multi-frame WT-B scanning, FFT-driven WT-A, or Wavetable C?",
+      "blocking": false,
+      "posted_at": "2026-06-06T17:02:00-04:00",
+      "options": [
+        "MULTI-FRAME-WTB",
+        "FFT-DRIVEN-WTA",
+        "WAVETABLE-C",
+        "YOU-DEFINE"
+      ],
+      "resolved_at": "2026-06-06T11:53:38.839Z",
+      "resolved_by": "resp-mq2aof87-80zlgk",
+      "outcome": "GRANTED — option_id=MULTI-FRAME-WTB"
     }
   ],
   "_pilot_metadata": {

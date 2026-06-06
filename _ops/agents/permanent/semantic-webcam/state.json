@@ -1,6 +1,6 @@
 {
-  "iteration": 4,
-  "last_active": "2026-06-06T10:50:45Z",
+  "iteration": 5,
+  "last_active": "2026-06-06T13:38:00.474Z",
   "last_read_cursor": "semantic-webcam-009",
   "health": {
     "context_pct": null,
@@ -17,21 +17,7 @@
     "stage_changed_since_last": false,
     "page_updates_observed_since_last": []
   },
-  "pending_requests": [
-    {
-      "request_id": "semantic-webcam-009",
-      "resource": "directional_decision",
-      "decision_topic": "With the concept named and written, what carries the project next?",
-      "blocking": false,
-      "posted_at": "2026-06-06T17:25:00-04:00",
-      "options": [
-        "DECK-IFY-FACETS",
-        "EYES-AND-FINGERS",
-        "GROW-THE-LENS",
-        "YOU-DEFINE"
-      ]
-    }
-  ],
+  "pending_requests": [],
   "resolved_requests": [
     {
       "request_id": "semantic-webcam-002",
@@ -82,6 +68,22 @@
       "resolved_at": "2026-06-05T18:12:47.273Z",
       "resolved_by": "31fbda58-05b6-4495-b03a-7f4afbc9310d",
       "outcome": "GRANTED — option_id=TITLE-TONAL-MEDIUM"
+    },
+    {
+      "request_id": "semantic-webcam-009",
+      "resource": "directional_decision",
+      "decision_topic": "With the concept named and written, what carries the project next?",
+      "blocking": false,
+      "posted_at": "2026-06-06T17:25:00-04:00",
+      "options": [
+        "DECK-IFY-FACETS",
+        "EYES-AND-FINGERS",
+        "GROW-THE-LENS",
+        "YOU-DEFINE"
+      ],
+      "resolved_at": "2026-06-06T11:45:20.160Z",
+      "resolved_by": "resp-mq2adqg0-4jlaqu",
+      "outcome": "GRANTED — option_id=DECK-IFY-FACETS"
     }
   ],
   "_pilot_metadata": {

@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shepard Tone Synthesizer — Stage 2: Discrete Ascent</title>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400&family=JetBrains+Mono:wght@400;500&family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg:           #0a0a0f;
+  --bg-card:      #12121a;
+  --bg-code:      #1a1a28;
+  --border:       #2a2a3a;
+  --text:         #c8c8d8;
+  --text-dim:     #7a7a8e;
+  --text-bright:  #e8e8f0;
+  --gold:         #e8b84a;
+  --blue:         #4a8fff;
+  --red:          #ff5a5a;
+  --serif:        'Source Serif 4', Georgia, serif;
+  --mono:         'JetBrains Mono', monospace;
+  --sans:         'DM Sans', system-ui, sans-serif;
+}
+* { margin:0; padding:0; box-sizing:border-box; }
+body { background:var(--bg); color:var(--text); font-family:var(--serif); font-size:17px; line-height:1.7; -webkit-font-smoothing:antialiased; }
+.container { max-width:900px; margin:0 auto; padding:40px 24px 120px; }
+header { text-align:center; padding:64px 0 48px; border-bottom:1px solid var(--border); margin-bottom:48px; }
+header .stage-label { font-family:var(--mono); font-size:0.72rem; color:var(--gold); letter-spacing:0.12em; text-transform:uppercase; margin-bottom:18px; }
+header h1 { font-family:var(--serif); font-size:clamp(2rem, 5vw, 3rem); font-weight:700; color:var(--text-bright); line-height:1.2; margin-bottom:12px; letter-spacing:-0.02em; }
+header h1 em { font-style:italic; font-weight:300; color:var(--gold); }
+header .subtitle { font-family:var(--sans); font-size:1.02rem; color:var(--text-dim); }
+section { margin-bottom:48px; }
+section h2 { font-family:var(--sans); font-size:0.78rem; font-weight:500; color:var(--gold); letter-spacing:0.14em; text-transform:uppercase; margin-bottom:18px; }
+p { margin-bottom:14px; }
+p strong { color:var(--text-bright); font-weight:600; }
+.console { background:var(--bg-card); border:1px solid var(--border); border-radius:6px; padding:22px; }
+.console-readout { display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin-bottom:22px; font-family:var(--mono); font-size:0.82rem; }
+.readout-cell { background:var(--bg-code); border:1px solid var(--border); border-radius:4px; padding:10px 12px; }
+.readout-cell .label { color:var(--text-dim); font-size:0.68rem; letter-spacing:0.1em; text-transform:uppercase; margin-bottom:4px; }
+.readout-cell .value { color:var(--text-bright); font-size:1.05rem; font-weight:500; }
+.readout-cell.wrap-flash .value { color:var(--red); }
+.controls { display:flex; flex-wrap:wrap; gap:10px; margin-bottom:18px; }
+button { font-family:var(--mono); font-size:0.82rem; letter-spacing:0.06em; text-transform:uppercase; background:var(--bg-code); color:var(--text-bright); border:1px solid var(--border); border-radius:4px; padding:10px 16px; cursor:pointer; transition:all 0.12s; }
+button:hover { border-color:var(--gold); color:var(--gold); }
+button.primary { background:var(--gold); color:var(--bg); border-color:var(--gold); font-weight:600; }
+button.primary:hover { background:#f0c25a; color:var(--bg); }
+button:disabled { opacity:0.35; cursor:not-allowed; }
+.slider-row { display:flex; align-items:center; gap:14px; font-family:var(--mono); font-size:0.78rem; color:var(--text-dim); padding-top:6px; }
+.slider-row input[type=range] { flex:1; accent-color:var(--gold); }
+.slider-row .val { color:var(--text-bright); min-width:60px; text-align:right; }
+canvas { display:block; width:100%; height:auto; background:var(--bg-code); border:1px solid var(--border); border-radius:6px; margin-top:14px; }
+.hint { font-family:var(--mono); font-size:0.74rem; color:var(--text-dim); margin-top:10px; line-height:1.5; }
+.legend { display:flex; gap:18px; font-family:var(--mono); font-size:0.72rem; color:var(--text-dim); margin-top:8px; flex-wrap:wrap; }
+.legend span::before { content:""; display:inline-block; width:10px; height:10px; border-radius:2px; margin-right:6px; vertical-align:middle; }
+.legend .gold::before { background:var(--gold); }
+.legend .blue::before { background:var(--blue); }
+.legend .red::before { background:var(--red); }
+footer { font-family:var(--mono); font-size:0.72rem; color:var(--text-dim); text-align:center; letter-spacing:0.08em; text-transform:uppercase; margin-top:64px; padding-top:24px; border-top:1px solid var(--border); }
+</style>
+</head>
+<body>
+<div class="container">
+
+<header>
+  <div class="stage-label">Stage 2 · Discrete Ascent</div>
+  <h1>Climb forever, <em>arrive nowhere</em></h1>
+  <div class="subtitle">A staircase of semitones with the wrap seam left visible.</div>
+</header>
+
+<section>
+  <h2>What changed from Stage 1</h2>
+  <p>Stage 1 was a still pond — nine octaves of one pitch class fused into a single drone. Stage 2 lets the pitch class <strong>step up</strong>. Each press of <em>Step Up</em> shifts every voice by one semitone. After twelve steps the stack has climbed an octave, and yet the perceived range never leaves the window. Hold the button or turn on Auto-Step and the staircase climbs forever.</p>
+  <p>The wrap is on purpose. When the top voice reaches the ceiling it drops nine octaves and re-enters at the bottom — and we <strong>flash that moment in red</strong> so you can see the seam the illusion is meant to hide. That is the lesson of Stage 2: the trick has a join, and you can hear how invisible it is when the window does its job.</p>
+</section>
+
+<section>
+  <h2>The console</h2>
+  <div class="console">
+    <div class="console-readout">
+      <div class="readout-cell" id="rc-pitch"><div class="label">Pitch class</div><div class="value">C</div></div>
+      <div class="readout-cell" id="rc-steps"><div class="label">Semitones climbed</div><div class="value">0</div></div>
+      <div class="readout-cell" id="rc-wrap"><div class="label">Wraps this run</div><div class="value">0</div></div>
+    </div>
+
+    <div class="controls">
+      <button id="btn-play" class="primary">▶ Start</button>
+      <button id="btn-step-up" disabled>Step Up ▲</button>
+      <button id="btn-step-down" disabled>Step Down ▼</button>
+      <button id="btn-auto" disabled>Auto-Step: Off</button>
+      <button id="btn-reset" disabled>Reset to C</button>
+    </div>
+
+    <div class="slider-row">
+      <span>Auto-step rate</span>
+      <input id="rate" type="range" min="200" max="1500" value="600" step="50">
+      <span class="val" id="rate-val">600 ms</span>
+    </div>
+
+    <canvas id="stack-canvas" width="852" height="360"></canvas>
+
+    <div class="legend">
+      <span class="gold">Voice in the window (audible)</span>
+      <span class="blue">Voice outside the window (silent)</span>
+      <span class="red">Wrap event — voice just dropped 9 octaves</span>
+    </div>
+
+    <p class="hint">▲/▼ arrow keys step. Spacebar toggles auto-step. The Shepard window is the blue band — voices ride through it and out the top. The seam is real; the window hides it by ear.</p>
+  </div>
+</section>
+
+<section>
+  <h2>What to listen for</h2>
+  <p>Press Step Up twelve times slowly. The first press should sound like the whole drone shifted up a semitone. The twelfth should arrive on a pitch class one octave above where you started — and the drone should sound roughly identical to where it began, even though one voice has just wrapped from C9 down to C0. If the wrap is audible — a click, a phase pop, a sudden hole in the spectrum — that is the seam the Shepard window is meant to bury. Stage 2's job is to let you hear how well that burial works under <em>your</em> ear, not under a smoothed render.</p>
+</section>
+
+<footer>Loudon Live · Autodidact Polymaths</footer>
+</div>
+
+<script>
+const NUM_VOICES = 9;
+const NOTE_NAMES = ['C','C♯','D','D♯','E','F','F♯','G','G♯','A','A♯','B'];
+
+const C_FREQS = [32.7, 65.4, 130.8, 261.6, 523.3, 1046.5, 2093.0, 4186.0, 8372.0];
+const F_TOP = 14000;
+const F_BOTTOM = 24;
+
+const WIN_CENTER_HZ = 600;
+const WIN_SIGMA_OCT = 1.6;
+const LOG_WIN_CENTER = Math.log2(WIN_CENTER_HZ);
+
+const SEMITONE = Math.pow(2, 1/12);
+
+let audioCtx = null;
+let masterGain = null;
+let voices = [];
+
+let semitonesClimbed = 0;
+let wrapCount = 0;
+let wrapFlashUntil = 0;
+let wrappedVoiceIdx = -1;
+
+let autoTimer = null;
+let autoRateMs = 600;
+let isPlaying = false;
+
+function shepardGain(freq) {
+  const d = (Math.log2(freq) - LOG_WIN_CENTER) / WIN_SIGMA_OCT;
+  return Math.exp(-0.5 * d * d);
+}
+
+function buildVoices() {
+  voices = C_FREQS.map(f => {
+    const osc = audioCtx.createOscillator();
+    osc.type = 'sine';
+    osc.frequency.value = f;
+    const gain = audioCtx.createGain();
+    gain.gain.value = 0;
+    osc.connect(gain).connect(masterGain);
+    osc.start();
+    return { osc, gain, freq: f };
+  });
+  updateAllGains(0.02);
+}
+
+function updateAllGains(rampSec = 0.04) {
+  const t = audioCtx.currentTime;
+  const perVoiceScale = 0.85 / NUM_VOICES;
+  voices.forEach(v => {
+    const target = shepardGain(v.freq) * perVoiceScale;
+    v.gain.gain.cancelScheduledValues(t);
+    v.gain.gain.setTargetAtTime(target, t, rampSec);
+  });
+}
+
+function stepBy(semitones) {
+  const ratio = Math.pow(SEMITONE, semitones);
+  const t = audioCtx.currentTime;
+  voices.forEach(v => {
+    v.freq *= ratio;
+    v.osc.frequency.setTargetAtTime(v.freq, t, 0.015);
+  });
+
+  wrappedVoiceIdx = -1;
+  voices.forEach((v, i) => {
+    while (v.freq > F_TOP) {
+      v.freq /= 512;
+      wrapCount++;
+      wrappedVoiceIdx = i;
+      wrapFlashUntil = performance.now() + 600;
+      v.osc.frequency.setTargetAtTime(v.freq, t, 0.005);
+    }
+    while (v.freq < F_BOTTOM) {
+      v.freq *= 512;
+      wrapCount++;
+      wrappedVoiceIdx = i;
+      wrapFlashUntil = performance.now() + 600;
+      v.osc.frequency.setTargetAtTime(v.freq, t, 0.005);
+    }
+  });
+
+  semitonesClimbed += semitones;
+  updateAllGains();
+  refreshReadout();
+}
+
+function refreshReadout() {
+  const pcIdx = ((semitonesClimbed % 12) + 12) % 12;
+  document.querySelector('#rc-pitch .value').textContent = NOTE_NAMES[pcIdx];
+  document.querySelector('#rc-steps .value').textContent = semitonesClimbed;
+  document.querySelector('#rc-wrap .value').textContent = wrapCount;
+  const wrapCell = document.getElementById('rc-wrap');
+  if (performance.now() < wrapFlashUntil) wrapCell.classList.add('wrap-flash');
+  else wrapCell.classList.remove('wrap-flash');
+}
+
+async function startAudio() {
+  if (audioCtx) return;
+  audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+  if (audioCtx.state === 'suspended') await audioCtx.resume();
+  masterGain = audioCtx.createGain();
+  masterGain.gain.value = 0;
+  masterGain.connect(audioCtx.destination);
+  buildVoices();
+  masterGain.gain.setTargetAtTime(1.0, audioCtx.currentTime, 0.08);
+  isPlaying = true;
+  setControlsEnabled(true);
+  document.getElementById('btn-play').textContent = '■ Stop';
+  document.getElementById('btn-play').classList.remove('primary');
+}
+
+function stopAudio() {
+  if (!audioCtx) return;
+  stopAuto();
+  masterGain.gain.setTargetAtTime(0.0, audioCtx.currentTime, 0.06);
+  setTimeout(() => {
+    voices.forEach(v => { try { v.osc.stop(); } catch(e){} });
+    voices = [];
+    audioCtx.close();
+    audioCtx = null;
+    masterGain = null;
+    isPlaying = false;
+    semitonesClimbed = 0;
+    wrapCount = 0;
+    setControlsEnabled(false);
+    document.getElementById('btn-play').textContent = '▶ Start';
+    document.getElementById('btn-play').classList.add('primary');
+    refreshReadout();
+  }, 250);
+}
+
+function setControlsEnabled(on) {
+  ['btn-step-up','btn-step-down','btn-auto','btn-reset'].forEach(id => {
+    document.getElementById(id).disabled = !on;
+  });
+}
+
+function startAuto() {
+  if (autoTimer) return;
+  autoTimer = setInterval(() => stepBy(1), autoRateMs);
+  document.getElementById('btn-auto').textContent = 'Auto-Step: On';
+}
+function stopAuto() {
+  if (!autoTimer) return;
+  clearInterval(autoTimer);
+  autoTimer = null;
+  document.getElementById('btn-auto').textContent = 'Auto-Step: Off';
+}
+
+document.getElementById('btn-play').addEventListener('click', () => {
+  if (isPlaying) stopAudio(); else startAudio();
+});
+document.getElementById('btn-step-up').addEventListener('click', () => stepBy(1));
+document.getElementById('btn-step-down').addEventListener('click', () => stepBy(-1));
+document.getElementById('btn-auto').addEventListener('click', () => {
+  if (autoTimer) stopAuto(); else startAuto();
+});
+document.getElementById('btn-reset').addEventListener('click', () => {
+  if (!audioCtx) return;
+  stopAuto();
+  const t = audioCtx.currentTime;
+  voices.forEach((v, i) => {
+    v.freq = C_FREQS[i];
+    v.osc.frequency.setTargetAtTime(v.freq, t, 0.04);
+  });
+  semitonesClimbed = 0;
+  wrapCount = 0;
+  updateAllGains();
+  refreshReadout();
+});
+document.getElementById('rate').addEventListener('input', (e) => {
+  autoRateMs = parseInt(e.target.value, 10);
+  document.getElementById('rate-val').textContent = `${autoRateMs} ms`;
+  if (autoTimer) { stopAuto(); startAuto(); }
+});
+
+window.addEventListener('keydown', (e) => {
+  if (!isPlaying) return;
+  if (e.key === 'ArrowUp')   { e.preventDefault(); stepBy(1); }
+  if (e.key === 'ArrowDown') { e.preventDefault(); stepBy(-1); }
+  if (e.code === 'Space')    { e.preventDefault(); if (autoTimer) stopAuto(); else startAuto(); }
+});
+
+(function renderStack() {
+  const canvas = document.getElementById('stack-canvas');
+  const ctx = canvas.getContext('2d');
+  const W = canvas.width, H = canvas.height;
+
+  const PAD_T = 18, PAD_B = 30, PAD_L = 56, PAD_R = 80;
+  const PLOT_H = H - PAD_T - PAD_B;
+  const PLOT_W = W - PAD_L - PAD_R;
+  const LOG_MIN = Math.log2(F_BOTTOM);
+  const LOG_MAX = Math.log2(F_TOP);
+
+  function yFor(freq) {
+    const f = Math.max(F_BOTTOM, Math.min(F_TOP, freq));
+    const pos = (Math.log2(f) - LOG_MIN) / (LOG_MAX - LOG_MIN);
+    return PAD_T + (1 - pos) * PLOT_H;
+  }
+
+  function frame() {
+    ctx.clearRect(0, 0, W, H);
+
+    const centerY = yFor(WIN_CENTER_HZ);
+    const sigmaPx = (WIN_SIGMA_OCT / (LOG_MAX - LOG_MIN)) * PLOT_H;
+    const grad = ctx.createLinearGradient(0, centerY - sigmaPx * 2.5, 0, centerY + sigmaPx * 2.5);
+    grad.addColorStop(0, 'rgba(74,143,255,0)');
+    grad.addColorStop(0.5, 'rgba(74,143,255,0.12)');
+    grad.addColorStop(1, 'rgba(74,143,255,0)');
+    ctx.fillStyle = grad;
+    ctx.fillRect(PAD_L, centerY - sigmaPx * 2.5, PLOT_W, sigmaPx * 5);
+
+    ctx.strokeStyle = 'rgba(74,143,255,0.35)';
+    ctx.setLineDash([4,4]);
+    ctx.beginPath();
+    ctx.moveTo(PAD_L, centerY); ctx.lineTo(PAD_L + PLOT_W, centerY);
+    ctx.stroke();
+    ctx.setLineDash([]);
+    ctx.fillStyle = 'rgba(74,143,255,0.7)';
+    ctx.font = `500 11px 'JetBrains Mono', monospace`;
+    ctx.textAlign = 'left';
+    ctx.fillText('Shepard window', PAD_L + PLOT_W + 8, centerY - 4);
+    ctx.fillStyle = 'rgba(74,143,255,0.45)';
+    ctx.fillText(`${WIN_CENTER_HZ} Hz`, PAD_L + PLOT_W + 8, centerY + 10);
+
+    ctx.fillStyle = 'rgba(122,122,142,0.55)';
+    ctx.font = `400 10px 'JetBrains Mono', monospace`;
+    ctx.textAlign = 'right';
+    [50, 100, 200, 500, 1000, 2000, 5000, 10000].forEach(f => {
+      const y = yFor(f);
+      ctx.strokeStyle = 'rgba(42,42,58,0.7)';
+      ctx.setLineDash([2,4]);
+      ctx.beginPath();
+      ctx.moveTo(PAD_L, y); ctx.lineTo(PAD_L + PLOT_W, y);
+      ctx.stroke();
+      ctx.setLineDash([]);
+      ctx.fillText(`${f}`, PAD_L - 6, y + 3.5);
+    });
+
+    const flashActive = performance.now() < wrapFlashUntil;
+
+    if (voices.length) {
+      voices.forEach((v, i) => {
+        const y = yFor(v.freq);
+        const amp = shepardGain(v.freq);
+        const isWrapped = (i === wrappedVoiceIdx) && flashActive;
+
+        let color;
+        if (isWrapped) color = 'rgba(255,90,90,1.0)';
+        else if (amp > 0.05) color = `rgba(232,184,74,${0.35 + amp * 0.6})`;
+        else color = `rgba(74,143,255,${0.25 + amp * 2})`;
+
+        ctx.strokeStyle = color;
+        ctx.lineWidth = isWrapped ? 3 : 1.5;
+        ctx.beginPath();
+        ctx.moveTo(PAD_L, y); ctx.lineTo(PAD_L + PLOT_W, y);
+        ctx.stroke();
+
+        ctx.fillStyle = color;
+        ctx.font = `500 10px 'JetBrains Mono', monospace`;
+        ctx.textAlign = 'left';
+        ctx.fillText(`${v.freq.toFixed(1)} Hz`, PAD_L + PLOT_W + 8, y + 3);
+      });
+    } else {
+      ctx.fillStyle = 'rgba(122,122,142,0.55)';
+      ctx.font = `400 12px 'JetBrains Mono', monospace`;
+      ctx.textAlign = 'center';
+      ctx.fillText('press ▶ Start to instantiate the voice stack', PAD_L + PLOT_W/2, PAD_T + PLOT_H/2);
+    }
+
+    if (flashActive) refreshReadout();
+
+    requestAnimationFrame(frame);
+  }
+  requestAnimationFrame(frame);
+})();
+
+refreshReadout();
+</script>
+</body>
+</html>

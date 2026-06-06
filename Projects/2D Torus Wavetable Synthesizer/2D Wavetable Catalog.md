@@ -26,7 +26,8 @@ entry describing what the surface demonstrates and how to use it musically.
 
 Catalog convention: filenames begin with a numeric prefix that doubles as catalog order.
 00 is the diagnostic; 01–09 are reserved for utility (Tier 1) wavetables; 10–19 are named
-surfaces (Tier 2). All catalog entries past 00 are square (1024 × 1024) so audio-rate
+surfaces (Tier 2). The 10–19 range is open; the 2026-06-06 expansion brought it to nine
+entries (10–18). All catalog entries past 00 are square (1024 × 1024) so audio-rate
 Y phasors don't introduce row-stepping aliasing.
 
 ## Tier 0 — Diagnostic
@@ -52,9 +53,11 @@ timbral parameter rather than 16 discrete steps.
 ## Tier 2 — Named Surfaces (1024 × 1024)
 
 Send `rows 1024` to `2d.wave~`. Buffer length is 1024 × 1024 = 1 048 576 samples
-(≈ 21.85 s at 48 kHz, ≈ 4 MB per file as 32-bit float). These six surfaces are the
-project's [[2D Torus Wavetable Synthesizer]] §"Seven Surfaces" minus the unspecified
-seventh slot.
+(≈ 21.85 s at 48 kHz, ≈ 4 MB per file as 32-bit float). The 2026-06-06 expansion
+extends the original "Seven Surfaces" slot to nine — 10–15 cover Logics 1 & 2 (direct
+Fourier and physical/operator), and 16–18 add one surface per remaining generating
+logic (dynamical systems, random fields, information geometry), closing the
+five-generating-logics inventory.
 
 - [[10 — Membrane]] — Rectangular drum-head modes summed at low order. 4-fold symmetric.
 - [[11 — Chladni Ghost]] — Vibrating-plate nodal pattern, sharpened to ridges. 4-fold.
@@ -62,6 +65,9 @@ seventh slot.
 - [[13 — Stiff String]] — Saw whose high partials are quadratically stretched as Y rises.
 - [[14 — Knot Shadow]] — (3,2) torus-knot-aligned ridges. The ratio gate made visible.
 - [[15 — Penrose Lattice]] — 5-fold quasicrystal approximation via cut-and-project sum.
+- [[16 — Kuramoto Bloom]] — Coupling term `sin(phi-psi)` folded into every mode's phase. The bifurcation made into a surface. (Logic 3)
+- [[17 — Matérn Field]] — Seeded realization of a Matérn random field on the integer torus lattice. (Logic 4)
+- [[18 — Fisher Ridge]] — Log-likelihood of a five-mode von Mises mixture; ridges are high-Fisher seams. (Logic 5)
 
 
 ## Tools
@@ -76,8 +82,15 @@ seventh slot.
 ## Status
 
 Verified working as of 2026-04-26. Loudon's evaluation of the 1024×1024 build:
-"these wavetables work well." All 11 entries play as designed; Tier 2 surfaces respond
-to X:Y ratio detuning the way the project's central design fact predicts.
+"these wavetables work well." The original 11 entries play as designed; Tier 2 surfaces
+respond to X:Y ratio detuning the way the project's central design fact predicts.
+
+**2026-06-06 expansion (cycle 5).** Three new Tier-2 surfaces added — [[16 — Kuramoto Bloom]],
+[[17 — Matérn Field]], [[18 — Fisher Ridge]] — promoting the candidates auditioned
+2026-06-03 to permanent catalog entries on Loudon's 2026-06-05 instruction "open up more
+slots, expand the project and include all of these." Catalog is now 14 entries: 1 diagnostic
+(Tier 0) + 4 utility (Tier 1) + 9 named surfaces (Tier 2). All five generating logics of the
+project's design language now have at least one incarnation on disk.
 
 ## Open question — Y-axis interpolation strategy
 
