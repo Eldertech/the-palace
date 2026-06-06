@@ -62,6 +62,29 @@ describe('assetsFor — downloadable artifact', () => {
   });
 });
 
+describe('assetsFor — schematics', () => {
+  it('attaches the keyboard schematic to gsl cycles, alongside the audition', () => {
+    const a = assetsFor('gsl-steward-026');
+    expect(a.schematic).toBe('gsl-keyboard');
+    expect(a.audition).toBeTruthy();
+  });
+
+  it('attaches the Position schematic to gwl cycles', () => {
+    expect(assetsFor('gwl-steward-015').schematic).toBe('gwl-position');
+  });
+
+  it('attaches the Stage-2 fork schematic to semantic-delay cycles', () => {
+    expect(assetsFor('semantic-delay-steward-004').schematic).toBe('semantic-stage2');
+  });
+
+  it('exact-keys the Stage-1 drone schematic; a different-stage cycle gets none', () => {
+    expect(assetsFor('shepard-steward-008').schematic).toBe('shepard-stage1-drone');
+    expect(assetsFor('shepard-steward-012').schematic).toBe('shepard-stage1-drone');
+    // shepard-steward-009 (Octave Equivalence, a different stage) is not keyed.
+    expect(assetsFor('shepard-steward-009')).toBe(null);
+  });
+});
+
 describe('assetsFor — misses and edges', () => {
   it('returns null for a request with no registered assets', () => {
     expect(assetsFor('apo-steward-vector-change-2026-06-03')).toBe(null);

@@ -59,11 +59,23 @@ describe('TricksterCard — asset integration', () => {
     },
   }));
 
-  it('surfaces the gsl drone audition inline on a gsl-steward card', () => {
+  it('surfaces the gsl drone audition + keyboard schematic on a gsl-steward card', () => {
     const html = card('gsl-steward-026');
     expect(html).toContain('data-testid="card-assets"');
     expect(html).toContain('data-testid="audition-strip"');
     expect((html.match(/<audio/g) || []).length).toBe(12);
+    expect(html).toContain('data-schematic="gsl-keyboard"');
+  });
+
+  it('surfaces the Stage-1 drone schematic on a shepard-008 card', () => {
+    const html = card('shepard-steward-008');
+    expect(html).toContain('data-testid="schematic"');
+    expect(html).toContain('data-schematic="shepard-stage1-drone"');
+  });
+
+  it('surfaces the Position schematic on a gwl card', () => {
+    const html = card('gwl-steward-015');
+    expect(html).toContain('data-schematic="gwl-position"');
   });
 
   it('renders the slime-mold embed through the shared ArtifactSlot iframe', () => {

@@ -26,6 +26,7 @@
 // The schematicSvg slot is reserved for Phase 4 (schematics-as-components).
 //
 // Asset slot shapes (all optional):
+//   schematic: '<name>'              — a <Schematic> diagram (see schematics/)
 //   audition: { kind:'audio-sequence', title, blurb, tracks:[{tag,label,path}] }
 //   artifacts: [{ path, caption }]   — rendered by ArtifactSlot (iframe/img/file)
 
@@ -74,6 +75,7 @@ const REGISTRY = {
   // gsl-steward cycles that shipped it point here; the ear-check question is
   // "does each read as ONE pitch class?".
   'gsl-steward-': {
+    schematic: 'gsl-keyboard',
     audition: {
       kind: 'audio-sequence',
       title: 'play the twelve drones',
@@ -94,6 +96,16 @@ const REGISTRY = {
       ],
     },
   },
+
+  // ── Schematic-only entries (visual evidence, no audio/embed) ─────────────
+  // The gwl + semantic diagrams depict the exact fork the current cycle is
+  // asking, so they ride the steward prefix. The Shepard Stage-1 drone diagram
+  // is exact-keyed: a sibling shepard cycle asks about a different stage, so a
+  // prefix would mis-attach it.
+  'gwl-steward-': { schematic: 'gwl-position' },
+  'semantic-delay-steward-': { schematic: 'semantic-stage2' },
+  'shepard-steward-008': { schematic: 'shepard-stage1-drone' },
+  'shepard-steward-012': { schematic: 'shepard-stage1-drone' },
 
   // ── Embedded prototypes → rendered by ArtifactSlot as sandboxed iframes ──
   // (both HTML files are self-contained: no relative refs, no same-origin APIs,
