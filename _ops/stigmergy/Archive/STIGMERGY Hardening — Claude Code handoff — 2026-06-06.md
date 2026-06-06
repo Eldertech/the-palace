@@ -9,7 +9,10 @@ links:
   - target: "[[STIGMERGY Audit — 2026-06-06]]"
     type: emerged-from
     label: "executes"
-forward_vector: "I carry the in-progress STIGMERGY hardening move across to Claude Code on the Mac, waiting to be picked up and archived once the structural refactor is caught."
+forward_vector: "I carried the post-audit STIGMERGY hardening move from Cowork to Claude Code on the Mac; picked up 2026-06-06, my baton caught — Part 1 committed at 1054 green, the pickup acknowledged on the board. My crossing done, I rest archived; the refactor I was carrying keeps moving in the audit spec."
+picked_up: 2026-06-06
+picked_up_by: "Claude Code (Mac, palace root)"
+status: archived
 ---
 
 # Handoff: STIGMERGY Hardening
