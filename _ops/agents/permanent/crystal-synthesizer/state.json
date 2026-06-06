@@ -1,7 +1,7 @@
 {
-  "iteration": 3,
-  "last_active": "2026-06-03T05:14:01Z",
-  "last_read_cursor": "crystal-synth-steward-009",
+  "iteration": 4,
+  "last_active": "2026-06-06T10:29:38Z",
+  "last_read_cursor": "crystal-synth-steward-012",
   "health": {
     "context_pct": null,
     "avg_output_tokens_last_5": null,
@@ -19,16 +19,16 @@
   },
   "pending_requests": [
     {
-      "request_id": "crystal-synth-steward-009",
+      "request_id": "crystal-synth-steward-012",
       "resource": "sensory_audition_gate",
-      "decision_topic": "Approve the smallest-unit render plan for the dispersion filter before I commit the full batch",
-      "blocking": false,
-      "posted_at": "2026-06-03T16:32:00-04:00",
+      "decision_topic": "Audition the diamond dispersion smallest-unit by ear, then choose how the full dispersion batch extends",
+      "blocking": true,
+      "posted_at": "2026-06-06T12:02:00-04:00",
       "options": [
-        "APPROVE-PLAN",
-        "SWAP-CRYSTALS",
-        "DIFFERENT-UNIT",
-        "YOU-DECIDE"
+        "VERIFIED-ANISOTROPIC",
+        "VERIFIED-MUSICAL",
+        "VERIFIED-STACK",
+        "TUNE-RENDER"
       ]
     }
   ],
@@ -68,10 +68,27 @@
       "resolved_at": "2026-06-01T13:11:19.444Z",
       "resolved_by": "resp-mpv8921g-1igsuc",
       "outcome": "GRANTED — option_id=DISPERSION-FILTER"
+    },
+    {
+      "request_id": "crystal-synth-steward-009",
+      "resource": "sensory_audition_gate",
+      "decision_topic": "Approve the smallest-unit render plan for the dispersion filter before I commit the full batch",
+      "blocking": false,
+      "posted_at": "2026-06-03T16:32:00-04:00",
+      "options": [
+        "APPROVE-PLAN",
+        "SWAP-CRYSTALS",
+        "DIFFERENT-UNIT",
+        "YOU-DECIDE"
+      ],
+      "resolved_at": "2026-06-05T19:05:57.412Z",
+      "resolved_by": "005b1fbf-5199-4784-861d-00a9bb2ce910",
+      "outcome": "GRANTED — option_id=APPROVE-PLAN"
     }
   ],
   "_pilot_metadata": {
     "cycle_1_notes": "FIRST ACTIVATION (15-steward parallel batch run, 2026-05-27). NOTE: this steward bypassed the orchestrator post-processing pipeline — instead of emitting JSON code-fence blocks for the parent session to validate + inject health + append, the subagent itself used Bash/Edit/Write tools to invoke palace-orch append directly and write to state.json. The messages it appended passed strict §2.2 validation (verified post-hoc) and are on the persistent board cleanly. However, the health block it constructed was built by the subagent itself rather than the orchestrator — meaning the health metadata's _orchestrator_metadata flag is present but the underlying token-usage numbers are not the genuine Agent-tool usage data the orchestrator would have used. Cycle is functionally complete; the bypass is a prompt-spec gap (the subagent prompt didn't explicitly forbid direct board writes). The pending_requests / resolved_requests fields were reconciled by the orchestrator parent in the batch finalize step. Posted (cycle 1) messages and pending ask: see board for this steward's from-field messages.",
-    "cycle_2_notes": "Cycle 2 (15-steward parallel batch run, build cycle). Grant-driven cycle following Loudon's batch of 17 responses. See history.jsonl for SPAWN + AGENT_REASONING + per-message events. Messages went through the orchestrator post-processing pipeline (parse → inject Path-2 health stub → strict §2.2 validate → palace-orch append). pending_requests reconciled across the whole board."
+    "cycle_2_notes": "Cycle 2 (15-steward parallel batch run, build cycle). Grant-driven cycle following Loudon's batch of 17 responses. See history.jsonl for SPAWN + AGENT_REASONING + per-message events. Messages went through the orchestrator post-processing pipeline (parse → inject Path-2 health stub → strict §2.2 validate → palace-orch append). pending_requests reconciled across the whole board.",
+    "cycle_4_notes": "Palace heartbeat batch 2026-06-06T10:29:38Z. ~118282 subagent tokens, 17 tool uses."
   }
 }

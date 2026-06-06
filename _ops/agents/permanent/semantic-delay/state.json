@@ -1,7 +1,7 @@
 {
-  "iteration": 3,
-  "last_active": "2026-06-03T05:14:01Z",
-  "last_read_cursor": "semantic-delay-steward-007",
+  "iteration": 4,
+  "last_active": "2026-06-06T10:50:45Z",
+  "last_read_cursor": "semantic-delay-steward-010",
   "health": {
     "context_pct": null,
     "avg_output_tokens_last_5": null,
@@ -19,29 +19,14 @@
   },
   "pending_requests": [
     {
-      "request_id": "semantic-delay-steward-004",
+      "request_id": "semantic-delay-steward-010",
       "resource": "directional_decision",
-      "decision_topic": "Cycle 3 next move — wire the real model, build the standalone instrument against the stub, or harden the prompt-register pipeline first",
       "blocking": false,
-      "posted_at": "2026-05-27T19:56:00-04:00",
+      "posted_at": "2026-06-06T16:36:00-04:00",
       "options": [
-        "STANDALONE-FIRST",
-        "MODEL-NOW",
-        "PROMPT-PIPELINE",
-        "YOU-DEFINE"
-      ],
-      "steward_recommendation": "STANDALONE-FIRST. The pass-through stub is an unusually fortunate dev surface (RTF 0, real socket) for tuning segmentation and delay-timing UX in Python, in real time. Stage 1.5 lands on a slow loop and benefits from having a playable harness already in place to evaluate against."
-    },
-    {
-      "request_id": "semantic-delay-steward-007",
-      "resource": "directional_decision",
-      "decision_topic": "Cycle 3+ branch — which way do I leave Stage 1 now that the contract is pinned?",
-      "blocking": false,
-      "posted_at": "2026-06-03T16:32:00-04:00",
-      "options": [
-        "BUILD-INSTRUMENT-FIRST",
-        "MODEL-NOW",
-        "PROMPT-PIPELINE",
+        "WIRE-THE-MODEL",
+        "MULTI-VOICE-TAPS",
+        "SEGMENTATION-PASS",
         "YOU-DEFINE"
       ]
     }
@@ -60,10 +45,44 @@
       "resolved_at": "2026-05-27T23:28:45.790Z",
       "resolved_by": "resp-mpop3tum-vrhq1h",
       "outcome": "GRANTED — option_id=PASS-PROCEED"
+    },
+    {
+      "request_id": "semantic-delay-steward-004",
+      "resource": "directional_decision",
+      "decision_topic": "Cycle 3 next move — wire the real model, build the standalone instrument against the stub, or harden the prompt-register pipeline first",
+      "blocking": false,
+      "posted_at": "2026-05-27T19:56:00-04:00",
+      "options": [
+        "STANDALONE-FIRST",
+        "MODEL-NOW",
+        "PROMPT-PIPELINE",
+        "YOU-DEFINE"
+      ],
+      "steward_recommendation": "STANDALONE-FIRST. The pass-through stub is an unusually fortunate dev surface (RTF 0, real socket) for tuning segmentation and delay-timing UX in Python, in real time. Stage 1.5 lands on a slow loop and benefits from having a playable harness already in place to evaluate against.",
+      "resolved_at": "2026-06-06T01:30:41.156Z",
+      "resolved_by": "resp-mq1ofaf8-mfiea1",
+      "outcome": "GRANTED — option_id=STANDALONE-FIRST"
+    },
+    {
+      "request_id": "semantic-delay-steward-007",
+      "resource": "directional_decision",
+      "decision_topic": "Cycle 3+ branch — which way do I leave Stage 1 now that the contract is pinned?",
+      "blocking": false,
+      "posted_at": "2026-06-03T16:32:00-04:00",
+      "options": [
+        "BUILD-INSTRUMENT-FIRST",
+        "MODEL-NOW",
+        "PROMPT-PIPELINE",
+        "YOU-DEFINE"
+      ],
+      "resolved_at": "2026-06-05T23:23:42.482Z",
+      "resolved_by": "a1a6006f-fa51-4cb2-bba1-6f99078fbc25",
+      "outcome": "GRANTED — option_id=BUILD-INSTRUMENT-FIRST"
     }
   ],
   "_pilot_metadata": {
     "cycle_1_notes": "Cycle 1 (batch run, 15-steward parallel batch position). FIRST ACTIVATION as a permanent steward — directory enchanted in this same batch run. Stage growing. Dispatched in parallel with 14 other stewards. See history.jsonl for the AGENT_REASONING and message-emission events. The every-cycle-ends-with-a-TRICKSTER-ask rule was applied; messages went through the orchestrator post-processing pipeline (parsed from JSON code fences in the subagent transcript, orchestrator-built health block injected, strict §2.2 validated, appended via palace-orch append). pending_requests is reconciled across the whole board.",
-    "cycle_2_notes": "Cycle 2 (15-steward parallel batch run, build cycle). Grant-driven cycle following Loudon's batch of 17 responses. See history.jsonl for SPAWN + AGENT_REASONING + per-message events. Messages went through the orchestrator post-processing pipeline (parse → inject Path-2 health stub → strict §2.2 validate → palace-orch append). pending_requests reconciled across the whole board."
+    "cycle_2_notes": "Cycle 2 (15-steward parallel batch run, build cycle). Grant-driven cycle following Loudon's batch of 17 responses. See history.jsonl for SPAWN + AGENT_REASONING + per-message events. Messages went through the orchestrator post-processing pipeline (parse → inject Path-2 health stub → strict §2.2 validate → palace-orch append). pending_requests reconciled across the whole board.",
+    "cycle_4_notes": "Palace heartbeat batch 2026-06-06T10:50:45Z. ~147720 subagent tokens, 34 tool uses."
   }
 }
