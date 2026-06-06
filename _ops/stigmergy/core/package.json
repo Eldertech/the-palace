@@ -7,6 +7,6 @@
   "exports": {
     ".": "./index.js",
     "./schema": "./schema/index.js",
-    "./blackboard": "./blackboard/jsonl.js"
+    "./blackboard": "./blackboard/index.js"
   }
 }

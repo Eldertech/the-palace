@@ -6,7 +6,7 @@
 
 import { resolve, dirname } from 'node:path';
 import { existsSync, readFileSync, mkdirSync } from 'node:fs';
-import { appendJsonLine } from './append.js';
+import { appendJsonLine } from '@stigmergy/core/blackboard';
 
 export const VERDICTS_REL = '_ops/stigmergy/trickster-auto/verdicts.jsonl';
 
