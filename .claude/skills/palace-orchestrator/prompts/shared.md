@@ -322,6 +322,19 @@ HTML runs in a sandboxed iframe (sims, players, decks). **Prefer this over
 `open:` when you want Loudon to experience the thing right there in the board;**
 reserve `open:` for handing a file to a native app (a WAV into his DAW).
 
+**Declaring is mandatory, not optional.** Every file you render this cycle —
+every WAV, image, HTML prototype, PDF — **must** appear in `payload.artifacts[]`
+(each with a one-line `caption`) on the message that asks Loudon about it, even
+if you also hand it off with `open:` or reference it per-option in a `choice`.
+The Trickster card renders `payload.artifacts[]` inline; a file you rendered but
+did not declare is *invisible* to the human making the call. If you used a
+`choice` with per-option `artifact_path`, **also** list those same files in
+`artifacts[]` — that flat list is what guarantees they render. A finalize
+backstop scans your bundle and injects media you forgot, but it is the net, not
+the plan: declaring every rendered file is your job. Then refer to each file in
+your `headline` / `ground` / `rationale` so the words and the players agree —
+the finalize lint warns when a declared artifact is never mentioned.
+
 **Equations — show the math twice.** Always render an equation in BOTH a
 symbolic form and a worded (named-variable) form, keeping the operator symbols
 in both — symbols for the eye, words for the ear:

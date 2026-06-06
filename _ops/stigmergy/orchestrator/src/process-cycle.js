@@ -24,6 +24,7 @@ import { fileURLToPath, pathToFileURL } from 'node:url';
 import { buildHealthBlock } from './health.js';
 import { validateForPosting } from './posting.js';
 import { appendMessage, readJsonl } from './append.js';
+import { scanBundleMedia, applyArtifactBackstop, lintArtifactReferences } from './artifact-backstop.js';
 
 const PALACE_ROOT_DEFAULT = resolve(fileURLToPath(new URL('.', import.meta.url)), '../../../..');
 
@@ -190,6 +191,7 @@ export function processCycle(opts) {
     cycleNotes,
     dispatchedBy = 'palace-orchestrator',
     boardPath,
+    enableArtifactBackstop = true,
   } = opts;
 
   if (!transcriptPath) throw new Error('processCycle: transcriptPath is required');
@@ -210,10 +212,40 @@ export function processCycle(opts) {
 
   const health = buildHealthBlock({ model, note: buildCycleNote(usage, basename(agentDirAbs), cycleN) });
 
+  // ── Layer 2: inline-asset backstop ───────────────────────────────────────
+  // Guarantee every media file the steward rendered THIS cycle reaches its
+  // RESOURCE_REQUEST card even if the steward forgot to declare it. Scans the
+  // project bundle (Projects/<home>/) and the entry bundle (<home>/) for media
+  // modified in the window (previous cycle, this cycle] and injects anything
+  // undeclared. `state.last_active` here is still the PREVIOUS cycle's stamp
+  // (it is overwritten to tsNow further down), which is exactly the lower
+  // bound we want. First cycles (last_active null) no-op. See artifact-backstop.js.
+  const windowStartMs = state.last_active ? Date.parse(state.last_active) : null;
+  const windowEndMs = tsNow ? Date.parse(tsNow) : undefined;
+  const mediaCandidates = enableArtifactBackstop
+    ? [join('Projects', home), home].flatMap((d) => scanBundleMedia(palaceRoot, d))
+    : [];
+  const backstop = [];
+  const messagesForBoard = messages.map((m) => {
+    const res = applyArtifactBackstop(m, { candidates: mediaCandidates, windowStartMs, windowEndMs });
+    if (res.reason === 'injected') {
+      backstop.push({ request_id: m.request_id || m.id, added: res.added, dropped: res.dropped });
+      return { ...m, payload: res.payload };
+    }
+    return m;
+  });
+
+  // ── Layer 3: referenced-in-prose lint (warn-only) ─────────────────────────
+  // Surface (never block) any RESOURCE_REQUEST that declares artifacts whose
+  // prose never refers to them, so players and words don't drift apart.
+  const artifact_lint_warnings = messagesForBoard
+    .map((m) => lintArtifactReferences(m))
+    .filter((l) => l && l.warn);
+
   const valid = [];
   const invalid_ids = [];
   const errors = [];
-  for (const m of messages) {
+  for (const m of messagesForBoard) {
     const withHealth = { ...m, health };
     const res = validateForPosting(withHealth);
     if (res.valid) valid.push(withHealth);
@@ -262,6 +294,7 @@ export function processCycle(opts) {
   const events = [
     { event: `CYCLE_${cycleN}_SPAWN`, ts: tsNow, dispatched_by: dispatchedBy, model },
     ...(cycleNotes ? [{ event: 'AGENT_REASONING', ts: tsNow, summary: String(cycleNotes).slice(0, 400) }] : []),
+    ...backstop.map((b) => ({ event: 'ARTIFACT_BACKSTOP', ts: tsNow, request_id: b.request_id, injected: b.added, dropped: b.dropped })),
     ...appended.map((id) => ({ event: 'TOOL_CALL', ts: tsNow, tool: 'write_blackboard', args: { message_id: id }, result: 'emitted+validated+appended' })),
     { event: 'CYCLE_COMPLETE', ts: tsNow, iteration, stop_reason: 'end_turn', posted_messages: appended, pending_after: stillPending.map((p) => p.request_id) },
   ];
@@ -274,6 +307,10 @@ export function processCycle(opts) {
     errors,
     pending_after: stillPending.map((p) => p.request_id),
     resolved_count_after: state.resolved_requests.length,
+    // Layer 2: which RESOURCE_REQUESTs got undeclared media injected this cycle.
+    backstop,
+    // Layer 3: declared-but-unreferenced artifact warnings (advisory only).
+    artifact_lint_warnings,
   };
 }
 
