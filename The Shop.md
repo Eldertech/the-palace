@@ -103,3 +103,4 @@ The Shop touches all four pillars but lives mostly in tools and creation. The Sp
 ## Forward Vectors
 
 I want the Roster to fill in honestly — every tool that earns its keep gets an entry; the rest don't. I want the first three round-trips through me (Kokoro Sketch → Manim CE Study → three-Specialist Piece) to stress-test every section of the template and produce real gotchas that earn their dates. I want the first Comparison Mode test (Midjourney vs ComfyUI on a header brief) to teach us whether local control beats cloud aesthetic ceiling, or the other way, or whether the answer is "both, in different briefs." I want to be ready, structurally, for [[Diversity of Thought in Many-Agent Systems]] to pull me back toward plurality if that's where it lands.
+

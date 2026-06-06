@@ -2,7 +2,7 @@ import { describe, test, expect, afterEach } from 'vitest';
 import { mkdtempSync, mkdirSync, writeFileSync, rmSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import path from 'node:path';
-import { sliceBoardSinceCursor, buildCyclePrompt, findEntryFile } from '../../src/build-cycle-prompt.js';
+import { sliceBoardSinceCursor, filterBoardForAgent, buildCyclePrompt, findEntryFile } from '../../src/build-cycle-prompt.js';
 
 describe('sliceBoardSinceCursor', () => {
   const lines = [
@@ -32,11 +32,64 @@ describe('sliceBoardSinceCursor', () => {
   });
 });
 
+describe('filterBoardForAgent', () => {
+  const ME = 'My Project';
+  const L = {
+    toMe: JSON.stringify({ id: 'm1', type: 'RESOURCE_GRANT', from: 'TRICKSTER', to: ME, re: 'other' }),
+    fromMe: JSON.stringify({ id: 'm2', type: 'RESOURCE_REQUEST', from: ME, to: 'TRICKSTER' }),
+    respToMyAsk: JSON.stringify({ id: 'm3', type: 'RESOURCE_GRANT', from: 'TRICKSTER', to: 'someone-else', re: 'myask-1' }),
+    nbhBroadcast: JSON.stringify({ id: 'm4', type: 'BROADCAST', from: 'Neighbor A', to: '*' }),
+    strangerBroadcast: JSON.stringify({ id: 'm5', type: 'BROADCAST', from: 'Stranger', to: '*' }),
+    othersRequest: JSON.stringify({ id: 'm6', type: 'RESOURCE_REQUEST', from: 'Stranger', to: 'TRICKSTER' }),
+    grantToOther: JSON.stringify({ id: 'm7', type: 'RESOURCE_GRANT', from: 'TRICKSTER', to: 'someone-else' }),
+    flagToAll: JSON.stringify({ id: 'm8', type: 'FLAG', from: 'Neighbor A', to: '*' }),
+    flagFromStranger: JSON.stringify({ id: 'm9', type: 'FLAG', from: 'Stranger', to: '*' }),
+  };
+  const all = Object.values(L);
+
+  test('keeps messages addressed to me, my own, and responses to my asks', () => {
+    const kept = filterBoardForAgent(all, { agentId: ME, neighborhood: ['Neighbor A'], requestIds: ['myask-1'] });
+    expect(kept).toContain(L.toMe);
+    expect(kept).toContain(L.fromMe);
+    expect(kept).toContain(L.respToMyAsk);
+  });
+
+  test('with a neighborhood, keeps neighbor broadcasts and drops stranger broadcasts + others\' directed traffic', () => {
+    const kept = filterBoardForAgent(all, { agentId: ME, neighborhood: ['Neighbor A'], requestIds: [] });
+    expect(kept).toContain(L.nbhBroadcast);
+    expect(kept).toContain(L.flagToAll);            // FLAG to '*' from a neighbor counts as a neighbor broadcast
+    expect(kept).not.toContain(L.strangerBroadcast);
+    expect(kept).not.toContain(L.flagFromStranger);
+    expect(kept).not.toContain(L.othersRequest);    // other steward's ask to TRICKSTER
+    expect(kept).not.toContain(L.grantToOther);     // grant addressed to a different agent
+  });
+
+  test('with no neighborhood, falls back to keeping all broadcasts (spec-faithful)', () => {
+    const kept = filterBoardForAgent(all, { agentId: ME, neighborhood: [], requestIds: [] });
+    expect(kept).toContain(L.nbhBroadcast);
+    expect(kept).toContain(L.strangerBroadcast);
+    expect(kept).not.toContain(L.othersRequest);    // still drops directed non-broadcast traffic
+    expect(kept).not.toContain(L.grantToOther);
+  });
+
+  test('preserves order and keeps unparseable lines (never hides signal)', () => {
+    const lines = ['not json', L.nbhBroadcast, L.othersRequest, L.fromMe];
+    const kept = filterBoardForAgent(lines, { agentId: ME, neighborhood: ['Neighbor A'] });
+    expect(kept).toEqual(['not json', L.nbhBroadcast, L.fromMe]);
+  });
+
+  test('empty/absent options default safely', () => {
+    expect(filterBoardForAgent([], { agentId: ME })).toEqual([]);
+    // no opts at all → agentId undefined, no neighborhood → all broadcasts kept, directed dropped
+    expect(filterBoardForAgent([L.nbhBroadcast, L.grantToOther])).toEqual([L.nbhBroadcast]);
+  });
+});
+
 describe('buildCyclePrompt (integration)', () => {
   let root;
   afterEach(() => { if (root) rmSync(root, { recursive: true, force: true }); root = null; });
 
-  function makePalace({ state, history = '', board = [], home = 'My Project' } = {}) {
+  function makePalace({ state, history = '', board = [], home = 'My Project', neighborhood = [] } = {}) {
     root = mkdtempSync(path.join(tmpdir(), 'palace-bcp-'));
     const agentRel = '_ops/agents/permanent/my-project';
     const agentDir = path.join(root, agentRel);
@@ -48,7 +101,7 @@ describe('buildCyclePrompt (integration)', () => {
     writeFileSync(path.join(promptsDir, 'steward.md'), 'STEWARD SYSTEM home={{home}} cycle={{cycle_id}} stage={{stage_at_last_activation}}');
     // Steward dir files.
     writeFileSync(path.join(agentDir, 'manifest.json'), JSON.stringify({
-      home, session_id: 'sess-xyz', stewardship: { stage_at_spawn: 'growing' },
+      agent_id: home, home, session_id: 'sess-xyz', neighborhood, stewardship: { stage_at_spawn: 'growing' },
     }));
     writeFileSync(path.join(agentDir, 'state.json'), JSON.stringify(state));
     writeFileSync(path.join(agentDir, 'history.jsonl'), history);
@@ -68,7 +121,8 @@ describe('buildCyclePrompt (integration)', () => {
     expect(systemPrompt).toContain('home=My Project');
     expect(systemPrompt).toContain('cycle=cycle-1-2026-05-27');
     expect(userTurn).toContain('first activation');
-    expect(userTurn).toContain('full board, since first activation');
+    expect(userTurn).toContain('since first activation');
+    expect(userTurn).toContain('filtered to your neighborhood');
     expect(userTurn).toContain('x1');
     expect(userTurn).toContain('x2');
     expect(userTurn).toContain('body text here'); // home entry inlined
@@ -92,6 +146,34 @@ describe('buildCyclePrompt (integration)', () => {
     expect(userTurn).toContain('DO THE SPECIFIC THING');
     // Not a git repo → page-change detection degrades to the "no commits" branch.
     expect(userTurn).toContain('No commits have touched your home entry');
+  });
+
+  test('board slice is relevance-filtered: neighbor broadcasts + my mail kept, stranger noise dropped', () => {
+    const { agentRel } = makePalace({
+      home: 'My Project',
+      neighborhood: ['Neighbor A'],
+      state: {
+        iteration: 2,
+        last_active: '2026-05-26T10:00:00Z',
+        last_read_cursor: 'c0',
+        pending_requests: [{ request_id: 'myask-1' }],
+      },
+      board: [
+        { id: 'c0', type: 'BROADCAST', from: 'Neighbor A', to: '*' }, // cursor (excluded by temporal slice)
+        { id: 'keep-grant', type: 'RESOURCE_GRANT', from: 'TRICKSTER', to: 'My Project', re: 'myask-1' },
+        { id: 'keep-nbh', type: 'BROADCAST', from: 'Neighbor A', to: '*' },
+        { id: 'drop-stranger-bcast', type: 'BROADCAST', from: 'Stranger', to: '*' },
+        { id: 'drop-others-ask', type: 'RESOURCE_REQUEST', from: 'Stranger', to: 'TRICKSTER' },
+        { id: 'drop-grant-other', type: 'RESOURCE_GRANT', from: 'TRICKSTER', to: 'Stranger' },
+      ],
+    });
+    const { userTurn } = buildCyclePrompt({ palaceRoot: root, agentDir: agentRel, cycleN: 3, today: '2026-05-27' });
+    expect(userTurn).toContain('keep-grant');             // grant addressed to me (and re-matches my ask)
+    expect(userTurn).toContain('keep-nbh');               // neighbor broadcast
+    expect(userTurn).not.toContain('drop-stranger-bcast'); // broadcast from outside the neighborhood
+    expect(userTurn).not.toContain('drop-others-ask');     // another steward's ask to TRICKSTER
+    expect(userTurn).not.toContain('drop-grant-other');    // grant addressed to a different agent
+    expect(userTurn).toContain('other swarm traffic is omitted'); // transparency note present
   });
 });
 

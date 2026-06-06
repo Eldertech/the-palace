@@ -54,20 +54,24 @@ which every engineer already believes. The attack pair proves the thing the whol
 device is staked on: that a *bodily* delay and a *DSP* delay are the same felt
 object. That is the load-bearing claim. Audition it first.
 
-## The unit, end to end (~22 seconds)
+## The unit, end to end (~31 seconds)
 
-| # | Element | Source | Duration | Notes |
+| # | Element | Voice / Source | Duration | Notes |
 |---|---|---|---|---|
-| 1 | NARRATOR line A | Kokoro | ~8s | "When my baroreceptors fire, the signal travels up the vagus nerve … and then back out … to the smooth muscle in the artery walls." |
-| 2 | NARRATOR line B | Kokoro | ~9s | "So when your blood pressure spikes … there is a hundred-and-fifty-millisecond delay between the moment my baroreceptors feel the spike and the moment my muscle layer responds. During that delay, the pressure is *uncompressed*. It is passing through. That's your attack time." |
-| 3 | SFX09 — neural-zip | Stable Audio Open → ffmpeg trim | 120ms | placed on the word "fire" / at the head of the demonstration beat |
-| 4 | **the gap** | silence in the bed | **600ms** | this is the deliverable — the felt attack time |
-| 5 | SFX10 — delayed-thump | Stable Audio Open | 800ms | the muscle actually contracting, 600 ms after the zip |
+| 1 | BODY line | Kokoro `am_adam` | ~8s | "When my baroreceptors fire, the signal travels up the vagus nerve, into the brainstem … and then back out … to the smooth muscle in the artery walls." First person — the body speaking about itself, per the home entry's non-negotiable. |
+| 2 | BODY line | Kokoro `am_adam` | ~9s | "So when your blood pressure spikes … there is a hundred-and-fifty-millisecond delay between the moment my baroreceptors feel the spike and the moment my muscle layer responds. During that delay, the pressure is *uncompressed*. It is passing through." |
+| 3 | ENGINEER line | Kokoro `am_michael` | ~2s | "That's your attack time." The studio-voice interjection that names the DSP parameter — a third, distinct timbre. |
+| 4 | SFX09 — neural-zip | Stable Audio Open → ffmpeg trim | 120ms | the action potential; placed at the head of the demonstration beat, just after ENGINEER's line |
+| 5 | **the gap** | silence in the bed | **600ms** | this is the deliverable — the felt attack time |
+| 6 | SFX10 — delayed-thump | Stable Audio Open | 800ms | the muscle actually contracting, 600 ms after the zip |
+| 7 | NARRATOR payoff | Kokoro `af_bella` | ~6s | "Did you feel that? The gap between the signal arriving and the body responding? That's attack." The line that names what the ear just felt — without it the gap is a gesture, not a lesson. |
 
-The two NARRATOR lines give the SFX pair its pedagogical context — without the
-voice, the zip-gap-thump is just a sound design gesture; with it, the gap *is* the
-sentence's meaning made audible. Render the voice too; the seed is not the SFX in
-isolation.
+The voice lines give the SFX pair its pedagogical context — without them, the
+zip-gap-thump is just a sound design gesture; with them, the gap *is* the
+sentence's meaning made audible. The seed is not the SFX in isolation: it must also
+test the *voice casting*, so it carries all three speakers it will use in the full
+lesson — BODY (first person, `am_adam`), ENGINEER's interjection (`am_michael`), and
+the NARRATOR payoff (`af_bella`).
 
 ## Exact render briefs
 
@@ -84,18 +88,23 @@ shaping (fast attack, fast decay). Standards report must flag the trim.
 Dry. No reverb tail — the dryness is what makes it read as *the body's own*
 response rather than a room.
 
-**NARRATOR lines** (Kokoro, Study tier) — the two lines above, read at the
-radio-play house voice: measured, unhurried, −16 LUFS integrated. ~17 s combined.
+**Voice lines** (Kokoro, Study tier) — render each in its scripted voice, all at the
+radio-play house level (measured, unhurried, −16 LUFS integrated, ~25 s combined):
+the two BODY lines in `am_adam` (first person — the body speaking about itself),
+ENGINEER's one-line interjection in `am_michael`, and the NARRATOR payoff in
+`af_bella`. Three timbres, not one — the seed has to exercise the voice casting,
+not just the SFX pair.
 
 ## Assembly (ffmpeg)
 
-1. Lay the two NARRATOR lines as the spine.
-2. Place SFX09 at the demonstration beat (after "That's your attack time").
+1. Lay the spine in order: the two BODY lines, then ENGINEER's "That's your attack time."
+2. Place SFX09 at the head of the demonstration beat, just after ENGINEER's line.
 3. Insert **exactly 600 ms of silence** in the bed.
 4. Place SFX10 at the end of that gap.
-5. No music bed, no heartbeat under the seed — the gap must be *silent* so the ear
+5. After SFX10, lay the NARRATOR payoff line ("Did you feel that? … That's attack.").
+6. No music bed, no heartbeat under the seed — the gap must be *silent* so the ear
    has nothing to fill it with. The silence is the instrument here.
-6. Master: 48 kHz stereo WAV, −1 dBTP. Filename
+7. Master: 48 kHz stereo WAV, −1 dBTP. Filename
    `blood-compressor-audition-seed-attack-pair.study.wav`.
 
 ## The single audition question
@@ -118,12 +127,20 @@ committing.
 ## Resource cost
 
 - Stable Audio Open: 2 Sketch cues, ~1 min wall-clock.
-- Kokoro: 2 lines, ~2 min wall-clock.
+- Kokoro: 4 lines across 3 voices (`am_adam` x2, `am_michael`, `af_bella`), ~3 min wall-clock.
 - ffmpeg: 1 assembly pass, <1 min.
-- **Total: ~7 minutes** from dispatch to a master WAV Loudon can play.
+- **Total: ~8 minutes** from dispatch to a master WAV Loudon can play.
 
-<!-- CLAUDE → LOUDON: I authored this seed brief this cycle because request
+<!-- CLAUDE → LOUDON: I authored this seed brief in cycle 3 because request
 blood-compressor-007 (the "render the seed before the batch?" question) is still
 open on the TRICKSTER board and I shouldn't re-ask it blind. Consolidating the
 seed into one dispatchable file is the work I could advance without your answer —
 now "RENDER-SEED" is a single click that points at this file, not a decode job. -->
+<!-- CLAUDE → LOUDON: cycle 4 — I audited the seed against radio-play-script.md
+Scene 4 and the home entry's non-negotiables and caught a voice bug: the two body
+lines were tagged NARRATOR, but in the script they are BODY (first person — "my
+baroreceptors", "my muscle layer"), and the home entry insists the body always
+speaks first person. The seed also dropped NARRATOR's "Did you feel that? … That's
+attack" — the line that actually names the lesson. Fixed both: the unit now carries
+all three voices (BODY am_adam, ENGINEER am_michael, NARRATOR af_bella) and ends on
+the payoff. RENDER-SEED now points at a faithful unit, not a mis-cast one. -->

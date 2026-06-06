@@ -305,3 +305,4 @@ Last run: never.
 First job: a Sketch-tier deliverable through Kokoro to verify the template, the Tier vocabulary, and the standards-report shape are coherent in practice. Once a single round-trip works (brief → Maker decodes → Kokoro produces → standards check → delivery), expand to a Manim-only job, then a Manim+Kokoro coordination, then a three-specialist motion piece. Each test that exposes a template flaw is a deposit-worthy correction.
 
 After single-Specialist round-trips work, run the first **Comparison Mode** test: a header art brief routed to both Midjourney and ComfyUI in parallel. The result calibrates when local control beats cloud aesthetic ceiling and surfaces the first real tradeoff conversation.
+
