@@ -23,7 +23,7 @@ import { resolve, join, basename } from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 import { buildHealthBlock } from './health.js';
 import { validateForPosting } from './posting.js';
-import { appendMessage, readJsonl } from './append.js';
+import { appendMessage, readJsonl } from '@stigmergy/core/blackboard';
 import { scanBundleMedia, applyArtifactBackstop, lintArtifactReferences } from './artifact-backstop.js';
 
 const PALACE_ROOT_DEFAULT = resolve(fileURLToPath(new URL('.', import.meta.url)), '../../../..');

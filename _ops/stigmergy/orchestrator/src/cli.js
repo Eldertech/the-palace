@@ -21,7 +21,7 @@ import { resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { loadManifest } from './manifest.js';
 import { validateForPosting } from './posting.js';
-import { appendMessage, readJsonl } from './append.js';
+import { appendMessage, readJsonl } from '@stigmergy/core/blackboard';
 import { registerAgent, readRegistry, checkUnique } from './registry.js';
 import { checkPageChange } from './git.js';
 import { buildHealthBlock } from './health.js';

@@ -6,7 +6,7 @@ import { describe, it, expect } from 'vitest';
 import { resolve, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { existsSync } from 'node:fs';
-import { readJsonl } from '../../../orchestrator/src/append.js';
+import { readJsonl } from '@stigmergy/core/blackboard';
 import { parseRequest, normalizeOptions, deriveOptionId, matchRecommendationToOption } from '../../src/parse.js';
 import { buildInbox } from '../../src/inbox.js';
 

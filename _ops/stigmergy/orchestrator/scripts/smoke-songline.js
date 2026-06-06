@@ -27,7 +27,7 @@ import { validateManifest } from '../src/manifest.js';
 import { loadAndRender } from '../src/prompts.js';
 import { buildHealthBlock } from '../src/health.js';
 import { validateForPosting } from '../src/posting.js';
-import { appendMessage, readJsonl } from '../src/append.js';
+import { appendMessage, readJsonl } from '@stigmergy/core/blackboard';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = resolve(__dirname, '..');

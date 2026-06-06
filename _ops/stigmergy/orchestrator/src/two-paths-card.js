@@ -13,7 +13,7 @@
 // routes back to the fork; `payload.request_id` lets Phase 4 map the winning
 // option id → its branch worktree.
 
-import { appendMessage } from './append.js';
+import { appendMessage } from '@stigmergy/core/blackboard';
 import { validateForPosting } from './posting.js';
 
 export const TWO_PATHS_CARD_BOARD = 'TRICKSTER';
