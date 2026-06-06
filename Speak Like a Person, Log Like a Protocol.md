@@ -58,7 +58,7 @@ The Trickster page made the case unambiguously: a four-card session that took ~6
 
 ## Where to apply it
 
-- **The Trickster decision page** (`_ops/stigmergy/app/public/trickster.html`) — the reference implementation. Every visible string passes a "would Loudon parse this on a phone walking?" test before it's allowed onto a card.
+- **The native Trickster deck** (`_ops/stigmergy/app/src/components/trickster/`) — the reference implementation. Every visible string passes a "would Loudon parse this on a phone walking?" test before it's allowed onto a card. (It superseded the standalone `public/trickster.html`, which proved the pattern and was retired once the deck reached parity; its diagrams live on as the `schematics/` component family.)
 - **The STIGMERGY React app** (`_ops/stigmergy/app/src/`) — the TRICKSTER inbox, the STATE/QUEUE/LOG decks, every modal and tooltip that surfaces a message field. Protocol terms (`BROADCAST`, `RESOURCE_REQUEST`, `board=GENERAL`, etc.) currently appear in the visible UI — that's drift to fix incrementally as the app evolves.
 - **Steward output that gets read by Loudon** — when a steward writes `rationale:` text, it's already in natural register, which is right. When its `options[]` labels are jargon ids like `ARCHITECTURE-VERIFIED` or `RENDER-SEED`, those ids stay (they're stable keys), but every payload should carry a `gloss` field with a one-line natural-register description that the skin renders above or alongside the id.
 - **Any future Loudon-facing artifact spawned from STIGMERGY signal** — slides, status pages, weekly digests, scheduled-task summaries. Same rule.
