@@ -19,6 +19,7 @@
     "check:all": "node scripts/check-phase.js all"
   },
   "dependencies": {
+    "@stigmergy/core": "*",
     "yaml": "^2.5.1"
   },
   "devDependencies": {
