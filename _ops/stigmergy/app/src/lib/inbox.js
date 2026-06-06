@@ -21,6 +21,7 @@
 
 import { tsCompare } from './format.js';
 import { CATCHUP_OVERRIDES } from './catchup-overrides.js';
+import { artifactsFromPayload } from './artifact.js';
 
 const RESPONSE_OPTIONS = [
   { label: 'Grant -- limited',   type: 'RESOURCE_GRANT', constraints: '<your constraints>' },
@@ -193,6 +194,14 @@ export function buildInbox(messages) {
         ground,
         rationale: payload.rationale,
         query_intent: payload.query_intent,
+        // Inline artifacts declared on the wire (payload.artifacts[] or the
+        // legacy payload.artifact_path). Read straight off the message the same
+        // way the message boards' ArtifactSlot does — so a steward that
+        // declares its rendered files gets them on the card with zero registry
+        // upkeep. The card prefers these over the hand-curated trickster-assets
+        // registry, which is now a fallback (mirrors the headline/ground
+        // override precedence above). Always an array, [] when none declared.
+        artifacts: artifactsFromPayload(payload),
         blocking: payload.blocking === true,
         agent_health: m.health?.score,
         agent_context_pct: m.health?.context_pct,

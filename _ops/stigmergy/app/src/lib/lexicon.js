@@ -45,7 +45,9 @@ const DICT = {
   // Card chrome — centralized from the inbox's inline strings so both
   // surfaces translate identically.
   'trickster.card.file':            'file ▶',
+  'trickster.card.fileandrun':      'file & run ▶',
   'trickster.card.filing':          'filing…',
+  'trickster.card.running':         'filing & running…',
   'trickster.card.more':            '▸ more from the steward',
   'trickster.card.nocatchup':       'steward emitted no catchup — using reasoning',
   'trickster.card.freeform':        'a note back (optional)',
@@ -62,7 +64,7 @@ const DICT = {
   'trickster.quickbar.summary':         'the leans —',
   'trickster.quickbar.remainder.one':   'more needs your call',
   'trickster.quickbar.remainder.many':  'more need your call',
-  'trickster.deck.keyhint':             'j / k move · space files the lean · f files all',
+  'trickster.deck.keyhint':             'j / k move · 1-9 pick · enter files the pick · space files the lean · f files all',
 
   // Inline assets (Phase 3) — audition strip + embed chrome. Titles/blurbs
   // themselves come from the asset registry (they're per-project data); these

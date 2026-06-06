@@ -1,11 +1,35 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Banner } from './primitives.jsx';
 import { buildInbox } from '../lib/inbox.js';
-import { buildLeanGrants } from '../lib/trickster-grants.js';
+import { buildLeanGrants, buildCardGrant } from '../lib/trickster-grants.js';
+import { resolveKey, toggleSelection, selectionFor } from '../lib/trickster-keys.js';
 import { postMessage } from '../adapters/blackboard.js';
 import { t } from '../lib/lexicon.js';
 import TricksterCard from './trickster/TricksterCard.jsx';
 import QuickBar from './trickster/QuickBar.jsx';
+
+// Shape an advanceSteward() result (from a card's FILE & RUN) into a one-line
+// deck banner. The grant is already filed by the time this runs, so every
+// branch leads with "filed" — a skipped or failed run never means the decision
+// was lost. Wording mirrors the stewards deck's advance feedback so the two
+// surfaces speak the same language.
+export function formatRun(result, name) {
+  if (result && result.ok && result.fired) {
+    const cyc = result.cycle_n != null ? ` → cycle ${result.cycle_n}` : '';
+    return { tone: 'ok', text: `filed · advancing @${name}${cyc}` };
+  }
+  if (result && (result.status === 409 || result.busy)) {
+    return { tone: 'warn', text: `filed · a steward cycle is already running — @${name} will pick it up next` };
+  }
+  if (result && result.status === 404) {
+    return { tone: 'warn', text: `filed · @${name} isn't a registered steward, so nothing ran` };
+  }
+  const why = (result && (result.error || result.msg))
+    || `run failed${result && result.status ? ` (${result.status})` : ''}`;
+  return { tone: 'err', text: `filed · but the run didn't start: ${why}` };
+}
+
+const RUN_COLOR = { ok: 'var(--phosphor)', warn: 'var(--warn)', err: 'var(--error)' };
 
 // TricksterDeck — the native catchup-first decision lane (the [T] deck).
 //
@@ -50,9 +74,21 @@ export default function TricksterDeck({
 
   const [filingAll, setFilingAll] = useState(false);
   const [fileErrors, setFileErrors] = useState([]);
+  // Outcome of the most recent card FILE & RUN, shown as a deck banner. Lives
+  // here (not on the card) because the card unmounts the instant its grant is
+  // filed — the steward-advance result would vanish with it.
+  const [runStatus, setRunStatus] = useState(null);
   const [focusedIndex, setFocusedIndex] = useState(0);
   // Clamp focus to the current list (it shrinks as cards are filed).
   const focused = n === 0 ? -1 : Math.min(focusedIndex, n - 1);
+
+  // Lifted option-selection: request_id → chosen option id. Owned here (not in
+  // each TricksterCard) so the keyboard layer's 1-N/Enter and the cards' mouse
+  // clicks drive ONE source of truth. Entries for filed cards orphan harmlessly
+  // — only read by a still-pending request_id. See trickster-keys.js.
+  const [selections, setSelections] = useState({});
+  const selectOption = (requestId, optionId) =>
+    setSelections((prev) => toggleSelection(prev, requestId, optionId));
 
   // Sequentially file the leaned grants among `items`, ~350 ms apart so each
   // card's drop-out registers one at a time. Items without a lean are skipped
@@ -77,34 +113,54 @@ export default function TricksterDeck({
     setFilingAll(false);
   }
 
-  // Keyboard layer. A ref carries the latest list/focus so the listener stays
-  // stable (one add/remove for the deck's lifetime) without going stale.
+  // File a single card's current pick — the Enter override path. Unlike
+  // fileItems (which files the steward's lean), this files whatever option the
+  // human selected via 1-N or a click. No note: the freeform note is the
+  // mouse-driven card FILE button's job; Enter is the fast option path.
+  async function fileSelected(item) {
+    if (filingAll || !item) return;
+    const optionId = selectionFor(selections, item.request_id);
+    if (!optionId) return;
+    const opt = (item.options || []).find((o) => o.id === optionId) || null;
+    setFilingAll(true);
+    setFileErrors([]);
+    try {
+      const message = buildCardGrant(item, { optionId, optionLabel: opt ? opt.label : null });
+      const persisted = await postMessage(message, 'persistent');
+      if (onConfirmed) onConfirmed(persisted);
+    } catch (err) {
+      setFileErrors([`${item.request_id}: ${err.message || 'could not file'}`]);
+    } finally {
+      setFilingAll(false);
+    }
+  }
+
+  // Keyboard layer. A ref carries the latest list/focus/selection so the
+  // listener stays stable (one add/remove for the deck's lifetime) without
+  // going stale. resolveKey() is the pure key→action map (unit-tested); this
+  // handler only owns the side effects.
   const kbRef = useRef({});
-  kbRef.current = { pending_requests, focused, filingAll, fileItems };
+  kbRef.current = { pending_requests, focused, filingAll, selections, fileItems, fileSelected, selectOption };
   useEffect(() => {
     function onKey(e) {
       // Don't hijack typing in the freeform note field.
       if (e.target && /input|textarea/i.test(e.target.tagName)) return;
       const st = kbRef.current;
-      const list = st.pending_requests;
-      if (!list || list.length === 0) return;
-      const len = list.length;
-      const k = e.key;
-      if (k === 'j' || k === 'ArrowDown') {
-        e.preventDefault();
-        setFocusedIndex((i) => Math.min(i + 1, len - 1));
-      } else if (k === 'k' || k === 'ArrowUp') {
-        e.preventDefault();
-        setFocusedIndex((i) => Math.max(i - 1, 0));
-      } else if (k === ' ') {
-        const item = list[Math.min(st.focused < 0 ? 0 : st.focused, len - 1)];
-        if (item && item.recommended_option) {
-          e.preventDefault();
-          st.fileItems([item]);
-        }
-      } else if (k === 'f' || k === 'F') {
-        e.preventDefault();
-        st.fileItems(list);
+      const action = resolveKey(e.key, {
+        list: st.pending_requests,
+        focused: st.focused,
+        selections: st.selections,
+      });
+      if (!action) return;
+      e.preventDefault();
+      const len = st.pending_requests.length;
+      switch (action.type) {
+        case 'focus-next': setFocusedIndex((i) => Math.min(i + 1, len - 1)); break;
+        case 'focus-prev': setFocusedIndex((i) => Math.max(i - 1, 0)); break;
+        case 'file-lean': st.fileItems([action.item]); break;
+        case 'file-all': st.fileItems(st.pending_requests); break;
+        case 'select': st.selectOption(action.requestId, action.optionId); break;
+        case 'file-pick': st.fileSelected(action.item); break;
       }
     }
     window.addEventListener('keydown', onKey);
@@ -131,6 +187,18 @@ export default function TricksterDeck({
           >[R] RELOAD</span>
         ) : null}
       </div>
+
+      {/* FILE & RUN outcome — lives outside the n===0 branch so it stays up
+          even when running the last card empties the deck. */}
+      {runStatus ? (
+        <div data-testid="trickster-run-status" style={{
+          border: `1px solid ${RUN_COLOR[runStatus.tone]}`,
+          color: RUN_COLOR[runStatus.tone], textShadow: 'var(--glow)',
+          padding: '6px 10px', marginBottom: 10, fontSize: 12,
+        }}>
+          {runStatus.text}
+        </div>
+      ) : null}
 
       {loadState === 'error' ? (
         <div data-testid="trickster-error" style={{
@@ -175,7 +243,10 @@ export default function TricksterDeck({
               key={p.request_id || p.from + p.ts}
               item={p}
               onConfirmed={onConfirmed}
+              onRun={(result, name) => setRunStatus(formatRun(result, name))}
               focused={i === focused}
+              selectedId={selections[p.request_id] ?? null}
+              onSelectOption={(optId) => selectOption(p.request_id, optId)}
             />
           ))}
         </>
