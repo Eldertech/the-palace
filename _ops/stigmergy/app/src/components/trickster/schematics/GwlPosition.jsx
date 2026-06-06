@@ -3,7 +3,8 @@ import React from 'react';
 // GWL · what does the wavetable Position knob do? Three candidate behaviours
 // (centroid-freq / centroid-width / octave-comb) drawn as partial spectra at
 // three Position points. Transcribed from trickster.html (gwl-steward-018);
-// depicts the same A/B/C fork the current gwl cycle is asking.
+// exact-keyed to the 015/018 Position fork — later gwl cycles ask a different
+// question, so it must not ride a steward prefix onto them.
 export default function GwlPosition() {
   return (
     <svg

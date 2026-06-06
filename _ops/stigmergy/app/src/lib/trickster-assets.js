@@ -98,12 +98,22 @@ const REGISTRY = {
   },
 
   // ── Schematic-only entries (visual evidence, no audio/embed) ─────────────
-  // The gwl + semantic diagrams depict the exact fork the current cycle is
-  // asking, so they ride the steward prefix. The Shepard Stage-1 drone diagram
-  // is exact-keyed: a sibling shepard cycle asks about a different stage, so a
-  // prefix would mis-attach it.
-  'gwl-steward-': { schematic: 'gwl-position' },
-  'semantic-delay-steward-': { schematic: 'semantic-stage2' },
+  // A schematic draws ONE decision fork — the candidate behaviours of a single
+  // cycle's question — so schematics are ALWAYS exact-keyed to the cycle(s)
+  // whose fork they depict, never prefix-keyed. (Prefix keys are reserved for
+  // stable per-steward LIBRARIES — the 12 drones, the 5 Faust passes, the
+  // slime-mold prototype — which genuinely apply to every cycle of a steward.)
+  //
+  // The trap a prefix springs: a steward's question evolves cycle to cycle.
+  // gwl asked "what does Position DO?" at 015/018, then moved on to "the table
+  // is BUILT — does the sweep read as one note?" at 021. A 'gwl-steward-'
+  // prefix kept stapling the Position diagram onto 021, where it's stale
+  // evidence for a settled question. Exact keys pin each diagram to the fork it
+  // actually answers and let it fall off the deck once that fork is past.
+  'gwl-steward-015': { schematic: 'gwl-position' },
+  'gwl-steward-018': { schematic: 'gwl-position' },
+  'semantic-delay-steward-004': { schematic: 'semantic-stage2' },
+  'semantic-delay-steward-007': { schematic: 'semantic-stage2' },
   'shepard-steward-008': { schematic: 'shepard-stage1-drone' },
   'shepard-steward-012': { schematic: 'shepard-stage1-drone' },
 

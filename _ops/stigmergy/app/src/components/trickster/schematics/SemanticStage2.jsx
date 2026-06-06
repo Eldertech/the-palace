@@ -2,8 +2,9 @@ import React from 'react';
 
 // Semantic (voice-haunting) delay · the Stage 2 standalone: mic → RPC daemon
 // (v0.1 stub) → delayed voice, with the build-order fork below. Transcribed
-// from trickster.html (semantic-delay-steward-007); the fork is the same one
-// the current semantic-delay cycle is asking. The two arrowheads keep palette
+// from trickster.html (semantic-delay-steward-007); exact-keyed to the 004/007
+// build-order fork — a later semantic-delay cycle asks a different question, so
+// it must not ride a steward prefix onto it. The two arrowheads keep palette
 // hex fills (a 9px marker doesn't benefit from skin-adaptiveness).
 export default function SemanticStage2() {
   return (
