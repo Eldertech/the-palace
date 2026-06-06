@@ -16,25 +16,17 @@
 // thin async git/fs glue around it (replicated rather than imported from the
 // CLI script so the app server bundles cleanly under vite/esbuild).
 
-import { execFile } from 'node:child_process';
 import { writeFileSync, rmSync, mkdtempSync, existsSync } from 'node:fs';
 import { resolve, join } from 'node:path';
 import { tmpdir } from 'node:os';
 import { safePathspec } from './git.js';
+import { execGit } from './git-wrapper.js';
 import { deriveTrailers, formatCommitMessage, VERIFY_VALUES } from '../src/lib/commit-spec.js';
 import { KNOWN_KINDS } from '../src/lib/commit-parse.js';
 import { diffEntryText } from '../src/lib/frontmatter-diff.js';
 
-const MAX_BUFFER = 64 * 1024 * 1024;
-
-function gitAsync(palaceRoot, args, { allowFail = false } = {}) {
-  return new Promise((resolvePromise, rejectPromise) => {
-    execFile('git', args, { cwd: resolve(palaceRoot), maxBuffer: MAX_BUFFER, windowsHide: true }, (err, stdout, stderr) => {
-      if (err && !allowFail) { err.stderr = stderr; rejectPromise(err); return; }
-      resolvePromise({ stdout: stdout ?? '', stderr: stderr ?? '', failed: !!err });
-    });
-  });
-}
+// Local alias preserves the existing call sites (`gitAsync(root, args)`).
+const gitAsync = execGit;
 
 // Clear stale Cowork git locks (harmless if none). The known sharp edge.
 export function clearStaleLocks(palaceRoot) {

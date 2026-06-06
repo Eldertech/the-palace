@@ -311,6 +311,53 @@ describe('GET /api/persistent/stream', () => {
     expect(dataFrames.map((f) => f.id)).toEqual(['rec-004', 'rec-005']);
   });
 
+  test('reconnect replays a genuinely-newer message from a DIFFERENT steward whose id sorts BEFORE the last-seen id', async () => {
+    // Regression for bug-sse-reconnect-replay.md: palace ids are per-steward
+    // namespaced, not globally monotonic. A lexicographic `id > lastEventId`
+    // compare drops cross-steward messages whose name sorts earlier.
+    const bbPath = resolve(tempRoot, '_ops/swarm/persistent/blackboard.jsonl');
+    // Client saw this last, then disconnected (its Last-Event-ID).
+    seedMessage(bbPath, makeMsg('waveguide-synthesizer-steward-005', '2026-06-06T16:57:00-04:00'));
+    // Appended WHILE disconnected — genuinely newer in time, different steward,
+    // so its id sorts lexicographically BEFORE the last-seen id ('c' < 'w').
+    seedMessage(bbPath, makeMsg('crystal-synth-steward-015', '2026-06-06T17:05:00-04:00'));
+
+    const { frames, timedOut } = await collectSseFrames({
+      port,
+      path: '/api/persistent/stream',
+      headers: { 'Last-Event-ID': 'waveguide-synthesizer-steward-005' },
+      until: (f) => f.some((fr) => fr.id === 'crystal-synth-steward-015'),
+      timeoutMs: 2500,
+    });
+
+    expect(timedOut).toBe(false);
+    const replayed = frames.filter((f) => f.data).map((f) => f.id);
+    // The newer cross-steward message must be replayed (positional, not by id sort).
+    expect(replayed).toContain('crystal-synth-steward-015');
+    // The already-seen message must NOT be replayed.
+    expect(replayed).not.toContain('waveguide-synthesizer-steward-005');
+  });
+
+  test('reconnect with an UNKNOWN Last-Event-ID replays all messages (client dedupes)', async () => {
+    // If the cursor id is absent (file rotated/truncated), replay everything
+    // rather than silently dropping — over-replay is safe, under-replay is the bug.
+    const bbPath = resolve(tempRoot, '_ops/swarm/persistent/blackboard.jsonl');
+    seedMessage(bbPath, makeMsg('alpha-steward-001', '2026-06-06T10:00:00Z'));
+    seedMessage(bbPath, makeMsg('beta-steward-001', '2026-06-06T10:01:00Z'));
+
+    const { frames, timedOut } = await collectSseFrames({
+      port,
+      path: '/api/persistent/stream',
+      headers: { 'Last-Event-ID': 'never-persisted-steward-999' },
+      until: (f) => f.filter((fr) => fr.data).length >= 2,
+      timeoutMs: 2500,
+    });
+
+    expect(timedOut).toBe(false);
+    const replayed = frames.filter((f) => f.data).map((f) => f.id);
+    expect(replayed).toEqual(['alpha-steward-001', 'beta-steward-001']);
+  });
+
   test('old client (no Last-Event-ID): no replay of existing messages, only future', async () => {
     const bbPath = resolve(tempRoot, '_ops/swarm/persistent/blackboard.jsonl');
     // Pre-seed 3 messages.

@@ -252,8 +252,12 @@ function emitMessage(res, msg) {
  * Core SSE setup for a single blackboard file.
  *
  * - Reads the current file, populates seenIds (does NOT emit initial messages
- *   unless Last-Event-ID is supplied, in which case replays messages with
- *   id > lastEventId using lexicographic order).
+ *   unless Last-Event-ID is supplied, in which case replays every message that
+ *   appears AFTER the last-seen id by file/append order — never by id sort,
+ *   because palace ids are per-steward namespaced, not globally monotonic.
+ *   If the last-seen id is not found in the file, replays everything; the
+ *   client (mergeLive) dedupes by id, so over-replay is harmless and
+ *   under-replay would silently drop genuinely-newer cross-steward messages).
  * - Watches the file for changes, emitting only new messages (by id).
  * - Emits a heartbeat comment every SSE_HEARTBEAT_MS ms.
  * - Cleans up watcher + interval on req close.
@@ -269,16 +273,28 @@ function setupSseStream(req, res, filePath) {
   const seenIds = new Set();
 
   // Seed seenIds from current file contents; optionally replay on reconnect.
+  //
+  // Replay is POSITIONAL, not by id comparison: palace message ids are
+  // per-steward sequences (e.g. crystal-synth-steward-014,
+  // waveguide-synthesizer-steward-005) and do NOT sort globally by time.
+  // We locate the client's last-seen id by index and replay everything that
+  // follows it in file (append/time) order. If the id is absent — file
+  // rotated, truncated, or never persisted — we replay all messages; the
+  // client dedupes by id, so over-replay is safe while under-replay is the bug.
   const initialMessages = readJsonlMessages(filePath);
-  for (const msg of initialMessages) {
-    if (msg.id !== undefined) {
-      if (lastEventId !== null && msg.id > lastEventId) {
-        // Replay: this message arrived after the client's last known id.
-        emitMessage(res, msg);
-      }
-      seenIds.add(msg.id);
-    }
+  let replayFromIndex = null; // null = no replay; -1 = replay all; >=0 = after index
+  if (lastEventId !== null) {
+    const seenIndex = initialMessages.findIndex((m) => m.id !== undefined && m.id === lastEventId);
+    replayFromIndex = seenIndex; // -1 when not found → replay all below
   }
+  initialMessages.forEach((msg, index) => {
+    if (msg.id === undefined) return;
+    if (replayFromIndex !== null && index > replayFromIndex) {
+      // Either after the last-seen message, or (replayFromIndex === -1) all of them.
+      emitMessage(res, msg);
+    }
+    seenIds.add(msg.id);
+  });
 
   // Heartbeat to keep proxies / NAT from closing the connection.
   const heartbeatInterval = setInterval(() => {
