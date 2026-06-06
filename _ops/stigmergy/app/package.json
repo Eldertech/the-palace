@@ -30,6 +30,7 @@
     "check:phase-17": "node scripts/check-phase.js 17",
     "check:phase-18": "node scripts/check-phase.js 18",
     "check:phase-19": "node scripts/check-phase.js 19",
+    "check:phase-20": "node scripts/check-phase.js 20",
     "check:all": "node scripts/check-phase.js all"
   },
   "dependencies": {

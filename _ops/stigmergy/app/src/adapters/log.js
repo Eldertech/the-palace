@@ -33,3 +33,20 @@ export async function fetchUncommitted() {
     return { ok: false, error: err?.message ?? String(err) };
   }
 }
+
+// Record a structured palace commit from the LOG deck. Stages ONLY the named
+// paths and commits exactly those. 400 (validation) is a structured outcome,
+// not a throw.
+export async function commitChanges({ paths, kind, scope, summary, body, verify }) {
+  try {
+    const res = await fetch('/api/commit/create', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+      body: JSON.stringify({ paths, kind, scope, summary, body, verify }),
+    });
+    const data = await res.json().catch(() => ({}));
+    return { ok: res.ok, status: res.status, ...data };
+  } catch (err) {
+    return { ok: false, error: err?.message ?? String(err) };
+  }
+}

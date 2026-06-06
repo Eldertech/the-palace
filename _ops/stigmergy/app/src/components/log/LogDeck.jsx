@@ -117,7 +117,7 @@ export default function LogDeck() {
         </span>
       </div>
 
-      {uncommitted ? <UncommittedBanner delta={uncommitted} /> : null}
+      {uncommitted ? <UncommittedBanner delta={uncommitted} onCommitted={load} /> : null}
 
       {logState.kind === 'err' ? (
         <div data-testid="log-error" style={{ color: 'var(--error)', textShadow: 'var(--glow)', border: '1px solid var(--error)', padding: 12 }}>

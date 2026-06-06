@@ -23,6 +23,7 @@ import { listEntries, readEntry, walkEntryRecords } from '../src/lib/entries.js'
 import { readLatestMap } from '../src/lib/topology.js';
 import { findUnsungEdges, buildPalaceIndex } from '../src/lib/unsung-paths.js';
 import { readLog, readCommit, readUncommitted } from './git.js';
+import { commitSelected } from './commit.js';
 import { createActuator } from './actuator.js';
 import { createStewardLane } from './steward-lane.js';
 import { readCards, appendInboxBlock, CARD_ACTIONS } from './cards.js';
@@ -549,6 +550,26 @@ export function blackboardMiddleware(palaceRoot, opts = {}) {
           } catch (err) {
             return jsonResponse(res, 500, { error: `git status failed: ${err.message}` });
           }
+        }
+
+        // ── POST /api/commit/create ─ record a structured palace commit ──────
+        // Body: { paths:[...], kind, summary, verify, scope?, body?, campaign?,
+        // resolves? }. Stages ONLY the named paths (never -A), derives the
+        // Palace-* trailers from their staged diff, and commits exactly those.
+        // The LOG deck stops merely surfacing the working-tree delta and acts.
+        if (urlPath === '/api/commit/create' && method === 'POST') {
+          const bodyText = await readBody(req, res);
+          if (bodyText === null) return; // 413 already sent
+          let payload;
+          try { payload = JSON.parse(bodyText); } catch (e) {
+            return jsonResponse(res, 400, { error: `malformed JSON: ${e.message}` });
+          }
+          const { paths, kind, scope, summary, body, verify, campaign, resolves } = payload || {};
+          const result = await commitSelected(palaceRoot, {
+            paths, kind, scope, summary, body, verify, campaign, resolves, author: 'loudon',
+          });
+          if (!result.ok) return jsonResponse(res, 400, result);
+          return jsonResponse(res, 200, { ...result, ts: new Date().toISOString() });
         }
 
         // ── GET /api/worker ─ the actuator's status (running / last fire) ────

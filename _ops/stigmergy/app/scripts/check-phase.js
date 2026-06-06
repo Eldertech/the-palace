@@ -240,6 +240,19 @@ const PHASES = {
     // surface is verified live via the preview/e2e rather than the capture spec.
     screenshots: [],
   },
+  20: {
+    label: 'v1.0 Phase 7 — Commit from LOG (structured palace-commit)',
+    vitest: [
+      'commit-spec.test.js', 'commit-parse.test.js', 'worker-log.test.js',
+      'parser.test.js', 'schema.test.js', 'middleware.test.js', 'validator.test.js',
+    ],
+    integration: ['commit-create-middleware.test.js', 'git-middleware.test.js'],
+    playwright: ['boot.spec.js', 'tokens.spec.js', 'commit.spec.js'],
+    // The composer's RECORD makes a real commit, so the gate exercises the
+    // stage->commit path at the integration layer (throwaway repo) and the e2e
+    // only verifies the surface + gating. No capture spec.
+    screenshots: [],
+  },
 };
 
 function logRun(entry) {
@@ -348,7 +361,7 @@ function main() {
     process.exit(2);
   }
   if (arg === 'all') {
-    for (const p of [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19]) {
+    for (const p of [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]) {
       const code = checkPhase(p);
       if (code !== 0) process.exit(code);
     }

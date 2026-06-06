@@ -198,3 +198,5 @@
 {"ts":"2026-06-02T01:34:09.652Z","phase":18,"action":"gate-end","outcome":"pass","stage":"tests+captures"}
 {"ts":"2026-06-06T02:32:54.763Z","phase":19,"label":"v1.0 Phase 6 — Steward Advance (board → permanent-steward cycle)","action":"gate-start"}
 {"ts":"2026-06-06T02:33:02.091Z","phase":19,"action":"gate-end","outcome":"pass","stage":"tests+captures"}
+{"ts":"2026-06-06T03:12:32.393Z","phase":20,"label":"v1.0 Phase 7 — Commit from LOG (structured palace-commit)","action":"gate-start"}
+{"ts":"2026-06-06T03:12:38.180Z","phase":20,"action":"gate-end","outcome":"pass","stage":"tests+captures"}
