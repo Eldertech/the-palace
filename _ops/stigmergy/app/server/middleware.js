@@ -24,8 +24,7 @@ import { readLatestMap } from '../src/lib/topology.js';
 import { findUnsungEdges, buildPalaceIndex } from '../src/lib/unsung-paths.js';
 import { readLog, readCommit, readUncommitted } from './git.js';
 import { commitSelected } from './commit.js';
-import { createActuator } from './actuator.js';
-import { createStewardLane } from './steward-lane.js';
+import { buildWorkers } from './workers.js';
 import { setupSseStream } from './sse.js';
 import { readCards, appendInboxBlock, CARD_ACTIONS } from './cards.js';
 import { composePreview } from './entry-save.js';
@@ -216,44 +215,11 @@ async function handlePost(bodyText, filePath, res) {
 // actuator so the test path NEVER spawns a real `claude -p` worker; production
 // uses the default (real-worker) actuator.
 export function blackboardMiddleware(palaceRoot, opts = {}) {
-  // One global actuator for this palace root (scar #4: single global worker
-  // per lane). The lane state lives under _ops/stigmergy/.actuator/.
-  //
-  // Safety gate: when STIGMERGY_STUB_WORKER is set, the actuator fires a
-  // harmless stub instead of a real `claude -p` -- so an e2e run (or a curious
-  // smoke-test) can exercise the full fire->log->reap cycle without spawning
-  // an autonomous agent. The default (env unset) fires the real worker.
-  let actuator = opts.actuator;
-  if (!actuator) {
-    if (process.env.STIGMERGY_STUB_WORKER) {
-      const stub = resolve(palaceRoot, '_ops/stigmergy/app/tests/fixtures/stub-worker.mjs');
-      actuator = createActuator({
-        palaceRoot,
-        buildArgv: () => ['node', stub, '--permission-mode', 'bypassPermissions', '--sleep', '700', '--emit', 'success'],
-      });
-    } else {
-      actuator = createActuator({ palaceRoot });
-    }
-  }
-
-  // The steward lane: a SEPARATE actuator lane (.actuator-steward/) that fires
-  // a permanent-steward cycle and reaps it with the orchestrator's processCycle.
-  // Same STIGMERGY_STUB_WORKER gate; when stubbed it fires the stub worker AND
-  // sets dryReap so a live e2e fire never mutates the real palace. Tests inject
-  // opts.stewardLane (a temp-palace lane) to prove the genuine consume.
-  let stewardLane = opts.stewardLane;
-  if (!stewardLane) {
-    if (process.env.STIGMERGY_STUB_WORKER) {
-      const stewardStub = resolve(palaceRoot, '_ops/stigmergy/app/tests/fixtures/stub-steward-worker.mjs');
-      stewardLane = createStewardLane({
-        palaceRoot,
-        buildArgv: () => ['node', stewardStub, '--permission-mode', 'bypassPermissions', '--sleep', '800'],
-        dryReap: true,
-      });
-    } else {
-      stewardLane = createStewardLane({ palaceRoot });
-    }
-  }
+  // The two long-lived worker lanes (Enrichment actuator + steward lane),
+  // constructed in server/workers.js so the dependency is explicit and tests
+  // keep one injection point (opts.actuator / opts.stewardLane). See workers.js
+  // for the scar #4 single-global-worker rule and the STIGMERGY_STUB_WORKER gate.
+  const { actuator, stewardLane } = buildWorkers(palaceRoot, opts);
   return {
     name: 'stigmergy-blackboard-middleware',
     configureServer(server) {
