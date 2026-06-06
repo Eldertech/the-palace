@@ -16,7 +16,7 @@ import { join, dirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { validateManifest, loadManifest } from '../../src/manifest.js';
 import { registerAgent, readRegistry, checkUnique } from '../../src/registry.js';
-import { validateForPosting } from '../../src/posting.js';
+import { validateForPosting } from '@stigmergy/core/schema';
 import { appendMessage, readJsonl } from '@stigmergy/core/blackboard';
 import { buildHealthBlock } from '../../src/health.js';
 import { loadAndRender } from '../../src/prompts.js';

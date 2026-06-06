@@ -6,7 +6,7 @@
 import { describe, it, expect } from 'vitest';
 import { fileURLToPath } from 'node:url';
 import { dirname, resolve } from 'node:path';
-import { validateForPosting, validateMessage } from '../../src/posting.js';
+import { validateForPosting, validateMessage } from '@stigmergy/core/schema';
 import { readJsonl } from '@stigmergy/core/blackboard';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));

@@ -8,7 +8,7 @@ import { mkdtempSync, rmSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import path from 'node:path';
 import { buildTwoPathsChoiceCard, emitTwoPathsChoiceCard, TWO_PATHS_CARD_BOARD } from '../../src/two-paths-card.js';
-import { validateForPosting } from '../../src/posting.js';
+import { validateForPosting } from '@stigmergy/core/schema';
 import { readJsonl } from '@stigmergy/core/blackboard';
 // The v0.4 rich-content `choice` primitive this card is consumed by.
 import { choiceFromPayload, buildChoiceResponse } from '../../../app/src/lib/richcontent.js';

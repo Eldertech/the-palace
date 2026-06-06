@@ -16,7 +16,7 @@
 // escalate verdict never reaches here.
 
 import { appendMessage } from '@stigmergy/core/blackboard';
-import { validateForPosting } from '../../orchestrator/src/posting.js';
+import { validateForPosting } from '@stigmergy/core/schema';
 
 export const AUTO_TRICKSTER_FROM = 'TRICKSTER (auto)';
 export const AUTO_MODEL = 'trickster-auto-v0.1';

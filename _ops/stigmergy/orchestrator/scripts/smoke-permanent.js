@@ -27,7 +27,7 @@ import { fileURLToPath } from 'node:url';
 import { validateManifest, loadManifest } from '../src/manifest.js';
 import { loadAndRender } from '../src/prompts.js';
 import { buildHealthBlock } from '../src/health.js';
-import { validateForPosting } from '../src/posting.js';
+import { validateForPosting } from '@stigmergy/core/schema';
 import { appendMessage, readJsonl } from '@stigmergy/core/blackboard';
 import { registerAgent, readRegistry } from '../src/registry.js';
 
