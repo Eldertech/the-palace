@@ -69,12 +69,19 @@ describe('assetsFor — schematics', () => {
     expect(a.audition).toBeTruthy();
   });
 
-  it('attaches the Position schematic to gwl cycles', () => {
+  it('exact-keys the Position schematic to its fork cycles; an evolved cycle gets none', () => {
     expect(assetsFor('gwl-steward-015').schematic).toBe('gwl-position');
+    expect(assetsFor('gwl-steward-018').schematic).toBe('gwl-position');
+    // gwl-steward-021 moved on (the table is BUILT — an ear-check, not a
+    // Position fork), so the stale diagram must NOT ride a prefix onto it.
+    expect(assetsFor('gwl-steward-021')).toBe(null);
   });
 
-  it('attaches the Stage-2 fork schematic to semantic-delay cycles', () => {
+  it('exact-keys the Stage-2 fork schematic to its build-order cycles; a later cycle gets none', () => {
     expect(assetsFor('semantic-delay-steward-004').schematic).toBe('semantic-stage2');
+    expect(assetsFor('semantic-delay-steward-007').schematic).toBe('semantic-stage2');
+    // semantic-delay-steward-010 asks "what goes in next", a different fork.
+    expect(assetsFor('semantic-delay-steward-010')).toBe(null);
   });
 
   it('exact-keys the Stage-1 drone schematic; a different-stage cycle gets none', () => {
