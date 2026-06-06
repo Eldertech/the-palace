@@ -7,33 +7,16 @@
 // this adapter is read-only -- it never commits, resets, or mutates the
 // working tree. (Writing structured commits is Phase 3's palace-commit.)
 
-import { execFile } from 'node:child_process';
 import { resolve, sep } from 'node:path';
 import {
   LOG_FORMAT, parseLogMeta, parseNumstat, parsePorcelain, RECORD_SEP, FIELD_SEP,
 } from '../src/lib/git-log-parse.js';
 import { classifyCommit } from '../src/lib/commit-parse.js';
 import { diffEntryText } from '../src/lib/frontmatter-diff.js';
+import { execGit } from './git-wrapper.js';
 
-const MAX_BUFFER = 64 * 1024 * 1024; // 64 MB -- the full palace log fits easily
-
-// Promisified execFile. Resolves { stdout, stderr }, rejects on non-zero exit.
-function git(palaceRoot, args, { allowFail = false } = {}) {
-  return new Promise((resolvePromise, rejectPromise) => {
-    execFile('git', args, {
-      cwd: resolve(palaceRoot),
-      maxBuffer: MAX_BUFFER,
-      windowsHide: true,
-    }, (err, stdout, stderr) => {
-      if (err && !allowFail) {
-        err.stderr = stderr;
-        rejectPromise(err);
-        return;
-      }
-      resolvePromise({ stdout: stdout ?? '', stderr: stderr ?? '', failed: !!err });
-    });
-  });
-}
+// Local alias preserves the existing call sites (`git(root, args)`).
+const git = execGit;
 
 // Validate a palace-relative path for use as a git pathspec. Must stay inside
 // the palace root, no traversal, no leading slash. Returns the cleaned
