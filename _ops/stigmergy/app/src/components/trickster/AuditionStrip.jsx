@@ -1,6 +1,7 @@
 import React, { useRef, useState } from 'react';
 import { Button } from '../primitives.jsx';
 import PhosphorAudio from '../PhosphorAudio.jsx';
+import { fileUrl } from '../../lib/artifact.js';
 import { t } from '../../lib/lexicon.js';
 
 // AuditionStrip — the inline audio evidence for an ear-check decision.
@@ -102,9 +103,10 @@ export default function AuditionStrip({ title, blurb, tracks }) {
               chrome). The hidden <audio> it renders is still what the play-all
               sequencer drives via querySelectorAll('audio'); each player's own
               listeners keep its controls in sync as the sequence advances.
-              showOpenNative is off — static assets aren't /api/open-resolvable. */}
+              Served via /api/file so the open-native chip resolves — one click
+              opens that drone in the DAW. */}
           <div style={{ flex: 1, minWidth: 0 }}>
-            <PhosphorAudio src={tr.src} showOpenNative={false} testId={`audition-audio-${i}`} />
+            <PhosphorAudio src={fileUrl(tr.path)} testId={`audition-audio-${i}`} />
           </div>
         </div>
       ))}

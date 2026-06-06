@@ -18,7 +18,7 @@ describe('assetsFor — prefix-keyed audio auditions', () => {
   it('attaches the five-pass audition to the inharmonic steward', () => {
     const a = assetsFor('inharmonic-wavetable-synthesis-steward-005');
     expect(a.audition.tracks).toHaveLength(5);
-    expect(a.audition.tracks[0].src).toMatch(/pass1-flat-harmonic-baseline\.wav$/);
+    expect(a.audition.tracks[0].path).toMatch(/pass1-flat-harmonic-baseline\.wav$/);
   });
 
   it('attaches the twelve portamento examples to the portamento steward', () => {
@@ -26,27 +26,28 @@ describe('assetsFor — prefix-keyed audio auditions', () => {
     expect(a.audition.tracks).toHaveLength(12);
   });
 
-  it('every audition track has tag, label, and a /trickster-assets src', () => {
+  it('every audition track has tag, label, and a palace-relative path', () => {
     for (const id of ['gsl-steward-026', 'inharmonic-wavetable-synthesis-steward-005', 'portamento-steward-006']) {
       for (const tr of assetsFor(id).audition.tracks) {
         expect(typeof tr.tag).toBe('string');
         expect(typeof tr.label).toBe('string');
-        expect(tr.src).toMatch(/^\/trickster-assets\/audio\//);
+        // Palace-relative (resolved via /api/file), NOT a static /trickster-assets URL.
+        expect(tr.path).toMatch(/^_ops\/.*\/trickster-assets\/audio\//);
       }
     }
   });
 });
 
-describe('assetsFor — embeds', () => {
+describe('assetsFor — embeds (ArtifactSlot artifacts)', () => {
   it('attaches the slime-mold prototype to any slime-mold-delay cycle', () => {
     const a = assetsFor('slime-mold-delay-steward-004');
-    expect(a.embed.kind).toBe('iframe');
-    expect(a.embed.src).toMatch(/slime-mold\/index\.html$/);
-    expect(a.embed.tall).toBe(true);
+    expect(a.artifacts).toHaveLength(1);
+    expect(a.artifacts[0].path).toMatch(/slime-mold\/index\.html$/);
+    expect(typeof a.artifacts[0].caption).toBe('string');
   });
 
   it('pins the Witness Diagram to the exact request that built it', () => {
-    expect(assetsFor('retrospective-delay-steward-009').embed.src).toMatch(/witness-diagram\.html$/);
+    expect(assetsFor('retrospective-delay-steward-009').artifacts[0].path).toMatch(/witness-diagram\.html$/);
     // A different retrospective cycle does NOT inherit it (no prefix key).
     expect(assetsFor('retrospective-delay-steward-007')).toBe(null);
   });
@@ -55,8 +56,7 @@ describe('assetsFor — embeds', () => {
 describe('assetsFor — downloadable artifact', () => {
   it('pins the dark-cutoff .adv to preset-steward-007 exactly', () => {
     const a = assetsFor('preset-steward-007');
-    expect(a.action.kind).toBe('download');
-    expect(a.action.src).toMatch(/Aqueous Pad - dark cutoff\.adv$/);
+    expect(a.artifacts[0].path).toMatch(/Aqueous Pad - dark cutoff\.adv$/);
     // A different preset cycle must NOT get the .adv.
     expect(assetsFor('preset-steward-004')).toBe(null);
   });
@@ -75,10 +75,10 @@ describe('assetsFor — misses and edges', () => {
   });
 
   it('exact match takes precedence over a prefix match', () => {
-    // preset-steward-007 is exact-keyed (an action), and there is no
+    // preset-steward-007 is exact-keyed (an artifact), and there is no
     // preset-steward- prefix key — so a sibling cycle resolves to null,
     // proving exact keys don't leak across the prefix.
-    expect(assetsFor('preset-steward-007').action).toBeTruthy();
+    expect(assetsFor('preset-steward-007').artifacts).toBeTruthy();
     expect(assetsFor('preset-steward-004')).toBe(null);
   });
 });

@@ -7,8 +7,7 @@ import { buildCardGrant } from '../../lib/trickster-grants.js';
 import { assetsFor } from '../../lib/trickster-assets.js';
 import LeanPanel from './LeanPanel.jsx';
 import AuditionStrip from './AuditionStrip.jsx';
-import Embed from './Embed.jsx';
-import ActionPanel from './ActionPanel.jsx';
+import ArtifactSlot from '../ArtifactSlot.jsx';
 
 // Re-exported for unit tests that import the builder from the card module.
 export { buildCardGrant };
@@ -194,12 +193,13 @@ export default function TricksterCard({ item, onConfirmed, focused = false }) {
 
         {/* Inline assets — the evidence the decision needs, surfaced between
             the question and the affordances: hear the audition, see the
-            prototype, download the artifact to try. */}
+            prototype, open the artifact to try. Embeds/files go through the
+            shared ArtifactSlot (sandboxed iframe / open-in-native-app);
+            sequenced audio keeps AuditionStrip for the play-all + note labels. */}
         {assets ? (
           <div data-testid="card-assets">
             {assets.audition ? <AuditionStrip {...assets.audition} /> : null}
-            {assets.embed ? <Embed {...assets.embed} /> : null}
-            {assets.action ? <ActionPanel {...assets.action} /> : null}
+            {assets.artifacts ? <ArtifactSlot payload={{ artifacts: assets.artifacts }} /> : null}
           </div>
         ) : null}
 
