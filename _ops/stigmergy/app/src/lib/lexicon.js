@@ -30,6 +30,52 @@ const DICT = {
   'trickster.inbox.empty':      'No decisions waiting · every steward is continuing on its own.',
   'trickster.pending.heading':  '? a steward is asking',
 
+  // ── Trickster deck (native fourth deck — the catchup-first lane) ─
+  // Added 2026-06-05 when the [T] deck moved from an iframe of the
+  // standalone /trickster.html to native React. Chrome strings live here
+  // (not inline) so the two-register rule has one home and Phase 2/3 reuse
+  // them. See [[Speak Like a Person, Log Like a Protocol]].
+  'trickster.deck.title':       'Trickster · what needs you',
+  'trickster.deck.subtitle':    'decide — the asks a steward parked for you',
+  'trickster.deck.loading':     'reading the latest decisions…',
+  'trickster.deck.error':       'could not reach the palace',
+  'trickster.deck.count.one':   'decision waiting',
+  'trickster.deck.count.many':  'decisions waiting',
+
+  // Card chrome — centralized from the inbox's inline strings so both
+  // surfaces translate identically.
+  'trickster.card.file':            'file ▶',
+  'trickster.card.filing':          'filing…',
+  'trickster.card.more':            '▸ more from the steward',
+  'trickster.card.nocatchup':       'steward emitted no catchup — using reasoning',
+  'trickster.card.freeform':        'a note back (optional)',
+  'trickster.card.freeform.hint':   'type a reply, or pick an option above',
+
+  // Lean panel + master quickbar (Phase 2). The steward's recommended option
+  // is the one-click default; FILE ALL files every card that has one and
+  // visibly leaves the rest (the leanless decisions are your call).
+  'trickster.lean.prefix':              'steward leans',
+  'trickster.lean.hint':                'space to file',
+  'trickster.lean.file':                'file lean ▶',
+  'trickster.quickbar.file':            'file all',
+  'trickster.quickbar.filing':          'filing all…',
+  'trickster.quickbar.summary':         'the leans —',
+  'trickster.quickbar.remainder.one':   'more needs your call',
+  'trickster.quickbar.remainder.many':  'more need your call',
+  'trickster.deck.keyhint':             'j / k move · space files the lean · f files all',
+
+  // Inline assets (Phase 3) — audition strip + embed chrome. Titles/blurbs
+  // themselves come from the asset registry (they're per-project data); these
+  // are the reusable control strings.
+  'trickster.audition.playAll':     'play all',
+  'trickster.audition.inSequence':  'in sequence',
+  'trickster.audition.stop':        '■ stop',
+  'trickster.audition.hint':        'click play on a track, or hear them back to back',
+  'trickster.audition.paused':      'paused',
+  'trickster.audition.playing':     'playing',
+  'trickster.audition.done':        'done — heard all',
+  'trickster.embed.open':           'open standalone ↗',
+
   // ── Pause states (wire: payload.blocking true/false) ───────────
   'pause.short':                'parked',
   'pause.long.paused':          'the steward stopped working until you answer',
