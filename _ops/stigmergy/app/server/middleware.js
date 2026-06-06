@@ -18,7 +18,7 @@ import { resolve, join, sep, extname } from 'node:path';
 import { execFile } from 'node:child_process';
 import { parseJSONL } from '../src/lib/parser.js';
 import { validateMessage } from '@stigmergy/core/schema';
-import { appendJsonLine } from './append.js';
+import { appendJsonLine } from '@stigmergy/core/blackboard';
 import { listEntries, readEntry, walkEntryRecords } from '../src/lib/entries.js';
 import { readLatestMap } from '../src/lib/topology.js';
 import { findUnsungEdges, buildPalaceIndex } from '../src/lib/unsung-paths.js';
