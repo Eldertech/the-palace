@@ -74,7 +74,6 @@ const DICT = {
   'trickster.audition.paused':      'paused',
   'trickster.audition.playing':     'playing',
   'trickster.audition.done':        'done — heard all',
-  'trickster.embed.open':           'open standalone ↗',
 
   // ── Pause states (wire: payload.blocking true/false) ───────────
   'pause.short':                'parked',
