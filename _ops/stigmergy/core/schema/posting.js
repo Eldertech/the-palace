@@ -13,9 +13,8 @@
 //     the TRICKSTER board. SESSION_INIT/SESSION_CLOSE must go to SYSTEM. PROOF
 //     must go to WEAVE.
 
-import { validateMessage } from '@stigmergy/core/schema';
+import { validateMessage } from './validator.js';
 
-export { validateMessage };
 
 const BOARD_BY_TYPE = {
   RESOURCE_REQUEST: 'TRICKSTER',

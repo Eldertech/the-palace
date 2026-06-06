@@ -9,7 +9,7 @@ import { mkdtempSync, copyFileSync, readFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { readJsonl, appendMessage } from '@stigmergy/core/blackboard';
 import { validateMessage } from '@stigmergy/core/schema';
-import { validateForPosting } from '../../../orchestrator/src/posting.js';
+import { validateForPosting } from '@stigmergy/core/schema';
 import { buildInbox as appBuildInbox } from '../../../app/src/lib/inbox.js';
 import { buildInbox } from '../../src/inbox.js';
 import { loadRuleset } from '../../src/ruleset.js';

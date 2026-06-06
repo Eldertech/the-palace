@@ -14,7 +14,7 @@
 // option id → its branch worktree.
 
 import { appendMessage } from '@stigmergy/core/blackboard';
-import { validateForPosting } from './posting.js';
+import { validateForPosting } from '@stigmergy/core/schema';
 
 export const TWO_PATHS_CARD_BOARD = 'TRICKSTER';
 

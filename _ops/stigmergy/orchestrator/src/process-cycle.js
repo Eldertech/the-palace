@@ -22,7 +22,7 @@ import { readFileSync, writeFileSync, appendFileSync } from 'node:fs';
 import { resolve, join, basename } from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 import { buildHealthBlock } from './health.js';
-import { validateForPosting } from './posting.js';
+import { validateForPosting } from '@stigmergy/core/schema';
 import { appendMessage, readJsonl } from '@stigmergy/core/blackboard';
 import { scanBundleMedia, applyArtifactBackstop, lintArtifactReferences } from './artifact-backstop.js';
 
