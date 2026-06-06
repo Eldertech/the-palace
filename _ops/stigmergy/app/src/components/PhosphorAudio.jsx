@@ -14,7 +14,12 @@ import React, { useEffect, useRef, useState } from 'react';
 //   - The slider has aria-label "playback position"; the play button
 //     toggles its aria-pressed.
 
-export default function PhosphorAudio({ src, testId = 'phosphor-audio' }) {
+// showOpenNative: render the "↗ open in native app" chip. Default true (the
+// ArtifactSlot path, where src is /api/file?path=<palace-relative> and the
+// chip's /api/open resolves a real file). Pass false for statically-served
+// assets (e.g. /trickster-assets/...) whose URL is not a palace-relative path
+// the open endpoint can resolve — there the chip would be a dead control.
+export default function PhosphorAudio({ src, testId = 'phosphor-audio', showOpenNative = true }) {
   const audioRef = useRef(null);
   const [playing, setPlaying] = useState(false);
   const [duration, setDuration] = useState(null);
@@ -91,7 +96,7 @@ export default function PhosphorAudio({ src, testId = 'phosphor-audio' }) {
       onKeyDown={handleKey}
       style={{
         display: 'grid',
-        gridTemplateColumns: 'auto 1fr auto auto',
+        gridTemplateColumns: showOpenNative ? 'auto 1fr auto auto' : 'auto 1fr auto',
         alignItems: 'center',
         gap: 10,
         padding: '6px 10px',
@@ -153,29 +158,31 @@ export default function PhosphorAudio({ src, testId = 'phosphor-audio' }) {
         {elapsed} / {total}
       </div>
 
-      <a
-        href={`/api/open?path=${encodeURIComponent(extractPath(src))}`}
-        title="open in native app"
-        data-testid={`${testId}-open-native`}
-        onClick={(e) => {
-          // Suppress browser navigation: GET /api/open returns 204; we
-          // do not want the BBS surface to "go" anywhere.
-          e.preventDefault();
-          fetch(`/api/open?path=${encodeURIComponent(extractPath(src))}`)
-            .catch(() => {});
-        }}
-        style={{
-          color: 'var(--phosphor-dim)',
-          textShadow: 'none',
-          textDecoration: 'none',
-          fontSize: 11,
-          padding: '2px 6px',
-          border: '1px solid var(--phosphor-dim)',
-          cursor: 'pointer',
-        }}
-      >
-        ↗
-      </a>
+      {showOpenNative ? (
+        <a
+          href={`/api/open?path=${encodeURIComponent(extractPath(src))}`}
+          title="open in native app"
+          data-testid={`${testId}-open-native`}
+          onClick={(e) => {
+            // Suppress browser navigation: GET /api/open returns 204; we
+            // do not want the BBS surface to "go" anywhere.
+            e.preventDefault();
+            fetch(`/api/open?path=${encodeURIComponent(extractPath(src))}`)
+              .catch(() => {});
+          }}
+          style={{
+            color: 'var(--phosphor-dim)',
+            textShadow: 'none',
+            textDecoration: 'none',
+            fontSize: 11,
+            padding: '2px 6px',
+            border: '1px solid var(--phosphor-dim)',
+            cursor: 'pointer',
+          }}
+        >
+          ↗
+        </a>
+      ) : null}
 
       {/* The actual audio element, hidden, driven by the controls above. */}
       <audio

@@ -4,8 +4,8 @@
 // QUEUE     = future, what is waiting (the board, reconsidered as a decision queue).
 // LOG       = past,    what happened (git as the record).
 // TRICKSTER = decide,  what needs you (the catchup-first decision lane;
-//             added 2026-06-05, embeds /trickster.html as a fourth deck
-//             while the catchup-first pattern propagates to the QUEUE deck).
+//             added 2026-06-05 as an iframe of /trickster.html, rebuilt
+//             native 2026-06-05 so the deck reads the live board directly).
 //
 // Kept in its own module so Vite Fast Refresh treats DeckTabs.jsx as a
 // single-export component file (the warning otherwise: "DECKS export

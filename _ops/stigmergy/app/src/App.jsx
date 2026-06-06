@@ -277,7 +277,15 @@ export default function App() {
 
       {deck === 'STATE' && <StateDeck />}
       {deck === 'LOG' && <LogDeck />}
-      {deck === 'TRICKSTER' && <TricksterDeck />}
+      {deck === 'TRICKSTER' && (
+        <TricksterDeck
+          messages={visibleMessages}
+          onConfirmed={handleOptimisticAppend}
+          loadState={loadState}
+          loadError={loadError}
+          onReload={loadAll}
+        />
+      )}
       {deck === 'QUEUE' && (
         <div data-testid="board-screen" style={{ width: '100%' }}>
           <Banner as="h1" strong style={{ fontSize: 32, margin: '0 0 4px' }}>
