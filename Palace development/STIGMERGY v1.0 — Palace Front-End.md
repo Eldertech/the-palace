@@ -351,4 +351,6 @@ I want to be the terminal Loudon opens instead of choosing between Obsidian and 
 
 ## Active Handoff
 
-`_ops/stigmergy/v1.0-build-handoff.md` — drafted 2026-05-29, cross-surface Cowork → Claude Code. Carries the phased build, the receiving-surface deltas, and the Enrichment-server actuator + robustness lessons to inherit.
+`_ops/stigmergy/v1.0-build-handoff.md` — drafted 2026-05-29, cross-surface Cowork → Claude Code. Carries the phased build, the receiving-surface deltas, and the Enrichment-server actuator + robustness lessons to inherit. <!-- CLAUDE → LOUDON: this is from 2026-05-29 and the build has since reached v1.0 (1054 tests green) — it may already be consumed and ready to archive. Flagging rather than deciding. -->
+
+`_ops/stigmergy/STIGMERGY Hardening — Claude Code handoff — 2026-06-06.md` — drafted 2026-06-06, cross-surface Cowork → Claude Code. Carries the post-audit hardening move: small fixes done + verified (SSE replay bug, `gitAsync` dedup, clutter archive — 1054 tests green, uncommitted); the two large refactors (core extraction + workspace, `middleware.js` decomposition) handed to the Mac. Companion: `STIGMERGY Audit — 2026-06-06.md` (the spec). Announced on the board as `handoff_ready` id `stigmergy-hardening-handoff-001`.
