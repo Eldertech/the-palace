@@ -26,16 +26,18 @@ import { evaluateBatch } from './evaluate.js';
 import { buildDigest, renderDigestMarkdown } from './digest.js';
 import { loadBudget, applyDecisions, summarizeBudget } from './budget.js';
 import { postDecisions } from './decide.js';
+import { scoreBoard, renderRetroText } from './retro.js';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const PKG_ROOT = resolve(__dirname, '..');
 
 export function parseArgs(argv) {
-  const args = { mode: 'shadow', board: null, out: PKG_ROOT, rules: null, budget: null, json: false };
+  const args = { mode: 'shadow', board: null, out: PKG_ROOT, rules: null, budget: null, json: false, retro: false };
   for (let i = 0; i < argv.length; i += 1) {
     const a = argv[i];
     if (a === '--live') args.mode = 'live';
     else if (a === '--shadow') args.mode = 'shadow';
+    else if (a === '--retro') args.retro = true;
     else if (a === '--json') args.json = true;
     else if (a === '--board') { args.board = argv[++i]; }
     else if (a === '--out') { args.out = argv[++i]; }
@@ -76,6 +78,17 @@ export function runCycle({ boardPath, mode = 'shadow', rulesPath, now, budgetCap
 
 function main() {
   const args = parseArgs(process.argv.slice(2));
+
+  // --retro: read-only scoreboard. Replays the ruleset over board history and
+  // scores it against your real decisions. Writes nothing, posts nothing.
+  if (args.retro) {
+    const board = loadBoard(args.board || PERSISTENT_BOARD);
+    const ruleset = loadRuleset(args.rules || undefined);
+    const report = scoreBoard(board, ruleset);
+    process.stdout.write(args.json ? JSON.stringify(report, null, 2) + '\n' : renderRetroText(report));
+    return;
+  }
+
   // CLI uses real wall-clock for `now`; the engine itself is pure and takes it
   // as input. (Date is fine here — this is the I/O edge, not a workflow script.)
   const now = new Date().toISOString();

@@ -67,6 +67,47 @@ describe('matchRecommendationToOption — resolves prose rec to an option id', (
   it('returns null when there is no recommendation', () => {
     expect(matchRecommendationToOption(req(undefined, OPTS))).toBe(null);
   });
+
+  it('resolves a canonical id named MID-PROSE (separator-agnostic) to the real option, not a label stand-in', () => {
+    // The gwl-steward-004 shape: the rec spells the option in prose with a
+    // hyphen/space, while the canonical id uses an underscore.
+    const opts = [
+      { id: 'zero_phase_reset', label: 'Reset every frame to the same starting point — predictable' },
+      { id: 'carry_phase_through', label: 'Carry phase continuously across frames — richer motion' },
+      { id: 'reset_default_expose_later', label: 'Reset now, expose carry-through later' },
+    ];
+    const rec = 'Reset every frame to a known start (zero-phase reset) for Phase 1';
+    const m = matchRecommendationToOption(req(rec, opts));
+    expect(m.id).toBe('zero_phase_reset');
+    expect(m.source).toBe('steward_recommendation'); // a real option, not the *_raw fallback
+  });
+
+  it('picks the most specific (longest) contained id when several are substrings', () => {
+    const opts = [
+      { id: 'reset', label: 'reset' },
+      { id: 'zero_phase_reset', label: 'zero phase reset' },
+    ];
+    const m = matchRecommendationToOption(req('go with zero-phase-reset please', opts));
+    expect(m.id).toBe('zero_phase_reset');
+  });
+
+  it('still honors the leading token over a mid-prose mention (genuine divergence stays attributable)', () => {
+    // gwl-steward-002 shape: rec leads with proceed_feed; must resolve there
+    // (so a human picking proceed_parallel reads as a real override, not noise).
+    const opts = [
+      { id: 'proceed_feed', label: 'Build Phase 1; I feed Torus as its packaging' },
+      { id: 'proceed_parallel', label: 'Build Phase 1; stay fully parallel' },
+      { id: 'resolve_first', label: 'Pause building; resolve boundaries first' },
+    ];
+    const m = matchRecommendationToOption(req('proceed_feed — start Phase 1 spec while positioning', opts));
+    expect(m.id).toBe('proceed_feed');
+  });
+
+  it('falls back to the derived token when the rec names no listed option', () => {
+    const m = matchRecommendationToOption(req('SOMETHING-ELSE — not in the list', OPTS));
+    expect(m.source).toBe('steward_recommendation_raw');
+    expect(m.id).toBe('SOMETHING-ELSE');
+  });
 });
 
 describe('parseRequest — field-location coalescing', () => {

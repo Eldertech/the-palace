@@ -99,6 +99,10 @@ None required. Students who want deeper context on psychoacoustics before the se
 ### Stage 2: The Mechanism (Vanilla Max)
 Build the octave stacker as a Max patch — see what was invisible in Stage 1. Simple oscillators, global filter. Palace connection: [[Signal-Rate CV Architecture]].
 
+**Two design knobs settled (granted 2026-06-05):**
+- *How it climbs* → **STEP** (ASCENT-FIRST + STEP-AND-SHOW grants). The first motion added on top of the Stage 1 drone is **discrete pitch-class steps**, not a continuous glide. The glide is deliberately held back for Stage 3 ("The Glide"), so Stage 2 isolates the bare fact that stepping the pitch class up by semitones produces apparent endless ascent.
+- *How it wraps* → **SHOW** (STEP-AND-SHOW grant). The wrap seam is **briefly exposed**, not hidden. When the stack cycles back to its starting register, the teaching version lets the seam be momentarily audible/visible so students see the finite mechanism behind the infinite perception — the Escher staircase with one edge lit. (The alternative, GLIDE-AND-HIDE, would have smoothed the climb and concealed the seam; rejected so the mechanism stays legible.) Schematic: `_ops/stigmergy/app/src/components/trickster/schematics/ShepardStage2Staircase.jsx`.
+
 ### Stage 3: The Glide (Gen~)
 Monophonic portamento at signal rate. All octaves glide together as a unit — the key design insight from the entry. Palace connection: [[Portamento and Physical Pitch Modeling]].
 

@@ -1,0 +1,217 @@
+<!-- Slime Mold Delay — Web Audio bench (minimal proof, cycle 4) -->
+<!-- The smallest unit that exercises the audio architecture in the browser BEFORE any RNBO port. -->
+<!-- Honors: web-audio-before-rnbo (steward-004), PURE-SPECTATOR (steward-007), place-food-and-watch (steward-002). -->
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<style>
+  :root{
+    --agar:#0e1410; --agar2:#141d16; --ink:#e7efe6; --dim:#8aa091;
+    --food:#e9c93f; --food-glow:#fff3b0; --sink:#d8484a; --tube:#c8b24a;
+    --line:#2a3a2e; --mono:'JetBrains Mono',ui-monospace,SFMono-Regular,Menlo,monospace;
+    --body:'Cormorant Garamond',Georgia,serif; --ui:'Manrope',system-ui,sans-serif;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--agar);color:var(--ink);font-family:var(--ui);}
+  .wrap{max-width:980px;margin:0 auto;padding:18px 16px 40px;}
+  h1{font-family:var(--ui);font-weight:800;letter-spacing:.4px;font-size:20px;margin:.2em 0 .1em}
+  .sub{color:var(--dim);font-family:var(--mono);font-size:11px;text-transform:uppercase;letter-spacing:1.2px}
+  p.lead{font-family:var(--body);font-size:18px;line-height:1.45;color:#d6e2d4;max-width:70ch}
+  .stage{position:relative;background:radial-gradient(120% 120% at 30% 25%,var(--agar2),var(--agar) 70%);
+    border:1px solid var(--line);border-radius:50%/8%;aspect-ratio:16/9;margin:14px 0;overflow:hidden}
+  canvas{display:block;width:100%;height:100%}
+  .bar{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:10px 0}
+  button{font-family:var(--mono);font-size:12px;letter-spacing:.5px;color:var(--ink);
+    background:#1b2620;border:1px solid var(--line);border-radius:6px;padding:8px 12px;cursor:pointer}
+  button:hover{border-color:var(--tube);color:#fff}
+  button.primary{background:#2a3a2e;border-color:var(--tube)}
+  .hint{font-family:var(--mono);font-size:11px;color:var(--dim)}
+  table.math{width:100%;border-collapse:collapse;margin:8px 0;font-size:13px}
+  table.math td{border-top:1px solid var(--line);padding:6px 8px;vertical-align:top}
+  table.math td.k{font-family:var(--mono);color:var(--food);white-space:nowrap}
+  .eq{font-family:var(--mono);font-size:13px;color:#cfe0cc;background:#121a14;border:1px solid var(--line);
+    border-radius:6px;padding:8px 10px;margin:6px 0;white-space:pre-wrap;line-height:1.5}
+  .eq .w{color:var(--dim)}
+  footer{margin-top:26px;color:var(--dim);font-family:var(--mono);font-size:11px;letter-spacing:.6px}
+  .tubes{display:flex;flex-wrap:wrap;gap:14px;margin:8px 0}
+  .tubectl{border:1px solid var(--line);border-radius:8px;padding:8px 10px;min-width:180px}
+  .tubectl label{font-family:var(--mono);font-size:11px;color:var(--dim);display:block;margin-bottom:4px}
+  .tubectl .nm{color:var(--tube)}
+  input[type=range]{width:100%}
+</style>
+
+<div class="wrap">
+  <div class="sub">Slime Mold Delay · cycle 4 · web-audio bench (minimal proof)</div>
+  <h1>Feed the colony. Listen to the routing.</h1>
+  <p class="lead">A feedback delay network whose tubes are slime-mold paths. Click a yellow food-flake to
+  inject a pluck; the signal travels the tubes (each a delay line), echoes back through its own feedback
+  loop, and drains into the red sink — your speakers. This is the audio engine alone, the smallest version
+  that exercises every parameter, built in the browser before any RNBO port. You watch; you do not draw the
+  routes. The mold owns the topology.</p>
+
+  <div class="bar">
+    <button id="start" class="primary">START AUDIO</button>
+    <button id="feed">FEED ALL FOOD (pulse)</button>
+    <button id="prune">PRUNE WEAKEST TUBE</button>
+    <button id="reinforce">REINFORCE ALL</button>
+    <span class="hint" id="status">audio context not started — click START</span>
+  </div>
+
+  <div class="stage"><canvas id="dish" width="960" height="540"></canvas></div>
+  <div class="hint">Click any yellow flake on the dish to feed just that source. Tube diameter = feedback gain (slider). Prune/reinforce ramp gains over 60&nbsp;ms — listen for the absence of clicks.</div>
+
+  <div class="tubes" id="tubes"></div>
+
+  <h1 style="font-size:15px;margin-top:22px">The mapping, rendered twice</h1>
+  <div class="eq">delay_timeₑ = lengthₑ × velocity            <span class="w">// symbolic</span>
+delay_time(tube) = tube_length × streaming_velocity   <span class="w">// worded</span></div>
+  <div class="eq">feedbackₑ = clamp(diameterₑ , 0 , 0.85)      <span class="w">// symbolic</span>
+feedback_gain(tube) = clamp(tube_diameter, 0, ceiling)  <span class="w">// worded — ceiling &lt; 1 keeps the loop from running away</span></div>
+
+  <table class="math">
+    <tr><td class="k">food-flake</td><td>an audio input (the pluck you inject by clicking)</td></tr>
+    <tr><td class="k">red sink</td><td>the output — routed to the speakers</td></tr>
+    <tr><td class="k">tube</td><td>a Web Audio <code>DelayNode</code>; its length sets the delay time</td></tr>
+    <tr><td class="k">tube diameter</td><td>a feedback <code>GainNode</code> wrapped around the delay — wider tube, longer echo tail</td></tr>
+    <tr><td class="k">prune / reinforce</td><td>a 60&nbsp;ms <code>setTargetAtTime</code> ramp on the feedback gain — the click-free crossfade the real-time topology engine will need</td></tr>
+  </table>
+
+  <footer>Loudon Live · Autodidact Polymaths</footer>
+</div>
+
+<script>
+(() => {
+  const VELOCITY = 0.9;        // master delay scale (s per unit length)
+  const FB_CEILING = 0.85;     // feedback ceiling < 1 for stability
+  const cv = document.getElementById('dish'), g2 = cv.getContext('2d');
+  const statusEl = document.getElementById('status');
+
+  // --- a small fixed slime-mold graph: 2 food sources, 1 junction, 1 sink ---
+  // positions in canvas coords; the mold "grew" these — the user only watches.
+  const nodes = {
+    F1:  {x:150, y:160, kind:'food'},
+    F2:  {x:160, y:400, kind:'food'},
+    J:   {x:520, y:280, kind:'junction'},
+    SNK: {x:850, y:290, kind:'sink'},
+  };
+  // edges carry length (pixels→units) + diameter (feedback gain 0..ceiling)
+  const edges = [
+    {id:'F1→J',  a:'F1', b:'J',   len:0.42, dia:0.55},
+    {id:'F2→J',  a:'F2', b:'J',   len:0.50, dia:0.45},
+    {id:'J→SNK', a:'J',  b:'SNK', len:0.30, dia:0.62},
+  ];
+
+  let ctx=null, master=null, buses={}, audio={}, started=false;
+  const pulses = []; // visual travelling dots {edge, t}
+
+  function build(){
+    ctx = new (window.AudioContext||window.webkitAudioContext)();
+    master = ctx.createGain(); master.gain.value = 0.55; master.connect(ctx.destination);
+    // one summing bus per node
+    for(const id in nodes){ buses[id] = ctx.createGain(); buses[id].gain.value = 1; }
+    buses['SNK'].connect(master);
+    // each edge: busA -> delay -> busB, with a feedback loop on the delay
+    for(const e of edges){
+      const delay = ctx.createDelay(2.0); delay.delayTime.value = e.len * VELOCITY;
+      const fb = ctx.createGain(); fb.gain.value = Math.min(e.dia, FB_CEILING);
+      buses[e.a].connect(delay);
+      delay.connect(buses[e.b]);
+      delay.connect(fb); fb.connect(delay);   // the echo loop
+      audio[e.id] = {delay, fb};
+    }
+    started = true;
+    statusEl.textContent = 'running · '+ctx.sampleRate+' Hz · feed a flake';
+  }
+
+  function pluck(busId){
+    if(!started) return;
+    const o = ctx.createOscillator(); o.type='triangle';
+    o.frequency.value = 180 + Math.random()*420;
+    const g = ctx.createGain(); const t = ctx.currentTime;
+    g.gain.setValueAtTime(0, t);
+    g.gain.linearRampToValueAtTime(0.5, t+0.006);
+    g.gain.exponentialRampToValueAtTime(0.0008, t+0.28);
+    o.connect(g); g.connect(buses[busId]);
+    o.start(t); o.stop(t+0.32);
+    // launch a visual pulse down each edge leaving this node
+    for(const e of edges) if(e.a===busId) pulses.push({edge:e, t:0});
+  }
+
+  function rampFb(eid, target){
+    if(!started) return;
+    const a = audio[eid]; const now = ctx.currentTime;
+    a.fb.gain.setTargetAtTime(Math.min(Math.max(target,0),FB_CEILING), now, 0.02); // ~60ms settle
+  }
+
+  // ---- controls ----
+  document.getElementById('start').onclick = async () => {
+    if(!started){ build(); buildTubeCtls(); }
+    if(ctx.state==='suspended') await ctx.resume();
+    statusEl.textContent = 'running · '+ctx.sampleRate+' Hz · feed a flake';
+  };
+  document.getElementById('feed').onclick = () => { for(const id in nodes) if(nodes[id].kind==='food') pluck(id); };
+  document.getElementById('reinforce').onclick = () => {
+    for(const e of edges){ e.dia = Math.min(e.dia+0.12, FB_CEILING); rampFb(e.id, e.dia); }
+    refreshSliders();
+  };
+  document.getElementById('prune').onclick = () => {
+    let weak=null; for(const e of edges){ if(!weak||e.dia<weak.dia) weak=e; }
+    if(weak){ weak.dia = Math.max(weak.dia-0.25, 0); rampFb(weak.id, weak.dia); refreshSliders(); }
+  };
+
+  function buildTubeCtls(){
+    const host = document.getElementById('tubes'); host.innerHTML='';
+    for(const e of edges){
+      const box = document.createElement('div'); box.className='tubectl';
+      box.innerHTML = `<label><span class="nm">${e.id}</span> · diameter→feedback · delay ${(e.len*VELOCITY).toFixed(2)}s</label>`;
+      const r = document.createElement('input'); r.type='range'; r.min=0; r.max=FB_CEILING; r.step=0.01; r.value=e.dia;
+      r.dataset.eid=e.id;
+      r.oninput = ()=>{ e.dia=parseFloat(r.value); rampFb(e.id, e.dia); };
+      box.appendChild(r); host.appendChild(box);
+    }
+  }
+  function refreshSliders(){
+    document.querySelectorAll('#tubes input[type=range]').forEach(r=>{
+      const e = edges.find(x=>x.id===r.dataset.eid); if(e) r.value=e.dia;
+    });
+  }
+
+  // ---- canvas: clicking a food node feeds it ----
+  cv.addEventListener('click', ev=>{
+    const rect = cv.getBoundingClientRect();
+    const x = (ev.clientX-rect.left)*(cv.width/rect.width);
+    const y = (ev.clientY-rect.top)*(cv.height/rect.height);
+    for(const id in nodes){ const n=nodes[id]; if(n.kind==='food'){
+      if(Math.hypot(x-n.x,y-n.y)<28){ pluck(id); }
+    }}
+  });
+
+  // ---- render loop ----
+  function draw(){
+    g2.clearRect(0,0,cv.width,cv.height);
+    // tubes
+    for(const e of edges){
+      const a=nodes[e.a], b=nodes[e.b];
+      g2.strokeStyle = 'rgba(200,178,74,'+(0.25+0.7*(e.dia/FB_CEILING))+')';
+      g2.lineWidth = 2 + 16*(e.dia/FB_CEILING);
+      g2.lineCap='round';
+      g2.beginPath(); g2.moveTo(a.x,a.y); g2.lineTo(b.x,b.y); g2.stroke();
+    }
+    // travelling pulses
+    for(let i=pulses.length-1;i>=0;i--){
+      const p=pulses[i]; p.t += 0.02/Math.max(p.edge.len,0.1);
+      const a=nodes[p.edge.a], b=nodes[p.edge.b];
+      const px=a.x+(b.x-a.x)*Math.min(p.t,1), py=a.y+(b.y-a.y)*Math.min(p.t,1);
+      g2.fillStyle='rgba(255,243,176,0.9)'; g2.beginPath(); g2.arc(px,py,6,0,7); g2.fill();
+      if(p.t>=1){ if(nodes[p.edge.b].kind==='junction') for(const e of edges) if(e.a===p.edge.b) pulses.push({edge:e,t:0}); pulses.splice(i,1); }
+    }
+    // nodes
+    for(const id in nodes){ const n=nodes[id];
+      if(n.kind==='food'){ g2.fillStyle='#e9c93f'; g2.shadowColor='#fff3b0'; g2.shadowBlur=18;
+        g2.beginPath(); g2.arc(n.x,n.y,16,0,7); g2.fill(); g2.shadowBlur=0; }
+      else if(n.kind==='sink'){ g2.fillStyle='#d8484a'; g2.beginPath(); g2.arc(n.x,n.y,18,0,7); g2.fill(); }
+      else { g2.fillStyle='#7d8c5a'; g2.beginPath(); g2.arc(n.x,n.y,11,0,7); g2.fill(); }
+    }
+    requestAnimationFrame(draw);
+  }
+  draw();
+})();
+</script>

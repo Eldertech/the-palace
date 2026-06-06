@@ -64,6 +64,52 @@ export function sliceBoardSinceCursor(boardLines, cursor) {
   return slice;
 }
 
+// A message whose recipient is the whole swarm (BROADCAST/FLAG-style).
+const BROADCAST_RECIPIENTS = new Set(['*', 'ALL']);
+const asStr = (v) => (v == null ? '' : String(v));
+
+/**
+ * Relevance filter for a board slice, per permanent.md step 7. The temporal cut
+ * (`sliceBoardSinceCursor`) answers "what is new since I last read?"; this one
+ * answers "of that, what is actually mine to read?". Compose them — slice
+ * first, then filter — so each stays small and independently testable.
+ *
+ * A line is kept when ANY of:
+ *   - it is addressed to the steward            (`to` === agentId)
+ *   - it is the steward's own message           (`from` === agentId)
+ *   - it answers one of the steward's asks      (`re` ∈ requestIds)
+ *   - it is a broadcast: when a `neighborhood` is given, only from a neighbor;
+ *     when none is given, every broadcast (the spec-faithful fallback).
+ *
+ * Everything else — other stewards' RESOURCE_REQUESTs to TRICKSTER, grants/
+ * denies addressed to other agents, broadcasts from outside the neighborhood —
+ * is dropped. Lines that don't parse as JSON are KEPT (never hide possible
+ * signal behind a parse hiccup).
+ *
+ * @param {string[]} sliceLines — JSONL lines, already cut to since-cursor
+ * @param {object} opts
+ * @param {string} opts.agentId — the steward's page title / agent_id
+ * @param {string[]} [opts.neighborhood] — first-degree neighbor titles
+ * @param {string[]} [opts.requestIds] — the steward's pending request_ids
+ * @returns {string[]} the relevant subset, original order preserved
+ */
+export function filterBoardForAgent(sliceLines, { agentId, neighborhood = [], requestIds = [] } = {}) {
+  const id = asStr(agentId);
+  const nbh = new Set((neighborhood || []).map(asStr));
+  const reqs = new Set(requestIds || []);
+  return sliceLines.filter((line) => {
+    let m;
+    try { m = JSON.parse(line); } catch { return true; } // unparseable — keep, don't hide signal
+    if (!m || typeof m !== 'object') return true;
+    if (asStr(m.to) === id) return true;
+    if (asStr(m.from) === id) return true;
+    if (m.re != null && reqs.has(m.re)) return true;
+    const isBroadcast = m.type === 'BROADCAST' || BROADCAST_RECIPIENTS.has(asStr(m.to));
+    if (isBroadcast) return nbh.size === 0 ? true : nbh.has(asStr(m.from));
+    return false;
+  });
+}
+
 /**
  * Build the system prompt + user turn for one steward cycle.
  *
@@ -117,7 +163,17 @@ export function buildCyclePrompt(opts) {
 
   const cursor = state.last_read_cursor;
   const boardLines = readFileSync(boardPath, 'utf8').trim().split('\n');
-  const slice = sliceBoardSinceCursor(boardLines, cursor);
+  const pendingIds = (state.pending_requests || [])
+    .map((r) => r && r.request_id)
+    .filter(Boolean);
+  const slice = filterBoardForAgent(
+    sliceBoardSinceCursor(boardLines, cursor),
+    {
+      agentId: manifest.agent_id || manifest.home,
+      neighborhood: manifest.neighborhood || [],
+      requestIds: pendingIds,
+    },
+  );
 
   let pageChange = { changed: false, commits: [] };
   if (state.last_active) {
@@ -148,9 +204,9 @@ ${JSON.stringify(state, null, 2)}
 
 ${historyTail ? '```jsonl\n' + historyTail + '\n```' : '(empty — first activation or history not yet written)'}
 
-# Blackboard slice ${isFirstActivation ? '(full board, since first activation)' : `since your cursor ("${cursor}")`}
+# Blackboard slice ${isFirstActivation ? '— since first activation' : `since your cursor ("${cursor}")`} (filtered to your neighborhood, messages addressed to you, and responses to your asks; other swarm traffic is omitted)
 
-${slice.length === 0 ? '(empty — no new messages)' : '```jsonl\n' + slice.join('\n') + '\n```'}
+${slice.length === 0 ? '(empty — no new messages addressed to you or from your neighborhood since your cursor)' : '```jsonl\n' + slice.join('\n') + '\n```'}
 
 # Page-change notice
 

@@ -83,10 +83,31 @@ export function matchRecommendationToOption(request) {
   const recRaw = String(rec).trim();
   const recToken = (deriveOptionId(recRaw) || recRaw).toLowerCase();
   const recFull = recRaw.toLowerCase();
+  // Collapse to bare alphanumerics so prose that names the option mid-sentence —
+  // e.g. "...to a known start (zero-phase reset) for Phase 1" — still resolves to
+  // the canonical id "zero_phase_reset" rather than falling through to a
+  // label-derived stand-in. Separator-agnostic ("zero-phase reset" == "zero_phase_reset").
+  const collapse = (s) => String(s || '').toLowerCase().replace(/[^a-z0-9]+/g, '');
+  const recCollapsed = collapse(recRaw);
+  // Of the options whose collapsed <field> (>= minLen, to avoid spurious short
+  // hits) is contained in the collapsed recommendation, return the MOST specific
+  // (longest) — so a longer id wins over a shorter one it contains.
+  const longestContained = (field, minLen) => {
+    let best = null; let bestLen = 0;
+    for (const o of opts) {
+      const key = collapse(o[field]);
+      if (key.length >= minLen && recCollapsed.includes(key) && key.length > bestLen) {
+        best = o; bestLen = key.length;
+      }
+    }
+    return best;
+  };
   const hit = opts.find((o) => (o.id || '').toLowerCase() === recToken)
     || opts.find((o) => (o.id || '').toLowerCase() === recFull)
     || opts.find((o) => o.id && recFull.startsWith(o.id.toLowerCase()))
-    || opts.find((o) => (o.label || '').toLowerCase().startsWith(recToken));
+    || opts.find((o) => (o.label || '').toLowerCase().startsWith(recToken))
+    || longestContained('id', 4)        // canonical id quoted anywhere in the prose
+    || longestContained('label', 8);    // an option's full label quoted in the prose
   if (hit) return { id: hit.id, label: hit.label, source: 'steward_recommendation' };
   // Recommendation named but not among options → the derived token stands in.
   return { id: deriveOptionId(recRaw) || recRaw, label: recRaw, source: 'steward_recommendation_raw' };

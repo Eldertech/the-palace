@@ -27,6 +27,9 @@ links:
   - target: "[[BBS Blackboard]]"
     type: connects-to
     label: stigmergy-surface
+  - target: "[[Language as a Tonal Medium]]"
+    type: spawned
+    label: harvested-the-carried-question
 ---
 
 # Semantic Webcam

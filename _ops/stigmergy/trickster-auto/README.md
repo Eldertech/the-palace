@@ -18,6 +18,41 @@ irreversible/destructive action — those always escalate.** Hard-coded in
 `rules.json`. Over-escalation is safe; auto-granting an audition is a contract
 violation.
 
+## Tuning shadow mode → earning `--live`
+
+Write authority is **earned per rule**, not flipped for the whole engine. The
+on-ramp is the scoreboard: `node src/cli.js --retro` replays the *current*
+ruleset over the *whole board history* and scores each would-be auto-decision
+against the decision Loudon actually made (his grant/deny clicks — never the
+engine's own `decided_by:auto` posts). For each auto-acting rule it reports:
+
+- **dangerous** — times the rule would have auto-granted something Loudon
+  *denied*. This is the one that matters; it must be **zero**.
+- **agreement %** — of the cases the rule auto-acted on, how often Loudon
+  granted (exact option **or** a free-text/notes grant counts as agreement).
+- **option divergence** — granted, but Loudon picked a different listed option
+  than the steward recommended. Tolerated within the agreement budget, because
+  `blocking:false` means the steward already proceeded and Loudon can still steer
+  in the grant notes.
+
+### The criterion (`DEFAULT_PROMOTION` in `src/retro.js`)
+
+A rule is **eligible for `--live`** when, replayed over history:
+
+1. **≥ 20** of Loudon's decisions exercised it (enough signal to trust), **and**
+2. **0 dangerous** false-grants (never promote a rule that would grant a deny), **and**
+3. **≥ 90 %** agreement on the cases it auto-acted.
+
+When a rule clears the bar, flip *only that rule* live and keep a daily cap:
+`node src/cli.js --live --budget 5`. Everything else keeps escalating. Re-run
+`--retro` after each heartbeat to watch the number; a single dangerous hit drops
+eligibility regardless of volume. The hard audition/irreversible gate is never
+in scope for promotion — it always escalates.
+
+> Status at last run: `grant-nonblocking-recommended-fork` — 23 decided, 0
+> dangerous, 91 % agreement → **eligible**. The two divergences (gwl-steward-002,
+> retrospective-delay-steward-004) were both still grants, down a different fork.
+
 ## Run it
 
 ```
@@ -26,6 +61,8 @@ node src/cli.js --json          # also print the digest JSON to stdout
 node src/cli.js --board P.jsonl # evaluate a specific board
 node src/cli.js --live          # ALSO post auto-grant/deny to the board (earned, opt-in)
 node src/cli.js --live --budget 5   # cap auto-grants per day at 5
+node src/cli.js --retro         # SCOREBOARD: replay the ruleset over board history vs your real clicks
+node src/cli.js --retro --json  # the scoreboard as JSON
 npm test                        # the full suite
 npm run check:phase-0 … check:all   # per-phase verify gates
 ```
@@ -65,8 +102,9 @@ A malformed ruleset fails CLOSED — the engine refuses to run rather than loose
 | `src/digest.js`       | Ranks escalations by Palace Conatus disharmony tier; renders JSON + Markdown. |
 | `src/decide.js`       | Builds §2.2 grant/deny messages with `auto` provenance; posts via the orchestrator's validated append (no third write path). |
 | `src/budget.js`       | Daily auto-grant cap; day-boundary reset; persisted only on `--live`. |
-| `src/cli.js`          | The runner. Shadow-default; `--live` opts into posting. |
+| `src/cli.js`          | The runner. Shadow-default; `--live` opts into posting; `--retro` scores. |
 | `src/board.js`        | Reads the board via the orchestrator's `readJsonl`. |
+| `src/retro.js`        | The shadow-tuning scoreboard — `scoreBoard()` replays the ruleset over history and scores each would-be auto-decision against your real clicks; reports per-rule eligibility. |
 
 ## Provenance
 
