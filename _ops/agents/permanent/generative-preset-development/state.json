@@ -1,7 +1,7 @@
 {
-  "iteration": 3,
-  "last_active": "2026-06-03T05:14:01Z",
-  "last_read_cursor": "preset-steward-007",
+  "iteration": 4,
+  "last_active": "2026-06-06T10:39:37Z",
+  "last_read_cursor": "preset-steward-010",
   "health": {
     "context_pct": null,
     "avg_output_tokens_last_5": null,
@@ -19,28 +19,15 @@
   },
   "pending_requests": [
     {
-      "request_id": "preset-steward-004",
+      "request_id": "preset-steward-010",
       "resource": "directional_decision",
-      "decision_topic": "What to open next cycle now that the Wavetable profile skeleton exists",
+      "decision_topic": "What advances cycle 5 now that the analysis track exists and has named the exact 23 settings the ear pass needs",
       "blocking": false,
-      "posted_at": "2026-05-27T20:01:00-04:00",
+      "posted_at": "2026-06-06T11:05:00-04:00",
       "options": [
-        "PERCEPTUAL-BY-EAR",
-        "WRITE-PATH-PROOF",
-        "SOURCE-SLOT-AUDIT",
-        "YOU-DEFINE"
-      ]
-    },
-    {
-      "request_id": "preset-steward-007",
-      "resource": "sensory_audition_gate",
-      "blocking": true,
-      "posted_at": "2026-06-03T09:02:00-04:00",
-      "options": [
-        "LOADS-AND-DARK--PERCEPTUAL-BY-EAR",
-        "LOADS-AND-DARK--SOURCE-SLOT-AUDIT",
-        "LOADS-BUT-WRONG",
-        "WONT-LOAD",
+        "EAR-PASS-FROM-WORKORDER",
+        "ENUM-CROSS-REF",
+        "START-MODIFICATION",
         "YOU-DEFINE"
       ]
     }
@@ -63,10 +50,43 @@
       "resolved_at": "2026-05-27T23:26:44.955Z",
       "resolved_by": "resp-mpop18m3-ekdcvq",
       "outcome": "GRANTED — option_id=WAVETABLE-FIRST"
+    },
+    {
+      "request_id": "preset-steward-004",
+      "resource": "directional_decision",
+      "decision_topic": "What to open next cycle now that the Wavetable profile skeleton exists",
+      "blocking": false,
+      "posted_at": "2026-05-27T20:01:00-04:00",
+      "options": [
+        "PERCEPTUAL-BY-EAR",
+        "WRITE-PATH-PROOF",
+        "SOURCE-SLOT-AUDIT",
+        "YOU-DEFINE"
+      ],
+      "resolved_at": "2026-06-06T01:35:09.257Z",
+      "resolved_by": "resp-mq1ol1ah-gylsy3",
+      "outcome": "GRANTED — option_id=WRITE-PATH-PROOF"
+    },
+    {
+      "request_id": "preset-steward-007",
+      "resource": "sensory_audition_gate",
+      "blocking": true,
+      "posted_at": "2026-06-03T09:02:00-04:00",
+      "options": [
+        "LOADS-AND-DARK--PERCEPTUAL-BY-EAR",
+        "LOADS-AND-DARK--SOURCE-SLOT-AUDIT",
+        "LOADS-BUT-WRONG",
+        "WONT-LOAD",
+        "YOU-DEFINE"
+      ],
+      "resolved_at": "2026-06-05T23:30:16.894Z",
+      "resolved_by": "8a17f219-f5e2-4cb5-b725-d84d1813bc5e",
+      "outcome": "GRANTED — option_id=LOADS-AND-DARK--PERCEPTUAL-BY-EAR"
     }
   ],
   "_pilot_metadata": {
     "cycle_1_notes": "Cycle 1 (batch run, 15-steward parallel batch position). FIRST ACTIVATION as a permanent steward — directory enchanted in this same batch run. Stage growing. Dispatched in parallel with 14 other stewards. See history.jsonl for the AGENT_REASONING and message-emission events. The every-cycle-ends-with-a-TRICKSTER-ask rule was applied; messages went through the orchestrator post-processing pipeline (parsed from JSON code fences in the subagent transcript, orchestrator-built health block injected, strict §2.2 validated, appended via palace-orch append). pending_requests is reconciled across the whole board.",
-    "cycle_2_notes": "Cycle 2 (15-steward parallel batch run, build cycle). Grant-driven cycle following Loudon's batch of 17 responses. See history.jsonl for SPAWN + AGENT_REASONING + per-message events. Messages went through the orchestrator post-processing pipeline (parse → inject Path-2 health stub → strict §2.2 validate → palace-orch append). pending_requests reconciled across the whole board."
+    "cycle_2_notes": "Cycle 2 (15-steward parallel batch run, build cycle). Grant-driven cycle following Loudon's batch of 17 responses. See history.jsonl for SPAWN + AGENT_REASONING + per-message events. Messages went through the orchestrator post-processing pipeline (parse → inject Path-2 health stub → strict §2.2 validate → palace-orch append). pending_requests reconciled across the whole board.",
+    "cycle_4_notes": "Palace heartbeat batch 2026-06-06T10:39:37Z. ~123185 subagent tokens, 30 tool uses."
   }
 }

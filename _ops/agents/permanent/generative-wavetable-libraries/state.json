@@ -1,34 +1,19 @@
 {
-  "iteration": 7,
-  "last_active": "2026-06-03T05:14:01Z",
-  "last_read_cursor": "gwl-steward-018",
+  "iteration": 8,
+  "last_active": "2026-06-06T10:29:38Z",
+  "last_read_cursor": "gwl-steward-021",
   "pending_requests": [
     {
-      "request_id": "gwl-steward-015",
-      "resource": "directional_decision",
-      "decision_topic": "Phase 2 Shepard-stack wavetable — which parameter is the primary sweep that wavetable-position drives?",
-      "blocking": false,
-      "posted_at": "2026-05-27T20:00:00-04:00",
+      "request_id": "gwl-steward-021",
+      "resource": "sensory_audition_gate",
+      "decision_topic": "Audition the Shepard CENTROID-FREQ wavetable by ear — does the position sweep read as one note brightening, and does it ship as the Phase 2 proof?",
+      "blocking": true,
+      "posted_at": "2026-06-06T16:42:00-04:00",
       "options": [
-        "CENTROID-FREQ",
-        "CENTROID-WIDTH",
-        "OCTAVE-COMB",
-        "YOU-DEFINE"
-      ],
-      "steward_recommendation": "CENTROID-FREQ — it matches the grant text, coordinates cleanly with the Shepard steward's Stage-1 drone (which I can use as the static centroid building-block), and produces a wavetable with a character Crystal Bravais lacks. If you want a wavetable that feels more like a familiar filter control, pick CENTROID-WIDTH instead."
-    },
-    {
-      "request_id": "gwl-steward-018",
-      "resource": "directional_decision",
-      "decision_topic": "What advances cycle 8 — answer the still-open Shepard sweep-parameter fork so I can build the Phase 2 wavetable, or take a non-blocked format/source move instead?",
-      "blocking": false,
-      "posted_at": "2026-06-03T09:05:00-04:00",
-      "options": [
-        "SHEPARD-CENTROID-FREQ",
-        "SHEPARD-CENTROID-WIDTH",
-        "SHEPARD-OCTAVE-COMB",
-        "SURGE-XT-WRITER",
-        "CONSOLIDATE-PAGE"
+        "ACCEPT",
+        "TUNE-BELL",
+        "TRY-RANGE",
+        "WRONG-MAPPING"
       ]
     }
   ],
@@ -97,10 +82,44 @@
       "resolved_at": "2026-05-27T23:38:05.170Z",
       "resolved_by": "resp-mpopftgy-ueegpc",
       "outcome": "GRANTED — option_id=SHEPARD-STACK"
+    },
+    {
+      "request_id": "gwl-steward-015",
+      "resource": "directional_decision",
+      "decision_topic": "Phase 2 Shepard-stack wavetable — which parameter is the primary sweep that wavetable-position drives?",
+      "blocking": false,
+      "posted_at": "2026-05-27T20:00:00-04:00",
+      "options": [
+        "CENTROID-FREQ",
+        "CENTROID-WIDTH",
+        "OCTAVE-COMB",
+        "YOU-DEFINE"
+      ],
+      "steward_recommendation": "CENTROID-FREQ — it matches the grant text, coordinates cleanly with the Shepard steward's Stage-1 drone (which I can use as the static centroid building-block), and produces a wavetable with a character Crystal Bravais lacks. If you want a wavetable that feels more like a familiar filter control, pick CENTROID-WIDTH instead.",
+      "resolved_at": "2026-06-06T01:30:13.091Z",
+      "resolved_by": "resp-mq1oeorn-4jc643",
+      "outcome": "GRANTED — option_id=CENTROID-FREQ"
+    },
+    {
+      "request_id": "gwl-steward-018",
+      "resource": "directional_decision",
+      "decision_topic": "What advances cycle 8 — answer the still-open Shepard sweep-parameter fork so I can build the Phase 2 wavetable, or take a non-blocked format/source move instead?",
+      "blocking": false,
+      "posted_at": "2026-06-03T09:05:00-04:00",
+      "options": [
+        "SHEPARD-CENTROID-FREQ",
+        "SHEPARD-CENTROID-WIDTH",
+        "SHEPARD-OCTAVE-COMB",
+        "SURGE-XT-WRITER",
+        "CONSOLIDATE-PAGE"
+      ],
+      "resolved_at": "2026-06-05T23:25:53.219Z",
+      "resolved_by": "b86a5a51-d43a-4190-9bec-5d57cbbbc234",
+      "outcome": "GRANTED — option_id=SHEPARD-CENTROID-FREQ"
     }
   ],
   "stewardship": {
-    "stage_at_last_activation": "sprout",
+    "stage_at_last_activation": "growing",
     "vector_at_last_activation": "I will become a chat-driven generator of wavetables — Claude conducts the interview, sources partial structures from anywhere (palace synthesis, AI sub-agents, captured audio), and renders deployable wavetables in Serum/CLM, Ableton, Surge XT, and single-cycle formats.",
     "vector_changed_since_last": false,
     "stage_changed_since_last": false,
@@ -123,6 +142,7 @@
   "_pilot_metadata": {
     "cycle_4_notes": "Cycle 4 (batch run, position 2 of 3) consumed Loudon's grant of gwl-steward-006 (resp-mpo19czp-s9zd3v, posted before the options-shape contract fix so no option_id — interpreted as 'accept' per the steward's prior recommendation). Did an honest in-palace search for a reference Serum WAV (the gate from cycle 3's closing baton). Result: NONE in-palace — the 2D Torus bundle has wavetable-shaped WAVs but no clm RIFF chunk; Crystal Audio holds single-cycle / dispersion demos; the Floquet bundle has a research-artifact WAV not a Serum export. Surfaced this as a non-blocking TRICKSTER ask gwl-steward-009 with 4 options (POINT-AT-WAV / SURGE-XT-FIRST / PHASE-2-FIRST / YOU-DECIDE) recommending POINT-AT-WAV if 5 min handy else SURGE-XT-FIRST. Posted gwl-steward-007 (SPINNING UP) + gwl-steward-008 (catch-up + in-palace search report). Conventions clean: to: '*' and {subject, content} envelope used; canonical {id, label} options. Light dispatch, 9 turns, 95s.",
     "cycle_5_notes": "Cycle 5 (batch run, 15-steward parallel batch position). Continuing cycle from prior state. Stage growing. Dispatched in parallel with 14 other stewards. See history.jsonl for the AGENT_REASONING and message-emission events. The every-cycle-ends-with-a-TRICKSTER-ask rule was applied; messages went through the orchestrator post-processing pipeline (parsed from JSON code fences in the subagent transcript, orchestrator-built health block injected, strict §2.2 validated, appended via palace-orch append). pending_requests is reconciled across the whole board.",
-    "cycle_6_notes": "Cycle 6 (15-steward parallel batch run, build cycle). Grant-driven cycle following Loudon's batch of 17 responses. See history.jsonl for SPAWN + AGENT_REASONING + per-message events. Messages went through the orchestrator post-processing pipeline (parse → inject Path-2 health stub → strict §2.2 validate → palace-orch append). pending_requests reconciled across the whole board."
+    "cycle_6_notes": "Cycle 6 (15-steward parallel batch run, build cycle). Grant-driven cycle following Loudon's batch of 17 responses. See history.jsonl for SPAWN + AGENT_REASONING + per-message events. Messages went through the orchestrator post-processing pipeline (parse → inject Path-2 health stub → strict §2.2 validate → palace-orch append). pending_requests reconciled across the whole board.",
+    "cycle_8_notes": "Palace heartbeat batch 2026-06-06T10:29:38Z. ~124929 subagent tokens, 17 tool uses."
   }
 }

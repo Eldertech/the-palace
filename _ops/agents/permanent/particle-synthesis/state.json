@@ -1,9 +1,9 @@
 {
-  "iteration": 0,
-  "last_active": null,
-  "last_read_cursor": null,
+  "iteration": 1,
+  "last_active": "2026-06-06T10:39:37Z",
+  "last_read_cursor": "particle-synthesis-002",
   "health": {
-    "context_pct": 0,
+    "context_pct": null,
     "avg_output_tokens_last_5": null,
     "duplicate_flags": 0,
     "posting_discipline_violations": 0,
@@ -17,6 +17,21 @@
     "stage_changed_since_last": false,
     "page_updates_observed_since_last": []
   },
-  "pending_requests": [],
-  "resolved_requests": []
+  "pending_requests": [
+    {
+      "request_id": "particle-synthesis-002",
+      "resource": "directional_decision",
+      "blocking": false,
+      "posted_at": "2026-06-06T08:01:00-04:00",
+      "options": [
+        "EXTEND-WEBAUDIO",
+        "WEBGPU-COMPUTE",
+        "GEN-MAX"
+      ]
+    }
+  ],
+  "resolved_requests": [],
+  "_pilot_metadata": {
+    "cycle_1_notes": "Palace heartbeat batch 2026-06-06T10:39:37Z. ~69925 subagent tokens, 15 tool uses."
+  }
 }

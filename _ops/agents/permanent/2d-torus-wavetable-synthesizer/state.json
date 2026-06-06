@@ -1,7 +1,7 @@
 {
-  "iteration": 3,
-  "last_active": "2026-06-03T05:14:01Z",
-  "last_read_cursor": "torus-steward-008",
+  "iteration": 4,
+  "last_active": "2026-06-06T10:29:38Z",
+  "last_read_cursor": "torus-steward-010",
   "health": {
     "context_pct": null,
     "avg_output_tokens_last_5": null,
@@ -19,17 +19,18 @@
   },
   "pending_requests": [
     {
-      "request_id": "torus-steward-008",
+      "request_id": "torus-steward-010",
       "resource": "directional_decision",
-      "decision_topic": "Which generating logic should the seventh surface fill, and do I render it now or hold for the RNBO gate?",
+      "decision_topic": "Which of the three rendered candidates fills the open seventh surface — pick by eye now, or hold the slot for the RNBO gate?",
       "blocking": false,
-      "posted_at": "2026-06-03T16:34:00-04:00",
+      "posted_at": "2026-06-06T16:42:00-04:00",
       "options": [
         "KURAMOTO-BLOOM",
         "MATERN-FIELD",
         "FISHER-RIDGE",
         "HOLD-FOR-RNBO"
-      ]
+      ],
+      "steward_recommendation": "KURAMOTO-BLOOM — it's the only one of the three that links back to a neighbor entry (Kuramoto Coupling) and it makes the synchronization bifurcation — the harmonic-to-inharmonic snap that is this instrument's whole thesis — a built-in feature of the surface rather than a scan trick. The other two stay as candidates 16 and 17; the library is open."
     }
   ],
   "resolved_requests": [
@@ -63,10 +64,27 @@
       "resolved_at": "2026-06-01T01:22:14.466Z",
       "resolved_by": "resp-mpuix64i-xtuirt",
       "outcome": "GRANTED — (no option_id)"
+    },
+    {
+      "request_id": "torus-steward-008",
+      "resource": "directional_decision",
+      "decision_topic": "Which generating logic should the seventh surface fill, and do I render it now or hold for the RNBO gate?",
+      "blocking": false,
+      "posted_at": "2026-06-03T16:34:00-04:00",
+      "options": [
+        "KURAMOTO-BLOOM",
+        "MATERN-FIELD",
+        "FISHER-RIDGE",
+        "HOLD-FOR-RNBO"
+      ],
+      "resolved_at": "2026-06-05T18:12:45.676Z",
+      "resolved_by": "99261e78-1917-4476-8119-bcf57d7972de",
+      "outcome": "GRANTED — option_id=KURAMOTO-BLOOM; notes: \"add slots and do 1 2 and 3\""
     }
   ],
   "_pilot_metadata": {
     "cycle_1_notes": "FIRST ACTIVATION (15-steward parallel batch run, 2026-05-27). NOTE: this steward bypassed the orchestrator post-processing pipeline — instead of emitting JSON code-fence blocks for the parent session to validate + inject health + append, the subagent itself used Bash/Edit/Write tools to invoke palace-orch append directly and write to state.json. The messages it appended passed strict §2.2 validation (verified post-hoc) and are on the persistent board cleanly. However, the health block it constructed was built by the subagent itself rather than the orchestrator — meaning the health metadata's _orchestrator_metadata flag is present but the underlying token-usage numbers are not the genuine Agent-tool usage data the orchestrator would have used. Cycle is functionally complete; the bypass is a prompt-spec gap (the subagent prompt didn't explicitly forbid direct board writes). The pending_requests / resolved_requests fields were reconciled by the orchestrator parent in the batch finalize step. Posted (cycle 1) messages and pending ask: see board for this steward's from-field messages.",
-    "cycle_2_notes": "Cycle 2 (15-steward parallel batch run, build cycle). Grant-driven cycle following Loudon's batch of 17 responses. See history.jsonl for SPAWN + AGENT_REASONING + per-message events. Messages went through the orchestrator post-processing pipeline (parse → inject Path-2 health stub → strict §2.2 validate → palace-orch append). pending_requests reconciled across the whole board."
+    "cycle_2_notes": "Cycle 2 (15-steward parallel batch run, build cycle). Grant-driven cycle following Loudon's batch of 17 responses. See history.jsonl for SPAWN + AGENT_REASONING + per-message events. Messages went through the orchestrator post-processing pipeline (parse → inject Path-2 health stub → strict §2.2 validate → palace-orch append). pending_requests reconciled across the whole board.",
+    "cycle_4_notes": "Palace heartbeat batch 2026-06-06T10:29:38Z. ~87670 subagent tokens, 23 tool uses."
   }
 }
