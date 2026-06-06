@@ -1,6 +1,6 @@
 import { describe, test, expect } from 'vitest';
 import { buildResponse } from '../../src/lib/response-builder.js';
-import { validateMessage } from '../../server/validator.js';
+import { validateMessage } from '@stigmergy/core/schema';
 
 // A sample RESOURCE_REQUEST for all tests to use.
 // Uses only `id` (no `request_id`) — backward-compat shape.

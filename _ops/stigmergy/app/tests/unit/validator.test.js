@@ -2,7 +2,7 @@ import { describe, test, expect } from 'vitest';
 import { readFileSync } from 'node:fs';
 import { resolve, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { validateMessage } from '../../server/validator.js';
+import { validateMessage } from '@stigmergy/core/schema';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
