@@ -7,6 +7,7 @@ import { buildCardGrant } from '../../lib/trickster-grants.js';
 import { assetsFor } from '../../lib/trickster-assets.js';
 import LeanPanel from './LeanPanel.jsx';
 import AuditionStrip from './AuditionStrip.jsx';
+import Schematic from './schematics/index.jsx';
 import ArtifactSlot from '../ArtifactSlot.jsx';
 
 // Re-exported for unit tests that import the builder from the card module.
@@ -198,6 +199,7 @@ export default function TricksterCard({ item, onConfirmed, focused = false }) {
             sequenced audio keeps AuditionStrip for the play-all + note labels. */}
         {assets ? (
           <div data-testid="card-assets">
+            {assets.schematic ? <Schematic name={assets.schematic} /> : null}
             {assets.audition ? <AuditionStrip {...assets.audition} /> : null}
             {assets.artifacts ? <ArtifactSlot payload={{ artifacts: assets.artifacts }} /> : null}
           </div>
