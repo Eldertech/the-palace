@@ -5,8 +5,8 @@ medium: interactive
 tool: Web Audio API (AudioWorklet)
 tool_version: living standard (Baseline 2023)
 adopted: 2026-05-30
-last_tested: 2026-05-30
-last_gotcha: 2026-05-30
+last_tested: 2026-05-31
+last_gotcha: 2026-05-31
 license: none (browser platform API — no library, no CDN)
 links:
   - { label: "wraps", target: "Web Audio API / AudioWorkletProcessor (browser standard)" }
@@ -132,6 +132,16 @@ The DSP **is** the artifact, so iteration is editing the `process()` loop and re
 **2026-05-30 — `sampleRate` is a global inside `AudioWorkletGlobalScope`, not `audioCtx.sampleRate`.** Inside the processor, read the bare global `sampleRate` (and `currentTime`/`currentFrame` if needed). Reaching for `this.context.sampleRate` (the main-thread idiom) is undefined here. Cache `1/sampleRate` once; division in the inner loop is wasteful.
 
 **2026-05-30 — Template-literal worklet source resolves `${...}` at page-definition time — useful, but it hides them from a standalone syntax check.** Injecting constants like table length via `${L}` into the worklet string is a clean way to share a constant across the thread boundary. The cost: the extracted raw string isn't valid JS on its own (`this.L = ${L}` won't parse), so headless `node --check` of the worklet body requires substituting the interpolations first. Worth knowing for any verification harness.
+
+**2026-05-31 — `decodeAudioData` neuters its input ArrayBuffer; slice before calling.** Loading a user-supplied WAV via `<input type="file">` returns an `ArrayBuffer`; `audioCtx.decodeAudioData(buf)` transfers ownership. Any retained reference to `buf` is empty after the call. Pass `buf.slice(0)` instead. Small enough to miss until a "retry on decode failure" path returns silently empty. Confirmed during the [[Wavetable Scanner]] Sketch build.
+
+**2026-05-31 — `AudioContext` can be constructed and `decodeAudioData`'d while still `suspended`.** Only `resume()` and starting source nodes need a user gesture; decoding doesn't. This lets file-load happen pre-Engage, which is the ergonomic the user actually wants (load a table, then play). Don't gate file uploads behind the unlock click. Surfaced when wiring the [[Wavetable Scanner]]'s drag-and-drop path.
+
+**2026-05-31 — Transferable vs retain: send a copy when both threads need the data over its lifetime.** [[Artifacts/Murmuration Synth|Murmuration]] transfers per-frame flock buffers and *wants* the main-thread side neutered — the gotcha on the 30th was framed that way. The [[Wavetable Scanner]] needs the same Float32Array on both threads — the worklet for lookup, the visualizer for geometry. Decision rule: if both threads need the data across its lifetime, allocate a fresh `Float32Array`, copy into it, and transfer the copy; if only the audio thread needs it, transfer the original. This generalises the earlier gotcha — same primitive, opposite direction.
+
+**2026-05-31 — Wavetable position morph is a 2D linear interpolation, not a 1D frame switcher.** The worklet `process()` does, per output sample: read frame A at fractional phase, read frame B at fractional phase, blend by the fractional frame index. Building this as "Position picks the nearest frame" misses the whole point of a wavetable scanner — the morph IS the linear blend. The visualizer's cursor line runs the same `(a + fr*(b-a))` math reading the same `Float32Array`, which is what keeps the picture and the audio from drifting (single source of truth — the [[Waveguide Synthesizer]] pattern in miniature). The pattern is now its own concept entry: [[1D Wavetable Scanning]].
+
+**2026-05-31 — Drone-by-default is the right gate model for a wavetable *scanner*, even though gated-by-default is the right model for a synth voice.** First [[Wavetable Scanner]] build shipped key-down-to-gate; the user opened it, hit Engage, swept Position, heard nothing. The brief was "play a note and scan through the frames" — for a scanner the sustained tone is the *condition* of the gesture, not its trigger. Pattern: scanner instruments default to `gateTarget=1` in the constructor; a Mode toggle exposes the key-gated variant for users who want it. Recorded so future *exploration*-class instruments don't re-ship the wrong default. The distinguishing question — *is the user exploring the timbre space, or playing a melody on this voice?* — lives in [[1D Wavetable Scanning]].
 
 *(Inherited from the platform, confirmed on first encounter:)*
 - Audio context starts `suspended`; first sound needs a user gesture. `addModule` is `async`, so the Engage handler must `await` both the module load and `context.resume()`.

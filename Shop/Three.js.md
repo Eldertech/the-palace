@@ -1,21 +1,23 @@
 ---
 type: specialist
-status: stub
+status: alive
 medium: interactive
 submedium: 3d
 tool: three.js
 tool_version: "r128 (CDN / claude.ai artifact); latest via npm for R3F builds"
 adopted: 2026-05-30
-last_tested:
-last_gotcha:
+last_tested: 2026-05-31
+last_gotcha: 2026-05-31
 license: MIT
 links:
   - { label: "wraps", target: "three.js (external)" }
   - { label: "directed-by", target: "Shop/Maker" }
   - { label: "pairs-with", target: "Shop/Tone.js" }
+  - { label: "pairs-with", target: "Shop/Web Audio Worklet" }
   - { label: "pairs-with", target: "Shop/p5.js" }
   - { label: "commissioned-by", target: "Projects/Waveguide Synthesizer" }
-tags: [specialist, shop, 3d, webgl, interactive, web, stub]
+  - { label: "exemplified-by", target: "Wavetable Scanner" }
+tags: [specialist, shop, 3d, webgl, interactive, web]
 ---
 
 # Three.js
@@ -112,16 +114,26 @@ Scene renders without WebGL/console errors; the geometry is provably bound to th
 
 ## Gotchas
 
-*(Append-only, dated. Empty until the first real job — the commissioned [[Projects/Waveguide Synthesizer|Waveguide Synthesizer]] interface — surfaces them. Anticipated traps, to be confirmed and dated on first encounter:)*
+*Append-only, dated. The first three were anticipated when this entry was a stub; promoted to confirmed by the [[Wavetable Scanner]] Sketch (2026-05-31).*
 
-- claude.ai artifacts ship Three.js **r128**; `CapsuleGeometry` (r142+) and many later helpers don't exist — build against r128 explicitly, use Cylinder/Sphere or custom geometry instead
-- Updating a `BufferGeometry` position buffer in place requires `geometry.attributes.position.needsUpdate = true` each frame, or the GPU never sees the change — the classic silent no-op
-- A backgrounded tab loses its WebGL context; long-lived interfaces need `webglcontextlost` / `webglcontextrestored` handling
-- GLSL compile failures render a black screen with no thrown error — check `gl.getShaderInfoLog` when debugging a blank scene
+**2026-05-31 — claude.ai artifacts ship Three.js r128; `CapsuleGeometry` (r142+) and many later helpers don't exist.** Confirmed. Use Cylinder/Sphere/custom geometry. The [[Wavetable Scanner]] uses raw `BufferGeometry` lines throughout; no later-version reach was needed.
+
+**2026-05-31 — `geometry.attributes.position.needsUpdate = true` is the silent no-op trap.** Confirmed. Hit it once on the cursor line during the [[Wavetable Scanner]] build — cursor vertices were mutated in JS but the GPU never re-uploaded the buffer; cursor sat frozen at its zeroed default. The fix is one assignment, the symptom is "everything moves except the thing I just changed." Reach for it whenever you write into a position-attribute array in place.
+
+**2026-05-31 — Match the CDN version of `three.min.js` and `OrbitControls.js`.** First call to `new THREE.OrbitControls(...)` throws "is not a constructor" if the two URLs disagree on version. The working pair for the r128 single-file Sketch path: `https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js` + `https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js`. Do not reach for `examples/jsm/controls/OrbitControls.js` — that's the module path and expects an importmap the single-file Sketch doesn't have.
+
+**2026-05-31 — `LineBasicMaterial.linewidth` is honored as 1px only on most platforms.** Cosmetic, not silent — the line draws, just always 1px regardless of declared width. For a Piece where a foreground line needs to pop, the path is `LineMaterial` + `LineGeometry` + `Line2` from `examples/jsm/lines/` (which needs a bundler, so it's a Study/Piece move, not a Sketch one), or render the line as an extruded ribbon. Carry colour contrast in the Sketch and reserve thickness for higher tiers.
+
+*Still anticipated, not yet encountered on a real job:*
+
+- A backgrounded tab loses its WebGL context; long-lived interfaces need `webglcontextlost` / `webglcontextrestored` handling.
+- GLSL compile failures render a black screen with no thrown error — check `gl.getShaderInfoLog` when debugging a blank scene. The [[Wavetable Scanner]] uses no custom `ShaderMaterial`, so this stays anticipated until a job uses one.
 
 ## Recipes
 
-*(Links to working examples in `Artifacts/Shop/Three.js/recipes/` once they exist. The first will be the Waveguide Synthesizer Sketch interface — a vibrating string whose displacement is read directly from the AudioWorklet's delay-line buffer.)*
+**2026-05-31 — Wavetable Scanner: single-cycle morph laboratory** (Sketch tier, raw r128, single-file). Each frame of the loaded wavetable rendered as a `BufferGeometry` line, laid out along Z (back = brightest under centroid sort), per-frame colour a `palaceSeries()`-ordered ramp from `--fg-3` to `--accent`. A translucent cursor plane plus an interpolated "current waveform" line track the audio's scan position; the cursor's vertex Y coordinates run the same `(a + fr*(b-a))` math the AudioWorklet uses on the same `Float32Array`, so the picture and the sound cannot drift — the [[Waveguide Synthesizer]] pattern in miniature. CRT skin selected as the literal "scope / DSP / signal-watching" register, no deviation declared. Pairs with [[Shop/Web Audio Worklet]] (custom wavetable DSP). The position-blending math and the centroid-sort-vs-authored-order tradeoff are deposited as the new concept entry [[1D Wavetable Scanning]]. Bundle: [Artifacts/Wavetable Scanner/](../Artifacts/Wavetable Scanner/). This is the first dated job for this Specialist — promotes the entry from `stub` to `alive`.
+
+*Forward recipe (anticipated, not yet built): the [[Projects/Waveguide Synthesizer|Waveguide Synthesizer]] Sketch interface — a vibrating string whose per-vertex displacement is read straight from the AudioWorklet's delay-line buffer.*
 
 ## Test Suite
 
