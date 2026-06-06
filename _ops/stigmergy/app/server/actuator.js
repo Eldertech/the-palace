@@ -33,7 +33,7 @@ import {
   existsSync, mkdirSync, openSync, writeSync, closeSync, writeFileSync,
   readFileSync, readSync, unlinkSync, statSync,
 } from 'node:fs';
-import { resolve, join } from 'node:path';
+import { resolve, join, dirname } from 'node:path';
 import { logTail as tailLines, lastFireStatus } from '../src/lib/worker-log.js';
 
 // The default real-worker argv. The `bypassPermissions` flag doubles as the
@@ -52,6 +52,7 @@ export function createActuator({
   stateDir,
   buildArgv = defaultBuildArgv,
   signature = DEFAULT_SIGNATURE,
+  onExit = null,
 } = {}) {
   const root = resolve(palaceRoot ?? process.cwd());
   const dir = stateDir ? resolve(stateDir) : join(root, '_ops/stigmergy/.actuator');
@@ -106,7 +107,17 @@ export function createActuator({
 
   // Fire a worker. Idempotent: refuses while one is alive (scar #4).
   // Returns { fired, msg, pid? }.
-  function fire(prompt) {
+  //
+  // opts.transcriptPath -- when set, the worker's STDOUT is redirected to this
+  //   file (the per-cycle stream-json transcript) while STDERR still flows to
+  //   .worker.log, so lastFireStatus keeps classifying auth/spawn errors. When
+  //   unset, stdout+stderr both go to the log (the original Enrichment shape).
+  // opts.meta -- an arbitrary context object pinned to THIS fire's closure and
+  //   handed to onExit(ctx) when the child dies. Because scar #4 refuses a
+  //   second concurrent fire, the closure capture is race-free: there is at
+  //   most one in-flight worker, and its meta is the one onExit will see.
+  function fire(prompt, opts = {}) {
+    const { transcriptPath = null, meta = null } = opts;
     const alive = isAlive();
     if (alive.running) return { fired: false, msg: `already running (pid ${alive.pid})`, pid: alive.pid };
     if (typeof prompt !== 'string' || prompt.trim() === '') {
@@ -120,23 +131,41 @@ export function createActuator({
     } catch (e) {
       return { fired: false, msg: `could not open log: ${e.message}` };
     }
+
+    // Optional per-cycle transcript fd (worker stdout). Failure to open it is
+    // non-fatal: fall back to logging stdout so the fire still proceeds.
+    let transcriptFd = null;
+    if (transcriptPath) {
+      try {
+        mkdirSync(dirname(transcriptPath), { recursive: true });
+        transcriptFd = openSync(transcriptPath, 'a');
+      } catch (e) {
+        try { writeSync(logFd, `ERROR: could not open transcript ${transcriptPath}: ${e.message}\n`); } catch (_) { /* ignore */ }
+        transcriptFd = null;
+      }
+    }
+
     const nowIso = new Date().toISOString();
     writeSync(logFd, `\n--- worker fire ${nowIso} ---\n`);
 
     const argv = buildArgv(prompt);
     const [cmd, ...args] = argv;
 
+    // stdout -> transcript (if any) else the log; stderr -> the log always.
+    const stdoutTarget = transcriptFd != null ? transcriptFd : logFd;
+
     let child;
     try {
       child = spawn(cmd, args, {
         cwd: root,
         detached: true,
-        stdio: ['ignore', logFd, logFd],
+        stdio: ['ignore', stdoutTarget, logFd],
         windowsHide: true,
       });
     } catch (e) {
       try { writeSync(logFd, `ERROR: spawn failed: ${e.message}\n`); } catch (_) { /* ignore */ }
       try { closeSync(logFd); } catch (_) { /* ignore */ }
+      if (transcriptFd != null) { try { closeSync(transcriptFd); } catch (_) { /* ignore */ } }
       return { fired: false, msg: `spawn failed: ${e.message}` };
     }
 
@@ -157,7 +186,7 @@ export function createActuator({
     // scar #3: cleanup on exit. While the server lives, the 'exit' handler
     // removes the pid file (only if it still names THIS pid -- avoids racing a
     // newer fire). The ps-liveness check heals it across server restarts.
-    child.on('exit', () => {
+    child.on('exit', (code, signal) => {
       try {
         if (existsSync(pidFile) && readFileSync(pidFile, 'utf8').trim() === String(pid)) {
           unlinkSync(pidFile);
@@ -165,6 +194,16 @@ export function createActuator({
       } catch (_) { /* ignore */ }
       try { writeSync(logFd, `\n--- worker exit pid ${pid} at ${new Date().toISOString()} ---\n`); } catch (_) { /* ignore */ }
       try { closeSync(logFd); } catch (_) { /* ignore */ }
+      if (transcriptFd != null) { try { closeSync(transcriptFd); } catch (_) { /* ignore */ } }
+      // Reap hook -- runs AFTER pid cleanup so status() already reads idle.
+      // NEVER let a throw here escape: an uncaught error in an 'exit' handler
+      // crashes the host process (the Vite dev server). The lane's reap does
+      // its own error logging; this is a last-resort swallow.
+      if (typeof onExit === 'function') {
+        try {
+          onExit({ meta, transcriptPath, pid, code, signal });
+        } catch (_) { /* swallow */ }
+      }
     });
 
     // Detach so the worker outlives this request, but keep the listeners

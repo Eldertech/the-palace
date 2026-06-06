@@ -228,6 +228,18 @@ const PHASES = {
       'phase-18-v1.0/topology-clicked-node.png',
     ],
   },
+  19: {
+    label: 'v1.0 Phase 6 — Steward Advance (board → permanent-steward cycle)',
+    vitest: [
+      'steward-lane.test.js', 'worker-log.test.js',
+      'parser.test.js', 'schema.test.js', 'middleware.test.js', 'validator.test.js',
+    ],
+    integration: ['stewards-middleware.test.js', 'actuator.test.js', 'worker-middleware.test.js'],
+    playwright: ['boot.spec.js', 'tokens.spec.js', 'stewards.spec.js'],
+    // No automated captures: the advance flow fires a worker (stub-gated), so the
+    // surface is verified live via the preview/e2e rather than the capture spec.
+    screenshots: [],
+  },
 };
 
 function logRun(entry) {
@@ -336,7 +348,7 @@ function main() {
     process.exit(2);
   }
   if (arg === 'all') {
-    for (const p of [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18]) {
+    for (const p of [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19]) {
       const code = checkPhase(p);
       if (code !== 0) process.exit(code);
     }

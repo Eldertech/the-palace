@@ -24,6 +24,7 @@ import { readLatestMap } from '../src/lib/topology.js';
 import { findUnsungEdges, buildPalaceIndex } from '../src/lib/unsung-paths.js';
 import { readLog, readCommit, readUncommitted } from './git.js';
 import { createActuator } from './actuator.js';
+import { createStewardLane } from './steward-lane.js';
 import { readCards, appendInboxBlock, CARD_ACTIONS } from './cards.js';
 import { composePreview } from './entry-save.js';
 import { appendVerdict, readVerdicts } from './digest-verdicts.js';
@@ -339,6 +340,25 @@ export function blackboardMiddleware(palaceRoot, opts = {}) {
       actuator = createActuator({ palaceRoot });
     }
   }
+
+  // The steward lane: a SEPARATE actuator lane (.actuator-steward/) that fires
+  // a permanent-steward cycle and reaps it with the orchestrator's processCycle.
+  // Same STIGMERGY_STUB_WORKER gate; when stubbed it fires the stub worker AND
+  // sets dryReap so a live e2e fire never mutates the real palace. Tests inject
+  // opts.stewardLane (a temp-palace lane) to prove the genuine consume.
+  let stewardLane = opts.stewardLane;
+  if (!stewardLane) {
+    if (process.env.STIGMERGY_STUB_WORKER) {
+      const stewardStub = resolve(palaceRoot, '_ops/stigmergy/app/tests/fixtures/stub-steward-worker.mjs');
+      stewardLane = createStewardLane({
+        palaceRoot,
+        buildArgv: () => ['node', stewardStub, '--permission-mode', 'bypassPermissions', '--sleep', '800'],
+        dryReap: true,
+      });
+    } else {
+      stewardLane = createStewardLane({ palaceRoot });
+    }
+  }
   return {
     name: 'stigmergy-blackboard-middleware',
     configureServer(server) {
@@ -567,6 +587,65 @@ export function blackboardMiddleware(palaceRoot, opts = {}) {
             return jsonResponse(res, status, { ...result, ...actuator.status() });
           }
           return jsonResponse(res, 200, { ...result, ...actuator.status() });
+        }
+
+        // ── GET /api/stewards ─ registered permanent stewards + grant state ──
+        // Each row carries grants_waiting: TRICKSTER grants on the board that
+        // the steward has not yet consumed (the "ready to advance" badge). Plus
+        // the steward-lane worker status (running / batch progress / last reap).
+        if (urlPath === '/api/stewards' && method === 'GET') {
+          try {
+            return jsonResponse(res, 200, {
+              stewards: stewardLane.list(),
+              worker: stewardLane.status(),
+              stubbed: !!process.env.STIGMERGY_STUB_WORKER || !!opts.stewardLane,
+              ts: new Date().toISOString(),
+            });
+          } catch (err) {
+            return jsonResponse(res, 500, { error: `read stewards failed: ${err.message}` });
+          }
+        }
+
+        // ── POST /api/steward/advance ─ advance ONE steward by a cycle ───────
+        // Body: { name }. Fires the steward-lane worker; the reap consumes its
+        // pending grants. Refuses (409) when a steward cycle is already alive.
+        if (urlPath === '/api/steward/advance' && method === 'POST') {
+          const bodyText = await readBody(req, res);
+          if (bodyText === null) return; // 413 already sent
+          let body;
+          try { body = JSON.parse(bodyText); } catch (e) {
+            return jsonResponse(res, 400, { error: `malformed JSON: ${e.message}` });
+          }
+          const name = body && typeof body.name === 'string' ? body.name.trim() : '';
+          if (name === '') return jsonResponse(res, 400, { error: 'missing or empty name' });
+          const result = stewardLane.advance({ name });
+          if (!result.ok) {
+            // unknown steward -> 404; busy -> 409; anything else -> 500.
+            const status = result.found === false ? 404 : (result.busy ? 409 : 500);
+            return jsonResponse(res, status, { ...result, ...stewardLane.status() });
+          }
+          return jsonResponse(res, 200, { ...result, ...stewardLane.status() });
+        }
+
+        // ── POST /api/stewards/advance-all ─ advance every ready steward ─────
+        // Body: { names? }. Defaults to all stewards with grants_waiting > 0.
+        // The lane fires them serially (one worker per lane); the reap drains
+        // the queue. Refuses (409) if a steward cycle is already alive.
+        if (urlPath === '/api/stewards/advance-all' && method === 'POST') {
+          const bodyText = await readBody(req, res);
+          if (bodyText === null) return; // 413 already sent
+          let body = {};
+          if (bodyText.trim() !== '') {
+            try { body = JSON.parse(bodyText); } catch (e) {
+              return jsonResponse(res, 400, { error: `malformed JSON: ${e.message}` });
+            }
+          }
+          const names = Array.isArray(body.names) ? body.names : undefined;
+          const result = stewardLane.advanceAll({ names });
+          if (!result.ok && result.busy) {
+            return jsonResponse(res, 409, { ...result });
+          }
+          return jsonResponse(res, 200, { ...result });
         }
 
         // ── GET /api/cards ─ the Enrichment card queue (Phase 4.5) ──────────

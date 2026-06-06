@@ -1,5 +1,6 @@
-#!/usr/bin/env node
 // build-cycle-prompt.js — assemble the full prompt for one permanent-steward cycle.
+// (Invoked via `node <file>`; no shebang so it bundles cleanly when the app
+// server imports it through vite/esbuild — esbuild does not strip shebangs.)
 //
 // Renders the `steward` system template, then builds the per-cycle user turn:
 // the home entry, the injected state, the recent history tail, the board slice
