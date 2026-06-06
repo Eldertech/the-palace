@@ -1,6 +1,6 @@
 {
-  "iteration": 15,
-  "last_active": "2026-06-06T10:29:38Z",
+  "iteration": 16,
+  "last_active": "2026-06-06T13:37:48.471Z",
   "last_read_cursor": "gsl-steward-031",
   "health": {
     "context_pct": null,
@@ -17,21 +17,7 @@
     "stage_changed_since_last": false,
     "page_updates_observed_since_last": []
   },
-  "pending_requests": [
-    {
-      "request_id": "gsl-steward-031",
-      "resource": "directional_decision",
-      "decision_topic": "Source-two (Shepard drones) shipped and approved — what's the ripe next move toward the forward vector?",
-      "blocking": false,
-      "posted_at": "2026-06-06T17:04:00-04:00",
-      "options": [
-        "PROMOTE-SKILL",
-        "SOURCE-THREE-LOCAL-WAV",
-        "CONSOLIDATE-PAGE",
-        "RE-AUDITION-LOOP"
-      ]
-    }
-  ],
+  "pending_requests": [],
   "stranded_requests": [
     {
       "request_id": "gsl-steward-004",
@@ -203,6 +189,22 @@
       "resolved_at": "2026-06-05T23:25:27.439Z",
       "resolved_by": "e623ce51-6b74-401b-88e0-499d78ab83fb",
       "outcome": "GRANTED — option_id=APPROVE"
+    },
+    {
+      "request_id": "gsl-steward-031",
+      "resource": "directional_decision",
+      "decision_topic": "Source-two (Shepard drones) shipped and approved — what's the ripe next move toward the forward vector?",
+      "blocking": false,
+      "posted_at": "2026-06-06T17:04:00-04:00",
+      "options": [
+        "PROMOTE-SKILL",
+        "SOURCE-THREE-LOCAL-WAV",
+        "CONSOLIDATE-PAGE",
+        "RE-AUDITION-LOOP"
+      ],
+      "resolved_at": "2026-06-06T11:53:07.673Z",
+      "resolved_by": "resp-mq2anr6h-b58kr8",
+      "outcome": "GRANTED — option_id=PROMOTE-SKILL"
     }
   ],
   "_pilot_metadata": {

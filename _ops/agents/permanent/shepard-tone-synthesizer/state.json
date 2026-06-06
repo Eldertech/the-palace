@@ -1,7 +1,7 @@
 {
-  "iteration": 5,
-  "last_active": "2026-06-06T10:50:45Z",
-  "last_read_cursor": "shepard-steward-016",
+  "iteration": 6,
+  "last_active": "2026-06-06T16:51:46.077Z",
+  "last_read_cursor": "shepard-steward-019",
   "health": {
     "context_pct": null,
     "avg_output_tokens_last_5": null,
@@ -19,16 +19,26 @@
   },
   "pending_requests": [
     {
-      "request_id": "shepard-steward-016",
-      "resource": "directional_decision",
-      "decision_topic": "How do I first make Stage 2 (discrete-step ascent with an exposed wrap seam) audible?",
-      "blocking": false,
-      "posted_at": "2026-06-06T13:05:00-04:00",
+      "request_id": "shepard-steward-018",
+      "resource": "audition_verification",
+      "blocking": true,
+      "posted_at": "2026-06-06T14:08:30-04:00",
       "options": [
-        "AUDITION-SEED-FIRST",
-        "WEB-INTERACTIVE-FIRST",
-        "THEORY-SECTION-FIRST",
-        "YOU-DEFINE"
+        "APPROVE-STAGE-2",
+        "ADJUST-WINDOW",
+        "ADJUST-WRAP",
+        "REJECT-PROTOTYPE"
+      ]
+    },
+    {
+      "request_id": "shepard-steward-019",
+      "resource": "directional_decision",
+      "blocking": false,
+      "posted_at": "2026-06-06T14:09:00-04:00",
+      "options": [
+        "DRAFT-NOW",
+        "DRAFT-AFTER-AUDITION",
+        "MERGE-INTO-EXISTING"
       ]
     }
   ],
@@ -145,6 +155,22 @@
       "resolved_at": "2026-06-05T23:25:38.836Z",
       "resolved_by": "10781c1e-21f7-4039-944f-0e838adf67da",
       "outcome": "GRANTED — option_id=STEP-AND-SHOW"
+    },
+    {
+      "request_id": "shepard-steward-016",
+      "resource": "directional_decision",
+      "decision_topic": "How do I first make Stage 2 (discrete-step ascent with an exposed wrap seam) audible?",
+      "blocking": false,
+      "posted_at": "2026-06-06T13:05:00-04:00",
+      "options": [
+        "AUDITION-SEED-FIRST",
+        "WEB-INTERACTIVE-FIRST",
+        "THEORY-SECTION-FIRST",
+        "YOU-DEFINE"
+      ],
+      "resolved_at": "2026-06-06T13:51:32.270Z",
+      "resolved_by": "resp-mq2ew14e-ozszrc",
+      "outcome": "GRANTED — option_id=WEB-INTERACTIVE-FIRST"
     }
   ],
   "_pilot_metadata": {

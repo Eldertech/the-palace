@@ -1,6 +1,6 @@
 {
-  "iteration": 4,
-  "last_active": "2026-06-06T10:50:45Z",
+  "iteration": 5,
+  "last_active": "2026-06-06T13:37:57.704Z",
   "last_read_cursor": "semantic-delay-steward-010",
   "health": {
     "context_pct": null,
@@ -17,20 +17,7 @@
     "stage_changed_since_last": false,
     "page_updates_observed_since_last": []
   },
-  "pending_requests": [
-    {
-      "request_id": "semantic-delay-steward-010",
-      "resource": "directional_decision",
-      "blocking": false,
-      "posted_at": "2026-06-06T16:36:00-04:00",
-      "options": [
-        "WIRE-THE-MODEL",
-        "MULTI-VOICE-TAPS",
-        "SEGMENTATION-PASS",
-        "YOU-DEFINE"
-      ]
-    }
-  ],
+  "pending_requests": [],
   "resolved_requests": [
     {
       "request_id": "semantic-delay-steward-002",
@@ -78,6 +65,21 @@
       "resolved_at": "2026-06-05T23:23:42.482Z",
       "resolved_by": "a1a6006f-fa51-4cb2-bba1-6f99078fbc25",
       "outcome": "GRANTED — option_id=BUILD-INSTRUMENT-FIRST"
+    },
+    {
+      "request_id": "semantic-delay-steward-010",
+      "resource": "directional_decision",
+      "blocking": false,
+      "posted_at": "2026-06-06T16:36:00-04:00",
+      "options": [
+        "WIRE-THE-MODEL",
+        "MULTI-VOICE-TAPS",
+        "SEGMENTATION-PASS",
+        "YOU-DEFINE"
+      ],
+      "resolved_at": "2026-06-06T11:58:39.738Z",
+      "resolved_by": "resp-mq2auvei-g3ck4e",
+      "outcome": "GRANTED — option_id=WIRE-THE-MODEL"
     }
   ],
   "_pilot_metadata": {
