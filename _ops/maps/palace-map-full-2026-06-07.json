@@ -4,7 +4,7 @@
     "scope": "full",
     "node_count": 267,
     "ops_node_count": 38,
-    "edge_count": 1763,
+    "edge_count": 1770,
     "ghost_taxonomy": {
       "error_ghosts": [],
       "ops_ghosts": [],
@@ -401,7 +401,7 @@
       "has_forward_vector": true,
       "last_activated": "2026-05-02",
       "activation_count": "2",
-      "outbound_count": 8,
+      "outbound_count": 9,
       "inbound_count": 15
     },
     {
@@ -1842,7 +1842,7 @@
       "has_forward_vector": true,
       "last_activated": "2026-03",
       "activation_count": "1",
-      "outbound_count": 11,
+      "outbound_count": 12,
       "inbound_count": 36
     },
     {
@@ -1864,7 +1864,7 @@
       "has_forward_vector": true,
       "last_activated": "2026-03-28",
       "activation_count": "1",
-      "outbound_count": 18,
+      "outbound_count": 19,
       "inbound_count": 15
     },
     {
@@ -2040,7 +2040,7 @@
       "has_forward_vector": true,
       "last_activated": null,
       "activation_count": null,
-      "outbound_count": 5,
+      "outbound_count": 6,
       "inbound_count": 9
     },
     {
@@ -2139,7 +2139,7 @@
       "has_forward_vector": true,
       "last_activated": "2026-05-26",
       "activation_count": "4",
-      "outbound_count": 14,
+      "outbound_count": 15,
       "inbound_count": 17
     },
     {
@@ -2316,7 +2316,7 @@
       "last_activated": null,
       "activation_count": null,
       "outbound_count": 9,
-      "inbound_count": 2
+      "inbound_count": 9
     },
     {
       "id": "STIGMERGY Philosophical Lenses",
@@ -2667,7 +2667,7 @@
       "has_forward_vector": false,
       "last_activated": "2026-03",
       "activation_count": "1",
-      "outbound_count": 13,
+      "outbound_count": 14,
       "inbound_count": 23
     },
     {
@@ -2953,7 +2953,7 @@
       "has_forward_vector": true,
       "last_activated": "2026-04-01",
       "activation_count": "2",
-      "outbound_count": 24,
+      "outbound_count": 25,
       "inbound_count": 29
     },
     {
@@ -6736,6 +6736,12 @@
     },
     {
       "source": "BBS Design System",
+      "type": "enables",
+      "target": "STIGMERGY",
+      "label": "visual-substrate"
+    },
+    {
+      "source": "BBS Design System",
       "type": "connects-to",
       "target": "Palace Agent Infrastructure Spec",
       "label": null
@@ -7486,6 +7492,12 @@
     },
     {
       "source": "Palace Agent Infrastructure Spec",
+      "type": "connects-to",
+      "target": "STIGMERGY",
+      "label": "wire-spec-for"
+    },
+    {
+      "source": "Palace Agent Infrastructure Spec",
       "type": "deepens",
       "target": "Swarm Weave",
       "label": null
@@ -7803,9 +7815,21 @@
       "label": null
     },
     {
+      "source": "Pheromone Trail",
+      "type": "mirrors",
+      "target": "STIGMERGY",
+      "label": "two-timescale-trace"
+    },
+    {
       "source": "Project Stewardship System",
       "type": "connects-to",
       "target": "BBS Blackboard",
+      "label": "runs-on"
+    },
+    {
+      "source": "Project Stewardship System",
+      "type": "connects-to",
+      "target": "STIGMERGY",
       "label": "runs-on"
     },
     {
@@ -8299,6 +8323,12 @@
       "type": "deepens",
       "target": "Pages as Agents",
       "label": "foundation"
+    },
+    {
+      "source": "Swarm Weave",
+      "type": "connects-to",
+      "target": "STIGMERGY",
+      "label": "coordinated-on"
     },
     {
       "source": "Symbiotic Skills",
@@ -12479,6 +12509,12 @@
     {
       "source": "Trickster",
       "type": "connects-to",
+      "target": "STIGMERGY",
+      "label": "the-board-i-enter"
+    },
+    {
+      "source": "Trickster",
+      "type": "connects-to",
       "target": "Kuramoto Coupling",
       "label": null
     },
@@ -13243,6 +13279,12 @@
       "type": "couples-with",
       "target": "Palace as Context Injection System",
       "label": "same-project-from-context-side"
+    },
+    {
+      "source": "Pages as Agents",
+      "type": "connects-to",
+      "target": "STIGMERGY",
+      "label": "the-page-is-the-agent"
     },
     {
       "source": "Palace Audit \u2014 2026-05-28",
