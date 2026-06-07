@@ -59,6 +59,7 @@ const DICT = {
   'trickster.lean.prefix':              'steward leans',
   'trickster.lean.hint':                'space to file',
   'trickster.lean.file':                'file lean ▶',
+  'trickster.lean.fileandrun':          'file lean & run ▶',
   'trickster.quickbar.file':            'file all',
   'trickster.quickbar.filing':          'filing all…',
   'trickster.quickbar.summary':         'the leans —',

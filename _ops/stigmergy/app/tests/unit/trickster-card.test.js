@@ -159,6 +159,35 @@ describe('TricksterCard — file & run', () => {
   });
 });
 
+// FILE LEAN & RUN — the lean-side twin of FILE & RUN. When the steward left a
+// recommended_option, the LeanPanel offers FILE LEAN (file the lean, carrying
+// any freeform note) and FILE LEAN & RUN (file it AND advance the asking steward
+// by a cycle). Click→advanceSteward wiring is event-driven (an e2e concern, same
+// as FILE & RUN — see fileGrant's run path); here we assert the panel and both
+// buttons render when a lean exists and stay absent when it does not.
+describe('TricksterCard — file lean & run', () => {
+  const LEANED = {
+    ...ITEM,
+    recommended_option: { id: 'SHIP', label: 'SHIP — ship the 128-region instrument' },
+  };
+  const renderLeaned = (props) =>
+    renderToStaticMarkup(React.createElement(TricksterCard, { item: LEANED, ...props }));
+
+  it('renders the lean panel with both FILE LEAN and FILE LEAN & RUN when a lean exists', () => {
+    const html = renderLeaned();
+    expect(html).toContain('data-testid="lean-panel"');
+    expect(html).toContain(t('trickster.lean.file'));
+    // renderToStaticMarkup HTML-escapes the ampersand ('&' → '&amp;'); the
+    // browser DOM still shows "file lean & run ▶". Match the serialized form.
+    expect(html).toContain(t('trickster.lean.fileandrun').replace(/&/g, '&amp;'));
+  });
+
+  it('renders no lean panel when the steward left no recommended_option', () => {
+    // The base ITEM defines no recommended_option, so the panel must not render.
+    expect(render()).not.toContain('data-testid="lean-panel"');
+  });
+});
+
 // Inline assets, payload-first (the inline-assets wire-through, 2026-06-06):
 // the card renders artifacts the steward declared on the wire (item.artifacts,
 // produced by buildInbox from payload.artifacts) ahead of the hand-curated
