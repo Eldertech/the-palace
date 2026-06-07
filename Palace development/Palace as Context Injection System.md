@@ -7,8 +7,8 @@ pillars:
   - practice
 born: 2026-03
 stage: growing
-last_activated: 2026-04-30
-activation_count: 2
+last_activated: 2026-06-07
+activation_count: 3
 links:
   - target: "[[Enchanted Worker]]"
     type: spawned
@@ -96,6 +96,18 @@ The densest case of context injection is the person-page. Where most palace entr
 This is the same project as [[Pages as Agents]] § The Person-Page Frontier, viewed from the architecture-of-context side rather than the page side. The two entries describe one mechanism from two angles. Pages as Agents names the page as the dormant agent waiting to wake; this entry names the wake-up event as a context injection that constructs a specifically-oriented mind. A well-designed person-page makes that mind a particular thinker rather than a generic one.
 
 The operational implication for [[Mixture of Experts]]: each person-page is one expert in the practitioner's pool, and loading a person-page IS the routing event — the gate selecting which embodied expert to invoke for the question at hand. [[Excellent Adventure]] is single-expert injection; [[Dialectic]] is multi-expert injection where several person-pages are loaded together and allowed to hear each other. The injection system and the expert pool are the same machinery.
+
+## The @import Floor — Injection Made Mechanical (2026-06)
+
+The injection thesis got an operational floor this session — and a constraint that sharpens it.
+
+The mechanism: in Claude Code, the entry point (`CLAUDE.md`) auto-loads, but its *prose* pointers do not. "See SCHEMA.md, read the relevant ceremony" is a suggestion the agent may or may not follow. Only the `@import` directive actually pulls a file into context at session start and re-injects it after compaction. So the line between a generic collaborator and a palace-specific one is, concretely, the line between a prose mention and an `@import`. Under-specified injection is not a metaphor here; it is the observed default failure mode — a fresh session (Claude Code's, and Cowork's) repeatedly missing the schema and ceremonies the entry point only *named*. The realization that prompted this entry has a mundane, load-bearing corollary: **what you want the collaborator to always be, you must `@import`, not link.**
+
+This maps the tiered architecture onto a real mechanism. `@imports` are *static* — identical every session — so they can carry only the **invariant** tiers: Tier 0 (the [[JEWEL]] — who is in the room) and the space-free part of the Tier-1 skeleton (SCHEMA — what can exist). The Tier 3–4 active surface stays variable, loaded by the ceremony or read on demand. The injection system's invariant half is now declarative in `CLAUDE.md`; the variable half remains the ceremony's job. This is the partial worked example the forward vector asked for: the order is Tier 0 → Tier 1 — identity before rules — and order is enforced by sequence in the file.
+
+The constraint, worth memorializing because it shapes every future ceremony that loads context: **`@import` cannot resolve paths containing spaces** (a current Claude Code bug). In an Obsidian vault whose foundational files are titled for humans — `FOUR PILLARS.md`, `Substrate Skill.md` — the entire Tier-2 framework is *un-importable* without a space-free symlink. The vault's human-readable naming and the tooling's import parser are in direct tension. Until the bug is fixed, the auto-loaded floor is Tier 0 + the space-free part of Tier 1; the framework tier is injected by a ceremony, read on demand, or reached through a symlink. A real seam between the palace-as-written and the palace-as-loaded — the first place the injection theory met a hard edge of the substrate it runs on. (This palace took the symlink path: `_`-named symlinks — `FOUR_PILLARS.md` → `FOUR PILLARS.md`, and the same for the rest of Tier 2 — bring the framework tier into the auto-loaded floor, ≈19K tokens for Tier 0–2. The seam persists in the workaround: a future `@import` fix should retire the symlinks, and the `_`-aliases must not leak into `[[wikilinks]]`, which stay on the real spaced titles.)
+
+This also closes a standing question in [[JEWEL]] — "Should the jewel be embedded verbatim inside CLAUDE.md so it is always co-present with the entry point?" Loudon answered *yes*; `@import` realizes it, expanding the Jewel inline at load (verbatim co-presence by another name). JEWEL's forward vector "build the tiered loading directly into CLAUDE.md" is now partially built: Tiers 0–1 are wired; Tier 2 waits on the space bug.
 
 ## Cross-Domain Resonance
 
