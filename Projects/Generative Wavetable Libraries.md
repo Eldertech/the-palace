@@ -131,11 +131,15 @@ At the simplest end: a single WAV file containing exactly one cycle of a wavefor
 
 **Output:** `crystal_bravais.wav` (Serum/Vital/Surge XT) and `crystal_bravais_ableton.wav`. Each synth's wavetable position sweeps through all 7 lattice systems.
 
+**Status:** Shipped 2026-05-27, auditioned and accepted (cycle 3). Zero-phase reset across frames. Files at `Projects/Generative Wavetable Libraries/crystal-bravais/`. CLM writer pending verification against a Serum reference WAV (Loudon pointed at `/Library/Audio/Presets/Xfer Records/Serum 2 Presets/Tables/Analog`).
+
 ---
 
 ### Phase 2 — Multi-Source Wavetables
 
 Generalize the source: any palace synthesis ([[Shepard Tone Synthesizer]] partial stacks, neural granular cycles, etc.), AI-audio sub-agent output, or user-provided cycle audio can become a wavetable through the same pipeline.
+
+**First proof — Shepard CENTROID-FREQ wavetable.** Shipped 2026-06-06, auditioned and accepted cycle 9. The sweep parameter is spectral-centroid frequency: position 0 holds the centroid low (dark fundamental-weighted Shepard cloud); position 1 holds it high (bright upper-octave-weighted cloud). One note brightens monotonically as the position sweeps. Built from the [[Shepard Tone Synthesizer]] steward's documented octave-stack recipe. Files at `Projects/Generative Wavetable Libraries/shepard-centroid/` (Ableton + audition sweep WAVs). This is the cross-steward source-reuse pattern the multi-source pipeline promised.
 
 ---
 
@@ -179,7 +183,7 @@ This page is tended by a permanent steward and **may lag its live state** — th
 
 - **Steward state + history:** `_ops/agents/permanent/generative-wavetable-libraries/`
 - **Live thread (BBS):** session `gwl-steward-2026-05-27` — open in STIGMERGY
-- **As of last consolidation:** cycle 3 (2026-05-27) · 1 blocking audition open (`gwl-steward-006`)
-- **Not yet folded in here:** the phase-coherence policy is decided (zero-phase reset); the Phase 1 Crystal Bravais wavetable proof is built at `Projects/Generative Wavetable Libraries/crystal-bravais/` and awaiting audition.
+- **As of last consolidation:** cycle 9 (2026-06-07) · no open auditions
+- **Not yet folded in here:** none — Phase 1 (Crystal Bravais, accepted) and the Phase 2 first proof (Shepard CENTROID-FREQ, accepted) are both in the body above. Outstanding work: CLM writer verification against the Serum reference folder; choice of next multi-source wavetable vs Surge XT .wt binary writer.
 
 This footer is placed at enchantment and pruned at consolidation. See [[Drift and Consolidation]].
