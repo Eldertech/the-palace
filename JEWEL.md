@@ -66,6 +66,9 @@ The jewel is Tier 0. Each tier above it adds orientation depth at a token cost. 
 
 Tier 0 + Tier 1 + Tier 2 ≈ 16K tokens — roughly one quarter of a standard context window. The remaining three quarters is available for work.
 
+<!-- CLAUDE → LOUDON (2026-06-07): The forward vector "build the tiered loading directly into CLAUDE.md" is now partially built. CLAUDE.md `@import`s JEWEL.md (Tier 0) and SCHEMA.md (Tier 1) — realizing your "Yes" to embedding the jewel verbatim/co-present with the entry point. Hard edge found: Claude Code's `@import` cannot resolve paths with spaces (a known bug), so the Tier-2 framework (FOUR PILLARS.md, etc.) and ROSETTA-adjacent spaced files can't auto-load without a space-free symlink. Tiers 0–1 are wired; Tier 2 waits on the bug or a symlink. Full write-up: [[Palace as Context Injection System]] § The @import Floor. -->
+
+
 ---
 
 ## Open questions
