@@ -1,0 +1,242 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Waveguide Sketch — Karplus-Strong</title>
+<style>
+  html, body { margin: 0; padding: 0; background: #0b0d10; color: #cfd3d8;
+    font-family: ui-monospace, Menlo, monospace; overflow: hidden; height: 100%; }
+  #ui { position: absolute; top: 10px; left: 12px; z-index: 10;
+    background: rgba(11,13,16,0.72); padding: 10px 12px; border: 1px solid #1e242b;
+    border-radius: 4px; font-size: 12px; line-height: 1.5; max-width: 280px; }
+  #ui label { display: block; margin-top: 6px; }
+  #ui input[type=range] { width: 100%; }
+  #ui .row { display: flex; justify-content: space-between; font-variant-numeric: tabular-nums; }
+  #ui button { margin-top: 8px; background: #1a2128; color: #cfd3d8; border: 1px solid #2a323b;
+    padding: 6px 12px; font: inherit; cursor: pointer; border-radius: 3px; }
+  #ui button:hover { background: #232c35; }
+  #hint { position: absolute; bottom: 10px; left: 12px; font-size: 11px; opacity: 0.6; }
+  #status { margin-top: 6px; font-size: 10px; opacity: 0.6; }
+  canvas { display: block; }
+</style>
+</head>
+<body>
+<div id="ui">
+  <div><strong>karplus-strong sketch</strong></div>
+  <label>freq <span class="row"><span></span><span id="vFreq">220</span> Hz</span>
+    <input id="freq" type="range" min="80" max="880" value="220" step="1"></label>
+  <label>brightness <span class="row"><span></span><span id="vBright">0.50</span></span>
+    <input id="bright" type="range" min="0" max="1" value="0.5" step="0.01"></label>
+  <label>decay <span class="row"><span></span><span id="vDecay">0.995</span></span>
+    <input id="decay" type="range" min="0.9" max="0.999" value="0.995" step="0.0005"></label>
+  <button id="pluck">pluck</button>
+  <div id="status">click to start audio</div>
+</div>
+<div id="hint">click the string to pluck · drag to orbit</div>
+
+<script src="https://unpkg.com/three@0.128.0/build/three.min.js"></script>
+<script src="https://unpkg.com/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+
+<script id="worklet-src" type="text/plain">
+// AudioWorklet processor — runs in audio thread.
+// Wire format to main thread: { type: 'wave', data: Float32Array(VIS_N) }
+// posted at ~60Hz (throttled by sample count, not setInterval).
+// Trigger from main: { type:'pluck', position: 0..1, brightness: 0..1 }
+// Params (k-rate-ish): { type:'params', freq, bright, decay }
+const VIS_N = 150;
+class KS extends AudioWorkletProcessor {
+  constructor() {
+    super();
+    this.sr = sampleRate;
+    this.maxLen = Math.ceil(this.sr / 60);
+    this.buf = new Float32Array(this.maxLen);
+    this.len = Math.floor(this.sr / 220);
+    this.idx = 0;
+    this.lp = 0;
+    this.bright = 0.5;
+    this.decay = 0.995;
+    this.visBuf = new Float32Array(VIS_N);
+    this.samplesSincePost = 0;
+    this.postEvery = Math.floor(this.sr / 60);
+    this.port.onmessage = (e) => {
+      const m = e.data;
+      if (m.type === 'pluck') {
+        const len = this.len;
+        const center = Math.floor((m.position ?? 0.5) * len);
+        const width = Math.max(8, Math.floor(len * 0.35));
+        for (let i = 0; i < len; i++) {
+          const d = Math.abs(i - center);
+          const w = Math.max(0, 1 - d / width);
+          this.buf[i] = (Math.random() * 2 - 1) * w;
+        }
+        for (let i = len; i < this.maxLen; i++) this.buf[i] = 0;
+        this.idx = 0;
+      } else if (m.type === 'params') {
+        if (m.freq) this.len = Math.max(8, Math.min(this.maxLen - 1, Math.floor(this.sr / m.freq)));
+        if (m.bright !== undefined) this.bright = m.bright;
+        if (m.decay !== undefined) this.decay = m.decay;
+      }
+    };
+  }
+  process(_in, outputs) {
+    const out = outputs[0][0];
+    const N = out.length;
+    const len = this.len;
+    // one-pole LP coefficient: bright=1 -> a=0 (no LP), bright=0 -> a~0.95 (dark)
+    const a = (1 - this.bright) * 0.95;
+    for (let i = 0; i < N; i++) {
+      const cur = this.buf[this.idx];
+      const nextIdx = (this.idx + 1) % len;
+      const nxt = this.buf[nextIdx];
+      // average + LP + feedback
+      const avg = 0.5 * (cur + nxt);
+      this.lp = a * this.lp + (1 - a) * avg;
+      const y = this.lp * this.decay;
+      this.buf[this.idx] = y;
+      out[i] = cur;
+      this.idx = nextIdx;
+    }
+    this.samplesSincePost += N;
+    if (this.samplesSincePost >= this.postEvery) {
+      this.samplesSincePost = 0;
+      const step = len / VIS_N;
+      for (let i = 0; i < VIS_N; i++) {
+        const si = Math.floor(i * step);
+        this.visBuf[i] = this.buf[(this.idx + si) % len];
+      }
+      this.port.postMessage({ type: 'wave', data: this.visBuf.slice() });
+    }
+    return true;
+  }
+}
+registerProcessor('ks', KS);
+</script>
+
+<script>
+const $ = (id) => document.getElementById(id);
+let audioCtx = null, kNode = null, latestWave = null;
+const VIS_N = 150;
+const params = { freq: 220, bright: 0.5, decay: 0.995 };
+
+async function startAudio() {
+  if (audioCtx) return;
+  audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+  const src = document.getElementById('worklet-src').textContent;
+  const url = URL.createObjectURL(new Blob([src], { type: 'application/javascript' }));
+  await audioCtx.audioWorklet.addModule(url);
+  kNode = new AudioWorkletNode(audioCtx, 'ks', { outputChannelCount: [1] });
+  kNode.port.onmessage = (e) => { if (e.data.type === 'wave') latestWave = e.data.data; };
+  kNode.connect(audioCtx.destination);
+  sendParams();
+  $('status').textContent = 'audio: ' + audioCtx.sampleRate + ' Hz';
+}
+
+function sendParams() {
+  if (!kNode) return;
+  kNode.port.postMessage({ type: 'params', freq: params.freq, bright: params.bright, decay: params.decay });
+}
+
+function pluck(position = 0.5) {
+  if (!audioCtx) { startAudio().then(() => pluck(position)); return; }
+  if (audioCtx.state === 'suspended') audioCtx.resume();
+  kNode.port.postMessage({ type: 'pluck', position, brightness: params.bright });
+}
+
+$('freq').addEventListener('input', (e) => {
+  params.freq = +e.target.value; $('vFreq').textContent = params.freq; sendParams();
+});
+$('bright').addEventListener('input', (e) => {
+  params.bright = +e.target.value; $('vBright').textContent = params.bright.toFixed(2); sendParams();
+});
+$('decay').addEventListener('input', (e) => {
+  params.decay = +e.target.value; $('vDecay').textContent = params.decay.toFixed(3); sendParams();
+});
+$('pluck').addEventListener('click', () => pluck(0.3));
+
+// ---- Three.js scene ----
+const scene = new THREE.Scene();
+scene.background = new THREE.Color(0x0b0d10);
+const camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 100);
+camera.position.set(0, 1.2, 4);
+const renderer = new THREE.WebGLRenderer({ antialias: true });
+renderer.setPixelRatio(window.devicePixelRatio);
+renderer.setSize(window.innerWidth, window.innerHeight);
+document.body.appendChild(renderer.domElement);
+const controls = new THREE.OrbitControls(camera, renderer.domElement);
+controls.target.set(0, 0, 0);
+controls.update();
+
+// String: horizontal line along x in [-1.5, 1.5], 150 points
+const STRING_LEN = 3.0;
+const positions = new Float32Array(VIS_N * 3);
+for (let i = 0; i < VIS_N; i++) {
+  positions[i*3]   = -STRING_LEN/2 + (i/(VIS_N-1)) * STRING_LEN;
+  positions[i*3+1] = 0;
+  positions[i*3+2] = 0;
+}
+const geom = new THREE.BufferGeometry();
+geom.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+const stringMat = new THREE.LineBasicMaterial({ color: 0xff7a3d });
+const stringLine = new THREE.Line(geom, stringMat);
+scene.add(stringLine);
+
+// thicker invisible pick mesh for raycaster (a thin box along the string)
+const pickGeom = new THREE.BoxGeometry(STRING_LEN, 0.25, 0.25);
+const pickMat = new THREE.MeshBasicMaterial({ visible: false });
+const pickMesh = new THREE.Mesh(pickGeom, pickMat);
+scene.add(pickMesh);
+
+// faint endpoints
+const endMat = new THREE.MeshBasicMaterial({ color: 0x3a4450 });
+[-STRING_LEN/2, STRING_LEN/2].forEach(x => {
+  const m = new THREE.Mesh(new THREE.SphereGeometry(0.06, 16, 12), endMat);
+  m.position.x = x; scene.add(m);
+});
+
+const raycaster = new THREE.Raycaster();
+const mouse = new THREE.Vector2();
+let dragStart = null;
+renderer.domElement.addEventListener('pointerdown', (e) => {
+  dragStart = { x: e.clientX, y: e.clientY };
+});
+renderer.domElement.addEventListener('pointerup', (e) => {
+  if (!dragStart) return;
+  const dx = e.clientX - dragStart.x, dy = e.clientY - dragStart.y;
+  dragStart = null;
+  if (dx*dx + dy*dy > 16) return; // it was a drag, not a click
+  mouse.x = (e.clientX / window.innerWidth) * 2 - 1;
+  mouse.y = -(e.clientY / window.innerHeight) * 2 + 1;
+  raycaster.setFromCamera(mouse, camera);
+  const hits = raycaster.intersectObject(pickMesh);
+  if (hits.length > 0) {
+    const px = hits[0].point.x;
+    const pos = (px + STRING_LEN/2) / STRING_LEN;
+    pluck(Math.max(0.02, Math.min(0.98, pos)));
+  } else {
+    startAudio();
+  }
+});
+
+window.addEventListener('resize', () => {
+  camera.aspect = window.innerWidth / window.innerHeight;
+  camera.updateProjectionMatrix();
+  renderer.setSize(window.innerWidth, window.innerHeight);
+});
+
+const AMP = 0.6;
+function tick() {
+  if (latestWave) {
+    const pos = geom.attributes.position.array;
+    for (let i = 0; i < VIS_N; i++) {
+      pos[i*3+1] = latestWave[i] * AMP;
+    }
+    geom.attributes.position.needsUpdate = true;
+  }
+  controls.update();
+  renderer.render(scene, camera);
+  requestAnimationFrame(tick);
+}
+tick();
+</script>
+</body>
+</html>
