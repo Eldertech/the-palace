@@ -588,6 +588,7 @@ BBS Blackboard	enables	Project Stewardship System
 BBS Blackboard	connects-to	Oblique Enrichment
 BBS Blackboard	connects-to	Semantic Webcam
 BBS Design System	enables	BBS Blackboard
+BBS Design System	enables	STIGMERGY
 BBS Design System	connects-to	Palace Agent Infrastructure Spec
 BBS Design System	enables	Swarm Weave
 BBS Design System	connects-to	Trickster
@@ -713,6 +714,7 @@ Palace AI Partnership Philosophy	mirrors	Cooperation Yields Agency
 Palace AI Partnership Philosophy	deepens	Enchanted Worker
 Palace AI Partnership Philosophy	connects-to	Palace Enchantment
 Palace Agent Infrastructure Spec	deepens	BBS Blackboard
+Palace Agent Infrastructure Spec	connects-to	STIGMERGY
 Palace Agent Infrastructure Spec	deepens	Swarm Weave
 Palace Agent Infrastructure Spec	deepens	Enchanted Worker
 Palace Agent Infrastructure Spec	connects-to	Palace Map
@@ -766,7 +768,9 @@ Pheromone Trail	connects-to	Pages as Agents
 Pheromone Trail	connects-to	Palace as Context Injection System
 Pheromone Trail	mirrors	Lateral Access
 Pheromone Trail	connects-to	Swarm Weave
+Pheromone Trail	mirrors	STIGMERGY
 Project Stewardship System	connects-to	BBS Blackboard
+Project Stewardship System	connects-to	STIGMERGY
 Project Stewardship System	deepens	Palace Agent Infrastructure Spec
 Project Stewardship System	couples-with	Substrate Skill
 Project Stewardship System	connects-to	Trickster
@@ -849,6 +853,7 @@ Swarm Weave	enables	Palace Map
 Swarm Weave	connects-to	Deposit Ceremony
 Swarm Weave	mirrors	Spinoza Conatus
 Swarm Weave	deepens	Pages as Agents
+Swarm Weave	connects-to	STIGMERGY
 Symbiotic Skills	emerged-from	Cooperation Yields Agency
 Symbiotic Skills	emerged-from	FOUR PILLARS
 Symbiotic Skills	spawned	SUBSTRATE
@@ -1545,6 +1550,7 @@ Trickster	connects-to	Hyperdimensional Prism
 Trickster	connects-to	Granular Synthesis
 Trickster	connects-to	Swarm Weave
 Trickster	connects-to	BBS Blackboard
+Trickster	connects-to	STIGMERGY
 Trickster	connects-to	Kuramoto Coupling
 Trickster	connects-to	Cooperation Yields Agency
 Trickster	connects-to	Palace Enchantment
@@ -1673,6 +1679,7 @@ Pages as Agents	spawned	Palace Enchantment
 Pages as Agents	enables	Project Stewardship System
 Pages as Agents	connects-to	Mixture of Experts
 Pages as Agents	couples-with	Palace as Context Injection System
+Pages as Agents	connects-to	STIGMERGY
 Palace Audit — 2026-05-28	connects-to	Palace To-Do
 Palace Audit — 2026-05-28	connects-to	Weave Ceremony
 Palace Audit — 2026-05-28	connects-to	SCHEMA
