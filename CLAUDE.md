@@ -37,6 +37,23 @@ When working here: depth over coverage. Name the specific reason for any choice 
 
 Never violate these: Show before writing. Read before touching. Feel the friction before writing a single character. Missing connections are invitations, not errors. If a ceremony cannot verify its postcondition it has not completed. Typed links over free prose connections. Git is the safety net.
 
+## Foundational context (auto-loaded)
+
+These `@import` lines pull the invariant tiers into context at session start and re-inject them after compaction — the operational form of [[Palace as Context Injection System]]: context loading builds identity, not just information. Prose links (like the ones below this section) are *not* auto-loaded; only `@import` is. Order is Tier 0 → Tier 1: who is in the room, then what can exist.
+
+See @JEWEL.md for orientation, operating posture, and the tiered loading map (Tier 0 — the invariant self).
+See @SCHEMA.md for the type system and link ontology (Tier 1 — what can exist and how it is typed).
+
+Tier 2 — the framework / intellectual character. These import via space-free `_` symlinks because Claude Code's `@import` cannot resolve spaced filenames (a known bug); the real files keep their spaced titles and `[[wikilinks]]` still use those:
+
+See @FOUR_PILLARS.md for the core framework (→ `FOUR PILLARS.md`).
+See @Palace_Philosophies.md (→ `Palace Philosophies.md`).
+See @Cooperation_Yields_Agency.md (→ `Cooperation Yields Agency.md`).
+See @Hilaritas_Generator.md (→ `Hilaritas Generator.md`).
+See @Modes_of_Collaboration.md (→ `Modes of Collaboration.md`).
+
+The whole Tier 0–2 floor is ≈19K tokens — about a quarter of the window, per [[JEWEL]]'s loading map. To trim it, remove an `@import` line (the symlink stays, importing is one line). Full rationale and the spaces-bug seam: [[Palace as Context Injection System]] § The @import Floor.
+
 ## Access Paths
 
 The palace is readable from any vector using these paths, in priority order:
@@ -87,20 +104,24 @@ Knowledge entries may also have **entry bundles** — optional sibling folders n
 
 ## Ceremony Triggers
 
-When Loudon says any of the following, execute the corresponding ceremony immediately — no clarification needed:
-<!-- look back to past conversations to see how I ACTUALLY triggered these ceremonies and adjust this to match -->
+These verbs ARE invocations. When Loudon uses one as an instruction — bare word or phrase — begin that ceremony; read its Full Spec before executing, and use context to tell a real invocation from a passing mention. This table is the **complete** trigger map: recognition lives here in the always-loaded entry point, so the words are never missed; the specs live one link away. (Recognition is the floor's job; execution reads the spec.)
 
-| Trigger | Ceremony | What to Do |
+| Say (any of) | Ceremony — in one line | Full Spec |
 |---|---|---|
-| "Let's weave" | The Weave | Execute a Swarm Weave: first build a fresh palace map, then dispatch parallel workers to audit all entries, coordinator synthesizes. Reports topology, formalizes unsung paths, proposes label enrichment and new typed links. See [[Weave Ceremony]]. |
-| "Let's walk" | The Walk | Pick a starting entry, follow typed links, note surprises, surface one unexpected connection. |
-| "Spore check" | The Spore Check | Read all `stage: dormant` entries. Match against current work. Propose revivals. |
-| "Add this to the palace" | Deposit | Draft a new entry from the conversation. Show Loudon for approval before writing. |
-| "Connect this to the palace" | Connection | Propose typed links between current topic and existing entries. |
-| "Hand this off" / "Draft a handoff" | The Handoff | Capture the operating state of an in-progress move so a fresh Claude can continue without restarting. Show before writing. See [[Handoff Ceremony]]. |
-| "What does the palace say about [topic]?" | Query | Read relevant entries and synthesize. Follow typed links. |
+| "deposit", "let's deposit", "add this to the palace", "memorialize this" | **Deposit** — draft entry/edits from the conversation; show before writing; record to [[Deposit Archive]] | [[Deposit Ceremony]] |
+| "handoff", "hand this off", "draft a handoff" | **Handoff** — capture in-progress state so a fresh Claude continues; write to the entry bundle | [[Handoff Ceremony]] |
+| "harvest", "let's harvest" | **Harvest** — search past work, surface deposit candidates to a working list | [[Harvest Ceremony]] |
+| "weave", "let's weave" | **Weave** — Swarm Weave: map build → parallel audit → synthesis; topology, unsung paths, new links | [[Weave Ceremony]] |
+| "walk", "let's walk" | **Walk** — follow typed links from one entry, surface an unexpected connection | [[Walk Ceremony]] |
+| "enrich", "let's enrich", "enrich [X]", "make-teach-move-on", "go oblique" | **Enrichment** — five-card queue of small varied artifacts placed inline | [[Enrichment]] |
+| "spore check" | **Spore Check** — read dormant entries, assign revive / hold / compost | [[Spore Check Ceremony]] |
+| "revive [entry]", "let's revive [entry]" | **Revival** — reawaken a dormant entry: Revival Note, update stage + links | [[Revival Ceremony]] |
+| "map build", "build the map", "neighborhood map for [X]" | **Map Build** — scan frontmatter, compile edge list + ghost nodes | [[Map Build Ceremony]] |
+| "self-model update" | **Self-Model Update** — revise [[SUBSTRATE]] to current state | [[Self-Model Update Ceremony]] |
+| "connect this", "connect [X] to the palace" | **Connection** — propose typed links between the topic and existing entries | [[Palace Ceremonies]] |
+| "what does the palace say about [topic]?" | **Query** — read relevant entries and synthesize, following typed links | [[Palace Ceremonies]] |
 
-This is a partial list. For the complete list of all ceremonies (including Harvest and Deposit), see [[Palace Ceremonies]]. For full operational instructions, see [[Substrate Skill]].
+Cadences, the Ceremony Reader, and full specs: [[Palace Ceremonies]]. Operational detail for agents: [[Substrate Skill]].
 
 ## Artifact Aesthetic — Default
 
