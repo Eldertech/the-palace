@@ -21,6 +21,9 @@ links:
     type: mirrors
   - target: "[[Swarm Weave]]"
     type: connects-to
+  - target: "[[STIGMERGY]]"
+    type: mirrors
+    label: two-timescale-trace
 forward_vector: "I want to become the palace's explanation for why entry quality directly determines swarm behavior — the entry that a coordinator reads before dispatching workers to understand why a richly-worked neighborhood produces different results than a sparse one. I want to accumulate evidence: specific Weave sessions where strong pheromone trails produced unexpected connections, and specific spore-check findings where cold trails flagged dormant ideas worth revival."
 ---
 

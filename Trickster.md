@@ -45,6 +45,9 @@ links:
     type: connects-to
   - target: "[[BBS Blackboard]]"
     type: connects-to
+  - target: "[[STIGMERGY]]"
+    type: connects-to
+    label: the-board-i-enter
   - target: "[[Kuramoto Coupling]]"
     type: connects-to
   - target: "[[Cooperation Yields Agency]]"

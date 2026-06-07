@@ -39,6 +39,9 @@ links:
   - target: "[[Palace as Context Injection System]]"
     type: couples-with
     label: same-project-from-context-side
+  - target: "[[STIGMERGY]]"
+    type: connects-to
+    label: the-page-is-the-agent
 ---
 
 # Pages as Agents

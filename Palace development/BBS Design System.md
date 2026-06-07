@@ -18,6 +18,9 @@ links:
   - target: "[[BBS Blackboard]]"
     type: enables
     label: visual-substrate
+  - target: "[[STIGMERGY]]"
+    type: enables
+    label: visual-substrate
   - target: "[[Palace Agent Infrastructure Spec]]"
     type: connects-to
   - target: "[[Swarm Weave]]"
