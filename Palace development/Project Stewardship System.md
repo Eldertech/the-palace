@@ -13,6 +13,9 @@ links:
   - target: "[[BBS Blackboard]]"
     type: connects-to
     label: runs-on
+  - target: "[[STIGMERGY]]"
+    type: connects-to
+    label: runs-on
   - target: "[[Palace Agent Infrastructure Spec]]"
     type: deepens
     label: stage-aware-permanent-agent

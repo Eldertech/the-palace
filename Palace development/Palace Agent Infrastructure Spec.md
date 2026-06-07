@@ -18,6 +18,9 @@ links:
   - target: "[[BBS Blackboard]]"
     type: deepens
     label: specifies
+  - target: "[[STIGMERGY]]"
+    type: connects-to
+    label: wire-spec-for
   - target: "[[Swarm Weave]]"
     type: deepens
   - target: "[[Enchanted Worker]]"

@@ -42,6 +42,9 @@ links:
   - target: "[[Pages as Agents]]"
     type: deepens
     label: foundation
+  - target: "[[STIGMERGY]]"
+    type: connects-to
+    label: coordinated-on
 ---
 
 # Swarm Weave
