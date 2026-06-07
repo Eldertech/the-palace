@@ -1,7 +1,7 @@
 {
-  "iteration": 4,
-  "last_active": "2026-06-06T10:50:45Z",
-  "last_read_cursor": "retrospective-delay-steward-012",
+  "iteration": 9,
+  "last_active": "2026-06-07T17:30:24.065Z",
+  "last_read_cursor": "retrospective-delay-steward-025",
   "health": {
     "context_pct": null,
     "avg_output_tokens_last_5": null,
@@ -19,17 +19,15 @@
   },
   "pending_requests": [
     {
-      "request_id": "retrospective-delay-steward-012",
+      "request_id": "retrospective-delay-steward-025",
       "resource": "directional_decision",
-      "decision_topic": "Stage 1's four sandbox visuals are built — what's the next move: finish the one mood image, declare the visuals done, bind Stage 1 into a teachable deck, or open Stage 2?",
       "blocking": false,
-      "posted_at": "2026-06-06T17:02:00-04:00",
+      "posted_at": "2026-06-07T17:45:20-04:00",
       "options": [
-        "BIND-STAGE-1-DECK",
-        "FINISH-ASSET-5",
-        "SKIP-ASSET-5",
-        "OPEN-STAGE-2",
-        "YOU-DEFINE"
+        "SMOKE-FIRST",
+        "CONTROLNET-FIRST",
+        "SEED-IMG2IMG",
+        "HAND-OFF"
       ]
     }
   ],
@@ -100,6 +98,85 @@
       "resolved_at": "2026-06-05T19:29:26.470Z",
       "resolved_by": "6a756239-47c3-4b56-ba8a-a8df06613c5c",
       "outcome": "GRANTED — option_id=BUILD-THE-SANDBOX-FOUR"
+    },
+    {
+      "request_id": "retrospective-delay-steward-012",
+      "resource": "directional_decision",
+      "decision_topic": "Stage 1's four sandbox visuals are built — what's the next move: finish the one mood image, declare the visuals done, bind Stage 1 into a teachable deck, or open Stage 2?",
+      "blocking": false,
+      "posted_at": "2026-06-06T17:02:00-04:00",
+      "options": [
+        "BIND-STAGE-1-DECK",
+        "FINISH-ASSET-5",
+        "SKIP-ASSET-5",
+        "OPEN-STAGE-2",
+        "YOU-DEFINE"
+      ],
+      "resolved_at": "2026-06-07T04:02:52.589Z",
+      "resolved_by": "resp-mq39auy5-79k33r",
+      "outcome": "GRANTED — (no option_id); notes: \"use the shop/maker to treat the crude vector images you created as the seed for generative AI versions of the cats with a consistent cat and mystical style. Present a variety of stylistic directions to choose from.\""
+    },
+    {
+      "request_id": "retrospective-delay-steward-014",
+      "resource": "directional_decision",
+      "blocking": false,
+      "posted_at": "2026-06-07T16:32:00-04:00",
+      "options": [
+        "BAKE-OFF-GOREY-VS-OCCULT",
+        "GOREY-INK-ONLY",
+        "SATURATED-OCCULT-ONLY",
+        "GHIBLI-WATERCOLOR",
+        "YOU-DEFINE"
+      ],
+      "resolved_at": "2026-06-07T16:26:22.540Z",
+      "resolved_by": "resp-mq3zv07g-bscrac",
+      "outcome": "GRANTED — (no option_id); notes: \"Gorey-Ink and a cyberpunk version.\""
+    },
+    {
+      "request_id": "retrospective-delay-steward-017",
+      "resource": "directional_decision",
+      "blocking": false,
+      "posted_at": "2026-06-07T16:37:00-04:00",
+      "options": [
+        "MIDJOURNEY-CREF-POSE-3",
+        "MIDJOURNEY-CREF-PARALLEL",
+        "COMFYUI-LOCAL-MAC",
+        "GOREY-FIRST-CYBER-LATER",
+        "YOU-DEFINE"
+      ],
+      "resolved_at": "2026-06-07T17:12:12.684Z",
+      "resolved_by": "resp-mq41hy8c-9pk9ag",
+      "outcome": "GRANTED — option_id=COMFYUI-LOCAL-MAC; notes: \"The maker has workflows for this type of pipeline, dispatch the maker to test what they can do and how that process can work.\""
+    },
+    {
+      "request_id": "retrospective-delay-steward-020",
+      "resource": "directional_decision",
+      "blocking": false,
+      "posted_at": "2026-06-07T17:32:00-04:00",
+      "options": [
+        "SCOPED-PROBE",
+        "SINGLE-STYLE-FULL-CAST",
+        "FULL-GRID",
+        "MAKER-DECIDES"
+      ],
+      "resolved_at": "2026-06-07T17:20:10.626Z",
+      "resolved_by": "resp-mq41s70i-y59f3u",
+      "outcome": "GRANTED — option_id=MAKER-DECIDES; notes: \"you act as a boss, review the maker's work using any tool you can, ask the maker for revisions as necessary, attempt to complete the whole thing if possible.\""
+    },
+    {
+      "request_id": "retrospective-delay-steward-022",
+      "resource": "directional_decision",
+      "blocking": false,
+      "posted_at": "2026-06-07T17:35:30-04:00",
+      "options": [
+        "COLD-START-AND-FIRE",
+        "HAND-OFF-TO-YOUR-MAC",
+        "ADD-CONTROLNET-FIRST",
+        "REDIRECT"
+      ],
+      "resolved_at": "2026-06-07T17:30:24.032Z",
+      "resolved_by": "resp-mq425cbk-bfn1rc",
+      "outcome": "GRANTED — (no option_id); notes: \"you are being too cautious, if you see a way forward, take it. boot the server!\""
     }
   ],
   "_pilot_metadata": {

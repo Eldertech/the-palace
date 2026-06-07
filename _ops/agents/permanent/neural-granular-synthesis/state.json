@@ -1,7 +1,7 @@
 {
-  "iteration": 1,
-  "last_active": "2026-06-06T10:39:37Z",
-  "last_read_cursor": "ngs-steward-002",
+  "iteration": 2,
+  "last_active": "2026-06-07T16:32:21.335Z",
+  "last_read_cursor": "ngs-steward-004",
   "health": {
     "context_pct": null,
     "avg_output_tokens_last_5": null,
@@ -19,6 +19,20 @@
   },
   "pending_requests": [
     {
+      "request_id": "ngs-steward-004",
+      "resource": "directional_decision",
+      "blocking": false,
+      "posted_at": "2026-06-07T16:43:00-04:00",
+      "options": [
+        "MATH-DOC-FIRST",
+        "RASTER-FIRST",
+        "CONTROL-PATCH-FIRST",
+        "YOU-DEFINE"
+      ]
+    }
+  ],
+  "resolved_requests": [
+    {
       "request_id": "ngs-steward-002",
       "resource": "directional_decision",
       "decision_topic": "How does Neural Granular Synthesis relate to the population engine the Action Potential Oscillator already built?",
@@ -29,10 +43,12 @@
         "FORK-DISTINCT",
         "REDRAW-BOUNDARY",
         "YOU-DEFINE"
-      ]
+      ],
+      "resolved_at": "2026-06-07T16:27:41.828Z",
+      "resolved_by": "resp-mq3zwpdw-0sz0zw",
+      "outcome": "GRANTED — option_id=CONSUME-NEUROPULSE"
     }
   ],
-  "resolved_requests": [],
   "_pilot_metadata": {
     "cycle_1_notes": "Palace heartbeat batch 2026-06-06T10:39:37Z. ~121010 subagent tokens, 28 tool uses."
   }
