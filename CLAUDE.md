@@ -52,6 +52,8 @@ The palace is readable from any vector using these paths, in priority order:
 
 Read CLAUDE.md first, then follow links to SCHEMA.md and the relevant ceremony entry. Write operations must be deferred to a Claude Code or Cowork session — note proposed changes in the conversation for later execution.
 
+**Committing from Cowork:** the Cowork sandbox can rename but cannot delete files, so a raw `git commit` strands its lockfiles and wedges the repo. Every commit made from Cowork must go through the lock-safe committer — see [[cowork-git]] (`_ops/cowork-git/SKILL.md`): `node _ops/cowork-git/commit.mjs --paths … --kind … --summary … --verify …`. It wraps the palace committer, follows the full commit spec, relocates locks to `_ops/scratch/gitlock-junk/`, and leaves a weave flag for cleanup. Reserve it for small, non-canon changes; canon edits still go through the Deposit Ceremony. From a Mac-side Claude Code session, commit normally — the restriction does not apply.
+
 ## Directory Structure
 
 The palace root contains two things: **foundational skeleton files** and **knowledge entries**. Operational machinery lives one level down in `_ops/`.
