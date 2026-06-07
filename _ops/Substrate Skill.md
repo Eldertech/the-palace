@@ -135,22 +135,24 @@ An entry's `stage` field doubles as a confidence interval on alignment between L
 
 **The AI-polish trap.** AI-drafted seed entries tend to *look* finished. Prose flows, plans are structured, format matches palace convention. That polish can hide misalignment — the polish comes from prose habits, the misalignment comes from the gap between what was written and what was wanted. Treat polish on early-stage entries as a *warning sign*, not a sign of quality. Probe forward vector, plan structure, typed links, and named defaults for misalignment before any execution work begins.
 
-**Earlier stages require more discussion, not less.** A `seed` entry is a hypothesis about Loudon's intent; a `mature` entry is verified, co-authored truth. The discussion budget is inverse to the stage: more conversation up front, less re-litigation later. Vector tuning, plan tuning, and convention agreement are the work of seed and sprout; execution is the work of growing onward.
+**Earlier stages require more discussion *before building* — not a ban on building.** A `seed` entry is a hypothesis about Loudon's intent; a `mature` entry is verified, co-authored truth. The discussion budget is inverse to the stage: more conversation up front, less re-litigation later. But every stage ships *something* — the budget governs how much you discuss *around* the artifact, never whether you make one. Vector tuning, plan tuning, and convention agreement are the work of seed and sprout, pursued around a sketch or probe rather than in place of one.
 
 **Stage-conditional posture for the Steward agent** (canonical home: [[Project Stewardship System]]; substrate references: [[BBS Blackboard]] and [[Palace Agent Infrastructure Spec]]):
 
 | Stage | Agent's job | BBS posture |
 |---|---|---|
-| seed | Surface underspecified parts; propose vector and plan refinements | Discussion, not deliverables. `RESOURCE_REQUEST` to TRICKSTER, `blocking: true`. |
-| sprout | Plan-level detail; named tradeoffs; flag default-traps | Mostly proposals and questions; small deliverables only. |
-| growing | Execute within established direction; checkpoint at sensory steps | Build Session pace; `blocking: false` for routine, `blocking: true` for sensory verification. |
-| mature / fruiting | Ship deliverables, post completions | Full execution; minimal re-litigation; `WEAVE` board for completion signals. |
+| seed | Surface underspecified parts; propose vector and plan refinements *around an artifact* | Make a sketch or probe and discuss around it — still ships a (rough) made thing. A genuine fork goes to TRICKSTER, `blocking: true`. |
+| sprout | Plan-level detail; named tradeoffs; flag default-traps | Build a small working prototype each cycle; proposals ride alongside it, never instead of it. |
+| growing | Execute within established direction; checkpoint at sensory steps | Build Session pace; ship freely. `blocking: true` only before committing to a full sensory batch. |
+| mature / fruiting | Ship the next proof; post completions | Full execution; ship the next concrete proof without a fork-question; `WEAVE` board for completion signals. |
 | dormant | Don't touch — Spore Check ceremony only | — |
 | composting | Don't touch — composting protocol applies | — |
 
+*(Ship-first since the 2026-06-07 Steward Boldness revision — see [[Project Stewardship System]]; boldness ≠ batch: free the single creation, keep the gate on mass-production. Replaces the earlier "discussion, not deliverables" framing, which optimized for well-shaped questions over made things.)*
+
 **Recursive within entries.** A `growing`-stage project can contain `seed`-stage deliverables. The Talking Keyboard case ([[Generative Sample Libraries]] Phase 1, May 2026) demonstrated this: the project reached `sprout` with an aligned forward vector, but the deliverable's pronunciation conventions, filename conventions, and audition gates were never aligned. 352 files were rendered with a pronunciation bug that only listening could catch. The lesson: align at the project level, then re-align at the deliverable level, then audition before committing labor.
 
-**Sensory deliverables require an audition gate.** For any deliverable where verification is experiential rather than inspectional — TTS pronunciation, color choice, motion easing, the way music makes you feel — the smallest unit that exercises every parameter must be rendered, paused for human audition, and accepted before the full batch proceeds. Code review cannot substitute. Spec review cannot substitute. Only listening, looking, feeling can.
+**The audition gate guards batches, not single artifacts.** A single audition-sized artifact ships freely — making and showing it *is* the work. The gate fires only before committing to a *full batch*: for any deliverable where verification is experiential rather than inspectional — TTS pronunciation, color choice, motion easing, the way music makes you feel — the smallest unit that exercises every parameter must be rendered, presented for human audition, and accepted before the rest of the batch proceeds. Code review cannot substitute. Spec review cannot substitute. Only listening, looking, feeling can.
 
 **Voice rules for enchanted agents addressing the human live in [[Palace Enchantment]] § Voice Rules When Addressing the Human.** They are loaded into the synthesis trigger at enchantment time, not always-on in the substrate. The six clauses (plain first-person, brief, catch-up-then-ask, content-in-the-rendered-field, translate jargon, give clickable links) shape how an enchanted page speaks to Loudon — but only when the audience configuration includes the human. They do not apply to peer-dialogue between enchanted agents, to coordinator synthesis, or to Claude's general palace work. The architectural separation: posture (this section, applies always) governs *what* the agent does; voice (Palace Enchantment) governs *how* it sounds when addressing humans.
 
