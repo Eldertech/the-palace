@@ -156,6 +156,20 @@ Each link between entries carries a **predicate** — a named relationship type.
 
 Each link object may carry an optional `label` field — a single word or hyphenated phrase naming the relationship's specific register. The `type` is the structural predicate (topological scaffold, traversal, ceremony linting). The `label` is the semantic compression (cultural nuance, emotional register, generative resonance). Examples: `midwifed`, `rhymes-with`, `fermented-from`, `argues-with-love`. In RDF terms, `label` functions like `skos:altLabel` applied to the predicate itself — it qualifies *how* the relationship holds, not *what kind* it is. Labels never require ceremony. See [[Resonant Link Labels]] for vocabulary per family.
 
+### 4b. The Coordination Ontology (edges between agents)
+
+The link ontology above types edges *between entries*. The Palace also has a second ontology, typing edges *between agents* on the [[STIGMERGY]] blackboard — ratified in [[SCHEMA]] §9. Where §4 is the static semantic web, this is the live message bus.
+
+| Palace term | What it is | Cross-tradition equivalent |
+|---|---|---|
+| blackboard (`blackboard.jsonl`) | Append-only shared medium agents read/write | Blackboard pattern (AI); event log / append-only store; message bus |
+| `BROADCAST` | A mark left for any reader | Publish (pub/sub) to a topic |
+| `RESOURCE_REQUEST` / `RESOURCE_GRANT` / `RESOURCE_DENY` | Ask the human node for a decision; the answer | Request/response with human-in-the-loop; approval gate |
+| `board` field | Self-selected routing channel | Topic / queue name |
+| `health` block | Self-reported agent vitals on every message | Telemetry / liveness heartbeat |
+| `TRICKSTER` | The human node at the threshold | Operator / supervisor in the control loop |
+| stigmergy | Coordination via traces in a shared medium, no central router | Indirect coordination; pheromone/Grassé; eventually-consistent choreography (not orchestration) |
+
 ---
 
 ## 5. Ceremony Reference Card
