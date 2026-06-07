@@ -127,7 +127,7 @@ function InlineResponse({ request, onConfirmed }) {
           value={notes}
           onChange={(e) => setNotes(e.target.value)}
           placeholder="type a reply, or leave blank if a button alone says it"
-          rows={3}
+          rows={5}
           disabled={sending}
           style={{
             width: '100%',
@@ -141,7 +141,7 @@ function InlineResponse({ request, onConfirmed }) {
             outline: 'none',
             caretColor: 'var(--phosphor-white)',
             resize: 'vertical',
-            minHeight: '60px',
+            minHeight: '120px',
             boxSizing: 'border-box',
           }}
         />

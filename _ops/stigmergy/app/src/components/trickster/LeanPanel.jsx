@@ -7,9 +7,11 @@ import { t } from '../../lib/lexicon.js';
 // Renders above the options grid on any card whose steward left a detectable
 // lean (item.recommended_option, see inbox.tagRecommendation). The amber
 // register marks it as the suggested path; the options grid below stays the
-// override. FILE LEAN files the recommended option with no note. Presentational
-// — the card owns the actual write path and passes onFileLean down.
-export default function LeanPanel({ optionLabel, onFileLean, disabled = false }) {
+// override. FILE LEAN files the recommended option (carrying any freeform note);
+// FILE LEAN & RUN also advances the asking steward by a cycle so it picks the
+// grant up now — the lean-side twin of the card's FILE & RUN. Presentational —
+// the card owns the actual write path and passes both handlers down.
+export default function LeanPanel({ optionLabel, onFileLean, onFileLeanAndRun, disabled = false }) {
   if (!optionLabel) return null;
   return (
     <div data-testid="lean-panel" style={{
@@ -31,6 +33,11 @@ export default function LeanPanel({ optionLabel, onFileLean, disabled = false })
         <Button tone="warn" onClick={onFileLean} disabled={disabled}>
           {t('trickster.lean.file')}
         </Button>
+        {onFileLeanAndRun ? (
+          <Button tone="warn" onClick={onFileLeanAndRun} disabled={disabled}>
+            {t('trickster.lean.fileandrun')}
+          </Button>
+        ) : null}
       </span>
     </div>
   );

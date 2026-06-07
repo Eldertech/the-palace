@@ -187,11 +187,13 @@ export default function TricksterCard({ item, onConfirmed, onRun, focused = fals
     });
   }
 
-  // FILE LEAN — file the steward's recommended option, no note.
-  function handleFileLean() {
+  // FILE LEAN — file the steward's recommended option, carrying any freeform
+  // note. With run=true (FILE LEAN & RUN) it also advances the asking steward by
+  // a cycle so it consumes the grant now — the lean-side twin of FILE & RUN.
+  function handleFileLean(run = false) {
     const rec = item.recommended_option;
     if (!rec) return;
-    fileGrant({ optionId: rec.id, optionLabel: rec.label, notes: '' });
+    fileGrant({ optionId: rec.id, optionLabel: rec.label, notes, run });
   }
 
   return (
@@ -292,7 +294,8 @@ export default function TricksterCard({ item, onConfirmed, onRun, focused = fals
         {item.recommended_option ? (
           <LeanPanel
             optionLabel={item.recommended_option.label}
-            onFileLean={handleFileLean}
+            onFileLean={() => handleFileLean(false)}
+            onFileLeanAndRun={() => handleFileLean(true)}
             disabled={sending}
           />
         ) : null}
@@ -329,7 +332,7 @@ export default function TricksterCard({ item, onConfirmed, onRun, focused = fals
             value={notes}
             onChange={(e) => setNotes(e.target.value)}
             placeholder={t('trickster.card.freeform.hint')}
-            rows={2}
+            rows={5}
             disabled={sending}
             style={{
               width: '100%', background: 'transparent',
@@ -338,7 +341,7 @@ export default function TricksterCard({ item, onConfirmed, onRun, focused = fals
               fontFamily: 'var(--font-mono)', fontSize: 13,
               padding: '6px 8px', outline: 'none',
               caretColor: 'var(--phosphor-white)',
-              resize: 'vertical', minHeight: '48px', boxSizing: 'border-box',
+              resize: 'vertical', minHeight: '120px', boxSizing: 'border-box',
             }}
           />
         </div>
