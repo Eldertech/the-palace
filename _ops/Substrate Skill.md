@@ -137,7 +137,7 @@ An entry's `stage` field doubles as a confidence interval on alignment between L
 
 **Earlier stages require more discussion *before building* — not a ban on building.** A `seed` entry is a hypothesis about Loudon's intent; a `mature` entry is verified, co-authored truth. The discussion budget is inverse to the stage: more conversation up front, less re-litigation later. But every stage ships *something* — the budget governs how much you discuss *around* the artifact, never whether you make one. Vector tuning, plan tuning, and convention agreement are the work of seed and sprout, pursued around a sketch or probe rather than in place of one.
 
-**Stage-conditional posture for the Steward agent** (canonical home: [[Project Stewardship System]]; substrate references: [[BBS Blackboard]] and [[Palace Agent Infrastructure Spec]]):
+**Stage-conditional posture for the Steward agent** (canonical home: [[Project Stewardship System]]; the running coordination system is [[STIGMERGY]], its grammar is [[SCHEMA]] §9, its origin concept is [[BBS Blackboard]], and its wire spec is [[Palace Agent Infrastructure Spec]]):
 
 | Stage | Agent's job | BBS posture |
 |---|---|---|

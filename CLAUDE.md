@@ -7,9 +7,9 @@ pillars:
   - philosophy
 born: 2026-03
 stage: foundational
-version: 1.9
+version: 1.10
 schema: SCHEMA.md
-last_schema_ceremony: 2026-06-05
+last_schema_ceremony: 2026-06-07
 github: https://github.com/Eldertech/the-palace
 github_raw: https://raw.githubusercontent.com/Eldertech/the-palace/main
 links:
@@ -148,6 +148,7 @@ The footer of any shipped artifact reads `Loudon Live · Autodidact Polymaths`. 
 - **[[SCHEMA]]** — Type system, link ontology, ceremony linter, schema change protocol. Read before creating any new entry or ceremony. (`SCHEMA.md`)
 - **[[README - The Palace Guide]]** — Full palace manual (philosophy, link ontology, entry templates) (`README - The Palace Guide.md`)
 - **[[SUBSTRATE]]** — The palace's self-model (architecture, current state) (`Substrate.md`)
+- **[[STIGMERGY]]** — The palace's running front-end and coordination engine: the append-only blackboard plus the three-deck terminal (STATE / QUEUE / LOG). Recognition lives in [[SCHEMA]] §9; the wire spec in [[Palace Agent Infrastructure Spec]]. (`STIGMERGY.md`)
 - **[[FOUR PILLARS]]** — Loudon's core framework (`Four Pillars.md`)
 - **[[ROSETTA]]** — Cross-tradition glossary connecting Palace vocabulary to OOP, Data Engineering, Semantic Web, and DDD equivalents (`ROSETTA.md`)
 - **[[Palace Ceremonies]]** — Full ceremony list with triggers and specs (`_ops/Palace Ceremonies.md`)

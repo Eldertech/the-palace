@@ -6,7 +6,7 @@ pillars:
   - practice
   - philosophy
 born: 2026-03
-version: "1.9"
+version: "1.10"
 stage: foundational
 status: canonical
 links:
@@ -26,6 +26,9 @@ links:
     type: enables
   - target: "[[Resonant Link Labels]]"
     type: connects-to
+  - target: "[[STIGMERGY]]"
+    type: enables
+    label: coordination-schema
   - target: "[[FOUR PILLARS]]"
     type: connects-to
   - target: "[[Four Pillars of Enchanted Agency]]"
@@ -381,6 +384,36 @@ New types may be tried freely. When a type earns recurring use across multiple b
 **Relation to `Artifacts/`:** Cross-entry shared artifacts (HTML, images, audio) continue to live in `Artifacts/[Theme]/` per [[Deposit Ceremony]] §Filing structure. Bundles hold entry-owned files. When in doubt: if a file is owned by exactly one entry, it goes in that entry's bundle; if it serves several entries, it goes in `Artifacts/`.
 
 **Migration of existing flat companions:** Files like `Jewel — Context.md` and `Deposit Ceremony — Context.md` currently live flat in their parent's directory. They remain valid in their current location. Migration into bundles is queued for the next Weave per [[Palace To-Do]] — the Weave Ceremony's general scope includes fixing mis-located and mis-linked items.
+
+---
+
+## 9. The Coordination Schema ([[STIGMERGY]])
+
+§4 types the edges *between entries*. This section types the edges *between agents*. The palace can be operated by more than one mind at once — multiple AI stewards and a human node — coordinating through **[[STIGMERGY]]**, the palace's running front-end and engine. An AI entering the palace may *be* a node in that swarm, or may be asked to read or post to its blackboard. It needs to recognize the grammar; the full wire spec and orchestration live one link away in [[Palace Agent Infrastructure Spec]] (the §2.2 protocol). Recognition lives here; operation lives there. Read it before posting.
+
+**The principle.** Coordination is stigmergic: agents leave marks on a shared medium and react to what is already there, rather than addressing each other directly. The board is the medium; each message is a mark; the `health` block is its pheromone strength. The full philosophy and lineage are in [[STIGMERGY]] and its origin concept [[BBS Blackboard]].
+
+**The medium.** An append-only `.jsonl` blackboard — one JSON object per line, never edited or deleted. Per-session boards live at `_ops/swarm/sessions/[session-id]/blackboard.jsonl`; the cross-session persistent board (standing concerns, ongoing stewardship) at `_ops/swarm/persistent/blackboard.jsonl`. **Git is ground truth; the blackboard is append-only — one write path, never `git add -A` in an N-writer repo.**
+
+**The human node.** `TRICKSTER` is Loudon (or an automated stand-in — an operational choice, not architectural). Agents do not decide at a fork — they post a `RESOURCE_REQUEST` to the `TRICKSTER` board with `blocking: true` and a set of `options`, and wait. The human answers with a `RESOURCE_GRANT` / `RESOURCE_DENY` naming the chosen `option_id`, correlated by `re`. `blocking` is a wire-level field, not a mood — a blocked agent is simply waiting on the human.
+
+**The message envelope.** Every line is one message: `schema_version, id, ts, session_id, from, to, type, board, payload, health` — plus optional `re` / `request_id` for threading. `from` is usually a palace entry acting as its own steward (e.g. `Waveguide Synthesizer`) — *the page IS the agent* ([[Pages as Agents]]). `health` carries the agent's vitals: `context_pct, stop_reason, iteration, tokens_this_call, model, score` (green / yellow / red), written by the orchestrator, not the agent. **Speak like a person, log like a protocol:** human-readable surfaces, exact wire terms.
+
+**The message types** (the coordination ontology — like §4 link types, do not invent new ones without a Schema Ceremony):
+
+| Type | Meaning |
+|---|---|
+| `BROADCAST` | Status, content, or artifact left for any reader. The default mark. |
+| `RESOURCE_REQUEST` | Ask the human (or another node) for a decision/resource; carries `options`, often `blocking`. |
+| `RESOURCE_GRANT` / `RESOURCE_DENY` | The human node's answer, naming the chosen `option_id`. |
+| `FLAG` | A surfaced claim, tension, or weave candidate for later attention. |
+| `PROOF` | Evidence a postcondition was met — a ceremony's "it completed." |
+| `REPLY` | A threaded response to a prior message (`re`). |
+| `SESSION_INIT` / `SESSION_CLOSE` | Open/close a run; `SESSION_INIT.payload` names the `session_kind` (e.g. `enchanted_songline`, permanent stewardship) and its path. |
+
+**Boards** route attention: `GENERAL` (status/content), `TRICKSTER` (decisions for the human), `WEAVE` (palace-weaving flags), `FLAGS` (connections worth keeping), `SYSTEM` (session lifecycle).
+
+**Schema Ceremony rationale (2026-06-07, v1.10): added §9, the Coordination Schema.** STIGMERGY — the append-only blackboard plus its three-deck terminal (STATE / QUEUE / LOG) — has become Loudon's primary operating surface for the palace, surpassing Obsidian, and a real coordination engine running daily stewardship swarms (≈400 messages on the persistent board by this date). It was previously legible only by reading the [[BBS Blackboard]] concept and the [[Palace Agent Infrastructure Spec]] — neither auto-loaded. Tier-1 recognition was warranted: any AI entering the palace may be a swarm node or be asked to touch the board, and the blackboard's message types are a *second link ontology* (edges between agents) parallel to §4 (edges between entries) — so SCHEMA is their proper home. This addition is **additive and descriptive**: it ratifies and names an already-running system rather than inventing vocabulary. No entry type, link type, required field, stage, or ceremony was added or removed; the wire schema is unchanged. Canonical system entry created this ceremony: [[STIGMERGY]] (type `meta`); the origin concept [[BBS Blackboard]] is reframed as its historical root. Full operational spec remains [[Palace Agent Infrastructure Spec]].
 
 ---
 

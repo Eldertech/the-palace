@@ -9,11 +9,15 @@ born: 2026-03
 last_activated: 2026-05-02
 activation_count: 3
 stage: growing
+status: historical-root
 energy: very high
 beauty: 9
 confidence: working
-forward_vector: I want to become the canonical communication substrate for all palace swarm sessions.
+forward_vector: "My vector is fulfilled — I became the canonical communication substrate, and that running system is now [[STIGMERGY]]. My job is no longer to become; it is to hold the architecture and philosophy I named, as the origin record STIGMERGY can always be read back to."
 links:
+  - target: "[[STIGMERGY]]"
+    type: spawned
+    label: realized-as-the-running-system
   - target: "[[Swarm Weave]]"
     type: enables
   - target: "[[Pheromone Trail]]"
@@ -49,6 +53,8 @@ links:
 ---
 
 # BBS Blackboard
+
+> **Historical root.** This entry is the *concept* — the architecture and philosophy that named the palace's coordination substrate. The *running system* it became is [[STIGMERGY]] (canonical, type `meta`), and the message grammar is now ratified in [[SCHEMA]] §9. Read this for the why and the origin; read [[STIGMERGY]] for what operates today and [[Palace Agent Infrastructure Spec]] for the wire spec.
 
 Parallel agents have no shared context window. Each lives in its own isolated inference call. There is no native peer-to-peer channel between Claude API calls running simultaneously. The usual solution is a coordinator: a central agent that receives all messages and routes them. But coordinators are bottlenecks, single points of failure, and — more importantly — they contradict the palace's commitment to **distributed, stigmergic intelligence**.
 
