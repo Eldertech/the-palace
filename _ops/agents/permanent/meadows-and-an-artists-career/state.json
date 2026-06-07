@@ -1,7 +1,7 @@
 {
-  "iteration": 4,
-  "last_active": "2026-06-06T10:39:37Z",
-  "last_read_cursor": "meadows-career-steward-014",
+  "iteration": 8,
+  "last_active": "2026-06-07T03:59:14.011Z",
+  "last_read_cursor": "meadows-career-steward-023",
   "health": {
     "context_pct": null,
     "avg_output_tokens_last_5": null,
@@ -35,16 +35,15 @@
       ]
     },
     {
-      "request_id": "meadows-career-steward-014",
+      "request_id": "meadows-career-steward-023",
       "resource": "directional_decision",
-      "decision_topic": "Now that the mining is done and the notes box came back empty, how do you want to do the interview half?",
       "blocking": false,
-      "posted_at": "2026-06-06T16:34:00-04:00",
+      "posted_at": "2026-06-07T16:46:00-04:00",
       "options": [
-        "WORKSHEET-AS-INTERVIEW",
-        "ONE-CARD-PER-QUESTION",
-        "TWO-TENSIONS-ONLY",
-        "VOICE-WALK"
+        "POINT-AT-ENTRY",
+        "BLANKS-ARE-FINDING",
+        "FILL-BLANKS-FROM-PALACE",
+        "HARVEST-AND-CLOSE"
       ]
     }
   ],
@@ -115,6 +114,67 @@
       "resolved_at": "2026-06-05T18:12:51.123Z",
       "resolved_by": "c0d57d0a-028b-422e-b79e-e7ff4e5c7a4f",
       "outcome": "GRANTED — option_id=ANSWER-IN-NOTES"
+    },
+    {
+      "request_id": "meadows-career-steward-014",
+      "resource": "directional_decision",
+      "decision_topic": "Now that the mining is done and the notes box came back empty, how do you want to do the interview half?",
+      "blocking": false,
+      "posted_at": "2026-06-06T16:34:00-04:00",
+      "options": [
+        "WORKSHEET-AS-INTERVIEW",
+        "ONE-CARD-PER-QUESTION",
+        "TWO-TENSIONS-ONLY",
+        "VOICE-WALK"
+      ],
+      "resolved_at": "2026-06-07T02:18:10.507Z",
+      "resolved_by": "resp-mq35k7nv-vnm7gd",
+      "outcome": "GRANTED — (no option_id); notes: \"Put the entire worksheet including all of the Donella levels into the palace with your draft answers based on your research and knowledge of me. I will edit the document in the palace and you will review it from there.\""
+    },
+    {
+      "request_id": "meadows-career-steward-016",
+      "resource": "directional_decision",
+      "blocking": false,
+      "posted_at": "2026-06-07T10:00:30-04:00",
+      "options": [
+        "WATCH-AND-SYNTHESIZE",
+        "PING-ME-WHEN-DONE",
+        "ONE-LEVEL-AT-A-TIME",
+        "DIFFERENT"
+      ],
+      "resolved_at": "2026-06-07T03:21:40.211Z",
+      "resolved_by": "resp-mq37tv8z-53gjqk",
+      "outcome": "GRANTED — (no option_id); notes: \"I have edited the document, I'd like you to provide me with every answer re-written from Loudon's perspective, using style that matches loudon's language and cadence. Remember that much in the palace is written by claude and can't be trusted as matching Loudon's voice.\""
+    },
+    {
+      "request_id": "meadows-career-steward-019",
+      "resource": "directional_decision",
+      "blocking": false,
+      "posted_at": "2026-06-07T11:07:00-04:00",
+      "options": [
+        "READING-NOW",
+        "ONE-ROW-OFF",
+        "OVERSHOT",
+        "SKIP-DRAFTS"
+      ],
+      "resolved_at": "2026-06-07T03:57:07.052Z",
+      "resolved_by": "resp-mq393gbw-rhty5y",
+      "outcome": "GRANTED — (no option_id); notes: \"I have finished the worksheet, what next. How does this worksheet and the donella meadows project connect to the entry creative coach that landed recently\""
+    },
+    {
+      "request_id": "meadows-career-steward-021",
+      "resource": "directional_decision",
+      "blocking": false,
+      "posted_at": "2026-06-07T16:36:00-04:00",
+      "options": [
+        "FINISH-THE-TOP",
+        "GAP-PASS-FIRST",
+        "CREATIVE-COACH-ENTRY",
+        "DIFFERENT"
+      ],
+      "resolved_at": "2026-06-07T03:59:13.981Z",
+      "resolved_by": "resp-mq39669p-sl12ir",
+      "outcome": "GRANTED — (no option_id); notes: \"i edited your writing in the md file to my satisfaction.\""
     }
   ],
   "_pilot_metadata": {

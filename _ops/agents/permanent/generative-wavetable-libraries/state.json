@@ -1,19 +1,18 @@
 {
-  "iteration": 8,
-  "last_active": "2026-06-06T10:29:38Z",
-  "last_read_cursor": "gwl-steward-021",
+  "iteration": 9,
+  "last_active": "2026-06-07T16:30:26.640Z",
+  "last_read_cursor": "gwl-steward-024",
   "pending_requests": [
     {
-      "request_id": "gwl-steward-021",
-      "resource": "sensory_audition_gate",
-      "decision_topic": "Audition the Shepard CENTROID-FREQ wavetable by ear — does the position sweep read as one note brightening, and does it ship as the Phase 2 proof?",
-      "blocking": true,
-      "posted_at": "2026-06-06T16:42:00-04:00",
+      "request_id": "gwl-steward-024",
+      "resource": "directional_decision",
+      "blocking": false,
+      "posted_at": "2026-06-07T16:40:00-04:00",
       "options": [
-        "ACCEPT",
-        "TUNE-BELL",
-        "TRY-RANGE",
-        "WRONG-MAPPING"
+        "NEW-SOURCE",
+        "SURGE-XT-WRITER",
+        "CLM-VERIFY",
+        "YOU-NAME-IT"
       ]
     }
   ],
@@ -116,6 +115,22 @@
       "resolved_at": "2026-06-05T23:25:53.219Z",
       "resolved_by": "b86a5a51-d43a-4190-9bec-5d57cbbbc234",
       "outcome": "GRANTED — option_id=SHEPARD-CENTROID-FREQ"
+    },
+    {
+      "request_id": "gwl-steward-021",
+      "resource": "sensory_audition_gate",
+      "decision_topic": "Audition the Shepard CENTROID-FREQ wavetable by ear — does the position sweep read as one note brightening, and does it ship as the Phase 2 proof?",
+      "blocking": true,
+      "posted_at": "2026-06-06T16:42:00-04:00",
+      "options": [
+        "ACCEPT",
+        "TUNE-BELL",
+        "TRY-RANGE",
+        "WRONG-MAPPING"
+      ],
+      "resolved_at": "2026-06-07T16:26:52.271Z",
+      "resolved_by": "resp-mq3zvn5a-ifdoec",
+      "outcome": "GRANTED — option_id=ACCEPT"
     }
   ],
   "stewardship": {

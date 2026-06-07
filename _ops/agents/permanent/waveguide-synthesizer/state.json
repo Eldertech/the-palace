@@ -1,7 +1,7 @@
 {
-  "iteration": 2,
-  "last_active": "2026-06-06T17:01:39.197Z",
-  "last_read_cursor": "waveguide-synthesizer-steward-005",
+  "iteration": 4,
+  "last_active": "2026-06-07T16:58:22.065Z",
+  "last_read_cursor": "waveguide-synthesizer-steward-011",
   "health": {
     "context_pct": null,
     "avg_output_tokens_last_5": null,
@@ -19,15 +19,15 @@
   },
   "pending_requests": [
     {
-      "request_id": "waveguide-synthesizer-steward-005",
+      "request_id": "waveguide-synthesizer-steward-011",
       "resource": "directional_decision",
-      "blocking": false,
-      "posted_at": "2026-06-06T16:57:00-04:00",
+      "blocking": true,
+      "posted_at": "2026-06-07T17:11:00-04:00",
       "options": [
-        "SHOP-DISPATCH",
-        "CLAUDE-CODE-BUILD",
-        "HOLD-FOR-PAIRED",
-        "REDIRECT"
+        "READS-ADVANCE-STUDY",
+        "RESPAWN-WITH-FIXES",
+        "DOESNT-READ-REFRAME",
+        "PROCESS-NOTES-FIRST"
       ]
     }
   ],
@@ -45,6 +45,36 @@
       "resolved_at": "2026-06-06T13:51:17.979Z",
       "resolved_by": "resp-mq2evq3f-yg4dup",
       "outcome": "GRANTED — option_id=SKETCH-3D-FIRST"
+    },
+    {
+      "request_id": "waveguide-synthesizer-steward-005",
+      "resource": "directional_decision",
+      "blocking": false,
+      "posted_at": "2026-06-06T16:57:00-04:00",
+      "options": [
+        "SHOP-DISPATCH",
+        "CLAUDE-CODE-BUILD",
+        "HOLD-FOR-PAIRED",
+        "REDIRECT"
+      ],
+      "resolved_at": "2026-06-07T16:28:54.466Z",
+      "resolved_by": "resp-mq3zy9fm-gpi6nq",
+      "outcome": "GRANTED — option_id=SHOP-DISPATCH; notes: \"I am really curious what happens with a \"shop dispatch\" what does that mean, where does it go? lets see what happens and you come back to me with a report!\""
+    },
+    {
+      "request_id": "waveguide-synthesizer-steward-008",
+      "resource": "directional_decision",
+      "blocking": false,
+      "posted_at": "2026-06-07T16:38:00-04:00",
+      "options": [
+        "LOUDON-OPENS-MAKER",
+        "STEWARD-SPAWNS-MAKER",
+        "STEWARD-BUILDS-DIRECTLY",
+        "REDIRECT"
+      ],
+      "resolved_at": "2026-06-07T16:58:22.011Z",
+      "resolved_by": "resp-mq4105a3-mf5kh5",
+      "outcome": "GRANTED — option_id=STEWARD-SPAWNS-MAKER; notes: \"The Steward spawns maker is the likely best path, then the stweard presents me with the results and re-spawns maker for additional changes. I think this might be a scalable path, we are testing the process as much as the product here.\""
     }
   ],
   "_pilot_metadata": {
