@@ -37,6 +37,42 @@ function GrantsBadge({ n, name }) {
   );
 }
 
+// True when THIS steward is the one whose cycle the lane is actively computing.
+// The lane tracks the live steward by agent_id in worker.current (steward-lane.js
+// fireOne); the row keys on the same agent_id, so a direct compare marks the
+// active row. Gated on worker.running so a stale `current` after a reap doesn't
+// keep a row lit.
+export function isStewardRunning(steward, worker) {
+  return !!(worker && worker.running && steward && steward.agent_id
+    && steward.agent_id === worker.current);
+}
+
+// The bright-yellow "● running" row marker — mirrors the lane's STEWARD CYCLE
+// ALIVE accent so the steward mid-cycle reads at a glance.
+export function RunningTag({ name }) {
+  return (
+    <span
+      data-testid={`steward-running-${slug(name)}`}
+      data-running="true"
+      style={{
+        color: 'var(--ansi-bright-yellow)', textShadow: 'var(--glow)',
+        fontSize: 11, fontFamily: 'var(--font-mono)',
+        letterSpacing: '.05em', textTransform: 'uppercase',
+      }}
+    >● running</span>
+  );
+}
+
+// The row's single status slot: "● running" while the lane is computing this
+// steward's cycle, otherwise the grants-waiting badge. One state, not two --
+// while a cycle is live "running" is the truer signal than "N ready", and
+// replacing (rather than adding) keeps the row uncluttered.
+export function RowStatus({ isRunning, grants_waiting, name }) {
+  return isRunning
+    ? <RunningTag name={name} />
+    : <GrantsBadge n={grants_waiting} name={name} />;
+}
+
 export default function StewardsDeck() {
   const [data, setData] = useState(null);
   const [pending, setPending] = useState(null);     // steward name awaiting confirm
@@ -137,10 +173,12 @@ export default function StewardsDeck() {
               const sid = slug(s.agent_id);
               const confirming = pending === s.agent_id;
               const canAdvance = !s.missing && !running && !busy && s.grants_waiting > 0;
+              const isRunning = isStewardRunning(s, worker);
               return (
                 <div
                   key={s.agent_id}
                   data-testid={`steward-row-${sid}`}
+                  data-running={isRunning ? 'true' : 'false'}
                   style={{ display: 'flex', gap: 10, alignItems: 'flex-start', flexWrap: 'nowrap', padding: '3px 0', borderBottom: '1px solid var(--fg4, rgba(31,138,60,.25))' }}
                 >
                   <div style={{ flex: '1 1 auto', minWidth: 0, display: 'flex', gap: 10, alignItems: 'center', flexWrap: 'wrap' }}>
@@ -152,7 +190,7 @@ export default function StewardsDeck() {
                         <span style={{ color: 'var(--phosphor-dim)', textShadow: 'none', fontSize: 11 }}>{s.stage || '—'}</span>
                         <span style={{ color: 'var(--phosphor-dim)', textShadow: 'none', fontSize: 11 }}>cyc {s.iteration}</span>
                         <Tag tone={s.health === 'green' ? 'ok' : s.health === 'red' ? 'err' : 'default'}>{s.health || '—'}</Tag>
-                        <GrantsBadge n={s.grants_waiting} name={s.agent_id} />
+                        <RowStatus isRunning={isRunning} grants_waiting={s.grants_waiting} name={s.agent_id} />
                       </>
                     )}
                   </div>
