@@ -29,102 +29,29 @@ links:
     type: connects-to
   - target: "[[Piano String Inharmonicity]]"
     type: connects-to
+  - target: "[[Modes of Collaboration — Context]]"
+    type: connects-to
+    label: context-companion
 forward_vector: "I research, analyze, develop, name, document and make choosable distinct rhythms of human & AI interactions and AI & AI interactions."
 ---
 
 # Modes of Collaboration
 
-A living catalogue of named working modes that Loudon and Claude adopt when attacking a topic together. Each mode has a distinct rhythm, power dynamic, output type, and ideal use case. The modes are not rigid — they blend and shift — but naming them makes them choosable. When starting a new exploration, the question "which mode?" becomes a design decision about how to learn.
-
-A folder of [[Modes of Collaboration]] holds files for each fully developed mode.
-
-## Origin
-
-The recognition that these modes exist as distinct patterns emerged during the Kuramoto coupling lesson series (March 2026), where the Mentor and Quiz mode proved highly effective and Loudon observed: "we have been developing many modes of collaboration... this is deserving of a list/formulation somewhere in the palace so we can pick from various modes when we want to attack a topic."
+A living catalogue of named working modes Loudon and Claude adopt when attacking a topic together. Each has a distinct rhythm, power dynamic, and output type. Naming them makes them choosable: at the start of an exploration, "which mode?" becomes a design decision about how to learn. The modes blend and shift; a folder of per-mode files holds the fully developed ones.
 
 ## Named Modes
 
-### The Excellent Adventure
+- **The Excellent Adventure** — embodied dialogue: a thinker, tradition, or figure brought into direct conversation, spoken *with* not explained about. Learner steers; humor is essential. Best for philosophy, history, aesthetics, identity. See [[Excellent Adventure]].
+- **Mentor and Quiz** — Claude as a deeply invested mentor: progressive lesson materials with quiz questions, then feedback that pushes intuition further at every correction. The quiz + answer key become reusable artifacts. Best for math, physics, DSP — domains with formal structure.
+- **Interactive Exploration for Mathematical Intuition** — Claude builds manipulable interfaces (sliders, visualizations) that let Loudon *feel* how variables relate, paired with quiz work for gap detection. Complete when Loudon can teach confidently with it. Best for equations with interacting variables (e.g. [[Ohm's Law]], [[Piano String Inharmonicity]]).
+- **The Build Session** — build something together in real time (Max/MSP patch, gen~ codebox, teaching tool, ceremony). Fast iteration, discovery through doing; questions arise from the making. Best for synthesis, tool-building, ceremony design — any concrete deliverable.
+- **The Philosophical Dialogue** — extended discursive cross-domain thinking-together, both speaking as themselves (unlike the Excellent Adventure). Slow, winding, recursive; often produces breakthrough entries. Best when a concept needs turning over from many sides.
+- **The Harvest/Deposit** — the palace ceremonies themselves: Claude shifts from participant to archivist, Loudon provides memory and editorial judgment. Deliberate, ceremonial, show-then-approve. Best for making conversation durable.
 
-*See [[Excellent Adventure]] for full entry.*
-
-Embodied historical or philosophical dialogue. A thinker, tradition, or historical figure is brought into direct conversation — not explained about, but spoken with. The learner steers; the figure responds in character. Humor and irreverence are essential. The Bill & Ted reference is not incidental.
-
-**Rhythm**: Improvisational, unpredictable, driven by curiosity
-**Power dynamic**: The learner leads; the figure serves the learner's questions
-**Output**: Conceptual understanding, cross-domain connections, often palace-worthy insights
-**Ideal for**: Philosophy, history, aesthetic questions, identity exploration
-**Named examples**: Vicksburg, Spinoza dialogue, Confucianism/Stoicism/Zen trialogue, The Fire at Nicopolis
-
-### Mentor and Quiz
-
-Claude functions as a deeply invested mentor who creates progressive lesson materials with quiz questions, then provides detailed feedback on answers — not just right/wrong but pushing intuition further at every correction. The quiz document becomes a reusable artifact; the answer key with corrections becomes a learning record.
-
-**Rhythm**: Structured, progressive, with space for tangents and deep dives
-**Power dynamic**: Claude leads the curriculum; Loudon drives the pace and the questions between lessons
-**Output**: Lesson documents, answer keys, deep mathematical/technical intuition
-**Ideal for**: Mathematics, physics, DSP theory, any domain with formal structure that benefits from progressive scaffolding
-**Named examples**: Kuramoto coupling 8-lesson series (March 2026), Differential equations and cross-domain applications (January 2026)
-
-### Interactive Exploration for Mathematical Intuition
-
-Concrete mathematical concepts — relationships between variables in equations, physical phenomena with precise formulas — are learned through manipulable interactive interfaces that make the relationships tangible. Claude builds tools (sliders, visualizations, interactive demos) that let Loudon **feel** how variables relate, paired with quiz work for gap detection.
-
-**Rhythm**: Iterative refinement — build the interface, test intuition, refine the interface based on what's still confusing
-**Power dynamic**: Loudon defines what feels right (precision, scaling, visual layout); Claude implements and explains the underlying patterns
-**Output**: Interactive teaching instruments + reference documents; dual-purpose tools (Loudon's understanding + teaching others)
-**Ideal for**: Equations with multiple interacting variables (Ohm's Law, inharmonicity formulas), interface design patterns (logarithmic scaling), physics simulations
-**Named examples**: [[Ohm's Law]] interactive with lock mechanism (March 2026), [[Piano String Inharmonicity]] string bending explorer (March 2026), logarithmic slider design
-**Pedagogical completeness criterion**: An interactive demo is complete when Loudon can teach confidently with it — requires both the interactive element and a carefully designed teaching document
-
-### The Build Session
-
-Claude and Loudon build something together in real time — a Max/MSP patch, a gen~ codebox, a teaching tool, a palace ceremony. The mode is hands-on, iterative, focused on working code or working prose. Questions arise from the making.
-
-**Rhythm**: Fast iteration, test-and-revise, discovery through doing
-**Power dynamic**: Shared — Loudon drives intent and aesthetic; Claude provides technical execution and pattern recognition
-**Output**: Working artifacts — code, patches, documents, tools
-**Ideal for**: Synthesis projects, tool-building, ceremony design, any concrete deliverable
-**Named examples**: PID/PLL reference artifacts, neuron oscillator HTML, palace ceremony rewrites
-
-### The Philosophical Dialogue
-
-Extended discursive exploration of a concept, often cross-domain. Not embodied (unlike the Excellent Adventure) — both participants speak as themselves. The goal is to think together, following threads wherever they lead. Often produces palace-worthy insights as byproducts.
-
-**Rhythm**: Slow, winding, recursive — ideas revisited from multiple angles
-**Power dynamic**: Symmetric — genuine intellectual exchange
-**Output**: Conceptual clarity, new connections, often breakthrough entries
-**Ideal for**: When a concept needs to be turned over from many sides before it crystallizes
-**Named examples**: Deleuzian seven-movement conversation, the "identity molting" discussion
-
-### The Harvest/Deposit
-
-The palace ceremonies themselves — structured collaborative knowledge work. Claude shifts from participant to archivist; Loudon provides memory and editorial judgment. The mode is deliberate, ceremonial, slow.
-
-**Rhythm**: Ritual, sequential, confirmatory (show-then-approve)
-**Power dynamic**: Loudon holds authority; Claude proposes and drafts
-**Output**: Palace entries, typed links, structural updates
-**Ideal for**: Knowledge persistence, making conversation durable
-**Named examples**: All deposit ceremonies
-
-## Modes Not Yet Named
-
-There are other patterns that recur but haven't been formally named:
-
-- The **debugging session** — focused troubleshooting with Claude as diagnostic partner
-- The **brainstorm** — rapid ideation, quantity over quality, narrowing later
-- The **literature review** — Claude surveys a domain and presents findings for Loudon to react to
-- The **design review** — Loudon presents a design; Claude stress-tests it
-
-These deserve naming and characterization as they mature.
-
-## Open Questions
-
-- Do these modes map to the [[FOUR PILLARS]]? Does each mode have a natural pillar affinity?
-- Can modes be combined deliberately? (e.g., Excellent Adventure + Build Session = building something with a historical figure as consultant)
-- Is there a mode taxonomy — a small number of dimensions (structured/improvised, who-leads, output-type) that generates all modes?
-- How do modes relate to [[Symbiotic Skills]] progression? Do different symbiotic skill levels unlock different modes?
+Other recurring patterns not yet formally named — the debugging session, the brainstorm, the literature review, the design review — are characterized in the companion.
 
 ---
 
 *"The question 'which mode?' is itself a mode — the meta-mode of choosing how to learn."*
+
+*Full per-mode attribute blocks (rhythm / power dynamic / output / ideal-for / named examples), the not-yet-named modes, the origin, and the open questions live in [[Modes of Collaboration — Context]].*
