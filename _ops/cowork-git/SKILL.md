@@ -71,10 +71,35 @@ machinery, deliverables). Do NOT direct-commit — leave a handoff instead — w
   repo.
 - The web of changes is **large or multi-commit** and wants human review.
 
-Today the handoff is: report the exact commit plan (paths + kind/scope/summary/
-body/verify) to Loudon so he commits Mac-side or via the LOG deck. The
-**automated BBS commit-handoff flag + a LOG-deck consumer is layer B** — not yet
-built; see the parent conversation. Until then, "handoff" = surface the plan.
+## Layer B — the BBS commit-handoff (`handoff.mjs`)
+
+When you can't (or shouldn't) lock-move commit, post the plan to the board so a
+Mac-side worker (Claude Code) executes it where unlink works and the palace spec
+runs normally. The whole web of changes travels on the flag, so the worker sees
+the full picture, not a pile of loose files.
+
+```
+# 1. write a plan (JSON): { reason, groups:[{paths,kind,scope,summary,body,verify,disposition,note}] }
+#    disposition: "commit" (safe to commit) | "deposit-review" (canon → Deposit Ceremony)
+node _ops/cowork-git/handoff.mjs emit --plan <plan.json>   # posts a §2.2 commit_handoff flag
+node _ops/cowork-git/handoff.mjs show                       # renders all OPEN handoffs as an execution plan
+```
+
+The Mac-side worker runs `show`, commits each `commit` group through the palace
+spec (staging only that group's paths), routes each `deposit-review` group
+through the Deposit Ceremony, then **closes** the handoff by appending a
+`commit_handoff_done` BROADCAST with top-level `re: <flag id>` and the commit
+hashes. `emit` is idempotent on the path set (`plan_id`) — it won't double-post
+an open handoff for the same files.
+
+A one-line consumer prompt for Claude Code: *"In the palace, run
+`node _ops/cowork-git/handoff.mjs show` and execute the open commit handoff(s)
+per the plan — commit the `commit` groups via the palace spec, route
+`deposit-review` groups through the Deposit Ceremony, then post the
+`commit_handoff_done` close for each."*
+
+(The earlier fallback still stands when the board isn't the right channel: just
+report the exact commit plan to Loudon in chat.)
 
 ## Palace commit requirements (enforced by `commitSelected`, honored here)
 
