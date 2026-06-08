@@ -308,7 +308,7 @@ export function createCompanionLane(opts = {}) {
 
     let prompt;
     try {
-      prompt = buildCompanionPrompt({ grounding, body: entry.body, message, history });
+      prompt = buildCompanionPrompt({ grounding, frontmatter: entry.frontmatter, body: entry.body, message, history });
     } catch (e) {
       return { ok: false, fired: false, msg: `could not build prompt: ${e.message}` };
     }

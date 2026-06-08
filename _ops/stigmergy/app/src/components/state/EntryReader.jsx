@@ -165,9 +165,10 @@ export default function EntryReader({
         gap: 24, alignItems: 'flex-start',
       }}>
         <div ref={bodyColRef} style={{ minWidth: 0 }}>
-          {/* The companion window (opt-in). Rendered FIRST so its gutter float
-              precedes the body text and the text re-flows to its left. Off by
-              default -> not mounted -> the column reads exactly as before. */}
+          {/* The companion window (opt-in). A floating box pinned above
+              everything (position:fixed); bodyColRef is passed only so its
+              scroll-spy can find the section it floats over. Off by default ->
+              not mounted -> the column reads exactly as before. */}
           {agentOpen ? (
             <EntryAgentWindow
               entry={entry}

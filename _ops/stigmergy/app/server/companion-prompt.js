@@ -1,11 +1,12 @@
 // companion-prompt.js — build the prompt for one Companion turn.
 //
 // The Companion is the palace entry operating in a new mode: the page talking
-// with Loudon about itself ([[Pages as Agents]]). M1b is discuss-only — the
-// worker generates a conversational reply; it does NOT edit files (Node owns
-// the enforced write path in M1c). The prompt injects the page's own text and
-// its typed-link neighborhood (assembled grounding) so the worker is grounded
-// without a tool round-trip; the Tier-0 floor files remain readable on disk.
+// with Loudon about itself ([[Pages as Agents]]). The worker generates a
+// conversational reply and MAY propose one body edit (Node owns the enforced
+// write path; the worker never touches files). The prompt injects the page's
+// full frontmatter + body + typed-link neighborhood (assembled grounding) so the
+// worker can comment on anything in the doc without a tool round-trip; the
+// Tier-0 floor files remain readable on disk.
 //
 // The output contract is a single JSON object so the lane can post a clean
 // reply to the board. Pure + deterministic (caller passes ts/ids) — unit-tested.
@@ -19,15 +20,30 @@ function neighborLine(n) {
   return `- ${rel} → ${n.name}${ghost}${fv}`;
 }
 
+// A readable dump of the entry's full frontmatter so the companion can comment
+// on ANY field (born, stage, links + labels, status, …), not just the few the
+// grounding summary carries. Arrays/objects are JSON-compacted per line.
+function dumpFrontmatter(fm) {
+  if (!fm || typeof fm !== 'object') return '(none)';
+  const lines = [];
+  for (const [k, v] of Object.entries(fm)) {
+    if (v == null) continue;
+    if (Array.isArray(v) || typeof v === 'object') lines.push(`${k}: ${JSON.stringify(v)}`);
+    else lines.push(`${k}: ${v}`);
+  }
+  return lines.length ? lines.join('\n') : '(none)';
+}
+
 /**
  * @param {object} args
  * @param {object} args.grounding — from assembleGrounding (entry, neighbors, floor)
+ * @param {object} [args.frontmatter] — the entry's full raw frontmatter object
  * @param {string} args.body — the entry's full markdown body
  * @param {string} args.message — the user's latest message
  * @param {Array<{role:'user'|'companion', text:string}>} [args.history]
  * @returns {string} the full worker prompt
  */
-export function buildCompanionPrompt({ grounding, body, message, history = [] }) {
+export function buildCompanionPrompt({ grounding, frontmatter, body, message, history = [] }) {
   const e = grounding.entry;
   const neighbors = grounding.neighbors || [];
   const bodyText = typeof body === 'string'
@@ -56,6 +72,12 @@ generative.
 title: ${e.title}
 type: ${e.type || '—'} · stage: ${e.stage || '—'} · pillars: ${pillars}
 its forward vector: ${e.forward_vector || '—'}
+
+You can discuss or comment on ANY part of this entry — its body, its frontmatter,
+and its forward vector. The full frontmatter:
+--- frontmatter ---
+${dumpFrontmatter(frontmatter)}
+--- end frontmatter ---
 
 --- body ---
 ${bodyText}
