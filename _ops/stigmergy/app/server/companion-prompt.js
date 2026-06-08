@@ -40,10 +40,11 @@ function dumpFrontmatter(fm) {
  * @param {object} [args.frontmatter] — the entry's full raw frontmatter object
  * @param {string} args.body — the entry's full markdown body
  * @param {string} args.message — the user's latest message
+ * @param {string} [args.focus] — a passage Loudon has pinned ("discuss this")
  * @param {Array<{role:'user'|'companion', text:string}>} [args.history]
  * @returns {string} the full worker prompt
  */
-export function buildCompanionPrompt({ grounding, frontmatter, body, message, history = [] }) {
+export function buildCompanionPrompt({ grounding, frontmatter, body, message, focus, history = [] }) {
   const e = grounding.entry;
   const neighbors = grounding.neighbors || [];
   const bodyText = typeof body === 'string'
@@ -88,7 +89,15 @@ ${neighbors.length ? neighbors.map(neighborLine).join('\n') : '(no typed links y
 
 == CONVERSATION SO FAR ==
 ${histBlock}
-
+${focus ? `
+== FOCUS — the exact passage Loudon has pinned ==
+"""
+${focus}
+"""
+Treat THIS as the precise text under discussion. When he says "this", "that", or
+"here", he means this passage. If he asks to change it, prefer a rewrite whose
+"find" is this exact text (or a unique substring of it).
+` : ''}
 == LOUDON'S MESSAGE ==
 ${message}
 

@@ -276,6 +276,15 @@ hr::before { content: "═══════════════════
   transition: background var(--dur-fade) linear, filter var(--dur-fade) linear;
 }
 
+/* The "discussing" highlight — a SECOND selection (CSS Custom Highlight API).
+   Amber so it reads as distinct from the phosphor body and the green native
+   selection; persists when focus moves to the chat box (it is a registered
+   Highlight, not the live selection). Painted on real DOM ranges, no wrapping. */
+::highlight(eaw-discussing) {
+  background-color: color-mix(in srgb, var(--ansi-bright-yellow) 32%, transparent);
+  color: var(--phosphor-white);
+}
+
 /* ---- BBS scrollbar -------------------------------------------------------- */
 /* Square, phosphor, no chrome. Applied to in-window scrollers (the companion
    body + composer) so they read as part of the terminal, not the OS. */
