@@ -156,6 +156,27 @@ function GroundingView({ grounding }) {
   );
 }
 
+// A committed edit. Honest by construction: it names the op, the quarantine
+// branch, and the commit hash — the proof the write landed in LOG. The live
+// entry text is unchanged (the edit is quarantined until a human merges), so we
+// report the edit rather than mutate the body, which would lie.
+function EditMarker({ op, commit, branch, summary }) {
+  return (
+    <div data-testid="eaw-edit" style={{
+      marginBottom: 8, padding: '5px 7px',
+      border: '1px solid var(--phosphor-dim)',
+      background: 'color-mix(in srgb, var(--phosphor) 6%, transparent)',
+    }}>
+      <div style={{ color: 'var(--phosphor)', textShadow: 'var(--glow)', fontSize: 11 }}>
+        ✎ {op}{summary ? ` — ${summary}` : ''}
+      </div>
+      <div style={{ color: 'var(--phosphor-dim)', fontSize: 10 }}>
+        committed <span style={{ color: 'var(--phosphor-bright)' }}>{commit}</span> on {branch}
+      </div>
+    </div>
+  );
+}
+
 export default function EntryAgentWindow({ entry, containerRef, onClose }) {
   const [width, setWidth] = useState(DEFAULT_W);
   const [height, setHeight] = useState(DEFAULT_H);
@@ -171,15 +192,18 @@ export default function EntryAgentWindow({ entry, containerRef, onClose }) {
   // frontmatter-derived stub so the window is honest the instant it mounts.
   const [grounding, setGrounding] = useState(null);
 
-  // Conversation: user turns are local-optimistic; the Companion's replies
-  // arrive on the board (companion_reply BROADCAST) over SSE. `sending` is true
-  // between firing a turn and its reply landing; pendingTurns matches replies to
-  // turns we started this session (so replayed/foreign replies are ignored).
+  // Conversation: user turns are local-optimistic; the Companion's reply
+  // (companion_reply) and any edit (companion_edit PROOF) arrive on the board
+  // over SSE. sessionTurns are the turn ids we started THIS session — we accept
+  // board messages for them (a turn yields a reply and maybe an edit, so we do
+  // NOT drop the id on the reply) and ignore replayed/foreign ones. `sending`
+  // clears when a message for the most recent turn lands.
   const [convo, setConvo] = useState([]);
   const [sending, setSending] = useState(false);
   const [draft, setDraft] = useState('');
   const [turnError, setTurnError] = useState(null);
-  const pendingTurns = useRef(new Set());
+  const sessionTurns = useRef(new Set());
+  const currentTurn = useRef(null);
 
   const path = entry?.path ?? null;
   const drag = useRef(null);
@@ -193,7 +217,8 @@ export default function EntryAgentWindow({ entry, containerRef, onClose }) {
     setConvo([]);
     setSending(false);
     setTurnError(null);
-    pendingTurns.current = new Set();
+    sessionTurns.current = new Set();
+    currentTurn.current = null;
     fetchGrounding(path).then((r) => {
       if (cancelled) return;
       if (r && r.ok && r.grounding) setGrounding(r.grounding);
@@ -209,12 +234,20 @@ export default function EntryAgentWindow({ entry, containerRef, onClose }) {
       target: 'persistent',
       onMessage: (m) => {
         const p = m && m.payload;
-        if (!p || p.kind !== 'companion_reply' || p.entry_path !== path) return;
-        // Only accept replies to turns we started this session.
-        if (!pendingTurns.current.has(p.turn_id)) return;
-        pendingTurns.current.delete(p.turn_id);
-        setConvo((prev) => [...prev, { id: m.id || p.turn_id, role: 'companion', text: p.reply || '' }]);
-        setSending(false);
+        if (!p || p.entry_path !== path) return;
+        // Only accept messages for turns we started this session.
+        if (!sessionTurns.current.has(p.turn_id)) return;
+        if (p.kind === 'companion_reply') {
+          setConvo((prev) => [...prev, { id: m.id || `r-${p.turn_id}`, role: 'companion', text: p.reply || '' }]);
+        } else if (p.kind === 'companion_edit') {
+          setConvo((prev) => [...prev, {
+            id: m.id || `e-${p.turn_id}`, role: 'edit',
+            op: p.op, commit: p.commit, branch: p.branch, summary: p.summary,
+          }]);
+        } else {
+          return;
+        }
+        if (p.turn_id === currentTurn.current) setSending(false);
       },
       onStateChange: () => {},
     });
@@ -225,13 +258,15 @@ export default function EntryAgentWindow({ entry, containerRef, onClose }) {
     const message = draft.trim();
     if (!message || sending || !path) return;
     setTurnError(null);
-    const history = convo.map((m) => ({ role: m.role, text: m.text }));
+    // history: only the spoken turns (user + companion); edit markers carry no text
+    const history = convo.filter((m) => m.role === 'user' || m.role === 'companion').map((m) => ({ role: m.role, text: m.text }));
     setConvo((prev) => [...prev, { id: `u-${prev.length}`, role: 'user', text: message }]);
     setDraft('');
     setSending(true);
     const r = await postTurn({ path, message, history });
     if (r && r.fired && r.turnId) {
-      pendingTurns.current.add(r.turnId);
+      sessionTurns.current.add(r.turnId);
+      currentTurn.current = r.turnId;
     } else {
       setSending(false);
       setTurnError(r?.busy ? 'a companion turn is already running — try again in a moment'
@@ -455,7 +490,9 @@ export default function EntryAgentWindow({ entry, containerRef, onClose }) {
           ) : (
             <div data-testid="eaw-convo">
               {convo.map((m) => (
-                <ChatBubble key={m.id} role={m.role} text={m.text} />
+                m.role === 'edit'
+                  ? <EditMarker key={m.id} op={m.op} commit={m.commit} branch={m.branch} summary={m.summary} />
+                  : <ChatBubble key={m.id} role={m.role} text={m.text} />
               ))}
               {sending ? (
                 <div data-testid="eaw-thinking" style={{ color: 'var(--phosphor-dim)', fontSize: 11, fontStyle: 'italic' }}>

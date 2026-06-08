@@ -23,6 +23,7 @@ import { createActuator } from './actuator.js';
 import { readEntry } from '../src/lib/entries.js';
 import { assembleGrounding } from '../src/lib/entry-grounding.js';
 import { buildCompanionPrompt } from './companion-prompt.js';
+import { armedWriteEntry, ensureEditsWorktree } from './armed-write.js';
 import { appendMessage } from '@stigmergy/core/blackboard';
 import { validateMessage } from '@stigmergy/core/schema';
 
@@ -48,15 +49,16 @@ export function companionArgv(prompt, model) {
 }
 
 /**
- * Pull the worker's reply out of its raw stdout. The contract asks for a single
- * JSON object {"reply":"..."}, but a capable model may wrap it; so we scan for
- * the LAST balanced {...} that parses with a string `reply`, and fall back to
- * the raw text (fence-stripped) so the user always sees something.
+ * Pull the worker's result out of its raw stdout. The contract asks for a single
+ * JSON object {"reply":"...","edit"?:{...}}, but a capable model may wrap it; so
+ * we scan for the LAST balanced {...} that parses with a string `reply` or an
+ * `edit`, and fall back to the raw text (fence-stripped) as the reply so the
+ * user always sees something. Returns { reply, edit }.
  */
-export function extractReply(raw) {
-  if (typeof raw !== 'string') return '';
+export function extractResult(raw) {
+  if (typeof raw !== 'string') return { reply: '', edit: null };
   const text = raw.trim();
-  if (!text) return '';
+  if (!text) return { reply: '', edit: null };
   const objs = [];
   for (let i = 0; i < text.length; i += 1) {
     if (text[i] !== '{') continue;
@@ -75,10 +77,20 @@ export function extractReply(raw) {
   for (let k = objs.length - 1; k >= 0; k -= 1) {
     try {
       const obj = JSON.parse(objs[k]);
-      if (obj && typeof obj.reply === 'string') return obj.reply;
+      if (obj && (typeof obj.reply === 'string' || (obj.edit && typeof obj.edit === 'object'))) {
+        return {
+          reply: typeof obj.reply === 'string' ? obj.reply : '',
+          edit: obj.edit && typeof obj.edit === 'object' ? obj.edit : null,
+        };
+      }
     } catch (_) { /* try the next candidate */ }
   }
-  return text.replace(/^```(?:json)?\s*/i, '').replace(/\s*```$/, '').trim();
+  return { reply: text.replace(/^```(?:json)?\s*/i, '').replace(/\s*```$/, '').trim(), edit: null };
+}
+
+/** Back-compat: just the reply string. */
+export function extractReply(raw) {
+  return extractResult(raw).reply;
 }
 
 /**
@@ -115,6 +127,44 @@ export function buildCompanionMessage({ title, entryPath, turnId, reply, model, 
   };
 }
 
+/**
+ * Build the §2.2 PROOF an edit posts once it is committed. type PROOF carries
+ * "it landed in LOG": the commit hash is the proof the write is real. Pure +
+ * validated by core before append.
+ */
+export function buildEditProofMessage({ title, entryPath, turnId, op, shortHash, branch, summary, model, ts, id }) {
+  const slug = slugify(title);
+  return {
+    schema_version: '1.0',
+    id: id || `${slug}-companion-edit-${turnId}`,
+    ts,
+    session_id: `companion-${slug}`,
+    from: companionFrom(title),
+    to: '*',
+    type: 'PROOF',
+    board: 'GENERAL',
+    health: {
+      score: 'green',
+      model: model || DEFAULT_MODEL,
+      _orchestrator_metadata: {
+        dispatch_mode: 'claude-code-subagent',
+        note: 'Companion edit committed to the quarantined edits branch. Path 2 stub health.',
+      },
+    },
+    payload: {
+      kind: 'companion_edit',
+      entry: title,
+      entry_path: entryPath,
+      turn_id: turnId,
+      op,
+      commit: shortHash,
+      branch,
+      summary,
+      status: 'committed',
+    },
+  };
+}
+
 // ── the lane ────────────────────────────────────────────────────────────────
 
 /**
@@ -134,6 +184,11 @@ export function createCompanionLane(opts = {}) {
   const model = opts.model || DEFAULT_MODEL;
   const stubArgv = typeof opts.buildArgv === 'function' ? opts.buildArgv : null;
   const dryReap = opts.dryReap === true;
+  // The quarantined edit target. When provided (tests), used directly; else the
+  // dedicated worktree is created lazily on the first edit (../palace-stigmergy-
+  // edits on `stigmergy-edits`, decided 2026-06-08).
+  const editsBranch = opts.editsBranch || 'stigmergy-edits';
+  const editsRootOpt = opts.editsRoot ? resolve(opts.editsRoot) : null;
 
   const transcriptsDir = join(stateDir, 'transcripts');
   const lastTurnFile = join(stateDir, 'last-turn.json');
@@ -157,37 +212,73 @@ export function createCompanionLane(opts = {}) {
     try { return JSON.parse(readFileSync(lastTurnFile, 'utf8')); } catch (_) { return null; }
   }
 
-  // The reap: runs in the worker's exit handler. Never let a throw escape
-  // (an uncaught error in an exit handler crashes the Vite host).
-  function reap(ctx) {
+  async function resolveEditsRoot() {
+    if (editsRootOpt) return editsRootOpt;
+    return ensureEditsWorktree(root, { branch: editsBranch });
+  }
+
+  function postIfValid(msg) {
+    if (validateMessage(msg).valid) { appendMessage(boardPath, msg); return true; }
+    logLine(`ERROR: companion message invalid: ${JSON.stringify(validateMessage(msg).errors)}`);
+    return false;
+  }
+
+  // The reap: runs in the worker's exit handler. async, but structured so it
+  // NEVER rejects (an unhandled rejection from an exit handler is as bad as a
+  // throw). It posts the reply, then — if the worker proposed an edit — applies
+  // it through the enforced write path and posts a PROOF carrying the commit.
+  async function reap(ctx) {
     const meta = (ctx && ctx.meta) || {};
+    const { entryTitle: title, entryPath, turnId } = meta;
     try {
       if (dryReap) {
-        writeLastTurn({ ok: true, stub: true, turn_id: meta.turnId, entry: meta.entryTitle, ts: meta.ts });
+        writeLastTurn({ ok: true, stub: true, turn_id: turnId, entry: title, ts: meta.ts });
         return;
       }
       let raw = '';
       try { raw = readFileSync(meta.transcriptPath, 'utf8'); } catch (_) { raw = ''; }
-      const reply = extractReply(raw) || '(the companion returned nothing)';
-      const msg = buildCompanionMessage({
-        title: meta.entryTitle,
-        entryPath: meta.entryPath,
-        turnId: meta.turnId,
-        reply,
-        model: meta.model || model,
-        ts: new Date().toISOString(),
-      });
-      const v = validateMessage(msg);
-      if (!v.valid) {
-        logLine(`ERROR: companion message invalid: ${JSON.stringify(v.errors)}`);
-        writeLastTurn({ ok: false, turn_id: meta.turnId, error: 'invalid message', errors: v.errors });
-        return;
+      const { reply, edit } = extractResult(raw);
+
+      // 1) the conversational reply (always)
+      const replyText = reply || (edit ? '(applying that edit…)' : '(the companion returned nothing)');
+      postIfValid(buildCompanionMessage({
+        title, entryPath, turnId, reply: replyText, model: meta.model || model, ts: new Date().toISOString(),
+      }));
+
+      // 2) the edit, through the enforced write path → PROOF on success
+      let editSummary = null;
+      if (edit && edit.op) {
+        try {
+          const editsRoot = await resolveEditsRoot();
+          const w = await armedWriteEntry({
+            editsRoot, relPath: entryPath, op: edit,
+            summary: edit.summary || `companion ${edit.op}: ${title}`,
+            verify: 'unverified', author: 'claude',
+          });
+          if (w.ok) {
+            postIfValid(buildEditProofMessage({
+              title, entryPath, turnId, op: w.op, shortHash: w.shortHash,
+              branch: editsBranch, summary: edit.summary || `companion ${edit.op}`,
+              model: meta.model || model, ts: new Date().toISOString(),
+            }));
+            editSummary = { ok: true, op: w.op, commit: w.shortHash };
+          } else {
+            postIfValid(buildCompanionMessage({
+              title, entryPath, turnId, reply: `I couldn't apply that edit honestly: ${w.error}`,
+              model: meta.model || model, ts: new Date().toISOString(),
+              id: `${slugify(title)}-companion-editfail-${turnId}`,
+            }));
+            editSummary = { ok: false, error: w.error };
+          }
+        } catch (e) {
+          logLine(`ERROR: companion edit failed: ${e.message}`);
+          editSummary = { ok: false, error: e.message };
+        }
       }
-      appendMessage(boardPath, msg);
-      writeLastTurn({ ok: true, turn_id: meta.turnId, entry: meta.entryTitle, message_id: msg.id, ts: msg.ts });
+      writeLastTurn({ ok: true, turn_id: turnId, entry: title, edit: editSummary, ts: new Date().toISOString() });
     } catch (e) {
       logLine(`ERROR: companion reap failed: ${e.message}`);
-      writeLastTurn({ ok: false, turn_id: meta && meta.turnId, error: e.message });
+      writeLastTurn({ ok: false, turn_id: turnId, error: e.message });
     }
   }
 
@@ -240,7 +331,7 @@ export function createCompanionLane(opts = {}) {
     turn,
     status,
     paths: {
-      stateDir, transcriptsDir, lastTurnFile, boardPath,
+      stateDir, transcriptsDir, lastTurnFile, boardPath, editsBranch,
       logFile: actuator.paths.logFile, pidFile: actuator.paths.pidFile,
     },
   };
