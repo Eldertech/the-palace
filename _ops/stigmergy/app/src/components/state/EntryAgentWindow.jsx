@@ -189,9 +189,42 @@ export default function EntryAgentWindow({ entry, containerRef, onClose }) {
   const sessionTurns = useRef(new Set());
   const currentTurn = useRef(null);
 
+  // The "discussing" pin: a SECOND selection (CSS Custom Highlight API). focusText
+  // is the pinned passage (threaded to the companion as the exact text under
+  // discussion); `chip` positions the floating "◎ discuss this" affordance that
+  // appears on a normal selection. pendingRange holds the cloned Range to pin.
+  const [focusText, setFocusText] = useState(null);
+  const [chip, setChip] = useState(null);
+  const pendingRange = useRef(null);
+  const winRef = useRef(null);
+
   const path = entry?.path ?? null;
   const drag = useRef(null);
   const inputRef = useRef(null);  // the composer textarea (auto-grow)
+
+  const highlightSupported = typeof CSS !== 'undefined' && !!CSS.highlights && typeof Highlight !== 'undefined';
+
+  // Pin / clear the discussing highlight. Pins a cloned Range into the
+  // ::highlight(eaw-discussing) registry — it survives focus moving to the chat
+  // box because it is a registered Highlight, not the live selection. Clearing
+  // the native selection after pinning leaves only the amber mark.
+  const pinFocus = useCallback((range, text) => {
+    if (!range || !text) return;
+    if (highlightSupported) {
+      try { CSS.highlights.set('eaw-discussing', new Highlight(range)); } catch (_) { /* ignore */ }
+    }
+    setFocusText(text);
+    setChip(null);
+    try { window.getSelection()?.removeAllRanges(); } catch (_) { /* ignore */ }
+  }, [highlightSupported]);
+
+  const clearFocus = useCallback(() => {
+    if (highlightSupported) {
+      try { CSS.highlights.delete('eaw-discussing'); } catch (_) { /* ignore */ }
+    }
+    setFocusText(null);
+    setChip(null);
+  }, [highlightSupported]);
 
   // ── Fetch grounding on entry open / change ─────────────────────────────
   useEffect(() => {
@@ -237,6 +270,43 @@ export default function EntryAgentWindow({ entry, containerRef, onClose }) {
     return close;
   }, [path]);
 
+  // ── "discuss this": a second selection over the entry text ──────────────
+  // On mouseup with a non-empty selection inside the entry (but not inside this
+  // window), show a "◎ discuss this" chip; Option/Alt+drag pins it immediately.
+  // Shift+drag is intentionally NOT used — the browser owns it (extend select).
+  useEffect(() => {
+    if (typeof window === 'undefined') return undefined;
+    const onMouseUp = (e) => {
+      const container = containerRef?.current;
+      const sel = window.getSelection();
+      if (!container || !sel || sel.isCollapsed || sel.rangeCount === 0) { setChip(null); return; }
+      const range = sel.getRangeAt(0);
+      const node = range.commonAncestorContainer;
+      // inside the entry surface, but not inside the companion window itself
+      if (!container.contains(node) || (winRef.current && winRef.current.contains(node))) { setChip(null); return; }
+      const text = sel.toString().trim();
+      if (!text) { setChip(null); return; }
+      pendingRange.current = range.cloneRange();
+      if (e.altKey) { pinFocus(pendingRange.current, text); return; } // Option+drag pins
+      const rect = range.getBoundingClientRect();
+      setChip({ x: Math.max(8, Math.min(window.innerWidth - 140, rect.right - 8)), y: rect.bottom + 6, text });
+    };
+    const onSelChange = () => {
+      const sel = window.getSelection();
+      if (!sel || sel.isCollapsed) setChip((c) => (c ? null : c));
+    };
+    document.addEventListener('mouseup', onMouseUp);
+    document.addEventListener('selectionchange', onSelChange);
+    return () => {
+      document.removeEventListener('mouseup', onMouseUp);
+      document.removeEventListener('selectionchange', onSelChange);
+    };
+  }, [containerRef, path, pinFocus]);
+
+  // Clear the highlight when the entry changes or the window unmounts — its
+  // Range belongs to the old DOM.
+  useEffect(() => clearFocus, [path, clearFocus]);
+
   const sendTurn = useCallback(async () => {
     const message = draft.trim();
     if (!message || sending || !path) return;
@@ -247,7 +317,7 @@ export default function EntryAgentWindow({ entry, containerRef, onClose }) {
     setDraft('');
     if (inputRef.current) inputRef.current.style.height = ''; // reset auto-grow
     setSending(true);
-    const r = await postTurn({ path, message, history });
+    const r = await postTurn({ path, message, history, focus: focusText });
     if (r && r.fired && r.turnId) {
       sessionTurns.current.add(r.turnId);
       currentTurn.current = r.turnId;
@@ -256,7 +326,7 @@ export default function EntryAgentWindow({ entry, containerRef, onClose }) {
       setTurnError(r?.busy ? 'a companion turn is already running — try again in a moment'
         : (r?.msg || r?.error || 'could not start the turn'));
     }
-  }, [draft, sending, path, convo]);
+  }, [draft, sending, path, convo, focusText]);
 
   // ── Position: default to the right, keep on-screen on resize ────────────
   useIsoLayoutEffect(() => {
@@ -334,7 +404,26 @@ export default function EntryAgentWindow({ entry, containerRef, onClose }) {
   const winPos = left == null ? { right: 28 } : { left };
 
   return (
+    <>
+    {/* "◎ discuss this" — appears on a normal selection in the entry; pins on
+        mousedown (preventDefault keeps the selection until we clone it). */}
+    {chip ? (
+      <div
+        data-testid="eaw-discuss-chip"
+        onMouseDown={(e) => { e.preventDefault(); pinFocus(pendingRange.current, chip.text); }}
+        style={{
+          position: 'fixed', left: chip.x, top: chip.y, zIndex: Z + 1,
+          cursor: 'pointer', userSelect: 'none',
+          background: 'var(--bg)',
+          color: 'var(--ansi-bright-yellow)', textShadow: '0 0 6px currentColor',
+          border: '1px solid var(--ansi-bright-yellow)', padding: '2px 7px',
+          fontFamily: 'var(--font-mono)', fontSize: 11, letterSpacing: '.04em',
+          whiteSpace: 'nowrap',
+        }}
+      >◎ discuss this</div>
+    ) : null}
     <div
+      ref={winRef}
       data-testid="eaw-window"
       style={{
         position: 'fixed',
@@ -400,6 +489,38 @@ export default function EntryAgentWindow({ entry, containerRef, onClose }) {
           style={{ cursor: 'pointer', color: 'var(--phosphor)', textShadow: 'var(--glow)', padding: '0 2px' }}
         >[×]</span>
       </div>
+
+      {/* The pinned passage — what the chat and I are discussing. Persists while
+          you type; [×] clears it. */}
+      {focusText ? (
+        <div
+          data-testid="eaw-discussing"
+          style={{
+            display: 'flex', alignItems: 'baseline', gap: 6,
+            padding: '4px 8px',
+            borderBottom: '1px solid var(--phosphor-dim)',
+            background: 'color-mix(in srgb, var(--ansi-bright-yellow) 10%, var(--bg))',
+            fontSize: 10,
+          }}
+        >
+          <span style={{ color: 'var(--ansi-bright-yellow)', textTransform: 'uppercase', letterSpacing: '.06em' }}>
+            ◎ discussing
+          </span>
+          <span style={{
+            flex: 1, minWidth: 0, whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis',
+            color: 'var(--phosphor)', textShadow: 'var(--glow)', fontStyle: 'italic',
+          }}>
+            “{truncate(focusText, 80)}”
+          </span>
+          <span
+            data-testid="eaw-discussing-clear"
+            role="button"
+            onClick={clearFocus}
+            title="stop discussing this passage"
+            style={{ cursor: 'pointer', color: 'var(--ansi-bright-yellow)' }}
+          >[×]</span>
+        </div>
+      ) : null}
 
       {/* Body: the conversation. Before the first turn it shows the grounding
           (the page's neighborhood) as orientation; once you talk, it becomes
@@ -533,5 +654,6 @@ export default function EntryAgentWindow({ entry, containerRef, onClose }) {
         style={{ position: 'absolute', left: 0, right: 0, bottom: -3, height: 6, cursor: 'ns-resize' }}
       />
     </div>
+    </>
   );
 }

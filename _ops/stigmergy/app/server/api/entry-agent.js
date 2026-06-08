@@ -51,6 +51,7 @@ export async function entryAgentRoutes(ctx) {
       path: body?.path,
       message: body?.message,
       history: Array.isArray(body?.history) ? body.history : [],
+      focus: typeof body?.focus === 'string' ? body.focus : null,
     });
     if (!result.fired) {
       const status = result.busy ? 409 : 400;

@@ -5,16 +5,17 @@
 // shaped { ok:false } on failure rather than throwing — the window falls back to
 // its frontmatter-derived stub readout so it never breaks the deck.
 
-// POST /api/entry-agent/turn — fire one Companion turn (M1b: discuss-only).
-// Body: { path, message, history? }. Returns { ok, fired, turnId, busy?, msg }.
-// The reply does NOT come back here — it arrives later on the board (a
-// companion_reply BROADCAST) which the window reads over SSE.
-export async function postTurn({ path, message, history } = {}) {
+// POST /api/entry-agent/turn — fire one Companion turn.
+// Body: { path, message, history?, focus? }. Returns { ok, fired, turnId, busy?, msg }.
+// `focus` is the passage the user pinned with "discuss this" — the exact text
+// under discussion. The reply does NOT come back here — it arrives later on the
+// board (a companion_reply BROADCAST) which the window reads over SSE.
+export async function postTurn({ path, message, history, focus } = {}) {
   try {
     const res = await fetch('/api/entry-agent/turn', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-      body: JSON.stringify({ path, message, history: history || [] }),
+      body: JSON.stringify({ path, message, history: history || [], focus: focus || null }),
     });
     const data = await res.json().catch(() => ({}));
     if (!res.ok) return { ok: false, fired: false, status: res.status, ...data };

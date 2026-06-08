@@ -286,7 +286,7 @@ export function createCompanionLane(opts = {}) {
    * Fire one Companion turn. Refuses (busy) while a worker is alive (scar #4).
    * @returns {{ ok, fired, busy?, turnId?, msg }}
    */
-  function turn({ path, message, history = [] } = {}) {
+  function turn({ path, message, history = [], focus = null } = {}) {
     if (typeof path !== 'string' || path.trim() === '') {
       return { ok: false, fired: false, msg: 'missing entry path' };
     }
@@ -308,7 +308,10 @@ export function createCompanionLane(opts = {}) {
 
     let prompt;
     try {
-      prompt = buildCompanionPrompt({ grounding, frontmatter: entry.frontmatter, body: entry.body, message, history });
+      prompt = buildCompanionPrompt({
+        grounding, frontmatter: entry.frontmatter, body: entry.body, message, history,
+        focus: typeof focus === 'string' && focus.trim() ? focus.trim() : null,
+      });
     } catch (e) {
       return { ok: false, fired: false, msg: `could not build prompt: ${e.message}` };
     }

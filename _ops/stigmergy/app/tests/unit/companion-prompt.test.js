@@ -56,6 +56,14 @@ describe('buildCompanionPrompt', () => {
     expect(p).toMatch(/LOUDON'S MESSAGE ==\nand now\?/);
   });
 
+  it('adds a FOCUS block for a pinned passage, and omits it otherwise', () => {
+    const withFocus = buildCompanionPrompt({ grounding, body: 'the flesh.', message: 'tighten this', focus: 'skill lives in the body schema' });
+    expect(withFocus).toMatch(/FOCUS — the exact passage Loudon has pinned/);
+    expect(withFocus).toMatch(/skill lives in the body schema/);
+    const noFocus = buildCompanionPrompt({ grounding, body: 'x', message: 'hi' });
+    expect(noFocus).not.toMatch(/FOCUS — the exact passage/);
+  });
+
   it('offers the edit ops and the optional-edit JSON contract', () => {
     const p = buildCompanionPrompt({ grounding, body: 'x', message: 'hi' });
     // worker classifies discuss-vs-edit itself (Tier A, capable model)
