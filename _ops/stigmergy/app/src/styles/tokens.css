@@ -276,6 +276,25 @@ hr::before { content: "═══════════════════
   transition: background var(--dur-fade) linear, filter var(--dur-fade) linear;
 }
 
+/* ---- BBS scrollbar -------------------------------------------------------- */
+/* Square, phosphor, no chrome. Applied to in-window scrollers (the companion
+   body + composer) so they read as part of the terminal, not the OS. */
+.bbs-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: var(--phosphor-dim) var(--bg);
+}
+.bbs-scroll::-webkit-scrollbar { width: 10px; height: 10px; }
+.bbs-scroll::-webkit-scrollbar-track {
+  background: var(--bg);
+  border-left: 1px solid var(--phosphor-dim);
+}
+.bbs-scroll::-webkit-scrollbar-thumb {
+  background: var(--phosphor-dim);
+  border: 2px solid var(--bg); /* inset look; radius stays 0 */
+}
+.bbs-scroll::-webkit-scrollbar-thumb:hover { background: var(--phosphor); }
+.bbs-scroll::-webkit-scrollbar-corner { background: var(--bg); }
+
 /* ---- App-local resets + extras ------------------------------------------- */
 html, body, #root { height: 100%; margin: 0; background: var(--bg); }
 
