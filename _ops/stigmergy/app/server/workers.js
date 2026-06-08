@@ -6,6 +6,7 @@
 import { resolve } from 'node:path';
 import { createActuator } from './actuator.js';
 import { createStewardLane } from './steward-lane.js';
+import { createCompanionLane } from './companion-lane.js';
 
 /**
  * Build — or accept injected — the Enrichment actuator and the steward lane.
@@ -17,8 +18,8 @@ import { createStewardLane } from './steward-lane.js';
  * autonomous agent or mutating the real palace. Env unset → the real worker.
  *
  * @param {string} palaceRoot
- * @param {{ actuator?: object, stewardLane?: object }} [opts]
- * @returns {{ actuator: object, stewardLane: object }}
+ * @param {{ actuator?: object, stewardLane?: object, companionLane?: object }} [opts]
+ * @returns {{ actuator: object, stewardLane: object, companionLane: object }}
  */
 export function buildWorkers(palaceRoot, opts = {}) {
   // One global actuator per palace root (scar #4: single global worker per lane).
@@ -55,5 +56,25 @@ export function buildWorkers(palaceRoot, opts = {}) {
     }
   }
 
-  return { actuator, stewardLane };
+  // The companion lane: a SEPARATE actuator lane (.actuator-companion/) that
+  // fires an interactive entry-agent turn and reaps it by posting the reply to
+  // the board. Same STIGMERGY_STUB_WORKER gate; when stubbed it fires a stub
+  // that emits a canned reply AND sets dryReap so a live e2e fire never mutates
+  // the real board. Tests inject opts.companionLane (a temp-palace lane) to
+  // prove the genuine reap → post cycle.
+  let companionLane = opts.companionLane;
+  if (!companionLane) {
+    if (process.env.STIGMERGY_STUB_WORKER) {
+      const companionStub = resolve(palaceRoot, '_ops/stigmergy/app/tests/fixtures/stub-companion-worker.mjs');
+      companionLane = createCompanionLane({
+        palaceRoot,
+        buildArgv: (prompt) => ['node', companionStub, '--permission-mode', 'bypassPermissions', '--sleep', '500'],
+        dryReap: true,
+      });
+    } else {
+      companionLane = createCompanionLane({ palaceRoot });
+    }
+  }
+
+  return { actuator, stewardLane, companionLane };
 }

@@ -71,6 +71,12 @@ export default function App() {
   const [activeBoard, setActiveBoard] = useState('TRICKSTER');
   const [agentFilter, setAgentFilter] = useState(null);
   const [scanlinesOn, setScanlinesOn] = useState(true);
+  // The entry-agent ("companion") window is opt-in. State lives here (not in
+  // StateDeck) so M1+ can let the window post to the board -- App-level data --
+  // without re-homing it. For M0 it only reaches the STATE deck. Off = STATE
+  // reads exactly as today; the window does not exist.
+  const [agentOpen, setAgentOpen] = useState(false);
+  const toggleAgent = useCallback(() => setAgentOpen((o) => !o), []);
   // Cross-deck entry jump: clicking [BUN] on a name outside STATE (e.g. a
   // Trickster card's @steward) flips to STATE and opens that entry. The nonce
   // lets the same entry be re-jumped and keeps StateDeck's open-effect from
@@ -291,7 +297,13 @@ export default function App() {
       <PalaceRefProvider vault="The Palace" openEntryInState={openEntryInState}>
       <DeckTabs active={deck} onSelect={setDeck} />
 
-      {deck === 'STATE' && <StateDeck jumpTarget={jumpTarget} />}
+      {deck === 'STATE' && (
+        <StateDeck
+          jumpTarget={jumpTarget}
+          agentOpen={agentOpen}
+          onToggleAgent={toggleAgent}
+        />
+      )}
       {deck === 'LOG' && <LogDeck />}
       {deck === 'STEWARDS' && <StewardsDeck />}
       {deck === 'TRICKSTER' && (

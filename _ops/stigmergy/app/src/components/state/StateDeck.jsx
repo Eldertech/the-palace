@@ -18,7 +18,7 @@ import { Banner } from '../primitives.jsx';
 // is in-memory (the EntryReader fetches the chosen entry's full read
 // shape via /api/entry).
 
-export default function StateDeck({ jumpTarget = null }) {
+export default function StateDeck({ jumpTarget = null, agentOpen = false, onToggleAgent }) {
   const [state, setState] = useState({ kind: 'loading' });
   // STATE has two lenses: PULSE (the ranked list, default) and TOPOLOGY
   // (the typed-link graph). Lens choice is URL-driven (?lens=topology), so
@@ -95,6 +95,8 @@ export default function StateDeck({ jumpTarget = null }) {
           onBack={nav.backToPulse}
           onEdit={nav.openEditor}
           onGoBack={nav.goBack}
+          agentOpen={agentOpen}
+          onToggleAgent={onToggleAgent}
         />
       ) : (
         <>

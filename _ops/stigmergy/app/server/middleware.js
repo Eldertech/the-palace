@@ -30,7 +30,7 @@ export function blackboardMiddleware(palaceRoot, opts = {}) {
   // The two long-lived worker lanes (Enrichment actuator + steward lane). See
   // workers.js for the scar #4 single-global-worker rule and the
   // STIGMERGY_STUB_WORKER gate. Tests inject opts.actuator / opts.stewardLane.
-  const { actuator, stewardLane } = buildWorkers(palaceRoot, opts);
+  const { actuator, stewardLane, companionLane } = buildWorkers(palaceRoot, opts);
 
   return {
     name: 'stigmergy-blackboard-middleware',
@@ -42,7 +42,7 @@ export function blackboardMiddleware(palaceRoot, opts = {}) {
         const query = new URLSearchParams(queryString || '');
         const method = (req.method || 'GET').toUpperCase();
 
-        const ctx = { req, res, palaceRoot, urlPath, query, method, actuator, stewardLane, opts };
+        const ctx = { req, res, palaceRoot, urlPath, query, method, actuator, stewardLane, companionLane, opts };
         if (await dispatch(ctx)) return; // a family owned the response
         next(); // not an /api route we handle — let Vite serve the app
       });
