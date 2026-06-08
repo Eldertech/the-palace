@@ -14,7 +14,8 @@ import { resolveRef } from '../../lib/entry-ref.js';
 //   - Blockquotes (> )
 //   - Inline: **bold**, *italic*, `code`, [[wikilink]], [md links](url),
 //     bare urls (obsidian:// computer:// http(s):// file://)
-//   - Tables: left as <pre> (acceptable in a terminal aesthetic)
+//   - Tables (GFM): header row + |---| delimiter -> phosphor-bordered
+//     <table>; escaped \| inside cells is unescaped to a literal |
 //
 // Wikilinks resolve via the parent-passed `index` (Map of name -> path).
 // Unresolved wikilinks render dim with `??` prefix. The body is the
@@ -22,6 +23,33 @@ import { resolveRef } from '../../lib/entry-ref.js';
 
 function stripHtmlComments(text) {
   return text.replace(/<!--[\s\S]*?-->/g, '');
+}
+
+// A GFM table delimiter row: optional border pipes around one-or-more
+// `:?---:?` column markers. Must contain a `|` so a bare `---` (thematic
+// rule) is never mistaken for a one-column delimiter.
+function isTableDelimiter(line) {
+  return typeof line === 'string'
+    && line.includes('|')
+    && /^\s*\|?\s*:?-{1,}:?\s*(\|\s*:?-{1,}:?\s*)*\|?\s*$/.test(line);
+}
+
+// Split one table row into trimmed cell strings. Splits on unescaped `|`,
+// turns `\|` into a literal `|`, and drops the empty cells produced by the
+// optional leading/trailing border pipes.
+function splitTableRow(line) {
+  const s = line.trim();
+  const cells = [];
+  let cur = '';
+  for (let k = 0; k < s.length; k += 1) {
+    if (s[k] === '\\' && s[k + 1] === '|') { cur += '|'; k += 1; continue; }
+    if (s[k] === '|') { cells.push(cur); cur = ''; continue; }
+    cur += s[k];
+  }
+  cells.push(cur);
+  if (cells.length && cells[0].trim() === '') cells.shift();
+  if (cells.length && cells[cells.length - 1].trim() === '') cells.pop();
+  return cells.map((c) => c.trim());
 }
 
 // Split body into block-level chunks. A chunk is one of:
@@ -93,6 +121,22 @@ function blocks(text) {
     if (line.trim() === '') {
       out.push({ kind: 'blank' });
       i += 1;
+      continue;
+    }
+
+    // Table (GFM): a row line that has a `|`, immediately followed by a
+    // delimiter row (|---|---|). Without the delimiter on line i+1 a `|` in
+    // prose stays prose -- that lookahead is what distinguishes a table from
+    // a paragraph that happens to contain a pipe.
+    if (line.includes('|') && i + 1 < lines.length && isTableDelimiter(lines[i + 1])) {
+      const header = splitTableRow(line);
+      i += 2; // consume header + delimiter
+      const rows = [];
+      while (i < lines.length && lines[i].trim() !== '' && lines[i].includes('|')) {
+        rows.push(splitTableRow(lines[i]));
+        i += 1;
+      }
+      out.push({ kind: 'table', header, rows });
       continue;
     }
 
@@ -466,6 +510,55 @@ function renderBlock(block, ctx, key) {
           {renderInline(block.text, { ...ctx, keyPrefix: `${key}-` })}
         </p>
       );
+    case 'table': {
+      const cellBase = {
+        border: '1px solid var(--phosphor-dim)',
+        padding: '4px 10px', textAlign: 'left', verticalAlign: 'top',
+      };
+      return (
+        <div key={key} style={{ overflowX: 'auto', margin: '12px 0', maxWidth: '100%' }}>
+          <table
+            data-testid="md-table"
+            style={{
+              borderCollapse: 'collapse', fontSize: 13,
+              color: 'var(--phosphor)', textShadow: 'var(--glow)',
+            }}
+          >
+            {block.header.length > 0 && (
+              <thead>
+                <tr>
+                  {block.header.map((cell, ci) => (
+                    <th
+                      key={`${key}-h${ci}`}
+                      style={{
+                        ...cellBase,
+                        fontFamily: 'var(--font-ui)',
+                        textTransform: 'uppercase', letterSpacing: '.02em',
+                        color: 'var(--phosphor-white)', textShadow: 'var(--glow-strong)',
+                        background: 'var(--phosphor-deep)',
+                      }}
+                    >
+                      {renderInline(cell, { ...ctx, keyPrefix: `${key}-h${ci}-` })}
+                    </th>
+                  ))}
+                </tr>
+              </thead>
+            )}
+            <tbody>
+              {block.rows.map((row, ri) => (
+                <tr key={`${key}-r${ri}`}>
+                  {row.map((cell, ci) => (
+                    <td key={`${key}-r${ri}c${ci}`} style={cellBase}>
+                      {renderInline(cell, { ...ctx, keyPrefix: `${key}-r${ri}c${ci}-` })}
+                    </td>
+                  ))}
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      );
+    }
     case 'blank':
       return null;
     default:
