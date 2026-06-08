@@ -11,6 +11,7 @@ import { resolve, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { mkdtempSync, rmSync, writeFileSync, mkdirSync, existsSync, readFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
+import { execFileSync } from 'node:child_process';
 import request from 'supertest';
 import { blackboardMiddleware } from '../../server/middleware.js';
 import { createCompanionLane } from '../../server/companion-lane.js';
@@ -18,8 +19,14 @@ import { createCompanionLane } from '../../server/companion-lane.js';
 const STUB = fileURLToPath(new URL('../fixtures/stub-companion-worker.mjs', import.meta.url));
 const REPLY = 'the flesh is the medium of perception.';
 
+function git(cwd, args) { return execFileSync('git', args, { cwd, encoding: 'utf8' }); }
+
 function makeTempPalace() {
   const root = mkdtempSync(resolve(tmpdir(), 'stig-companion-'));
+  git(root, ['init', '-q', '-b', 'main']);
+  git(root, ['config', 'user.email', 'test@example.com']);
+  git(root, ['config', 'user.name', 'Test User']);
+  git(root, ['config', 'commit.gpgsign', 'false']);
   mkdirSync(join(root, '_ops/swarm/persistent'), { recursive: true });
   writeFileSync(join(root, '_ops/swarm/persistent/blackboard.jsonl'), '', 'utf8');
   writeFileSync(
@@ -31,13 +38,18 @@ function makeTempPalace() {
     join(root, 'Neighbor.md'),
     '---\ntitle: Neighbor\ntype: concept\nstage: mature\nforward_vector: "I want to be near."\n---\n# N\n',
   );
+  git(root, ['add', 'Open Entry.md', 'Neighbor.md']);
+  git(root, ['commit', '-q', '-m', 'deposit: seed entries']);
   return root;
 }
 
-function makeServer(root, { sleep = 300 } = {}) {
+function makeServer(root, { sleep = 300, editText = null } = {}) {
+  const argv = ['node', STUB, '--permission-mode', 'bypassPermissions', '--reply', REPLY, '--sleep', String(sleep)];
+  if (editText) argv.push('--edit-text', editText);
   const companionLane = createCompanionLane({
     palaceRoot: root,
-    buildArgv: () => ['node', STUB, '--permission-mode', 'bypassPermissions', '--reply', REPLY, '--sleep', String(sleep)],
+    editsRoot: root, // the temp repo IS the (quarantine stand-in) edit target here
+    buildArgv: () => argv,
     dryReap: false,
   });
   const plugin = blackboardMiddleware(root, { companionLane });
@@ -98,6 +110,33 @@ describe('POST /api/entry-agent/turn', () => {
     expect(reply.payload.entry_path).toBe('Open Entry.md');
     expect(reply.payload.turn_id).toBe(turnId);
     expect(reply.payload.reply).toBe(REPLY);
+  }, 20000);
+
+  test('an edit turn applies the op through the enforced path and posts a PROOF', async () => {
+    // a lane whose stub also proposes an append edit
+    ({ server, companionLane } = makeServer(root, { editText: 'A new closing line about li.' }));
+    const res = await request(server).post('/api/entry-agent/turn').send({ path: 'Open Entry.md', message: 'add a line about li at the end' });
+    expect(res.status).toBe(200);
+    const turnId = res.body.turnId;
+
+    await waitFor(() => !existsSync(companionLane.paths.pidFile), { timeout: 6000 });
+    await waitFor(() => readFileSync(boardPath(root), 'utf8').includes('companion_edit'), { timeout: 4000 });
+
+    const lines = readFileSync(boardPath(root), 'utf8').trim().split('\n').filter(Boolean).map((l) => JSON.parse(l));
+    const proof = lines.find((m) => m.payload && m.payload.kind === 'companion_edit');
+    expect(proof).toBeTruthy();
+    expect(proof.type).toBe('PROOF');
+    expect(proof.from).toBe('Open Entry (Companion)');
+    expect(proof.payload.op).toBe('append');
+    expect(proof.payload.turn_id).toBe(turnId);
+    expect(typeof proof.payload.commit).toBe('string');
+
+    // the commit is real: HEAD blob carries the appended line, frontmatter intact
+    const committed = git(root, ['show', 'HEAD:Open Entry.md']);
+    expect(committed).toMatch(/A new closing line about li\./);
+    expect(committed).toMatch(/title: "Open Entry"/);
+    const subject = git(root, ['log', '-1', '--format=%s']);
+    expect(subject).toMatch(/^edit\(Open Entry\):/);
   }, 20000);
 
   test('400 when the message is missing', async () => {

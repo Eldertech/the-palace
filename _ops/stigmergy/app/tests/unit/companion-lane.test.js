@@ -4,7 +4,7 @@
 
 import { describe, it, expect } from 'vitest';
 import {
-  slugify, companionFrom, extractReply, buildCompanionMessage,
+  slugify, companionFrom, extractReply, extractResult, buildCompanionMessage, buildEditProofMessage,
 } from '../../server/companion-lane.js';
 import { validateMessage } from '@stigmergy/core/schema';
 
@@ -42,6 +42,43 @@ describe('extractReply', () => {
     expect(extractReply('')).toBe('');
     expect(extractReply(null)).toBe('');
     expect(extractReply(undefined)).toBe('');
+  });
+});
+
+describe('extractResult', () => {
+  it('returns reply with no edit for a discuss turn', () => {
+    expect(extractResult('{"reply":"just talking"}')).toEqual({ reply: 'just talking', edit: null });
+  });
+  it('returns reply + edit for an edit turn', () => {
+    const r = extractResult('{"reply":"done","edit":{"op":"append","text":"a line"}}');
+    expect(r.reply).toBe('done');
+    expect(r.edit).toEqual({ op: 'append', text: 'a line' });
+  });
+  it('accepts an edit-only object (empty reply)', () => {
+    const r = extractResult('{"edit":{"op":"prepend","text":"x"}}');
+    expect(r.reply).toBe('');
+    expect(r.edit.op).toBe('prepend');
+  });
+  it('falls back to raw text as the reply when no JSON', () => {
+    expect(extractResult('plain prose')).toEqual({ reply: 'plain prose', edit: null });
+  });
+});
+
+describe('buildEditProofMessage', () => {
+  it('produces a valid PROOF carrying the commit + branch', () => {
+    const msg = buildEditProofMessage({
+      title: 'Merleau-Ponty', entryPath: 'Merleau-Ponty.md',
+      turnId: 'companion-merleau-ponty-2026-06-08T10-00-00-000Z',
+      op: 'append', shortHash: 'abc1234', branch: 'stigmergy-edits',
+      summary: 'append a line', model: 'opus', ts: '2026-06-08T10:00:09Z',
+    });
+    expect(validateMessage(msg).valid).toBe(true);
+    expect(msg.type).toBe('PROOF');
+    expect(msg.from).toBe('Merleau-Ponty (Companion)');
+    expect(msg.payload.kind).toBe('companion_edit');
+    expect(msg.payload.commit).toBe('abc1234');
+    expect(msg.payload.branch).toBe('stigmergy-edits');
+    expect(msg.payload.status).toBe('committed');
   });
 });
 

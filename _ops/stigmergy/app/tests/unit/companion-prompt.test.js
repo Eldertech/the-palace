@@ -48,10 +48,17 @@ describe('buildCompanionPrompt', () => {
     expect(p).toMatch(/LOUDON'S MESSAGE ==\nand now\?/);
   });
 
-  it('pins the discuss-only contract and the JSON output shape', () => {
+  it('offers the edit ops and the optional-edit JSON contract', () => {
     const p = buildCompanionPrompt({ grounding, body: 'x', message: 'hi' });
-    expect(p).toMatch(/DISCUSS-ONLY turn: do NOT edit, write/);
-    expect(p).toMatch(/\{"reply":"<your reply, markdown allowed>"\}/);
+    // worker classifies discuss-vs-edit itself (Tier A, capable model)
+    expect(p).toMatch(/DISCUSS, or to EDIT the\nentry in place/);
+    expect(p).toMatch(/Do NOT touch any files yourself/);
+    expect(p).toMatch(/"op":"append"/);
+    expect(p).toMatch(/"op":"prepend"/);
+    expect(p).toMatch(/"op":"rewrite"/);
+    // exactly-one-occurrence discipline for rewrite
+    expect(p).toMatch(/occur exactly once/);
+    expect(p).toMatch(/Include "edit" only when you are editing/);
   });
 
   it('truncates a pathologically long body', () => {

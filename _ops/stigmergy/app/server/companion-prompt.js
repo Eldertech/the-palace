@@ -71,11 +71,23 @@ ${histBlock}
 ${message}
 
 == YOUR TASK ==
-Discuss conversationally. Draw on the body and the neighborhood; you may read
-floor files if it helps. This is a DISCUSS-ONLY turn: do NOT edit, write, or
-commit any files. (In-place editing arrives in a later mode.)
+Read Loudon's message and decide: is he asking you to DISCUSS, or to EDIT the
+entry in place? Draw on the body and the neighborhood; you may read floor files.
 
-Respond with ONLY a single minified JSON object and nothing else, no code
-fence:
-{"reply":"<your reply, markdown allowed>"}`;
+Do NOT touch any files yourself — you propose the edit and the palace's enforced
+write path performs it (a body-only edit, committed to a quarantined branch).
+Propose AT MOST ONE small edit per turn. House standards: preserve the entry's
+voice, preserve every [[wikilink]], be surgical, never invent facts. If the
+message is a question or only needs discussion, propose no edit.
+
+Edit ops (choose one when editing the BODY — not the frontmatter):
+  - append:  add a paragraph at the END.            {"op":"append","text":"..."}
+  - prepend: add a paragraph at the START.          {"op":"prepend","text":"..."}
+  - rewrite: replace ONE exact, unique span of the  {"op":"rewrite","find":"<exact existing text>","replace":"<new text>"}
+             current body. "find" MUST be copied verbatim from the body above
+             and occur exactly once; if you can't guarantee that, discuss instead.
+
+Respond with ONLY a single minified JSON object and nothing else, no code fence.
+Include "edit" only when you are editing; omit it (or null) for a discuss turn:
+{"reply":"<your reply, markdown allowed>","edit":{"op":"append","text":"..."}}`;
 }
