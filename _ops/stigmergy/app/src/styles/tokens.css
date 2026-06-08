@@ -264,6 +264,18 @@ hr::before { content: "═══════════════════
   z-index: 9998;
 }
 
+/* ---- Entry-Agent window: active-section glow ------------------------------ */
+/* The section the companion window is "reading" gets a restrained lift: a
+   brightness bump, a faint phosphor wash, and a thin left accent. Conforms to
+   the BBS grammar -- phosphor only, no neon bloom beyond the existing text
+   glow, no cyan. Applied by classList from EntryAgentWindow's scroll-spy. */
+.eaw-section-glow {
+  filter: brightness(1.18);
+  background: color-mix(in srgb, var(--phosphor) 6%, transparent);
+  box-shadow: inset 2px 0 0 var(--phosphor-dim);
+  transition: background var(--dur-fade) linear, filter var(--dur-fade) linear;
+}
+
 /* ---- App-local resets + extras ------------------------------------------- */
 html, body, #root { height: 100%; margin: 0; background: var(--bg); }
 
