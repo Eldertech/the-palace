@@ -41,9 +41,10 @@ const useIsoLayoutEffect = typeof window !== 'undefined' ? useLayoutEffect : use
 
 const MIN_W = 280;
 const MIN_H = 220;
-const DEFAULT_W = 380;
-const DEFAULT_H = 460;
-const DEFAULT_TOP = 128;
+const DEFAULT_W = 340; // narrower default so the body text column is less cramped
+const DEFAULT_H = 520;
+const DEFAULT_TOP = 120;
+const MAX_INPUT_H = 200; // composer auto-grows to here, then scrolls inside
 const SHAPE_MARGIN = 18; // breathing room between wrapped text and the window
 const GLOW_CLASS = 'eaw-section-glow';
 
@@ -207,6 +208,7 @@ export default function EntryAgentWindow({ entry, containerRef, onClose }) {
 
   const path = entry?.path ?? null;
   const drag = useRef(null);
+  const inputRef = useRef(null);  // the composer textarea (auto-grow)
 
   // ── Fetch grounding on entry open / change ─────────────────────────────
   useEffect(() => {
@@ -262,6 +264,7 @@ export default function EntryAgentWindow({ entry, containerRef, onClose }) {
     const history = convo.filter((m) => m.role === 'user' || m.role === 'companion').map((m) => ({ role: m.role, text: m.text }));
     setConvo((prev) => [...prev, { id: `u-${prev.length}`, role: 'user', text: message }]);
     setDraft('');
+    if (inputRef.current) inputRef.current.style.height = ''; // reset auto-grow
     setSending(true);
     const r = await postTurn({ path, message, history });
     if (r && r.fired && r.turnId) {
@@ -469,8 +472,11 @@ export default function EntryAgentWindow({ entry, containerRef, onClose }) {
             the chat. Companion replies arrive over SSE from the board. */}
         <div
           data-testid="eaw-body"
+          className="bbs-scroll"
           style={{
             flex: 1, minHeight: 0, overflowY: 'auto',
+            // reaching the end of the window's scroll must NOT scroll the page.
+            overscrollBehavior: 'contain',
             padding: '10px 10px', lineHeight: 1.5,
             color: 'var(--phosphor-dim)', textShadow: 'none',
           }}
@@ -517,20 +523,30 @@ export default function EntryAgentWindow({ entry, containerRef, onClose }) {
           }}
         >
           <textarea
+            ref={inputRef}
             data-testid="eaw-input"
+            className="bbs-scroll"
             value={draft}
-            onChange={(e) => setDraft(e.target.value)}
+            onChange={(e) => {
+              setDraft(e.target.value);
+              // auto-grow from a roomy default up to a cap, then scroll inside.
+              const el = e.target;
+              el.style.height = 'auto';
+              el.style.height = `${Math.min(el.scrollHeight, MAX_INPUT_H)}px`;
+            }}
             onKeyDown={(e) => {
               if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); sendTurn(); }
             }}
-            placeholder={sending ? 'waiting for the companion…' : 'discuss this passage…'}
-            rows={2}
+            placeholder={sending ? 'waiting for the companion…' : 'discuss or ask for an edit…'}
+            rows={3}
             disabled={sending}
             style={{
               flex: 1, resize: 'none',
+              minHeight: 64, maxHeight: MAX_INPUT_H, overflowY: 'auto',
+              overscrollBehavior: 'contain',
               background: 'var(--bg)', color: 'var(--phosphor)',
-              border: '1px solid var(--phosphor-dim)', padding: '4px 6px',
-              fontFamily: 'var(--font-mono)', fontSize: 12, lineHeight: 1.4,
+              border: '1px solid var(--phosphor-dim)', padding: '5px 7px',
+              fontFamily: 'var(--font-mono)', fontSize: 12, lineHeight: 1.45,
               outline: 'none',
             }}
           />
