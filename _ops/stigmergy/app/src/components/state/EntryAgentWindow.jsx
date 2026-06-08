@@ -2,54 +2,40 @@ import React, { useState, useRef, useLayoutEffect, useEffect, useCallback } from
 import { fetchGrounding, postTurn } from '../../adapters/entry-agent.js';
 import { subscribeLive } from '../../adapters/live-tail.js';
 
-// Pre-paint measurement wants useLayoutEffect in the browser, but that warns
-// under server render (tests use renderToStaticMarkup). Fall back to useEffect
-// where there is no window -- the effect is a browser-only no-op there anyway.
+// Position init wants useLayoutEffect in the browser, but that warns under
+// server render (tests use renderToStaticMarkup). Fall back to useEffect where
+// there is no window -- the effect is a browser-only no-op there anyway.
 const useIsoLayoutEffect = typeof window !== 'undefined' ? useLayoutEffect : useEffect;
 
-// EntryAgentWindow — M0 (the shell, no agent).
+// EntryAgentWindow — the companion: a floating palette over an entry.
 //
-// A right-pinned floating window that lives over an entry in the STATE deck.
-// It does NOT scroll with the text: it stays fixed on the glass while the
-// entry body streams past and re-flows around its left edge. The section it
-// is "reading" (the heading nearest the window's vertical centre) glows, and
-// the titlebar names it.
+// Decided 2026-06-08 (after driving M1 live): NO text reflow. The text-wraps-
+// around-the-window flow only works on a canvas (per-line layout), which costs
+// native selection, clickable [[wikilinks]], and rich blocks — not worth it.
+// Instead the window is a plain box that floats ABOVE everything (high z-index),
+// freely draggable, and the document underneath is untouched. Move the box to
+// see what's behind it. EntryBody is never modified, so the feature stays
+// perfectly reversible: toggle off → the window unmounts → STATE reads as before.
 //
-// Layout mechanism (settled in the Integration Plan §4, replacing the
-// prototype's canvas): real DOM text + a single right-floated shape. Because
-// the window is right-pinned, text only ever flows LEFT, so one float with
-// `shape-outside` suffices -- no canvas. Native selection and [[wikilink]]
-// hit-testing survive untouched, and EntryBody is never modified (so the
-// feature is perfectly reversible: when the toggle is off this component
-// never mounts and STATE reads exactly as before).
+// It is grounded in the WHOLE entry — frontmatter, forward vector, body, and the
+// typed-link neighborhood — so it can discuss or edit anything in the doc. The
+// section the box currently floats over glows (scroll-spy), and the titlebar
+// names it as the conversational "context".
 //
-//   - The GUTTER (`eaw-gutter`) is a transparent, full-height `float: right`
-//     element rendered as the first in-flow child of the body column. It
-//     reserves the right column so the body text wraps to its left. Its
-//     height is measured from the body column so the gutter spans the whole
-//     entry (a viewport-fixed window would otherwise collide with text that
-//     reclaimed the column below a short float).
-//   - The WINDOW (`eaw-window`) is `position: fixed` -- pinned to the glass,
-//     aligned over the gutter (right edge flush with the body column).
-//
-// M0 was the shell (reflow + glow + drag, no agent). M1a made the grounding
-// readout real (the page's typed-link neighborhood + each neighbor's vector).
-// M1b (this slice) adds the discuss-only conversation: a turn fires an actuator
-// worker (no direct API) grounded in the entry; the worker's reply returns on
-// the board (companion_reply) and is read here over SSE. Honest in-place edits
-// arrive in M1c; bold generative asks (Maker / Shop) in M2.
+// M1a grounding · M1b discuss · M1c honest in-place edits (worker proposes, Node
+// writes through the enforced path, PROOF carries the commit).
 
 const MIN_W = 280;
 const MIN_H = 220;
-const DEFAULT_W = 340; // narrower default so the body text column is less cramped
+const DEFAULT_W = 360;
 const DEFAULT_H = 520;
-const DEFAULT_TOP = 120;
+const DEFAULT_TOP = 110;
 const MAX_INPUT_H = 200; // composer auto-grows to here, then scrolls inside
-const SHAPE_MARGIN = 18; // breathing room between wrapped text and the window
 const GLOW_CLASS = 'eaw-section-glow';
+const Z = 9000;          // float above all app content/chrome (below the CRT overlays)
 
-// Last heading whose top has scrolled above the window's vertical centre is
-// the section being read. Headings are EntryBody's direct children, tagged
+// Last heading whose top has scrolled above the window's vertical centre is the
+// section being read. Headings are EntryBody's direct children, tagged
 // data-testid="heading-h{level}".
 function findActiveHeading(container, centreY) {
   const headings = container.querySelectorAll('[data-testid^="heading-h"]');
@@ -61,10 +47,10 @@ function findActiveHeading(container, centreY) {
   return active;
 }
 
-// Glow the active section: the active heading plus every following sibling up
-// to (but not including) the next heading. Pure classList toggling on
-// EntryBody's own nodes -- React doesn't manage `className` on those nodes, so
-// this never fights reconciliation, and the cleanup pass removes it all.
+// Glow the active section: the active heading plus every following sibling up to
+// (but not including) the next heading. Pure classList toggling on EntryBody's
+// own nodes -- React doesn't manage `className` there, so this never fights
+// reconciliation, and the cleanup pass removes it all.
 function paintGlow(bodyEl, active) {
   bodyEl.querySelectorAll('.' + GLOW_CLASS).forEach((el) => el.classList.remove(GLOW_CLASS));
   if (!active) return;
@@ -101,9 +87,9 @@ function ChatBubble({ role, text }) {
   );
 }
 
-// The read-only grounding view: the page's own forward vector, then each
-// typed-link neighbor with how it relates and what it wants (its forward
-// vector). Ghost (unresolved) neighbors render dim — a missing connection is an
+// The read-only grounding view: the page's own forward vector, then each typed-
+// link neighbor with how it relates and what it wants (its forward vector).
+// Ghost (unresolved) neighbors render dim — a missing connection is an
 // invitation, not an error.
 function GroundingView({ grounding }) {
   const { entry, neighbors, counts } = grounding;
@@ -182,15 +168,12 @@ export default function EntryAgentWindow({ entry, containerRef, onClose }) {
   const [width, setWidth] = useState(DEFAULT_W);
   const [height, setHeight] = useState(DEFAULT_H);
   const [top, setTop] = useState(DEFAULT_TOP);
-  // Viewport X of the window's left edge, derived from the body column's right
-  // edge so the window stays flush with the gutter. Null until measured (SSR /
-  // first paint) -- we fall back to a right offset so the shell still renders.
+  // Viewport X of the window's left edge. Null until the position-init effect
+  // runs (SSR / first paint) -> we fall back to a right offset so the box still
+  // renders, then it becomes a real number the user can drag freely.
   const [left, setLeft] = useState(null);
-  const [floatH, setFloatH] = useState(0);
   const [reading, setReading] = useState(null);
   // Real grounding (page + typed-link neighborhood + floor), fetched per entry.
-  // Null until loaded (and in static render) -> the footer falls back to the
-  // frontmatter-derived stub so the window is honest the instant it mounts.
   const [grounding, setGrounding] = useState(null);
 
   // Conversation: user turns are local-optimistic; the Companion's reply
@@ -215,8 +198,7 @@ export default function EntryAgentWindow({ entry, containerRef, onClose }) {
     if (!path) return undefined;
     let cancelled = false;
     setGrounding(null);
-    // A new entry is a fresh conversation.
-    setConvo([]);
+    setConvo([]);            // a new entry is a fresh conversation
     setSending(false);
     setTurnError(null);
     sessionTurns.current = new Set();
@@ -228,7 +210,7 @@ export default function EntryAgentWindow({ entry, containerRef, onClose }) {
     return () => { cancelled = true; };
   }, [path]);
 
-  // ── Read the board for this entry's Companion replies ──────────────────
+  // ── Read the board for this entry's Companion replies + edits ──────────
   useEffect(() => {
     if (!path) return undefined;
     if (typeof window === 'undefined' || typeof EventSource === 'undefined') return undefined;
@@ -237,8 +219,7 @@ export default function EntryAgentWindow({ entry, containerRef, onClose }) {
       onMessage: (m) => {
         const p = m && m.payload;
         if (!p || p.entry_path !== path) return;
-        // Only accept messages for turns we started this session.
-        if (!sessionTurns.current.has(p.turn_id)) return;
+        if (!sessionTurns.current.has(p.turn_id)) return; // only this session's turns
         if (p.kind === 'companion_reply') {
           setConvo((prev) => [...prev, { id: m.id || `r-${p.turn_id}`, role: 'companion', text: p.reply || '' }]);
         } else if (p.kind === 'companion_edit') {
@@ -277,35 +258,22 @@ export default function EntryAgentWindow({ entry, containerRef, onClose }) {
     }
   }, [draft, sending, path, convo]);
 
-  // ── Measure: gutter height + horizontal alignment ──────────────────────
-  // useLayoutEffect so the wrapped layout is set before paint (no flash of
-  // full-width text). Re-runs on width change and on entry change; a
-  // ResizeObserver keeps the gutter full-height as reflow changes the body's
-  // height. All browser-only -- node test render skips effects.
+  // ── Position: default to the right, keep on-screen on resize ────────────
   useIsoLayoutEffect(() => {
-    const el = containerRef?.current;
-    if (!el || typeof window === 'undefined') return undefined;
-    const measure = () => {
-      const rect = el.getBoundingClientRect();
-      setLeft(Math.max(0, rect.right - width));
-      // offsetHeight excludes the out-of-flow float, so it is the in-flow
-      // content height -- exactly the gutter span we want.
-      setFloatH(el.offsetHeight);
+    if (typeof window === 'undefined') return undefined;
+    const place = () => {
+      setLeft((cur) => {
+        const base = cur == null ? window.innerWidth - width - 28 : cur;
+        return Math.max(8, Math.min(window.innerWidth - 80, base));
+      });
+      setTop((cur) => Math.max(8, Math.min(window.innerHeight - 80, cur)));
     };
-    measure();
-    let ro;
-    if (typeof ResizeObserver !== 'undefined') {
-      ro = new ResizeObserver(measure);
-      ro.observe(el);
-    }
-    window.addEventListener('resize', measure);
-    return () => {
-      if (ro) ro.disconnect();
-      window.removeEventListener('resize', measure);
-    };
-  }, [containerRef, width, path]);
+    place();
+    window.addEventListener('resize', place);
+    return () => window.removeEventListener('resize', place);
+  }, [width]);
 
-  // ── Scroll-spy: reading label + section glow ───────────────────────────
+  // ── Scroll-spy: the section the box floats over glows + names the context ─
   useEffect(() => {
     const el = containerRef?.current;
     if (!el || typeof window === 'undefined') return undefined;
@@ -328,34 +296,28 @@ export default function EntryAgentWindow({ entry, containerRef, onClose }) {
       window.removeEventListener('resize', onScroll);
       bodyEl.querySelectorAll('.' + GLOW_CLASS).forEach((n) => n.classList.remove(GLOW_CLASS));
     };
-  }, [containerRef, top, height, width, path]);
+  }, [containerRef, top, height, path]);
 
   // ── Drag / resize ──────────────────────────────────────────────────────
-  // One pointer model for all three grips. `mode` selects which dimension(s)
-  // the move updates: titlebar = vertical move, left edge = width, bottom =
-  // height. Right-pinned, so the window never moves horizontally.
+  // Titlebar = free 2D move; left edge = width (right edge fixed); bottom =
+  // height. The box floats above everything, so it moves anywhere on screen.
   const startDrag = useCallback((mode) => (e) => {
     e.preventDefault();
-    const el = containerRef?.current;
-    const containerW = el ? el.getBoundingClientRect().width : 9999;
-    drag.current = {
-      mode,
-      x: e.clientX, y: e.clientY,
-      w: width, h: height, t: top,
-      maxW: Math.max(MIN_W, containerW - 80),
-    };
+    drag.current = { mode, x: e.clientX, y: e.clientY, w: width, h: height, t: top, l: left ?? 0 };
     const onMove = (ev) => {
       const d = drag.current;
       if (!d) return;
       if (d.mode === 'move') {
-        const maxTop = window.innerHeight - 80;
-        setTop(Math.min(maxTop, Math.max(8, d.t + (ev.clientY - d.y))));
+        setLeft(Math.max(8, Math.min(window.innerWidth - 80, d.l + (ev.clientX - d.x))));
+        setTop(Math.max(8, Math.min(window.innerHeight - 80, d.t + (ev.clientY - d.y))));
       } else if (d.mode === 'width') {
-        // Dragging the left edge leftwards widens the right-pinned window.
-        setWidth(Math.min(d.maxW, Math.max(MIN_W, d.w + (d.x - ev.clientX))));
+        const right = d.l + d.w; // keep the right edge fixed; move the left edge
+        const nl = Math.max(8, Math.min(right - MIN_W, d.l + (ev.clientX - d.x)));
+        setLeft(nl);
+        setWidth(right - nl);
       } else if (d.mode === 'height') {
-        const maxH = window.innerHeight - top - 16;
-        setHeight(Math.min(Math.max(MIN_H, maxH), Math.max(MIN_H, d.h + (ev.clientY - d.y))));
+        const maxH = window.innerHeight - d.t - 16;
+        setHeight(Math.max(MIN_H, Math.min(maxH, d.h + (ev.clientY - d.y))));
       }
     };
     const onUp = () => {
@@ -365,244 +327,211 @@ export default function EntryAgentWindow({ entry, containerRef, onClose }) {
     };
     window.addEventListener('pointermove', onMove);
     window.addEventListener('pointerup', onUp);
-  }, [containerRef, width, height, top]);
+  }, [width, height, top, left]);
 
   const linkCount = Array.isArray(entry?.links) ? entry.links.length : 0;
   const title = entry?.title ?? entry?.path ?? 'this entry';
-
-  const winPos = left == null
-    ? { right: 28 }
-    : { left };
+  const winPos = left == null ? { right: 28 } : { left };
 
   return (
-    <>
-      {/* The gutter: transparent full-height right float the body text wraps
-          around. pointer-events:none so selection/clicks pass through to any
-          text visually behind it. */}
+    <div
+      data-testid="eaw-window"
+      style={{
+        position: 'fixed',
+        top,
+        width,
+        height,
+        ...winPos,
+        zIndex: Z,
+        display: 'flex',
+        flexDirection: 'column',
+        background: 'var(--phosphor-deep)',
+        border: '1px solid var(--phosphor-dim)',
+        boxShadow: '0 0 0 1px var(--bg), 0 0 18px rgba(0,0,0,.65)',
+        color: 'var(--phosphor)',
+        fontFamily: 'var(--font-mono)',
+        fontSize: 12,
+      }}
+    >
+      {/* Left-edge width grip */}
       <div
-        data-testid="eaw-gutter"
-        aria-hidden="true"
-        style={{
-          float: 'right',
-          width,
-          height: floatH || '60vh',
-          marginLeft: 24,
-          shapeOutside: 'inset(0)',
-          shapeMargin: SHAPE_MARGIN,
-          pointerEvents: 'none',
-        }}
+        data-testid="eaw-grip-width"
+        onPointerDown={startDrag('width')}
+        title="drag to resize width"
+        style={{ position: 'absolute', left: -3, top: 0, bottom: 0, width: 6, cursor: 'ew-resize' }}
       />
 
-      {/* The window: fixed on the glass, flush over the gutter. */}
+      {/* Titlebar: grab to move the box anywhere; shows the context it floats over. */}
       <div
-        data-testid="eaw-window"
+        data-testid="eaw-titlebar"
+        onPointerDown={startDrag('move')}
         style={{
-          position: 'fixed',
-          top,
-          width,
-          height,
-          ...winPos,
-          zIndex: 60,
-          display: 'flex',
-          flexDirection: 'column',
-          background: 'var(--phosphor-deep)',
-          border: '1px solid var(--phosphor-dim)',
-          boxShadow: '0 0 0 1px var(--bg), 0 0 18px rgba(0,0,0,.6)',
-          color: 'var(--phosphor)',
-          fontFamily: 'var(--font-mono)',
-          fontSize: 12,
+          display: 'flex', alignItems: 'baseline', gap: 8,
+          padding: '6px 8px',
+          borderBottom: '1px solid var(--phosphor-dim)',
+          background: 'var(--bg)',
+          cursor: 'move', userSelect: 'none',
         }}
       >
-        {/* Left-edge width grip */}
-        <div
-          data-testid="eaw-grip-width"
-          onPointerDown={startDrag('width')}
-          title="drag to resize width"
+        <span style={{
+          color: 'var(--phosphor-white)', textShadow: 'var(--glow)',
+          textTransform: 'uppercase', letterSpacing: '.08em', fontSize: 11,
+        }}>
+          companion
+        </span>
+        <span
+          data-testid="eaw-reading"
           style={{
-            position: 'absolute', left: -3, top: 0, bottom: 0, width: 6,
-            cursor: 'ew-resize',
-          }}
-        />
-
-        {/* Titlebar: drag to move (vertical); shows what it is reading. */}
-        <div
-          data-testid="eaw-titlebar"
-          onPointerDown={startDrag('move')}
-          style={{
-            display: 'flex', alignItems: 'baseline', gap: 8,
-            padding: '6px 8px',
-            borderBottom: '1px solid var(--phosphor-dim)',
-            background: 'var(--bg)',
-            cursor: 'move', userSelect: 'none',
-          }}
-        >
-          <span style={{
-            color: 'var(--phosphor-white)', textShadow: 'var(--glow)',
-            textTransform: 'uppercase', letterSpacing: '.08em', fontSize: 11,
-          }}>
-            companion
-          </span>
-          <span
-            data-testid="eaw-reading"
-            style={{
-              flex: 1, minWidth: 0,
-              whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis',
-              color: 'var(--phosphor-dim)', textShadow: 'none', fontSize: 11,
-            }}
-          >
-            reading: <span style={{ color: 'var(--phosphor)', textShadow: 'var(--glow)' }}>
-              {reading || '— (top)'}
-            </span>
-          </span>
-          <span
-            data-testid="eaw-close"
-            role="button"
-            onPointerDown={(e) => e.stopPropagation()}
-            onClick={onClose}
-            title="close the companion window"
-            style={{
-              cursor: 'pointer', color: 'var(--phosphor)', textShadow: 'var(--glow)',
-              padding: '0 2px',
-            }}
-          >[×]</span>
-        </div>
-
-        {/* Body: the conversation. Before the first turn it shows the grounding
-            (the page's neighborhood) as orientation; once you talk, it becomes
-            the chat. Companion replies arrive over SSE from the board. */}
-        <div
-          data-testid="eaw-body"
-          className="bbs-scroll"
-          style={{
-            flex: 1, minHeight: 0, overflowY: 'auto',
-            // reaching the end of the window's scroll must NOT scroll the page.
-            overscrollBehavior: 'contain',
-            padding: '10px 10px', lineHeight: 1.5,
-            color: 'var(--phosphor-dim)', textShadow: 'none',
-          }}
-        >
-          {convo.length === 0 ? (
-            <>
-              <div style={{ color: 'var(--phosphor)', textShadow: 'var(--glow)', marginBottom: 8 }}>
-                scroll the entry — the section under this window glows, and the
-                titlebar names it. ask me about this passage below.
-              </div>
-              {grounding ? (
-                <GroundingView grounding={grounding} />
-              ) : (
-                <div>reading the neighborhood…</div>
-              )}
-            </>
-          ) : (
-            <div data-testid="eaw-convo">
-              {convo.map((m) => (
-                m.role === 'edit'
-                  ? <EditMarker key={m.id} op={m.op} commit={m.commit} branch={m.branch} summary={m.summary} />
-                  : <ChatBubble key={m.id} role={m.role} text={m.text} />
-              ))}
-              {sending ? (
-                <div data-testid="eaw-thinking" style={{ color: 'var(--phosphor-dim)', fontSize: 11, fontStyle: 'italic' }}>
-                  …thinking (a capable turn takes a moment)
-                </div>
-              ) : null}
-            </div>
-          )}
-          {turnError ? (
-            <div data-testid="eaw-turn-error" style={{ color: 'var(--warn)', textShadow: 'var(--glow)', fontSize: 11, marginTop: 8 }}>
-              {turnError}
-            </div>
-          ) : null}
-        </div>
-
-        {/* Composer: type a turn. Enter sends; Shift+Enter is a newline. */}
-        <div
-          data-testid="eaw-composer"
-          style={{
-            display: 'flex', gap: 6, alignItems: 'flex-end',
-            borderTop: '1px solid var(--phosphor-dim)', padding: '6px',
-          }}
-        >
-          <textarea
-            ref={inputRef}
-            data-testid="eaw-input"
-            className="bbs-scroll"
-            value={draft}
-            onChange={(e) => {
-              setDraft(e.target.value);
-              // auto-grow from a roomy default up to a cap, then scroll inside.
-              const el = e.target;
-              el.style.height = 'auto';
-              el.style.height = `${Math.min(el.scrollHeight, MAX_INPUT_H)}px`;
-            }}
-            onKeyDown={(e) => {
-              if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); sendTurn(); }
-            }}
-            placeholder={sending ? 'waiting for the companion…' : 'discuss or ask for an edit…'}
-            rows={3}
-            disabled={sending}
-            style={{
-              flex: 1, resize: 'none',
-              minHeight: 64, maxHeight: MAX_INPUT_H, overflowY: 'auto',
-              overscrollBehavior: 'contain',
-              background: 'var(--bg)', color: 'var(--phosphor)',
-              border: '1px solid var(--phosphor-dim)', padding: '5px 7px',
-              fontFamily: 'var(--font-mono)', fontSize: 12, lineHeight: 1.45,
-              outline: 'none',
-            }}
-          />
-          <span
-            data-testid="eaw-send"
-            role="button"
-            onClick={sendTurn}
-            title="send (Enter)"
-            style={{
-              cursor: sending || !draft.trim() ? 'default' : 'pointer',
-              opacity: sending || !draft.trim() ? 0.4 : 1,
-              color: 'var(--phosphor)', textShadow: 'var(--glow)',
-              border: '1px solid var(--phosphor-dim)', padding: '4px 8px',
-              textTransform: 'uppercase', letterSpacing: '.04em', fontSize: 11,
-              whiteSpace: 'nowrap',
-            }}
-          >[send]</span>
-        </div>
-
-        {/* Footer: grounding readout. Real counts once loaded; the frontmatter
-            stub until then (so it is honest the instant the window mounts). */}
-        <div
-          data-testid="eaw-grounding"
-          style={{
-            borderTop: '1px solid var(--phosphor-dim)',
-            padding: '5px 8px',
-            color: 'var(--phosphor-dim)', textShadow: 'none', fontSize: 10,
+            flex: 1, minWidth: 0,
             whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis',
+            color: 'var(--phosphor-dim)', textShadow: 'none', fontSize: 11,
           }}
         >
-          grounded in <span style={{ color: 'var(--phosphor)', textShadow: 'var(--glow)' }}>{title}</span>
-          {grounding ? (
-            <>
-              {' · '}{grounding.counts.neighbors_resolved}/{grounding.counts.links} neighbors
-              {grounding.counts.neighbors_ghost > 0 ? ` (${grounding.counts.neighbors_ghost} ghost)` : ''}
-              {' · '}palace floor
-            </>
-          ) : (
-            <>
-              {' · '}{linkCount} typed link{linkCount === 1 ? '' : 's'}
-              {' · '}neighborhood{' · '}palace floor
-            </>
-          )}
-        </div>
+          over: <span style={{ color: 'var(--phosphor)', textShadow: 'var(--glow)' }}>
+            {reading || '— (top)'}
+          </span>
+        </span>
+        <span
+          data-testid="eaw-close"
+          role="button"
+          onPointerDown={(e) => e.stopPropagation()}
+          onClick={onClose}
+          title="close the companion window"
+          style={{ cursor: 'pointer', color: 'var(--phosphor)', textShadow: 'var(--glow)', padding: '0 2px' }}
+        >[×]</span>
+      </div>
 
-        {/* Bottom-edge height grip */}
-        <div
-          data-testid="eaw-grip-height"
-          onPointerDown={startDrag('height')}
-          title="drag to resize height"
+      {/* Body: the conversation. Before the first turn it shows the grounding
+          (the page's neighborhood) as orientation; once you talk, it becomes
+          the chat. Companion replies + edits arrive over SSE from the board. */}
+      <div
+        data-testid="eaw-body"
+        className="bbs-scroll"
+        style={{
+          flex: 1, minHeight: 0, overflowY: 'auto',
+          overscrollBehavior: 'contain', // reaching the end must not scroll the page
+          padding: '10px 10px', lineHeight: 1.5,
+          color: 'var(--phosphor-dim)', textShadow: 'none',
+        }}
+      >
+        {convo.length === 0 ? (
+          <>
+            <div style={{ color: 'var(--phosphor)', textShadow: 'var(--glow)', marginBottom: 8 }}>
+              I float over this entry — ask me about anything in it (its body, its
+              frontmatter, its forward vector), or say what to change. The section
+              behind me glows as my context.
+            </div>
+            {grounding ? (
+              <GroundingView grounding={grounding} />
+            ) : (
+              <div>reading the neighborhood…</div>
+            )}
+          </>
+        ) : (
+          <div data-testid="eaw-convo">
+            {convo.map((m) => (
+              m.role === 'edit'
+                ? <EditMarker key={m.id} op={m.op} commit={m.commit} branch={m.branch} summary={m.summary} />
+                : <ChatBubble key={m.id} role={m.role} text={m.text} />
+            ))}
+            {sending ? (
+              <div data-testid="eaw-thinking" style={{ color: 'var(--phosphor-dim)', fontSize: 11, fontStyle: 'italic' }}>
+                …thinking (a capable turn takes a moment)
+              </div>
+            ) : null}
+          </div>
+        )}
+        {turnError ? (
+          <div data-testid="eaw-turn-error" style={{ color: 'var(--warn)', textShadow: 'var(--glow)', fontSize: 11, marginTop: 8 }}>
+            {turnError}
+          </div>
+        ) : null}
+      </div>
+
+      {/* Composer: type a turn. Enter sends; Shift+Enter is a newline. */}
+      <div
+        data-testid="eaw-composer"
+        style={{
+          display: 'flex', gap: 6, alignItems: 'flex-end',
+          borderTop: '1px solid var(--phosphor-dim)', padding: '6px',
+        }}
+      >
+        <textarea
+          ref={inputRef}
+          data-testid="eaw-input"
+          className="bbs-scroll"
+          value={draft}
+          onChange={(e) => {
+            setDraft(e.target.value);
+            const el = e.target; // auto-grow up to a cap, then scroll inside
+            el.style.height = 'auto';
+            el.style.height = `${Math.min(el.scrollHeight, MAX_INPUT_H)}px`;
+          }}
+          onKeyDown={(e) => {
+            if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); sendTurn(); }
+          }}
+          placeholder={sending ? 'waiting for the companion…' : 'discuss anything here, or ask for an edit…'}
+          rows={3}
+          disabled={sending}
           style={{
-            position: 'absolute', left: 0, right: 0, bottom: -3, height: 6,
-            cursor: 'ns-resize',
+            flex: 1, resize: 'none',
+            minHeight: 64, maxHeight: MAX_INPUT_H, overflowY: 'auto',
+            overscrollBehavior: 'contain',
+            background: 'var(--bg)', color: 'var(--phosphor)',
+            border: '1px solid var(--phosphor-dim)', padding: '5px 7px',
+            fontFamily: 'var(--font-mono)', fontSize: 12, lineHeight: 1.45,
+            outline: 'none',
           }}
         />
+        <span
+          data-testid="eaw-send"
+          role="button"
+          onClick={sendTurn}
+          title="send (Enter)"
+          style={{
+            cursor: sending || !draft.trim() ? 'default' : 'pointer',
+            opacity: sending || !draft.trim() ? 0.4 : 1,
+            color: 'var(--phosphor)', textShadow: 'var(--glow)',
+            border: '1px solid var(--phosphor-dim)', padding: '4px 8px',
+            textTransform: 'uppercase', letterSpacing: '.04em', fontSize: 11,
+            whiteSpace: 'nowrap',
+          }}
+        >[send]</span>
       </div>
-    </>
+
+      {/* Footer: grounding readout — what the box is grounded in. */}
+      <div
+        data-testid="eaw-grounding"
+        style={{
+          borderTop: '1px solid var(--phosphor-dim)',
+          padding: '5px 8px',
+          color: 'var(--phosphor-dim)', textShadow: 'none', fontSize: 10,
+          whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis',
+        }}
+      >
+        grounded in <span style={{ color: 'var(--phosphor)', textShadow: 'var(--glow)' }}>{title}</span>
+        {grounding ? (
+          <>
+            {' · '}frontmatter + body
+            {' · '}{grounding.counts.neighbors_resolved}/{grounding.counts.links} neighbors
+            {grounding.counts.neighbors_ghost > 0 ? ` (${grounding.counts.neighbors_ghost} ghost)` : ''}
+            {' · '}palace floor
+          </>
+        ) : (
+          <>
+            {' · '}{linkCount} typed link{linkCount === 1 ? '' : 's'}
+            {' · '}neighborhood{' · '}palace floor
+          </>
+        )}
+      </div>
+
+      {/* Bottom-edge height grip */}
+      <div
+        data-testid="eaw-grip-height"
+        onPointerDown={startDrag('height')}
+        title="drag to resize height"
+        style={{ position: 'absolute', left: 0, right: 0, bottom: -3, height: 6, cursor: 'ns-resize' }}
+      />
+    </div>
   );
 }

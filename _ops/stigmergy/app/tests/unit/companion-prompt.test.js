@@ -31,6 +31,14 @@ describe('buildCompanionPrompt', () => {
     expect(p).toMatch(/lived body back into the loop/);
   });
 
+  it('injects the full frontmatter so it can comment on any field', () => {
+    const fm = { title: 'Merleau-Ponty', type: 'person', stage: 'growing', born: '2026-05', links: [{ target: '[[Phenomenology]]', type: 'deepens' }] };
+    const p = buildCompanionPrompt({ grounding, frontmatter: fm, body: 'x', message: 'what stage am I?' });
+    expect(p).toMatch(/--- frontmatter ---/);
+    expect(p).toMatch(/born: 2026-05/);
+    expect(p).toMatch(/comment on ANY part of this entry/);
+  });
+
   it('lists the typed-link neighborhood with relations + vectors + ghost flag', () => {
     const p = buildCompanionPrompt({ grounding, body: 'x', message: 'hi' });
     expect(p).toMatch(/deepens \(grounds\) → Phenomenology/);

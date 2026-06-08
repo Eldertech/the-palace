@@ -22,30 +22,28 @@ const entry = {
   links: [{ target: '[[Phenomenology]]', type: 'connects-to' }, { target: '[[The Body]]', type: 'deepens' }],
 };
 
-describe('EntryAgentWindow (M0 shell)', () => {
-  it('renders the window, gutter, titlebar, body, grounding and both grips', () => {
+describe('EntryAgentWindow (floating companion)', () => {
+  it('renders the window, titlebar, body, composer, grounding and both grips', () => {
     const html = render({ entry });
     expect(html).toContain('data-testid="eaw-window"');
-    expect(html).toContain('data-testid="eaw-gutter"');
     expect(html).toContain('data-testid="eaw-titlebar"');
     expect(html).toContain('data-testid="eaw-body"');
+    expect(html).toContain('data-testid="eaw-composer"');
     expect(html).toContain('data-testid="eaw-grounding"');
     expect(html).toContain('data-testid="eaw-grip-width"');
     expect(html).toContain('data-testid="eaw-grip-height"');
     expect(html).toContain('data-testid="eaw-close"');
   });
 
-  it('pins position:fixed (fixed on the glass, not scrolling with the text)', () => {
-    expect(render({ entry })).toContain('position:fixed');
-  });
-
-  it('the gutter is a right float with shape-outside so text wraps to its left', () => {
+  it('floats above everything: position:fixed with a high z-index, no reflow gutter', () => {
     const html = render({ entry });
-    expect(html).toContain('float:right');
-    expect(html).toMatch(/shape-outside/);
+    expect(html).toContain('position:fixed');
+    expect(html).toMatch(/z-index:9000/);
+    expect(html).not.toContain('data-testid="eaw-gutter"'); // no reflow gutter anymore
+    expect(html).not.toMatch(/shape-outside/);
   });
 
-  it('the reading label defaults to the top of the entry before any scroll', () => {
+  it('the context label defaults to the top of the entry before any scroll', () => {
     const html = render({ entry });
     expect(html).toContain('data-testid="eaw-reading"');
     expect(html).toContain('(top)');
