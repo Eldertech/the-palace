@@ -56,29 +56,52 @@ export const PILLARS_OPTIONAL_TYPES = new Set(['specialist', 'maker']);
 // (per the Entry Conatus practice / SCHEMA §3 forward_vector field).
 export const STASIS_VERBS = ['remain', 'stay', 'continue', 'be', 'persist', 'endure'];
 
-// ── Allow-list (the hard guardrail) ──────────────────────────────────────────
+// ── Allow-list (the hard guardrail), two refusals wearing one face ───────────
 //
-// Stage A's POST /api/entry/save refuses anything outside the entry surface.
-// Stage B's armed write inherits this unchanged.
+// Stage A's POST /api/entry/save and Stage B's armed write both gate here. The
+// guardrail is TWO different refusals, and the difference is the line the
+// Trickster is licensed to cross ([[Trickster Commit]]):
+//
+//   · checkPathSafety — SECURITY. Guards the filesystem and repo integrity: a
+//     repo escape, a NUL byte, a non-.md target, or a write into a VCS / build /
+//     dependency / editor-config tree. NEVER relaxed — not even for a trusted
+//     operator. "Path-safety is not care."
+//   · checkCanon — CARE. The rules everyone operates by (CLAUDE / SCHEMA / …),
+//     the ceremony cards, and the running machinery under _ops/. The careful
+//     Companion refuses these — they must flow through a Claude conversation,
+//     show-before-write — while the Trickster, by the owner's standing consent,
+//     may reach exactly here.
+//
+// checkAllowList composes both (safety first, then care). The careful path calls
+// it; the Trickster path calls ONLY checkPathSafety.
 
-// Path-prefix denials (relative to palace root). Any entry whose path starts
-// with one of these is refused outright -- machinery and infrastructure are
-// not edited through the STATE form.
-export const DENIED_PATH_PREFIXES = [
+// SECURITY prefixes — VCS, dependency, build, and editor-config trees. A `.md`
+// under one of these is never palace knowledge and writing there risks repo
+// integrity. Kept even in trickster mode.
+export const DENIED_SECURITY_PREFIXES = [
   '.git/',
   '.claude/',
   '.obsidian/',
   'node_modules/',
-  '_ops/stigmergy/app/',
-  '_ops/swarm/',
   'screenshots/',
   'dist/',
 ];
 
+// CARE prefixes — the running palace machinery (the app itself, the swarm
+// blackboard). The careful path refuses them as "infrastructure, not
+// knowledge"; the Trickster (write-anywhere) may reach them.
+export const DENIED_CANON_PREFIXES = [
+  '_ops/stigmergy/app/',
+  '_ops/swarm/',
+];
+
+// Back-compat: the union, as the single list the pre-split guardrail used.
+export const DENIED_PATH_PREFIXES = [...DENIED_SECURITY_PREFIXES, ...DENIED_CANON_PREFIXES];
+
 // Canon files -- the rules everyone operates by. Editing them changes how the
 // type system, ceremonies, or agent behavior work everywhere. These must flow
 // through the Claude conversation under show-before-write per CLAUDE.md and
-// the handoff. STATE may READ them; STATE may not WRITE them.
+// the handoff. The careful path may READ them; it may not WRITE them.
 export const DENIED_CANON_PATHS = new Set([
   'CLAUDE.md',
   'SCHEMA.md',
@@ -97,8 +120,9 @@ const DENIED_CANON_PATTERNS = [
   /^_ops\/[^/]*Ceremony[^/]*\.md$/,
 ];
 
-// Returns { allowed, reason } for a proposed save target.
-export function checkAllowList(relPath) {
+// SECURITY refusal — filesystem / repo integrity. Returns { allowed, reason }.
+// This is the guard the Trickster keeps; bypassing it is never licensed.
+export function checkPathSafety(relPath) {
   if (typeof relPath !== 'string' || relPath === '') {
     return { allowed: false, reason: 'no path' };
   }
@@ -108,7 +132,19 @@ export function checkAllowList(relPath) {
   if (!relPath.toLowerCase().endsWith('.md')) {
     return { allowed: false, reason: 'STATE only edits .md entries' };
   }
-  for (const prefix of DENIED_PATH_PREFIXES) {
+  for (const prefix of DENIED_SECURITY_PREFIXES) {
+    if (relPath.startsWith(prefix)) {
+      return { allowed: false, reason: `path under ${prefix} is system/build, not knowledge` };
+    }
+  }
+  return { allowed: true, reason: null };
+}
+
+// CARE refusal — canon + ceremony + running machinery. Returns { allowed,
+// reason }. The line the careful Companion will not cross and the Trickster may.
+// Assumes path-safety has already passed.
+export function checkCanon(relPath) {
+  for (const prefix of DENIED_CANON_PREFIXES) {
     if (relPath.startsWith(prefix)) {
       return { allowed: false, reason: `path under ${prefix} is infrastructure, not knowledge` };
     }
@@ -128,6 +164,15 @@ export function checkAllowList(relPath) {
     }
   }
   return { allowed: true, reason: null };
+}
+
+// The careful guardrail: security first, then care. Byte-identical in `allowed`
+// to the pre-split behavior, so every non-trickster caller is unchanged.
+// Returns { allowed, reason } for a proposed save target.
+export function checkAllowList(relPath) {
+  const safety = checkPathSafety(relPath);
+  if (!safety.allowed) return safety;
+  return checkCanon(relPath);
 }
 
 // ── Dirty tracking ───────────────────────────────────────────────────────────

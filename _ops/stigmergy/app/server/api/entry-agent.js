@@ -97,6 +97,36 @@ export async function entryAgentRoutes(ctx) {
     return true;
   }
 
+  // POST /api/entry-agent/trickster — the TRICKSTER write: commit an op to ANY
+  //   entry (canon included) in ONE gesture, no proposal. Body: { path, op,
+  //   summary?, turnId? }.
+  // The trusted operator's standing consent (Loudon is `Neighborhood:
+  // EVERYWHERE`): bypasses the canon/care gate, branded Palace-Author: trickster
+  // + verify: unverified. Path-safety still refuses ../ NUL / non-.md / VCS dirs.
+  // The committed PROOF arrives over SSE — the window renders it as an edit
+  // marker whose [undo] is "untrick last". See [[Trickster Commit]].
+  if (urlPath === '/api/entry-agent/trickster' && method === 'POST') {
+    if (!companionLane || typeof companionLane.trickster !== 'function') {
+      jsonResponse(res, 500, { error: 'companion lane unavailable' });
+      return true;
+    }
+    const bodyText = await readBody(req, res);
+    if (bodyText === null) return true; // 413 already sent
+    let body;
+    try { body = JSON.parse(bodyText); } catch (e) {
+      jsonResponse(res, 400, { error: `malformed JSON: ${e.message}` });
+      return true;
+    }
+    const result = await companionLane.trickster({
+      path: typeof body?.path === 'string' ? body.path : null,
+      op: body?.op,
+      summary: typeof body?.summary === 'string' ? body.summary : null,
+      turnId: typeof body?.turnId === 'string' ? body.turnId : null,
+    });
+    jsonResponse(res, result.ok ? 200 : 400, result);
+    return true;
+  }
+
   // POST /api/entry-agent/undo — revert a committed Companion edit.
   //   Body: { path?, commit, turnId? }
   // Creates a new inverse commit in the live palace and posts a revert PROOF on

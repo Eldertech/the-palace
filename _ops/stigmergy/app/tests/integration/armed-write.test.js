@@ -132,6 +132,61 @@ describe('armedWriteEntry (apply + commit to the repo)', () => {
   });
 });
 
+describe('armedWriteEntry — trickster mode (canon bypass, path-safety kept)', () => {
+  let root;
+  beforeEach(() => { root = makeRepo(); });
+  afterEach(() => { rmSync(root, { recursive: true, force: true }); });
+
+  // Stand a canon file in the repo — the careful Companion is forbidden it.
+  function seedCanon() {
+    writeFileSync(join(root, 'SCHEMA.md'), '---\ntitle: SCHEMA\ntype: meta\n---\n# SCHEMA\n\nThe type system.\n');
+    git(root, ['add', 'SCHEMA.md']);
+    git(root, ['commit', '-q', '-m', 'ops: seed SCHEMA']);
+  }
+
+  test('trickster edits a CANON file end-to-end, branded author trickster + unverified, and reverts cleanly', async () => {
+    seedCanon();
+
+    // the careful path still refuses it (the bypass is opt-in, not default)
+    const refused = await armedWriteEntry({
+      repoRoot: root, relPath: 'SCHEMA.md',
+      op: { op: 'append', text: 'careful path must not reach this' },
+      summary: 's', verify: 'unverified',
+    });
+    expect(refused.ok).toBe(false);
+    expect(refused.status).toBe(403);
+
+    // the trickster bypasses canon and lands
+    const r = await armedWriteEntry({
+      repoRoot: root, relPath: 'SCHEMA.md',
+      op: { op: 'append', text: 'A trickster scratch line.' },
+      summary: 'trickster scratch', verify: 'unverified', author: 'trickster', trickster: true,
+    });
+    expect(r.ok).toBe(true);
+    expect(typeof r.shortHash).toBe('string');
+
+    const msg = git(root, ['log', '-1', '--format=%B']);
+    expect(msg).toMatch(/Palace-Author: trickster/);
+    expect(msg).toMatch(/Palace-Verify: unverified/);
+    expect(git(root, ['show', 'HEAD:SCHEMA.md'])).toMatch(/A trickster scratch line\./);
+
+    // "untrick last": an honest inverse commit, content gone again, history kept
+    const rev = await revertCommit({ repoRoot: root, hash: r.shortHash });
+    expect(rev.ok).toBe(true);
+    expect(readFileSync(join(root, 'SCHEMA.md'), 'utf8')).not.toMatch(/A trickster scratch line\./);
+    expect(git(root, ['status', '--porcelain']).trim()).toBe('');
+  });
+
+  test('trickster STILL refuses path-safety violations (security is not care)', () => {
+    // repo escape — refused even in trickster mode
+    expect(previewEdit(root, '../escape.md', { op: 'append', text: 'x' }, { trickster: true }).status).toBe(403);
+    // a VCS dir — refused even in trickster mode
+    expect(previewEdit(root, '.git/note.md', { op: 'append', text: 'x' }, { trickster: true }).status).toBe(403);
+    // a non-.md target — refused even in trickster mode
+    expect(previewEdit(root, 'notes.txt', { op: 'append', text: 'x' }, { trickster: true }).status).toBe(403);
+  });
+});
+
 describe('revertCommit', () => {
   let root;
   beforeEach(() => { root = makeRepo(); });

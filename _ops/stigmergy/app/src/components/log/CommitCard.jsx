@@ -89,7 +89,19 @@ export default function CommitCard({ commit, onOpen, onFilterEntry, compact = fa
         >
           {c.shortHash}
         </span>
-        <span>{c.author}</span>
+        {c.author === 'trickster' ? (
+          <span
+            data-testid="commit-author-trickster"
+            title="trickster commit — write-anywhere, branded so a later pass can harvest it"
+            style={{
+              color: 'var(--ansi-bright-magenta)', textShadow: 'var(--glow)',
+              border: '1px solid var(--ansi-bright-magenta)', padding: '0 5px',
+              letterSpacing: '.05em',
+            }}
+          >※ {c.author}</span>
+        ) : (
+          <span>{c.author}</span>
+        )}
         <span>{(c.date ?? '').split('T')[0]} {formatTs(c.date)}</span>
         <VerifyTag verify={c.verify} />
         {c.campaign ? (

@@ -56,6 +56,29 @@ export async function postApply({ path, op, turnId } = {}) {
   }
 }
 
+// POST /api/entry-agent/trickster — the TRICKSTER write: commit an op to ANY
+// entry (canon included) in one gesture, no proposal. Body: { path, op, summary?,
+// turnId }. Returns { ok, commit?, op?, turnId?, msg? }. Branded Palace-Author:
+// trickster + verify: unverified; path-safety still refuses ../ NUL / non-.md /
+// VCS dirs. The committed marker arrives on the board (a companion_edit PROOF on
+// the same turn) over SSE — the window renders it with [undo] = untrick. Pass the
+// client-generated `turnId` so the window can register it BEFORE the proof lands
+// (SSE is turn-id scoped).
+export async function postTrickster({ path, op, summary, turnId } = {}) {
+  try {
+    const res = await fetch('/api/entry-agent/trickster', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+      body: JSON.stringify({ path, op, summary: summary || null, turnId: turnId || null }),
+    });
+    const data = await res.json().catch(() => ({}));
+    if (!res.ok) return { ok: false, status: res.status, ...data };
+    return { ok: true, ...data };
+  } catch (err) {
+    return { ok: false, error: err?.message ?? String(err) };
+  }
+}
+
 // POST /api/entry-agent/undo — revert a committed Companion edit.
 // Body: { path, commit, turnId }. Returns { ok, revertHash?, reverts?, msg? }.
 // The revert marker does NOT come back here — it arrives on the board (a revert
