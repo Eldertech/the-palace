@@ -721,24 +721,36 @@ export default function EntryAgentWindow({ entry, context, containerRef, onClose
     if (!isEntry || typeof window === 'undefined') return undefined;
     const el = resolveContainer();
     if (!el) return undefined;
-    const bodyEl = el.querySelector('[data-testid="entry-body"]') || el;
+    // Re-resolve the body on every pass instead of capturing it once: when the
+    // open entry reloads in place (the Companion commits an edit to it), the
+    // EntryReader swaps fresh body content in and the prior nodes are replaced.
+    // A captured reference would go stale and the glow would paint onto dead
+    // nodes — re-querying keeps the spy painting the live body.
+    const bodyOf = () => el.querySelector('[data-testid="entry-body"]') || el;
     let raf = 0;
     const update = () => {
       raf = 0;
       const centreY = top + height / 2;
       const active = findActiveHeading(el, centreY);
       setReading(active ? active.textContent.trim() : null);
-      paintGlow(bodyEl, active);
+      paintGlow(bodyOf(), active);
     };
     const onScroll = () => { if (!raf) raf = window.requestAnimationFrame(update); };
     update();
     window.addEventListener('scroll', onScroll, { passive: true });
     window.addEventListener('resize', onScroll);
+    // Repaint when the entry DOM changes underneath us — a committed edit reloads
+    // the reader's content in place without firing a scroll. childList/subtree
+    // only (NOT attributes), so our own glow class toggles never retrigger the
+    // observer: no feedback loop.
+    const mo = typeof MutationObserver !== 'undefined' ? new MutationObserver(onScroll) : null;
+    if (mo) mo.observe(el, { childList: true, subtree: true });
     return () => {
       if (raf) window.cancelAnimationFrame(raf);
       window.removeEventListener('scroll', onScroll);
       window.removeEventListener('resize', onScroll);
-      bodyEl.querySelectorAll('.' + GLOW_CLASS).forEach((n) => n.classList.remove(GLOW_CLASS));
+      if (mo) mo.disconnect();
+      bodyOf().querySelectorAll('.' + GLOW_CLASS).forEach((n) => n.classList.remove(GLOW_CLASS));
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isEntry, resolveContainer, top, height, cKey]);
