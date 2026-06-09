@@ -73,18 +73,19 @@ describe('buildCompanionPrompt', () => {
     expect(p).toMatch(/"op":"prepend"/);
     expect(p).toMatch(/"op":"rewrite"/);
     expect(p).toMatch(/"op":"graffiti"/);
+    expect(p).toMatch(/"op":"set-vector"/);
     // exactly-one-occurrence discipline for rewrite
     expect(p).toMatch(/occur exactly once/);
     expect(p).toMatch(/Include "edit" only when you are editing/);
   });
 
-  it('states the body-only capability boundary so frontmatter edits are not attempted', () => {
+  it('lets the forward vector be edited (set-vector, never silent) but no other frontmatter', () => {
     const p = buildCompanionPrompt({ grounding, body: 'x', message: 'change my forward vector' });
     expect(p).toMatch(/CAPABILITY BOUNDARY/);
-    expect(p).toMatch(/your edit ability currently reaches the BODY\n?only/);
-    // it must tell the worker NOT to propose an edit op for frontmatter/vector
+    expect(p).toMatch(/set-vector/);
+    expect(p).toMatch(/NEVER change it silently/);
+    // every OTHER frontmatter field still cannot be edited
     expect(p).toMatch(/do NOT propose an edit op/);
-    expect(p).toMatch(/forward vector/);
   });
 
   it('instructs adaptive narration — quiet reply when an edit is clean', () => {

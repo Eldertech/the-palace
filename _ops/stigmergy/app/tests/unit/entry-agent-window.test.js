@@ -102,6 +102,19 @@ describe('EditMarker (committed edit + post-commit undo)', () => {
     expect(html).toMatch(/line-through/);
   });
 
+  it('flags a forward-vector change prominently (from → to), never silent', () => {
+    const html = renderMarker({
+      op: 'set-vector', commit: 'abc1234', branch: 'stigmergy-edits',
+      vectorChange: { from: 'I want to grow.', to: 'I will keep weaving what I touch.' },
+      onUndo: () => {},
+    });
+    expect(html).toContain('data-testid="eaw-vector-flag"');
+    expect(html).toContain('forward vector changed');
+    expect(html).toContain('I want to grow.');                 // the old (struck)
+    expect(html).toContain('I will keep weaving what I touch.'); // the new
+    expect(html).toContain('data-testid="eaw-edit-undo"');      // a vector change is undoable too
+  });
+
   it('renders a revert marker distinctly, naming the commit it reverts', () => {
     const html = renderMarker({ op: 'revert', commit: 'def5678', branch: 'stigmergy-edits', reverts: 'abc1234' });
     expect(html).toContain('data-op="revert"');

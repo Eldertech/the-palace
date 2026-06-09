@@ -61,6 +61,31 @@ describe('armedWriteEntry', () => {
     expect(git(root, ['status', '--porcelain']).trim()).toBe('');
   });
 
+  test('set-vector edits the frontmatter, preserves the body, and reports the change', async () => {
+    const bodyBefore = readFileSync(join(root, 'Entry.md'), 'utf8');
+    const body = bodyBefore.slice(bodyBefore.indexOf('# Body'));
+
+    const r = await armedWriteEntry({
+      editsRoot: root, relPath: 'Entry.md',
+      op: { op: 'set-vector', text: 'I will keep weaving what I touch.' },
+      summary: 'set forward vector', verify: 'unverified', author: 'claude',
+    });
+    expect(r.ok).toBe(true);
+    expect(r.op).toBe('set-vector');
+    expect(r.vectorChange).toEqual({ from: 'I want to grow.', to: 'I will keep weaving what I touch.' });
+
+    const after = readFileSync(join(root, 'Entry.md'), 'utf8');
+    expect(after).toMatch(/forward_vector: "I will keep weaving what I touch\."/);
+    expect(after).not.toMatch(/I want to grow\./);
+    expect(after.endsWith(body)).toBe(true);                 // body byte-identical
+    expect(after).toMatch(/title: Entry\ntype: concept/);     // other fields untouched
+
+    // committed through the enforced path
+    expect(git(root, ['show', 'HEAD:Entry.md'])).toMatch(/I will keep weaving what I touch\./);
+    expect(git(root, ['log', '-1', '--format=%s'])).toMatch(/^edit\(Entry\): set forward vector/);
+    expect(git(root, ['status', '--porcelain']).trim()).toBe('');
+  });
+
   test('refuses a canon path (allow-list, 403)', async () => {
     const r = await armedWriteEntry({ editsRoot: root, relPath: 'CLAUDE.md', op: { op: 'append', text: 'x' }, summary: 's', verify: 'unverified' });
     expect(r.ok).toBe(false);

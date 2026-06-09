@@ -3,7 +3,7 @@
 // the exactly-once-or-refuse discipline that keeps the Companion honest).
 
 import { describe, it, expect } from 'vitest';
-import { splitRawFrontmatter, applyOp } from '../../server/armed-write.js';
+import { splitRawFrontmatter, applyOp, setForwardVector } from '../../server/armed-write.js';
 
 describe('splitRawFrontmatter', () => {
   it('splits frontmatter from body, fences kept verbatim', () => {
@@ -89,5 +89,41 @@ describe('applyOp', () => {
     expect(applyOp(body, { op: 'graffiti', text: 'breaks --> out' }).ok).toBe(false);
     expect(applyOp(body, { op: 'graffiti', text: 'x', find: 'absent' }).ok).toBe(false);
     expect(applyOp('the the', { op: 'graffiti', text: 'x', find: 'the' }).ok).toBe(false);
+  });
+});
+
+describe('setForwardVector', () => {
+  const fm = '---\ntitle: X\ntype: concept\nstage: seed\nforward_vector: "I want to grow."\n---\n';
+
+  it('replaces only the forward_vector line, leaving every other line byte-identical', () => {
+    const r = setForwardVector(fm, 'I will keep teaching what I become.');
+    expect(r.ok).toBe(true);
+    expect(r.fmBlock).toMatch(/forward_vector: "I will keep teaching what I become\."/);
+    expect(r.oldValue).toBe('I want to grow.');
+    // the other lines are untouched (no field re-order, no restyle)
+    expect(r.fmBlock).toMatch(/title: X\ntype: concept\nstage: seed/);
+    // exactly one forward_vector line
+    expect((r.fmBlock.match(/^forward_vector:/gm) || []).length).toBe(1);
+  });
+
+  it('quotes and escapes a value with quotes/colons (round-trips as a string)', () => {
+    const r = setForwardVector(fm, 'I hold the "tension": relations over nodes.');
+    expect(r.ok).toBe(true);
+    expect(r.fmBlock).toMatch(/forward_vector: "I hold the \\"tension\\": relations over nodes\."/);
+  });
+
+  it('inserts the field before the closing fence when it is absent', () => {
+    const noVec = '---\ntitle: X\ntype: concept\n---\n';
+    const r = setForwardVector(noVec, 'I appear now.');
+    expect(r.ok).toBe(true);
+    expect(r.oldValue).toBe(null);
+    expect(r.fmBlock).toMatch(/type: concept\nforward_vector: "I appear now\."\n---\n/);
+  });
+
+  it('refuses empty text, a multi-line value, and a block-scalar vector', () => {
+    expect(setForwardVector(fm, '   ').ok).toBe(false);
+    expect(setForwardVector(fm, 'line one\nline two').ok).toBe(false);
+    expect(setForwardVector('---\nforward_vector: |\n  multi\n  line\n---\n', 'x').ok).toBe(false);
+    expect(setForwardVector('', 'x').ok).toBe(false);
   });
 });

@@ -43,9 +43,10 @@ function makeTempPalace() {
   return root;
 }
 
-function makeServer(root, { sleep = 300, editText = null, replyText = REPLY } = {}) {
+function makeServer(root, { sleep = 300, editText = null, editOp = null, replyText = REPLY } = {}) {
   const argv = ['node', STUB, '--permission-mode', 'bypassPermissions', '--reply', replyText, '--sleep', String(sleep)];
   if (editText) argv.push('--edit-text', editText);
+  if (editOp) argv.push('--edit-op', editOp);
   const companionLane = createCompanionLane({
     palaceRoot: root,
     editsRoot: root, // the temp repo IS the (quarantine stand-in) edit target here
@@ -156,6 +157,26 @@ describe('POST /api/entry-agent/turn', () => {
     const reply = lines.find((m) => m.payload && m.payload.kind === 'companion_reply' && m.payload.turn_id === turnId);
     expect(proof).toBeTruthy();        // the edit landed
     expect(reply).toBeFalsy();         // but the turn stayed quiet
+  }, 20000);
+
+  test('a set-vector turn flags the forward-vector change on the board (never silent)', async () => {
+    ({ server, companionLane } = makeServer(root, {
+      editText: 'I will keep being discussed and become more.', editOp: 'set-vector',
+    }));
+    const res = await request(server).post('/api/entry-agent/turn').send({ path: 'Open Entry.md', message: 'sharpen my forward vector' });
+    const turnId = res.body.turnId;
+    await waitFor(() => !existsSync(companionLane.paths.pidFile), { timeout: 6000 });
+    await waitFor(() => readFileSync(boardPath(root), 'utf8').includes('companion_edit'), { timeout: 4000 });
+
+    const proof = readBoard(root).find((m) => m.payload && m.payload.kind === 'companion_edit' && m.payload.op === 'set-vector' && m.payload.turn_id === turnId);
+    expect(proof).toBeTruthy();
+    expect(proof.payload.vector_change).toBeTruthy();
+    expect(proof.payload.vector_change.from).toBe('I want to be discussed.'); // the seed vector
+    expect(proof.payload.vector_change.to).toMatch(/become more/);
+    // committed: the frontmatter vector changed at HEAD, body intact
+    const head = git(root, ['show', 'HEAD:Open Entry.md']);
+    expect(head).toMatch(/forward_vector: "I will keep being discussed and become more\."/);
+    expect(head).toMatch(/the seat of perception\./); // body preserved
   }, 20000);
 
   test('POST /undo reverts a committed edit and posts a revert PROOF on the same turn', async () => {
