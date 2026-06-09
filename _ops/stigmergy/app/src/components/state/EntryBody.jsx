@@ -7,7 +7,8 @@ import { resolveRef } from '../../lib/entry-ref.js';
 // Minimal markdown renderer for entry bodies. Intentionally scoped: the
 // goal is "a reader can audit an entry" -- not Obsidian-parity rendering.
 // Handles:
-//   - HTML comments stripped (CLAUDE.md: invisible in renderers)
+//   - HTML-comment graffiti rendered as visible scrawls (block + inline);
+//     still hidden in Obsidian/exports — STIGMERGY surfaces them. classifyGraffiti
 //   - Headings (# ## ### #### ##### ######)
 //   - Bulleted lists (- ) and numbered lists (1. )
 //   - Code fences (``` ... ```), rendered as dim <pre>
@@ -21,8 +22,22 @@ import { resolveRef } from '../../lib/entry-ref.js';
 // Unresolved wikilinks render dim with `??` prefix. The body is the
 // conversational fabric (SCHEMA §4) -- distinct from TypedLinkPanel.
 
-function stripHtmlComments(text) {
-  return text.replace(/<!--[\s\S]*?-->/g, '');
+// Graffiti: HTML comments are the palace's in-file marks (CLAUDE.md "In-File
+// Comments" / [[Palace Graffiti]]). They stay INVISIBLE in Obsidian and exports
+// (they are real HTML comments — storage is unchanged), but STIGMERGY — now the
+// first-class palace interface — surfaces them as visible scrawls. classifyGraffiti
+// reads the mark's form + text from a comment's inner content:
+//   graffiti: text          -> a deliberate scrawl (what the Companion writes)
+//   CLAUDE → LOUDON: text    -> Claude's note back to Loudon
+//   note: text  /  anything  -> Loudon's mark
+// An empty comment (no text) is dropped, matching the old strip-on-empty behavior.
+function classifyGraffiti(inner) {
+  const s = (typeof inner === 'string' ? inner : '').trim();
+  let m;
+  if ((m = s.match(/^graffiti\s*:\s*([\s\S]*)$/i))) return { form: 'graffiti', text: m[1].trim() };
+  if ((m = s.match(/^claude\s*(?:→|-+>)\s*loudon\s*:\s*([\s\S]*)$/i))) return { form: 'claude → loudon', text: m[1].trim() };
+  if ((m = s.match(/^note\s*:\s*([\s\S]*)$/i))) return { form: 'note', text: m[1].trim() };
+  return { form: 'note', text: s };
 }
 
 // A GFM table delimiter row: optional border pipes around one-or-more
@@ -65,6 +80,24 @@ function blocks(text) {
   let i = 0;
   while (i < lines.length) {
     const line = lines[i];
+
+    // HTML-comment graffiti (block-level): a line that opens with <!-- and
+    // whose comment closes at a line end. Rendered as a visible scrawl; the
+    // comment itself stays hidden in Obsidian/exports (storage is unchanged).
+    // A comment that opens mid-line, or closes with trailing text, is left for
+    // the inline renderer instead.
+    if (line.trim().startsWith('<!--')) {
+      let j = i;
+      while (j < lines.length && !lines[j].includes('-->')) j += 1;
+      if (j < lines.length && lines[j].trimEnd().endsWith('-->')) {
+        const raw = lines.slice(i, j + 1).join('\n');
+        const inner = raw.replace(/^\s*<!--/, '').replace(/-->\s*$/, '');
+        const g = classifyGraffiti(inner);
+        if (g.text) out.push({ kind: 'graffiti', form: g.form, text: g.text });
+        i = j + 1;
+        continue;
+      }
+    }
 
     // Code fence.
     const fence = line.match(/^```\s*(\w+)?\s*$/);
@@ -148,7 +181,7 @@ function blocks(text) {
       if (l2.trim() === '') break;
       if (l2.match(/^```/) || l2.match(/^#{1,6}\s+/)
         || l2.match(/^>\s?/) || l2.match(/^\s*[-*]\s+/)
-        || l2.match(/^\s*\d+\.\s+/)) break;
+        || l2.match(/^\s*\d+\.\s+/) || l2.trim().startsWith('<!--')) break;
       buf.push(l2);
       i += 1;
     }
@@ -203,6 +236,20 @@ function renderInline(text, ctx) {
           i = end + 2;
           continue;
         }
+      }
+    }
+    // Inline HTML comment (graffiti) within a line: <!-- ... -->
+    if (text[i] === '<' && text.startsWith('<!--', i)) {
+      const end = text.indexOf('-->', i + 4);
+      if (end !== -1) {
+        const g = classifyGraffiti(text.slice(i + 4, end));
+        if (g.text) {
+          const id = atoms.length;
+          atoms.push({ kind: 'graffiti', form: g.form, text: g.text });
+          tokenized += `\x00${id}\x00`;
+        }
+        i = end + 3;
+        continue;
       }
     }
     tokenized += text[i];
@@ -286,6 +333,22 @@ function renderAtom(atom, key, ctx) {
         fontFamily: 'var(--font-mono)',
         fontSize: '0.95em',
       }}>{atom.value}</code>
+    );
+  }
+  if (atom.kind === 'graffiti') {
+    // An inline scrawl — visible but unobtrusive; the amber accent reads as
+    // "annotation, not body" (the same register as the discuss-this pin).
+    return (
+      <span
+        key={key}
+        data-testid="graffiti-inline"
+        data-form={atom.form}
+        title={`graffiti — ${atom.form}`}
+        style={{
+          color: 'var(--ansi-bright-yellow)', textShadow: '0 0 6px currentColor',
+          fontStyle: 'italic', fontFamily: 'var(--font-mono)', fontSize: '0.92em',
+        }}
+      >✎ {atom.text}</span>
     );
   }
   if (atom.kind === 'wikilink') {
@@ -559,6 +622,35 @@ function renderBlock(block, ctx, key) {
         </div>
       );
     }
+    case 'graffiti':
+      // A visible scrawl pinned where it was left. Distinct from body prose:
+      // amber margin-rule + a small form label (graffiti / claude → loudon /
+      // note). The comment stays hidden in Obsidian; STIGMERGY surfaces it.
+      return (
+        <div
+          key={key}
+          data-testid="graffiti"
+          data-form={block.form}
+          style={{
+            margin: '12px 0', padding: '6px 10px', maxWidth: '78ch',
+            borderLeft: '2px solid var(--ansi-bright-yellow)',
+            background: 'color-mix(in srgb, var(--ansi-bright-yellow) 7%, transparent)',
+          }}
+        >
+          <div style={{
+            fontFamily: 'var(--font-mono)', fontSize: 10,
+            textTransform: 'uppercase', letterSpacing: '.06em',
+            color: 'var(--ansi-bright-yellow)', textShadow: '0 0 6px currentColor',
+            marginBottom: 3,
+          }}>✎ {block.form}</div>
+          <div style={{
+            color: 'var(--phosphor)', textShadow: 'var(--glow)',
+            fontStyle: 'italic', fontSize: 13, lineHeight: 1.5, whiteSpace: 'pre-wrap',
+          }}>
+            {renderInline(block.text, { ...ctx, keyPrefix: `${key}-` })}
+          </div>
+        </div>
+      );
     case 'blank':
       return null;
     default:
@@ -574,8 +666,7 @@ export default function EntryBody({ body, index, refIndex, onNavigate }) {
       </div>
     );
   }
-  const clean = stripHtmlComments(body);
-  const blocksList = blocks(clean);
+  const blocksList = blocks(body);
   const ctx = { index, refIndex, onNavigate };
   return (
     <div data-testid="entry-body">
