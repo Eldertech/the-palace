@@ -7,7 +7,9 @@
 //   - previewEdit: validate an op against the LIVE entry and compute its result
 //     WITHOUT writing — the diff the window shows for approval. Read-only.
 //   - armedWriteEntry: on approval, write + commit to the repo. Guarantees:
-//       · allow-list gated (canon / machinery paths refused — checkAllowList);
+//       · allow-list gated (checkAllowList) — UNLESS trickster:true, which keeps
+//         path-safety (checkPathSafety) but bypasses the canon/care refusal so a
+//         trusted operator can write anywhere ([[Trickster Commit]]);
 //       · YAML-safe — a body edit preserves the frontmatter block VERBATIM and
 //         swaps only the body; set-vector touches only the forward_vector line;
 //       · committed through commitSelected — explicit pathspec, derived Palace-*
@@ -19,7 +21,7 @@
 
 import { existsSync, readFileSync, writeFileSync, mkdirSync } from 'node:fs';
 import { resolve, dirname } from 'node:path';
-import { checkAllowList } from '../src/lib/entry-edit.js';
+import { checkAllowList, checkPathSafety } from '../src/lib/entry-edit.js';
 import { execGit } from './git-wrapper.js';
 import { commitSelected, clearStaleLocks } from './commit.js';
 import { formatScalar } from '../src/lib/yaml-emit.js';
@@ -154,10 +156,15 @@ export function applyOp(body, op) {
  *
  *   set-vector  — touches only the forward_vector line; vectorChange = {from,to}
  *   append/prepend/rewrite/graffiti — edit the body; frontmatter preserved
+ *
+ * `opts.trickster` (default false) bypasses the CARE refusal (canon / ceremony /
+ * machinery) but NEVER the SECURITY refusal (repo escape, NUL, non-.md, VCS /
+ * build trees). Same pipeline, one gate swapped — the trusted hand reaches
+ * everywhere git can insure. See [[Trickster Commit]].
  */
-export function previewEdit(repoRoot, relPath, op) {
+export function previewEdit(repoRoot, relPath, op, { trickster = false } = {}) {
   if (!repoRoot) return { ok: false, error: 'no repo configured' };
-  const allow = checkAllowList(relPath);
+  const allow = trickster ? checkPathSafety(relPath) : checkAllowList(relPath);
   if (!allow.allowed) return { ok: false, status: 403, error: allow.reason };
 
   const abs = resolve(repoRoot, relPath);
@@ -194,16 +201,19 @@ export function previewEdit(repoRoot, relPath, op) {
  * @param {object} args.op         — { op, text? | find?, replace? }
  * @param {string} [args.summary]  — commit subject summary
  * @param {string} [args.verify]   — 'verified' | 'unverified' | 'couldnt'
- * @param {string} [args.author]   — Palace-Author (default 'claude')
+ * @param {string} [args.author]   — Palace-Author (default 'claude'; the
+ *   Trickster lane passes 'trickster')
  * @param {string} [args.bodyMessage]
  * @param {string} [args.scope]
+ * @param {boolean} [args.trickster] — bypass the CARE gate (canon/machinery),
+ *   keep path-safety. Branding is the caller's job (author 'trickster').
  * @returns {Promise<{ok, shortHash?, subject?, op?, message?, vectorChange?, status?, error?}>}
  */
 export async function armedWriteEntry({
   repoRoot, relPath, op, summary, verify = 'unverified',
-  author = 'claude', bodyMessage = '', scope,
+  author = 'claude', bodyMessage = '', scope, trickster = false,
 }) {
-  const pv = previewEdit(repoRoot, relPath, op);
+  const pv = previewEdit(repoRoot, relPath, op, { trickster });
   if (!pv.ok) return pv;
 
   const abs = resolve(repoRoot, relPath);

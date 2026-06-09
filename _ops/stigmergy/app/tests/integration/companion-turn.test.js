@@ -345,6 +345,50 @@ describe('POST /api/entry-agent/turn', () => {
     expect(bad.body.ok).toBe(false);
   });
 
+  test('POST /trickster writes a CANON file in one gesture, branded trickster, undo-able', async () => {
+    // Stand a canon file the careful path is forbidden.
+    writeFileSync(join(root, 'SCHEMA.md'), '---\ntitle: SCHEMA\ntype: meta\n---\n# SCHEMA\n\nThe type system.\n');
+    git(root, ['add', 'SCHEMA.md']);
+    git(root, ['commit', '-q', '-m', 'ops: seed SCHEMA']);
+
+    // careful /apply refuses canon (403 → 400 envelope); the trickster lands it
+    const refused = await request(server).post('/api/entry-agent/apply').send({
+      path: 'SCHEMA.md', op: { op: 'append', text: 'careful must not reach' },
+    });
+    expect(refused.body.ok).toBe(false);
+
+    const turnId = 'companion-trick-schema-1';
+    const t = await request(server).post('/api/entry-agent/trickster').send({
+      path: 'SCHEMA.md', op: { op: 'append', text: 'A trickster scratch line.' }, turnId,
+    });
+    expect(t.status).toBe(200);
+    expect(t.body.ok).toBe(true);
+    expect(typeof t.body.commit).toBe('string');
+
+    // committed to canon, branded in git
+    expect(git(root, ['show', 'HEAD:SCHEMA.md'])).toMatch(/A trickster scratch line\./);
+    expect(git(root, ['log', '-1', '--format=%B'])).toMatch(/Palace-Author: trickster/);
+
+    // a committed PROOF on the board, branded + turn-scoped so the window renders it
+    await waitFor(() => readBoard(root).some((m) => m.payload && m.payload.kind === 'companion_edit' && m.payload.turn_id === turnId), { timeout: 4000 });
+    const proof = readBoard(root).find((m) => m.payload && m.payload.kind === 'companion_edit' && m.payload.turn_id === turnId);
+    expect(proof.type).toBe('PROOF');
+    expect(proof.payload.author).toBe('trickster');
+
+    // untrick last: the same /undo reverts it cleanly
+    const u = await request(server).post('/api/entry-agent/undo').send({ path: 'SCHEMA.md', commit: t.body.commit, turnId });
+    expect(u.body.ok).toBe(true);
+    expect(git(root, ['show', 'HEAD:SCHEMA.md'])).not.toMatch(/A trickster scratch line\./);
+  }, 20000);
+
+  test('POST /trickster STILL refuses a path-safety violation (400, security is not care)', async () => {
+    const escape = await request(server).post('/api/entry-agent/trickster').send({
+      path: '../escape.md', op: { op: 'append', text: 'x' },
+    });
+    expect(escape.status).toBe(400);
+    expect(escape.body.ok).toBe(false);
+  });
+
   test('400 when the message is missing', async () => {
     const res = await request(server).post('/api/entry-agent/turn').send({ path: 'Open Entry.md' });
     expect(res.status).toBe(400);

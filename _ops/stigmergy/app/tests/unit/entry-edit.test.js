@@ -1,6 +1,7 @@
 import { describe, it, expect } from 'vitest';
 import {
-  checkAllowList, isDirty, validateFrontmatter, wikilinkSuggestions,
+  checkAllowList, checkPathSafety, checkCanon,
+  isDirty, validateFrontmatter, wikilinkSuggestions,
   ENTRY_TYPES, STAGES, PILLARS, LINK_TYPES,
 } from '../../src/lib/entry-edit.js';
 
@@ -51,6 +52,49 @@ describe('entry-edit', () => {
     it('allows non-canon entries under _ops/ (handoffs, notes)', () => {
       expect(checkAllowList('_ops/Palace Quotes.md').allowed).toBe(true);
       expect(checkAllowList('_ops/stigmergy/v1.0-phase5-handoff.md').allowed).toBe(true);
+    });
+  });
+
+  // The split that licenses the Trickster ([[Trickster Commit]]): security is
+  // never relaxed; care is what the trusted hand may cross. checkAllowList must
+  // remain the exact composition of the two.
+  describe('checkPathSafety / checkCanon (the trickster split)', () => {
+    it('checkPathSafety refuses repo-escape, NUL, non-.md, and VCS/build dirs', () => {
+      expect(checkPathSafety('../escape.md').allowed).toBe(false);
+      expect(checkPathSafety('foo/../bar.md').allowed).toBe(false);
+      expect(checkPathSafety('foo\0.md').allowed).toBe(false);
+      expect(checkPathSafety('Foo.py').allowed).toBe(false);
+      expect(checkPathSafety('.git/note.md').allowed).toBe(false);
+      expect(checkPathSafety('node_modules/pkg/readme.md').allowed).toBe(false);
+      expect(checkPathSafety('dist/foo.md').allowed).toBe(false);
+    });
+
+    it('checkPathSafety ALLOWS canon + machinery (those are care, not safety)', () => {
+      // This is exactly the bypass the trickster relies on.
+      expect(checkPathSafety('CLAUDE.md').allowed).toBe(true);
+      expect(checkPathSafety('SCHEMA.md').allowed).toBe(true);
+      expect(checkPathSafety('_ops/Deposit Ceremony.md').allowed).toBe(true);
+      expect(checkPathSafety('_ops/stigmergy/app/README.md').allowed).toBe(true);
+      expect(checkPathSafety('Kuramoto Coupling.md').allowed).toBe(true);
+    });
+
+    it('checkCanon refuses canon files, ceremony cards, and machinery prefixes', () => {
+      expect(checkCanon('CLAUDE.md').allowed).toBe(false);
+      expect(checkCanon('SCHEMA.md').allowed).toBe(false);
+      expect(checkCanon('_ops/Deposit Ceremony.md').allowed).toBe(false);
+      expect(checkCanon('_ops/stigmergy/app/README.md').allowed).toBe(false);
+      expect(checkCanon('_ops/swarm/notes.md').allowed).toBe(false);
+    });
+
+    it('checkCanon ALLOWS ordinary entries and non-canon _ops notes', () => {
+      expect(checkCanon('Kuramoto Coupling.md').allowed).toBe(true);
+      expect(checkCanon('_ops/Palace Quotes.md').allowed).toBe(true);
+    });
+
+    it('checkAllowList is the composition (security first, then care) — unchanged', () => {
+      expect(checkAllowList('Kuramoto Coupling.md').allowed).toBe(true);
+      expect(checkAllowList('CLAUDE.md').allowed).toBe(false);   // caught by care
+      expect(checkAllowList('../escape.md').allowed).toBe(false); // caught by safety
     });
   });
 

@@ -1,5 +1,5 @@
 import React, { useState, useRef, useLayoutEffect, useEffect, useCallback } from 'react';
-import { fetchGrounding, postTurn, postUndo, postApply } from '../../adapters/entry-agent.js';
+import { fetchGrounding, postTurn, postUndo, postApply, postTrickster } from '../../adapters/entry-agent.js';
 import { subscribeLive } from '../../adapters/live-tail.js';
 import { contextKey, contextLabel } from '../../lib/companion-context.js';
 
@@ -660,6 +660,38 @@ export default function EntryAgentWindow({ entry, context, containerRef, onClose
       setDraft('');
       if (inputRef.current) inputRef.current.style.height = '';
       doApprove(pending);
+      return;
+    }
+    // TRICKSTER gesture (/trick <text>): the trusted hand writes here in ONE
+    // move — append the text and commit it directly (canon included), no
+    // proposal. The committed PROOF arrives over SSE as an edit marker whose
+    // [undo] IS "untrick last". Entry context only. See [[Trickster Commit]].
+    if (/^\/trick\s/i.test(message)) {
+      const trickCtx = ctxRef.current;
+      if (trickCtx.kind !== 'entry' || !trickCtx.path) {
+        setTurnError('the trickster writes an open entry — none is grounded here');
+        return;
+      }
+      const text = message.replace(/^\/trick\s+/i, '').trim();
+      if (!text) { setTurnError('“/trick <text>” needs something to write'); return; }
+      const tid = `companion-trick-${Date.now()}`;
+      setTurnError(null);
+      setConvo((prev) => [...prev, { id: `u-${prev.length}`, role: 'user', text: message }]);
+      setDraft('');
+      if (inputRef.current) inputRef.current.style.height = '';
+      setSending(true);
+      // Register the turn BEFORE the proof can land (SSE is turn-id scoped).
+      sessionTurns.current.add(tid);
+      currentTurn.current = tid;
+      const r = await postTrickster({
+        path: trickCtx.path, op: { op: 'append', text },
+        summary: `trickster: ${text.slice(0, 48)}`, turnId: tid,
+      });
+      if (!(r && r.ok)) {
+        setSending(false);
+        sessionTurns.current.delete(tid);
+        setTurnError(r?.msg || r?.error || 'the trick did not land');
+      }
       return;
     }
     const sendCtx = ctxRef.current;

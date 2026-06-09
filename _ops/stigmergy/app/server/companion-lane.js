@@ -175,7 +175,7 @@ export function buildEditProposalMessage({ title, entryPath, turnId, op, summary
  * The commit hash is the proof the write is real. `branch` is optional and
  * omitted for live commits (everything is on main). Pure + validated before append.
  */
-export function buildEditProofMessage({ title, entryPath, turnId, op, shortHash, branch, summary, model, ts, id, vectorChange }) {
+export function buildEditProofMessage({ title, entryPath, turnId, op, shortHash, branch, summary, model, ts, id, vectorChange, author }) {
   const slug = slugify(title);
   return {
     schema_version: '1.0',
@@ -207,6 +207,9 @@ export function buildEditProofMessage({ title, entryPath, turnId, op, shortHash,
       // A forward-vector change is never silent — carry from→to so the window
       // flags it (the standing rule: never rewrite a forward_vector quietly).
       ...(vectorChange ? { vector_change: vectorChange } : {}),
+      // Branded author when it isn't the default 'claude' — the trickster
+      // stratum stays visible in the window the way it does in the LOG deck.
+      ...(author && author !== 'claude' ? { author } : {}),
     },
   };
 }
@@ -566,6 +569,54 @@ export function createCompanionLane(opts = {}) {
   }
 
   /**
+   * The TRICKSTER write: the owner's standing consent to write ANYWHERE in one
+   * gesture — canon included — with no propose→approve round trip. Same enforced
+   * path as apply (armedWriteEntry → commitSelected), two things inverted: the
+   * CARE gate is bypassed (trickster:true → checkPathSafety only) and the commit
+   * is branded `Palace-Author: trickster` + `verify: unverified` so the weird
+   * stratum stays harvestable. Path-safety is NOT dropped (../, NUL, non-.md, and
+   * VCS/build trees still refuse). Posts the committed PROOF the window renders as
+   * an edit marker whose [undo] IS "untrick last". async; never throws.
+   *
+   * Distinct from the `trickster_request` context kind (the human-decision flow);
+   * this is the write capability. See [[Trickster Commit]].
+   * @param {{path:string, op:object, summary?:string, turnId?:string}} args
+   */
+  async function trickster({ path, op, summary, turnId } = {}) {
+    if (typeof path !== 'string' || path.trim() === '') return { ok: false, msg: 'missing entry path' };
+    if (!op || typeof op !== 'object' || typeof op.op !== 'string') return { ok: false, msg: 'missing edit op' };
+    // The target may be canon (excluded from the entry index) — fall back to the
+    // raw path for identity rather than refusing to name it.
+    const entry = readEntry(root, path);
+    const title = entry ? entry.title : path.slice(path.lastIndexOf('/') + 1).replace(/\.md$/, '');
+    const entryPath = entry ? entry.path : path;
+    const tid = (typeof turnId === 'string' && turnId.trim())
+      ? turnId.trim()
+      : `companion-trick-${slugify(title)}-${new Date().toISOString().replace(/[:.]/g, '-')}`;
+    const subject = (typeof summary === 'string' && summary.trim())
+      ? summary.trim()
+      : (op.summary || `trickster ${op.op}`);
+
+    let w;
+    try {
+      w = await armedWriteEntry({
+        repoRoot: root, relPath: entryPath, op,
+        summary: subject, verify: 'unverified', author: 'trickster', trickster: true,
+      });
+    } catch (e) {
+      return { ok: false, msg: `could not trick: ${e.message}` };
+    }
+    if (!w.ok) return { ok: false, msg: w.error || 'trickster write failed', status: w.status };
+
+    postIfValid(buildEditProofMessage({
+      title, entryPath, turnId: tid, op: w.op, shortHash: w.shortHash,
+      summary: subject, author: 'trickster',
+      model, ts: new Date().toISOString(), vectorChange: w.vectorChange || null,
+    }));
+    return { ok: true, commit: w.shortHash, op: w.op, turnId: tid, vectorChange: w.vectorChange || null };
+  }
+
+  /**
    * Undo a committed Companion edit: revert its commit in the live palace (a new
    * inverse commit) and post a revert PROOF on the same turn so the window can
    * mark it reverted. Honest by construction — never a silent rollback. async;
@@ -598,6 +649,7 @@ export function createCompanionLane(opts = {}) {
   return {
     turn,
     apply,
+    trickster,
     undo,
     status,
     paths: {
