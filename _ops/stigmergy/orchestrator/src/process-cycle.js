@@ -25,6 +25,8 @@ import { buildHealthBlock } from './health.js';
 import { validateForPosting } from '@stigmergy/core/schema';
 import { appendMessage, readJsonl } from '@stigmergy/core/blackboard';
 import { scanBundleMedia, applyArtifactBackstop, lintArtifactReferences } from './artifact-backstop.js';
+import { materializePlan } from './plan-file.js';
+import { readEntryMeta } from './entry-frontmatter.js';
 
 const PALACE_ROOT_DEFAULT = resolve(fileURLToPath(new URL('.', import.meta.url)), '../../../..');
 
@@ -300,6 +302,29 @@ export function processCycle(opts) {
   ];
   for (const e of events) appendFileSync(histPath, JSON.stringify(e) + '\n');
 
+  // ── Materialize the bundle-local plan read-model (Bundle-Local Stewardship Phase 1b/1c) ──
+  // Write `[Entry] — plan.md` into the entry's bundle from the decisions we just
+  // reconciled into state + the history tail we just appended. Additive and
+  // defensive: it runs AFTER state.json/history.jsonl are written, so a failure
+  // here never costs the cycle its runtime state. `stage` is read LIVE from the
+  // entry's frontmatter, never the duplicated stewardship copy — that read path
+  // is the single-source-of-truth half of the migration (Phase 1a).
+  let plan;
+  try {
+    const meta = readEntryMeta(palaceRoot, home);
+    plan = materializePlan({
+      palaceRoot,
+      home,
+      state,
+      stage: meta?.stage,
+      tsNow,
+      iteration,
+      historyPath: histPath,
+    });
+  } catch (e) {
+    plan = { written: false, reason: `error: ${e.message}` };
+  }
+
   return {
     posted_ids: appended,
     valid_count: valid.length,
@@ -311,6 +336,8 @@ export function processCycle(opts) {
     backstop,
     // Layer 3: declared-but-unreferenced artifact warnings (advisory only).
     artifact_lint_warnings,
+    // Bundle-Local Stewardship: where the materialized plan read-model landed.
+    plan,
   };
 }
 
