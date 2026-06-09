@@ -34,6 +34,7 @@ import { createActuator } from './actuator.js';
 import { buildCyclePrompt } from '../../orchestrator/src/build-cycle-prompt.js';
 import { processCycle, reconcilePendingRequests } from '../../orchestrator/src/process-cycle.js';
 import { readRegistry, findAgent } from '../../orchestrator/src/registry.js';
+import { readEntryMeta } from '../../orchestrator/src/entry-frontmatter.js';
 import { readJsonl } from '@stigmergy/core/blackboard';
 
 const DEFAULT_REGISTRY_REL = '_ops/agents/permanent/REGISTRY.json';
@@ -73,32 +74,63 @@ export function stewardArgv(prompt, model) {
 }
 
 /**
- * Count of grants WAITING to be consumed for one steward: asks that have a
- * GRANT/DENY on the board (reconcile's nowResolved) but are NOT yet recorded in
- * the steward's own resolved_requests. After a cycle, processCycle moves them
- * into resolved_requests, so this drops to 0 -- the precise "ready to advance"
- * signal. (Reconcile alone never drops to 0: the ask+grant live on the board
- * forever.)
+ * Count of grants WAITING to be consumed for one steward: grants that answer one
+ * of this steward's asks and landed on the board AFTER its `last_read_cursor` —
+ * i.e. not yet read. The board is append-only, so array index == chronological
+ * order, and processCycle advances the cursor each cycle, so this drops to 0 once
+ * a cycle reads past the grants -- the precise "ready to advance" signal.
+ * (Reconcile alone never drops to 0: the ask+grant live on the board forever.)
+ *
+ * After the Bundle-Local Stewardship SSOT cutover, state.json no longer records
+ * consumed decisions (the old `resolved_requests` array is gone), so the cursor —
+ * not a stored array — is the consumed boundary. A null/absent cursor (never
+ * cycled) means nothing is consumed yet: every answered ask counts.
  */
 export function grantsWaitingFor(board, home, state) {
   const { nowResolved } = reconcilePendingRequests(board, home);
-  const resolvedIds = new Set((state.resolved_requests || []).map((r) => r.request_id));
-  return nowResolved.filter((r) => !resolvedIds.has(r.request_id)).length;
+  if (!nowResolved.length) return 0;
+  // A grant is "waiting" if it landed AFTER the steward last ran (`last_active`).
+  // last_active advances every cycle (regardless of what the steward posts), so
+  // once a cycle runs past a grant it stops counting -- the faithful board-native
+  // reconstruction of the old "answered but not in resolved_requests" signal now
+  // that state no longer stores consumed decisions. Never-cycled (null
+  // last_active) means nothing is consumed yet: every answered ask counts. An
+  // unknown grant timestamp counts too (safe over-report, never silent drop).
+  const lastActiveMs = state.last_active ? Date.parse(state.last_active) : NaN;
+  if (Number.isNaN(lastActiveMs)) return nowResolved.length;
+  return nowResolved.filter((r) => {
+    const ts = r.resolved_at ? Date.parse(r.resolved_at) : NaN;
+    return Number.isNaN(ts) || ts > lastActiveMs;
+  }).length;
 }
 
-/** Map a registry entry + its on-disk state to a UI row (or a `missing` stub). */
-export function stewardRow({ entry, state, manifest, board }) {
+/**
+ * Map a registry entry + its on-disk state to a UI row (or a `missing` stub).
+ * Post-SSOT-cutover: stage is read LIVE from the entry frontmatter (the single
+ * source of truth), and open-asks / grants-waiting are board-derived — state.json
+ * carries only pure runtime (iteration, cursor, health). `palaceRoot` enables the
+ * live stage read; without it (pure-helper callers) it falls back to the
+ * manifest's immutable spawn snapshot.
+ */
+export function stewardRow({ entry, state, manifest, board, palaceRoot }) {
   if (!state || !manifest) {
     return { agent_id: entry.agent_id, home: entry.home, dir: entry.dir, missing: true };
   }
+  const liveStage = (palaceRoot ? readEntryMeta(palaceRoot, entry.home)?.stage : undefined)
+    ?? manifest.stewardship?.stage_at_spawn
+    ?? null;
+  // Open (un-granted) asks are board-derived; grants-waiting is the cursor-based
+  // count above. The two are orthogonal: an ask is either still open OR granted
+  // and waiting to be consumed.
+  const { stillPending } = reconcilePendingRequests(board, entry.home);
   return {
     agent_id: entry.agent_id,
     home: entry.home,
     dir: entry.dir,
-    stage: state.stewardship?.stage_at_last_activation ?? null,
+    stage: liveStage,
     iteration: Number.isFinite(state.iteration) ? state.iteration : 0,
     last_active: state.last_active ?? null,
-    pending_count: (state.pending_requests || []).length,
+    pending_count: stillPending.length,
     grants_waiting: grantsWaitingFor(board, entry.home, state),
     health: state.health?.score ?? null,
     model: manifest.model?.name ?? null,
@@ -274,7 +306,7 @@ export function createStewardLane(opts = {}) {
       let state = null, manifest = null;
       try { state = readJson(join(agentDirAbs, 'state.json')); } catch (_) { /* missing */ }
       try { manifest = readJson(join(agentDirAbs, 'manifest.json')); } catch (_) { /* missing */ }
-      rows.push(stewardRow({ entry, state, manifest, board }));
+      rows.push(stewardRow({ entry, state, manifest, board, palaceRoot: root }));
     }
     return rows;
   }

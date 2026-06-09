@@ -127,7 +127,9 @@ function cmdDispatch(positional, flags) {
     vars: {
       home: manifest.home,
       cycle_id: manifest.cycle_id,
-      stage_at_last_activation: state.stewardship.stage_at_last_activation,
+      // Post-SSOT-cutover, slimmed state has no stewardship block — fall back to
+      // the manifest spawn snapshot. (Live cycles read stage from frontmatter.)
+      stage_at_last_activation: state.stewardship?.stage_at_last_activation ?? manifest.stewardship?.stage_at_spawn ?? 'sprout',
     },
   });
 
@@ -158,8 +160,8 @@ ${homeBody.length > 8000 ? homeBody.slice(0, 8000) + '\n\n[truncated for prompt 
 - iteration: ${state.iteration}
 - last_active: ${state.last_active}
 - last_read_cursor: ${state.last_read_cursor}
-- stage_at_last_activation: ${state.stewardship.stage_at_last_activation}
-- vector_changed_since_last: ${state.stewardship.vector_changed_since_last}
+- stage_at_last_activation: ${state.stewardship?.stage_at_last_activation ?? manifest.stewardship?.stage_at_spawn ?? 'sprout'}
+- vector_changed_since_last: ${state.stewardship?.vector_changed_since_last ?? false}
 
 ## Pending requests
 

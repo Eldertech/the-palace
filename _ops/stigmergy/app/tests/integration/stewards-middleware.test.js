@@ -131,8 +131,10 @@ describe('GET /api/stewards', () => {
     const row = res.body.stewards.find((s) => s.agent_id === 'Test Steward');
     expect(row).toBeTruthy();
     expect(row.grants_waiting).toBe(1);
-    expect(row.pending_count).toBe(1);
-    expect(row.stage).toBe('sprout');
+    // Board-native (post-SSOT): the only ask is granted, so it is NOT open — it
+    // is a grant waiting to be consumed (grants_waiting:1), not pending.
+    expect(row.pending_count).toBe(0);
+    expect(row.stage).toBe('sprout'); // manifest spawn snapshot (no entry .md in the temp palace)
     expect(res.body.worker.running).toBe(false);
   });
 
@@ -169,10 +171,13 @@ describe('POST /api/steward/advance', () => {
     const board = readFileSync(resolve(root, '_ops/swarm/persistent/blackboard.jsonl'), 'utf8');
     expect(board).toMatch(/stub-msg-001/);
 
-    // (b) the grant was CONSUMED: pending -> resolved in state.json
+    // (b) the grant was CONSUMED. Post-SSOT-cutover state is pure runtime — the
+    // decision arrays are gone; consumption shows as last_active advancing past
+    // the grant (so grants_waiting -> 0, asserted in (d)) and the request
+    // resolved in the bundle plan.md.
     const state = readState(agentDir);
-    expect(state.pending_requests.map((p) => p.request_id)).not.toContain('test-steward-001');
-    expect(state.resolved_requests.map((r) => r.request_id)).toContain('test-steward-001');
+    expect(state.pending_requests).toBeUndefined();
+    expect(state.resolved_requests).toBeUndefined();
     expect(state.iteration).toBe(2);
 
     // (c) history records a BBS-actuator-dispatched cycle
@@ -224,16 +229,22 @@ describe('POST /api/stewards/advance-all', () => {
     expect(res.status).toBe(200);
     expect(res.body.queued.sort()).toEqual(['Alpha Steward', 'Beta Steward']);
 
-    // Wait for the batch to fully drain (both reaped, queue empty, worker idle).
+    // Wait for the batch to fully drain (both reaped, queue empty, worker idle)
+    // and both grants consumed. Post-SSOT-cutover, "consumed" is board-native:
+    // last_active advanced past the grant, so grants_waiting drops to 0.
     await waitFor(() => {
       const st = stewardLane.status();
-      return !st.running && st.queue.length === 0
-        && readState(a.agentDir).resolved_requests.some((r) => r.request_id === 'alpha-001')
-        && readState(b.agentDir).resolved_requests.some((r) => r.request_id === 'beta-001');
+      if (st.running || st.queue.length !== 0) return false;
+      const rows = stewardLane.list();
+      const ga = (name) => rows.find((r) => r.agent_id === name)?.grants_waiting;
+      return ga('Alpha Steward') === 0 && ga('Beta Steward') === 0;
     }, { timeout: 10000 });
 
-    expect(readState(a.agentDir).pending_requests).toHaveLength(0);
-    expect(readState(b.agentDir).pending_requests).toHaveLength(0);
+    // state.json is pure runtime now (no decision arrays); both iterations advanced.
+    expect(readState(a.agentDir).pending_requests).toBeUndefined();
+    expect(readState(b.agentDir).pending_requests).toBeUndefined();
+    expect(readState(a.agentDir).iteration).toBe(2);
+    expect(readState(b.agentDir).iteration).toBe(2);
   }, 20000);
 
   test('reports nothing to do when no steward has a grant waiting', async () => {

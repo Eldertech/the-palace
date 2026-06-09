@@ -36,36 +36,42 @@ describe('steward-lane pure helpers', () => {
     expect(stewardArgv('P').includes('undefined')).toBe(false);
   });
 
-  test('grantsWaitingFor counts answered asks not yet in resolved_requests', () => {
+  test('grantsWaitingFor counts grants that landed after the steward last ran (board-native, post-SSOT)', () => {
     const board = [
-      { type: 'RESOURCE_REQUEST', from: 'X', board: 'TRICKSTER', request_id: 'x-1', payload: {} },
-      { type: 'RESOURCE_REQUEST', from: 'X', board: 'TRICKSTER', request_id: 'x-2', payload: {} },
-      { type: 'RESOURCE_GRANT', re: 'x-1', payload: { option_id: 'A' } },
+      { id: 'x-1', type: 'RESOURCE_REQUEST', from: 'X', board: 'TRICKSTER', request_id: 'x-1', payload: {} },
+      { id: 'x-2', type: 'RESOURCE_REQUEST', from: 'X', board: 'TRICKSTER', request_id: 'x-2', payload: {} },
+      { id: 'g-1', type: 'RESOURCE_GRANT', from: 'TRICKSTER', re: 'x-1', ts: '2026-06-05T00:00:00Z', payload: { option_id: 'A' } },
     ];
-    // x-1 answered + unconsumed -> 1; x-2 has no grant.
-    expect(grantsWaitingFor(board, 'X', { resolved_requests: [] })).toBe(1);
-    // once x-1 is recorded resolved, it stops counting.
-    expect(grantsWaitingFor(board, 'X', { resolved_requests: [{ request_id: 'x-1' }] })).toBe(0);
-    // a foreign steward's grant does not count.
-    expect(grantsWaitingFor(board, 'Y', { resolved_requests: [] })).toBe(0);
+    // Never cycled (null last_active): the answered ask is unseen -> 1; x-2 has no grant.
+    expect(grantsWaitingFor(board, 'X', { last_active: null })).toBe(1);
+    // Last ran BEFORE the grant -> still waiting -> 1.
+    expect(grantsWaitingFor(board, 'X', { last_active: '2026-06-04T00:00:00Z' })).toBe(1);
+    // Last ran AFTER the grant -> consumed -> 0.
+    expect(grantsWaitingFor(board, 'X', { last_active: '2026-06-06T00:00:00Z' })).toBe(0);
+    // A foreign steward's grant does not count.
+    expect(grantsWaitingFor(board, 'Y', { last_active: null })).toBe(0);
   });
 
-  test('stewardRow maps state + board to a UI row, and flags missing state', () => {
+  test('stewardRow maps state + board to a UI row (board-native, post-SSOT), and flags missing state', () => {
     const board = [
-      { type: 'RESOURCE_REQUEST', from: 'Shep', board: 'TRICKSTER', request_id: 's-1', payload: {} },
-      { type: 'RESOURCE_GRANT', re: 's-1', payload: { option_id: 'A' } },
+      { id: 's-1', type: 'RESOURCE_REQUEST', from: 'Shep', board: 'TRICKSTER', request_id: 's-1', payload: {} },
+      { id: 'g-1', type: 'RESOURCE_GRANT', from: 'TRICKSTER', re: 's-1', ts: '2026-06-05T00:00:00Z', payload: { option_id: 'A' } },
     ];
     const entry = { agent_id: 'Shep', home: 'Shep', dir: '_ops/agents/permanent/shep' };
+    // Pure-runtime state (post-cutover): no stewardship block, no decision arrays.
+    // last_active is before the grant, so it is still waiting.
     const state = {
-      iteration: 4, last_active: '2026-06-03T00:00:00Z',
-      stewardship: { stage_at_last_activation: 'sprout' },
-      pending_requests: [{ request_id: 's-1' }], resolved_requests: [], health: { score: 'green' },
+      iteration: 4, last_active: '2026-06-03T00:00:00Z', last_read_cursor: null,
+      health: { score: 'green' },
     };
-    const manifest = { model: { name: 'claude-opus-4-7' } };
+    // No palaceRoot here, so stage falls back to the manifest spawn snapshot.
+    const manifest = { model: { name: 'claude-opus-4-7' }, stewardship: { stage_at_spawn: 'sprout' } };
     const row = stewardRow({ entry, state, manifest, board });
     expect(row).toMatchObject({
-      agent_id: 'Shep', stage: 'sprout', iteration: 4, pending_count: 1,
-      grants_waiting: 1, health: 'green', model: 'claude-opus-4-7',
+      agent_id: 'Shep', stage: 'sprout', iteration: 4,
+      pending_count: 0,        // s-1 is granted -> not open (it's a grant waiting)
+      grants_waiting: 1,       // s-1 granted, no cursor -> unconsumed
+      health: 'green', model: 'claude-opus-4-7',
     });
 
     const missing = stewardRow({ entry, state: null, manifest: null, board });
