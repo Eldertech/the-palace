@@ -1,5 +1,5 @@
 import React, { useState, useRef, useLayoutEffect, useEffect, useCallback } from 'react';
-import { fetchGrounding, postTurn, postUndo } from '../../adapters/entry-agent.js';
+import { fetchGrounding, postTurn, postUndo, postApply } from '../../adapters/entry-agent.js';
 import { subscribeLive } from '../../adapters/live-tail.js';
 import { contextKey, contextLabel } from '../../lib/companion-context.js';
 
@@ -35,6 +35,8 @@ const MAX_INPUT_H = 200; // composer auto-grows to here, then scrolls inside
 const GLOW_CLASS = 'eaw-section-glow';
 const GLOW_CARD_CLASS = 'eaw-card-active'; // the TRICKSTER card the box floats over
 const Z = 9000;          // float above all app content/chrome (below the CRT overlays)
+// Typed approval of a pending proposal (the user can also click [approve]).
+const APPROVE_RE = /^(approve|approved|yes|yep|ok|okay|sure|do it|go ahead|commit( it)?|ship it)\.?$/i;
 
 // Last heading whose top has scrolled above the window's vertical centre is the
 // section being read. Headings are EntryBody's direct children, tagged
@@ -183,14 +185,14 @@ function GroundingView({ grounding }) {
   );
 }
 
-// A committed edit. Honest by construction: it names the op, the quarantine
-// branch, and the commit hash — the proof the write landed in LOG. The live
-// entry text is unchanged (the edit is quarantined until a human merges), so we
-// report the edit rather than mutate the body, which would lie.
+// A committed edit. Honest by construction: it names the op and the commit hash
+// — the proof the write landed in the live entry's history. Approved edits commit
+// directly to the palace now (the quarantine was retired), so the entry text
+// updates; this marker is the receipt + the undo handle.
 //
-// Undo (M1d) is post-commit and honest: [undo] reverts the commit as a NEW
-// inverse commit on the quarantine branch (never a silent rollback). A revert
-// arrives as its own marker (op:'revert'), and the original is shown 'reverted'.
+// Undo is post-commit and honest: [undo] reverts the commit as a NEW inverse
+// commit (never a silent rollback). A revert arrives as its own marker
+// (op:'revert'), and the original is shown 'reverted'.
 export function EditMarker({ op, commit, branch, summary, reverts, vectorChange, onUndo, undone, undoing }) {
   if (op === 'revert') {
     return (
@@ -203,7 +205,7 @@ export function EditMarker({ op, commit, branch, summary, reverts, vectorChange,
           ↩ reverted <span style={{ color: 'var(--phosphor)' }}>{reverts}</span>{summary ? ` — ${summary}` : ''}
         </div>
         <div style={{ color: 'var(--phosphor-dim)', fontSize: 10 }}>
-          new commit <span style={{ color: 'var(--phosphor-bright)' }}>{commit}</span> on {branch}
+          new commit <span style={{ color: 'var(--phosphor-bright)' }}>{commit}</span>{branch ? ` on ${branch}` : ''}
         </div>
       </div>
     );
@@ -264,8 +266,90 @@ export function EditMarker({ op, commit, branch, summary, reverts, vectorChange,
         </div>
       ) : null}
       <div style={{ color: 'var(--phosphor-dim)', fontSize: 10 }}>
-        committed <span style={{ color: 'var(--phosphor-bright)' }}>{commit}</span> on {branch}
+        committed <span style={{ color: 'var(--phosphor-bright)' }}>{commit}</span>{branch ? ` on ${branch}` : ''}
       </div>
+    </div>
+  );
+}
+
+// A PROPOSED edit awaiting approval — "show before editing." Renders the diff
+// (the amber from→to flag for a forward-vector change; an added/replaced preview
+// for a body op) then asks: approve? [approve] commits it live; [discard] drops
+// it. Loudon can also just type "approve". Nothing is written until he does.
+export function ProposalCard({ op, summary, vectorChange, onApprove, onDiscard, applying, resolved }) {
+  const o = op || {};
+  const label = o.op === 'set-vector' ? 'forward vector'
+    : o.op === 'graffiti' ? 'graffiti'
+    : o.op || 'edit';
+  return (
+    <div data-testid="eaw-proposal" data-op={o.op} style={{
+      marginBottom: 8, padding: '6px 8px',
+      border: '1px solid var(--ansi-bright-yellow)',
+      background: 'color-mix(in srgb, var(--ansi-bright-yellow) 6%, transparent)',
+      opacity: resolved ? 0.6 : 1,
+    }}>
+      <div style={{
+        color: 'var(--ansi-bright-yellow)', textShadow: '0 0 6px currentColor',
+        fontSize: 10, textTransform: 'uppercase', letterSpacing: '.06em', marginBottom: 3,
+      }}>
+        ◆ proposed edit — {label}
+      </div>
+      {/* The diff. set-vector reuses the from→to flag; body ops show what changes. */}
+      {vectorChange ? (
+        <div style={{ margin: '2px 0 4px' }}>
+          {vectorChange.from ? (
+            <div style={{ color: 'var(--phosphor-dim)', fontSize: 10, fontStyle: 'italic', textDecoration: 'line-through' }}>
+              {vectorChange.from}
+            </div>
+          ) : null}
+          <div style={{ color: 'var(--phosphor)', textShadow: 'var(--glow)', fontSize: 11, fontStyle: 'italic' }}>
+            {vectorChange.to}
+          </div>
+        </div>
+      ) : o.op === 'rewrite' ? (
+        <div style={{ margin: '2px 0 4px', fontSize: 11 }}>
+          <div style={{ color: 'var(--phosphor-dim)', textDecoration: 'line-through' }}>{o.find}</div>
+          <div style={{ color: 'var(--phosphor)', textShadow: 'var(--glow)' }}>{o.replace}</div>
+        </div>
+      ) : (o.op === 'append' || o.op === 'prepend' || o.op === 'graffiti') ? (
+        <div style={{
+          margin: '2px 0 4px', fontSize: 11, color: 'var(--phosphor)', textShadow: 'var(--glow)',
+          whiteSpace: 'pre-wrap', borderLeft: '2px solid var(--phosphor-dim)', paddingLeft: 6,
+        }}>
+          {o.text}
+        </div>
+      ) : null}
+      {resolved ? (
+        <div style={{ color: 'var(--phosphor-dim)', fontSize: 10, textTransform: 'uppercase', letterSpacing: '.04em' }}>
+          approved
+        </div>
+      ) : (
+        <div style={{ display: 'flex', alignItems: 'baseline', gap: 10 }}>
+          <span style={{ flex: 1, color: 'var(--phosphor-dim)', fontSize: 10 }}>approve?</span>
+          <span
+            data-testid="eaw-proposal-approve"
+            role="button"
+            onClick={applying ? undefined : onApprove}
+            title="commit this edit to the live entry"
+            style={{
+              cursor: applying ? 'default' : 'pointer', opacity: applying ? 0.5 : 1,
+              color: 'var(--ansi-bright-yellow)', textShadow: '0 0 6px currentColor', fontSize: 11,
+              textTransform: 'uppercase', letterSpacing: '.04em',
+            }}
+          >{applying ? 'approving…' : '[approve]'}</span>
+          <span
+            data-testid="eaw-proposal-discard"
+            role="button"
+            onClick={applying ? undefined : onDiscard}
+            title="discard this proposal (nothing commits)"
+            style={{
+              cursor: applying ? 'default' : 'pointer',
+              color: 'var(--phosphor-dim)', fontSize: 11,
+              textTransform: 'uppercase', letterSpacing: '.04em',
+            }}
+          >[discard]</span>
+        </div>
+      )}
     </div>
   );
 }
@@ -296,7 +380,7 @@ export function TodoMarker({ title, area, severity }) {
   );
 }
 
-export default function EntryAgentWindow({ entry, context, containerRef, onClose }) {
+export default function EntryAgentWindow({ entry, context, containerRef, onClose, onEntryCommitted }) {
   // Context-driven (Stage 0). The window used to be bound to a single `entry`;
   // it now grounds in a `context` descriptor that follows the user across decks.
   // A bare `entry` prop is still accepted (the original call + the unit tests):
@@ -354,6 +438,14 @@ export default function EntryAgentWindow({ entry, context, containerRef, onClose
   const [undoingCommits, setUndoingCommits] = useState(() => new Set());
   const [revertedCommits, setRevertedCommits] = useState(() => new Set());
   const [undoError, setUndoError] = useState(null);
+  // Show-before-editing: a proposed edit (role:'proposal' in convo) waits for
+  // approval. `applyingTurns` are proposals whose [approve] is in flight (keyed
+  // by turn_id); when the committed PROOF lands (same turn_id) the proposal is
+  // swapped for the committed marker; [discard] just removes it.
+  const [applyingTurns, setApplyingTurns] = useState(() => new Set());
+  const [applyError, setApplyError] = useState(null);
+  const onCommittedRef = useRef(onEntryCommitted);
+  onCommittedRef.current = onEntryCommitted;
   const sessionTurns = useRef(new Set());
   const currentTurn = useRef(null);
 
@@ -415,6 +507,8 @@ export default function EntryAgentWindow({ entry, context, containerRef, onClose
     setUndoingCommits(new Set());
     setRevertedCommits(new Set());
     setUndoError(null);
+    setApplyingTurns(new Set());
+    setApplyError(null);
     sessionTurns.current = new Set();
     currentTurn.current = null;
     if (isEntry && path) {
@@ -442,14 +536,27 @@ export default function EntryAgentWindow({ entry, context, containerRef, onClose
         if (!sessionTurns.current.has(p.turn_id)) return; // only this session's turns
         if (p.kind === 'companion_reply') {
           setConvo((prev) => [...prev, { id: m.id || `r-${p.turn_id}`, role: 'companion', text: p.reply || '' }]);
-        } else if (p.kind === 'companion_edit') {
+        } else if (p.kind === 'companion_edit_proposed') {
+          // A proposed edit awaiting approval — show before editing.
           setConvo((prev) => [...prev, {
+            id: m.id || `p-${p.turn_id}`, role: 'proposal',
+            op: p.op, vectorChange: p.vector_change || null, summary: p.summary, turnId: p.turn_id,
+          }]);
+        } else if (p.kind === 'companion_edit') {
+          const editItem = {
             id: m.id || `e-${p.turn_id}-${p.commit || p.op}`, role: 'edit',
             op: p.op, commit: p.commit, branch: p.branch, summary: p.summary,
             reverts: p.reverts || null, turnId: p.turn_id,
             vectorChange: p.vector_change || null,
-          }]);
-          // A revert landed: mark the original reverted and clear its in-flight flag.
+          };
+          // A committed edit (not a revert) resolves the proposal it approved:
+          // swap the proposal card for the committed marker. A revert just appends.
+          setConvo((prev) => {
+            const base = p.op !== 'revert'
+              ? prev.filter((mm) => !(mm.role === 'proposal' && mm.turnId === p.turn_id))
+              : prev;
+            return [...base, editItem];
+          });
           if (p.op === 'revert' && p.reverts) {
             setRevertedCommits((prev) => { const n = new Set(prev); n.add(p.reverts); return n; });
             setUndoingCommits((prev) => {
@@ -457,6 +564,13 @@ export default function EntryAgentWindow({ entry, context, containerRef, onClose
               const n = new Set(prev); n.delete(p.reverts); return n;
             });
           }
+          // Clear the approve-in-flight flag and refresh the reader — the live
+          // entry changed (the quarantine is gone; this committed to the palace).
+          setApplyingTurns((prev) => {
+            if (!prev.has(p.turn_id)) return prev;
+            const n = new Set(prev); n.delete(p.turn_id); return n;
+          });
+          if (p.entry_path) onCommittedRef.current?.(p.entry_path);
         } else if (p.kind === 'stigmergy_todo') {
           setConvo((prev) => [...prev, {
             id: m.id || `t-${p.turn_id}`, role: 'todo',
@@ -510,9 +624,38 @@ export default function EntryAgentWindow({ entry, context, containerRef, onClose
   // Range belongs to the old DOM.
   useEffect(() => clearFocus, [cKey, clearFocus]);
 
+  // Approve a proposed edit: commit it live (postApply). The committed PROOF
+  // arrives over SSE — the handler swaps the proposal for the marker, clears the
+  // in-flight flag, and refreshes the reader. Here we only handle the failure.
+  const doApprove = useCallback(async (proposal) => {
+    if (!proposal || !proposal.op || !path) return;
+    const turnId = proposal.turnId;
+    setApplyError(null);
+    setApplyingTurns((prev) => { const n = new Set(prev); n.add(turnId); return n; });
+    const r = await postApply({ path, op: proposal.op, turnId });
+    if (!r || !r.ok) {
+      setApplyingTurns((prev) => { const n = new Set(prev); n.delete(turnId); return n; });
+      setApplyError(r?.msg || r?.error || 'could not apply that edit');
+    }
+  }, [path]);
+
+  // Discard a proposal — nothing commits; just drop the card.
+  const doDiscard = useCallback((proposalId) => {
+    setConvo((prev) => prev.filter((m) => !(m.role === 'proposal' && m.id === proposalId)));
+  }, []);
+
   const sendTurn = useCallback(async () => {
     const message = draft.trim();
     if (!message || sending) return;
+    // Approve-by-typing: if a proposal is pending and the user types an approval
+    // ("approve" / "yes" / "do it"), commit it — no worker turn.
+    const pending = [...convo].reverse().find((m) => m.role === 'proposal' && !applyingTurns.has(m.turnId));
+    if (pending && APPROVE_RE.test(message)) {
+      setDraft('');
+      if (inputRef.current) inputRef.current.style.height = '';
+      doApprove(pending);
+      return;
+    }
     const sendCtx = ctxRef.current;
     if (sendCtx.kind === 'entry' && !sendCtx.path) return; // an entry with nothing to ground in
     // TRICKSTER carries the whole pending list; the turn grounds in the card the
@@ -542,7 +685,7 @@ export default function EntryAgentWindow({ entry, context, containerRef, onClose
       setTurnError(r?.busy ? 'a companion turn is already running — try again in a moment'
         : (r?.msg || r?.error || 'could not start the turn'));
     }
-  }, [draft, sending, convo, focusText]);
+  }, [draft, sending, convo, focusText, applyingTurns, doApprove]);
 
   // Revert a committed edit (post-commit undo). The revert lands as its own
   // PROOF on the board (same turn), so on success the SSE handler marks it
@@ -862,8 +1005,21 @@ export default function EntryAgentWindow({ entry, context, containerRef, onClose
                   />
                 : m.role === 'todo'
                   ? <TodoMarker key={m.id} title={m.title} area={m.area} severity={m.severity} />
-                  : <ChatBubble key={m.id} role={m.role} text={m.text} />
+                  : m.role === 'proposal'
+                    ? <ProposalCard
+                        key={m.id}
+                        op={m.op} summary={m.summary} vectorChange={m.vectorChange}
+                        applying={applyingTurns.has(m.turnId)}
+                        onApprove={() => doApprove(m)}
+                        onDiscard={() => doDiscard(m.id)}
+                      />
+                    : <ChatBubble key={m.id} role={m.role} text={m.text} />
             ))}
+            {applyError ? (
+              <div data-testid="eaw-apply-error" style={{ color: 'var(--warn)', textShadow: 'var(--glow)', fontSize: 11, marginTop: 4 }}>
+                {applyError}
+              </div>
+            ) : null}
             {undoError ? (
               <div data-testid="eaw-undo-error" style={{ color: 'var(--warn)', textShadow: 'var(--glow)', fontSize: 11, marginTop: 4 }}>
                 {undoError}

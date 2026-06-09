@@ -65,11 +65,38 @@ export async function entryAgentRoutes(ctx) {
     return true;
   }
 
-  // POST /api/entry-agent/undo — revert a committed Companion edit (M1d).
+  // POST /api/entry-agent/apply — commit an APPROVED proposed edit to the live
+  //   entry. Body: { path, op, turnId? }
+  // Show-before-editing: the worker proposed this op and Loudon approved it
+  // (clicked or typed). Writes + commits through the enforced path to the live
+  // palace and posts a committed PROOF (read back over SSE). 400 when the op no
+  // longer applies (a stale proposal) or is refused by the allow-list.
+  if (urlPath === '/api/entry-agent/apply' && method === 'POST') {
+    if (!companionLane || typeof companionLane.apply !== 'function') {
+      jsonResponse(res, 500, { error: 'companion lane unavailable' });
+      return true;
+    }
+    const bodyText = await readBody(req, res);
+    if (bodyText === null) return true; // 413 already sent
+    let body;
+    try { body = JSON.parse(bodyText); } catch (e) {
+      jsonResponse(res, 400, { error: `malformed JSON: ${e.message}` });
+      return true;
+    }
+    const result = await companionLane.apply({
+      path: typeof body?.path === 'string' ? body.path : null,
+      op: body?.op,
+      turnId: typeof body?.turnId === 'string' ? body.turnId : null,
+    });
+    jsonResponse(res, result.ok ? 200 : 400, result);
+    return true;
+  }
+
+  // POST /api/entry-agent/undo — revert a committed Companion edit.
   //   Body: { path?, commit, turnId? }
-  // Creates a new inverse commit on the quarantined edits branch and posts a
-  // revert PROOF on the same turn (read back over SSE). Honest, not a silent
-  // rollback. 400 on a bad/missing commit or a revert that cannot apply cleanly.
+  // Creates a new inverse commit in the live palace and posts a revert PROOF on
+  // the same turn (read back over SSE). Honest, not a silent rollback. 400 on a
+  // bad/missing commit or a revert that cannot apply cleanly.
   if (urlPath === '/api/entry-agent/undo' && method === 'POST') {
     if (!companionLane || typeof companionLane.undo !== 'function') {
       jsonResponse(res, 500, { error: 'companion lane unavailable' });

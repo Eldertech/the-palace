@@ -18,10 +18,13 @@ import { checkAllowList } from '../../lib/entry-edit.js';
 // escape this component -- the deck stays usable.
 
 export default function EntryReader({
-  path, index, refIndex, onNavigate, onBack, onEdit, onGoBack,
+  path, index, refIndex, onNavigate, onBack, onEdit, onGoBack, reloadNonce = 0,
 }) {
   const [state, setState] = useState({ kind: 'loading' });
 
+  // Re-fetch on path change AND when reloadNonce bumps — the latter fires after
+  // the Companion commits an approved edit to this open entry, so the live change
+  // shows without a manual reload.
   useEffect(() => {
     let cancelled = false;
     setState({ kind: 'loading' });
@@ -31,7 +34,7 @@ export default function EntryReader({
       else setState({ kind: 'err', error: r.error ?? 'unknown error', status: r.status });
     });
     return () => { cancelled = true; };
-  }, [path]);
+  }, [path, reloadNonce]);
 
   if (state.kind === 'loading') {
     return (

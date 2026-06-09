@@ -84,6 +84,16 @@ export default function App() {
   // entry navigation). The Companion grounds in it when the STATE deck is
   // active; ignored on other decks. null when no entry is open.
   const [currentEntryPath, setCurrentEntryPath] = useState(null);
+  // Bumped when the Companion commits an approved edit to the OPEN entry, so the
+  // STATE reader re-fetches and the live change shows at once (the quarantine is
+  // gone — edits land directly in the palace).
+  const [entryReloadNonce, setEntryReloadNonce] = useState(0);
+  const onCompanionCommitted = useCallback((path) => {
+    setCurrentEntryPath((cur) => {
+      if (path && cur && path === cur) setEntryReloadNonce((n) => n + 1);
+      return cur;
+    });
+  }, []);
   // Cross-deck entry jump: clicking [BUN] on a name outside STATE (e.g. a
   // Trickster card's @steward) flips to STATE and opens that entry. The nonce
   // lets the same entry be re-jumped and keeps StateDeck's open-effect from
@@ -334,6 +344,7 @@ export default function App() {
         <StateDeck
           jumpTarget={jumpTarget}
           onEntryPathChange={setCurrentEntryPath}
+          reloadNonce={entryReloadNonce}
         />
       )}
       {deck === 'LOG' && <LogDeck />}
@@ -450,6 +461,7 @@ export default function App() {
         entryPath={currentEntryPath}
         tricksterRequests={currentTricksterRequests}
         onClose={toggleAgent}
+        onEntryCommitted={onCompanionCommitted}
       />
       </PalaceRefProvider>
     </Shell>

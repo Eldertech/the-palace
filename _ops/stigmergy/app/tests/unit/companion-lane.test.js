@@ -5,7 +5,7 @@
 import { describe, it, expect } from 'vitest';
 import {
   slugify, companionFrom, extractReply, extractResult, buildCompanionMessage, buildEditProofMessage,
-  buildTodoFlagMessage,
+  buildTodoFlagMessage, buildEditProposalMessage,
 } from '../../server/companion-lane.js';
 import { validateMessage } from '@stigmergy/core/schema';
 
@@ -104,7 +104,34 @@ describe('extractResult', () => {
   });
 });
 
+describe('buildEditProposalMessage (show before editing)', () => {
+  it('produces a valid BROADCAST carrying the op + diff, status proposed', () => {
+    const msg = buildEditProposalMessage({
+      title: 'Generative Compression', entryPath: 'Palace development/Generative Compression.md',
+      turnId: 'companion-generative-compression-2026-06-09T03-00-00-000Z',
+      op: { op: 'set-vector', text: 'I will roam.' },
+      vectorChange: { from: 'I want to grow.', to: 'I will roam.' },
+      summary: 'companion set-vector', model: 'opus', ts: '2026-06-09T03:00:09Z',
+    });
+    expect(validateMessage(msg).valid).toBe(true);
+    expect(msg.type).toBe('BROADCAST');
+    expect(msg.from).toBe('Generative Compression (Companion)');
+    expect(msg.payload.kind).toBe('companion_edit_proposed');
+    expect(msg.payload.status).toBe('proposed');
+    expect(msg.payload.op).toEqual({ op: 'set-vector', text: 'I will roam.' }); // [approve] sends this back
+    expect(msg.payload.vector_change).toEqual({ from: 'I want to grow.', to: 'I will roam.' });
+  });
+});
+
 describe('buildEditProofMessage', () => {
+  it('omits branch for a live commit but keeps it when given', () => {
+    const live = buildEditProofMessage({
+      title: 'X', entryPath: 'X.md', turnId: 't1', op: 'append', shortHash: 'aaa1111',
+      summary: 's', model: 'opus', ts: '2026-06-09T03:00:09Z',
+    });
+    expect(validateMessage(live).valid).toBe(true);
+    expect('branch' in live.payload).toBe(false);
+  });
   it('produces a valid PROOF carrying the commit + branch', () => {
     const msg = buildEditProofMessage({
       title: 'Merleau-Ponty', entryPath: 'Merleau-Ponty.md',

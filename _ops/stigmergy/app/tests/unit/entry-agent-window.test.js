@@ -12,11 +12,12 @@
 import { describe, it, expect } from 'vitest';
 import React from 'react';
 import { renderToStaticMarkup } from 'react-dom/server';
-import EntryAgentWindow, { EditMarker, TodoMarker, buildTurnHistory } from '../../src/components/state/EntryAgentWindow.jsx';
+import EntryAgentWindow, { EditMarker, TodoMarker, ProposalCard, buildTurnHistory } from '../../src/components/state/EntryAgentWindow.jsx';
 
 const render = (props) => renderToStaticMarkup(React.createElement(EntryAgentWindow, props));
 const renderMarker = (props) => renderToStaticMarkup(React.createElement(EditMarker, props));
 const renderTodo = (props) => renderToStaticMarkup(React.createElement(TodoMarker, props));
+const renderProposal = (props) => renderToStaticMarkup(React.createElement(ProposalCard, props));
 
 const entry = {
   title: 'Merleau-Ponty',
@@ -144,6 +145,39 @@ describe('buildTurnHistory (worker sees its own committed edits)', () => {
   it('is SSR/empty safe', () => {
     expect(buildTurnHistory(null)).toEqual([]);
     expect(buildTurnHistory([])).toEqual([]);
+  });
+});
+
+describe('ProposalCard (show before editing — propose → approve)', () => {
+  it('shows a set-vector proposal as a from→to diff with approve/discard', () => {
+    const html = renderProposal({
+      op: { op: 'set-vector', text: 'I will roam outside the palace.' },
+      vectorChange: { from: 'I want to grow.', to: 'I will roam outside the palace.' },
+      onApprove: () => {}, onDiscard: () => {},
+    });
+    expect(html).toContain('data-testid="eaw-proposal"');
+    expect(html).toContain('proposed edit');
+    expect(html).toContain('forward vector');
+    expect(html).toContain('I want to grow.');                 // old (struck)
+    expect(html).toContain('I will roam outside the palace.');  // new
+    expect(html).toContain('approve?');
+    expect(html).toContain('data-testid="eaw-proposal-approve"');
+    expect(html).toContain('data-testid="eaw-proposal-discard"');
+  });
+
+  it('shows a rewrite proposal as find→replace', () => {
+    const html = renderProposal({
+      op: { op: 'rewrite', find: 'seat of perception', replace: 'medium of perception' },
+      onApprove: () => {}, onDiscard: () => {},
+    });
+    expect(html).toContain('seat of perception');
+    expect(html).toContain('medium of perception');
+  });
+
+  it('shows [approving…] while in flight (no second click)', () => {
+    const html = renderProposal({ op: { op: 'append', text: 'a line' }, applying: true, onApprove: () => {}, onDiscard: () => {} });
+    expect(html).toContain('approving…');
+    expect(html).not.toContain('[approve]');
   });
 });
 
