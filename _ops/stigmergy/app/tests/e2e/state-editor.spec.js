@@ -1,11 +1,11 @@
-// v1.0 Phase 5 Stage A — STATE write (dry-run preview).
+// STATE write — the editor's "preview diff" surface (the dry-run audition).
 //
-// The editor MUST NOT write or commit during these tests. All assertions
-// are over the in-browser preview surface and the /api/entry/save response.
-// We open the live palace's Kuramoto Coupling, change the stage in the
-// form, click Save, and confirm the structured commit preview shows the
-// correct subject + Palace-* trailers + diff -- the audition the editor
-// IS the gate for.
+// These tests cover the PREVIEW button only ([data-testid=editor-save], now
+// "preview diff") — it MUST NOT write or commit. The real write is the separate
+// Trickster Commit button, covered end-to-end by the entry-save integration
+// tests (it would mutate the live palace, so it is not exercised here). The
+// preview now auditions the TRICKSTER commit, so its trailers read
+// Palace-Author: trickster + Palace-Verify: unverified. See [[Trickster Commit]].
 
 import { test, expect } from '@playwright/test';
 
@@ -89,8 +89,8 @@ test.describe('STATE write — Phase 5 Stage A', () => {
     expect(trailers).toContain('Palace-Kind: edit');
     expect(trailers).toContain('Palace-Entry: Kuramoto Coupling');
     expect(trailers).toContain('Palace-Stage: Kuramoto Coupling: mature->fruiting');
-    expect(trailers).toContain('Palace-Verify: verified');
-    expect(trailers).toContain('Palace-Author: loudon');
+    expect(trailers).toContain('Palace-Verify: unverified');
+    expect(trailers).toContain('Palace-Author: trickster');
 
     const diff = await page.getByTestId('commit-preview-diff').textContent();
     expect(diff).toContain('Kuramoto Coupling.md');

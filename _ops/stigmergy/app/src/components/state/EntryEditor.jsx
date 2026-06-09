@@ -2,8 +2,9 @@ import React, { useEffect, useMemo, useState } from 'react';
 import FrontmatterForm from './FrontmatterForm.jsx';
 import WikilinkTextarea from './WikilinkTextarea.jsx';
 import CommitPreviewPanel from './CommitPreviewPanel.jsx';
-import { fetchEntry, previewEntrySave } from '../../adapters/entries.js';
-import { checkAllowList, isDirty, validateFrontmatter } from '../../lib/entry-edit.js';
+import { fetchEntry, previewEntrySave, tricksterSaveEntry } from '../../adapters/entries.js';
+import { postUndo } from '../../adapters/entry-agent.js';
+import { checkAllowList, checkPathSafety, isDirty, validateFrontmatter } from '../../lib/entry-edit.js';
 
 // STATE write surface (Phase 5 Stage A — dry-run preview).
 //
@@ -23,24 +24,38 @@ export default function EntryEditor({ path, index, onCancel, onSaved }) {
   const [state, setState] = useState({ kind: 'loading' });
   const [proposed, setProposed] = useState(null); // { frontmatter, body }
   const [summary, setSummary] = useState('');
-  const [verify, setVerify] = useState('verified');
   const [bodyMessage, setBodyMessage] = useState('');
   const [preview, setPreview] = useState(null);
   const [previewing, setPreviewing] = useState(false);
   const [previewError, setPreviewError] = useState(null);
+  // Trickster Commit: the form's one real write. `committed` holds the landed
+  // commit (hash + subject) so the success line + [untrick] can show; `reloadNonce`
+  // re-pulls the entry from disk after an untrick (the file changed under us).
+  const [committing, setCommitting] = useState(false);
+  const [committed, setCommitted] = useState(null); // { shortHash, subject }
+  const [commitError, setCommitError] = useState(null);
+  const [undoing, setUndoing] = useState(false);
+  const [undoNote, setUndoNote] = useState(null);
+  const [reloadNonce, setReloadNonce] = useState(0);
 
-  // Pre-flight allow-list: if this path is canon / machinery, refuse to
-  // open the editor at all -- the button on the read view is also disabled,
-  // but we hard-check here so deep-linked URLs can't slip through.
-  const allow = useMemo(() => checkAllowList(path), [path]);
+  // Pre-flight is PATH-SAFETY, not the care allow-list: the editor opens for
+  // canon too, because the Trickster Commit button can write it. We still hard-
+  // refuse genuinely unsafe paths (repo escape, NUL, non-.md, VCS dirs).
+  const safety = useMemo(() => checkPathSafety(path), [path]);
+  // Whether the CAREFUL path would allow this (false = canon/machinery): drives
+  // the "only a trickster commit can write here" notice.
+  const careAllowed = useMemo(() => checkAllowList(path).allowed, [path]);
 
   useEffect(() => {
-    if (!allow.allowed) {
-      setState({ kind: 'refused', reason: allow.reason });
+    if (!safety.allowed) {
+      setState({ kind: 'refused', reason: safety.reason });
       return;
     }
     let cancelled = false;
     setState({ kind: 'loading' });
+    setCommitted(null);
+    setCommitError(null);
+    setUndoNote(null);
     fetchEntry(path).then((r) => {
       if (cancelled) return;
       if (r.ok) {
@@ -55,7 +70,7 @@ export default function EntryEditor({ path, index, onCancel, onSaved }) {
       }
     });
     return () => { cancelled = true; };
-  }, [path, allow.allowed, allow.reason]);
+  }, [path, safety.allowed, safety.reason, reloadNonce]);
 
   const validation = useMemo(() => {
     if (!proposed) return { valid: true, errors: [], warnings: [] };
@@ -66,10 +81,19 @@ export default function EntryEditor({ path, index, onCancel, onSaved }) {
     ? isDirty(state.original, proposed)
     : false;
 
-  const canSave = dirty
-    && validation.valid
-    && summary.trim() !== ''
-    && !previewing;
+  // The trickster commit doesn't require schema-valid frontmatter — it writes
+  // anyway, branded unverified — only a dirty buffer + a summary. The preview is
+  // likewise tolerant (it auditions the same trickster write).
+  const hasSummary = summary.trim() !== '';
+  const canPreview = dirty && hasSummary && !previewing;
+  const canTrickster = dirty && hasSummary && !committing;
+
+  // Any manual edit clears a prior commit's success line (it's now stale).
+  function mutate(fn) {
+    setProposed(fn);
+    if (committed) setCommitted(null);
+    if (undoNote) setUndoNote(null);
+  }
 
   function fmWarnings() {
     const map = {};
@@ -80,6 +104,8 @@ export default function EntryEditor({ path, index, onCancel, onSaved }) {
     return map;
   }
 
+  // Optional: audition the exact commit the trickster button would make (diff +
+  // trailers), canon included. Tolerant of schema lapses, like the write itself.
   async function handlePreview() {
     setPreview(null);
     setPreviewError(null);
@@ -89,15 +115,59 @@ export default function EntryEditor({ path, index, onCancel, onSaved }) {
       frontmatter: proposed.frontmatter,
       body: proposed.body,
       summary,
-      verify,
+      verify: 'unverified',
       body_message: bodyMessage,
-      author: 'loudon',
+      author: 'trickster',
+      trickster: true,
     });
     setPreviewing(false);
     if (r.ok) {
       setPreview(r.preview);
     } else {
       setPreviewError(r.error || (r.errors && r.errors.join('; ')) || `HTTP ${r.status}`);
+    }
+  }
+
+  // The real write: commit the form's hand-edited entry straight to disk as a
+  // trickster (canon included), one gesture, no preview gate. On success we
+  // rebaseline the buffer so it reads "clean" and surface the hash + [untrick].
+  async function handleTrickster() {
+    if (!canTrickster) return;
+    setCommitError(null);
+    setUndoNote(null);
+    setCommitting(true);
+    const r = await tricksterSaveEntry({
+      path,
+      frontmatter: proposed.frontmatter,
+      body: proposed.body,
+      summary,
+      body_message: bodyMessage,
+    });
+    setCommitting(false);
+    if (r.ok) {
+      setState((s) => (s.kind === 'ok'
+        ? { ...s, original: { frontmatter: JSON.parse(JSON.stringify(proposed.frontmatter)), body: proposed.body } }
+        : s));
+      setCommitted({ shortHash: r.shortHash, subject: r.subject });
+      setPreview(null);
+    } else {
+      setCommitError(r.error || `HTTP ${r.status}`);
+    }
+  }
+
+  // Untrick: revert the trickster commit as a new inverse commit (the same
+  // honest /undo the Companion uses), then re-pull the now-reverted file.
+  async function handleUntrick() {
+    if (!committed || undoing) return;
+    setUndoing(true);
+    const r = await postUndo({ path, commit: committed.shortHash });
+    setUndoing(false);
+    if (r && r.ok) {
+      setUndoNote(`untricked — reverted as ${r.revertHash || 'a new commit'}`);
+      setCommitted(null);
+      setReloadNonce((n) => n + 1);
+    } else {
+      setCommitError((r && (r.msg || r.error)) || 'could not untrick that commit');
     }
   }
 
@@ -136,8 +206,16 @@ export default function EntryEditor({ path, index, onCancel, onSaved }) {
           : <span data-testid="editor-clean" style={{ color: 'var(--phosphor-dim)', fontSize: 12 }}>clean</span>}
       </div>
 
-      <div style={{ color: 'var(--phosphor-dim)', fontSize: 11, marginBottom: 12 }}>
-        Stage A · dry run only.  Save shows the structured commit STIGMERGY would make.  Nothing is written.
+      <div style={{ fontSize: 11, marginBottom: 12, color: 'var(--phosphor-dim)' }}>
+        Edit freely, then <b style={{ color: 'var(--ansi-bright-magenta)' }}>trickster commit</b> at the bottom — it writes straight to the entry, branded <code>Palace-Author: trickster</code> · <code>verify: unverified</code>. Git is the net; [untrick] reverts.
+        {!careAllowed ? (
+          <div data-testid="editor-canon-notice" style={{
+            marginTop: 6, color: 'var(--ansi-bright-magenta)', textShadow: 'var(--glow)',
+            border: '1px solid var(--ansi-bright-magenta)', padding: '4px 8px', display: 'inline-block',
+          }}>
+            ※ canon — the careful save refuses this path; only a trickster commit can write here.
+          </div>
+        ) : null}
       </div>
 
       <div style={{
@@ -155,7 +233,7 @@ export default function EntryEditor({ path, index, onCancel, onSaved }) {
             <WikilinkTextarea
               testId="editor-body"
               value={proposed?.body || ''}
-              onChange={(v) => setProposed((p) => ({ ...p, body: v }))}
+              onChange={(v) => mutate((p) => ({ ...p, body: v }))}
               index={index}
               rows={28}
               placeholder="markdown body with [[wikilink]] autocomplete..."
@@ -166,7 +244,7 @@ export default function EntryEditor({ path, index, onCancel, onSaved }) {
           {/* Right rail: frontmatter form. */}
           <FrontmatterForm
             value={proposed?.frontmatter || {}}
-            onChange={(next) => setProposed((p) => ({ ...p, frontmatter: next }))}
+            onChange={(next) => mutate((p) => ({ ...p, frontmatter: next }))}
             index={index}
             warnings={fmWarnings()}
             testId="editor-frontmatter"
@@ -182,37 +260,22 @@ export default function EntryEditor({ path, index, onCancel, onSaved }) {
         display: 'flex', flexDirection: 'column', gap: 12,
       }}>
         <div style={{
-          color: 'var(--phosphor)', textShadow: 'var(--glow)',
+          color: 'var(--ansi-bright-magenta)', textShadow: 'var(--glow)',
           fontSize: 13, textTransform: 'uppercase', letterSpacing: '.04em',
         }}>
-          commit
+          ※ trickster commit
         </div>
 
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 200px', gap: 12, alignItems: 'start' }}>
-          <div>
-            <label style={labelStyle()}>summary <span style={{ color: 'var(--warn)' }}>required</span></label>
-            <input
-              data-testid="editor-summary"
-              type="text"
-              value={summary}
-              onChange={(e) => setSummary(e.target.value)}
-              placeholder="observational past tense (what changed and why-it-changed)"
-              style={inputStyle()}
-            />
-          </div>
-          <div>
-            <label style={labelStyle()}>verify</label>
-            <select
-              data-testid="editor-verify"
-              value={verify}
-              onChange={(e) => setVerify(e.target.value)}
-              style={inputStyle()}
-            >
-              <option value="verified">verified</option>
-              <option value="unverified">unverified</option>
-              <option value="couldnt">couldnt</option>
-            </select>
-          </div>
+        <div>
+          <label style={labelStyle()}>summary <span style={{ color: 'var(--warn)' }}>required</span></label>
+          <input
+            data-testid="editor-summary"
+            type="text"
+            value={summary}
+            onChange={(e) => setSummary(e.target.value)}
+            placeholder="observational past tense (what changed and why-it-changed)"
+            style={inputStyle()}
+          />
         </div>
 
         <div>
@@ -236,19 +299,62 @@ export default function EntryEditor({ path, index, onCancel, onSaved }) {
           </div>
         ) : null}
 
-        <div style={{ display: 'flex', gap: 8, alignItems: 'center' }}>
+        <div style={{ display: 'flex', gap: 8, alignItems: 'center', flexWrap: 'wrap' }}>
+          <TricksterButton
+            onClick={handleTrickster}
+            disabled={!canTrickster}
+            testId="editor-trickster-commit"
+          >
+            {committing ? 'committing…' : '⚡ trickster commit'}
+          </TricksterButton>
           <ActionButton
             onClick={handlePreview}
-            disabled={!canSave}
+            disabled={!canPreview}
             testId="editor-save"
-            primary
           >
-            {previewing ? 'computing preview...' : 'save · preview commit'}
+            {previewing ? 'computing preview…' : 'preview diff'}
           </ActionButton>
-          {!dirty
+          {!dirty && !committed
             ? <span style={{ color: 'var(--phosphor-dim)', fontSize: 11 }}>(nothing changed)</span>
             : null}
+          {dirty && !hasSummary
+            ? <span style={{ color: 'var(--phosphor-dim)', fontSize: 11 }}>(summary required)</span>
+            : null}
         </div>
+
+        {committed ? (
+          <div data-testid="editor-committed" style={{
+            color: 'var(--ansi-bright-magenta)', textShadow: 'var(--glow)',
+            border: '1px solid var(--ansi-bright-magenta)', padding: 8,
+            display: 'flex', gap: 10, alignItems: 'baseline', flexWrap: 'wrap',
+          }}>
+            <span>※ tricked — committed <b>{committed.shortHash}</b></span>
+            <span style={{ color: 'var(--phosphor-dim)', fontSize: 12 }}>{committed.subject}</span>
+            <span
+              data-testid="editor-untrick"
+              onClick={undoing ? undefined : handleUntrick}
+              title="revert this trickster commit (a new inverse commit)"
+              style={{
+                cursor: undoing ? 'default' : 'pointer', opacity: undoing ? 0.5 : 1,
+                marginLeft: 'auto', borderBottom: '1px dashed currentColor',
+              }}
+            >{undoing ? 'untricking…' : '[untrick]'}</span>
+          </div>
+        ) : null}
+
+        {undoNote ? (
+          <div data-testid="editor-untricked" style={{ color: 'var(--phosphor)', fontSize: 12 }}>
+            {undoNote}
+          </div>
+        ) : null}
+
+        {commitError ? (
+          <div data-testid="editor-commit-error" style={{
+            color: 'var(--error)', fontSize: 12, border: '1px solid var(--error)', padding: 8,
+          }}>
+            trickster commit failed: {commitError}
+          </div>
+        ) : null}
 
         {previewError ? (
           <div data-testid="editor-preview-error" style={{
@@ -300,6 +406,32 @@ function ActionButton({ onClick, disabled, children, testId, primary }) {
         textTransform: 'uppercase',
         letterSpacing: '.04em',
         opacity: disabled ? 0.45 : 1,
+      }}
+    >{children}</button>
+  );
+}
+
+// The form's one real write — branded in the trickster's magenta so it never
+// hides what it is. Filled when armed, ghosted when there's nothing to commit.
+function TricksterButton({ onClick, disabled, children, testId }) {
+  return (
+    <button
+      data-testid={testId}
+      onClick={onClick}
+      disabled={disabled}
+      title="write your manual edits straight to the entry (canon included), branded trickster"
+      style={{
+        background: disabled ? 'transparent' : 'var(--ansi-bright-magenta)',
+        color: disabled ? 'var(--ansi-bright-magenta)' : 'var(--bg, #000)',
+        textShadow: disabled ? 'var(--glow)' : 'none',
+        border: '1px solid var(--ansi-bright-magenta)',
+        padding: '4px 14px',
+        fontFamily: 'var(--font-mono, monospace)',
+        fontSize: 12,
+        cursor: disabled ? 'not-allowed' : 'pointer',
+        textTransform: 'uppercase',
+        letterSpacing: '.04em',
+        opacity: disabled ? 0.5 : 1,
       }}
     >{children}</button>
   );

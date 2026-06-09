@@ -39,6 +39,26 @@ export async function previewEntrySave(payload) {
   }
 }
 
+// POST /api/entry/trickster-save — the REAL write behind the form's Trickster
+// Commit button. Body: { path, frontmatter, body, summary, body_message? }.
+// Writes + commits the hand-edited entry as Palace-Author: trickster + verify:
+// unverified, canon included (path-safety still applies). Returns
+// { ok, shortHash, subject, wasAdded } or { ok:false, status, error }.
+export async function tricksterSaveEntry(payload) {
+  try {
+    const res = await fetch('/api/entry/trickster-save', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+      body: JSON.stringify(payload || {}),
+    });
+    const data = await res.json().catch(() => ({}));
+    if (!res.ok) return { ok: false, status: res.status, ...data };
+    return { ok: true, ...data };
+  } catch (err) {
+    return { ok: false, error: err?.message ?? String(err) };
+  }
+}
+
 export async function fetchEntry(relPath) {
   if (typeof relPath !== 'string' || relPath === '') {
     return { ok: false, error: 'missing path' };

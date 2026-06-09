@@ -17,14 +17,15 @@
 // effects after the preview is approved by the user.
 
 import { execFileSync } from 'node:child_process';
-import { resolve, join } from 'node:path';
-import { existsSync, readFileSync, mkdtempSync, writeFileSync, rmSync } from 'node:fs';
+import { resolve, join, dirname } from 'node:path';
+import { existsSync, readFileSync, mkdtempSync, mkdirSync, writeFileSync, rmSync } from 'node:fs';
 import { tmpdir } from 'node:os';
-import { checkAllowList, validateFrontmatter } from '../src/lib/entry-edit.js';
+import { checkAllowList, checkPathSafety, validateFrontmatter } from '../src/lib/entry-edit.js';
 import { emitEntryFile } from '../src/lib/yaml-emit.js';
 import { detectArrayStyles } from '../src/lib/yaml-frontmatter.js';
 import { diffEntryText } from '../src/lib/frontmatter-diff.js';
 import { deriveTrailers, formatCommitMessage } from '../src/lib/commit-spec.js';
+import { commitSelected, clearStaleLocks } from './commit.js';
 
 const KNOWN_KINDS = new Set([
   'deposit', 'edit', 'enrich', 'handoff', 'steward', 'weave', 'schema', 'ops', 'merge', 'mixed',
@@ -56,13 +57,16 @@ export function composePreview(opts) {
     scope: scopeIn,
     body_message = '',
     author = 'loudon',
+    trickster = false,
   } = opts || {};
 
   if (!palaceRoot) {
     return { ok: false, status: 500, error: 'palaceRoot not configured' };
   }
 
-  const allow = checkAllowList(relPath);
+  // The trickster preview bypasses the CARE gate (canon/machinery) but never
+  // path-safety — so the form can audition a canon edit. See [[Trickster Commit]].
+  const allow = trickster ? checkPathSafety(relPath) : checkAllowList(relPath);
   if (!allow.allowed) {
     return { ok: false, status: 403, error: allow.reason };
   }
@@ -77,11 +81,16 @@ export function composePreview(opts) {
     };
   }
 
-  // Frontmatter validation (SCHEMA enforcement).
+  // Frontmatter validation (SCHEMA enforcement). The careful path BLOCKS on a
+  // schema error; the trickster path lets it ride as a warning (licensed
+  // recklessness — it still writes valid YAML, just maybe an incomplete entry).
   const validation = validateFrontmatter(frontmatter);
-  if (!validation.valid) {
+  if (!validation.valid && !trickster) {
     return { ok: false, status: 422, errors: validation.errors, warnings: validation.warnings };
   }
+  const previewWarnings = (!validation.valid && trickster)
+    ? [...(validation.warnings || []), ...validation.errors.map((e) => `(schema) ${e}`)]
+    : (validation.warnings || []);
 
   // Read the current file (HEAD blob preferred; falls back to working-tree
   // file; empty string if it's a new entry).
@@ -146,8 +155,68 @@ export function composePreview(opts) {
       frontmatterChanges: fmDiff.frontmatterChanges,
       bodyChanged: fmDiff.bodyChanged,
       wasAdded: isAdd,
-      warnings: validation.warnings,
+      warnings: previewWarnings,
     },
+  };
+}
+
+// The real write behind the EDIT form's Trickster Commit button: emit the
+// proposed entry from the form's frontmatter + body, write it, and commit it
+// through the enforced path — bypassing the CARE gate (canon / machinery) but
+// NEVER path-safety. Branded Palace-Author: trickster + verify: unverified. The
+// full-content sibling of the Companion's op-based trickster ([[Trickster
+// Commit]]): same posture, a whole-file write instead of one op. async; never
+// throws — returns a structured result.
+export async function tricksterSaveEntry(palaceRoot, {
+  relPath, frontmatter = {}, body = '', summary, body_message = '',
+} = {}) {
+  if (!palaceRoot) return { ok: false, status: 500, error: 'palaceRoot not configured' };
+  const allow = checkPathSafety(relPath);
+  if (!allow.allowed) return { ok: false, status: 403, error: allow.reason };
+  if (!summary || typeof summary !== 'string' || summary.trim() === '') {
+    return { ok: false, status: 422, error: 'summary is required' };
+  }
+
+  const abs = resolve(palaceRoot, relPath);
+  if (abs !== resolve(palaceRoot) && !abs.startsWith(resolve(palaceRoot) + '/')) {
+    return { ok: false, status: 400, error: 'path escapes the repo' };
+  }
+
+  // Emit the proposed file the same way the preview does (style hints preserve
+  // on-disk array styling so the diff is signal, not reformatting churn).
+  const beforeText = readCurrentEntry(palaceRoot, relPath);
+  const styleHints = detectArrayStyles(beforeText);
+  const afterText = emitEntryFile(frontmatter, body, { styleHints });
+  if (beforeText === afterText) {
+    return { ok: false, status: 422, error: 'nothing changed — proposed file is byte-identical to current' };
+  }
+
+  try {
+    mkdirSync(dirname(abs), { recursive: true });
+    clearStaleLocks(palaceRoot);
+    writeFileSync(abs, afterText, 'utf8');
+  } catch (e) {
+    return { ok: false, status: 500, error: `write failed: ${e.message}` };
+  }
+
+  const commit = await commitSelected(palaceRoot, {
+    paths: [relPath],
+    kind: 'edit',
+    scope: basenameNoMd(relPath),
+    summary: summary.trim(),
+    body: body_message,
+    verify: 'unverified',
+    author: 'trickster',
+  });
+  if (!commit.ok) {
+    return { ok: false, status: 500, error: `commit failed: ${commit.error}`, message: commit.message };
+  }
+  return {
+    ok: true,
+    shortHash: commit.shortHash,
+    subject: commit.subject,
+    message: commit.message,
+    wasAdded: beforeText === '',
   };
 }
 

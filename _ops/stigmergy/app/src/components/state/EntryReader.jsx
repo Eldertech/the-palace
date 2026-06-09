@@ -4,7 +4,7 @@ import TypedLinkPanel from './TypedLinkPanel.jsx';
 import BundlePanel from './BundlePanel.jsx';
 import EntryBody from './EntryBody.jsx';
 import { fetchEntry } from '../../adapters/entries.js';
-import { checkAllowList } from '../../lib/entry-edit.js';
+import { checkPathSafety } from '../../lib/entry-edit.js';
 
 // One entry's full read shape, rendered:
 //   - FrontmatterHeader (title, type, stage, pillars, forward_vector,
@@ -89,7 +89,10 @@ export default function EntryReader({
   }
 
   const { entry } = state;
-  const editAllow = checkAllowList(entry.path);
+  // Path-safety gates OPENING the editor (canon included — the editor's Trickster
+  // Commit button can write it); the careful save vs. trickster distinction is
+  // drawn inside the editor, not here.
+  const editAllow = checkPathSafety(entry.path);
 
   return (
     <div data-testid="entry-reader" data-path={entry.path}>
@@ -128,7 +131,7 @@ export default function EntryReader({
           <span
             data-testid="open-editor"
             onClick={editAllow.allowed ? onEdit : undefined}
-            title={editAllow.allowed ? 'edit this entry (dry-run)' : editAllow.reason}
+            title={editAllow.allowed ? 'edit this entry (manual edit + trickster commit)' : editAllow.reason}
             style={{
               marginLeft: 8,
               cursor: editAllow.allowed ? 'pointer' : 'not-allowed',
