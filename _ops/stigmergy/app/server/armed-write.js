@@ -1,33 +1,28 @@
-// armed-write.js — the enforced honest-write path for Companion edits (M1c).
+// armed-write.js — the enforced honest-write path for Companion edits.
 //
-// This is "Stage B": the actual file write + commit the dry-run preview
-// (entry-save.js composePreview) only described. It is deliberately the ONE
-// path a Companion edit can take. Its guarantees:
+// "Show before editing" (2026-06-09): the companion PROPOSES an edit, Loudon
+// approves the inline diff, and only then is it committed — directly to the live
+// palace (the quarantine branch was retired; git is the backstop). Two halves:
 //
-//   - allow-list gated: canon / machinery paths are refused (checkAllowList).
-//   - YAML-safe: a body-only edit preserves the entry's frontmatter block
-//     VERBATIM (no re-emit, so no field-reorder / quoting churn) and swaps only
-//     the body. Frontmatter-changing ops would route through emitEntryFile;
-//     M1c does body-only.
-//   - committed through commitSelected: explicit pathspec, derived Palace-*
-//     trailers, never `git add -A`, stale locks cleared first.
-//   - quarantined: writes land in a DEDICATED edits worktree on its own branch
-//     (decided 2026-06-08), so a Companion edit never touches main or the
-//     feature branch until a human merges. Nothing is real until that commit
-//     exists — only then does the lane post a PROOF.
+//   - previewEdit: validate an op against the LIVE entry and compute its result
+//     WITHOUT writing — the diff the window shows for approval. Read-only.
+//   - armedWriteEntry: on approval, write + commit to the repo. Guarantees:
+//       · allow-list gated (canon / machinery paths refused — checkAllowList);
+//       · YAML-safe — a body edit preserves the frontmatter block VERBATIM and
+//         swaps only the body; set-vector touches only the forward_vector line;
+//       · committed through commitSelected — explicit pathspec, derived Palace-*
+//         trailers, never `git add -A`, stale locks cleared first.
 //
-// applyOp / splitRawFrontmatter are pure and unit-tested; armedWriteEntry and
-// ensureEditsWorktree are integration-tested against a temp git repo.
+// applyOp / setForwardVector / splitRawFrontmatter / previewEdit are pure (or
+// read-only) and unit-tested; armedWriteEntry + revertCommit are integration-
+// tested against a temp git repo.
 
 import { existsSync, readFileSync, writeFileSync, mkdirSync } from 'node:fs';
-import { resolve, join, dirname } from 'node:path';
+import { resolve, dirname } from 'node:path';
 import { checkAllowList } from '../src/lib/entry-edit.js';
 import { execGit } from './git-wrapper.js';
 import { commitSelected, clearStaleLocks } from './commit.js';
 import { formatScalar } from '../src/lib/yaml-emit.js';
-
-const DEFAULT_EDITS_DIR = '../palace-stigmergy-edits';
-const DEFAULT_EDITS_BRANCH = 'stigmergy-edits';
 
 // Split an entry into its verbatim frontmatter block (fences included) and its
 // body. No frontmatter → fmBlock ''. Preserving the block verbatim is what
@@ -151,85 +146,76 @@ export function applyOp(body, op) {
 }
 
 /**
- * Ensure the dedicated edits worktree exists; return its absolute path. Creates
- * it (and its branch) off the repo's current HEAD on first use, so its entry
- * content matches what the Companion was grounded in. Idempotent.
- */
-export async function ensureEditsWorktree(repoRoot, { editsPath, branch = DEFAULT_EDITS_BRANCH } = {}) {
-  const root = resolve(repoRoot);
-  const target = editsPath ? resolve(editsPath) : resolve(root, DEFAULT_EDITS_DIR);
-  if (existsSync(target)) return target; // already set up (idempotent)
-
-  clearStaleLocks(root);
-  const list = await execGit(root, ['branch', '--list', branch], { allowFail: true });
-  const branchExists = (list.stdout || '').split(/\r?\n/).some((l) => l.replace(/^[*+\s]+/, '').trim() === branch);
-  const args = branchExists
-    ? ['worktree', 'add', target, branch]
-    : ['worktree', 'add', target, '-b', branch];
-  const r = await execGit(root, args, { allowFail: true });
-  if (r.failed) throw new Error(`could not create edits worktree: ${(r.stderr || '').trim()}`);
-  return target;
-}
-
-/**
- * Apply one op to an entry in the edits worktree and commit it through the
- * enforced path. Never throws; returns a structured result.
+ * Validate one edit op against the LIVE entry and compute its result WITHOUT
+ * writing — the "propose" half of show-before-editing. The reap calls this to
+ * decide whether to offer a proposal (and what diff to show); armedWriteEntry
+ * calls it again before committing. Read-only over the filesystem. Returns
+ * { ok, op, before, after, vectorChange } or { ok:false, status, error }.
  *
- * @param {object} args
- * @param {string} args.editsRoot — the edits worktree (the write + commit target)
- * @param {string} args.relPath   — palace-relative entry path
- * @param {object} args.op        — { op, text? | find?, replace? }
- * @param {string} [args.summary] — commit subject summary
- * @param {string} [args.verify]  — 'verified' | 'unverified' | 'couldnt'
- * @param {string} [args.author]  — Palace-Author (default 'claude')
- * @param {string} [args.bodyMessage]
- * @param {string} [args.scope]
- * @returns {Promise<{ok, shortHash?, subject?, op?, message?, status?, error?}>}
+ *   set-vector  — touches only the forward_vector line; vectorChange = {from,to}
+ *   append/prepend/rewrite/graffiti — edit the body; frontmatter preserved
  */
-export async function armedWriteEntry({
-  editsRoot, relPath, op, summary, verify = 'unverified',
-  author = 'claude', bodyMessage = '', scope,
-}) {
-  if (!editsRoot) return { ok: false, error: 'no edits worktree configured' };
+export function previewEdit(repoRoot, relPath, op) {
+  if (!repoRoot) return { ok: false, error: 'no repo configured' };
   const allow = checkAllowList(relPath);
   if (!allow.allowed) return { ok: false, status: 403, error: allow.reason };
 
-  const abs = resolve(editsRoot, relPath);
-  if (abs !== resolve(editsRoot) && !abs.startsWith(resolve(editsRoot) + '/')) {
-    return { ok: false, status: 400, error: 'path escapes the edits worktree' };
+  const abs = resolve(repoRoot, relPath);
+  if (abs !== resolve(repoRoot) && !abs.startsWith(resolve(repoRoot) + '/')) {
+    return { ok: false, status: 400, error: 'path escapes the repo' };
   }
-  if (!existsSync(abs)) return { ok: false, status: 404, error: 'entry not found in the edits worktree' };
+  if (!existsSync(abs)) return { ok: false, status: 404, error: 'entry not found' };
 
   const before = readFileSync(abs, 'utf8');
   const { fmBlock, body } = splitRawFrontmatter(before);
 
-  // set-vector edits the FRONTMATTER (the forward_vector line) surgically; every
-  // other op edits the BODY (verbatim frontmatter preserved). A vector change is
-  // never silent — it carries vectorChange so the PROOF can flag it.
-  let after;
-  let vectorChange = null;
   if (op && op.op === 'set-vector') {
     if (!fmBlock) return { ok: false, status: 422, error: 'entry has no frontmatter to edit' };
     const sv = setForwardVector(fmBlock, op.text);
     if (!sv.ok) return { ok: false, status: 422, error: sv.error };
     if (sv.fmBlock === fmBlock) return { ok: false, status: 422, error: 'nothing changed' };
-    after = sv.fmBlock + body;
-    vectorChange = { from: sv.oldValue, to: (op.text || '').trim() };
-  } else {
-    const applied = applyOp(body, op);
-    if (!applied.ok) return { ok: false, status: 422, error: applied.error };
-    if (applied.body === body) return { ok: false, status: 422, error: 'nothing changed' };
-    after = fmBlock + applied.body;
+    return { ok: true, op, before, after: sv.fmBlock + body, vectorChange: { from: sv.oldValue, to: (op.text || '').trim() } };
   }
+  const applied = applyOp(body, op);
+  if (!applied.ok) return { ok: false, status: 422, error: applied.error };
+  if (applied.body === body) return { ok: false, status: 422, error: 'nothing changed' };
+  return { ok: true, op, before, after: fmBlock + applied.body, vectorChange: null };
+}
+
+/**
+ * Apply one approved op to an entry and commit it through the enforced path —
+ * directly to the LIVE repo (no quarantine). Re-previews first (so a stale
+ * proposal that no longer applies fails honestly), then writes + commits the
+ * single file. Never throws; returns a structured result.
+ *
+ * @param {object} args
+ * @param {string} args.repoRoot   — the repo to write + commit into (the palace)
+ * @param {string} args.relPath    — palace-relative entry path
+ * @param {object} args.op         — { op, text? | find?, replace? }
+ * @param {string} [args.summary]  — commit subject summary
+ * @param {string} [args.verify]   — 'verified' | 'unverified' | 'couldnt'
+ * @param {string} [args.author]   — Palace-Author (default 'claude')
+ * @param {string} [args.bodyMessage]
+ * @param {string} [args.scope]
+ * @returns {Promise<{ok, shortHash?, subject?, op?, message?, vectorChange?, status?, error?}>}
+ */
+export async function armedWriteEntry({
+  repoRoot, relPath, op, summary, verify = 'unverified',
+  author = 'claude', bodyMessage = '', scope,
+}) {
+  const pv = previewEdit(repoRoot, relPath, op);
+  if (!pv.ok) return pv;
+
+  const abs = resolve(repoRoot, relPath);
   try {
     mkdirSync(dirname(abs), { recursive: true });
-    clearStaleLocks(editsRoot);
-    writeFileSync(abs, after, 'utf8');
+    clearStaleLocks(repoRoot);
+    writeFileSync(abs, pv.after, 'utf8');
   } catch (e) {
     return { ok: false, error: `write failed: ${e.message}` };
   }
 
-  const commit = await commitSelected(editsRoot, {
+  const commit = await commitSelected(repoRoot, {
     paths: [relPath],
     kind: 'edit',
     scope: scope || basenameNoMd(relPath),
@@ -239,7 +225,7 @@ export async function armedWriteEntry({
     author,
   });
   if (!commit.ok) return { ok: false, error: `commit failed: ${commit.error}`, message: commit.message };
-  return { ok: true, op: op.op, shortHash: commit.shortHash, subject: commit.subject, message: commit.message, vectorChange };
+  return { ok: true, op: op.op, shortHash: commit.shortHash, subject: commit.subject, message: commit.message, vectorChange: pv.vectorChange };
 }
 
 function basenameNoMd(p) {
@@ -249,33 +235,32 @@ function basenameNoMd(p) {
 }
 
 /**
- * Revert ONE prior Companion edit commit in the edits worktree, creating a new
- * honest inverse commit — never a silent rollback (Plan §4: "post-LOG undo is a
- * new reconciled commit"). Uses git's 3-way revert so any later edits to the
+ * Revert ONE prior Companion edit commit, creating a new honest inverse commit —
+ * never a silent rollback. Uses git's 3-way revert so any later edits to the
  * same entry are preserved rather than clobbered. On conflict it aborts and
- * reports, rather than leaving the worktree mid-revert. Never throws.
+ * reports, rather than leaving the tree mid-revert. Never throws.
  *
  * @param {object} args
- * @param {string} args.editsRoot — the edits worktree
- * @param {string} args.hash      — the commit to revert (7–40 hex)
+ * @param {string} args.repoRoot — the repo to revert in (the palace)
+ * @param {string} args.hash     — the commit to revert (7–40 hex)
  * @returns {Promise<{ok, revertHash?, subject?, error?}>}
  */
-export async function revertCommit({ editsRoot, hash }) {
-  if (!editsRoot) return { ok: false, error: 'no edits worktree configured' };
+export async function revertCommit({ repoRoot, hash }) {
+  if (!repoRoot) return { ok: false, error: 'no repo configured' };
   const h = String(hash == null ? '' : hash).trim();
   if (!/^[0-9a-f]{7,40}$/i.test(h)) return { ok: false, error: 'invalid commit hash' };
 
-  clearStaleLocks(editsRoot);
-  const exists = await execGit(editsRoot, ['cat-file', '-e', `${h}^{commit}`], { allowFail: true });
-  if (exists.failed) return { ok: false, error: 'commit not found in the edits worktree' };
+  clearStaleLocks(repoRoot);
+  const exists = await execGit(repoRoot, ['cat-file', '-e', `${h}^{commit}`], { allowFail: true });
+  if (exists.failed) return { ok: false, error: 'commit not found' };
 
-  const r = await execGit(editsRoot, ['revert', '--no-edit', h], { allowFail: true });
+  const r = await execGit(repoRoot, ['revert', '--no-edit', h], { allowFail: true });
   if (r.failed) {
-    // Don't strand the worktree mid-revert (dirty tree, or a later edit conflicts).
-    await execGit(editsRoot, ['revert', '--abort'], { allowFail: true });
-    return { ok: false, error: `could not revert cleanly (a later edit may conflict, or the worktree is dirty): ${(r.stderr || '').trim()}` };
+    // Don't strand the tree mid-revert (dirty tree, or a later edit conflicts).
+    await execGit(repoRoot, ['revert', '--abort'], { allowFail: true });
+    return { ok: false, error: `could not revert cleanly (a later edit may conflict, or the tree is dirty): ${(r.stderr || '').trim()}` };
   }
-  const revertHash = (await execGit(editsRoot, ['rev-parse', '--short', 'HEAD'], { allowFail: true })).stdout.trim();
-  const subject = (await execGit(editsRoot, ['log', '-1', '--format=%s'], { allowFail: true })).stdout.trim();
+  const revertHash = (await execGit(repoRoot, ['rev-parse', '--short', 'HEAD'], { allowFail: true })).stdout.trim();
+  const subject = (await execGit(repoRoot, ['log', '-1', '--format=%s'], { allowFail: true })).stdout.trim();
   return { ok: true, revertHash, subject };
 }

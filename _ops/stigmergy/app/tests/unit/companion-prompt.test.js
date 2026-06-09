@@ -95,10 +95,12 @@ describe('buildCompanionPrompt', () => {
     expect(p).toMatch(/leave it\nempty/);
   });
 
-  it('tells the worker edits are immediate — do not approve-then-redo an already-landed edit', () => {
+  it('tells the worker an edit is a PROPOSAL shown for approval, and not to re-propose a landed edit', () => {
     const p = buildCompanionPrompt({ grounding, body: 'x', message: 'approved' });
-    expect(p).toMatch(/EDITS ARE IMMEDIATE/);
-    expect(p).toMatch(/do not propose it again/i);
+    expect(p).toMatch(/SHOW BEFORE EDITING/);
+    expect(p).toMatch(/PROPOSAL/);
+    expect(p).toMatch(/he APPROVES it/);
+    expect(p).toMatch(/Do NOT re-propose an edit that already landed/);
     expect(p).toMatch(/\(I already …\)/);
   });
 

@@ -1,15 +1,15 @@
-// Integration test for the armed write: a real git repo stands in for the
-// edits worktree. Proves an op is applied, the frontmatter is preserved
-// verbatim, and the change is committed through the enforced path (Palace-*
-// trailers, explicit pathspec) — and that the allow-list and honesty guards
-// refuse what they should.
+// Integration test for the armed write: a real git repo stands in for the live
+// palace. previewEdit computes a change WITHOUT writing; armedWriteEntry applies
+// + commits an APPROVED op through the enforced path (Palace-* trailers, explicit
+// pathspec) directly to the repo; revertCommit undoes one honestly. The allow-
+// list + honesty guards refuse what they should.
 
 import { describe, test, expect, beforeEach, afterEach } from 'vitest';
 import { resolve, join } from 'node:path';
 import { mkdtempSync, rmSync, writeFileSync, readFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { execFileSync } from 'node:child_process';
-import { armedWriteEntry, ensureEditsWorktree, revertCommit } from '../../server/armed-write.js';
+import { armedWriteEntry, previewEdit, revertCommit } from '../../server/armed-write.js';
 
 function git(cwd, args) { return execFileSync('git', args, { cwd, encoding: 'utf8' }); }
 
@@ -28,7 +28,38 @@ function makeRepo() {
   return root;
 }
 
-describe('armedWriteEntry', () => {
+describe('previewEdit (validate + compute, NO write)', () => {
+  let root;
+  beforeEach(() => { root = makeRepo(); });
+  afterEach(() => { rmSync(root, { recursive: true, force: true }); });
+
+  test('previews an append without writing or committing', () => {
+    const head0 = git(root, ['rev-parse', 'HEAD']).trim();
+    const before = readFileSync(join(root, 'Entry.md'), 'utf8');
+    const pv = previewEdit(root, 'Entry.md', { op: 'append', text: 'A previewed line.' });
+    expect(pv.ok).toBe(true);
+    expect(pv.after).toMatch(/A previewed line\./);
+    expect(pv.vectorChange).toBeNull();
+    // nothing written, nothing committed — read-only
+    expect(readFileSync(join(root, 'Entry.md'), 'utf8')).toBe(before);
+    expect(git(root, ['rev-parse', 'HEAD']).trim()).toBe(head0);
+    expect(git(root, ['status', '--porcelain']).trim()).toBe('');
+  });
+
+  test('computes the from→to diff for set-vector', () => {
+    const pv = previewEdit(root, 'Entry.md', { op: 'set-vector', text: 'I will roam.' });
+    expect(pv.ok).toBe(true);
+    expect(pv.vectorChange).toEqual({ from: 'I want to grow.', to: 'I will roam.' });
+  });
+
+  test('refuses a no-op, a missing find, and a canon path', () => {
+    expect(previewEdit(root, 'Entry.md', { op: 'set-vector', text: 'I want to grow.' }).error).toMatch(/nothing changed/);
+    expect(previewEdit(root, 'Entry.md', { op: 'rewrite', find: 'nowhere', replace: 'x' }).error).toMatch(/not present/);
+    expect(previewEdit(root, 'CLAUDE.md', { op: 'append', text: 'x' }).status).toBe(403);
+  });
+});
+
+describe('armedWriteEntry (apply + commit to the repo)', () => {
   let root;
   beforeEach(() => { root = makeRepo(); });
   afterEach(() => { rmSync(root, { recursive: true, force: true }); });
@@ -38,7 +69,7 @@ describe('armedWriteEntry', () => {
     const fmBlock = before.slice(0, before.indexOf('# Body'));
 
     const r = await armedWriteEntry({
-      editsRoot: root, relPath: 'Entry.md',
+      repoRoot: root, relPath: 'Entry.md',
       op: { op: 'append', text: 'A new line about li.' },
       summary: 'append a line about li', verify: 'unverified', author: 'claude',
     });
@@ -66,7 +97,7 @@ describe('armedWriteEntry', () => {
     const body = bodyBefore.slice(bodyBefore.indexOf('# Body'));
 
     const r = await armedWriteEntry({
-      editsRoot: root, relPath: 'Entry.md',
+      repoRoot: root, relPath: 'Entry.md',
       op: { op: 'set-vector', text: 'I will keep weaving what I touch.' },
       summary: 'set forward vector', verify: 'unverified', author: 'claude',
     });
@@ -87,14 +118,14 @@ describe('armedWriteEntry', () => {
   });
 
   test('refuses a canon path (allow-list, 403)', async () => {
-    const r = await armedWriteEntry({ editsRoot: root, relPath: 'CLAUDE.md', op: { op: 'append', text: 'x' }, summary: 's', verify: 'unverified' });
+    const r = await armedWriteEntry({ repoRoot: root, relPath: 'CLAUDE.md', op: { op: 'append', text: 'x' }, summary: 's', verify: 'unverified' });
     expect(r.ok).toBe(false);
     expect(r.status).toBe(403);
   });
 
   test('refuses a rewrite whose find is absent (422), no commit', async () => {
     const head0 = git(root, ['rev-parse', 'HEAD']).trim();
-    const r = await armedWriteEntry({ editsRoot: root, relPath: 'Entry.md', op: { op: 'rewrite', find: 'nowhere', replace: 'x' }, summary: 's', verify: 'unverified' });
+    const r = await armedWriteEntry({ repoRoot: root, relPath: 'Entry.md', op: { op: 'rewrite', find: 'nowhere', replace: 'x' }, summary: 's', verify: 'unverified' });
     expect(r.ok).toBe(false);
     expect(r.status).toBe(422);
     expect(git(root, ['rev-parse', 'HEAD']).trim()).toBe(head0); // nothing committed
@@ -108,7 +139,7 @@ describe('revertCommit', () => {
 
   test('reverts a committed edit as a new inverse commit (honest, not a rollback)', async () => {
     const w = await armedWriteEntry({
-      editsRoot: root, relPath: 'Entry.md',
+      repoRoot: root, relPath: 'Entry.md',
       op: { op: 'append', text: 'A line to be reverted.' },
       summary: 'append a line', verify: 'unverified', author: 'claude',
     });
@@ -116,7 +147,7 @@ describe('revertCommit', () => {
     expect(readFileSync(join(root, 'Entry.md'), 'utf8')).toMatch(/A line to be reverted\./);
     const editHash = git(root, ['rev-parse', 'HEAD']).trim();
 
-    const r = await revertCommit({ editsRoot: root, hash: w.shortHash });
+    const r = await revertCommit({ repoRoot: root, hash: w.shortHash });
     expect(r.ok).toBe(true);
     expect(typeof r.revertHash).toBe('string');
 
@@ -132,45 +163,23 @@ describe('revertCommit', () => {
 
   test('preserves a later edit to the same entry (3-way revert, not a reset)', async () => {
     const first = await armedWriteEntry({
-      editsRoot: root, relPath: 'Entry.md', op: { op: 'append', text: 'FIRST insertion.' },
+      repoRoot: root, relPath: 'Entry.md', op: { op: 'append', text: 'FIRST insertion.' },
       summary: 'first', verify: 'unverified', author: 'claude',
     });
     await armedWriteEntry({
-      editsRoot: root, relPath: 'Entry.md', op: { op: 'prepend', text: 'SECOND insertion at the top.' },
+      repoRoot: root, relPath: 'Entry.md', op: { op: 'prepend', text: 'SECOND insertion at the top.' },
       summary: 'second', verify: 'unverified', author: 'claude',
     });
-    const r = await revertCommit({ editsRoot: root, hash: first.shortHash });
+    const r = await revertCommit({ repoRoot: root, hash: first.shortHash });
     expect(r.ok).toBe(true);
     const text = readFileSync(join(root, 'Entry.md'), 'utf8');
     expect(text).not.toMatch(/FIRST insertion\./);   // the reverted edit is undone
     expect(text).toMatch(/SECOND insertion at the top\./); // the later edit survives
   });
 
-  test('refuses a bad hash and a commit absent from the worktree', async () => {
-    expect((await revertCommit({ editsRoot: root, hash: 'nothex!' })).ok).toBe(false);
-    expect((await revertCommit({ editsRoot: root, hash: 'deadbeef' })).ok).toBe(false);
-    expect((await revertCommit({ editsRoot: null, hash: 'abcdef0' })).ok).toBe(false);
-  });
-});
-
-describe('ensureEditsWorktree', () => {
-  let root;
-  beforeEach(() => { root = makeRepo(); });
-  afterEach(() => {
-    try { git(root, ['worktree', 'prune']); } catch (_) { /* ignore */ }
-    rmSync(root, { recursive: true, force: true });
-  });
-
-  test('creates a worktree on its own branch and is idempotent', async () => {
-    const editsPath = resolve(root, '..', `edits-${root.split('/').pop()}`);
-    try {
-      const p1 = await ensureEditsWorktree(root, { editsPath, branch: 'stigmergy-edits-test' });
-      expect(p1).toBe(editsPath);
-      expect(readFileSync(join(editsPath, 'Entry.md'), 'utf8')).toMatch(/seat of perception/);
-      const p2 = await ensureEditsWorktree(root, { editsPath, branch: 'stigmergy-edits-test' });
-      expect(p2).toBe(editsPath); // idempotent, no throw
-    } finally {
-      rmSync(editsPath, { recursive: true, force: true });
-    }
+  test('refuses a bad hash and a commit absent from the repo', async () => {
+    expect((await revertCommit({ repoRoot: root, hash: 'nothex!' })).ok).toBe(false);
+    expect((await revertCommit({ repoRoot: root, hash: 'deadbeef' })).ok).toBe(false);
+    expect((await revertCommit({ repoRoot: null, hash: 'abcdef0' })).ok).toBe(false);
   });
 });

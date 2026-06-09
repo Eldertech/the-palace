@@ -50,8 +50,7 @@ function makeServer(root, { sleep = 300, editText = null, editOp = null, replyTe
   if (editOp) argv.push('--edit-op', editOp);
   if (action) argv.push('--action', action);
   const companionLane = createCompanionLane({
-    palaceRoot: root,
-    editsRoot: root, // the temp repo IS the (quarantine stand-in) edit target here
+    palaceRoot: root, // edits commit directly here (the quarantine was retired)
     buildArgv: () => argv,
     dryReap: false,
   });
@@ -202,69 +201,94 @@ describe('POST /api/entry-agent/turn', () => {
     expect(todoItem.ask).toBe('make the log filters clearer');
   }, 20000);
 
-  test('an edit turn applies the op through the enforced path and posts a PROOF', async () => {
-    // a lane whose stub also proposes an append edit
+  test('an edit turn PROPOSES the op (companion_edit_proposed) and commits nothing', async () => {
+    // show before editing: the worker proposes an append; the reap posts a
+    // proposal the window renders for approval — nothing is written yet.
     ({ server, companionLane } = makeServer(root, { editText: 'A new closing line about li.' }));
     const res = await request(server).post('/api/entry-agent/turn').send({ path: 'Open Entry.md', message: 'add a line about li at the end' });
     expect(res.status).toBe(200);
     const turnId = res.body.turnId;
 
     await waitFor(() => !existsSync(companionLane.paths.pidFile), { timeout: 6000 });
-    await waitFor(() => readFileSync(boardPath(root), 'utf8').includes('companion_edit'), { timeout: 4000 });
+    await waitFor(() => readFileSync(boardPath(root), 'utf8').includes('companion_edit_proposed'), { timeout: 4000 });
 
-    const lines = readFileSync(boardPath(root), 'utf8').trim().split('\n').filter(Boolean).map((l) => JSON.parse(l));
-    const proof = lines.find((m) => m.payload && m.payload.kind === 'companion_edit');
-    expect(proof).toBeTruthy();
-    expect(proof.type).toBe('PROOF');
-    expect(proof.from).toBe('Open Entry (Companion)');
-    expect(proof.payload.op).toBe('append');
-    expect(proof.payload.turn_id).toBe(turnId);
-    expect(typeof proof.payload.commit).toBe('string');
-
-    // the commit is real: HEAD blob carries the appended line, frontmatter intact
-    const committed = git(root, ['show', 'HEAD:Open Entry.md']);
-    expect(committed).toMatch(/A new closing line about li\./);
-    expect(committed).toMatch(/title: "Open Entry"/);
-    const subject = git(root, ['log', '-1', '--format=%s']);
-    expect(subject).toMatch(/^edit\(Open Entry\):/);
+    const lines = readBoard(root);
+    const proposal = lines.find((m) => m.payload && m.payload.kind === 'companion_edit_proposed' && m.payload.turn_id === turnId);
+    expect(proposal).toBeTruthy();
+    expect(proposal.type).toBe('BROADCAST');
+    expect(proposal.from).toBe('Open Entry (Companion)');
+    expect(proposal.payload.status).toBe('proposed');
+    expect(proposal.payload.op).toEqual({ op: 'append', text: 'A new closing line about li.' }); // [approve] sends this back
+    // nothing committed: entry on disk unchanged, no committed PROOF
+    expect(readFileSync(join(root, 'Open Entry.md'), 'utf8')).not.toMatch(/A new closing line about li\./);
+    expect(lines.some((m) => m.payload && m.payload.kind === 'companion_edit')).toBe(false);
   }, 20000);
 
-  test('a quiet edit (empty reply + edit) posts only a PROOF, no companion_reply', async () => {
-    // adaptive narration: a clean edit with an empty reply stays quiet — the
-    // edit marker speaks, so no reply bubble is posted for that turn.
+  test('POST /apply commits the approved op to the LIVE entry and posts a committed PROOF', async () => {
+    ({ server, companionLane } = makeServer(root));
+    const turnId = 'companion-open-entry-approve-1';
+    const a = await request(server).post('/api/entry-agent/apply').send({
+      path: 'Open Entry.md', op: { op: 'append', text: 'A committed line about li.' }, turnId,
+    });
+    expect(a.status).toBe(200);
+    expect(a.body.ok).toBe(true);
+    expect(typeof a.body.commit).toBe('string');
+
+    await waitFor(() => readFileSync(boardPath(root), 'utf8').includes('companion_edit'), { timeout: 4000 });
+    const proof = readBoard(root).find((m) => m.payload && m.payload.kind === 'companion_edit' && m.payload.turn_id === turnId);
+    expect(proof).toBeTruthy();
+    expect(proof.type).toBe('PROOF');
+    expect(proof.payload.status).toBe('committed');
+    expect('branch' in proof.payload).toBe(false); // live commit — no quarantine branch
+    // the LIVE entry changed on disk + at HEAD (frontmatter intact)
+    expect(readFileSync(join(root, 'Open Entry.md'), 'utf8')).toMatch(/A committed line about li\./);
+    const committed = git(root, ['show', 'HEAD:Open Entry.md']);
+    expect(committed).toMatch(/A committed line about li\./);
+    expect(committed).toMatch(/title: "Open Entry"/);
+    expect(git(root, ['log', '-1', '--format=%s'])).toMatch(/^edit\(Open Entry\):/);
+  }, 20000);
+
+  test('POST /apply 400 on a stale op that no longer applies (find absent)', async () => {
+    const a = await request(server).post('/api/entry-agent/apply').send({
+      path: 'Open Entry.md', op: { op: 'rewrite', find: 'nowhere to be found', replace: 'x' },
+    });
+    expect(a.status).toBe(400);
+    expect(a.body.ok).toBe(false);
+  });
+
+  test('a quiet edit (empty reply + edit) posts only a proposal, no reply', async () => {
+    // adaptive narration: a clean proposal with an empty reply stays quiet — the
+    // proposal card speaks, so no reply bubble is posted for that turn.
     ({ server, companionLane } = makeServer(root, { editText: 'A quiet closing line.', replyText: '' }));
     const res = await request(server).post('/api/entry-agent/turn').send({ path: 'Open Entry.md', message: 'tighten the ending' });
     expect(res.status).toBe(200);
     const turnId = res.body.turnId;
 
     await waitFor(() => !existsSync(companionLane.paths.pidFile), { timeout: 6000 });
-    await waitFor(() => readFileSync(boardPath(root), 'utf8').includes('companion_edit'), { timeout: 4000 });
+    await waitFor(() => readFileSync(boardPath(root), 'utf8').includes('companion_edit_proposed'), { timeout: 4000 });
 
-    const lines = readFileSync(boardPath(root), 'utf8').trim().split('\n').filter(Boolean).map((l) => JSON.parse(l));
-    const proof = lines.find((m) => m.payload && m.payload.kind === 'companion_edit' && m.payload.turn_id === turnId);
+    const lines = readBoard(root);
+    const proposal = lines.find((m) => m.payload && m.payload.kind === 'companion_edit_proposed' && m.payload.turn_id === turnId);
     const reply = lines.find((m) => m.payload && m.payload.kind === 'companion_reply' && m.payload.turn_id === turnId);
-    expect(proof).toBeTruthy();        // the edit landed
+    expect(proposal).toBeTruthy();     // the proposal landed
     expect(reply).toBeFalsy();         // but the turn stayed quiet
   }, 20000);
 
-  test('a set-vector turn flags the forward-vector change on the board (never silent)', async () => {
+  test('a set-vector turn PROPOSES the forward-vector change with its diff (never silent), commits nothing', async () => {
     ({ server, companionLane } = makeServer(root, {
       editText: 'I will keep being discussed and become more.', editOp: 'set-vector',
     }));
     const res = await request(server).post('/api/entry-agent/turn').send({ path: 'Open Entry.md', message: 'sharpen my forward vector' });
     const turnId = res.body.turnId;
     await waitFor(() => !existsSync(companionLane.paths.pidFile), { timeout: 6000 });
-    await waitFor(() => readFileSync(boardPath(root), 'utf8').includes('companion_edit'), { timeout: 4000 });
+    await waitFor(() => readFileSync(boardPath(root), 'utf8').includes('companion_edit_proposed'), { timeout: 4000 });
 
-    const proof = readBoard(root).find((m) => m.payload && m.payload.kind === 'companion_edit' && m.payload.op === 'set-vector' && m.payload.turn_id === turnId);
-    expect(proof).toBeTruthy();
-    expect(proof.payload.vector_change).toBeTruthy();
-    expect(proof.payload.vector_change.from).toBe('I want to be discussed.'); // the seed vector
-    expect(proof.payload.vector_change.to).toMatch(/become more/);
-    // committed: the frontmatter vector changed at HEAD, body intact
-    const head = git(root, ['show', 'HEAD:Open Entry.md']);
-    expect(head).toMatch(/forward_vector: "I will keep being discussed and become more\."/);
-    expect(head).toMatch(/the seat of perception\./); // body preserved
+    const proposal = readBoard(root).find((m) => m.payload && m.payload.kind === 'companion_edit_proposed' && m.payload.op.op === 'set-vector' && m.payload.turn_id === turnId);
+    expect(proposal).toBeTruthy();
+    expect(proposal.payload.vector_change.from).toBe('I want to be discussed.'); // the seed vector
+    expect(proposal.payload.vector_change.to).toMatch(/become more/);
+    // NOT committed yet — HEAD vector unchanged until approval
+    expect(git(root, ['show', 'HEAD:Open Entry.md'])).toMatch(/forward_vector: "I want to be discussed\."/);
   }, 20000);
 
   test('a no-op edit (set-vector to the value it already has) reads as "already in place", not a failure', async () => {
@@ -288,15 +312,14 @@ describe('POST /api/entry-agent/turn', () => {
     expect(readBoard(root).some((m) => m.payload && m.payload.kind === 'companion_edit' && m.payload.turn_id === turnId)).toBe(false);
   }, 20000);
 
-  test('POST /undo reverts a committed edit and posts a revert PROOF on the same turn', async () => {
-    ({ server, companionLane } = makeServer(root, { editText: 'A line to undo.' }));
-    const t = await request(server).post('/api/entry-agent/turn').send({ path: 'Open Entry.md', message: 'add a line' });
-    const turnId = t.body.turnId;
-    await waitFor(() => !existsSync(companionLane.paths.pidFile), { timeout: 6000 });
-    await waitFor(() => readFileSync(boardPath(root), 'utf8').includes('companion_edit'), { timeout: 4000 });
-
-    const editProof = readBoard(root).find((m) => m.payload && m.payload.kind === 'companion_edit' && m.payload.op === 'append');
-    const editCommit = editProof.payload.commit;
+  test('POST /undo reverts a committed (approved) edit and posts a revert PROOF on the same turn', async () => {
+    // apply commits live; undo reverts that commit as a new inverse commit.
+    const turnId = 'companion-open-entry-undo-1';
+    const a = await request(server).post('/api/entry-agent/apply').send({
+      path: 'Open Entry.md', op: { op: 'append', text: 'A line to undo.' }, turnId,
+    });
+    expect(a.body.ok).toBe(true);
+    const editCommit = a.body.commit;
     expect(git(root, ['show', 'HEAD:Open Entry.md'])).toMatch(/A line to undo\./);
 
     const u = await request(server).post('/api/entry-agent/undo').send({ path: 'Open Entry.md', commit: editCommit, turnId });

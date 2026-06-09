@@ -13,8 +13,8 @@ import { resolveContext } from '../lib/companion-context.js';
 // open/close + the current selection are owned by App (the launcher is global).
 // Later stages widen `resolveContext` (LOG commit, TRICKSTER request); the host
 // itself does not change.
-export default function CompanionHost({ open, deck, entryPath, tricksterRequests, onClose }) {
+export default function CompanionHost({ open, deck, entryPath, tricksterRequests, onClose, onEntryCommitted }) {
   if (!open) return null;
   const context = resolveContext({ deck, entryPath, tricksterRequests });
-  return <EntryAgentWindow context={context} onClose={onClose} />;
+  return <EntryAgentWindow context={context} onClose={onClose} onEntryCommitted={onEntryCommitted} />;
 }

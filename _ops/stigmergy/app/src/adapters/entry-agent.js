@@ -31,6 +31,25 @@ export async function postTurn({ context, path, message, history, focus } = {}) 
   }
 }
 
+// POST /api/entry-agent/apply — commit an APPROVED proposed edit to the live
+// entry. Body: { path, op, turnId }. Returns { ok, commit?, msg? }. The committed
+// marker arrives on the board (a companion_edit PROOF on the same turn) over SSE,
+// which the window swaps the proposal card for — like the edit/undo paths.
+export async function postApply({ path, op, turnId } = {}) {
+  try {
+    const res = await fetch('/api/entry-agent/apply', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+      body: JSON.stringify({ path, op, turnId: turnId || null }),
+    });
+    const data = await res.json().catch(() => ({}));
+    if (!res.ok) return { ok: false, status: res.status, ...data };
+    return { ok: true, ...data };
+  } catch (err) {
+    return { ok: false, error: err?.message ?? String(err) };
+  }
+}
+
 // POST /api/entry-agent/undo — revert a committed Companion edit.
 // Body: { path, commit, turnId }. Returns { ok, revertHash?, reverts?, msg? }.
 // The revert marker does NOT come back here — it arrives on the board (a revert

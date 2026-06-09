@@ -23,7 +23,7 @@ import { createActuator } from './actuator.js';
 import { readEntry } from '../src/lib/entries.js';
 import { assembleGrounding, assembleGroundingByTitle } from '../src/lib/entry-grounding.js';
 import { buildCompanionPrompt } from './companion-prompt.js';
-import { armedWriteEntry, ensureEditsWorktree, revertCommit } from './armed-write.js';
+import { armedWriteEntry, revertCommit, previewEdit } from './armed-write.js';
 import { appendMessage } from '@stigmergy/core/blackboard';
 import { validateMessage } from '@stigmergy/core/schema';
 
@@ -133,9 +133,47 @@ export function buildCompanionMessage({ title, entryPath, turnId, reply, model, 
 }
 
 /**
- * Build the §2.2 PROOF an edit posts once it is committed. type PROOF carries
- * "it landed in LOG": the commit hash is the proof the write is real. Pure +
- * validated by core before append.
+ * Build the §2.2 BROADCAST a PROPOSED edit posts — the "show before editing"
+ * card. Carries the op (so [approve] can send it to /apply) + the diff data the
+ * window renders (vector_change for set-vector; the op itself for body edits).
+ * Nothing is written yet — status 'proposed'. Pure + validated before append.
+ */
+export function buildEditProposalMessage({ title, entryPath, turnId, op, summary, vectorChange, model, ts, id }) {
+  const slug = slugify(title);
+  return {
+    schema_version: '1.0',
+    id: id || `${slug}-companion-proposal-${turnId}`,
+    ts,
+    session_id: `companion-${slug}`,
+    from: companionFrom(title),
+    to: '*',
+    type: 'BROADCAST',
+    board: 'GENERAL',
+    health: {
+      score: 'green',
+      model: model || DEFAULT_MODEL,
+      _orchestrator_metadata: {
+        dispatch_mode: 'claude-code-subagent',
+        note: 'Companion proposed edit (awaiting approval). Path 2 stub health.',
+      },
+    },
+    payload: {
+      kind: 'companion_edit_proposed',
+      entry: title,
+      entry_path: entryPath,
+      turn_id: turnId,
+      op,                 // the exact op; [approve] sends it back to /apply
+      summary: summary || `companion ${op && op.op}`,
+      status: 'proposed',
+      ...(vectorChange ? { vector_change: vectorChange } : {}),
+    },
+  };
+}
+
+/**
+ * Build the §2.2 PROOF an edit posts once it is committed (to the live palace).
+ * The commit hash is the proof the write is real. `branch` is optional and
+ * omitted for live commits (everything is on main). Pure + validated before append.
  */
 export function buildEditProofMessage({ title, entryPath, turnId, op, shortHash, branch, summary, model, ts, id, vectorChange }) {
   const slug = slugify(title);
@@ -153,7 +191,7 @@ export function buildEditProofMessage({ title, entryPath, turnId, op, shortHash,
       model: model || DEFAULT_MODEL,
       _orchestrator_metadata: {
         dispatch_mode: 'claude-code-subagent',
-        note: 'Companion edit committed to the quarantined edits branch. Path 2 stub health.',
+        note: 'Companion edit committed to the live palace (approved). Path 2 stub health.',
       },
     },
     payload: {
@@ -163,9 +201,9 @@ export function buildEditProofMessage({ title, entryPath, turnId, op, shortHash,
       turn_id: turnId,
       op,
       commit: shortHash,
-      branch,
       summary,
       status: 'committed',
+      ...(branch ? { branch } : {}),
       // A forward-vector change is never silent — carry from→to so the window
       // flags it (the standing rule: never rewrite a forward_vector quietly).
       ...(vectorChange ? { vector_change: vectorChange } : {}),
@@ -195,7 +233,7 @@ export function buildRevertProofMessage({ title, entryPath, turnId, reverts, rev
       model: model || DEFAULT_MODEL,
       _orchestrator_metadata: {
         dispatch_mode: 'claude-code-subagent',
-        note: 'Companion edit reverted on the quarantined edits branch (a new inverse commit). Path 2 stub health.',
+        note: 'Companion edit reverted in the live palace (a new inverse commit). Path 2 stub health.',
       },
     },
     payload: {
@@ -206,9 +244,9 @@ export function buildRevertProofMessage({ title, entryPath, turnId, reverts, rev
       op: 'revert',
       commit: revertHash,
       reverts,
-      branch,
       summary: summary || `revert ${reverts}`,
       status: 'reverted',
+      ...(branch ? { branch } : {}),
     },
   };
 }
@@ -277,11 +315,8 @@ export function createCompanionLane(opts = {}) {
   const model = opts.model || DEFAULT_MODEL;
   const stubArgv = typeof opts.buildArgv === 'function' ? opts.buildArgv : null;
   const dryReap = opts.dryReap === true;
-  // The quarantined edit target. When provided (tests), used directly; else the
-  // dedicated worktree is created lazily on the first edit (../palace-stigmergy-
-  // edits on `stigmergy-edits`, decided 2026-06-08).
-  const editsBranch = opts.editsBranch || 'stigmergy-edits';
-  const editsRootOpt = opts.editsRoot ? resolve(opts.editsRoot) : null;
+  // Edits commit DIRECTLY to the live palace (`root`) — the quarantine was
+  // retired 2026-06-09 in favor of show-before-editing (propose → approve).
 
   const transcriptsDir = join(stateDir, 'transcripts');
   const lastTurnFile = join(stateDir, 'last-turn.json');
@@ -303,11 +338,6 @@ export function createCompanionLane(opts = {}) {
   }
   function readLastTurn() {
     try { return JSON.parse(readFileSync(lastTurnFile, 'utf8')); } catch (_) { return null; }
-  }
-
-  async function resolveEditsRoot() {
-    if (editsRootOpt) return editsRootOpt;
-    return ensureEditsWorktree(root, { branch: editsBranch });
   }
 
   function postIfValid(msg) {
@@ -358,44 +388,40 @@ export function createCompanionLane(opts = {}) {
         }));
       }
 
-      // 2) the edit, through the enforced write path → PROOF on success
+      // 2) the edit — PROPOSED, not applied (show before editing). Preview it
+      // against the LIVE entry: a clean op becomes a proposal the window renders
+      // for approval (the actual commit waits for /apply); an op that can't apply
+      // (find missing) or is a no-op (already in that state) gets an honest line,
+      // no proposal.
       let editSummary = null;
       if (hasEdit) {
         try {
-          const editsRoot = await resolveEditsRoot();
-          const w = await armedWriteEntry({
-            editsRoot, relPath: entryPath, op: edit,
-            summary: edit.summary || `companion ${edit.op}: ${title}`,
-            verify: 'unverified', author: 'claude',
-          });
-          if (w.ok) {
-            postIfValid(buildEditProofMessage({
-              title, entryPath, turnId, op: w.op, shortHash: w.shortHash,
-              branch: editsBranch, summary: edit.summary || `companion ${edit.op}`,
+          const pv = previewEdit(root, entryPath, edit);
+          if (pv.ok) {
+            postIfValid(buildEditProposalMessage({
+              title, entryPath, turnId, op: edit,
+              summary: edit.summary || `companion ${edit.op}`,
+              vectorChange: pv.vectorChange || null,
               model: meta.model || model, ts: new Date().toISOString(),
-              vectorChange: w.vectorChange || null,
             }));
-            editSummary = { ok: true, op: w.op, commit: w.shortHash };
+            editSummary = { ok: true, proposed: true, op: edit.op };
           } else {
-            // "nothing changed" is a benign no-op, not a failure: the entry is
-            // already in that state (usually an edit that already landed this
-            // session). Say so plainly instead of the alarming "couldn't apply".
-            const noop = /nothing changed/i.test(w.error || '');
+            const noop = /nothing changed/i.test(pv.error || '');
             const failReply = noop
               ? "That's already in place — nothing to change (it looks like it landed in an earlier edit this session)."
-              : `I couldn't apply that edit honestly: ${w.error}`;
+              : `I can't propose that edit honestly: ${pv.error}`;
             postIfValid(buildCompanionMessage({
               title, entryPath, turnId, reply: failReply,
               model: meta.model || model, ts: new Date().toISOString(),
               id: `${slugify(title)}-companion-editfail-${turnId}`,
             }));
-            editSummary = { ok: false, error: w.error, noop };
+            editSummary = { ok: false, error: pv.error, noop };
           }
         } catch (e) {
-          logLine(`ERROR: companion edit failed: ${e.message}`);
+          logLine(`ERROR: companion edit preview failed: ${e.message}`);
           // Post so the turn never hangs the window when the reply was quiet.
           postIfValid(buildCompanionMessage({
-            title, entryPath, turnId, reply: `I hit an error applying that edit: ${e.message}`,
+            title, entryPath, turnId, reply: `I hit an error preparing that edit: ${e.message}`,
             model: meta.model || model, ts: new Date().toISOString(),
             id: `${slugify(title)}-companion-editerr-${turnId}`,
           }));
@@ -499,10 +525,48 @@ export function createCompanionLane(opts = {}) {
   }
 
   /**
-   * Undo a committed Companion edit: revert its commit on the quarantined edits
-   * branch (a new inverse commit) and post a revert PROOF on the same turn so
-   * the window can mark it reverted. Honest by construction — never a silent
-   * rollback. async; never throws (returns a structured result).
+   * Apply an APPROVED edit to the live entry: write + commit through the enforced
+   * path (armedWriteEntry → the live palace), then post the committed PROOF the
+   * window swaps the proposal for. Re-previews inside armedWriteEntry, so a stale
+   * proposal that no longer applies fails honestly. Not a worker fire (a Node
+   * write) so it never collides with the turn lane. async; never throws.
+   * @param {{path:string, op:object, turnId?:string}} args
+   */
+  async function apply({ path, op, turnId } = {}) {
+    if (typeof path !== 'string' || path.trim() === '') return { ok: false, msg: 'missing entry path' };
+    if (!op || typeof op !== 'object' || typeof op.op !== 'string') return { ok: false, msg: 'missing edit op' };
+    const entry = readEntry(root, path);
+    const title = entry ? entry.title : path;
+    const entryPath = entry ? entry.path : path;
+    const tid = (typeof turnId === 'string' && turnId.trim())
+      ? turnId.trim()
+      : `companion-apply-${slugify(title)}-${new Date().toISOString().replace(/[:.]/g, '-')}`;
+
+    let w;
+    try {
+      w = await armedWriteEntry({
+        repoRoot: root, relPath: entryPath, op,
+        summary: op.summary || `companion ${op.op}`,
+        verify: 'unverified', author: 'claude',
+      });
+    } catch (e) {
+      return { ok: false, msg: `could not apply: ${e.message}` };
+    }
+    if (!w.ok) return { ok: false, msg: w.error || 'apply failed', status: w.status };
+
+    postIfValid(buildEditProofMessage({
+      title, entryPath, turnId: tid, op: w.op, shortHash: w.shortHash,
+      summary: op.summary || `companion ${op.op}`,
+      model, ts: new Date().toISOString(), vectorChange: w.vectorChange || null,
+    }));
+    return { ok: true, commit: w.shortHash, op: w.op, turnId: tid, vectorChange: w.vectorChange || null };
+  }
+
+  /**
+   * Undo a committed Companion edit: revert its commit in the live palace (a new
+   * inverse commit) and post a revert PROOF on the same turn so the window can
+   * mark it reverted. Honest by construction — never a silent rollback. async;
+   * never throws (returns a structured result).
    * @param {{path?:string, commit:string, turnId?:string}} args
    */
   async function undo({ path, commit, turnId } = {}) {
@@ -513,17 +577,13 @@ export function createCompanionLane(opts = {}) {
     const title = entry ? entry.title : (path || 'entry');
     const entryPath = entry ? entry.path : (path || '');
 
-    let editsRoot;
-    try { editsRoot = await resolveEditsRoot(); }
-    catch (e) { return { ok: false, msg: `could not open the edits worktree: ${e.message}` }; }
-
-    const r = await revertCommit({ editsRoot, hash: commit.trim() });
+    const r = await revertCommit({ repoRoot: root, hash: commit.trim() });
     if (!r.ok) return { ok: false, msg: r.error };
 
     const tid = (typeof turnId === 'string' && turnId.trim()) ? turnId.trim() : `companion-undo-${slugify(title)}`;
     postIfValid(buildRevertProofMessage({
       title, entryPath, turnId: tid, reverts: commit.trim(), revertHash: r.revertHash,
-      branch: editsBranch, summary: r.subject, model, ts: new Date().toISOString(),
+      summary: r.subject, model, ts: new Date().toISOString(),
     }));
     return { ok: true, revertHash: r.revertHash, reverts: commit.trim(), turnId: tid };
   }
@@ -534,10 +594,11 @@ export function createCompanionLane(opts = {}) {
 
   return {
     turn,
+    apply,
     undo,
     status,
     paths: {
-      stateDir, transcriptsDir, lastTurnFile, boardPath, editsBranch,
+      stateDir, transcriptsDir, lastTurnFile, boardPath,
       logFile: actuator.paths.logFile, pidFile: actuator.paths.pidFile,
     },
   };
