@@ -55,6 +55,11 @@ export async function entryAgentRoutes(ctx) {
       message: body?.message,
       history: Array.isArray(body?.history) ? body.history : [],
       focus: typeof body?.focus === 'string' ? body.focus : null,
+      // The scroll-spied section the window floats over: a heading string, or
+      // null at the top (above the first heading). Absent (undefined) when the
+      // turn carries no position — leave it absent so the prompt omits the block.
+      section: typeof body?.section === 'string' ? body.section
+        : (body && body.section === null ? null : undefined),
     });
     if (!result.fired) {
       const status = result.busy ? 409 : 400;

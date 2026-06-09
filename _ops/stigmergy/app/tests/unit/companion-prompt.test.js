@@ -64,6 +64,32 @@ describe('buildCompanionPrompt', () => {
     expect(noFocus).not.toMatch(/FOCUS — the exact passage/);
   });
 
+  it('promotes the scroll-spied section to PRIMARY context (no pin), and omits it when no position is sent', () => {
+    const overSection = buildCompanionPrompt({ grounding, body: 'x', message: 'what are we over?', section: 'The Body Schema' });
+    expect(overSection).toMatch(/POSITION — the section you are reading \(your PRIMARY context this turn\)/);
+    expect(overSection).toMatch(/critical context: «The Body Schema»/);
+    const noPosition = buildCompanionPrompt({ grounding, body: 'x', message: 'hi' });
+    expect(noPosition).not.toMatch(/POSITION — the section you are reading/);
+  });
+
+  it('reports an honest "at the top" position when section is explicitly null', () => {
+    const atTop = buildCompanionPrompt({ grounding, body: 'x', message: 'what are we over?', section: null });
+    expect(atTop).toMatch(/POSITION — the section you are reading/);
+    expect(atTop).toMatch(/at the TOP of the entry/);
+    expect(atTop).not.toMatch(/critical context: «/);
+  });
+
+  it('lets a pinned FOCUS passage OVERRIDE the scroll-spied section (POSITION suppressed)', () => {
+    const both = buildCompanionPrompt({
+      grounding, body: 'x', message: 'tighten this',
+      section: 'The Body Schema', focus: 'skill lives in the body schema',
+    });
+    // the pin wins: no POSITION block at all, and FOCUS names the override
+    expect(both).not.toMatch(/POSITION — the section you are reading/);
+    expect(both).toMatch(/FOCUS — the exact passage Loudon has pinned/);
+    expect(both).toMatch(/OVERRIDES whatever section\nyou are scrolled over/);
+  });
+
   it('offers the edit ops and the optional-edit JSON contract', () => {
     const p = buildCompanionPrompt({ grounding, body: 'x', message: 'hi' });
     // worker classifies discuss-vs-edit itself (Tier A, capable model)
