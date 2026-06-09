@@ -267,6 +267,7 @@ export default function EntryAgentWindow({ entry, context, containerRef, onClose
     ? context
     : (entry ? { kind: 'entry', path: entry?.path ?? null, title: entry?.title } : { kind: 'app_feedback', deck: null });
   const isEntry = ctx.kind === 'entry';
+  const isTrickster = ctx.kind === 'trickster_request';
   const cKey = contextKey(ctx);
   // Latest context, read by callbacks without re-binding on every render.
   const ctxRef = useRef(ctx);
@@ -720,13 +721,26 @@ export default function EntryAgentWindow({ entry, context, containerRef, onClose
                 <div>reading the neighborhood…</div>
               )}
             </>
+          ) : isTrickster ? (
+            <div data-testid="eaw-trickster-intro" style={{ color: 'var(--phosphor)', textShadow: 'var(--glow)' }}>
+              I'm <span style={{ color: 'var(--phosphor-white)' }}>{ctx.project || 'this project'}</span> — the
+              steward behind the decision in front of you. Ask me what I'm asking
+              for, why, or where the project stands; I'll help you see it before
+              you decide.
+              {ctx.ask ? (
+                <div style={{
+                  marginTop: 8, paddingLeft: 8, borderLeft: '2px solid var(--phosphor-dim)',
+                  color: 'var(--phosphor-dim)', textShadow: 'none', fontSize: 11,
+                }}>
+                  the ask: <span style={{ color: 'var(--phosphor)', textShadow: 'var(--glow)' }}>{ctx.ask}</span>
+                </div>
+              ) : null}
+            </div>
           ) : (
             <div data-testid="eaw-app-intro" style={{ color: 'var(--phosphor)', textShadow: 'var(--glow)' }}>
               I'm the STIGMERGY companion. Ask me about this terminal — its decks,
-              boards, and how it operates the palace — or tell me what to change.
-              <span style={{ color: 'var(--phosphor-dim)', textShadow: 'none' }}>
-                {' '}(Capturing your feedback as a tracked to-do is coming next.)
-              </span>
+              boards, and how it operates the palace — or tell me what to change,
+              and I'll capture it as a tracked to-do.
             </div>
           )
         ) : (
@@ -786,7 +800,7 @@ export default function EntryAgentWindow({ entry, context, containerRef, onClose
           onKeyDown={(e) => {
             if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); sendTurn(); }
           }}
-          placeholder={sending ? 'waiting for the companion…' : (isEntry ? 'discuss anything here, or ask for an edit…' : 'discuss STIGMERGY, or give feedback…')}
+          placeholder={sending ? 'waiting for the companion…' : (isEntry ? 'discuss anything here, or ask for an edit…' : isTrickster ? 'ask about this project or its decision…' : 'discuss STIGMERGY, or give feedback…')}
           rows={3}
           disabled={sending}
           style={{
@@ -826,7 +840,9 @@ export default function EntryAgentWindow({ entry, context, containerRef, onClose
         }}
       >
         grounded in <span style={{ color: 'var(--phosphor)', textShadow: 'var(--glow)' }}>{title}</span>
-        {!isEntry ? (
+        {isTrickster ? (
+          <>{' · '}pending decision{' · '}read-only</>
+        ) : !isEntry ? (
           <>{' · '}development feedback</>
         ) : grounding ? (
           <>

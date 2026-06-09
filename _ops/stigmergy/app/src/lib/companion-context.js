@@ -22,9 +22,14 @@ export function resolveContext({ deck, entryPath, commitSha, tricksterRequest } 
   if (deck === 'STATE' && entryPath) {
     return { kind: 'entry', path: entryPath };
   }
-  // Stage 2 (TRICKSTER) and Stage 3 (LOG) add their branches above this line.
-  // Until then, every other surface grounds the companion in STIGMERGY itself —
-  // a development collaborator the user can talk to from anywhere.
+  if (deck === 'TRICKSTER' && tricksterRequest && tricksterRequest.request_id) {
+    // The project behind the current pending decision (the page IS the agent):
+    // ground in it + the steward's ask. Read-only Q&A.
+    return { kind: 'trickster_request', ...tricksterRequest };
+  }
+  // Stage 3 (LOG) adds its branch above this line. Until then, every other
+  // surface grounds the companion in STIGMERGY itself — a development
+  // collaborator the user can talk to from anywhere.
   return { kind: 'app_feedback', deck: deck || null };
 }
 
@@ -51,7 +56,7 @@ export function contextLabel(ctx) {
     case 'entry': return ctx.title || ctx.path || 'this entry';
     case 'commit': return ctx.sha ? `commit ${ctx.sha.slice(0, 7)}` : 'a commit';
     case 'uncommitted': return 'uncommitted work';
-    case 'trickster_request': return ctx.entry || 'a pending decision';
+    case 'trickster_request': return ctx.project || ctx.entry || 'a pending decision';
     case 'app_feedback': return `STIGMERGY · ${ctx.deck ? String(ctx.deck).toLowerCase() : 'app'}`;
     default: return 'STIGMERGY';
   }

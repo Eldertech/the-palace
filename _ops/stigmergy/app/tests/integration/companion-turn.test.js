@@ -140,6 +140,34 @@ describe('POST /api/entry-agent/turn', () => {
     expect(reply.payload.reply).toBe(REPLY);
   }, 20000);
 
+  test('a trickster_request turn answers as the project behind the decision (read-only)', async () => {
+    // Stage 2: on TRICKSTER the companion grounds in the project entry named by
+    // the request (its `from`/project title resolves to that entry) and replies
+    // AS it — read-only, no edit/flag. Here the project is the temp "Open Entry".
+    const res = await request(server).post('/api/entry-agent/turn').send({
+      context: {
+        kind: 'trickster_request', request_id: 'req-1', project: 'Open Entry',
+        ask: 'pick the next move', options: [{ id: 'a', label: 'ship it' }],
+      },
+      message: 'what are you asking me to decide?',
+    });
+    expect(res.status).toBe(200);
+    expect(res.body.fired).toBe(true);
+    const turnId = res.body.turnId;
+
+    await waitFor(() => !existsSync(companionLane.paths.pidFile), { timeout: 6000 });
+    await waitFor(() => readFileSync(boardPath(root), 'utf8').includes('companion_reply'), { timeout: 4000 });
+
+    const lines = readBoard(root);
+    const reply = lines.find((m) => m.payload && m.payload.kind === 'companion_reply' && m.payload.turn_id === turnId);
+    expect(reply).toBeTruthy();
+    expect(reply.from).toBe('Open Entry (Companion)'); // speaks as the project
+    expect(reply.payload.entry_path).toBe('Open Entry.md'); // grounded in the resolved entry
+    // read-only: no edit/flag landed for this turn
+    expect(lines.some((m) => m.payload && m.payload.kind === 'companion_edit' && m.payload.turn_id === turnId)).toBe(false);
+    expect(lines.some((m) => m.payload && m.payload.kind === 'stigmergy_todo' && m.payload.turn_id === turnId)).toBe(false);
+  }, 20000);
+
   test('an app_feedback flag turn captures a to-do as a stigmergy_todo FLAG on the QUEUE', async () => {
     // Stage 1: the worker proposes {reply, action:{type:'flag', todo}}; the reap
     // posts the confirming reply AND a FLAG/stigmergy_todo on the FLAGS board,

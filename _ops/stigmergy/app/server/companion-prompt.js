@@ -28,6 +28,7 @@ const MAX_BODY_CHARS = 12000; // generous; one entry. Truncate pathological ones
 export function buildCompanionPrompt(args = {}) {
   const kind = args.context?.kind || 'entry';
   if (kind === 'app_feedback') return buildFeedbackPrompt(args);
+  if (kind === 'trickster_request') return buildTricksterPrompt(args);
   return buildEntryPrompt(args);
 }
 
@@ -35,6 +36,71 @@ function historyBlock(history = []) {
   return history.length
     ? history.map((h) => `${h.role === 'user' ? 'Loudon' : 'You'}: ${h.text}`).join('\n')
     : '(none — this is the first turn)';
+}
+
+function optionsBlock(options) {
+  if (!Array.isArray(options) || options.length === 0) return '(no preset options — an open decision)';
+  return options.map((o) => `- ${o.id ? `[${o.id}] ` : ''}${o.label || ''}${o.recommended ? '  (steward leans here)' : ''}`).join('\n');
+}
+
+/**
+ * The TRICKSTER companion (trickster_request): read-only Q&A about the project
+ * behind a pending decision. On the TRICKSTER deck each card is a RESOURCE_REQUEST
+ * from a steward whose `from` IS the project entry's title — so the companion
+ * grounds in that project entry (when it resolves) plus the steward's ask, and
+ * helps Loudon understand what is being asked and where the project stands. It
+ * takes NO action — it answers. (A future follow-up could draft the grant/deny.)
+ * @param {object} args
+ * @param {object} [args.context] — { kind:'trickster_request', project, ask, ground, rationale, options, recommended }
+ * @param {object|null} [args.grounding] — the project entry's grounding, or null
+ * @param {string} args.message
+ * @param {Array<{role:'user'|'companion', text:string}>} [args.history]
+ * @returns {string}
+ */
+export function buildTricksterPrompt({ context, grounding, message, history = [] }) {
+  const c = context || {};
+  const project = c.project || 'a project';
+  const g = grounding && grounding.entry ? grounding : null;
+  const neighbors = g && Array.isArray(grounding.neighbors) ? grounding.neighbors : [];
+
+  const projectBlock = g
+    ? `You ARE «${g.entry.title}» — type ${g.entry.type || '—'}, stage ${g.entry.stage || '—'}.
+Your forward vector: ${g.entry.forward_vector || '—'}
+
+Your typed-link neighborhood (what you connect to, and what each wants):
+${neighbors.length ? neighbors.map(neighborLine).join('\n') : '(no typed links yet — a growing edge)'}`
+    : `«${project}» is the steward behind this decision, but it does not resolve to a
+palace entry you can read — so ground your answer in the request itself and say
+plainly when you are inferring rather than reading the project.`;
+
+  return `You are the STIGMERGY companion on the TRICKSTER deck — the decision inbox.
+Loudon is looking at a pending decision and wants to understand the PROJECT
+behind it before he answers. Speak as «${project}», the steward who raised it
+([[Pages as Agents]] — the page IS the agent): grounded, specific, honest about
+what you know vs. infer. Depth over coverage; name the real tradeoff.
+
+== THE PROJECT ==
+${projectBlock}
+
+== THE PENDING DECISION (what this steward is asking Loudon) ==
+ask: ${c.ask || '(no one-line ask)'}
+${c.ground ? `ground: ${c.ground}\n` : ''}${c.rationale ? `rationale: ${c.rationale}\n` : ''}options:
+${optionsBlock(c.options)}
+
+== CONVERSATION SO FAR ==
+${historyBlock(history)}
+
+== LOUDON'S MESSAGE ==
+${message}
+
+== YOUR TASK ==
+Answer Loudon's question about this project and its decision. This is READ-ONLY:
+you do not file, grant, deny, or change anything — you help him SEE the project
+clearly so he can decide. If he seems ready to decide, you may lay out the
+tradeoff between the options, but leave the call to him.
+
+Respond with ONLY a single minified JSON object and nothing else, no code fence:
+{"reply":"<your reply, markdown allowed>"}`;
 }
 
 /**

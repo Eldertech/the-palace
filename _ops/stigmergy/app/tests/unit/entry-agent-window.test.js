@@ -88,6 +88,19 @@ describe('EntryAgentWindow (context-driven, Stage 0)', () => {
     expect(html).not.toContain('(top)');             // no scroll-spy section label
     expect(html).not.toContain('typed link');        // no neighborhood readout
   });
+
+  it('renders the trickster_request kind: project intro + the ask, read-only', () => {
+    const html = render({ context: {
+      kind: 'trickster_request', request_id: 'req-1',
+      project: 'Waveguide Synthesizer', ask: 'pick the excitation model',
+    } });
+    expect(html).toContain('data-testid="eaw-trickster-intro"');
+    expect(html).toContain('Waveguide Synthesizer'); // the project (titlebar + intro)
+    expect(html).toContain('pick the excitation model'); // the ask
+    expect(html).toContain('pending decision');      // footer
+    expect(html).toContain('read-only');             // footer
+    expect(html).not.toContain('(top)');             // not the entry surface
+  });
 });
 
 describe('TodoMarker (Stage 1 captured to-do)', () => {

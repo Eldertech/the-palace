@@ -16,10 +16,23 @@ describe('resolveContext', () => {
       .toEqual({ kind: 'app_feedback', deck: 'STATE' });
   });
 
-  it('grounds in STIGMERGY (app_feedback) on every other deck', () => {
+  it('grounds in STIGMERGY (app_feedback) on every other deck with no selection', () => {
     for (const deck of ['LOG', 'TRICKSTER', 'QUEUE', 'STEWARDS']) {
       expect(resolveContext({ deck })).toEqual({ kind: 'app_feedback', deck });
     }
+  });
+
+  it('grounds in the pending decision on TRICKSTER when a request is current', () => {
+    const req = { request_id: 'req-1', project: 'Waveguide Synthesizer', ask: 'pick a model', options: [] };
+    const ctx = resolveContext({ deck: 'TRICKSTER', tricksterRequest: req });
+    expect(ctx.kind).toBe('trickster_request');
+    expect(ctx.project).toBe('Waveguide Synthesizer');
+    expect(ctx.request_id).toBe('req-1');
+  });
+
+  it('falls back to app_feedback on TRICKSTER when no request is pending', () => {
+    expect(resolveContext({ deck: 'TRICKSTER', tricksterRequest: null }))
+      .toEqual({ kind: 'app_feedback', deck: 'TRICKSTER' });
   });
 
   it('is SSR-safe with no args', () => {
@@ -40,6 +53,7 @@ describe('contextLabel + isEntryContext', () => {
   it('labels each kind for the readout', () => {
     expect(contextLabel({ kind: 'entry', title: 'Spinoza', path: 'Spinoza.md' })).toBe('Spinoza');
     expect(contextLabel({ kind: 'app_feedback', deck: 'LOG' })).toBe('STIGMERGY · log');
+    expect(contextLabel({ kind: 'trickster_request', project: 'Waveguide Synthesizer' })).toBe('Waveguide Synthesizer');
   });
 
   it('marks only the entry kind as editable-in-place', () => {

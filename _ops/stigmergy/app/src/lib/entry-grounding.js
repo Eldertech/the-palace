@@ -67,6 +67,30 @@ function neighborFrom(palaceRoot, link, index) {
  *     floor: PALACE_FLOOR,
  *   }
  */
+/**
+ * Resolve an entry TITLE (a flat-vault name, e.g. a steward's `from`) to its
+ * palace-relative path, or null when no such entry exists. The page IS the
+ * agent, so a RESOURCE_REQUEST's `from` is usually the project entry's title.
+ */
+export function resolveTitleToPath(palaceRoot, title) {
+  if (typeof title !== 'string' || title.trim() === '') return null;
+  const index = buildIndex(listEntries(palaceRoot));
+  const { path } = resolveWikilink(index, title.trim());
+  return path || null;
+}
+
+/**
+ * Assemble grounding for the entry behind a given TITLE. Returns { path,
+ * grounding } — grounding is null (and path null) when the title names no
+ * palace entry (e.g. a non-page agent handle), so the caller can still ground a
+ * trickster turn in the request itself without an entry.
+ */
+export function assembleGroundingByTitle(palaceRoot, title) {
+  const path = resolveTitleToPath(palaceRoot, title);
+  if (!path) return { path: null, grounding: null };
+  return { path, grounding: assembleGrounding(palaceRoot, path) };
+}
+
 export function assembleGrounding(palaceRoot, relPath) {
   const entry = readEntry(palaceRoot, relPath);
   if (!entry) return null;

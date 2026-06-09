@@ -19,6 +19,7 @@ import { Banner } from './components/primitives.jsx';
 import { fetchPersistent, fetchSessions } from './adapters/blackboard.js';
 import { subscribeLive } from './adapters/live-tail.js';
 import { mergeLive } from './lib/live-feed.js';
+import { buildInbox } from './lib/inbox.js';
 import { BOARDS } from './lib/format.js';
 import { DEMO_MESSAGES } from './lib/demo-data.js';
 import { validateAll } from './lib/schema.js';
@@ -239,6 +240,28 @@ export default function App() {
     return trickster.filter((m) => m.type === 'RESOURCE_REQUEST' && !responded.has(m.request_id)).length;
   }, [visibleMessages]);
 
+  // The decision the Companion grounds in on the TRICKSTER deck: the TOP pending
+  // request (the one in front of Loudon now). Its `from` is the project entry's
+  // title — the page IS the agent — so the lane grounds in that project. As
+  // cards are filed the top changes and the companion re-grounds. Only computed
+  // on TRICKSTER; null elsewhere (then the companion grounds in STIGMERGY).
+  const currentTricksterRequest = useMemo(() => {
+    if (deck !== 'TRICKSTER') return null;
+    const top = buildInbox(visibleMessages).pending_requests[0];
+    if (!top) return null;
+    return {
+      request_id: top.request_id,
+      project: top.from,
+      ask: top.headline || top.resource || null,
+      ground: top.ground || null,
+      rationale: top.rationale || null,
+      options: Array.isArray(top.options)
+        ? top.options.map((o) => ({ id: o.id, label: o.label, recommended: !!o.recommended }))
+        : null,
+      recommended: top.recommended_option || null,
+    };
+  }, [deck, visibleMessages]);
+
   const handleOptimisticAppend = useCallback((persistedMessage) => {
     setOptimistic((prev) => {
       if (prev.some((m) => m.id === persistedMessage.id)) return prev;
@@ -424,6 +447,7 @@ export default function App() {
         open={agentOpen}
         deck={deck}
         entryPath={currentEntryPath}
+        tricksterRequest={currentTricksterRequest}
         onClose={toggleAgent}
       />
       </PalaceRefProvider>
