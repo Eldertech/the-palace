@@ -45,6 +45,54 @@ function handoffMsg(over = {}) {
   };
 }
 
+function todoMsg(over = {}) {
+  return {
+    id: 'stigmergy-todo-t1', type: 'FLAG', from: 'STIGMERGY (Companion)',
+    ts: '2026-06-08T12:00:00Z', board: 'FLAGS', session_id: 'companion-stigmergy',
+    payload: {
+      kind: 'stigmergy_todo',
+      title: 'make the LOG filters clearer',
+      detail: 'the filter row is hard to scan at a glance.',
+      area: 'log', severity: 'minor', status: 'open',
+    },
+    ...over,
+  };
+}
+
+describe('buildQueue — stigmergy_todo (Stage 1 to-do capture)', () => {
+  it('renders a captured to-do as a queue item on the FLAGS lane', () => {
+    const items = buildQueue([todoMsg()]);
+    expect(items).toHaveLength(1);
+    const it0 = items[0];
+    expect(it0.kind).toBe('stigmergy_todo');
+    expect(it0.id).toBe('stigmergy-todo-t1');
+    expect(it0.ask).toBe('make the LOG filters clearer');
+    expect(it0.area).toBe('log');
+    expect(it0.severity).toBe('minor');
+    expect(it0.board).toBe('FLAGS');
+    expect(it0.stale_if).toMatch(/Palace-Resolves: stigmergy-todo-t1/);
+  });
+
+  it('is retired by a RESOURCE_GRANT/DENY answering it (re: its id)', () => {
+    const grant = { id: 'g1', type: 'RESOURCE_GRANT', re: 'stigmergy-todo-t1', from: 'TRICKSTER', ts: '2026-06-08T12:05:00Z', board: 'TRICKSTER', payload: {} };
+    const items = buildQueue([todoMsg(), grant]);
+    expect(items.find((i) => i.kind === 'stigmergy_todo')).toBeUndefined();
+  });
+
+  it('does NOT auto-close on an entry touch (it names no palace entry)', () => {
+    const items = buildQueue([todoMsg()]);
+    const reconciled = reconcileQueue(items, [{ shortHash: 'abc', date: '2026-06-09T00:00:00Z', entries: ['Spinoza'], resolves: [] }]);
+    expect(reconciled[0].resolved.done).toBe(false);
+  });
+
+  it('IS closed by a commit carrying Palace-Resolves: <id>', () => {
+    const items = buildQueue([todoMsg()]);
+    const reconciled = reconcileQueue(items, [{ shortHash: 'def', date: '2026-06-09T00:00:00Z', entries: [], resolves: ['stigmergy-todo-t1'] }]);
+    expect(reconciled[0].resolved.done).toBe(true);
+    expect(reconciled[0].resolved.commit).toBe('def');
+  });
+});
+
 describe('buildQueue', () => {
   it('turns an unanswered RESOURCE_REQUEST into an item', () => {
     const q = buildQueue([reqMsg()]);

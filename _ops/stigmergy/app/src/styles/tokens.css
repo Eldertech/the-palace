@@ -264,6 +264,56 @@ hr::before { content: "═══════════════════
   z-index: 9998;
 }
 
+/* ---- Entry-Agent window: active-section glow ------------------------------ */
+/* The section the companion window is "reading" gets a restrained lift: a
+   brightness bump, a faint phosphor wash, and a thin left accent. Conforms to
+   the BBS grammar -- phosphor only, no neon bloom beyond the existing text
+   glow, no cyan. Applied by classList from EntryAgentWindow's scroll-spy. */
+.eaw-section-glow {
+  filter: brightness(1.18);
+  background: color-mix(in srgb, var(--phosphor) 6%, transparent);
+  box-shadow: inset 2px 0 0 var(--phosphor-dim);
+  transition: background var(--dur-fade) linear, filter var(--dur-fade) linear;
+}
+
+/* The active TRICKSTER card — the pending decision the companion box is
+   currently floating over (its scroll-spy, the analog of the entry section
+   glow). An amber left bar reads as "I am answering AS this one" — the same
+   "look at this" accent the discuss-pin and to-do markers use. */
+.eaw-card-active {
+  filter: brightness(1.1);
+  box-shadow: inset 3px 0 0 var(--ansi-bright-yellow);
+  transition: box-shadow var(--dur-fade) linear, filter var(--dur-fade) linear;
+}
+
+/* The "discussing" highlight — a SECOND selection (CSS Custom Highlight API).
+   Amber so it reads as distinct from the phosphor body and the green native
+   selection; persists when focus moves to the chat box (it is a registered
+   Highlight, not the live selection). Painted on real DOM ranges, no wrapping. */
+::highlight(eaw-discussing) {
+  background-color: color-mix(in srgb, var(--ansi-bright-yellow) 32%, transparent);
+  color: var(--phosphor-white);
+}
+
+/* ---- BBS scrollbar -------------------------------------------------------- */
+/* Square, phosphor, no chrome. Applied to in-window scrollers (the companion
+   body + composer) so they read as part of the terminal, not the OS. */
+.bbs-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: var(--phosphor-dim) var(--bg);
+}
+.bbs-scroll::-webkit-scrollbar { width: 10px; height: 10px; }
+.bbs-scroll::-webkit-scrollbar-track {
+  background: var(--bg);
+  border-left: 1px solid var(--phosphor-dim);
+}
+.bbs-scroll::-webkit-scrollbar-thumb {
+  background: var(--phosphor-dim);
+  border: 2px solid var(--bg); /* inset look; radius stays 0 */
+}
+.bbs-scroll::-webkit-scrollbar-thumb:hover { background: var(--phosphor); }
+.bbs-scroll::-webkit-scrollbar-corner { background: var(--bg); }
+
 /* ---- App-local resets + extras ------------------------------------------- */
 html, body, #root { height: 100%; margin: 0; background: var(--bg); }
 

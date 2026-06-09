@@ -17,7 +17,9 @@ import { checkAllowList } from '../../lib/entry-edit.js';
 // on failure shows an inline error band and a back button. Errors never
 // escape this component -- the deck stays usable.
 
-export default function EntryReader({ path, index, refIndex, onNavigate, onBack, onEdit, onGoBack }) {
+export default function EntryReader({
+  path, index, refIndex, onNavigate, onBack, onEdit, onGoBack,
+}) {
   const [state, setState] = useState({ kind: 'loading' });
 
   useEffect(() => {
