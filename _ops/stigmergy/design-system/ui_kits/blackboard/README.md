@@ -9,10 +9,10 @@ The word "blackboard" is an internal-only descriptor for the architecture
 banners, or status. In-product, the name is always **STIGMERGY**.
 
 ## Files
-- `index.html` — entry; orchestrates screens (intro → board → thread → compose). The board mounts directly — there is no login step.
-- `App.jsx` — top-level router / screen state
+- `index.html` — entry; orchestrates screens (dial-in intro → login → board → thread → compose)
+- `App.jsx` — top-level router / screen state (opens on `login`)
 - `Shell.jsx` — page frame: status bar (STIGMERGY · node · user · clock), content, command bar, scanlines
-- `LoginScreen.jsx` — **legacy / not in the active flow.** A cracked-shareware intro + login prompt from an earlier design; login was removed and must not be reinstated. Kept only as a reference asset.
+- `LoginScreen.jsx` — the cracked-shareware dial-in intro + login prompt: `ATDT` dialing → ANSI title banner → handle/passwd. This is the kit's signature opening screen (the "title card / dial-in feel" this README's header describes). **Note:** the production app (`_ops/stigmergy/app/`) deliberately *omits* login and mounts the board directly — don't reinstate login in the product. This kit preserves the full original BBS flow as a frozen design reference, not the shipped flow.
 - `BoardIndex.jsx` — the scan view: list of traces
 - `ThreadView.jsx` — expanded trace + replies
 - `Composer.jsx` — post a new trace / reply
