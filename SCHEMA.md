@@ -372,8 +372,10 @@ This keeps every file in the palace self-describing without conflating bundle fi
 | `source` | Extracted, quoted, translated, or annotated source material supporting the entry. Use the qualifier slot to name which one (`Foo — source — borges.md`). |
 | `sketch` | Half-formed material not yet ready for the entry body but too substantial for an HTML comment. |
 | `enrichment` | Material added via Enrichment ceremonies. Use the qualifier slot to name which enrichment. |
+| `plan` | The entry's materialized **work state** — open decisions, resolved decisions, a done trail — regenerated each steward cycle as the read-model of [[STIGMERGY]]'s append-only board. Maker-facing, high-churn; the steward owns it. Holds a *pointer* to the entry's `forward_vector`, never a copy (single-source-of-truth). One per stewarded entry. See [[Bundle-Local Stewardship — Production Plan]] and the Machinery/Content Split. |
+| `staging` | The entry's **teaching arc** — stage-by-stage Loudon Live session plans, ordered by didactic difficulty. Learner-facing, relatively stable once designed; produced by [[project-stage-builder]] (and Loudon), not the steward. Only project entries bound for Loudon Live have one. The steward *reads* it but does not rewrite it — arc-level changes are flagged to Loudon, never silently edited. |
 
-New types may be tried freely. When a type earns recurring use across multiple bundles, add it to this table — additions to this open vocabulary are not Schema Ceremony events. Only structural changes to the bundle pattern itself are.
+New types may be tried freely. When a type earns recurring use across multiple bundles, add it to this table — additions to this open vocabulary are not Schema Ceremony events. Only structural changes to the bundle pattern itself are. `plan` and `staging` were added 2026-06-09 once the 19-steward stewardship migration gave them recurring use across many bundles — documentation, not ceremony.
 
 **Archive:** Consumed bundle files move to `[Entry]/Archive/`. Stays with the entry; git carries history.
 

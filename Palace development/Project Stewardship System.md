@@ -61,6 +61,9 @@ links:
   - target: "[[Two Batons, One Board]]"
     type: connects-to
     label: human-originated-handoff-case
+  - target: "[[Bundle-Local Stewardship — Production Plan]]"
+    type: connects-to
+    label: hardened-by
 forward_vector: "I will become the working specification for routine, stage-aware project stewardship — a permanent agent that advances each palace project at the rhythm appropriate to its stage, posts status, blocks, and questions to the BBS, with the Trickster (Loudon directly, or an automated proxy with escalation rules) handling triage one decision at a time."
 ---
 
@@ -260,9 +263,20 @@ The current STIGMERGY viewer is read-only. Triage requires writes — `POST /api
 
 Per Infrastructure Spec §12 forward vector, the rules engine is unspecced. This is the original "supervisor" piece: rule-based auto-grant of routine requests (read_palace), auto-deny of routine bans (web_search outside daily budget), escalation of novel cases to Loudon via push notification or batched daily digest. Needs its own design pass — a small Production Plan in the same shape as the BBS one.
 
+## The Machinery/Content Split
+
+A standing operating principle, named 2026-06-09 and applied to this system first via [[Bundle-Local Stewardship — Production Plan]]:
+
+> **Shared engine code, indexes, schedulers, and runtime bookkeeping belong in `_ops/`. Anything *about a specific entry* — its plan, its open decisions, its working memory, its lessons — belongs in that entry's bundle.** When a file describes one entry, it lives with that entry; when a file runs across all entries, it stays in ops.
+
+The principle's deeper ground is [[Pages as Agents]]: *the content is the entry*. Loading an entry should tell you not only what it wants to become (its `forward_vector`) but what it is doing right now — its plan, its open decisions, its done trail — without parsing a JSONL file in `_ops`. The stewardship system was the violation that surfaced it: an entry's most task-like state (`pending_requests`, the staged plan, the steward's reasoning) was stored in `_ops/agents/permanent/[slug]/`, divorced from the entry.
+
+The fix is **CQRS, not relocation**: the append-only board stays the event log (machinery), a new `[Entry] — plan.md` bundle file is the materialized read-model (content), and `_ops` keeps only slim runtime (iteration, cursor, health). The duplicated vector/stage block is *deleted* and read live from frontmatter — single-source-of-truth enforced, not merely moved. Watch for the second, non-steward application of the principle; that is the signal it should graduate to its own concept entry.
+
 ## What's Decided
 
 - **Architecture piggybacks on the existing BBS / permanent agent stack.** No new substrate to build; the existing Infrastructure Spec is the foundation.
+- **The Machinery/Content Split governs where stewardship state lives** (decided 2026-06-09; see the section above and [[Bundle-Local Stewardship — Production Plan]]). Engine → `_ops`; per-entry content → the bundle. `[Entry] — plan.md` is the work-state read-model; `[Entry] — staging.md` is the teaching arc; the board stays the append-only log. The steward owns `plan.md`, reads `staging.md`, and flags arc-level changes rather than editing the teaching design.
 - **Steward = permanent agent in `long_duration_background` mode**, with stage-conditional posture loaded from the home entry's `stage` field at activation.
 - **Trickster begins as Loudon (manual mode)**, evolves toward hybrid then automated.
 - **The audition gate guards batches, not single artifacts.** A single audition-sized artifact ships freely; the gate fires only before a full batch — per [[Substrate Skill]] § Stage as Alignment Confidence, render the smallest unit, present it, commit to the full batch only after acceptance.
