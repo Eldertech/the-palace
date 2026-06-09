@@ -91,9 +91,13 @@ What followed was the palace's own origin ceremony: harvesting, depositing, buil
 - YAML frontmatter links — typed, curated, structural. The major neural tracts. Our RDF triples.
 - Body text `[[wiki links]]` — untyped, casual, contextual. The local associations. Meaning carried by surrounding prose.
 
-**Folder structure (as of 2026-03-25):**
-- **Root** — Foundational skeleton files (CLAUDE.md, SCHEMA.md, The Jewel, Substrate, Rosetta Stone, README, Four Pillars) and all knowledge entries (concepts, hubs, projects, breakthroughs, sources, questions, spores). Flat by design.
-- **`_ops/`** — Ceremony machinery and working queues. Contains all ceremony specs, their Context companions (session history), and active working files (Harvest Queue, Harvest Frontier, Deposit Archive, Palace Graffiti, Palace Quotes, Palace To-Do). Underscore prefix sorts it to the top of any file explorer. Obsidian wikilinks resolve across folders; no links broke in the reorganization.
+**Folder structure** — the canonical spec is [[CLAUDE]] §Directory Structure; for the live listing, run `ls` on the palace root. The stable shape:
+
+<!-- mirror of SCHEMA §1 type list — keep in sync (12 types as of v1.6) -->
+
+- **Root** — Foundational skeleton files (CLAUDE.md, SCHEMA.md, JEWEL, SUBSTRATE, ROSETTA, README, FOUR PILLARS) and knowledge entries of every type *except* specialist/maker: `concept`, `hub`, `project`, `breakthrough`, `source`, `meta`, `practice`, `person`, `question`, `spore`. Mostly flat, with optional entry bundles (`[Entry]/`) and themed subfolders (`Projects/`, `People/`, `Palace development/`, `Enrichment/`, `Artifacts/`).
+- **`Shop/`** — The Shop sub-system: `specialist` + `maker` entries (use `status`, not `stage`).
+- **`_ops/`** — Ceremony machinery and working queues. Contains all ceremony specs, their Context companions (session history), and active working files (Deposit Archive, Palace Graffiti, Palace Quotes, Palace To-Do) plus machinery subdirs (`_ops/swarm/`, `_ops/stigmergy/`, `_ops/loudon-live/`, `_ops/agents/`, …). Underscore prefix sorts it to the top of any file explorer. Obsidian wikilinks resolve across folders.
 
 The distinction: root entries are *of* the palace; `_ops/` files *operate* the palace.
 
@@ -115,8 +119,6 @@ The palace has 90 root entries, plus 31 in `Palace development/`, 93 in `Project
 
 A full Weave was completed 2026-03-30 (56 links added, 4 entries promoted, 2 orphans resolved). The first Swarm Weave workers have been run across the Palace development folder (16 entries, 18 link changes applied, Haiku model guidance documented in the coordinator template).
 
-A full Weave was completed 2026-03-30 (56 links added, 4 entries promoted, 2 orphans resolved). The first Swarm Weave workers have been run across the Palace development folder (16 entries, 18 link changes applied, Haiku model guidance documented in the coordinator template).
-
 **First Palace Enchantment completed 2026-03-31.** Two entries enchanted: [[Hilaritas Generator]] and [[Lateral Access]]. New entry spawned: [[Tristitia Generator]]. Forward vectors written by hand for 5 hub entries. Key findings documented in [[Palace Enchantment]] § From First Practice.
 
 Hub nodes: [[Cooperation Yields Agency]], [[FOUR PILLARS]], [[Hilaritas Generator]], [[Kuramoto Coupling]], [[Palace Ceremonies]], [[Palace Philosophies]], [[Spinoza Conatus]]
@@ -132,7 +134,7 @@ The palace has crossed a third threshold: from a system that weaves and maintain
 
 Ceremony files are read on every invocation. As the palace grows, token cost per ceremony grows with it. The risk is that meta entries — ceremony specs, the Substrate Skill, the Deposit Ceremony — become so large that routine ceremonies are expensive before any content work begins.
 
-The design principle to hold: **ceremony files should stay lean — trigger, protocol, postcondition**. History, rationale, and process observations belong in companion source documents, read only when needed (during Weaves or when revisiting rationale), not during routine ceremony runs. Check file sizes periodically. If a ceremony file exceeds ~10KB, consider splitting it.
+The design principle to hold: **ceremony files should stay lean — trigger, protocol, postcondition**. History, rationale, and process observations belong in companion source documents, read only when needed (during Weaves or when revisiting rationale), not during routine ceremony runs. Check file sizes periodically. If a ceremony file exceeds ~8KB, split it into an operational card + Context companion (per [[SCHEMA]] §6).
 
 ## Open Questions
 

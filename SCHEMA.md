@@ -6,7 +6,7 @@ pillars:
   - practice
   - philosophy
 born: 2026-03
-version: "1.10"
+version: "1.11"
 stage: foundational
 status: canonical
 links:
@@ -290,11 +290,17 @@ When any of the following change, a Schema Ceremony is required:
 2. Review against existing entries: does this break or orphan anything?
 3. Update SCHEMA.md
 4. Update CLAUDE.md version field (increment MAJOR if breaking change, MINOR if additive)
-5. Update ROSETTA if affected
-6. Update `_ops/Substrate Skill.md` if affected
-7. Git commit with message: `Schema Ceremony — [what changed] — v[new version]`
+5. Propagate to the secondary mirrors — every file that restates the changed vocabulary
+   inline must be updated in the same ceremony, or it becomes a stale spec. The mirror set:
+   ROSETTA (type/link/ceremony cards), `README - The Palace Guide` (entry-type + link-ontology
+   + stage tables), SUBSTRATE (architecture + type list), `_ops/Substrate Skill.md`, and — for
+   ceremony add/remove only — `_ops/Palace Ceremonies` and CLAUDE.md's trigger table. Update
+   each the change touches; if none, say so explicitly.
+6. Git commit with message: `Schema Ceremony — [what changed] — v[new version]`
 
-**Postcondition:** SCHEMA.md, CLAUDE.md, ROSETTA.md, and `_ops/Substrate Skill.md` are internally consistent. Git commit made with Schema Ceremony message.
+**Postcondition:** SCHEMA.md, CLAUDE.md, ROSETTA.md, README, SUBSTRATE, `_ops/Substrate Skill.md`,
+and (for ceremony changes) `_ops/Palace Ceremonies` are internally consistent — verified by
+`_ops/swarm/lint-doc-drift.py` exiting clean on errors. Git commit made with Schema Ceremony message.
 
 **Failure mode:** If a schema change is made but the commit message does not follow the Schema Ceremony format, the change is not considered a Schema Ceremony — it is an undocumented structural edit. On next Weave: flag any version increments whose git commit messages lack the Schema Ceremony format. Reconstruct the rationale from the diff and add it retroactively as a note in SCHEMA.md.
 
@@ -303,6 +309,8 @@ When any of the following change, a Schema Ceremony is required:
 - *Planning only:* claude.ai online (can deliberate and draft changes; cannot write files or commit)
 - *Manual:* Obsidian + human (human makes edits; human runs git commit)
 - *Not supported:* GitHub cloud alone
+
+**Schema Ceremony rationale (2026-06-09, v1.11): folded the secondary mirrors into the §5 checklist + postcondition, and made the doc-drift linter a checkable postcondition.** A foundational-doc-drift audit found that the prior checklist obligated updates only to SCHEMA, CLAUDE, ROSETTA, and Substrate Skill — leaving README, SUBSTRATE, and (for ceremony changes) Palace Ceremonies as unmanaged vocabulary mirrors that went stale after every schema change since v1.6. This ceremony names the full mirror set in step 5, adds `_ops/swarm/lint-doc-drift.py` (clean-on-errors) to the postcondition, and backfills the already-ratified vocabulary into the stale mirrors: README and SUBSTRATE gained the four missing entry types (`practice`, `person`, `specialist`, `maker`, from v1.6) and README gained `exemplifies` + `member-of` (from v1.8) with the v1.9 `deepens`/`emerged-from` wording. **Additive and descriptive** — like v1.10, it ratifies/hardens existing reality rather than inventing vocabulary. No entry type, link type, required field, stage, or ceremony was added or removed; only the Schema-Ceremony protocol itself was tightened. Full findings: the 2026-06-09 audit handoff under `_ops/claude-code-prompts/`.
 
 ---
 
@@ -319,7 +327,7 @@ When a ceremony file exceeds ~8KB, split it into two files:
 
 **Rules:**
 - Both files carry full YAML frontmatter with all required fields
-- Both files live flat in the palace root (no subdirectories)
+- Both files live flat in `_ops/` (no subdirectories) — ceremony cards and their Context companions are operational machinery
 - The Context file links back to the operational card with `type: emerged-from`
 - The operational card links forward to the Context file with `type: spawned`
 - When a ceremony operator is instructed to "add to the context" or "add to the log" for a ceremony, entries go in the Context file, not the operational card
@@ -329,6 +337,7 @@ When a ceremony file exceeds ~8KB, split it into two files:
 - [[Deposit Ceremony]] + [[Deposit Ceremony — Context]]
 - [[Harvest Ceremony]] + [[Harvest Ceremony — Context]]
 - [[Weave Ceremony]] + [[Weave Ceremony — Context]]
+- [[Handoff Ceremony]] + [[Handoff Ceremony — Context]]
 
 ---
 
