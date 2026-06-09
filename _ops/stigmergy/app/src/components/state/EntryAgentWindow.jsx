@@ -151,7 +151,7 @@ function GroundingView({ grounding }) {
 // Undo (M1d) is post-commit and honest: [undo] reverts the commit as a NEW
 // inverse commit on the quarantine branch (never a silent rollback). A revert
 // arrives as its own marker (op:'revert'), and the original is shown 'reverted'.
-export function EditMarker({ op, commit, branch, summary, reverts, onUndo, undone, undoing }) {
+export function EditMarker({ op, commit, branch, summary, reverts, vectorChange, onUndo, undone, undoing }) {
   if (op === 'revert') {
     return (
       <div data-testid="eaw-edit" data-op="revert" style={{
@@ -181,7 +181,7 @@ export function EditMarker({ op, commit, branch, summary, reverts, onUndo, undon
           color: 'var(--phosphor)', textShadow: 'var(--glow)', fontSize: 11,
           textDecoration: undone ? 'line-through' : 'none',
         }}>
-          ✎ {op}{summary ? ` — ${summary}` : ''}
+          ✎ {op === 'set-vector' ? 'forward vector' : op}{summary ? ` — ${summary}` : ''}
         </span>
         {undone ? (
           <span style={{ color: 'var(--phosphor-dim)', fontSize: 10, textTransform: 'uppercase', letterSpacing: '.04em' }}>
@@ -201,6 +201,28 @@ export function EditMarker({ op, commit, branch, summary, reverts, onUndo, undon
           >{undoing ? 'undoing…' : '[undo]'}</span>
         ) : null}
       </div>
+      {vectorChange ? (
+        // A forward-vector change is never silent — surface from → to prominently
+        // (the standing palace rule, made visible). Amber = "look at this".
+        <div data-testid="eaw-vector-flag" style={{
+          margin: '4px 0', padding: '4px 7px',
+          borderLeft: '2px solid var(--ansi-bright-yellow)',
+          background: 'color-mix(in srgb, var(--ansi-bright-yellow) 8%, transparent)',
+        }}>
+          <div style={{
+            color: 'var(--ansi-bright-yellow)', textShadow: '0 0 6px currentColor',
+            fontSize: 10, textTransform: 'uppercase', letterSpacing: '.06em', marginBottom: 2,
+          }}>⟲ forward vector changed</div>
+          {vectorChange.from ? (
+            <div style={{ color: 'var(--phosphor-dim)', fontSize: 10, fontStyle: 'italic', textDecoration: 'line-through' }}>
+              {vectorChange.from}
+            </div>
+          ) : null}
+          <div style={{ color: 'var(--phosphor)', textShadow: 'var(--glow)', fontSize: 11, fontStyle: 'italic' }}>
+            {vectorChange.to}
+          </div>
+        </div>
+      ) : null}
       <div style={{ color: 'var(--phosphor-dim)', fontSize: 10 }}>
         committed <span style={{ color: 'var(--phosphor-bright)' }}>{commit}</span> on {branch}
       </div>
@@ -312,6 +334,7 @@ export default function EntryAgentWindow({ entry, containerRef, onClose }) {
             id: m.id || `e-${p.turn_id}-${p.commit || p.op}`, role: 'edit',
             op: p.op, commit: p.commit, branch: p.branch, summary: p.summary,
             reverts: p.reverts || null, turnId: p.turn_id,
+            vectorChange: p.vector_change || null,
           }]);
           // A revert landed: mark the original reverted and clear its in-flight flag.
           if (p.op === 'revert' && p.reverts) {
@@ -630,7 +653,7 @@ export default function EntryAgentWindow({ entry, containerRef, onClose }) {
                 ? <EditMarker
                     key={m.id}
                     op={m.op} commit={m.commit} branch={m.branch} summary={m.summary}
-                    reverts={m.reverts}
+                    reverts={m.reverts} vectorChange={m.vectorChange}
                     onUndo={m.op !== 'revert' && m.commit ? () => doUndo(m.commit, m.turnId) : undefined}
                     undone={revertedCommits.has(m.commit)}
                     undoing={undoingCommits.has(m.commit)}

@@ -132,7 +132,7 @@ export function buildCompanionMessage({ title, entryPath, turnId, reply, model, 
  * "it landed in LOG": the commit hash is the proof the write is real. Pure +
  * validated by core before append.
  */
-export function buildEditProofMessage({ title, entryPath, turnId, op, shortHash, branch, summary, model, ts, id }) {
+export function buildEditProofMessage({ title, entryPath, turnId, op, shortHash, branch, summary, model, ts, id, vectorChange }) {
   const slug = slugify(title);
   return {
     schema_version: '1.0',
@@ -161,6 +161,9 @@ export function buildEditProofMessage({ title, entryPath, turnId, op, shortHash,
       branch,
       summary,
       status: 'committed',
+      // A forward-vector change is never silent — carry from→to so the window
+      // flags it (the standing rule: never rewrite a forward_vector quietly).
+      ...(vectorChange ? { vector_change: vectorChange } : {}),
     },
   };
 }
@@ -314,6 +317,7 @@ export function createCompanionLane(opts = {}) {
               title, entryPath, turnId, op: w.op, shortHash: w.shortHash,
               branch: editsBranch, summary: edit.summary || `companion ${edit.op}`,
               model: meta.model || model, ts: new Date().toISOString(),
+              vectorChange: w.vectorChange || null,
             }));
             editSummary = { ok: true, op: w.op, commit: w.shortHash };
           } else {

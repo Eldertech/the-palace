@@ -17,11 +17,12 @@ function flag(name, def) {
 
 const sleepMs = parseInt(flag('--sleep', '250'), 10);
 const reply = flag('--reply', 'stub companion reply — discussing the passage.');
-// When --edit-text is given, the stub also proposes an append edit (the M1c
-// edit path); otherwise it is a discuss-only turn.
+// When --edit-text is given, the stub also proposes an edit (the M1c edit path);
+// --edit-op selects which op (default 'append'); otherwise it is a discuss-only turn.
 const editText = flag('--edit-text', null);
+const editOp = flag('--edit-op', 'append');
 
-const out = editText ? { reply, edit: { op: 'append', text: editText } } : { reply };
+const out = editText ? { reply, edit: { op: editOp, text: editText } } : { reply };
 process.stdout.write(JSON.stringify(out) + '\n');
 
 setTimeout(() => process.exit(0), Number.isFinite(sleepMs) ? sleepMs : 250);

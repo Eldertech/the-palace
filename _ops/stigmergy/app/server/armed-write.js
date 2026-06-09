@@ -24,6 +24,7 @@ import { resolve, join, dirname } from 'node:path';
 import { checkAllowList } from '../src/lib/entry-edit.js';
 import { execGit } from './git-wrapper.js';
 import { commitSelected, clearStaleLocks } from './commit.js';
+import { formatScalar } from '../src/lib/yaml-emit.js';
 
 const DEFAULT_EDITS_DIR = '../palace-stigmergy-edits';
 const DEFAULT_EDITS_BRANCH = 'stigmergy-edits';
@@ -36,6 +37,48 @@ export function splitRawFrontmatter(text) {
   const m = text.match(/^(---\r?\n[\s\S]*?\r?\n---\r?\n)([\s\S]*)$/);
   if (m) return { fmBlock: m[1], body: m[2] };
   return { fmBlock: '', body: text };
+}
+
+// Best-effort unquote of a raw YAML scalar, for the "from" side of a vector
+// flag. Display-only; the canonical value is re-emitted via formatScalar.
+function unquoteYaml(raw) {
+  const s = (raw == null ? '' : String(raw)).trim();
+  if (s.length >= 2 && s[0] === '"' && s.endsWith('"')) {
+    return s.slice(1, -1).replace(/\\"/g, '"').replace(/\\n/g, '\n').replace(/\\t/g, '\t').replace(/\\\\/g, '\\');
+  }
+  if (s.length >= 2 && s[0] === "'" && s.endsWith("'")) return s.slice(1, -1).replace(/''/g, "'");
+  return s;
+}
+
+/**
+ * Set THIS entry's `forward_vector` inside a VERBATIM frontmatter block,
+ * touching only that one line. Unlike a full re-emit (emitEntryFile), this does
+ * NOT reorder fields or restyle arrays, so an entry not already in canonical
+ * order keeps a churn-free, signal-only diff. forward_vector is ALWAYS a single
+ * quoted line in the palace (ALWAYS_QUOTE), so a line replacement is exact.
+ * Refuses a block-scalar (|, >) vector rather than corrupting a multi-line value.
+ * Pure. Returns { ok, fmBlock, oldValue } or { ok:false, error }.
+ */
+export function setForwardVector(fmBlock, newVector) {
+  if (typeof fmBlock !== 'string' || fmBlock === '') return { ok: false, error: 'no frontmatter to edit' };
+  const v = typeof newVector === 'string' ? newVector.trim() : '';
+  if (!v) return { ok: false, error: 'empty forward vector' };
+  if (v.includes('\n')) return { ok: false, error: 'forward vector must be a single line' };
+  const formatted = formatScalar(v, 'forward_vector'); // quoted + escaped, one line
+
+  const present = fmBlock.match(/^forward_vector:[ \t]*(.*)$/m);
+  if (present) {
+    const oldRaw = present[1];
+    if (/^[|>]/.test(oldRaw.trim())) {
+      return { ok: false, error: 'forward_vector is a multi-line block scalar — not editable yet' };
+    }
+    const next = fmBlock.replace(/^forward_vector:[ \t]*.*$/m, `forward_vector: ${formatted}`);
+    return { ok: true, fmBlock: next, oldValue: unquoteYaml(oldRaw) };
+  }
+  // Absent: insert just before the closing fence (no re-order of existing fields).
+  const m = fmBlock.match(/^([\s\S]*\n)(---\r?\n?)$/);
+  if (!m) return { ok: false, error: 'malformed frontmatter block' };
+  return { ok: true, fmBlock: `${m[1]}forward_vector: ${formatted}\n${m[2]}`, oldValue: null };
 }
 
 /**
@@ -159,11 +202,25 @@ export async function armedWriteEntry({
 
   const before = readFileSync(abs, 'utf8');
   const { fmBlock, body } = splitRawFrontmatter(before);
-  const applied = applyOp(body, op);
-  if (!applied.ok) return { ok: false, status: 422, error: applied.error };
-  if (applied.body === body) return { ok: false, status: 422, error: 'nothing changed' };
 
-  const after = fmBlock + applied.body;
+  // set-vector edits the FRONTMATTER (the forward_vector line) surgically; every
+  // other op edits the BODY (verbatim frontmatter preserved). A vector change is
+  // never silent — it carries vectorChange so the PROOF can flag it.
+  let after;
+  let vectorChange = null;
+  if (op && op.op === 'set-vector') {
+    if (!fmBlock) return { ok: false, status: 422, error: 'entry has no frontmatter to edit' };
+    const sv = setForwardVector(fmBlock, op.text);
+    if (!sv.ok) return { ok: false, status: 422, error: sv.error };
+    if (sv.fmBlock === fmBlock) return { ok: false, status: 422, error: 'nothing changed' };
+    after = sv.fmBlock + body;
+    vectorChange = { from: sv.oldValue, to: (op.text || '').trim() };
+  } else {
+    const applied = applyOp(body, op);
+    if (!applied.ok) return { ok: false, status: 422, error: applied.error };
+    if (applied.body === body) return { ok: false, status: 422, error: 'nothing changed' };
+    after = fmBlock + applied.body;
+  }
   try {
     mkdirSync(dirname(abs), { recursive: true });
     clearStaleLocks(editsRoot);
@@ -182,7 +239,7 @@ export async function armedWriteEntry({
     author,
   });
   if (!commit.ok) return { ok: false, error: `commit failed: ${commit.error}`, message: commit.message };
-  return { ok: true, op: op.op, shortHash: commit.shortHash, subject: commit.subject, message: commit.message };
+  return { ok: true, op: op.op, shortHash: commit.shortHash, subject: commit.subject, message: commit.message, vectorChange };
 }
 
 function basenameNoMd(p) {
