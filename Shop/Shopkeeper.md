@@ -106,6 +106,10 @@ Like the [[Loudon Live Post-producer]], I earn autonomy. Early on I bring every 
 - Where does my log live — a bundle companion like the Post-producer's, holding what I scanned, tried, and composted, so I don't re-chase dead ends?
 - How do I keep the maintenance half from being crowded out by the louder discovery half? A healthy Shop needs both, and the quiet work is easy to skip.
 
+## Pending Commission
+
+> **Approved 2026-06-08 — execute next scheduled run, before the routine sweep.** Deposit an **Image-to-3D smith** Specialist (Hunyuan3D-2 first-stocked) and run a Hunyuan3D-2 vs TRELLIS.2 vs TripoSplat calibration shoot-out. Full baton, proven probe path, and caveats: `Shop/Shopkeeper/next-run-commission.md`.
+
 ## Forward Vector
 
 First run: one full loop on a real gap from the [[Maker]]'s "more to come" list — scan, try a single honest probe, and bring Loudon one dossier. That one pass verifies the loop, the dossier shape, and the bar all cohere in practice. Then settle into the steward cadence, and let the maintenance half grow in alongside the discovery half.
