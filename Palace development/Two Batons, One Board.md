@@ -13,7 +13,7 @@ confidence: working
 energy: high
 who_leads: shared
 links:
-  - target: "[[Handoff Ceremony]]"
+  - target: "[[Baton Ceremony]]"
     type: connects-to
     label: where-the-human-baton-lives
   - target: "[[Project Stewardship System]]"
@@ -34,14 +34,14 @@ links:
   - target: "[[Modes of Collaboration]]"
     type: connects-to
     label: cross-surface-meta-mode
-forward_vector: "I want to become the place that holds the recognition that the palace runs two batons across instance boundaries — a human-carried handoff and a stigmergic steward request — and that they belong on one surface. My open question is the same one the system already found: the limit on autonomous work is not the workers' capacity but the Trickster's bandwidth, so my real subject is how to spend a human's scarce attention well, not how to remove it. I should dissolve into the Handoff Ceremony, the Stewardship system, and a scheduler spec as each absorbs the part of me it needs."
+forward_vector: "I want to become the place that holds the recognition that the palace runs two batons across instance boundaries — a human-carried handoff and a stigmergic steward request — and that they belong on one surface. My open question is the same one the system already found: the limit on autonomous work is not the workers' capacity but the Trickster's bandwidth, so my real subject is how to spend a human's scarce attention well, not how to remove it. I should dissolve into the Baton Ceremony, the Stewardship system, and a scheduler spec as each absorbs the part of me it needs."
 ---
 
 # Two Batons, One Board
 
 The palace moves work across instance and surface boundaries with two different batons, and for now they do not know about each other.
 
-The **human-carried handoff baton.** Cowork develops an idea; at the close, [[Closing Well]] and the [[Handoff Ceremony]] package the in-progress move into a markdown file in the entry's bundle; Loudon pastes the suggested invocation into a Claude Code session, which catches the baton. The baton is a file, and *Loudon is the transport layer.* The [[BBS Blackboard]] is nowhere in this loop.
+The **human-carried handoff baton.** Cowork develops an idea; at the close, [[Closing Well]] and the [[Baton Ceremony]] package the in-progress move into a markdown file in the entry's bundle; Loudon pastes the suggested invocation into a Claude Code session, which catches the baton. The baton is a file, and *Loudon is the transport layer.* The [[BBS Blackboard]] is nowhere in this loop.
 
 The **stigmergic steward baton.** A permanent agent — the page itself, operating in steward mode — posts a `RESOURCE_REQUEST` to the persistent blackboard; Loudon triages it in the STIGMERGY Trickster inbox; the orchestrator advances the page on its next cycle. The baton is the board message plus `state.json` and `history.jsonl`, read by the orchestrator. The hand-written handoff files are nowhere in *this* loop.
 
@@ -51,7 +51,7 @@ The instinct that produced this entry: *when a handoff is ready, write it into t
 
 This entry began as a reflection on Loudon's workflow and is folded here into the [[Project Stewardship System]] as one specific case: the **human-originated handoff**. Since it was drafted, the *steward-originated* side of the same problem moved decisively. Stage E — the Automated Trickster — was built the same day: a deterministic rules engine that triages the TRICKSTER inbox into auto-grant / auto-deny / escalate, with a ranked escalation digest, running in shadow mode (the first live split was 5 auto-grant / 11 escalate on a 16-item board, awaiting Loudon's `--live` flip). The audition / irreversible gate is hard-coded and cannot be overridden by the ruleset — the [[Closing Well]] guardrail this entry insists on, made structural. So the "batch the Trickster's attention, auto-grant only the routine" recommendation below has largely landed; what remains is operational (the shadow-review-then-`--live` decision), not design.
 
-What is still genuinely un-built is the half this entry is *about*: the human-carried handoff baton has not been bridged onto the board. Every advance so far deepened the steward baton, which already lived there. A handoff Loudon writes at the close of a Cowork session is still invisible to the scheduler and the digest — it is pasted into Claude Code by hand. That bridge — `handoff_ready` on the board, picked up by the same scheduled dispatch that cycles stewards — is the open contribution of this entry. Its convention lives in [[Handoff Ceremony]] § Announcing the Handoff on the Board, and as of this writing it has never been used (zero `handoff_ready` messages on any board). The scheduler that would consume it is Stage C, whose weekly batch task is staged-but-not-registered.
+What is still genuinely un-built is the half this entry is *about*: the human-carried handoff baton has not been bridged onto the board. Every advance so far deepened the steward baton, which already lived there. A handoff Loudon writes at the close of a Cowork session is still invisible to the scheduler and the digest — it is pasted into Claude Code by hand. That bridge — `handoff_ready` on the board, picked up by the same scheduled dispatch that cycles stewards — is the open contribution of this entry. Its convention lives in [[Baton Ceremony]] § Announcing the Baton on the Board, and as of this writing it has never been used (zero `handoff_ready` messages on any board). The scheduler that would consume it is Stage C, whose weekly batch task is staged-but-not-registered.
 
 ## The board is a pheromone field, not an actuator
 
@@ -59,7 +59,7 @@ STIGMERGY renders and accepts messages; it makes state visible and lets the Tric
 
 This means the board post changes **visibility**, not yet **autonomy**. The post is the right *signal*; the thing that turns the signal into self-continuing work is a scheduled poller that reads the board and dispatches — Stage C of [[Project Stewardship System]] (the orchestrator is build-complete; the scheduled task is "staged not created"). The board message is the trail; the scheduler is the ant. Both are needed; only one exists.
 
-The unified post convention — `kind: handoff_ready` as a `BROADCAST`, paired with a `handoff_picked_up` reply, deliberately *not* a new message type yet — lives in the [[Handoff Ceremony]] § Announcing the Handoff on the Board. It is kept as a payload convention rather than a schema type on purpose: the palace lets categories prove themselves across many runs before they harden.
+The unified post convention — `kind: handoff_ready` as a `BROADCAST`, paired with a `handoff_picked_up` reply, deliberately *not* a new message type yet — lives in the [[Baton Ceremony]] § Announcing the Baton on the Board. It is kept as a payload convention rather than a schema type on purpose: the palace lets categories prove themselves across many runs before they harden.
 
 ## The bottleneck the system already found
 

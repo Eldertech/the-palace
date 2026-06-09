@@ -92,7 +92,7 @@ Ceremony files are split into two when they exceed ~8KB: a lean **operational ca
 
 When instructed to "add to the context" or "add to the log" for a ceremony, write to the Context file — never to the operational card. Both files carry full YAML frontmatter and live flat in `_ops/`. Full convention: see SCHEMA.md Section 6.
 
-Currently split: [[Deposit Ceremony]] + [[Deposit Ceremony — Context]]; [[Harvest Ceremony]] + [[Harvest Ceremony — Context]]; [[Weave Ceremony]] + [[Weave Ceremony — Context]]; [[Handoff Ceremony]] + [[Handoff Ceremony — Context]].
+Currently split: [[Deposit Ceremony]] + [[Deposit Ceremony — Context]]; [[Harvest Ceremony]] + [[Harvest Ceremony — Context]]; [[Weave Ceremony]] + [[Weave Ceremony — Context]]; [[Baton Ceremony]] + [[Baton Ceremony — Context]].
 
 ### Entry Bundles
 

@@ -15,7 +15,7 @@ links:
   - target: "[[Deposit Ceremony]]"
     type: mirrors
     label: consolidation-at-steward-scale
-  - target: "[[Handoff Ceremony]]"
+  - target: "[[Baton Ceremony]]"
     type: mirrors
     label: active-marker-on-entry
   - target: "[[Harvest Ceremony]]"
@@ -56,7 +56,7 @@ The log is fast episodic memory; the entry is slow semantic memory. Biology alre
 
 The resolved design has two tiers, deliberately at different cadences.
 
-**Continuous — the stewardship marker (disclosure).** A stewarded entry carries a standing footer, placed when the page is first enchanted, that discloses *this page is under active stewardship and may lag its live state*, and links to the live log (the steward directory + the BBS thread). This mirrors the [[Handoff Ceremony]]'s "Active Handoff" footer — a standing pointer to in-flight state. Its real job is the pointer, which is always valid even when its summary line goes slightly stale; a reader never trusts the footer's freshness, they follow the link. This is the safety valve: with the marker present, the entry may lag, but it never lies *silently* — it openly says "I may be behind, the live truth is here."
+**Continuous — the stewardship marker (disclosure).** A stewarded entry carries a standing footer, placed when the page is first enchanted, that discloses *this page is under active stewardship and may lag its live state*, and links to the live log (the steward directory + the BBS thread). This mirrors the [[Baton Ceremony]]'s "Active Handoff" footer — a standing pointer to in-flight state. Its real job is the pointer, which is always valid even when its summary line goes slightly stale; a reader never trusts the footer's freshness, they follow the link. This is the safety valve: with the marker present, the entry may lag, but it never lies *silently* — it openly says "I may be behind, the live truth is here."
 
 **At milestones — consolidation (the fold).** When a steward reaches a milestone — a phase closes, a decision settles, an artifact ships, a discovery changes the project's truth — it *recommends* the edits that fold that settled knowledge into the entry body (stewards propose; the human approves; see [[Project Stewardship System]]). Then the marker's drift notes are pruned. What consolidates: decisions made, things built, open questions resolved, discoveries that change what the entry should claim. What stays in the log: the rest — the process, the narrative of how it got there.
 

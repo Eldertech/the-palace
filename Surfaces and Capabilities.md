@@ -11,7 +11,7 @@ stage: sprout
 confidence: demonstrated
 energy: medium
 links:
-  - target: "[[Handoff Ceremony]]"
+  - target: "[[Baton Ceremony]]"
     type: enables
     label: capability-delta-source
   - target: "[[Maker]]"
@@ -35,7 +35,7 @@ forward_vector: "I want to become the stable home for the surface deltas that ha
 
 The palace is operated from several different *surfaces* — execution environments Claude inhabits — and they are not interchangeable. A render that is trivial on one is impossible on another. A git commit that is clean on one leaves wreckage on another. The same palace file is linked with `computer:///` from one surface and `obsidian://` from another. None of this is visible from inside the work; it only becomes visible at the boundary, when work crosses from one surface to the next.
 
-That crossing is the handoff. And the most distinctive, most-often-improvised content of a cross-surface handoff is the *capability delta* — what the receiving surface can do that the sending one can't, and the surface-specific gotcha the catcher will hit. This entry is the stable home for those deltas, so a handoff can name the receiving surface and point here rather than re-deriving the whole picture every time. See [[Handoff Ceremony]] § Receiving environment.
+That crossing is the baton. And the most distinctive, most-often-improvised content of a cross-surface baton is the *capability delta* — what the receiving surface can do that the sending one can't, and the surface-specific gotcha the catcher will hit. This entry is the stable home for those deltas, so a baton can name the receiving surface and point here rather than re-deriving the whole picture every time. See [[Baton Ceremony]] § Receiving environment.
 
 The deltas below are *observed so far*, not a closed taxonomy. Surfaces gain and lose capabilities; this entry is a living record, and each fact should carry the same honesty a handoff carries — what was verified, and when.
 
@@ -92,9 +92,9 @@ Use `preview_inspect` (not screenshots) to verify exact colours and fonts — it
 
 Not every tool is reachable from every surface even when it is "alive." Midjourney is Discord-only; the Maker's dispatch path does not reach it from Cowork, which is why the Kuramoto Midjourney↔ComfyUI Comparison stalled as a lost branch. Reachability is a capability fact like any other and belongs in a handoff's receiving-environment note.
 
-## How a handoff uses this
+## How a baton uses this
 
-When a move crosses surfaces, the [[Handoff Ceremony]]'s *Receiving environment* section names the receiving surface and carries only the deltas that matter for *this* move — not the whole table. Good form: "Receiving surface: Claude Code on the Mac. This is here because the Manim render can't run in Cowork's sandbox (no aarch64 `manimpango`). Commit Mac-side; locks are clean here. Audition by QuickLook before declaring the Sketch done." The catcher reads that in five seconds and knows why it's holding the baton.
+When a move crosses surfaces, the [[Baton Ceremony]]'s *Receiving environment* section names the receiving surface and carries only the deltas that matter for *this* move — not the whole table. Good form: "Receiving surface: Claude Code on the Mac. This is here because the Manim render can't run in Cowork's sandbox (no aarch64 `manimpango`). Commit Mac-side; locks are clean here. Audition by QuickLook before declaring the Sketch done." The catcher reads that in five seconds and knows why it's holding the baton.
 
 ## The host-capability check
 
