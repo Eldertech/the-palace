@@ -87,6 +87,13 @@ describe('buildCompanionPrompt', () => {
     expect(p).toMatch(/forward vector/);
   });
 
+  it('instructs adaptive narration — quiet reply when an edit is clean', () => {
+    const p = buildCompanionPrompt({ grounding, body: 'x', message: 'tighten this' });
+    expect(p).toMatch(/NARRATION \(adaptive\)/);
+    expect(p).toMatch(/keep "reply" QUIET/);
+    expect(p).toMatch(/leave it\nempty/);
+  });
+
   it('truncates a pathologically long body', () => {
     const huge = 'z'.repeat(20000);
     const p = buildCompanionPrompt({ grounding, body: huge, message: 'hi' });
