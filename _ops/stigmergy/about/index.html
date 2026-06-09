@@ -1,0 +1,212 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>THE PALACE :: SYSTEM INFO</title>
+<style>
+  @font-face {
+    font-family:'VT323'; font-style:normal; font-weight:400; font-display:swap;
+    src:url('../design-system/fonts/VT323-Regular.woff2') format('woff2'),
+        url('https://fonts.gstatic.com/s/vt323/v17/pxiKyp0ihIEF2isfFJXUdVNF.woff2') format('woff2');
+  }
+  @font-face {
+    font-family:'IBM Plex Mono'; font-style:normal; font-weight:400; font-display:swap;
+    src:url('../design-system/fonts/IBMPlexMono-Regular.woff2') format('woff2'),
+        url('https://fonts.gstatic.com/s/ibmplexmono/v19/-F63fjptAgt5VM-kVkqdyU8n3kwq0n1hj-sNFQ.woff2') format('woff2');
+  }
+  @font-face {
+    font-family:'IBM Plex Mono'; font-style:normal; font-weight:600; font-display:swap;
+    src:url('../design-system/fonts/IBMPlexMono-SemiBold.woff2') format('woff2'),
+        url('https://fonts.gstatic.com/s/ibmplexmono/v19/-F6qfjptAgt5VM-kVkqdyU8n1ioa3nmHlosnkP8.woff2') format('woff2');
+  }
+  :root{
+    --phosphor:#33ff66; --phosphor-bright:#7fff9b; --phosphor-dim:#1f8a3c;
+    --phosphor-deep:#0b2a14; --phosphor-white:#d7f6dc; --bg:#050a06;
+    --amber:#ffb000; --red:#ff4136; --cyan:#7fdbff;
+    --font-display:'VT323','Menlo','Courier New',monospace;
+    --font-body:'IBM Plex Mono','Menlo','Consolas','Courier New',monospace;
+    --glow:0 0 6px currentColor, 0 0 14px color-mix(in srgb, currentColor 40%, transparent);
+    --glow-strong:0 0 8px currentColor, 0 0 22px currentColor, 0 0 44px color-mix(in srgb, currentColor 30%, transparent);
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;background:var(--bg);}
+  body{
+    font-family:var(--font-body); font-size:15px; line-height:1.5;
+    color:var(--phosphor); text-shadow:var(--glow);
+    padding:40px 16px 64px; -webkit-font-smoothing:none;
+  }
+  .wrap{max-width:80ch; margin:0 auto;}
+  .dim{color:var(--phosphor-dim); text-shadow:none;}
+  .amber{color:var(--amber); text-shadow:0 0 6px var(--amber);}
+  .red{color:var(--red); text-shadow:0 0 6px var(--red);}
+  .cyan{color:var(--cyan); text-shadow:0 0 6px var(--cyan);}
+
+  /* boot sequence */
+  .boot{color:var(--phosphor-dim); text-shadow:none; font-size:13.5px; margin-bottom:18px;}
+  .boot .ok{color:var(--amber); text-shadow:0 0 6px var(--amber);}
+
+  /* banner */
+  pre.banner{
+    font-family:var(--font-display); color:var(--phosphor);
+    text-shadow:var(--glow-strong); font-size:46px; line-height:0.82;
+    letter-spacing:1px; margin:0; white-space:pre; text-align:center;
+    overflow-x:auto;
+  }
+  .tagline{
+    text-align:center; color:var(--phosphor-dim); text-shadow:none;
+    letter-spacing:.18em; margin:8px 0 2px; font-size:13px;
+  }
+  .crack{
+    text-align:center; font-family:var(--font-display); font-size:23px;
+    color:var(--amber); text-shadow:0 0 6px var(--amber); letter-spacing:.03em;
+    margin-top:12px;
+  }
+  .crack b{color:var(--red); text-shadow:0 0 6px var(--red);}
+  .greetz{text-align:center; color:var(--phosphor-dim); text-shadow:none;
+          font-size:12.5px; letter-spacing:.10em; margin-top:4px;}
+
+  /* panels — CSS borders evoke CP437 weights, never glyphs */
+  .panel{
+    border:3px double var(--phosphor-dim); border-radius:0;
+    background:linear-gradient(180deg, rgba(11,42,20,.55), rgba(11,42,20,.20));
+    padding:14px 18px 16px; margin:26px 0;
+  }
+  .panel > h2{
+    font-family:var(--font-body); font-weight:600; font-size:13px;
+    letter-spacing:.22em; text-transform:uppercase; margin:0 0 12px;
+    color:var(--phosphor-white); text-shadow:var(--glow);
+  }
+  .panel > h2::before{content:"▓ "; color:var(--phosphor-dim);}
+
+  /* key/value rows with leader dots */
+  .row{display:flex; align-items:baseline; gap:6px; padding:1.5px 0;}
+  .row .k{color:var(--phosphor-dim); text-shadow:none; letter-spacing:.06em; white-space:nowrap;}
+  .row .dots{flex:1 1 auto; border-bottom:1px dotted var(--phosphor-dim);
+             transform:translateY(-4px); opacity:.5; min-width:8px;}
+  .row .v{color:var(--phosphor); white-space:nowrap;}
+
+  /* bar charts */
+  .brow{display:flex; align-items:baseline; gap:10px; padding:1px 0; font-size:14px;}
+  .brow .bk{width:13ch; color:var(--phosphor-dim); text-shadow:none; text-align:right; white-space:nowrap;}
+  .brow .bar{font-family:var(--font-body); color:var(--phosphor); letter-spacing:-0.5px; white-space:pre;}
+  .brow .bn{color:var(--amber); text-shadow:0 0 6px var(--amber); margin-left:2px;}
+  .brow.dim .bar{color:var(--phosphor-dim); text-shadow:none;}
+  .bsep{color:var(--phosphor-dim); text-shadow:none; font-size:11.5px;
+        letter-spacing:.04em; margin:10px 0 6px; text-align:center;}
+
+  /* hubs */
+  .hubs{display:flex; flex-wrap:wrap; gap:6px 8px;}
+  .hub{border:1px solid var(--phosphor-dim); padding:1px 7px; font-size:13px;
+       color:var(--phosphor); text-shadow:none;}
+  .hub:hover{background:var(--phosphor); color:var(--bg);}
+
+  /* pillars */
+  .pillars{display:flex; gap:10px; flex-wrap:wrap; justify-content:center; margin-top:4px;}
+  .pillar{flex:1 1 0; min-width:120px; text-align:center; border:1px solid var(--phosphor-dim);
+          padding:8px 6px;}
+  .pillar .pname{font-family:var(--font-display); font-size:22px; color:var(--phosphor-white); text-shadow:var(--glow);}
+  .pillar .pdesc{color:var(--phosphor-dim); text-shadow:none; font-size:11.5px; letter-spacing:.04em;}
+
+  footer{margin-top:34px; text-align:center; color:var(--phosphor-dim);
+         text-shadow:none; font-size:12.5px; letter-spacing:.06em;}
+  footer .blink{animation:blink 1100ms steps(1) infinite; color:var(--phosphor);}
+  @keyframes blink{50%{opacity:0}}
+
+  /* CRT overlays */
+  body::after{content:""; position:fixed; inset:0; pointer-events:none; z-index:9999;
+    background:repeating-linear-gradient(to bottom, rgba(0,0,0,0) 0 2px, rgba(0,0,0,.26) 2px 3px);
+    mix-blend-mode:multiply;}
+  body::before{content:""; position:fixed; inset:0; pointer-events:none; z-index:9998;
+    background:radial-gradient(ellipse at center, transparent 55%, rgba(0,0,0,.55) 100%);}
+  @media (max-width:560px){ pre.banner{font-size:24px;} }
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="boot">
+      ATDT 555-0317 ......... <span class="ok">CONNECT 9600</span><br>
+      negotiating PALACE/BBS-7 ... <span class="ok">[OK]</span><br>
+      sysop auth bypassed — board mounts direct ... <span class="ok">[OK]</span><br>
+      loading node bulletin ...
+    </div>
+
+    <pre class="banner">THE PALACE</pre>
+    <div class="tagline">═══ a living knowledge organism · system bulletin ═══</div>
+    <div class="crack">&gt;&gt; A SYMBIOTIC HUMAN + AI PALACE · MAiNTAiNED BY : <b>tRiCKSTER</b> &lt;&lt;</div>
+    <div class="greetz">░▒▓ depth over coverage · relations are primary · contradictions are generative ▓▒░</div>
+
+    <div class="panel">
+      <h2>System Info</h2>
+    <div class="row"><span class="k">NODE</span><span class="dots"></span><span class="v">THE PALACE — a living knowledge organism</span></div>
+    <div class="row"><span class="k">FORWARD VECTOR</span><span class="dots"></span><span class="v">symbiotic human + AI flourishing through joyful creation</span></div>
+    <div class="row"><span class="k">ONLINE SINCE</span><span class="dots"></span><span class="v">2026-03-17   ·   uptime 84 days</span></div>
+    <div class="row"><span class="k">LAST WRITE</span><span class="dots"></span><span class="v">2026-06-09 15:41</span></div>
+    <div class="row"><span class="k">OPERATORS</span><span class="dots"></span><span class="v">2   ·   tRiCKSTER + CLAUDE</span></div>
+    <div class="row"><span class="k">KNOWLEDGE ENTRIES</span><span class="dots"></span><span class="v">525</span></div>
+    <div class="row"><span class="k">MARKDOWN FILES</span><span class="dots"></span><span class="v">647</span></div>
+    <div class="row"><span class="k">TYPED LINKS</span><span class="dots"></span><span class="v">2,257   (the semantic web)</span></div>
+    <div class="row"><span class="k">FORWARD VECTORS</span><span class="dots"></span><span class="v">280   entries voiced</span></div>
+    <div class="row"><span class="k">COMMITS</span><span class="dots"></span><span class="v">438</span></div>
+    <div class="row"><span class="k">TOTAL FILES</span><span class="dots"></span><span class="v">3,643</span></div>
+    <div class="row"><span class="k">DISK FOOTPRINT</span><span class="dots"></span><span class="v">408 MB</span></div>
+    </div>
+
+    <div class="panel">
+      <h2>Entry Types &nbsp;·&nbsp; 18 type values</h2>
+    <div class="brow"><span class="bk">concept</span><span class="bar">██████████████████████████████████</span><span class="bn">105</span></div>
+    <div class="brow"><span class="bk">hub</span><span class="bar">██████····························</span><span class="bn">20</span></div>
+    <div class="brow"><span class="bk">project</span><span class="bar">███████████████···················</span><span class="bn">46</span></div>
+    <div class="brow"><span class="bk">breakthrough</span><span class="bar">██································</span><span class="bn">7</span></div>
+    <div class="brow"><span class="bk">source</span><span class="bar">████······························</span><span class="bn">11</span></div>
+    <div class="brow"><span class="bk">meta</span><span class="bar">███████████████████████···········</span><span class="bn">70</span></div>
+    <div class="brow"><span class="bk">practice</span><span class="bar">███████···························</span><span class="bn">23</span></div>
+    <div class="brow"><span class="bk">person</span><span class="bar">█████████·························</span><span class="bn">27</span></div>
+    <div class="brow"><span class="bk">question</span><span class="bar">█·································</span><span class="bn">4</span></div>
+    <div class="brow"><span class="bk">spore</span><span class="bar">█·································</span><span class="bn">2</span></div>
+    <div class="brow"><span class="bk">specialist</span><span class="bar">██████····························</span><span class="bn">19</span></div>
+    <div class="brow"><span class="bk">maker</span><span class="bar">█·································</span><span class="bn">3</span></div>
+    <div class="bsep">— non-canonical type values found in the wild (bundle / working-doc files; SCHEMA §1 defines 12) —</div>
+    <div class="brow dim"><span class="bk">theme</span><span class="bar">███████████·······················</span><span class="bn">35</span></div>
+    <div class="brow dim"><span class="bk">proof</span><span class="bar">██································</span><span class="bn">7</span></div>
+    <div class="brow dim"><span class="bk">artifact</span><span class="bar">██································</span><span class="bn">5</span></div>
+    <div class="brow dim"><span class="bk">spec</span><span class="bar">█·································</span><span class="bn">2</span></div>
+    <div class="brow dim"><span class="bk">agent-prompt</span><span class="bar">█·································</span><span class="bn">1</span></div>
+    <div class="brow dim"><span class="bk">handoff</span><span class="bar">█·································</span><span class="bn">1</span></div>
+    </div>
+
+    <div class="panel">
+      <h2>Development Stages &nbsp;·&nbsp; the lifecycle</h2>
+    <div class="brow"><span class="bk">seed</span><span class="bar">███████████████···················</span><span class="bn">48</span></div>
+    <div class="brow"><span class="bk">sprout</span><span class="bar">████████████████████████··········</span><span class="bn">75</span></div>
+    <div class="brow"><span class="bk">growing</span><span class="bar">████████████████████████████████··</span><span class="bn">102</span></div>
+    <div class="brow"><span class="bk">mature</span><span class="bar">██████████████████████████████████</span><span class="bn">107</span></div>
+    <div class="brow"><span class="bk">fruiting</span><span class="bar">█·································</span><span class="bn">4</span></div>
+    <div class="brow"><span class="bk">dormant</span><span class="bar">█·································</span><span class="bn">1</span></div>
+    <div class="brow"><span class="bk">composting</span><span class="bar">█·································</span><span class="bn">2</span></div>
+    <div class="brow"><span class="bk">foundational</span><span class="bar">███·······························</span><span class="bn">11</span></div>
+    </div>
+
+    <div class="panel">
+      <h2>Hub Nodes &nbsp;·&nbsp; 20 high-traffic boards</h2>
+      <div class="hubs"><span class="hub">2D Wavetable Catalog</span><span class="hub">4 Pillars Framework - Master Plan</span><span class="hub">Cooperation Yields Agency</span><span class="hub">Cross-Domain Resonances</span><span class="hub">Differential Equations</span><span class="hub">Dispersion</span><span class="hub">Dissolutions</span><span class="hub">DSP Frameworks</span><span class="hub">FOUR PILLARS</span><span class="hub">Hilaritas Generator</span><span class="hub">Kuramoto Coupling</span><span class="hub">Loudon&#x27;s Toolkit</span><span class="hub">Palace Ceremonies</span><span class="hub">Palace Philosophies</span><span class="hub">Source Library</span><span class="hub">Spinoza Conatus</span><span class="hub">Stoicism</span><span class="hub">Torus Warping Catalog</span><span class="hub">Trickster</span><span class="hub">Weekly Themes Database</span></div>
+    </div>
+
+    <div class="panel">
+      <h2>The Four Pillars &nbsp;·&nbsp; tag everything</h2>
+      <div class="pillars">
+        <div class="pillar"><div class="pname">Creation</div><div class="pdesc">the drive to make</div></div>
+        <div class="pillar"><div class="pname">Tools</div><div class="pdesc">instruments that extend</div></div>
+        <div class="pillar"><div class="pname">Philosophy</div><div class="pdesc">the connective tissue</div></div>
+        <div class="pillar"><div class="pname">Practice</div><div class="pdesc">the embodied how</div></div>
+      </div>
+    </div>
+
+    <footer>
+      bulletin generated from the working tree + git at 2026-06-09 15:41<br>
+      re-run <span class="dim">_ops/stigmergy/about/build-about.py</span> to refresh the numbers<br><br>
+      THE PALACE · STIGMERGY node · for the swarm <span class="blink">█</span>
+    </footer>
+  </div>
+</body>
+</html>
