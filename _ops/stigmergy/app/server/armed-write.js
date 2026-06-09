@@ -190,3 +190,35 @@ function basenameNoMd(p) {
   const slash = p.lastIndexOf('/');
   return (slash === -1 ? p : p.slice(slash + 1)).replace(/\.md$/, '');
 }
+
+/**
+ * Revert ONE prior Companion edit commit in the edits worktree, creating a new
+ * honest inverse commit — never a silent rollback (Plan §4: "post-LOG undo is a
+ * new reconciled commit"). Uses git's 3-way revert so any later edits to the
+ * same entry are preserved rather than clobbered. On conflict it aborts and
+ * reports, rather than leaving the worktree mid-revert. Never throws.
+ *
+ * @param {object} args
+ * @param {string} args.editsRoot — the edits worktree
+ * @param {string} args.hash      — the commit to revert (7–40 hex)
+ * @returns {Promise<{ok, revertHash?, subject?, error?}>}
+ */
+export async function revertCommit({ editsRoot, hash }) {
+  if (!editsRoot) return { ok: false, error: 'no edits worktree configured' };
+  const h = String(hash == null ? '' : hash).trim();
+  if (!/^[0-9a-f]{7,40}$/i.test(h)) return { ok: false, error: 'invalid commit hash' };
+
+  clearStaleLocks(editsRoot);
+  const exists = await execGit(editsRoot, ['cat-file', '-e', `${h}^{commit}`], { allowFail: true });
+  if (exists.failed) return { ok: false, error: 'commit not found in the edits worktree' };
+
+  const r = await execGit(editsRoot, ['revert', '--no-edit', h], { allowFail: true });
+  if (r.failed) {
+    // Don't strand the worktree mid-revert (dirty tree, or a later edit conflicts).
+    await execGit(editsRoot, ['revert', '--abort'], { allowFail: true });
+    return { ok: false, error: `could not revert cleanly (a later edit may conflict, or the worktree is dirty): ${(r.stderr || '').trim()}` };
+  }
+  const revertHash = (await execGit(editsRoot, ['rev-parse', '--short', 'HEAD'], { allowFail: true })).stdout.trim();
+  const subject = (await execGit(editsRoot, ['log', '-1', '--format=%s'], { allowFail: true })).stdout.trim();
+  return { ok: true, revertHash, subject };
+}

@@ -23,7 +23,7 @@ import { createActuator } from './actuator.js';
 import { readEntry } from '../src/lib/entries.js';
 import { assembleGrounding } from '../src/lib/entry-grounding.js';
 import { buildCompanionPrompt } from './companion-prompt.js';
-import { armedWriteEntry, ensureEditsWorktree } from './armed-write.js';
+import { armedWriteEntry, ensureEditsWorktree, revertCommit } from './armed-write.js';
 import { appendMessage } from '@stigmergy/core/blackboard';
 import { validateMessage } from '@stigmergy/core/schema';
 
@@ -161,6 +161,46 @@ export function buildEditProofMessage({ title, entryPath, turnId, op, shortHash,
       branch,
       summary,
       status: 'committed',
+    },
+  };
+}
+
+/**
+ * Build the §2.2 PROOF a revert posts. An undo is honest: a NEW inverse commit,
+ * carrying both its own hash and the original it reverts. Same companion_edit
+ * payload kind (op:'revert', status:'reverted') so the window renders it as a
+ * marker on the same conversation. Pure + validated by core before append.
+ */
+export function buildRevertProofMessage({ title, entryPath, turnId, reverts, revertHash, branch, summary, model, ts, id }) {
+  const slug = slugify(title);
+  return {
+    schema_version: '1.0',
+    id: id || `${slug}-companion-revert-${turnId}`,
+    ts,
+    session_id: `companion-${slug}`,
+    from: companionFrom(title),
+    to: '*',
+    type: 'PROOF',
+    board: 'GENERAL',
+    health: {
+      score: 'green',
+      model: model || DEFAULT_MODEL,
+      _orchestrator_metadata: {
+        dispatch_mode: 'claude-code-subagent',
+        note: 'Companion edit reverted on the quarantined edits branch (a new inverse commit). Path 2 stub health.',
+      },
+    },
+    payload: {
+      kind: 'companion_edit',
+      entry: title,
+      entry_path: entryPath,
+      turn_id: turnId,
+      op: 'revert',
+      commit: revertHash,
+      reverts,
+      branch,
+      summary: summary || `revert ${reverts}`,
+      status: 'reverted',
     },
   };
 }
@@ -346,12 +386,43 @@ export function createCompanionLane(opts = {}) {
     return { ok: true, fired: true, turnId, msg: r.msg };
   }
 
+  /**
+   * Undo a committed Companion edit: revert its commit on the quarantined edits
+   * branch (a new inverse commit) and post a revert PROOF on the same turn so
+   * the window can mark it reverted. Honest by construction — never a silent
+   * rollback. async; never throws (returns a structured result).
+   * @param {{path?:string, commit:string, turnId?:string}} args
+   */
+  async function undo({ path, commit, turnId } = {}) {
+    if (typeof commit !== 'string' || commit.trim() === '') {
+      return { ok: false, msg: 'missing commit' };
+    }
+    const entry = typeof path === 'string' && path.trim() ? readEntry(root, path) : null;
+    const title = entry ? entry.title : (path || 'entry');
+    const entryPath = entry ? entry.path : (path || '');
+
+    let editsRoot;
+    try { editsRoot = await resolveEditsRoot(); }
+    catch (e) { return { ok: false, msg: `could not open the edits worktree: ${e.message}` }; }
+
+    const r = await revertCommit({ editsRoot, hash: commit.trim() });
+    if (!r.ok) return { ok: false, msg: r.error };
+
+    const tid = (typeof turnId === 'string' && turnId.trim()) ? turnId.trim() : `companion-undo-${slugify(title)}`;
+    postIfValid(buildRevertProofMessage({
+      title, entryPath, turnId: tid, reverts: commit.trim(), revertHash: r.revertHash,
+      branch: editsBranch, summary: r.subject, model, ts: new Date().toISOString(),
+    }));
+    return { ok: true, revertHash: r.revertHash, reverts: commit.trim(), turnId: tid };
+  }
+
   function status() {
     return { ...actuator.status(), last_turn: readLastTurn() };
   }
 
   return {
     turn,
+    undo,
     status,
     paths: {
       stateDir, transcriptsDir, lastTurnFile, boardPath, editsBranch,

@@ -89,6 +89,7 @@ describe('POST /api/entry-agent/turn', () => {
   });
 
   const boardPath = (r) => resolve(r, '_ops/swarm/persistent/blackboard.jsonl');
+  const readBoard = (r) => readFileSync(boardPath(r), 'utf8').trim().split('\n').filter(Boolean).map((l) => JSON.parse(l));
 
   test('fires a turn and the reap posts a companion_reply to the board (THE proof)', async () => {
     const res = await request(server).post('/api/entry-agent/turn').send({ path: 'Open Entry.md', message: 'what is the body schema?' });
@@ -156,6 +157,40 @@ describe('POST /api/entry-agent/turn', () => {
     expect(proof).toBeTruthy();        // the edit landed
     expect(reply).toBeFalsy();         // but the turn stayed quiet
   }, 20000);
+
+  test('POST /undo reverts a committed edit and posts a revert PROOF on the same turn', async () => {
+    ({ server, companionLane } = makeServer(root, { editText: 'A line to undo.' }));
+    const t = await request(server).post('/api/entry-agent/turn').send({ path: 'Open Entry.md', message: 'add a line' });
+    const turnId = t.body.turnId;
+    await waitFor(() => !existsSync(companionLane.paths.pidFile), { timeout: 6000 });
+    await waitFor(() => readFileSync(boardPath(root), 'utf8').includes('companion_edit'), { timeout: 4000 });
+
+    const editProof = readBoard(root).find((m) => m.payload && m.payload.kind === 'companion_edit' && m.payload.op === 'append');
+    const editCommit = editProof.payload.commit;
+    expect(git(root, ['show', 'HEAD:Open Entry.md'])).toMatch(/A line to undo\./);
+
+    const u = await request(server).post('/api/entry-agent/undo').send({ path: 'Open Entry.md', commit: editCommit, turnId });
+    expect(u.status).toBe(200);
+    expect(u.body.ok).toBe(true);
+    expect(typeof u.body.revertHash).toBe('string');
+
+    await waitFor(() => readBoard(root).some((m) => m.payload && m.payload.op === 'revert'), { timeout: 4000 });
+    const revert = readBoard(root).find((m) => m.payload && m.payload.op === 'revert');
+    expect(revert.type).toBe('PROOF');
+    expect(revert.payload.reverts).toBe(editCommit);
+    expect(revert.payload.status).toBe('reverted');
+    expect(revert.payload.turn_id).toBe(turnId); // same turn → window accepts it
+    // the edit is undone at HEAD, as a new commit (the original still in history)
+    expect(git(root, ['show', 'HEAD:Open Entry.md'])).not.toMatch(/A line to undo\./);
+  }, 20000);
+
+  test('POST /undo 400 on a missing or malformed commit', async () => {
+    const noCommit = await request(server).post('/api/entry-agent/undo').send({ path: 'Open Entry.md' });
+    expect(noCommit.status).toBe(400);
+    const bad = await request(server).post('/api/entry-agent/undo').send({ path: 'Open Entry.md', commit: 'not-a-hash!' });
+    expect(bad.status).toBe(400);
+    expect(bad.body.ok).toBe(false);
+  });
 
   test('400 when the message is missing', async () => {
     const res = await request(server).post('/api/entry-agent/turn').send({ path: 'Open Entry.md' });

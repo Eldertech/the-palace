@@ -1,5 +1,5 @@
 import React, { useState, useRef, useLayoutEffect, useEffect, useCallback } from 'react';
-import { fetchGrounding, postTurn } from '../../adapters/entry-agent.js';
+import { fetchGrounding, postTurn, postUndo } from '../../adapters/entry-agent.js';
 import { subscribeLive } from '../../adapters/live-tail.js';
 
 // Position init wants useLayoutEffect in the browser, but that warns under
@@ -147,15 +147,59 @@ function GroundingView({ grounding }) {
 // branch, and the commit hash — the proof the write landed in LOG. The live
 // entry text is unchanged (the edit is quarantined until a human merges), so we
 // report the edit rather than mutate the body, which would lie.
-function EditMarker({ op, commit, branch, summary }) {
+//
+// Undo (M1d) is post-commit and honest: [undo] reverts the commit as a NEW
+// inverse commit on the quarantine branch (never a silent rollback). A revert
+// arrives as its own marker (op:'revert'), and the original is shown 'reverted'.
+export function EditMarker({ op, commit, branch, summary, reverts, onUndo, undone, undoing }) {
+  if (op === 'revert') {
+    return (
+      <div data-testid="eaw-edit" data-op="revert" style={{
+        marginBottom: 8, padding: '5px 7px',
+        border: '1px solid var(--phosphor-dim)',
+        background: 'color-mix(in srgb, var(--phosphor) 4%, transparent)',
+      }}>
+        <div style={{ color: 'var(--phosphor-dim)', fontSize: 11 }}>
+          ↩ reverted <span style={{ color: 'var(--phosphor)' }}>{reverts}</span>{summary ? ` — ${summary}` : ''}
+        </div>
+        <div style={{ color: 'var(--phosphor-dim)', fontSize: 10 }}>
+          new commit <span style={{ color: 'var(--phosphor-bright)' }}>{commit}</span> on {branch}
+        </div>
+      </div>
+    );
+  }
   return (
-    <div data-testid="eaw-edit" style={{
+    <div data-testid="eaw-edit" data-op={op} style={{
       marginBottom: 8, padding: '5px 7px',
       border: '1px solid var(--phosphor-dim)',
       background: 'color-mix(in srgb, var(--phosphor) 6%, transparent)',
+      opacity: undone ? 0.6 : 1,
     }}>
-      <div style={{ color: 'var(--phosphor)', textShadow: 'var(--glow)', fontSize: 11 }}>
-        ✎ {op}{summary ? ` — ${summary}` : ''}
+      <div style={{ display: 'flex', alignItems: 'baseline', gap: 6 }}>
+        <span style={{
+          flex: 1, minWidth: 0,
+          color: 'var(--phosphor)', textShadow: 'var(--glow)', fontSize: 11,
+          textDecoration: undone ? 'line-through' : 'none',
+        }}>
+          ✎ {op}{summary ? ` — ${summary}` : ''}
+        </span>
+        {undone ? (
+          <span style={{ color: 'var(--phosphor-dim)', fontSize: 10, textTransform: 'uppercase', letterSpacing: '.04em' }}>
+            reverted
+          </span>
+        ) : onUndo ? (
+          <span
+            data-testid="eaw-edit-undo"
+            role="button"
+            onClick={undoing ? undefined : onUndo}
+            title="revert this edit (a new inverse commit)"
+            style={{
+              cursor: undoing ? 'default' : 'pointer', opacity: undoing ? 0.5 : 1,
+              color: 'var(--ansi-bright-yellow)', fontSize: 10,
+              textTransform: 'uppercase', letterSpacing: '.04em', whiteSpace: 'nowrap',
+            }}
+          >{undoing ? 'undoing…' : '[undo]'}</span>
+        ) : null}
       </div>
       <div style={{ color: 'var(--phosphor-dim)', fontSize: 10 }}>
         committed <span style={{ color: 'var(--phosphor-bright)' }}>{commit}</span> on {branch}
@@ -186,6 +230,11 @@ export default function EntryAgentWindow({ entry, containerRef, onClose }) {
   const [sending, setSending] = useState(false);
   const [draft, setDraft] = useState('');
   const [turnError, setTurnError] = useState(null);
+  // Undo (M1d): commits the user has asked to revert (in flight) and commits
+  // confirmed reverted (a revert PROOF landed). Both keyed by the edit's hash.
+  const [undoingCommits, setUndoingCommits] = useState(() => new Set());
+  const [revertedCommits, setRevertedCommits] = useState(() => new Set());
+  const [undoError, setUndoError] = useState(null);
   const sessionTurns = useRef(new Set());
   const currentTurn = useRef(null);
 
@@ -234,6 +283,9 @@ export default function EntryAgentWindow({ entry, containerRef, onClose }) {
     setConvo([]);            // a new entry is a fresh conversation
     setSending(false);
     setTurnError(null);
+    setUndoingCommits(new Set());
+    setRevertedCommits(new Set());
+    setUndoError(null);
     sessionTurns.current = new Set();
     currentTurn.current = null;
     fetchGrounding(path).then((r) => {
@@ -257,9 +309,18 @@ export default function EntryAgentWindow({ entry, containerRef, onClose }) {
           setConvo((prev) => [...prev, { id: m.id || `r-${p.turn_id}`, role: 'companion', text: p.reply || '' }]);
         } else if (p.kind === 'companion_edit') {
           setConvo((prev) => [...prev, {
-            id: m.id || `e-${p.turn_id}`, role: 'edit',
+            id: m.id || `e-${p.turn_id}-${p.commit || p.op}`, role: 'edit',
             op: p.op, commit: p.commit, branch: p.branch, summary: p.summary,
+            reverts: p.reverts || null, turnId: p.turn_id,
           }]);
+          // A revert landed: mark the original reverted and clear its in-flight flag.
+          if (p.op === 'revert' && p.reverts) {
+            setRevertedCommits((prev) => { const n = new Set(prev); n.add(p.reverts); return n; });
+            setUndoingCommits((prev) => {
+              if (!prev.has(p.reverts)) return prev;
+              const n = new Set(prev); n.delete(p.reverts); return n;
+            });
+          }
         } else {
           return;
         }
@@ -327,6 +388,20 @@ export default function EntryAgentWindow({ entry, containerRef, onClose }) {
         : (r?.msg || r?.error || 'could not start the turn'));
     }
   }, [draft, sending, path, convo, focusText]);
+
+  // Revert a committed edit (post-commit undo). The revert lands as its own
+  // PROOF on the board (same turn), so on success the SSE handler marks it
+  // reverted and clears the in-flight flag; here we only handle the failure.
+  const doUndo = useCallback(async (commit, turnId) => {
+    if (!commit || !path) return;
+    setUndoError(null);
+    setUndoingCommits((prev) => { const n = new Set(prev); n.add(commit); return n; });
+    const r = await postUndo({ path, commit, turnId });
+    if (!r || !r.ok) {
+      setUndoingCommits((prev) => { const n = new Set(prev); n.delete(commit); return n; });
+      setUndoError(r?.msg || r?.error || 'could not undo that edit');
+    }
+  }, [path]);
 
   // ── Position: default to the right, keep on-screen on resize ────────────
   useIsoLayoutEffect(() => {
@@ -552,9 +627,21 @@ export default function EntryAgentWindow({ entry, containerRef, onClose }) {
           <div data-testid="eaw-convo">
             {convo.map((m) => (
               m.role === 'edit'
-                ? <EditMarker key={m.id} op={m.op} commit={m.commit} branch={m.branch} summary={m.summary} />
+                ? <EditMarker
+                    key={m.id}
+                    op={m.op} commit={m.commit} branch={m.branch} summary={m.summary}
+                    reverts={m.reverts}
+                    onUndo={m.op !== 'revert' && m.commit ? () => doUndo(m.commit, m.turnId) : undefined}
+                    undone={revertedCommits.has(m.commit)}
+                    undoing={undoingCommits.has(m.commit)}
+                  />
                 : <ChatBubble key={m.id} role={m.role} text={m.text} />
             ))}
+            {undoError ? (
+              <div data-testid="eaw-undo-error" style={{ color: 'var(--warn)', textShadow: 'var(--glow)', fontSize: 11, marginTop: 4 }}>
+                {undoError}
+              </div>
+            ) : null}
             {sending ? (
               <div data-testid="eaw-thinking" style={{ color: 'var(--phosphor-dim)', fontSize: 11, fontStyle: 'italic' }}>
                 …thinking (a capable turn takes a moment)

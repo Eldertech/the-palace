@@ -12,9 +12,10 @@
 import { describe, it, expect } from 'vitest';
 import React from 'react';
 import { renderToStaticMarkup } from 'react-dom/server';
-import EntryAgentWindow from '../../src/components/state/EntryAgentWindow.jsx';
+import EntryAgentWindow, { EditMarker } from '../../src/components/state/EntryAgentWindow.jsx';
 
 const render = (props) => renderToStaticMarkup(React.createElement(EntryAgentWindow, props));
+const renderMarker = (props) => renderToStaticMarkup(React.createElement(EditMarker, props));
 
 const entry = {
   title: 'Merleau-Ponty',
@@ -66,5 +67,47 @@ describe('EntryAgentWindow (floating companion)', () => {
     const html = render({ entry: { path: 'Bare.md' } });
     expect(html).toContain('0 typed links');
     expect(html).toContain('Bare.md');
+  });
+});
+
+describe('EditMarker (committed edit + post-commit undo)', () => {
+  const base = { op: 'append', commit: 'abc1234', branch: 'stigmergy-edits', summary: 'a line about li' };
+
+  it('shows the committed edit with its op, commit and branch', () => {
+    const html = renderMarker(base);
+    expect(html).toContain('data-testid="eaw-edit"');
+    expect(html).toContain('append');
+    expect(html).toContain('abc1234');
+    expect(html).toContain('stigmergy-edits');
+  });
+
+  it('offers an [undo] control only when onUndo is given and not yet reverted', () => {
+    const withUndo = renderMarker({ ...base, onUndo: () => {} });
+    expect(withUndo).toContain('data-testid="eaw-edit-undo"');
+    expect(withUndo).toContain('[undo]');
+    const noUndo = renderMarker(base); // no handler → no control
+    expect(noUndo).not.toContain('data-testid="eaw-edit-undo"');
+  });
+
+  it('shows "undoing…" while a revert is in flight (no second click)', () => {
+    const html = renderMarker({ ...base, onUndo: () => {}, undoing: true });
+    expect(html).toContain('undoing…');
+    expect(html).not.toContain('[undo]');
+  });
+
+  it('marks the edit reverted (no undo control) once a revert has landed', () => {
+    const html = renderMarker({ ...base, onUndo: () => {}, undone: true });
+    expect(html).toContain('reverted');
+    expect(html).not.toContain('data-testid="eaw-edit-undo"');
+    expect(html).toMatch(/line-through/);
+  });
+
+  it('renders a revert marker distinctly, naming the commit it reverts', () => {
+    const html = renderMarker({ op: 'revert', commit: 'def5678', branch: 'stigmergy-edits', reverts: 'abc1234' });
+    expect(html).toContain('data-op="revert"');
+    expect(html).toContain('↩ reverted');
+    expect(html).toContain('abc1234'); // the original
+    expect(html).toContain('def5678'); // the new inverse commit
+    expect(html).not.toContain('data-testid="eaw-edit-undo"'); // a revert isn't itself undoable here
   });
 });
