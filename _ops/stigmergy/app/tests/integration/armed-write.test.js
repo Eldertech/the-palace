@@ -9,7 +9,7 @@ import { resolve, join } from 'node:path';
 import { mkdtempSync, rmSync, writeFileSync, readFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { execFileSync } from 'node:child_process';
-import { armedWriteEntry, ensureEditsWorktree } from '../../server/armed-write.js';
+import { armedWriteEntry, ensureEditsWorktree, revertCommit } from '../../server/armed-write.js';
 
 function git(cwd, args) { return execFileSync('git', args, { cwd, encoding: 'utf8' }); }
 
@@ -73,6 +73,58 @@ describe('armedWriteEntry', () => {
     expect(r.ok).toBe(false);
     expect(r.status).toBe(422);
     expect(git(root, ['rev-parse', 'HEAD']).trim()).toBe(head0); // nothing committed
+  });
+});
+
+describe('revertCommit', () => {
+  let root;
+  beforeEach(() => { root = makeRepo(); });
+  afterEach(() => { rmSync(root, { recursive: true, force: true }); });
+
+  test('reverts a committed edit as a new inverse commit (honest, not a rollback)', async () => {
+    const w = await armedWriteEntry({
+      editsRoot: root, relPath: 'Entry.md',
+      op: { op: 'append', text: 'A line to be reverted.' },
+      summary: 'append a line', verify: 'unverified', author: 'claude',
+    });
+    expect(w.ok).toBe(true);
+    expect(readFileSync(join(root, 'Entry.md'), 'utf8')).toMatch(/A line to be reverted\./);
+    const editHash = git(root, ['rev-parse', 'HEAD']).trim();
+
+    const r = await revertCommit({ editsRoot: root, hash: w.shortHash });
+    expect(r.ok).toBe(true);
+    expect(typeof r.revertHash).toBe('string');
+
+    // the content is gone again …
+    expect(readFileSync(join(root, 'Entry.md'), 'utf8')).not.toMatch(/A line to be reverted\./);
+    // … but as a NEW commit on top, not a history rewrite (the edit is still there)
+    const head = git(root, ['rev-parse', 'HEAD']).trim();
+    expect(head).not.toBe(editHash);
+    const log = git(root, ['log', '--format=%H']).trim().split('\n');
+    expect(log).toContain(editHash);          // the original commit survives
+    expect(git(root, ['status', '--porcelain']).trim()).toBe(''); // clean tree
+  });
+
+  test('preserves a later edit to the same entry (3-way revert, not a reset)', async () => {
+    const first = await armedWriteEntry({
+      editsRoot: root, relPath: 'Entry.md', op: { op: 'append', text: 'FIRST insertion.' },
+      summary: 'first', verify: 'unverified', author: 'claude',
+    });
+    await armedWriteEntry({
+      editsRoot: root, relPath: 'Entry.md', op: { op: 'prepend', text: 'SECOND insertion at the top.' },
+      summary: 'second', verify: 'unverified', author: 'claude',
+    });
+    const r = await revertCommit({ editsRoot: root, hash: first.shortHash });
+    expect(r.ok).toBe(true);
+    const text = readFileSync(join(root, 'Entry.md'), 'utf8');
+    expect(text).not.toMatch(/FIRST insertion\./);   // the reverted edit is undone
+    expect(text).toMatch(/SECOND insertion at the top\./); // the later edit survives
+  });
+
+  test('refuses a bad hash and a commit absent from the worktree', async () => {
+    expect((await revertCommit({ editsRoot: root, hash: 'nothex!' })).ok).toBe(false);
+    expect((await revertCommit({ editsRoot: root, hash: 'deadbeef' })).ok).toBe(false);
+    expect((await revertCommit({ editsRoot: null, hash: 'abcdef0' })).ok).toBe(false);
   });
 });
 

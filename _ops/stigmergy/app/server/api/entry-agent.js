@@ -62,5 +62,31 @@ export async function entryAgentRoutes(ctx) {
     return true;
   }
 
+  // POST /api/entry-agent/undo — revert a committed Companion edit (M1d).
+  //   Body: { path?, commit, turnId? }
+  // Creates a new inverse commit on the quarantined edits branch and posts a
+  // revert PROOF on the same turn (read back over SSE). Honest, not a silent
+  // rollback. 400 on a bad/missing commit or a revert that cannot apply cleanly.
+  if (urlPath === '/api/entry-agent/undo' && method === 'POST') {
+    if (!companionLane || typeof companionLane.undo !== 'function') {
+      jsonResponse(res, 500, { error: 'companion lane unavailable' });
+      return true;
+    }
+    const bodyText = await readBody(req, res);
+    if (bodyText === null) return true; // 413 already sent
+    let body;
+    try { body = JSON.parse(bodyText); } catch (e) {
+      jsonResponse(res, 400, { error: `malformed JSON: ${e.message}` });
+      return true;
+    }
+    const result = await companionLane.undo({
+      path: typeof body?.path === 'string' ? body.path : null,
+      commit: body?.commit,
+      turnId: typeof body?.turnId === 'string' ? body.turnId : null,
+    });
+    jsonResponse(res, result.ok ? 200 : 400, result);
+    return true;
+  }
+
   return false;
 }
