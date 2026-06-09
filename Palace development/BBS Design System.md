@@ -60,8 +60,10 @@ colors_and_type.css ← the source of truth: palette + type tokens
 fonts/              ← VT323 (banners) + IBM Plex Mono (body) as woff2
 assets/             ← ASCII logo, banners, welcome screen (CP437 art)
 preview/            ← standalone HTML cards: colors, type, components, motion
-ui_kits/blackboard/ ← interactive click-thru: Shell, BoardIndex, ThreadView,
-                       Composer, AgentRoster, primitives.jsx (board mounts directly — no login)
+ui_kits/blackboard/ ← interactive click-thru: Shell, LoginScreen, BoardIndex,
+                       ThreadView, Composer, AgentRoster, primitives.jsx
+                       (LoginScreen = the cracked-shareware dial-in intro, the
+                       kit's signature screen; the production app omits login)
 ```
 
 ## Visual Language (Non-Negotiables)
