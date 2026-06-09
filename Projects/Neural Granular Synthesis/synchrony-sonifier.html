@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Neural Granular Synthesis — Synchrony Sonifier</title>
+<style>
+  /* Loudon Live Design System — Graphite skin (default).
+     Anton display · Cormorant body · Manrope UI · JetBrains Mono metadata.
+     Local font stacks only (no CDN); runs sandboxed/offline. Matches the
+     palette of raster-plot-explorer.html so the eye and the ear agree. */
+  :root {
+    --bg:     #0b0b0d;
+    --panel:  #131318;
+    --ink:    #e7e7ea;
+    --dim:    #8a8a93;
+    --line:   #2a2a32;
+    --amber:  #f2b134;   /* synchrony / lock */
+    --indigo: #6366f1;   /* drift / scatter  */
+    --teal:   #33e0c8;   /* the r trace      */
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; background: var(--bg); color: var(--ink); }
+  body {
+    font-family: "Cormorant", Georgia, "Times New Roman", serif;
+    -webkit-font-smoothing: antialiased;
+    padding: 18px clamp(14px, 3vw, 40px) 40px;
+    line-height: 1.45;
+  }
+  h1 {
+    font-family: "Anton", Impact, "Arial Narrow Bold", sans-serif;
+    font-weight: 400; letter-spacing: 0.02em; text-transform: uppercase;
+    font-size: clamp(22px, 4vw, 38px); margin: 0 0 2px;
+  }
+  .sub {
+    font-family: "JetBrains Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+    font-size: 11px; letter-spacing: 0.06em; color: var(--dim);
+    text-transform: uppercase; margin-bottom: 16px;
+  }
+  .lede { font-size: 18px; color: var(--ink); max-width: 64ch; margin: 0 0 18px; }
+  em { color: var(--amber); font-style: italic; }
+  .layout { display: grid; grid-template-columns: 1fr 300px; gap: 20px; align-items: start; }
+  @media (max-width: 820px) { .layout { grid-template-columns: 1fr; } }
+
+  canvas#scope {
+    width: 100%; display: block; background: #06060a;
+    border: 1px solid var(--line); border-radius: 4px;
+  }
+  .meters { display: flex; gap: 22px; flex-wrap: wrap; margin: 12px 0 4px;
+            font-family: "JetBrains Mono", ui-monospace, monospace; }
+  .meter { font-size: 12px; color: var(--dim); }
+  .meter b { display: block; font-size: 26px; color: var(--ink); font-weight: 500; }
+  .meter.r b { color: var(--amber); }
+  .regime {
+    font-family: "Manrope", system-ui, sans-serif; font-weight: 700;
+    font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase;
+    padding: 4px 10px; border-radius: 3px; display: inline-block; margin-top: 6px;
+  }
+
+  .panel { background: var(--panel); border: 1px solid var(--line);
+           border-radius: 4px; padding: 16px; font-family: "Manrope", system-ui, sans-serif; }
+  .panel h2 {
+    font-family: "Anton", Impact, sans-serif; font-weight: 400; font-size: 15px;
+    letter-spacing: 0.04em; text-transform: uppercase; margin: 0 0 12px; color: var(--ink);
+  }
+  .ctrl { margin-bottom: 16px; }
+  .ctrl label {
+    display: flex; justify-content: space-between; align-items: baseline;
+    font-size: 12px; color: var(--dim); margin-bottom: 5px;
+    font-family: "JetBrains Mono", ui-monospace, monospace; letter-spacing: 0.04em;
+  }
+  .ctrl label .val { color: var(--amber); font-weight: 500; }
+  input[type=range] { width: 100%; accent-color: var(--amber); height: 18px; }
+  .note { font-size: 12px; color: var(--dim); line-height: 1.4; margin-top: 2px; }
+  .buttons { display: flex; gap: 8px; margin-top: 6px; flex-wrap: wrap; }
+  button {
+    font-family: "Manrope", system-ui, sans-serif; font-weight: 700; font-size: 11px;
+    letter-spacing: 0.06em; text-transform: uppercase; cursor: pointer;
+    background: #1d1d24; color: var(--ink); border: 1px solid var(--line);
+    border-radius: 3px; padding: 7px 11px;
+  }
+  button:hover { border-color: var(--amber); color: var(--amber); }
+  button.on { background: var(--amber); color: #0b0b0d; border-color: var(--amber); }
+  .legend { font-size: 13px; color: var(--dim); max-width: 64ch; margin: 16px 0 0; }
+  .legend b { color: var(--ink); }
+  footer {
+    margin-top: 30px; padding-top: 12px; border-top: 1px solid var(--line);
+    font-family: "JetBrains Mono", ui-monospace, monospace; font-size: 11px;
+    letter-spacing: 0.05em; color: var(--dim); text-transform: uppercase;
+  }
+  .startgate {
+    position: fixed; inset: 0; background: rgba(11,11,13,0.92); z-index: 10;
+    display: flex; align-items: center; justify-content: center; cursor: pointer;
+  }
+  .startgate .inner { text-align: center; }
+  .startgate .big {
+    font-family: "Anton", Impact, sans-serif; font-size: clamp(28px,6vw,56px);
+    color: var(--amber); letter-spacing: 0.04em; text-transform: uppercase;
+  }
+  .startgate .small {
+    font-family: "JetBrains Mono", monospace; color: var(--dim);
+    font-size: 13px; letter-spacing: 0.08em; margin-top: 10px;
+  }
+</style>
+</head>
+<body>
+  <div class="startgate" id="gate">
+    <div class="inner">
+      <div class="big">click to wake the crowd</div>
+      <div class="small">audio starts on tap — turn K up and listen for the lock</div>
+    </div>
+  </div>
+
+  <h1>The Synchrony Sonifier</h1>
+  <div class="sub">Neural Granular Synthesis · the raster, heard instead of seen</div>
+  <p class="lede">
+    The raster plot showed coherence as <em>vertical stripes</em>. This is the same
+    population, but you <em>hear</em> it. Each neuron is a tiny grain of tone at its own
+    pitch. With coupling off, they smear into a rough, beating cloud — noisy whispers.
+    Turn the coupling <em>K</em> up: the crowd pulls into phase, <em>r</em> climbs, and
+    the cloud fuses into a single pitched drone. The number on the raster is now a sound.
+  </p>
+
+  <div class="layout">
+    <div>
+      <canvas id="scope" width="900" height="300"></canvas>
+      <div class="meters">
+        <div class="meter r"><b id="rVal">0.00</b>synchrony index r</div>
+        <div class="meter"><b id="fVal">0</b>fusion (perceived 1 tone)</div>
+        <div class="meter"><b id="kVal">0.00</b>coupling K</div>
+        <div class="meter"><span class="regime" id="regime">drift</span></div>
+      </div>
+      <p class="legend">
+        <b>What r is wired to in the sound:</b> as r rises (0 → 1), the neurons'
+        detuning collapses toward unison (the beating goes away), their grain onsets
+        align into one attack instead of a scattered patter, and the master tone
+        brightens and steadies. <b>r near 0</b> = a rough inharmonic wash;
+        <b>r near 1</b> = one fused, harmonic note. The teal trace is r over the last
+        few seconds; the white trace above it is the actual output waveform —
+        watch it go from grass to a clean periodic wave as the crowd locks.
+      </p>
+    </div>
+
+    <div class="panel">
+      <h2>Play the crowd</h2>
+
+      <div class="ctrl">
+        <label>coupling&nbsp;K <span class="val" id="kLab">0.00</span></label>
+        <input id="K" type="range" min="0" max="2" step="0.01" value="0">
+        <div class="note">Below the lock threshold: a beating cloud. Above it: a fused drone. Find K_c by ear.</div>
+      </div>
+
+      <div class="ctrl">
+        <label>threshold spread&nbsp;σ <span class="val" id="sLab">0.18</span></label>
+        <input id="sigma" type="range" min="0" max="0.5" step="0.005" value="0.18">
+        <div class="note">How unequal the neurons are. Low = snaps to a stiff unison. High = lock is hard-won, r tops out below 1, the tone stays alive and shimmering.</div>
+      </div>
+
+      <div class="ctrl">
+        <label>pitch center&nbsp;⟨f⟩ <span class="val" id="fLab">110</span> Hz</label>
+        <input id="freq" type="range" min="55" max="330" step="1" value="110">
+        <div class="note">The population's pitch — where the fused drone lands.</div>
+      </div>
+
+      <div class="ctrl">
+        <label>population&nbsp;N <span class="val" id="nLab">24</span></label>
+        <input id="N" type="range" min="6" max="48" step="1" value="24">
+        <div class="note">Voices in the crowd. More = denser cloud below lock, fuller drone above it.</div>
+      </div>
+
+      <div class="buttons">
+        <button id="play" class="on">⏸ pause</button>
+        <button id="reset">↺ reseed</button>
+        <button id="sweep">⤴ auto-sweep K</button>
+      </div>
+      <p class="note" style="margin-top:14px">
+        Auto-sweep walks K from 0 to 2 and back so you can hear the phase transition
+        switch on and off hands-free. Listen for the beating to vanish as r crosses ≈0.3.
+      </p>
+    </div>
+  </div>
+
+  <footer>Loudon Live · Autodidact Polymaths</footer>
+
+<script>
+/* ──────────────────────────────────────────────────────────────────────────
+   THE SONIC TWIN OF THE RASTER.
+
+   Same mean-field Kuramoto population as raster-plot-explorer.html — N phase
+   oscillators, identical order-parameter math — but here the population drives
+   WebAudio instead of a canvas of dots. The mapping from r to sound is the
+   whole point of the project: incoherent crowd → inharmonic wash; coherent
+   crowd → fused harmonic tone (home entry's Signature Insight; control-
+   vocabulary-math.md §1, "drag r toward 1 and the timbre fuses").
+
+   Per oscillator i (control-rate, runs in JS at ~60 Hz):
+     dθᵢ/dt = ωᵢ + K · Kscale · r · sin(ψ − θᵢ)
+     r·e^{iψ} = (1/N) Σ e^{iθⱼ}
+
+   r is then wired to THREE things the ear reads as fusion:
+     1. DETUNE COLLAPSE — each grain voice's pitch sits at ⟨f⟩·(1 + spread·(1−r)·jitterᵢ).
+        At r=0 the voices are maximally detuned → beating, roughness. At r=1 they
+        converge to unison → one pitch. This is the dominant audible cue.
+     2. ONSET ALIGNMENT — each neuron re-triggers a short grain when its phase θ
+        wraps 2π. At low r the wraps scatter (a patter of grains); at high r they
+        bunch near ψ (one collective attack). We gate each grain's gain by how
+        close its wrap was to the mean phase, scaled by r, so a locked crowd
+        produces one rhythmic pulse instead of mush.
+     3. BRIGHTNESS / STEADINESS — a master lowpass opens and a tiny pitch-jitter
+        LFO depth shrinks as r rises, so the fused tone is brighter and stiller.
+
+   Audio architecture (all native WebAudio nodes, no buffers preloaded):
+     N × [OscillatorNode → per-voice GainNode (grain envelope)] → busGain
+        → masterLPF (BiquadFilter, lowpass) → masterGain → destination
+   The per-voice oscillators run continuously; grain "onsets" are short gain
+   bumps scheduled from the control loop. This keeps the node graph fixed
+   (no create/destroy churn) — closer to the project's "persistent population,
+   not transient grain objects" architecture note.
+   ────────────────────────────────────────────────────────────────────────── */
+
+let actx = null, master = null, masterLPF = null, bus = null;
+let voices = [];            // { osc, gain } per neuron
+let N, phase, omega, baseJit, Kscale;
+let rHist = [], waveHist = [];
+const WINDOW = 5.0;
+let t = 0;
+let running = true, sweeping = false, sweepDir = 1;
+let lastR = 0, lastPsi = 0;
+let analyser = null, waveBuf = null;
+
+const els = {
+  K: document.getElementById('K'), sigma: document.getElementById('sigma'),
+  freq: document.getElementById('freq'), N: document.getElementById('N'),
+  kLab: document.getElementById('kLab'), sLab: document.getElementById('sLab'),
+  fLab: document.getElementById('fLab'), nLab: document.getElementById('nLab'),
+  rVal: document.getElementById('rVal'), fVal: document.getElementById('fVal'),
+  kVal: document.getElementById('kVal'), regime: document.getElementById('regime'),
+  play: document.getElementById('play'), reset: document.getElementById('reset'),
+  sweep: document.getElementById('sweep'),
+};
+
+// ---- audio graph build / rebuild on N change ----
+function buildGraph() {
+  if (!actx) return;
+  // tear down old voices
+  voices.forEach(v => { try { v.osc.stop(); } catch (e) {} v.osc.disconnect(); v.gain.disconnect(); });
+  voices = [];
+
+  N = +els.N.value;
+  const now = actx.currentTime;
+  for (let i = 0; i < N; i++) {
+    const osc = actx.createOscillator();
+    osc.type = 'sawtooth';                 // a little spectral content so beating is audible
+    const g = actx.createGain();
+    g.gain.value = 0.0;                     // grain envelope drives this
+    osc.connect(g).connect(bus);
+    osc.start(now);
+    voices.push({ osc, gain: g, env: 0 });
+  }
+  // per-voice bus level scales with N so total loudness stays sane
+  bus.gain.setTargetAtTime(0.9 / Math.sqrt(N), now, 0.05);
+}
+
+function reseed() {
+  N = +els.N.value;
+  phase = new Float64Array(N);
+  omega = new Float64Array(N);
+  baseJit = new Float64Array(N);          // each neuron's fixed detune direction
+  const meanF = +els.freq.value;
+  const sigma = +els.sigma.value;
+  for (let i = 0; i < N; i++) {
+    phase[i] = Math.random() * 2 * Math.PI;
+    baseJit[i] = Math.random() * 2 - 1;   // uniform [-1,1], stable per neuron
+    // natural angular freq of the SPIKE rhythm (slow, ~3-9 Hz) — this is the
+    // phase clock, NOT the audio pitch. Spread widens with σ → raises K_c,
+    // matching the math doc §2. (We keep the rhythm slow so onsets are countable.)
+    const rhythmHz = 5.0 * (1 + (0.10 + 0.9 * sigma) * baseJit[i]);
+    omega[i] = 2 * Math.PI * Math.max(1.0, rhythmHz);
+  }
+  let m = 0; for (let i = 0; i < N; i++) m += omega[i]; Kscale = m / N;
+  rHist = []; waveHist = []; t = 0;
+  if (actx) buildGraph();
+}
+
+function orderParam() {
+  let sx = 0, sy = 0;
+  for (let i = 0; i < N; i++) { sx += Math.cos(phase[i]); sy += Math.sin(phase[i]); }
+  sx /= N; sy /= N;
+  return { r: Math.hypot(sx, sy), psi: Math.atan2(sy, sx) };
+}
+
+// ---- control-rate update: advance phases, fire grains, set pitches ----
+let lastStepWall = 0;
+function step(dt) {
+  const K = +els.K.value;
+  const meanF = +els.freq.value;
+  const sigma = +els.sigma.value;
+  const { r, psi } = orderParam();
+  lastR = r; lastPsi = psi;
+
+  // detune amount shrinks as r rises (cue #1: detune collapse).
+  // At r=0: full spread (sigma-scaled); at r=1: near unison.
+  const detuneFrac = (0.5 * sigma + 0.04) * (1 - r);   // fractional pitch spread
+  const now = actx ? actx.currentTime : 0;
+
+  for (let i = 0; i < N; i++) {
+    const before = phase[i];
+    phase[i] += (omega[i] + K * Kscale * r * Math.sin(psi - phase[i])) * dt;
+
+    // set this voice's audio pitch: detuned around meanF, collapsing with r
+    if (actx && voices[i]) {
+      const cents = detuneFrac * baseJit[i];
+      const f = meanF * (1 + cents);
+      voices[i].osc.frequency.setTargetAtTime(Math.max(20, f), now, 0.03);
+    }
+
+    // grain onset when phase wraps 2π
+    if (phase[i] >= 2 * Math.PI) {
+      const wraps = Math.floor(phase[i] / (2 * Math.PI));
+      phase[i] -= wraps * 2 * Math.PI;
+      if (actx && voices[i]) {
+        // cue #2: onset alignment. A grain near the mean phase ψ is loud;
+        // a grain off-phase is quieter, scaled by r. At low r every grain
+        // fires at full level (a patter); at high r only the aligned ones
+        // ring through → one collective pulse.
+        const align = 0.5 + 0.5 * Math.cos(before - psi);   // 1 at ψ, 0 opposite
+        const lvl = (1 - r) * 0.9 + r * (0.25 + 0.75 * align);
+        const g = voices[i].gain.gain;
+        const dur = 0.06 + 0.10 * r;          // grains lengthen + overlap as it fuses
+        g.cancelScheduledValues(now);
+        g.setValueAtTime(g.value, now);
+        g.linearRampToValueAtTime(lvl, now + 0.004);
+        g.exponentialRampToValueAtTime(0.0008, now + dur);
+      }
+    }
+  }
+
+  // cue #3: brightness/steadiness on the master filter
+  if (masterLPF) {
+    const cutoff = 350 + 5200 * r;          // opens as it locks
+    masterLPF.frequency.setTargetAtTime(cutoff, now, 0.08);
+  }
+
+  t += dt;
+  rHist.push({ t, r });
+  while (rHist.length && rHist[0].t < t - WINDOW) rHist.shift();
+}
+
+// ---- visual scope: top = output waveform, bottom = r trace ----
+const cv = document.getElementById('scope');
+const cx = cv.getContext('2d');
+function fit() {
+  const dpr = window.devicePixelRatio || 1;
+  const cssW = cv.clientWidth, cssH = 300;
+  cv.width = Math.round(cssW * dpr); cv.height = Math.round(cssH * dpr);
+  cx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  return { w: cssW, h: cssH };
+}
+let view = fit();
+window.addEventListener('resize', () => { view = fit(); });
+
+function draw() {
+  const { w, h } = view;
+  cx.clearRect(0, 0, w, h);
+  cx.fillStyle = '#06060a'; cx.fillRect(0, 0, w, h);
+
+  const padL = 8, padR = 8;
+  const plotW = w - padL - padR;
+  const waveH = h * 0.55, rH = h * 0.32, gap = h * 0.04;
+  const waveY0 = 8, rY0 = waveY0 + waveH + gap;
+
+  // --- top: live output waveform from analyser ---
+  if (analyser && waveBuf) {
+    analyser.getFloatTimeDomainData(waveBuf);
+    cx.strokeStyle = mix('#6366f1', '#f2f2f5', lastR);
+    cx.lineWidth = 1.2; cx.beginPath();
+    const step = Math.max(1, Math.floor(waveBuf.length / plotW));
+    let first = true;
+    for (let x = 0; x < plotW; x++) {
+      const idx = Math.min(waveBuf.length - 1, x * step);
+      const v = waveBuf[idx];
+      const y = waveY0 + waveH / 2 - v * (waveH / 2) * 0.95;
+      if (first) { cx.moveTo(padL + x, y); first = false; } else cx.lineTo(padL + x, y);
+    }
+    cx.stroke();
+  }
+  cx.fillStyle = '#8a8a93'; cx.font = '10px "JetBrains Mono", monospace';
+  cx.fillText('output waveform  (grass → clean wave as r → 1)', padL + 2, waveY0 + 11);
+
+  // --- bottom: r over time ---
+  cx.strokeStyle = '#2a2a32'; cx.lineWidth = 1;
+  cx.beginPath(); cx.moveTo(padL, rY0 + rH); cx.lineTo(padL + plotW, rY0 + rH); cx.stroke();
+  const lockY = rY0 + rH - 0.3 * rH;
+  cx.strokeStyle = 'rgba(138,138,147,0.4)'; cx.setLineDash([3,3]);
+  cx.beginPath(); cx.moveTo(padL, lockY); cx.lineTo(padL + plotW, lockY); cx.stroke();
+  cx.setLineDash([]);
+  const t0 = t - WINDOW;
+  cx.strokeStyle = '#33e0c8'; cx.lineWidth = 1.6; cx.beginPath();
+  let started = false;
+  for (const p of rHist) {
+    const x = padL + ((p.t - t0) / WINDOW) * plotW;
+    const y = rY0 + rH - p.r * rH;
+    if (!started) { cx.moveTo(x, y); started = true; } else cx.lineTo(x, y);
+  }
+  cx.stroke();
+  cx.fillStyle = '#8a8a93';
+  cx.fillText('r', padL + 2, rY0 + 10);
+  cx.fillText('lock ≈ 0.3', padL + plotW - 58, lockY - 3);
+}
+
+function mix(a, b, tt) {
+  tt = Math.max(0, Math.min(1, tt));
+  const pa = [parseInt(a.slice(1,3),16), parseInt(a.slice(3,5),16), parseInt(a.slice(5,7),16)];
+  const pb = [parseInt(b.slice(1,3),16), parseInt(b.slice(3,5),16), parseInt(b.slice(5,7),16)];
+  const c = pa.map((v, i) => Math.round(v + (pb[i]-v) * tt));
+  return 'rgb(' + c.join(',') + ')';
+}
+
+function updateMeters() {
+  els.rVal.textContent = lastR.toFixed(2);
+  els.kVal.textContent = (+els.K.value).toFixed(2);
+  // "fusion" read-out: a crude perceptual proxy — 0 = many voices heard, 1 = one tone
+  els.fVal.textContent = (lastR * lastR).toFixed(2);
+  let label, col;
+  if (lastR < 0.30)      { label = 'drift';    col = '#6366f1'; }
+  else if (lastR < 0.75) { label = 'critical'; col = '#f59e0b'; }
+  else                   { label = 'lock';     col = '#f2b134'; }
+  els.regime.textContent = label;
+  els.regime.style.background = col; els.regime.style.color = '#0b0b0d';
+}
+
+function syncLabels() {
+  els.kLab.textContent = (+els.K.value).toFixed(2);
+  els.sLab.textContent = (+els.sigma.value).toFixed(3);
+  els.fLab.textContent = (+els.freq.value).toFixed(0);
+  els.nLab.textContent = els.N.value;
+}
+['K','sigma','freq','N'].forEach(id => {
+  els[id].addEventListener('input', () => {
+    syncLabels();
+    if (id === 'N' || id === 'sigma' || id === 'freq') reseed();
+  });
+});
+syncLabels();
+
+els.play.addEventListener('click', () => {
+  running = !running;
+  els.play.textContent = running ? '⏸ pause' : '▶ play';
+  els.play.classList.toggle('on', running);
+  if (master && actx) master.gain.setTargetAtTime(running ? 0.9 : 0.0, actx.currentTime, 0.03);
+});
+els.reset.addEventListener('click', reseed);
+els.sweep.addEventListener('click', () => {
+  sweeping = !sweeping; els.sweep.classList.toggle('on', sweeping);
+});
+
+// ---- audio bootstrap on first gesture ----
+function wake() {
+  if (actx) return;
+  actx = new (window.AudioContext || window.webkitAudioContext)();
+  master = actx.createGain(); master.gain.value = 0.9;
+  masterLPF = actx.createBiquadFilter(); masterLPF.type = 'lowpass';
+  masterLPF.frequency.value = 350; masterLPF.Q.value = 0.7;
+  bus = actx.createGain(); bus.gain.value = 0.2;
+  analyser = actx.createAnalyser(); analyser.fftSize = 2048;
+  waveBuf = new Float32Array(analyser.fftSize);
+  bus.connect(masterLPF).connect(master);
+  master.connect(analyser);
+  master.connect(actx.destination);
+  reseed();
+  document.getElementById('gate').style.display = 'none';
+}
+document.getElementById('gate').addEventListener('click', wake);
+window.addEventListener('keydown', (e) => { if (e.key === ' ') wake(); });
+
+// ---- main loop ----
+let prev = performance.now();
+function frame(now) {
+  const wall = Math.min(0.05, (now - prev) / 1000);
+  prev = now;
+  if (running && actx) {
+    if (sweeping) {
+      let k = +els.K.value + sweepDir * 0.10 * wall;
+      if (k >= 2) { k = 2; sweepDir = -1; }
+      if (k <= 0) { k = 0; sweepDir = 1; }
+      els.K.value = k.toFixed(3); els.kLab.textContent = k.toFixed(2);
+    }
+    const sub = 2, dt = wall / sub;
+    for (let s = 0; s < sub; s++) step(dt);
+  }
+  draw();
+  updateMeters();
+  requestAnimationFrame(frame);
+}
+requestAnimationFrame(frame);
+</script>
+</body>
+</html>

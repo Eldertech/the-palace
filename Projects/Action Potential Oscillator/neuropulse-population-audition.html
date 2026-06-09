@@ -1,0 +1,277 @@
+<!--
+  NeuroPulse — population audition (browser model of neuropulse.dsp)
+  Action Potential Oscillator steward, cycle 4 (2026-06-08)
+
+  WHY THIS EXISTS
+  ---------------
+  neuropulse.dsp cannot be compiled in the steward sandbox (no Faust). The
+  Mac-compile handoff (neuropulse-mac-compile-handoff.md) hands that one job to
+  the Mac. This page is the AUDIBLE TARGET the compiled .dsp should match: a
+  faithful JS port of the same Stage-4 integrate-spike-hyperpolarize-recover
+  neuron, run as a population of N, coupled by the same mean-field rule
+  (drive += K * mean_of_spike_indicators). Sweep K and hear the synchronization
+  transition the Faust engine is built to produce — incoherent crowd snapping
+  into a phase-locked drone somewhere in K in [0.05, 0.3] at 5% heterogeneity.
+
+  Not the same artifact as the sibling Neural Granular Synthesis raster plot:
+  that page visualizes abstract Kuramoto phase dots; THIS page makes actual
+  sound from the actual neuron state machine in the .dsp, so a future cycle can
+  A/B the compiled Faust output against it by ear.
+
+  Self-contained. No build, no network, no dependencies. Web Audio + Canvas.
+-->
+<meta charset="utf-8">
+<title>NeuroPulse — population audition</title>
+<style>
+  :root{
+    --bg:#1a1c1e; --panel:#232629; --ink:#e8e6e1; --dim:#9a9690;
+    --line:#3a3e42; --na:#e8923c; --k:#5b8fd6; --spike:#d65b5b;
+    --lock:#7bd67b; --accent:#c9a227;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font-family:"Cormorant Garamond",Georgia,serif;font-size:18px;line-height:1.5;}
+  .wrap{max-width:78ch;margin:0 auto;padding:28px 22px 60px;}
+  h1{font-family:"Anton","Arial Narrow",sans-serif;font-weight:400;
+    letter-spacing:.02em;font-size:34px;line-height:1.05;margin:0 0 4px;text-transform:uppercase;}
+  .sub{font-family:"JetBrains Mono",ui-monospace,monospace;font-size:11px;
+    letter-spacing:.08em;color:var(--dim);text-transform:uppercase;margin-bottom:20px;}
+  p{margin:0 0 14px;}
+  .panel{background:var(--panel);border:1px solid var(--line);border-radius:6px;
+    padding:16px 18px;margin:18px 0;}
+  canvas{display:block;width:100%;border:1px solid var(--line);border-radius:4px;background:#141618;}
+  .ctl{display:flex;align-items:center;gap:12px;margin:10px 0;
+    font-family:"JetBrains Mono",ui-monospace,monospace;font-size:12px;}
+  .ctl label{flex:0 0 168px;color:var(--dim);letter-spacing:.03em;}
+  .ctl input[type=range]{flex:1;accent-color:var(--k);}
+  .ctl .val{flex:0 0 64px;text-align:right;color:var(--ink);}
+  button{font-family:"JetBrains Mono",ui-monospace,monospace;font-size:12px;
+    letter-spacing:.06em;text-transform:uppercase;background:#2c3034;color:var(--ink);
+    border:1px solid var(--line);border-radius:4px;padding:9px 16px;cursor:pointer;}
+  button:hover{border-color:var(--accent);color:var(--accent);}
+  button.primary{background:var(--accent);color:#1a1c1e;border-color:var(--accent);font-weight:bold;}
+  .row{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-top:6px;}
+  .readout{font-family:"JetBrains Mono",ui-monospace,monospace;font-size:13px;
+    color:var(--lock);min-width:120px;}
+  .legend{font-family:"JetBrains Mono",ui-monospace,monospace;font-size:11px;color:var(--dim);margin-top:8px;}
+  .footer{font-family:"JetBrains Mono",ui-monospace,monospace;font-size:10px;
+    letter-spacing:.1em;color:var(--dim);text-transform:uppercase;margin-top:34px;
+    border-top:1px solid var(--line);padding-top:12px;}
+  code{font-family:"JetBrains Mono",ui-monospace,monospace;font-size:13px;color:var(--accent);}
+</style>
+
+<div class="wrap">
+  <h1>NeuroPulse — Population Audition</h1>
+  <div class="sub">Action Potential Oscillator · cycle 4 · browser model of neuropulse.dsp</div>
+
+  <p>This is the <em>audible target</em> for the Faust population engine. The same
+  Stage-4 neuron — charge, spike-rise, spike-fall, refractory recovery — runs here
+  as a crowd of <strong>N</strong> neurons, coupled by the identical mean-field rule the
+  <code>.dsp</code> uses: each neuron's drive current gets a nudge of
+  <code>K &times; (mean of who is spiking right now)</code>. Below a critical K the crowd
+  is noise; above it the crowd snaps into a phase-locked drone. Press <strong>Play</strong>,
+  then sweep <strong>K</strong> and listen for the lock.</p>
+
+  <div class="panel">
+    <canvas id="raster" width="900" height="220"></canvas>
+    <div class="legend">Each row = one neuron · each mark = a spike · diagonal/vertical alignment = the crowd agreeing.
+    Bar at right = synchrony r (green when locked).</div>
+  </div>
+
+  <div class="panel">
+    <div class="ctl"><label>K — coupling</label>
+      <input id="K" type="range" min="0" max="2" step="0.001" value="0.0">
+      <span class="val" id="Kv">0.000</span></div>
+    <div class="ctl"><label>freq — pitch (Hz)</label>
+      <input id="freq" type="range" min="40" max="600" step="1" value="160">
+      <span class="val" id="freqv">160</span></div>
+    <div class="ctl"><label>hetero_freq (frac)</label>
+      <input id="het" type="range" min="0" max="0.4" step="0.005" value="0.05">
+      <span class="val" id="hetv">0.050</span></div>
+    <div class="ctl"><label>N — neurons</label>
+      <input id="N" type="range" min="4" max="48" step="1" value="16">
+      <span class="val" id="Nv">16</span></div>
+    <div class="ctl"><label>recovery_damping</label>
+      <input id="damp" type="range" min="0.05" max="2" step="0.01" value="0.7">
+      <span class="val" id="dampv">0.70</span></div>
+    <div class="row">
+      <button id="play" class="primary">Play</button>
+      <button id="sweep">Auto-sweep K 0&rarr;1</button>
+      <span class="readout" id="rout">r = —</span>
+    </div>
+  </div>
+
+  <p style="font-size:15px;color:var(--dim)">Honest limits of this model vs. the
+  <code>.dsp</code>: it runs at a downsampled control rate for the visual raster and uses
+  the same <em>linear</em> spike ramps and spring-mass recovery as the Faust source, so the
+  timbre is a faithful sketch, not a sample-exact twin. The Faust engine runs every neuron
+  at full audio rate with one-sample mean-field delay; here the mean-field is computed once
+  per control block. The transition K-range and the lock behavior should match by ear —
+  that is the thing to A/B once the Mac compile lands.</p>
+
+  <div class="footer">Loudon Live · Autodidact Polymaths</div>
+</div>
+
+<script>
+"use strict";
+// ---------------------------------------------------------------------------
+// Neuron state machine — direct port of neuron(i) in neuropulse.dsp.
+// Phases: 0 charge, 1 spike-rise, 2 spike-fall, 3 refractory recovery.
+// ---------------------------------------------------------------------------
+const SR = 44100;
+const ms2samp = t => t*0.001*SR;
+
+// deterministic per-index jitter in [-1,1] — same hash idiom as the .dsp
+function jitter(i){ const s = Math.sin(i*12.9898+78.233)*43758.5453; return (s-Math.floor(s))*2-1; }
+
+function makeNeuron(i, P){
+  const j = jitter(i);
+  const my_freq = Math.max(0.001, P.freq*(1+P.het*j));
+  const my_tau  = Math.max(0.1, 5.0*(1+0.05*j));      // leak_tau_ms ~ 5ms default
+  const my_thr  = Math.max(0.1, 1.0 + 0.05*j);
+  const leak_tau = Math.max(2.0, my_tau*0.001*SR);
+  const leak_coeff = 1.0 - 1.0/leak_tau;
+  const period = SR/my_freq;
+  const spike_samps = Math.max(2, ms2samp(1.0));
+  const rise = Math.max(1, spike_samps*0.2);
+  const fall = Math.max(1, spike_samps-rise);
+  const refrac = Math.max(1, ms2samp(1.5));
+  const charge_period = Math.max(1, period - (spike_samps+refrac));
+  const drive_int = my_thr/(leak_tau*(1-Math.exp(-charge_period/leak_tau)));
+  const spike_peak = 1.5, hyper = -0.2;
+  const rise_rate = (spike_peak-my_thr)/rise;
+  const fall_rate = (hyper-spike_peak)/fall;
+  const spring_k = 1.0/leak_tau;
+  return { V:0, phase:0, timer:0, vel:0,
+    step(coupling, K, damp){
+      const drive = drive_int + K*coupling;
+      let nV, nph=this.phase, nt, nvel=0, spike=0;
+      if(this.phase===0){ nV=this.V*leak_coeff+drive;
+        if(nV>=my_thr){nph=1;} }
+      else if(this.phase===1){ nV=this.V+rise_rate; spike=1;
+        if(this.timer>=rise){nph=2;} }
+      else if(this.phase===2){ nV=this.V+fall_rate;
+        if(this.timer>=fall){nph=3;} }
+      else { const accel=-spring_k*this.V - damp*this.vel;
+        nvel=this.vel+accel; nV=this.V+nvel;
+        if(this.timer>=refrac && this.V>hyper*0.3){nph=0;} }
+      this.timer = (nph!==this.phase)?0:this.timer+1;
+      this.V=nV; this.phase=nph; this.vel=(this.phase===3)?nvel:0;
+      const out=(nV-hyper)/(spike_peak-hyper)*2-1;
+      return {out, spike};
+    } };
+}
+
+// ---------------------------------------------------------------------------
+// Population + audio. We render audio offline in blocks via ScriptProcessor,
+// computing the mean-field once per block (control rate) for the live raster,
+// but stepping every neuron at full SR for the sound.
+// ---------------------------------------------------------------------------
+let ctx, node, neurons=[], coupling=0, rHist=[], lastFire=[];
+const P = { freq:160, het:0.05, N:16, K:0.0, damp:0.7 };
+function rebuild(){ neurons=[]; for(let i=0;i<P.N;i++) neurons.push(makeNeuron(i,P));
+  lastFire = new Array(P.N).fill(-1); }
+
+function compute(buf, len){
+  let acc=0;
+  for(let n=0;n<len;n++){
+    let mixV=0, spikeSum=0;
+    for(let k=0;k<neurons.length;k++){
+      const r=neurons[k].step(coupling, P.K, P.damp);
+      mixV+=r.out; spikeSum+=r.spike;
+      if(r.spike) lastFire[k]=n;
+    }
+    coupling = spikeSum/neurons.length;     // mean-field for next sample
+    acc += spikeSum;                        // for visual density
+    buf[n]=(mixV/neurons.length)*0.4;       // gain_mix=0.4
+  }
+  return acc;
+}
+
+// synchrony proxy r: 1 - dispersion of recent inter-fire timing, clamped 0..1
+function synchrony(){
+  const fired = lastFire.filter(x=>x>=0);
+  if(fired.length<2) return 0;
+  const mean = fired.reduce((a,b)=>a+b,0)/fired.length;
+  let v=0; for(const f of fired) v+=(f-mean)*(f-mean); v/=fired.length;
+  const spread = Math.sqrt(v)/(SR/P.freq);   // normalize by period
+  return Math.max(0, Math.min(1, 1-spread*1.6));
+}
+
+function startAudio(){
+  if(ctx) return;
+  ctx = new (window.AudioContext||window.webkitAudioContext)();
+  rebuild();
+  node = ctx.createScriptProcessor(2048,0,1);
+  node.onaudioprocess = e=>{
+    const out=e.outputBuffer.getChannelData(0);
+    compute(out, out.length);
+    draw();
+  };
+  node.connect(ctx.destination);
+}
+
+// ---------------------------------------------------------------------------
+// Raster canvas — scrolling spike dots, one row per neuron, live r bar.
+// ---------------------------------------------------------------------------
+const cv=document.getElementById('raster'), g=cv.getContext('2d');
+let col=0;
+function draw(){
+  const W=cv.width, H=cv.height, barW=70, plotW=W-barW;
+  // scroll left by 1px
+  const img=g.getImageData(2,0,plotW-2,H); g.putImageData(img,0,0);
+  g.fillStyle='#141618'; g.fillRect(plotW-2,0,2,H);
+  const rowH=H/P.N;
+  for(let k=0;k<P.N;k++){
+    if(lastFire[k]>=0){
+      const recent = lastFire[k] > (2048-120);
+      if(recent){ g.fillStyle='#d65b5b'; g.fillRect(plotW-2, k*rowH+rowH*0.15, 2, Math.max(1,rowH*0.7)); }
+    }
+  }
+  // r bar
+  const r=synchrony();
+  g.fillStyle='#141618'; g.fillRect(plotW,0,barW,H);
+  g.fillStyle='#3a3e42'; g.fillRect(plotW+18,8,16,H-16);
+  const hpx=(H-16)*r;
+  g.fillStyle = r>0.7?'#7bd67b':(r>0.35?'#c9a227':'#5b8fd6');
+  g.fillRect(plotW+18, 8+(H-16)-hpx, 16, hpx);
+  g.fillStyle='#9a9690'; g.font='10px monospace';
+  g.fillText('r', plotW+22, H-2);
+  document.getElementById('rout').textContent='r = '+r.toFixed(2)+(r>0.7?'  (locked)':r>0.35?'  (forming)':'  (scatter)');
+}
+
+// ---------------------------------------------------------------------------
+// UI wiring
+// ---------------------------------------------------------------------------
+function bind(id, key, fmt, rebuildOnChange){
+  const el=document.getElementById(id), v=document.getElementById(id+'v');
+  const upd=()=>{ P[key]=parseFloat(el.value); v.textContent=fmt(P[key]);
+    if(rebuildOnChange && ctx) rebuild(); };
+  el.addEventListener('input',upd); upd();
+}
+bind('K','K',x=>x.toFixed(3));
+bind('freq','freq',x=>x.toFixed(0), true);
+bind('het','het',x=>x.toFixed(3), true);
+bind('N','N',x=>x.toFixed(0), true);
+bind('damp','damp',x=>x.toFixed(2));
+
+document.getElementById('play').addEventListener('click',function(){
+  startAudio();
+  if(ctx.state==='suspended') ctx.resume();
+  this.textContent = ctx.state==='running'?'Playing…':'Play';
+});
+
+let sweepRAF=null, sweepT=0;
+document.getElementById('sweep').addEventListener('click',()=>{
+  startAudio(); if(ctx.state==='suspended') ctx.resume();
+  if(sweepRAF){ cancelAnimationFrame(sweepRAF); sweepRAF=null;
+    document.getElementById('sweep').textContent='Auto-sweep K 0→1'; return; }
+  document.getElementById('sweep').textContent='Stop sweep';
+  sweepT=0;
+  const Kel=document.getElementById('K'), Kv=document.getElementById('Kv');
+  const tick=()=>{ sweepT+=0.0009; const k=(Math.sin(sweepT*Math.PI*2-Math.PI/2)*0.5+0.5);
+    P.K=k; Kel.value=k; Kv.textContent=k.toFixed(3);
+    sweepRAF=requestAnimationFrame(tick); };
+  tick();
+});
+</script>
