@@ -95,6 +95,13 @@ describe('buildCompanionPrompt', () => {
     expect(p).toMatch(/leave it\nempty/);
   });
 
+  it('tells the worker edits are immediate — do not approve-then-redo an already-landed edit', () => {
+    const p = buildCompanionPrompt({ grounding, body: 'x', message: 'approved' });
+    expect(p).toMatch(/EDITS ARE IMMEDIATE/);
+    expect(p).toMatch(/do not propose it again/i);
+    expect(p).toMatch(/\(I already …\)/);
+  });
+
   it('truncates a pathologically long body', () => {
     const huge = 'z'.repeat(20000);
     const p = buildCompanionPrompt({ grounding, body: huge, message: 'hi' });

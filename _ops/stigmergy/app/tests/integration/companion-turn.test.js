@@ -267,6 +267,27 @@ describe('POST /api/entry-agent/turn', () => {
     expect(head).toMatch(/the seat of perception\./); // body preserved
   }, 20000);
 
+  test('a no-op edit (set-vector to the value it already has) reads as "already in place", not a failure', async () => {
+    // The "approved" no-op bug: a redundant edit must not read as a failure. The
+    // seed vector is "I want to be discussed."; set-vector to that exact value is
+    // a no-op against the entry, so the companion should say it's already in
+    // place — never "I couldn't apply that edit honestly".
+    ({ server, companionLane } = makeServer(root, {
+      editText: 'I want to be discussed.', editOp: 'set-vector', replyText: '',
+    }));
+    const res = await request(server).post('/api/entry-agent/turn').send({ path: 'Open Entry.md', message: 'set my vector to what it already says' });
+    const turnId = res.body.turnId;
+    await waitFor(() => !existsSync(companionLane.paths.pidFile), { timeout: 6000 });
+    await waitFor(() => readBoard(root).some((m) => m.payload && m.payload.turn_id === turnId && m.payload.kind === 'companion_reply'), { timeout: 4000 });
+
+    const reply = readBoard(root).find((m) => m.payload && m.payload.kind === 'companion_reply' && m.payload.turn_id === turnId);
+    expect(reply).toBeTruthy();
+    expect(reply.payload.reply).toMatch(/already in place/i);
+    expect(reply.payload.reply).not.toMatch(/couldn't apply/i);
+    // a no-op commits nothing: no edit PROOF for this turn
+    expect(readBoard(root).some((m) => m.payload && m.payload.kind === 'companion_edit' && m.payload.turn_id === turnId)).toBe(false);
+  }, 20000);
+
   test('POST /undo reverts a committed edit and posts a revert PROOF on the same turn', async () => {
     ({ server, companionLane } = makeServer(root, { editText: 'A line to undo.' }));
     const t = await request(server).post('/api/entry-agent/turn').send({ path: 'Open Entry.md', message: 'add a line' });
