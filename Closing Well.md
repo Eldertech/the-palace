@@ -78,15 +78,7 @@ When direct verification isn't available — browser audio that I can't hear, a 
 
 The pattern came from a specific incident: in the Round 1 closeout, a sync-arriving Manim render shipped with frozen phase arrows — the simulation was running, the HUD numbers were updating, but the arrows themselves never moved. Frame extraction would have caught it in twenty seconds. I didn't run that check, declared the work done, and Loudon caught the bug visually. The lesson: the next render that could have the same class of bug is the one I should check before he does, not the one I should hope he doesn't notice.
 
-## Cross-Domain Mirrors
-
-**The Maker's Delivery step** ([[Maker]]) — currently named as a single step in *How I Work With You*. Closing Well says Delivery is a multi-part ritual: punchlist + accessibility check + verification report. A future Weave should update the Maker entry to absorb this expansion.
-
-**The Specialist Self-Check** ([[The Shop]]) — every Specialist already has a Self-Check section that names what it verifies before declaring done. Closing Well says the Self-Check should also produce a punchlist for the Maker, who in turn rolls those into Loudon's punchlist. Closing Well composes up the dispatch chain.
-
-**The Baton Ceremony** ([[Baton Ceremony]]) — every baton is, structurally, a closing-well moment. The Active Handoff section of an in-progress entry IS a punchlist. This entry generalizes the Baton Ceremony's pattern beyond ceremonies into ordinary work.
-
-**Cooperation Yields Agency** ([[Cooperation Yields Agency]]) — the work is only cooperative if the next person can pick it up. A piece of work that requires its author's continued presence to be useful isn't shared, it's hoarded. Closing well is the mechanism by which agency transfers across the boundary.
+The work is only cooperative if the next person can pick it up. A piece of work that requires its author's continued presence to be useful isn't shared, it's hoarded. Closing well is the mechanism by which agency transfers across the boundary — the practice-side instantiation of [[Cooperation Yields Agency]].
 
 ## Origin
 
