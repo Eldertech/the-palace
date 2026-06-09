@@ -18,7 +18,7 @@ import { Banner } from '../primitives.jsx';
 // is in-memory (the EntryReader fetches the chosen entry's full read
 // shape via /api/entry).
 
-export default function StateDeck({ jumpTarget = null, agentOpen = false, onToggleAgent }) {
+export default function StateDeck({ jumpTarget = null, onEntryPathChange }) {
   const [state, setState] = useState({ kind: 'loading' });
   // STATE has two lenses: PULSE (the ranked list, default) and TOPOLOGY
   // (the typed-link graph). Lens choice is URL-driven (?lens=topology), so
@@ -31,6 +31,13 @@ export default function StateDeck({ jumpTarget = null, agentOpen = false, onTogg
   const nav = useEntryNavigation();
   const selected = nav.path;
   const editing = nav.edit;
+
+  // Report the open entry up to App so the global Companion can ground in it.
+  // StateDeck owns the URL-driven entry navigation, so it is the source of
+  // truth; App only needs to know which entry (if any) is open.
+  useEffect(() => {
+    onEntryPathChange?.(selected);
+  }, [selected, onEntryPathChange]);
 
   useEffect(() => {
     let cancelled = false;
@@ -95,8 +102,6 @@ export default function StateDeck({ jumpTarget = null, agentOpen = false, onTogg
           onBack={nav.backToPulse}
           onEdit={nav.openEditor}
           onGoBack={nav.goBack}
-          agentOpen={agentOpen}
-          onToggleAgent={onToggleAgent}
         />
       ) : (
         <>

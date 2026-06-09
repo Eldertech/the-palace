@@ -1,6 +1,7 @@
 import React, { useState, useRef, useLayoutEffect, useEffect, useCallback } from 'react';
 import { fetchGrounding, postTurn, postUndo } from '../../adapters/entry-agent.js';
 import { subscribeLive } from '../../adapters/live-tail.js';
+import { contextKey, contextLabel } from '../../lib/companion-context.js';
 
 // Position init wants useLayoutEffect in the browser, but that warns under
 // server render (tests use renderToStaticMarkup). Fall back to useEffect where
@@ -230,7 +231,21 @@ export function EditMarker({ op, commit, branch, summary, reverts, vectorChange,
   );
 }
 
-export default function EntryAgentWindow({ entry, containerRef, onClose }) {
+export default function EntryAgentWindow({ entry, context, containerRef, onClose }) {
+  // Context-driven (Stage 0). The window used to be bound to a single `entry`;
+  // it now grounds in a `context` descriptor that follows the user across decks.
+  // A bare `entry` prop is still accepted (the original call + the unit tests):
+  // it becomes the entry context. `isEntry` gates the entry-only surfaces — the
+  // grounding view, the scroll-spy glow, and the "discuss this" pin.
+  const ctx = (context && context.kind)
+    ? context
+    : (entry ? { kind: 'entry', path: entry?.path ?? null, title: entry?.title } : { kind: 'app_feedback', deck: null });
+  const isEntry = ctx.kind === 'entry';
+  const cKey = contextKey(ctx);
+  // Latest context, read by callbacks without re-binding on every render.
+  const ctxRef = useRef(ctx);
+  ctxRef.current = ctx;
+
   const [width, setWidth] = useState(DEFAULT_W);
   const [height, setHeight] = useState(DEFAULT_H);
   const [top, setTop] = useState(DEFAULT_TOP);
@@ -269,9 +284,18 @@ export default function EntryAgentWindow({ entry, containerRef, onClose }) {
   const pendingRange = useRef(null);
   const winRef = useRef(null);
 
-  const path = entry?.path ?? null;
+  const path = isEntry ? (ctx.path ?? null) : null;
   const drag = useRef(null);
   const inputRef = useRef(null);  // the composer textarea (auto-grow)
+
+  // The entry surface the scroll-spy + "discuss this" measure against. When a
+  // ref is passed (the old EntryReader mount) use it; otherwise — the global
+  // App-level mount — find the open EntryReader in the DOM. Entry-only.
+  const resolveContainer = useCallback(() => {
+    if (containerRef?.current) return containerRef.current;
+    if (typeof document !== 'undefined') return document.querySelector('[data-testid="entry-reader"]');
+    return null;
+  }, [containerRef]);
 
   const highlightSupported = typeof CSS !== 'undefined' && !!CSS.highlights && typeof Highlight !== 'undefined';
 
@@ -297,12 +321,13 @@ export default function EntryAgentWindow({ entry, containerRef, onClose }) {
     setChip(null);
   }, [highlightSupported]);
 
-  // ── Fetch grounding on entry open / change ─────────────────────────────
+  // ── Fresh conversation on context change; fetch grounding for an entry ──
+  // Re-keyed on the context (entry→entry, or entry→deck), the generalization of
+  // the old per-entry reset. Grounding is fetched only for the entry kind.
   useEffect(() => {
-    if (!path) return undefined;
     let cancelled = false;
     setGrounding(null);
-    setConvo([]);            // a new entry is a fresh conversation
+    setConvo([]);            // a new context is a fresh conversation
     setSending(false);
     setTurnError(null);
     setUndoingCommits(new Set());
@@ -310,22 +335,28 @@ export default function EntryAgentWindow({ entry, containerRef, onClose }) {
     setUndoError(null);
     sessionTurns.current = new Set();
     currentTurn.current = null;
-    fetchGrounding(path).then((r) => {
-      if (cancelled) return;
-      if (r && r.ok && r.grounding) setGrounding(r.grounding);
-    });
+    if (isEntry && path) {
+      fetchGrounding(path).then((r) => {
+        if (cancelled) return;
+        if (r && r.ok && r.grounding) setGrounding(r.grounding);
+      });
+    }
     return () => { cancelled = true; };
-  }, [path]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [cKey]);
 
-  // ── Read the board for this entry's Companion replies + edits ──────────
+  // ── Read the board for this context's Companion replies + edits ────────
+  // Correlation is by turn id alone: sessionTurns holds the ids THIS window
+  // started, so a reply/edit/revert is ours iff its turn_id is in that set. (The
+  // old `entry_path` pre-filter was redundant — and absent for non-entry
+  // contexts — so it is dropped; turn-id scoping was always the real guard.)
   useEffect(() => {
-    if (!path) return undefined;
     if (typeof window === 'undefined' || typeof EventSource === 'undefined') return undefined;
     const close = subscribeLive({
       target: 'persistent',
       onMessage: (m) => {
         const p = m && m.payload;
-        if (!p || p.entry_path !== path) return;
+        if (!p) return;
         if (!sessionTurns.current.has(p.turn_id)) return; // only this session's turns
         if (p.kind === 'companion_reply') {
           setConvo((prev) => [...prev, { id: m.id || `r-${p.turn_id}`, role: 'companion', text: p.reply || '' }]);
@@ -352,16 +383,17 @@ export default function EntryAgentWindow({ entry, containerRef, onClose }) {
       onStateChange: () => {},
     });
     return close;
-  }, [path]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [cKey]);
 
   // ── "discuss this": a second selection over the entry text ──────────────
   // On mouseup with a non-empty selection inside the entry (but not inside this
   // window), show a "◎ discuss this" chip; Option/Alt+drag pins it immediately.
   // Shift+drag is intentionally NOT used — the browser owns it (extend select).
   useEffect(() => {
-    if (typeof window === 'undefined') return undefined;
+    if (typeof window === 'undefined' || !isEntry) return undefined;
     const onMouseUp = (e) => {
-      const container = containerRef?.current;
+      const container = resolveContainer();
       const sel = window.getSelection();
       if (!container || !sel || sel.isCollapsed || sel.rangeCount === 0) { setChip(null); return; }
       const range = sel.getRangeAt(0);
@@ -385,15 +417,17 @@ export default function EntryAgentWindow({ entry, containerRef, onClose }) {
       document.removeEventListener('mouseup', onMouseUp);
       document.removeEventListener('selectionchange', onSelChange);
     };
-  }, [containerRef, path, pinFocus]);
+  }, [isEntry, resolveContainer, cKey, pinFocus]);
 
-  // Clear the highlight when the entry changes or the window unmounts — its
+  // Clear the highlight when the context changes or the window unmounts — its
   // Range belongs to the old DOM.
-  useEffect(() => clearFocus, [path, clearFocus]);
+  useEffect(() => clearFocus, [cKey, clearFocus]);
 
   const sendTurn = useCallback(async () => {
     const message = draft.trim();
-    if (!message || sending || !path) return;
+    if (!message || sending) return;
+    const sendCtx = ctxRef.current;
+    if (sendCtx.kind === 'entry' && !sendCtx.path) return; // an entry with nothing to ground in
     setTurnError(null);
     // history: only the spoken turns (user + companion); edit markers carry no text
     const history = convo.filter((m) => m.role === 'user' || m.role === 'companion').map((m) => ({ role: m.role, text: m.text }));
@@ -401,7 +435,7 @@ export default function EntryAgentWindow({ entry, containerRef, onClose }) {
     setDraft('');
     if (inputRef.current) inputRef.current.style.height = ''; // reset auto-grow
     setSending(true);
-    const r = await postTurn({ path, message, history, focus: focusText });
+    const r = await postTurn({ context: sendCtx, message, history, focus: sendCtx.kind === 'entry' ? focusText : null });
     if (r && r.fired && r.turnId) {
       sessionTurns.current.add(r.turnId);
       currentTurn.current = r.turnId;
@@ -410,7 +444,7 @@ export default function EntryAgentWindow({ entry, containerRef, onClose }) {
       setTurnError(r?.busy ? 'a companion turn is already running — try again in a moment'
         : (r?.msg || r?.error || 'could not start the turn'));
     }
-  }, [draft, sending, path, convo, focusText]);
+  }, [draft, sending, convo, focusText]);
 
   // Revert a committed edit (post-commit undo). The revert lands as its own
   // PROOF on the board (same turn), so on success the SSE handler marks it
@@ -443,8 +477,9 @@ export default function EntryAgentWindow({ entry, containerRef, onClose }) {
 
   // ── Scroll-spy: the section the box floats over glows + names the context ─
   useEffect(() => {
-    const el = containerRef?.current;
-    if (!el || typeof window === 'undefined') return undefined;
+    if (!isEntry || typeof window === 'undefined') return undefined;
+    const el = resolveContainer();
+    if (!el) return undefined;
     const bodyEl = el.querySelector('[data-testid="entry-body"]') || el;
     let raf = 0;
     const update = () => {
@@ -464,7 +499,8 @@ export default function EntryAgentWindow({ entry, containerRef, onClose }) {
       window.removeEventListener('resize', onScroll);
       bodyEl.querySelectorAll('.' + GLOW_CLASS).forEach((n) => n.classList.remove(GLOW_CLASS));
     };
-  }, [containerRef, top, height, path]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isEntry, resolveContainer, top, height, cKey]);
 
   // ── Drag / resize ──────────────────────────────────────────────────────
   // Titlebar = free 2D move; left edge = width (right edge fixed); bottom =
@@ -498,7 +534,9 @@ export default function EntryAgentWindow({ entry, containerRef, onClose }) {
   }, [width, height, top, left]);
 
   const linkCount = Array.isArray(entry?.links) ? entry.links.length : 0;
-  const title = entry?.title ?? entry?.path ?? 'this entry';
+  const title = isEntry
+    ? (grounding?.entry?.title || ctx.title || entry?.title || ctx.path || entry?.path || 'this entry')
+    : contextLabel(ctx);
   const winPos = left == null ? { right: 28 } : { left };
 
   return (
@@ -574,9 +612,13 @@ export default function EntryAgentWindow({ entry, containerRef, onClose }) {
             color: 'var(--phosphor-dim)', textShadow: 'none', fontSize: 11,
           }}
         >
-          over: <span style={{ color: 'var(--phosphor)', textShadow: 'var(--glow)' }}>
-            {reading || '— (top)'}
-          </span>
+          {isEntry ? (
+            <>over: <span style={{ color: 'var(--phosphor)', textShadow: 'var(--glow)' }}>
+              {reading || '— (top)'}
+            </span></>
+          ) : (
+            <span style={{ color: 'var(--phosphor)', textShadow: 'var(--glow)' }}>{contextLabel(ctx)}</span>
+          )}
         </span>
         <span
           data-testid="eaw-close"
@@ -634,18 +676,28 @@ export default function EntryAgentWindow({ entry, containerRef, onClose }) {
         }}
       >
         {convo.length === 0 ? (
-          <>
-            <div style={{ color: 'var(--phosphor)', textShadow: 'var(--glow)', marginBottom: 8 }}>
-              I float over this entry — ask me about anything in it (its body, its
-              frontmatter, its forward vector), or say what to change. The section
-              behind me glows as my context.
+          isEntry ? (
+            <>
+              <div style={{ color: 'var(--phosphor)', textShadow: 'var(--glow)', marginBottom: 8 }}>
+                I float over this entry — ask me about anything in it (its body, its
+                frontmatter, its forward vector), or say what to change. The section
+                behind me glows as my context.
+              </div>
+              {grounding ? (
+                <GroundingView grounding={grounding} />
+              ) : (
+                <div>reading the neighborhood…</div>
+              )}
+            </>
+          ) : (
+            <div data-testid="eaw-app-intro" style={{ color: 'var(--phosphor)', textShadow: 'var(--glow)' }}>
+              I'm the STIGMERGY companion. Ask me about this terminal — its decks,
+              boards, and how it operates the palace — or tell me what to change.
+              <span style={{ color: 'var(--phosphor-dim)', textShadow: 'none' }}>
+                {' '}(Capturing your feedback as a tracked to-do is coming next.)
+              </span>
             </div>
-            {grounding ? (
-              <GroundingView grounding={grounding} />
-            ) : (
-              <div>reading the neighborhood…</div>
-            )}
-          </>
+          )
         ) : (
           <div data-testid="eaw-convo">
             {convo.map((m) => (
@@ -701,7 +753,7 @@ export default function EntryAgentWindow({ entry, containerRef, onClose }) {
           onKeyDown={(e) => {
             if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); sendTurn(); }
           }}
-          placeholder={sending ? 'waiting for the companion…' : 'discuss anything here, or ask for an edit…'}
+          placeholder={sending ? 'waiting for the companion…' : (isEntry ? 'discuss anything here, or ask for an edit…' : 'discuss STIGMERGY, or give feedback…')}
           rows={3}
           disabled={sending}
           style={{
@@ -741,7 +793,9 @@ export default function EntryAgentWindow({ entry, containerRef, onClose }) {
         }}
       >
         grounded in <span style={{ color: 'var(--phosphor)', textShadow: 'var(--glow)' }}>{title}</span>
-        {grounding ? (
+        {!isEntry ? (
+          <>{' · '}development feedback</>
+        ) : grounding ? (
           <>
             {' · '}frontmatter + body
             {' · '}{grounding.counts.neighbors_resolved}/{grounding.counts.links} neighbors

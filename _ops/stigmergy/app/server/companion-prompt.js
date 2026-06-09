@@ -10,8 +10,75 @@
 //
 // The output contract is a single JSON object so the lane can post a clean
 // reply to the board. Pure + deterministic (caller passes ts/ids) — unit-tested.
+//
+// DISPATCHER (Stage 0): the companion now grounds in more than one entry. This
+// module is a thin router — `buildCompanionPrompt` selects a per-kind builder
+// from `context.kind`. The legacy entry-shaped call (no `context`) still routes
+// to the entry builder, so every existing caller and test is unchanged.
 
 const MAX_BODY_CHARS = 12000; // generous; one entry. Truncate pathological ones.
+
+/**
+ * Route to the right per-kind prompt builder. Back-compatible: a call with no
+ * `context` (the original entry-shaped args) builds the entry prompt exactly as
+ * before. Later stages add commit / trickster_request branches here.
+ * @param {object} args — at minimum { message }; entry args or { context }
+ * @returns {string}
+ */
+export function buildCompanionPrompt(args = {}) {
+  const kind = args.context?.kind || 'entry';
+  if (kind === 'app_feedback') return buildFeedbackPrompt(args);
+  return buildEntryPrompt(args);
+}
+
+function historyBlock(history = []) {
+  return history.length
+    ? history.map((h) => `${h.role === 'user' ? 'Loudon' : 'You'}: ${h.text}`).join('\n')
+    : '(none — this is the first turn)';
+}
+
+/**
+ * The STIGMERGY companion (app_feedback): the page-agent stepped out of any one
+ * entry to talk with Loudon about STIGMERGY itself — the terminal he is building
+ * to operate the palace. Stage 0 is DISCUSS-ONLY: a grounded conversational
+ * reply, no actions. Stage 1 adds the to-do/FLAG action on top of this.
+ * @param {object} args
+ * @param {object} [args.context] — { kind:'app_feedback', deck }
+ * @param {string} args.message
+ * @param {Array<{role:'user'|'companion', text:string}>} [args.history]
+ * @returns {string}
+ */
+export function buildFeedbackPrompt({ context, message, history = [] }) {
+  const deck = (context && context.deck) ? String(context.deck) : null;
+  const where = deck ? `the ${deck} deck` : 'STIGMERGY';
+
+  return `You are the STIGMERGY companion — the palace's own front-end, speaking
+WITH Loudon about itself. STIGMERGY is the browser terminal he is building to
+operate The Palace (a rhizomatic markdown knowledge graph): a three-deck surface
+— STATE (the palace as it stands), QUEUE (decisions waiting), LOG (git history)
+— plus a TRICKSTER decision inbox and a STEWARDS roster, all coordinating over an
+append-only blackboard. You are floating over ${where} right now.
+
+Speak grounded and specific, as a collaborator who knows this system — not a
+generic assistant. Work with depth over coverage: name the actual reason for a
+claim, not a label that stands in for one. If Loudon is giving feedback about
+STIGMERGY, engage with it concretely; reflect it back clearly enough that it
+could become a to-do.
+
+== CONVERSATION SO FAR ==
+${historyBlock(history)}
+
+== LOUDON'S MESSAGE ==
+${message}
+
+== YOUR TASK ==
+Reply conversationally. You cannot yet take any action from here (capturing
+feedback as a tracked to-do is coming next) — so do NOT claim to have filed,
+posted, or changed anything. Just think it through with him.
+
+Respond with ONLY a single minified JSON object and nothing else, no code fence:
+{"reply":"<your reply, markdown allowed>"}`;
+}
 
 function neighborLine(n) {
   const rel = n.label ? `${n.type} (${n.label})` : n.type;
@@ -44,7 +111,7 @@ function dumpFrontmatter(fm) {
  * @param {Array<{role:'user'|'companion', text:string}>} [args.history]
  * @returns {string} the full worker prompt
  */
-export function buildCompanionPrompt({ grounding, frontmatter, body, message, focus, history = [] }) {
+export function buildEntryPrompt({ grounding, frontmatter, body, message, focus, history = [] }) {
   const e = grounding.entry;
   const neighbors = grounding.neighbors || [];
   const bodyText = typeof body === 'string'

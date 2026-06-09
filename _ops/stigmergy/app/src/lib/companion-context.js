@@ -1,0 +1,65 @@
+// companion-context.js — resolve the Companion's grounding context from where
+// the user is (the active deck + the current URL selection). Pure + SSR-safe.
+//
+// One companion, many faces. The window used to be bound to a single open entry
+// in STATE; lifting it App-level means its grounding must follow the user across
+// decks. This module is the single source of truth for "what is the companion
+// grounded in right now," expressed as a small descriptor the adapter sends, the
+// endpoint forwards, and the lane dispatches grounding + prompt + allowed-actions
+// on:
+//
+//   { kind:'entry',             path }              // STATE — discuss/edit the entry
+//   { kind:'app_feedback',      deck }              // any deck — STIGMERGY dev feedback
+//   { kind:'trickster_request', request_id, entry_path? }  // TRICKSTER (Stage 2)
+//   { kind:'commit',            sha }               // LOG (Stage 3)
+//   { kind:'uncommitted' }                          // LOG (Stage 3)
+//
+// Stage 0 wires the plumbing and implements `entry` (unchanged) + `app_feedback`
+// (a generic STIGMERGY-as-collaborator discuss). The commit / trickster_request
+// kinds are added in their stages — this resolver grows one branch at a time.
+
+export function resolveContext({ deck, entryPath, commitSha, tricksterRequest } = {}) {
+  if (deck === 'STATE' && entryPath) {
+    return { kind: 'entry', path: entryPath };
+  }
+  // Stage 2 (TRICKSTER) and Stage 3 (LOG) add their branches above this line.
+  // Until then, every other surface grounds the companion in STIGMERGY itself —
+  // a development collaborator the user can talk to from anywhere.
+  return { kind: 'app_feedback', deck: deck || null };
+}
+
+// A stable string key for a context. The window uses it to reset the
+// conversation and re-key its effects when the grounding changes (one entry to
+// another, one deck to another) — the generalization of the old `path` key.
+export function contextKey(ctx) {
+  if (!ctx || typeof ctx !== 'object') return 'none';
+  switch (ctx.kind) {
+    case 'entry': return `entry:${ctx.path || ''}`;
+    case 'commit': return `commit:${ctx.sha || ''}`;
+    case 'uncommitted': return 'uncommitted';
+    case 'trickster_request': return `trickster:${ctx.request_id || ''}`;
+    case 'app_feedback': return `app:${ctx.deck || ''}`;
+    default: return ctx.kind || 'none';
+  }
+}
+
+// A short human label naming what the companion is grounded in, for the
+// titlebar / footer readout per kind.
+export function contextLabel(ctx) {
+  if (!ctx || typeof ctx !== 'object') return 'STIGMERGY';
+  switch (ctx.kind) {
+    case 'entry': return ctx.title || ctx.path || 'this entry';
+    case 'commit': return ctx.sha ? `commit ${ctx.sha.slice(0, 7)}` : 'a commit';
+    case 'uncommitted': return 'uncommitted work';
+    case 'trickster_request': return ctx.entry || 'a pending decision';
+    case 'app_feedback': return `STIGMERGY · ${ctx.deck ? String(ctx.deck).toLowerCase() : 'app'}`;
+    default: return 'STIGMERGY';
+  }
+}
+
+// Is this a context the companion can edit in place (entry body / forward
+// vector)? Only the entry kind, for now. The window uses this to decide whether
+// to run the entry-only surfaces (scroll-spy glow, "discuss this" pin).
+export function isEntryContext(ctx) {
+  return !!ctx && ctx.kind === 'entry';
+}

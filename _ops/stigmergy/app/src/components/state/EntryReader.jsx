@@ -1,9 +1,8 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import FrontmatterHeader, { ForwardVectorHero } from './FrontmatterHeader.jsx';
 import TypedLinkPanel from './TypedLinkPanel.jsx';
 import BundlePanel from './BundlePanel.jsx';
 import EntryBody from './EntryBody.jsx';
-import EntryAgentWindow from './EntryAgentWindow.jsx';
 import { fetchEntry } from '../../adapters/entries.js';
 import { checkAllowList } from '../../lib/entry-edit.js';
 
@@ -20,13 +19,8 @@ import { checkAllowList } from '../../lib/entry-edit.js';
 
 export default function EntryReader({
   path, index, refIndex, onNavigate, onBack, onEdit, onGoBack,
-  agentOpen = false, onToggleAgent,
 }) {
   const [state, setState] = useState({ kind: 'loading' });
-  // The body column is the float-container the entry-agent window's gutter
-  // floats inside (so body text wraps left of it) and the scroll-spy measures
-  // headings within. A bare ref -- no DOM change when the window is off.
-  const bodyColRef = useRef(null);
 
   useEffect(() => {
     let cancelled = false;
@@ -122,25 +116,6 @@ export default function EntryReader({
             [<b style={{ color: 'var(--phosphor-white)' }}>E</b>]&nbsp;edit
           </span>
         ) : null}
-        {onToggleAgent ? (
-          <span
-            data-testid="entry-agent-toggle"
-            data-on={agentOpen ? '1' : '0'}
-            onClick={onToggleAgent}
-            title={agentOpen ? 'close the companion window' : 'open a companion window over this entry'}
-            style={{
-              marginLeft: 8,
-              cursor: 'pointer',
-              color: agentOpen ? 'var(--bg)' : 'var(--phosphor)',
-              background: agentOpen ? 'var(--phosphor)' : 'transparent',
-              textShadow: agentOpen ? 'none' : 'var(--glow)',
-              border: '1px solid var(--phosphor-dim)', padding: '2px 8px',
-              textTransform: 'uppercase', letterSpacing: '.04em', fontSize: 12,
-            }}
-          >
-            [<b style={{ color: agentOpen ? 'var(--bg)' : 'var(--phosphor-white)' }}>~</b>]&nbsp;agent
-          </span>
-        ) : null}
         <span style={{
           marginLeft: 12, color: 'var(--phosphor-dim)', textShadow: 'none', fontSize: 11,
         }}>{entry.path}</span>
@@ -164,18 +139,7 @@ export default function EntryReader({
         display: 'grid', gridTemplateColumns: 'minmax(0, 1fr) 360px',
         gap: 24, alignItems: 'flex-start',
       }}>
-        <div ref={bodyColRef} style={{ minWidth: 0 }}>
-          {/* The companion window (opt-in). A floating box pinned above
-              everything (position:fixed); bodyColRef is passed only so its
-              scroll-spy can find the section it floats over. Off by default ->
-              not mounted -> the column reads exactly as before. */}
-          {agentOpen ? (
-            <EntryAgentWindow
-              entry={entry}
-              containerRef={bodyColRef}
-              onClose={onToggleAgent}
-            />
-          ) : null}
+        <div style={{ minWidth: 0 }}>
           {/* Forward vector hero sits at the top of the body column so the
               right rail (typed links + bundle) starts at the same vertical
               position rather than getting pushed down by a full-width hero. */}

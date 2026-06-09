@@ -114,6 +114,30 @@ describe('POST /api/entry-agent/turn', () => {
     expect(reply.payload.reply).toBe(REPLY);
   }, 20000);
 
+  test('an app_feedback turn posts a companion_reply as STIGMERGY (no entry needed)', async () => {
+    // Stage 0: the global companion grounds in STIGMERGY itself on any deck. A
+    // turn carries a context descriptor instead of a path; the reply posts under
+    // the STIGMERGY identity with no entry_path, and the window correlates it by
+    // turn id alone.
+    const res = await request(server).post('/api/entry-agent/turn').send({
+      context: { kind: 'app_feedback', deck: 'LOG' },
+      message: 'the log filters are confusing',
+    });
+    expect(res.status).toBe(200);
+    expect(res.body.fired).toBe(true);
+    const turnId = res.body.turnId;
+
+    await waitFor(() => !existsSync(companionLane.paths.pidFile), { timeout: 6000 });
+    await waitFor(() => readFileSync(boardPath(root), 'utf8').includes('companion_reply'), { timeout: 4000 });
+
+    const reply = readBoard(root).find((m) => m.payload && m.payload.kind === 'companion_reply' && m.payload.turn_id === turnId);
+    expect(reply).toBeTruthy();
+    expect(reply.from).toBe('STIGMERGY (Companion)');
+    expect(reply.type).toBe('BROADCAST');
+    expect(reply.payload.entry_path).toBeNull();
+    expect(reply.payload.reply).toBe(REPLY);
+  }, 20000);
+
   test('an edit turn applies the op through the enforced path and posts a PROOF', async () => {
     // a lane whose stub also proposes an append edit
     ({ server, companionLane } = makeServer(root, { editText: 'A new closing line about li.' }));

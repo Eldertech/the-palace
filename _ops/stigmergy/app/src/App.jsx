@@ -14,6 +14,7 @@ import TricksterDeck from './components/TricksterDeck.jsx';
 import ActuatorPanel from './components/queue/ActuatorPanel.jsx';
 import QueuePanel from './components/queue/QueuePanel.jsx';
 import StewardsDeck from './components/stewards/StewardsDeck.jsx';
+import CompanionHost from './components/CompanionHost.jsx';
 import { Banner } from './components/primitives.jsx';
 import { fetchPersistent, fetchSessions } from './adapters/blackboard.js';
 import { subscribeLive } from './adapters/live-tail.js';
@@ -71,12 +72,17 @@ export default function App() {
   const [activeBoard, setActiveBoard] = useState('TRICKSTER');
   const [agentFilter, setAgentFilter] = useState(null);
   const [scanlinesOn, setScanlinesOn] = useState(true);
-  // The entry-agent ("companion") window is opt-in. State lives here (not in
-  // StateDeck) so M1+ can let the window post to the board -- App-level data --
-  // without re-homing it. For M0 it only reaches the STATE deck. Off = STATE
-  // reads exactly as today; the window does not exist.
+  // The Companion window is opt-in and now GLOBAL (Stage 0): one floating
+  // collaborator, available on every deck via a launcher in the command bar
+  // ([~]) and a hotkey. The host below resolves what it grounds in from the
+  // active deck + the open entry. Off = the window does not exist; the app
+  // reads exactly as before.
   const [agentOpen, setAgentOpen] = useState(false);
   const toggleAgent = useCallback(() => setAgentOpen((o) => !o), []);
+  // The open entry path, reported up from StateDeck (which owns the URL-driven
+  // entry navigation). The Companion grounds in it when the STATE deck is
+  // active; ignored on other decks. null when no entry is open.
+  const [currentEntryPath, setCurrentEntryPath] = useState(null);
   // Cross-deck entry jump: clicking [BUN] on a name outside STATE (e.g. a
   // Trickster card's @steward) flips to STATE and opens that entry. The nonce
   // lets the same entry be re-jumped and keeps StateDeck's open-effect from
@@ -180,6 +186,7 @@ export default function App() {
       if (k === 'l' || k === 'L') return setDeck('LOG');
       if (k === 't' || k === 'T') return setDeck('TRICKSTER');
       if (k === 'w' || k === 'W') return setDeck('STEWARDS');
+      if (k === '`' || k === '~') return toggleAgent();
       if (deck === 'QUEUE' && /^[1-6]$/.test(k)) {
         const idx = parseInt(k, 10) - 1;
         if (idx >= 0 && idx < BOARDS.length) setActiveBoard(BOARDS[idx]);
@@ -191,7 +198,7 @@ export default function App() {
     }
     window.addEventListener('keydown', onKey);
     return () => window.removeEventListener('keydown', onKey);
-  }, [loadAll, deck]);
+  }, [loadAll, deck, toggleAgent]);
 
   // Canonical view: persisted messages plus any optimistic responses
   // posted in this session but not yet covered by a reload. Dedup by id
@@ -251,6 +258,7 @@ export default function App() {
       { key: 'L', label: 'log' },
     ];
     const trailing = [
+      { key: '~', label: agentOpen ? 'close companion' : 'companion' },
       { key: 'R', label: 'reload' },
       { key: 'V', label: scanlinesOn ? 'visual off' : 'visual on' },
     ];
@@ -266,13 +274,14 @@ export default function App() {
       return [...deckCmds, ...boardCmds, ...trailing];
     }
     return [...deckCmds, ...trailing];
-  }, [deck, scanlinesOn]);
+  }, [deck, scanlinesOn, agentOpen]);
 
   function handleCommand(k) {
     if (k === 'S') return setDeck('STATE');
     if (k === 'Q') return setDeck('QUEUE');
     if (k === 'L') return setDeck('LOG');
     if (k === 'T') return setDeck('TRICKSTER');
+    if (k === '~') return toggleAgent();
     if (k === 'R') return loadAll();
     if (k === 'V') return setScanlinesOn((on) => !on);
     if (deck === 'QUEUE') {
@@ -300,8 +309,7 @@ export default function App() {
       {deck === 'STATE' && (
         <StateDeck
           jumpTarget={jumpTarget}
-          agentOpen={agentOpen}
-          onToggleAgent={toggleAgent}
+          onEntryPathChange={setCurrentEntryPath}
         />
       )}
       {deck === 'LOG' && <LogDeck />}
@@ -409,6 +417,15 @@ export default function App() {
           )}
         </div>
       )}
+
+      {/* The global Companion: one floating window, available on every deck.
+          Grounds in the open entry on STATE, in STIGMERGY itself elsewhere. */}
+      <CompanionHost
+        open={agentOpen}
+        deck={deck}
+        entryPath={currentEntryPath}
+        onClose={toggleAgent}
+      />
       </PalaceRefProvider>
     </Shell>
   );
