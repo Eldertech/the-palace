@@ -14,6 +14,7 @@ links:
   - { label: "directs", target: "Shop/D3.js" }
   - { label: "directs", target: "Shop/Observable Plot" }
   - { label: "directs", target: "Shop/Three.js" }
+  - { label: "directs", target: "Shop/LaTeX" }
   - { label: "lives-in", target: "Shop/" }
   - { label: "answers-to", target: "Trickster (Loudon)" }
   - { label: "embodies", target: "Hilaritas Generator" }
@@ -72,6 +73,8 @@ The house taste, codified.
 **Diagrams of systems** → Mermaid or Graphviz. They produce clean, version-controlled, palette-aware output. I do not use generative image tools for system diagrams — the result is always wrong in some hard-to-articulate way.
 
 **Charts of data** → Matplotlib for static / publication-quality; [[Observable Plot]] for browser-deployable analytical charts (grammar of graphics, faceting, beautiful defaults); Plotly only when a brief needs its specific built-in interaction widgets.
+
+**Typeset documents, papers, problem sets, beamer slides, publication-grade `tikz`/`pgfplots` diagrams, standalone equation cards** → **[[LaTeX]]**. The boundary against the three tools that look adjacent: Manim for math that *moves*; Matplotlib for charts from *data arrays*; Mermaid for *quick* system diagrams. LaTeX wins when the deliverable is a *typeset document* (it goes in a paper, a slide, or a printout) or a diagram/notation where exact mathematical typography **is** the subject. Worth knowing the dependency runs the other way too: Matplotlib's `text.usetex` and Manim's `MathTex` both ride LaTeX's TeX install — one tree, three Specialists. Host caveat: the PDF path runs clean on mac; the SVG-cutout path needs the `TEXPSHEADERS` bridge (see the [[LaTeX]] / [[Shop/Manim CE|Manim CE]] 2026-06-09 gotcha).
 
 **Custom interactive web viz · agent & particle systems · emergent-dynamics demos** → the data-viz triad, routed by what the brief wants the viewer to *do* (codified by the [[Flocking]] three-Specialist shoot-out, 2026-05-29 — none of the three substitutes for another; see [[Flocking — Maker's Comparison Recommendation]]):
 - *Feel and manipulate the parameter space* — live controls, draggable agents, regime read-outs → **[[D3.js]]**. Caveat learned the hard way: write your own integrator and use `d3-force` only for genuine graph relaxation, not kinematic simulation — for Reynolds-style physics d3-force is a relaxation solver you end up neutralising.
@@ -198,6 +201,7 @@ The lesson of the 2026-05-10 Manim failure, made into a step: a brief can be per
 | Specialist | Requires | Fallback when unreachable |
 |---|---|---|
 | Manim CE | manimpango / Cairo / LaTeX | **Matplotlib** for static-frame math; defer motion to a mac handoff. Keep both renders if the fallback later runs alongside the canonical (per the 2026-05-10 gotcha). |
+| LaTeX | TeX Live (`pdflatex`/`xelatex`/`latexmk`) | No content substitute — documents defer to a host with TeX Live. PDF path clean on mac; SVG-cutout path needs the `TEXPSHEADERS` bridge. The same install Manim CE and Matplotlib already depend on. |
 | Kokoro | local TTS model | **Loudon's voice recording** when the piece is published as Loudon; otherwise defer to mac. |
 | ComfyUI | local GPU | **Midjourney** (cloud) when ceiling matters more than control; **Mermaid/Matplotlib** when the image is actually a diagram/chart; otherwise defer to mac. |
 | Stable Audio Open | local GPU | no substitute — defer to mac, or drop the bed for the tier. |
@@ -234,6 +238,7 @@ The Specialists currently in the Shop, with their primary use:
 - **ffmpeg** — audio + video conversion, concat, mixing, normalization *(local, plumbing)*
 - **Mermaid** — text-defined diagrams *(local)*
 - **Matplotlib** — non-interactive scientific charts *(local)*
+- **LaTeX** — typeset documents, papers, beamer slides, tikz/pgfplots diagrams, standalone equation cards *(local)*
 - **Stable Audio Open** — short-form generative music and SFX *(local, GPU)*
 - **RNBO codebox~ smith** — RNBO DSP code for Max/M4L/VST/AU *(local, Max/MSP)*
 - **VCV Patch Generator** — algorithmic VCV Rack patch generation *(local)*
@@ -256,7 +261,7 @@ The Specialists currently in the Shop, with their primary use:
 - *Shop header (Phase D-2, 2026-05-30):* **FLUX (Hugging Face)** — cloud-side image generation via HF Inference free tier; took [[Shop/Midjourney|Midjourney]]'s slot when subscription cost made Midjourney untenable. First job revised the Maker's Mood/atmospheric Selection Heuristic — FLUX-Krea reads mood-specific prompt details that ComfyUI's SDXL flattens.
 - *Wavetable Scanner (2026-05-31):* **Three.js** — single-cycle wavetable morph laboratory; the first paired-Specialist brief where Three.js reads state from a [[Shop/Web Audio Worklet]] sibling (geometry-bound-to-the-data, the [[Waveguide Synthesizer]] pattern in miniature). Promoted stub → alive on its first dated job, ahead of the still-anticipated Waveguide commission.
 
-**Stub (1)** — entry exists, awaiting first real job: **RNBO codebox~ smith**.
+**Stub (2)** — entry exists, awaiting first real job: **RNBO codebox~ smith**; **LaTeX** (created 2026-06-09 — capability-probed clean on the PDF path, but no brief has run, so it stays a stub per the taxonomy).
 
 **Deprecated (1)** — [[Shop/Midjourney|Midjourney]], 2026-05-30 — too expensive; never landed a real palace job; superseded by **FLUX (Hugging Face)** as the cloud-aesthetic-ceiling slot. Entry kept as a lineage record.
 
