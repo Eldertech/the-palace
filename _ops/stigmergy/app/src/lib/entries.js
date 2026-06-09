@@ -92,7 +92,10 @@ function* walkMarkdownFiles(palaceRoot) {
 function probeMarkers(body) {
   if (typeof body !== 'string') return { has_active_handoff: false, has_stewardship_marker: false };
   return {
-    has_active_handoff: /^##\s+Active Handoff\b/m.test(body),
+    // Accept both spellings through the Handoff → Baton ceremony rename: the
+    // renamed spec writes "## Active Baton" while existing entries still carry
+    // "## Active Handoff". (Flag name kept as-is to avoid a wider rename.)
+    has_active_handoff: /^##\s+Active (?:Handoff|Baton)\b/m.test(body),
     has_stewardship_marker: /under (?:active\s+)?stewardship/i.test(body),
   };
 }
