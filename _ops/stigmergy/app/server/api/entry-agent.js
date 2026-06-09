@@ -48,6 +48,9 @@ export async function entryAgentRoutes(ctx) {
       return true;
     }
     const result = companionLane.turn({
+      // Context-aware (Stage 0): the front-end sends a resolved context
+      // descriptor; a bare `path` is still accepted as the entry kind.
+      context: body?.context && typeof body.context === 'object' ? body.context : null,
       path: body?.path,
       message: body?.message,
       history: Array.isArray(body?.history) ? body.history : [],

@@ -6,16 +6,22 @@
 // its frontmatter-derived stub readout so it never breaks the deck.
 
 // POST /api/entry-agent/turn — fire one Companion turn.
-// Body: { path, message, history?, focus? }. Returns { ok, fired, turnId, busy?, msg }.
-// `focus` is the passage the user pinned with "discuss this" — the exact text
-// under discussion. The reply does NOT come back here — it arrives later on the
-// board (a companion_reply BROADCAST) which the window reads over SSE.
-export async function postTurn({ path, message, history, focus } = {}) {
+// Body: { context, message, history?, focus? }. Returns { ok, fired, turnId, busy?, msg }.
+// `context` is the resolved grounding descriptor ({kind:'entry',path} | {kind:
+// 'app_feedback',deck} | …); a bare `path` is still accepted (entry kind) for
+// back-compat. `focus` is the passage the user pinned with "discuss this". The
+// reply does NOT come back here — it arrives later on the board (a
+// companion_reply BROADCAST) which the window reads over SSE.
+export async function postTurn({ context, path, message, history, focus } = {}) {
   try {
     const res = await fetch('/api/entry-agent/turn', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-      body: JSON.stringify({ path, message, history: history || [], focus: focus || null }),
+      body: JSON.stringify({
+        context: context || null,
+        path: path || (context && context.kind === 'entry' ? context.path : null),
+        message, history: history || [], focus: focus || null,
+      }),
     });
     const data = await res.json().catch(() => ({}));
     if (!res.ok) return { ok: false, fired: false, status: res.status, ...data };

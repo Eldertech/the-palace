@@ -281,7 +281,11 @@ export function createCompanionLane(opts = {}) {
       let raw = '';
       try { raw = readFileSync(meta.transcriptPath, 'utf8'); } catch (_) { raw = ''; }
       const { reply, edit } = extractResult(raw);
-      const hasEdit = !!(edit && edit.op);
+      // In-place edits reach only the entry kind. Other contexts (app_feedback,
+      // and the later commit / trickster kinds) ignore any proposed `edit`; their
+      // actions arrive on a different channel. Absent kind = legacy entry turn.
+      const allowEdit = meta.kind == null || meta.kind === 'entry';
+      const hasEdit = allowEdit && !!(edit && edit.op);
 
       // 1) the conversational reply. Adaptive narration (Plan §7.2): when an
       // edit lands, the worker stays QUIET for a clean/obvious change — the edit
@@ -348,10 +352,17 @@ export function createCompanionLane(opts = {}) {
 
   /**
    * Fire one Companion turn. Refuses (busy) while a worker is alive (scar #4).
+   * Context-aware: the open entry (kind 'entry', body/vector editing) or
+   * STIGMERGY itself (kind 'app_feedback', discuss-only in Stage 0). A bare
+   * `{ path }` is accepted as the entry kind for back-compat.
+   * @param {{ context?:object, path?:string, message:string, history?:Array, focus?:string }} args
    * @returns {{ ok, fired, busy?, turnId?, msg }}
    */
-  function turn({ path, message, history = [], focus = null } = {}) {
-    if (typeof path !== 'string' || path.trim() === '') {
+  function turn({ context, path, message, history = [], focus = null } = {}) {
+    const ctx = (context && typeof context === 'object' && context.kind)
+      ? context
+      : (typeof path === 'string' && path.trim() ? { kind: 'entry', path } : null);
+    if (!ctx) {
       return { ok: false, fired: false, msg: 'missing entry path' };
     }
     if (typeof message !== 'string' || message.trim() === '') {
@@ -361,29 +372,39 @@ export function createCompanionLane(opts = {}) {
       return { ok: false, fired: false, busy: true, msg: 'a companion turn is already running' };
     }
 
-    const entry = readEntry(root, path);
-    if (!entry) return { ok: false, fired: false, msg: 'entry not found or excluded' };
-    const grounding = assembleGrounding(root, path);
-    if (!grounding) return { ok: false, fired: false, msg: 'could not assemble grounding' };
-
     const tsNow = new Date().toISOString();
-    const turnId = `companion-${slugify(entry.title)}-${tsNow.replace(/[:.]/g, '-')}`;
-    const transcriptPath = join(transcriptsDir, `${turnId}.out`);
+    const stamp = tsNow.replace(/[:.]/g, '-');
+    let prompt, meta, turnId;
 
-    let prompt;
-    try {
-      prompt = buildCompanionPrompt({
-        grounding, frontmatter: entry.frontmatter, body: entry.body, message, history,
-        focus: typeof focus === 'string' && focus.trim() ? focus.trim() : null,
-      });
-    } catch (e) {
-      return { ok: false, fired: false, msg: `could not build prompt: ${e.message}` };
+    if (ctx.kind === 'entry') {
+      const entry = readEntry(root, ctx.path);
+      if (!entry) return { ok: false, fired: false, msg: 'entry not found or excluded' };
+      const grounding = assembleGrounding(root, ctx.path);
+      if (!grounding) return { ok: false, fired: false, msg: 'could not assemble grounding' };
+      turnId = `companion-${slugify(entry.title)}-${stamp}`;
+      try {
+        prompt = buildCompanionPrompt({
+          context: ctx, grounding, frontmatter: entry.frontmatter, body: entry.body, message, history,
+          focus: typeof focus === 'string' && focus.trim() ? focus.trim() : null,
+        });
+      } catch (e) {
+        return { ok: false, fired: false, msg: `could not build prompt: ${e.message}` };
+      }
+      meta = { kind: 'entry', entryPath: entry.path, entryTitle: entry.title, turnId, model };
+    } else if (ctx.kind === 'app_feedback') {
+      turnId = `companion-app-${slugify(ctx.deck || 'stigmergy')}-${stamp}`;
+      try {
+        prompt = buildCompanionPrompt({ context: ctx, message, history });
+      } catch (e) {
+        return { ok: false, fired: false, msg: `could not build prompt: ${e.message}` };
+      }
+      meta = { kind: 'app_feedback', entryPath: null, entryTitle: 'STIGMERGY', turnId, model };
+    } else {
+      return { ok: false, fired: false, msg: `companion can't ground in "${ctx.kind}" yet` };
     }
 
-    const r = actuator.fire(prompt, {
-      transcriptPath,
-      meta: { entryPath: entry.path, entryTitle: entry.title, turnId, transcriptPath, model },
-    });
+    const transcriptPath = join(transcriptsDir, `${turnId}.out`);
+    const r = actuator.fire(prompt, { transcriptPath, meta: { ...meta, transcriptPath } });
     if (!r.fired) {
       return { ok: false, fired: false, busy: /already running/.test(r.msg), turnId, msg: r.msg };
     }

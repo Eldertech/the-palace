@@ -70,6 +70,25 @@ describe('EntryAgentWindow (floating companion)', () => {
   });
 });
 
+describe('EntryAgentWindow (context-driven, Stage 0)', () => {
+  it('renders the entry kind from a context prop, same as the entry prop', () => {
+    const html = render({ context: { kind: 'entry', path: 'Spinoza.md', title: 'Spinoza' } });
+    expect(html).toContain('data-testid="eaw-window"');
+    expect(html).toContain('(top)');               // the entry section label
+    expect(html).toContain('Spinoza');
+  });
+
+  it('renders the app_feedback (STIGMERGY) kind: intro, no entry-only chrome', () => {
+    const html = render({ context: { kind: 'app_feedback', deck: 'LOG' } });
+    expect(html).toContain('data-testid="eaw-app-intro"');
+    expect(html).toContain('STIGMERGY companion');
+    expect(html).toContain('development feedback'); // the footer readout
+    expect(html).toContain('STIGMERGY · log');       // the context label
+    expect(html).not.toContain('(top)');             // no scroll-spy section label
+    expect(html).not.toContain('typed link');        // no neighborhood readout
+  });
+});
+
 describe('EditMarker (committed edit + post-commit undo)', () => {
   const base = { op: 'append', commit: 'abc1234', branch: 'stigmergy-edits', summary: 'a line about li' };
 
