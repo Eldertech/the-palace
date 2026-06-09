@@ -1,0 +1,88 @@
+<!-- Crystal Synthesizer — cycle 7. Two acoustic dispersion laws of beryl,
+     one per propagation direction. Sandboxed, no external deps. Loudon Live
+     design grammar (Anton / JetBrains Mono), Graphite skin, no cyan. -->
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Anton&family=JetBrains+Mono:wght@400;600&family=Cormorant:ital@0;1&display=swap');
+  :root{
+    --ink:#e8e6e1; --dim:#9a978f; --line:#3a3a3a; --bg:#15161a;
+    --c-axis:#d9a441;   /* soft channels — warm gold (extraordinary) */
+    --basal:#7fb38a;    /* stiff rings   — emerald green (ordinary) */
+  }
+  .wrap{font-family:'JetBrains Mono',monospace;color:var(--ink);
+    background:var(--bg);padding:22px 22px 18px;border:1px solid var(--line);
+    max-width:760px;}
+  .wrap h1{font-family:'Anton',sans-serif;font-weight:400;letter-spacing:.02em;
+    font-size:25px;margin:0 0 2px;text-transform:uppercase;}
+  .sub{font-family:'Cormorant',serif;font-style:italic;font-size:17px;
+    color:var(--dim);margin:0 0 16px;}
+  .legend{display:flex;gap:20px;margin:6px 0 12px;font-size:12px;}
+  .legend span{display:inline-flex;align-items:center;gap:7px;}
+  .sw{width:13px;height:13px;border-radius:2px;display:inline-block;}
+  svg{width:100%;height:auto;display:block;}
+  .axlab{fill:var(--dim);font-size:11px;font-family:'JetBrains Mono',monospace;}
+  .note{font-size:11.5px;color:var(--dim);line-height:1.5;margin-top:12px;
+    border-top:1px solid var(--line);padding-top:10px;}
+  .note b{color:var(--ink);font-weight:600;}
+  .foot{font-size:10px;color:var(--dim);margin-top:12px;letter-spacing:.04em;}
+</style>
+<div class="wrap">
+  <h1>Beryl · two dispersion laws, one crystal</h1>
+  <p class="sub">acoustic birefringence — the smear depends on which way the click travels</p>
+  <div class="legend">
+    <span><span class="sw" style="background:var(--c-axis)"></span>c-axis · along the hollow Si₆O₁₈ channels (soft) — more smear</span>
+    <span><span class="sw" style="background:var(--basal)"></span>basal plane · across the silicate rings (stiff) — less smear</span>
+  </div>
+  <svg id="plot" viewBox="0 0 720 320" xmlns="http://www.w3.org/2000/svg"></svg>
+  <div class="note">
+    Same crystal, same strike. The measured arrival of the click's energy at
+    each frequency band: <b>at 5 kHz the c-axis energy arrives 66 ms later</b>
+    than the basal-plane energy; by 8 kHz the gap is half a second. The soft
+    hollow channels disperse the click far more than the stiff ring plane —
+    the optical birefringence of emerald, projected into the time domain of
+    sound. Curves are the rising-arrival group-delay law (low first, high
+    late) Loudon confirmed correct by ear in cycle 6.
+  </div>
+  <div class="foot">Loudon Live · Autodidact Polymaths</div>
+</div>
+<script>
+(function(){
+  // Measured arrival times (ms) from render_anisotropic_beryl.py, cycle 7.
+  const bands = [1000, 3000, 5000, 8000];
+  const cAxis = [2.7, 33.9, 103.5, 600.0];
+  const basal = [1.3, 13.4, 37.9, 99.4];
+  const W=720,H=320, mL=58,mR=18,mT=18,mB=42;
+  const x0=mL,x1=W-mR,y0=H-mB,y1=mT;
+  const fMin=800,fMax=9000, tMin=0,tMax=620;
+  const fx=f=>x0+(Math.log10(f)-Math.log10(fMin))/(Math.log10(fMax)-Math.log10(fMin))*(x1-x0);
+  const ty=t=>y0-(t-tMin)/(tMax-tMin)*(y0-y1);
+  let s='';
+  // grid + y ticks
+  [0,150,300,450,600].forEach(t=>{
+    const y=ty(t);
+    s+=`<line x1="${x0}" y1="${y}" x2="${x1}" y2="${y}" stroke="#2a2b30" stroke-width="1"/>`;
+    s+=`<text class="axlab" x="${x0-8}" y="${y+4}" text-anchor="end">${t}</text>`;
+  });
+  // x ticks
+  bands.forEach(f=>{
+    const x=fx(f);
+    s+=`<line x1="${x}" y1="${y0}" x2="${x}" y2="${y0+5}" stroke="#555"/>`;
+    s+=`<text class="axlab" x="${x}" y="${y0+19}" text-anchor="middle">${f>=1000?(f/1000)+'k':f}</text>`;
+  });
+  s+=`<text class="axlab" x="${(x0+x1)/2}" y="${H-6}" text-anchor="middle">frequency band (Hz, log)</text>`;
+  s+=`<text class="axlab" transform="translate(14,${(y0+y1)/2}) rotate(-90)" text-anchor="middle">arrival time (ms)</text>`;
+  function curve(data,color){
+    let d='';
+    data.forEach((t,i)=>{ d+=(i?'L':'M')+fx(bands[i]).toFixed(1)+' '+ty(t).toFixed(1)+' '; });
+    let out=`<path d="${d}" fill="none" stroke="${color}" stroke-width="2.4"/>`;
+    data.forEach((t,i)=>{ out+=`<circle cx="${fx(bands[i]).toFixed(1)}" cy="${ty(t).toFixed(1)}" r="4" fill="${color}"/>`; });
+    return out;
+  }
+  // divergence shading at 5kHz
+  const xd=fx(5000);
+  s+=`<line x1="${xd}" y1="${ty(basal[2])}" x2="${xd}" y2="${ty(cAxis[2])}" stroke="#d9a441" stroke-width="1.5" stroke-dasharray="3 3"/>`;
+  s+=`<text class="axlab" x="${xd+6}" y="${(ty(basal[2])+ty(cAxis[2]))/2}" fill="#d9a441">66 ms</text>`;
+  s+=curve(basal,'#7fb38a');
+  s+=curve(cAxis,'#d9a441');
+  document.getElementById('plot').innerHTML=s;
+})();
+</script>

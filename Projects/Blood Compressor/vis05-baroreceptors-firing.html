@@ -1,0 +1,203 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>Blood Compressor · VIS05 — Baroreceptors Firing</title>
+<!--
+  VIS05 — baroreceptors-firing
+  Scene 2 centerpiece of the Blood Compressor radio-play lesson.
+  One vessel, one slider: drag the threshold, watch the pressure trace cross it,
+  the baroreceptors fire, and the vessel constrict. One concept, one slider —
+  per visuals-spec.md (resist adding ratio/attack/release here; those are VIS07/VIS09).
+
+  Palette (visuals-spec § Visual Vocabulary):
+    bg        #0B0B10   near-black
+    blood     #C8254C   oxygenated arterial red (home color)
+    wall      #8B4A5E   muted plum-rose, artery muscle layer
+    baro      #F5C16C   warm amber baroreceptor glow
+    overlay   #E8E8F0   cool off-white for graph lines & type
+    pulse     #FFFFFF   pure white, reserved for the fire flash
+
+  Self-contained: no CDN, no p5.js dependency — raw canvas so it runs anywhere
+  the board can sandbox an iframe. Stage-2 prototype tier (study), authored in
+  the Cowork sandbox cycle 5, 2026-06-08.
+-->
+<style>
+  :root{
+    --bg:#0B0B10; --blood:#C8254C; --wall:#8B4A5E;
+    --baro:#F5C16C; --overlay:#E8E8F0; --pulse:#FFFFFF;
+  }
+  html,body{margin:0;background:var(--bg);color:var(--overlay);
+    font-family:ui-serif,Georgia,'Times New Roman',serif;}
+  .stage{max-width:980px;margin:0 auto;padding:18px 16px 26px;}
+  canvas{width:100%;height:auto;display:block;border-radius:6px;
+    background:var(--bg);box-shadow:0 0 0 1px #1c1c24 inset;}
+  .controls{display:flex;align-items:center;gap:14px;margin-top:16px;
+    font:13px/1.4 ui-monospace,'JetBrains Mono',Menlo,monospace;color:#b9b9c8;}
+  .controls label{letter-spacing:.04em;text-transform:lowercase;white-space:nowrap;}
+  input[type=range]{flex:1;accent-color:var(--baro);height:3px;}
+  .readout{min-width:120px;text-align:right;color:var(--overlay);}
+  .cap{margin:14px 2px 0;font:italic 15px/1.5 ui-serif,Georgia,serif;color:#9a9aa8;}
+  .hint{font:12px/1.5 ui-monospace,monospace;color:#6b6b78;margin:4px 2px 0;}
+</style>
+<div class="stage">
+  <canvas id="c" width="980" height="520" aria-label="A cross-section of an artery. A pressure trace travels through it; when it crosses the threshold band, the baroreceptors light up and the vessel wall constricts."></canvas>
+  <div class="controls">
+    <label for="thr">threshold</label>
+    <input id="thr" type="range" min="0.30" max="0.92" step="0.005" value="0.62">
+    <span class="readout" id="ro">—</span>
+  </div>
+  <div class="cap">Drag the threshold. When the pressure wave climbs past it, the baroreceptors notice — they flash white — and the vessel clamps inward. Set the line low and the body never stops squeezing; set it high and the pressure passes through untouched. That is the threshold: the pressure at which the body decides to respond.</div>
+  <div class="hint">VIS05 · Scene 2 · Blood Compressor radio-play lesson — one vessel, one slider.</div>
+</div>
+<script>
+const C={bg:'#0B0B10',blood:'#C8254C',wall:'#8B4A5E',baro:'#F5C16C',overlay:'#E8E8F0',pulse:'#FFFFFF'};
+const cv=document.getElementById('c'),x=cv.getContext('2d');
+const W=cv.width,H=cv.height;
+const thrEl=document.getElementById('thr'),roEl=document.getElementById('ro');
+
+// vessel geometry — a horizontal pill across the screen
+const VX0=70, VX1=W-70, VCY=H*0.42;       // vessel centre line
+const RMAX=92;                             // half-height (radius) at rest
+const RMIN=RMAX*0.60;                      // ~40% narrowing at full constriction (spec)
+const NBARO=8;                             // 8 receptors along the wall
+
+// state
+let constriction=0;        // 0 rest .. 1 fully clamped
+let baroFire=new Array(NBARO).fill(0);     // per-receptor flash timers (ms)
+let lastCross=false;
+let t0=performance.now();
+
+// pressure trace: a travelling sinusoid with small random drift, amplitude = pressure
+// returns a normalised pressure 0..1 at phase p (0..1 across the vessel)
+let driftSeed=0.0;
+function pressureAt(phase, time){
+  // base slow swell that rises, peaks, falls over a ~6s cycle (spec: ~6s loop)
+  const cyc=(time/6000)%1;
+  const swell=0.5-0.5*Math.cos(cyc*Math.PI*2);          // 0..1..0 smooth
+  // travelling ripple so the wave visibly moves L->R inside the vessel
+  const ripple=0.12*Math.sin((phase*6 - time/520)*Math.PI*2);
+  const jitter=0.05*Math.sin((phase*13 + time/300 + driftSeed)*Math.PI*2); // HRV-ish wobble
+  return Math.max(0,Math.min(1, 0.18 + swell*0.78 + ripple + jitter));
+}
+
+function vesselRadiusAt(phase){
+  // narrowing concentrates toward vessel centre when constricted
+  const centreBias=1-Math.abs(phase-0.5)*1.4;           // 1 at centre, lower at ends
+  const narrow=constriction*Math.max(0,centreBias);
+  return RMAX - (RMAX-RMIN)*narrow;
+}
+
+function frame(now){
+  const t=now-t0;
+  driftSeed+=0.0007;
+  const thr=parseFloat(thrEl.value);
+
+  // sample peak pressure across the vessel this frame
+  let peak=0, peakPhase=0;
+  for(let i=0;i<=60;i++){const ph=i/60;const pr=pressureAt(ph,t);if(pr>peak){peak=pr;peakPhase=ph;}}
+
+  const crossing = peak>=thr;
+  // rising edge -> fire the receptors nearest the peak
+  if(crossing && !lastCross){
+    for(let b=0;b<NBARO;b++){
+      const bph=(b+0.5)/NBARO;
+      if(Math.abs(bph-peakPhase)<0.34) baroFire[b]=150;   // 150ms flash (spec)
+    }
+  }
+  lastCross=crossing;
+
+  // vessel constricts toward target over attack-ish time, relaxes slower (asymmetry)
+  const target=crossing?1:0;
+  const rate=crossing?0.10:0.022;       // clamp fast, open slow — the lesson's asymmetry
+  constriction += (target-constriction)*rate;
+
+  // decay receptor flashes
+  for(let b=0;b<NBARO;b++) baroFire[b]=Math.max(0,baroFire[b]-16);
+
+  draw(t,thr,peak);
+  roEl.textContent=(thr*180+40|0)+' / '+(peak*180+40|0)+' mmHg';
+  requestAnimationFrame(frame);
+}
+
+function draw(t,thr,peak){
+  x.clearRect(0,0,W,H);
+  x.fillStyle=C.bg;x.fillRect(0,0,W,H);
+
+  // --- threshold band (overlay off-white, soft) ---
+  const thrY=VCY - (thr*2-1)*(RMAX+38);
+  x.save();
+  x.strokeStyle=C.overlay;x.globalAlpha=0.85;x.lineWidth=1.5;
+  x.setLineDash([7,7]);
+  x.beginPath();x.moveTo(VX0-30,thrY);x.lineTo(VX1+30,thrY);x.stroke();
+  x.setLineDash([]);x.globalAlpha=0.10;
+  x.fillStyle=C.overlay;x.fillRect(VX0-30,thrY-7,(VX1-VX0)+60,14);
+  x.restore();
+  x.fillStyle=C.overlay;x.globalAlpha=0.7;x.font='12px ui-monospace,monospace';
+  x.fillText('threshold',VX1-26,thrY-10);x.globalAlpha=1;
+
+  // --- vessel wall (top & bottom edges of the pill) ---
+  const STEP=4;
+  x.lineWidth=10;x.strokeStyle=C.wall;x.lineJoin='round';
+  // top edge
+  x.beginPath();
+  for(let px=VX0;px<=VX1;px+=STEP){const ph=(px-VX0)/(VX1-VX0);const r=vesselRadiusAt(ph);
+    (px===VX0)?x.moveTo(px,VCY-r):x.lineTo(px,VCY-r);}
+  x.stroke();
+  // bottom edge
+  x.beginPath();
+  for(let px=VX0;px<=VX1;px+=STEP){const ph=(px-VX0)/(VX1-VX0);const r=vesselRadiusAt(ph);
+    (px===VX0)?x.moveTo(px,VCY+r):x.lineTo(px,VCY+r);}
+  x.stroke();
+
+  // --- vessel interior fill (blood) ---
+  x.beginPath();
+  for(let px=VX0;px<=VX1;px+=STEP){const ph=(px-VX0)/(VX1-VX0);const r=vesselRadiusAt(ph);
+    (px===VX0)?x.moveTo(px,VCY-r):x.lineTo(px,VCY-r);}
+  for(let px=VX1;px>=VX0;px-=STEP){const ph=(px-VX0)/(VX1-VX0);const r=vesselRadiusAt(ph);
+    x.lineTo(px,VCY+r);}
+  x.closePath();
+  const g=x.createLinearGradient(0,VCY-RMAX,0,VCY+RMAX);
+  g.addColorStop(0,'#7d1730');g.addColorStop(0.5,C.blood);g.addColorStop(1,'#7d1730');
+  x.fillStyle=g;x.fill();
+
+  // --- pressure trace inside the vessel ---
+  x.save();
+  x.beginPath();
+  for(let px=VX0;px<=VX1;px+=STEP){const ph=(px-VX0)/(VX1-VX0);const r=vesselRadiusAt(ph);
+    (px===VX0)?x.moveTo(px,VCY-r):x.lineTo(px,VCY-r);}
+  for(let px=VX1;px>=VX0;px-=STEP){const ph=(px-VX0)/(VX1-VX0);const r=vesselRadiusAt(ph);
+    x.lineTo(px,VCY+r);}
+  x.closePath();x.clip();                       // keep the trace inside the lumen
+  x.strokeStyle='#ffd2dd';x.globalAlpha=0.9;x.lineWidth=2;
+  x.beginPath();
+  for(let px=VX0;px<=VX1;px+=2){const ph=(px-VX0)/(VX1-VX0);const pr=pressureAt(ph,t);
+    const py=VCY - (pr*2-1)*(RMAX-6);
+    (px===VX0)?x.moveTo(px,py):x.lineTo(px,py);}
+  x.stroke();
+  x.restore();
+
+  // --- baroreceptors on the inner wall ---
+  for(let b=0;b<NBARO;b++){
+    const bph=(b+0.5)/NBARO;const bx=VX0+bph*(VX1-VX0);
+    const r=vesselRadiusAt(bph);const by=VCY-r+5;            // embedded in upper wall
+    const fire=baroFire[b]/150;                              // 0..1
+    const col=fire>0?C.pulse:C.baro;
+    const rad=4+fire*4;
+    if(fire>0){x.save();x.shadowColor=C.pulse;x.shadowBlur=18*fire;}
+    x.fillStyle=col;x.beginPath();x.arc(bx,by,rad,0,Math.PI*2);x.fill();
+    if(fire>0)x.restore();
+    // mirror dot on the lower wall
+    const by2=VCY+r-5;
+    if(fire>0){x.save();x.shadowColor=C.pulse;x.shadowBlur=18*fire;}
+    x.fillStyle=col;x.beginPath();x.arc(bx,by2,rad,0,Math.PI*2);x.fill();
+    if(fire>0)x.restore();
+  }
+
+  // --- state label ---
+  x.fillStyle=C.overlay;x.globalAlpha=0.55;x.font='13px ui-monospace,monospace';
+  const state = peak>=thr ? 'CONSTRICTING — pressure exceeds threshold'
+                          : 'open — pressure below threshold';
+  x.fillText(state,VX0-30,H-26);x.globalAlpha=1;
+}
+
+requestAnimationFrame(frame);
+</script>

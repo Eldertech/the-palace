@@ -1,0 +1,166 @@
+<div id="wtb-root">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Cormorant:ital,wght@0,400;0,600;1,400&family=Manrope:wght@400;600;700&family=JetBrains+Mono:wght@400;600&display=swap');
+#wtb-root{
+  --bg:#13151a; --panel:#1b1e25; --ink:#e8e6e0; --dim:#8b8d96;
+  --line:#39414f; --glow:#f2b441; --glow2:#ff7a45; --base:#4a5366;
+  --accent:#7fd1c4;
+  font-family:'Manrope',system-ui,sans-serif; color:var(--ink);
+  background:var(--bg); padding:22px 22px 26px; border-radius:10px;
+  max-width:760px; margin:0 auto; box-sizing:border-box;
+}
+#wtb-root *{box-sizing:border-box;}
+#wtb-root h1{
+  font-family:'Anton',sans-serif; font-weight:400; letter-spacing:.5px;
+  font-size:25px; margin:0 0 2px; line-height:1.05; text-transform:uppercase;
+}
+#wtb-root .sub{font-family:'Cormorant',serif; font-style:italic; font-size:17px;
+  color:var(--dim); margin:0 0 16px;}
+#wtb-root .stage{background:var(--panel); border:1px solid var(--line);
+  border-radius:8px; padding:14px 14px 8px;}
+#wtb-root canvas{width:100%; height:auto; display:block; border-radius:4px;}
+#wtb-root .meta{font-family:'JetBrains Mono',monospace; font-size:11px;
+  color:var(--dim); display:flex; justify-content:space-between;
+  margin-top:8px; flex-wrap:wrap; gap:6px;}
+#wtb-root .meta b{color:var(--accent); font-weight:600;}
+#wtb-root .ctl{display:flex; align-items:center; gap:12px; margin-top:14px;}
+#wtb-root button{font-family:'Manrope',sans-serif; font-weight:700;
+  font-size:13px; background:var(--glow); color:#1a1300; border:none;
+  padding:9px 16px; border-radius:6px; cursor:pointer; letter-spacing:.3px;}
+#wtb-root button:hover{filter:brightness(1.08);}
+#wtb-root button.ghost{background:transparent; color:var(--ink);
+  border:1px solid var(--line);}
+#wtb-root input[type=range]{flex:1; accent-color:var(--glow);}
+#wtb-root .scanlabel{font-family:'JetBrains Mono',monospace; font-size:11px;
+  color:var(--dim); min-width:74px; text-align:right;}
+#wtb-root .legend{font-family:'Cormorant',serif; font-size:15px;
+  line-height:1.4; color:var(--ink); margin-top:14px;
+  border-top:1px solid var(--line); padding-top:12px;}
+#wtb-root .legend b{font-family:'Manrope';font-weight:700;font-size:13px;
+  color:var(--glow);}
+#wtb-root .foot{font-family:'JetBrains Mono',monospace; font-size:10px;
+  color:var(--dim); text-align:right; margin-top:14px; letter-spacing:.5px;}
+</style>
+
+<h1>The Settling Line</h1>
+<p class="sub">Multi-frame Wavetable&nbsp;B — the piano's attack bends the harmonic line, then it settles back toward flat. Sixteen stored frames, scanned over the note's life.</p>
+
+<div class="stage">
+  <canvas id="wtb-canvas" width="712" height="300"></canvas>
+  <div class="meta">
+    <span>frame <b id="m-frame">0.0</b> / 15</span>
+    <span>B-coeff <b id="m-b">0.00090</b></span>
+    <span>partial 32 deviation <b id="m-top">+0c</b></span>
+  </div>
+</div>
+
+<div class="ctl">
+  <button id="play">Play the settle</button>
+  <button class="ghost" id="reset">Reset to attack</button>
+  <input type="range" id="scan" min="0" max="1000" value="0">
+  <span class="scanlabel" id="scanval">scan 0%</span>
+</div>
+
+<div class="legend">
+  <b>How to read it.</b> X is partial number, 1 to 32. The bold horizontal line at center is the harmonic series — zero deviation. Each partial sits as a glowing dot, brighter where it is louder (a saw spectrum, so lower partials glow strongest). Its height above the line is how many cents sharp that partial is. At the attack every upper partial is pushed far sharp — that metallic strike. Drag the scan, or hit play, and watch the line peel down toward flat: the string settling into harmonic clarity. The shape of that descent is the physics of piano stiffness, stored as frames, not faked with one envelope.
+</div>
+
+<div class="foot">Loudon Live &middot; Autodidact Polymaths</div>
+</div>
+
+<script>
+(function(){
+  var FRAMES = [[0.7787, 3.1106, 6.9833, 12.376, 19.2605, 27.6012, 37.3559, 48.4764, 60.9094, 74.5969, 89.4776, 105.4872, 122.5596, 140.6272, 159.6221, 179.4764, 200.1229, 221.4956, 243.5301, 266.164, 289.3372, 312.9923, 337.0743, 361.5311, 386.3137, 411.3757, 436.6739, 462.1676, 487.8192, 513.5938, 539.459, 565.3848], [0.6305, 2.5192, 5.6579, 10.0331, 15.6261, 22.4132, 30.3663, 39.453, 49.6374, 60.8799, 73.1382, 86.3678, 100.522, 115.5531, 131.412, 148.0494, 165.4157, 183.4615, 202.1381, 221.3975, 241.193, 261.4789, 282.2112, 303.3476, 324.8473, 346.6714, 368.7831, 391.1472, 413.7305, 436.5018, 459.4316, 482.4923], [0.5118, 2.0453, 4.5952, 8.1525, 12.7048, 18.2364, 24.7284, 32.1592, 40.5045, 49.7372, 59.8286, 70.7477, 82.4621, 94.9381, 108.141, 122.0352, 136.5847, 151.7535, 167.5051, 183.8036, 200.6133, 217.8992, 235.6269, 253.7629, 272.2745, 291.1303, 310.2999, 329.7539, 349.4643, 369.4044, 389.5485, 409.8724], [0.4167, 1.6657, 3.7433, 6.6437, 10.3585, 14.8772, 20.1873, 26.2742, 33.1213, 40.7103, 49.0215, 58.0337, 67.7242, 78.0695, 89.0452, 100.6259, 112.7858, 125.4987, 138.7381, 152.4774, 166.6899, 181.3491, 196.4289, 211.9034, 227.7471, 243.9352, 260.4433, 277.248, 294.3261, 311.6556, 329.2151, 346.984], [0.3406, 1.3616, 3.0606, 5.4336, 8.4751, 12.178, 16.5339, 21.5328, 27.1635, 33.4136, 40.2696, 47.7167, 55.7394, 64.3211, 73.4448, 83.0925, 93.2458, 103.8859, 114.9936, 126.5495, 138.5338, 150.927, 163.7094, 176.8614, 190.3636, 204.1967, 218.3418, 232.7803, 247.494, 262.4651, 277.6761, 293.1102], [0.2796, 1.118, 2.5135, 4.4634, 6.9641, 10.0106, 13.5973, 17.7173, 22.3632, 27.5263, 33.1972, 39.3659, 46.0216, 53.1526, 60.7471, 68.7922, 77.2751, 86.1821, 95.4995, 105.2131, 115.3087, 125.7718, 136.5878, 147.742, 159.2198, 171.0067, 183.088, 195.4495, 208.0769, 220.9562, 234.0736, 247.4156], [0.2308, 0.9229, 2.0752, 3.6858, 5.7522, 8.2711, 11.2386, 14.65, 18.5001, 22.783, 27.4922, 32.6206, 38.1607, 44.1045, 50.4435, 57.1687, 64.2708, 71.7402, 79.5669, 87.7409, 96.2515, 105.0884, 114.2406, 123.6975, 133.4479, 143.481, 153.7858, 164.3514, 175.1667, 186.221, 197.5034, 209.0035], [0.1917, 0.7667, 1.7241, 3.0626, 4.7806, 6.8757, 9.3453, 12.186, 15.3943, 18.966, 22.8966, 27.1812, 31.8144, 36.7906, 42.1037, 47.7474, 53.715, 59.9997, 66.5943, 73.4914, 80.6834, 88.1625, 95.921, 103.9507, 112.2435, 120.7913, 129.5857, 138.6185, 147.8813, 157.3659, 167.064, 176.9672], [0.1604, 0.6415, 1.4428, 2.5633, 4.0018, 5.7568, 7.8262, 10.2079, 12.8993, 15.8975, 19.1991, 22.8009, 26.6989, 30.8892, 35.3673, 40.1288, 45.1689, 50.4825, 56.0646, 61.9097, 68.0123, 74.3666, 80.967, 87.8074, 94.8817, 102.1839, 109.7078, 117.4471, 125.3954, 133.5465, 141.8939, 150.4314], [0.1354, 0.5413, 1.2175, 2.1633, 3.3777, 4.8597, 6.608, 8.6208, 10.8963, 13.4325, 16.227, 19.2774, 22.5808, 26.1345, 29.9352, 33.9796, 38.2643, 42.7856, 47.5398, 52.5228, 57.7306, 63.159, 68.8037, 74.6602, 80.724, 86.9905, 93.4551, 100.1129, 106.9592, 113.9892, 121.198, 128.5806], [0.1153, 0.4611, 1.0371, 1.8428, 2.8776, 4.1408, 5.6312, 7.3477, 9.2891, 11.4536, 13.8397, 16.4456, 19.2691, 22.3083, 25.5607, 29.024, 32.6956, 36.5727, 40.6526, 44.9323, 49.4087, 54.0788, 58.9393, 63.9868, 69.218, 74.6293, 80.2172, 85.9781, 91.9083, 98.0041, 104.2616, 110.6773], [0.0992, 0.3968, 0.8925, 1.5861, 2.477, 3.5646, 4.8483, 6.327, 7.9999, 9.8658, 11.9234, 14.1714, 16.6082, 19.2323, 22.042, 25.0353, 28.2105, 31.5654, 35.0979, 38.8059, 42.6869, 46.7387, 50.9587, 55.3444, 59.8932, 64.6024, 69.4693, 74.491, 79.6649, 84.9878, 90.4571, 96.0696], [0.0863, 0.3453, 0.7768, 1.3805, 2.1561, 3.103, 4.2209, 5.5089, 6.9663, 8.5922, 10.3858, 12.346, 14.4716, 16.7613, 19.214, 21.8281, 24.6023, 27.5349, 30.6243, 33.8688, 37.2666, 40.816, 44.5148, 48.3613, 52.3533, 56.4889, 60.7657, 65.1817, 69.7347, 74.4223, 79.2423, 84.1923], [0.076, 0.3041, 0.6841, 1.2158, 1.899, 2.7332, 3.7181, 4.8531, 6.1377, 7.5711, 9.1527, 10.8816, 12.7569, 14.7776, 16.9428, 19.2514, 21.7022, 24.2939, 27.0253, 29.8951, 32.9018, 36.044, 39.3202, 42.7288, 46.2682, 49.9368, 53.7328, 57.6546, 61.7003, 65.8681, 70.1562, 74.5628], [0.0678, 0.2711, 0.6099, 1.084, 1.6931, 2.437, 3.3154, 4.3277, 5.4737, 6.7526, 8.164, 9.7071, 11.3814, 13.1859, 15.12, 17.1826, 19.3729, 21.69, 24.1327, 26.7, 29.3908, 32.2039, 35.138, 38.192, 41.3646, 44.6543, 48.0598, 51.5797, 55.2126, 58.957, 62.8113, 66.7741], [0.0612, 0.2447, 0.5505, 0.9784, 1.5282, 2.1997, 2.9927, 3.9068, 4.9416, 6.0966, 7.3715, 8.7656, 10.2784, 11.9093, 13.6575, 15.5225, 17.5033, 19.5992, 21.8095, 24.133, 26.5691, 29.1166, 31.7746, 34.5421, 37.4179, 40.401, 43.4903, 46.6845, 49.9824, 53.3829, 56.8847, 60.4865]];
+  var BPF = [0.0009, 0.00072863, 0.00059142, 0.00048154, 0.00039356, 0.00032311, 0.00026669, 0.00022152, 0.00018535, 0.00015639, 0.0001332, 0.00011463, 9.976e-05, 8.785e-05, 7.831e-05, 7.068e-05];
+  var NF = FRAMES.length, NP = FRAMES[0].length;
+  var cv = document.getElementById('wtb-canvas');
+  var ctx = cv.getContext('2d');
+  var W = cv.width, H = cv.height;
+  var padL=42, padR=18, padT=22, padB=26;
+  var plotW = W-padL-padR, plotH = H-padT-padB;
+  var CENTS_MAX = 80; // top of plot (frame0 partial32 ~ caps via clamp glow)
+  // amplitude (saw 1/n) for glow brightness
+  var amp=[]; var amax=0;
+  for(var n=0;n<NP;n++){amp[n]=1/(n+1); if(amp[n]>amax)amax=amp[n];}
+
+  function lerpFrame(s){ // s in [0,1] -> interpolated row
+    var pos = s*(NF-1);
+    var f0 = Math.floor(pos), f1=Math.min(f0+1,NF-1), fr=pos-f0;
+    var row=[];
+    for(var n=0;n<NP;n++) row[n]=(1-fr)*FRAMES[f0][n]+fr*FRAMES[f1][n];
+    return {row:row,pos:pos};
+  }
+  function yFor(c){ return padT + plotH*(1 - Math.min(c,CENTS_MAX)/CENTS_MAX); }
+  function xFor(n){ return padL + plotW*(n/(NP-1)); }
+
+  function draw(s){
+    ctx.clearRect(0,0,W,H);
+    // panel bg
+    ctx.fillStyle='#1b1e25'; ctx.fillRect(0,0,W,H);
+    // faint gridlines (cents)
+    ctx.strokeStyle='#272c36'; ctx.lineWidth=1; ctx.font='10px "JetBrains Mono",monospace';
+    ctx.fillStyle='#5d616b';
+    [0,20,40,60,80].forEach(function(c){
+      var y=yFor(c); ctx.beginPath();ctx.moveTo(padL,y);ctx.lineTo(W-padR,y);ctx.stroke();
+      ctx.fillText((c===0?' 0':('+'+c))+'c', 4, y+3);
+    });
+    var d = lerpFrame(s); var row=d.row;
+    // harmonic baseline (bold)
+    var yb=yFor(0);
+    ctx.strokeStyle='#cfd3da'; ctx.lineWidth=2.2;
+    ctx.beginPath();ctx.moveTo(padL,yb);ctx.lineTo(W-padR,yb);ctx.stroke();
+    // the deviation curve (glowing line)
+    ctx.lineWidth=2.6; ctx.lineJoin='round';
+    var grad=ctx.createLinearGradient(padL,0,W-padR,0);
+    grad.addColorStop(0,'#f2b441'); grad.addColorStop(1,'#ff7a45');
+    ctx.strokeStyle=grad;
+    ctx.beginPath();
+    for(var n=0;n<NP;n++){var x=xFor(n),y=yFor(row[n]); if(n===0)ctx.moveTo(x,y);else ctx.lineTo(x,y);}
+    ctx.stroke();
+    // partial dots, brightness by amplitude
+    for(var n=0;n<NP;n++){
+      var x=xFor(n),y=yFor(row[n]); var a=amp[n]/amax;
+      var r=2+4*a;
+      ctx.beginPath();
+      var glow=ctx.createRadialGradient(x,y,0,x,y,r*2.4);
+      glow.addColorStop(0,'rgba(255,200,90,'+(0.35+0.6*a)+')');
+      glow.addColorStop(1,'rgba(255,200,90,0)');
+      ctx.fillStyle=glow; ctx.arc(x,y,r*2.4,0,7); ctx.fill();
+      ctx.beginPath(); ctx.fillStyle='rgba(255,225,160,'+(0.5+0.5*a)+')';
+      ctx.arc(x,y,r,0,7); ctx.fill();
+    }
+    // x label
+    ctx.fillStyle='#5d616b'; ctx.font='10px "JetBrains Mono",monospace';
+    ctx.fillText('partial 1', padL, H-8);
+    ctx.fillText('32', W-padR-14, H-8);
+    // readouts
+    document.getElementById('m-frame').textContent=d.pos.toFixed(1);
+    var fi=Math.round(d.pos);
+    document.getElementById('m-b').textContent=BPF[fi].toFixed(5);
+    document.getElementById('m-top').textContent='+'+row[NP-1].toFixed(0)+'c';
+  }
+
+  var scan=document.getElementById('scan'), scanval=document.getElementById('scanval');
+  function setScan(v){ scan.value=v; scanval.textContent='scan '+Math.round(v/10)+'%'; draw(v/1000); }
+  scan.addEventListener('input',function(){ setScan(+scan.value); });
+
+  var playing=false, raf=null, t0=0, DUR=2600;
+  function step(ts){
+    if(!t0)t0=ts; var p=Math.min((ts-t0)/DUR,1);
+    // ease: the scan IS 1-exp(-t/tau), the same shape the engine uses
+    var s=(1-Math.exp(-3.2*p))/(1-Math.exp(-3.2));
+    setScan(s*1000);
+    if(p<1 && playing){raf=requestAnimationFrame(step);} else {playing=false; document.getElementById('play').textContent='Play the settle';}
+  }
+  document.getElementById('play').addEventListener('click',function(){
+    if(playing){playing=false; cancelAnimationFrame(raf); this.textContent='Play the settle'; return;}
+    playing=true; t0=0; this.textContent='Settling…'; raf=requestAnimationFrame(step);
+  });
+  document.getElementById('reset').addEventListener('click',function(){
+    playing=false; if(raf)cancelAnimationFrame(raf);
+    document.getElementById('play').textContent='Play the settle'; setScan(0);
+  });
+
+  draw(0);
+})();
+</script>

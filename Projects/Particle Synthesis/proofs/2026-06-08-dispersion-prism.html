@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Particle Synthesis — the dispersion prism</title>
+<style>
+  :root { color-scheme: dark; }
+  body {
+    margin: 0; min-height: 100vh; background: #0f0f10; color: #e8e8ea;
+    font-family: -apple-system, system-ui, sans-serif;
+    display: grid; grid-template-rows: auto auto 1fr auto;
+  }
+  header { padding: 16px 26px; border-bottom: 1px solid #2a2a30; }
+  header h1 { margin: 0 0 4px 0; font-size: 19px; font-weight: 600; color: #f5d68b; }
+  header p { margin: 0; color: #9a9aa0; font-size: 12px; max-width: 78ch; line-height: 1.5; }
+  .banner {
+    background: rgba(255,111,89,0.12); color: #ff6f59; padding: 9px 26px; font-size: 13px;
+    text-align: center; cursor: pointer; user-select: none; border-bottom: 1px solid #2a2a30;
+  }
+  .banner.live { background: rgba(109,211,199,0.10); color: #6dd3c7; }
+  main { display: grid; grid-template-columns: 1fr 300px; gap: 0; min-height: 0; }
+  #stage-wrap { position: relative; }
+  #stage { background: #0a0a0c; display: block; width: 100%; height: 60vh; }
+  aside { padding: 16px 20px; border-left: 1px solid #2a2a30; display: grid; gap: 12px; align-content: start; overflow-y: auto; }
+  aside h2 { margin: 6px 0 2px 0; font-size: 12px; color: #f5d68b; text-transform: uppercase; letter-spacing: 0.05em; }
+  .row { display: grid; gap: 5px; font-size: 12px; }
+  .row label { color: #c0c0c0; display: flex; justify-content: space-between; }
+  .row label .v { color: #ff6f59; font-variant-numeric: tabular-nums; }
+  input[type=range] { width: 100%; accent-color: #ff6f59; }
+  .btnrow { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  button {
+    background: #ff6f59; color: #0f0f10; border: none; padding: 11px 14px;
+    font-weight: 600; cursor: pointer; border-radius: 4px; font-size: 13px;
+  }
+  button.off { background: #2a2a30; color: #c0c0c0; }
+  button.big { grid-column: 1 / -1; }
+  footer { padding: 11px 26px; border-top: 1px solid #2a2a30; color: #777; font-size: 11px; line-height: 1.5; }
+  kbd { background: #2a2a30; padding: 2px 6px; border-radius: 3px; font-family: ui-monospace, monospace; font-size: 10px; }
+  .indicator {
+    position: absolute; left: 16px; top: 14px; font-size: 11px; color: #6dd3c7;
+    background: rgba(0,0,0,0.55); padding: 6px 10px; border-radius: 4px;
+    font-variant-numeric: tabular-nums; line-height: 1.5; white-space: pre;
+  }
+  .legend {
+    position: absolute; right: 16px; top: 14px; font-size: 10px; color: #9a9aa0;
+    background: rgba(0,0,0,0.55); padding: 6px 10px; border-radius: 4px; line-height: 1.6;
+  }
+  .legend .dot { display:inline-block; width:9px; height:9px; border-radius:50%; margin-right:5px; vertical-align: middle; }
+  select { background:#1a1a1d; color:#e8e8ea; border:1px solid #2a2a30; padding:5px; font-size:12px; }
+  .note { color:#777; font-size:11px; line-height:1.45; }
+</style>
+</head>
+<body>
+<header>
+  <h1>Particle Synthesis — the dispersion prism</h1>
+  <p>One wideband grain is not one particle — it is a <em>cloud of partials</em>, each a particle carrying its own wavenumber k. They all launch from the same point at the same instant. A <strong>dispersion relation &omega;(k)</strong> gives each partial a different velocity, so the cloud spreads as it flies: high partials race ahead, low ones lag. That spatial spreading <em>is</em> the spectral evolution you hear. Set dispersion to zero and every partial moves in lockstep — a static harmonic tone, "parameter modulation." Turn it up and the grain colours itself the way a bell or struck bar does, with no modulation path programmed in. The geometry is the synthesis.</p>
+</header>
+<div class="banner" id="banner">click STRIKE (or the canvas) to start audio</div>
+<main>
+  <div id="stage-wrap">
+    <canvas id="stage"></canvas>
+    <div class="indicator" id="indicator">struck: never</div>
+    <div class="legend">
+      <span class="dot" style="background:#6dd3c7"></span>high partial (fast)<br>
+      <span class="dot" style="background:#f5d68b"></span>mid partial<br>
+      <span class="dot" style="background:#ff6f59"></span>low partial (slow)
+    </div>
+  </div>
+  <aside>
+    <h2>the strike</h2>
+    <div class="row">
+      <label>fundamental (Hz) <span class="v" id="f0V">110</span></label>
+      <input id="f0" type="range" min="40" max="440" step="1" value="110">
+    </div>
+    <div class="row">
+      <label>partials <span class="v" id="nV">12</span></label>
+      <input id="n" type="range" min="3" max="24" step="1" value="12">
+    </div>
+    <div class="row">
+      <label>grain life (s) <span class="v" id="lifeV">3.0</span></label>
+      <input id="life" type="range" min="0.5" max="6" step="0.1" value="3.0">
+    </div>
+
+    <h2>the prism</h2>
+    <div class="row">
+      <label>dispersion &beta; <span class="v" id="betaV">0.65</span></label>
+      <input id="beta" type="range" min="0" max="1" step="0.01" value="0.65">
+    </div>
+    <div class="row">
+      <label>law</label>
+      <select id="law">
+        <option value="stiff" selected>stiff bar &nbsp; &omega; &prop; k&sup2;</option>
+        <option value="deep">deep water &nbsp; &omega; &prop; &radic;k</option>
+        <option value="linear">non-dispersive &nbsp; &omega; &prop; k</option>
+      </select>
+    </div>
+    <p class="note">In a non-dispersive medium &omega;(k) is a straight line: all partials share one velocity, nothing separates, the tone is static. A stiff bar bends that line upward — higher partials get sharper and faster, exactly the inharmonicity of a bell.</p>
+
+    <h2>audio</h2>
+    <div class="row">
+      <label>master <span class="v" id="ampV">0.22</span></label>
+      <input id="amp" type="range" min="0" max="0.6" step="0.005" value="0.22">
+    </div>
+
+    <div class="btnrow">
+      <button id="strike" class="big">STRIKE</button>
+      <button id="loop" class="off">auto-strike: off</button>
+      <button id="mute" class="off">mute</button>
+    </div>
+  </aside>
+</main>
+<footer>
+  Each dot is one partial-particle flying left&rarr;right across the dispersive space; its vertical lane is its frequency. Its <em>brightness in the audio</em> is its instantaneous speed &mdash; a partial is loud while it is moving fast and fades as it slows, so the spectrum literally pours out high-to-low. <kbd>space</kbd> strikes, <kbd>m</kbd> mutes. Loudon Live &middot; Autodidact Polymaths
+</footer>
+
+<script>
+const stage = document.getElementById('stage'), ctx = stage.getContext('2d');
+const banner = document.getElementById('banner'), ind = document.getElementById('indicator');
+const C = {};
+['f0','n','life','beta','law','amp','strike','loop','mute'].forEach(id => C[id]=document.getElementById(id));
+['f0V','nV','lifeV','betaV','ampV'].forEach(id => C[id]=document.getElementById(id));
+
+let actx=null, master=null, muted=false, looping=false, loopTimer=null;
+let strikeCount=0;
+
+// live particle clouds. each cloud = one struck grain = an array of partial-particles.
+const clouds=[];
+
+function ensureAudio(){
+  if(!actx){
+    try{
+      actx=new (window.AudioContext||window.webkitAudioContext)();
+      master=actx.createGain(); master.gain.value=+C.amp.value; master.connect(actx.destination);
+      banner.textContent='audio active — STRIKE the prism'; banner.classList.add('live');
+    }catch(e){ banner.textContent='AudioContext unavailable — visuals only'; }
+  }
+  if(actx && actx.state==='suspended') actx.resume();
+}
+
+// dispersion relation: returns a relative phase velocity for normalized wavenumber kn in [0,1].
+// beta blends from the non-dispersive line (everyone equal) toward the law's curve.
+function velocity(kn, law, beta){
+  let curve;
+  if(law==='stiff')   curve = 0.35 + kn*kn*1.65;      // omega ~ k^2  -> v ~ k, high races ahead, superlinear
+  else if(law==='deep') curve = 0.35 + Math.sqrt(kn)*1.3; // omega ~ sqrt(k) -> v ~ 1/sqrt(k), low lags gently
+  else curve = 1.0;                                    // linear: all equal
+  return (1-beta)*1.0 + beta*curve;
+}
+
+function strikeGrain(){
+  ensureAudio();
+  strikeCount++;
+  const f0=+C.f0.value, N=+C.n.value, life=+C.life.value, law=C.law.value, beta=+C.beta.value;
+  const partials=[];
+  const now = actx ? actx.currentTime : 0;
+  for(let i=0;i<N;i++){
+    const harm=i+1;                       // partial number
+    const kn = i/(N-1||1);                // normalized wavenumber 0..1
+    const v  = velocity(kn, law, beta);   // phase velocity from the dispersion relation
+    // partials separate in time: a partial's "arrival" / brightness peak is when it is fastest.
+    // we drive amplitude from instantaneous speed so the spectrum pours out in physical order.
+    const freq = f0*harm;
+    const lane = kn;                       // vertical position = frequency lane
+    let osc=null, g=null;
+    if(actx){
+      try{
+        osc=actx.createOscillator(); osc.type='sine'; osc.frequency.value=freq;
+        g=actx.createGain(); g.gain.value=0;
+        osc.connect(g); g.connect(master);
+        // envelope: each partial gets a gaussian-ish bump centered at a time set by its velocity.
+        // fast partials peak early (they "arrive" first), slow ones peak late -> audible dispersion.
+        const peakT = now + life*(1 - v/2.0)*0.6 + 0.02;
+        const width = life*0.22;
+        const amp = (1.0/Math.sqrt(N)) * (0.6 + 0.4*v);  // faster = a touch louder at peak
+        g.gain.setValueAtTime(0, now);
+        g.gain.linearRampToValueAtTime(amp, Math.max(now+0.01, peakT-width));
+        g.gain.linearRampToValueAtTime(amp*0.5, peakT);
+        g.gain.linearRampToValueAtTime(0, peakT+width*1.5);
+        osc.start(now); osc.stop(now+life+0.1);
+      }catch(e){}
+    }
+    partials.push({ harm, kn, v, freq, lane, x:0, born:performance.now()/1000, life });
+  }
+  clouds.push({ partials, born:performance.now()/1000, life });
+  // recycle old clouds
+  while(clouds.length>6){ clouds.shift(); }
+}
+
+C.strike.onclick=strikeGrain;
+banner.addEventListener('click', ()=>{ ensureAudio(); });
+stage.addEventListener('mousedown', strikeGrain);
+window.addEventListener('keydown', e=>{
+  if(e.code==='Space'){ e.preventDefault(); strikeGrain(); }
+  if(e.code==='KeyM'){ C.mute.click(); }
+});
+C.mute.onclick=()=>{ muted=!muted; if(actx) master.gain.setTargetAtTime(muted?0:+C.amp.value, actx.currentTime, 0.04); C.mute.textContent=muted?'unmute':'mute'; C.mute.classList.toggle('off',!muted); };
+C.loop.onclick=()=>{
+  looping=!looping; C.loop.textContent='auto-strike: '+(looping?'on':'off'); C.loop.classList.toggle('off',!looping);
+  if(looping){ const beat=()=>{ if(!looping) return; strikeGrain(); loopTimer=setTimeout(beat,(+C.life.value*1000)*0.55); }; beat(); }
+  else clearTimeout(loopTimer);
+};
+C.amp.oninput=()=>{ C.ampV.textContent=(+C.amp.value).toFixed(2); if(actx&&!muted) master.gain.setTargetAtTime(+C.amp.value,actx.currentTime,0.04); };
+C.f0.oninput=()=>C.f0V.textContent=C.f0.value;
+C.n.oninput=()=>C.nV.textContent=C.n.value;
+C.life.oninput=()=>C.lifeV.textContent=(+C.life.value).toFixed(1);
+C.beta.oninput=()=>C.betaV.textContent=(+C.beta.value).toFixed(2);
+
+function laneColor(kn){
+  // low -> warm red, high -> cyan
+  const hue = 12 + kn*180;
+  return hue;
+}
+function tick(){
+  const now=performance.now()/1000;
+  const W=stage.width=stage.clientWidth*devicePixelRatio;
+  const H=stage.height=stage.clientHeight*devicePixelRatio;
+  ctx.fillStyle='rgba(10,10,12,0.22)'; ctx.fillRect(0,0,W,H);
+  // dispersion curve overlay (faint), left axis = k low at bottom
+  let liveCount=0, leadFreq=0, lagFreq=0;
+  for(const cl of clouds){
+    const age=now-cl.born;
+    if(age>cl.life+0.3) continue;
+    for(const p of cl.partials){
+      // x advances by velocity; the spread across x IS the dispersion
+      const prog = Math.min(1, (age/cl.life) * p.v);
+      const px = prog * W;
+      const py = (1 - p.lane) * H * 0.92 + H*0.04; // high freq near top
+      const alpha = Math.max(0, 1 - age/cl.life) * 0.9;
+      if(alpha<=0) continue;
+      liveCount++;
+      const hue=laneColor(p.lane);
+      const r = (3.5 + p.v*2.5) * devicePixelRatio;
+      ctx.beginPath();
+      ctx.fillStyle=`hsla(${hue},78%,60%,${alpha})`;
+      ctx.arc(px,py,r,0,Math.PI*2); ctx.fill();
+      // trail
+      ctx.strokeStyle=`hsla(${hue},78%,55%,${alpha*0.25})`;
+      ctx.lineWidth=1.5*devicePixelRatio;
+      ctx.beginPath(); ctx.moveTo(0,py); ctx.lineTo(px,py); ctx.stroke();
+      if(p.lane>0.9) leadFreq=p.freq;
+      if(p.lane<0.1) lagFreq=p.freq;
+    }
+  }
+  ind.textContent =
+    `struck: ${strikeCount}\nlive partials: ${liveCount}\nlaw: ${C.law.value}   β: ${(+C.beta.value).toFixed(2)}`;
+  requestAnimationFrame(tick);
+}
+tick();
+</script>
+</body>
+</html>

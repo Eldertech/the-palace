@@ -1,0 +1,139 @@
+{
+  "n": 12,
+  "regime_correct": 12,
+  "mean_abs_zeta_err": 0.1205,
+  "rows": [
+    {
+      "slug": "01-overdamped",
+      "true_zeta": 1.6,
+      "fit_zeta": 1.889,
+      "zeta_err": 0.289,
+      "true_regime": "overdamped",
+      "fit_regime": "overdamped",
+      "regime_correct": true,
+      "overshoot_pct": 0.0,
+      "residual_hz": 0.1
+    },
+    {
+      "slug": "02-overdamped",
+      "true_zeta": 1.3,
+      "fit_zeta": 1.456,
+      "zeta_err": 0.156,
+      "true_regime": "overdamped",
+      "fit_regime": "overdamped",
+      "regime_correct": true,
+      "overshoot_pct": 0.0,
+      "residual_hz": 0.32
+    },
+    {
+      "slug": "03-overdamped",
+      "true_zeta": 1.4,
+      "fit_zeta": 1.577,
+      "zeta_err": 0.177,
+      "true_regime": "overdamped",
+      "fit_regime": "overdamped",
+      "regime_correct": true,
+      "overshoot_pct": 0.0,
+      "residual_hz": 0.09
+    },
+    {
+      "slug": "04-overdamped",
+      "true_zeta": 2.0,
+      "fit_zeta": 2.516,
+      "zeta_err": 0.516,
+      "true_regime": "overdamped",
+      "fit_regime": "overdamped",
+      "regime_correct": true,
+      "overshoot_pct": 0.0,
+      "residual_hz": 0.03
+    },
+    {
+      "slug": "05-critically-damped",
+      "true_zeta": 1.0,
+      "fit_zeta": 1.031,
+      "zeta_err": 0.031,
+      "true_regime": "critically_damped",
+      "fit_regime": "critically_damped",
+      "regime_correct": true,
+      "overshoot_pct": 0.0,
+      "residual_hz": 0.19
+    },
+    {
+      "slug": "06-critically-damped",
+      "true_zeta": 1.0,
+      "fit_zeta": 1.062,
+      "zeta_err": 0.062,
+      "true_regime": "critically_damped",
+      "fit_regime": "critically_damped",
+      "regime_correct": true,
+      "overshoot_pct": 0.0,
+      "residual_hz": 0.2
+    },
+    {
+      "slug": "07-critically-damped",
+      "true_zeta": 1.0,
+      "fit_zeta": 1.0,
+      "zeta_err": 0.0,
+      "true_regime": "critically_damped",
+      "fit_regime": "critically_damped",
+      "regime_correct": true,
+      "overshoot_pct": 0.0,
+      "residual_hz": 0.07
+    },
+    {
+      "slug": "08-critically-damped",
+      "true_zeta": 1.0,
+      "fit_zeta": 1.031,
+      "zeta_err": 0.031,
+      "true_regime": "critically_damped",
+      "fit_regime": "critically_damped",
+      "regime_correct": true,
+      "overshoot_pct": 0.0,
+      "residual_hz": 0.07
+    },
+    {
+      "slug": "09-underdamped",
+      "true_zeta": 0.18,
+      "fit_zeta": 0.125,
+      "zeta_err": -0.055,
+      "true_regime": "underdamped",
+      "fit_regime": "underdamped",
+      "regime_correct": true,
+      "overshoot_pct": 114.4,
+      "residual_hz": 32.54
+    },
+    {
+      "slug": "10-underdamped",
+      "true_zeta": 0.3,
+      "fit_zeta": 0.279,
+      "zeta_err": -0.021,
+      "true_regime": "underdamped",
+      "fit_regime": "underdamped",
+      "regime_correct": true,
+      "overshoot_pct": 36.9,
+      "residual_hz": 1.23
+    },
+    {
+      "slug": "11-underdamped",
+      "true_zeta": 0.25,
+      "fit_zeta": 0.233,
+      "zeta_err": -0.017,
+      "true_regime": "underdamped",
+      "fit_regime": "underdamped",
+      "regime_correct": true,
+      "overshoot_pct": 44.0,
+      "residual_hz": 0.87
+    },
+    {
+      "slug": "12-underdamped",
+      "true_zeta": 0.4,
+      "fit_zeta": 0.309,
+      "zeta_err": -0.091,
+      "true_regime": "underdamped",
+      "fit_regime": "underdamped",
+      "regime_correct": true,
+      "overshoot_pct": 39.3,
+      "residual_hz": 3.68
+    }
+  ]
+}

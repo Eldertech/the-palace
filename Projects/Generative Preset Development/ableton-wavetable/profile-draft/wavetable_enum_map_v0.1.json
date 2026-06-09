@@ -1,0 +1,77 @@
+{
+  "schema_version": "0.1",
+  "synth": "Ableton Wavetable",
+  "purpose": "Cross-reference for the integer enum indices that appear in decompressed .adv XML. Resolves the [enum semantics not yet cross-referenced] markers in Track B output. Index values are the canonical Wavetable parameter order as exposed in the Live device and confirmed against the indices observed in the decompressed corpus. Where an index was NOT observed in our 14-preset corpus, it is marked observed:false — the mapping is from the Wavetable architecture, the observation flag tells you which rows our own data exercised.",
+  "source_basis": "Ableton Live Wavetable device parameter ordering (Live 11/12 manual + device UI order). Filter model order follows the Wavetable filter dropdown; unison mode order follows the Wavetable unison dropdown.",
+  "verification_status": "documentary — derived from Wavetable's UI parameter order, NOT ear-confirmed. The ear pass (slot-isolated audition) still owns the perceptual labels; this owns only the discrete enum identities.",
+  "observed_index_survey": {
+    "_note": "Surveyed across the FULL 14-preset decompressed corpus (cycle 5). The odd circuit indices (1, 3) and unison mode 6 DO appear in the corpus — they were missing from the first draft and added here. This is the analysis-teaches-the-profile loop: running the analyzer against every preset surfaced index values a partial sample missed.",
+    "filter_type_idx": [0, 1],
+    "filter_circuit_LpHp_idx": [0, 1, 2, 3, 4],
+    "filter_routing_idx": [0, 2],
+    "lfo_shape_idx": [0, 1, 2],
+    "unison_mode_idx": [0, 1, 2, 3, 4, 5, 6]
+  },
+  "enums": {
+    "Voice_Filter1_Type": {
+      "param": "Voice_Filter1_Type / Voice_Filter2_Type",
+      "meaning": "Top-level filter response shape. In Wavetable, Type selects the response (LP/HP/BP/Notch/Morph) and the circuit-LpHp sub-index selects the analog circuit model + slope for the LP/HP responses.",
+      "values": {
+        "0": { "name": "Lowpass / Highpass (LP-HP morphable)", "observed": true, "note": "The default Wavetable response. Pairs with circuit-LpHp index to pick the modeled circuit. cutoff sweeps the corner." },
+        "1": { "name": "Bandpass / Notch (BP-Notch morphable)", "observed": true, "note": "Band response; the same cutoff param sets the center frequency, resonance sets bandwidth/depth." },
+        "2": { "name": "Morph", "observed": false, "note": "Continuous LP→BP→HP→Notch morph response; not exercised by our corpus." }
+      }
+    },
+    "Voice_Filter1_circuit_LpHp": {
+      "param": "circuit / model sub-index for the LP-HP response",
+      "meaning": "Selects the modeled analog filter circuit AND slope. Even indices = one circuit family, with the index encoding slope (12 vs 24 dB) and model. This is why our corpus shows 0/2/4 and not 1/3.",
+      "values": {
+        "0": { "name": "Clean 12 dB", "observed": true, "note": "Transparent, no analog coloration, 12 dB/oct. The brightest/least-colored corner." },
+        "1": { "name": "Clean 24 dB", "observed": true, "note": "Transparent, 24 dB/oct — steeper rolloff than idx 0, same clean (un-modeled) character. The odd indices in this list are the 24 dB partners of the even (12 dB) circuit above them." },
+        "2": { "name": "OSR 12 dB (resonant analog model)", "observed": true, "note": "Modeled resonant circuit, 12 dB/oct — adds analog character as resonance rises." },
+        "3": { "name": "OSR 24 dB (resonant analog model)", "observed": true, "note": "OSR modeled circuit at 24 dB/oct — the steeper, more colored partner of idx 2. Observed in the corpus on presets with low resonant cutoffs." },
+        "4": { "name": "MS2 / PRD-style 24 dB", "observed": true, "note": "Steeper 24 dB/oct modeled circuit — darker rolloff, more aggressive self-oscillation at high resonance. Observed on the bass presets (cutoff 93 Hz, resonance 0.754)." }
+      }
+    },
+    "Voice_Global_FilterRouting": {
+      "param": "Voice_Global_FilterRouting",
+      "meaning": "How the two filters are wired relative to each other.",
+      "values": {
+        "0": { "name": "Serial", "observed": true, "note": "Filter 1 feeds Filter 2. The full signal passes through both in sequence — cumulative rolloff. Observed on Abdominal Bass." },
+        "1": { "name": "Parallel", "observed": false, "note": "Both filters process the source independently and sum. Not exercised by our corpus." },
+        "2": { "name": "Split", "observed": true, "note": "Source is split by frequency/level between the two filters. Observed on Aqueous Pad — two different cutoffs (714 Hz / 1382 Hz) acting on different bands." }
+      }
+    },
+    "Voice_Modulators_Lfo1_Shape_Type": {
+      "param": "Voice_Modulators_Lfo1_Shape_Type / Lfo2",
+      "meaning": "LFO waveform. Wavetable LFO shape dropdown order.",
+      "values": {
+        "0": { "name": "Sine", "observed": true, "note": "The most common shape in the corpus — smooth bipolar motion." },
+        "1": { "name": "Triangle", "observed": true, "note": "Confirmed present in the full-corpus survey." },
+        "2": { "name": "Saw up", "observed": true, "note": "Confirmed present in the full-corpus survey." },
+        "3": { "name": "Saw down", "observed": false },
+        "4": { "name": "Square / Rectangle", "observed": false },
+        "5": { "name": "Sample & Hold (random stepped)", "observed": false },
+        "6": { "name": "Noise (smooth random)", "observed": false }
+      }
+    },
+    "Voice_Unison_Mode": {
+      "param": "Voice_Unison_Mode",
+      "meaning": "Unison voicing algorithm. Wavetable unison dropdown order. Voice count is a separate param; mode is the algorithm.",
+      "values": {
+        "0": { "name": "None", "observed": true, "note": "Unison off (voice count ignored)." },
+        "1": { "name": "Classic", "observed": true, "note": "Detuned stacked voices, the standard supersaw-style spread. Observed on Abdominal Bass." },
+        "2": { "name": "Shimmer", "observed": true, "note": "Randomized per-voice modulation for a shimmering, less-static spread. Observed on Aqueous Pad." },
+        "3": { "name": "Noise", "observed": true, "note": "Per-voice noise added to the spread; confirmed present in the corpus." },
+        "4": { "name": "Phase Sync", "observed": true, "note": "Voices phase-synced; confirmed present in the corpus." },
+        "5": { "name": "Position Spread", "observed": true, "note": "Spreads voices across the wavetable position rather than pitch — each voice reads a different point in the table. Observed in corpus (mode idx 5)." },
+        "6": { "name": "Random Note", "observed": true, "note": "Per-note randomized voicing — the seventh and last unison mode in Wavetable's dropdown. Observed in the corpus on a 5-voice and a 3-voice preset." }
+      }
+    }
+  },
+  "remaining_unconfirmed": [
+    "Index identities are documentary (Wavetable UI order), not byte-confirmed against the raw enum encoding. A round-trip writer test (mutate one enum index, reload in Live, read the dropdown) would byte-confirm each label.",
+    "Voice_Oscillator1_Effects_EffectMode (the per-oscillator FX mode enum: Sync/FM/PWM/etc.) is NOT yet mapped here — it needs the same survey + cross-reference pass and is the next enum to resolve.",
+    "The 12-vs-24 dB reading of the even/odd circuit pairs (0/1, 2/3) is the documentary interpretation of Wavetable's circuit list; a writer round-trip (mutate the circuit index, reload, read the dropdown label + listen to the slope) would byte-confirm both the names and the slope claim."
+  ]
+}

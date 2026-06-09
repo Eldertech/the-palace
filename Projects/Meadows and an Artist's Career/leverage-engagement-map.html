@@ -1,0 +1,102 @@
+<!-- Loudon Live Design System · Drafting skin (schematic / build-instructions register) -->
+<!-- Meadows and an Artist's Career — Leverage Engagement Map -->
+<!-- Renders Loudon's ACTUAL engagement with the worksheet: rows 12→5 corrected, rows 4→1 left blank. -->
+<!-- The finding the worksheet was built to produce, made visible against real data. -->
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Anton&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Manrope:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+
+  :root{
+    --bg:#f0eee5; --paper:#f7f5ee; --fg-1:#1a1814; --fg-2:#3d3a32; --fg-3:#8a857a;
+    --rule:#cbc6b8; --accent:#c8261a; --accent-soft:#e8d3cd;
+    --grid:#ddd8ca;
+  }
+  *{box-sizing:border-box}
+  .ll-map{
+    background:var(--bg); color:var(--fg-1);
+    font-family:'Cormorant Garamond',Georgia,serif; font-size:17px; line-height:1.5;
+    padding:32px 28px 40px; max-width:980px; margin:0 auto;
+    background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);
+    background-size:24px 24px; background-position:-1px -1px;
+  }
+  .ll-map .eyebrow{font-family:'JetBrains Mono',monospace; font-size:11px; letter-spacing:.16em; text-transform:uppercase; color:var(--accent); margin:0 0 6px}
+  .ll-map h1{font-family:'Anton',sans-serif; font-weight:400; font-size:40px; line-height:.98; margin:0 0 8px}
+  .ll-map .sub{font-family:'Manrope',sans-serif; font-size:14px; color:var(--fg-2); max-width:64ch; margin:0 0 4px}
+  .ll-map .meta{font-family:'JetBrains Mono',monospace; font-size:11px; color:var(--fg-3); margin:10px 0 22px; letter-spacing:.04em}
+
+  .ll-map .legend{display:flex; gap:22px; flex-wrap:wrap; font-family:'Manrope',sans-serif; font-size:12px; color:var(--fg-2); margin:0 0 18px; align-items:center}
+  .ll-map .chip{display:inline-block; width:22px; height:11px; border:1px solid var(--fg-2); margin-right:6px; vertical-align:-1px}
+  .chip.engaged{background:var(--accent-soft); border-color:var(--accent)}
+  .chip.blank{background:#fffdf7; border:1px dashed var(--rule)}
+
+  /* the ladder */
+  .ladder{display:flex; flex-direction:column; gap:0; background:var(--paper); border:1px solid var(--rule)}
+  .rung{display:grid; grid-template-columns:46px 1fr 200px; align-items:stretch; border-bottom:1px solid var(--rule); position:relative}
+  .rung:last-child{border-bottom:none}
+  .rung .lvl{font-family:'Anton',sans-serif; font-size:24px; color:var(--accent); display:flex; align-items:center; justify-content:center; border-right:1px solid var(--rule); background:rgba(200,38,26,.04)}
+  .rung .name{padding:9px 12px; font-family:'Manrope',sans-serif}
+  .rung .name b{font-size:13.5px; color:var(--fg-1); font-weight:700; display:block}
+  .rung .name span{font-size:12px; color:var(--fg-3); font-style:italic; font-family:'Cormorant Garamond',serif}
+  /* the engagement bar */
+  .rung .bar{border-left:1px solid var(--rule); display:flex; align-items:center; padding:0 10px; font-family:'JetBrains Mono',monospace; font-size:9.5px; letter-spacing:.08em; text-transform:uppercase}
+  .rung.engaged .bar{background:var(--accent-soft); color:var(--accent)}
+  .rung.engaged .bar::before{content:""; flex:1; height:7px; background:var(--accent); margin-right:8px; opacity:.85}
+  .rung.blank .bar{background:repeating-linear-gradient(90deg,#fffdf7,#fffdf7 5px,#f3f0e7 5px,#f3f0e7 10px); color:var(--fg-3)}
+  .rung.blank .bar::before{content:""; flex:1; height:7px; border:1px dashed var(--rule); margin-right:8px}
+
+  .band-label{font-family:'JetBrains Mono',monospace; font-size:9.5px; letter-spacing:.12em; text-transform:uppercase; color:var(--accent); padding:6px 12px; background:var(--bg); border-bottom:1px solid var(--accent)}
+  .band-label.high{border-top:1px solid var(--accent)}
+
+  .ll-map .reading{font-family:'Manrope',sans-serif; font-size:13.5px; color:var(--fg-2); background:var(--paper); border-left:2px solid var(--accent); padding:14px 16px; margin:24px 0 0; max-width:72ch; line-height:1.6}
+  .ll-map .reading b{color:var(--fg-1)}
+  .ll-map .reading .three{margin:12px 0 0; padding-left:18px}
+  .ll-map .reading .three li{margin:0 0 7px}
+
+  .ll-map .footer{font-family:'JetBrains Mono',monospace; font-size:10px; letter-spacing:.12em; color:var(--fg-3); text-transform:uppercase; margin-top:28px; padding-top:12px; border-top:1px solid var(--rule)}
+</style>
+
+<div class="ll-map">
+  <p class="eyebrow">● Engagement map · what the worksheet actually surfaced</p>
+  <h1>The blanks are the finding</h1>
+  <p class="sub">The worksheet asked you to correct twelve rows of the Meadows ladder, weakest lever to strongest. You corrected the bottom eight. The top four — the paradigm tier, the entire reason the project exists — you left blank. This map shows where the ink went.</p>
+  <p class="meta">SOURCE: Leverage Diagnostic — Loudon Draft.md, as edited 2026-06-07 · engagement read by the page, not your word on its meaning yet</p>
+
+  <div class="legend">
+    <span><span class="chip engaged"></span>you wrote a correction — real ink, real signal</span>
+    <span><span class="chip blank"></span>left blank — my draft stands uncontested</span>
+  </div>
+
+  <div class="ladder">
+    <div class="band-label">↓ Lower leverage · feels productive · you engaged freely ↓</div>
+
+    <div class="rung engaged"><div class="lvl">12</div><div class="name"><b>Constants &amp; parameters</b><span>gear, price, posting time</span></div><div class="bar">corrected</div></div>
+    <div class="rung engaged"><div class="lvl">11</div><div class="name"><b>Buffer sizes</b><span>savings, runway, gigs ahead</span></div><div class="bar">corrected</div></div>
+    <div class="rung engaged"><div class="lvl">10</div><div class="name"><b>Stocks &amp; flows</b><span>ratio of paid to creative work</span></div><div class="bar">corrected</div></div>
+    <div class="rung engaged"><div class="lvl">9</div><div class="name"><b>Delays</b><span>idea-to-ship time</span></div><div class="bar">corrected</div></div>
+
+    <div class="band-label">↓ Middle leverage · the operating layer · you engaged freely ↓</div>
+
+    <div class="rung engaged"><div class="lvl">8</div><div class="name"><b>Balancing loops</b><span>what stops you going too far</span></div><div class="bar">corrected</div></div>
+    <div class="rung engaged"><div class="lvl">7</div><div class="name"><b>Reinforcing loops</b><span>what pulls momentum forward</span></div><div class="bar">corrected</div></div>
+    <div class="rung engaged"><div class="lvl">6</div><div class="name"><b>Information flows</b><span>whose signal you trust</span></div><div class="bar">corrected</div></div>
+    <div class="rung engaged"><div class="lvl">5</div><div class="name"><b>Rules of the system</b><span>what you say no to</span></div><div class="bar">corrected</div></div>
+
+    <div class="band-label high">↓ Highest leverage · the paradigm tier · left untouched ↓</div>
+
+    <div class="rung blank"><div class="lvl">4</div><div class="name"><b>Self-organization</b><span>how you keep changing your own structure</span></div><div class="bar">blank</div></div>
+    <div class="rung blank"><div class="lvl">3</div><div class="name"><b>Goals</b><span>what this career is FOR</span></div><div class="bar">blank</div></div>
+    <div class="rung blank"><div class="lvl">2</div><div class="name"><b>Paradigm</b><span>what it means to be an artist</span></div><div class="bar">blank</div></div>
+    <div class="rung blank"><div class="lvl">1</div><div class="name"><b>Transcend paradigms</b><span>holding any answer with both hands</span></div><div class="bar">blank</div></div>
+  </div>
+
+  <div class="reading">
+    <b>The diagnostic predicted this — and then overshot it.</b> The project's central claim is that artists spend 80% of their attention at the bottom of the ladder and 1% at the top, and that the leverage runs the opposite direction. Handed the top tier on a plate, with my drafts already written in your voice, you <b>still</b> wrote nothing there. That is not avoidance. Three readings, and only you can say which is true:
+    <ul class="three">
+      <li><b>The drafts are accurate.</b> You read 4·3·2·1, recognized yourself, and had nothing to correct — the silence is agreement, and the paradigm rows are already true as written.</li>
+      <li><b>The instrument runs out.</b> The worksheet — draft-a-row, correct-a-row — is a level-12-shaped tool. It works for parameters and ratios and rules. At the paradigm tier it stops fitting, the way a ruler stops measuring once you ask it about meaning. The top four want a <i>different</i> instrument: a walk, a dialogic page, a conversation.</li>
+      <li><b>You haven't been there yet.</b> The reading of yourself at the paradigm level isn't written because it isn't finished — these are live, not settled, and writing them down would falsely fix something still in motion.</li>
+    </ul>
+    Whichever it is, the map is the teaching artifact the worksheet was built to produce: <b>the place a person won't write is the place the real leverage is.</b>
+  </div>
+
+  <p class="footer">Loudon Live · Autodidact Polymaths</p>
+</div>
