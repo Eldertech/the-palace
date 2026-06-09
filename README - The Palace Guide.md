@@ -84,33 +84,45 @@ Every entry has two layers:
 
 ### The Typed Link Ontology
 
-These are the named relationship types used in YAML frontmatter links. They form a small vocabulary — our private semantic web:
+These are the named relationship types used in YAML frontmatter links. They form a small vocabulary — our private semantic web. The authoritative definitions, directionality invariant, and the optional `label` field live in [[SCHEMA]] §4; this table is the friendly gloss.
+
+<!-- mirror of SCHEMA §4 — keep in sync (10 link types as of v1.9) -->
 
 | Link Type | Meaning | Example |
 |---|---|---|
-| `connects-to` | General association (the default, weakest type) | Two ideas in the same neighborhood |
+| `connects-to` | General association (the default); with a `label`, a fully-specified named relation | Two ideas in the same neighborhood |
 | `mirrors` | Deep structural identity across different domains | Kuramoto coupling mirrors conversational rhythm |
-| `enables` | Understanding X is needed for understanding Y | Spinoza's conatus enables the hilaritas generator concept |
-| `deepens` | A more nuanced version of another idea | The hyperdimensional prism deepens the four pillars |
-| `spawned` | One idea gave birth to another | The short story spawned "cooperation yields agency" |
-| `emerged-from` | Historical origin (specific to projects) | Symbiotic Skills emerged from the four pillars |
+| `enables` | A is a precondition or generative force for B | Spinoza's conatus enables the hilaritas generator concept |
+| `deepens` | A is a more developed articulation of B (the source elaborates; the target is the ground) | The hyperdimensional prism deepens the four pillars |
+| `spawned` | A directly produced B as output (traceable lineage) | The short story spawned "cooperation yields agency" |
+| `emerged-from` | A crystallized from B through synthesis (diffuse origin) | Symbiotic Skills emerged from the four pillars |
 | `contradicts` | Productive tension between two ideas | (Blake's contraries — generative, not destructive) |
 | `couples-with` | Two ideas that oscillate together, Kuramoto-style | Ideas that are always co-active |
+| `exemplifies` | A is a concrete instance of the more general B | A Bridge exemplifies the [[FOUR PILLARS]] |
+| `member-of` | A belongs to a named collection, family, or registry B | A person is a `member-of` the Source Library |
 
-When in doubt, use `connects-to`. You can always differentiate later — link types evolve just as cells differentiate.
+When in doubt, use `connects-to`. You can always differentiate later — link types evolve just as cells differentiate. Adding a *new* link type requires a Schema Ceremony.
 
 ### Entry Types
+
+The authoritative type definitions and the decision tree live in [[SCHEMA]] §1; this is the friendly gloss.
+
+<!-- mirror of SCHEMA §1 — keep in sync (12 entry types as of v1.6) -->
 
 | Type | What It Is |
 |---|---|
 | `hub` | High-connectivity node that organizes a region of the network |
-| `concept` | An idea, principle, or framework |
-| `project` | Something being built |
+| `concept` | An idea, principle, or framework (the default) |
+| `project` | Something being built (adds `status`) |
 | `breakthrough` | A moment where understanding shifted (precious — mark these) |
 | `meta` | An entry about the palace itself (like this one) |
+| `practice` | A recurring method, workflow, ritual, or embodied way of working |
+| `person` | A thinker/maker/collaborator in active dialogue with the palace (adds `domains`) |
 | `question` | An unresolved question being carried |
-| `spore` | A dormant idea preserved for future revival |
+| `spore` | A dormant idea preserved for future revival (adds `revival_conditions`) |
 | `source` | A primary artifact the palace draws from — a paper, book, or foundational external document. Carries provenance, not just reference. Local archival preferred over external links. |
+| `specialist` | A wrapper around an external creative tool with operational anatomy (Charter, Tiers, Job Contract). Uses `status` (alive \| stub), not `stage`. See [[The Shop]]. |
+| `maker` | An orchestrator/foreman for a roster of Specialists. Uses `status`, not `stage`. |
 
 ### Development Stages
 
@@ -119,6 +131,8 @@ Every entry has a `stage` in its frontmatter reflecting its lifecycle:
 `seed` → `sprout` → `growing` → `mature` → `fruiting` → `dormant` → `composting`
 
 Composting is not death — it's nutrient recycling. Ideas that decompose feed the soil for future growth.
+
+`foundational` is a reserved stage, outside this lifecycle, for palace meta-entries that are structural and persist as long as the palace does (CLAUDE, SCHEMA, this README, Substrate Skill). The `specialist` and `maker` types skip stages entirely — they use `status` (alive \| stub). See [[SCHEMA]] §2.
 
 ### The Four Pillars
 
