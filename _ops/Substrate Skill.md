@@ -158,6 +158,45 @@ An entry's `stage` field doubles as a confidence interval on alignment between L
 
 **Page-agent identity is the page's own title.** When a page operates as a permanent agent, its `agent_id` and BBS `from` field are the page's own title (e.g. `Generative Sample Libraries`), not an invented compound handle (e.g. `GSL-STEWARD`). The page IS the agent per [[Pages as Agents]] — Steward, Proof-Generator, Lineage-Trace, etc. are *modes* the page operates in, not separate identities. Modes are captured in the manifest's `mode` and feature blocks. Role-only agents that have no home page (Coordinator, Trickster) keep role-name handles. Filesystem directory names can stay kebab-case for OS friendliness; the visible BBS identity is the page title with spaces preserved. (Surfaced by the Stage A pilot 2026-05-03 when Loudon read `GSL-STEWARD` on the BBS and could not recognize it as the GSL page.)
 
+**The Machinery/Content Split — where stewardship state lives** (named 2026-06-09; full rationale in [[Bundle-Local Stewardship — Production Plan]] and [[Project Stewardship System]] § The Machinery/Content Split). Shared engine code, indexes, schedulers, and runtime bookkeeping belong in `_ops/`. Anything *about a specific entry* — its plan, its open decisions, its working memory — belongs in that entry's bundle. The design is CQRS, not relocation:
+
+- The append-only board stays the event log (machinery — *what happened*). Decisions are `RESOURCE_REQUEST` / `RESOURCE_GRANT` messages; one write path, never a second write surface.
+- `[Entry] — plan.md` in the bundle is the materialized **read-model** of the steward's work state, regenerated each cycle by the orchestrator from `pending_requests` / `resolved_requests` + done events. An agent or Loudon reads it cold without parsing JSONL in `_ops`.
+- `_ops/agents/permanent/[slug]/` keeps only slim runtime: iteration, cursor, health. Vector and stage are read **live from the entry's frontmatter**, never copied — copying just moves the drift.
+
+**The `[Entry] — plan.md` template** (§8 bundle type; keep internals loose — categories earn their place across many runs before hardening):
+
+```markdown
+---
+title: "[Entry] — plan"
+born: YYYY-MM-DD
+links:
+  - target: "[[Entry]]"
+    type: connects-to
+    label: plan-for
+forward_vector: "I am [Entry]'s materialized work state — open decisions, resolved decisions, and done trail — regenerated each steward cycle so the entry can be read cold without opening _ops."
+---
+
+# [Entry] — plan
+
+> Materialized read-model of the steward's work state. Regenerated each cycle from the STIGMERGY board; do not hand-edit the decision sections.
+> **Forward vector:** see the entry's own `forward_vector` frontmatter — not copied here (single-source-of-truth).
+
+## Plan
+(brief work-state note; pointer to `[Entry] — staging.md` when one exists)
+
+## Open Decisions
+(one per pending RESOURCE_REQUEST: request_id, topic, options, blocking, posted_at)
+
+## Resolved Decisions
+(one per resolved request: outcome / chosen option_id, resolved_at)
+
+## Done
+(the trail of what shipped / what each grant set in motion)
+```
+
+**The read seam.** When an entry has a `[Entry] — staging.md` (the teaching arc), the steward *reads* it — the orchestrator loads it into context — so decisions are weighed against the staged design. But the steward **writes only `plan.md`**. If a decision implies the staging arc itself should change, the steward *flags* it (a `RESOURCE_REQUEST` / `FLAG` to Loudon) rather than editing `staging.md`. Read freely, write only your own file, surface arc-level changes for the human.
+
 ### Writing Conventions
 
 **Equations in words alongside symbols.** When rendering math in a palace entry, in a chart caption, or in any artifact that surfaces a formula, follow the symbolic form with a plain-words restatement. Operators stay symbolic (×, +, √, ², etc.); variables and named coefficients become words. The reader who knows the concept but forgets which letter is which should be able to read the formula in either form and understand it.
