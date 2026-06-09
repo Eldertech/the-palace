@@ -72,6 +72,7 @@ describe('buildCompanionPrompt', () => {
     expect(p).toMatch(/"op":"append"/);
     expect(p).toMatch(/"op":"prepend"/);
     expect(p).toMatch(/"op":"rewrite"/);
+    expect(p).toMatch(/"op":"graffiti"/);
     // exactly-one-occurrence discipline for rewrite
     expect(p).toMatch(/occur exactly once/);
     expect(p).toMatch(/Include "edit" only when you are editing/);

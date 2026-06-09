@@ -60,4 +60,34 @@ describe('applyOp', () => {
     expect(applyOp(body, { op: 'frobnicate' }).ok).toBe(false);
     expect(applyOp(body, null).ok).toBe(false);
   });
+
+  it('graffiti pins a canonical HTML-comment scrawl at the top by default', () => {
+    const r = applyOp(body, { op: 'graffiti', text: 'come back to the li thread' });
+    expect(r.ok).toBe(true);
+    expect(r.body.startsWith('<!-- graffiti: come back to the li thread -->\n\n# Body')).toBe(true);
+  });
+
+  it('graffiti pins at the point right after a unique find anchor', () => {
+    const r = applyOp(body, { op: 'graffiti', text: 'verify this', find: 'seat of perception' });
+    expect(r.ok).toBe(true);
+    // the mark lands after the line carrying the anchor, not at the top
+    expect(r.body).toMatch(/seat of perception\.\n\n<!-- graffiti: verify this -->/);
+    expect(r.body.startsWith('<!--')).toBe(false);
+  });
+
+  it('graffiti strips a worker-supplied comment fence or leading "graffiti:"', () => {
+    const r = applyOp(body, { op: 'graffiti', text: '<!-- graffiti: already wrapped -->' });
+    expect(r.ok).toBe(true);
+    expect(r.body.startsWith('<!-- graffiti: already wrapped -->\n\n')).toBe(true);
+    // no double-wrapping
+    expect(r.body).not.toMatch(/graffiti: <!--/);
+    expect(r.body).not.toMatch(/already wrapped -->\s*-->/);
+  });
+
+  it('graffiti refuses empty text, a "-->" injection, and a missing/ambiguous anchor', () => {
+    expect(applyOp(body, { op: 'graffiti', text: '   ' }).ok).toBe(false);
+    expect(applyOp(body, { op: 'graffiti', text: 'breaks --> out' }).ok).toBe(false);
+    expect(applyOp(body, { op: 'graffiti', text: 'x', find: 'absent' }).ok).toBe(false);
+    expect(applyOp('the the', { op: 'graffiti', text: 'x', find: 'the' }).ok).toBe(false);
+  });
 });

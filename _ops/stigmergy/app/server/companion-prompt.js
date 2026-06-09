@@ -127,6 +127,12 @@ Edit ops (choose one when editing the BODY — not the frontmatter):
   - rewrite: replace ONE exact, unique span of the  {"op":"rewrite","find":"<exact existing text>","replace":"<new text>"}
              current body. "find" MUST be copied verbatim from the body above
              and occur exactly once; if you can't guarantee that, discuss instead.
+  - graffiti: pin a visible margin note — a scrawl.  {"op":"graffiti","text":"<the note>"}
+             Stored as an HTML comment: STIGMERGY shows it as a scrawl, Obsidian
+             and exports hide it. Pinned at the TOP of the body by default; add
+             "find":"<exact existing text>" to pin it right after that passage
+             (the pin point). Use this when asked to "pin", "leave a note",
+             "scrawl", or "mark" something — not to change the prose itself.
 
 Respond with ONLY a single minified JSON object and nothing else, no code fence.
 Include "edit" only when you are editing; omit it (or null) for a discuss turn:

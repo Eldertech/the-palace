@@ -45,6 +45,9 @@ export function splitRawFrontmatter(text) {
  *   { op:'append',  text }            — add a paragraph at the end
  *   { op:'prepend', text }            — add a paragraph at the start
  *   { op:'rewrite', find, replace }   — replace ONE exact occurrence of `find`
+ *   { op:'graffiti', text, find? }    — pin a visible scrawl (an HTML-comment
+ *                                       mark). At the top of the body, or right
+ *                                       after `find` (the pin point) when given.
  *
  * rewrite refuses when `find` is absent or ambiguous (appears != once) — the
  * Companion must be exact, not guess. "Missing connections are invitations,
@@ -73,6 +76,33 @@ export function applyOp(body, op) {
       return { ok: false, error: 'rewrite: "find" is ambiguous (appears more than once) — be more specific' };
     }
     return { ok: true, body: b.slice(0, first) + replace + b.slice(first + find.length) };
+  }
+  if (op.op === 'graffiti') {
+    // The mark is stored as a real HTML comment — invisible in Obsidian/exports,
+    // surfaced as a scrawl by STIGMERGY (see EntryBody classifyGraffiti). Strip
+    // any comment fence or leading "graffiti:" the worker may have wrapped; we
+    // own the canonical form.
+    const note = text
+      .replace(/^<!--\s*/, '').replace(/\s*-->$/, '')
+      .replace(/^graffiti\s*:\s*/i, '').trim();
+    if (!note) return { ok: false, error: 'graffiti: empty text' };
+    if (note.includes('-->')) return { ok: false, error: 'graffiti: text cannot contain "-->"' };
+    const mark = `<!-- graffiti: ${note} -->`;
+    const find = typeof op.find === 'string' ? op.find : '';
+    if (find) {
+      // Pin at the point: insert the mark on its own line after the line that
+      // contains `find` (exact + unique, same discipline as rewrite).
+      const first = b.indexOf(find);
+      if (first === -1) return { ok: false, error: 'graffiti: "find" anchor not present in the entry' };
+      if (b.indexOf(find, first + find.length) !== -1) {
+        return { ok: false, error: 'graffiti: "find" anchor is ambiguous (appears more than once) — be more specific' };
+      }
+      const lineEnd = b.indexOf('\n', first + find.length);
+      const at = lineEnd === -1 ? b.length : lineEnd;
+      return { ok: true, body: b.slice(0, at) + `\n\n${mark}` + b.slice(at) };
+    }
+    // Default: pin at the top of the body.
+    return { ok: true, body: `${mark}\n\n${b.replace(/^\s+/, '')}` };
   }
   return { ok: false, error: `unknown op "${op.op}"` };
 }
