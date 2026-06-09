@@ -21,8 +21,29 @@ const reply = flag('--reply', 'stub companion reply — discussing the passage.'
 // --edit-op selects which op (default 'append'); otherwise it is a discuss-only turn.
 const editText = flag('--edit-text', null);
 const editOp = flag('--edit-op', 'append');
+// When --action flag is given, the stub proposes a to-do capture (Stage 1): the
+// `action` channel, distinct from `edit`. Todo fields are overridable.
+const actionType = flag('--action', null);
 
-const out = editText ? { reply, edit: { op: editOp, text: editText } } : { reply };
+let out;
+if (actionType === 'flag') {
+  out = {
+    reply,
+    action: {
+      type: 'flag',
+      todo: {
+        title: flag('--todo-title', 'make the log filters clearer'),
+        detail: flag('--todo-detail', 'the filter row is hard to scan at a glance.'),
+        area: flag('--todo-area', 'log'),
+        severity: flag('--todo-severity', 'minor'),
+      },
+    },
+  };
+} else if (editText) {
+  out = { reply, edit: { op: editOp, text: editText } };
+} else {
+  out = { reply };
+}
 process.stdout.write(JSON.stringify(out) + '\n');
 
 setTimeout(() => process.exit(0), Number.isFinite(sleepMs) ? sleepMs : 250);

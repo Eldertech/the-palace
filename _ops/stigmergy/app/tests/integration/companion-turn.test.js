@@ -15,6 +15,7 @@ import { execFileSync } from 'node:child_process';
 import request from 'supertest';
 import { blackboardMiddleware } from '../../server/middleware.js';
 import { createCompanionLane } from '../../server/companion-lane.js';
+import { buildQueue } from '../../src/lib/queue-model.js';
 
 const STUB = fileURLToPath(new URL('../fixtures/stub-companion-worker.mjs', import.meta.url));
 const REPLY = 'the flesh is the medium of perception.';
@@ -43,10 +44,11 @@ function makeTempPalace() {
   return root;
 }
 
-function makeServer(root, { sleep = 300, editText = null, editOp = null, replyText = REPLY } = {}) {
+function makeServer(root, { sleep = 300, editText = null, editOp = null, replyText = REPLY, action = null } = {}) {
   const argv = ['node', STUB, '--permission-mode', 'bypassPermissions', '--reply', replyText, '--sleep', String(sleep)];
   if (editText) argv.push('--edit-text', editText);
   if (editOp) argv.push('--edit-op', editOp);
+  if (action) argv.push('--action', action);
   const companionLane = createCompanionLane({
     palaceRoot: root,
     editsRoot: root, // the temp repo IS the (quarantine stand-in) edit target here
@@ -136,6 +138,40 @@ describe('POST /api/entry-agent/turn', () => {
     expect(reply.type).toBe('BROADCAST');
     expect(reply.payload.entry_path).toBeNull();
     expect(reply.payload.reply).toBe(REPLY);
+  }, 20000);
+
+  test('an app_feedback flag turn captures a to-do as a stigmergy_todo FLAG on the QUEUE', async () => {
+    // Stage 1: the worker proposes {reply, action:{type:'flag', todo}}; the reap
+    // posts the confirming reply AND a FLAG/stigmergy_todo on the FLAGS board,
+    // which buildQueue renders. Both carry the turn_id so the window correlates.
+    ({ server, companionLane } = makeServer(root, { action: 'flag' }));
+    const res = await request(server).post('/api/entry-agent/turn').send({
+      context: { kind: 'app_feedback', deck: 'LOG' },
+      message: 'the log filters are confusing, capture that',
+    });
+    expect(res.status).toBe(200);
+    const turnId = res.body.turnId;
+
+    await waitFor(() => !existsSync(companionLane.paths.pidFile), { timeout: 6000 });
+    await waitFor(() => readFileSync(boardPath(root), 'utf8').includes('stigmergy_todo'), { timeout: 4000 });
+
+    const lines = readBoard(root);
+    const todo = lines.find((m) => m.payload && m.payload.kind === 'stigmergy_todo' && m.payload.turn_id === turnId);
+    expect(todo).toBeTruthy();
+    expect(todo.type).toBe('FLAG');
+    expect(todo.board).toBe('FLAGS');
+    expect(todo.from).toBe('STIGMERGY (Companion)');
+    expect(todo.payload.title).toBe('make the log filters clearer'); // stub default
+    expect(todo.payload.area).toBe('log');
+    // the confirming reply is also posted on the same turn
+    const reply = lines.find((m) => m.payload && m.payload.kind === 'companion_reply' && m.payload.turn_id === turnId);
+    expect(reply).toBeTruthy();
+
+    // and the QUEUE model renders it as a stigmergy_todo item
+    const items = buildQueue(lines);
+    const todoItem = items.find((i) => i.kind === 'stigmergy_todo');
+    expect(todoItem).toBeTruthy();
+    expect(todoItem.ask).toBe('make the log filters clearer');
   }, 20000);
 
   test('an edit turn applies the op through the enforced path and posts a PROOF', async () => {

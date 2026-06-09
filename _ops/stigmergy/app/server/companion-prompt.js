@@ -40,8 +40,9 @@ function historyBlock(history = []) {
 /**
  * The STIGMERGY companion (app_feedback): the page-agent stepped out of any one
  * entry to talk with Loudon about STIGMERGY itself — the terminal he is building
- * to operate the palace. Stage 0 is DISCUSS-ONLY: a grounded conversational
- * reply, no actions. Stage 1 adds the to-do/FLAG action on top of this.
+ * to operate the palace. It discusses, and MAY capture a piece of feedback as a
+ * tracked to-do (a FLAG posted to the board, rendered in the QUEUE). Node owns
+ * the write; the worker only proposes the action.
  * @param {object} args
  * @param {object} [args.context] — { kind:'app_feedback', deck }
  * @param {string} args.message
@@ -61,9 +62,7 @@ append-only blackboard. You are floating over ${where} right now.
 
 Speak grounded and specific, as a collaborator who knows this system — not a
 generic assistant. Work with depth over coverage: name the actual reason for a
-claim, not a label that stands in for one. If Loudon is giving feedback about
-STIGMERGY, engage with it concretely; reflect it back clearly enough that it
-could become a to-do.
+claim, not a label that stands in for one.
 
 == CONVERSATION SO FAR ==
 ${historyBlock(history)}
@@ -72,12 +71,27 @@ ${historyBlock(history)}
 ${message}
 
 == YOUR TASK ==
-Reply conversationally. You cannot yet take any action from here (capturing
-feedback as a tracked to-do is coming next) — so do NOT claim to have filed,
-posted, or changed anything. Just think it through with him.
+Decide whether Loudon is just THINKING OUT LOUD, or giving a piece of FEEDBACK /
+a request worth tracking as a to-do.
 
-Respond with ONLY a single minified JSON object and nothing else, no code fence:
-{"reply":"<your reply, markdown allowed>"}`;
+- If it's discussion, a question, or still half-formed: reply conversationally,
+  propose NO action. Help him sharpen it; you can suggest "want me to capture
+  that as a to-do?" but don't capture a vague gripe.
+- If it's a concrete, actionable piece of feedback about STIGMERGY (a bug, a
+  rough edge, a feature, a change): CAPTURE it as a to-do. Reply briefly
+  confirming what you captured (one line — the to-do marker shows the rest), and
+  attach a single flag action. Capture AT MOST ONE to-do per turn.
+
+The to-do you propose:
+  - title: short, imperative, lowercase ("make the LOG filters clearer").
+  - detail: one or two sentences of context — what's wrong / wanted, and why.
+  - area: the part of STIGMERGY it concerns — a deck name (state/queue/log/
+    trickster/stewards), "companion", or "general". Prefer "${deck ? deck.toLowerCase() : 'general'}" when it fits.
+  - severity: one of "idea" | "minor" | "major".
+
+Respond with ONLY a single minified JSON object and nothing else, no code fence.
+Include "action" only when capturing a to-do; omit it for a discuss turn:
+{"reply":"<your reply, markdown allowed>","action":{"type":"flag","todo":{"title":"...","detail":"...","area":"...","severity":"minor"}}}`;
 }
 
 function neighborLine(n) {

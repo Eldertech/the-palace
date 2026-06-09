@@ -12,10 +12,11 @@
 import { describe, it, expect } from 'vitest';
 import React from 'react';
 import { renderToStaticMarkup } from 'react-dom/server';
-import EntryAgentWindow, { EditMarker } from '../../src/components/state/EntryAgentWindow.jsx';
+import EntryAgentWindow, { EditMarker, TodoMarker } from '../../src/components/state/EntryAgentWindow.jsx';
 
 const render = (props) => renderToStaticMarkup(React.createElement(EntryAgentWindow, props));
 const renderMarker = (props) => renderToStaticMarkup(React.createElement(EditMarker, props));
+const renderTodo = (props) => renderToStaticMarkup(React.createElement(TodoMarker, props));
 
 const entry = {
   title: 'Merleau-Ponty',
@@ -86,6 +87,17 @@ describe('EntryAgentWindow (context-driven, Stage 0)', () => {
     expect(html).toContain('STIGMERGY · log');       // the context label
     expect(html).not.toContain('(top)');             // no scroll-spy section label
     expect(html).not.toContain('typed link');        // no neighborhood readout
+  });
+});
+
+describe('TodoMarker (Stage 1 captured to-do)', () => {
+  it('confirms the to-do was filed to the QUEUE, with area + severity', () => {
+    const html = renderTodo({ title: 'make the LOG filters clearer', area: 'log', severity: 'minor' });
+    expect(html).toContain('data-testid="eaw-todo"');
+    expect(html).toContain('filed to QUEUE');
+    expect(html).toContain('make the LOG filters clearer');
+    expect(html).toContain('area: log');
+    expect(html).toContain('minor');
   });
 });
 
