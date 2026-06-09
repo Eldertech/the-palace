@@ -18,6 +18,7 @@ const KIND_LABEL = {
   handoff_ready: 'HANDOFF READY',
   vector_proposal: 'WEAVE PROPOSAL',
   weave_flag: 'WEAVE FLAG',
+  stigmergy_todo: 'TODO',
 };
 const KIND_COLOR = {
   resource_request: 'var(--ansi-bright-cyan)',
@@ -27,6 +28,9 @@ const KIND_COLOR = {
   // standing audits, not active proposals; the muted chip keeps them
   // legible without competing visually with vector_proposal cards.
   weave_flag: 'var(--phosphor-dim)',
+  // A STIGMERGY-dev to-do (Companion-captured feedback) reads in amber -- the
+  // companion's own "look at this" accent -- so it stands apart from palace work.
+  stigmergy_todo: 'var(--ansi-bright-yellow)',
 };
 
 const PROPOSAL_TYPE_LABEL = {
@@ -79,7 +83,8 @@ export default function QueueItem({ item, onJump, onClear, onRespond }) {
   const canRespond = !resolved && !decided
     && (item.kind === 'resource_request'
         || item.kind === 'vector_proposal'
-        || item.kind === 'weave_flag')
+        || item.kind === 'weave_flag'
+        || item.kind === 'stigmergy_todo')
     && typeof onRespond === 'function';
 
   return (
@@ -228,6 +233,27 @@ export default function QueueItem({ item, onJump, onClear, onRespond }) {
               color: 'var(--ansi-bright-cyan)', textShadow: 'var(--glow)',
             }}>
               --&gt; {item.target_entry.replace(/\.md$/, '')}
+            </span>
+          ) : null}
+          <span>{vantage(item)}</span>
+        </div>
+      ) : item.kind === 'stigmergy_todo' ? (
+        <div style={{
+          display: 'flex', gap: 10, alignItems: 'center', flexWrap: 'wrap',
+          fontSize: 11, color: 'var(--phosphor-dim)', textShadow: 'none',
+          marginBottom: 6,
+        }}>
+          {item.area ? (
+            <span data-testid="queue-item-todo-area" style={{
+              border: '1px dotted var(--phosphor-dim)', padding: '0 6px',
+              fontFamily: 'var(--font-mono)',
+            }}>
+              area: {item.area}
+            </span>
+          ) : null}
+          {item.severity ? (
+            <span data-testid="queue-item-todo-severity" style={{ fontFamily: 'var(--font-mono)' }}>
+              {item.severity}
             </span>
           ) : null}
           <span>{vantage(item)}</span>

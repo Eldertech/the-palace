@@ -15,6 +15,7 @@ import { stewardsRoutes } from './api/stewards.js';
 import { cardsRoutes } from './api/cards.js';
 import { digestRoutes } from './api/digest.js';
 import { entrySaveRoutes } from './api/entry-save.js';
+import { entryAgentRoutes } from './api/entry-agent.js';
 import { sessionsRoutes } from './api/sessions.js';
 
 const FAMILIES = [
@@ -27,6 +28,7 @@ const FAMILIES = [
   cardsRoutes,
   digestRoutes,
   entrySaveRoutes,
+  entryAgentRoutes,
   sessionsRoutes,
 ];
 
