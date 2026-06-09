@@ -1,3 +1,13 @@
+---
+title: "Generative Sample Libraries — handoff — stage-a"
+born: 2026-05-04
+links:
+  - target: "[[Generative Sample Libraries]]"
+    type: connects-to
+    label: handoff-for
+forward_vector: "I carry the Stage A pilot handoff for the Generative Sample Libraries steward — the cycle-5-closed state for whoever fires cycle 6. Relocated into the bundle by the Machinery/Content Split (was a stray in _ops); I am consumed on pickup and then archived."
+---
+
 # Handoff — Generative Sample Libraries Steward
 
 **Last session:** 2026-05-04 (Cowork)
@@ -81,4 +91,4 @@ The 13 spec gaps + 6 content findings across cycles 1–5 are now sufficient to 
 
 ---
 
-*This handoff lives at [HANDOFF.md](obsidian://open?vault=The%20Palace&file=_ops/agents/permanent/generative-sample-libraries/HANDOFF.md). Update it at the end of each session so the next pickup is clean.*
+*This handoff lives in the [[Generative Sample Libraries]] bundle (relocated from `_ops/agents/permanent/generative-sample-libraries/HANDOFF.md` on 2026-06-09 by the Machinery/Content Split). Update it at the end of each session so the next pickup is clean.*

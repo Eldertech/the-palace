@@ -22,73 +22,73 @@
     {
       "agent_id": "2D Torus Wavetable Synthesizer",
       "home": "2D Torus Wavetable Synthesizer",
-      "dir": "/Users/loudonstearns/Documents/The Palace/_ops/agents/permanent/2d-torus-wavetable-synthesizer",
+      "dir": "_ops/agents/permanent/2d-torus-wavetable-synthesizer",
       "registered_at": "2026-05-27T21:41:14.300Z"
     },
     {
       "agent_id": "Crystal Synthesizer",
       "home": "Crystal Synthesizer",
-      "dir": "/Users/loudonstearns/Documents/The Palace/_ops/agents/permanent/crystal-synthesizer",
+      "dir": "_ops/agents/permanent/crystal-synthesizer",
       "registered_at": "2026-05-27T21:41:14.460Z"
     },
     {
       "agent_id": "Portamento and Physical Pitch Modeling",
       "home": "Portamento and Physical Pitch Modeling",
-      "dir": "/Users/loudonstearns/Documents/The Palace/_ops/agents/permanent/portamento-and-physical-pitch-modeling",
+      "dir": "_ops/agents/permanent/portamento-and-physical-pitch-modeling",
       "registered_at": "2026-05-27T21:41:14.628Z"
     },
     {
       "agent_id": "Inharmonic Wavetable Synthesis",
       "home": "Inharmonic Wavetable Synthesis",
-      "dir": "/Users/loudonstearns/Documents/The Palace/_ops/agents/permanent/inharmonic-wavetable-synthesis",
+      "dir": "_ops/agents/permanent/inharmonic-wavetable-synthesis",
       "registered_at": "2026-05-27T21:41:14.792Z"
     },
     {
       "agent_id": "Retrospective Delay",
       "home": "Retrospective Delay",
-      "dir": "/Users/loudonstearns/Documents/The Palace/_ops/agents/permanent/retrospective-delay",
+      "dir": "_ops/agents/permanent/retrospective-delay",
       "registered_at": "2026-05-27T21:41:14.952Z"
     },
     {
       "agent_id": "Semantic Delay",
       "home": "Semantic Delay",
-      "dir": "/Users/loudonstearns/Documents/The Palace/_ops/agents/permanent/semantic-delay",
+      "dir": "_ops/agents/permanent/semantic-delay",
       "registered_at": "2026-05-27T21:41:15.114Z"
     },
     {
       "agent_id": "Semantic Webcam",
       "home": "Semantic Webcam",
-      "dir": "/Users/loudonstearns/Documents/The Palace/_ops/agents/permanent/semantic-webcam",
+      "dir": "_ops/agents/permanent/semantic-webcam",
       "registered_at": "2026-05-27T21:41:15.274Z"
     },
     {
       "agent_id": "Blood Compressor",
       "home": "Blood Compressor",
-      "dir": "/Users/loudonstearns/Documents/The Palace/_ops/agents/permanent/blood-compressor",
+      "dir": "_ops/agents/permanent/blood-compressor",
       "registered_at": "2026-05-27T21:41:15.437Z"
     },
     {
       "agent_id": "Action Potential Oscillator",
       "home": "Action Potential Oscillator",
-      "dir": "/Users/loudonstearns/Documents/The Palace/_ops/agents/permanent/action-potential-oscillator",
+      "dir": "_ops/agents/permanent/action-potential-oscillator",
       "registered_at": "2026-05-27T21:41:15.596Z"
     },
     {
       "agent_id": "Generative Preset Development",
       "home": "Generative Preset Development",
-      "dir": "/Users/loudonstearns/Documents/The Palace/_ops/agents/permanent/generative-preset-development",
+      "dir": "_ops/agents/permanent/generative-preset-development",
       "registered_at": "2026-05-27T21:41:15.754Z"
     },
     {
       "agent_id": "Meadows and an Artist's Career",
       "home": "Meadows and an Artist's Career",
-      "dir": "/Users/loudonstearns/Documents/The Palace/_ops/agents/permanent/meadows-and-an-artists-career",
+      "dir": "_ops/agents/permanent/meadows-and-an-artists-career",
       "registered_at": "2026-05-27T21:41:15.918Z"
     },
     {
       "agent_id": "Slime Mold Delay",
       "home": "Slime Mold Delay",
-      "dir": "/Users/loudonstearns/Documents/The Palace/_ops/agents/permanent/slime-mold-delay",
+      "dir": "_ops/agents/permanent/slime-mold-delay",
       "registered_at": "2026-05-27T21:41:16.087Z"
     },
     {
