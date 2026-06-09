@@ -1,0 +1,8 @@
+# Heartbeat runtime artifacts — per-run logs and the 2-day cadence stamp files.
+# These churn every run and are never canon; keep them out of git so a stray
+# `git add -A` elsewhere can't sweep them in. The wrappers commit only their
+# scoped outputs (steward machinery + plan.md + board, or the Shopkeeper bundle
+# markdown + board note) via the palace committer — never this dir's runtime.
+logs/
+.last-steward-batch
+.last-shopkeeper-sweep

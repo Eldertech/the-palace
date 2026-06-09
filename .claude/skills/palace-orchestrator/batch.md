@@ -46,8 +46,15 @@ standing consent.
 ### Step 3 — Cycle each due steward
 
 For each entry in `due[]`, follow `permanent.md` exactly — one cycle, one
-subagent, validate-and-append via the CLI, update that steward's
-`state.json` + `history.jsonl`. The order is the `due[]` order.
+subagent, validate-and-append via the CLI, then post-process with
+`process-cycle.js`, which updates that steward's `state.json` +
+`history.jsonl` **and materializes the bundle-local `[Entry] — plan.md`
+read-model** from the cycle's decisions (Bundle-Local Stewardship,
+2026-06-09 — see [[Bundle-Local Stewardship — Production Plan]]). The plan
+write is part of every cycle, not an optional extra: use the
+`process-cycle.js` helper so it always happens — don't hand-roll
+post-processing and silently skip it, or the bundle read-models go stale.
+The order is the `due[]` order.
 
 One steward's failure does not halt the batch. If a cycle errors or its
 output is rejected, note it and move to the next steward.
@@ -65,9 +72,17 @@ record; STIGMERGY shows them.
   scheduled batch leaves questions on the Trickster board and never waits.
   A blocking sensory-audition ask is fine to post — it simply waits for
   Loudon; the batch keeps going.
-- **Do not edit project pages directly** in an unattended run. Stewards
-  propose via the BBS; Loudon (or a later interactive cycle) deposits.
-- **Do not commit.** Leave the working tree for Loudon to commit Mac-side.
+- **Do not edit canon directly** in an unattended run: never touch a project
+  entry's `.md` body or frontmatter. Stewards propose page edits via the BBS;
+  Loudon (or a later interactive cycle) deposits. Writing the bundle-local
+  `[Entry] — plan.md`, the steward machinery (`state.json`/`history.jsonl`),
+  and board messages is **expected** — that is the cycle's normal output, not
+  a canon edit.
+- **The subagent never commits.** Under the Mac-side heartbeat the *wrapper*
+  makes one scoped, lock-safe commit after the batch returns — machinery +
+  `plan.md`, text-only, via the palace committer (`_ops/heartbeat/`,
+  `palace-commit.mjs`; never `git add -A`). An interactive batch leaves the
+  working tree for Loudon to commit. Either way the agent itself runs no git.
 
 ## Enchant a new steward (the one-at-a-time act, done by hand)
 
@@ -103,7 +118,9 @@ once.
 
 Per the thin-Stage-C decision (see [[Project Stewardship System]]), batch
 has **no cadence enum** (the cron is the cadence), **no digest writer**
-(the BBS is the record), **no retire/pause/resume lifecycle** (delete the
-dir to retire), **no auto-spawn**, and **no lock file**. Each of those was
+(the BBS is the record; the human-readable review digest is a separate
+`trickster-auto` product — `heartbeat-latest.md` — not a batch output),
+**no retire/pause/resume lifecycle** (delete the dir to retire), **no
+auto-spawn**, and **no lock file**. Each of those was
 in the v0.2 plan; none is built. If a real run makes one necessary, let it
 earn its way in then.

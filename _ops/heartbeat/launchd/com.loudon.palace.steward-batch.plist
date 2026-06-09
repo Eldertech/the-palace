@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+  <key>Label</key>
+  <string>com.loudon.palace.steward-batch</string>
+
+  <!-- Run the wrapper through a LOGIN zsh so ~/.zprofile sets PATH (node/claude). -->
+  <key>ProgramArguments</key>
+  <array>
+    <string>/bin/zsh</string>
+    <string>-l</string>
+    <string>/Users/loudonstearns/Documents/The Palace/_ops/heartbeat/run-steward-batch.sh</string>
+  </array>
+
+  <!-- Fires daily at 06:00 local; the wrapper's 2-day stamp guard makes the real
+       cadence every-other-morning. If the Mac was asleep at 06:00, launchd runs
+       it at next wake. -->
+  <key>StartCalendarInterval</key>
+  <dict>
+    <key>Hour</key><integer>6</integer>
+    <key>Minute</key><integer>0</integer>
+  </dict>
+
+  <key>RunAtLoad</key>
+  <false/>
+
+  <key>StandardOutPath</key>
+  <string>/Users/loudonstearns/Documents/The Palace/_ops/heartbeat/logs/launchd-steward-batch.out</string>
+  <key>StandardErrorPath</key>
+  <string>/Users/loudonstearns/Documents/The Palace/_ops/heartbeat/logs/launchd-steward-batch.err</string>
+</dict>
+</plist>
