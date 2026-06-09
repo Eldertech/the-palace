@@ -6,13 +6,16 @@
 // its frontmatter-derived stub readout so it never breaks the deck.
 
 // POST /api/entry-agent/turn — fire one Companion turn.
-// Body: { context, message, history?, focus? }. Returns { ok, fired, turnId, busy?, msg }.
+// Body: { context, message, history?, focus?, section? }. Returns { ok, fired, turnId, busy?, msg }.
 // `context` is the resolved grounding descriptor ({kind:'entry',path} | {kind:
 // 'app_feedback',deck} | …); a bare `path` is still accepted (entry kind) for
-// back-compat. `focus` is the passage the user pinned with "discuss this". The
+// back-compat. `focus` is the passage the user pinned with "discuss this".
+// `section` is the entry section the window's scroll-spy floats over right now
+// (the heading text, or null at the top) — entry kind only; it lets the worker
+// answer deictic "what are we over?" from position instead of guessing. The
 // reply does NOT come back here — it arrives later on the board (a
 // companion_reply BROADCAST) which the window reads over SSE.
-export async function postTurn({ context, path, message, history, focus } = {}) {
+export async function postTurn({ context, path, message, history, focus, section } = {}) {
   try {
     const res = await fetch('/api/entry-agent/turn', {
       method: 'POST',
@@ -21,6 +24,9 @@ export async function postTurn({ context, path, message, history, focus } = {}) 
         context: context || null,
         path: path || (context && context.kind === 'entry' ? context.path : null),
         message, history: history || [], focus: focus || null,
+        // Preserve the null-vs-absent distinction: null = "at the top, no
+        // section"; absent = "not an entry turn / position unknown".
+        ...(section === undefined ? {} : { section }),
       }),
     });
     const data = await res.json().catch(() => ({}));

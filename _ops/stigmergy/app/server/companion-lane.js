@@ -455,10 +455,10 @@ export function createCompanionLane(opts = {}) {
    * Context-aware: the open entry (kind 'entry', body/vector editing) or
    * STIGMERGY itself (kind 'app_feedback', discuss-only in Stage 0). A bare
    * `{ path }` is accepted as the entry kind for back-compat.
-   * @param {{ context?:object, path?:string, message:string, history?:Array, focus?:string }} args
+   * @param {{ context?:object, path?:string, message:string, history?:Array, focus?:string, section?:string|null }} args
    * @returns {{ ok, fired, busy?, turnId?, msg }}
    */
-  function turn({ context, path, message, history = [], focus = null } = {}) {
+  function turn({ context, path, message, history = [], focus = null, section } = {}) {
     const ctx = (context && typeof context === 'object' && context.kind)
       ? context
       : (typeof path === 'string' && path.trim() ? { kind: 'entry', path } : null);
@@ -486,6 +486,9 @@ export function createCompanionLane(opts = {}) {
         prompt = buildCompanionPrompt({
           context: ctx, grounding, frontmatter: entry.frontmatter, body: entry.body, message, history,
           focus: typeof focus === 'string' && focus.trim() ? focus.trim() : null,
+          // null = at the top (above the first heading); undefined = no position
+          // sent → the prompt omits the POSITION block entirely.
+          section: typeof section === 'string' ? section : (section === null ? null : undefined),
         });
       } catch (e) {
         return { ok: false, fired: false, msg: `could not build prompt: ${e.message}` };

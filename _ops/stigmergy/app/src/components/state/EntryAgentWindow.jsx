@@ -420,6 +420,12 @@ export default function EntryAgentWindow({ entry, context, containerRef, onClose
   // renders, then it becomes a real number the user can drag freely.
   const [left, setLeft] = useState(null);
   const [reading, setReading] = useState(null);
+  // The scroll-spied section, read by sendTurn without re-binding each scroll
+  // frame (reading updates on every rAF). The titlebar shows it; the turn must
+  // SEND it, so the worker knows which section the box floats over rather than
+  // confabulating one when asked "what are we over?".
+  const readingRef = useRef(null);
+  readingRef.current = reading;
   // Real grounding (page + typed-link neighborhood + floor), fetched per entry.
   const [grounding, setGrounding] = useState(null);
 
@@ -676,7 +682,14 @@ export default function EntryAgentWindow({ entry, context, containerRef, onClose
     setDraft('');
     if (inputRef.current) inputRef.current.style.height = ''; // reset auto-grow
     setSending(true);
-    const r = await postTurn({ context: wireCtx, message, history, focus: wireCtx.kind === 'entry' ? focusText : null });
+    const r = await postTurn({
+      context: wireCtx, message, history,
+      focus: wireCtx.kind === 'entry' ? focusText : null,
+      // The section the box floats over right now (or null at the top, above the
+      // first heading) — only meaningful for an entry. Lets the worker answer
+      // "what section are we over?" from position instead of guessing.
+      section: wireCtx.kind === 'entry' ? (readingRef.current ?? null) : undefined,
+    });
     if (r && r.fired && r.turnId) {
       sessionTurns.current.add(r.turnId);
       currentTurn.current = r.turnId;

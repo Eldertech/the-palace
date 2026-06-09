@@ -187,11 +187,17 @@ function dumpFrontmatter(fm) {
  * @param {object} [args.frontmatter] — the entry's full raw frontmatter object
  * @param {string} args.body — the entry's full markdown body
  * @param {string} args.message — the user's latest message
- * @param {string} [args.focus] — a passage Loudon has pinned ("discuss this")
+ * @param {string} [args.focus] — a passage Loudon has pinned ("discuss this").
+ *   When present it OVERRIDES `section` — the POSITION block is suppressed and
+ *   the pinned passage alone resolves "this" / "here".
+ * @param {string|null} [args.section] — the section the window floats over right
+ *   now (scroll-spy): the heading text, or null when at the top (above the first
+ *   heading). With no `focus` it is the worker's PRIMARY context; omitted
+ *   (undefined) when the turn carries no position.
  * @param {Array<{role:'user'|'companion', text:string}>} [args.history]
  * @returns {string} the full worker prompt
  */
-export function buildEntryPrompt({ grounding, frontmatter, body, message, focus, history = [] }) {
+export function buildEntryPrompt({ grounding, frontmatter, body, message, focus, section, history = [] }) {
   const e = grounding.entry;
   const neighbors = grounding.neighbors || [];
   const bodyText = typeof body === 'string'
@@ -203,6 +209,34 @@ export function buildEntryPrompt({ grounding, frontmatter, body, message, focus,
     : '(none — this is the first turn)';
 
   const pillars = (e.pillars || []).join(', ') || '—';
+
+  // Two deictic cues resolve "this" / "here" / "what are we over?": a PINNED
+  // passage (focus) and the scroll-spied SECTION. They must not compete — a pin
+  // is an explicit pointer and OVERRIDES the scroll position, so when a focus is
+  // present the POSITION block is suppressed entirely and FOCUS alone governs.
+  // With NO pin, the hovered section is promoted from ambient hint to the
+  // worker's primary context — treat it as critical, not background. Omitted
+  // only when no position was sent (section === undefined); an explicit null
+  // means "at the top of the entry, over no section".
+  const hasFocus = typeof focus === 'string' && focus.trim() !== '';
+  const positionBlock = (hasFocus || section === undefined) ? '' : (
+    typeof section === 'string' && section.trim()
+      ? `
+== POSITION — the section you are reading (your PRIMARY context this turn) ==
+Loudon has not pinned a passage, so the section the window floats over IS your
+critical context: «${section.trim()}». When he says "this", "this section",
+"here", or asks "what section are we over?", he means THIS section — find it by
+its heading in the body above and read it as the focus of the conversation.
+Ground your answer in it first; widen to the rest of the entry only when he
+clearly asks you to.
+`
+      : `
+== POSITION — the section you are reading (your PRIMARY context this turn) ==
+Loudon has not pinned a passage, and the window is at the TOP of the entry, above
+the first heading — so you are not over any section yet. If he asks "what section
+are we over?", say so honestly rather than naming one.
+`
+  );
 
   return `You ARE the palace entry «${e.title}», operating in COMPANION mode: the page
 talking WITH Loudon about itself, over its own text. In the palace, the page IS
@@ -236,14 +270,15 @@ ${neighbors.length ? neighbors.map(neighborLine).join('\n') : '(no typed links y
 
 == CONVERSATION SO FAR ==
 ${histBlock}
-${focus ? `
+${positionBlock}${focus ? `
 == FOCUS — the exact passage Loudon has pinned ==
 """
 ${focus}
 """
-Treat THIS as the precise text under discussion. When he says "this", "that", or
-"here", he means this passage. If he asks to change it, prefer a rewrite whose
-"find" is this exact text (or a unique substring of it).
+Treat THIS as the precise text under discussion — it OVERRIDES whatever section
+you are scrolled over. When he says "this", "that", or "here", he means this
+passage. If he asks to change it, prefer a rewrite whose "find" is this exact
+text (or a unique substring of it).
 ` : ''}
 == LOUDON'S MESSAGE ==
 ${message}
