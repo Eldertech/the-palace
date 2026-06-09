@@ -1,14 +1,14 @@
 ---
 title: Bundle-Local Stewardship — Production Plan
 type: project
-status: pending
+status: complete
 pillars:
   - tools
   - practice
 born: 2026-06-09
 last_activated: 2026-06-09
-activation_count: 1
-stage: seed
+activation_count: 2
+stage: mature
 energy: high
 forward_vector: >
   I want to become the build contract that pulls every entry's working state
@@ -174,9 +174,22 @@ The 19 stewards run on a live every-other-morning heartbeat batch. Do not disrup
 
 ---
 
-## Active Handoff
+## Outcome — all phases shipped (2026-06-09, Claude Code Mac session)
 
-[[Bundle-Local Stewardship — Production Plan — handoff]] — drafted 2026-06-09
+All six phases executed and committed on `main` (commits `9a6e449` → `527f97a`):
+
+- **Phase 0** — `plan` + `staging` ratified in [[SCHEMA]] §8; the Machinery/Content Split named in [[Project Stewardship System]] and [[Substrate Skill]]; `[Entry] — plan.md` template defined.
+- **Phase 1** — the orchestrator reads `stage`/`forward_vector` **live from frontmatter** (single-source) and materializes `[Entry] — plan.md` each cycle from board-reconciled state; staging loads into steward context read-only. New modules `entry-paths.js`, `entry-frontmatter.js`, `plan-file.js`; +32 vitest (221 green). `state.json` deliberately **not** slimmed — the stored copy stays, just no longer read.
+- **Phase 2** — `scripts/backfill-plans.js` wrote all **19** bundle-local plans. The board reconcile surfaced a live finding: **all 103 TRICKSTER asks are answered** — every steward is `open=0` (inbox cleared ~03:47Z). 12 stewards were *fast-forwarded* (their `state.json` still listed decisions the board had since granted, e.g. Shepard 018→APPROVE-STAGE-2, 019→DRAFT-NOW). Each steward's next cycle will write the same plan.
+- **Phase 3** — GSL's `HANDOFF.md` + `STAGE-A-LESSONS.md` relocated into the [[Generative Sample Libraries]] bundle (§8 frontmatter added); REGISTRY `dir` paths normalized to relative.
+- **Phase 4** — [[README - The Palace Guide]] documents the `plan`/`staging` types; [[Palace To-Do]] flat-companion item marked partially closed.
+- **Phase 5** — `scripts/verify-plans.js`: **19/19 green** — every plan reads cold (four sections, vector as a pointer never a copy), Open == board reconcile, Resolved ⊇ board-resolved, zero entry-owned strays left in `_ops`.
+
+The done-test from the forward vector is met: *an agent can read an entry cold and never need to parse a JSONL file in `_ops` to know where the work stands.* The single forward question still live: the lightest loop for a steward to flag a `staging.md` arc-revision and have it picked up next cycle — watch how often that fires on Shepard before designing it.
+
+## Consumed Handoff
+
+[[Bundle-Local Stewardship — Production Plan — handoff]] — drafted 2026-06-09, consumed + archived 2026-06-09 (Mac build session). See `Archive/` in this bundle.
 
 ---
 
