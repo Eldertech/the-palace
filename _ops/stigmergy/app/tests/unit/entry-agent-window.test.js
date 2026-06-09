@@ -12,7 +12,7 @@
 import { describe, it, expect } from 'vitest';
 import React from 'react';
 import { renderToStaticMarkup } from 'react-dom/server';
-import EntryAgentWindow, { EditMarker, TodoMarker } from '../../src/components/state/EntryAgentWindow.jsx';
+import EntryAgentWindow, { EditMarker, TodoMarker, buildTurnHistory } from '../../src/components/state/EntryAgentWindow.jsx';
 
 const render = (props) => renderToStaticMarkup(React.createElement(EntryAgentWindow, props));
 const renderMarker = (props) => renderToStaticMarkup(React.createElement(EditMarker, props));
@@ -110,6 +110,40 @@ describe('EntryAgentWindow (context-driven, Stage 0)', () => {
     expect(html).toContain('data-testid="eaw-trickster-intro"');
     expect(html).toContain('Waveguide Synthesizer'); // top is active before any scroll
     expect(html).toContain('as:');                   // the "responding as" titlebar
+  });
+});
+
+describe('buildTurnHistory (worker sees its own committed edits)', () => {
+  it('passes spoken turns through and turns edit markers into "already" notes', () => {
+    const convo = [
+      { role: 'user', text: 'sharpen my forward vector' },
+      { role: 'companion', text: 'done' },
+      { role: 'edit', op: 'set-vector', commit: 'abc1234', vectorChange: { from: 'old', to: 'I will keep weaving.' } },
+      { role: 'user', text: 'approved' },
+    ];
+    const h = buildTurnHistory(convo);
+    expect(h).toHaveLength(4);
+    expect(h[0]).toEqual({ role: 'user', text: 'sharpen my forward vector' });
+    expect(h[1]).toEqual({ role: 'companion', text: 'done' });
+    // the edit became a companion-side note naming what already landed
+    expect(h[2].role).toBe('companion');
+    expect(h[2].text).toMatch(/already updated this entry's forward_vector to: "I will keep weaving\."/);
+    expect(h[2].text).toMatch(/do NOT set it again/);
+    expect(h[3]).toEqual({ role: 'user', text: 'approved' });
+  });
+
+  it('notes a body edit and a revert distinctly', () => {
+    const h = buildTurnHistory([
+      { role: 'edit', op: 'append', commit: 'a1', summary: 'a line about li' },
+      { role: 'edit', op: 'revert', commit: 'b2', reverts: 'a1' },
+    ]);
+    expect(h[0].text).toMatch(/already committed a append: a line about li/);
+    expect(h[1].text).toMatch(/already reverted commit a1/);
+  });
+
+  it('is SSR/empty safe', () => {
+    expect(buildTurnHistory(null)).toEqual([]);
+    expect(buildTurnHistory([])).toEqual([]);
   });
 });
 

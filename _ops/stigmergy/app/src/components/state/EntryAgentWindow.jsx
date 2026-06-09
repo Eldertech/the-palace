@@ -84,6 +84,30 @@ function findNearestCard(cards, centreY) {
   return best;
 }
 
+// Build the conversation history sent to the worker. Spoken turns pass through;
+// committed-edit markers (which the worker never sees otherwise) become compact
+// first-person notes so the worker KNOWS what it already committed this session
+// — without them it can re-propose an edit that already landed in the quarantine
+// (e.g. re-issuing a set-vector when Loudon says "approved"), which then no-ops.
+// Pure + exported for unit tests.
+export function buildTurnHistory(convo) {
+  if (!Array.isArray(convo)) return [];
+  return convo
+    .filter((m) => m && (m.role === 'user' || m.role === 'companion' || m.role === 'edit'))
+    .map((m) => {
+      if (m.role !== 'edit') return { role: m.role, text: m.text };
+      let note;
+      if (m.op === 'revert') note = `(I already reverted commit ${m.reverts}; do not redo that.)`;
+      else if (m.op === 'set-vector') {
+        const to = m.vectorChange?.to;
+        note = to
+          ? `(I already updated this entry's forward_vector to: "${to}". It is committed — do NOT set it again.)`
+          : `(I already updated this entry's forward_vector and committed it — do NOT set it again.)`;
+      } else note = `(I already committed a ${m.op}${m.summary ? `: ${m.summary}` : ''}; do NOT repeat it.)`;
+      return { role: 'companion', text: note };
+    });
+}
+
 // One conversation turn. Loudon's turns read as a dim prompt; the Companion's
 // (the page speaking as itself) read in bright phosphor.
 function ChatBubble({ role, text }) {
@@ -502,8 +526,9 @@ export default function EntryAgentWindow({ entry, context, containerRef, onClose
       wireCtx = { kind: 'trickster_request', ...ar };
     }
     setTurnError(null);
-    // history: only the spoken turns (user + companion); edit markers carry no text
-    const history = convo.filter((m) => m.role === 'user' || m.role === 'companion').map((m) => ({ role: m.role, text: m.text }));
+    // history: spoken turns + notes for edits already committed (so the worker
+    // doesn't re-propose an edit that already landed — the "approved" no-op bug).
+    const history = buildTurnHistory(convo);
     setConvo((prev) => [...prev, { id: `u-${prev.length}`, role: 'user', text: message }]);
     setDraft('');
     if (inputRef.current) inputRef.current.style.height = ''; // reset auto-grow

@@ -377,12 +377,19 @@ export function createCompanionLane(opts = {}) {
             }));
             editSummary = { ok: true, op: w.op, commit: w.shortHash };
           } else {
+            // "nothing changed" is a benign no-op, not a failure: the entry is
+            // already in that state (usually an edit that already landed this
+            // session). Say so plainly instead of the alarming "couldn't apply".
+            const noop = /nothing changed/i.test(w.error || '');
+            const failReply = noop
+              ? "That's already in place — nothing to change (it looks like it landed in an earlier edit this session)."
+              : `I couldn't apply that edit honestly: ${w.error}`;
             postIfValid(buildCompanionMessage({
-              title, entryPath, turnId, reply: `I couldn't apply that edit honestly: ${w.error}`,
+              title, entryPath, turnId, reply: failReply,
               model: meta.model || model, ts: new Date().toISOString(),
               id: `${slugify(title)}-companion-editfail-${turnId}`,
             }));
-            editSummary = { ok: false, error: w.error };
+            editSummary = { ok: false, error: w.error, noop };
           }
         } catch (e) {
           logLine(`ERROR: companion edit failed: ${e.message}`);
