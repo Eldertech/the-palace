@@ -90,6 +90,17 @@ describe('listEntries', () => {
     expect(claude.has_active_handoff).toBe(false);
   });
 
+  it('also surfaces the renamed Active Baton marker via body probe', () => {
+    // Handoff → Baton ceremony rename: the spec now writes "## Active Baton"
+    // while existing entries still carry "## Active Handoff". The probe must
+    // accept both spellings, or new-style markers go invisible in STATE/PULSE.
+    writeFileSync(join(root, 'BatonMarker.md'), '---\ntype: concept\n---\n# Body\n\n## Active Baton\nsee baton.\n');
+    const list = listEntries(root);
+    const marked = list.find((e) => e.path === 'BatonMarker.md');
+    expect(marked.has_active_handoff).toBe(true);
+    rmSync(join(root, 'BatonMarker.md'));
+  });
+
   it('falls back to filename as title when frontmatter lacks one', () => {
     // Add a fresh entry with no title.
     writeFileSync(join(root, 'Untitled.md'), '---\ntype: concept\n---\nbody\n');
