@@ -238,16 +238,30 @@ export function createCompanionLane(opts = {}) {
       let raw = '';
       try { raw = readFileSync(meta.transcriptPath, 'utf8'); } catch (_) { raw = ''; }
       const { reply, edit } = extractResult(raw);
+      const hasEdit = !!(edit && edit.op);
 
-      // 1) the conversational reply (always)
-      const replyText = reply || (edit ? '(applying that edit…)' : '(the companion returned nothing)');
-      postIfValid(buildCompanionMessage({
-        title, entryPath, turnId, reply: replyText, model: meta.model || model, ts: new Date().toISOString(),
-      }));
+      // 1) the conversational reply. Adaptive narration (Plan §7.2): when an
+      // edit lands, the worker stays QUIET for a clean/obvious change — the edit
+      // marker speaks for it — and narrates only when there's something worth
+      // saying. So post a reply bubble whenever there IS a reply; when the reply
+      // is empty, post the "nothing" note ONLY if there's also no edit, so every
+      // turn still yields at least one board message (the window's `sending`
+      // clears on it).
+      const trimmedReply = typeof reply === 'string' ? reply.trim() : '';
+      if (trimmedReply) {
+        postIfValid(buildCompanionMessage({
+          title, entryPath, turnId, reply: trimmedReply, model: meta.model || model, ts: new Date().toISOString(),
+        }));
+      } else if (!hasEdit) {
+        postIfValid(buildCompanionMessage({
+          title, entryPath, turnId, reply: '(the companion returned nothing)',
+          model: meta.model || model, ts: new Date().toISOString(),
+        }));
+      }
 
       // 2) the edit, through the enforced write path → PROOF on success
       let editSummary = null;
-      if (edit && edit.op) {
+      if (hasEdit) {
         try {
           const editsRoot = await resolveEditsRoot();
           const w = await armedWriteEntry({
@@ -272,6 +286,12 @@ export function createCompanionLane(opts = {}) {
           }
         } catch (e) {
           logLine(`ERROR: companion edit failed: ${e.message}`);
+          // Post so the turn never hangs the window when the reply was quiet.
+          postIfValid(buildCompanionMessage({
+            title, entryPath, turnId, reply: `I hit an error applying that edit: ${e.message}`,
+            model: meta.model || model, ts: new Date().toISOString(),
+            id: `${slugify(title)}-companion-editerr-${turnId}`,
+          }));
           editSummary = { ok: false, error: e.message };
         }
       }

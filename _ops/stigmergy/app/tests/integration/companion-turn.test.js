@@ -43,8 +43,8 @@ function makeTempPalace() {
   return root;
 }
 
-function makeServer(root, { sleep = 300, editText = null } = {}) {
-  const argv = ['node', STUB, '--permission-mode', 'bypassPermissions', '--reply', REPLY, '--sleep', String(sleep)];
+function makeServer(root, { sleep = 300, editText = null, replyText = REPLY } = {}) {
+  const argv = ['node', STUB, '--permission-mode', 'bypassPermissions', '--reply', replyText, '--sleep', String(sleep)];
   if (editText) argv.push('--edit-text', editText);
   const companionLane = createCompanionLane({
     palaceRoot: root,
@@ -137,6 +137,24 @@ describe('POST /api/entry-agent/turn', () => {
     expect(committed).toMatch(/title: "Open Entry"/);
     const subject = git(root, ['log', '-1', '--format=%s']);
     expect(subject).toMatch(/^edit\(Open Entry\):/);
+  }, 20000);
+
+  test('a quiet edit (empty reply + edit) posts only a PROOF, no companion_reply', async () => {
+    // adaptive narration: a clean edit with an empty reply stays quiet — the
+    // edit marker speaks, so no reply bubble is posted for that turn.
+    ({ server, companionLane } = makeServer(root, { editText: 'A quiet closing line.', replyText: '' }));
+    const res = await request(server).post('/api/entry-agent/turn').send({ path: 'Open Entry.md', message: 'tighten the ending' });
+    expect(res.status).toBe(200);
+    const turnId = res.body.turnId;
+
+    await waitFor(() => !existsSync(companionLane.paths.pidFile), { timeout: 6000 });
+    await waitFor(() => readFileSync(boardPath(root), 'utf8').includes('companion_edit'), { timeout: 4000 });
+
+    const lines = readFileSync(boardPath(root), 'utf8').trim().split('\n').filter(Boolean).map((l) => JSON.parse(l));
+    const proof = lines.find((m) => m.payload && m.payload.kind === 'companion_edit' && m.payload.turn_id === turnId);
+    const reply = lines.find((m) => m.payload && m.payload.kind === 'companion_reply' && m.payload.turn_id === turnId);
+    expect(proof).toBeTruthy();        // the edit landed
+    expect(reply).toBeFalsy();         // but the turn stayed quiet
   }, 20000);
 
   test('400 when the message is missing', async () => {

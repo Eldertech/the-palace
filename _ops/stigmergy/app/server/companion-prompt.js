@@ -134,7 +134,15 @@ Edit ops (choose one when editing the BODY — not the frontmatter):
              (the pin point). Use this when asked to "pin", "leave a note",
              "scrawl", or "mark" something — not to change the prose itself.
 
+NARRATION (adaptive): when you make an edit, keep "reply" QUIET. A clean,
+single, obvious edit that does exactly what was asked needs no reply — leave it
+empty (""); the edit marker already shows what landed. Add ONE short line only
+when the change is non-obvious, broader than asked, or you made a judgment call
+worth flagging (you also fixed a link, chose between two readings, trimmed more
+than the sentence named). For a discuss-only turn, reply normally and fully.
+
 Respond with ONLY a single minified JSON object and nothing else, no code fence.
-Include "edit" only when you are editing; omit it (or null) for a discuss turn:
+Include "edit" only when you are editing; omit it (or null) for a discuss turn.
+For a quiet edit, "reply" may be "":
 {"reply":"<your reply, markdown allowed>","edit":{"op":"append","text":"..."}}`;
 }
