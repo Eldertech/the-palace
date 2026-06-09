@@ -77,6 +77,15 @@ describe('buildCompanionPrompt', () => {
     expect(p).toMatch(/Include "edit" only when you are editing/);
   });
 
+  it('states the body-only capability boundary so frontmatter edits are not attempted', () => {
+    const p = buildCompanionPrompt({ grounding, body: 'x', message: 'change my forward vector' });
+    expect(p).toMatch(/CAPABILITY BOUNDARY/);
+    expect(p).toMatch(/your edit ability currently reaches the BODY\n?only/);
+    // it must tell the worker NOT to propose an edit op for frontmatter/vector
+    expect(p).toMatch(/do NOT propose an edit op/);
+    expect(p).toMatch(/forward vector/);
+  });
+
   it('truncates a pathologically long body', () => {
     const huge = 'z'.repeat(20000);
     const p = buildCompanionPrompt({ grounding, body: huge, message: 'hi' });
