@@ -282,4 +282,41 @@ describe('processCycle (integration)', () => {
     expect(summary.artifact_lint_warnings[0].request_id).toBe('tr-1');
     expect(summary.artifact_lint_warnings[0].warn).toBe(true);
   });
+
+  // Bundle-Local Stewardship Phase 1b/1c: when the home entry exists, the cycle
+  // materializes [Entry] — plan.md into its bundle from the reconciled state.
+  test('materializes the bundle-local plan read-model when the home entry exists', () => {
+    const { agentDir } = makePalace();
+    // Give the steward a home entry so the bundle path resolves (frontmatter stage is read live).
+    writeFileSync(path.join(root, 'Test Steward.md'), '---\nstage: growing\nforward_vector: "I want to become the proof."\n---\n# Test Steward');
+    const transcriptPath = path.join(root, 'transcript.jsonl');
+    writeFileSync(transcriptPath, assistantLine([resourceRequest({ blocking: true })]));
+
+    const summary = processCycle({
+      palaceRoot: root, transcriptPath, agentDir, cycleN: 1, iteration: 1, tsNow: '2026-05-27T16:05:00-04:00',
+    });
+
+    expect(summary.plan.written).toBe(true);
+    const planPath = path.join(root, 'Test Steward', 'Test Steward — plan.md');
+    expect(summary.plan.planPath).toBe(planPath);
+    const plan = readFileSync(planPath, 'utf8');
+    expect(plan).toContain('# Test Steward — plan');
+    expect(plan).toContain('**Stage:** growing'); // read live from frontmatter
+    expect(plan).toContain('`tr-1`');             // the open decision landed
+    expect(plan).toContain('see [[Test Steward]] frontmatter `forward_vector`'); // pointer, not copy
+    expect(plan).not.toContain('I want to become the proof.'); // vector never copied
+  });
+
+  test('cycle still completes (plan written:false, no throw) when the home entry is absent', () => {
+    const { agentDir } = makePalace(); // no Test Steward.md entry file in this palace
+    const transcriptPath = path.join(root, 'transcript.jsonl');
+    writeFileSync(transcriptPath, assistantLine([resourceRequest({ blocking: false })]));
+
+    const summary = processCycle({
+      palaceRoot: root, transcriptPath, agentDir, cycleN: 1, iteration: 1, tsNow: '2026-05-27T16:05:00-04:00',
+    });
+    expect(summary.posted_ids).toEqual(['tr-1']); // cycle's real work is unaffected
+    expect(summary.plan.written).toBe(false);
+    expect(summary.plan.reason).toBe('entry-file-not-found');
+  });
 });

@@ -89,7 +89,7 @@ describe('buildCyclePrompt (integration)', () => {
   let root;
   afterEach(() => { if (root) rmSync(root, { recursive: true, force: true }); root = null; });
 
-  function makePalace({ state, history = '', board = [], home = 'My Project', neighborhood = [] } = {}) {
+  function makePalace({ state, history = '', board = [], home = 'My Project', neighborhood = [], frontmatterStage = 'growing', stagingBody = null } = {}) {
     root = mkdtempSync(path.join(tmpdir(), 'palace-bcp-'));
     const agentRel = '_ops/agents/permanent/my-project';
     const agentDir = path.join(root, agentRel);
@@ -106,7 +106,12 @@ describe('buildCyclePrompt (integration)', () => {
     writeFileSync(path.join(agentDir, 'state.json'), JSON.stringify(state));
     writeFileSync(path.join(agentDir, 'history.jsonl'), history);
     // Home entry + board.
-    writeFileSync(path.join(root, `${home}.md`), `---\ntitle: "${home}"\nstage: growing\n---\n# ${home}\nbody text here\n`);
+    writeFileSync(path.join(root, `${home}.md`), `---\ntitle: "${home}"\nstage: ${frontmatterStage}\n---\n# ${home}\nbody text here\n`);
+    // Optional bundle-local staging file (the teaching arc the steward reads).
+    if (stagingBody != null) {
+      mkdirSync(path.join(root, home), { recursive: true });
+      writeFileSync(path.join(root, home, `${home} — Staging.md`), stagingBody);
+    }
     writeFileSync(path.join(root, '_ops/swarm/persistent/blackboard.jsonl'), board.map((m) => JSON.stringify(m)).join('\n'));
     return { agentRel, home };
   }
@@ -174,6 +179,40 @@ describe('buildCyclePrompt (integration)', () => {
     expect(userTurn).not.toContain('drop-others-ask');     // another steward's ask to TRICKSTER
     expect(userTurn).not.toContain('drop-grant-other');    // grant addressed to a different agent
     expect(userTurn).toContain('other swarm traffic is omitted'); // transparency note present
+  });
+
+  test('Phase 1a — the steward stage is read LIVE from frontmatter, overriding the stored copy', () => {
+    const { agentRel } = makePalace({
+      // Frontmatter says mature; the stale stored copies say seed/growing. Frontmatter must win.
+      frontmatterStage: 'mature',
+      state: {
+        iteration: 2, last_active: '2026-05-26T10:00:00Z', last_read_cursor: 'c0',
+        stewardship: { stage_at_last_activation: 'seed' },
+      },
+    });
+    const { systemPrompt } = buildCyclePrompt({ palaceRoot: root, agentDir: agentRel, cycleN: 3, today: '2026-05-27' });
+    expect(systemPrompt).toContain('stage=mature');
+    expect(systemPrompt).not.toContain('stage=seed');
+  });
+
+  test('Phase 1d — a bundle-local staging file is loaded into the steward context, read-only', () => {
+    const { agentRel } = makePalace({
+      stagingBody: '# Teaching arc\nStage 1 isolates the illusion. Stage 2 exposes the wrap seam.',
+      state: { iteration: 2, last_active: '2026-05-26T10:00:00Z', last_read_cursor: 'c0' },
+    });
+    const { userTurn } = buildCyclePrompt({ palaceRoot: root, agentDir: agentRel, cycleN: 3, today: '2026-05-27' });
+    expect(userTurn).toContain('Your staging arc — My Project — Staging');
+    expect(userTurn).toContain('Stage 2 exposes the wrap seam');
+    expect(userTurn).toContain('READ, do not rewrite');
+    expect(userTurn).toContain('FLAG it to Loudon');
+  });
+
+  test('no staging section when the entry has no staging file', () => {
+    const { agentRel } = makePalace({
+      state: { iteration: 2, last_active: '2026-05-26T10:00:00Z', last_read_cursor: 'c0' },
+    });
+    const { userTurn } = buildCyclePrompt({ palaceRoot: root, agentDir: agentRel, cycleN: 3, today: '2026-05-27' });
+    expect(userTurn).not.toContain('Your staging arc');
   });
 });
 

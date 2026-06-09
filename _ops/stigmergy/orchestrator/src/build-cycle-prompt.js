@@ -12,37 +12,21 @@
 // detection calls checkPageChange in-process instead of shelling to cli.js, and
 // the board-slice logic is extracted as sliceBoardSinceCursor for unit testing.
 
-import { readFileSync, writeFileSync, readdirSync } from 'node:fs';
-import { resolve, join, relative, basename } from 'node:path';
+import { readFileSync, writeFileSync, existsSync } from 'node:fs';
+import { resolve, join, relative, basename, dirname } from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 import { loadAndRender } from './prompts.js';
 import { checkPageChange } from './git.js';
+import { findEntryFile } from './entry-paths.js';
+import { readEntryMeta } from './entry-frontmatter.js';
+import { findStagingTitle } from './plan-file.js';
 
 const PALACE_ROOT_DEFAULT = resolve(fileURLToPath(new URL('.', import.meta.url)), '../../../..');
-const EXCLUDE_DIRS = new Set(['.git', '.claude', '.obsidian', 'node_modules', '_tools', '.venvs']);
 
-/**
- * Locate a palace entry file by title (Obsidian-style flat namespace): search
- * the tree for `<title>.md`, skipping system directories. Returns the absolute
- * path or null.
- */
-export function findEntryFile(palaceRoot, title) {
-  const target = `${title}.md`;
-  const stack = [palaceRoot];
-  while (stack.length) {
-    const dir = stack.pop();
-    let entries;
-    try { entries = readdirSync(dir, { withFileTypes: true }); } catch { continue; }
-    for (const e of entries) {
-      if (e.isDirectory()) {
-        if (!EXCLUDE_DIRS.has(e.name)) stack.push(join(dir, e.name));
-      } else if (e.name === target) {
-        return join(dir, e.name);
-      }
-    }
-  }
-  return null;
-}
+// `findEntryFile` is now canonical in entry-paths.js (shared with the plan
+// materializer so both resolve entry paths identically). Re-exported here so
+// existing importers — and the unit test — keep their import surface.
+export { findEntryFile };
 
 /**
  * Return the board lines that follow the steward's cursor. With no cursor (first
@@ -141,19 +125,49 @@ export function buildCyclePrompt(opts) {
   const state = JSON.parse(readFileSync(join(agentDirAbs, 'state.json'), 'utf8'));
   const manifest = JSON.parse(readFileSync(join(agentDirAbs, 'manifest.json'), 'utf8'));
 
+  // Read the entry's live frontmatter once (Phase 1a). `readEntryMeta` locates
+  // the home entry; reuse its `file` for the body so we don't walk the tree twice.
+  const meta = readEntryMeta(palaceRoot, manifest.home);
+  const homeFile = meta?.file || findEntryFile(palaceRoot, manifest.home);
+  const homeBody = homeFile ? readFileSync(homeFile, 'utf8') : `# (entry not found — ${manifest.home})`;
+
+  // The stage the steward operates at is read LIVE from the entry's frontmatter —
+  // the single source of truth — NOT the duplicated `stewardship` copy in
+  // state/manifest, which can drift. Fall back to the stored copy only when the
+  // entry can't be read, and never feed a null into the template (renderTemplate
+  // throws on null). This is the read half of the single-source-of-truth fix.
+  const liveStage = meta?.stage
+    || state.stewardship?.stage_at_last_activation
+    || manifest.stewardship?.stage_at_spawn
+    || 'sprout';
+
   const systemPrompt = loadAndRender({
     skillRoot,
     templateName: 'steward',
     vars: {
       home: manifest.home,
       cycle_id: `cycle-${cycleN}-${today}`,
-      stage_at_last_activation:
-        state.stewardship?.stage_at_last_activation || manifest.stewardship?.stage_at_spawn,
+      stage_at_last_activation: liveStage,
     },
   });
 
-  const homeFile = findEntryFile(palaceRoot, manifest.home);
-  const homeBody = homeFile ? readFileSync(homeFile, 'utf8') : `# (entry not found — ${manifest.home})`;
+  // Phase 1d — the read seam. When the entry has a bundle-local staging file
+  // (the teaching arc), load it into the steward's context so decisions are
+  // weighed against the staged design. The steward READS it but never rewrites
+  // it; arc-level changes are flagged to Loudon (Substrate Skill § read seam).
+  let stagingSection = '';
+  if (homeFile) {
+    const stagingTitle = findStagingTitle(join(dirname(homeFile), manifest.home), manifest.home);
+    if (stagingTitle) {
+      let stagingBody = '';
+      try { stagingBody = readFileSync(join(dirname(homeFile), manifest.home, `${stagingTitle}.md`), 'utf8'); } catch { /* unreadable */ }
+      if (stagingBody) {
+        stagingSection = `\n# Your staging arc — ${stagingTitle} (teaching design; READ, do not rewrite)\n\n`
+          + 'This is your stage-by-stage Loudon Live teaching arc. Weigh each decision against it — note in your plan when a choice advances or threatens a staged goal. You do **not** edit this file; if a decision implies the arc itself should change, FLAG it to Loudon (a RESOURCE_REQUEST / FLAG), do not silently rewrite the design.\n\n'
+          + '```markdown\n' + stagingBody + '\n```\n';
+      }
+    }
+  }
 
   let historyTail = '';
   try {
@@ -193,7 +207,7 @@ ${isFirstActivation
 \`\`\`markdown
 ${homeBody}
 \`\`\`
-
+${stagingSection}
 # Your injected state (NOT a file you should open from disk)
 
 \`\`\`json
