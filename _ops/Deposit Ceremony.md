@@ -115,7 +115,7 @@ Before describing the conversation or proposing any map, state in one sentence: 
 
 A good deposit map is specific about:
 
-- **Entry type** — concept, breakthrough, project, question, spore, source
+- **Entry type** — concept · hub · project · breakthrough · source · meta · practice · person · question · spore · specialist · maker (see [[SCHEMA]] §1 for the current type vocabulary and decision tree)
 - **Pillar affiliations** — which pillars does this touch?
 - **Proposed stage** — seed, sprout, or growing?
 - **Typed links** — named relationship types, not just "connects to." Propose by entry name — do not read the linked entries. For every link proposed, ask: does this relationship deserve a label? If yes, add `label: [word]` to the link object. The label is the semantic compression of the relationship — one word that names its specific register.
@@ -168,11 +168,12 @@ An entry that arrives with its body-text links formalized enters the palace full
 
 On approval, write new entries as `.md` files to the palace root. Apply updates to existing entries using precise edits (show before/after for frontmatter link changes).
 
-**Filing structure:**
+### Filing structure
 - Palace entries (`.md`) → palace root
-- Non-markdown artifacts (HTML, images) → `The Palace/Artifacts/[Theme]/[filename]`
+- **Entry-owned artifacts** (owned by exactly one entry) → that entry's bundle `[Entry]/`, per [[SCHEMA]] §8. This is the default for single-owner files.
+- **Cross-entry / shared** non-markdown artifacts (HTML, images, audio) → `The Palace/Artifacts/[Theme]/[filename]`. Only artifacts serving several entries go here.
 - Technical diagrams (signal flow, DSP, math, plots) → author in LaTeX/TikZ and file the `.tex` source beside the rendered `.svg`, per [[Technical Diagram Standard]]
-- Do not create an `assets/` folder — the canonical folder is `Artifacts/`
+- Do not create an `assets/` folder — the canonical homes are the owning entry's bundle and `Artifacts/`
 
 **Step 7: Close**
 
@@ -206,6 +207,7 @@ Do not read the archive to do this — append only.
 - For each weave flag named in the deposit, append a `weave_flag` BROADCAST to the persistent board (`_ops/swarm/persistent/blackboard.jsonl`). The message follows `payload.kind: 'weave_flag'` per [[STIGMERGY — Weave Flag Item Type Build Plan]] § Data shapes — `flag_type`, `source_deposit_id`, `source_entries`, optional `target_entry`, `proposed_action`, `rationale`. Show Loudon the message bodies before writing; commit only on his approval. The archive row's `Weave flags:` prose stays — as audit, not queue.
 
 Git commit: `Deposit — [ID or theme] — [N new entries, N updated]`
+*(From Cowork, commit via the lock-safe committer; Mac-side Claude Code, `git commit` normally — see [[CLAUDE]] §Committing from Cowork.)*
 
 ---
 

@@ -55,20 +55,22 @@ The jewel is Tier 0. Each tier above it adds orientation depth at a token cost. 
 
 | Tier                   | Files                                                                                                                        | Approx tokens | Buys you                                                                                 |     |
 | ---------------------- | ---------------------------------------------------------------------------------------------------------------------------- | ------------- | ---------------------------------------------------------------------------------------- | --- |
-| **0 — Jewel**          | JEWEL.md                                                                                                                     | ~300          | Interpretive lens. Operating posture. Invariants.                                        |     |
-| **1 — Skeleton**       | CLAUDE.md + SCHEMA.md + ROSETTA.md                                                                                           | ~9K           | What can exist, how it's typed, vocabulary translated — and that the room may hold other agents (SCHEMA §9). |     |
-| **2 — World**          | Four Pillars.md + Palace Philosophies.md + Cooperation Yields Agency.md + Hilaritas Generator.md + Modes of Collaboration.md | ~7K           | Why things matter, how Loudon thinks, what the destination is, and how to work together. |     |
-| **3 — Active surface** | Task-specific entries                                                                                                        | varies        | Direct working material. Load by task.                                                   |     |
+| **0 — Jewel**          | JEWEL.md                                                                                                                     | ~1.9K         | Interpretive lens. Operating posture. Invariants.                                        |     |
+| **1 — Skeleton**       | CLAUDE.md + SCHEMA.md                                                                                                        | ~13K          | What can exist, how it's typed — and that the room may hold other agents (SCHEMA §9). |     |
+| **2 — World**          | Four Pillars.md + Palace Philosophies.md + Cooperation Yields Agency.md + Hilaritas Generator.md + Modes of Collaboration.md | ~5.6K         | Why things matter, how Loudon thinks, what the destination is, and how to work together. |     |
+| **3 — Active surface** | Task-specific entries · ROSETTA (vocabulary translation, loaded on demand)                                                   | varies        | Direct working material. Load by task.                                                   |     |
 | **4 — Deep context**   | Swarm Weave, ceremony context files                                                                                          | varies        | Load only when the work explicitly requires them.                                        |     |
 |                        |                                                                                                                              |               |                                                                                          |     |
 
-<!-- CLAUDE → LOUDON: Token concern noted. Tiers 0–2 are currently ~16K tokens — substantial. Options: (1) slim the tier 1 files (SCHEMA is long), (2) make tier 2 a pick-list rather than a bundle, (3) accept current cost and revisit when context windows shrink. Modes of Collaboration added to tier 2 per your graffiti. Stardust draft deliberately not created here — a dedicated session is the right home for that. -->
+<!-- CLAUDE → LOUDON: Token concern noted. Tiers 0–2 measure ~20K tokens (2026-06-09 cl100k count) — substantial. Options: (1) slim the tier 1 files (SCHEMA is long), (2) make tier 2 a pick-list rather than a bundle, (3) accept current cost and revisit when context windows shrink. Modes of Collaboration added to tier 2 per your graffiti. Stardust draft deliberately not created here — a dedicated session is the right home for that. -->
 
-Tier 0 + Tier 1 + Tier 2 ≈ 16K tokens — roughly one quarter of a standard context window. The remaining three quarters is available for work.
+Tier 0 + Tier 1 + Tier 2 ≈ 20K tokens (measured; ROSETTA is *not* in the auto-loaded floor — it loads on demand as a Tier-3 reference). The remaining context is available for work.
 
 The palace may be operated by a swarm: multiple AI stewards plus a human node (`TRICKSTER` = Loudon), coordinating on the [[STIGMERGY]] blackboard. Tier 1 ([[SCHEMA]] §9) teaches you to *recognize* that layer — the board, the message types, the human-decision handshake — so you know whether you are alone in the room. The full operational spec is Tier 4 ([[Palace Agent Infrastructure Spec]]).
 
 <!-- CLAUDE → LOUDON (2026-06-07): The forward vector "build the tiered loading directly into CLAUDE.md" is now partially built. CLAUDE.md `@import`s JEWEL.md (Tier 0) and SCHEMA.md (Tier 1) — realizing your "Yes" to embedding the jewel verbatim/co-present with the entry point. Hard edge found: Claude Code's `@import` cannot resolve paths with spaces (a known bug), so the Tier-2 framework (FOUR PILLARS.md, etc.) and ROSETTA-adjacent spaced files can't auto-load without a space-free symlink. Tiers 0–1 are wired; Tier 2 waits on the bug or a symlink. Full write-up: [[Palace as Context Injection System]] § The @import Floor. -->
+
+<!-- CLAUDE → LOUDON (2026-06-09): Update — Tier 2 is now wired too. The five framework files auto-load via space-free `_` symlinks (FOUR_PILLARS.md → FOUR PILLARS.md, etc.), the spaces-bug workaround. So Tiers 0–2 are all imported into CLAUDE.md; the "build the tiered loading into CLAUDE.md" forward vector below has shipped and is struck. ROSETTA was deliberately left out of the @import block to keep the floor lean — it stays Tier 3. -->
 
 
 ---
@@ -90,4 +92,4 @@ The palace may be operated by a swarm: multiple AI stewards plus a human node (`
 - Make a game that refines and adapts the jewel.
 - Propose specific changes to make.
 - Make an even more condensed jewel, stardust.
-- Build the teired loading directly into Claude.md
+- ~~Build the tiered loading directly into CLAUDE.md~~ — *shipped 2026-06-07 via the `_`-symlink `@import` block (Tiers 0–2 auto-load).*

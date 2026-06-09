@@ -42,6 +42,7 @@ links:
 **Failure mode:** If a dormant entry cannot be read (file corrupted or inaccessible), flag it in the report as unreviewed. Do not assign a disposition to an entry that hasn't been read. Unreviewed entries carry over to the next Spore Check.
 
 **Git commit:** `Spore Check — [date] — [N revived, N composted, N held]`
+*(From Cowork, commit via the lock-safe committer; Mac-side Claude Code, `git commit` normally — see [[CLAUDE]] §Committing from Cowork.)*
 
 ---
 

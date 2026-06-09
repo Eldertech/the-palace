@@ -59,6 +59,7 @@ The single-agent protocol below remains valid for: palaces under ~20 entries, qu
 2b. The **`weave_flag` inbox** has been read from the persistent board, and every open flag has either been acted on by the Weave or had an explicit decision recorded in the commit body.
 2c. A **substrate sweep** has been completed: uncommitted edits, stashes, dangling commits, unmerged branches, and recent rewrites have been triaged per finding (recover / discard / leave). Recoveries are additive only; discards are recorded so the LOG stays honest.
 2d. The **link-direction linter** (`_ops/swarm/lint-link-directions.py`) has been run against a freshly rebuilt map. It reports **no link-direction errors introduced by this Weave** — E1 reciprocal contradictions for asymmetric types, E2 hubs emitting `member-of`. Pre-existing errors the Weave chose not to resolve are listed in the commit body with a one-line reason; a silent red linter violates the LOG. This is the checkable directional postcondition that the 2026-06-05 schema-compliance miss showed the Weave needed.
+2e. The **doc-drift linter** (`_ops/swarm/lint-doc-drift.py`) exits **0 on errors** (warnings reviewed). This is the prose-consistency counterpart to 2d: it catches foundational-doc drift — wrong-case refs, broken paths, dangling section pins, trigger-coverage gaps. Any warning left standing is a deliberate review-list item, not a silent miss.
 3. **New introductions** have been proposed — new typed links between entries that do not yet mention each other in prose. No more than 5 per Weave. These are genuine growth events and deserve deliberate curation.
 4. **Vector tuning has been invited** for entries whose `forward_vector` has visibly drifted from the entry's current content, connections, or pace. Forward vectors are meant to evolve; the Weave is a natural occasion to surface drift and propose tweaks or full overhauls.
 5. Any confirmed metadata updates have been written to entry files
@@ -67,6 +68,7 @@ The single-agent protocol below remains valid for: palaces under ~20 entries, qu
 **Failure mode:** If the palace is only partially readable (some files inaccessible), produce a partial topology report and note which entries were unreachable. A partial Weave is valid. Do not commit until all accessible files have been processed.
 
 **Git commit:** `Weave — [date] — [N links added, N entries promoted, N orphans flagged, N vectors tuned, N flags closed, N orphans recovered/discarded]`
+*(From Cowork, commit via the lock-safe committer; Mac-side Claude Code, `git commit` normally — see [[CLAUDE]] §Committing from Cowork.)*
 
 ---
 
@@ -172,12 +174,6 @@ Unsung paths are navigation hygiene, not proposals. The body text already assert
 
 For any unsung path being formalized as a `connects-to` link, consider whether the relationship deserves a label. `connects-to` is the most under-described type — a label often carries more signal than the type itself. If the body text already names the relationship more specifically (e.g. “X *echoes* Y”, “X *feeds into* Y”), use that word as the label.
 
-**Step 3c: Label enrichment**
-
-Review existing links that lack labels, prioritizing: (1) all `connects-to` links — these are the most semantically underweight; (2) `mirrors` and `contradicts` links where the nuance is high; (3) any link whose body text already names the relationship more specifically than the type does. For each candidate, propose a single-word or hyphenated label. Rate limit: no more than 10 label proposals per Weave — curation applies here too. A label is a permanent commitment to a specific register; choose deliberately.
-
-Present all label proposals to Loudon before applying. Write confirmed labels to the appropriate entry frontmatter.
-
 **Step 3b: Propose new introductions**
 
 Identify pairs of entries that should be connected but are NOT already named in each other's body text — connections that emerge from reading the topology as a whole. This is the creative work of the Weave and the palace's genuine growth mechanism. For each proposal:
@@ -188,6 +184,12 @@ Identify pairs of entries that should be connected but are NOT already named in 
 **Rate limit: propose no more than 15 new introductions per Weave.** If more candidates exist, choose the ones that feel most alive right now.
 
 Present to Loudon. Add confirmed links to the appropriate entry frontmatter.
+
+**Step 3c: Label enrichment**
+
+Review existing links that lack labels, prioritizing: (1) all `connects-to` links — these are the most semantically underweight; (2) `mirrors` and `contradicts` links where the nuance is high; (3) any link whose body text already names the relationship more specifically than the type does. For each candidate, propose a single-word or hyphenated label. Rate limit: no more than 10 label proposals per Weave — curation applies here too. A label is a permanent commitment to a specific register; choose deliberately.
+
+Present all label proposals to Loudon before applying. Write confirmed labels to the appropriate entry frontmatter.
 
 **Step 4: Propose metadata updates**
 
@@ -229,14 +231,17 @@ Flag any ideas currently living only in conversations or in the Palace To-Do tha
 
 **Step 6.5: Lint link directions**
 
-After all confirmed edits are written, rebuild the map and run the link-direction linter:
+After all confirmed edits are written, rebuild the map and run the linters. There is no stable un-dated builder — the builders are date-stamped (`build-map-YYYY-MM-DD.py`); run the newest:
 
 ```bash
-python3 _ops/swarm/build-map-<date>.py
-python3 _ops/swarm/lint-link-directions.py
+python3 "$(ls -1 _ops/swarm/build-map-*.py | sort | tail -1)"   # newest dated map builder
+python3 _ops/swarm/lint-link-directions.py                       # §4 link directionality
+python3 _ops/swarm/lint-doc-drift.py                             # foundational-doc consistency
 ```
 
-The linter is the Weave's mechanical check on §4 directionality — it catches what a hand audit of dozens of worker-proposed links misses. It reports:
+Routing note: session-level Weave artifacts (maps, reports) go to `_ops/swarm/sessions/[session-id]/`; per-entry artifacts go to that entry's bundle (`[Entry]/`, per [[SCHEMA]] §8).
+
+`lint-link-directions.py` is the Weave's mechanical check on §4 directionality — it catches what a hand audit of dozens of worker-proposed links misses. It reports:
 - **E1** — reciprocal contradiction (an asymmetric type used both ways between a pair). Always a bug.
 - **E2** — a `hub` entry emitting `member-of`. Always a bug (members declare membership; the hub never does).
 - **W1 / W2** — heuristic reviews (a ground emitting a lineage link; `member-of`/`exemplifies` toward a less-central target). Not all are bugs — `deepens`-chains legitimately trip W1.

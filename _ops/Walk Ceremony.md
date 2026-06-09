@@ -45,6 +45,7 @@ links:
 **Failure mode:** If the palace is partially readable (some files inaccessible), note which entries were unreachable and proceed with what is available. A partial Walk is valid. An unstarted Walk is not — if nothing is readable, halt and report.
 
 **Git commit:** Only if metadata was updated. `Walk — [date] — [starting entry] — metadata updates`
+*(From Cowork, commit via the lock-safe committer; Mac-side Claude Code, `git commit` normally — see [[CLAUDE]] §Committing from Cowork.)*
 
 ---
 
