@@ -17,7 +17,7 @@ links:
 ---
 # Mermaid Diagram Standard
 
-This entry defines how diagrams are created, embedded, and captioned within the palace using Mermaid — the palace's preferred diagramming format. It is the companion to [[Image Embedding Standard]] and together they form the complete visual language of this organism.
+This entry defines how diagrams are created, embedded, and captioned within the palace using Mermaid — the palace's preferred format for relationship and concept graphs. It is one of **three** standards that together form the palace's visual language: [[Mermaid Diagram Standard]] (relationships and concepts), [[Technical Diagram Standard]] (technical/quantitative figures — signal flow, DSP, math, plots, authored in LaTeX), and [[Image Embedding Standard]] (how every image and SVG is filed, named, and captioned).
 
 The hierarchy is explicit: **use Mermaid first**. Reach for SVG only when Mermaid cannot do the job. The reasons are not merely practical — they are philosophical, and they run deep.
 

@@ -11,7 +11,7 @@ Loudon Live is Loudon's primary public teaching space — a YouTube channel wher
 ## How to use this skill
 
 1. Read `README.md` in full. It carries the **content fundamentals** (voice, casing, person, no-emoji rule, do/don't copy), the **visual foundations** (type, the six palettes, the six generative elements, spacing, radii, motion, hover/press/focus, transparency rules), and the **iconography** position (typographic glyphs + the Lissajous trace + the LL monogram — and explicitly no emoji and no CDN icon set).
-2. Read `colors_and_type.css`. It is the canonical source of every token used by every artifact. Switch palette by setting one of `skin-graphite | skin-amber-lab | skin-teal-patch | skin-dusk-tape | skin-cobalt-grid | skin-bone-synth` on the document root. Graphite is the default.
+2. Read `colors_and_type.css`. It is the canonical source of every token used by every artifact. Switch palette by setting one of `skin-graphite | skin-amber-lab | skin-crt | skin-strobe | skin-cobalt-grid | skin-drafting` on the document root. Graphite is the default. (The CSS still honours the deprecated aliases `skin-teal-patch | skin-dusk-tape | skin-bone-synth`, but new artifacts use the canonical names.)
 3. Browse `assets/` (brand marks + per-stream generators), `slides/` (OBS card templates), `ui_kits/session-artifact/` (long-form session page) and `ui_kits/stream-overlay/` (live composite).
 
 ## What to make

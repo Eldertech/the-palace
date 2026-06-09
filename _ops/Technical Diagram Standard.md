@@ -57,7 +57,7 @@ This is why LaTeX earns a tier of its own rather than living as an exception ins
 
 ## The Toolchain
 
-Everything needed is already present in the palace's Claude environment — **no install required**. Any palace Claude can author and render technical diagrams headlessly:
+The full toolchain is present **Mac-side (Claude Code on Loudon's machine)** — no install required there. **It is *not* available in the Cowork sandbox** (no TeX Live), so rendering must happen Mac-side; from Cowork, author the `.tex` source and defer the render. Where present, any palace Claude can author and render technical diagrams headlessly:
 
 - `pdflatex` / `lualatex` / `xelatex` — TeX engines (TeX Live)
 - `tikz`, `pgfplots`, `standalone`, `circuitikz`, `amsmath` — packages
@@ -131,18 +131,20 @@ Artifacts/[Theme]/biquad-df2-signal-flow.svg      <- rendered output (what gets 
 
 Filenames are semantic claims, per [[Image Embedding Standard]]: `biquad-lowpass-magnitude-response.svg`, not `plot.svg`. Computed-data figures keep their `.dat` beside the source so the figure is regenerable. Embedding, alt text, and captions are exactly as [[Image Embedding Standard]] specifies — embed the `.svg` by filename, caption as an argument not a description.
 
+**Bundle vs theme.** Diagrams *owned by one entry* go to that entry's bundle (`[Entry]/`), per [[SCHEMA]] §8 — and this standard's own teaching examples live in its bundle (`_ops/Technical Diagram Standard/`). Diagrams *shared across several entries* go to `Artifacts/[Theme]/`. The example paths above show the shared-theme case; single-owner figures follow the bundle rule.
+
 ---
 
 ## Discoverability — How Palace AIs Reach This
 
-A standard no agent knows about is dead tissue. This standard becomes load-bearing only when the palace's other surfaces point into it:
+A standard no agent knows about is dead tissue. These hooks are now **live** across the palace's surfaces:
 
-- [[Mermaid Diagram Standard]] § "When SVG Still Wins" gains a clause: *for technical/quantitative diagrams (signal flow, DSP, math, plots), do not reach for raw SVG — use [[Technical Diagram Standard]].*
-- [[Image Embedding Standard]] § Filing Protocol notes that generated technical figures keep their `.tex` source beside the `.svg`, per this standard.
-- The [[Deposit Ceremony]] visual-check step learns a third branch: Mermaid block, embedded image, or technical `.tex`+`.svg` pair.
-- A line in [[README - The Palace Guide]]'s visual-language section names all three standards as one system.
+- [[Mermaid Diagram Standard]] § "When SVG Still Wins" routes technical/quantitative diagrams (signal flow, DSP, math, plots) here — *do not reach for raw SVG.*
+- [[Image Embedding Standard]] § Filing Protocol files generated technical figures' `.tex` source beside the `.svg`, per this standard.
+- The [[Deposit Ceremony]] § Filing structure carries the third branch: Mermaid block, embedded image, or technical `.tex`+`.svg` pair.
+- [[README - The Palace Guide]] § The Visual Language names all three standards as one system.
 
-These hooks are the difference between a tool that exists and a tool that gets used.
+These hooks are the difference between a tool that exists and a tool that gets used — and they are in place.
 
 ---
 
@@ -163,7 +165,7 @@ A teaching triptych — three views of one Direct Form II biquad, each drawn by 
 
 ## Open Questions
 
-- Should the three example sources live in this standard's bundle (`_ops/Technical Diagram Standard/`) or in a shared `Artifacts/DSP/` theme that future filter entries also draw from? The bundle keeps them owned; a theme folder makes them reusable across entries.
+- ~~Should the three example sources live in this standard's bundle or in a shared `Artifacts/DSP/` theme?~~ **Resolved:** they live in the standard's bundle (`_ops/Technical Diagram Standard/`), owned by the standard. The bundle-vs-theme rule is now stated in § Filing Protocol. A future shared filter-figure library can still go to `Artifacts/DSP/` when the cross-entry need is real.
 - Mermaid is rendered live by Obsidian with zero build step. LaTeX requires a render pass. Is there value in a lightweight ceremony step — or a git pre-commit hook — that re-renders any changed `.tex` so the `.svg` never drifts from its source?
 - `circuitikz` is installed and can draw actual electronic schematics (filters, op-amp circuits). Does the hardware-synth and modular work want a fourth example, or is that a separate standard when the need is real?
 - At what point does a recurring figure type (pole-zero plots, ADSR envelopes) deserve its own reusable template in the bundle, the way `signal-flow-template.tex` already serves block diagrams?
