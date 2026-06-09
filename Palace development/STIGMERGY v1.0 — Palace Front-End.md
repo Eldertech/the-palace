@@ -138,7 +138,7 @@ Every save writes the `.md` in the working tree. **Obsidian remains the point of
 
 QUEUE is the prospective surface — what wants Loudon's attention. The redesign applies the conclusion reached across [[Two Batons, One Board]] and [[Drift and Consolidation]]: **the board should hold only open, future-facing items, and items are closed by git events.** A board that never claims past facts cannot lie about them.
 
-- **The ranked digest is the primary view**, generalizing Stage E's `DigestPanel`. One ranked inbox of everything open: pending `RESOURCE_REQUEST`s (decisions), `handoff_ready` posts (per the [[Handoff Ceremony]] convention), blocked stewards, forward-vector proposals, audition gates. This *is* the operational-bandwidth relief the whole [[Project Stewardship System]] frontier is about — Loudon triages one ranked list, not six round-robined tabs.
+- **The ranked digest is the primary view**, generalizing Stage E's `DigestPanel`. One ranked inbox of everything open: pending `RESOURCE_REQUEST`s (decisions), `handoff_ready` posts (per the [[Baton Ceremony]] convention), blocked stewards, forward-vector proposals, audition gates. This *is* the operational-bandwidth relief the whole [[Project Stewardship System]] frontier is about — Loudon triages one ranked list, not six round-robined tabs.
 - **Every item is honest about its own staleness.** Per the message-truthfulness discipline: an item asserts an *act at a time from a vantage* ("announced at T, from Cowork"), names its `stale_if` git-condition (the commit that would auto-close it), and points to live state in STATE or LOG. It never declares present truth.
 - **Items self-clear via reconciliation.** A continuous pass checks each item's `stale_if` against git; when met, the item greys with "looks done — a commit touched [entry] after this was posted; clear it?" This is the cure for the orphaned-handoff failure mode: you dig into a project directly, commit it, and the QUEUE item closes itself.
 - **The six boards become lanes/filters**, not tabs. A raw-board sub-view remains for the firehose; the human's default is the ranked queue.
@@ -188,7 +188,7 @@ Palace-Author:  claude | loudon | steward:<Entry>
 | `deposit` | a new entry filed | Deposit Ceremony |
 | `edit` | content/structure change to an existing entry | ordinary work |
 | `enrich` | an enrichment added to a bundle | Enrichment |
-| `handoff` | a handoff written or consumed | Handoff Ceremony |
+| `handoff` | a baton written or consumed | Baton Ceremony |
 | `steward` | one steward cycle's output | Stewardship cycle |
 | `weave` | topology/link/label changes from a Weave | Weave Ceremony |
 | `schema` | a schema change | Schema Ceremony (subsumes the §5 format) |
@@ -213,7 +213,7 @@ Folds into the Stewardship thread as the human-originated handoff case.
 
 Palace-Kind: deposit
 Palace-Entry: Two Batons, One Board
-Palace-Entry: Handoff Ceremony
+Palace-Entry: Baton Ceremony
 Palace-Entry: Project Stewardship System
 Palace-Vector: Two Batons, One Board: born
 Palace-Verify: verified
@@ -248,7 +248,7 @@ The three decks are one system because a single engine ties them together, and i
 
 1. **`Palace-Resolves` + `stale_if` close QUEUE items.** When a commit lands that resolves or satisfies a QUEUE item's staleness condition, the item closes and the commit card in LOG shows "resolves: [item]." QUEUE ("what's still open") and LOG ("what happened") are two views of one event stream; an item crossing from one to the other *is* reconciliation.
 2. **Uncommitted work is surfaced, not assumed.** STATE edits and Obsidian edits appear as a LOG banner until recorded — the invisible-dive hazard made visible.
-3. **Stewardship and handoff markers render in STATE**, sourced from QUEUE and the entry's bundle, so a reader who opens an entry directly still sees "under active stewardship, may lag, live state here" ([[Drift and Consolidation]]'s pointer) and "active handoff" ([[Handoff Ceremony]]).
+3. **Stewardship and handoff markers render in STATE**, sourced from QUEUE and the entry's bundle, so a reader who opens an entry directly still sees "under active stewardship, may lag, live state here" ([[Drift and Consolidation]]'s pointer) and "active handoff" ([[Baton Ceremony]]).
 4. **Drift heals where you can see it.** The reconciliation pass is the entry→log sync that [[Drift and Consolidation]] flagged as unbuilt: it notices when an entry has moved (a commit) past what the board/steward thinks, and flags the steward as reasoning from stale state.
 
 The design target, stated honestly: the board may be wrong, but the system *notices and heals within a cycle* — because git, the thing both Loudon and the agents actually touch, is the reconciliation ground truth.

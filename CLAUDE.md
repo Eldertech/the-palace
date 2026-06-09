@@ -94,7 +94,7 @@ The Palace/
     ├── Palace Ceremonies.md
     ├── Deposit Ceremony.md / Harvest Ceremony.md / Walk Ceremony.md
     ├── Weave Ceremony.md / Spore Check Ceremony.md / Revival Ceremony.md
-    ├── Handoff Ceremony.md / Self-Model Update Ceremony.md
+    ├── Baton Ceremony.md / Self-Model Update Ceremony.md
     ├── [*— Context.md]      ← ceremony session history companions
     ├── Deposit Archive.md
     ├── Palace Graffiti.md / Palace Quotes.md / Palace To-Do.md
@@ -107,7 +107,7 @@ Not every ceremony spec lives in `_ops/`: [[Enrichment]] (`Enrichment.md`) and i
 
 Obsidian resolves `[[wikilinks]]` by filename regardless of folder — agents must do the same. When resolving a wikilink to a file path, search recursively through the entire palace directory. Exclude `.git/`, `.claude/`, and `.obsidian/` — these contain system files, not knowledge entries. Any other subdirectory may contain valid entries. When loading files by path (e.g., in tiered context loading), use paths relative to the palace root.
 
-Knowledge entries may also have **entry bundles** — optional sibling folders named identically to the entry (e.g., `Foo.md` ↔ `Foo/`) holding the entry's owned files: handoffs, context companions, sources, sketches, enrichments. Bundles are lazy: they appear only when something needs to live in them. Most entries never grow one. See [[SCHEMA]] §8 for the full spec.
+Knowledge entries may also have **entry bundles** — optional sibling folders named identically to the entry (e.g., `Foo.md` ↔ `Foo/`) holding the entry's owned files: batons, context companions, sources, sketches, enrichments. Bundles are lazy: they appear only when something needs to live in them. Most entries never grow one. See [[SCHEMA]] §8 for the full spec.
 
 ## Ceremony Triggers
 
@@ -116,7 +116,7 @@ These verbs ARE invocations. When Loudon uses one as an instruction — bare wor
 | Say (any of) | Ceremony — in one line | Full Spec |
 |---|---|---|
 | "deposit", "let's deposit", "add this to the palace", "memorialize this" | **Deposit** — draft entry/edits from the conversation; show before writing; record to [[Deposit Archive]] | [[Deposit Ceremony]] |
-| "handoff", "hand this off", "draft a handoff" | **Handoff** — capture in-progress state so a fresh Claude continues; write to the entry bundle | [[Handoff Ceremony]] |
+| "baton", "pass the baton", "baton this", "baton it to [surface]" | **Baton** — compress the live session into a baton (a file) the next Claude catches and runs with; delete on pickup, git is the archive | [[Baton Ceremony]] |
 | "harvest", "let's harvest" | **Harvest** — search past work, surface deposit candidates to a working list | [[Harvest Ceremony]] |
 | "weave", "let's weave" | **Weave** — Swarm Weave: map build → parallel audit → synthesis; topology, unsung paths, new links | [[Weave Ceremony]] |
 | "walk", "let's walk" | **Walk** — follow typed links from one entry, surface an unexpected connection | [[Walk Ceremony]] |
@@ -127,6 +127,8 @@ These verbs ARE invocations. When Loudon uses one as an instruction — bare wor
 | "self-model update" | **Self-Model Update** — revise [[SUBSTRATE]] to current state | [[Self-Model Update Ceremony]] |
 | "connect this", "connect [X] to the palace" | **Connection** — propose typed links between the topic and existing entries | [[Palace Ceremonies]] |
 | "what does the palace say about [topic]?" | **Query** — read relevant entries and synthesize, following typed links | [[Palace Ceremonies]] |
+
+**"Handoff" is ambiguous — ask first.** "Baton" is the official trigger for the **[[Baton Ceremony]]** (formerly the Handoff Ceremony; the baton is the file that gets passed). Loudon also says "handoff," but sometimes means an informal, non-ceremony pass. So when he says "handoff" or "hand this off," do not assume — ask: *"Baton ceremony, or an informal handoff?"* and proceed on his answer. This is a deliberate, temporary training-wheel while the "baton" habit sets in; retire it once "baton" is reliable.
 
 Cadences, the Ceremony Reader, and full specs: [[Palace Ceremonies]]. Operational detail for agents: [[Substrate Skill]].
 

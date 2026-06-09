@@ -64,7 +64,9 @@ The complete and canonical list of all palace ceremonies. Every ceremony has a t
 
 | Ceremony | Trigger | What Happens | Full Spec |
 |---|---|---|---|
-| The Handoff | "handoff" / "Hand this off" / "Draft a handoff" | Capture the operating state of an in-progress move so a fresh Claude can continue without restarting. Writes to the entry's bundle. Tight and transient — archived after consumption. | [[Handoff Ceremony]] |
+| The Baton | "baton" / "pass the baton" / "baton this" / "baton it to [surface]" | Compress an in-progress move into a baton (a file) the next Claude catches and runs with, without restarting. Writes to the entry's bundle (or the work's home). Disposable — deleted on pickup; git is the archive. | [[Baton Ceremony]] |
+
+**"Handoff" is ambiguous — ask first.** "Baton" is the official trigger; the baton is the file that gets passed. Loudon also says "handoff," but sometimes means an informal, non-ceremony pass — so when he says "handoff" or "hand this off," ask *"Baton ceremony, or an informal handoff?"* and proceed on his answer. A deliberate, temporary training-wheel while the "baton" habit sets in.
 
 ---
 

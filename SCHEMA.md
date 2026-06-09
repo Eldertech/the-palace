@@ -337,7 +337,7 @@ When a ceremony file exceeds ~8KB, split it into two files:
 - [[Deposit Ceremony]] + [[Deposit Ceremony — Context]]
 - [[Harvest Ceremony]] + [[Harvest Ceremony — Context]]
 - [[Weave Ceremony]] + [[Weave Ceremony — Context]]
-- [[Handoff Ceremony]] + [[Handoff Ceremony — Context]]
+- [[Baton Ceremony]] + [[Baton Ceremony — Context]]
 
 ---
 
@@ -353,7 +353,7 @@ Anywhere the answer is no: that is a documentation debt. Pay it before closing t
 
 ## 8. Entry Bundles
 
-An **entry bundle** is an optional sibling folder, named identically to the entry (no extension), that holds the entry's owned files: handoffs, context companions, sources, sketches, enrichments. The `.md` is the canonical surface; the bundle is its private substrate. Bundles are plumbing, not ceremony — they appear when a ceremony needs a file to live somewhere, and do not require their own invocation.
+An **entry bundle** is an optional sibling folder, named identically to the entry (no extension), that holds the entry's owned files: batons, context companions, sources, sketches, enrichments. The `.md` is the canonical surface; the bundle is its private substrate. Bundles are plumbing, not ceremony — they appear when a ceremony needs a file to live somewhere, and do not require their own invocation.
 
 **Folder naming:** `[Entry].md` ↔ `[Entry]/` (exact match, no extension).
 
@@ -367,7 +367,7 @@ An **entry bundle** is an optional sibling folder, named identically to the entr
 |---|---|
 | `title` | Matches the filename. |
 | `born` | YYYY-MM-DD when the file was created. |
-| `links` | At least one link to the parent entry. Use `connects-to` with a `label` naming the specific register (e.g., `child-of`, `handoff-for`, `context-of`). |
+| `links` | At least one link to the parent entry. Use `connects-to` with a `label` naming the specific register (e.g., `child-of`, `baton-for`, `context-of`). |
 | `forward_vector` | One first-person sentence stating what this file is for and what its end-state is. Boilerplate per file type is fine; self-documenting is required. |
 
 This keeps every file in the palace self-describing without conflating bundle files with entries.
@@ -376,7 +376,7 @@ This keeps every file in the palace self-describing without conflating bundle fi
 
 | Type | Scope |
 |---|---|
-| `handoff` | Operational state for a new Claude picking up an in-progress move on this entry. Tight, transient, archived after consumption. See [[Handoff Ceremony]]. |
+| `baton` | Operational state for a new Claude picking up an in-progress move on this entry. Tight, transient, deleted after consumption; git is the archive. See [[Baton Ceremony]]. |
 | `context` | Long-running session-history companion accumulating across multiple sessions. Generalizes the Jewel — Context pattern. |
 | `source` | Extracted, quoted, translated, or annotated source material supporting the entry. Use the qualifier slot to name which one (`Foo — source — borges.md`). |
 | `sketch` | Half-formed material not yet ready for the entry body but too substantial for an HTML comment. |
@@ -388,7 +388,7 @@ New types may be tried freely. When a type earns recurring use across multiple b
 
 **Archive:** Consumed bundle files move to `[Entry]/Archive/`. Stays with the entry; git carries history.
 
-**Wikilink resolution:** Obsidian resolves `[[name]]` flatly across the vault regardless of folder. `[[Foo — handoff]]` resolves to that file inside `Foo/` without special syntax. The flat-namespace constraint is exactly why bundle filenames must carry the entry prefix.
+**Wikilink resolution:** Obsidian resolves `[[name]]` flatly across the vault regardless of folder. `[[Foo — baton]]` resolves to that file inside `Foo/` without special syntax. The flat-namespace constraint is exactly why bundle filenames must carry the entry prefix.
 
 **Hubs:** The bundle pattern applies to hubs the same as any entry. Whether hub-bundle conventions diverge in practice is an open question deferred to use.
 
