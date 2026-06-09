@@ -48,6 +48,8 @@ The deeper claim: a system earns the right to be reckless by first being careful
 - When the digest harvests the weird stratum, who decides what composts? Is there a trickster commit so unexplained that even its author can no longer reconstruct the intent — and is that a failure, or the point?
 - Could the same branded-stratum pattern license *other* reckless capabilities (a trickster delete, a trickster merge) — or is write-anywhere the only recklessness git can fully insure?
 
-## Active Baton
+## Built (phase 1)
 
-[[Trickster Commit — build baton]] — drafted 2026-06-09
+Shipped 2026-06-09 (`517c33b`): the mode is live on the [[STIGMERGY]] armed-write path. `checkAllowList` split into `checkPathSafety` (security — repo escape / NUL / non-`.md` / VCS+build trees, *never* relaxed) and `checkCanon` (care — canon files, ceremony cards, `_ops/` machinery — the line the trickster crosses); `previewEdit`/`armedWriteEntry` take a `trickster` flag that gates on path-safety only; the lane's `trickster({ path, op })` commits in one gesture as `Palace-Author: trickster` + `verify: unverified`; `POST /api/entry-agent/trickster` plus the `/trick <text>` gesture in the Companion window land it, and the committed proof's existing `[undo]` *is* "untrick last"; `Palace-Author: trickster` carries a magenta brand in the LOG deck. The server path is verified end-to-end (unit + integration: canon bypass, brand, undo, path-safety refusal); the `/trick` input gesture and the LOG brand are compile-checked, awaiting a live click-through.
+
+Deferred to phase 2 (the open questions above): worker-mediated `/trick <instruction>` (natural language → op), and the trickster digest that harvests the branded stratum into grounded prose.
