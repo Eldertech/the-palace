@@ -11,14 +11,18 @@
 // steward"), so the durable helper takes a single title. Register and validate
 // run in-process via registry.js / manifest.js rather than shelling to cli.js.
 
-import { readFileSync, writeFileSync, mkdirSync, existsSync, readdirSync } from 'node:fs';
+import { readFileSync, writeFileSync, mkdirSync, existsSync } from 'node:fs';
 import { resolve, join, relative } from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 import { registerAgent } from './registry.js';
 import { loadManifest } from './manifest.js';
+import { findEntryFile } from './entry-paths.js';
+
+// findEntryFile is canonical in entry-paths.js (shared with the plan materializer
+// and the prompt builder). Re-exported to preserve enchant.js's export surface.
+export { findEntryFile };
 
 const PALACE_ROOT_DEFAULT = resolve(fileURLToPath(new URL('.', import.meta.url)), '../../../..');
-const EXCLUDE_DIRS = new Set(['.git', '.claude', '.obsidian', 'node_modules', '_tools', '.venvs']);
 
 /**
  * kebab-case a page title for the steward directory slug. Drops apostrophes,
@@ -142,27 +146,6 @@ export function buildInitialState(fm) {
     pending_requests: [],
     resolved_requests: [],
   };
-}
-
-/**
- * Locate a palace entry file by title (flat namespace), skipping system dirs.
- */
-export function findEntryFile(palaceRoot, title) {
-  const target = `${title}.md`;
-  const stack = [palaceRoot];
-  while (stack.length) {
-    const dir = stack.pop();
-    let entries;
-    try { entries = readdirSync(dir, { withFileTypes: true }); } catch { continue; }
-    for (const e of entries) {
-      if (e.isDirectory()) {
-        if (!EXCLUDE_DIRS.has(e.name)) stack.push(join(dir, e.name));
-      } else if (e.name === target) {
-        return join(dir, e.name);
-      }
-    }
-  }
-  return null;
 }
 
 /**

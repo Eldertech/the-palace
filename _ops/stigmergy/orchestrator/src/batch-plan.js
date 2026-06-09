@@ -34,6 +34,7 @@
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import { findEntryFile } from './entry-paths.js';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
@@ -52,7 +53,6 @@ const ignoreDebounce = argv.includes('--ignore-debounce');
 
 const SKIP_STAGES = new Set(['dormant', 'composting']);
 const permDir = path.join(palaceRoot, '_ops/agents/permanent');
-const EXCLUDE_DIRS = new Set(['.git', '.claude', '.obsidian', 'node_modules', '_tools']);
 
 function readFrontmatter(file) {
   try {
@@ -69,25 +69,10 @@ function readFrontmatter(file) {
   } catch { return {}; }
 }
 
-// Resolve a palace entry by title (a file named "<title>.md"), Obsidian-style:
-// search the whole tree, ignore system dirs.
-function findEntryFile(title) {
-  const target = `${title}.md`;
-  const stack = [palaceRoot];
-  while (stack.length) {
-    const dir = stack.pop();
-    let entries;
-    try { entries = fs.readdirSync(dir, { withFileTypes: true }); } catch { continue; }
-    for (const e of entries) {
-      if (e.isDirectory()) {
-        if (!EXCLUDE_DIRS.has(e.name)) stack.push(path.join(dir, e.name));
-      } else if (e.name === target) {
-        return path.join(dir, e.name);
-      }
-    }
-  }
-  return null;
-}
+// Entry resolution by title is canonical in entry-paths.js (findEntryFile takes
+// palaceRoot explicitly; here it's a module const, threaded at the call site).
+// Its EXCLUDE_DIRS adds `.venvs` over this script's former local set — a safe
+// widening, since virtualenvs hold no `.md` entries.
 
 const now = Date.now();
 const plan = {
@@ -121,7 +106,7 @@ for (const dir of stewardDirs) {
   let state = {};
   try { state = JSON.parse(fs.readFileSync(path.join(dir, 'state.json'), 'utf8')); } catch { /* never run */ }
 
-  const homeFile = findEntryFile(home);
+  const homeFile = findEntryFile(palaceRoot, home);
   const fm = homeFile ? readFrontmatter(homeFile) : {};
   const stage = fm.stage || 'unknown';
   const status = fm.status || 'unknown';
