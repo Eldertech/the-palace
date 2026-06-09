@@ -12,7 +12,7 @@ forward_vector: "I am Generative Wavetable Libraries's materialized work state �
 
 > Materialized read-model of the steward's work state. Regenerated each cycle from the [[STIGMERGY]] persistent board; do not hand-edit the decision sections.
 > **Forward vector:** see [[Generative Wavetable Libraries]] frontmatter `forward_vector` — not copied here (single-source-of-truth).
-> _Last materialized: 2026-06-09T15:06:11.301Z._
+> _Last materialized: 2026-06-09T17:00:47.703Z._
 
 ## Plan
 
@@ -75,21 +75,23 @@ _None open._
 - **Steward recommendation:** accept — keep zero_phase_reset; the spectral progression is clean and monotonic. Only reach for carry-phase if it sounds inert.
 - **Posted:** 2026-05-27T12:31:00-04:00
 - **Resolved:** 2026-05-27T12:21:13.093Z (by `resp-mpo19czp-s9zd3v`)
-- **Outcome:** GRANTED — (no option_id; legacy generic-template response)
+- **Outcome:** GRANTED — (no option_id)
 
 ### `gwl-steward-004` — —
-- **Topic:** Phase-coherence policy for the Crystal Bravais frame generator
-- **Options:** —
-- **Posted:** —
-- **Resolved:** 2026-05-27T12:31:00-04:00 (by `resp-mpo05kvb-g6ghxm`)
-- **Outcome:** GRANTED — zero_phase_reset.
+- **Topic:** Phase 1 module spec + one design fork: how phases line up across frames
+- **Options:** zero_phase_reset · carry_phase_through · reset_default_expose_later
+- **Steward recommendation:** Reset every frame to a known start (zero-phase reset) for Phase 1 — clean, predictable sweeps, and I can expose carry-through later if the motion feels too tame.
+- **Posted:** 2026-05-27T11:21:00-04:00
+- **Resolved:** 2026-05-27T11:50:17.063Z (by `resp-mpo05kvb-g6ghxm`)
+- **Outcome:** GRANTED — option_id=zero_phase_reset
 
 ### `gwl-steward-002` — —
-- **Topic:** Phase 1 scope vs. relationship to the 2D Torus Wavetable Synthesizer
-- **Options:** —
-- **Posted:** —
-- **Resolved:** 2026-05-27T11:21:00-04:00 (by `resp-mpnzhjnc-cwkcwv`)
-- **Outcome:** GRANTED — option proceed_parallel ('Build Phase 1; stay fully parallel, no shared boundary yet'). Loudon chose parallel over the steward's recommended feed/export-layer framing.
+- **Topic:** Before I build: do I own a format, or do I overlap with the Torus instrument?
+- **Options:** proceed_feed · proceed_parallel · resolve_first
+- **Steward recommendation:** proceed_feed — start Phase 1 spec while explicitly positioning as Torus's export layer; the two are complementary (1D file generator vs. 2D live instrument), so building won't duplicate it.
+- **Posted:** 2026-05-27T11:16:00-04:00
+- **Resolved:** 2026-05-27T11:31:35.736Z (by `resp-mpnzhjnc-cwkcwv`)
+- **Outcome:** GRANTED — option_id=proceed_parallel
 
 ## Done
 

@@ -10,61 +10,6 @@
     "max_tokens_hits": 0,
     "score": "green"
   },
-  "stewardship": {
-    "stage_at_last_activation": "growing",
-    "vector_at_last_activation": "I want to become the architecture where stable timbres emerge from populations rather than individual grains — a shader-parallel neuron model where statistical emergence and biological constraint meet, making the crowd's coherence the primary control surface.",
-    "vector_changed_since_last": false,
-    "stage_changed_since_last": false,
-    "page_updates_observed_since_last": []
-  },
-  "pending_requests": [
-    {
-      "request_id": "ngs-steward-007",
-      "resource": "directional_decision",
-      "blocking": false,
-      "posted_at": "2026-06-07T18:37:24.255Z",
-      "options": [
-        "sonify-r",
-        "performance-map",
-        "deepen-raster",
-        "you-steer"
-      ]
-    }
-  ],
-  "resolved_requests": [
-    {
-      "request_id": "ngs-steward-002",
-      "resource": "directional_decision",
-      "decision_topic": "How does Neural Granular Synthesis relate to the population engine the Action Potential Oscillator already built?",
-      "blocking": false,
-      "posted_at": "2026-06-06T16:32:00-04:00",
-      "options": [
-        "CONSUME-NEUROPULSE",
-        "FORK-DISTINCT",
-        "REDRAW-BOUNDARY",
-        "YOU-DEFINE"
-      ],
-      "resolved_at": "2026-06-07T16:27:41.828Z",
-      "resolved_by": "resp-mq3zwpdw-0sz0zw",
-      "outcome": "GRANTED — option_id=CONSUME-NEUROPULSE"
-    },
-    {
-      "request_id": "ngs-steward-004",
-      "resource": "directional_decision",
-      "decision_topic": "Where to start the control-surface layer over neuropulse.dsp — math doc, raster plot, or control patch?",
-      "blocking": false,
-      "posted_at": "2026-06-07T16:43:00-04:00",
-      "options": [
-        "MATH-DOC-FIRST",
-        "RASTER-FIRST",
-        "CONTROL-PATCH-FIRST",
-        "YOU-DEFINE"
-      ],
-      "resolved_at": "2026-06-07T16:55:47.563Z",
-      "resolved_by": "resp-mq40wu3v-za8msi",
-      "outcome": "GRANTED — notes: \"do 1 and 2 for this round\" (MATH-DOC-FIRST + RASTER-FIRST); executed in cycle 3 (shipped control-vocabulary-math.md + raster-plot-explorer.html)."
-    }
-  ],
   "_pilot_metadata": {
     "cycle_1_notes": "Palace heartbeat batch 2026-06-06T10:39:37Z. ~121010 subagent tokens, 28 tool uses."
   }

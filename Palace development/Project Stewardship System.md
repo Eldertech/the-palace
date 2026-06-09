@@ -165,7 +165,7 @@ Pick one project and write its manifest by hand per Infrastructure Spec §3.1. R
 A permanent-agent directory at `_ops/agents/permanent/generative-sample-libraries/` containing the runtime artifacts (these stay in `_ops/` because they're operational state, not knowledge):
 
 - `manifest.json` — spawn config per Infrastructure Spec §3.1, plus a `stewardship` block (stage at spawn, vector at spawn, posture source) and a `_pilot_metadata` block flagging hand-run provenance
-- `state.json` — orchestrator working state including `health` block, `stewardship` substate, `pending_requests` array
+- `state.json` — orchestrator working state, **pure runtime** after the SSOT cutover (2026-06-09): `iteration`, `last_active`, `last_read_cursor`, `health` (+ optional `_*_metadata`). It no longer carries a `stewardship` substate or `pending_requests`/`resolved_requests` arrays — stage/vector are read live from the entry frontmatter, decision state from the board, both surfaced in the bundle `[Entry] — plan.md`
 - `history.jsonl` — append-only event log: SPAWN → tool calls → reasoning → write_blackboard calls → CYCLE_COMPLETE, plus several post-cycle FIX events recording the corrections described below
 - `pending-bbs-append.jsonl` — pre-fix forensic snapshot of the staged BBS messages
 

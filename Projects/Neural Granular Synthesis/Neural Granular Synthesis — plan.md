@@ -12,7 +12,7 @@ forward_vector: "I am Neural Granular Synthesis's materialized work state — op
 
 > Materialized read-model of the steward's work state. Regenerated each cycle from the [[STIGMERGY]] persistent board; do not hand-edit the decision sections.
 > **Forward vector:** see [[Neural Granular Synthesis]] frontmatter `forward_vector` — not copied here (single-source-of-truth).
-> _Last materialized: 2026-06-09T15:06:11.301Z._
+> _Last materialized: 2026-06-09T17:00:47.703Z._
 
 ## Plan
 
@@ -32,11 +32,10 @@ _None open._
 - **Outcome:** GRANTED — option_id=sonify-r
 
 ### `ngs-steward-004` — directional_decision
-- **Topic:** Where to start the control-surface layer over neuropulse.dsp — math doc, raster plot, or control patch?
 - **Options:** MATH-DOC-FIRST · RASTER-FIRST · CONTROL-PATCH-FIRST · YOU-DEFINE
 - **Posted:** 2026-06-07T16:43:00-04:00
 - **Resolved:** 2026-06-07T16:55:47.563Z (by `resp-mq40wu3v-za8msi`)
-- **Outcome:** GRANTED — notes: "do 1 and 2 for this round" (MATH-DOC-FIRST + RASTER-FIRST); executed in cycle 3 (shipped control-vocabulary-math.md + raster-plot-explorer.html).
+- **Outcome:** GRANTED — (no option_id); notes: "do 1 and 2 for this round."
 
 ### `ngs-steward-002` — directional_decision
 - **Topic:** How does Neural Granular Synthesis relate to the population engine the Action Potential Oscillator already built?

@@ -187,9 +187,23 @@ All six phases executed and committed on `main` (commits `9a6e449` → `527f97a`
 
 The done-test from the forward vector is met: *an agent can read an entry cold and never need to parse a JSONL file in `_ops` to know where the work stands.* The single forward question still live: the lightest loop for a steward to flag a `staging.md` arc-revision and have it picked up next cycle — watch how often that fires on Shepard before designing it.
 
-## Consumed Handoff
+## Outcome — SSOT cutover (the deferred state.json slim), shipped 2026-06-09
 
-[[Bundle-Local Stewardship — Production Plan — handoff]] — drafted 2026-06-09, consumed + archived 2026-06-09 (Mac build session). See `Archive/` in this bundle.
+The one step Phase 1 deferred — *"state.json deliberately NOT slimmed yet"* (commit `fbaf1ac`) — is now complete. The cutover makes the CQRS split literally true: decision state is the board's, vector/stage are the frontmatter's, `state.json` is pure runtime.
+
+- **Readers rewired** (orchestrator `src/`): `process-cycle.js` no longer persists `pending_requests`/`resolved_requests`/`stewardship` — it passes the board-derived `{stillPending, nowResolved}` view straight to `plan-file.js` and deletes the legacy keys on every write (self-healing). `plan-file.js` takes explicit board-derived `pending`/`resolved` (state-array fallback kept for fixtures). `build-cycle-prompt.js` derives open asks from a board reconcile and injects a board-derived decision view (in-memory only) so the steward still sees its decisions; the `state.stewardship` stage fallback is dropped (manifest spawn-snapshot fallback kept). `enchant.js` spawns new stewards **born slim**. `git.js` drift doc corrected (drift = frontmatter vs. git history, not a state copy). +2 vitest including the **Shepard board-wins-over-stale-state regression** (223 green).
+- **19 `state.json` slimmed** (`scripts/slim-state.js`, idempotent) to pure runtime — removed `stewardship`, `pending_requests`, `resolved_requests` everywhere, plus GSL's one-off `stranded_requests` (a board-reset-wiped, since-superseded ask; preserved in `history.jsonl` + git). Kept `health` + `_pilot_metadata`/`_demo_metadata`.
+- **19 plans regenerated board-only** (`scripts/backfill-plans.js`, post-slim). Shepard now shows `018`/`019` **resolved** from the board — the canonical drift (open in state, granted on the board) is killed: open=0, resolved=10.
+- **Verified** (`scripts/verify-plans.js`, extended with a state-runtime-only assertion): **19/19 GREEN** — every plan four-section + cold-readable + vector-as-pointer; Open == board reconcile; Resolved ⊇ board-resolved; `state.json` carries **only** runtime keys; zero entry-owned strays in `_ops`. Plus a `build-cycle-prompt` smoke against real slimmed Shepard state (no model dispatch) — the rewired readers work against live data.
+- **Manifest decision (kept):** `manifest.stewardship.{stage,vector}_at_spawn` stays as the immutable spawn snapshot (forensic; doesn't drift) — confirmed, not folded into the plan.
+- **Board-completeness caveat (logged, not silently dropped):** the persistent board's earliest GSL asks (`gsl-steward-002`/`003`) predate it, so board-only regeneration no longer lists them in GSL's live plan Resolved section. They remain in `history.jsonl` + git — deep history in the event log, current state in the plan, which is the SSOT-pure outcome the handoff's *"regenerate from the board"* directive intends.
+
+Canon touched: `runAgentCycle.md`, [[Substrate Skill]] (read-model is board-derived), [[Project Stewardship System]] (`state.json` is pure runtime), this entry. Remaining doc-debt flagged: [[Palace Agent Infrastructure Spec]] still shows a `pending_requests` array in a `state.json` example — left for a deliberate spec pass.
+
+## Consumed Handoffs
+
+- [[Bundle-Local Stewardship — Production Plan — handoff]] — Phases 0–5; drafted 2026-06-09, consumed + archived 2026-06-09 (Mac build session).
+- [[Bundle-Local Stewardship — Production Plan — handoff — ssot-cutover]] — the deferred `state.json` slim; drafted 2026-06-09 (Cowork), archived as this session's first act + consumed on verified completion 2026-06-09 (Mac build session). See `Archive/` in this bundle.
 
 ---
 

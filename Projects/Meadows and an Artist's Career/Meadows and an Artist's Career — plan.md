@@ -12,7 +12,7 @@ forward_vector: "I am Meadows and an Artist's Career's materialized work state �
 
 > Materialized read-model of the steward's work state. Regenerated each cycle from the [[STIGMERGY]] persistent board; do not hand-edit the decision sections.
 > **Forward vector:** see [[Meadows and an Artist's Career]] frontmatter `forward_vector` — not copied here (single-source-of-truth).
-> _Last materialized: 2026-06-09T15:06:11.301Z._
+> _Last materialized: 2026-06-09T17:00:47.703Z._
 
 ## Plan
 
@@ -30,13 +30,6 @@ _None open._
 - **Posted:** 2026-06-07T16:46:00-04:00
 - **Resolved:** 2026-06-09T03:58:40.815Z (by `resp-mq64160f-9p8aa7`)
 - **Outcome:** GRANTED — (no option_id); notes: "Do deep online research and I did finish the paradigm work, I think there are multiple stewards running on the same agent. Can you check that and then only have a single agent running on this page? If you look in your Bundle you will likely find the completed worksheet. "
-
-### `meadows-career-steward-007` — directional_decision
-- **Topic:** Interview round 1 — answer in the notes box, leverage-points reading of your career
-- **Options:** INTERVIEW-ME · DEFER · RESHAPE-QUESTIONS · VOICE-NOT-TEXT · JUST-Q1-AND-Q6 · JUST-Q5-AND-Q7 · ANSWER-AS-WALK
-- **Posted:** 2026-05-27T20:02:00-04:00
-- **Resolved:** 2026-06-09T03:52:33.042Z (by `resp-mq63ta8i-56ur5j`)
-- **Outcome:** GRANTED — (no option_id); notes: "This has been completed already, I think there are two stewards are running the same agent? Can you look in your own bundle and see completed work?"
 
 ### `meadows-career-steward-021` — directional_decision
 - **Options:** FINISH-THE-TOP · GAP-PASS-FIRST · CREATIVE-COACH-ENTRY · DIFFERENT
@@ -76,6 +69,13 @@ _None open._
 - **Posted:** 2026-06-03T16:32:00-04:00
 - **Resolved:** 2026-06-05T19:03:41.937Z (by `69d598bd-bcfe-4bd2-8582-b039c8184493`)
 - **Outcome:** GRANTED — option_id=MINE-THEN-INTERVIEW
+
+### `meadows-career-steward-007` — directional_decision
+- **Topic:** Interview round 1 — answer in the notes box, leverage-points reading of your career
+- **Options:** INTERVIEW-ME · DEFER · RESHAPE-QUESTIONS · VOICE-NOT-TEXT · JUST-Q1-AND-Q6 · JUST-Q5-AND-Q7 · ANSWER-AS-WALK
+- **Posted:** 2026-05-27T20:02:00-04:00
+- **Resolved:** 2026-06-09T03:52:33.042Z (by `resp-mq63ta8i-56ur5j`)
+- **Outcome:** GRANTED — (no option_id); notes: "This has been completed already, I think there are two stewards are running the same agent? Can you look in your own bundle and see completed work?"
 
 ### `meadows-career-steward-004` — directional_decision
 - **Topic:** First concrete move forward — which Stage 1-4 work to open next

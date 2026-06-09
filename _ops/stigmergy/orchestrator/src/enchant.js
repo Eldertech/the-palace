@@ -122,8 +122,15 @@ export function buildManifest({ title, fm, slug, today }) {
 
 /**
  * Build the initial state.json object for a freshly-enchanted steward.
+ *
+ * Born slim (Bundle-Local Stewardship SSOT cutover, 2026-06-09): pure runtime
+ * only. `stage` / `forward_vector` are read LIVE from the entry frontmatter and
+ * decision state (open/resolved) is derived from the append-only board — so a
+ * new steward carries no `stewardship` block and no pending/resolved arrays.
+ * The spawn-time stage/vector snapshot, if needed for forensics, lives in
+ * manifest.json (`stewardship.{stage,vector}_at_spawn`), not here.
  */
-export function buildInitialState(fm) {
+export function buildInitialState() {
   return {
     iteration: 0,
     last_active: null,
@@ -136,15 +143,6 @@ export function buildInitialState(fm) {
       max_tokens_hits: 0,
       score: 'green',
     },
-    stewardship: {
-      stage_at_last_activation: fm.stage || 'unknown',
-      vector_at_last_activation: fm.forward_vector || '',
-      vector_changed_since_last: false,
-      stage_changed_since_last: false,
-      page_updates_observed_since_last: [],
-    },
-    pending_requests: [],
-    resolved_requests: [],
   };
 }
 
@@ -180,7 +178,7 @@ export function enchantSteward(opts) {
   mkdirSync(dir, { recursive: true });
   const manifestPath = join(dir, 'manifest.json');
   writeFileSync(manifestPath, JSON.stringify(buildManifest({ title, fm, slug, today }), null, 2) + '\n');
-  writeFileSync(join(dir, 'state.json'), JSON.stringify(buildInitialState(fm), null, 2) + '\n');
+  writeFileSync(join(dir, 'state.json'), JSON.stringify(buildInitialState(), null, 2) + '\n');
   writeFileSync(join(dir, 'history.jsonl'), '');
 
   const validation = loadManifest(manifestPath);

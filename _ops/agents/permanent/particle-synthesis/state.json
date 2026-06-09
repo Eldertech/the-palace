@@ -10,27 +10,6 @@
     "max_tokens_hits": 0,
     "score": "green"
   },
-  "stewardship": {
-    "stage_at_last_activation": "growing",
-    "vector_at_last_activation": "I want to move from architectural vision to a first working prototype — a GPU compute shader generating 1000 audio-rate particles with position, velocity, and mass mapped to frequency, amplitude, and filter Q. The prism metaphor is ready; the instrument isn't. My direction is toward the simplest implementation that produces something that sounds like physics, not like parameter modulation — the moment where the grain's spatial trajectory becomes audibly indistinguishable from a physical dispersion event.",
-    "vector_changed_since_last": false,
-    "stage_changed_since_last": false,
-    "page_updates_observed_since_last": []
-  },
-  "pending_requests": [
-    {
-      "request_id": "particle-synthesis-002",
-      "resource": "directional_decision",
-      "blocking": false,
-      "posted_at": "2026-06-06T08:01:00-04:00",
-      "options": [
-        "EXTEND-WEBAUDIO",
-        "WEBGPU-COMPUTE",
-        "GEN-MAX"
-      ]
-    }
-  ],
-  "resolved_requests": [],
   "_pilot_metadata": {
     "cycle_1_notes": "Palace heartbeat batch 2026-06-06T10:39:37Z. ~69925 subagent tokens, 15 tool uses."
   }

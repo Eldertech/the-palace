@@ -65,6 +65,24 @@ describe('renderPlanMarkdown', () => {
     expect(md).toContain('_None yet._');
   });
 
+  test('explicit board-derived pending/resolved override the legacy state arrays (SSOT path)', () => {
+    // state still lists 018 + 019 as pending; the board-derived view says 018 is
+    // resolved and nothing is open — the explicit view must win.
+    const md = renderPlanMarkdown({
+      home: 'Shepard Tone Synthesizer', state: SAMPLE_STATE, stage: 'growing', today: '2026-06-09',
+      pending: [],
+      resolved: [{
+        request_id: 'shepard-steward-018', resource: 'audition_verification',
+        outcome: 'GRANTED — option_id=APPROVE-STAGE-2',
+        resolved_at: '2026-06-06T18:00:00Z', resolved_by: 'grant-x',
+      }],
+    });
+    expect(md).toContain('_None open._');                 // explicit pending=[] wins over state's two pending
+    expect(md).toContain('`shepard-steward-018`');         // the board-derived resolved entry renders
+    expect(md).toContain('option_id=APPROVE-STAGE-2');
+    expect(md).not.toContain('shepard-steward-019');       // state's pending arrays are ignored
+  });
+
   test('includes the staging pointer in the Plan section when a staging file exists', () => {
     const md = renderPlanMarkdown({ home: 'Shepard Tone Synthesizer', state: SAMPLE_STATE, stage: 'growing', today: '2026-06-09', stagingTitle: 'Shepard Tone Synthesizer — Staging' });
     expect(md).toContain('Teaching arc:');

@@ -31,6 +31,8 @@ beforeEach(() => {
   tmp = mkdtempSync(join(tmpdir(), 'palace-orch-cycle-'));
 });
 
+// Pure runtime, post-SSOT-cutover: no stewardship block, no decision arrays.
+// stage is read live from the entry frontmatter; decisions live on the board.
 function freshState() {
   return {
     iteration: 1,
@@ -44,15 +46,6 @@ function freshState() {
       max_tokens_hits: 0,
       score: 'green',
     },
-    stewardship: {
-      stage_at_last_activation: 'growing',
-      vector_at_last_activation: 'I will become a chat-driven generator of multisampled instruments — Claude conducts the interview, draws audio from any source, and renders a playable sample library in any open sampler format requested.',
-      vector_changed_since_last: false,
-      stage_changed_since_last: false,
-      page_updates_observed_since_last: [],
-    },
-    pending_requests: [],
-    resolved_requests: [],
   };
 }
 
@@ -128,7 +121,7 @@ describe('full-cycle integration', () => {
       vars: {
         home: manifest.home,
         cycle_id: manifest.cycle_id,
-        stage_at_last_activation: state.stewardship.stage_at_last_activation,
+        stage_at_last_activation: 'growing', // read live from entry frontmatter in production
       },
     });
     expect(prompt).toMatch(/Generative Sample Libraries/);
@@ -183,21 +176,19 @@ describe('full-cycle integration', () => {
     expect(persisted[0].health.score).toBe('green');
     expect(persisted[0].health._orchestrator_metadata.dispatch_mode).toBe('claude-code-subagent');
 
-    // STEP 12: state update (verify the shape we'd write back).
+    // STEP 12: state update (verify the slim runtime shape we'd write back).
+    // Post-SSOT-cutover, state.json is pure runtime — the open ask lives on the
+    // board (reconciled into the bundle plan.md), NOT in state.
     const updated = {
       ...state,
       iteration: state.iteration + 1,
       last_active: '2026-05-04T18:51:00Z',
       last_read_cursor: 'fixtures-cycle2-request',
-      pending_requests: [{
-        request_id: 'fixtures-cycle2-req-001',
-        resource: 'directional_decision',
-        blocking: false,
-        posted_at: '2026-05-04T18:50:30Z',
-      }],
     };
     expect(updated.iteration).toBe(2);
-    expect(updated.pending_requests[0].request_id).toBe('fixtures-cycle2-req-001');
+    expect(updated.pending_requests).toBeUndefined();
+    expect(updated.stewardship).toBeUndefined();
+    expect(Object.keys(updated).sort()).toEqual(['health', 'iteration', 'last_active', 'last_read_cursor']);
   });
 
   it('rejects the cycle when the subagent emits a RESOURCE_REQUEST without top-level request_id (Gap 9)', () => {

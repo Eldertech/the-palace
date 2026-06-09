@@ -77,15 +77,17 @@ describe('buildManifest', () => {
 });
 
 describe('buildInitialState', () => {
-  test('seeds iteration 0 and mirrors stage/vector into stewardship', () => {
-    const state = buildInitialState({ stage: 'sprout', forward_vector: 'grow', links: [] });
+  test('seeds iteration 0 and is born slim — pure runtime, no stewardship/decision arrays (SSOT cutover)', () => {
+    const state = buildInitialState();
     expect(state.iteration).toBe(0);
     expect(state.last_active).toBeNull();
     expect(state.last_read_cursor).toBeNull();
-    expect(state.stewardship.stage_at_last_activation).toBe('sprout');
-    expect(state.stewardship.vector_at_last_activation).toBe('grow');
-    expect(state.pending_requests).toEqual([]);
     expect(state.health.score).toBe('green');
+    // stage/forward_vector live in the entry frontmatter; decisions on the board.
+    expect(state.stewardship).toBeUndefined();
+    expect(state.pending_requests).toBeUndefined();
+    expect(state.resolved_requests).toBeUndefined();
+    expect(Object.keys(state).sort()).toEqual(['health', 'iteration', 'last_active', 'last_read_cursor']);
   });
 });
 
@@ -123,7 +125,10 @@ describe('enchantSteward (integration)', () => {
     expect(manifest.neighborhood).toContain('Project Stewardship System');
 
     const state = JSON.parse(readFileSync(path.join(dir, 'state.json'), 'utf8'));
-    expect(state.stewardship.stage_at_last_activation).toBe('growing');
+    // Born slim (SSOT cutover): pure runtime; stage is read live from frontmatter.
+    expect(state.iteration).toBe(0);
+    expect(state.stewardship).toBeUndefined();
+    expect(state.pending_requests).toBeUndefined();
 
     const registry = JSON.parse(readFileSync(path.join(root, '_ops/agents/permanent/REGISTRY.json'), 'utf8'));
     expect(registry.agents.map((a) => a.agent_id)).toContain('Cool Project');

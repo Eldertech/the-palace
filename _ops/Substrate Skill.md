@@ -161,7 +161,7 @@ An entry's `stage` field doubles as a confidence interval on alignment between L
 **The Machinery/Content Split — where stewardship state lives** (named 2026-06-09; full rationale in [[Bundle-Local Stewardship — Production Plan]] and [[Project Stewardship System]] § The Machinery/Content Split). Shared engine code, indexes, schedulers, and runtime bookkeeping belong in `_ops/`. Anything *about a specific entry* — its plan, its open decisions, its working memory — belongs in that entry's bundle. The design is CQRS, not relocation:
 
 - The append-only board stays the event log (machinery — *what happened*). Decisions are `RESOURCE_REQUEST` / `RESOURCE_GRANT` messages; one write path, never a second write surface.
-- `[Entry] — plan.md` in the bundle is the materialized **read-model** of the steward's work state, regenerated each cycle by the orchestrator from `pending_requests` / `resolved_requests` + done events. An agent or Loudon reads it cold without parsing JSONL in `_ops`.
+- `[Entry] — plan.md` in the bundle is the materialized **read-model** of the steward's work state, regenerated each cycle by the orchestrator from the **board-derived** open/resolved decision view (reconciled from the append-only board — the single source of truth, not a copy in `state.json`) + done events. An agent or Loudon reads it cold without parsing JSONL in `_ops`.
 - `_ops/agents/permanent/[slug]/` keeps only slim runtime: iteration, cursor, health. Vector and stage are read **live from the entry's frontmatter**, never copied — copying just moves the drift.
 
 **The `[Entry] — plan.md` template** (§8 bundle type; keep internals loose — categories earn their place across many runs before hardening):

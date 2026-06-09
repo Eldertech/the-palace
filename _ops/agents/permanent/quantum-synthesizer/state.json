@@ -10,32 +10,6 @@
     "max_tokens_hits": 0,
     "score": "green"
   },
-  "stewardship": {
-    "stage_at_last_activation": "growing",
-    "vector_at_last_activation": "I will keep proving — through audio and video artifacts, not only prose — that the Schrödinger equation IS a synthesis system: testing boundary conditions as harmonic content with actual sound, testing potential shape as anharmonicity with actual visualization, until monism is something the ear has heard rather than something the page has claimed.",
-    "vector_changed_since_last": false,
-    "stage_changed_since_last": false,
-    "page_updates_observed_since_last": []
-  },
-  "pending_requests": [],
-  "resolved_requests": [
-    {
-      "request_id": "quantum-synth-002",
-      "resource": "directional_decision",
-      "decision_topic": "Which first sensory proof do I build for the Schrödinger-as-synthesizer claim?",
-      "blocking": false,
-      "posted_at": "2026-06-06T17:02:00-04:00",
-      "options": [
-        "AUDIO-FIRST",
-        "INTERACTIVE-FIRST",
-        "VISUAL-FIRST",
-        "YOU-DEFINE"
-      ],
-      "resolved_at": "2026-06-06T11:55:52.351Z",
-      "resolved_by": "resp-mq2ara8v-zx3gnh",
-      "outcome": "GRANTED — option_id=AUDIO-FIRST"
-    }
-  ],
   "_pilot_metadata": {
     "cycle_1_notes": "Palace heartbeat batch 2026-06-06T10:39:37Z. ~124941 subagent tokens, 20 tool uses."
   }
