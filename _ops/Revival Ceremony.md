@@ -42,6 +42,7 @@ links:
 **Failure mode:** If the revival rationale is unclear or the connection to current work is tenuous, halt and return to Spore Check. A revival without a clear rationale is a confusion, not a ceremony. The entry should remain dormant until the rationale can be stated plainly.
 
 **Git commit:** `Revival — [entry name] — [date] — [one-line reason]`
+*(From Cowork, commit via the lock-safe committer; Mac-side Claude Code, `git commit` normally — see [[CLAUDE]] §Committing from Cowork.)*
 
 ---
 
@@ -118,12 +119,14 @@ The `seed` or `sprout` stage after revival is not a demotion. It is an honest ac
 
 The full lifecycle of a palace entry is now:
 ```
-seed → sprout → growing → mature → fruiting → dormant ← Revival Ceremony
+seed → sprout → growing → mature → fruiting → dormant ←── Revival Ceremony
+                                                  ↓            ↑
+                                            composting ────────┘
                                                   ↓
-                                            composting → [deletion at Weave]
+                                    [deletion at Weave, if not revived]
 ```
 
-The Revival Ceremony closes the loop between dormancy and active life. Without it, dormancy was a one-way door. With it, dormancy is a season — and seasons turn.
+The Revival Ceremony closes the loop between dormancy and active life. It can catch an entry from `dormant` *or* from `composting` — per [[SCHEMA]] §2's composting protocol, a composting entry is revivable right up until the next Weave confirms deletion. Without Revival, dormancy was a one-way door. With it, dormancy is a season — and seasons turn.
 
 ## Open Questions
 

@@ -5,9 +5,9 @@ pillars:
   - practice
   - tools
 born: 2026-05
-last_activated: 2026-05
-activation_count: 0
-stage: seed
+last_activated: 2026-06
+activation_count: 1
+stage: sprout
 forward_vector: "I exist to carry an in-progress move across an instance boundary — to compress the operating state of a session into a baton the next Claude can catch without losing momentum."
 links:
   - target: "[[Deposit Ceremony]]"
@@ -31,6 +31,9 @@ links:
 ---
 
 # Handoff Ceremony
+
+**Trigger:** "handoff" / "hand this off" / "draft a handoff"
+**Postcondition:** a handoff file exists at `[Entry]/[Entry] — handoff.md` capturing the in-progress move; a fresh Claude can resume without re-deriving session state.
 
 ---
 

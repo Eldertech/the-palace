@@ -58,13 +58,13 @@ The complete and canonical list of all palace ceremonies. Every ceremony has a t
 
 | Ceremony | Trigger | What Happens | Full Spec |
 |---|---|---|---|
-| The Revival | "Let's revive [entry name]" | Formally reawaken a dormant entry: re-enter its content, add Revival Note, update stage, add new typed links connecting it to current palace work. | [[Revival Ceremony]] |
+| The Revival | "Let's revive [entry name]" / "Time to revive [entry name]" | Formally reawaken a dormant entry: re-enter its content, add Revival Note, update stage, add new typed links connecting it to current palace work. | [[Revival Ceremony]] |
 
 ## Continuity Ceremonies
 
 | Ceremony | Trigger | What Happens | Full Spec |
 |---|---|---|---|
-| The Handoff | "Hand this off" / "Draft a handoff" | Capture the operating state of an in-progress move so a fresh Claude can continue without restarting. Writes to the entry's bundle. Tight and transient — archived after consumption. | [[Handoff Ceremony]] |
+| The Handoff | "handoff" / "Hand this off" / "Draft a handoff" | Capture the operating state of an in-progress move so a fresh Claude can continue without restarting. Writes to the entry's bundle. Tight and transient — archived after consumption. | [[Handoff Ceremony]] |
 
 ---
 

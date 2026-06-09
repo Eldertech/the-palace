@@ -7,7 +7,7 @@ pillars:
   - philosophy
 born: 2026-03
 stage: foundational
-version: 1.10
+version: 1.11
 schema: SCHEMA.md
 last_schema_ceremony: 2026-06-07
 github: https://github.com/Eldertech/the-palace
@@ -52,7 +52,7 @@ See @Cooperation_Yields_Agency.md (→ `Cooperation Yields Agency.md`).
 See @Hilaritas_Generator.md (→ `Hilaritas Generator.md`).
 See @Modes_of_Collaboration.md (→ `Modes of Collaboration.md`).
 
-The whole Tier 0–2 floor is ≈19K tokens — about a quarter of the window, per [[JEWEL]]'s loading map. To trim it, remove an `@import` line (the symlink stays, importing is one line). Full rationale and the spaces-bug seam: [[Palace as Context Injection System]] § The @import Floor.
+The whole Tier 0–2 floor measures ≈20K tokens (CLAUDE + JEWEL + SCHEMA + the five framework files; ROSETTA is *not* auto-loaded), per [[JEWEL]]'s loading map. To trim it, remove an `@import` line (the symlink stays, importing is one line). Full rationale and the spaces-bug seam: [[Palace as Context Injection System]] § The @import Floor.
 
 ## Access Paths
 
@@ -69,7 +69,9 @@ The palace is readable from any vector using these paths, in priority order:
 
 Read CLAUDE.md first, then follow links to SCHEMA.md and the relevant ceremony entry. Write operations must be deferred to a Claude Code or Cowork session — note proposed changes in the conversation for later execution.
 
-**Committing from Cowork:** the Cowork sandbox can rename but cannot delete files, so a raw `git commit` strands its lockfiles and wedges the repo. Every commit made from Cowork must go through the lock-safe committer — see [[cowork-git]] (`_ops/cowork-git/SKILL.md`): `node _ops/cowork-git/commit.mjs --paths … --kind … --summary … --verify …`. It wraps the palace committer, follows the full commit spec, relocates locks to `_ops/scratch/gitlock-junk/`, and leaves a weave flag for cleanup. Reserve it for small, non-canon changes; canon edits still go through the Deposit Ceremony. From a Mac-side Claude Code session, commit normally — the restriction does not apply.
+### Committing from Cowork
+
+The Cowork sandbox can rename but cannot delete files, so a raw `git commit` strands its lockfiles and wedges the repo. Every commit made from Cowork must go through the lock-safe committer — see [[cowork-git]] (`_ops/cowork-git/SKILL.md`): `node _ops/cowork-git/commit.mjs --paths … --kind … --summary … --verify …`. It wraps the palace committer, follows the full commit spec, relocates locks to `_ops/scratch/gitlock-junk/`, and leaves a weave flag for cleanup. Reserve it for small, non-canon changes; canon edits still go through the Deposit Ceremony. From a Mac-side Claude Code session, commit normally — the restriction does not apply.
 
 ## Directory Structure
 
@@ -95,8 +97,13 @@ The Palace/
     ├── Handoff Ceremony.md / Self-Model Update Ceremony.md
     ├── [*— Context.md]      ← ceremony session history companions
     ├── Deposit Archive.md
-    └── Palace Graffiti.md / Palace Quotes.md / Palace To-Do.md
+    ├── Palace Graffiti.md / Palace Quotes.md / Palace To-Do.md
+    └── [machinery subdirs]  ← swarm/ · stigmergy/ · loudon-live/ · agents/
+                                heartbeat/ · cowork-git/ · maps/ ·
+                                sample-libraries/ · scratch/ · claude-code-prompts/
 ```
+
+Not every ceremony spec lives in `_ops/`: [[Enrichment]] (`Enrichment.md`) and its bundle live in the **palace root** alongside the skeleton files, an exception to the `_ops/` convention.
 
 Obsidian resolves `[[wikilinks]]` by filename regardless of folder — agents must do the same. When resolving a wikilink to a file path, search recursively through the entire palace directory. Exclude `.git/`, `.claude/`, and `.obsidian/` — these contain system files, not knowledge entries. Any other subdirectory may contain valid entries. When loading files by path (e.g., in tiered context loading), use paths relative to the palace root.
 
@@ -115,7 +122,7 @@ These verbs ARE invocations. When Loudon uses one as an instruction — bare wor
 | "walk", "let's walk" | **Walk** — follow typed links from one entry, surface an unexpected connection | [[Walk Ceremony]] |
 | "enrich", "let's enrich", "enrich [X]", "make-teach-move-on", "go oblique" | **Enrichment** — five-card queue of small varied artifacts placed inline | [[Enrichment]] |
 | "spore check" | **Spore Check** — read dormant entries, assign revive / hold / compost | [[Spore Check Ceremony]] |
-| "revive [entry]", "let's revive [entry]" | **Revival** — reawaken a dormant entry: Revival Note, update stage + links | [[Revival Ceremony]] |
+| "revive [entry]", "let's revive [entry]", "time to revive [entry]" | **Revival** — reawaken a dormant entry: Revival Note, update stage + links | [[Revival Ceremony]] |
 | "map build", "build the map", "neighborhood map for [X]" | **Map Build** — scan frontmatter, compile edge list + ghost nodes | [[Map Build Ceremony]] |
 | "self-model update" | **Self-Model Update** — revise [[SUBSTRATE]] to current state | [[Self-Model Update Ceremony]] |
 | "connect this", "connect [X] to the palace" | **Connection** — propose typed links between the topic and existing entries | [[Palace Ceremonies]] |
@@ -125,7 +132,7 @@ Cadences, the Ceremony Reader, and full specs: [[Palace Ceremonies]]. Operationa
 
 ## Artifact Aesthetic — Default
 
-Every HTML artifact, slide, session page, learning material, web prototype, or visual deliverable the palace makes defaults to the **[[Loudon Live Design System]]** — locked grammar (Anton display, Cormorant body, Manrope UI, JetBrains Mono metadata) over six per-stream skins (Graphite default · Amber Lab · CRT · Strobe · Cobalt Grid · Drafting). The agent-readable manifest lives at `_ops/loudon-live/design-system/SKILL.md`; invoke it before generating any artifact.
+Every HTML artifact, slide, session page, learning material, web prototype, or visual deliverable the palace makes defaults to the **[[Loudon Live Design System]]** — locked grammar (Anton display, Cormorant body, Manrope UI, JetBrains Mono metadata, Silkscreen pixel) over six per-stream skins (Graphite default · Amber Lab · CRT · Strobe · Cobalt Grid · Drafting). The agent-readable manifest lives at `_ops/loudon-live/design-system/SKILL.md`; invoke it before generating any artifact.
 
 **Override carve-out:** when a context has its own established visual language, that system wins. Currently only [[BBS Design System]] (STIGMERGY swarm terminal) qualifies. New overrides require a deliberate decision documented in the artifact's parent entry.
 
@@ -139,7 +146,7 @@ The footer of any shipped artifact reads `Loudon Live · Autodidact Polymaths`. 
 
 **Typed links** — YAML frontmatter links name the relationship: `connects-to`, `mirrors`, `enables`, `deepens`, `spawned`, `emerged-from`, `contradicts`, `couples-with`, `exemplifies` (A is an instance of B), `member-of` (A belongs to collection B). Do not create new link types without discussion. Each link may carry an optional `label` field — a single evocative word naming the relationship's specific register (e.g. `midwifed`, `rhymes-with`, `fermented-from`). Labels never require ceremony. See [[Resonant Link Labels]].
 
-**Entry types** — `concept`, `hub`, `project`, `breakthrough`, `source`, `meta`, `practice`, `person`, `question`, `spore`, `specialist`, `maker`. The last two were added in the v1.3 Schema Ceremony (2026-05-09) to formalize [[The Shop]] pattern — see [[SCHEMA]] §3.2.
+**Entry types** — `concept`, `hub`, `project`, `breakthrough`, `source`, `meta`, `practice`, `person`, `question`, `spore`, `specialist`, `maker`. The last two were added in the v1.6 Schema Ceremony (2026-05-09) to formalize [[The Shop]] pattern — see [[SCHEMA]] §3.2.
 
 **Development stages** — `seed` → `sprout` → `growing` → `mature` → `fruiting` → `dormant` → `composting`
 
@@ -147,9 +154,9 @@ The footer of any shipped artifact reads `Loudon Live · Autodidact Polymaths`. 
 
 - **[[SCHEMA]]** — Type system, link ontology, ceremony linter, schema change protocol. Read before creating any new entry or ceremony. (`SCHEMA.md`)
 - **[[README - The Palace Guide]]** — Full palace manual (philosophy, link ontology, entry templates) (`README - The Palace Guide.md`)
-- **[[SUBSTRATE]]** — The palace's self-model (architecture, current state) (`Substrate.md`)
+- **[[SUBSTRATE]]** — The palace's self-model (architecture, current state) (`SUBSTRATE.md`)
 - **[[STIGMERGY]]** — The palace's running front-end and coordination engine: the append-only blackboard plus the three-deck terminal (STATE / QUEUE / LOG). Recognition lives in [[SCHEMA]] §9; the wire spec in [[Palace Agent Infrastructure Spec]]. (`STIGMERGY.md`)
-- **[[FOUR PILLARS]]** — Loudon's core framework (`Four Pillars.md`)
+- **[[FOUR PILLARS]]** — Loudon's core framework (`FOUR PILLARS.md`)
 - **[[ROSETTA]]** — Cross-tradition glossary connecting Palace vocabulary to OOP, Data Engineering, Semantic Web, and DDD equivalents (`ROSETTA.md`)
 - **[[Palace Ceremonies]]** — Full ceremony list with triggers and specs (`_ops/Palace Ceremonies.md`)
 - **[[Substrate Skill]]** — Full operational instructions for AI agents (`_ops/Substrate Skill.md`)
