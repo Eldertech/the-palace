@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import FrontmatterHeader, { ForwardVectorHero } from './FrontmatterHeader.jsx';
 import TypedLinkPanel from './TypedLinkPanel.jsx';
 import BundlePanel from './BundlePanel.jsx';
@@ -22,9 +22,8 @@ export default function EntryReader({
 }) {
   const [state, setState] = useState({ kind: 'loading' });
 
-  // Re-fetch on path change AND when reloadNonce bumps — the latter fires after
-  // the Companion commits an approved edit to this open entry, so the live change
-  // shows without a manual reload.
+  // Navigation (path change): show "loading <path>" then fetch. This blank is
+  // correct here — it's a real navigation to a different entry.
   useEffect(() => {
     let cancelled = false;
     setState({ kind: 'loading' });
@@ -34,7 +33,30 @@ export default function EntryReader({
       else setState({ kind: 'err', error: r.error ?? 'unknown error', status: r.status });
     });
     return () => { cancelled = true; };
-  }, [path, reloadNonce]);
+  }, [path]);
+
+  // In-place refresh (reloadNonce bump): the Companion just committed an edit to
+  // THIS already-open entry. Re-fetch in the BACKGROUND and swap the content in
+  // place — never blank to "loading". Blanking would collapse the document height
+  // (resetting the reader's window scroll to the top) and tear down the
+  // entry-body DOM the Companion's scroll-spy glow is painted on, so both the
+  // scroll position and the section glow would vanish on every commit. Skips the
+  // initial mount (the path effect already loaded it) and keeps the current entry
+  // on a failed refresh. `path` is read from a ref so a nonce bump after a
+  // navigation refetches the entry that's actually open, not a stale closure.
+  const pathRef = useRef(path);
+  pathRef.current = path;
+  const didMountRef = useRef(false);
+  useEffect(() => {
+    if (!didMountRef.current) { didMountRef.current = true; return undefined; }
+    let cancelled = false;
+    fetchEntry(pathRef.current).then((r) => {
+      if (cancelled || !r.ok) return; // keep the current entry if the refresh fails
+      setState({ kind: 'ok', entry: r });
+    });
+    return () => { cancelled = true; };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [reloadNonce]);
 
   if (state.kind === 'loading') {
     return (
