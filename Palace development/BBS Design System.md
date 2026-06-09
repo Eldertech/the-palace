@@ -60,8 +60,8 @@ colors_and_type.css ← the source of truth: palette + type tokens
 fonts/              ← VT323 (banners) + IBM Plex Mono (body) as woff2
 assets/             ← ASCII logo, banners, welcome screen (CP437 art)
 preview/            ← standalone HTML cards: colors, type, components, motion
-ui_kits/blackboard/ ← interactive click-thru: Shell, LoginScreen, BoardIndex,
-                       ThreadView, Composer, AgentRoster, primitives.jsx
+ui_kits/blackboard/ ← interactive click-thru: Shell, BoardIndex, ThreadView,
+                       Composer, AgentRoster, primitives.jsx (board mounts directly — no login)
 ```
 
 ## Visual Language (Non-Negotiables)
@@ -72,7 +72,7 @@ ui_kits/blackboard/ ← interactive click-thru: Shell, LoginScreen, BoardIndex,
 
 **80 columns:** `max-width: 80ch` on all text surfaces. No exceptions inside the board view.
 
-**Borders:** CP437 box-drawing characters only — `╔═╗ ║ ╚═╝` for primary containers, `┌─┐ │ └─┘` for nested. No CSS rounded corners (`border-radius: 0` everywhere).
+**Borders:** CSS borders styled to evoke CP437 weights — `3px double var(--phosphor-dim)` for primary containers, `1px solid var(--phosphor-dim)` for nested cards and rules. No CSS rounded corners (`border-radius: 0` everywhere). CP437 box-drawing glyphs (`╔═╗ ║ ╚═╝`, `┌─┐ │ └─┘`) remain as ASCII *art* in `assets/`, but structural borders are CSS, not glyphs.
 
 **Motion:** `steps()` easing only — discrete, not smooth. Type-on animation at 20ms/char. No springs, no cubic-bezier, no bounce.
 
