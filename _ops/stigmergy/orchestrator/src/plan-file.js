@@ -75,8 +75,15 @@ function renderDone(historyPath, { limit = 14 } = {}) {
  */
 export function renderPlanMarkdown(opts) {
   const { home, state = {}, stage, born, today, tsNow, iteration, stagingTitle, historyPath } = opts;
-  const pending = Array.isArray(state.pending_requests) ? state.pending_requests : [];
-  const resolved = Array.isArray(state.resolved_requests) ? state.resolved_requests : [];
+  // Decision state is board-derived (single-source-of-truth): callers pass the
+  // reconciled `pending` / `resolved` view computed from the append-only board.
+  // Fall back to the legacy `state.{pending,resolved}_requests` arrays only when
+  // no explicit view is given (pre-cutover callers / unit fixtures); after the
+  // SSOT cutover state no longer carries them, so the fallback yields [].
+  const pending = Array.isArray(opts.pending) ? opts.pending
+    : (Array.isArray(state.pending_requests) ? state.pending_requests : []);
+  const resolved = Array.isArray(opts.resolved) ? opts.resolved
+    : (Array.isArray(state.resolved_requests) ? state.resolved_requests : []);
   const bornDate = born || today || (tsNow ? String(tsNow).slice(0, 10) : '');
   const iter = iteration ?? state.iteration;
 
@@ -161,13 +168,15 @@ export function findStagingTitle(bundleDir, home) {
  * @param {string} [opts.today]
  * @param {number} [opts.iteration]
  * @param {string} [opts.historyPath]
+ * @param {object[]} [opts.pending] — board-derived open decisions (SSOT); preferred over state arrays
+ * @param {object[]} [opts.resolved] — board-derived resolved decisions (SSOT); preferred over state arrays
  * @returns {{ written: boolean, planPath?: string, bundleDir?: string, stagingTitle?: string|null, reason?: string }}
  */
 export function materializePlan(opts) {
-  const { palaceRoot, home, state, stage, tsNow, today, iteration, historyPath } = opts;
-  const resolved = resolveBundleDir(palaceRoot, home);
-  if (!resolved) return { written: false, reason: 'entry-file-not-found' };
-  const { bundleDir } = resolved;
+  const { palaceRoot, home, state, stage, tsNow, today, iteration, historyPath, pending, resolved } = opts;
+  const bundle = resolveBundleDir(palaceRoot, home);
+  if (!bundle) return { written: false, reason: 'entry-file-not-found' };
+  const { bundleDir } = bundle;
 
   const planPath = join(bundleDir, `${home} — plan.md`);
   let born;
@@ -181,7 +190,7 @@ export function materializePlan(opts) {
   if (!existsSync(bundleDir)) mkdirSync(bundleDir, { recursive: true });
   const stagingTitle = findStagingTitle(bundleDir, home);
 
-  const md = renderPlanMarkdown({ home, state, stage, born, today, tsNow, iteration, stagingTitle, historyPath });
+  const md = renderPlanMarkdown({ home, state, stage, born, today, tsNow, iteration, stagingTitle, historyPath, pending, resolved });
   writeFileSync(planPath, md);
   return { written: true, planPath, bundleDir, stagingTitle };
 }

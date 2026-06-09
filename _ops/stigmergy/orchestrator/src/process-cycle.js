@@ -7,9 +7,11 @@
 //   2. stamps each with the Path-2 health stub,
 //   3. validates via the canonical posting surface and appends the valid ones
 //      to the persistent blackboard,
-//   4. reconciles the steward's pending_requests against the board (resolving
-//      asks that have since been GRANT/DENY'd), and
-//   5. updates state.json + history.jsonl.
+//   4. reconciles the steward's asks against the board (the board is the single
+//      source of truth for decision state — open vs. resolved),
+//   5. updates state.json (pure runtime now) + history.jsonl, and
+//   6. materializes the bundle-local plan.md read-model from the board-derived
+//      decision view (never from state, which no longer carries the arrays).
 //
 // Promoted from /tmp/process-cycle-v2.mjs (the 2026-05-27 batch finalizer).
 // Two changes from that throwaway: the palace root is configurable (no
@@ -264,16 +266,23 @@ export function processCycle(opts) {
     }
   }
 
-  // Reconcile against the board *after* appending this cycle's asks.
+  // Reconcile this steward's asks against the board *after* appending this
+  // cycle's asks. The board is the single source of truth for decision state;
+  // `{ stillPending, nowResolved }` is the complete current view (not a delta),
+  // and it is the ONLY place decisions are read from now — it is passed straight
+  // to the plan materializer below and is never persisted back into state.json
+  // (Bundle-Local Stewardship SSOT cutover, 2026-06-09).
   const board = readJsonl(boardFile);
   const { stillPending, nowResolved } = reconcilePendingRequests(board, home);
 
-  const existingResolved = new Set((state.resolved_requests || []).map((r) => r.request_id));
-  state.resolved_requests = state.resolved_requests || [];
-  for (const r of nowResolved) {
-    if (!existingResolved.has(r.request_id)) state.resolved_requests.push(r);
-  }
-  state.pending_requests = stillPending;
+  // Slim state to pure runtime: drop the decision arrays and the duplicated
+  // stewardship block if a pre-cutover state.json still carries them. stage and
+  // forward_vector live in the entry frontmatter; decisions live on the board.
+  // This makes the cutover self-healing — any not-yet-slimmed state is cleaned
+  // on its next cycle.
+  delete state.pending_requests;
+  delete state.resolved_requests;
+  delete state.stewardship;
 
   state.iteration = iteration;
   state.last_active = tsNow;
@@ -303,12 +312,13 @@ export function processCycle(opts) {
   for (const e of events) appendFileSync(histPath, JSON.stringify(e) + '\n');
 
   // ── Materialize the bundle-local plan read-model (Bundle-Local Stewardship Phase 1b/1c) ──
-  // Write `[Entry] — plan.md` into the entry's bundle from the decisions we just
-  // reconciled into state + the history tail we just appended. Additive and
-  // defensive: it runs AFTER state.json/history.jsonl are written, so a failure
-  // here never costs the cycle its runtime state. `stage` is read LIVE from the
-  // entry's frontmatter, never the duplicated stewardship copy — that read path
-  // is the single-source-of-truth half of the migration (Phase 1a).
+  // Write `[Entry] — plan.md` into the entry's bundle from the board-derived
+  // decision view + the history tail we just appended. Additive and defensive:
+  // it runs AFTER state.json/history.jsonl are written, so a failure here never
+  // costs the cycle its runtime state. `stage` is read LIVE from the entry's
+  // frontmatter and `pending`/`resolved` are passed straight from the board
+  // reconcile — neither is read from the (now slim) state.json. That is the
+  // single-source-of-truth half of the migration (Phase 1a + SSOT cutover).
   let plan;
   try {
     const meta = readEntryMeta(palaceRoot, home);
@@ -320,6 +330,8 @@ export function processCycle(opts) {
       tsNow,
       iteration,
       historyPath: histPath,
+      pending: stillPending,
+      resolved: nowResolved,
     });
   } catch (e) {
     plan = { written: false, reason: `error: ${e.message}` };
@@ -331,7 +343,7 @@ export function processCycle(opts) {
     invalid_ids,
     errors,
     pending_after: stillPending.map((p) => p.request_id),
-    resolved_count_after: state.resolved_requests.length,
+    resolved_count_after: nowResolved.length,
     // Layer 2: which RESOURCE_REQUESTs got undeclared media injected this cycle.
     backstop,
     // Layer 3: declared-but-unreferenced artifact warnings (advisory only).

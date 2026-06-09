@@ -32,6 +32,12 @@ const board = readJsonl(join(palaceRoot, '_ops/swarm/persistent/blackboard.jsonl
 const SECTIONS = ['## Plan', '## Open Decisions', '## Resolved Decisions', '## Done'];
 // Files a steward agent dir may legitimately keep (runtime/forensic machinery).
 const ALLOWED_OPS_FILES = new Set(['manifest.json', 'state.json', 'history.jsonl', 'pending-bbs-append.jsonl']);
+// After the SSOT cutover, state.json is pure runtime: the core runtime keys plus
+// any `_`-prefixed forensic metadata (_pilot_metadata, _demo_metadata). Anything
+// else — stewardship, pending_requests, resolved_requests, stranded_requests —
+// is decision content / a duplicated frontmatter copy and must not live here.
+const RUNTIME_KEYS = new Set(['iteration', 'last_active', 'last_read_cursor', 'health']);
+const isRuntimeKey = (k) => RUNTIME_KEYS.has(k) || k.startsWith('_');
 
 /** request_ids declared under a `## Section` heading in plan.md (### `id` — …). */
 function idsUnder(planText, heading) {
@@ -81,7 +87,19 @@ for (const agent of registry.agents) {
   const missingResolved = [...boardResolved].filter((id) => !planResolved.includes(id));
   if (missingResolved.length) fail(home, `plan Resolved missing board-resolved: ${missingResolved.join(',')}`); else checks.push('resolved⊇board');
 
-  if (checks.length === 5) console.log(`  ✓ ${home}  [${meta?.stage}]  open=${planOpen.length} resolved=${planResolved.length}`);
+  // 5. state.json is pure runtime — SSOT cutover (no decision content here).
+  const dirAbs = isAbsolute(agent.dir) ? agent.dir : join(palaceRoot, agent.dir);
+  const statePath = join(dirAbs, 'state.json');
+  if (!existsSync(statePath)) { fail(home, 'state.json missing'); }
+  else {
+    let stateKeys = [];
+    try { stateKeys = Object.keys(JSON.parse(readFileSync(statePath, 'utf8'))); } catch { /* unreadable */ }
+    const nonRuntime = stateKeys.filter((k) => !isRuntimeKey(k));
+    if (nonRuntime.length) fail(home, `state.json carries non-runtime keys: ${nonRuntime.join(', ')}`);
+    else checks.push('state-runtime-only');
+  }
+
+  if (checks.length === 6) console.log(`  ✓ ${home}  [${meta?.stage}]  open=${planOpen.length} resolved=${planResolved.length}`);
 }
 
 // Global sweep: no entry-owned stray markdown/html left in the steward dirs.

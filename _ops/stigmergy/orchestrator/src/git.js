@@ -106,8 +106,12 @@ export function checkPageChange(palaceRoot, entryName, sinceIso) {
  * Read the current frontmatter `forward_vector` field of an entry by reading
  * the file directly (not git). Returns null if the file or field is absent.
  *
- * Used by the skill workflow to compare current vector against
- * `state.stewardship.vector_at_last_activation` for drift detection.
+ * Used by the skill workflow for forward-vector drift detection. The live
+ * frontmatter value is the single source of truth; whether it has *changed*
+ * since the steward last ran is detected via `checkPageChange` (git commits to
+ * the entry since `state.last_active`), NOT against a duplicated copy in
+ * state.json — that copy was removed in the Bundle-Local Stewardship SSOT
+ * cutover (2026-06-09).
  */
 export function readForwardVector(palaceRoot, entryName) {
   const abs = resolveEntryPath(palaceRoot, entryName);

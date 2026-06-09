@@ -20,6 +20,7 @@ import { checkPageChange } from './git.js';
 import { findEntryFile } from './entry-paths.js';
 import { readEntryMeta } from './entry-frontmatter.js';
 import { findStagingTitle } from './plan-file.js';
+import { reconcilePendingRequests } from './process-cycle.js';
 
 const PALACE_ROOT_DEFAULT = resolve(fileURLToPath(new URL('.', import.meta.url)), '../../../..');
 
@@ -132,12 +133,11 @@ export function buildCyclePrompt(opts) {
   const homeBody = homeFile ? readFileSync(homeFile, 'utf8') : `# (entry not found — ${manifest.home})`;
 
   // The stage the steward operates at is read LIVE from the entry's frontmatter —
-  // the single source of truth — NOT the duplicated `stewardship` copy in
-  // state/manifest, which can drift. Fall back to the stored copy only when the
-  // entry can't be read, and never feed a null into the template (renderTemplate
-  // throws on null). This is the read half of the single-source-of-truth fix.
+  // the single source of truth — NOT a duplicated copy, which can drift. After
+  // the SSOT cutover state.json no longer carries a stewardship block, so the
+  // only fallback is the manifest's immutable spawn snapshot, then a default
+  // (never feed a null into the template — renderTemplate throws on null).
   const liveStage = meta?.stage
-    || state.stewardship?.stage_at_last_activation
     || manifest.stewardship?.stage_at_spawn
     || 'sprout';
 
@@ -177,9 +177,15 @@ export function buildCyclePrompt(opts) {
 
   const cursor = state.last_read_cursor;
   const boardLines = readFileSync(boardPath, 'utf8').trim().split('\n');
-  const pendingIds = (state.pending_requests || [])
-    .map((r) => r && r.request_id)
+  // Decision state is board-derived (SSOT) — state.json no longer carries the
+  // pending/resolved arrays. Reconcile this steward's asks against the whole
+  // board so the prompt can (a) keep board lines that answer still-open asks and
+  // (b) show the steward its own current open/resolved decisions.
+  const boardObjs = boardLines
+    .map((l) => { try { return JSON.parse(l); } catch { return null; } })
     .filter(Boolean);
+  const { stillPending, nowResolved } = reconcilePendingRequests(boardObjs, manifest.home);
+  const pendingIds = stillPending.map((r) => r.request_id).filter(Boolean);
   const slice = filterBoardForAgent(
     sliceBoardSinceCursor(boardLines, cursor),
     {
@@ -196,6 +202,12 @@ export function buildCyclePrompt(opts) {
 
   const isFirstActivation = !state.last_read_cursor;
 
+  // The steward still needs to SEE its open/resolved decisions even though state
+  // no longer stores them — inject the board-derived view (in memory only; never
+  // written back to disk). This keeps the steward's situational awareness intact
+  // through the cutover without reintroducing the duplicated arrays.
+  const stateForPrompt = { ...state, pending_requests: stillPending, resolved_requests: nowResolved };
+
   const userTurn = `# Catch-up framing
 
 ${isFirstActivation
@@ -211,7 +223,7 @@ ${stagingSection}
 # Your injected state (NOT a file you should open from disk)
 
 \`\`\`json
-${JSON.stringify(state, null, 2)}
+${JSON.stringify(stateForPrompt, null, 2)}
 \`\`\`
 
 # Your recent history (last 12 events)

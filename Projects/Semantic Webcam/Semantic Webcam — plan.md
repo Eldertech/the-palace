@@ -12,7 +12,7 @@ forward_vector: "I am Semantic Webcam's materialized work state — open decisio
 
 > Materialized read-model of the steward's work state. Regenerated each cycle from the [[STIGMERGY]] persistent board; do not hand-edit the decision sections.
 > **Forward vector:** see [[Semantic Webcam]] frontmatter `forward_vector` — not copied here (single-source-of-truth).
-> _Last materialized: 2026-06-09T15:06:11.301Z._
+> _Last materialized: 2026-06-09T17:00:47.703Z._
 
 ## Plan
 

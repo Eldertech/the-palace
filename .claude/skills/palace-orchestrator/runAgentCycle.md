@@ -51,9 +51,15 @@ prefer them over ad-hoc scripts.
   Post-processes one cycle's subagent transcript: extracts the fenced BBS
   messages, stamps the Path-2 health stub, validates each via the posting
   surface, appends the valid ones, reconciles `pending_requests` against the
-  board (resolving asks answered by a GRANT/DENY whose `re` matches), and
-  updates `state.json` + `history.jsonl`. Prints a JSON summary (`posted_ids`,
-  `invalid_ids`, `pending_after`, `resolved_count_after`).
+  board (resolving asks answered by a GRANT/DENY whose `re` matches),
+  updates `state.json` + `history.jsonl`, and **materializes the bundle-local
+  `[Entry] — plan.md` read-model** in the entry's bundle from the reconciled
+  decisions (Bundle-Local Stewardship Phase 1b/1c — `plan-file.js`; the bundle
+  path is resolved from the steward's `home`). Prints a JSON summary
+  (`posted_ids`, `invalid_ids`, `pending_after`, `resolved_count_after`, and a
+  `plan` block reporting where the read-model landed). The plan write is part
+  of this helper, so a cycle that uses `process-cycle.js` never strands its
+  state outside the bundle.
 
 These supersede the throwaway `/tmp/build-cycle-prompt.mjs` and
 `/tmp/process-cycle-v2.mjs` from the 2026-05-27 batch (now promoted, with
@@ -71,7 +77,7 @@ Otherwise return `cycle_complete` with the list of posted message ids and any `p
 
 ## Permanent agents only — state + history
 
-After a successful permanent cycle, append `TOOL_CALL` / `AGENT_REASONING` / `CYCLE_COMPLETE` events to `<agent-dir>/history.jsonl` and update `<agent-dir>/state.json` (`iteration`, `last_active`, `last_read_cursor`, rolling `health`, `pending_requests`, `resolved_requests`). Songline workers do not have state files — their cycle state is captured by their messages on the blackboard.
+After a successful permanent cycle, append `TOOL_CALL` / `AGENT_REASONING` / `CYCLE_COMPLETE` events to `<agent-dir>/history.jsonl` and update `<agent-dir>/state.json` — which is **pure runtime** after the SSOT cutover: `iteration`, `last_active`, `last_read_cursor`, rolling `health` (and optional `_pilot_metadata`). It carries **no** `stewardship` block and **no** `pending_requests`/`resolved_requests` arrays — decision state is the board's (the source of truth), and stage/`forward_vector` are the entry frontmatter's. Then **materialize `[Entry] — plan.md` in the entry's bundle** as the durable, greppable read-model, built from the *board-derived* open/resolved decision view (the Machinery/Content Split: machinery stays in `<agent-dir>`, the entry-owned work state homes in the bundle — see [[Bundle-Local Stewardship — Production Plan]]). The plan holds the staged plan, Open/Resolved Decisions, and a Done trail, plus a *pointer* to the entry's `forward_vector` — never a copy. Songline workers have neither state files nor a plan — their cycle state is captured by their messages on the blackboard.
 
 ## What this primitive does NOT do (deferred to v0.2)
 

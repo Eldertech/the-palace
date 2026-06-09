@@ -12,12 +12,12 @@ forward_vector: "I am Generative Sample Libraries's materialized work state — 
 
 > Materialized read-model of the steward's work state. Regenerated each cycle from the [[STIGMERGY]] persistent board; do not hand-edit the decision sections.
 > **Forward vector:** see [[Generative Sample Libraries]] frontmatter `forward_vector` — not copied here (single-source-of-truth).
-> _Last materialized: 2026-06-09T15:06:11.301Z._
+> _Last materialized: 2026-06-09T17:00:47.703Z._
 
 ## Plan
 
 - **Stage:** growing (read live from [[Generative Sample Libraries]] frontmatter)
-- **Open:** 0  ·  **Resolved:** 13  ·  **Iteration:** 16
+- **Open:** 0  ·  **Resolved:** 11  ·  **Iteration:** 16
 
 ## Open Decisions
 
@@ -75,47 +75,37 @@ _None open._
 - **Resolved:** 2026-05-27T17:25:47.120Z (by `resp-mpoc51bk-3ejcpg`)
 - **Outcome:** GRANTED — option_id=CONSOLIDATE
 
-### `gsl-steward-012` — audition  ·  **blocking**
-- **Topic:** Audition the 8-file Crystal (Hexagonal/Quartz) unit — pitch + timbre
-- **Options:** —
+### `gsl-steward-012` — —
+- **Topic:** Audition: 8-file Crystal (Hexagonal/Quartz) unit — does it read as pitched?
+- **Options:** APPROVE — pitch reads and timbre is good; greenlight the full keyboard batch and the Interview skill's promotion out of draft. · ADJUST — name what's off (strike-tone too loud/quiet, wrong crystal, range, velocity feel) and I re-voice and re-audition. · REJECT — hexagonal is the wrong choice for the first pitched crystal; suggest a different lattice or framing.
+- **Steward recommendation:** APPROVE if it reads. The adapter pattern is the real win (it generalizes to any palace-synthesis source) and pitch verification is clean; my only hesitation is whether the strike-tone mix sounds like an honest part of the bell or a bolted-on sine — exactly the call I can't make without hearing it.
 - **Posted:** 2026-05-27T12:46:00-04:00
-- **Resolved:** 2026-05-27T12:21:00-04:00 (by `resp-mpoaiyx2-75f8ky`)
-- **Outcome:** GRANTED — option_id=APPROVE; greenlight the full keyboard batch and Interview-skill promotion.
+- **Resolved:** 2026-05-27T16:40:37.958Z (by `resp-mpoaiyx2-75f8ky`)
+- **Outcome:** GRANTED — option_id=APPROVE
 
 ### `gsl-steward-010` — —
-- **Topic:** Phase 3 first source (reset)
-- **Options:** —
-- **Posted:** —
-- **Resolved:** 2026-05-27T12:46:00-04:00 (by `resp-mpo0pgap-yyauf1`)
-- **Outcome:** GRANTED — crystal-first (start Phase 3 with palace synthesis).
+- **Topic:** Phase 3 reset — start Multi-Source with palace synthesis (Crystal), not AI audio
+- **Options:** crystal-first · confirm-ai-then-stable-audio · local-wav-first
+- **Steward recommendation:** Crystal-first — it's the only option I can fully verify exists today, and it unblocks the Interview skill's promotion.
+- **Posted:** 2026-05-27T12:01:00-04:00
+- **Resolved:** 2026-05-27T12:05:44.257Z (by `resp-mpo0pgap-yyauf1`)
+- **Outcome:** GRANTED — option_id=crystal-first
 
 ### `gsl-steward-008` — —
-- **Topic:** Phase 3 — which source to build first
-- **Options:** —
-- **Posted:** —
-- **Resolved:** 2026-05-27T12:01:00-04:00 (by `resp-mpnzjfdc-vbyl0i`)
-- **Outcome:** GRANTED with directive (option_id null): 'assess what's been done and what tools are available, and reset your request.' No source picked.
+- **Topic:** Phase 3: which source do we build first?
+- **Options:** a · b · c · d
+- **Steward recommendation:** Local WAV folder — lightest lift, non-Kokoro so it satisfies the skill's promotion criterion, and it proves the source-agnostic interview against real outside audio fast.
+- **Posted:** 2026-05-26T19:46:00-04:00
+- **Resolved:** 2026-05-27T11:33:03.504Z (by `resp-mpnzjfdc-vbyl0i`)
+- **Outcome:** GRANTED — (no option_id); notes: "Much progress was made already, please assess what has been done and what tools are available to you and reset your request."
 
-### `gsl-steward-005` — content_audition  ·  **blocking**
-- **Topic:** Phase 2 Interview SKILL.md filled-in section bodies (re-issue after BBS reset)
-- **Options:** —
+### `gsl-steward-005` — —
+- **Topic:** Look at the filled-in Phase 2 outline and tell me if the content is right
+- **Options:** a · b · c
+- **Steward recommendation:** None — this is your read. The structure (eight sections, frontmatter shape) was already approved in cycle 2 by trickster-grant-002. This ask is purely about whether the body content is right.
 - **Posted:** 2026-05-04T23:49:00Z
-- **Resolved:** 2026-05-05T00:19:25Z (by `trickster-grant-gsl-005`)
-- **Outcome:** GRANTED — option (a) 'Yes — Phase 2 is done'; notes empty
-
-### `gsl-steward-003` — skeleton_audition  ·  **blocking**
-- **Topic:** Phase 2 Interview SKILL.md skeleton structure
-- **Options:** —
-- **Posted:** 2026-05-03T18:30:00Z
-- **Resolved:** 2026-05-03T19:45:00Z (by `trickster-grant-002`)
-- **Outcome:** GRANTED — outline approved as-drafted; document header adopted as canonical for project-local skills
-
-### `gsl-steward-002` — directional_decision
-- **Topic:** Phase 2 Interview skill home
-- **Options:** —
-- **Posted:** 2026-05-03T16:31:00Z
-- **Resolved:** 2026-05-03T18:15:00Z (by `trickster-grant-001`)
-- **Outcome:** GRANTED — (b) project-local skill at _ops/sample-libraries/skills/interview/SKILL.md
+- **Resolved:** 2026-05-05T00:19:25.738Z (by `trickster-grant-gsl-005`)
+- **Outcome:** GRANTED — option_id=a
 
 ## Done
 

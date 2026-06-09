@@ -307,6 +307,60 @@ describe('processCycle (integration)', () => {
     expect(plan).not.toContain('I want to become the proof.'); // vector never copied
   });
 
+  // SSOT cutover (2026-06-09): the append-only board is the source of truth for
+  // decision state. A steward whose stale state.json still lists an ask as
+  // pending must render it RESOLVED in the plan once the board has granted it
+  // (the Shepard shepard-steward-018/019 drift case), and state.json is slimmed
+  // to pure runtime on write (no decision arrays, no stewardship block).
+  test('board wins over stale state: a board-granted ask renders resolved; state is slimmed to runtime', () => {
+    const { agentDir } = makePalace();
+    writeFileSync(path.join(root, 'Test Steward.md'), '---\nstage: growing\nforward_vector: "I want to become the proof."\n---\n# Test Steward');
+
+    // Stale state: lists old-ask as PENDING + carries a legacy stewardship block.
+    const statePath = path.join(root, agentDir, 'state.json');
+    const stale = JSON.parse(readFileSync(statePath, 'utf8'));
+    stale.last_active = '2026-05-27T10:00:00-04:00';
+    stale.pending_requests = [{ request_id: 'old-ask', resource: 'directional_decision', blocking: false, posted_at: '2026-05-27T09:00:00-04:00' }];
+    stale.resolved_requests = [];
+    stale.stewardship = { stage_at_last_activation: 'seed', vector_at_last_activation: 'a stale copy' };
+    writeFileSync(statePath, JSON.stringify(stale));
+
+    // Board already holds the ask AND its grant — the board says RESOLVED.
+    const boardPath = path.join(root, '_ops/swarm/persistent/blackboard.jsonl');
+    writeFileSync(boardPath, [
+      JSON.stringify({ id: 'old-ask', type: 'RESOURCE_REQUEST', from: 'Test Steward', to: 'TRICKSTER', board: 'TRICKSTER', request_id: 'old-ask', ts: '2026-05-27T09:00:00-04:00', payload: { resource: 'directional_decision' } }),
+      JSON.stringify({ id: 'grant-old', type: 'RESOURCE_GRANT', from: 'TRICKSTER', to: 'Test Steward', board: 'TRICKSTER', re: 'old-ask', ts: '2026-05-27T11:00:00-04:00', payload: { option_id: 'GO' } }),
+    ].join('\n') + '\n');
+
+    const broadcast = {
+      schema_version: '1.0', id: 'bc-x', ts: '2026-05-27T16:00:00-04:00',
+      session_id: 'sess-1', from: 'Test Steward', to: '*', type: 'BROADCAST', board: 'GENERAL',
+      payload: { subject: 'cycle', content: 'continuing' },
+    };
+    const transcriptPath = path.join(root, 'transcript.jsonl');
+    writeFileSync(transcriptPath, assistantLine([broadcast]));
+
+    processCycle({
+      palaceRoot: root, transcriptPath, agentDir, cycleN: 2, iteration: 2, tsNow: '2026-05-27T16:05:00-04:00',
+    });
+
+    // The plan reflects the BOARD, not the stale state: old-ask is resolved, not open.
+    const plan = readFileSync(path.join(root, 'Test Steward', 'Test Steward — plan.md'), 'utf8');
+    const openBlock = plan.slice(plan.indexOf('## Open Decisions'), plan.indexOf('## Resolved Decisions'));
+    const resolvedBlock = plan.slice(plan.indexOf('## Resolved Decisions'), plan.indexOf('## Done'));
+    expect(openBlock).not.toContain('old-ask');
+    expect(resolvedBlock).toContain('`old-ask`');
+    expect(resolvedBlock).toContain('GRANTED');
+
+    // state.json is slimmed to pure runtime — decision arrays + stewardship gone.
+    const after = JSON.parse(readFileSync(statePath, 'utf8'));
+    expect(after.pending_requests).toBeUndefined();
+    expect(after.resolved_requests).toBeUndefined();
+    expect(after.stewardship).toBeUndefined();
+    expect(after.iteration).toBe(2);
+    expect(after.last_read_cursor).toBe('bc-x');
+  });
+
   test('cycle still completes (plan written:false, no throw) when the home entry is absent', () => {
     const { agentDir } = makePalace(); // no Test Steward.md entry file in this palace
     const transcriptPath = path.join(root, 'transcript.jsonl');
