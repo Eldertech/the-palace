@@ -32,6 +32,7 @@ The most common briefs:
 - **No decorative gradients in chrome.** The only allowed gradient is the radial protection-gradient under cards on busy backgrounds.
 - **Restrained motion.** Cubic-bezier(.4, 0, .2, 1) for ordinary; .2, .9, .2, 1 for emphasized. No bounces, no springs. The Lissajous trace's slow rotation is the only ambient motion.
 - **Studio register, not commercial-production register.** Sketch / Study / Piece — never MVP / v1 / final.
+- **Interactive/stateful first versions ship reviewable.** Any interactive build (instrument, explorer, prototype, card series, deck) ships its *first* version with a built-in review surface so Loudon can leave section-level feedback in context, then flip it off to ship clean. Reach for `ui_kits/review-layer/` (the DOM-anchored method) — but new review methods are wanted, not that one reused. Granularity rule: one moment per natural unit (a card, a section), never one per control. Static one-shot artifacts (a single banner, an OBS card) are exempt. Principle: [[Review Layer]].
 
 ## If invoked without other guidance
 

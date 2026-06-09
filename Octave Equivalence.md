@@ -36,6 +36,23 @@ This is the claim the static drone makes: octave equivalence is **strong enough 
 
 The envelope is Gaussian in log2(Hz), not Hz, because the ear weights octaves equally at equal *perceptual* distance. A literal bandpass in Hz would over-emphasize the lower octaves (closer together in absolute frequency) and break the symmetry. Log-frequency space is where octave equivalence is the natural metric — the envelope and the perception speak the same language.
 
+## Stage 2 — The Moving Staircase, And Why The Seam Is Free
+
+Pair with [[Shepard Tone Synthesizer]] Stage 2 (the **STEP-AND-SHOW** discrete ascent, playable at `Projects/Shepard Tone Synthesizer/session-2-interactive.html`).
+
+Stage 1 proved the ear fuses a still stack into one pitch class. Stage 2 sets that stack in motion and asks the next question: what happens when you keep stepping it up? Each step multiplies every voice's frequency by one semitone, a factor of 2^(1/12). Step twelve times and the whole stack has climbed an octave — yet the pitch class you started on returns, and the drone sounds, to the ear, like it never left. That is octave equivalence doing the work a second time: not fusing simultaneous tones now, but **closing the loop of motion** so that a climb of twelve semitones reads as a return to the same place.
+
+The lesson Stage 2 teaches that the still drone could not is what happens at the **wrap**. Somewhere up the climb, the top voice runs out of spectrum and has to be reintroduced at the bottom — dropped nine octaves in a single instant. In a world without octave equivalence that drop would be a catastrophe: a voice teleporting from the ceiling to the floor of the audible range is the most violent thing a pitch can do. But because the ear treats the floor and the ceiling as *the same pitch class*, the voice it lands on is the one the ear was already expecting there. The wrap costs nothing perceptually. The seam is free.
+
+This is the precise sense in which the Shepard illusion is not a trick of amplitude alone. The fading envelope (Stage 1) hides *where* the energy is; octave equivalence hides *that a substitution happened at all*. Stage 2 makes this legible by deliberately **showing the seam** — flashing the wrapping voice red the moment it drops — so you watch the most discontinuous event in the system occur while your ear refuses to register it. The eye sees the join the ear forgives. That gap between the two senses is the whole content of the stage.
+
+A worded form of the step, keeping the operator symbols:
+
+> frequencyᵢ(after step) = frequencyᵢ(before step) × 2^(semitones_stepped / 12)
+> wrap when frequencyᵢ > ceiling → frequencyᵢ ÷ 2^9 (down nine octaves, same pitch class)
+
+The division by 2^9 is the formal statement of "the seam is free": dividing a frequency by an exact power of two moves it by whole octaves only, and octave equivalence is exactly the proposition that whole-octave moves preserve pitch class. The mathematics of the wrap and the perception of the wrap are the same fact written twice.
+
 ## Forward Vectors
-- How does octave equivalence break down in inharmonic timbres? When partials are stretched (as in [[Piano String Inharmonicity]]), the "sameness" across octaves becomes approximate — a perceptual tension worth exploring.
+- How does octave equivalence break down in inharmonic timbres? When partials are stretched (as in [[Piano String Inharmonicity]]), the "sameness" across octaves becomes approximate — a perceptual tension worth exploring. This is also where the Stage 2 wrap stops being free: in a stretched-octave tuning the dropped voice no longer lands on its own pitch class, and the seam should begin to show by ear.
 - Connection to [[Logarithmic Interface Scaling]]: octave equivalence is why pitch is logarithmic, not linear.

@@ -182,10 +182,6 @@ Health scores: **green** (context < 70%, no anomalies), **yellow** (context 70�
 ---
 *"Stigmergy is a mechanism of indirect coordination between agents where the trace left by an action stimulates the performance of a subsequent action."* — Pierre-Paul Grassé, who named it watching termites
 
-*"The medium is the message."* — Marshall McLuhan
-
-*"Every BBS was a mycelium before we had the word for it: nodes leaving traces, messages persisting past the sender, the whole alive in the gaps between transmissions."*
-
 --- 
 ---
 ## Forward Vector

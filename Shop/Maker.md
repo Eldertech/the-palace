@@ -119,6 +119,8 @@ These flow down into every job spec automatically. Specialists honor them or fla
 - Iconography: typographic glyphs (`● ▸ · ◐ ◇`) and the Lissajous trace. **No emoji. No CDN icon library.**
 - Footer: every shipped artifact carries `Loudon Live · Autodidact Polymaths`.
 
+**Interactive deliverables ship reviewable (inherited from the palace base).** Any interactive Specialist output — a p5.js explorer, a Tone.js instrument, a D3 control surface, a card series — carries a built-in review surface on its **first** version, so Loudon leaves section-level feedback in context rather than reconstructing it in chat. The canonical rule and the drop-in kit live in the design system ([[Review Layer]] · `ui_kits/review-layer/`); I inherit it, I don't own a second copy. One moment per natural unit (a card, a section — never one per slider), and the surface flips off for a Piece-tier final. New review methods are welcome over reusing the one kit. This is a Self-Check line for every interactive Specialist: *first version mounts a review surface; Piece-tier final removes it.* Static one-shot outputs (a header image, a single OBS card) are exempt.
+
 When the active artifact context has its own design language (currently only [[BBS Design System]] for STIGMERGY), that system overrides the palace base. The cascade is articulated in the next section.
 
 ## Articulated Cascade
