@@ -16,7 +16,7 @@ links:
   - target: "[[The Shop]]"
     type: enables
     label: shop-standard
-  - target: "[[Handoff Ceremony]]"
+  - target: "[[Baton Ceremony]]"
     type: enables
     label: cross-instance-receipt
   - target: "[[Cooperation Yields Agency]]"
@@ -84,7 +84,7 @@ The pattern came from a specific incident: in the Round 1 closeout, a sync-arriv
 
 **The Specialist Self-Check** ([[The Shop]]) — every Specialist already has a Self-Check section that names what it verifies before declaring done. Closing Well says the Self-Check should also produce a punchlist for the Maker, who in turn rolls those into Loudon's punchlist. Closing Well composes up the dispatch chain.
 
-**The Handoff Ceremony** ([[Handoff Ceremony]]) — every handoff is, structurally, a closing-well moment. The Active Handoff section of an in-progress entry IS a punchlist. This entry generalizes the Handoff Ceremony's pattern beyond ceremonies into ordinary work.
+**The Baton Ceremony** ([[Baton Ceremony]]) — every baton is, structurally, a closing-well moment. The Active Handoff section of an in-progress entry IS a punchlist. This entry generalizes the Baton Ceremony's pattern beyond ceremonies into ordinary work.
 
 **Cooperation Yields Agency** ([[Cooperation Yields Agency]]) — the work is only cooperative if the next person can pick it up. A piece of work that requires its author's continued presence to be useful isn't shared, it's hoarded. Closing well is the mechanism by which agency transfers across the boundary.
 
@@ -103,10 +103,9 @@ The deeper observation Loudon named during the deposit: *every one of these prac
 
 ## Lost Branches
 
-- **The Midjourney↔ComfyUI Comparison** from the active Round 1 handoff — never executed. Midjourney is Discord-only and the Maker's dispatch path doesn't reach it from this side; the Comparison remains the open Round 1 deliverable. Closing Well names the gap honestly here rather than pretending Round 1 is complete.
-- **A LaTeX install on the canonical Mac** — would enable Manim's `MathTex` and `DecimalNumber` mobjects, currently sidestepped by Pango `Text` with `always_redraw`. Deferred — the current path works for the current needs.
-- **The "order parameter dial reading" prose for `Kuramoto Coupling.md`** — Loudon asked what the R vector's changing length, color, and direction mean; I answered in conversation but never wrote that paragraph into the hub entry. A future Weave should pick it up.
-- **The "always extract frames after rendering" pattern** — named in conversation as a verification discipline, never elevated to a Specialist gotcha or a Shop standard. This entry's *Verify To Your Best Ability* section is the elevation; the Specialist entries themselves still need the gotcha to reference back here.
+A closing-well punchlist names not only what shipped but what *almost* did — threads that opened during the work and never closed. The discipline: at the end of any substantial session, scan for branches that were tried-and-deferred, asked-and-unanswered, or noticed-and-not-elevated, and park each one where its owning entry can pick it up — not where the session happened to end. A lost branch left in the wrong entry becomes another instance's archaeology problem.
+
+The rule: a lost branch belongs in the entry whose forward vector it serves. Round 1 stragglers from [[Kuramoto Coupling]] belong in that hub's bundle, not here. Specialist gotchas belong in the Specialist's entry. Only the *practice* of surfacing them belongs in this entry.
 
 ## Forward Vectors
 
