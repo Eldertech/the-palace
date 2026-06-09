@@ -55,10 +55,16 @@ Projects/Generative Sample Libraries/**/*.wav
 
 **/vite.config.js.timestamp-*.mjs
 
+# Vite dependency pre-bundle cache (regenerable on next dev/build)
+.vite/
+**/.vite/
+
 # STIGMERGY actuator runtime state (the fired-worker pid/log/started files)
 _ops/stigmergy/.actuator/
 # STIGMERGY steward lane runtime state (pid/log + per-cycle transcripts + last-cycle)
 _ops/stigmergy/.actuator-steward/
+# STIGMERGY companion actuator runtime state (pid/log + per-cycle transcripts)
+_ops/stigmergy/.actuator-companion/
 
 # Atomic-write temp files (state.json.tmp etc. — transient write-then-rename
 # intermediates left behind if a write is interrupted; never knowledge)
