@@ -3,6 +3,7 @@ import http from 'node:http';
 import { resolve } from 'node:path';
 import { mkdtempSync, rmSync, mkdirSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
+import { execFileSync } from 'node:child_process';
 import request from 'supertest';
 import { blackboardMiddleware } from '../../server/middleware.js';
 
@@ -339,6 +340,91 @@ describe('POST /api/entry/save — Phase 5 Stage A dry-run preview', () => {
         body: '\n# K\n',
       })
       .set('Content-Type', 'application/json');
+    expect(res.status).toBe(422);
+  });
+});
+
+// The EDIT form's Trickster Commit surfaces ([[Trickster Commit]]): /save with
+// trickster:true auditions canon (path-safety gate only, schema lapses warn not
+// block); /trickster-save is the real write+commit, branded trickster. A git
+// repo stands in for the live palace so the commit can land.
+describe('trickster write surfaces (canon bypass, path-safety kept)', () => {
+  let root, server;
+  const git = (args) => execFileSync('git', args, { cwd: root, encoding: 'utf8' });
+
+  beforeAll(() => {
+    root = makeTempPalace();
+    git(['init', '-q', '-b', 'main']);
+    git(['config', 'user.email', 'test@example.com']);
+    git(['config', 'user.name', 'Test User']);
+    git(['config', 'commit.gpgsign', 'false']);
+    // a canon file the careful path refuses
+    writeFileSync(
+      resolve(root, 'SCHEMA.md'),
+      '---\ntitle: SCHEMA\ntype: meta\nversion: "1.8"\n---\n# SCHEMA\n\nThe type system.\n',
+      'utf8',
+    );
+    git(['add', '-A']);
+    git(['commit', '-q', '-m', 'seed']);
+    server = makeServer(root);
+  });
+  afterAll(() => { rmSync(root, { recursive: true, force: true }); });
+
+  test('/save trickster:true PREVIEWS a canon edit (no 403)', async () => {
+    const res = await request(server).post('/api/entry/save').send({
+      path: 'SCHEMA.md',
+      frontmatter: { title: 'SCHEMA', type: 'meta', version: '1.8' },
+      body: '# SCHEMA\n\nThe type system. Plus a previewed line.\n',
+      summary: 'preview a canon tweak', verify: 'unverified', trickster: true,
+    }).set('Content-Type', 'application/json');
+    expect(res.status).toBe(200);
+    expect(res.body.preview.subject).toMatch(/^edit\(SCHEMA\):/);
+  });
+
+  test('/save trickster:true tolerates schema-violating frontmatter (warns, no 422)', async () => {
+    const res = await request(server).post('/api/entry/save').send({
+      path: 'Kuramoto Coupling.md',
+      frontmatter: { title: 'Kuramoto Coupling', type: 'imaginary', pillars: [], born: 'recently', stage: 'unknown' },
+      body: '# K\n\nreckless.\n',
+      summary: 'reckless preview', verify: 'unverified', trickster: true,
+    }).set('Content-Type', 'application/json');
+    expect(res.status).toBe(200);
+    expect(res.body.preview.warnings.some((w) => /schema/i.test(w))).toBe(true);
+  });
+
+  test('/trickster-save WRITES + commits a canon file, branded trickster + unverified', async () => {
+    const res = await request(server).post('/api/entry/trickster-save').send({
+      path: 'SCHEMA.md',
+      frontmatter: { title: 'SCHEMA', type: 'meta', version: '1.8' },
+      body: '# SCHEMA\n\nThe type system. A trickster scratch line.\n',
+      summary: 'trickster tweak to SCHEMA', body_message: 'because the trusted hand may',
+    }).set('Content-Type', 'application/json');
+    expect(res.status).toBe(200);
+    expect(res.body.ok).toBe(true);
+    expect(typeof res.body.shortHash).toBe('string');
+    expect(git(['show', 'HEAD:SCHEMA.md'])).toMatch(/A trickster scratch line\./);
+    const msg = git(['log', '-1', '--format=%B']);
+    expect(msg).toMatch(/Palace-Author: trickster/);
+    expect(msg).toMatch(/Palace-Verify: unverified/);
+    expect(msg).toMatch(/^edit\(SCHEMA\): trickster tweak to SCHEMA/);
+  });
+
+  test('/trickster-save refuses a path-safety violation (../) with 403', async () => {
+    const res = await request(server).post('/api/entry/trickster-save').send({
+      path: '../escape.md', frontmatter: { title: 'x' }, body: 'x', summary: 's',
+    }).set('Content-Type', 'application/json');
+    expect(res.status).toBe(403);
+    expect(res.body.ok).toBe(false);
+  });
+
+  test('/trickster-save 422 when nothing changed', async () => {
+    // Re-send the exact committed content (after the write test landed it).
+    const res = await request(server).post('/api/entry/trickster-save').send({
+      path: 'SCHEMA.md',
+      frontmatter: { title: 'SCHEMA', type: 'meta', version: '1.8' },
+      body: '# SCHEMA\n\nThe type system. A trickster scratch line.\n',
+      summary: 'no-op',
+    }).set('Content-Type', 'application/json');
     expect(res.status).toBe(422);
   });
 });
