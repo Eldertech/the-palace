@@ -240,26 +240,27 @@ export default function App() {
     return trickster.filter((m) => m.type === 'RESOURCE_REQUEST' && !responded.has(m.request_id)).length;
   }, [visibleMessages]);
 
-  // The decision the Companion grounds in on the TRICKSTER deck: the TOP pending
-  // request (the one in front of Loudon now). Its `from` is the project entry's
-  // title — the page IS the agent — so the lane grounds in that project. As
-  // cards are filed the top changes and the companion re-grounds. Only computed
-  // on TRICKSTER; null elsewhere (then the companion grounds in STIGMERGY).
-  const currentTricksterRequest = useMemo(() => {
+  // The pending decisions the Companion can ground in on the TRICKSTER deck. The
+  // window scroll-spies the card it floats over and answers AS that project (its
+  // `from` is the project entry's title — the page IS the agent). We pass the
+  // whole ranked list so the window can pick the nearest one live; null elsewhere
+  // (then the companion grounds in STIGMERGY). Order matches the rendered cards
+  // (buildInbox, newest-first) so index alignment is exact.
+  const currentTricksterRequests = useMemo(() => {
     if (deck !== 'TRICKSTER') return null;
-    const top = buildInbox(visibleMessages).pending_requests[0];
-    if (!top) return null;
-    return {
-      request_id: top.request_id,
-      project: top.from,
-      ask: top.headline || top.resource || null,
-      ground: top.ground || null,
-      rationale: top.rationale || null,
-      options: Array.isArray(top.options)
-        ? top.options.map((o) => ({ id: o.id, label: o.label, recommended: !!o.recommended }))
+    const list = buildInbox(visibleMessages).pending_requests;
+    if (!list.length) return null;
+    return list.map((p) => ({
+      request_id: p.request_id,
+      project: p.from,
+      ask: p.headline || p.resource || null,
+      ground: p.ground || null,
+      rationale: p.rationale || null,
+      options: Array.isArray(p.options)
+        ? p.options.map((o) => ({ id: o.id, label: o.label, recommended: !!o.recommended }))
         : null,
-      recommended: top.recommended_option || null,
-    };
+      recommended: p.recommended_option || null,
+    }));
   }, [deck, visibleMessages]);
 
   const handleOptimisticAppend = useCallback((persistedMessage) => {
@@ -447,7 +448,7 @@ export default function App() {
         open={agentOpen}
         deck={deck}
         entryPath={currentEntryPath}
-        tricksterRequest={currentTricksterRequest}
+        tricksterRequests={currentTricksterRequests}
         onClose={toggleAgent}
       />
       </PalaceRefProvider>

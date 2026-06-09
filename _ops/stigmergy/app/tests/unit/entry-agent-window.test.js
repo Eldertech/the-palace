@@ -101,6 +101,16 @@ describe('EntryAgentWindow (context-driven, Stage 0)', () => {
     expect(html).toContain('read-only');             // footer
     expect(html).not.toContain('(top)');             // not the entry surface
   });
+
+  it('renders a trickster LIST-context, defaulting to the top decision (the box scroll-spies the rest)', () => {
+    const html = render({ context: { kind: 'trickster_request', requests: [
+      { request_id: 'r1', project: 'Waveguide Synthesizer', ask: 'pick a model' },
+      { request_id: 'r2', project: 'Slime Mold Delay', ask: 'tube count' },
+    ] } });
+    expect(html).toContain('data-testid="eaw-trickster-intro"');
+    expect(html).toContain('Waveguide Synthesizer'); // top is active before any scroll
+    expect(html).toContain('as:');                   // the "responding as" titlebar
+  });
 });
 
 describe('TodoMarker (Stage 1 captured to-do)', () => {

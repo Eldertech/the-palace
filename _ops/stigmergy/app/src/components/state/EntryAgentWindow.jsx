@@ -33,6 +33,7 @@ const DEFAULT_H = 520;
 const DEFAULT_TOP = 110;
 const MAX_INPUT_H = 200; // composer auto-grows to here, then scrolls inside
 const GLOW_CLASS = 'eaw-section-glow';
+const GLOW_CARD_CLASS = 'eaw-card-active'; // the TRICKSTER card the box floats over
 const Z = 9000;          // float above all app content/chrome (below the CRT overlays)
 
 // Last heading whose top has scrolled above the window's vertical centre is the
@@ -67,6 +68,20 @@ function paintGlow(bodyEl, active) {
 function truncate(s, n) {
   if (typeof s !== 'string') return '';
   return s.length > n ? s.slice(0, n - 1).trimEnd() + '…' : s;
+}
+
+// The TRICKSTER card the box is floating over: the one whose vertical span the
+// box's centre falls within, or — in a gap between cards — the nearest. The
+// analog of findActiveHeading for the decision lane. Returns the element or null.
+function findNearestCard(cards, centreY) {
+  let best = null;
+  let bestDist = Infinity;
+  for (const c of cards) {
+    const r = c.getBoundingClientRect();
+    const d = centreY < r.top ? r.top - centreY : centreY > r.bottom ? centreY - r.bottom : 0;
+    if (d < bestDist) { bestDist = d; best = c; }
+  }
+  return best;
 }
 
 // One conversation turn. Loudon's turns read as a dim prompt; the Companion's
@@ -269,9 +284,25 @@ export default function EntryAgentWindow({ entry, context, containerRef, onClose
   const isEntry = ctx.kind === 'entry';
   const isTrickster = ctx.kind === 'trickster_request';
   const cKey = contextKey(ctx);
-  // Latest context, read by callbacks without re-binding on every render.
+
+  // TRICKSTER: the box scroll-spies the card it floats over and answers AS that
+  // project. The context carries the whole pending list (`ctx.requests`); a
+  // single-request context (tests / the wire shape) is treated as a one-item
+  // list. `activeReqId` is set by the card scroll-spy; the active request drives
+  // the titlebar, the intro, and what the next turn grounds in.
+  const [activeReqId, setActiveReqId] = useState(null);
+  const tricksterList = isTrickster
+    ? (Array.isArray(ctx.requests) ? ctx.requests : [ctx])
+    : [];
+  const activeRequest = isTrickster
+    ? (tricksterList.find((r) => r && r.request_id === activeReqId) || tricksterList[0] || null)
+    : null;
+
+  // Latest context + active card, read by callbacks without re-binding each render.
   const ctxRef = useRef(ctx);
   ctxRef.current = ctx;
+  const activeReqIdRef = useRef(activeReqId);
+  activeReqIdRef.current = activeReqId;
 
   const [width, setWidth] = useState(DEFAULT_W);
   const [height, setHeight] = useState(DEFAULT_H);
@@ -460,6 +491,16 @@ export default function EntryAgentWindow({ entry, context, containerRef, onClose
     if (!message || sending) return;
     const sendCtx = ctxRef.current;
     if (sendCtx.kind === 'entry' && !sendCtx.path) return; // an entry with nothing to ground in
+    // TRICKSTER carries the whole pending list; the turn grounds in the card the
+    // box is over right now (or the top one before any scroll). Send that single
+    // request as the wire context — the backend grounds one project per turn.
+    let wireCtx = sendCtx;
+    if (sendCtx.kind === 'trickster_request') {
+      const list = Array.isArray(sendCtx.requests) ? sendCtx.requests : [sendCtx];
+      const ar = list.find((r) => r && r.request_id === activeReqIdRef.current) || list[0];
+      if (!ar) return; // no pending decision to ground in
+      wireCtx = { kind: 'trickster_request', ...ar };
+    }
     setTurnError(null);
     // history: only the spoken turns (user + companion); edit markers carry no text
     const history = convo.filter((m) => m.role === 'user' || m.role === 'companion').map((m) => ({ role: m.role, text: m.text }));
@@ -467,7 +508,7 @@ export default function EntryAgentWindow({ entry, context, containerRef, onClose
     setDraft('');
     if (inputRef.current) inputRef.current.style.height = ''; // reset auto-grow
     setSending(true);
-    const r = await postTurn({ context: sendCtx, message, history, focus: sendCtx.kind === 'entry' ? focusText : null });
+    const r = await postTurn({ context: wireCtx, message, history, focus: wireCtx.kind === 'entry' ? focusText : null });
     if (r && r.fired && r.turnId) {
       sessionTurns.current.add(r.turnId);
       currentTurn.current = r.turnId;
@@ -534,6 +575,39 @@ export default function EntryAgentWindow({ entry, context, containerRef, onClose
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isEntry, resolveContainer, top, height, cKey]);
 
+  // ── TRICKSTER scroll-spy: the card the box floats over glows + answers ──────
+  // The decision-lane analog of the entry scroll-spy: as Loudon scrolls (or
+  // drags the box), the nearest pending card glows (amber bar) and becomes the
+  // project the NEXT turn is grounded in. One conversation, re-aimed by position.
+  useEffect(() => {
+    if (!isTrickster || typeof window === 'undefined') return undefined;
+    let raf = 0;
+    const update = () => {
+      raf = 0;
+      const cards = document.querySelectorAll('[data-testid="trickster-card"]');
+      if (!cards.length) return;
+      const centreY = top + height / 2;
+      const active = findNearestCard(cards, centreY);
+      cards.forEach((c) => c.classList.remove(GLOW_CARD_CLASS));
+      if (active) {
+        active.classList.add(GLOW_CARD_CLASS);
+        const rid = active.getAttribute('data-request-id');
+        if (rid) setActiveReqId((cur) => (cur === rid ? cur : rid));
+      }
+    };
+    const onScroll = () => { if (!raf) raf = window.requestAnimationFrame(update); };
+    update();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll);
+    return () => {
+      if (raf) window.cancelAnimationFrame(raf);
+      window.removeEventListener('scroll', onScroll);
+      window.removeEventListener('resize', onScroll);
+      document.querySelectorAll('.' + GLOW_CARD_CLASS).forEach((c) => c.classList.remove(GLOW_CARD_CLASS));
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isTrickster, top, height, cKey]);
+
   // ── Drag / resize ──────────────────────────────────────────────────────
   // Titlebar = free 2D move; left edge = width (right edge fixed); bottom =
   // height. The box floats above everything, so it moves anywhere on screen.
@@ -568,7 +642,9 @@ export default function EntryAgentWindow({ entry, context, containerRef, onClose
   const linkCount = Array.isArray(entry?.links) ? entry.links.length : 0;
   const title = isEntry
     ? (grounding?.entry?.title || ctx.title || entry?.title || ctx.path || entry?.path || 'this entry')
-    : contextLabel(ctx);
+    : isTrickster
+      ? (activeRequest?.project || 'a pending decision')
+      : contextLabel(ctx);
   const winPos = left == null ? { right: 28 } : { left };
 
   return (
@@ -648,6 +724,10 @@ export default function EntryAgentWindow({ entry, context, containerRef, onClose
             <>over: <span style={{ color: 'var(--phosphor)', textShadow: 'var(--glow)' }}>
               {reading || '— (top)'}
             </span></>
+          ) : isTrickster ? (
+            <>as: <span style={{ color: 'var(--ansi-bright-yellow)', textShadow: '0 0 6px currentColor' }}>
+              {activeRequest?.project || '—'}
+            </span></>
           ) : (
             <span style={{ color: 'var(--phosphor)', textShadow: 'var(--glow)' }}>{contextLabel(ctx)}</span>
           )}
@@ -723,16 +803,16 @@ export default function EntryAgentWindow({ entry, context, containerRef, onClose
             </>
           ) : isTrickster ? (
             <div data-testid="eaw-trickster-intro" style={{ color: 'var(--phosphor)', textShadow: 'var(--glow)' }}>
-              I'm <span style={{ color: 'var(--phosphor-white)' }}>{ctx.project || 'this project'}</span> — the
-              steward behind the decision in front of you. Ask me what I'm asking
-              for, why, or where the project stands; I'll help you see it before
-              you decide.
-              {ctx.ask ? (
+              I answer as the decision you're nearest — right now{' '}
+              <span style={{ color: 'var(--phosphor-white)' }}>{activeRequest?.project || 'this project'}</span>,
+              the steward in front of you. Scroll the lane to point me at another;
+              ask what I'm asking for, why, or where the project stands.
+              {activeRequest?.ask ? (
                 <div style={{
                   marginTop: 8, paddingLeft: 8, borderLeft: '2px solid var(--phosphor-dim)',
                   color: 'var(--phosphor-dim)', textShadow: 'none', fontSize: 11,
                 }}>
-                  the ask: <span style={{ color: 'var(--phosphor)', textShadow: 'var(--glow)' }}>{ctx.ask}</span>
+                  the ask: <span style={{ color: 'var(--phosphor)', textShadow: 'var(--glow)' }}>{activeRequest.ask}</span>
                 </div>
               ) : null}
             </div>

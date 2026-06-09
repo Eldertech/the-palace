@@ -18,14 +18,15 @@
 // (a generic STIGMERGY-as-collaborator discuss). The commit / trickster_request
 // kinds are added in their stages — this resolver grows one branch at a time.
 
-export function resolveContext({ deck, entryPath, commitSha, tricksterRequest } = {}) {
+export function resolveContext({ deck, entryPath, commitSha, tricksterRequests } = {}) {
   if (deck === 'STATE' && entryPath) {
     return { kind: 'entry', path: entryPath };
   }
-  if (deck === 'TRICKSTER' && tricksterRequest && tricksterRequest.request_id) {
-    // The project behind the current pending decision (the page IS the agent):
-    // ground in it + the steward's ask. Read-only Q&A.
-    return { kind: 'trickster_request', ...tricksterRequest };
+  if (deck === 'TRICKSTER' && Array.isArray(tricksterRequests) && tricksterRequests.length > 0) {
+    // The pending decisions in front of Loudon. The window scroll-spies the card
+    // it floats over and answers AS that project (the page IS the agent) — so it
+    // carries the whole list and picks the nearest one live. Read-only Q&A.
+    return { kind: 'trickster_request', requests: tricksterRequests };
   }
   // Stage 3 (LOG) adds its branch above this line. Until then, every other
   // surface grounds the companion in STIGMERGY itself — a development
@@ -42,7 +43,10 @@ export function contextKey(ctx) {
     case 'entry': return `entry:${ctx.path || ''}`;
     case 'commit': return `commit:${ctx.sha || ''}`;
     case 'uncommitted': return 'uncommitted';
-    case 'trickster_request': return `trickster:${ctx.request_id || ''}`;
+    // The list-context (the live deck) keys to a stable 'trickster' so scrolling
+    // between cards re-grounds the answer WITHOUT resetting the conversation; a
+    // single-request context (the wire shape) keys to its id.
+    case 'trickster_request': return ctx.request_id ? `trickster:${ctx.request_id}` : 'trickster';
     case 'app_feedback': return `app:${ctx.deck || ''}`;
     default: return ctx.kind || 'none';
   }

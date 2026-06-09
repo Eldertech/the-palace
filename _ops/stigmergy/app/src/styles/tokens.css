@@ -276,6 +276,16 @@ hr::before { content: "═══════════════════
   transition: background var(--dur-fade) linear, filter var(--dur-fade) linear;
 }
 
+/* The active TRICKSTER card — the pending decision the companion box is
+   currently floating over (its scroll-spy, the analog of the entry section
+   glow). An amber left bar reads as "I am answering AS this one" — the same
+   "look at this" accent the discuss-pin and to-do markers use. */
+.eaw-card-active {
+  filter: brightness(1.1);
+  box-shadow: inset 3px 0 0 var(--ansi-bright-yellow);
+  transition: box-shadow var(--dur-fade) linear, filter var(--dur-fade) linear;
+}
+
 /* The "discussing" highlight — a SECOND selection (CSS Custom Highlight API).
    Amber so it reads as distinct from the phosphor body and the green native
    selection; persists when focus moves to the chat box (it is a registered

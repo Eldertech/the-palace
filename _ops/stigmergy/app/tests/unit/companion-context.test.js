@@ -22,17 +22,28 @@ describe('resolveContext', () => {
     }
   });
 
-  it('grounds in the pending decision on TRICKSTER when a request is current', () => {
-    const req = { request_id: 'req-1', project: 'Waveguide Synthesizer', ask: 'pick a model', options: [] };
-    const ctx = resolveContext({ deck: 'TRICKSTER', tricksterRequest: req });
+  it('carries the pending list on TRICKSTER (the window picks the nearest card)', () => {
+    const reqs = [
+      { request_id: 'req-1', project: 'Waveguide Synthesizer', ask: 'pick a model' },
+      { request_id: 'req-2', project: 'Slime Mold Delay', ask: 'tube count' },
+    ];
+    const ctx = resolveContext({ deck: 'TRICKSTER', tricksterRequests: reqs });
     expect(ctx.kind).toBe('trickster_request');
-    expect(ctx.project).toBe('Waveguide Synthesizer');
-    expect(ctx.request_id).toBe('req-1');
+    expect(ctx.requests).toHaveLength(2);
+    expect(ctx.requests[0].project).toBe('Waveguide Synthesizer');
   });
 
-  it('falls back to app_feedback on TRICKSTER when no request is pending', () => {
-    expect(resolveContext({ deck: 'TRICKSTER', tricksterRequest: null }))
+  it('falls back to app_feedback on TRICKSTER when nothing is pending', () => {
+    expect(resolveContext({ deck: 'TRICKSTER', tricksterRequests: null }))
       .toEqual({ kind: 'app_feedback', deck: 'TRICKSTER' });
+    expect(resolveContext({ deck: 'TRICKSTER', tricksterRequests: [] }))
+      .toEqual({ kind: 'app_feedback', deck: 'TRICKSTER' });
+  });
+
+  it('keys the live list-context stably (scroll re-grounds without resetting the chat)', () => {
+    expect(contextKey({ kind: 'trickster_request', requests: [{ request_id: 'a' }] })).toBe('trickster');
+    // the single wire shape still keys to its id
+    expect(contextKey({ kind: 'trickster_request', request_id: 'a' })).toBe('trickster:a');
   });
 
   it('is SSR-safe with no args', () => {
