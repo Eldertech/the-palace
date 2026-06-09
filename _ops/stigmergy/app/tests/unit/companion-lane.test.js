@@ -5,8 +5,41 @@
 import { describe, it, expect } from 'vitest';
 import {
   slugify, companionFrom, extractReply, extractResult, buildCompanionMessage, buildEditProofMessage,
+  buildTodoFlagMessage,
 } from '../../server/companion-lane.js';
 import { validateMessage } from '@stigmergy/core/schema';
+
+describe('buildTodoFlagMessage (Stage 1 to-do capture)', () => {
+  const base = { turnId: 'companion-app-log-2026-06-08', deck: 'LOG', model: 'opus', ts: '2026-06-08T12:00:00Z' };
+
+  it('builds a valid §2.2 FLAG on the FLAGS board with the stigmergy_todo payload', () => {
+    const m = buildTodoFlagMessage({ ...base, todo: { title: 'fix the filters', detail: 'hard to scan', area: 'log', severity: 'minor' } });
+    expect(validateMessage(m).valid).toBe(true);
+    expect(m.type).toBe('FLAG');
+    expect(m.board).toBe('FLAGS');
+    expect(m.from).toBe('STIGMERGY (Companion)');
+    expect(m.payload.kind).toBe('stigmergy_todo');
+    expect(m.payload.title).toBe('fix the filters');
+    expect(m.payload.area).toBe('log');
+    expect(m.payload.severity).toBe('minor');
+    expect(m.payload.turn_id).toBe(base.turnId);
+    // the message id IS the queue item id (so a commit can Palace-Resolves it)
+    expect(m.id).toBe('stigmergy-todo-companion-app-log-2026-06-08');
+  });
+
+  it('defaults area to the deck and severity to minor; clamps a bad severity', () => {
+    const m = buildTodoFlagMessage({ ...base, todo: { title: 'x', severity: 'catastrophic' } });
+    expect(m.payload.area).toBe('log');     // from deck
+    expect(m.payload.severity).toBe('minor'); // clamped
+  });
+
+  it('still validates with a missing/empty todo', () => {
+    const m = buildTodoFlagMessage({ ...base, todo: null });
+    expect(validateMessage(m).valid).toBe(true);
+    expect(m.payload.title).toBe('untitled feedback');
+    expect(m.payload.area).toBe('log');
+  });
+});
 
 describe('slugify / companionFrom', () => {
   it('slugifies a title', () => {
@@ -46,21 +79,28 @@ describe('extractReply', () => {
 });
 
 describe('extractResult', () => {
-  it('returns reply with no edit for a discuss turn', () => {
-    expect(extractResult('{"reply":"just talking"}')).toEqual({ reply: 'just talking', edit: null });
+  it('returns reply with no edit/action for a discuss turn', () => {
+    expect(extractResult('{"reply":"just talking"}')).toEqual({ reply: 'just talking', edit: null, action: null });
   });
   it('returns reply + edit for an edit turn', () => {
     const r = extractResult('{"reply":"done","edit":{"op":"append","text":"a line"}}');
     expect(r.reply).toBe('done');
     expect(r.edit).toEqual({ op: 'append', text: 'a line' });
+    expect(r.action).toBeNull();
   });
   it('accepts an edit-only object (empty reply)', () => {
     const r = extractResult('{"edit":{"op":"prepend","text":"x"}}');
     expect(r.reply).toBe('');
     expect(r.edit.op).toBe('prepend');
   });
+  it('returns reply + action for a flag turn (the non-entry action channel)', () => {
+    const r = extractResult('{"reply":"captured","action":{"type":"flag","todo":{"title":"x"}}}');
+    expect(r.reply).toBe('captured');
+    expect(r.edit).toBeNull();
+    expect(r.action).toEqual({ type: 'flag', todo: { title: 'x' } });
+  });
   it('falls back to raw text as the reply when no JSON', () => {
-    expect(extractResult('plain prose')).toEqual({ reply: 'plain prose', edit: null });
+    expect(extractResult('plain prose')).toEqual({ reply: 'plain prose', edit: null, action: null });
   });
 });
 

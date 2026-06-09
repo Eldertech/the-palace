@@ -189,6 +189,38 @@ export function buildQueue(messages) {
       continue;
     }
 
+    if (p.kind === 'stigmergy_todo' && !responded.has(m.id)) {
+      // A STIGMERGY-dev to-do captured by the Companion (Stage 1). Unlike a
+      // weave_flag it names no palace entry — it is feedback about the terminal
+      // itself — so it does not auto-close on an entry touch; it is retired by a
+      // RESOURCE_GRANT/DENY answering it, or (Stage 3) a commit carrying
+      // `Palace-Resolves: <id>`.
+      const title = typeof p.title === 'string' && p.title.trim() ? p.title.trim() : 'untitled feedback';
+      items.push({
+        id: m.id,
+        sourceId: m.id,
+        kind: 'stigmergy_todo',
+        from: m.from,
+        ts: m.ts,
+        board: m.board,
+        sessionId: m.session_id || null,
+        ask: title,
+        summary: title,
+        rationale: typeof p.detail === 'string' && p.detail.trim() ? p.detail.trim() : null,
+        area: typeof p.area === 'string' ? p.area : 'general',
+        severity: typeof p.severity === 'string' ? p.severity : 'minor',
+        stale_if: typeof p.stale_if === 'string' && p.stale_if !== ''
+          ? p.stale_if
+          : `a RESOURCE_GRANT/DENY answers this, or a commit carries Palace-Resolves: ${m.id}`,
+        pointer: { type: 'board', target: m.board },
+        resolved: { done: false, reason: null, commit: null },
+        blocking: false,
+        health: m.health || null,
+        raw: m,
+      });
+      continue;
+    }
+
     if (p.kind === 'handoff_ready' && !ackedHandoffs.has(m.id)) {
       const entry = typeof p.entry === 'string' ? p.entry : null;
       items.push({

@@ -50,15 +50,17 @@ export function companionArgv(prompt, model) {
 
 /**
  * Pull the worker's result out of its raw stdout. The contract asks for a single
- * JSON object {"reply":"...","edit"?:{...}}, but a capable model may wrap it; so
- * we scan for the LAST balanced {...} that parses with a string `reply` or an
- * `edit`, and fall back to the raw text (fence-stripped) as the reply so the
- * user always sees something. Returns { reply, edit }.
+ * JSON object {"reply":"...","edit"?:{...},"action"?:{...}}, but a capable model
+ * may wrap it; so we scan for the LAST balanced {...} that parses with a string
+ * `reply`, an `edit`, or an `action`, and fall back to the raw text (fence-
+ * stripped) as the reply so the user always sees something. `edit` is the entry
+ * in-place edit channel; `action` is the sibling channel for the non-entry
+ * capabilities (flag now; commit later). Returns { reply, edit, action }.
  */
 export function extractResult(raw) {
-  if (typeof raw !== 'string') return { reply: '', edit: null };
+  if (typeof raw !== 'string') return { reply: '', edit: null, action: null };
   const text = raw.trim();
-  if (!text) return { reply: '', edit: null };
+  if (!text) return { reply: '', edit: null, action: null };
   const objs = [];
   for (let i = 0; i < text.length; i += 1) {
     if (text[i] !== '{') continue;
@@ -77,15 +79,18 @@ export function extractResult(raw) {
   for (let k = objs.length - 1; k >= 0; k -= 1) {
     try {
       const obj = JSON.parse(objs[k]);
-      if (obj && (typeof obj.reply === 'string' || (obj.edit && typeof obj.edit === 'object'))) {
+      if (obj && (typeof obj.reply === 'string'
+        || (obj.edit && typeof obj.edit === 'object')
+        || (obj.action && typeof obj.action === 'object'))) {
         return {
           reply: typeof obj.reply === 'string' ? obj.reply : '',
           edit: obj.edit && typeof obj.edit === 'object' ? obj.edit : null,
+          action: obj.action && typeof obj.action === 'object' ? obj.action : null,
         };
       }
     } catch (_) { /* try the next candidate */ }
   }
-  return { reply: text.replace(/^```(?:json)?\s*/i, '').replace(/\s*```$/, '').trim(), edit: null };
+  return { reply: text.replace(/^```(?:json)?\s*/i, '').replace(/\s*```$/, '').trim(), edit: null, action: null };
 }
 
 /** Back-compat: just the reply string. */
@@ -208,6 +213,51 @@ export function buildRevertProofMessage({ title, entryPath, turnId, reverts, rev
   };
 }
 
+const TODO_SEVERITIES = new Set(['idea', 'minor', 'major']);
+
+/**
+ * Build the §2.2 FLAG a captured STIGMERGY-dev to-do posts (Stage 1). A FLAG on
+ * the FLAGS board with payload.kind 'stigmergy_todo' so the QUEUE renders it as
+ * a to-do (distinct from palace-weave flags, which carry payload.claim /
+ * source_entries). The message id IS the QUEUE item id, so a later commit can
+ * retire it with Palace-Resolves. Pure + validated by core before append.
+ */
+export function buildTodoFlagMessage({ turnId, todo, deck, model, ts, id }) {
+  const t = todo && typeof todo === 'object' ? todo : {};
+  const title = typeof t.title === 'string' && t.title.trim() ? t.title.trim() : 'untitled feedback';
+  const area = typeof t.area === 'string' && t.area.trim()
+    ? t.area.trim().toLowerCase()
+    : (deck ? String(deck).toLowerCase() : 'general');
+  const severity = TODO_SEVERITIES.has(t.severity) ? t.severity : 'minor';
+  return {
+    schema_version: '1.0',
+    id: id || `stigmergy-todo-${turnId}`,
+    ts,
+    session_id: 'companion-stigmergy',
+    from: companionFrom('STIGMERGY'),
+    to: '*',
+    type: 'FLAG',
+    board: 'FLAGS',
+    health: {
+      score: 'green',
+      model: model || DEFAULT_MODEL,
+      _orchestrator_metadata: {
+        dispatch_mode: 'claude-code-subagent',
+        note: 'Companion-captured STIGMERGY dev to-do (Stage 1). Path 2 stub health.',
+      },
+    },
+    payload: {
+      kind: 'stigmergy_todo',
+      turn_id: turnId,
+      title,
+      detail: typeof t.detail === 'string' ? t.detail.trim() : '',
+      area,
+      severity,
+      status: 'open',
+    },
+  };
+}
+
 // ── the lane ────────────────────────────────────────────────────────────────
 
 /**
@@ -280,12 +330,14 @@ export function createCompanionLane(opts = {}) {
       }
       let raw = '';
       try { raw = readFileSync(meta.transcriptPath, 'utf8'); } catch (_) { raw = ''; }
-      const { reply, edit } = extractResult(raw);
+      const { reply, edit, action } = extractResult(raw);
       // In-place edits reach only the entry kind. Other contexts (app_feedback,
       // and the later commit / trickster kinds) ignore any proposed `edit`; their
-      // actions arrive on a different channel. Absent kind = legacy entry turn.
+      // actions arrive on the `action` channel. Absent kind = legacy entry turn.
       const allowEdit = meta.kind == null || meta.kind === 'entry';
       const hasEdit = allowEdit && !!(edit && edit.op);
+      // The to-do capture (Stage 1): a flag action from the app_feedback context.
+      const hasFlag = meta.kind === 'app_feedback' && !!(action && action.type === 'flag');
 
       // 1) the conversational reply. Adaptive narration (Plan §7.2): when an
       // edit lands, the worker stays QUIET for a clean/obvious change — the edit
@@ -299,7 +351,7 @@ export function createCompanionLane(opts = {}) {
         postIfValid(buildCompanionMessage({
           title, entryPath, turnId, reply: trimmedReply, model: meta.model || model, ts: new Date().toISOString(),
         }));
-      } else if (!hasEdit) {
+      } else if (!hasEdit && !hasFlag) {
         postIfValid(buildCompanionMessage({
           title, entryPath, turnId, reply: '(the companion returned nothing)',
           model: meta.model || model, ts: new Date().toISOString(),
@@ -343,7 +395,22 @@ export function createCompanionLane(opts = {}) {
           editSummary = { ok: false, error: e.message };
         }
       }
-      writeLastTurn({ ok: true, turn_id: turnId, entry: title, edit: editSummary, ts: new Date().toISOString() });
+      // 3) the to-do capture (Stage 1): post the feedback as a FLAG/stigmergy_todo
+      //    so the QUEUE renders it. The reply (above) confirms it in the window.
+      let flagSummary = null;
+      if (hasFlag) {
+        try {
+          const posted = postIfValid(buildTodoFlagMessage({
+            turnId, todo: action.todo, deck: meta.deck,
+            model: meta.model || model, ts: new Date().toISOString(),
+          }));
+          flagSummary = { ok: posted, title: action.todo && action.todo.title };
+        } catch (e) {
+          logLine(`ERROR: companion flag failed: ${e.message}`);
+          flagSummary = { ok: false, error: e.message };
+        }
+      }
+      writeLastTurn({ ok: true, turn_id: turnId, entry: title, edit: editSummary, flag: flagSummary, ts: new Date().toISOString() });
     } catch (e) {
       logLine(`ERROR: companion reap failed: ${e.message}`);
       writeLastTurn({ ok: false, turn_id: turnId, error: e.message });
@@ -398,7 +465,7 @@ export function createCompanionLane(opts = {}) {
       } catch (e) {
         return { ok: false, fired: false, msg: `could not build prompt: ${e.message}` };
       }
-      meta = { kind: 'app_feedback', entryPath: null, entryTitle: 'STIGMERGY', turnId, model };
+      meta = { kind: 'app_feedback', entryPath: null, entryTitle: 'STIGMERGY', deck: ctx.deck || null, turnId, model };
     } else {
       return { ok: false, fired: false, msg: `companion can't ground in "${ctx.kind}" yet` };
     }

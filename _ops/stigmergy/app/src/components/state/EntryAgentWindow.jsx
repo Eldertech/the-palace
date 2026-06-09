@@ -231,6 +231,32 @@ export function EditMarker({ op, commit, branch, summary, reverts, vectorChange,
   );
 }
 
+// A captured STIGMERGY-dev to-do (Stage 1). The companion files feedback as a
+// FLAG on the board; this marker confirms it landed and where it lives now (the
+// QUEUE · FLAGS lane). Amber, like the companion's other "look at this" accents.
+export function TodoMarker({ title, area, severity }) {
+  return (
+    <div data-testid="eaw-todo" style={{
+      marginBottom: 8, padding: '5px 7px',
+      border: '1px solid var(--ansi-bright-yellow)',
+      background: 'color-mix(in srgb, var(--ansi-bright-yellow) 8%, transparent)',
+    }}>
+      <div style={{
+        color: 'var(--ansi-bright-yellow)', textShadow: '0 0 6px currentColor',
+        fontSize: 10, textTransform: 'uppercase', letterSpacing: '.06em', marginBottom: 2,
+      }}>✓ filed to QUEUE · FLAGS</div>
+      <div style={{ color: 'var(--phosphor)', textShadow: 'var(--glow)', fontSize: 12 }}>
+        {title || 'feedback captured'}
+      </div>
+      {(area || severity) ? (
+        <div style={{ color: 'var(--phosphor-dim)', fontSize: 10, fontFamily: 'var(--font-mono)' }}>
+          {area ? `area: ${area}` : ''}{area && severity ? ' · ' : ''}{severity || ''}
+        </div>
+      ) : null}
+    </div>
+  );
+}
+
 export default function EntryAgentWindow({ entry, context, containerRef, onClose }) {
   // Context-driven (Stage 0). The window used to be bound to a single `entry`;
   // it now grounds in a `context` descriptor that follows the user across decks.
@@ -375,6 +401,11 @@ export default function EntryAgentWindow({ entry, context, containerRef, onClose
               const n = new Set(prev); n.delete(p.reverts); return n;
             });
           }
+        } else if (p.kind === 'stigmergy_todo') {
+          setConvo((prev) => [...prev, {
+            id: m.id || `t-${p.turn_id}`, role: 'todo',
+            title: p.title, area: p.area, severity: p.severity,
+          }]);
         } else {
           return;
         }
@@ -710,7 +741,9 @@ export default function EntryAgentWindow({ entry, context, containerRef, onClose
                     undone={revertedCommits.has(m.commit)}
                     undoing={undoingCommits.has(m.commit)}
                   />
-                : <ChatBubble key={m.id} role={m.role} text={m.text} />
+                : m.role === 'todo'
+                  ? <TodoMarker key={m.id} title={m.title} area={m.area} severity={m.severity} />
+                  : <ChatBubble key={m.id} role={m.role} text={m.text} />
             ))}
             {undoError ? (
               <div data-testid="eaw-undo-error" style={{ color: 'var(--warn)', textShadow: 'var(--glow)', fontSize: 11, marginTop: 4 }}>
