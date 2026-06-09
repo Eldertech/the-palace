@@ -21,7 +21,7 @@ import { resolve, join } from 'node:path';
 
 import { createActuator } from './actuator.js';
 import { readEntry } from '../src/lib/entries.js';
-import { assembleGrounding } from '../src/lib/entry-grounding.js';
+import { assembleGrounding, assembleGroundingByTitle } from '../src/lib/entry-grounding.js';
 import { buildCompanionPrompt } from './companion-prompt.js';
 import { armedWriteEntry, ensureEditsWorktree, revertCommit } from './armed-write.js';
 import { appendMessage } from '@stigmergy/core/blackboard';
@@ -466,6 +466,19 @@ export function createCompanionLane(opts = {}) {
         return { ok: false, fired: false, msg: `could not build prompt: ${e.message}` };
       }
       meta = { kind: 'app_feedback', entryPath: null, entryTitle: 'STIGMERGY', deck: ctx.deck || null, turnId, model };
+    } else if (ctx.kind === 'trickster_request') {
+      // Ground in the project behind the pending decision (its `from` title).
+      // It may not resolve to an entry — then the prompt grounds in the request
+      // alone. Read-only: the reap posts only a reply (no edit, no flag).
+      const project = ctx.project || 'project';
+      const { path, grounding } = assembleGroundingByTitle(root, project);
+      turnId = `companion-trickster-${slugify(project)}-${stamp}`;
+      try {
+        prompt = buildCompanionPrompt({ context: ctx, grounding, message, history });
+      } catch (e) {
+        return { ok: false, fired: false, msg: `could not build prompt: ${e.message}` };
+      }
+      meta = { kind: 'trickster_request', entryPath: path || null, entryTitle: project, turnId, model };
     } else {
       return { ok: false, fired: false, msg: `companion can't ground in "${ctx.kind}" yet` };
     }

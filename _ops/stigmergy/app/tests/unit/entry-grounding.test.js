@@ -8,7 +8,7 @@ import { describe, it, expect, beforeAll, afterAll } from 'vitest';
 import { mkdtempSync, writeFileSync, rmSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
-import { assembleGrounding, PALACE_FLOOR } from '../../src/lib/entry-grounding.js';
+import { assembleGrounding, assembleGroundingByTitle, resolveTitleToPath, PALACE_FLOOR } from '../../src/lib/entry-grounding.js';
 
 let root;
 
@@ -50,6 +50,25 @@ beforeAll(() => {
 
 afterAll(() => {
   if (root) rmSync(root, { recursive: true, force: true });
+});
+
+describe('assembleGroundingByTitle (Stage 2 — ground a trickster request by its project)', () => {
+  it('resolves a title to its path', () => {
+    expect(resolveTitleToPath(root, 'Phenomenology')).toBe('Phenomenology.md');
+    expect(resolveTitleToPath(root, 'Nobody Here')).toBe(null);
+    expect(resolveTitleToPath(root, '')).toBe(null);
+  });
+
+  it('grounds in the entry behind a title', () => {
+    const { path, grounding } = assembleGroundingByTitle(root, 'Merleau-Ponty');
+    expect(path).toBe('Merleau-Ponty.md');
+    expect(grounding.entry.title).toBe('Merleau-Ponty');
+    expect(grounding.entry.forward_vector).toMatch(/lived body/);
+  });
+
+  it('returns nulls (not a throw) when the title names no entry', () => {
+    expect(assembleGroundingByTitle(root, '@weave-swarm')).toEqual({ path: null, grounding: null });
+  });
 });
 
 describe('assembleGrounding', () => {

@@ -3,7 +3,7 @@
 // message, and pin the discuss-only contract (no edits, JSON-only reply).
 
 import { describe, it, expect } from 'vitest';
-import { buildCompanionPrompt } from '../../server/companion-prompt.js';
+import { buildCompanionPrompt, buildTricksterPrompt } from '../../server/companion-prompt.js';
 
 const grounding = {
   entry: {
@@ -99,5 +99,39 @@ describe('buildCompanionPrompt', () => {
     const huge = 'z'.repeat(20000);
     const p = buildCompanionPrompt({ grounding, body: huge, message: 'hi' });
     expect(p).toMatch(/\[truncated\]/);
+  });
+});
+
+describe('buildTricksterPrompt (Stage 2 project Q&A)', () => {
+  const ctx = {
+    kind: 'trickster_request', request_id: 'req-1', project: 'Waveguide Synthesizer',
+    ask: 'pick the excitation model', ground: 'two viable readings',
+    rationale: 'plucked vs bowed change the whole voice',
+    options: [{ id: 'a', label: 'plucked' }, { id: 'b', label: 'bowed', recommended: true }],
+  };
+  const projGrounding = {
+    entry: { title: 'Waveguide Synthesizer', type: 'project', stage: 'growing', forward_vector: 'I want to sing through a tube.' },
+    neighbors: [{ type: 'deepens', label: null, name: 'Karplus-Strong', resolved: true, forward_vector: 'I want to pluck.' }],
+    floor: { forward_vector: 'flourishing' },
+  };
+
+  it('speaks as the project and carries its forward vector + the ask + options', () => {
+    const p = buildCompanionPrompt({ context: ctx, grounding: projGrounding, message: 'what are you asking?' });
+    expect(p).toMatch(/TRICKSTER deck/);
+    expect(p).toMatch(/You ARE «Waveguide Synthesizer»/);
+    expect(p).toMatch(/sing through a tube/);
+    expect(p).toMatch(/Karplus-Strong/);
+    expect(p).toMatch(/pick the excitation model/);
+    expect(p).toMatch(/\[b\] bowed  \(steward leans here\)/);
+    // read-only: no edit ops, no flag action
+    expect(p).toMatch(/READ-ONLY/);
+    expect(p).not.toMatch(/"op":"append"/);
+    expect(p).not.toMatch(/"type":"flag"/);
+  });
+
+  it('grounds in the request alone when the project does not resolve to an entry', () => {
+    const p = buildTricksterPrompt({ context: ctx, grounding: null, message: 'hi' });
+    expect(p).toMatch(/does not resolve to/);
+    expect(p).toMatch(/pick the excitation model/);
   });
 });
