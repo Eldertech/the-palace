@@ -143,6 +143,8 @@ Bundles are lazy: they appear only when something needs to live in them. Most en
 
 Cross-entry shared artifacts (HTML, images, audio that serve multiple entries) still live in `Artifacts/[Theme]/`. Bundles are for things owned by one entry.
 
+Stewarded project entries grow two further bundle types under the **Machinery/Content Split** ([[Project Stewardship System]], [[Bundle-Local Stewardship — Production Plan]]): `Foo — plan.md`, the steward's materialized **work state** (open/resolved decisions + done trail, regenerated each cycle from the [[STIGMERGY]] board — it points to the entry's `forward_vector`, never copies it), and `Foo — staging.md`, the **teaching arc** of stage-by-stage Loudon Live sessions. The steward owns `plan.md` and only reads `staging.md`. The engine's runtime files (manifest, state, history) stay in `_ops/` — content lives with the entry, machinery stays in ops.
+
 Bundle files carry minimal YAML — title, born, a typed link to the parent entry, and a short forward_vector — so every file in the palace remains self-describing. Full spec: [[SCHEMA]] §8.
 
 ### The Visual Language
