@@ -122,7 +122,7 @@ If an un-consumed baton already exists at that path, something went wrong — a 
 
 **Step 2: Draft the baton**
 
-Use the standard sections, in order. Sections with nothing to carry are omitted, not left blank.
+Use the standard sections, in order. Sections with nothing to carry are omitted, not left blank — **except the final "On pickup" section, which is fixed boilerplate, identical in every baton and never omitted** (see the note after the template for why).
 
 ```markdown
 ---
@@ -161,7 +161,19 @@ Anything Loudon corrected, accepted, or surprised you with that diverges from de
 
 ## Load these files first
 Tiered list of what the next Claude should read before doing anything. Most-load-bearing first.
+
+## On pickup (fixed — the catcher's checklist; do not rewrite per session)
+*Identical in every baton. It rides along because the catching Claude loads the
+baton and the entry, not this ceremony — so the catcher's obligations live where
+the catcher will see them. Omit nothing here.*
+1. State the move back in one sentence. If you can't, the baton wasn't caught — stop and ask Loudon.
+2. If this baton or its board line is still uncommitted (authored on a surface that couldn't commit — e.g. Cowork), commit them first. That commit is the git archive Step 6 relies on.
+3. Mark it caught: remove the "Active Baton" section from the parent entry; for a board-announced baton with no parent entry, post the paired `handoff_picked_up` REPLY (`re:` the `handoff_ready` id) instead.
+4. Delete the baton file (git is its archive). On a surface that can't delete (Cowork), remove the marker and note "deletion pending."
+5. Act on the move, holding the calibrations above. Steward batons are the exception — updated in place, never deleted.
 ```
+
+*Why the last section is fixed, not authored:* the **author** runs this ceremony — you triggered it by saying "baton," so the authoring discipline lives in this spec. The **catcher** does not — it arrives on a work invocation and reads only the baton and the entry, never this file. So the one half of the ceremony the catcher must obey has to travel inside the artifact it actually opens. Everything else still compresses toward the move; this rides along.
 
 **Step 3: Show**
 
@@ -186,7 +198,7 @@ Tell Loudon the baton path and the suggested invocation for the next Claude. Exa
 > Baton written to `Foo/Foo — baton.md`.
 >
 > To start the next Claude:
-> "Read `Foo.md` and `Foo/Foo — baton.md`. Pick up the move."
+> "Read `Foo/Foo — baton.md` and `Foo.md`, follow its On-pickup steps, then pick up the move."
 
 Wait for confirmation that the next session has caught the baton, or for Loudon to indicate he's done.
 
@@ -255,6 +267,7 @@ The outgoing Baton is complete when:
 2. The entry has an "Active Baton" section pointing to it (or, for no-parent shapes, the board announcement is posted)
 3. Loudon has confirmed the baton is sufficient
 4. The outgoing closing message has been delivered with the suggested invocation
+5. The baton is committed to git — or, if authored on a surface that can't commit (Cowork), the closing message flags it uncommitted so the catcher commits it on pickup
 
 ## Completion Signal (incoming side)
 
@@ -262,7 +275,7 @@ The incoming Baton is complete when:
 
 1. The incoming Claude has read the baton and the entry
 2. The incoming Claude has picked up the move (acted on it)
-3. The "Active Baton" pointer has been removed from the entry, and the baton file deleted (or marked deletion-pending where the surface can't delete)
+3. The catch is marked — the "Active Baton" pointer removed, or for a board-announced baton the `handoff_picked_up` REPLY posted — the baton committed if it wasn't already, and the file deleted (or marked deletion-pending where the surface can't delete)
 
 If the incoming Claude finds the baton incoherent, stale, or insufficient: stop, ask Loudon, do not improvise. A bad baton that gets followed silently produces drift.
 
@@ -275,7 +288,7 @@ The catcher's job on arrival, before touching any work:
 1. **Read the whole baton, then the entry.** Most-load-bearing first, per *Load these files first*.
 2. **State the move back in one sentence.** If you can't, the baton wasn't caught — say so to Loudon and ask, rather than improvising.
 3. **Check the receiving environment.** If the baton names a capability delta, confirm it holds before relying on it — the catalog in [[Surfaces and Capabilities]] can be stale. A build that was supposed to run here but can't is a finding to report, not a failure to hide.
-4. **Mark it caught as your first act:** remove the "Active Baton" section from the entry, then delete the baton file (git is its archive). Where the surface can't delete (Cowork), remove the pointer and note "deletion pending." Steward batons are the exception — updated in place, not deleted.
+4. **Mark it caught as your first act:** if the baton or its board line is still uncommitted, commit them first (that commit is the archive). Then remove the "Active Baton" section from the entry — or, for a board-announced baton with no parent entry, post the paired `handoff_picked_up` REPLY (`re:` the `handoff_ready` id). Then delete the baton file (git is its archive). Where the surface can't delete (Cowork), remove the marker and note "deletion pending." Steward batons are the exception — updated in place, not deleted. *(This is the spec-side form of the baton's fixed "On pickup" footer; the two must stay in step.)*
 5. **Then act on the move,** holding the calibrations the baton carried.
 
 Deliberately light — a confirmation rhythm, not a gate.
