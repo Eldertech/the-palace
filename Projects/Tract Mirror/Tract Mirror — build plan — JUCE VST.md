@@ -72,9 +72,18 @@ k_i = (A_i - A_{i+1}) / (A_i + A_{i+1}). Never interpolate k directly; interpola
       Live's mixer confirmed. Vowel pad morphed schwa -> /i/ (tube visibly reshaped); MIRROR panel
       showed the live lattice with r_g +0.97 / r_l -0.90. Proof: renders/ableton-proof.png.
 
-**ALL PHASES COMPLETE. The chain is closed: reference -> scaffold -> artifacts -> engine -> GUI ->
-validation -> Ableton Live.** v2 vector (record-and-analyze: sing into it, replay your own tract)
-remains open in [[Tract Mirror]]'s forward_vector.
+- [x] **Phase 5 — MIDI performance controls** (Loudon, 2026-06-10): velocity + two assignable CCs on
+      the vowel plane. DONE 2026-06-10. Velocity curve amp = 0.25 + 0.75*(vel/127)^1.5 sampled at
+      note-on (measured ratios within 0.13% of predicted); ccX/ccY AudioParameterInts (defaults CC1 ->
+      vowelX, CC74 -> vowelY, reassignable via GUI readouts under the pad); CC drives engine with 15 ms
+      smoothing, host param synced async (message thread only), last-writer-wins with
+      takeover-by-change; tractFrame gained vx/vy so the puck shows CC motion live. Gates: CC sweep
+      formants 0.00% vs param-rendered references; six-vowel gate still 0.00%; pluginval 5+8 PASS.
+      Reinstalled both formats. In-Live MIDI re-verification pending (Loudon at the machine).
+
+**ALL BUILD PHASES COMPLETE. The chain is closed: reference -> scaffold -> artifacts -> engine -> GUI ->
+validation -> Ableton Live -> MIDI performance controls.** v2 vector (record-and-analyze: sing into
+it, replay your own tract) remains open in [[Tract Mirror]]'s forward_vector.
 
 ## Directory layout (bundle)
 

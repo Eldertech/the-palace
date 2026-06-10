@@ -200,6 +200,36 @@ header{
   font-family:var(--mono); font-size:var(--t-meta); color:var(--fg-3);
   margin-top:var(--s-2); letter-spacing:0.04em;
 }
+/* CC assignment readouts (under the pad) */
+#cc-assign{
+  display:grid; grid-template-columns:1fr 1fr; gap:var(--s-2);
+  margin-top:var(--s-3);
+}
+.cc-cell{
+  display:flex; align-items:center; gap:6px;
+  font-family:var(--mono); font-size:var(--t-meta); color:var(--fg-2);
+  border:1px solid var(--border); border-radius:var(--r-sm);
+  background:var(--bg-elev-2); padding:4px 6px;
+  cursor:ew-resize; touch-action:none; user-select:none;
+}
+.cc-cell .cc-name{
+  color:var(--fg-3); letter-spacing:var(--tr-eyebrow); text-transform:uppercase;
+  font-size:10px;
+}
+.cc-cell .cc-num{
+  color:var(--accent); min-width:24px; text-align:center;
+  font-variant-numeric:tabular-nums; margin-left:auto;
+}
+.cc-step{
+  font-family:var(--mono); font-size:13px; line-height:1;
+  width:18px; height:18px; padding:0;
+  display:flex; align-items:center; justify-content:center;
+  color:var(--fg-2); background:transparent;
+  border:1px solid var(--border-soft); border-radius:var(--r-sm);
+  cursor:pointer;
+}
+.cc-step:hover{ color:var(--accent); border-color:var(--accent-line); }
+.cc-step:active{ background:var(--accent-soft); }
 
 /* sliders */
 .sliders-col{ min-width:0; }
@@ -328,6 +358,20 @@ footer .sig b{ color:var(--fg-2); font-weight:var(--w-medium); }
         <div id="vowel-dot"></div>
       </div>
       <div id="pad-readout">x 0.50   y 0.45</div>
+      <div id="cc-assign">
+        <div class="cc-cell" id="cc-cell-x" data-cc="ccX" title="MIDI CC assigned to vowel X — drag or +/- to change">
+          <span class="cc-name">CC&gt;X</span>
+          <button class="cc-step" data-step="-1" aria-label="CC X down">−</button>
+          <span class="cc-num" id="cc-num-x">1</span>
+          <button class="cc-step" data-step="1" aria-label="CC X up">+</button>
+        </div>
+        <div class="cc-cell" id="cc-cell-y" data-cc="ccY" title="MIDI CC assigned to vowel Y — drag or +/- to change">
+          <span class="cc-name">CC&gt;Y</span>
+          <button class="cc-step" data-step="-1" aria-label="CC Y down">−</button>
+          <span class="cc-num" id="cc-num-y">74</span>
+          <button class="cc-step" data-step="1" aria-label="CC Y up">+</button>
+        </div>
+      </div>
     </div>
 
     <div class="sliders-col">
@@ -2129,7 +2173,12 @@ window.JUCE = {
     attack:     { min: 1,    max: 500,  def: 15,   unit: 'ms',   skew: 0.4,  fmt: f0 },
     release:    { min: 5,    max: 2000, def: 120,  unit: 'ms',   skew: 0.4,  fmt: f0 },
     brightness: { min: 0,    max: 1,    def: 0.7,  unit: '',     skew: 1,    fmt: f2 },
-    gain:       { min: -24,  max: 6,    def: 0,    unit: 'dB',   skew: 1,    fmt: fdb }
+    gain:       { min: -24,  max: 6,    def: 0,    unit: 'dB',   skew: 1,    fmt: fdb },
+    // assignable MIDI CC numbers -> vowelX / vowelY (INTERFACE.md sec 1). Integer
+    // 1..119; step is 1. Mock mode keeps these as plain local state (no effect on
+    // the mock synth — there is no MIDI in the browser).
+    ccX:        { min: 1,    max: 119,  def: 1,    unit: '',     skew: 1,    fmt: f0, integer: true },
+    ccY:        { min: 1,    max: 119,  def: 74,   unit: '',     skew: 1,    fmt: f0, integer: true }
   };
   function f0(v){ return Math.round(v).toString(); }
   function f1(v){ return v.toFixed(1); }
@@ -2292,6 +2341,7 @@ window.JUCE = {
   // set a param from the GUI (user moved a control)
   function setParam(pid, scaledVal, fromUser) {
     var p = PARAMS[pid];
+    if (p.integer) scaledVal = Math.round(scaledVal);
     if (scaledVal < p.min) scaledVal = p.min;
     if (scaledVal > p.max) scaledVal = p.max;
     state[pid] = scaledVal;
@@ -2317,6 +2367,12 @@ window.JUCE = {
 
   var _mockGate = false;
   function mockGateForFrame() { return _mockGate; }
+
+  // Effective vowel position from the tractFrame stream (plugin mode only). Null
+  // until the first frame carrying vx/vy arrives; stays null in mock mode (no
+  // tractFrame), so the pad puck falls back to the vowelX/Y params there.
+  var effVowel = null;
+  function getEffVowel() { return effVowel; }
 
   // wire native slider states (one per APVTS id)
   function bindNative() {
@@ -2348,6 +2404,13 @@ window.JUCE = {
           pitchHz: fr.pitchHz || 110,
           rms: fr.rms || 0
         };
+        // Effective vowel position incl. CC modulation (INTERFACE.md sec 3). When
+        // present (plugin mode) the pad puck follows this directly, so CC sweeps
+        // are visible immediately — before the async vowelX/Y host-param sync lands.
+        // Absent in mock mode -> effVowel stays null -> puck stays param-driven.
+        if (typeof fr.vx === 'number' && typeof fr.vy === 'number') {
+          effVowel = { x: fr.vx, y: fr.vy };
+        }
       });
     }
   }
@@ -2386,6 +2449,7 @@ window.JUCE = {
     L: L, C: C, N: N, GLOTTAL_R: GLOTTAL_R, LIP_R: LIP_R,
     getParam: getParam,
     setParam: setParam,
+    getEffVowel: getEffVowel,    // {x,y} from tractFrame (plugin) or null (mock)
     onChange: function (fn) { changeSubscribers.push(fn); },
     sendNote: sendNote,
     viewFrame: viewFrame,        // eased frame the views read every animation tick
@@ -2860,7 +2924,13 @@ window.JUCE = {
     }
 
     function syncDot() {
-      var x = TM.getParam('vowelX'), y = TM.getParam('vowelY');
+      // Prefer the effective vowel position from tractFrame (plugin mode) so CC
+      // modulation moves the puck immediately, before the async host-param sync
+      // lands. Mock mode (no tractFrame -> getEffVowel() null) uses the params.
+      var eff = TM.getEffVowel ? TM.getEffVowel() : null;
+      var x, y;
+      if (eff) { x = eff.x; y = eff.y; }
+      else { x = TM.getParam('vowelX'); y = TM.getParam('vowelY'); }
       dot.style.left = (x * 100) + '%';
       dot.style.top = (y * 100) + '%';
       readout.textContent = 'x ' + x.toFixed(2) + '   y ' + y.toFixed(2);
@@ -2875,6 +2945,60 @@ window.JUCE = {
 
     renderAnchors();
     return { sync: syncDot };
+  })();
+
+  // ---- CC assignment readouts (CC>X / CC>Y) --------------------------------
+  // Two compact cells under the pad. Each shows the integer CC number bound to
+  // vowelX / vowelY via getSliderState("ccX")/("ccY") (through TM.setParam, which
+  // pushes to the relay in plugin mode). Click-drag (horizontal) steps the number;
+  // the +/- buttons nudge by 1. Range 1..119.
+  var CcAssign = (function () {
+    var cells = [
+      { pid: 'ccX', cell: document.getElementById('cc-cell-x'), num: document.getElementById('cc-num-x') },
+      { pid: 'ccY', cell: document.getElementById('cc-cell-y'), num: document.getElementById('cc-num-y') }
+    ];
+
+    function step(pid, delta) {
+      TM.setParam(pid, TM.getParam(pid) + delta, true);
+    }
+
+    function update(pid) {
+      for (var i = 0; i < cells.length; i++) {
+        if (cells[i].pid === pid || pid === undefined)
+          cells[i].num.textContent = String(Math.round(TM.getParam(cells[i].pid)));
+      }
+    }
+
+    cells.forEach(function (c) {
+      // +/- buttons
+      var btns = c.cell.querySelectorAll('.cc-step');
+      for (var b = 0; b < btns.length; b++) {
+        (function (btn) {
+          btn.addEventListener('click', function (e) {
+            e.stopPropagation();
+            step(c.pid, parseInt(btn.getAttribute('data-step'), 10));
+          });
+        })(btns[b]);
+      }
+      // horizontal click-drag on the cell body steps the value (~6 px per unit)
+      var dragging = false, startX = 0, startVal = 0;
+      c.cell.addEventListener('pointerdown', function (e) {
+        if (e.target.classList.contains('cc-step')) return;  // let buttons handle it
+        dragging = true; startX = e.clientX; startVal = TM.getParam(c.pid);
+        c.cell.setPointerCapture(e.pointerId);
+        e.preventDefault();
+      });
+      c.cell.addEventListener('pointermove', function (e) {
+        if (!dragging) return;
+        var delta = Math.round((e.clientX - startX) / 6);
+        TM.setParam(c.pid, startVal + delta, true);
+      });
+      c.cell.addEventListener('pointerup', function () { dragging = false; });
+      c.cell.addEventListener('pointercancel', function () { dragging = false; });
+    });
+
+    update();
+    return { update: update };
   })();
 
   // ---- sliders -------------------------------------------------------------
@@ -3049,6 +3173,7 @@ window.JUCE = {
   // when params change (native or mock) refresh the affected control display
   TM.onChange(function (pid) {
     if (pid === 'vowelX' || pid === 'vowelY') Pad.sync();
+    else if (pid === 'ccX' || pid === 'ccY') CcAssign.update(pid);
     else Sliders.update(pid);
   });
 
@@ -3069,6 +3194,10 @@ window.JUCE = {
     if (Stage.isReady()) Stage.update(vf);
     if (Lattice.isOpen()) Lattice.draw(vf);
     Meter.update(vf);
+    // In plugin mode the pad puck follows the effective (CC-aware) vowel position
+    // streamed via tractFrame; keep it tracking each frame. (No-op cost in mock:
+    // getEffVowel() is null so syncDot reads the params, which only move on input.)
+    if (TM.NATIVE) Pad.sync();
     requestAnimationFrame(loop);
   }
   requestAnimationFrame(loop);

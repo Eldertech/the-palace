@@ -34,6 +34,10 @@ void TractEngine::prepare (double sampleRate)
     const double dtTick = (double) controlInterval / fs;
     areaSmoothCoeff = std::exp (-dtTick / tau);
 
+    // Effective vowel-position smoothing: ~15 ms one-pole, same control tick.
+    const double vowelTau = 15.0 * 0.001;
+    vowelSmoothCoeff = std::exp (-dtTick / vowelTau);
+
     reset();
 }
 
@@ -55,12 +59,22 @@ void TractEngine::reset()
 
     heldCount = 0;
     currentNote = -1;
+    currentVelocity = 0.0f;
+    velocityAmp = 1.0;
     gateOpen = false;
 
     controlCounter = 0;
     outputRms = 0.0f;
     rmsAccum = 0.0;
     rmsCount = 0;
+
+    // Snap the effective vowel position to the current params so the tract starts
+    // on the right vowel without an audible glide at the first block.
+    vowelTargetX = (double) params.vowelX;
+    vowelTargetY = (double) params.vowelY;
+    effVowelX = vowelTargetX;
+    effVowelY = vowelTargetY;
+    vowelPosInit = false;
 
     // Initialize morph to whatever the params point at (or schwa-ish midpoint).
     if (anchorsLoaded)
@@ -144,6 +158,16 @@ void TractEngine::noteOn (int midiNote, float velocity)
     pushHeld (midiNote);
     currentNote = midiNote;
     currentVelocity = velocity;
+
+    // Perceptual velocity curve, sampled ONCE at note-on (INTERFACE.md sec 1):
+    //   amp = 0.25 + 0.75 * (vel/127)^1.5
+    // `velocity` arrives already normalised to 0..1 (= vel/127) from both the host
+    // (MidiMessage::getFloatVelocity) and the GUI preview FIFO (vel/127), so the
+    // two paths apply the identical curve. This scales the whole note's excitation
+    // and never retriggers mid-note; glide / vibrato / pitch-bend are untouched.
+    const double vNorm = clampd ((double) velocity, 0.0, 1.0);
+    velocityAmp = 0.25 + 0.75 * std::pow (vNorm, 1.5);
+
     targetPitchHz = midiToHz (midiNote);
 
     // First note from silence: snap pitch so there is no glide from a stale value.
@@ -215,13 +239,30 @@ void TractEngine::recomputeMorph()
     if (! anchorsLoaded)
         return;
 
+    // ---- Effective vowel position: one-pole toward the processor-set target --
+    // The processor resolves pad/CC last-writer-wins and sets (vowelTargetX/Y);
+    // here we smooth the EFFECTIVE position at ~15 ms (per control tick), then the
+    // Shepard blend reads the smoothed position. The first morph snaps (no zipper
+    // at start); thereafter the one-pole tames coarse 7-bit CC steps.
+    if (! vowelPosInit)
+    {
+        effVowelX = vowelTargetX;
+        effVowelY = vowelTargetY;
+        vowelPosInit = true;
+    }
+    else
+    {
+        effVowelX = vowelSmoothCoeff * effVowelX + (1.0 - vowelSmoothCoeff) * vowelTargetX;
+        effVowelY = vowelSmoothCoeff * effVowelY + (1.0 - vowelSmoothCoeff) * vowelTargetY;
+    }
+
     // ---- Shepard inverse-square weights over the six anchors ----------------
     std::array<double, kNumAnchors> w {};
     double wsum = 0.0;
     for (int v = 0; v < kNumAnchors; ++v)
     {
-        const double dx = (double) params.vowelX - (double) kAnchorPos[(size_t) v].x;
-        const double dy = (double) params.vowelY - (double) kAnchorPos[(size_t) v].y;
+        const double dx = effVowelX - (double) kAnchorPos[(size_t) v].x;
+        const double dy = effVowelY - (double) kAnchorPos[(size_t) v].y;
         const double d2 = dx * dx + dy * dy;
         const double wv = 1.0 / (d2 + 0.005);     // w_v = 1/(d^2 + 0.005)
         w[(size_t) v] = wv;
@@ -393,8 +434,9 @@ float TractEngine::processSample()
     const double breath = clampd ((double) params.breath, 0.0, 1.0);
     double excitation = (1.0 - breath) * voicedExc + breath * noise;
 
-    // Gate the excitation by the amplitude envelope and velocity.
-    excitation *= envValue * (0.3 + 0.7 * (double) currentVelocity);
+    // Gate the excitation by the amplitude envelope and the velocity amplitude
+    // sampled at note-on (the perceptual curve lives in noteOn()).
+    excitation *= envValue * velocityAmp;
 
     // ===== Kelly-Lochbaum tract step (line-for-line port of step()) =========
     // Read the waves currently sitting in each section; compute new rails.

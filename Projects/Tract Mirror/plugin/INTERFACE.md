@@ -20,8 +20,17 @@ unilaterally. File ownership: DSP sessions own `src/` and `CMakeLists.txt`; GUI 
 | release     | float | 5..2000        | 120     | ms    | amplitude envelope release, log skew |
 | brightness  | float | 0..1           | 0.7     | —     | lip radiation emphasis mix |
 | gain        | float | -24..+6        | 0       | dB    | output gain |
+| ccX         | int   | 1..119         | 1       | CC#   | MIDI CC mapped to vowelX (default mod wheel) |
+| ccY         | int   | 1..119         | 74      | CC#   | MIDI CC mapped to vowelY |
 
 MIDI: monophonic, last-note priority with held-note return on release; pitch bend +-2 semitones.
+Velocity: scales note amplitude with the perceptual curve amp = 0.25 + 0.75 * (vel/127)^1.5,
+sampled at note-on (no retrigger mid-note). GUI preview keys send velocity 100.
+MIDI CC: an incoming ccX/ccY controller value v (0..127) sets vowelX/vowelY to v/127. The engine
+applies it immediately (with its existing ~10 ms area smoothing; add ~15 ms smoothing on the CC
+position itself so coarse 7-bit steps never zipper), and the host-visible parameter is updated
+asynchronously on the message thread (setValueNotifyingHost NEVER called from the audio thread)
+so the GUI pad follows and host automation can record it. Last-writer-wins between pad and CC.
 
 ## 2. Vowel space (identical math in C++ and JS — pin exactly)
 
@@ -51,7 +60,8 @@ reading a lock-free snapshot the processor refreshes. Payload (JSON object):
       "energies": [n floats],   // per-section wave energy, normalized 0..1
       "gate": true,             // note currently sounding
       "pitchHz": 110.0,         // current (post-glide, post-bend) fundamental
-      "rms": 0.18               // output meter, linear
+      "rms": 0.18,              // output meter, linear
+      "vx": 0.5, "vy": 0.45     // effective vowel position incl. CC modulation (0..1)
     }
 
 GUI applies its own visual easing; DSP does not smooth for display.
