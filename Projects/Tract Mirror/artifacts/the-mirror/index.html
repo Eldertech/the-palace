@@ -1,0 +1,1565 @@
+<!DOCTYPE html>
+<html lang="en" class="skin-graphite">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Mirror — one structure, read from both ends</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Manrope:wght@200;300;400;500;700&family=JetBrains+Mono:wght@400;500;600&family=Silkscreen:wght@400;700&display=swap">
+<style>
+/* ────────────────────────────────────────────────────────────────────────
+   Loudon Live · Design Tokens · LOCKED  (Graphite skin — inlined verbatim)
+   ──────────────────────────────────────────────────────────────────────── */
+:root {
+  /* type families */
+  --serif:    'Cormorant Garamond', 'Source Serif 4', Georgia, serif;
+  --sans:     'Manrope', system-ui, -apple-system, 'Segoe UI', Helvetica, sans-serif;
+  --display:  'Anton', 'Bebas Neue', 'Space Grotesk', sans-serif;
+  --mono:     'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
+  --pixel:    'Silkscreen', 'JetBrains Mono', monospace;
+  /* type scale */
+  --t-eyebrow:11px; --t-meta:12px; --t-caption:13px; --t-body:16px; --t-body-lg:17px;
+  --t-lead:20px; --t-h4:22px; --t-h3:28px; --t-h2:36px; --t-h1:52px;
+  --t-display:96px; --t-display-xl:156px;
+  /* line heights / tracking */
+  --lh-tight:1.05; --lh-snug:1.2; --lh-normal:1.5; --lh-reading:1.6;
+  --tr-display:0.005em; --tr-tight:-0.01em; --tr-normal:0em; --tr-soft:0.005em;
+  --tr-eyebrow:0.18em; --tr-overline:0.22em;
+  /* weights */
+  --w-light:300; --w-regular:400; --w-medium:500; --w-semi:600; --w-bold:700;
+  /* PALETTE — Graphite */
+  --bg:#0a0a0f; --bg-elev-1:#12121a; --bg-elev-2:#1a1a28; --bg-elev-3:#22222e;
+  --border:#4a4a5e; --border-soft:rgba(255,255,255,0.06); --border-hover:rgba(232,184,74,0.55);
+  --fg-1:#e8e8f0; --fg-2:#c8c8d8; --fg-3:#8a8aa0; --fg-4:#4a4a5a; --fg-on-accent:#0a0a0f;
+  --accent:#e8b84a; --accent-dim:#7a6030; --accent-soft:rgba(232,184,74,0.10); --accent-line:rgba(232,184,74,0.50);
+  --info:#4a8fff; --info-soft:rgba(74,143,255,0.06); --info-line:rgba(74,143,255,0.55);
+  --success:#00ff66; --success-soft:rgba(0,255,102,0.08); --success-line:rgba(0,255,102,0.50);
+  --warn:#ff9b4a;
+  --danger:#ff2a2a; --danger-soft:rgba(255,42,42,0.08); --danger-line:rgba(255,42,42,0.55);
+  --cat-1:#e8b84a; --cat-2:#6bd45a; --cat-3:#4a8fff; --cat-4:#b07cff; --cat-5:#ff6fae; --cat-6:#ff6b5a;
+  /* radii */
+  --r-xs:1px; --r-sm:2px; --r-md:4px; --r-pill:999px;
+  /* spacing */
+  --s-1:4px; --s-2:8px; --s-3:12px; --s-4:16px; --s-5:20px; --s-6:24px; --s-7:32px;
+  --s-8:40px; --s-9:48px; --s-10:64px; --s-11:80px; --s-12:120px;
+  /* elevation */
+  --shadow-1:inset 0 1px 0 rgba(255,255,255,0.05),0 1px 2px rgba(0,0,0,0.55);
+  --shadow-2:inset 0 1px 0 rgba(255,255,255,0.07),0 6px 16px rgba(0,0,0,0.55),0 1px 2px rgba(0,0,0,0.50);
+  --shadow-3:inset 0 1px 0 rgba(255,255,255,0.10),0 18px 40px -8px rgba(0,0,0,0.70),0 4px 10px rgba(0,0,0,0.45);
+  --glow-accent:inset 0 1px 0 rgba(232,184,74,0.25),0 0 32px rgba(232,184,74,0.32),0 0 4px rgba(232,184,74,0.45);
+  --text-glow-accent:0 0 12px rgba(232,184,74,0.55),0 0 24px rgba(232,184,74,0.25);
+  /* motion */
+  --ease:cubic-bezier(.4,0,.2,1); --ease-out:cubic-bezier(.2,.9,.2,1);
+  --t-fast:120ms; --t-base:220ms; --t-slow:550ms;
+}
+
+/* ── base ─────────────────────────────────────────────────────────────── */
+*{box-sizing:border-box}
+html,body{margin:0;padding:0;background:var(--bg);color:var(--fg-1)}
+body{font-family:var(--sans);font-weight:var(--w-light);
+  font-feature-settings:"kern" 1,"liga" 1;-webkit-font-smoothing:antialiased;
+  line-height:var(--lh-normal);}
+.wrap{max-width:1240px;margin:0 auto;padding:0 var(--s-7)}
+a{color:var(--accent);text-decoration:none}
+::selection{background:var(--accent-soft);color:var(--fg-1)}
+
+.eyebrow{font-family:var(--mono);font-size:var(--t-eyebrow);font-weight:var(--w-medium);
+  text-transform:uppercase;letter-spacing:var(--tr-eyebrow);color:var(--accent)}
+.meta{font-family:var(--mono);font-size:var(--t-meta);color:var(--fg-3);letter-spacing:0.03em}
+.num{font-family:var(--mono);font-variant-numeric:tabular-nums}
+
+/* ── hero ─────────────────────────────────────────────────────────────── */
+header.hero{border-bottom:1px solid var(--border-soft);padding:var(--s-11) 0 var(--s-9)}
+.hero .topline{display:flex;justify-content:space-between;align-items:baseline;
+  flex-wrap:wrap;gap:var(--s-3);margin-bottom:var(--s-7)}
+.wordmark{font-family:var(--display);font-size:22px;letter-spacing:0.04em;color:var(--fg-1);text-transform:uppercase}
+.wordmark em{font-style:italic;font-weight:300;color:var(--accent);font-family:var(--serif);
+  text-shadow:var(--text-glow-accent);font-size:24px;margin-left:2px}
+h1.title{font-family:var(--display);font-weight:400;font-size:var(--t-display);line-height:var(--lh-tight);
+  letter-spacing:var(--tr-display);text-transform:uppercase;margin:0 0 var(--s-2);color:var(--fg-1)}
+h1.title .gleam{color:var(--accent);text-shadow:var(--text-glow-accent)}
+.subtitle{font-family:var(--serif);font-style:italic;font-weight:300;font-size:var(--t-h4);
+  color:var(--fg-3);margin:0 0 var(--s-6)}
+.thesis{font-family:var(--serif);font-weight:400;font-size:var(--t-lead);line-height:var(--lh-reading);
+  color:var(--fg-2);max-width:78ch}
+.thesis strong{color:var(--fg-1);font-weight:500}
+.thesis .pull{color:var(--accent)}
+
+/* ── section scaffolding ──────────────────────────────────────────────── */
+section{padding:var(--s-10) 0;border-bottom:1px solid var(--border-soft)}
+.sec-head{display:flex;align-items:baseline;gap:var(--s-4);margin-bottom:var(--s-6);flex-wrap:wrap}
+h2{font-family:var(--display);font-weight:400;font-size:var(--t-h2);line-height:var(--lh-snug);
+  letter-spacing:var(--tr-display);text-transform:uppercase;margin:0;color:var(--fg-1)}
+.sec-sub{font-family:var(--serif);font-style:italic;font-size:var(--t-lead);color:var(--fg-3);margin:0}
+.lede{font-family:var(--serif);font-size:var(--t-body-lg);line-height:var(--lh-reading);
+  color:var(--fg-2);max-width:80ch;margin:0 0 var(--s-6)}
+
+/* ── the playable mirror — control panel ──────────────────────────────── */
+.engine{display:grid;grid-template-columns:minmax(280px,360px) 1fr;gap:var(--s-7);align-items:start}
+.panel{background:var(--bg-elev-1);border:1px solid var(--border);border-radius:var(--r-md);
+  padding:var(--s-6);box-shadow:var(--shadow-2)}
+.panel + .panel{margin-top:var(--s-5)}
+.panel-label{font-family:var(--mono);font-size:var(--t-eyebrow);text-transform:uppercase;
+  letter-spacing:var(--tr-eyebrow);color:var(--fg-3);margin-bottom:var(--s-4)}
+
+/* power / start button */
+.startbar{display:flex;align-items:center;gap:var(--s-4);margin-bottom:var(--s-5)}
+.start-btn{font-family:var(--mono);font-size:var(--t-caption);font-weight:var(--w-medium);
+  text-transform:uppercase;letter-spacing:0.08em;cursor:pointer;
+  background:var(--accent);color:var(--fg-on-accent);border:1px solid var(--accent);
+  border-radius:var(--r-sm);padding:10px 18px;box-shadow:var(--glow-accent);
+  transition:filter var(--t-fast) var(--ease),opacity var(--t-fast) var(--ease)}
+.start-btn:hover{filter:brightness(1.08)}
+.start-btn.armed{background:var(--bg-elev-2);color:var(--fg-2);border-color:var(--border);box-shadow:none}
+.start-btn:disabled{opacity:0.4;cursor:default}
+.engine-state{font-family:var(--mono);font-size:var(--t-meta);color:var(--fg-3)}
+.engine-state .dot{display:inline-block;width:8px;height:8px;border-radius:50%;
+  background:var(--fg-4);margin-right:6px;vertical-align:baseline;transition:background var(--t-base) var(--ease),box-shadow var(--t-base) var(--ease)}
+.engine-state.live .dot{background:var(--success);box-shadow:var(--glow-success,0 0 8px rgba(0,255,102,.7))}
+.engine-state.fallback .dot{background:var(--warn)}
+
+/* XY pad */
+.pad-wrap{position:relative;width:100%;aspect-ratio:1/1;background:var(--bg);
+  border:1px solid var(--border);border-radius:var(--r-sm);overflow:hidden;cursor:crosshair;
+  touch-action:none}
+.pad-wrap svg{position:absolute;inset:0;width:100%;height:100%}
+.pad-grid line{stroke:var(--border-soft);stroke-width:1}
+.pad-anchor{cursor:pointer}
+.pad-anchor circle{fill:var(--bg-elev-2);stroke:var(--fg-4);stroke-width:1.5;transition:fill var(--t-fast) var(--ease),stroke var(--t-fast) var(--ease)}
+.pad-anchor:hover circle,.pad-anchor.near circle{stroke:var(--accent);fill:var(--accent-soft)}
+.pad-anchor text{font-family:var(--mono);font-size:7px;fill:var(--fg-2);text-anchor:middle;dominant-baseline:central;pointer-events:none}
+.pad-cursor{fill:var(--accent);stroke:var(--bg);stroke-width:2;pointer-events:none;
+  filter:drop-shadow(0 0 6px rgba(232,184,74,.7))}
+.pad-cursor-ring{fill:none;stroke:var(--accent-line);stroke-width:1;pointer-events:none}
+.pad-corner{font-family:var(--mono);font-size:2.8px;fill:var(--fg-4);text-transform:uppercase;letter-spacing:0.06em}
+
+/* pitch row */
+.pitch-row{display:flex;gap:6px;flex-wrap:wrap}
+.pkey{flex:1 1 0;min-width:38px;font-family:var(--mono);font-size:var(--t-meta);font-weight:var(--w-medium);
+  cursor:pointer;background:var(--bg-elev-2);color:var(--fg-2);border:1px solid var(--border);
+  border-radius:var(--r-sm);padding:10px 4px;text-align:center;
+  transition:background var(--t-fast) var(--ease),color var(--t-fast) var(--ease),border-color var(--t-fast) var(--ease)}
+.pkey:hover{border-color:var(--border-hover)}
+.pkey.active{background:var(--accent);color:var(--fg-on-accent);border-color:var(--accent);box-shadow:var(--glow-accent)}
+.pkey .hz{display:block;font-size:9px;color:var(--fg-4);margin-top:3px}
+.pkey.active .hz{color:rgba(10,10,15,0.6)}
+
+/* sliders */
+.slider-block{margin-top:var(--s-5)}
+.slider-block:first-child{margin-top:0}
+.slider-top{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:6px}
+.slider-name{font-family:var(--mono);font-size:var(--t-meta);text-transform:uppercase;letter-spacing:0.06em;color:var(--fg-2)}
+.slider-val{font-family:var(--mono);font-size:var(--t-meta);color:var(--accent);font-variant-numeric:tabular-nums}
+input[type=range]{-webkit-appearance:none;appearance:none;width:100%;height:4px;background:var(--bg-elev-3);
+  border-radius:var(--r-pill);outline:none;cursor:pointer}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;appearance:none;width:15px;height:15px;border-radius:50%;
+  background:var(--accent);border:2px solid var(--bg);box-shadow:var(--shadow-1);transition:filter var(--t-fast) var(--ease)}
+input[type=range]::-webkit-slider-thumb:hover{filter:brightness(1.12)}
+input[type=range]::-moz-range-thumb{width:15px;height:15px;border-radius:50%;background:var(--accent);border:2px solid var(--bg);cursor:pointer}
+.slider-hint{font-family:var(--serif);font-style:italic;font-size:var(--t-caption);color:var(--fg-3);margin-top:5px;line-height:1.4}
+
+/* ── the two views ────────────────────────────────────────────────────── */
+.views{display:grid;grid-template-columns:1fr 1fr;gap:var(--s-5)}
+.view{background:var(--bg-elev-1);border:1px solid var(--border);border-radius:var(--r-md);
+  padding:var(--s-5);box-shadow:var(--shadow-1);display:flex;flex-direction:column}
+.view-head{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:var(--s-3)}
+.view-title{font-family:var(--mono);font-size:var(--t-caption);text-transform:uppercase;letter-spacing:0.08em;color:var(--fg-1)}
+.view-side{font-family:var(--serif);font-style:italic;font-size:var(--t-caption);color:var(--fg-3)}
+.view-canvas{width:100%;height:240px;display:block;background:var(--bg);border:1px solid var(--border-soft);border-radius:var(--r-sm)}
+.view-note{font-family:var(--serif);font-size:var(--t-caption);line-height:1.45;color:var(--fg-3);margin-top:var(--s-3)}
+.view-note .k{font-family:var(--mono);color:var(--accent);font-style:normal}
+.mirror-readout{margin-top:var(--s-3);display:flex;align-items:center;gap:var(--s-3);min-height:24px;
+  font-family:var(--mono);font-size:var(--t-caption);color:var(--fg-3)}
+.mirror-readout .badge{font-family:var(--mono);font-size:var(--t-meta);background:var(--accent-soft);
+  border:1px solid var(--accent-line);color:var(--accent);border-radius:var(--r-sm);padding:3px 8px;font-variant-numeric:tabular-nums}
+.mirror-readout.idle{opacity:0.55}
+
+/* ── read it both ways strip ──────────────────────────────────────────── */
+.bothways{display:grid;grid-template-columns:1fr 1fr;gap:var(--s-5)}
+.direction{background:var(--bg-elev-1);border:1px solid var(--border);border-radius:var(--r-md);
+  padding:var(--s-6);box-shadow:var(--shadow-1)}
+.direction.analysis{border-top:3px solid var(--info)}
+.direction.synthesis{border-top:3px solid var(--accent)}
+.dir-tag{font-family:var(--mono);font-size:var(--t-eyebrow);text-transform:uppercase;letter-spacing:var(--tr-eyebrow);margin-bottom:var(--s-2)}
+.direction.analysis .dir-tag{color:var(--info)}
+.direction.synthesis .dir-tag{color:var(--accent)}
+.dir-title{font-family:var(--display);font-weight:400;font-size:var(--t-h4);text-transform:uppercase;letter-spacing:0.01em;margin:0 0 var(--s-3);color:var(--fg-1)}
+.dir-flow{font-family:var(--mono);font-size:var(--t-meta);color:var(--fg-3);margin-bottom:var(--s-4);line-height:1.7}
+.dir-flow .arrow{color:var(--fg-4);margin:0 6px}
+.dir-flow .start{color:var(--fg-1)}
+.dir-flow .end{color:var(--fg-1)}
+.dir-body{font-family:var(--serif);font-size:var(--t-body);line-height:var(--lh-reading);color:var(--fg-2)}
+.dir-body strong{color:var(--fg-1);font-weight:500}
+
+/* equation — rendered twice (symbols + worded), per house rule */
+.eqn{background:var(--bg);border:1px solid var(--border-soft);border-radius:var(--r-sm);
+  padding:var(--s-4) var(--s-5);margin:var(--s-5) 0}
+.eqn-sym{font-family:var(--mono);font-size:18px;color:var(--fg-1);text-align:center;
+  line-height:1.7;letter-spacing:0.01em;font-variant-numeric:tabular-nums}
+.eqn-sym .frac{display:inline-flex;flex-direction:column;vertical-align:middle;text-align:center;margin:0 4px}
+.eqn-sym .frac .top{border-bottom:1px solid var(--fg-3);padding:0 8px 2px}
+.eqn-sym .frac .bot{padding:2px 8px 0}
+.eqn-sym .sub{font-size:0.72em;vertical-align:sub}
+.eqn-sym .acc{color:var(--accent)}
+.eqn-words{font-family:var(--serif);font-style:italic;font-size:var(--t-caption);color:var(--fg-3);
+  text-align:center;margin-top:var(--s-3);line-height:1.5}
+.eqn-words .op{font-style:normal;font-family:var(--mono);color:var(--fg-2);font-size:0.92em}
+.eqn-words .acc{color:var(--accent);font-style:normal}
+.eqn-cap{font-family:var(--mono);font-size:var(--t-eyebrow);text-transform:uppercase;letter-spacing:0.1em;color:var(--fg-4);margin-bottom:var(--s-3)}
+
+.shared-note{margin-top:var(--s-6);background:var(--accent-soft);border:1px solid var(--accent-line);
+  border-radius:var(--r-md);padding:var(--s-5) var(--s-6)}
+.shared-note p{font-family:var(--serif);font-size:var(--t-body-lg);line-height:var(--lh-reading);color:var(--fg-1);margin:0}
+.shared-note .acc{color:var(--accent);font-style:italic}
+
+/* ── footer ───────────────────────────────────────────────────────────── */
+footer{padding:var(--s-9) 0 var(--s-11);text-align:center}
+.foot-mark{font-family:var(--mono);font-size:var(--t-meta);letter-spacing:0.14em;text-transform:uppercase;color:var(--fg-3)}
+.foot-sub{font-family:var(--serif);font-style:italic;font-size:var(--t-caption);color:var(--fg-4);margin-top:var(--s-2)}
+
+/* ── responsive ───────────────────────────────────────────────────────── */
+@media (max-width:920px){
+  .engine{grid-template-columns:1fr}
+  .views{grid-template-columns:1fr}
+  .bothways{grid-template-columns:1fr}
+  h1.title{font-size:64px}
+}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+</style>
+</head>
+<body>
+
+<!-- ─────────────────────────────  HERO  ───────────────────────────── -->
+<header class="hero">
+  <div class="wrap">
+    <div class="topline">
+      <div class="wordmark">LOUDON <em>Live</em></div>
+      <div class="meta">Tract Mirror · interactive study · the LPC / Kelly-Lochbaum identity</div>
+    </div>
+    <div class="eyebrow">One structure, two readings</div>
+    <h1 class="title">The <span class="gleam">Mirror</span></h1>
+    <p class="subtitle">The LPC lattice filter and the Kelly-Lochbaum tube are the same machine read from opposite ends.</p>
+    <p class="thesis">
+      A ladder of reflection coefficients <span class="num">k<sub>i</sub></span> is, at once, an <strong>LPC lattice filter</strong>
+      and a cascade of <strong>acoustic-tube scattering junctions</strong>. Levinson-Durbin walks that ladder <em>out of a recorded
+      signal</em> — analysis, from the output backward. The area relation walks the same ladder <em>out of a tube's geometry</em> —
+      synthesis, from the shape forward. Two procedures, one object. <span class="pull">The vocal tract and the plucked string are
+      one piece of mathematics wearing two bodies.</span> Below, a real Kelly-Lochbaum waveguide voices the six fitted vowels; the
+      tube and the lattice sit side by side, and the number printed at each joint is the same number in both views. That shared
+      number <em>is</em> the mirror.
+    </p>
+  </div>
+</header>
+
+<!-- ──────────────────────────  THE PLAYABLE MIRROR  ────────────────────────── -->
+<section id="play">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2>The playable mirror</h2>
+      <p class="sec-sub">excite one tube, watch both readings move</p>
+    </div>
+    <p class="lede" id="play-lede">
+      Press <strong>Start sound</strong> (audio needs your gesture), pick a pitch, then drag inside the vowel pad. The engine is a
+      bidirectional two-rail Kelly-Lochbaum waveguide running the exact <span class="num">vowels.json</span> data — areas blended in
+      the log domain, <span class="num">k</span> recomputed from adjacent areas every frame, never interpolated directly.
+    </p>
+
+    <div class="engine">
+      <!-- LEFT: controls -->
+      <div>
+        <div class="panel">
+          <div class="startbar">
+            <button class="start-btn" id="startBtn">Start sound</button>
+            <span class="engine-state" id="engineState"><span class="dot"></span><span id="engineStateText">idle</span></span>
+          </div>
+
+          <div class="panel-label">Pitch · monophonic, short glide</div>
+          <div class="pitch-row" id="pitchRow"></div>
+
+          <div class="slider-block" style="margin-top:var(--s-6)">
+            <div class="panel-label" style="margin-bottom:var(--s-4)">Voice</div>
+            <div id="sliders"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- RIGHT: the XY vowel pad -->
+      <div class="panel">
+        <div class="panel-label">Vowel pad · six anchors · Shepard log-area blend</div>
+        <div class="pad-wrap" id="pad">
+          <svg id="padSvg" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid meet" aria-label="vowel pad">
+            <g class="pad-grid">
+              <line x1="25" y1="0" x2="25" y2="100"/><line x1="50" y1="0" x2="50" y2="100"/><line x1="75" y1="0" x2="75" y2="100"/>
+              <line x1="0" y1="25" x2="100" y2="25"/><line x1="0" y1="50" x2="100" y2="50"/><line x1="0" y1="75" x2="100" y2="75"/>
+            </g>
+            <g id="anchors"></g>
+            <circle id="padRing" class="pad-cursor-ring" r="9"></circle>
+            <circle id="padCursor" class="pad-cursor" r="4"></circle>
+            <text class="pad-corner" x="2" y="5">close · front</text>
+            <text class="pad-corner" x="98" y="5" text-anchor="end">close · back</text>
+            <text class="pad-corner" x="2" y="98">open</text>
+            <text class="pad-corner" x="98" y="98" text-anchor="end">low</text>
+          </svg>
+        </div>
+        <div class="slider-hint" id="vowelReadout">Blend: drag to mix the six vowels. Current nearest: <span class="num">schwa</span>.</div>
+      </div>
+    </div>
+
+    <!-- the two synchronized views -->
+    <div class="views" style="margin-top:var(--s-7)">
+      <!-- LEFT VIEW: tube silhouette -->
+      <div class="view" id="tubeView">
+        <div class="view-head">
+          <span class="view-title">The tube · geometry</span>
+          <span class="view-side">radius = &radic;(A/&pi;)</span>
+        </div>
+        <canvas class="view-canvas" id="tubeCanvas" width="560" height="240"></canvas>
+        <div class="mirror-readout idle" id="tubeReadout">
+          <span>Hover a joint to read its reflection.</span>
+        </div>
+        <p class="view-note">Glottis at left, lips at right. Each joint is the boundary between two tube sections; its
+          mismatch sets <span class="k">k<sub>i</sub></span>. Narrowing gives <span class="k">k&gt;0</span>, widening <span class="k">k&lt;0</span>.</p>
+      </div>
+
+      <!-- RIGHT VIEW: lattice flow graph -->
+      <div class="view" id="latticeView">
+        <div class="view-head">
+          <span class="view-title">The lattice · signal flow</span>
+          <span class="view-side">delays + scattering junctions</span>
+        </div>
+        <canvas class="view-canvas" id="latticeCanvas" width="560" height="240"></canvas>
+        <div class="mirror-readout idle" id="latticeReadout">
+          <span>Hover a junction to read its reflection.</span>
+        </div>
+        <p class="view-note">Top rail carries the forward wave (glottis&rarr;lips); bottom rail the backward wave. Each junction
+          scatters by <span class="k">w = k<sub>i</sub>(f&minus;b)</span>. The printed <span class="k">k<sub>i</sub></span> is identical to the tube joint's.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ──────────────────────────  READ IT BOTH WAYS  ────────────────────────── -->
+<section id="bothways">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2>Read it both ways</h2>
+      <p class="sec-sub">the same ladder, walked from two directions</p>
+    </div>
+    <p class="lede">
+      The ladder of reflection coefficients <span class="num">k<sub>i</sub></span> does not care which way you arrived at it. One
+      path starts with a <em>recorded sound</em> and recovers the tube that must have made it. The other starts with a <em>tube</em>
+      and builds the filter that voices it. Both produce the identical ladder — that is the whole claim.
+    </p>
+
+    <div class="bothways">
+      <!-- ANALYSIS -->
+      <div class="direction analysis">
+        <div class="dir-tag">&larr; Analysis · from the output</div>
+        <h3 class="dir-title">Levinson-Durbin walks k out of a signal</h3>
+        <div class="dir-flow">
+          <span class="start">recorded signal</span><span class="arrow">&rarr;</span>autocorrelation<span class="arrow">&rarr;</span>recursion<span class="arrow">&rarr;</span><span class="end">k<sub>i</sub></span>
+        </div>
+        <div class="dir-body">
+          You have the <strong>output</strong> and want the tube. Take the speech, compute its autocorrelation <span class="num">r</span>,
+          and run the Levinson-Durbin recursion. It peels the reflection ladder off the signal one rung at a time — each
+          <span class="num">k<sub>i</sub></span> is the partial correlation the lower-order model could not already explain.
+        </div>
+        <div class="eqn">
+          <div class="eqn-cap">reflection from prediction error</div>
+          <div class="eqn-sym">
+            k<span class="sub">i</span> <span class="acc">=</span>
+            <span class="frac"><span class="top">r<span class="sub">i+1</span> &minus; &Sigma; a<span class="sub">j</span> r<span class="sub">i&minus;j</span></span><span class="bot">E<span class="sub">i</span></span></span>
+          </div>
+          <div class="eqn-words">
+            <span class="acc">reflection</span> <span class="op">=</span> (next correlation <span class="op">&minus;</span> what the model predicts) <span class="op">&divide;</span> remaining prediction error
+          </div>
+        </div>
+        <div class="dir-body" style="margin-top:var(--s-3)">
+          Then the step-up recursion turns that ladder into the all-pole denominator <span class="num">A(z)</span>, whose poles are
+          the <strong>formants</strong> — the resonances you heard. Analysis ran the machine <em>backward</em>: sound in, geometry out.
+        </div>
+      </div>
+
+      <!-- SYNTHESIS -->
+      <div class="direction synthesis">
+        <div class="dir-tag">Synthesis · from the geometry &rarr;</div>
+        <h3 class="dir-title">Geometry walks k out of tube areas</h3>
+        <div class="dir-flow">
+          <span class="start">tube areas A<sub>i</sub></span><span class="arrow">&rarr;</span>adjacent ratio<span class="arrow">&rarr;</span><span class="end">k<sub>i</sub></span>
+        </div>
+        <div class="dir-body">
+          You have the <strong>tube</strong> and want the sound. The vocal tract is a chain of cylindrical sections with areas
+          <span class="num">A<sub>i</sub></span>. At every joint, the impedance mismatch between the section before and the section
+          after sets the reflection directly — no recursion, just the neighbours.
+        </div>
+        <div class="eqn">
+          <div class="eqn-cap">reflection from area mismatch</div>
+          <div class="eqn-sym">
+            k<span class="sub">i</span> <span class="acc">=</span>
+            <span class="frac"><span class="top">A<span class="sub">i</span> &minus; A<span class="sub">i+1</span></span><span class="bot">A<span class="sub">i</span> &plus; A<span class="sub">i+1</span></span></span>
+          </div>
+          <div class="eqn-words">
+            <span class="acc">reflection</span> <span class="op">=</span> (area before <span class="op">&minus;</span> area after) <span class="op">&divide;</span> (area before <span class="op">&plus;</span> area after)
+          </div>
+        </div>
+        <div class="dir-body" style="margin-top:var(--s-3)">
+          Feed that ladder a glottal pulse through the Kelly-Lochbaum junctions and out comes the vowel. Synthesis ran the same
+          machine <em>forward</em>: geometry in, sound out. <strong>Same k<sub>i</sub>.</strong>
+        </div>
+      </div>
+    </div>
+
+    <div class="shared-note">
+      <p>The lattice you hover on the right and the tube you hover on the left print the <span class="acc">same number</span> at the
+        same joint because they are not two models of one thing — they are one operator with two front doors. Analysis enters from
+        the sound; synthesis enters from the shape; the ladder in the middle is shared. That shared ladder is the mirror.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ─────────────────────────────  FOOTER  ───────────────────────────── -->
+<footer>
+  <div class="wrap">
+    <div class="foot-mark">Loudon Live &middot; Autodidact Polymaths</div>
+    <div class="foot-sub">Tract Mirror — Kelly-Lochbaum engine on verified vowels.json data</div>
+  </div>
+</footer>
+
+<script id="vowel-data" type="application/json">{"tract_length_m":0.171,"speed_of_sound":343.0,"control_points":64,"glottal_reflection":0.97,"lip_reflection":-0.9,"junction_loss":0.996,"vowels":{"a":{"area_cm2":[2.718865703340821,2.5440829630559962,2.122186225262031,1.6507245157304744,1.2589205098705896,0.9737347080050269,0.7701580353689093,0.6166202810043347,0.4942548132869759,0.39807802361457634,0.32944159775025444,0.28915851487202165,0.2760570012284633,0.28870578503168887,0.3268730756213634,0.3920770794705048,0.48839772432790285,0.6240186812852773,0.8114078982534382,1.0618526260746144,1.3714567130055384,1.705254410324159,2.0011390937720654,2.20758735441925,2.3241509484010914,2.3981624325571094,2.484219227135722,2.608432980731808,2.7583283226880826,2.8994670693838565,3.012993149416332,3.1293512533975574,3.3298334358161874,3.7225958306117914,4.417304594288399,5.494115586685888,6.947152136742905,8.629319177055866,10.282894320164802,11.671361742845278,12.0,12.0,12.0,12.0,11.337666762212741,9.787100839126495,8.342776365771781,7.302178007015949,6.771137079495033,6.716275696435274,7.030370928636696,7.580567217918139,8.287166230094304,9.23659055063755,10.762306089755134,12.0,12.0,12.0,12.0,12.0,12.0,12.0,12.0,12.0],"formant_targets_hz":[730.0,1090.0,2440.0]},"e":{"area_cm2":[0.32662970738846775,0.329350651432341,0.3370065497388838,0.34823060567623276,0.3612711927935065,0.37472877362926665,0.38828548265235463,0.40304783891287516,0.4213330462477471,0.4461034881579257,0.48043527857092305,0.5273054194141118,0.589793805767793,0.6716513001912716,0.778033805634309,0.9160035775730908,1.0942416695078607,1.321452961409502,1.6033705032545502,1.9392676644008813,2.3201099707585326,2.7304418191927406,3.1535098172753258,3.575747092424185,3.9867421647816057,4.375230824352425,4.726257789939447,5.024620234483121,5.264139153962772,5.455509259029015,5.624512989262913,5.799295180896999,5.993403264319546,6.193927204793173,6.3624182878765065,6.451927657288829,6.433871404378656,6.317360883873478,6.145617104826155,5.972364510588781,5.8358978017761425,5.745260639290863,5.681458895564461,5.6100012532894326,5.498676782980169,5.332071268735815,5.114948991985637,4.863874793824639,4.594776655033606,4.315370767858246,4.025830164636085,3.7249717528780333,3.416481840166405,3.1108004614340588,2.8220249280473912,2.5627472018415243,2.3403922004656055,2.1565927280311947,2.0088876653099477,1.893181714450847,1.8057343725804698,1.7441364406019442,1.7073260583747545,1.695057055313474],"formant_targets_hz":[530.0,1840.0,2480.0]},"i":{"area_cm2":[0.485527907690017,0.4971802566849136,0.5315029397903542,0.5865878402145119,0.6596936139680882,0.7489037789425373,0.8558399211243463,0.9879670341075046,1.159053689192166,1.387651584888687,1.694413724401353,2.0993649656052966,2.620726544432386,3.2766644080300855,4.088014542873109,5.074606929941096,6.2366402481684835,7.52280405049366,8.809241509028984,9.929292368794728,10.763504192051688,11.32579929447246,11.761577697175737,12.0,12.0,12.0,12.0,12.0,12.0,12.0,12.0,12.0,11.602419347849047,10.823042075346327,10.03992771637963,9.177193679400702,8.225043292573094,7.241246290414989,6.302103601984979,5.453575816102298,4.699092509970584,4.01978334715675,3.402061939506389,2.850779833665527,2.3819631302235678,2.006592319710202,1.7208918716405799,1.5077477438053286,1.344257285385397,1.2099955231097965,1.093036270839602,0.9915765193158507,0.9106594963365047,0.8567606443196233,0.8339112412918783,0.8424581817760322,0.879233117017256,0.9379959241579098,1.010116988560665,1.0857985461939703,1.1555793164770374,1.2114761166344992,1.2475133231889084,1.2599536103183364],"formant_targets_hz":[270.0,2290.0,3010.0]},"o":{"area_cm2":[2.153297619894811,2.002721845802459,1.640889210075525,1.2435851089583603,0.9290676174329179,0.7247892120694437,0.6098849213465116,0.5517710468022397,0.5178160031683522,0.47864231465038076,0.41757808714671857,0.34037723906876866,0.26798000860289967,0.21803369111217422,0.1975215810581867,0.20868912373178078,0.25498452591679194,0.33716724903043466,0.4369660296954718,0.5083636049543123,0.5131117294346307,0.4668218845097307,0.4202432563284711,0.4142589348762212,0.4726022374609461,0.6095760562047934,0.8088969454833717,0.9805015662299075,1.0010339181964372,0.8626839841747403,0.6863208068661857,0.5774139025274112,0.5777179848836662,0.718395046258336,1.060916214945276,1.6744153414921374,2.535571921564183,3.479650133244043,4.386459595393022,5.402273975609772,6.9045555439984065,9.278087158075428,12.0,12.0,12.0,12.0,10.30401878112109,7.333419907102656,5.4653024515129305,4.478153164257843,3.970928895925024,3.5774800843709706,3.059129074331333,2.411001297115898,1.8064022013228265,1.394781694721368,1.2203135902943645,1.29385689114897,1.6812107238959035,2.549372240630359,4.11779480730449,6.3773651675018685,8.636831019919724,9.62310963134676],"formant_targets_hz":[570.0,840.0,2410.0]},"u":{"area_cm2":[12.0,12.0,12.0,12.0,12.0,12.0,10.894534456669476,9.119275943258916,7.172071299287383,5.35455099587386,3.875297424995444,2.7957117431786473,2.071724289255702,1.6216968287625808,1.371164702618872,1.2688936339896628,1.2863800799690865,1.4101862675959649,1.6305637697850595,1.9294307716377246,2.276132745702717,2.6399130679825706,3.0124561068384983,3.417736193079787,3.8956020892172334,4.467079108098618,5.098900759721967,5.691481761859917,6.117261618306136,6.2985928138232214,6.256493740044401,6.081168726279365,5.862529648342165,5.647740034657411,5.446079557962218,5.2590829235139855,5.104948502583595,5.018928722440625,5.033895808184957,5.15878272320082,5.369632190805255,5.62133581404057,5.879372701012771,6.151251811175165,6.485741208564648,6.928194253054979,7.4489946899414266,7.8806235978420585,7.934369223858358,7.370152543238935,6.224028781026458,4.821406060020297,3.528499183975514,2.536828576630836,1.8578923088235206,1.4221632510039761,1.1541457000051742,0.9988911963383575,0.922251164208851,0.9032057911226384,0.9253268165878994,0.9696593204044881,1.012145938318468,1.0296277750201097],"formant_targets_hz":[300.0,870.0,2240.0]},"schwa":{"area_cm2":[3.00671516186411,3.00671516186411,3.0067151618641104,3.0067151618641113,3.0067151618641113,3.0067151618641113,3.0067151618641113,3.0067151618641113,3.0067151618641113,3.0067151618641113,3.0067151618641113,3.0067151618641113,3.0067151618641113,3.0067151618641113,3.0067151618641113,3.0067151618641113,3.0067151618641113,3.0067151618641113,3.0067151618641113,3.0067151618641113,3.0067151618641113,3.0067151618641113,3.0067151618641113,3.0067151618641113,3.0067151618641113,3.0067151618641113,3.0067151618641113,3.0067151618641113,3.0067151618641113,3.0067151618641113,3.0067151618641113,3.0067151618641113,3.0067151618641113,3.0067151618641113,3.0067151618641113,3.0067151618641113,3.0067151618641113,3.0067151618641113,3.0067151618641113,3.0067151618641113,3.0067151618641113,3.0067151618641113,3.0067151618641113,3.0067151618641113,3.0067151618641113,3.0067151618641113,3.0067151618641113,3.0067151618641113,3.0067151618641113,3.0067151618641113,3.0067151618641113,3.0067151618641113,3.0067151618641113,3.0067151618641113,3.0067151618641113,3.0067151618641113,3.0067151618641113,3.0067151618641113,3.0067151618641113,3.0067151618641113,3.0067151618641117,3.0067151618641117,3.0067151618641126,3.0067151618641126],"formant_targets_hz":[500.0,1500.0,2500.0]}}}</script>
+<script>
+/* =====================================================================
+ *  The Mirror — Kelly-Lochbaum waveguide on verified vowels.json data
+ *  Single-file teaching artifact. Vanilla JS, no frameworks, no runtime CDN.
+ *
+ *  The DSP is the reference (reference/kl_reference.py + plugin/INTERFACE.md §2)
+ *  ported exactly:
+ *    - resample 64-pt area curve -> N(fs) by LINEAR interp in the LOG domain
+ *    - k_i = (A_i - A_{i+1}) / (A_i + A_{i+1})   [adjacent areas, never blend k]
+ *    - two-rail bidirectional waveguide, one-multiply junctions  w = k(f - b)
+ *    - glottis end +0.97 (excitation ADDED to forward rail)
+ *    - lip end -0.9 through a one-pole radiation lowpass
+ *    - per-junction loss 0.996
+ *    - audio output = transmitted (1+lip)*f_lip with first-difference radiation
+ *  Vowel blend: Shepard inverse-square weights, blend areas in the LOG domain.
+ * ===================================================================== */
+(function () {
+  'use strict';
+
+  // ---- data --------------------------------------------------------------
+  var DATA = JSON.parse(document.getElementById('vowel-data').textContent);
+  var TRACT_L = DATA.tract_length_m;          // 0.171 m
+  var C = DATA.speed_of_sound;                // 343 m/s
+  var GLOTTAL_REFLECTION = DATA.glottal_reflection; // +0.97
+  var LIP_REFLECTION = DATA.lip_reflection;   // -0.9
+  var JUNCTION_LOSS = DATA.junction_loss;     // 0.996
+
+  // anchors from INTERFACE.md §2 (x right 0..1, y DOWN 0..1)
+  var ANCHORS = [
+    { id: 'i',     label: 'i',  x: 0.08, y: 0.10 },
+    { id: 'u',     label: 'u',  x: 0.90, y: 0.12 },
+    { id: 'e',     label: 'e',  x: 0.15, y: 0.55 },
+    { id: 'o',     label: 'o',  x: 0.85, y: 0.58 },
+    { id: 'schwa', label: 'ə', x: 0.50, y: 0.45 },
+    { id: 'a',     label: 'a',  x: 0.50, y: 0.90 }
+  ];
+  var CP = DATA.control_points; // 64
+
+  // ---- shared DSP math (used by BOTH worklet and fallback, via stringify) -
+  // Kept as a self-contained function body so it can be injected into the
+  // AudioWorklet source string AND called directly in the fallback path.
+  // -----------------------------------------------------------------------
+  var DSP_LIB = function () {
+    // resample a length-CP area curve onto n sections, log-domain linear interp
+    function resampleAreaLog(areaCp, n) {
+      var Cn = areaCp.length, out = new Float32Array(n), i;
+      var logSrc = new Float32Array(Cn);
+      for (i = 0; i < Cn; i++) logSrc[i] = Math.log(areaCp[i]);
+      for (i = 0; i < n; i++) {
+        var t = (n === 1) ? 0 : i / (n - 1);
+        var sx = t * (Cn - 1);
+        var i0 = Math.floor(sx);
+        if (i0 >= Cn - 1) { out[i] = Math.exp(logSrc[Cn - 1]); continue; }
+        var frac = sx - i0;
+        out[i] = Math.exp(logSrc[i0] * (1 - frac) + logSrc[i0 + 1] * frac);
+      }
+      return out;
+    }
+    // k_i = (A_i - A_{i+1}) / (A_i + A_{i+1}), length n-1
+    function reflectionFromAreas(areas) {
+      var n = areas.length, k = new Float32Array(n - 1), i;
+      for (i = 0; i < n - 1; i++) {
+        var a0 = areas[i], a1 = areas[i + 1];
+        k[i] = (a0 - a1) / (a0 + a1);
+      }
+      return k;
+    }
+    // Shepard inverse-square blend of CP-length log areas across anchors.
+    // anchorAreas: array of Float64Array(CP); weights computed from (x,y).
+    function blendAreas(anchorAreas, anchors, x, y, CP) {
+      var w = new Float64Array(anchors.length), sum = 0, v;
+      for (v = 0; v < anchors.length; v++) {
+        var dx = x - anchors[v].x, dy = y - anchors[v].y;
+        var d2 = dx * dx + dy * dy;
+        var wv = 1 / (d2 + 0.005);
+        w[v] = wv; sum += wv;
+      }
+      for (v = 0; v < anchors.length; v++) w[v] /= sum;
+      var out = new Float64Array(CP), c;
+      for (c = 0; c < CP; c++) {
+        var logA = 0;
+        for (v = 0; v < anchors.length; v++) logA += w[v] * Math.log(anchorAreas[v][c]);
+        out[c] = Math.exp(logA);
+      }
+      return { areas: out, weights: w };
+    }
+    // Rosenberg-style single-period glottal flow pulse
+    function rosenbergPulse(period, openQuotient, tension) {
+      var N = Math.max(2, Math.round(period));
+      var pulse = new Float32Array(N);
+      var openLen = Math.max(2, Math.round(openQuotient * N));
+      if (openLen > N) openLen = N;
+      var closeFrac = 0.2 + 0.6 * (1 - tension);
+      if (closeFrac < 0.1) closeFrac = 0.1; if (closeFrac > 0.8) closeFrac = 0.8;
+      var Tp = Math.round(openLen * (1 - closeFrac));
+      if (Tp < 1) Tp = 1; if (Tp > openLen - 1) Tp = openLen - 1;
+      var tc = openLen - Tp, i;
+      for (i = 0; i < Tp; i++) pulse[i] = 0.5 * (1 - Math.cos(Math.PI * i / Tp));
+      for (i = Tp; i < openLen; i++) pulse[i] = Math.cos(0.5 * Math.PI * (i - Tp) / tc);
+      return pulse;
+    }
+    return {
+      resampleAreaLog: resampleAreaLog,
+      reflectionFromAreas: reflectionFromAreas,
+      blendAreas: blendAreas,
+      rosenbergPulse: rosenbergPulse
+    };
+  };
+  var DSP = DSP_LIB();
+
+  // n_sections per rate, N = round(fs * L / c)
+  function nSections(fs) { return Math.round(fs * TRACT_L / C); }
+
+  // ---- pre-extract anchor area curves in DATA order ----------------------
+  var ANCHOR_AREAS = ANCHORS.map(function (a) {
+    return Float64Array.from(DATA.vowels[a.id].area_cm2);
+  });
+
+  // =======================================================================
+  //  AudioWorklet processor source — built as a string, run from a Blob URL.
+  //  It carries its own copy of the DSP lib + the per-sample synthesis loop.
+  // =======================================================================
+  function buildWorkletSource() {
+    var libSrc = '(' + DSP_LIB.toString() + ')()';
+    return [
+'const DSP = ' + libSrc + ';',
+'const ANCHORS = ' + JSON.stringify(ANCHORS) + ';',
+'const ANCHOR_AREAS = ' + JSON.stringify(ANCHOR_AREAS.map(function (a) { return Array.from(a); })) + ';',
+'const CP = ' + CP + ';',
+'const TRACT_L = ' + TRACT_L + ', C = ' + C + ';',
+'const GLOTTAL_REFLECTION = ' + GLOTTAL_REFLECTION + ', LIP_REFLECTION = ' + LIP_REFLECTION + ', JUNCTION_LOSS = ' + JUNCTION_LOSS + ';',
+'class TractProcessor extends AudioWorkletProcessor {',
+'  constructor() {',
+'    super();',
+'    this.fs = sampleRate;',
+'    this.N = Math.round(this.fs * TRACT_L / C);',
+'    this.f = new Float32Array(this.N);',
+'    this.b = new Float32Array(this.N);',
+'    this.lipLp = 0; this.radPrev = 0; this._agcEnv = 0.05;',
+'    // params (mirror INTERFACE.md defaults)',
+'    this.vowelX = 0.5; this.vowelY = 0.45;',
+'    this.tension = 0.6; this.breath = 0.15; this.gain = 1.0;',
+'    this.glideMs = 60; this.radiationLp = 0.75;',
+'    this.gate = false;',
+'    this.f0 = 110; this.targetF0 = 110;',
+'    this.phase = 0; this.periodPulse = null; this.pulseIdx = 0; this.pulseLen = 0;',
+'    this.amp = 0; this.ampTarget = 0;',
+'    this.areas = DSP.resampleAreaLog(this._blend(), this.N);',
+'    this.k = DSP.reflectionFromAreas(this.areas);',
+'    this.energies = new Float32Array(this.N);',
+'    this.frameCtr = 0;',
+'    this.port.onmessage = (e) => this._onMsg(e.data);',
+'  }',
+'  _blend() {',
+'    const r = DSP.blendAreas(ANCHOR_AREAS, ANCHORS, this.vowelX, this.vowelY, CP);',
+'    this._weights = r.weights; return r.areas;',
+'  }',
+'  _recompute() {',
+'    this.areas = DSP.resampleAreaLog(this._blend(), this.N);',
+'    this.k = DSP.reflectionFromAreas(this.areas);',
+'  }',
+'  _onMsg(m) {',
+'    if (m.type === "param") {',
+'      const p = m.params;',
+'      let geom = false;',
+'      if (p.vowelX !== undefined) { this.vowelX = p.vowelX; geom = true; }',
+'      if (p.vowelY !== undefined) { this.vowelY = p.vowelY; geom = true; }',
+'      if (p.tension !== undefined) this.tension = p.tension;',
+'      if (p.breath !== undefined) this.breath = p.breath;',
+'      if (p.gain !== undefined) this.gain = p.gain;',
+'      if (p.glideMs !== undefined) this.glideMs = p.glideMs;',
+'      if (geom) this._recompute();',
+'    } else if (m.type === "note") {',
+'      if (m.on) { this.targetF0 = m.hz; this.gate = true; this.ampTarget = 1; if (this.f0 <= 0) this.f0 = m.hz; }',
+'      else { this.gate = false; this.ampTarget = 0; }',
+'    }',
+'  }',
+'  process(inputs, outputs) {',
+'    const out = outputs[0][0];',
+'    const N = this.N, k = this.k, loss = JUNCTION_LOSS;',
+'    const fs = this.fs;',
+'    // glide coefficient (one-pole toward target f0)',
+'    const glideSamp = Math.max(1, this.glideMs * 0.001 * fs);',
+'    const gCoef = Math.exp(-1 / glideSamp);',
+'    const ampCoef = Math.exp(-1 / (0.012 * fs));',
+'    let energyAccum = this._eAcc || (this._eAcc = new Float32Array(N));',
+'    for (let s = 0; s < out.length; s++) {',
+'      // pitch glide',
+'      this.f0 = this.targetF0 + (this.f0 - this.targetF0) * gCoef;',
+'      this.amp = this.ampTarget + (this.amp - this.ampTarget) * ampCoef;',
+'      // glottal excitation (phase-accumulated Rosenberg train + aspiration)',
+'      let voiced = 0;',
+'      const inc = this.f0 / fs;',
+'      this.phase += inc;',
+'      if (this.phase >= 1 || this.periodPulse === null) {',
+'        if (this.phase >= 1) this.phase -= 1;',
+'        const plen = Math.max(2, Math.round(fs / Math.max(this.f0, 1)));',
+'        this.periodPulse = DSP.rosenbergPulse(plen, 0.6, this.tension);',
+'        this.pulseLen = this.periodPulse.length; this.pulseIdx = 0;',
+'      }',
+'      if (this.periodPulse && this.pulseIdx < this.pulseLen) {',
+'        voiced = this.periodPulse[this.pulseIdx++];',
+'      }',
+'      voiced -= 0.32; // approx DC removal of the unipolar flow pulse',
+'      const noise = (Math.random() * 2 - 1);',
+'      const env = 0.3 + 0.7 * Math.abs(voiced);',
+'      let exc = (1 - this.breath) * (voiced * 1.6) + this.breath * (noise * env * 1.2);',
+'      exc *= this.amp * 0.6;',
+'      // ---- one waveguide sample (matches kl_reference.step) ----',
+'      const f = this.f, b = this.b;',
+'      const newF = new Float32Array(N), newB = new Float32Array(N);',
+'      newF[0] = GLOTTAL_REFLECTION * b[0] + exc;',
+'      for (let i = 0; i < N - 1; i++) {',
+'        const fin = f[i], bin = b[i + 1];',
+'        const w = k[i] * (fin - bin);',
+'        newF[i + 1] = (fin + w) * loss;',
+'        newB[i] = (bin + w) * loss;',
+'      }',
+'      const fLip = f[N - 1];',
+'      const a = this.radiationLp;',
+'      this.lipLp = (1 - a) * fLip + a * this.lipLp;',
+'      newB[N - 1] = LIP_REFLECTION * this.lipLp;',
+'      const transmitted = (1 + LIP_REFLECTION) * fLip;',
+'      let y = transmitted - this.radPrev;',
+'      this.radPrev = transmitted;',
+'      this.f = newF; this.b = newB;',
+'      // per-section energy (forward^2 + backward^2), leaky',
+'      for (let i = 0; i < N; i++) {',
+'        const e = newF[i] * newF[i] + newB[i] * newB[i];',
+'        energyAccum[i] = energyAccum[i] * 0.995 + e * 0.005;',
+'      }',
+'      // raw tract output is small and VERY vowel-dependent (/u/ resonates far',
+'      // louder than /e/). A slow AGC normalizes perceived loudness across the',
+'      // pad without per-frame pumping; the tanh below still guards the ceiling.',
+'      let z0 = y * 300.0;',
+'      this._agcEnv = this._agcEnv * 0.9996 + Math.abs(z0) * 0.0004;',
+'      const makeup = 0.22 / (this._agcEnv + 0.012);',
+'      let z = z0 * Math.min(makeup, 6.0) * this.gain;',
+'      out[s] = Math.tanh(z * 0.9) * 0.85;   // soft-clip: guaranteed no hard clipping',
+'    }',
+'    // publish a visualization frame ~30 Hz',
+'    this.frameCtr += out.length;',
+'    if (this.frameCtr >= fs / 30) {',
+'      this.frameCtr = 0;',
+'      let mx = 1e-9; for (let i = 0; i < N; i++) if (energyAccum[i] > mx) mx = energyAccum[i];',
+'      const en = new Float32Array(N); for (let i = 0; i < N; i++) en[i] = energyAccum[i] / mx;',
+'      let rms = 0; for (let s = 0; s < out.length; s++) rms += out[s] * out[s];',
+'      rms = Math.sqrt(rms / out.length);',
+'      this.port.postMessage({ type: "frame", n: N, areas: Array.from(this.areas),',
+'        k: Array.from(this.k), energies: Array.from(en), weights: Array.from(this._weights),',
+'        gate: this.gate, pitchHz: this.f0, rms: rms });',
+'    }',
+'    return true;',
+'  }',
+'}',
+'registerProcessor("tract-processor", TractProcessor);'
+    ].join('\n');
+  }
+
+  // =======================================================================
+  //  Engine wrapper: AudioWorklet primary, ScriptProcessor fallback.
+  // =======================================================================
+  function Engine() {
+    this.ctx = null;
+    this.node = null;
+    this.mode = 'idle';   // 'worklet' | 'fallback' | 'idle'
+    this.onFrame = function () {};
+    this.params = { vowelX: 0.5, vowelY: 0.45, tension: 0.6, breath: 0.15, gain: 1.0, glideMs: 60 };
+    this.lastNoteHz = 110;
+    this.gate = false;
+    this._fb = null; // fallback state
+  }
+
+  Engine.prototype.start = function () {
+    var self = this;
+    var Ctx = window.AudioContext || window.webkitAudioContext;
+    if (!Ctx) return Promise.reject(new Error('no WebAudio'));
+    this.ctx = new Ctx();
+    var resume = this.ctx.resume ? this.ctx.resume() : Promise.resolve();
+    return resume.then(function () {
+      if (self.ctx.audioWorklet && typeof AudioWorkletNode !== 'undefined') {
+        var src = buildWorkletSource();
+        var blob = new Blob([src], { type: 'application/javascript' });
+        var url = URL.createObjectURL(blob);
+        return self.ctx.audioWorklet.addModule(url).then(function () {
+          URL.revokeObjectURL(url);
+          self.node = new AudioWorkletNode(self.ctx, 'tract-processor', { outputChannelCount: [1] });
+          self.node.port.onmessage = function (e) { if (e.data && e.data.type === 'frame') self.onFrame(e.data); };
+          self.node.connect(self.ctx.destination);
+          self.mode = 'worklet';
+          self._push();
+        });
+      }
+      throw new Error('no-worklet');
+    }).catch(function (err) {
+      // graceful fallback to ScriptProcessor
+      return self._startFallback().then(function () { return; });
+    });
+  };
+
+  Engine.prototype._push = function () {
+    if (this.mode === 'worklet' && this.node) {
+      this.node.port.postMessage({ type: 'param', params: this.params });
+    }
+  };
+
+  Engine.prototype.setParams = function (p) {
+    for (var key in p) this.params[key] = p[key];
+    if (this.mode === 'worklet' && this.node) {
+      this.node.port.postMessage({ type: 'param', params: p });
+    } else if (this.mode === 'fallback' && this._fb) {
+      this._fb.setParams(p);
+    }
+  };
+
+  Engine.prototype.note = function (hz, on) {
+    this.gate = on; if (on) this.lastNoteHz = hz;
+    if (this.mode === 'worklet' && this.node) {
+      this.node.port.postMessage({ type: 'note', hz: hz, on: on });
+    } else if (this.mode === 'fallback' && this._fb) {
+      this._fb.note(hz, on);
+    }
+  };
+
+  // ---- ScriptProcessor fallback (AudioWorklet unavailable) ---------------
+  Engine.prototype._startFallback = function () {
+    var self = this;
+    var ctx = this.ctx;
+    var fs = ctx.sampleRate;
+    var N = nSections(fs);
+    var BUF = 1024;
+    var sp = ctx.createScriptProcessor ? ctx.createScriptProcessor(BUF, 0, 1)
+           : ctx.createJavaScriptNode(BUF, 0, 1);
+
+    // self-contained per-sample state, mirroring the worklet
+    var st = {
+      fs: fs, N: N, f: new Float32Array(N), b: new Float32Array(N),
+      lipLp: 0, radPrev: 0, radiationLp: 0.75, agcEnv: 0.05,
+      vowelX: this.params.vowelX, vowelY: this.params.vowelY,
+      tension: this.params.tension, breath: this.params.breath,
+      gain: this.params.gain, glideMs: this.params.glideMs,
+      f0: 110, targetF0: 110, gate: false,
+      phase: 0, pulse: null, pulseLen: 0, pulseIdx: 0,
+      amp: 0, ampTarget: 0, weights: new Float64Array(ANCHORS.length),
+      energyAccum: new Float32Array(N), frameCtr: 0
+    };
+    function recompute() {
+      var r = DSP.blendAreas(ANCHOR_AREAS, ANCHORS, st.vowelX, st.vowelY, CP);
+      st.weights = r.weights;
+      st.areas = DSP.resampleAreaLog(r.areas, st.N);
+      st.k = DSP.reflectionFromAreas(st.areas);
+    }
+    recompute();
+
+    this._fb = {
+      setParams: function (p) {
+        var geom = false;
+        if (p.vowelX !== undefined) { st.vowelX = p.vowelX; geom = true; }
+        if (p.vowelY !== undefined) { st.vowelY = p.vowelY; geom = true; }
+        if (p.tension !== undefined) st.tension = p.tension;
+        if (p.breath !== undefined) st.breath = p.breath;
+        if (p.gain !== undefined) st.gain = p.gain;
+        if (p.glideMs !== undefined) st.glideMs = p.glideMs;
+        if (geom) recompute();
+      },
+      note: function (hz, on) {
+        if (on) { st.targetF0 = hz; st.gate = true; st.ampTarget = 1; if (st.f0 <= 0) st.f0 = hz; }
+        else { st.gate = false; st.ampTarget = 0; }
+      }
+    };
+
+    sp.onaudioprocess = function (ev) {
+      var out = ev.outputBuffer.getChannelData(0);
+      var N = st.N, k = st.k, loss = JUNCTION_LOSS, fs = st.fs;
+      var glideSamp = Math.max(1, st.glideMs * 0.001 * fs);
+      var gCoef = Math.exp(-1 / glideSamp);
+      var ampCoef = Math.exp(-1 / (0.012 * fs));
+      for (var s = 0; s < out.length; s++) {
+        st.f0 = st.targetF0 + (st.f0 - st.targetF0) * gCoef;
+        st.amp = st.ampTarget + (st.amp - st.ampTarget) * ampCoef;
+        var voiced = 0;
+        var inc = st.f0 / fs;
+        st.phase += inc;
+        if (st.phase >= 1 || st.pulse === null) {
+          if (st.phase >= 1) st.phase -= 1;
+          var plen = Math.max(2, Math.round(fs / Math.max(st.f0, 1)));
+          st.pulse = DSP.rosenbergPulse(plen, 0.6, st.tension);
+          st.pulseLen = st.pulse.length; st.pulseIdx = 0;
+        }
+        if (st.pulse && st.pulseIdx < st.pulseLen) voiced = st.pulse[st.pulseIdx++];
+        voiced -= 0.32;
+        var noise = (Math.random() * 2 - 1);
+        var env = 0.3 + 0.7 * Math.abs(voiced);
+        var exc = (1 - st.breath) * (voiced * 1.6) + st.breath * (noise * env * 1.2);
+        exc *= st.amp * 0.6;
+        var f = st.f, b = st.b;
+        var newF = new Float32Array(N), newB = new Float32Array(N);
+        newF[0] = GLOTTAL_REFLECTION * b[0] + exc;
+        for (var i = 0; i < N - 1; i++) {
+          var fin = f[i], bin = b[i + 1];
+          var w = k[i] * (fin - bin);
+          newF[i + 1] = (fin + w) * loss;
+          newB[i] = (bin + w) * loss;
+        }
+        var fLip = f[N - 1];
+        var a = st.radiationLp;
+        st.lipLp = (1 - a) * fLip + a * st.lipLp;
+        newB[N - 1] = LIP_REFLECTION * st.lipLp;
+        var transmitted = (1 + LIP_REFLECTION) * fLip;
+        var y = transmitted - st.radPrev;
+        st.radPrev = transmitted;
+        st.f = newF; st.b = newB;
+        for (var j = 0; j < N; j++) {
+          var e = newF[j] * newF[j] + newB[j] * newB[j];
+          st.energyAccum[j] = st.energyAccum[j] * 0.995 + e * 0.005;
+        }
+        var z0 = y * 300.0;
+        st.agcEnv = st.agcEnv * 0.9996 + Math.abs(z0) * 0.0004;
+        var makeup = 0.22 / (st.agcEnv + 0.012);
+        var z = z0 * Math.min(makeup, 6.0) * st.gain;
+        out[s] = Math.tanh(z * 0.9) * 0.85;   // soft-clip: guaranteed no hard clipping
+      }
+      st.frameCtr += out.length;
+      if (st.frameCtr >= fs / 30) {
+        st.frameCtr = 0;
+        var mx = 1e-9; for (var m = 0; m < N; m++) if (st.energyAccum[m] > mx) mx = st.energyAccum[m];
+        var en = new Float32Array(N); for (var q = 0; q < N; q++) en[q] = st.energyAccum[q] / mx;
+        var rms = 0; for (var r2 = 0; r2 < out.length; r2++) rms += out[r2] * out[r2];
+        rms = Math.sqrt(rms / out.length);
+        self.onFrame({ type: 'frame', n: N, areas: Array.from(st.areas), k: Array.from(st.k),
+          energies: Array.from(en), weights: Array.from(st.weights), gate: st.gate, pitchHz: st.f0, rms: rms });
+      }
+    };
+    sp.connect(ctx.destination);
+    this.node = sp;
+    this.mode = 'fallback';
+    return Promise.resolve();
+  };
+
+  // =======================================================================
+  //  Pure-JS frame computer for the IDLE (pre-audio) preview + mock motion.
+  //  Lets the views show a real tube/lattice before any gesture, and keeps
+  //  them alive (slow energy shimmer) even with no audio.
+  // =======================================================================
+  function computeStaticFrame(fs, x, y) {
+    var N = nSections(fs);
+    var r = DSP.blendAreas(ANCHOR_AREAS, ANCHORS, x, y, CP);
+    var areas = DSP.resampleAreaLog(r.areas, N);
+    var k = DSP.reflectionFromAreas(areas);
+    var energies = new Float32Array(N); // filled by caller's mock animator
+    return { n: N, areas: Array.from(areas), k: Array.from(k), energies: Array.from(energies),
+      weights: Array.from(r.weights), gate: false, pitchHz: 0, rms: 0 };
+  }
+
+  // =======================================================================
+  //  UI WIRING
+  // =======================================================================
+  var engine = new Engine();
+  var current = { x: 0.5, y: 0.45 };           // pad position
+  var frame = computeStaticFrame(44100, current.x, current.y); // current visual frame
+  var hoverJunction = -1;
+  var mockPhase = 0;                           // drives idle shimmer
+
+  // ---- pitch row (E2..E3) ------------------------------------------------
+  // E2 = 82.41 Hz, up to E3 = 164.81 Hz. One octave, chromatic-ish small row.
+  var PITCHES = [
+    { n: 'E2', hz: 82.41 }, { n: 'G2', hz: 97.999 }, { n: 'A2', hz: 110.0 },
+    { n: 'C3', hz: 130.81 }, { n: 'D3', hz: 146.83 }, { n: 'E3', hz: 164.81 }
+  ];
+  var activePitch = -1;
+  var pitchRow = document.getElementById('pitchRow');
+  PITCHES.forEach(function (p, idx) {
+    var el = document.createElement('button');
+    el.className = 'pkey';
+    el.type = 'button';
+    el.innerHTML = p.n + '<span class="hz">' + p.hz.toFixed(0) + ' Hz</span>';
+    el.addEventListener('click', function () {
+      if (activePitch === idx && engine.gate) {
+        // toggle off
+        engine.note(p.hz, false); activePitch = -1; el.classList.remove('active');
+        updateEngineState();
+        return;
+      }
+      ensureStarted().then(function () {
+        document.querySelectorAll('.pkey').forEach(function (e) { e.classList.remove('active'); });
+        el.classList.add('active'); activePitch = idx;
+        engine.note(p.hz, true);
+        updateEngineState();
+      });
+    });
+    pitchRow.appendChild(el);
+  });
+
+  // ---- sliders -----------------------------------------------------------
+  // INTERFACE.md params relevant to the GUI: breath, tension. Plus glide is in
+  // the engine; we expose breath + tension + glide here.
+  var SLIDERS = [
+    { id: 'breath',  name: 'Breath',  min: 0, max: 1, step: 0.01, def: 0.15,
+      hint: 'aspiration noise mixed with the glottal buzz', fmt: function (v) { return Math.round(v * 100) + '%'; } },
+    { id: 'tension', name: 'Tension', min: 0, max: 1, step: 0.01, def: 0.6,
+      hint: 'glottal closure sharpness — brighter source as it rises', fmt: function (v) { return Math.round(v * 100) + '%'; } },
+    { id: 'glideMs', name: 'Glide',   min: 0, max: 300, step: 1, def: 60,
+      hint: 'portamento between pitches', fmt: function (v) { return Math.round(v) + ' ms'; } }
+  ];
+  var slidersHost = document.getElementById('sliders');
+  SLIDERS.forEach(function (sp) {
+    var block = document.createElement('div'); block.className = 'slider-block';
+    block.innerHTML =
+      '<div class="slider-top"><span class="slider-name">' + sp.name + '</span>' +
+      '<span class="slider-val" id="val-' + sp.id + '">' + sp.fmt(sp.def) + '</span></div>' +
+      '<input type="range" id="sld-' + sp.id + '" min="' + sp.min + '" max="' + sp.max + '" step="' + sp.step + '" value="' + sp.def + '">' +
+      '<div class="slider-hint">' + sp.hint + '</div>';
+    slidersHost.appendChild(block);
+    var input = block.querySelector('#sld-' + sp.id);
+    var val = block.querySelector('#val-' + sp.id);
+    input.addEventListener('input', function () {
+      var v = parseFloat(input.value);
+      val.textContent = sp.fmt(v);
+      var p = {}; p[sp.id] = v; engine.setParams(p);
+    });
+  });
+
+  // ---- XY pad ------------------------------------------------------------
+  var pad = document.getElementById('pad');
+  var padSvg = document.getElementById('padSvg');
+  var anchorsG = document.getElementById('anchors');
+  var padCursor = document.getElementById('padCursor');
+  var padRing = document.getElementById('padRing');
+  var vowelReadout = document.getElementById('vowelReadout');
+
+  ANCHORS.forEach(function (a) {
+    var g = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+    g.setAttribute('class', 'pad-anchor');
+    var cx = a.x * 100, cy = a.y * 100;
+    g.innerHTML =
+      '<circle cx="' + cx + '" cy="' + cy + '" r="8"></circle>' +
+      '<text x="' + cx + '" y="' + cy + '">' + a.label + '</text>';
+    g.addEventListener('click', function () {
+      setPad(a.x, a.y, true);
+    });
+    anchorsG.appendChild(g);
+  });
+
+  function clamp01(v) { return v < 0 ? 0 : (v > 1 ? 1 : v); }
+
+  function setPad(x, y, animate) {
+    current.x = clamp01(x); current.y = clamp01(y);
+    padCursor.setAttribute('cx', current.x * 100);
+    padCursor.setAttribute('cy', current.y * 100);
+    padRing.setAttribute('cx', current.x * 100);
+    padRing.setAttribute('cy', current.y * 100);
+    engine.setParams({ vowelX: current.x, vowelY: current.y });
+    if (!engine.ctx) {
+      // update idle frame directly
+      frame = computeStaticFrame(44100, current.x, current.y);
+    }
+    updateNearest();
+  }
+
+  function updateNearest() {
+    var best = null, bd = Infinity;
+    ANCHORS.forEach(function (a) {
+      var d = (a.x - current.x) * (a.x - current.x) + (a.y - current.y) * (a.y - current.y);
+      if (d < bd) { bd = d; best = a; }
+    });
+    var name = best.id === 'schwa' ? 'schwa' : best.id;
+    vowelReadout.innerHTML = 'Blend: drag to mix the six vowels. Current nearest: <span class="num">' + name + '</span>.';
+    // highlight near anchor
+    var nodes = anchorsG.querySelectorAll('.pad-anchor');
+    ANCHORS.forEach(function (a, i) { nodes[i].classList.toggle('near', a === best); });
+  }
+
+  function padXYfromEvent(ev) {
+    var rect = pad.getBoundingClientRect();
+    var px = (ev.touches ? ev.touches[0].clientX : ev.clientX) - rect.left;
+    var py = (ev.touches ? ev.touches[0].clientY : ev.clientY) - rect.top;
+    return { x: px / rect.width, y: py / rect.height };
+  }
+  var dragging = false;
+  function padDown(ev) { ev.preventDefault(); dragging = true; var p = padXYfromEvent(ev); ensureStarted(); setPad(p.x, p.y); }
+  function padMove(ev) { if (!dragging) return; ev.preventDefault(); var p = padXYfromEvent(ev); setPad(p.x, p.y); }
+  function padUp() { dragging = false; }
+  pad.addEventListener('mousedown', padDown);
+  window.addEventListener('mousemove', padMove);
+  window.addEventListener('mouseup', padUp);
+  pad.addEventListener('touchstart', padDown, { passive: false });
+  pad.addEventListener('touchmove', padMove, { passive: false });
+  window.addEventListener('touchend', padUp);
+
+  // ---- start button ------------------------------------------------------
+  var startBtn = document.getElementById('startBtn');
+  var engineStateEl = document.getElementById('engineState');
+  var engineStateText = document.getElementById('engineStateText');
+  var started = false;
+  function ensureStarted() {
+    if (started) return Promise.resolve();
+    return startAudio();
+  }
+  function startAudio() {
+    if (started) return Promise.resolve();
+    started = true;
+    startBtn.disabled = true;
+    startBtn.textContent = 'Starting…';
+    engine.onFrame = function (fr) { frame = fr; };
+    return engine.start().then(function () {
+      engine.setParams(engine.params);
+      startBtn.textContent = engine.mode === 'fallback' ? 'Audio on (fallback)' : 'Audio on';
+      startBtn.classList.add('armed');
+      startBtn.disabled = false;
+      updateEngineState();
+    }).catch(function (err) {
+      started = false;
+      startBtn.disabled = false;
+      startBtn.textContent = 'Start sound';
+      engineStateText.textContent = 'audio unavailable';
+      console.warn('[the-mirror] audio start failed:', err);
+    });
+  }
+  startBtn.addEventListener('click', function () {
+    if (!started) { startAudio(); }
+    else if (engine.ctx) {
+      // toggle suspend/resume
+      if (engine.ctx.state === 'running') { engine.ctx.suspend(); }
+      else { engine.ctx.resume(); }
+      updateEngineState();
+    }
+  });
+  function updateEngineState() {
+    engineStateEl.classList.remove('live', 'fallback');
+    if (!started) { engineStateText.textContent = 'idle'; return; }
+    var running = engine.ctx && engine.ctx.state === 'running';
+    if (engine.mode === 'fallback') {
+      engineStateEl.classList.add('fallback');
+      engineStateText.textContent = running ? 'live · ScriptProcessor' : 'suspended';
+    } else {
+      engineStateEl.classList.add(running ? 'live' : '');
+      engineStateText.textContent = running ? 'live · AudioWorklet' : 'suspended';
+    }
+  }
+
+  // =======================================================================
+  //  RENDERERS — tube silhouette (left) + lattice flow graph (right)
+  //  Both read the SAME `frame` (areas, k, energies). DPR-aware.
+  // =======================================================================
+  var tubeCanvas = document.getElementById('tubeCanvas');
+  var latticeCanvas = document.getElementById('latticeCanvas');
+  var tubeCtx = tubeCanvas.getContext('2d');
+  var latticeCtx = latticeCanvas.getContext('2d');
+  // geometry of joints in canvas space, recomputed each draw, for hit-testing
+  var tubeJoints = [];   // [{x,y,i}]
+  var latticeJoints = []; // [{x,y,i}]
+
+  function cssVar(name) {
+    return getComputedStyle(document.documentElement).getPropertyValue(name).trim();
+  }
+  var COL = {};
+  function refreshColors() {
+    COL.bg = cssVar('--bg'); COL.elev = cssVar('--bg-elev-2');
+    COL.fg1 = cssVar('--fg-1'); COL.fg2 = cssVar('--fg-2'); COL.fg3 = cssVar('--fg-3'); COL.fg4 = cssVar('--fg-4');
+    COL.accent = cssVar('--accent'); COL.accentLine = cssVar('--accent-line');
+    COL.info = cssVar('--info'); COL.border = cssVar('--border'); COL.borderSoft = cssVar('--border-soft');
+  }
+  refreshColors();
+
+  var VIEW_H = 240;   // fixed CSS logical height for both view canvases
+  function fitCanvas(canvas, ctx) {
+    var dpr = Math.max(1, window.devicePixelRatio || 1);
+    // Lock the CSS box first so getBoundingClientRect can't feed back into sizing.
+    canvas.style.width = '100%';
+    canvas.style.height = VIEW_H + 'px';
+    var w = Math.max(10, canvas.clientWidth || canvas.getBoundingClientRect().width);
+    var h = VIEW_H;
+    var bw = Math.round(w * dpr), bh = Math.round(h * dpr);
+    if (canvas.width !== bw || canvas.height !== bh) { canvas.width = bw; canvas.height = bh; }
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    return { w: w, h: h };
+  }
+
+  // --- tube ---------------------------------------------------------------
+  function drawTube() {
+    var dim = fitCanvas(tubeCanvas, tubeCtx);
+    var w = dim.w, h = dim.h, ctx = tubeCtx;
+    ctx.clearRect(0, 0, w, h);
+    var areas = frame.areas, energies = frame.energies, N = areas.length;
+    var padL = 36, padR = 28, padT = 18, padB = 26;
+    var plotW = w - padL - padR, plotH = h - padT - padB;
+    var midY = padT + plotH / 2;
+    // radius = sqrt(A/pi); normalize by max radius across all anchors for stable scale
+    var maxA = 12.0; // vowels.json caps at 12 cm^2
+    var maxR = Math.sqrt(maxA / Math.PI);
+    var rad = new Float32Array(N);
+    for (var i = 0; i < N; i++) rad[i] = Math.sqrt(Math.max(areas[i], 1e-6) / Math.PI);
+    var rscale = (plotH * 0.46) / maxR;
+    function X(i) { return padL + (N === 1 ? 0 : i / (N - 1) * plotW); }
+    function R(i) { return rad[i] * rscale; }
+
+    // filled silhouette
+    ctx.beginPath();
+    ctx.moveTo(X(0), midY - R(0));
+    for (i = 1; i < N; i++) ctx.lineTo(X(i), midY - R(i));
+    for (i = N - 1; i >= 0; i--) ctx.lineTo(X(i), midY + R(i));
+    ctx.closePath();
+    var grad = ctx.createLinearGradient(padL, 0, padL + plotW, 0);
+    grad.addColorStop(0, 'rgba(232,184,74,0.10)');
+    grad.addColorStop(1, 'rgba(232,184,74,0.22)');
+    ctx.fillStyle = grad;
+    ctx.fill();
+    // outline
+    ctx.lineWidth = 1.5; ctx.strokeStyle = COL.accentLine; ctx.stroke();
+    // centerline
+    ctx.beginPath(); ctx.moveTo(padL, midY); ctx.lineTo(padL + plotW, midY);
+    ctx.strokeStyle = COL.borderSoft; ctx.lineWidth = 1; ctx.stroke();
+
+    // joints (between section i and i+1) at midpoint x; store for hit-test
+    tubeJoints = [];
+    var k = frame.k;
+    for (i = 0; i < N - 1; i++) {
+      var jx = (X(i) + X(i + 1)) / 2;
+      var topY = (midY - (R(i) + R(i + 1)) / 2);
+      var en = energies[i] || 0;
+      tubeJoints.push({ x: jx, y: midY, i: i, topY: topY });
+      // energy pip on the wall
+      var pulse = 0.5 + 0.5 * en;
+      ctx.beginPath();
+      ctx.arc(jx, topY, 1.6 + 1.6 * en, 0, Math.PI * 2);
+      ctx.fillStyle = 'rgba(232,184,74,' + (0.18 + 0.5 * en) + ')';
+      ctx.fill();
+      // highlight hovered joint
+      if (i === hoverJunction) {
+        ctx.beginPath();
+        ctx.moveTo(jx, midY - R(i) * 0.5 - 6); ctx.lineTo(jx, midY + R(i) * 0.5 + 6);
+        ctx.strokeStyle = COL.accent; ctx.lineWidth = 2; ctx.stroke();
+        ctx.beginPath(); ctx.arc(jx, topY, 4.5, 0, Math.PI * 2);
+        ctx.fillStyle = COL.accent; ctx.fill();
+        // label k value
+        var label = 'k' + subscript(i) + ' = ' + (k[i] >= 0 ? '+' : '') + k[i].toFixed(3);
+        labelBubble(ctx, jx, midY + R(i) * 0.5 + 18, label);
+      }
+    }
+    // end captions
+    ctx.font = '10px ' + (cssVar('--mono') || 'monospace');
+    ctx.fillStyle = COL.fg3; ctx.textAlign = 'left';
+    ctx.fillText('glottis', padL, h - 8);
+    ctx.textAlign = 'right'; ctx.fillText('lips', padL + plotW, h - 8);
+    ctx.textAlign = 'left';
+  }
+
+  // --- lattice ------------------------------------------------------------
+  function drawLattice() {
+    var dim = fitCanvas(latticeCanvas, latticeCtx);
+    var w = dim.w, h = dim.h, ctx = latticeCtx;
+    ctx.clearRect(0, 0, w, h);
+    var k = frame.k, energies = frame.energies, M = k.length;
+    var padL = 30, padR = 24, padT = 40, padB = 36;
+    var plotW = w - padL - padR, plotH = h - padT - padB;
+    var topRail = padT, botRail = padT + plotH;
+    // show up to ~12 junctions clearly; if more, still draw all but compact
+    var nJ = M;
+    function JX(i) { return padL + (nJ <= 1 ? 0 : i / (nJ - 1) * plotW); }
+
+    // rails
+    ctx.strokeStyle = COL.border; ctx.lineWidth = 1.25;
+    ctx.beginPath(); ctx.moveTo(padL, topRail); ctx.lineTo(padL + plotW, topRail); ctx.stroke();
+    ctx.beginPath(); ctx.moveTo(padL, botRail); ctx.lineTo(padL + plotW, botRail); ctx.stroke();
+    // rail labels
+    ctx.font = '9px ' + (cssVar('--mono') || 'monospace');
+    ctx.fillStyle = COL.fg3; ctx.textAlign = 'left';
+    ctx.fillText('f  forward  →', padL, topRail - 8);
+    ctx.fillStyle = COL.fg3; ctx.textAlign = 'right';
+    ctx.fillText('←  backward  b', padL + plotW, botRail + 16);
+    ctx.textAlign = 'left';
+
+    latticeJoints = [];
+    for (var i = 0; i < nJ; i++) {
+      var x = JX(i);
+      var en = energies[i] || 0;
+      // delay element marker on each rail (small square)
+      ctx.fillStyle = COL.borderSoft;
+      // scattering cross (the junction): diagonal lines linking the rails
+      var hov = (i === hoverJunction);
+      ctx.strokeStyle = hov ? COL.accent : COL.accentLine;
+      ctx.lineWidth = hov ? 2 : 1;
+      ctx.beginPath(); ctx.moveTo(x, topRail); ctx.lineTo(x, botRail); ctx.stroke();
+      ctx.beginPath();
+      ctx.moveTo(x - 6, topRail); ctx.lineTo(x + 6, botRail);
+      ctx.moveTo(x + 6, topRail); ctx.lineTo(x - 6, botRail);
+      ctx.strokeStyle = hov ? COL.accent : COL.border; ctx.lineWidth = hov ? 1.6 : 1;
+      ctx.stroke();
+      // junction node
+      var midY = (topRail + botRail) / 2;
+      var r = 4 + 4 * en + (hov ? 2 : 0);
+      ctx.beginPath(); ctx.arc(x, midY, r, 0, Math.PI * 2);
+      ctx.fillStyle = hov ? COL.accent : ('rgba(232,184,74,' + (0.25 + 0.5 * en) + ')');
+      ctx.fill();
+      ctx.strokeStyle = COL.bg; ctx.lineWidth = 1.5; ctx.stroke();
+      latticeJoints.push({ x: x, y: midY, i: i });
+
+      // printed k value at each junction
+      var kv = (k[i] >= 0 ? '+' : '') + k[i].toFixed(2);
+      ctx.font = (hov ? 'bold ' : '') + '9px ' + (cssVar('--mono') || 'monospace');
+      ctx.fillStyle = hov ? COL.accent : COL.fg3;
+      ctx.textAlign = 'center';
+      // single k label, just below the junction node
+      ctx.fillText(kv, x, midY + r + 12);
+      ctx.textAlign = 'left';
+
+      if (hov) {
+        var label = 'k' + subscript(i) + ' = ' + (k[i] >= 0 ? '+' : '') + k[i].toFixed(3);
+        labelBubble(ctx, x, topRail - 22, label);
+      }
+    }
+    // delay glyph caption
+    ctx.font = '9px ' + (cssVar('--mono') || 'monospace');
+    ctx.fillStyle = COL.fg4; ctx.textAlign = 'left';
+    ctx.fillText('z⁻¹ delay between each junction', padL, h - 8);
+  }
+
+  function subscript(n) {
+    var subs = '₀₁₂₃₄₅₆₇₈₉';
+    return String(n).split('').map(function (d) { return subs[+d]; }).join('');
+  }
+  function labelBubble(ctx, x, y, text) {
+    ctx.font = '11px ' + (cssVar('--mono') || 'monospace');
+    var tw = ctx.measureText(text).width;
+    var pad = 6, bw = tw + pad * 2, bh = 18;
+    var bx = Math.max(2, Math.min(x - bw / 2, ctx.canvas.width - bw - 2));
+    ctx.fillStyle = COL.bg;
+    ctx.strokeStyle = COL.accentLine; ctx.lineWidth = 1;
+    roundRect(ctx, bx, y - bh / 2, bw, bh, 3); ctx.fill(); ctx.stroke();
+    ctx.fillStyle = COL.accent; ctx.textAlign = 'center';
+    ctx.fillText(text, bx + bw / 2, y + 4);
+    ctx.textAlign = 'left';
+  }
+  function roundRect(ctx, x, y, w, h, r) {
+    ctx.beginPath();
+    ctx.moveTo(x + r, y);
+    ctx.arcTo(x + w, y, x + w, y + h, r);
+    ctx.arcTo(x + w, y + h, x, y + h, r);
+    ctx.arcTo(x, y + h, x, y, r);
+    ctx.arcTo(x, y, x + w, y, r);
+    ctx.closePath();
+  }
+
+  // ---- hover hit-testing on both canvases (shared highlight) -------------
+  function nearestJoint(joints, mx, my) {
+    var best = -1, bd = 22 * 22;
+    for (var i = 0; i < joints.length; i++) {
+      var dx = joints[i].x - mx, dy = joints[i].y - my;
+      var d = dx * dx + dy * dy;
+      if (d < bd) { bd = d; best = joints[i].i; }
+    }
+    return best;
+  }
+  function canvasHover(canvas, jointsRef) {
+    canvas.addEventListener('mousemove', function (ev) {
+      var rect = canvas.getBoundingClientRect();
+      var mx = ev.clientX - rect.left, my = ev.clientY - rect.top;
+      var j = nearestJoint(jointsRef(), mx, my);
+      if (j !== hoverJunction) { hoverJunction = j; updateReadouts(); }
+    });
+    canvas.addEventListener('mouseleave', function () {
+      if (hoverJunction !== -1) { hoverJunction = -1; updateReadouts(); }
+    });
+  }
+  canvasHover(tubeCanvas, function () { return tubeJoints; });
+  canvasHover(latticeCanvas, function () { return latticeJoints; });
+
+  var tubeReadout = document.getElementById('tubeReadout');
+  var latticeReadout = document.getElementById('latticeReadout');
+  function updateReadouts() {
+    var k = frame.k, areas = frame.areas;
+    if (hoverJunction < 0 || hoverJunction >= k.length) {
+      tubeReadout.className = 'mirror-readout idle';
+      latticeReadout.className = 'mirror-readout idle';
+      tubeReadout.innerHTML = '<span>Hover a joint to read its reflection.</span>';
+      latticeReadout.innerHTML = '<span>Hover a junction to read its reflection.</span>';
+      return;
+    }
+    var i = hoverJunction;
+    var kv = (k[i] >= 0 ? '+' : '') + k[i].toFixed(3);
+    var a0 = areas[i].toFixed(2), a1 = areas[i + 1].toFixed(2);
+    tubeReadout.className = 'mirror-readout';
+    latticeReadout.className = 'mirror-readout';
+    tubeReadout.innerHTML =
+      '<span>joint ' + i + ' &middot; areas ' + a0 + ' → ' + a1 + ' cm²</span>' +
+      '<span class="badge">k' + subscript(i) + ' = ' + kv + '</span>';
+    latticeReadout.innerHTML =
+      '<span>junction ' + i + ' &middot; same coefficient</span>' +
+      '<span class="badge">k' + subscript(i) + ' = ' + kv + '</span>';
+  }
+
+  // =======================================================================
+  //  ANIMATION LOOP — drives idle shimmer + redraws both views in sync.
+  // =======================================================================
+  function tick() {
+    // idle mock motion: if no audio yet, animate a gentle energy shimmer so
+    // the views are alive and clearly "the same number in both."
+    if (!engine.ctx || engine.mode === 'idle') {
+      mockPhase += 0.018;
+      var N = frame.areas.length;
+      var en = new Array(N);
+      for (var i = 0; i < N; i++) {
+        en[i] = 0.35 + 0.35 * Math.sin(mockPhase * 2.0 - i * 0.5) + 0.15 * Math.sin(mockPhase * 0.7 + i * 0.2);
+        if (en[i] < 0) en[i] = 0; if (en[i] > 1) en[i] = 1;
+      }
+      frame.energies = en;
+    }
+    drawTube();
+    drawLattice();
+    requestAnimationFrame(tick);
+  }
+
+  // ---- init --------------------------------------------------------------
+  window.addEventListener('resize', function () { refreshColors(); });
+  // Optional deep-link: ?vowel=a|e|i|o|u|schwa presets the pad (demo/screenshot).
+  (function () {
+    var mm = /[?&]vowel=([a-z]+)/.exec(location.search);
+    if (mm) {
+      var av = ANCHORS.filter(function (a) { return a.id === mm[1]; })[0];
+      if (av) { current.x = av.x; current.y = av.y; }
+    }
+  })();
+  setPad(current.x, current.y);   // place cursor + compute initial frame
+  updateNearest();
+  updateReadouts();
+  requestAnimationFrame(tick);
+
+  // =======================================================================
+  //  REVIEW LAYER (first-version review surface, per design-system SKILL)
+  //  One moment per natural unit: hero/thesis, the playable engine, the two
+  //  views, the both-ways strip. Flip review:false to ship clean.
+  // =======================================================================
+  /* =====================================================================
+ *  Review Layer — drop-in per-moment commenting surface
+ *  Palace concept: [[Review Layer]].  One method (DOM-anchored), not the
+ *  definition of the layer — for slides / video / image / sound, invent
+ *  an anchoring that fits the format (see the entry).
+ *
+ *  Usage (single-file artifact):
+ *    <script src="review-layer.js"><\/script>   // or paste this whole file
+ *    <script>
+ *      mountReviewLayer({
+ *        project: 'wavetable-scanner',          // names the storage key + export
+ *        round: 1,                              // bump each revision pass
+ *        review: true,                          // false (or omit) ships clean
+ *        moments: [
+ *          { id:'concept', label:'Concept & framing', tag:'text',    sel:'.lead' },
+ *          { id:'sound',   label:'Overall sound & mix', tag:'sound' },           // panel-only
+ *          // GRANULARITY: one moment per natural section — NOT one per slider.
+ *        ],
+ *      });
+ *    <\/script>
+ *
+ *  Styling reads Loudon Live design tokens (--accent, --bg, --fg-*, --border,
+ *  --mono, --sans…) with safe fallbacks, so it also works outside the system.
+ *  Export gives both shapes: JSON keyed per moment (individual responses) and
+ *  a markdown digest ("Copy for Claude").
+ * ===================================================================== */
+(function (global) {
+  function injectStyles() {
+    if (document.getElementById('rv-styles')) return;
+    const css = `
+    .rv-pin{display:inline-flex;align-items:center;justify-content:center;cursor:pointer;
+      font-family:var(--mono,'JetBrains Mono',monospace);font-size:11px;line-height:1;
+      color:var(--fg-3,#8a8a99);background:transparent;border:1px solid var(--border,#4a4a5e);
+      border-radius:3px;width:17px;height:17px;margin-left:6px;vertical-align:middle;
+      transition:color .12s,border-color .12s;user-select:none}
+    .rv-pin:hover{color:var(--accent,#e8b84a);border-color:var(--accent,#e8b84a)}
+    .rv-pin.filled{color:var(--bg,#0a0a0f);background:var(--accent,#e8b84a);border-color:var(--accent,#e8b84a)}
+    #rv-panel{position:fixed;top:0;right:0;height:100vh;width:326px;z-index:2147483600;
+      display:flex;flex-direction:column;
+      background:color-mix(in srgb, var(--bg-elev-2,#16161d) 94%, transparent);
+      border-left:1px solid var(--border,#4a4a5e);box-shadow:-8px 0 28px rgba(0,0,0,.4);
+      transform:translateX(0);transition:transform .22s ease}
+    #rv-panel.collapsed{transform:translateX(326px)}
+    #rv-panel .rv-head{padding:14px 14px 10px;border-bottom:1px solid var(--border-soft,#2a2a36)}
+    #rv-panel .rv-title{font-family:var(--mono,monospace);text-transform:uppercase;
+      letter-spacing:.08em;font-size:11px;color:var(--accent,#e8b84a)}
+    #rv-panel .rv-sub{font-family:var(--mono,monospace);font-size:10px;color:var(--fg-3,#8a8a99);
+      margin-top:4px;letter-spacing:.03em}
+    #rv-panel .rv-body{flex:1;overflow-y:auto;padding:6px 12px 12px}
+    #rv-panel .rv-row{padding:9px 0 7px;border-bottom:1px solid var(--border-soft,#2a2a36)}
+    #rv-panel .rv-row label{display:flex;align-items:baseline;justify-content:space-between;gap:8px;
+      font-family:var(--sans,'Manrope',system-ui,sans-serif);font-weight:500;font-size:12.5px;
+      color:var(--fg-1,#ececf2);cursor:pointer}
+    #rv-panel .rv-row .tag{font-family:var(--mono,monospace);font-size:9px;text-transform:uppercase;
+      letter-spacing:.06em;color:var(--fg-3,#8a8a99);border:1px solid var(--border-soft,#2a2a36);
+      border-radius:2px;padding:1px 4px;white-space:nowrap}
+    #rv-panel textarea{width:100%;margin-top:6px;background:var(--bg,#0a0a0f);color:var(--fg-1,#ececf2);
+      border:1px solid var(--border,#4a4a5e);border-radius:var(--r-sm,3px);
+      font-family:var(--mono,monospace);font-size:11.5px;line-height:1.45;padding:6px 7px;
+      resize:vertical;min-height:0;height:30px;transition:height .12s,border-color .12s;box-sizing:border-box}
+    #rv-panel textarea:focus{outline:none;border-color:var(--accent,#e8b84a);height:64px}
+    #rv-panel textarea.has{height:56px;border-color:var(--accent,#e8b84a)}
+    #rv-panel .rv-foot{padding:10px 12px;border-top:1px solid var(--border-soft,#2a2a36);
+      display:flex;flex-wrap:wrap;gap:6px}
+    #rv-panel .rv-foot button{font-family:var(--mono,monospace);font-size:10.5px;letter-spacing:.04em;
+      text-transform:uppercase;cursor:pointer;border:1px solid var(--border,#4a4a5e);
+      background:var(--bg-elev-1,#101017);color:var(--fg-2,#c4c4d0);padding:6px 9px;border-radius:var(--r-sm,3px)}
+    #rv-panel .rv-foot button.primary{background:var(--accent,#e8b84a);color:var(--bg,#0a0a0f);
+      border-color:var(--accent,#e8b84a);font-weight:500}
+    #rv-panel .rv-foot button:hover{border-color:var(--accent,#e8b84a)}
+    #rv-tab{position:fixed;top:14px;right:14px;z-index:2147483601;font-family:var(--mono,monospace);
+      font-size:10.5px;text-transform:uppercase;letter-spacing:.06em;cursor:pointer;padding:6px 10px;
+      border-radius:var(--r-sm,3px);border:1px solid var(--border,#4a4a5e);
+      background:var(--bg-elev-1,#101017);color:var(--fg-2,#c4c4d0)}
+    #rv-tab:hover{border-color:var(--accent,#e8b84a);color:var(--accent,#e8b84a)}
+    #rv-toast{position:fixed;bottom:18px;right:18px;z-index:2147483602;font-family:var(--mono,monospace);
+      font-size:11px;background:var(--accent,#e8b84a);color:var(--bg,#0a0a0f);padding:8px 12px;
+      border-radius:var(--r-sm,3px);opacity:0;transition:opacity .2s;pointer-events:none}
+    #rv-toast.show{opacity:1}`;
+    const s = document.createElement('style'); s.id = 'rv-styles'; s.textContent = css;
+    document.head.appendChild(s);
+  }
+
+  function mountReviewLayer(opts) {
+    opts = opts || {};
+    if (opts.review === false) return;            // shipped clean — mount nothing
+    const project = opts.project || 'artifact';
+    const round = opts.round || 1;
+    const moments = opts.moments || [];
+    const KEY = (opts.storageKey || ('review-' + project)) + '-r' + round;
+    if (!moments.length) { console.warn('[review-layer] no moments given'); return; }
+
+    injectStyles();
+
+    let store = {};
+    try { store = JSON.parse(localStorage.getItem(KEY)) || {}; } catch (e) { store = {}; }
+    const save = () => { try { localStorage.setItem(KEY, JSON.stringify(store)); } catch (e) {} };
+    const count = () => Object.values(store).filter(v => v && v.trim()).length;
+
+    const panel = document.createElement('div'); panel.id = 'rv-panel';
+    panel.innerHTML =
+      `<div class="rv-head"><div class="rv-title">Review · Round ${round}</div>
+         <div class="rv-sub" id="rv-sub"></div></div>
+       <div class="rv-body" id="rv-body"></div>
+       <div class="rv-foot">
+         <button class="primary" id="rv-copy">Copy for Claude</button>
+         <button id="rv-json">Download .json</button>
+         <button id="rv-md">Download .md</button>
+         <button id="rv-hide">Hide</button>
+         <button id="rv-clear">Clear all</button>
+       </div>`;
+    document.body.appendChild(panel);
+    const tab = document.createElement('div'); tab.id = 'rv-tab'; tab.textContent = '◇ Review';
+    document.body.appendChild(tab);
+    const toast = document.createElement('div'); toast.id = 'rv-toast'; document.body.appendChild(toast);
+    const body = panel.querySelector('#rv-body'), sub = panel.querySelector('#rv-sub');
+    const flash = (m) => { toast.textContent = m; toast.classList.add('show'); setTimeout(() => toast.classList.remove('show'), 1400); };
+    const refreshSub = () => { sub.textContent = `${count()} of ${moments.length} moments noted`; };
+
+    const areas = {}, pins = {};
+    function syncPin(id) { const p = pins[id]; if (!p) return; const has = (store[id] || '').trim(); p.textContent = has ? '◆' : '◇'; p.classList.toggle('filled', !!has); }
+    function openTo(id) { panel.classList.remove('collapsed'); const ta = areas[id]; if (ta) { ta.scrollIntoView({ block: 'center' }); ta.focus(); } }
+
+    moments.forEach(m => {
+      const row = document.createElement('div'); row.className = 'rv-row';
+      row.innerHTML = `<label>${m.label}${m.tag ? `<span class="tag">${m.tag}</span>` : ''}</label>`;
+      const ta = document.createElement('textarea'); ta.placeholder = 'note for next round…'; ta.value = store[m.id] || '';
+      if (ta.value.trim()) ta.classList.add('has');
+      ta.addEventListener('input', () => { store[m.id] = ta.value; ta.classList.toggle('has', !!ta.value.trim()); save(); syncPin(m.id); refreshSub(); });
+      row.appendChild(ta); body.appendChild(row); areas[m.id] = ta;
+
+      if (m.sel) {
+        const el = document.querySelector(m.sel);
+        if (el) {
+          const pin = document.createElement('span'); pin.className = 'rv-pin'; pin.title = 'Comment on this'; pin.textContent = '◇';
+          pin.addEventListener('click', (e) => { e.preventDefault(); e.stopPropagation(); openTo(m.id); });
+          el.appendChild(pin); pins[m.id] = pin; syncPin(m.id);
+        }
+      }
+    });
+
+    function buildJSON() {
+      return {
+        project, round, exported: new Date().toISOString(),
+        responses: moments
+          .map(m => ({ id: m.id, label: m.label, tag: m.tag || null, note: (store[m.id] || '').trim() }))
+          .filter(r => r.note),
+      };
+    }
+    function buildMarkdown() {
+      const d = new Date().toISOString().slice(0, 10);
+      let md = `# ${project} — Round ${round} review notes\n_${count()} of ${moments.length} moments · ${d}_\n`;
+      let any = false;
+      moments.forEach(m => { const v = (store[m.id] || '').trim(); if (v) { any = true; md += `\n## ${m.label}\n${v}\n`; } });
+      if (!any) md += `\n_(no notes yet)_\n`;
+      return md;
+    }
+    function download(name, text, type) {
+      const blob = new Blob([text], { type }); const url = URL.createObjectURL(blob);
+      const a = document.createElement('a'); a.href = url; a.download = name; a.click(); URL.revokeObjectURL(url);
+    }
+
+    panel.querySelector('#rv-copy').addEventListener('click', async () => {
+      const md = buildMarkdown();
+      try { await navigator.clipboard.writeText(md); flash('Copied — paste to Claude'); return; } catch (e) {}
+      const t = document.createElement('textarea'); t.value = md; document.body.appendChild(t); t.select();
+      try { document.execCommand('copy'); flash('Copied — paste to Claude'); } catch (e) { flash('Copy blocked — use Download'); }
+      t.remove();
+    });
+    panel.querySelector('#rv-json').addEventListener('click', () => { download(`${project}-review-r${round}.json`, JSON.stringify(buildJSON(), null, 2), 'application/json'); flash('Downloaded .json'); });
+    panel.querySelector('#rv-md').addEventListener('click', () => { download(`${project}-review-r${round}.md`, buildMarkdown(), 'text/markdown'); flash('Downloaded .md'); });
+    panel.querySelector('#rv-clear').addEventListener('click', () => {
+      if (!confirm('Clear all notes for this round?')) return;
+      store = {}; save(); moments.forEach(m => { areas[m.id].value = ''; areas[m.id].classList.remove('has'); syncPin(m.id); }); refreshSub();
+    });
+    panel.querySelector('#rv-hide').addEventListener('click', () => panel.classList.add('collapsed'));
+    tab.addEventListener('click', () => panel.classList.toggle('collapsed'));
+    refreshSub();
+  }
+
+  global.mountReviewLayer = mountReviewLayer;
+})(typeof window !== 'undefined' ? window : this);
+
+  // Review surface is ON by default (first-version rule). Append ?review=off to
+  // the URL to ship/preview clean — the toggle the design-system SKILL asks for.
+  var REVIEW_ON = !/[?&]review=off\b/.test(location.search);
+  if (typeof mountReviewLayer === 'function') {
+    mountReviewLayer({
+      project: 'the-mirror',
+      round: 1,
+      review: REVIEW_ON,
+      moments: [
+        { id: 'thesis',  label: 'Hero & thesis framing',      tag: 'text',    sel: 'header.hero .thesis' },
+        { id: 'engine',  label: 'The playable mirror (sound + pad + pitch)', tag: 'sound', sel: '#play .lede' },
+        { id: 'views',   label: 'The two synchronized views',  tag: 'design',  sel: '#tubeView .view-head' },
+        { id: 'eqns',    label: 'Read-it-both-ways equations',  tag: 'text',    sel: '#bothways .lede' }
+      ]
+    });
+  }
+})();
+
+</script>
+</body>
+</html>
