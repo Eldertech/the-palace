@@ -7,6 +7,7 @@ import { fileURLToPath } from 'node:url';
 import {
   buildMessageFromStaged, readStagedDiff, clearStaleLocks,
 } from '../../scripts/palace-commit.mjs';
+import { commitSelected } from '../../server/commit.js';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const APP_ROOT = resolve(__dirname, '..', '..');
@@ -100,5 +101,35 @@ describe('palace-commit', () => {
     expect(existsSync(resolve(root, '.git', 'index.lock'))).toBe(true);
     clearStaleLocks(root);
     expect(existsSync(resolve(root, '.git', 'index.lock'))).toBe(false);
+  });
+
+  // Non-ASCII filenames — every `Foo — baton.md` / `Foo — Context.md` bundle
+  // file. Git's default core.quotepath=true octal-escapes + double-quotes them in
+  // --name-status output; the committers must still find + commit them. We force
+  // quotepath=true here so the test reproduces the default-buggy environment
+  // regardless of the developer's global git config.
+  describe('non-ASCII (em-dash) filenames', () => {
+    const EM = 'Foo — baton.md'; // U+2014 em-dash, the bundle-file convention
+    beforeEach(() => {
+      g('config', 'core.quotepath', 'true');
+      writeFileSync(resolve(root, EM), '---\ntitle: "Foo — baton"\nborn: 2026-06-09\n---\n# Baton\ncarry the move\n');
+      g('add', '--', EM);
+    });
+
+    test('readStagedDiff finds the staged em-dash path (not octal-escaped)', () => {
+      const { paths } = readStagedDiff(root);
+      expect(paths).toContain(EM);
+    });
+
+    test('commitSelected commits an em-dash file (regression: it was silently dropped)', async () => {
+      const r = await commitSelected(root, {
+        paths: [EM], kind: 'handoff', scope: 'Foo', summary: 'carry the move',
+        verify: 'unverified', author: 'claude',
+      });
+      expect(r.ok).toBe(true);
+      expect(r.committed).toContain(EM);
+      expect(g('show', `HEAD:${EM}`)).toMatch(/carry the move/);
+      expect(g('status', '--porcelain=v1').trim()).toBe('');
+    });
   });
 });

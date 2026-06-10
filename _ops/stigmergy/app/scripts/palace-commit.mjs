@@ -53,7 +53,11 @@ export function clearStaleLocks(palaceRoot) {
 // Read the staged diff and compute per-md frontmatter changes. Returns
 // { paths, mdChanges } in the shape deriveTrailers expects.
 export function readStagedDiff(palaceRoot) {
-  const nameStatus = git(palaceRoot, ['diff', '--cached', '--name-status'], { allowFail: true });
+  // `-c core.quotepath=false`: RAW utf-8 paths, so a non-ASCII filename (every
+  // em-dash bundle file, e.g. `Foo — baton.md`) parses + matches instead of
+  // coming back octal-escaped + double-quoted. Without it the file stages but is
+  // silently dropped from the commit. (Mirrors commitSelected in server/commit.js.)
+  const nameStatus = git(palaceRoot, ['-c', 'core.quotepath=false', 'diff', '--cached', '--name-status'], { allowFail: true });
   const paths = [];
   const mdChanges = [];
   for (const line of nameStatus.split(/\r?\n/)) {
@@ -142,7 +146,9 @@ function main() {
     git(palaceRoot, ['add', '--', p]);
   }
 
-  const staged = git(palaceRoot, ['diff', '--cached', '--name-only'], { allowFail: true }).trim();
+  // quotepath=false for consistency with readStagedDiff (this one only checks
+  // emptiness, but keep both path-reads in the same raw-utf-8 frame).
+  const staged = git(palaceRoot, ['-c', 'core.quotepath=false', 'diff', '--cached', '--name-only'], { allowFail: true }).trim();
   if (staged === '') {
     process.stderr.write('palace-commit: nothing staged. Name paths with --path, or stage first.\n');
     process.exit(2);

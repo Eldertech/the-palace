@@ -81,7 +81,12 @@ export async function commitSelected(palaceRoot, opts = {}) {
   }
 
   // ── derive trailers from the selected staged diff only ──
-  const ns = await gitAsync(palaceRoot, ['diff', '--cached', '--name-status'], { allowFail: true });
+  // `-c core.quotepath=false` forces RAW utf-8 paths in the output. Under git's
+  // default (quotepath=true) a non-ASCII path — every em-dash bundle file, e.g.
+  // `Foo — baton.md` — comes back octal-escaped + double-quoted, never matches
+  // `selected`, and the file silently fails to commit ("nothing staged") even
+  // though it WAS staged. Self-defending regardless of repo config.
+  const ns = await gitAsync(palaceRoot, ['-c', 'core.quotepath=false', 'diff', '--cached', '--name-status'], { allowFail: true });
   const dpaths = [];
   const mdChanges = [];
   for (const line of ns.stdout.split(/\r?\n/)) {
