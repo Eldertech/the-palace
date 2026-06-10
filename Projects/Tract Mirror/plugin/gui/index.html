@@ -202,9 +202,11 @@ header{
 }
 /* CC assignment readouts (under the pad) */
 #cc-assign{
-  display:grid; grid-template-columns:1fr 1fr; gap:var(--s-2);
+  display:grid; grid-template-columns:repeat(3,1fr); gap:var(--s-2);
   margin-top:var(--s-3);
 }
+#cc-assign .cc-cell{ padding:4px 5px; gap:4px; }
+#cc-assign .cc-num{ min-width:18px; }
 .cc-cell{
   display:flex; align-items:center; gap:6px;
   font-family:var(--mono); font-size:var(--t-meta); color:var(--fg-2);
@@ -230,6 +232,43 @@ header{
 }
 .cc-step:hover{ color:var(--accent); border-color:var(--accent-line); }
 .cc-step:active{ background:var(--accent-soft); }
+
+/* Word-mode path overlay on the pad (polyline + point markers). Drawn under the
+   anchors/dot via a positioned SVG that fills the pad. */
+#pad-path{ position:absolute; inset:0; width:100%; height:100%; pointer-events:none; }
+#pad-path .wp-line{ fill:none; stroke:var(--accent-line); stroke-width:1.5; stroke-dasharray:3 3; }
+#pad-path .wp-pt{ fill:var(--bg-elev-2); stroke:var(--accent-line); stroke-width:1.5; }
+#pad-path .wp-pt.cur{ fill:var(--accent); stroke:var(--accent); }
+
+/* Word mode: text input + SCAN fader, under the CC cells in the pad column. */
+.word-wrap{ margin-top:var(--s-3); display:flex; flex-direction:column; gap:var(--s-2); }
+.word-field{ display:flex; align-items:center; gap:6px; }
+.word-field .wf-label{
+  font-family:var(--mono); font-size:10px; letter-spacing:var(--tr-eyebrow);
+  text-transform:uppercase; color:var(--fg-3); white-space:nowrap;
+}
+#word-input{
+  flex:1; min-width:0;
+  font-family:var(--mono); font-size:var(--t-meta); color:var(--fg-1);
+  letter-spacing:0.10em; text-transform:lowercase;
+  background:var(--bg-elev-2); border:1px solid var(--border);
+  border-radius:var(--r-sm); padding:5px 8px; outline:none;
+  transition:border-color var(--t-base) var(--ease);
+}
+#word-input:focus{ border-color:var(--border-hover); }
+#word-input::placeholder{ color:var(--fg-4); text-transform:none; letter-spacing:0.04em; }
+.word-display{
+  font-family:var(--mono); font-size:var(--t-caption); letter-spacing:0.14em;
+  color:var(--fg-3); min-height:18px; word-break:break-all;
+}
+.word-display .wch{ color:var(--fg-3); transition:color var(--t-fast) var(--ease); }
+.word-display .wch.vowel{ color:var(--fg-2); }
+.word-display .wch.cur{ color:var(--accent); text-shadow:var(--text-glow-accent); }
+.scan-row{ display:flex; align-items:center; gap:var(--s-3); }
+.scan-row .sl-label{ width:auto; }
+.scan-row .sl-input{ flex:1; }
+.scan-row .sl-val{ width:48px; }
+.word-display.empty{ color:var(--fg-4); }
 
 /* sliders */
 .sliders-col{ min-width:0; }
@@ -355,6 +394,7 @@ footer .sig b{ color:var(--fg-2); font-weight:var(--w-medium); }
     <div class="pad-wrap">
       <div class="panel-label">Vowel space</div>
       <div id="vowel-pad">
+        <svg id="pad-path" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true"></svg>
         <div id="vowel-dot"></div>
       </div>
       <div id="pad-readout">x 0.50   y 0.45</div>
@@ -370,6 +410,26 @@ footer .sig b{ color:var(--fg-2); font-weight:var(--w-medium); }
           <button class="cc-step" data-step="-1" aria-label="CC Y down">−</button>
           <span class="cc-num" id="cc-num-y">74</span>
           <button class="cc-step" data-step="1" aria-label="CC Y up">+</button>
+        </div>
+        <div class="cc-cell" id="cc-cell-scan" data-cc="ccScan" title="MIDI CC assigned to word scan — drag or +/- to change">
+          <span class="cc-name">CC&gt;W</span>
+          <button class="cc-step" data-step="-1" aria-label="CC Scan down">−</button>
+          <span class="cc-num" id="cc-num-scan">11</span>
+          <button class="cc-step" data-step="1" aria-label="CC Scan up">+</button>
+        </div>
+      </div>
+
+      <div class="word-wrap">
+        <div class="word-field">
+          <span class="wf-label">Word</span>
+          <input id="word-input" type="text" maxlength="32" autocomplete="off" spellcheck="false"
+                 placeholder="type a word to sing">
+        </div>
+        <div id="word-display" class="word-display empty">no vowels — pad active</div>
+        <div class="scan-row">
+          <span class="sl-label">SCAN</span>
+          <div class="sl-input"><input id="scan-input" type="range" min="0" max="1" step="0.001" value="0" aria-label="Word scan"></div>
+          <div class="sl-val" id="scan-val">0.00</div>
         </div>
       </div>
     </div>
@@ -2178,7 +2238,11 @@ window.JUCE = {
     // 1..119; step is 1. Mock mode keeps these as plain local state (no effect on
     // the mock synth — there is no MIDI in the browser).
     ccX:        { min: 1,    max: 119,  def: 1,    unit: '',     skew: 1,    fmt: f0, integer: true },
-    ccY:        { min: 1,    max: 119,  def: 74,   unit: '',     skew: 1,    fmt: f0, integer: true }
+    ccY:        { min: 1,    max: 119,  def: 74,   unit: '',     skew: 1,    fmt: f0, integer: true },
+    // Word mode (INTERFACE.md sec 6). wordScan is the 0..1 position along the
+    // active word's vowel path; ccScan is the assignable MIDI CC mapped to it.
+    wordScan:   { min: 0,    max: 1,    def: 0,    unit: '',     skew: 1,    fmt: f2 },
+    ccScan:     { min: 1,    max: 119,  def: 11,   unit: '',     skew: 1,    fmt: f0, integer: true }
   };
   function f0(v){ return Math.round(v).toString(); }
   function f1(v){ return v.toFixed(1); }
@@ -2261,6 +2325,99 @@ window.JUCE = {
     var areas = resampleAreas(logA64, N);
     var k = reflectionCoeffs(areas);
     return { n: N, areas: areas, k: k };
+  }
+
+  // ==========================================================================
+  // WORD MODE math (INTERFACE.md sec 6). Mirrors src/WordMap.h EXACTLY so the
+  // mock browser build computes the same path + scan position as the plugin.
+  // ==========================================================================
+  // anchor coordinate for a vowel letter (matches ANCHORS / sec 2)
+  function wordAnchorFor(v) {
+    switch (v) {
+      case 'a': return { x: 0.50, y: 0.90 };
+      case 'e': return { x: 0.15, y: 0.55 };
+      case 'i': return { x: 0.08, y: 0.10 };
+      case 'o': return { x: 0.85, y: 0.58 };
+      case 'u': return { x: 0.90, y: 0.12 };
+      default:  return { x: 0.50, y: 0.45 };  // schwa (unreached for valid vowels)
+    }
+  }
+  // letter -> vowel letter, case-insensitive: a/e/i/o/u keep; y->i; w->u; else null
+  function wordVowelLetter(ch) {
+    var c = String(ch).toLowerCase();
+    if (c === 'a' || c === 'e' || c === 'i' || c === 'o' || c === 'u') return c;
+    if (c === 'y') return 'i';
+    if (c === 'w') return 'u';
+    return null;
+  }
+  // build a path { word, letters:[{ch,vowel}], path:[{x,y}], pathVowel:[] }
+  function buildWordPath(word) {
+    var w = String(word == null ? '' : word).slice(0, 32);
+    var letters = [], path = [], pathVowel = [];
+    for (var i = 0; i < w.length; i++) {
+      var lower = w[i].toLowerCase();
+      var v = wordVowelLetter(w[i]);
+      if (v !== null && path.length < 32) {
+        letters.push({ ch: lower, vowel: path.length });
+        pathVowel.push(v);
+        path.push(wordAnchorFor(v));
+      } else {
+        letters.push({ ch: lower, vowel: null });
+      }
+    }
+    return { word: w, letters: letters, path: path, pathVowel: pathVowel };
+  }
+  // resolve scan t in [0,1] to a pad coordinate along a path (sec 6 timing math)
+  function wordScanPos(path, t) {
+    var K = path.length;
+    if (K <= 0) return { x: 0.5, y: 0.45 };
+    if (K === 1) return path[0];
+    if (t <= 0) return path[0];
+    if (t >= 1) return path[K - 1];
+    var i = Math.floor(t * K) + 1;
+    if (i < 1) i = 1; if (i > K) i = K;
+    var s = K * t - (i - 1);
+    var pi = path[i - 1];
+    if (i > 1 && s < 0.35) {
+      var pPrev = path[i - 2];
+      var u = s / 0.35; if (u < 0) u = 0; if (u > 1) u = 1;
+      var ss = u * u * (3 - 2 * u);     // smoothstep 3u^2 - 2u^3
+      return { x: pPrev.x + (pi.x - pPrev.x) * ss, y: pPrev.y + (pi.y - pPrev.y) * ss };
+    }
+    return pi;
+  }
+
+  // Active word state (the resolved path). wordActive() is true with >=1 vowel.
+  var currentWordPath = buildWordPath('');
+  var wordStateSubscribers = [];
+  function wordActive() { return currentWordPath.path.length >= 1; }
+  function notifyWordState() {
+    for (var i = 0; i < wordStateSubscribers.length; i++)
+      wordStateSubscribers[i](currentWordPath);
+  }
+  // Adopt a wordState payload (from the plugin event/handshake, or local build).
+  // letters[i].vowel is the path index for vowel chars, null for ignored ones.
+  function adoptWordState(ws) {
+    if (!ws) return;
+    var path = [];
+    if (ws.path) for (var i = 0; i < ws.path.length; i++)
+      path.push({ x: ws.path[i].x, y: ws.path[i].y });
+    currentWordPath = { word: ws.word || '', letters: ws.letters || [], path: path };
+    refreshWordVowelDrive();
+    notifyWordState();
+  }
+  // When a word is active in MOCK mode, drive the live frame from the scanned
+  // position (wordScan owns the vowel). In native mode the plugin drives the
+  // tract; the GUI only renders the streamed tractFrame.
+  function refreshWordVowelDrive() {
+    if (NATIVE) return;
+    if (wordActive()) {
+      var p = wordScanPos(currentWordPath.path, state.wordScan);
+      liveFrame = computeFrame(p.x, p.y);
+      liveFrame.energies = viewFrame.energies;
+      liveFrame.gate = mockGateForFrame();
+      liveFrame.pitchHz = viewFrame.pitchHz;
+    }
   }
 
   // ============================================================================
@@ -2355,12 +2512,17 @@ window.JUCE = {
       ss.setNormalisedValue(norm);
     }
     if (pid === 'vowelX' || pid === 'vowelY') {
-      if (!NATIVE) {
+      // In mock mode the pad only drives the tract when NO word is active (the
+      // word, when present, owns the vowel position via wordScan).
+      if (!NATIVE && !wordActive()) {
         liveFrame = computeFrame(state.vowelX, state.vowelY);
         liveFrame.energies = viewFrame.energies; // keep animating
         liveFrame.gate = mockGateForFrame();
         liveFrame.pitchHz = viewFrame.pitchHz;
       }
+    } else if (pid === 'wordScan') {
+      // Scanning moves the vowel along the word path (mock-only synth drive).
+      refreshWordVowelDrive();
     }
     notifyChange(pid);
   }
@@ -2412,7 +2574,15 @@ window.JUCE = {
           effVowel = { x: fr.vx, y: fr.vy };
         }
       });
+      // Word mode (INTERFACE.md sec 6): the plugin emits `wordState` on change AND
+      // on the GUI-ready handshake. Adopt it so the path/letters/highlight follow.
+      window.__JUCE__.backend.addEventListener('wordState', function (payload) {
+        var ws = (typeof payload === 'string') ? safeParse(payload) : payload;
+        if (ws) adoptWordState(ws);
+      });
     }
+    // Ask for the restored word state once the bindings are live.
+    requestWordStateOnReady();
   }
   function safeParse(s){ try { return JSON.parse(s); } catch(e){ return null; } }
 
@@ -2438,6 +2608,49 @@ window.JUCE = {
     }
   }
 
+  // ---- Word mode native plumbing (setWord / wordState handshake) ------------
+  var setWordFn = null, reqWordStateFn = null;
+  function nativeFn(name, cache) {
+    if (cache.v !== undefined) return cache.v;
+    cache.v = false;
+    if (NATIVE && J.getNativeFunction) {
+      try { cache.v = J.getNativeFunction(name); } catch (e) { cache.v = false; }
+    }
+    return cache.v;
+  }
+  var _setWordCache = {}, _reqWordCache = {};
+  // Set the active word. Native: call setWord (the processor recomputes + the
+  // wordState event lands); also adopt the completion result immediately so the
+  // path renders without waiting for the event. Mock: build the path locally.
+  function setWord(word) {
+    if (NATIVE) {
+      var fn = nativeFn('setWord', _setWordCache);
+      if (fn) {
+        try {
+          var p = fn(word);
+          if (p && typeof p.then === 'function') p.then(adoptWordState);
+        } catch (e) {}
+      }
+    }
+    // Always update the local model (mock has no backend; native gets it echoed
+    // too, which is harmless — same payload — and keeps the UI instant).
+    adoptWordState(buildWordPath(word));
+  }
+  // GUI-ready handshake: ask the plugin for the current word state (restored from
+  // plugin state) once at init, so a word set before the editor existed shows up.
+  function requestWordStateOnReady() {
+    if (!NATIVE) return;
+    var fn = nativeFn('requestWordState', _reqWordCache);
+    if (fn) {
+      try {
+        var p = fn();
+        if (p && typeof p.then === 'function') p.then(function (ws) {
+          if (ws && ws.word) adoptWordState(ws);
+        });
+      } catch (e) {}
+    }
+  }
+
   // ============================================================================
   // EXPOSE a small API the view layer consumes.
   // ============================================================================
@@ -2452,6 +2665,12 @@ window.JUCE = {
     getEffVowel: getEffVowel,    // {x,y} from tractFrame (plugin) or null (mock)
     onChange: function (fn) { changeSubscribers.push(fn); },
     sendNote: sendNote,
+    // Word mode (INTERFACE.md sec 6)
+    setWord: setWord,
+    onWordState: function (fn) { wordStateSubscribers.push(fn); },
+    getWordPath: function () { return currentWordPath; },
+    wordActive: wordActive,
+    wordScanPos: wordScanPos,    // resolve a scan t -> pad coord (for path marker)
     viewFrame: viewFrame,        // eased frame the views read every animation tick
     // called once per animation frame by the view layer; advances easing + mock
     tick: function (now, dt) {
@@ -2955,7 +3174,8 @@ window.JUCE = {
   var CcAssign = (function () {
     var cells = [
       { pid: 'ccX', cell: document.getElementById('cc-cell-x'), num: document.getElementById('cc-num-x') },
-      { pid: 'ccY', cell: document.getElementById('cc-cell-y'), num: document.getElementById('cc-num-y') }
+      { pid: 'ccY', cell: document.getElementById('cc-cell-y'), num: document.getElementById('cc-num-y') },
+      { pid: 'ccScan', cell: document.getElementById('cc-cell-scan'), num: document.getElementById('cc-num-scan') }
     ];
 
     function step(pid, delta) {
@@ -2999,6 +3219,125 @@ window.JUCE = {
 
     update();
     return { update: update };
+  })();
+
+  // ---- Word mode UI: text input + SCAN fader + path overlay ----------------
+  // Type a word -> TM.setWord (plugin recomputes path + emits wordState; mock
+  // builds it locally). The SCAN fader is bound to the wordScan relay through
+  // TM.setParam, so plugin automation + the CC follow. The pad shows the path as
+  // a dashed polyline with point markers; the current letter highlights as the
+  // scan moves; the marker on the path tracks the scanned position.
+  var Word = (function () {
+    var input = document.getElementById('word-input');
+    var display = document.getElementById('word-display');
+    var scanInput = document.getElementById('scan-input');
+    var scanVal = document.getElementById('scan-val');
+    var svg = document.getElementById('pad-path');
+    var SVGNS = 'http://www.w3.org/2000/svg';
+    var curWordPath = TM.getWordPath();
+
+    // which path index is "current" for the present scan position (nearest plateau)
+    function currentPathIndex(t) {
+      var K = curWordPath.path.length;
+      if (K <= 0) return -1;
+      if (K === 1) return 0;
+      var i = Math.floor(Math.min(0.999999, Math.max(0, t)) * K); // 0..K-1
+      return Math.min(K - 1, Math.max(0, i));
+    }
+
+    // render the word characters with vowel / current-letter highlight
+    function renderDisplay() {
+      var letters = curWordPath.letters || [];
+      if (!curWordPath.path.length) {
+        display.className = 'word-display empty';
+        display.textContent = (curWordPath.word && curWordPath.word.length)
+          ? 'no vowels — pad active' : 'no vowels — pad active';
+        return;
+      }
+      display.className = 'word-display';
+      var t = TM.getParam('wordScan');
+      var curIdx = currentPathIndex(t);
+      var html = '';
+      for (var i = 0; i < letters.length; i++) {
+        var L = letters[i];
+        var cls = 'wch';
+        if (L.vowel !== null && L.vowel !== undefined) {
+          cls += ' vowel';
+          if (L.vowel === curIdx) cls += ' cur';
+        }
+        var ch = (L.ch || '').replace('&', '&amp;').replace('<', '&lt;');
+        html += '<span class="' + cls + '">' + ch + '</span>';
+      }
+      display.innerHTML = html;
+    }
+
+    // draw the dashed polyline + point markers on the pad (SVG viewBox 0..100)
+    function renderPath() {
+      while (svg.firstChild) svg.removeChild(svg.firstChild);
+      var path = curWordPath.path;
+      if (path.length < 1) return;
+      if (path.length >= 2) {
+        var pts = '';
+        for (var i = 0; i < path.length; i++)
+          pts += (path[i].x * 100).toFixed(2) + ',' + (path[i].y * 100).toFixed(2) + ' ';
+        var line = document.createElementNS(SVGNS, 'polyline');
+        line.setAttribute('class', 'wp-line');
+        line.setAttribute('points', pts.trim());
+        line.setAttribute('vector-effect', 'non-scaling-stroke');
+        svg.appendChild(line);
+      }
+      var t = TM.getParam('wordScan');
+      var curIdx = currentPathIndex(t);
+      for (var j = 0; j < path.length; j++) {
+        var c = document.createElementNS(SVGNS, 'circle');
+        c.setAttribute('class', 'wp-pt' + (j === curIdx ? ' cur' : ''));
+        c.setAttribute('cx', (path[j].x * 100).toFixed(2));
+        c.setAttribute('cy', (path[j].y * 100).toFixed(2));
+        c.setAttribute('r', j === curIdx ? '3.2' : '2.2');
+        c.setAttribute('vector-effect', 'non-scaling-stroke');
+        svg.appendChild(c);
+      }
+    }
+
+    function refresh() {
+      renderDisplay();
+      renderPath();
+    }
+
+    // input -> set word
+    input.addEventListener('input', function () {
+      TM.setWord(input.value);
+    });
+    // SCAN fader -> wordScan param (bound to the relay through TM.setParam)
+    scanInput.addEventListener('input', function () {
+      TM.setParam('wordScan', parseFloat(scanInput.value), true);
+    });
+
+    // adopt new word state (from plugin event/handshake or local build)
+    TM.onWordState(function (wp) {
+      curWordPath = wp;
+      // keep the text field in sync if the word came from the plugin (state
+      // restore) and the user is not editing.
+      if (document.activeElement !== input && typeof wp.word === 'string'
+          && input.value !== wp.word) {
+        input.value = wp.word;
+      }
+      refresh();
+    });
+
+    // keep scan readout + highlight live as wordScan changes (native or mock)
+    TM.onChange(function (pid) {
+      if (pid === 'wordScan') {
+        var v = TM.getParam('wordScan');
+        if (document.activeElement !== scanInput) scanInput.value = String(v);
+        scanVal.textContent = v.toFixed(2);
+        renderDisplay();
+        renderPath();
+      }
+    });
+
+    refresh();
+    return { refresh: refresh };
   })();
 
   // ---- sliders -------------------------------------------------------------

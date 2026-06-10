@@ -57,6 +57,15 @@ TractMirrorProcessor::createParameterLayout()
     layout.add (std::make_unique<I>(juce::ParameterID { "ccY", 1 }, "CC -> Y",
                                     1, 119, 74));
 
+    // Word mode (INTERFACE.md sec 6): wordScan is the position along the active
+    // word's vowel path (0..1); ccScan is the assignable MIDI CC mapped to it
+    // (default 11 = expression). The word string itself is NOT a parameter - it
+    // lives in plugin state, saved/restored alongside the APVTS tree.
+    layout.add (std::make_unique<P>(juce::ParameterID { "wordScan", 1 }, "Word Scan",
+                                    R (0.0f, 1.0f), 0.0f));
+    layout.add (std::make_unique<I>(juce::ParameterID { "ccScan", 1 }, "CC -> Scan",
+                                    1, 119, 11));
+
     return layout;
 }
 
@@ -81,6 +90,8 @@ TractMirrorProcessor::TractMirrorProcessor()
     pGain     = apvts.getRawParameterValue ("gain");
     pCcX      = apvts.getRawParameterValue ("ccX");
     pCcY      = apvts.getRawParameterValue ("ccY");
+    pWordScan = apvts.getRawParameterValue ("wordScan");
+    pCcScan   = apvts.getRawParameterValue ("ccScan");
 
     loadVowelsFromBinaryData();
 }
@@ -147,6 +158,55 @@ void TractMirrorProcessor::loadVowelsFromBinaryData()
             }
         }
     }
+}
+
+// ============================================================================
+// Word mode (INTERFACE.md section 6). The processor owns the word string and
+// the resolved path; setWord recomputes the path and publishes it to the audio
+// thread. Message-thread only.
+// ============================================================================
+void TractMirrorProcessor::setWord (const juce::String& word)
+{
+    currentWord = word;
+
+    // Build the path from the (UTF-8) word using the shared, contract-pinned map.
+    const word_map::WordPath wp = word_map::build (word.toRawUTF8());
+    wordPathPub.publish (wp);
+}
+
+juce::var TractMirrorProcessor::getWordStateVar() const
+{
+    // Recompute from the canonical word string (the publisher snapshot is for the
+    // audio thread; here we own the message-thread source of truth).
+    const word_map::WordPath wp = word_map::build (currentWord.toRawUTF8());
+
+    auto* obj = new juce::DynamicObject();
+    obj->setProperty ("word", currentWord);
+
+    juce::Array<juce::var> letters;
+    for (int i = 0; i < wp.length; ++i)
+    {
+        auto* lo = new juce::DynamicObject();
+        lo->setProperty ("ch", juce::String::charToString ((juce::juce_wchar) wp.chars[i]));
+        if (wp.letterVowel[i] >= 0)
+            lo->setProperty ("vowel", wp.letterVowel[i]);
+        else
+            lo->setProperty ("vowel", juce::var());   // null
+        letters.add (juce::var (lo));
+    }
+    obj->setProperty ("letters", letters);
+
+    juce::Array<juce::var> path;
+    for (int i = 0; i < wp.pathLen; ++i)
+    {
+        auto* po = new juce::DynamicObject();
+        po->setProperty ("x", (double) wp.path[i].x);
+        po->setProperty ("y", (double) wp.path[i].y);
+        path.add (juce::var (po));
+    }
+    obj->setProperty ("path", path);
+
+    return juce::var (obj);
 }
 
 // ============================================================================
@@ -259,13 +319,44 @@ void TractMirrorProcessor::processBlock(juce::AudioBuffer<float>& buffer,
     prevPadX = padX;
     prevPadY = padY;
 
+    // ── wordScan takeover detection (same change-based logic as the pad axes) ──
+    const float wsParam = pWordScan->load();
+    if (ccOwnsScan && prevWordScan >= 0.0f
+        && std::abs (wsParam - prevWordScan) > kEps
+        && std::abs (wsParam - ccLastPushedScan) > kEps)
+        ccOwnsScan = false;
+    prevWordScan = wsParam;
+
     // Which CC numbers are assigned right now (snapshot for this block).
-    const int ccNumX = juce::jlimit (1, 119, (int) std::round (pCcX->load()));
-    const int ccNumY = juce::jlimit (1, 119, (int) std::round (pCcY->load()));
+    const int ccNumX    = juce::jlimit (1, 119, (int) std::round (pCcX->load()));
+    const int ccNumY    = juce::jlimit (1, 119, (int) std::round (pCcY->load()));
+    const int ccNumScan = juce::jlimit (1, 119, (int) std::round (pCcScan->load()));
+
+    // ── Active word path (INTERFACE.md sec 6). When a word is active (>=1 vowel),
+    // wordScan OWNS the vowel position; the pad and ccX/ccY are visually live but
+    // do not drive the tract. Resolve the scanned pad coordinate and hand it to
+    // the engine, overriding the pad/CC arbitration below. ───────────────────
+    const word_map::WordPath activeWord = wordPathPub.read();
+    const bool wordActive = activeWord.active();
+
+    // Helper: set the engine vowel target for THIS block from the current state.
+    auto applyVowelTarget = [&] ()
+    {
+        if (wordActive)
+        {
+            const float ws = ccOwnsScan ? ccTargetScan : pWordScan->load();
+            const word_map::PadPoint p = word_map::scan (activeWord, ws);
+            engine.setVowelTarget ((double) p.x, (double) p.y);
+        }
+        else
+        {
+            engine.setVowelTarget (ccOwnsX ? (double) ccTargetX : (double) padX,
+                                   ccOwnsY ? (double) ccTargetY : (double) padY);
+        }
+    };
 
     // Apply the resolved target before rendering the head of the block.
-    engine.setVowelTarget (ccOwnsX ? (double) ccTargetX : (double) padX,
-                           ccOwnsY ? (double) ccTargetY : (double) padY);
+    applyVowelTarget();
 
     bool ccTouchedThisBlock = false;
 
@@ -311,14 +402,21 @@ void TractMirrorProcessor::processBlock(juce::AudioBuffer<float>& buffer,
             if (cc == ccNumX)
             {
                 ccTargetX = val; ccOwnsX = true; ccTouchedThisBlock = true;
-                engine.setVowelTarget ((double) ccTargetX,
-                                       ccOwnsY ? (double) ccTargetY : (double) padY);
+                applyVowelTarget();   // word-active: ignored for vowel; pad echo still queued
             }
             if (cc == ccNumY)
             {
                 ccTargetY = val; ccOwnsY = true; ccTouchedThisBlock = true;
-                engine.setVowelTarget (ccOwnsX ? (double) ccTargetX : (double) padX,
-                                       (double) ccTargetY);
+                applyVowelTarget();
+            }
+            if (cc == ccNumScan)
+            {
+                // ccScan -> wordScan (INTERFACE.md sec 6 / sec 1). Same last-writer
+                // -wins + async host-sync as the pad axes. Drives the vowel only
+                // when a word is active; the host-param push happens regardless so
+                // the GUI fader + automation follow.
+                ccTargetScan = val; ccOwnsScan = true; ccTouchedThisBlock = true;
+                applyVowelTarget();
             }
         }
     }
@@ -336,8 +434,9 @@ void TractMirrorProcessor::processBlock(juce::AudioBuffer<float>& buffer,
     // pushed so the takeover detector above can tell pad moves from CC echo.
     if (ccTouchedThisBlock)
     {
-        if (ccOwnsX) { pendingHostX.store (ccTargetX, std::memory_order_release); ccLastPushedX = ccTargetX; }
-        if (ccOwnsY) { pendingHostY.store (ccTargetY, std::memory_order_release); ccLastPushedY = ccTargetY; }
+        if (ccOwnsX)    { pendingHostX.store (ccTargetX, std::memory_order_release); ccLastPushedX = ccTargetX; }
+        if (ccOwnsY)    { pendingHostY.store (ccTargetY, std::memory_order_release); ccLastPushedY = ccTargetY; }
+        if (ccOwnsScan) { pendingHostW.store (ccTargetScan, std::memory_order_release); ccLastPushedScan = ccTargetScan; }
         triggerAsyncUpdate();   // safe to call from the audio thread; coalesces
     }
 
@@ -357,6 +456,7 @@ void TractMirrorProcessor::handleAsyncUpdate()
 {
     const float x = pendingHostX.exchange (-1.0f, std::memory_order_acquire);
     const float y = pendingHostY.exchange (-1.0f, std::memory_order_acquire);
+    const float w = pendingHostW.exchange (-1.0f, std::memory_order_acquire);
 
     if (x >= 0.0f)
         if (auto* p = apvts.getParameter ("vowelX"))
@@ -364,6 +464,9 @@ void TractMirrorProcessor::handleAsyncUpdate()
     if (y >= 0.0f)
         if (auto* p = apvts.getParameter ("vowelY"))
             p->setValueNotifyingHost (p->convertTo0to1 (juce::jlimit (0.0f, 1.0f, y)));
+    if (w >= 0.0f)
+        if (auto* p = apvts.getParameter ("wordScan"))
+            p->setValueNotifyingHost (p->convertTo0to1 (juce::jlimit (0.0f, 1.0f, w)));
 }
 
 // ============================================================================
@@ -386,6 +489,9 @@ void TractMirrorProcessor::getStateInformation(juce::MemoryBlock& destData)
 {
     auto state = apvts.copyState();
     std::unique_ptr<juce::XmlElement> xml(state.createXml());
+    // Word mode (INTERFACE.md sec 6): the word string is NOT an APVTS parameter,
+    // so persist it as an attribute on the saved XML root alongside the tree.
+    xml->setAttribute ("tractMirrorWord", currentWord);
     copyXmlToBinary(*xml, destData);
 }
 
@@ -393,7 +499,15 @@ void TractMirrorProcessor::setStateInformation(const void* data, int sizeInBytes
 {
     std::unique_ptr<juce::XmlElement> xml(getXmlFromBinary(data, sizeInBytes));
     if (xml != nullptr && xml->hasTagName(apvts.state.getType()))
+    {
+        // Restore the word first (read the attribute before replaceState may
+        // touch the element), then the parameter tree. setWord recomputes the
+        // path + republishes it to the audio thread; an attaching editor re-emits
+        // wordState via its GUI-ready handshake.
+        const juce::String savedWord = xml->getStringAttribute ("tractMirrorWord", juce::String());
         apvts.replaceState(juce::ValueTree::fromXml(*xml));
+        setWord (savedWord);
+    }
 }
 
 // ============================================================================

@@ -5,6 +5,7 @@
 #include <array>
 #include <vector>
 #include "TractEngine.h"
+#include "WordMap.h"
 
 // ============================================================================
 // Lock-free visualization snapshot (DSP -> editor). Sequence-counter double
@@ -61,6 +62,49 @@ public:
 
 private:
     std::array<TractFrame, 2> buffers {};
+    std::atomic<uint32_t> sequence { 0 };
+};
+
+// ============================================================================
+// Lock-free Word-path snapshot (message thread -> audio thread). The processor
+// owns the word string and recomputes the path on the message thread (setWord
+// native fn or setStateInformation); the audio thread reads the active path
+// each block to resolve the wordScan position. Same seqlock discipline as
+// VizPublisher, fixed-size payload (a word_map::WordPath is plain data).
+// ============================================================================
+class WordPathPublisher
+{
+public:
+    // Writer: message thread (single writer). Even sequence = stable; odd = busy.
+    void publish (const word_map::WordPath& wp)
+    {
+        const uint32_t seq = sequence.load (std::memory_order_relaxed);
+        const int writeSlot = ((seq >> 1) & 1u) ^ 1;
+        sequence.store (seq + 1, std::memory_order_release);
+        buffers[(size_t) writeSlot] = wp;
+        std::atomic_thread_fence (std::memory_order_release);
+        sequence.store (seq + 2, std::memory_order_release);
+    }
+
+    // Reader: audio thread. Retries if a write was in progress.
+    word_map::WordPath read() const
+    {
+        for (int attempt = 0; attempt < 16; ++attempt)
+        {
+            const uint32_t s1 = sequence.load (std::memory_order_acquire);
+            if (s1 & 1u) continue;
+            const int activeSlot = (int) ((s1 >> 1) & 1u);
+            word_map::WordPath wp = buffers[(size_t) activeSlot];
+            std::atomic_thread_fence (std::memory_order_acquire);
+            const uint32_t s2 = sequence.load (std::memory_order_acquire);
+            if (s1 == s2)
+                return wp;
+        }
+        return buffers[0];
+    }
+
+private:
+    std::array<word_map::WordPath, 2> buffers {};
     std::atomic<uint32_t> sequence { 0 };
 };
 
@@ -130,6 +174,21 @@ public:
     // Force the tract to one pure anchor (0..5 = i,e,schwa,u,o,a) for analysis.
     void forcePureAnchor (int anchorIndex) { engine.forcePureAnchor (anchorIndex); }
 
+    // Loudness normalization toggle (verification harness only; production ON).
+    void setLoudnessNormEnabled (bool on) { engine.setLoudnessNormEnabled (on); }
+
+    // ── Word mode (INTERFACE.md section 6) ────────────────────────────────────
+    // Set the active word. Message-thread only (setWord native fn / state restore).
+    // Recomputes the path, publishes it to the audio thread, and returns the
+    // wordState JSON (also broadcast as a `wordState` event by the editor). The
+    // word persists in plugin state.
+    void setWord (const juce::String& word);
+    juce::String getWord() const { return currentWord; }
+
+    // Build the wordState payload JSON (INTERFACE.md sec 6) for the current word.
+    // Used by the editor for the `wordState` event + the GUI-ready handshake.
+    juce::var getWordStateVar() const;
+
 private:
     TractEngine engine;
     VizPublisher viz;
@@ -148,6 +207,8 @@ private:
     std::atomic<float>* pGain      = nullptr;
     std::atomic<float>* pCcX       = nullptr;  // assignable MIDI CC number for vowelX
     std::atomic<float>* pCcY       = nullptr;  // assignable MIDI CC number for vowelY
+    std::atomic<float>* pWordScan  = nullptr;  // scan position along the word path
+    std::atomic<float>* pCcScan    = nullptr;  // assignable MIDI CC number for wordScan
 
     int    vizSampleCounter = 0;
     int    vizInterval = 800;      // recomputed in prepareToPlay for ~60 Hz
@@ -179,9 +240,25 @@ private:
     float  prevPadY = -1.0f;        // host vowelY param seen last block
 
     // Cross-thread mailbox for the async host-param push (coalesced, lock-free).
+    // X/Y carry the CC-driven vowel pad values; W carries the CC-driven wordScan.
     std::atomic<float> pendingHostX { -1.0f };  // <0 => nothing pending on X
     std::atomic<float> pendingHostY { -1.0f };
+    std::atomic<float> pendingHostW { -1.0f };  // CC-driven wordScan push
     void handleAsyncUpdate() override;          // message thread: setValueNotifyingHost
+
+    // ── Word mode (INTERFACE.md section 6) ────────────────────────────────────
+    // currentWord lives on the message thread (set via setWord / state restore).
+    // The resolved path is published to the audio thread via wordPathPub. The
+    // audio thread reads the snapshot each block; when active it OWNS the vowel
+    // position (resolved from wordScan), overriding pad/CC arbitration.
+    juce::String       currentWord;             // message-thread-owned word string
+    WordPathPublisher  wordPathPub;             // active path -> audio thread
+
+    // ccScan arbitration: same last-writer-wins pattern as ccX/ccY, one axis.
+    bool   ccOwnsScan       = false;
+    float  ccTargetScan     = 0.0f;             // CC-driven wordScan (0..1)
+    float  ccLastPushedScan = -1.0f;            // last value handed to the host param
+    float  prevWordScan     = -1.0f;            // host wordScan seen last block
 
     void loadVowelsFromBinaryData();
     void pullParams();
