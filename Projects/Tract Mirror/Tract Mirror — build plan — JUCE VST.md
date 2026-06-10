@@ -64,16 +64,17 @@ k_i = (A_i - A_{i+1}) / (A_i + A_{i+1}). Never interpolate k directly; interpola
       vowels. INSTALLED: ~/Library/Audio/Plug-Ins/VST3/Tract Mirror.vst3 +
       ~/Library/Audio/Plug-Ins/Components/Tract Mirror.component. Standalone launches + quits cleanly;
       screenshot blocked by Screen Recording permission (not faked).
-- [ ] **Phase 4 — Verify in Live** (BLOCKED ON LOUDON's presence, everything else done): plugin is
-      already installed (VST3 + AU). Attempted computer-use verification 2026-06-09; the access dialog
-      timed out with Loudon away. TWO WAYS TO FINISH:
-      (a) Loudon says "verify in Live" while at the machine -> session re-requests screen access,
-          drives Live: new MIDI track, load "Tract Mirror" (Plug-Ins > Loudon Live), play notes via the
-          GUI preview keys, screenshot GUI + lit track meter as proof.
-      (b) Loudon does it by hand: open Live 12, browser > Plug-Ins > Loudon Live > Tract Mirror onto a
-          MIDI track, play. The XY pad morphs vowels; MIRROR toggle shows the lattice; segments glow
-          with the wave.
-      Note: if Live's plugin database is stale, force a rescan (Settings > Plug-Ins > Rescan).
+- [x] **Phase 4 — Verified in Live**: DONE 2026-06-10, driven end-to-end via computer use with Loudon's
+      access grant. Live 12 scanned and listed BOTH formats (AU + VST3); VST3 loaded onto a MIDI track
+      ("2 Tract Mirror"); GUI opened in PLUGIN mode (native JUCE bridge live, not mock); defaults
+      correct (pad at schwa, uniform tube). Held notes from the GUI preview keys: tract segments glowed
+      with wave energy, plugin OUTPUT meter ~-21 dB, Live track + Main meters green — sound through
+      Live's mixer confirmed. Vowel pad morphed schwa -> /i/ (tube visibly reshaped); MIRROR panel
+      showed the live lattice with r_g +0.97 / r_l -0.90. Proof: renders/ableton-proof.png.
+
+**ALL PHASES COMPLETE. The chain is closed: reference -> scaffold -> artifacts -> engine -> GUI ->
+validation -> Ableton Live.** v2 vector (record-and-analyze: sing into it, replay your own tract)
+remains open in [[Tract Mirror]]'s forward_vector.
 
 ## Directory layout (bundle)
 
