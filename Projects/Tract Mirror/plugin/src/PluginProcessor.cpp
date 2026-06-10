@@ -1,6 +1,10 @@
 #include "PluginProcessor.h"
 #include "BinaryData.h"
 
+#if JUCE_WEB_BROWSER
+ #include "PluginEditor.h"
+#endif
+
 #include <array>
 
 // ============================================================================
@@ -164,6 +168,22 @@ void TractMirrorProcessor::pullParams()
     engine.setParams (p);
 }
 
+// Drain GUI preview-keyboard notes (message thread producer) into the engine.
+// Applied at block start so they share the synthesis path with host MIDI.
+void TractMirrorProcessor::drainGuiNotes()
+{
+    int r = guiNoteRead.load (std::memory_order_relaxed);
+    const int w = guiNoteWrite.load (std::memory_order_acquire);
+    while (r != w)
+    {
+        const GuiNote& gn = guiNotes[(size_t) r];
+        if (gn.isOn) engine.noteOn (gn.note, gn.velocity);
+        else         engine.noteOff (gn.note);
+        r = (r + 1) % kGuiNoteCap;
+    }
+    guiNoteRead.store (r, std::memory_order_release);
+}
+
 void TractMirrorProcessor::publishViz()
 {
     TractFrame& f = vizScratch;
@@ -200,6 +220,7 @@ void TractMirrorProcessor::processBlock(juce::AudioBuffer<float>& buffer,
         return;
 
     pullParams();
+    drainGuiNotes();   // fold GUI preview-keyboard notes into the engine
 
     float* outL = buffer.getWritePointer (0);
 
@@ -252,8 +273,12 @@ void TractMirrorProcessor::processBlock(juce::AudioBuffer<float>& buffer,
 // ============================================================================
 juce::AudioProcessorEditor* TractMirrorProcessor::createEditor()
 {
-    // Keep the GenericAudioProcessorEditor for now (WebView lands next phase).
+#if JUCE_WEB_BROWSER
+    return new TractMirrorEditor (*this);
+#else
+    // Render harness build (no WebView): a generic editor keeps the contract.
     return new juce::GenericAudioProcessorEditor (*this);
+#endif
 }
 
 // ============================================================================

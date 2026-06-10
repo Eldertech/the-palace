@@ -45,6 +45,7 @@ juce_add_plugin(TractMirror
 target_sources(TractMirror
     PRIVATE
         src/PluginProcessor.cpp
+        src/PluginEditor.cpp
         src/TractEngine.cpp
 )
 
