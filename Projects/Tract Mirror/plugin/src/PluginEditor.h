@@ -35,6 +35,9 @@ private:
     // Serve the embedded GUI for resource-provider requests.
     std::optional<juce::WebBrowserComponent::Resource> provideResource (const juce::String& url) const;
 
+    // Broadcast a `wordState` event to the GUI (INTERFACE.md sec 6).
+    void emitWordState (const juce::var& state);
+
     TractMirrorProcessor& processorRef;
 
     // One relay per parameter (ownership) + its parameter attachment.

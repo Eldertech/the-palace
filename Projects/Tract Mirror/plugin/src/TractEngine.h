@@ -117,6 +117,13 @@ public:
     float getCurrentPitchHz() const { return currentPitchHz; }
     float getLastOutputRms() const { return outputRms; }
 
+    // ---- Loudness normalization toggle (verification harness only) ----------
+    // Production always leaves this ON. The render harness flips it OFF to capture
+    // the PRE-normalization vowel-loudness spread for the before/after table; with
+    // it off, loudCompLin is forced to 1.0 (the legacy behaviour).
+    void  setLoudnessNormEnabled (bool on) { loudNormEnabled = on; }
+    bool  isLoudnessNormEnabled() const { return loudNormEnabled; }
+
 private:
     // ---- Sample rate / section count ---------------------------------------
     double fs = 48000.0;
@@ -166,6 +173,37 @@ private:
     double areaSmoothCoeff = 0.0;      // one-pole coefficient
     int    controlInterval = 0;        // samples between morph recomputes
     int    controlCounter  = 0;
+
+    // ---- Vowel loudness normalization (INTERFACE.md sec 2.5) ---------------
+    // Different tract shapes have very different transfer gains (/u/ far louder
+    // than /e/). At control rate (each area update) we convert the current k
+    // ladder to all-pole coefficients (Levinson step-up — the mirror identity),
+    // evaluate |H| on a fixed log-spaced grid, weight by the net source+radiation
+    // spectral slope, integrate to an expected-loudness energy, and apply a
+    // frequency-FLAT make-up gain referenced to the schwa tube (schwa = unity).
+    // All buffers are fixed-size (sized for the max section count) so the
+    // control-rate path is allocation-free. The reference energy is computed once
+    // at prepare from the schwa anchor's resampled k ladder.
+    static constexpr int kMaxSections = 128;   // ceiling on N (>> any audio fs)
+    static constexpr int kLoudBins    = 64;    // |H| evaluation grid
+    static constexpr double kLoudFLo  = 60.0;  // Hz
+    static constexpr double kLoudFHi  = 8000.0;// Hz
+    std::array<double, kLoudBins> loudBinHz   {}; // log-spaced bin centres (Hz)
+    std::array<double, kLoudBins> loudBinW    {}; // -6 dB/oct weights (energy), ref 500 Hz
+    double loudRefEnergyDb   = 0.0;   // schwa reference loudness energy (dB), per fs
+    double loudCompDb        = 0.0;   // current smoothed compensation (dB)
+    double loudCompLin       = 1.0;   // 10^(loudComp/20), applied in the audio path
+    double loudCompSmoothCoeff = 0.0; // ~30 ms one-pole per control tick
+    bool   loudInit          = false; // snap compensation on first morph (no jump)
+    bool   loudNormEnabled   = true;  // production ON; harness flips off for "before"
+
+    // Compute the expected-loudness energy (in dB) of a k ladder (length count)
+    // via Levinson step-up -> |H| on the log grid -> source-weighted integral.
+    // Allocation-free: uses fixed-size scratch. `kLadder` is read [0, count).
+    double loudnessEnergyDb (const double* kLadder, int count) const;
+    void   buildLoudnessGrid();        // fill loudBinHz / loudBinW (fs-independent w)
+    void   computeSchwaReference();    // loudRefEnergyDb from the schwa anchor ladder
+    void   updateLoudnessCompensation();// control-rate: refresh loudComp{Db,Lin}
 
     // ---- Effective vowel position smoothing (~15 ms, per control tick) ------
     // The target is set by the processor (pad / CC last-writer-wins arbitration);

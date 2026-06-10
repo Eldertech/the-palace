@@ -81,9 +81,19 @@ k_i = (A_i - A_{i+1}) / (A_i + A_{i+1}). Never interpolate k directly; interpola
       formants 0.00% vs param-rendered references; six-vowel gate still 0.00%; pluginval 5+8 PASS.
       Reinstalled both formats. In-Live MIDI re-verification pending (Loudon at the machine).
 
+- [x] **Phase 6 — Loudness normalization + Word mode** (Loudon, 2026-06-10): DONE 2026-06-10.
+      (a) Continuous deterministic vowel-loudness compensation (INTERFACE.md 2.5): step-up |H| on 64
+      log bins + forward transmission gain 20*sum(log10|1+k_i|), schwa unity reference; ten-position
+      spread 33.08 dB -> 2.74 dB, schwa moved 0.90 dB. No AGC, no new parameter.
+      (b) Word mode (INTERFACE.md 6): type a word, wordScan fader (+ ccScan, default CC11) sings the
+      vowel path; processor owns mapping (WordMap.h, shared math with mock JS); path polyline on the
+      pad + live letter highlight; word persists in plugin state (bit-exact round-trip). Word gate:
+      "you" plateaus at 0.00% formant error. All regressions green; pluginval 5 PASS; reinstalled.
+
 **ALL BUILD PHASES COMPLETE. The chain is closed: reference -> scaffold -> artifacts -> engine -> GUI ->
-validation -> Ableton Live -> MIDI performance controls.** v2 vector (record-and-analyze: sing into
-it, replay your own tract) remains open in [[Tract Mirror]]'s forward_vector.
+validation -> Ableton Live -> MIDI performance controls -> normalization + word singing.** v2 vector
+(record-and-analyze: sing into it, replay your own tract) remains open in [[Tract Mirror]]'s
+forward_vector.
 
 ## Directory layout (bundle)
 

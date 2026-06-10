@@ -370,6 +370,142 @@ namespace
         return out;
     }
 
+    // ------------------------------------------------------------------------
+    // Loudness-normalization probe (INTERFACE.md sec 2.5).
+    // Render a sustained note at a pad position, UN-peak-normalised so absolute
+    // level is meaningful, with the loudness normalization either ON or OFF. The
+    // verify gate measures steady-segment RMS across ten positions (six anchors +
+    // four mid-morphs); with normalization ON the spread must collapse to <= 3 dB.
+    // ------------------------------------------------------------------------
+    std::vector<float> renderLoudnessProbe (float vowelX, float vowelY, bool normOn)
+    {
+        TractMirrorProcessor proc;
+        proc.setPlayConfigDetails (0, 2, kFs, kBlock);
+        proc.prepareToPlay (kFs, kBlock);
+        proc.setLoudnessNormEnabled (normOn);
+        configureVoice (proc, vowelX, vowelY);   // schwa-voice config, vib/breath/glide off
+
+        const int    note  = kVowelMidi;         // A2 = 110 Hz (matches vowel gate)
+        const double secs  = 2.0;
+        const int    total = (int) std::round (secs * kFs);
+
+        std::vector<float> out;
+        out.reserve ((size_t) total);
+        juce::AudioBuffer<float> buffer (2, kBlock);
+
+        int done = 0; bool onSent = false;
+        while (done < total)
+        {
+            const int n = std::min (kBlock, total - done);
+            buffer.setSize (2, n, false, false, true);
+            buffer.clear();
+            juce::MidiBuffer midi;
+            if (! onSent) { midi.addEvent (juce::MidiMessage::noteOn (1, note, (juce::uint8) 100), 0); onSent = true; }
+            proc.processBlock (buffer, midi);
+            const float* L = buffer.getReadPointer (0);
+            for (int i = 0; i < n; ++i) out.push_back (L[i]);
+            done += n;
+        }
+        return out;
+    }
+
+    // ------------------------------------------------------------------------
+    // Word mode (INTERFACE.md sec 6). Set a word via the SAME state-injection
+    // path the plugin uses (setWord -> path republished to the audio thread),
+    // then hold a note while the wordScan PARAMETER is stepped through the plateau
+    // centre of each path segment. Each segment is written as its own WAV so the
+    // verify gate measures F1/F2 in the plateau and compares against the anchor
+    // references. configureWordVoice keeps the schwa voice (vib/breath/glide off).
+    // ------------------------------------------------------------------------
+    void setWordScan (TractMirrorProcessor& proc, float t)
+    {
+        if (auto* p = proc.apvts.getParameter ("wordScan"))
+            p->setValueNotifyingHost (p->convertTo0to1 (juce::jlimit (0.0f, 1.0f, t)));
+    }
+
+    // Render one segment of a word: set the word, set wordScan to the plateau
+    // centre, hold a note, capture ~1.5 s. The word is set ONCE per call (the
+    // real state path), so this also exercises setWord repeatedly without leaks.
+    std::vector<float> renderWordSegment (const char* word, float scanT)
+    {
+        TractMirrorProcessor proc;
+        proc.setPlayConfigDetails (0, 2, kFs, kBlock);
+        proc.prepareToPlay (kFs, kBlock);
+        configureVoice (proc, 0.50f, 0.45f);     // schwa voice; pad is overridden by the word
+        proc.setWord (juce::String (word));      // real state-injection path (not a shortcut)
+        setWordScan (proc, scanT);
+
+        const int    note  = kVowelMidi;         // A2 = 110 Hz
+        const double secs  = 1.5;
+        const int    total = (int) std::round (secs * kFs);
+
+        std::vector<float> out;
+        out.reserve ((size_t) total);
+        juce::AudioBuffer<float> buffer (2, kBlock);
+
+        int done = 0; bool onSent = false;
+        while (done < total)
+        {
+            const int n = std::min (kBlock, total - done);
+            buffer.setSize (2, n, false, false, true);
+            buffer.clear();
+            juce::MidiBuffer midi;
+            if (! onSent) { midi.addEvent (juce::MidiMessage::noteOn (1, note, (juce::uint8) 100), 0); onSent = true; }
+            proc.processBlock (buffer, midi);
+            const float* L = buffer.getReadPointer (0);
+            for (int i = 0; i < n; ++i) out.push_back (L[i]);
+            done += n;
+        }
+        return out;
+    }
+
+    // State round-trip: set a word, save state, restore into a FRESH processor,
+    // render a segment. Returns the restored-instance render so the gate can
+    // checksum/formant-compare it against the original-instance render.
+    std::vector<float> renderWordSegmentRestored (const char* word, float scanT)
+    {
+        // (1) original instance with the word set + a non-default wordScan baked in
+        juce::MemoryBlock blob;
+        {
+            TractMirrorProcessor src;
+            src.setPlayConfigDetails (0, 2, kFs, kBlock);
+            src.prepareToPlay (kFs, kBlock);
+            configureVoice (src, 0.50f, 0.45f);
+            src.setWord (juce::String (word));
+            setWordScan (src, scanT);
+            src.getStateInformation (blob);
+        }
+        // (2) fresh instance, restore, render (path must be recomputed from state)
+        TractMirrorProcessor dst;
+        dst.setPlayConfigDetails (0, 2, kFs, kBlock);
+        dst.prepareToPlay (kFs, kBlock);
+        dst.setStateInformation (blob.getData(), (int) blob.getSize());
+        // configureVoice AFTER restore would clobber the restored params; the saved
+        // state already carries the schwa voice config from src, so do not re-set.
+
+        const int    note  = kVowelMidi;
+        const double secs  = 1.5;
+        const int    total = (int) std::round (secs * kFs);
+
+        std::vector<float> out;
+        out.reserve ((size_t) total);
+        juce::AudioBuffer<float> buffer (2, kBlock);
+        int done = 0; bool onSent = false;
+        while (done < total)
+        {
+            const int n = std::min (kBlock, total - done);
+            buffer.setSize (2, n, false, false, true);
+            buffer.clear();
+            juce::MidiBuffer midi;
+            if (! onSent) { midi.addEvent (juce::MidiMessage::noteOn (1, note, (juce::uint8) 100), 0); onSent = true; }
+            dst.processBlock (buffer, midi);
+            const float* L = buffer.getReadPointer (0);
+            for (int i = 0; i < n; ++i) out.push_back (L[i]);
+            done += n;
+        }
+        return out;
+    }
+
     // Param-rendered reference: voiced audio at a fixed pad position, ~1.5 s.
     // Same voice config and note as the CC sweep, so verify_midi.py can measure
     // its endpoints against these with an identical (voiced-LPC) method.
@@ -488,6 +624,80 @@ int main()
             ok = ok && w;
             std::printf ("rendered cc-ref %-12s -> %s (%zu samples) %s\n",
                          r.name, f.getFullPathName().toRawUTF8(), sig.size(), w ? "OK" : "FAIL");
+        }
+    }
+
+    // ---- Word mode: "you" (path i,o,u) scanned through each plateau ----------
+    // Plateau scan centres: seg1 (i) holds p_1 across the whole first segment;
+    // seg2 (o) plateaus for s>=0.35 -> t>=0.45; seg3 (u) for t>=0.783. Centres
+    // chosen firmly inside each plateau. References are param renders at the exact
+    // anchor pad coords (same voiced-LPC measurement -> bias cancels in the gate).
+    {
+        struct Seg { const char* name; float t; float refX, refY; };
+        const std::array<Seg, 3> segs {{
+            { "i", 0.16f, 0.08f, 0.10f },
+            { "o", 0.58f, 0.85f, 0.58f },
+            { "u", 0.92f, 0.90f, 0.12f },
+        }};
+        for (const auto& s : segs)
+        {
+            std::vector<float> sig = renderWordSegment ("you", s.t);
+            const juce::File f = outDir.getChildFile (juce::String ("word_you_") + s.name + ".wav");
+            const bool w = writeWav (f, sig, kFs);
+            ok = ok && w;
+            std::printf ("rendered word seg %-3s -> %s (%zu samples) %s\n",
+                         s.name, f.getFullPathName().toRawUTF8(), sig.size(), w ? "OK" : "FAIL");
+
+            std::vector<float> ref = renderPadReference (s.refX, s.refY);
+            const juce::File fr = outDir.getChildFile (juce::String ("word_ref_") + s.name + ".wav");
+            const bool wr = writeWav (fr, ref, kFs);
+            ok = ok && wr;
+            std::printf ("rendered word ref %-3s -> %s (%zu samples) %s\n",
+                         s.name, fr.getFullPathName().toRawUTF8(), ref.size(), wr ? "OK" : "FAIL");
+        }
+
+        // State round-trip: save "you" @ u-plateau, restore into a fresh instance,
+        // render. The gate compares this against word_you_u.wav (identical path).
+        std::vector<float> rt = renderWordSegmentRestored ("you", 0.92f);
+        const juce::File frt = outDir.getChildFile ("word_you_u_restored.wav");
+        const bool wrt = writeWav (frt, rt, kFs);
+        ok = ok && wrt;
+        std::printf ("rendered word restored u -> %s (%zu samples) %s\n",
+                     frt.getFullPathName().toRawUTF8(), rt.size(), wrt ? "OK" : "FAIL");
+    }
+
+    // ---- Loudness-normalization probe: ten pad positions, norm ON and OFF -----
+    // Six anchors + four mid-morph positions. The "norm_on" set is the gate; the
+    // "norm_off" set captures the pre-change spread for the before/after table.
+    {
+        struct Probe { const char* name; float x, y; };
+        const std::array<Probe, 10> probes {{
+            { "i",     0.08f, 0.10f },
+            { "e",     0.15f, 0.55f },
+            { "schwa", 0.50f, 0.45f },
+            { "u",     0.90f, 0.12f },
+            { "o",     0.85f, 0.58f },
+            { "a",     0.50f, 0.90f },
+            { "m1",    0.30f, 0.30f },
+            { "m2",    0.70f, 0.30f },
+            { "m3",    0.30f, 0.70f },
+            { "m4",    0.70f, 0.70f },
+        }};
+        for (const auto& p : probes)
+        {
+            for (int mode = 0; mode < 2; ++mode)
+            {
+                const bool normOn = (mode == 1);
+                std::vector<float> sig = renderLoudnessProbe (p.x, p.y, normOn);
+                const juce::String fn = juce::String ("loud_") + (normOn ? "on_" : "off_")
+                                      + juce::String (p.name) + ".wav";
+                const juce::File f = outDir.getChildFile (fn);
+                const bool w = writeWav (f, sig, kFs);
+                ok = ok && w;
+                std::printf ("rendered loud %-10s -> %s (%zu samples) %s\n",
+                             fn.toRawUTF8(), f.getFullPathName().toRawUTF8(),
+                             sig.size(), w ? "OK" : "FAIL");
+            }
         }
     }
 

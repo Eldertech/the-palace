@@ -9,7 +9,7 @@ namespace
     const juce::StringArray kParamIds {
         "vowelX", "vowelY", "tension", "breath", "glide", "vibRate",
         "vibDepth", "attack", "release", "brightness", "gain",
-        "ccX", "ccY"
+        "ccX", "ccY", "wordScan", "ccScan"
     };
 }
 
@@ -37,6 +37,31 @@ TractMirrorEditor::TractMirrorEditor (TractMirrorProcessor& p)
                                               juce::jlimit (0.0f, 1.0f, (float) vel / 127.0f),
                                               on);
                 completion (juce::var());
+            })
+        // Word mode (INTERFACE.md sec 6). setWord(word) sets the active word on the
+        // processor (which recomputes + republishes the path), then completes with
+        // the wordState payload AND broadcasts a `wordState` event so the GUI
+        // refreshes the path/letters. requestWordState() is the GUI-ready
+        // handshake: the GUI calls it once on init and gets the current word state
+        // (restored from plugin state), so a word set before the editor existed is
+        // reflected without depending on event timing.
+        .withNativeFunction (
+            juce::Identifier ("setWord"),
+            [this] (const juce::Array<juce::var>& args,
+                    juce::WebBrowserComponent::NativeFunctionCompletion completion)
+            {
+                const juce::String word = args.size() > 0 ? args[0].toString() : juce::String();
+                processorRef.setWord (word);
+                const juce::var st = processorRef.getWordStateVar();
+                emitWordState (st);
+                completion (st);
+            })
+        .withNativeFunction (
+            juce::Identifier ("requestWordState"),
+            [this] (const juce::Array<juce::var>&,
+                    juce::WebBrowserComponent::NativeFunctionCompletion completion)
+            {
+                completion (processorRef.getWordStateVar());
             });
 
     relays.reserve ((size_t) kParamIds.size());
@@ -100,6 +125,15 @@ TractMirrorEditor::provideResource (const juce::String& url) const
                                                      juce::String ("text/html") };
     }
     return std::nullopt;
+}
+
+// ----------------------------------------------------------------------------
+// Word mode: broadcast a `wordState` event (INTERFACE.md sec 6) to the GUI.
+// ----------------------------------------------------------------------------
+void TractMirrorEditor::emitWordState (const juce::var& state)
+{
+    if (web != nullptr)
+        web->emitEventIfBrowserIsVisible (juce::Identifier ("wordState"), state);
 }
 
 // ----------------------------------------------------------------------------

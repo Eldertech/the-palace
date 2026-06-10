@@ -38,6 +38,14 @@ void TractEngine::prepare (double sampleRate)
     const double vowelTau = 15.0 * 0.001;
     vowelSmoothCoeff = std::exp (-dtTick / vowelTau);
 
+    // Loudness normalization (sec 2.5): ~30 ms one-pole on the compensation gain,
+    // the fs-independent |H| grid + source weights, and the schwa reference energy
+    // for THIS sample rate (computed once here, allocation-free thereafter).
+    const double loudTau = 30.0 * 0.001;
+    loudCompSmoothCoeff = std::exp (-dtTick / loudTau);
+    buildLoudnessGrid();
+    computeSchwaReference();
+
     reset();
 }
 
@@ -76,12 +84,18 @@ void TractEngine::reset()
     effVowelY = vowelTargetY;
     vowelPosInit = false;
 
+    // Loudness compensation snaps on the first morph (no gain jump at the start).
+    loudInit = false;
+    loudCompDb = 0.0;
+    loudCompLin = 1.0;
+
     // Initialize morph to whatever the params point at (or schwa-ish midpoint).
     if (anchorsLoaded)
     {
         recomputeMorph();
         areaSmoothedN = areaTargetN;       // snap on reset (no zipper at start)
         updateReflectionCoeffs();
+        updateLoudnessCompensation();      // seed compensation from the initial shape
         areasInitialized = true;
     }
 }
@@ -307,6 +321,147 @@ void TractEngine::updateReflectionCoeffs()
 }
 
 // ---------------------------------------------------------------------------
+// Vowel loudness normalization (INTERFACE.md sec 2.5)
+// ---------------------------------------------------------------------------
+// Build the |H| evaluation grid: 64 log-spaced bin centres from 60 Hz to 8 kHz,
+// and the per-bin source+radiation ENERGY weight = (500/f)^2 (a -6 dB/oct
+// amplitude slope referenced at 500 Hz). The grid + weights are sample-rate
+// independent; only the |A(e^jw)| evaluation below uses fs.
+void TractEngine::buildLoudnessGrid()
+{
+    const double logLo = std::log (kLoudFLo);
+    const double logHi = std::log (kLoudFHi);
+    for (int i = 0; i < kLoudBins; ++i)
+    {
+        const double t = (kLoudBins > 1) ? (double) i / (double) (kLoudBins - 1) : 0.0;
+        const double f = std::exp (logLo + t * (logHi - logLo));
+        loudBinHz[(size_t) i] = f;
+        const double wAmp = 500.0 / f;                 // -6 dB/oct amplitude, ref 500 Hz
+        loudBinW[(size_t) i] = wAmp * wAmp;            // energy weight
+    }
+}
+
+// Expected-loudness energy (dB) of a reflection-coefficient ladder. Levinson
+// step-up (the SAME recursion as kl_reference.step_up) turns the k ladder into
+// the direct-form all-pole denominator A(z)=1 - a_1 z^-1 - ... - a_p z^-p, then
+// |H(f)| = 1 / |A(e^jw)| on the log grid gives the resonance SHAPE, weighted by
+// the source+radiation slope and integrated. The interior all-pole model carries
+// the formant shape but loses the tube's overall passband gain (the k_i are area
+// RATIOS), so we add the forward pressure-transmission gain that the wave
+// actually accrues crossing the junctions: G_trans = prod_i (1 + k_i), whose
+// energy contribution is 20*sum log10|1 + k_i| dB. (Validated: this lifts the
+// metric's correlation with measured per-vowel RMS from 0.93 to 0.995 and the
+// post-compensation loudness spread from ~19 dB to ~2.7 dB.) Allocation-free:
+// fixed-size scratch sized for kMaxSections.
+double TractEngine::loudnessEnergyDb (const double* kLadder, int count) const
+{
+    const int p = std::min (count, kMaxSections);
+    if (p <= 0)
+        return 0.0;
+
+    // ---- Levinson step-up: k -> a (subtractive convention, mirrors step_up) --
+    double a   [kMaxSections] = { 0.0 };
+    double aNew[kMaxSections] = { 0.0 };
+    for (int i = 0; i < p; ++i)
+    {
+        const double ki = kLadder[(size_t) i];
+        for (int j = 0; j < i; ++j)
+            aNew[j] = a[j] - ki * a[i - 1 - j];
+        aNew[i] = ki;
+        for (int j = 0; j <= i; ++j)
+            a[j] = aNew[j];
+    }
+
+    // ---- |H| on the log grid, source-weighted energy integral ---------------
+    const double w0 = kTwoPi / fs;   // rad/sample per Hz
+    double energy = 0.0;
+    for (int b = 0; b < kLoudBins; ++b)
+    {
+        const double omega = w0 * loudBinHz[(size_t) b];
+        // A(e^jw) = 1 - sum_{i=1..p} a_i e^{-j w i}; a[0..p-1] hold a_1..a_p.
+        double re = 1.0, im = 0.0;
+        for (int i = 0; i < p; ++i)
+        {
+            const double ang = -omega * (double) (i + 1);
+            re -= a[(size_t) i] * std::cos (ang);
+            im -= a[(size_t) i] * std::sin (ang);
+        }
+        const double mag2A = re * re + im * im;        // |A|^2
+        const double hMag2 = 1.0 / std::max (mag2A, 1.0e-12);   // |H|^2 (G=1)
+        energy += hMag2 * loudBinW[(size_t) b];
+    }
+    energy = std::max (energy, 1.0e-30);
+    double dB = 10.0 * std::log10 (energy);
+
+    // ---- forward transmission gain through the junctions (the missing G) -----
+    // 20 * sum log10|1 + k_i|  ==  10*log10( prod (1+k_i)^2 ), the energy gain of
+    // the cumulative forward pressure transmission reaching the lips.
+    double transDb = 0.0;
+    for (int i = 0; i < p; ++i)
+        transDb += std::log10 (std::max (std::abs (1.0 + kLadder[(size_t) i]), 1.0e-9));
+    transDb *= 20.0;
+
+    return dB + transDb;
+}
+
+// Compute the schwa reference loudness energy (dB) once at prepare, for the
+// CURRENT sample rate. The schwa anchor is a uniform tube, so its k ladder is
+// ~0; computing it from the resampled anchor (not assuming zeros) keeps this
+// exact even if the schwa curve is ever made non-uniform. Schwa = unity gain,
+// so the default-patch output level is unchanged by normalization.
+void TractEngine::computeSchwaReference()
+{
+    loudRefEnergyDb = 0.0;
+    if (! anchorsLoaded)
+        return;
+
+    // Resample the schwa anchor (index 2) to N in the log domain, then k.
+    const auto& cp = anchorAreas[2];
+    std::array<double, (size_t) kMaxSections> areasN {};
+    std::array<double, (size_t) kMaxSections> kN {};
+    std::vector<double> logCp ((size_t) kControlPoints, 0.0);
+    for (int i = 0; i < kControlPoints; ++i)
+        logCp[(size_t) i] = std::log (std::max (cp[(size_t) i], 1.0e-6));
+    const int n = std::min (N, kMaxSections);
+    for (int s = 0; s < n; ++s)
+    {
+        const double pos = (n > 1) ? (double) s / (double) (n - 1) : 0.0;
+        areasN[(size_t) s] = std::exp (resampleLogAt (logCp, pos));
+    }
+    for (int i = 0; i < n - 1; ++i)
+    {
+        const double ai  = areasN[(size_t) i];
+        const double aip = areasN[(size_t) (i + 1)];
+        const double denom = ai + aip;
+        kN[(size_t) i] = (denom > 1.0e-12) ? (ai - aip) / denom : 0.0;
+    }
+    loudRefEnergyDb = loudnessEnergyDb (kN.data(), n - 1);
+}
+
+// Control-rate: refresh the make-up gain from the current k ladder. The target
+// is ref_dB - current_dB (so a louder-than-schwa shape gets attenuated), clamped
+// to +-18 dB, then ~30 ms one-pole smoothed. The first update snaps (no jump on
+// the first block). loudCompLin is the frequency-flat factor the audio path uses.
+void TractEngine::updateLoudnessCompensation()
+{
+    const double curDb = loudnessEnergyDb (k.data(), (int) k.size());
+    double targetDb = loudRefEnergyDb - curDb;
+    targetDb = clampd (targetDb, -18.0, 18.0);
+
+    if (! loudInit)
+    {
+        loudCompDb = targetDb;
+        loudInit = true;
+    }
+    else
+    {
+        loudCompDb = loudCompSmoothCoeff * loudCompDb
+                   + (1.0 - loudCompSmoothCoeff) * targetDb;
+    }
+    loudCompLin = loudNormEnabled ? std::pow (10.0, loudCompDb / 20.0) : 1.0;
+}
+
+// ---------------------------------------------------------------------------
 // Per-sample render
 // ---------------------------------------------------------------------------
 float TractEngine::processSample()
@@ -316,6 +471,7 @@ float TractEngine::processSample()
         recomputeMorph();
         areaSmoothedN = areaTargetN;
         updateReflectionCoeffs();
+        updateLoudnessCompensation();
         areasInitialized = true;
     }
 
@@ -332,6 +488,9 @@ float TractEngine::processSample()
             cur = areaSmoothCoeff * cur + (1.0 - areaSmoothCoeff) * tgt;
         }
         updateReflectionCoeffs();
+        // Refresh the vowel loudness make-up gain on the freshly smoothed k ladder
+        // (sec 2.5). Control rate only; the per-sample audio path just multiplies.
+        updateLoudnessCompensation();
     }
 
     // ===== Pitch: glide (exponential), pitch bend, vibrato ==================
@@ -509,7 +668,11 @@ float TractEngine::processSample()
     // Static makeup: raw tract output peak is ~0.02 for a 110 Hz pulse train
     // (REPORT sec 9). Lift it to a usable level.
     const double makeup = 8.0;
-    double y = out * makeup * gainLin;
+    // Vowel loudness normalization (sec 2.5): a frequency-flat per-tract-shape
+    // make-up that equalises perceived loudness across vowels (schwa = unity). It
+    // is constant for a fixed tract shape, so it does not move formants and the
+    // velocity ratios survive. loudCompLin is refreshed at control rate above.
+    double y = out * makeup * gainLin * loudCompLin;
 
     // soft safety clip to keep the bus bounded if a transient overshoots
     if (y > 1.5) y = 1.5; else if (y < -1.5) y = -1.5;
