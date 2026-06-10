@@ -55,9 +55,15 @@ k_i = (A_i - A_{i+1}) / (A_i + A_{i+1}). Never interpolate k directly; interpola
       + seqlock viz publisher + TractMirrorRender harness. Gate GREEN: engine tract IR recovers
       canonical formants to 0.00% (all six vowels, 48 kHz). Read the agent's deviations in the build
       log below. Editor is GenericAudioProcessorEditor until 3b.
-- [ ] **Phase 3b — WebView editor**: WebBrowserComponent + native integration, resource provider from
-      BinaryData, parameter relays, per-segment energy stream to the 3D view.
-- [ ] **Phase 3c — Validation**: pluginval (install via brew), auval for the AU, no leaks/asserts.
+- [x] **Phase 3b — WebView editor**: DONE 2026-06-09. PluginEditor.{h,cpp}: 11 WebSliderRelays bound to
+      APVTS, resource provider serving BinaryData index.html, noteEvent native fn -> 64-slot SPSC FIFO
+      drained in processBlock, 30 Hz tractFrame emit per INTERFACE.md §3. gui/index.html needed ZERO
+      changes — the contract held. createEditor() is JUCE_WEB_BROWSER-guarded (harness builds with it off).
+- [x] **Phase 3c — Validation**: DONE 2026-06-09. pluginval strictness 5 PASS and 8 PASS (fuzz + editor
+      stress); auval aumu Trkm Loud: AU VALIDATION SUCCEEDED; DSP regression gate re-run: 0.00% all six
+      vowels. INSTALLED: ~/Library/Audio/Plug-Ins/VST3/Tract Mirror.vst3 +
+      ~/Library/Audio/Plug-Ins/Components/Tract Mirror.component. Standalone launches + quits cleanly;
+      screenshot blocked by Screen Recording permission (not faked).
 - [ ] **Phase 4 — Ship + verify in Live**: install to ~/Library/Audio/Plug-Ins, load in Ableton Live 12,
       MIDI in -> sound out, GUI renders; screenshot proof.
 

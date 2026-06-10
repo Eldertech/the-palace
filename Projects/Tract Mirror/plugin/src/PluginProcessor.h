@@ -101,6 +101,21 @@ public:
     // ── Visualization read (editor polls from a Timer) ────────────────────────
     TractFrame getVizFrame() const { return viz.read(); }
 
+    // ── GUI preview-keyboard note injection ───────────────────────────────────
+    // The editor's "noteEvent" native function pushes here from the message
+    // thread; processBlock drains it on the audio thread. Single-producer /
+    // single-consumer, fixed capacity, allocation-free on the audio thread.
+    // A dropped event under flood is acceptable for a preview keyboard.
+    void pushGuiNote (int midiNote, float velocity, bool isOn) noexcept
+    {
+        const int w = guiNoteWrite.load (std::memory_order_relaxed);
+        const int next = (w + 1) % kGuiNoteCap;
+        if (next == guiNoteRead.load (std::memory_order_acquire))
+            return;                                   // full -> drop (preview only)
+        guiNotes[(size_t) w] = { midiNote, velocity, isOn };
+        guiNoteWrite.store (next, std::memory_order_release);
+    }
+
     // ── Analysis tap (render harness / verification gate) ─────────────────────
     // Tract impulse response on the current morphed areas, radiation OFF - the
     // reference analysis path whose spectral peaks are the exact tract poles.
@@ -132,6 +147,15 @@ private:
     int    vizSampleCounter = 0;
     int    vizInterval = 800;      // recomputed in prepareToPlay for ~60 Hz
     TractFrame vizScratch;
+
+    // GUI preview-keyboard note FIFO (SPSC, fixed capacity).
+    struct GuiNote { int note; float velocity; bool isOn; };
+    static constexpr int kGuiNoteCap = 64;
+    std::array<GuiNote, kGuiNoteCap> guiNotes {};
+    std::atomic<int> guiNoteWrite { 0 };
+    std::atomic<int> guiNoteRead  { 0 };
+
+    void drainGuiNotes();
 
     void loadVowelsFromBinaryData();
     void pullParams();
