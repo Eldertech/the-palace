@@ -48,6 +48,15 @@ TractMirrorProcessor::createParameterLayout()
     layout.add (std::make_unique<P>(juce::ParameterID { "gain", 1 }, "Gain",
                                     R (-24.0f, 6.0f), 0.0f));
 
+    // Two assignable MIDI CC numbers (INTERFACE.md sec 1). AudioParameterInt so the
+    // host/GUI see whole CC numbers; range 1..119 (0 = bank-select / 120+ = channel
+    // mode messages are excluded). Defaults: ccX = 1 (mod wheel), ccY = 74.
+    using I = juce::AudioParameterInt;
+    layout.add (std::make_unique<I>(juce::ParameterID { "ccX", 1 }, "CC -> X",
+                                    1, 119, 1));
+    layout.add (std::make_unique<I>(juce::ParameterID { "ccY", 1 }, "CC -> Y",
+                                    1, 119, 74));
+
     return layout;
 }
 
@@ -70,11 +79,16 @@ TractMirrorProcessor::TractMirrorProcessor()
     pRelease  = apvts.getRawParameterValue ("release");
     pBright   = apvts.getRawParameterValue ("brightness");
     pGain     = apvts.getRawParameterValue ("gain");
+    pCcX      = apvts.getRawParameterValue ("ccX");
+    pCcY      = apvts.getRawParameterValue ("ccY");
 
     loadVowelsFromBinaryData();
 }
 
-TractMirrorProcessor::~TractMirrorProcessor() {}
+TractMirrorProcessor::~TractMirrorProcessor()
+{
+    cancelPendingUpdate();   // no message-thread callback after we're gone
+}
 
 // ============================================================================
 // Parse the embedded vowels.json once (single source of truth for tube
@@ -200,6 +214,8 @@ void TractMirrorProcessor::publishViz()
     f.gate    = engine.isGateOpen();
     f.pitchHz = engine.getCurrentPitchHz();
     f.rms     = engine.getLastOutputRms();
+    f.vx      = engine.getEffVowelX();    // current smoothed vowel position (CC-aware)
+    f.vy      = engine.getEffVowelY();
 
     viz.publish (f);
 }
@@ -221,6 +237,37 @@ void TractMirrorProcessor::processBlock(juce::AudioBuffer<float>& buffer,
 
     pullParams();
     drainGuiNotes();   // fold GUI preview-keyboard notes into the engine
+
+    // ── Resolve the vowel target for this block (pad / CC last-writer-wins) ────
+    // Detect pad/automation takeover by CHANGE, not by absolute divergence: the
+    // pad owns the axis again only when the host param MOVED since last block to a
+    // value the CC did not write. This is robust to the async host-param echo not
+    // having landed yet — while CC owns the axis and the echo is in flight the
+    // host param is simply unchanged, so no spurious takeover fires; whereas a real
+    // pad/automation grab moves the host param to a value != ccLastPushed.
+    const float padX = pVowelX->load();
+    const float padY = pVowelY->load();
+    const float kEps = 2.0e-3f;     // below the CC 7-bit grid (1/127 ~ 7.9e-3)
+    if (ccOwnsX && prevPadX >= 0.0f
+        && std::abs (padX - prevPadX) > kEps
+        && std::abs (padX - ccLastPushedX) > kEps)
+        ccOwnsX = false;
+    if (ccOwnsY && prevPadY >= 0.0f
+        && std::abs (padY - prevPadY) > kEps
+        && std::abs (padY - ccLastPushedY) > kEps)
+        ccOwnsY = false;
+    prevPadX = padX;
+    prevPadY = padY;
+
+    // Which CC numbers are assigned right now (snapshot for this block).
+    const int ccNumX = juce::jlimit (1, 119, (int) std::round (pCcX->load()));
+    const int ccNumY = juce::jlimit (1, 119, (int) std::round (pCcY->load()));
+
+    // Apply the resolved target before rendering the head of the block.
+    engine.setVowelTarget (ccOwnsX ? (double) ccTargetX : (double) padX,
+                           ccOwnsY ? (double) ccTargetY : (double) padY);
+
+    bool ccTouchedThisBlock = false;
 
     float* outL = buffer.getWritePointer (0);
 
@@ -253,6 +300,27 @@ void TractMirrorProcessor::processBlock(juce::AudioBuffer<float>& buffer,
             const float norm = (msg.getPitchWheelValue() - 8192) / 8192.0f;
             engine.pitchBend (norm);
         }
+        else if (msg.isController())
+        {
+            // Assignable CC -> vowel: value v (0..127) sets vowelX/Y to v/127.
+            // CC becomes the most-recent writer for that axis (last-writer-wins);
+            // the engine responds immediately via the ~15 ms smoothed position,
+            // and we queue an async host-param push (message thread) below.
+            const int  cc  = msg.getControllerNumber();
+            const float val = (float) msg.getControllerValue() / 127.0f;
+            if (cc == ccNumX)
+            {
+                ccTargetX = val; ccOwnsX = true; ccTouchedThisBlock = true;
+                engine.setVowelTarget ((double) ccTargetX,
+                                       ccOwnsY ? (double) ccTargetY : (double) padY);
+            }
+            if (cc == ccNumY)
+            {
+                ccTargetY = val; ccOwnsY = true; ccTouchedThisBlock = true;
+                engine.setVowelTarget (ccOwnsX ? (double) ccTargetX : (double) padX,
+                                       (double) ccTargetY);
+            }
+        }
     }
 
     // render the remainder of the block
@@ -263,9 +331,39 @@ void TractMirrorProcessor::processBlock(juce::AudioBuffer<float>& buffer,
         if (++vizSampleCounter >= vizInterval) { vizSampleCounter = 0; publishViz(); }
     }
 
+    // ── Coalesced async host-param push (message thread does setValueNotifyingHost)
+    // Only when a CC actually moved an axis this block. We stash the value CC last
+    // pushed so the takeover detector above can tell pad moves from CC echo.
+    if (ccTouchedThisBlock)
+    {
+        if (ccOwnsX) { pendingHostX.store (ccTargetX, std::memory_order_release); ccLastPushedX = ccTargetX; }
+        if (ccOwnsY) { pendingHostY.store (ccTargetY, std::memory_order_release); ccLastPushedY = ccTargetY; }
+        triggerAsyncUpdate();   // safe to call from the audio thread; coalesces
+    }
+
     // stereo: same signal both channels
     for (int ch = 1; ch < numChannels; ++ch)
         buffer.copyFrom (ch, 0, outL, numSamples);
+}
+
+// ============================================================================
+// Async host-parameter push (message thread). Pulls the coalesced CC-driven
+// vowel values from the lock-free mailbox and writes them to the host parameter
+// via setValueNotifyingHost — the ONLY place that call is made, and it is never
+// on the audio thread (INTERFACE.md sec 1). A negative sentinel means "nothing
+// pending"; we clear it after consuming so a later identical value still pushes.
+// ============================================================================
+void TractMirrorProcessor::handleAsyncUpdate()
+{
+    const float x = pendingHostX.exchange (-1.0f, std::memory_order_acquire);
+    const float y = pendingHostY.exchange (-1.0f, std::memory_order_acquire);
+
+    if (x >= 0.0f)
+        if (auto* p = apvts.getParameter ("vowelX"))
+            p->setValueNotifyingHost (p->convertTo0to1 (juce::jlimit (0.0f, 1.0f, x)));
+    if (y >= 0.0f)
+        if (auto* p = apvts.getParameter ("vowelY"))
+            p->setValueNotifyingHost (p->convertTo0to1 (juce::jlimit (0.0f, 1.0f, y)));
 }
 
 // ============================================================================

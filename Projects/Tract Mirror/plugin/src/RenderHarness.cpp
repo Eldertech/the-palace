@@ -235,6 +235,174 @@ namespace
         const float g = targetPeak / peak;
         for (float& v : x) v *= g;
     }
+
+    // ------------------------------------------------------------------------
+    // MIDI-controls renders (velocity layers + CC->vowel sweep) + references.
+    // ------------------------------------------------------------------------
+
+    // Configure a processor to the neutral schwa-ish voice used for the CC work:
+    // vowelY held mid, vibrato/breath/glide off so formants read cleanly. The
+    // caller still drives vowelX (pad) and the CC stream.
+    void configureVoice (TractMirrorProcessor& proc, float vowelX, float vowelY)
+    {
+        setParam (proc, "vowelX",   vowelX);
+        setParam (proc, "vowelY",   vowelY);
+        setParam (proc, "vibDepth", 0.0f);
+        setParam (proc, "breath",   0.0f);
+        setParam (proc, "glide",    0.0f);
+        setParam (proc, "attack",   15.0f);
+        setParam (proc, "release",  120.0f);
+        setParam (proc, "tension",  0.6f);
+        setParam (proc, "brightness", 0.7f);
+        setParam (proc, "gain",     0.0f);
+    }
+
+    // (a) Velocity layers: the SAME note at velocities 30, 70, 127, 1.2 s each.
+    // No normalisation — the whole point is the absolute level ratio set by the
+    // perceptual curve, so verify_midi.py can read the per-segment RMS directly.
+    std::vector<float> renderVelocityLayers()
+    {
+        TractMirrorProcessor proc;
+        proc.setPlayConfigDetails (0, 2, kFs, kBlock);
+        proc.prepareToPlay (kFs, kBlock);
+        configureVoice (proc, 0.50f, 0.45f);   // schwa centre
+
+        const int   note   = 50;               // D3
+        const int   vels[3] = { 30, 70, 127 };
+        const double segSecs = 1.2;
+        const int   segSamples = (int) std::round (segSecs * kFs);
+
+        std::vector<float> out;
+        out.reserve ((size_t) segSamples * 3);
+        juce::AudioBuffer<float> buffer (2, kBlock);
+
+        for (int s = 0; s < 3; ++s)
+        {
+            int done = 0;
+            bool onSent = false, offSent = false;
+            while (done < segSamples)
+            {
+                const int n = std::min (kBlock, segSamples - done);
+                buffer.setSize (2, n, false, false, true);
+                buffer.clear();
+
+                juce::MidiBuffer midi;
+                if (! onSent)
+                {
+                    midi.addEvent (juce::MidiMessage::noteOn (1, note, (juce::uint8) vels[s]), 0);
+                    onSent = true;
+                }
+                // release ~80 ms before the segment end so the next note-on is clean
+                const int relAt = segSamples - (int) std::round (0.08 * kFs);
+                if (! offSent && done + n >= relAt)
+                {
+                    const int pos = juce::jlimit (0, n - 1, relAt - done);
+                    midi.addEvent (juce::MidiMessage::noteOff (1, note), pos);
+                    offSent = true;
+                }
+
+                proc.processBlock (buffer, midi);
+                const float* L = buffer.getReadPointer (0);
+                for (int i = 0; i < n; ++i) out.push_back (L[i]);
+                done += n;
+            }
+        }
+        return out;
+    }
+
+    // (b) CC sweep: hold one note ~4 s while CC1 ramps 0->127 (vowelY held mid,
+    // vowelX driven entirely by the CC). Held flat at each end so the first /
+    // last 0.5 s sit cleanly at vowelX = 0 and vowelX = 1.
+    std::vector<float> renderCcSweep (int ccNum = 1)
+    {
+        TractMirrorProcessor proc;
+        proc.setPlayConfigDetails (0, 2, kFs, kBlock);
+        proc.prepareToPlay (kFs, kBlock);
+        // vowelX default (0.5) is irrelevant — CC takes ownership immediately.
+        configureVoice (proc, 0.50f, 0.45f);
+
+        const int    note      = 45;           // A2 = 110 Hz (matches the vowel gate)
+        const double holdLo    = 0.8;          // s at CC = 0   (vowelX = 0)
+        const double ramp      = 2.4;          // s ramping 0 -> 127
+        const double holdHi    = 0.8;          // s at CC = 127 (vowelX = 1)
+        const double totalSecs = holdLo + ramp + holdHi;   // 4.0 s
+        const int    total     = (int) std::round (totalSecs * kFs);
+
+        std::vector<float> out;
+        out.reserve ((size_t) total);
+        juce::AudioBuffer<float> buffer (2, kBlock);
+
+        int done = 0;
+        bool onSent = false;
+        int  lastCc = -1;
+        while (done < total)
+        {
+            const int n = std::min (kBlock, total - done);
+            buffer.setSize (2, n, false, false, true);
+            buffer.clear();
+
+            juce::MidiBuffer midi;
+            if (! onSent)
+            {
+                midi.addEvent (juce::MidiMessage::noteOn (1, note, (juce::uint8) 100), 0);
+                onSent = true;
+                midi.addEvent (juce::MidiMessage::controllerEvent (1, ccNum, 0), 0);
+                lastCc = 0;
+            }
+            // one CC update at block start, scheduled by the block's time position
+            const double t = (double) done / kFs;
+            double frac;
+            if (t < holdLo)               frac = 0.0;
+            else if (t < holdLo + ramp)   frac = (t - holdLo) / ramp;
+            else                          frac = 1.0;
+            const int ccVal = juce::jlimit (0, 127, (int) std::round (frac * 127.0));
+            if (ccVal != lastCc)
+            {
+                midi.addEvent (juce::MidiMessage::controllerEvent (1, ccNum, ccVal), 0);
+                lastCc = ccVal;
+            }
+
+            proc.processBlock (buffer, midi);
+            const float* L = buffer.getReadPointer (0);
+            for (int i = 0; i < n; ++i) out.push_back (L[i]);
+            done += n;
+        }
+        return out;
+    }
+
+    // Param-rendered reference: voiced audio at a fixed pad position, ~1.5 s.
+    // Same voice config and note as the CC sweep, so verify_midi.py can measure
+    // its endpoints against these with an identical (voiced-LPC) method.
+    std::vector<float> renderPadReference (float vowelX, float vowelY)
+    {
+        TractMirrorProcessor proc;
+        proc.setPlayConfigDetails (0, 2, kFs, kBlock);
+        proc.prepareToPlay (kFs, kBlock);
+        configureVoice (proc, vowelX, vowelY);
+
+        const int    note  = 45;
+        const double secs  = 1.5;
+        const int    total = (int) std::round (secs * kFs);
+
+        std::vector<float> out;
+        out.reserve ((size_t) total);
+        juce::AudioBuffer<float> buffer (2, kBlock);
+
+        int done = 0; bool onSent = false;
+        while (done < total)
+        {
+            const int n = std::min (kBlock, total - done);
+            buffer.setSize (2, n, false, false, true);
+            buffer.clear();
+            juce::MidiBuffer midi;
+            if (! onSent) { midi.addEvent (juce::MidiMessage::noteOn (1, note, (juce::uint8) 100), 0); onSent = true; }
+            proc.processBlock (buffer, midi);
+            const float* L = buffer.getReadPointer (0);
+            for (int i = 0; i < n; ++i) out.push_back (L[i]);
+            done += n;
+        }
+        return out;
+    }
 }
 
 int main()
@@ -280,6 +448,47 @@ int main()
         ok = ok && w;
         std::printf ("rendered melody -> %s (%zu samples) %s\n",
                      f.getFullPathName().toRawUTF8(), mel.size(), w ? "OK" : "FAIL");
+    }
+
+    // ---- MIDI controls: velocity layers (NOT normalised — absolute levels) ----
+    {
+        std::vector<float> vl = renderVelocityLayers();
+        const juce::File f = outDir.getChildFile ("velocity_layers.wav");
+        const bool w = writeWav (f, vl, kFs);
+        ok = ok && w;
+        std::printf ("rendered vel-layers -> %s (%zu samples) %s\n",
+                     f.getFullPathName().toRawUTF8(), vl.size(), w ? "OK" : "FAIL");
+    }
+
+    // ---- MIDI controls: CC1 sweep (NOT normalised) ----------------------------
+    {
+        std::vector<float> cs = renderCcSweep (1);
+        const juce::File f = outDir.getChildFile ("cc_sweep.wav");
+        const bool w = writeWav (f, cs, kFs);
+        ok = ok && w;
+        std::printf ("rendered cc-sweep   -> %s (%zu samples) %s\n",
+                     f.getFullPathName().toRawUTF8(), cs.size(), w ? "OK" : "FAIL");
+    }
+
+    // ---- CC-sweep formant references: voiced audio at the pad endpoints -------
+    // (vowelY held at 0.45 mid; vowelX = 0 and vowelX = 1). Same note + voice
+    // config + measurement method as the sweep endpoints, so the comparison is
+    // apples-to-apples under voiced LPC.
+    {
+        struct Ref { const char* name; float x, y; };
+        const std::array<Ref, 2> refs {{
+            { "cc_ref_x0.wav", 0.0f, 0.45f },
+            { "cc_ref_x1.wav", 1.0f, 0.45f }
+        }};
+        for (const auto& r : refs)
+        {
+            std::vector<float> sig = renderPadReference (r.x, r.y);
+            const juce::File f = outDir.getChildFile (r.name);
+            const bool w = writeWav (f, sig, kFs);
+            ok = ok && w;
+            std::printf ("rendered cc-ref %-12s -> %s (%zu samples) %s\n",
+                         r.name, f.getFullPathName().toRawUTF8(), sig.size(), w ? "OK" : "FAIL");
+        }
     }
 
     return ok ? 0 : 1;

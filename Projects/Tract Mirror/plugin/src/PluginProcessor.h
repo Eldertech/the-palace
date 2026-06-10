@@ -21,6 +21,8 @@ struct TractFrame
     bool  gate = false;
     float pitchHz = 0.0f;
     float rms = 0.0f;
+    float vx = 0.5f;    // effective vowel position incl. CC modulation (0..1)
+    float vy = 0.45f;
 };
 
 class VizPublisher
@@ -62,7 +64,8 @@ private:
     std::atomic<uint32_t> sequence { 0 };
 };
 
-class TractMirrorProcessor : public juce::AudioProcessor
+class TractMirrorProcessor : public juce::AudioProcessor,
+                             private juce::AsyncUpdater
 {
 public:
     TractMirrorProcessor();
@@ -143,6 +146,8 @@ private:
     std::atomic<float>* pRelease   = nullptr;
     std::atomic<float>* pBright    = nullptr;
     std::atomic<float>* pGain      = nullptr;
+    std::atomic<float>* pCcX       = nullptr;  // assignable MIDI CC number for vowelX
+    std::atomic<float>* pCcY       = nullptr;  // assignable MIDI CC number for vowelY
 
     int    vizSampleCounter = 0;
     int    vizInterval = 800;      // recomputed in prepareToPlay for ~60 Hz
@@ -156,6 +161,27 @@ private:
     std::atomic<int> guiNoteRead  { 0 };
 
     void drainGuiNotes();
+
+    // ── MIDI-CC -> vowel arbitration (last-writer-wins between pad and CC) ─────
+    // The audio thread sets a per-axis CC target and latches "CC owns this axis";
+    // it then asks the message thread (AsyncUpdater) to push the value to the host
+    // parameter via setValueNotifyingHost (NEVER called on the audio thread). Pad/
+    // automation takeover is detected by the host param diverging from the value
+    // CC last wrote. coalesced: the audio thread overwrites the pending target and
+    // re-triggers; the message thread always reads the latest.
+    bool   ccOwnsX = false;
+    bool   ccOwnsY = false;
+    float  ccTargetX = 0.5f;        // CC-driven vowelX (0..1), audio thread
+    float  ccTargetY = 0.45f;       // CC-driven vowelY (0..1), audio thread
+    float  ccLastPushedX = -1.0f;   // last value handed to the host param (X)
+    float  ccLastPushedY = -1.0f;   // last value handed to the host param (Y)
+    float  prevPadX = -1.0f;        // host vowelX param seen last block (change detect)
+    float  prevPadY = -1.0f;        // host vowelY param seen last block
+
+    // Cross-thread mailbox for the async host-param push (coalesced, lock-free).
+    std::atomic<float> pendingHostX { -1.0f };  // <0 => nothing pending on X
+    std::atomic<float> pendingHostY { -1.0f };
+    void handleAsyncUpdate() override;          // message thread: setValueNotifyingHost
 
     void loadVowelsFromBinaryData();
     void pullParams();

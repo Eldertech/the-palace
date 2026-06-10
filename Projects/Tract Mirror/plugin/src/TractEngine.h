@@ -68,6 +68,16 @@ public:
     };
     void setParams (const Params& p) { params = p; }
 
+    // ---- Effective vowel position (pad / CC arbitration lives in the processor) --
+    // The processor resolves last-writer-wins between the XY pad parameter and the
+    // two MIDI CCs, then hands the engine ONE target per axis. The engine smooths
+    // its internal effective position toward that target with a ~15 ms one-pole
+    // (on TOP of the ~10 ms area smoothing) so coarse 7-bit CC steps never zipper.
+    // recomputeMorph() reads the smoothed effective position, NOT params.vowelX/Y.
+    void  setVowelTarget (double x, double y) { vowelTargetX = x; vowelTargetY = y; }
+    float getEffVowelX() const { return (float) effVowelX; }
+    float getEffVowelY() const { return (float) effVowelY; }
+
     // ---- Monophonic note logic ---------------------------------------------
     // Last-note priority with held-note return on release; pitch bend +-2 st.
     void noteOn  (int midiNote, float velocity);
@@ -157,6 +167,16 @@ private:
     int    controlInterval = 0;        // samples between morph recomputes
     int    controlCounter  = 0;
 
+    // ---- Effective vowel position smoothing (~15 ms, per control tick) ------
+    // The target is set by the processor (pad / CC last-writer-wins arbitration);
+    // the effective position one-poles toward it before the Shepard morph runs.
+    double vowelTargetX  = 0.5;
+    double vowelTargetY  = 0.45;
+    double effVowelX     = 0.5;
+    double effVowelY     = 0.45;
+    double vowelSmoothCoeff = 0.0;     // ~15 ms one-pole per control tick
+    bool   vowelPosInit  = false;      // snap on first morph (no zipper at start)
+
     // ---- Glottal source state ----------------------------------------------
     double glottalPhase = 0.0;         // 0..1 phase accumulator
     std::mt19937 rng { 0x72616374u };  // deterministic noise seed ("ract")
@@ -169,7 +189,8 @@ private:
     std::array<int, kMaxHeld> heldNotes {}; // stack of currently-held notes
     int    heldCount = 0;
     int    currentNote = -1;
-    float  currentVelocity = 0.0f;
+    float  currentVelocity = 0.0f;     // raw 0..1 velocity of the last note-on
+    double velocityAmp = 1.0;          // perceptual amplitude sampled AT note-on
     bool   gateOpen = false;
 
     double targetPitchHz  = 110.0;     // glide destination

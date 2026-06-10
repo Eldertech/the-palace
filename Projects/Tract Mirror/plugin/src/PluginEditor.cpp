@@ -4,9 +4,12 @@
 namespace
 {
     // APVTS ids in INTERFACE.md section 1 order. Relay names MUST equal these.
+    // ccX / ccY are AudioParameterInt but bind through the same WebSliderRelay so
+    // the GUI reads/writes them via getSliderState("ccX") / ("ccY").
     const juce::StringArray kParamIds {
         "vowelX", "vowelY", "tension", "breath", "glide", "vibRate",
-        "vibDepth", "attack", "release", "brightness", "gain"
+        "vibDepth", "attack", "release", "brightness", "gain",
+        "ccX", "ccY"
     };
 }
 
@@ -128,6 +131,8 @@ void TractMirrorEditor::timerCallback()
     obj->setProperty ("gate",     f.gate);
     obj->setProperty ("pitchHz",  (double) f.pitchHz);
     obj->setProperty ("rms",      (double) f.rms);
+    obj->setProperty ("vx",       (double) f.vx);   // effective vowel pos (CC-aware)
+    obj->setProperty ("vy",       (double) f.vy);
 
     web->emitEventIfBrowserIsVisible (juce::Identifier ("tractFrame"), juce::var (obj));
 }
