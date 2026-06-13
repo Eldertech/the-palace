@@ -1,13 +1,13 @@
 ---
 type: specialist
-status: stub
+status: alive
 medium: 3d
 submedium: blocking-and-offline-render
 tool: blender
-tool_version: "5.0 (Nov 2025); geometry-nodes-capable"
+tool_version: "5.1.2 (verified on Mac/MPS, 2026-06-13)"
 adopted: 2026-06-13
-last_tested: pending
-last_gotcha: pending
+last_tested: 2026-06-13
+last_gotcha: 2026-06-13
 license: GPL-3.0
 links:
   - { label: "wraps", target: "blender (external)" }
@@ -101,4 +101,31 @@ Hand-driven and inspectable. Refinement happens by opening the scene and moving 
 
 Before declaring done, I verify: the `.blend` opens clean and is hand-editable; requested passes exist and are correctly named per channel; camera and pose match the brief's staging; conditioning passes register to the same frame; render frames (if any) exist and match dimensions. I cannot self-verify aesthetic quality or whether the drama lands — that's the Maker's and Loudon's call.
 
-<!-- CLAUDE → LOUDON: status:stub until Session 1 of the Claude Code job tests the conditioning pipeline and the toyxyz recipe for real; promote to status:alive + set last_tested after. -->
+## Recipes
+
+**2026-06-13 — The conditioning keystone** (Study tier; first real job; promoted me stub → alive).
+Posed one humanoid (worm's-eye 3/4 foreshortened sword-draw lunge, fused-metaball clay + hand-editable
+armature), emitted six registered passes, and drove the ComfyUI two-pass **per-channel** multi-ControlNet
+graph (pose + depth + canny → SDXL fill 768×1024 → 1.5× img2img refine). Proven against a prompt-only
+control: **blocking defeats the front-on default and the drama survives the fill** — [[Blocked, Not Prompted]]
+made real. Key findings: emit the OpenPose skeleton **geometrically** (a 2D estimator/DWPose returns an
+empty image on a greybox proxy); depth + normal come straight from Blender (true geometry, cleaner than
+estimation); SDXL's edge channel is **canny** (no strong SDXL lineart CN); multi-ControlNet on MPS needs
+`--highvram --use-split-cross-attention` (else it thrashes at ~50 s/it). Reproducibility artifacts +
+frames: [Artifacts/Shop/Blender/tests/](../Artifacts/Shop/Blender/tests/) — `blocking/pose_and_emit.py`,
+`blocking/draw_passes.py`, `blocking/run_comfy.py`, `workflows/*.json`, `CONTACT-SHEET-keystone.png`.
+Full gotchas: [gotchas-2026-06-13.md](../Artifacts/Shop/Blender/tests/gotchas-2026-06-13.md). See the
+[[Shop/Blender/toyxyz-conditioning-recipe]] for the tuned per-channel parameters.
+
+## Test Suite
+
+Smoke / Capability Probe / Style Probe / Edge Probe / Speed Bench / Determinism — defined in
+[Artifacts/Shop/Blender/tests/test-plan.md](../Artifacts/Shop/Blender/tests/test-plan.md).
+Last run **2026-06-13** — Smoke + capability PASS (Blender 5.1.2 on MPS emits all passes; the
+multi-ControlNet fill defeats the front-on default). Speed bench: pose+passes ~8 s; blocked two-pass
+~9 min on this Mac.
+
+<!-- CLAUDE → LOUDON: promoted stub → alive 2026-06-13 (Session 1 of the BLUELINE Claude Code job).
+     Still owed: the offline Cycles render path (tier=piece) and the geometry-nodes math-world path
+     have not been exercised yet — alive on the conditioning job, untested on those two capabilities. -->
+
