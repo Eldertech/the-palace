@@ -97,7 +97,9 @@ The house taste, codified.
 
 **Interactive teaching pieces, generative sketches, parameter explorers** → p5.js for fast-authored web-deployable sketches; HTML/React Artifact Smith when claude.ai artifact polish or shadcn/ui components are needed.
 
-**Real-time 3D** → **[[Three.js]]** (R3F + drei default; raw r128 for a single-file artifact). Route here only when the third dimension earns itself — spatial/relational structure 2D can't show, geometry driven by data/input/audio, instruments whose interface *is* a moving object. Do *not* route 2D-in-perspective here: that's [[p5.js]] (expressive) or [[D3.js]] (data-bound). Three.js renders state; it is never the audio engine — when 3D drives sound, the DSP lives in an AudioWorklet or [[Tone.js]] and Three.js reads its state (the [[Waveguide Synthesizer]] pattern). Offline photoreal 3D has no specialist yet (Blender gap) — say so rather than fake it with a real-time engine.
+**Real-time 3D** → **[[Three.js]]** (R3F + drei default; raw r128 for a single-file artifact). Route here only when the third dimension earns itself — spatial/relational structure 2D can't show, geometry driven by data/input/audio, instruments whose interface *is* a moving object. Do *not* route 2D-in-perspective here: that's [[p5.js]] (expressive) or [[D3.js]] (data-bound). Three.js renders state; it is never the audio engine — when 3D drives sound, the DSP lives in an AudioWorklet or [[Tone.js]] and Three.js reads its state (the [[Waveguide Synthesizer]] pattern).
+
+**Offline 3D · blocking · conditioning passes** → **[[Shop/Blender]]** (alive 2026-06-13). Route here for hand-authored/offline 3D that real-time can't hold: frame-by-frame blocking, depth-correct compositing, geometry-nodes math worlds, offline Cycles/EEVEE render, and — the keystone — turning a posed scene into clean multi-ControlNet conditioning ([[Blocked, Not Prompted]]: posed Blender scene → OpenPose/depth/canny → ComfyUI fill). Blender authors the *structure*; [[Shop/ComfyUI]] fills the *skin*. Three.js is its real-time/browser complement, not a substitute.
 
 **Browser-deployable instruments · web audio** → **[[Shop/Tone.js]]** when the synth is a *composition of primitives* (subtractive / FM / sampler / effect chains / musical-time sequencing); **[[Shop/Web Audio Worklet]]** when the *DSP itself is the differentiator* (granular, custom or 2D wavetable, physical models — anything that wants a per-sample `process()` loop). Codified by the Murmuration build (2026-05-30), which Tone.js's charter explicitly refuses. The grey zone — a custom voice inside an otherwise Tone-shaped instrument — is a Worklet node dropped into a Tone graph. When one instrument should ship to **both** web and a DAW, pair Web Audio Worklet with **[[Shop/RNBO codebox~ smith]]** against a single spec (a live probe of [[Diversity of Thought in Many-Agent Systems]]).
 
@@ -229,6 +231,7 @@ The Specialists currently in the Shop, with their primary use:
 - **Kokoro** — narration, TTS *(local)*
 - **Midjourney** — generative imagery, atmospheric and editorial mood *(cloud, subscription)*
 - **ComfyUI** — generative imagery, palette discipline and structural control *(local, GPU)*
+- **Blender** — offline 3D blocking + render, and the conditioning-pass keystone (posed scene → multi-ControlNet) *(local, GPU)*
 - **Manim CE** — math animation, programmatic visual *(local)*
 - **Remotion** — UI mockups, interface walks, React-based motion *(local; commercial license required for monetized use)*
 - **p5.js** — interactive sketches, parameter explorers, generative visuals *(local, web)*
@@ -252,7 +255,7 @@ The Specialists currently in the Shop, with their primary use:
 - **deprecated** — was on the roster, no real job landed before a substitute filled the slot; kept as a lineage record, never dispatched.
 - A Specialist is **alive** only when its Recipes section names a real dated job with a bundle path. A uniform authoring date is not a job.
 
-**Alive (17)** — real job landed:
+**Alive (18)** — real job landed:
 
 - *Flocking shoot-out (2026-05-29):* **p5.js** (also Kuramoto), **D3.js**, **Observable Plot**.
 - *Kuramoto arc (2026-05-10 → 05-26):* **Manim CE**, **Kokoro**, **Matplotlib**, **ComfyUI**, **Whisper**, **ffmpeg**, **Mermaid**, **Remotion**, **Tone.js**, **Stable Audio Open**.
@@ -260,12 +263,13 @@ The Specialists currently in the Shop, with their primary use:
 - *Murmuration (2026-05-30):* **Web Audio Worklet** — agent-based granular-wavetable engine; the first Specialist born from a synthesis-paradigm brief, and the first sibling to land *because* an existing Specialist (Tone.js) refused the operating model.
 - *Shop header (Phase D-2, 2026-05-30):* **FLUX (Hugging Face)** — cloud-side image generation via HF Inference free tier; took [[Shop/Midjourney|Midjourney]]'s slot when subscription cost made Midjourney untenable. First job revised the Maker's Mood/atmospheric Selection Heuristic — FLUX-Krea reads mood-specific prompt details that ComfyUI's SDXL flattens.
 - *Wavetable Scanner (2026-05-31):* **Three.js** — single-cycle wavetable morph laboratory; the first paired-Specialist brief where Three.js reads state from a [[Shop/Web Audio Worklet]] sibling (geometry-bound-to-the-data, the [[Waveguide Synthesizer]] pattern in miniature). Promoted stub → alive on its first dated job, ahead of the still-anticipated Waveguide commission.
+- *Conditioning keystone (BLUELINE Session 1, 2026-06-13):* **Blender** — posed one humanoid (worm's-eye foreshortened lunge) → six registered passes → ComfyUI per-channel multi-ControlNet (pose+depth+canny → SDXL fill → 1.5× refine); proved [[Blocked, Not Prompted]] against a prompt-only control. Fills the offline-3D gap [[Three.js]] can't. Alive on the conditioning job; the Cycles-render and geometry-nodes paths remain untested. Bundle: [Artifacts/Shop/Blender/tests/](../Artifacts/Shop/Blender/tests/).
 
 **Stub (2)** — entry exists, awaiting first real job: **RNBO codebox~ smith**; **LaTeX** (created 2026-06-09 — capability-probed clean on the PDF path, but no brief has run, so it stays a stub per the taxonomy).
 
 **Deprecated (1)** — [[Shop/Midjourney|Midjourney]], 2026-05-30 — too expensive; never landed a real palace job; superseded by **FLUX (Hugging Face)** as the cloud-aesthetic-ceiling slot. Entry kept as a lineage record.
 
-More to come as briefs reveal need: Plotly, Graphviz, HTML/React Artifact Smith, **Blender** (offline/photoreal 3D — the gap [[Three.js]] can't fill), **game engines** (Godot-first, on a real interactive-3D-application brief). The Roster grows; it does not pre-grow.
+More to come as briefs reveal need: Plotly, Graphviz, HTML/React Artifact Smith, **game engines** (Godot-first, on a real interactive-3D-application brief). The Roster grows; it does not pre-grow.
 
 > Drift watch: this accounting is mirrored in each Specialist's frontmatter `status`. When a stub lands its first job, update both here and the frontmatter in the same move. The three-place inconsistency this section replaced (frontmatter vs. an alive-list vs. a stub-list) is exactly the rot the gotcha discipline exists to prevent.
 
