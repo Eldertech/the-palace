@@ -1,0 +1,60 @@
+{
+  "$schema": "./staging-spec.schema.json",
+  "sentence": "over the shoulder of our hero running, sword drawn, the full urban alleyway rushing by.",
+  "version": "0.1",
+  "note": "The single source of truth for the bake-off. All three paths (SceneCraft / Three.js / Blender-MCP) consume THIS file. Coordinates: Z up, metres; the alley recedes along +Y; the camera looks down +Y from behind the hero. This is the staging-AI's actual output: language resolved onto a curated vocabulary, with everything it will not fake moved to `flagged`.",
+
+  "world": { "up": "Z", "recede_axis": "+Y", "ground_z": 0.0 },
+
+  "resolved": {
+    "camera": {
+      "grammar": "OTS",
+      "comment": "Over-the-shoulder is authored as an on-screen-layout constraint, NOT absolute coords (declarative-camera). The solver places the camera so two screen anchors land: the hero's near shoulder in the lower-left foreground, and the alley's vanishing point just right of centre.",
+      "screen_constraints": {
+        "shoulder_anchor": { "screen_xy": [0.30, 0.74], "world_target": "subject.shoulder_r", "frame_fraction": 0.28 },
+        "vanishing_point": { "screen_xy": [0.58, 0.46], "world_target": "environment.vanishing_point" }
+      },
+      "solved": {
+        "location": [-0.62, 0.55, 1.74],
+        "look_at":  [0.45, 13.0, 1.15],
+        "lens_mm": 34,
+        "sensor_mm": 36
+      }
+    },
+    "subject": {
+      "type": "humanoid",
+      "facing": "+Y",
+      "locomotion": { "vocab": "run", "phase": "mid_stride_L_forward", "source": "mixamo_run_cycle (FLAGGED — see flagged.locomotion_clip)" },
+      "upper_body_overlay": { "vocab": "sword_drawn", "mask_at": "spine", "comment": "run drives the lower body + counter-swing left arm; sword_drawn overrides the right arm, masked at the spine — the pose-blend the brief asks us to test." },
+      "root": [-0.15, 2.6, 0.0],
+      "prop": { "vocab": "sword", "in_hand": "r_wrist", "blade_len": 0.95 }
+    },
+    "environment": {
+      "vocab": "alley_urban",
+      "modifier": "receding_to_vanishing_point",
+      "facades": { "rows_at_x": [-2.3, 2.3], "y_from": 0.0, "y_to": 24.0, "height": 7.5, "bay_step": 2.4 },
+      "ground": { "x_half": 2.3, "y_to": 24.0 },
+      "props_greybox": [
+        { "kind": "dumpster", "at": [-1.55, 6.0, 0.0] },
+        { "kind": "fire_escape", "at": [2.05, 9.5, 0.0] },
+        { "kind": "crates", "at": [1.4, 4.2, 0.0] }
+      ],
+      "vanishing_point": [0.0, 24.0, 2.0]
+    },
+    "motion": {
+      "comment": "The staging fixes the forward motion VECTOR (subject + apparent world flow down -Y past camera). The TREATMENT ('rushing by': speed-lines / motion-blur / blur amount) is deliberately NOT set here — it is the flow-field spine + render's job. Staging hands the render a vector, not a look.",
+      "subject_velocity": [0.0, 3.2, 0.0],
+      "world_apparent_flow": [0.0, -3.2, 0.0],
+      "couples_to": "The Flow Field is the Spine"
+    }
+  },
+
+  "flagged": [
+    { "item": "asset_kit", "phrase": "the FULL urban alleyway", "why": "Which kit / architecture style / material era (brick vs concrete, wet vs dry, signage, era) is an art-direction call, not a staging fact. Greybox facades placed; real kit (KitBash3D Cargo / Poly Haven CC0) is a deliberate later import. The stager refuses to invent a look." },
+    { "item": "locomotion_clip", "phrase": "running", "why": "Needs a real Mixamo run-cycle FBX (Adobe login) + a chosen phase. Staged as ONE representative mid-stride pose; the gait fidelity + frame phase are flagged for the locomotion import." },
+    { "item": "motion_treatment", "phrase": "rushing by", "why": "Speed / motion-blur / speed-lines belong to the flow-field spine + render, not staging. Staging sets the vector; the look is downstream." },
+    { "item": "hero_identity", "phrase": "our hero", "why": "Who the hero IS (face, costume, palette) lives in IP-Adapter / per-character LoRA at render time, not in the block. Staging blocks an anonymous proxy." }
+  ],
+
+  "acceptance": "A correct decomposition resolves camera-grammar + locomotion + pose-overlay + environment-layout onto the curated vocabulary, and FLAGS asset-kit, clip-fidelity, motion-treatment, and identity rather than faking them. The block must land as a hand-editable Blender scene."
+}

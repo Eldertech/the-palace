@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>BLUELINE Stager — Three.js path</title>
+<style>
+  :root{ --bg:#15161a; --panel:#1d1f25; --ink:#e9e7e2; --dim:#8b8d96; --amber:#e0a83a; --line:#2c2e36; }
+  *{box-sizing:border-box}
+  html,body{margin:0;height:100%;background:var(--bg);color:var(--ink);
+    font-family:"JetBrains Mono",ui-monospace,Menlo,Consolas,monospace;overflow:hidden}
+  #c{position:fixed;inset:0}
+  .panel{position:fixed;background:rgba(29,31,37,.92);border:1px solid var(--line);
+    border-radius:8px;padding:12px 14px;font-size:12px;line-height:1.45;backdrop-filter:blur(4px)}
+  #hud{top:14px;left:14px;max-width:330px}
+  #hud h1{font-family:"Anton",Impact,sans-serif;font-weight:400;letter-spacing:.04em;
+    font-size:18px;margin:0 0 2px;text-transform:uppercase}
+  #hud .sub{color:var(--dim);font-style:italic;margin-bottom:8px;font-family:Cormorant,Georgia,serif;font-size:14px}
+  #hud .k{color:var(--amber)} #hud .row{margin:2px 0}
+  #hud .flag{color:var(--dim)} #hud .flag b{color:#c98a8a;font-weight:600}
+  #ctl{bottom:14px;left:14px;display:flex;gap:8px;align-items:center}
+  button{font:inherit;font-size:12px;background:#23252c;color:var(--ink);border:1px solid var(--line);
+    border-radius:6px;padding:7px 11px;cursor:pointer}
+  button:hover{border-color:var(--amber);color:var(--amber)}
+  #foot{bottom:14px;right:14px;color:var(--dim);font-size:11px;border:none;background:none}
+  .hint{color:var(--dim);font-size:11px;margin-top:6px}
+</style>
+</head>
+<body>
+<canvas id="c"></canvas>
+<div id="hud" class="panel">
+  <h1>BLUELINE Stager</h1>
+  <div class="sub" id="sentence">…</div>
+  <div class="row"><span class="k">camera</span> <span id="cam"></span></div>
+  <div class="row"><span class="k">subject</span> <span id="subj"></span></div>
+  <div class="row"><span class="k">environment</span> <span id="env"></span></div>
+  <div class="row"><span class="k">motion</span> <span id="mot"></span></div>
+  <div class="row" style="margin-top:8px;color:var(--dim)">flagged (not faked):</div>
+  <div id="flags"></div>
+  <div class="hint">drag to orbit · scroll to zoom · the spec is the interchange to Blender</div>
+</div>
+<div id="ctl" class="panel">
+  <button id="reset">reset OTS camera</button>
+  <button id="export">⤓ export staging spec → Blender</button>
+</div>
+<div id="foot" class="panel">Loudon Live · Autodidact Polymaths</div>
+
+<script src="lib/three.min.js"></script>
+<script src="lib/OrbitControls.js"></script>
+<script>
+// representative run + sword-drawn pose offsets (relative to subject.root); the
+// locomotion clip is FLAGGED in the spec — this is one mid-stride pose, matched to
+// the Blender path so the two front-ends stage the same block.
+const OFF = {
+ 0:[0.03,0.20,1.58],1:[0.02,0.08,1.45],2:[0.20,0.02,1.40],3:[0.42,-0.12,1.16],4:[0.62,-0.22,1.05],
+ 5:[-0.18,0.02,1.40],6:[-0.30,0.26,1.22],7:[-0.26,0.46,1.34],8:[0.14,0,0.94],9:[0.16,-0.34,0.60],
+ 10:[0.18,-0.64,0.20],11:[-0.14,0.02,0.96],12:[-0.16,0.34,0.58],13:[-0.14,0.62,0.16],
+ 14:[0.07,0.24,1.62],15:[-0.02,0.24,1.62],16:[0.12,0.20,1.60],17:[-0.06,0.20,1.60]};
+const LIMBS=[[1,2],[1,5],[2,3],[3,4],[5,6],[6,7],[1,8],[8,9],[9,10],[1,11],[11,12],[12,13],[1,0]];
+const LR={'2,3':.085,'3,4':.075,'5,6':.085,'6,7':.075,'8,9':.092,'9,10':.08,'11,12':.092,'12,13':.08,
+  '1,2':.10,'1,5':.10,'1,8':.10,'1,11':.10,'1,0':.085};
+
+let SPEC, renderer, scene, camera, controls;
+const V=(a)=>new THREE.Vector3(a[0],a[1],a[2]);
+
+fetch("../alley-shot.staging.json").then(r=>r.json()).then(spec=>{ SPEC=spec; init(); });
+
+function mat(c,rough=0.75){return new THREE.MeshStandardMaterial({color:c,roughness:rough,metalness:0.0});}
+
+function capsuleBetween(p1,p2,r,m,parent){
+  const d=new THREE.Vector3().subVectors(p2,p1), len=d.length();
+  const geo=new THREE.CylinderGeometry(r,r,len,12);
+  const mesh=new THREE.Mesh(geo,m);
+  mesh.position.copy(p1).addScaledVector(d,0.5);
+  mesh.quaternion.setFromUnitVectors(new THREE.Vector3(0,1,0), d.clone().normalize());
+  parent.add(mesh);
+  for(const p of [p1,p2]){const s=new THREE.Mesh(new THREE.SphereGeometry(r,12,10),m);s.position.copy(p);parent.add(s);}
+}
+
+function buildHero(R){
+  const g=new THREE.Group(); g.name="Hero";
+  const root=V(R.subject.root), m=mat(0x8f9298);
+  const J={}; for(const k in OFF){J[k]=root.clone().add(V(OFF[k]));}
+  for(const [a,b] of LIMBS) capsuleBetween(J[a],J[b],LR[a+','+b]||.08,m,g);
+  // trunk + head
+  const hip=J[8].clone().add(J[11]).multiplyScalar(0.5);
+  capsuleBetween(J[1],hip,0.15,m,g); capsuleBetween(J[8],J[11],0.11,m,g);
+  const head=new THREE.Mesh(new THREE.SphereGeometry(0.15,16,12),m); head.position.copy(J[0]); g.add(head);
+  // sword
+  const blade_len=R.subject.prop.blade_len, bdir=new THREE.Vector3(0.55,-0.35,-0.18).normalize();
+  const sw=new THREE.Mesh(new THREE.BoxGeometry(0.06,blade_len,0.12), mat(0xcccdd2,0.3));
+  sw.position.copy(J[4]).addScaledVector(bdir,blade_len*0.5);
+  sw.quaternion.setFromUnitVectors(new THREE.Vector3(0,1,0),bdir); g.add(sw);
+  return g;
+}
+
+function buildAlley(R){
+  const g=new THREE.Group(); g.name="Alley";
+  const env=R.environment, f=env.facades;
+  const gm=mat(0x383840), pm=mat(0x4c4b52);
+  // ground
+  const gr=new THREE.Mesh(new THREE.BoxGeometry(env.ground.x_half*2, 0.04, env.ground.y_to),
+    mat(0x2a2a30)); gr.position.set(0, 0, env.ground.y_to/2); g.add(gr);
+  // facades (note: Three is Y-up; we keep the spec's Z-up by mapping y->depth, z->height)
+  for(let y=f.y_from; y<f.y_to; y+=f.bay_step){
+    for(const sx of f.rows_at_x){
+      const h=f.height*(0.92+0.16*((Math.floor(y/f.bay_step))%3)/2);
+      const b=new THREE.Mesh(new THREE.BoxGeometry(0.6, h, f.bay_step*1.0), pm);
+      b.position.set(sx, h/2, y+f.bay_step*0.5); g.add(b);
+    }
+  }
+  for(const p of env.props_greybox){
+    const b=new THREE.Mesh(new THREE.BoxGeometry(0.9,0.9,1.0), gm);
+    b.position.set(p.at[0],0.45,p.at[1]); g.add(b);
+  }
+  return g;
+}
+
+function setOTS(){
+  const s=SPEC.resolved.camera.solved;
+  camera.position.copy(V(s.location));
+  controls.target.copy(V(s.look_at)); controls.update();
+}
+
+function init(){
+  const cv=document.getElementById("c");
+  renderer=new THREE.WebGLRenderer({canvas:cv,antialias:true});
+  renderer.setSize(innerWidth,innerHeight); renderer.setPixelRatio(devicePixelRatio);
+  renderer.setClearColor(0x15161a);
+  scene=new THREE.Scene(); scene.fog=new THREE.Fog(0x15161a, 14, 32);
+  const R=SPEC.resolved, s=R.camera.solved;
+  camera=new THREE.PerspectiveCamera(2*Math.atan(18/s.lens_mm)*180/Math.PI, innerWidth/innerHeight, 0.05, 200);
+  camera.up.set(0,0,1);                                  // Z-up to match the spec
+  // lights
+  const sun=new THREE.DirectionalLight(0xfff2d8,2.6); sun.position.set(-4,8,6); scene.add(sun);
+  scene.add(new THREE.AmbientLight(0x404654,1.0));
+  scene.add(new THREE.HemisphereLight(0x9fb0c8,0x20221a,0.6));
+  scene.add(buildAlley(R)); scene.add(buildHero(R));
+  controls=new THREE.OrbitControls(camera,renderer.domElement);
+  setOTS();
+  // HUD
+  document.getElementById("sentence").textContent="“"+SPEC.sentence+"”";
+  document.getElementById("cam").textContent=R.camera.grammar+"  ·  "+s.lens_mm+"mm";
+  document.getElementById("subj").textContent=R.subject.locomotion.vocab+" + "+R.subject.upper_body_overlay.vocab+" (mask@"+R.subject.upper_body_overlay.mask_at+")";
+  document.getElementById("env").textContent=R.environment.vocab+" · "+R.environment.modifier;
+  document.getElementById("mot").textContent="vector set; treatment → flow-field";
+  document.getElementById("flags").innerHTML=SPEC.flagged.map(f=>'<div class="flag">· <b>'+f.item+'</b> — '+f.phrase+'</div>').join("");
+  document.getElementById("reset").onclick=setOTS;
+  document.getElementById("export").onclick=exportSpec;
+  addEventListener("resize",()=>{camera.aspect=innerWidth/innerHeight;camera.updateProjectionMatrix();renderer.setSize(innerWidth,innerHeight);});
+  (function loop(){requestAnimationFrame(loop);controls.update();renderer.render(scene,camera);})();
+}
+
+// the round-trip: write the (live-edited) camera back into the spec and download it.
+// threejs_to_blender.py rebuilds a hand-editable .blend from this exact file.
+function exportSpec(){
+  const out=JSON.parse(JSON.stringify(SPEC));
+  out.resolved.camera.solved.location=[+camera.position.x.toFixed(3),+camera.position.y.toFixed(3),+camera.position.z.toFixed(3)];
+  out.resolved.camera.solved.look_at=[+controls.target.x.toFixed(3),+controls.target.y.toFixed(3),+controls.target.z.toFixed(3)];
+  out.note="(exported from the Three.js stager — camera edited live; rebuild with threejs_to_blender.py)";
+  const blob=new Blob([JSON.stringify(out,null,2)],{type:"application/json"});
+  const a=document.createElement("a"); a.href=URL.createObjectURL(blob);
+  a.download="alley-shot.exported.json"; a.click();
+}
+</script>
+</body>
+</html>
