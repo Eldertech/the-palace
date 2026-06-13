@@ -1,0 +1,78 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "BLUELINE Staging Spec",
+  "description": "The staging-AI's output contract: a sentence resolved onto curated vocabulary (`resolved`) plus an honest list of what it will not fake (`flagged`). Both backend assemblers (Blender / Three.js) build from `resolved`; a reviewer reads `flagged`.",
+  "type": "object",
+  "required": ["sentence", "world", "resolved", "flagged", "acceptance"],
+  "properties": {
+    "sentence": { "type": "string" },
+    "world": {
+      "type": "object",
+      "required": ["up", "recede_axis", "ground_z"],
+      "properties": {
+        "up": { "enum": ["Z", "Y"] },
+        "recede_axis": { "type": "string" },
+        "ground_z": { "type": "number" }
+      }
+    },
+    "resolved": {
+      "type": "object",
+      "required": ["camera", "subject", "environment", "motion"],
+      "properties": {
+        "camera": {
+          "type": "object",
+          "required": ["grammar", "screen_constraints", "solved"],
+          "properties": {
+            "grammar": { "enum": ["OTS", "worms_eye", "low_hero", "dutch", "profile_tracking", "top_down"] },
+            "screen_constraints": { "type": "object", "description": "declarative on-screen-layout targets the solver satisfies" },
+            "solved": {
+              "type": "object",
+              "required": ["location", "look_at", "lens_mm"],
+              "properties": {
+                "location": { "type": "array", "items": { "type": "number" }, "minItems": 3, "maxItems": 3 },
+                "look_at": { "type": "array", "items": { "type": "number" }, "minItems": 3, "maxItems": 3 },
+                "lens_mm": { "type": "number" }
+              }
+            }
+          }
+        },
+        "subject": {
+          "type": "object",
+          "required": ["type", "facing", "locomotion", "upper_body_overlay", "root"],
+          "properties": {
+            "type": { "const": "humanoid", "description": "humanoid only — animal motion is out of scope for BLUELINE" },
+            "locomotion": { "type": "object", "required": ["vocab"] },
+            "upper_body_overlay": { "type": "object", "required": ["vocab", "mask_at"] },
+            "root": { "type": "array", "items": { "type": "number" }, "minItems": 3, "maxItems": 3 }
+          }
+        },
+        "environment": {
+          "type": "object",
+          "required": ["vocab", "vanishing_point"],
+          "properties": {
+            "vocab": { "enum": ["alley_urban", "canyon", "rooftop", "interior_hall", "open_field"] }
+          }
+        },
+        "motion": {
+          "type": "object",
+          "description": "the VECTOR is staging; the TREATMENT (blur/speed-lines) is flagged to the render/flow-field",
+          "required": ["subject_velocity"]
+        }
+      }
+    },
+    "flagged": {
+      "type": "array",
+      "description": "what the stager refuses to fake — moved out of `resolved` on purpose",
+      "items": {
+        "type": "object",
+        "required": ["item", "phrase", "why"],
+        "properties": {
+          "item": { "type": "string" },
+          "phrase": { "type": "string" },
+          "why": { "type": "string" }
+        }
+      }
+    },
+    "acceptance": { "type": "string" }
+  }
+}
