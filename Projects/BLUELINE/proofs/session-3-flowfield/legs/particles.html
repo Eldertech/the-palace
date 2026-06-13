@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>BLUELINE flow-field — sim leg (Three.js, real-time)</title>
+<style>
+  :root{--bg:#15161a;--ink:#e9e7e2;--dim:#8b8d96;--amber:#e0a83a;--line:#2c2e36}
+  html,body{margin:0;height:100%;background:var(--bg);overflow:hidden;
+    font-family:"JetBrains Mono",ui-monospace,Menlo,monospace;color:var(--ink)}
+  #c{position:fixed;inset:0}
+  .panel{position:fixed;background:rgba(29,31,37,.9);border:1px solid var(--line);border-radius:8px;
+    padding:10px 13px;font-size:12px;backdrop-filter:blur(4px)}
+  #hud{top:14px;left:14px;max-width:320px;line-height:1.5}
+  #hud b{font-family:"Anton",Impact,sans-serif;font-weight:400;letter-spacing:.04em;font-size:16px;text-transform:uppercase}
+  #hud .k{color:var(--amber)}
+  #foot{bottom:14px;right:14px;color:var(--dim);font-size:11px}
+</style></head>
+<body>
+<canvas id="c"></canvas>
+<div id="hud" class="panel">
+  <b>Flow-field · sim leg</b><br>
+  <span class="k">engine</span> Three.js GPU-class, real-time<br>
+  <span class="k">source</span> ../flow-field.json (the SAME field)<br>
+  <span class="k">per-leg massaging</span> velocity scale + dt + re-seed on exit<br>
+  <span id="n"></span> particles advecting · color = speed
+</div>
+<div id="foot" class="panel">Loudon Live · Autodidact Polymaths</div>
+<script src="../lib/three.min.js"></script>
+<script>
+let F, renderer, scene, fadeScene, cam, pts, pos, col, vel, N=6000, ASP=1.6;
+const SCALE=0.22, DT=1.0;           // <- per-leg massaging: velocity scale + timestep
+function sample(x,y){               // bilinear read of the untouched field
+  const GW=F.grid.w,GH=F.grid.h,asp=F.grid.aspect;
+  let fx=Math.min(Math.max(x/asp,0),1)*(GW-1), fy=Math.min(Math.max(y,0),1)*(GH-1);
+  let x0=fx|0,y0=fy|0,x1=Math.min(x0+1,GW-1),y1=Math.min(y0+1,GH-1),tx=fx-x0,ty=fy-y0;
+  const V=F.vectors;
+  const a=V[y0][x0],b=V[y0][x1],c=V[y1][x0],d=V[y1][x1];
+  return [a[0]*(1-tx)*(1-ty)+b[0]*tx*(1-ty)+c[0]*(1-tx)*ty+d[0]*tx*ty,
+          a[1]*(1-tx)*(1-ty)+b[1]*tx*(1-ty)+c[1]*(1-tx)*ty+d[1]*tx*ty];
+}
+fetch("../flow-field.json").then(r=>r.json()).then(f=>{F=f;ASP=f.grid.aspect;init();});
+function seed(i){pos[i*3]=Math.random()*ASP;pos[i*3+1]=Math.random();pos[i*3+2]=0;}
+function init(){
+  const cv=document.getElementById("c");
+  renderer=new THREE.WebGLRenderer({canvas:cv,antialias:true,preserveDrawingBuffer:true});
+  renderer.setSize(innerWidth,innerHeight);renderer.setPixelRatio(1);
+  renderer.autoClearColor=false;
+  scene=new THREE.Scene(); cam=new THREE.OrthographicCamera(0,ASP,1,0,-1,1);
+  // fade quad (trails): translucent dark plane drawn before points each frame
+  fadeScene=new THREE.Scene();
+  const fq=new THREE.Mesh(new THREE.PlaneGeometry(ASP,1),
+    new THREE.MeshBasicMaterial({color:0x15161a,transparent:true,opacity:0.09}));
+  fq.position.set(ASP/2,0.5,0); fadeScene.add(fq);
+  pos=new Float32Array(N*3); col=new Float32Array(N*3);
+  for(let i=0;i<N;i++){seed(i);}
+  const g=new THREE.BufferGeometry();
+  g.setAttribute("position",new THREE.BufferAttribute(pos,3));
+  g.setAttribute("color",new THREE.BufferAttribute(col,3));
+  pts=new THREE.Points(g,new THREE.PointsMaterial({size:0.006,vertexColors:true,
+    transparent:true,opacity:0.9,blending:THREE.AdditiveBlending,depthTest:false}));
+  scene.add(pts);
+  document.getElementById("n").textContent=N.toLocaleString();
+  addEventListener("resize",()=>{renderer.setSize(innerWidth,innerHeight);});
+  loop();
+}
+function loop(){
+  requestAnimationFrame(loop);
+  for(let i=0;i<N;i++){
+    let x=pos[i*3],y=pos[i*3+1];
+    const v=sample(x,y); const sp=Math.hypot(v[0],v[1]);
+    x+=v[0]*SCALE*DT*0.016; y+=v[1]*SCALE*DT*0.016;
+    if(x<0||x>ASP||y<0||y>1||Math.random()<0.004){seed(i);}else{pos[i*3]=x;pos[i*3+1]=y;}
+    const t=Math.min(1,sp/F.mag_max);                 // speed -> warm color
+    col[i*3]=0.5+0.5*t; col[i*3+1]=0.45+0.35*t; col[i*3+2]=0.35+0.55*(1-t);
+  }
+  pts.geometry.attributes.position.needsUpdate=true;
+  pts.geometry.attributes.color.needsUpdate=true;
+  renderer.render(fadeScene,cam);   // fade previous frame (trails)
+  renderer.render(scene,cam);       // draw particles
+}
+</script></body></html>

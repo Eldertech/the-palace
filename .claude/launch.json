@@ -24,6 +24,12 @@
       "runtimeExecutable": "python3",
       "runtimeArgs": ["-m", "http.server", "8200", "--directory", "Projects/BLUELINE/proofs/session-2-staging"],
       "port": 8200
+    },
+    {
+      "name": "blueline-flow",
+      "runtimeExecutable": "python3",
+      "runtimeArgs": ["-m", "http.server", "8201", "--directory", "Projects/BLUELINE/proofs/session-3-flowfield"],
+      "port": 8201
     }
   ]
 }
