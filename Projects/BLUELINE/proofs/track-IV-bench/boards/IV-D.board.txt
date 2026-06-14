@@ -1,0 +1,18 @@
+# === BOARD ===
+SHOT_ID: IV-D
+CAMERA_GRAMMAR: ots_env | lens 34 | true OTS: shoulder foreground, aims PAST the figure to the vanishing point
+ANGLE: true over-the-shoulder (solved against the environment vanishing point) | AR 1216x832
+CHARS: HERO (running, sword drawn — faces away, down the alley)
+LOCATION: ALLEY_URBAN = urban alley, facades receding to a vanishing point (greybox; asset-kit flagged)
+SETTING: ALLEY_URBAN | depth + canny carry the recession; figure occludes the near third
+POSE: passes/IV-D_keypoints.json -> passes/IV-D_openpose.png
+DEPTH: passes/IV-D_depth.png
+EDGE: passes/IV-D_canny.png
+NORMAL: passes/IV-D_normal.png
+IDREF: <flagged: hero_identity -> Track II>
+SEED: 4471
+FLUX_SEED: 88120
+FLAGGED: asset_kit(greybox alley, real kit later); hero_identity(->IDREF, Track II); motion_treatment("rushing by" -> flow-field, Track V)
+POSITIVE: <author or staging-AI fills; the block above is the authored control>
+NOTES: Track IV env extension — closes the OTS-needs-an-environment flag. Camera aims PAST the figure
+       to the vanishing point; depth/edge now carry the receding alley, not just the figure.
