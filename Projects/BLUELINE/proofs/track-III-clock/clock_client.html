@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>BLUELINE — Clock client (Track III)</title>
+<style>
+  :root{--bg:#15161a;--panel:#1d1f25;--ink:#e9e7e2;--dim:#8b8d96;--amber:#e0a83a;--good:#7bbf6a;--bad:#c98a8a;--line:#2c2e36}
+  *{box-sizing:border-box} html,body{margin:0;height:100%;background:var(--bg);color:var(--ink);
+    font-family:"JetBrains Mono",ui-monospace,Menlo,monospace}
+  .wrap{max-width:880px;margin:0 auto;padding:22px}
+  h1{font-family:"Anton",Impact,sans-serif;font-weight:400;letter-spacing:.04em;text-transform:uppercase;font-size:24px;margin:0 0 2px}
+  .sub{color:var(--dim);font-style:italic;font-family:Cormorant,Georgia,serif;font-size:16px;margin-bottom:16px}
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:14px}
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:14px 16px}
+  .k{color:var(--amber);font-size:12px;text-transform:uppercase;letter-spacing:.06em}
+  .big{font-size:46px;font-family:"Anton",Impact,sans-serif;line-height:1.05;margin-top:4px}
+  .mid{font-size:22px;margin-top:4px}
+  .row{display:flex;justify-content:space-between;font-size:13px;margin:3px 0}
+  .row span:last-child{color:var(--ink)} .row span:first-child{color:var(--dim)}
+  .verdict{font-size:15px;margin-top:6px}
+  .good{color:var(--good)} .bad{color:var(--bad)}
+  table{width:100%;border-collapse:collapse;font-size:12px;margin-top:6px}
+  th,td{text-align:right;padding:3px 8px;border-bottom:1px solid var(--line)} th{color:var(--dim);font-weight:400}
+  td:first-child,th:first-child{text-align:left}
+  #foot{color:var(--dim);font-size:11px;margin-top:14px}
+  #conn{font-size:12px}
+</style></head>
+<body><div class="wrap">
+  <h1>BLUELINE · Clock client</h1>
+  <div class="sub">Track III — does fixed-tempo → frame stay beat-locked, and do beats land on whole frames?</div>
+
+  <div class="grid">
+    <div class="card">
+      <div class="k">now playing</div>
+      <div class="big" id="barbeat">—.—</div>
+      <div class="mid">frame <span id="frame" style="color:var(--amber)">—</span> · <span id="locator" style="color:var(--dim)">—</span></div>
+      <div class="verdict" id="whole">—</div>
+    </div>
+    <div class="card">
+      <div class="k">the locked clock (BIBLE)</div>
+      <div class="row"><span>tempo</span><span id="tempo">— BPM</span></div>
+      <div class="row"><span>fps</span><span id="fps">—</span></div>
+      <div class="row"><span>frames / beat</span><span id="fpb">—</span></div>
+      <div class="row"><span>finest whole subdivision</span><span id="subdiv">—</span></div>
+      <div class="row"><span>determinism</span><span id="det">—</span></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="k">live tally</div>
+    <div class="row"><span>transport ticks received</span><span id="ticks">0</span></div>
+    <div class="row"><span>on-beats on a whole frame</span><span id="tally">0 / 0</span></div>
+    <div class="row"><span>mean tick jitter (delivery stability)</span><span id="jitter">— ms</span></div>
+    <div class="k" style="margin-top:10px">recent beats</div>
+    <table><thead><tr><th>bar.beat</th><th>total beats</th><th>frame</th><th>residual</th><th>whole?</th><th>jitter</th></tr></thead>
+      <tbody id="log"></tbody></table>
+  </div>
+
+  <div id="conn">connecting…</div>
+  <div id="foot">Loudon Live · Autodidact Polymaths</div>
+</div>
+<script>
+const BEATS_PER_BAR = 4;
+let tempo=null, fps=null, fpb=null, det=false, subdiv=4;
+let ticks=0, onbeats=0, onbeatsWhole=0, lastArr=null, jitters=[], expectedTickMs=null;
+
+function gcd(a,b){return b?gcd(b,a%b):a;}
+function computeFPB(t,f){ // exact-ish rational check
+  const num=f*60, den=t; const g=gcd(Math.round(num),Math.round(den));
+  const n=Math.round(num)/g, d=Math.round(den)/g;
+  return {value:num/den, whole:(d===1), n, d};
+}
+function finestSubdiv(fpbInt){ for(const n of [16,8,4,2,1]) if(fpbInt%n===0) return n; return 1; }
+const NOTE={1:"quarter (beat)",2:"8th",4:"16th",8:"32nd",16:"64th"};
+
+const $=id=>document.getElementById(id);
+
+function onBible(t,f,bpb){
+  tempo=t; fps=f; const r=computeFPB(t,f); fpb=r.value; det=r.whole;
+  expectedTickMs = (60000/tempo)/subdiv;
+  $("tempo").textContent=t+" BPM"; $("fps").textContent=f;
+  $("fpb").textContent = det ? (Math.round(fpb)+"  (exact)") : (fpb.toFixed(3)+"  ("+r.n+"/"+r.d+")");
+  if(det){const fs=finestSubdiv(Math.round(fpb)); $("subdiv").textContent="1/"+fs+"-beat = "+NOTE[fs]+" note";}
+  else $("subdiv").textContent="— (non-integer FPB)";
+  $("det").innerHTML = det ? '<span class="good">deterministic ✓</span>' : '<span class="bad">DRIFTS ✗</span>';
+}
+
+function onBeat(bar, beat, playing){
+  ticks++; $("ticks").textContent=ticks;
+  // jitter (delivery stability)
+  const now=performance.now();
+  if(lastArr!=null && expectedTickMs){ jitters.push(Math.abs((now-lastArr)-expectedTickMs)); if(jitters.length>200) jitters.shift(); }
+  lastArr=now;
+  const totalBeats=(bar-1)*BEATS_PER_BAR+(beat-1);
+  const frame = totalBeats * fpb;
+  const residual = Math.abs(frame - Math.round(frame));
+  const whole = residual < 1e-9;
+  $("barbeat").textContent = bar+"."+(Number.isInteger(beat)?beat:beat.toFixed(2));
+  $("frame").textContent = whole ? Math.round(frame) : frame.toFixed(3);
+  $("whole").innerHTML = whole ? '<span class="good">● on a whole frame</span>'
+                               : '<span class="bad">● off by '+residual.toFixed(3)+' frame</span>';
+  const isOnBeat = Math.abs(beat-Math.round(beat))<1e-6;
+  if(isOnBeat){ onbeats++; if(whole) onbeatsWhole++; $("tally").textContent=onbeatsWhole+" / "+onbeats; }
+  if(jitters.length){ const m=jitters.reduce((a,b)=>a+b,0)/jitters.length; $("jitter").textContent=m.toFixed(1)+" ms"; }
+  // log only on-beats to keep it readable
+  if(isOnBeat){
+    const tb=document.getElementById("log");
+    const tr=document.createElement("tr");
+    const jit = jitters.length? jitters[jitters.length-1].toFixed(1)+"ms":"—";
+    tr.innerHTML=`<td>${bar}.${Math.round(beat)}</td><td>${totalBeats}</td><td>${whole?Math.round(frame):frame.toFixed(2)}</td>`+
+                 `<td>${residual.toFixed(3)}</td><td class="${whole?'good':'bad'}">${whole?'✓':'✗'}</td><td>${jit}</td>`;
+    tb.prepend(tr); while(tb.children.length>10) tb.removeChild(tb.lastChild);
+  }
+}
+
+const ws=new WebSocket("ws://"+location.host+"/ws");
+ws.onopen=()=>$("conn").textContent="● connected to relay — waiting for transport…";
+ws.onclose=()=>$("conn").textContent="○ relay disconnected";
+ws.onmessage=ev=>{
+  const m=JSON.parse(ev.data);
+  if(m.address==="/transport/bible") onBible(m.args[0],m.args[1],m.args[2]);
+  else if(m.address==="/transport/beat") onBeat(m.args[0],m.args[1],m.args[2]);
+  else if(m.address==="/transport/locator") $("locator").textContent=m.args[0]+" (bar "+m.args[1]+")";
+};
+</script></body></html>
