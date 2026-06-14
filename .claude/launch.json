@@ -30,6 +30,12 @@
       "runtimeExecutable": "python3",
       "runtimeArgs": ["-m", "http.server", "8201", "--directory", "Projects/BLUELINE/proofs/session-3-flowfield"],
       "port": 8201
+    },
+    {
+      "name": "blueline-clock",
+      "runtimeExecutable": "_tools/ComfyUI/venv/bin/python",
+      "runtimeArgs": ["Projects/BLUELINE/proofs/track-III-clock/osc_ws_relay.py"],
+      "port": 8770
     }
   ]
 }
