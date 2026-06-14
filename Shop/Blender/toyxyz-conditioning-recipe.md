@@ -74,6 +74,15 @@ full evidence + frames in [Artifacts/Shop/Blender/tests/](../../Artifacts/Shop/B
 - **Still open:** per-channel (this recipe's hard rule) vs **ControlNet-Union** single-model — Session 1
   ran only the per-channel arm; the Union arm is owed (the `ControlNet Workflow Mastery` ghost's home).
 
+## Grows into (Track IV — the pose/camera library)
+
+The single-pose emission proved here is being grown into a reusable **pose library + camera-grammar
+solvers** (named held poses + declarative OTS / worm's-eye / low-hero camera solvers that round-trip
+registered passes into a [[BLUELINE — Board Record Schema|board record]]). It lives in
+`Projects/BLUELINE/proofs/track-IV-bench/` (`bench.py` + `post.py`) until the vocabulary is stable
+across more shots, then it promotes into this `Shop/Blender` bundle. The camera-grammar solver is
+reusable for *any* character imagery, not just BLUELINE.
+
 ## Open questions (remaining)
 
 - ControlNet-Union vs one-CN-per-channel: does Union's single model match the per-channel route's

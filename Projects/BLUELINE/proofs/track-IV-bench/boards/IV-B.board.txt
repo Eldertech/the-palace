@@ -1,0 +1,15 @@
+# === BOARD ===
+SHOT_ID: IV-B
+CAMERA_GRAMMAR: low_hero | lens 40 | low-hero: near eye-level-low, centered, slight up-tilt, longer lens
+ANGLE: low_hero (solved, not typed) | face -Y
+CHARS: HERO (defiant stand)
+POSE: passes/IV-B_keypoints.json -> passes/IV-B_openpose.png
+DEPTH: passes/IV-B_depth.png
+EDGE: passes/IV-B_canny.png
+NORMAL: passes/IV-B_normal.png
+IDREF: <flagged: hero_identity>
+SEED: 4471
+FLUX_SEED: 88120
+FLAGGED: asset_kit(no environment yet); hero_identity(->IDREF, Track II); motion_treatment(->flow-field, Track V)
+POSITIVE: <author or staging-AI fills; the block above is the authored control>
+NOTES: Track IV bench emission — geometric pose + Blender depth/normal; canny EDGE on SDXL.
