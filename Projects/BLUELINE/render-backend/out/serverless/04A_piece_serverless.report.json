@@ -1,0 +1,13 @@
+{
+  "shot": "04A",
+  "endpoint": "iy3ybd7qjl2trj",
+  "w": 1344,
+  "h": 768,
+  "seed": 88120,
+  "guidance": 3.5,
+  "steps": 24,
+  "job_id": "ebcfe7d3-361c-4fa5-913b-c14ed2f9f60f-u1",
+  "elapsed_sec": 282,
+  "model": "flux1-dev-fp8.safetensors",
+  "status": "ok"
+}
