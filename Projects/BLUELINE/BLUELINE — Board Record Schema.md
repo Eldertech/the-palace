@@ -26,12 +26,28 @@ tags: [meta, blueline, schema, contract, sync]
 
 A board record holds **everything except the pixels**: the authored control (pose / depth / edge / flow field), the identity reference, the descriptor, the seeds, the style lock — and now **when it happens in the song**. Every BLUELINE thread touches this object and nothing else needs to know about the others. That decoupling is what makes the threads parallel.
 
+## The author-time front: the staging spec → the board record
+
+Session 2's **staging spec** (`proofs/session-2-staging/alley-shot.staging.json`, schema in `staging-spec.schema.json`) and this board record are **the same object at two lifecycle stages** — both are "the source of truth that is not the pixels." The staging spec is the *author-time front*: the staging-AI turns a sentence into a **partial** record — vocabulary **resolved** (camera grammar, locomotion, pose-overlay, environment) plus a **`flagged`** list of what it refuses to fake. The **Bench (Track IV)** then *resolves the flagged items by rendering the actual control passes*, producing the **full** board record the runner executes. One object, authored → resolved → executed.
+
+| Staging spec (author-time, JSON) | → resolves into → | Board record (render-time) |
+|---|---|---|
+| `resolved.camera` (grammar + screen-constraints + solve) | Track IV camera solver | `CAMERA_GRAMMAR` + the registered `POSE`/`DEPTH`/`EDGE` framed by that camera |
+| `resolved.subject` (locomotion + sword-overlay + root + prop) | Track IV pose emission | `POSE` / `DEPTH` / `EDGE` passes + `CHARS` annotation |
+| `resolved.environment` (vocab + facades + vanishing point) | plate / depth source | `SETTING` + `DEPTH` plate |
+| `resolved.motion` (the *vector*) | Track V | `FLOW` handle (the *treatment* stays flagged) |
+| `flagged[]` (asset_kit / clip / motion_treatment / identity) | filled by IV / II / V over time | `FLAGGED` block — shrinks to empty as the record completes |
+
+**Format reconciliation (Session 2's "the spec is the interchange"):** the human-authorable/runner-parsed form is `board_template.txt` (BIBLE + BOARD blocks); the machine-interchange form is the staging-spec **JSON** shape. They are equivalent — a thin adapter converts (the staging-AI emits JSON; a converter writes the `board_template.txt` the runner reads, or the runner gains a JSON loader). Don't maintain two *contracts*; maintain one contract in two serializations. `CAMERA_GRAMMAR` and `FLAGGED` (below) are the two fields the staging spec contributed that the original template lacked.
+
 ## Who reads/writes which fields
 
 | Field group | Written by | Read by |
 |---|---|---|
 | `BAR` / `BEAT` / `FRAME` (the clock) | the Clock (Track III, from Ableton locators) | the runner (output naming), the sync mux |
 | `POSE` / `DEPTH` / `EDGE` / `NORMAL` (control passes) | the Bench (Track IV, Blender geometric emission) | the runner → ControlNet |
+| `CAMERA_GRAMMAR` (named grammar + on-screen-layout solve) | the staging-AI (author-time) → the Bench's camera solver (Track IV) | the Bench (frames the passes), the runner (provenance) |
+| `FLAGGED` (the flag-not-fake boundary) | the staging-AI; each track clears its items as it resolves them | a human + the runner (knows what is a deliberate placeholder vs final) |
 | `FLOW` (the field handle + scalar) | the Spine (Track V) | speed-line render, motion conditioning, sim |
 | `IDREF` / `id_study` / `id_piece` (identity) | the Face & Look (Track II, LoRA/FaceID/PuLID) | the runner → IP-Adapter / PuLID |
 | `STYLE_LOCK` / style LoRA | the Face & Look (Track II) | both graphs |
@@ -48,6 +64,12 @@ FRAME: 2448                  # derived: (bar,beat)→frame at locked fps; runner
 HOLD: 4                      # beats this board holds (comic register) — 0 if it expands
 EDGE: edge/04A_canny.png     # the SDXL edge channel (was missing)
 FLOW: fields/scene04.flow    # handle to the shared flow field (Track V), optional
+CAMERA_GRAMMAR: OTS | shoulder@0.30,0.74 vp@0.58,0.46 | lens 34
+                             # a NAMED grammar + its on-screen-layout solve (Session 2 / Track IV),
+                             # not raw coords — ANGLE elevated from human annotation to a solver target
+FLAGGED: asset_kit(greybox→kit TBD); motion_treatment(→flow-field); hero_identity(→IDREF)
+                             # the flag-not-fake boundary (Session 2): what is a DELIBERATE placeholder,
+                             # and what each item is waiting on. Empty when fully resolved.
 ```
 
 And to the `# === BIBLE ===`:
