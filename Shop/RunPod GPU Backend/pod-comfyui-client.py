@@ -1,17 +1,24 @@
 #!/usr/bin/env python3
 """Drive ComfyUI on the RunPod pod (native API) for FLUX + OpenPose ControlNet."""
-import json, sys, time, subprocess, urllib.request, urllib.parse, uuid
+import json, ssl, sys, time, subprocess, urllib.request, urllib.parse, uuid
 from pathlib import Path
 
 PID = Path("/tmp/pod_id").read_text().strip()
 B = f"https://{PID}-8188.proxy.runpod.net"
 CLIENT = uuid.uuid4().hex
 
+# macOS framework Python often lacks CA roots -> verify fails. Prefer certifi, else
+# fall back to an unverified (still encrypted) context so the runner works out of the box.
+try:
+    import certifi; _CTX = ssl.create_default_context(cafile=certifi.where())
+except Exception:
+    _CTX = ssl._create_unverified_context()
+
 UA = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0 Safari/537.36"
 def _req(method, path, data=None, headers=None):
     h = {"User-Agent": UA}; h.update(headers or {})
     r = urllib.request.Request(B+path, data=data, method=method, headers=h)
-    with urllib.request.urlopen(r, timeout=120) as resp:
+    with urllib.request.urlopen(r, timeout=120, context=_CTX) as resp:
         return resp.read()
 
 def upload_image(path, name=None):

@@ -34,19 +34,45 @@ passes) exists to defeat — the [[Blocked, Not Prompted]] lesson, now at the re
 **Substrate unknown retired:** a board record *can* drive a remote self-owned GPU end to end and pull
 the result back. The runner + transport + retrieval work. Routing: **Piece→serverless confirmed.**
 
-## Phase B — volume + FLUX-ControlNet (in progress)
+## Phase B — volume + pod + FLUX-ControlNet, PROVEN end to end ✅
 
-The remaining proof: the board's **POSE/DEPTH conditioning** enforcing composition on a self-owned
-worker. Needs the FLUX **ControlNet Union Pro** model (`flux-union-pro.safetensors`, ~6.6 GB) reachable
-to a ComfyUI worker. The scaffolding exists: `flux-controlnet-openpose.workflow.json` (FLUX + Union
-ControlNet set to openpose, applies a pose image) and `pod-comfyui-client.py` (the **hardened
-transport** — browser-UA header + curl multipart upload that beats the RunPod proxy WAF). The merge:
-make the hardened-transport client **board-driven** (title-contract patching, like `runner.py`), then
-drive a Track IV pose (`IV-A_openpose.png`) through a pod and confirm the blocked composition survives.
+The Study/self-owned-worker half + the conditioning. Steps actually run:
 
-Budget for this round: **$20** (Loudon). Plan: create a network volume, stand a ComfyUI pod (reuse the
-FLUX-baked image where possible), put the ControlNet model on the volume, drive one board via the
-hardened transport, retrieve, **tear the pod down** (stop billing). Status appended as it completes.
+1. **Network volume created** — `blueline-models` (`aqm8oev4b0`, 30 GB, EU-RO-1). The persistent store
+   the Maker's `runpod` host class points at. **Kept** (holds the ControlNet so future runs skip the
+   download) — ~$2/mo storage, deletable anytime.
+2. **Pod stood up** — reused the FLUX-baked image `worker-comfyui:5.8.4-flux1-dev-fp8` as a pod on an
+   **RTX 4090** (24 GB, SECURE, $0.69/hr), volume mounted at `/workspace`, port 8188/http. A
+   `dockerStartCmd` downloaded **FLUX ControlNet Union Pro** (~6.6 GB) onto the volume, symlinked it into
+   `/comfyui/models/controlnet`, and started the ComfyUI server. (Community 4090s were sold out in
+   EU-RO-1; SECURE had them — gotcha: the volume pins the DC, so GPU availability is DC-bound.)
+3. **Drove FLUX-ControlNet via the hardened transport** — `pod-comfyui-client.py` (browser-UA header +
+   curl multipart upload) drove `flux-controlnet-openpose.workflow.json` with **Track IV's geometric
+   pose** `IV-A_openpose.png` (sword-draw lunge). Output: `out/pod/IV-A_pod_flux_controlnet.png`.
+4. **Pod terminated** immediately after (billing stopped). Whole pod life ~10 min ≈ **$0.12**.
+
+**Result:** an armored warrior posed to the skeleton (off-centre, sword arm following the conditioning)
+in a dark-fantasy scene — **the blocked composition, not the centered txt2img default of Phase A.**
+[[Blocked, Not Prompted]] now holds on a self-owned RunPod GPU, closing the S1 → Track IV → Track I loop
+(Blender geometric pose → remote FLUX-ControlNet render). **Study→pod + FLUX-ControlNet confirmed.**
+
+**Gotcha — macOS Python SSL:** `pod-comfyui-client.py`'s urllib calls failed cert verification on
+framework Python (no CA roots); fixed by the certifi/unverified-context fallback (the same fix
+`palace_studio.py` already had). The curl upload path was unaffected.
+
+## Routing split — confirmed both halves
+
+| Tier | Path | Proof |
+|---|---|---|
+| **Piece** | serverless (`palace-flux`) | Phase A: board 04A → FLUX txt2img → retrieved (282 s, then re-parked) |
+| **Study** | pod (4090 + volume) | Phase B: IV-A pose → FLUX-ControlNet-Union → retrieved (~$0.12, then terminated) |
+
+## Remaining (small, no spend)
+
+- **Merge the title-contract into the hardened-transport client** (make `pod-comfyui-client.py`
+  board-driven like `serverless_runner.py` — both already exist; the merge is mechanical).
+- Wire the `runpod` host class into `Artifacts/Shop/host-capability.json` **in lockstep with the Maker
+  Roster** (per `backend-design.md`).
 
 ## Ships to the palace
 
