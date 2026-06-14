@@ -1,0 +1,146 @@
+{
+  "ckpt": {
+    "class_type": "CheckpointLoaderSimple",
+    "inputs": {
+      "ckpt_name": "flux1-dev-fp8.safetensors"
+    }
+  },
+  "pos": {
+    "class_type": "CLIPTextEncode",
+    "inputs": {
+      "text": "<PROMPT>",
+      "clip": [
+        "ckpt",
+        1
+      ]
+    }
+  },
+  "flux": {
+    "class_type": "FluxGuidance",
+    "inputs": {
+      "conditioning": [
+        "pos",
+        0
+      ],
+      "guidance": 3.5
+    }
+  },
+  "neg": {
+    "class_type": "CLIPTextEncode",
+    "inputs": {
+      "text": "",
+      "clip": [
+        "ckpt",
+        1
+      ]
+    }
+  },
+  "cnet": {
+    "class_type": "ControlNetLoader",
+    "inputs": {
+      "control_net_name": "flux-union-pro.safetensors"
+    }
+  },
+  "union": {
+    "class_type": "SetUnionControlNetType",
+    "inputs": {
+      "control_net": [
+        "cnet",
+        0
+      ],
+      "type": "openpose"
+    }
+  },
+  "pose": {
+    "class_type": "LoadImage",
+    "inputs": {
+      "image": "<POSE_IMAGE>.png"
+    }
+  },
+  "apply": {
+    "class_type": "ControlNetApplyAdvanced",
+    "inputs": {
+      "positive": [
+        "flux",
+        0
+      ],
+      "negative": [
+        "neg",
+        0
+      ],
+      "control_net": [
+        "union",
+        0
+      ],
+      "image": [
+        "pose",
+        0
+      ],
+      "strength": 0.75,
+      "start_percent": 0.0,
+      "end_percent": 0.85,
+      "vae": [
+        "ckpt",
+        2
+      ]
+    }
+  },
+  "latent": {
+    "class_type": "EmptySD3LatentImage",
+    "inputs": {
+      "width": 832,
+      "height": 1216,
+      "batch_size": 1
+    }
+  },
+  "samp": {
+    "class_type": "KSampler",
+    "inputs": {
+      "seed": 555,
+      "steps": 24,
+      "cfg": 1,
+      "sampler_name": "euler",
+      "scheduler": "simple",
+      "denoise": 1,
+      "model": [
+        "ckpt",
+        0
+      ],
+      "positive": [
+        "apply",
+        0
+      ],
+      "negative": [
+        "apply",
+        1
+      ],
+      "latent_image": [
+        "latent",
+        0
+      ]
+    }
+  },
+  "dec": {
+    "class_type": "VAEDecode",
+    "inputs": {
+      "samples": [
+        "samp",
+        0
+      ],
+      "vae": [
+        "ckpt",
+        2
+      ]
+    }
+  },
+  "save": {
+    "class_type": "SaveImage",
+    "inputs": {
+      "filename_prefix": "walkframe",
+      "images": [
+        "dec",
+        0
+      ]
+    }
+  }
+}

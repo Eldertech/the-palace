@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>RunPod Image Run — The Palace</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Cormorant:ital,wght@0,400;0,600;1,400&family=Manrope:wght@400;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#17181a;--panel:#1e2024;--line:#2b2e33;--ink:#e9e6e0;--mut:#9aa0a6;--amber:#e8a33d;}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:'Cormorant',Georgia,serif;font-size:19px;line-height:1.5}
+header{padding:64px 6vw 28px;border-bottom:1px solid var(--line)}
+h1{font-family:'Anton',sans-serif;font-weight:400;font-size:clamp(40px,7vw,86px);letter-spacing:.01em;margin:0;text-transform:uppercase;line-height:.98}
+.sub{font-family:'Manrope',sans-serif;color:var(--mut);font-size:15px;margin-top:14px;max-width:60ch}
+.stats{display:flex;flex-wrap:wrap;gap:14px;padding:28px 6vw;border-bottom:1px solid var(--line);background:var(--panel)}
+.stat{display:flex;flex-direction:column;min-width:130px}
+.stat .num{font-family:'Anton',sans-serif;font-size:34px;color:var(--amber);line-height:1}
+.stat .lbl{font-family:'Manrope',sans-serif;font-size:12px;color:var(--mut);text-transform:uppercase;letter-spacing:.08em;margin-top:6px}
+section{padding:46px 6vw;border-bottom:1px solid var(--line)}
+h2{font-family:'Anton',sans-serif;font-weight:400;font-size:clamp(24px,3.4vw,40px);text-transform:uppercase;letter-spacing:.01em;margin:0 0 6px}
+.blurb{font-family:'Manrope',sans-serif;color:var(--mut);font-size:14px;margin:0 0 26px;max-width:70ch}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(330px,1fr));gap:22px}
+.card{margin:0;background:var(--panel);border:1px solid var(--line);border-radius:6px;overflow:hidden;display:flex;flex-direction:column}
+.card img{width:100%;display:block;background:#000;aspect-ratio:auto}
+figcaption{padding:16px 18px 18px}
+figcaption h3{font-family:'Cormorant',serif;font-weight:600;font-size:23px;margin:0 0 2px}
+.style{font-family:'Manrope',sans-serif;font-size:12px;text-transform:uppercase;letter-spacing:.07em;color:var(--amber);margin:0 0 10px}
+.prompt{font-family:'JetBrains Mono',monospace;font-size:11.5px;line-height:1.55;color:#c4c8cd;margin:0 0 12px;white-space:pre-wrap}
+.meta{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--mut);margin:0;border-top:1px solid var(--line);padding-top:10px}
+footer{padding:40px 6vw;font-family:'Manrope',sans-serif;font-size:12px;color:var(--mut);text-transform:uppercase;letter-spacing:.12em}
+.report{padding:46px 6vw;border-bottom:1px solid var(--line)}
+.report h2{margin-bottom:18px}
+.report p, .report li{font-family:'Manrope',sans-serif;font-size:14px;color:#c4c8cd;line-height:1.65;max-width:80ch}
+.report h3{font-family:'Manrope',sans-serif;font-size:13px;text-transform:uppercase;letter-spacing:.08em;color:var(--amber);margin:24px 0 8px}
+code{font-family:'JetBrains Mono',monospace;font-size:12.5px;color:var(--amber)}
+</style></head>
+<body>
+<header>
+  <h1>The Palace · RunPod Image Run</h1>
+  <p class="sub">38 images generated on a self-provisioned RunPod serverless endpoint — from a single palace icon to landscapes, posters, and cinematic studies. Every prompt and the full cost / time / technology report below.</p>
+</header>
+<div class="stats"><div class="stat"><span class="num">38</span><span class="lbl">images generated</span></div><div class="stat"><span class="num">0</span><span class="lbl">failures</span></div><div class="stat"><span class="num">526s</span><span class="lbl">total GPU compute</span></div><div class="stat"><span class="num">13.8s</span><span class="lbl">average per image</span></div><div class="stat"><span class="num">~$0.32</span><span class="lbl">total spend (all-in)</span></div><div class="stat"><span class="num">~$0.007</span><span class="lbl">cost per image</span></div></div>
+<section><h2>The Palace Icon</h2><p class="blurb">The piece that started it. Our brief: the palace as a living knowledge organism.</p><div class="grid"><figure class="card">
+  <img loading="lazy" src="Palace Icon.png" alt="Palace Icon">
+  <figcaption>
+    <h3>Palace Icon</h3>
+    <p class="style">Isometric digital palace</p>
+    <p class="prompt">An isometric icon of a digital palace rendered as a living knowledge organism — its walls, archways, and spires formed from a luminous interconnected network of glowing nodes and edges, like an architectural graph that grew rather than was built. Four slender pillars frame the entrance. Rhizomatic root-like filaments branch and connect beneath the structure, suggesting growth and aliveness. Warm graphite-and-amber palette, fine geometric linework, soft inner glow, dark neutral background. Elegant, minimal, centered icon composition, highly detailed, crisp.</p>
+    <p class="meta">1024×1024 · SDXL · 29.9s</p>
+  </figcaption>
+</figure></div></section>
+<section><h2>Cinematic Studies</h2><p class="blurb">Three bold one-offs exploring photorealism and a retro painted cover.</p><div class="grid"><figure class="card">
+  <img loading="lazy" src="irish_castle.png" alt="Irish Castle, Foggy Sunrise">
+  <figcaption>
+    <h3>Irish Castle, Foggy Sunrise</h3>
+    <p class="style">Photorealistic cinematic</p>
+    <p class="prompt">Photorealistic cinematic photograph of an ancient Irish castle on a rugged sea cliff at foggy sunrise. Weathered grey stone keep and crumbling moss-covered battlements rising from rolling emerald hills, thick low fog clinging to the valley, golden sunrise light breaking through the mist, dramatic god rays, dew-soaked grass, a lone murder of crows in the distance. Moody, atmospheric, ultra-detailed, hyperrealistic, 8k, 35mm lens, volumetric light.</p>
+    <p class="meta">1216×832 · SDXL · 22.4s</p>
+  </figcaption>
+</figure><figure class="card">
+  <img loading="lazy" src="norse_goddess.png" alt="Norse Goddess Warrior">
+  <figcaption>
+    <h3>Norse Goddess Warrior</h3>
+    <p class="style">Photorealistic cinematic</p>
+    <p class="prompt">Photorealistic cinematic portrait of a beautiful Norse goddess warrior kneeling in solemn prayer before a towering wooden pagan temple engulfed in roaring flames that she has just set alight. Long braided blonde hair, intricately engraved silver armor and a heavy fur cloak, faded blue war paint, eyes closed in fierce reverence, an iron sword planted in the earth before her. Carved wooden totems and a wall of fire behind her, glowing embers and sparks drifting through the night air, warm orange firelight raking across her face, smoke curling into a cold starlit sky. Epic, dramatic, mythological, hyperrealistic, volumetric lighting, 8k, cinematic.</p>
+    <p class="meta">832×1216 · SDXL · 10.8s</p>
+  </figcaption>
+</figure><figure class="card">
+  <img loading="lazy" src="space_whale_blackhole.png" alt="Space-Whale &amp; Black Hole">
+  <figcaption>
+    <h3>Space-Whale &amp; Black Hole</h3>
+    <p class="style">1980s sci-fi paperback cover</p>
+    <p class="prompt">A classic 1980s science-fiction paperback book cover painting, airbrushed retro-futurist illustration, painterly gouache with soft airbrush gradients, vintage print grain. A colossal black hole devouring a binary star system, twin suns stretched into glowing ribbons of plasma spiraling into a luminous accretion disk, gravitational lensing warping the starfield. A vast bioluminescent celestial space-whale with constellations glowing along its translucent body gently tends to its small whale calves caught at the edge of the swirling gravity well, shielding them with great fins. Bold saturated retro palette of amber, magenta, violet and deep space blue, a lone tiny spacecraft for scale. Iconic vintage sci-fi cover art, epic, awe-inspiring.</p>
+    <p class="meta">832×1216 · SDXL · 22.9s</p>
+  </figcaption>
+</figure></div></section>
+<section><h2>Jovian Moons — Travel Agency Posters</h2><p class="blurb">A space-faring future as imagined from the 1940s. Four Jovian moons.</p><div class="grid"><figure class="card">
+  <img loading="lazy" src="posters/poster_io.png" alt="Vacation on Io">
+  <figcaption>
+    <h3>Vacation on Io</h3>
+    <p class="style">Atomic-age travel poster</p>
+    <p class="prompt">VISIT IO — Io&#x27;s sulfur-yellow volcanic plumes erupting against a black sky, glowing lava lakes, a sleek art-deco rocket on a launch gantry, banded Jupiter looming on the horizon. — 1940s retro-futurist travel poster, art-deco / streamline-moderne, bold flat color blocks, vintage screen-print texture, optimistic atomic-age futurism.</p>
+    <p class="meta">832×1216 · SDXL · 23.6s</p>
+  </figcaption>
+</figure><figure class="card">
+  <img loading="lazy" src="posters/poster_europa.png" alt="Vacation on Europa">
+  <figcaption>
+    <h3>Vacation on Europa</h3>
+    <p class="style">Atomic-age travel poster</p>
+    <p class="prompt">VISIT EUROPA — a cracked turquoise frozen ocean, retro tourists ice-skating and diving beneath glowing ice, a streamline dome resort, Jupiter and moons in a starry sky. — 1940s retro-futurist travel poster, art-deco / streamline-moderne, bold flat color blocks, vintage screen-print texture, optimistic atomic-age futurism.</p>
+    <p class="meta">832×1216 · SDXL · 10.8s</p>
+  </figcaption>
+</figure><figure class="card">
+  <img loading="lazy" src="posters/poster_ganymede.png" alt="Vacation on Ganymede">
+  <figcaption>
+    <h3>Vacation on Ganymede</h3>
+    <p class="style">Atomic-age travel poster</p>
+    <p class="prompt">VISIT GANYMEDE — rugged grooved terrain, a gleaming art-deco domed colony city with monorails, shimmering auroras, a finned rocketliner, mighty Jupiter rising. — 1940s retro-futurist travel poster, art-deco / streamline-moderne, bold flat color blocks, vintage screen-print texture, optimistic atomic-age futurism.</p>
+    <p class="meta">832×1216 · SDXL · 11.5s</p>
+  </figcaption>
+</figure><figure class="card">
+  <img loading="lazy" src="posters/poster_callisto.png" alt="Vacation on Callisto">
+  <figcaption>
+    <h3>Vacation on Callisto</h3>
+    <p class="style">Atomic-age travel poster</p>
+    <p class="prompt">VISIT CALLISTO — a vast cratered indigo landscape under a brilliant starfield, a retro observatory &amp; spa resort with glowing viewports, tourists gazing at distant Jupiter. — 1940s retro-futurist travel poster, art-deco / streamline-moderne, bold flat color blocks, vintage screen-print texture, optimistic atomic-age futurism.</p>
+    <p class="meta">832×1216 · SDXL · 10.9s</p>
+  </figcaption>
+</figure></div></section>
+<section><h2>15 Palace-Icon Variations</h2><p class="blurb">Same brief, fifteen slightly different prompts — a throughput test across parallel workers.</p><div class="grid"><figure class="card">
+  <img loading="lazy" src="variations/palace_var_01.png" alt="Variation 01">
+  <figcaption>
+    <h3>Variation 01</h3>
+    <p class="style">Palace icon study</p>
+    <p class="prompt">An isometric icon of a digital palace rendered as a living knowledge organism — its walls and spires formed from a luminous interconnected network of glowing nodes and edges. Four pillars frame the entrance. Rhizomatic root-like filaments branch beneath it. Fine geometric linework, soft inner glow, dark neutral background, centered icon composition, highly detailed. Warm amber and graphite palette, gothic cathedral architecture.</p>
+    <p class="meta">1024×1024 · SDXL · 22.8s</p>
+  </figcaption>
+</figure><figure class="card">
+  <img loading="lazy" src="variations/palace_var_02.png" alt="Variation 02">
+  <figcaption>
+    <h3>Variation 02</h3>
+    <p class="style">Palace icon study</p>
+    <p class="prompt">An isometric icon of a digital palace rendered as a living knowledge organism — its walls and spires formed from a luminous interconnected network of glowing nodes and edges. Four pillars frame the entrance. Rhizomatic root-like filaments branch beneath it. Fine geometric linework, soft inner glow, dark neutral background, centered icon composition, highly detailed. Deep ember-orange and charcoal palette, byzantine domes.</p>
+    <p class="meta">1024×1024 · SDXL · 10.6s</p>
+  </figcaption>
+</figure><figure class="card">
+  <img loading="lazy" src="variations/palace_var_03.png" alt="Variation 03">
+  <figcaption>
+    <h3>Variation 03</h3>
+    <p class="style">Palace icon study</p>
+    <p class="prompt">An isometric icon of a digital palace rendered as a living knowledge organism — its walls and spires formed from a luminous interconnected network of glowing nodes and edges. Four pillars frame the entrance. Rhizomatic root-like filaments branch beneath it. Fine geometric linework, soft inner glow, dark neutral background, centered icon composition, highly detailed. Pale gold and slate palette, art deco ziggurat tiers.</p>
+    <p class="meta">1024×1024 · SDXL · 10.4s</p>
+  </figcaption>
+</figure><figure class="card">
+  <img loading="lazy" src="variations/palace_var_04.png" alt="Variation 04">
+  <figcaption>
+    <h3>Variation 04</h3>
+    <p class="style">Palace icon study</p>
+    <p class="prompt">An isometric icon of a digital palace rendered as a living knowledge organism — its walls and spires formed from a luminous interconnected network of glowing nodes and edges. Four pillars frame the entrance. Rhizomatic root-like filaments branch beneath it. Fine geometric linework, soft inner glow, dark neutral background, centered icon composition, highly detailed. Honey-amber glow, baroque ornamentation, ornate arches.</p>
+    <p class="meta">1024×1024 · SDXL · 10.4s</p>
+  </figcaption>
+</figure><figure class="card">
+  <img loading="lazy" src="variations/palace_var_05.png" alt="Variation 05">
+  <figcaption>
+    <h3>Variation 05</h3>
+    <p class="style">Palace icon study</p>
+    <p class="prompt">An isometric icon of a digital palace rendered as a living knowledge organism — its walls and spires formed from a luminous interconnected network of glowing nodes and edges. Four pillars frame the entrance. Rhizomatic root-like filaments branch beneath it. Fine geometric linework, soft inner glow, dark neutral background, centered icon composition, highly detailed. Muted bronze and ink palette, brutalist blocky massing.</p>
+    <p class="meta">1024×1024 · SDXL · 10.5s</p>
+  </figcaption>
+</figure><figure class="card">
+  <img loading="lazy" src="variations/palace_var_06.png" alt="Variation 06">
+  <figcaption>
+    <h3>Variation 06</h3>
+    <p class="style">Palace icon study</p>
+    <p class="prompt">An isometric icon of a digital palace rendered as a living knowledge organism — its walls and spires formed from a luminous interconnected network of glowing nodes and edges. Four pillars frame the entrance. Rhizomatic root-like filaments branch beneath it. Fine geometric linework, soft inner glow, dark neutral background, centered icon composition, highly detailed. Soft violet and graphite palette, slender minaret towers.</p>
+    <p class="meta">1024×1024 · SDXL · 10.6s</p>
+  </figcaption>
+</figure><figure class="card">
+  <img loading="lazy" src="variations/palace_var_07.png" alt="Variation 07">
+  <figcaption>
+    <h3>Variation 07</h3>
+    <p class="style">Palace icon study</p>
+    <p class="prompt">An isometric icon of a digital palace rendered as a living knowledge organism — its walls and spires formed from a luminous interconnected network of glowing nodes and edges. Four pillars frame the entrance. Rhizomatic root-like filaments branch beneath it. Fine geometric linework, soft inner glow, dark neutral background, centered icon composition, highly detailed. Amber with deep teal accents, crystalline faceted walls.</p>
+    <p class="meta">1024×1024 · SDXL · 10.8s</p>
+  </figcaption>
+</figure><figure class="card">
+  <img loading="lazy" src="variations/palace_var_08.png" alt="Variation 08">
+  <figcaption>
+    <h3>Variation 08</h3>
+    <p class="style">Palace icon study</p>
+    <p class="prompt">An isometric icon of a digital palace rendered as a living knowledge organism — its walls and spires formed from a luminous interconnected network of glowing nodes and edges. Four pillars frame the entrance. Rhizomatic root-like filaments branch beneath it. Fine geometric linework, soft inner glow, dark neutral background, centered icon composition, highly detailed. Warm copper tones, a grand central dome flanked by spires.</p>
+    <p class="meta">1024×1024 · SDXL · 10.8s</p>
+  </figcaption>
+</figure><figure class="card">
+  <img loading="lazy" src="variations/palace_var_09.png" alt="Variation 09">
+  <figcaption>
+    <h3>Variation 09</h3>
+    <p class="style">Palace icon study</p>
+    <p class="prompt">An isometric icon of a digital palace rendered as a living knowledge organism — its walls and spires formed from a luminous interconnected network of glowing nodes and edges. Four pillars frame the entrance. Rhizomatic root-like filaments branch beneath it. Fine geometric linework, soft inner glow, dark neutral background, centered icon composition, highly detailed. Golden filament network dense like circuitry, low flat palace.</p>
+    <p class="meta">1024×1024 · SDXL · 11.0s</p>
+  </figcaption>
+</figure><figure class="card">
+  <img loading="lazy" src="variations/palace_var_10.png" alt="Variation 10">
+  <figcaption>
+    <h3>Variation 10</h3>
+    <p class="style">Palace icon study</p>
+    <p class="prompt">An isometric icon of a digital palace rendered as a living knowledge organism — its walls and spires formed from a luminous interconnected network of glowing nodes and edges. Four pillars frame the entrance. Rhizomatic root-like filaments branch beneath it. Fine geometric linework, soft inner glow, dark neutral background, centered icon composition, highly detailed. Amber palette, one tall central spire rising from a stepped base.</p>
+    <p class="meta">1024×1024 · SDXL · 10.7s</p>
+  </figcaption>
+</figure><figure class="card">
+  <img loading="lazy" src="variations/palace_var_11.png" alt="Variation 11">
+  <figcaption>
+    <h3>Variation 11</h3>
+    <p class="style">Palace icon study</p>
+    <p class="prompt">An isometric icon of a digital palace rendered as a living knowledge organism — its walls and spires formed from a luminous interconnected network of glowing nodes and edges. Four pillars frame the entrance. Rhizomatic root-like filaments branch beneath it. Fine geometric linework, soft inner glow, dark neutral background, centered icon composition, highly detailed. Ember glow, palace as a tree-like growth of arches and roots.</p>
+    <p class="meta">1024×1024 · SDXL · 10.7s</p>
+  </figcaption>
+</figure><figure class="card">
+  <img loading="lazy" src="variations/palace_var_12.png" alt="Variation 12">
+  <figcaption>
+    <h3>Variation 12</h3>
+    <p class="style">Palace icon study</p>
+    <p class="prompt">An isometric icon of a digital palace rendered as a living knowledge organism — its walls and spires formed from a luminous interconnected network of glowing nodes and edges. Four pillars frame the entrance. Rhizomatic root-like filaments branch beneath it. Fine geometric linework, soft inner glow, dark neutral background, centered icon composition, highly detailed. Pale amber wireframe blueprint aesthetic, faint glow, technical.</p>
+    <p class="meta">1024×1024 · SDXL · 10.8s</p>
+  </figcaption>
+</figure><figure class="card">
+  <img loading="lazy" src="variations/palace_var_13.png" alt="Variation 13">
+  <figcaption>
+    <h3>Variation 13</h3>
+    <p class="style">Palace icon study</p>
+    <p class="prompt">An isometric icon of a digital palace rendered as a living knowledge organism — its walls and spires formed from a luminous interconnected network of glowing nodes and edges. Four pillars frame the entrance. Rhizomatic root-like filaments branch beneath it. Fine geometric linework, soft inner glow, dark neutral background, centered icon composition, highly detailed. Rich gold and black, symmetrical twin-tower gatehouse.</p>
+    <p class="meta">1024×1024 · SDXL · 10.8s</p>
+  </figcaption>
+</figure><figure class="card">
+  <img loading="lazy" src="variations/palace_var_14.png" alt="Variation 14">
+  <figcaption>
+    <h3>Variation 14</h3>
+    <p class="style">Palace icon study</p>
+    <p class="prompt">An isometric icon of a digital palace rendered as a living knowledge organism — its walls and spires formed from a luminous interconnected network of glowing nodes and edges. Four pillars frame the entrance. Rhizomatic root-like filaments branch beneath it. Fine geometric linework, soft inner glow, dark neutral background, centered icon composition, highly detailed. Warm amber, organic flowing vaulted ceilings, cavernous inner glow.</p>
+    <p class="meta">1024×1024 · SDXL · 10.8s</p>
+  </figcaption>
+</figure><figure class="card">
+  <img loading="lazy" src="variations/palace_var_15.png" alt="Variation 15">
+  <figcaption>
+    <h3>Variation 15</h3>
+    <p class="style">Palace icon study</p>
+    <p class="prompt">An isometric icon of a digital palace rendered as a living knowledge organism — its walls and spires formed from a luminous interconnected network of glowing nodes and edges. Four pillars frame the entrance. Rhizomatic root-like filaments branch beneath it. Fine geometric linework, soft inner glow, dark neutral background, centered icon composition, highly detailed. Amber and graphite, palace floating above its rhizome roots.</p>
+    <p class="meta">1024×1024 · SDXL · 22.0s</p>
+  </figcaption>
+</figure></div></section>
+<section><h2>15 American Landscapes, 15 Art Styles</h2><p class="blurb">One country, fifteen ways of seeing it.</p><div class="grid"><figure class="card">
+  <img loading="lazy" src="landscapes/land_01_grandcanyon_sumi.png" alt="Grand Canyon">
+  <figcaption>
+    <h3>Grand Canyon</h3>
+    <p class="style">Japanese sumi-e watercolor</p>
+    <p class="prompt">The Grand Canyon at dawn, layered mesas and the winding Colorado River, painted as a delicate Japanese sumi-e ink-and-watercolor, soft washes, visible brush strokes, lots of negative space, muted earth tones.</p>
+    <p class="meta">1216×832 · SDXL · 22.4s</p>
+  </figcaption>
+</figure><figure class="card">
+  <img loading="lazy" src="landscapes/land_02_yosemite_dutch.png" alt="Yosemite Valley">
+  <figcaption>
+    <h3>Yosemite Valley</h3>
+    <p class="style">Dutch Golden Age oil painting</p>
+    <p class="prompt">Yosemite Valley with El Capitan and waterfalls, rendered as a Dutch Golden Age oil painting, dramatic chiaroscuro, deep shadows and golden light, rich varnished tones, baroque clouds.</p>
+    <p class="meta">1216×832 · SDXL · 22.0s</p>
+  </figcaption>
+</figure><figure class="card">
+  <img loading="lazy" src="landscapes/land_03_monumentvalley_bauhaus.png" alt="Monument Valley">
+  <figcaption>
+    <h3>Monument Valley</h3>
+    <p class="style">Bauhaus geometric</p>
+    <p class="prompt">Monument Valley buttes and desert, reimagined as a Bauhaus composition, bold flat geometric shapes, primary colors, clean lines, modernist abstraction.</p>
+    <p class="meta">1216×832 · SDXL · 21.9s</p>
+  </figcaption>
+</figure><figure class="card">
+  <img loading="lazy" src="landscapes/land_04_vermont_impressionism.png" alt="Vermont Autumn Forest">
+  <figcaption>
+    <h3>Vermont Autumn Forest</h3>
+    <p class="style">French Impressionism</p>
+    <p class="prompt">A Vermont forest in peak autumn color, painted in French Impressionist style, loose dappled brushwork, vibrant broken color, shimmering light through foliage.</p>
+    <p class="meta">1216×832 · SDXL · 22.2s</p>
+  </figcaption>
+</figure><figure class="card">
+  <img loading="lazy" src="landscapes/land_05_rainier_ukiyoe.png" alt="Mount Rainier">
+  <figcaption>
+    <h3>Mount Rainier</h3>
+    <p class="style">Ukiyo-e woodblock print</p>
+    <p class="prompt">Mount Rainier rising above evergreen forests, as a Japanese ukiyo-e woodblock print, flat color planes, bold outlines, stylized clouds, limited palette, vintage print texture.</p>
+    <p class="meta">1216×832 · SDXL · 10.3s</p>
+  </figcaption>
+</figure><figure class="card">
+  <img loading="lazy" src="landscapes/land_06_everglades_artnouveau.png" alt="Florida Everglades">
+  <figcaption>
+    <h3>Florida Everglades</h3>
+    <p class="style">Art Nouveau</p>
+    <p class="prompt">The Florida Everglades with herons and cypress, in Art Nouveau style, sinuous organic lines, decorative flowing forms, muted jewel tones, ornamental border.</p>
+    <p class="meta">1216×832 · SDXL · 10.1s</p>
+  </figcaption>
+</figure><figure class="card">
+  <img loading="lazy" src="landscapes/land_07_greatplains_pointillism.png" alt="Kansas Great Plains">
+  <figcaption>
+    <h3>Kansas Great Plains</h3>
+    <p class="style">Pointillism</p>
+    <p class="prompt">Endless Kansas wheat plains under a huge sky, rendered in Pointillism, tiny distinct dots of pure color, shimmering optical blending, warm golden light.</p>
+    <p class="meta">1216×832 · SDXL · 10.1s</p>
+  </figcaption>
+</figure><figure class="card">
+  <img loading="lazy" src="landscapes/land_08_smokies_inkwash.png" alt="Great Smoky Mountains">
+  <figcaption>
+    <h3>Great Smoky Mountains</h3>
+    <p class="style">Chinese shan shui ink wash</p>
+    <p class="prompt">The Great Smoky Mountains in layered misty ridges, as a Chinese shan shui ink-wash landscape, soft graded ink, floating fog, sparse and meditative.</p>
+    <p class="meta">1216×832 · SDXL · 10.2s</p>
+  </figcaption>
+</figure><figure class="card">
+  <img loading="lazy" src="landscapes/land_09_joshuatree_wpa.png" alt="Mojave / Joshua Tree">
+  <figcaption>
+    <h3>Mojave / Joshua Tree</h3>
+    <p class="style">Mid-century WPA travel poster</p>
+    <p class="prompt">The Mojave desert with Joshua trees at sunset, as a mid-century WPA travel poster, bold flat color blocks, stylized shapes, screenprint texture, dramatic graphic composition.</p>
+    <p class="meta">1216×832 · SDXL · 10.2s</p>
+  </figcaption>
+</figure><figure class="card">
+  <img loading="lazy" src="landscapes/land_10_maine_tonalism.png" alt="Maine Rocky Coast">
+  <figcaption>
+    <h3>Maine Rocky Coast</h3>
+    <p class="style">Tonalism</p>
+    <p class="prompt">The rocky coast of Maine at dusk, painted in Tonalism, soft hazy atmosphere, muted limited palette, quiet moody evening light, subtle gradations.</p>
+    <p class="meta">1216×832 · SDXL · 10.0s</p>
+  </figcaption>
+</figure><figure class="card">
+  <img loading="lazy" src="landscapes/land_11_rockies_hudsonriver.png" alt="Colorado Rockies">
+  <figcaption>
+    <h3>Colorado Rockies</h3>
+    <p class="style">Hudson River School luminism</p>
+    <p class="prompt">The Colorado Rocky Mountains, in the Hudson River School luminist style, glowing atmospheric light, meticulous detail, grand romantic wilderness, golden god rays.</p>
+    <p class="meta">1216×832 · SDXL · 10.1s</p>
+  </figcaption>
+</figure><figure class="card">
+  <img loading="lazy" src="landscapes/land_12_appalachia_cubism.png" alt="Appalachian Ridges">
+  <figcaption>
+    <h3>Appalachian Ridges</h3>
+    <p class="style">Analytic Cubism</p>
+    <p class="prompt">Forested Appalachian ridgelines, reimagined in Analytic Cubism, fractured faceted planes, overlapping geometric forms, muted browns and greys, multiple perspectives.</p>
+    <p class="meta">1216×832 · SDXL · 10.0s</p>
+  </figcaption>
+</figure><figure class="card">
+  <img loading="lazy" src="landscapes/land_13_alaska_romanticism.png" alt="Alaskan Glacier Fjord">
+  <figcaption>
+    <h3>Alaskan Glacier Fjord</h3>
+    <p class="style">German Romanticism</p>
+    <p class="prompt">An Alaskan glacier fjord with towering ice and a lone figure, in German Romanticism style, sublime awe, dramatic scale, misty mountains, contemplative solitude.</p>
+    <p class="meta">1216×832 · SDXL · 10.1s</p>
+  </figcaption>
+</figure><figure class="card">
+  <img loading="lazy" src="landscapes/land_14_hawaii_fauvism.png" alt="Hawaiian Volcanic Coast">
+  <figcaption>
+    <h3>Hawaiian Volcanic Coast</h3>
+    <p class="style">Fauvism</p>
+    <p class="prompt">A Hawaiian volcanic coastline with surf and palms, in Fauvist style, wild non-naturalistic bold colors, expressive thick brushwork, vivid emotional intensity.</p>
+    <p class="meta">1216×832 · SDXL · 10.2s</p>
+  </figcaption>
+</figure><figure class="card">
+  <img loading="lazy" src="landscapes/land_15_utaharches_artdeco.png" alt="Utah Arches">
+  <figcaption>
+    <h3>Utah Arches</h3>
+    <p class="style">Art Deco</p>
+    <p class="prompt">Delicate Arch and Utah canyonlands, rendered in Art Deco style, elegant symmetry, streamlined forms, metallic gold and sunset hues, geometric sunburst sky.</p>
+    <p class="meta">1216×832 · SDXL · 10.1s</p>
+  </figcaption>
+</figure></div></section>
+
+<div class="report">
+  <h2>The Report</h2>
+  <h3>What was built</h3>
+  <p>Starting from no infrastructure, a RunPod <strong>serverless endpoint</strong> was provisioned end-to-end on the account via API: a template pointing at the <code>runpod/worker-comfyui:5.8.4-sdxl</code> worker image, an 80&nbsp;GB container disk, and a GPU pool of 24&nbsp;GB–48&nbsp;GB cards. The endpoint scales to zero when idle and was driven entirely over HTTPS by a small Python client (<code>runpod_specialist.py</code>) — submit job → poll → decode → save.</p>
+  <h3>Technology</h3>
+  <p>Model: <strong>Stable Diffusion XL base 1.0</strong> running inside <strong>ComfyUI</strong> (RunPod's <code>worker-comfyui</code>). Sampling: <code>dpmpp_2m / karras</code>, 32–36 steps, CFG 7.0–7.5. Images returned as base64 in the job output and written to disk. GPUs that served jobs were drawn from the pool — primarily an <strong>RTX A4500 (20&nbsp;GB)</strong> in the EU-RO-1 datacenter, with additional workers spun up for parallelism.</p>
+  <h3>Time</h3>
+  <p>Total GPU execution across 38 images: <strong>526 seconds</strong> (~8.8 min), averaging <strong>13.8s per image</strong>. Generation itself is fast; the real latency was one-time <strong>cold starts</strong> — the SDXL worker image is ~19&nbsp;GB compressed, so the first worker on a fresh host spent several minutes pulling and extracting it (observed cold-start delays: median ~44s, max ~180s once warm pulls kicked in). Once a worker was warm, images flowed in ~13s each, and running up to 5 workers in parallel cleared the 15-image batches in roughly a minute of wall-clock each.</p>
+  <h3>Cost</h3>
+  <p>Total spend for the entire session — including all the provisioning trial-and-error — was about <strong>$0.32</strong>. The 38 delivered images accounted for roughly <strong>$0.27</strong>, or about <strong>$0.007 per image</strong>. Serverless billed only for active compute; the endpoint costs nothing while scaled to zero. Storage and egress were negligible (RunPod charges no egress).</p>
+  <h3>The one real snag</h3>
+  <p>The initial FLUX-schnell worker image bundles full-precision weights (~24&nbsp;GB) that don't fit a 24&nbsp;GB card, so ComfyUI OOM'd and the worker accepted no jobs. Switching to the lighter SDXL image fixed it. Lesson for the backend doc: match the worker image's VRAM footprint to the GPU pool, and be patient through the first cold pull rather than recycling workers mid-extract.</p>
+</div>
+<footer>Loudon Live · Autodidact Polymaths</footer>
+</body></html>

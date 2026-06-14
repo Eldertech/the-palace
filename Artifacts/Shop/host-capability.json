@@ -3,7 +3,8 @@
   "host_classes": {
     "mac": "Loudon's machine. Full tier — MPS GPU, Max/MSP, VCV Rack, Chromium, LaTeX. Everything runs.",
     "sandbox": "Cowork Linux arm64, no sudo, no GPU. Web specialists, Matplotlib, Mermaid, ffmpeg, Whisper (CPU).",
-    "cloud": "API-reachable services. Currently FLUX (Hugging Face Inference); Midjourney deprecated 2026-05-30 in favour of FLUX."
+    "cloud": "API-reachable services. Currently FLUX (Hugging Face Inference); Midjourney deprecated 2026-05-30 in favour of FLUX.",
+    "runpod": "Rented GPU we own the worker on. Serverless endpoints (scale-to-zero, per-second) and on-demand pods (continuous bill, but full ComfyUI + ControlNet/LoRA). Reachable from any host via HTTPS; solves the no-GPU/quota wall. Serverless for spiky batches, pod for ControlNet/iteration. See [[RunPod GPU Backend]]."
   },
   "specialists": {
     "Kokoro":              { "medium": "sound",       "requires": ["local-tts-model"],            "hosts": ["mac"],                          "fallback": "loudon-voice-recording", "fallback_note": "Use Loudon's recording when the piece is published as Loudon; otherwise defer to mac." },

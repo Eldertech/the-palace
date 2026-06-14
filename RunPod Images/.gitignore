@@ -1,0 +1,15 @@
+# Deposit-scope decision (2026-06-14): commit reports + contact sheets + the small
+# Palace Studio tooling only. The heavy galleries (variations / landscapes / posters /
+# flux heroes / Icon) and the movies (gif/mp4) stay on local disk, out of the palace repo.
+*.png
+*.gif
+*.mp4
+# ...but keep the contact sheets (they ARE the evidence we want in git):
+!*contact_sheet*.png
+
+# secrets + runtime junk (studio/.gitignore also covers these)
+studio/config.json
+studio/.studio.pid
+studio/.studio.log
+**/__pycache__/
+.DS_Store

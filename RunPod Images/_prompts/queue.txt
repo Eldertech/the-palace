@@ -1,0 +1,9 @@
+# Palace image queue — your prompts go to the GPU EXACTLY as written here.
+# One image per line. Blank lines and lines starting with # are ignored.
+# Optional settings after a pipe:   prompt | WIDTHxHEIGHT | seed
+#   - default size is 1024x1024; default seed is random
+# Examples (delete or edit these):
+
+A woman whose face is covered in thousands of tiny diamonds, weeping blood-red ruby tears, dramatic chiaroscuro lighting, blue lips, hair of woven gold threads | 832x1216
+
+A vast canyon at golden sunrise, cinematic, photorealistic | 1216x832 | 42
