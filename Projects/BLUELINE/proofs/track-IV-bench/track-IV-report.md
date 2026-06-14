@@ -55,9 +55,31 @@ bundle-docs-before-skills, it's grown here in the BLUELINE proofs first; promote
 stable across more shots. The camera-grammar solver is reusable for **any** character imagery, not just
 BLUELINE.
 
+## Environment extension — IV-D (2026-06-14, closes the OTS flag)
+
+`bench_env.py` folds the S2 alley into the bench and adds the missing piece:
+
+- **An environment library** — `alley_urban` (the S2 procedural alley → vanishing point), built into
+  the scene with the figure.
+- **`grammar_ots_env` — the TRUE OTS solve.** Camera behind+above the near shoulder, aimed **past** the
+  figure to the environment's vanishing point. The shoulder occupies the foreground; the alley recedes.
+  This is the real over-the-shoulder the `grammar_ots` note said "needs an environment to look into."
+
+**IV-D** (`run_sword_drawn × ots_env × alley_urban`) ships as a complete board record with **all passes
+including the environment**: `renders/CONTACT-SHEET-bench-IV-D.png` shows the figure foreground-left over
+the shoulder, the alley receding, and — crucially — **depth now carries the recession** (figure white/near,
+alley darkening to the vanishing point), not just the figure. `boards/IV-D.board.txt` adds a `LOCATION`
+field (`ALLEY_URBAN`) and downgrades `asset_kit` to "greybox alley, real kit later." The S2 seam is closed:
+staging (S2) and the bench (IV) now meet in one board record — pose × camera-grammar × environment.
+
+Honest note: the geometric OpenPose skeleton for a back-facing, foreshortened foreground figure is sparse
+(several keypoints project off-frame) — correct and exact, but depth + canny carry more of IV-D's
+conditioning than pose does. That's the right balance for an OTS-into-environment shot.
+
 ## Next on this track
 
-- Fold S2's SceneCraft environment blocking in → real OTS solve + `asset_kit` resolved.
-- Grow the pose library (held extremes) + a worm's-eye/dutch/profile grammar set.
+- ~~Fold S2's SceneCraft environment blocking in → real OTS solve~~ — **done (IV-D above).** `asset_kit`
+  now reads "greybox, real kit later"; the real KitBash3D/Poly Haven import is the production upgrade.
+- Grow the pose library (held extremes) + a worm's-eye/dutch/profile grammar set; add more environments.
 - Wire a board's passes through the Track I RunPod backend (needs the endpoint) → the first
   fully-resolved board rendered.

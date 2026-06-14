@@ -201,8 +201,9 @@ NOTES: Track IV bench emission — geometric pose + Blender depth/normal; canny 
 """
     open(os.path.join(B_DIR, shot_id+".board.txt"),"w").write(block)
 
-for shot_id, pose_name, grammar_name in SHOTS:
-    g, face = emit_shot(shot_id, pose_name, grammar_name)
-    write_board(shot_id, pose_name, grammar_name, g, face)
-    print("EMITTED", shot_id, pose_name, grammar_name, flush=True)
-print("BENCH_DONE")
+if __name__ == "__main__":
+    for shot_id, pose_name, grammar_name in SHOTS:
+        g, face = emit_shot(shot_id, pose_name, grammar_name)
+        write_board(shot_id, pose_name, grammar_name, g, face)
+        print("EMITTED", shot_id, pose_name, grammar_name, flush=True)
+    print("BENCH_DONE")
