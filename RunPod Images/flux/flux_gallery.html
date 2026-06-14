@@ -1,0 +1,187 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>FLUX Image Run — The Palace</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Cormorant:ital,wght@0,400;0,600;1,400&family=Manrope:wght@400;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#17181a;--panel:#1e2024;--line:#2b2e33;--ink:#e9e6e0;--mut:#9aa0a6;--amber:#e8a33d;}
+*{box-sizing:border-box} body{margin:0;background:var(--bg);color:var(--ink);font-family:'Cormorant',serif;font-size:19px;line-height:1.5}
+header{padding:64px 6vw 28px;border-bottom:1px solid var(--line)}
+h1{font-family:'Anton',sans-serif;font-weight:400;font-size:clamp(40px,7vw,86px);margin:0;text-transform:uppercase;line-height:.98}
+.sub{font-family:'Manrope',sans-serif;color:var(--mut);font-size:15px;margin-top:14px;max-width:64ch}
+.stats{display:flex;flex-wrap:wrap;gap:14px;padding:28px 6vw;border-bottom:1px solid var(--line);background:var(--panel)}
+.stat{display:flex;flex-direction:column;min-width:120px}
+.stat .num{font-family:'Anton',sans-serif;font-size:34px;color:var(--amber);line-height:1}
+.stat .lbl{font-family:'Manrope',sans-serif;font-size:12px;color:var(--mut);text-transform:uppercase;letter-spacing:.08em;margin-top:6px}
+section{padding:46px 6vw;border-bottom:1px solid var(--line)}
+h2{font-family:'Anton',sans-serif;font-weight:400;font-size:clamp(24px,3.4vw,40px);text-transform:uppercase;margin:0 0 6px}
+.blurb{font-family:'Manrope',sans-serif;color:var(--mut);font-size:14px;margin:0 0 26px;max-width:72ch}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(330px,1fr));gap:22px}
+.card{margin:0;background:var(--panel);border:1px solid var(--line);border-radius:6px;overflow:hidden;display:flex;flex-direction:column}
+.card img{width:100%;display:block;background:#000}
+figcaption{padding:14px 16px 16px} figcaption h3{font-family:'Cormorant',serif;font-weight:600;font-size:22px;margin:0 0 8px}
+.prompt{font-family:'JetBrains Mono',monospace;font-size:11px;line-height:1.55;color:#c4c8cd;margin:0 0 10px;white-space:pre-wrap}
+.meta{font-family:'JetBrains Mono',monospace;font-size:10.5px;color:var(--mut);margin:0;border-top:1px solid var(--line);padding-top:9px}
+.movie{display:flex;gap:28px;flex-wrap:wrap;align-items:flex-start}
+.movie video{width:340px;max-width:100%;border:1px solid var(--line);border-radius:6px;background:#000}
+.movie img{width:520px;max-width:100%;border:1px solid var(--line);border-radius:6px}
+.report p,.report li{font-family:'Manrope',sans-serif;font-size:14px;color:#c4c8cd;line-height:1.65;max-width:82ch}
+.report h3{font-family:'Manrope',sans-serif;font-size:13px;text-transform:uppercase;letter-spacing:.08em;color:var(--amber);margin:24px 0 8px}
+table{border-collapse:collapse;font-family:'Manrope',sans-serif;font-size:13px;margin:10px 0}
+td,th{border:1px solid var(--line);padding:8px 14px;text-align:left} th{color:var(--amber)}
+code{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--amber)}
+footer{padding:40px 6vw;font-family:'Manrope',sans-serif;font-size:12px;color:var(--mut);text-transform:uppercase;letter-spacing:.12em}
+</style></head><body>
+<header><h1>The Palace · FLUX Image Run</h1>
+<p class="sub">A second pass on a larger model — FLUX.1-dev — to test the things SDXL couldn't do: legible text, real hands, and image-to-image consistency. 60 images including a 30-frame img2img movie. Every prompt and a FLUX-vs-SDXL report below.</p></header>
+<div class="stats"><div class="stat"><span class="num">60</span><span class="lbl">FLUX images</span></div><div class="stat"><span class="num">0</span><span class="lbl">failures</span></div><div class="stat"><span class="num">~32s</span><span class="lbl">avg per image</span></div><div class="stat"><span class="num">30</span><span class="lbl">img2img movie frames</span></div><div class="stat"><span class="num">~$2.33</span><span class="lbl">FLUX phase spend</span></div><div class="stat"><span class="num">100%</span><span class="lbl">legible text</span></div></div>
+
+<section><h2>Business, Through the Eras — an img2img movie</h2>
+<p class="blurb">Thirty frames, each an image-to-image pass off one base frame (same seed, denoise 0.62), so the man holds his jump while outfit, background, and the "business" typography drift through time. Plays at 4 fps (1/4 s per frame). This is the consistency test — note how the pose and the legible word survive every frame.</p>
+<div class="movie">
+  <video controls loop autoplay muted playsinline src="business_movie/business_through_the_eras.mp4"></video>
+  <img src="business_movie/business_movie_contact_sheet.png" alt="all 30 frames">
+</div></section>
+
+<section><h2>Cinematic & Surreal</h2><p class="blurb">Your bold one-offs — note the rendered text ("BALL BEARINGS", "SPACE", "LDN") and the hands, both far stronger than SDXL.</p>
+<div class="grid"><figure class="card">
+  <img loading="lazy" src="flux_surreal_1_goldenhour.png" alt="Spaceship on a Dewdrop — Golden Hour">
+  <figcaption><h3>Spaceship on a Dewdrop — Golden Hour</h3>
+  <p class="prompt">Macro photograph, extreme close-up. A polished retro-futuristic 1950s chrome rocketship with swept tail fins and a glass bubble cockpit hovers just above a single flawless glistening dewdrop resting on the curved surface of a vivid green leaf. The leaf floats on a perfectly still pool of liquid mercury-like chrome whose mirror surface reflects an immense cosmic starfield and a colorful nebula overhead. Crisp reflections, shallow depth of field, dreamlike surrealism, hyper-detailed, photorealistic product-photography quality, cinematic. Warm golden-hour palette; the dewdrop refracts amber sunset light; tiny rainbow caustics scatter across the leaf.</p>
+  <p class="meta">1024x1024 · FLUX.1-dev fp8 </p></figcaption></figure><figure class="card">
+  <img loading="lazy" src="flux_surreal_2_moonlit.png" alt="Spaceship on a Dewdrop — Moonlit">
+  <figcaption><h3>Spaceship on a Dewdrop — Moonlit</h3>
+  <p class="prompt">Macro photograph, extreme close-up. A polished retro-futuristic 1950s chrome rocketship with swept tail fins and a glass bubble cockpit hovers just above a single flawless glistening dewdrop resting on the curved surface of a vivid green leaf. The leaf floats on a perfectly still pool of liquid mercury-like chrome whose mirror surface reflects an immense cosmic starfield and a colorful nebula overhead. Crisp reflections, shallow depth of field, dreamlike surrealism, hyper-detailed, photorealistic product-photography quality, cinematic. Cool moonlit-night palette; bioluminescent teal veins glow within the leaf; the Milky Way is mirrored in the chrome.</p>
+  <p class="meta">1024x1024 · FLUX.1-dev fp8 </p></figcaption></figure><figure class="card">
+  <img loading="lazy" src="flux_surreal_3_vaporwave.png" alt="Spaceship on a Dewdrop — Vaporwave">
+  <figcaption><h3>Spaceship on a Dewdrop — Vaporwave</h3>
+  <p class="prompt">Macro photograph, extreme close-up. A polished retro-futuristic 1950s chrome rocketship with swept tail fins and a glass bubble cockpit hovers just above a single flawless glistening dewdrop resting on the curved surface of a vivid green leaf. The leaf floats on a perfectly still pool of liquid mercury-like chrome whose mirror surface reflects an immense cosmic starfield and a colorful nebula overhead. Crisp reflections, shallow depth of field, dreamlike surrealism, hyper-detailed, photorealistic product-photography quality, cinematic. Vibrant retro vaporwave palette of magenta and cyan; the nebula reflection swirls in pinks and teals; gentle ripples in the chrome.</p>
+  <p class="meta">1024x1024 · FLUX.1-dev fp8 </p></figcaption></figure><figure class="card">
+  <img loading="lazy" src="flux_surreal_4_astronaut.png" alt="Spaceship on a Dewdrop — Astronaut">
+  <figcaption><h3>Spaceship on a Dewdrop — Astronaut</h3>
+  <p class="prompt">Macro photograph, extreme close-up. A polished retro-futuristic 1950s chrome rocketship with swept tail fins and a glass bubble cockpit hovers just above a single flawless glistening dewdrop resting on the curved surface of a vivid green leaf. The leaf floats on a perfectly still pool of liquid mercury-like chrome whose mirror surface reflects an immense cosmic starfield and a colorful nebula overhead. Crisp reflections, shallow depth of field, dreamlike surrealism, hyper-detailed, photorealistic product-photography quality, cinematic. Misty dawn pastels; a tiny astronaut in a white spacesuit stands on the leaf beside the rocket for scale; soft fog drifts over the chrome pool.</p>
+  <p class="meta">1024x1024 · FLUX.1-dev fp8 </p></figcaption></figure><figure class="card">
+  <img loading="lazy" src="flux_milk_ballbearings.png" alt="Milk Splash &amp; the &#x27;Ball Bearings&#x27; Box">
+  <figcaption><h3>Milk Splash &amp; the &#x27;Ball Bearings&#x27; Box</h3>
+  <p class="prompt">A high-speed macro photograph capturing the exact instant a steel ball bearing strikes a bowl of milk, frozen mid-motion: a perfectly symmetrical white milk-crown splash with delicate droplets suspended in the air. The white ceramic bowl sits on a warm rustic wooden table. Beside it lie a stainless-steel spoon and a brightly designed retro cereal box clearly labeled &quot;BALL BEARINGS&quot; in bold playful lettering. A sleek polished robotic hand rests near the spoon, fingers poised. Bright crisp studio lighting, ultra-sharp focus, hyper-detailed, photorealistic, commercial food-photography style, shot on a macro lens.</p>
+  <p class="meta">1216x832 · FLUX.1-dev fp8 </p></figcaption></figure><figure class="card">
+  <img loading="lazy" src="flux_fallen_warrior.png" alt="The Fallen Warrior">
+  <figcaption><h3>The Fallen Warrior</h3>
+  <p class="prompt">A poignant cinematic scene evoking the classic &#x27;End of the Trail&#x27; sculpture: a fallen Native American warrior slumps forward, exhausted and wounded, hunched low over the neck of his weary horse, four arrows protruding from his back. The horse stands with its head bowed low in shared exhaustion. Behind them stretches a vast American West landscape of red-rock mesas and deep canyonlands, bathed in the golden and crimson glow of a dramatic sunset, long shadows across the desert. Epic, somber, painterly, highly detailed, atmospheric, cinematic lighting.</p>
+  <p class="meta">1216x832 · FLUX.1-dev fp8 </p></figcaption></figure><figure class="card">
+  <img loading="lazy" src="flux_space_aurora.png" alt="&#x27;SPACE&#x27; in the Aurora">
+  <figcaption><h3>&#x27;SPACE&#x27; in the Aurora</h3>
+  <p class="prompt">Looking straight up at a vast night sky where the shimmering green and violet ribbons of the northern lights naturally form the word &quot;SPACE&quot; in flowing aurora script across the stars. Below stretches a stark silent Norwegian winter landscape: snow-covered mountains, a frozen fjord, a few dark pine trees, pristine untouched snow glowing faintly under the auroral light. Awe-inspiring, serene, hyper-detailed, photorealistic, wide-angle long-exposure night photography, cinematic.</p>
+  <p class="meta">1216x832 · FLUX.1-dev fp8 </p></figcaption></figure><figure class="card">
+  <img loading="lazy" src="flux_ogre_elf.png" alt="Ogre on the Fallen Elf">
+  <figcaption><h3>Ogre on the Fallen Elf</h3>
+  <p class="prompt">A brutal dark-fantasy scene: a colossal ogre with enormous muscular arms and rugged plated stone armor stands triumphant atop the broken stone head of a fallen elf statue, one foot planted on the shattered face. He roars, fists clenched. Behind him a village is being pillaged and burns fiercely, orange flames and thick black smoke rising into a dark sky, embers drifting. Dramatic firelight, epic scale, highly detailed, cinematic, painterly concept-art style.</p>
+  <p class="meta">832x1216 · FLUX.1-dev fp8 </p></figcaption></figure><figure class="card">
+  <img loading="lazy" src="flux_zulu_queen.png" alt="Afro-Futurist Zulu Queen (in regalia)">
+  <figcaption><h3>Afro-Futurist Zulu Queen (in regalia)</h3>
+  <p class="prompt">A triumphant afro-futurist Zulu warrior queen stands tall and regal in magnificent ceremonial regalia — intricate colorful beadwork, gleaming brass and copper afro-futurist armor, a towering feathered and metallic headdress. She levels the tip of her spear to the head of a kneeling, defeated colonial officer in a 19th-century uniform. Behind her, thousands of her sister-warriors raise their spears high in triumph across a vast plain, dust and golden light in the air. Epic, powerful, cinematic, highly detailed, dramatic low-angle composition, painterly concept-art style, warm African sunset light.</p>
+  <p class="meta">832x1216 · FLUX.1-dev fp8 </p></figcaption></figure><figure class="card">
+  <img loading="lazy" src="flux_ldn_relic.png" alt="&#x27;LDN&#x27; — Carved Wooden Relic">
+  <figcaption><h3>&#x27;LDN&#x27; — Carved Wooden Relic</h3>
+  <p class="prompt">A pair of open cupped hands gently holds, floating just above the palms, the three letters &quot;LDN&quot; carved three-dimensionally from a single piece of richly grained, highly polished hardwood, glowing with warm reflected light as if it were a rare and holy relic. Soft reverent lighting, dark moody background, faint dust motes and a subtle halo of light, shallow depth of field, hyper-detailed, photorealistic, cinematic, sacred and precious mood.</p>
+  <p class="meta">1024x1024 · FLUX.1-dev fp8 </p></figcaption></figure><figure class="card">
+  <img loading="lazy" src="flux_diamond_tears.png" alt="Diamond Face, Ruby Tears">
+  <figcaption><h3>Diamond Face, Ruby Tears</h3>
+  <p class="prompt">An extreme close-up beauty portrait of a woman whose face is entirely encrusted with thousands of tiny brilliant-cut diamonds, dramatically lit so light diffracts and sparkles through the gem-covered skin in rainbow glints. She weeps tears of deep blood-red rubies rolling down her cheeks. Her lips are a striking cold blue, and her hair is woven from fine threads of spun gold. Dark background, chiaroscuro studio lighting, hyper-detailed, photorealistic, haute-couture editorial, mesmerizing and surreal.</p>
+  <p class="meta">832x1216 · FLUX.1-dev fp8 </p></figcaption></figure><figure class="card">
+  <img loading="lazy" src="flux_ldn_burning_city.png" alt="&#x27;L D N&#x27; Over the Burning City">
+  <figcaption><h3>&#x27;L D N&#x27; Over the Burning City</h3>
+  <p class="prompt">A dark, menacing futuristic cityscape at night. Fires have broken out in many of the towering high-rise buildings, orange flames glowing from shattered windows, thick billowing smoke rising into the sky. Powerful searchlights from below project the giant letters &quot;L D N&quot; sharply onto the wall of billowing smoke, like an ominous signal. Foreboding, dramatic, cinematic, high contrast, hyper-detailed, photorealistic, dystopian.</p>
+  <p class="meta">1216x832 · FLUX.1-dev fp8 </p></figcaption></figure><figure class="card">
+  <img loading="lazy" src="flux_sixarm_runway.png" alt="Six-Armed Runway">
+  <figcaption><h3>Six-Armed Runway</h3>
+  <p class="prompt">A high-fashion runway show: an avant-garde model with six arms and four legs strides confidently forward down the catwalk, wearing a perfectly clear, glass-like transparent structured jumpsuit over a sleek minimalist bodysuit. All limbs move in elegant choreographed poise. Dramatic runway spotlights, blurred audience and photographers&#x27; flashes in the background, glossy reflective floor. Surreal, striking, editorial fashion photography, hyper-detailed, photorealistic, cinematic.</p>
+  <p class="meta">832x1216 · FLUX.1-dev fp8 </p></figcaption></figure></div></section>
+
+<section><h2>Palace Icon + 15 Variations (FLUX)</h2><p class="blurb">The exact same prompts we ran on SDXL, re-rendered on FLUX for a direct comparison. Open the SDXL gallery (../index.html) side by side.</p>
+<div class="grid"><figure class="card">
+  <img loading="lazy" src="palace/flux_palace_icon.png" alt="Palace Icon (FLUX)">
+  <figcaption><h3>Palace Icon (FLUX)</h3>
+  <p class="prompt">An isometric icon of a digital palace rendered as a living knowledge organism — its walls, archways, and spires formed from a luminous interconnected network of glowing nodes and edges, like an architectural graph that grew rather than was built. Four slender pillars frame the entrance. Rhizomatic root-like filaments branch and connect beneath the structure, suggesting growth and aliveness. Warm graphite-and-amber palette, fine geometric linework, soft inner glow, dark neutral background. Elegant, minimal, centered icon composition, highly detailed, crisp.</p>
+  <p class="meta">1024×1024 · FLUX.1-dev fp8 </p></figcaption></figure><figure class="card">
+  <img loading="lazy" src="palace/flux_palace_var_01.png" alt="Variation 01">
+  <figcaption><h3>Variation 01</h3>
+  <p class="prompt">An isometric icon of a digital palace rendered as a living knowledge organism — its walls and spires formed from a luminous interconnected network of glowing nodes and edges. Four pillars frame the entrance. Rhizomatic root-like filaments branch beneath it. Fine geometric linework, soft inner glow, dark neutral background, centered icon composition, highly detailed. Warm amber and graphite palette, gothic cathedral architecture.</p>
+  <p class="meta">1024×1024 · FLUX.1-dev fp8 </p></figcaption></figure><figure class="card">
+  <img loading="lazy" src="palace/flux_palace_var_02.png" alt="Variation 02">
+  <figcaption><h3>Variation 02</h3>
+  <p class="prompt">An isometric icon of a digital palace rendered as a living knowledge organism — its walls and spires formed from a luminous interconnected network of glowing nodes and edges. Four pillars frame the entrance. Rhizomatic root-like filaments branch beneath it. Fine geometric linework, soft inner glow, dark neutral background, centered icon composition, highly detailed. Deep ember-orange and charcoal palette, byzantine domes.</p>
+  <p class="meta">1024×1024 · FLUX.1-dev fp8 </p></figcaption></figure><figure class="card">
+  <img loading="lazy" src="palace/flux_palace_var_03.png" alt="Variation 03">
+  <figcaption><h3>Variation 03</h3>
+  <p class="prompt">An isometric icon of a digital palace rendered as a living knowledge organism — its walls and spires formed from a luminous interconnected network of glowing nodes and edges. Four pillars frame the entrance. Rhizomatic root-like filaments branch beneath it. Fine geometric linework, soft inner glow, dark neutral background, centered icon composition, highly detailed. Pale gold and slate palette, art deco ziggurat tiers.</p>
+  <p class="meta">1024×1024 · FLUX.1-dev fp8 </p></figcaption></figure><figure class="card">
+  <img loading="lazy" src="palace/flux_palace_var_04.png" alt="Variation 04">
+  <figcaption><h3>Variation 04</h3>
+  <p class="prompt">An isometric icon of a digital palace rendered as a living knowledge organism — its walls and spires formed from a luminous interconnected network of glowing nodes and edges. Four pillars frame the entrance. Rhizomatic root-like filaments branch beneath it. Fine geometric linework, soft inner glow, dark neutral background, centered icon composition, highly detailed. Honey-amber glow, baroque ornamentation, ornate arches.</p>
+  <p class="meta">1024×1024 · FLUX.1-dev fp8 </p></figcaption></figure><figure class="card">
+  <img loading="lazy" src="palace/flux_palace_var_05.png" alt="Variation 05">
+  <figcaption><h3>Variation 05</h3>
+  <p class="prompt">An isometric icon of a digital palace rendered as a living knowledge organism — its walls and spires formed from a luminous interconnected network of glowing nodes and edges. Four pillars frame the entrance. Rhizomatic root-like filaments branch beneath it. Fine geometric linework, soft inner glow, dark neutral background, centered icon composition, highly detailed. Muted bronze and ink palette, brutalist blocky massing.</p>
+  <p class="meta">1024×1024 · FLUX.1-dev fp8 </p></figcaption></figure><figure class="card">
+  <img loading="lazy" src="palace/flux_palace_var_06.png" alt="Variation 06">
+  <figcaption><h3>Variation 06</h3>
+  <p class="prompt">An isometric icon of a digital palace rendered as a living knowledge organism — its walls and spires formed from a luminous interconnected network of glowing nodes and edges. Four pillars frame the entrance. Rhizomatic root-like filaments branch beneath it. Fine geometric linework, soft inner glow, dark neutral background, centered icon composition, highly detailed. Soft violet and graphite palette, slender minaret towers.</p>
+  <p class="meta">1024×1024 · FLUX.1-dev fp8 </p></figcaption></figure><figure class="card">
+  <img loading="lazy" src="palace/flux_palace_var_07.png" alt="Variation 07">
+  <figcaption><h3>Variation 07</h3>
+  <p class="prompt">An isometric icon of a digital palace rendered as a living knowledge organism — its walls and spires formed from a luminous interconnected network of glowing nodes and edges. Four pillars frame the entrance. Rhizomatic root-like filaments branch beneath it. Fine geometric linework, soft inner glow, dark neutral background, centered icon composition, highly detailed. Amber with deep teal accents, crystalline faceted walls.</p>
+  <p class="meta">1024×1024 · FLUX.1-dev fp8 </p></figcaption></figure><figure class="card">
+  <img loading="lazy" src="palace/flux_palace_var_08.png" alt="Variation 08">
+  <figcaption><h3>Variation 08</h3>
+  <p class="prompt">An isometric icon of a digital palace rendered as a living knowledge organism — its walls and spires formed from a luminous interconnected network of glowing nodes and edges. Four pillars frame the entrance. Rhizomatic root-like filaments branch beneath it. Fine geometric linework, soft inner glow, dark neutral background, centered icon composition, highly detailed. Warm copper tones, a grand central dome flanked by spires.</p>
+  <p class="meta">1024×1024 · FLUX.1-dev fp8 </p></figcaption></figure><figure class="card">
+  <img loading="lazy" src="palace/flux_palace_var_09.png" alt="Variation 09">
+  <figcaption><h3>Variation 09</h3>
+  <p class="prompt">An isometric icon of a digital palace rendered as a living knowledge organism — its walls and spires formed from a luminous interconnected network of glowing nodes and edges. Four pillars frame the entrance. Rhizomatic root-like filaments branch beneath it. Fine geometric linework, soft inner glow, dark neutral background, centered icon composition, highly detailed. Golden filament network dense like circuitry, low flat palace.</p>
+  <p class="meta">1024×1024 · FLUX.1-dev fp8 </p></figcaption></figure><figure class="card">
+  <img loading="lazy" src="palace/flux_palace_var_10.png" alt="Variation 10">
+  <figcaption><h3>Variation 10</h3>
+  <p class="prompt">An isometric icon of a digital palace rendered as a living knowledge organism — its walls and spires formed from a luminous interconnected network of glowing nodes and edges. Four pillars frame the entrance. Rhizomatic root-like filaments branch beneath it. Fine geometric linework, soft inner glow, dark neutral background, centered icon composition, highly detailed. Amber palette, one tall central spire rising from a stepped base.</p>
+  <p class="meta">1024×1024 · FLUX.1-dev fp8 </p></figcaption></figure><figure class="card">
+  <img loading="lazy" src="palace/flux_palace_var_11.png" alt="Variation 11">
+  <figcaption><h3>Variation 11</h3>
+  <p class="prompt">An isometric icon of a digital palace rendered as a living knowledge organism — its walls and spires formed from a luminous interconnected network of glowing nodes and edges. Four pillars frame the entrance. Rhizomatic root-like filaments branch beneath it. Fine geometric linework, soft inner glow, dark neutral background, centered icon composition, highly detailed. Ember glow, palace as a tree-like growth of arches and roots.</p>
+  <p class="meta">1024×1024 · FLUX.1-dev fp8 </p></figcaption></figure><figure class="card">
+  <img loading="lazy" src="palace/flux_palace_var_12.png" alt="Variation 12">
+  <figcaption><h3>Variation 12</h3>
+  <p class="prompt">An isometric icon of a digital palace rendered as a living knowledge organism — its walls and spires formed from a luminous interconnected network of glowing nodes and edges. Four pillars frame the entrance. Rhizomatic root-like filaments branch beneath it. Fine geometric linework, soft inner glow, dark neutral background, centered icon composition, highly detailed. Pale amber wireframe blueprint aesthetic, faint glow, technical.</p>
+  <p class="meta">1024×1024 · FLUX.1-dev fp8 </p></figcaption></figure><figure class="card">
+  <img loading="lazy" src="palace/flux_palace_var_13.png" alt="Variation 13">
+  <figcaption><h3>Variation 13</h3>
+  <p class="prompt">An isometric icon of a digital palace rendered as a living knowledge organism — its walls and spires formed from a luminous interconnected network of glowing nodes and edges. Four pillars frame the entrance. Rhizomatic root-like filaments branch beneath it. Fine geometric linework, soft inner glow, dark neutral background, centered icon composition, highly detailed. Rich gold and black, symmetrical twin-tower gatehouse.</p>
+  <p class="meta">1024×1024 · FLUX.1-dev fp8 </p></figcaption></figure><figure class="card">
+  <img loading="lazy" src="palace/flux_palace_var_14.png" alt="Variation 14">
+  <figcaption><h3>Variation 14</h3>
+  <p class="prompt">An isometric icon of a digital palace rendered as a living knowledge organism — its walls and spires formed from a luminous interconnected network of glowing nodes and edges. Four pillars frame the entrance. Rhizomatic root-like filaments branch beneath it. Fine geometric linework, soft inner glow, dark neutral background, centered icon composition, highly detailed. Warm amber, organic flowing vaulted ceilings, cavernous inner glow.</p>
+  <p class="meta">1024×1024 · FLUX.1-dev fp8 </p></figcaption></figure><figure class="card">
+  <img loading="lazy" src="palace/flux_palace_var_15.png" alt="Variation 15">
+  <figcaption><h3>Variation 15</h3>
+  <p class="prompt">An isometric icon of a digital palace rendered as a living knowledge organism — its walls and spires formed from a luminous interconnected network of glowing nodes and edges. Four pillars frame the entrance. Rhizomatic root-like filaments branch beneath it. Fine geometric linework, soft inner glow, dark neutral background, centered icon composition, highly detailed. Amber and graphite, palace floating above its rhizome roots.</p>
+  <p class="meta">1024×1024 · FLUX.1-dev fp8 </p></figcaption></figure></div></section>
+
+<section class="report"><h2>FLUX vs SDXL — The Report</h2>
+<h3>Why a second model</h3>
+<p>SDXL base 1.0 (~3.5B params) is a capable but two-generations-old workhorse: superb at stylized work, unreliable at text and hands. FLUX.1-dev (~12B params, fp8 here) is the current open frontier — a much larger transformer with a T5 language-model text encoder. We pointed a second self-provisioned RunPod endpoint (<code>palace-flux</code>) at <code>runpod/worker-comfyui:5.8.4-flux1-dev-fp8</code> and re-ran comparable work.</p>
+<h3>What changed</h3>
+<table><tr><th>Capability</th><th>SDXL base 1.0</th><th>FLUX.1-dev</th></tr>
+<tr><td>Legible text</td><td>garbled</td><td>clean & accurate ("business", "SPACE", "BALL BEARINGS")</td></tr>
+<tr><td>Hands / anatomy</td><td>often malformed</td><td>markedly better</td></tr>
+<tr><td>Prompt adherence</td><td>good</td><td>excellent on long natural-language prompts</td></tr>
+<tr><td>Stylized art</td><td>excellent</td><td>excellent</td></tr>
+<tr><td>Speed / image</td><td>~13s</td><td>~32s</td></tr>
+<tr><td>Cost / image</td><td>~$0.007</td><td>~$0.02–0.04*</td></tr></table>
+<p style="font-size:12px;color:var(--mut)">*FLUX per-image cost is higher both because each render takes ~2.5× longer and because this run kept a warm worker (workersMin=1) to stay responsive while you fed prompts — that idle time bills. Scaled to zero like the SDXL run, marginal cost would be lower.</p>
+<h3>Image-to-image findings</h3>
+<p>img2img works on the endpoint today (the worker accepts an input image; the workflow encodes it as the sampler's latent start). The 30-frame movie used denoise 0.62 — enough to hold the pose and the legible "business" across every frame, but deliberately conservative, which is why the era/outfit shifts read as <em>subtle</em> rather than dramatic. Pushing denoise higher gives bolder change at the cost of pose drift. The clean way to get <em>both</em> — locked pose AND bold restyling — is a <strong>ControlNet</strong> (pose/depth) conditioning, which needs the control models added via a network volume. That's the next build-out the backend doc anticipated.</p>
+<h3>Time & cost</h3>
+<p>60 FLUX images, zero failures, ~32s average each (~32 min total GPU time). FLUX-phase spend ~$2.33; whole session across both models ~$2.66. Both endpoints now scale to zero — nothing bills at rest.</p>
+<h3>Bottom line</h3>
+<p>For anything with text, hands, or precise prompt adherence, FLUX is the clear winner and worth the extra seconds and cents. For fast, high-volume stylized work, SDXL still earns its place. Having both wired into the same RunPod backend means the Maker can route per brief — exactly the cost/quality tier negotiation the Shop is built around.</p></section>
+<footer>Loudon Live · Autodidact Polymaths</footer>
+</body></html>

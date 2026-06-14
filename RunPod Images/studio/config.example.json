@@ -1,0 +1,5 @@
+{
+  "_comment": "Copy this to config.json and fill in. config.json holds your API key — keep it private, do not commit it. This lets both palace_studio.py and the Palace Studio.command launcher find your endpoint without setting environment variables.",
+  "api_key": "rpa_REPLACE_WITH_YOUR_RUNPOD_API_KEY",
+  "endpoint_id": "iy3ybd7qjl2trj"
+}
