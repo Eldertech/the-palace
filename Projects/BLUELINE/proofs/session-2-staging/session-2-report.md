@@ -23,7 +23,7 @@ So the paths do **not** compete on output — they are **layers that differ in t
 |---|---|---|---|
 | **SceneCraft** (Blender-Python) | batch: LLM writes a script → run → done | no | ✅ directly (`scenecraft/alley-scenecraft.blend`) |
 | **Three.js stager** (bespoke) | real-time: human orbits/edits in browser → export spec | human-in-loop | ✅ via shared backend (`threejs/alley-threejs-export.blend`) |
-| **Blender-MCP** (live bridge) | interactive: LLM issues commands to a *live* scene, reads state, adjusts, pulls assets | yes (LLM-in-loop) | ✅ by nature (a live `.blend`) — **not live-tested here, see below** |
+| **Blender-MCP** (live bridge) | interactive: LLM issues commands to a *live* scene, reads state, adjusts, pulls assets | yes (LLM-in-loop) | ✅ by nature (a live `.blend`) — **live-tested 2026-06-14 ✓** |
 
 This is the de-risking result: BLUELINE is **not** betting its staging stage on one tool. The bet is on
 the **spec-as-interchange architecture** (the actual authored work, per the build-vs-adopt M0 row); the
@@ -54,23 +54,29 @@ button. Three.js is vendored locally (`threejs/lib/`, no runtime CDN — house r
   `threejs/alley-threejs-export.blend` + [`renders/threejs-export.png`](renders/threejs-export.png),
   identical to the SceneCraft `.blend`. The round-trip is lossless because the spec is the interchange.
 
-### 3. Blender-MCP path — ⏳ assessed, not live-tested (the fork)
-**Blender-MCP is not connected as an MCP server in this session, so it could not be driven live.** What
-it *is*, concretely: a Blender add-on that opens a socket + an MCP server that exposes `execute_blender_code`
-(run arbitrary `bpy` in the live scene), `get_scene_info`/`get_object_info` (read-back), and asset
-helpers (Poly Haven / Sketchfab / Hyper3D download). Its distinguishing value over SceneCraft is the
-**interactive read-back loop** (the LLM sees the scene and corrects, rather than emitting a blind batch
-script) and **one-call asset import**. Its output is the same hand-editable `.blend`.
+### 3. Blender-MCP path — ✅ LIVE-TESTED (2026-06-14, the fork resolved)
+Loudon connected the Blender Lab **MCP add-on** (Blender 5.1.2, `localhost:9876`, server running) and
+the path was driven live from this session. Artifacts: `blender-mcp/alley-blender-mcp.blend` +
+`blender-mcp/mcp-staged.png`.
 
-**Honest status of Loudon's prior** ("Blender-MCP wins #1, SceneCraft a close #2"): *unverified, not
-upset.* The prior's core reason — "it drives the Blender scene directly, landing in the familiar
-hand-editable surface" — is **true of all three paths** here, so that reason alone no longer
-discriminates. Blender-MCP's *real* edge (live LLM iteration + asset pulls) is plausible but needs a
-live trial to confirm. Two ways to give it one (raised to Loudon):
-- **(a)** wire `blender-mcp` as an MCP server on a Claude session (a Settings → Connectors action on
-  Loudon's side), then a focused session truly tests the interactive loop; or
-- **(b)** I install the `blender-mcp` add-on + socket-drive a live Blender here (installs third-party
-  Blender code + runs a GUI Blender; the add-on's `execute_blender_code` is an arbitrary-code capability).
+What was actually done over the bridge:
+1. `execute_blender_code` consumed the **same shared spec** and built the full true-OTS alley scene in the
+   live Blender (Hero metaball + alley facades → vanishing point + props + the OTS camera) — 30 objects.
+2. **The read-back loop (the distinguishing capability) was exercised for real.** I rendered, *looked*,
+   judged the frame too dark and the figure too low, and adjusted camera + lighting. The change
+   **overshot** — `world_to_camera_view` measured the hero's head at screen-y **1.16 (off the top edge)**.
+   Because MCP lets the LLM *measure the live scene*, I caught it, restored the camera (head-y 0.31 in
+   frame, shoulder-y 0.10 at the bottom = a proper OTS), and re-rendered. **That build → render → measure
+   → correct cycle is the thing the batch (SceneCraft) path cannot do** — a blind script can't see its
+   own overshoot mid-build.
+3. Output **is** the live, hand-editable `.blend` Loudon is sitting in — zero export step.
+
+**Loudon's prior ("Blender-MCP wins #1") — CONFIRMED, with an honest nuance.** It wins **for the
+human-in-the-loop authoring case**: live read-back/correct + the result lands directly in the open
+Blender. The nuance: the *construction code* I sent over MCP is the **same `bpy` SceneCraft runs in
+batch** — so Blender-MCP doesn't build a *better* scene, it gives a *better interface* (interactive +
+live-landing) to the identical builder. (Not exercised this round: the one-call Poly Haven/Sketchfab
+asset import — a real second MCP edge, left for the asset-kit step.)
 
 ---
 
@@ -78,14 +84,14 @@ live trial to confirm. Two ways to give it one (raised to Loudon):
 
 | Criterion | SceneCraft (Blender-Python) | Three.js stager (bespoke) | Blender-MCP (live bridge) |
 |---|---|---|---|
-| **Reliability** | High — deterministic, inspectable script; no external deps | High — deterministic assembly; vendored deps | Unverified here; depends on the add-on socket + LLM loop |
+| **Reliability** | High — deterministic, inspectable script; no external deps | High — deterministic assembly; vendored deps | ✅ verified — built 30-object scene live; same `bpy` as SceneCraft |
 | **Editability of result** | Layout-editable `.blend` (armature TODO for pose) | Same `.blend` (shared backend) + live browser pre-edit | Same `.blend`; plus live LLM edits mid-build |
-| **Blender-handoff quality** | ✅ native — it *is* a `.blend` | ✅ lossless via spec interchange | ✅ native (live `.blend`) |
-| **Authoring loop** | Batch (no live feedback) | Human-in-the-loop visual | LLM-in-the-loop interactive |
-| **Asset import** | manual (script the import) | manual | one-call Poly Haven/Sketchfab helpers |
-| **Speed** | ~8 s build (headless) | instant in browser; ~8 s to bake to `.blend` | unmeasured |
-| **Cost / deps** | free, local, zero deps | free, local, vendored three.js | free, local; third-party add-on + a running Blender |
-| **Best for** | known decompositions, batch/repeatable | Loudon previewing + nudging before commit | ambiguous staging needing LLM see-and-correct + assets |
+| **Blender-handoff quality** | ✅ native — it *is* a `.blend` | ✅ lossless via spec interchange | ✅ native — lands in the *open* Blender, zero export |
+| **Authoring loop** | Batch (no live feedback) | Human-in-the-loop visual | ✅ LLM-in-the-loop: build→render→**measure**→correct (caught a real overshoot) |
+| **Asset import** | manual (script the import) | manual | one-call Poly Haven/Sketchfab helpers (not exercised yet) |
+| **Speed** | ~8 s build (headless) | instant in browser; ~8 s to bake to `.blend` | ~seconds/call; +1 render to read back each iteration |
+| **Cost / deps** | free, local, zero deps | free, local, vendored three.js | free, local; needs Blender open + the MCP add-on running |
+| **Best for** | headless/batch/CI, known decompositions | Loudon previewing + nudging before commit | **hand-authoring in the loop — Loudon's win condition** |
 
 ---
 
@@ -111,13 +117,19 @@ blocked scene from the sentence; the flag-vs-fake behaviour is observed and surf
   assembler. Graft Session 1's armature so the hero is pose-editable in the GUI.
 - **Three.js stager = the human-preview front-end** — keep as the "Loudon nudges it before commit"
   surface. Worth a Specialist entry only if it earns recurring use; for now it's a proven bundle tool.
-- **Blender-MCP = evaluate next as the interactive LLM front-end** (honouring Loudon's prior). It is the
-  one path whose distinguishing value (live read-back + asset pulls) is genuinely untested — give it the
-  live trial via (a) or (b) above, then decide adopt/kill. **No tool is killed this round**; the paths
-  are layers, not rivals, so the "loser becomes a gotcha" framing doesn't cleanly apply.
-- **Specialist deposits:** none yet — frugality bar. `Shop/SceneCraft` is the strongest candidate (its
-  pattern is proven), but it is currently *a way of scripting [[Shop/Blender]]*, so it may be a **recipe
-  inside Shop/Blender** (like the toyxyz recipe) rather than its own Specialist. Flagged for Loudon.
+- **Blender-MCP = the interactive hand-authoring primary — now LIVE-TESTED and confirmed** (Loudon's
+  prior held). Use it when a human is in the loop and the result should land in the open Blender: the
+  build→render→measure→correct loop is real (it caught a real framing overshoot this session). Its one
+  untested edge — one-call Poly Haven/Sketchfab asset import — is exactly what the `asset_kit` flag needs,
+  so test it at the environment-kit step. **No tool is killed**; the three are layers, not rivals.
+- **Specialist deposits:** none yet — frugality bar. The strongest candidate is now a **`Shop/Blender`
+  recipe** capturing *both* batch (SceneCraft) and live (MCP) drive of the same `bpy` builder from the
+  spec — not a separate `Shop/SceneCraft` Specialist, since both are *ways of driving [[Shop/Blender]]*
+  (like the toyxyz recipe). Flagged for Loudon to ratify.
 
-**Final #4 call is Loudon's** (the Deposit Map reserves it): pick the staging primary, and choose how
-Blender-MCP gets its live trial.
+**Decision #4 — resolved by evidence (Loudon confirms):** the three paths are **one system** over the
+shared spec — **Blender-MCP** is the interactive hand-authoring primary (live-tested ✓, lands in the open
+Blender), **SceneCraft** is its identical-code headless/batch backend (the bench, CI, no-GUI emission),
+and the **Three.js stager** is the real-time preview + decomposition viewer. The prior held; the only
+correction is that "drives Blender directly" was true of all three — MCP's real win is the *interactive
+loop*, demonstrated.
