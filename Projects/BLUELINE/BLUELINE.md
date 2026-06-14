@@ -95,3 +95,7 @@ The plan is now reset around a parallel, substrate-first structure: **[[BLUELINE
 - `BLUELINE — Deposit Map.md` — the original proposal of entries/Specialists/skills and the build-vs-adopt map.
 - `BLUELINE — Claude Code Job.md` — the original single-thread spike (Sessions 1 & 3 done; superseded by the Production Plan).
 - `proofs/` — `session-3-flowfield/` and the conditioning keystone artifacts under `Artifacts/Shop/Blender/tests/`.
+
+## Active Baton
+
+[[BLUELINE — baton]] — drafted 2026-06-14 · cross-surface (Cowork → Claude Code, Mac). Carries the Production-Plan pickup: launch Tracks I, III, IV.
