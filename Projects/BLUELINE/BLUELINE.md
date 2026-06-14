@@ -4,10 +4,10 @@ type: project
 status: active
 pillars: [tools, creation, philosophy]
 born: 2026-06-13
-last_activated: 2026-06-13
-activation_count: 1
-stage: seed
-confidence: hypothesis
+last_activated: 2026-06-14
+activation_count: 2
+stage: sprout
+confidence: working
 energy: high
 who_leads: loudon
 forward_vector: "I am an opinionated instrument for bold, comic-staged, surreal-mathematical music-video action — storyboard to final render, every frame pinned to a fixed-tempo song. My novelty is point of view and coupling, not components: nearly every piece I need already exists off the shelf. What I author is the curated vocabulary, the single-source flow-field spine, and the comic↔cinema transduction. The bias is the product."
@@ -30,6 +30,15 @@ links:
   - target: "[[The Flow Field is the Spine]]"
     type: exemplifies
     label: the-novel-bet
+  - target: "[[Shop/RunPod GPU Backend]]"
+    type: connects-to
+    label: rides-shared-gpu-substrate
+  - target: "[[BLUELINE — Render Backend]]"
+    type: connects-to
+    label: render-ai-half
+  - target: "[[BLUELINE — Board Record Schema]]"
+    type: connects-to
+    label: the-shared-contract
   - target: "[[Loudon Live Design System]]"
     type: connects-to
     label: mockup-base-spec
@@ -38,7 +47,7 @@ links:
   - target: "[[Autodidact Polymaths]]"
     type: couples-with
     label: learn-by-building-the-tool
-tags: [project, blueline, music-video, generative, pipeline, seed]
+tags: [project, blueline, music-video, generative, pipeline, sprout]
 ---
 
 # BLUELINE
@@ -73,10 +82,16 @@ The June 2026 research found nearly every piece exists off the shelf: the Blende
 
 ## Where it stands
 
-`stage: seed`. Pre-deposited: this entry, [[Shop/Blender]] (+ the [[Shop/Blender/toyxyz-conditioning-recipe]]), [[Blocked, Not Prompted]], [[The Flow Field is the Spine]]. Next: a Mac-side Claude Code job ([[BLUELINE — Claude Code Job]]) proves the technical pipeline and picks the tools; then Stage-0 mockups in Cowork; then production code (M0). Tools are adopted only once proven — no hopeful entries.
+`stage: sprout`. Two keystones proved (2026-06-13): the **conditioning keystone** (Session 1 — Blender geometric passes → SDXL per-channel multi-ControlNet; blocking defeats the front-on default) and the **flow-field spine** (Session 3 — one field, three resolutions, thin per-leg scalar). Then a second conceptual approach (the **AnimaticPlanProposal**) and the **[[Shop/RunPod GPU Backend]]** work converged on the same pipeline from the render side — folded in via [[BLUELINE — Render Backend]] and joined by the [[BLUELINE — Board Record Schema]].
+
+The plan is now reset around a parallel, substrate-first structure: **[[BLUELINE — Production Plan]]**. Most of BLUELINE turned out to be palace substrate (a Shop-wide GPU backend, an Ableton clock, LoRA + a measurement ruler) that other work needs anyway — so the threads run in parallel, each shipping a Shop capability. Tools are adopted only once proven — no hopeful entries.
 
 ## Bundle
 
-- `BLUELINE — Deposit Map.md` — the full proposal of entries/Specialists/skills and the build-vs-adopt map.
-- `BLUELINE — Claude Code Job.md` — the multi-session technical spike job.
-- `stage-0/`, `proofs/` — to come.
+- `BLUELINE — Production Plan.md` — **the active plan**: parallel substrate-first tracks.
+- `BLUELINE — Render Backend.md` — the render-AI half; folds the AnimaticPlanProposal + the three palace-forced changes.
+- `BLUELINE — Board Record Schema.md` — the beat-addressed contract every track reads/writes.
+- `render-backend/` — the AnimaticPlanProposal artifacts (PLAN, runner, graph_spec, models_manifest, board_template).
+- `BLUELINE — Deposit Map.md` — the original proposal of entries/Specialists/skills and the build-vs-adopt map.
+- `BLUELINE — Claude Code Job.md` — the original single-thread spike (Sessions 1 & 3 done; superseded by the Production Plan).
+- `proofs/` — `session-3-flowfield/` and the conditioning keystone artifacts under `Artifacts/Shop/Blender/tests/`.

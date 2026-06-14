@@ -1,7 +1,7 @@
 ---
 title: "BLUELINE — Claude Code Job"
 type: meta
-status: ready-to-dispatch
+status: superseded
 born: 2026-06-13
 who_leads: claude-code
 forward_vector: "I am a multi-session engineering job for a Mac-side Claude Code agent: prove or kill the technical workflows BLUELINE depends on, connect the services, and write back to the palace which tools earned their entry. I lead with capability, compare many solutions, and leave gotcha-grade reports so the Shop stocks only what works."
@@ -19,6 +19,8 @@ tags: [meta, job, claude-code, blueline, spike]
 ---
 
 # BLUELINE — Claude Code Job
+
+> **SUPERSEDED 2026-06-14 by [[BLUELINE — Production Plan]].** Sessions 1 (conditioning keystone) and 3 (flow-field spine) ran and proved out; their results live in [[Shop/Blender/toyxyz-conditioning-recipe]] and [[The Flow Field is the Spine]]. The remaining sessions are folded into the parallel-track Production Plan, which reframes the work as palace substrate. Kept as the record of the original single-thread spike and its done sessions.
 
 **For:** a Mac-side Claude Code session (GPU available, normal git — the Cowork lock restriction does not apply).
 **Goal:** over a few sessions, stand up and stress-test BLUELINE's technical pipeline end to end at small scale, **comparing multiple solutions at every fork**, and write back to the palace which tools earned a Shop entry and which were killed.

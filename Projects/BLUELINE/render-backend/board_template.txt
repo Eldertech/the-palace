@@ -1,0 +1,60 @@
+# =====================================================================
+#  ANIMATIC BOARD MODEL
+#  Fill the BIBLE once. Copy one "# === BOARD ===" block per shot.
+#  The runner reads machine fields (POSITIVE, POSE, DEPTH, IDREF, SEED,
+#  FLUX_SEED, SHOT_ID) and ignores the human annotation fields
+#  (ANGLE, CHARS, SETTING, MOTION, EMOTION, NOTES).
+#  Multi-line POSITIVE: indent continuation lines. Blank line ends a field.
+# =====================================================================
+
+# === BIBLE ===
+BASE_STUDY: sdxl
+BASE_PIECE: flux-dev
+RENDER_STUDY: ar 16:9 | 1344x768 | steps 30 | cfg 6.5 | sampler dpmpp_2m | sched karras
+RENDER_PIECE: ar 16:9 | 1344x768 | steps 25 | guidance 3.5 | sampler euler | sched simple
+STYLE_LOCK: moody hand-painted 2D animatic, gouache texture, limited cel shading, cinematic
+GLOBAL_NEG: lowres, deformed hands, extra fingers, text, watermark, jpeg artifacts, oversaturated
+CHARACTERS: MAYA = late-20s woman, copper undercut, charcoal flight jacket, vertical scar over left brow
+            id_study = faceid:refs/maya_sheet.png   (or lora:maya_v1:0.85 once trained)
+            id_piece = pulid:refs/maya_sheet.png
+LOCATIONS: GREENHOUSE = derelict greenhouse, shattered glass roof, overgrown ferns, rusted iron frame
+           plate = refs/greenhouse_estab.png -> depth source
+
+# === BOARD ===
+SHOT_ID: 04A
+ANGLE: low-angle | wide | 35mm
+CHARS: MAYA (small in frame, standing, fists loose)
+SETTING: GREENHOUSE | pre-dawn | blue light raking through ferns
+MOTION: still=standing | camera=push-in | pair-with=04B(CU)
+EMOTION: resolve -> squared shoulders, level gaze | hard rim light | cool low-key
+POSE: poses/04A_skel.png
+DEPTH: depth/04A_comp.png
+IDREF: refs/maya_sheet.png
+SEED: 4471
+FLUX_SEED: 88120
+POSITIVE: moody hand-painted 2D animatic, gouache texture, limited cel shading. low-angle
+          wide shot, 35mm. MAYA, late-20s woman, copper undercut, charcoal flight jacket,
+          scar over left brow, standing small in frame, fists loose. interior derelict
+          greenhouse, shattered glass roof, overgrown ferns, blue pre-dawn light raking
+          through. hard rim light, cool low-key palette. squared shoulders, level gaze.
+NOTES: establishing half of the push-in pair; shares SEED-of-intent and IDREF with 04B
+
+# === BOARD ===
+SHOT_ID: 04B
+ANGLE: low-angle | medium close-up | 85mm
+CHARS: MAYA (jaw set, eyes narrowed, leaning forward)
+SETTING: GREENHOUSE | pre-dawn | blue light raking through ferns
+MOTION: still=leaning-in(peak) | camera=push-in | pair-with=04A(wide)
+EMOTION: resolve -> squared shoulders, level unblinking gaze | hard rim light | cool low-key
+POSE: poses/04B_skel.png
+DEPTH: depth/04B_comp.png
+IDREF: refs/maya_sheet.png
+SEED: 4471
+FLUX_SEED: 88121
+POSITIVE: moody hand-painted 2D animatic, gouache texture, limited cel shading. low-angle
+          medium close-up, 85mm. MAYA, late-20s woman, copper undercut, charcoal flight
+          jacket, scar over left brow, jaw set, eyes narrowed, leaning forward. interior
+          derelict greenhouse, shattered glass roof, overgrown ferns, blue pre-dawn light
+          raking through. hard rim light, cool low-key palette. squared shoulders, level
+          unblinking gaze.
+NOTES: payoff half of the push-in; the cut between 04A and 04B reads as the camera move
