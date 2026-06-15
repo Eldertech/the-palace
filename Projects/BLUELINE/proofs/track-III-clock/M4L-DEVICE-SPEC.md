@@ -34,9 +34,12 @@ It produces no audio — it only observes the transport and sends UDP. One per S
 
 ## 2. The build (recommended path: `[js]` + the Live API)
 
-This path handles tempo, time-signature, AND locators in ~30 lines and is accurate to the poll rate
-(~tens of ms — Track III measured 4.6 ms jitter end-to-end, well inside one frame). For sample-accurate
-sub-beat timing see §5 (the `plugsync~` upgrade) — not needed for the smallest useful device.
+This path handles tempo, time-signature, AND locators in ~30 lines, accurate to the poll rate. Delivery
+jitter doesn't matter for the **render** (frames are computed from bar.beat *arithmetically*, so the
+result is exact regardless of when a message lands); it only affects how smooth the *live readout*
+looks. (The simulator measured ~4.6 ms σ; the live device over Live's scheduler measured higher — tens
+of ms — which is fine for the readout and irrelevant to the render.) For sample-accurate sub-beat
+timing see §5 (the `plugsync~` upgrade) — not needed for the smallest useful device.
 
 ### 2a. Objects and wiring
 
@@ -46,8 +49,8 @@ sub-beat timing see §5 (the `plugsync~` upgrade) — not needed for the smalles
    [t b b]
     |    \________________________
     |                             \
-[message bible]              [toggle]──[metro 20]      ← ~50 Hz poll while on
-    |                             |
+[message bible]              [toggle]──[metro 50]      ← ~20 Hz poll while on (gentle on Live)
+    |   (refresh+send on load)         |
     |                          [js transport.js]       ← poll() on each bang
     \____________________________/   |
                                   (outlet 0)
@@ -57,9 +60,18 @@ sub-beat timing see §5 (the `plugsync~` upgrade) — not needed for the smalles
 UI (live.* so they're automatable / preset-saved):
 [live.numbox]  "FPS" (default 24, int) ──[prepend fps]──▶ [js transport.js]
 [live.text]    "resend BIBLE" (button) ─────────────────▶ [message bible] ▶ [js]
-[live.toggle]  "RUN" ───────────────────────────────────▶ [metro 20]  (and gate emit if you prefer)
+[live.toggle]  "RUN" ───────────────────────────────────▶ [metro 50]  (and gate emit if you prefer)
 [live.comment] status (optional) ◀── route a status string out a 2nd js outlet
 ```
+
+**Two rules that keep Ableton responsive** (the first build froze Live by breaking them):
+1. **Reuse the LiveAPI object** — created once in the `[js]` (see `ensure()`), never inside `poll()`.
+   `new LiveAPI()` per tick is what locks up Live.
+2. **Poll gently** — `[metro 50]` (≈20 Hz) is plenty: the determinism is in the *arithmetic*
+   (bar.beat → frame is exact), so the poll only needs to be smooth for the live readout, not fast.
+   Drop to `[metro 100]` (10 Hz) if you want it lighter still; go to `plugsync~` (§5) only if you need
+   sample-accurate sub-beat. **`[live.thisdevice]` also fires `bible`** on load, so the clock + caches
+   are sent automatically — no need to click the button unless tempo/signature changes.
 
 Notes:
 - `[live.thisdevice]` → `[t b b]`: one bang fires `bible` (initial clock), the other turns the
@@ -72,46 +84,61 @@ Notes:
 
 ```javascript
 // BLUELINE Track III — M4L transport sender.  outlet 0 -> [udpsend 127.0.0.1 9001]
+// PERFORMANCE: the LiveAPI object is created ONCE and reused. NEVER do `new LiveAPI(...)`
+// inside poll() — at the metro rate that's dozens of object creations/sec and it WILL
+// freeze Ableton. Signature + cue points are cached (refreshed on `bible`), not re-read
+// every tick.
 autowatch = 1;
 outlets = 1;
 
-var FPS = 24;              // the LOCKED render fps (set from the UI: message "fps 24")
+var FPS = 24;                 // the LOCKED render fps (set from the UI: message "fps 24")
+var api = null;               // the ONE persistent LiveAPI on live_set
+var sigN = 4;                 // cached beats-per-bar (refreshed in refresh())
+var cues = [];                // cached [[bar, name], ...]
 var lastLocatorBar = -1;
 
-function fps(v) { FPS = v; }                       // message: "fps 30"
+function ensure() { if (!api) api = new LiveAPI(null, "live_set"); }   // create once, lazily
 
-function bible() {                                 // send the locked clock once / on change
-    var api = new LiveAPI(null, "live_set");
-    var tempo = api.get("tempo")[0];
-    var sigN  = api.get("signature_numerator")[0]; // beats per bar (assumes x/4 meter)
-    outlet(0, "/transport/bible", tempo, FPS, sigN);
+function refresh() {          // cache signature + cue points (cheap, on load / tempo-sig change)
+    ensure();
+    sigN = api.get("signature_numerator")[0];      // assumes x/4 meter
+    cues = [];
+    var cps = api.get("cue_points");               // ["id", id1, "id", id2, ...]
+    for (var i = 1; i < cps.length; i += 2) {
+        var cp = new LiveAPI(null, "id " + cps[i]); // created only here, not per-tick
+        cues.push([Math.floor(cp.get("time")[0] / sigN) + 1, cp.get("name")[0]]);
+    }
 }
 
-function bang() { poll(); }                        // a [metro] bang drives a poll
+function fps(v) { FPS = v; }                        // message: "fps 30"
 
-function poll() {
-    var api      = new LiveAPI(null, "live_set");
-    var playing  = api.get("is_playing")[0];
-    var beats    = api.get("current_song_time")[0]; // beats (quarter notes) since song start
-    var sigN     = api.get("signature_numerator")[0];
-    var bar      = Math.floor(beats / sigN) + 1;
+function bible() {                                  // refresh caches + send the locked clock
+    ensure(); refresh();
+    outlet(0, "/transport/bible", api.get("tempo")[0], FPS, sigN);
+}
+
+function bang() { poll(); }                         // a [metro] bang drives a poll
+
+function poll() {                                   // 2 gets/tick on the REUSED api — light
+    ensure();
+    var beats   = api.get("current_song_time")[0];  // beats (quarter notes) since song start
+    var playing = api.get("is_playing")[0];
+    var bar     = Math.floor(beats / sigN) + 1;
     var beatInBar = (beats % sigN) + 1;             // 1-indexed float
     outlet(0, "/transport/beat", bar, beatInBar, playing);
 
-    if (bar !== lastLocatorBar) {                   // emit a locator when we enter its bar
-        var cps = api.get("cue_points");            // ["id", id1, "id", id2, ...]
-        for (var i = 1; i < cps.length; i += 2) {
-            var cp = new LiveAPI(null, "id " + cps[i]);
-            var cpBar = Math.floor(cp.get("time")[0] / sigN) + 1;
-            if (cpBar === bar) { outlet(0, "/transport/locator", cp.get("name")[0], bar); break; }
-        }
+    if (bar !== lastLocatorBar) {                   // emit a cached locator when we enter its bar
         lastLocatorBar = bar;
+        for (var i = 0; i < cues.length; i++)
+            if (cues[i][0] === bar) { outlet(0, "/transport/locator", cues[i][1], bar); break; }
     }
 }
 ```
 
-That's the whole device. `bible` on load, `poll` on every metro bang, locators looked up against the
-Set's cue points.
+That's the whole device. `bible` refreshes the caches + sends the clock; `poll` does just two
+`.get()`s on the **reused** LiveAPI; locators come from the cached list. **The reuse + the gentler
+metro (below) are what keep Ableton responsive** — the first version froze Live by creating LiveAPI
+objects in the poll loop.
 
 ---
 
