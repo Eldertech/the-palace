@@ -76,6 +76,9 @@ const $=id=>document.getElementById(id);
 
 function onBible(t,f,bpb){
   tempo=t; fps=f; const r=computeFPB(t,f); fpb=r.value; det=r.whole;
+  // a new locked clock arrived — reset the tally so it doesn't mix tempos
+  onbeats=0; onbeatsWhole=0; lastBeatKey=null; $("tally").textContent="0 / 0";
+  const lg=document.getElementById("log"); if(lg) lg.innerHTML="";
   expectedTickMs = (60000/tempo)/subdiv;
   $("tempo").textContent=t+" BPM"; $("fps").textContent=f;
   $("fpb").textContent = det ? (Math.round(fpb)+"  (exact)") : (fpb.toFixed(3)+"  ("+r.n+"/"+r.d+")");
