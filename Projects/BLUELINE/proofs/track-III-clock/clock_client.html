@@ -22,6 +22,7 @@
   td:first-child,th:first-child{text-align:left}
   #foot{color:var(--dim);font-size:11px;margin-top:14px}
   #conn{font-size:12px}
+  .dim{color:var(--dim)}
 </style></head>
 <body><div class="wrap">
   <h1>BLUELINE · Clock client</h1>
@@ -60,7 +61,7 @@
 <script>
 const BEATS_PER_BAR = 4;
 let tempo=null, fps=null, fpb=null, det=false, subdiv=4;
-let ticks=0, onbeats=0, onbeatsWhole=0, lastArr=null, jitters=[], expectedTickMs=null;
+let ticks=0, onbeats=0, onbeatsWhole=0, lastArr=null, jitters=[], expectedTickMs=null, lastBeatKey=null;
 
 function gcd(a,b){return b?gcd(b,a%b):a;}
 function computeFPB(t,f){ // exact-ish rational check
@@ -85,29 +86,40 @@ function onBible(t,f,bpb){
 
 function onBeat(bar, beat, playing){
   ticks++; $("ticks").textContent=ticks;
-  // jitter (delivery stability)
+  // jitter (delivery stability) — measured per arriving message
   const now=performance.now();
-  if(lastArr!=null && expectedTickMs){ jitters.push(Math.abs((now-lastArr)-expectedTickMs)); if(jitters.length>200) jitters.shift(); }
+  if(lastArr!=null){ jitters.push(now-lastArr); if(jitters.length>200) jitters.shift(); }
   lastArr=now;
-  const totalBeats=(bar-1)*BEATS_PER_BAR+(beat-1);
-  const frame = totalBeats * fpb;
-  const residual = Math.abs(frame - Math.round(frame));
-  const whole = residual < 1e-9;
+  // live bar.beat always shows (works with no BIBLE yet)
   $("barbeat").textContent = bar+"."+(Number.isInteger(beat)?beat:beat.toFixed(2));
-  $("frame").textContent = whole ? Math.round(frame) : frame.toFixed(3);
-  $("whole").innerHTML = whole ? '<span class="good">● on a whole frame</span>'
-                               : '<span class="bad">● off by '+residual.toFixed(3)+' frame</span>';
-  const isOnBeat = Math.abs(beat-Math.round(beat))<1e-6;
-  if(isOnBeat){ onbeats++; if(whole) onbeatsWhole++; $("tally").textContent=onbeatsWhole+" / "+onbeats; }
-  if(jitters.length){ const m=jitters.reduce((a,b)=>a+b,0)/jitters.length; $("jitter").textContent=m.toFixed(1)+" ms"; }
-  // log only on-beats to keep it readable
-  if(isOnBeat){
-    const tb=document.getElementById("log");
-    const tr=document.createElement("tr");
+  const haveBible = (fpb!=null);
+  // delivery stability = std-dev of inter-arrival intervals (a steady poll -> low number)
+  if(jitters.length>2){ const m=jitters.reduce((a,b)=>a+b,0)/jitters.length;
+    const sd=Math.sqrt(jitters.reduce((a,b)=>a+(b-m)*(b-m),0)/jitters.length);
+    $("jitter").textContent=sd.toFixed(1)+" ms σ"; }
+  if(!haveBible){
+    $("frame").textContent="—"; $("whole").innerHTML='<span class="dim">waiting for /transport/bible (tempo + fps)…</span>';
+    return;
+  }
+  // BEAT-CROSSING detection: the 50 Hz poll samples a continuous beat float, so count each
+  // integer beat ONCE (when it changes) and evaluate the frame AT that exact downbeat.
+  const beatInt = Math.floor(beat + 1e-6);
+  const totalBeats = (bar-1)*BEATS_PER_BAR + (beat-1);        // continuous, for the live frame readout
+  const liveFrame = totalBeats * fpb;
+  $("frame").textContent = (Math.abs(liveFrame-Math.round(liveFrame))<1e-9) ? Math.round(liveFrame) : liveFrame.toFixed(1);
+  const key = bar*1000 + beatInt;
+  if(key !== lastBeatKey){
+    lastBeatKey = key;
+    const tb = (bar-1)*BEATS_PER_BAR + (beatInt-1);            // total beats at the exact downbeat
+    const fr = tb * fpb, resid = Math.abs(fr - Math.round(fr)), whole = resid < 1e-9;
+    onbeats++; if(whole) onbeatsWhole++; $("tally").textContent=onbeatsWhole+" / "+onbeats;
+    $("whole").innerHTML = whole ? '<span class="good">● beat on a whole frame</span>'
+                                 : '<span class="bad">● beat off by '+resid.toFixed(3)+' frame</span>';
+    const tbl=document.getElementById("log"); const tr=document.createElement("tr");
     const jit = jitters.length? jitters[jitters.length-1].toFixed(1)+"ms":"—";
-    tr.innerHTML=`<td>${bar}.${Math.round(beat)}</td><td>${totalBeats}</td><td>${whole?Math.round(frame):frame.toFixed(2)}</td>`+
-                 `<td>${residual.toFixed(3)}</td><td class="${whole?'good':'bad'}">${whole?'✓':'✗'}</td><td>${jit}</td>`;
-    tb.prepend(tr); while(tb.children.length>10) tb.removeChild(tb.lastChild);
+    tr.innerHTML=`<td>${bar}.${beatInt}</td><td>${tb}</td><td>${whole?Math.round(fr):fr.toFixed(2)}</td>`+
+                 `<td>${resid.toFixed(3)}</td><td class="${whole?'good':'bad'}">${whole?'✓':'✗'}</td><td>${jit}</td>`;
+    tbl.prepend(tr); while(tbl.children.length>10) tbl.removeChild(tbl.lastChild);
   }
 }
 
