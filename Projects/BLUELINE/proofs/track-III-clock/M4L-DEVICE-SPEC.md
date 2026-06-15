@@ -91,12 +91,16 @@ Notes:
 
 ### 2b. `transport.js` (paste into a `[js transport.js]` object; save next to the .amxd)
 
+**Paste discipline (avoid the `no function bang` bug):** Max's old JS engine can fail to compile if the
+source has **non-ASCII characters** (em-dashes, smart quotes) or a stray markdown ` ``` ` fence — and a
+failed compile means *none* of the functions register, so a bang reports `js: no function bang`. The
+code below is **pure ASCII**; paste only what's *between* the fences, and if you see the error, check the
+Max console for the one-time `transport.js: SyntaxError ... line N` above the spam.
+
 ```javascript
-// BLUELINE Track III — M4L transport sender.  outlet 0 -> [udpsend 127.0.0.1 9001]
-// PERFORMANCE: the LiveAPI object is created ONCE and reused. NEVER do `new LiveAPI(...)`
-// inside poll() — at the metro rate that's dozens of object creations/sec and it WILL
-// freeze Ableton. Signature + cue points are cached (refreshed on `bible`), not re-read
-// every tick.
+// BLUELINE Track III - M4L transport sender. outlet 0 -> [udpsend 127.0.0.1 9001]
+// Reuse ONE LiveAPI (never "new LiveAPI" in poll - that froze Live). Poll from [qmetro]
+// (LOW-priority thread) - a plain [metro] errors "no valid object set" when the editor is closed.
 autowatch = 1;
 outlets = 1;
 
