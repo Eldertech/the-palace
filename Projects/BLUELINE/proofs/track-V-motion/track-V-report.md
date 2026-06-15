@@ -34,6 +34,19 @@ Contact sheet: `renders/CONTACT-coherence.png`.
 flicker is tractable, not fundamental. A confident "yes" on the riskiest BLUELINE bet, surfaced cheaply
 (~$0.18 of A100 time).
 
+**Quantified by the consistency ruler** (`render-backend/consistency_ruler.py` — a CNN-embedding +
+color-histogram metric, Track II's "assess ruler"):
+
+| pair | `embed_cos` (semantic) | `color_corr` (palette) |
+|---|---|---|
+| **linked** (shared seed) | **0.880** | **0.935** |
+| **independent** (baseline) | 0.818 | 0.173 |
+
+The palette/costume number is the headline: **0.94 vs 0.17** — a 5.4× consistency gap. Seed-locking
+holds the look; independent seeds scatter it. The ruler turns the eyeball verdict into a number and is
+reusable for Track II (identity across a base-model swap) and M4 (identity across the comic→hyperreal
+jump).
+
 ## Honest limits (this is the FIRST rung, not full coherence)
 
 - **Seed-locking is the cheapest lever, not the whole answer.** It holds because the two poses are
