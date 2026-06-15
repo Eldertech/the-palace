@@ -49,7 +49,7 @@ timing see §5 (the `plugsync~` upgrade) — not needed for the smallest useful 
    [t b b]
     |    \________________________
     |                             \
-[message bible]              [toggle]──[metro 50]      ← ~20 Hz poll while on (gentle on Live)
+[message bible]              [toggle]──[qmetro 50]     ← ~20 Hz poll, LOW-priority thread (see below)
     |   (refresh+send on load)         |
     |                          [js transport.js]       ← poll() on each bang
     \____________________________/   |
@@ -60,16 +60,25 @@ timing see §5 (the `plugsync~` upgrade) — not needed for the smallest useful 
 UI (live.* so they're automatable / preset-saved):
 [live.numbox]  "FPS" (default 24, int) ──[prepend fps]──▶ [js transport.js]
 [live.text]    "resend BIBLE" (button) ─────────────────▶ [message bible] ▶ [js]
-[live.toggle]  "RUN" ───────────────────────────────────▶ [metro 50]  (and gate emit if you prefer)
+[live.toggle]  "RUN" ───────────────────────────────────▶ [qmetro 50]  (and gate emit if you prefer)
 [live.comment] status (optional) ◀── route a status string out a 2nd js outlet
 ```
 
+**⚠️ Gotcha — `[qmetro]`, not `[metro]` (the "no valid object set" bug).** If the poll runs from a plain
+`[metro]`, the LiveAPI `.get()` happens on Max's **high-priority (scheduler) thread**, and with Live's
+Overdrive on (the default) that throws `jsliveapi: get: no valid object set` + `SendMessage error 2:
+Bad parameter value` — **but only when the patcher edit window is closed** (an open editor keeps the
+patch serviced on the main thread, masking it). LiveAPI must be touched from the **low-priority thread**.
+Fix: drive the poll with **`[qmetro]`** (it fires on the low-priority queue) — *not* `[metro]`. The
+`valid()` guard in `poll()` is the belt-and-suspenders backstop (it re-creates the LiveAPI if it ever
+comes up invalid, and skips a tick rather than erroring).
+
 **Two rules that keep Ableton responsive** (the first build froze Live by breaking them):
-1. **Reuse the LiveAPI object** — created once in the `[js]` (see `ensure()`), never inside `poll()`.
+1. **Reuse the LiveAPI object** — created once via `init()`/`valid()`, never inside `poll()`.
    `new LiveAPI()` per tick is what locks up Live.
-2. **Poll gently** — `[metro 50]` (≈20 Hz) is plenty: the determinism is in the *arithmetic*
-   (bar.beat → frame is exact), so the poll only needs to be smooth for the live readout, not fast.
-   Drop to `[metro 100]` (10 Hz) if you want it lighter still; go to `plugsync~` (§5) only if you need
+2. **Poll gently, from the low-priority thread** — `[qmetro 50]` (≈20 Hz) is plenty: the determinism is
+   in the *arithmetic* (bar.beat → frame is exact), so the poll only needs to be smooth for the live
+   readout, not fast. Drop to `[qmetro 100]` (10 Hz) for lighter; go to `plugsync~` (§5) only if you need
    sample-accurate sub-beat. **`[live.thisdevice]` also fires `bible`** on load, so the clock + caches
    are sent automatically — no need to click the button unless tempo/signature changes.
 
@@ -97,10 +106,13 @@ var sigN = 4;                 // cached beats-per-bar (refreshed in refresh())
 var cues = [];                // cached [[bar, name], ...]
 var lastLocatorBar = -1;
 
-function ensure() { if (!api) api = new LiveAPI(null, "live_set"); }   // create once, lazily
+// validity-guarded LiveAPI: created once, re-created if it ever goes invalid. (api.id==0
+// means "no valid object" — happens if it's touched before the device is fully live.)
+function valid() { return api && api.id != 0; }
+function init() { api = new LiveAPI(null, "live_set"); refresh(); }   // call from [live.thisdevice]
 
 function refresh() {          // cache signature + cue points (cheap, on load / tempo-sig change)
-    ensure();
+    if (!valid()) api = new LiveAPI(null, "live_set");
     sigN = api.get("signature_numerator")[0];      // assumes x/4 meter
     cues = [];
     var cps = api.get("cue_points");               // ["id", id1, "id", id2, ...]
@@ -113,14 +125,14 @@ function refresh() {          // cache signature + cue points (cheap, on load / 
 function fps(v) { FPS = v; }                        // message: "fps 30"
 
 function bible() {                                  // refresh caches + send the locked clock
-    ensure(); refresh();
+    if (!valid()) init(); else refresh();
     outlet(0, "/transport/bible", api.get("tempo")[0], FPS, sigN);
 }
 
-function bang() { poll(); }                         // a [metro] bang drives a poll
+function bang() { poll(); }                         // a [qmetro] bang (LOW-priority thread) drives poll
 
-function poll() {                                   // 2 gets/tick on the REUSED api — light
-    ensure();
+function poll() {                                   // light: 2 gets/tick on the reused api
+    if (!valid()) { init(); if (!valid()) return; } // self-heal, or skip this tick if not ready yet
     var beats   = api.get("current_song_time")[0];  // beats (quarter notes) since song start
     var playing = api.get("is_playing")[0];
     var bar     = Math.floor(beats / sigN) + 1;
