@@ -1,0 +1,210 @@
+{
+  "host": "mac",
+  "date": null,
+  "self_test_host_capability": true,
+  "summary": {
+    "not-wired": 14,
+    "pass": 6,
+    "skip": 2
+  },
+  "results": [
+    {
+      "specialist": "Blender",
+      "status": "alive",
+      "host": "mac",
+      "reachable": true,
+      "via": "mac",
+      "result": "not-wired",
+      "detail": "reachable; no auto-smoke wired (heavy/interactive — runs by hand)"
+    },
+    {
+      "specialist": "ComfyUI",
+      "status": "alive",
+      "host": "mac",
+      "reachable": true,
+      "via": "mac",
+      "result": "not-wired",
+      "detail": "reachable; no auto-smoke wired (heavy/interactive — runs by hand)"
+    },
+    {
+      "specialist": "D3.js",
+      "status": "alive",
+      "host": "mac",
+      "reachable": true,
+      "via": "mac",
+      "result": "pass",
+      "detail": "smoke: 1 ok, 0 fail (1 inline script)"
+    },
+    {
+      "specialist": "ffmpeg",
+      "status": "alive",
+      "host": "mac",
+      "reachable": true,
+      "via": "mac",
+      "result": "pass",
+      "detail": "encode+decode ok"
+    },
+    {
+      "specialist": "FLUX (Hugging Face)",
+      "status": "alive",
+      "host": "mac",
+      "reachable": true,
+      "via": "cloud",
+      "result": "not-wired",
+      "detail": "reachable; no auto-smoke wired (heavy/interactive — runs by hand)"
+    },
+    {
+      "specialist": "Kokoro",
+      "status": "alive",
+      "host": "mac",
+      "reachable": true,
+      "via": "mac",
+      "result": "not-wired",
+      "detail": "reachable; no auto-smoke wired (heavy/interactive — runs by hand)"
+    },
+    {
+      "specialist": "LaTeX",
+      "status": "stub",
+      "host": "mac",
+      "reachable": true,
+      "via": "mac",
+      "result": "not-wired",
+      "detail": "reachable; no auto-smoke wired (heavy/interactive — runs by hand)"
+    },
+    {
+      "specialist": "LoRA Trainer",
+      "status": "alive",
+      "host": "mac",
+      "reachable": false,
+      "via": null,
+      "result": "skip",
+      "detail": "unreachable on 'mac'"
+    },
+    {
+      "specialist": "Manim CE",
+      "status": "alive",
+      "host": "mac",
+      "reachable": true,
+      "via": "mac",
+      "result": "not-wired",
+      "detail": "reachable; no auto-smoke wired (heavy/interactive — runs by hand)"
+    },
+    {
+      "specialist": "Matplotlib",
+      "status": "alive",
+      "host": "mac",
+      "reachable": true,
+      "via": "mac",
+      "result": "pass",
+      "detail": "figure rendered"
+    },
+    {
+      "specialist": "Mermaid",
+      "status": "alive",
+      "host": "mac",
+      "reachable": true,
+      "via": "mac",
+      "result": "not-wired",
+      "detail": "reachable; no auto-smoke wired (heavy/interactive — runs by hand)"
+    },
+    {
+      "specialist": "Midjourney",
+      "status": "deprecated",
+      "host": "mac",
+      "reachable": false,
+      "via": null,
+      "result": "skip",
+      "detail": "unreachable on 'mac'; fallback FLUX (Hugging Face)"
+    },
+    {
+      "specialist": "Observable Plot",
+      "status": "alive",
+      "host": "mac",
+      "reachable": true,
+      "via": "mac",
+      "result": "pass",
+      "detail": "smoke: 1 ok, 0 fail (1 inline script)"
+    },
+    {
+      "specialist": "p5.js",
+      "status": "alive",
+      "host": "mac",
+      "reachable": true,
+      "via": "mac",
+      "result": "pass",
+      "detail": "smoke: 1 ok, 0 fail (1 inline script)"
+    },
+    {
+      "specialist": "Remotion",
+      "status": "alive",
+      "host": "mac",
+      "reachable": true,
+      "via": "mac",
+      "result": "not-wired",
+      "detail": "reachable; no auto-smoke wired (heavy/interactive — runs by hand)"
+    },
+    {
+      "specialist": "RNBO codebox~ smith",
+      "status": "stub",
+      "host": "mac",
+      "reachable": true,
+      "via": "mac",
+      "result": "not-wired",
+      "detail": "reachable; no auto-smoke wired (heavy/interactive — runs by hand)"
+    },
+    {
+      "specialist": "Stable Audio Open",
+      "status": "alive",
+      "host": "mac",
+      "reachable": true,
+      "via": "mac",
+      "result": "not-wired",
+      "detail": "reachable; no auto-smoke wired (heavy/interactive — runs by hand)"
+    },
+    {
+      "specialist": "Three.js",
+      "status": "alive",
+      "host": "mac",
+      "reachable": true,
+      "via": "mac",
+      "result": "not-wired",
+      "detail": "reachable; no auto-smoke wired (heavy/interactive — runs by hand)"
+    },
+    {
+      "specialist": "Tone.js",
+      "status": "alive",
+      "host": "mac",
+      "reachable": true,
+      "via": "mac",
+      "result": "pass",
+      "detail": "smoke: 1 ok, 0 fail (1 inline script)"
+    },
+    {
+      "specialist": "VCV Patch Generator",
+      "status": "alive",
+      "host": "mac",
+      "reachable": true,
+      "via": "mac",
+      "result": "not-wired",
+      "detail": "reachable; no auto-smoke wired (heavy/interactive — runs by hand)"
+    },
+    {
+      "specialist": "Web Audio Worklet",
+      "status": "alive",
+      "host": "mac",
+      "reachable": true,
+      "via": "mac",
+      "result": "not-wired",
+      "detail": "reachable; no auto-smoke wired (heavy/interactive — runs by hand)"
+    },
+    {
+      "specialist": "Whisper",
+      "status": "alive",
+      "host": "mac",
+      "reachable": true,
+      "via": "mac",
+      "result": "not-wired",
+      "detail": "reachable; no auto-smoke wired (heavy/interactive — runs by hand)"
+    }
+  ]
+}

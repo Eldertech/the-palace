@@ -86,14 +86,16 @@ grammar: two voices we never see but read (font, color, size, placement carry th
 emotional charge while staying legible), terse to the point of koan, dense with
 sound effects, embracing surprise. Text-only obliques are the minority.
 
-## Connection to the Enrichment server
+## Connection to the Enrichment card queue
 
 Oblique Enrichment needs almost no new infrastructure — it is a **deck-shaped
-variant of [[Enrichment]]** and rides the existing server (`Enrichment/server.py`,
-the [[BBS Design System]] terminal at `localhost:7878`):
+variant of [[Enrichment]]** and rides the existing Enrichment card queue, now
+surfaced in **[[STIGMERGY]]**'s QUEUE deck (the Node server reads the card
+folders, renders them in the [[BBS Design System]] grammar, and fires the
+supervisor via `POST /api/cards/respond`):
 
 - **Facet = card.** Each facet is an `Enrichment/card-NNN/` folder: a `card.md`
-  plus a self-contained facet `.html`. The server already renders `.html`
+  plus a self-contained facet `.html`. STIGMERGY already renders `.html`
   artifacts in a sandboxed `<iframe>`, so a facet *plays* — sound and all — inside
   the queue.
 - **`card.md` already fits.** `target_name` / `target_path` / `target_obsidian_uri`
@@ -129,7 +131,7 @@ unifying. Convergence should be discovered, not designed. (Flag for a future Wea
 - Is a deck a *queue* (rolling five) or a *set* (all twenty reviewable at once)? The
   server assumes a queue; the radio play assumes a set.
 - Should the deck-as-show grow its own inline "comment" affordance (POST to
-  `/api/respond` from inside a facet), or stay a pure performance view?
+  `/api/cards/respond` from inside a facet), or stay a pure performance view?
 - When do the converging threads above actually merge — and who decides?
 
 ## Forward Vectors

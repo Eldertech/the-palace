@@ -57,13 +57,13 @@ status-bar indicator shows the connection state: `LIVE` (connected),
 ## v0.3 — inline rich content
 
 Messages can carry artifacts (image / audio / sandboxed HTML) that render
-inline in the message row, the way the Enrichment server renders cards.
+inline in the message row, the way the QUEUE deck renders enrichment cards.
 
 ### Read path — `GET /api/file`
 
 **`GET /api/file?path=<palace-relative>`**
-- Streams the file's bytes with content-type detection (same table as
-  `Enrichment/server.py`), `Content-Length`, and `Cache-Control: no-cache`.
+- Streams the file's bytes with content-type detection (the content-type
+  table now lives in `server/cards.js`), `Content-Length`, and `Cache-Control: no-cache`.
 - `400` on a missing/empty path, path traversal, an absolute path, or a
   directory. `404` when the file does not exist.
 - The `path` is resolved through the same `resolveInsidePalace` guard as

@@ -38,6 +38,9 @@ links:
   - target: "[[BBS Design System]]"
     type: connects-to
     label: locked-aesthetic
+  - target: "[[STIGMERGY v2.0 — Consolidation & Primary Interface]]"
+    type: spawned
+    label: consolidation-and-roadmap
 ---
 
 # STIGMERGY
@@ -81,6 +84,8 @@ STIGMERGY emerged from the [[BBS Blackboard]] concept (March 2026), which named 
 ## Current state (2026-06)
 
 STIGMERGY v1.0 is running daily. The persistent board has accumulated on the order of 400 messages across stewardship and songline sessions. Infrastructure agents (`cowork-git`, `claude-code`) coordinate commits over the same bus that creative stewards use for status and decisions. Hardening is in progress — the §2.2 protocol is being extracted into `@stigmergy/core` so the shared edge between app, orchestrator, and `trickster-auto` becomes a first-class node of its own (see the STIGMERGY Audit, 2026-06-06).
+
+The **v2.0 consolidation** (2026-06-16) then healed a navigation drift where the v0.x board paradigm and the v1.0 time paradigm had stacked on one screen: decisions now live on a single surface (the **TRICKSTER deck**), **QUEUE** is the open-work board with the raw per-board feed demoted to a collapsible firehose, and the monospace [[BBS Design System]] aesthetic is restored on every surface. The roadmap to primary-interface — pulling enrichment, handoffs, and weave proposals inside the terminal, then authoring, then the Lens — lives in [[STIGMERGY v2.0 — Consolidation & Primary Interface]].
 
 ## Forward Vector
 

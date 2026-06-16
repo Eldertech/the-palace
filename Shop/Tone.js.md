@@ -6,7 +6,7 @@ medium: interactive
 tool: tone.js
 tool_version: 15.0.4
 born: 2026-05
-last_tested: 2026-05-26
+last_tested: 2026-06-16
 last_gotcha: 2026-05-26
 license: MIT
 forward_vector: "I make browser-deployable music software that speaks in bars and beats, not seconds — synths, sequencers, effect chains that run anywhere a browser does; I want to grow a base artifact scaffold and a reflex for mobile audio-context unlock so every Piece survives first contact with a phone."
