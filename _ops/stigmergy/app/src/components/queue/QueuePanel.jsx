@@ -221,7 +221,12 @@ export default function QueuePanel({ messages, onJumpEntry }) {
   };
 
   const items = useMemo(() => {
-    const built = buildQueue(messages);
+    // Decisions (RESOURCE_REQUESTs) live on the TRICKSTER deck, not here. QUEUE
+    // is the open-WORK board: proposals, flags, to-dos, ready handoffs — things
+    // you might act on, none of which a steward is blocked waiting on. buildQueue
+    // still models resource_requests (the model is complete + unit-tested); this
+    // view simply doesn't surface them, so a decision never appears twice.
+    const built = buildQueue(messages).filter((it) => it.kind !== 'resource_request');
     const reconciled = reconcileQueue(built, commits);
     // Re-attach decided items buildQueue has since dropped (a GRANT/DENY landed
     // on the board), so their verdict badge survives until the human clears it.

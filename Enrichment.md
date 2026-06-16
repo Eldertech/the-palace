@@ -144,15 +144,9 @@ Five cards live in the queue at any time. As you act on a card, a new one slides
 
 ## The interface
 
-The cards are reviewed through a tiny local server running on your machine — a single page, BBS-aesthetic, terminal-flavored. Open `http://localhost:7878` and the queue is there. The server is intentionally simple; we approach it *from the other side*, adding small features as we encounter the need for them, never building infrastructure for features we haven't missed yet.
+The cards are reviewed inside **[[STIGMERGY]]** — the **QUEUE** deck carries an *enrichment cards* section beneath the open-work board, in the same phosphor BBS grammar. Each card shows its rehydration block, the artifact, and the deposit/revise/discard controls; acting on one writes `Enrichment/inbox.md` and fires the supervisor through STIGMERGY's Node actuator (`POST /api/cards/respond`). There is no separate server to start — the surface is the one terminal you already operate the palace in.
 
-To start the server (from any terminal at the palace root):
-
-```
-python3 Enrichment/server.py
-```
-
-The server is a single file (`Enrichment/server.py`), Python 3 standard library only — no `pip install` required. Default port 7878; override with `ENRICHMENT_PORT=N`. It reads card folders, serves the queue, and writes responses to `Enrichment/inbox.md`. Stop with Ctrl-C; restart freely.
+*(History, 2026-06-16: through May 2026 the cards were reviewed in a standalone Python/Flask page at `localhost:7878` — `Enrichment/server.py`. STIGMERGY's Phase 4.5 absorbed the card queue — reading card folders, writing the inbox, and firing the supervisor, with the actuator's hard-won PID-liveness + daemon-cleanup robustness ported into the Node server (`_ops/stigmergy/app/server/actuator.js` + `server/cards.js`). The Flask server was then retired as part of the [[STIGMERGY v2.0 — Consolidation & Primary Interface]] Phase 1; it is recoverable from git if ever needed.)*
 
 Each card opens with a *rehydration* block, because by the time you reach this card you may not have thought about its target entry in weeks:
 
@@ -250,7 +244,7 @@ Per round, Claude does:
 
 If targeting a specific entry, also read that entry in full before generating cards for it. The forward vector and frontmatter in card.md must reflect what the entry currently says, not a guess.
 
-**0b. Make sure the server is running.** Run `python3 Enrichment/server.py status`. If it reports "not running," start it with `python3 Enrichment/server.py start` — this returns immediately, the server runs detached in the background, and the URL is printed. If the user does not yet have a browser tab open, hand them the URL (`http://localhost:7878`) at the end of the round so they can review.
+**0b. Make sure STIGMERGY is up.** The cards surface in STIGMERGY's QUEUE deck (the *enrichment cards* section). If the dev server isn't running, start it (`npm --prefix _ops/stigmergy/app run dev`, or the `stigmergy` launch config). There is no separate enrichment server — STIGMERGY reads the card folders and writes the inbox directly. Point the user at the QUEUE deck at the end of the round so they can review.
 
 **1. Read `Enrichment/inbox.md`.** Parse each `## card-NNN — Target` block into (card_id, target, purpose, response text). The `---` rule separates blocks. If the inbox is empty (no `## card-` headers), skip steps 2 and 3 — this round is *fresh-cards-only*.
 
@@ -273,7 +267,7 @@ The actions:
 
 **5. Commit.** All file changes from this round get one or more commits. The git log is the biography.
 
-**6. Hand back the URL.** End the round with a one-line "→ reload http://localhost:7878 — N new cards in queue" so the user knows what to do next.
+**6. Hand back to the QUEUE.** End the round with a one-line "→ N new cards in the QUEUE deck" so the user knows what to do next; STIGMERGY surfaces them on its next reload (the SSE live tail + the card-queue refresh).
 
 A round ends here. The user reloads the browser, reviews, sends, comes back, says *"next round"*. The loop continues until the user calls it.
 
@@ -285,7 +279,7 @@ A round ends here. The user reloads the browser, reviews, sends, comes back, say
 
 The original ceremony spec describes the *intent* — five cards always live, revisions regenerate while you're reading the next card, "if you're slow, the queue stays full." That intent is now actually implemented via a small supervisor architecture, layered onto the round protocol above without replacing it.
 
-**The trigger flips from pull to push.** You no longer type "next round" in a Claude Code window. When you click ▶ send on a card in the BBS, the server (`Enrichment/server.py`) appends to `inbox.md` *and* fires a headless `claude -p` supervisor as a detached subprocess. The Claude Code window is optional in v1 — it can stay open as a log viewer or be closed entirely.
+**The trigger flips from pull to push.** You no longer type "next round" in a Claude Code window. When you act on a card in STIGMERGY's QUEUE (deposit / revise / discard), the Node server (`POST /api/cards/respond`) appends to `inbox.md` *and* fires a headless `claude -p` supervisor as a detached subprocess through the ported actuator (`_ops/stigmergy/app/server/actuator.js`). The Claude Code window is optional in v1 — it can stay open as a log viewer or be closed entirely.
 
 **One worker, sequentially.** The server enforces a single global worker via `Enrichment/.worker.pid`. If you submit three cards in quick succession, the first fires the worker; the next two simply append to the inbox — the running worker picks them up before exiting. This avoids git races and inbox-parse collisions.
 
@@ -301,7 +295,7 @@ The original ceremony spec describes the *intent* — five cards always live, re
 
 **Text-only artifacts in v1.** The supervisor generates text artifacts directly — haiku, voice-acts, koans, FV tweaks, link proposals, palace-graffiti drafts. Media-maker subagents (image-maker, audio-maker, etc.) are deferred to v2. If a card naturally wants media, the supervisor writes the *prompt* for that media as a text artifact (a Suno prompt, a Midjourney prompt, a Kokoro narration script) and labels its purpose accordingly. Loudon runs the actual media generation manually for now.
 
-**Worker observability.** The BBS header shows `worker idle` or `worker active · Ns`. When the worker transitions back to idle, the queue auto-reloads — revised and fresh cards appear without manual reload. The worker's recent stdout/stderr lives at `Enrichment/.worker.log`. CLI commands: `python3 Enrichment/server.py status` reports both server and worker state; `python3 Enrichment/server.py wake` manually fires a worker if one died with work pending.
+**Worker observability.** STIGMERGY's QUEUE shows worker state (idle / active); when the worker transitions back to idle the card queue refreshes — revised and fresh cards appear without manual reload. The worker's recent stdout/stderr lives at `Enrichment/.worker.log`. STIGMERGY's Node server owns the actuator (fire, PID-liveness, status) via `/api/worker` and `/api/cards/respond`; the old `python3 Enrichment/server.py status|wake` CLI was retired with the Flask server.
 
 **Why this matters.** The intent of "five cards always live" required a continuous-flow trigger. v1 finally provides one. v2 will add specialized makers for media and may move from one global worker to a small worker pool. v3 might explore observability (queue history, validator-verdict distribution) once we have data on what the critic actually catches and misses.
 

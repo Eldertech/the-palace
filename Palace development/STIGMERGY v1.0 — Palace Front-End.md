@@ -91,7 +91,7 @@ STATE is where STIGMERGY closes every gap Loudon named in Obsidian. It is the re
 The single biggest Obsidian fix. An entry opens as a rendered card, not raw text:
 
 - **Frontmatter as a structured header.** `type` as a badge; `stage` as a lifecycle glyph showing position on `seed→sprout→growing→mature→fruiting→dormant→composting`; `pillars` as colored chips (creation/tools/philosophy/practice); `confidence`/`energy`/`beauty`/`who_leads` as compact metadata in JetBrains-mono dim text.
-- **The forward vector is the hero.** It is the entry's *conatus* (SCHEMA §3) — quoted large, near the top, in Cormorant-register prominence within the BBS frame. The thing that says what the entry wants is the thing you see first.
+- **The forward vector is the hero.** It is the entry's *conatus* (SCHEMA §3) — quoted large and bright near the top, in the BBS frame's phosphor-white display register. The thing that says what the entry wants is the thing you see first. *(Revision 3: the original wording here said "Cormorant-register," which contradicted [[BBS Design System]]'s monospace rule and seeded a real font drift into the Trickster cards. STIGMERGY is monospace-only; the phrase is corrected.)*
 - **Typed links rendered as a panel, body wikilinks as fabric.** SCHEMA §4's distinction made visible: frontmatter links (the semantic web — `mirrors`, `enables`, `deepens`…) render as a typed-relation panel with labels; body `[[wikilinks]]` render inline as the conversational fabric. Two registers, two treatments. Obsidian flattens them; STATE separates them.
 - **`agency_profile` as a four-pillar quadrant** when present (SCHEMA §3.1) — creation/tools/philosophy/practice desires laid out as four cells.
 
@@ -305,6 +305,12 @@ Insert three phases and reorder so the actuator lands early:
 - **Phase 5.5 — Topology Lens.** Render `_ops/maps/palace-map-*.json` as STATE's graph; wire Weave proposals into QUEUE. *Gate:* the current palace map renders; clicking a node opens the entry in STATE.
 
 Phase 3 (commit spec) gains the `Palace-Campaign` trailer, the `mixed` kind, and `ops` sub-scopes; Phase 6 (reconciliation) gains N-writer handling.
+
+## Revision 3 (2026-06-16) — Superseded by v2.0 consolidation
+
+A full assessment found the v1.0 thesis sound but **incompletely landed and partly reversed** in the build. v1.0 specified three time-decks with the six boards demoted to QUEUE lanes; the running app grew to **five** decks (TRICKSTER + STEWARDS re-promoted) and the QUEUE deck **stacked** the new ranked inbox on top of the retained v0.x board-viewer — two navigation paradigms layered, which is why the queue read as "confusing and duplicating the trickster tab." The "Cormorant-register" phrasing above had also leaked actual Loudon Live fonts into the Trickster cards.
+
+The consolidation — decisions on one surface (TRICKSTER), QUEUE as the open-work board with the raw feed demoted to a collapsible firehose, monospace restored — and the roadmap to drive STIGMERGY to Loudon's **primary** interface now live in [[STIGMERGY v2.0 — Consolidation & Primary Interface]]. This document remains the canonical statement of the time-deck thesis, the commit specification, and the reconciliation engine, which v2.0 keeps unchanged.
 
 ## Build Plan (autonomous-build-contract, phased with verify gates)
 
