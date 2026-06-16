@@ -53,7 +53,7 @@ Items move off this list when they become entries, get completed, or get compost
 
 - [ ] **Resonance and Damping** — Persistent forward-ghost across 4 cycles from [[Differential Equations]]. The DSP-physics concept central to filter design and physical modeling.
 
-- [ ] **Leibniz (Indra's Net / monadology)** — Forward-ghost from [[Whitehead]] (YAML + body link to a non-existent Leibniz entry). Leibniz is already discussed in [[Palace Philosophies]] § the monad register; a real person-page would resolve the dangling link and give the Indra's-Net/monad thread a home. Surfaced in the 2026-06-16 deep weave. (Note 2026-06-16: this is a legitimate forward-ghost — left unlinked deliberately, like the [[Donella Meadows]] ghost was before her page existed.)
+- [x] **Leibniz** — ✅ Written 2026-06-16 (`Leibniz.md`, concept, sprout). Distilled from the monadology / Indra's Net material in [[Palace Philosophies]]; carries the windowless-monads-vs-prehension quarrel with [[Whitehead]]. Whitehead's two dangling refs repointed to `[[Leibniz]]` — forward-ghost resolved. 6 links (Palace Philosophies, Whitehead, Hyperdimensional Prism, Meaning and the Link, FOUR PILLARS, Spinoza Conatus).
 
 ---
 
@@ -112,7 +112,7 @@ Items move off this list when they become entries, get completed, or get compost
 
 ## Structural Improvements
 
-- [ ] **[[Image Embedding Standard]] — rewrite filing model to bundles** — Surfaced 2026-06-16 deep weave. The standard still teaches the deprecated `Artifacts/[Theme]/` + `Artifacts/Images/` filing convention; a banner now flags this and the demo SVG was recovered into the standard's own bundle (`_ops/Image Embedding Standard/palace-typed-link-graph-demo.svg`), but the example paths (lines ~45–51, 157, 168) and the `Artifacts/Images/` mentions still need rewriting to the SCHEMA §8 bundle model. Pairs with [[Mermaid Diagram Standard]] / [[Technical Diagram Standard]] which were repointed this weave.
+- [x] **[[Image Embedding Standard]] — rewrite filing model to bundles** — ✅ Done 2026-06-16 (v1 → v2). Rewrote the whole filing protocol to Loudon's rule: **every image for a page lives in that page's bundle** (`[Entry]/[file]`); cross-cutting images go to the most-owning entry's (or a hub's) bundle, never a shared folder. Removed all `Artifacts/[Theme]/` + `Artifacts/Images/` convention (filing protocol, embedding syntax, Deposit step, open questions); only the deprecation note's `Artifacts/` mention remains. Demo SVG already lives in the standard's bundle. [[Mermaid Diagram Standard]] / [[Technical Diagram Standard]] were repointed in the main weave.
 
 - [ ] **Map builder — `build-map-2026-06-16.py` supersedes `build-map-2026-06-07.py`** — The 06-07 builder had stale hardcoded `NODE_DIRS` (missed Cross-Domain Resonances/, Shop/, etc. post-restructure) and no v1.13 frontmatter filter, so it mis-counted (308 nodes / 56 ghosts vs the true 309 / 23). The 06-16 builder is frontmatter-driven (canon = canonical `type:`, regardless of folder, so hub-bundle members like the 10 Bridges count) and recurses all palace subdirs. Future weaves should run the 06-16 builder. Consider deleting the older dated builders once 06-16 is trusted.
 
