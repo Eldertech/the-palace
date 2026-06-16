@@ -20,6 +20,12 @@ links:
   - target: "[[FOUR PILLARS]]"
     type: connects-to
     label: informs
+  - target: "[[Kuramoto Coupling]]"
+    type: connects-to
+    label: synergetics
+  - target: "[[Leverage Points Framework]]"
+    type: connects-to
+    label: do-more-with-less
 ---
 
 # Buckminster Fuller

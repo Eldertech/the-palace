@@ -10,7 +10,7 @@ confidence: working
 energy: high
 links:
   - target: "[[BLUELINE]]"
-    type: exemplifies
+    type: connects-to
     label: core-mechanism-of
   - target: "[[The Flow Field is the Spine]]"
     type: couples-with

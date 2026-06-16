@@ -80,7 +80,7 @@ None significant — this is a closed, exact result. The only provenance worth k
 
 ## Artifact
 
-A self-contained HTML teaching artifact was built in the source session: oscilloscope-style plot with ghost curves, dual **Envelope / Audio-Rate** modes (Web Audio API), six presets, live crossfaded curvature-morphing during playback, three pedagogical note panels. It lives in the source chat (2026-05-28) and could not be retrieved into this deposit. When pulled, store under `Artifacts/` and reference here via a typed link; a drafted-but-unplanted version of this very entry also exists in that chat — re-derived here through proper ceremony rather than pasted, since the original used fallback link ontology.
+A self-contained HTML teaching artifact was built in the source session: oscilloscope-style plot with ghost curves, dual **Envelope / Audio-Rate** modes (Web Audio API), six presets, live crossfaded curvature-morphing during playback, three pedagogical note panels. It lives in the source chat (2026-05-28) and could not be retrieved into this deposit. When pulled, store it in this entry's bundle (`Exponential Decay Curvature/`) and reference here via a typed link; a drafted-but-unplanted version of this very entry also exists in that chat — re-derived here through proper ceremony rather than pasted, since the original used fallback link ontology.
 
 ---
 

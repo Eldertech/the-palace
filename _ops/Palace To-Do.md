@@ -53,6 +53,8 @@ Items move off this list when they become entries, get completed, or get compost
 
 - [ ] **Resonance and Damping** — Persistent forward-ghost across 4 cycles from [[Differential Equations]]. The DSP-physics concept central to filter design and physical modeling.
 
+- [ ] **Leibniz (Indra's Net / monadology)** — Forward-ghost from [[Whitehead]] (YAML + body link to a non-existent Leibniz entry). Leibniz is already discussed in [[Palace Philosophies]] § the monad register; a real person-page would resolve the dangling link and give the Indra's-Net/monad thread a home. Surfaced in the 2026-06-16 deep weave. (Note 2026-06-16: this is a legitimate forward-ghost — left unlinked deliberately, like the [[Donella Meadows]] ghost was before her page existed.)
+
 ---
 
 ## Tools and Workflows to Build
@@ -109,6 +111,10 @@ Items move off this list when they become entries, get completed, or get compost
 ---
 
 ## Structural Improvements
+
+- [ ] **[[Image Embedding Standard]] — rewrite filing model to bundles** — Surfaced 2026-06-16 deep weave. The standard still teaches the deprecated `Artifacts/[Theme]/` + `Artifacts/Images/` filing convention; a banner now flags this and the demo SVG was recovered into the standard's own bundle (`_ops/Image Embedding Standard/palace-typed-link-graph-demo.svg`), but the example paths (lines ~45–51, 157, 168) and the `Artifacts/Images/` mentions still need rewriting to the SCHEMA §8 bundle model. Pairs with [[Mermaid Diagram Standard]] / [[Technical Diagram Standard]] which were repointed this weave.
+
+- [ ] **Map builder — `build-map-2026-06-16.py` supersedes `build-map-2026-06-07.py`** — The 06-07 builder had stale hardcoded `NODE_DIRS` (missed Cross-Domain Resonances/, Shop/, etc. post-restructure) and no v1.13 frontmatter filter, so it mis-counted (308 nodes / 56 ghosts vs the true 309 / 23). The 06-16 builder is frontmatter-driven (canon = canonical `type:`, regardless of folder, so hub-bundle members like the 10 Bridges count) and recurses all palace subdirs. Future weaves should run the 06-16 builder. Consider deleting the older dated builders once 06-16 is trusted.
 
 - [ ] **Build the Swarm Weave** ⭐ — Replace the single-agent [[Weave Ceremony]] with a colony architecture: parallel worker sub-agents (one per entry, scoped context) + a coordinator that synthesizes and de-duplicates. Full spec and learning path in [[Swarm Weave]]. *Single-Doc Worker (one entry, on demand) can be built and used immediately without waiting for the full swarm.* ⭐ *HIGH PRIORITY for Single-Doc Worker mode* Swarm weave connects very intimately with [[Agent Wellbeing]] and [[Pages as Agents]] and [[Enchanted Worker]].
 - [ ] Tiered loading and [[JEWEL]] must be adopted across the palace, but most importantly in the claude.md file.

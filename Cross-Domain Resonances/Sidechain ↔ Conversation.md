@@ -17,13 +17,21 @@ beauty: 10
 who_leads: shared
 links:
   - target: "[[Cross-Domain Resonances]]"
-    type: connects-to
+    type: member-of
   - target: "[[Shunryu Suzuki]]"
-    type: deepens
+    type: connects-to
+    label: informed-by
   - target: "[[FOUR PILLARS]]"
     type: exemplifies
-  - target: "[[Sidechain Dialogue]]"
+  - target: "[[Cooperation Yields Agency]]"
     type: connects-to
+    label: mutual-yield
+  - target: "[[Lao Tzu]]"
+    type: connects-to
+    label: emptiness-holds
+  - target: "[[Flocking]]"
+    type: mirrors
+    label: local-yield
 ---
 
 # Sidechain ↔ Conversation

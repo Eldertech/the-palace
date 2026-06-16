@@ -20,6 +20,9 @@ links:
   - target: "[[FOUR PILLARS]]"
     type: connects-to
     label: informs
+  - target: "[[Shunryu Suzuki]]"
+    type: connects-to
+    label: beginners-mind
 ---
 
 # Agnes Martin

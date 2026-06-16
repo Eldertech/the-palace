@@ -20,6 +20,15 @@ links:
   - target: "[[FOUR PILLARS]]"
     type: connects-to
     label: informs
+  - target: "[[The Curve Is the Material]]"
+    type: connects-to
+    label: curve-as-structure
+  - target: "[[Quality Manifesto]]"
+    type: connects-to
+    label: depth-of-engagement
+  - target: "[[Hilaritas Generator]]"
+    type: connects-to
+    label: making-as-life
 ---
 
 # Sam Maloof

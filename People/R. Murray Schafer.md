@@ -20,6 +20,12 @@ links:
   - target: "[[FOUR PILLARS]]"
     type: connects-to
     label: informs
+  - target: "[[Pauline Oliveros]]"
+    type: connects-to
+    label: deep-listening
+  - target: "[[Dub Lineage]]"
+    type: connects-to
+    label: schizophonia
 ---
 
 # R. Murray Schafer

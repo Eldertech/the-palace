@@ -24,7 +24,7 @@ domains:
 who_leads: shared
 links:
   - target: "[[Source Library]]"
-    type: connects-to
+    type: member-of
   - target: "[[Lao Tzu]]"
     type: connects-to
   - target: "[[Brian Eno]]"
@@ -33,6 +33,12 @@ links:
     type: deepens
   - target: "[[FOUR PILLARS]]"
     type: deepens
+  - target: "[[Cooking ↔ Mixing]]"
+    type: connects-to
+    label: subtraction
+  - target: "[[Simondon]]"
+    type: connects-to
+    label: concretization
 ---
 
 # Rick Rubin

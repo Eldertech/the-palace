@@ -16,8 +16,6 @@ who_leads: shared
 links:
   - target: "[[FOUR PILLARS]]"
     type: deepens
-  - target: "[[Weekly Themes Database]]"
-    type: enables
   - target: "[[Cross-Domain Resonances]]"
     type: enables
   - target: "[[Donella Meadows]]"

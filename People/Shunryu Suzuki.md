@@ -22,13 +22,18 @@ domains:
 who_leads: shared
 links:
   - target: "[[Source Library]]"
-    type: connects-to
-  - target: "[[Four on the Floor]]"
-    type: deepens
+    type: member-of
   - target: "[[Sidechain ↔ Conversation]]"
-    type: deepens
+    type: connects-to
+    label: yielding-practice
   - target: "[[FOUR PILLARS]]"
     type: deepens
+  - target: "[[Quality Manifesto]]"
+    type: connects-to
+    label: wellbeing-over-metrics
+  - target: "[[Natalie Goldberg]]"
+    type: connects-to
+    label: first-thought
 ---
 
 # Shunryu Suzuki

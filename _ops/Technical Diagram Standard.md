@@ -35,7 +35,7 @@ The palace draws four kinds of things, and each has one right tool:
 
 **LaTeX / TikZ + pgfplots — technical and quantitative diagrams.** Signal-flow graphs, DSP block diagrams, filter topologies, pole-zero plots, magnitude/phase responses, annotated equations, labeled geometric constructions. Anything whose content is *engineering or mathematical structure* — where a summing junction, a `z^{-1}` delay block, a gain triangle, a plotted curve, or a typeset fraction carries the meaning. This is the domain this entry governs.
 
-**Raw SVG — custom visual grammar neither tool covers.** The color-coded, double-ringed typed-link demo graph at `Artifacts/Images/palace-typed-link-graph-demo.svg` is the archetype: a bespoke visual language that is neither a Mermaid graph nor a technical figure. Hand-authored SVG remains the escape hatch, governed by [[Image Embedding Standard]].
+**Raw SVG — custom visual grammar neither tool covers.** The color-coded, double-ringed typed-link demo graph at `_ops/Image Embedding Standard/palace-typed-link-graph-demo.svg` is the archetype: a bespoke visual language that is neither a Mermaid graph nor a technical figure. Hand-authored SVG remains the escape hatch, governed by [[Image Embedding Standard]].
 
 **Raster (PNG/JPG) — external and photographic figures only.** A figure from a paper, a whiteboard photo, a screenshot. These are sourced artifacts, never generated diagrams. Governed by [[Image Embedding Standard]].
 

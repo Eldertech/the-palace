@@ -22,11 +22,20 @@ domains:
 who_leads: shared
 links:
   - target: "[[Source Library]]"
-    type: connects-to
+    type: member-of
   - target: "[[Cross-Domain Resonances]]"
     type: deepens
   - target: "[[FOUR PILLARS]]"
     type: deepens
+  - target: "[[Embeddings as Relational Meaning]]"
+    type: mirrors
+    label: analogy-as-vector
+  - target: "[[Meaning and the Link]]"
+    type: connects-to
+    label: analogy-cognition
+  - target: "[[Lateral Access]]"
+    type: connects-to
+    label: level-crossing
 ---
 
 # Douglas Hofstadter

@@ -17,11 +17,15 @@ beauty: 10
 who_leads: shared
 links:
   - target: "[[Cross-Domain Resonances]]"
-    type: connects-to
-  - target: "[[Martin Heidegger]]"
-    type: deepens
+    type: member-of
   - target: "[[FOUR PILLARS]]"
     type: exemplifies
+  - target: "[[Frequency-Time Duality]]"
+    type: mirrors
+    label: distance-as-delay
+  - target: "[[Granular Synthesis]]"
+    type: connects-to
+    label: room-as-grain
 ---
 
 # Reverb ↔ Space-Time

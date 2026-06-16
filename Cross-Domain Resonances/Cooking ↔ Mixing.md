@@ -17,13 +17,15 @@ beauty: 8
 who_leads: shared
 links:
   - target: "[[Cross-Domain Resonances]]"
-    type: connects-to
+    type: member-of
   - target: "[[Lao Tzu]]"
-    type: deepens
+    type: connects-to
+    label: wu-wei
   - target: "[[FOUR PILLARS]]"
     type: exemplifies
-  - target: "[[High Pass Low Pass]]"
+  - target: "[[Quality Manifesto]]"
     type: connects-to
+    label: taste-over-metrics
 ---
 
 # Cooking ↔ Mixing

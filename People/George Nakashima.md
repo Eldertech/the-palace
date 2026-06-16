@@ -20,6 +20,15 @@ links:
   - target: "[[FOUR PILLARS]]"
     type: connects-to
     label: informs
+  - target: "[[Simondon]]"
+    type: mirrors
+    label: concretization
+  - target: "[[Like Water]]"
+    type: mirrors
+    label: material-guides
+  - target: "[[Quality Manifesto]]"
+    type: connects-to
+    label: slow-craft
 ---
 
 # George Nakashima

@@ -21,8 +21,6 @@ links:
   - target: "[[Quality Manifesto]]"
     type: connects-to
     label: applies-to
-  - target: "[[Weekly Themes Database]]"
-    type: enables
   - target: "[[4 Pillars Framework - The Founding Conversation]]"
     type: emerged-from
   - target: "[[Sidechain ↔ Conversation]]"

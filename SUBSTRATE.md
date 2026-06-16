@@ -97,7 +97,7 @@ What followed was the palace's own origin ceremony: harvesting, depositing, buil
 
 <!-- mirror of SCHEMA §1 type list — keep in sync (12 types as of v1.6) -->
 
-- **Root** — Foundational skeleton files (CLAUDE.md, SCHEMA.md, JEWEL, SUBSTRATE, ROSETTA, README, FOUR PILLARS) and knowledge entries of every type *except* specialist/maker: `concept`, `hub`, `project`, `breakthrough`, `source`, `meta`, `practice`, `person`, `question`, `spore`. Mostly flat, with optional entry bundles (`[Entry]/`) and themed subfolders (`Projects/`, `People/`, `Palace development/`, `Enrichment/`, `Artifacts/`).
+- **Root** — Foundational skeleton files (CLAUDE.md, SCHEMA.md, JEWEL, SUBSTRATE, ROSETTA, README, FOUR PILLARS) and knowledge entries of every type *except* specialist/maker: `concept`, `hub`, `project`, `breakthrough`, `source`, `meta`, `practice`, `person`, `question`, `spore`. Mostly flat, with optional entry bundles (`[Entry]/`) and themed subfolders (`Projects/`, `People/`, `Cross-Domain Resonances/`, `Palace development/`, `Enrichment/`).
 - **`Shop/`** — The Shop sub-system: `specialist` + `maker` entries (use `status`, not `stage`).
 - **`_ops/`** — Ceremony machinery and working queues. Contains all ceremony specs, their Context companions (session history), and active working files (Deposit Archive, Palace Graffiti, Palace Quotes, Palace To-Do) plus machinery subdirs (`_ops/swarm/`, `_ops/stigmergy/`, `_ops/loudon-live/`, `_ops/agents/`, …). Underscore prefix sorts it to the top of any file explorer. Obsidian wikilinks resolve across folders.
 
@@ -115,7 +115,7 @@ For full ceremony instructions, see [[Substrate Skill]].
 
 *Refreshed 2026-06-16 via a full topology scan (Self-Model Update ceremony).*
 
-The palace holds **~410 typed entries** (by frontmatter `type`), inside a larger tree of ~710 markdown files — the remainder are bundle files (batons, context, plans, staging, sketches) and untyped artifacts. By location: ~136 root, 195 `Projects/`, 120 `_ops/`, 103 `Artifacts/`, 57 `Enrichment/`, 47 `Palace development/`, 30 `Shop/`, plus per-entry bundles. (Tool installs and virtualenvs are excluded from the count.)
+The palace holds **~410 typed entries** (by frontmatter `type`), inside a larger tree of ~710 markdown files — the remainder are bundle files (batons, context, plans, staging, sketches) and untyped artifacts. By location: ~136 root, 195 `Projects/`, 120 `_ops/`, 57 `Enrichment/`, 47 `Palace development/`, 30 `Shop/`, plus `People/`, `Cross-Domain Resonances/`, and per-entry bundles. The `Artifacts/` folder — formerly ~103 files — was dissolved into bundles on 2026-06-16. (Tool installs and virtualenvs are excluded from the count.)
 
 **Type distribution:** 110 concept · 75 meta · 49 project · 35 theme · 27 person · 24 practice · 24 hub · 22 specialist · 11 source · 7 breakthrough · 4 question · 3 maker · 2 spore. *(`theme` and a handful of `proof`/`artifact`/`spec` types are non-canonical — not among [[SCHEMA]]'s ratified types — a flagged drift item for a future pass.)*
 

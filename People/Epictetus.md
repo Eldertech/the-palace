@@ -20,6 +20,14 @@ links:
   - target: "[[FOUR PILLARS]]"
     type: connects-to
     label: informs
+  - target: "[[Stoicism]]"
+    type: exemplifies
+  - target: "[[The Dichotomy of Control]]"
+    type: connects-to
+    label: origin
+  - target: "[[The Four Virtues]]"
+    type: connects-to
+    label: prohairesis
 ---
 
 # Epictetus

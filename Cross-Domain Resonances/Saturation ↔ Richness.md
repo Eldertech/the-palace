@@ -16,9 +16,15 @@ beauty: 9
 who_leads: shared
 links:
   - target: "[[Cross-Domain Resonances]]"
-    type: connects-to
+    type: member-of
   - target: "[[FOUR PILLARS]]"
     type: exemplifies
+  - target: "[[Hilaritas Generator]]"
+    type: connects-to
+    label: sweet-spot
+  - target: "[[Quality Manifesto]]"
+    type: connects-to
+    label: felt-calibration
 ---
 
 # Saturation ↔ Richness

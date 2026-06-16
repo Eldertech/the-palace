@@ -95,7 +95,7 @@ The mechanical scan flags these as broken, but the palace's Trickster-move philo
 - `[[Resonance and Damping]]` (Differential Equations) — To-Do "Entries to Write", persistent forward-ghost.
 - `[[Donella Meadows]]`-class person-pages — To-Do, first "person-as-context-injector" test case.
 - `[[Synthesis Topologies]]` — To-Do forward-ghost.
-- `[[Martin Heidegger]]`, `[[Actor Model]]`, `[[Ableton Extension SDK]]` — concept/source ghosts (harvest candidates, not bugs).
+- `Martin Heidegger`, `[[Actor Model]]`, `[[Ableton Extension SDK]]` — concept/source ghosts (harvest candidates, not bugs).
 - `[[Toolkit — Audio Effects]]`, `[[Toolkit — Drum Machines]]`, `[[Toolkit — MIDI Controllers]]` — a planned toolkit family; unwritten members.
 
 Also **not bugs:** 18 case-only link mismatches (`[[Four Pillars]]`, `[[Substrate]]`) resolve in Obsidian; 34 "title/filename mismatches" are mostly deliberate (UPPERCASE skeleton files `JEWEL`/`ROSETTA`/`SUBSTRATE`/`README - The Palace Guide`; bundle kebab-case filenames).

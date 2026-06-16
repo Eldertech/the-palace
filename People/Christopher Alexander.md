@@ -23,13 +23,19 @@ domains:
 who_leads: shared
 links:
   - target: "[[Source Library]]"
-    type: connects-to
+    type: member-of
   - target: "[[Cross-Domain Resonances]]"
     type: deepens
   - target: "[[Kick Drum ↔ Foundation]]"
     type: deepens
   - target: "[[FOUR PILLARS]]"
     type: deepens
+  - target: "[[Leverage Points Framework]]"
+    type: connects-to
+    label: patterns
+  - target: "[[Hilaritas Generator]]"
+    type: connects-to
+    label: pattern-language
 ---
 
 # Christopher Alexander
