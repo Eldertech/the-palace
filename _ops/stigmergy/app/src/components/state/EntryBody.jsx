@@ -595,7 +595,7 @@ function renderBlock(block, ctx, key) {
                       key={`${key}-h${ci}`}
                       style={{
                         ...cellBase,
-                        fontFamily: 'var(--font-ui)',
+                        fontFamily: 'var(--font-display)',
                         textTransform: 'uppercase', letterSpacing: '.02em',
                         color: 'var(--phosphor-white)', textShadow: 'var(--glow-strong)',
                         background: 'var(--phosphor-deep)',

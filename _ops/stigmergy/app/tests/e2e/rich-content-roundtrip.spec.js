@@ -51,8 +51,10 @@ test('an enrichment-shaped message round-trips: POST → persist → render inli
     expect(res.status(), await res.text()).toBe(200);
 
     // Read it back and render it inline.
-    // v1.0: land on the QUEUE deck (where the existing board UI lives).
+    // v2.0: the board view is a collapsible firehose under the QUEUE deck; open
+    // it (folded by default for focus) to reach the channel tabs + message rows.
     await page.goto('/?deck=QUEUE');
+    await page.getByTestId('board-firehose').locator('summary').click();
     await page.getByTestId('channel-tabs').waitFor({ timeout: 15_000 });
     await page.getByTestId('tab-general').click();
 

@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { Box, Button, Tag } from '../primitives.jsx';
-import { healthColor, formatTs, parseLinks, hrefFor } from '../../lib/format.js';
+import { healthColor, formatTs } from '../../lib/format.js';
 import { postMessage, InvalidMessageError } from '../../adapters/blackboard.js';
 import { advanceSteward } from '../../adapters/stewards.js';
 import { t, pauseShort, pauseLong } from '../../lib/lexicon.js';
 import { buildCardGrant } from '../../lib/trickster-grants.js';
 import EntryRefChips from '../EntryRefChips.jsx';
+import Linkify from '../../lib/linkify.jsx';
 import { usePalaceRef } from '../../lib/palace-ref.jsx';
 import { resolveRef } from '../../lib/entry-ref.js';
 import { assetsFor } from '../../lib/trickster-assets.js';
@@ -38,31 +39,6 @@ export { buildCardGrant };
 
 // Pad a metadata label to a fixed width so colons align in monospace.
 const padLabel = (s) => (s + '          ').slice(0, 9);
-
-// Render a string with markdown links [text](url) and bare URLs as <a> tags.
-// Duplicated from TricksterInbox for Phase 1; the two surfaces converge in
-// Phase 6, at which point this and the inbox's copy hoist to one helper.
-function Linkify({ text }) {
-  const parts = parseLinks(text);
-  return parts.map((p, i) =>
-    p.type === 'text'
-      ? <React.Fragment key={i}>{p.value}</React.Fragment>
-      : (
-        <a
-          key={i}
-          href={hrefFor(p.url)}
-          style={{
-            color: 'var(--ansi-bright-cyan)',
-            textShadow: 'var(--glow)',
-            textDecoration: 'underline',
-            wordBreak: 'break-all',
-          }}
-        >
-          {p.text}
-        </a>
-      )
-  );
-}
 
 // Selection is CONTROLLED by the deck (TricksterDeck owns a per-request_id
 // `selections` map) so the keyboard layer's 1-N/Enter and the mouse clicks
@@ -246,7 +222,7 @@ export default function TricksterCard({ item, onConfirmed, onRun, focused = fals
         {item.headline ? (
           <div data-testid="card-headline" style={{
             margin: '2px 0 6px',
-            fontFamily: 'var(--font-body, "Cormorant Garamond", Georgia, serif)',
+            fontFamily: 'var(--font-mono)',
             fontSize: 21, lineHeight: 1.3, color: 'var(--phosphor-white)',
             textShadow: 'var(--glow)',
           }}>{item.headline}</div>
@@ -381,7 +357,7 @@ export default function TricksterCard({ item, onConfirmed, onRun, focused = fals
           <summary style={{
             cursor: 'pointer',
             color: 'var(--phosphor-dim)', textShadow: 'none',
-            fontFamily: 'var(--font-ui, "Manrope", sans-serif)',
+            fontFamily: 'var(--font-mono)',
             fontSize: 10, letterSpacing: '.12em', textTransform: 'uppercase',
             padding: '2px 0',
           }}>{t('trickster.card.more')}</summary>

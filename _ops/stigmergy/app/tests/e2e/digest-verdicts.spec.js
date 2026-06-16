@@ -46,7 +46,9 @@ test.afterEach(() => {
 });
 
 async function gotoTrickster(page) {
-  await page.goto('/?deck=QUEUE&board=TRICKSTER');
+  // The escalation digest lives on the TRICKSTER deck now (relocated from the
+  // old in-QUEUE TRICKSTER board block during the v2.0 consolidation).
+  await page.goto('/?deck=TRICKSTER');
   await page.locator('[data-row-kind]').first().waitFor({ timeout: 10_000 });
   await page.evaluate(() => Promise.allSettled([
     document.fonts.load('14px "IBM Plex Mono"'),
