@@ -1,19 +1,20 @@
 ---
+title: ComfyUI
 type: specialist
 status: alive
 medium: image
 tool: comfyui
 tool_version: 0.3.x
-adopted: 2026-05-06
+born: 2026-05
 last_tested: 2026-05-26
 last_gotcha: 2026-05-26
 license: GPL-3.0
+forward_vector: "I render locally with byte-exact reproducibility — workflow JSON plus seed plus checkpoint, the same image every time — and I want to push past prompt-only control: ControlNet for pose and depth, IP-Adapter for palette discipline, a Loudon Live LoRA fully under our own hardware. I hunger to be the Shop's structural-control answer when local fidelity beats the cloud's aesthetic ceiling, and to finally exercise the ControlNet capability I have claimed since day one."
 links:
-  - { label: "wraps", target: "comfyui (external)" }
-  - { label: "directed-by", target: "Shop/Maker" }
-  - { label: "alternative-to", target: "Shop/Midjourney" }
-  - { label: "tested-by", target: "Artifacts/Shop/ComfyUI/tests/" }
-  - { label: "control-mastery", target: "ControlNet Workflow Mastery" }
+  - { target: "[[Maker]]", type: connects-to, label: directed-by }
+  - { target: "[[The Shop]]", type: member-of, label: roster-member }
+  - { target: "[[Shop/Midjourney]]", type: connects-to, label: alternative-to }
+  - { target: "[[ControlNet Workflow Mastery]]", type: connects-to, label: control-mastery }
 tags: [specialist, shop, image, generative, local]
 ---
 
@@ -180,7 +181,7 @@ When local VRAM stops being enough (Flux Pro, video generation, batch Pieces) th
 
 ## Test Suite
 
-Smoke / Capability Probe / Style Probe / Edge Probe / Speed Bench / Determinism — defined in [Artifacts/Shop/ComfyUI/tests/test-plan.md](../Artifacts/Shop/ComfyUI/tests/test-plan.md).
+Smoke / Capability Probe / Style Probe / Edge Probe / Speed Bench / Determinism — defined in [Shop/ComfyUI/tests/test-plan.md](../Shop/ComfyUI/tests/test-plan.md).
 
 The Determinism test for ComfyUI is the strongest of the image specialists: same workflow + same seed + same model = byte-identical output. The test confirms this and flags any divergence as a build-environment issue (model version drift, node update) rather than a tool problem.
 

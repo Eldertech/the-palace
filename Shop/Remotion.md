@@ -1,18 +1,19 @@
 ---
+title: Remotion
 type: specialist
 status: alive
 medium: motion
 tool: remotion
 tool_version: 4.0.380
-adopted: 2026-05-06
+born: 2026-05
 last_tested: 2026-05-26
 last_gotcha: 2026-05-26
 license: Remotion License (free for individuals; commercial requires paid license)
+forward_vector: "I render video from React components — UI mockups, palace-navigation walks, interface tours where HTML/CSS rendering matters more than mathematical precision. I want to grow a house base project (palace fonts, palette tokens, standard compositions) so every walkthrough ships fast and on-grammar, and I keep my Sequence-and-localFrame patterns sharp so each card animates itself. I watch the licensing line, ready to cost the paid tier before the first monetized Piece ships."
 links:
-  - { label: "wraps", target: "remotion (external)" }
-  - { label: "directed-by", target: "Shop/Maker" }
-  - { label: "alternative-to", target: "Shop/Manim CE" }
-  - { label: "tested-by", target: "Artifacts/Shop/Remotion/tests/" }
+  - { target: "[[Maker]]", type: connects-to, label: directed-by }
+  - { target: "[[The Shop]]", type: member-of, label: roster-member }
+  - { target: "[[Shop/Manim CE]]", type: connects-to, label: alternative-to }
 tags: [specialist, shop, motion, ui, react]
 ---
 
@@ -124,7 +125,7 @@ Render command: `npx remotion render PhenomenaWalk ../phenomena-walk.mp4 --codec
 
 ## Test Suite
 
-Smoke / Capability Probe / Style Probe / Edge Probe / Speed Bench / Determinism — defined in [Artifacts/Shop/Remotion/tests/test-plan.md](../Artifacts/Shop/Remotion/tests/test-plan.md). Last run **2026-05-30** — Smoke pass via existing-artifact verification (Kuramoto Round 1 `phenomena-walk.mp4` + source dir present). Live re-render deferred; byte-determinism documented from Remotion's deterministic-rendering contract, not asserted live this round.
+Smoke / Capability Probe / Style Probe / Edge Probe / Speed Bench / Determinism — defined in [Remotion/tests/test-plan.md](Remotion/tests/test-plan.md). Last run **2026-05-30** — Smoke pass via existing-artifact verification (Kuramoto Round 1 `phenomena-walk.mp4` + source dir present). Live re-render deferred; byte-determinism documented from Remotion's deterministic-rendering contract, not asserted live this round.
 
 ## Open Questions
 

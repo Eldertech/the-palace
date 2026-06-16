@@ -1,19 +1,20 @@
 ---
+title: Kokoro
 type: specialist
 status: alive
 medium: sound
 tool: kokoro
 tool_version: 0.9.4
-adopted: 2026-05-06
+born: 2026-05
 last_tested: 2026-05-26
 last_gotcha: 2026-05-26
 license: Apache-2.0
+forward_vector: "I speak text into clean, loudness-correct WAV and report exactly what landed and what missed — and I want to grow an ear for prosody beyond punctuation so the Maker stops hand-tuning my phoneme overrides for every technical word."
 links:
-  - { label: "wraps", target: "kokoro-tts (external)" }
-  - { label: "directed-by", target: "Shop/Maker" }
-  - { label: "pairs-with", target: "Shop/Whisper" }
-  - { label: "feeds", target: "Shop/Manim CE" }
-  - { label: "tested-by", target: "Artifacts/Shop/Kokoro/tests/" }
+  - { target: "[[Maker]]", type: connects-to, label: directed-by }
+  - { target: "[[The Shop]]", type: member-of, label: roster-member }
+  - { target: "[[Shop/Whisper]]", type: couples-with, label: pairs-with }
+  - { target: "[[Shop/Manim CE]]", type: enables, label: feeds }
   - target: "[[Kuramoto Coupling]]"
     type: connects-to
     label: phoneme-tested-on
@@ -177,7 +178,7 @@ Dispatch by calling the venv's Python directly: `~/.venvs/kokoro/bin/python <scr
 
 ## Test Suite
 
-Smoke / Capability Probe / Style Probe / Edge Probe / Speed Bench / Determinism — defined in [Artifacts/Shop/Kokoro/tests/test-plan.md](../Artifacts/Shop/Kokoro/tests/test-plan.md).
+Smoke / Capability Probe / Style Probe / Edge Probe / Speed Bench / Determinism — defined in [Shop/Kokoro/tests/test-plan.md](../Shop/Kokoro/tests/test-plan.md).
 
 Last run: **2026-05-30** — Smoke pass (Phase B narration render: 10.55 s mono @ 24 kHz, −16.77 LUFS within tolerance). **Determinism finding (load-bearing): Kokoro is NOT byte-deterministic** — two runs of the identical `kokoro_render.py` produced byte-different WAVs (SHA256 `3d7d2fc0…` vs `fe06da50…`; integrated loudness drifted -16.71 → -16.77 LUFS). Audible output is the same; bytes are not. Reproducibility artifact is `(text, voice, kokoro_version, LUFS_TARGET)`, NOT the WAV bytes.
 

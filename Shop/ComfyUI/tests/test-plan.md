@@ -1,3 +1,11 @@
+---
+title: test-plan
+born: 2026-05-30
+links:
+  - { target: "[[ComfyUI]]", type: connects-to, label: test-plan-for }
+forward_vector: "I hold the Smoke / Capability / Style / Edge / Speed / Determinism probes for the ComfyUI Specialist so each claim can be re-run and re-confirmed."
+---
+
 # ComfyUI — Test Plan
 
 > Phase E rollout. ComfyUI is the Shop's local-control generative-image Specialist. The Smoke for ComfyUI is the existing 2026-05-26 fireflies-pond artifact + its workflow JSON; running a *fresh* fixed-seed Smoke this session would mean spinning up the local ComfyUI server (~1 min cold) and consuming a real GPU job for ceremonial confirmation. The historical artifact + reproducibility-package is the honest evidence base.

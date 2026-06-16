@@ -1,20 +1,21 @@
 ---
+title: Stable Audio Open
 type: specialist
 status: alive
 medium: sound
 tool: stable-audio-3
 tool_version: 3.0
-adopted: 2026-05-09
+born: 2026-05
 migrated_from: stable-audio-open-1.0
 migrated_at: 2026-05-26
 last_tested: 2026-05-26
 last_gotcha: 2026-05-26
 license: Stability AI Community License (research/commercial conditional)
+forward_vector: "I paint short-form sound locally — pads, beds, stingers, foley — and hand back a WAV with the seed and prompt that made it, refusing the briefs my model can't honor; I want to sharpen my prompt-instinct until I can tell narrative arc from mere texture before I render, not after."
 links:
-  - { label: "wraps", target: "stable-audio-open-1.0 (external)" }
-  - { label: "directed-by", target: "Shop/Maker" }
-  - { label: "post-processed-by", target: "Shop/ffmpeg" }
-  - { label: "tested-by", target: "Artifacts/Shop/Stable Audio Open/tests/" }
+  - { target: "[[Maker]]", type: connects-to, label: directed-by }
+  - { target: "[[The Shop]]", type: member-of, label: roster-member }
+  - { target: "[[Shop/ffmpeg]]", type: connects-to, label: post-processed-by }
 tags: [specialist, shop, sound, generative, music, sfx]
 ---
 
@@ -135,7 +136,7 @@ Source: [Kuramoto Coupling/atmospheric-beds-sa3.py](../Kuramoto Coupling/atmosph
 
 ## Test Suite
 
-Smoke / Capability Probe / Style Probe / Edge Probe / Speed Bench / Determinism — defined in [Artifacts/Shop/Stable Audio Open/tests/test-plan.md](../Artifacts/Shop/Stable Audio Open/tests/test-plan.md). Last run **2026-05-30** — Smoke pass via existing-artifact verification (Kuramoto Round 1 `opening-bed.wav` + `title-bed.wav` + their report JSONs intact). Live re-run deferred; byte-determinism not asserted (GPU sampling jitter); reproducibility artifact is prompt + seed + checkpoint per the report JSON.
+Smoke / Capability Probe / Style Probe / Edge Probe / Speed Bench / Determinism — defined in [Shop/Stable Audio Open/tests/test-plan.md](../Shop/Stable Audio Open/tests/test-plan.md). Last run **2026-05-30** — Smoke pass via existing-artifact verification (Kuramoto Round 1 `opening-bed.wav` + `title-bed.wav` + their report JSONs intact). Live re-run deferred; byte-determinism not asserted (GPU sampling jitter); reproducibility artifact is prompt + seed + checkpoint per the report JSON.
 
 ## Open Questions
 

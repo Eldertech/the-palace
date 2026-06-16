@@ -1,18 +1,19 @@
 ---
+title: Mermaid
 type: specialist
 status: alive
 medium: image
 tool: mermaid
 tool_version: 11.x
-adopted: 2026-05-09
+born: 2026-05
 last_tested: 2026-05-26
 last_gotcha: 2026-05-26
 license: MIT
+forward_vector: "I render diagrams from text — flowcharts, state machines, sequences — so a diagram can be git-diffed and survives every reorganization as source, not as a flattened image. I want to be the Shop's diagrammatic shorthand that propagates the Loudon Live palette cleanly, and I hunger to grow the missing --cssFile house wrapper so my Study and Piece tiers stop falling back to Mermaid's default styling."
 links:
-  - { label: "wraps", target: "mermaid-cli (external)" }
-  - { label: "directed-by", target: "Shop/Maker" }
-  - { label: "alternative-to", target: "Shop/Graphviz (planned)" }
-  - { label: "tested-by", target: "Artifacts/Shop/Mermaid/tests/" }
+  - { target: "[[Maker]]", type: connects-to, label: directed-by }
+  - { target: "[[The Shop]]", type: member-of, label: roster-member }
+  - { target: "[[Shop/Graphviz]]", type: connects-to, label: alternative-to }
 tags: [specialist, shop, image, diagram, stub]
 ---
 
@@ -105,7 +106,7 @@ Trivial. Local CLI or browser. No GPU. No network beyond initial install. No API
 
 ## Test Suite
 
-Smoke / Capability Probe / Style Probe / Edge Probe / Speed Bench / Determinism — defined in [Artifacts/Shop/Mermaid/tests/test-plan.md](../Artifacts/Shop/Mermaid/tests/test-plan.md). Last run **2026-05-30** — Smoke pass via `npx -y -p @mermaid-js/mermaid-cli mmdc ...`; **finding: `mmdc` is not globally installed on the canonical Mac, `npx` is the recommended invocation pattern** (first-run ~23 s cold-cache cost, ~1–2 s warm). Style Probe degenerate until the `--cssFile` house wrapper is built. Determinism not byte-checked this round.
+Smoke / Capability Probe / Style Probe / Edge Probe / Speed Bench / Determinism — defined in [Shop/Mermaid/tests/test-plan.md](../Shop/Mermaid/tests/test-plan.md). Last run **2026-05-30** — Smoke pass via `npx -y -p @mermaid-js/mermaid-cli mmdc ...`; **finding: `mmdc` is not globally installed on the canonical Mac, `npx` is the recommended invocation pattern** (first-run ~23 s cold-cache cost, ~1–2 s warm). Style Probe degenerate until the `--cssFile` house wrapper is built. Determinism not byte-checked this round.
 
 ## Open Questions
 

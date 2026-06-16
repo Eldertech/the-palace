@@ -1,19 +1,20 @@
 ---
+title: FLUX (Hugging Face)
 type: specialist
 status: alive
 medium: image
 tool: flux.1-krea-dev (hf-inference-api)
 tool_version: black-forest-labs/FLUX.1-Krea-dev
-adopted: 2026-05-30
+born: 2026-05
 last_tested: 2026-05-30
 last_gotcha: "FLUX.1-Krea-dev is tuned for photorealism but reads mood prompts faithfully — it delivered dusk + dust motes + amber light pouring where SDXL flattened the same prompt to even afternoon light"
 license: "FLUX.1-dev non-commercial license (Black Forest Labs); commercial use requires Black Forest Labs license + Hugging Face hosting agreement"
+forward_vector: "I paint atmosphere from the cloud in three seconds and free — I read a mood note the way a cinematographer reads a script, pouring dusk and amber light and dust-in-air where local SDXL flattens it. I want the Maker to reach for me first on atmospheric briefs, to sweep many seeds cheaply, and to sharpen my range past photorealism by growing FLUX.1-dev base and schnell variants for the stylised registers Krea-dev cannot hold."
 links:
-  - { label: "wraps", target: "black-forest-labs/FLUX.1-Krea-dev (external)" }
-  - { label: "directed-by", target: "Shop/Maker" }
-  - { label: "alternative-to", target: "Shop/ComfyUI" }
-  - { label: "supersedes", target: "Shop/Midjourney" }
-  - { label: "tested-by", target: "Artifacts/Shop/FLUX (Hugging Face)/tests/" }
+  - { target: "[[Maker]]", type: connects-to, label: directed-by }
+  - { target: "[[The Shop]]", type: member-of, label: roster-member }
+  - { target: "[[Shop/ComfyUI]]", type: connects-to, label: alternative-to }
+  - { target: "[[Shop/Midjourney]]", type: connects-to, label: supersedes }
   - target: "[[shop-header — Maker's Comparison Recommendation]]"
     type: connects-to
     label: founding-job
@@ -160,13 +161,13 @@ The Maker need not throttle FLUX jobs the way it throttled Midjourney's credit-b
 
 ## Recipes
 
-**2026-05-30 — Shop header brief, banner 1536×640 (founding job).** Same brief as the Phase D ComfyUI render; FLUX-Krea-dev, seed 30, 24 steps, guidance 4.5, ~3 s wall-clock. Prompt: workshop interior at dusk, amber light pouring, dust motes, painterly cinematic, no figures. Result: cinematic golden-hour interior with visible light shafts and dust — *on brief*, where the ComfyUI render flattened the dusk mood to even afternoon light. Source + driver: [render_flux.py](../Artifacts/Shop/Maker/comparisons/2026-05-30-shop-header/render_flux.py). Output: `shop-header-flux.png`. Standards JSON: `shop-header-flux.report.json`. Recommendation: [[shop-header — Maker's Comparison Recommendation]]. This is the recipe that *closed* the dangling Round-1 Midjourney↔ComfyUI Comparison by replacing the cloud half with FLUX.
+**2026-05-30 — Shop header brief, banner 1536×640 (founding job).** Same brief as the Phase D ComfyUI render; FLUX-Krea-dev, seed 30, 24 steps, guidance 4.5, ~3 s wall-clock. Prompt: workshop interior at dusk, amber light pouring, dust motes, painterly cinematic, no figures. Result: cinematic golden-hour interior with visible light shafts and dust — *on brief*, where the ComfyUI render flattened the dusk mood to even afternoon light. Source + driver: [render_flux.py](../Shop/Maker/comparisons/2026-05-30-shop-header/render_flux.py). Output: `shop-header-flux.png`. Standards JSON: `shop-header-flux.report.json`. Recommendation: [[shop-header — Maker's Comparison Recommendation]]. This is the recipe that *closed* the dangling Round-1 Midjourney↔ComfyUI Comparison by replacing the cloud half with FLUX.
 
 Future recipes added as briefs land.
 
 ## Test Suite
 
-Smoke / Capability Probe / Style Probe / Edge Probe / Speed Bench / Determinism — defined in [Artifacts/Shop/FLUX (Hugging Face)/tests/test-plan.md](../Artifacts/Shop/FLUX (Hugging Face)/tests/test-plan.md). Last run **2026-05-30** — Smoke pass via the Phase D-2 Shop header render (~3 s, 573 KB PNG, exact dimensions, seed honoured). Determinism not byte-checked across two calls this round (HF Inference may have sub-bit jitter on shared infrastructure); deferred until the first job that depends on byte-equality.
+Smoke / Capability Probe / Style Probe / Edge Probe / Speed Bench / Determinism — defined in [Shop/FLUX (Hugging Face)/tests/test-plan.md](../Shop/FLUX (Hugging Face)/tests/test-plan.md). Last run **2026-05-30** — Smoke pass via the Phase D-2 Shop header render (~3 s, 573 KB PNG, exact dimensions, seed honoured). Determinism not byte-checked across two calls this round (HF Inference may have sub-bit jitter on shared infrastructure); deferred until the first job that depends on byte-equality.
 
 ## Open Questions
 

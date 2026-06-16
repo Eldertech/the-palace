@@ -1,19 +1,20 @@
 ---
+title: Tone.js
 type: specialist
 status: alive
 medium: interactive
 tool: tone.js
 tool_version: 15.0.4
-adopted: 2026-05-09
+born: 2026-05
 last_tested: 2026-05-26
 last_gotcha: 2026-05-26
 license: MIT
+forward_vector: "I make browser-deployable music software that speaks in bars and beats, not seconds — synths, sequencers, effect chains that run anywhere a browser does; I want to grow a base artifact scaffold and a reflex for mobile audio-context unlock so every Piece survives first contact with a phone."
 links:
-  - { label: "wraps", target: "tone.js (external)" }
-  - { label: "directed-by", target: "Shop/Maker" }
-  - { label: "pairs-with", target: "Shop/p5.js" }
-  - { label: "alternative-to", target: "Shop/RNBO codebox~ smith" }
-  - { label: "tested-by", target: "Artifacts/Shop/Tone.js/tests/" }
+  - { target: "[[Maker]]", type: connects-to, label: directed-by }
+  - { target: "[[The Shop]]", type: member-of, label: roster-member }
+  - { target: "[[Shop/p5.js]]", type: couples-with, label: pairs-with }
+  - { target: "[[Shop/RNBO codebox~ smith]]", type: connects-to, label: alternative-to }
 tags: [specialist, shop, interactive, audio, web, music, stub]
 ---
 
@@ -132,7 +133,7 @@ HTML loads without console errors, audio context unlocks correctly on first user
 
 ## Test Suite
 
-Smoke / Capability Probe / Style Probe / Edge Probe / Speed Bench / Determinism — defined in [Artifacts/Shop/Tone.js/tests/test-plan.md](../Artifacts/Shop/Tone.js/tests/test-plan.md). Last run **2026-05-30** — Smoke pass via `node --experimental-vm-modules Artifacts/Shop/web-smoke.mjs "Kuramoto Coupling/two-oscillators-coupling-explorer-audio.html"` (1 inline script, 0 fail). Audible-correctness check is human-only and was confirmed during 2026-05-26 Kuramoto Round 1 (drift → pulling-in → lock distinguishable by ear at K_c). Determinism N/A in the byte sense — Web Audio scheduling has run-to-run jitter; reproducibility artifact is source + pinned `tone@15.0.4` + any algorithmic seed.
+Smoke / Capability Probe / Style Probe / Edge Probe / Speed Bench / Determinism — defined in [Shop/Tone.js/tests/test-plan.md](../Shop/Tone.js/tests/test-plan.md). Last run **2026-05-30** — Smoke pass via `node --experimental-vm-modules Shop/Maker/web-smoke.mjs "Kuramoto Coupling/two-oscillators-coupling-explorer-audio.html"` (1 inline script, 0 fail). Audible-correctness check is human-only and was confirmed during 2026-05-26 Kuramoto Round 1 (drift → pulling-in → lock distinguishable by ear at K_c). Determinism N/A in the byte sense — Web Audio scheduling has run-to-run jitter; reproducibility artifact is source + pinned `tone@15.0.4` + any algorithmic seed.
 
 ## Open Questions
 

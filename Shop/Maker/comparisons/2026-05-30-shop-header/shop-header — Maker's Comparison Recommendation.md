@@ -1,23 +1,13 @@
 ---
-type: meta
-status: mature
+title: shop-header — Maker's Comparison Recommendation
+born: 2026-05-30
 links:
-  - target: "[[The Shop]]"
-    type: connects-to
-    label: hub-header-brief
-  - target: "[[Shop/Maker]]"
-    type: directed-by
-  - target: "[[Shop/ComfyUI]]"
-    type: produced-by
-  - target: "[[Shop/FLUX (Hugging Face)]]"
-    type: produced-by
-    label: midjourney-replacement
-  - target: "[[Shop/Midjourney]]"
-    type: supersedes
-    label: midjourney-deprecated-too-expensive
-  - target: "[[Flocking — Maker's Comparison Recommendation]]"
-    type: mirrors
-    label: prior-comparison-shape
+  - { target: "[[The Shop]]", type: connects-to, label: hub-header-brief }
+  - { target: "[[Maker]]", type: connects-to, label: directed-by }
+  - { target: "[[Shop/ComfyUI]]", type: connects-to, label: produced-by }
+  - { target: "[[Shop/FLUX (Hugging Face)]]", type: connects-to, label: midjourney-replacement }
+  - { target: "[[Shop/Midjourney]]", type: connects-to, label: supersedes-deprecated }
+  - { target: "[[Flocking — Maker's Comparison Recommendation]]", type: mirrors, label: prior-comparison-shape }
 tags: [meta, shop, maker, comparison, recommendation, header]
 forward_vector: "I am the two-sided Comparison Phase D was meant to deliver — local-control ComfyUI vs cloud-aesthetic FLUX-Krea (the chosen Midjourney replacement). I name the call, revise the Selection Heuristic the prior single-vendor recommendation refused to update, and turn the dangling Round-1 Comparison into a closed loop."
 ---
@@ -43,7 +33,7 @@ The reproducibility-strictness rule from the [[Flocking]] shoot-out applies here
 
 ## How they read
 
-Side-by-side at `Artifacts/Shop/Maker/comparisons/2026-05-30-shop-header/` (`shop-header-comfyui.png` and `shop-header-flux.png`).
+Side-by-side at `Shop/Maker/comparisons/2026-05-30-shop-header/` (`shop-header-comfyui.png` and `shop-header-flux.png`).
 
 **ComfyUI (SDXL):** technically competent workshop interior. Symmetric centred composition with mirrored windows on left and back walls. Bright, *even* lighting that reads more *afternoon* than *dusk* despite the prompt asking for dusk. Wood-tone palette, lighter overall. Reads as "a workshop in regular use" — generic.
 
@@ -83,4 +73,4 @@ Lesson for future Comparisons: a missing-half recommendation document is not a p
 - [[Shop/FLUX (Hugging Face)|FLUX (Hugging Face)]]: **new entry, status: alive** — Phase D-2 is its first real job, and this Comparison Recommendation is its founding gotcha set.
 - [[Shop/Maker|Maker]] Selection Heuristics: revised per above.
 - [[Shop/Maker|Maker]] Roster: was 14 alive + 2 stub; now 14 alive + 1 alive (FLUX) + 1 stub (RNBO codebox~ smith) + 1 deprecated (Midjourney) = **15 alive, 1 stub, 1 deprecated**.
-- `Artifacts/Shop/host-capability.json`: Midjourney's manifest entry updated to `status: deprecated`; new entry for `FLUX (Hugging Face)` (cloud host, requires `HF_TOKEN` cached or env-set).
+- `Shop/Maker/host-capability.json`: Midjourney's manifest entry updated to `status: deprecated`; new entry for `FLUX (Hugging Face)` (cloud host, requires `HF_TOKEN` cached or env-set).

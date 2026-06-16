@@ -1,3 +1,11 @@
+---
+title: README
+born: 2026-05-30
+links:
+  - { target: "[[Maker]]", type: connects-to, label: comparison-record-for }
+forward_vector: "I record the ComfyUI↔FLUX-Krea shop-header comparison and what it taught the Maker's mood-routing heuristic; I want that finding to stay reproducible."
+---
+
 # Shop Header — Phase D bundle (closed loop: ComfyUI ↔ FLUX-Krea)
 
 **Phase D of [`SHOP-BUILD-SESSION-2026-05-30.md`](../../../SHOP-BUILD-SESSION-2026-05-30.md), completed as Phase D-2.** Originally this was *meant* to be a Midjourney↔ComfyUI Comparison; Midjourney access was unavailable, and then Loudon flagged the subscription as too expensive. **FLUX-Krea via Hugging Face Inference replaced Midjourney in the Shop**, and the half-comparison became a real two-sided Comparison the same session — closing the Round-1 dangling task properly.
@@ -7,11 +15,11 @@
 ```sh
 # Local SDXL via ComfyUI (~114 s on Mac MPS):
 cd _tools/ComfyUI && ./venv/bin/python main.py --port 8188  # in one shell
-python3 "Artifacts/Shop/Maker/comparisons/2026-05-30-shop-header/render.py"
+python3 "Shop/Maker/comparisons/2026-05-30-shop-header/render.py"
 
 # Cloud FLUX-Krea via HF Inference (~3 s; needs ~/.cache/huggingface/token):
 "/Users/loudonstearns/Documents/The Palace/.venvs/kokoro/bin/python" \
-  "Artifacts/Shop/Maker/comparisons/2026-05-30-shop-header/render_flux.py"
+  "Shop/Maker/comparisons/2026-05-30-shop-header/render_flux.py"
 ```
 
 ## Bundle contents

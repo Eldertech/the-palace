@@ -1,3 +1,11 @@
+---
+title: backend-design
+born: 2026-06-13
+links:
+  - { target: "[[RunPod GPU Backend]]", type: connects-to, label: design-doc-for }
+forward_vector: "I am the design draft for the Shop's owned-GPU `runpod` host class; I want to become the spec the Maker and the host-capability manifest implement in lockstep."
+---
+
 # RunPod Backend — Palace Shop GPU Compute
 
 A draft backend that gives the Shop a GPU it owns the worker on. RunPod sits as a
@@ -21,7 +29,7 @@ Claude-Code-resident-architecture constraint (no raw API SDK required).
 - `config.example.json` — endpoint ids, network-volume layout, poll defaults.
   Copy to `config.local.json`; the API key never goes here.
 - `host-capability.runpod-patch.json` — proposed additions to
-  `Artifacts/Shop/host-capability.json` (new `runpod` host class + the
+  `Shop/Maker/host-capability.json` (new `runpod` host class + the
   `Image-to-3D` Specialist + a ComfyUI amendment).
 - `workflows/flux_txt2img.api.json` — a reference ComfyUI API-format workflow to
   smoke-test the endpoint.
@@ -165,7 +173,7 @@ out = ep.run({
     "workflow": load_workflow("workflows/hunyuan3d.api.json"),
     "images": [encode_image("shoot_subject.png")],   # the shared shoot-out input
 })
-saved = ep.save_outputs(out, "Artifacts/Shop/.../shoot-out/")
+saved = ep.save_outputs(out, "Shop/.../shoot-out/")
 ```
 
 ## What this is NOT, and where it ends
@@ -183,7 +191,7 @@ Tooling/machinery, not a canon knowledge entry — so it belongs in a bundle, no
 the root. Natural home: `Shop/Image-to-3D/runpod-backend/` (alongside the
 Specialist this first serves) or `_ops/runpod/` if it becomes Shop-wide
 infrastructure. Merge `host-capability.runpod-patch.json` into
-`Artifacts/Shop/host-capability.json` **in lockstep with the Maker Roster** to
+`Shop/Maker/host-capability.json` **in lockstep with the Maker Roster** to
 avoid three-place drift. Per the Cowork git-lock hazard, commit Mac-side.
 
 _Loudon Live · Autodidact Polymaths_

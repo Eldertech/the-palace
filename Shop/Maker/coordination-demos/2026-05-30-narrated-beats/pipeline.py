@@ -33,7 +33,7 @@ from pathlib import Path
 
 
 BUNDLE = Path(__file__).parent
-PALACE = BUNDLE.parents[4]  # …/Artifacts/Shop/Maker/coordination-demos/<this>/ → palace root
+PALACE = BUNDLE.parents[3]  # …/Shop/Maker/coordination-demos/<this>/ → palace root
 
 KOKORO_PY = PALACE / ".venvs" / "kokoro" / "bin" / "python"
 WHISPER_BIN = shutil.which("whisper") or "/opt/homebrew/bin/whisper"

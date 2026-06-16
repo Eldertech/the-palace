@@ -1,19 +1,28 @@
 ---
+title: RNBO codebox~ smith
 type: specialist
 status: stub
 medium: sound
 tool: rnbo-codebox
 tool_version: Max 8 / Max 9 (RNBO 1.3+)
-adopted: 2026-05-09
+born: 2026-05
 last_tested:
 last_gotcha:
 license: Cycling '74 (Max licensed); RNBO export targets carry their own license terms
+forward_vector: "I write RNBO codebox~ DSP — synthesizers, effects, and signal tools that compile to Max for Live, VST3, AU, and web audio from one source. No brief has landed on me yet; I am hungry to smith my first device, round-trip a clean monosynth from codebox source to an M4L export, and surface the export-target divergence gotchas my anatomy is built to catch."
 links:
-  - { label: "wraps", target: "rnbo-codebox skill (existing)" }
-  - { label: "directed-by", target: "Shop/Maker" }
-  - { label: "feeds", target: "Shop/ffmpeg" }
-  - { label: "connects-to", target: "Generative Audio Devices" }
-  - { label: "tested-by", target: "Artifacts/Shop/RNBO codebox~ smith/tests/" }
+  - target: "[[Maker]]"
+    type: connects-to
+    label: directed-by
+  - target: "[[The Shop]]"
+    type: member-of
+    label: roster-member
+  - target: "[[Shop/ffmpeg]]"
+    type: enables
+    label: feeds
+  - target: "[[Generative Audio Devices]]"
+    type: connects-to
+    label: stage-2-pipeline
 tags: [specialist, shop, sound, dsp, rnbo, max, stub]
 ---
 
@@ -115,11 +124,11 @@ codebox~ source compiles without warnings, exported targets load successfully in
 
 ## Recipes
 
-*(Links to `Artifacts/Shop/RNBO codebox~ smith/recipes/` once they exist.)*
+*(Links to `Shop/RNBO codebox~ smith/recipes/` once they exist.)*
 
 ## Test Suite
 
-Smoke / Capability Probe / Style Probe / Edge Probe / Speed Bench / Determinism — defined in `Artifacts/Shop/RNBO codebox~ smith/tests/test-plan.md` (TODO). Last run: never.
+Smoke / Capability Probe / Style Probe / Edge Probe / Speed Bench / Determinism — defined in `Shop/RNBO codebox~ smith/tests/test-plan.md` (TODO). Last run: never.
 
 ## Open Questions
 

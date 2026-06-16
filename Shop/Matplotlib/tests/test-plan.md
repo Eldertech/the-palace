@@ -1,3 +1,11 @@
+---
+title: Matplotlib — Test Plan
+born: 2026-05-30
+links:
+  - { target: "[[Matplotlib]]", type: connects-to, label: test-plan-for }
+forward_vector: "I hold the test plan for Matplotlib; I want every check here runnable with an honest last-run date."
+---
+
 # Matplotlib — Test Plan
 
 > Phase E rollout. Matplotlib is the Shop's static-chart specialist and Manim CE's standing fallback for sandboxed hosts. Smoke is one `plt.savefig`. The load-bearing probe is **byte-deterministic** output — same code + same data + same matplotlib version → same PNG, which is what makes Matplotlib a usable Manim fallback (the swap is reproducible).

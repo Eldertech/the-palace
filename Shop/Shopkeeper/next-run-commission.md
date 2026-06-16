@@ -1,3 +1,11 @@
+---
+title: next-run-commission
+born: 2026-06-08
+links:
+  - { target: "[[Shopkeeper]]", type: connects-to, label: commission-for }
+forward_vector: "I carry the approved commission for an Image-to-3D Specialist; I want to be executed on the next Shopkeeper run and then retired into a real entry."
+---
+
 # Next-Run Commission — Image-to-3D Specialist
 
 **Status:** APPROVED by Loudon 2026-06-08 (in the 2026-06-08 sweep conversation). Execute on the next scheduled Shopkeeper run, *before* the routine discovery sweep.
@@ -17,7 +25,7 @@ This is a durable baton: `sweep-latest.md` is overwritten each run, so the appro
 - **Reachability is per-Space.** Stable-Fast-3D rejected the anonymous call (likely ZeroGPU quota); TRELLIS.2 / TripoSplat reachability is UNVERIFIED — confirm in the run, and if a Space rejects anonymous, note "needs HF token or mac handoff" rather than faking it.
 - Geometry/shape stage only was probed; texture is a second call — test or flag it.
 - **License:** Hunyuan3D-2 = Tencent community license. Read and record the license posture for each engine before any monetized/Loudon-Live-published use. This belongs in the entry's honest-cost section.
-- Host class: cloud-via-HF (free today) for Sketch/Study; token'd HF or mac/local GPU for Piece-grade reliability. Add to `Artifacts/Shop/host-capability.json` when the Specialist is deposited.
+- Host class: cloud-via-HF (free today) for Sketch/Study; token'd HF or mac/local GPU for Piece-grade reliability. Add to `Shop/Maker/host-capability.json` when the Specialist is deposited.
 
 ## If a Space needs an HF token (instructions Loudon approved 2026-06-08)
 

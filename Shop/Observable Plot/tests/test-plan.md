@@ -1,3 +1,11 @@
+---
+title: Observable Plot — Test Plan
+born: 2026-05-30
+links:
+  - { target: "[[Observable Plot]]", type: connects-to, label: test-plan-for }
+forward_vector: "I hold the test plan for Observable Plot; I want every check here runnable with an honest last-run date."
+---
+
 # Observable Plot — Test Plan
 
 > Phase E rollout. Observable Plot is the analytical lens of the data-viz triad — grammar of graphics, faceting, beautiful defaults. The Specialist has a strong Layer-0 (its own typography + colour scheme baked in); the Maker's house-defaults wrapper at `_ops/loudon-live/design-system/palace-plot-defaults.js` is the bridge, and the Style Probe checks the wrapper pushed the locked grammar through to the generated SVG.
@@ -7,7 +15,7 @@ Last run: **2026-05-30** — Smoke pass on `Flocking/flocking-observable-plot-gr
 ## Smoke
 
 ```sh
-node --experimental-vm-modules Artifacts/Shop/web-smoke.mjs Flocking/flocking-observable-plot-graphite.html
+node --experimental-vm-modules Shop/Maker/web-smoke.mjs Flocking/flocking-observable-plot-graphite.html
 ```
 
 - **Automated:** as above. Pass = no `SyntaxError` raised.

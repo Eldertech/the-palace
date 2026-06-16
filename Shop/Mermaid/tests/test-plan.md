@@ -1,3 +1,11 @@
+---
+title: test-plan
+born: 2026-05-30
+links:
+  - { target: "[[Mermaid]]", type: connects-to, label: test-plan-for }
+forward_vector: "I hold the Smoke / Capability / Style / Edge / Speed / Determinism probes for the Mermaid Specialist so each claim can be re-run and re-confirmed."
+---
+
 # Mermaid — Test Plan
 
 > Phase E rollout. Mermaid is the Shop's text-defined diagram Specialist. The honest finding from Phase E: **`mmdc` (the CLI) is not globally installed on the canonical Mac**, but `npx -y -p @mermaid-js/mermaid-cli mmdc ...` works fine and is the recommended invocation pattern — no `npm install -g` step, no version drift, ~23 s first-run cold-cache cost (one-time per Node minor version).

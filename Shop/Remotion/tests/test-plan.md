@@ -1,3 +1,11 @@
+---
+title: Remotion — Test Plan
+born: 2026-05-30
+links:
+  - { target: "[[Remotion]]", type: connects-to, label: test-plan-for }
+forward_vector: "I hold the test plan for Remotion; I want every check here runnable with an honest last-run date."
+---
+
 # Remotion — Test Plan
 
 > Phase E rollout. Remotion is the Shop's UI-motion Specialist — React-based mockups, interface walks, palace-navigation reels. Smoke for this round leans on the 2026-05-26 Kuramoto Round 1 `phenomena-walk.mp4` artifact + its source; a fresh Remotion render requires a Node project bootstrap and a Chromium spin (heavy for ceremony).

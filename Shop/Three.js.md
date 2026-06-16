@@ -1,22 +1,37 @@
 ---
+title: Three.js
 type: specialist
 status: alive
 medium: interactive
-submedium: 3d
 tool: three.js
 tool_version: "r128 (CDN / claude.ai artifact); latest via npm for R3F builds"
-adopted: 2026-05-30
+born: 2026-05
 last_tested: 2026-05-31
 last_gotcha: 2026-05-31
 license: MIT
+forward_vector: "I build real-time 3D for the browser — scenes where depth carries meaning the flat tools can't, geometry bound straight to live audio or simulation state so the thing you see is the thing you hear. I want to grow from single-file Sketches into R3F instrument interfaces, and to keep proving that the meaning lives in what the geometry is bound to, never in the seductive orbiting camera."
 links:
-  - { label: "wraps", target: "three.js (external)" }
-  - { label: "directed-by", target: "Shop/Maker" }
-  - { label: "pairs-with", target: "Shop/Tone.js" }
-  - { label: "pairs-with", target: "Shop/Web Audio Worklet" }
-  - { label: "pairs-with", target: "Shop/p5.js" }
-  - { label: "commissioned-by", target: "Projects/Waveguide Synthesizer" }
-  - { label: "exemplified-by", target: "Wavetable Scanner" }
+  - target: "[[Maker]]"
+    type: connects-to
+    label: directed-by
+  - target: "[[The Shop]]"
+    type: member-of
+    label: roster-member
+  - target: "[[Shop/Tone.js]]"
+    type: couples-with
+    label: pairs-with
+  - target: "[[Shop/Web Audio Worklet]]"
+    type: couples-with
+    label: pairs-with
+  - target: "[[Shop/p5.js]]"
+    type: couples-with
+    label: pairs-with
+  - target: "[[Projects/Waveguide Synthesizer]]"
+    type: connects-to
+    label: commissioned-by
+  - target: "[[Wavetable Scanner]]"
+    type: connects-to
+    label: exemplified-by
 tags: [specialist, shop, 3d, webgl, interactive, web]
 ---
 
@@ -131,13 +146,13 @@ Scene renders without WebGL/console errors; the geometry is provably bound to th
 
 ## Recipes
 
-**2026-05-31 — Wavetable Scanner: single-cycle morph laboratory** (Sketch tier, raw r128, single-file). Each frame of the loaded wavetable rendered as a `BufferGeometry` line, laid out along Z (back = brightest under centroid sort), per-frame colour a `palaceSeries()`-ordered ramp from `--fg-3` to `--accent`. A translucent cursor plane plus an interpolated "current waveform" line track the audio's scan position; the cursor's vertex Y coordinates run the same `(a + fr*(b-a))` math the AudioWorklet uses on the same `Float32Array`, so the picture and the sound cannot drift — the [[Waveguide Synthesizer]] pattern in miniature. CRT skin selected as the literal "scope / DSP / signal-watching" register, no deviation declared. Pairs with [[Shop/Web Audio Worklet]] (custom wavetable DSP). The position-blending math and the centroid-sort-vs-authored-order tradeoff are deposited as the new concept entry [[1D Wavetable Scanning]]. Bundle: [Artifacts/Wavetable Scanner/](../Artifacts/Wavetable Scanner/). This is the first dated job for this Specialist — promotes the entry from `stub` to `alive`.
+**2026-05-31 — Wavetable Scanner: single-cycle morph laboratory** (Sketch tier, raw r128, single-file). Each frame of the loaded wavetable rendered as a `BufferGeometry` line, laid out along Z (back = brightest under centroid sort), per-frame colour a `palaceSeries()`-ordered ramp from `--fg-3` to `--accent`. A translucent cursor plane plus an interpolated "current waveform" line track the audio's scan position; the cursor's vertex Y coordinates run the same `(a + fr*(b-a))` math the AudioWorklet uses on the same `Float32Array`, so the picture and the sound cannot drift — the [[Waveguide Synthesizer]] pattern in miniature. CRT skin selected as the literal "scope / DSP / signal-watching" register, no deviation declared. Pairs with [[Shop/Web Audio Worklet]] (custom wavetable DSP). The position-blending math and the centroid-sort-vs-authored-order tradeoff are deposited as the new concept entry [[1D Wavetable Scanning]]. Bundle: [Wavetable Scanner/](../Wavetable Scanner/) (entry bundle per SCHEMA §8). This is the first dated job for this Specialist — promotes the entry from `stub` to `alive`.
 
 *Forward recipe (anticipated, not yet built): the [[Projects/Waveguide Synthesizer|Waveguide Synthesizer]] Sketch interface — a vibrating string whose per-vertex displacement is read straight from the AudioWorklet's delay-line buffer.*
 
 ## Test Suite
 
-Smoke / Capability Probe / Style Probe / Edge Probe / Speed Bench / Determinism — to be defined at `Artifacts/Shop/Three.js/tests/test-plan.md` from `Artifacts/Shop/_TEMPLATE/test-plan.md` on the first job. Note for that plan: Determinism here is *not* byte-identical (float GPU rasterization varies) — the reproducibility artifact is the scene-construction code + a fixed camera/seed, and the Style Probe's aesthetic half is eye-judged. Last run: never (stub).
+Smoke / Capability Probe / Style Probe / Edge Probe / Speed Bench / Determinism — to be defined at `Shop/Three.js/tests/test-plan.md` from `Shop/Maker/_TEMPLATE/test-plan.md` on the first job. Note for that plan: Determinism here is *not* byte-identical (float GPU rasterization varies) — the reproducibility artifact is the scene-construction code + a fixed camera/seed, and the Style Probe's aesthetic half is eye-judged. Last run: never (stub).
 
 ## Open Questions
 

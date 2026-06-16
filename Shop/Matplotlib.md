@@ -1,19 +1,20 @@
 ---
+title: Matplotlib
 type: specialist
 status: alive
 medium: image
 tool: matplotlib
 tool_version: 3.10.8
-adopted: 2026-05-09
+born: 2026-05
 last_tested: 2026-05-10
 last_gotcha: 2026-05-10
 license: PSF / BSD-style
+forward_vector: "I render static scientific figures — waveforms, spectra, phase portraits, Bode plots — at publication grade and byte-for-byte determinism, every parameter explicit and addressable. I want a palace.mplstyle house wrapper so my dated Layer-0 typography bridges to Loudon Live tokens the way Plot's wrapper already does. I stand ready as Manim's motion fallback when a sandboxed host can't run it, owning my flatter aesthetic honestly rather than pretending to be LaTeX."
 links:
-  - { label: "wraps", target: "matplotlib (external)" }
-  - { label: "directed-by", target: "Shop/Maker" }
-  - { label: "alternative-to", target: "Shop/Plotly (planned)" }
-  - { label: "fallback-for", target: "Shop/Manim CE" }
-  - { label: "tested-by", target: "Artifacts/Shop/Matplotlib/tests/" }
+  - { target: "[[Maker]]", type: connects-to, label: directed-by }
+  - { target: "[[The Shop]]", type: member-of, label: roster-member }
+  - { target: "[[Shop/Plotly]]", type: connects-to, label: alternative-to }
+  - { target: "[[Shop/Manim CE]]", type: connects-to, label: fallback-for }
 tags: [specialist, shop, image, chart, scientific]
 ---
 
@@ -121,7 +122,7 @@ Output exists, format matches request, dimensions are within ±2px of `figsize �
 
 ## Test Suite
 
-Smoke / Capability Probe / Style Probe / Edge Probe / Speed Bench / Determinism — defined in [Artifacts/Shop/Matplotlib/tests/test-plan.md](../Artifacts/Shop/Matplotlib/tests/test-plan.md).
+Smoke / Capability Probe / Style Probe / Edge Probe / Speed Bench / Determinism — defined in [Matplotlib/tests/test-plan.md](Matplotlib/tests/test-plan.md).
 
 Last run: **2026-05-30** — Smoke + Determinism both pass (byte-identical PNG SHA256 `4f46b0a9…` across two runs of the same script with stripped metadata). Capability Probe covers the Manim-fallback static-frame role (Kuramoto 2026-05-10 historical); multi-panel publication chart and standalone phase diagram still unverified. Style Probe is degenerate until a house-defaults wrapper analogous to the Plot wrapper exists — Matplotlib's Layer-0 typography/padding is not yet bridged to Loudon Live tokens.
 

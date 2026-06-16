@@ -14,11 +14,11 @@
 # invokes dvisvgm. Only the SVG-cutout / MathTex path does.
 #
 # Usage:
-#   Artifacts/Shop/tex-env.sh manim -ql scene.py Probe   # run a command with the bridge
-#   Artifacts/Shop/tex-env.sh latex foo.tex && \
-#     Artifacts/Shop/tex-env.sh dvisvgm foo.dvi          # raw pipeline with the bridge
-#   Artifacts/Shop/tex-env.sh --print                    # emit one eval'able export line
-#   eval "$(Artifacts/Shop/tex-env.sh --print)"          # apply to the current shell
+#   Shop/Maker/tex-env.sh manim -ql scene.py Probe   # run a command with the bridge
+#   Shop/Maker/tex-env.sh latex foo.tex && \
+#     Shop/Maker/tex-env.sh dvisvgm foo.dvi          # raw pipeline with the bridge
+#   Shop/Maker/tex-env.sh --print                    # emit one eval'able export line
+#   eval "$(Shop/Maker/tex-env.sh --print)"          # apply to the current shell
 set -euo pipefail
 
 if ! command -v kpsewhich >/dev/null 2>&1; then

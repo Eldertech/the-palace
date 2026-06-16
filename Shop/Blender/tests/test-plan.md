@@ -1,3 +1,11 @@
+---
+title: test-plan
+born: 2026-06-13
+links:
+  - { target: "[[Blender]]", type: connects-to, label: test-plan-for }
+forward_vector: "I hold the Smoke / Capability / Style / Edge / Speed / Determinism probes for the Blender Specialist's conditioning-keystone job so each claim can be re-run and re-confirmed."
+---
+
 # Blender — Test Plan
 
 > Shop Specialist test plan, instantiated from `_TEMPLATE/test-plan.md`. Blender's load-bearing

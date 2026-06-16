@@ -1,6 +1,14 @@
+---
+title: ffmpeg — Test Plan
+born: 2026-05-30
+links:
+  - { target: "[[ffmpeg]]", type: connects-to, label: test-plan-for }
+forward_vector: "I hold the test plan for ffmpeg; I want every check here runnable with an honest last-run date."
+---
+
 # ffmpeg — Test Plan
 
-> Phase E rollout of `Artifacts/Shop/_TEMPLATE/test-plan.md`. ffmpeg is the Shop's connective tissue — encode, decode, mux, concat, normalise. Smoke is encode-and-decode; the load-bearing probe is **byte-deterministic** output under `-fflags +bitexact -flags +bitexact -map_metadata -1`, since ffmpeg is the only Specialist downstream-everything depends on for reproducibility of derived clips.
+> Phase E rollout of `Shop/Maker/_TEMPLATE/test-plan.md`. ffmpeg is the Shop's connective tissue — encode, decode, mux, concat, normalise. Smoke is encode-and-decode; the load-bearing probe is **byte-deterministic** output under `-fflags +bitexact -flags +bitexact -map_metadata -1`, since ffmpeg is the only Specialist downstream-everything depends on for reproducibility of derived clips.
 
 Last run: **2026-05-30** — Smoke + Determinism both pass (byte-identical SHA256 across two `testsrc` runs).
 

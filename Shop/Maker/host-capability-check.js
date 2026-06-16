@@ -1,12 +1,12 @@
 // Host Capability Check — the Maker's pre-dispatch reachability lookup.
 //
-// Reads the manifest at Artifacts/Shop/host-capability.json and answers
+// Reads the manifest at Shop/Maker/host-capability.json and answers
 // `check(specialist)` for the dispatching host. The lesson encoded here is the
 // 2026-05-10 Manim failure: a perfect brief and a perfect Specialist still
 // die at install time when the dispatching host can't run the wrapped tool.
 // Spend the intake on real work, not on a tool the host can never reach.
 //
-// See: Shop/Maker.md § Host Capability Check, Artifacts/Shop/host-capability.json.
+// See: Shop/Maker.md § Host Capability Check, Shop/Maker/host-capability.json.
 
 import fs from 'node:fs';
 import os from 'node:os';
@@ -16,7 +16,7 @@ import { fileURLToPath, pathToFileURL } from 'node:url';
 const HERE = path.dirname(fileURLToPath(import.meta.url));
 const DEFAULT_MANIFEST = path.join(HERE, 'host-capability.json');
 
-export const HOST_CLASSES = Object.freeze(['mac', 'sandbox', 'cloud']);
+export const HOST_CLASSES = Object.freeze(['mac', 'sandbox', 'cloud', 'runpod']);
 
 export function loadManifest(manifestPath = DEFAULT_MANIFEST) {
   const raw = fs.readFileSync(manifestPath, 'utf8');

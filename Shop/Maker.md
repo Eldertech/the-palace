@@ -1,32 +1,22 @@
 ---
+title: Maker
 type: maker
 status: alive
-adopted: 2026-05-06
+born: 2026-05
 last_tested: 2026-05-10
+forward_vector: "I take any non-text brief, decode it into a job, dispatch the right Specialist(s), gate their handoffs, and bring the work back judged against the house standards — and I keep proving I am a foreman, not a dispatcher, by running ever-harder coordinated pipelines until the template's flaws are all found and fixed. I am watching whether my Selection Heuristics want to graduate into their own House Taste entry, and whether a Producer layer should rise above me for multi-day cross-medium briefs."
 links:
-  - { label: "directs", target: "Shop/Kokoro" }
-  - { label: "directed-deprecated", target: "Shop/Midjourney" }
-  - { label: "directs", target: "Shop/FLUX (Hugging Face)" }
-  - { label: "directs", target: "Shop/ComfyUI" }
-  - { label: "directs", target: "Shop/Manim CE" }
-  - { label: "directs", target: "Shop/Remotion" }
-  - { label: "directs", target: "Shop/p5.js" }
-  - { label: "directs", target: "Shop/D3.js" }
-  - { label: "directs", target: "Shop/Observable Plot" }
-  - { label: "directs", target: "Shop/Three.js" }
-  - { label: "directs", target: "Shop/LaTeX" }
-  - { label: "lives-in", target: "Shop/" }
-  - { label: "answers-to", target: "Trickster (Loudon)" }
-  - { label: "embodies", target: "Hilaritas Generator" }
-  - { label: "follows", target: "Four Pillars" }
-  - target: "[[Lateral Access]]"
-    type: mirrors
-    label: taste-as-laterality
-  - target: "[[Loudon Live Design System]]"
-    type: connects-to
-    label: palace-base-spec
+  - { target: "[[The Shop]]", type: member-of, label: foreman-of }
+  - { target: "[[Trickster (Loudon)]]", type: connects-to, label: answers-to }
+  - { target: "[[Hilaritas Generator]]", type: connects-to, label: embodies }
+  - { target: "[[Four Pillars]]", type: connects-to, label: follows }
+  - { target: "[[Lateral Access]]", type: mirrors, label: taste-as-laterality }
+  - { target: "[[Loudon Live Design System]]", type: connects-to, label: palace-base-spec }
 tags: [maker, shop, foreman, studio]
 ---
+
+<!-- The per-Specialist roster is no longer hand-listed in this frontmatter: each Specialist declares `member-of [[The Shop]]`, so The Shop hub is the single source of truth for membership and the Maker connects to each Specialist via that Specialist's own `directed-by [[Maker]]` edge. The human-readable Roster (below) becomes generated in Phase 2. -->
+
 
 # Maker
 
@@ -190,7 +180,7 @@ When the brief is exploratory or the choice between specialists is genuinely clo
 
 The lesson of the 2026-05-10 Manim failure, made into a step: a brief can be perfectly decoded and a Specialist perfectly chosen, and the whole thing still dies at install time because the *dispatching host* can't run the wrapped tool. I check reachability before I waste the intake.
 
-**The check, per selected Specialist:** does the wrapped tool run on the host I'm dispatching from? I read this from the manifest at `Artifacts/Shop/host-capability.json` — it maps each Specialist to the host classes that can run it, its hard requirements (GPU, Max/MSP, Node, a cloud key), and its declared fallback. Three host classes:
+**The check, per selected Specialist:** does the wrapped tool run on the host I'm dispatching from? I read this from the manifest at `Shop/Maker/host-capability.json` — it maps each Specialist to the host classes that can run it, its hard requirements (GPU, Max/MSP, Node, a cloud key), and its declared fallback. Three host classes:
 
 | Host class | What runs | What doesn't |
 |---|---|---|
@@ -213,7 +203,7 @@ The lesson of the 2026-05-10 Manim failure, made into a step: a brief can be per
 
 **Resolution rule.** If the chosen Specialist is reachable, dispatch. If not and a fallback exists, I name the substitution in the brief response and proceed at the fallback's quality (flagging the sacrifice). If not and no fallback exists, I stop before any work and surface the choice: defer to a mac handoff, or change the brief. The check is cheap; the wasted intake it prevents is not.
 
-The machine-readable manifest is `Artifacts/Shop/host-capability.json`. The lookup itself is implemented in `Artifacts/Shop/host-capability-check.js` (Node ESM module; CLI: `node Artifacts/Shop/host-capability-check.js "<Specialist Name>"` — exits 0 reachable, 1 unreachable). Smoke tests in `Artifacts/Shop/host-capability-check.test.js` (run: `node --test Artifacts/Shop/host-capability-check.test.js`). Implemented 2026-05-30, last run 2026-05-30 — 8/8 pass. The check is now real, not a promise.
+The machine-readable manifest is `Shop/Maker/host-capability.json`. The lookup itself is implemented in `Shop/Maker/host-capability-check.js` (Node ESM module; CLI: `node Shop/Maker/host-capability-check.js "<Specialist Name>"` — exits 0 reachable, 1 unreachable). Smoke tests in `Shop/Maker/host-capability-check.test.js` (run: `node --test Shop/Maker/host-capability-check.test.js`). Implemented 2026-05-30, last run 2026-05-30 — 8/8 pass. The check is now real, not a promise.
 
 ## Resource Scheduling
 
@@ -264,7 +254,7 @@ The Specialists currently in the Shop, with their primary use:
 - *Murmuration (2026-05-30):* **Web Audio Worklet** — agent-based granular-wavetable engine; the first Specialist born from a synthesis-paradigm brief, and the first sibling to land *because* an existing Specialist (Tone.js) refused the operating model.
 - *Shop header (Phase D-2, 2026-05-30):* **FLUX (Hugging Face)** — cloud-side image generation via HF Inference free tier; took [[Shop/Midjourney|Midjourney]]'s slot when subscription cost made Midjourney untenable. First job revised the Maker's Mood/atmospheric Selection Heuristic — FLUX-Krea reads mood-specific prompt details that ComfyUI's SDXL flattens.
 - *Wavetable Scanner (2026-05-31):* **Three.js** — single-cycle wavetable morph laboratory; the first paired-Specialist brief where Three.js reads state from a [[Shop/Web Audio Worklet]] sibling (geometry-bound-to-the-data, the [[Waveguide Synthesizer]] pattern in miniature). Promoted stub → alive on its first dated job, ahead of the still-anticipated Waveguide commission.
-- *Conditioning keystone (BLUELINE Session 1, 2026-06-13):* **Blender** — posed one humanoid (worm's-eye foreshortened lunge) → six registered passes → ComfyUI per-channel multi-ControlNet (pose+depth+canny → SDXL fill → 1.5× refine); proved [[Blocked, Not Prompted]] against a prompt-only control. Fills the offline-3D gap [[Three.js]] can't. Alive on the conditioning job; the Cycles-render and geometry-nodes paths remain untested. Bundle: [Artifacts/Shop/Blender/tests/](../Artifacts/Shop/Blender/tests/).
+- *Conditioning keystone (BLUELINE Session 1, 2026-06-13):* **Blender** — posed one humanoid (worm's-eye foreshortened lunge) → six registered passes → ComfyUI per-channel multi-ControlNet (pose+depth+canny → SDXL fill → 1.5× refine); proved [[Blocked, Not Prompted]] against a prompt-only control. Fills the offline-3D gap [[Three.js]] can't. Alive on the conditioning job; the Cycles-render and geometry-nodes paths remain untested. Bundle: [Shop/Blender/tests/](../Shop/Blender/tests/).
 
 **Stub (2)** — entry exists, awaiting first real job: **RNBO codebox~ smith**; **LaTeX** (created 2026-06-09 — capability-probed clean on the PDF path, but no brief has run, so it stays a stub per the taxonomy).
 
@@ -283,15 +273,15 @@ Whole-brief examples and how they were resolved. Each one is a teaching example 
 
 **2026-05-29 — Flocking data-viz shoot-out (Comparison Mode, three Specialists).** Brief: same Reynolds boids math, three lenses. Routing: D3.js (interactive control — live weight sliders + force-vector overlay), Observable Plot (analytical — R-over-time, neighbor histogram, `fx`-faceted alignment sweep), p5.js (expressive — trails + color-by-velocity). Sketch tier across the board. Reproducibility discipline: one shared Mulberry32 (seed 7), byte-identical model block in all three, so the three are provably the same trajectory; cross-checked in Node. Standards JSON captured the full model parameters per the honest-comparison rule. House taste deferred — neutral Kuramoto palette (indigo/amber/dark) as working default, accepting that Plot's grammar-of-graphics defaults look different by nature. Two real specialist gotchas surfaced (d3-force is a relaxation solver; Plot's UMD externalises d3). This round closed the data-viz roster gap (D3 + Plot stub→alive) and gave [[Flocking]] its first artifacts. Bundle: [Flocking/](../Flocking/). Recommendation: [[Flocking — Maker's Comparison Recommendation]].
 
-**2026-05-30 — Narrated Beats: first gated coordinated pipeline (four Specialists in series).** The Maker's signature capability — gating one Specialist's output as another's input — formalised as a *foreman* dispatch, not just a series of independent calls. Pipeline: **Kokoro** narrates a 10 s beat-frequency sentence → **Whisper** word-times it → **Manim CE** renders 1080p30 silent video with each visual cue (phasor circles, frequency labels, drift trace, sum trace, beat pulse, listen caption) firing on the exact Whisper-timestamped word it names → **ffmpeg** muxes. End-to-end **17.7 s** on the canonical Mac (Kokoro 7.6 s · Whisper 4.5 s · Manim 5.5 s · mux 0.2 s). The gate is the point: Manim must be provably blocked on Whisper's return, not run speculatively. Enforced at **two layers** — the orchestrator (`pipeline.py`) gates Manim's *invocation* on `narration.json` existing + monotonic + cue-words-present; the scene module (`scene.py`) gates Manim's *construction* on the same file re-validating at import. Bypass-proof: a direct `manim scene.py` invocation with the JSON missing or malformed raises before any frame renders (verified on two failure modes — file-deleted, words-stripped). Two real findings: (a) **fuzzy-cue matching beats narration-rewriting** — Whisper hears Kokoro's `phasors` as `phasers`, a strict-equality gate would fail on correct output; the SequenceMatcher-ratio path (≥0.78) tolerates phonetic wobble; (b) **use the AUDIO file's duration, not Whisper's last-segment end, for clip length** — Kokoro's tail silence sits past the last transcribed word and `-shortest` will truncate honest audio if you trust the transcription boundary. Bundle: [Artifacts/Shop/Maker/coordination-demos/2026-05-30-narrated-beats/](../Artifacts/Shop/Maker/coordination-demos/2026-05-30-narrated-beats/). This is the first evidence the Maker is a *foreman*, not just a dispatcher.
+**2026-05-30 — Narrated Beats: first gated coordinated pipeline (four Specialists in series).** The Maker's signature capability — gating one Specialist's output as another's input — formalised as a *foreman* dispatch, not just a series of independent calls. Pipeline: **Kokoro** narrates a 10 s beat-frequency sentence → **Whisper** word-times it → **Manim CE** renders 1080p30 silent video with each visual cue (phasor circles, frequency labels, drift trace, sum trace, beat pulse, listen caption) firing on the exact Whisper-timestamped word it names → **ffmpeg** muxes. End-to-end **17.7 s** on the canonical Mac (Kokoro 7.6 s · Whisper 4.5 s · Manim 5.5 s · mux 0.2 s). The gate is the point: Manim must be provably blocked on Whisper's return, not run speculatively. Enforced at **two layers** — the orchestrator (`pipeline.py`) gates Manim's *invocation* on `narration.json` existing + monotonic + cue-words-present; the scene module (`scene.py`) gates Manim's *construction* on the same file re-validating at import. Bypass-proof: a direct `manim scene.py` invocation with the JSON missing or malformed raises before any frame renders (verified on two failure modes — file-deleted, words-stripped). Two real findings: (a) **fuzzy-cue matching beats narration-rewriting** — Whisper hears Kokoro's `phasors` as `phasers`, a strict-equality gate would fail on correct output; the SequenceMatcher-ratio path (≥0.78) tolerates phonetic wobble; (b) **use the AUDIO file's duration, not Whisper's last-segment end, for clip length** — Kokoro's tail silence sits past the last transcribed word and `-shortest` will truncate honest audio if you trust the transcription boundary. Bundle: [Shop/Maker/coordination-demos/2026-05-30-narrated-beats/](../Shop/Maker/coordination-demos/2026-05-30-narrated-beats/). This is the first evidence the Maker is a *foreman*, not just a dispatcher.
 
-**2026-05-30 — Shop header (half-Comparison: ComfyUI ran, Midjourney blocked).** The brief: a banner header for [[The Shop]] itself — workshop interior at dusk, ordered work surfaces, focused amber light, no figures, 12:5 aspect for hub-entry headers. Routing: Midjourney↔ComfyUI Comparison Mode per the Selection Heuristic. **Outcome: half-comparison.** Midjourney access was unavailable this session (per intake confirmation); ComfyUI ran SDXL base, seed 30, 30 steps, CFG 7.0, euler/normal, 1536×640, **114 s on Mac MPS**, producing a Sketch-tier image that reads as a working workshop interior in the Graphite-skin family (warm amber + deep near-black, ordered geometry, no figures — negative prompt held). The honest finding: **a half-Comparison is still worth running** — the recommendation document names *what the missing half would have told us* (does Midjourney clear a ceiling ComfyUI can't reach on atmospheric briefs; is the "Default to ComfyUI when in doubt" line evidence-backed), which turns a quiet "we never got to it" into a named, dated, scoped deferred piece with the reproducibility package already half-built. **Selection Heuristic NOT revised** — a heuristic about *defaults* needs both candidates, and updating it on single-vendor evidence would be dishonest. [[Shop/Midjourney|Midjourney]] stays a stub. Bundle: [Artifacts/Shop/Maker/comparisons/2026-05-30-shop-header/](../Artifacts/Shop/Maker/comparisons/2026-05-30-shop-header/). Recommendation: [[shop-header — Maker's Comparison Recommendation]].
+**2026-05-30 — Shop header (half-Comparison: ComfyUI ran, Midjourney blocked).** The brief: a banner header for [[The Shop]] itself — workshop interior at dusk, ordered work surfaces, focused amber light, no figures, 12:5 aspect for hub-entry headers. Routing: Midjourney↔ComfyUI Comparison Mode per the Selection Heuristic. **Outcome: half-comparison.** Midjourney access was unavailable this session (per intake confirmation); ComfyUI ran SDXL base, seed 30, 30 steps, CFG 7.0, euler/normal, 1536×640, **114 s on Mac MPS**, producing a Sketch-tier image that reads as a working workshop interior in the Graphite-skin family (warm amber + deep near-black, ordered geometry, no figures — negative prompt held). The honest finding: **a half-Comparison is still worth running** — the recommendation document names *what the missing half would have told us* (does Midjourney clear a ceiling ComfyUI can't reach on atmospheric briefs; is the "Default to ComfyUI when in doubt" line evidence-backed), which turns a quiet "we never got to it" into a named, dated, scoped deferred piece with the reproducibility package already half-built. **Selection Heuristic NOT revised** — a heuristic about *defaults* needs both candidates, and updating it on single-vendor evidence would be dishonest. [[Shop/Midjourney|Midjourney]] stays a stub. Bundle: [Shop/Maker/comparisons/2026-05-30-shop-header/](../Shop/Maker/comparisons/2026-05-30-shop-header/). Recommendation: [[shop-header — Maker's Comparison Recommendation]].
 
 Future recipes added as briefs finish.
 
 ## Test Suite
 
-Brief Decoding / Routing / Comparison / Cross-Specialist Coherence / Wrong-Medium Handoff / Style Adherence — defined in `Artifacts/Shop/Maker/tests/test-plan.md` (TODO).
+Brief Decoding / Routing / Comparison / Cross-Specialist Coherence / Wrong-Medium Handoff / Style Adherence — defined in `Shop/Maker/tests/test-plan.md` (TODO).
 
 Last run: never.
 

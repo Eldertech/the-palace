@@ -1,21 +1,22 @@
 ---
+title: Midjourney
 type: specialist
 status: deprecated
 medium: image
 tool: midjourney
 tool_version: v6.x
-adopted: 2026-05-06
+born: 2026-05
 deprecated: 2026-05-30
 superseded_by: "Shop/FLUX (Hugging Face)"
 last_tested:
 last_gotcha:
 license: proprietary (subscription required)
+forward_vector: "I never landed a real palace job — the subscription priced me out before I shipped a recipe — so what I want now is to make my lineage useful: I hold the original brief shape (the cloud aesthetic-ceiling slot, the painter's eye for atmosphere) so that FLUX can inherit it cleanly, and I want my one lesson — that aesthetic ceiling without parametric control is a real tradeoff — to keep teaching the Maker how to route."
 links:
-  - { label: "wraps", target: "midjourney (external service)" }
-  - { label: "directed-by", target: "Shop/Maker" }
-  - { label: "alternative-to", target: "Shop/ComfyUI" }
-  - { label: "superseded-by", target: "Shop/FLUX (Hugging Face)" }
-  - { label: "tested-by", target: "Artifacts/Shop/Midjourney/tests/" }
+  - { target: "[[Maker]]", type: connects-to, label: directed-by }
+  - { target: "[[The Shop]]", type: member-of, label: roster-member }
+  - { target: "[[Shop/ComfyUI]]", type: connects-to, label: alternative-to }
+  - { target: "[[Shop/FLUX (Hugging Face)]]", type: connects-to, label: superseded-by }
 tags: [specialist, shop, image, generative, deprecated]
 ---
 
@@ -153,11 +154,11 @@ The Maker tracks credit consumption per session and flags to Loudon when a sessi
 
 ## Recipes
 
-Links to working examples in `Artifacts/Shop/Midjourney/recipes/` once they exist.
+Links to working examples in `Shop/Midjourney/recipes/` once they exist.
 
 ## Test Suite
 
-Smoke / Capability Probe / Style Probe / Edge Probe / Speed Bench / Determinism — defined in `Artifacts/Shop/Midjourney/tests/test-plan.md` (TODO).
+Smoke / Capability Probe / Style Probe / Edge Probe / Speed Bench / Determinism — defined in `Shop/Midjourney/tests/test-plan.md` (TODO).
 
 The Determinism test for Midjourney is unusual: it tests *how much* drift occurs across same-seed re-runs, not whether output is identical. The expected result is "close but not identical" — the test fails if outputs are wildly different (suggests seed pinning is broken upstream).
 

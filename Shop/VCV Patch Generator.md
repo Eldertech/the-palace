@@ -1,18 +1,25 @@
 ---
+title: VCV Patch Generator
 type: specialist
 status: alive
 medium: sound
 tool: vcv-patch-generator
 tool_version: registry v2.4 + archetypes v0.1 (2026-05-29)
-adopted: 2026-05-09
+born: 2026-05
 last_tested: 2026-05-29
 last_gotcha: "kick needs two ADSRs declared (amp_env + pitch_env) or the copy constraint has nothing to bind — a one-ADSR kick loads but lands without the pitch-drop punch"
 license: VCV Rack 2 (free); plugins per their own terms
+forward_vector: "I emit Rack-loadable `.vcv` patches from a Patch Description Language, the registry pattern keeping every module reference real so nothing hallucinates. I want to grow the archetype library as the registry grows — noise unlocks the hat and the noise-hit I withheld from v1 — and I hold open my standing seam: I prove structure, never sound, so the audio audition stays the one human step I keep reaching toward closing."
 links:
-  - { label: "wraps", target: "VCV Rack (external)" }
-  - { label: "stage-of", target: "Generative Audio Devices" }
-  - { label: "directed-by", target: "Shop/Maker" }
-  - { label: "tested-by", target: "Artifacts/Shop/VCV Patch Generator/tests/" }
+  - target: "[[Maker]]"
+    type: connects-to
+    label: directed-by
+  - target: "[[The Shop]]"
+    type: member-of
+    label: roster-member
+  - target: "[[Generative Audio Devices]]"
+    type: connects-to
+    label: stage-of
   - target: "[[Lossy Compression with Intent Alignment]]"
     type: mirrors
     label: pdl-as-intent-compression
@@ -130,7 +137,7 @@ Two grains of control now sit above raw numbers: named regions (`* FILT: CUTOFF 
 
 ## Recipes
 
-In `Artifacts/Shop/VCV Patch Generator/recipes/` — the T7b audition triple, each a hand-written subtractive PDL plus one `# archetype:` pragma, emitted through the real `PDL Renderer.html` code path:
+In `Shop/VCV Patch Generator/recipes/` — the T7b audition triple, each a hand-written subtractive PDL plus one `# archetype:` pragma, emitted through the real `PDL Renderer.html` code path:
 - `kick-seed-1.{pdl,vcv}` — sub VCO, two ADSRs, pitch-drop punch (copy constraint)
 - `warm_pad-seed-1.{pdl,vcv}` — slow LFO breathing on cutoff, pad attack/release
 - `pluck-seed-1.{pdl,vcv}` — instant attack, short decay, dark filter
@@ -139,7 +146,7 @@ The palace-root PDL pair `house_bass.pdl` / `house_bass.vcv` remains the pre-arc
 
 ## Test Suite
 
-Smoke / Capability Probe / Style Probe / Edge Probe / Speed Bench / Determinism — defined in `Artifacts/Shop/VCV Patch Generator/tests/test-plan.md`. Last run: **2026-05-29** (T7b audition). Determinism proof at `tests/determinism.txt` — all three audition patches byte-identical across reruns, zero warnings, zero skipped cables.
+Smoke / Capability Probe / Style Probe / Edge Probe / Speed Bench / Determinism — defined in `Shop/VCV Patch Generator/tests/test-plan.md`. Last run: **2026-05-29** (T7b audition). Determinism proof at `tests/determinism.txt` — all three audition patches byte-identical across reruns, zero warnings, zero skipped cables.
 
 The Determinism test is straightforward and load-bearing: same PDL + same registry version + same archetype seed → byte-identical `.vcv`. The harness confirms this; any divergence is a versioning or seed-path issue, not acceptable nondeterminism. The one probe the harness *can't* close is the Style Probe — whether the three archetypes are audibly distinct on load — which needs Rack on a Mac.
 
