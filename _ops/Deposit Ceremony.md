@@ -167,9 +167,9 @@ On approval, write new entries as `.md` files to the palace root. Apply updates 
 ### Filing structure
 - Palace entries (`.md`) → palace root
 - **Entry-owned artifacts** (owned by exactly one entry) → that entry's bundle `[Entry]/`, per [[SCHEMA]] §8. This is the default for single-owner files.
-- **Cross-entry / shared** non-markdown artifacts (HTML, images, audio) → `The Palace/Artifacts/[Theme]/[filename]`. Only artifacts serving several entries go here.
+- **Non-markdown artifacts** (HTML, images, audio) → the owning entry's bundle `[Entry]/`. *(The `Artifacts/` folder is deprecated as of 2026-06-16 — bundles replaced it; learning-material assets go to the Loudon Live zone, see [[Learning Materials and Canon]].)*
 - Technical diagrams (signal flow, DSP, math, plots) → author in LaTeX/TikZ and file the `.tex` source beside the rendered `.svg`, per [[Technical Diagram Standard]]
-- Do not create an `assets/` folder — the canonical homes are the owning entry's bundle and `Artifacts/`
+- Do not create an `assets/` folder — the canonical home is the owning entry's bundle
 
 **Step 7: Close**
 
