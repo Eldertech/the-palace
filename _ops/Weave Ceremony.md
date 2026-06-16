@@ -73,15 +73,7 @@ The single-agent protocol below remains valid for: palaces under ~20 entries, qu
 
 **Step 0 — Load the foundation**
 
-Before anything else — before the map build, before dispatching a single worker — read the foundational set into context if it is not already there this session: [[CLAUDE]], [[SCHEMA]], [[FOUR PILLARS]], [[ROSETTA]], [[SUBSTRATE]], [[README - The Palace Guide]], [[JEWEL]]. The Weave is a *write* ceremony: it formalizes typed links, proposes stage transitions, and may spawn hub entries. Every one of those is governed by SCHEMA. "Read before touching" is inviolable; a Weave that proposes links before SCHEMA §4 is in context is touching before reading.
-
-Pay particular attention to **§4 typed-link directionality**, the most error-prone surface, and carry it into worker dispatch and synthesis. Swarm workers (especially Haiku) routinely propose a directed `type` whose `label` actually describes the *reverse* relationship — audit every directed link against §4 before formalizing. Known traps, learned the hard way:
-
-- **`member-of`** is directed **member → collection**, with *no forced reciprocal on the hub side* (the Map computes the hub's inbound degree). A hub **never emits `member-of` at its own members** — the members declare membership pointing in. Putting `member-of` on the hub is inverted and forbidden.
-- **`exemplifies`** is directed **instance → general** (an entry → [[FOUR PILLARS]]; a person → a registry). A general principle must never `exemplifies` a specific instance.
-- **`deepens`** and **`emerged-from`** point from the derived thing *back to its ground* (canonized in the v1.9 Schema Ceremony, 2026-06-05): `A deepens B` means A elaborates the more-foundational B; `A emerged-from B` means A grew from the origin B. Foundational primitives (Spinoza Conatus, FOUR PILLARS, Wallpaper Groups) are *targets*, not sources, of these links. If you find a foundational entry *emitting* `deepens`/`emerged-from` at a derivative, the arrow is backwards. When a directed type is still contestable, fall back to **`connects-to` + label** — SCHEMA §4 sanctions this as the tool for "a real relationship named by its label." Do not guess a directed type.
-
-Read each proposed link aloud as `home → type → target` and check the arrow points the right way before writing it.
+Before anything else — before the map build, before dispatching a single worker — read the foundational set into context if it is not already there this session: [[CLAUDE]], [[SCHEMA]], [[FOUR PILLARS]], [[ROSETTA]], [[SUBSTRATE]], [[README - The Palace Guide]], [[JEWEL]]. The Weave is a *write* ceremony: it formalizes typed links, proposes stage transitions, and may spawn hub entries. Every one of those is governed by SCHEMA. "Read before touching" is inviolable; a Weave that proposes links before SCHEMA §4 is in context is touching before reading. Link directionality is governed by §4; the `lint-link-directions.py` postcondition (2d) is the mechanical backstop.
 
 **Step 0b — Orientation check**
 
