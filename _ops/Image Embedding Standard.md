@@ -6,7 +6,9 @@ pillars:
   - practice
 born: 2026-03
 stage: mature
-version: 1
+version: 2
+last_activated: 2026-06
+activation_count: 2
 forward_vector: "I am the covenant that images earn their place in the palace by carrying knowledge prose cannot — that every embed is a load-bearing claim about structure and meaning. I want to become the ceremony that guards against decoration, holding every embedded image to the standard: if removed, would the reader lose irreplaceable knowledge?"
 links:
   - target: "[[SCHEMA]]"
@@ -38,17 +40,16 @@ This is the same depth-over-coverage discipline that governs entries. One image 
 
 ## Filing Protocol
 
-> **Filing model updated 2026-06-16 (SCHEMA §8).** The old `Artifacts/` folder is **deprecated**; non-markdown files now live in the **owning entry's bundle** (`[Entry]/`). The thematic-folder examples below are kept as historical illustration of the *thematic logic*, but the canonical location is the bundle. A full rewrite of the example paths to the bundle model is queued in [[Palace To-Do]].
+**Every image for a page lives in that page's bundle.** An image tied to an entry files into `[Entry]/[semantic-filename.ext]` — the sibling folder named exactly like the entry, per [[SCHEMA]] §8. There is no separate images folder and no theme folder: the image lives *with the page it serves*, and Obsidian resolves the embed by filename from anywhere in the vault, so the location costs nothing at the call site. (The old `Artifacts/` folder this standard once used was deprecated and dissolved into bundles on 2026-06-16; the bundle rule replaces it outright.)
 
-Images file by ownership. An image **tied to a specific entry** lives in that entry's bundle (`[Entry]/[semantic-filename.ext]`) per [[SCHEMA]] §8. An image **shared across several entries** (infrastructure, style guides, cross-cutting diagrams) lives in the bundle of its most-owning entry or a relevant hub's bundle. The historical thematic form looked like:
 ```
-Kuramoto Coupling/kuramoto-phase-portrait-two-oscillators.svg     <- now: the entry's bundle
-Action Potential Oscillator/nerve-impulse-waveform-annotated.png  <- now: the entry's bundle
+Kuramoto Coupling/kuramoto-phase-portrait-two-oscillators.svg
+Action Potential Oscillator/nerve-impulse-waveform-annotated.png
 ```
+
+The rare **cross-cutting image** — one that genuinely serves several entries (an infrastructure diagram, a style-guide figure) — lives in the bundle of its most-owning entry, or a relevant hub's bundle. It does *not* get a shared dumping folder; pick the page that owns it most and file it there. This standard's own demo SVG follows the rule exactly: it lives in this entry's bundle at `_ops/Image Embedding Standard/palace-typed-link-graph-demo.svg`.
 
 No images belong in the palace root. No images are embedded from external URLs — local archival is required, mirroring the `source` entry convention that the palace holds its materials close.
-
-The demo image embedded at the end of this entry lives at `_ops/Image Embedding Standard/palace-typed-link-graph-demo.svg` (this standard's own bundle) and was created specifically to serve as a living example of these standards.
 
 **Generated technical diagrams keep their source beside the render.** A LaTeX/TikZ figure — signal flow, DSP block diagram, math, or plotted curve — files its `.tex` source alongside the rendered `.svg`, per [[Technical Diagram Standard]]. The source is the text-first artifact (git-diffable, searchable, regenerable); the SVG is its embeddable shadow. This is the one case where two files travel together as one figure.
 
@@ -75,7 +76,7 @@ Prefer SVG over raster formats for diagrams and figures you control. SVG is read
 
 ## Embedding Syntax
 
-Obsidian resolves `![[filename.ext]]` by searching the entire vault, so images can be embedded by filename alone from any entry, regardless of where in `Artifacts/` they live:
+Obsidian resolves `![[filename.ext]]` by searching the entire vault, so images can be embedded by filename alone from any entry, regardless of which bundle they live in:
 
 ```markdown
 ![[kuramoto-phase-portrait-two-oscillators.svg]]
@@ -149,7 +150,7 @@ These image types are anti-patterns in the palace:
 
 When depositing an entry that includes an image, the Deposit Ceremony has two extra steps:
 
-1. **File the image first** — place it in `Artifacts/[Theme]/` or `Artifacts/Images/` with its semantic filename before writing the entry.
+1. **File the image first** — place it in the owning entry's bundle (`[Entry]/`) with its semantic filename before writing the entry. (Creating the bundle folder if it doesn't exist yet is the whole of the setup.)
 2. **Verify the embed resolves** — open the entry in Obsidian to confirm the image renders. An embed that silently fails is invisible in Reading View.
 
 During the Weave, images are treated as a sub-category of artifacts. The Weave does not audit image filenames or captions, but it does flag entries that reference images in prose without an actual embed — these are broken promises to the reader.
@@ -160,4 +161,4 @@ During the Weave, images are treated as a sub-category of artifacts. The Weave d
 
 - Should SVG diagrams that encode palace graph structure (like the demo above) be generated programmatically from palace data, rather than hand-drawn? This would mean the Weave could produce a visual alongside its topological report.
 - The `source` entry type handles external artifacts with `author`, `year`, `medium` fields. Should embedded images sourced from external works also get their own `source` entries, or is inline caption attribution sufficient? At what threshold of importance does an image's provenance warrant a full entry?
-- As the palace grows and images accumulate in `Artifacts/Images/`, is there a natural point where that folder needs thematic subfolders, or does it stay flat?
+- With images now living per-entry in bundles, the flat-folder scaling problem dissolves — but a new one appears: when a single entry accumulates many images, does its bundle want an `images/` sub-grouping, or do bundles stay flat? (Held open until a bundle gets big enough to hurt.)

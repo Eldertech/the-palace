@@ -21,7 +21,7 @@ links:
   - target: "[[Meaning and the Link]]"
     type: deepens
     label: relations-as-prehension
-  - target: "[[Leibniz (Indra's Net / monadology)|Leibniz]]"
+  - target: "[[Leibniz]]"
     type: connects-to
     label: monads-become-occasions
   - target: "[[Kuramoto Coupling]]"
@@ -60,6 +60,6 @@ STIGMERGY's [[STIGMERGY v1.0 — Palace Front-End|LOG deck]] is a Whiteheadian i
 
 ## Open Questions
 
-- [[Leibniz (Indra's Net / monadology)|Leibniz]]'s monads have no windows; Whitehead's occasions are *all window* (pure prehension). The palace cites Leibniz for the pillars' mutual reflection — is Whitehead the better fit, since palace entries genuinely prehend each other through links rather than mirroring without contact?
+- [[Leibniz]]'s monads have no windows; Whitehead's occasions are *all window* (pure prehension). The palace cites Leibniz for the pillars' mutual reflection — is Whitehead the better fit, since palace entries genuinely prehend each other through links rather than mirroring without contact?
 - Spinoza ↔ Whitehead: static substance vs. processual becoming. A Dialectic candidate that would sharpen what the palace means by "conatus."
 - If a node is a concrescence and a link is a prehension, what is a *dormant* entry — an occasion that has perished but is still prehended? The composting lifecycle may have a process-metaphysics reading.

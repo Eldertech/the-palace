@@ -2,9 +2,9 @@
   "meta": {
     "generated": "2026-06-16",
     "scope": "full",
-    "node_count": 309,
+    "node_count": 310,
     "ops_node_count": 34,
-    "edge_count": 1957,
+    "edge_count": 1963,
     "ghost_taxonomy": {
       "error_ghosts": [],
       "ops_ghosts": [
@@ -147,12 +147,6 @@
           "target": "Toolkit \u2014 MIDI Controllers",
           "sources": [
             "Toolkit \u2014 Synthesizers"
-          ]
-        },
-        {
-          "target": "monadology)",
-          "sources": [
-            "Whitehead"
           ]
         }
       ]
@@ -1191,7 +1185,7 @@
       "last_activated": "2026-06",
       "activation_count": "34",
       "outbound_count": 8,
-      "inbound_count": 110
+      "inbound_count": 111
     },
     {
       "id": "FOUR PILLARS \u2014 Context",
@@ -1433,7 +1427,7 @@
       "last_activated": "2026-03",
       "activation_count": "10",
       "outbound_count": 7,
-      "inbound_count": 32
+      "inbound_count": 33
     },
     {
       "id": "Identity Molting",
@@ -1632,6 +1626,17 @@
       "activation_count": null,
       "outbound_count": 4,
       "inbound_count": 0
+    },
+    {
+      "id": "Leibniz",
+      "path": "Leibniz.md",
+      "type": "concept",
+      "stage": "sprout",
+      "has_forward_vector": true,
+      "last_activated": "2026-06",
+      "activation_count": "1",
+      "outbound_count": 6,
+      "inbound_count": 1
     },
     {
       "id": "Leverage Diagnostic \u2014 Loudon Draft",
@@ -1851,7 +1856,7 @@
       "last_activated": "2026-03",
       "activation_count": "2",
       "outbound_count": 6,
-      "inbound_count": 12
+      "inbound_count": 13
     },
     {
       "id": "Media Library",
@@ -2137,7 +2142,7 @@
       "last_activated": "2026-06",
       "activation_count": "3",
       "outbound_count": 22,
-      "inbound_count": 16
+      "inbound_count": 17
     },
     {
       "id": "Palace Philosophies \u2014 Context",
@@ -2885,7 +2890,7 @@
       "last_activated": "2026-04-01",
       "activation_count": "12",
       "outbound_count": 9,
-      "inbound_count": 59
+      "inbound_count": 60
     },
     {
       "id": "Stable Audio Open",
@@ -3478,8 +3483,8 @@
       "has_forward_vector": true,
       "last_activated": "2026-05",
       "activation_count": "1",
-      "outbound_count": 5,
-      "inbound_count": 5
+      "outbound_count": 6,
+      "inbound_count": 6
     },
     {
       "id": "Yasujir\u014d Ozu",
@@ -5651,7 +5656,7 @@
     {
       "source": "Whitehead",
       "type": "connects-to",
-      "target": "monadology)",
+      "target": "Leibniz",
       "label": "monads-become-occasions"
     },
     {
@@ -8191,6 +8196,42 @@
       "type": "member-of",
       "target": "Dissolutions",
       "label": "synthesis-is-processing-one-substance"
+    },
+    {
+      "source": "Leibniz",
+      "type": "connects-to",
+      "target": "Palace Philosophies",
+      "label": "the-monad-register"
+    },
+    {
+      "source": "Leibniz",
+      "type": "contradicts",
+      "target": "Whitehead",
+      "label": "windowless-vs-prehension"
+    },
+    {
+      "source": "Leibniz",
+      "type": "connects-to",
+      "target": "Hyperdimensional Prism",
+      "label": "indras-net-refracts"
+    },
+    {
+      "source": "Leibniz",
+      "type": "connects-to",
+      "target": "Meaning and the Link",
+      "label": "network-is-the-knowledge"
+    },
+    {
+      "source": "Leibniz",
+      "type": "connects-to",
+      "target": "FOUR PILLARS",
+      "label": "pillars-as-monads"
+    },
+    {
+      "source": "Leibniz",
+      "type": "connects-to",
+      "target": "Spinoza Conatus",
+      "label": "each-perspective-expresses-the-whole"
     },
     {
       "source": "The Fortress and the Threshold",
