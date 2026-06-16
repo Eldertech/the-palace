@@ -51,10 +51,19 @@ session** in all four docs: Production Plan, Board Record Schema (added a `SECTI
 report, and the M4L spec (JS rewritten: `cue_points` → host-track clips; `/transport/locator` →
 `/transport/section`; device marked live-validated).
 
-## Next move — M0 previz production (the spike is closed)
-With Tracks I/III/IV/V proven, the clock live + clip-addressed, and Track II measured, **M0 previz is the
-next rung.** Bring a short song section through the real substrate: board records (with `BAR`/`BEAT`/
-`SECTION` now clip-addressed) → Track I backend → a previz pass, synced to the live clock.
+## Where we are — M0 previz first pass VERIFIED (2026-06-16)
+The M0 previz player plays the 8-shot storyboard **in time with the live clock** — `● transport playing`,
+frame exact (bar 18.4 → frame 852 = 71×12), `deterministic ✓`, shot-accurate (1 of 8 cells active),
+section live from `/transport/section`. Modernized `previz.html` off the stale `/transport/locator`.
+Report + run-it: `proofs/m0-previz/m0-report.md`. **M0 ships the timed greybox.**
+
+## Next moves
+1. **The real M4L clip-scan device** — only `clip_scan_sim.py` exists (a stand-in); build the device-side
+   one-shot scan of the host track's `arrangement_clips` (deferred/low-priority, never the transport poll
+   — the qmetro lesson) so the storyboard is authored as Live clips for real.
+2. **M1 animatic** — raise the boards from greybox stick-figures to *drawn* comic panels (the comic
+   register), same timeline + board record, still no render-AI. The render side (M2+) stays behind the
+   board-record seam.
 
 **One named loop-back (optional, not blocking M0):** the Track II character LoRA. The pipeline is proven
 (dog control +0.35); the win is reachable. To get a usable r4ng3r LoRA, rebuild the character set with
