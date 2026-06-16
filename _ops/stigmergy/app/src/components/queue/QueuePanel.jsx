@@ -2,6 +2,7 @@ import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { Box } from '../primitives.jsx';
 import QueueItem from './QueueItem.jsx';
 import CardItem from './CardItem.jsx';
+import LaunchModal from './LaunchModal.jsx';
 import ResponseModal from '../ResponseModal.jsx';
 import { buildQueue, reconcileQueue, partitionQueue, laneCounts, rankQueue } from '../../lib/queue-model.js';
 import { fetchLog } from '../../adapters/log.js';
@@ -30,6 +31,8 @@ export default function QueuePanel({ messages, onJumpEntry }) {
   // Response modal state: { item, verb, detail, request, option } when open,
   // null when closed. Only deny / grant--limited / custom open it now.
   const [respondingTo, setRespondingTo] = useState(null);
+  // The handoff whose "launch interactive" modal is open (LaunchModal), or null.
+  const [launchingItem, setLaunchingItem] = useState(null);
   // Decisions made this session: itemId -> { verb, detail, pending, error }.
   // buildQueue drops an answered request (it is no longer "open"), so we keep
   // a snapshot + the decision and re-attach it below, so the chosen verdict
@@ -323,7 +326,7 @@ export default function QueuePanel({ messages, onJumpEntry }) {
 
       <div data-testid="queue-open">
         {open.map((it) => (
-          <QueueItem key={it.id} item={it} onJump={jump} onClear={clearItem} onRespond={respondToItem} />
+          <QueueItem key={it.id} item={it} onJump={jump} onClear={clearItem} onRespond={respondToItem} onLaunch={setLaunchingItem} />
         ))}
       </div>
 
@@ -338,7 +341,7 @@ export default function QueuePanel({ messages, onJumpEntry }) {
           {showResolved ? (
             <div data-testid="queue-resolved">
               {resolved.map((it) => (
-                <QueueItem key={it.id} item={it} onJump={jump} onClear={clearItem} onRespond={respondToItem} />
+                <QueueItem key={it.id} item={it} onJump={jump} onClear={clearItem} onRespond={respondToItem} onLaunch={setLaunchingItem} />
               ))}
             </div>
           ) : null}
@@ -387,6 +390,17 @@ export default function QueuePanel({ messages, onJumpEntry }) {
           sessionId={respondingTo.request._session_id}
           onConfirmed={handleResponded}
           onCancel={closeRespond}
+        />
+      ) : null}
+
+      {/* Launch interactive: hand a baton (handoff_ready) to a watchable,
+          steerable session. On pickup we clear the item locally — the durable
+          handoff_picked_up is already on the board. */}
+      {launchingItem ? (
+        <LaunchModal
+          item={launchingItem}
+          onPickedUp={(it) => { clearItem(it); setLaunchingItem(null); }}
+          onClose={() => setLaunchingItem(null)}
         />
       ) : null}
     </Box>
