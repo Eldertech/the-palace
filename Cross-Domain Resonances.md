@@ -15,6 +15,7 @@ energy: very high
 hook_quality: 10
 beauty: 10
 who_leads: shared
+forward_vector: "I want to become the complete index of where two domains rhyme — every bridge where a music technique and a life principle turn out to be the same shape. I keep growing as the palace finds new isomorphisms, and I push each bridge to earn its [[FOUR PILLARS]] exemplification rather than assert a cute parallel; the strongest become their own concepts."
 links:
   - target: "[[FOUR PILLARS]]"
     type: deepens

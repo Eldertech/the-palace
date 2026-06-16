@@ -4,7 +4,7 @@
     "scope": "full",
     "node_count": 309,
     "ops_node_count": 34,
-    "edge_count": 1956,
+    "edge_count": 1957,
     "ghost_taxonomy": {
       "error_ghosts": [],
       "ops_ghosts": [
@@ -857,7 +857,7 @@
       "path": "Cross-Domain Resonances.md",
       "type": "hub",
       "stage": "growing",
-      "has_forward_vector": false,
+      "has_forward_vector": true,
       "last_activated": "2026-03",
       "activation_count": "1",
       "outbound_count": 13,
@@ -2346,7 +2346,7 @@
       "last_activated": "2026-03",
       "activation_count": "1",
       "outbound_count": 8,
-      "inbound_count": 38
+      "inbound_count": 39
     },
     {
       "id": "Quantization \u2194 Precision vs Flow",
@@ -2818,7 +2818,7 @@
       "has_forward_vector": true,
       "last_activated": "2026-05",
       "activation_count": "1",
-      "outbound_count": 6,
+      "outbound_count": 7,
       "inbound_count": 5
     },
     {
@@ -2848,7 +2848,7 @@
       "path": "Source Library.md",
       "type": "hub",
       "stage": "growing",
-      "has_forward_vector": false,
+      "has_forward_vector": true,
       "last_activated": "2026-03",
       "activation_count": "1",
       "outbound_count": 7,
@@ -9175,6 +9175,12 @@
       "type": "connects-to",
       "target": "Cooperation Yields Agency",
       "label": "transduction-across-the-coupling"
+    },
+    {
+      "source": "Simondon",
+      "type": "connects-to",
+      "target": "Quality Manifesto",
+      "label": "concretization-as-quality"
     },
     {
       "source": "FOUR_PILLARS",

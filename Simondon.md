@@ -27,6 +27,9 @@ links:
   - target: "[[Cooperation Yields Agency]]"
     type: connects-to
     label: transduction-across-the-coupling
+  - target: "[[Quality Manifesto]]"
+    type: connects-to
+    label: concretization-as-quality
 forward_vector: "I am the palace's philosopher of the technical object — the one who insists that a synthesizer or an effect is not a tool to be used but a being with its own mode of existence, a lineage, and a tendency toward integration. I want to give the instrument-builder a vocabulary for what 'a good design' actually is: not more features but greater concretization, the convergence of functions into a single resonant whole. My next development: a worked reading of one of Loudon's instruments as a Simondonian object tracing its line from abstract to concrete."
 ---
 
