@@ -1,3 +1,11 @@
+---
+title: test-plan
+born: 2026-05-30
+links:
+  - { target: "[[Stable Audio Open]]", type: connects-to, label: test-plan-for }
+forward_vector: "I hold the test plan for Stable Audio Open; I want every check here to be runnable and to record an honest last-run date."
+---
+
 # Stable Audio Open — Test Plan
 
 > Phase E rollout. Stable Audio Open is the Shop's generative-audio Specialist (atmospheric beds, SFX, narrative-arc short clips). Like ComfyUI, it's GPU-bound and non-deterministic in the byte sense; the reproducibility artifact is prompt + seed + checkpoint, not WAV bytes. Smoke for this round leans on the 2026-05-26 Kuramoto Round 1 beds (`opening-bed.wav`, `title-bed.wav`) rather than spinning the GPU pipeline for ceremony.

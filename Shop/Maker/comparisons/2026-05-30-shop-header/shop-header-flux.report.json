@@ -10,7 +10,7 @@
   "prompt": "a master printmaker's workshop seen from a slightly elevated angle at dusk, ordered work surfaces and presses arrayed in disciplined geometry, warm amber light pouring through tall industrial windows, dust motes catching the light, dark exposed timber beams, deep shadows in the corners, painterly cinematic atmosphere, oil painting quality, no people, mood of focused craft and quiet discipline, restrained palette of warm amber and deep near-black indigo",
   "output_bytes": 573426,
   "tier_used": "sketch",
-  "comparison_counterpart": "Artifacts/Shop/Maker/comparisons/2026-05-30-shop-header/shop-header-comfyui.png",
+  "comparison_counterpart": "Shop/Maker/comparisons/2026-05-30-shop-header/shop-header-comfyui.png",
   "midjourney_replaced_by": "black-forest-labs/FLUX.1-Krea-dev",
   "status": "ok"
 }

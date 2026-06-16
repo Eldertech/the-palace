@@ -1,3 +1,11 @@
+---
+title: probe-log
+born: 2026-06-08
+links:
+  - { target: "[[Shopkeeper]]", type: connects-to, label: probe-log-for }
+forward_vector: "I log the 2026-06-08 image-to-3D reachability probe; I want to preserve honestly what worked and what didn't from a tokenless sandbox."
+---
+
 # Probe log — Image-to-3D (2026-06-08)
 
 **Question:** Can the Shop generate a real 3D *asset* from a prompt/image, reachable from a tokenless sandbox the way FLUX is?

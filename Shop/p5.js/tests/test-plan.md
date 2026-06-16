@@ -1,3 +1,11 @@
+---
+title: p5.js — Test Plan
+born: 2026-05-30
+links:
+  - { target: "[[p5.js]]", type: connects-to, label: test-plan-for }
+forward_vector: "I hold the test plan for p5.js; I want every check here runnable with an honest last-run date."
+---
+
 # p5.js — Test Plan
 
 > Phase E rollout. p5.js is the expressive lens of the data-viz triad. Smoke is a syntax-parse of the artifact's inline JS (Node `vm.Script`, no DOM required). Determinism rests on the shared Mulberry32 seed convention codified in the [[Flocking — Maker's Comparison Recommendation|Flocking shoot-out]].
@@ -7,10 +15,10 @@ Last run: **2026-05-30** — Smoke pass on the canonical p5.js artifact (`Flocki
 ## Smoke
 
 ```sh
-node --experimental-vm-modules Artifacts/Shop/web-smoke.mjs Flocking/flocking-p5-expressive.html
+node --experimental-vm-modules Shop/Maker/web-smoke.mjs Flocking/flocking-p5-expressive.html
 ```
 
-- **Automated:** the shared `Artifacts/Shop/web-smoke.mjs` helper extracts inline `<script>` blocks and syntax-checks each via Node's `vm` module. Pass = no `SyntaxError` raised, exit 0.
+- **Automated:** the shared `Shop/Maker/web-smoke.mjs` helper extracts inline `<script>` blocks and syntax-checks each via Node's `vm` module. Pass = no `SyntaxError` raised, exit 0.
 - **Last run (2026-05-30):** `smoke: 1 ok, 0 fail (1 inline script)`.
 
 ## Capability Probe

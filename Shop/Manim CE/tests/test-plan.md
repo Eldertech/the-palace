@@ -1,3 +1,11 @@
+---
+title: Manim CE — Test Plan
+born: 2026-05-30
+links:
+  - { target: "[[Manim CE]]", type: connects-to, label: test-plan-for }
+forward_vector: "I hold the test plan for Manim CE; I want every check here runnable with an honest last-run date."
+---
+
 # Manim CE — Test Plan
 
 > Phase E rollout. Manim CE is the math-animation Specialist. Phase A already proved the three-tier ladder (`Kuramoto Coupling/two-phasors-uncoupled-{,study,piece}*.mp4`); this plan adds a trivial smoke + a byte-determinism check, and consolidates Phase A's findings into the test record.

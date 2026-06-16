@@ -239,6 +239,8 @@ All four sub-fields are optional within the object — include only the dimensio
 
 **Validation:** As of this ceremony, 14 specialist entries and 1 maker entry exist in `Shop/`. All were schema-violating before v1.6; all validate after. No existing entries of other types are affected. No link types are added or changed. The change is strictly additive.
 
+> **Migration note (2026-06-16):** the "all validate after" claim above was *aspirational* — the v1.6 ceremony defined the types but never actually migrated the pre-existing entries. A 2026-06-16 Shop compliance pass found 22 entries (21 specialists + the Maker) still on the legacy shape: no `title`, `adopted:` instead of `born:`, no `forward_vector`, and `links` carrying only a `label` with a bare-string `target` and no `type:`. That pass performed the migration the ceremony had only promised — adding `title`/`born`/`forward_vector`, typing every link against §4, fixing Blender's illegal `medium: 3d` → `image`, and bringing the bundle files under §8. From 2026-06-16 the claim is true. (This is a factual correction to ceremony prose, not a schema change.)
+
 **Forward vector:** Watch how the Shop's Roster grows. If a second sub-system (Studio, Library, Lab) emerges with its own foreman, the `maker` type's plurality is exercised and the schema's reach is confirmed. If the Specialist anatomy starts being applied to non-creative-tool domains (e.g. a "Knowledge Specialist" wrapping a search tool), revisit whether the type's binding to external creative tools needs loosening or whether a sibling type is warranted.
 
 ---

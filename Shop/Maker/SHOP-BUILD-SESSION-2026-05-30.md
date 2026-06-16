@@ -1,3 +1,11 @@
+---
+title: SHOP-BUILD-SESSION-2026-05-30
+born: 2026-05-30
+links:
+  - { target: "[[Maker]]", type: connects-to, label: build-session-of }
+forward_vector: "I hold the Mac-side build-session handoff that brought the Shop's hosted tools online; I want to stay a faithful record of what Phases A–F actually ran."
+---
+
 # Shop Build Session — Handoff for Claude Code (Mac-side)
 
 **Authored:** 2026-05-30, in a Cowork session, by Claude.
@@ -13,8 +21,8 @@ This baton is punchlist-grade. Each phase names exactly what to do, what success
 Three things were completed Cowork-side and are already written into the palace files. Read them before starting; build on them, don't duplicate.
 
 1. **Roster reconciled.** `Shop/Maker.md` Roster section now carries a single-source-of-truth status taxonomy: **14 alive, 2 stub** (Midjourney, RNBO codebox~ smith). The old three-place drift (frontmatter vs. an alive-list vs. a stub-list, which disagreed) is gone. VCV frontmatter `active`→`alive` fixed; ffmpeg duplicate `status` line removed.
-2. **Host Capability Check specced.** `Shop/Maker.md` has a new **Host Capability Check** section (a pre-dispatch step in "How I Work With You" #4, a host-class table, and a fallback table). The machine-readable manifest is `Artifacts/Shop/host-capability.json`. **Phase C** wires this into real code.
-3. **Canonical test-plan template** at `Artifacts/Shop/_TEMPLATE/test-plan.md`, abstracted from VCV's proven plan. **Phase E** rolls it out.
+2. **Host Capability Check specced.** `Shop/Maker.md` has a new **Host Capability Check** section (a pre-dispatch step in "How I Work With You" #4, a host-class table, and a fallback table). The machine-readable manifest is `Shop/Maker/host-capability.json`. **Phase C** wires this into real code.
+3. **Canonical test-plan template** at `Shop/Maker/_TEMPLATE/test-plan.md`, abstracted from VCV's proven plan. **Phase E** rolls it out.
 
 ## 1. Operating rules (read first)
 
@@ -72,15 +80,15 @@ Three things were completed Cowork-side and are already written into the palace 
 
 **Why:** It's been a known gap since 2026-05-10 (Manim died at install time on Linux arm64 after the intake was already spent). The spec and manifest now exist; wire the actual check.
 
-**What:** A small module — `Artifacts/Shop/host-capability-check.js` (or `.py`) — that:
-1. Reads `Artifacts/Shop/host-capability.json`.
+**What:** A small module — `Shop/Maker/host-capability-check.js` (or `.py`) — that:
+1. Reads `Shop/Maker/host-capability.json`.
 2. Detects the current host class (`mac` / `sandbox` / `cloud`) — e.g. `process.arch`/`os` + a GPU/Max/VCV probe, or an explicit env override.
 3. Exposes `check(specialist)` → `{ reachable: bool, host, fallback, note }`.
 4. Has a tiny test: assert Manim is unreachable on `sandbox` and resolves to Matplotlib; assert p5.js is reachable on both; assert Midjourney needs `cloud`.
 
 **Definition of done:**
 - Module runs, the test passes, and the Maker's Host Capability Check section gets a one-line "implemented at `…`, last run `<date>`" note replacing the "a future Claude Code session wires this" sentence.
-- This module is itself a Specialist-grade artifact — give it a 3-line smoke test in `Artifacts/Shop/host-capability-check.test.*`.
+- This module is itself a Specialist-grade artifact — give it a 3-line smoke test in `Shop/Maker/host-capability-check.test.*`.
 
 ---
 
@@ -109,7 +117,7 @@ Three things were completed Cowork-side and are already written into the palace 
 **Why:** 14 alive Specialists point at `…/tests/test-plan.md (TODO)`; only VCV has a real one. "Last run: never" is the honest status almost everywhere. The pattern is proven (VCV) — propagate it.
 
 **What:** For each of the **14 alive** Specialists:
-1. Copy `Artifacts/Shop/_TEMPLATE/test-plan.md` to `Artifacts/Shop/<Specialist>/tests/test-plan.md`.
+1. Copy `Shop/Maker/_TEMPLATE/test-plan.md` to `Shop/<Specialist>/tests/test-plan.md`.
 2. Fill each probe **concretely for that tool** (don't leave `{{...}}`). The Smoke and Determinism probes are mandatory and runnable; the rest can be lean.
 3. **Run at least Smoke + Determinism** and date the "Last run" line with a one-line real result. The whole point is to replace "never" with a date.
 4. In the Specialist entry, replace the `(TODO)` in the Test Suite line with the real path + last-run date.

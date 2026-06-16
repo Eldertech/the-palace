@@ -1,19 +1,20 @@
 ---
+title: Whisper
 type: specialist
 status: alive
 medium: sound
 tool: whisper
 tool_version: large-v3
-adopted: 2026-05-09
+born: 2026-05
 last_tested: 2026-05-26
 last_gotcha: 2026-05-26
 license: MIT
+forward_vector: "I read speech back into timed, confidence-scored text clean enough to drive animation sync — and I want to close the loop on Kokoro tightly enough that the diff at each step becomes an honest measure of what narration loses, never a place I quietly invent words."
 links:
-  - { label: "wraps", target: "openai-whisper (external)" }
-  - { label: "directed-by", target: "Shop/Maker" }
-  - { label: "round-trip", target: "Shop/Kokoro" }
-  - { label: "pairs-with", target: "Shop/Manim CE" }
-  - { label: "tested-by", target: "Artifacts/Shop/Whisper/tests/" }
+  - { target: "[[Maker]]", type: connects-to, label: directed-by }
+  - { target: "[[The Shop]]", type: member-of, label: roster-member }
+  - { target: "[[Shop/Kokoro]]", type: couples-with, label: round-trip }
+  - { target: "[[Shop/Manim CE]]", type: couples-with, label: pairs-with }
 tags: [specialist, shop, sound, transcription, captions]
 ---
 
@@ -165,7 +166,7 @@ Future recipes: a Loudon Live captioning recipe, a low-SNR phone-recording recov
 
 ## Test Suite
 
-Smoke / Capability Probe / Style Probe / Edge Probe / Speed Bench / Determinism — defined in [Artifacts/Shop/Whisper/tests/test-plan.md](../Artifacts/Shop/Whisper/tests/test-plan.md).
+Smoke / Capability Probe / Style Probe / Edge Probe / Speed Bench / Determinism — defined in [Shop/Whisper/tests/test-plan.md](../Shop/Whisper/tests/test-plan.md).
 
 The Determinism test for Whisper: same audio + same model + same parameters → text + word boundaries identical at 2-decimal precision. (Sub-frame jitter at the 3rd decimal is possible across runs due to FP precision in the alignment pass — not a divergence, a documented characteristic.)
 

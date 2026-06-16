@@ -1,3 +1,11 @@
+---
+title: sweep-latest
+born: 2026-06-08
+links:
+  - { target: "[[Shopkeeper]]", type: connects-to, label: sweep-record-for }
+forward_vector: "I hold the most recent Shopkeeper discovery sweep, overwritten each run; I want to keep surfacing the worthy few for Loudon's attention."
+---
+
 # Shopkeeper — Latest Sweep
 
 **Run:** 2026-06-08, ~10:30 UTC (every-other-morning steward cadence, shadow). Overwritten each run.
@@ -45,7 +53,7 @@
 
 - **Roster status: clean.** All 19 Specialist frontmatter `status` fields match the Maker's Roster taxonomy (17 alive, 1 stub = RNBO codebox~ smith, 1 deprecated = Midjourney). **No three-place drift.** The drift-watch discipline is holding.
 - **Audio-slot version currency:** the Roster's audio Specialist is **Stable Audio Open** (the older open model); **Stable Audio 3** (SA3 Medium / Small Music / Small SFX) is now live as an HF Space. Not palace-drift, but worth a dated note in [[Stable Audio Open]] that a newer generation exists, before the next audio brief.
-- **Never-run test plans (pre-existing, unchanged):** Maker's own `Artifacts/Shop/Maker/tests/test-plan.md` is still TODO / "Last run: never." VCV Patch Generator remains the only Specialist with a run test-plan + determinism proof. Not new rot, just the standing gap.
+- **Never-run test plans (pre-existing, unchanged):** Maker's own `Shop/Maker/tests/test-plan.md` is still TODO / "Last run: never." VCV Patch Generator remains the only Specialist with a run test-plan + determinism proof. Not new rot, just the standing gap.
 
 ---
 

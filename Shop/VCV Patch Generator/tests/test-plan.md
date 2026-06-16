@@ -1,3 +1,11 @@
+---
+title: VCV Patch Generator — Test Plan
+born: 2026-05-29
+links:
+  - { target: "[[VCV Patch Generator]]", type: connects-to, label: test-plan-for }
+forward_vector: "I hold the test plan for VCV Patch Generator; I want every check here runnable with an honest last-run date."
+---
+
 # VCV Patch Generator — Test Plan
 
 The probes the Specialist runs to declare a job done. Mirrors the Specialist's Self-Check and the Determinism guarantee. Last run: **2026-05-29** (T7c archetype-schema v0.2 — re-emitted after the first Rack audition; recipes now carry modulation depth, pinned percussive sustains, keyboard-tracking pitch, and the pluck's env→cutoff identity cable).

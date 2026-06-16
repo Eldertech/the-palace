@@ -1,19 +1,21 @@
 ---
+title: Web Audio Worklet
 type: specialist
 status: alive
 medium: interactive
 tool: Web Audio API (AudioWorklet)
 tool_version: living standard (Baseline 2023)
-adopted: 2026-05-30
+born: 2026-05
 last_tested: 2026-05-31
 last_gotcha: 2026-05-31
 license: none (browser platform API — no library, no CDN)
+forward_vector: "I write per-sample DSP that runs in the browser audio thread with zero dependencies — granular engines, wavetable scanners, physical models whose voice is a loop I author myself; I want to be the short bridge from a browser sketch to a real RNBO device, and to earn my Study by taking Murmuration cross-browser and proving the voice ceiling."
 links:
-  - { label: "wraps", target: "Web Audio API / AudioWorkletProcessor (browser standard)" }
-  - { label: "directed-by", target: "Shop/Maker" }
-  - { label: "pairs-with", target: "Shop/p5.js" }
-  - { label: "sibling-of", target: "Shop/Tone.js" }
-  - { label: "browser-cousin-of", target: "Shop/RNBO codebox~ smith" }
+  - { target: "[[Maker]]", type: connects-to, label: directed-by }
+  - { target: "[[The Shop]]", type: member-of, label: roster-member }
+  - { target: "[[Shop/p5.js]]", type: couples-with, label: pairs-with }
+  - { target: "[[Shop/Tone.js]]", type: connects-to, label: sibling-of }
+  - { target: "[[Shop/RNBO codebox~ smith]]", type: connects-to, label: browser-cousin-of }
   - target: "[[The Shop]]"
     type: exemplifies
     label: earns-new-operating-model
@@ -159,7 +161,7 @@ This Specialist makes **sound**, not pixels — the design system reaches it onl
 
 ## Test Suite
 
-Smoke / Capability Probe / Style Probe / Edge Probe / Speed Bench / Determinism — to be defined in `Artifacts/Shop/Web Audio Worklet/tests/test-plan.md` (TODO), modeled on the [[Shop/VCV Patch Generator]] exemplar. Determinism is unusually tractable here: when the control source is seeded, the `process()` math can be cross-checked in an `OfflineAudioContext` or a plain Node port. Last run: informal 2026-05-30 (Murmuration — model determinism + finiteness proven in Node; both scripts `node --check` clean).
+Smoke / Capability Probe / Style Probe / Edge Probe / Speed Bench / Determinism — to be defined in `Shop/Web Audio Worklet/tests/test-plan.md` (TODO), modeled on the [[Shop/VCV Patch Generator]] exemplar. Determinism is unusually tractable here: when the control source is seeded, the `process()` math can be cross-checked in an `OfflineAudioContext` or a plain Node port. Last run: informal 2026-05-30 (Murmuration — model determinism + finiteness proven in Node; both scripts `node --check` clean).
 
 ## Open Questions
 

@@ -1,26 +1,23 @@
 ---
+title: Manim CE
 type: specialist
 status: alive
 medium: motion
 tool: manim-ce
 tool_version: 0.20.1
-adopted: 2026-05-06
+born: 2026-05
 last_tested: 2026-06-09
 last_gotcha: 2026-06-09
 license: MIT
+forward_vector: "I animate mathematics until the hidden structure moves into view — equations, transforms, oscillators, phase portraits, every stroke accountable to a line of Python. I sharpen my tier ladder (Sketch → Study → Piece) with measured render costs, not guesses, and I bake each LaTeX-pipeline gotcha into a recipe so the next render lands first-try. I want to keep the determinism that makes me the Shop's most reproducible Specialist: same source, same version, byte-identical frame."
 links:
-  - { label: "wraps", target: "manim-ce (external)" }
-  - { label: "directed-by", target: "Shop/Maker" }
-  - { label: "pairs-with", target: "Shop/Kokoro" }
-  - { label: "pairs-with", target: "Shop/Whisper" }
-  - { label: "alternative-to", target: "Shop/Remotion" }
-  - { label: "tested-by", target: "Artifacts/Shop/Manim CE/tests/" }
-  - target: "[[Kuramoto Coupling]]"
-    type: connects-to
-    label: round-1-test-bed
-  - target: "[[Frequency-Time Duality]]"
-    type: mirrors
-    label: visual-temporal-duality
+  - { target: "[[Maker]]", type: connects-to, label: directed-by }
+  - { target: "[[The Shop]]", type: member-of, label: roster-member }
+  - { target: "[[Shop/Kokoro]]", type: couples-with, label: pairs-with }
+  - { target: "[[Shop/Whisper]]", type: couples-with, label: pairs-with }
+  - { target: "[[Shop/Remotion]]", type: connects-to, label: alternative-to }
+  - { target: "[[Kuramoto Coupling]]", type: connects-to, label: round-1-test-bed }
+  - { target: "[[Frequency-Time Duality]]", type: mirrors, label: visual-temporal-duality }
 tags: [specialist, shop, motion, math, animation]
 ---
 
@@ -187,7 +184,7 @@ Then `manim` is on PATH. Per-Specialist pipx isolation keeps Manim's dependency 
 ```sh
 export TEXPSHEADERS="$(kpsewhich -var-value=TEXMFDIST)/dvips/base:$(kpsewhich -var-value=TEXMFDIST)/dvips/config"
 ```
-With it exported, a real `MathTex(r"\theta_A(t)=\omega_A\,t,\ \frac{\omega_A}{2\pi}=1.00\ \mathrm{Hz}")` render **succeeds** (Sketch `-ql` → PNG); without it the same render dies at `convert_to_svg`. **Resolved this session:** the export is now centralized in `Artifacts/Shop/tex-env.sh` (a wrapper/`--print` shim that resolves `TEXPSHEADERS` via `kpsewhich`). Dispatch on-screen-LaTeX renders through it — `Artifacts/Shop/tex-env.sh manim -ql scene.py Scene` — and the bridge "just works." No longer tribal knowledge living only in this gotcha. The clean structural alternative (`sudo tlmgr install dvisvgm` into the TeX Live tree to displace the standalone formula's symlink) is still untaken — it needs a sudo round-trip and would have to survive `brew` re-linking. The new [[LaTeX]] Specialist (created this session) inherits this exact gotcha for its SVG-cutout path; both Specialists share one TeX install. Note: the **PDF path** (`pdflatex`/`latexmk` → PDF) is unaffected — it never touches `dvisvgm` and runs clean today.
+With it exported, a real `MathTex(r"\theta_A(t)=\omega_A\,t,\ \frac{\omega_A}{2\pi}=1.00\ \mathrm{Hz}")` render **succeeds** (Sketch `-ql` → PNG); without it the same render dies at `convert_to_svg`. **Resolved this session:** the export is now centralized in `Shop/Maker/tex-env.sh` (a wrapper/`--print` shim that resolves `TEXPSHEADERS` via `kpsewhich`). Dispatch on-screen-LaTeX renders through it — `Shop/Maker/tex-env.sh manim -ql scene.py Scene` — and the bridge "just works." No longer tribal knowledge living only in this gotcha. The clean structural alternative (`sudo tlmgr install dvisvgm` into the TeX Live tree to displace the standalone formula's symlink) is still untaken — it needs a sudo round-trip and would have to survive `brew` re-linking. The new [[LaTeX]] Specialist (created this session) inherits this exact gotcha for its SVG-cutout path; both Specialists share one TeX install. Note: the **PDF path** (`pdflatex`/`latexmk` → PDF) is unaffected — it never touches `dvisvgm` and runs clean today.
 
 **2026-05-30 — Tight layouts on a dark background force every annotation to be a *placement* decision.** The Phase A Piece's beat-period caption (`T_{beat} = 1/|f_A - f_B| ≈ 14.29 s`) took three placements to land: above-axes-LEFT crashed into the `ω_A/2π` label; below-axes crashed into the `Loudon Live · Autodidact Polymaths` footer; above-axes-CENTERED in the empty band between the two phasor circles was right. None of the three were visible in isolation — only the rendered frame at 5 s exposed the collision each time. Cheap mitigation: render a frame at the *busiest* moment of the scene before promoting from Study to Piece, and treat the frame extraction as part of the Piece tier's self-check, not a debug step.
 
@@ -217,11 +214,11 @@ Render pattern: Manim silent → ffmpeg-mux Kokoro Study narration (af_heart, �
 
 **2026-05-30 — Two phasors, uncoupled (Piece tier, 1080p30, LaTeX).** Same 10 s content, mastered. Adds: Anton-display title `"Two Phasors, Uncoupled"`; LaTeX phase-law equations (`MathTex(r"\theta_A(t) = \omega_A\,t, \quad \theta_B(t) = \omega_B\,t")`); LaTeX-typeset frequency labels (`\omega_A/2\pi = 1.00\ \mathrm{Hz}` with proper italic ω and subscript, where Study's plain `Text` couldn't); a centred `T_{beat}` caption in the empty band between the phasor circles; locked Loudon Live type stack (Anton / Cormorant Garamond / Manrope / JetBrains Mono — Manim falls back to system Pango when a face isn't installed, but they're named in source for documentation); eased `FadeIn(rate_func=smooth)` entrances for the title, equations, labels, and caption; mono-small footer `Loudon Live · Autodidact Polymaths`. Source: [Kuramoto Coupling/two-phasors-uncoupled-piece.py](../Kuramoto Coupling/two-phasors-uncoupled-piece.py). Output: [Kuramoto Coupling/two-phasors-uncoupled-piece-1080p30.mp4](../Kuramoto Coupling/two-phasors-uncoupled-piece-1080p30.mp4). Render time: **15.9 s warm-cache, 75–90 s cold first-run** — the spread is LaTeX Metafont generation on the first encounter of each glyph, not raw render work (see the 2026-05-30 tier-cost gotcha). The three rungs together — Sketch / Study / Piece — close the loop on the tier-vocabulary claim: the same brief, executed at three deliberately-different commitment levels, with each tier's choices nameable rather than just *more polished*.
 
-Future recipes in `Artifacts/Shop/Manim CE/recipes/` once they accumulate beyond the bundle pattern.
+Future recipes in `Shop/Manim CE/recipes/` once they accumulate beyond the bundle pattern.
 
 ## Test Suite
 
-Smoke / Capability Probe / Style Probe / Edge Probe / Speed Bench / Determinism — defined in [Artifacts/Shop/Manim CE/tests/test-plan.md](../Artifacts/Shop/Manim CE/tests/test-plan.md).
+Smoke / Capability Probe / Style Probe / Edge Probe / Speed Bench / Determinism — defined in [Manim CE/tests/test-plan.md](Manim CE/tests/test-plan.md).
 
 The Determinism test for Manim is the strongest of any specialist's: same `.py` + same Manim version → byte-identical output. The test confirms this and flags any divergence as a build-environment issue rather than a tool problem.
 
@@ -231,7 +228,7 @@ Last run: **2026-05-30** — Smoke pass (12 KB MP4 at 480p15 in 1.45 s); **Deter
 
 - House defaults for color palette in Manim — declare project-level `MANIM_COLOR_*` constants in a Style entry, or inject per-scene? Maker's call.
 - Whisper voiceover sync uses model size (tiny / base / small / medium / large) — which is the default? Tradeoff is alignment accuracy vs. setup time on first run.
-- Should `Artifacts/Shop/Manim CE/recipes/` be organized by project (Floquet, Loudon Live ep01, etc.) or by animation type (transform, plot, 3D)? Suggest by project to match the rest of the palace's project-centric structure.
+- Should `Shop/Manim CE/recipes/` be organized by project (Floquet, Loudon Live ep01, etc.) or by animation type (transform, plot, 3D)? Suggest by project to match the rest of the palace's project-centric structure.
 
 ## Lost Branches
 

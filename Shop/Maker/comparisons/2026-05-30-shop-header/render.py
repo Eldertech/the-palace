@@ -31,7 +31,7 @@ from pathlib import Path
 
 
 BUNDLE = Path(__file__).parent
-PALACE = BUNDLE.parents[4]  # …/Artifacts/Shop/Maker/comparisons/<this>/ → palace root
+PALACE = BUNDLE.parents[3]  # …/Shop/Maker/comparisons/<this>/ → palace root
 WORKFLOW = BUNDLE / "shop-header-workflow.json"
 OUT = BUNDLE / "shop-header-comfyui.png"
 REPORT = BUNDLE / "shop-header.report.json"

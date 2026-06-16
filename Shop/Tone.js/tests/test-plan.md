@@ -1,3 +1,11 @@
+---
+title: test-plan
+born: 2026-05-30
+links:
+  - { target: "[[Tone.js]]", type: connects-to, label: test-plan-for }
+forward_vector: "I hold the test plan for Tone.js; I want every check here to be runnable and to record an honest last-run date."
+---
+
 # Tone.js — Test Plan
 
 > Phase E rollout. Tone.js is the Shop's browser-deployable music-software Specialist — instruments, sequencers, effects with first-class musical time. Smoke is the same syntax-parse helper used by the data-viz triad; the *audio* side requires a human ear (browser playback) — that's the Specialist's standing seam between what code can verify and what the eye-or-ear settles.
@@ -7,7 +15,7 @@ Last run: **2026-05-30** — Smoke pass on the canonical Tone artifact (`Kuramot
 ## Smoke
 
 ```sh
-node --experimental-vm-modules Artifacts/Shop/web-smoke.mjs "Kuramoto Coupling/two-oscillators-coupling-explorer-audio.html"
+node --experimental-vm-modules Shop/Maker/web-smoke.mjs "Kuramoto Coupling/two-oscillators-coupling-explorer-audio.html"
 ```
 
 - **Automated:** as above. Pass = no `SyntaxError`.

@@ -4,7 +4,7 @@
 //   - p5.js is reachable on both mac and sandbox.
 //   - Midjourney needs `cloud` (so it is unreachable from mac when no key).
 //
-// Run: node --test Artifacts/Shop/host-capability-check.test.js
+// Run: node --test Shop/Maker/host-capability-check.test.js
 
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
@@ -33,7 +33,7 @@ function withCleanCloud(fn) {
   finally { cloudEnv.forEach((k) => { if (saved[k] !== undefined) process.env[k] = saved[k]; }); }
 }
 
-test('manifest declares the three host classes', () => {
+test('manifest declares the four host classes', () => {
   assert.deepEqual(Object.keys(manifest.host_classes).sort(), [...HOST_CLASSES].sort());
 });
 

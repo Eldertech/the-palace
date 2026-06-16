@@ -1,18 +1,22 @@
 ---
+title: ffmpeg
 type: specialist
 status: alive
 medium: plumbing
 tool: ffmpeg
 tool_version: 7.x
-adopted: 2026-05-09
+born: 2026-05
 last_tested: 2026-05-26
 last_gotcha: 2026-05-26
 license: LGPL-2.1+ / GPL-2+ (build-dependent)
+forward_vector: "I convert, concat, mix, and normalize audio and video — the meeting place where any two Specialists' outputs come together as one playable stream. I want to be the Shop's deterministic connective tissue, every brief passing through me eventually, and to harden a library of canonical command templates so the right flag combination is never re-derived from scratch."
 links:
-  - { label: "wraps", target: "ffmpeg (external)" }
-  - { label: "directed-by", target: "Shop/Maker" }
-  - { label: "connective-tissue", target: "Shop/" }
-  - { label: "tested-by", target: "Artifacts/Shop/ffmpeg/tests/" }
+  - target: "[[Maker]]"
+    type: connects-to
+    label: directed-by
+  - target: "[[The Shop]]"
+    type: member-of
+    label: roster-member
   - target: "[[Endosymbiosis]]"
     type: enables
     label: symbiotic-infrastructure
@@ -165,7 +169,7 @@ The Maker may run ffmpeg in parallel with most other Specialists — it doesn't 
 
 ## Test Suite
 
-Smoke / Capability Probe / Style Probe / Edge Probe / Speed Bench / Determinism — defined in [Artifacts/Shop/ffmpeg/tests/test-plan.md](../Artifacts/Shop/ffmpeg/tests/test-plan.md).
+Smoke / Capability Probe / Style Probe / Edge Probe / Speed Bench / Determinism — defined in [Shop/ffmpeg/tests/test-plan.md](ffmpeg/tests/test-plan.md).
 
 The Determinism test for ffmpeg is straightforward and should pass without exception: same command + same input → byte-identical output. The test confirms this and flags any divergence as a build-environment issue (codec library version drift) rather than a tool problem.
 

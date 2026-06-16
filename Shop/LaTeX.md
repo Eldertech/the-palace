@@ -1,18 +1,28 @@
 ---
+title: LaTeX
 type: specialist
 status: stub
 medium: other
 tool: latex
 tool_version: "TeX Live 2026 (20260301); pdfTeX 1.40.29"
-adopted: 2026-06-09
+born: 2026-06
 last_tested: 2026-06-09
 last_gotcha: 2026-06-09
 license: LPPL 1.3c (LaTeX) / mixed-free (TeX Live)
+forward_vector: "I typeset documents and mathematical notation — papers, problem sets, beamer decks, standalone vector cutouts — where exact typography is the subject. My capability probe passed but no real brief has run through me yet; I am hungry to land my first job, typeset the Loudon Live `fontspec` stack via xelatex, and earn my promotion from stub to alive."
 links:
-  - { label: "wraps", target: "latex / TeX Live (external)" }
-  - { label: "directed-by", target: "Shop/Maker" }
-  - { label: "shares-tex-pipeline-with", target: "Shop/Manim CE" }
-  - { label: "underpins", target: "Shop/Matplotlib" }
+  - target: "[[Maker]]"
+    type: connects-to
+    label: directed-by
+  - target: "[[The Shop]]"
+    type: member-of
+    label: roster-member
+  - target: "[[Shop/Manim CE]]"
+    type: couples-with
+    label: shares-tex-pipeline-with
+  - target: "[[Shop/Matplotlib]]"
+    type: enables
+    label: underpins
 tags: [specialist, shop, document, typesetting, latex]
 ---
 
@@ -111,7 +121,7 @@ Compile returns rc 0; output file exists; page count > 0 (or, for a cutout, the 
 ```sh
 export TEXPSHEADERS="$(kpsewhich -var-value=TEXMFDIST)/dvips/base:$(kpsewhich -var-value=TEXMFDIST)/dvips/config"
 ```
-With it exported, `latex → dvisvgm` produces a valid SVG (probe: 15 KB). `TEXMFCNF` alone does **not** fix it. This export is centralized in the shared shim `Artifacts/Shop/tex-env.sh` — run `Artifacts/Shop/tex-env.sh <cmd>` to apply the bridge to any TeX command, or `eval "$(Artifacts/Shop/tex-env.sh --print)"` in a shell. [[Shop/Manim CE|Manim CE]] sources the same shim. For pure PDF output, ignore all of this — `dvisvgm` is never invoked. For `pdf2svg` as an alternative cutout route (PDF → SVG, no `.dvi`, no `dvisvgm`): not yet probed on this host; try it before committing a Piece-tier SVG if the `dvisvgm` bridge proves brittle.
+With it exported, `latex → dvisvgm` produces a valid SVG (probe: 15 KB). `TEXMFCNF` alone does **not** fix it. This export is centralized in the shared shim `Shop/Maker/tex-env.sh` — run `Shop/Maker/tex-env.sh <cmd>` to apply the bridge to any TeX command, or `eval "$(Shop/Maker/tex-env.sh --print)"` in a shell. [[Shop/Manim CE|Manim CE]] sources the same shim. For pure PDF output, ignore all of this — `dvisvgm` is never invoked. For `pdf2svg` as an alternative cutout route (PDF → SVG, no `.dvi`, no `dvisvgm`): not yet probed on this host; try it before committing a Piece-tier SVG if the `dvisvgm` bridge proves brittle.
 
 *(Patterns below from LaTeX community wisdom — not yet confirmed on a palace job; dates land when first encountered:)*
 
@@ -126,14 +136,14 @@ None yet — no palace brief has run through me. Today's capability probe (2026-
 
 ## Test Suite
 
-Smoke / Capability Probe / Math Probe / Cutout Probe / Determinism — to be defined in `Artifacts/Shop/LaTeX/tests/test-plan.md` (TODO).
+Smoke / Capability Probe / Math Probe / Cutout Probe / Determinism — to be defined in `Shop/LaTeX/tests/test-plan.md` (TODO).
 
 Capability probe, **2026-06-09**: (1) **PDF path PASS** — minimal `amsmath` document → 55 KB PDF, first compile, no environment tweaks. (2) **SVG-cutout path CONDITIONAL PASS** — fails bare, succeeds with the `TEXPSHEADERS` bridge (15 KB SVG); the bare-failure root cause is the shared `dvisvgm` gotcha. (3) Determinism: not yet run (needs the `SOURCE_DATE_EPOCH` check above). This is a capability probe, not a job — the Specialist stays **stub** until a real brief lands.
 
 ## Open Questions
 
 - A `palace.sty` shared preamble — the Loudon Live type stack (`fontspec` Anton / Cormorant Garamond / Manrope / JetBrains Mono), the six-skin palette as `xcolor` definitions, microtype defaults — so every document inherits the design system the way charts inherit `palaceTokens()`. Defer to first real job.
-- ~~Should the `TEXPSHEADERS` export live in a shared shim that both this Specialist and Manim source, rather than as tribal knowledge in two gotchas?~~ **Resolved 2026-06-09** — it lives in `Artifacts/Shop/tex-env.sh` (Shop machinery, beside `host-capability.json`). Open sub-question: move it to `_ops` if a non-Shop caller ever needs it.
+- ~~Should the `TEXPSHEADERS` export live in a shared shim that both this Specialist and Manim source, rather than as tribal knowledge in two gotchas?~~ **Resolved 2026-06-09** — it lives in `Shop/Maker/tex-env.sh` (Shop machinery, beside `host-capability.json`). Open sub-question: move it to `_ops` if a non-Shop caller ever needs it.
 - `beamer` vs. Remotion vs. an HTML deck for Loudon Live slides — when does typeset-static win over web-motion? The boundary is probably "math density and print fidelity."
 
 ## Lost Branches

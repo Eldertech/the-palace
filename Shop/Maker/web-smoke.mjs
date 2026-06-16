@@ -2,7 +2,7 @@
 // Observable Plot, Tone.js). Extracts inline <script> blocks, syntax-checks
 // them via Node's vm module. Pass = no SyntaxError raised.
 //
-// Run:  node --experimental-vm-modules Artifacts/Shop/web-smoke.mjs <path-to-html>
+// Run:  node --experimental-vm-modules Shop/Maker/web-smoke.mjs <path-to-html>
 // Exit: 0 if all inline scripts parse; 1 otherwise.
 //
 // This is a *parse-time* smoke, not a runtime smoke — it can't catch missing

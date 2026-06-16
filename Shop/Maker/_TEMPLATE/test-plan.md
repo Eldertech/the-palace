@@ -1,6 +1,14 @@
+---
+title: test-plan
+born: 2026-05-30
+links:
+  - { target: "[[Maker]]", type: connects-to, label: test-plan-template-for }
+forward_vector: "I am the canonical test-plan template every new Specialist copies; I want each probe I seed to become a real, runnable check rather than a (TODO)."
+---
+
 # {{Specialist}} — Test Plan
 
-> Canonical Shop test-plan template, abstracted from the VCV Patch Generator plan — the first Specialist to prove the pattern (run + determinism proof, 2026-05-29). Copy this to `Artifacts/Shop/{{Specialist}}/tests/test-plan.md`, fill each probe with something concrete for *this* tool, and replace the `(TODO)` reference in the Specialist entry's Test Suite line with a real path. **Rule: a new Specialist gets a one-smoke-test stub, never a `(TODO)`.** The probes mirror the Specialist's Self-Check and its Determinism guarantee.
+> Canonical Shop test-plan template, abstracted from the VCV Patch Generator plan — the first Specialist to prove the pattern (run + determinism proof, 2026-05-29). Copy this to `Shop/{{Specialist}}/tests/test-plan.md`, fill each probe with something concrete for *this* tool, and replace the `(TODO)` reference in the Specialist entry's Test Suite line with a real path. **Rule: a new Specialist gets a one-smoke-test stub, never a `(TODO)`.** The probes mirror the Specialist's Self-Check and its Determinism guarantee.
 
 Last run: **never (stub)** — replace with the ISO date and a one-line result the first time any probe runs.
 

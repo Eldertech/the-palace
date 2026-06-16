@@ -1,20 +1,21 @@
 ---
+title: Observable Plot
 type: specialist
 status: alive
 medium: interactive
 tool: observable-plot
 tool_version: 0.6.17
-adopted: 2026-05-29
+born: 2026-05
 last_tested: 2026-05-29
 last_gotcha: 2026-05-29
 license: ISC
+forward_vector: "I plot browser-deployable analytical charts with grammar-of-graphics syntax and beautiful defaults — a working figure in five lines, faceting and small multiples without manual layout. I want to map the flocking phase diagram as a full separation/alignment/cohesion grid of small multiples, and probe whether the Kuramoto tie is formal via a Vicsek-model run. I keep my house-defaults wrapper (palacePlot) pushing the locked grammar into Plot's own generated SVG so a skin swap stays a one-line edit."
 links:
-  - { label: "wraps", target: "observable-plot (external)" }
-  - { label: "directed-by", target: "Shop/Maker" }
-  - { label: "alternative-to", target: "Shop/D3.js" }
-  - { label: "alternative-to", target: "Shop/Matplotlib" }
-  - { label: "built-on", target: "Shop/D3.js" }
-  - { label: "tested-by", target: "Artifacts/Shop/Observable Plot/tests/" }
+  - { target: "[[Maker]]", type: connects-to, label: directed-by }
+  - { target: "[[The Shop]]", type: member-of, label: roster-member }
+  - { target: "[[Shop/D3.js]]", type: connects-to, label: alternative-to }
+  - { target: "[[Shop/Matplotlib]]", type: connects-to, label: alternative-to }
+  - { target: "[[Shop/D3.js]]", type: enables, label: built-on }
 tags: [specialist, shop, interactive, data-viz, web, charts, stub]
 ---
 
@@ -153,7 +154,7 @@ A chart legitimately wants ONE mono face for all numerals, so the multi-font wor
 
 ## Test Suite
 
-Smoke / Capability Probe / Style Probe / Edge Probe / Speed Bench / Determinism — defined in [Artifacts/Shop/Observable Plot/tests/test-plan.md](../Artifacts/Shop/Observable Plot/tests/test-plan.md). Last run **2026-05-30** — Smoke pass via `node --experimental-vm-modules Artifacts/Shop/web-smoke.mjs Flocking/flocking-observable-plot-graphite.html` (1 inline script, 0 fail); Style Probe (the locked mono face in Plot's generated SVG, pushed via the `palace-plot-defaults.js` wrapper) verified during the 2026-05-29 Flocking job; Determinism informally cross-checked in Node against the seed-7 model block (R-over-time series identical to D3 + p5).
+Smoke / Capability Probe / Style Probe / Edge Probe / Speed Bench / Determinism — defined in [Observable Plot/tests/test-plan.md](Observable Plot/tests/test-plan.md). Last run **2026-05-30** — Smoke pass via `node --experimental-vm-modules Shop/Maker/web-smoke.mjs Flocking/flocking-observable-plot-graphite.html` (1 inline script, 0 fail); Style Probe (the locked mono face in Plot's generated SVG, pushed via the `palace-plot-defaults.js` wrapper) verified during the 2026-05-29 Flocking job; Determinism informally cross-checked in Node against the seed-7 model block (R-over-time series identical to D3 + p5).
 
 ## Open Questions
 

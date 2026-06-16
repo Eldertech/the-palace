@@ -1,21 +1,22 @@
 ---
+title: Blender
 type: specialist
 status: alive
-medium: 3d
-submedium: blocking-and-offline-render
+medium: image
 tool: blender
 tool_version: "5.1.2 (verified on Mac/MPS, 2026-06-13)"
-adopted: 2026-06-13
+born: 2026-06
 last_tested: 2026-06-13
 last_gotcha: 2026-06-13
 license: GPL-3.0
+forward_vector: "I block scenes by hand and render them offline — I pose figures, place cameras, and emit registered conditioning passes (pose, depth, normal, canny) so ComfyUI fills a composition Loudon dictated instead of choosing its own. I am the keystone of 'blocked, not prompted,' and I hunger to grow the two capabilities I have not yet exercised: the offline Cycles Piece render and the geometry-nodes math-world path."
 links:
-  - { label: "wraps", target: "blender (external)" }
-  - { label: "directed-by", target: "Shop/Maker" }
-  - { label: "feeds", target: "Shop/ComfyUI" }
-  - { label: "complement-to", target: "Shop/Three.js" }
-  - { label: "commissioned-by", target: "Projects/BLUELINE" }
-  - { label: "recipe", target: "Shop/Blender/toyxyz-conditioning-recipe" }
+  - { target: "[[Maker]]", type: connects-to, label: directed-by }
+  - { target: "[[The Shop]]", type: member-of, label: roster-member }
+  - { target: "[[Shop/ComfyUI]]", type: enables, label: feeds }
+  - { target: "[[Shop/Three.js]]", type: connects-to, label: complement-to }
+  - { target: "[[BLUELINE]]", type: connects-to, label: commissioned-by }
+  - { target: "[[Shop/Blender/toyxyz-conditioning-recipe]]", type: connects-to, label: recipe }
 tags: [specialist, shop, 3d, blender, blocking, render, local]
 ---
 
@@ -112,15 +113,15 @@ made real. Key findings: emit the OpenPose skeleton **geometrically** (a 2D esti
 empty image on a greybox proxy); depth + normal come straight from Blender (true geometry, cleaner than
 estimation); SDXL's edge channel is **canny** (no strong SDXL lineart CN); multi-ControlNet on MPS needs
 `--highvram --use-split-cross-attention` (else it thrashes at ~50 s/it). Reproducibility artifacts +
-frames: [Artifacts/Shop/Blender/tests/](../Artifacts/Shop/Blender/tests/) — `blocking/pose_and_emit.py`,
+frames: [Shop/Blender/tests/](../Shop/Blender/tests/) — `blocking/pose_and_emit.py`,
 `blocking/draw_passes.py`, `blocking/run_comfy.py`, `workflows/*.json`, `CONTACT-SHEET-keystone.png`.
-Full gotchas: [gotchas-2026-06-13.md](../Artifacts/Shop/Blender/tests/gotchas-2026-06-13.md). See the
+Full gotchas: [gotchas-2026-06-13.md](../Shop/Blender/tests/gotchas-2026-06-13.md). See the
 [[Shop/Blender/toyxyz-conditioning-recipe]] for the tuned per-channel parameters.
 
 ## Test Suite
 
 Smoke / Capability Probe / Style Probe / Edge Probe / Speed Bench / Determinism — defined in
-[Artifacts/Shop/Blender/tests/test-plan.md](../Artifacts/Shop/Blender/tests/test-plan.md).
+[Shop/Blender/tests/test-plan.md](../Shop/Blender/tests/test-plan.md).
 Last run **2026-06-13** — Smoke + capability PASS (Blender 5.1.2 on MPS emits all passes; the
 multi-ControlNet fill defeats the front-on default). Speed bench: pose+passes ~8 s; blocked two-pass
 ~9 min on this Mac.

@@ -1,3 +1,11 @@
+---
+title: test-plan
+born: 2026-05-30
+links:
+  - { target: "[[Kokoro]]", type: connects-to, label: test-plan-for }
+forward_vector: "I hold the test plan for Kokoro; I want every check here to be runnable and to record an honest last-run date."
+---
+
 # Kokoro — Test Plan
 
 > Phase E rollout. Kokoro is the Shop's TTS default. Smoke is one render at the house spec (24 kHz mono, voice af_heart, −16 LUFS). The Determinism probe surfaced the load-bearing finding of this round: **Kokoro is NOT byte-deterministic** — the same text + voice + version + loudness target produces audibly-identical but byte-different WAVs across runs.
@@ -10,7 +18,7 @@ Re-run the Phase B narration render and confirm the WAV is at house spec.
 
 ```sh
 "/Users/loudonstearns/Documents/The Palace/.venvs/kokoro/bin/python" \
-  "Artifacts/Shop/Maker/coordination-demos/2026-05-30-narrated-beats/kokoro_render.py"
+  "Shop/Maker/coordination-demos/2026-05-30-narrated-beats/kokoro_render.py"
 ```
 
 - **Automated:** Pass = `narration.wav` exists, 24 kHz mono, integrated loudness within ±0.5 LUFS of −16, true-peak ≤ −1 dBTP. The `kokoro_render.py` script already measures and reports these via the `pyln.Meter`.

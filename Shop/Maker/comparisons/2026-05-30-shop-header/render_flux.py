@@ -81,7 +81,7 @@ def main() -> int:
         "prompt": PROMPT,
         "output_bytes": size,
         "tier_used": "sketch",
-        "comparison_counterpart": "Artifacts/Shop/Maker/comparisons/2026-05-30-shop-header/shop-header-comfyui.png",
+        "comparison_counterpart": "Shop/Maker/comparisons/2026-05-30-shop-header/shop-header-comfyui.png",
         "midjourney_replaced_by": MODEL,
         "status": "ok",
     }

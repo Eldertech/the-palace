@@ -1,3 +1,11 @@
+---
+title: README
+born: 2026-05-30
+links:
+  - { target: "[[Maker]]", type: connects-to, label: coordination-demo-for }
+forward_vector: "I document the Maker's first two-layer gated pipeline; I want to remain the proof that the Maker is a foreman, not a dispatcher."
+---
+
 # Phase B — Narrated Beats: the Maker's first gated coordinated pipeline
 
 **Authored 2026-05-30**, as Phase B of [`SHOP-BUILD-SESSION-2026-05-30.md`](../../../SHOP-BUILD-SESSION-2026-05-30.md). The four-Specialist dispatch the [[Shop/Maker|Maker]] anticipated in its Charter but had only run *ad hoc* until now (sync-arriving.py, Kuramoto Round 1). This is the formalisation: a coordinated pipeline where one Specialist's output gates the next's input, with the gate enforced at *two* layers — orchestrator AND scene module.
@@ -24,7 +32,7 @@ The brief: a 10-second narration about beat frequency — *"Two phasors. Slightl
 ## How to re-run
 
 ```sh
-cd "Artifacts/Shop/Maker/coordination-demos/2026-05-30-narrated-beats"
+cd "Shop/Maker/coordination-demos/2026-05-30-narrated-beats"
 python3 pipeline.py
 ```
 

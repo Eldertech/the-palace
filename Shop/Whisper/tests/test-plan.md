@@ -1,3 +1,11 @@
+---
+title: test-plan
+born: 2026-05-30
+links:
+  - { target: "[[Whisper]]", type: connects-to, label: test-plan-for }
+forward_vector: "I hold the test plan for Whisper; I want every check here to be runnable and to record an honest last-run date."
+---
+
 # Whisper — Test Plan
 
 > Phase E rollout. Whisper is the Shop's speech-to-text and word-timing Specialist. Its Phase B coordination role (gating Manim on word-level timestamps) makes the Determinism probe load-bearing: a Maker-coordinated narrated render is only honest if the same WAV → same word timings on re-run.
@@ -9,7 +17,7 @@ Last run: **2026-05-30** — Smoke + Determinism both pass (text + word boundari
 Transcribe a known WAV; confirm the expected words appear.
 
 ```sh
-whisper "Artifacts/Shop/Maker/coordination-demos/2026-05-30-narrated-beats/narration.wav" \
+whisper "Shop/Maker/coordination-demos/2026-05-30-narrated-beats/narration.wav" \
   --model base --output_format json --word_timestamps True \
   --output_dir /tmp --language English
 ```

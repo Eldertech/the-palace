@@ -1,3 +1,11 @@
+---
+title: D3.js — Test Plan
+born: 2026-05-30
+links:
+  - { target: "[[D3.js]]", type: connects-to, label: test-plan-for }
+forward_vector: "I hold the test plan for D3.js; I want every check here runnable with an honest last-run date."
+---
+
 # D3.js — Test Plan
 
 > Phase E rollout. D3.js is the interactive-control lens of the data-viz triad — sliders, draggable agents, live regime read-outs. Smoke is a syntax-parse via the shared `web-smoke.mjs` helper; the load-bearing probe is the Determinism cross-check that the integrator (handwritten, NOT `d3-force` for kinematic sims) produces the same trajectory as the other triad Specialists.
@@ -7,7 +15,7 @@ Last run: **2026-05-30** — Smoke pass on `Flocking/flocking-d3-interactive-con
 ## Smoke
 
 ```sh
-node --experimental-vm-modules Artifacts/Shop/web-smoke.mjs Flocking/flocking-d3-interactive-control.html
+node --experimental-vm-modules Shop/Maker/web-smoke.mjs Flocking/flocking-d3-interactive-control.html
 ```
 
 - **Automated:** as above. Pass = no `SyntaxError` raised.

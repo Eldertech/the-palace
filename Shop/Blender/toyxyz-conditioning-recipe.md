@@ -1,9 +1,8 @@
 ---
-title: "toyxyz Conditioning Recipe"
-type: recipe
-status: tested
+title: toyxyz-conditioning-recipe
 born: 2026-06-13
 last_tested: 2026-06-13
+forward_vector: "I am the tested recipe that turns a posed Blender scene into registered multi-ControlNet conditioning passes for ComfyUI; I want to stay the first-try path for Blocked-Not-Prompted work and grow to cover the Cycles-render variant."
 links:
   - target: "[[Shop/Blender]]"
     type: member-of
@@ -23,7 +22,7 @@ tags: [recipe, shop, blender, controlnet, conditioning, blueline]
 
 **Status: tested 2026-06-13** (Session 1, Mac/MPS). The keystone proved out — blocking defeats the
 front-on default, the pose's drama survives the fill. Parameters below are updated to what worked;
-full evidence + frames in [Artifacts/Shop/Blender/tests/](../../Artifacts/Shop/Blender/tests/)
+full evidence + frames in [Shop/Blender/tests/](../../Shop/Blender/tests/)
 (`CONTACT-SHEET-keystone.png`, `gotchas-2026-06-13.md`).
 
 ## What it is
