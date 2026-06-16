@@ -170,7 +170,8 @@ the catcher will see them. Omit nothing here.*
 2. If this baton or its board line is still uncommitted (authored on a surface that couldn't commit — e.g. Cowork), commit them first. That commit is the git archive Step 6 relies on.
 3. Mark it caught: remove the "Active Baton" section from the parent entry; for a board-announced baton with no parent entry, post the paired `handoff_picked_up` REPLY (`re:` the `handoff_ready` id) instead.
 4. Delete the baton file (git is its archive). On a surface that can't delete (Cowork), remove the marker and note "deletion pending."
-5. Act on the move, holding the calibrations above. Steward batons are the exception — updated in place, never deleted.
+5. If the baton names a receiving-surface capability delta, confirm it holds before relying on it (the [[Surfaces and Capabilities]] catalog can be stale) — a build that was supposed to run here but can't is a finding to report, not a failure to hide.
+6. Act on the move, holding the calibrations above. Steward batons are the exception — updated in place, never deleted.
 ```
 
 *Why the last section is fixed, not authored:* the **author** runs this ceremony — you triggered it by saying "baton," so the authoring discipline lives in this spec. The **catcher** does not — it arrives on a work invocation and reads only the baton and the entry, never this file. So the one half of the ceremony the catcher must obey has to travel inside the artifact it actually opens. Everything else still compresses toward the move; this rides along.
@@ -206,7 +207,7 @@ Wait for confirmation that the next session has caught the baton, or for Loudon 
 
 When the next Claude has picked up the move, the baton has done its job. It is **deleted** — git history is its archive (any cross-session baton will have been committed at least once, so its full content is recoverable via `git log --follow`). The palace keeps no `Archive/` graveyard of spent batons; the entry and the deposit are the permanent record, not the baton.
 
-Deletion is normally performed by the *incoming* Claude as its first act (see Resumption Protocol), not by the outgoing one. The consume-marker is the **entry pointer, not the file**: removing the "Active Baton" section from the entry is the logical "caught" signal, and it works on any surface because it is an edit, not a delete. The file deletion follows.
+Deletion is normally performed by the *incoming* Claude as its first act (per the On-pickup footer), not by the outgoing one. The consume-marker is the **entry pointer, not the file**: removing the "Active Baton" section from the entry is the logical "caught" signal, and it works on any surface because it is an edit, not a delete. The file deletion follows.
 
 *Surface caveat:* the Cowork sandbox can rename but cannot delete. An incoming Cowork Claude removes the "Active Baton" pointer (marking the baton spent) and notes "baton caught — deletion pending"; a later delete-capable touch (Mac-side or Loudon) removes the file. Permanent-agent steward batons are the exception to all of this — updated in place, never deleted.
 
@@ -278,17 +279,3 @@ The incoming Baton is complete when:
 3. The catch is marked — the "Active Baton" pointer removed, or for a board-announced baton the `handoff_picked_up` REPLY posted — the baton committed if it wasn't already, and the file deleted (or marked deletion-pending where the surface can't delete)
 
 If the incoming Claude finds the baton incoherent, stale, or insufficient: stop, ask Loudon, do not improvise. A bad baton that gets followed silently produces drift.
-
----
-
-## Resumption Protocol (incoming side)
-
-The catcher's job on arrival, before touching any work:
-
-1. **Read the whole baton, then the entry.** Most-load-bearing first, per *Load these files first*.
-2. **State the move back in one sentence.** If you can't, the baton wasn't caught — say so to Loudon and ask, rather than improvising.
-3. **Check the receiving environment.** If the baton names a capability delta, confirm it holds before relying on it — the catalog in [[Surfaces and Capabilities]] can be stale. A build that was supposed to run here but can't is a finding to report, not a failure to hide.
-4. **Mark it caught as your first act:** if the baton or its board line is still uncommitted, commit them first (that commit is the archive). Then remove the "Active Baton" section from the entry — or, for a board-announced baton with no parent entry, post the paired `handoff_picked_up` REPLY (`re:` the `handoff_ready` id). Then delete the baton file (git is its archive). Where the surface can't delete (Cowork), remove the marker and note "deletion pending." Steward batons are the exception — updated in place, not deleted. *(This is the spec-side form of the baton's fixed "On pickup" footer; the two must stay in step.)*
-5. **Then act on the move,** holding the calibrations the baton carried.
-
-Deliberately light — a confirmation rhythm, not a gate.

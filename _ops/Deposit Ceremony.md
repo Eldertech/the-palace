@@ -148,10 +148,6 @@ Draft each new entry following the standard template (see [[README - The Palace 
 
 Every entry ends with a **Forward Vectors** section — the entry's drive, its conatus. Think of it as the mission briefing for the next agent that arrives at this page: what does this entry want to become? What questions is it carrying? What lost branches does it want to follow? Write these with genuine specificity, not as administrative reminders.
 
-**Latent Variable Check:** Before finalizing any entry draft, ask: *is this entry storing the surface phenomena of the conversation, or the underlying generative variables?* A surface entry records what happened. A latent-variable entry encodes the principle that generated what happened — the thing a new conversation could be built from. Test: could a Claude reading only this entry have a productive new conversation in this territory? If it can only reconstruct the old one, the latent variables haven’t been found. Revise until the answer is yes.
-
-**Reconstruction Test:** Read the draft entry cold, as if encountering it for the first time with no memory of the source conversation. Ask: does this entry *open* something, or does it *close* something? A good palace entry is generative — it creates more questions than it answers, more paths than it names. If the entry feels like a summary, it has been compressed toward low distortion. If it feels like a seed, it has been compressed toward high perception. A weak forward vector is usually the sign that the entry has landed in summary mode.
-
 Show each draft to Loudon. Revise as needed.
 
 **Step 5a: Literal Link Pass**
