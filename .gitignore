@@ -20,13 +20,15 @@ _manim_media/
 **/_*.png
 
 # Per-Specialist venvs (Kokoro, Whisper, etc. live in .venvs/<specialist>/)
-.venvs/
+.venvs
 
 # External tool checkouts (ComfyUI source, model weights, etc.)
-_tools/
+# Slash-less so a `_tools` / `.venvs` SYMLINK in a git worktree is ignored too, not just
+# the real directory in the owner checkout (see _ops/worktree/). The real dir stays ignored.
+_tools
 
 # Remotion project node_modules + Remotion build cache (regenerable via `npm install`)
-**/node_modules/
+**/node_modules
 **/.remotion/
 
 # Enrichment server / worker runtime artifacts (logs, PIDs, started markers)
