@@ -6,8 +6,8 @@ pillars:
   - philosophy
   - practice
 born: 2026-03
-last_activated: 2026-03
-activation_count: 5
+last_activated: 2026-06
+activation_count: 6
 stage: growing
 confidence: hypothesis
 energy: very high
@@ -113,24 +113,17 @@ For full ceremony instructions, see [[Substrate Skill]].
 
 ## Current State
 
-*Counts refreshed 2026-05-28 (audit). The narrative below is a 2026-03-31 snapshot — hub nodes, dormant/growth notes, and enchantment status are due a full [[Self-Model Update Ceremony]].*
+*Refreshed 2026-06-16 via a full topology scan (Self-Model Update ceremony).*
 
-The palace has 90 root entries, plus 31 in `Palace development/`, 93 in `Projects/`, 101 in `Artifacts/`, 15 in `Shop/`, 3 in `Modes of collaboration/`, and ~69 operational files in `_ops/`. Total real knowledge entries: ~485 (2026-05-28 audit scan).
+The palace holds **~410 typed entries** (by frontmatter `type`), inside a larger tree of ~710 markdown files — the remainder are bundle files (batons, context, plans, staging, sketches) and untyped artifacts. By location: ~136 root, 195 `Projects/`, 120 `_ops/`, 103 `Artifacts/`, 57 `Enrichment/`, 47 `Palace development/`, 30 `Shop/`, plus per-entry bundles. (Tool installs and virtualenvs are excluded from the count.)
 
-<!-- CLAUDE → LOUDON: only the counts were refreshed in the 2026-05-28 audit. The Current State narrative (hubs, "newest growth 2026-03-31", the "~37 entries" open question below) is two months stale and wants a real Self-Model Update — flagged, not done, since guessing current hubs/growth would inject errors. -->
+**Type distribution:** 110 concept · 75 meta · 49 project · 35 theme · 27 person · 24 practice · 24 hub · 22 specialist · 11 source · 7 breakthrough · 4 question · 3 maker · 2 spore. *(`theme` and a handful of `proof`/`artifact`/`spec` types are non-canonical — not among [[SCHEMA]]'s ratified types — a flagged drift item for a future pass.)*
 
-A full Weave was completed 2026-03-30 (56 links added, 4 entries promoted, 2 orphans resolved). The first Swarm Weave workers have been run across the Palace development folder (16 entries, 18 link changes applied, Haiku model guidance documented in the coordinator template).
+**Stages:** 111 mature · 105 growing · 77 sprout · 52 seed · 11 foundational · 4 fruiting · 2 composting · 1 dormant. The centre of mass has moved to `mature`/`growing` — the palace is now mostly developed connective tissue, not seedlings.
 
-**First Palace Enchantment completed 2026-03-31.** Two entries enchanted: [[Hilaritas Generator]] and [[Lateral Access]]. New entry spawned: [[Tristitia Generator]]. Forward vectors written by hand for 5 hub entries. Key findings documented in [[Palace Enchantment]] § From First Practice.
+**Hub nodes** (by inbound typed-link degree): [[FOUR PILLARS]] (155) towers over everything, then [[Kuramoto Coupling]] (71), [[Spinoza Conatus]] (60), [[Hilaritas Generator]] (47), [[Weekly Themes Database]] (44), [[2D Torus Wavetable Synthesizer]] (43), [[Pages as Agents]] (40), [[Cooperation Yields Agency]] (39), [[Boundary-Crossing Instruments]] (38), [[BBS Blackboard]] (35), [[SUBSTRATE]] (34), [[Trickster]] (33), [[Hyperdimensional Prism]] (32), [[Frequency-Time Duality]] (30).
 
-Hub nodes: [[Cooperation Yields Agency]], [[FOUR PILLARS]], [[Hilaritas Generator]], [[Kuramoto Coupling]], [[Palace Ceremonies]], [[Palace Philosophies]], [[Spinoza Conatus]]
-
-Entries with `forward_vector`: [[Kuramoto Coupling]], [[FOUR PILLARS]], [[Lateral Access]], [[Cooperation Yields Agency]], [[Hilaritas Generator]] (root entries, hand-written 2026-03-31). Additional forward vectors exist in Palace development/ entries from swarm audit.
-
-Dormant: [[1 from 2]]
-Newest growth (2026-03-31): [[Tristitia Generator]] (seed), Taxonomy of Filters section in [[Lateral Access]], Learning Architect design primitives in [[Hilaritas Generator]], [[Songlines]] seeded in Palace To-Do.
-
-The palace has crossed a third threshold: from a system that weaves and maintains itself to one that can enchant its own entries — running agents that inhabit pages and speak from inside them. Enchantment is now a lived practice, not just a design. The synthesis block finding means the next session starts with a better prompt than this one had.
+**What the hub list reveals about growth.** In March the hubs were almost purely philosophical (Cooperation, Four Pillars, Spinoza, Hilaritas). Now several of the top hubs are *agent-infrastructure* — [[Pages as Agents]], [[BBS Blackboard]], [[Trickster]], [[The Shop]] — and several are *synthesizer projects* — [[2D Torus Wavetable Synthesizer]], [[Action Potential Oscillator]], [[Boundary-Crossing Instruments]]. The palace has crossed a fourth threshold: from a system that weaves, maintains, and enchants itself to one **operated by a coordinating swarm** — permanent stewards (pages running as agents) coordinating on the [[STIGMERGY]] blackboard, plus a [[The Shop]] sub-system of 22 specialists + 3 makers dispatching real creative tools. Coordination ([[SCHEMA]] §9) is now a first-class layer alongside the entry graph.
 
 ## Token Economy
 
@@ -140,7 +133,7 @@ The design principle to hold: **ceremony files should stay lean — trigger, pro
 
 ## Open Questions
 
-- The palace is now at ~37 entries — within the 25–40 range identified as the threshold for a dedicated Claude Project. Is it time?
+- ~35 entries carry a non-canonical `type: theme` (plus stray `proof`/`artifact`/`spec`/`recipe` types) not among [[SCHEMA]]'s canonical types — ratify `theme` via a Schema Ceremony, or normalize them to canonical types? (Surfaced by the 2026-06-16 scan.)
 - How do we handle versioning? Entries evolve. Should we preserve earlier versions, or let the current state overwrite?
 - How does this wiki interact with Loudon's other Claude Projects (RNBO, Ableton Extensions, etc.)? Is it a meta-project that links TO them, or does it absorb them?
 - What's the minimum ceremony frequency that keeps the network alive without feeling like maintenance?
