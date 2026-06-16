@@ -7,7 +7,7 @@ pillars:
   - philosophy
 born: 2026-03
 stage: foundational
-version: 1.12
+version: 1.13
 schema: SCHEMA.md
 last_schema_ceremony: 2026-06-16
 github: https://github.com/Eldertech/the-palace
@@ -151,6 +151,8 @@ The footer of any shipped artifact reads `Loudon Live · Autodidact Polymaths`. 
 **Entry types** — `concept`, `hub`, `project`, `breakthrough`, `source`, `meta`, `practice`, `person`, `question`, `spore`, `specialist`, `maker`. The last two were added in the v1.6 Schema Ceremony (2026-05-09) to formalize [[The Shop]] pattern — see [[SCHEMA]] §3.2.
 
 **Development stages** — `seed` → `sprout` → `growing` → `mature` → `fruiting` → `dormant` → `composting`
+
+**Canon vs learning materials** — Frontmatter is the canon membership card. A `.md` with canon frontmatter is an **entry** (canon — weave it, update it as truth); a file *without* frontmatter is a **learning material / draft / artifact**, invisible to the type system and ceremonies. Loudon Live teaching materials are products (HTML, slides, or plain frontmatter-less markdown), never canon frontmatter. The line is permeable — a material graduates to canon by earning an entry. See [[Learning Materials and Canon]].
 
 ## Where to Find Depth
 

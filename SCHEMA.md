@@ -6,7 +6,7 @@ pillars:
   - practice
   - philosophy
 born: 2026-03
-version: "1.12"
+version: "1.13"
 stage: foundational
 status: canonical
 links:
@@ -45,6 +45,8 @@ This is the authoritative TBox (type system) for the Palace. It defines what can
 ## 1. Entry Types
 
 Every entry must declare exactly one `type` in its YAML frontmatter.
+
+**Frontmatter is the canon membership card** *(clarified 2026-06-16, v1.13)*. Carrying the required frontmatter is what makes a `.md` file a palace entry. A file *without* frontmatter is **not an entry** — it is a learning material, draft, or artifact, invisible to the type system and the ceremonies (the Weave's topology scan keys on `type:` and already skips frontmatter-less files). **Loudon Live learning materials are delivered products — HTML, slides, interactive, or plain frontmatter-less markdown — and never wear canon frontmatter.** The boundary is permeable: a learning material *graduates* into canon when it earns an entry. This describes the existing invariant — frontmatter has always been required — and names the canon/learning-material line it implies. See [[Learning Materials and Canon]].
 
 ### Decision Tree
 
