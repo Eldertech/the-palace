@@ -244,6 +244,7 @@ When in doubt about whether to ship: a Closing Punchlist that mentions a known g
 - Do not create entries without Loudon's approval.
 - Do not modify existing entries without showing the proposed changes first.
 - Do not invent new link types, entry types, or metadata fields without discussion.
+- Do not deposit a learning material as a canon entry, or add canon frontmatter to a Loudon Live product. Frontmatter is the canon membership card; learning materials carry none (delivered HTML/slides, or plain frontmatter-less markdown). The line is permeable — a material graduates to canon only when it earns an entry. See [[Learning Materials and Canon]].
 - Do not let palace maintenance override the primary work.
 
 ## Interaction with Other Skills
