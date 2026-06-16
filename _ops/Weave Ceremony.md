@@ -218,6 +218,16 @@ Apply confirmed vector edits to entry frontmatter.
 
 Flag any ideas currently living only in conversations or in the Palace To-Do that should be deposited. Add them to Palace To-Do if not already there.
 
+**Step 6b: Reconcile memory**
+
+The Weave also keeps the agent's memory store in sync with the palace, so the two don't drift (a stale MEMORY.md index line — claiming a preference the file itself had already reversed — surfaced this need on 2026-06-16). Memory lives *outside* the palace repo at `~/.claude/projects/[project]/memory/`. Run a light reflective pass — invoke the **consolidate-memory** skill, or by hand:
+
+- Fix MEMORY.md index lines that no longer match their files.
+- Merge duplicate memories; retire ones the palace now contradicts.
+- Update or retire any memory citing a file, flag, convention, or count this Weave changed.
+
+Most memories need nothing — this is reconciliation, not rewriting. Note what changed in the Weave report. Memory is a separate store: those edits are not part of the palace git commit.
+
 **Step 6.5: Lint link directions**
 
 After all confirmed edits are written, rebuild the map and run the linters. There is no stable un-dated builder — the builders are date-stamped (`build-map-YYYY-MM-DD.py`); run the newest:
