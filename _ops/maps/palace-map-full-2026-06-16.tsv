@@ -347,7 +347,7 @@ Whitehead	connects-to	Palace Philosophies
 Whitehead	couples-with	Spinoza Conatus
 Whitehead	couples-with	Deleuze
 Whitehead	deepens	Meaning and the Link
-Whitehead	connects-to	monadology)
+Whitehead	connects-to	Leibniz
 Whitehead	connects-to	Kuramoto Coupling
 Threshold Conatus	emerged-from	Trickster
 Threshold Conatus	deepens	Spinoza Conatus
@@ -771,6 +771,12 @@ Volterra Kernels and the Torus	connects-to	Boundary-Crossing Instruments
 Volterra Kernels and the Torus	couples-with	Dispersion Table
 Volterra Kernels and the Torus	connects-to	Spinoza Conatus
 Volterra Kernels and the Torus	member-of	Dissolutions
+Leibniz	connects-to	Palace Philosophies
+Leibniz	contradicts	Whitehead
+Leibniz	connects-to	Hyperdimensional Prism
+Leibniz	connects-to	Meaning and the Link
+Leibniz	connects-to	FOUR PILLARS
+Leibniz	connects-to	Spinoza Conatus
 The Fortress and the Threshold	contradicts	Stoicism
 The Fortress and the Threshold	contradicts	Confucianism
 The Fortress and the Threshold	connects-to	Spinoza Conatus
