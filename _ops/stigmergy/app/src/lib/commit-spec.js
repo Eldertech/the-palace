@@ -28,6 +28,43 @@ import { KNOWN_KINDS, parseSubject, parseTrailers, derivedEntriesFromPaths } fro
 
 export const VERIFY_VALUES = ['verified', 'unverified', 'couldnt'];
 
+// ── Palace ceremony commits ──────────────────────────────────────────────────
+//
+// Ceremonies commit with an older, human-facing subject grammar mandated by the
+// ceremony specs themselves (e.g. the Weave Ceremony's postcondition):
+//   "<Ceremony> — <summary>"   — em-dash or hyphen separated
+//   e.g. "Weave — 2026-06-16 — 82 links added, ...", "Schema Ceremony — ... — v1.13"
+// These are first-class and spec-conformant; they map to a structured kind so the
+// LOG renders them truthfully. Recognizing them keeps the hook from annotating a
+// correct ceremony commit as "non-spec".
+export const CEREMONY_KINDS = {
+  'Weave': 'weave',
+  'Schema Ceremony': 'schema',
+  'Deposit': 'deposit',
+  'Harvest': 'ops',
+  'Walk': 'ops',
+  'Spore Check': 'ops',
+  'Revival': 'ops',
+  'Map Build': 'ops',
+  'Self-Model Update': 'ops',
+  'Connection': 'ops',
+  'Query': 'ops',
+  'Baton': 'handoff',
+  'Enrichment': 'enrich',
+};
+
+// Parse a ceremony subject into { ceremony, kind, declared }. `declared` is true
+// only when the leading token (before the first em-dash/hyphen separator) is a
+// known ceremony name.
+export function parseCeremonySubject(subject) {
+  const raw = typeof subject === 'string' ? subject.trim() : '';
+  const m = raw.match(/^([A-Z][A-Za-z]*(?:[ -][A-Z][A-Za-z]*)*)\s+[—–-]\s+/);
+  if (m && Object.prototype.hasOwnProperty.call(CEREMONY_KINDS, m[1])) {
+    return { ceremony: m[1], kind: CEREMONY_KINDS[m[1]], declared: true };
+  }
+  return { ceremony: null, kind: null, declared: false };
+}
+
 // ── Validation (the commit-msg hook's brain) ─────────────────────────────────
 //
 // Returns { valid, errors: [...], warnings: [...], parsed }. `valid` is true
@@ -55,45 +92,50 @@ export function validateCommitMessage(text) {
   }
 
   const subj = parseSubject(subjectLine);
+  const ceremony = parseCeremonySubject(subjectLine);
   const body = lines.slice(subjectIdx + 1).join('\n');
   const trailers = parseTrailers(body);
+  // The effective kind: the structured subject kind, else the ceremony's mapped kind.
+  const effectiveKind = subj.declared ? subj.kind : ceremony.kind;
 
-  // Subject must be the spec form with a known kind.
-  if (!subj.declared) {
+  // Subject must be either the structured spec form (<kind>(<scope>): <summary>)
+  // OR a recognized palace ceremony subject (<Ceremony> — <summary>).
+  if (!subj.declared && !ceremony.declared) {
     errors.push(
       subj.subjectToken
         ? `subject kind "${subj.subjectToken}" is not a known kind (${KNOWN_KINDS.join('|')})`
-        : 'subject is not in "<kind>(<scope>): <summary>" form',
+        : 'subject is not in "<kind>(<scope>): <summary>" or "<Ceremony> — <summary>" form',
     );
   }
 
   // A Palace-Kind trailer, if present, must be a known kind and should agree
-  // with the subject kind.
+  // with the subject's (or ceremony's) kind.
   if (trailers.kind) {
     if (!KNOWN_KINDS.includes(trailers.kind)) {
       errors.push(`Palace-Kind "${trailers.kind}" is not a known kind`);
-    } else if (subj.declared && subj.kind !== trailers.kind) {
-      warnings.push(`subject kind "${subj.kind}" disagrees with Palace-Kind "${trailers.kind}"`);
+    } else if (effectiveKind && effectiveKind !== trailers.kind) {
+      warnings.push(`subject kind "${effectiveKind}" disagrees with Palace-Kind "${trailers.kind}"`);
     }
-  } else {
+  } else if (!ceremony.declared) {
+    // Ceremony commits carry their structure in the subject, not trailers — no nag.
     warnings.push('no Palace-Kind trailer (derivable, but recommended)');
   }
 
   // Palace-Verify, if present, must be one of the allowed values.
   if (trailers.verify && !VERIFY_VALUES.includes(trailers.verify)) {
     errors.push(`Palace-Verify "${trailers.verify}" must be one of ${VERIFY_VALUES.join('|')}`);
-  } else if (!trailers.verify) {
+  } else if (!trailers.verify && !ceremony.declared) {
     warnings.push('no Palace-Verify trailer (the Closing Well honesty call)');
   }
 
   const subjLen = subjectLine.length;
-  if (subjLen > 72) warnings.push(`subject is ${subjLen} chars (> 72; keep it scannable)`);
+  if (subjLen > 72 && !ceremony.declared) warnings.push(`subject is ${subjLen} chars (> 72; keep it scannable)`);
 
   return {
     valid: errors.length === 0,
     errors,
     warnings,
-    parsed: { subject: subjectLine, kind: subj.kind, scope: subj.scope, summary: subj.summary, trailers },
+    parsed: { subject: subjectLine, kind: effectiveKind, scope: subj.scope, summary: subj.summary, ceremony: ceremony.ceremony, trailers },
   };
 }
 

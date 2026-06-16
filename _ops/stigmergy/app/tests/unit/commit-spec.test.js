@@ -59,6 +59,16 @@ describe('validateCommitMessage', () => {
     expect(validateCommitMessage('ops(stigmergy): build phase\n\nPalace-Kind: ops\nPalace-Verify: verified').valid).toBe(true);
   });
 
+  it('accepts palace ceremony subjects (Weave / Schema Ceremony / Baton)', () => {
+    expect(validateCommitMessage('Weave — 2026-06-16 — 82 links added, 9 flags closed').valid).toBe(true);
+    expect(validateCommitMessage('Schema Ceremony — canon membership = frontmatter — v1.13').valid).toBe(true);
+    expect(validateCommitMessage('Baton — handoff to the next Claude').valid).toBe(true);
+    // ceremony kind maps through for the LOG
+    expect(validateCommitMessage('Weave — 2026-06-16 — x').parsed.kind).toBe('weave');
+    // a non-ceremony capitalized prose subject is still rejected
+    expect(validateCommitMessage('Checkpoint — full state dump').valid).toBe(false);
+  });
+
   it('skips leading comment lines (raw hook input)', () => {
     const msg = '# please enter a commit message\n\ndeposit(Foo): real subject\n\nPalace-Kind: deposit\nPalace-Verify: verified';
     expect(validateCommitMessage(msg).valid).toBe(true);

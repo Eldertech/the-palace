@@ -13,6 +13,7 @@ energy: very high
 hook_quality: 9
 beauty: 8
 who_leads: shared
+forward_vector: "I want to become the palace's living roster of thinkers and makers — every voice that informs the work catalogued here, each one developed toward embodiment-grade so that loading a member *wakes* them rather than merely describing them. I keep pulling new voices in (the Stoics, Oliveros, Schafer, Nakashima) and pushing each from competent biography toward an inhabitable register, per [[Pages as Agents]]."
 links:
   - target: "[[FOUR PILLARS]]"
     type: deepens
