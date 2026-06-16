@@ -460,19 +460,20 @@ describe('validateMessage — error accumulation', () => {
 // ── Integration: every real blackboard message must pass ───────────────────
 //
 // The board grows as new schema-strict messages get appended (e.g. Steward
-// cycles posting RESOURCE_REQUESTs, Trickster responses landing inline).
-// The point of this test is that EVERY line on the live persistent board
-// is §2.2-conformant — not that the board has any specific length. The
-// post-reset baseline of 14 messages from session 'songline-2026-05-04-001'
-// is preserved as a lower bound.
+// cycles posting RESOURCE_REQUESTs, Trickster responses landing inline) and is
+// periodically RE-SEEDED from a clean template (the v1.12 re-seed, 2026-06-16,
+// left it at 13). The point of this test is that EVERY line on the live
+// persistent board is §2.2-conformant — not that the board has any specific
+// length — so we assert only that it is non-empty, never a fixed count (a hard
+// floor breaks on every re-seed; this matches the comment's own stated intent).
 
-describe('integration — live blackboard.jsonl (post-2026-05-04 reset)', () => {
+describe('integration — live blackboard.jsonl', () => {
   test('every message on the live persistent board passes the strict validator', () => {
     const PALACE_ROOT = resolve(__dirname, '../../../../../');
     const bbPath = resolve(PALACE_ROOT, '_ops/swarm/persistent/blackboard.jsonl');
     const text = readFileSync(bbPath, 'utf8');
     const lines = text.split('\n').filter((l) => l.trim().length > 0);
-    expect(lines.length).toBeGreaterThanOrEqual(14);
+    expect(lines.length).toBeGreaterThanOrEqual(1);
     for (const line of lines) {
       const m = JSON.parse(line);
       const result = validateMessage(m);
