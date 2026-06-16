@@ -35,7 +35,14 @@
       "name": "blueline-clock",
       "runtimeExecutable": "_tools/ComfyUI/venv/bin/python",
       "runtimeArgs": ["Projects/BLUELINE/proofs/track-III-clock/osc_ws_relay.py"],
-      "port": 8770
+      "port": 8770,
+      "autoPort": false
+    },
+    {
+      "name": "blueline-rate",
+      "runtimeExecutable": "python3",
+      "runtimeArgs": ["-m", "http.server", "8210", "--directory", "Projects/BLUELINE/proofs/track-II-lora/grade"],
+      "port": 8210
     }
   ]
 }

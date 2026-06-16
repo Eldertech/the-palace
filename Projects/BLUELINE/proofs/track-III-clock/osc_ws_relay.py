@@ -15,6 +15,7 @@ from aiohttp import web
 from osclib import decode
 
 HERE = os.path.dirname(os.path.abspath(__file__))
+PREVIZ = os.path.join(HERE, "..", "m0-previz")   # M0 previz client lives one folder over
 OSC_PORT, HTTP_PORT = 9001, 8770
 clients = set()
 
@@ -30,6 +31,12 @@ async def ws_handler(request):
 
 async def index(request):
     return web.FileResponse(os.path.join(HERE, "clock_client.html"))
+
+async def previz(request):
+    return web.FileResponse(os.path.join(PREVIZ, "previz.html"))
+
+async def storyboard(request):
+    return web.FileResponse(os.path.join(PREVIZ, "storyboard.json"))
 
 def broadcast(obj):
     data = json.dumps(obj)
@@ -48,12 +55,14 @@ class OSCProto(asyncio.DatagramProtocol):
 async def main():
     app = web.Application()
     app.router.add_get("/", index)
+    app.router.add_get("/previz", previz)
+    app.router.add_get("/storyboard.json", storyboard)
     app.router.add_get("/ws", ws_handler)
     runner = web.AppRunner(app); await runner.setup()
     await web.TCPSite(runner, "127.0.0.1", HTTP_PORT).start()
     loop = asyncio.get_running_loop()
     await loop.create_datagram_endpoint(lambda: OSCProto(), local_addr=("127.0.0.1", OSC_PORT))
-    print(f"relay up — client+WS http://127.0.0.1:{HTTP_PORT}  ·  OSC/UDP :{OSC_PORT}", flush=True)
+    print(f"relay up — clock http://127.0.0.1:{HTTP_PORT}/  ·  previz http://127.0.0.1:{HTTP_PORT}/previz  ·  WS /ws  ·  OSC/UDP :{OSC_PORT}", flush=True)
     await asyncio.Event().wait()
 
 if __name__ == "__main__":

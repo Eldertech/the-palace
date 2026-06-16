@@ -1,0 +1,36 @@
+{
+  "bible": {
+    "title": "BLUELINE — M0 Previz · r4ng3r",
+    "tempo": 120,
+    "fps": 24,
+    "beats_per_bar": 4,
+    "frames_per_beat": 12,
+    "note": "120@24 -> 12 frames/beat (integer) -> beats land on whole frames; the determinism pair from Track III."
+  },
+  "shots": [
+    { "id": "01", "bar": 1,  "beat": 1, "hold": 8, "section": "intro",
+      "camera": "WIDE establishing", "lens": 24, "pose": "stand_front", "flow": false,
+      "action": "Ranger stands small in the misty forest. Held stillness — the calm before." },
+    { "id": "02", "bar": 3,  "beat": 1, "hold": 8, "section": "intro",
+      "camera": "SLOW PUSH-IN", "lens": 35, "pose": "stand_3q", "flow": false,
+      "action": "Push in to three-quarter. She senses something off-frame." },
+    { "id": "03", "bar": 5,  "beat": 1, "hold": 8, "section": "verse",
+      "camera": "OTS — over-the-shoulder", "lens": 50, "pose": "guard", "flow": false,
+      "action": "Over her shoulder: the threat. Guard up. Blocking dictates the frame." },
+    { "id": "04", "bar": 7,  "beat": 1, "hold": 8, "section": "verse",
+      "camera": "WORM'S-EYE hero turn", "lens": 28, "pose": "hero_turn", "flow": false,
+      "action": "Low up-angle. She turns into it — heroic, looming against the sky." },
+    { "id": "05", "bar": 9,  "beat": 1, "hold": 4, "section": "drop",
+      "camera": "MEDIUM — draw", "lens": 50, "pose": "reach_up", "flow": true,
+      "action": "THE DROP. She draws the bow. Speed-lines ignite — the flow field is the wind." },
+    { "id": "06", "bar": 10, "beat": 1, "hold": 4, "section": "drop",
+      "camera": "TIGHT coil", "lens": 65, "pose": "crouch", "flow": true,
+      "action": "Coil. Everything compresses to the held breath at full draw." },
+    { "id": "07", "bar": 11, "beat": 1, "hold": 8, "section": "drop",
+      "camera": "WIDE release", "lens": 24, "pose": "reach_up", "flow": true,
+      "action": "Release. The field goes full — the arrow rides the wind across frame." },
+    { "id": "08", "bar": 13, "beat": 1, "hold": 8, "section": "drop",
+      "camera": "AFTERMATH hold", "lens": 35, "pose": "stand_3q", "flow": false,
+      "action": "Aftermath. She lowers the bow. The field settles. Hold to the bar." }
+  ]
+}
