@@ -69,7 +69,7 @@ const FLAG_TYPE_LABEL = {
   standard_reference: 'standard reference',
 };
 
-export default function QueueItem({ item, onJump, onClear, onRespond }) {
+export default function QueueItem({ item, onJump, onClear, onRespond, onLaunch }) {
   const resolved = item.resolved?.done;
   // A decision is the human's answer (GRANTED / DENIED / RESPONDED), recorded
   // by QueuePanel. It survives buildQueue dropping the answered item so the
@@ -331,6 +331,23 @@ export default function QueueItem({ item, onJump, onClear, onRespond }) {
           >
             STATE: {item.pointer.target}
           </span>
+        ) : null}
+
+        {/* Handoff pickup: a baton isn't granted/denied — it's caught. The
+            'launch interactive' action hands it to a session you can watch +
+            steer (LaunchModal), rather than firing a blind headless worker. */}
+        {!resolved && item.kind === 'handoff_ready' && typeof onLaunch === 'function' ? (
+          <button
+            data-testid="queue-item-launch"
+            onClick={() => onLaunch(item)}
+            style={{
+              background: 'transparent', color: 'var(--phosphor-white)', textShadow: 'var(--glow)',
+              border: '1px solid var(--phosphor)', padding: '3px 10px',
+              fontFamily: 'var(--font-mono)', fontSize: 11, cursor: 'pointer',
+              textTransform: 'uppercase', letterSpacing: '.04em',
+            }}
+            title="hand this baton to an interactive session you can watch and steer"
+          >launch interactive</button>
         ) : null}
 
         {canRespond ? (
