@@ -7,6 +7,7 @@ import { postMessage } from '../adapters/blackboard.js';
 import { t } from '../lib/lexicon.js';
 import TricksterCard from './trickster/TricksterCard.jsx';
 import QuickBar from './trickster/QuickBar.jsx';
+import DigestPanel from './DigestPanel.jsx';
 
 // Shape an advanceSteward() result (from a card's FILE & RUN) into a one-line
 // deck banner. The grant is already filed by the time this runs, so every
@@ -187,6 +188,13 @@ export default function TricksterDeck({
           >[R] RELOAD</span>
         ) : null}
       </div>
+
+      {/* The Automated Trickster (Stage E) escalation digest + alignment-review
+          verdict capture. Relocated here from the old in-QUEUE TRICKSTER board
+          block: the digest is a decision/triage surface, so it belongs on the
+          decision deck, not as a second inbox inside QUEUE. Fully defensive —
+          renders "no digest yet" when absent and never throws. */}
+      <DigestPanel />
 
       {/* FILE & RUN outcome — lives outside the n===0 branch so it stays up
           even when running the last card empties the deck. */}

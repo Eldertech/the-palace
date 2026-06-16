@@ -4,8 +4,6 @@ import { PalaceRefProvider } from './lib/palace-ref.jsx';
 import MessageList from './components/MessageList.jsx';
 import ChannelTabs from './components/ChannelTabs.jsx';
 import AgentRoster from './components/AgentRoster.jsx';
-import TricksterInbox from './components/TricksterInbox.jsx';
-import DigestPanel from './components/DigestPanel.jsx';
 import DeckTabs from './components/DeckTabs.jsx';
 import { DECKS } from './lib/decks.js';
 import StateDeck from './components/state/StateDeck.jsx';
@@ -73,6 +71,11 @@ export default function App() {
   const [activeBoard, setActiveBoard] = useState('TRICKSTER');
   const [agentFilter, setAgentFilter] = useState(null);
   const [scanlinesOn, setScanlinesOn] = useState(true);
+  // The raw per-board feed (ChannelTabs + MessageList + AgentRoster) is now a
+  // collapsible "firehose" under the QUEUE deck's ranked open-work board, not a
+  // co-equal second navigation axis. Folded by default for focus; auto-open in
+  // demo/e2e so the board-view showcase + specs find it without a fold click.
+  const [firehoseOpen, setFirehoseOpen] = useState(() => demoMode() != null);
   // The Companion window is opt-in and now GLOBAL (Stage 0): one floating
   // collaborator, available on every deck via a launcher in the command bar
   // ([~]) and a hotkey. The host below resolves what it grounds in from the
@@ -200,7 +203,7 @@ export default function App() {
       if (k === '`' || k === '~') return toggleAgent();
       if (deck === 'QUEUE' && /^[1-6]$/.test(k)) {
         const idx = parseInt(k, 10) - 1;
-        if (idx >= 0 && idx < BOARDS.length) setActiveBoard(BOARDS[idx]);
+        if (idx >= 0 && idx < BOARDS.length) { setActiveBoard(BOARDS[idx]); setFirehoseOpen(true); }
       } else if (k === 'r' || k === 'R') {
         loadAll();
       } else if (k === 'v' || k === 'V') {
@@ -320,7 +323,7 @@ export default function App() {
     if (k === 'V') return setScanlinesOn((on) => !on);
     if (deck === 'QUEUE') {
       const idx = parseInt(k, 10);
-      if (idx >= 1 && idx <= 6) setActiveBoard(BOARDS[idx - 1]);
+      if (idx >= 1 && idx <= 6) { setActiveBoard(BOARDS[idx - 1]); setFirehoseOpen(true); }
     }
   }
 
@@ -361,95 +364,105 @@ export default function App() {
       {deck === 'QUEUE' && (
         <div data-testid="board-screen" style={{ width: '100%' }}>
           <Banner as="h1" strong style={{ fontSize: 32, margin: '0 0 4px' }}>
-            queue -- {activeBoard.toLowerCase()} board
+            queue -- the open-work board
           </Banner>
           <div style={{ marginBottom: 10 }}>
             <ActuatorPanel />
             <QueuePanel messages={visibleMessages} onJumpEntry={() => setDeck('STATE')} />
           </div>
-          <div style={{ color: 'var(--phosphor-dim)', textShadow: 'none', marginBottom: 4 }}>
-            {`${messages.length} total traces · ${totalFlagged} flagged · ${filtered.length} on ${activeBoard}.`}
-            {loadedAt ? <> · last loaded <span style={{ color: 'var(--phosphor-dim)' }}>{loadedAt.split('T')[1].split('.')[0]}Z</span></> : null}
-            {demo === '1' ? <span style={{ color: 'var(--warn)', textShadow: 'var(--glow)', marginLeft: 12 }}>· demo data prepended</span> : null}
-          </div>
-          <div style={{ marginBottom: 12, fontSize: 14 }} data-testid="inline-actions">
-            <span
-              onClick={() => loadAll()}
-              style={{
-                color: 'var(--phosphor)', textShadow: 'var(--glow)',
-                cursor: 'pointer', textTransform: 'uppercase', letterSpacing: '.04em',
-                border: '1px solid var(--phosphor-dim)', padding: '2px 8px',
-              }}
-            >
-              [<b style={{ color: 'var(--phosphor-white)' }}>R</b>]&nbsp;RELOAD
-            </span>
-            <span style={{ color: 'var(--phosphor-dim)', textShadow: 'none', marginLeft: 16 }}>
-              (or press R)
-            </span>
-          </div>
-
-          <ChannelTabs
-            active={activeBoard}
-            onSelect={setActiveBoard}
-            counts={counts}
-            pendingTrickster={pendingTrickster}
-          />
-
-          {loadState === 'loading' && (
-            <div data-testid="loading" style={{ color: 'var(--phosphor-dim)', textShadow: 'none' }}>
-              loading...
-            </div>
-          )}
-          {loadState === 'error' && (
-            <div data-testid="load-error" style={{
-              color: 'var(--error)', textShadow: 'var(--glow)',
-              border: '1px solid var(--error)', padding: '8px',
+          {/* The raw per-board feed, demoted from a co-equal second nav axis to
+              a collapsible firehose UNDER the ranked open-work board. The QUEUE
+              panel above is the primary surface; this is the full-trace view for
+              when you want it. Folded by default; auto-open in demo/e2e. */}
+          <details
+            data-testid="board-firehose"
+            open={firehoseOpen}
+            onToggle={(e) => setFirehoseOpen(e.currentTarget.open)}
+            style={{ marginTop: 8, borderTop: '1px solid var(--phosphor-dim)', paddingTop: 8 }}
+          >
+            <summary style={{
+              cursor: 'pointer', color: 'var(--phosphor-dim)', textShadow: 'none',
+              fontSize: 12, textTransform: 'uppercase', letterSpacing: '.06em',
+              marginBottom: 8,
             }}>
-              failed to load palace data: {loadError}
+              raw board feed -- the full trace firehose
+            </summary>
+
+            <div style={{ color: 'var(--phosphor-dim)', textShadow: 'none', marginBottom: 4 }}>
+              {`${messages.length} total traces · ${totalFlagged} flagged · ${filtered.length} on ${activeBoard}.`}
+              {loadedAt ? <> · last loaded <span style={{ color: 'var(--phosphor-dim)' }}>{loadedAt.split('T')[1].split('.')[0]}Z</span></> : null}
+              {demo === '1' ? <span style={{ color: 'var(--warn)', textShadow: 'var(--glow)', marginLeft: 12 }}>· demo data prepended</span> : null}
             </div>
-          )}
-          {loadState === 'ok' && (
-            <div style={{
-              display: 'grid', gridTemplateColumns: '1fr 280px', gap: 24,
-              alignItems: 'flex-start',
-            }}>
-              <div style={{ minWidth: 0 }}>
-                {agentFilter && (
-                  <div
-                    data-testid="agent-filter-banner"
-                    style={{
-                      color: 'var(--warn)', textShadow: 'var(--glow)',
-                      border: '1px dashed var(--warn)', padding: '4px 8px',
-                      margin: '0 0 8px', fontSize: 12,
-                      cursor: 'pointer',
-                    }}
-                    onClick={() => setAgentFilter(null)}
-                  >
-                    filtered by @{agentFilter} · click to clear
-                  </div>
-                )}
-                {activeBoard === 'TRICKSTER' && (
-                  <>
-                    <DigestPanel />
-                    <TricksterInbox
-                      messages={visibleMessages}
-                      onConfirmed={handleOptimisticAppend}
-                    />
-                  </>
-                )}
-                <MessageList
-                  messages={filtered}
-                  sessionsEmpty={sessions.length === 0}
-                  activeBoard={activeBoard}
+            <div style={{ marginBottom: 12, fontSize: 14 }} data-testid="inline-actions">
+              <span
+                onClick={() => loadAll()}
+                style={{
+                  color: 'var(--phosphor)', textShadow: 'var(--glow)',
+                  cursor: 'pointer', textTransform: 'uppercase', letterSpacing: '.04em',
+                  border: '1px solid var(--phosphor-dim)', padding: '2px 8px',
+                }}
+              >
+                [<b style={{ color: 'var(--phosphor-white)' }}>R</b>]&nbsp;RELOAD
+              </span>
+              <span style={{ color: 'var(--phosphor-dim)', textShadow: 'none', marginLeft: 16 }}>
+                (or press R)
+              </span>
+            </div>
+
+            <ChannelTabs
+              active={activeBoard}
+              onSelect={setActiveBoard}
+              counts={counts}
+              pendingTrickster={pendingTrickster}
+            />
+
+            {loadState === 'loading' && (
+              <div data-testid="loading" style={{ color: 'var(--phosphor-dim)', textShadow: 'none' }}>
+                loading...
+              </div>
+            )}
+            {loadState === 'error' && (
+              <div data-testid="load-error" style={{
+                color: 'var(--error)', textShadow: 'var(--glow)',
+                border: '1px solid var(--error)', padding: '8px',
+              }}>
+                failed to load palace data: {loadError}
+              </div>
+            )}
+            {loadState === 'ok' && (
+              <div style={{
+                display: 'grid', gridTemplateColumns: '1fr 280px', gap: 24,
+                alignItems: 'flex-start',
+              }}>
+                <div style={{ minWidth: 0 }}>
+                  {agentFilter && (
+                    <div
+                      data-testid="agent-filter-banner"
+                      style={{
+                        color: 'var(--warn)', textShadow: 'var(--glow)',
+                        border: '1px dashed var(--warn)', padding: '4px 8px',
+                        margin: '0 0 8px', fontSize: 12,
+                        cursor: 'pointer',
+                      }}
+                      onClick={() => setAgentFilter(null)}
+                    >
+                      filtered by @{agentFilter} · click to clear
+                    </div>
+                  )}
+                  <MessageList
+                    messages={filtered}
+                    sessionsEmpty={sessions.length === 0}
+                    activeBoard={activeBoard}
+                  />
+                </div>
+                <AgentRoster
+                  messages={visibleMessages}
+                  activeFilter={agentFilter}
+                  onSelect={setAgentFilter}
                 />
               </div>
-              <AgentRoster
-                messages={visibleMessages}
-                activeFilter={agentFilter}
-                onSelect={setAgentFilter}
-              />
-            </div>
-          )}
+            )}
+          </details>
         </div>
       )}
 

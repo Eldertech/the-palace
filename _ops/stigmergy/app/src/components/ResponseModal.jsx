@@ -1,6 +1,7 @@
 // ResponseModal.jsx — preview + confirm flow for click-to-respond.
 //
-// Opens over TricksterInbox when the user clicks a response option button.
+// Opens over the QUEUE deck (QueuePanel) when the user picks a response that
+// needs typed input (deny / grant--limited / custom) on a proposal or flag.
 // Shows a §2.2-conformant preview of the message about to be POSTed.
 // Confirm → postMessage(); Cancel → close without side effects.
 //
@@ -120,10 +121,9 @@ export default function ResponseModal({ request, option, sessionId, onConfirmed,
     setSending(true);
     setErrors([]);
     try {
-      // Always route to the persistent board — see TricksterInbox.jsx
-      // InlineResponse for the rationale. The session-id-based routing
-      // misroutes permanent-agent responses onto session boards where
-      // the original request can't see them.
+      // Always route to the persistent board — same rationale as TricksterCard's
+      // fileGrant: session-id-based routing misroutes permanent-agent responses
+      // onto session boards where the original request can't see them.
       const persisted = await postMessage(preview, 'persistent');
       onConfirmed(persisted);
     } catch (err) {

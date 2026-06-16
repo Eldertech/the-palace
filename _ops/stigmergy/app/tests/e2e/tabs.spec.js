@@ -19,8 +19,9 @@ test('clicking each tab marks it active and updates the displayed board name', a
   for (const b of BOARDS) {
     await page.getByTestId(`tab-${b.toLowerCase()}`).click();
     await expect(page.getByTestId(`tab-${b.toLowerCase()}`)).toHaveAttribute('data-active', 'true');
-    // The h1 banner heading reflects the active board.
-    await expect(page.getByRole('heading', { name: `${b.toLowerCase()} board` })).toBeVisible();
+    // v2.0: the QUEUE deck banner is now the static "open-work board"; the
+    // per-board name lives in the raw-feed heading inside the firehose.
+    await expect(page.getByText(new RegExp(`${b} BOARD`)).first()).toBeVisible();
   }
 });
 
@@ -47,8 +48,11 @@ test('hotkey 1..6 switches channels', async ({ page }) => {
 
 test('an empty board shows the documented empty-state copy', async ({ page }) => {
   // Without ?demo=1, most boards are empty against the real palace.
-  // v1.0: land directly on the QUEUE deck so channel-tabs are mounted.
+  // v2.0: the raw board feed is a collapsible firehose under the QUEUE deck
+  // (folded by default for focus); open it so the channel tabs are mounted.
   await page.goto('/?deck=QUEUE');
+  await expect(page.getByTestId('board-firehose')).toBeVisible({ timeout: 15_000 });
+  await page.getByTestId('board-firehose').locator('summary').click();
   await expect(page.getByTestId('channel-tabs')).toBeVisible({ timeout: 15_000 });
   // GENERAL is unlikely to have real data; click it.
   await page.getByTestId('tab-general').click();
