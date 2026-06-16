@@ -1,7 +1,7 @@
 ---
 title: BBS Production Plan v0.2
 type: project
-status: pending
+status: complete
 pillars:
   - tools
   - practice
