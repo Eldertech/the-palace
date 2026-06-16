@@ -85,7 +85,10 @@ The crisp line: **TRICKSTER = a steward is waiting on your answer; QUEUE = every
 
 ## The roadmap (priority order, set with Loudon)
 
-**Phase 1 — Coordination & autonomy.** Pull every creative loop inside the terminal. Finish the [[Enrichment]] consolidation (port `_fire_worker` robustness into the Node server; migrate card decisions onto TRICKSTER; retire the parallel Flask `localhost:7878`). Build handoff auto-pickup (the deferred scheduler that wakes a [[Baton Ceremony]] catcher). Orchestrator v0.2 (batch cadence, spawn-from-project, scheduled tasks). Wire Weave *proposals* into the decision surface for show-before-write approval.
+**Phase 1 — Coordination & autonomy.** Pull every creative loop inside the terminal.
+
+- **Enrichment consolidation — done (2026-06-16).** The hard part was already shipped in STIGMERGY's Phase 4.5: the actuator (`_fire_worker` robustness — PID-liveness via `ps`, daemon cleanup, idempotent fire), the card I/O, and the card queue were ported to the Node server (`server/actuator.js`, `server/cards.js`, `POST /api/cards/respond`), all tested. This phase pointed every doc — [[Enrichment]], the supervisor prompt, [[Oblique Enrichment]], the app README — at STIGMERGY's QUEUE and **retired the Flask `localhost:7878` server** (`Enrichment/server.py` deleted; git-recoverable; nothing automated started it). *Correction to the earlier plan: enrichment cards stay in **QUEUE**, not TRICKSTER — they are open-work studio-visits, not blocked-steward decisions, so they belong on the open-work board.*
+- **Still open:** handoff auto-pickup (the deferred scheduler that wakes a [[Baton Ceremony]] catcher); Orchestrator v0.2 (batch cadence, spawn-from-project, scheduled tasks); wire Weave *proposals* into the decision surface for show-before-write approval.
 
 **Phase 2 — Authoring: end the bounce.** Mature STATE frontmatter forms (schema un-mistypeable by construction, satisfying SCHEMA §7 through the UI), the body editor with `[[wikilink]]` autocomplete + inline enrichment preview, the bundle-aware navigator, and the concurrent-edit-with-Obsidian conflict surface. Scope honestly: most generative ceremonies stay in chat (show-before-write); this targets quick tweaks + the structured-frontmatter guarantee + review.
 
