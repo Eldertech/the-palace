@@ -205,6 +205,8 @@ The blackboard is `.jsonl` — newline-delimited JSON, one object per line, appe
 
 ### 2.2 Message Schema
 
+> **Canonical-source note (2026-06-16).** [[SCHEMA]] §9 is the ratified grammar (auto-loaded); where this spec diverges, §9 wins. In particular: the canonical `from` / `agent_id` is the **steward page's own title** (e.g. `Spinoza Conatus`), per §9 and [[Pages as Agents]] — the `CONATUS-N` / `STRIATUM-N` handles in the examples below are legacy songline-style placeholders kept for narrative continuity, not the wire form to copy. The ratified message-type and board enums are §9's; `QUERY`, `PAGE_UPDATE`, `HEALTH_NOTICE`, and the `BRANCHES` board (§2.3–2.4) are design-time, not yet ratified.
+
 ```json
 {
   "schema_version": "1.0",
