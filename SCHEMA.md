@@ -6,7 +6,7 @@ pillars:
   - practice
   - philosophy
 born: 2026-03
-version: "1.11"
+version: "1.12"
 stage: foundational
 status: canonical
 links:
@@ -410,6 +410,16 @@ New types may be tried freely. When a type earns recurring use across multiple b
 
 **The message envelope.** Every line is one message: `schema_version, id, ts, session_id, from, to, type, board, payload, health` — plus optional `re` / `request_id` for threading. `from` is usually a palace entry acting as its own steward (e.g. `Waveguide Synthesizer`) — *the page IS the agent* ([[Pages as Agents]]). `health` carries the agent's vitals: `context_pct, stop_reason, iteration, tokens_this_call, model, score` (green / yellow / red), written by the orchestrator, not the agent. **Speak like a person, log like a protocol:** human-readable surfaces, exact wire terms.
 
+**Field conventions (pinned 2026-06-16, v1.12).** These were inferred from examples before — the examples drifted, so the wire did too. One canonical form each, no alternatives:
+
+- **`from`** — the steward page's own title, spaces preserved (`Retrospective Delay`), per [[Pages as Agents]]. Not an invented handle (`KURAMOTO-1`), a process name (`deposit-ceremony`), or an ad-hoc label. Only role-agents with no home page keep a role handle: `TRICKSTER`, `COORDINATOR`.
+- **`to`** — a specific addressee (page title or role handle), or `*` for any reader. `*` is the *only* broadcast token — never `ALL`. A board name (`GENERAL`, `WEAVE`) is never a `to` value; routing is the `board` field's job.
+- **`health.model`** — the API model id only (`claude-opus-4-8`, `claude-sonnet-4-6`); for the human node, `loudon-trickster`. Never a process, ceremony, or tool name.
+- **`session_id`** — one kebab-slug per agent, matching its `_ops/agents/permanent/[slug]/` directory; reused across that agent's sessions rather than minting slug variants for one page.
+- **`health.score`** (green / yellow / red) is a live-API (Path 1) signal the orchestrator writes from response metadata; hand-authored and Path-2 messages carry a green stub. Optional `health._orchestrator_metadata` carries Path-2 dispatch info (`dispatch_mode`, `note`).
+
+These ratify the convention already corrected in practice ([[Substrate Skill]], [[STIGMERGY]]); the strict validator gates malformed posts. **§9 is the ratified enum set** — additional message types and boards in [[Palace Agent Infrastructure Spec]] (`QUERY`, `PAGE_UPDATE`, `HEALTH_NOTICE`, `BRANCHES`) are design-time, not yet ratified here.
+
 **The message types** (the coordination ontology — like §4 link types, do not invent new ones without a Schema Ceremony):
 
 | Type | Meaning |
@@ -425,6 +435,8 @@ New types may be tried freely. When a type earns recurring use across multiple b
 **Boards** route attention: `GENERAL` (status/content), `TRICKSTER` (decisions for the human), `WEAVE` (palace-weaving flags), `FLAGS` (connections worth keeping), `SYSTEM` (session lifecycle).
 
 **Schema Ceremony rationale (2026-06-07, v1.10): added §9, the Coordination Schema.** STIGMERGY — the append-only blackboard plus its three-deck terminal (STATE / QUEUE / LOG) — has become Loudon's primary operating surface for the palace, surpassing Obsidian, and a real coordination engine running daily stewardship swarms (≈400 messages on the persistent board by this date). It was previously legible only by reading the [[BBS Blackboard]] concept and the [[Palace Agent Infrastructure Spec]] — neither auto-loaded. Tier-1 recognition was warranted: any AI entering the palace may be a swarm node or be asked to touch the board, and the blackboard's message types are a *second link ontology* (edges between agents) parallel to §4 (edges between entries) — so SCHEMA is their proper home. This addition is **additive and descriptive**: it ratifies and names an already-running system rather than inventing vocabulary. No entry type, link type, required field, stage, or ceremony was added or removed; the wire schema is unchanged. Canonical system entry created this ceremony: [[STIGMERGY]] (type `meta`); the origin concept [[BBS Blackboard]] is reframed as its historical root. Full operational spec remains [[Palace Agent Infrastructure Spec]].
+
+**Schema Ceremony rationale (2026-06-16, v1.12): pinned the §9 field conventions; no new vocabulary.** A foundational-drift assessment of the 454-message persistent board found the envelope clean but four fields drifted into multiple coexisting forms because they were only ever *inferred from examples*, never pinned: `from` (page-title vs ALL-CAPS handles vs process names), `to` (`*` vs `ALL` vs board-names), `health.model` (model ids vs process names), `session_id` (slug variants for one page). The root cause was **example-propagation** — the corrected page-title rule lived in [[Substrate Skill]] / [[STIGMERGY]] while stale `CONATUS-N` handle examples persisted in [[Palace Agent Infrastructure Spec]] and [[BBS Blackboard]], so agents copied the old form. This ceremony pins one canonical form per field in §9, marks §9 as the ratified enum set (the Spec's extra types/boards are design-time), documents the already-used optional `health._orchestrator_metadata`, and adds a precedence banner to the Spec. **Additive and descriptive** — it ratifies conventions already corrected in practice and names existing reality. No entry type, link type, required field, stage, or ceremony was added or removed; the wire envelope is unchanged. Pairs with a planned re-seed of the persistent board from a clean template (so future agents copy a clean example, not the drift).
 
 ---
 
