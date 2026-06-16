@@ -1,106 +1,94 @@
 ---
 title: "BLUELINE — baton"
-born: 2026-06-14
+born: 2026-06-16
 links:
   - target: "[[BLUELINE]]"
     type: connects-to
     label: "baton-for"
-forward_vector: "I carry the BLUELINE technical spike across a context boundary — five tracks proven, two threads still open (the M4L bug-fix test and the Track II LoRA train) — waiting to be caught Mac-side and deleted once the move is picked up."
-session_thread: "Mac-side Claude Code 2026-06-14 — Tracks I/III/IV/V proven, Track II dataset, M4L device live"
+forward_vector: "I carry BLUELINE from a finished spike into production: the M4L clock is now live-validated round-trip, so the only open work is one design propagation (markers → MIDI clips, not yet in the palace) and one adjudication (the Track II LoRA verdict). I wait to be caught Mac-side and deleted once the move is picked up."
+session_thread: "Mac-side 2026-06-16 — M4L round-trip confirmed by Loudon; markers→MIDI-clips decision made; Track II LoRA trained + graded, verdict pending"
 ---
 
-# Baton: BLUELINE — spike complete, two open threads
+# Baton: BLUELINE — spike done, two closing moves before M0
 
 ## Move
-The technical spike is **done across all five tracks** — the substrate is proven end to end. Pick up the
-**two open threads**, then begin production (M0):
-1. **Test the M4L `qmetro` fix** (Loudon, in Max) — see Open Thread A.
-2. **Train the Track II character LoRA** (needs an SSH pod) — see Open Thread B.
+The five-track spike is **fully closed.** Clock live-validated round-trip; markers→MIDI-clips articulated
+*and* renamed end-to-end (verified); Track II adjudicated (honest negative — see below). **The next move
+is M0 previz production.** One optional loop-back is named (Track II redo with a face-forward dataset).
 
-## Why this move matters
-Every novel BLUELINE bet has now been exercised at small scale and held: blocking defeats the front-on
-default (S1), language→editable Blender scene (S2/Blender-MCP), one flow field → three resolutions (S3),
-GPU render on a self-owned worker (Track I), the beat-locked clock driven by **live Ableton** (Track III),
-the pose/camera/environment bench (Track IV), and frame-to-frame coherence (Track V, the #1 risk). M0
-production can start; only the two threads below are unfinished.
+> **Both prior open moves are now DONE (this session, 2026-06-16):**
+> - **A — markers→clips rename in the harness: ✅** `transport_sim.py` + `clock_client.html` renamed to
+>   `/transport/section` (spans); verified live (sim→relay→WS: sections flow as spans, 64/64 on-beats on
+>   whole frames). Committed `e4f4292`. Relay was format-agnostic, untouched.
+> - **B — Track II LoRA adjudicated: ✅ (negative result, recorded).** The r4ng3r LoRA scored *below* its
+>   no-LoRA baseline on every identity metric (FLUX DINO 0.317 vs 0.475, ArcFace 0.110 vs 0.376, face%
+>   75% vs 100%) — it learned a hooded costume-silhouette, not a face. **The pipeline is sound:** the
+>   DreamBooth dog control hit the textbook win (LoRA DINO 0.776 vs 0.422, +0.35). Failure is the
+>   *dataset*, not the machinery. Full verdict + the fix in `proofs/track-II-lora/track-II-report.md`.
 
-## DONE this session (all committed on main — see `git log --grep BLUELINE`)
-- **Track I — GPU substrate ✅ both tiers.** Phase A: board→serverless FLUX→retrieved (`serverless_runner.py`,
-  palace-flux endpoint, re-parked). Phase B: network volume + pod (4090) → **FLUX-ControlNet via the
-  WAF-hardened transport** (`pod_runner.py` = the board-driven merge), geometric pose enforced. `runpod`
-  host class wired into `host-capability.json`. Reports: `render-backend/track-I-report.md`.
-- **Track III — Clock ✅ LIVE-VALIDATED.** Determinism recipe + relay + browser client; **Loudon's M4L
-  device drives it from real Ableton** (120@24 → 12 fpb, beats on whole frames, ~5 ms σ jitter). The
-  device build spec + the live-test fixes are in `track-III-clock/`.
-- **Track IV — Bench ✅** pose library + camera-grammar solvers + **true-OTS environment** (IV-D alley) →
-  board records. `proofs/track-IV-bench/`.
-- **Track V — Motion coherence ✅ (the #1 risk, workable).** Seed-locking defeats the stitched-stills
-  flicker (quantified: linked color_corr **0.94** vs independent **0.17**). First rung; the full stack is
-  named (seed → +depth → +identity → +flow-warp/Go-with-the-Flow). `proofs/track-V-motion/`.
-- **Track II — assess ruler ✅ + character dataset ✅.** `consistency_ruler.py` (CNN-embed + color metric).
-  8-image consistent "r4ng3r" ranger dataset (shared-seed method, ruler-validated embed 0.93) +
-  captions. Training **kit ready, not run**. `proofs/track-II-lora/`.
+## Closed since the last baton
+- **Open Thread A — the M4L device: ✅ CLOSED.** The `qmetro` + self-heal fix works; Loudon has
+  **tested it round-trip from live Ableton** and it runs perfectly with the editor closed. Track III is
+  fully live-validated, not just simulator-validated. *(The M4L spec + Track III report still carry the
+  old `Palace-Verify: unverified` / "flagged: needs Loudon's Ableton" wording — flip them as part of
+  Open Move A, since both files are being edited for the clips change anyway.)*
+- **Open Thread B — train the Track II LoRA: ✅ RUN (verdict pending).** Both a FLUX LoRA and an SDXL
+  LoRA were trained on the `r4ng3r` ranger and rendered across 4 new scenes × 4 seeds, plus a
+  DreamBooth control (`dbgrade/` — dog/duck). Grading rig built both ways: the numeric ruler
+  (`grade_score_v2.py`) and a human rating page (`grade/rate.html`). **Not yet done:** run/record the
+  numeric verdict, capture Loudon's `rate.html` rating, write the result into `track-II-report.md`, and
+  **commit `grade/` + `dbgrade/`** (currently untracked). The bar to beat is Track V's independent-seed
+  drift (embed 0.82 / color 0.17).
 
-## Open thread A — the M4L `qmetro` fix (untested)
-Loudon's device froze Live (fixed: reuse LiveAPI) and then threw `jsliveapi: no valid object set` +
-`SendMessage error 2` **only with the edit window closed**. Diagnosed as **LiveAPI on the high-priority
-scheduler thread**. Fix shipped in `track-III-clock/M4L-DEVICE-SPEC.md` (committed `a946b61`,
-`Palace-Verify: unverified`): **`[qmetro]` not `[metro]`** for the poll + a `valid()`/`init()` self-heal
-guard in `transport.js`. **Next: Loudon pastes the updated `transport.js`, swaps metro→qmetro, confirms
-the device runs with the editor closed.** If qmetro alone doesn't cure it, the guard at least stops the
-errors; escalate to `plugsync~` (spec §5, signal-rate, no LiveAPI in the poll).
+## Decision logged + articulated this session — markers → MIDI clips
+Section/cue addressing moved **off Ableton locators (markers) and onto MIDI clips.** A locator is a
+*point* (name + bar); a MIDI clip is a *named span* (name + start + length), so sections are
+first-class durations — which also half-answers the Board-Schema's open `HOLD`/expansion question (a
+clip *gives* you the span). **Design confirmed by Loudon:** the OSC message is
+`/transport/section name start_bar length_bars` (span), and the device observes its **own host track's**
+`arrangement_clips` (`this_device canonical_parent`) — placement *is* the config. **Articulated this
+session** in all four docs: Production Plan, Board Record Schema (added a `SECTION` field), track-III
+report, and the M4L spec (JS rewritten: `cue_points` → host-track clips; `/transport/locator` →
+`/transport/section`; device marked live-validated).
 
-## Open thread B — train the Track II LoRA (needs an SSH pod)
-The render pods expose only ComfyUI HTTP; a trainer needs **shell access (an SSH-enabled pod)**. The
-turnkey kit is `proofs/track-II-lora/TRAIN.md` (ai-toolkit FLUX config `train_flux_lora.yaml`, trigger
-`r4ng3r`, ~1200 steps; + an SDXL/kohya fallback). **Next: spin an SSH pod (PUBLIC_KEY), scp the dataset,
-train, download the LoRA, then run the grading test** — render `r4ng3r` across **different seeds**, ruler
-it, beat Track V's independent-seed drift (0.82). **One unknown:** FLUX.1-dev is gated — confirm the HF
-token has access, else use the SDXL fallback. ~$1–2, ~45 min.
+## Next move — M0 previz production (the spike is closed)
+With Tracks I/III/IV/V proven, the clock live + clip-addressed, and Track II measured, **M0 previz is the
+next rung.** Bring a short song section through the real substrate: board records (with `BAR`/`BEAT`/
+`SECTION` now clip-addressed) → Track I backend → a previz pass, synced to the live clock.
 
-## Tried and rejected (negative space — don't re-explore)
-- **Animal motion** — out of scope; humanoid only.
-- **2D pose estimator (DWPose) on a greybox proxy** — returns black; emit the OpenPose skeleton
-  geometrically (projected bones). Settled.
-- **Standalone SDXL lineart ControlNet** — none strong; use **canny** on SDXL, one ControlNet per channel.
-- **FLUX via the HF-Inference Specialist for ControlNet** — it's cloud txt2img only; FLUX-ControlNet runs
-  **local on a RunPod pod** (proven). The transport must be **browser-UA + curl upload** or the proxy WAF 403s.
-- **`[metro]` for the M4L poll** — high-priority thread → LiveAPI errors when the editor's closed. Use `[qmetro]`.
-- **`new LiveAPI()` inside the poll** — froze Ableton. Create once, reuse, guard with `api.id`.
-- **Strong "one untouched flow field" claim** — falsified (S3); shared-source + thin per-leg mapping holds.
-- **Blender-MCP vs SceneCraft as rivals** — they're layers over one shared spec: MCP = interactive
-  hand-authoring primary (live-tested), SceneCraft = headless backend, Three.js = preview. (#4 resolved.)
-- **Seed-locking as a full coherence answer** — it holds with the *same* seed (Track V); cross-seed needs the LoRA.
+**One named loop-back (optional, not blocking M0):** the Track II character LoRA. The pipeline is proven
+(dog control +0.35); the win is reachable. To get a usable r4ng3r LoRA, rebuild the character set with
+**face-forward, identity-bearing framing** (close + frontal, hood down) — not the dramatic full-body
+hooded poses that taught a costume — and/or face-region-weighted training; then re-grade against the v2
+ruler (`grade_score_v2.py`). Until then, **the detailed text description is the better identity anchor**
+and BLUELINE can proceed on text-described characters + Track V seed-locking for same-shot coherence.
 
 ## State / receiving environment
-- **RunPod:** account **clean** (0 pods running). Network volume **`blueline-models`** (id `aqm8oev4b0`,
-  30 GB, EU-RO-1) holds `flux-union-pro.safetensors` — keep it (the model store; ~$2/mo; makes pods boot
-  fast). `palace-flux` serverless endpoint parked at `workersMax=0`. Key + endpoint in
-  `RunPod Images/studio/config.json` (gitignored). Helpers (`/tmp/rp_*.py`) were scratch — re-derive from
-  `track-I-report.md` / `pod_runner.py`. **Spend this session ≈ $0.65 of a $20/day budget.**
-- **Relay:** `osc_ws_relay.py` was running (`http://127.0.0.1:8770`, OSC :9001) — restart with
-  `_tools/ComfyUI/venv/bin/python "Projects/BLUELINE/proofs/track-III-clock/osc_ws_relay.py"` (needs the
-  venv for aiohttp; only one process can hold :9001).
-- **Mac:** Blender 5.1.2, local ComfyUI at `_tools/ComfyUI` (SDXL + ControlNet aux + xinsir CNs from S1),
-  Blender-MCP add-on can be connected (port 9876). Normal git.
+- **RunPod:** verify pod count is 0 (terminate promptly after any render/train). Network volume
+  **`blueline-models`** (`aqm8oev4b0`, 30 GB, EU-RO-1) persists the models; `palace-flux` serverless
+  parked at `workersMax=0`. Key/endpoint in `RunPod Images/studio/config.json` (gitignored).
+- **Track II grade dirs committed** — `proofs/track-II-lora/grade/` + `dbgrade/` (renders, contact
+  sheets, v2 scores) are now in git with the verdict.
+- **Relay:** restart with `_tools/ComfyUI/venv/bin/python "Projects/BLUELINE/proofs/track-III-clock/osc_ws_relay.py"`
+  (needs the venv for aiohttp; only one process can hold :9001).
+- **Mac:** Blender 5.1.2, local ComfyUI at `_tools/ComfyUI`. Normal git (Mac-side, lock-safe committer not needed).
 
-## Calibrations from this session
-- **Capability-first**: prove the workflow at small scale before optimizing.
-- **Each track ships a reusable tool**, not project-local scratch (pod_runner, the ruler, the pose libs).
-- **Terminate pods promptly** after a render/train; the volume persists models so re-boot is cheap.
+## Calibrations
+- **Capability-first**: prove at small scale before optimizing.
+- **Each track ships a reusable tool**, not project-local scratch.
 - **The spec is the interchange** (staging spec, board record) — front-ends and backends decouple through it.
-- Loudon builds the Max patches himself; give **precise, testable** Max guidance (he can't paste-and-pray).
+- Loudon builds the Max patches himself; give **precise, testable** Max guidance.
 
 ## Load these files first
-1. `Projects/BLUELINE/BLUELINE — Production Plan.md` (the five tracks) + `BLUELINE.md` (the face).
-2. The track reports: `render-backend/track-I-report.md`, `proofs/track-III-clock/track-III-report.md` +
-   `M4L-DEVICE-SPEC.md`, `proofs/track-IV-bench/track-IV-report.md`, `proofs/track-V-motion/track-V-report.md`,
-   `proofs/track-II-lora/track-II-report.md` + `TRAIN.md`.
-3. `Shop/RunPod GPU Backend.md` (+ `pod-comfyui-client.py`) and `render-backend/pod_runner.py` for the backend.
+1. `BLUELINE — Production Plan.md` (the five tracks) + `BLUELINE.md` (the face).
+2. The Track III docs for the clips propagation: `proofs/track-III-clock/track-III-report.md` +
+   `M4L-DEVICE-SPEC.md`, and `BLUELINE — Board Record Schema.md`.
+3. The Track II grade artifacts: `proofs/track-II-lora/track-II-report.md` + `grade/rating_manifest.json`
+   + `grade_score_v2.py`.
 
 ## On pickup (the catcher's checklist)
-1. State the move back in one sentence (test the qmetro fix + train the LoRA, then M0). If you can't, the
-   baton wasn't caught — stop and ask Loudon.
-2. This baton was authored Mac-side and is committed — that commit is its archive.
-3. Mark it caught: delete this baton file (git is the archive) and remove any "Active Baton" marker from `BLUELINE.md`.
+1. State the move back in one sentence (propagate markers→clips + adjudicate Track II, then M0). If you
+   can't, the baton wasn't caught — stop and ask Loudon.
+2. This baton is committed Mac-side — that commit is its archive.
+3. Mark it caught: delete this baton file (git is the archive).
 4. Act on the move, holding the calibrations above.

@@ -23,29 +23,57 @@ LoRA learns the *character*, not a fixed backdrop. Contact: `dataset/CONTACT-dat
 This also validates a reusable BLUELINE capability: **generate a consistent-identity dataset for any
 character on demand**, from a one-line description + the pose library.
 
-## Staged — the training run (next step, needs an SSH pod)
+## Done — trained + graded (2026-06-16)
 
-The training itself is set up and turnkey but not yet run, for one concrete reason: our render pods
-expose only ComfyUI's HTTP API, and a trainer needs **shell access** (an SSH-enabled pod). The kit is
-ready: `train_flux_lora.yaml` (ai-toolkit FLUX LoRA config, trigger `r4ng3r`, rank 16, ~1200 steps) and
-`TRAIN.md` (the exact SSH-pod procedure + an SDXL/kohya fallback that needs no gated download). Estimated
-~30–45 min on an A40/A100, ~$1–2.
+Trained on an SSH pod (ai-toolkit FLUX LoRA, trigger `r4ng3r`, rank 16, ~1200 steps) plus an SDXL/kohya
+LoRA in parallel. Rendered `r4ng3r` across **4 new scenes × 4 different seeds** at Study tier, each with a
+no-LoRA **baseline** (the detailed text description alone), plus a **DreamBooth control** (a known-easy
+subject) to test the pipeline independently of the ranger. Graded with the **v2 ruler** — DINOv2 subject
+fidelity · CLIP-T context adherence · ArcFace face identity · HSV color — the DreamBooth-standard metrics
+that fix v1's ResNet/whole-image confound. Scores: `grade/grade-v2-scores.txt` + `dbgrade/db-dino-scores.txt`;
+contact sheets alongside.
 
-**Honest scope note:** I terminated the dataset pod rather than bill an A100 I couldn't train on — the
-training needs a differently-provisioned pod. The dataset (the genuinely hard, reusable artifact) is
-banked; the training is a focused next run.
+## The verdict — the LoRA *failed* its purpose; the pipeline is sound (honest negative result)
 
-## The test it sets up (Track II's verdict, pending the LoRA)
+| set (4 seeds) | DINO ↑ | ArcFace ↑ | face% | CLIP-T | read |
+|---|---|---|---|---|---|
+| FLUX + LoRA | 0.317 | 0.110 | 75% | 0.290 | identity **worse** than baseline |
+| FLUX baseline (text only) | **0.475** | **0.376** | 100% | 0.250 | the stronger identity anchor |
+| SDXL + LoRA | 0.203 | 0.101 | 75% | 0.324 | same pattern |
+| SDXL baseline (text only) | **0.490** | 0.175 | 100% | 0.281 | — |
 
-Render `r4ng3r` in new poses with **different seeds each**, and grade with `consistency_ruler.py`. The
-result is the LoRA's `embed_cos` across seeds vs the no-LoRA baseline. The bar to beat is **Track V's
-independent-seed drift (embed 0.82 / color 0.17)** — if the LoRA holds identity across seeds where
-seed-locking couldn't, that's the win, and it stacks under Track V's coherence stack as the
-seed-independent identity rung.
+The LoRA scored **below its own no-LoRA baseline on every identity metric** (FLUX DINO 0.317 vs 0.475;
+ArcFace 0.110 vs 0.376; face detection 100% → 75%). Visually (`grade/CONTACT-grade.png`) the baseline rows
+are a consistent freckled auburn-braided ranger; the LoRA rows are hooded silhouettes, hidden faces, and
+one off-character horned figure. **The detailed text description alone held the character better than the
+LoRA trained on it.**
+
+**Why it's not the pipeline — the DreamBooth control (`dbgrade/`):** on an easy subject the *same*
+train→render→score pipeline delivered the textbook win — **dog LoRA DINO 0.776 vs baseline 0.422, lift
++0.35 → PIPELINE OK ✓** (visually, one consistent corgi across all four contexts vs four random dogs). The
+machinery works; the r4ng3r failure is **the dataset, not the pipeline.**
+
+**Diagnosis:** the character set was built from *dramatic full-body* poses (guard / reach / walk / crouch /
+hero-turn) that often put the hood up and the face small, turned, or distant. The LoRA learned a
+**costume-silhouette, not a face** — exactly why ArcFace cratered, face% fell, and renders pulled toward
+"hooded figure in green" instead of the brief. The dog control used close, face-forward framing and locked
+cleanly. The ceiling is reachable; this dataset aimed the LoRA at the wrong signal.
+
+**Metric note:** the old "bar to beat" (Track V's `embed 0.82`) was in the **deprecated v1 ResNet/whole-image
+ruler**, which conflates scene with identity — not comparable to these DINO/ArcFace numbers. The v2 ruler
+supersedes it, and it just earned its keep: it caught a LoRA that *looked* plausible but *measurably
+degraded* identity. Numbers over vibes, as designed.
+
+**Next (the fix the control points to):** rebuild the character set with **face-forward, identity-bearing
+framing** (close + frontal, hood down) — and/or face-region-weighted training, higher rank/steps — then
+re-grade against the v2 ruler. Do not re-run the dramatic-pose dataset expecting a different number.
 
 ## Ships to the palace
 
 - `poseset.py` / `draw_poses.py` — the character-sheet pose generator (reusable).
-- The dataset-generation method (shared-seed + pose library → consistent character set) — a BLUELINE
-  capability for *any* character.
-- The training kit (`train_flux_lora.yaml` + `TRAIN.md`) — turnkey once an SSH pod is up.
+- The dataset-generation method (shared-seed + pose library → consistent character set, embed 0.93) — a
+  BLUELINE capability for *any* character. **Lesson banked:** frame for the face when the goal is a LoRA.
+- **`grade_score_v2.py` — the v2 measurement ruler** (DINO + CLIP-T + ArcFace + color): the palace-wide
+  identity / context / style metric, validated here by catching a bad LoRA *and* confirming a good one.
+- The training kit (`train_flux_lora.yaml` + `TRAIN.md`) — **pipeline proven** (DreamBooth control +0.35);
+  reusable for any future character, given a face-forward dataset.
