@@ -1,0 +1,294 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>BLUELINE — M0 Previz</title>
+<style>
+  :root{--bg:#15161a;--panel:#1d1f25;--ink:#e9e7e2;--dim:#8b8d96;--amber:#e0a83a;--good:#7bbf6a;--bad:#c98a8a;--line:#2c2e36;--box:#23262d;--fig:#454956}
+  *{box-sizing:border-box} html,body{margin:0;height:100%;background:var(--bg);color:var(--ink);
+    font-family:"JetBrains Mono",ui-monospace,Menlo,monospace}
+  .wrap{max-width:1080px;margin:0 auto;padding:20px}
+  h1{font-family:"Anton",Impact,sans-serif;font-weight:400;letter-spacing:.04em;text-transform:uppercase;font-size:26px;margin:0}
+  .sub{color:var(--dim);font-style:italic;font-family:Cormorant,Georgia,serif;font-size:17px;margin:2px 0 16px}
+  .top{display:flex;justify-content:space-between;align-items:flex-end;gap:16px;flex-wrap:wrap}
+  .bible{font-size:11px;color:var(--dim);text-align:right;line-height:1.5}
+  .bible b{color:var(--amber)}
+  .stage{display:grid;grid-template-columns:1fr 230px;gap:14px;margin-bottom:8px}
+  @media(max-width:760px){.stage{grid-template-columns:1fr}}
+  .panelwrap{background:#000;border:1px solid var(--line);border-radius:10px;overflow:hidden;position:relative}
+  #panel{display:block;width:100%;height:auto;background:#000}
+  .pulse{position:absolute;inset:0;border:0 solid var(--amber);border-radius:10px;pointer-events:none;transition:border-width .09s ease-out}
+  .caption{font-family:Cormorant,Georgia,serif;font-size:18px;line-height:1.35;padding:9px 4px 2px;color:var(--ink);min-height:48px}
+  .caption .lead{color:var(--amber);font-family:"JetBrains Mono",monospace;font-size:12px;letter-spacing:.04em;text-transform:uppercase;margin-right:8px}
+  .side{display:flex;flex-direction:column;gap:10px}
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:12px 13px}
+  .k{color:var(--amber);font-size:11px;text-transform:uppercase;letter-spacing:.06em}
+  .big{font-size:40px;font-family:"Anton",Impact,sans-serif;line-height:1;margin-top:3px}
+  .row{display:flex;justify-content:space-between;font-size:12px;margin:4px 0}
+  .row span:first-child{color:var(--dim)}
+  .sect{font-family:"Anton",Impact,sans-serif;letter-spacing:.08em;text-transform:uppercase;font-size:15px;color:var(--ink)}
+  .strip{display:grid;grid-template-columns:repeat(8,1fr);gap:6px;margin-top:6px}
+  .cell{background:var(--box);border:1px solid var(--line);border-radius:6px;overflow:hidden;cursor:default}
+  .cell.active{border-color:var(--amber);box-shadow:0 0 0 1px var(--amber)}
+  .cell canvas{display:block;width:100%;height:auto}
+  .cell .lbl{font-size:9px;color:var(--dim);text-align:center;padding:2px 0;border-top:1px solid var(--line)}
+  .cell.active .lbl{color:var(--amber)}
+  .bar{display:flex;align-items:center;gap:12px;margin:12px 0 4px;font-size:12px;flex-wrap:wrap}
+  .btn{background:var(--box);color:var(--ink);border:1px solid var(--line);border-radius:6px;padding:6px 12px;font-family:inherit;font-size:12px;cursor:pointer}
+  .btn:hover{border-color:var(--amber)} .btn.on{border-color:var(--good);color:var(--good)}
+  #conn{font-size:12px}
+  .dot{display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--dim);margin-right:6px;vertical-align:middle}
+  .dot.live{background:var(--good)} .dot.play{background:var(--amber)}
+  #foot{color:var(--dim);font-size:11px;margin-top:16px;letter-spacing:.04em}
+  .det.ok{color:var(--good)} .det.no{color:var(--bad)}
+</style></head>
+<body><div class="wrap">
+  <div class="top">
+    <div>
+      <h1 id="title">BLUELINE · M0 Previz</h1>
+      <div class="sub">storyboard played in time with Ableton — rough boards now, pixels later, one timeline</div>
+    </div>
+    <div class="bible" id="bible">tempo <b>—</b> · fps <b>—</b> · <b>—</b> frames/beat</div>
+  </div>
+
+  <div class="stage">
+    <div>
+      <div class="panelwrap"><canvas id="panel" width="960" height="540"></canvas><div class="pulse" id="pulse"></div></div>
+      <div class="caption" id="caption"><span class="lead">standby</span>waiting for transport…</div>
+    </div>
+    <div class="side">
+      <div class="card">
+        <div class="k">now playing</div>
+        <div class="big" id="barbeat">—.—</div>
+        <div class="row"><span>frame</span><span id="frame" style="color:var(--amber)">—</span></div>
+        <div class="row"><span>section</span><span class="sect" id="section">—</span></div>
+        <div class="row"><span>shot</span><span id="shotid">—</span></div>
+      </div>
+      <div class="card">
+        <div class="k">the locked clock</div>
+        <div class="row"><span>frames / beat</span><span id="fpb">—</span></div>
+        <div class="row"><span>determinism</span><span id="det">—</span></div>
+        <div class="row"><span>beat → whole frame</span><span id="whole">—</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="strip" id="strip"></div>
+
+  <div class="bar">
+    <span id="conn"><span class="dot" id="dot"></span>connecting…</span>
+    <button class="btn" id="selfplay">▶ self-play (no Ableton)</button>
+    <span class="dim" id="srcnote">driven by the relay — open with Ableton + the M4L device playing</span>
+  </div>
+
+  <div id="foot">Loudon Live · Autodidact Polymaths</div>
+</div>
+<script>
+// ---- storyboard (fetched; embedded fallback so the file also opens standalone) ----
+const EMBED = {"bible":{"title":"BLUELINE — M0 Previz · r4ng3r","tempo":120,"fps":24,"beats_per_bar":4,"frames_per_beat":12},
+"shots":[
+{"id":"01","bar":1,"beat":1,"hold":8,"section":"intro","camera":"WIDE establishing","lens":24,"pose":"stand_front","flow":false,"action":"Ranger stands small in the misty forest. Held stillness — the calm before."},
+{"id":"02","bar":3,"beat":1,"hold":8,"section":"intro","camera":"SLOW PUSH-IN","lens":35,"pose":"stand_3q","flow":false,"action":"Push in to three-quarter. She senses something off-frame."},
+{"id":"03","bar":5,"beat":1,"hold":8,"section":"verse","camera":"OTS — over-the-shoulder","lens":50,"pose":"guard","flow":false,"action":"Over her shoulder: the threat. Guard up. Blocking dictates the frame."},
+{"id":"04","bar":7,"beat":1,"hold":8,"section":"verse","camera":"WORM'S-EYE hero turn","lens":28,"pose":"hero_turn","flow":false,"action":"Low up-angle. She turns into it — heroic, looming against the sky."},
+{"id":"05","bar":9,"beat":1,"hold":4,"section":"drop","camera":"MEDIUM — draw","lens":50,"pose":"reach_up","flow":true,"action":"THE DROP. She draws the bow. Speed-lines ignite — the flow field is the wind."},
+{"id":"06","bar":10,"beat":1,"hold":4,"section":"drop","camera":"TIGHT coil","lens":65,"pose":"crouch","flow":true,"action":"Coil. Everything compresses to the held breath at full draw."},
+{"id":"07","bar":11,"beat":1,"hold":8,"section":"drop","camera":"WIDE release","lens":24,"pose":"reach_up","flow":true,"action":"Release. The field goes full — the arrow rides the wind across frame."},
+{"id":"08","bar":13,"beat":1,"hold":8,"section":"drop","camera":"AFTERMATH hold","lens":35,"pose":"stand_3q","flow":false,"action":"Aftermath. She lowers the bow. The field settles. Hold to the bar."}
+]};
+
+let SB=EMBED, BPB=4, fpb=12, tempo=120, fps=24, det=true;
+let curShot=-1, lastBeatKey=null;
+
+// ---- pose system (joint offsets in fractions of figure height h; feet at fx,fy; +y down) ----
+const POSES = {
+  stand_front:{head:[0,-.88],parts:[[[0,-.46],[0,-.80]],[[-.10,-.78],[-.15,-.62],[-.16,-.46]],[[.10,-.78],[.15,-.62],[.16,-.46]],[[-.04,-.46],[-.06,-.23],[-.07,0]],[[.04,-.46],[.06,-.23],[.07,0]]]},
+  stand_3q:{head:[.02,-.88],parts:[[[.01,-.46],[0,-.80]],[[-.07,-.78],[-.11,-.63],[-.10,-.48]],[[.09,-.78],[.13,-.64],[.10,-.50]],[[-.03,-.46],[-.05,-.23],[-.06,0]],[[.05,-.46],[.07,-.23],[.08,0]]]},
+  guard:{head:[-.01,-.86],parts:[[[0,-.44],[-.02,-.78]],[[-.09,-.76],[-.06,-.66],[-.02,-.72]],[[.09,-.76],[.07,-.64],[.03,-.70]],[[-.04,-.44],[-.09,-.22],[-.11,0]],[[.04,-.44],[.09,-.22],[.11,0]]]},
+  hero_turn:{head:[.01,-.92],parts:[[[.02,-.42],[-.03,-.82]],[[-.08,-.78],[-.16,-.70],[-.22,-.58]],[[.10,-.78],[.16,-.88],[.19,-.99]],[[-.05,-.42],[-.10,-.21],[-.13,0]],[[.06,-.42],[.10,-.21],[.12,0]]]},
+  reach_up:{head:[0,-.88],bow:{hand:[.30,-.80],draw:[-.02,-.82]},parts:[[[0,-.46],[0,-.80]],[[.10,-.76],[.20,-.78],[.30,-.80]],[[-.10,-.76],[-.06,-.80],[-.02,-.82]],[[-.05,-.46],[-.11,-.22],[-.13,0]],[[.05,-.46],[.10,-.22],[.12,0]]]},
+  crouch:{head:[0,-.66],parts:[[[0,-.30],[-.02,-.58]],[[-.08,-.56],[-.11,-.46],[-.08,-.36]],[[.08,-.56],[.11,-.46],[.08,-.36]],[[-.05,-.30],[-.13,-.18],[-.10,0]],[[.05,-.30],[.13,-.18],[.10,0]]]}
+};
+// camera framing: figure height frac of canvas H, x frac of W, ground frac, flags
+function cam(camera){
+  const c=(camera||'').toUpperCase();
+  if(c.includes('WIDE')&&c.includes('RELEASE')) return {h:.42,x:.34,g:.86,sky:.6};
+  if(c.includes('WIDE'))      return {h:.44,x:.46,g:.86,sky:.62};
+  if(c.includes('PUSH'))      return {h:.60,x:.50,g:.85,sky:.5};
+  if(c.includes('OTS'))       return {h:.50,x:.64,g:.85,ots:true,sky:.5};
+  if(c.includes("WORM"))      return {h:.80,x:.50,g:.93,sky:.7,low:true};
+  if(c.includes('TIGHT'))     return {h:.74,x:.50,g:.90,sky:.4};
+  if(c.includes('MEDIUM'))    return {h:.66,x:.45,g:.86,sky:.5};
+  return {h:.56,x:.50,g:.86,sky:.5};
+}
+
+function limb(ctx,pts,fx,fy,h,w){ctx.lineWidth=w;ctx.lineCap='round';ctx.lineJoin='round';ctx.beginPath();
+  pts.forEach((p,i)=>{const x=fx+p[0]*h,y=fy+p[1]*h;i?ctx.lineTo(x,y):ctx.moveTo(x,y);});ctx.stroke();}
+function drawBow(ctx,fx,fy,h,bow){const hx=fx+bow.hand[0]*h,hy=fy+bow.hand[1]*h,dx=fx+bow.draw[0]*h,dy=fy+bow.draw[1]*h;
+  ctx.lineWidth=Math.max(2,h*.02);ctx.strokeStyle='#6a6f80';ctx.beginPath();ctx.arc(hx,hy,h*.16,-1.3,1.3);ctx.stroke();
+  const a=h*.16;ctx.strokeStyle='#9aa0b0';ctx.lineWidth=1.5;ctx.beginPath();
+  ctx.moveTo(hx+Math.cos(-1.3)*a,hy+Math.sin(-1.3)*a);ctx.lineTo(dx,dy);ctx.lineTo(hx+Math.cos(1.3)*a,hy+Math.sin(1.3)*a);ctx.stroke();}
+function drawFigure(ctx,fx,fy,h,pose){const P=POSES[pose]||POSES.stand_front;
+  ctx.strokeStyle='var';ctx.strokeStyle=getCSS('--fig');ctx.fillStyle=getCSS('--fig');
+  // soft contact shadow
+  ctx.save();ctx.globalAlpha=.5;ctx.fillStyle='#000';ctx.beginPath();ctx.ellipse(fx,fy+2,h*.13,h*.025,0,0,7);ctx.fill();ctx.restore();
+  ctx.fillStyle=getCSS('--fig');const w=Math.max(3,h*.052);
+  P.parts.forEach(seg=>limb(ctx,seg,fx,fy,h,w));
+  if(P.bow)drawBow(ctx,fx,fy,h,P.bow);
+  ctx.beginPath();ctx.arc(fx+P.head[0]*h,fy+P.head[1]*h,h*.072,0,7);ctx.fill();}
+function getCSS(v){return getComputedStyle(document.documentElement).getPropertyValue(v).trim()||'#454956';}
+
+function flowLines(ctx,W,H,intensity){ctx.save();ctx.lineCap='round';
+  const n=Math.round(7+intensity*7);
+  for(let i=0;i<n;i++){const y=H*0.30+ (H*0.42)*(i/n)+Math.sin(i*1.7)*6;
+    const len=W*(0.5+0.4*((i*37%10)/10));const x0=W*0.05+ (i*53%40)/40*W*0.1;
+    ctx.globalAlpha=0.16+0.20*intensity;ctx.strokeStyle=getCSS('--amber');ctx.lineWidth=1.4+intensity*1.6;
+    ctx.beginPath();ctx.moveTo(x0,y);ctx.bezierCurveTo(x0+len*0.4,y-10,x0+len*0.6,y+8,x0+len,y);ctx.stroke();
+    // arrowhead
+    ctx.beginPath();ctx.moveTo(x0+len,y);ctx.lineTo(x0+len-9,y-4);ctx.moveTo(x0+len,y);ctx.lineTo(x0+len-9,y+4);ctx.stroke();}
+  ctx.restore();}
+
+function drawPanel(ctx,W,H,shot,opts){
+  opts=opts||{};
+  ctx.clearRect(0,0,W,H);
+  // sky / ground greybox
+  const C=cam(shot&&shot.camera);
+  const gy=H*C.g;
+  const sky=ctx.createLinearGradient(0,0,0,gy);sky.addColorStop(0,'#23262d');sky.addColorStop(1,'#191b20');
+  ctx.fillStyle=sky;ctx.fillRect(0,0,W,gy);
+  ctx.fillStyle='#0f1013';ctx.fillRect(0,gy,W,H-gy);
+  // horizon line
+  ctx.strokeStyle='#2c2e36';ctx.lineWidth=1;ctx.beginPath();ctx.moveTo(0,gy);ctx.lineTo(W,gy);ctx.stroke();
+  // mist bands for wide/establishing
+  if((shot&&/WIDE|PUSH|AFTER/i.test(shot.camera))){ctx.save();ctx.globalAlpha=.06;ctx.fillStyle='#cfd3dc';
+    for(let i=0;i<3;i++)ctx.fillRect(0,gy-30-i*26,W,10);ctx.restore();}
+  if(!shot){ctx.fillStyle=getCSS('--dim');ctx.font='16px JetBrains Mono, monospace';ctx.fillText('standby — waiting for transport',W*0.5-130,H*0.5);return;}
+  // flow field behind figure
+  if(shot.flow)flowLines(ctx,W,H,/RELEASE/i.test(shot.camera)?1:0.55);
+  // OTS foreground shoulder
+  if(C.ots){ctx.fillStyle='#0c0d10';ctx.beginPath();ctx.moveTo(0,H);ctx.lineTo(0,H*0.42);
+    ctx.quadraticCurveTo(W*0.16,H*0.34,W*0.26,H*0.6);ctx.lineTo(W*0.24,H);ctx.closePath();ctx.fill();
+    ctx.beginPath();ctx.arc(W*0.13,H*0.36,H*0.13,0,7);ctx.fill();}
+  // the figure
+  const fh=H*C.h, fx=W*C.x, fy=gy+ (C.low? H*0.0 : H*0.0);
+  drawFigure(ctx,fx,Math.min(fy,H-4),fh,shot.pose);
+  // letterbox
+  ctx.fillStyle='#000';ctx.fillRect(0,0,W,H*0.045);ctx.fillRect(0,H*0.955,W,H*0.045);
+  if(shot.color){ctx.fillStyle=shot.color;ctx.fillRect(0,0,Math.max(5,W*0.008),H);}  // Live clip-color stripe
+  // slate (only on big panel)
+  if(opts.slate){
+    ctx.font='12px JetBrains Mono, monospace';
+    ctx.fillStyle=getCSS('--amber');ctx.fillText((shot.fromClip?'CLIP ':'SHOT ')+shot.id+'  ·  bar '+shot.bar+'.'+shot.beat+'  ·  f'+shotStartFrame(shot),14,H*0.045+20);
+    ctx.textAlign='right';ctx.fillStyle=getCSS('--dim');
+    ctx.fillText(shot.fromClip?('hold '+shot.hold+' beats'):(shot.camera+'  ·  '+shot.lens+'mm'),W-14,H*0.045+20);
+    ctx.fillStyle=shot.color||getCSS('--ink');ctx.font='13px Anton, Impact, sans-serif';
+    ctx.fillText((shot.section||(shot.fromClip?'CLIP':'')).toUpperCase(),W-14,H*0.955-10);ctx.textAlign='left';}
+}
+function startTB(s){return (s.bar-1)*BPB + (s.beat-1);}
+function shotStartFrame(s){return startTB(s)*fpb;}
+
+// ---- filmstrip ----
+function buildStrip(){const strip=document.getElementById('strip');strip.innerHTML='';
+  SB.shots.forEach((s,i)=>{const cell=document.createElement('div');cell.className='cell';cell.id='cell'+i;
+    const cv=document.createElement('canvas');cv.width=240;cv.height=135;cell.appendChild(cv);
+    const lbl=document.createElement('div');lbl.className='lbl';lbl.textContent=s.id+' · '+s.bar+'.'+s.beat;cell.appendChild(lbl);
+    strip.appendChild(cell);drawPanel(cv.getContext('2d'),240,135,s,{});});}
+
+function renderActive(idx){
+  const ctx=document.getElementById('panel').getContext('2d');
+  const s=idx>=0?SB.shots[idx]:null;
+  drawPanel(ctx,960,540,s,{slate:true});
+  document.querySelectorAll('.cell').forEach((c,i)=>c.classList.toggle('active',i===idx));
+  const cap=document.getElementById('caption');
+  if(s){
+    const lead = s.fromClip ? ('CLIP '+s.id+' · bar '+s.bar+'.'+s.beat+' · hold '+s.hold+'b') : ('SHOT '+s.id+' · '+s.camera);
+    cap.innerHTML='<span class="lead" style="color:'+(s.color||'var(--amber)')+'">'+lead+'</span>'+(s.fromClip?s.name:s.action);
+    document.getElementById('section').textContent=(s.section||(s.fromClip?'CLIP':'—')).toUpperCase();
+    document.getElementById('shotid').textContent= s.fromClip ? ('#'+s.id+'  (Live clip)') : ('#'+s.id+'  ('+s.pose+(s.flow?' · flow':'')+')');}
+  else{cap.innerHTML='<span class="lead">standby</span>waiting for the downbeat…';}
+}
+
+function applyBible(t,f,b){tempo=t;fps=f;BPB=b||BPB;const g=gcd(Math.round(f*60),Math.round(t));
+  fpb=(f*60)/t;det=Number.isInteger(fpb);
+  document.getElementById('bible').innerHTML='tempo <b>'+t+'</b> · fps <b>'+f+'</b> · <b>'+(det?fpb:fpb.toFixed(2))+'</b> frames/beat';
+  document.getElementById('fpb').textContent=det?fpb+'  (exact)':fpb.toFixed(3);
+  document.getElementById('det').innerHTML=det?'<span class="det ok">deterministic ✓</span>':'<span class="det no">drifts ✗</span>';}
+function gcd(a,b){return b?gcd(b,a%b):a;}
+
+function onBeat(bar,beat,playing){
+  const tb=(bar-1)*BPB+(beat-1), frame=tb*fpb;
+  document.getElementById('barbeat').textContent=bar+'.'+(Number.isInteger(beat)?beat:beat.toFixed(2));
+  document.getElementById('frame').textContent=Math.abs(frame-Math.round(frame))<1e-9?Math.round(frame):frame.toFixed(1);
+  // whole-frame check on integer beats
+  const bi=Math.floor(beat+1e-6),key=bar*1000+bi;
+  if(key!==lastBeatKey){lastBeatKey=key;const tbi=(bar-1)*BPB+(bi-1),fr=tbi*fpb,whole=Math.abs(fr-Math.round(fr))<1e-9;
+    document.getElementById('whole').innerHTML=whole?'<span class="det ok">on whole frame ✓</span>':'<span class="det no">off ✗</span>';
+    pulse();}
+  // active shot
+  let idx=-1;for(let i=0;i<SB.shots.length;i++){const s=SB.shots[i],st=startTB(s),en=st+s.hold;if(tb>=st&&tb<en){idx=i;break;}if(tb>=st)idx=i;}
+  if(tb<startTB(SB.shots[0]))idx=-1;
+  if(idx!==curShot){curShot=idx;renderActive(idx);}
+}
+let pulseT=null;
+function pulse(){const p=document.getElementById('pulse');p.style.borderWidth='5px';clearTimeout(pulseT);pulseT=setTimeout(()=>p.style.borderWidth='0px',90);}
+
+// ---- storyboard from a Live clip scan: clip name + color + start + length -> cards ----
+let scanBuf=null, scanCount=0;
+function cssFromInt(v){ if(v==null||isNaN(v))return null; v=(v|0)&0xFFFFFF; return '#'+('000000'+v.toString(16)).slice(-6); }
+function startScan(count){ scanBuf=[]; scanCount=count||0; setConn('live','● scanning '+(count||'?')+' clips from Live…'); }
+function addScanClip(idx,start,length,color,name){
+  if(!scanBuf) scanBuf=[];
+  scanBuf.push({start:+start,length:+length,color:+color,name:String(name==null?'':name)});
+  if(scanCount && scanBuf.length>=scanCount) finishScan();
+}
+function clipToShot(c,i){
+  const bar=Math.floor(c.start/BPB)+1, beat=(c.start%BPB)+1;
+  const label=c.name||('clip '+(i+1));
+  return { id:String(i+1).padStart(2,'0'), bar:bar, beat:Math.round(beat*100)/100, hold:c.length,
+    section:'', camera:label, lens:35, pose:'stand_front', name:label,
+    flow:/draw|release|drop|flow|wind|run|fly/i.test(c.name||''), action:label,
+    color:cssFromInt(c.color), fromClip:true };
+}
+function finishScan(){
+  if(!scanBuf||!scanBuf.length){ scanBuf=null; return; }
+  scanBuf.sort((a,b)=>a.start-b.start);
+  SB={ bible:SB.bible, shots: scanBuf.map(clipToShot) };
+  curShot=-1; lastBeatKey=null; buildStrip(); renderActive(-1);
+  document.getElementById('srcnote').textContent='storyboard built from '+SB.shots.length+' Live clips — play Ableton to drive';
+  setConn('live','● '+SB.shots.length+' clips scanned from Live');
+  scanBuf=null;
+}
+
+// ---- transport source: relay WS, with self-play fallback ----
+function connect(){
+  let ws;try{ws=new WebSocket("ws://"+location.host+"/ws");}catch(e){setConn(false,'no relay (use self-play)');return;}
+  ws.onopen=()=>setConn('live','● connected to relay — waiting for transport…');
+  ws.onclose=()=>setConn(false,'○ relay disconnected — use self-play');
+  ws.onerror=()=>setConn(false,'relay unreachable — use self-play');
+  ws.onmessage=ev=>{const m=JSON.parse(ev.data);
+    if(m.address==='/transport/bible')applyBible(m.args[0],m.args[1],m.args[2]);
+    else if(m.address==='/transport/beat'){setConn('play','● transport playing');onBeat(m.args[0],m.args[1],m.args[2]);}
+    else if(m.address==='/transport/locator')document.getElementById('section').textContent=(m.args[0]||'').toUpperCase();
+    // ---- storyboard from Live MIDI clips on the sync track (the marker-replacement) ----
+    else if(m.address==='/board/scan')     startScan(m.args[0]);
+    else if(m.address==='/board/clip')      addScanClip(m.args[0],m.args[1],m.args[2],m.args[3],m.args[4]);
+    else if(m.address==='/board/scan_end')  finishScan();};
+}
+function setConn(state,txt){const d=document.getElementById('dot');d.className='dot'+(state==='live'?' live':state==='play'?' play':'');document.getElementById('conn').lastChild.textContent=' '+txt;}
+
+// self-play: internal clock so the previz previews without Ableton
+let selfTimer=null,selfTB=0;
+document.getElementById('selfplay').addEventListener('click',function(){
+  if(selfTimer){clearInterval(selfTimer);selfTimer=null;this.classList.remove('on');this.textContent='▶ self-play (no Ableton)';return;}
+  this.classList.add('on');this.textContent='⏸ self-play running';applyBible(tempo,fps,BPB);selfTB=0;
+  const subdiv=4, msPer=(60000/tempo)/subdiv;
+  selfTimer=setInterval(()=>{const bar=Math.floor(selfTB/BPB)+1,beat=(selfTB%BPB)+1;
+    setConn('play','● self-play (internal clock)');onBeat(bar,beat,1);selfTB+=1/subdiv;
+    if(selfTB> (SB.shots[SB.shots.length-1].bar-1+ SB.shots[SB.shots.length-1].hold/BPB+2)*1){} },msPer);
+});
+
+// boot: fetch storyboard (served by relay), fall back to embedded
+(async function(){
+  try{const r=await fetch('storyboard.json',{cache:'no-store'});if(r.ok){SB=await r.json();}}catch(e){}
+  if(SB&&SB.bible){tempo=SB.bible.tempo;fps=SB.bible.fps;BPB=SB.bible.beats_per_bar;document.getElementById('title').textContent=(SB.bible.title||'BLUELINE · M0 Previz');}
+  applyBible(tempo,fps,BPB);buildStrip();renderActive(-1);connect();
+})();
+</script></body></html>
