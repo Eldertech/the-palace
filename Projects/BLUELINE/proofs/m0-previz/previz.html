@@ -266,7 +266,7 @@ function connect(){
   ws.onmessage=ev=>{const m=JSON.parse(ev.data);
     if(m.address==='/transport/bible')applyBible(m.args[0],m.args[1],m.args[2]);
     else if(m.address==='/transport/beat'){setConn('play','● transport playing');onBeat(m.args[0],m.args[1],m.args[2]);}
-    else if(m.address==='/transport/locator')document.getElementById('section').textContent=(m.args[0]||'').toUpperCase();
+    else if(m.address==='/transport/section')document.getElementById('section').textContent=(m.args[0]||'').toUpperCase();  // markers→clips: name+start+length
     // ---- storyboard from Live MIDI clips on the sync track (the marker-replacement) ----
     else if(m.address==='/board/scan')     startScan(m.args[0]);
     else if(m.address==='/board/clip')      addScanClip(m.args[0],m.args[1],m.args[2],m.args[3],m.args[4]);

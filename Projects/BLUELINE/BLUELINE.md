@@ -4,9 +4,9 @@ type: project
 status: active
 pillars: [tools, creation, philosophy]
 born: 2026-06-13
-last_activated: 2026-06-14
-activation_count: 2
-stage: sprout
+last_activated: 2026-06-16
+activation_count: 3
+stage: growing
 confidence: working
 energy: high
 who_leads: loudon
@@ -82,7 +82,9 @@ The June 2026 research found nearly every piece exists off the shelf: the Blende
 
 ## Where it stands
 
-`stage: sprout`. Two keystones proved (2026-06-13): the **conditioning keystone** (Session 1 — Blender geometric passes → SDXL per-channel multi-ControlNet; blocking defeats the front-on default) and the **flow-field spine** (Session 3 — one field, three resolutions, thin per-leg scalar). Then a second conceptual approach (the **AnimaticPlanProposal**) and the **[[Shop/RunPod GPU Backend]]** work converged on the same pipeline from the render side — folded in via [[BLUELINE — Render Backend]] and joined by the [[BLUELINE — Board Record Schema]].
+`stage: growing`. **The five-track technical spike is closed** (2026-06-16) and **M0 previz is the first production rung — verified.** Track-by-track: **I (GPU substrate)** board→render both tiers; **III (clock)** live-validated round-trip from real Ableton, now **clip-addressed** (sections are named MIDI clips on the device's own track — *markers→clips*, not locators); **IV (bench)** pose/camera/environment → board records; **V (motion)** seed-lock defeats stitched-stills flicker (0.94 vs 0.17, the #1 risk, workable). **II (identity)** returned an *honest negative*: the character LoRA scored below its text-only baseline (it learned a hooded costume, not a face) — but the pipeline is sound (DreamBooth dog control +0.35) and the **v2 measurement ruler** shipped by catching it. **M0** then played the 8-shot storyboard *in time* with the live clock — beat-locked, deterministic, shot-accurate (`proofs/m0-previz/m0-report.md`).
+
+The two 2026-06-13 keystones still ground it: the **conditioning keystone** (Session 1 — Blender geometric passes → SDXL per-channel multi-ControlNet; blocking defeats the front-on default) and the **flow-field spine** (Session 3 — one field, three resolutions). The render-side **AnimaticPlanProposal** + **[[Shop/RunPod GPU Backend]]** converged on the same pipeline — folded in via [[BLUELINE — Render Backend]] and joined by the [[BLUELINE — Board Record Schema]].
 
 The plan is now reset around a parallel, substrate-first structure: **[[BLUELINE — Production Plan]]**. Most of BLUELINE turned out to be palace substrate (a Shop-wide GPU backend, an Ableton clock, LoRA + a measurement ruler) that other work needs anyway — so the threads run in parallel, each shipping a Shop capability. Tools are adopted only once proven — no hopeful entries.
 
@@ -94,4 +96,4 @@ The plan is now reset around a parallel, substrate-first structure: **[[BLUELINE
 - `render-backend/` — the AnimaticPlanProposal artifacts (PLAN, runner, graph_spec, models_manifest, board_template).
 - `BLUELINE — Deposit Map.md` — the original proposal of entries/Specialists/skills and the build-vs-adopt map.
 - `BLUELINE — Claude Code Job.md` — the original single-thread spike (Sessions 1 & 3 done; superseded by the Production Plan).
-- `proofs/` — `session-3-flowfield/` and the conditioning keystone artifacts under `Artifacts/Shop/Blender/tests/`.
+- `proofs/` — the per-track + session proofs: `m0-previz/` (the verified previz player + `m0-report.md`), `track-III-clock/` (clock + M4L spec), `track-II-lora/` (LoRA grade + the v2 ruler), `track-IV-bench/`, `track-V-motion/`, `session-2-staging/`, `session-3-flowfield/`.
