@@ -45,7 +45,7 @@ forward_vector: "I want to be the unmistakable origin marker for the palace's op
 **Date:** March 24, 2026.
 **The crystallization:** *Quality is furtherance of our goals, not theirs.*
 
-This entry marks the conversation in which the Four Pillars stopped being four parallel interests and became a single operating framework — a paradigm-level intervention in the sense [[Donella Meadows]] uses the term. It is a breakthrough entry, not a manual: its job is to be the node the link graph reaches when downstream entries say *I emerged-from this*. The full transcript-style expansion lives at [`Artifacts/4 Pillars Framework/4 Pillars Framework - Founding Conversation (Long Form).md`](Artifacts/4%20Pillars%20Framework/4%20Pillars%20Framework%20-%20Founding%20Conversation%20(Long%20Form).md).
+This entry marks the conversation in which the Four Pillars stopped being four parallel interests and became a single operating framework — a paradigm-level intervention in the sense [[Donella Meadows]] uses the term. It is a breakthrough entry, not a manual: its job is to be the node the link graph reaches when downstream entries say *I emerged-from this*. The full transcript-style expansion was retired to git history (it lived in the `4 Pillars Framework/` artifacts folder, deleted 2026-06-16 when that experiment was superseded by Loudon Live; recover via `git log --follow` if ever needed).
 
 ## The Click
 
