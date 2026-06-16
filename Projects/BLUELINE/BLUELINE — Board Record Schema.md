@@ -44,7 +44,7 @@ Session 2's **staging spec** (`proofs/session-2-staging/alley-shot.staging.json`
 
 | Field group | Written by | Read by |
 |---|---|---|
-| `BAR` / `BEAT` / `FRAME` (the clock) | the Clock (Track III, from Ableton locators) | the runner (output naming), the sync mux |
+| `BAR` / `BEAT` / `FRAME` (the clock) | the Clock (Track III, from Ableton section clips) | the runner (output naming), the sync mux |
 | `POSE` / `DEPTH` / `EDGE` / `NORMAL` (control passes) | the Bench (Track IV, Blender geometric emission) | the runner → ControlNet |
 | `CAMERA_GRAMMAR` (named grammar + on-screen-layout solve) | the staging-AI (author-time) → the Bench's camera solver (Track IV) | the Bench (frames the passes), the runner (provenance) |
 | `FLAGGED` (the flag-not-fake boundary) | the staging-AI; each track clears its items as it resolves them | a human + the runner (knows what is a deliberate placeholder vs final) |
@@ -58,10 +58,12 @@ Session 2's **staging spec** (`proofs/session-2-staging/alley-shot.staging.json`
 Add to each `# === BOARD ===` block:
 
 ```
-BAR: 17                      # bar number in the Live set (locator-addressed)
+BAR: 17                      # bar number in the Live set (section-clip-addressed; Track III)
 BEAT: 1.0                    # beat within the bar (fixed tempo → exact frame)
 FRAME: 2448                  # derived: (bar,beat)→frame at locked fps; runner can compute
-HOLD: 4                      # beats this board holds (comic register) — 0 if it expands
+SECTION: verse               # the named MIDI clip (span) this board sits in — from /transport/section
+HOLD: 4                      # beats this board holds (comic register) — 0 if it expands;
+                             # can derive from the section clip's length_bars now that sections are spans
 EDGE: edge/04A_canny.png     # the SDXL edge channel (was missing)
 FLOW: fields/scene04.flow    # handle to the shared flow field (Track V), optional
 CAMERA_GRAMMAR: OTS | shoulder@0.30,0.74 vp@0.58,0.46 | lens 34
@@ -96,4 +98,4 @@ POSITIVE   NEG   POSE   DEPTH   EDGE   IDREF   SAMPLER   SAVE
 
 The runner names outputs `out/<tier>/<SHOT_ID>_<FRAME>_*.png`. Because `FRAME` is in the record, the rendered sequence is **sync-addressable** — the mux (or the single Live start-trigger) lands every board on its beat with no manual alignment.
 
-<!-- CLAUDE → LOUDON: open question — should HOLD/expansion live in the record (declarative) or be computed by the Clock from beat spacing? Drafted as a record field for now; revisit when Track III and Track V meet. -->
+<!-- CLAUDE → LOUDON: open question (now half-answered by markers→clips, 2026-06-16) — HOLD/expansion can be computed by the Clock from the section clip's length_bars span, since sections are no longer points but durations. Still drafted as a declarative record field for the comic register; revisit the auto-derive when Track III and Track V meet. -->

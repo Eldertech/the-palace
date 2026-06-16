@@ -1,13 +1,24 @@
 # BLUELINE Clock — Max for Live device build spec
 
+> **Status (2026-06-16):** built and **live-validated round-trip** from Ableton — the transport+clock
+> path runs perfectly with the patcher edit window closed (the `[qmetro]` + `valid()` self-heal fix holds,
+> bug retired). **Section addressing has moved off Ableton locators/markers and onto the device's own-track
+> MIDI clips** (§1, §2b): a clip is a named *span* (name + start + length), so sections are durations, not
+> points. This spec is the as-built/as-designed reference. **Wire follow-up:** the OSC message renamed
+> `/transport/locator` → `/transport/section`, so the harness (`transport_sim.py`, `clock_client.html`)
+> needs the matching rename before the next live run; the relay is format-agnostic and unaffected.
+
 **What you're building:** a small M4L device that reads Ableton Live's transport and emits the
 BLUELINE OSC transport contract to the local relay, so the browser clock client (and, later, the
 render) stays beat-locked to your Live session. It is the live source the `transport_sim.py`
 stand-in was faking. **Nothing downstream changes** — build this to the contract and the relay +
 client + determinism keep working unmodified.
 
-**Where it goes:** a **Max Audio Effect** (or MIDI Effect) device dropped on the **Master track**.
-It produces no audio — it only observes the transport and sends UDP. One per Set.
+**Where it goes:** a **Max Audio Effect** (or MIDI Effect) device dropped on the **section track** —
+the arrangement track whose **named MIDI clips** mark the song's sections (intro / verse / drop). The
+device reads its *own* host track's clips, so **placement is the configuration**: whatever track it sits
+on is the one whose clips become sections — no separate setup. It produces no audio — it only observes the
+transport and sends UDP. One per Set.
 
 **Target:** `127.0.0.1 : 9001` (the relay's OSC/UDP port). Relay + client already built and proven in
 `Projects/BLUELINE/proofs/track-III-clock/` (`osc_ws_relay.py`, `clock_client.html`).
@@ -17,11 +28,14 @@ It produces no audio — it only observes the transport and sends UDP. One per S
 ## 1. The contract it must emit (do not change these — the client parses them)
 
 ```
-/transport/bible    tempo:float  fps:int  beats_per_bar:int     # once on load + on tempo/sig change
-/transport/beat     bar:int  beat:float  playing:int            # repeatedly while running (~50 Hz is fine)
-/transport/locator  name:string  bar:int                        # when the play-head enters a bar that has a locator
+/transport/bible    tempo:float  fps:int  beats_per_bar:int                # once on load + on tempo/sig change
+/transport/beat     bar:int  beat:float  playing:int                       # repeatedly while running (~50 Hz is fine)
+/transport/section  name:string  start_bar:int  length_bars:float          # when the play-head enters a named MIDI clip on the device's track
 ```
 
+- A **section** is a named MIDI clip on the device's host track: `name` is the clip name, `start_bar`
+  is its 1-indexed start bar, `length_bars` is its length in bars. It is a *span*, not a point — this is
+  the markers→clips upgrade, and it is what supplies a board's `HOLD`/duration downstream.
 - `bar` is **1-indexed**; `beat` is the **1-indexed position within the bar** (1.0 at the downbeat,
   2.5 on the "and" of beat 2, …). "Beat" = quarter note (matches BPM).
 - `fps` is the **locked render fps** (a number *you* set in the device UI — 24, 30, …). It is NOT a
@@ -34,7 +48,7 @@ It produces no audio — it only observes the transport and sends UDP. One per S
 
 ## 2. The build (recommended path: `[js]` + the Live API)
 
-This path handles tempo, time-signature, AND locators in ~30 lines, accurate to the poll rate. Delivery
+This path handles tempo, time-signature, AND section clips in ~30 lines, accurate to the poll rate. Delivery
 jitter doesn't matter for the **render** (frames are computed from bar.beat *arithmetically*, so the
 result is exact regardless of when a message lands); it only affects how smooth the *live readout*
 looks. (The simulator measured ~4.6 ms σ; the live device over Live's scheduler measured higher — tens
@@ -106,24 +120,33 @@ outlets = 1;
 
 var FPS = 24;                 // the LOCKED render fps (set from the UI: message "fps 24")
 var api = null;               // the ONE persistent LiveAPI on live_set
+var track = null;             // the device's OWN track — its MIDI clips are the sections
 var sigN = 4;                 // cached beats-per-bar (refreshed in refresh())
-var cues = [];                // cached [[bar, name], ...]
-var lastLocatorBar = -1;
+var sections = [];            // cached [[start_bar, length_bars, name], ...]  (markers->clips)
+var lastSection = -1;         // index of the section the play-head is currently inside
 
 // validity-guarded LiveAPI: created once, re-created if it ever goes invalid. (api.id==0
 // means "no valid object" — happens if it's touched before the device is fully live.)
 function valid() { return api && api.id != 0; }
-function init() { api = new LiveAPI(null, "live_set"); refresh(); }   // call from [live.thisdevice]
+function init() {                                   // call from [live.thisdevice]
+    api = new LiveAPI(null, "live_set");
+    track = new LiveAPI(null, "this_device canonical_parent");  // the host track (placement = config)
+    refresh();
+}
 
-function refresh() {          // cache signature + cue points (cheap, on load / tempo-sig change)
+function refresh() {          // cache signature + this track's arrangement clips (on load / change)
     if (!valid()) api = new LiveAPI(null, "live_set");
+    if (!track || track.id == 0) track = new LiveAPI(null, "this_device canonical_parent");
     sigN = api.get("signature_numerator")[0];      // assumes x/4 meter
-    cues = [];
-    var cps = api.get("cue_points");               // ["id", id1, "id", id2, ...]
-    for (var i = 1; i < cps.length; i += 2) {
-        var cp = new LiveAPI(null, "id " + cps[i]); // created only here, not per-tick
-        cues.push([Math.floor(cp.get("time")[0] / sigN) + 1, cp.get("name")[0]]);
+    sections = [];
+    var clips = track.get("arrangement_clips");    // ["id", id1, "id", id2, ...] — named MIDI clips
+    for (var i = 1; i < clips.length; i += 2) {
+        var c = new LiveAPI(null, "id " + clips[i]);   // created only here, not per-tick
+        var startBar = Math.floor(c.get("start_time")[0] / sigN) + 1;  // 1-indexed start bar
+        var lenBars  = c.get("length")[0] / sigN;                      // span in bars
+        sections.push([startBar, lenBars, c.get("name")[0]]);
     }
+    sections.sort(function (a, b) { return a[0] - b[0]; });
 }
 
 function fps(v) { FPS = v; }                        // message: "fps 30"
@@ -143,18 +166,23 @@ function poll() {                                   // light: 2 gets/tick on the
     var beatInBar = (beats % sigN) + 1;             // 1-indexed float
     outlet(0, "/transport/beat", bar, beatInBar, playing);
 
-    if (bar !== lastLocatorBar) {                   // emit a cached locator when we enter its bar
-        lastLocatorBar = bar;
-        for (var i = 0; i < cues.length; i++)
-            if (cues[i][0] === bar) { outlet(0, "/transport/locator", cues[i][1], bar); break; }
+    var cur = -1;                                   // which section span contains this bar?
+    for (var i = 0; i < sections.length; i++) {
+        var s0 = sections[i][0], s1 = s0 + sections[i][1];
+        if (bar >= s0 && bar < s1) { cur = i; break; }
+    }
+    if (cur !== lastSection) {                       // emit on entering a different section clip
+        lastSection = cur;
+        if (cur >= 0)
+            outlet(0, "/transport/section", sections[cur][2], sections[cur][0], sections[cur][1]);
     }
 }
 ```
 
 That's the whole device. `bible` refreshes the caches + sends the clock; `poll` does just two
-`.get()`s on the **reused** LiveAPI; locators come from the cached list. **The reuse + the gentler
-metro (below) are what keep Ableton responsive** — the first version froze Live by creating LiveAPI
-objects in the poll loop.
+`.get()`s on the **reused** LiveAPI; sections come from the cached list of this track's clips. **The
+reuse + the gentler metro (below) are what keep Ableton responsive** — the first version froze Live by
+creating LiveAPI objects in the poll loop.
 
 ---
 
@@ -163,10 +191,11 @@ objects in the poll loop.
 1. Start the relay:
    `_tools/ComfyUI/venv/bin/python Projects/BLUELINE/proofs/track-III-clock/osc_ws_relay.py`
 2. Open `http://127.0.0.1:8770` in a browser (the clock client).
-3. Drop the device on the Master track; set FPS to 24; set the Set tempo to **120** (a locked pair).
+3. Drop the device on the **section track** (named MIDI clips: intro / verse / drop); set FPS to 24;
+   set the Set tempo to **120** (a locked pair).
 4. Press **Play** in Live. The client should show: BIBLE = 120 BPM / 24 fps / FPB 12 (exact);
    bar.beat advancing; **on-beats landing on whole frames** (residual 0.000); jitter a few ms;
-   locators appearing as the play-head passes them.
+   the section name + span updating as the play-head enters each clip.
 5. Set tempo to **128** and watch the client flip to `DRIFTS ✗` with non-zero residuals — the device
    is honest about a bad tempo/fps pair (it just reports; the client catches the drift).
 
@@ -198,6 +227,8 @@ only tightens the source. Not needed for the first device; the poll path is alre
 ## 6. Acceptance
 
 The device is done when, with the relay + client running and a locked tempo/fps, pressing Play in Live
-makes the client show on-beats on whole frames with low jitter and locators arriving on their bars —
-i.e. it reproduces the `transport_sim.py` proof from a **live** Set. At that point `transport_sim.py`
-is retired to a test fixture and this device becomes the clock source for every music-synced render.
+makes the client show on-beats on whole frames with low jitter and section clips arriving as named spans
+as the play-head enters them — i.e. it reproduces the `transport_sim.py` proof from a **live** Set.
+**Met (2026-06-16):** the transport+clock path is live-validated round-trip and runs with the editor
+closed; `transport_sim.py` is now a test fixture and this device is the clock source for every
+music-synced render. The remaining open item is the wire rename in the harness (see the Status banner).

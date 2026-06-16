@@ -69,7 +69,7 @@ The result is five tracks plus a shared spine. Your earlier examples are here �
 
 - **Serves all palace work?** Yes — every music-synced visual, all of Loudon Live, not just BLUELINE. This is the seam that turns a render pipeline into an *instrument*.
 - **Biggest unknown:** is fixed-tempo→frame truly deterministic end to end, and can a browser/render stay beat-locked to a live Ableton session?
-- **Smallest useful test:** a Max for Live device reads `bar.beat.tick` + locator/section names → OSC → a small local WebSocket relay → a tiny client that logs beat-accurate timestamps and proves **beats land on whole frames** at the locked tempo/fps. Then trigger one short pre-rendered sequence in sync (render-once-and-mux, or single start-trigger).
+- **Smallest useful test:** a Max for Live device reads `bar.beat.tick` + **named MIDI clips on its own track as sections** (markers→clips, 2026-06-16 — clips are spans, not points) → OSC → a small local WebSocket relay → a tiny client that logs beat-accurate timestamps and proves **beats land on whole frames** at the locked tempo/fps. Then trigger one short pre-rendered sequence in sync (render-once-and-mux, or single start-trigger). **✅ live-validated round-trip from Ableton (2026-06-16).**
 - **Ships to palace:** the M4L device + OSC/WS relay as Shop machinery; the `(bar,beat)→frame` determinism recipe (feeds [[BLUELINE — Board Record Schema]]). Uses the `ableton-extensions` skill.
 - **Runs:** Mac + browser, **no GPU**. **Starts now**, fully independent.
 
