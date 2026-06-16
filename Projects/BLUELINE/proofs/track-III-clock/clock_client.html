@@ -32,7 +32,7 @@
     <div class="card">
       <div class="k">now playing</div>
       <div class="big" id="barbeat">—.—</div>
-      <div class="mid">frame <span id="frame" style="color:var(--amber)">—</span> · <span id="locator" style="color:var(--dim)">—</span></div>
+      <div class="mid">frame <span id="frame" style="color:var(--amber)">—</span> · <span id="section" style="color:var(--dim)">—</span></div>
       <div class="verdict" id="whole">—</div>
     </div>
     <div class="card">
@@ -133,6 +133,6 @@ ws.onmessage=ev=>{
   const m=JSON.parse(ev.data);
   if(m.address==="/transport/bible") onBible(m.args[0],m.args[1],m.args[2]);
   else if(m.address==="/transport/beat") onBeat(m.args[0],m.args[1],m.args[2]);
-  else if(m.address==="/transport/locator") $("locator").textContent=m.args[0]+" (bar "+m.args[1]+")";
+  else if(m.address==="/transport/section") $("section").textContent=m.args[0]+" (bars "+m.args[1]+"–"+(m.args[1]+m.args[2])+")";
 };
 </script></body></html>
