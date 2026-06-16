@@ -67,9 +67,6 @@ The single-agent protocol below remains valid for: palaces under ~20 entries, qu
 
 **Failure mode:** If the palace is only partially readable (some files inaccessible), produce a partial topology report and note which entries were unreachable. A partial Weave is valid. Do not commit until all accessible files have been processed.
 
-**Git commit:** `Weave — [date] — [N links added, N entries promoted, N orphans flagged, N vectors tuned, N flags closed, N orphans recovered/discarded]`
-*(From Cowork, commit via the lock-safe committer; Mac-side Claude Code, `git commit` normally — see [[CLAUDE]] §Committing from Cowork.)*
-
 ---
 
 ## Protocol

@@ -25,12 +25,6 @@ links:
 
 **Trigger:** "Let's walk"
 
-**Access vectors:**
-- *Full:* Claude Code / Cowork (filesystem read + git for metadata commits)
-- *Full read, no write:* claude.ai online (can read palace via GitHub raw URLs once pushed; cannot write metadata updates)
-- *Manual:* Obsidian (human walks the graph manually using Obsidian's graph view or link traversal)
-- *Not supported:* GitHub cloud alone (read-only, no traversal assistance)
-
 **Preconditions:**
 1. At least one palace entry exists with typed links to at least one other entry
 2. Palace folder is accessible via the current vector
@@ -45,7 +39,6 @@ links:
 **Failure mode:** If the palace is partially readable (some files inaccessible), note which entries were unreachable and proceed with what is available. A partial Walk is valid. An unstarted Walk is not — if nothing is readable, halt and report.
 
 **Git commit:** Only if metadata was updated. `Walk — [date] — [starting entry] — metadata updates`
-*(From Cowork, commit via the lock-safe committer; Mac-side Claude Code, `git commit` normally — see [[CLAUDE]] §Committing from Cowork.)*
 
 ---
 

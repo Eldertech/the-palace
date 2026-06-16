@@ -69,20 +69,7 @@ After writing a new entry, check whether existing entries should link BACK to th
 
 ### The Typed Link Ontology
 
-Use only these relationship types in YAML frontmatter links:
-
-- `connects-to` — general association (default, weakest)
-- `mirrors` — deep structural identity across different domains
-- `enables` — A is a precondition or generative force for B (directed A→B)
-- `deepens` — A is a more developed articulation of the more-foundational B (directed A→B; source elaborates, target is the ground)
-- `spawned` — A directly produced B as output (directed A→B; origin → product)
-- `emerged-from` — A crystallized from its origin B (directed A→B; source is the result, target is the origin)
-- `contradicts` — productive tension
-- `couples-with` — ideas that oscillate together
-- `exemplifies` — A is a concrete instance of the more general B (directed A→B)
-- `member-of` — A belongs to a named collection, family, or registry B (directed A→B)
-
-Do not introduce new link types without discussing with Loudon. When unsure, use `connects-to`.
+Use only the link types defined in [[SCHEMA]] §4 (auto-loaded — that is the single source for their directionality and labels): `connects-to`, `mirrors`, `enables`, `deepens`, `spawned`, `emerged-from`, `contradicts`, `couples-with`, `exemplifies`, `member-of`. When unsure, use `connects-to`; do not introduce new link types without discussing with Loudon.
 
 YAML frontmatter links are reserved for structural relationships that matter. Body text [[wiki links]] are casual and abundant. YAML links are curated and intentional.
 
@@ -98,11 +85,11 @@ Currently split: [[Deposit Ceremony]] + [[Deposit Ceremony — Context]]; [[Harv
 
 A knowledge entry may have a sibling folder of the same name (no extension) holding its owned files. The `.md` is the canonical surface; the folder is its private substrate. Lazy creation only — do not create empty bundles.
 
-When a ceremony (Handoff, Deposit, Enrichment) needs a file to live somewhere entry-owned, create the bundle on demand. The bundle is plumbing, not a thing you ritually invoke.
+When a ceremony (Baton, Deposit, Enrichment) needs a file to live somewhere entry-owned, create the bundle on demand. The bundle is plumbing, not a thing you ritually invoke.
 
 File naming inside the bundle: `[Entry] — [type] [— qualifier].md`. The entry-prefix is required because Obsidian's wikilink namespace is flat across the vault.
 
-When a bundle file is consumed (e.g., a handoff that has been picked up), move it to `[Entry]/Archive/` rather than deleting. Git carries history; archive preserves locality.
+When a bundle file is consumed (e.g., a spent enrichment card or superseded source), move it to `[Entry]/Archive/` rather than deleting. Git carries history; archive preserves locality. (Batons are the exception — deleted on pickup, with git as their archive; see [[Baton Ceremony]].)
 
 Bundle files are not first-class entries. They do not appear in Weave audits, do not need full entry frontmatter (no `type`, `pillars`, or `stage`), and do not require typed-link participation in the palace graph. But every bundle file carries minimal YAML — title, born, at least one link to the parent entry, and a short forward_vector — so every file in the palace remains self-describing.
 
