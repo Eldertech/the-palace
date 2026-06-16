@@ -1,0 +1,70 @@
+{
+  "_comment": "The palace worktree symlink manifest — the single source of truth for what a new git worktree must borrow from the canonical main worktree. A fresh worktree contains only TRACKED files; everything gitignored (venvs, model weights, node_modules, secrets) is absent and must be symlinked back to the main worktree that owns it. Read by _ops/worktree/new-worktree.mjs. See SKILL.md for the process + rationale.",
+
+  "owner_note": "All symlinks point at the CANONICAL main worktree (git rev-parse --show-toplevel of the primary checkout). That one install is the owner; every other worktree borrows it. If the main worktree's path moves, the links break — re-run with the new owner.",
+
+  "profiles": {
+    "docs":      [],
+    "shop":      ["_tools", ".venvs", ".claude/settings.local.json"],
+    "blueline":  ["_tools", "RunPod Images/studio/config.json", ".claude/settings.local.json"],
+    "stigmergy": ["_ops/stigmergy/app/node_modules", ".claude/settings.local.json"],
+    "full":      ["_tools", ".venvs", "RunPod Images/studio/config.json", "_ops/stigmergy/app/node_modules", ".claude/settings.local.json"]
+  },
+
+  "links": [
+    {
+      "path": "_tools",
+      "kind": "dir",
+      "size": "16G",
+      "secret": false,
+      "regenerable": false,
+      "why": "ComfyUI app + its venv + ~13 GB of model weights (SDXL, xinsir ControlNets), plus stable-audio. Every Shop GPU/render job and all BLUELINE local rendering needs it. Not cheaply regenerable — re-downloading the weights is the whole cost. Rebuild recipe if ever needed: Shop/ComfyUI/ComfyUI — local-install.md."
+    },
+    {
+      "path": ".venvs",
+      "kind": "dir",
+      "size": "1.1G",
+      "secret": false,
+      "regenerable": "slow — pip install per Specialist",
+      "why": "Per-Specialist Python venvs (Kokoro, Whisper, …) live in .venvs/<specialist>/. Symlink to skip rebuilding each."
+    },
+    {
+      "path": "RunPod Images/studio/config.json",
+      "kind": "file",
+      "size": "tiny",
+      "secret": true,
+      "regenerable": false,
+      "why": "RunPod API key + endpoint id (gitignored secret). Needed to dispatch cloud renders. The parent 'RunPod Images/studio/' is tracked and already present in the worktree — only this file is missing, so symlink the FILE, not the dir. Never commit it."
+    },
+    {
+      "path": "_ops/stigmergy/app/node_modules",
+      "kind": "dir",
+      "size": "237M",
+      "secret": false,
+      "regenerable": "npm --prefix _ops/stigmergy/app install",
+      "why": "STIGMERGY React/Vite app dependencies. Regenerable but slow; symlinking shares the same install (safe — same machine/arch). Only needed if the worktree runs or tests the STIGMERGY app."
+    },
+    {
+      "path": ".claude/settings.local.json",
+      "kind": "file",
+      "size": "tiny",
+      "secret": false,
+      "regenerable": "re-approve permissions in the new worktree",
+      "why": "Local permission allowlists + settings. Symlink to inherit your already-approved commands instead of re-approving from scratch."
+    }
+  ],
+
+  "never_symlink": [
+    "_ops/stigmergy/.actuator/  ·  .actuator-steward/  ·  .actuator-companion/ — per-process runtime pid/log + transcripts. Sharing these CROSS-WIRES running stewards across worktrees. Must stay per-worktree.",
+    "Enrichment/.server.* / .worker.* — runtime pid/log markers, per-worktree.",
+    "__pycache__/ · _manim_media/ · **/.remotion/ · .vite/ · **/_*.mp4 · **/_*.png · *.asd — regenerable caches; let them rebuild from source in the worktree.",
+    "**/*.json.tmp — atomic-write temp intermediates, never shared."
+  ],
+
+  "memory": {
+    "why": "Auto-memory (~/.claude/projects/<slug>/memory/) is keyed to the worktree's ABSOLUTE PATH, not the repo. A worktree at a new path gets a fresh, empty memory — you lose all accumulated palace memories (how Loudon works, the git hazards, etc.). CLAUDE.md still loads (it's tracked in the repo); only the auto-memory is path-keyed.",
+    "canonical": "~/.claude/projects/-Users-loudonstearns-Documents-The-Palace/memory",
+    "fix": "Symlink the new worktree's memory/ dir to the canonical one. The new slug is the worktree's absolute path with every '/' replaced by '-'. new-worktree.mjs prints the exact ready-to-run command for the worktree it creates (run with --memory to apply it automatically).",
+    "caveat": "Outside the repo (touches ~/.claude). Sharing memory means writes from either worktree land in the same files — intended for continuity, but be aware it is shared state."
+  }
+}
