@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>BLUELINE — visual rating sheet</title>
+<style>
+  :root{--bg:#15161a;--panel:#1d1f25;--ink:#e9e7e2;--dim:#8b8d96;--amber:#e0a83a;--good:#7bbf6a;--bad:#c98a8a;--line:#2c2e36;--box:#23262d}
+  *{box-sizing:border-box} html,body{margin:0;background:var(--bg);color:var(--ink);font-family:"JetBrains Mono",ui-monospace,Menlo,monospace}
+  .wrap{max-width:1040px;margin:0 auto;padding:22px}
+  h1{font-family:"Anton",Impact,sans-serif;font-weight:400;letter-spacing:.04em;text-transform:uppercase;font-size:26px;margin:0 0 2px}
+  .sub{color:var(--dim);font-style:italic;font-family:Cormorant,Georgia,serif;font-size:17px;margin-bottom:6px}
+  .instr{background:var(--panel);border:1px solid var(--line);border-left:3px solid var(--amber);border-radius:8px;padding:12px 14px;margin:14px 0;font-size:14px;line-height:1.5}
+  .group{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:14px 16px;margin:14px 0}
+  .glabel{font-family:"Anton",Impact,sans-serif;letter-spacing:.04em;text-transform:uppercase;font-size:17px;color:var(--ink)}
+  .strip{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:10px 0}
+  .cell{position:relative} .cell img{width:100%;border-radius:6px;border:1px solid var(--line);cursor:zoom-in;display:block;aspect-ratio:1/1;object-fit:cover}
+  .cell .tag{position:absolute;left:4px;bottom:4px;font-size:9px;background:rgba(0,0,0,.6);padding:1px 5px;border-radius:3px;color:var(--dim)}
+  .cell.flagged img{border-color:var(--bad);box-shadow:0 0 0 2px var(--bad)}
+  .crit{margin:10px 0} .crit .q{font-size:13px;color:var(--amber);margin-bottom:5px}
+  .scale{display:flex;gap:5px} .scale button{flex:0 0 auto;width:38px;height:34px;background:var(--box);color:var(--ink);border:1px solid var(--line);border-radius:6px;cursor:pointer;font-family:inherit;font-size:14px}
+  .scale button.sel{background:var(--amber);color:#15161a;border-color:var(--amber);font-weight:bold}
+  .flagrow{display:flex;gap:14px;flex-wrap:wrap;font-size:12px;color:var(--dim)}
+  .flagrow label{cursor:pointer;user-select:none} .flagrow input{vertical-align:middle;margin-right:4px}
+  textarea{width:100%;background:var(--box);color:var(--ink);border:1px solid var(--line);border-radius:6px;padding:8px;font-family:inherit;font-size:13px;resize:vertical;min-height:42px}
+  .rank{display:flex;gap:8px;flex-wrap:wrap} .rank .opt{background:var(--box);border:1px solid var(--line);border-radius:6px;padding:6px 12px;cursor:pointer;font-size:13px}
+  .rank .opt.picked{border-color:var(--good);color:var(--good)} .rank .opt .n{color:var(--amber);font-weight:bold;margin-right:6px}
+  .choice label{margin-right:16px;font-size:13px;cursor:pointer}
+  .overall{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:14px 16px;margin:14px 0}
+  .bar{position:sticky;bottom:0;background:var(--bg);padding:12px 0;border-top:1px solid var(--line);margin-top:14px}
+  .btn{background:var(--amber);color:#15161a;border:none;border-radius:7px;padding:10px 18px;font-family:inherit;font-weight:bold;font-size:14px;cursor:pointer}
+  .btn.sec{background:var(--box);color:var(--ink);border:1px solid var(--line);font-weight:normal}
+  #out{margin-top:10px;display:none} #copied{color:var(--good);font-size:12px;margin-left:10px}
+  #lightbox{position:fixed;inset:0;background:rgba(0,0,0,.9);display:none;align-items:center;justify-content:center;z-index:50;cursor:zoom-out}
+  #lightbox img{max-width:92vw;max-height:92vh;border-radius:6px}
+  #foot{color:var(--dim);font-size:11px;margin-top:16px}
+</style></head>
+<body><div class="wrap">
+  <h1 id="title">Visual rating sheet</h1>
+  <div class="sub">your eye + the metrics — paste the exported JSON back into chat</div>
+  <div class="instr" id="instructions">loading…</div>
+  <div id="groups"></div>
+  <div class="overall" id="overall"></div>
+  <div class="bar">
+    <button class="btn" onclick="exportJSON()">Export JSON ⧉</button>
+    <button class="btn sec" onclick="document.getElementById('out').style.display='block';">Show JSON</button>
+    <span id="copied"></span>
+    <div id="out"><textarea id="json" rows="10" readonly onclick="this.select()"></textarea></div>
+  </div>
+  <div id="foot">Loudon Live · Autodidact Polymaths</div>
+</div>
+<div id="lightbox" onclick="this.style.display='none'"><img id="lbimg"></div>
+<script>
+let M=null; const state={groups:{}, overall:{}};
+const $=id=>document.getElementById(id);
+function lb(src){$("lbimg").src=src;$("lightbox").style.display="flex";}
+
+function renderScale(gid,crit){
+  const wrap=document.createElement("div"); wrap.className="crit";
+  wrap.innerHTML=`<div class="q">${crit.label}</div>`;
+  const row=document.createElement("div"); row.className="scale";
+  for(let v=1;v<=(crit.max||5);v++){
+    const b=document.createElement("button"); b.textContent=v;
+    b.onclick=()=>{ state.groups[gid][crit.key]=v; [...row.children].forEach(c=>c.classList.remove("sel")); b.classList.add("sel"); };
+    row.appendChild(b);
+  }
+  wrap.appendChild(row); return wrap;
+}
+function renderFlag(gid,crit,group){
+  const wrap=document.createElement("div"); wrap.className="crit";
+  wrap.innerHTML=`<div class="q">${crit.label}</div>`;
+  const row=document.createElement("div"); row.className="flagrow";
+  state.groups[gid][crit.key]=[];
+  group.images.forEach((img,i)=>{
+    const id=group.id+"_"+i;
+    const lab=document.createElement("label");
+    lab.innerHTML=`<input type="checkbox"> #${i+1}`;
+    lab.querySelector("input").onchange=e=>{
+      const arr=state.groups[gid][crit.key];
+      const cell=document.getElementById("cell_"+id);
+      if(e.target.checked){ arr.push(i+1); cell.classList.add("flagged"); }
+      else { arr.splice(arr.indexOf(i+1),1); cell.classList.remove("flagged"); }
+    };
+    row.appendChild(lab);
+  });
+  wrap.appendChild(row); return wrap;
+}
+function renderGroups(){
+  const host=$("groups");
+  M.groups.forEach(g=>{
+    state.groups[g.id]={};
+    const box=document.createElement("div"); box.className="group";
+    box.innerHTML=`<div class="glabel">${g.label}</div>`;
+    const strip=document.createElement("div"); strip.className="strip";
+    g.images.forEach((img,i)=>{
+      const c=document.createElement("div"); c.className="cell"; c.id="cell_"+g.id+"_"+i;
+      c.innerHTML=`<img src="${img}" onclick="lb('${img}')"><span class="tag">#${i+1}</span>`;
+      strip.appendChild(c);
+    });
+    box.appendChild(strip);
+    (M.criteria||[]).forEach(crit=>{
+      box.appendChild(crit.type==="flag"?renderFlag(g.id,crit,g):renderScale(g.id,crit));
+    });
+    if(M.perGroupNote){
+      const t=document.createElement("textarea"); t.placeholder="notes on "+g.label+" (optional)";
+      t.oninput=e=>state.groups[g.id].note=e.target.value; box.appendChild(t);
+    }
+    host.appendChild(box);
+  });
+}
+function renderOverall(){
+  const host=$("overall"); host.innerHTML=`<div class="glabel">Overall</div>`;
+  (M.overall||[]).forEach(q=>{
+    const wrap=document.createElement("div"); wrap.className="crit";
+    wrap.innerHTML=`<div class="q">${q.label}</div>`;
+    if(q.type==="rank"){
+      state.overall[q.key]=[];
+      const row=document.createElement("div"); row.className="rank";
+      q.options.forEach(o=>{
+        const el=document.createElement("div"); el.className="opt"; el.dataset.o=o; el.innerHTML=`<span class="n"></span>${o}`;
+        el.onclick=()=>{
+          const arr=state.overall[q.key]; const idx=arr.indexOf(o);
+          if(idx>=0){ arr.splice(idx,1); } else { arr.push(o); }
+          [...row.children].forEach(c=>{const p=arr.indexOf(c.dataset.o); c.classList.toggle("picked",p>=0); c.querySelector(".n").textContent=p>=0?(p+1):"";});
+        };
+        row.appendChild(el);
+      });
+      wrap.appendChild(row);
+      const hint=document.createElement("div"); hint.style.cssText="font-size:11px;color:var(--dim);margin-top:4px"; hint.textContent="click best→worst (click again to remove)"; wrap.appendChild(hint);
+    } else if(q.type==="choice"){
+      const row=document.createElement("div"); row.className="choice";
+      q.options.forEach(o=>{
+        const lab=document.createElement("label"); lab.innerHTML=`<input type="radio" name="${q.key}" value="${o}"> ${o}`;
+        lab.querySelector("input").onchange=e=>state.overall[q.key]=e.target.value; row.appendChild(lab);
+      });
+      wrap.appendChild(row);
+    } else {
+      const t=document.createElement("textarea"); t.placeholder=q.label; t.oninput=e=>state.overall[q.key]=e.target.value; wrap.appendChild(t);
+    }
+    host.appendChild(wrap);
+  });
+}
+function exportJSON(){
+  const payload={ task:M.task, groups:state.groups, overall:state.overall };
+  const s=JSON.stringify(payload,null,2);
+  $("json").value=s; $("out").style.display="block";
+  navigator.clipboard?.writeText(s).then(
+    ()=>{$("copied").textContent="copied — paste into chat ✓"; setTimeout(()=>$("copied").textContent="",4000);},
+    ()=>{$("copied").textContent="select the box + copy manually";}
+  );
+}
+(async function(){
+  M=await (await fetch("rating_manifest.json",{cache:"no-store"})).json();
+  $("title").textContent=M.title||"Visual rating sheet";
+  $("instructions").innerHTML=M.instructions||"";
+  renderGroups(); renderOverall();
+})();
+</script></body></html>

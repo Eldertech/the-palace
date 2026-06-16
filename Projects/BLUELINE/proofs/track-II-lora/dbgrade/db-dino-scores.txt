@@ -1,0 +1,13 @@
+loading DINOv2 ...
+
+=== DreamBooth control — DINO subject fidelity (across 4 contexts/seeds) ===
+set                    imgs     DINO
+dog_base                  4    0.422
+dog_lora                  4    0.776
+
+Pipeline verdict — LoRA should be HIGH and clearly above baseline:
+  dog           LoRA 0.776  vs baseline 0.422  (lift +0.353)  -> PIPELINE OK ✓
+  (compare to r4ng3r FLUX LoRA DINO 0.317, which was BELOW its baseline)
+
+contact sheet -> /Users/loudonstearns/Documents/The Palace/Projects/BLUELINE/proofs/track-II-lora/dbgrade/CONTACT-dbcontrol.png
+DB_SCORE_DONE

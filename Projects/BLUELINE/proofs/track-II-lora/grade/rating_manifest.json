@@ -1,0 +1,22 @@
+{
+  "task": "r4ng3r-lora-grade",
+  "title": "r4ng3r LoRA grade — does identity hold?",
+  "instructions": "Each row below is the SAME render setup — the r4ng3r ranger across 4 new scenes (river / running / kneeling / cliff), each at a DIFFERENT seed. Two of the rows use a trained LoRA, two are the model with no LoRA (just a text description). I want your eye on the question the metrics answered harshly: <b>does the character stay one consistent person across the four?</b> and <b>does she match the brief</b> (young woman ranger, freckled, auburn braid, weathered green hooded cloak over leather armor)?<br><br>For each row: rate <b>identity consistency</b> (1 = four different people, 5 = clearly the same person) and <b>character match</b> (1 = nothing like the brief, 5 = nails it), and flag any image that's off-character or broken. Then rank the four rows and tell me which you'd actually use. Click any image to enlarge. When done, hit <b>Export JSON</b> and paste it back to me.",
+  "criteria": [
+    {"key": "identity", "label": "Identity consistency — same person across all 4? (1–5)", "type": "scale", "max": 5},
+    {"key": "character", "label": "Character match to the brief? (1–5)", "type": "scale", "max": 5},
+    {"key": "offchar", "label": "Flag any off-character / broken renders:", "type": "flag"}
+  ],
+  "perGroupNote": true,
+  "groups": [
+    {"id": "flux_lora", "label": "Row A — FLUX + LoRA", "images": ["flux_lora_0_seed101.png","flux_lora_1_seed202.png","flux_lora_2_seed303.png","flux_lora_3_seed404.png"]},
+    {"id": "flux_base", "label": "Row B — FLUX, no LoRA (description only)", "images": ["flux_base_0_seed101.png","flux_base_1_seed202.png","flux_base_2_seed303.png","flux_base_3_seed404.png"]},
+    {"id": "sdxl_lora", "label": "Row C — SDXL + LoRA", "images": ["sdxl_lora_0_seed101.png","sdxl_lora_1_seed202.png","sdxl_lora_2_seed303.png","sdxl_lora_3_seed404.png"]},
+    {"id": "sdxl_base", "label": "Row D — SDXL, no LoRA (description only)", "images": ["sdxl_base_0_seed101.png","sdxl_base_1_seed202.png","sdxl_base_2_seed303.png","sdxl_base_3_seed404.png"]}
+  ],
+  "overall": [
+    {"key": "ranking", "label": "Rank the rows best → worst for holding identity", "type": "rank", "options": ["flux_lora","flux_base","sdxl_lora","sdxl_base"]},
+    {"key": "usable", "label": "Which row would you actually use?", "type": "choice", "options": ["flux_lora","flux_base","sdxl_lora","sdxl_base","none"]},
+    {"key": "note", "label": "Anything the metrics missed / overall read", "type": "text"}
+  ]
+}
