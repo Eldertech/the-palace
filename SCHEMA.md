@@ -394,7 +394,7 @@ New types may be tried freely. When a type earns recurring use across multiple b
 
 **Hubs:** The bundle pattern applies to hubs the same as any entry. Whether hub-bundle conventions diverge in practice is an open question deferred to use.
 
-**Relation to `Artifacts/`:** Cross-entry shared artifacts (HTML, images, audio) continue to live in `Artifacts/[Theme]/` per [[Deposit Ceremony]] §Filing structure. Bundles hold entry-owned files. When in doubt: if a file is owned by exactly one entry, it goes in that entry's bundle; if it serves several entries, it goes in `Artifacts/`.
+**The `Artifacts/` folder is deprecated (2026-06-16).** Bundles consumed its purpose. Entry-owned files (the vast majority) live in the owning entry's bundle; learning-material assets live in the Loudon Live zone (see [[Learning Materials and Canon]]). A genuinely cross-entry shared artifact — rare — lives in the bundle of its most-owning entry, or a relevant hub's bundle. The old `Artifacts/[Theme]/` content (the Shop tool outputs, the Loudon Live toolchain) was redistributed into bundles on 2026-06-16.
 
 **Migration of existing flat companions:** Files like `Jewel — Context.md` and `Deposit Ceremony — Context.md` currently live flat in their parent's directory. They remain valid in their current location. Migration into bundles is queued for the next Weave per [[Palace To-Do]] — the Weave Ceremony's general scope includes fixing mis-located and mis-linked items.
 
