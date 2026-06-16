@@ -21,12 +21,6 @@ links:
 
 **Trigger:** "Let's revive [entry name]" / "Time to revive [entry name]"
 
-**Access vectors:**
-- *Full:* Claude Code / Cowork (filesystem read/write + git)
-- *Draft and propose:* claude.ai online (can read entry via GitHub raw URL; can draft revival content; cannot write changes)
-- *Manual:* Obsidian + human (human updates the entry directly)
-- *Not supported:* GitHub cloud alone
-
 **Preconditions:**
 1. The named entry exists in the palace with `stage: dormant` or `stage: composting`
 2. A reason for revival can be articulated — either from a Spore Check disposition or from new work that intersects the dormant entry
@@ -42,15 +36,12 @@ links:
 **Failure mode:** If the revival rationale is unclear or the connection to current work is tenuous, halt and return to Spore Check. A revival without a clear rationale is a confusion, not a ceremony. The entry should remain dormant until the rationale can be stated plainly.
 
 **Git commit:** `Revival — [entry name] — [date] — [one-line reason]`
-*(From Cowork, commit via the lock-safe committer; Mac-side Claude Code, `git commit` normally — see [[CLAUDE]] §Committing from Cowork.)*
 
 ---
 
 ## What the Revival Ceremony Is
 
-"the conditions have changed. This idea is needed again.*
-
-An entry into a neighborhood of ideas.
+A revival is the palace saying *the conditions have changed; this idea is needed again* — and welcoming a dormant entry back into a living neighborhood of ideas.
 
 The dormant entry carries a snapshot of the understanding that existed when it last went quiet. The revival ceremony does not just update the entry's status — it reconnects it to the current palace with fresh typed links, reads its dormant content against what is now known, and asks: what does this entry know that the current palace needs?
 

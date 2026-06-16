@@ -188,14 +188,7 @@ Wait for Loudon's confirmation.
 
 **Step 7a: Write the closing note**
 
-Write a final message into the conversation thread. This marks the thread as complete for any future Claude that encounters it — do not deposit this conversation again.
-
-> *This conversation has come to rest.*
->
-> *What was built here lives in the palace:*
-> *— [Entry title] at [filename]*
->
-> *The thread is dormant. Its knowledge has been metabolized.*
+Write a brief final message into the conversation thread naming what now lives in the palace (entry titles + filenames) and marking the thread complete, so no future Claude re-deposits it. Write it in your own voice — a graceful close, not a scripted liturgy.
 
 **Step 7b: Record and commit**
 
@@ -207,7 +200,6 @@ Do not read the archive to do this — append only.
 - For each weave flag named in the deposit, append a `weave_flag` BROADCAST to the persistent board (`_ops/swarm/persistent/blackboard.jsonl`). The message follows `payload.kind: 'weave_flag'` per [[STIGMERGY — Weave Flag Item Type Build Plan]] § Data shapes — `flag_type`, `source_deposit_id`, `source_entries`, optional `target_entry`, `proposed_action`, `rationale`. Show Loudon the message bodies before writing; commit only on his approval. The archive row's `Weave flags:` prose stays — as audit, not queue.
 
 Git commit: `Deposit — [ID or theme] — [N new entries, N updated]`
-*(From Cowork, commit via the lock-safe committer; Mac-side Claude Code, `git commit` normally — see [[CLAUDE]] §Committing from Cowork.)*
 
 ---
 

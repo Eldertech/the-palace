@@ -91,6 +91,8 @@ What followed was the palace's own origin ceremony: harvesting, depositing, buil
 - YAML frontmatter links — typed, curated, structural. The major neural tracts. Our RDF triples.
 - Body text `[[wiki links]]` — untyped, casual, contextual. The local associations. Meaning carried by surrounding prose.
 
+**Coordination layer:** A second link ontology runs *between agents*, not entries — the append-only [[STIGMERGY]] blackboard ([[SCHEMA]] §9), now the palace's primary operational surface for multi-agent stewardship.
+
 **Folder structure** — the canonical spec is [[CLAUDE]] §Directory Structure; for the live listing, run `ls` on the palace root. The stable shape:
 
 <!-- mirror of SCHEMA §1 type list — keep in sync (12 types as of v1.6) -->

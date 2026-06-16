@@ -26,12 +26,6 @@ links:
 
 **Trigger:** "Self-model update"
 
-**Access vectors:**
-- *Full:* Claude Code / Cowork (filesystem read/write + git)
-- *Draft and propose:* claude.ai online (can read SUBSTRATE.md via GitHub raw URL; can draft proposed changes; cannot write files)
-- *Manual:* Obsidian + human (human edits SUBSTRATE.md directly)
-- *Not supported:* GitHub cloud alone
-
 **Preconditions:**
 1. `SUBSTRATE.md` is readable
 2. The current state of the palace is substantially different from what SUBSTRATE.md describes — either new entries have been added, new patterns have emerged, or the palace's self-understanding has shifted
@@ -45,7 +39,6 @@ links:
 **Failure mode:** If SUBSTRATE.md and the actual palace state are severely diverged (many new entries, major topology changes), consider running a Weave first to get the full topology picture before updating the self-model. A Self-Model Update written from an incomplete picture will itself be incomplete.
 
 **Git commit:** `Self-Model Update — [date] — [what changed in the self-model]`
-*(From Cowork, commit via the lock-safe committer; Mac-side Claude Code, `git commit` normally — see [[CLAUDE]] §Committing from Cowork.)*
 
 ---
 
