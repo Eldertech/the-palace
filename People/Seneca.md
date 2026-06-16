@@ -20,6 +20,13 @@ links:
   - target: "[[FOUR PILLARS]]"
     type: connects-to
     label: informs
+  - target: "[[Stoicism]]"
+    type: exemplifies
+  - target: "[[The Dichotomy of Control]]"
+    type: connects-to
+  - target: "[[Quality Manifesto]]"
+    type: connects-to
+    label: time-consciousness
 ---
 
 # Seneca

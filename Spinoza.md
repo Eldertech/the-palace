@@ -55,6 +55,6 @@ forward_vector: "I am the house philosopher of the palace, the person behind the
 *Section seed.* Where Spinoza meets the palace's other thinkers: [[Whitehead]] (process monism — substance becomes process), [[Merleau-Ponty]] (the power-to-act is embodied), [[Donella Meadows]] (systems strive), and the un-named Deleuze ghost that runs through the Spinoza Conatus session history.
 
 ## Forward Vectors / Open Questions
-- A primary-source corpus — *Ethics* book V, the *Theological-Political Treatise* preface — under `Artifacts/Spinoza/` when retrievable.
+- A primary-source corpus — *Ethics* book V, the *Theological-Political Treatise* preface — in the `Spinoza/` bundle when retrievable.
 - Which entries quietly carry a Spinoza reading they haven't admitted? (Forward ghost — a candidate Weave pass.)
 - Does the Deleuzian Spinoza of the original collaboration deserve a separate `Deleuze` entry, or fold into Spinoza here?

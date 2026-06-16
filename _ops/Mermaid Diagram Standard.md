@@ -45,7 +45,7 @@ Mermaid is preferred but not universal. SVG earns its place when:
 
 **The layout must be precise.** Mermaid's automatic layout algorithms are good but not controllable. If the spatial arrangement of elements *is* the meaning — if which node is above which matters, if proximity is semantic — SVG with manual positioning is the honest choice.
 
-**The diagram requires custom visual language.** The palace's color-coded node types, double-ring hubs, and edge color conventions in the demo SVG at `Artifacts/Images/palace-typed-link-graph-demo.svg` would be painful to reproduce in Mermaid. When visual grammar beyond Mermaid's built-in styling carries meaning, SVG is justified.
+**The diagram requires custom visual language.** The palace's color-coded node types, double-ring hubs, and edge color conventions in the demo SVG at `_ops/Image Embedding Standard/palace-typed-link-graph-demo.svg` would be painful to reproduce in Mermaid. When visual grammar beyond Mermaid's built-in styling carries meaning, SVG is justified.
 
 **The diagram is sourced from an external work.** A figure from a paper, a hand-drawn sketch, a photograph of a whiteboard — these are image artifacts, not generated diagrams. They belong in `Artifacts/` per [[Image Embedding Standard]], not as Mermaid code.
 
@@ -148,7 +148,7 @@ Not: *"A diagram showing Kuramoto Coupling connected to two other nodes."*
 
 ## Live Example
 
-The diagram below renders the same four palace concepts shown in the SVG demo at `Artifacts/Images/palace-typed-link-graph-demo.svg` — a direct comparison between the two standards. The Mermaid version is twelve lines of readable text. The SVG version is 140 lines of XML. Both convey the same graph fragment. Only one of them participates in the palace as a first-class text artifact.
+The diagram below renders the same four palace concepts shown in the SVG demo at `_ops/Image Embedding Standard/palace-typed-link-graph-demo.svg` — a direct comparison between the two standards. The Mermaid version is twelve lines of readable text. The SVG version is 140 lines of XML. Both convey the same graph fragment. Only one of them participates in the palace as a first-class text artifact.
 
 ```mermaid
 graph LR

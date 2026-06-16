@@ -24,11 +24,14 @@ domains:
 who_leads: shared
 links:
   - target: "[[Source Library]]"
-    type: connects-to
+    type: member-of
   - target: "[[Agnes Martin]]"
     type: connects-to
   - target: "[[FOUR PILLARS]]"
     type: deepens
+  - target: "[[Quality Manifesto]]"
+    type: connects-to
+    label: patience
 ---
 
 # James Turrell

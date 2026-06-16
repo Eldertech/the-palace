@@ -20,6 +20,12 @@ links:
   - target: "[[FOUR PILLARS]]"
     type: connects-to
     label: informs
+  - target: "[[Hilaritas Generator]]"
+    type: connects-to
+    label: process-over-product
+  - target: "[[Quality Manifesto]]"
+    type: connects-to
+    label: showing-up
 ---
 
 # Natalie Goldberg

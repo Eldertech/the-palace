@@ -115,16 +115,13 @@ Use the Agent tool with `subagent_type="Explore"`. Dispatch up to 5 workers in p
 
 | Role | Model | Notes |
 |---|---|---|
-| Full Swarm workers | `model: "haiku"` | Default. Parallel dispatch via Agent tool. Best unsung path coverage and label quality. |
-| Coordinator synthesis | Claude Sonnet (main session) | Cross-worker convergence, judgment calls, presentation to Loudon. |
+| Full Swarm workers | `model: "sonnet"` | Default. Parallel dispatch via Agent tool. The palace assumes Sonnet-level intelligence and higher as its baseline (standing decision 2026-06-16); workers inherit the session model. Use Opus for the most judgment-heavy creative passes. |
+| Coordinator synthesis | Main session (Sonnet/Opus) | Cross-worker convergence, judgment calls, presentation to Loudon. |
 | Mode 2 single-entry (zero API cost) | `gemma4:26b` via Ollama | Pre-loaded architecture — use `_ops/swarm/build-preloaded-prompt.py`. Serialized, not suitable for full swarm. See [[Swarm Weave]] Mode 2 section. |
 
-**Do not use smaller Gemma variants for worker tasks.** `gemma4:e4b` (8B, also tagged `gemma4:latest`) missed unsung paths entirely in validation. `gemma4:e2b` (5B) produced hallucinations. Validated 2026-04-08.
+**Local-model floor (for the zero-API Mode 2 path only).** The smaller Gemma variants are unfit for worker tasks: `gemma4:e4b` (8B, also tagged `gemma4:latest`) missed unsung paths entirely; `gemma4:e2b` (5B) hallucinated (validated 2026-04-08). This floor governs the *local* fallback, not the cloud baseline — see [[Gemma 4 — Local Coordination Guide]].
 
-Quality comparison (validated 2026-03-31, 5-entry parallel test, Haiku vs Opus):
-- Haiku matches Opus on: JSON compliance, stage assessment, missing connections, body health diagnostics
-- Opus has edge on: cross-domain philosophical leaps, evocative link labels
-- Haiku surprised on: granular body analysis (caught incomplete sentences), proposed link-type upgrades (e.g., `contrasts-with` for Semantic Delay ↔ Retrospective Delay)
+<!-- The historical Haiku-vs-Opus quality table (2026-03-31) was cut in the 2026-06-16 weave: the palace no longer dispatches Haiku workers, so the comparison is no longer load-bearing. Git holds it. -->
 
 ### Step 4: Synthesize
 Collect all worker JSON outputs. Apply the synthesis protocol above. Present to Loudon (the Trickster) for approval before writing any changes.

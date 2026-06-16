@@ -20,6 +20,12 @@ links:
   - target: "[[FOUR PILLARS]]"
     type: connects-to
     label: informs
+  - target: "[[Generative Compression]]"
+    type: connects-to
+    label: gestation
+  - target: "[[Hilaritas Generator]]"
+    type: connects-to
+    label: transcendence-through-craft
 ---
 
 # Terrence Malick

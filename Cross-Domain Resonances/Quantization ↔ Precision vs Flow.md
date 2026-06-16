@@ -16,9 +16,18 @@ beauty: 8
 who_leads: shared
 links:
   - target: "[[Cross-Domain Resonances]]"
-    type: connects-to
+    type: member-of
   - target: "[[FOUR PILLARS]]"
     type: exemplifies
+  - target: "[[Brian Eno]]"
+    type: connects-to
+    label: informed-by
+  - target: "[[Rick Rubin]]"
+    type: connects-to
+    label: informed-by
+  - target: "[[Flocking]]"
+    type: mirrors
+    label: local-rules-global-feel
 ---
 
 # Quantization ↔ Precision vs Flow

@@ -49,12 +49,6 @@ links:
   - target: "[[Orchestrator Production Plan v0.2]]"
     type: spawned
     label: stage-c-build-contract
-  - target: "[[Stage E — Automated Trickster — handoff]]"
-    type: spawned
-    label: stage-e-build-contract
-  - target: "[[Stage F — Two Paths — handoff]]"
-    type: spawned
-    label: stage-f-build-contract
   - target: "[[Palace Conatus]]"
     type: connects-to
     label: escalation-rationale
@@ -87,7 +81,7 @@ The body below describes the system as conceived; this block records where the b
 
 **15 stewards currently enchanted** (REGISTRY.json authoritative): Generative Sample Libraries (cycle 13), Generative Wavetable Libraries (cycle 6), Shepard Tone Synthesizer (cycle 3), 2D Torus Wavetable Synthesizer (cycle 2), Action Potential Oscillator (cycle 2), Blood Compressor (cycle 2), Crystal Synthesizer (cycle 2), Generative Preset Development (cycle 2), Inharmonic Wavetable Synthesis (cycle 2), Meadows and an Artist's Career (cycle 2), Portamento and Physical Pitch Modeling (cycle 2), Retrospective Delay (cycle 2), Semantic Delay (cycle 2), Semantic Webcam (cycle 2), Slime Mold Delay (cycle 2). Cycle 2 across most of these produced real deliverables (audible birefringence proof, Faust prototypes, p5.js sims, ear-training quizzes, daemon specs, sample libraries, etc.).
 
-The live frontier is no longer technical — it's **operational bandwidth**. The system produces artifacts and asks faster than a single human Trickster can audition them; the 17-pending-decisions inbox is the new constraint. The next deferred build piece is the Drift and Consolidation steward beat — see [[Drift and Consolidation]]. Active handoff for the operational state is at [[Project Stewardship System — handoff]].
+The live frontier is no longer technical — it's **operational bandwidth**. The system produces artifacts and asks faster than a single human Trickster can audition them; the 17-pending-decisions inbox is the new constraint. The next deferred build piece is the Drift and Consolidation steward beat — see [[Drift and Consolidation]]. (The operational-state handoff that carried this frontier was consumed and deleted 2026-06-16; git is its archive.)
 
 ## The Original Question
 
@@ -293,7 +287,7 @@ The fix is **CQRS, not relocation**: the append-only board stays the event log (
 - **The Stage B smoke-test gate (current frontier, as of 2026-05-26).** Orchestrator v0.1 is build-complete but sits on an unpushed local branch awaiting Loudon's own smoke-test + review (see [[Orchestrator Production Plan]] close-out). It has never run on a live project via the skill. Cleanest next move: advance the GSL steward to cycle 6 through the skill — it doubles as smoke-test and first real use — then push the branch.
 - **Whether to build v0.2 (Stage C enablers) now.** [[Orchestrator Production Plan v0.2]] (batch-cycle, cadence, spawn-from-project, scheduled-task recipes) is a ready autonomous-build contract at seed stage. Its Phase 1 reads v0.1's closure report, so it is blocked on the smoke-test gate above. Decision: build it to make stewardship operational, or run stewards by hand longer to learn the right cadence first?
 - **Automated Trickster — built; first safe ruleset chosen, awaiting Loudon's shadow review.** Stage E shipped 2026-05-29 (`_ops/stigmergy/trickster-auto/`). The v0 ruleset auto-grants only non-blocking directional forks carrying the steward's own recommendation; everything else escalates. It runs shadow-default. The remaining open move is operational, not design: Loudon reads the shadow digest on the STIGMERGY TRICKSTER tab, compares the 3 proposed grants + ranking to his own judgment, tunes `rules.json` if needed, and flips `--live` when the match rate satisfies him.
-- **Stage F — Two Paths (decide-after-doing), proposed 2026-05-29.** A new mode past the original five stages: where a steward gave options but no recommendation, or the fork is sensory, run BOTH branches to a finished deliverable (isolated worktrees, the unused `BRANCHES` board, §10.2 Branch Exploration) and let Loudon choose from completed work — the human always picks; the engine never auto-resolves. Design pass and phased build contract drafted at [[Stage F — Two Paths — handoff]]; not yet built. It consumes the Stage E digest as its candidate source (rec=n defers + audition escalations are exactly its two triggers).
+- **Stage F — Two Paths (decide-after-doing), proposed 2026-05-29.** A new mode past the original five stages: where a steward gave options but no recommendation, or the fork is sensory, run BOTH branches to a finished deliverable (isolated worktrees, the unused `BRANCHES` board, §10.2 Branch Exploration) and let Loudon choose from completed work — the human always picks; the engine never auto-resolves. Design pass and phased build contract were drafted in the Stage F handoff (consumed and deleted 2026-06-16; built 2026-05-29 per `STAGE-F-COMPLETE.md`). It consumes the Stage E digest as its candidate source (rec=n defers + audition escalations are exactly its two triggers).
 - **Vector tuning practice as palace-wide norm.** Vector tuning is settled as a process, not a ceremony (see What's Decided). What's still open: how to make the invitation visible — does the Weave Ceremony spec need an explicit "vector edits welcome" beat? Does [[SCHEMA]] want a one-line note that forward vectors are meant to evolve? Probably yes to both, as small follow-on edits.
 - **Schedule cadence.** Daily? Weekly? Per-project? Probably configurable per Steward via manifest, with a sensible default that the orchestrator can override.
 - **Recursion handling at the orchestrator level.** When a Steward encounters a `seed` deliverable inside a `growing` project, does it switch to seed-stage posture for that deliverable? Needs explicit rule in the orchestrator.
@@ -344,7 +338,3 @@ The pattern of the conversation itself was the first concrete instance of the sy
 - How does this system interact with existing palace ceremonies (Weave, Spore Check, Deposit)? Are Stewards full participants, or do ceremonies remain human-led?
 - What is the relationship between the Steward's per-project schedule and the natural rhythm of the work? A weekly Steward on a `seed` project that wants daily attention is wrong; so is a daily Steward on a `mature` project that wants quarterly review.
 - Does this entry itself benefit from an `agency_profile` (per [[SCHEMA]] §3.1)? The four-pillar expansion is plausible — tools dimension is heavy (orchestrator build), philosophy dimension is heavy (governance posture), practice dimension is heavy (when ceremonies trigger). First enchantment will reveal whether the single forward vector carries the load.
-
-## Active Handoff
-
-[[Project Stewardship System — handoff]] — drafted 2026-05-27, crossing Cowork → Claude Code. Steward-genre: updated in place, not consumed on pickup. Carries the live frontier (two blocking auditions on GSL + GWL), the deferred implementation of [[Drift and Consolidation]], and this session's operating calibrations.

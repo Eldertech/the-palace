@@ -10,7 +10,7 @@ confidence: working
 energy: high
 links:
   - target: "[[BLUELINE]]"
-    type: exemplifies
+    type: connects-to
     label: the-novel-bet-of
   - target: "[[Blocked, Not Prompted]]"
     type: couples-with

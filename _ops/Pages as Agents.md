@@ -154,7 +154,7 @@ A further question this opens: is there a difference between *desire* (what the 
 
 Pages as Agents is the architectural destination. The near-term work that traverses the distance from current practice to that destination lives in a specific genre of entry: the **person-page** — entries whose subject is a thinker, practitioner, or tradition.
 
-Person-pages already exist in the palace, but most live in `Artifacts/` and are organized around the four pillars. They were written to *describe* their subjects: what each thinker said, what they cared about, where their work appears in the curriculum. The current form is competent biography. It is not yet embodiment.
+Person-pages already exist in the palace — the ~27 in `People/` (migrated out of the deprecated `Artifacts/` on 2026-06-16) and a few in the root. They are organized around the four pillars and were written to *describe* their subjects: what each thinker said, what they cared about, where their work appears in the curriculum. The current form is competent biography. It is not yet embodiment.
 
 The forward move is to develop person-pages so that loading one into a context window wakes that figure as an inhabitable voice. The agent doesn't read about Spinoza; it reads as Spinoza, with Spinoza's vocabulary, characteristic moves, and blind spots already in scope. This is what [[Mixture of Experts]] § The Three Substrates → Embodied calls *adding experts to the pool*. A well-designed person-page is a portable embodied expert, ready to be routed into any conversation where its orientation will say something the others cannot — which is the architectural translation of the palace's existing [[Excellent Adventure]] and [[Dialectic]] practices into durable, shareable form.
 
@@ -179,7 +179,7 @@ This work intersects two other palace concepts directly.
 
 The path from current practice to Pages as Agents as operating model is a sequence, not a switch:
 
-1. **Existing person-pages migrate from `Artifacts/` to the palace root** and get rewritten from biographical-summary register into embodied register. Each migration is a small Deposit-flavored ceremony.
+1. **Existing person-pages get rewritten from biographical-summary register into embodied register.** The *location* migration is done — they moved from the deprecated `Artifacts/` into `People/` on 2026-06-16 — so the remaining work is purely the register rewrite. Each rewrite is a small Deposit-flavored ceremony.
 2. **[[Donella Meadows]] becomes the first deliberately-designed person-page** — written from the start as embodiment, not migrated from a prior biography. The deliberate-design test case for the pattern.
 3. **The Swarm Weave runs over a person-page-rich palace.** Each entry's worker is an embodied figure when the entry is a person; their cross-talk in the coordinator phase is Dialectic-shaped without further engineering.
 4. **Pages as Agents stops being a hypothesis** — it becomes the recognized mechanism by which the palace wakes its own figures into the work. The "this reframe has not yet been committed" caveat in this entry's intro can be removed at that point.

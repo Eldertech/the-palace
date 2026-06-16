@@ -17,11 +17,15 @@ beauty: 8
 who_leads: shared
 links:
   - target: "[[Cross-Domain Resonances]]"
-    type: connects-to
-  - target: "[[Kick Drum Paradox]]"
-    type: deepens
+    type: member-of
   - target: "[[FOUR PILLARS]]"
     type: exemplifies
+  - target: "[[Donella Meadows]]"
+    type: connects-to
+    label: structure-determines-behavior
+  - target: "[[Leverage Points Framework]]"
+    type: connects-to
+    label: foundation-as-leverage
 ---
 
 # Kick Drum ↔ Foundation

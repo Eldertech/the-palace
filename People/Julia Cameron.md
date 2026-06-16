@@ -22,11 +22,17 @@ domains:
 who_leads: shared
 links:
   - target: "[[Source Library]]"
-    type: connects-to
+    type: member-of
   - target: "[[Marcus Aurelius]]"
     type: connects-to
   - target: "[[FOUR PILLARS]]"
     type: deepens
+  - target: "[[Quality Manifesto]]"
+    type: connects-to
+    label: internal-metrics
+  - target: "[[Stoicism]]"
+    type: connects-to
+    label: daily-ritual
 ---
 
 # Julia Cameron

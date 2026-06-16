@@ -22,13 +22,21 @@ domains:
 who_leads: shared
 links:
   - target: "[[Source Library]]"
-    type: connects-to
-  - target: "[[High Pass Low Pass]]"
-    type: deepens
+    type: member-of
   - target: "[[Cooking ↔ Mixing]]"
-    type: deepens
+    type: connects-to
+    label: subtraction
   - target: "[[FOUR PILLARS]]"
     type: deepens
+  - target: "[[Like Water]]"
+    type: connects-to
+    label: wu-wei-source
+  - target: "[[The Drift]]"
+    type: mirrors
+    label: wu-wei
+  - target: "[[Confucianism]]"
+    type: contradicts
+    label: dao-vs-li
 ---
 
 # Lao Tzu

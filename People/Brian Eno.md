@@ -26,9 +26,7 @@ who_leads: shared
 last_activated: 2026-06-05
 links:
   - target: "[[Source Library]]"
-    type: connects-to
-  - target: "[[808 and Limitation]]"
-    type: deepens
+    type: member-of
   - target: "[[FOUR PILLARS]]"
     type: deepens
     label: constraint-as-pillar-method
@@ -38,6 +36,15 @@ links:
   - target: "[[Semantic Webcam]]"
     type: connects-to
     label: constraints-as-creative-force
+  - target: "[[Rick Rubin]]"
+    type: connects-to
+    label: production-philosophy
+  - target: "[[Generative Audio Devices]]"
+    type: connects-to
+    label: generative-systems
+  - target: "[[Flocking]]"
+    type: connects-to
+    label: rules-emergence
 ---
 
 # Brian Eno

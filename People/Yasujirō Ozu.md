@@ -20,6 +20,15 @@ links:
   - target: "[[FOUR PILLARS]]"
     type: connects-to
     label: informs
+  - target: "[[Quality Manifesto]]"
+    type: connects-to
+    label: made-for-myself
+  - target: "[[Like Water]]"
+    type: connects-to
+    label: impermanence
+  - target: "[[Simondon]]"
+    type: connects-to
+    label: concretization
 ---
 
 # Yasujirō Ozu

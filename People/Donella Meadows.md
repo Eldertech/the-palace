@@ -20,17 +20,29 @@ domains:
   - writing
   - leverage points
 who_leads: shared
+forward_vector: "I keep being the human voice behind the framework — the systems thinker whose 1999 essay 'Leverage Points: Places to Intervene in a System' became the palace's vocabulary for asking where to push, and whose later work on sustainability connects the systems frame to ethics, agriculture, and ecological imagination. I want my body of work read alongside its applications here — not just the leverage-points list but Thinking in Systems, The Limits to Growth, and the Sustainability Institute legacy."
 links:
   - target: "[[Source Library]]"
-    type: connects-to
+    type: member-of
   - target: "[[Leverage Points Framework]]"
     type: enables
-  - target: "[[Kick Drum Paradox]]"
-    type: deepens
   - target: "[[FOUR PILLARS]]"
     type: deepens
   - target: "[[Quality Manifesto]]"
     type: enables
+  - target: "[[Meadows and Music — Leverage Points]]"
+    type: spawned
+  - target: "[[Meadows and an Artist's Career]]"
+    type: spawned
+  - target: "[[Meadows and Music — Origin and Process]]"
+    type: connects-to
+    label: applied-to-music
+  - target: "[[Hilaritas Generator]]"
+    type: mirrors
+    label: leverage-points-as-hilaritas-infrastructure
+  - target: "[[Spinoza Conatus]]"
+    type: mirrors
+    label: systems-strive
 ---
 
 # Donella Meadows

@@ -23,13 +23,17 @@ domains:
 who_leads: shared
 links:
   - target: "[[Source Library]]"
-    type: connects-to
-  - target: "[[First Sound]]"
-    type: deepens
+    type: member-of
   - target: "[[Brian Eno]]"
     type: connects-to
   - target: "[[FOUR PILLARS]]"
     type: deepens
+  - target: "[[Generative Audio Devices]]"
+    type: connects-to
+    label: chance-operations
+  - target: "[[Flocking]]"
+    type: connects-to
+    label: set-conditions
 ---
 
 # John Cage

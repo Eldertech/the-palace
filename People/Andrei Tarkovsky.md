@@ -24,11 +24,14 @@ domains:
 who_leads: shared
 links:
   - target: "[[Source Library]]"
-    type: connects-to
+    type: member-of
   - target: "[[James Turrell]]"
     type: connects-to
   - target: "[[FOUR PILLARS]]"
     type: deepens
+  - target: "[[Quality Manifesto]]"
+    type: connects-to
+    label: reject-metrics
 ---
 
 # Andrei Tarkovsky

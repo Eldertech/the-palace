@@ -22,13 +22,24 @@ domains:
 who_leads: shared
 links:
   - target: "[[Source Library]]"
-    type: connects-to
-  - target: "[[First Sound]]"
-    type: deepens
+    type: member-of
   - target: "[[Kick Drum ↔ Foundation]]"
     type: deepens
   - target: "[[FOUR PILLARS]]"
     type: deepens
+  - target: "[[The View From Above]]"
+    type: connects-to
+    label: origin
+  - target: "[[Stoicism]]"
+    type: exemplifies
+  - target: "[[The Dichotomy of Control]]"
+    type: connects-to
+  - target: "[[Quality Manifesto]]"
+    type: connects-to
+    label: wellbeing-in-control
+  - target: "[[Julia Cameron]]"
+    type: connects-to
+    label: morning-pages
 ---
 
 # Marcus Aurelius

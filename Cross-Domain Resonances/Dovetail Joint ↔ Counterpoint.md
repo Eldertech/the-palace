@@ -17,9 +17,15 @@ beauty: 9
 who_leads: shared
 links:
   - target: "[[Cross-Domain Resonances]]"
-    type: connects-to
+    type: member-of
   - target: "[[FOUR PILLARS]]"
     type: exemplifies
+  - target: "[[Endosymbiosis]]"
+    type: mirrors
+    label: co-design
+  - target: "[[Cooperation Yields Agency]]"
+    type: connects-to
+    label: complementary-strength
 ---
 
 # Dovetail Joint ↔ Counterpoint

@@ -23,13 +23,19 @@ domains:
 who_leads: shared
 links:
   - target: "[[Source Library]]"
-    type: connects-to
+    type: member-of
   - target: "[[Shunryu Suzuki]]"
     type: connects-to
   - target: "[[John Cage]]"
     type: connects-to
   - target: "[[FOUR PILLARS]]"
     type: deepens
+  - target: "[[Quality Manifesto]]"
+    type: connects-to
+    label: listening-metric
+  - target: "[[Hilaritas Generator]]"
+    type: connects-to
+    label: practice-is-piece
 ---
 
 # Pauline Oliveros

@@ -20,6 +20,9 @@ links:
   - target: "[[FOUR PILLARS]]"
     type: connects-to
     label: informs
+  - target: "[[Quality Manifesto]]"
+    type: connects-to
+    label: attention-as-practice
 ---
 
 # Annie Dillard

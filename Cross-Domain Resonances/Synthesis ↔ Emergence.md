@@ -16,7 +16,7 @@ beauty: 10
 who_leads: shared
 links:
   - target: "[[Cross-Domain Resonances]]"
-    type: connects-to
+    type: member-of
   - target: "[[FOUR PILLARS]]"
     type: exemplifies
   - target: "[[Donella Meadows]]"
@@ -31,6 +31,15 @@ links:
   - target: "[[Oblique Enrichment]]"
     type: connects-to
     label: emergence-as-provocation
+  - target: "[[Flocking]]"
+    type: mirrors
+    label: boids
+  - target: "[[Kuramoto Coupling]]"
+    type: mirrors
+    label: phase-coupling
+  - target: "[[Generative Audio Devices]]"
+    type: connects-to
+    label: design-for-emergence
 ---
 
 # Synthesis ↔ Emergence
