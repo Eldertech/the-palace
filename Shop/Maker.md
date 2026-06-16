@@ -217,36 +217,16 @@ For Midjourney specifically I track credit consumption tier-by-tier and tell you
 
 ## Roster
 
-The Specialists currently in the Shop, with their primary use:
+The authoritative roster — every Specialist with its status, medium, and tool — is **generated into [[The Shop]] § Roster** from each Specialist's `member-of [[The Shop]]` declaration. Run `node Shop/Maker/build-roster.mjs` to refresh it; do not hand-maintain a second copy here. (This pointer replaced a hand-listed roster that had drifted three Specialists stale — the exact rot the Drift note below was written to catch, now closed structurally.) The taxonomy and promotion history the table can't carry stay here.
 
-- **Kokoro** — narration, TTS *(local)*
-- **Midjourney** — generative imagery, atmospheric and editorial mood *(cloud, subscription)*
-- **ComfyUI** — generative imagery, palette discipline and structural control *(local, GPU)*
-- **Blender** — offline 3D blocking + render, and the conditioning-pass keystone (posed scene → multi-ControlNet) *(local, GPU)*
-- **Manim CE** — math animation, programmatic visual *(local)*
-- **Remotion** — UI mockups, interface walks, React-based motion *(local; commercial license required for monetized use)*
-- **p5.js** — interactive sketches, parameter explorers, generative visuals *(local, web)*
-- **D3.js** — custom interactive web viz, force/agent systems, total control *(local, web)*
-- **Observable Plot** — browser-deployable analytical charts, grammar of graphics, faceting *(local, web)*
-- **Whisper** — speech-to-text, captions, voiceover sync *(local)*
-- **ffmpeg** — audio + video conversion, concat, mixing, normalization *(local, plumbing)*
-- **Mermaid** — text-defined diagrams *(local)*
-- **Matplotlib** — non-interactive scientific charts *(local)*
-- **LaTeX** — typeset documents, papers, beamer slides, tikz/pgfplots diagrams, standalone equation cards *(local)*
-- **Stable Audio Open** — short-form generative music and SFX *(local, GPU)*
-- **RNBO codebox~ smith** — RNBO DSP code for Max/M4L/VST/AU *(local, Max/MSP)*
-- **VCV Patch Generator** — algorithmic VCV Rack patch generation *(local)*
-- **Tone.js** — web audio from built-in primitives, browser-deployable music software *(local, web)*
-- **Web Audio Worklet** — custom browser DSP (granular, wavetable, physical models) as AudioWorklet sample loops; the browser cousin of RNBO codebox~ *(local, web, zero-dependency)*
-
-**Status taxonomy** (the single source of truth — reconciled 2026-05-30; supersedes the prior drift between frontmatter `status` and this list):
+**Status taxonomy** (definitions — the live status of each Specialist lives in its frontmatter `status` and renders into [[The Shop]] § Roster):
 
 - **stub** — entry exists, recipes are placeholders, no palace job has run, no earned gotchas.
 - **alive** — at least one real palace job has landed, leaving a dated recipe and (usually) earned gotchas.
 - **deprecated** — was on the roster, no real job landed before a substitute filled the slot; kept as a lineage record, never dispatched.
 - A Specialist is **alive** only when its Recipes section names a real dated job with a bundle path. A uniform authoring date is not a job.
 
-**Alive (18)** — real job landed:
+**Promotion log** — how each alive Specialist earned its status (append-only history; the live count is in the generated table):
 
 - *Flocking shoot-out (2026-05-29):* **p5.js** (also Kuramoto), **D3.js**, **Observable Plot**.
 - *Kuramoto arc (2026-05-10 → 05-26):* **Manim CE**, **Kokoro**, **Matplotlib**, **ComfyUI**, **Whisper**, **ffmpeg**, **Mermaid**, **Remotion**, **Tone.js**, **Stable Audio Open**.
@@ -255,14 +235,15 @@ The Specialists currently in the Shop, with their primary use:
 - *Shop header (Phase D-2, 2026-05-30):* **FLUX (Hugging Face)** — cloud-side image generation via HF Inference free tier; took [[Shop/Midjourney|Midjourney]]'s slot when subscription cost made Midjourney untenable. First job revised the Maker's Mood/atmospheric Selection Heuristic — FLUX-Krea reads mood-specific prompt details that ComfyUI's SDXL flattens.
 - *Wavetable Scanner (2026-05-31):* **Three.js** — single-cycle wavetable morph laboratory; the first paired-Specialist brief where Three.js reads state from a [[Shop/Web Audio Worklet]] sibling (geometry-bound-to-the-data, the [[Waveguide Synthesizer]] pattern in miniature). Promoted stub → alive on its first dated job, ahead of the still-anticipated Waveguide commission.
 - *Conditioning keystone (BLUELINE Session 1, 2026-06-13):* **Blender** — posed one humanoid (worm's-eye foreshortened lunge) → six registered passes → ComfyUI per-channel multi-ControlNet (pose+depth+canny → SDXL fill → 1.5× refine); proved [[Blocked, Not Prompted]] against a prompt-only control. Fills the offline-3D gap [[Three.js]] can't. Alive on the conditioning job; the Cycles-render and geometry-nodes paths remain untested. Bundle: [Shop/Blender/tests/](../Shop/Blender/tests/).
+- *LoRA Trainer (BLUELINE Track II, 2026-06-16):* **LoRA Trainer** — first-try character-LoRA training on the RunPod substrate; the recipe proved out on DreamBooth-control subjects (the r4ng3r LoRAs themselves graded net-negative — an honest negative). See [[Shop/LoRA Trainer]].
 
-**Stub (2)** — entry exists, awaiting first real job: **RNBO codebox~ smith**; **LaTeX** (created 2026-06-09 — capability-probed clean on the PDF path, but no brief has run, so it stays a stub per the taxonomy).
+**Still stub** — awaiting first real job: **RNBO codebox~ smith**; **LaTeX** (created 2026-06-09 — capability-probed clean on the PDF path, but no brief has run, so it stays a stub per the taxonomy).
 
-**Deprecated (1)** — [[Shop/Midjourney|Midjourney]], 2026-05-30 — too expensive; never landed a real palace job; superseded by **FLUX (Hugging Face)** as the cloud-aesthetic-ceiling slot. Entry kept as a lineage record.
+**Deprecated** — [[Shop/Midjourney|Midjourney]], 2026-05-30 — too expensive; never landed a real palace job; superseded by **FLUX (Hugging Face)** as the cloud-aesthetic-ceiling slot. Entry kept as a lineage record.
 
 More to come as briefs reveal need: Plotly, Graphviz, HTML/React Artifact Smith, **game engines** (Godot-first, on a real interactive-3D-application brief). The Roster grows; it does not pre-grow.
 
-> Drift watch: this accounting is mirrored in each Specialist's frontmatter `status`. When a stub lands its first job, update both here and the frontmatter in the same move. The three-place inconsistency this section replaced (frontmatter vs. an alive-list vs. a stub-list) is exactly the rot the gotcha discipline exists to prevent.
+> Drift note (closed 2026-06-16): the roster is no longer hand-maintained. The single source of truth is each Specialist's frontmatter `status` + `member-of [[The Shop]]` link; `Shop/Maker/build-roster.mjs` renders them into [[The Shop]] § Roster. So there is no second copy to drift — re-run the script after any status change (a clean Weave step). The three-place inconsistency this section once carried (frontmatter vs. an alive-list vs. a stub-list) is now structurally impossible, not just discouraged.
 
 ## Recipes
 
