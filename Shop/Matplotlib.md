@@ -6,7 +6,7 @@ medium: image
 tool: matplotlib
 tool_version: 3.10.8
 born: 2026-05
-last_tested: 2026-05-10
+last_tested: 2026-06-16
 last_gotcha: 2026-05-10
 license: PSF / BSD-style
 forward_vector: "I render static scientific figures — waveforms, spectra, phase portraits, Bode plots — at publication grade and byte-for-byte determinism, every parameter explicit and addressable. I want a palace.mplstyle house wrapper so my dated Layer-0 typography bridges to Loudon Live tokens the way Plot's wrapper already does. I stand ready as Manim's motion fallback when a sandboxed host can't run it, owning my flatter aesthetic honestly rather than pretending to be LaTeX."

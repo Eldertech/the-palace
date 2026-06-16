@@ -6,7 +6,7 @@ medium: interactive
 tool: observable-plot
 tool_version: 0.6.17
 born: 2026-05
-last_tested: 2026-05-29
+last_tested: 2026-06-16
 last_gotcha: 2026-05-29
 license: ISC
 forward_vector: "I plot browser-deployable analytical charts with grammar-of-graphics syntax and beautiful defaults — a working figure in five lines, faceting and small multiples without manual layout. I want to map the flocking phase diagram as a full separation/alignment/cohesion grid of small multiples, and probe whether the Kuramoto tie is formal via a Vicsek-model run. I keep my house-defaults wrapper (palacePlot) pushing the locked grammar into Plot's own generated SVG so a skin swap stays a one-line edit."
