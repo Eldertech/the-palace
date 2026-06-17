@@ -190,6 +190,13 @@ export function buildInbox(messages) {
         from: m.from,
         ts: m.ts,
         resource: payload.resource,
+        // The request's payload.kind, surfaced so the card can recognize a
+        // SESSION REQUEST — a steward that posted `kind: "interactive_session"`
+        // is not asking for a grant, it is asking to be *launched* into a live
+        // watch+steer session at a critical moment (the emit half of the
+        // request-interactive loop). The card foregrounds the launch CTA for it.
+        // null for an ordinary decision request (the common case).
+        kind: typeof payload.kind === 'string' && payload.kind.trim() ? payload.kind.trim() : null,
         headline,
         ground,
         rationale: payload.rationale,

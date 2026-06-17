@@ -362,3 +362,24 @@ describe('buildInbox — inline artifacts from the wire (payload.artifacts)', ()
     ]);
   });
 });
+
+describe('buildInbox — session-request kind (payload.kind)', () => {
+  test('an ordinary request carries a null kind', () => {
+    const item = buildInbox([REQ('r-1')]).pending_requests[0];
+    expect(item.kind).toBe(null);
+  });
+
+  test('payload.kind "interactive_session" surfaces onto the item', () => {
+    const item = buildInbox([REQ('r-1', '2026-04-01T15:00:00Z', {
+      payload: { resource: 'interactive_session', rationale: 'r', blocking: false, kind: 'interactive_session' },
+    })]).pending_requests[0];
+    expect(item.kind).toBe('interactive_session');
+  });
+
+  test('a blank/whitespace kind normalizes to null', () => {
+    const item = buildInbox([REQ('r-1', '2026-04-01T15:00:00Z', {
+      payload: { resource: 'x', rationale: 'r', blocking: false, kind: '   ' },
+    })]).pending_requests[0];
+    expect(item.kind).toBe(null);
+  });
+});
