@@ -1,121 +1,55 @@
 ---
 title: "BLUELINE — baton"
-born: 2026-06-16
+born: 2026-06-17
 links:
   - target: "[[BLUELINE]]"
     type: connects-to
     label: "baton-for"
-forward_vector: "I carry BLUELINE from a finished spike into production: the M4L clock is now live-validated round-trip, so the only open work is one design propagation (markers → MIDI clips, not yet in the palace) and one adjudication (the Track II LoRA verdict). I wait to be caught Mac-side and deleted once the move is picked up."
-session_thread: "Mac-side 2026-06-16 — M4L round-trip confirmed by Loudon; markers→MIDI-clips decision made; Track II LoRA trained + graded, verdict pending"
+forward_vector: "I carry BLUELINE across a session boundary at a clean checkpoint — re-founded on the established animation pipeline, M0 + M1 shipped, the staging vocabulary banked as canon, everything merged to main. I point the next Claude at the pipeline doc and the next rung (M2), and ask it to spawn its own worktree first. Delete me on pickup; git is my archive."
+session_thread: "Mac-side 2026-06-17 — pipeline re-founding + deposit + relay-to-main; worktree torn down; handing to a fresh Claude"
 ---
 
-# Baton: BLUELINE — spike done, two closing moves before M0
+# Baton: BLUELINE — re-founded on the pipeline, clean to hand off
 
 ## Move
-The five-track spike is **fully closed.** Clock live-validated round-trip; markers→MIDI-clips articulated
-*and* renamed end-to-end (verified); Track II adjudicated (honest negative — see below). **The next move
-is M0 previz production.** One optional loop-back is named (Track II redo with a face-forward dataset).
+Everything through **M1 is shipped and on `main`**, and BLUELINE is **re-founded on the established animation pipeline**. The next rung is **M2 (motion comic)**. First, spawn your own worktree (see On pickup) — the last one was torn down.
 
-> **Both prior open moves are now DONE (this session, 2026-06-16):**
-> - **A — markers→clips rename in the harness: ✅** `transport_sim.py` + `clock_client.html` renamed to
->   `/transport/section` (spans); verified live (sim→relay→WS: sections flow as spans, 64/64 on-beats on
->   whole frames). Committed `e4f4292`. Relay was format-agnostic, untouched.
-> - **B — Track II LoRA adjudicated: ✅ (negative result, recorded).** The r4ng3r LoRA scored *below* its
->   no-LoRA baseline on every identity metric (FLUX DINO 0.317 vs 0.475, ArcFace 0.110 vs 0.376, face%
->   75% vs 100%) — it learned a hooded costume-silhouette, not a face. **The pipeline is sound:** the
->   DreamBooth dog control hit the textbook win (LoRA DINO 0.776 vs 0.422, +0.35). Failure is the
->   *dataset*, not the machinery. Full verdict + the fix in `proofs/track-II-lora/track-II-report.md`.
-
-## Closed since the last baton
-- **Open Thread A — the M4L device: ✅ CLOSED.** The `qmetro` + self-heal fix works; Loudon has
-  **tested it round-trip from live Ableton** and it runs perfectly with the editor closed. Track III is
-  fully live-validated, not just simulator-validated. *(The M4L spec + Track III report still carry the
-  old `Palace-Verify: unverified` / "flagged: needs Loudon's Ableton" wording — flip them as part of
-  Open Move A, since both files are being edited for the clips change anyway.)*
-- **Open Thread B — train the Track II LoRA: ✅ RUN (verdict pending).** Both a FLUX LoRA and an SDXL
-  LoRA were trained on the `r4ng3r` ranger and rendered across 4 new scenes × 4 seeds, plus a
-  DreamBooth control (`dbgrade/` — dog/duck). Grading rig built both ways: the numeric ruler
-  (`grade_score_v2.py`) and a human rating page (`grade/rate.html`). **Not yet done:** run/record the
-  numeric verdict, capture Loudon's `rate.html` rating, write the result into `track-II-report.md`, and
-  **commit `grade/` + `dbgrade/`** (currently untracked). The bar to beat is Track V's independent-seed
-  drift (embed 0.82 / color 0.17).
-
-## Decision logged + articulated this session — markers → MIDI clips
-Section/cue addressing moved **off Ableton locators (markers) and onto MIDI clips.** A locator is a
-*point* (name + bar); a MIDI clip is a *named span* (name + start + length), so sections are
-first-class durations — which also half-answers the Board-Schema's open `HOLD`/expansion question (a
-clip *gives* you the span). **Design confirmed by Loudon:** the OSC message is
-`/transport/section name start_bar length_bars` (span), and the device observes its **own host track's**
-`arrangement_clips` (`this_device canonical_parent`) — placement *is* the config. **Articulated this
-session** in all four docs: Production Plan, Board Record Schema (added a `SECTION` field), track-III
-report, and the M4L spec (JS rewritten: `cue_points` → host-track clips; `/transport/locator` →
-`/transport/section`; device marked live-validated).
-
-## Where we are — M0 + M1 VERIFIED (2026-06-16), working in the `feature/blueline` worktree
-- **M0 previz** plays the 8-shot storyboard in time with the live clock (`● transport playing`, frame
-  exact, `deterministic ✓`, shot-accurate, section live). `proofs/m0-previz/m0-report.md`. **Timed greybox.**
-- **M1 animatic** raises the same boards to the **comic register** — inked figures + Ben-Day halftone +
-  tapered speed-lines/impact burst on the flow shots + comic caption/border, over a **blue-line draft**
-  (the draft toggle: blue rough → inked, the project's namesake). Same clock/storyboard/board-record;
-  self-play advances panels on the beat. Verified in-browser, no errors. `proofs/m1-animatic/m1-report.md`.
-- **Staging channel added (2026-06-16):** `facing` + `eyeline` per shot → an **oriented-head blocking
-  sphere + eyeline ray + body-facing wedge**, so you can read which way each character faces and what they
-  look at (half the shots are eyeline beats). It's *conditioning*, not polish — facing → OpenPose head
-  keypoints. New `FACING`/`EYELINE` fields in [[BLUELINE — Board Record Schema]]. Aesthetic polish stays deferred.
-- **Structural disambiguation added (2026-06-16):** L/R hands + feet tagged **anatomically** (green=R / coral=L,
-  ◯ open / ● grip) — the #1 render-error fixer (maps to OpenPose L/R keypoints; we *declare* L/R, not let the
-  estimator guess). Plus **comic action lines** on the acting limb for the dramatic beats — distinct from the
-  environmental flow field (still M3). **Next structural pass (proposed):** near/far limb ordering (DEPTH) +
-  foot contact/weight. Noted in the board schema.
-- **Torso frame + framing-robustness (2026-06-16):** body facing = the **shoulder–shoulder–pelvis triangle**
-  (green/coral/violet corners, real OpenPose keypoints). Load-bearing principle Loudon named: *parts are
-  usually out of frame*, so each visible part carries direction+handedness **locally** and the read degrades
-  gracefully — shoulder line + colored ends + front-tick works from the shoulders alone (verified on a CU;
-  added a `CU` close-up framing). Replaced the earlier chest-wedge and feet-compass tries (feet crop first).
+## Where we are (all on `main`)
+- **Re-founded (2026-06-17).** BLUELINE now models the established pipeline — **anime backbone · comics skin · animated-feature tissue · music-video clock** — with the render-AI dropped in. The only novelty is **two seams**: board→layout (2D→3D handoff) and layout→render (staging→conditioning). Read `Projects/BLUELINE/BLUELINE — Production Pipeline.md`. Founding rationale deposited as canon: [[Adopt the Craft, Author the Seam]].
+- **M0 + M1 shipped + verified.** M0 greybox previz and M1 comic-register animatic both play the storyboard in time with the live clock. The **staging vocabulary** is built — facing · eyeline · L/R laterality · the framing-robust shoulder–shoulder–pelvis **torso frame** · shot size · camera grammar · the CU **detail ladder** — and does *three jobs at once* (board-record schema · AI conditioning keypoints · lossless 2D→3D transfer). New fields in the Board Record Schema: `FACING` / `EYELINE` / `HANDS` / `SECTION`.
+- **Track II (identity): honest negative.** The r4ng3r LoRA scored *below* its text-only baseline (learned a hooded costume, not a face). Pipeline is sound (DreamBooth dog control +0.35); the fix is a **face-forward dataset**. Until then: text-described characters + Track V seed-locking.
+- **Relay done.** `feature/blueline` merged → `main` (`61b439d`); its worktree + branch were **removed this session**.
 
 ## Next moves
-1. **M2 motion comic** — the held comic panels gain limited motion (parallax, held-pose drift, speed-lines
-   animating along the field): the first place the flow field *moves* in the comic register, still ahead
-   of the render-AI seam.
-2. **The real M4L clip-scan device** — only `clip_scan_sim.py` exists (a stand-in); build the device-side
-   one-shot scan of the host track's `arrangement_clips` (deferred/low-priority, never the transport poll
-   — the qmetro lesson) so the storyboard is authored as Live clips for real.
-3. **Trivial follow-up:** add an `/m1` route to `osc_ws_relay.py` (one `FileResponse`, like `/previz`) so
-   M1 is driven by the *live* Ableton clock, not just self-play (the transport code is already identical).
-
-**One named loop-back (optional, not blocking M0):** the Track II character LoRA. The pipeline is proven
-(dog control +0.35); the win is reachable. To get a usable r4ng3r LoRA, rebuild the character set with
-**face-forward, identity-bearing framing** (close + frontal, hood down) — not the dramatic full-body
-hooded poses that taught a costume — and/or face-region-weighted training; then re-grade against the v2
-ruler (`grade_score_v2.py`). Until then, **the detailed text description is the better identity anchor**
-and BLUELINE can proceed on text-described characters + Track V seed-locking for same-shot coherence.
+1. **M2 motion comic** — held comic panels gain limited motion (parallax, held-pose drift, speed-lines animating along the field): the first place the flow field *moves* in the comic register, still ahead of the render-AI seam.
+2. **Per-stage role-Specialists** under a BLUELINE [[Maker]] — Director · Board artist · DP/layout · Render-AI · Editor — make the team real (the Production Pipeline forward vector).
+3. **The 3D-assisted-boarding lane** — camera-heavy shots born in grey-box [[Shop/Blender]] and drawn over (the anime 3D-layout move), feeding the same board record. The open Seam-A branch.
+4. **Track II face-forward LoRA redo** (optional loop-back) — rebuild the character set close + frontal, retrain, re-grade against the v2 ruler.
+5. **The real M4L clip-scan device** (only `clip_scan_sim.py` exists) + the trivial `/m1` relay route so M1 runs off the live Ableton clock, not just self-play.
+6. **Resume the cited deep-research run** (parked, rate-limited) to back the pipeline synthesis with sources: `Workflow({scriptPath: ".../workflows/scripts/deep-research-wf_3fe30979-6c8.js", resumeFromRunId: "wf_3fe30979-6c8"})` once usage has reset (completed search/fetch agents return cached).
 
 ## State / receiving environment
-- **RunPod:** verify pod count is 0 (terminate promptly after any render/train). Network volume
-  **`blueline-models`** (`aqm8oev4b0`, 30 GB, EU-RO-1) persists the models; `palace-flux` serverless
-  parked at `workersMax=0`. Key/endpoint in `RunPod Images/studio/config.json` (gitignored).
-- **Track II grade dirs committed** — `proofs/track-II-lora/grade/` + `dbgrade/` (renders, contact
-  sheets, v2 scores) are now in git with the verdict.
-- **Relay:** restart with `_tools/ComfyUI/venv/bin/python "Projects/BLUELINE/proofs/track-III-clock/osc_ws_relay.py"`
-  (needs the venv for aiohttp; only one process can hold :9001).
-- **Mac:** Blender 5.1.2, local ComfyUI at `_tools/ComfyUI`. Normal git (Mac-side, lock-safe committer not needed).
+- **Owner is `main`** at the primary worktree `/Users/loudonstearns/Documents/The Palace`. The `feature/blueline` worktree + branch are gone.
+- **RunPod:** verify 0 pods; network volume `blueline-models` (`aqm8oev4b0`) persists models; `palace-flux` serverless parked at `workersMax=0`. Key in `RunPod Images/studio/config.json` (gitignored; symlinked per worktree profile).
+- **No running processes** — preview servers + the OSC relay are stopped; the deep-research workflow was stopped (resumable, above).
+- **Local tooling** lives under the gitignored `_tools/` (16 G ComfyUI) — symlinked into any worktree by the `blueline`/`full` profile.
 
-## Calibrations
-- **Capability-first**: prove at small scale before optimizing.
-- **Each track ships a reusable tool**, not project-local scratch.
-- **The spec is the interchange** (staging spec, board record) — front-ends and backends decouple through it.
-- Loudon builds the Max patches himself; give **precise, testable** Max guidance.
-
-## Load these files first
-1. `BLUELINE — Production Plan.md` (the five tracks) + `BLUELINE.md` (the face).
-2. The Track III docs for the clips propagation: `proofs/track-III-clock/track-III-report.md` +
-   `M4L-DEVICE-SPEC.md`, and `BLUELINE — Board Record Schema.md`.
-3. The Track II grade artifacts: `proofs/track-II-lora/track-II-report.md` + `grade/rating_manifest.json`
-   + `grade_score_v2.py`.
+## Read these first
+1. `Projects/BLUELINE/BLUELINE — Production Pipeline.md` (the re-founding: flowchart, the two seams, tracks-mapped-onto-stages) + `BLUELINE.md` (the face).
+2. [[Adopt the Craft, Author the Seam]] (the founding concept) + `Projects/BLUELINE/BLUELINE — Board Record Schema.md` (the spine + the staging-vocabulary fields).
+3. `Projects/BLUELINE/proofs/m1-animatic/m1-report.md` (the staging vocabulary, the framing-robust torso frame, the CU ladder, the blue-line→ink register).
 
 ## On pickup (the catcher's checklist)
-1. State the move back in one sentence (propagate markers→clips + adjudicate Track II, then M0). If you
-   can't, the baton wasn't caught — stop and ask Loudon.
-2. This baton is committed Mac-side — that commit is its archive.
-3. Mark it caught: delete this baton file (git is the archive).
-4. Act on the move, holding the calibrations above.
+1. **Spawn your own worktree first** — Loudon's standing rule (memory `feedback_create_worktree_first`): `node _ops/worktree/new-worktree.mjs --name feature/blueline-m2 --profile blueline --memory`. Work there; commit BLUELINE to that branch; merge to `main` when a rung ships; canon/deposit always commit to the owner on `main`.
+2. State the move back in one sentence (re-founded on the pipeline; next is M2). If you can't, the baton wasn't caught — stop and ask Loudon.
+3. This baton is committed on `main` — that commit is its archive.
+4. Mark it caught: delete this baton file (git is the archive).
+5. Act on the move, holding the calibrations below.
+
+## Calibrations
+- **Adopt the craft, author the seam** — don't reinvent established film/animation craft; the only new work is the two seams.
+- **Look vs legibility** — staging clarity is *conditioning* (substrate); aesthetic polish is deferred.
+- **The board record is the single source of truth** — 2D and Blender both render it; tune *params, not pixels*; depth round-trips. Blender stops at the grey-box; the AI paints.
+- **Loudon builds the Max patches himself** — give precise, testable Max guidance.
+- **Reveal files in Finder** (`open -R`) when you locate or produce them (memory `feedback_reveal_in_finder`).
+- **Verify the owner is on `main` before any canon/baton commit** — the shared tree thrashes branches.
