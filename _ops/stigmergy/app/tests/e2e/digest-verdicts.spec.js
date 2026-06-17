@@ -46,9 +46,11 @@ test.afterEach(() => {
 });
 
 async function gotoTrickster(page) {
-  // The escalation digest lives on the TRICKSTER deck now (relocated from the
-  // old in-QUEUE TRICKSTER board block during the v2.0 consolidation).
+  // The escalation digest lives on the TRICKSTER deck now, BELOW the decision
+  // cards and collapsed by default (it's the auto-trickster tuning panel, not
+  // the decision list). Expand it before asserting on its rows.
   await page.goto('/?deck=TRICKSTER');
+  await page.getByTestId('digest-toggle').click();
   await page.locator('[data-row-kind]').first().waitFor({ timeout: 10_000 });
   await page.evaluate(() => Promise.allSettled([
     document.fonts.load('14px "IBM Plex Mono"'),

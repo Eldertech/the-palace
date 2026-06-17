@@ -189,13 +189,6 @@ export default function TricksterDeck({
         ) : null}
       </div>
 
-      {/* The Automated Trickster (Stage E) escalation digest + alignment-review
-          verdict capture. Relocated here from the old in-QUEUE TRICKSTER board
-          block: the digest is a decision/triage surface, so it belongs on the
-          decision deck, not as a second inbox inside QUEUE. Fully defensive —
-          renders "no digest yet" when absent and never throws. */}
-      <DigestPanel />
-
       {/* FILE & RUN outcome — lives outside the n===0 branch so it stays up
           even when running the last card empties the deck. */}
       {runStatus ? (
@@ -259,6 +252,13 @@ export default function TricksterDeck({
           ))}
         </>
       )}
+
+      {/* The auto-trickster tuning panel — the calls a rule-engine WOULD make,
+          with agree/differ so you can teach it whether to trust it. Demoted
+          BELOW the decision cards and collapsed by default: it is a power-tool,
+          not the decision list, so the cards lead the deck. Fully defensive —
+          renders nothing-yet when absent and never throws. */}
+      <DigestPanel />
     </div>
   );
 }

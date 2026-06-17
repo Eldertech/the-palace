@@ -77,7 +77,7 @@ The crisp line: **TRICKSTER = a steward is waiting on your answer; QUEUE = every
 ## Phase 0 — Consolidation (shipped 2026-06-16)
 
 - **Decisions live only on TRICKSTER.** `QueuePanel` now filters out `resource_request` items (`buildQueue` still models them — the model stays complete and unit-tested — the QUEUE *view* simply doesn't surface them). The duplicate in-QUEUE `DigestPanel`+`TricksterInbox` block was removed.
-- **`DigestPanel` relocated to the TRICKSTER deck**, where the escalation digest + alignment-review verdicts belong.
+- **`DigestPanel` relocated to the TRICKSTER deck**, where the escalation digest + alignment-review verdicts belong — **below the decision cards and collapsed by default** (it's the auto-trickster *tuning* panel, not the decision list, so the cards lead), with its wire labels humanized per [[Speak Like a Person, Log Like a Protocol]] (e.g. `BLOCKING AUDITION` → "paused — needs your ear"; `audition_verification` → "listen + approve"; `auto-grant` → "would approve"). *(Refined 2026-06-16 after the digest first led the deck and leaked protocol jargon — Loudon flagged the confusion.)*
 - **One board selector.** The `ChannelTabs`/`MessageList`/`AgentRoster` board-viewer is demoted to a collapsible "raw board feed" firehose **under** the ranked QUEUE — folded by default for focus, auto-open in demo/e2e.
 - **One decision card.** `TricksterCard` is canonical; the redundant `TricksterInbox.jsx` was deleted; the duplicated `Linkify` was hoisted to `src/lib/linkify.jsx` (the long-deferred "Phase 6 convergence").
 - **Pure monospace restored.** Cormorant/Manrope/`--font-ui` leaks in `TricksterCard` + `EntryBody` replaced with `--font-mono`/`--font-display`; zero Loudon Live fonts remain in the rendered DOM.
