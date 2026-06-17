@@ -5,8 +5,9 @@ import { test, expect } from '@playwright/test';
 // paste into an interactive session you can watch + steer.
 //
 // Hermetic ?demo=only; render + open only. We never click MARK PICKED UP (that
-// posts a handoff_picked_up to the live board) — that path is covered at the
-// model level by tests/unit/handoff-builder.test.js.
+// posts a handoff_picked_up to the live board) nor LAUNCH TERMINAL (that POSTs
+// /api/launch and would open a real Terminal) — those paths are covered at the
+// model level (handoff-builder.test.js, launch-server.test.js).
 
 async function gotoQueue(page) {
   await page.goto('/?demo=only&deck=QUEUE');
@@ -33,6 +34,9 @@ test.describe('Launch Interactive — handoff pickup', () => {
     await expect(prompt).toContainText('CLAUDE.md');
     await expect(page.getByTestId('launch-copy')).toBeVisible();
     await expect(page.getByTestId('launch-mark-picked-up')).toBeVisible();
+    // The one-click "launch terminal" action is offered too (not clicked here —
+    // it would POST /api/launch and open a real Terminal).
+    await expect(page.getByTestId('launch-terminal')).toBeVisible();
     // Esc closes without posting anything.
     await page.keyboard.press('Escape');
     await expect(modal).toHaveCount(0);
