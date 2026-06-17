@@ -214,6 +214,35 @@ describe('buildCyclePrompt (integration)', () => {
     const { userTurn } = buildCyclePrompt({ palaceRoot: root, agentDir: agentRel, cycleN: 3, today: '2026-05-27' });
     expect(userTurn).not.toContain('Your staging arc');
   });
+
+  test('mode defaults to headless — the orchestrator output protocol is present', () => {
+    const { agentRel } = makePalace({ state: { iteration: 0, last_active: null, last_read_cursor: null } });
+    const { userTurn } = buildCyclePrompt({ palaceRoot: root, agentDir: agentRel, cycleN: 1, today: '2026-05-27' });
+    expect(userTurn).toContain('# Output protocol');
+    expect(userTurn).toContain('The orchestrator parses');
+    expect(userTurn).not.toContain('Narrate every write');
+  });
+
+  test('mode "interactive" swaps the closing for the narrate-your-writes framing — same injected context', () => {
+    const { agentRel } = makePalace({
+      state: { iteration: 2, last_active: '2026-05-26T10:00:00Z', last_read_cursor: 'x1' },
+      board: [{ id: 'x1', type: 'BROADCAST' }, { id: 'x2', type: 'BROADCAST' }],
+    });
+    const { userTurn } = buildCyclePrompt({
+      palaceRoot: root, agentDir: agentRel, cycleN: 3, today: '2026-05-27', mode: 'interactive',
+    });
+    // the interactive framing replaces the headless protocol
+    expect(userTurn).toContain('driven live');
+    expect(userTurn).toContain('Narrate every write before you make it');
+    expect(userTurn).toContain('catching Loudon up on where My Project stands');
+    expect(userTurn).toContain('sess-xyz');                       // post-as-the-page guidance still names session_id
+    expect(userTurn).not.toContain('# Output protocol');          // headless-only
+    expect(userTurn).not.toContain('The orchestrator parses');    // headless-only
+    // the CONTEXT is identical across modes — identity + board still injected
+    expect(userTurn).toContain('body text here');                 // home entry inlined (identity)
+    expect(userTurn).toContain('x2');                             // board slice present
+    expect(userTurn).toContain('This cycle\'s mandate');          // mandate section unchanged
+  });
 });
 
 describe('findEntryFile', () => {

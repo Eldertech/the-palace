@@ -37,31 +37,34 @@ test.describe('Stewards deck — surface', () => {
   });
 });
 
-// Launch interactive — drive a steward in a watchable session. Render-only and
-// NON-DESTRUCTIVE: launch just builds a paste-ready prompt (no POST, no cycle
-// fire), so these are safe against the live board — they never advance a
-// steward. Mirrors launch-interactive.spec.js (the handoff launch e2e).
-test.describe('Stewards deck — launch interactive', () => {
+// Launch interactive — CONSTRUCT a steward as a page-agent in a watchable
+// session. Render + preview only and NON-DESTRUCTIVE: opening the panel POSTs
+// /api/launch/agent?preview (read-only — buildCyclePrompt reads the steward's
+// files, no POST to the board, no cycle fire). We never click LAUNCH TERMINAL
+// (that opens a real Terminal). Mirrors launch-interactive.spec.js.
+test.describe('Stewards deck — construct & launch agent', () => {
   test('every steward row exposes a launch action', async ({ page }) => {
     await gotoStewards(page);
     await expect(page.locator('[data-testid^="steward-launch-"]').first())
       .toBeVisible({ timeout: 10_000 });
   });
 
-  test('launch opens a watch+steer prompt (copy, no mark-picked-up); Esc closes', async ({ page }) => {
+  test('launch opens the construct-agent panel (tiers + Core knobs); Esc closes', async ({ page }) => {
     await gotoStewards(page);
     const launch = page.locator('[data-testid^="steward-launch-"] button:not([disabled])').first();
     test.skip((await launch.count()) === 0, 'no launchable steward row (all mid-cycle?)');
     await launch.click();
-    const modal = page.getByTestId('launch-modal');
+    const modal = page.getByTestId('agent-launch-modal');
     await expect(modal).toBeVisible({ timeout: 5_000 });
-    // the steward-flavored prompt, with the orient step
-    await expect(page.getByTestId('launch-prompt')).toContainText(/stepping into a palace steward/i);
-    await expect(page.getByTestId('launch-prompt')).toContainText('CLAUDE.md');
-    // copy is offered; the handoff-only MARK PICKED UP is not
-    await expect(page.getByTestId('launch-copy')).toBeVisible();
-    await expect(page.getByTestId('launch-mark-picked-up')).toHaveCount(0);
-    // Esc closes (nothing was posted — launch is non-destructive)
+    // the construction is shown by palace tier (Tier 3 = the injected identity)
+    await expect(page.getByTestId('agent-tiers')).toBeVisible({ timeout: 10_000 });
+    await expect(page.getByTestId('agent-tier-3')).toContainText(/inject/i);
+    // the Core knobs + actions; LAUNCH TERMINAL is present but NOT clicked
+    await expect(page.getByTestId('agent-model')).toBeVisible();
+    await expect(page.getByTestId('agent-effort')).toBeVisible();
+    await expect(page.getByTestId('agent-launch-terminal')).toBeVisible();
+    await expect(page.getByTestId('agent-copy')).toBeVisible();
+    // Esc closes (only a read-only preview happened)
     await page.keyboard.press('Escape');
     await expect(modal).toHaveCount(0);
   });
