@@ -46,25 +46,29 @@ export function launchInteractive(prompt, opts = {}) {
 
   const palaceRoot = opts.palaceRoot || process.cwd();
   const spawnImpl = opts.spawnImpl || realSpawn;
-  // Pin the model. A launched session drives a steward / catches a baton / works
-  // a card — real read-edit-commit palace work — so it opens on Opus by default,
-  // independent of the operator's global /model. `opus` is an alias for the
-  // latest Opus (stays current); overridable via opts.model for a future picker.
-  const model = opts.model || 'opus';
+  // Pin the model + effort. A launched session drives a steward / catches a
+  // baton / works a card — real read-edit-commit palace work — so it opens on
+  // the LATEST Opus at a real reasoning budget, independent of the operator's
+  // global /model. We pin the exact id `claude-opus-4-8` rather than the `opus`
+  // alias: on Claude Code v2.1.x that alias resolves to 4.7-low-effort, not 4.8.
+  // `--effort high` overrides the alias's "low" default. Both overridable via
+  // opts for a future picker; bump the id when a newer Opus ships.
+  const model = opts.model || 'claude-opus-4-8';
+  const effort = opts.effort || 'high';
 
   let dir, promptPath, scriptPath;
   try {
     dir = opts.tmpDir || mkdtempSync(join(tmpdir(), 'stigmergy-launch-'));
     promptPath = join(dir, 'prompt.txt');
     scriptPath = join(dir, 'launch.sh');
-    // The launcher: into the repo, run claude (on the pinned model) seeded from
+    // The launcher: into the repo, run claude (pinned model + effort) seeded from
     // the prompt file, then clean the temp dir once the session ends
     // (unlink-while-open is safe on unix, so removing this script mid-run does
     // not abort it).
     const script = [
       '#!/bin/bash',
       `cd ${shq(palaceRoot)} || exit 1`,
-      `claude --model ${shq(model)} "$(cat ${shq(promptPath)})"`,
+      `claude --model ${shq(model)} --effort ${shq(effort)} "$(cat ${shq(promptPath)})"`,
       `rm -rf ${shq(dir)}`,
       '',
     ].join('\n');
