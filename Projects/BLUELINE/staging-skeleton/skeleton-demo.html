@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>BLUELINE — One Skeleton (OpenPose ↔ staging frame)</title>
+<style>
+  :root{--bg:#15161a;--panel:#1d1f25;--ink:#e9e7e2;--dim:#8b8d96;--amber:#e0a83a;--good:#7bbf6a;--bad:#c98a8a;--pel:#b58cf0;--line:#2c2e36;--paper:#101116}
+  *{box-sizing:border-box} html,body{margin:0;background:var(--bg);color:var(--ink);font-family:"JetBrains Mono",ui-monospace,Menlo,monospace}
+  .wrap{max-width:1120px;margin:0 auto;padding:22px}
+  h1{font-family:"Anton",Impact,sans-serif;font-weight:400;letter-spacing:.04em;text-transform:uppercase;font-size:28px;margin:0}
+  .sub{color:var(--dim);font-style:italic;font-family:Cormorant,Georgia,serif;font-size:18px;margin:3px 0 16px}
+  .legend{font-size:11px;color:var(--dim);line-height:1.7;margin-bottom:18px}
+  .legend b{color:var(--amber)} .legend .g{color:var(--good)} .legend .c{color:var(--bad)} .legend .v{color:var(--pel)}
+  .row{display:flex;gap:14px;flex-wrap:wrap;background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:14px;margin-bottom:14px}
+  .pair{display:flex;gap:10px}
+  .col{display:flex;flex-direction:column;gap:5px}
+  .cv{background:var(--paper);border:1px solid var(--line);border-radius:6px}
+  .cap{font-size:10px;color:var(--dim);text-transform:uppercase;letter-spacing:.07em;text-align:center}
+  .cap b{color:var(--ink)}
+  .meta{flex:1;min-width:230px}
+  .meta .name{font-family:"Anton",Impact,sans-serif;font-size:20px;letter-spacing:.04em}
+  .meta .k{font-size:12px;margin:5px 0;color:var(--dim)} .meta .k b{color:var(--ink)}
+  #foot{color:var(--dim);font-size:11px;margin-top:18px}
+</style></head>
+<body><div class="wrap">
+  <h1>BLUELINE · One Skeleton</h1>
+  <div class="sub">the canonical OpenPose skeleton and our staging frame are the SAME points, drawn for two audiences — the ControlNet and the author</div>
+  <div class="legend">
+    <b>Left (OpenPose):</b> the neck-HUB the render eats — four limbs radiate down from the neck, so the torso "points up" to the neck. Emitted untouched.<br>
+    <b>Right (staging frame):</b> a derived VIEW over the same keypoints — the shoulder–shoulder–pelvis triangle "points down" to a derived mid-hip; the <b>tick</b> is chest-facing; <span class="g">green = char-R</span>, <span class="c">coral = char-L</span>, <span class="v">violet = pelvis</span>. We invent no keypoint; we re-read the canonical ones.
+  </div>
+  <div id="rows"></div>
+  <div id="foot">Loudon Live · Autodidact Polymaths</div>
+</div>
+<script src="staging_skeleton.js"></script>
+<script>
+const S = window.StagingSkeleton;
+const W=300,H=438, SX=W/832, SY=H/1216;          // scale 832x1216 keypoint space into the canvas
+const CSS=v=>getComputedStyle(document.documentElement).getPropertyValue(v).trim();
+function P(kp,i){const v=(i in kp)?kp[i]:kp[String(i)];return [v[0]*SX, v[1]*SY];}
+function dot(ctx,x,y,r,col){ctx.fillStyle=col;ctx.beginPath();ctx.arc(x,y,r,0,7);ctx.fill();}
+
+function drawOpenPose(ctx,kp){
+  ctx.clearRect(0,0,W,H);
+  S.OPENPOSE_LIMBS.forEach((lr,i)=>{const a=P(kp,lr[0]),b=P(kp,lr[1]);
+    const c=S.OPENPOSE_COLORS[i%18];ctx.strokeStyle='rgb('+c[0]+','+c[1]+','+c[2]+')';
+    ctx.lineWidth=5;ctx.lineCap='round';ctx.beginPath();ctx.moveTo(a[0],a[1]);ctx.lineTo(b[0],b[1]);ctx.stroke();});
+  for(let i=0;i<18;i++){const c=S.OPENPOSE_COLORS[i%18];const p=P(kp,i);dot(ctx,p[0],p[1],3.5,'rgb('+c[0]+','+c[1]+','+c[2]+')');}
+}
+function drawStaging(ctx,kp,facing){
+  ctx.clearRect(0,0,W,H);
+  const f=S.stagingFrame(kp,facing);
+  const sc=p=>[p[0]*SX,p[1]*SY];
+  const shR=sc(f.shoulder_R),shL=sc(f.shoulder_L),pel=sc(f.pelvis),mid=sc(f.shoulder_mid),head=sc(f.head);
+  // faint limb ghost (so the frame reads in context) — dim canonical lines
+  ctx.strokeStyle=CSS('--line');ctx.lineWidth=2;ctx.lineCap='round';
+  S.OPENPOSE_LIMBS.forEach(lr=>{const a=P(kp,lr[0]),b=P(kp,lr[1]);ctx.beginPath();ctx.moveTo(a[0],a[1]);ctx.lineTo(b[0],b[1]);ctx.stroke();});
+  // the ▽ triangle
+  ctx.fillStyle='rgba(233,231,226,.10)';ctx.beginPath();ctx.moveTo(shR[0],shR[1]);ctx.lineTo(shL[0],shL[1]);ctx.lineTo(pel[0],pel[1]);ctx.closePath();ctx.fill();
+  ctx.strokeStyle=CSS('--ink');ctx.lineWidth=2;ctx.beginPath();ctx.moveTo(shL[0],shL[1]);ctx.lineTo(pel[0],pel[1]);ctx.lineTo(shR[0],shR[1]);ctx.stroke();
+  // shoulder base line (the wide top)
+  ctx.lineWidth=3;ctx.beginPath();ctx.moveTo(shR[0],shR[1]);ctx.lineTo(shL[0],shL[1]);ctx.stroke();
+  // facing tick from shoulder mid
+  const tl=42, tx=mid[0]+f.facing_tick[0]*tl, ty=mid[1]+f.facing_tick[1]*tl;
+  ctx.strokeStyle=CSS('--amber');ctx.lineWidth=3;ctx.beginPath();ctx.moveTo(mid[0],mid[1]);ctx.lineTo(tx,ty);ctx.stroke();
+  dot(ctx,tx,ty,3,CSS('--amber'));
+  // L/R extremity dots from the canonical points
+  S.R_SIDE.forEach(i=>{const p=P(kp,i);dot(ctx,p[0],p[1],4,CSS('--good'));});
+  S.L_SIDE.forEach(i=>{const p=P(kp,i);dot(ctx,p[0],p[1],4,CSS('--bad'));});
+  // corners + pelvis apex
+  dot(ctx,shR[0],shR[1],6,CSS('--good'));dot(ctx,shL[0],shL[1],6,CSS('--bad'));dot(ctx,pel[0],pel[1],6,CSS('--pel'));
+  // head + head-facing ray
+  ctx.strokeStyle=CSS('--amber');ctx.lineWidth=2;ctx.beginPath();ctx.moveTo(head[0],head[1]);ctx.lineTo(head[0]+f.head_facing[0]*26,head[1]+f.head_facing[1]*26);ctx.stroke();
+  dot(ctx,head[0],head[1],5,CSS('--ink'));
+}
+(async function(){
+  const DOC = await (await fetch('staging-skeleton.fixtures.json',{cache:'no-store'})).json();
+  const root=document.getElementById('rows');
+  for(const c of DOC.cases){
+    const f=S.stagingFrame(c.keypoints,c.authored_facing);
+    const row=document.createElement('div');row.className='row';
+    row.innerHTML='<div class="pair">'+
+      '<div class="col"><canvas class="cv op" width="'+W+'" height="'+H+'"></canvas><div class="cap"><b>OpenPose</b> · neck-hub (emit)</div></div>'+
+      '<div class="col"><canvas class="cv st" width="'+W+'" height="'+H+'"></canvas><div class="cap"><b>staging frame</b> · derived ▽</div></div>'+
+    '</div>'+
+    '<div class="meta"><div class="name">'+c.name.replace(/_/g,' ')+'</div>'+
+      '<div class="k">authored facing <b>'+c.authored_facing+'</b> &nbsp; (estimate from keypoints: <b>'+c.facing_estimate+'</b>)</div>'+
+      '<div class="k">pelvis <b>derived</b> = mid-hip (COCO-18 has none)</div>'+
+      '<div class="k">tick <b>['+f.facing_tick[0]+', '+f.facing_tick[1]+']</b> — chest normal</div>'+
+      '<div class="k">L/R <b>declared</b> by keypoint, not guessed</div></div>';
+    root.appendChild(row);
+    drawOpenPose(row.querySelector('.op').getContext('2d'), c.keypoints);
+    drawStaging(row.querySelector('.st').getContext('2d'), c.keypoints, c.authored_facing);
+  }
+})();
+</script></body></html>

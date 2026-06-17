@@ -1,0 +1,11 @@
+# === BOARD (gallery) ===
+SHOT_ID: G06
+CAMERA_GRAMMAR: top_down | lens 35 | near top-down (bird's-eye) — the figure read from above
+ANGLE: top_down (solved) | face -Y
+CHARS: HERO (fallen)
+POSE: passes/G06_keypoints.json -> passes/G06_openpose.png
+DEPTH: passes/G06_depth.png
+EDGE: passes/G06_canny.png
+NORMAL: passes/G06_normal.png
+SEAM_A_METER: offframe_keypoints=0  behind_camera_keypoints=0
+NOTE: body on the ground seen from above — non-standing + bird's-eye

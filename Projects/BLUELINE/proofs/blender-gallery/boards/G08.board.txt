@@ -1,0 +1,11 @@
+# === BOARD (gallery) ===
+SHOT_ID: G08
+CAMERA_GRAMMAR: profile | lens 50 | pure profile (camera on +x) — depth carries the body, pose goes flat
+ANGLE: profile (solved) | face -Y
+CHARS: HERO (lunge)
+POSE: passes/G08_keypoints.json -> passes/G08_openpose.png
+DEPTH: passes/G08_depth.png
+EDGE: passes/G08_canny.png
+NORMAL: passes/G08_normal.png
+SEAM_A_METER: offframe_keypoints=2  behind_camera_keypoints=0
+NOTE: the proven lunge, but side-on — how much pose survives a profile

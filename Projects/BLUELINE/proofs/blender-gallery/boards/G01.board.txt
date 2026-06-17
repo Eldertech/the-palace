@@ -1,0 +1,11 @@
+# === BOARD (gallery) ===
+SHOT_ID: G01
+CAMERA_GRAMMAR: worms_eye | lens 28 | worm's-eye (the proven bench grammar) — comparison baseline
+ANGLE: worms_eye (solved) | face -Y
+CHARS: HERO (punch at cam)
+POSE: passes/G01_keypoints.json -> passes/G01_openpose.png
+DEPTH: passes/G01_depth.png
+EDGE: passes/G01_canny.png
+NORMAL: passes/G01_normal.png
+SEAM_A_METER: offframe_keypoints=0  behind_camera_keypoints=0
+NOTE: foreshortened fist toward camera — does the arm read or melt?

@@ -1,0 +1,11 @@
+# === BOARD (gallery) ===
+SHOT_ID: G09
+CAMERA_GRAMMAR: dutch | lens 35 | dutch tilt 22deg — destabilized horizon
+ANGLE: dutch (solved) | face +Y
+CHARS: HERO (overhead)
+POSE: passes/G09_keypoints.json -> passes/G09_openpose.png
+DEPTH: passes/G09_depth.png
+EDGE: passes/G09_canny.png
+NORMAL: passes/G09_normal.png
+SEAM_A_METER: offframe_keypoints=1  behind_camera_keypoints=0
+NOTE: overhead strike (faces away) on a dutch — back + tilt
