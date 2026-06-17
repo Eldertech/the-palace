@@ -1,0 +1,11 @@
+# === BOARD (gallery) ===
+SHOT_ID: G07
+CAMERA_GRAMMAR: profile | lens 50 | pure profile (camera on +x) — depth carries the body, pose goes flat
+ANGLE: profile (solved) | face -Y
+CHARS: HERO (fallen)
+POSE: passes/G07_keypoints.json -> passes/G07_openpose.png
+DEPTH: passes/G07_depth.png
+EDGE: passes/G07_canny.png
+NORMAL: passes/G07_normal.png
+SEAM_A_METER: offframe_keypoints=4  behind_camera_keypoints=0
+NOTE: fallen body in pure profile — depth must carry it, pose flattens

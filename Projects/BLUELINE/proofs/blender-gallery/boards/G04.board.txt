@@ -1,0 +1,11 @@
+# === BOARD (gallery) ===
+SHOT_ID: G04
+CAMERA_GRAMMAR: dutch | lens 35 | dutch tilt 22deg — destabilized horizon
+ANGLE: dutch (solved) | face -Y
+CHARS: HERO (spin slash)
+POSE: passes/G04_keypoints.json -> passes/G04_openpose.png
+DEPTH: passes/G04_depth.png
+EDGE: passes/G04_canny.png
+NORMAL: passes/G04_normal.png
+SEAM_A_METER: offframe_keypoints=2  behind_camera_keypoints=0
+NOTE: crossed L/R arms on a tilted horizon — the laterality ambiguity test
