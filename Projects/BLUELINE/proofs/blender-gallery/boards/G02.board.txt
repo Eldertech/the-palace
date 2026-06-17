@@ -1,0 +1,11 @@
+# === BOARD (gallery) ===
+SHOT_ID: G02
+CAMERA_GRAMMAR: hero_push | lens 65 | hero push-in, 65mm — chest/face, compressed
+ANGLE: hero_push (solved) | face -Y
+CHARS: HERO (punch at cam)
+POSE: passes/G02_keypoints.json -> passes/G02_openpose.png
+DEPTH: passes/G02_depth.png
+EDGE: passes/G02_canny.png
+NORMAL: passes/G02_normal.png
+SEAM_A_METER: offframe_keypoints=2  behind_camera_keypoints=0
+NOTE: same punch, long lens — compression vs the wide foreshortening

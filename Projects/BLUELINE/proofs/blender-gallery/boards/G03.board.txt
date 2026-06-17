@@ -1,0 +1,11 @@
+# === BOARD (gallery) ===
+SHOT_ID: G03
+CAMERA_GRAMMAR: extreme_worms | lens 18 | extreme worm's-eye, 18mm — towering, steep up-angle
+ANGLE: extreme_worms (solved) | face -Y
+CHARS: HERO (high kick)
+POSE: passes/G03_keypoints.json -> passes/G03_openpose.png
+DEPTH: passes/G03_depth.png
+EDGE: passes/G03_canny.png
+NORMAL: passes/G03_normal.png
+SEAM_A_METER: offframe_keypoints=0  behind_camera_keypoints=0
+NOTE: leg above the head at 18mm — extreme limb angle + tower

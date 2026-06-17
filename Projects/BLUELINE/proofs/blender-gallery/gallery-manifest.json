@@ -1,0 +1,102 @@
+[
+  {
+    "shot": "G01",
+    "pose": "punch_at_cam",
+    "grammar": "worms_eye",
+    "note": "foreshortened fist toward camera \u2014 does the arm read or melt?",
+    "lens": 28,
+    "grammar_note": "worm's-eye (the proven bench grammar) \u2014 comparison baseline",
+    "offframe": 0,
+    "behind": 0
+  },
+  {
+    "shot": "G02",
+    "pose": "punch_at_cam",
+    "grammar": "hero_push",
+    "note": "same punch, long lens \u2014 compression vs the wide foreshortening",
+    "lens": 65,
+    "grammar_note": "hero push-in, 65mm \u2014 chest/face, compressed",
+    "offframe": 2,
+    "behind": 0
+  },
+  {
+    "shot": "G03",
+    "pose": "high_kick",
+    "grammar": "extreme_worms",
+    "note": "leg above the head at 18mm \u2014 extreme limb angle + tower",
+    "lens": 18,
+    "grammar_note": "extreme worm's-eye, 18mm \u2014 towering, steep up-angle",
+    "offframe": 0,
+    "behind": 0
+  },
+  {
+    "shot": "G04",
+    "pose": "spin_slash",
+    "grammar": "dutch",
+    "note": "crossed L/R arms on a tilted horizon \u2014 the laterality ambiguity test",
+    "lens": 35,
+    "grammar_note": "dutch tilt 22deg \u2014 destabilized horizon",
+    "offframe": 2,
+    "behind": 0
+  },
+  {
+    "shot": "G05",
+    "pose": "back_arch",
+    "grammar": "extreme_worms",
+    "note": "arched scream from far below \u2014 chest over the lens",
+    "lens": 18,
+    "grammar_note": "extreme worm's-eye, 18mm \u2014 towering, steep up-angle",
+    "offframe": 0,
+    "behind": 0
+  },
+  {
+    "shot": "G06",
+    "pose": "fallen",
+    "grammar": "top_down",
+    "note": "body on the ground seen from above \u2014 non-standing + bird's-eye",
+    "lens": 35,
+    "grammar_note": "near top-down (bird's-eye) \u2014 the figure read from above",
+    "offframe": 0,
+    "behind": 0
+  },
+  {
+    "shot": "G07",
+    "pose": "fallen",
+    "grammar": "profile",
+    "note": "fallen body in pure profile \u2014 depth must carry it, pose flattens",
+    "lens": 50,
+    "grammar_note": "pure profile (camera on +x) \u2014 depth carries the body, pose goes flat",
+    "offframe": 4,
+    "behind": 0
+  },
+  {
+    "shot": "G08",
+    "pose": "lunge",
+    "grammar": "profile",
+    "note": "the proven lunge, but side-on \u2014 how much pose survives a profile",
+    "lens": 50,
+    "grammar_note": "pure profile (camera on +x) \u2014 depth carries the body, pose goes flat",
+    "offframe": 2,
+    "behind": 0
+  },
+  {
+    "shot": "G09",
+    "pose": "overhead",
+    "grammar": "dutch",
+    "note": "overhead strike (faces away) on a dutch \u2014 back + tilt",
+    "lens": 35,
+    "grammar_note": "dutch tilt 22deg \u2014 destabilized horizon",
+    "offframe": 1,
+    "behind": 0
+  },
+  {
+    "shot": "G10",
+    "pose": "spin_slash",
+    "grammar": "top_down",
+    "note": "the twist from above \u2014 do crossed limbs separate or fuse?",
+    "lens": 35,
+    "grammar_note": "near top-down (bird's-eye) \u2014 the figure read from above",
+    "offframe": 2,
+    "behind": 0
+  }
+]
