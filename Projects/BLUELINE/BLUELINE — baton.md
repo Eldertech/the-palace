@@ -67,6 +67,11 @@ report, and the M4L spec (JS rewritten: `cue_points` → host-track clips; `/tra
   estimator guess). Plus **comic action lines** on the acting limb for the dramatic beats — distinct from the
   environmental flow field (still M3). **Next structural pass (proposed):** near/far limb ordering (DEPTH) +
   foot contact/weight. Noted in the board schema.
+- **Torso frame + framing-robustness (2026-06-16):** body facing = the **shoulder–shoulder–pelvis triangle**
+  (green/coral/violet corners, real OpenPose keypoints). Load-bearing principle Loudon named: *parts are
+  usually out of frame*, so each visible part carries direction+handedness **locally** and the read degrades
+  gracefully — shoulder line + colored ends + front-tick works from the shoulders alone (verified on a CU;
+  added a `CU` close-up framing). Replaced the earlier chest-wedge and feet-compass tries (feet crop first).
 
 ## Next moves
 1. **M2 motion comic** — the held comic panels gain limited motion (parallax, held-pose drift, speed-lines

@@ -3,7 +3,7 @@
 <title>BLUELINE — M1 Animatic (comic register)</title>
 <style>
   :root{--bg:#15161a;--panel:#1d1f25;--ink:#e9e7e2;--dim:#8b8d96;--amber:#e0a83a;--good:#7bbf6a;--bad:#c98a8a;--line:#2c2e36;
-        --paper:#1a1c22;--blue:#5b7fc7;--bone:#e9e7e2;--shadow:#0f1013}
+        --paper:#1a1c22;--blue:#5b7fc7;--bone:#e9e7e2;--pel:#b58cf0;--shadow:#0f1013}
   *{box-sizing:border-box} html,body{margin:0;height:100%;background:var(--bg);color:var(--ink);
     font-family:"JetBrains Mono",ui-monospace,Menlo,monospace}
   .wrap{max-width:1080px;margin:0 auto;padding:20px}
@@ -69,9 +69,9 @@
       <div class="card">
         <div class="k">reading the board</div>
         <div class="row"><span>head + gaze ray</span><span style="color:var(--amber)">where they LOOK</span></div>
-        <div class="row"><span>foot arrow ⟂ ground</span><span style="color:var(--ink)">where the BODY faces</span></div>
-        <div class="row"><span>hand/foot R</span><span style="color:var(--good)">● char. right</span></div>
-        <div class="row"><span>hand/foot L</span><span style="color:var(--bad)">● char. left</span></div>
+        <div class="row"><span>shoulder line + tick</span><span style="color:var(--ink)">where the BODY faces</span></div>
+        <div class="row"><span>R / L sides</span><span><span style="color:var(--good)">●R</span> <span style="color:var(--bad)">●L</span> sh·hand·foot</span></div>
+        <div class="row"><span>◆ pelvis</span><span style="color:var(--pel)">apex — when in frame</span></div>
         <div class="row"><span>◯ open · ● grip</span><span class="dim">hand state</span></div>
       </div>
       <div class="card">
@@ -99,7 +99,7 @@
 const EMBED = {"bible":{"title":"BLUELINE — M1 Animatic · r4ng3r","tempo":120,"fps":24,"beats_per_bar":4,"frames_per_beat":12},
 "shots":[
 {"id":"01","bar":1,"beat":1,"hold":8,"section":"intro","camera":"WIDE establishing","lens":24,"pose":"stand_front","flow":false,"facing":0,"eyeline":{"x":0.50,"y":0.47},"action":"Ranger stands small in the misty forest. Held stillness — the calm before."},
-{"id":"02","bar":3,"beat":1,"hold":8,"section":"intro","camera":"SLOW PUSH-IN","lens":35,"pose":"stand_3q","flow":false,"facing":0.35,"eyeline":{"x":0.05,"y":0.32},"action":"Push in to three-quarter. Body holds forward — eyeline snaps OFF-FRAME LEFT. She senses something."},
+{"id":"02","bar":3,"beat":1,"hold":8,"section":"intro","camera":"CU — she senses it","lens":85,"pose":"stand_3q","flow":false,"facing":0.35,"eyeline":{"x":0.05,"y":0.32},"action":"CLOSE-UP — body cropped to the shoulders. The shoulder line (green R / coral L) + the front-tick + the head still read: body holds forward, eyeline snaps OFF-FRAME LEFT."},
 {"id":"03","bar":5,"beat":1,"hold":8,"section":"verse","camera":"OTS — over-the-shoulder","lens":50,"pose":"guard","flow":false,"facing":0.15,"eyeline":{"x":0.13,"y":0.38},"action":"Over her shoulder: the threat. Guard up — eyeline locked on it. Blocking dictates the frame."},
 {"id":"04","bar":7,"beat":1,"hold":8,"section":"verse","camera":"WORM'S-EYE hero turn","lens":28,"pose":"hero_turn","flow":false,"facing":-0.2,"eyeline":{"x":0.52,"y":0.10},"motion":{"x":0.50,"y":0.42,"dx":0,"dy":-1,"i":0.6},"action":"Low up-angle. She turns into it — gaze up, heroic, looming against the sky."},
 {"id":"05","bar":9,"beat":1,"hold":4,"section":"drop","camera":"MEDIUM — draw","lens":50,"pose":"reach_up","flow":true,"facing":0.5,"eyeline":{"x":0.96,"y":0.34},"motion":{"x":0.42,"y":0.52,"dx":-1,"dy":-0.1,"i":0.7},"action":"THE DROP. She draws the bow — eyeline down the aim. Speed-lines ignite; the flow field is the wind."},
@@ -121,6 +121,7 @@ const POSES = {
   crouch:{head:[0,-.66],parts:[[[0,-.30],[-.02,-.58]],[[-.08,-.56],[-.11,-.46],[-.08,-.36]],[[.08,-.56],[.11,-.46],[.08,-.36]],[[-.05,-.30],[-.13,-.18],[-.10,0]],[[.05,-.30],[.13,-.18],[.10,0]]]}
 };
 function cam(camera){const c=(camera||'').toUpperCase();
+  if(c.includes('CU')||c.includes('CLOSE')) return {h:2.6,x:.50,g:2.45,sky:.3,cu:true};   // close-up: crops to chest-up; pelvis/feet leave frame
   if(c.includes('WIDE')&&c.includes('RELEASE')) return {h:.42,x:.34,g:.86,sky:.6};
   if(c.includes('WIDE'))   return {h:.44,x:.46,g:.86,sky:.62};
   if(c.includes('PUSH'))   return {h:.60,x:.50,g:.85,sky:.5};
@@ -163,18 +164,32 @@ function eyelineRay(ctx,hx,hy,tx,ty){let dx=tx-hx,dy=ty-hy,d=Math.hypot(dx,dy)||
   ctx.save();ctx.strokeStyle=CSS('--amber');ctx.lineWidth=1.4;ctx.globalAlpha=.9;ctx.setLineDash([2,4]);
   ctx.beginPath();ctx.moveTo(hx+dx/d*12,hy+dy/d*12);ctx.lineTo(tx,ty);ctx.stroke();ctx.setLineDash([]);          // gaze ray
   ctx.beginPath();ctx.arc(tx,ty,5,0,7);ctx.moveTo(tx-8,ty);ctx.lineTo(tx+8,ty);ctx.moveTo(tx,ty-8);ctx.lineTo(tx,ty+8);ctx.stroke();ctx.restore();} // target reticle
-// body facing as a STANCE COMPASS on the ground — a top-down floor disc + forward arrow at the feet.
-// Yaw is unambiguous on the ground plane: arrow toward bottom = faces camera; toward right = faces screen-R.
-// (Replaces the old chest wedge, which couldn't show "faces the camera" = out-of-screen in 2D.)
-function stanceCompass(ctx,fx,fy,h,facing,col){const f=Math.max(-1,Math.min(1,facing||0));
-  const rx=h*0.16, ry=h*0.05, cy=fy+1;
-  const dx=f, dy=Math.sqrt(Math.max(0,1-f*f));                    // front hemisphere → toward camera (down)
-  const tx=fx+dx*rx, ty=cy+dy*ry, ang=Math.atan2(ty-cy,tx-fx), ah=h*0.055;
-  ctx.save();ctx.strokeStyle=col;ctx.lineCap='round';
-  ctx.globalAlpha=.32;ctx.lineWidth=1;ctx.beginPath();ctx.ellipse(fx,cy,rx,ry,0,0,7);ctx.stroke();   // ground disc (top-down)
-  ctx.globalAlpha=.95;ctx.lineWidth=Math.max(2,h*.016);ctx.beginPath();ctx.moveTo(fx,cy);ctx.lineTo(tx,ty);ctx.stroke();        // forward arrow
-  ctx.beginPath();ctx.moveTo(tx,ty);ctx.lineTo(tx-Math.cos(ang-0.5)*ah,ty-Math.sin(ang-0.5)*ah);
-  ctx.moveTo(tx,ty);ctx.lineTo(tx-Math.cos(ang+0.5)*ah,ty-Math.sin(ang+0.5)*ah);ctx.stroke();        // arrowhead
+// TORSO FRAME — the shoulder–shoulder–pelvis triangle, built FRAMING-ROBUST: the parts of the figure
+// are often out of frame (OTS, close-ups), so the read can't need the whole body. Priority:
+//   • shoulder line + color-coded ends (green=char RIGHT, coral=char LEFT) — handedness + facing, ALWAYS
+//   • front-normal tick at the shoulder midpoint — which way the chest faces, from the shoulders alone
+//   • pelvis corner + triangle fill — ONLY when the pelvis is actually in frame (adds torso lean/length)
+// Shoulders+head are the last things cropped, so a shoulders-up shot still gives direction + handedness.
+function torsoFrame(ctx,shL,shR,pel,h,facing,W,H){
+  const R=CSS('--good'),L=CSS('--bad'),Pc=CSS('--pel'),ink=CSS('--ink');
+  const inFrame=p=>p[0]>2&&p[0]<W-2&&p[1]>2&&p[1]<H-2;
+  ctx.save();
+  // pelvis triangle — only if the pelvis is on-panel
+  const pelIn=inFrame(pel);
+  if(pelIn){ctx.globalAlpha=.13;ctx.fillStyle=ink;ctx.beginPath();ctx.moveTo(shL[0],shL[1]);ctx.lineTo(shR[0],shR[1]);ctx.lineTo(pel[0],pel[1]);ctx.closePath();ctx.fill();
+    ctx.globalAlpha=.5;ctx.strokeStyle=ink;ctx.lineWidth=Math.max(1.2,h*.01);ctx.beginPath();ctx.moveTo(shR[0],shR[1]);ctx.lineTo(pel[0],pel[1]);ctx.lineTo(shL[0],shL[1]);ctx.stroke();}
+  // shoulder line — the always-visible core of the read
+  ctx.globalAlpha=.75;ctx.strokeStyle=ink;ctx.lineWidth=Math.max(1.8,h*.014);ctx.lineCap='round';
+  ctx.beginPath();ctx.moveTo(shL[0],shL[1]);ctx.lineTo(shR[0],shR[1]);ctx.stroke();
+  // front-normal tick at the shoulder midpoint — chest-facing from the shoulders alone
+  const mx=(shL[0]+shR[0])/2,my=(shL[1]+shR[1])/2,f=Math.max(-1,Math.min(1,facing||0));
+  const nx=f,ny=Math.sqrt(Math.max(0,1-f*f)),nl=h*0.135,tx=mx+nx*nl,ty=my+ny*nl,ang=Math.atan2(ty-my,tx-mx),ah=h*.05;
+  ctx.globalAlpha=.95;ctx.lineWidth=Math.max(2,h*.016);ctx.beginPath();ctx.moveTo(mx,my);ctx.lineTo(tx,ty);ctx.stroke();
+  ctx.beginPath();ctx.moveTo(tx,ty);ctx.lineTo(tx-Math.cos(ang-0.5)*ah,ty-Math.sin(ang-0.5)*ah);ctx.moveTo(tx,ty);ctx.lineTo(tx-Math.cos(ang+0.5)*ah,ty-Math.sin(ang+0.5)*ah);ctx.stroke();
+  // corners (anatomical): screen-L shoulder = char RIGHT (green), screen-R = LEFT (coral), pelvis = violet
+  ctx.globalAlpha=1;const r=Math.max(3.6,h*.027);
+  function c(p,col){ctx.fillStyle=col;ctx.beginPath();ctx.arc(p[0],p[1],r,0,7);ctx.fill();ctx.lineWidth=1;ctx.strokeStyle='#15161a';ctx.stroke();}
+  c(shL,R);c(shR,L);if(pelIn)c(pel,Pc);
   ctx.restore();}
 
 // L/R laterality tags — the #1 render-error fixer (maps to OpenPose's distinct L/R keypoints, so the
@@ -219,7 +234,7 @@ function inkFigure(ctx,fx,fy,h,pose,opts){
     [spine,armL,armR,legL,legR].forEach(c=>strokeLine(ctx,c,bw,blue));
     ctx.fillStyle=blue;[...spine,...armL,...armR,...legL,...legR,head].forEach(p=>{ctx.globalAlpha=.85;ctx.beginPath();ctx.arc(p[0],p[1],h*.015,0,7);ctx.fill();});ctx.globalAlpha=1;
     orientedHead(ctx,head[0],head[1],hr,tgt[0],tgt[1],blue,false);   // the blocking sphere, facing the gaze
-    stanceCompass(ctx,fx,fy,h,opts.facing,blue);                     // body facing — ground arrow at the feet
+    torsoFrame(ctx,shL,shR,spine[0],h,opts.facing,opts.W,opts.H);    // shoulder–shoulder–pelvis (framing-robust)
     if(P.bow){const hand=[fx+P.bow.hand[0]*h,fy+P.bow.hand[1]*h],dr=[fx+P.bow.draw[0]*h,fy+P.bow.draw[1]*h];
       ctx.strokeStyle=blue;ctx.lineWidth=bw;ctx.beginPath();ctx.arc(hand[0],hand[1],h*.17,-1.25,1.25);ctx.stroke();const a=h*.17;
       ctx.beginPath();ctx.moveTo(hand[0]+Math.cos(-1.25)*a,hand[1]+Math.sin(-1.25)*a);ctx.lineTo(dr[0],dr[1]);ctx.lineTo(hand[0]+Math.cos(1.25)*a,hand[1]+Math.sin(1.25)*a);ctx.stroke();}
@@ -234,7 +249,7 @@ function inkFigure(ctx,fx,fy,h,pose,opts){
   brush(ctx,spine,W*1.1,W*.8,ink);
   // head — oriented blocking sphere (facing + eyeline cross), not a featureless blob
   orientedHead(ctx,head[0],head[1],hr,tgt[0],tgt[1],ink,true);
-  stanceCompass(ctx,fx,fy,h,opts.facing,CSS('--ink'));   // body facing — ground arrow at the feet (structural, not amber)
+  torsoFrame(ctx,shL,shR,spine[0],h,opts.facing,opts.W,opts.H);   // shoulder–shoulder–pelvis (framing-robust)
   // (3) screentone shading on the shadow (right) side of the body
   const bx=Math.min(...[hipL,hipR,shL,shR].map(p=>p[0]))-W, by=head[1]-hr;
   benday(ctx,fx,by,(Math.max(hipR[0],shR[0])+W)-fx,fy-by,5,1.05,'#000',.5);
@@ -294,7 +309,7 @@ function drawPanel(ctx,W,H,shot,opts){
     ctx.fillStyle=ink;ctx.beginPath();ctx.moveTo(0,H);ctx.lineTo(0,H*0.40);
     ctx.quadraticCurveTo(W*0.16,H*0.32,W*0.27,H*0.62);ctx.lineTo(W*0.25,H);ctx.closePath();ctx.fill();
     ctx.beginPath();ctx.arc(W*0.13,H*0.34,H*0.14,0,7);ctx.fill();}
-  const fh=H*C.h, fx=W*C.x, fy=Math.min(gy,H-4);
+  const fh=H*C.h, fx=W*C.x, fy=C.cu?gy:Math.min(gy,H-4);   // CU: let the feet sit below frame (chest-up crop)
   opts.eyeline=shot.eyeline;opts.facing=shot.facing;opts.W=W;opts.H=H;   // the staging channel
   if(shot.motion)actionLines(ctx,shot.motion.x*W,shot.motion.y*H,shot.motion.dx,shot.motion.dy,shot.motion.i||0.6); // comic action trails (behind)
   inkFigure(ctx,fx,fy,fh,shot.pose,opts);

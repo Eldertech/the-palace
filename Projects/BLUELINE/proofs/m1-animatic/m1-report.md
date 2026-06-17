@@ -41,11 +41,18 @@ renders three new primitives:
   yaw + focus read instantly. (Loudon's "even a sphere with a cross indicates direction.")
 - **Eyeline ray + target reticle** — an amber gaze line to *what* the subject looks at; off-frame or on a
   subject (verified: panel 02 gaze snaps off-frame-left; panel 03's ray locks across-frame onto the threat).
-- **Stance compass** — body facing as a *ground arrow on a top-down floor disc at the feet*, separate from
-  the head, so the body can hold forward while the gaze darts away (the "senses something" beat). *(First
-  tried as a chest wedge; moved to the ground per Loudon's read — "faces the camera" is out-of-screen in 2D
-  and can't be shown on the chest, but yaw is unambiguous on the floor plane. Every mark is now named in a
-  "reading the board" legend card.)*
+- **Torso frame (framing-robust)** — body facing as the **shoulder–shoulder–pelvis triangle** with
+  color-coded corners (green = char right shoulder, coral = left, violet = pelvis), anchored to real
+  OpenPose keypoints (so it's the conditioning data, not an abstraction). Built to survive cropping — *parts
+  of the figure are usually out of frame* (OTS, close-ups): the **shoulder line + colored ends + a
+  front-normal tick** is the always-visible core (handedness + facing from the shoulders alone), and the
+  **pelvis corner completes the triangle only when it's in frame** (adds torso lean). **Verified on a
+  close-up** (shot 02, now a CU): body cropped to the shoulders, direction + handedness still read. *(This
+  replaced two earlier tries — a chest wedge, then a feet-anchored ground compass — both of which failed
+  Loudon's constraint: the feet are the FIRST thing cropped, so a feet-anchored facing read is fragile.)*
+- **Principle (Loudon's, 2026-06-16):** every visible part carries its own direction + handedness *locally*,
+  and the read **degrades gracefully** — never depends on seeing the whole figure. Each shoulder / hand /
+  foot is independently L/R-colored; whatever subset is in frame still tells you which side it is.
 
 These are now fields in [[BLUELINE — Board Record Schema]] (`FACING` / `EYELINE`) — the channel propagates to
 the Bench (Track IV) and any future register, not just M1's pixels. **Aesthetic polish stays deferred**;
