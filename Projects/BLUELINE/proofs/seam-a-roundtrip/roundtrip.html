@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>BLUELINE — Seam A Round-Trip (animatic → Blender → diff)</title>
+<style>
+  :root{--bg:#15161a;--panel:#1d1f25;--ink:#e9e7e2;--dim:#8b8d96;--amber:#e0a83a;--good:#7bbf6a;--bad:#c98a8a;--pel:#b58cf0;--line:#2c2e36;--paper:#101116}
+  *{box-sizing:border-box} html,body{margin:0;background:var(--bg);color:var(--ink);font-family:"JetBrains Mono",ui-monospace,Menlo,monospace}
+  .wrap{max-width:1140px;margin:0 auto;padding:22px}
+  h1{font-family:"Anton",Impact,sans-serif;font-weight:400;letter-spacing:.04em;text-transform:uppercase;font-size:28px;margin:0}
+  .sub{color:var(--dim);font-style:italic;font-family:Cormorant,Georgia,serif;font-size:18px;margin:3px 0 14px}
+  .summary{font-size:13px;margin-bottom:16px}
+  .pill{display:inline-block;border-radius:20px;padding:3px 10px;margin-right:6px;font-size:12px}
+  .PASS{background:#16271c;color:var(--good);border:1px solid var(--good)}
+  .WARN{background:#2a2410;color:var(--amber);border:1px solid var(--amber)}
+  .FAIL{background:#2a1414;color:var(--bad);border:1px solid var(--bad)}
+  .shot{display:flex;gap:14px;flex-wrap:wrap;background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:14px;margin-bottom:14px}
+  .imgs{display:flex;gap:10px}
+  .col{display:flex;flex-direction:column;gap:5px}
+  .cv{background:var(--paper);border:1px solid var(--line);border-radius:6px}
+  .cap{font-size:10px;color:var(--dim);text-transform:uppercase;letter-spacing:.07em;text-align:center}
+  .meta{flex:1;min-width:250px}
+  .name{font-family:"Anton",Impact,sans-serif;font-size:20px;letter-spacing:.04em}
+  .note{font-family:Cormorant,Georgia,serif;font-size:16px;color:var(--ink);margin:3px 0 9px}
+  table{border-collapse:collapse;font-size:12px;width:100%}
+  td{padding:3px 8px;border-bottom:1px solid var(--line)} td:first-child{color:var(--dim)}
+  .tickkey{font-size:11px;color:var(--dim);margin-top:7px} .tickkey .a{color:var(--amber)} .tickkey .r{color:var(--bad)}
+  #foot{color:var(--dim);font-size:11px;margin-top:18px}
+</style></head>
+<body><div class="wrap">
+  <h1>BLUELINE · Seam A Round-Trip</h1>
+  <div class="sub">animatic board record → Blender realization → reproject → diff: does the authored staging vocabulary survive the trip?</div>
+  <div class="summary" id="summary"></div>
+  <div id="shots"></div>
+  <div id="foot">Loudon Live · Autodidact Polymaths · the staging frame math here is the canonical staging-skeleton module, inlined for the proof</div>
+</div>
+<script>
+// minimal inline of the canonical staging-skeleton derivation (see ../../staging-skeleton/) — the tick is
+// the chest normal [f, sqrt(1-f^2)] in image space; the triangle is shoulders(2,5) + derived mid-hip(8,11).
+const LIMBS=[[1,2],[1,5],[2,3],[3,4],[5,6],[6,7],[1,8],[8,9],[9,10],[1,11],[11,12],[12,13],[1,0],[0,14],[14,16],[0,15],[15,17]];
+const COLORS=[[255,0,0],[255,85,0],[255,170,0],[255,255,0],[170,255,0],[85,255,0],[0,255,0],[0,255,85],[0,255,170],[0,255,255],[0,170,255],[0,85,255],[0,0,255],[85,0,255],[170,0,255],[255,0,255],[255,0,170],[255,0,85]];
+const R_SIDE=[2,3,4,8,9,10], L_SIDE=[5,6,7,11,12,13];
+const W=300,H=438;
+const CSS=v=>getComputedStyle(document.documentElement).getPropertyValue(v).trim();
+function tickVec(f){f=Math.max(-1,Math.min(1,f));return [f, Math.sqrt(Math.max(0,1-f*f))];}
+
+function draw(cv, kp, authoredFacing, readBack){
+  const ctx=cv.getContext('2d'); const sx=W/kp.width, sy=H/kp.height;
+  const P=i=>{const v=kp.keypoints[String(i)]||kp.keypoints[i];return [v[0]*sx, v[1]*sy];};
+  ctx.clearRect(0,0,W,H);
+  // faint canonical openpose (what the render eats)
+  LIMBS.forEach((lr,i)=>{const a=P(lr[0]),b=P(lr[1]),c=COLORS[i%18];
+    ctx.strokeStyle='rgba('+c[0]+','+c[1]+','+c[2]+',.5)';ctx.lineWidth=4;ctx.lineCap='round';
+    ctx.beginPath();ctx.moveTo(a[0],a[1]);ctx.lineTo(b[0],b[1]);ctx.stroke();});
+  // staging triangle ▽
+  const shR=P(2),shL=P(5),pel=[(P(8)[0]+P(11)[0])/2,(P(8)[1]+P(11)[1])/2],mid=[(shR[0]+shL[0])/2,(shR[1]+shL[1])/2];
+  ctx.strokeStyle=CSS('--ink');ctx.lineWidth=2;ctx.beginPath();ctx.moveTo(shR[0],shR[1]);ctx.lineTo(shL[0],shL[1]);ctx.lineTo(pel[0],pel[1]);ctx.closePath();ctx.stroke();
+  // L/R dots
+  R_SIDE.forEach(i=>{const p=P(i);ctx.fillStyle=CSS('--good');ctx.beginPath();ctx.arc(p[0],p[1],3.5,0,7);ctx.fill();});
+  L_SIDE.forEach(i=>{const p=P(i);ctx.fillStyle=CSS('--bad');ctx.beginPath();ctx.arc(p[0],p[1],3.5,0,7);ctx.fill();});
+  ctx.fillStyle=CSS('--pel');ctx.beginPath();ctx.arc(pel[0],pel[1],5,0,7);ctx.fill();
+  // the two ticks from shoulder-mid: AUTHORED (amber) vs READ-BACK (coral). the gap = facing fidelity.
+  const L=46;
+  [[authoredFacing,CSS('--amber')],[readBack,CSS('--bad')]].forEach(([f,col])=>{
+    const t=tickVec(f); ctx.strokeStyle=col;ctx.lineWidth=3;
+    ctx.beginPath();ctx.moveTo(mid[0],mid[1]);ctx.lineTo(mid[0]+t[0]*L,mid[1]+t[1]*L);ctx.stroke();
+    ctx.fillStyle=col;ctx.beginPath();ctx.arc(mid[0]+t[0]*L,mid[1]+t[1]*L,3,0,7);ctx.fill();});
+}
+function row(td,v){return '<td>'+td+'</td><td><span class="pill '+v.v+'">'+v.v+'</span> ';}
+(async function(){
+  const D = await (await fetch('roundtrip-report.json',{cache:'no-store'})).json();
+  const s=D.summary;
+  document.getElementById('summary').innerHTML='<b>'+s.dimensions_scored+'</b> dimensions scored — '+
+    '<span class="pill PASS">'+s.PASS+' PASS</span><span class="pill WARN">'+s.WARN+' WARN</span><span class="pill FAIL">'+s.FAIL+' FAIL</span>';
+  const root=document.getElementById('shots');
+  for(const sh of D.shots){const v=sh.verdict;
+    const div=document.createElement('div');div.className='shot';
+    div.innerHTML='<div class="imgs">'+
+      '<div class="col"><img class="cv" width="'+W+'" height="'+H+'" src="passes/'+sh.id+'_rgb.png"><div class="cap">Blender realization</div></div>'+
+      '<div class="col"><canvas class="cv ov" width="'+W+'" height="'+H+'"></canvas><div class="cap">reprojected skeleton + ticks</div></div>'+
+    '</div>'+
+    '<div class="meta"><div class="name">'+sh.id+' · '+sh.pose.replace(/_/g,' ')+' × '+sh.grammar.replace(/_/g,' ')+'</div>'+
+      '<div class="note">'+sh.note+'</div>'+
+      '<table>'+
+        row('facing', v.facing)+' authored '+v.facing.authored+' · read-back '+v.facing.read_back+' (Δ'+v.facing.delta+')</td></tr><tr>'+
+        row('shot-size', v.shot_size)+' '+v.shot_size.authored+' · fill '+v.shot_size.fill+' (band '+v.shot_size.band[0]+'–'+v.shot_size.band[1]+')</td></tr><tr>'+
+        row('laterality', v.laterality)+' '+v.laterality.crossings+' crossing(s)'+(v.laterality.expected_cross?' (expected)':'')+'</td></tr><tr>'+
+        row('eyeline', v.eyeline)+' head-yaw vs gaze '+v.eyeline.angle_deg+'°</td></tr><tr>'+
+        '<td>structural</td><td>off-frame '+v.structural.offframe+' · behind '+v.structural.behind+'</td></tr>'+
+      '</table>'+
+      '<div class="tickkey"><span class="a">▬ authored facing</span> &nbsp; <span class="r">▬ read-back (from the reprojected pose)</span> — the angle between them is the facing loss</div>'+
+    '</div>';
+    root.appendChild(div);
+    draw(div.querySelector('.ov'), sh, v.facing.authored, v.facing.read_back);
+  }
+})();
+</script></body></html>
