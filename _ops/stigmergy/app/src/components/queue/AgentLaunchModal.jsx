@@ -21,6 +21,14 @@ const MODELS = [
   { id: 'claude-sonnet-4-6', label: 'Sonnet 4.6' },
 ];
 const EFFORTS = ['high', 'medium', 'xhigh', 'max', 'low'];
+// The OPTIONAL Tier-3 context layers, toggleable (default on). Identity + state
+// are not here — they are never toggled (they ARE the agent).
+const LAYER_TOGGLES = [
+  { key: 'board', label: 'board slice' },
+  { key: 'history', label: 'recent history' },
+  { key: 'pageChange', label: 'page-change' },
+  { key: 'staging', label: 'staging arc' },
+];
 
 function ModalButton({ children, onClick, tone = 'default', disabled, testId }) {
   const fg = tone === 'primary' ? 'var(--phosphor-white)' : 'var(--phosphor)';
@@ -67,6 +75,9 @@ export default function AgentLaunchModal({ home, mandateSeed = '', onClose }) {
   const [model, setModel] = useState(MODELS[0].id);
   const [effort, setEffort] = useState('high');
   const [mandate, setMandate] = useState(mandateSeed);
+  // Context-layer toggles — which OPTIONAL Tier-3 layers to inject. Default all
+  // on (the canonical cycle). The identity (the page) + state are never toggled.
+  const [include, setInclude] = useState({ board: true, history: true, pageChange: true, staging: true });
   const [preview, setPreview] = useState(null);   // { construction, prompt, cycle, stage }
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -90,14 +101,14 @@ export default function AgentLaunchModal({ home, mandateSeed = '', onClose }) {
     clearTimeout(debounce.current);
     debounce.current = setTimeout(async () => {
       setLoading(true);
-      const r = await previewAgent({ home, mandate });
+      const r = await previewAgent({ home, mandate, include });
       if (!alive) return;
       if (r.ok) { setPreview(r); setError(null); }
       else { setError(r.registered === false ? `${home} isn't a registered steward.` : r.error); }
       setLoading(false);
     }, preview ? 400 : 0);
     return () => { alive = false; clearTimeout(debounce.current); };
-  }, [home, mandate]); // eslint-disable-line react-hooks/exhaustive-deps
+  }, [home, mandate, include]); // eslint-disable-line react-hooks/exhaustive-deps
 
   const handleClose = useCallback(() => { if (!launching) onClose(); }, [launching, onClose]);
   useEffect(() => {
@@ -118,11 +129,11 @@ export default function AgentLaunchModal({ home, mandateSeed = '', onClose }) {
   const launch = useCallback(async () => {
     if (launching) return;
     setLaunching(true); setLaunchMsg(null); setError(null);
-    const r = await launchAgent({ home, mandate, model, effort });
+    const r = await launchAgent({ home, mandate, model, effort, include });
     if (r.ok) setLaunchMsg('opening a Claude Code terminal…');
     else setError(r.error);
     setLaunching(false);
-  }, [launching, home, mandate, model, effort]);
+  }, [launching, home, mandate, model, effort, include]);
 
   const construction = preview?.construction || null;
   const stage = preview?.stage;
@@ -190,6 +201,35 @@ export default function AgentLaunchModal({ home, mandateSeed = '', onClose }) {
                 <div style={{ marginTop: 6, fontSize: 11, color: 'var(--phosphor-dim)', textShadow: 'none', lineHeight: 1.5 }}>
                   <div><b style={{ color: 'var(--phosphor)' }}>posture</b> · {construction.posture}</div>
                   <div><b style={{ color: 'var(--phosphor)' }}>framing</b> · {construction.framing}</div>
+                </div>
+                {/* Context-layer toggles — trim the OPTIONAL Tier-3 layers. The
+                    identity (the page) + state are locked on (they are the agent). */}
+                <div data-testid="agent-toggles" style={{ marginTop: 8, display: 'flex', gap: 14, flexWrap: 'wrap', alignItems: 'center' }}>
+                  <span style={{ fontSize: 10, color: 'var(--phosphor-dim)', textShadow: 'none', textTransform: 'uppercase', letterSpacing: '.06em' }}>
+                    context layers
+                  </span>
+                  <span style={{ fontSize: 10, color: 'var(--phosphor-dim)', textShadow: 'none', border: '1px solid var(--phosphor-dim)', padding: '0 4px' }} title="the identity and state are always injected — they are the agent">
+                    identity + state · locked
+                  </span>
+                  {LAYER_TOGGLES.map((tg) => (
+                    <label
+                      key={tg.key}
+                      data-testid={`agent-toggle-${tg.key}`}
+                      style={{
+                        display: 'inline-flex', gap: 5, alignItems: 'center', fontSize: 11, cursor: launching ? 'default' : 'pointer',
+                        color: include[tg.key] ? 'var(--phosphor)' : 'var(--phosphor-dim)',
+                        textShadow: include[tg.key] ? 'var(--glow)' : 'none',
+                      }}
+                    >
+                      <input
+                        type="checkbox"
+                        checked={include[tg.key]}
+                        disabled={launching}
+                        onChange={() => setInclude((p) => ({ ...p, [tg.key]: !p[tg.key] }))}
+                      />
+                      {tg.label}
+                    </label>
+                  ))}
                 </div>
               </div>
             ) : null}

@@ -123,7 +123,19 @@ export function buildCyclePrompt(opts) {
     // write" and the steward posts to the board itself. The CONTEXT (identity,
     // state, board, posture) is identical across modes — one source of truth.
     mode = 'headless',
+    // include = { board, history, pageChange, staging } — which OPTIONAL context
+    // layers to inject. Omitted/true = present (the canonical cycle, unchanged).
+    // The identity (the home page) and the injected state are NEVER toggled —
+    // they ARE the agent. Used by the interactive launcher's context toggles.
+    include = {},
   } = opts;
+
+  const inc = {
+    board: include.board !== false,
+    history: include.history !== false,
+    pageChange: include.pageChange !== false,
+    staging: include.staging !== false,
+  };
 
   if (!agentDir) throw new Error('buildCyclePrompt: agentDir is required');
 
@@ -162,7 +174,7 @@ export function buildCyclePrompt(opts) {
   // weighed against the staged design. The steward READS it but never rewrites
   // it; arc-level changes are flagged to Loudon (Substrate Skill § read seam).
   let stagingSection = '';
-  if (homeFile) {
+  if (homeFile && inc.staging) {
     const stagingTitle = findStagingTitle(join(dirname(homeFile), manifest.home), manifest.home);
     if (stagingTitle) {
       let stagingBody = '';
@@ -244,6 +256,30 @@ Begin by catching Loudon up on where ${manifest.home} stands, then propose your 
 
   const closingSection = mode === 'interactive' ? interactiveClosing : headlessClosing;
 
+  // The OPTIONAL context layers, built conditionally so the launcher's toggles
+  // can trim the wake context. Each non-empty layer ends with a blank line, so an
+  // omitted layer leaves no gap. (The identity + state are not here — they always
+  // render.)
+  const historySection = inc.history ? `# Your recent history (last 12 events)
+
+${historyTail ? '```jsonl\n' + historyTail + '\n```' : '(empty — first activation or history not yet written)'}
+
+` : '';
+
+  const boardSection = inc.board ? `# Blackboard slice ${isFirstActivation ? '— since first activation' : `since your cursor ("${cursor}")`} (filtered to your neighborhood, messages addressed to you, and responses to your asks; other swarm traffic is omitted)
+
+${slice.length === 0 ? '(empty — no new messages addressed to you or from your neighborhood since your cursor)' : '```jsonl\n' + slice.join('\n') + '\n```'}
+
+` : '';
+
+  const pageChangeSection = inc.pageChange ? `# Page-change notice
+
+${pageChange.changed
+    ? `PAGE_UPDATE_NOTICE — your home entry has commits since \`${state.last_active}\`:\n\n${JSON.stringify(pageChange.commits, null, 2)}\n\nRead them carefully.`
+    : `No commits have touched your home entry since your last activation. Your home entry's \`forward_vector\` and \`stage\` are unchanged.`}
+
+` : '';
+
   const userTurn = `# Catch-up framing
 
 ${isFirstActivation
@@ -262,21 +298,7 @@ ${stagingSection}
 ${JSON.stringify(stateForPrompt, null, 2)}
 \`\`\`
 
-# Your recent history (last 12 events)
-
-${historyTail ? '```jsonl\n' + historyTail + '\n```' : '(empty — first activation or history not yet written)'}
-
-# Blackboard slice ${isFirstActivation ? '— since first activation' : `since your cursor ("${cursor}")`} (filtered to your neighborhood, messages addressed to you, and responses to your asks; other swarm traffic is omitted)
-
-${slice.length === 0 ? '(empty — no new messages addressed to you or from your neighborhood since your cursor)' : '```jsonl\n' + slice.join('\n') + '\n```'}
-
-# Page-change notice
-
-${pageChange.changed
-    ? `PAGE_UPDATE_NOTICE — your home entry has commits since \`${state.last_active}\`:\n\n${JSON.stringify(pageChange.commits, null, 2)}\n\nRead them carefully.`
-    : `No commits have touched your home entry since your last activation. Your home entry's \`forward_vector\` and \`stage\` are unchanged.`}
-
-# This cycle's mandate
+${historySection}${boardSection}${pageChangeSection}# This cycle's mandate
 
 ${extraMandate || `Run cycle ${cycleN} per the steward template's posting discipline. Apply the "every cycle ends with a TRICKSTER ask" rule.`}
 

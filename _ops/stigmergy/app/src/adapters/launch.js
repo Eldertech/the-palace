@@ -30,12 +30,12 @@ export async function launchInteractiveSession(prompt) {
 // the panel can show how the agent is built; launchAgent opens the terminal on
 // it. A 404 (registered:false) means the page isn't a permanent steward — the
 // caller should fall back to the simpler launch.
-export async function previewAgent({ home, mandate }) {
+export async function previewAgent({ home, mandate, include }) {
   try {
     const res = await fetch('/api/launch/agent', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ home, mandate, preview: true }),
+      body: JSON.stringify({ home, mandate, include, preview: true }),
     });
     let data = {};
     try { data = await res.json(); } catch { /* non-JSON */ }
@@ -51,12 +51,12 @@ export async function previewAgent({ home, mandate }) {
   }
 }
 
-export async function launchAgent({ home, mandate, model, effort }) {
+export async function launchAgent({ home, mandate, model, effort, include }) {
   try {
     const res = await fetch('/api/launch/agent', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ home, mandate, model, effort }),
+      body: JSON.stringify({ home, mandate, model, effort, include }),
     });
     let data = {};
     try { data = await res.json(); } catch { /* non-JSON */ }
