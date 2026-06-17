@@ -40,10 +40,10 @@ describe('launchInteractive (server)', () => {
     expect(readFileSync(join(dir, 'prompt.txt'), 'utf8')).toBe(prompt);
 
     // The launcher cds into the (space-bearing, single-quoted) repo, runs claude
-    // seeded from the file, and self-cleans.
+    // on the pinned model seeded from the file, and self-cleans.
     const script = readFileSync(join(dir, 'launch.sh'), 'utf8');
     expect(script).toContain(`cd '/Users/x/The Palace'`);
-    expect(script).toContain(`claude "$(cat '${join(dir, 'prompt.txt')}')"`);
+    expect(script).toContain(`claude --model 'opus' "$(cat '${join(dir, 'prompt.txt')}')"`);
     expect(script).toContain(`rm -rf '${dir}'`);
 
     // osascript drives Terminal with a fixed-shape, path-only command, detached.
