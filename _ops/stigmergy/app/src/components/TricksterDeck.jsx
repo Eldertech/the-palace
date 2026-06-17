@@ -9,6 +9,8 @@ import TricksterCard from './trickster/TricksterCard.jsx';
 import QuickBar from './trickster/QuickBar.jsx';
 import DigestPanel from './DigestPanel.jsx';
 import LaunchModal from './queue/LaunchModal.jsx';
+import AgentLaunchModal from './queue/AgentLaunchModal.jsx';
+import { fetchStewards } from '../adapters/stewards.js';
 
 // Shape an advanceSteward() result (from a card's FILE & RUN) into a one-line
 // deck banner. The grant is already filed by the time this runs, so every
@@ -94,12 +96,35 @@ export default function TricksterDeck({
 
   // The card whose "open interactive" modal is open. A trickster launch drives
   // the ASKING steward (item.from) to RESOLVE this specific decision in a
-  // watch+steer session — an alternative to filing a grant. Reuses the steward
-  // launch kind; the decision's question rides in `summary` so the session knows
-  // what to resolve. The deck owns the modal (like StewardsDeck / QueuePanel).
-  const [launchContext, setLaunchContext] = useState(null);
+  // watch+steer session — an alternative to filing a grant. When `from` is a
+  // REGISTERED steward we open the construct-agent panel (the real page-agent
+  // wake via buildCyclePrompt, with the decision pre-filled as the mandate);
+  // otherwise we fall back to the simpler prompt launch, so a non-steward asker
+  // (a coordinator handle, a one-off page) still gets a watchable session. The
+  // deck owns the modals (like StewardsDeck / QueuePanel).
+  const [launchContext, setLaunchContext] = useState(null);      // simple LaunchModal (fallback)
+  const [agentLaunch, setAgentLaunch] = useState(null);          // { home, seed } -> AgentLaunchModal
+  const [registered, setRegistered] = useState(null);            // Set of registered steward agent_ids
+
+  // Resolve which askers are registered stewards (so we can route). One lazy
+  // fetch on mount; until it loads, openLaunch falls back to the simple launch.
+  useEffect(() => {
+    let alive = true;
+    fetchStewards().then((r) => {
+      if (alive && r && r.ok) setRegistered(new Set((r.stewards || []).filter((s) => !s.missing).map((s) => s.agent_id)));
+    });
+    return () => { alive = false; };
+  }, []);
+
   const openLaunch = (item) => {
     const ask = item.headline || item.resource || 'a parked decision';
+    if (registered && registered.has(item.from)) {
+      setAgentLaunch({
+        home: item.from,
+        seed: `Resolve the decision you parked for Loudon${item.headline ? `: "${item.headline}"` : ''}. Read your pending request on the TRICKSTER board, work it through, then file the grant (or steer) and continue the cycle.`,
+      });
+      return;
+    }
     setLaunchContext({
       kind: 'steward',
       id: item.request_id,
@@ -279,8 +304,13 @@ export default function TricksterDeck({
           renders nothing-yet when absent and never throws. */}
       <DigestPanel />
 
-      {/* Open-interactive modal — drive the asking steward to resolve a decision
-          (kind 'steward', no pickup semantics). The card opens it via onLaunch. */}
+      {/* Open-interactive — drive the asking steward to resolve a decision. A
+          registered steward opens the construct-agent panel (page-agent wake,
+          decision pre-filled as the mandate); a non-steward asker falls back to
+          the simpler prompt launch. The card opens it via onLaunch. */}
+      {agentLaunch ? (
+        <AgentLaunchModal home={agentLaunch.home} mandateSeed={agentLaunch.seed} onClose={() => setAgentLaunch(null)} />
+      ) : null}
       {launchContext ? (
         <LaunchModal context={launchContext} onClose={() => setLaunchContext(null)} />
       ) : null}
