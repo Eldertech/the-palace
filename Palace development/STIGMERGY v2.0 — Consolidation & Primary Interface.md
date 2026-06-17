@@ -109,3 +109,7 @@ The crisp line: **TRICKSTER = a steward is waiting on your answer; QUEUE = every
 - **[[STIGMERGY]]** — the running system; its forward vector ("become the front door") is what this drives toward.
 - **[[BBS Design System]]** — the governing aesthetic, restored as monospace-only on every surface.
 - **[[Project Stewardship System]]** / **[[Enrichment]]** / **[[The Lens]]** / **[[Palace Enchantment]]** — the integration surfaces the roadmap pulls inside the terminal.
+
+## Active Baton
+
+[[STIGMERGY launcher — baton]] (`_ops/stigmergy/v2.0-launcher-baton.md`) — drafted 2026-06-17 · the next move: teach stewards to **self-emit a "request interactive" mark** (the launcher reads + wakes a steward today; stewards don't yet self-request). Board-less, same-surface; deleted on pickup.
