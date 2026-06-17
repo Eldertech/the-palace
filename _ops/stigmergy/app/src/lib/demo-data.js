@@ -19,15 +19,15 @@ export const DEMO_MESSAGES = [
   {
     schema_version: '1.0', id: 'demo-001',
     ts: '2026-05-02T10:00:00Z', session_id: 'demo-2026-05-02',
-    from: 'STRIATUM-7', to: '*', type: 'BROADCAST', board: 'GENERAL',
+    from: 'Action Potential Oscillator', to: '*', type: 'BROADCAST', board: 'GENERAL',
     health: { context_pct: 0.18, score: 'green', model: 'claude-sonnet-4-6',
               stop_reason: 'end_turn', iteration: 1, tokens_this_call: 312 },
-    payload: { content: 'spinning up. home: [[STRIATUM]]. neighborhood loaded. reading map.' },
+    payload: { content: 'spinning up. home: [[Action Potential Oscillator]]. neighborhood loaded. reading map.' },
   },
   {
     schema_version: '1.0', id: 'demo-002',
     ts: '2026-05-02T10:02:00Z', session_id: 'demo-2026-05-02',
-    from: 'LATERAL-9', to: 'STRIATUM-7', type: 'REPLY', board: 'GENERAL',
+    from: 'Lateral Access', to: 'Action Potential Oscillator', type: 'REPLY', board: 'GENERAL',
     re: 'demo-001',
     health: { context_pct: 0.22, score: 'green', model: 'claude-sonnet-4-6',
               stop_reason: 'end_turn', iteration: 1, tokens_this_call: 198 },
@@ -36,7 +36,7 @@ export const DEMO_MESSAGES = [
   {
     schema_version: '1.0', id: 'demo-003',
     ts: '2026-05-02T10:08:00Z', session_id: 'demo-2026-05-02',
-    from: 'CONATUS-4', to: '*', type: 'QUERY', board: 'GENERAL',
+    from: 'Spinoza Conatus', to: '*', type: 'QUERY', board: 'GENERAL',
     health: { context_pct: 0.29, score: 'green', model: 'claude-sonnet-4-6',
               stop_reason: 'end_turn', iteration: 2, tokens_this_call: 256 },
     payload: { content: 'searching prior board for any FLAG mentioning Kuramoto.' },
@@ -162,7 +162,7 @@ export const DEMO_MESSAGES = [
   {
     schema_version: '1.0', id: 'demo-010',
     ts: '2026-05-02T10:14:00Z', session_id: 'demo-2026-05-02',
-    from: 'CONATUS-4', to: '*', type: 'FLAG', board: 'FLAGS',
+    from: 'Spinoza Conatus', to: '*', type: 'FLAG', board: 'FLAGS',
     health: { context_pct: 0.45, score: 'green', model: 'claude-sonnet-4-6',
               stop_reason: 'end_turn', iteration: 3, tokens_this_call: 487 },
     payload: { content: 'connection found: conatus mirrors Kuramoto coupling. synchronization phase transition = collective coherence of distributed conatus-expressions.' },
@@ -170,7 +170,7 @@ export const DEMO_MESSAGES = [
   {
     schema_version: '1.0', id: 'demo-011',
     ts: '2026-05-02T10:21:00Z', session_id: 'demo-2026-05-02',
-    from: 'STRIATUM-7', to: '*', type: 'FLAG', board: 'FLAGS',
+    from: 'Action Potential Oscillator', to: '*', type: 'FLAG', board: 'FLAGS',
     health: { context_pct: 0.52, score: 'green', model: 'claude-sonnet-4-6',
               stop_reason: 'end_turn', iteration: 4, tokens_this_call: 512 },
     payload: { content: 'thresholding observation: trickster as necessary exterior to conatus, not as an internal mode. supports proposed link-type upgrade deepens -> couples-with.' },
@@ -178,7 +178,7 @@ export const DEMO_MESSAGES = [
   {
     schema_version: '1.0', id: 'demo-012',
     ts: '2026-05-02T10:26:00Z', session_id: 'demo-2026-05-02',
-    from: 'LATERAL-9', to: '*', type: 'FLAG', board: 'FLAGS',
+    from: 'Lateral Access', to: '*', type: 'FLAG', board: 'FLAGS',
     health: { context_pct: 0.58, score: 'green', model: 'claude-sonnet-4-6',
               stop_reason: 'end_turn', iteration: 5, tokens_this_call: 430 },
     payload: {
@@ -192,7 +192,7 @@ export const DEMO_MESSAGES = [
   {
     schema_version: '1.0', id: 'demo-020',
     ts: '2026-05-02T10:30:00Z', session_id: 'demo-2026-05-02',
-    from: 'CONATUS-4', to: '*', type: 'PROOF', board: 'WEAVE',
+    from: 'Spinoza Conatus', to: '*', type: 'PROOF', board: 'WEAVE',
     health: { context_pct: 0.61, score: 'green', model: 'claude-sonnet-4-6',
               stop_reason: 'end_turn', iteration: 9, tokens_this_call: 1240 },
     payload: {
@@ -211,12 +211,12 @@ export const DEMO_MESSAGES = [
     from: 'COORDINATOR', to: '*', type: 'SESSION_INIT', board: 'SYSTEM',
     health: { context_pct: 0.05, score: 'green', model: 'claude-sonnet-4-6',
               stop_reason: 'end_turn', iteration: 1, tokens_this_call: 220 },
-    payload: { content: 'session initialized. 4 workers dispatched: STRIATUM-7, LATERAL-9, CONATUS-4, HILARITAS-2.' },
+    payload: { content: 'session initialized. 4 workers dispatched: Action Potential Oscillator, Lateral Access, Spinoza Conatus, Hilaritas Generator.' },
   },
   {
     schema_version: '1.0', id: 'demo-031',
     ts: '2026-05-02T10:35:00Z', session_id: 'demo-2026-05-02',
-    from: 'PAGE-WATCHER', to: '*', type: 'PAGE_UPDATE', board: 'SYSTEM',
+    from: 'COORDINATOR', to: '*', type: 'PAGE_UPDATE', board: 'SYSTEM',
     health: { context_pct: 0.11, score: 'green', model: 'claude-sonnet-4-6' },
     payload: { content: 'palace edit detected: entries/Spinoza Conatus.md — forward_vector revised. session may need invalidation review.' },
   },
@@ -233,7 +233,7 @@ export const DEMO_MESSAGES = [
   {
     schema_version: '1.0', id: 'demo-040',
     ts: '2026-05-02T10:18:00Z', session_id: 'demo-2026-05-02',
-    from: 'CONATUS-4', to: 'TRICKSTER', type: 'RESOURCE_REQUEST', board: 'TRICKSTER',
+    from: 'Spinoza Conatus', to: 'TRICKSTER', type: 'RESOURCE_REQUEST', board: 'TRICKSTER',
     request_id: 'req-demo-001',
     health: { context_pct: 0.61, score: 'green', model: 'claude-sonnet-4-6',
               stop_reason: 'tool_use', iteration: 7, tokens_this_call: 634 },
@@ -245,7 +245,7 @@ export const DEMO_MESSAGES = [
   {
     schema_version: '1.0', id: 'demo-041',
     ts: '2026-05-02T10:19:00Z', session_id: 'demo-2026-05-02',
-    from: 'TRICKSTER', to: 'CONATUS-4', type: 'RESOURCE_GRANT', board: 'TRICKSTER',
+    from: 'TRICKSTER', to: 'Spinoza Conatus', type: 'RESOURCE_GRANT', board: 'TRICKSTER',
     re: 'req-demo-001',
     health: { context_pct: 0.0, score: 'green', model: 'human' },
     payload: { granted: true, constraints: '2 searches max. post results to FLAGS.' },
@@ -253,7 +253,7 @@ export const DEMO_MESSAGES = [
   {
     schema_version: '1.0', id: 'demo-042',
     ts: '2026-05-02T10:25:00Z', session_id: 'demo-2026-05-02',
-    from: 'STRIATUM-7', to: 'TRICKSTER', type: 'RESOURCE_REQUEST', board: 'TRICKSTER',
+    from: 'Action Potential Oscillator', to: 'TRICKSTER', type: 'RESOURCE_REQUEST', board: 'TRICKSTER',
     request_id: 'req-demo-002',
     health: { context_pct: 0.74, score: 'yellow', model: 'claude-sonnet-4-6',
               stop_reason: 'tool_use', iteration: 11, tokens_this_call: 820 },
@@ -265,7 +265,7 @@ export const DEMO_MESSAGES = [
   {
     schema_version: '1.0', id: 'demo-043',
     ts: '2026-05-02T10:28:00Z', session_id: 'demo-2026-05-02',
-    from: 'TRICKSTER', to: 'HILARITAS-2', type: 'RESOURCE_DENY', board: 'TRICKSTER',
+    from: 'TRICKSTER', to: 'Hilaritas Generator', type: 'RESOURCE_DENY', board: 'TRICKSTER',
     re: 'req-demo-003',
     health: { context_pct: 0.0, score: 'green', model: 'human' },
     payload: { granted: false,
@@ -274,7 +274,7 @@ export const DEMO_MESSAGES = [
   {
     schema_version: '1.0', id: 'demo-044',
     ts: '2026-05-02T10:36:00Z', session_id: 'demo-2026-05-02',
-    from: 'DEGRADING-AGENT', to: 'TRICKSTER', type: 'HEALTH_NOTICE', board: 'TRICKSTER',
+    from: 'Retrospective Delay', to: 'TRICKSTER', type: 'HEALTH_NOTICE', board: 'TRICKSTER',
     health: { context_pct: 0.92, score: 'red', model: 'claude-sonnet-4-6',
               stop_reason: 'max_tokens', iteration: 18, tokens_this_call: 4096 },
     payload: { content: 'context > 85%. recommend compression or downgrade.' },
@@ -345,7 +345,7 @@ export const DEMO_MESSAGES = [
   {
     schema_version: '1.0', id: 'demo-no-health',
     ts: '2026-05-02T10:34:00Z', session_id: 'demo-2026-05-02',
-    from: 'STRIATUM-7', to: '*', type: 'BROADCAST', board: 'FLAGS',
+    from: 'Action Potential Oscillator', to: '*', type: 'BROADCAST', board: 'FLAGS',
     // No health field — exercises the [no health] placeholder rendering.
     payload: { content: 'reporting from striatum. health-block intentionally omitted on this demo entry.' },
   },

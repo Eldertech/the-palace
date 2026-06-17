@@ -3,7 +3,7 @@ import { buildInbox } from '../../src/lib/inbox.js';
 
 const REQ = (request_id, ts = '2026-04-01T15:00:00Z', extras = {}) => ({
   schema_version: '1.0', id: `msg-${request_id}`, ts,
-  session_id: 's', from: 'CONATUS-4', to: 'TRICKSTER',
+  session_id: 's', from: 'Spinoza Conatus', to: 'TRICKSTER',
   type: 'RESOURCE_REQUEST', board: 'TRICKSTER',
   request_id,
   health: { context_pct: 0.61, score: 'green', model: 'a' },
@@ -13,7 +13,7 @@ const REQ = (request_id, ts = '2026-04-01T15:00:00Z', extras = {}) => ({
 
 const GRANT = (re, ts = '2026-04-01T15:01:00Z', extras = {}) => ({
   schema_version: '1.0', id: `grant-${re}`, ts,
-  session_id: 's', from: 'TRICKSTER', to: 'CONATUS-4',
+  session_id: 's', from: 'TRICKSTER', to: 'Spinoza Conatus',
   type: 'RESOURCE_GRANT', board: 'TRICKSTER',
   re,
   health: { context_pct: 0.0, score: 'green', model: 'human' },
@@ -23,7 +23,7 @@ const GRANT = (re, ts = '2026-04-01T15:01:00Z', extras = {}) => ({
 
 const DENY = (re, ts = '2026-04-01T15:01:00Z', extras = {}) => ({
   schema_version: '1.0', id: `deny-${re}`, ts,
-  session_id: 's', from: 'TRICKSTER', to: 'CONATUS-4',
+  session_id: 's', from: 'TRICKSTER', to: 'Spinoza Conatus',
   type: 'RESOURCE_DENY', board: 'TRICKSTER',
   re,
   health: { context_pct: 0.0, score: 'green', model: 'human' },
@@ -80,7 +80,7 @@ describe('buildInbox', () => {
     const r = buildInbox([REQ('r-1', '2026-04-01T15:00:00Z')]);
     const item = r.pending_requests[0];
     expect(item.request_id).toBe('r-1');
-    expect(item.from).toBe('CONATUS-4');
+    expect(item.from).toBe('Spinoza Conatus');
     expect(item.ts).toBe('2026-04-01T15:00:00Z');
     expect(item.resource).toBe('web_search');
     expect(item.rationale).toBe('r');
