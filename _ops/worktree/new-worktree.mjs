@@ -17,9 +17,13 @@
 //   --dry-run  print the plan, change nothing
 //
 // Teardown:
-//   node _ops/worktree/new-worktree.mjs --name feature/blueline --remove [--delete-branch]
-//   --remove   unlink the borrowed symlinks (safe — never deletes through to the owner),
-//              then `git worktree remove`. --delete-branch also drops the branch.
+//   node _ops/worktree/new-worktree.mjs --name feature/blueline --remove [--delete-branch] [--force-delete]
+//   --remove        unlink the borrowed symlinks (safe — never deletes through to the owner),
+//                   then `git worktree remove`.
+//   --delete-branch also drop the branch — SAFE delete (`git branch -d`): refuses if the branch has
+//                   commits not merged to the trunk, so teardown can't silently strand work (a
+//                   Closing Well guard — see Closing Well.md).
+//   --force-delete  discard the branch even if unmerged (`git branch -D`). Deliberate loss only.
 
 import { execFileSync } from "node:child_process";
 import fs from "node:fs";
@@ -99,7 +103,17 @@ if (flag("--remove")) {
   console.log(`  ✓ ${unlinked} owner-pointing symlink(s) unlinked`);
   try { execFileSync("git", ["worktree", "remove", dir], { stdio: "inherit" }); console.log(`  ✓ worktree removed`); }
   catch { console.error(`  ! git worktree remove refused (other untracked files?). Inspect, then:  git worktree remove --force "${dir}"`); process.exit(1); }
-  if (flag("--delete-branch")) { try { execFileSync("git", ["branch", "-D", name]); console.log(`  ✓ branch ${name} deleted`); } catch (e) { console.warn(`  ! branch -D ${name}: ${e.stderr || e.message}`); } }
+  if (flag("--delete-branch") || flag("--force-delete")) {
+    // Closing Well guard: SAFE delete (-d) by default — git refuses if the branch has commits not
+    // merged to the trunk, so teardown can't silently strand work. --force-delete (-D) is the
+    // deliberate-discard escape. See Closing Well.md.
+    const force = flag("--force-delete");
+    try { execFileSync("git", ["branch", force ? "-D" : "-d", name]); console.log(`  ✓ branch ${name} deleted${force ? " (forced)" : ""}`); }
+    catch (e) {
+      console.warn(`  ! branch ${force ? "-D" : "-d"} ${name} refused: ${(e.stderr || e.message).toString().trim()}`);
+      if (!force) console.warn(`    closing-well guard: unmerged commits would be lost. Merge/cherry-pick them to the trunk first, or re-run with --force-delete to discard deliberately.`);
+    }
+  }
   const memLink = path.join(os.homedir(), ".claude", "projects", dir.replace(/[\/]/g, "-"), "memory");
   console.log(`  note: if you symlinked memory, remove it:  rm "${memLink}"\n`);
   process.exit(0);
@@ -217,4 +231,4 @@ printMemory();
 
 console.log(`\n  next:  cd "${dir}"   then start a session there.`);
 console.log(`  note:  runtime state (_ops/stigmergy/.actuator*, Enrichment/.server.*) stays per-worktree — never symlinked.`);
-console.log(`  undo:  node _ops/worktree/new-worktree.mjs --name ${name} --remove [--delete-branch]\n`);
+console.log(`  undo:  node _ops/worktree/new-worktree.mjs --name ${name} --remove [--delete-branch]   (safe -d; add --force-delete to discard unmerged)\n`);
