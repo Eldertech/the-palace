@@ -51,19 +51,23 @@ session** in all four docs: Production Plan, Board Record Schema (added a `SECTI
 report, and the M4L spec (JS rewritten: `cue_points` → host-track clips; `/transport/locator` →
 `/transport/section`; device marked live-validated).
 
-## Where we are — M0 previz first pass VERIFIED (2026-06-16)
-The M0 previz player plays the 8-shot storyboard **in time with the live clock** — `● transport playing`,
-frame exact (bar 18.4 → frame 852 = 71×12), `deterministic ✓`, shot-accurate (1 of 8 cells active),
-section live from `/transport/section`. Modernized `previz.html` off the stale `/transport/locator`.
-Report + run-it: `proofs/m0-previz/m0-report.md`. **M0 ships the timed greybox.**
+## Where we are — M0 + M1 VERIFIED (2026-06-16), working in the `feature/blueline` worktree
+- **M0 previz** plays the 8-shot storyboard in time with the live clock (`● transport playing`, frame
+  exact, `deterministic ✓`, shot-accurate, section live). `proofs/m0-previz/m0-report.md`. **Timed greybox.**
+- **M1 animatic** raises the same boards to the **comic register** — inked figures + Ben-Day halftone +
+  tapered speed-lines/impact burst on the flow shots + comic caption/border, over a **blue-line draft**
+  (the draft toggle: blue rough → inked, the project's namesake). Same clock/storyboard/board-record;
+  self-play advances panels on the beat. Verified in-browser, no errors. `proofs/m1-animatic/m1-report.md`.
 
 ## Next moves
-1. **The real M4L clip-scan device** — only `clip_scan_sim.py` exists (a stand-in); build the device-side
+1. **M2 motion comic** — the held comic panels gain limited motion (parallax, held-pose drift, speed-lines
+   animating along the field): the first place the flow field *moves* in the comic register, still ahead
+   of the render-AI seam.
+2. **The real M4L clip-scan device** — only `clip_scan_sim.py` exists (a stand-in); build the device-side
    one-shot scan of the host track's `arrangement_clips` (deferred/low-priority, never the transport poll
    — the qmetro lesson) so the storyboard is authored as Live clips for real.
-2. **M1 animatic** — raise the boards from greybox stick-figures to *drawn* comic panels (the comic
-   register), same timeline + board record, still no render-AI. The render side (M2+) stays behind the
-   board-record seam.
+3. **Trivial follow-up:** add an `/m1` route to `osc_ws_relay.py` (one `FileResponse`, like `/previz`) so
+   M1 is driven by the *live* Ableton clock, not just self-play (the transport code is already identical).
 
 **One named loop-back (optional, not blocking M0):** the Track II character LoRA. The pipeline is proven
 (dog control +0.35); the win is reachable. To get a usable r4ng3r LoRA, rebuild the character set with
