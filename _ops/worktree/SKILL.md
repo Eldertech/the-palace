@@ -60,15 +60,20 @@ node _ops/worktree/new-worktree.mjs --name feature/blueline --profile blueline
 | `docs` | *(none)* | pure markdown / canon / ceremony work — fastest, safest |
 | `shop` | `_tools` · `.venvs` · `settings.local.json` | Shop tools + GPU + audio Specialists |
 | `blueline` | `_tools` · RunPod `config.json` · `settings.local.json` | BLUELINE (local ComfyUI + cloud RunPod) |
-| `stigmergy` | `node_modules` · `settings.local.json` | the STIGMERGY React app |
-| `full` | all of the above | a worktree that does everything |
+| `stigmergy` | `settings.local.json` + auto-mirrored `node_modules` | the STIGMERGY React/Vite app + its tests |
+| `full` | all explicit links above + auto-mirrored `node_modules` | a worktree that does everything |
+
+*Auto-mirror:* for the `stigmergy` / `full` profiles the script also discovers and symlinks **every** ignored `node_modules` in the owner by class (workspace root, app, orchestrator, …) — not just one — so vitest and the dev server work in a fresh worktree with no manifest upkeep (`symlinks.json` → `auto_mirror`).
 
 ## What gets symlinked — and what must not
 
 The authoritative list is `symlinks.json`. In short:
 
 - **Symlinked (heavy/secret, not cheaply regenerable):** `_tools/` (16 G), `.venvs/` (1.1 G), `RunPod
-  Images/studio/config.json` (secret), `_ops/stigmergy/app/node_modules` (237 M), `.claude/settings.local.json`.
+  Images/studio/config.json` (secret), `.claude/settings.local.json`.
+- **Auto-mirrored by class (`stigmergy` / `full` profiles):** every ignored `node_modules` in the owner
+  (workspace root + app + orchestrator + …, ~237 M) — discovered, not enumerated, so a new workspace
+  package needs no manifest edit. See `symlinks.json` → `auto_mirror`.
 - **Never symlinked (per-worktree runtime — sharing cross-wires running processes):**
   `_ops/stigmergy/.actuator*`, `Enrichment/.server.*`, and all regenerable caches (`__pycache__`,
   `_manim_media`, `.vite`, `.remotion`, generated media). They rebuild per worktree.
@@ -118,6 +123,13 @@ owner with `git worktree list --porcelain` (first `worktree ` line) — the same
   invisible from every other worktree — so it **must** be announced on the owner's board, carrying its
   worktree coordinate (branch · dir · profile). A baton continuing *canon work* lives on the owner. See
   `_ops/Baton Ceremony.md` § Where the Baton Lives.
+- **The STIGMERGY server** resolves its root — and thus which board it reads/writes and where it
+  commits — from `PALACE_ROOT`, else the launch checkout's root (`vite.config.js`). A server launched
+  *in a worktree* therefore uses that **worktree's** throwaway board and branch: correct for
+  **developing/testing the app** (isolated board, `node_modules` auto-mirrored), and its board/branch
+  changes are **not** merged to main. **Real coordination and Trickster entry-saves run on the primary**
+  (root auto-resolves to the owner) or with `PALACE_ROOT=<owner>` — anything else fragments the board
+  and strands canon on a feature branch.
 
 **The primary is the canon trunk.** The primary checkout is the one worktree that holds `main` (a
 branch lives in only one worktree at a time), so it is the *only* path by which canon can reach
