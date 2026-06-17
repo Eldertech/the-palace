@@ -26,12 +26,15 @@ export { buildCardGrant };
 //   2. orientation  — the steward's catchup ground (or, when it wrote none, its
 //                      raw reasoning note). Dim, visible by default, NO pill.
 //   3. evidence     — the audio / pictures / schematic to perceive (when any).
+//   3b.▸more        — the deep why (rationale), folded, ABOVE the question: the
+//                      rationale is context, not metadata, so by the
+//                      "context above the question" rule it sits up here.
 //   4. question     — the ask, bright, sitting DIRECTLY above the options.
 //   5. options      — natural order, never reordered; the steward's recommended
 //                      option marked ON its own button (brighter + a dim `rec`),
 //                      never a separate yellow lean panel.
-//   6. ▸more        — the deep why (rationale); ▸details (nested) = the wire
-//                      facts (ts · resource · health · id). Collapsed.
+//   6. ▸details     — the wire facts (ts · resource · health · id), folded at
+//                      the foot. Reference metadata, below the decision.
 //
 // Interaction is TWO STEP (anti-misclick — Loudon's explicit choice over
 // one-click): clicking an option SELECTS it (fills it, no commit), which reveals
@@ -233,6 +236,24 @@ export default function TricksterCard({ item, onConfirmed, onRun, focused = fals
           </div>
         ) : null}
 
+        {/* 3b. ▸ more from the steward (the deep why) — folded, ABOVE the
+            question because the rationale is context, not metadata: by the
+            "context above the question" rule it belongs up here with the
+            orientation. Renders only when the rationale isn't already standing
+            in as the orientation line. */}
+        {moreRationale ? (
+          <details data-testid="card-more-fold" style={{ margin: '0 0 10px' }}>
+            <summary style={foldSummary}>{t('trickster.card.more')}</summary>
+            <div style={{
+              color: 'var(--phosphor)', textShadow: 'var(--glow)',
+              fontFamily: 'var(--font-mono)', fontSize: 12, lineHeight: 1.4,
+              margin: '6px 0', whiteSpace: 'pre-wrap',
+            }}>
+              <Linkify text={moreRationale} />
+            </div>
+          </details>
+        ) : null}
+
         {/* 4. question — the ask, bright, sitting DIRECTLY above the options so a
             label like "approve stage 2" reads against its own buttons. */}
         {item.headline ? (
@@ -332,24 +353,11 @@ export default function TricksterCard({ item, onConfirmed, onRun, focused = fals
           </div>
         ) : null}
 
-        {/* ▸more (the deep why) wraps ▸details (the wire facts). When the
-            rationale is already standing in as orientation there's no separate
-            why, so ▸details renders on its own. Both collapsed. */}
-        {moreRationale ? (
-          <details data-testid="card-more-fold" style={{ marginTop: 8 }}>
-            <summary style={foldSummary}>{t('trickster.card.more')}</summary>
-            <div style={{
-              color: 'var(--phosphor)', textShadow: 'var(--glow)',
-              fontFamily: 'var(--font-mono)', fontSize: 12, lineHeight: 1.4,
-              margin: '6px 0', whiteSpace: 'pre-wrap',
-            }}>
-              <Linkify text={moreRationale} />
-            </div>
-            <WireDetails item={item} ctx={ctx} />
-          </details>
-        ) : (
-          <WireDetails item={item} ctx={ctx} />
-        )}
+        {/* ▸ details (the wire facts: ts · resource · health · id) — reference
+            metadata, so it stays at the foot, below the decision. Always
+            present, collapsed. The rationale moved up to ▸more (above the
+            question); details is no longer nested inside it. */}
+        <WireDetails item={item} ctx={ctx} />
       </Box>
     </div>
   );
