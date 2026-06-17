@@ -27,9 +27,24 @@ describe('buildLaunchPrompt — handoff', () => {
     expect(typeof p).toBe('string');
   });
 
-  test('generic kind for future card/steward contexts', () => {
-    const p = buildLaunchPrompt({ kind: 'enrichment', title: 'Kuramoto Coupling', summary: 'a koan card' });
+  test('generic kind for an unrecognized future context (e.g. steward)', () => {
+    const p = buildLaunchPrompt({ kind: 'steward', title: 'Kuramoto Coupling', summary: 'a koan card' });
     expect(p).toContain('Kuramoto Coupling');
     expect(p).toContain('CLAUDE.md');
+  });
+});
+
+describe('buildLaunchPrompt — card', () => {
+  test('references the card folder, target entry, purpose, and the enrichment ceremony', () => {
+    const p = buildLaunchPrompt({
+      kind: 'card', id: 'card-007', entry: 'Kuramoto Coupling',
+      purpose: 'forcing compression', summary: 'a 12-word koan',
+    });
+    expect(p).toContain('Enrichment/card-007/');
+    expect(p).toContain('[[Kuramoto Coupling]]');
+    expect(p).toContain('forcing compression');
+    expect(p).toContain('a 12-word koan');
+    expect(p).toContain('Enrichment.md');
+    expect(p).toMatch(/deposit/i);
   });
 });

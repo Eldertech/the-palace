@@ -17,7 +17,7 @@ const ACTIONS = [
   { id: 'more-like-this', label: 'MORE LIKE THIS', tone: 'var(--ansi-bright-cyan)', note: false },
 ];
 
-export default function CardItem({ card, onRespond, busy }) {
+export default function CardItem({ card, onRespond, busy, onLaunch }) {
   const [open, setOpen] = useState(false);
   const [pending, setPending] = useState(null); // action id awaiting note
   const [note, setNote] = useState('');
@@ -121,6 +121,22 @@ export default function CardItem({ card, onRespond, busy }) {
             }}
           >{a.label}</span>
         ))}
+        {/* Launch interactive: open a session on this card you can watch +
+            steer — the same primitive as handoff pickup, for when a card wants
+            dialogue rather than a one-click deposit/revise/discard. */}
+        {typeof onLaunch === 'function' ? (
+          <span
+            data-testid="card-action-launch"
+            onClick={() => onLaunch(card)}
+            style={{
+              cursor: 'pointer',
+              color: 'var(--phosphor-white)', textShadow: 'var(--glow)',
+              border: '1px solid var(--phosphor)', padding: '0 8px',
+              fontSize: 11, textTransform: 'uppercase', letterSpacing: '.04em',
+            }}
+            title="open an interactive session on this card you can watch and steer"
+          >launch interactive</span>
+        ) : null}
       </div>
 
       {pending ? (

@@ -31,8 +31,9 @@ export default function QueuePanel({ messages, onJumpEntry }) {
   // Response modal state: { item, verb, detail, request, option } when open,
   // null when closed. Only deny / grant--limited / custom open it now.
   const [respondingTo, setRespondingTo] = useState(null);
-  // The handoff whose "launch interactive" modal is open (LaunchModal), or null.
-  const [launchingItem, setLaunchingItem] = useState(null);
+  // The normalized context whose "launch interactive" modal is open — a handoff
+  // baton or an enrichment card (stewards next). See buildLaunchPrompt for kinds.
+  const [launchContext, setLaunchContext] = useState(null);
   // Decisions made this session: itemId -> { verb, detail, pending, error }.
   // buildQueue drops an answered request (it is no longer "open"), so we keep
   // a snapshot + the decision and re-attach it below, so the chosen verdict
@@ -265,6 +266,18 @@ export default function QueuePanel({ messages, onJumpEntry }) {
     if (pointer?.type === 'entry' && onJumpEntry) onJumpEntry(pointer.target);
   };
 
+  // Map a queue handoff item / an enrichment card into the normalized launch
+  // context the LaunchModal renders. Same primitive, two surfaces — stewards
+  // and steward-requested sessions plug in here next.
+  const launchHandoff = (it) => setLaunchContext({
+    kind: 'handoff', id: it.id, entry: it.entry, from: it.from,
+    sourcePath: it.handoff_path, summary: it.summary,
+  });
+  const launchCard = (card) => setLaunchContext({
+    kind: 'card', id: card.id, entry: card.target_name, from: card.target_name,
+    sourcePath: `Enrichment/${card.id}/`, purpose: card.purpose, summary: card.summary,
+  });
+
   return (
     <Box title="queue -- the ranked inbox" tone="double" style={{ marginBottom: 12 }}>
       <div style={{
@@ -326,7 +339,7 @@ export default function QueuePanel({ messages, onJumpEntry }) {
 
       <div data-testid="queue-open">
         {open.map((it) => (
-          <QueueItem key={it.id} item={it} onJump={jump} onClear={clearItem} onRespond={respondToItem} onLaunch={setLaunchingItem} />
+          <QueueItem key={it.id} item={it} onJump={jump} onClear={clearItem} onRespond={respondToItem} onLaunch={launchHandoff} />
         ))}
       </div>
 
@@ -341,7 +354,7 @@ export default function QueuePanel({ messages, onJumpEntry }) {
           {showResolved ? (
             <div data-testid="queue-resolved">
               {resolved.map((it) => (
-                <QueueItem key={it.id} item={it} onJump={jump} onClear={clearItem} onRespond={respondToItem} onLaunch={setLaunchingItem} />
+                <QueueItem key={it.id} item={it} onJump={jump} onClear={clearItem} onRespond={respondToItem} onLaunch={launchHandoff} />
               ))}
             </div>
           ) : null}
@@ -373,7 +386,7 @@ export default function QueuePanel({ messages, onJumpEntry }) {
           </div>
         ) : (
           cards.map((c) => (
-            <CardItem key={c.id} card={c} onRespond={respondCard} busy={cardBusy} />
+            <CardItem key={c.id} card={c} onRespond={respondCard} busy={cardBusy} onLaunch={launchCard} />
           ))
         )}
       </div>
@@ -396,11 +409,11 @@ export default function QueuePanel({ messages, onJumpEntry }) {
       {/* Launch interactive: hand a baton (handoff_ready) to a watchable,
           steerable session. On pickup we clear the item locally — the durable
           handoff_picked_up is already on the board. */}
-      {launchingItem ? (
+      {launchContext ? (
         <LaunchModal
-          item={launchingItem}
-          onPickedUp={(it) => { clearItem(it); setLaunchingItem(null); }}
-          onClose={() => setLaunchingItem(null)}
+          context={launchContext}
+          onPickedUp={(ctx) => { clearItem({ id: ctx.id }); setLaunchContext(null); }}
+          onClose={() => setLaunchContext(null)}
         />
       ) : null}
     </Box>
