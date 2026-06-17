@@ -52,7 +52,7 @@ export { buildCardGrant };
 // one source of truth. `selectedId` is the deck's pick for this card;
 // `onSelectOption(optionId)` reports a click up for the deck to toggle. `notes`
 // stays local — the freeform note is a per-card, mouse-only field.
-export default function TricksterCard({ item, onConfirmed, onRun, focused = false, selectedId = null, onSelectOption }) {
+export default function TricksterCard({ item, onConfirmed, onRun, focused = false, selectedId = null, onSelectOption, onLaunch }) {
   const [notes, setNotes] = useState('');
   const [sending, setSending] = useState(false);
   const [running, setRunning] = useState(false);
@@ -199,12 +199,31 @@ export default function TricksterCard({ item, onConfirmed, onRun, focused = fals
             vault={palace?.vault}
             size={9}
           />
-          {item.blocking ? (
-            <span data-testid="card-waiting" style={{
-              marginLeft: 'auto',
-              color: 'var(--warn)', textShadow: 'var(--glow)',
-              fontFamily: 'var(--font-mono)', fontSize: 11,
-            }}>{t('trickster.card.waiting')}</span>
+          {(item.blocking || onLaunch) ? (
+            <span style={{ marginLeft: 'auto', display: 'flex', alignItems: 'baseline', gap: 10 }}>
+              {item.blocking ? (
+                <span data-testid="card-waiting" style={{
+                  color: 'var(--warn)', textShadow: 'var(--glow)',
+                  fontFamily: 'var(--font-mono)', fontSize: 11,
+                }}>{t('trickster.card.waiting')}</span>
+              ) : null}
+              {/* open interactive — drive the asking steward to RESOLVE this
+                  decision in a watch+steer session, instead of (or before)
+                  filing a grant. The deck owns the modal + the launch context. */}
+              {onLaunch ? (
+                <button
+                  data-testid="card-launch"
+                  onClick={() => onLaunch(item)}
+                  title="open an interactive session to work this decision with the steward"
+                  style={{
+                    background: 'transparent', color: 'var(--phosphor)', textShadow: 'var(--glow)',
+                    border: '1px solid var(--phosphor-dim)', padding: '1px 7px',
+                    fontFamily: 'var(--font-mono)', fontSize: 10, cursor: 'pointer',
+                    textTransform: 'uppercase', letterSpacing: '.06em',
+                  }}
+                >{t('trickster.card.launch')}</button>
+              ) : null}
+            </span>
           ) : null}
         </div>
 

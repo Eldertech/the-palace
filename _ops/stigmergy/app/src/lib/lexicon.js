@@ -53,6 +53,7 @@ const DICT = {
   'trickster.card.more':            '▸ more from the steward',
   'trickster.card.details':         '▸ details',
   'trickster.card.waiting':         'waiting on you',
+  'trickster.card.launch':          'open interactive',
   'trickster.card.rec':             'rec',
   'trickster.card.how':             '— how?',
   'trickster.card.cancel':          'cancel',
