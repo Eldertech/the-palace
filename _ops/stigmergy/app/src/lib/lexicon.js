@@ -54,6 +54,11 @@ const DICT = {
   'trickster.card.details':         '▸ details',
   'trickster.card.waiting':         'waiting on you',
   'trickster.card.launch':          'open interactive',
+  // A steward that asked to be launched (payload.kind: interactive_session) —
+  // the badge marks the card in a stack; the CTA is the foregrounded launch.
+  'trickster.card.session.badge':   'wants a live session',
+  'trickster.card.session.cta':     'launch interactive session ▶',
+  'trickster.card.session.note':    'this steward is asking you to open a session it can work in with you — not to file a decision',
   'trickster.card.rec':             'rec',
   'trickster.card.how':             '— how?',
   'trickster.card.cancel':          'cancel',

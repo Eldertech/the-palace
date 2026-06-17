@@ -290,6 +290,33 @@ export const DEMO_MESSAGES = [
     },
   },
   {
+    // A SESSION REQUEST (payload.kind: 'interactive_session') — the steward is
+    // not parking a yes/no decision; it has hit a critical, exploratory moment
+    // and is asking to be *launched* into a live session Loudon can watch and
+    // steer. The card foregrounds a primary "launch interactive session" CTA +
+    // a "wants a live session" badge; the options stay as the decline/defer
+    // path. This is the read half of the steward request-interactive loop.
+    schema_version: '1.0', id: 'demo-046',
+    ts: '2026-05-02T11:30:00Z', session_id: 'demo-2026-05-02',
+    from: 'Crystal Synthesizer', to: 'TRICKSTER', type: 'RESOURCE_REQUEST', board: 'TRICKSTER',
+    request_id: 'crystal-synthesizer-steward-019',
+    health: { context_pct: 0.44, score: 'green', model: 'claude-opus-4-8',
+              stop_reason: 'tool_use', iteration: 6, tokens_this_call: 690 },
+    payload: {
+      kind: 'interactive_session',
+      resource: 'interactive_session',
+      headline: 'Can we voice the dispersion filter together, live? I have three timbres and the pick is taste, not a spec.',
+      ground: 'still working · three dispersion voicings rendered · no clear winner — this wants your ear in real time',
+      rationale: "I'm tuning the dispersion filter that gives the Crystal Synthesizer its glassy ring, and I've rendered three voicings — a bright struck one, a hollow bowed one, and a darker one with longer tails. Picking between them isn't a yes/no I can park on a button; it's the kind of taste call that gets made by listening, nudging a coefficient, and listening again, together. Rather than file three audition clips and wait a cycle on each round, I'd like you to open a session so we can dial it in live — I'll drive the renders, you steer by ear, and we settle the voice in one sitting. If now's a bad time, say not-now and I'll keep refining headless and raise it again when it's riper. See [[Crystal Synthesizer]].",
+      query_intent: 'dial in the dispersion-filter voice in a live session instead of a one-shot decision',
+      blocking: false,
+      options: [
+        { id: 'NOT-NOW', label: 'NOT-NOW — keep going headless; raise it again when it is riper' },
+        { id: 'STEER', label: 'STEER — no session needed; here is the direction (note)' },
+      ],
+    },
+  },
+  {
     schema_version: '1.0', id: 'demo-043',
     ts: '2026-05-02T10:28:00Z', session_id: 'demo-2026-05-02',
     from: 'TRICKSTER', to: 'Hilaritas Generator', type: 'RESOURCE_DENY', board: 'TRICKSTER',

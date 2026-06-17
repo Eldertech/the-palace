@@ -118,10 +118,17 @@ export default function TricksterDeck({
 
   const openLaunch = (item) => {
     const ask = item.headline || item.resource || 'a parked decision';
+    // A session request (the steward asked to be launched) gets a mandate that
+    // resumes its OWN request — it wanted a live session for this work, and
+    // Loudon said yes. A plain parked decision gets the resolve-this-decision
+    // mandate. Both wake the same construct-agent panel.
+    const wantsSession = item.kind === 'interactive_session';
     if (registered && registered.has(item.from)) {
       setAgentLaunch({
         home: item.from,
-        seed: `Resolve the decision you parked for Loudon${item.headline ? `: "${item.headline}"` : ''}. Read your pending request on the TRICKSTER board, work it through, then file the grant (or steer) and continue the cycle.`,
+        seed: wantsSession
+          ? `You asked Loudon to open this live session${item.headline ? `: "${item.headline}"` : ''}, and he said yes. Pick up exactly where your request left off${item.ground || item.rationale ? ` — ${item.ground || item.rationale}` : ''} and drive it forward with him, narrating each move before you make it. When the work reaches a natural stopping point, file the grant on your own request so the card clears.`
+          : `Resolve the decision you parked for Loudon${item.headline ? `: "${item.headline}"` : ''}. Read your pending request on the TRICKSTER board, work it through, then file the grant (or steer) and continue the cycle.`,
       });
       return;
     }

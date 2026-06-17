@@ -266,6 +266,50 @@ describe('TricksterCard — open interactive', () => {
   });
 });
 
+// A session request (payload.kind: "interactive_session") foregrounds the
+// launch: a prominent CTA + a who-row badge replace the small corner action,
+// so the card reads as "this steward is asking to be opened in a session,"
+// not "file a decision." The options remain as the decline/defer path.
+describe('TricksterCard — session request (interactive_session)', () => {
+  const SESSION = { ...ITEM, kind: 'interactive_session' };
+  const renderSession = (props) =>
+    renderToStaticMarkup(React.createElement(TricksterCard, { item: SESSION, ...props }));
+
+  it('foregrounds the launch CTA + badge when onLaunch is wired', () => {
+    const html = renderSession({ onLaunch: () => {} });
+    expect(html).toContain('data-testid="card-session-cta"');
+    expect(html).toContain('data-testid="card-session-launch"');
+    expect(html).toContain('data-testid="card-session-badge"');
+    expect(html).toContain(t('trickster.card.session.badge'));
+    expect(html).toContain(t('trickster.card.session.cta'));
+  });
+
+  it('suppresses the small corner "open interactive" action (one launch control)', () => {
+    const html = renderSession({ onLaunch: () => {} });
+    expect(html).not.toContain('data-testid="card-launch"');
+  });
+
+  it('still shows the options as the decline/defer surface', () => {
+    const html = renderSession({ onLaunch: () => {} });
+    expect(html).toContain('data-testid="card-options"');
+    for (const opt of SESSION.options) expect(html).toContain(opt.label);
+  });
+
+  it('does not render the session CTA without onLaunch (the deck owns the launch)', () => {
+    const html = renderSession();
+    expect(html).not.toContain('data-testid="card-session-cta"');
+    // The badge still marks the request type even with no launch wired.
+    expect(html).toContain('data-testid="card-session-badge"');
+  });
+
+  it('an ordinary card (no kind) keeps the small corner action and no session chrome', () => {
+    const html = render({ onLaunch: () => {} });
+    expect(html).toContain('data-testid="card-launch"');
+    expect(html).not.toContain('data-testid="card-session-cta"');
+    expect(html).not.toContain('data-testid="card-session-badge"');
+  });
+});
+
 describe('buildCardGrant — message building', () => {
   it('builds a §2.2-valid RESOURCE_GRANT from a chosen option', () => {
     const msg = buildCardGrant(ITEM, {

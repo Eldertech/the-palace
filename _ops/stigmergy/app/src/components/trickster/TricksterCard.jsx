@@ -70,6 +70,14 @@ export default function TricksterCard({ item, onConfirmed, onRun, focused = fals
 
   const options = item.options || [];
   const recId = item.recommended_option ? item.recommended_option.id : null;
+  // A SESSION REQUEST — the steward posted `payload.kind: "interactive_session"`
+  // (the emit half of the request-interactive loop). It is not asking for a
+  // grant; it is asking to be *launched* into a live watch+steer session at a
+  // critical moment. Foreground the launch CTA (the deck routes a registered
+  // steward to the construct-agent panel) instead of the small corner action,
+  // and keep the options below as the decline/defer surface. null kind = an
+  // ordinary decision card, unchanged.
+  const wantsSession = item.kind === 'interactive_session';
   // Inline assets, payload-first: artifacts the steward declared on the wire
   // (item.artifacts) render through the shared ArtifactSlot; only when the wire
   // carries nothing does the legacy trickster-assets registry fall in. The
@@ -199,7 +207,7 @@ export default function TricksterCard({ item, onConfirmed, onRun, focused = fals
             vault={palace?.vault}
             size={9}
           />
-          {(item.blocking || onLaunch) ? (
+          {(item.blocking || onLaunch || wantsSession) ? (
             <span style={{ marginLeft: 'auto', display: 'flex', alignItems: 'baseline', gap: 10 }}>
               {item.blocking ? (
                 <span data-testid="card-waiting" style={{
@@ -207,10 +215,23 @@ export default function TricksterCard({ item, onConfirmed, onRun, focused = fals
                   fontFamily: 'var(--font-mono)', fontSize: 11,
                 }}>{t('trickster.card.waiting')}</span>
               ) : null}
+              {/* Session-request tag — marks the card in a stack so a steward
+                  asking to be launched is identifiable at a glance. The launch
+                  itself is the foregrounded CTA in the body (below). */}
+              {wantsSession ? (
+                <span data-testid="card-session-badge" style={{
+                  color: 'var(--link)', textShadow: 'var(--glow)',
+                  border: '1px solid var(--link)', padding: '0 5px',
+                  fontFamily: 'var(--font-mono)', fontSize: 10,
+                  textTransform: 'uppercase', letterSpacing: '.06em',
+                }}>{t('trickster.card.session.badge')}</span>
+              ) : null}
               {/* open interactive — drive the asking steward to RESOLVE this
                   decision in a watch+steer session, instead of (or before)
-                  filing a grant. The deck owns the modal + the launch context. */}
-              {onLaunch ? (
+                  filing a grant. The deck owns the modal + the launch context.
+                  Suppressed on a session-request card — the body CTA replaces
+                  it (one launch control, not two). */}
+              {onLaunch && !wantsSession ? (
                 <button
                   data-testid="card-launch"
                   onClick={() => onLaunch(item)}
@@ -282,6 +303,23 @@ export default function TricksterCard({ item, onConfirmed, onRun, focused = fals
             fontSize: 18, lineHeight: 1.35, color: 'var(--phosphor-white)',
             textShadow: 'var(--glow)',
           }}>{item.headline}</div>
+        ) : null}
+
+        {/* 4b. session launch — the foregrounded primary action for a steward
+            that asked to be opened in a live session. Sits right under its
+            question: "will you open a session with me?" → LAUNCH. Routes
+            through the deck's onLaunch (a registered steward → the construct-
+            agent panel, this request pre-filled as the mandate). The options
+            below stay as the decline/defer path. */}
+        {wantsSession && onLaunch ? (
+          <div data-testid="card-session-cta" style={{ margin: '0 0 12px' }}>
+            <SessionLaunchButton onClick={() => onLaunch(item)} />
+            <div style={{
+              marginTop: 5,
+              color: 'var(--phosphor-dim)', textShadow: 'none',
+              fontFamily: 'var(--font-mono)', fontSize: 11, lineHeight: 1.45,
+            }}>{t('trickster.card.session.note')}</div>
+          </div>
         ) : null}
 
         {/* 5. options — natural order, never reordered. The steward's
@@ -431,6 +469,35 @@ function OptionButton({ hot, label, recommended = false, selected = false, disab
         }}>{t('trickster.card.rec')}</span>
       ) : null}
     </button>
+  );
+}
+
+// The foregrounded launch for a session-request card. Primary register
+// (phosphor-white on a phosphor border, glow), inverting on hover like the
+// shared primary Button — but built inline so it can carry its own test id and
+// sit larger than a corner action. Clicking it asks the deck to open the
+// launcher (a registered steward → the construct-agent panel).
+function SessionLaunchButton({ onClick }) {
+  const [hover, setHover] = useState(false);
+  return (
+    <button
+      data-testid="card-session-launch"
+      onClick={onClick}
+      onMouseEnter={() => setHover(true)}
+      onMouseLeave={() => setHover(false)}
+      title="open a live session you watch + steer, constructing this steward as a page-agent"
+      style={{
+        background: hover ? 'var(--phosphor-white)' : 'transparent',
+        color: hover ? 'var(--bg)' : 'var(--phosphor-white)',
+        border: '2px solid var(--phosphor)',
+        textShadow: hover ? 'none' : 'var(--glow)',
+        fontFamily: 'var(--font-mono)', fontSize: 14,
+        padding: '6px 16px', cursor: 'pointer',
+        textTransform: 'uppercase', letterSpacing: '.05em',
+        borderRadius: 0, outline: 'none', appearance: 'none',
+        WebkitAppearance: 'none', MozAppearance: 'none',
+      }}
+    >{t('trickster.card.session.cta')}</button>
   );
 }
 
