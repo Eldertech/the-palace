@@ -43,23 +43,25 @@ const DICT = {
   'trickster.deck.count.many':  'decisions waiting',
 
   // Card chrome — centralized from the inbox's inline strings so both
-  // surfaces translate identically.
+  // surfaces translate identically. The v2.0 redesign (2026-06-16) cut the
+  // no-catchup pill and the freeform label+hint (radical minimalism) and added
+  // the two-step execute row: select an option, then choose how to file it.
   'trickster.card.file':            'file ▶',
   'trickster.card.fileandrun':      'file & run ▶',
   'trickster.card.filing':          'filing…',
   'trickster.card.running':         'filing & running…',
   'trickster.card.more':            '▸ more from the steward',
-  'trickster.card.nocatchup':       'no quick summary from the steward — showing its notes',
-  'trickster.card.freeform':        'a note back (optional)',
-  'trickster.card.freeform.hint':   'type a reply, or pick an option above',
+  'trickster.card.details':         '▸ details',
+  'trickster.card.waiting':         'waiting on you',
+  'trickster.card.rec':             'rec',
+  'trickster.card.how':             '— how?',
+  'trickster.card.cancel':          'cancel',
+  'trickster.card.yourreply':       'your note',
+  'trickster.card.note.placeholder': 'note',
 
-  // Lean panel + master quickbar (Phase 2). The steward's recommended option
-  // is the one-click default; FILE ALL files every card that has one and
-  // visibly leaves the rest (the leanless decisions are your call).
-  'trickster.lean.prefix':              'steward leans',
-  'trickster.lean.hint':                'space to file',
-  'trickster.lean.file':                'file lean ▶',
-  'trickster.lean.fileandrun':          'file lean & run ▶',
+  // Master quickbar (Phase 2). The steward's recommended option is now marked
+  // on its own option button (not a separate lean panel); FILE ALL still files
+  // every card that has a lean and visibly leaves the rest (your call).
   'trickster.quickbar.file':            'file all',
   'trickster.quickbar.filing':          'filing all…',
   'trickster.quickbar.summary':         'the leans —',

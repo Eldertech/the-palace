@@ -1,16 +1,15 @@
 import React, { useEffect, useState } from 'react';
-import { Box, Button, Tag } from '../primitives.jsx';
+import { Box, Button } from '../primitives.jsx';
 import { healthColor, formatTs } from '../../lib/format.js';
 import { postMessage, InvalidMessageError } from '../../adapters/blackboard.js';
 import { advanceSteward } from '../../adapters/stewards.js';
-import { t, pauseShort, pauseLong } from '../../lib/lexicon.js';
+import { t } from '../../lib/lexicon.js';
 import { buildCardGrant } from '../../lib/trickster-grants.js';
 import EntryRefChips from '../EntryRefChips.jsx';
 import Linkify from '../../lib/linkify.jsx';
 import { usePalaceRef } from '../../lib/palace-ref.jsx';
 import { resolveRef } from '../../lib/entry-ref.js';
 import { assetsFor } from '../../lib/trickster-assets.js';
-import LeanPanel from './LeanPanel.jsx';
 import AuditionStrip from './AuditionStrip.jsx';
 import Schematic from './schematics/index.jsx';
 import ArtifactSlot from '../ArtifactSlot.jsx';
@@ -20,41 +19,46 @@ export { buildCardGrant };
 
 // TricksterCard — one pending decision in the native [T] deck.
 //
-// A close cousin of TricksterInbox's <PendingItem> + <InlineResponse>, re-laid
-// for the deck per the Phase-1 handoff: header (steward + id + pause pill) →
-// headline → ground → options grid + freeform note → file ▶ → a fold that
-// carries the longform reasoning + metadata.
+// The locked reading order (Loudon tuned every beat, 2026-06-16): context loads
+// first; the question sits directly on its buttons. Top → bottom:
+//   1. who          — the project, a cyan link to its STATE entry. A quiet amber
+//                      "waiting on you" ONLY when the steward is blocked.
+//   2. orientation  — the steward's catchup ground (or, when it wrote none, its
+//                      raw reasoning note). Dim, visible by default, NO pill.
+//   3. evidence     — the audio / pictures / schematic to perceive (when any).
+//   4. question     — the ask, bright, sitting DIRECTLY above the options.
+//   5. options      — natural order, never reordered; the steward's recommended
+//                      option marked ON its own button (brighter + a dim `rec`),
+//                      never a separate yellow lean panel.
+//   6. ▸more        — the deep why (rationale); ▸details (nested) = the wire
+//                      facts (ts · resource · health · id). Collapsed.
 //
-// Catchup-first (voice rule 6): headline + ground lead in human prose; the
-// rationale + field rows fold under "more from the steward". When a steward
-// wrote no catchup (legacy data, no override), the fold opens by default and a
-// dim pill flags the absence — same behavior as the inbox.
+// Interaction is TWO STEP (anti-misclick — Loudon's explicit choice over
+// one-click): clicking an option SELECTS it (fills it, no commit), which reveals
+// a "how to execute" row — `<label> — how?  file ▶  file & run ▶  cancel`. FILE
+// posts the grant; FILE & RUN posts it AND advances the asking steward one cycle;
+// CANCEL backs out. Nothing is filed on the first click.
 //
-// Filing: build a §2.2 RESOURCE_GRANT via buildRequestOptionResponse(), POST it
-// to the persistent board, then call onConfirmed(persisted). The card does NOT
-// remove itself — the parent re-derives buildInbox() over the optimistic set,
-// and a responded request drops out on the next render. One source of truth
-// (App), no local list surgery. Per the session calibration: no batches —
-// each card files its own grant independently.
-
-// Pad a metadata label to a fixed width so colons align in monospace.
-const padLabel = (s) => (s + '          ').slice(0, 9);
-
+// Radical minimalism: only slots with content render. Gone from the old card —
+// the request-id, the PARKED/DOING tag, the "no catchup" pill, every field
+// label, the freeform-note label + hint, the separate LeanPanel, and the
+// duplicated always-visible file buttons.
+//
 // Selection is CONTROLLED by the deck (TricksterDeck owns a per-request_id
-// `selections` map) so the keyboard layer's 1-N/Enter and the mouse clicks
-// drive one source of truth. `selectedId` is the deck's current pick for this
-// card; `onSelectOption(optionId)` reports a click up for the deck to toggle.
-// `notes` stays local — the freeform note is a per-card, mouse-only field.
+// `selections` map) so the keyboard layer's 1-N/Enter and the mouse clicks drive
+// one source of truth. `selectedId` is the deck's pick for this card;
+// `onSelectOption(optionId)` reports a click up for the deck to toggle. `notes`
+// stays local — the freeform note is a per-card, mouse-only field.
 export default function TricksterCard({ item, onConfirmed, onRun, focused = false, selectedId = null, onSelectOption }) {
   const [notes, setNotes] = useState('');
   const [sending, setSending] = useState(false);
   const [running, setRunning] = useState(false);
   const [errors, setErrors] = useState([]);
 
-  // The steward handle (@from) is the title of the palace entry the steward
-  // inhabits. Resolve it so the header carries the same [OBS]/[BUN] links as a
-  // name in STATE; coordinator handles (KURAMOTO-1, COORDINATOR) won't resolve
-  // and render no chips.
+  // The project (@from) is the title of the palace entry the steward inhabits.
+  // Resolve it so the name carries the same [OBS]/[BUN] links as a name in
+  // STATE, and so the name itself becomes a click-to-open-in-STATE link.
+  // Coordinator handles (KURAMOTO-1, COORDINATOR) won't resolve and render plain.
   const palace = usePalaceRef();
   // Trigger the one-time palace-index walk only now that a card is on screen
   // (lazy: board-only views never pay for it). See palace-ref.jsx.
@@ -62,52 +66,46 @@ export default function TricksterCard({ item, onConfirmed, onRun, focused = fals
   const fromRef = palace && palace.refIndex ? resolveRef(palace.refIndex, item.from) : null;
 
   const options = item.options || [];
-  // Inline assets come from two sources, payload-first:
-  //   1. item.artifacts — declared on the wire by the steward (the canonical
-  //      path; buildInbox() reads payload.artifacts straight off the message).
-  //   2. assetsFor(request_id) — the hand-curated trickster-assets registry,
-  //      now a LEGACY FALLBACK that ratchets toward empty (mirrors the
-  //      headline ?? override.headline precedence in inbox.js).
-  // The registry's `schematic` slot is the exception: schematics are authored
-  // diagrams, not steward-rendered files, so they render regardless of payload.
+  const recId = item.recommended_option ? item.recommended_option.id : null;
+  // Inline assets, payload-first: artifacts the steward declared on the wire
+  // (item.artifacts) render through the shared ArtifactSlot; only when the wire
+  // carries nothing does the legacy trickster-assets registry fall in. The
+  // registry `schematic` slot renders either way — it's authored art, not a
+  // steward-rendered file.
   const payloadArtifacts = item.artifacts || [];
   const hasPayloadArtifacts = payloadArtifacts.length > 0;
   const assets = assetsFor(item.request_id);
+
   const selectedOption = options.find((o) => o.id === selectedId) || null;
+  const hasNote = notes.trim() !== '';
   // Fileable once the human has expressed something: a chosen option, or a
   // freeform note. (Notes-only is valid — buildRequestOptionResponse allows it.)
-  const canFile = !sending && (selectedId !== null || notes.trim() !== '');
+  const canFile = !sending && (selectedId !== null || hasNote);
+  // The two-step execute row appears the instant there's something to file.
+  const showExecute = selectedId !== null || hasNote;
+
+  // Orientation: the steward's catchup ground, or — when it wrote none — its raw
+  // reasoning note standing in. No pill either way. When ground is present, the
+  // rationale becomes the deep "why" under ▸more; when the rationale is already
+  // serving as orientation, ▸more carries no separate why (don't repeat it).
+  const orientation = item.ground || item.rationale || null;
+  const moreRationale = item.ground ? item.rationale : null;
 
   const ctx = typeof item.agent_context_pct === 'number'
     ? `${Math.round(item.agent_context_pct * 100)}%`
     : '--';
 
-  const metaLines = [
-    [t('field.from'), `@${item.from || '--'}`],
-    [t('field.ts'), formatTs(item.ts)],
-    [t('field.resource'), item.resource || '--'],
-    [t('pause.field.label'), pauseLong(item.blocking)],
-    [t('field.health'), `${item.agent_health || '--'} · ctx ${ctx}`],
-    [t('field.status'), item.agent_status || '--'],
-  ];
-
-  // The single write path for this card. The options-grid FILE button, the
-  // FILE & RUN button, and the LeanPanel's FILE LEAN flow all run through here.
-  // Always the persistent board — permanent stewards carry a session_id label
-  // even though their requests live on persistent; routing by session_id would
-  // misfile the grant where the asker can't see it. (Same rationale as
-  // TricksterInbox's InlineResponse.)
+  // The single write path for this card. FILE and FILE & RUN both run through
+  // here. Always the persistent board — permanent stewards carry a session_id
+  // label even though their requests live on persistent; routing by session_id
+  // would misfile the grant where the asker can't see it.
   //
   // `run`: after the grant lands, advance the asking steward (item.from) by one
-  // cycle so it consumes this fresh grant immediately — the "file and run"
-  // shortcut for moving one card forward without a detour through the stewards
-  // deck. postMessage() awaits the server append, so the grant is on the board
-  // before advanceSteward() fires; the steward lane reads the same persistent
-  // board when it builds the cycle prompt. advanceSteward() never throws (404 /
-  // 409 / errors come back as a structured result), so the outcome is reported
-  // up via onRun() and the file still counts — a failed run never un-files a
-  // landed grant. The cycle-fire returns as soon as the worker spawns; we don't
-  // wait out the whole cycle.
+  // cycle so it consumes this fresh grant immediately. postMessage() awaits the
+  // server append, so the grant is on the board before advanceSteward() fires.
+  // advanceSteward() never throws (404 / 409 / errors come back as a structured
+  // result), so the outcome is reported up via onRun() and the file still counts
+  // — a failed run never un-files a landed grant.
   async function fileGrant({ optionId, optionLabel, notes: noteText, run = false }) {
     if (sending) return;
     setSending(true);
@@ -143,34 +141,25 @@ export default function TricksterCard({ item, onConfirmed, onRun, focused = fals
 
   function handleFile() {
     if (!canFile) return;
-    fileGrant({
-      optionId: selectedId,
-      optionLabel: selectedOption ? selectedOption.label : null,
-      notes,
-    });
+    fileGrant({ optionId: selectedId, optionLabel: selectedOption ? selectedOption.label : null, notes });
   }
 
-  // FILE & RUN — file the human's current pick (or note), then advance the
-  // asking steward by one cycle so it consumes the grant straight away. Same
-  // inputs as handleFile; the `run` flag is what differs.
+  // FILE & RUN — file the human's current pick (or note), then advance the asking
+  // steward by one cycle so it consumes the grant straight away.
   function handleFileAndRun() {
     if (!canFile) return;
-    fileGrant({
-      optionId: selectedId,
-      optionLabel: selectedOption ? selectedOption.label : null,
-      notes,
-      run: true,
-    });
+    fileGrant({ optionId: selectedId, optionLabel: selectedOption ? selectedOption.label : null, notes, run: true });
   }
 
-  // FILE LEAN — file the steward's recommended option, carrying any freeform
-  // note. With run=true (FILE LEAN & RUN) it also advances the asking steward by
-  // a cycle so it consumes the grant now — the lean-side twin of FILE & RUN.
-  function handleFileLean(run = false) {
-    const rec = item.recommended_option;
-    if (!rec) return;
-    fileGrant({ optionId: rec.id, optionLabel: rec.label, notes, run });
+  // CANCEL — back out of the armed step: deselect the option and clear any note,
+  // returning the card to neutral. No commit (that's the whole point of step 2).
+  function handleCancel() {
+    if (sending) return;
+    if (selectedId !== null && onSelectOption) onSelectOption(selectedId); // toggles off
+    setNotes('');
   }
+
+  const nameResolved = fromRef && fromRef.path;
 
   return (
     <div
@@ -184,74 +173,54 @@ export default function TricksterCard({ item, onConfirmed, onRun, focused = fals
       }}
     >
       <Box tone="double" pad>
-        {/* Header: steward + correlation id + pause pill */}
+        {/* 1. who — the project, a cyan link to its STATE entry. A quiet amber
+            "waiting on you" only when the steward is blocked on this answer. */}
         <div style={{
-          display: 'flex', alignItems: 'baseline', gap: 10, flexWrap: 'wrap',
-          marginBottom: 8,
+          display: 'flex', alignItems: 'baseline', gap: 8, flexWrap: 'wrap',
+          marginBottom: orientation ? 4 : 8,
         }}>
-          <span style={{
-            color: 'var(--phosphor-white)', textShadow: 'var(--glow)',
-            fontFamily: 'var(--font-mono)', fontSize: 14, fontWeight: 600,
-          }}>@{item.from || '--'}</span>
+          <span
+            data-testid="card-from"
+            onClick={nameResolved ? () => palace.openEntryInState?.(fromRef.path) : undefined}
+            title={nameResolved ? `open ${item.from} in STATE` : undefined}
+            style={{
+              color: nameResolved ? 'var(--link)' : 'var(--phosphor-white)',
+              textShadow: 'var(--glow)',
+              fontFamily: 'var(--font-mono)', fontSize: 15, fontWeight: 600,
+              cursor: nameResolved ? 'pointer' : 'default',
+            }}
+          >{item.from || '--'}</span>
           <EntryRefChips
             resolved={fromRef}
             onOpen={palace?.openEntryInState}
             vault={palace?.vault}
-            size={10}
+            size={9}
           />
-          <span style={{
-            color: 'var(--phosphor-dim)', textShadow: 'none',
-            fontFamily: 'var(--font-mono)', fontSize: 11,
-          }}>{item.request_id || '--'}</span>
-          <span style={{ marginLeft: 'auto' }}>
-            <Tag tone={item.blocking ? 'err' : 'default'}>{pauseShort(item.blocking)}</Tag>
-          </span>
+          {item.blocking ? (
+            <span data-testid="card-waiting" style={{
+              marginLeft: 'auto',
+              color: 'var(--warn)', textShadow: 'var(--glow)',
+              fontFamily: 'var(--font-mono)', fontSize: 11,
+            }}>{t('trickster.card.waiting')}</span>
+          ) : null}
         </div>
 
-        {/* No-catchup cue when the steward wrote neither headline nor ground. */}
-        {!item.headline && !item.ground ? (
-          <div data-testid="no-catchup-pill" style={{
-            marginBottom: 6, color: 'var(--phosphor-dim)', textShadow: 'none',
-            fontSize: 10, letterSpacing: '.08em', textTransform: 'uppercase',
-            border: '1px solid var(--phosphor-dim)', padding: '1px 5px',
-            display: 'inline-block',
-          }}>{t('trickster.card.nocatchup')}</div>
-        ) : null}
-
-        {/* Headline: the question in one sentence. Large body font. */}
-        {item.headline ? (
-          <div data-testid="card-headline" style={{
-            margin: '2px 0 6px',
-            fontFamily: 'var(--font-mono)',
-            fontSize: 21, lineHeight: 1.3, color: 'var(--phosphor-white)',
-            textShadow: 'var(--glow)',
-          }}>{item.headline}</div>
-        ) : null}
-
-        {/* Ground: the breadcrumb. State · what's pinned · steward's lean. */}
-        {item.ground ? (
-          <div data-testid="card-ground" style={{
+        {/* 2. orientation — where the project is / what it's doing. Dim, no pill;
+            falls back to the steward's raw reasoning when no catchup was written. */}
+        {orientation ? (
+          <div data-testid="card-orientation" style={{
             margin: '0 0 10px',
             fontFamily: 'var(--font-mono)', fontSize: 12, lineHeight: 1.45,
             color: 'var(--phosphor-dim)', textShadow: 'none',
-          }}>{item.ground}</div>
+          }}>{orientation}</div>
         ) : null}
 
-        {/* Inline assets — the evidence the decision needs, surfaced between
-            the question and the affordances: hear the audition, see the
-            prototype, open the artifact to try.
-
-            Payload-first: when the steward declared artifacts on the wire
-            (item.artifacts), render them through the shared ArtifactSlot — the
-            same renderer the message boards use, so audio→PhosphorAudio,
-            image→<img>, html→sandboxed iframe, anything else→open-in-native, each
-            with its full caption. Only when the wire carries nothing does the
-            legacy trickster-assets registry fall in (audition strips for the
-            stable per-steward libraries, embed/file artifacts). The registry
-            `schematic` slot renders either way — it's authored art, not a
-            steward-rendered file. */}
+        {/* 3. evidence — perceive what the decision needs: hear the audition, see
+            the prototype, open the artifact. Payload artifacts win; the registry
+            falls in only when the wire carries none (schematic renders either
+            way — authored art). */}
         {(assets || hasPayloadArtifacts) ? (
-          <div data-testid="card-assets">
+          <div data-testid="card-assets" style={{ marginBottom: 10 }}>
             {assets?.schematic ? <Schematic name={assets.schematic} /> : null}
             {hasPayloadArtifacts ? (
               <ArtifactSlot payload={{ artifacts: payloadArtifacts }} />
@@ -264,75 +233,91 @@ export default function TricksterCard({ item, onConfirmed, onRun, focused = fals
           </div>
         ) : null}
 
-        {/* Lean panel — the steward's recommended option as the one-click
-            default. Renders only when a lean was detected; the grid below
-            stays the override path. */}
-        {item.recommended_option ? (
-          <LeanPanel
-            optionLabel={item.recommended_option.label}
-            onFileLean={() => handleFileLean(false)}
-            onFileLeanAndRun={() => handleFileLean(true)}
-            disabled={sending}
-          />
+        {/* 4. question — the ask, bright, sitting DIRECTLY above the options so a
+            label like "approve stage 2" reads against its own buttons. */}
+        {item.headline ? (
+          <div data-testid="card-headline" style={{
+            margin: '0 0 8px',
+            fontFamily: 'var(--font-mono)',
+            fontSize: 18, lineHeight: 1.35, color: 'var(--phosphor-white)',
+            textShadow: 'var(--glow)',
+          }}>{item.headline}</div>
         ) : null}
 
-        {/* Options grid (request-supplied a/b/c choices), when present. */}
+        {/* 5. options — natural order, never reordered. The steward's
+            recommendation is marked on its own button, not in a separate panel. */}
         {options.length > 0 ? (
           <div
             data-testid="card-options"
             style={{ display: 'flex', flexWrap: 'wrap', gap: 6, marginBottom: 8 }}
           >
             {options.map((opt, i) => (
-              <Button
+              <OptionButton
                 key={opt.id}
                 hot={String(i + 1)}
-                tone={opt.id === selectedId ? 'primary' : 'default'}
-                onClick={() => onSelectOption && onSelectOption(opt.id)}
+                label={opt.label}
+                recommended={opt.id === recId}
+                selected={opt.id === selectedId}
                 disabled={sending}
-              >
-                {opt.label}
-              </Button>
+                onClick={() => onSelectOption && onSelectOption(opt.id)}
+              />
             ))}
           </div>
         ) : null}
 
-        {/* Freeform note — always available, on its own or to add depth. */}
-        <div style={{ marginBottom: 8 }}>
-          <div style={{
-            color: 'var(--phosphor-dim)', textShadow: 'none',
-            fontSize: 11, textTransform: 'uppercase', letterSpacing: '.05em',
-            marginBottom: 4,
-          }}>{t('trickster.card.freeform')}</div>
-          <textarea
-            data-testid="card-notes"
-            value={notes}
-            onChange={(e) => setNotes(e.target.value)}
-            placeholder={t('trickster.card.freeform.hint')}
-            rows={5}
-            disabled={sending}
-            style={{
-              width: '100%', background: 'transparent',
-              color: 'var(--phosphor)', textShadow: 'var(--glow)',
-              border: '1px dashed var(--phosphor-dim)',
-              fontFamily: 'var(--font-mono)', fontSize: 13,
-              padding: '6px 8px', outline: 'none',
-              caretColor: 'var(--phosphor-white)',
-              resize: 'vertical', minHeight: '120px', boxSizing: 'border-box',
-            }}
-          />
-        </div>
+        {/* Freeform note — quiet, unlabeled. The notes-only path (and a way to
+            add nuance to a pick). Typing it arms the same two-step row below. */}
+        <textarea
+          data-testid="card-notes"
+          value={notes}
+          onChange={(e) => setNotes(e.target.value)}
+          placeholder={t('trickster.card.note.placeholder')}
+          rows={2}
+          disabled={sending}
+          style={{
+            width: '100%', background: 'transparent',
+            color: 'var(--phosphor)', textShadow: 'var(--glow)',
+            border: '1px dashed var(--phosphor-dim)',
+            fontFamily: 'var(--font-mono)', fontSize: 13,
+            padding: '5px 8px', outline: 'none',
+            caretColor: 'var(--phosphor-white)',
+            resize: 'vertical', boxSizing: 'border-box',
+          }}
+        />
 
-        {/* File row. FILE files the grant and leaves the steward where it is;
-            FILE & RUN files it AND advances that steward by a cycle so it picks
-            the grant up now — the fast path for moving one card forward. */}
-        <div style={{ display: 'flex', justifyContent: 'flex-end', gap: 8, alignItems: 'center' }}>
-          <Button tone="primary" onClick={handleFile} disabled={!canFile}>
-            {sending && !running ? t('trickster.card.filing') : t('trickster.card.file')}
-          </Button>
-          <Button tone="warn" onClick={handleFileAndRun} disabled={!canFile}>
-            {running ? t('trickster.card.running') : t('trickster.card.fileandrun')}
-          </Button>
-        </div>
+        {/* 6 (step 2). The two-step execute row — revealed only once an option is
+            selected (or a note typed). `<label> — how?  file ▶  file & run ▶
+            cancel`. Nothing commits until file / file & run is pressed. */}
+        {showExecute ? (
+          <div data-testid="card-execute" style={{
+            display: 'flex', alignItems: 'center', gap: 10, flexWrap: 'wrap',
+            marginTop: 8,
+          }}>
+            <span style={{
+              color: 'var(--phosphor-dim)', textShadow: 'none',
+              fontFamily: 'var(--font-mono)', fontSize: 12,
+            }}>
+              <b style={{ color: 'var(--phosphor-white)', textShadow: 'var(--glow)' }}>
+                {selectedOption ? selectedOption.label : t('trickster.card.yourreply')}
+              </b>{' '}{t('trickster.card.how')}
+            </span>
+            <Button tone="primary" onClick={handleFile} disabled={!canFile}>
+              {sending && !running ? t('trickster.card.filing') : t('trickster.card.file')}
+            </Button>
+            <Button tone="warn" onClick={handleFileAndRun} disabled={!canFile}>
+              {running ? t('trickster.card.running') : t('trickster.card.fileandrun')}
+            </Button>
+            <span
+              data-testid="card-cancel"
+              onClick={handleCancel}
+              style={{
+                cursor: sending ? 'default' : 'pointer',
+                color: 'var(--phosphor-dim)', textShadow: 'none',
+                fontSize: 11, textDecoration: 'underline',
+              }}
+            >{t('trickster.card.cancel')}</span>
+          </div>
+        ) : null}
 
         {/* Errors from a failed POST */}
         {errors.length > 0 ? (
@@ -347,52 +332,115 @@ export default function TricksterCard({ item, onConfirmed, onRun, focused = fals
           </div>
         ) : null}
 
-        {/* Folded longform: reasoning + metadata. Open by default only when
-            there's no catchup, so a catchup card stays scannable. */}
-        <details
-          data-testid="card-more-fold"
-          open={!item.headline && !item.ground}
-          style={{ marginTop: 8 }}
-        >
-          <summary style={{
-            cursor: 'pointer',
-            color: 'var(--phosphor-dim)', textShadow: 'none',
-            fontFamily: 'var(--font-mono)',
-            fontSize: 10, letterSpacing: '.12em', textTransform: 'uppercase',
-            padding: '2px 0',
-          }}>{t('trickster.card.more')}</summary>
-
-          <div style={{
-            color: 'var(--phosphor-dim)', textShadow: 'none', lineHeight: 1.4,
-            marginTop: 6, marginBottom: 6, fontFamily: 'var(--font-mono)', fontSize: 12,
-          }}>
-            {metaLines.map(([k, v]) => (
-              <div key={k}>
-                <span>{padLabel(k)}: </span>
-                <span style={{
-                  color: k === t('pause.field.label') && item.blocking ? 'var(--error)' :
-                         k === t('field.health') ? healthColor(item.agent_health) :
-                         'var(--phosphor)',
-                  textShadow: 'var(--glow)',
-                }}>{v}</span>
-              </div>
-            ))}
-          </div>
-          {item.rationale ? (
-            <div style={{ margin: '4px 0', color: 'var(--phosphor)', fontFamily: 'var(--font-mono)', fontSize: 12 }}>
-              <div style={{ color: 'var(--phosphor-dim)', textShadow: 'none' }}>{padLabel(t('field.rationale'))}:</div>
-              <div style={{ marginTop: 2, whiteSpace: 'pre-wrap' }}>
-                <Linkify text={item.rationale} />
-              </div>
+        {/* ▸more (the deep why) wraps ▸details (the wire facts). When the
+            rationale is already standing in as orientation there's no separate
+            why, so ▸details renders on its own. Both collapsed. */}
+        {moreRationale ? (
+          <details data-testid="card-more-fold" style={{ marginTop: 8 }}>
+            <summary style={foldSummary}>{t('trickster.card.more')}</summary>
+            <div style={{
+              color: 'var(--phosphor)', textShadow: 'var(--glow)',
+              fontFamily: 'var(--font-mono)', fontSize: 12, lineHeight: 1.4,
+              margin: '6px 0', whiteSpace: 'pre-wrap',
+            }}>
+              <Linkify text={moreRationale} />
             </div>
-          ) : null}
-          {item.query_intent ? (
-            <div style={{ margin: '4px 0', color: 'var(--phosphor-dim)', textShadow: 'none', fontFamily: 'var(--font-mono)', fontSize: 12 }}>
-              {padLabel(t('field.intent'))}: {item.query_intent}
-            </div>
-          ) : null}
-        </details>
+            <WireDetails item={item} ctx={ctx} />
+          </details>
+        ) : (
+          <WireDetails item={item} ctx={ctx} />
+        )}
       </Box>
     </div>
   );
 }
+
+// One request-supplied option as a click-to-select chip. Three visual states in
+// the BBS phosphor grammar:
+//   normal       — outline, dim border
+//   recommended  — brighter outline + text + a trailing dim `rec` (the steward's
+//                  lean, marked on the button itself, never a separate panel)
+//   selected     — filled / inverted (the two-step's step-1 "armed" look)
+// Hover inverts an unselected option, matching the shared Button primitive.
+function OptionButton({ hot, label, recommended = false, selected = false, disabled = false, onClick }) {
+  const [hover, setHover] = useState(false);
+  const inverted = selected || (hover && !disabled);
+  const baseColor = disabled
+    ? 'var(--fg3)'
+    : recommended ? 'var(--phosphor-white)' : 'var(--phosphor)';
+  const borderColor = disabled
+    ? 'var(--fg3)'
+    : recommended ? 'var(--phosphor)' : 'var(--phosphor-dim)';
+  return (
+    <button
+      data-testid="card-option"
+      data-recommended={recommended ? 'true' : 'false'}
+      data-selected={selected ? 'true' : 'false'}
+      onClick={disabled ? undefined : onClick}
+      onMouseEnter={() => setHover(true)}
+      onMouseLeave={() => setHover(false)}
+      disabled={disabled}
+      style={{
+        background: inverted ? baseColor : 'transparent',
+        color: inverted ? 'var(--bg)' : baseColor,
+        border: `2px solid ${inverted ? baseColor : borderColor}`,
+        textShadow: inverted || disabled ? 'none' : 'var(--glow)',
+        fontFamily: 'var(--font-mono)', fontSize: 13,
+        padding: '3px 10px',
+        cursor: disabled ? 'not-allowed' : 'pointer',
+        textTransform: 'uppercase', letterSpacing: '.04em',
+        borderRadius: 0, outline: 'none', appearance: 'none',
+        WebkitAppearance: 'none', MozAppearance: 'none',
+      }}
+    >
+      {hot ? <>[<b style={{ color: inverted ? 'var(--bg)' : 'var(--phosphor-white)', textShadow: inverted ? 'none' : 'var(--glow)' }}>{hot}</b>]&nbsp;</> : null}
+      {label}
+      {recommended ? (
+        <span style={{
+          marginLeft: 7, fontSize: 9, letterSpacing: '.1em',
+          opacity: inverted ? 0.7 : 1,
+          color: inverted ? 'var(--bg)' : 'var(--phosphor-dim)',
+          textShadow: 'none',
+        }}>{t('trickster.card.rec')}</span>
+      ) : null}
+    </button>
+  );
+}
+
+// The wire facts, folded — ts · resource · health · id (+ query_intent). No
+// field labels: the values stand on their own under a single ▸details disclosure.
+function WireDetails({ item, ctx }) {
+  const facts = [];
+  if (item.ts) facts.push({ text: formatTs(item.ts) });
+  if (item.resource) facts.push({ text: item.resource });
+  if (item.agent_health) facts.push({ text: `${item.agent_health} · ctx ${ctx}`, color: healthColor(item.agent_health) });
+  if (item.request_id) facts.push({ text: item.request_id });
+  return (
+    <details data-testid="card-details-fold" style={{ marginTop: 8 }}>
+      <summary style={foldSummary}>{t('trickster.card.details')}</summary>
+      <div style={{
+        color: 'var(--phosphor-dim)', textShadow: 'none',
+        fontFamily: 'var(--font-mono)', fontSize: 12, lineHeight: 1.5,
+        marginTop: 6,
+      }}>
+        {facts.map((f, i) => (
+          <React.Fragment key={i}>
+            {i > 0 ? <span>{'  ·  '}</span> : null}
+            <span style={f.color ? { color: f.color, textShadow: 'var(--glow)' } : undefined}>{f.text}</span>
+          </React.Fragment>
+        ))}
+        {item.query_intent ? (
+          <div style={{ marginTop: 4 }}>{item.query_intent}</div>
+        ) : null}
+      </div>
+    </details>
+  );
+}
+
+const foldSummary = {
+  cursor: 'pointer',
+  color: 'var(--phosphor-dim)', textShadow: 'none',
+  fontFamily: 'var(--font-mono)',
+  fontSize: 10, letterSpacing: '.12em', textTransform: 'uppercase',
+  padding: '2px 0',
+};
