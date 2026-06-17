@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>BLUELINE — Blender Render Gallery (Seam A)</title>
+<style>
+  :root{--bg:#15161a;--panel:#1d1f25;--ink:#e9e7e2;--dim:#8b8d96;--amber:#e0a83a;--good:#7bbf6a;--bad:#c98a8a;--line:#2c2e36;--shadow:#0f1013}
+  *{box-sizing:border-box} html,body{margin:0;background:var(--bg);color:var(--ink);font-family:"JetBrains Mono",ui-monospace,Menlo,monospace}
+  .wrap{max-width:1180px;margin:0 auto;padding:22px}
+  h1{font-family:"Anton",Impact,sans-serif;font-weight:400;letter-spacing:.04em;text-transform:uppercase;font-size:28px;margin:0}
+  .sub{color:var(--dim);font-style:italic;font-family:Cormorant,Georgia,serif;font-size:18px;margin:3px 0 18px}
+  .shot{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:14px 15px;margin-bottom:16px}
+  .head{display:flex;justify-content:space-between;align-items:baseline;gap:14px;flex-wrap:wrap;margin-bottom:9px}
+  .id{font-family:"Anton",Impact,sans-serif;font-size:20px;letter-spacing:.05em}
+  .id b{color:var(--amber)}
+  .meta{font-size:12px;color:var(--dim)}
+  .note{font-family:Cormorant,Georgia,serif;font-size:16px;color:var(--ink);margin:2px 0 10px}
+  .meter{font-size:11px;letter-spacing:.04em}
+  .meter .ok{color:var(--good)}.meter .warn{color:var(--amber)}.meter .bad{color:var(--bad)}
+  .grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+  @media(max-width:720px){.grid{grid-template-columns:repeat(2,1fr)}}
+  .cell{background:#000;border:1px solid var(--line);border-radius:6px;overflow:hidden}
+  .cell img{display:block;width:100%;height:auto;background:#0c0d10}
+  .cell .lbl{font-size:9px;color:var(--dim);text-align:center;padding:3px 0;border-top:1px solid var(--line);text-transform:uppercase;letter-spacing:.08em}
+  #foot{color:var(--dim);font-size:11px;margin-top:18px;letter-spacing:.04em}
+  .legend{font-size:11px;color:var(--dim);margin-bottom:16px;line-height:1.6}
+  .legend b{color:var(--amber)}
+</style></head>
+<body><div class="wrap">
+  <h1>BLUELINE · Blender Render Gallery</h1>
+  <div class="sub">animatic staging → Blender grey-box layout, across dramatic poses × camera perspectives — reading where Seam A (2D→3D) breaks</div>
+  <div class="legend">
+    Each shot shows the four conditioning passes the render-AI consumes: <b>RGB</b> (clay → canny) · <b>OpenPose</b> (geometric, never estimated) · <b>Depth</b> (true geometry) · <b>Canny</b> (edge).
+    The <b>Seam-A meter</b> counts keypoints that project <b>off-frame</b> (the pose channel thins — depth/edge must carry the shot) or <b>behind the camera</b> (a broken solve). Watch profiles and dutch tilts.
+  </div>
+  <div id="shots"></div>
+  <div id="foot">Loudon Live · Autodidact Polymaths</div>
+</div>
+<script>
+const PASSES=[["rgb","rgb (clay)"],["openpose","openpose"],["depth","depth"],["canny","canny"]];
+function meterClass(off){return off===0?"ok":off<=2?"warn":"bad";}
+(async function(){
+  let M;
+  try{ M = await (await fetch('gallery-manifest.json',{cache:'no-store'})).json(); }
+  catch(e){ document.getElementById('shots').innerHTML='<div class="note">no gallery-manifest.json — run gallery.py first</div>'; return; }
+  const root=document.getElementById('shots');
+  for(const s of M){
+    const off=s.offframe??0, behind=s.behind??0;
+    const div=document.createElement('div'); div.className='shot';
+    div.innerHTML =
+      '<div class="head">'+
+        '<div class="id"><b>'+s.shot+'</b> &nbsp;'+s.pose.replace(/_/g,' ')+' &times; '+s.grammar.replace(/_/g,' ')+'</div>'+
+        '<div class="meta">lens '+s.lens+'mm · '+(s.grammar_note||'')+'</div>'+
+      '</div>'+
+      '<div class="note">'+(s.note||'')+'</div>'+
+      '<div class="meter">SEAM-A METER &nbsp; '+
+        'off-frame keypoints <span class="'+meterClass(off)+'">'+off+'/18</span> &nbsp;·&nbsp; '+
+        'behind-camera <span class="'+(behind===0?'ok':'bad')+'">'+behind+'</span></div>'+
+      '<div class="grid">'+PASSES.map(([k,lbl])=>
+        '<div class="cell"><img loading="lazy" src="passes/'+s.shot+'_'+k+'.png" alt="'+s.shot+' '+k+'"><div class="lbl">'+lbl+'</div></div>'
+      ).join('')+'</div>';
+    root.appendChild(div);
+  }
+})();
+</script></body></html>
