@@ -25,6 +25,9 @@ links:
   - target: "[[The Dichotomy of Control]]"
     type: mirrors
     label: "own-HEAD-own-control"
+  - target: "[[Closing Well]]"
+    type: connects-to
+    label: "close-before-teardown"
 ---
 
 # Worktree Practice
@@ -51,6 +54,10 @@ A worktree isolates HEAD, which is exactly what makes canon and coordination nee
 - **[[Baton Ceremony]]** is the opposite case: a baton continues *in-progress work*, which legitimately lives on a feature branch. So a cross-worktree baton carries a **worktree coordinate** (branch · dir · profile) and must be announced on the trunk's board — the only globally-visible rendezvous.
 - **The [[STIGMERGY]] server** writes to whichever board its launch checkout resolves to (`PALACE_ROOT`, else the checkout root). A server run *in a worktree* is for **developing/testing the app** — local throwaway board, never merged — while **real coordination runs on the primary** (root auto-resolves to the owner) or with `PALACE_ROOT=<owner>`. This is the seam where the worktree `node_modules` auto-mirror meets the canon-trunk rule: the mirror makes the app *runnable* in a worktree; the rule keeps *real* coordination on the trunk.
 
+## Closing a worktree well
+
+A worktree has a lifecycle, and teardown is a *close* — the same boundary [[Closing Well]] is about, in a new register (branch + directory, not session + instance). `--remove` is symlink-safe and `--delete-branch` **safe-deletes** (`git branch -d`, refusing to drop commits not merged to the trunk; `--force-delete` is the deliberate-discard escape), but the tool only guards *mechanical* loss. The close itself is yours: before tearing down, is the canon committed to the trunk, the in-progress move merged / cherry-picked / **batoned** (with its worktree coordinate), the lost branches parked in their owning entries, and the unverified named? A teardown that drops an unmerged thread with no punchlist is a failed close. And the canon-trunk rule is itself [[Closing Well]] at the branch boundary: canon stranded on a feature branch is work the next person, sitting on `main`, cannot pick up.
+
 ## The resonance
 
 A worktree is [[The Dichotomy of Control]] in git: your own HEAD is the one thing fully yours, immune to what other agents do to the shared trunk. The practice draws the Stoic line — act within your worktree (*prohairesis*), converge on the trunk (the shared *fortuna* of canon) only deliberately.
@@ -60,4 +67,4 @@ A worktree is [[The Dichotomy of Control]] in git: your own HEAD is the one thin
 - Name the still-missing canon: is the 2026-06-16 branch-thrashing incident that birthed this worth its own breakthrough entry, or does it live well enough in machinery + memory?
 - Watch whether a scheduler ever picks up cross-worktree batons from the trunk's board automatically — the announcement convention is built for that future ant.
 - ✓ **Happy path verified 2026-06-17** (end-to-end run from a real `stigmergy`-profile worktree): owner-resolution from the worktree landed on `main`; the worktree's board was a separate inode (the fragmentation risk is real, so "append to the trunk" is earned); the `PALACE_ROOT` server seam resolved worktree-vs-owner as designed; the `node_modules` auto-mirror covered all 5 workspace dirs; teardown unlinked all 6 owner-pointing symlinks with the owner's install intact. *Untested edges:* two deposits racing the owner's index at once, and the thrash-recovery path (committing canon when the primary has been knocked off `main`).
-- Enforce vs. trust: the canon-trunk rule rests on no one `git checkout`-ing the primary. Should a guard enforce it (a hook that refuses to leave the primary off `main`), or is the discipline enough?
+- Enforce vs. trust (partly answered): teardown now *embeds* a [[Closing Well]] guard — safe-delete (`-d`) refuses to strand unmerged work, a footgun removed without a procedural gate (2026-06-17). Still open at the other end: should a hook also refuse to leave the *primary* off `main`, or is discipline enough there?

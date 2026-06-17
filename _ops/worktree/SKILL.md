@@ -104,6 +104,15 @@ delete the owner's 16 GB (rm unlinks a symlink, never traverses it) — but unli
 zero chance of it and `git worktree remove` succeeds without `--force`. If you symlinked memory, the
 script prints the `rm` to remove that link too.
 
+**Close well before you tear down** *(work-safety, not just symlink-safety).* `git worktree remove`
+already refuses on uncommitted changes, and `--delete-branch` now does a **safe** delete (`git branch
+-d`) that refuses to drop a branch with commits not merged to the trunk — `--force-delete` is the
+deliberate-discard escape. But the tool only guards the *mechanical* loss; the *close* is yours. Before
+removing a worktree, run the [[Closing Well]] checklist: is its canon committed to the trunk? is any
+in-progress move merged, cherry-picked, or **batoned** (with its worktree coordinate)? are lost
+branches parked in their owning entries? what couldn't you verify? A teardown that drops an unmerged
+thread with no punchlist is a failed close — the worktree analog of a baton that omits its punchlist.
+
 ## Ceremonies in a worktree
 
 The palace ceremonies assume a single working tree; worktrees split that. The rule: **canon and
