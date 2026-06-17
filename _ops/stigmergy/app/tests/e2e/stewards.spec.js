@@ -37,6 +37,36 @@ test.describe('Stewards deck — surface', () => {
   });
 });
 
+// Launch interactive — drive a steward in a watchable session. Render-only and
+// NON-DESTRUCTIVE: launch just builds a paste-ready prompt (no POST, no cycle
+// fire), so these are safe against the live board — they never advance a
+// steward. Mirrors launch-interactive.spec.js (the handoff launch e2e).
+test.describe('Stewards deck — launch interactive', () => {
+  test('every steward row exposes a launch action', async ({ page }) => {
+    await gotoStewards(page);
+    await expect(page.locator('[data-testid^="steward-launch-"]').first())
+      .toBeVisible({ timeout: 10_000 });
+  });
+
+  test('launch opens a watch+steer prompt (copy, no mark-picked-up); Esc closes', async ({ page }) => {
+    await gotoStewards(page);
+    const launch = page.locator('[data-testid^="steward-launch-"] button:not([disabled])').first();
+    test.skip((await launch.count()) === 0, 'no launchable steward row (all mid-cycle?)');
+    await launch.click();
+    const modal = page.getByTestId('launch-modal');
+    await expect(modal).toBeVisible({ timeout: 5_000 });
+    // the steward-flavored prompt, with the orient step
+    await expect(page.getByTestId('launch-prompt')).toContainText(/stepping into a palace steward/i);
+    await expect(page.getByTestId('launch-prompt')).toContainText('CLAUDE.md');
+    // copy is offered; the handoff-only MARK PICKED UP is not
+    await expect(page.getByTestId('launch-copy')).toBeVisible();
+    await expect(page.getByTestId('launch-mark-picked-up')).toHaveCount(0);
+    // Esc closes (nothing was posted — launch is non-destructive)
+    await page.keyboard.press('Escape');
+    await expect(modal).toHaveCount(0);
+  });
+});
+
 test.describe('Stewards deck — advance-through (stub-gated)', () => {
   test('advancing a steward shows the lane alive then reaps to idle', async ({ page }) => {
     test.skip(!process.env.STIGMERGY_STUB_WORKER, 'set STIGMERGY_STUB_WORKER=1 to run the advance-through e2e (fires the harmless stub, dryReap — no palace mutation)');
