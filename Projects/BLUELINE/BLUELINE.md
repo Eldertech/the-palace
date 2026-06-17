@@ -84,13 +84,16 @@ The June 2026 research found nearly every piece exists off the shelf: the Blende
 
 `stage: growing`. **The five-track technical spike is closed** (2026-06-16) and **M0 previz is the first production rung — verified.** Track-by-track: **I (GPU substrate)** board→render both tiers; **III (clock)** live-validated round-trip from real Ableton, now **clip-addressed** (sections are named MIDI clips on the device's own track — *markers→clips*, not locators); **IV (bench)** pose/camera/environment → board records; **V (motion)** seed-lock defeats stitched-stills flicker (0.94 vs 0.17, the #1 risk, workable). **II (identity)** returned an *honest negative*: the character LoRA scored below its text-only baseline (it learned a hooded costume, not a face) — but the pipeline is sound (DreamBooth dog control +0.35) and the **v2 measurement ruler** shipped by catching it. **M0** then played the 8-shot storyboard *in time* with the live clock — beat-locked, deterministic, shot-accurate (`proofs/m0-previz/m0-report.md`).
 
+**M1 + the re-founding (2026-06-17).** M1 raised the boards to the comic register (inked panels over a blue-line draft) and grew the **staging vocabulary** — facing, eyeline, L/R laterality, the framing-robust shoulder–shoulder–pelvis torso frame — which turns out to do *three jobs at once*: the board-record schema, the AI's conditioning keypoints, and the lossless 2D→3D transfer format. The project was then re-founded on the **established animation pipeline** rather than an invented one — see [[BLUELINE — Production Pipeline]] (anime backbone · comics skin · animated-feature tissue · music-video clock; the only novelty is two seams). Founding rationale: [[Adopt the Craft, Author the Seam]].
+
 The two 2026-06-13 keystones still ground it: the **conditioning keystone** (Session 1 — Blender geometric passes → SDXL per-channel multi-ControlNet; blocking defeats the front-on default) and the **flow-field spine** (Session 3 — one field, three resolutions). The render-side **AnimaticPlanProposal** + **[[Shop/RunPod GPU Backend]]** converged on the same pipeline — folded in via [[BLUELINE — Render Backend]] and joined by the [[BLUELINE — Board Record Schema]].
 
 The plan is now reset around a parallel, substrate-first structure: **[[BLUELINE — Production Plan]]**. Most of BLUELINE turned out to be palace substrate (a Shop-wide GPU backend, an Ableton clock, LoRA + a measurement ruler) that other work needs anyway — so the threads run in parallel, each shipping a Shop capability. Tools are adopted only once proven — no hopeful entries.
 
 ## Bundle
 
-- `BLUELINE — Production Plan.md` — **the active plan**: parallel substrate-first tracks.
+- `BLUELINE — Production Pipeline.md` — **the re-founding**: the established stage/role pipeline (anime backbone · comics skin · feature tissue · music-video clock), the two seams, and the tracks mapped onto stages. Rationale: [[Adopt the Craft, Author the Seam]].
+- `BLUELINE — Production Plan.md` — **the active plan**: parallel substrate-first tracks (now understood as the pipeline stages).
 - `BLUELINE — Render Backend.md` — the render-AI half; folds the AnimaticPlanProposal + the three palace-forced changes.
 - `BLUELINE — Board Record Schema.md` — the beat-addressed contract every track reads/writes.
 - `render-backend/` — the AnimaticPlanProposal artifacts (PLAN, runner, graph_spec, models_manifest, board_template).
