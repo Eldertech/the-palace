@@ -6,7 +6,7 @@ const SPEC_CONFORMANT = {
   id: 'msg-001',
   ts: '2026-03-28T14:23:05Z',
   session_id: 'swarm-2026-03-28-001',
-  from: 'STRIATUM-7',
+  from: 'Action Potential Oscillator',
   to: '*',
   type: 'BROADCAST',
   board: 'GENERAL',

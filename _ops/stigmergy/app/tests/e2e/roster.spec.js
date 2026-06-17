@@ -12,33 +12,33 @@ test('agent roster panel renders on boot', async ({ page }) => {
 
 test('roster lists at least the demo agents', async ({ page }) => {
   await gotoDemoBoard(page);
-  for (const id of ['STRIATUM-7', 'CONATUS-4', 'TRICKSTER', 'COORDINATOR']) {
+  for (const id of ['Action Potential Oscillator', 'Spinoza Conatus', 'TRICKSTER', 'COORDINATOR']) {
     await expect(page.getByTestId(`roster-row-${id}`)).toBeVisible();
   }
 });
 
 test('clicking an agent filters the message list', async ({ page }) => {
   await gotoDemoBoard(page);
-  // GENERAL has at least one BROADCAST from STRIATUM-7 and a REPLY from LATERAL-9.
+  // GENERAL has at least one BROADCAST from Action Potential Oscillator and a REPLY from Lateral Access.
   await page.getByTestId('tab-general').click();
   await expect(page.locator('[data-testid="message-row"]').first()).toBeVisible();
 
-  // Click STRIATUM-7 in the roster.
-  await page.getByTestId('roster-row-STRIATUM-7').click();
+  // Click Action Potential Oscillator in the roster.
+  await page.getByTestId('roster-row-Action Potential Oscillator').click();
   await expect(page.getByTestId('agent-filter-banner')).toBeVisible();
 
-  // Every visible row's `data-testid` for from-handle should be STRIATUM-7.
+  // Every visible row's `data-testid` for from-handle should be Action Potential Oscillator.
   const rows = await page.locator('[data-testid="message-row"]').all();
   for (const row of rows) {
     const text = await row.textContent();
-    expect(text).toContain('@STRIATUM-7');
+    expect(text).toContain('@Action Potential Oscillator');
   }
 });
 
 test('clicking the active agent again clears the filter', async ({ page }) => {
   await gotoDemoBoard(page);
   await page.getByTestId('tab-general').click();
-  const ag = page.getByTestId('roster-row-STRIATUM-7');
+  const ag = page.getByTestId('roster-row-Action Potential Oscillator');
   await ag.click();
   await expect(ag).toHaveAttribute('data-active', 'true');
   await ag.click();
