@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useCallback } from 'react';
 import { Banner, Box, Button, Tag } from '../primitives.jsx';
 import { fetchStewards, advanceSteward, advanceAllStewards } from '../../adapters/stewards.js';
+import LaunchModal from '../queue/LaunchModal.jsx';
 
 // testid-safe slug for a steward name ("Semantic Delay" -> "semantic-delay").
 function slug(name) {
@@ -78,6 +79,24 @@ export default function StewardsDeck() {
   const [pending, setPending] = useState(null);     // steward name awaiting confirm
   const [feedback, setFeedback] = useState(null);   // last action outcome
   const [busy, setBusy] = useState(false);
+  const [launchContext, setLaunchContext] = useState(null); // steward whose launch modal is open
+
+  // Launch an interactive session to DRIVE this steward (watch + steer), as
+  // distinct from advance() which fires a headless cycle. Non-destructive: it
+  // only builds a ready-to-paste prompt — no POST, no fire — so it is always
+  // safe to offer. The steward's dir carries its manifest + state for the
+  // session to read. See buildLaunchPrompt (kind 'steward').
+  const openLaunch = useCallback((s) => {
+    setLaunchContext({
+      kind: 'steward',
+      id: s.agent_id,
+      entry: s.agent_id,
+      from: s.agent_id,
+      sourcePath: s.dir || null,
+      iteration: s.iteration,
+      stage: s.stage,
+    });
+  }, []);
 
   const refresh = useCallback(async () => {
     const r = await fetchStewards();
@@ -207,9 +226,17 @@ export default function StewardsDeck() {
                           <Button tone="default" disabled={busy} onClick={() => setPending(null)}>cancel</Button>
                         </>
                       ) : (
-                        <span data-testid={`steward-advance-${sid}`}>
-                          <Button tone="default" disabled={!canAdvance} onClick={() => setPending(s.agent_id)}>advance</Button>
-                        </span>
+                        <>
+                          {/* launch = drive this steward interactively (watch +
+                              steer); always offered (non-destructive) except
+                              while its own headless cycle is live. */}
+                          <span data-testid={`steward-launch-${sid}`}>
+                            <Button tone="default" disabled={isRunning} onClick={() => openLaunch(s)}>launch</Button>
+                          </span>
+                          <span data-testid={`steward-advance-${sid}`}>
+                            <Button tone="default" disabled={!canAdvance} onClick={() => setPending(s.agent_id)}>advance</Button>
+                          </span>
+                        </>
                       )}
                     </div>
                   )}
@@ -240,6 +267,12 @@ export default function StewardsDeck() {
             ) : null}
           </Box>
         </div>
+      ) : null}
+
+      {/* Launch-interactive modal — a steward gets a ready prompt to drive it in
+          dialogue. No pickup semantics (kind !== 'handoff'), so no onPickedUp. */}
+      {launchContext ? (
+        <LaunchModal context={launchContext} onClose={() => setLaunchContext(null)} />
       ) : null}
     </div>
   );

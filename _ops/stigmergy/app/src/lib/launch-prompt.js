@@ -17,6 +17,8 @@ export function buildLaunchPrompt(ctx = {}) {
       return handoffPrompt(ctx);
     case 'card':
       return cardPrompt(ctx);
+    case 'steward':
+      return stewardPrompt(ctx);
     default:
       return genericPrompt(ctx);
   }
@@ -63,6 +65,34 @@ function cardPrompt({ id, entry, purpose, summary, sourcePath }) {
     '3. Work it with Loudon: sharpen the artifact, then act per the Enrichment',
     "   round protocol — deposit (place it in the entry's bundle + commit),",
     '   revise, or discard.',
+  );
+  return lines.join('\n');
+}
+
+function stewardPrompt({ entry, sourcePath, iteration, stage, summary }) {
+  const home = entry ? `[[${String(entry).replace(/\.md$/, '')}]]` : 'a steward';
+  const dir = sourcePath || 'its dir under _ops/agents/permanent/<slug>/';
+  const where = [stage, typeof iteration === 'number' ? `cycle ${iteration}` : null]
+    .filter(Boolean).join(' · ');
+  const lines = [
+    'You are stepping into a palace steward mid-stewardship, in a fresh',
+    'interactive session at the palace root, to drive it in dialogue — Loudon is',
+    'watching and will steer.',
+    '',
+    `1. ${ORIENT}`,
+    `2. The steward IS the page ${home}${where ? ` (${where})` : ''}.`,
+    `   Read its manifest.json + state.json in ${dir}, then the last several`,
+    '   messages it left on _ops/swarm/persistent/blackboard.jsonl — that is where',
+    '   it stands right now.',
+  ];
+  if (summary) lines.push(`   Where it stands: ${summary}`);
+  lines.push(
+    '3. Continue its cycle interactively, as the page itself: take up its open',
+    '   decisions, sharpen the next move, act on its bundle (its plan + the entry',
+    '   body). Post a RESOURCE_REQUEST to TRICKSTER when you need Loudon; a',
+    '   FLAG/BROADCAST as the work warrants.',
+    '4. Close honestly: post a BROADCAST summary. Only the commit is the record —',
+    '   nothing is real until it lands in LOG.',
   );
   return lines.join('\n');
 }

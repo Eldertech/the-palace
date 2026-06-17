@@ -27,10 +27,37 @@ describe('buildLaunchPrompt — handoff', () => {
     expect(typeof p).toBe('string');
   });
 
-  test('generic kind for an unrecognized future context (e.g. steward)', () => {
-    const p = buildLaunchPrompt({ kind: 'steward', title: 'Kuramoto Coupling', summary: 'a koan card' });
+  test('generic kind for an unrecognized future context', () => {
+    const p = buildLaunchPrompt({ kind: 'mystery', title: 'Kuramoto Coupling', summary: 'a koan card' });
     expect(p).toContain('Kuramoto Coupling');
     expect(p).toContain('CLAUDE.md');
+  });
+});
+
+describe('buildLaunchPrompt — steward', () => {
+  test('references the steward page, its dir, the cycle/stage, and how to continue + close', () => {
+    const p = buildLaunchPrompt({
+      kind: 'steward', entry: 'Generative Wavetable Libraries',
+      sourcePath: '_ops/agents/permanent/generative-wavetable-libraries',
+      iteration: 9, stage: 'growing', summary: 'mid-way through the dispersion recipe',
+    });
+    expect(p).toContain('[[Generative Wavetable Libraries]]');
+    expect(p).toContain('_ops/agents/permanent/generative-wavetable-libraries');
+    expect(p).toContain('cycle 9');
+    expect(p).toContain('growing');
+    expect(p).toContain('mid-way through the dispersion recipe');
+    expect(p).toContain('CLAUDE.md');            // orient
+    expect(p).toContain('blackboard.jsonl');     // read where it stands
+    expect(p).toMatch(/RESOURCE_REQUEST/);       // post back when it needs Loudon
+    expect(p).toMatch(/commit is the record/i);  // honesty close
+  });
+
+  test('degrades gracefully when optional fields are missing', () => {
+    const p = buildLaunchPrompt({ kind: 'steward', entry: 'Semantic Delay' });
+    expect(p).toContain('[[Semantic Delay]]');
+    expect(p).toContain('_ops/agents/permanent/<slug>/'); // dir fallback
+    expect(typeof p).toBe('string');
+    expect(p).not.toContain('cycle undefined');           // no undefined leakage
   });
 });
 
