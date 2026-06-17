@@ -49,7 +49,7 @@ const DICT = {
   'trickster.card.filing':          'filing…',
   'trickster.card.running':         'filing & running…',
   'trickster.card.more':            '▸ more from the steward',
-  'trickster.card.nocatchup':       'steward emitted no catchup — using reasoning',
+  'trickster.card.nocatchup':       'no quick summary from the steward — showing its notes',
   'trickster.card.freeform':        'a note back (optional)',
   'trickster.card.freeform.hint':   'type a reply, or pick an option above',
 
