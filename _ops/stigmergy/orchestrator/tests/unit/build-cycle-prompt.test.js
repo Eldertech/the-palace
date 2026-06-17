@@ -243,6 +243,44 @@ describe('buildCyclePrompt (integration)', () => {
     expect(userTurn).toContain('x2');                             // board slice present
     expect(userTurn).toContain('This cycle\'s mandate');          // mandate section unchanged
   });
+
+  test('include flags omit only the toggled OPTIONAL layers; identity + state always stay', () => {
+    const { agentRel } = makePalace({
+      stagingBody: '# Teaching arc\nStage 2 exposes the wrap seam.',
+      state: { iteration: 2, last_active: '2026-05-26T10:00:00Z', last_read_cursor: 'c0' },
+      board: [{ id: 'c0', type: 'BROADCAST' }, { id: 'c1', type: 'BROADCAST' }],
+    });
+    const { userTurn } = buildCyclePrompt({
+      palaceRoot: root, agentDir: agentRel, cycleN: 3, today: '2026-05-27',
+      include: { board: false, history: false, pageChange: false, staging: false },
+    });
+    // the toggled-off optional layers are gone
+    expect(userTurn).not.toContain('Blackboard slice');
+    expect(userTurn).not.toContain('Your recent history');
+    expect(userTurn).not.toContain('Page-change notice');
+    expect(userTurn).not.toContain('Your staging arc');
+    // the identity + state are NEVER toggled — they ARE the agent
+    expect(userTurn).toContain('Your home entry');
+    expect(userTurn).toContain('body text here');
+    expect(userTurn).toContain('Your injected state');
+    expect(userTurn).toContain("This cycle's mandate");
+  });
+
+  test('a single toggle trims only its own layer', () => {
+    const { agentRel } = makePalace({
+      state: { iteration: 2, last_active: '2026-05-26T10:00:00Z', last_read_cursor: 'c0' },
+      board: [{ id: 'c0', type: 'BROADCAST' }, { id: 'keep-me', type: 'BROADCAST' }],
+    });
+    const { userTurn } = buildCyclePrompt({
+      palaceRoot: root, agentDir: agentRel, cycleN: 3, today: '2026-05-27',
+      include: { board: false },
+    });
+    expect(userTurn).not.toContain('Blackboard slice');
+    expect(userTurn).not.toContain('keep-me');
+    // history + page-change stay
+    expect(userTurn).toContain('Your recent history');
+    expect(userTurn).toContain('Page-change notice');
+  });
 });
 
 describe('findEntryFile', () => {
