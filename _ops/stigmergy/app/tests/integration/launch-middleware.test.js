@@ -128,4 +128,21 @@ describe('POST /api/launch/agent', () => {
       .post('/api/launch/agent').send({ home: 'Kuramoto Coupling', effort: 'ludicrous' });
     expect(launched.effort).toBeUndefined();  // not in the allowlist -> default
   });
+
+  test('include toggles pass to the builder and trim the Tier-3 construction summary', async () => {
+    let built = null;
+    const buildCyclePromptImpl = (o) => { built = o; return { full: 'P' }; };
+    const res = await request(makeServer(root, { stewardLane, buildCyclePromptImpl }))
+      .post('/api/launch/agent').send({ home: 'Kuramoto Coupling', include: { board: false, staging: false }, preview: true });
+    expect(res.status).toBe(200);
+    // normalized: only the toggled-off layers go false; the rest default true
+    expect(built.include).toEqual({ board: false, history: true, pageChange: true, staging: false });
+    expect(res.body.construction.include.board).toBe(false);
+    // Tier-3 text reflects the trim
+    expect(res.body.construction.tiers[3].what).not.toMatch(/board slice/i);
+    expect(res.body.construction.tiers[3].what).toMatch(/recent history/i);
+    // identity + state are never trimmed
+    expect(res.body.construction.tiers[3].what).toMatch(/injected in full as identity/i);
+    expect(res.body.construction.tiers[3].what).toMatch(/state \(/i);
+  });
 });

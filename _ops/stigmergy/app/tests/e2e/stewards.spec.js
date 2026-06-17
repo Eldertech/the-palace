@@ -64,7 +64,12 @@ test.describe('Stewards deck — construct & launch agent', () => {
     await expect(page.getByTestId('agent-effort')).toBeVisible();
     await expect(page.getByTestId('agent-launch-terminal')).toBeVisible();
     await expect(page.getByTestId('agent-copy')).toBeVisible();
-    // Esc closes (only a read-only preview happened)
+    // context-layer toggles trim the OPTIONAL layers: turning board off
+    // re-previews and drops the board slice from Tier 3 (read-only).
+    await expect(page.getByTestId('agent-tier-3')).toContainText(/board slice/i);
+    await page.getByTestId('agent-toggle-board').locator('input').uncheck();
+    await expect(page.getByTestId('agent-tier-3')).not.toContainText(/board slice/i, { timeout: 6_000 });
+    // Esc closes (only read-only previews happened)
     await page.keyboard.press('Escape');
     await expect(modal).toHaveCount(0);
   });

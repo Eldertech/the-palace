@@ -28,18 +28,29 @@ const EFFORTS = new Set(['low', 'medium', 'high', 'xhigh', 'max']);
 // root; tier 3 — the active surface — is what THIS prompt injects (the page as
 // identity + its situational state). The launcher renders this so the build is
 // legible, not a black box.
-function buildConstruction({ home, stage, cycle }) {
+function buildConstruction({ home, stage, cycle, inc }) {
+  // Tier-3 reflects which OPTIONAL layers the toggles left on. The identity (the
+  // page) and state are always present — they ARE the agent, never toggled.
+  const optional = [
+    inc.board && 'board slice since cursor (neighborhood-filtered)',
+    inc.history && 'recent history',
+    inc.pageChange && 'page-change notice',
+    inc.staging && 'staging arc when present',
+  ].filter(Boolean);
+  const tier3What = `${home} injected in full as identity · state (iteration ${Math.max(0, cycle - 1)} · cursor · forward_vector)`
+    + (optional.length ? ' · ' + optional.join(' · ') : '');
   return {
     home,
     stage: stage || null,
     cycle,
+    include: inc,
     framing: 'interactive — you drive; the agent narrates every write before it makes it, and posts to the board as the page',
     posture: 'steward discipline — stage-conditional · catch-up-first · ship-a-made-thing · audition gate · act-on-your-lean',
     tiers: [
       { tier: 0, name: 'Jewel', loads: 'floor', what: 'interpretive lens · operating posture · invariants' },
       { tier: 1, name: 'Skeleton', loads: 'floor', what: 'CLAUDE · SCHEMA — what can exist + that the room may hold other agents' },
       { tier: 2, name: 'World', loads: 'floor', what: 'Four Pillars · philosophies · cooperation' },
-      { tier: 3, name: 'Active surface', loads: 'injected', what: `${home} injected in full as identity · state (iteration ${Math.max(0, cycle - 1)} · cursor · forward_vector) · board slice since cursor (neighborhood-filtered) · recent history · page-change notice · staging arc when present` },
+      { tier: 3, name: 'Active surface', loads: 'injected', what: tier3What },
     ],
   };
 }
@@ -72,6 +83,16 @@ async function handleAgentLaunch(ctx) {
   const cycle = (Number.isFinite(row.iteration) ? row.iteration : 0) + 1;
   const mandate = typeof body.mandate === 'string' ? body.mandate.trim() : '';
 
+  // Context-layer toggles: which OPTIONAL layers to inject. Omitted/true = on
+  // (the canonical cycle). The identity + state are never toggled here.
+  const includeRaw = (body && typeof body.include === 'object' && body.include) || {};
+  const inc = {
+    board: includeRaw.board !== false,
+    history: includeRaw.history !== false,
+    pageChange: includeRaw.pageChange !== false,
+    staging: includeRaw.staging !== false,
+  };
+
   // Build the interactive cycle prompt (injectable for tests so the route can be
   // exercised without a real agent dir on disk).
   const build = opts.buildCyclePromptImpl || buildCyclePrompt;
@@ -83,13 +104,14 @@ async function handleAgentLaunch(ctx) {
       cycleN: cycle,
       extraMandate: mandate,
       mode: 'interactive',
+      include: inc,
     }));
   } catch (e) {
     jsonResponse(res, 500, { error: `could not construct the agent: ${e.message}` });
     return true;
   }
 
-  const construction = buildConstruction({ home, stage: row.stage, cycle });
+  const construction = buildConstruction({ home, stage: row.stage, cycle, inc });
 
   // Preview: hand back the assembled prompt + the construction so the launcher
   // can show the build (and the operator can read the full prompt) before launch.
