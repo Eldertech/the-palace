@@ -16,6 +16,7 @@ import { cardsRoutes } from './api/cards.js';
 import { digestRoutes } from './api/digest.js';
 import { entrySaveRoutes } from './api/entry-save.js';
 import { entryAgentRoutes } from './api/entry-agent.js';
+import { launchRoutes } from './api/launch.js';
 import { sessionsRoutes } from './api/sessions.js';
 
 const FAMILIES = [
@@ -29,6 +30,7 @@ const FAMILIES = [
   digestRoutes,
   entrySaveRoutes,
   entryAgentRoutes,
+  launchRoutes,
   sessionsRoutes,
 ];
 

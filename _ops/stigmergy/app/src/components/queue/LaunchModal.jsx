@@ -3,6 +3,7 @@ import { Banner } from '../primitives.jsx';
 import { buildLaunchPrompt } from '../../lib/launch-prompt.js';
 import { buildHandoffPickup } from '../../lib/handoff-builder.js';
 import { postMessage, InvalidMessageError } from '../../adapters/blackboard.js';
+import { launchInteractiveSession } from '../../adapters/launch.js';
 
 // LaunchModal — "launch interactive" for a handoff (baton).
 //
@@ -41,6 +42,8 @@ export default function LaunchModal({ context, onPickedUp, onClose }) {
   const [copied, setCopied] = useState(false);
   const [sending, setSending] = useState(false);
   const [errors, setErrors] = useState([]);
+  const [launching, setLaunching] = useState(false);
+  const [launchMsg, setLaunchMsg] = useState(null);
   const backdropRef = useRef(null);
 
   // Only a handoff (a baton) has pickup semantics — it gets the MARK PICKED UP
@@ -69,6 +72,21 @@ export default function LaunchModal({ context, onPickedUp, onClose }) {
       setTimeout(() => setCopied(false), 2000);
     } catch { /* clipboard blocked — the prompt is selectable in the <pre> */ }
   }, [prompt]);
+
+  // Launch the prompt directly into a real Claude Code terminal (the server
+  // spawns Terminal.app, seeded with the prompt, at the palace root) — no paste.
+  // Falls back to copy on any failure; a non-macOS host says so plainly.
+  const launchTerminal = useCallback(async () => {
+    if (launching) return;
+    setLaunching(true); setErrors([]); setLaunchMsg(null);
+    const r = await launchInteractiveSession(prompt);
+    if (r.ok) {
+      setLaunchMsg('opening a Claude Code terminal…');
+    } else {
+      setErrors([r.supported === false ? `${r.error}` : r.error]);
+    }
+    setLaunching(false);
+  }, [launching, prompt]);
 
   const markPickedUp = useCallback(async () => {
     if (sending) return;
@@ -117,7 +135,7 @@ export default function LaunchModal({ context, onPickedUp, onClose }) {
 
         <div style={{ overflowY: 'auto', flex: 1, padding: '12px', display: 'flex', flexDirection: 'column', gap: 10 }}>
           <div style={{ color: 'var(--phosphor-dim)', textShadow: 'none', fontSize: 11, textTransform: 'uppercase', letterSpacing: '.05em' }}>
-            paste into a fresh Claude Code / Cowork session at the palace root
+            launch a Claude Code terminal at the palace root — or copy the prompt for Cowork / the web
           </div>
           <pre data-testid="launch-prompt" style={{
             margin: 0, border: '1px solid var(--phosphor-dim)', padding: '10px',
@@ -139,8 +157,14 @@ export default function LaunchModal({ context, onPickedUp, onClose }) {
         </div>
 
         <div style={{ borderTop: '1px solid var(--phosphor-dim)', padding: '8px 12px', display: 'flex', gap: 10, justifyContent: 'flex-end', alignItems: 'center', flexShrink: 0 }}>
-          <ModalButton tone="default" onClick={handleClose} disabled={sending} testId="launch-close">close</ModalButton>
-          <ModalButton tone={isHandoff ? 'default' : 'primary'} onClick={copy} testId="launch-copy">{copied ? 'copied' : 'copy prompt'}</ModalButton>
+          {launchMsg ? (
+            <span data-testid="launch-ok" style={{ marginRight: 'auto', color: 'var(--phosphor)', textShadow: 'var(--glow)', fontSize: 12 }}>{launchMsg}</span>
+          ) : null}
+          <ModalButton tone="default" onClick={handleClose} disabled={sending || launching} testId="launch-close">close</ModalButton>
+          <ModalButton tone="default" onClick={copy} testId="launch-copy">{copied ? 'copied' : 'copy prompt'}</ModalButton>
+          <ModalButton tone="primary" onClick={launchTerminal} disabled={launching || sending} testId="launch-terminal">
+            {launching ? 'opening…' : 'launch terminal'}
+          </ModalButton>
           {isHandoff ? (
             <ModalButton tone="primary" onClick={markPickedUp} disabled={sending} testId="launch-mark-picked-up">
               {sending ? 'marking...' : 'mark picked up'}
