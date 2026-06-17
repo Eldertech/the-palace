@@ -41,12 +41,19 @@ SHOTS = [
 def realize(shot):
     G.wipe(); scene = bpy.context.scene
     pose_fn, face = G.POSES[shot["pose"]]; J = G.asV(pose_fn())
-    body = G.build_body(scene, J)
     cam_d = bpy.data.cameras.new("Cam"); cam = bpy.data.objects.new("Cam", cam_d)
     scene.collection.objects.link(cam); scene.camera = cam
     g = G.GRAMMARS[shot["grammar"]](J, face)
     scene.render.resolution_x = RES_X; scene.render.resolution_y = RES_Y
-    G.fit_camera(scene, cam, J, g["target"], g["dir_off"], g["lens"], roll=g.get("roll", 0.0), up=g.get("up", 'Y'))
+    # Fix A — shot-size: frame the subject set (CU/MS/WIDE) to its fill, not the whole figure
+    subject, target, fill = G.frame_for_shot(J, shot["shot"])
+    G.fit_camera(scene, cam, subject, target, g["dir_off"], g["lens"], fill=fill, roll=g.get("roll", 0.0), up=g.get("up", 'Y'))
+    # Fix B — head-aim toward the authored EYELINE target
+    G.aim_head(scene, cam, J, shot["eyeline"])
+    # re-fit: aim_head moved the head keypoints (part of a CU's subject set), so re-frame on the aimed pose
+    subject, target, fill = G.frame_for_shot(J, shot["shot"])
+    G.fit_camera(scene, cam, subject, target, g["dir_off"], g["lens"], fill=fill, roll=g.get("roll", 0.0), up=g.get("up", 'Y'))
+    body = G.build_body(scene, J)
     sun_d = bpy.data.lights.new("Sun", 'SUN'); sun_d.energy = 3.0
     sun = bpy.data.objects.new("Sun", sun_d); scene.collection.objects.link(sun)
     sun.rotation_euler = (math.radians(55), math.radians(12), math.radians(-50))
@@ -59,16 +66,21 @@ def realize(shot):
     scene.render.image_settings.file_format = 'PNG'
     base = os.path.join(P_DIR, shot["id"])
     G.render(scene, body, G.clay(), base + "_rgb.png")
-    # reproject canonical COCO-18 to screen (the "back to 2D" leg of the round-trip)
-    kp = {}; ys = []; off = 0; behind = 0
+    # reproject canonical COCO-18 to screen (the "back to 2D" leg of the round-trip).
+    # figure_fill = the vertical span of the SUBJECT SET (what defines the shot) — the right shot-size test
+    # ("did the solver frame the subject to its band?"); all-in-frame span is noisy when a tight crop leaves
+    # only a few scattered keypoints. off-frame counts ALL keypoints (the informational crop indicator).
+    subj_ids = set(subject.keys())
+    kp = {}; ys = []; subj_ys = []; off = 0; behind = 0
     for i, p in J.items():
         co = world_to_camera_view(scene, cam, p)
         infr = (0 <= co.x <= 1 and 0 <= co.y <= 1 and co.z > 0)
         if not (0 <= co.x <= 1 and 0 <= co.y <= 1): off += 1
         if co.z <= 0: behind += 1
         if infr: ys.append(co.y)
+        if infr and i in subj_ids: subj_ys.append(co.y)
         kp[i] = [round(co.x * RES_X, 1), round((1 - co.y) * RES_Y, 1), 1.0 if infr else 0.3]
-    fill = (max(ys) - min(ys)) if ys else 0.0
+    fill = (max(subj_ys) - min(subj_ys)) if subj_ys else ((max(ys) - min(ys)) if ys else 0.0)
     # also draw the geometric openpose so the viewer can show it (reuse the gallery color order via the module)
     return {"id": shot["id"], "pose": shot["pose"], "grammar": shot["grammar"], "note": shot["note"],
             "authored": {"facing": shot["facing"], "eyeline": shot["eyeline"], "shot": shot["shot"]},
