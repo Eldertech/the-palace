@@ -99,6 +99,30 @@ delete the owner's 16 GB (rm unlinks a symlink, never traverses it) — but unli
 zero chance of it and `git worktree remove` succeeds without `--force`. If you symlinked memory, the
 script prints the `rm` to remove that link too.
 
+## Ceremonies in a worktree
+
+The palace ceremonies assume a single working tree; worktrees split that. The rule: **canon and
+coordination always write to the owner (main); in-progress work lives where it lives.** Resolve the
+owner with `git worktree list --porcelain` (first `worktree ` line) — the same lookup this script uses.
+
+- **Deposit** — a deposit adds to canon, and canon is `main`. It always writes its entries, the
+  `_ops/Deposit Archive.md` row, and its weave_flags to the **owner** and commits there
+  (`git -C "<owner>" …`), regardless of which worktree the conversation ran in. See
+  `_ops/Deposit Ceremony.md` § Where the Deposit Lands.
+- **Coordination state** — the persistent blackboard (`_ops/swarm/persistent/blackboard.jsonl`) and
+  `_ops/Deposit Archive.md` are tracked + append-only, so per-branch copies fragment and merge-conflict.
+  **Always append to the owner's physical file**, never a worktree's branch copy. This keeps the
+  stigmergic field one shared field and honors SCHEMA §9's one-write-path invariant (it satisfies it —
+  no schema change).
+- **Baton** — a baton continuing *feature work* lives in that worktree's bundle on its branch, and is
+  invisible from every other worktree — so it **must** be announced on the owner's board, carrying its
+  worktree coordinate (branch · dir · profile). A baton continuing *canon work* lives on the owner. See
+  `_ops/Baton Ceremony.md` § Where the Baton Lives.
+
+**Precondition for all of the above:** the owner worktree stays pinned to `main`. If it has been
+switched off `main`, stop — a canon write landing on a feature branch is the exact stranding these
+rules prevent.
+
 ## Manual fallback (no script)
 
 ```sh
