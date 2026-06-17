@@ -62,6 +62,11 @@ report, and the M4L spec (JS rewritten: `cue_points` → host-track clips; `/tra
   sphere + eyeline ray + body-facing wedge**, so you can read which way each character faces and what they
   look at (half the shots are eyeline beats). It's *conditioning*, not polish — facing → OpenPose head
   keypoints. New `FACING`/`EYELINE` fields in [[BLUELINE — Board Record Schema]]. Aesthetic polish stays deferred.
+- **Structural disambiguation added (2026-06-16):** L/R hands + feet tagged **anatomically** (green=R / coral=L,
+  ◯ open / ● grip) — the #1 render-error fixer (maps to OpenPose L/R keypoints; we *declare* L/R, not let the
+  estimator guess). Plus **comic action lines** on the acting limb for the dramatic beats — distinct from the
+  environmental flow field (still M3). **Next structural pass (proposed):** near/far limb ordering (DEPTH) +
+  foot contact/weight. Noted in the board schema.
 
 ## Next moves
 1. **M2 motion comic** — the held comic panels gain limited motion (parallax, held-pose drift, speed-lines

@@ -74,6 +74,11 @@ FACING: 0.15                 # body/chest yaw, -1 (screen-L) … 0 (camera) … 
 EYELINE: 0.13,0.38           # gaze target in screen fractions (what the subject looks AT); becomes the
                              # OpenPose head keypoints so facing/gaze is CONDITIONED, not left to the model.
                              # Body can hold one way while the head looks another (the "senses off-frame" beat).
+HANDS: L=open R=grip         # per-hand state (open / fist / grip). Hands are the hardest thing for diffusion;
+                             # the POSE pass carries ANATOMICAL L/R keypoints (OpenPose L/R wrist/ankle), so a
+                             # swapped/merged hand stops being the estimator's GUESS — we declare it. NEAR/FAR
+                             # limb ordering rides the DEPTH pass; foot-contact/weight is a proposed field
+                             # (kills floaty/sliding feet). M1 previews all of this as L/R-tagged extremities.
 FLAGGED: asset_kit(greybox→kit TBD); motion_treatment(→flow-field); hero_identity(→IDREF)
                              # the flag-not-fake boundary (Session 2): what is a DELIBERATE placeholder,
                              # and what each item is waiting on. Empty when fully resolved.

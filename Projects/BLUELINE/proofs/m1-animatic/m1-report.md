@@ -48,6 +48,26 @@ These are now fields in [[BLUELINE — Board Record Schema]] (`FACING` / `EYELIN
 the Bench (Track IV) and any future register, not just M1's pixels. **Aesthetic polish stays deferred**;
 this is legibility, which is substrate.
 
+## Structural disambiguation — L/R hands & feet + action lines (2026-06-16)
+
+The render errors we kept seeing — swapped/merged hands, a limb on the wrong side, a phantom third arm —
+are **left/right ambiguity**. OpenPose has *distinct* L/R keypoints, and the estimator guesses them wrong
+exactly when limbs cross the body. So the board now **declares** L/R instead of relying on a guess:
+
+- **L/R hands + feet** — each extremity tagged **anatomically** (the character's own side, the *mirror* of
+  screen side when they face you): green = R, coral = L. Maps straight onto OpenPose L/R wrist/ankle — the
+  #1 fix. **◯ open hand vs ● grip** (the bow grips both) gives the second-hardest thing for diffusion a
+  coarse signal; the Bench later emits the 21-pt hand model. Verified: panel 01 reads L/R on open hands +
+  planted feet; panel 05 (draw) shows both hands gripping.
+- **Comic action lines** — per-character motion trails on the *acting* limb for the dramatic beats (hero
+  turn, draw, release), drawn behind the figure. This is the **comic motion language** — distinct from the
+  environmental **flow field** (the project's spine, which stays the M3 layer). Two layers of "lines that
+  signify motion," different jobs; don't conflate them.
+
+**Deferred to the next structural pass (proposed):** **near/far** limb ordering (which limb is toward
+camera — fixes "arm melts into torso"; it's the `DEPTH` pass) and **foot contact/weight** (kills floaty
+feet). Both noted in the board schema.
+
 ## What M1 is (and isn't)
 
 M1 is the **comic register** of the same animatic — *comic compresses and abstracts* (vs cinema's
