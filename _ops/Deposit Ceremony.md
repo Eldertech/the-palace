@@ -77,7 +77,7 @@ A deposit adds to canon, and **canon is `main`** — that is what depositing *me
 - Write all new entries, bundle files, the [[Deposit Archive]] row, and any weave_flags into the owner's tree.
 - Commit on the owner's HEAD: `git -C "<owner>" add <paths> && git -C "<owner>" commit -m "Deposit — …"`. The owner's HEAD stays on `main`, so the commit lands on canon without touching — or being thrashed by — any feature worktree's branch.
 
-**Precondition:** the owner worktree stays pinned to `main`. If another agent has switched it off `main`, do not deposit blind — surface it; a deposit landing on a feature branch is the exact stranding this rule prevents.
+**Precondition:** the primary checkout is the canon trunk — permanently on `main`, never `git checkout`ed (it is the only worktree that holds `main`). If you find it thrashed off `main`, do not deposit blind: restore it to `main`, or land the commit on the `main` ref via a throwaway-worktree cherry-pick (see `_ops/worktree/SKILL.md` § Ceremonies in a worktree), first. A deposit landing on a feature branch is the exact stranding this rule prevents.
 
 ---
 

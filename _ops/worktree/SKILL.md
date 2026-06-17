@@ -119,9 +119,15 @@ owner with `git worktree list --porcelain` (first `worktree ` line) — the same
   worktree coordinate (branch · dir · profile). A baton continuing *canon work* lives on the owner. See
   `_ops/Baton Ceremony.md` § Where the Baton Lives.
 
-**Precondition for all of the above:** the owner worktree stays pinned to `main`. If it has been
-switched off `main`, stop — a canon write landing on a feature branch is the exact stranding these
-rules prevent.
+**The primary is the canon trunk.** The primary checkout is the one worktree that holds `main` (a
+branch lives in only one worktree at a time), so it is the *only* path by which canon can reach
+`main`. The standing rule: **the primary stays permanently on `main` — never `git checkout` it; if
+you need a branch, make a worktree.** Then `git -C "<owner>" …` reliably lands on canon, and this is
+the worktree practice's own telos — when everyone works in their own worktree, nobody thrashes the
+primary and it stays on `main` by itself. *Recovery* (transitional, while adoption is partial): if you
+find the primary thrashed off `main` (see the memory `feedback_shared_worktree_branch_switch`), restore
+it to `main` or land the commit on the `main` ref via a throwaway-worktree cherry-pick **before**
+writing canon. Never commit canon blind onto whatever branch HEAD happens to be on.
 
 ## Manual fallback (no script)
 
