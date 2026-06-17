@@ -24,3 +24,50 @@ export async function launchInteractiveSession(prompt) {
     return { ok: false, status: 0, supported: true, error: err.message || 'could not reach the server' };
   }
 }
+
+// Construct a steward as a page-agent (POST /api/launch/agent). previewAgent
+// returns the tiered construction + the assembled prompt without launching, so
+// the panel can show how the agent is built; launchAgent opens the terminal on
+// it. A 404 (registered:false) means the page isn't a permanent steward — the
+// caller should fall back to the simpler launch.
+export async function previewAgent({ home, mandate }) {
+  try {
+    const res = await fetch('/api/launch/agent', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ home, mandate, preview: true }),
+    });
+    let data = {};
+    try { data = await res.json(); } catch { /* non-JSON */ }
+    if (res.ok) return { ok: true, ...data };
+    return {
+      ok: false,
+      status: res.status,
+      registered: data.registered !== false,
+      error: data.error || `preview failed (${res.status})`,
+    };
+  } catch (err) {
+    return { ok: false, status: 0, registered: true, error: err.message || 'could not reach the server' };
+  }
+}
+
+export async function launchAgent({ home, mandate, model, effort }) {
+  try {
+    const res = await fetch('/api/launch/agent', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ home, mandate, model, effort }),
+    });
+    let data = {};
+    try { data = await res.json(); } catch { /* non-JSON */ }
+    if (res.ok && data.launched) return { ok: true, ...data };
+    return {
+      ok: false,
+      status: res.status,
+      supported: data.supported !== false,
+      error: data.error || `launch failed (${res.status})`,
+    };
+  } catch (err) {
+    return { ok: false, status: 0, supported: true, error: err.message || 'could not reach the server' };
+  }
+}

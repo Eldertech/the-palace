@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useCallback } from 'react';
 import { Banner, Box, Button, Tag } from '../primitives.jsx';
 import { fetchStewards, advanceSteward, advanceAllStewards } from '../../adapters/stewards.js';
-import LaunchModal from '../queue/LaunchModal.jsx';
+import AgentLaunchModal from '../queue/AgentLaunchModal.jsx';
 
 // testid-safe slug for a steward name ("Semantic Delay" -> "semantic-delay").
 function slug(name) {
@@ -79,24 +79,15 @@ export default function StewardsDeck() {
   const [pending, setPending] = useState(null);     // steward name awaiting confirm
   const [feedback, setFeedback] = useState(null);   // last action outcome
   const [busy, setBusy] = useState(false);
-  const [launchContext, setLaunchContext] = useState(null); // steward whose launch modal is open
+  const [launchHome, setLaunchHome] = useState(null); // steward title whose construct-agent modal is open
 
   // Launch an interactive session to DRIVE this steward (watch + steer), as
-  // distinct from advance() which fires a headless cycle. Non-destructive: it
-  // only builds a ready-to-paste prompt — no POST, no fire — so it is always
-  // safe to offer. The steward's dir carries its manifest + state for the
-  // session to read. See buildLaunchPrompt (kind 'steward').
-  const openLaunch = useCallback((s) => {
-    setLaunchContext({
-      kind: 'steward',
-      id: s.agent_id,
-      entry: s.agent_id,
-      from: s.agent_id,
-      sourcePath: s.dir || null,
-      iteration: s.iteration,
-      stage: s.stage,
-    });
-  }, []);
+  // distinct from advance() which fires a headless cycle. Opens the construct-
+  // agent panel: the server wakes the steward as a page-agent via
+  // buildCyclePrompt (page injected as identity + state + board), shown by
+  // palace tier with the Core knobs. A steward row is always a registered
+  // steward, so AgentLaunchModal's construction always resolves.
+  const openLaunch = useCallback((s) => setLaunchHome(s.agent_id), []);
 
   const refresh = useCallback(async () => {
     const r = await fetchStewards();
@@ -269,10 +260,10 @@ export default function StewardsDeck() {
         </div>
       ) : null}
 
-      {/* Launch-interactive modal — a steward gets a ready prompt to drive it in
-          dialogue. No pickup semantics (kind !== 'handoff'), so no onPickedUp. */}
-      {launchContext ? (
-        <LaunchModal context={launchContext} onClose={() => setLaunchContext(null)} />
+      {/* Construct-agent modal — wake the steward as a page-agent (the canonical
+          cycle context, shown by tier) and launch a terminal you drive. */}
+      {launchHome ? (
+        <AgentLaunchModal home={launchHome} onClose={() => setLaunchHome(null)} />
       ) : null}
     </div>
   );

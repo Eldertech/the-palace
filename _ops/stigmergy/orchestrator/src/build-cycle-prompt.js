@@ -117,6 +117,12 @@ export function buildCyclePrompt(opts) {
     today = new Date().toISOString().slice(0, 10),
     skillRoot = join(palaceRoot, '.claude/skills/palace-orchestrator'),
     boardPath = join(palaceRoot, '_ops/swarm/persistent/blackboard.jsonl'),
+    // 'headless' (default) — the orchestrated cycle: emit json blocks for the
+    // orchestrator to parse/validate/append. 'interactive' — a launched terminal
+    // Loudon drives: no orchestrator, so the closing swaps to "narrate every
+    // write" and the steward posts to the board itself. The CONTEXT (identity,
+    // state, board, posture) is identical across modes — one source of truth.
+    mode = 'headless',
   } = opts;
 
   if (!agentDir) throw new Error('buildCyclePrompt: agentDir is required');
@@ -208,6 +214,36 @@ export function buildCyclePrompt(opts) {
   // through the cutover without reintroducing the duplicated arrays.
   const stateForPrompt = { ...state, pending_requests: stillPending, resolved_requests: nowResolved };
 
+  // The closing section is the one place the two modes diverge (the context
+  // above is identical). headless: emit json for the orchestrator. interactive:
+  // there is no orchestrator — narrate every write, post to the board yourself.
+  const headlessClosing = `# Output protocol
+
+Write your reasoning normally. Emit each BBS message as a \`json\` code-fence block. One message per block. The orchestrator parses, injects the health block, runs §2.2 STRICT validation, and appends to the persistent board.
+
+- Do NOT write the \`health\` block.
+- \`request_id\` is **top-level** on RESOURCE_REQUEST (Gap 9), not in payload.
+- **\`payload.options[]\` lives INSIDE \`payload\`, not at the top level** — see the shared.md rule and the canonical envelope example.
+- \`from\` is "${manifest.home}" — the page title.
+- \`session_id\` is "${manifest.session_id}".
+- For RESOURCE_REQUEST options[]: canonical \`[{id, label}, ...]\` shape (Infrastructure Spec §2.6).
+- ISO 8601 timestamps with timezone, e.g. \`${today}T16:30:00-04:00\`.
+
+Begin.`;
+
+  const interactiveClosing = `# You are being driven live — narrate every write
+
+Loudon launched you into this terminal to advance this cycle WITH him: he is watching and will steer. There is no orchestrator parsing your output, so the discipline differs from a headless cycle.
+
+- **Narrate every write before you make it.** Before you post a board message, edit a file, or commit, tell Loudon in plain words what you are about to write and why — then do it. He may redirect. Never write silently.
+- Post to the board as the page yourself: append one §2.2 JSON message per line to \`_ops/swarm/persistent/blackboard.jsonl\`. \`from\` is "${manifest.home}", \`session_id\` is "${manifest.session_id}", \`request_id\` top-level on a RESOURCE_REQUEST, \`payload.options[]\` inside \`payload\` (\`[{id, label}, …]\`), ISO-8601 timestamps with timezone (e.g. \`${today}T16:30:00-04:00\`). Say what you're posting first.
+- Your state + recent board are injected above; read other palace pages freely as the work needs.
+- Hold the steward posture above: catch Loudon up first, ship a made thing, ask only on a real fork.
+
+Begin by catching Loudon up on where ${manifest.home} stands, then propose your first move.`;
+
+  const closingSection = mode === 'interactive' ? interactiveClosing : headlessClosing;
+
   const userTurn = `# Catch-up framing
 
 ${isFirstActivation
@@ -244,19 +280,7 @@ ${pageChange.changed
 
 ${extraMandate || `Run cycle ${cycleN} per the steward template's posting discipline. Apply the "every cycle ends with a TRICKSTER ask" rule.`}
 
-# Output protocol
-
-Write your reasoning normally. Emit each BBS message as a \`json\` code-fence block. One message per block. The orchestrator parses, injects the health block, runs §2.2 STRICT validation, and appends to the persistent board.
-
-- Do NOT write the \`health\` block.
-- \`request_id\` is **top-level** on RESOURCE_REQUEST (Gap 9), not in payload.
-- **\`payload.options[]\` lives INSIDE \`payload\`, not at the top level** — see the shared.md rule and the canonical envelope example.
-- \`from\` is "${manifest.home}" — the page title.
-- \`session_id\` is "${manifest.session_id}".
-- For RESOURCE_REQUEST options[]: canonical \`[{id, label}, ...]\` shape (Infrastructure Spec §2.6).
-- ISO 8601 timestamps with timezone, e.g. \`${today}T16:30:00-04:00\`.
-
-Begin.
+${closingSection}
 `;
 
   return { systemPrompt, userTurn, full: systemPrompt + '\n\n---\n\n' + userTurn };
