@@ -27,10 +27,12 @@ function renderCard(item) {
 
 const baseItem = { request_id: 'rd-012', headline: 'q?', ground: 'g', options: [] };
 
-describe('TricksterCard @steward header chips', () => {
+describe('TricksterCard project-name header chips', () => {
   it('shows [OBS] + [BUN] when the steward inhabits an entry with a bundle', () => {
     const html = renderCard({ ...baseItem, from: 'Retrospective Delay' });
-    expect(html).toContain('@Retrospective Delay');
+    // The project name reads plainly now (a cyan STATE link, no '@' handle).
+    expect(html).toContain('Retrospective Delay');
+    expect(html).not.toContain('@Retrospective Delay');
     expect(html).toContain('data-testid="entry-ref-obs"');
     expect(html).toContain('data-testid="entry-ref-bun"');
     expect(html).toContain('file=Projects%2FRetrospective%20Delay');
@@ -44,7 +46,7 @@ describe('TricksterCard @steward header chips', () => {
 
   it('renders no chips for an unresolved coordinator handle', () => {
     const html = renderCard({ ...baseItem, from: 'KURAMOTO-1' });
-    expect(html).toContain('@KURAMOTO-1');
+    expect(html).toContain('KURAMOTO-1');
     expect(html).not.toContain('data-testid="entry-ref-chips"');
   });
 });

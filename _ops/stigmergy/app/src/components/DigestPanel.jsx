@@ -421,11 +421,18 @@ function DigestRow({
           <span style={{ color: DIM }}>[{from}]</span>{' '}
           <span style={{ color: FG }}>{headline}</span>
           {blocking ? <span style={{ color: WARN }}> · paused</span> : null}
-          <div style={{ color: DIM, fontSize: 11 }}>
-            <code>{requestId}</code>
-            {resource ? <> · {humanResource(resource)}</> : null}
-            {rowKind === 'escalation' && options.length ? <> · {options.join(' / ')}</> : null}
-          </div>
+          {/* Demoted facts — carrying the card's spine to the digest rows: the
+              raw request-id is wire noise, not primary (it stays as the
+              data-request-id attribute for row-finding). Show only the human
+              register: what it's about, and the options on offer. */}
+          {(resource || (rowKind === 'escalation' && options.length)) ? (
+            <div style={{ color: DIM, fontSize: 11 }}>
+              {[
+                resource ? humanResource(resource) : null,
+                rowKind === 'escalation' && options.length ? options.join(' / ') : null,
+              ].filter(Boolean).join(' · ')}
+            </div>
+          ) : null}
         </div>
         <VerdictControls
           verdict={verdict}

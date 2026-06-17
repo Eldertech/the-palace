@@ -263,6 +263,33 @@ export const DEMO_MESSAGES = [
                blocking: false },
   },
   {
+    // A rich, catchup-first decision in the v2.0 card shape: a real project
+    // name (resolves → cyan STATE link + [obs] chip), a blocking pause (→ the
+    // quiet "waiting on you"), an orientation that grounds the question's terms
+    // ("stage 2"), the question sitting on its options, and a marked lean
+    // (APPROVE carries "(recommended)" → the dim `rec` on its own button). This
+    // is the flagship surface the redesign rebuilt; demo mode should show it.
+    schema_version: '1.0', id: 'demo-045',
+    ts: '2026-05-02T11:05:00Z', session_id: 'demo-2026-05-02',
+    from: 'Kuramoto Coupling', to: 'TRICKSTER', type: 'RESOURCE_REQUEST', board: 'TRICKSTER',
+    request_id: 'kuramoto-steward-014',
+    health: { context_pct: 0.38, score: 'green', model: 'claude-opus-4-8',
+              stop_reason: 'tool_use', iteration: 9, tokens_this_call: 712 },
+    payload: {
+      resource: 'directional_decision',
+      headline: 'Approve stage 2 — add the dual-axis coupling sweep?',
+      ground: 'Stage 1 (a single-axis coupling sweep) is rendered and the phase lock reads cleanly. Stage 2 layers a pitch glide on top — busier, but it shows coupling holding under motion.',
+      rationale: 'Stage 1 already demonstrates phase lock cleanly on its own, so stage 2 is enrichment, not a fix. The dual-axis version is more musically alive but the lock is harder to hear; worth building only if the lesson wants the harder case. See [[Kuramoto Coupling]].',
+      query_intent: 'decide whether to extend the teaching arc to the dual-axis case',
+      blocking: true,
+      options: [
+        { id: 'APPROVE', label: 'APPROVE — build stage 2 (recommended)' },
+        { id: 'HOLD', label: 'HOLD — ship stage 1 alone for now' },
+        { id: 'REWORK', label: 'REWORK — simplify stage 1 first' },
+      ],
+    },
+  },
+  {
     schema_version: '1.0', id: 'demo-043',
     ts: '2026-05-02T10:28:00Z', session_id: 'demo-2026-05-02',
     from: 'TRICKSTER', to: 'Hilaritas Generator', type: 'RESOURCE_DENY', board: 'TRICKSTER',

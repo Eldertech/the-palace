@@ -2,9 +2,11 @@
 //
 // Two layers, matching the codebase's conventions:
 //   1. Render assertions via renderToStaticMarkup (node env, no DOM) — proves
-//      the catchup-first layout shows headline/ground/options and falls back
-//      to the no-catchup pill. (Click/keyboard interaction is an e2e concern;
-//      this suite is environment 'node' with no jsdom.)
+//      the v2.0 locked reading order: who → orientation → evidence → question →
+//      options → ▸more/▸details, the two-step execute row, the recommended-on-
+//      its-button marking, and the radical-minimalism chrome strip (no pill, no
+//      field labels). (Click/keyboard interaction is an e2e concern; this suite
+//      is environment 'node' with no jsdom.)
 //   2. Pure-logic assertions on buildCardGrant() — the file-path's message
 //      builder — validated against the real §2.2 validator, the same way
 //      response-builder.test.js validates buildResponse().
@@ -42,130 +44,114 @@ const ITEM = {
 const render = (props) =>
   renderToStaticMarkup(React.createElement(TricksterCard, { item: ITEM, ...props }));
 
-describe('TricksterCard — render', () => {
-  it('renders the headline when present', () => {
+describe('TricksterCard — locked reading order', () => {
+  it('renders the question (headline) when present', () => {
     const html = render();
     expect(html).toContain(ITEM.headline);
     expect(html).toContain('data-testid="card-headline"');
   });
 
-  it('renders the ground breadcrumb', () => {
+  it('renders the orientation (ground) line, dim and pill-free', () => {
     const html = render();
     expect(html).toContain(ITEM.ground);
-    expect(html).toContain('data-testid="card-ground"');
+    expect(html).toContain('data-testid="card-orientation"');
+    // The cut chrome: no PARKED/DOING tag, no "no catchup" pill, ever.
+    expect(html).not.toContain('data-testid="no-catchup-pill"');
   });
 
   it('renders each request-supplied option label', () => {
     const html = render();
     for (const opt of ITEM.options) expect(html).toContain(opt.label);
+    expect(html).toContain('data-testid="card-options"');
   });
 
-  it('always offers a freeform note field', () => {
+  it('shows the project name in the who-row (no @ handle, no request-id header)', () => {
+    const html = render();
+    expect(html).toContain('data-testid="card-from"');
+    expect(html).toContain('GSL-STEWARD');
+    // The bare '@handle' prefix is gone — the project reads as its own name.
+    expect(html).not.toContain('@GSL-STEWARD');
+  });
+
+  it('shows a quiet "waiting on you" only when the steward is blocking', () => {
+    expect(render()).toContain('data-testid="card-waiting"');
+    const nonBlocking = renderToStaticMarkup(
+      React.createElement(TricksterCard, { item: { ...ITEM, blocking: false } })
+    );
+    expect(nonBlocking).not.toContain('data-testid="card-waiting"');
+  });
+
+  it('always offers a freeform note field (the notes-only path)', () => {
     const html = render();
     expect(html).toContain('data-testid="card-notes"');
+    // The verbose label + hint were cut; only the minimal placeholder remains.
+    expect(html).not.toContain('a note back (optional)');
   });
 
-  it('shows the correlation id and steward in the header', () => {
+  it('folds the wire facts under ▸details, never open by default', () => {
     const html = render();
-    expect(html).toContain('gsl-steward-028');
-    expect(html).toContain('@GSL-STEWARD');
-  });
-
-  it('falls back to the no-catchup pill when headline and ground are both absent', () => {
-    const bare = { ...ITEM, headline: null, ground: null };
-    const html = renderToStaticMarkup(React.createElement(TricksterCard, { item: bare }));
-    expect(html).toContain('data-testid="no-catchup-pill"');
-    expect(html).toContain(t('trickster.card.nocatchup'));
-    // With no catchup, the longform fold opens by default.
-    expect(html).toMatch(/<details[^>]*\sopen/);
-  });
-
-  it('does not open the fold by default when catchup is present', () => {
-    const html = render();
+    expect(html).toContain('data-testid="card-details-fold"');
     expect(html).not.toMatch(/<details[^>]*\sopen/);
   });
 });
 
-// Selection is now CONTROLLED by the deck (Phase 2 keyboard story): the card
-// takes `selectedId` + `onSelectOption` props instead of owning the state, so
-// the keyboard's 1-N/Enter and the mouse clicks share one source of truth.
-// Click→onSelectOption wiring is event-driven (an e2e concern); here we assert
-// the render reflects the lifted prop. The card has no lean (ITEM defines no
-// recommended_option), so the only default-tone Buttons are the option grid and
-// the only disable-able control is the FILE button — which keeps these counts
-// unambiguous.
-describe('TricksterCard — controlled selection', () => {
-  // Button default tone renders a phosphor-dim border; primary (selected)
-  // renders a phosphor border. Count the dim option borders to see how many
-  // options sit in the default (unselected) register.
-  const countDefaultOptionBorders = (html) =>
-    (html.match(/2px solid var\(--phosphor-dim\)/g) || []).length;
-
-  it('moves exactly one option into the selected register for the lifted selectedId', () => {
-    const none = render({ selectedId: null });
-    const picked = render({ selectedId: 'TWEAK' });
-    expect(countDefaultOptionBorders(none) - countDefaultOptionBorders(picked)).toBe(1);
+// Orientation falls back to the steward's raw reasoning when no catchup
+// (headline/ground) was written — and shows NO pill (radical minimalism).
+describe('TricksterCard — no-catchup fallback', () => {
+  it('uses the rationale as orientation when ground is absent, with no pill', () => {
+    const bare = { ...ITEM, headline: null, ground: null };
+    const html = renderToStaticMarkup(React.createElement(TricksterCard, { item: bare }));
+    expect(html).not.toContain('data-testid="no-catchup-pill"');
+    // The raw reasoning stands in as the orientation line.
+    expect(html).toContain('data-testid="card-orientation"');
+    expect(html).toContain(ITEM.rationale);
+    // No headline → no question slot; no separate ▸more (the rationale is the
+    // orientation now) — just the ▸details fold, still collapsed.
+    expect(html).not.toContain('data-testid="card-headline"');
+    expect(html).not.toContain('data-testid="card-more-fold"');
+    expect(html).toContain('data-testid="card-details-fold"');
+    expect(html).not.toMatch(/<details[^>]*\sopen/);
   });
 
-  it('keeps every option in the default register when nothing is picked', () => {
-    const none = render({ selectedId: null });
-    const all = render({ selectedId: 'NOPE-not-an-option' });
-    // An unknown selectedId selects nothing, so the dim-border count is stable.
-    expect(countDefaultOptionBorders(none)).toBe(countDefaultOptionBorders(all));
-  });
-
-  it('disables the FILE button until an option is picked (or a note typed)', () => {
-    // Use a request_id that matches no inline-asset registry entry, so the only
-    // disable-able control is the FILE button (asset players carry their own
-    // disabled state and would otherwise confound the proxy).
-    const plain = (props) =>
-      renderToStaticMarkup(React.createElement(TricksterCard, {
-        item: { ...ITEM, request_id: 'plain-req-keyboard-001' },
-        ...props,
-      }));
-    // Nothing picked + no note → FILE button is the lone disabled control.
-    expect(plain({ selectedId: null })).toContain('disabled=""');
-    // A lifted pick makes the card fileable → no disabled control remains.
-    expect(plain({ selectedId: 'SHIP' })).not.toContain('disabled=""');
+  it('puts the rationale under ▸more (deep why) when ground IS the orientation', () => {
+    const html = render(); // ITEM has both ground and rationale
+    expect(html).toContain('data-testid="card-more-fold"');
+    expect(html).toContain('GSL'); // rationale wikilink survives Linkify
   });
 });
 
-// FILE & RUN — the fast path that files the grant AND advances the asking
-// steward by a cycle. Click→advanceSteward wiring is event-driven (an e2e
-// concern); here we assert the button renders alongside FILE and shares FILE's
-// fileable gate. (Run-outcome formatting lives in the deck — see
-// trickster-run.test.js.)
-describe('TricksterCard — file & run', () => {
-  it('offers a FILE & RUN button beside the FILE button', () => {
+// The two-step interaction (anti-misclick): the execute row is hidden until the
+// human selects an option (or types a note); then it offers file / file & run /
+// cancel. Click→handler wiring is event-driven (the e2e spec's job); here we
+// assert the render reflects the lifted selectedId prop.
+describe('TricksterCard — two-step execute row', () => {
+  it('hides the execute row until something is selected', () => {
+    expect(render({ selectedId: null })).not.toContain('data-testid="card-execute"');
+  });
+
+  it('reveals file / file & run / cancel once an option is selected', () => {
     const html = render({ selectedId: 'SHIP' });
+    expect(html).toContain('data-testid="card-execute"');
     expect(html).toContain(t('trickster.card.file'));
     // renderToStaticMarkup HTML-escapes the ampersand ('&' → '&amp;'); the
     // browser DOM still shows "file & run ▶". Match the serialized form.
     expect(html).toContain(t('trickster.card.fileandrun').replace(/&/g, '&amp;'));
+    expect(html).toContain('data-testid="card-cancel"');
+    // The chosen option's label sits in the "— how?" confirmation.
+    expect(html).toContain('SHIP — ship the 128-region instrument');
+    expect(html).toContain(t('trickster.card.how').replace(/&/g, '&amp;'));
   });
 
-  it('gates FILE & RUN on the same fileable condition as FILE', () => {
-    // A request_id that matches no inline-asset registry entry, so FILE and
-    // FILE & RUN are the only disable-able controls.
-    const plain = (props) =>
-      renderToStaticMarkup(React.createElement(TricksterCard, {
-        item: { ...ITEM, request_id: 'plain-req-run-001' },
-        ...props,
-      }));
-    // Nothing picked + no note → both buttons disabled.
-    expect((plain({ selectedId: null }).match(/disabled=""/g) || []).length).toBe(2);
-    // A lifted pick makes the card fileable → no disabled control remains.
-    expect(plain({ selectedId: 'SHIP' })).not.toContain('disabled=""');
+  it('carries no duplicated always-visible file buttons (only the armed row)', () => {
+    const idle = render({ selectedId: null });
+    // The only FILE control lives inside the (hidden-until-armed) execute row.
+    expect(idle).not.toContain(t('trickster.card.file'));
   });
 });
 
-// FILE LEAN & RUN — the lean-side twin of FILE & RUN. When the steward left a
-// recommended_option, the LeanPanel offers FILE LEAN (file the lean, carrying
-// any freeform note) and FILE LEAN & RUN (file it AND advance the asking steward
-// by a cycle). Click→advanceSteward wiring is event-driven (an e2e concern, same
-// as FILE & RUN — see fileGrant's run path); here we assert the panel and both
-// buttons render when a lean exists and stay absent when it does not.
-describe('TricksterCard — file lean & run', () => {
+// The steward's recommendation is marked ON its own option button (brighter +
+// a dim `rec`), never a separate yellow lean panel (which was deleted).
+describe('TricksterCard — recommendation marked on the button', () => {
   const LEANED = {
     ...ITEM,
     recommended_option: { id: 'SHIP', label: 'SHIP — ship the 128-region instrument' },
@@ -173,18 +159,45 @@ describe('TricksterCard — file lean & run', () => {
   const renderLeaned = (props) =>
     renderToStaticMarkup(React.createElement(TricksterCard, { item: LEANED, ...props }));
 
-  it('renders the lean panel with both FILE LEAN and FILE LEAN & RUN when a lean exists', () => {
+  it('marks exactly the recommended option and shows a dim `rec`', () => {
     const html = renderLeaned();
-    expect(html).toContain('data-testid="lean-panel"');
-    expect(html).toContain(t('trickster.lean.file'));
-    // renderToStaticMarkup HTML-escapes the ampersand ('&' → '&amp;'); the
-    // browser DOM still shows "file lean & run ▶". Match the serialized form.
-    expect(html).toContain(t('trickster.lean.fileandrun').replace(/&/g, '&amp;'));
+    expect(html).toContain('data-recommended="true"');
+    expect(html).toContain(t('trickster.card.rec'));
+    // Exactly one option carries the marker.
+    expect((html.match(/data-recommended="true"/g) || []).length).toBe(1);
   });
 
-  it('renders no lean panel when the steward left no recommended_option', () => {
-    // The base ITEM defines no recommended_option, so the panel must not render.
+  it('renders no separate lean panel (it was retired)', () => {
+    expect(renderLeaned()).not.toContain('data-testid="lean-panel"');
     expect(render()).not.toContain('data-testid="lean-panel"');
+  });
+});
+
+// Selection is CONTROLLED by the deck: the card takes `selectedId` and reflects
+// it by filling exactly one option button. ITEM has no recommended_option, so
+// every option starts in the default (dim-border) register; selecting one moves
+// it into the filled (phosphor-border) register.
+describe('TricksterCard — controlled selection', () => {
+  const countDefaultOptionBorders = (html) =>
+    (html.match(/2px solid var\(--phosphor-dim\)/g) || []).length;
+
+  it('moves exactly one option out of the default register for the lifted selectedId', () => {
+    const none = render({ selectedId: null });
+    const picked = render({ selectedId: 'TWEAK' });
+    expect(countDefaultOptionBorders(none) - countDefaultOptionBorders(picked)).toBe(1);
+  });
+
+  it('keeps every option in the default register when nothing valid is picked', () => {
+    const none = render({ selectedId: null });
+    const all = render({ selectedId: 'NOPE-not-an-option' });
+    // An unknown selectedId selects no option, so the dim-border count is stable.
+    expect(countDefaultOptionBorders(none)).toBe(countDefaultOptionBorders(all));
+  });
+
+  it('marks the selected option with data-selected', () => {
+    const html = render({ selectedId: 'TWEAK' });
+    expect(html).toContain('data-selected="true"');
+    expect((html.match(/data-selected="true"/g) || []).length).toBe(1);
   });
 });
 
@@ -199,8 +212,6 @@ describe('TricksterCard — inline assets (payload-first)', () => {
     renderToStaticMarkup(React.createElement(TricksterCard, { item: { ...ITEM, ...overrides } }));
 
   it('renders payload artifacts via ArtifactSlot with NO registry entry needed', () => {
-    // 'crystal-synth-steward-012' matches no trickster-assets registry key, so
-    // the only way the player appears is the wire-declared artifacts.
     const html = renderItem({
       request_id: 'crystal-synth-steward-012',
       artifacts: [
@@ -209,28 +220,24 @@ describe('TricksterCard — inline assets (payload-first)', () => {
     });
     expect(html).toContain('data-testid="card-assets"');
     expect(html).toContain('data-testid="artifact-slot"');
-    // The full caption survives (ArtifactSlot shows it under the player).
     expect(html).toContain('01 dry click — the control.');
   });
 
   it('falls back to the registry audition when the wire carries no artifacts', () => {
-    // 'portamento-steward-' is a registry prefix carrying an audition strip.
     const html = renderItem({ request_id: 'portamento-steward-009', artifacts: [] });
     expect(html).toContain('data-testid="audition-strip"');
   });
 
   it('payload artifacts win over a registry audition for the same request', () => {
     const html = renderItem({
-      request_id: 'portamento-steward-009', // registry audition exists…
-      artifacts: [{ path: 'Projects/Foo/bar.wav', caption: 'wire audio' }], // …but the wire wins
+      request_id: 'portamento-steward-009',
+      artifacts: [{ path: 'Projects/Foo/bar.wav', caption: 'wire audio' }],
     });
     expect(html).toContain('data-testid="artifact-slot"');
     expect(html).not.toContain('data-testid="audition-strip"');
   });
 
   it('still renders the registry schematic alongside payload artifacts (authored art)', () => {
-    // 'gsl-steward-' carries both a schematic and an audition. With payload
-    // artifacts present: schematic stays, audition is suppressed, payload renders.
     const html = renderItem({
       request_id: 'gsl-steward-028',
       artifacts: [{ path: 'Projects/GSL/shepard_C.wav', caption: 'C drone' }],

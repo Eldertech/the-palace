@@ -1,30 +1,14 @@
-// Render tests for the Phase-2 lean affordances: LeanPanel (per-card FILE LEAN)
-// and QuickBar (master FILE ALL). renderToStaticMarkup, node env — interaction
+// Render tests for the master QuickBar (deck-level FILE ALL). The per-card
+// LeanPanel was retired in the v2.0 redesign — the steward's recommendation is
+// now marked on its own option button (see trickster-card.test.js) — so only
+// the QuickBar remains here. renderToStaticMarkup, node env; interaction
 // (click/keyboard) is an e2e concern.
 
 import { describe, it, expect } from 'vitest';
 import React from 'react';
 import { renderToStaticMarkup } from 'react-dom/server';
-import LeanPanel from '../../src/components/trickster/LeanPanel.jsx';
 import QuickBar from '../../src/components/trickster/QuickBar.jsx';
 import { t } from '../../src/lib/lexicon.js';
-
-describe('LeanPanel', () => {
-  it('renders the lean label and a FILE LEAN button', () => {
-    const html = renderToStaticMarkup(
-      React.createElement(LeanPanel, { optionLabel: 'TWEAK — adjust the Gaussian' })
-    );
-    expect(html).toContain('data-testid="lean-panel"');
-    expect(html).toContain(t('trickster.lean.prefix'));
-    expect(html).toContain('TWEAK — adjust the Gaussian');
-    expect(html.toLowerCase()).toContain('file lean');
-  });
-
-  it('renders nothing when there is no lean', () => {
-    const html = renderToStaticMarkup(React.createElement(LeanPanel, { optionLabel: null }));
-    expect(html).toBe('');
-  });
-});
 
 describe('QuickBar', () => {
   const LEANS = [
