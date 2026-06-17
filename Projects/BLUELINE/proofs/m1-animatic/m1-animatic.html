@@ -67,6 +67,14 @@
         <div class="row"><span>drama</span><span style="color:var(--amber)">speed-lines</span></div>
       </div>
       <div class="card">
+        <div class="k">reading the board</div>
+        <div class="row"><span>head + gaze ray</span><span style="color:var(--amber)">where they LOOK</span></div>
+        <div class="row"><span>foot arrow ⟂ ground</span><span style="color:var(--ink)">where the BODY faces</span></div>
+        <div class="row"><span>hand/foot R</span><span style="color:var(--good)">● char. right</span></div>
+        <div class="row"><span>hand/foot L</span><span style="color:var(--bad)">● char. left</span></div>
+        <div class="row"><span>◯ open · ● grip</span><span class="dim">hand state</span></div>
+      </div>
+      <div class="card">
         <div class="k">the locked clock</div>
         <div class="row"><span>frames / beat</span><span id="fpb">—</span></div>
         <div class="row"><span>determinism</span><span id="det">—</span></div>
@@ -155,11 +163,19 @@ function eyelineRay(ctx,hx,hy,tx,ty){let dx=tx-hx,dy=ty-hy,d=Math.hypot(dx,dy)||
   ctx.save();ctx.strokeStyle=CSS('--amber');ctx.lineWidth=1.4;ctx.globalAlpha=.9;ctx.setLineDash([2,4]);
   ctx.beginPath();ctx.moveTo(hx+dx/d*12,hy+dy/d*12);ctx.lineTo(tx,ty);ctx.stroke();ctx.setLineDash([]);          // gaze ray
   ctx.beginPath();ctx.arc(tx,ty,5,0,7);ctx.moveTo(tx-8,ty);ctx.lineTo(tx+8,ty);ctx.moveTo(tx,ty-8);ctx.lineTo(tx,ty+8);ctx.stroke();ctx.restore();} // target reticle
-function facingWedge(ctx,cx,cy,h,facing,col){const f=Math.max(-1,Math.min(1,facing||0));
-  let dx=f,dy=0.55,d=Math.hypot(dx,dy);dx/=d;dy/=d;const L=h*0.10;                                              // torso aims (facing, toward camera)
-  ctx.save();ctx.fillStyle=col;ctx.globalAlpha=.85;ctx.beginPath();ctx.moveTo(cx+dx*L,cy+dy*L);
-  ctx.lineTo(cx-(-dy)*L*0.45-dx*L*0.2,cy-(dx)*L*0.45-dy*L*0.2);ctx.lineTo(cx+(-dy)*L*0.45-dx*L*0.2,cy+(dx)*L*0.45-dy*L*0.2);
-  ctx.closePath();ctx.fill();ctx.restore();}
+// body facing as a STANCE COMPASS on the ground — a top-down floor disc + forward arrow at the feet.
+// Yaw is unambiguous on the ground plane: arrow toward bottom = faces camera; toward right = faces screen-R.
+// (Replaces the old chest wedge, which couldn't show "faces the camera" = out-of-screen in 2D.)
+function stanceCompass(ctx,fx,fy,h,facing,col){const f=Math.max(-1,Math.min(1,facing||0));
+  const rx=h*0.16, ry=h*0.05, cy=fy+1;
+  const dx=f, dy=Math.sqrt(Math.max(0,1-f*f));                    // front hemisphere → toward camera (down)
+  const tx=fx+dx*rx, ty=cy+dy*ry, ang=Math.atan2(ty-cy,tx-fx), ah=h*0.055;
+  ctx.save();ctx.strokeStyle=col;ctx.lineCap='round';
+  ctx.globalAlpha=.32;ctx.lineWidth=1;ctx.beginPath();ctx.ellipse(fx,cy,rx,ry,0,0,7);ctx.stroke();   // ground disc (top-down)
+  ctx.globalAlpha=.95;ctx.lineWidth=Math.max(2,h*.016);ctx.beginPath();ctx.moveTo(fx,cy);ctx.lineTo(tx,ty);ctx.stroke();        // forward arrow
+  ctx.beginPath();ctx.moveTo(tx,ty);ctx.lineTo(tx-Math.cos(ang-0.5)*ah,ty-Math.sin(ang-0.5)*ah);
+  ctx.moveTo(tx,ty);ctx.lineTo(tx-Math.cos(ang+0.5)*ah,ty-Math.sin(ang+0.5)*ah);ctx.stroke();        // arrowhead
+  ctx.restore();}
 
 // L/R laterality tags — the #1 render-error fixer (maps to OpenPose's distinct L/R keypoints, so the
 // render never has to GUESS which hand/foot is which). ANATOMICAL = the character's own L/R, the mirror
@@ -203,7 +219,7 @@ function inkFigure(ctx,fx,fy,h,pose,opts){
     [spine,armL,armR,legL,legR].forEach(c=>strokeLine(ctx,c,bw,blue));
     ctx.fillStyle=blue;[...spine,...armL,...armR,...legL,...legR,head].forEach(p=>{ctx.globalAlpha=.85;ctx.beginPath();ctx.arc(p[0],p[1],h*.015,0,7);ctx.fill();});ctx.globalAlpha=1;
     orientedHead(ctx,head[0],head[1],hr,tgt[0],tgt[1],blue,false);   // the blocking sphere, facing the gaze
-    facingWedge(ctx,chest[0],chest[1],h,opts.facing,blue);           // torso direction (may differ from gaze)
+    stanceCompass(ctx,fx,fy,h,opts.facing,blue);                     // body facing — ground arrow at the feet
     if(P.bow){const hand=[fx+P.bow.hand[0]*h,fy+P.bow.hand[1]*h],dr=[fx+P.bow.draw[0]*h,fy+P.bow.draw[1]*h];
       ctx.strokeStyle=blue;ctx.lineWidth=bw;ctx.beginPath();ctx.arc(hand[0],hand[1],h*.17,-1.25,1.25);ctx.stroke();const a=h*.17;
       ctx.beginPath();ctx.moveTo(hand[0]+Math.cos(-1.25)*a,hand[1]+Math.sin(-1.25)*a);ctx.lineTo(dr[0],dr[1]);ctx.lineTo(hand[0]+Math.cos(1.25)*a,hand[1]+Math.sin(1.25)*a);ctx.stroke();}
@@ -218,7 +234,7 @@ function inkFigure(ctx,fx,fy,h,pose,opts){
   brush(ctx,spine,W*1.1,W*.8,ink);
   // head — oriented blocking sphere (facing + eyeline cross), not a featureless blob
   orientedHead(ctx,head[0],head[1],hr,tgt[0],tgt[1],ink,true);
-  facingWedge(ctx,chest[0],chest[1],h,opts.facing,CSS('--amber'));
+  stanceCompass(ctx,fx,fy,h,opts.facing,CSS('--ink'));   // body facing — ground arrow at the feet (structural, not amber)
   // (3) screentone shading on the shadow (right) side of the body
   const bx=Math.min(...[hipL,hipR,shL,shR].map(p=>p[0]))-W, by=head[1]-hr;
   benday(ctx,fx,by,(Math.max(hipR[0],shR[0])+W)-fx,fy-by,5,1.05,'#000',.5);

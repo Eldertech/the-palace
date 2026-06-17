@@ -41,8 +41,11 @@ renders three new primitives:
   yaw + focus read instantly. (Loudon's "even a sphere with a cross indicates direction.")
 - **Eyeline ray + target reticle** — an amber gaze line to *what* the subject looks at; off-frame or on a
   subject (verified: panel 02 gaze snaps off-frame-left; panel 03's ray locks across-frame onto the threat).
-- **Body-facing wedge** — chest direction, *separate* from the head, so the body can hold forward while the
-  gaze darts away (the "senses something" beat, mechanically).
+- **Stance compass** — body facing as a *ground arrow on a top-down floor disc at the feet*, separate from
+  the head, so the body can hold forward while the gaze darts away (the "senses something" beat). *(First
+  tried as a chest wedge; moved to the ground per Loudon's read — "faces the camera" is out-of-screen in 2D
+  and can't be shown on the chest, but yaw is unambiguous on the floor plane. Every mark is now named in a
+  "reading the board" legend card.)*
 
 These are now fields in [[BLUELINE — Board Record Schema]] (`FACING` / `EYELINE`) — the channel propagates to
 the Bench (Track IV) and any future register, not just M1's pixels. **Aesthetic polish stays deferred**;
