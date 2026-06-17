@@ -46,19 +46,25 @@ export function launchInteractive(prompt, opts = {}) {
 
   const palaceRoot = opts.palaceRoot || process.cwd();
   const spawnImpl = opts.spawnImpl || realSpawn;
+  // Pin the model. A launched session drives a steward / catches a baton / works
+  // a card — real read-edit-commit palace work — so it opens on Opus by default,
+  // independent of the operator's global /model. `opus` is an alias for the
+  // latest Opus (stays current); overridable via opts.model for a future picker.
+  const model = opts.model || 'opus';
 
   let dir, promptPath, scriptPath;
   try {
     dir = opts.tmpDir || mkdtempSync(join(tmpdir(), 'stigmergy-launch-'));
     promptPath = join(dir, 'prompt.txt');
     scriptPath = join(dir, 'launch.sh');
-    // The launcher: into the repo, run claude seeded from the prompt file, then
-    // clean the temp dir once the session ends (unlink-while-open is safe on
-    // unix, so removing this script mid-run does not abort it).
+    // The launcher: into the repo, run claude (on the pinned model) seeded from
+    // the prompt file, then clean the temp dir once the session ends
+    // (unlink-while-open is safe on unix, so removing this script mid-run does
+    // not abort it).
     const script = [
       '#!/bin/bash',
       `cd ${shq(palaceRoot)} || exit 1`,
-      `claude "$(cat ${shq(promptPath)})"`,
+      `claude --model ${shq(model)} "$(cat ${shq(promptPath)})"`,
       `rm -rf ${shq(dir)}`,
       '',
     ].join('\n');
