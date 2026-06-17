@@ -65,13 +65,38 @@ if (flag("--remove")) {
   if (!fs.existsSync(dir)) { console.error(`error: ${dir} does not exist`); process.exit(1); }
   if (path.resolve(dir) === path.resolve(owner)) { console.error("refusing to remove the owner worktree"); process.exit(1); }
   console.log(`\n  Removing worktree: ${dir}`);
-  // Unlink borrowed symlinks FIRST. unlink on a symlink removes the link, never the
-  // target — done explicitly so `git worktree remove` sees a clean tree and there is
-  // zero chance of deleting through into the owner's real _tools/ (16 GB).
-  for (const l of MANIFEST.links) {
-    const lp = path.join(dir, l.path);
-    try { if (fs.lstatSync(lp).isSymbolicLink()) { fs.unlinkSync(lp); console.log(`  ✓ unlinked ${l.path}`); } } catch { /* absent */ }
-  }
+  // Unlink every symlink that points back INTO the owner — the explicit borrows
+  // AND the auto-mirrored dependency dirs — so `git worktree remove` sees a clean
+  // tree. General by construction: it sweeps for what was ACTUALLY linked rather
+  // than trusting the manifest to still match, so it can never strand a link the
+  // way the old MANIFEST.links-only loop did. lstat-only (never follows a link),
+  // skips .git, recurses only into real dirs, and unlinks ONLY owner-pointing
+  // links — a real file or an unrelated symlink is never touched. unlink on a
+  // symlink removes the link, never the target: zero chance of deleting into the
+  // owner's real _tools/ (16 GB).
+  const ownerReal = fs.realpathSync(owner);
+  const intoOwner = (p) => {
+    const hit = (x) => x && (x === ownerReal || x.startsWith(ownerReal + path.sep));
+    let real = null, tgt = null;
+    try { real = fs.realpathSync(p); } catch { /* dangling */ }
+    try { tgt = path.resolve(path.dirname(p), fs.readlinkSync(p)); } catch { /* not a link */ }
+    return hit(real) || hit(tgt);
+  };
+  let unlinked = 0;
+  const sweep = (d) => {
+    let entries; try { entries = fs.readdirSync(d, { withFileTypes: true }); } catch { return; }
+    for (const e of entries) {
+      const p = path.join(d, e.name);
+      let st; try { st = fs.lstatSync(p); } catch { continue; }
+      if (st.isSymbolicLink()) {
+        if (intoOwner(p)) { try { fs.unlinkSync(p); unlinked++; console.log(`  ✓ unlinked ${path.relative(dir, p)}`); } catch { /* ignore */ } }
+      } else if (st.isDirectory() && e.name !== ".git") {
+        sweep(p);
+      }
+    }
+  };
+  sweep(dir);
+  console.log(`  ✓ ${unlinked} owner-pointing symlink(s) unlinked`);
   try { execFileSync("git", ["worktree", "remove", dir], { stdio: "inherit" }); console.log(`  ✓ worktree removed`); }
   catch { console.error(`  ! git worktree remove refused (other untracked files?). Inspect, then:  git worktree remove --force "${dir}"`); process.exit(1); }
   if (flag("--delete-branch")) { try { execFileSync("git", ["branch", "-D", name]); console.log(`  ✓ branch ${name} deleted`); } catch (e) { console.warn(`  ! branch -D ${name}: ${e.stderr || e.message}`); } }
@@ -84,6 +109,30 @@ if (flag("--remove")) {
 const wanted = MANIFEST.profiles[profile];
 const links = MANIFEST.links.filter(l => wanted.includes(l.path));
 
+// Auto-mirror: dependency dirs discovered by CLASS (basename), not enumerated.
+// `git ls-files --others --ignored --exclude-standard --directory` lists every
+// fully-ignored dir collapsed to one entry; keep the ones whose basename is a
+// declared dep class (e.g. node_modules) and not already an explicit link. This
+// is what makes a new npm-workspace package "just work" with no manifest edit.
+// See MANIFEST.auto_mirror. Read-only (runs against the owner), so it is safe in
+// --dry-run too.
+function discoverAutoMirror() {
+  const am = MANIFEST.auto_mirror || {};
+  const basenames = Array.isArray(am.by_basename) ? am.by_basename : [];
+  const profiles = Array.isArray(am.profiles) ? am.profiles : [];
+  if (!basenames.length || !profiles.includes(profile)) return [];
+  const explicit = new Set(links.map(l => l.path));
+  try {
+    return git("-C", owner, "ls-files", "--others", "--ignored", "--exclude-standard", "--directory")
+      .split("\n").map(s => s.trim().replace(/\/+$/, "")).filter(Boolean)
+      .filter(rel => basenames.includes(path.basename(rel)) && !explicit.has(rel));
+  } catch (e) {
+    console.warn(`  ! auto-mirror discovery failed: ${e.stderr || e.message}`);
+    return [];
+  }
+}
+const autoMirror = discoverAutoMirror();
+
 console.log(`\n  Palace worktree plan`);
 console.log(`  ─────────────────────────────────────────────`);
 console.log(`  owner (canonical):  ${owner}`);
@@ -92,6 +141,11 @@ console.log(`  branch:             ${name}   (base: ${base} if new)`);
 console.log(`  profile:            ${profile}  →  ${links.length} symlink(s)`);
 for (const l of links) console.log(`      ↳ ${l.path}${l.secret ? "  [secret]" : ""}  (${l.size})`);
 if (!links.length) console.log(`      (none — pure tracked-files worktree)`);
+if (autoMirror.length) {
+  const classes = (MANIFEST.auto_mirror?.by_basename || []).join(", ");
+  console.log(`  auto-mirror:        ${autoMirror.length} dependency dir(s) by class [${classes}]`);
+  for (const rel of autoMirror) console.log(`      ↳ ${rel}`);
+}
 console.log("");
 
 if (dryRun) { console.log("  --dry-run: nothing changed.\n"); printMemory(); process.exit(0); }
@@ -123,6 +177,23 @@ for (const l of links) {
 }
 
 console.log(`\n  symlinks: ${made} made, ${skipped} skipped, ${broken} broken`);
+
+// ---- auto-mirror symlinks (the discovered dependency dirs) ----
+// Same as the explicit links, but the path list came from discovery (by class)
+// rather than the manifest. New workspace node_modules are covered with no edit.
+let autoMade = 0, autoSkipped = 0;
+for (const rel of autoMirror) {
+  const target = path.join(owner, rel);
+  const linkPath = path.join(dir, rel);
+  if (!fs.existsSync(target)) { console.warn(`  ! skip [auto] ${rel} — target missing in owner`); continue; }
+  if (fs.existsSync(linkPath)) { autoSkipped++; continue; } // a real install or explicit link already there
+  fs.mkdirSync(path.dirname(linkPath), { recursive: true });
+  fs.symlinkSync(target, linkPath, "dir");
+  const ok = fs.lstatSync(linkPath).isSymbolicLink();
+  console.log(`  ${ok ? "✓" : "✗"} [auto] ${rel}  →  ${target}`);
+  if (ok) autoMade++;
+}
+if (autoMirror.length) console.log(`  auto-mirror: ${autoMade} made, ${autoSkipped} skipped`);
 
 // ---- memory (outside the repo) ----
 function printMemory() {
