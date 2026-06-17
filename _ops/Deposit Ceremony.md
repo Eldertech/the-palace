@@ -69,6 +69,18 @@ Do not attempt to read the full palace or extensively update existing entries du
 
 ---
 
+## Where the Deposit Lands — Always the Owner (Main)
+
+A deposit adds to canon, and **canon is `main`** — that is what depositing *means* in relation to git. The worktree practice (`_ops/worktree/SKILL.md`) does not change this; it makes it explicit. Regardless of which worktree the source conversation runs in, the deposit writes **to the owner — the canonical main worktree — and commits there**:
+
+- Resolve the owner: `git worktree list --porcelain`; the first `worktree ` line is the canonical checkout (the same way `new-worktree.mjs` finds it). If the session already *is* the owner on `main`, `<owner>` is just the current directory and this reduces to an ordinary write + commit.
+- Write all new entries, bundle files, the [[Deposit Archive]] row, and any weave_flags into the owner's tree.
+- Commit on the owner's HEAD: `git -C "<owner>" add <paths> && git -C "<owner>" commit -m "Deposit — …"`. The owner's HEAD stays on `main`, so the commit lands on canon without touching — or being thrashed by — any feature worktree's branch.
+
+**Precondition:** the owner worktree stays pinned to `main`. If another agent has switched it off `main`, do not deposit blind — surface it; a deposit landing on a feature branch is the exact stranding this rule prevents.
+
+---
+
 ## Invocation Context
 
 ### External invocation (coordinator hands off a link)
@@ -162,7 +174,7 @@ An entry that arrives with its body-text links formalized enters the palace full
 
 **Step 6: Plant**
 
-On approval, write new entries as `.md` files to the palace root. Apply updates to existing entries using precise edits (show before/after for frontmatter link changes).
+On approval, write new entries as `.md` files to the palace root — of the **owner**, per § Where the Deposit Lands. Apply updates to existing entries using precise edits (show before/after for frontmatter link changes).
 
 ### Filing structure
 - Palace entries (`.md`) → palace root
@@ -193,9 +205,9 @@ Append a one-line record to [[Deposit Archive]]:
 
 Do not read the archive to do this — append only.
 
-- For each weave flag named in the deposit, append a `weave_flag` BROADCAST to the persistent board (`_ops/swarm/persistent/blackboard.jsonl`). The message follows `payload.kind: 'weave_flag'` per [[STIGMERGY — Weave Flag Item Type Build Plan]] § Data shapes — `flag_type`, `source_deposit_id`, `source_entries`, optional `target_entry`, `proposed_action`, `rationale`. Show Loudon the message bodies before writing; commit only on his approval. The archive row's `Weave flags:` prose stays — as audit, not queue.
+- For each weave flag named in the deposit, append a `weave_flag` BROADCAST to the persistent board — the **owner's** `_ops/swarm/persistent/blackboard.jsonl`, never a worktree branch copy (§ Where the Deposit Lands). The message follows `payload.kind: 'weave_flag'` per [[STIGMERGY — Weave Flag Item Type Build Plan]] § Data shapes — `flag_type`, `source_deposit_id`, `source_entries`, optional `target_entry`, `proposed_action`, `rationale`. Show Loudon the message bodies before writing; commit only on his approval. The archive row's `Weave flags:` prose stays — as audit, not queue.
 
-Git commit: `Deposit — [ID or theme] — [N new entries, N updated]`
+Git commit — on the owner's `main` (`git -C "<owner>"` when the session runs in another worktree; § Where the Deposit Lands): `Deposit — [ID or theme] — [N new entries, N updated]`
 
 ---
 

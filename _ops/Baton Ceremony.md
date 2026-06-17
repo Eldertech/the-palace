@@ -102,6 +102,8 @@ Shapes seen so far:
 - **Swarm phase baton** — handing the apply-phase of a completed Swarm Weave to a fresh Claude. Lives in `_ops/swarm/sessions/`.
 - **Permanent-agent steward** — a Steward (a page operating as an agent) carried across sessions. *Updated in place, never deleted* — the standing exception to disposability — and carries per-surface conventions for every surface it addresses.
 
+**The worktree dimension.** When work happens in a git worktree (`_ops/worktree/SKILL.md`), the baton file follows the work: a baton continuing *feature work* lives in that worktree's bundle, on its branch; a baton continuing *canon work* lives on the owner (main), like the deposit. A baton sitting on a feature branch is invisible from every other worktree — so a **cross-worktree baton must be announced on the owner's board** (§ Announcing the Baton on the Board), the only globally-visible rendezvous, and must name its **worktree coordinate** (branch · dir · profile, in the Receiving-environment section) so the catcher can get there.
+
 The shape flexes the location and the lifecycle. It does not flex the discipline.
 
 ---
@@ -154,7 +156,7 @@ What's literally in front of us right now. The half-written sentence, the unfini
 What the next Claude should do first. One short paragraph.
 
 ## Receiving environment
-*Cross-surface batons only; omit for same-surface.* Name the receiving surface and the capability delta that matters for *this* move — why it's being handed here, and the surface-specific gotcha (git locks, GPU, local-only tool, link scheme). Point to [[Surfaces and Capabilities]] for the full picture; carry only the deltas this move actually hits.
+*Cross-surface OR cross-worktree batons only; omit for same-surface, same-worktree.* Name the receiving surface and the capability delta that matters for *this* move — why it's being handed here, and the surface-specific gotcha (git locks, GPU, local-only tool, link scheme). **If the move lives in a git worktree, name its coordinate:** branch, directory, and the recreate command (`node _ops/worktree/new-worktree.mjs --name <branch> --profile <p>`) in case it has been torn down. Point to [[Surfaces and Capabilities]] for the full picture; carry only the deltas this move actually hits.
 
 ## Calibrations from this session
 Anything Loudon corrected, accepted, or surprised you with that diverges from defaults. Bullets, terse.
@@ -170,7 +172,7 @@ the catcher will see them. Omit nothing here.*
 2. If this baton or its board line is still uncommitted (authored on a surface that couldn't commit — e.g. Cowork), commit them first. That commit is the git archive Step 6 relies on.
 3. Mark it caught: remove the "Active Baton" section from the parent entry; for a board-announced baton with no parent entry, post the paired `handoff_picked_up` REPLY (`re:` the `handoff_ready` id) instead.
 4. Delete the baton file (git is its archive). On a surface that can't delete (Cowork), remove the marker and note "deletion pending."
-5. If the baton names a receiving-surface capability delta, confirm it holds before relying on it (the [[Surfaces and Capabilities]] catalog can be stale) — a build that was supposed to run here but can't is a finding to report, not a failure to hide.
+5. If the baton names a receiving-surface capability delta or a worktree coordinate, confirm it holds before relying on it (the [[Surfaces and Capabilities]] catalog can be stale) — for a worktree, check `git worktree list` and recreate it (`node _ops/worktree/new-worktree.mjs --name <branch> --profile <p>`) if it is gone. A build that was supposed to run here but can't is a finding to report, not a failure to hide.
 6. Act on the move, holding the calibrations above. Steward batons are the exception — updated in place, never deleted.
 ```
 
@@ -215,7 +217,7 @@ Deletion is normally performed by the *incoming* Claude as its first act (per th
 
 ## Announcing the Baton on the Board
 
-*Cross-surface batons only. Optional today, load-bearing once a scheduler exists.*
+*Cross-surface or cross-worktree batons. Optional for same-machine cross-surface today; **required for any cross-worktree baton** — a baton on a feature branch is invisible from every other worktree, and the owner's board is the only globally-visible rendezvous. Load-bearing for everything once a scheduler exists.*
 
 A baton filed in a bundle is invisible to everything but a human who knows to go read it. When the move crosses to a surface that the [[Project Stewardship System]] coordinates — Claude Code on the Mac, picked up by a future scheduled dispatch — announce the baton on the persistent blackboard so it lives on the same surface as every steward's request. See [[Two Batons, One Board]] for why the two batons belong together.
 
@@ -252,9 +254,11 @@ This announcement does **not** replace writing the baton file (Steps 1–4). It 
 }
 ```
 
+For a **cross-worktree** baton, the payload also carries a `worktree` object naming where the move lives: `"worktree": { "branch": "feature/blueline", "dir": "../palace-feature-blueline", "profile": "blueline" }` — the catcher reads it to `cd` in, or to recreate the worktree, before picking up.
+
 **Pairing, the way `RESOURCE_REQUEST`/`GRANT` pair.** When the catcher picks the move up, it posts a `REPLY` carrying `re: "<the handoff_ready id>"` and `payload.kind: "handoff_picked_up"`. Pending work is then exactly: every `handoff_ready` with no matching `handoff_picked_up`. This mirrors the inbox-builder logic already used for resource requests (§2.6), so a future scheduled poller — or Loudon scanning `GENERAL` — reads the open batons with the same scan that finds open asks.
 
-**How to post.** From Cowork or Claude Code, append one valid §2.2 line to `_ops/swarm/persistent/blackboard.jsonl` (the board renders it on reload / live-tail), or `POST /api/persistent` when the STIGMERGY dev server is running. Either way the strict validator (`_ops/stigmergy/app/server/validator.js`) gates the write — a malformed announcement is rejected, not coerced.
+**How to post.** From Cowork or Claude Code, append one valid §2.2 line to the **owner's** `_ops/swarm/persistent/blackboard.jsonl` — never a worktree branch copy (see `_ops/worktree/SKILL.md` § Ceremonies in a worktree); the board renders it on reload / live-tail — or `POST /api/persistent` when the STIGMERGY dev server is running. Either way the strict validator (`_ops/stigmergy/app/server/validator.js`) gates the write — a malformed announcement is rejected, not coerced.
 
 **The honest limit.** Until the scheduled dispatch of Stage C exists, this post is for *visibility* — it surfaces the ready baton on the board for Loudon, but a human still triggers the pickup. The post is the trail; the scheduler is the ant. Announcing now is still worth it: it builds the convention and the board history that the scheduler will later read. See [[Two Batons, One Board]] § The board is a pheromone field, not an actuator.
 
