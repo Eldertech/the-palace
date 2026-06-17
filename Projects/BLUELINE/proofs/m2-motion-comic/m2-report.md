@@ -40,6 +40,33 @@ piece stays an instrument, not a video. Verified in-browser (served from the wor
 
 Loudon Live skin throughout (Anton / Cormorant / JetBrains Mono, graphite ground, amber drama spot).
 
+## The beat-lock stress test — overt body motion at three tempos (Loudon's call)
+
+The subtle ambient motion above (breath / sway / parallax) proves determinism but doesn't *show* it to the
+eye. `m2-beat-test.html` is the stronger demonstration Loudon asked for: a single figure that **stomps**
+(alternating feet, the planted foot ringed, an amber impact burst + "STOMP" flash firing *on* the beat) and
+**swings its arms** in time, with the tempo switchable live across **three very different tempos** — and a
+deliberate off-grid case. Same clock plumbing as the player (`resync` / `playhead` / `applyBible` / `onBeat`).
+
+The choreography is `marchPose(beat-phase)` — it reads **only** the playhead in beats, never tempo or
+wall-clock. Verified in-browser (no console errors), every claim asserted, not eyeballed:
+
+- **Tempo-independence (the headline).** Rendering the figure at the *same beat-phase* produces a
+  **byte-identical canvas at 72 BPM and 180 BPM** (`toDataURL` equal). Tempo changes only how fast beat-phase
+  advances in real time; the pose at beat 8.0 is the same pixels at every tempo. *Motion is an instrument, not
+  a video,* shown with the body, not just the math.
+- **Hits land on the beat.** The stepping foot's lift is `0` at integer beats (planted **on** the beat) and
+  `−0.17h` mid-beat (lifted); the arm reaches its swing extreme on the beat. Asserted: `plantOnBeat`,
+  `liftMidBeat`, `armMoves` all true.
+- **The determinism guard is live.** At 24 fps: **72 → 20**, **120 → 12**, **180 → 8** frames/beat (all
+  integer, `deterministic ✓`); the off-grid **100 → 14.4** is correctly flagged `drifts ✗`. The three clean
+  tempos span a 2.5× range and all keep every plant on a whole frame.
+- **Pure + moving.** `marchPose(p)` is deterministic (same `p` → identical pose object); different beat-phase
+  → different canvas (`figureMoves` true).
+
+This is the same determinism the player relies on, made legible: switch tempo while it plays and the stomp
+stays nailed to the beat. Run: `http://127.0.0.1:8204/m2-beat-test.html`.
+
 ## What's new vs M1 — the architecture, not the look
 
 M1 drew each panel **once** on shot change. M2 adds a single `requestAnimationFrame` loop that redraws the

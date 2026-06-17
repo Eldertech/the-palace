@@ -1,0 +1,218 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>BLUELINE — M2 Beat-Lock Stress Test</title>
+<style>
+  :root{--bg:#15161a;--panel:#1d1f25;--ink:#e9e7e2;--dim:#8b8d96;--amber:#e0a83a;--good:#7bbf6a;--bad:#c98a8a;--line:#2c2e36;
+        --paper:#1a1c22;--blue:#5b7fc7;--bone:#e9e7e2;--shadow:#0f1013}
+  *{box-sizing:border-box} html,body{margin:0;height:100%;background:var(--bg);color:var(--ink);
+    font-family:"JetBrains Mono",ui-monospace,Menlo,monospace}
+  .wrap{max-width:1080px;margin:0 auto;padding:20px}
+  h1{font-family:"Anton",Impact,sans-serif;font-weight:400;letter-spacing:.04em;text-transform:uppercase;font-size:26px;margin:0}
+  .sub{color:var(--dim);font-style:italic;font-family:Cormorant,Georgia,serif;font-size:17px;margin:2px 0 16px}
+  .stage{display:grid;grid-template-columns:1fr 250px;gap:14px;margin-bottom:8px}
+  @media(max-width:760px){.stage{grid-template-columns:1fr}}
+  .panelwrap{background:#000;border:1px solid var(--line);border-radius:6px;overflow:hidden;position:relative}
+  #panel{display:block;width:100%;height:auto;background:var(--paper)}
+  .pulse{position:absolute;inset:0;border:0 solid var(--amber);border-radius:6px;pointer-events:none;transition:border-width .07s ease-out}
+  .side{display:flex;flex-direction:column;gap:10px}
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:12px 13px}
+  .k{color:var(--amber);font-size:11px;text-transform:uppercase;letter-spacing:.06em}
+  .big{font-size:44px;font-family:"Anton",Impact,sans-serif;line-height:1;margin-top:3px}
+  .row{display:flex;justify-content:space-between;font-size:12px;margin:4px 0}.row span:first-child{color:var(--dim)}
+  .det.ok{color:var(--good)}.det.no{color:var(--bad)}
+  .tempos{display:flex;gap:6px;flex-wrap:wrap;margin-top:6px}
+  .tb{background:var(--panel);color:var(--ink);border:1px solid var(--line);border-radius:6px;padding:7px 10px;font-family:inherit;font-size:13px;cursor:pointer;flex:1}
+  .tb:hover{border-color:var(--amber)}.tb.on{border-color:var(--good);color:var(--good);background:#1a2620}
+  .tb small{display:block;color:var(--dim);font-size:9px;margin-top:2px}.tb.on small{color:var(--good)}
+  .tb.offgrid.on{border-color:var(--bad);color:var(--bad);background:#261a1a}
+  .bar{display:flex;align-items:center;gap:12px;margin:12px 0 4px;font-size:12px;flex-wrap:wrap}
+  .btn{background:var(--panel);color:var(--ink);border:1px solid var(--line);border-radius:6px;padding:6px 12px;font-family:inherit;font-size:12px;cursor:pointer}
+  .btn:hover{border-color:var(--amber)}.btn.on{border-color:var(--good);color:var(--good)}
+  #conn{font-size:12px}.dot{display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--dim);margin-right:6px;vertical-align:middle}
+  .dot.live{background:var(--good)}.dot.play{background:var(--amber)}
+  #foot{color:var(--dim);font-size:11px;margin-top:16px;letter-spacing:.04em}
+</style></head>
+<body><div class="wrap">
+  <h1>BLUELINE · M2 Beat-Lock Stress Test</h1>
+  <div class="sub">one figure, stomping + swinging in time — the choreography is a pure function of beat-phase, so it is identical at every tempo; only the playback speed changes</div>
+
+  <div class="stage">
+    <div>
+      <div class="panelwrap"><canvas id="panel" width="960" height="540"></canvas><div class="pulse" id="pulse"></div></div>
+    </div>
+    <div class="side">
+      <div class="card">
+        <div class="k">now playing</div>
+        <div class="big" id="barbeat">—.—</div>
+        <div class="row"><span>this beat → frame</span><span id="beatframe" style="color:var(--amber)">—</span></div>
+        <div class="row"><span>step foot</span><span id="stepfoot">—</span></div>
+      </div>
+      <div class="card">
+        <div class="k">tempo (switch live)</div>
+        <div class="tempos">
+          <button class="tb" data-t="72">72<small>20 f/beat</small></button>
+          <button class="tb on" data-t="120">120<small>12 f/beat</small></button>
+          <button class="tb" data-t="180">180<small>8 f/beat</small></button>
+        </div>
+        <div class="tempos"><button class="tb offgrid" data-t="100" style="flex:none;padding:5px 9px">100 — off-grid<small>14.4 f/beat → drifts</small></button></div>
+      </div>
+      <div class="card">
+        <div class="k">the determinism rule</div>
+        <div class="row"><span>tempo</span><span id="t_tempo">—</span></div>
+        <div class="row"><span>frames / beat</span><span id="t_fpb">—</span></div>
+        <div class="row"><span>fps</span><span>24 (fixed)</span></div>
+        <div class="row"><span>determinism</span><span id="t_det">—</span></div>
+        <div class="row"><span>beat → whole frame</span><span id="t_whole">—</span></div>
+        <div class="row"><span>motion phase</span><span id="t_phase" style="color:var(--good)">∝ playhead ✓</span></div>
+      </div>
+      <div class="card">
+        <div class="k">what to watch</div>
+        <div class="row"><span>foot plant</span><span style="color:var(--amber)">on the beat</span></div>
+        <div class="row"><span>arm extreme</span><span style="color:var(--amber)">on the beat</span></div>
+        <div class="row"><span>switch tempo</span><span class="dim">stays locked</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="bar">
+    <span id="conn"><span class="dot" id="dot"></span>self-play (internal clock)</span>
+    <button class="btn on" id="selfplay">⏸ self-play running</button>
+    <span class="dim">or open with Ableton + the M4L device to drive the same figure live</span>
+  </div>
+
+  <div id="foot">Loudon Live · Autodidact Polymaths</div>
+</div>
+<script>
+// ── The proof in one figure: a marcher whose every joint is a pure function of BEAT-PHASE p (= the
+//    playhead in beats). The foot plants at integer p (on the beat); the arms hit their extreme at
+//    integer p. Because the pose depends ONLY on p — never on tempo or wall-clock — the choreography is
+//    byte-identical at 72, 120, or 180 BPM. Tempo changes only how fast p advances in real time, and the
+//    (bar,beat)->frame mapping (fps*60/tempo, integer at these tempos) keeps every plant on a whole frame.
+//    Same clock plumbing as m2-motion-comic.html (resync / playhead / applyBible / onBeat).
+let BPB=4, fpb=12, tempo=120, fps=24, det=true;
+let lastBeatKey=null;
+
+// continuous playhead — exact frame held at the last beat, interpolated between, resnapped on each beat
+let syncFrame=0, syncWall=0, hasSync=false;
+const nowMs=()=>performance.now();
+function resync(frame){syncFrame=frame;syncWall=nowMs();hasSync=true;}
+function playhead(){return hasSync ? syncFrame + (nowMs()-syncWall)*(fps/1000) : 0;}
+
+const CSS=v=>getComputedStyle(document.documentElement).getPropertyValue(v).trim();
+const $=id=>document.getElementById(id);
+function pts(chain,fx,fy,h){return chain.map(p=>[fx+p[0]*h,fy+p[1]*h]);}
+function brush(ctx,P,w0,w1,color){ctx.fillStyle=color;
+  for(let i=0;i<P.length-1;i++){const a=P[i],b=P[i+1];const steps=Math.max(4,Math.hypot(b[0]-a[0],b[1]-a[1])/2);
+    for(let t=0;t<=1;t+=1/steps){const seg=(i+t)/(P.length-1);const r=w0+(w1-w0)*seg;
+      ctx.beginPath();ctx.arc(a[0]+(b[0]-a[0])*t,a[1]+(b[1]-a[1])*t,r,0,7);ctx.fill();}}}
+function orientedHead(ctx,hx,hy,hr,tx,ty,col){
+  let dx=tx-hx,dy=ty-hy,d=Math.hypot(dx,dy)||1;dx/=d;dy/=d;
+  ctx.fillStyle=col;ctx.beginPath();ctx.arc(hx,hy,hr,0,7);ctx.fill();
+  const lc=CSS('--paper');ctx.strokeStyle=lc;ctx.lineWidth=Math.max(1.2,hr*.13);ctx.lineCap='round';
+  const fx2=hx+dx*hr*0.42, fy2=hy+dy*hr*0.42;
+  ctx.beginPath();ctx.moveTo(fx2-(-dy)*hr*0.8,fy2-(dx)*hr*0.8);ctx.lineTo(fx2+(-dy)*hr*0.8,fy2+(dx)*hr*0.8);ctx.stroke();
+  ctx.fillStyle=lc;ctx.beginPath();ctx.arc(fx2+dx*hr*0.45,fy2+dy*hr*0.45,hr*0.16,0,7);ctx.fill();}
+
+// ── the marcher: every offset below is a function of p (beats) ONLY. ─────────────────────────────────
+// feet origin at (fx,fy); +y down; body parts are at negative y (above the feet).
+function marchPose(p){
+  const f=p-Math.floor(p);                      // 0..1 within the beat (0 = on the beat)
+  const stepRight=(Math.floor(p)%2===0);        // alternate the stepping foot each beat
+  const lift=0.17*Math.sin(f*Math.PI);          // stepping-foot lift: 0 ON the beat (planted), peak mid-beat
+  const knee=0.11*Math.sin(f*Math.PI);          // matching knee raise
+  const drop=0.045*(1-Math.sin(f*Math.PI));     // body weight-drop: MAX on the beat (impact), 0 mid-beat
+  const swing=0.42*Math.cos(p*Math.PI);         // arm swing angle (rad): extreme ON the beat, alternating sides
+  const accent=Math.exp(-f*8);                  // a 0..1 spike on the beat, decaying
+  // torso
+  const head=[0,-.86+drop], neck=[0,-.78+drop], hip=[0,-.44+drop];
+  const spine=[hip,neck];
+  // arms swing as straight pendulums from the shoulders (same angle -> reads as a side-to-side swing)
+  const shY=-.76+drop, l1=0.16, l2=0.18, sx=Math.sin(swing), cy=Math.cos(swing);
+  function arm(shx){const sh=[shx,shY],el=[sh[0]+sx*l1,sh[1]+cy*l1],ha=[el[0]+sx*l2,el[1]+cy*l2];return [sh,el,ha];}
+  const armR=arm(.11), armL=arm(-.11);
+  // legs: support foot planted at ground (y=0); stepping foot lifts. knees bend with the body drop.
+  const hipY=-.44+drop, supY=0;                 // planted foot stays on the ground line
+  let legR,legL;
+  if(stepRight){ legR=[[ .05,hipY],[ .07,-.22+drop-knee],[ .085,-lift]]; legL=[[-.05,hipY],[-.07,-.22+drop],[-.07,supY]]; }
+  else         { legR=[[ .05,hipY],[ .07,-.22+drop],[ .07,supY]];        legL=[[-.05,hipY],[-.07,-.22+drop-knee],[-.085,-lift]]; }
+  return {head,parts:[spine,armL,armR,legR,legL],stepRight,planted:stepRight?'L':'R',accent};
+}
+
+// drawScene(p): a PURE function of beat-phase p. No tempo, no wall-clock — this is why the canvas is
+// byte-identical across tempos at the same p (the heart of the proof).
+function drawScene(p){
+  const ctx=$('panel').getContext('2d'),W=960,H=540;
+  ctx.fillStyle=CSS('--paper');ctx.fillRect(0,0,W,H);
+  const gy=H*0.86;
+  ctx.fillStyle=CSS('--shadow');ctx.fillRect(0,gy,W,H-gy);
+  ctx.strokeStyle=CSS('--bone');ctx.lineWidth=2;ctx.beginPath();ctx.moveTo(0,gy);ctx.lineTo(W,gy);ctx.stroke();
+  ctx.strokeStyle=CSS('--line');ctx.lineWidth=1;for(let i=1;i<6;i++){ctx.beginPath();ctx.moveTo(0,gy-i*52);ctx.lineTo(W,gy-i*52);ctx.stroke();}
+
+  const mp=marchPose(p), fx=W*0.5, fy=gy, h=H*0.62, ink=CSS('--bone');
+  const P=mp.parts, spine=pts(P[0],fx,fy,h),armL=pts(P[1],fx,fy,h),armR=pts(P[2],fx,fy,h),legR=pts(P[3],fx,fy,h),legL=pts(P[4],fx,fy,h);
+  const head=[fx+mp.head[0]*h,fy+mp.head[1]*h],hr=h*.072;
+  const shL=armL[0],shR=armR[0],hipL=legL[0],hipR=legR[0];
+
+  ctx.save();ctx.fillStyle='#000';ctx.globalAlpha=.5;ctx.beginPath();ctx.ellipse(fx,fy+2,h*.17,h*.032,0,0,7);ctx.fill();ctx.restore();
+  // stomp impact burst at the PLANTED foot, pulsing on the beat
+  const planted = mp.planted==='L'?legL[2]:legR[2];
+  if(mp.accent>0.05){ctx.save();ctx.strokeStyle=CSS('--amber');ctx.globalAlpha=Math.min(1,mp.accent);ctx.lineWidth=2.5;
+    const r0=h*.03,r1=h*(.03+.10*mp.accent);
+    for(let a=0;a<12;a++){const ang=a/12*Math.PI*2;ctx.beginPath();ctx.moveTo(planted[0]+Math.cos(ang)*r0,planted[1]+Math.sin(ang)*r0);ctx.lineTo(planted[0]+Math.cos(ang)*r1,planted[1]+Math.sin(ang)*r1);ctx.stroke();}ctx.restore();}
+
+  ctx.fillStyle=ink;ctx.beginPath();ctx.moveTo(hipL[0],hipL[1]);ctx.lineTo(shL[0],shL[1]);ctx.lineTo(head[0],head[1]-hr*.2);ctx.lineTo(shR[0],shR[1]);ctx.lineTo(hipR[0],hipR[1]);ctx.closePath();ctx.fill();
+  const Wd=h*.06;
+  brush(ctx,legL,Wd*1.0,Wd*.45,ink);brush(ctx,legR,Wd*1.0,Wd*.45,ink);
+  brush(ctx,armL,Wd*.7,Wd*.35,ink);brush(ctx,armR,Wd*.7,Wd*.35,ink);
+  brush(ctx,spine,Wd*1.1,Wd*.8,ink);
+  orientedHead(ctx,head[0],head[1],hr,head[0],head[1]+h,ink);
+  // L/R foot dots (green = char right, coral = left); the planted one gets a ring
+  const Rc=CSS('--good'),Lc=CSS('--bad');
+  function foot(p2,col,isPlanted){ctx.fillStyle=col;ctx.beginPath();ctx.arc(p2[0],p2[1],h*.028,0,7);ctx.fill();
+    if(isPlanted){ctx.strokeStyle=col;ctx.lineWidth=2.5;ctx.beginPath();ctx.arc(p2[0],p2[1],h*.05,0,7);ctx.stroke();}}
+  foot(legR[2],Rc,mp.planted==='R');foot(legL[2],Lc,mp.planted==='L');
+
+  if(mp.accent>0.45){ctx.save();ctx.globalAlpha=Math.min(1,(mp.accent-0.45)/0.55);ctx.fillStyle=CSS('--amber');
+    ctx.font='28px "Anton", Impact, sans-serif';ctx.textAlign='center';ctx.fillText('STOMP',planted[0],planted[1]-h*.10);ctx.textAlign='left';ctx.restore();}
+}
+
+function applyBible(t,f,b){tempo=t;fps=f;BPB=b||BPB;fpb=(f*60)/t;det=Number.isInteger(fpb);
+  $('t_tempo').textContent=t+' BPM';$('t_fpb').textContent=det?fpb+'  (exact)':fpb.toFixed(2);
+  $('t_det').innerHTML=det?'<span class="det ok">deterministic ✓</span>':'<span class="det no">drifts ✗ (off-grid)</span>';}
+
+function onBeat(bar,beat){const tb=(bar-1)*BPB+(beat-1),frame=tb*fpb;
+  resync(frame);
+  $('barbeat').textContent=bar+'.'+(Number.isInteger(beat)?beat:beat.toFixed(2));
+  const bi=Math.floor(beat+1e-6),key=bar*1000+bi;
+  if(key!==lastBeatKey){lastBeatKey=key;const tbi=(bar-1)*BPB+(bi-1),fr=tbi*fpb,whole=Math.abs(fr-Math.round(fr))<1e-9;
+    $('beatframe').textContent=whole?Math.round(fr):fr.toFixed(2);
+    $('t_whole').innerHTML=whole?'<span class="det ok">on whole frame ✓</span>':'<span class="det no">off ✗</span>';
+    $('stepfoot').textContent=(Math.floor(tb)%2===0?'RIGHT':'LEFT')+' steps';
+    pulse();}}
+let pulseT=null;function pulse(){const p=$('pulse');p.style.borderWidth='6px';clearTimeout(pulseT);pulseT=setTimeout(()=>p.style.borderWidth='0px',80);}
+
+// the one render loop — reads the interpolated playhead, draws the figure as f(beat-phase)
+function loop(){const p=playhead()/fpb;drawScene(p);requestAnimationFrame(loop);}
+
+// self-play internal clock — drives onBeat at quarter-beat resolution
+let selfTimer=null,selfTB=0;
+function startSelf(){ if(selfTimer)clearInterval(selfTimer); const subdiv=4,msPer=(60000/tempo)/subdiv;
+  selfTimer=setInterval(()=>{const bar=Math.floor(selfTB/BPB)+1,beat=(selfTB%BPB)+1;onBeat(bar,beat);selfTB+=1/subdiv;},msPer); }
+function stopSelf(){ if(selfTimer){clearInterval(selfTimer);selfTimer=null;} }
+function setTempo(t){applyBible(t,fps,BPB);document.querySelectorAll('.tb').forEach(b=>b.classList.toggle('on',+b.dataset.t===t));
+  if(selfTimer)startSelf();}   // restart the interval at the new speed; selfTB (beat position) is preserved -> stays locked
+
+document.querySelectorAll('.tb').forEach(b=>b.addEventListener('click',()=>setTempo(+b.dataset.t)));
+$('selfplay').addEventListener('click',function(){ if(selfTimer){stopSelf();this.classList.remove('on');this.textContent='▶ self-play';}
+  else{startSelf();this.classList.add('on');this.textContent='⏸ self-play running';} });
+
+// optional live drive off Ableton (same transport contract as M0/M1/M2)
+function connect(){let ws;try{ws=new WebSocket("ws://"+location.host+"/ws");}catch(e){return;}
+  ws.onopen=()=>{$('dot').className='dot live';$('conn').lastChild.textContent=' connected — waiting for transport…';};
+  ws.onmessage=ev=>{const m=JSON.parse(ev.data);
+    if(m.address==='/transport/bible'){stopSelf();$('selfplay').classList.remove('on');$('selfplay').textContent='▶ self-play';applyBible(m.args[0],m.args[1],m.args[2]);document.querySelectorAll('.tb').forEach(b=>b.classList.remove('on'));}
+    else if(m.address==='/transport/beat'){$('dot').className='dot play';onBeat(m.args[0],m.args[1]);}};}
+
+(function(){applyBible(tempo,fps,BPB);document.querySelectorAll('.tb').forEach(b=>b.classList.toggle('on',+b.dataset.t===tempo));
+  startSelf();connect();requestAnimationFrame(loop);})();
+</script></body></html>
