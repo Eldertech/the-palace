@@ -7,8 +7,15 @@
     "docs":      [],
     "shop":      ["_tools", ".venvs", ".claude/settings.local.json"],
     "blueline":  ["_tools", "RunPod Images/studio/config.json", ".claude/settings.local.json"],
-    "stigmergy": ["_ops/stigmergy/app/node_modules", ".claude/settings.local.json"],
-    "full":      ["_tools", ".venvs", "RunPod Images/studio/config.json", "_ops/stigmergy/app/node_modules", ".claude/settings.local.json"]
+    "stigmergy": [".claude/settings.local.json"],
+    "full":      ["_tools", ".venvs", "RunPod Images/studio/config.json", ".claude/settings.local.json"]
+  },
+
+  "auto_mirror": {
+    "_comment": "Dependency CLASSES mirrored by DISCOVERY, not enumeration — so npm-workspace node_modules (one per package, at any depth) are all symlinked automatically, with zero manifest upkeep as packages are added. new-worktree.mjs runs `git -C <owner> ls-files --others --ignored --exclude-standard --directory`, keeps every fully-ignored dir whose basename is in by_basename, and symlinks each at its relative path. `--directory` collapses an already-ignored tree (e.g. _tools/) to one entry, so its internal node_modules are never listed and never double-linked. This replaced the hand-listed `_ops/stigmergy/app/node_modules` link (2026-06-17), which missed the workspace-root + orchestrator + trickster-auto node_modules and broke vitest in fresh stigmergy worktrees.",
+    "by_basename": ["node_modules"],
+    "profiles": ["stigmergy", "full"],
+    "caveat": "A symlinked node_modules preserves the install's OWN relative links — the npm-workspace link `@stigmergy/core -> ../../core` resolves, through the mirror, to the OWNER's core, not the worktree's. Harmless for running/testing (core is read-only and identical); only matters if a session edits a workspace package's source INSIDE a worktree and expects its own copy under test. For that, run `npm install` in the worktree instead."
   },
 
   "links": [
@@ -35,14 +42,6 @@
       "secret": true,
       "regenerable": false,
       "why": "RunPod API key + endpoint id (gitignored secret). Needed to dispatch cloud renders. The parent 'RunPod Images/studio/' is tracked and already present in the worktree — only this file is missing, so symlink the FILE, not the dir. Never commit it."
-    },
-    {
-      "path": "_ops/stigmergy/app/node_modules",
-      "kind": "dir",
-      "size": "237M",
-      "secret": false,
-      "regenerable": "npm --prefix _ops/stigmergy/app install",
-      "why": "STIGMERGY React/Vite app dependencies. Regenerable but slow; symlinking shares the same install (safe — same machine/arch). Only needed if the worktree runs or tests the STIGMERGY app."
     },
     {
       "path": ".claude/settings.local.json",
