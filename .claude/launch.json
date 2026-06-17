@@ -43,6 +43,12 @@
       "runtimeExecutable": "python3",
       "runtimeArgs": ["-m", "http.server", "8210", "--directory", "Projects/BLUELINE/proofs/track-II-lora/grade"],
       "port": 8210
+    },
+    {
+      "name": "blueline-m2",
+      "runtimeExecutable": "python3",
+      "runtimeArgs": ["-m", "http.server", "8204", "--directory", "Projects/BLUELINE/proofs/m2-motion-comic"],
+      "port": 8204
     }
   ]
 }
