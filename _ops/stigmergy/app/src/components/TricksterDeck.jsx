@@ -8,6 +8,7 @@ import { t } from '../lib/lexicon.js';
 import TricksterCard from './trickster/TricksterCard.jsx';
 import QuickBar from './trickster/QuickBar.jsx';
 import DigestPanel from './DigestPanel.jsx';
+import LaunchModal from './queue/LaunchModal.jsx';
 
 // Shape an advanceSteward() result (from a card's FILE & RUN) into a one-line
 // deck banner. The grant is already filed by the time this runs, so every
@@ -90,6 +91,23 @@ export default function TricksterDeck({
   const [selections, setSelections] = useState({});
   const selectOption = (requestId, optionId) =>
     setSelections((prev) => toggleSelection(prev, requestId, optionId));
+
+  // The card whose "open interactive" modal is open. A trickster launch drives
+  // the ASKING steward (item.from) to RESOLVE this specific decision in a
+  // watch+steer session — an alternative to filing a grant. Reuses the steward
+  // launch kind; the decision's question rides in `summary` so the session knows
+  // what to resolve. The deck owns the modal (like StewardsDeck / QueuePanel).
+  const [launchContext, setLaunchContext] = useState(null);
+  const openLaunch = (item) => {
+    const ask = item.headline || item.resource || 'a parked decision';
+    setLaunchContext({
+      kind: 'steward',
+      id: item.request_id,
+      entry: item.from,
+      from: item.from,
+      summary: `It paused on a decision it left you — "${ask}". Read its request on the TRICKSTER board, work it through, then resolve it (file the grant) and continue the cycle.`,
+    });
+  };
 
   // Sequentially file the leaned grants among `items`, ~350 ms apart so each
   // card's drop-out registers one at a time. Items without a lean are skipped
@@ -248,6 +266,7 @@ export default function TricksterDeck({
               focused={i === focused}
               selectedId={selections[p.request_id] ?? null}
               onSelectOption={(optId) => selectOption(p.request_id, optId)}
+              onLaunch={openLaunch}
             />
           ))}
         </>
@@ -259,6 +278,12 @@ export default function TricksterDeck({
           not the decision list, so the cards lead the deck. Fully defensive —
           renders nothing-yet when absent and never throws. */}
       <DigestPanel />
+
+      {/* Open-interactive modal — drive the asking steward to resolve a decision
+          (kind 'steward', no pickup semantics). The card opens it via onLaunch. */}
+      {launchContext ? (
+        <LaunchModal context={launchContext} onClose={() => setLaunchContext(null)} />
+      ) : null}
     </div>
   );
 }

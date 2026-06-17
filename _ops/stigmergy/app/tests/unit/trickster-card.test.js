@@ -253,6 +253,19 @@ describe('TricksterCard — inline assets (payload-first)', () => {
   });
 });
 
+// The "open interactive" action — a card-level escape hatch to drive the asking
+// steward and resolve the decision in a watch+steer session, instead of just
+// filing a grant. Renders only when the deck wires onLaunch; the click is the
+// deck's (it owns the LaunchModal), so here we assert presence/absence.
+describe('TricksterCard — open interactive', () => {
+  it('renders the launch action only when onLaunch is provided', () => {
+    expect(render()).not.toContain('data-testid="card-launch"');
+    const html = render({ onLaunch: () => {} });
+    expect(html).toContain('data-testid="card-launch"');
+    expect(html).toContain(t('trickster.card.launch'));
+  });
+});
+
 describe('buildCardGrant — message building', () => {
   it('builds a §2.2-valid RESOURCE_GRANT from a chosen option', () => {
     const msg = buildCardGrant(ITEM, {
