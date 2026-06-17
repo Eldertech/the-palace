@@ -17,7 +17,7 @@ Then (ComfyUI venv, for cv2): python gallery_post.py    # draws openpose.png + c
 View: gallery.html  (served from this folder)
 """
 import bpy, json, math, os
-from mathutils import Vector, Quaternion
+from mathutils import Vector, Quaternion, Matrix
 from bpy_extras.object_utils import world_to_camera_view
 
 HERE = os.path.dirname(os.path.abspath(__file__))
@@ -181,6 +181,52 @@ def fit_camera(scene, cam, J, target, dir_off, lens, fill=0.82, roll=0.0, up='Y'
         d = (target - cam.location); dist = d.length
         cam.location = target - d.normalized() * (dist * (h / fill))
         aim()
+
+# ── Fix A (Seam-A round-trip): SHOT-SIZE framing — honor an authored CU/MS/WIDE instead of fitting the
+#    whole figure. The crop is defined by WHICH keypoints the camera frames (the subject set) + the target
+#    fill for that set; the rest of the figure falls out of frame, which is correct for a CU. Pass the
+#    subject subset + this fill to fit_camera. (gallery.emit_shot does NOT use this — it stays WIDE-ish.) ──
+SUBJECT = {"CU":   [0,1,2,5,14,15,16,17],                       # head + shoulders
+           "MS":   [0,1,2,3,5,6,8,11,14,15,16,17],              # head -> hips (upper body)
+           "WIDE": list(range(18))}
+SHOT_FILL = {"CU": 0.86, "MS": 0.70, "WIDE": 0.46}              # the subject set fills this fraction of frame height
+def frame_for_shot(J, shot):
+    idxs = [i for i in SUBJECT.get(shot, SUBJECT["WIDE"]) if i in J]
+    pts = [J[i] for i in idxs]
+    c = Vector((sum(p.x for p in pts)/len(pts), sum(p.y for p in pts)/len(pts), sum(p.z for p in pts)/len(pts)))
+    return {i: J[i] for i in idxs}, c, SHOT_FILL.get(shot, 0.46)
+
+# ── Fix B (Seam-A round-trip): HEAD-AIM — carry M1's oriented head into the 3D bench. The eyeline metric
+#    measures the head DIRECTION (ear-midpoint -> nose), so we align that 3D nose-vector to the GAZE RAY
+#    (head -> the world point that projects to the board record's EYELINE target), pivoting at the head
+#    centre so the head turns IN PLACE (the nose doesn't swing off a tight CU). A proper look-at, not a
+#    screen-position nudge. Call AFTER the camera is fitted, BEFORE build_body.
+def aim_head(scene, cam, J, target_screen, blend=1.0):
+    head_ids = [0, 14, 15, 16, 17]
+    ear_mid = (J[16] + J[17]) * 0.5                            # the head centre / pivot
+    nose_vec = (J[0] - ear_mid)
+    if nose_vec.length < 1e-5: return J
+    nose_vec = nose_vec.normalized()
+    cam_pos = cam.matrix_world.translation
+    R3 = cam.matrix_world.to_3x3()
+    right = R3.col[0].normalized(); up = R3.col[1].normalized(); fwd = (-R3.col[2]).normalized()
+    D = max(0.3, (ear_mid - cam_pos).length)                  # put the look-target at the head's distance
+    half_w = D * math.tan((cam.data.angle_x or cam.data.angle) * 0.5)
+    half_h = D * math.tan((cam.data.angle_y or cam.data.angle) * 0.5)
+    sx, sy = target_screen[0], target_screen[1]               # board y is top-down
+    ox = (sx - 0.5) * 2.0 * half_w
+    oy = (0.5 - sy) * 2.0 * half_h                            # screen-down -> world-up
+    world_t = cam_pos + fwd * D + right * ox + up * oy
+    gaze = (world_t - ear_mid)
+    if gaze.length < 1e-5: return J
+    gaze = gaze.normalized()
+    q = nose_vec.rotation_difference(gaze)                    # rotate the head so the nose-vector -> gaze
+    if blend < 1.0: q = Quaternion().slerp(q, blend)
+    M = q.to_matrix()
+    for i in head_ids:
+        J[i] = ear_mid + M @ (J[i] - ear_mid)
+    bpy.context.view_layer.update()
+    return J
 
 def render(scene, body, mat, path):
     body.data.materials.clear(); body.data.materials.append(mat)
