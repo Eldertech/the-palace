@@ -37,20 +37,16 @@ function ModalButton({ children, onClick, tone = 'default', disabled, testId }) 
   );
 }
 
-export default function LaunchModal({ item, onPickedUp, onClose }) {
+export default function LaunchModal({ context, onPickedUp, onClose }) {
   const [copied, setCopied] = useState(false);
   const [sending, setSending] = useState(false);
   const [errors, setErrors] = useState([]);
   const backdropRef = useRef(null);
 
-  const prompt = buildLaunchPrompt({
-    kind: 'handoff',
-    sourcePath: item.handoff_path,
-    entry: item.entry,
-    from: item.from,
-    id: item.id,
-    summary: item.summary,
-  });
+  // Only a handoff (a baton) has pickup semantics — it gets the MARK PICKED UP
+  // action that posts handoff_picked_up. Cards / stewards just launch a session.
+  const isHandoff = context.kind === 'handoff';
+  const prompt = buildLaunchPrompt(context);
 
   useEffect(() => {
     const prev = document.body.style.overflow;
@@ -78,15 +74,15 @@ export default function LaunchModal({ item, onPickedUp, onClose }) {
     if (sending) return;
     setSending(true); setErrors([]);
     try {
-      const persisted = await postMessage(buildHandoffPickup({ handoffId: item.id }), 'persistent');
-      if (onPickedUp) onPickedUp(item, persisted);
+      const persisted = await postMessage(buildHandoffPickup({ handoffId: context.id }), 'persistent');
+      if (onPickedUp) onPickedUp(context, persisted);
     } catch (err) {
       setErrors(err instanceof InvalidMessageError
         ? (err.errors.length ? err.errors.map((e) => (typeof e === 'string' ? e : e.message || JSON.stringify(e))) : ['the palace rejected this'])
         : [err.message || 'could not mark picked up']);
       setSending(false);
     }
-  }, [sending, item, onPickedUp]);
+  }, [sending, context, onPickedUp]);
 
   useEffect(() => {
     const onKey = (e) => { if (e.key === 'Escape') handleClose(); };
@@ -113,7 +109,9 @@ export default function LaunchModal({ item, onPickedUp, onClose }) {
         <div style={{ borderBottom: '3px double var(--phosphor-dim)', padding: '8px 12px', flexShrink: 0 }}>
           <Banner strong>launch interactive</Banner>
           <div style={{ color: 'var(--phosphor-dim)', textShadow: 'none', fontSize: 12, marginTop: 2 }}>
-            catch the baton from @{item.from || '--'} in a session you can watch + steer
+            {isHandoff
+              ? `catch the baton from @${context.from || '--'} in a session you can watch + steer`
+              : `work ${context.entry || 'this'} in a session you can watch + steer`}
           </div>
         </div>
 
@@ -128,9 +126,9 @@ export default function LaunchModal({ item, onPickedUp, onClose }) {
             fontFamily: 'var(--font-mono)', fontSize: 12, lineHeight: 1.5,
             maxHeight: 320, overflowY: 'auto',
           }}>{prompt}</pre>
-          {item.handoff_path ? (
+          {context.sourcePath ? (
             <div style={{ color: 'var(--phosphor-dim)', textShadow: 'none', fontSize: 11 }}>
-              baton: <span style={{ color: 'var(--ansi-bright-cyan)' }}>{item.handoff_path}</span>
+              {isHandoff ? 'baton' : 'source'}: <span style={{ color: 'var(--ansi-bright-cyan)' }}>{context.sourcePath}</span>
             </div>
           ) : null}
           {errors.length > 0 ? (
@@ -142,10 +140,12 @@ export default function LaunchModal({ item, onPickedUp, onClose }) {
 
         <div style={{ borderTop: '1px solid var(--phosphor-dim)', padding: '8px 12px', display: 'flex', gap: 10, justifyContent: 'flex-end', alignItems: 'center', flexShrink: 0 }}>
           <ModalButton tone="default" onClick={handleClose} disabled={sending} testId="launch-close">close</ModalButton>
-          <ModalButton tone="default" onClick={copy} testId="launch-copy">{copied ? 'copied' : 'copy prompt'}</ModalButton>
-          <ModalButton tone="primary" onClick={markPickedUp} disabled={sending} testId="launch-mark-picked-up">
-            {sending ? 'marking...' : 'mark picked up'}
-          </ModalButton>
+          <ModalButton tone={isHandoff ? 'default' : 'primary'} onClick={copy} testId="launch-copy">{copied ? 'copied' : 'copy prompt'}</ModalButton>
+          {isHandoff ? (
+            <ModalButton tone="primary" onClick={markPickedUp} disabled={sending} testId="launch-mark-picked-up">
+              {sending ? 'marking...' : 'mark picked up'}
+            </ModalButton>
+          ) : null}
         </div>
       </div>
     </div>

@@ -15,6 +15,8 @@ export function buildLaunchPrompt(ctx = {}) {
   switch (ctx.kind || 'handoff') {
     case 'handoff':
       return handoffPrompt(ctx);
+    case 'card':
+      return cardPrompt(ctx);
     default:
       return genericPrompt(ctx);
   }
@@ -40,6 +42,27 @@ function handoffPrompt({ sourcePath, entry, from, id, summary }) {
     '4. Pick up the move exactly where it left off and keep going, interactively.',
     '',
     `(The QUEUE item for handoff ${id || '?'} has been marked picked up.)`,
+  );
+  return lines.join('\n');
+}
+
+function cardPrompt({ id, entry, purpose, summary, sourcePath }) {
+  const folder = sourcePath || (id ? `Enrichment/${id}/` : 'the card folder');
+  const target = entry ? `[[${String(entry).replace(/\.md$/, '')}]]` : 'an entry';
+  const lines = [
+    'You are working an enrichment card in The Palace, in a fresh interactive',
+    'session at the palace root. Refine and resolve it in dialogue — Loudon is',
+    'watching and will steer.',
+    '',
+    `1. ${ORIENT} ...and Enrichment.md (the ceremony you are running).`,
+    `2. The card lives at ${folder} (card.md + artifact). It enriches ${target}.`,
+  ];
+  if (purpose) lines.push(`   Purpose: ${purpose}`);
+  if (summary) lines.push(`   ${summary}`);
+  lines.push(
+    '3. Work it with Loudon: sharpen the artifact, then act per the Enrichment',
+    "   round protocol — deposit (place it in the entry's bundle + commit),",
+    '   revise, or discard.',
   );
   return lines.join('\n');
 }
