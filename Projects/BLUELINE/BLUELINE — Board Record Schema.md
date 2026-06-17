@@ -47,6 +47,7 @@ Session 2's **staging spec** (`proofs/session-2-staging/alley-shot.staging.json`
 | `BAR` / `BEAT` / `FRAME` (the clock) | the Clock (Track III, from Ableton section clips) | the runner (output naming), the sync mux |
 | `POSE` / `DEPTH` / `EDGE` / `NORMAL` (control passes) | the Bench (Track IV, Blender geometric emission) | the runner → ControlNet |
 | `CAMERA_GRAMMAR` (named grammar + on-screen-layout solve) | the staging-AI (author-time) → the Bench's camera solver (Track IV) | the Bench (frames the passes), the runner (provenance) |
+| `FACING` / `EYELINE` (the staging channel) | the staging-AI (author-time) → the Bench (Track IV) | the Bench's `POSE` emission — they *become* the OpenPose head keypoints (nose/eyes/ears), so the render is conditioned on facing + gaze, not just limb pose. The animatic's oriented-head (M1) is the 2D preview of this. |
 | `FLAGGED` (the flag-not-fake boundary) | the staging-AI; each track clears its items as it resolves them | a human + the runner (knows what is a deliberate placeholder vs final) |
 | `FLOW` (the field handle + scalar) | the Spine (Track V) | speed-line render, motion conditioning, sim |
 | `IDREF` / `id_study` / `id_piece` (identity) | the Face & Look (Track II, LoRA/FaceID/PuLID) | the runner → IP-Adapter / PuLID |
@@ -69,6 +70,10 @@ FLOW: fields/scene04.flow    # handle to the shared flow field (Track V), option
 CAMERA_GRAMMAR: OTS | shoulder@0.30,0.74 vp@0.58,0.46 | lens 34
                              # a NAMED grammar + its on-screen-layout solve (Session 2 / Track IV),
                              # not raw coords — ANGLE elevated from human annotation to a solver target
+FACING: 0.15                 # body/chest yaw, -1 (screen-L) … 0 (camera) … +1 (screen-R) — the staging channel
+EYELINE: 0.13,0.38           # gaze target in screen fractions (what the subject looks AT); becomes the
+                             # OpenPose head keypoints so facing/gaze is CONDITIONED, not left to the model.
+                             # Body can hold one way while the head looks another (the "senses off-frame" beat).
 FLAGGED: asset_kit(greybox→kit TBD); motion_treatment(→flow-field); hero_identity(→IDREF)
                              # the flag-not-fake boundary (Session 2): what is a DELIBERATE placeholder,
                              # and what each item is waiting on. Empty when fully resolved.

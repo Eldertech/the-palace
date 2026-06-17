@@ -24,6 +24,30 @@ the same beat-locked clock. Verified in-browser (served from the worktree, no co
 
 Loudon Live skin throughout (Anton / Cormorant / JetBrains Mono, graphite ground, amber drama spot).
 
+## The staging channel — facing + eyeline (added 2026-06-16, Loudon's call)
+
+A featureless head silhouette can't say which way a character faces or what they look at — and **half these
+shots *are* eyeline beats** ("senses something off-frame," the OTS reveal of the threat, "turns into it").
+That's not a polish gap; it's a **conditioning** gap: in "Blocked, Not Prompted" the board dictates the
+composition, so a direction-blind board can't condition facing/gaze and the render picks its own. The
+coupling is exact — **OpenPose (the skeleton the Bench emits) encodes head facing in the nose/eyes/ears
+keypoints**, so a direction-bearing head in the board *is* those keypoints. The 2D oriented-head is the
+proxy that later projects to the 3D/OpenPose head — not throwaway.
+
+So each shot now carries **`facing`** (body/chest yaw) and **`eyeline`** (gaze target), and the figure
+renders three new primitives:
+
+- **Oriented head** — a blocking *sphere with a cross* (facing meridian + nose), replacing the blob — head
+  yaw + focus read instantly. (Loudon's "even a sphere with a cross indicates direction.")
+- **Eyeline ray + target reticle** — an amber gaze line to *what* the subject looks at; off-frame or on a
+  subject (verified: panel 02 gaze snaps off-frame-left; panel 03's ray locks across-frame onto the threat).
+- **Body-facing wedge** — chest direction, *separate* from the head, so the body can hold forward while the
+  gaze darts away (the "senses something" beat, mechanically).
+
+These are now fields in [[BLUELINE — Board Record Schema]] (`FACING` / `EYELINE`) — the channel propagates to
+the Bench (Track IV) and any future register, not just M1's pixels. **Aesthetic polish stays deferred**;
+this is legibility, which is substrate.
+
 ## What M1 is (and isn't)
 
 M1 is the **comic register** of the same animatic — *comic compresses and abstracts* (vs cinema's

@@ -90,14 +90,14 @@
 // ── same storyboard + clock substrate as M0; the panels are rendered in the COMIC register ──
 const EMBED = {"bible":{"title":"BLUELINE — M1 Animatic · r4ng3r","tempo":120,"fps":24,"beats_per_bar":4,"frames_per_beat":12},
 "shots":[
-{"id":"01","bar":1,"beat":1,"hold":8,"section":"intro","camera":"WIDE establishing","lens":24,"pose":"stand_front","flow":false,"action":"Ranger stands small in the misty forest. Held stillness — the calm before."},
-{"id":"02","bar":3,"beat":1,"hold":8,"section":"intro","camera":"SLOW PUSH-IN","lens":35,"pose":"stand_3q","flow":false,"action":"Push in to three-quarter. She senses something off-frame."},
-{"id":"03","bar":5,"beat":1,"hold":8,"section":"verse","camera":"OTS — over-the-shoulder","lens":50,"pose":"guard","flow":false,"action":"Over her shoulder: the threat. Guard up. Blocking dictates the frame."},
-{"id":"04","bar":7,"beat":1,"hold":8,"section":"verse","camera":"WORM'S-EYE hero turn","lens":28,"pose":"hero_turn","flow":false,"action":"Low up-angle. She turns into it — heroic, looming against the sky."},
-{"id":"05","bar":9,"beat":1,"hold":4,"section":"drop","camera":"MEDIUM — draw","lens":50,"pose":"reach_up","flow":true,"action":"THE DROP. She draws the bow. Speed-lines ignite — the flow field is the wind."},
-{"id":"06","bar":10,"beat":1,"hold":4,"section":"drop","camera":"TIGHT coil","lens":65,"pose":"crouch","flow":true,"action":"Coil. Everything compresses to the held breath at full draw."},
-{"id":"07","bar":11,"beat":1,"hold":8,"section":"drop","camera":"WIDE release","lens":24,"pose":"reach_up","flow":true,"action":"Release. The field goes full — the arrow rides the wind across frame."},
-{"id":"08","bar":13,"beat":1,"hold":8,"section":"drop","camera":"AFTERMATH hold","lens":35,"pose":"stand_3q","flow":false,"action":"Aftermath. She lowers the bow. The field settles. Hold to the bar."}
+{"id":"01","bar":1,"beat":1,"hold":8,"section":"intro","camera":"WIDE establishing","lens":24,"pose":"stand_front","flow":false,"facing":0,"eyeline":{"x":0.50,"y":0.47},"action":"Ranger stands small in the misty forest. Held stillness — the calm before."},
+{"id":"02","bar":3,"beat":1,"hold":8,"section":"intro","camera":"SLOW PUSH-IN","lens":35,"pose":"stand_3q","flow":false,"facing":0.35,"eyeline":{"x":0.05,"y":0.32},"action":"Push in to three-quarter. Body holds forward — eyeline snaps OFF-FRAME LEFT. She senses something."},
+{"id":"03","bar":5,"beat":1,"hold":8,"section":"verse","camera":"OTS — over-the-shoulder","lens":50,"pose":"guard","flow":false,"facing":0.15,"eyeline":{"x":0.13,"y":0.38},"action":"Over her shoulder: the threat. Guard up — eyeline locked on it. Blocking dictates the frame."},
+{"id":"04","bar":7,"beat":1,"hold":8,"section":"verse","camera":"WORM'S-EYE hero turn","lens":28,"pose":"hero_turn","flow":false,"facing":-0.2,"eyeline":{"x":0.52,"y":0.10},"action":"Low up-angle. She turns into it — gaze up, heroic, looming against the sky."},
+{"id":"05","bar":9,"beat":1,"hold":4,"section":"drop","camera":"MEDIUM — draw","lens":50,"pose":"reach_up","flow":true,"facing":0.5,"eyeline":{"x":0.96,"y":0.34},"action":"THE DROP. She draws the bow — eyeline down the aim. Speed-lines ignite; the flow field is the wind."},
+{"id":"06","bar":10,"beat":1,"hold":4,"section":"drop","camera":"TIGHT coil","lens":65,"pose":"crouch","flow":true,"facing":0.3,"eyeline":{"x":0.74,"y":0.46},"action":"Coil. Everything compresses to the held breath at full draw — gaze fixed on the target."},
+{"id":"07","bar":11,"beat":1,"hold":8,"section":"drop","camera":"WIDE release","lens":24,"pose":"reach_up","flow":true,"facing":0.5,"eyeline":{"x":0.98,"y":0.40},"action":"Release. Eyeline rides the arrow across frame — the field goes full."},
+{"id":"08","bar":13,"beat":1,"hold":8,"section":"drop","camera":"AFTERMATH hold","lens":35,"pose":"stand_3q","flow":false,"facing":0.2,"eyeline":{"x":0.43,"y":0.72},"action":"Aftermath. She lowers the bow — eyeline drops. The field settles. Hold to the bar."}
 ]};
 
 let SB=EMBED, BPB=4, fpb=12, tempo=120, fps=24, det=true;
@@ -139,33 +139,60 @@ function brush(ctx,P,w0,w1,color){ctx.fillStyle=color;
 function strokeLine(ctx,P,w,color){ctx.strokeStyle=color;ctx.lineWidth=w;ctx.lineCap='round';ctx.lineJoin='round';
   ctx.beginPath();P.forEach((p,i)=>i?ctx.lineTo(p[0],p[1]):ctx.moveTo(p[0],p[1]));ctx.stroke();}
 
+// ── the staging channel: facing + eyeline (a blocking sphere, never a featureless head) ──
+// A direction-bearing head IS the OpenPose head keypoints the render is conditioned on — not decoration.
+function orientedHead(ctx,hx,hy,hr,tx,ty,col,solid){
+  let dx=tx-hx,dy=ty-hy,d=Math.hypot(dx,dy)||1;dx/=d;dy/=d;          // gaze direction (2D projection of head yaw)
+  if(solid){ctx.fillStyle=col;ctx.beginPath();ctx.arc(hx,hy,hr,0,7);ctx.fill();}
+  else{ctx.strokeStyle=col;ctx.lineWidth=Math.max(1.5,hr*.16);ctx.beginPath();ctx.arc(hx,hy,hr,0,7);ctx.stroke();}
+  const lc=solid?CSS('--paper'):col;ctx.strokeStyle=lc;ctx.lineWidth=Math.max(1.2,hr*.13);ctx.lineCap='round';
+  const fx2=hx+dx*hr*0.42, fy2=hy+dy*hr*0.42;                         // the face front, shifted toward gaze
+  ctx.beginPath();ctx.moveTo(fx2-(-dy)*hr*0.8,fy2-(dx)*hr*0.8);ctx.lineTo(fx2+(-dy)*hr*0.8,fy2+(dx)*hr*0.8);ctx.stroke(); // brow line ⟂ gaze
+  ctx.beginPath();ctx.moveTo(hx-dx*hr*0.6,hy-dy*hr*0.6);ctx.lineTo(fx2+dx*hr*0.55,fy2+dy*hr*0.55);ctx.stroke();         // nose ridge ∥ gaze
+  ctx.fillStyle=lc;ctx.beginPath();ctx.arc(fx2+dx*hr*0.45,fy2+dy*hr*0.45,hr*0.16,0,7);ctx.fill();                       // nose dot
+}
+function eyelineRay(ctx,hx,hy,tx,ty){let dx=tx-hx,dy=ty-hy,d=Math.hypot(dx,dy)||1;
+  ctx.save();ctx.strokeStyle=CSS('--amber');ctx.lineWidth=1.4;ctx.globalAlpha=.9;ctx.setLineDash([2,4]);
+  ctx.beginPath();ctx.moveTo(hx+dx/d*12,hy+dy/d*12);ctx.lineTo(tx,ty);ctx.stroke();ctx.setLineDash([]);          // gaze ray
+  ctx.beginPath();ctx.arc(tx,ty,5,0,7);ctx.moveTo(tx-8,ty);ctx.lineTo(tx+8,ty);ctx.moveTo(tx,ty-8);ctx.lineTo(tx,ty+8);ctx.stroke();ctx.restore();} // target reticle
+function facingWedge(ctx,cx,cy,h,facing,col){const f=Math.max(-1,Math.min(1,facing||0));
+  let dx=f,dy=0.55,d=Math.hypot(dx,dy);dx/=d;dy/=d;const L=h*0.10;                                              // torso aims (facing, toward camera)
+  ctx.save();ctx.fillStyle=col;ctx.globalAlpha=.85;ctx.beginPath();ctx.moveTo(cx+dx*L,cy+dy*L);
+  ctx.lineTo(cx-(-dy)*L*0.45-dx*L*0.2,cy-(dx)*L*0.45-dy*L*0.2);ctx.lineTo(cx+(-dy)*L*0.45-dx*L*0.2,cy+(dx)*L*0.45-dy*L*0.2);
+  ctx.closePath();ctx.fill();ctx.restore();}
+
 function inkFigure(ctx,fx,fy,h,pose,opts){
   const P=POSES[pose]||POSES.stand_front, ink=CSS('--bone'), blue=CSS('--blue');
   const spine=pts(P.parts[0],fx,fy,h), armL=pts(P.parts[1],fx,fy,h), armR=pts(P.parts[2],fx,fy,h),
         legL=pts(P.parts[3],fx,fy,h), legR=pts(P.parts[4],fx,fy,h);
   const head=[fx+P.head[0]*h,fy+P.head[1]*h], hr=h*.072;
+  const shL=armL[0],shR=armR[0],hipL=legL[0],hipR=legR[0];
+  const chest=[(shL[0]+shR[0])/2,(shL[1]+shR[1])/2+h*0.05];
+  // eyeline target (panel fractions → px); default: look forward by body facing
+  const tgt=(opts.eyeline&&opts.W)?[opts.eyeline.x*opts.W,opts.eyeline.y*opts.H]:[head[0]+(opts.facing||0)*h*1.4,head[1]+h*0.02];
   // contact shadow — a hard ink ellipse
   ctx.save();ctx.fillStyle='#000';ctx.globalAlpha=.55;ctx.beginPath();ctx.ellipse(fx,fy+2,h*.15,h*.028,0,0,7);ctx.fill();ctx.restore();
   // (1) DRAFT register — the blue-line rough (skeleton only, no ink): the "blueline" underdrawing.
   if(opts.draft||showDraft){const bw=Math.max(1.5,h*.016);
     [spine,armL,armR,legL,legR].forEach(c=>strokeLine(ctx,c,bw,blue));
     ctx.fillStyle=blue;[...spine,...armL,...armR,...legL,...legR,head].forEach(p=>{ctx.globalAlpha=.85;ctx.beginPath();ctx.arc(p[0],p[1],h*.015,0,7);ctx.fill();});ctx.globalAlpha=1;
-    ctx.strokeStyle=blue;ctx.lineWidth=bw;ctx.beginPath();ctx.arc(head[0],head[1],hr*1.05,0,7);ctx.stroke();
+    orientedHead(ctx,head[0],head[1],hr,tgt[0],tgt[1],blue,false);   // the blocking sphere, facing the gaze
+    facingWedge(ctx,chest[0],chest[1],h,opts.facing,blue);           // torso direction (may differ from gaze)
     if(P.bow){const hand=[fx+P.bow.hand[0]*h,fy+P.bow.hand[1]*h],dr=[fx+P.bow.draw[0]*h,fy+P.bow.draw[1]*h];
-      ctx.beginPath();ctx.arc(hand[0],hand[1],h*.17,-1.25,1.25);ctx.stroke();const a=h*.17;
+      ctx.strokeStyle=blue;ctx.lineWidth=bw;ctx.beginPath();ctx.arc(hand[0],hand[1],h*.17,-1.25,1.25);ctx.stroke();const a=h*.17;
       ctx.beginPath();ctx.moveTo(hand[0]+Math.cos(-1.25)*a,hand[1]+Math.sin(-1.25)*a);ctx.lineTo(dr[0],dr[1]);ctx.lineTo(hand[0]+Math.cos(1.25)*a,hand[1]+Math.sin(1.25)*a);ctx.stroke();}
+    eyelineRay(ctx,head[0],head[1],tgt[0],tgt[1]);
     return;}  // draft stops here — toggling off inks over it
   // (2) ink over — solid torso silhouette + brush-tapered limbs
-  const hipL=legL[0],hipR=legR[0],shL=armL[0],shR=armR[0];
   ctx.fillStyle=ink;ctx.beginPath();ctx.moveTo(hipL[0],hipL[1]);ctx.lineTo(shL[0],shL[1]);
   ctx.lineTo(head[0],head[1]-hr*.2);ctx.lineTo(shR[0],shR[1]);ctx.lineTo(hipR[0],hipR[1]);ctx.closePath();ctx.fill();
   const W=h*.06;
   brush(ctx,legL,W*1.0,W*.45,ink);brush(ctx,legR,W*1.0,W*.45,ink);
   brush(ctx,armL,W*.7,W*.35,ink);brush(ctx,armR,W*.7,W*.35,ink);
   brush(ctx,spine,W*1.1,W*.8,ink);
-  // head — filled ink + a hooded-cloak hint
-  ctx.fillStyle=ink;ctx.beginPath();ctx.arc(head[0],head[1],hr,0,7);ctx.fill();
-  ctx.beginPath();ctx.moveTo(head[0]-hr*1.2,head[1]+hr*.2);ctx.quadraticCurveTo(head[0],head[1]-hr*1.7,head[0]+hr*1.2,head[1]+hr*.2);ctx.lineTo(head[0]+hr*.9,head[1]+hr*.5);ctx.quadraticCurveTo(head[0],head[1]-hr*.6,head[0]-hr*.9,head[1]+hr*.5);ctx.closePath();ctx.fill();
+  // head — oriented blocking sphere (facing + eyeline cross), not a featureless blob
+  orientedHead(ctx,head[0],head[1],hr,tgt[0],tgt[1],ink,true);
+  facingWedge(ctx,chest[0],chest[1],h,opts.facing,CSS('--amber'));
   // (3) screentone shading on the shadow (right) side of the body
   const bx=Math.min(...[hipL,hipR,shL,shR].map(p=>p[0]))-W, by=head[1]-hr;
   benday(ctx,fx,by,(Math.max(hipR[0],shR[0])+W)-fx,fy-by,5,1.05,'#000',.5);
@@ -174,6 +201,8 @@ function inkFigure(ctx,fx,fy,h,pose,opts){
     ctx.strokeStyle=ink;ctx.lineWidth=Math.max(2,h*.022);ctx.beginPath();ctx.arc(hand[0],hand[1],h*.17,-1.25,1.25);ctx.stroke();
     const a=h*.17;ctx.strokeStyle=CSS('--amber');ctx.lineWidth=1.6;ctx.beginPath();
     ctx.moveTo(hand[0]+Math.cos(-1.25)*a,hand[1]+Math.sin(-1.25)*a);ctx.lineTo(draw[0],draw[1]);ctx.lineTo(hand[0]+Math.cos(1.25)*a,hand[1]+Math.sin(1.25)*a);ctx.stroke();}
+  // (5) the gaze ray + target reticle — drawn last, over everything
+  eyelineRay(ctx,head[0],head[1],tgt[0],tgt[1]);
 }
 
 // tapered ink/amber speed-lines following an implied flow + an impact burst (the comic flow leg)
@@ -224,6 +253,7 @@ function drawPanel(ctx,W,H,shot,opts){
     ctx.quadraticCurveTo(W*0.16,H*0.32,W*0.27,H*0.62);ctx.lineTo(W*0.25,H);ctx.closePath();ctx.fill();
     ctx.beginPath();ctx.arc(W*0.13,H*0.34,H*0.14,0,7);ctx.fill();}
   const fh=H*C.h, fx=W*C.x, fy=Math.min(gy,H-4);
+  opts.eyeline=shot.eyeline;opts.facing=shot.facing;opts.W=W;opts.H=H;   // the staging channel
   inkFigure(ctx,fx,fy,fh,shot.pose,opts);
   // letterbox + clip-color spine (Live clip color)
   ctx.fillStyle='#000';ctx.fillRect(0,0,W,H*0.045);ctx.fillRect(0,H*0.955,W,H*0.045);

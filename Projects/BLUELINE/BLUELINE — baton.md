@@ -58,6 +58,10 @@ report, and the M4L spec (JS rewritten: `cue_points` → host-track clips; `/tra
   tapered speed-lines/impact burst on the flow shots + comic caption/border, over a **blue-line draft**
   (the draft toggle: blue rough → inked, the project's namesake). Same clock/storyboard/board-record;
   self-play advances panels on the beat. Verified in-browser, no errors. `proofs/m1-animatic/m1-report.md`.
+- **Staging channel added (2026-06-16):** `facing` + `eyeline` per shot → an **oriented-head blocking
+  sphere + eyeline ray + body-facing wedge**, so you can read which way each character faces and what they
+  look at (half the shots are eyeline beats). It's *conditioning*, not polish — facing → OpenPose head
+  keypoints. New `FACING`/`EYELINE` fields in [[BLUELINE — Board Record Schema]]. Aesthetic polish stays deferred.
 
 ## Next moves
 1. **M2 motion comic** — the held comic panels gain limited motion (parallax, held-pose drift, speed-lines
