@@ -63,13 +63,15 @@ This module is the **single source**; the consumers stop hardcoding their own co
   in `post.py` with `from staging_skeleton import OPENPOSE_LIMBS, OPENPOSE_COLORS`, and use
   `staging_frame(kp, facing)` when a board record needs its triangle/tick/L-R derived. (Non-breaking; the
   values are identical to what they hardcode today — that is why the gallery already matches.)
-- **The comic renderer (JS, M2 player):** load `staging_skeleton.js`, then build the M2 `torsoFrame` /
-  oriented-head / L-R tags from `StagingSkeleton.stagingFrame(kp, facing)` instead of bespoke per-pose
-  math, so the comic and the bench draw the *same* frame from the *same* points.
+- **The comic renderer (JS, M2 player):** ✅ **wired (2026-06-18).** `m2-motion-comic.html` loads
+  `staging_skeleton.js` (symlinked into the folder), bridges its pose chains → canonical COCO-18 via
+  `poseKeypoints()`, and derives its `torsoFrame` (the ▽ triangle + chest tick) and `extremityTags` L/R
+  from `StagingSkeleton.stagingFrame(kp, facing)` / `lrSide()` instead of bespoke per-pose math. The head's
+  *gaze* stays authored (the comic authors the eyeline; the bench derives it — same board-record field).
+  Verified in-browser: 8/8 poses render, 0 errors, visual unchanged.
 
-When both consumers read this module, the comic preview and the Blender layout provably speak one skeleton —
-which is the precondition for **Build #2**, the animatic→Blender round-trip test (same board record → comic
-+ Blender → staging-fidelity diff).
+The comic preview and the Blender layout now provably speak one skeleton — the precondition that **Build #2**
+(the animatic→Blender round-trip) relied on, now satisfied on the *live* comic side too.
 
 ## Run
 

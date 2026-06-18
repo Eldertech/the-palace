@@ -99,6 +99,7 @@
 
   <div id="foot">Loudon Live · Autodidact Polymaths</div>
 </div>
+<script src="staging_skeleton.js"></script>
 <script>
 // ── same storyboard + clock substrate as M0/M1; the panels now MOVE in the comic register ──
 // M2's whole bet: every motion is a pure function of the song playhead (a fractional frame), not
@@ -157,6 +158,17 @@ function benday(ctx,x,y,w,h,spacing,r,color,alpha){ // Ben-Day halftone dot fiel
     ctx.beginPath();ctx.arc(xx,yy,r,0,7);ctx.fill();}
   ctx.restore();}
 function pts(chain,fx,fy,h){return chain.map(p=>[fx+p[0]*h,fy+p[1]*h]);}
+// ── bridge: M2's pose chains → canonical COCO-18 keypoints (in canvas px), so the comic preview derives
+//    its staging frame from the SAME skeleton the Blender bench emits (staging_skeleton.js). M2's "L"-named
+//    chains are the character's RIGHT side (armL/legL → kp 2-4 / 8-10), matching the module's R_SIDE. Eyes/
+//    ears are synthesised near the head (the comic draws the head from the AUTHORED eyeline, not head_facing). ──
+function poseKeypoints(P,fx,fy,h){
+  const sp=pts(P.parts[0],fx,fy,h),aL=pts(P.parts[1],fx,fy,h),aR=pts(P.parts[2],fx,fy,h),
+        lL=pts(P.parts[3],fx,fy,h),lR=pts(P.parts[4],fx,fy,h),hd=[fx+P.head[0]*h,fy+P.head[1]*h],e=h*0.05;
+  return {0:hd,1:sp[1], 2:aL[0],3:aL[1],4:aL[2], 5:aR[0],6:aR[1],7:aR[2],
+          8:lL[0],9:lL[1],10:lL[2], 11:lR[0],12:lR[1],13:lR[2],
+          14:[hd[0]-h*.02,hd[1]-h*.01],15:[hd[0]+h*.02,hd[1]-h*.01],16:[hd[0]-e,hd[1]],17:[hd[0]+e,hd[1]]};
+}
 function brush(ctx,P,w0,w1,color){ctx.fillStyle=color;
   for(let i=0;i<P.length-1;i++){const a=P[i],b=P[i+1];const steps=Math.max(4,Math.hypot(b[0]-a[0],b[1]-a[1])/2);
     for(let t=0;t<=1;t+=1/steps){const seg=(i+t)/(P.length-1);const r=w0+(w1-w0)*seg;
@@ -177,8 +189,12 @@ function eyelineRay(ctx,hx,hy,tx,ty){let dx=tx-hx,dy=ty-hy,d=Math.hypot(dx,dy)||
   ctx.save();ctx.strokeStyle=CSS('--amber');ctx.lineWidth=1.4;ctx.globalAlpha=.9;ctx.setLineDash([2,4]);
   ctx.beginPath();ctx.moveTo(hx+dx/d*12,hy+dy/d*12);ctx.lineTo(tx,ty);ctx.stroke();ctx.setLineDash([]);
   ctx.beginPath();ctx.arc(tx,ty,5,0,7);ctx.moveTo(tx-8,ty);ctx.lineTo(tx+8,ty);ctx.moveTo(tx,ty-8);ctx.lineTo(tx,ty+8);ctx.stroke();ctx.restore();}
-function torsoFrame(ctx,shL,shR,pel,h,facing,W,H){
-  const R=CSS('--good'),L=CSS('--bad'),Pc=CSS('--pel'),ink=CSS('--ink');
+// torso frame DERIVED from the shared module: F = StagingSkeleton.stagingFrame(coco18, facing). Same
+// shoulder–shoulder–pelvis ▽ + chest tick + R/L corners as before, but the GEOMETRY is now the canonical
+// keypoints' — so the comic preview and the Blender bench draw ONE skeleton (shoulder_R = char-RIGHT = green).
+function torsoFrame(ctx,F,h,W,H){
+  const Rc=CSS('--good'),Lc=CSS('--bad'),Pc=CSS('--pel'),ink=CSS('--ink');
+  const shR=F.shoulder_R,shL=F.shoulder_L,pel=F.pelvis,mid=F.shoulder_mid;
   const inFrame=p=>p[0]>2&&p[0]<W-2&&p[1]>2&&p[1]<H-2;
   ctx.save();
   const pelIn=inFrame(pel);
@@ -186,26 +202,25 @@ function torsoFrame(ctx,shL,shR,pel,h,facing,W,H){
     ctx.globalAlpha=.5;ctx.strokeStyle=ink;ctx.lineWidth=Math.max(1.2,h*.01);ctx.beginPath();ctx.moveTo(shR[0],shR[1]);ctx.lineTo(pel[0],pel[1]);ctx.lineTo(shL[0],shL[1]);ctx.stroke();}
   ctx.globalAlpha=.75;ctx.strokeStyle=ink;ctx.lineWidth=Math.max(1.8,h*.014);ctx.lineCap='round';
   ctx.beginPath();ctx.moveTo(shL[0],shL[1]);ctx.lineTo(shR[0],shR[1]);ctx.stroke();
-  const mx=(shL[0]+shR[0])/2,my=(shL[1]+shR[1])/2,f=Math.max(-1,Math.min(1,facing||0));
-  const nx=f,ny=Math.sqrt(Math.max(0,1-f*f)),nl=h*0.135,tx=mx+nx*nl,ty=my+ny*nl,ang=Math.atan2(ty-my,tx-mx),ah=h*.05;
-  ctx.globalAlpha=.95;ctx.lineWidth=Math.max(2,h*.016);ctx.beginPath();ctx.moveTo(mx,my);ctx.lineTo(tx,ty);ctx.stroke();
+  const nl=h*0.135,tx=mid[0]+F.facing_tick[0]*nl,ty=mid[1]+F.facing_tick[1]*nl,ang=Math.atan2(ty-mid[1],tx-mid[0]),ah=h*.05;
+  ctx.globalAlpha=.95;ctx.lineWidth=Math.max(2,h*.016);ctx.beginPath();ctx.moveTo(mid[0],mid[1]);ctx.lineTo(tx,ty);ctx.stroke();
   ctx.beginPath();ctx.moveTo(tx,ty);ctx.lineTo(tx-Math.cos(ang-0.5)*ah,ty-Math.sin(ang-0.5)*ah);ctx.moveTo(tx,ty);ctx.lineTo(tx-Math.cos(ang+0.5)*ah,ty-Math.sin(ang+0.5)*ah);ctx.stroke();
   ctx.globalAlpha=1;const r=Math.max(3.6,h*.027);
   function c(p,col){ctx.fillStyle=col;ctx.beginPath();ctx.arc(p[0],p[1],r,0,7);ctx.fill();ctx.lineWidth=1;ctx.strokeStyle='#15161a';ctx.stroke();}
-  c(shL,R);c(shR,L);if(pelIn)c(pel,Pc);
+  c(shR,Rc);c(shL,Lc);if(pelIn)c(pel,Pc);
   ctx.restore();}
+// L/R extremity tags, coloured by the MODULE's lrSide declaration (not guessed) — char-R wrist/ankle = kp 4/10.
 function extremityTags(ctx,pose,fx,fy,h,grip){
-  const P=POSES[pose]||POSES.stand_front;
-  const armL=pts(P.parts[1],fx,fy,h),armR=pts(P.parts[2],fx,fy,h),legL=pts(P.parts[3],fx,fy,h),legR=pts(P.parts[4],fx,fy,h);
-  const Rc=CSS('--good'),Lc=CSS('--bad'),r=Math.max(4,h*.030);
+  const P=POSES[pose]||POSES.stand_front, kp=poseKeypoints(P,fx,fy,h), S=window.StagingSkeleton;
+  const Rc=CSS('--good'),Lc=CSS('--bad'),r=Math.max(4,h*.030),col=i=>S.lrSide(i)==='R'?Rc:Lc;
   function tag(p,col,letter,closed){ctx.fillStyle=col;
     if(closed){ctx.beginPath();ctx.arc(p[0],p[1],r,0,7);ctx.fill();}
     else{ctx.strokeStyle=col;ctx.lineWidth=Math.max(1.5,r*.4);ctx.beginPath();ctx.arc(p[0],p[1],r,0,7);ctx.stroke();}
     ctx.fillStyle=closed?'#15161a':col;ctx.font='bold '+Math.round(r*1.35)+'px "JetBrains Mono", monospace';
     ctx.textAlign='center';ctx.textBaseline='middle';ctx.fillText(letter,p[0],p[1]);ctx.textAlign='left';ctx.textBaseline='alphabetic';}
   const bow=!!P.bow;
-  tag(armL[2],Rc,'R',bow); tag(armR[2],Lc,'L',bow||grip==='fist');
-  tag(legL[2],Rc,'R',true); tag(legR[2],Lc,'L',true);
+  tag(kp[4],col(4),'R',bow); tag(kp[7],col(7),'L',bow||grip==='fist');     // wrists  (char-R / char-L)
+  tag(kp[10],col(10),'R',true); tag(kp[13],col(13),'L',true);             // ankles  (always planted)
 }
 function actionLines(ctx,x,y,dx,dy,intensity){let d=Math.hypot(dx,dy)||1;dx/=d;dy/=d;const px=-dy,py=dx;
   const n=4+Math.round(intensity*3),len=42+intensity*66;ctx.save();ctx.strokeStyle=CSS('--ink');ctx.lineCap='round';
@@ -224,6 +239,7 @@ function inkFigure(ctx,fx,fy,h,pose,opts){
         legL=pts(P.parts[3],fx,fy,h), legR=pts(P.parts[4],fx,fy,h);
   const head=[fx+P.head[0]*h,fy+P.head[1]*h], hr=h*.072;
   const shL=armL[0],shR=armR[0],hipL=legL[0],hipR=legR[0];
+  const F=window.StagingSkeleton.stagingFrame(poseKeypoints(P,fx,fy,h),opts.facing);  // the staging frame, from the shared skeleton
   const tgt=(opts.eyeline&&opts.W)?[opts.eyeline.x*opts.W,opts.eyeline.y*opts.H]:[head[0]+(opts.facing||0)*h*1.4,head[1]+h*0.02];
   const shimmer=opts.bowShimmer||0;   // amber bowstring tremor (render-only)
   if(!opts.skipShadow){ctx.save();ctx.fillStyle='#000';ctx.globalAlpha=.55;ctx.beginPath();ctx.ellipse(fx,fy+2,h*.15,h*.028,0,0,7);ctx.fill();ctx.restore();}
@@ -231,7 +247,7 @@ function inkFigure(ctx,fx,fy,h,pose,opts){
     [spine,armL,armR,legL,legR].forEach(c=>strokeLine(ctx,c,bw,blue));
     ctx.fillStyle=blue;[...spine,...armL,...armR,...legL,...legR,head].forEach(p=>{ctx.globalAlpha=.85;ctx.beginPath();ctx.arc(p[0],p[1],h*.015,0,7);ctx.fill();});ctx.globalAlpha=1;
     orientedHead(ctx,head[0],head[1],hr,tgt[0],tgt[1],blue,false);
-    torsoFrame(ctx,shL,shR,spine[0],h,opts.facing,opts.W,opts.H);
+    torsoFrame(ctx,F,h,opts.W,opts.H);
     if(P.bow){const hand=[fx+P.bow.hand[0]*h,fy+P.bow.hand[1]*h],dr=[fx+P.bow.draw[0]*h,fy+P.bow.draw[1]*h+shimmer];
       ctx.strokeStyle=blue;ctx.lineWidth=bw;ctx.beginPath();ctx.arc(hand[0],hand[1],h*.17,-1.25,1.25);ctx.stroke();const a=h*.17;
       ctx.beginPath();ctx.moveTo(hand[0]+Math.cos(-1.25)*a,hand[1]+Math.sin(-1.25)*a);ctx.lineTo(dr[0],dr[1]);ctx.lineTo(hand[0]+Math.cos(1.25)*a,hand[1]+Math.sin(1.25)*a);ctx.stroke();}
@@ -244,7 +260,7 @@ function inkFigure(ctx,fx,fy,h,pose,opts){
   brush(ctx,armL,W*.7,W*.35,ink);brush(ctx,armR,W*.7,W*.35,ink);
   brush(ctx,spine,W*1.1,W*.8,ink);
   orientedHead(ctx,head[0],head[1],hr,tgt[0],tgt[1],ink,true);
-  torsoFrame(ctx,shL,shR,spine[0],h,opts.facing,opts.W,opts.H);
+  torsoFrame(ctx,F,h,opts.W,opts.H);
   const bx=Math.min(...[hipL,hipR,shL,shR].map(p=>p[0]))-W, by=head[1]-hr;
   benday(ctx,fx,by,(Math.max(hipR[0],shR[0])+W)-fx,fy-by,5,1.05,'#000',.5);
   if(P.bow){const hand=[fx+P.bow.hand[0]*h,fy+P.bow.hand[1]*h],draw=[fx+P.bow.draw[0]*h,fy+P.bow.draw[1]*h+shimmer];
