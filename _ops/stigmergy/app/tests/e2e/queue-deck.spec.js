@@ -56,18 +56,26 @@ test.describe('QUEUE panel — the ranked inbox', () => {
     await gotoQueue(page);
     await page.getByTestId('queue-lane-WEAVE').click();
 
+    // set-vector executable (Increment 1)
     const tuning = page.locator('[data-testid="queue-item"][data-kind="vector_proposal"]', { hasText: 'Retrospective Delay' });
     await expect(tuning).toBeVisible();
     await expect(tuning.getByTestId('queue-item-proposal-type')).toContainText(/forward-vector tuning/);
     await expect(tuning.getByTestId('queue-item-apply')).toBeVisible();
     await expect(tuning.getByTestId('queue-item-apply')).toContainText(/grant & apply/i);
 
+    // add-link executable (Increment 2) — the emblematic new-typed-link case
+    const link = page.locator('[data-testid="queue-item"][data-kind="vector_proposal"]', { hasText: 'Shepard Tone Synthesizer' });
+    await expect(link).toBeVisible();
+    await expect(link.getByTestId('queue-item-proposal-type')).toContainText(/new typed link/);
+    await expect(link.getByTestId('queue-item-apply')).toBeVisible();
+
+    // prose-only stays manual-grant (no apply op)
     const prose = page.locator('[data-testid="queue-item"][data-kind="vector_proposal"]', { hasText: 'promote unsung path' });
     await expect(prose).toBeVisible();
     await expect(prose.getByTestId('queue-item-grant')).toBeVisible();
     await expect(prose.getByTestId('queue-item-apply')).toHaveCount(0);
 
-    await tuning.getByTestId('queue-item-apply').scrollIntoViewIfNeeded();
+    await link.getByTestId('queue-item-apply').scrollIntoViewIfNeeded();
     await page.screenshot({ path: '/tmp/stigmergy-weave-grant-apply.png', fullPage: false });
   });
 
