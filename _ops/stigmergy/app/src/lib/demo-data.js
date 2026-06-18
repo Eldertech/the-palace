@@ -507,6 +507,40 @@ export const DEMO_MESSAGES = [
     },
   },
   {
+    // vector_proposal of type new_typed_link carrying an `add-link` apply op
+    // (Increment 2): grant & apply appends the typed link to the entry's `links:`
+    // array, churn-free, and PROOFs it. Both entries are demo-only so a stray
+    // showcase click 404s rather than editing a real entry; the executable path
+    // is proven in weave-apply.test.js. Older ts so it ranks below the others.
+    id: 'demo-vector-proposal-3',
+    schema_version: '1.0',
+    ts: '2026-05-30T13:00:00Z',
+    session_id: 'demo-weave-2026-05-30',
+    from: '@weave-swarm',
+    to: '*',
+    type: 'BROADCAST',
+    board: 'WEAVE',
+    health: { context_pct: 0, stop_reason: 'proposal', iteration: 1, tokens_this_call: 0, model: 'demo', score: 'green' },
+    payload: {
+      kind: 'vector_proposal',
+      proposal_type: 'new_typed_link',
+      source_entry: 'Shepard Tone Synthesizer (demo).md',
+      target_entry: 'Inharmonic Wavetable Synthesis (demo).md',
+      proposed_change:
+        'add a couples-with link from Shepard Tone Synthesizer to Inharmonic Wavetable Synthesis — they co-activate (a Shepard stack is the limiting case of an inharmonic sweep)',
+      rationale:
+        'The two synths are always reasoned about together, but no typed edge connects them. The Topology Lens flagged the unsung path. Grant & apply appends the `couples-with` link to the entry frontmatter (churn-free, the existing links untouched); the commit + a weave_applied PROOF are the record, and undo is a git revert away.',
+      apply: {
+        op: 'add-link',
+        entry: 'Shepard Tone Synthesizer (demo)',
+        target: 'Inharmonic Wavetable Synthesis (demo)',
+        type: 'couples-with',
+        label: 'spectral-sibling',
+      },
+      stale_if: 'a RESOURCE_GRANT/DENY answers this proposal, or a commit adds the link',
+    },
+  },
+  {
     // weave_flag v1.0: a deposit-ceremony flag asking the next Weave to
     // audit a backlink target. Sibling to vector_proposal -- renders as a
     // WEAVE FLAG card in QUEUE, closes via RESOURCE_GRANT/RESOURCE_DENY or
