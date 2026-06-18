@@ -3,7 +3,7 @@
 // the exactly-once-or-refuse discipline that keeps the Companion honest).
 
 import { describe, it, expect } from 'vitest';
-import { splitRawFrontmatter, applyOp, setForwardVector } from '../../server/armed-write.js';
+import { splitRawFrontmatter, applyOp, setForwardVector, addLinkToFrontmatter } from '../../server/armed-write.js';
 
 describe('splitRawFrontmatter', () => {
   it('splits frontmatter from body, fences kept verbatim', () => {
@@ -125,5 +125,87 @@ describe('setForwardVector', () => {
     expect(setForwardVector(fm, 'line one\nline two').ok).toBe(false);
     expect(setForwardVector('---\nforward_vector: |\n  multi\n  line\n---\n', 'x').ok).toBe(false);
     expect(setForwardVector('', 'x').ok).toBe(false);
+  });
+});
+
+describe('addLinkToFrontmatter', () => {
+  const withLinks =
+    '---\ntitle: X\ntype: concept\nlinks:\n  - target: "[[Alpha]]"\n    type: mirrors\n    label: echoes\nstage: seed\n---\n';
+
+  it('appends a new block item after the last existing link, before the next field', () => {
+    const r = addLinkToFrontmatter(withLinks, { target: 'Beta', type: 'connects-to', label: 'rhymes-with' });
+    expect(r.ok).toBe(true);
+    expect(r.fmBlock).toContain('  - target: "[[Beta]]"\n    type: connects-to\n    label: rhymes-with\n');
+    // inserted inside the links block, BEFORE the trailing `stage:` field
+    expect(r.fmBlock.indexOf('[[Beta]]')).toBeLessThan(r.fmBlock.indexOf('stage: seed'));
+    // the pre-existing Alpha item is untouched (churn-free)
+    expect(r.fmBlock).toContain('  - target: "[[Alpha]]"\n    type: mirrors\n    label: echoes');
+    expect(r.linkChange).toEqual({ target: 'Beta', type: 'connects-to', label: 'rhymes-with' });
+  });
+
+  it('omits the label line when no label is given', () => {
+    const r = addLinkToFrontmatter(withLinks, { target: '[[Gamma]]', type: 'deepens' });
+    expect(r.ok).toBe(true);
+    expect(r.fmBlock).toContain('  - target: "[[Gamma]]"\n    type: deepens\n');
+    expect(r.fmBlock).not.toMatch(/\[\[Gamma\]\][\s\S]*?label:/);
+    expect(r.linkChange).toEqual({ target: 'Gamma', type: 'deepens' });
+  });
+
+  it('accepts a bare title OR a [[wikilink]] target, emitting the quoted wikilink either way', () => {
+    expect(addLinkToFrontmatter(withLinks, { target: 'Delta', type: 'enables' }).fmBlock).toContain('target: "[[Delta]]"');
+    expect(addLinkToFrontmatter(withLinks, { target: '[[Delta]]', type: 'enables' }).fmBlock).toContain('target: "[[Delta]]"');
+  });
+
+  it('refuses a duplicate (same target + type), regardless of title vs [[wikilink]] / case', () => {
+    expect(addLinkToFrontmatter(withLinks, { target: 'Alpha', type: 'mirrors' }).ok).toBe(false);
+    expect(addLinkToFrontmatter(withLinks, { target: '[[Alpha]]', type: 'mirrors' }).ok).toBe(false);
+    expect(addLinkToFrontmatter(withLinks, { target: 'alpha', type: 'mirrors' }).ok).toBe(false);
+  });
+
+  it('allows the same target with a DIFFERENT type (not a duplicate)', () => {
+    const r = addLinkToFrontmatter(withLinks, { target: 'Alpha', type: 'couples-with' });
+    expect(r.ok).toBe(true);
+    expect(r.fmBlock).toContain('  - target: "[[Alpha]]"\n    type: couples-with');
+  });
+
+  it('creates a links: block when the field is absent, before the closing fence', () => {
+    const noLinks = '---\ntitle: X\ntype: concept\nstage: seed\n---\n';
+    const r = addLinkToFrontmatter(noLinks, { target: 'Omega', type: 'member-of' });
+    expect(r.ok).toBe(true);
+    expect(r.fmBlock).toMatch(/stage: seed\nlinks:\n  - target: "\[\[Omega\]\]"\n    type: member-of\n---\n/);
+  });
+
+  it('replaces an inline `links: []` with the block form', () => {
+    const empty = '---\ntitle: X\nlinks: []\nstage: seed\n---\n';
+    const r = addLinkToFrontmatter(empty, { target: 'Iota', type: 'exemplifies' });
+    expect(r.ok).toBe(true);
+    expect(r.fmBlock).toContain('links:\n  - target: "[[Iota]]"\n    type: exemplifies');
+    expect(r.fmBlock).not.toMatch(/links:\s*\[\]/);
+  });
+
+  it('appends to a links block that is the last field (no trailing field)', () => {
+    const tail = '---\ntitle: X\nlinks:\n  - target: "[[Alpha]]"\n    type: mirrors\n---\n';
+    const r = addLinkToFrontmatter(tail, { target: 'Beta', type: 'connects-to' });
+    expect(r.ok).toBe(true);
+    expect(r.fmBlock).toMatch(/type: mirrors\n  - target: "\[\[Beta\]\]"\n    type: connects-to\n---\n/);
+  });
+
+  it('matches non-canonical (zero-indent) item indentation', () => {
+    const zero = '---\ntitle: X\nlinks:\n- target: "[[Alpha]]"\n  type: mirrors\n---\n';
+    const r = addLinkToFrontmatter(zero, { target: 'Beta', type: 'connects-to' });
+    expect(r.ok).toBe(true);
+    expect(r.fmBlock).toContain('\n- target: "[[Beta]]"\n  type: connects-to\n');
+  });
+
+  it('refuses empty target / empty type / no frontmatter', () => {
+    expect(addLinkToFrontmatter(withLinks, { target: '   ', type: 'mirrors' }).ok).toBe(false);
+    expect(addLinkToFrontmatter(withLinks, { target: 'Z', type: '  ' }).ok).toBe(false);
+    expect(addLinkToFrontmatter('', { target: 'Z', type: 'mirrors' }).ok).toBe(false);
+  });
+
+  it('leaves every non-links line byte-identical (churn-free)', () => {
+    const r = addLinkToFrontmatter(withLinks, { target: 'Beta', type: 'connects-to' });
+    expect(r.fmBlock).toContain('title: X\ntype: concept\n');
+    expect(r.fmBlock).toContain('stage: seed\n---\n');
   });
 });

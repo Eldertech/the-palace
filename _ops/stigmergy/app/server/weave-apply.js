@@ -25,7 +25,7 @@ import { normalizeApplyOp, describeApplyOp } from '../src/lib/weave-apply-op.js'
  * Build the §2.2 PROOF a weave-applied edit posts once committed. The commit
  * hash is the proof the change is real. Pure; validated before append.
  */
-export function buildWeaveAppliedProof({ entry, op, commit, subject, vectorChange, proposalId = null, model, ts, id }) {
+export function buildWeaveAppliedProof({ entry, op, commit, subject, vectorChange, linkChange, proposalId = null, model, ts, id }) {
   const stamp = ts || new Date().toISOString();
   return {
     schema_version: '1.0',
@@ -57,6 +57,8 @@ export function buildWeaveAppliedProof({ entry, op, commit, subject, vectorChang
       // A forward-vector change is never silent — carry from->to (the standing
       // rule). Present only for ops that move the vector.
       ...(vectorChange ? { vector_change: vectorChange } : {}),
+      // The typed link that was added, for an add-link op.
+      ...(linkChange ? { link_change: linkChange } : {}),
       author: 'weave',
     },
   };
@@ -105,8 +107,12 @@ export async function applyWeaveProposal({
   if (!abs) return { ok: false, status: 404, error: `entry not found: ${op.entry}` };
   const relPath = relative(palaceRoot, abs);
 
-  // Map the apply op onto an armed-write op. (set-vector only for now.)
-  const writeOp = op.op === 'set-vector' ? { op: 'set-vector', text: op.text } : null;
+  // Map the apply op onto an armed-write op.
+  const writeOp = op.op === 'set-vector'
+    ? { op: 'set-vector', text: op.text }
+    : op.op === 'add-link'
+      ? { op: 'add-link', target: op.target, type: op.type, ...(op.label ? { label: op.label } : {}) }
+      : null;
   if (!writeOp) return { ok: false, status: 422, error: `cannot apply op "${op.op}" yet` };
 
   const write = armedWriteImpl || armedWriteEntry;
@@ -126,7 +132,7 @@ export async function applyWeaveProposal({
 
   const proof = buildWeaveAppliedProof({
     entry: op.entry, op, commit: result.shortHash, subject: result.subject,
-    vectorChange: result.vectorChange, proposalId, model, ts, id,
+    vectorChange: result.vectorChange, linkChange: result.linkChange, proposalId, model, ts, id,
   });
   let proofPosted = false;
   try { proofPosted = (appendImpl || defaultAppend(boardPath))(proof); } catch { proofPosted = false; }
@@ -138,6 +144,7 @@ export async function applyWeaveProposal({
     entry: op.entry,
     op: op.op,
     vectorChange: result.vectorChange || null,
+    linkChange: result.linkChange || null,
     proofPosted,
     proof,
   };
