@@ -472,6 +472,41 @@ export const DEMO_MESSAGES = [
     },
   },
   {
+    // vector_proposal carrying a structured `apply` op (Increment 1): a
+    // vector-tuning proposal the executor can RUN on "grant & apply" — it edits
+    // the entry's forward_vector through the enforced honest-write path, commits
+    // as kind `weave`, and posts a weave_applied PROOF. source/apply point at a
+    // demo-only entry so a stray click in the showcase 404s safely instead of
+    // editing a real entry; the executable path is proven in weave-apply.test.js.
+    id: 'demo-vector-proposal-2',
+    schema_version: '1.0',
+    // Older than demo-vector-proposal-1 (14:00) so the promote-unsung card stays
+    // first in the newest-first ranking — keeping the existing `.first()`-based
+    // queue-deck specs stable while this sibling demonstrates grant & apply.
+    ts: '2026-05-30T13:30:00Z',
+    session_id: 'demo-weave-2026-05-30',
+    from: '@weave-swarm',
+    to: '*',
+    type: 'BROADCAST',
+    board: 'WEAVE',
+    health: { context_pct: 0, stop_reason: 'proposal', iteration: 1, tokens_this_call: 0, model: 'demo', score: 'green' },
+    payload: {
+      kind: 'vector_proposal',
+      proposal_type: 'vector_tuning',
+      source_entry: 'Retrospective Delay (demo).md',
+      proposed_change:
+        'tune the Retrospective Delay forward_vector to name its teaching aim, not just its mechanism',
+      rationale:
+        'The current vector states what the delay does; the Weave proposes one that states what it wants to teach — closer to a conatus (per the forward-vector discipline). Grant & apply writes it through the honest-write path; the commit + a weave_applied PROOF are the record, and undo is a git revert away.',
+      apply: {
+        op: 'set-vector',
+        entry: 'Retrospective Delay (demo)',
+        text: 'I will keep turning latency into memory — teaching delay as the felt shape of the past holding the present.',
+      },
+      stale_if: 'a RESOURCE_GRANT/DENY answers this proposal, or a commit tunes Retrospective Delay',
+    },
+  },
+  {
     // weave_flag v1.0: a deposit-ceremony flag asking the next Weave to
     // audit a backlink target. Sibling to vector_proposal -- renders as a
     // WEAVE FLAG card in QUEUE, closes via RESOURCE_GRANT/RESOURCE_DENY or

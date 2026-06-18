@@ -47,6 +47,30 @@ test.describe('QUEUE panel — the ranked inbox', () => {
     await expect(proposal.getByTestId('queue-item-jump')).toContainText(/Kuramoto Coupling/);
   });
 
+  // The Weave loop's back half: a proposal carrying a structured `apply` op
+  // offers "grant & apply" (executes the edit), while a prose-only proposal
+  // stays manual-grant. We assert the affordance only — clicking it would edit
+  // the live palace; the executor's write/commit/PROOF path is proven in
+  // tests/integration/weave-apply.test.js.
+  test('an executable vector_proposal offers grant & apply; a prose-only one does not', async ({ page }) => {
+    await gotoQueue(page);
+    await page.getByTestId('queue-lane-WEAVE').click();
+
+    const tuning = page.locator('[data-testid="queue-item"][data-kind="vector_proposal"]', { hasText: 'Retrospective Delay' });
+    await expect(tuning).toBeVisible();
+    await expect(tuning.getByTestId('queue-item-proposal-type')).toContainText(/forward-vector tuning/);
+    await expect(tuning.getByTestId('queue-item-apply')).toBeVisible();
+    await expect(tuning.getByTestId('queue-item-apply')).toContainText(/grant & apply/i);
+
+    const prose = page.locator('[data-testid="queue-item"][data-kind="vector_proposal"]', { hasText: 'promote unsung path' });
+    await expect(prose).toBeVisible();
+    await expect(prose.getByTestId('queue-item-grant')).toBeVisible();
+    await expect(prose.getByTestId('queue-item-apply')).toHaveCount(0);
+
+    await tuning.getByTestId('queue-item-apply').scrollIntoViewIfNeeded();
+    await page.screenshot({ path: '/tmp/stigmergy-weave-grant-apply.png', fullPage: false });
+  });
+
   test('a weave_flag renders as a WEAVE FLAG card with flag_type, deposit, sources, and target', async ({ page }) => {
     await gotoQueue(page);
     // Switch to the WEAVE lane so the flag card is visible alongside the proposal.
@@ -161,7 +185,9 @@ test.describe('QUEUE panel — the ranked inbox', () => {
     await expect(verdict).toBeVisible();
     await verdict.getByTestId('queue-item-decision-clear').click();
     await page.waitForTimeout(200);
-    // The decided card is tidied away.
-    await expect(page.locator('[data-testid="queue-item"][data-kind="vector_proposal"]')).toHaveCount(0);
+    // The decided card (the promote-unsung proposal, first in the ranking) is
+    // tidied away. (A sibling vector-tuning proposal also exists in the demo
+    // feed; scope the assertion to the one we granted.)
+    await expect(page.locator('[data-testid="queue-item"][data-kind="vector_proposal"]', { hasText: 'promote unsung path' })).toHaveCount(0);
   });
 });

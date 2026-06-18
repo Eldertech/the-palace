@@ -185,6 +185,29 @@ describe('buildQueue', () => {
     })]);
     expect(q[0].pointer).toEqual({ type: 'board', target: 'WEAVE' });
   });
+
+  it('surfaces a structured apply op when the proposal carries one (drives grant & apply)', () => {
+    const q = buildQueue([proposalMsg({
+      payload: {
+        kind: 'vector_proposal',
+        proposal_type: 'vector_tuning',
+        source_entry: 'Retrospective Delay.md',
+        apply: { op: 'set-vector', entry: 'Retrospective Delay', text: 'I will keep turning latency into memory.' },
+      },
+    })]);
+    expect(q[0].apply).toEqual({ op: 'set-vector', entry: 'Retrospective Delay', text: 'I will keep turning latency into memory.' });
+  });
+
+  it('leaves apply null for a prose-only proposal (stays manual-grant)', () => {
+    expect(buildQueue([proposalMsg()])[0].apply).toBe(null);
+  });
+
+  it('leaves apply null for a malformed apply op', () => {
+    const q = buildQueue([proposalMsg({
+      payload: { kind: 'vector_proposal', proposal_type: 'vector_tuning', source_entry: 'X.md', apply: { op: 'set-vector', entry: 'X' } },
+    })]);
+    expect(q[0].apply).toBe(null);
+  });
 });
 
 describe('reconcileQueue — vector_proposal', () => {

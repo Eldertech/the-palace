@@ -30,6 +30,7 @@
 // retrospective crossing made concrete.
 
 import { tsCompare, tsToEpoch } from './format.js';
+import { normalizeApplyOp } from './weave-apply-op.js';
 
 // ── Build the open queue from board messages ─────────────────────────────────
 
@@ -124,6 +125,11 @@ export function buildQueue(messages) {
         summary: ask,
         rationale: typeof p.rationale === 'string' ? p.rationale : null,
         evidence: p.evidence ?? null,
+        // A structured, mechanically-applicable change (set-vector, ...) the
+        // executor can run on "grant & apply", or null when the proposal is
+        // prose-only (manual grant, as before). Single source of truth for the
+        // op shape lives in weave-apply-op.js — the server validates identically.
+        apply: normalizeApplyOp(p.apply),
         // No grant/deny yet -- by the same logic as resource_request: a
         // committed edit to the source entry would coarsely close it, but
         // the canonical resolution is a RESOURCE_GRANT/DENY referencing
@@ -175,6 +181,9 @@ export function buildQueue(messages) {
         // set for reconcileQueue's array-aware entry-touch matching.
         entry: primary,
         entries: sourceEntries,
+        // An applicable change, if the flag carries one (same op shape as a
+        // vector_proposal); null for the common prose-only flag.
+        apply: normalizeApplyOp(p.apply),
         stale_if: typeof p.stale_if === 'string' && p.stale_if !== ''
           ? p.stale_if
           : (sourceEntries.length > 0
