@@ -398,6 +398,14 @@ is*, and it maps onto **decisions → TRICKSTER, information → GENERAL**:
   *experience* (audio renders, images, sims) → `payload.kind:"choice"` with a
   per-option `artifact_path`. Put it on TRICKSTER if it gates the cycle, GENERAL
   if it is a non-blocking preference.
+- **Work you need to do *together, live*** (iterative, taste-driven — dial it
+  in by ear, react, repeat) → `RESOURCE_REQUEST` to **TRICKSTER** with
+  `payload.kind:"interactive_session"`. The card foregrounds a *launch
+  interactive session* button, so your `options[]` are the decline/defer paths,
+  not a "yes". A **rare** move: ship the current state first, keep it
+  `blocking: false`, and reserve it for genuinely iterative together-work — see
+  the steward posture's *Ask for a live session only when the work wants a
+  conversation*.
 - **Something you are simply showing** (a result, a model, a sweep) →
   `BROADCAST` / `PROOF` on **GENERAL** / **WEAVE** with `equations` / `table` /
   `artifacts`.
