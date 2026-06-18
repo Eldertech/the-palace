@@ -79,7 +79,9 @@ def realize(shot):
         if co.z <= 0: behind += 1
         if infr: ys.append(co.y)
         if infr and i in subj_ids: subj_ys.append(co.y)
-        kp[i] = [round(co.x * RES_X, 1), round((1 - co.y) * RES_Y, 1), 1.0 if infr else 0.3]
+        # 4th element = camera-space depth (units in front); the laterality diff uses it to tell a
+        # foreshortened forward limb (depth-resolved) from a genuine L/R swap.
+        kp[i] = [round(co.x * RES_X, 1), round((1 - co.y) * RES_Y, 1), 1.0 if infr else 0.3, round(co.z, 4)]
     fill = (max(subj_ys) - min(subj_ys)) if subj_ys else ((max(ys) - min(ys)) if ys else 0.0)
     # also draw the geometric openpose so the viewer can show it (reuse the gallery color order via the module)
     return {"id": shot["id"], "pose": shot["pose"], "grammar": shot["grammar"], "note": shot["note"],

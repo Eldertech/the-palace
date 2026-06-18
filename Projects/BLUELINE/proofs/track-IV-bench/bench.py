@@ -23,8 +23,9 @@ BL_DIR = os.path.join(HERE, "blends")
 for d in (P_DIR, B_DIR, BL_DIR): os.makedirs(d, exist_ok=True)
 RES_X, RES_Y = 832, 1216
 
-LIMBS = [(1,2),(1,5),(2,3),(3,4),(5,6),(6,7),(1,8),(8,9),(9,10),
-         (1,11),(11,12),(12,13),(1,0),(0,14),(14,16),(0,15),(15,17)]
+import sys; sys.path.insert(0, os.path.join(HERE, "..", "..", "staging-skeleton"))
+import staging_skeleton as SK            # ONE skeleton — the canonical OpenPose limb topology from the shared module
+LIMBS = [tuple(l) for l in SK.OPENPOSE_LIMBS]
 
 # ----- POSE LIBRARY (COCO-18 world coords, Z up). `face` = which way +Y the chest points
 def lunge():   # Session 1's proven worm's-eye sword-draw lunge; faces -Y (toward cam)

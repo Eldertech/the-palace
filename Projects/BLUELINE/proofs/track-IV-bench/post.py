@@ -7,9 +7,9 @@ from PIL import Image, ImageDraw
 import cv2
 
 HERE = os.path.dirname(os.path.abspath(__file__)); P = os.path.join(HERE, "passes")
-COLORS = [(255,0,0),(255,85,0),(255,170,0),(255,255,0),(170,255,0),(85,255,0),(0,255,0),
-          (0,255,85),(0,255,170),(0,255,255),(0,170,255),(0,85,255),(0,0,255),(85,0,255),
-          (170,0,255),(255,0,255),(255,0,170),(255,0,85)]
+import sys; sys.path.insert(0, os.path.join(HERE, "..", "..", "staging-skeleton"))
+import staging_skeleton as SK            # ONE skeleton — the canonical OpenPose colours from the shared module
+COLORS = [tuple(c) for c in SK.OPENPOSE_COLORS]
 
 def draw_openpose(kpf):
     d = json.load(open(kpf)); W,H = d["width"],d["height"]; kp = {int(k):v for k,v in d["keypoints"].items()}
