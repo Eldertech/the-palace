@@ -39,23 +39,41 @@ def verdict(shot):
 
     # 3) laterality — do char-R extremities project to the wrong screen side (limbs crossing)?
     #    front-ish (|facing|<0.5): char-R (2,3,4 / 8,9,10) should sit screen-LEFT of char-L (5,6,7 / 11,12,13).
+    #    A crossing is REAL ambiguity only when both limbs sit at similar depth. A limb thrust toward the
+    #    camera (markedly forward of the torso) legitimately crosses in projection — the DEPTH pass resolves
+    #    which is which (schema: NEAR/FAR rides DEPTH) — so we EXEMPT it rather than flag a swap.
     pairs = [(3,6), (4,7), (9,12), (10,13)]            # elbows, wrists, knees, ankles (R,L)
-    crosses = sum(1 for r, l in pairs if kx(kp, r) > kx(kp, l))
+    def kz(i):
+        v = kp[str(i)] if str(i) in kp else kp[i]
+        return v[3] if len(v) > 3 else None
+    neck_z = kz(1)
+    crosses = 0; depth_exempt = 0
+    for r, l in pairs:
+        if kx(kp, r) > kx(kp, l):                      # crossed in screen-x
+            zr, zl = kz(r), kz(l)
+            fwd = neck_z is not None and ((zr is not None and zr < neck_z - 0.30) or (zl is not None and zl < neck_z - 0.30))
+            if fwd: depth_exempt += 1                   # foreshortened forward limb — depth resolves it
+            else:   crosses += 1
     if abs(A["facing"]) > 0.5:                          # turned away/around: crossing is expected, not a fault
         lr_v = "PASS"
     else:
         lr_v = "PASS" if crosses == 0 else ("WARN" if crosses == 1 else "FAIL")
 
-    # 4) eyeline fidelity — head-yaw direction vs head->authored-target direction
-    head = frame["head"]; tgt = [A["eyeline"][0]*W, A["eyeline"][1]*H]
-    to_tgt = [tgt[0]-head[0], tgt[1]-head[1]]
+    # 4) eyeline fidelity — head-yaw (ear-midpoint -> nose) vs (target - ear_midpoint). Anchor BOTH at the
+    #    ear midpoint (head_facing's origin); measuring the target from the NOSE gives a turned head a false
+    #    angle (the nose has already moved toward the target). [R05 was an aim that read wrong, not a bad aim.]
+    e16 = kp[str(16)] if str(16) in kp else kp[16]
+    e17 = kp[str(17)] if str(17) in kp else kp[17]
+    ear = [(e16[0]+e17[0])/2.0, (e16[1]+e17[1])/2.0]
+    tgt = [A["eyeline"][0]*W, A["eyeline"][1]*H]
+    to_tgt = [tgt[0]-ear[0], tgt[1]-ear[1]]
     eang = angle_deg(frame["head_facing"], to_tgt)
     eye_v = "PASS" if eang < 35 else ("WARN" if eang < 70 else "FAIL")
 
     return {
         "facing":     {"authored": A["facing"], "read_back": est, "delta": round(dfac,3), "v": facing_v},
         "shot_size":  {"authored": A["shot"], "fill": fill, "band": [lo,hi], "v": size_v},
-        "laterality": {"crossings": crosses, "expected_cross": abs(A["facing"])>0.5, "v": lr_v},
+        "laterality": {"crossings": crosses, "depth_exempt": depth_exempt, "expected_cross": abs(A["facing"])>0.5, "v": lr_v},
         "eyeline":    {"angle_deg": round(eang,1), "v": eye_v},
         "structural": {"offframe": shot["realized"]["offframe"], "behind": shot["realized"]["behind"]},
     }
