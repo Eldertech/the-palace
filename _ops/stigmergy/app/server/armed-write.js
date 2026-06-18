@@ -207,11 +207,14 @@ export function previewEdit(repoRoot, relPath, op, { trickster = false } = {}) {
  * @param {string} [args.scope]
  * @param {boolean} [args.trickster] — bypass the CARE gate (canon/machinery),
  *   keep path-safety. Branding is the caller's job (author 'trickster').
+ * @param {string} [args.kind] — the commit kind (default 'edit'). The Weave
+ *   executor passes 'weave' so an applied proposal reads as a weave action in
+ *   the LOG; any KNOWN_KIND commitSelected accepts is valid.
  * @returns {Promise<{ok, shortHash?, subject?, op?, message?, vectorChange?, status?, error?}>}
  */
 export async function armedWriteEntry({
   repoRoot, relPath, op, summary, verify = 'unverified',
-  author = 'claude', bodyMessage = '', scope, trickster = false,
+  author = 'claude', bodyMessage = '', scope, trickster = false, kind = 'edit',
 }) {
   const pv = previewEdit(repoRoot, relPath, op, { trickster });
   if (!pv.ok) return pv;
@@ -227,7 +230,7 @@ export async function armedWriteEntry({
 
   const commit = await commitSelected(repoRoot, {
     paths: [relPath],
-    kind: 'edit',
+    kind,
     scope: scope || basenameNoMd(relPath),
     summary: summary || `companion ${op.op}`,
     verify,
