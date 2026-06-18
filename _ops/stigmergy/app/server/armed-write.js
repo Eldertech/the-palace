@@ -78,6 +78,115 @@ export function setForwardVector(fmBlock, newVector) {
   return { ok: true, fmBlock: `${m[1]}forward_vector: ${formatted}\n${m[2]}`, oldValue: null };
 }
 
+// Strip a wikilink + surrounding quotes from a raw target value, leaving the
+// bare entry title for comparison / re-wrapping. "[[Foo]]" / "Foo" / '"[[Foo]]"'
+// all normalize to "Foo".
+function bareTitle(raw) {
+  let s = (raw == null ? '' : String(raw)).trim();
+  if (s.length >= 2 && ((s[0] === '"' && s.endsWith('"')) || (s[0] === "'" && s.endsWith("'")))) s = s.slice(1, -1).trim();
+  const w = s.match(/^\[\[(.+?)\]\]$/);
+  if (w) s = w[1].trim();
+  return s;
+}
+
+// Parse the typed-link items out of a verbatim frontmatter block, parse-free
+// (the palace uses the canonical multi-line block form: `  - target: "[[X]]"`
+// then indented `type:` / `label:`). Used for the duplicate-link guard. Returns
+// [{ target, type, label }] with targets reduced to bare titles.
+function parseLinkItems(fmBlock) {
+  const lines = String(fmBlock).split('\n');
+  const li = lines.findIndex((l) => /^links:[ \t]*$/.test(l));
+  if (li === -1) return [];
+  const items = [];
+  let cur = null;
+  for (let j = li + 1; j < lines.length; j++) {
+    const l = lines[j];
+    if (/^---\s*$/.test(l)) break;          // closing fence
+    if (l.trim() === '') continue;          // blank — tolerate
+    if (!/^\s/.test(l)) break;              // a top-level key — end of the block
+    const mt = l.match(/^\s*-\s*target:\s*(.+?)\s*$/);
+    if (mt) { if (cur) items.push(cur); cur = { target: bareTitle(mt[1]), type: null, label: null }; continue; }
+    if (cur) {
+      const ty = l.match(/^\s*type:\s*(.+?)\s*$/);
+      if (ty) { cur.type = ty[1].trim().replace(/^["']|["']$/g, ''); continue; }
+      const la = l.match(/^\s*label:\s*(.+?)\s*$/);
+      if (la) { cur.label = la[1].trim().replace(/^["']|["']$/g, ''); continue; }
+    }
+  }
+  if (cur) items.push(cur);
+  return items;
+}
+
+/**
+ * Add ONE typed link to an entry's `links:` array inside a VERBATIM frontmatter
+ * block, churn-free — the link counterpart to setForwardVector. Appends a new
+ * block item in the existing indentation (or the canonical 2/4-space form),
+ * never reordering or restyling the rest. Three shapes are handled: a present
+ * `links:` block (append after its last item), `links: []` (replace with a block
+ * holding the one item), and no `links:` field at all (insert the block before
+ * the closing fence). Refuses a duplicate (same target + type already present)
+ * with an honest no-op rather than writing a second copy. Pure. Returns
+ * { ok, fmBlock, linkChange } or { ok:false, error }.
+ *
+ *   link = { target, type, label? }
+ *     target — entry title or "[[Title]]" (re-emitted as the quoted wikilink)
+ *     type   — a §4 link type (validated upstream in normalizeApplyOp)
+ *     label  — optional one-word register
+ */
+export function addLinkToFrontmatter(fmBlock, link) {
+  if (typeof fmBlock !== 'string' || fmBlock === '') return { ok: false, error: 'no frontmatter to edit' };
+  const title = bareTitle(link && link.target);
+  const type = typeof (link && link.type) === 'string' ? link.type.trim() : '';
+  const label = link && typeof link.label === 'string' && link.label.trim() ? link.label.trim() : null;
+  if (!title) return { ok: false, error: 'add-link: empty target' };
+  if (!type) return { ok: false, error: 'add-link: empty type' };
+
+  // Duplicate guard: same target + type already typed → honest no-op.
+  const exists = parseLinkItems(fmBlock).some(
+    (it) => it.target.toLowerCase() === title.toLowerCase() && it.type === type,
+  );
+  if (exists) return { ok: false, error: `add-link: [[${title}]] (${type}) is already a typed link` };
+
+  // Indentation: match the first existing item, else the canonical 2/4-space.
+  const itemMatch = fmBlock.match(/^([ \t]*)-[ \t]*target:/m);
+  const itemIndent = itemMatch ? itemMatch[1] : '  ';
+  const keyIndent = itemIndent + '  ';
+  const targetVal = JSON.stringify(`[[${title}]]`); // guaranteed-quoted wikilink
+  const itemLines = [
+    `${itemIndent}- target: ${targetVal}`,
+    `${keyIndent}type: ${type}`,
+    ...(label ? [`${keyIndent}label: ${formatScalar(label, 'label')}`] : []),
+  ];
+  const linkChange = { target: title, type, ...(label ? { label } : {}) };
+
+  // Case 1 — `links: []` (inline empty): replace with the block form.
+  if (/^links:[ \t]*\[[ \t]*\][ \t]*$/m.test(fmBlock)) {
+    const next = fmBlock.replace(/^links:[ \t]*\[[ \t]*\][ \t]*$/m, `links:\n${itemLines.join('\n')}`);
+    return { ok: true, fmBlock: next, linkChange };
+  }
+
+  // Case 2 — a present `links:` block: append after its last member line.
+  const lines = fmBlock.split('\n');
+  const li = lines.findIndex((l) => /^links:[ \t]*$/.test(l));
+  if (li !== -1) {
+    let lastBlockLine = li;
+    for (let j = li + 1; j < lines.length; j++) {
+      const l = lines[j];
+      if (/^---\s*$/.test(l)) break;
+      if (/^\s/.test(l)) { if (l.trim() !== '') lastBlockLine = j; continue; }
+      if (l.trim() === '') continue;
+      break; // a top-level key
+    }
+    lines.splice(lastBlockLine + 1, 0, ...itemLines);
+    return { ok: true, fmBlock: lines.join('\n'), linkChange };
+  }
+
+  // Case 3 — no `links:` field: insert the block just before the closing fence.
+  const m = fmBlock.match(/^([\s\S]*\n)(---\r?\n?)$/);
+  if (!m) return { ok: false, error: 'malformed frontmatter block' };
+  return { ok: true, fmBlock: `${m[1]}links:\n${itemLines.join('\n')}\n${m[2]}`, linkChange };
+}
+
 /**
  * Apply one edit op to a body string. Pure. Returns { ok, body } or
  * { ok:false, error }.
@@ -183,6 +292,13 @@ export function previewEdit(repoRoot, relPath, op, { trickster = false } = {}) {
     if (sv.fmBlock === fmBlock) return { ok: false, status: 422, error: 'nothing changed' };
     return { ok: true, op, before, after: sv.fmBlock + body, vectorChange: { from: sv.oldValue, to: (op.text || '').trim() } };
   }
+  if (op && op.op === 'add-link') {
+    if (!fmBlock) return { ok: false, status: 422, error: 'entry has no frontmatter to edit' };
+    const al = addLinkToFrontmatter(fmBlock, op);
+    if (!al.ok) return { ok: false, status: 422, error: al.error };
+    if (al.fmBlock === fmBlock) return { ok: false, status: 422, error: 'nothing changed' };
+    return { ok: true, op, before, after: al.fmBlock + body, vectorChange: null, linkChange: al.linkChange };
+  }
   const applied = applyOp(body, op);
   if (!applied.ok) return { ok: false, status: 422, error: applied.error };
   if (applied.body === body) return { ok: false, status: 422, error: 'nothing changed' };
@@ -238,7 +354,7 @@ export async function armedWriteEntry({
     author,
   });
   if (!commit.ok) return { ok: false, error: `commit failed: ${commit.error}`, message: commit.message };
-  return { ok: true, op: op.op, shortHash: commit.shortHash, subject: commit.subject, message: commit.message, vectorChange: pv.vectorChange };
+  return { ok: true, op: op.op, shortHash: commit.shortHash, subject: commit.subject, message: commit.message, vectorChange: pv.vectorChange, linkChange: pv.linkChange };
 }
 
 function basenameNoMd(p) {
