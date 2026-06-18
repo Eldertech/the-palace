@@ -9,6 +9,7 @@ import { fetchLog } from '../../adapters/log.js';
 import { fetchCards, respondToCard } from '../../adapters/cards.js';
 import { buildResponse, buildRequestOptionResponse } from '../../lib/response-builder.js';
 import { postMessage } from '../../adapters/blackboard.js';
+import { applyWeaveProposal } from '../../adapters/weave.js';
 
 // QueuePanel — the unified, honest, ranked queue (Phase 4).
 //
@@ -156,6 +157,33 @@ export default function QueuePanel({ messages, onJumpEntry }) {
       revertDecision(item);
       setDecisionNote({ tone: 'err', text: `grant failed -- ${err.message || 'post error'}` });
     }
+  }
+
+  // Grant & apply — for a proposal/flag carrying a structured `apply` op. Posts
+  // the grant (closing the item) AND runs the executor, which edits the live
+  // entry through the enforced honest-write path and posts a weave_applied
+  // PROOF. Two stages with distinct failure handling: a failed GRANT means
+  // nothing landed (revert the badge); a failed APPLY keeps the granted verdict
+  // (the grant is real) and reports that the change itself didn't land.
+  async function grantAndApply(item) {
+    if (!item.apply) return;
+    setDecisionNote(null);
+    recordDecision(item, { verb: 'GRANTED', detail: 'applying...', pending: true, error: null });
+    try {
+      await postMessage(buildInstantResponse(item, { type: 'RESOURCE_GRANT', constraints: null }), 'persistent');
+    } catch (err) {
+      revertDecision(item);
+      setDecisionNote({ tone: 'err', text: `grant failed -- ${err.message || 'post error'}` });
+      return;
+    }
+    const r = await applyWeaveProposal({ apply: item.apply, proposalId: item.id });
+    if (r.ok) {
+      recordDecision(item, { verb: 'GRANTED', detail: `applied -- ${r.commit}`, pending: false, error: null });
+    } else {
+      recordDecision(item, { verb: 'GRANTED', detail: 'apply did not land', pending: false, error: null });
+      setDecisionNote({ tone: 'err', text: `granted, but apply failed -- ${r.error}` });
+    }
+    loadCommits();
   }
 
   function closeRespond() { setRespondingTo(null); }
@@ -339,7 +367,7 @@ export default function QueuePanel({ messages, onJumpEntry }) {
 
       <div data-testid="queue-open">
         {open.map((it) => (
-          <QueueItem key={it.id} item={it} onJump={jump} onClear={clearItem} onRespond={respondToItem} onLaunch={launchHandoff} />
+          <QueueItem key={it.id} item={it} onJump={jump} onClear={clearItem} onRespond={respondToItem} onLaunch={launchHandoff} onApply={grantAndApply} />
         ))}
       </div>
 
@@ -354,7 +382,7 @@ export default function QueuePanel({ messages, onJumpEntry }) {
           {showResolved ? (
             <div data-testid="queue-resolved">
               {resolved.map((it) => (
-                <QueueItem key={it.id} item={it} onJump={jump} onClear={clearItem} onRespond={respondToItem} onLaunch={launchHandoff} />
+                <QueueItem key={it.id} item={it} onJump={jump} onClear={clearItem} onRespond={respondToItem} onLaunch={launchHandoff} onApply={grantAndApply} />
               ))}
             </div>
           ) : null}

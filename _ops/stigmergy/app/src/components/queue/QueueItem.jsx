@@ -69,7 +69,7 @@ const FLAG_TYPE_LABEL = {
   standard_reference: 'standard reference',
 };
 
-export default function QueueItem({ item, onJump, onClear, onRespond, onLaunch }) {
+export default function QueueItem({ item, onJump, onClear, onRespond, onLaunch, onApply }) {
   const resolved = item.resolved?.done;
   // A decision is the human's answer (GRANTED / DENIED / RESPONDED), recorded
   // by QueuePanel. It survives buildQueue dropping the answered item so the
@@ -378,6 +378,19 @@ export default function QueueItem({ item, onJump, onClear, onRespond, onLaunch }
                   label="grant"
                   tone="ok"
                 />
+                {/* grant & apply — only when the proposal carries a structured,
+                    mechanically-applicable change (item.apply). Grants AND
+                    executes the edit through the enforced honest-write path, so
+                    the loop closes here instead of leaving the change for a hand
+                    edit in Obsidian. Mirrors the Trickster deck's FILE & RUN. */}
+                {item.apply && typeof onApply === 'function' ? (
+                  <ActionChip
+                    testId="queue-item-apply"
+                    onClick={() => onApply(item)}
+                    label="grant & apply"
+                    tone="apply"
+                  />
+                ) : null}
                 <ActionChip
                   testId="queue-item-grant-limited"
                   onClick={() => onRespond(item, { type: 'RESOURCE_GRANT', constraints: '<constraints>' })}
@@ -467,6 +480,9 @@ function ActionChip({ onClick, label, tone = 'default', testId }) {
   const palette = {
     ok: { fg: 'var(--ok, var(--phosphor))', border: 'var(--ok, var(--phosphor))' },
     'ok-dim': { fg: 'var(--phosphor)', border: 'var(--phosphor-dim)' },
+    // 'apply' — the executing affirmative (grant & apply). Brightest register so
+    // it reads as the action that actually changes the palace.
+    apply: { fg: 'var(--phosphor-white)', border: 'var(--phosphor)' },
     warn: { fg: 'var(--warn)', border: 'var(--warn)' },
     dim: { fg: 'var(--phosphor-dim)', border: 'var(--phosphor-dim)' },
     default: { fg: 'var(--phosphor)', border: 'var(--phosphor-dim)' },
