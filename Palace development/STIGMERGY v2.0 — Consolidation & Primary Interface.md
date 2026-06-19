@@ -112,9 +112,3 @@ The crisp line: **TRICKSTER = a steward is waiting on your answer; QUEUE = every
 - **[[STIGMERGY]]** — the running system; its forward vector ("become the front door") is what this drives toward.
 - **[[BBS Design System]]** — the governing aesthetic, restored as monospace-only on every surface.
 - **[[Project Stewardship System]]** / **[[Enrichment]]** / **[[The Lens]]** / **[[Palace Enchantment]]** — the integration surfaces the roadmap pulls inside the terminal.
-
-## Active Baton
-
-[[STIGMERGY v2.0 — Weave proposals baton]] (`_ops/stigmergy/v2.0-weave-baton.md`) — drafted 2026-06-18 · the next move: **surface the unsung-path emitter inside STIGMERGY as a UI trigger** (a `POST /api/weave/emit-unsung` route + a QUEUE/Weave button), ending the CLI-only bounce. The whole Weave-proposals loop (detect → propose → grant & apply) is built + landed; this hands off the posting-half UI surfacing. Same-surface; deleted on pickup.
-
-*(Prior: the `STIGMERGY launcher` baton, 2026-06-17, was caught + completed — both halves of steward request-interactive landed, recorded under *Steward-requested sessions — done* above.)*
