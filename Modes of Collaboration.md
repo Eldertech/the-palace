@@ -29,6 +29,9 @@ links:
     type: connects-to
   - target: "[[Piano String Inharmonicity]]"
     type: connects-to
+  - target: "[[Radio Play]]"
+    type: connects-to
+    label: debrief-reel
   - target: "[[Modes of Collaboration — Context]]"
     type: connects-to
     label: context-companion
@@ -47,6 +50,7 @@ A living catalogue of named working modes Loudon and Claude adopt when attacking
 - **The Build Session** — build something together in real time (Max/MSP patch, gen~ codebox, teaching tool, ceremony). Fast iteration, discovery through doing; questions arise from the making. Best for synthesis, tool-building, ceremony design — any concrete deliverable.
 - **The Philosophical Dialogue** — extended discursive cross-domain thinking-together, both speaking as themselves (unlike the Excellent Adventure). Slow, winding, recursive; often produces breakthrough entries. Best when a concept needs turning over from many sides.
 - **The Harvest/Deposit** — the palace ceremonies themselves: Claude shifts from participant to archivist, Loudon provides memory and editorial judgment. Deliberate, ceremonial, show-then-approve. Best for making conversation durable.
+- **The Debrief Reel** — a visuals-enriched [[Radio Play]] made to explain just-finished work back to yourself; comprehension is the deliverable, the artifact the byproduct. The retrospective complement to The Build Session — best right after shipping something dense, as a reflecting surface ([[Hilaritas Generator]]). See [[Radio Play]].
 
 Other recurring patterns not yet formally named — the debugging session, the brainstorm, the literature review, the design review — are characterized in the companion.
 
