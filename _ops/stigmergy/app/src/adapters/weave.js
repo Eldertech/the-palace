@@ -1,10 +1,12 @@
-// src/adapters/weave.js — apply a granted Weave proposal (POST /api/weave/apply).
+// src/adapters/weave.js — the Weave's client write surface.
 //
-// The client side of the executor. When the operator clicks "grant & apply" on a
-// proposal that carries a structured `apply` op, the QUEUE posts the grant and
-// then calls this to execute the change against the live entry. On any failure
-// the grant still stands (it was already posted) — the UI reports that the apply
-// did not land, never that the decision was lost.
+//   applyWeaveProposal  -> POST /api/weave/apply: execute a granted proposal's
+//     `apply` op against the live entry. On any failure the grant still stands
+//     (it was already posted) — the UI reports the apply didn't land, never that
+//     the decision was lost.
+//   emitUnsungAudit     -> POST /api/weave/emit-unsung: run the unsung-path
+//     audit. DRY-RUN by default (read-only, honest counts); dryRun:false seeds
+//     promote_unsung proposals onto the WEAVE board (they arrive via SSE).
 
 export async function applyWeaveProposal({ apply, proposalId }) {
   try {
@@ -20,6 +22,26 @@ export async function applyWeaveProposal({ apply, proposalId }) {
       ok: false,
       status: res.status,
       error: data.error || `apply failed (${res.status})`,
+    };
+  } catch (err) {
+    return { ok: false, status: 0, error: err.message || 'could not reach the server' };
+  }
+}
+
+export async function emitUnsungAudit({ dryRun = true, limit } = {}) {
+  try {
+    const res = await fetch('/api/weave/emit-unsung', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ dryRun, ...(Number.isFinite(limit) ? { limit } : {}) }),
+    });
+    let data = {};
+    try { data = await res.json(); } catch { /* non-JSON body */ }
+    if (res.ok && data.ok) return { ok: true, ...data };
+    return {
+      ok: false,
+      status: res.status,
+      error: data.error || `audit failed (${res.status})`,
     };
   } catch (err) {
     return { ok: false, status: 0, error: err.message || 'could not reach the server' };
