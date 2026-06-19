@@ -115,4 +115,6 @@ The crisp line: **TRICKSTER = a steward is waiting on your answer; QUEUE = every
 
 ## Active Baton
 
-*None.* The `STIGMERGY launcher` baton (`_ops/stigmergy/v2.0-launcher-baton.md`, drafted 2026-06-17) was **caught 2026-06-17** and deleted on pickup (git is its archive). Its move — teach stewards to self-emit a "request interactive" mark — is **complete (2026-06-18)**: both halves landed (read/surface + the `steward.md` emit teaching), recorded under *Steward-requested sessions — done* above.
+[[STIGMERGY v2.0 — Weave proposals baton]] (`_ops/stigmergy/v2.0-weave-baton.md`) — drafted 2026-06-18 · the next move: **surface the unsung-path emitter inside STIGMERGY as a UI trigger** (a `POST /api/weave/emit-unsung` route + a QUEUE/Weave button), ending the CLI-only bounce. The whole Weave-proposals loop (detect → propose → grant & apply) is built + landed; this hands off the posting-half UI surfacing. Same-surface; deleted on pickup.
+
+*(Prior: the `STIGMERGY launcher` baton, 2026-06-17, was caught + completed — both halves of steward request-interactive landed, recorded under *Steward-requested sessions — done* above.)*
