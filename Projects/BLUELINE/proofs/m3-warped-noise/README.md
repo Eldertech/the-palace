@@ -50,7 +50,13 @@ Verdict by `render-backend/consistency_ruler.py` (embed-cos + color-corr) on (A,
 - **M3.5** ([`m3.5-report.md`](m3.5-report.md)) — the **fix**: `warp_noise_gtf.py` (forward-splat +
   per-cell L2-normalize + disocclusion hole-fill — the HIWYN / [[Go-with-the-Flow]] core; nearest splat is
   as white as the base noise, lag-1 autocorr 0.001 vs naive 0.127). The rainbow is **gone** — B-warped is now
-  a coherent figure (0.709/0.373) **~level with seed-lock** but not beating it at the 482 px delta. Reading:
-  noise-warp ties seed-lock at an extreme single jump; its win is in **small incremental** motion (GtF's
-  regime). The bet ([[The Flow Field is the Spine]]) is intact for within-shot motion. **Next: M3.6 =
-  small-delta / multi-step test.** Renders: `renders-gtf/`, local gate `local-sdxl/NW_gtf.png`.
+  a coherent figure (0.709/0.373) **~level with seed-lock** at the 483 px delta. Renders: `renders-gtf/`,
+  local gate `local-sdxl/NW_gtf.png`.
+- **M3.6** ([`m3.6-report.md`](m3.6-report.md)) — the **delta sweep** (48/96/169/290/483 px, seed-lock vs
+  warped, one pod, 11 renders). **No crossover:** on `embed_cos` the two are tied at *every* delta (Δ within
+  ±0.035, no trend); `color_corr` is noisy (warp wins at 96 px, loses at 169/290). Seed-lock is already
+  near-ceiling at small deltas (0.92–0.96), leaving no headroom, and single-sample renders are
+  variance-dominated. **Flow-warped noise does not beat seed-lock for a single staged jump at any size.** Its
+  only surviving regime is a **cumulative multi-frame sequence** (drift compounds) — that's **M3.7**. Curve:
+  `renders-sweep/m3.6-sweep.png`. Design rule: panel-render coherence = seed-lock + identity + depth + img2img;
+  reserve noise-warp for within-shot sequences pending M3.7.
