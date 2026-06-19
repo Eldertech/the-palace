@@ -29,12 +29,14 @@ except Exception:
 PROMPT = ("a lone figure in a charcoal flight jacket, copper undercut, dramatic cinematic key light, "
           "surreal mathematical landscape, bold graphic-novel color, sharp focus")
 
-# (label, noise .npy, openpose .png)
-FRAMES = [
-    ("A",          "N_A.npy",      "A_coil_openpose.png"),
-    ("B_seedlock", "N_A.npy",      "B_leap_openpose.png"),
-    ("B_warped",   "N_warped.npy", "B_leap_openpose.png"),
-]
+# (label, noise .npy, openpose .png). The B-warped noise file is swappable: M3 used the naive
+# N_warped.npy; M3.5 uses the whiteness-preserving N_warped_gtf.npy (--warp-npy / --warp-label).
+def build_frames(warp_npy, warp_label):
+    return [
+        ("A",          "N_A.npy",  "A_coil_openpose.png"),
+        ("B_seedlock", "N_A.npy",  "B_leap_openpose.png"),
+        (warp_label,   warp_npy,   "B_leap_openpose.png"),
+    ]
 
 class Pod:
     def __init__(self, pid):
@@ -117,11 +119,14 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--pod", default=None)
     ap.add_argument("--out", default="renders")
+    ap.add_argument("--warp-npy", default="N_warped.npy")
+    ap.add_argument("--warp-label", default="B_warped")
     a = ap.parse_args()
+    FRAMES = build_frames(a.warp_npy, a.warp_label)
     pid = a.pod or Path("/tmp/pod_id").read_text().strip()
     out = (HERE / a.out); out.mkdir(parents=True, exist_ok=True)
     pod = Pod(pid)
-    print(f"pod {pid} | base {pod.B}")
+    print(f"pod {pid} | base {pod.B} | warp={a.warp_npy}")
     if not pod.alive():
         sys.exit(f"pod {pid} not reachable at {pod.B}/system_stats")
     # upload each unique pose once

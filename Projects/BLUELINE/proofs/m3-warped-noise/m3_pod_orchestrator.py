@@ -147,9 +147,10 @@ def main():
     try:
         if not wait_ready(pid):
             raise RuntimeError("pod did not reach render-ready state within timeout")
-        print("[render] starting m3_pod_render.py")
-        p = subprocess.run([sys.executable, str(HERE / "m3_pod_render.py"), "--pod", pid, "--out", "renders"],
-                           cwd=str(HERE))
+        print("[render] starting m3_pod_render.py (M3.5 whiteness-preserving warp)")
+        p = subprocess.run([sys.executable, str(HERE / "m3_pod_render.py"), "--pod", pid,
+                            "--out", "renders-gtf", "--warp-npy", "N_warped_gtf.npy",
+                            "--warp-label", "B_warped_gtf"], cwd=str(HERE))
         rc = p.returncode
         print(f"[render] m3_pod_render exited {rc}")
     finally:
