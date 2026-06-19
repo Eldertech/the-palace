@@ -73,3 +73,48 @@ describe('POST /api/weave/apply', () => {
     expect(res.status).toBe(400);
   });
 });
+
+describe('POST /api/weave/emit-unsung', () => {
+  let root;
+  beforeEach(() => { root = makeTempPalace(); });
+  afterEach(() => { rmSync(root, { recursive: true, force: true }); });
+
+  test('defaults to a DRY RUN (dryRun:true, limit:8) and passes palaceRoot/boardPath', async () => {
+    let seen = null;
+    const runUnsungEmissionImpl = async (args) => { seen = args; return { ok: true, dryRun: true, found: 3, eligible: 2, planned: 2, proposals: [] }; };
+    // A bare POST (empty body) must run the audit, not error.
+    const res = await request(makeServer(root, { runUnsungEmissionImpl }))
+      .post('/api/weave/emit-unsung').send();
+    expect(res.status).toBe(200);
+    expect(res.body.ok).toBe(true);
+    expect(seen.dryRun).toBe(true);   // safe by default — no write without intent
+    expect(seen.limit).toBe(8);
+    expect(seen.palaceRoot).toBe(root);
+    expect(seen.boardPath).toBe(resolve(root, '_ops/swarm/persistent/blackboard.jsonl'));
+  });
+
+  test('dryRun:false + limit are passed straight through to the runner', async () => {
+    let seen = null;
+    const runUnsungEmissionImpl = async (args) => { seen = args; return { ok: true, dryRun: false, posted: 3 }; };
+    const res = await request(makeServer(root, { runUnsungEmissionImpl }))
+      .post('/api/weave/emit-unsung').send({ dryRun: false, limit: 3 });
+    expect(res.status).toBe(200);
+    expect(res.body.posted).toBe(3);
+    expect(seen.dryRun).toBe(false);
+    expect(seen.limit).toBe(3);
+  });
+
+  test('maps the runner status onto the HTTP status (500 no-root)', async () => {
+    const runUnsungEmissionImpl = async () => ({ ok: false, status: 500, error: 'no palace root configured' });
+    const res = await request(makeServer(root, { runUnsungEmissionImpl }))
+      .post('/api/weave/emit-unsung').send({ dryRun: true });
+    expect(res.status).toBe(500);
+    expect(res.body.error).toMatch(/no palace root/);
+  });
+
+  test('400 on malformed JSON', async () => {
+    const res = await request(makeServer(root))
+      .post('/api/weave/emit-unsung').set('Content-Type', 'application/json').send('{ not json');
+    expect(res.status).toBe(400);
+  });
+});

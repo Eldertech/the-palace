@@ -9,7 +9,7 @@ import { fetchLog } from '../../adapters/log.js';
 import { fetchCards, respondToCard } from '../../adapters/cards.js';
 import { buildResponse, buildRequestOptionResponse } from '../../lib/response-builder.js';
 import { postMessage } from '../../adapters/blackboard.js';
-import { applyWeaveProposal } from '../../adapters/weave.js';
+import { applyWeaveProposal, emitUnsungAudit } from '../../adapters/weave.js';
 
 // QueuePanel — the unified, honest, ranked queue (Phase 4).
 //
@@ -50,6 +50,11 @@ export default function QueuePanel({ messages, onJumpEntry }) {
   const [cards, setCards] = useState([]);
   const [cardBusy, setCardBusy] = useState(false);
   const [cardNote, setCardNote] = useState(null); // last response feedback
+  // Unsung-path audit (the Weave's posting half, in the terminal). `audit` holds
+  // the last result: a dry-run plan (phase 'dry'), a live post ('posted'), or an
+  // error. `auditBusy` guards the two clicks while a request is in flight.
+  const [audit, setAudit] = useState(null);
+  const [auditBusy, setAuditBusy] = useState(false);
 
   // Record (or update) the verdict badge for an item, snapshotting the item so
   // it keeps rendering after buildQueue drops the now-answered request.
@@ -184,6 +189,27 @@ export default function QueuePanel({ messages, onJumpEntry }) {
       setDecisionNote({ tone: 'err', text: `granted, but apply failed -- ${r.error}` });
     }
     loadCommits();
+  }
+
+  // Run unsung-path audit — the Weave's posting half, from the terminal. Step 1
+  // is always a DRY RUN: scan the palace for body wikilinks not yet typed as
+  // links, surface honest counts, write nothing. If any are eligible, the result
+  // exposes a "post N proposals" confirm (postUnsungAudit) — a write needs the
+  // second, explicit click. The posted proposals arrive via SSE into the WEAVE
+  // lane, each with its own grant & apply.
+  async function runUnsungAudit() {
+    if (auditBusy) return;
+    setAuditBusy(true);
+    const r = await emitUnsungAudit({ dryRun: true });
+    setAuditBusy(false);
+    setAudit(r.ok ? { phase: 'dry', ...r } : { phase: 'error', error: r.error });
+  }
+  async function postUnsungAudit() {
+    if (auditBusy) return;
+    setAuditBusy(true);
+    const r = await emitUnsungAudit({ dryRun: false });
+    setAuditBusy(false);
+    setAudit(r.ok ? { phase: 'posted', ...r } : { phase: 'error', error: r.error });
   }
 
   function closeRespond() { setRespondingTo(null); }
@@ -331,6 +357,14 @@ export default function QueuePanel({ messages, onJumpEntry }) {
         >
           reconcile
         </span>
+        <span
+          data-testid="run-unsung-audit"
+          onClick={auditBusy ? undefined : runUnsungAudit}
+          style={{ cursor: auditBusy ? 'wait' : 'pointer', color: 'var(--ansi-bright-cyan)', textShadow: 'var(--glow)', textDecoration: 'underline' }}
+          title="scan the palace for body wikilinks not yet typed as links — the Weave's unsung-path audit (dry run; nothing is written)"
+        >
+          {auditBusy ? 'auditing...' : 'run unsung-path audit'}
+        </span>
 
         {/* lanes: the six boards become filters, not tabs */}
         <span style={{ marginLeft: 8 }}>lanes:</span>
@@ -358,6 +392,64 @@ export default function QueuePanel({ messages, onJumpEntry }) {
           >{board.toLowerCase()} ({n})</span>
         ))}
       </div>
+
+      {/* Unsung-path audit result: the dry-run plan (honest counts + an explicit
+          "post N" confirm, since posting writes proposals), the post outcome, or
+          an error. No silent caps — found/eligible/over-limit are all named. */}
+      {audit ? (
+        <div
+          data-testid="unsung-audit-result"
+          style={{
+            display: 'flex', gap: 10, alignItems: 'baseline', flexWrap: 'wrap',
+            marginBottom: 8, fontSize: 12, color: 'var(--phosphor-dim)', textShadow: 'none',
+            borderLeft: '2px solid var(--phosphor-dim)', paddingLeft: 8,
+          }}
+        >
+          {audit.phase === 'error' ? (
+            <span style={{ color: 'var(--error)', textShadow: 'var(--glow)' }}>
+              unsung-path audit failed -- {audit.error}
+            </span>
+          ) : audit.phase === 'posted' ? (
+            <span>
+              posted <strong style={{ color: 'var(--phosphor)' }}>{audit.posted}</strong> proposal(s) to the weave lane
+              {audit.skipped && audit.skipped.length ? ` -- ${audit.skipped.length} skipped (invalid)` : ''}
+              {' '}-- grant &amp; apply each below.
+            </span>
+          ) : (
+            <>
+              <span>
+                <strong style={{ color: 'var(--phosphor)' }}>{audit.entriesScanned}</strong> entries scanned --{' '}
+                <strong style={{ color: 'var(--phosphor)' }}>{audit.found}</strong> unsung --{' '}
+                {audit.deduped} already proposed -- {audit.eligible} eligible --{' '}
+                <strong style={{ color: 'var(--phosphor)' }}>{audit.planned}</strong> would post
+                {audit.dropped ? ` -- ${audit.dropped} over limit ${audit.limit} NOT emitted` : ''}
+              </span>
+              {audit.planned > 0 ? (
+                <span
+                  data-testid="post-unsung-audit"
+                  onClick={auditBusy ? undefined : postUnsungAudit}
+                  style={{
+                    cursor: auditBusy ? 'wait' : 'pointer', color: 'var(--ansi-bright-yellow)',
+                    textShadow: 'var(--glow)', textDecoration: 'underline',
+                  }}
+                  title="append these promote_unsung proposals to the WEAVE board (this writes)"
+                >
+                  post {audit.planned} proposal{audit.planned === 1 ? '' : 's'}
+                </span>
+              ) : (
+                <span style={{ fontStyle: 'italic' }}>nothing to post.</span>
+              )}
+            </>
+          )}
+          <span
+            data-testid="unsung-audit-dismiss"
+            onClick={() => setAudit(null)}
+            style={{ cursor: 'pointer', color: 'var(--phosphor-dim)', textDecoration: 'underline' }}
+          >
+            dismiss
+          </span>
+        </div>
+      ) : null}
 
       {open.length === 0 && resolved.length === 0 ? (
         <div data-testid="queue-empty" style={{ color: 'var(--phosphor-dim)', textShadow: 'none', fontStyle: 'italic' }}>
