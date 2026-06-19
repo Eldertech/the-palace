@@ -14,7 +14,8 @@
 import { existsSync } from 'node:fs';
 import { walkEntryRecords } from '../src/lib/entries.js';
 import { buildPalaceIndex, findUnsungEdges } from '../src/lib/unsung-paths.js';
-import { planUnsungEmission } from '../src/lib/weave-propose.js';
+import { findHubCandidates } from '../src/lib/hub-candidates.js';
+import { planUnsungEmission, planHubEmission } from '../src/lib/weave-propose.js';
 import { readJsonl, appendMessage } from '@stigmergy/core/blackboard';
 import { validateMessage } from '@stigmergy/core/schema';
 
@@ -96,6 +97,81 @@ export async function runUnsungEmission({
   if (dryRun) return base;
 
   // Live run: validate + append each planned proposal; count what actually landed.
+  const append = appendImpl || defaultAppend(boardPath);
+  let posted = 0;
+  const skipped = [];
+  for (const m of plan.proposals) {
+    let landed = false;
+    try { landed = append(m); } catch { landed = false; }
+    if (landed) posted++;
+    else skipped.push(m.id);
+  }
+  return { ...base, posted, skipped };
+}
+
+// Scan the palace for hub candidates (concept entries over the inbound-degree
+// threshold). Separate seam, mirroring defaultScan, so a test can inject one.
+function defaultHubScan(palaceRoot, threshold) {
+  const records = [...walkEntryRecords(palaceRoot)];
+  const candidates = findHubCandidates(records, { threshold });
+  return { entriesScanned: records.length, candidates };
+}
+
+// A promote_hub proposal is single-entry (no edge); the summary carries the
+// entry + the proposed change rather than a source→target pair.
+const summarizeHub = (m) => ({
+  id: m.id,
+  entry: m.payload.source_entry,
+  change: m.payload.proposed_change,  // the inbound-degree count lives in the change text
+});
+
+/**
+ * Run the hub-promotion audit — the runHubEmission counterpart of
+ * runUnsungEmission, behind POST /api/weave/emit-hub. Same shape, same DRY-RUN
+ * default and honest counts; the candidates are concept entries over the
+ * inbound-degree threshold and each proposal carries a `set-type` (concept→hub)
+ * apply op. Never throws.
+ *
+ * @param {object} args
+ * @param {string}  args.palaceRoot
+ * @param {string}  [args.boardPath]
+ * @param {boolean} [args.dryRun=true]
+ * @param {number}  [args.limit=8]
+ * @param {number}  [args.threshold=5] — inbound-degree floor (SCHEMA §1: ≥5)
+ * @param {string}  [args.ts]
+ * @param {Function}[args.scanImpl]   — test seam: (palaceRoot) => { entriesScanned, candidates }
+ * @param {Function}[args.appendImpl] — test seam: (msg) => boolean
+ */
+export async function runHubEmission({
+  palaceRoot, boardPath, dryRun = true, limit = 8, threshold = 5, ts, scanImpl, appendImpl,
+} = {}) {
+  if (!palaceRoot) return { ok: false, status: 500, error: 'no palace root configured' };
+
+  const lim = Number.isFinite(limit) && limit > 0 ? Math.floor(limit) : 8;
+  const scan = scanImpl || ((root) => defaultHubScan(root, threshold));
+  const { entriesScanned, candidates } = scan(palaceRoot);
+
+  const existing = boardPath && existsSync(boardPath) ? readJsonl(boardPath) : [];
+  const stamp = ts || new Date().toISOString();
+  const runId = stamp.replace(/[^0-9]/g, '').slice(0, 14);
+  const plan = planHubEmission({ candidates, existing, limit: lim, ts: stamp, runId });
+
+  const base = {
+    ok: true,
+    dryRun: !!dryRun,
+    limit: lim,
+    threshold,
+    entriesScanned,
+    found: plan.found,
+    deduped: plan.deduped,
+    eligible: plan.eligible,
+    planned: plan.posted,
+    dropped: plan.dropped,
+    proposals: plan.proposals.map(summarizeHub),
+  };
+
+  if (dryRun) return base;
+
   const append = appendImpl || defaultAppend(boardPath);
   let posted = 0;
   const skipped = [];

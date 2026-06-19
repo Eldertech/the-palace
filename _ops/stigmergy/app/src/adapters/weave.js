@@ -47,3 +47,23 @@ export async function emitUnsungAudit({ dryRun = true, limit } = {}) {
     return { ok: false, status: 0, error: err.message || 'could not reach the server' };
   }
 }
+
+export async function emitHubAudit({ dryRun = true, limit } = {}) {
+  try {
+    const res = await fetch('/api/weave/emit-hub', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ dryRun, ...(Number.isFinite(limit) ? { limit } : {}) }),
+    });
+    let data = {};
+    try { data = await res.json(); } catch { /* non-JSON body */ }
+    if (res.ok && data.ok) return { ok: true, ...data };
+    return {
+      ok: false,
+      status: res.status,
+      error: data.error || `audit failed (${res.status})`,
+    };
+  } catch (err) {
+    return { ok: false, status: 0, error: err.message || 'could not reach the server' };
+  }
+}

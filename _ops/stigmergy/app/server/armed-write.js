@@ -78,6 +78,28 @@ export function setForwardVector(fmBlock, newVector) {
   return { ok: true, fmBlock: `${m[1]}forward_vector: ${formatted}\n${m[2]}`, oldValue: null };
 }
 
+/**
+ * Set THIS entry's `type` inside a VERBATIM frontmatter block, touching only that
+ * one line — the type counterpart to setForwardVector. `type` is a REQUIRED §1
+ * field, always a bare single-line scalar (`type: concept`), so a line
+ * replacement is exact and churn-free. Refuses when there is no `type:` line
+ * (every entry must have one) rather than inventing one. The new type is
+ * validated upstream in normalizeApplyOp against ENTRY_TYPES. Pure. Returns
+ * { ok, fmBlock, oldValue } or { ok:false, error }.
+ */
+export function setEntryType(fmBlock, newType) {
+  if (typeof fmBlock !== 'string' || fmBlock === '') return { ok: false, error: 'no frontmatter to edit' };
+  const t = typeof newType === 'string' ? newType.trim() : '';
+  if (!t) return { ok: false, error: 'empty type' };
+  if (/[\n\s]/.test(t)) return { ok: false, error: 'type must be a single bare token' };
+
+  const present = fmBlock.match(/^type:[ \t]*(.*)$/m);
+  if (!present) return { ok: false, error: 'entry has no type: field to retype' };
+  const oldValue = present[1].trim().replace(/^["']|["']$/g, '');
+  const next = fmBlock.replace(/^type:[ \t]*.*$/m, `type: ${t}`);
+  return { ok: true, fmBlock: next, oldValue };
+}
+
 // Strip a wikilink + surrounding quotes from a raw target value, leaving the
 // bare entry title for comparison / re-wrapping. "[[Foo]]" / "Foo" / '"[[Foo]]"'
 // all normalize to "Foo".
@@ -299,6 +321,13 @@ export function previewEdit(repoRoot, relPath, op, { trickster = false } = {}) {
     if (al.fmBlock === fmBlock) return { ok: false, status: 422, error: 'nothing changed' };
     return { ok: true, op, before, after: al.fmBlock + body, vectorChange: null, linkChange: al.linkChange };
   }
+  if (op && op.op === 'set-type') {
+    if (!fmBlock) return { ok: false, status: 422, error: 'entry has no frontmatter to edit' };
+    const st = setEntryType(fmBlock, op.type);
+    if (!st.ok) return { ok: false, status: 422, error: st.error };
+    if (st.fmBlock === fmBlock) return { ok: false, status: 422, error: `already type: ${op.type}` };
+    return { ok: true, op, before, after: st.fmBlock + body, vectorChange: null, typeChange: { from: st.oldValue, to: (op.type || '').trim() } };
+  }
   const applied = applyOp(body, op);
   if (!applied.ok) return { ok: false, status: 422, error: applied.error };
   if (applied.body === body) return { ok: false, status: 422, error: 'nothing changed' };
@@ -354,7 +383,7 @@ export async function armedWriteEntry({
     author,
   });
   if (!commit.ok) return { ok: false, error: `commit failed: ${commit.error}`, message: commit.message };
-  return { ok: true, op: op.op, shortHash: commit.shortHash, subject: commit.subject, message: commit.message, vectorChange: pv.vectorChange, linkChange: pv.linkChange };
+  return { ok: true, op: op.op, shortHash: commit.shortHash, subject: commit.subject, message: commit.message, vectorChange: pv.vectorChange, linkChange: pv.linkChange, typeChange: pv.typeChange };
 }
 
 function basenameNoMd(p) {

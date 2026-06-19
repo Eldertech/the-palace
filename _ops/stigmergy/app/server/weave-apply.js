@@ -25,7 +25,7 @@ import { normalizeApplyOp, describeApplyOp } from '../src/lib/weave-apply-op.js'
  * Build the §2.2 PROOF a weave-applied edit posts once committed. The commit
  * hash is the proof the change is real. Pure; validated before append.
  */
-export function buildWeaveAppliedProof({ entry, op, commit, subject, vectorChange, linkChange, proposalId = null, model, ts, id }) {
+export function buildWeaveAppliedProof({ entry, op, commit, subject, vectorChange, linkChange, typeChange, proposalId = null, model, ts, id }) {
   const stamp = ts || new Date().toISOString();
   return {
     schema_version: '1.0',
@@ -59,6 +59,9 @@ export function buildWeaveAppliedProof({ entry, op, commit, subject, vectorChang
       ...(vectorChange ? { vector_change: vectorChange } : {}),
       // The typed link that was added, for an add-link op.
       ...(linkChange ? { link_change: linkChange } : {}),
+      // The type change (from->to), for a set-type op (e.g. concept->hub). Never
+      // silent — same standing rule as vector_change.
+      ...(typeChange ? { type_change: typeChange } : {}),
       author: 'weave',
     },
   };
@@ -112,7 +115,9 @@ export async function applyWeaveProposal({
     ? { op: 'set-vector', text: op.text }
     : op.op === 'add-link'
       ? { op: 'add-link', target: op.target, type: op.type, ...(op.label ? { label: op.label } : {}) }
-      : null;
+      : op.op === 'set-type'
+        ? { op: 'set-type', type: op.type }
+        : null;
   if (!writeOp) return { ok: false, status: 422, error: `cannot apply op "${op.op}" yet` };
 
   const write = armedWriteImpl || armedWriteEntry;
@@ -132,7 +137,7 @@ export async function applyWeaveProposal({
 
   const proof = buildWeaveAppliedProof({
     entry: op.entry, op, commit: result.shortHash, subject: result.subject,
-    vectorChange: result.vectorChange, linkChange: result.linkChange, proposalId, model, ts, id,
+    vectorChange: result.vectorChange, linkChange: result.linkChange, typeChange: result.typeChange, proposalId, model, ts, id,
   });
   let proofPosted = false;
   try { proofPosted = (appendImpl || defaultAppend(boardPath))(proof); } catch { proofPosted = false; }
@@ -145,6 +150,7 @@ export async function applyWeaveProposal({
     op: op.op,
     vectorChange: result.vectorChange || null,
     linkChange: result.linkChange || null,
+    typeChange: result.typeChange || null,
     proofPosted,
     proof,
   };

@@ -14,11 +14,21 @@
 // as before). Backward-compatible: proposals without `apply` are untouched.
 //
 // Increment 1 supported `set-vector` (the Companion's proven forward_vector
-// write); Increment 2 adds `add-link` — the emblematic "promote unsung path" /
-// "new typed link" Weave action. The dispatch below is written to grow.
+// write); Increment 2 added `add-link` — the emblematic "promote unsung path" /
+// "new typed link" Weave action; Increment 3 adds `set-type` — the "promote hub"
+// retype (concept → hub) the hub-promotion audit emits. The dispatch grows.
 
 // The ops the executor can apply, each with its required fields.
-export const APPLY_OPS = ['set-vector', 'add-link'];
+export const APPLY_OPS = ['set-vector', 'add-link', 'set-type'];
+
+// The SCHEMA §1 entry-type ontology. A set-type op's `type` must be one of these
+// — the executor never invents a type, and the affordance never offers a retype
+// the schema would reject. (The hub-promotion audit only ever emits `hub`, but
+// the op is general so a future Weave can demote hub→concept as §1 prescribes.)
+export const ENTRY_TYPES = [
+  'concept', 'hub', 'project', 'breakthrough', 'source', 'meta',
+  'practice', 'person', 'question', 'spore', 'specialist', 'maker',
+];
 
 // The §4 typed-link ontology (SCHEMA §4). An add-link op's `type` must be one of
 // these — the executor never invents a link type, and the affordance never
@@ -73,6 +83,14 @@ export function normalizeApplyOp(apply) {
     return { op: 'add-link', entry, target, type, ...(label ? { label } : {}) };
   }
 
+  if (op === 'set-type') {
+    const type = typeof apply.type === 'string' ? apply.type.trim() : '';
+    // The new type must be a §1 entry type; anything else normalizes to null so
+    // the executor never writes an unschematic `type:` value.
+    if (!ENTRY_TYPES.includes(type)) return null;
+    return { op: 'set-type', entry, type };
+  }
+
   return null;
 }
 
@@ -99,5 +117,6 @@ export function describeApplyOp(op) {
   if (!op || typeof op !== 'object') return '';
   if (op.op === 'set-vector') return `tune ${op.entry}'s forward_vector`;
   if (op.op === 'add-link') return `link ${op.entry} → ${op.target} (${op.type})`;
+  if (op.op === 'set-type') return op.type === 'hub' ? `promote ${op.entry} to a hub` : `retype ${op.entry} → ${op.type}`;
   return `apply ${op.op} to ${op.entry}`;
 }
