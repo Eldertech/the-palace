@@ -6,7 +6,8 @@ does flow-warped noise hold the look better than seed-lock at the 482 px delta w
 Higher embed_cos (CNN-semantic, pose-invariant) / color_corr (HSV palette) = more consistent with A.
 The bet wins if B-warped scores HIGHER than B-seedlock against A — i.e. the warp carried the look across.
 
-Run (comfy venv): python3 m3_score.py [renders_dir]   (default: renders/)
+Run (comfy venv): python3 m3_score.py [renders_dir] [warped_label]
+  default: renders/ B_warped   ·  M3.5: renders-gtf B_warped_gtf
 Also builds m3-compare.png (A | B-seedlock | B-warped) and writes m3-verdict.json.
 """
 import os, sys, json
@@ -17,9 +18,11 @@ import consistency_ruler as R
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 RD = sys.argv[1] if len(sys.argv) > 1 else os.path.join(HERE, "renders")
+if not os.path.isabs(RD): RD = os.path.join(HERE, RD)
+WLABEL = sys.argv[2] if len(sys.argv) > 2 else "B_warped"
 A   = os.path.join(RD, "A.png")
 BS  = os.path.join(RD, "B_seedlock.png")
-BW  = os.path.join(RD, "B_warped.png")
+BW  = os.path.join(RD, f"{WLABEL}.png")
 for p in (A, BS, BW):
     if not os.path.isfile(p): sys.exit(f"missing render: {p}")
 

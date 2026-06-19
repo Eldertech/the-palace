@@ -51,29 +51,39 @@ class Pod:
             self._req("GET", "/system_stats", timeout=15); return True
         except Exception:
             return False
-    def upload(self, path):
-        name = Path(path).name
-        out = subprocess.run(["curl", "-s", "--max-time", "40", "-X", "POST",
-            "-F", f"image=@{path};type=image/png;filename={name}", "-F", "overwrite=true",
-            f"{self.B}/upload/image"], capture_output=True, text=True, timeout=50)
-        if '"name"' not in out.stdout:
-            raise RuntimeError("upload failed: " + out.stdout[:200] + out.stderr[:200])
-        return json.loads(out.stdout).get("name", name)
-    def submit(self, wf):
+    def upload(self, path, tries=4):
+        name = Path(path).name; last = ""
+        for i in range(tries):
+            out = subprocess.run(["curl", "-sS", "-w", "\n%{http_code}", "--max-time", "60", "-X", "POST",
+                "-H", f"User-Agent: {UA}",
+                "-F", f"image=@{path};type=image/png;filename={name}", "-F", "overwrite=true",
+                f"{self.B}/upload/image"], capture_output=True, text=True, timeout=80)
+            body, _, code = out.stdout.rpartition("\n")
+            if '"name"' in body:
+                return json.loads(body).get("name", name)
+            last = f"try {i+1} [{code.strip()}] body={body[:150]!r} err={out.stderr[:150]!r}"
+            print(f"  upload retry: {last}"); time.sleep(6)
+        raise RuntimeError(f"upload failed after {tries}: {last}")
+    def submit(self, wf, tries=5):
         # /prompt carries the ~1.3 MB inline-noise body — urllib's POST is closed by the RunPod proxy
-        # WAF (broken pipe). curl + browser-UA is the proven transport that beats it (same as upload).
+        # WAF (broken pipe). curl + browser-UA beats it, but the proxy still resets occasionally on the
+        # large body (curl code 000), so retry. Proven to succeed (M3 run 2 rendered all three this way).
         with tempfile.NamedTemporaryFile("w", suffix=".json", delete=False) as f:
             json.dump({"prompt": wf, "client_id": self.cid}, f); tmp = f.name
         try:
-            out = subprocess.run(["curl", "-s", "-w", "\n%{http_code}", "--max-time", "120", "-X", "POST",
-                "-H", "Content-Type: application/json", "-H", f"User-Agent: {UA}",
-                "--data-binary", f"@{tmp}", f"{self.B}/prompt"], capture_output=True, text=True, timeout=140)
+            last = ""
+            for i in range(tries):
+                out = subprocess.run(["curl", "-sS", "-w", "\n%{http_code}", "--max-time", "120", "-X", "POST",
+                    "-H", "Content-Type: application/json", "-H", f"User-Agent: {UA}",
+                    "--data-binary", f"@{tmp}", f"{self.B}/prompt"], capture_output=True, text=True, timeout=140)
+                body, _, code = out.stdout.rpartition("\n")
+                if code.strip() == "200":
+                    return json.loads(body)["prompt_id"]
+                last = f"try {i+1} HTTP[{code.strip()}] body={body[:200]!r} err={out.stderr[:200]!r}"
+                print(f"  submit retry: {last}"); time.sleep(6)
+            raise RuntimeError(f"submit failed after {tries}: {last}")
         finally:
             os.unlink(tmp)
-        body, _, code = out.stdout.rpartition("\n")
-        if code.strip() != "200":
-            raise RuntimeError(f"submit HTTP [{code.strip()}] body={body[:300]!r} err={out.stderr[:200]!r}")
-        return json.loads(body)["prompt_id"]
     def wait(self, pid, timeout=420):
         t0 = time.time()
         while time.time() - t0 < timeout:
@@ -129,6 +139,7 @@ def main():
     print(f"pod {pid} | base {pod.B} | warp={a.warp_npy}")
     if not pod.alive():
         sys.exit(f"pod {pid} not reachable at {pod.B}/system_stats")
+    time.sleep(10)  # settle: a fast-booted ComfyUI answers /object_info before /upload/image is ready
     # upload each unique pose once
     uploaded = {}
     for _, _, pose in FRAMES:

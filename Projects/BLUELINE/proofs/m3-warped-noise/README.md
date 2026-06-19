@@ -41,11 +41,16 @@ Verdict by `render-backend/consistency_ruler.py` (embed-cos + color-corr) on (A,
    Union; `pod-comfyui-client.py`) — render A, B-seedlock, B-warped; retrieve; terminate. ~$0.20–0.50.
 4. `consistency_ruler.py` on both B-pairs → the number: does warped beat seed-lock at 482 px?
 
-**Status: DONE — see [`m3-report.md`](m3-report.md).** The inject path is proven end to end (local SDXL +
-pod FLUX; `NoiseFromNPY` → `SamplerCustomAdvanced`, deterministic, base64-inline transport). The verdict
-is an **honest negative**: at the 482 px delta, **seed-lock degrades gracefully (0.744/0.380) but the naive
-flow-warped noise collapses to incoherent rainbow striping (0.508/0.016)** — a backward-warp + global
-renorm fixes mean/std but breaks the spatial white-noise prior the diffusion model needs. The bet
-([[The Flow Field is the Spine]]) is not disproven, just untested-at-render: the next rung needs a
-whiteness-preserving, *incremental* noise-warp ([[Go-with-the-Flow]]'s actual algorithm), not a generic
-image warp across one large jump. Renders: `renders/`.
+**Status: M3 DONE → M3.5 DONE.** See [`m3-report.md`](m3-report.md) then [`m3.5-report.md`](m3.5-report.md).
+
+- **M3** ([`m3-report.md`](m3-report.md)) — inject path proven end to end (`NoiseFromNPY` →
+  `SamplerCustomAdvanced`, deterministic, base64-inline). Honest negative: the **naive** warp (backward-warp
+  + global renorm) collapses to **rainbow garbage** (0.508/0.016) because it breaks the spatial white-noise
+  prior; seed-lock degrades gracefully (0.744/0.380). Renders: `renders/`.
+- **M3.5** ([`m3.5-report.md`](m3.5-report.md)) — the **fix**: `warp_noise_gtf.py` (forward-splat +
+  per-cell L2-normalize + disocclusion hole-fill — the HIWYN / [[Go-with-the-Flow]] core; nearest splat is
+  as white as the base noise, lag-1 autocorr 0.001 vs naive 0.127). The rainbow is **gone** — B-warped is now
+  a coherent figure (0.709/0.373) **~level with seed-lock** but not beating it at the 482 px delta. Reading:
+  noise-warp ties seed-lock at an extreme single jump; its win is in **small incremental** motion (GtF's
+  regime). The bet ([[The Flow Field is the Spine]]) is intact for within-shot motion. **Next: M3.6 =
+  small-delta / multi-step test.** Renders: `renders-gtf/`, local gate `local-sdxl/NW_gtf.png`.
