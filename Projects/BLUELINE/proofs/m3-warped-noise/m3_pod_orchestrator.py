@@ -131,6 +131,8 @@ def wait_ready(pid, boot_timeout=720):
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--terminate-only", default=None)
+    ap.add_argument("--render-script", default="m3.6_pod_render.py")   # current move: the delta sweep
+    ap.add_argument("--render-args", default="")                       # extra argv for the render script
     a = ap.parse_args()
     if a.terminate_only:
         terminate(a.terminate_only); return
@@ -147,10 +149,9 @@ def main():
     try:
         if not wait_ready(pid):
             raise RuntimeError("pod did not reach render-ready state within timeout")
-        print("[render] starting m3_pod_render.py (M3.5 whiteness-preserving warp)")
-        p = subprocess.run([sys.executable, str(HERE / "m3_pod_render.py"), "--pod", pid,
-                            "--out", "renders-gtf", "--warp-npy", "N_warped_gtf.npy",
-                            "--warp-label", "B_warped_gtf"], cwd=str(HERE))
+        print(f"[render] starting {a.render_script}")
+        cmd = [sys.executable, str(HERE / a.render_script), "--pod", pid] + a.render_args.split()
+        p = subprocess.run(cmd, cwd=str(HERE))
         rc = p.returncode
         print(f"[render] m3_pod_render exited {rc}")
     finally:
