@@ -3,10 +3,16 @@ BLUELINE M3 — a ComfyUI custom node that injects an EXTERNAL latent-noise tens
 sampling noise, so we can render with N_A (seed-lock) or N_warped (flow-warped) instead of seed-generated
 noise. Used via SamplerCustomAdvanced's `noise` input (the standard external-noise path).
 
+Two transports, same tensor:
+  • `path`  — load a .npy file on disk (local SDXL verify; or an on-pod path).
+  • `b64`   — base64 of the WHOLE .npy file bytes (header + data), decoded in-node. Lets the noise ride
+              INSIDE the workflow JSON, so a RunPod pod needs no file transfer (ComfyUI exposes only an
+              image-upload endpoint). If `b64` is non-empty it wins; else `path` is used.
+
 Install: copy/symlink this file into ComfyUI/custom_nodes/ (local SDXL verify AND the RunPod pod).
 The .npy must be the latent shape for the model: SDXL = (4, H/8, W/8), FLUX = (16, H/8, W/8).
 """
-import numpy as np, torch, os
+import numpy as np, torch, os, io, base64
 
 class _NPYNoise:
     """A ComfyUI NOISE object: returns the loaded tensor as the sampler's initial noise."""
@@ -24,16 +30,21 @@ class NoiseFromNPY:
     @classmethod
     def INPUT_TYPES(cls):
         return {"required": {"path": ("STRING", {"default": ""}),
-                             "seed": ("INT", {"default": 0, "min": 0, "max": 2**31-1})}}
+                             "seed": ("INT", {"default": 0, "min": 0, "max": 2**31-1})},
+                "optional": {"b64": ("STRING", {"default": "", "multiline": True})}}
     RETURN_TYPES = ("NOISE",)
     RETURN_NAMES = ("noise",)
     FUNCTION = "load"
     CATEGORY = "BLUELINE"
-    def load(self, path, seed):
-        if not os.path.isfile(path):
-            raise FileNotFoundError(f"NoiseFromNPY: {path} not found")
-        arr = np.load(path).astype(np.float32)
-        print(f"[BLUELINE] NoiseFromNPY loaded {path} shape={arr.shape} mean={arr.mean():+.3f} std={arr.std():.3f}")
+    def load(self, path, seed, b64=""):
+        if b64:
+            arr = np.load(io.BytesIO(base64.b64decode(b64))).astype(np.float32)
+            src = f"b64 ({len(b64)} chars)"
+        else:
+            if not os.path.isfile(path):
+                raise FileNotFoundError(f"NoiseFromNPY: {path} not found")
+            arr = np.load(path).astype(np.float32); src = path
+        print(f"[BLUELINE] NoiseFromNPY loaded {src} shape={arr.shape} mean={arr.mean():+.3f} std={arr.std():.3f}")
         return (_NPYNoise(arr, seed),)
 
 NODE_CLASS_MAPPINGS = {"NoiseFromNPY": NoiseFromNPY}
