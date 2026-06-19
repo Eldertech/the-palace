@@ -1,0 +1,91 @@
+{
+  "deltas": [
+    {
+      "t": 0.1,
+      "delta_px": 48.3,
+      "warp_filled": 0.967,
+      "seedlock": {
+        "embed_cos": 0.9568748474121094,
+        "color_corr": 0.8181411186996561
+      },
+      "warped": {
+        "embed_cos": 0.9222214221954346,
+        "color_corr": 0.7790067845352713
+      },
+      "warp_minus_seedlock": {
+        "embed_cos": -0.034653425216674805,
+        "color_corr": -0.03913433416438483
+      }
+    },
+    {
+      "t": 0.2,
+      "delta_px": 96.5,
+      "warp_filled": 0.933,
+      "seedlock": {
+        "embed_cos": 0.9181390404701233,
+        "color_corr": 0.6506859643233992
+      },
+      "warped": {
+        "embed_cos": 0.9411640763282776,
+        "color_corr": 0.8786973236650194
+      },
+      "warp_minus_seedlock": {
+        "embed_cos": 0.023025035858154297,
+        "color_corr": 0.2280113593416202
+      }
+    },
+    {
+      "t": 0.35,
+      "delta_px": 168.9,
+      "warp_filled": 0.882,
+      "seedlock": {
+        "embed_cos": 0.9155972003936768,
+        "color_corr": 0.8898127228728921
+      },
+      "warped": {
+        "embed_cos": 0.8879736661911011,
+        "color_corr": 0.31142277477898334
+      },
+      "warp_minus_seedlock": {
+        "embed_cos": -0.027623534202575684,
+        "color_corr": -0.5783899480939088
+      }
+    },
+    {
+      "t": 0.6,
+      "delta_px": 289.6,
+      "warp_filled": 0.797,
+      "seedlock": {
+        "embed_cos": 0.706770122051239,
+        "color_corr": 0.45889706278660625
+      },
+      "warped": {
+        "embed_cos": 0.7081233263015747,
+        "color_corr": 0.07694727314853048
+      },
+      "warp_minus_seedlock": {
+        "embed_cos": 0.0013532042503356934,
+        "color_corr": -0.3819497896380758
+      }
+    },
+    {
+      "t": 1.0,
+      "delta_px": 482.6,
+      "warp_filled": 0.663,
+      "seedlock": {
+        "embed_cos": 0.7438827157020569,
+        "color_corr": 0.3795160276087179
+      },
+      "warped": {
+        "embed_cos": 0.7397655844688416,
+        "color_corr": 0.33004724414346387
+      },
+      "warp_minus_seedlock": {
+        "embed_cos": -0.004117131233215332,
+        "color_corr": -0.04946878346525402
+      }
+    }
+  ],
+  "crossover_px": 289.6,
+  "verdict": "warped >= seed-lock up to ~290px"
+}
