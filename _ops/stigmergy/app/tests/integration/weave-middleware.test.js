@@ -118,3 +118,49 @@ describe('POST /api/weave/emit-unsung', () => {
     expect(res.status).toBe(400);
   });
 });
+
+describe('POST /api/weave/emit-hub', () => {
+  let root;
+  beforeEach(() => { root = makeTempPalace(); });
+  afterEach(() => { rmSync(root, { recursive: true, force: true }); });
+
+  test('defaults to a DRY RUN (dryRun:true, limit:8, threshold:5) and passes palaceRoot/boardPath', async () => {
+    let seen = null;
+    const runHubEmissionImpl = async (args) => { seen = args; return { ok: true, dryRun: true, found: 2, eligible: 2, planned: 2, proposals: [] }; };
+    const res = await request(makeServer(root, { runHubEmissionImpl }))
+      .post('/api/weave/emit-hub').send();
+    expect(res.status).toBe(200);
+    expect(res.body.ok).toBe(true);
+    expect(seen.dryRun).toBe(true);
+    expect(seen.limit).toBe(8);
+    expect(seen.threshold).toBe(5);
+    expect(seen.palaceRoot).toBe(root);
+    expect(seen.boardPath).toBe(resolve(root, '_ops/swarm/persistent/blackboard.jsonl'));
+  });
+
+  test('dryRun:false + limit + threshold pass straight through', async () => {
+    let seen = null;
+    const runHubEmissionImpl = async (args) => { seen = args; return { ok: true, dryRun: false, posted: 2 }; };
+    const res = await request(makeServer(root, { runHubEmissionImpl }))
+      .post('/api/weave/emit-hub').send({ dryRun: false, limit: 2, threshold: 6 });
+    expect(res.status).toBe(200);
+    expect(res.body.posted).toBe(2);
+    expect(seen.dryRun).toBe(false);
+    expect(seen.limit).toBe(2);
+    expect(seen.threshold).toBe(6);
+  });
+
+  test('maps the runner status onto the HTTP status (500 no-root)', async () => {
+    const runHubEmissionImpl = async () => ({ ok: false, status: 500, error: 'no palace root configured' });
+    const res = await request(makeServer(root, { runHubEmissionImpl }))
+      .post('/api/weave/emit-hub').send({ dryRun: true });
+    expect(res.status).toBe(500);
+    expect(res.body.error).toMatch(/no palace root/);
+  });
+
+  test('400 on malformed JSON', async () => {
+    const res = await request(makeServer(root))
+      .post('/api/weave/emit-hub').set('Content-Type', 'application/json').send('{ not json');
+    expect(res.status).toBe(400);
+  });
+});

@@ -163,6 +163,7 @@ export function* walkEntryRecords(palaceRoot) {
     yield {
       path: rel,
       title,
+      type: typeof frontmatter.type === 'string' ? frontmatter.type : null,
       links: normalizeLinks(frontmatter.links),
       body: typeof body === 'string' ? body : '',
     };

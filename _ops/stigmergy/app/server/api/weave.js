@@ -14,13 +14,14 @@
 import { join } from 'node:path';
 import { jsonResponse, readBody, PERSISTENT_REL } from '../http.js';
 import { applyWeaveProposal } from '../weave-apply.js';
-import { runUnsungEmission } from '../weave-emit.js';
+import { runUnsungEmission, runHubEmission } from '../weave-emit.js';
 
 export async function weaveRoutes(ctx) {
   const { urlPath, method } = ctx;
   if (method !== 'POST') return false;
   if (urlPath === '/api/weave/apply') return handleApply(ctx);
   if (urlPath === '/api/weave/emit-unsung') return handleEmitUnsung(ctx);
+  if (urlPath === '/api/weave/emit-hub') return handleEmitHub(ctx);
   return false;
 }
 
@@ -66,6 +67,22 @@ async function handleEmitUnsung(ctx) {
 
   const run = opts.runUnsungEmissionImpl || runUnsungEmission;
   const result = await run({ palaceRoot, boardPath, dryRun, limit });
+  jsonResponse(res, result.ok ? 200 : (result.status || 400), result);
+  return true;
+}
+
+async function handleEmitHub(ctx) {
+  const { req, res, palaceRoot, opts } = ctx;
+  const body = await readJsonBody(req, res, { allowEmpty: true });
+  if (body === null) return true;
+
+  const dryRun = body.dryRun !== false; // DRY-RUN unless explicitly asked to post
+  const limit = Number.isFinite(body.limit) ? body.limit : 8;
+  const threshold = Number.isFinite(body.threshold) ? body.threshold : 5;
+  const boardPath = opts.boardPath ? opts.boardPath : join(palaceRoot, PERSISTENT_REL);
+
+  const run = opts.runHubEmissionImpl || runHubEmission;
+  const result = await run({ palaceRoot, boardPath, dryRun, limit, threshold });
   jsonResponse(res, result.ok ? 200 : (result.status || 400), result);
   return true;
 }

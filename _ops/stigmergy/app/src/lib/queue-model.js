@@ -381,6 +381,8 @@ export function synthesizeProposalAsk(proposalType, source, target) {
   switch (proposalType) {
     case 'promote_unsung':
       return `promote the body wikilink ${s} → ${t} to a typed link`;
+    case 'promote_hub':
+      return `promote ${s} to a hub (it has crossed the inbound-link threshold)`;
     case 'new_typed_link':
       return `add a typed link ${s} → ${t}`;
     case 'label_enrichment':

@@ -35,6 +35,7 @@ const KIND_COLOR = {
 
 const PROPOSAL_TYPE_LABEL = {
   promote_unsung: 'promote unsung path',
+  promote_hub: 'hub promotion',
   new_typed_link: 'new typed link',
   label_enrichment: 'label enrichment',
   stage_transition: 'stage transition',

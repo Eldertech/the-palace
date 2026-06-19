@@ -9,7 +9,7 @@ import { fetchLog } from '../../adapters/log.js';
 import { fetchCards, respondToCard } from '../../adapters/cards.js';
 import { buildResponse, buildRequestOptionResponse } from '../../lib/response-builder.js';
 import { postMessage } from '../../adapters/blackboard.js';
-import { applyWeaveProposal, emitUnsungAudit } from '../../adapters/weave.js';
+import { applyWeaveProposal, emitUnsungAudit, emitHubAudit } from '../../adapters/weave.js';
 
 // QueuePanel — the unified, honest, ranked queue (Phase 4).
 //
@@ -191,25 +191,30 @@ export default function QueuePanel({ messages, onJumpEntry }) {
     loadCommits();
   }
 
-  // Run unsung-path audit — the Weave's posting half, from the terminal. Step 1
-  // is always a DRY RUN: scan the palace for body wikilinks not yet typed as
-  // links, surface honest counts, write nothing. If any are eligible, the result
-  // exposes a "post N proposals" confirm (postUnsungAudit) — a write needs the
-  // second, explicit click. The posted proposals arrive via SSE into the WEAVE
-  // lane, each with its own grant & apply.
-  async function runUnsungAudit() {
+  // Run a Weave audit — the posting half, from the terminal. `kind` selects the
+  // detector: 'unsung' (body wikilinks not yet typed) or 'hub' (concept entries
+  // over the inbound-link threshold). Step 1 is always a DRY RUN: scan, surface
+  // honest counts, write nothing. If any are eligible, the result exposes a
+  // "post N proposals" confirm (postAudit) — a write needs the second, explicit
+  // click. The posted proposals arrive via SSE into the WEAVE lane, each with
+  // its own grant & apply.
+  const auditAdapter = (kind) => (kind === 'hub' ? emitHubAudit : emitUnsungAudit);
+  async function runAudit(kind) {
     if (auditBusy) return;
     setAuditBusy(true);
-    const r = await emitUnsungAudit({ dryRun: true });
+    const r = await auditAdapter(kind)({ dryRun: true });
     setAuditBusy(false);
-    setAudit(r.ok ? { phase: 'dry', ...r } : { phase: 'error', error: r.error });
+    setAudit(r.ok ? { kind, phase: 'dry', ...r } : { kind, phase: 'error', error: r.error });
   }
-  async function postUnsungAudit() {
-    if (auditBusy) return;
+  const runUnsungAudit = () => runAudit('unsung');
+  const runHubAudit = () => runAudit('hub');
+  async function postAudit() {
+    if (auditBusy || !audit) return;
+    const kind = audit.kind || 'unsung';
     setAuditBusy(true);
-    const r = await emitUnsungAudit({ dryRun: false });
+    const r = await auditAdapter(kind)({ dryRun: false });
     setAuditBusy(false);
-    setAudit(r.ok ? { phase: 'posted', ...r } : { phase: 'error', error: r.error });
+    setAudit(r.ok ? { kind, phase: 'posted', ...r } : { kind, phase: 'error', error: r.error });
   }
 
   function closeRespond() { setRespondingTo(null); }
@@ -365,6 +370,14 @@ export default function QueuePanel({ messages, onJumpEntry }) {
         >
           {auditBusy ? 'auditing...' : 'run unsung-path audit'}
         </span>
+        <span
+          data-testid="run-hub-audit"
+          onClick={auditBusy ? undefined : runHubAudit}
+          style={{ cursor: auditBusy ? 'wait' : 'pointer', color: 'var(--ansi-bright-cyan)', textShadow: 'var(--glow)', textDecoration: 'underline' }}
+          title="scan the palace for concept entries over the inbound-link threshold — the Weave's hub-promotion audit (dry run; nothing is written)"
+        >
+          {auditBusy ? 'auditing...' : 'run hub-promotion audit'}
+        </span>
 
         {/* lanes: the six boards become filters, not tabs */}
         <span style={{ marginLeft: 8 }}>lanes:</span>
@@ -393,12 +406,13 @@ export default function QueuePanel({ messages, onJumpEntry }) {
         ))}
       </div>
 
-      {/* Unsung-path audit result: the dry-run plan (honest counts + an explicit
-          "post N" confirm, since posting writes proposals), the post outcome, or
-          an error. No silent caps — found/eligible/over-limit are all named. */}
+      {/* Weave audit result (unsung-path OR hub-promotion): the dry-run plan
+          (honest counts + an explicit "post N" confirm, since posting writes
+          proposals), the post outcome, or an error. No silent caps —
+          found/eligible/over-limit are all named. Keyed by audit.kind. */}
       {audit ? (
         <div
-          data-testid="unsung-audit-result"
+          data-testid={`${audit.kind || 'unsung'}-audit-result`}
           style={{
             display: 'flex', gap: 10, alignItems: 'baseline', flexWrap: 'wrap',
             marginBottom: 8, fontSize: 12, color: 'var(--phosphor-dim)', textShadow: 'none',
@@ -407,7 +421,7 @@ export default function QueuePanel({ messages, onJumpEntry }) {
         >
           {audit.phase === 'error' ? (
             <span style={{ color: 'var(--error)', textShadow: 'var(--glow)' }}>
-              unsung-path audit failed -- {audit.error}
+              {audit.kind === 'hub' ? 'hub-promotion' : 'unsung-path'} audit failed -- {audit.error}
             </span>
           ) : audit.phase === 'posted' ? (
             <span>
@@ -419,20 +433,20 @@ export default function QueuePanel({ messages, onJumpEntry }) {
             <>
               <span>
                 <strong style={{ color: 'var(--phosphor)' }}>{audit.entriesScanned}</strong> entries scanned --{' '}
-                <strong style={{ color: 'var(--phosphor)' }}>{audit.found}</strong> unsung --{' '}
+                <strong style={{ color: 'var(--phosphor)' }}>{audit.found}</strong> {audit.kind === 'hub' ? 'hub candidate(s)' : 'unsung'} --{' '}
                 {audit.deduped} already proposed -- {audit.eligible} eligible --{' '}
                 <strong style={{ color: 'var(--phosphor)' }}>{audit.planned}</strong> would post
                 {audit.dropped ? ` -- ${audit.dropped} over limit ${audit.limit} NOT emitted` : ''}
               </span>
               {audit.planned > 0 ? (
                 <span
-                  data-testid="post-unsung-audit"
-                  onClick={auditBusy ? undefined : postUnsungAudit}
+                  data-testid={`post-${audit.kind || 'unsung'}-audit`}
+                  onClick={auditBusy ? undefined : postAudit}
                   style={{
                     cursor: auditBusy ? 'wait' : 'pointer', color: 'var(--ansi-bright-yellow)',
                     textShadow: 'var(--glow)', textDecoration: 'underline',
                   }}
-                  title="append these promote_unsung proposals to the WEAVE board (this writes)"
+                  title="append these proposals to the WEAVE board (this writes)"
                 >
                   post {audit.planned} proposal{audit.planned === 1 ? '' : 's'}
                 </span>
@@ -442,7 +456,7 @@ export default function QueuePanel({ messages, onJumpEntry }) {
             </>
           )}
           <span
-            data-testid="unsung-audit-dismiss"
+            data-testid={`${audit.kind || 'unsung'}-audit-dismiss`}
             onClick={() => setAudit(null)}
             style={{ cursor: 'pointer', color: 'var(--phosphor-dim)', textDecoration: 'underline' }}
           >
