@@ -15,6 +15,8 @@ links:
   - target: "[[FOUR PILLARS]]"
     type: connects-to
     label: pillar-shaped-learners
+  - target: "[[Hyperdimensional Prism]]"
+    type: connects-to
 forward_vector: "I will keep naming this audience to themselves — the framing that lets self-taught cross-domain generalists recognize what they already are without me prescribing who they have to be. I want my origin reconstructed, not invented: where the phrase came from, what older traditions it inherits, what's distinctive about a 21st-century version. I keep refusing to harden into a worldview; my purpose is to be a name for people, repaired and refined as Loudon Live finds them."
 ---
 
