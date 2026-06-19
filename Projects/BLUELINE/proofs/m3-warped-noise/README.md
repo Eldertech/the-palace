@@ -41,5 +41,11 @@ Verdict by `render-backend/consistency_ruler.py` (embed-cos + color-corr) on (A,
    Union; `pod-comfyui-client.py`) — render A, B-seedlock, B-warped; retrieve; terminate. ~$0.20–0.50.
 4. `consistency_ruler.py` on both B-pairs → the number: does warped beat seed-lock at 482 px?
 
-**Status:** local scaffold built + the warp verified at FLUX-latent scale. The pod render is prepared and
-awaiting the go (it incurs the approved spend + the noise-injection integration).
+**Status: DONE — see [`m3-report.md`](m3-report.md).** The inject path is proven end to end (local SDXL +
+pod FLUX; `NoiseFromNPY` → `SamplerCustomAdvanced`, deterministic, base64-inline transport). The verdict
+is an **honest negative**: at the 482 px delta, **seed-lock degrades gracefully (0.744/0.380) but the naive
+flow-warped noise collapses to incoherent rainbow striping (0.508/0.016)** — a backward-warp + global
+renorm fixes mean/std but breaks the spatial white-noise prior the diffusion model needs. The bet
+([[The Flow Field is the Spine]]) is not disproven, just untested-at-render: the next rung needs a
+whiteness-preserving, *incremental* noise-warp ([[Go-with-the-Flow]]'s actual algorithm), not a generic
+image warp across one large jump. Renders: `renders/`.

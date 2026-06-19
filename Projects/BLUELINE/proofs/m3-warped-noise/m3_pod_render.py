@@ -16,7 +16,7 @@ orchestrator owns the pod lifecycle so teardown is guaranteed even on render fai
 
   python3 m3_pod_render.py --pod <id> --out renders/
 """
-import argparse, base64, json, os, ssl, subprocess, sys, time, urllib.request, urllib.parse, uuid
+import argparse, base64, json, os, ssl, subprocess, sys, tempfile, time, urllib.request, urllib.parse, uuid
 from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
@@ -58,9 +58,20 @@ class Pod:
             raise RuntimeError("upload failed: " + out.stdout[:200] + out.stderr[:200])
         return json.loads(out.stdout).get("name", name)
     def submit(self, wf):
-        data = json.dumps({"prompt": wf, "client_id": self.cid}).encode()
-        return json.loads(self._req("POST", "/prompt", data=data,
-                                    headers={"Content-Type": "application/json"}))["prompt_id"]
+        # /prompt carries the ~1.3 MB inline-noise body — urllib's POST is closed by the RunPod proxy
+        # WAF (broken pipe). curl + browser-UA is the proven transport that beats it (same as upload).
+        with tempfile.NamedTemporaryFile("w", suffix=".json", delete=False) as f:
+            json.dump({"prompt": wf, "client_id": self.cid}, f); tmp = f.name
+        try:
+            out = subprocess.run(["curl", "-s", "-w", "\n%{http_code}", "--max-time", "120", "-X", "POST",
+                "-H", "Content-Type: application/json", "-H", f"User-Agent: {UA}",
+                "--data-binary", f"@{tmp}", f"{self.B}/prompt"], capture_output=True, text=True, timeout=140)
+        finally:
+            os.unlink(tmp)
+        body, _, code = out.stdout.rpartition("\n")
+        if code.strip() != "200":
+            raise RuntimeError(f"submit HTTP [{code.strip()}] body={body[:300]!r} err={out.stderr[:200]!r}")
+        return json.loads(body)["prompt_id"]
     def wait(self, pid, timeout=420):
         t0 = time.time()
         while time.time() - t0 < timeout:
