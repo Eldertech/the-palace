@@ -1,0 +1,16 @@
+{
+  "pairs": [
+    {
+      "board": "A",
+      "embed_cos": 0.6892199516296387,
+      "color_corr": -0.005851587541004855
+    },
+    {
+      "board": "B",
+      "embed_cos": 0.7518703937530518,
+      "color_corr": 0.017941616723085144
+    }
+  ],
+  "mean_embed_cos": 0.7205451726913452,
+  "verdict": "identity largely survives the style jump (mean embed 0.721)"
+}
