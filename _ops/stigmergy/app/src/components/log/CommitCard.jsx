@@ -1,11 +1,19 @@
 import React from 'react';
-import { kindColor } from '../../lib/commit-parse.js';
+import { kindColor, bodyProse } from '../../lib/commit-parse.js';
 import { formatTs } from '../../lib/format.js';
 
 // One commit as a semantic card: kind badge, scope, summary, author, time,
 // a one-glance diffstat, and the structured trailers. Color-coded by kind.
 // Big sweeps (> ~10 touched entries) collapse their file list to a summary
 // with a drill-down (the full diff opens in CommitDiff on click).
+//
+// Deposit cards render the commit BODY inline (the synthesis), because after
+// the 2026-06-19 archive→LOG migration a deposit's record IS its commit body —
+// the Deposit Archive is "the LOG deck filtered to Palace-Kind: deposit, read
+// from the commit body" (Deposit Ceremony § The Archive Is the LOG Deck). For
+// that to be true on the card face, not one drill-in away, the synthesis shows
+// here. Other kinds keep drill-in only, so the stream isn't bloated by every
+// ops/edit/merge body.
 
 const BIG_SWEEP = 10;
 
@@ -38,6 +46,8 @@ export default function CommitCard({ commit, onOpen, onFilterEntry, compact = fa
   const inferred = c.kindSource === 'inferred';
   const entriesShown = (c.entries ?? []).slice(0, BIG_SWEEP);
   const overflow = (c.entries ?? []).length - entriesShown.length;
+  // The synthesis, inline — deposit cards only (see header note).
+  const depositBody = !compact && c.kind === 'deposit' ? bodyProse(c.body) : '';
 
   return (
     <div
@@ -116,6 +126,19 @@ export default function CommitCard({ commit, onOpen, onFilterEntry, compact = fa
           </span>
         ) : null}
       </div>
+
+      {depositBody ? (
+        <pre
+          data-testid="commit-card-body"
+          style={{
+            whiteSpace: 'pre-wrap', wordBreak: 'break-word',
+            color: 'var(--phosphor)', textShadow: 'var(--glow)',
+            fontSize: 12, lineHeight: 1.5, maxWidth: '78ch',
+            margin: '6px 0 0', padding: '0 0 0 10px',
+            borderLeft: `2px solid ${kc}`,
+          }}
+        >{depositBody}</pre>
+      ) : null}
 
       {!compact && entriesShown.length > 0 ? (
         <div data-testid="commit-entries" style={{
