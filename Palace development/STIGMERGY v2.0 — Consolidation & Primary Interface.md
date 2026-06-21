@@ -114,3 +114,7 @@ The crisp line: **TRICKSTER = a steward is waiting on your answer; QUEUE = every
 - **[[STIGMERGY]]** — the running system; its forward vector ("become the front door") is what this drives toward.
 - **[[BBS Design System]]** — the governing aesthetic, restored as monospace-only on every surface.
 - **[[Project Stewardship System]]** / **[[Enrichment]]** / **[[The Lens]]** / **[[Palace Enchantment]]** — the integration surfaces the roadmap pulls inside the terminal.
+
+## Active Baton
+
+[[STIGMERGY v2.0 — Weave proposals baton]] — drafted 2026-06-21 (`_ops/stigmergy/v2.0-weave-baton.md`). Carries the next posting-half move: the generative tier (recommended `vector_tuning`) vs. the autonomous scheduler — Loudon's fork.
