@@ -525,7 +525,7 @@ The Path 2 rule:
     }
   }
   ```
-- The strict §2.2 validator recognises `health._orchestrator_metadata.dispatch_mode === "claude-code-subagent"` as the Path 2 marker and **relaxes** the requirements: only `score` and `model` are mandatory; `context_pct` / `stop_reason` / `iteration` / `tokens_this_call` are optional (validator-skipped when absent, structurally checked when present).
+- The strict §2.2 validator **relaxes** the requirements for the whole class of *no-authoritative-API-usage* dispatch contexts — `health._orchestrator_metadata.dispatch_mode` ∈ `{claude-code-subagent, hand-authored, cowork, claude-code}` (the `STUB_HEALTH_DISPATCH` set). For these, only `score` and `model` are mandatory; `context_pct` / `stop_reason` / `iteration` / `tokens_this_call` are optional (validator-skipped when absent, structurally checked when present). `claude-code-subagent` is the orchestrator's Path 2 marker; `hand-authored` / `cowork` / `claude-code` cover messages a human or agent hand-wrote with no model call at all (SCHEMA §9: "hand-authored and Path-2 messages carry a green stub"). API-direct, unknown, and metadata-absent messages keep the full requirement. A new non-API dispatch mode is added to the set, not exempted ad-hoc.
 - `score` is a **sentinel** — always `green` in Path 2. Real escalation (yellow/red) requires Path 1's authoritative usage data.
 - Path 1 messages remain fully required by the validator (the dual-path is additive, not a replacement). Path 1 returns when the orchestrator gains direct API access (the user gets an API key, or the Agent tool exposes `input_tokens` separately).
 

@@ -109,37 +109,50 @@ export function validateMessage(msg) {
     }
   }
 
-  // health — required object. The required sub-fields depend on the dispatch
-  // mode (see Infrastructure Spec §3.3):
+  // health — required object. The required sub-fields depend on whether the
+  // orchestrator had authoritative API usage data (see Infrastructure Spec
+  // §3.3.1, SCHEMA §9):
   //
-  //   Path 1 (direct-API dispatch) — all 6 sub-fields required:
+  //   Path 1 (API-direct dispatch) — all 6 sub-fields required:
   //     context_pct, stop_reason, iteration, tokens_this_call, model, score.
+  //     This is the case the orchestrator calls the Anthropic API directly and
+  //     reads response.usage.input_tokens, so context_pct is authoritative.
   //
-  //   Path 2 (claude-code-subagent dispatch) — only score + model required;
-  //     context_pct / stop_reason / iteration / tokens_this_call are
-  //     OPTIONAL (and ignored if absent) because the Agent tool does not
-  //     return the input_tokens breakdown that §3.3 originally assumed. The
-  //     score is stamped "green" as a sentinel; real escalation requires
-  //     Path 1's authoritative usage data. The path is signalled by
-  //     `health._orchestrator_metadata.dispatch_mode === "claude-code-subagent"`.
+  //   Stub-health dispatch (no authoritative API usage) — only score + model
+  //     required; context_pct / stop_reason / iteration / tokens_this_call are
+  //     OPTIONAL (ignored if absent, structurally checked when present). When
+  //     there was no direct API call, those four can't be computed, so forcing
+  //     them would mean stamping fabricated zeros. The score is a "green"
+  //     sentinel; real escalation requires Path 1's usage data. Signalled by
+  //     `health._orchestrator_metadata.dispatch_mode` ∈ STUB_HEALTH_DISPATCH:
+  //     `claude-code-subagent` (Path 2: Agent-tool dispatch, §3.3.1),
+  //     `hand-authored` / `cowork` / `claude-code` (a human or agent hand-wrote
+  //     the JSON — no model call at all; SCHEMA §9: "hand-authored and Path-2
+  //     messages carry a green stub"). New non-API dispatch modes are added to
+  //     this set, not exempted ad-hoc.
   //
-  // Pre-existing messages with full health blocks remain valid in either
-  // mode — the change relaxes requirements for Path 2 but does not reject
-  // messages that happen to carry the full set.
+  // Path 1 is the DEFAULT: a message with no _orchestrator_metadata, or an
+  // API-direct dispatch_mode, keeps the full requirement. Pre-existing messages
+  // with full health blocks remain valid in either case — relaxation makes the
+  // four fields optional, it never rejects a message that carries the full set.
   if (!('health' in msg) || msg.health === null || msg.health === undefined) {
     errors.push({ path: 'health', message: 'required field "health" is missing' });
   } else if (typeof msg.health !== 'object' || Array.isArray(msg.health)) {
     errors.push({ path: 'health', message: '"health" must be a plain object' });
   } else {
     const h = msg.health;
-    const isPath2 = h._orchestrator_metadata
+    // Dispatch contexts with no authoritative API usage data → stub health OK.
+    const STUB_HEALTH_DISPATCH = new Set([
+      'claude-code-subagent', 'hand-authored', 'cowork', 'claude-code',
+    ]);
+    const isStubHealth = h._orchestrator_metadata
       && typeof h._orchestrator_metadata === 'object'
-      && h._orchestrator_metadata.dispatch_mode === 'claude-code-subagent';
+      && STUB_HEALTH_DISPATCH.has(h._orchestrator_metadata.dispatch_mode);
 
     // context_pct, stop_reason, iteration, tokens_this_call: required only
     // for Path 1; optional for Path 2. When present (in either path), they
     // must have the right shape.
-    if (!isPath2 || 'context_pct' in h) {
+    if (!isStubHealth || 'context_pct' in h) {
       if (!('context_pct' in h) || h.context_pct === null || h.context_pct === undefined) {
         errors.push({ path: 'health.context_pct', message: 'required field "health.context_pct" is missing (Path 1)' });
       } else if (typeof h.context_pct !== 'number') {
@@ -149,7 +162,7 @@ export function validateMessage(msg) {
       }
     }
 
-    if (!isPath2 || 'stop_reason' in h) {
+    if (!isStubHealth || 'stop_reason' in h) {
       if (!('stop_reason' in h) || h.stop_reason === null || h.stop_reason === undefined) {
         errors.push({ path: 'health.stop_reason', message: 'required field "health.stop_reason" is missing (Path 1)' });
       } else if (typeof h.stop_reason !== 'string' || h.stop_reason.trim() === '') {
@@ -157,7 +170,7 @@ export function validateMessage(msg) {
       }
     }
 
-    if (!isPath2 || 'iteration' in h) {
+    if (!isStubHealth || 'iteration' in h) {
       if (!('iteration' in h) || h.iteration === null || h.iteration === undefined) {
         errors.push({ path: 'health.iteration', message: 'required field "health.iteration" is missing (Path 1)' });
       } else if (typeof h.iteration !== 'number') {
@@ -169,7 +182,7 @@ export function validateMessage(msg) {
       }
     }
 
-    if (!isPath2 || 'tokens_this_call' in h) {
+    if (!isStubHealth || 'tokens_this_call' in h) {
       if (!('tokens_this_call' in h) || h.tokens_this_call === null || h.tokens_this_call === undefined) {
         errors.push({ path: 'health.tokens_this_call', message: 'required field "health.tokens_this_call" is missing (Path 1)' });
       } else if (typeof h.tokens_this_call !== 'number') {
