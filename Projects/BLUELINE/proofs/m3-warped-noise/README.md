@@ -58,5 +58,15 @@ Verdict by `render-backend/consistency_ruler.py` (embed-cos + color-corr) on (A,
   near-ceiling at small deltas (0.92–0.96), leaving no headroom, and single-sample renders are
   variance-dominated. **Flow-warped noise does not beat seed-lock for a single staged jump at any size.** Its
   only surviving regime is a **cumulative multi-frame sequence** (drift compounds) — that's **M3.7**. Curve:
-  `renders-sweep/m3.6-sweep.png`. Design rule: panel-render coherence = seed-lock + identity + depth + img2img;
-  reserve noise-warp for within-shot sequences pending M3.7.
+  `renders-sweep/m3.6-sweep.png`.
+- **M3.7** ([`m3.7-report.md`](m3.7-report.md)) — the **cumulative-sequence** test (6-frame coil→leap;
+  seed-lock vs per-step warped chain; one pod). **Seed-lock wins** on adjacent-frame coherence: embed 0.858 vs
+  0.809 (Δ −0.049), color +0.596 vs +0.476 — the chain wanders (`renders-seq/m3.7-filmstrip.png` + GIFs).
+  **The render-noise bet is CLOSED:** flow-warped noise never beats seed-lock in *any* regime (single jump or
+  sequence). [[The Flow Field is the Spine]]'s "move the noise at the render" is retired; the field stays the
+  compositional/FX spine (M2). Panel-render coherence = seed-lock + pose ControlNet + identity + depth + img2img.
+- **M4** ([`m4-report.md`](m4-report.md)) — **hyperreal-impact reconnaissance**: comic↔hyperreal pair (same
+  pose + `N_A`, two style prompts), boards A & B. Identity across the style jump = **0.72 mean embed_cos ≥ 0.60
+  target**, with *no* identity model (`color_corr ≈ 0`, expected — palette flips). Montage `renders-m4/m4-pairs.png`.
+  The "same face in two registers" risk is **tractable**; full M4 gated on Track II (style LoRA for crisp comic
+  ink + PuLID for rigorous face-hold), not on a new unknown.

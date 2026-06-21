@@ -69,7 +69,7 @@ def start_script():
         'cd /comfyui && exec python -u main.py --disable-auto-launch --disable-metadata --listen --port 8188\n'
     )
 
-def create_pod():
+def create_pod(max_tries=12, delay=30):
     body = {
         "name": "blueline-m3", "imageName": IMAGE,
         "gpuTypeIds": GPU_IDS, "gpuCount": 1,
@@ -77,15 +77,22 @@ def create_pod():
         "ports": ["8188/http", "22/tcp"], "containerDiskInGb": 25,
         "dockerStartCmd": ["bash", "-c", start_script()],
     }
-    r, code = api("POST", "/pods", body)
-    if code not in (200, 201):
+    for i in range(max_tries):
+        r, code = api("POST", "/pods", body)
+        if code in (200, 201):
+            pid = r.get("id") or r.get("podId")
+            if not pid:
+                sys.exit(f"create returned no id: {json.dumps(r)[:400]}")
+            Path("/tmp/pod_id").write_text(pid)
+            print(f"[create] pod {pid} ({r.get('machine',{}).get('gpuTypeId') or r.get('gpuTypeIds')}) — id at /tmp/pod_id")
+            return pid
+        err = json.dumps(r)[:200]
+        # EU-RO-1 (the volume's DC) momentarily out of all listed GPUs — capacity is transient, retry.
+        if code == 500 or "no instances" in err.lower() or "no longer any instances" in err.lower():
+            print(f"[create] no capacity (try {i+1}/{max_tries} [{code}]): {err} — retry in {delay}s")
+            time.sleep(delay); continue
         sys.exit(f"create failed [{code}]: {json.dumps(r)[:600]}")
-    pid = r.get("id") or r.get("podId")
-    if not pid:
-        sys.exit(f"create returned no id: {json.dumps(r)[:400]}")
-    Path("/tmp/pod_id").write_text(pid)
-    print(f"[create] pod {pid} ({r.get('machine',{}).get('gpuTypeId') or r.get('gpuTypeIds')}) — id at /tmp/pod_id")
-    return pid
+    sys.exit(f"create failed: no GPU capacity in the volume's datacenter after {max_tries} tries — try later")
 
 def terminate(pid):
     r, code = api("DELETE", f"/pods/{pid}")

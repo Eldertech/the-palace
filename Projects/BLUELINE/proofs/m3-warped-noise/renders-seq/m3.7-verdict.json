@@ -1,0 +1,49 @@
+{
+  "adjacent": {
+    "seedlock": {
+      "embed_cos_mean": 0.857813811302185,
+      "color_corr_mean": 0.5958451646110993,
+      "per_pair_embed": [
+        0.918,
+        0.877,
+        0.786,
+        0.858,
+        0.85
+      ]
+    },
+    "warped": {
+      "embed_cos_mean": 0.80889812707901,
+      "color_corr_mean": 0.47648147763610404,
+      "per_pair_embed": [
+        0.89,
+        0.882,
+        0.756,
+        0.721,
+        0.796
+      ]
+    }
+  },
+  "drift_from_s0": {
+    "seedlock": {
+      "embed_cos": [
+        1.0,
+        0.918,
+        0.879,
+        0.707,
+        0.767,
+        0.744
+      ]
+    },
+    "warped": {
+      "embed_cos": [
+        1.0,
+        0.89,
+        0.805,
+        0.704,
+        0.709,
+        0.683
+      ]
+    }
+  },
+  "verdict": "warped chain NOT smoother than seed-lock (adjacent embed -0.049, color -0.119)"
+}
