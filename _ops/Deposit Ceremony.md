@@ -74,7 +74,7 @@ Do not attempt to read the full palace or extensively update existing entries du
 A deposit adds to canon, and **canon is `main`** — that is what depositing *means* in relation to git. The worktree practice (`_ops/worktree/SKILL.md`) does not change this; it makes it explicit. Regardless of which worktree the source conversation runs in, the deposit writes **to the owner — the canonical main worktree — and commits there**:
 
 - Resolve the owner: `git worktree list --porcelain`; the first `worktree ` line is the canonical checkout (the same way `new-worktree.mjs` finds it). If the session already *is* the owner on `main`, `<owner>` is just the current directory and this reduces to an ordinary write + commit.
-- Write all new entries, bundle files, the [[Deposit Archive]] row, and any weave_flags into the owner's tree.
+- Write all new entries, bundle files, and any weave_flags into the owner's tree.
 - Commit on the owner's HEAD: `git -C "<owner>" add <paths> && git -C "<owner>" commit -m "Deposit — …"`. The owner's HEAD stays on `main`, so the commit lands on canon without touching — or being thrashed by — any feature worktree's branch.
 
 **Precondition:** the primary checkout is the canon trunk — permanently on `main`, never `git checkout`ed (it is the only worktree that holds `main`). If you find it thrashed off `main`, do not deposit blind: restore it to `main`, or land the commit on the `main` ref via a throwaway-worktree cherry-pick (see `_ops/worktree/SKILL.md` § Ceremonies in a worktree), first. A deposit landing on a feature branch is the exact stranding this rule prevents.
@@ -200,14 +200,24 @@ Write a brief final message into the conversation thread naming what now lives i
 
 **Step 7b: Record and commit**
 
-Append a one-line record to [[Deposit Archive]]:
-`| [ID] | [source_ref] | [date] | [topic] | done | [one-line summary of what was created] |`
+The deposit's record *is its commit*. There is no separate archive file to append to — the [[Deposit Archive]] is now a view of the LOG deck, filtered to `Palace-Kind: deposit`, read through STIGMERGY (§ The Archive Is the LOG Deck). What was once a hand-written table row is now the commit's **body**: write the synthesis there, where it becomes legible natively.
 
-Do not read the archive to do this — append only.
+Compose the commit through the palace committer (`POST /api/commit/create` when the STIGMERGY server is up, or `_ops/cowork-git/commit.mjs` from Cowork). Pass:
+- `--kind deposit` — stamps `Palace-Kind: deposit` and colors the card the brightest phosphor on the deck.
+- `--scope <deposit-id>` — the human ID (e.g. `D-2026-06-19-ARCHIVE`). The committer composes the spec subject `deposit(<id>): <summary>`, which is what makes the commit self-classify onto the deposit view. *(The old `Deposit — …` em-dash subject is retired — it does not self-classify.)*
+- `--summary "<one line, observational past tense>"` — the subject's summary half.
+- `--body "<the synthesis>"` — everything the archive row used to carry: what was created, the through-line, lost branches, and a `Weave flags:` line naming any flags posted (provenance, not queue — the flags live on the board). Unlimited length; **this body is the archive entry.**
+- `--verify <verified|unverified|couldnt>` — the honest state.
 
-- For each weave flag named in the deposit, append a `weave_flag` BROADCAST to the persistent board — the **owner's** `_ops/swarm/persistent/blackboard.jsonl`, never a worktree branch copy (§ Where the Deposit Lands). The message follows `payload.kind: 'weave_flag'` per [[STIGMERGY — Weave Flag Item Type Build Plan]] § Data shapes — `flag_type`, `source_deposit_id`, `source_entries`, optional `target_entry`, `proposed_action`, `rationale`. Show Loudon the message bodies before writing; commit only on his approval. The archive row's `Weave flags:` prose stays — as audit, not queue.
+The committer derives `Palace-Entry:` from the staged `.md` paths; add an explicit `Palace-Entry: <Title>` for any *updated* (not newly-added) entry so it appears on the card. Optional `Palace-Source: <conversation ref>` preserves provenance.
 
-Git commit — on the owner's `main` (`git -C "<owner>"` when the session runs in another worktree; § Where the Deposit Lands): `Deposit — [ID or theme] — [N new entries, N updated]`
+Then the weave flags, unchanged: for each weave flag named in the deposit, append a `weave_flag` BROADCAST to the **owner's** `_ops/swarm/persistent/blackboard.jsonl` (never a worktree branch copy; § Where the Deposit Lands), `payload.kind: 'weave_flag'` per [[STIGMERGY — Weave Flag Item Type Build Plan]] § Data shapes — with `source_deposit_id` set to the commit's deposit ID. Show Loudon the message bodies before writing; commit only on his approval.
+
+Commit on the owner's `main` (`git -C "<owner>"` when the session runs in another worktree). The commit *is* the archive record; once it lands in LOG, the deposit is on the shelf.
+
+### § The Archive Is the LOG Deck
+
+The [[Deposit Archive]] is no longer a file you append to — it is a **view**: the LOG deck filtered to `Palace-Kind: deposit`, read through [[STIGMERGY]]. Each "row" is a commit; each summary is read from that commit's **body**. The honest creed holds literally now — nothing is real until it lands in LOG, git is ground truth, one write path — because the deposit record and the commit are the same object. The frozen `Deposit Archive.md` table remains only as the pre-spec historical record (deposits committed before the `deposit(<scope>):` subject spec); there is no file to append.
 
 ---
 
@@ -218,7 +228,6 @@ The deposit is complete when:
 1. At least one new entry exists, or at least one existing entry has been meaningfully updated
 2. Loudon has confirmed: nothing feels unfinished or unsaid
 3. Closing note is written into the conversation thread
-4. One-line record appended to [[Deposit Archive]]
-5. Git commit made
-6. At least one link in the new entries carries a `label` — the semantic compression step has been executed, not just the structural registration step
-7. Weave flags, if any, written to the persistent board (`_ops/swarm/persistent/blackboard.jsonl`) as `payload.kind: 'weave_flag'` BROADCAST messages — not left as prose in the archive row alone
+4. The deposit is committed in spec form — subject `deposit(<id>): …`, the synthesis in the commit **body**, `Palace-Kind: deposit` + `Palace-Entry:` trailers present — so it lands natively on the LOG deck's deposit view. *(Replaces "row appended to the archive": the commit is the record, not a duplicate of it.)*
+5. At least one link in the new entries carries a `label` — the semantic compression step, not just structural registration.
+6. Weave flags, if any, on the persistent board as `payload.kind: 'weave_flag'` BROADCASTs with `source_deposit_id` matching the commit's deposit ID — not left as prose in the commit body alone.
