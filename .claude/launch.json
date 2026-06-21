@@ -49,6 +49,12 @@
       "runtimeExecutable": "python3",
       "runtimeArgs": ["-m", "http.server", "8204", "--directory", "Projects/BLUELINE/proofs/m2-motion-comic"],
       "port": 8204
+    },
+    {
+      "name": "blueline-lesson",
+      "runtimeExecutable": "python3",
+      "runtimeArgs": ["-m", "http.server", "8205", "--directory", "Projects/BLUELINE/proofs"],
+      "port": 8205
     }
   ]
 }
