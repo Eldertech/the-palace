@@ -1,0 +1,47 @@
+{
+  "nframes": 6,
+  "frames": [
+    {
+      "i": 0,
+      "t": 0.0,
+      "pose_png": "seq/pose_s0.png",
+      "seedlock_noise": "N_A.npy",
+      "warped_noise": "N_A.npy"
+    },
+    {
+      "i": 1,
+      "t": 0.2,
+      "pose_png": "seq/pose_s1.png",
+      "seedlock_noise": "N_A.npy",
+      "warped_noise": "seq/N_chain_s1.npy"
+    },
+    {
+      "i": 2,
+      "t": 0.4,
+      "pose_png": "seq/pose_s2.png",
+      "seedlock_noise": "N_A.npy",
+      "warped_noise": "seq/N_chain_s2.npy"
+    },
+    {
+      "i": 3,
+      "t": 0.6,
+      "pose_png": "seq/pose_s3.png",
+      "seedlock_noise": "N_A.npy",
+      "warped_noise": "seq/N_chain_s3.npy"
+    },
+    {
+      "i": 4,
+      "t": 0.8,
+      "pose_png": "seq/pose_s4.png",
+      "seedlock_noise": "N_A.npy",
+      "warped_noise": "seq/N_chain_s4.npy"
+    },
+    {
+      "i": 5,
+      "t": 1.0,
+      "pose_png": "seq/pose_s5.png",
+      "seedlock_noise": "N_A.npy",
+      "warped_noise": "seq/N_chain_s5.npy"
+    }
+  ]
+}
