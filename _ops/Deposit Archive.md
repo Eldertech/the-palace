@@ -16,7 +16,9 @@ links:
 
 # Deposit Archive
 
-Record of all completed deposits. One line per deposit. Append only.
+**Frozen 2026-06-19 — pre-spec record only.** A completed deposit's record is now *its commit*: STIGMERGY renders the Deposit Archive as the LOG deck filtered to `Palace-Kind: deposit`, reading each synthesis from the commit body. There is no row to append — the deposit ceremony writes the summary into the commit (see [[Deposit Ceremony]] § Step 7b).
+
+The table below is preserved unedited as the historical archive of every deposit committed *before* the migration. These commits predate the `deposit(<scope>):` subject spec and do not all self-classify on the LOG deck, so their hand-written summaries live here and nowhere else. **Do not append to it.**
 
 | ID | Source | Date | Topic | Status | Summary |
 |---|---|---|---|---|---|
