@@ -482,11 +482,14 @@ describe('integration — live blackboard.jsonl', () => {
   });
 });
 
-describe('validateMessage — Path 2 (claude-code-subagent) health stub', () => {
-  // Path 2 marker: health._orchestrator_metadata.dispatch_mode === "claude-code-subagent".
-  // Per Infrastructure Spec §3.3 (dual-path clause), Path 2 only requires
-  // score + model + _orchestrator_metadata; context_pct / stop_reason /
-  // iteration / tokens_this_call are optional.
+describe('validateMessage — stub health (no-authoritative-API-usage dispatch)', () => {
+  // Relaxation marker: health._orchestrator_metadata.dispatch_mode ∈
+  // {claude-code-subagent, hand-authored, cowork, claude-code}. Per
+  // Infrastructure Spec §3.3.1 (dual-path clause) + SCHEMA §9, these dispatch
+  // contexts have no authoritative input_tokens, so only score + model +
+  // _orchestrator_metadata are required; context_pct / stop_reason / iteration /
+  // tokens_this_call are optional. API-direct / unknown / metadata-absent keep
+  // the full requirement (Path 1).
 
   const PATH2_STUB = {
     ...VALID,
@@ -568,7 +571,7 @@ describe('validateMessage — Path 2 (claude-code-subagent) health stub', () => 
     expect(r.errors.some((e) => e.path === 'health.tokens_this_call')).toBe(true);
   });
 
-  test('Path 1 dispatch_mode (any non-Path-2 string) does not relax requirements', () => {
+  test('an API-direct dispatch_mode does NOT relax (it has authoritative usage data)', () => {
     const m = {
       ...PATH2_STUB,
       health: {
@@ -581,4 +584,46 @@ describe('validateMessage — Path 2 (claude-code-subagent) health stub', () => 
     expect(r.valid).toBe(false);
     expect(r.errors.some((e) => e.path === 'health.context_pct')).toBe(true);
   });
+
+  test('an unknown dispatch_mode does NOT relax (allow-list, not exempt-by-default)', () => {
+    const m = {
+      ...PATH2_STUB,
+      health: {
+        score: 'green',
+        model: 'claude-opus-4-7',
+        _orchestrator_metadata: { dispatch_mode: 'totally-made-up' },
+      },
+    };
+    const r = validateMessage(m);
+    expect(r.valid).toBe(false);
+    expect(r.errors.some((e) => e.path === 'health.context_pct')).toBe(true);
+  });
+
+  // Stub-health relaxation covers every no-authoritative-API-usage dispatch,
+  // not just claude-code-subagent: hand-authored / cowork / claude-code posts
+  // have no model call, so the four introspective fields can't be computed.
+  // (SCHEMA §9: "hand-authored and Path-2 messages carry a green stub.")
+  for (const dispatch_mode of ['hand-authored', 'cowork', 'claude-code']) {
+    test(`accepts a minimal stub for dispatch_mode "${dispatch_mode}"`, () => {
+      const m = {
+        ...PATH2_STUB,
+        health: {
+          score: 'green',
+          model: 'claude-opus-4-8',
+          _orchestrator_metadata: { dispatch_mode, note: 'hand-authored; no model call.' },
+        },
+      };
+      expect(validateMessage(m)).toEqual({ valid: true });
+    });
+
+    test(`"${dispatch_mode}" stub still rejects a missing score`, () => {
+      const m = {
+        ...PATH2_STUB,
+        health: { model: 'claude-opus-4-8', _orchestrator_metadata: { dispatch_mode } },
+      };
+      const r = validateMessage(m);
+      expect(r.valid).toBe(false);
+      expect(r.errors.some((e) => e.path === 'health.score')).toBe(true);
+    });
+  }
 });
