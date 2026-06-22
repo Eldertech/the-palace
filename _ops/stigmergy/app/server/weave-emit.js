@@ -17,8 +17,9 @@ import { buildPalaceIndex, findUnsungEdges } from '../src/lib/unsung-paths.js';
 import { findHubCandidates } from '../src/lib/hub-candidates.js';
 import { findVectorTuningCandidates } from '../src/lib/vector-tuning-candidates.js';
 import { findStageCandidates } from '../src/lib/stage-candidates.js';
-import { planUnsungEmission, planHubEmission, planStageEmission, selectVectorTuningCandidates, buildVectorTuningProposal } from '../src/lib/weave-propose.js';
-import { generateVectorTuning } from './weave-generate.js';
+import { findLabelCandidates } from '../src/lib/label-candidates.js';
+import { planUnsungEmission, planHubEmission, planStageEmission, selectVectorTuningCandidates, buildVectorTuningProposal, selectLabelCandidates, buildLabelProposal } from '../src/lib/weave-propose.js';
+import { generateVectorTuning, generateLabel } from './weave-generate.js';
 import { readJsonl, appendMessage } from '@stigmergy/core/blackboard';
 import { validateMessage } from '@stigmergy/core/schema';
 
@@ -355,4 +356,96 @@ export async function runStageEmission({
     else skipped.push(m.id);
   }
   return { ...base, posted, skipped };
+}
+
+// Scan the palace for label-less typed links (the label_enrichment candidates).
+function defaultLabelScan(palaceRoot) {
+  const records = [...walkEntryRecords(palaceRoot)];
+  const candidates = findLabelCandidates(records);
+  return { entriesScanned: records.length, candidates };
+}
+
+// Dry run shows the candidate LINKS it would label; live shows the posted
+// proposal summaries.
+const summarizeLabelCandidate = (c) => ({ source: c.source, target: c.target, type: c.type });
+const summarizeLabelProposal = (m) => ({ id: m.id, entry: m.payload.source_entry, change: m.payload.proposed_change });
+
+/**
+ * Run the label-enrichment audit — the GENERATIVE-hybrid counterpart behind
+ * POST /api/weave/emit-label. Detection of label-less links is a cheap scan, but
+ * the label itself is GENERATED, so it follows the vector-tuning two-click split:
+ *
+ *   DRY RUN — scan + select only (no model call, no write): the candidate LINKS
+ *             it would label + honest counts.
+ *   LIVE    — generate a register `label` per selected link (one model call
+ *             each, grounded in [[Resonant Link Labels]]), build the proposal,
+ *             validate + append.
+ *
+ * Never throws; honest counts, no silent caps. genFailed (generation failures)
+ * is reported orthogonally to skipped (validate/append failures).
+ *
+ * @param {object} args
+ * @param {string}  args.palaceRoot
+ * @param {string}  [args.boardPath]
+ * @param {boolean} [args.dryRun=true]
+ * @param {number}  [args.limit=3]   — generation is expensive; the cap is low
+ * @param {string}  [args.model]
+ * @param {string}  [args.ts]
+ * @param {Function}[args.scanImpl]     — test seam: (palaceRoot) => { entriesScanned, candidates }
+ * @param {Function}[args.generateImpl] — test seam: (candidate) => { ok, label, ... } (sync or async)
+ * @param {Function}[args.appendImpl]   — test seam: (msg) => boolean
+ */
+export async function runLabelEmission({
+  palaceRoot, boardPath, dryRun = true, limit = 3, model, ts, scanImpl, generateImpl, appendImpl,
+} = {}) {
+  if (!palaceRoot) return { ok: false, status: 500, error: 'no palace root configured' };
+
+  const lim = Number.isFinite(limit) && limit > 0 ? Math.floor(limit) : 3;
+  const scan = scanImpl || defaultLabelScan;
+  const { entriesScanned, candidates } = scan(palaceRoot);
+
+  const existing = boardPath && existsSync(boardPath) ? readJsonl(boardPath) : [];
+  const sel = selectLabelCandidates({ candidates, existing, limit: lim });
+
+  const base = {
+    ok: true,
+    dryRun: !!dryRun,
+    limit: lim,
+    entriesScanned,
+    found: sel.found,
+    deduped: sel.deduped,
+    eligible: sel.eligible,
+    planned: sel.selected.length,
+    dropped: sel.dropped,
+    candidates: sel.selected.map(summarizeLabelCandidate),
+  };
+
+  if (dryRun) return base;
+
+  const stamp = ts || new Date().toISOString();
+  const runId = stamp.replace(/[^0-9]/g, '').slice(0, 14);
+  const generate = generateImpl || ((cand) => generateLabel({ palaceRoot, candidate: cand, model }));
+  const append = appendImpl || defaultAppend(boardPath);
+
+  let posted = 0;
+  let genFailed = 0;
+  const skipped = [];
+  const proposals = [];
+  for (const [i, c] of sel.selected.entries()) {
+    let g;
+    try {
+      g = generate({ source: c.source, target: c.target, type: c.type });
+      if (g && typeof g.then === 'function') g = await g; // tolerate an async generateImpl
+    } catch (e) { g = { ok: false, error: e.message }; }
+    if (!g || !g.ok) { genFailed += 1; continue; }
+    const m = buildLabelProposal(
+      { source: g.source, sourceTitle: g.sourceTitle, target: g.target, targetTitle: g.targetTitle, type: g.type, label: g.label, rationale: g.rationale },
+      { ts: stamp, id: `label-${runId}-${i + 1}` },
+    );
+    let landed = false;
+    try { landed = append(m); } catch { landed = false; }
+    if (landed) { posted += 1; proposals.push(summarizeLabelProposal(m)); }
+    else skipped.push(m.id);
+  }
+  return { ...base, posted, genFailed, skipped, proposals };
 }
