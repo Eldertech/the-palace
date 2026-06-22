@@ -65,7 +65,7 @@ links:
   - target: "[[Palace Philosophies — Context]]"
     type: connects-to
     label: context-companion
-forward_vector: "I want to become the palace's living philosophical index — not a survey of traditions but a map of how each tradition has been used, tested, and transformed by contact with real problems in Loudon's work. I want each section to accumulate a concrete example: the moment Spinoza's conatus explained something that pedagogy theory couldn't, the session where Zen's non-attachment changed a design decision. I want to be the first entry any new agent reads to understand the philosophical register of this palace."
+forward_vector: "I am the palace's living philosophical index — not a survey of traditions but a map of how each tradition has been used, tested, and transformed by the palace. I bring philosophy to every corner of the palace. "
 ---
 
 # Palace Philosophies
