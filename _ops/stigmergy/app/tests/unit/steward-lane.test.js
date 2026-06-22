@@ -77,6 +77,21 @@ describe('steward-lane pure helpers', () => {
     const missing = stewardRow({ entry, state: null, manifest: null, board });
     expect(missing.missing).toBe(true);
   });
+
+  test('stewardRow carries due_next_run (same rule as the batch planner)', () => {
+    const board = [];
+    const entry = { agent_id: 'Shep', home: 'Shep', dir: '_ops/agents/permanent/shep' };
+    const manifest = { model: { name: 'claude-opus-4-7' }, stewardship: { stage_at_spawn: 'growing' } };
+
+    // last_active long ago + a non-skip stage (manifest spawn snapshot) -> due.
+    const due = stewardRow({ entry, state: { iteration: 4, last_active: '2026-01-01T00:00:00Z' }, manifest, board });
+    expect(due.due_next_run).toBe(true);
+
+    // just-cycled -> debounced -> not due. (now-anchored; uses the live clock.)
+    const recent = new Date(Date.now() - 60 * 60 * 1000).toISOString(); // 1h ago
+    const fresh = stewardRow({ entry, state: { iteration: 4, last_active: recent }, manifest, board });
+    expect(fresh.due_next_run).toBe(false);
+  });
 });
 
 describe('stub steward worker (transcript contract)', () => {

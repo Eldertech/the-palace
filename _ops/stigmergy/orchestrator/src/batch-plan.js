@@ -35,6 +35,7 @@ import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import { findEntryFile } from './entry-paths.js';
+import { dueForCycle, SKIP_STAGES } from './batch-due.js';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
@@ -51,7 +52,8 @@ const debounceHours = parseFloat(arg('--min-age-hours', '12'));
 const showUnenchanted = !argv.includes('--no-unenchanted');
 const ignoreDebounce = argv.includes('--ignore-debounce');
 
-const SKIP_STAGES = new Set(['dormant', 'composting']);
+// SKIP_STAGES + the due predicate now live in batch-due.js (shared with the
+// STIGMERGY STEWARDS deck's "due next run?" column — one rule, two readers).
 const permDir = path.join(palaceRoot, '_ops/agents/permanent');
 
 function readFrontmatter(file) {
@@ -122,16 +124,8 @@ for (const dir of stewardDirs) {
   };
 
   if (!homeFile) { rec.reason = 'home_page_not_found'; plan.skipped.push(rec); continue; }
-  if (SKIP_STAGES.has(stage)) { rec.reason = `stage_${stage}_do_not_touch`; plan.skipped.push(rec); continue; }
-  if (status !== 'active' && status !== 'unknown') { rec.reason = `status_${status}`; plan.skipped.push(rec); continue; }
-  if (rec.last_active && !ignoreDebounce) {
-    const ageH = (now - Date.parse(rec.last_active)) / 3.6e6;
-    if (isFinite(ageH) && ageH < debounceHours) {
-      rec.reason = `cycled_${ageH.toFixed(1)}h_ago_within_debounce`;
-      plan.skipped.push(rec);
-      continue;
-    }
-  }
+  const verdict = dueForCycle({ stage, status, lastActive: rec.last_active, now, debounceHours, ignoreDebounce });
+  if (!verdict.due) { rec.reason = verdict.reason; plan.skipped.push(rec); continue; }
   plan.due.push(rec);
 }
 
