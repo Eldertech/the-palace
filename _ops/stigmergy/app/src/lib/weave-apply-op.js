@@ -21,7 +21,7 @@
 // lifecycle (seed→sprout→growing→mature). The dispatch grows.
 
 // The ops the executor can apply, each with its required fields.
-export const APPLY_OPS = ['set-vector', 'add-link', 'set-type', 'set-stage'];
+export const APPLY_OPS = ['set-vector', 'add-link', 'set-type', 'set-stage', 'set-label'];
 
 // The SCHEMA §1 entry-type ontology. A set-type op's `type` must be one of these
 // — the executor never invents a type, and the affordance never offers a retype
@@ -110,6 +110,21 @@ export function normalizeApplyOp(apply) {
     return { op: 'set-stage', entry, stage };
   }
 
+  if (op === 'set-label') {
+    // set-label adds a register `label` to an EXISTING typed link on `entry`,
+    // identified by (target, type). The target must resolve + the type must be a
+    // §4 type (so we label a link the schema recognizes), and the label is a
+    // single word or hyphenated phrase per §4 (lower-case, no whitespace) —
+    // anything else normalizes to null.
+    const target = normalizeEntry(apply.target);
+    const type = typeof apply.type === 'string' ? apply.type.trim() : '';
+    const label = typeof apply.label === 'string' ? apply.label.trim() : '';
+    if (!target || !LINK_TYPES.includes(type)) return null;
+    if (target.toLowerCase() === entry.toLowerCase()) return null; // no self-link
+    if (!label || /\s/.test(label)) return null;                   // single token / hyphenated
+    return { op: 'set-label', entry, target, type, label };
+  }
+
   return null;
 }
 
@@ -138,5 +153,6 @@ export function describeApplyOp(op) {
   if (op.op === 'add-link') return `link ${op.entry} → ${op.target} (${op.type})`;
   if (op.op === 'set-type') return op.type === 'hub' ? `promote ${op.entry} to a hub` : `retype ${op.entry} → ${op.type}`;
   if (op.op === 'set-stage') return `advance ${op.entry} to ${op.stage}`;
+  if (op.op === 'set-label') return `label ${op.entry} → ${op.target} as "${op.label}"`;
   return `apply ${op.op} to ${op.entry}`;
 }

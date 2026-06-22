@@ -113,3 +113,26 @@ export async function emitStageAudit({ dryRun = true, limit } = {}) {
     return { ok: false, status: 0, error: err.message || 'could not reach the server' };
   }
 }
+
+// The HYBRID label-enrichment audit: dry run is a cheap scan (label-less links,
+// no model call); dryRun:false GENERATES a register label per candidate then
+// posts label_enrichment proposals (set-label) to the WEAVE board.
+export async function emitLabelAudit({ dryRun = true, limit } = {}) {
+  try {
+    const res = await fetch('/api/weave/emit-label', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ dryRun, ...(Number.isFinite(limit) ? { limit } : {}) }),
+    });
+    let data = {};
+    try { data = await res.json(); } catch { /* non-JSON body */ }
+    if (res.ok && data.ok) return { ok: true, ...data };
+    return {
+      ok: false,
+      status: res.status,
+      error: data.error || `audit failed (${res.status})`,
+    };
+  } catch (err) {
+    return { ok: false, status: 0, error: err.message || 'could not reach the server' };
+  }
+}

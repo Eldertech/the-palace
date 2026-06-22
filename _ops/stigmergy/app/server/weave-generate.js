@@ -194,3 +194,153 @@ export function generateVectorTuning({ palaceRoot, candidate, model, runImpl } =
     rationale: parsed.rationale,
   };
 }
+
+// ── label_enrichment: generate a register `label` for an existing typed link ──
+
+// The per-family register vocabulary, lifted verbatim from [[Resonant Link
+// Labels]] § Vocabulary per Family — that entry's own forward_vector asks to
+// "become the first thing a Weave worker reads before proposing new links", so
+// the generator is grounded in it. Starting points, not a closed set: the model
+// may coin a fresh register if it fits better. Taxonomy types (exemplifies /
+// member-of) have no resonance family — the prompt falls back to a generic ask.
+export const LABEL_FAMILY_VOCAB = {
+  mirrors: ['rhymes-with', 'echoes', 'refracts', 'harmonizes', 'shadows', 'is-the-water-of', 'is-the-music-of', 'haunts'],
+  enables: ['unlocked', 'pressured-into', 'seduced-toward', 'cleared-the-path-for', 'metabolized-into', 'is-the-engine-of', 'made-room-for', 'scaffolds'],
+  spawned: ['midwifed', 'crystallized-into', 'precipitated', 'was-born-as', 'forced-into-existence', 'hatched'],
+  'emerged-from': ['fermented-from', 'distilled-from', 'escaped-from', 'grew-through', 'was-waiting-in', 'crystallized-from'],
+  deepens: ['unfolds-within', 'makes-precise', 'gives-body-to', 'operationalizes', 'embodies', 'grounds'],
+  'couples-with': ['dances-with', 'feeds', 'requires', 'completes', 'entangles-with', 'beats-with', 'resonates-with'],
+  contradicts: ['refuses', 'mourns', 'corrects', 'argues-with-love', 'exceeds', 'breaks-open', 'is-the-shadow-of', 'troubles'],
+  'connects-to': ['orbits', 'touches', 'gestures-toward', 'notices', 'is-in-conversation-with', 'rhymes-at-a-distance', 'echoes-faintly'],
+};
+
+// Each body is capped tighter than the single-entry vector case — a label read
+// weighs two entries at once.
+const LABEL_BODY_CHARS = 3000;
+const excerpt = (body) => {
+  const raw = typeof body === 'string' ? body : '';
+  return raw.length > LABEL_BODY_CHARS ? `${raw.slice(0, LABEL_BODY_CHARS)}\n…(truncated)` : raw;
+};
+
+/**
+ * The label-generation prompt: the two-layer (type/label) discipline + the
+ * link's register family + both entries. Pure + exported so a test can assert
+ * what the model is asked. Asks for a single JSON object.
+ */
+export function buildLabelPrompt({ sourceTitle, sourceBody, targetTitle, targetBody, type }) {
+  const fam = LABEL_FAMILY_VOCAB[type];
+  const vocabLine = fam
+    ? `The "${type}" family's registers (starting points, not exhaustive — coin a sharper one if it fits): ${fam.join(', ')}.`
+    : `("${type}" has no preset register family — name the specific register in its spirit.)`;
+  return [
+    'You are choosing a `label` for ONE typed link in the palace knowledge graph.',
+    `The link: [[${sourceTitle}]] --(${type})--> [[${targetTitle}]].`,
+    '',
+    'Every palace link has two layers (see [[Resonant Link Labels]]): the `type` is the SKELETON — what KIND of relationship holds, handled by traversal. The `label` is the FLESH — a single word or hyphenated phrase naming the relationship\'s specific REGISTER: its emotional temperature and cultural resonance. `father` / `pop` / `dad` are one relationship in three registers. Your job is to name THIS link\'s register.',
+    '',
+    vocabLine,
+    '',
+    'Rules: lower-case; ONE word or a hyphenated phrase (no spaces); evocative over clinical; it must NOT merely restate the type — it should say something the type alone cannot. Ground it in what the two entries actually are (below); never invent a relationship the text does not support.',
+    '',
+    `SOURCE — ${sourceTitle}:\n${excerpt(sourceBody)}`,
+    '',
+    `TARGET — ${targetTitle}:\n${excerpt(targetBody)}`,
+    '',
+    'Reply with ONLY a single JSON object, no prose around it:',
+    '{"label": "<the register word>", "rationale": "<one sentence: what it names that the type cannot>"}',
+  ].join('\n');
+}
+
+/**
+ * Pull {label, rationale} out of the worker's raw stdout — the last balanced
+ * {...} that parses with a string `label`. Pure. (Same brace-scan as
+ * extractGeneration, specialized to this contract.)
+ */
+export function extractLabel(raw) {
+  if (typeof raw !== 'string' || !raw.trim()) return null;
+  const text = raw.trim();
+  const objs = [];
+  for (let i = 0; i < text.length; i += 1) {
+    if (text[i] !== '{') continue;
+    let depth = 0, inStr = false, esc = false;
+    for (let j = i; j < text.length; j += 1) {
+      const c = text[j];
+      if (inStr) {
+        if (esc) esc = false;
+        else if (c === '\\') esc = true;
+        else if (c === '"') inStr = false;
+      } else if (c === '"') inStr = true;
+      else if (c === '{') depth += 1;
+      else if (c === '}') { depth -= 1; if (depth === 0) { objs.push(text.slice(i, j + 1)); break; } }
+    }
+  }
+  for (let k = objs.length - 1; k >= 0; k -= 1) {
+    try {
+      const obj = JSON.parse(objs[k]);
+      if (obj && typeof obj.label === 'string') {
+        return { label: obj.label.trim(), rationale: typeof obj.rationale === 'string' ? obj.rationale.trim() : '' };
+      }
+    } catch (_) { /* try the next candidate */ }
+  }
+  return null;
+}
+
+/**
+ * Generate a register `label` for ONE typed link. Reads BOTH ends, prompts a
+ * model grounded in the link's register family, parses + validates. Never
+ * throws; returns a structured result.
+ *
+ * Validity gates: both entries resolve; a parseable {label}; the label is
+ * non-empty, a single token / hyphenated phrase (no whitespace — set-label /
+ * §4 require it), and NOT a bare restatement of the `type` (which would add
+ * nothing). The label is lower-cased to the §4 convention.
+ *
+ * @param {object} args
+ * @param {string}  args.palaceRoot
+ * @param {{source:string, target:string, type:string}} args.candidate — source/target are palace paths
+ * @param {string}  [args.model]
+ * @param {(argv:string[])=>string} [args.runImpl] — test seam; returns raw stdout
+ * @returns {{ok:true, source, sourceTitle, target, targetTitle, type, label, rationale} | {ok:false, status, error}}
+ */
+export function generateLabel({ palaceRoot, candidate, model, runImpl } = {}) {
+  if (!palaceRoot) return { ok: false, status: 500, error: 'no palace root configured' };
+  const type = candidate && typeof candidate.type === 'string' ? candidate.type.trim() : '';
+  if (!type) return { ok: false, status: 422, error: 'no link type to label' };
+  const src = candidate && typeof candidate.source === 'string' ? readEntry(palaceRoot, candidate.source) : null;
+  const tgt = candidate && typeof candidate.target === 'string' ? readEntry(palaceRoot, candidate.target) : null;
+  if (!src || !tgt) {
+    return { ok: false, status: 404, error: `link endpoint not found: ${(candidate && (candidate.source + ' -> ' + candidate.target)) || '(unknown)'}` };
+  }
+
+  const prompt = buildLabelPrompt({ sourceTitle: src.title, sourceBody: src.body, targetTitle: tgt.title, targetBody: tgt.body, type });
+
+  let raw;
+  try {
+    raw = (runImpl || defaultRun)(generateArgv(prompt, model));
+  } catch (e) {
+    return { ok: false, status: 502, error: `generation worker failed: ${e.message}`, source: src.path, target: tgt.path, type };
+  }
+
+  const parsed = extractLabel(raw);
+  if (!parsed || !parsed.label) {
+    return { ok: false, status: 422, error: 'generation returned no parseable {label}', source: src.path, target: tgt.path, type };
+  }
+  const label = parsed.label.toLowerCase();
+  if (/\s/.test(label)) {
+    return { ok: false, status: 422, error: 'label must be a single word or hyphenated phrase (no spaces)', source: src.path, target: tgt.path, type };
+  }
+  if (label === type.toLowerCase()) {
+    return { ok: false, status: 422, error: 'label merely restates the type (no register added)', source: src.path, target: tgt.path, type };
+  }
+
+  return {
+    ok: true,
+    source: src.path,
+    sourceTitle: src.title,
+    target: tgt.path,
+    targetTitle: tgt.title,
+    type,
+    label,
+    rationale: parsed.rationale,
+  };
+}

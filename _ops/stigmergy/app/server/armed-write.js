@@ -233,6 +233,68 @@ export function addLinkToFrontmatter(fmBlock, link) {
 }
 
 /**
+ * Add a `label` to an EXISTING typed link inside a VERBATIM frontmatter block,
+ * churn-free — the in-place counterpart to addLinkToFrontmatter (which appends a
+ * whole new link). Locates the link item by (target, type), then inserts a
+ * `label:` sub-line right after its `type:` line, matching that line's
+ * indentation. ADD-ONLY: refuses (no-op) when the link already carries a label —
+ * relabelling an existing register would be a silent semantic change, which the
+ * "labels carry the relationship's flesh" rule ([[Resonant Link Labels]]) makes
+ * unsafe to do quietly. Refuses when no matching link exists. Pure. Returns
+ * { ok, fmBlock, labelChange } or { ok:false, error }.
+ *
+ *   link = { target, type, label }
+ *     target — entry title or "[[Title]]" (matched on the bare title)
+ *     type   — the §4 type of the link to label (validated upstream)
+ *     label  — the register word (single word / hyphenated phrase, validated upstream)
+ */
+export function setLinkLabel(fmBlock, link) {
+  if (typeof fmBlock !== 'string' || fmBlock === '') return { ok: false, error: 'no frontmatter to edit' };
+  const title = bareTitle(link && link.target);
+  const type = typeof (link && link.type) === 'string' ? link.type.trim() : '';
+  const label = link && typeof link.label === 'string' && link.label.trim() ? link.label.trim() : '';
+  if (!title) return { ok: false, error: 'set-label: empty target' };
+  if (!type) return { ok: false, error: 'set-label: empty type' };
+  if (!label) return { ok: false, error: 'set-label: empty label' };
+
+  const lines = fmBlock.split('\n');
+  const li = lines.findIndex((l) => /^links:[ \t]*$/.test(l));
+  if (li === -1) return { ok: false, error: 'set-label: entry has no links: block' };
+
+  // Walk the link items, recording each item's target/type + its target/type
+  // line indices + whether it already carries a label.
+  const items = [];
+  let cur = null;
+  const flush = () => { if (cur) items.push(cur); };
+  for (let j = li + 1; j < lines.length; j++) {
+    const l = lines[j];
+    if (/^---\s*$/.test(l)) break;          // closing fence
+    if (l.trim() === '') continue;          // blank — tolerate
+    if (!/^\s/.test(l)) break;              // a top-level key — end of the block
+    const mt = l.match(/^\s*-\s*target:\s*(.+?)\s*$/);
+    if (mt) { flush(); cur = { target: bareTitle(mt[1]), type: null, hasLabel: false, targetLine: j, typeLine: -1 }; continue; }
+    if (cur) {
+      const ty = l.match(/^\s*type:\s*(.+?)\s*$/);
+      if (ty) { cur.type = ty[1].trim().replace(/^["']|["']$/g, ''); cur.typeLine = j; continue; }
+      if (/^\s*label:\s*.+$/.test(l)) { cur.hasLabel = true; continue; }
+    }
+  }
+  flush();
+
+  const match = items.find((it) => it.target.toLowerCase() === title.toLowerCase() && it.type === type);
+  if (!match) return { ok: false, error: `set-label: no [[${title}]] (${type}) link to label` };
+  if (match.hasLabel) return { ok: false, error: `set-label: [[${title}]] (${type}) already has a label` };
+
+  // Insert after the type line (canonical), matching its indentation; fall back
+  // to the target line (deeper-indented) if a type line is somehow absent.
+  const after = match.typeLine !== -1 ? match.typeLine : match.targetLine;
+  const refIndent = (lines[after].match(/^(\s*)/) || ['', ''])[1];
+  const keyIndent = match.typeLine !== -1 ? refIndent : `${refIndent}  `;
+  lines.splice(after + 1, 0, `${keyIndent}label: ${formatScalar(label, 'label')}`);
+  return { ok: true, fmBlock: lines.join('\n'), labelChange: { target: title, type, label } };
+}
+
+/**
  * Apply one edit op to a body string. Pure. Returns { ok, body } or
  * { ok:false, error }.
  *
@@ -358,6 +420,12 @@ export function previewEdit(repoRoot, relPath, op, { trickster = false } = {}) {
     if (ss.fmBlock === fmBlock) return { ok: false, status: 422, error: `already stage: ${op.stage}` };
     return { ok: true, op, before, after: ss.fmBlock + body, vectorChange: null, stageChange: { from: ss.oldValue, to: (op.stage || '').trim() } };
   }
+  if (op && op.op === 'set-label') {
+    if (!fmBlock) return { ok: false, status: 422, error: 'entry has no frontmatter to edit' };
+    const sl = setLinkLabel(fmBlock, op);
+    if (!sl.ok) return { ok: false, status: 422, error: sl.error };
+    return { ok: true, op, before, after: sl.fmBlock + body, vectorChange: null, labelChange: sl.labelChange };
+  }
   const applied = applyOp(body, op);
   if (!applied.ok) return { ok: false, status: 422, error: applied.error };
   if (applied.body === body) return { ok: false, status: 422, error: 'nothing changed' };
@@ -413,7 +481,7 @@ export async function armedWriteEntry({
     author,
   });
   if (!commit.ok) return { ok: false, error: `commit failed: ${commit.error}`, message: commit.message };
-  return { ok: true, op: op.op, shortHash: commit.shortHash, subject: commit.subject, message: commit.message, vectorChange: pv.vectorChange, linkChange: pv.linkChange, typeChange: pv.typeChange, stageChange: pv.stageChange };
+  return { ok: true, op: op.op, shortHash: commit.shortHash, subject: commit.subject, message: commit.message, vectorChange: pv.vectorChange, linkChange: pv.linkChange, typeChange: pv.typeChange, stageChange: pv.stageChange, labelChange: pv.labelChange };
 }
 
 function basenameNoMd(p) {

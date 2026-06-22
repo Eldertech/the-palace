@@ -14,7 +14,7 @@
 import { join } from 'node:path';
 import { jsonResponse, readBody, PERSISTENT_REL } from '../http.js';
 import { applyWeaveProposal } from '../weave-apply.js';
-import { runUnsungEmission, runHubEmission, runVectorTuningEmission, runStageEmission } from '../weave-emit.js';
+import { runUnsungEmission, runHubEmission, runVectorTuningEmission, runStageEmission, runLabelEmission } from '../weave-emit.js';
 
 export async function weaveRoutes(ctx) {
   const { urlPath, method } = ctx;
@@ -24,6 +24,7 @@ export async function weaveRoutes(ctx) {
   if (urlPath === '/api/weave/emit-hub') return handleEmitHub(ctx);
   if (urlPath === '/api/weave/emit-vector-tuning') return handleEmitVectorTuning(ctx);
   if (urlPath === '/api/weave/emit-stage') return handleEmitStage(ctx);
+  if (urlPath === '/api/weave/emit-label') return handleEmitLabel(ctx);
   return false;
 }
 
@@ -119,6 +120,24 @@ async function handleEmitStage(ctx) {
 
   const run = opts.runStageEmissionImpl || runStageEmission;
   const result = await run({ palaceRoot, boardPath, dryRun, limit });
+  jsonResponse(res, result.ok ? 200 : (result.status || 400), result);
+  return true;
+}
+
+async function handleEmitLabel(ctx) {
+  const { req, res, palaceRoot, opts } = ctx;
+  const body = await readJsonBody(req, res, { allowEmpty: true });
+  if (body === null) return true;
+
+  // DRY-RUN unless explicitly asked to generate + post. Like vector-tuning, the
+  // dry run is a cheap scan; the live run generates a label per candidate.
+  const dryRun = body.dryRun !== false;
+  const limit = Number.isFinite(body.limit) ? body.limit : 3;
+  const model = typeof body.model === 'string' && body.model.trim() ? body.model.trim() : undefined;
+  const boardPath = opts.boardPath ? opts.boardPath : join(palaceRoot, PERSISTENT_REL);
+
+  const run = opts.runLabelEmissionImpl || runLabelEmission;
+  const result = await run({ palaceRoot, boardPath, dryRun, limit, model });
   jsonResponse(res, result.ok ? 200 : (result.status || 400), result);
   return true;
 }

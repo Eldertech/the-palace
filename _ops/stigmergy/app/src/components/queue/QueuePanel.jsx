@@ -9,7 +9,7 @@ import { fetchLog } from '../../adapters/log.js';
 import { fetchCards, respondToCard } from '../../adapters/cards.js';
 import { buildResponse, buildRequestOptionResponse } from '../../lib/response-builder.js';
 import { postMessage } from '../../adapters/blackboard.js';
-import { applyWeaveProposal, emitUnsungAudit, emitHubAudit, emitVectorTuningAudit, emitStageAudit } from '../../adapters/weave.js';
+import { applyWeaveProposal, emitUnsungAudit, emitHubAudit, emitVectorTuningAudit, emitStageAudit, emitLabelAudit } from '../../adapters/weave.js';
 
 // QueuePanel — the unified, honest, ranked queue (Phase 4).
 //
@@ -194,18 +194,20 @@ export default function QueuePanel({ messages, onJumpEntry }) {
   // Run a Weave audit — the posting half, from the terminal. `kind` selects the
   // detector: 'unsung' (body wikilinks not yet typed), 'hub' (concept entries
   // over the inbound-link threshold), 'stage' (entries that have outgrown their
-  // §2 stage), or 'vector-tuning' (the GENERATIVE one — forward_vectors that want
-  // sharpening). Step 1 is always a DRY RUN: scan, surface honest counts, write
+  // §2 stage) — the mechanical three — or the GENERATIVE ones: 'vector-tuning'
+  // (forward_vectors that want sharpening) and 'label' (typed links missing a
+  // register). Step 1 is always a DRY RUN: scan, surface honest counts, write
   // nothing. If any are eligible, the result exposes a confirm (postAudit) — a
   // write needs the second, explicit click. For the detection kinds the dry run
-  // already builds the proposals; for vector-tuning it does NOT (generation is an
-  // LLM call), so its second click GENERATES then posts. Posted proposals arrive
-  // via SSE into the WEAVE lane, each with its own grant & apply.
+  // already builds the proposals; for the generative kinds it does NOT
+  // (generation is an LLM call), so their second click GENERATES then posts.
+  // Posted proposals arrive via SSE into the WEAVE lane, each with grant & apply.
   const auditAdapter = (kind) =>
     (kind === 'hub' ? emitHubAudit
       : kind === 'vector-tuning' ? emitVectorTuningAudit
         : kind === 'stage' ? emitStageAudit
-          : emitUnsungAudit);
+          : kind === 'label' ? emitLabelAudit
+            : emitUnsungAudit);
   async function runAudit(kind) {
     if (auditBusy) return;
     setAuditBusy(true);
@@ -217,6 +219,7 @@ export default function QueuePanel({ messages, onJumpEntry }) {
   const runHubAudit = () => runAudit('hub');
   const runVectorTuningAudit = () => runAudit('vector-tuning');
   const runStageAudit = () => runAudit('stage');
+  const runLabelAudit = () => runAudit('label');
   async function postAudit() {
     if (auditBusy || !audit) return;
     const kind = audit.kind || 'unsung';
@@ -351,9 +354,9 @@ export default function QueuePanel({ messages, onJumpEntry }) {
   // confirm "generate & post" (each post is an LLM call), vs. the detection
   // kinds' "would post".
   const auditKind = audit ? (audit.kind || 'unsung') : 'unsung';
-  const auditIsGenerative = auditKind === 'vector-tuning';
-  const auditName = auditKind === 'hub' ? 'hub-promotion' : auditKind === 'vector-tuning' ? 'vector-tuning' : auditKind === 'stage' ? 'stage-transition' : 'unsung-path';
-  const auditNoun = auditKind === 'hub' ? 'hub candidate(s)' : auditKind === 'vector-tuning' ? 'vector candidate(s)' : auditKind === 'stage' ? 'stage candidate(s)' : 'unsung';
+  const auditIsGenerative = auditKind === 'vector-tuning' || auditKind === 'label';
+  const auditName = auditKind === 'hub' ? 'hub-promotion' : auditKind === 'vector-tuning' ? 'vector-tuning' : auditKind === 'stage' ? 'stage-transition' : auditKind === 'label' ? 'label-enrichment' : 'unsung-path';
+  const auditNoun = auditKind === 'hub' ? 'hub candidate(s)' : auditKind === 'vector-tuning' ? 'vector candidate(s)' : auditKind === 'stage' ? 'stage candidate(s)' : auditKind === 'label' ? 'label candidate(s)' : 'unsung';
 
   return (
     <Box title="queue -- the ranked inbox" tone="double" style={{ marginBottom: 12 }}>
@@ -411,6 +414,14 @@ export default function QueuePanel({ messages, onJumpEntry }) {
           title="scan the palace for entries that have outgrown their stage — the Weave's stage-transition audit (dry run; nothing is written)"
         >
           {auditBusy ? 'auditing...' : 'run stage-transition audit'}
+        </span>
+        <span
+          data-testid="run-label-audit"
+          onClick={auditBusy ? undefined : runLabelAudit}
+          style={{ cursor: auditBusy ? 'wait' : 'pointer', color: 'var(--ansi-bright-cyan)', textShadow: 'var(--glow)', textDecoration: 'underline' }}
+          title="scan the palace for typed links missing a register label — the Weave's label-enrichment audit, generative (dry run is a cheap scan; nothing is written until you generate + post)"
+        >
+          {auditBusy ? 'auditing...' : 'run label-enrichment audit'}
         </span>
 
         {/* lanes: the six boards become filters, not tabs */}
