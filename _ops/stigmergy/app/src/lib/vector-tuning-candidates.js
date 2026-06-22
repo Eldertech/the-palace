@@ -21,6 +21,8 @@
 // (listEntries, which already carries forward_vector + stage + type) and feeds
 // them here; this module only classifies + ranks.
 
+import { ENTRY_TYPES } from './weave-apply-op.js';
+
 // Rest-verbs that signal stasis rather than striving. Deliberately conservative:
 // these read as a *state of rest* in a forward_vector ("I remain the canonical
 // …", "I stay the record of …", "I exist as …"). Striving phrasings that happen
@@ -59,9 +61,11 @@ export function vectorTuningReasons(entry) {
 /**
  * Entries whose forward_vector wants tuning — the vector_tuning audit's
  * candidates, ranked most-deserving first (missing > stasis > thin, then path
- * for a stable order). Skips the skeleton: `meta` entries and `foundational`-
- * stage entries are structural self-description, not striving knowledge entries,
- * and are never auto-tuned. Pure.
+ * for a stable order). Considers only real §1 entries — a `type` outside the
+ * entry-type ontology (e.g. `agent-prompt`) or absent (bundle/machinery files)
+ * is excluded. Also skips the skeleton: `meta` entries and `foundational`-stage
+ * entries are structural self-description, not striving knowledge entries, and
+ * are never auto-tuned. Pure.
  *
  * @param {Array<{path:string,title?:string,type?:string|null,stage?:string|null,forward_vector?:string|null}>} entries
  *        — listEntries-style summaries (forward_vector + stage + type present).
@@ -76,7 +80,11 @@ export function findVectorTuningCandidates(entries, { skipTypes } = {}) {
   const out = [];
   for (const e of entries) {
     if (!e || typeof e.path !== 'string') continue;
-    if (e.type && skip.has(e.type)) continue;        // skeleton / self-description
+    // Must be a real §1 palace entry. A frontmatter `type` outside the entry-type
+    // ontology (e.g. `agent-prompt`) — or none at all (bundle files, batons, the
+    // `_ops/` machinery) — is not a knowledge entry and is never auto-tuned.
+    if (!ENTRY_TYPES.includes(e.type)) continue;
+    if (skip.has(e.type)) continue;                  // skeleton / self-description (meta)
     if (e.stage === 'foundational') continue;        // CLAUDE / SCHEMA / README …
     const reasons = vectorTuningReasons(e);
     if (reasons.length === 0) continue;

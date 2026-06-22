@@ -164,3 +164,48 @@ describe('POST /api/weave/emit-hub', () => {
     expect(res.status).toBe(400);
   });
 });
+
+describe('POST /api/weave/emit-vector-tuning', () => {
+  let root;
+  beforeEach(() => { root = makeTempPalace(); });
+  afterEach(() => { rmSync(root, { recursive: true, force: true }); });
+
+  test('defaults to a DRY RUN (dryRun:true, limit:3) and passes palaceRoot/boardPath', async () => {
+    let seen = null;
+    const runVectorTuningEmissionImpl = async (args) => { seen = args; return { ok: true, dryRun: true, found: 2, eligible: 2, planned: 2, candidates: [] }; };
+    const res = await request(makeServer(root, { runVectorTuningEmissionImpl }))
+      .post('/api/weave/emit-vector-tuning').send();
+    expect(res.status).toBe(200);
+    expect(res.body.ok).toBe(true);
+    expect(seen.dryRun).toBe(true);   // safe by default — the dry run is a cheap scan
+    expect(seen.limit).toBe(3);       // generation is expensive; low default cap
+    expect(seen.palaceRoot).toBe(root);
+    expect(seen.boardPath).toBe(resolve(root, '_ops/swarm/persistent/blackboard.jsonl'));
+  });
+
+  test('dryRun:false + limit + model pass straight through (generate + post)', async () => {
+    let seen = null;
+    const runVectorTuningEmissionImpl = async (args) => { seen = args; return { ok: true, dryRun: false, posted: 2 }; };
+    const res = await request(makeServer(root, { runVectorTuningEmissionImpl }))
+      .post('/api/weave/emit-vector-tuning').send({ dryRun: false, limit: 2, model: 'claude-opus-4-8' });
+    expect(res.status).toBe(200);
+    expect(res.body.posted).toBe(2);
+    expect(seen.dryRun).toBe(false);
+    expect(seen.limit).toBe(2);
+    expect(seen.model).toBe('claude-opus-4-8');
+  });
+
+  test('maps the runner status onto the HTTP status (500 no-root)', async () => {
+    const runVectorTuningEmissionImpl = async () => ({ ok: false, status: 500, error: 'no palace root configured' });
+    const res = await request(makeServer(root, { runVectorTuningEmissionImpl }))
+      .post('/api/weave/emit-vector-tuning').send({ dryRun: true });
+    expect(res.status).toBe(500);
+    expect(res.body.error).toMatch(/no palace root/);
+  });
+
+  test('400 on malformed JSON', async () => {
+    const res = await request(makeServer(root))
+      .post('/api/weave/emit-vector-tuning').set('Content-Type', 'application/json').send('{ not json');
+    expect(res.status).toBe(400);
+  });
+});

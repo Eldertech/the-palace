@@ -9,7 +9,7 @@ import { fetchLog } from '../../adapters/log.js';
 import { fetchCards, respondToCard } from '../../adapters/cards.js';
 import { buildResponse, buildRequestOptionResponse } from '../../lib/response-builder.js';
 import { postMessage } from '../../adapters/blackboard.js';
-import { applyWeaveProposal, emitUnsungAudit, emitHubAudit } from '../../adapters/weave.js';
+import { applyWeaveProposal, emitUnsungAudit, emitHubAudit, emitVectorTuningAudit } from '../../adapters/weave.js';
 
 // QueuePanel — the unified, honest, ranked queue (Phase 4).
 //
@@ -192,13 +192,17 @@ export default function QueuePanel({ messages, onJumpEntry }) {
   }
 
   // Run a Weave audit — the posting half, from the terminal. `kind` selects the
-  // detector: 'unsung' (body wikilinks not yet typed) or 'hub' (concept entries
-  // over the inbound-link threshold). Step 1 is always a DRY RUN: scan, surface
-  // honest counts, write nothing. If any are eligible, the result exposes a
-  // "post N proposals" confirm (postAudit) — a write needs the second, explicit
-  // click. The posted proposals arrive via SSE into the WEAVE lane, each with
-  // its own grant & apply.
-  const auditAdapter = (kind) => (kind === 'hub' ? emitHubAudit : emitUnsungAudit);
+  // detector: 'unsung' (body wikilinks not yet typed), 'hub' (concept entries
+  // over the inbound-link threshold), or 'vector-tuning' (the GENERATIVE one —
+  // entries whose forward_vector wants sharpening). Step 1 is always a DRY RUN:
+  // scan, surface honest counts, write nothing. If any are eligible, the result
+  // exposes a confirm (postAudit) — a write needs the second, explicit click.
+  // For the detection kinds the dry run already builds the proposals; for
+  // vector-tuning it does NOT (generation is an LLM call), so its second click
+  // GENERATES then posts. Posted proposals arrive via SSE into the WEAVE lane,
+  // each with its own grant & apply.
+  const auditAdapter = (kind) =>
+    (kind === 'hub' ? emitHubAudit : kind === 'vector-tuning' ? emitVectorTuningAudit : emitUnsungAudit);
   async function runAudit(kind) {
     if (auditBusy) return;
     setAuditBusy(true);
@@ -208,6 +212,7 @@ export default function QueuePanel({ messages, onJumpEntry }) {
   }
   const runUnsungAudit = () => runAudit('unsung');
   const runHubAudit = () => runAudit('hub');
+  const runVectorTuningAudit = () => runAudit('vector-tuning');
   async function postAudit() {
     if (auditBusy || !audit) return;
     const kind = audit.kind || 'unsung';
@@ -337,6 +342,15 @@ export default function QueuePanel({ messages, onJumpEntry }) {
     sourcePath: `Enrichment/${card.id}/`, purpose: card.purpose, summary: card.summary,
   });
 
+  // Per-kind labels for the audit-result panel. vector-tuning is GENERATIVE: its
+  // dry run scans (no proposals built yet), so it reads "would generate" and its
+  // confirm "generate & post" (each post is an LLM call), vs. the detection
+  // kinds' "would post".
+  const auditKind = audit ? (audit.kind || 'unsung') : 'unsung';
+  const auditIsGenerative = auditKind === 'vector-tuning';
+  const auditName = auditKind === 'hub' ? 'hub-promotion' : auditKind === 'vector-tuning' ? 'vector-tuning' : 'unsung-path';
+  const auditNoun = auditKind === 'hub' ? 'hub candidate(s)' : auditKind === 'vector-tuning' ? 'vector candidate(s)' : 'unsung';
+
   return (
     <Box title="queue -- the ranked inbox" tone="double" style={{ marginBottom: 12 }}>
       <div style={{
@@ -378,6 +392,14 @@ export default function QueuePanel({ messages, onJumpEntry }) {
         >
           {auditBusy ? 'auditing...' : 'run hub-promotion audit'}
         </span>
+        <span
+          data-testid="run-vector-tuning-audit"
+          onClick={auditBusy ? undefined : runVectorTuningAudit}
+          style={{ cursor: auditBusy ? 'wait' : 'pointer', color: 'var(--ansi-bright-cyan)', textShadow: 'var(--glow)', textDecoration: 'underline' }}
+          title="scan the palace for entries whose forward_vector wants sharpening — the Weave's vector-tuning audit, the generative one (dry run is a cheap scan; nothing is written until you generate + post)"
+        >
+          {auditBusy ? 'auditing...' : 'run vector-tuning audit'}
+        </span>
 
         {/* lanes: the six boards become filters, not tabs */}
         <span style={{ marginLeft: 8 }}>lanes:</span>
@@ -406,13 +428,15 @@ export default function QueuePanel({ messages, onJumpEntry }) {
         ))}
       </div>
 
-      {/* Weave audit result (unsung-path OR hub-promotion): the dry-run plan
-          (honest counts + an explicit "post N" confirm, since posting writes
-          proposals), the post outcome, or an error. No silent caps —
-          found/eligible/over-limit are all named. Keyed by audit.kind. */}
+      {/* Weave audit result (unsung-path, hub-promotion, or vector-tuning): the
+          dry-run plan (honest counts + an explicit confirm, since posting
+          writes), the post outcome, or an error. No silent caps —
+          found/eligible/over-limit are all named. vector-tuning is GENERATIVE:
+          its dry run scans only, so it reads "would generate" + "generate &
+          post". Keyed by audit.kind. */}
       {audit ? (
         <div
-          data-testid={`${audit.kind || 'unsung'}-audit-result`}
+          data-testid={`${auditKind}-audit-result`}
           style={{
             display: 'flex', gap: 10, alignItems: 'baseline', flexWrap: 'wrap',
             marginBottom: 8, fontSize: 12, color: 'var(--phosphor-dim)', textShadow: 'none',
@@ -421,11 +445,12 @@ export default function QueuePanel({ messages, onJumpEntry }) {
         >
           {audit.phase === 'error' ? (
             <span style={{ color: 'var(--error)', textShadow: 'var(--glow)' }}>
-              {audit.kind === 'hub' ? 'hub-promotion' : 'unsung-path'} audit failed -- {audit.error}
+              {auditName} audit failed -- {audit.error}
             </span>
           ) : audit.phase === 'posted' ? (
             <span>
               posted <strong style={{ color: 'var(--phosphor)' }}>{audit.posted}</strong> proposal(s) to the weave lane
+              {audit.genFailed ? ` -- ${audit.genFailed} generation failure(s)` : ''}
               {audit.skipped && audit.skipped.length ? ` -- ${audit.skipped.length} skipped (invalid)` : ''}
               {' '}-- grant &amp; apply each below.
             </span>
@@ -433,30 +458,32 @@ export default function QueuePanel({ messages, onJumpEntry }) {
             <>
               <span>
                 <strong style={{ color: 'var(--phosphor)' }}>{audit.entriesScanned}</strong> entries scanned --{' '}
-                <strong style={{ color: 'var(--phosphor)' }}>{audit.found}</strong> {audit.kind === 'hub' ? 'hub candidate(s)' : 'unsung'} --{' '}
+                <strong style={{ color: 'var(--phosphor)' }}>{audit.found}</strong> {auditNoun} --{' '}
                 {audit.deduped} already proposed -- {audit.eligible} eligible --{' '}
-                <strong style={{ color: 'var(--phosphor)' }}>{audit.planned}</strong> would post
-                {audit.dropped ? ` -- ${audit.dropped} over limit ${audit.limit} NOT emitted` : ''}
+                <strong style={{ color: 'var(--phosphor)' }}>{audit.planned}</strong> {auditIsGenerative ? 'would generate' : 'would post'}
+                {audit.dropped ? ` -- ${audit.dropped} over limit ${audit.limit} NOT ${auditIsGenerative ? 'generated' : 'emitted'}` : ''}
               </span>
               {audit.planned > 0 ? (
                 <span
-                  data-testid={`post-${audit.kind || 'unsung'}-audit`}
+                  data-testid={`post-${auditKind}-audit`}
                   onClick={auditBusy ? undefined : postAudit}
                   style={{
                     cursor: auditBusy ? 'wait' : 'pointer', color: 'var(--ansi-bright-yellow)',
                     textShadow: 'var(--glow)', textDecoration: 'underline',
                   }}
-                  title="append these proposals to the WEAVE board (this writes)"
+                  title={auditIsGenerative
+                    ? 'generate a sharper forward_vector for each candidate, then post them to the WEAVE board (this writes; each is a model call, so give it a moment)'
+                    : 'append these proposals to the WEAVE board (this writes)'}
                 >
-                  post {audit.planned} proposal{audit.planned === 1 ? '' : 's'}
+                  {auditIsGenerative ? 'generate & post' : 'post'} {audit.planned} proposal{audit.planned === 1 ? '' : 's'}
                 </span>
               ) : (
-                <span style={{ fontStyle: 'italic' }}>nothing to post.</span>
+                <span style={{ fontStyle: 'italic' }}>{auditIsGenerative ? 'nothing to tune.' : 'nothing to post.'}</span>
               )}
             </>
           )}
           <span
-            data-testid={`${audit.kind || 'unsung'}-audit-dismiss`}
+            data-testid={`${auditKind}-audit-dismiss`}
             onClick={() => setAudit(null)}
             style={{ cursor: 'pointer', color: 'var(--phosphor-dim)', textDecoration: 'underline' }}
           >

@@ -14,7 +14,7 @@
 import { join } from 'node:path';
 import { jsonResponse, readBody, PERSISTENT_REL } from '../http.js';
 import { applyWeaveProposal } from '../weave-apply.js';
-import { runUnsungEmission, runHubEmission } from '../weave-emit.js';
+import { runUnsungEmission, runHubEmission, runVectorTuningEmission } from '../weave-emit.js';
 
 export async function weaveRoutes(ctx) {
   const { urlPath, method } = ctx;
@@ -22,6 +22,7 @@ export async function weaveRoutes(ctx) {
   if (urlPath === '/api/weave/apply') return handleApply(ctx);
   if (urlPath === '/api/weave/emit-unsung') return handleEmitUnsung(ctx);
   if (urlPath === '/api/weave/emit-hub') return handleEmitHub(ctx);
+  if (urlPath === '/api/weave/emit-vector-tuning') return handleEmitVectorTuning(ctx);
   return false;
 }
 
@@ -83,6 +84,25 @@ async function handleEmitHub(ctx) {
 
   const run = opts.runHubEmissionImpl || runHubEmission;
   const result = await run({ palaceRoot, boardPath, dryRun, limit, threshold });
+  jsonResponse(res, result.ok ? 200 : (result.status || 400), result);
+  return true;
+}
+
+async function handleEmitVectorTuning(ctx) {
+  const { req, res, palaceRoot, opts } = ctx;
+  const body = await readJsonBody(req, res, { allowEmpty: true });
+  if (body === null) return true;
+
+  // DRY-RUN unless explicitly asked to generate + post. The dry run is a cheap
+  // scan (no model call); the live run generates per candidate, so the default
+  // matters more here than for the detection audits.
+  const dryRun = body.dryRun !== false;
+  const limit = Number.isFinite(body.limit) ? body.limit : 3;
+  const model = typeof body.model === 'string' && body.model.trim() ? body.model.trim() : undefined;
+  const boardPath = opts.boardPath ? opts.boardPath : join(palaceRoot, PERSISTENT_REL);
+
+  const run = opts.runVectorTuningEmissionImpl || runVectorTuningEmission;
+  const result = await run({ palaceRoot, boardPath, dryRun, limit, model });
   jsonResponse(res, result.ok ? 200 : (result.status || 400), result);
   return true;
 }
