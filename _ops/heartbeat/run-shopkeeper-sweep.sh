@@ -27,6 +27,13 @@ STAMP="$PALACE/_ops/heartbeat/.last-shopkeeper-sweep"
 {
   echo "=== shopkeeper sweep — $(date) ==="
 
+  # global pause flag — the same .paused file the steward batch honors, so a
+  # single STIGMERGY toggle pauses the WHOLE heartbeat. While it exists this run
+  # no-ops and leaves the cadence stamp untouched. launchd is never touched.
+  if [ -f "$PALACE/_ops/heartbeat/.paused" ]; then
+    echo "skip: paused (flag present: $PALACE/_ops/heartbeat/.paused)"; exit 0
+  fi
+
   if [ -f "$STAMP" ]; then
     last="$(cat "$STAMP" 2>/dev/null || echo 0)"; now="$(date +%s)"
     if [ $(( (now - last) / 86400 )) -lt "$INTERVAL_DAYS" ]; then

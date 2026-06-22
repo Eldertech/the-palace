@@ -34,6 +34,14 @@ STAMP="$PALACE/_ops/heartbeat/.last-steward-batch"
 {
   echo "=== palace steward batch — $(date) ==="
 
+  # global pause flag — STIGMERGY (or you) can pause the whole heartbeat without
+  # touching launchd: while _ops/heartbeat/.paused exists, every run no-ops and
+  # leaves the cadence stamp untouched. STIGMERGY only toggles this file (via the
+  # STEWARDS deck pause/resume); it never runs launchctl.
+  if [ -f "$PALACE/_ops/heartbeat/.paused" ]; then
+    echo "skip: paused (flag present: $PALACE/_ops/heartbeat/.paused)"; exit 0
+  fi
+
   # every-other-morning guard
   if [ -f "$STAMP" ]; then
     last="$(cat "$STAMP" 2>/dev/null || echo 0)"; now="$(date +%s)"

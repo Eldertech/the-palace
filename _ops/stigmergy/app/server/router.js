@@ -18,6 +18,7 @@ import { entrySaveRoutes } from './api/entry-save.js';
 import { entryAgentRoutes } from './api/entry-agent.js';
 import { launchRoutes } from './api/launch.js';
 import { weaveRoutes } from './api/weave.js';
+import { schedulerRoutes } from './api/scheduler.js';
 import { sessionsRoutes } from './api/sessions.js';
 
 const FAMILIES = [
@@ -33,6 +34,7 @@ const FAMILIES = [
   entryAgentRoutes,
   launchRoutes,
   weaveRoutes,
+  schedulerRoutes,
   sessionsRoutes,
 ];
 
