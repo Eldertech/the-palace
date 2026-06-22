@@ -52,7 +52,7 @@ tags: [project, blueline, music-video, generative, pipeline, sprout]
 
 # BLUELINE
 
-> **▸ ACTIVE BATON (2026-06-19) — on a feature branch, not here.** The live baton + the latest work (style-lock & character sidequest; this entry's "Where it stands" is *more current on the branch*) are on **worktree `feature/blueline-m3`** → `/Users/loudonstearns/Documents/palace-feature-blueline-m3`. Read the baton at `Projects/BLUELINE/BLUELINE — baton.md` *in that worktree* (it is invisible from main by design). The next move is **InstantID for the swappable character**. Recreate the worktree if gone: `node _ops/worktree/new-worktree.mjs --name feature/blueline-m3 --profile blueline --memory`. Canon deposit from that session: [[Steer the Generator]] (on main). Delete this callout when the branch merges or the baton is consumed.
+> **▸ WORK-IN-PROGRESS — on a feature branch, not here.** The latest BLUELINE work (style-lock, character slot, the new-story frame sequence; this entry's "Where it stands" is *more current on the branch*) lives on **worktree `feature/blueline-m3`** → `/Users/loudonstearns/Documents/palace-feature-blueline-m3`, not merged to main. The InstantID-character baton (2026-06-19) was **caught and consumed**; the canon it produced — [[Steer the Generator]] and [[Frame Designer]] — is on main. The current in-progress move is **polishing the new-story opening sequence** (multi-figure shots via generative layering, InstantID-locked hero). Recreate the worktree if gone: `node _ops/worktree/new-worktree.mjs --name feature/blueline-m3 --profile blueline --memory`. Delete this callout when the branch merges.
 
 > Working title — placeholder, rename freely. The brief lives in the project bundle; this entry is the palace face.
 
