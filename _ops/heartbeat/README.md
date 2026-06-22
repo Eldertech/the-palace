@@ -111,8 +111,24 @@ Or kick the launchd job directly:
 launchctl kickstart -k gui/$(id -u)/com.loudon.palace.steward-batch
 ```
 
-## Uninstall / pause
+## Pause (soft) vs. uninstall (hard)
 
+Two different levers — reach for the soft one first.
+
+**Soft pause — keep it installed, just skip runs.** Drop a `.paused` flag in this
+directory and both wrappers no-op on every fire (and leave the cadence stamp
+untouched), until you remove it:
+```sh
+touch _ops/heartbeat/.paused      # pause the whole heartbeat
+rm   _ops/heartbeat/.paused       # resume
+```
+The flag is gitignored runtime state, per-machine. The **STIGMERGY STEWARDS deck**
+exposes the same lever as a *pause heartbeat / resume heartbeat* button (it writes
+this exact file — it never calls `launchctl`), alongside a truthful read of the
+scheduler's state (installed? · cadence · last run · next fire · the digest with
+its age). See [[STIGMERGY v2.0 — Consolidation & Primary Interface]].
+
+**Hard uninstall — unload the launchd jobs entirely:**
 ```sh
 launchctl bootout gui/$(id -u)/com.loudon.palace.steward-batch
 launchctl bootout gui/$(id -u)/com.loudon.palace.shopkeeper-sweep
