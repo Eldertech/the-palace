@@ -35,6 +35,7 @@ import { buildCyclePrompt } from '../../orchestrator/src/build-cycle-prompt.js';
 import { processCycle, reconcilePendingRequests } from '../../orchestrator/src/process-cycle.js';
 import { readRegistry, findAgent } from '../../orchestrator/src/registry.js';
 import { readEntryMeta } from '../../orchestrator/src/entry-frontmatter.js';
+import { dueForCycle } from '../../orchestrator/src/batch-due.js';
 import { readJsonl } from '@stigmergy/core/blackboard';
 
 const DEFAULT_REGISTRY_REL = '_ops/agents/permanent/REGISTRY.json';
@@ -116,13 +117,19 @@ export function stewardRow({ entry, state, manifest, board, palaceRoot }) {
   if (!state || !manifest) {
     return { agent_id: entry.agent_id, home: entry.home, dir: entry.dir, missing: true };
   }
-  const liveStage = (palaceRoot ? readEntryMeta(palaceRoot, entry.home)?.stage : undefined)
-    ?? manifest.stewardship?.stage_at_spawn
-    ?? null;
+  const meta = palaceRoot ? readEntryMeta(palaceRoot, entry.home) : null;
+  const liveStage = meta?.stage ?? manifest.stewardship?.stage_at_spawn ?? null;
+  // Live project status (single source of truth) feeds the due predicate's
+  // status gate; absent (no palaceRoot / no field) → the gate is simply skipped.
+  const liveStatus = typeof meta?.data?.status === 'string' ? meta.data.status : undefined;
   // Open (un-granted) asks are board-derived; grants-waiting is the cursor-based
   // count above. The two are orthogonal: an ask is either still open OR granted
   // and waiting to be consumed.
   const { stillPending } = reconcilePendingRequests(board, entry.home);
+  // "due next run?" — would the next heartbeat actually cycle this steward? Same
+  // rule as the batch planner (batch-due.js), so the column can never disagree
+  // with what the scheduler does.
+  const due_next_run = dueForCycle({ stage: liveStage, status: liveStatus, lastActive: state.last_active ?? null }).due;
   return {
     agent_id: entry.agent_id,
     home: entry.home,
@@ -132,6 +139,7 @@ export function stewardRow({ entry, state, manifest, board, palaceRoot }) {
     last_active: state.last_active ?? null,
     pending_count: stillPending.length,
     grants_waiting: grantsWaitingFor(board, entry.home, state),
+    due_next_run,
     health: state.health?.score ?? null,
     model: manifest.model?.name ?? null,
   };
