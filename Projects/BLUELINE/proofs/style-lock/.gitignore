@@ -21,3 +21,11 @@ face-swap/
 swap-demo.png
 gaze/
 gaze-atlas-partial.png
+instantid/
+instantid-atlas.png
+identity-candidates/
+identity-candidates.png
+composite-regen/
+composite-regen-atlas.png
+instantid-inpaint/
+instantid-inpaint-atlas.png
