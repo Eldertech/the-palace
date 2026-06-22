@@ -1,0 +1,6 @@
+# generated pool (regenerable via pool_gen.py) + live manifest — not committed
+runs/
+pool-manifest.json
+style-grid.png
+style-verdict.json
+__pycache__/
