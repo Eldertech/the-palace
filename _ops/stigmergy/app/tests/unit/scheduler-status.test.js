@@ -156,19 +156,34 @@ describe('readSchedulerStatus — the truthful watch', () => {
     expect(s.warnings.some((w) => /PAUSED/.test(w))).toBe(true);
   });
 
-  test('digest is rendered inline WITH its age, and flagged stale past 72h', () => {
+  test('digest age comes from the run date, NOT the (fresh-checkout) mtime', () => {
     const now = new Date(2026, 5, 22, 8, 0, 0, 0).getTime();
-    const old = now - 16 * 24 * 3.6e6; // 16 days old
+    // The bug this guards: a fresh git checkout sets mtime to ~now, so an mtime-
+    // based age would read "minutes old" for a two-week-old digest. Set mtime
+    // FRESH and the run date OLD; the age must follow the run date.
     made = makePalace({
       installLabels: ['com.loudon.palace.steward-batch'],
-      digest: { text: '# Palace Heartbeat — Steward Batch Review\n\n**Run:** 2026-06-06 (~10:09 UTC)\n', mtimeMs: old },
+      digest: { text: '# Palace Heartbeat — Steward Batch Review\n\n**Run:** 2026-06-06 (~10:09 UTC)\n', mtimeMs: now },
     });
     const s = readSchedulerStatus({ palaceRoot: made.root, launchAgentsDir: made.laDir, now });
     expect(s.digest.exists).toBe(true);
     expect(s.digest.run_label).toMatch(/2026-06-06/);
     expect(s.digest.markdown).toMatch(/Steward Batch Review/);
-    expect(s.digest.age_hours).toBeGreaterThan(72);
+    expect(s.digest.age_basis).toBe('run_date');
+    expect(s.digest.age_hours).toBeGreaterThan(72); // ~16 days, despite fresh mtime
     expect(s.warnings.some((w) => /DIGEST STALE/.test(w))).toBe(true);
+  });
+
+  test('digest age falls back to mtime when no run date is parseable', () => {
+    const now = new Date(2026, 5, 22, 8, 0, 0, 0).getTime();
+    const old = now - 5 * 24 * 3.6e6; // 5 days old by mtime
+    made = makePalace({
+      installLabels: ['com.loudon.palace.steward-batch'],
+      digest: { text: '# A digest with no Run line\n', mtimeMs: old },
+    });
+    const s = readSchedulerStatus({ palaceRoot: made.root, launchAgentsDir: made.laDir, now });
+    expect(s.digest.age_basis).toBe('file_mtime');
+    expect(s.digest.age_hours).toBeCloseTo(120, 0);
   });
 
   test('no palace root -> structured 500-shaped error, never a throw', () => {
