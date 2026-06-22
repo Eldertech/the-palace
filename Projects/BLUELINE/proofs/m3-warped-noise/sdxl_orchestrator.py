@@ -41,10 +41,18 @@ def proxy_get(pid, path, timeout=15):
     req = urllib.request.Request(f"https://{pid}-8188.proxy.runpod.net{path}", headers={"User-Agent": UA})
     with urllib.request.urlopen(req, timeout=timeout, context=CTX) as r: return r.read()
 
-START = ('set -e\necho "[sdxl] ensure SDXL base checkpoint"\nmkdir -p /comfyui/models/checkpoints\n'
+# Launch ComfyUI IMMEDIATELY; pull SDXL in the BACKGROUND (so HTTP comes up fast and readiness can poll for
+# the ckpt to appear). Size-guard: only publish the file once it's a real >1GB download (a gated/404 wget
+# writes a tiny HTML page — never let that masquerade as the checkpoint). ComfyUI re-scans the folder on
+# /object_info, so the ckpt shows up mid-run once the download lands.
+START = ('set -e\nmkdir -p /comfyui/models/checkpoints\n'
          f'CK=/comfyui/models/checkpoints/{CKPT}\n'
-         f'if [ ! -e "$CK" ]; then echo "[sdxl] downloading sd_xl_base (~6.6GB)"; wget -q -O "$CK" "{CKPT_URL}"; fi\n'
-         'ls -la /comfyui/models/checkpoints/ || true\necho "[sdxl] launch ComfyUI"\n'
+         '( if [ ! -e "$CK" ]; then echo "[sdxl] bg download sd_xl_base (~6.6GB)"; '
+         f'wget -q -O "$CK.part" "{CKPT_URL}"; '
+         'SZ=$(stat -c%s "$CK.part" 2>/dev/null || echo 0); '
+         'if [ "$SZ" -gt 1000000000 ]; then mv "$CK.part" "$CK"; echo "[sdxl] checkpoint ready ($SZ bytes)"; '
+         'else echo "[sdxl] DOWNLOAD FAILED — only $SZ bytes (gated/404?)"; rm -f "$CK.part"; fi; fi ) &\n'
+         'echo "[sdxl] launch ComfyUI (download running in background)"\n'
          'cd /comfyui && exec python -u main.py --disable-auto-launch --disable-metadata --listen --port 8188\n')
 
 def create_pod(max_tries=12, delay=30):
@@ -73,7 +81,7 @@ def terminate(pid):
         time.sleep(3)
     print(f"[terminate] WARNING could not confirm {pid} — CHECK CONSOLE"); return False
 
-def wait_ready(pid, boot_timeout=1100):
+def wait_ready(pid, boot_timeout=1500):
     t0 = time.time(); up = False
     while time.time() - t0 < boot_timeout:
         el = int(time.time()-t0)
