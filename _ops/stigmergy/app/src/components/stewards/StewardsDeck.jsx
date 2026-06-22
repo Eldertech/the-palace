@@ -2,6 +2,7 @@ import React, { useEffect, useState, useCallback } from 'react';
 import { Banner, Box, Button, Tag } from '../primitives.jsx';
 import { fetchStewards, advanceSteward, advanceAllStewards } from '../../adapters/stewards.js';
 import AgentLaunchModal from '../queue/AgentLaunchModal.jsx';
+import ScheduleStrip from './ScheduleStrip.jsx';
 
 // testid-safe slug for a steward name ("Semantic Delay" -> "semantic-delay").
 function slug(name) {
@@ -147,6 +148,11 @@ export default function StewardsDeck() {
         {data?.stubbed ? <span style={{ color: 'var(--warn)', textShadow: 'var(--glow)', marginLeft: 10 }}>&middot; stub worker (no live cycle)</span> : null}
       </div>
 
+      {/* The heartbeat scheduler: watch (is it installed / when does it fire /
+          when did it last run) + steer (one global pause/resume flag). Lives on
+          this deck — the roster's natural home — not as a sixth deck. */}
+      <ScheduleStrip />
+
       {/* Batch controls + lane status */}
       <div style={{ display: 'flex', gap: 12, alignItems: 'center', flexWrap: 'wrap', marginBottom: 8 }}>
         <Button
@@ -200,6 +206,12 @@ export default function StewardsDeck() {
                         <span style={{ color: 'var(--phosphor-dim)', textShadow: 'none', fontSize: 11 }}>{s.stage || '—'}</span>
                         <span style={{ color: 'var(--phosphor-dim)', textShadow: 'none', fontSize: 11 }}>cyc {s.iteration}</span>
                         <Tag tone={s.health === 'green' ? 'ok' : s.health === 'red' ? 'err' : 'default'}>{s.health || '—'}</Tag>
+                        {/* "due next run?" — would the next heartbeat cycle this
+                            steward (same rule as the batch planner). A quiet
+                            watch signal, distinct from grants-waiting. */}
+                        {s.due_next_run ? (
+                          <span data-testid={`steward-due-${sid}`} style={{ color: 'var(--phosphor-dim)', textShadow: 'none', fontSize: 11 }}>due next run</span>
+                        ) : null}
                         <RowStatus isRunning={isRunning} grants_waiting={s.grants_waiting} name={s.agent_id} />
                       </>
                     )}
