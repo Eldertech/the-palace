@@ -29,8 +29,9 @@ links:
     type: connects-to
   - target: "[[Compressor Design]]"
     type: connects-to
-forward_vector: "I rotate the four pillars against each other until the higher-dimensional object they all project from becomes visible, and I name every moment when the same pattern appears in multiple projections simultaneously."
+forward_vector: "I rotate the four pillars against each other until the higher-dimensional object they all project from becomes visible. I strive to illuminate the oneness and the distinct perspectives of all entries. "
 ---
+
 # Hyperdimensional Prism
 
 The meta-model that unifies Loudon's entire four pillars framework. The four pillars are not four separate things — they are four projections of a single higher-dimensional reality, cast by the light of curiosity into comprehensible dimensions.
