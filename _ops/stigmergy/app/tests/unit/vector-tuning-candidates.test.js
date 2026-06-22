@@ -68,6 +68,15 @@ describe('findVectorTuningCandidates', () => {
     expect(out.map((c) => c.path)).toEqual(['Real.md']);
   });
 
+  test('excludes non-entry frontmatter -- a type outside the §1 ontology, or none', () => {
+    const out = findVectorTuningCandidates([
+      entry('Prompt.md', null, { type: 'agent-prompt' }), // _ops machinery prompt, not an entry
+      entry('Baton.md', null, { type: null }),            // a bundle file (no §1 type)
+      entry('Real.md', null),                             // a genuine concept entry
+    ]);
+    expect(out.map((c) => c.path)).toEqual(['Real.md']);
+  });
+
   test('carries the current vector + reasons through', () => {
     const [c] = findVectorTuningCandidates([entry('Stasis.md', 'I remain the record of X for all to see and reference forever in the palace.')]);
     expect(c.currentVector).toMatch(/^I remain the record/);

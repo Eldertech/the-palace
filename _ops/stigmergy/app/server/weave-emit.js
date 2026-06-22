@@ -12,10 +12,12 @@
 // eligible / planned / dropped, plus the actually-posted count on a live run.
 
 import { existsSync } from 'node:fs';
-import { walkEntryRecords } from '../src/lib/entries.js';
+import { walkEntryRecords, listEntries } from '../src/lib/entries.js';
 import { buildPalaceIndex, findUnsungEdges } from '../src/lib/unsung-paths.js';
 import { findHubCandidates } from '../src/lib/hub-candidates.js';
-import { planUnsungEmission, planHubEmission } from '../src/lib/weave-propose.js';
+import { findVectorTuningCandidates } from '../src/lib/vector-tuning-candidates.js';
+import { planUnsungEmission, planHubEmission, selectVectorTuningCandidates, buildVectorTuningProposal } from '../src/lib/weave-propose.js';
+import { generateVectorTuning } from './weave-generate.js';
 import { readJsonl, appendMessage } from '@stigmergy/core/blackboard';
 import { validateMessage } from '@stigmergy/core/schema';
 
@@ -182,4 +184,105 @@ export async function runHubEmission({
     else skipped.push(m.id);
   }
   return { ...base, posted, skipped };
+}
+
+// Scan the palace for vector-tuning candidates (entries whose forward_vector is
+// missing / stasis-leaning / thin). A separate seam mirroring defaultScan.
+function defaultVectorScan(palaceRoot) {
+  const entries = listEntries(palaceRoot);
+  const candidates = findVectorTuningCandidates(entries);
+  return { entriesScanned: entries.length, candidates };
+}
+
+// On a dry run the response carries the candidate ENTRIES (none generated yet);
+// on a live run it carries the posted proposal summaries.
+const summarizeVectorCandidate = (c) => ({ entry: c.path, title: c.title, reasons: c.reasons });
+const summarizeVectorProposal = (m) => ({ id: m.id, entry: m.payload.source_entry, change: m.payload.proposed_change });
+
+/**
+ * Run the vector-tuning audit — the GENERATIVE counterpart of runUnsungEmission
+ * / runHubEmission, behind POST /api/weave/emit-vector-tuning. It differs in ONE
+ * deliberate way, forced by the generative tier: a vector_tuning proposal can
+ * only be BUILT once its proposed vector exists, and generating that vector is
+ * an LLM call. So the two-click split is re-cut:
+ *
+ *   DRY RUN — scan + select only (cheap, no generation, no write). Returns the
+ *             candidate ENTRIES it WOULD tune + honest counts: the fast, safe
+ *             preview the QUEUE trigger shows on the first click.
+ *   LIVE    — generate (taste) for each selected entry, build the proposal, then
+ *             validate + append it. The slow step lives ONLY here, behind the
+ *             explicit second click ("generate & post") — the same write-needs-
+ *             intent gate the detection audits use.
+ *
+ * (The detection runs build proposals in their dry run because their "generation"
+ * is a pure scan; the generative type cannot, so its dry run shows candidates,
+ * not proposals.) Never throws; honest counts, no silent caps.
+ *
+ * @param {object} args
+ * @param {string}  args.palaceRoot
+ * @param {string}  [args.boardPath]
+ * @param {boolean} [args.dryRun=true]
+ * @param {number}  [args.limit=3]   — generation is expensive; the cap is low
+ * @param {string}  [args.model]     — generation model (default in weave-generate)
+ * @param {string}  [args.ts]
+ * @param {Function}[args.scanImpl]     — test seam: (palaceRoot) => { entriesScanned, candidates }
+ * @param {Function}[args.generateImpl] — test seam: (candidate) => { ok, proposedVector, ... } (sync or async)
+ * @param {Function}[args.appendImpl]   — test seam: (msg) => boolean
+ */
+export async function runVectorTuningEmission({
+  palaceRoot, boardPath, dryRun = true, limit = 3, model, ts, scanImpl, generateImpl, appendImpl,
+} = {}) {
+  if (!palaceRoot) return { ok: false, status: 500, error: 'no palace root configured' };
+
+  const lim = Number.isFinite(limit) && limit > 0 ? Math.floor(limit) : 3;
+  const scan = scanImpl || defaultVectorScan;
+  const { entriesScanned, candidates } = scan(palaceRoot);
+
+  const existing = boardPath && existsSync(boardPath) ? readJsonl(boardPath) : [];
+  const sel = selectVectorTuningCandidates({ candidates, existing, limit: lim });
+
+  const base = {
+    ok: true,
+    dryRun: !!dryRun,
+    limit: lim,
+    entriesScanned,
+    found: sel.found,
+    deduped: sel.deduped,
+    eligible: sel.eligible,
+    planned: sel.selected.length, // how many WOULD be generated + posted on a live run
+    dropped: sel.dropped,         // eligible-but-over-limit, NOT silently swallowed
+    candidates: sel.selected.map(summarizeVectorCandidate),
+  };
+
+  if (dryRun) return base;
+
+  // Live run: generate (taste) for each selected entry, then build + append.
+  const stamp = ts || new Date().toISOString();
+  const runId = stamp.replace(/[^0-9]/g, '').slice(0, 14);
+  const generate = generateImpl || ((cand) => generateVectorTuning({ palaceRoot, candidate: cand, model }));
+  const append = appendImpl || defaultAppend(boardPath);
+
+  let posted = 0;
+  let genFailed = 0;
+  const skipped = [];
+  const proposals = [];
+  for (const [i, c] of sel.selected.entries()) {
+    let g;
+    try {
+      g = generate({ path: c.path, title: c.title });
+      if (g && typeof g.then === 'function') g = await g; // tolerate an async generateImpl
+    } catch (e) { g = { ok: false, error: e.message }; }
+    // genFailed counts generation failures; skipped counts validate/append
+    // failures — kept orthogonal so the UI can report both without double-count.
+    if (!g || !g.ok) { genFailed++; continue; }
+    const m = buildVectorTuningProposal(
+      { path: g.path, title: g.title, currentVector: g.currentVector, proposedVector: g.proposedVector, rationale: g.rationale },
+      { ts: stamp, id: `vector-tuning-${runId}-${i + 1}` },
+    );
+    let landed = false;
+    try { landed = append(m); } catch { landed = false; }
+    if (landed) { posted++; proposals.push(summarizeVectorProposal(m)); }
+    else skipped.push(m.id);
+  }
+  return { ...base, posted, genFailed, skipped, proposals };
 }

@@ -67,3 +67,26 @@ export async function emitHubAudit({ dryRun = true, limit } = {}) {
     return { ok: false, status: 0, error: err.message || 'could not reach the server' };
   }
 }
+
+// The GENERATIVE audit. Dry run is a cheap scan (candidate counts, no model
+// call); dryRun:false GENERATES a sharper forward_vector per candidate then
+// posts vector_tuning proposals to the WEAVE board (slower — one LLM call each).
+export async function emitVectorTuningAudit({ dryRun = true, limit } = {}) {
+  try {
+    const res = await fetch('/api/weave/emit-vector-tuning', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ dryRun, ...(Number.isFinite(limit) ? { limit } : {}) }),
+    });
+    let data = {};
+    try { data = await res.json(); } catch { /* non-JSON body */ }
+    if (res.ok && data.ok) return { ok: true, ...data };
+    return {
+      ok: false,
+      status: res.status,
+      error: data.error || `audit failed (${res.status})`,
+    };
+  } catch (err) {
+    return { ok: false, status: 0, error: err.message || 'could not reach the server' };
+  }
+}
