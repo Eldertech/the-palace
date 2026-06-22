@@ -77,14 +77,23 @@ export default function LinkRowEditor({ link, index, onChange, onRemove, testId 
     || !looksBracketed
     || (index && index.has && index.has(bareTarget));
 
+  // Two-line layout. The form renders inside EntryEditor's fixed 380px right
+  // rail; a single row of [target | type | label | ×] cannot fit the target at
+  // a legible width there (the fixed columns alone overflow 380px), so the
+  // target -- the single most important field, the page the link points to --
+  // gets its own full-width top line, with type/label/remove on a second line
+  // beneath it. A faint left rule groups the two lines as one link.
   return (
     <div data-testid={testId} style={{
-      display: 'grid',
-      gridTemplateColumns: 'minmax(0, 1fr) 180px minmax(0, 160px) 28px',
-      gap: 6,
-      alignItems: 'start',
-      marginBottom: 4,
+      display: 'flex',
+      flexDirection: 'column',
+      gap: 4,
+      marginBottom: 10,
+      paddingLeft: 8,
+      borderLeft: '1px solid var(--phosphor-dim)',
     }}>
+      {/* Line 1: the target -- the headline of the link. Full width because
+          palace page titles are long and this is what the user must see. */}
       <div style={{ position: 'relative' }}>
         <input
           ref={inputRef}
@@ -95,7 +104,7 @@ export default function LinkRowEditor({ link, index, onChange, onRemove, testId 
           onFocus={() => setShowPopup(true)}
           onBlur={() => { setTimeout(() => setShowPopup(false), 120); }}
           onKeyDown={onTargetKeyDown}
-          placeholder="target entry"
+          placeholder="→ target entry (the page this links to)"
           style={inputStyle(known ? 'phosphor' : 'phosphor-dim')}
         />
         {showPopup && candidates.length > 0 ? (
@@ -126,36 +135,45 @@ export default function LinkRowEditor({ link, index, onChange, onRemove, testId 
           </div>
         ) : null}
       </div>
-      <select
-        data-testid={testId ? `${testId}-type` : undefined}
-        value={link.type || 'connects-to'}
-        onChange={(e) => setField('type', e.target.value)}
-        style={inputStyle('phosphor')}
-      >
-        {LINK_TYPES.map((t) => <option key={t} value={t}>{t}</option>)}
-      </select>
-      <input
-        data-testid={testId ? `${testId}-label` : undefined}
-        type="text"
-        value={link.label || ''}
-        onChange={(e) => setField('label', e.target.value || null)}
-        placeholder="label (optional)"
-        style={inputStyle('phosphor-dim')}
-      />
-      <button
-        data-testid={testId ? `${testId}-remove` : undefined}
-        onClick={onRemove}
-        title="remove this link"
-        style={{
-          background: 'transparent',
-          color: 'var(--phosphor-dim)',
-          border: '1px solid var(--phosphor-dim)',
-          cursor: 'pointer',
-          fontFamily: 'var(--font-mono, monospace)',
-          fontSize: 14,
-          height: 28,
-        }}
-      >×</button>
+      {/* Line 2: how it links -- the typed relationship, an optional resonant
+          label, and the remove control. */}
+      <div style={{
+        display: 'grid',
+        gridTemplateColumns: '150px minmax(0, 1fr) 28px',
+        gap: 6,
+        alignItems: 'center',
+      }}>
+        <select
+          data-testid={testId ? `${testId}-type` : undefined}
+          value={link.type || 'connects-to'}
+          onChange={(e) => setField('type', e.target.value)}
+          style={inputStyle('phosphor')}
+        >
+          {LINK_TYPES.map((t) => <option key={t} value={t}>{t}</option>)}
+        </select>
+        <input
+          data-testid={testId ? `${testId}-label` : undefined}
+          type="text"
+          value={link.label || ''}
+          onChange={(e) => setField('label', e.target.value || null)}
+          placeholder="label (optional)"
+          style={inputStyle('phosphor-dim')}
+        />
+        <button
+          data-testid={testId ? `${testId}-remove` : undefined}
+          onClick={onRemove}
+          title="remove this link"
+          style={{
+            background: 'transparent',
+            color: 'var(--phosphor-dim)',
+            border: '1px solid var(--phosphor-dim)',
+            cursor: 'pointer',
+            fontFamily: 'var(--font-mono, monospace)',
+            fontSize: 14,
+            height: 28,
+          }}
+        >×</button>
+      </div>
     </div>
   );
 }
