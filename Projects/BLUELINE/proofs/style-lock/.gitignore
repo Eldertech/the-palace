@@ -1,6 +1,10 @@
-# generated pool (regenerable via pool_gen.py) + live manifest — not committed
+# generated images (regenerable) + live manifests — not committed
 runs/
+poses/
+penflow/
 pool-manifest.json
 style-grid.png
 style-verdict.json
+style-finalists.png
+penflow-finalists.png
 __pycache__/
