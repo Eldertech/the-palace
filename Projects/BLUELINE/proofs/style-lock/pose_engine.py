@@ -17,7 +17,7 @@ import os, sys, json, argparse
 from style_explore import req, run, SUBSTRATE, NEG, TONES, LINES
 
 HERE = os.path.dirname(os.path.abspath(__file__)); OUT = os.path.join(HERE, "poses"); os.makedirs(OUT, exist_ok=True)
-CKPT = "sd_xl_base_1.0.safetensors"; W, H, STEPS, CFG = 832, 1152, 22, 6.5
+CKPT = "sd_xl_base_1.0.safetensors"; W, H, STEPS, CFG = 640, 896, 18, 6.5   # fast config — volume > size (upscale finals later)
 DENS = {"sparse":"economical, lots of white space","medium":"balanced ink","dense":"dense heavy ink"}
 
 CHAR_DEFAULT = "a lean figure in a long coat"
