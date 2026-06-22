@@ -209,3 +209,47 @@ describe('POST /api/weave/emit-vector-tuning', () => {
     expect(res.status).toBe(400);
   });
 });
+
+describe('POST /api/weave/emit-stage', () => {
+  let root;
+  beforeEach(() => { root = makeTempPalace(); });
+  afterEach(() => { rmSync(root, { recursive: true, force: true }); });
+
+  test('defaults to a DRY RUN (dryRun:true, limit:8) and passes palaceRoot/boardPath', async () => {
+    let seen = null;
+    const runStageEmissionImpl = async (args) => { seen = args; return { ok: true, dryRun: true, found: 1, eligible: 1, planned: 1, proposals: [] }; };
+    const res = await request(makeServer(root, { runStageEmissionImpl }))
+      .post('/api/weave/emit-stage').send();
+    expect(res.status).toBe(200);
+    expect(res.body.ok).toBe(true);
+    expect(seen.dryRun).toBe(true);
+    expect(seen.limit).toBe(8);
+    expect(seen.palaceRoot).toBe(root);
+    expect(seen.boardPath).toBe(resolve(root, '_ops/swarm/persistent/blackboard.jsonl'));
+  });
+
+  test('dryRun:false + limit pass straight through', async () => {
+    let seen = null;
+    const runStageEmissionImpl = async (args) => { seen = args; return { ok: true, dryRun: false, posted: 1 }; };
+    const res = await request(makeServer(root, { runStageEmissionImpl }))
+      .post('/api/weave/emit-stage').send({ dryRun: false, limit: 2 });
+    expect(res.status).toBe(200);
+    expect(res.body.posted).toBe(1);
+    expect(seen.dryRun).toBe(false);
+    expect(seen.limit).toBe(2);
+  });
+
+  test('maps the runner status onto the HTTP status (500 no-root)', async () => {
+    const runStageEmissionImpl = async () => ({ ok: false, status: 500, error: 'no palace root configured' });
+    const res = await request(makeServer(root, { runStageEmissionImpl }))
+      .post('/api/weave/emit-stage').send({ dryRun: true });
+    expect(res.status).toBe(500);
+    expect(res.body.error).toMatch(/no palace root/);
+  });
+
+  test('400 on malformed JSON', async () => {
+    const res = await request(makeServer(root))
+      .post('/api/weave/emit-stage').set('Content-Type', 'application/json').send('{ not json');
+    expect(res.status).toBe(400);
+  });
+});

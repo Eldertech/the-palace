@@ -100,6 +100,29 @@ export function setEntryType(fmBlock, newType) {
   return { ok: true, fmBlock: next, oldValue };
 }
 
+/**
+ * Set THIS entry's `stage` inside a VERBATIM frontmatter block, touching only
+ * that one line — the stage counterpart to setEntryType. `stage` is a §1/§2
+ * field, a bare single-line scalar (`stage: growing`), so a line replacement is
+ * exact and churn-free. Refuses when there is no `stage:` line (e.g. a specialist
+ * /maker, which uses `status:`) rather than inventing one. The new stage is
+ * validated upstream in normalizeApplyOp against STAGES. Pure. Returns
+ * { ok, fmBlock, oldValue } or { ok:false, error }. The `^stage:` anchor matches
+ * only a top-level stage line, never `stage_at_spawn:` or an indented key.
+ */
+export function setStage(fmBlock, newStage) {
+  if (typeof fmBlock !== 'string' || fmBlock === '') return { ok: false, error: 'no frontmatter to edit' };
+  const s = typeof newStage === 'string' ? newStage.trim() : '';
+  if (!s) return { ok: false, error: 'empty stage' };
+  if (/[\n\s]/.test(s)) return { ok: false, error: 'stage must be a single bare token' };
+
+  const present = fmBlock.match(/^stage:[ \t]*(.*)$/m);
+  if (!present) return { ok: false, error: 'entry has no stage: field to advance' };
+  const oldValue = present[1].trim().replace(/^["']|["']$/g, '');
+  const next = fmBlock.replace(/^stage:[ \t]*.*$/m, `stage: ${s}`);
+  return { ok: true, fmBlock: next, oldValue };
+}
+
 // Strip a wikilink + surrounding quotes from a raw target value, leaving the
 // bare entry title for comparison / re-wrapping. "[[Foo]]" / "Foo" / '"[[Foo]]"'
 // all normalize to "Foo".
@@ -328,6 +351,13 @@ export function previewEdit(repoRoot, relPath, op, { trickster = false } = {}) {
     if (st.fmBlock === fmBlock) return { ok: false, status: 422, error: `already type: ${op.type}` };
     return { ok: true, op, before, after: st.fmBlock + body, vectorChange: null, typeChange: { from: st.oldValue, to: (op.type || '').trim() } };
   }
+  if (op && op.op === 'set-stage') {
+    if (!fmBlock) return { ok: false, status: 422, error: 'entry has no frontmatter to edit' };
+    const ss = setStage(fmBlock, op.stage);
+    if (!ss.ok) return { ok: false, status: 422, error: ss.error };
+    if (ss.fmBlock === fmBlock) return { ok: false, status: 422, error: `already stage: ${op.stage}` };
+    return { ok: true, op, before, after: ss.fmBlock + body, vectorChange: null, stageChange: { from: ss.oldValue, to: (op.stage || '').trim() } };
+  }
   const applied = applyOp(body, op);
   if (!applied.ok) return { ok: false, status: 422, error: applied.error };
   if (applied.body === body) return { ok: false, status: 422, error: 'nothing changed' };
@@ -383,7 +413,7 @@ export async function armedWriteEntry({
     author,
   });
   if (!commit.ok) return { ok: false, error: `commit failed: ${commit.error}`, message: commit.message };
-  return { ok: true, op: op.op, shortHash: commit.shortHash, subject: commit.subject, message: commit.message, vectorChange: pv.vectorChange, linkChange: pv.linkChange, typeChange: pv.typeChange };
+  return { ok: true, op: op.op, shortHash: commit.shortHash, subject: commit.subject, message: commit.message, vectorChange: pv.vectorChange, linkChange: pv.linkChange, typeChange: pv.typeChange, stageChange: pv.stageChange };
 }
 
 function basenameNoMd(p) {

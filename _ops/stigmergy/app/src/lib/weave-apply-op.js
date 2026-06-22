@@ -15,11 +15,13 @@
 //
 // Increment 1 supported `set-vector` (the Companion's proven forward_vector
 // write); Increment 2 added `add-link` — the emblematic "promote unsung path" /
-// "new typed link" Weave action; Increment 3 adds `set-type` — the "promote hub"
-// retype (concept → hub) the hub-promotion audit emits. The dispatch grows.
+// "new typed link" Weave action; Increment 3 added `set-type` — the "promote hub"
+// retype (concept → hub) the hub-promotion audit emits. Increment 4 adds
+// `set-stage` — the stage-transition audit's churn-free advance along the §2
+// lifecycle (seed→sprout→growing→mature). The dispatch grows.
 
 // The ops the executor can apply, each with its required fields.
-export const APPLY_OPS = ['set-vector', 'add-link', 'set-type'];
+export const APPLY_OPS = ['set-vector', 'add-link', 'set-type', 'set-stage'];
 
 // The SCHEMA §1 entry-type ontology. A set-type op's `type` must be one of these
 // — the executor never invents a type, and the affordance never offers a retype
@@ -28,6 +30,15 @@ export const APPLY_OPS = ['set-vector', 'add-link', 'set-type'];
 export const ENTRY_TYPES = [
   'concept', 'hub', 'project', 'breakthrough', 'source', 'meta',
   'practice', 'person', 'question', 'spore', 'specialist', 'maker',
+];
+
+// The SCHEMA §2 development stages. A set-stage op's `stage` must be one of these
+// — the executor never writes an unschematic `stage:` value. (The stage-transition
+// audit only proposes advancement seed→sprout→growing→mature, but the op is
+// general; `foundational` is included for completeness though the audit never
+// proposes it.)
+export const STAGES = [
+  'seed', 'sprout', 'growing', 'mature', 'fruiting', 'dormant', 'composting', 'foundational',
 ];
 
 // The §4 typed-link ontology (SCHEMA §4). An add-link op's `type` must be one of
@@ -91,6 +102,14 @@ export function normalizeApplyOp(apply) {
     return { op: 'set-type', entry, type };
   }
 
+  if (op === 'set-stage') {
+    const stage = typeof apply.stage === 'string' ? apply.stage.trim() : '';
+    // The new stage must be a §2 stage; anything else normalizes to null so the
+    // executor never writes an unschematic `stage:` value.
+    if (!STAGES.includes(stage)) return null;
+    return { op: 'set-stage', entry, stage };
+  }
+
   return null;
 }
 
@@ -118,5 +137,6 @@ export function describeApplyOp(op) {
   if (op.op === 'set-vector') return `tune ${op.entry}'s forward_vector`;
   if (op.op === 'add-link') return `link ${op.entry} → ${op.target} (${op.type})`;
   if (op.op === 'set-type') return op.type === 'hub' ? `promote ${op.entry} to a hub` : `retype ${op.entry} → ${op.type}`;
+  if (op.op === 'set-stage') return `advance ${op.entry} to ${op.stage}`;
   return `apply ${op.op} to ${op.entry}`;
 }

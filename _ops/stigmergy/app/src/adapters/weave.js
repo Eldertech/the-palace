@@ -90,3 +90,26 @@ export async function emitVectorTuningAudit({ dryRun = true, limit } = {}) {
     return { ok: false, status: 0, error: err.message || 'could not reach the server' };
   }
 }
+
+// The MECHANICAL stage-transition audit (like unsung/hub — a pure scan, no
+// model). Dry run surfaces honest counts; dryRun:false posts promote_stage
+// proposals (set-stage advance) to the WEAVE board.
+export async function emitStageAudit({ dryRun = true, limit } = {}) {
+  try {
+    const res = await fetch('/api/weave/emit-stage', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ dryRun, ...(Number.isFinite(limit) ? { limit } : {}) }),
+    });
+    let data = {};
+    try { data = await res.json(); } catch { /* non-JSON body */ }
+    if (res.ok && data.ok) return { ok: true, ...data };
+    return {
+      ok: false,
+      status: res.status,
+      error: data.error || `audit failed (${res.status})`,
+    };
+  } catch (err) {
+    return { ok: false, status: 0, error: err.message || 'could not reach the server' };
+  }
+}

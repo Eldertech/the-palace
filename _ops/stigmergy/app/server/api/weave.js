@@ -14,7 +14,7 @@
 import { join } from 'node:path';
 import { jsonResponse, readBody, PERSISTENT_REL } from '../http.js';
 import { applyWeaveProposal } from '../weave-apply.js';
-import { runUnsungEmission, runHubEmission, runVectorTuningEmission } from '../weave-emit.js';
+import { runUnsungEmission, runHubEmission, runVectorTuningEmission, runStageEmission } from '../weave-emit.js';
 
 export async function weaveRoutes(ctx) {
   const { urlPath, method } = ctx;
@@ -23,6 +23,7 @@ export async function weaveRoutes(ctx) {
   if (urlPath === '/api/weave/emit-unsung') return handleEmitUnsung(ctx);
   if (urlPath === '/api/weave/emit-hub') return handleEmitHub(ctx);
   if (urlPath === '/api/weave/emit-vector-tuning') return handleEmitVectorTuning(ctx);
+  if (urlPath === '/api/weave/emit-stage') return handleEmitStage(ctx);
   return false;
 }
 
@@ -103,6 +104,21 @@ async function handleEmitVectorTuning(ctx) {
 
   const run = opts.runVectorTuningEmissionImpl || runVectorTuningEmission;
   const result = await run({ palaceRoot, boardPath, dryRun, limit, model });
+  jsonResponse(res, result.ok ? 200 : (result.status || 400), result);
+  return true;
+}
+
+async function handleEmitStage(ctx) {
+  const { req, res, palaceRoot, opts } = ctx;
+  const body = await readJsonBody(req, res, { allowEmpty: true });
+  if (body === null) return true;
+
+  const dryRun = body.dryRun !== false; // DRY-RUN unless explicitly asked to post
+  const limit = Number.isFinite(body.limit) ? body.limit : 8;
+  const boardPath = opts.boardPath ? opts.boardPath : join(palaceRoot, PERSISTENT_REL);
+
+  const run = opts.runStageEmissionImpl || runStageEmission;
+  const result = await run({ palaceRoot, boardPath, dryRun, limit });
   jsonResponse(res, result.ok ? 200 : (result.status || 400), result);
   return true;
 }

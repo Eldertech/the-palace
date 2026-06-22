@@ -16,7 +16,8 @@ import { walkEntryRecords, listEntries } from '../src/lib/entries.js';
 import { buildPalaceIndex, findUnsungEdges } from '../src/lib/unsung-paths.js';
 import { findHubCandidates } from '../src/lib/hub-candidates.js';
 import { findVectorTuningCandidates } from '../src/lib/vector-tuning-candidates.js';
-import { planUnsungEmission, planHubEmission, selectVectorTuningCandidates, buildVectorTuningProposal } from '../src/lib/weave-propose.js';
+import { findStageCandidates } from '../src/lib/stage-candidates.js';
+import { planUnsungEmission, planHubEmission, planStageEmission, selectVectorTuningCandidates, buildVectorTuningProposal } from '../src/lib/weave-propose.js';
 import { generateVectorTuning } from './weave-generate.js';
 import { readJsonl, appendMessage } from '@stigmergy/core/blackboard';
 import { validateMessage } from '@stigmergy/core/schema';
@@ -285,4 +286,73 @@ export async function runVectorTuningEmission({
     else skipped.push(m.id);
   }
   return { ...base, posted, genFailed, skipped, proposals };
+}
+
+// Scan the palace for stage candidates (entries that have outgrown their §2
+// stage). A separate seam mirroring defaultScan / defaultHubScan.
+function defaultStageScan(palaceRoot) {
+  const entries = listEntries(palaceRoot);
+  const candidates = findStageCandidates(entries);
+  return { entriesScanned: entries.length, candidates };
+}
+
+const summarizeStage = (m) => ({ id: m.id, entry: m.payload.source_entry, change: m.payload.proposed_change });
+
+/**
+ * Run the stage-transition audit — the runHubEmission counterpart behind
+ * POST /api/weave/emit-stage. A MECHANICAL detection audit (no LLM): the
+ * candidates are entries whose body + typed-link count have outgrown their
+ * declared §2 stage, and each proposal carries a `set-stage` (one-step advance)
+ * apply op. Same shape as the other detection audits — DRY-RUN default (which
+ * builds the proposals, since detection is a pure scan), honest counts,
+ * idempotent dedup. Never throws.
+ *
+ * @param {object} args
+ * @param {string}  args.palaceRoot
+ * @param {string}  [args.boardPath]
+ * @param {boolean} [args.dryRun=true]
+ * @param {number}  [args.limit=8]
+ * @param {string}  [args.ts]
+ * @param {Function}[args.scanImpl]   — test seam: (palaceRoot) => { entriesScanned, candidates }
+ * @param {Function}[args.appendImpl] — test seam: (msg) => boolean
+ */
+export async function runStageEmission({
+  palaceRoot, boardPath, dryRun = true, limit = 8, ts, scanImpl, appendImpl,
+} = {}) {
+  if (!palaceRoot) return { ok: false, status: 500, error: 'no palace root configured' };
+
+  const lim = Number.isFinite(limit) && limit > 0 ? Math.floor(limit) : 8;
+  const scan = scanImpl || defaultStageScan;
+  const { entriesScanned, candidates } = scan(palaceRoot);
+
+  const existing = boardPath && existsSync(boardPath) ? readJsonl(boardPath) : [];
+  const stamp = ts || new Date().toISOString();
+  const runId = stamp.replace(/[^0-9]/g, '').slice(0, 14);
+  const plan = planStageEmission({ candidates, existing, limit: lim, ts: stamp, runId });
+
+  const base = {
+    ok: true,
+    dryRun: !!dryRun,
+    limit: lim,
+    entriesScanned,
+    found: plan.found,
+    deduped: plan.deduped,
+    eligible: plan.eligible,
+    planned: plan.posted,
+    dropped: plan.dropped,
+    proposals: plan.proposals.map(summarizeStage),
+  };
+
+  if (dryRun) return base;
+
+  const append = appendImpl || defaultAppend(boardPath);
+  let posted = 0;
+  const skipped = [];
+  for (const m of plan.proposals) {
+    let landed = false;
+    try { landed = append(m); } catch { landed = false; }
+    if (landed) posted++;
+    else skipped.push(m.id);
+  }
+  return { ...base, posted, skipped };
 }
