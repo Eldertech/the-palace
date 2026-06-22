@@ -114,7 +114,3 @@ The plan is now reset around a parallel, substrate-first structure: **[[BLUELINE
 - `BLUELINE — Deposit Map.md` — the original proposal of entries/Specialists/skills and the build-vs-adopt map.
 - `BLUELINE — Claude Code Job.md` — the original single-thread spike (Sessions 1 & 3 done; superseded by the Production Plan).
 - `proofs/` — the per-track + session + rung proofs: `m0-previz/` (the verified previz player + `m0-report.md`), `m1-animatic/` (the comic-register animatic + `m1-report.md`), `m2-motion-comic/` (the beat-locked motion comic + `m2-report.md`), `m3-warped-noise/` (flow-warped noise vs seed-lock), `track-III-clock/` (clock + M4L spec), `track-II-lora/` (LoRA grade + the v2 ruler), `track-IV-bench/`, `track-V-motion/`, `session-2-staging/`, `session-3-flowfield/`.
-
-## Active Baton
-
-[[BLUELINE — baton]] — drafted 2026-06-22 (new-story sequence: generative layering + identity-locked multi-figure shots)
