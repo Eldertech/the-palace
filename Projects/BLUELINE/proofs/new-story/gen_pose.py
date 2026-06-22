@@ -25,7 +25,7 @@ SCENES = {  # the dynamic / multi-character shots blind authoring struggled with
     "S04": {"size": (832, 1216), "n_fig": 1,
             "prompt": "a man falling through the air, plummeting straight down, coat and limbs flailing, seen from far below against a smoky sky"},
     "S05": {"size": (1216, 832), "n_fig": 3,
-            "prompt": "a powerful man landing hard in a three-point crouch on cracked pavement, one fist down, a woman lying collapsed on the ground beside him, a crowd of people recoiling behind"},
+            "prompt": "a dying young woman lies collapsed on the cracked ground in the foreground, reaching up weakly; a powerful man has just landed in a crouch directly behind her and turns down toward her, one fist on the broken pavement; a shocked crowd of onlookers recoils in the background; the dying girl is the clear focal point in front"},
     "S06": {"size": (832, 1216), "n_fig": 2,
             "prompt": "a man kneeling on the ground cradling an unconscious woman in his arms, leaning down close to kiss her, two figures intimate and close together"},
 }
