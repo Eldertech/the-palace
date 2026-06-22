@@ -6,3 +6,6 @@
 logs/
 .last-steward-batch
 .last-shopkeeper-sweep
+# global pause flag toggled by STIGMERGY (STEWARDS deck) — per-machine runtime
+# state, never canon. The wrappers no-op while it is present.
+.paused
