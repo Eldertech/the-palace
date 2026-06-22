@@ -118,3 +118,7 @@ The crisp line: **TRICKSTER = a steward is waiting on your answer; QUEUE = every
 - **[[STIGMERGY]]** — the running system; its forward vector ("become the front door") is what this drives toward.
 - **[[BBS Design System]]** — the governing aesthetic, restored as monospace-only on every surface.
 - **[[Project Stewardship System]]** / **[[Enrichment]]** / **[[The Lens]]** / **[[Palace Enchantment]]** — the integration surfaces the roadmap pulls inside the terminal.
+
+## Active Baton
+
+[[STIGMERGY v2.0 — Scheduler watch-and-steer baton]] — drafted 2026-06-22 (`_ops/stigmergy/v2.0-scheduler-baton.md`). Carries the next move: the autonomous scheduler's **watch-and-steer surface** in STIGMERGY (scope: watch + global pause/resume), after a planning session found the scheduler is mostly-built launchd machinery that's un-installed + invisible. Mirror-sweeps remains the other open frontier.
