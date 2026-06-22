@@ -229,11 +229,21 @@ export function readSchedulerStatus({ palaceRoot, launchAgentsDir, now = Date.no
     try { markdown = readFileSync(digestPath, 'utf8'); } catch { /* unreadable */ }
     try { mtimeMs = statSync(digestPath).mtimeMs; } catch { /* keep null */ }
     const runLabel = markdown ? (markdown.match(/\*\*Run:\*\*\s*(.+)/)?.[1]?.trim() ?? null) : null;
+    // Age from the digest's OWN run date ("**Run:** YYYY-MM-DD"), NOT the file
+    // mtime: a fresh git checkout (e.g. a worktree) resets mtime to "now", which
+    // would make a two-week-old digest read as minutes old — the precise kind of
+    // comforting lie the baton says this surface must never tell. Fall back to
+    // mtime only when no run date is parseable.
+    const runDateMatch = markdown ? markdown.match(/\*\*Run:\*\*\s*(\d{4}-\d{2}-\d{2})/) : null;
+    const runAtMs = runDateMatch ? Date.parse(runDateMatch[1]) : NaN;
+    const ageBasisMs = Number.isFinite(runAtMs) ? runAtMs : mtimeMs;
     digest = {
       path: DIGEST_REL,
       exists: true,
       mtime: isoOrNull(mtimeMs),
-      age_hours: Number.isFinite(mtimeMs) ? round1(hoursBetween(now, mtimeMs)) : null,
+      run_at: Number.isFinite(runAtMs) ? new Date(runAtMs).toISOString() : null,
+      age_basis: Number.isFinite(runAtMs) ? 'run_date' : 'file_mtime',
+      age_hours: Number.isFinite(ageBasisMs) ? round1(hoursBetween(now, ageBasisMs)) : null,
       run_label: runLabel,
       markdown,
     };
