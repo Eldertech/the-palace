@@ -6,21 +6,21 @@ pillars:
   - tools
   - practice
 born: 2026-05
-last_activated: 2026-05-04
-activation_count: 1
+last_activated: 2026-06
+activation_count: 2
 stage: seed
 energy: very high
 forward_vector: >
-  I want to become the autonomous build contract that turns v0.1-orchestrator's
-  per-cycle primitive into a true operational system. Batch-cycle mode lets one
-  invocation advance every registered steward. Per-steward cadence governs who
-  runs when. Spawn-from-project removes the friction in onboarding new stewards.
-  Retire/pause/resume keeps the registry healthy across project lifecycles.
-  Scheduled-task integration recipes make the weekly-batch pattern real on
-  Loudon's machine without an Anthropic API key. A Claude Code session reading
-  this file knows what to build. When this lands, the operational vision (Claude
-  working on every project, surfacing only what needs Loudon's input) is achieved
-  under Path 2.
+  I was the autonomous build contract for Path-2 orchestration — but my
+  scheduling spine (Cowork's `schedule` skill) was reversed for Mac-side launchd
+  before I was ever executed, so now I want to be read as a RECONCILED record,
+  not a live contract. My scheduling mechanism is superseded by `_ops/heartbeat/`
+  and the STIGMERGY watch-and-steer surface; do not run my phases. What still
+  burns in me is the per-steward operational vision — cadence control,
+  spawn-from-project, a retire/pause/resume lifecycle — a genuine deferred
+  frontier (the baton's "Option A") waiting for the steward registry to grow the
+  status field it still lacks. A Claude Code session should harvest that vision
+  from me and leave the Cowork plumbing behind.
 links:
   - target: "[[Orchestrator Production Plan]]"
     type: emerged-from
@@ -41,9 +41,59 @@ links:
   - target: "[[Substrate Skill]]"
     type: couples-with
     label: stage-conditional-dispatch
+  - target: "[[STIGMERGY v2.0 — Consolidation & Primary Interface]]"
+    type: connects-to
+    label: scheduling-axis-superseded-by
 ---
 
 # Orchestrator Production Plan v0.2
+
+> ## ⚠ RECONCILIATION NOTE (2026-06-22) — read before acting on this contract
+>
+> **This document is partly STALE. Do NOT execute its phases as written.** Its
+> scheduling spine was *reversed* after it was drafted (2026-05-04); kept here as
+> the design record, corrected at the top so it stops misleading a build session.
+>
+> **The reversal (the core change).** This plan assumes autonomy comes from
+> **Cowork's `schedule` skill** — "Documented recipes only, no custom infra"
+> (Decisions table), the whole **Phase 4** scheduled-task recipe set, and the
+> Handoff prompt's "do NOT create scheduled tasks." That was **abandoned**:
+> Cowork's scheduled tasks run in the **Linux sandbox**, which has no GPU / Max /
+> native Shop tools, so GPU-bound stewards kept posting "promote me to the Mac"
+> forks. Autonomy moved **Mac-side to launchd**. The real mechanism is now
+> **`_ops/heartbeat/`** — `run-steward-batch.sh` + `run-shopkeeper-sweep.sh`
+> wrappers fired by `launchd/*.plist` (daily 06:00/06:30, every-other-morning via
+> a 2-day stamp guard), each making one scoped lock-safe commit. See
+> **`_ops/heartbeat/README.md`**. No Anthropic API key — local `claude -p` on a
+> timer (the same spawn STIGMERGY's actuator uses).
+>
+> **What actually shipped vs. this contract:**
+> - **Batch-cycle** — EXISTS, but as the heartbeat wrapper + the orchestrator
+>   skill's `batch.md` + the `batch-plan.js` due-planner (stage floor + 12 h
+>   debounce). NOT the `palace-orch batch-cycle` CLI, NOT
+>   `_ops/orchestrator/scheduled-runs/<date>.md` digests. The digest is the
+>   Automated Trickster's `_ops/stigmergy/trickster-auto/heartbeat-latest.md`.
+> - **Cadence** — the wrapper's `INTERVAL_DAYS` stamp guard + `batch-plan.js`'s
+>   debounce, NOT a manifest `cadence` enum / `cadence.js`.
+> - **Pause/resume** — shipped 2026-06-22, but as ONE global `_ops/heartbeat/.paused`
+>   flag (the wrappers no-op while present), toggled from the STIGMERGY STEWARDS
+>   deck. NOT the per-steward `status: active|paused|retired` + `retire/pause/resume`
+>   in `registry.js` (verified absent). Per-steward control remains deferred.
+> - **spawn-from-project / retire / status registry** — NOT built. Stewards are
+>   still hand-created `_ops/agents/permanent/<slug>/` dirs.
+>
+> **What's now the live surface.** The **watch-and-steer** layer over this
+> autonomy shipped 2026-06-22 in STIGMERGY: the STEWARDS-deck *schedule strip* +
+> `GET /api/scheduler/status` (truthful launchd/heartbeat state — no `launchctl`)
+> + `POST /api/scheduler/pause` (the `.paused` toggle). See
+> [[STIGMERGY v2.0 — Consolidation & Primary Interface]]. **Today's real state is
+> NOT INSTALLED** — the launchd jobs exist in-repo but were never loaded
+> (`launchctl list` empty, no run stamp, digest weeks stale).
+>
+> **What is still live from this plan.** The *per-steward operational vision* —
+> cadence control, spawn-from-project, a retire/pause/resume lifecycle — is a
+> genuine deferred frontier (the baton's "Option A"), not dead. Harvest that
+> vision; ignore the Cowork-scheduling mechanism and the Phase 4 recipes.
 
 The architecture is in [[Palace Agent Infrastructure Spec]] § 3. The v0.1 orchestrator at [[Orchestrator Production Plan]] established the runtime — Claude Code skill plus Node helpers, single-cycle dispatch, strict §2.2 validation, the four Stage A content findings baked into prompts. This document is the bridge: the executable contract that turns v0.1's per-cycle primitive into the operational system that delivers Loudon's vision — every project's steward running on its own cadence, batched into autonomous runs that need Loudon only when something genuinely requires his input.
 
