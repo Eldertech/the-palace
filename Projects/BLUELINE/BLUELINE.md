@@ -52,6 +52,8 @@ tags: [project, blueline, music-video, generative, pipeline, sprout]
 
 # BLUELINE
 
+> **▸ ACTIVE BATON (2026-06-19) — on a feature branch, not here.** The live baton + the latest work (style-lock & character sidequest; this entry's "Where it stands" is *more current on the branch*) are on **worktree `feature/blueline-m3`** → `/Users/loudonstearns/Documents/palace-feature-blueline-m3`. Read the baton at `Projects/BLUELINE/BLUELINE — baton.md` *in that worktree* (it is invisible from main by design). The next move is **InstantID for the swappable character**. Recreate the worktree if gone: `node _ops/worktree/new-worktree.mjs --name feature/blueline-m3 --profile blueline --memory`. Canon deposit from that session: [[Steer the Generator]] (on main). Delete this callout when the branch merges or the baton is consumed.
+
 > Working title — placeholder, rename freely. The brief lives in the project bundle; this entry is the palace face.
 
 ## What it is
