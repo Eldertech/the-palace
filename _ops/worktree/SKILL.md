@@ -119,12 +119,13 @@ The palace ceremonies assume a single working tree; worktrees split that. The ru
 coordination always write to the owner (main); in-progress work lives where it lives.** Resolve the
 owner with `git worktree list --porcelain` (first `worktree ` line) — the same lookup this script uses.
 
-- **Deposit** — a deposit adds to canon, and canon is `main`. It always writes its entries, the
-  `_ops/Deposit Archive.md` row, and its weave_flags to the **owner** and commits there
-  (`git -C "<owner>" …`), regardless of which worktree the conversation ran in. See
+- **Deposit** — a deposit adds to canon, and canon is `main`. It always writes its entries and
+  weave_flags to the **owner** and commits there (`git -C "<owner>" …`), regardless of which
+  worktree the conversation ran in. The commit body *is* the record (`Palace-Kind: deposit`; the
+  `_ops/Deposit Archive.md` is frozen — no row to append). See
   `_ops/Deposit Ceremony.md` § Where the Deposit Lands.
-- **Coordination state** — the persistent blackboard (`_ops/swarm/persistent/blackboard.jsonl`) and
-  `_ops/Deposit Archive.md` are tracked + append-only, so per-branch copies fragment and merge-conflict.
+- **Coordination state** — the persistent blackboard (`_ops/swarm/persistent/blackboard.jsonl`) is
+  tracked + append-only, so per-branch copies fragment and merge-conflict.
   **Always append to the owner's physical file**, never a worktree's branch copy. This keeps the
   stigmergic field one shared field and honors SCHEMA §9's one-write-path invariant (it satisfies it —
   no schema change).

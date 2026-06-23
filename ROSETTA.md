@@ -207,7 +207,7 @@ The Palace/
 └── _ops/                   ← Ceremony machinery + working queues. All ceremony files, their context companions, and palace operational queues live here.
     ├── Substrate Skill.md  ← Full ceremony protocols. Method library. Operational instructions.
     ├── Palace Ceremonies.md ← Canonical ceremony list with triggers and cadences.
-    ├── Deposit Archive.md  ← Permanent record of all deposits. Append-only.
+    ├── Deposit Archive.md  ← Frozen pre-spec deposit record; deposits are now their commits (LOG deck).
     └── Palace To-Do.md     ← Active improvement queue for palace infrastructure.
 ```
 
