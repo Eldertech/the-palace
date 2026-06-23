@@ -1,5 +1,13 @@
 // digest-verdicts.spec.js — Alignment-Review Phase 2 interactive e2e.
 //
+// SKIPPED for the time being (2026-06-22, Loudon): the auto-trickster DigestPanel
+// is un-mounted from the TRICKSTER deck (see TricksterDeck.jsx) because it isn't
+// a useful feature right now. Every test here drives that panel's verdict UI, so
+// the whole spec is skipped at declaration time (`test.skip(...)`) — declaration-
+// time skip means the beforeEach/afterEach hooks never run, so the live
+// verdicts.jsonl is never touched. Re-enable by restoring the panel mount and
+// reverting these `test.skip(` back to `test(`.
+//
 // Drives the DigestPanel verdict UI against a real dev server and the LIVE
 // digest-latest.json. Hermetic strategy: snapshot the verdicts file before
 // each test (creating an empty one if absent) and restore after, so a test
@@ -58,7 +66,7 @@ async function gotoTrickster(page) {
   ]));
 }
 
-test('DigestPanel renders each escalation + auto-decision with verdict controls', async ({ page }) => {
+test.skip('DigestPanel renders each escalation + auto-decision with verdict controls', async ({ page }) => {
   await gotoTrickster(page);
   const escalations = await page.locator('[data-row-kind=escalation]').count();
   const autoDecisions = await page.locator('[data-row-kind=auto_decision]').count();
@@ -71,7 +79,7 @@ test('DigestPanel renders each escalation + auto-decision with verdict controls'
   await page.screenshot({ path: resolve(SHOT_DIR_P2, 'verdict-controls-inline.png'), fullPage: false });
 });
 
-test('clicking differ reveals options + textarea + confirm/cancel', async ({ page }) => {
+test.skip('clicking differ reveals options + textarea + confirm/cancel', async ({ page }) => {
   await gotoTrickster(page);
   const row = page.locator('[data-row-kind=escalation]').first();
   await row.scrollIntoViewIfNeeded();
@@ -86,7 +94,7 @@ test('clicking differ reveals options + textarea + confirm/cancel', async ({ pag
   await page.screenshot({ path: resolve(SHOT_DIR_P2, 'differ-options-open.png'), fullPage: false });
 });
 
-test('agree click autosaves a verdict (POST /api/digest/verdict)', async ({ page }) => {
+test.skip('agree click autosaves a verdict (POST /api/digest/verdict)', async ({ page }) => {
   await gotoTrickster(page);
   const row = page.locator('[data-row-kind]').first();
   await row.scrollIntoViewIfNeeded();
@@ -139,7 +147,7 @@ async function seedVerdicts(request, records) {
   }
 }
 
-test('alignment readout — empty state renders quiet hint', async ({ page }) => {
+test.skip('alignment readout — empty state renders quiet hint', async ({ page }) => {
   await gotoTrickster(page);
   const readout = page.getByTestId('alignment-readout');
   await expect(readout).toBeVisible();
@@ -147,7 +155,7 @@ test('alignment readout — empty state renders quiet hint', async ({ page }) =>
   await expect(readout).toContainText('no verdicts yet');
 });
 
-test('alignment readout — populated state shows per-rule table with [READY] only on non-audition rules', async ({ page, request }) => {
+test.skip('alignment readout — populated state shows per-rule table with [READY] only on non-audition rules', async ({ page, request }) => {
   // Seed PROMO_MIN agrees on a promotable rule + PROMO_MIN agrees on the
   // audition gate. The first should mark READY; the second must NEVER.
   const promotable = Array.from({ length: 8 }, (_, i) => makeVerdict({
@@ -177,14 +185,14 @@ test('alignment readout — populated state shows per-rule table with [READY] on
 
 // ── Phase 4 — Copy-for-Claude export ───────────────────────────────────────
 
-test('Copy-for-Claude button is disabled when there are no verdicts', async ({ page }) => {
+test.skip('Copy-for-Claude button is disabled when there are no verdicts', async ({ page }) => {
   await gotoTrickster(page);
   const btn = page.getByTestId('copy-for-claude');
   await expect(btn).toBeVisible();
   await expect(btn).toBeDisabled();
 });
 
-test('Copy-for-Claude writes the formatted bundle to clipboard', async ({ page, request }) => {
+test.skip('Copy-for-Claude writes the formatted bundle to clipboard', async ({ page, request }) => {
   // Seed a mixed set so the bundle has content to show.
   const seeded = [
     makeVerdict({ request_id: 'seed-1', rule_id: 'grant-nonblocking-recommended-fork', agree: true }),
@@ -224,7 +232,7 @@ test('Copy-for-Claude writes the formatted bundle to clipboard', async ({ page, 
   await page.screenshot({ path: resolve(SHOT_DIR_P4, 'copy-button-copied.png'), fullPage: false });
 });
 
-test('keyboard: j moves focus down, k moves up', async ({ page }) => {
+test.skip('keyboard: j moves focus down, k moves up', async ({ page }) => {
   await gotoTrickster(page);
   const rows = page.locator('[data-row-kind]');
   // Ensure window-level keydown sees us by focusing the body explicitly.

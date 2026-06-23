@@ -7,7 +7,9 @@ import { postMessage } from '../adapters/blackboard.js';
 import { t } from '../lib/lexicon.js';
 import TricksterCard from './trickster/TricksterCard.jsx';
 import QuickBar from './trickster/QuickBar.jsx';
-import DigestPanel from './DigestPanel.jsx';
+// DigestPanel (the auto-trickster tuning panel) is hidden for the time being —
+// see the mount site below. Re-enable by restoring this import + the <DigestPanel />.
+// import DigestPanel from './DigestPanel.jsx';
 import LaunchModal from './queue/LaunchModal.jsx';
 import AgentLaunchModal from './queue/AgentLaunchModal.jsx';
 import { fetchStewards } from '../adapters/stewards.js';
@@ -304,12 +306,13 @@ export default function TricksterDeck({
         </>
       )}
 
-      {/* The auto-trickster tuning panel — the calls a rule-engine WOULD make,
-          with agree/differ so you can teach it whether to trust it. Demoted
-          BELOW the decision cards and collapsed by default: it is a power-tool,
-          not the decision list, so the cards lead the deck. Fully defensive —
-          renders nothing-yet when absent and never throws. */}
-      <DigestPanel />
+      {/* The auto-trickster tuning panel (DigestPanel) — the calls a rule-engine
+          WOULD make, with agree/differ to teach it whether to trust it. HIDDEN
+          for the time being (2026-06-22, Loudon): not a useful feature right now.
+          The engine, its rules, the digest writer, and DigestPanel.jsx all remain
+          intact — this only un-mounts the UI. Re-enable: restore the import at the
+          top of this file and uncomment the line below. */}
+      {/* <DigestPanel /> */}
 
       {/* Open-interactive — drive the asking steward to resolve a decision. A
           registered steward opens the construct-agent panel (page-agent wake,
