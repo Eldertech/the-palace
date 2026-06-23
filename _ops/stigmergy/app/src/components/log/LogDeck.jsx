@@ -104,11 +104,8 @@ export default function LogDeck() {
 
   return (
     <div data-testid="log-deck">
-      <Banner as="h1" strong style={{ fontSize: 32, margin: '0 0 4px' }}>
-        log -- the git record
-      </Banner>
       <div style={{ color: 'var(--phosphor-dim)', textShadow: 'none', marginBottom: 10 }}>
-        past -- what happened. {logState.kind === 'ok' ? `${filtered.length}/${logState.count} commits` : 'reading history...'}
+        {logState.kind === 'ok' ? `${filtered.length}/${logState.count} commits` : 'reading history...'}
         <span
           onClick={load}
           style={{ marginLeft: 12, cursor: 'pointer', color: 'var(--phosphor)', textShadow: 'var(--glow)', border: '1px solid var(--phosphor-dim)', padding: '0 6px', fontSize: 11 }}
