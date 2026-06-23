@@ -9,15 +9,35 @@ function boardForKey(key) {
   return BOARDS[idx - 1] || null;
 }
 
+// LIVE / connection indicator — relocated here from the (removed) top status
+// bar. connected → LIVE (phosphor); connecting/reconnecting → RECONNECTING
+// (warn); offline → OFFLINE (error). Keeps data-testid/data-state for the
+// live-tail tests. `marginLeft:auto` floats it flush-right in the command bar.
+function LiveIndicator({ liveState = 'offline' }) {
+  let label, color;
+  if (liveState === 'connected') { label = 'LIVE'; color = 'var(--phosphor)'; }
+  else if (liveState === 'connecting' || liveState === 'reconnecting') { label = 'RECONNECTING'; color = 'var(--warn)'; }
+  else { label = 'OFFLINE'; color = 'var(--error)'; }
+  return (
+    <span
+      data-testid="live-indicator"
+      data-state={liveState}
+      style={{ marginLeft: 'auto', color, textShadow: 'var(--glow)' }}
+    >
+      {'● '}{label}
+    </span>
+  );
+}
+
 // CommandBar renders the sticky bottom command bar.
 // - commands: Array of { key, label, disabled? }
 // - onCommand: (key) => void
 // - activeBoard: string (the current active board name, e.g. 'FLAGS')
+// - liveState: SSE connection state, shown flush-right as the LIVE indicator.
 //
 // Numeric-key commands (1..6) get an inverted active state when their board
 // matches activeBoard — same inversion treatment as the top ChannelTabs.
-// Non-category keys (R, V, Q, etc.) never receive the active state.
-export default function CommandBar({ commands = [], onCommand, activeBoard }) {
+export default function CommandBar({ commands = [], onCommand, activeBoard, liveState = 'offline' }) {
   if (commands.length === 0) return null;
 
   return (
@@ -63,6 +83,7 @@ export default function CommandBar({ commands = [], onCommand, activeBoard }) {
           </span>
         );
       })}
+      <LiveIndicator liveState={liveState} />
     </div>
   );
 }
