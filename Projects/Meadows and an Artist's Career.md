@@ -30,6 +30,8 @@ links:
 
 # Meadows and an Artist's Career
 
+![[Meadows and an Artist's Career — hero.png]]
+
 A pivot of the original [[Meadows and Music — Leverage Points]] project. The original applied Donella Meadows' twelve leverage points to *music production* — sidechain compression as negative feedback, transient design as buffer-size manipulation. That work is real and lives on in its own entry.
 
 This entry is the *second pass* — the same hierarchy applied to the system that produces music: **the artist's career as a system**. Where do you put your energy? What kind of intervention is "buy a new compressor" versus "rewrite the goals of my practice"? Meadows' answer: it depends on where in the leverage hierarchy you intervene, and most artists waste their lives at the bottom of it.
