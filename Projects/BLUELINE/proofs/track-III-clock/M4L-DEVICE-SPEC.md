@@ -11,7 +11,7 @@
 > silently broke the live copy on 2026-06-23 (regex-literal SyntaxError → `no function bang`). The file
 > is the safe source; the §2b block below is documentation kept byte-identical to it.
 
-> **Architecture refinement (2026-06-23, live-test pending):** the transport's section stream now
+> **Architecture refinement (2026-06-23, live-validated):** the transport's section stream now
 > reads **arrangement locators (`cue_points`)**, not the device's own-track MIDI clips. Rationale:
 > locators are **song-global** (they belong to the timeline, not a track) — the right fit for the
 > *singleton* transport — while per-track MIDI clips are read by the separate **SCANNER** device
@@ -19,8 +19,9 @@
 > conflated, and makes the transport **placement-agnostic** (drop it on any track). The OSC wire is
 > unchanged (`/transport/section name start_bar length_bars`); only the source changed, so nothing
 > downstream changes. The committed `transport.js` is the canonical marker-based source; the §2b
-> listing below still shows the prior clip-based body and will be re-synced once the marker source is
-> live-validated against a Set with locators.
+> listing below is the prior clip-based body, kept as history. **Live-validated 2026-06-23** against
+> Loudon's Set — locators `Intro` / `Bridge A` / `Drop C (Vocals)` drove `/transport/section` with
+> gap-derived spans, while three track-name scanners (`Hero` / `Shot` / `Lyrics`) ran concurrently.
 
 **What you're building:** a small M4L device that reads Ableton Live's transport and emits the
 BLUELINE OSC transport contract to the local relay, so the browser clock client (and, later, the

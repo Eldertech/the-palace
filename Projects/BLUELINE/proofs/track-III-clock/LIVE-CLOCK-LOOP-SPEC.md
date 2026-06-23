@@ -64,6 +64,32 @@ in §2.**
 
 ## 2. MODE=SCANNER — the clip-scan device  *(new — this is the build)*
 
+> **AS-BUILT (2026-06-23) — supersedes the board/lyrics sketch in the rest of §2.** The scanner shipped
+> with three changes from the original design below. The canonical source is the committed **`scanner.js`**
+> in this folder — copy that file into `[js scanner.js]`; don't paste from the block below.
+>
+> 1. **Namespace = the host TRACK NAME** (not a board/lyrics menu). The scanner reads its own track's name,
+>    OSC-sanitizes it (`[A-Za-z0-9_-]`; anything else → `_`), and prefixes every message with it:
+>    ```
+>    /<Track>/scan      count:int
+>    /<Track>/clip      idx:int  start:float(beats)  length:float(beats)  color:int(0xRRGGBB)  name:string
+>    /<Track>/scan_end
+>    ```
+>    Any number of scanners on any tracks coexist, each routed by its own name — *placement + name is the
+>    config*. The `[live.menu] namespace` and `ns()` are retired (a no-op `ns()` stub remains so a leftover
+>    menu can't error). Verified live with `Hero` / `Shot` / `Lyrics` scanners running at once.
+> 2. **Auto-rescan on STOP.** `scanner.js` arms a `live_set is_playing` observer (on its first load-bang) and
+>    rescans on the **1→0 stop edge** — so the heavy pass (a transient `LiveAPI` per clip) lands while
+>    *stopped*, never during play. Because every scanner watches the same transport, **one Stop rescans all
+>    tracks at once** — decentralized, no central trigger, zero extra wiring. The manual SCAN bang still
+>    works. This replaces the optional "rescan on stop" toggle in §2a (now built into the JS).
+> 3. **Multi-track preview.** The players take `?track=<Name>` (default `board`) to choose which track drives
+>    the main storyboard, and **previz additionally shows EVERY scanner track as a time-aligned lane** at the
+>    bottom: one lane per track, clips placed by start (width = gap to next), one playhead swept by
+>    `/transport/beat`, a ruler of locator sections. Open `http://127.0.0.1:8770/previz?track=Shot`.
+>
+> The §2 body below is the original board/lyrics sketch, kept as design history; trust `scanner.js` + this banner.
+
 **Purpose.** Read the device's own track's MIDI clips and emit them as a one-shot scan, so a player builds
 its storyboard from *Live clips* instead of an embedded array. Today `clip_scan_sim.py` fakes exactly this;
 the device sends the **same OSC**, from a **deferred low-priority scan** — never from the transport poll.
@@ -190,9 +216,9 @@ config, which is why the routes are the clean path.
 
 | Track | Clips are | Device | Emits | Drives |
 |---|---|---|---|---|
-| **SECTION** | section spans (intro/verse/drop), named MIDI clips | MASTER | `/transport/*` | the clock + section read-out everywhere |
-| **STORYBOARD** | one named clip per shot; name = the cue; color = the spine | SCANNER (ns=board) | `/board/*` | the storyboard the players render |
-| **LYRICS** | one named clip per lyric line; name = the line text | SCANNER (ns=lyrics) | `/lyrics/*` | the lyrics layer (separate spec) |
+| **SECTION** *(any track — global)* | arrangement **LOCATORS** (intro/verse/drop) — markers, not clips | MASTER (one per Set) | `/transport/*` | the clock + section read-out everywhere |
+| **STORYBOARD** (e.g. named `Shot`) | one named clip per shot; name = the cue; color = the spine | SCANNER | `/Shot/*` (track name) | the storyboard the players render |
+| **LYRICS** (named `Lyrics`) | one named clip per lyric line; name = the line text | SCANNER | `/Lyrics/*` (track name) | the lyrics layer / a preview lane |
 
 Three tracks, three devices, all built from the same two `.js` files (`transport.js`, `scanner.js`). The
 song *is* the project file: edit a clip's name/length/position and re-scan, and the board moves with it —
