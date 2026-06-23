@@ -1,4 +1,4 @@
-// BLUELINE - M4L clip scanner (per-track, track-name-namespaced).
+// BLUELINE - M4L clip scanner (per-track, track-name-namespaced, auto-rescan on STOP).
 // outlet 0 -> [udpsend 127.0.0.1 9001]. Reads THIS device's host track's arrangement clips and
 // emits a one-shot scan whose OSC address is PREFIXED BY THE HOST TRACK'S NAME -- so any number of
 // scanners on different tracks coexist, each routed by its own track name:
@@ -6,12 +6,19 @@
 //   /<Track>/clip      idx  start(beats)  length(beats)  color(0xRRGGBB)  name
 //   /<Track>/scan_end
 // "Placement is the configuration": which track it sits on, and that track's NAME, is the whole setup.
-// Run from [deferlow] (LOW-priority), never the transport poll. One LiveAPI at a time; guard validity.
+//
+// CADENCE -- auto-rescan on STOP: the scan is heavy (a transient LiveAPI per clip), so it must NOT run
+// during playback. This device watches live_set is_playing and rescans on the 1->0 STOP edge -- the
+// processing hit lands while stopped, never at play. Because EVERY scanner watches the same transport,
+// one Stop rescans ALL tracks at once (decentralized; no central trigger). A manual bang still scans on
+// demand. Same low-priority-thread rule as the transport: the is_playing callback runs off the scheduler.
 autowatch = 1;
 outlets = 1;
 
+var playWatch = null;     // LiveAPI observer on live_set is_playing (armed once, on the first bang)
+var lastPlaying = -1;     // previous is_playing value, to detect the 1->0 stop edge
+
 // OSC address segments can't hold space # * , / ? [ ] { } -- map anything outside [A-Za-z0-9_-] to _.
-// Manual char check (no regex literal -- safest for Max's old js engine). Empty name -> "track".
 function oscSafe(s) {
     s = String(s);
     var out = "";
@@ -46,6 +53,17 @@ function scan() {
     post("scanner: sent " + rows.length + " clips as /" + ns + "/*\n");
 }
 
-function ns() { }                 // deprecated no-op: namespace now derives from the track name (kept so
-                                  // a leftover [live.menu]->[prepend ns] doesn't spam "no function ns")
-function bang() { scan(); }       // a [deferlow] bang triggers one scan
+// auto-rescan on STOP: observe live_set is_playing; scan only on the 1->0 edge (never during play).
+function armStopRescan() {
+    playWatch = new LiveAPI(onPlay, "live_set");
+    playWatch.property = "is_playing";               // fires once now with the current value, then on change
+}
+function onPlay(a) {
+    if (!a || a[0] != "is_playing") return;
+    var p = a[1];
+    if (p == 0 && lastPlaying == 1) scan();          // STOP edge -> rescan (the heavy pass, while stopped)
+    lastPlaying = p;
+}
+
+function ns() { }                 // deprecated no-op: namespace now derives from the track name
+function bang() { if (!playWatch) armStopRescan(); scan(); }   // first bang arms the stop-watch + initial scan
