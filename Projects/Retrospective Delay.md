@@ -38,6 +38,8 @@ forward_vector: "I want to become a fully staged Loudon Live teaching instrument
 
 # Retrospective Delay
 
+![[Retrospective Delay — hero.png]]
+
 A circular buffer delay that plays back entire phrases—not individual taps, but temporal ghosts of what you just performed. When you play silence, the last phrase repeats, summoning memory back into the present.
 
 ## The Core Architecture
