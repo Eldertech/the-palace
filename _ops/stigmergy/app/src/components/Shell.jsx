@@ -53,6 +53,9 @@ export default function Shell({
         borderBottom: '1px dashed var(--phosphor-dim)',
         padding: '6px 20px', display: 'flex', gap: 16, flexWrap: 'wrap',
         color: 'var(--phosphor)', textShadow: 'var(--glow)',
+        // Stay above an entry's fixed hero backdrop (EntryReader z-index:1) so
+        // the top chrome reads bright — the hero sits behind everything.
+        position: 'relative', zIndex: 2,
       }}>
         <span style={{ color: 'var(--phosphor-white)', textShadow: 'var(--glow-strong)' }}>STIGMERGY</span>
         <span style={{ color: 'var(--phosphor-dim)', textShadow: 'none', fontSize: 10, letterSpacing: '.12em' }}>[cracked·tRiCKSTER]</span>

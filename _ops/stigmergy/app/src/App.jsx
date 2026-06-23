@@ -341,7 +341,11 @@ export default function App() {
       vfxState={scanlinesOn ? 'on' : 'off'} activeBoard={commandBarActive}
       liveState={liveState}>
       <PalaceRefProvider vault="The Palace" openEntryInState={openEntryInState}>
-      <DeckTabs active={deck} onSelect={setDeck} />
+      {/* Lift the deck nav above an entry's fixed hero backdrop (EntryReader
+          z-index:1) so the buttons stay bright; the hero sits behind them. */}
+      <div style={{ position: 'relative', zIndex: 2 }}>
+        <DeckTabs active={deck} onSelect={setDeck} />
+      </div>
 
       {deck === 'STATE' && (
         <StateDeck
