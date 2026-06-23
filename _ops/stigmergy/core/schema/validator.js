@@ -126,10 +126,11 @@ export function validateMessage(msg) {
   //     sentinel; real escalation requires Path 1's usage data. Signalled by
   //     `health._orchestrator_metadata.dispatch_mode` ∈ STUB_HEALTH_DISPATCH:
   //     `claude-code-subagent` (Path 2: Agent-tool dispatch, §3.3.1),
-  //     `hand-authored` / `cowork` / `claude-code` (a human or agent hand-wrote
-  //     the JSON — no model call at all; SCHEMA §9: "hand-authored and Path-2
-  //     messages carry a green stub"). New non-API dispatch modes are added to
-  //     this set, not exempted ad-hoc.
+  //     `hand-authored` / `cowork` / `claude-code` / `claude-code-mac-session`
+  //     (a human or agent hand-wrote the JSON — no model call at all; e.g. a
+  //     deposit weave-flag or baton posted from a Mac Claude Code session;
+  //     SCHEMA §9: "hand-authored and Path-2 messages carry a green stub").
+  //     New non-API dispatch modes are added to this set, not exempted ad-hoc.
   //
   // Path 1 is the DEFAULT: a message with no _orchestrator_metadata, or an
   // API-direct dispatch_mode, keeps the full requirement. Pre-existing messages
@@ -144,6 +145,7 @@ export function validateMessage(msg) {
     // Dispatch contexts with no authoritative API usage data → stub health OK.
     const STUB_HEALTH_DISPATCH = new Set([
       'claude-code-subagent', 'hand-authored', 'cowork', 'claude-code',
+      'claude-code-mac-session',
     ]);
     const isStubHealth = h._orchestrator_metadata
       && typeof h._orchestrator_metadata === 'object'
