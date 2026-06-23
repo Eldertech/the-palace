@@ -33,6 +33,8 @@ links:
 
 # Blood Compressor
 
+![[Blood Compressor — hero.png]]
+
 A compressor whose interface and behavior model the human cardiovascular system. The audio signal is the heartbeat. The threshold is systolic pressure. Vasoconstriction is gain reduction. The performer learns compression by feeling, on screen, what their body already does forty times a minute.
 
 This entry is the first concrete development of one of the eight [[Biomechanical Synthesis]] instruments. The hub diagram lists it; this entry is its body.
