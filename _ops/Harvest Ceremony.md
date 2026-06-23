@@ -66,7 +66,7 @@ When in doubt, flag as partial. It costs nothing and preserves the option.
 
 The Harvest adapts to its dataset. There is no single correct procedure. What matters is that the harvest:
 
-1. Knows what has already been deposited (query [[Deposit Archive]] via script — do not load the whole file)
+1. Knows what has already been deposited (the [[Deposit Archive]] holds the frozen pre-spec rows; post-migration deposits are `Palace-Kind: deposit` commits on the LOG deck — query both via script, do not load wholesale)
 2. Knows what it is searching through (establish the scope before triaging)
 3. Records its findings in a working list that feeds the deposit queue
 4. Does not attempt to do the deposit work — that belongs to [[Deposit Ceremony]]
@@ -81,7 +81,7 @@ The Harvest adapts to its dataset. There is no single correct procedure. What ma
 
 ## The Archive
 
-The [[Deposit Archive]] is the permanent record of everything that has entered the palace. Do not read it during harvest sessions — it is too large. Use scripts to extract what you need.
+The record of what has entered the palace is the [[Deposit Archive]] (frozen pre-spec rows) **plus** the LOG deck's `Palace-Kind: deposit` commits (post-migration deposits — a deposit's record is now its commit). Do not read the archive wholesale during harvest — it is too large; query it and the deposit commits via script.
 
 A working list of harvest candidates can live anywhere that makes sense for the current session — in the conversation itself, in a temporary file, in a shared document. It does not need to be a permanent palace file. When the harvest is done, move the candidates to wherever [[Deposit Ceremony]] can find them.
 

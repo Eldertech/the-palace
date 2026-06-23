@@ -50,7 +50,7 @@ This is a **meta-entry**: a document about the Palace itself. Its purpose is to 
 | **Ceremony Linter** (lives in [[Palace Ceremonies]]) | A unit test suite for method contracts | A pipeline validation check | An ontology consistency check | A structural correctness test | A domain invariant check |
 | **The Palace Keeper** | The runtime / interpreter | The pipeline orchestrator | The reasoner / triplestore engine | The literate programming tool | The domain expert / ubiquitous language guardian |
 | **A Connection** | A method call between objects | A join / edge in a data graph | An RDF triple (subject–predicate–object) | A cross-reference | An Association |
-| **The Deposit Archive** | A write-ahead log / commit journal | A pipeline run log | A provenance graph | A revision history | An event store |
+| **The Deposit Archive** (frozen; the live deposit-journal is now the LOG deck — `Palace-Kind: deposit` commits) | A write-ahead log / commit journal | A pipeline run log | A provenance graph | A revision history | An event store |
 
 ---
 
