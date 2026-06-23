@@ -29,6 +29,8 @@ forward_vector: "I am complete as a technical artifact but I want to become full
 
 # Compressor Design
 
+![[Compressor Design — hero.png]]
+
 A compressor built from first principles in Max/MSP Gen~ as a pedagogical device that teaches DSP mechanics explicitly. The design choice at every step is to make the invisible visible.
 
 ## FILO Circular Buffer RMS
