@@ -44,7 +44,7 @@ Three legs, each a cascade of swappable methods, all speaking one interface — 
 | Method | Best for | Fails at |
 |---|---|---|
 | Authored Blender blocking (`newstory_bench`, on [[Shop/Blender]]) | clean single / dynamic poses, exact camera | multi-figure, extreme foreshortening |
-| Generate→extract (`gen_pose` + DWPose) | invented multi-character & dynamics | lying / occluded figures (DWPose drops them) |
+| Generate→extract (`gen_pose` + DWPose) | invented multi-character & dynamics | lying / occluded figures (DWPose drops them); opaque facing (front/back unknowable) |
 | OpenPose compositing (`compose_pose`) | placing a figure extraction can't get (a lying body) | manual; needs a base pose to build into |
 
 **2 · Render — structure → in-style figure(s).** Seam-B conditioned render (`render_shot`: OpenPose+depth → locked pen-flow via [[Shop/ComfyUI]]) + identity injection (**InstantID** — the Tier-1 inpaint / Tier-2 composite-regen cascade; the named next Shop Specialist). The look is locked ([[Steer the Generator]]); the controls are the dials.
@@ -61,6 +61,17 @@ I hold both *author-from-scratch* ([[Blocked, Not Prompted]]) and *generate-then
 
 ## Where my tools live
 The methods are proven in `Projects/BLUELINE/proofs/new-story/` (on the `feature/blueline-m3` branch) — `render_shot`, `gen_pose`, `compose_pose`, `validate_pose`, `newstory_bench`. They promote into [[The Shop]] as Specialists/recipes (InstantID first), with me holding the selection and the Maker holding me.
+
+## Field notes — the new-story dying-girl frame (2026-06-22)
+
+Not laws — *what worked here*, on one BLUELINE frame (a hero landing over a dying woman, crowd recoiling). The numbers and details will shift with the next frame; recorded so we don't re-derive them. Proofs on `feature/blueline-m3` (`proofs/new-story/`).
+
+- **Openpose-first paid off where the two figures had to relate.** The gen-extracted hero had an *opaque* facing — the model chose it, extraction couldn't disambiguate front/back, and it got mis-read ("away" vs "toward her"). Re-authoring his skeleton made the facing knowable by construction. Gen-first still suited the *crowd* (background figures relate to nothing). The tradeoff worth holding: gen-first buys rich, natural pose; openpose-first buys legible, authored facing. Reads as a deepening of [[Blocked, Not Prompted]] — author the geometry *so the facing is legible*.
+- **A lying figure obeyed its authored orientation once pose conditioning was strong (~0.95 here).** At the 0.6 default the render ignored the hand-placed skeleton's head-left/right. So the old "DWPose drops lying figures" pain was only half extraction — weak conditioning on the *authored* pose was the other half.
+- **The OpenPose limb colors seemed to carry front/back.** Warm right-side limbs on the image's left + frontal face keypoints read as camera-facing — that's how the kneeling hero came out looking *down at her* rather than away. (Worth testing again before trusting.)
+- **The composite mask read better grown from the skeleton** (head + torso + tapered limb capsules) than as a bounding ellipse — available because openpose-first means the skeleton is known.
+- **Staging consistency was what kept biting:** one mis-read facing ("the hero must face the woman's head") poisoned the whole composite until both principals were authored.
+- **Open edge (unsolved here):** pulling the layers together still reads a touch collage-like — depth and scale (atmospheric perspective, foreground-larger / background-smaller, contact shadows) are the next craft lever.
 
 ## Forward Vectors
 - **Build generative layering** — the render-leg fix; prove shared+unique context composites cleanly with an integrate-pass fuse.
