@@ -34,6 +34,8 @@ links:
 
 # Semantic Webcam
 
+![[Semantic Webcam — hero.png]]
+
 A live camera that renders you as typeset language. Your luminance chooses the
 character in each cell of a fixed grid; whole words typeset themselves into your
 mid-tones; your brightest highlights become white tiles with black letters punched
