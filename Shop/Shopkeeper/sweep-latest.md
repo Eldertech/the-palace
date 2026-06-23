@@ -1,6 +1,6 @@
 ---
 title: sweep-latest
-born: 2026-06-08
+born: 2026-06-23
 links:
   - { target: "[[Shopkeeper]]", type: connects-to, label: sweep-record-for }
 forward_vector: "I hold the most recent Shopkeeper discovery sweep, overwritten each run; I want to keep surfacing the worthy few for Loudon's attention."
@@ -8,57 +8,93 @@ forward_vector: "I hold the most recent Shopkeeper discovery sweep, overwritten 
 
 # Shopkeeper — Latest Sweep
 
-**Run:** 2026-06-08, ~10:30 UTC (every-other-morning steward cadence, shadow). Overwritten each run.
+**Run:** 2026-06-23, morning steward cadence (shadow). Overwritten each run.
 
-**One-line:** One candidate cleared the bar — **image/text-to-3D mesh generation** (Hunyuan3D-2), which opens the 3D-*asset* door the Roster has never had and Three.js can't fill. I probed it end-to-end from the sandbox and got a real, verifiable mesh back.
-
----
-
-## Dossier — cleared the bar
-
-### Image-to-3D mesh generation (Hunyuan3D-2)
-
-**What it is / the door it opens.** A diffusion model that turns a single image (or a text→image→3D chain) into a watertight-ish triangle mesh with geometry you can export as `.glb`. The Shop can already *make* 2D (FLUX, ComfyUI, Matplotlib…) and *render* 3D it's handed (Three.js), but it has never been able to *create* a 3D asset. This is the first half of the Maker's named **Blender / offline-photoreal-3D** gap — not the rendering half (that's still Blender/mac), but the **asset-generation** half. Natural pairing: Shopkeeper-generated mesh → Three.js displays it (the existing R3F/drei path), or → handed to Blender on the Mac for photoreal finishing.
-
-**The probe (real artifact, sandbox-only, tokenless).** Full chain ran in this Linux sandbox with no HF token, the same cloud pattern that put FLUX on the Roster:
-
-1. FLUX-schnell (anonymous Gradio API) → clean studio photo of a vintage ceramic teapot — `probes/2026-06-08-image-to-3d/01-input-teapot-flux-schnell.png`
-2. Hunyuan3D-2 `/shape_generation` (anonymous Gradio API) → mesh in **5.8 s server-side**: **77,519 vertices · 273,504 faces**, 4.2 MB `.glb` — `probes/2026-06-08-image-to-3d/02-output-mesh-hunyuan3d-2.glb`
-3. Verified with `trimesh` (loads clean, sane bounds ≈ 1.98 × 1.50 × 1.20 units) and rendered a 3-view point cloud — `probes/2026-06-08-image-to-3d/03-verify-mesh-multiview-pointcloud.png`. The reconstruction faithfully recovers body, spout, handle, lid knob, **and even the thin wire bail** — not a billboard, genuine closed-ish geometry.
-
-**Where it would live.** A new Specialist — provisional name **Hunyuan3D smith** (or a broader *Image-to-3D smith* slot, with Hunyuan3D-2 as the first-stocked engine and TRELLIS.2 / TripoSplat / Stable-Fast-3D as comparison candidates). Selection heuristic it would feed: *brief needs a 3D mesh/asset* → image-to-3D smith; *brief needs to display/animate existing 3D* → Three.js; *brief needs photoreal offline render* → still Blender (mac, unfilled).
-
-**Honest cost.**
-- *Host class:* effectively **cloud** via HF Spaces (free, tokenless today — Hunyuan3D-2 answered anonymous calls; Stable-Fast-3D **rejected** the anonymous call, likely ZeroGPU quota, so reachability is per-Space, not guaranteed). For reliability under load it wants either an HF token or a **mac handoff** (local GPU) — flag this exactly like the FLUX free-tier caveat.
-- *Output is shape-only here:* I ran the geometry stage; the texture stage is a second call. Mesh is not yet watertight (expected for the raw shape pass).
-- *License:* Hunyuan3D-2 ships under Tencent's community license — **needs a read before any monetized/Loudon-Live-published use.** Note for the entry.
-- *Footprint:* trivial on our side (we're a thin client); the GPU cost lives on the Space.
-
-**My read.** Yes — I'd bet a real brief on this, with one guardrail: confirm a reliable host (token'd HF or mac) before promising it for a Piece. As a Sketch/Study door it's already real today, and it's the cleanest fit to a named gap I've found. Recommend Loudon green-light a proper Specialist deposit + a small Comparison (Hunyuan3D-2 vs TRELLIS.2 vs TripoSplat) on one shared input to calibrate the slot — exactly the Flocking shoot-out pattern, one seed, many lenses.
+**One-line:** Commission executed — Image-to-3D Smith stub deposited; full four-engine shoot-out complete; Hi3DGen is the surprise standout (only watertight engine). Discovery sweep quiet: Stable Audio 3 is the one maintenance note worth acting on; nothing else clears the bar for a new Specialist.
 
 ---
 
-## Triaged out (logged so I don't re-chase)
+## Commission Execution (before discovery sweep)
 
-- **TRELLIS.2 (microsoft) / TripoSplat (VAST-AI) / Stable-Fast-3D / Pixal3D / InstantMesh** — same door as above; held as *comparison candidates* for the image-to-3D slot rather than separate findings.
-- **Magenta RealTime 2 (google)** — real-time/streaming music generation; a door Stable Audio Open (one-shot short clips) lacks. Interesting, but tflite/GPU + a streaming interaction model the sandbox can't honestly probe. **Needs a mac handoff to truly probe.** Re-look if a live-music brief appears.
-- **MMAudio** — video→synchronized audio (Foley). Niche vs current SFX coverage; revisit on a video-with-sound brief.
-- **Expressive/voice-clone TTS — Higgs-Audio v3, VoxCPM2, IndexTTS-2, OmniVoice, MisoTTS, ResembleAI Chatterbox** — could *improve on* Kokoro (emotion control, cloning), but Kokoro is chosen for being light/local and none of these clears that bar as a *replacement* yet. Candidate for a future narration Comparison, not a new door.
-- **Ideogram-4, Z-Image-Turbo, Qwen-Image, Cosmos3 text2image** — strong 2D image models; duplicate the FLUX/ComfyUI slot rather than beat it. No action.
-- **LTX-2.3 / Sulphur-2 / JoyAI-Echo / Wan-2.2 (video), gemma-4, DeepSeek-V4, Qwen3.6, Nemotron-3 (LLMs), PaddleOCR-VL, nemotron ASR** — outside the Shop's mediums or duplicative. No action.
+### ✓ Image-to-3D Smith — STUB deposited
+
+**What was done:**
+1. Ran the full four-engine calibration shoot-out on the shared teapot PNG (same subject as the 2026-06-08 probe). All four engines answered anonymous calls.
+2. Verified all outputs with trimesh (vertices, faces, watertight, bounds). Rendered a 4×4 comparison panel.
+3. Wrote `Shop/Image-to-3D Smith.md` as a **stub** (status: stub), per shadow posture.
+4. Added `Image-to-3D Smith` to `Shop/Maker/host-capability.json`.
+5. Full comparison report at `Shop/Shopkeeper/probes/2026-06-23-image-to-3d-shootout/comparison-report.md`.
+
+**Shoot-out results:**
+
+| Engine | Verts | Faces | Watertight | Size | Time | Output |
+|---|---|---|---|---|---|---|
+| **Hi3DGen** (Stable-X) | 271K | 543K | **YES** | 13MB | 26s | Triangle mesh GLB |
+| Hunyuan3D-2 (Tencent) | 135K | 489K | No | 7.5MB | 23s | Triangle mesh GLB |
+| TRELLIS.2 (Microsoft) | 91K | 98K | No | 4.6MB | 47s | Textured GLB |
+| TripoSplat (VAST-AI) | 262K pts | 0 faces | N/A | 18MB | ~20s | Gaussian splat PLY |
+
+**Key finding:** Hi3DGen is the **only watertight engine** — architecturally decisive for the Blender finishing path. The commission named Hunyuan3D-2 as first-stocked; I'm recommending Hi3DGen as primary. Defer to Loudon.
+
+**TripoSplat gotcha:** Gaussian splat output, NOT a triangle mesh. Different lane entirely — needs a splat renderer in Three.js; can't import as editable geometry in Blender. This distinction matters and is now documented in the Specialist entry.
+
+**Selection heuristic (proposed for Maker):**
+- Blender-bound → **Hi3DGen** (watertight)
+- Three.js display (lightweight textured) → **TRELLIS.2**
+- Fast sketch / iteration → **Hunyuan3D-2**
+- Novel-view synthesis only → **TripoSplat**
+
+**Loudon's decisions needed:**
+1. Approve the stub entry (or revise it before promoting to `alive`)
+2. Confirm Hi3DGen as primary or keep Hunyuan3D-2 per original commission
+3. Confirm whether TripoSplat earns its own Specialist entry (genuinely different output type)
+4. Designate first real job (Study-tier: Sketch → Three.js display, or Study → Blender import)
+5. License reads on all four engines before any Piece-tier job
 
 ---
 
-## Maintenance findings (light pass — note, don't fix)
+## Discovery Sweep (routine)
 
-- **Roster status: clean.** All 19 Specialist frontmatter `status` fields match the Maker's Roster taxonomy (17 alive, 1 stub = RNBO codebox~ smith, 1 deprecated = Midjourney). **No three-place drift.** The drift-watch discipline is holding.
-- **Audio-slot version currency:** the Roster's audio Specialist is **Stable Audio Open** (the older open model); **Stable Audio 3** (SA3 Medium / Small Music / Small SFX) is now live as an HF Space. Not palace-drift, but worth a dated note in [[Stable Audio Open]] that a newer generation exists, before the next audio brief.
-- **Never-run test plans (pre-existing, unchanged):** Maker's own `Shop/Maker/tests/test-plan.md` is still TODO / "Last run: never." VCV Patch Generator remains the only Specialist with a run test-plan + determinism proof. Not new rot, just the standing gap.
+### Maintenance findings
+
+**Stable Audio 3 is live (stabilityai/stable-audio-3) — action warranted.**
+The Roster's audio-generation Specialist is **Stable Audio Open** (the older open model). Stable Audio 3 ships three models: SA3 Medium (music, long-form), SA3 Small Music, SA3 Small SFX. The SA3 Small SFX is directly relevant: the current Stable Audio Open entry is limited to ~47s music clips; SA3 Small SFX is built explicitly for sound design work. Worth a dated gotcha note in [[Stable Audio Open]] and a future probe. *Not a new Specialist yet — just a version-currency flag.*
+
+### Triaged out
+
+**Qwen3-TTS (1978 likes, trending 20)** — strong new TTS with voice design + cloning, multilingual. Better expressive range than Kokoro. But Kokoro is on the Roster for being light, local, and free-forever, not for being best-in-class. Qwen3-TTS is cloud-only. Hold for a future narration Comparison if a Loudon Live brief needs it.
+
+**Zonos 2 (multimodalart/ZONOS2)** — expressive multilingual TTS with voice cloning. Same lane as Qwen3-TTS; same triage.
+
+**Wan2.2 (trending 56, 1813–2793 likes)** — image-to-video, very hot. The Shop has no motion Specialist that can take a still and animate it. Genuinely new door. However: probeable only from a mac-side session (GPU required for meaningful results). Hold for mac-side.
+
+**LTX-2.3 (Lightricks)** — text-to-video with audio, cinematic quality. Relevant to the Debrief Reel pattern. Same probe caveat as Wan2.2. Hold for mac-side.
+
+**Interactive / viz / plumbing**: nothing new that opens a door the current Roster lacks.
+
+### Not worth re-chasing
+
+- Z-Image-Turbo, Qwen-Image, SD3.5 — 2D image, duplicate FLUX slot
+- PRX-Pixel (Photoroom) — too narrow
+
+---
+
+## Roster maintenance (light pass)
+
+- **Status drift:** Clean. No change from 2026-06-08 sweep.
+- **Stable Audio Open:** needs a dated gotcha note flagging SA3 generation. Propose in TRICKSTER note; add when Loudon confirms.
+- **Never-run test plans:** unchanged — Maker's own test plan still TODO; VCV Patch Generator remains the only proven plan. Standing gap.
 
 ---
 
 ## Run accounting
 
-- **Token usage (approx):** ~55k this run (one wide HF trending scan was the bulk; probe + verify were cheap). Within a frugal discovery budget — discovery cost a fraction of a brief, as intended.
-- **Probes saved:** `Shop/Shopkeeper/probes/2026-06-08-image-to-3d/` (3 files).
-- **Posture:** shadow — proposed, deposited nothing, committed nothing. The Roster decision on the image-to-3D Specialist is Loudon's.
+**Token budget:** Scan used HF MCP (cheap). Probes used 4× anonymous Gradio API calls + trimesh verification (sandbox Python, $0). Well within the "discovery should cost a fraction of a brief" charter.
+
+**Files written this run:**
+- `Shop/Shopkeeper/probes/2026-06-23-image-to-3d-shootout/comparison-report.md`
+- `Shop/Shopkeeper/probes/2026-06-23-image-to-3d-shootout/comparison-panel.png`
+- `Shop/Shopkeeper/probes/2026-06-23-image-to-3d-shootout/leg*.glb` + multiview PNGs
+- `Shop/Image-to-3D Smith.md` (STUB)
+- `Shop/Maker/host-capability.json` (updated)
+- `Shop/Shopkeeper/sweep-latest.md` (this file)
