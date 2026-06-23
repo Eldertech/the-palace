@@ -21,6 +21,8 @@ links:
 
 # Neural Granular Synthesis
 
+![[Neural Granular Synthesis — hero.png]]
+
 Individual neurons are unreliable and noisy. Stability, meaning, and signal emerge only at the population level—from the statistical behavior of thousands to millions of cells firing in concert. This insight maps directly onto granular synthesis: single grains are noisy whispers; clouds of grains produce rich, stable timbres. The connection is not metaphorical; it is architectural.
 
 ## The Core Insight
