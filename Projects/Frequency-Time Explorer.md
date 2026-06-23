@@ -32,6 +32,8 @@ forward_vector: "I want to become the introductory tool every musician and sound
 
 # Frequency-Time Explorer
 
+![[Frequency-Time Explorer — hero.png]]
+
 A standalone web app for musicians and sound designers who are *already curious* — they've heard a flanger and wondered what it's actually doing, or noticed that a very short delay starts to color sound and don't know why. Not learners-from-zero. They have ears and tools. What they lack is the underlying frame.
 
 The tool's job is to give them ONE mental model that unifies a dozen things they thought were unrelated. After they've used it, they reach for the same instinct when they hear a comb-filtered hi-hat as when they hear a kick drum's pitch.
