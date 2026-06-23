@@ -73,23 +73,27 @@ function EntryRow({ entry, onSelect }) {
         whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis',
       }}>{entry.type ?? '--'}</span>
       <span style={{
+        display: 'flex', alignItems: 'center', gap: 6, minWidth: 0,
         color: 'var(--phosphor)', textShadow: 'var(--glow)',
-        whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis',
       }}>
         {/* Avatar only for entries that carry bundle art — a subtle "this one
-            is enriched" mark; no monogram clutter across the dense index. */}
+            is enriched" mark; no monogram clutter across the dense index. It
+            sits OUTSIDE the ellipsis box so its round frame + glow aren't
+            clipped; only the title text truncates. */}
         {entry.icon ? (
-          <span style={{ marginRight: 6 }}>
-            <EntryAvatar name={entry.title ?? entry.path} icon={entry.icon} size={15} />
-          </span>
+          <EntryAvatar name={entry.title ?? entry.path} icon={entry.icon} size={15} />
         ) : null}
-        {entry.title ?? entry.path}
-        {entry.has_bundle ? <span style={{
-          marginLeft: 6, color: 'var(--ansi-bright-cyan)', textShadow: 'var(--glow)', fontSize: 10,
-        }}>[+bundle]</span> : null}
-        {entry.has_active_handoff ? <span style={{
-          marginLeft: 6, color: 'var(--warn)', textShadow: 'var(--glow)', fontSize: 10,
-        }}>[handoff]</span> : null}
+        <span style={{
+          minWidth: 0, whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis',
+        }}>
+          {entry.title ?? entry.path}
+          {entry.has_bundle ? <span style={{
+            marginLeft: 6, color: 'var(--ansi-bright-cyan)', textShadow: 'var(--glow)', fontSize: 10,
+          }}>[+bundle]</span> : null}
+          {entry.has_active_handoff ? <span style={{
+            marginLeft: 6, color: 'var(--warn)', textShadow: 'var(--glow)', fontSize: 10,
+          }}>[handoff]</span> : null}
+        </span>
       </span>
       <span style={{
         color: 'var(--phosphor-dim)', textShadow: 'none', fontSize: 11,
