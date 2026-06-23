@@ -225,13 +225,13 @@ song *is* the project file: edit a clip's name/length/position and the board mov
 **Stop** (auto-rescan) or a manual SCAN — the board record becomes Ableton-native, which is the whole point
 of the clock track (Track III).
 
-**Devices — canonical home is the Ableton User Library** (`Presets/MIDI Effects/Max MIDI Effect/`):
-**transport** = the `BLUELINE - Transport` preset over `Imported/OSCSync.amxd` (loads `transport.js`, carries
-the `FPS` param); **scanner** = `Blueline ClipScan 1.0.amxd` (loads `scanner.js`). Both are thin wrappers —
-**all behavior is in the external `.js`**, the source of truth in this folder. Binary snapshots are committed
-beside the source for drag-in reproducibility: `OSCSync.amxd` (transport) and `Blueline ClipScan 1.0.amxd`
-(scanner). `autowatch` reloads the `.js`, so editing `transport.js` / `scanner.js` updates the live device
-with no re-import.
+**Devices — the official copies live here in the repo** (git-tracked; the source Loudon loads from his
+projects, so updates land in history). **transport** = `Blueline Transport 1.0.amxd` (loads `transport.js`,
+carries the `FPS` param); **scanner** = `Blueline ClipScan 1.0.amxd` (loads `scanner.js`). Both are thin
+wrappers — **all behavior is in the external `.js`** beside them in this folder; `autowatch` reloads the
+`.js`, so editing `transport.js` / `scanner.js` updates the live device with no re-import. *(Origin: the
+`BLUELINE - Transport` preset / `OSCSync.amxd` and the `Blueline ClipScan 1.0` device from the Ableton User
+Library — the repo is now canonical.)*
 
 ---
 
