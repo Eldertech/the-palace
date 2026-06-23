@@ -39,6 +39,20 @@
   .dot.live{background:var(--good)} .dot.play{background:var(--amber)}
   #foot{color:var(--dim);font-size:11px;margin-top:16px;letter-spacing:.04em}
   .det.ok{color:var(--good)} .det.no{color:var(--bad)}
+  .tracks{margin-top:16px}
+  .tracks .k{margin-bottom:6px}
+  .tl{position:relative;background:#000;border:1px solid var(--line);border-radius:8px;overflow:hidden;padding-bottom:8px}
+  .tl-ruler{position:relative;height:16px;border-bottom:1px solid var(--line);background:#101216}
+  .tl-tick{position:absolute;top:0;bottom:0;border-left:1px solid #23262d;font-size:8px;color:var(--dim);padding-left:2px;line-height:16px}
+  .sec-band{position:absolute;top:0;bottom:0;background:rgba(224,168,58,.12);border-left:1px solid var(--amber);font-size:8px;color:var(--amber);padding-left:3px;line-height:16px;white-space:nowrap;overflow:hidden}
+  .lane{margin-top:8px}
+  .lane .nm{font-size:10px;color:var(--dim);margin:0 0 2px 4px;white-space:nowrap}
+  .lane .nm b{color:var(--ink);font-size:11px}
+  .lane .track{position:relative;height:24px;background:#101216;border:1px solid var(--line);border-radius:4px;overflow:hidden}
+  .clip{position:absolute;top:2px;bottom:2px;border-radius:3px;font-size:9px;color:#0c0d10;padding:1px 4px;overflow:hidden;white-space:nowrap;opacity:.8;border:1px solid rgba(255,255,255,.14);line-height:18px}
+  .clip.active{opacity:1;outline:2px solid var(--ink);z-index:2}
+  .ph{position:absolute;top:0;bottom:0;width:2px;background:var(--amber);z-index:6;pointer-events:none;box-shadow:0 0 6px var(--amber)}
+  .tl-empty{padding:14px;color:var(--dim);font-size:12px}
 </style></head>
 <body><div class="wrap">
   <div class="top">
@@ -73,6 +87,15 @@
 
   <div class="strip" id="strip"></div>
 
+  <div class="tracks" id="tracks">
+    <div class="k">tracks — all scanners <span class="dim" id="tracksnote"></span></div>
+    <div class="tl" id="tl">
+      <div class="tl-ruler" id="ruler"></div>
+      <div class="lanes" id="lanes"><div class="tl-empty">no scanners yet — click scan on each track's device</div></div>
+      <div class="ph" id="ph" style="left:0"></div>
+    </div>
+  </div>
+
   <div class="bar">
     <span id="conn"><span class="dot" id="dot"></span>connecting…</span>
     <button class="btn" id="selfplay">▶ self-play (no Ableton)</button>
@@ -97,6 +120,7 @@ const EMBED = {"bible":{"title":"BLUELINE — M0 Previz · r4ng3r","tempo":120,"
 
 let SB=EMBED, BPB=4, fpb=12, tempo=120, fps=24, det=true;
 let curShot=-1, lastBeatKey=null;
+let lanes={}, laneOrder=[], sections={}, tlTotal=64, lastTb=0;  // multi-track timeline state (every scanner track)
 
 // ---- pose system (joint offsets in fractions of figure height h; feet at fx,fy; +y down) ----
 const POSES = {
@@ -223,9 +247,10 @@ function onBeat(bar,beat,playing){
     document.getElementById('whole').innerHTML=whole?'<span class="det ok">on whole frame ✓</span>':'<span class="det no">off ✗</span>';
     pulse();}
   // active shot
-  let idx=-1;for(let i=0;i<SB.shots.length;i++){const s=SB.shots[i],st=startTB(s),en=st+s.hold;if(tb>=st&&tb<en){idx=i;break;}if(tb>=st)idx=i;}
+  let idx=-1;for(let i=0;i<SB.shots.length;i++){if(tb>=startTB(SB.shots[i]))idx=i;else break;}  // active = latest clip whose START<=playhead (next clip supersedes; robust to overlapping clip lengths)
   if(tb<startTB(SB.shots[0]))idx=-1;
   if(idx!==curShot){curShot=idx;renderActive(idx);}
+  updateTracksPlayhead(tb);
 }
 let pulseT=null;
 function pulse(){const p=document.getElementById('pulse');p.style.borderWidth='5px';clearTimeout(pulseT);pulseT=setTimeout(()=>p.style.borderWidth='0px',90);}
@@ -233,7 +258,8 @@ function pulse(){const p=document.getElementById('pulse');p.style.borderWidth='5
 // ---- storyboard from a Live clip scan: clip name + color + start + length -> cards ----
 let scanBuf=null, scanCount=0;
 function cssFromInt(v){ if(v==null||isNaN(v))return null; v=(v|0)&0xFFFFFF; return '#'+('000000'+v.toString(16)).slice(-6); }
-function startScan(count){ scanBuf=[]; scanCount=count||0; setConn('live','● scanning '+(count||'?')+' clips from Live…'); }
+const TRACK=(new URLSearchParams(location.search).get('track')||'board');  // which Live track this view renders (?track=Name)
+function startScan(count){ scanBuf=[]; scanCount=count||0; setConn('live','● scanning '+(count||'?')+' clips from "'+TRACK+'"…'); }
 function addScanClip(idx,start,length,color,name){
   if(!scanBuf) scanBuf=[];
   scanBuf.push({start:+start,length:+length,color:+color,name:String(name==null?'':name)});
@@ -252,9 +278,48 @@ function finishScan(){
   scanBuf.sort((a,b)=>a.start-b.start);
   SB={ bible:SB.bible, shots: scanBuf.map(clipToShot) };
   curShot=-1; lastBeatKey=null; buildStrip(); renderActive(-1);
-  document.getElementById('srcnote').textContent='storyboard built from '+SB.shots.length+' Live clips — play Ableton to drive';
+  document.getElementById('srcnote').textContent='storyboard built from '+SB.shots.length+' Live clips on "'+TRACK+'" — play Ableton to drive';
   setConn('live','● '+SB.shots.length+' clips scanned from Live');
   scanBuf=null;
+}
+
+// ---- multi-track timeline: every scanner track as a horizontal lane (auto-discovered) ----
+function laneScan(ns,verb,args){
+  if(verb==='scan'){ if(!lanes[ns]){lanes[ns]={clips:[],buf:[],activeIdx:-2,els:[]};laneOrder.push(ns);} lanes[ns].buf=[]; }
+  else if(verb==='clip'){ if(lanes[ns]) lanes[ns].buf.push({start:+args[1],length:+args[2],color:+args[3],name:String(args[4]==null?'':args[4])}); }
+  else if(verb==='scan_end'){ if(lanes[ns]){ lanes[ns].clips=lanes[ns].buf.slice().sort((a,b)=>a.start-b.start); lanes[ns].buf=[]; relayoutTracks(); } }
+}
+function noteSection(name,startBar,lenBars){ if(name==null||name==='')return; sections[name]={start:(startBar-1)*BPB,len:(lenBars||0)*BPB}; relayoutTracks(); }
+function tracksExtent(){ let mx=16*BPB;
+  laneOrder.forEach(ns=>lanes[ns].clips.forEach(c=>{ if(c.start>mx)mx=c.start; }));
+  for(const k in sections){ const e=sections[k].start+sections[k].len; if(e>mx)mx=e; }
+  if(lastTb>mx)mx=lastTb;
+  return Math.ceil((mx+BPB*2)/BPB)*BPB; }                 // round up to a whole bar, with a small tail
+function pct(beats){ return 100*beats/tlTotal; }
+function relayoutTracks(){ tlTotal=tracksExtent();
+  const ruler=document.getElementById('ruler'); ruler.innerHTML='';
+  const totalBars=Math.round(tlTotal/BPB), step=totalBars>48?8:(totalBars>20?4:2);
+  for(let b=0;b<totalBars;b+=step){ const t=document.createElement('div'); t.className='tl-tick'; t.style.left=pct(b*BPB)+'%'; t.textContent=(b+1); ruler.appendChild(t); }
+  for(const k in sections){ const s=sections[k],d=document.createElement('div'); d.className='sec-band'; d.style.left=pct(s.start)+'%'; d.style.width=Math.max(0.5,pct(s.len))+'%'; d.title=k; d.textContent=k; ruler.appendChild(d); }
+  const wrap=document.getElementById('lanes'); wrap.innerHTML='';
+  if(!laneOrder.length){ wrap.innerHTML='<div class="tl-empty">no scanners yet — click scan on each track\'s device</div>'; document.getElementById('tracksnote').textContent=''; return; }
+  laneOrder.forEach(ns=>{ const L=lanes[ns],lane=document.createElement('div'); lane.className='lane';
+    const nm=document.createElement('div'); nm.className='nm'; nm.innerHTML='<b>'+ns+'</b> · '+L.clips.length+' clip'+(L.clips.length===1?'':'s'); lane.appendChild(nm);
+    const track=document.createElement('div'); track.className='track'; L.els=[];
+    L.clips.forEach((c,i)=>{ const next=(i+1<L.clips.length)?L.clips[i+1].start:tlTotal,el=document.createElement('div'); el.className='clip';
+      el.style.left=pct(c.start)+'%'; el.style.width=Math.max(0.4,pct(next-c.start))+'%';
+      const col=cssFromInt(c.color); if(col)el.style.background=col;
+      el.textContent=c.name; el.title=c.name+'  (bar '+(Math.floor(c.start/BPB)+1)+', start '+c.start+'b)';
+      track.appendChild(el); L.els.push(el); });
+    lane.appendChild(track); wrap.appendChild(lane); L.activeIdx=-2; });
+  document.getElementById('tracksnote').textContent='· '+laneOrder.length+' track'+(laneOrder.length===1?'':'s');
+}
+function updateTracksPlayhead(tb){ lastTb=tb;
+  if(tb>tlTotal) relayoutTracks();                        // extend if the playhead ran past the end
+  const ph=document.getElementById('ph'); if(ph)ph.style.left=Math.min(100,Math.max(0,pct(tb)))+'%';
+  laneOrder.forEach(ns=>{ const L=lanes[ns]; let idx=-1;
+    for(let i=0;i<L.clips.length;i++){ if(tb>=L.clips[i].start)idx=i; else break; }
+    if(idx!==L.activeIdx){ if(L.els[L.activeIdx])L.els[L.activeIdx].classList.remove('active'); if(L.els[idx])L.els[idx].classList.add('active'); L.activeIdx=idx; } });
 }
 
 // ---- transport source: relay WS, with self-play fallback ----
@@ -266,11 +331,14 @@ function connect(){
   ws.onmessage=ev=>{const m=JSON.parse(ev.data);
     if(m.address==='/transport/bible')applyBible(m.args[0],m.args[1],m.args[2]);
     else if(m.address==='/transport/beat'){setConn('play','● transport playing');onBeat(m.args[0],m.args[1],m.args[2]);}
-    else if(m.address==='/transport/section')document.getElementById('section').textContent=(m.args[0]||'').toUpperCase();  // markers→clips: name+start+length
+    else if(m.address==='/transport/section'){document.getElementById('section').textContent=(m.args[0]||'').toUpperCase();noteSection(m.args[0],m.args[1],m.args[2]);}  // locator: name + start_bar + length_bars
     // ---- storyboard from Live MIDI clips on the sync track (the marker-replacement) ----
-    else if(m.address==='/board/scan')     startScan(m.args[0]);
-    else if(m.address==='/board/clip')      addScanClip(m.args[0],m.args[1],m.args[2],m.args[3],m.args[4]);
-    else if(m.address==='/board/scan_end')  finishScan();};
+    else { const p=m.address.split('/'), ns=p[1], verb=p[2];   // /<track>/scan|clip|scan_end -- ANY track
+      if(verb==='scan'||verb==='clip'||verb==='scan_end'){
+        if(ns===TRACK){ if(verb==='scan')startScan(m.args[0]); else if(verb==='clip')addScanClip(m.args[0],m.args[1],m.args[2],m.args[3],m.args[4]); else finishScan(); }  // main storyboard (top)
+        laneScan(ns,verb,m.args);                                  // every track -> bottom lanes
+      }
+    }};
 }
 function setConn(state,txt){const d=document.getElementById('dot');d.className='dot'+(state==='live'?' live':state==='play'?' play':'');document.getElementById('conn').lastChild.textContent=' '+txt;}
 
