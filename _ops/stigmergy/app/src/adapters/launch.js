@@ -1,5 +1,6 @@
 // src/adapters/launch.js — POST a prompt to open an interactive Claude Code
-// session in a real terminal (the server spawns Terminal.app via osascript).
+// session in a real terminal (the server stages a launcher and opens it in
+// Terminal.app via `open`/LaunchServices — no Automation permission needed).
 // The client side of /api/launch. On any failure the UI keeps "copy prompt" as
 // the fallback; a 501 (non-macOS) comes back with supported:false so the UI can
 // say so plainly.
