@@ -32,6 +32,8 @@ forward_vector: "I will keep teaching the SFZ-region-to-phoneme map as the frien
 
 # Talking Keyboard
 
+![[Talking Keyboard — hero.png]]
+
 A piano-range SFZ multisample (88 notes, A0–C8) where each note speaks its own MIDI note name through Kokoro-ONNX TTS, with four velocity layers mapped to four distinct voices. Pressing C4 at low velocity says "C four" in `af_nova`'s gentle voice; at high velocity, `am_michael`'s bold voice. Pressing F#5 at mid velocity says "F sharp five" in `bf_emma`'s British female voice.
 
 Phase 1 of [[Generative Sample Libraries]]; first realized deliverable of that project. Built 2026-05-02 as the proof-of-concept for the chat-driven sample library pipeline.
