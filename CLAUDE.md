@@ -115,7 +115,7 @@ These verbs ARE invocations. When Loudon uses one as an instruction — bare wor
 
 | Say (any of) | Ceremony — in one line | Full Spec |
 |---|---|---|
-| "deposit", "let's deposit", "add this to the palace", "memorialize this" | **Deposit** — draft entry/edits from the conversation; show before writing; record to [[Deposit Archive]] | [[Deposit Ceremony]] |
+| "deposit", "let's deposit", "add this to the palace", "memorialize this" | **Deposit** — draft entry/edits from the conversation; show before writing; the commit *is* the record (`Palace-Kind: deposit` + synthesis in the body) — the [[Deposit Archive]] is frozen, no row | [[Deposit Ceremony]] |
 | "baton", "pass the baton", "baton this", "baton it to [surface]" | **Baton** — compress the live session into a baton (a file) the next Claude catches and runs with; delete on pickup, git is the archive | [[Baton Ceremony]] |
 | "harvest", "let's harvest" | **Harvest** — search past work, surface deposit candidates to a working list | [[Harvest Ceremony]] |
 | "weave", "let's weave" | **Weave** — Swarm Weave: map build → parallel audit → synthesis; topology, unsung paths, new links | [[Weave Ceremony]] |
