@@ -28,6 +28,8 @@ forward_vector: "I am complete as an artifact but want to become documented as a
 
 # Preset Oracle
 
+![[Preset Oracle — hero.png]]
+
 An interactive synthesizer preset challenger that generates random creative constraints, framing synthesis as philosophical inquiry and art practice. Not a tutorial or a guide — an oracle. It presents challenges; you interpret them.
 
 ## Architecture
