@@ -44,6 +44,8 @@ forward_vector: "I will become a synthesizer that makes audible the optical prop
 
 # Crystal Synthesizer
 
+![[Crystal Synthesizer — hero.png]]
+
 A synthesizer whose partial structure is derived directly from the vibrational phonon modes of crystalline lattices. Instead of harmonic series, FM spectra, or additive synthesis tables, a crystal synthesizer uses the actual mode frequencies and damping characteristics that emerge from real crystal physics.
 
 The foundational insight: crystals are resonant systems. Their characteristic vibrations—phonons propagating through the lattice—obey quantized modal equations determined entirely by their 3D periodicity and atomic masses. Transpose these frequencies from THz (where crystals vibrate) into the audio range by scaling, and the phonon mode structure becomes an instrument's timbre palette. The optical properties that make crystals beautiful (birefringence, dispersion, pleochroism, fluorescence) emerge from the same anisotropic symmetries that shape the vibrational modes. Sonic and optical properties are not separate—they are different observational projections of the same underlying crystal structure.
