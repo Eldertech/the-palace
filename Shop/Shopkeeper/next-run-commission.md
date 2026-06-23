@@ -8,7 +8,7 @@ forward_vector: "I carry the approved commission for an Image-to-3D Specialist; 
 
 # Next-Run Commission — Image-to-3D Specialist
 
-**Status:** APPROVED by Loudon 2026-06-08 (in the 2026-06-08 sweep conversation). Execute on the next scheduled Shopkeeper run, *before* the routine discovery sweep.
+**Status:** EXECUTED 2026-06-23 (Shopkeeper morning sweep). Stub entry deposited at `Shop/Image-to-3D Smith.md`. Full shoot-out in `probes/2026-06-23-image-to-3d-shootout/`. Five decisions posted to TRICKSTER board (id: e2c20da5-7677-4008-add2-4164a7af1829). This file can be deleted once Loudon has reviewed the decisions.
 
 This is a durable baton: `sweep-latest.md` is overwritten each run, so the approval lives here. Delete or mark this file done once the commission is complete.
 
