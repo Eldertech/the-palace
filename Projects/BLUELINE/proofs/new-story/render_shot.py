@@ -38,8 +38,11 @@ SHOTS = {
          "prompt": "extreme low angle from the ground looking straight up, a figure plummeting downward fast toward the viewer, long coat flaring violently, against a smoke-and-fire sky"},
   "05": {"name": "impact-landing-shockwave", "size": (1216, 832), "pose": "needs",
          "prompt": "a figure landing hard in a low crouch on cracked asphalt, the pavement shattering in a radial ring around him, smoke and dust blasting outward from the impact, a woman's limp body on the ground nearby, a crowd recoiling in the back"},
-  "06": {"name": "the-kiss-blood-sweat", "size": (832, 1216), "pose": "needs",
-         "prompt": "intimate extreme close-up, a grieving figure cradling a woman's head in both hands, kissing her lips, drops of blood and sweat falling from his face onto hers, anguish"},
+  # 2026-06-23 REFRAMED (Loudon): the two-figure kiss is the multi-subject hard case (prompt-only blended to a
+  # single face). So we put the camera at the HERO'S EYES — POV looking straight down at her — and the kiss
+  # becomes the unseen thing just past the bottom edge. The "failure" (one expressive face) IS the shot.
+  "06": {"name": "the-kiss-pov", "size": (832, 1216), "pose": None,
+         "prompt": "extreme close-up of a dying woman's face seen from directly above, the grieving hero's point of view looking straight down at her, her head tilted back on the ground, eyes closed, lips parted, hair splayed out, drops of blood and sweat falling down toward her face from above, raw anguish, the unseen kiss just out of frame"},
 }
 
 def req(method, path, data=None):
