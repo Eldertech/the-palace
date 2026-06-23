@@ -1,7 +1,7 @@
 {
-  "iteration": 6,
-  "last_active": "2026-06-07T16:31:46.896Z",
-  "last_read_cursor": "crystal-synth-steward-016",
+  "iteration": 7,
+  "last_active": "2026-06-23T12:50:40.000Z",
+  "last_read_cursor": "crystal-synth-steward-018",
   "health": {
     "context_pct": null,
     "avg_output_tokens_last_5": null,

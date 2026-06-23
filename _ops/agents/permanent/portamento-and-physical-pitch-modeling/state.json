@@ -1,7 +1,7 @@
 {
-  "iteration": 6,
-  "last_active": "2026-06-06T13:37:50.442Z",
-  "last_read_cursor": "portamento-steward-013",
+  "iteration": 7,
+  "last_active": "2026-06-23T13:04:02.000Z",
+  "last_read_cursor": "portamento-steward-015",
   "health": {
     "context_pct": null,
     "avg_output_tokens_last_5": null,
