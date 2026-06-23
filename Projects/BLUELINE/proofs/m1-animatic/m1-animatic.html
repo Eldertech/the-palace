@@ -362,7 +362,7 @@ function onBeat(bar,beat){const tb=(bar-1)*BPB+(beat-1),frame=tb*fpb;
   const bi=Math.floor(beat+1e-6),key=bar*1000+bi;
   if(key!==lastBeatKey){lastBeatKey=key;const tbi=(bar-1)*BPB+(bi-1),fr=tbi*fpb,whole=Math.abs(fr-Math.round(fr))<1e-9;
     $('whole').innerHTML=whole?'<span class="det ok">on whole frame ✓</span>':'<span class="det no">off ✗</span>';pulse();}
-  let idx=-1;for(let i=0;i<SB.shots.length;i++){const s=SB.shots[i],st=startTB(s),en=st+s.hold;if(tb>=st&&tb<en){idx=i;break;}if(tb>=st)idx=i;}
+  let idx=-1;for(let i=0;i<SB.shots.length;i++){if(tb>=startTB(SB.shots[i]))idx=i;else break;}  // active = latest clip whose START<=playhead (next clip supersedes; robust to overlapping clip lengths)
   if(tb<startTB(SB.shots[0]))idx=-1;
   if(idx!==curShot){curShot=idx;renderActive(idx);}}
 let pulseT=null;function pulse(){const p=$('pulse');p.style.borderWidth='5px';clearTimeout(pulseT);pulseT=setTimeout(()=>p.style.borderWidth='0px',90);}
@@ -375,8 +375,9 @@ function clipToShot(c,i){const bar=Math.floor(c.start/BPB)+1,beat=(c.start%BPB)+
     flow:/draw|release|drop|flow|wind|run|fly/i.test(c.name||''),action:label,color:cssFromInt(c.color),fromClip:true};}
 function finishScan(){if(!scanBuf||!scanBuf.length){scanBuf=null;return;}scanBuf.sort((a,b)=>a.start-b.start);
   SB={bible:SB.bible,shots:scanBuf.map(clipToShot)};curShot=-1;lastBeatKey=null;buildStrip();renderActive(-1);
-  $('srcnote').textContent='storyboard built from '+SB.shots.length+' Live clips';scanBuf=null;}
+  $('srcnote').textContent='storyboard built from '+SB.shots.length+' Live clips on "'+TRACK+'"';scanBuf=null;}
 
+const TRACK=(new URLSearchParams(location.search).get('track')||'board');  // which Live track this view renders (?track=Name)
 function connect(){let ws;try{ws=new WebSocket("ws://"+location.host+"/ws");}catch(e){setConn(false,'no relay (use self-play)');return;}
   ws.onopen=()=>setConn('live','● connected to relay — waiting for transport…');
   ws.onclose=()=>setConn(false,'○ relay disconnected — use self-play');
@@ -385,9 +386,9 @@ function connect(){let ws;try{ws=new WebSocket("ws://"+location.host+"/ws");}cat
     if(m.address==='/transport/bible')applyBible(m.args[0],m.args[1],m.args[2]);
     else if(m.address==='/transport/beat'){setConn('play','● transport playing');onBeat(m.args[0],m.args[1]);}
     else if(m.address==='/transport/section')$('section').textContent=(m.args[0]||'').toUpperCase();
-    else if(m.address==='/board/scan'){scanBuf=[];scanCount=m.args[0]||0;setConn('live','● scanning clips…');}
-    else if(m.address==='/board/clip'){if(!scanBuf)scanBuf=[];scanBuf.push({start:+m.args[1],length:+m.args[2],color:+m.args[3],name:String(m.args[4]==null?'':m.args[4])});if(scanCount&&scanBuf.length>=scanCount)finishScan();}
-    else if(m.address==='/board/scan_end')finishScan();};}
+    else if(m.address==='/'+TRACK+'/scan'){scanBuf=[];scanCount=m.args[0]||0;setConn('live','● scanning clips…');}
+    else if(m.address==='/'+TRACK+'/clip'){if(!scanBuf)scanBuf=[];scanBuf.push({start:+m.args[1],length:+m.args[2],color:+m.args[3],name:String(m.args[4]==null?'':m.args[4])});if(scanCount&&scanBuf.length>=scanCount)finishScan();}
+    else if(m.address==='/'+TRACK+'/scan_end')finishScan();};}
 function setConn(state,txt){const d=$('dot');d.className='dot'+(state==='live'?' live':state==='play'?' play':'');$('conn').lastChild.textContent=' '+txt;}
 
 let selfTimer=null,selfTB=0;

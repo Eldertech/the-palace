@@ -16,6 +16,8 @@ from osclib import decode
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 PREVIZ = os.path.join(HERE, "..", "m0-previz")   # M0 previz client lives one folder over
+M1 = os.path.join(HERE, "..", "m1-animatic")     # M1 animatic register player
+M2 = os.path.join(HERE, "..", "m2-motion-comic") # M2 motion-comic register player
 OSC_PORT, HTTP_PORT = 9001, 8770
 clients = set()
 
@@ -38,6 +40,12 @@ async def previz(request):
 async def storyboard(request):
     return web.FileResponse(os.path.join(PREVIZ, "storyboard.json"))
 
+async def m1(request):
+    return web.FileResponse(os.path.join(M1, "m1-animatic.html"))
+
+async def m2(request):
+    return web.FileResponse(os.path.join(M2, "m2-motion-comic.html"))
+
 def broadcast(obj):
     data = json.dumps(obj)
     for ws in list(clients):
@@ -57,12 +65,14 @@ async def main():
     app.router.add_get("/", index)
     app.router.add_get("/previz", previz)
     app.router.add_get("/storyboard.json", storyboard)
+    app.router.add_get("/m1", m1)
+    app.router.add_get("/m2", m2)
     app.router.add_get("/ws", ws_handler)
     runner = web.AppRunner(app); await runner.setup()
     await web.TCPSite(runner, "127.0.0.1", HTTP_PORT).start()
     loop = asyncio.get_running_loop()
     await loop.create_datagram_endpoint(lambda: OSCProto(), local_addr=("127.0.0.1", OSC_PORT))
-    print(f"relay up — clock http://127.0.0.1:{HTTP_PORT}/  ·  previz http://127.0.0.1:{HTTP_PORT}/previz  ·  WS /ws  ·  OSC/UDP :{OSC_PORT}", flush=True)
+    print(f"relay up — clock http://127.0.0.1:{HTTP_PORT}/  ·  previz /previz  ·  m1 /m1  ·  m2 /m2  ·  WS /ws  ·  OSC/UDP :{OSC_PORT}", flush=True)
     await asyncio.Event().wait()
 
 if __name__ == "__main__":

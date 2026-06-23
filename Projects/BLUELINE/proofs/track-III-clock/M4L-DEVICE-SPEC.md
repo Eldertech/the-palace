@@ -4,9 +4,23 @@
 > path runs perfectly with the patcher edit window closed (the `[qmetro]` + `valid()` self-heal fix holds,
 > bug retired). **Section addressing has moved off Ableton locators/markers and onto the device's own-track
 > MIDI clips** (§1, §2b): a clip is a named *span* (name + start + length), so sections are durations, not
-> points. This spec is the as-built/as-designed reference. **Wire follow-up:** the OSC message renamed
-> `/transport/locator` → `/transport/section`, so the harness (`transport_sim.py`, `clock_client.html`)
-> needs the matching rename before the next live run; the relay is format-agnostic and unaffected.
+> points. This spec is the as-built/as-designed reference. **Harness wire rename done** (commit `e4f4292`):
+> `transport_sim.py` + `clock_client.html` emit/parse `/transport/section`, matching the live device.
+> **The as-built JS now lives alongside as `transport.js`** — copy that file into `[js transport.js]`
+> rather than pasting from the §2b block: a dropped `//` and three em-dashes pasted from this markdown
+> silently broke the live copy on 2026-06-23 (regex-literal SyntaxError → `no function bang`). The file
+> is the safe source; the §2b block below is documentation kept byte-identical to it.
+
+> **Architecture refinement (2026-06-23, live-test pending):** the transport's section stream now
+> reads **arrangement locators (`cue_points`)**, not the device's own-track MIDI clips. Rationale:
+> locators are **song-global** (they belong to the timeline, not a track) — the right fit for the
+> *singleton* transport — while per-track MIDI clips are read by the separate **SCANNER** device
+> (`scanner.js`), one per observed track. This splits what the earlier markers→clips decision
+> conflated, and makes the transport **placement-agnostic** (drop it on any track). The OSC wire is
+> unchanged (`/transport/section name start_bar length_bars`); only the source changed, so nothing
+> downstream changes. The committed `transport.js` is the canonical marker-based source; the §2b
+> listing below still shows the prior clip-based body and will be re-synced once the marker source is
+> live-validated against a Set with locators.
 
 **What you're building:** a small M4L device that reads Ableton Live's transport and emits the
 BLUELINE OSC transport contract to the local relay, so the browser clock client (and, later, the
@@ -103,7 +117,7 @@ Notes:
   followed by the args and it emits a correct OSC packet. That is exactly what `transport.js` outputs.
 - Put the FPS `[live.numbox]` range at 1–120, default 24.
 
-### 2b. `transport.js` (paste into a `[js transport.js]` object; save next to the .amxd)
+### 2b. `transport.js` (copy the committed `transport.js` in this folder — preferred; or paste into a `[js transport.js]` object and save next to the .amxd)
 
 **Paste discipline (avoid the `no function bang` bug):** Max's old JS engine can fail to compile if the
 source has **non-ASCII characters** (em-dashes, smart quotes) or a stray markdown ` ``` ` fence — and a
@@ -120,13 +134,13 @@ outlets = 1;
 
 var FPS = 24;                 // the LOCKED render fps (set from the UI: message "fps 24")
 var api = null;               // the ONE persistent LiveAPI on live_set
-var track = null;             // the device's OWN track — its MIDI clips are the sections
+var track = null;             // the device's OWN track -- its MIDI clips are the sections
 var sigN = 4;                 // cached beats-per-bar (refreshed in refresh())
 var sections = [];            // cached [[start_bar, length_bars, name], ...]  (markers->clips)
 var lastSection = -1;         // index of the section the play-head is currently inside
 
 // validity-guarded LiveAPI: created once, re-created if it ever goes invalid. (api.id==0
-// means "no valid object" — happens if it's touched before the device is fully live.)
+// means "no valid object" -- happens if it's touched before the device is fully live.)
 function valid() { return api && api.id != 0; }
 function init() {                                   // call from [live.thisdevice]
     api = new LiveAPI(null, "live_set");
@@ -139,7 +153,7 @@ function refresh() {          // cache signature + this track's arrangement clip
     if (!track || track.id == 0) track = new LiveAPI(null, "this_device canonical_parent");
     sigN = api.get("signature_numerator")[0];      // assumes x/4 meter
     sections = [];
-    var clips = track.get("arrangement_clips");    // ["id", id1, "id", id2, ...] — named MIDI clips
+    var clips = track.get("arrangement_clips");    // ["id", id1, "id", id2, ...] -- named MIDI clips
     for (var i = 1; i < clips.length; i += 2) {
         var c = new LiveAPI(null, "id " + clips[i]);   // created only here, not per-tick
         var startBar = Math.floor(c.get("start_time")[0] / sigN) + 1;  // 1-indexed start bar
