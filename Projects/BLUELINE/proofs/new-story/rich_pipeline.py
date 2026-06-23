@@ -20,7 +20,7 @@ Outputs -> layers/rich_composite.png (sharp, rich) + rich_final_d{55,65}.png (st
 """
 import os, json, argparse
 import numpy as np, cv2
-from PIL import Image, ImageDraw, ImageFilter
+from PIL import Image, ImageDraw, ImageFilter, ImageEnhance
 import render_shot as RS
 import compose_pose as CP
 import regen_girl as RG
@@ -35,14 +35,15 @@ GP = os.path.join(HERE, "genpose"); LAY = os.path.join(HERE, "layers")
 W, H = 1216, 832
 RICH = ("dramatic cinematic comic illustration, full color, strong directional key light and deep volumetric "
         "shadow, rich mid-tones, detailed rendering, sense of depth")
-PLATE = "on a flat plain neutral grey backdrop, simple studio background"
+PLATE = "down on flat cracked asphalt street pavement, at ground level, plain ground"   # NOT a studio plate (that read as a table)
+NO_FURNITURE = "table, bed, bench, platform, slab, bier, altar, raised surface, furniture, stage"
 STYLE = json.load(open(os.path.join(HERE, "..", "style-lock", "locked-style.json")))["style"]
 
 FIGS = [
   {"name": "hero",  "kp": AH.HERO,                 "z": 1, "ps": 0.9,  "depth": (0.88, 0.0, -0.03),
-   "prompt": "a powerful man in a long coat kneeling low, seen from the front, head bowed looking down, reaching one hand forward and down, grief"},
+   "prompt": "a powerful man in a long coat kneeling low on the street, seen from the front, head bowed looking down, reaching one hand forward and down, grief"},
   {"name": "woman", "kp": RG.mirror(RG.GIRL_LEFT), "z": 2, "ps": 0.95, "depth": (1.0, -0.10, 0.02),
-   "prompt": "a young woman lying on her back collapsed, her head at the right and feet to the left, one arm reaching weakly upward, dark hair spilling"},
+   "prompt": "a young woman fallen flat on her back on the cracked asphalt ground, collapsed in the street, lying directly on the pavement at ground level, head at the right and feet to the left, one arm reaching weakly upward, dark hair spilling on the ground"},
 ]
 
 def author_op(kp_norm, name):
@@ -53,7 +54,7 @@ def author_op(kp_norm, name):
 def graph_rich(prompt, seed, prefix, pose_name, ps):
     g = RS.graph(prompt, W, H, seed, prefix, pose_name=pose_name)
     g["ap_pose"]["inputs"]["strength"] = ps; g["ap_pose"]["inputs"]["end_percent"] = 0.9
-    g["neg"]["inputs"]["text"] = "lowres, deformed, extra limbs, two heads, blurry, watermark, text"  # NOT the pen-flow neg
+    g["neg"]["inputs"]["text"] = f"lowres, deformed, extra limbs, two heads, blurry, watermark, text, {NO_FURNITURE}"
     return g
 
 def grabcut_sharp(render_pil, kp_px, scale=1.12):
@@ -111,7 +112,7 @@ def g_stylize(prompt, init, pose, seed, prefix, denoise):
       "pimg": {"class_type": "LoadImage", "inputs": {"image": pose}},
       "cn": {"class_type": "ControlNetLoader", "inputs": {"control_net_name": RS.CN_POSE}},
       "ap": {"class_type": "ControlNetApplyAdvanced", "inputs": {"positive": ["pos", 0], "negative": ["neg", 0],
-             "control_net": ["cn", 0], "image": ["pimg", 0], "strength": 0.55, "start_percent": 0.0, "end_percent": 0.7}},
+             "control_net": ["cn", 0], "image": ["pimg", 0], "strength": 0.85, "start_percent": 0.0, "end_percent": 0.9}},  # pose held FIRM through the high-denoise stylize (else the hero drifts/faces wrong)
       "enc": {"class_type": "VAEEncode", "inputs": {"pixels": ["init", 0], "vae": ["ckpt", 2]}},
       "samp": {"class_type": "KSampler", "inputs": {"model": ["ckpt", 0], "positive": ["ap", 0], "negative": ["ap", 1],
                "latent_image": ["enc", 0], "seed": seed, "steps": 30, "cfg": 6.5, "sampler_name": "dpmpp_2m", "scheduler": "karras", "denoise": denoise}},
@@ -131,8 +132,10 @@ def main():
 
     # 2) RICH crowd bg
     bg_p = os.path.join(LAY, "rich_crowd_bg.png")
-    BK.run(RS.graph(f"a crowd of shocked figures recoiling in a burning city street, {RICH}, no central figure", W, H, 2025, "rich_bg"), bg_p)
-    stage = haze(Image.open(bg_p).convert("RGB").resize((W, H)))
+    crowd = ("a dense crowd of shocked onlookers pressing in close and encircling the scene on all sides in a "
+             "burning city street, surrounding a clearing, packed figures ringing the space, high angle, recoiling, no central figure")
+    BK.run(RS.graph(f"{crowd}, {RICH}", W, H, 2025, "rich_bg"), bg_p)
+    stage = haze(Image.open(bg_p).convert("RGB").resize((W, H)), strength=0.32)   # lighter haze: keep the crowd present/around, not a distant backdrop
     print("  [rich] crowd bg + haze", flush=True)
 
     # 3) SEGMENT SHARP + 4) COMPOSITE depth, back->front
@@ -149,14 +152,18 @@ def main():
     comp_p = os.path.join(LAY, "rich_composite.png"); stage.save(comp_p)
     print("  [composite] sharp + depth ->", os.path.basename(comp_p), flush=True)
 
-    # 5) STYLIZE LAST -> pen-flow
+    # 5) STYLIZE LAST -> pen-flow. DESATURATE the rich composite first (its value structure carries the
+    # depth) then img2img at HIGH denoise so the model re-draws in the sparse ink idiom — validated on the
+    # pod: desat + ~0.8 reaches pen-flow AND keeps the crowd/staging (0.9 lost the crowd; color@<=0.65 stayed color).
     op = combined_op(kps, "rich_combined_op")
-    comp_up = BK.upload(comp_p); op_up = BK.upload(op)
-    prompt = f"a man kneeling over a dying woman on the cracked ground, a crowd recoiling behind, {STYLE}"
-    for den in (0.55, 0.65):
+    desat = ImageEnhance.Contrast(Image.open(comp_p).convert("L")).enhance(1.25).convert("RGB")
+    desat_p = os.path.join(LAY, "rich_composite_desat.png"); desat.save(desat_p)
+    comp_up = BK.upload(desat_p); op_up = BK.upload(op)
+    prompt = f"a man kneeling over a dying woman fallen on the cracked street ground, a crowd recoiling all around, {STYLE}"
+    for den in (0.78, 0.85):
         dest = os.path.join(LAY, f"rich_final_d{int(den*100)}.png")
         dt = BK.run(g_stylize(prompt, comp_up, op_up, 909, f"rich_final_d{int(den*100)}", den), dest)
-        print(f"  [stylize] den={den} ({dt:.0f}s) -> {os.path.basename(dest)}", flush=True)
+        print(f"  [stylize] desat den={den} ({dt:.0f}s) -> {os.path.basename(dest)}", flush=True)
     print("RICH_DONE")
 
 if __name__ == "__main__":
