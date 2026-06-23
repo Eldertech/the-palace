@@ -42,6 +42,8 @@ links:
 
 # Waveguide Synthesizer
 
+![[Waveguide Synthesizer — hero.png]]
+
 A physical-modeling synthesizer built on **digital waveguides** — the synthesis method that models sound as traveling waves on a medium (a string, a tube, a membrane) rather than as oscillators and filters. The instrument's web interface is a **3D rendering of the waveguide itself**: you see the wave propagate along the string, reflect at the terminations, and lose energy to damping — and what you see is not a visualization bolted onto the sound, it is the same delay-line state that produces the sound, drawn in space.
 
 ## Why This Project Exists
