@@ -28,6 +28,8 @@ forward_vector: "I want to become a fully implemented and staged teaching instru
 
 # Portamento and Physical Pitch Modeling
 
+![[Portamento and Physical Pitch Modeling — hero.png]]
+
 Portamento is not a parameter. It is not an effect applied *after* pitch reaches its target. Portamento *is* the continuous physical mechanism of pitch itself — the trajectory through frequency space as a resonant system finds equilibrium. When a vocalist slides between notes, the larynx is a damped oscillator settling toward a new target frequency. When a finger slides on a string, every intermediate length is an instantaneous state under tension. There is no "jump-and-glide" duality; there is only trajectory.
 
 This project models pitch as a second-order physical system. The motion of frequency in time obeys the same law as a mass on a spring with friction. This reveals three distinct sonic characters — overdamped (smooth surrender), critically damped (purposeful arrival), underdamped (overshoot and ring-back) — that are not parameters layered onto synthesis. They are the direct consequence of physical resonance.
