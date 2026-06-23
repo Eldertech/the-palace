@@ -125,7 +125,7 @@ async function handleAgentLaunch(ctx) {
   const effort = EFFORTS.has(body.effort) ? body.effort : undefined;
   const model = (typeof body.model === 'string' && /^[A-Za-z0-9._-]+$/.test(body.model)) ? body.model : undefined;
   const launch = opts.launchImpl || launchInteractive;
-  const result = launch(prompt, { palaceRoot, model, effort, ...(opts.launchOpts || {}) });
+  const result = await launch(prompt, { palaceRoot, model, effort, ...(opts.launchOpts || {}) });
   if (!result.launched) {
     jsonResponse(res, result.supported === false ? 501 : 500, { ...result, home, cycle });
     return true;
@@ -160,7 +160,7 @@ export async function launchRoutes(ctx) {
   // opts.launchImpl lets a test intercept the spawn without opening a Terminal;
   // opts.launchOpts threads platform/spawnImpl/tmpDir into the real impl.
   const launch = opts.launchImpl || launchInteractive;
-  const result = launch(prompt, { palaceRoot, ...(opts.launchOpts || {}) });
+  const result = await launch(prompt, { palaceRoot, ...(opts.launchOpts || {}) });
 
   if (!result.launched) {
     // not-on-macOS -> 501 (client falls back to copy); any other failure -> 500.

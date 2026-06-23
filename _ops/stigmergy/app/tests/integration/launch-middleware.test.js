@@ -43,7 +43,7 @@ describe('POST /api/launch', () => {
 
   test('200 + launched, passing the prompt and palace root to the impl', async () => {
     let seen = null;
-    const launchImpl = (prompt, o) => { seen = { prompt, palaceRoot: o.palaceRoot }; return { launched: true, supported: true, scriptPath: '/tmp/x/launch.sh' }; };
+    const launchImpl = (prompt, o) => { seen = { prompt, palaceRoot: o.palaceRoot }; return { launched: true, supported: true, scriptPath: '/tmp/x/launch.command' }; };
     const res = await request(makeServer(root, { launchImpl })).post('/api/launch').send({ prompt: 'drive [[Foo]] — "go"' });
     expect(res.status).toBe(200);
     expect(res.body.launched).toBe(true);
@@ -59,7 +59,7 @@ describe('POST /api/launch', () => {
   });
 
   test('500 on an unexpected launch failure', async () => {
-    const launchImpl = () => ({ launched: false, supported: true, error: 'osascript failed' });
+    const launchImpl = () => ({ launched: false, supported: true, error: 'open exited 1' });
     const res = await request(makeServer(root, { launchImpl })).post('/api/launch').send({ prompt: 'x' });
     expect(res.status).toBe(500);
   });
@@ -109,7 +109,7 @@ describe('POST /api/launch/agent', () => {
   test('launch hands the constructed prompt + model/effort to the launcher', async () => {
     let launched = null;
     const buildCyclePromptImpl = () => ({ full: 'THE CONSTRUCTED PROMPT' });
-    const launchImpl = (prompt, o) => { launched = { prompt, model: o.model, effort: o.effort }; return { launched: true, supported: true, scriptPath: '/tmp/x/launch.sh' }; };
+    const launchImpl = (prompt, o) => { launched = { prompt, model: o.model, effort: o.effort }; return { launched: true, supported: true, scriptPath: '/tmp/x/launch.command' }; };
     const res = await request(makeServer(root, { stewardLane, buildCyclePromptImpl, launchImpl }))
       .post('/api/launch/agent').send({ home: 'Kuramoto Coupling', model: 'claude-opus-4-8', effort: 'xhigh' });
     expect(res.status).toBe(200);
