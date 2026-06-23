@@ -177,7 +177,7 @@ The link ontology above types edges *between entries*. The Palace also has a sec
 | Ceremony | Trigger phrase | Precondition | Core action | Postcondition |
 |---|---|---|---|---|
 | **Harvest** | "Let's harvest" | Source material exists | Find palace-worthy items using oblique approach; assign IDs | Worthy items identified and staged for deposit |
-| **Deposit** | "Let's deposit" / "Add this to the palace" | Source material identified | Draft entry → review → write to palace → append row to Deposit Archive | Entry file exists in palace; Deposit Archive row added |
+| **Deposit** | "Let's deposit" / "Add this to the palace" | Source material identified | Draft entry → review → write to palace → commit as `deposit(<id>):` with the synthesis in the commit body | Entry file exists; the commit self-classifies on the LOG deck (`Palace-Kind: deposit`) — no archive row (the [[Deposit Archive]] is frozen) |
 | **Walk** | "Let's walk" | ≥1 entry with typed links | Follow typed links entry to entry, narrating connections | Path described; surprise named; metadata updated if needed; commit if files changed | [[Walk Ceremony]] |
 | **Weave** | "Let's weave" | ≥5 entries + filesystem access | Orient to recent deposits → full topology report → propose links → propose stage transitions | Topology report produced; ≥3 links proposed; commit made | [[Weave Ceremony]] |
 | **Spore Check** | "Spore check" | ≥1 dormant entry | Review all dormant entries; assign revive / hold / compost | Every dormant entry has a disposition; commit made | [[Spore Check Ceremony]] |
