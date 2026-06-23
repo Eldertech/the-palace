@@ -45,6 +45,8 @@ forward_vector: "I will become a pipeline capable of reading any synthesizer's p
 
 # Generative Preset Development
 
+![[Generative Preset Development — hero.png]]
+
 A [[Four Pillars]] project: **AI-generated presets for fixed-architecture synthesizers, from abstract prompts.** Where [[Generative Audio Devices]] generates modular signal-flow graphs (topology first, parameters second), this project targets synthesizers whose topology is fixed at design time — Ableton's Wavetable, Serum2, Vital, and others — and must operate entirely within a parameter space the instrument's designer chose. The challenge inverts: instead of building a graph, we must navigate a multidimensional space of knobs.
 
 The project also runs an **analysis track** that is the exact inverse of generation: read an existing preset, and describe its inner workings in the plain, structural language a skilled synthesist uses — oscillator architecture, filter routing, modulation assignments, envelope character, effect chain purpose. Analysis and generation are mutually reinforcing: every preset we successfully describe teaches us what parameters sound like, and that knowledge tightens generation.
