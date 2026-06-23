@@ -27,6 +27,8 @@ links:
 
 # Tract Mirror
 
+![[Tract Mirror — hero.png]]
+
 A **monophonic LPC voice synthesizer** shipped as a VST3/AU plugin (JUCE 8), whose interface is a **3D rendering of the cylindrical waveguide segments** of a Kelly-Lochbaum vocal tract. The thesis is the `mirrors` link from [[Linear Predictive Coding]] to [[Waveguide Synthesizer]], executed: the LPC lattice filter's reflection coefficients *are* the impedance mismatches between successive tube segments. The tubes on screen are not a visualization of the filter — they **are** the filter, drawn in space. Morphing a vowel reshapes the tract; reshaping the tract recomputes the scattering junctions; nothing is decoration.
 
 Where the [[Waveguide Synthesizer]] renders the string body of this mathematics in the browser, Tract Mirror renders the tube body — and steps out of the browser into Ableton Live, the palace's first native plugin.
