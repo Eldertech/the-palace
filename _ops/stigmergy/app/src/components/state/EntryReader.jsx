@@ -120,8 +120,8 @@ export default function EntryReader({
             backgroundSize: 'cover',
             backgroundPosition: 'center 22%',
             backgroundRepeat: 'no-repeat',
-            filter: 'saturate(0.7)',
-            opacity: 0.6,
+            filter: 'saturate(0.8) brightness(1.2)',
+            opacity: 0.72,
           }}
         />
       ) : null}
