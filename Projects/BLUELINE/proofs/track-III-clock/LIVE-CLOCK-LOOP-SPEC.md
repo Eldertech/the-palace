@@ -221,8 +221,17 @@ config, which is why the routes are the clean path.
 | **LYRICS** (named `Lyrics`) | one named clip per lyric line; name = the line text | SCANNER | `/Lyrics/*` (track name) | the lyrics layer / a preview lane |
 
 Three tracks, three devices, all built from the same two `.js` files (`transport.js`, `scanner.js`). The
-song *is* the project file: edit a clip's name/length/position and re-scan, and the board moves with it —
-the board record becomes Ableton-native, which is the whole point of the clock track (Track III).
+song *is* the project file: edit a clip's name/length/position and the board moves with it on the next
+**Stop** (auto-rescan) or a manual SCAN — the board record becomes Ableton-native, which is the whole point
+of the clock track (Track III).
+
+**Devices — canonical home is the Ableton User Library** (`Presets/MIDI Effects/Max MIDI Effect/`):
+**transport** = the `BLUELINE - Transport` preset over `Imported/OSCSync.amxd` (loads `transport.js`, carries
+the `FPS` param); **scanner** = `Blueline ClipScan 1.0.amxd` (loads `scanner.js`). Both are thin wrappers —
+**all behavior is in the external `.js`**, the source of truth in this folder. Binary snapshots are committed
+beside the source for drag-in reproducibility: `OSCSync.amxd` (transport) and `Blueline ClipScan 1.0.amxd`
+(scanner). `autowatch` reloads the `.js`, so editing `transport.js` / `scanner.js` updates the live device
+with no re-import.
 
 ---
 
