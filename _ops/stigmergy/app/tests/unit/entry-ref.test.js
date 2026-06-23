@@ -9,18 +9,31 @@ const ENTRIES = [
   { path: 'Projects/Retrospective Delay.md', has_bundle: true },
   { path: 'Projects/Semantic Delay.md', has_bundle: true },
   { path: 'FOUR PILLARS.md' }, // has_bundle absent -> false
+  // an enriched entry carrying a bundle avatar
+  { path: 'Projects/Quantum Synthesizer.md', has_bundle: true, icon: 'Projects/Quantum Synthesizer/Quantum Synthesizer — icon.png' },
 ];
 
 describe('buildRefIndex', () => {
-  it('maps each entry basename to { path, hasBundle }', () => {
+  it('maps each entry basename to { path, hasBundle, icon }', () => {
     const idx = buildRefIndex(ENTRIES);
-    expect(idx.get('Kuramoto Coupling')).toEqual({ path: 'Kuramoto Coupling.md', hasBundle: false });
-    expect(idx.get('Retrospective Delay')).toEqual({ path: 'Projects/Retrospective Delay.md', hasBundle: true });
+    expect(idx.get('Kuramoto Coupling')).toEqual({ path: 'Kuramoto Coupling.md', hasBundle: false, icon: null });
+    expect(idx.get('Retrospective Delay')).toEqual({ path: 'Projects/Retrospective Delay.md', hasBundle: true, icon: null });
+  });
+
+  it('carries the bundle icon path when present, null otherwise', () => {
+    const idx = buildRefIndex(ENTRIES);
+    expect(idx.get('Quantum Synthesizer')).toEqual({
+      path: 'Projects/Quantum Synthesizer.md', hasBundle: true,
+      icon: 'Projects/Quantum Synthesizer/Quantum Synthesizer — icon.png',
+    });
+    // a non-string / blank icon normalizes to null
+    expect(buildRefIndex([{ path: 'X.md', has_bundle: true, icon: '' }]).get('X').icon).toBeNull();
+    expect(buildRefIndex([{ path: 'Y.md', has_bundle: true, icon: 42 }]).get('Y').icon).toBeNull();
   });
 
   it('treats a missing has_bundle as false', () => {
     const idx = buildRefIndex(ENTRIES);
-    expect(idx.get('FOUR PILLARS')).toEqual({ path: 'FOUR PILLARS.md', hasBundle: false });
+    expect(idx.get('FOUR PILLARS')).toEqual({ path: 'FOUR PILLARS.md', hasBundle: false, icon: null });
   });
 
   it('keeps the first occurrence on a basename collision', () => {
@@ -28,7 +41,7 @@ describe('buildRefIndex', () => {
       { path: 'A/Delay.md', has_bundle: true },
       { path: 'B/Delay.md', has_bundle: false },
     ]);
-    expect(idx.get('Delay')).toEqual({ path: 'A/Delay.md', hasBundle: true });
+    expect(idx.get('Delay')).toEqual({ path: 'A/Delay.md', hasBundle: true, icon: null });
   });
 
   it('is safe on non-array / malformed input', () => {
@@ -42,8 +55,16 @@ describe('resolveRef', () => {
 
   it('resolves a bare entry/agent name', () => {
     expect(resolveRef(idx, 'Retrospective Delay')).toEqual({
-      name: 'Retrospective Delay', path: 'Projects/Retrospective Delay.md', hasBundle: true,
+      name: 'Retrospective Delay', path: 'Projects/Retrospective Delay.md', hasBundle: true, icon: null,
     });
+  });
+
+  it('returns the bundle icon path on a resolved entry that has one', () => {
+    expect(resolveRef(idx, 'Quantum Synthesizer')).toEqual({
+      name: 'Quantum Synthesizer', path: 'Projects/Quantum Synthesizer.md', hasBundle: true,
+      icon: 'Projects/Quantum Synthesizer/Quantum Synthesizer — icon.png',
+    });
+    expect(resolveRef(idx, 'Kuramoto Coupling').icon).toBeNull();
   });
 
   it('strips [[ ]] wrappers and |aliases before resolving', () => {

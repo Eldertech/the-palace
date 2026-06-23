@@ -3,6 +3,7 @@ import { Box } from '../primitives.jsx';
 import StageGlyph from './StageGlyph.jsx';
 import { pulseSort } from '../../lib/pulse.js';
 import { sortEntries, DEFAULT_DIR, SORT_KEYS } from '../../lib/entry-sort.js';
+import EntryAvatar from '../EntryAvatar.jsx';
 
 // PULSE: the vitality lens that is STATE's default index. Entries sorted
 // by how alive they are right now (recency * activation_count * stage *
@@ -75,6 +76,13 @@ function EntryRow({ entry, onSelect }) {
         color: 'var(--phosphor)', textShadow: 'var(--glow)',
         whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis',
       }}>
+        {/* Avatar only for entries that carry bundle art — a subtle "this one
+            is enriched" mark; no monogram clutter across the dense index. */}
+        {entry.icon ? (
+          <span style={{ marginRight: 6 }}>
+            <EntryAvatar name={entry.title ?? entry.path} icon={entry.icon} size={15} />
+          </span>
+        ) : null}
         {entry.title ?? entry.path}
         {entry.has_bundle ? <span style={{
           marginLeft: 6, color: 'var(--ansi-bright-cyan)', textShadow: 'var(--glow)', fontSize: 10,

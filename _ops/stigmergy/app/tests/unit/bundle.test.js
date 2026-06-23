@@ -2,7 +2,7 @@ import { describe, it, expect, beforeAll, afterAll } from 'vitest';
 import { mkdtempSync, writeFileSync, mkdirSync, rmSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
-import { bundleDirFor, classifyFile, listBundleFiles } from '../../src/lib/bundle.js';
+import { bundleDirFor, classifyFile, listBundleFiles, iconRelFor } from '../../src/lib/bundle.js';
 
 describe('classifyFile', () => {
   it('classifies by extension', () => {
@@ -66,5 +66,39 @@ describe('bundleDirFor + listBundleFiles', () => {
     const wav = files.find((f) => f.name === 'song.wav');
     expect(wav.kind).toBe('audio');
     expect(wav.depth).toBe(2);
+  });
+});
+
+describe('iconRelFor', () => {
+  let root;
+  beforeAll(() => {
+    root = mkdtempSync(join(tmpdir(), 'stigmergy-icon-'));
+    // Preferred: "<stem> — icon.png" matching the bundle/entry name.
+    mkdirSync(join(root, 'Quantum Synthesizer'));
+    writeFileSync(join(root, 'Quantum Synthesizer', 'Quantum Synthesizer — hero.png'), 'PNG');
+    writeFileSync(join(root, 'Quantum Synthesizer', 'Quantum Synthesizer — icon.png'), 'PNG');
+    // Fallback: a "* — icon.png" that does NOT match the stem.
+    mkdirSync(join(root, 'Oddly Named'));
+    writeFileSync(join(root, 'Oddly Named', 'something else — icon.png'), 'PNG');
+    // No icon at all.
+    mkdirSync(join(root, 'Bare'));
+    writeFileSync(join(root, 'Bare', 'notes.md'), '# n\n');
+  });
+  afterAll(() => rmSync(root, { recursive: true, force: true }));
+
+  it('prefers "<stem> — icon.png" and returns a palace-relative path', () => {
+    expect(iconRelFor(root, join(root, 'Quantum Synthesizer')))
+      .toBe('Quantum Synthesizer/Quantum Synthesizer — icon.png');
+  });
+
+  it('falls back to the first "* — icon.png" when the stem name is absent', () => {
+    expect(iconRelFor(root, join(root, 'Oddly Named')))
+      .toBe('Oddly Named/something else — icon.png');
+  });
+
+  it('returns null when the bundle has no icon, or on bad input', () => {
+    expect(iconRelFor(root, join(root, 'Bare'))).toBeNull();
+    expect(iconRelFor(root, join(root, 'Does Not Exist'))).toBeNull();
+    expect(iconRelFor(root, null)).toBeNull();
   });
 });

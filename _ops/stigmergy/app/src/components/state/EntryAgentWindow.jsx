@@ -2,6 +2,9 @@ import React, { useState, useRef, useLayoutEffect, useEffect, useCallback } from
 import { fetchGrounding, postTurn, postUndo, postApply, postTrickster } from '../../adapters/entry-agent.js';
 import { subscribeLive } from '../../adapters/live-tail.js';
 import { contextKey, contextLabel } from '../../lib/companion-context.js';
+import { usePalaceRef } from '../../lib/palace-ref.jsx';
+import { resolveRef } from '../../lib/entry-ref.js';
+import EntryAvatar from '../EntryAvatar.jsx';
 
 // Position init wants useLayoutEffect in the browser, but that warns under
 // server render (tests use renderToStaticMarkup). Fall back to useEffect where
@@ -392,6 +395,11 @@ export default function EntryAgentWindow({ entry, context, containerRef, onClose
   const isEntry = ctx.kind === 'entry';
   const isTrickster = ctx.kind === 'trickster_request';
   const cKey = contextKey(ctx);
+
+  // Resolve the grounded entry's bundle avatar for the titlebar. Trigger the
+  // lazy entry index only for an entry context (the walk is otherwise skipped).
+  const palaceRef = usePalaceRef();
+  useEffect(() => { if (isEntry) palaceRef?.ensureLoaded?.(); }, [isEntry, palaceRef]);
 
   // TRICKSTER: the box scroll-spies the card it floats over and answers AS that
   // project. The context carries the whole pending list (`ctx.requests`); a
@@ -870,6 +878,7 @@ export default function EntryAgentWindow({ entry, context, containerRef, onClose
     : isTrickster
       ? (activeRequest?.project || 'a pending decision')
       : contextLabel(ctx);
+  const entryIcon = (isEntry && palaceRef) ? (resolveRef(palaceRef.refIndex, title)?.icon || null) : null;
   const winPos = left == null ? { right: 28 } : { left };
 
   return (
@@ -931,6 +940,7 @@ export default function EntryAgentWindow({ entry, context, containerRef, onClose
           cursor: 'move', userSelect: 'none',
         }}
       >
+        {isEntry ? <EntryAvatar name={title} icon={entryIcon} size={18} /> : null}
         <span style={{
           color: 'var(--phosphor-white)', textShadow: 'var(--glow)',
           textTransform: 'uppercase', letterSpacing: '.08em', fontSize: 11,
