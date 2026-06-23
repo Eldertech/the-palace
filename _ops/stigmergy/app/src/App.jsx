@@ -9,7 +9,6 @@ import { DECKS } from './lib/decks.js';
 import StateDeck from './components/state/StateDeck.jsx';
 import LogDeck from './components/log/LogDeck.jsx';
 import TricksterDeck from './components/TricksterDeck.jsx';
-import ActuatorPanel from './components/queue/ActuatorPanel.jsx';
 import QueuePanel from './components/queue/QueuePanel.jsx';
 import StewardsDeck from './components/stewards/StewardsDeck.jsx';
 import CompanionHost from './components/CompanionHost.jsx';
@@ -367,11 +366,7 @@ export default function App() {
       )}
       {deck === 'QUEUE' && (
         <div data-testid="board-screen" style={{ width: '100%' }}>
-          <Banner as="h1" strong style={{ fontSize: 32, margin: '0 0 4px' }}>
-            queue -- the open-work board
-          </Banner>
           <div style={{ marginBottom: 10 }}>
-            <ActuatorPanel />
             <QueuePanel messages={visibleMessages} onJumpEntry={() => setDeck('STATE')} />
           </div>
           {/* The raw per-board feed, demoted from a co-equal second nav axis to
