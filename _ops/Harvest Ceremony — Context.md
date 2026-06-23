@@ -51,7 +51,7 @@ The redesign simplified by trusting Claude's scripting abilities instead. Rather
 
 **What collapsed:** The Harvest Frontier (live state tracker), the Harvest Queue (pending deposits list), and the Harvest Archive (decision log) were three files doing the work of one. The Frontier and Queue are now composting. The Archive was renamed the [[Deposit Archive]] — a more accurate description of what it actually is.
 
-**What remains:** The [[Deposit Archive]] as permanent record. Everything else is session-specific and can be created fresh each time.
+**What remains:** The [[Deposit Archive]] as permanent record (frozen 2026-06-19 — a deposit's record is now its commit; the archive holds the pre-spec rows). Everything else is session-specific and can be created fresh each time.
 
 ---
 
