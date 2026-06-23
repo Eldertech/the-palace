@@ -39,6 +39,8 @@ forward_vector: "I will become a chat-driven generator of wavetables — Claude 
 
 # Generative Wavetable Libraries
 
+![[Generative Wavetable Libraries — hero.png]]
+
 A chat-driven pipeline for producing custom wavetables and single-cycle waveforms, deployable across the major wavetable synth ecosystems. Sister project to [[Generative Sample Libraries]] — same backbone (palace synthesis becomes deployable artifact, conversational interview, source-agnostic intake), different format family, different tooling, different musical use.
 
 This entry was born 2026-05-02 by migration: the wavetable material previously housed inside [[Generative Sample Libraries]] split off into its own home when GSL refocused on multisampled instruments only. The two projects share philosophical backbone but diverge enough in format work, mathematics of frame generation, and use case that one entry was conflating them.
