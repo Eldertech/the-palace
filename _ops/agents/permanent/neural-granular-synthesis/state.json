@@ -1,7 +1,7 @@
 {
-  "iteration": 3,
-  "last_active": "2026-06-07T18:37:24.255Z",
-  "last_read_cursor": "ngs-steward-007",
+  "iteration": 4,
+  "last_active": "2026-06-23T12:58:46.000Z",
+  "last_read_cursor": "ngs-steward-009",
   "health": {
     "context_pct": null,
     "avg_output_tokens_last_5": null,

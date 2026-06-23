@@ -1,7 +1,7 @@
 {
-  "iteration": 9,
-  "last_active": "2026-06-07T16:30:26.640Z",
-  "last_read_cursor": "gwl-steward-024",
+  "iteration": 14,
+  "last_active": "2026-06-23T03:05:46.619Z",
+  "last_read_cursor": "gwl-steward-040",
   "health": {
     "context_pct": null,
     "avg_output_tokens_last_5": null,

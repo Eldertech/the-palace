@@ -12,47 +12,26 @@ forward_vector: "I am Action Potential Oscillator's materialized work state — 
 
 > Materialized read-model of the steward's work state. Regenerated each cycle from the [[STIGMERGY]] persistent board; do not hand-edit the decision sections.
 > **Forward vector:** see [[Action Potential Oscillator]] frontmatter `forward_vector` — not copied here (single-source-of-truth).
-> _Last materialized: 2026-06-09T17:00:47.703Z._
+> _Last materialized: 2026-06-23T12:45:21.000Z._
 
 ## Plan
 
 - **Stage:** growing (read live from [[Action Potential Oscillator]] frontmatter)
-- **Open:** 0  ·  **Resolved:** 4  ·  **Iteration:** 3
+- **Open:** 1  ·  **Resolved:** 0  ·  **Iteration:** 4
 
 ## Open Decisions
 
-_None open._
+### `apo-steward-009` — directional_decision
+- **Options:** FAUST-FIRST · PYTHON-DEEPER · H90-RNBO · FIX-AUDITION
+- **Posted:** 2026-06-23T08:50:30-04:00
 
 ## Resolved Decisions
 
-### `apo-steward-007` — directional_decision
-- **Topic:** The population engine doesn't compile clean and I can't run a real compiler in the sandbox — how do I proceed?
-- **Options:** FIX-THEN-HANDOFF · MAC-COMPILE-FIRST · REWRITE-CLEAN · YOU-DEFINE
-- **Posted:** 2026-06-06T13:04:00-04:00
-- **Resolved:** 2026-06-09T03:56:44.106Z (by `resp-mq63ynyi-pv8k1n`)
-- **Outcome:** GRANTED — (no option_id); notes: "I think this was run from within cowork, and that has a sandbox, This time we run from claude code, so back up a step and try again where you have a compilier and attempt to make progress."
-
-### `apo-steward-vector-change-2026-06-03` — directional_decision
-- **Options:** CONFIRM-NEW-VECTOR · REVERT-VECTOR · YOU-DEFINE
-- **Posted:** 2026-06-03T04:56:29-04:00
-- **Resolved:** 2026-06-06T01:29:50.065Z (by `resp-mq1oe701-u5w4r7`)
-- **Outcome:** GRANTED — option_id=CONFIRM-NEW-VECTOR
-
-### `apo-steward-004` — directional_decision
-- **Options:** K-SWEEP · DUAL-SWEEP · AB-CLIPS · COMPILE-FIRST
-- **Posted:** 2026-05-27T19:32:00-04:00
-- **Resolved:** 2026-06-06T01:34:41.148Z (by `resp-mq1okflo-scpjqh`)
-- **Outcome:** GRANTED — option_id=COMPILE-FIRST
-
-### `apo-steward-002` — directional_decision
-- **Topic:** What's the most ripe next move on Action Potential Oscillator?
-- **Options:** POPULATION-FAUST · H90-PORT · HH-FRONTIER · YOU-DEFINE
-- **Posted:** 2026-05-27T16:31:00-04:00
-- **Resolved:** 2026-05-27T23:25:05.076Z (by `resp-mpooz3jo-jqo1bs`)
-- **Outcome:** GRANTED — option_id=POPULATION-FAUST
+_None yet._
 
 ## Done
 
+- 2026-06-23T12:45:21.000Z — cycle complete (iteration 4); posted: apo-steward-008, apo-steward-009
 - 2026-06-06T10:29:38Z — cycle complete (iteration 3); posted: apo-steward-005, apo-steward-006, apo-steward-007
 - 2026-06-06T10:29:38Z — Palace heartbeat batch 2026-06-06T10:29:38Z. ~97515 subagent tokens, 23 tool uses.
 - 2026-05-27T20:30:00-04:00 — cycle complete (iteration 2); posted: apo-steward-003, apo-steward-004

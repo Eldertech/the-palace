@@ -12,48 +12,26 @@ forward_vector: "I am Slime Mold Delay's materialized work state — open decisi
 
 > Materialized read-model of the steward's work state. Regenerated each cycle from the [[STIGMERGY]] persistent board; do not hand-edit the decision sections.
 > **Forward vector:** see [[Slime Mold Delay]] frontmatter `forward_vector` — not copied here (single-source-of-truth).
-> _Last materialized: 2026-06-09T17:00:47.703Z._
+> _Last materialized: 2026-06-23T13:17:40.000Z._
 
 ## Plan
 
 - **Stage:** sprout (read live from [[Slime Mold Delay]] frontmatter)
-- **Open:** 0  ·  **Resolved:** 4  ·  **Iteration:** 5
+- **Open:** 1  ·  **Resolved:** 0  ·  **Iteration:** 6
 
 ## Open Decisions
 
-_None open._
+### `slime-mold-delay-steward-011` — directional_steer
+- **Options:** STAGE-4-DYNAMICS · VISUAL-DISH · LIVE-LESSON-SCAFFOLD · STEER-OTHER
+- **Posted:** 2026-06-23T16:30:05-04:00
 
 ## Resolved Decisions
 
-### `slime-mold-delay-steward-009` — directional_decision  ·  **blocking**
-- **Topic:** Audition the minimal Web Audio feedback bench, then choose the next build move
-- **Options:** AUDITION-PASS · ADJUST-CHARACTER · VISUAL-SIM-FIRST · YOU-DEFINE
-- **Posted:** 2026-06-06T17:08:00-04:00
-- **Resolved:** 2026-06-06T11:51:54.544Z (by `resp-mq2am6r4-9yzlah`)
-- **Outcome:** GRANTED — (no option_id); notes: "I am not hearing any sound, why would that be? Can you confirm the audio pathway is working?"
-
-### `slime-mold-delay-steward-007` — directional_decision
-- **Options:** PURE-SPECTATOR · GENTLE-NUDGE · GRAPH-FIRST-DEFER-CONTROL · YOU-DEFINE
-- **Posted:** 2026-06-03T16:32:00-04:00
-- **Resolved:** 2026-06-05T23:24:28.812Z (by `7f28670d-1bde-446f-b343-a2a943c25979`)
-- **Outcome:** GRANTED — option_id=PURE-SPECTATOR
-
-### `slime-mold-delay-steward-004` — directional_decision
-- **Options:** PLAY-AND-EXTEND · STATIC-PROOF · AUDIO-SKETCH · YOU-DEFINE
-- **Posted:** 2026-05-27T19:56:00-04:00
-- **Resolved:** 2026-06-06T01:33:52.493Z (by `resp-mq1oje25-a5r6tu`)
-- **Outcome:** GRANTED — option_id=YOU-DEFINE; notes: "build audio system usinf web audio before rnbo."
-
-### `slime-mold-delay-steward-002` — directional_decision
-- **Topic:** First move out of sprout — open Stage 2, resolve an architecture-shaping Open Question first, or formalize a working spec instead
-- **Options:** OPEN-STAGE-2-DEFAULTS-NOTED · RESOLVE-OPEN-QUESTIONS-FIRST · SPEC-INTERFACES-FIRST · YOU-DEFINE
-- **Steward recommendation:** RESOLVE-OPEN-QUESTIONS-FIRST — particularly the user-control question, which determines whether this is a pure teaching instrument about emergence or a hybrid composition tool. Stage 2 inherits whatever I assume here.
-- **Posted:** 2026-05-27T16:46:00-04:00
-- **Resolved:** 2026-05-27T23:37:55.033Z (by `resp-mpopflnd-ub529z`)
-- **Outcome:** GRANTED — (no option_id); notes: "create a processing pj5 or other interactive website that shows the math and allows me to place food to show the slime mold growth, worry about sound later."
+_None yet._
 
 ## Done
 
+- 2026-06-23T13:17:40.000Z — cycle complete (iteration 6); posted: slime-mold-delay-steward-010, slime-mold-delay-steward-011
 - 2026-06-06T13:38:03.165Z — cycle complete (iteration 5); posted: none
 - 2026-06-06T10:50:45Z — cycle complete (iteration 4); posted: slime-mold-delay-steward-008, slime-mold-delay-steward-009
 - 2026-06-06T10:50:45Z — Palace heartbeat batch 2026-06-06T10:50:45Z. ~87553 subagent tokens, 8 tool uses.

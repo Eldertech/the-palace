@@ -1,7 +1,7 @@
 {
-  "iteration": 5,
-  "last_active": "2026-06-06T13:37:54.243Z",
-  "last_read_cursor": "inharmonic-wavetable-synthesis-steward-010",
+  "iteration": 6,
+  "last_active": "2026-06-23T12:56:20.000Z",
+  "last_read_cursor": "inharmonic-wavetable-synthesis-steward-012",
   "health": {
     "context_pct": null,
     "avg_output_tokens_last_5": null,

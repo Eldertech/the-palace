@@ -1,7 +1,7 @@
 {
-  "iteration": 4,
-  "last_active": "2026-06-06T10:29:38Z",
-  "last_read_cursor": "blood-compressor-010",
+  "iteration": 5,
+  "last_active": "2026-06-23T12:48:21.000Z",
+  "last_read_cursor": "blood-compressor-012",
   "health": {
     "context_pct": null,
     "avg_output_tokens_last_5": null,

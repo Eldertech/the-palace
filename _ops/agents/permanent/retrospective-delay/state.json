@@ -1,7 +1,7 @@
 {
-  "iteration": 9,
-  "last_active": "2026-06-07T17:30:24.065Z",
-  "last_read_cursor": "retrospective-delay-steward-025",
+  "iteration": 17,
+  "last_active": "2026-06-23T02:27:59.461Z",
+  "last_read_cursor": "retrospective-delay-steward-041",
   "health": {
     "context_pct": null,
     "avg_output_tokens_last_5": null,
