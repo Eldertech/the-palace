@@ -75,6 +75,8 @@ agency_profile:
 ---
 # Kuramoto Coupling
 
+![[Kuramoto Coupling — hero.png]]
+
 The Kuramoto model describes how populations of oscillators with different natural frequencies can spontaneously synchronize when coupling strength exceeds a critical threshold. Below the threshold, each oscillator does its own thing. Above it, they phase-lock — maintaining individual character while achieving collective coherence.
 
 The coupling constant **K** is the key parameter: it determines how strongly each oscillator influences its neighbors. K too low → independence, no cooperation. K too high → one oscillator dominates, the rest follow (control, not cooperation). The critical K → the phase transition where synchronization emerges. In this sense K is also a **threshold of self-model revision**: below it, each oscillator maintains the identity it knows; above it, each discovers its frequency was always in relation to the others. Synchronization is not surrender — it is self-model expansion. See [[Threshold Conatus]].
