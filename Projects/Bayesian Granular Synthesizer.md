@@ -32,6 +32,8 @@ forward_vector: "I want to become a working RNBO grain engine where the chord a 
 ---
 # Bayesian Granular Synthesizer
 
+![[Bayesian Granular Synthesizer — hero.png]]
+
 A granular synthesizer whose central idea is a clean cross-boundary identity: **MIDI note input acts as Bayesian evidence sculpting a real-time pitch probability distribution.** With no notes held, grains sample a uniform prior — a raw, clicky cloud with no tonal center. As notes are held, Gaussian bumps form around the target pitches, their weights and widths evolving by exponential time constants, and the posterior *sharpens* as evidence accumulates. A chord is a hypothesis the cloud slowly comes to believe.
 
 The Bayesian-evidence framing and the pitch/grain-length coupling below are Loudon's design moves; the statistical scaffolding was supplied in dialogue and the instrument was then iterated by ear across eight audio renders.
