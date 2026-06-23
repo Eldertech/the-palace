@@ -104,13 +104,17 @@ export default function EntryReader({
   const heroPath = heroFile ? heroFile.relPath : null;
 
   return (
-    <div data-testid="entry-reader" data-path={entry.path} style={{ position: 'relative' }}>
+    <div data-testid="entry-reader" data-path={entry.path} style={{ position: 'relative', zIndex: 1 }}>
       {heroPath ? (
         <div
           aria-hidden="true"
           data-testid="entry-hero-backdrop"
           style={{
-            position: 'absolute', top: 0, left: 0, right: 0, height: 540,
+            // Fixed to the viewport top so it stays put as the entry scrolls —
+            // a persistent "which page am I on" reminder. EntryReader is its own
+            // stacking context (z-index:1 above), so this z-index:0 sits above
+            // the Shell's opaque background but below the entry content (z-index:1).
+            position: 'fixed', top: 0, left: 0, right: 0, height: 540,
             zIndex: 0, pointerEvents: 'none',
             // Image under a top-to-bottom veil that fades it into the terminal
             // black before the body text begins; desaturated + dimmed so it
