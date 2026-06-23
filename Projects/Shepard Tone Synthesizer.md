@@ -36,6 +36,8 @@ forward_vector: "I want to become a fully staged teaching instrument — the psy
 
 # Shepard Tone Synthesizer
 
+![[Shepard Tone Synthesizer — hero.png]]
+
 A synthesizer that creates the illusion of infinite pitch ascent (or descent) within a finite frequency range. Play higher forever, yet always perceive yourself within a 2-octave window. The circling staircase of pitch.
 
 ## How Shepard Tones Work
