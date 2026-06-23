@@ -28,6 +28,8 @@ links:
 
 # Quantum Synthesizer
 
+![[Quantum Synthesizer — hero.png]]
+
 The Schrödinger equation is an audio synthesis system. Not as metaphor, not as loose analogy, but as *direct structural isomorphism*. The mathematical substrate of quantum mechanics and the mathematical substrate of resonant synthesis are the same equations viewed from different observational frames. This is [[Spinoza Conatus|Spinoza's monism]] applied to physics: a single substance appearing in multiple attributes depending on which observer and which measuring apparatus you choose.
 
 ## The Isomorphism: Wave Functions as Sound
