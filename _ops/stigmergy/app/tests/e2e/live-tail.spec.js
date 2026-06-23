@@ -71,9 +71,9 @@ test.describe('Live Tail Integration', () => {
     expect(text).toContain('LIVE');
   });
 
-  test('live indicator is present in the status bar', async ({ page }) => {
+  test('live indicator is present in the command bar', async ({ page }) => {
     await page.goto('/?demo=1');
-    await expect(page.getByTestId('status-bar')).toBeVisible({ timeout: 15_000 });
+    await expect(page.getByTestId('command-bar')).toBeVisible({ timeout: 15_000 });
 
     const indicator = page.getByTestId('live-indicator');
     await expect(indicator).toBeVisible({ timeout: 10_000 });

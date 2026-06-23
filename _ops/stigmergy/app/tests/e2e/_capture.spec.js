@@ -186,17 +186,6 @@ test.describe(`phase ${PHASE} captures`, () => {
       await page.screenshot({ path: resolve(dir, 'trickster.png'), fullPage: false });
     });
 
-    test('phase-6-v0.2/scanlines-off.png', async ({ page }) => {
-      await page.goto('/?demo=1');
-      await page.getByTestId('channel-tabs').waitFor({ timeout: 15_000 });
-      await preloadFonts(page);
-      await page.keyboard.press('v');  // toggle scanlines off
-      await page.waitForTimeout(200);
-      const dir = resolve('screenshots/phase-6-v0.2');
-      mkdirSync(dir, { recursive: true });
-      await page.screenshot({ path: resolve(dir, 'scanlines-off.png'), fullPage: false });
-    });
-
     test('phase-6-v0.2/live-connected.png', async ({ page }) => {
       // TRICKSTER board with the LIVE indicator visible in the status bar.
       await page.goto('/?demo=1');

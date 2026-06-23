@@ -29,10 +29,6 @@ test('the dev server boots and the page loads with no console errors', async ({ 
   await expect(page.getByTestId('board-screen')).toBeVisible({ timeout: 10_000 });
   await expect(page.getByTestId('channel-tabs')).toBeVisible({ timeout: 10_000 });
 
-  // Status bar is present in the chrome
-  await expect(page.getByTestId('status-bar')).toBeVisible();
-  await expect(page.getByTestId('status-bar')).toContainText('STIGMERGY');
-
   expect(consoleErrors, `console errors: ${consoleErrors.join('\n')}`).toEqual([]);
   expect(pageErrors, `page errors: ${pageErrors.join('\n')}`).toEqual([]);
 });
