@@ -23,6 +23,8 @@ forward_vector: "I want to move from architectural vision to a first working pro
 
 # Particle Synthesis
 
+![[Particle Synthesis — hero.png]]
+
 Granular synthesis reconceived through the lens of game engine and GPU physics. Rather than treating grains as discrete audio objects with fixed start/end times and envelopes, [[Particle Synthesis]] models each grain as a *physical particle* with spatial position, velocity, mass, and drag. The grain's trajectory through this physical space determines its audio parameters in real time — frequency, amplitude, spectral filtering, all continuous functions of the particle's state.
 
 ## The Architecture: GPU Compute as Sonic Substrate
