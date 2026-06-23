@@ -36,6 +36,8 @@ links:
 
 # Slime Mold Delay
 
+![[Slime Mold Delay — hero.png]]
+
 A feedback delay network whose topology is grown by simulating the foraging of *Physarum polycephalum* across an audio "nutrient field." The user places sources and sinks; the slime mold connects them. The resulting graph of paths becomes the delay routing. As the audio plays, the slime mold continues to optimize — pruning paths that are not used, reinforcing paths that carry signal — so the delay's routing *learns the music*.
 
 This entry is the first concrete development of one of the eight [[Biomechanical Synthesis]] instruments. The hub diagram lists it; this entry is its body.
