@@ -1,7 +1,10 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Rule, Tag } from './primitives.jsx';
 import { glyphFor, accentFor, formatTs, parseLinks, hrefFor, tsCompare } from '../lib/format.js';
 import { t, boardName, typeName } from '../lib/lexicon.js';
+import { usePalaceRef } from '../lib/palace-ref.jsx';
+import { resolveRef } from '../lib/entry-ref.js';
+import EntryAvatar from './EntryAvatar.jsx';
 import ArtifactSlot from './ArtifactSlot.jsx';
 import TableBlock from './TableBlock.jsx';
 import EquationBlock from './EquationBlock.jsx';
@@ -65,6 +68,11 @@ function pickBorder({ flagged, type, healthScore }) {
 }
 
 function MessageRow({ msg }) {
+  // Resolve the sender's entry so its avatar (the bundle icon) can ride the
+  // `from` line. `from` is usually a page title (the page IS the agent); role
+  // handles (TRICKSTER / COORDINATOR) won't resolve and fall back to a monogram.
+  const palaceRef = usePalaceRef();
+  const fromRef = (palaceRef && msg.from) ? resolveRef(palaceRef.refIndex, msg.from) : null;
   const flagged = Array.isArray(msg._warnings) && msg._warnings.length > 0;
   const type = msg.type || 'BROADCAST';
   const healthScore = msg.health?.score;
@@ -93,7 +101,7 @@ function MessageRow({ msg }) {
   // never reaches Loudon's eyes. The data-layer reads above (msg.type,
   // msg.board) stay exact — only the rendered surface is translated.
   const metaLines = [
-    [t('field.from'), msg.from ? `@${msg.from}` : '@—'],
+    [t('field.from'), { kind: 'from', name: msg.from || null, icon: fromRef?.icon || null }],
     [t('field.ts'), formatTs(msg.ts)],
     [t('type.label'), typeName(type)],
     [t('board.label'), boardName(msg.board) || '—'],
@@ -160,6 +168,16 @@ function MessageRow({ msg }) {
                     textShadow: v.score === 'none' || v.score === '—' ? 'none' : 'var(--glow)',
                   }}
                 >{v.text}</span>
+              ) : v && typeof v === 'object' && v.kind === 'from' ? (
+                <span
+                  data-testid="from-block"
+                  style={{ display: 'inline-flex', alignItems: 'center', gap: 5, verticalAlign: 'middle' }}
+                >
+                  <EntryAvatar name={v.name} icon={v.icon} size={16} />
+                  <span style={{ color: 'var(--phosphor)', textShadow: 'var(--glow)' }}>
+                    {v.name ? `@${v.name}` : '@—'}
+                  </span>
+                </span>
               ) : (
                 <span style={{
                   color: k === 'flags' ? 'var(--error)' : 'var(--phosphor)',
@@ -244,6 +262,10 @@ function MessageRow({ msg }) {
 }
 
 export default function MessageList({ messages, sessionsEmpty, activeBoard }) {
+  // The board shows sender avatars, so it needs the entry index — trigger the
+  // one lazy /api/entries walk (idempotent; no-op if another surface already did).
+  const palaceRef = usePalaceRef();
+  useEffect(() => { palaceRef?.ensureLoaded?.(); }, [palaceRef]);
   const heading = activeBoard
     ? `${activeBoard} BOARD · ${messages.length} traces`
     : `PERSISTENT BOARD · ${messages.length} traces`;
