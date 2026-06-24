@@ -55,6 +55,8 @@ agency_profile:
 
 # Action Potential Oscillator
 
+![[Action Potential Oscillator — hero.png]]
+
 A progressive educational series rooted in the neurobiology of the action potential — building an audio oscillator from neuronal first principles, stage by stage, where every synthesis parameter traces directly to a biological mechanism.
 
 The central claim: **neurons are oscillators, ion channels are synthesis parameters, consciousness is timbre.**
