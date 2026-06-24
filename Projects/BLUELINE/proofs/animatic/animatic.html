@@ -16,6 +16,15 @@
   .panelwrap{background:#000;border:1px solid var(--line);border-radius:10px;overflow:hidden;position:relative}
   #panel{display:block;width:100%;height:auto;background:#000}
   .pulse{position:absolute;inset:0;border:0 solid var(--amber);border-radius:10px;pointer-events:none;transition:border-width .09s ease-out}
+  /* the text layer — lyrics (the song's voice), lettered OVER the art in the lower-third margin */
+  .textlayer{position:absolute;left:0;right:0;bottom:0;display:flex;justify-content:center;align-items:flex-end;
+    padding:0 6% 5%;pointer-events:none;opacity:0;transition:opacity .18s ease;z-index:4}
+  .textlayer.show{opacity:1}
+  .textlayer .lyr-line{font-family:"Anton",Impact,sans-serif;text-transform:uppercase;letter-spacing:.02em;
+    font-size:clamp(16px,3.2vw,32px);line-height:1.06;text-align:center;color:var(--ink);
+    text-shadow:0 2px 14px #000,0 0 3px #000;max-width:92%}
+  .textlayer .w{transition:color .12s ease,opacity .12s ease}
+  .textlayer .w.on{color:var(--ink)} .textlayer .w.cur{color:var(--amber)} .textlayer .w.next{color:var(--dim);opacity:.55}
   .caption{font-family:Cormorant,Georgia,serif;font-size:18px;line-height:1.35;padding:9px 4px 2px;color:var(--ink);min-height:48px}
   .caption .lead{color:var(--amber);font-family:"JetBrains Mono",monospace;font-size:12px;letter-spacing:.04em;text-transform:uppercase;margin-right:8px}
   .side{display:flex;flex-direction:column;gap:10px}
@@ -65,7 +74,7 @@
 
   <div class="stage">
     <div>
-      <div class="panelwrap"><canvas id="panel" width="960" height="540"></canvas><div class="pulse" id="pulse"></div></div>
+      <div class="panelwrap"><canvas id="panel" width="960" height="540"></canvas><div class="pulse" id="pulse"></div><div class="textlayer" id="textlayer"></div></div>
       <div class="caption" id="caption"><span class="lead">standby</span>waiting for transport…</div>
     </div>
     <div class="side">
@@ -100,6 +109,7 @@
     <span id="conn"><span class="dot" id="dot"></span>connecting…</span>
     <button class="btn" id="selfplay">▶ self-play (no Ableton)</button>
     <button class="btn on" id="pulsebtn">◉ beat pulse: on</button>
+    <button class="btn on" id="lyricsbtn">◉ lyrics: on</button>
     <span class="dim" id="srcnote">driven by the relay — open with Ableton + the M4L devices playing</span>
   </div>
 
@@ -238,6 +248,7 @@ function onBeat(bar,beat,playing){
   if(SB.shots.length && tb<startTB(SB.shots[0]))idx=-1;
   if(idx!==curShot){curShot=idx;renderActive(idx);}
   updateTracksPlayhead(tb);
+  renderLyrics(tb);                          // the text layer rides the same playhead
 }
 let pulseT=null, pulseOn=true;
 function pulse(){if(!pulseOn)return;const p=document.getElementById('pulse');p.style.borderWidth='5px';clearTimeout(pulseT);pulseT=setTimeout(()=>p.style.borderWidth='0px',90);}
@@ -245,6 +256,41 @@ document.getElementById('pulsebtn').addEventListener('click',function(){
   pulseOn=!pulseOn; this.classList.toggle('on',pulseOn);
   this.textContent=(pulseOn?'◉ beat pulse: on':'○ beat pulse: off');
   if(!pulseOn){const p=document.getElementById('pulse');p.style.borderWidth='0px';clearTimeout(pulseT);}  // clear any lingering frame
+});
+
+// ---- the text layer: LYRICS (the song's voice) — rung 1 of [[BLUELINE — Text Layer]] ----------
+// Words on screen, beat-locked, lettered OVER the art in the lower-third margin. A pure function of
+// the playhead (like the boards), so motion-off freezes it. Reads a "Lyrics" scanner track:
+//   /Lyrics/scan  /Lyrics/line idx start length text  /Lyrics/word lineIdx wordIdx start text  /Lyrics/scan_end
+const LYRICS_TRACK='Lyrics';
+let lyrLines=[], lyrBuf=null, lyricsOn=true;
+// sample verse so SELF-PLAY demos the layer without Ableton (loaded only in self-play; live = real track only)
+const EMBED_LYRICS=[
+  {start:0, length:8,text:"the city is burning down"},
+  {start:8, length:8,text:"and i am the only sound"},
+  {start:16,length:8,text:"i fall through the smoke to find you"},
+  {start:24,length:8,text:"too late  too late  too late"},
+];
+function escHtml(s){return String(s).replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));}
+function lyrScanStart(){ lyrBuf=[]; }
+function lyrLine(idx,start,length,text){ if(!lyrBuf)lyrBuf=[]; lyrBuf[+idx]={start:+start,length:+length,text:String(text==null?'':text),words:[]}; }
+function lyrWord(li,wi,start,text){ if(!lyrBuf||!lyrBuf[+li])return; lyrBuf[+li].words[+wi]={start:+start,text:String(text==null?'':text)}; }
+function lyrScanEnd(){ if(!lyrBuf)return; lyrLines=lyrBuf.filter(Boolean).sort((a,b)=>a.start-b.start); lyrBuf=null; renderLyrics(lastTb); }
+function activeLine(tb){ for(let i=0;i<lyrLines.length;i++){ const L=lyrLines[i]; if(tb>=L.start && tb<L.start+L.length) return i; } return -1; }
+function renderLyrics(tb){                                  // pure function of the playhead beat (tb)
+  const el=document.getElementById('textlayer'); if(!el)return;
+  const i=(lyricsOn && lyrLines.length)?activeLine(tb):-1;
+  if(i<0){ el.classList.remove('show'); el.innerHTML=''; return; }
+  const L=lyrLines[i], ws=(L.words||[]).filter(Boolean);
+  let html;
+  if(ws.length){ let cur=-1; for(let j=0;j<ws.length;j++){ if(tb>=ws[j].start) cur=j; }   // karaoke highlight
+    html=ws.map((w,j)=>'<span class="w '+(j<cur?'on':j===cur?'cur':'next')+'">'+escHtml(w.text)+'</span>').join(' '); }
+  else { html=escHtml(L.text); }                                                          // line-level reveal
+  el.innerHTML='<div class="lyr-line">'+html+'</div>'; el.classList.add('show');
+}
+document.getElementById('lyricsbtn').addEventListener('click',function(){
+  lyricsOn=!lyricsOn; this.classList.toggle('on',lyricsOn);
+  this.textContent=(lyricsOn?'◉ lyrics: on':'○ lyrics: off'); renderLyrics(lastTb);
 });
 
 // ---- storyboard from a Live clip scan: clip name + color + start + length ---
@@ -324,8 +370,13 @@ function connect(){
     if(m.address==='/transport/bible')applyBible(m.args[0],m.args[1],m.args[2]);
     else if(m.address==='/transport/beat'){setConn('play','● transport playing');onBeat(m.args[0],m.args[1],m.args[2]);}
     else if(m.address==='/transport/section'){document.getElementById('section').textContent=(m.args[0]||'').toUpperCase();noteSection(m.args[0],m.args[1],m.args[2]);}
-    else { const p=m.address.split('/'), ns=p[1], verb=p[2];   // /<track>/scan|clip|scan_end
-      if(verb==='scan'||verb==='clip'||verb==='scan_end'){
+    else { const p=m.address.split('/'), ns=p[1], verb=p[2];   // /<track>/scan|clip|line|word|scan_end
+      if(ns===LYRICS_TRACK && (verb==='scan'||verb==='line'||verb==='word'||verb==='scan_end')){
+        if(verb==='scan')lyrScanStart();
+        else if(verb==='line')lyrLine(m.args[0],m.args[1],m.args[2],m.args[3]);
+        else if(verb==='word')lyrWord(m.args[0],m.args[1],m.args[2],m.args[3]);
+        else lyrScanEnd();
+      } else if(verb==='scan'||verb==='clip'||verb==='scan_end'){
         if(ns===TRACK){ if(verb==='scan')startScan(m.args[0]); else if(verb==='clip')addScanClip(m.args[0],m.args[1],m.args[2],m.args[3],m.args[4]); else finishScan(); }
         laneScan(ns,verb,m.args);
       }
@@ -338,6 +389,7 @@ let selfTimer=null,selfTB=0;
 document.getElementById('selfplay').addEventListener('click',function(){
   if(selfTimer){clearInterval(selfTimer);selfTimer=null;this.classList.remove('on');this.textContent='▶ self-play (no Ableton)';return;}
   this.classList.add('on');this.textContent='⏸ self-play running';applyBible(tempo,fps,BPB);selfTB=0;
+  if(!lyrLines.length) lyrLines=EMBED_LYRICS.map(l=>({start:l.start,length:l.length,text:l.text,words:[]}));  // demo lyrics (self-play only)
   const subdiv=4, msPer=(60000/tempo)/subdiv;
   const last=SB.shots[SB.shots.length-1], endTB=last?((last.bar-1)*BPB+(last.beat-1)+last.hold+2):64;
   selfTimer=setInterval(()=>{const bar=Math.floor(selfTB/BPB)+1,beat=(selfTB%BPB)+1;
