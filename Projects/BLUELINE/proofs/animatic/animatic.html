@@ -1,0 +1,355 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>BLUELINE — Animatic</title>
+<style>
+  :root{--bg:#15161a;--panel:#1d1f25;--ink:#e9e7e2;--dim:#8b8d96;--amber:#e0a83a;--good:#7bbf6a;--bad:#c98a8a;--line:#2c2e36;--box:#23262d}
+  *{box-sizing:border-box} html,body{margin:0;height:100%;background:var(--bg);color:var(--ink);
+    font-family:"JetBrains Mono",ui-monospace,Menlo,monospace}
+  .wrap{max-width:1080px;margin:0 auto;padding:20px}
+  h1{font-family:"Anton",Impact,sans-serif;font-weight:400;letter-spacing:.04em;text-transform:uppercase;font-size:26px;margin:0}
+  .sub{color:var(--dim);font-style:italic;font-family:Cormorant,Georgia,serif;font-size:17px;margin:2px 0 16px}
+  .top{display:flex;justify-content:space-between;align-items:flex-end;gap:16px;flex-wrap:wrap}
+  .bible{font-size:11px;color:var(--dim);text-align:right;line-height:1.5}
+  .bible b{color:var(--amber)}
+  .stage{display:grid;grid-template-columns:1fr 230px;gap:14px;margin-bottom:8px}
+  @media(max-width:760px){.stage{grid-template-columns:1fr}}
+  .panelwrap{background:#000;border:1px solid var(--line);border-radius:10px;overflow:hidden;position:relative}
+  #panel{display:block;width:100%;height:auto;background:#000}
+  .pulse{position:absolute;inset:0;border:0 solid var(--amber);border-radius:10px;pointer-events:none;transition:border-width .09s ease-out}
+  .caption{font-family:Cormorant,Georgia,serif;font-size:18px;line-height:1.35;padding:9px 4px 2px;color:var(--ink);min-height:48px}
+  .caption .lead{color:var(--amber);font-family:"JetBrains Mono",monospace;font-size:12px;letter-spacing:.04em;text-transform:uppercase;margin-right:8px}
+  .side{display:flex;flex-direction:column;gap:10px}
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:12px 13px}
+  .k{color:var(--amber);font-size:11px;text-transform:uppercase;letter-spacing:.06em}
+  .big{font-size:40px;font-family:"Anton",Impact,sans-serif;line-height:1;margin-top:3px}
+  .row{display:flex;justify-content:space-between;font-size:12px;margin:4px 0}
+  .row span:first-child{color:var(--dim)}
+  .sect{font-family:"Anton",Impact,sans-serif;letter-spacing:.08em;text-transform:uppercase;font-size:15px;color:var(--ink)}
+  .strip{display:grid;grid-template-columns:repeat(6,1fr);gap:6px;margin-top:6px}
+  .cell{background:#000;border:1px solid var(--line);border-radius:6px;overflow:hidden;cursor:default}
+  .cell.active{border-color:var(--amber);box-shadow:0 0 0 1px var(--amber)}
+  .cell canvas{display:block;width:100%;height:auto;background:#000}
+  .cell .lbl{font-size:9px;color:var(--dim);text-align:center;padding:2px 0;border-top:1px solid var(--line)}
+  .cell.active .lbl{color:var(--amber)}
+  .bar{display:flex;align-items:center;gap:12px;margin:12px 0 4px;font-size:12px;flex-wrap:wrap}
+  .btn{background:var(--box);color:var(--ink);border:1px solid var(--line);border-radius:6px;padding:6px 12px;font-family:inherit;font-size:12px;cursor:pointer}
+  .btn:hover{border-color:var(--amber)} .btn.on{border-color:var(--good);color:var(--good)}
+  #conn{font-size:12px}
+  .dot{display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--dim);margin-right:6px;vertical-align:middle}
+  .dot.live{background:var(--good)} .dot.play{background:var(--amber)}
+  #foot{color:var(--dim);font-size:11px;margin-top:16px;letter-spacing:.04em}
+  .det.ok{color:var(--good)} .det.no{color:var(--bad)}
+  .tracks{margin-top:16px}
+  .tracks .k{margin-bottom:6px}
+  .tl{position:relative;background:#000;border:1px solid var(--line);border-radius:8px;overflow:hidden;padding-bottom:8px}
+  .tl-ruler{position:relative;height:16px;border-bottom:1px solid var(--line);background:#101216}
+  .tl-tick{position:absolute;top:0;bottom:0;border-left:1px solid #23262d;font-size:8px;color:var(--dim);padding-left:2px;line-height:16px}
+  .sec-band{position:absolute;top:0;bottom:0;background:rgba(224,168,58,.12);border-left:1px solid var(--amber);font-size:8px;color:var(--amber);padding-left:3px;line-height:16px;white-space:nowrap;overflow:hidden}
+  .lane{margin-top:8px}
+  .lane .nm{font-size:10px;color:var(--dim);margin:0 0 2px 4px;white-space:nowrap}
+  .lane .nm b{color:var(--ink);font-size:11px}
+  .lane .track{position:relative;height:24px;background:#101216;border:1px solid var(--line);border-radius:4px;overflow:hidden}
+  .clip{position:absolute;top:2px;bottom:2px;border-radius:3px;font-size:9px;color:#0c0d10;padding:1px 4px;overflow:hidden;white-space:nowrap;opacity:.8;border:1px solid rgba(255,255,255,.14);line-height:18px}
+  .clip.active{opacity:1;outline:2px solid var(--ink);z-index:2}
+  .ph{position:absolute;top:0;bottom:0;width:2px;background:var(--amber);z-index:6;pointer-events:none;box-shadow:0 0 6px var(--amber)}
+  .tl-empty{padding:14px;color:var(--dim);font-size:12px}
+</style></head>
+<body><div class="wrap">
+  <div class="top">
+    <div>
+      <h1 id="title">BLUELINE · Animatic</h1>
+      <div class="sub">the rendered boards, played in time with Ableton — one beat-locked timeline</div>
+    </div>
+    <div class="bible" id="bible">tempo <b>—</b> · fps <b>—</b> · <b>—</b> frames/beat</div>
+  </div>
+
+  <div class="stage">
+    <div>
+      <div class="panelwrap"><canvas id="panel" width="960" height="540"></canvas><div class="pulse" id="pulse"></div></div>
+      <div class="caption" id="caption"><span class="lead">standby</span>waiting for transport…</div>
+    </div>
+    <div class="side">
+      <div class="card">
+        <div class="k">now playing</div>
+        <div class="big" id="barbeat">—.—</div>
+        <div class="row"><span>frame</span><span id="frame" style="color:var(--amber)">—</span></div>
+        <div class="row"><span>section</span><span class="sect" id="section">—</span></div>
+        <div class="row"><span>shot</span><span id="shotid">—</span></div>
+      </div>
+      <div class="card">
+        <div class="k">the locked clock</div>
+        <div class="row"><span>frames / beat</span><span id="fpb">—</span></div>
+        <div class="row"><span>determinism</span><span id="det">—</span></div>
+        <div class="row"><span>beat → whole frame</span><span id="whole">—</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="strip" id="strip"></div>
+
+  <div class="tracks" id="tracks">
+    <div class="k">tracks — all scanners <span class="dim" id="tracksnote"></span></div>
+    <div class="tl" id="tl">
+      <div class="tl-ruler" id="ruler"></div>
+      <div class="lanes" id="lanes"><div class="tl-empty">no scanners yet — click scan on each track's device</div></div>
+      <div class="ph" id="ph" style="left:0"></div>
+    </div>
+  </div>
+
+  <div class="bar">
+    <span id="conn"><span class="dot" id="dot"></span>connecting…</span>
+    <button class="btn" id="selfplay">▶ self-play (no Ableton)</button>
+    <button class="btn on" id="pulsebtn">◉ beat pulse: on</button>
+    <span class="dim" id="srcnote">driven by the relay — open with Ableton + the M4L devices playing</span>
+  </div>
+
+  <div id="foot">Loudon Live · Autodidact Polymaths</div>
+</div>
+<script>
+// ============================================================================
+// BLUELINE — Animatic player (rendered-board register).
+// Same live-clock contract as the M0 previz (WS /transport/*, /<track>/* scan),
+// determinism unchanged — but the active panel is the REAL rendered board PNG,
+// not a synthetic figure. The boards are sequenced in time; the music leads.
+// Default Live track namespace: "Boards"  (override with ?track=Name).
+// ============================================================================
+
+// ---- the board manifest: the 6-shot opening, in story order ----------------
+// Each scanned Live clip is matched to one of these (by a keyword in the clip
+// name, else by clip order). Swap the files to re-skin the animatic; the clock
+// contract is untouched.
+const BOARDS = [
+  {file:"boards/01.png", cue:"burning city",       key:/burn|city|wide|establish/i},
+  {file:"boards/02.png", cue:"hero on the car",    key:/car|sedan|point|roof|stand/i},
+  {file:"boards/03.png", cue:"the leap",           key:/leap|jump/i},
+  {file:"boards/04.png", cue:"plummet",            key:/plummet|fall|plunge|descend|dive/i},
+  {file:"boards/05.png", cue:"impact",             key:/impact|land|crash|shock|crowd|over/i},
+  {file:"boards/06.png", cue:"the kiss · hero POV",key:/kiss|pov|face|down/i},
+];
+const IMGS = BOARDS.map(b=>{const im=new Image(); im.src=b.file; return im;});
+function matchBoard(name,idx){                          // clip name -> board index
+  const n=String(name||"");
+  const lead=n.match(/^\s*0?([1-6])\b/);                // a LEADING shot number ("01 ...") wins — collision-free
+  if(lead) return parseInt(lead[1],10)-1;
+  if(idx>=0 && idx<BOARDS.length) return idx;           // else clip ORDER (the storyboard is linear)
+  for(let i=0;i<BOARDS.length;i++){ if(BOARDS[i].key.test(n)) return i; }  // keyword: last resort only
+  return Math.max(0,Math.min(BOARDS.length-1, idx));
+}
+
+// ---- embedded fallback storyboard (so the file opens standalone / self-play) -
+// Placeholder timing only — Loudon's song supplies the real bars via the scan.
+const EMBED = {"bible":{"title":"BLUELINE — Animatic","tempo":120,"fps":24,"beats_per_bar":4,"frames_per_beat":12},
+"shots":[
+{"id":"01","bar":1, "beat":1,"hold":8,"section":"intro","name":"burning city","board":0,"flow":false,"action":"Wide. The city burns under a bruised sky — establishing the world."},
+{"id":"02","bar":3, "beat":1,"hold":8,"section":"intro","name":"hero on the car","board":1,"flow":false,"action":"He stands on the wreck, pointing into the smoke. The figure declared."},
+{"id":"03","bar":5, "beat":1,"hold":8,"section":"verse","name":"the leap","board":2,"flow":true, "action":"The leap — legs denting the roof as he launches. Motion ignites."},
+{"id":"04","bar":7, "beat":1,"hold":8,"section":"verse","name":"plummet","board":3,"flow":true, "action":"Plummeting from below — speed-lines screaming past. The flow field is the wind."},
+{"id":"05","bar":9, "beat":1,"hold":8,"section":"drop","name":"impact over the dying woman","board":4,"flow":true, "action":"Impact. He lands over her body as the crowd recoils. The shockwave."},
+{"id":"06","bar":11,"beat":1,"hold":8,"section":"drop","name":"the kiss · hero POV","board":5,"flow":false,"action":"His POV, straight down at her face. The kiss is the unseen thing past the edge."}
+]};
+
+let SB=EMBED, BPB=4, fpb=12, tempo=120, fps=24, det=true;
+let curShot=-1, lastBeatKey=null;
+let lanes={}, laneOrder=[], sections={}, tlTotal=64, lastTb=0;  // multi-track timeline state
+
+// ---- rendering: the real board, contained on the cinema stage --------------
+function getCSS(v){return getComputedStyle(document.documentElement).getPropertyValue(v).trim()||'#454956';}
+function drawContain(ctx,img,W,H){                       // letterbox/pillarbox a PNG into W×H, centered
+  const iw=img.naturalWidth||img.width, ih=img.naturalHeight||img.height;
+  if(!iw||!ih) return null;
+  const s=Math.min(W/iw,H/ih), w=iw*s, h=ih*s, x=(W-w)/2, y=(H-h)/2;
+  ctx.drawImage(img,x,y,w,h); return {x,y,w,h};
+}
+function shotImg(shot){ return (shot&&shot.board!=null) ? IMGS[shot.board] : null; }
+
+function drawPanel(ctx,W,H,shot,opts){
+  opts=opts||{};
+  ctx.clearRect(0,0,W,H);
+  ctx.fillStyle='#000'; ctx.fillRect(0,0,W,H);
+  if(!shot){ ctx.fillStyle=getCSS('--dim'); ctx.font='16px JetBrains Mono, monospace';
+    ctx.textAlign='center'; ctx.fillText('standby — waiting for transport', W*0.5, H*0.5); ctx.textAlign='left'; return; }
+  const img=shotImg(shot);
+  if(img && (img.naturalWidth||img.complete)){ drawContain(ctx,img,W,H); }
+  else { ctx.fillStyle='#0f1013'; ctx.fillRect(0,0,W,H);                 // board still loading
+    ctx.fillStyle=getCSS('--dim'); ctx.font='14px JetBrains Mono, monospace';
+    ctx.textAlign='center'; ctx.fillText('loading board '+(shot.id||''), W*0.5, H*0.5); ctx.textAlign='left'; }
+  // letterbox bars (cinema frame) + slate legibility gradients
+  ctx.fillStyle='#000'; ctx.fillRect(0,0,W,H*0.045); ctx.fillRect(0,H*0.955,W,H*0.045);
+  if(shot.color){ ctx.fillStyle=shot.color; ctx.fillRect(0,0,Math.max(5,W*0.008),H); }   // Live clip-color spine
+  if(opts.slate){
+    const g=ctx.createLinearGradient(0,0,0,H*0.16); g.addColorStop(0,'rgba(0,0,0,.72)'); g.addColorStop(1,'rgba(0,0,0,0)');
+    ctx.fillStyle=g; ctx.fillRect(0,0,W,H*0.16);
+    const g2=ctx.createLinearGradient(0,H*0.84,0,H); g2.addColorStop(0,'rgba(0,0,0,0)'); g2.addColorStop(1,'rgba(0,0,0,.72)');
+    ctx.fillStyle=g2; ctx.fillRect(0,H*0.84,W,H*0.16);
+    ctx.font='12px JetBrains Mono, monospace';
+    ctx.fillStyle=getCSS('--amber'); ctx.textAlign='left';
+    ctx.fillText('SHOT '+shot.id+'  ·  bar '+shot.bar+'.'+shot.beat+'  ·  f'+shotStartFrame(shot), 16, H*0.045+20);
+    ctx.textAlign='right'; ctx.fillStyle=getCSS('--dim');
+    ctx.fillText((shot.name||shot.action||'')+'  ·  hold '+shot.hold+'b', W-16, H*0.045+20);
+    ctx.fillStyle=shot.color||getCSS('--ink'); ctx.font='13px Anton, Impact, sans-serif';
+    ctx.fillText((shot.section||'').toUpperCase(), W-16, H*0.955-10); ctx.textAlign='left';
+  }
+}
+function startTB(s){return (s.bar-1)*BPB + (s.beat-1);}
+function shotStartFrame(s){return Math.round(startTB(s)*fpb);}
+
+// ---- filmstrip: the 6 real boards as thumbnails ----------------------------
+function buildStrip(){const strip=document.getElementById('strip');strip.innerHTML='';
+  strip.style.gridTemplateColumns='repeat('+Math.max(1,SB.shots.length)+',1fr)';
+  SB.shots.forEach((s,i)=>{const cell=document.createElement('div');cell.className='cell';cell.id='cell'+i;
+    const cv=document.createElement('canvas');cv.width=240;cv.height=135;cell.appendChild(cv);
+    const lbl=document.createElement('div');lbl.className='lbl';lbl.textContent=s.id+' · '+s.bar+'.'+s.beat;cell.appendChild(lbl);
+    strip.appendChild(cell);
+    const ctx=cv.getContext('2d'); const img=shotImg(s);
+    const paint=()=>{ ctx.fillStyle='#000'; ctx.fillRect(0,0,240,135); if(img)drawContain(ctx,img,240,135);
+      if(s.color){ctx.fillStyle=s.color;ctx.fillRect(0,0,3,135);} };
+    if(img && img.complete) paint(); else if(img) img.addEventListener('load',paint,{once:true}); else paint();
+  });}
+
+function renderActive(idx){
+  const ctx=document.getElementById('panel').getContext('2d');
+  const s=idx>=0?SB.shots[idx]:null;
+  drawPanel(ctx,960,540,s,{slate:true});
+  document.querySelectorAll('.cell').forEach((c,i)=>c.classList.toggle('active',i===idx));
+  const cap=document.getElementById('caption');
+  if(s){
+    const lead='SHOT '+s.id+' · bar '+s.bar+'.'+s.beat+' · hold '+s.hold+'b';
+    cap.innerHTML='<span class="lead" style="color:'+(s.color||'var(--amber)')+'">'+lead+'</span>'+(s.action||s.name||'');
+    document.getElementById('section').textContent=(s.section||'—').toUpperCase();
+    document.getElementById('shotid').textContent='#'+s.id+'  ('+(s.name||'')+')';
+  } else {cap.innerHTML='<span class="lead">standby</span>waiting for the downbeat…';}
+}
+
+function applyBible(t,f,b){tempo=t;fps=f;BPB=b||BPB;
+  fpb=(f*60)/t;det=Number.isInteger(fpb);
+  document.getElementById('bible').innerHTML='tempo <b>'+t+'</b> · fps <b>'+f+'</b> · <b>'+(det?fpb:fpb.toFixed(2))+'</b> frames/beat';
+  document.getElementById('fpb').textContent=det?fpb+'  (exact)':fpb.toFixed(3);
+  document.getElementById('det').innerHTML=det?'<span class="det ok">deterministic ✓</span>':'<span class="det no">drifts ✗</span>';}
+
+function onBeat(bar,beat,playing){
+  const tb=(bar-1)*BPB+(beat-1), frame=tb*fpb;
+  document.getElementById('barbeat').textContent=bar+'.'+(Number.isInteger(beat)?beat:beat.toFixed(2));
+  document.getElementById('frame').textContent=Math.abs(frame-Math.round(frame))<1e-9?Math.round(frame):frame.toFixed(1);
+  const bi=Math.floor(beat+1e-6),key=bar*1000+bi;
+  if(key!==lastBeatKey){lastBeatKey=key;const tbi=(bar-1)*BPB+(bi-1),fr=tbi*fpb,whole=Math.abs(fr-Math.round(fr))<1e-9;
+    document.getElementById('whole').innerHTML=whole?'<span class="det ok">on whole frame ✓</span>':'<span class="det no">off ✗</span>';
+    pulse();}
+  let idx=-1;for(let i=0;i<SB.shots.length;i++){if(tb>=startTB(SB.shots[i]))idx=i;else break;}  // active = latest clip whose START<=playhead
+  if(SB.shots.length && tb<startTB(SB.shots[0]))idx=-1;
+  if(idx!==curShot){curShot=idx;renderActive(idx);}
+  updateTracksPlayhead(tb);
+}
+let pulseT=null, pulseOn=true;
+function pulse(){if(!pulseOn)return;const p=document.getElementById('pulse');p.style.borderWidth='5px';clearTimeout(pulseT);pulseT=setTimeout(()=>p.style.borderWidth='0px',90);}
+document.getElementById('pulsebtn').addEventListener('click',function(){
+  pulseOn=!pulseOn; this.classList.toggle('on',pulseOn);
+  this.textContent=(pulseOn?'◉ beat pulse: on':'○ beat pulse: off');
+  if(!pulseOn){const p=document.getElementById('pulse');p.style.borderWidth='0px';clearTimeout(pulseT);}  // clear any lingering frame
+});
+
+// ---- storyboard from a Live clip scan: clip name + color + start + length ---
+let scanBuf=null, scanCount=0;
+function cssFromInt(v){ if(v==null||isNaN(v))return null; v=(v|0)&0xFFFFFF; return '#'+('000000'+v.toString(16)).slice(-6); }
+const TRACK=(new URLSearchParams(location.search).get('track')||'Boards');  // which Live track drives the main panel
+function startScan(count){ scanBuf=[]; scanCount=count||0; setConn('live','● scanning '+(count||'?')+' clips from "'+TRACK+'"…'); }
+function addScanClip(idx,start,length,color,name){
+  if(!scanBuf) scanBuf=[];
+  scanBuf.push({start:+start,length:+length,color:+color,name:String(name==null?'':name)});
+  if(scanCount && scanBuf.length>=scanCount) finishScan();
+}
+function clipToShot(c,i){
+  const bar=Math.floor(c.start/BPB)+1, beat=(c.start%BPB)+1;
+  const bidx=matchBoard(c.name,i);
+  return { id:String(i+1).padStart(2,'0'), bar:bar, beat:Math.round(beat*100)/100, hold:c.length,
+    section:'', name:c.name||BOARDS[bidx].cue, board:bidx,
+    flow:/draw|release|drop|flow|wind|run|fly|leap|plummet/i.test(c.name||''),
+    action:c.name||BOARDS[bidx].cue, color:cssFromInt(c.color), fromClip:true };
+}
+function finishScan(){
+  if(!scanBuf||!scanBuf.length){ scanBuf=null; return; }
+  scanBuf.sort((a,b)=>a.start-b.start);
+  SB={ bible:SB.bible, shots: scanBuf.map(clipToShot) };
+  curShot=-1; lastBeatKey=null; buildStrip(); renderActive(-1);
+  document.getElementById('srcnote').textContent='animatic built from '+SB.shots.length+' Live clips on "'+TRACK+'" — play Ableton to drive';
+  setConn('live','● '+SB.shots.length+' clips scanned from Live');
+  scanBuf=null;
+}
+
+// ---- multi-track timeline: every scanner track as a horizontal lane ---------
+function laneScan(ns,verb,args){
+  if(verb==='scan'){ if(!lanes[ns]){lanes[ns]={clips:[],buf:[],activeIdx:-2,els:[]};laneOrder.push(ns);} lanes[ns].buf=[]; }
+  else if(verb==='clip'){ if(lanes[ns]) lanes[ns].buf.push({start:+args[1],length:+args[2],color:+args[3],name:String(args[4]==null?'':args[4])}); }
+  else if(verb==='scan_end'){ if(lanes[ns]){ lanes[ns].clips=lanes[ns].buf.slice().sort((a,b)=>a.start-b.start); lanes[ns].buf=[]; relayoutTracks(); } }
+}
+function noteSection(name,startBar,lenBars){ if(name==null||name==='')return; sections[name]={start:(startBar-1)*BPB,len:(lenBars||0)*BPB}; relayoutTracks(); }
+function tracksExtent(){ let mx=16*BPB;
+  laneOrder.forEach(ns=>lanes[ns].clips.forEach(c=>{ if(c.start>mx)mx=c.start; }));
+  for(const k in sections){ const e=sections[k].start+sections[k].len; if(e>mx)mx=e; }
+  if(lastTb>mx)mx=lastTb;
+  return Math.ceil((mx+BPB*2)/BPB)*BPB; }
+function pct(beats){ return 100*beats/tlTotal; }
+function relayoutTracks(){ tlTotal=tracksExtent();
+  const ruler=document.getElementById('ruler'); ruler.innerHTML='';
+  const totalBars=Math.round(tlTotal/BPB), step=totalBars>48?8:(totalBars>20?4:2);
+  for(let b=0;b<totalBars;b+=step){ const t=document.createElement('div'); t.className='tl-tick'; t.style.left=pct(b*BPB)+'%'; t.textContent=(b+1); ruler.appendChild(t); }
+  for(const k in sections){ const s=sections[k],d=document.createElement('div'); d.className='sec-band'; d.style.left=pct(s.start)+'%'; d.style.width=Math.max(0.5,pct(s.len))+'%'; d.title=k; d.textContent=k; ruler.appendChild(d); }
+  const wrap=document.getElementById('lanes'); wrap.innerHTML='';
+  if(!laneOrder.length){ wrap.innerHTML='<div class="tl-empty">no scanners yet — click scan on each track\'s device</div>'; document.getElementById('tracksnote').textContent=''; return; }
+  laneOrder.forEach(ns=>{ const L=lanes[ns],lane=document.createElement('div'); lane.className='lane';
+    const nm=document.createElement('div'); nm.className='nm'; nm.innerHTML='<b>'+ns+'</b> · '+L.clips.length+' clip'+(L.clips.length===1?'':'s'); lane.appendChild(nm);
+    const track=document.createElement('div'); track.className='track'; L.els=[];
+    L.clips.forEach((c,i)=>{ const next=(i+1<L.clips.length)?L.clips[i+1].start:tlTotal,el=document.createElement('div'); el.className='clip';
+      el.style.left=pct(c.start)+'%'; el.style.width=Math.max(0.4,pct(next-c.start))+'%';
+      const col=cssFromInt(c.color); if(col)el.style.background=col;
+      el.textContent=c.name; el.title=c.name+'  (bar '+(Math.floor(c.start/BPB)+1)+', start '+c.start+'b)';
+      track.appendChild(el); L.els.push(el); });
+    lane.appendChild(track); wrap.appendChild(lane); L.activeIdx=-2; });
+  document.getElementById('tracksnote').textContent='· '+laneOrder.length+' track'+(laneOrder.length===1?'':'s');
+}
+function updateTracksPlayhead(tb){ lastTb=tb;
+  if(tb>tlTotal) relayoutTracks();
+  const ph=document.getElementById('ph'); if(ph)ph.style.left=Math.min(100,Math.max(0,pct(tb)))+'%';
+  laneOrder.forEach(ns=>{ const L=lanes[ns]; let idx=-1;
+    for(let i=0;i<L.clips.length;i++){ if(tb>=L.clips[i].start)idx=i; else break; }
+    if(idx!==L.activeIdx){ if(L.els[L.activeIdx])L.els[L.activeIdx].classList.remove('active'); if(L.els[idx])L.els[idx].classList.add('active'); L.activeIdx=idx; } });
+}
+
+// ---- transport source: relay WS, with self-play fallback -------------------
+function connect(){
+  let ws;try{ws=new WebSocket("ws://"+location.host+"/ws");}catch(e){setConn(false,'no relay (use self-play)');return;}
+  ws.onopen=()=>setConn('live','● connected to relay — waiting for transport…');
+  ws.onclose=()=>setConn(false,'○ relay disconnected — use self-play');
+  ws.onerror=()=>setConn(false,'relay unreachable — use self-play');
+  ws.onmessage=ev=>{const m=JSON.parse(ev.data);
+    if(m.address==='/transport/bible')applyBible(m.args[0],m.args[1],m.args[2]);
+    else if(m.address==='/transport/beat'){setConn('play','● transport playing');onBeat(m.args[0],m.args[1],m.args[2]);}
+    else if(m.address==='/transport/section'){document.getElementById('section').textContent=(m.args[0]||'').toUpperCase();noteSection(m.args[0],m.args[1],m.args[2]);}
+    else { const p=m.address.split('/'), ns=p[1], verb=p[2];   // /<track>/scan|clip|scan_end
+      if(verb==='scan'||verb==='clip'||verb==='scan_end'){
+        if(ns===TRACK){ if(verb==='scan')startScan(m.args[0]); else if(verb==='clip')addScanClip(m.args[0],m.args[1],m.args[2],m.args[3],m.args[4]); else finishScan(); }
+        laneScan(ns,verb,m.args);
+      }
+    }};
+}
+function setConn(state,txt){const d=document.getElementById('dot');d.className='dot'+(state==='live'?' live':state==='play'?' play':'');document.getElementById('conn').lastChild.textContent=' '+txt;}
+
+// self-play: internal clock so the animatic previews without Ableton
+let selfTimer=null,selfTB=0;
+document.getElementById('selfplay').addEventListener('click',function(){
+  if(selfTimer){clearInterval(selfTimer);selfTimer=null;this.classList.remove('on');this.textContent='▶ self-play (no Ableton)';return;}
+  this.classList.add('on');this.textContent='⏸ self-play running';applyBible(tempo,fps,BPB);selfTB=0;
+  const subdiv=4, msPer=(60000/tempo)/subdiv;
+  const last=SB.shots[SB.shots.length-1], endTB=last?((last.bar-1)*BPB+(last.beat-1)+last.hold+2):64;
+  selfTimer=setInterval(()=>{const bar=Math.floor(selfTB/BPB)+1,beat=(selfTB%BPB)+1;
+    setConn('play','● self-play (internal clock)');onBeat(bar,beat,1);selfTB+=1/subdiv;
+    if(selfTB>endTB)selfTB=0; },msPer);
+});
+
+// boot — the animatic is driven by EMBED (fallback) + the live Boards scan. It does NOT
+// fetch the M0 previz storyboard.json (the relay serves that at /storyboard.json) — doing so
+// mislabeled the title ("M0 Previz · r4ng3r") and bled in M0's 8 shots until the live scan.
+(function(){
+  if(SB&&SB.bible){tempo=SB.bible.tempo;fps=SB.bible.fps;BPB=SB.bible.beats_per_bar;document.getElementById('title').textContent=(SB.bible.title||'BLUELINE · Animatic');}
+  applyBible(tempo,fps,BPB);buildStrip();renderActive(-1);connect();
+})();
+</script></body></html>
