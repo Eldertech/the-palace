@@ -47,6 +47,8 @@ links:
 ---
 
 # Cross-Domain Resonances
+
+![[Cross-Domain Resonances — hero.png]]
 ## When Different Fields Speak the Same Pattern Language
 
 The most powerful teaching happens when students see the **same structure** in different materials. Not metaphor, not analogy—actual **structural identity**. Sidechain compression and conversation aren't *like* each other. They *are* the same pattern: making space by yielding.
