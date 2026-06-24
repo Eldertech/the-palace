@@ -26,6 +26,8 @@ links:
 
 # Map Build Ceremony
 
+![[Map Build Ceremony — hero.png]]
+
 > The palace is a graph. The Map Build Ceremony makes that graph explicit — an edge list, a node registry, and a typed ghost manifest, built from frontmatter alone and placed where every enchanted agent can load it.
 
 **Trigger:** `"Let's build the map"` / `"Map build"` / `"Build a neighborhood map for [X]"`
