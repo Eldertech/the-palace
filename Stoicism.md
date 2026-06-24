@@ -53,6 +53,8 @@ agency_profile:
 
 # Stoicism
 
+![[Stoicism — hero.png]]
+
 Founded by Zeno of Citium around 300 BCE. A philosophy of **interior sovereignty and personal responsibility** — the discovery that while circumstances cannot be controlled, the response to circumstances always can be, and that a life goes well or badly entirely according to the character of that response. Practiced most fully not by academic philosophers but by a slave ([[Epictetus]]), a statesman (Seneca), and an emperor ([[Marcus Aurelius]]). That range — from the most powerless to the most powerful position in the Roman world — is the testimony that the philosophy works across conditions.
 
 This is a **hub**, held equal in the palace to [[Spinoza Conatus]], because it is load-bearing in Loudon's actual life. Like the conatus, it is not one idea but a working family of disciplines, each with a face you live and a face that operationalizes palace and agent work. The family: [[The Dichotomy of Control]], [[The View From Above]], [[The Four Virtues]].
