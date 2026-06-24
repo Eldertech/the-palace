@@ -34,6 +34,8 @@ links:
 ---
 # Palace Ceremonies
 
+![[Palace Ceremonies — hero.png]]
+
 The complete and canonical list of all palace ceremonies. Every ceremony has a trigger phrase — say it and the ceremony begins, no clarification needed. For operational details, follow the "Full Spec" link.
 
 ## Recurring Ceremonies
