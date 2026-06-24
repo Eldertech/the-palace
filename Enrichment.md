@@ -51,6 +51,8 @@ links:
 
 # Enrichment
 
+![[Enrichment — hero.png]]
+
 A ceremony for moving the whole palace forward in tiny, joyful steps. The opposite of the [[Project Stewardship System]] — instead of a permanent agent tending one project at deep rotation, this is a studio visit: walk through many entries, leave a small varied gift in each, keep the energy spread, never linger. The artifacts that result are *enrichments* of entries that already exist, not plans for entries that don't.
 
 This ceremony emerged on 2026-05-04 from a long deliberative deposit. The earlier name was "Proof Sprint" — accurate but too narrow. *Enrichment* covers more ground: not just "make a proof" but "make this entry richer in some specific way," where richness can mean a sound, an image, a poem, a philosopher's voice, a counterargument, a person to reach out to, a sharper forward vector, a question the entry didn't know it needed to ask.
