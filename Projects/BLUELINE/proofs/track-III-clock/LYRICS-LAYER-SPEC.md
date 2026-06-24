@@ -1,5 +1,14 @@
 # BLUELINE — Lyrics Layer (spec)
 
+> **▸ FOLDED INTO [[BLUELINE — Text Layer]] (2026-06-24).** Lyrics is **rung 1** of the broader text layer
+> (dialogue · narration · voiceover · lyrics · signage · described sound) — *the song's voice*, the first of
+> four curated lettering voices. Read the umbrella entry for the taxonomy, the in/out-of-frame grammar, the
+> keypoint-anchored balloons, and the `TEXT[]` schema. **Two reconciliations since 2026-06-17:** (1) the
+> scanner now namespaces by **host track name**, so the track is named **`Lyrics`** and emits **`/Lyrics/*`**
+> (not the old `ns=lyrics`/`/lyrics/*` menu); read it with `?track=Lyrics`. (2) The render home is now the
+> **animatic player** (`proofs/animatic/animatic.html`), not the M2 player. This card stays the detailed
+> rung-1 build; the proof lives at `proofs/lyrics-layer/`.
+
 > **What this is (2026-06-17).** A spec for rendering **words on screen in time with the music**, driven by
 > a **separate MIDI track** in Ableton — the same "named MIDI clips on the device's own track" pattern the
 > sections and storyboard already use ([[LIVE-CLOCK-LOOP-SPEC]]). Lyrics are not a new clock — they are a
