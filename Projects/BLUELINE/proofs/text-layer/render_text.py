@@ -17,7 +17,7 @@ Several seeds each (generate-many-select).
 Outputs -> out/<id>_<mode>_s<seed>.png   (+ skel/<id>.png and a contact-sheet.html)
 """
 import os, sys, json, time, argparse, subprocess, urllib.request, urllib.parse, uuid
-from PIL import Image, ImageDraw, ImageFont
+from PIL import Image, ImageDraw, ImageFont, ImageFilter
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 OUT = os.path.join(HERE, "out"); os.makedirs(OUT, exist_ok=True)
@@ -27,7 +27,7 @@ SPEC = json.load(open(os.path.join(HERE, "text-prompts.json")))
 R = SPEC["render"]
 HOST = "127.0.0.1:8188"; CLIENT = uuid.uuid4().hex
 STYLE, NEG = SPEC["style_suffix"], SPEC["negative"]
-FONT = "/System/Library/Fonts/Supplemental/Impact.ttf"   # heavy condensed display = strong canny edges
+FONT = os.environ.get("TEXT_FONT", "/System/Library/Fonts/Supplemental/Chalkduster.ttf")  # organic hand skeleton — NOT mechanical Impact, so the "font" stops dominating
 
 def req(method, path, data=None):
     h = {"Content-Type": "application/json"} if data else {}
@@ -69,7 +69,14 @@ def desaturate(src, dest):
     """Greyscale the photoreal render — its values carry the letterform, so a lower denoise reaches B&W."""
     Image.open(src).convert("L").convert("RGB").save(dest); return dest
 
-def graph(prompt, seed, prefix, skel_name=None, cn=0.85, init_name=None, denoise=1.0):
+def knockout(ink_path, skel_path, dest):
+    """Leave the font BLACK in the end: knock the (hand-drawn) letterform to pure black in the ink energy,
+    so the word reads as negative space the energy flows around. Strongest where the field is light."""
+    ink = Image.open(ink_path).convert("RGB")
+    mask = Image.open(skel_path).convert("L").resize(ink.size).filter(ImageFilter.MaxFilter(5))  # dilate so the void covers drifted ink letters
+    Image.composite(Image.new("RGB", ink.size, "black"), ink, mask).save(dest); return dest
+
+def graph(prompt, seed, prefix, skel_name=None, cn=0.85, init_name=None, denoise=1.0, cn_end=1.0):
     W, H = R["size"]
     g = {
       "ckpt": {"class_type": "CheckpointLoaderSimple", "inputs": {"ckpt_name": R["checkpoint"]}},
@@ -91,7 +98,7 @@ def graph(prompt, seed, prefix, skel_name=None, cn=0.85, init_name=None, denoise
         g["canny"] = {"class_type": "Canny", "inputs": {"image": ["skel", 0], "low_threshold": 0.1, "high_threshold": 0.3}}
         g["cn"]    = {"class_type": "ControlNetLoader", "inputs": {"control_net_name": "controlnet-canny-sdxl.safetensors"}}
         g["ap"]    = {"class_type": "ControlNetApplyAdvanced", "inputs": {"positive": pos_link, "negative": neg_link,
-                       "control_net": ["cn", 0], "image": ["canny", 0], "strength": cn, "start_percent": 0.0, "end_percent": 1.0}}
+                       "control_net": ["cn", 0], "image": ["canny", 0], "strength": cn, "start_percent": 0.0, "end_percent": cn_end}}
         pos_link, neg_link = ["ap", 0], ["ap", 1]
     g["samp"] = {"class_type": "KSampler", "inputs": {"model": ["ckpt", 0], "positive": pos_link, "negative": neg_link,
                  "latent_image": latent, "seed": seed, "steps": R["steps"], "cfg": R["cfg"],
@@ -152,10 +159,15 @@ def main(only, seeds, mode, denoise):
                 dn = denoise
             else:
                 full = f'{p["positive"]}, {STYLE}'
+            # stylize: LOOSE canny released early -> the letters go organic ink, the font stops dominating
+            # (the img2img init is the legibility floor); photoreal: firmer lock for a legible structural anchor
+            cn_s, cn_e = (0.5, 0.45) if mode == "stylize" else (0.8, 0.85)
             dest = os.path.join(OUT, f'{p["id"]}_{mode}_s{sd}.png')
             try:
-                dt = run(graph(full, sd, f'{mode}_{p["id"]}_s{sd}', skel_name, 0.85, init_name, dn), dest)
+                dt = run(graph(full, sd, f'{mode}_{p["id"]}_s{sd}', skel_name, cn_s, init_name, dn, cn_e), dest)
                 n += 1; print(f'  [{p["id"]}] "{p["words"]}" {mode} seed={sd} ({dt:.0f}s) -> {os.path.basename(dest)}', flush=True)
+                if mode == "stylize":   # also emit the black-negative-space variant (font left black, energy around it)
+                    knockout(dest, os.path.join(SKEL, f'{p["id"]}.png'), os.path.join(OUT, f'{p["id"]}_negspace_s{sd}.png'))
             except Exception as e:
                 print(f'  [{p["id"]}] seed={sd} FAILED: {str(e)[:160]}', flush=True)
         contact_sheet()
