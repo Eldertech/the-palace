@@ -1,0 +1,59 @@
+{
+  "_doc": "BLUELINE — gen-AI TEXT prompts. The structure-guidance from BLUELINE — Text Layer.md (type · source · emotion · addressee · diegesis) drives gen-AI image prompts that render the WORDS as imagery — letterforms made of materials and gestures a font can never be (embers, bleeding ink, flame, vapor, cracking brush). This is the register fonts cannot reach: not a typeface, an emotional object. Long/legible text still belongs to the vector letterer (Text Layer commitment 1); gen-AI is for the short, high-impact words — titles, single-word dialogue, SFX, lyric hooks. All on pure black so the result keys/composites cleanly onto the boards (inside the frame or in the margin) later. Words kept short on purpose — diffusion misspells, so render many seeds and select (generate-many-select).",
+  "render": { "checkpoint": "sd_xl_base_1.0.safetensors", "size": [1216, 832], "steps": 36, "cfg": 7.0, "sampler": "dpmpp_2m", "scheduler": "karras" },
+  "style_suffix": "hand-lettered expressive lettering as illustration, gestural pen-and-ink calligraphy, the letterforms themselves carrying the emotion, stark high-contrast, on a pure solid black background, generous black negative space, NOT a clean typeface",
+  "ink_style": "redrawn as loose gestural pen and ink lettering, bold dry-brush calligraphy strokes, bone-white and pale-grey ink on pure solid black, energetic ink splatter and blobs and raking speed-lines, rough hand-lettered, stark high-contrast black and white, generous black negative space, NOT a clean typeface, no color",
+  "negative": "neat font, typeface, typography, printed text, typed text, keyboard text, helvetica, arial, sans-serif, kerning grid, even baseline, ruler-straight, watermark, signature, logo, UI, photograph, photorealistic, 3d render, smooth digital gradient, jumbled letters, gibberish, misspelled, duplicate letters, extra letters, repeated text, duplicate word, second line of text, two rows of text, double exposure, ghost text, mirrored text, busy background, clutter, frame, border",
+  "principle": "emotion+source -> the MATERIAL the letters are made of;  emotion+intensity -> the GESTURE/physics the letters perform;  diegesis -> ground (here always the void/black);  addressee -> orientation (deferred with placement). The renderer is: (type, source, emotion, addressee) -> (material, gesture, palette).",
+  "prompts": [
+    {
+      "id": "ascension", "voice": "author", "type": "title", "source": "the system / author", "diegesis": "non-diegetic", "addressee": "audience",
+      "emotion": "awe, dread, ascent", "words": "ASCENSION", "font": "New Rocker",
+      "material": "rising embers, drifting ash, thin gold-touched smoke", "gesture": "lifting upward off every stroke, sparks trailing",
+      "palette": "bone-white warmed by a low ember glow",
+      "positive": "the single word \"ASCENSION\" as monumental hand-drawn title lettering, the tall letterforms built from rising embers, drifting ash and thin veils of gold-touched smoke lifting upward off each stroke, faint sparks climbing, reverent and vast, bone-white strokes warmed by a low ember glow"
+    },
+    {
+      "id": "shout-no", "voice": "principal:hero", "type": "dialogue", "source": "the hero's mouth", "diegesis": "diegetic", "addressee": "the recoiling crowd",
+      "emotion": "fury, anguish (max intensity)", "words": "NO", "font": "Bangers",
+      "material": "raw black brush, flung ink", "gesture": "two letterforms cracking apart, ink hurled in droplets and motion-streaks",
+      "palette": "bone-white struck hard on black",
+      "positive": "the word \"NO\" shouted in raw fury and grief, two huge brush-slammed letterforms cracking apart across the black, ink flung in violent droplets and motion-streaks off every stroke, hairline fractures splitting the strokes, jagged and explosive, bone-white ink struck hard"
+    },
+    {
+      "id": "whisper-stay", "voice": "principal:woman", "type": "dialogue", "source": "the dying woman's mouth", "diegesis": "diegetic", "addressee": "the hero",
+      "emotion": "tenderness, fading (min intensity)", "words": "stay", "font": "Shadows Into Light",
+      "material": "faint trembling graphite, breath", "gesture": "strokes thinning to nothing, dissolving at the edges",
+      "palette": "soft grey on black, one fleck of dried blood",
+      "positive": "the word \"stay\" barely whispered, small frail lowercase letters drawn in faint trembling graphite, the thin strokes thinning to almost nothing and dissolving into breath at the edges, a single fleck of dried blood-red, intimate and nearly gone, soft grey on black"
+    },
+    {
+      "id": "sfx-thoom", "voice": "world", "type": "sfx", "source": "the impact / the world", "diegesis": "diegetic", "addressee": "no one (ambient)",
+      "emotion": "concussive force", "words": "THOOM", "font": "Frijole",
+      "material": "raked struck letterforms, ink shockwave, debris", "gesture": "shattering on impact, skewed by the force, radial burst",
+      "palette": "bone-white with hard black cracks",
+      "positive": "the onomatopoeia \"THOOM\" as a comic impact sound effect, massive raked letterforms struck into the black and shattering, a radial ink shockwave and flying debris bursting outward off the word, the letters skewed and fractured by the force, bone-white ink with hard black cracks"
+    },
+    {
+      "id": "dying-toolate", "voice": "principal:hero", "type": "voiceover / interior", "source": "the hero, hollowed", "diegesis": "non-diegetic", "addressee": "the self",
+      "emotion": "grief, collapse, letting go", "words": "too late", "font": "Nosifer",
+      "material": "sickly bleeding ink, drips", "gesture": "sinking and drifting downward, letters tilting and coming apart as they fall",
+      "palette": "sick rose-red bleeding into bone-white",
+      "positive": "the words \"too late\" voiced to no one as life lets go, sickly uneven hand-lettering sinking and drifting downward, the strokes bleeding and dripping, the letters tilting and coming apart as they fall, faint sick rose-red bleeding into bone-white on black, fragile and exhausted"
+    },
+    {
+      "id": "lyric-burning", "voice": "song", "type": "lyric", "source": "the song", "diegesis": "non-diegetic", "addressee": "audience",
+      "emotion": "longing, heat, rising", "words": "BURNING", "font": "Metal Mania",
+      "material": "living flame and streaming light", "gesture": "fire licking up off the strokes, flowing left to right, embers trailing",
+      "palette": "molten amber and gold on deep black",
+      "positive": "the lyric word \"BURNING\" as the song made visible, the letterforms drawn from living flame and streaming light, fire licking up off the strokes and flowing left to right, embers trailing behind, kinetic and luminous, molten amber and gold on deep black"
+    },
+    {
+      "id": "thought-real", "voice": "principal:hero", "type": "thought / interior", "source": "the hero's mind", "diegesis": "non-diegetic", "addressee": "the self",
+      "emotion": "doubt, dissociation, cold", "words": "was it real", "font": "Special Elite",
+      "material": "pale blue-grey vapor, drifting smoke", "gesture": "letters forming out of vapor and dissolving, lifting away into nothing at the top",
+      "palette": "cold pale blue-grey on black",
+      "positive": "the unspoken thought \"was it real\" drifting in the mind, cool soft hand-lettering forming out of pale blue-grey vapor and drifting smoke, the letters dissolving and lifting away into nothing at the top, weightless and uncertain, cold pale blue-grey on black"
+    }
+  ]
+}

@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>BLUELINE — Text, with Emotion · on Black</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Anton&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=JetBrains+Mono:wght@400;700&family=Manrope:wght@400;700&display=swap');
+  :root{--ink:#ece9e3;--dim:#7e818b;--amber:#e0a83a;--blood:#c2402f;--rose:#c98a8a;--cold:#9aa6b4;--bg:#000}
+  *{box-sizing:border-box;margin:0} html,body{height:100%;background:var(--bg);overflow:hidden}
+  body{display:flex;align-items:center;justify-content:center;font-family:Manrope,system-ui,sans-serif;cursor:pointer}
+  #stage{max-width:92vw;text-align:center;line-height:1.04;user-select:none}
+  .ch{display:inline-block;white-space:pre;will-change:transform,opacity}
+
+  /* ---- the voices: the letterforms themselves carry the emotion (no layers on top) ---- */
+  /* NARRATION — the author's voice: calm, literary, steady */
+  .narration{font-family:'Cormorant Garamond',Georgia,serif;font-style:italic;font-weight:600;
+    font-size:clamp(30px,5.4vw,60px);color:var(--ink);letter-spacing:.005em}
+  .narration .ch{animation:calmIn 1.6s cubic-bezier(.2,.7,.2,1) both}
+
+  /* SHOUT — diegetic, hurled at another: huge, heavy, the letters flinch */
+  .shout{font-family:Anton,Impact,sans-serif;text-transform:uppercase;font-size:clamp(64px,15vw,168px);
+    color:var(--ink);letter-spacing:.005em;text-shadow:0 0 1px var(--ink)}
+  .shout .ch{animation:slam .5s cubic-bezier(.2,1.4,.3,1) both, flinch 2.6s ease-in-out .55s infinite}
+
+  /* WHISPER — barely voiced: small, grey, trembling, breathing at the edge of presence */
+  .whisper{font-family:'Cormorant Garamond',Georgia,serif;font-weight:400;text-transform:lowercase;
+    font-size:clamp(22px,3.4vw,40px);color:var(--dim);letter-spacing:.06em}
+  .whisper .ch{animation:tremble .19s steps(2,end) infinite, breathe 3.4s ease-in-out infinite}
+
+  /* SFX — the world makes the sound: massive, raked, struck into place */
+  .sfx{font-family:Anton,Impact,sans-serif;text-transform:uppercase;font-size:clamp(72px,17vw,190px);
+    color:var(--ink);transform:skewX(-9deg);letter-spacing:-.01em}
+  .sfx .ch{animation:strike .6s cubic-bezier(.15,.9,.2,1) both}
+
+  /* DYING — voiced to no one, sinking: sickly, uneven, the words let go */
+  .dying{font-family:'Cormorant Garamond',Georgia,serif;font-style:italic;font-weight:400;
+    font-size:clamp(34px,6.4vw,68px);color:var(--rose);letter-spacing:.01em}
+  .dying .ch{animation:sink 5.2s ease-in both}
+
+  /* LYRICS — the song's voice: amber, kinetic, flowing left to right on the beat */
+  .lyric{font-family:Anton,Impact,sans-serif;text-transform:uppercase;font-size:clamp(34px,6vw,72px);
+    color:var(--amber);letter-spacing:.02em}
+  .lyric .ch{animation:flow 1.1s cubic-bezier(.2,.7,.2,1) both}
+
+  /* THOUGHT — interior, to the self: cool, soft, drifting up and away */
+  .thought{font-family:'Cormorant Garamond',Georgia,serif;font-style:italic;font-weight:400;
+    font-size:clamp(28px,4.8vw,52px);color:var(--cold);letter-spacing:.10em;opacity:.92}
+  .thought .ch{animation:driftUp 2.6s ease-out both}
+
+  @keyframes calmIn{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+  @keyframes slam{0%{opacity:0;transform:scale(1.7) translateY(-6px)}55%{opacity:1;transform:scale(.95)}100%{opacity:1;transform:scale(1)}}
+  @keyframes flinch{0%,100%{transform:translate(0,0)}48%{transform:translate(0,0)}50%{transform:translate(var(--fx),var(--fy))}52%{transform:translate(0,0)}}
+  @keyframes tremble{0%{transform:translate(.6px,-.4px)}50%{transform:translate(-.5px,.5px)}100%{transform:translate(.4px,.4px)}}
+  @keyframes breathe{0%,100%{opacity:.34}50%{opacity:.82}}
+  @keyframes strike{from{opacity:0;transform:translate(calc(var(--dx)*1px),calc(var(--dy)*1px)) skewX(14deg) scale(1.25)}to{opacity:1;transform:none}}
+  @keyframes sink{0%{opacity:0;transform:translateY(-8px)}14%{opacity:1}70%{opacity:.85}100%{opacity:0;transform:translateY(30px) rotate(var(--rot))}}
+  @keyframes flow{from{opacity:0;transform:translateX(-26px) skewX(8deg)}to{opacity:1;transform:none}}
+  @keyframes driftUp{0%{opacity:0;transform:translateY(16px)}40%{opacity:.9}100%{opacity:.62;transform:translateY(-6px)}}
+
+  #tag{position:fixed;left:22px;bottom:20px;font-family:'JetBrains Mono',monospace;font-size:11px;
+    letter-spacing:.08em;color:var(--dim);text-transform:uppercase}
+  #tag b{color:var(--amber)}
+  #foot{position:fixed;right:22px;bottom:20px;font-family:'JetBrains Mono',monospace;font-size:10px;color:#3a3c43;letter-spacing:.06em}
+  #hint{position:fixed;left:22px;top:18px;font-family:'JetBrains Mono',monospace;font-size:10px;color:#46484f;letter-spacing:.06em}
+  #hint .on{color:var(--amber)}
+</style></head>
+<body>
+  <div id="stage"></div>
+  <div id="tag"></div>
+  <div id="hint"><span class="on" id="run">● auto</span> · click to pause · → next · ← prev</div>
+  <div id="foot">BLUELINE · text with emotion · Loudon Live</div>
+<script>
+// ============================================================================
+// BLUELINE — text, with emotion, on black. The emotion lives in the TYPE itself
+// and in how each letter moves — not in any layer laid on top. Slow on purpose.
+// ============================================================================
+const STAGE=document.getElementById('stage'), TAG=document.getElementById('tag'), RUN=document.getElementById('run');
+
+const VOICES=[
+  {cls:'narration',tag:'narration · author → audience',     text:'The city had already decided.',   stag:46, hold:4600},
+  {cls:'shout',    tag:'shout · diegetic → another',        text:'WHERE IS SHE',                     stag:34, hold:3800},
+  {cls:'whisper',  tag:'whisper · diegetic → another',      text:'i am right here',                  stag:0,  hold:4200},
+  {cls:'sfx',      tag:'sfx · the world → no one',          text:'KRAA—THOOM',                       stag:40, hold:3400},
+  {cls:'dying',    tag:'dying · voiced → the self',         text:'too late… too late…',              stag:90, hold:5600},
+  {cls:'lyric',    tag:'lyrics · the song → audience',      text:'the city is burning down',         stag:64, hold:4800},
+  {cls:'thought',  tag:'thought · the mind → the self',     text:'was it ever real',                 stag:58, hold:4400},
+];
+
+function rnd(a,b){return a+Math.random()*(b-a);}
+function render(v){
+  STAGE.className=''; STAGE.offsetWidth;        // reflow so animations restart
+  STAGE.className=v.cls; STAGE.innerHTML='';
+  TAG.innerHTML='<b>'+v.tag.split(' · ')[0]+'</b> · '+v.tag.split(' · ').slice(1).join(' · ');
+  const chars=[...v.text];
+  chars.forEach((c,i)=>{
+    const s=document.createElement('span'); s.className='ch'; s.textContent=(c===' '?' ':c);
+    s.style.animationDelay=(i*v.stag)+'ms';
+    if(v.cls==='whisper') s.style.animationDelay=(-rnd(0,400))+'ms,'+(-rnd(0,3400))+'ms';   // desync tremble+breathe
+    if(v.cls==='sfx'){ s.style.setProperty('--dx',rnd(-60,60).toFixed(0)); s.style.setProperty('--dy',rnd(-40,40).toFixed(0)); }
+    if(v.cls==='dying') s.style.setProperty('--rot',rnd(-7,7).toFixed(1)+'deg');
+    if(v.cls==='shout'){ s.style.setProperty('--fx',rnd(-2,2).toFixed(1)+'px'); s.style.setProperty('--fy',rnd(-2,2).toFixed(1)+'px'); }
+    STAGE.appendChild(s);
+  });
+}
+
+let idx=0, playing=true, timer=null;
+function show(i){ idx=(i+VOICES.length)%VOICES.length; const v=VOICES[idx]; render(v);
+  if(playing){ clearTimeout(timer); timer=setTimeout(()=>show(idx+1), v.hold); } }
+function setPlaying(p){ playing=p; RUN.textContent=p?'● auto':'⏸ paused'; RUN.style.color=p?'var(--amber)':'var(--dim)';
+  if(p) show(idx+1); else clearTimeout(timer); }
+
+document.body.addEventListener('click',()=>setPlaying(!playing));
+document.addEventListener('keydown',e=>{
+  if(e.key==='ArrowRight'){ playing=false; setPlaying(false); show(idx+1); }
+  else if(e.key==='ArrowLeft'){ playing=false; setPlaying(false); show(idx-1); }
+  else if(e.key===' '){ e.preventDefault(); setPlaying(!playing); }
+});
+show(0);
+</script></body></html>
