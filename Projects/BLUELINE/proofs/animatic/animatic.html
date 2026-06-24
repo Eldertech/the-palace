@@ -99,6 +99,7 @@
   <div class="bar">
     <span id="conn"><span class="dot" id="dot"></span>connecting…</span>
     <button class="btn" id="selfplay">▶ self-play (no Ableton)</button>
+    <button class="btn on" id="pulsebtn">◉ beat pulse: on</button>
     <span class="dim" id="srcnote">driven by the relay — open with Ableton + the M4L devices playing</span>
   </div>
 
@@ -238,8 +239,13 @@ function onBeat(bar,beat,playing){
   if(idx!==curShot){curShot=idx;renderActive(idx);}
   updateTracksPlayhead(tb);
 }
-let pulseT=null;
-function pulse(){const p=document.getElementById('pulse');p.style.borderWidth='5px';clearTimeout(pulseT);pulseT=setTimeout(()=>p.style.borderWidth='0px',90);}
+let pulseT=null, pulseOn=true;
+function pulse(){if(!pulseOn)return;const p=document.getElementById('pulse');p.style.borderWidth='5px';clearTimeout(pulseT);pulseT=setTimeout(()=>p.style.borderWidth='0px',90);}
+document.getElementById('pulsebtn').addEventListener('click',function(){
+  pulseOn=!pulseOn; this.classList.toggle('on',pulseOn);
+  this.textContent=(pulseOn?'◉ beat pulse: on':'○ beat pulse: off');
+  if(!pulseOn){const p=document.getElementById('pulse');p.style.borderWidth='0px';clearTimeout(pulseT);}  // clear any lingering frame
+});
 
 // ---- storyboard from a Live clip scan: clip name + color + start + length ---
 let scanBuf=null, scanCount=0;
@@ -339,9 +345,10 @@ document.getElementById('selfplay').addEventListener('click',function(){
     if(selfTB>endTB)selfTB=0; },msPer);
 });
 
-// boot
-(async function(){
-  try{const r=await fetch('storyboard.json',{cache:'no-store'});if(r.ok){const j=await r.json(); if(j&&j.shots)SB=j;}}catch(e){}
+// boot — the animatic is driven by EMBED (fallback) + the live Boards scan. It does NOT
+// fetch the M0 previz storyboard.json (the relay serves that at /storyboard.json) — doing so
+// mislabeled the title ("M0 Previz · r4ng3r") and bled in M0's 8 shots until the live scan.
+(function(){
   if(SB&&SB.bible){tempo=SB.bible.tempo;fps=SB.bible.fps;BPB=SB.bible.beats_per_bar;document.getElementById('title').textContent=(SB.bible.title||'BLUELINE · Animatic');}
   applyBible(tempo,fps,BPB);buildStrip();renderActive(-1);connect();
 })();

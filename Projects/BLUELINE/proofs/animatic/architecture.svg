@@ -1,0 +1,93 @@
+<svg width="100%" viewBox="0 0 680 772" xmlns="http://www.w3.org/2000/svg" role="img" font-size="12">
+  <title>BLUELINE — the live clock loop</title>
+  <desc>How the animatic plays the rendered boards in time with Ableton: the Ableton Set's Transport (MASTER) and ClipScan (SCANNER, on the Boards track) devices emit OSC over UDP port 9001 to the relay osc_ws_relay.py, which rebroadcasts every message as JSON over WebSocket port 8770 to the animatic.html browser player, which builds its storyboard from the Boards scan and shows each board in time. The locked clock: frames per beat = (fps x 60) / tempo = 12, whole, so every clip lands on an exact frame.</desc>
+  <style>
+    .bg{fill:#15161a}
+    .panel{fill:#1d1f25;stroke:#2c2e36;stroke-width:1}
+    .panel2{fill:#23262d;stroke:#2c2e36;stroke-width:1}
+    .wire{fill:#101216;stroke:#2c2e36;stroke-width:1}
+    .callout{fill:#1d1f25;stroke:#e0a83a;stroke-width:1.5}
+    text{font-family:'Manrope',system-ui,sans-serif;fill:#e9e7e2}
+    .disp{font-family:'Anton',Impact,sans-serif;letter-spacing:.04em}
+    .serif{font-family:'Cormorant',Georgia,serif}
+    .mono{font-family:'JetBrains Mono',ui-monospace,Menlo,monospace}
+    .amber{fill:#e0a83a}.dim{fill:#8b8d96}.ink{fill:#e9e7e2}.good{fill:#7bbf6a}.blue{fill:#6aa0c9}
+    .lbl{letter-spacing:.06em}
+  </style>
+  <defs>
+    <marker id="ar" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M2 1L8 5L2 9" fill="none" stroke="#e0a83a" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+    </marker>
+  </defs>
+
+  <rect class="bg" x="0" y="0" width="680" height="772"/>
+
+  <!-- header -->
+  <text class="disp amber" x="24" y="38" font-size="25">BLUELINE · THE LIVE CLOCK LOOP</text>
+  <text class="serif dim" x="24" y="59" font-size="15" font-style="italic">how the animatic plays the rendered boards in time with Ableton — the music leads, the boards follow</text>
+
+  <!-- STAGE 1 · ABLETON -->
+  <rect class="panel" x="24" y="76" width="632" height="134" rx="10"/>
+  <text class="mono amber lbl" x="40" y="98" font-size="11">ABLETON LIVE — YOUR SET · THE SOURCE OF TRUTH THAT IS NOT THE PIXELS</text>
+  <!-- transport device -->
+  <rect class="panel2" x="40" y="108" width="600" height="42" rx="6"/>
+  <rect class="amber" x="40" y="108" width="4" height="42"/>
+  <text class="mono ink" x="54" y="126" font-size="12">Blueline Transport <tspan class="amber">[MASTER]</tspan><tspan class="dim">  · on a clock track · one per Set</tspan></text>
+  <text class="serif dim" x="54" y="142" font-size="13">reads the tempo + the arrangement Locators (the sections)</text>
+  <!-- clipscan device -->
+  <rect class="panel2" x="40" y="156" width="600" height="42" rx="6"/>
+  <rect class="blue" x="40" y="156" width="4" height="42"/>
+  <text class="mono ink" x="54" y="174" font-size="12">Blueline ClipScan <tspan class="blue">[SCANNER]</tspan><tspan class="dim">  · on the </tspan><tspan class="ink">Boards</tspan><tspan class="dim"> track · one per content track</tspan></text>
+  <text class="serif dim" x="54" y="190" font-size="13">reads its own 6 MIDI clips — name = the prompt, position+length = the timing</text>
+
+  <!-- arrow 1 -->
+  <line x1="340" y1="210" x2="340" y2="226" stroke="#e0a83a" stroke-width="1.4" marker-end="url(#ar)"/>
+
+  <!-- WIRE 1 · OSC -->
+  <rect class="wire" x="24" y="230" width="632" height="128" rx="8"/>
+  <text class="mono amber lbl" x="40" y="250" font-size="11">OSC / UDP · 127.0.0.1:9001  — one small local hop</text>
+  <text class="mono ink" x="40" y="272" font-size="11">/transport/bible<tspan class="dim">    tempo · fps · sig         on load / tempo change</tspan></text>
+  <text class="mono ink" x="40" y="290" font-size="11">/transport/beat<tspan class="dim">     bar · beat · playing      ~20 Hz while running</tspan></text>
+  <text class="mono ink" x="40" y="308" font-size="11">/transport/section<tspan class="dim">  name · start · length     on entering a Locator</tspan></text>
+  <text class="mono ink" x="40" y="326" font-size="11">/Boards/scan · clip×6 · scan_end<tspan class="dim">        one-shot, on Stop / SCAN</tspan></text>
+  <text class="mono dim" x="40" y="346" font-size="10">the scan is namespaced by the track name → a track called “Boards” emits /Boards/* (placement is the config)</text>
+
+  <!-- arrow 2 -->
+  <line x1="340" y1="358" x2="340" y2="374" stroke="#e0a83a" stroke-width="1.4" marker-end="url(#ar)"/>
+
+  <!-- STAGE 2 · RELAY -->
+  <rect class="panel" x="24" y="378" width="632" height="66" rx="10"/>
+  <text class="mono amber lbl" x="40" y="398" font-size="11">RELAY · osc_ws_relay.py  (Shop machinery, no GPU)</text>
+  <text class="serif ink" x="40" y="418" font-size="13">rebroadcasts every OSC message as JSON to all browsers · also serves /animatic and /boards</text>
+  <text class="mono dim" x="40" y="434" font-size="10">git is ground truth; the wire is just status — message jitter never reaches the deterministic render</text>
+
+  <!-- arrow 3 -->
+  <line x1="340" y1="444" x2="340" y2="460" stroke="#e0a83a" stroke-width="1.4" marker-end="url(#ar)"/>
+
+  <!-- WIRE 2 · WS -->
+  <rect class="wire" x="24" y="464" width="632" height="48" rx="8"/>
+  <text class="mono amber lbl" x="40" y="484" font-size="11">WebSocket / JSON · 127.0.0.1:8770/ws</text>
+  <text class="mono dim" x="40" y="502" font-size="11">the same messages, fanned out to every connected browser (clock client · previz · animatic · the render runner)</text>
+
+  <!-- arrow 4 -->
+  <line x1="340" y1="512" x2="340" y2="528" stroke="#e0a83a" stroke-width="1.4" marker-end="url(#ar)"/>
+
+  <!-- STAGE 3 · ANIMATIC -->
+  <rect class="panel" x="24" y="532" width="632" height="118" rx="10"/>
+  <text class="mono amber lbl" x="40" y="552" font-size="11">ANIMATIC · animatic.html  (the browser player)</text>
+  <text class="serif ink" x="40" y="574" font-size="13">▸ builds its storyboard from the Boards scan — 6 Live clips → the 6 rendered boards</text>
+  <text class="serif ink" x="40" y="594" font-size="13">▸ the playhead (/transport/beat) chooses which board is on screen, right now</text>
+  <text class="serif ink" x="40" y="614" font-size="13">▸ renders the real board PNG in time, beat-locked — an instrument, not a video</text>
+  <text class="mono dim" x="40" y="636" font-size="10">filmstrip of all 6 · determinism HUD · section read-out · every scanner track as a lane</text>
+
+  <!-- CALLOUT · the locked clock -->
+  <rect class="callout" x="24" y="664" width="632" height="92" rx="10"/>
+  <text class="mono amber lbl" x="40" y="684" font-size="11">THE LOCKED CLOCK — what makes it an instrument</text>
+  <text class="mono ink" x="40" y="704" font-size="12.5">frames_per_beat = (fps × 60) ÷ tempo = (24 × 60) ÷ 120 = <tspan class="good">12 · whole ✓</tspan><tspan class="dim">   (frames/sec × sec/min ÷ beats/min)</tspan></text>
+  <text class="mono ink" x="40" y="722" font-size="12.5">frame = clip_start_beats × frames_per_beat<tspan class="dim">    →  a clip at bar 5 = 16 beats → frame 192</tspan></text>
+  <text class="serif amber" x="40" y="744" font-size="13.5">the clip's position + length is the EDIT · the clip's name is the CONTENT — two independent layers</text>
+
+  <!-- footer -->
+  <text class="mono dim" x="24" y="768" font-size="10">Loudon Live · Autodidact Polymaths</text>
+  <text class="mono dim" x="656" y="768" font-size="10" text-anchor="end">BLUELINE · animatic · Track III clock</text>
+</svg>
