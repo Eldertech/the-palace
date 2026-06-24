@@ -55,6 +55,8 @@ links:
 
 # Palace Map
 
+![[Palace Map — hero.png]]
+
 The palace is a graph. Every entry is a node; every typed link is a directed or bidirectional edge. Every entry is both data to be read or the spirit to enchant an agent. The [[JEWEL]] gives an agent its philosophical orientation — who Loudon is, what the palace is for, how to move. The Palace Map gives it something different: **topological awareness**. Where this node(page, entry) sits in the whole organism. How central it is. What it connects to at two hops that it doesn't yet know about. Which neighborhoods are dense, which are sparse.
 
 A new enchanted agent, spawned into one entry, has local awareness by default — it knows its own typed links in and out. The Palace Map gives it **spatial self-knowledge** before it reads anything else.

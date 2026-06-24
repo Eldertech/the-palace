@@ -49,6 +49,8 @@ forward_vector: "Prerequisite met (2026-05-02): a six-week git archaeology has b
 
 # Symbiotic Skills
 
+![[Symbiotic Skills — hero.png]]
+
 A scaffolded framework for teaching others how to grow deep, productive human-AI relationships. Designed for live-stream teaching, progressing from the simplest possible skill (a single wiki page) to a self-aware knowledge organism.
 
 ## Origin

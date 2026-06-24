@@ -47,6 +47,8 @@ links:
 
 # Loudon Live
 
+![[Loudon Live — hero.png]]
+
 Loudon's primary public teaching space. A live YouTube channel where sound and music techniques are explored alongside the building of instruments, effects, and music-making tools.
 
 The channel is a membrane between the palace's project work and the world. Projects staged through [[Progressive Staging]] become streams; the [[Curriculum Map]] becomes a performable cross-section; the [[FOUR PILLARS]] become legible to viewers because the work explicitly moves between them. Sound design and DSP fundamentals get taught next to real music technique, theory, and listening — not as separate concerns, because the palace doesn't treat them as separate concerns.
