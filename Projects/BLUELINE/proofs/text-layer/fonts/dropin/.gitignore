@@ -1,0 +1,5 @@
+# dafont / other manually-downloaded fonts land here and are auto-discovered by the
+# sampler + harness, but NOT committed — their licenses vary (many dafont fonts are
+# "free for personal use" only). Keep the folder, ignore its contents.
+*
+!.gitignore

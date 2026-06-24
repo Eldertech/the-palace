@@ -27,7 +27,29 @@ SPEC = json.load(open(os.path.join(HERE, "text-prompts.json")))
 R = SPEC["render"]
 HOST = "127.0.0.1:8188"; CLIENT = uuid.uuid4().hex
 STYLE, NEG = SPEC["style_suffix"], SPEC["negative"]
-FONT = os.environ.get("TEXT_FONT", "/System/Library/Fonts/Supplemental/Chalkduster.ttf")  # organic hand skeleton — NOT mechanical Impact, so the "font" stops dominating
+FONT = os.environ.get("TEXT_FONT", "/System/Library/Fonts/Supplemental/Chalkduster.ttf")  # default hand skeleton
+SUP = "/System/Library/Fonts/Supplemental"
+LIBDIR = os.path.join(HERE, "fonts", "lib"); DROPDIR = os.path.join(HERE, "fonts", "dropin")
+SYS_ALIAS = {  # friendly name -> (path, ttc-index) for the curated system faces
+    "chalkduster": (f"{SUP}/Chalkduster.ttf", 0), "bradley hand": (f"{SUP}/Bradley Hand Bold.ttf", 0),
+    "brush script": (f"{SUP}/Brush Script.ttf", 0), "trattatello": (f"{SUP}/Trattatello.ttf", 0),
+    "herculanum": (f"{SUP}/Herculanum.ttf", 0), "marker felt": (f"{SUP}/MarkerFelt.ttc", 0),
+    "chalkboard se": (f"{SUP}/ChalkboardSE.ttc", 0), "impact": (f"{SUP}/Impact.ttf", 0),
+    "zapfino": (f"{SUP}/Zapfino.ttf", 0), "snell roundhand": (f"{SUP}/SnellRoundhand.ttc", 0),
+}
+def resolve_font(name):
+    """font name (or path) -> (path, ttc-index). searches: path · system alias · fonts/lib · fonts/dropin · Supplemental."""
+    if not name: return (FONT, 0)
+    if os.path.exists(name): return (name, 0)
+    key = name.lower()
+    if key in SYS_ALIAS and os.path.exists(SYS_ALIAS[key][0]): return SYS_ALIAS[key]
+    flat = name.replace(" ", "")
+    for d in (LIBDIR, DROPDIR):
+        for cand in (f"{d}/{flat}.ttf", f"{d}/{name}.ttf", f"{d}/{flat}.otf", f"{d}/{name}.otf"):
+            if os.path.exists(cand): return (cand, 0)
+    for ext in (".ttf", ".ttc", ".otf"):
+        if os.path.exists(f"{SUP}/{name}{ext}"): return (f"{SUP}/{name}{ext}", 0)
+    print(f"  font '{name}' not found -> default Chalkduster", flush=True); return (FONT, 0)
 
 def req(method, path, data=None):
     h = {"Content-Type": "application/json"} if data else {}
@@ -40,13 +62,13 @@ def upload(path):
                           "-F", "overwrite=true", f"http://{HOST}/upload/image"], capture_output=True, text=True, timeout=40)
     return json.loads(out.stdout).get("name", name)
 
-def word_skeleton(words, dest):
+def word_skeleton(words, dest, font=FONT, idx=0):
     """White word(s) on black, heavy font, auto-fit + greedy-wrapped, centered — the legible skeleton."""
     W, H = R["size"]; img = Image.new("RGB", (W, H), "black"); d = ImageDraw.Draw(img)
     maxw, maxh = W * 0.86, H * 0.74
     chosen = None
     for size in range(360, 48, -8):
-        f = ImageFont.truetype(FONT, size)
+        f = ImageFont.truetype(font, size, index=idx)
         lines, cur = [], ""
         for w in words.split():
             t = (cur + " " + w).strip()
@@ -58,7 +80,7 @@ def word_skeleton(words, dest):
         asc, desc = f.getmetrics(); lh = (asc + desc) * 1.06
         if lines and max(d.textlength(l, font=f) for l in lines) <= maxw and lh * len(lines) <= maxh:
             chosen = (f, lines, lh); break
-    f, lines, lh = chosen or (ImageFont.truetype(FONT, 64), [words], 80)
+    f, lines, lh = chosen or (ImageFont.truetype(font, 64, index=idx), [words], 80)
     total = lh * len(lines); y = (H - total) / 2
     for l in lines:
         x = (W - d.textlength(l, font=f)) / 2
@@ -145,7 +167,8 @@ def main(only, seeds, mode, denoise):
     n = 0
     print(f"rendering {len(prompts)} prompt(s) x {seeds} seed(s) [{mode}{', denoise '+str(denoise) if mode=='stylize' else ''}] on {HOST}", flush=True)
     for p in prompts:
-        skel_name = upload(word_skeleton(p["words"], os.path.join(SKEL, f'{p["id"]}.png'))) if mode in ("skeleton", "stylize") else None
+        fp, fi = resolve_font(p.get("font"))   # per-voice font (browse the sampler; falls back to Chalkduster)
+        skel_name = upload(word_skeleton(p["words"], os.path.join(SKEL, f'{p["id"]}.png'), fp, fi)) if mode in ("skeleton", "stylize") else None
         for sd in base_seeds:
             init_name, dn = None, 1.0
             if mode == "stylize":   # rich-first / stylize-last: desaturate the photoreal -> img2img to pen-flow ink, canny still locking the letters
