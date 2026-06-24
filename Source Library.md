@@ -32,6 +32,8 @@ links:
 ---
 
 # Source Library
+
+![[Source Library — hero.png]]
 ## The Thinkers, Artists, and Makers Who Teach Pattern Recognition
 
 This is the intellectual and artistic foundation of the 4 Pillars framework. Not a bibliography—a **curated ecosystem** of sources chosen because they:
