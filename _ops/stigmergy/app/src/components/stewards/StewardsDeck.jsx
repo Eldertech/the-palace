@@ -140,9 +140,6 @@ export default function StewardsDeck() {
 
   return (
     <div data-testid="stewards-screen" style={{ width: '100%' }}>
-      <Banner as="h1" strong style={{ fontSize: 32, margin: '0 0 4px' }}>
-        stewards -- advance who waits
-      </Banner>
       <div style={{ color: 'var(--phosphor-dim)', textShadow: 'none', marginBottom: 10, fontSize: 13 }}>
         {stewards.length} registered &middot; {readyCount} with grants waiting.
         {data?.stubbed ? <span style={{ color: 'var(--warn)', textShadow: 'var(--glow)', marginLeft: 10 }}>&middot; stub worker (no live cycle)</span> : null}

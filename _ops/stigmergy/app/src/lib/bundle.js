@@ -27,6 +27,26 @@ export function bundleDirFor(absEntryPath) {
   return null;
 }
 
+// Locate the entry's avatar icon inside its bundle. Convention (set by the
+// hero/icon enrichment): `<bundle>/<Title> — icon.png`. Prefer that exact name
+// (the bundle stem is the entry title); else fall back to the first file
+// matching `* — icon.png`. Returns a palace-relative path (servable by
+// GET /api/file) or null when the bundle carries no icon.
+export function iconRelFor(palaceRoot, absBundleDir) {
+  if (typeof absBundleDir !== 'string' || absBundleDir === '') return null;
+  const root = resolve(palaceRoot);
+  const toRel = (full) => (full.startsWith(root + sep) ? full.slice(root.length + 1) : full);
+  const stem = basename(absBundleDir);
+  const preferred = join(absBundleDir, `${stem} — icon.png`);
+  try {
+    if (existsSync(preferred) && statSync(preferred).isFile()) return toRel(preferred);
+  } catch (_) { /* fall through to the scan */ }
+  let entries;
+  try { entries = readdirSync(absBundleDir, { withFileTypes: true }); } catch (_) { return null; }
+  const hit = entries.find((e) => e.isFile() && / — icon\.png$/i.test(e.name));
+  return hit ? toRel(join(absBundleDir, hit.name)) : null;
+}
+
 // Classify a bundle file by extension so the UI can render media inline
 // (image/audio/video/html) and treat the rest as openable files.
 export function classifyFile(name) {

@@ -206,17 +206,14 @@ export default function EntryEditor({ path, index, onCancel, onSaved }) {
           : <span data-testid="editor-clean" style={{ color: 'var(--phosphor-dim)', fontSize: 12 }}>clean</span>}
       </div>
 
-      <div style={{ fontSize: 11, marginBottom: 12, color: 'var(--phosphor-dim)' }}>
-        Edit freely, then <b style={{ color: 'var(--ansi-bright-magenta)' }}>trickster commit</b> at the bottom — it writes straight to the entry, branded <code>Palace-Author: trickster</code> · <code>verify: unverified</code>. Git is the net; [untrick] reverts.
-        {!careAllowed ? (
-          <div data-testid="editor-canon-notice" style={{
-            marginTop: 6, color: 'var(--ansi-bright-magenta)', textShadow: 'var(--glow)',
-            border: '1px solid var(--ansi-bright-magenta)', padding: '4px 8px', display: 'inline-block',
-          }}>
-            ※ canon — the careful save refuses this path; only a trickster commit can write here.
-          </div>
-        ) : null}
-      </div>
+      {!careAllowed ? (
+        <div data-testid="editor-canon-notice" style={{
+          fontSize: 11, marginBottom: 12, color: 'var(--ansi-bright-magenta)', textShadow: 'var(--glow)',
+          border: '1px solid var(--ansi-bright-magenta)', padding: '4px 8px', display: 'inline-block',
+        }}>
+          ※ canon — the careful save refuses this path; only a trickster commit can write here.
+        </div>
+      ) : null}
 
       <div style={{
         display: 'grid', gridTemplateColumns: 'minmax(0, 1fr) 380px',

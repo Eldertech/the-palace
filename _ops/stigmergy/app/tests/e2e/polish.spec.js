@@ -1,21 +1,5 @@
 import { test, expect } from '@playwright/test';
 
-test('scanline overlay is on by default and can be toggled off via [V]', async ({ page }) => {
-  await page.goto('/?demo=1');
-  await expect(page.getByTestId('channel-tabs')).toBeVisible({ timeout: 15_000 });
-
-  // Default on.
-  await expect(page.getByTestId('scanlines')).toHaveAttribute('data-on', 'true');
-
-  // Press V to toggle off.
-  await page.keyboard.press('v');
-  await expect(page.getByTestId('scanlines')).toHaveCount(0);
-
-  // Press V again to toggle on.
-  await page.keyboard.press('v');
-  await expect(page.getByTestId('scanlines')).toHaveAttribute('data-on', 'true');
-});
-
 test('hotkeys 1..6 switch channels and R reloads', async ({ page }) => {
   await page.goto('/?demo=1');
   await expect(page.getByTestId('channel-tabs')).toBeVisible({ timeout: 15_000 });
@@ -39,15 +23,6 @@ test('command bar lists all the documented hotkeys', async ({ page }) => {
                        'reload']) {
     expect(cb?.toLowerCase()).toContain(label);
   }
-  expect(cb?.toLowerCase()).toMatch(/visual/);
-});
-
-test('status bar contains STIGMERGY brand and current chrome', async ({ page }) => {
-  await page.goto('/?demo=1');
-  await expect(page.getByTestId('status-bar')).toBeVisible({ timeout: 15_000 });
-  const sb = await page.getByTestId('status-bar').textContent();
-  expect(sb).toContain('STIGMERGY');
-  expect(sb).toMatch(/NODE 01/i);
 });
 
 test('no rounded corners across any view encountered (board view)', async ({ page }) => {

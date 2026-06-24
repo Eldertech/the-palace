@@ -27,7 +27,11 @@ export function buildRefIndex(entrySummaries) {
     if (!s || typeof s.path !== 'string') continue;
     const name = basenameNoExt(s.path);
     if (name && !map.has(name)) {
-      map.set(name, { path: s.path, hasBundle: s.has_bundle === true });
+      map.set(name, {
+        path: s.path,
+        hasBundle: s.has_bundle === true,
+        icon: typeof s.icon === 'string' && s.icon.trim() !== '' ? s.icon : null,
+      });
     }
   }
   return map;
@@ -53,7 +57,7 @@ export function resolveRef(refIndex, rawName) {
   if (!name || !refIndex || typeof refIndex.get !== 'function') return null;
   const hit = refIndex.get(name);
   if (!hit) return null;
-  return { name, path: hit.path, hasBundle: hit.hasBundle === true };
+  return { name, path: hit.path, hasBundle: hit.hasBundle === true, icon: hit.icon ?? null };
 }
 
 // Build the obsidian:// URL that opens a palace-relative path inside the

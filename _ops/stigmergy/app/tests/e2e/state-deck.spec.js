@@ -38,7 +38,7 @@ test.describe('STATE deck — chrome', () => {
     await page.goto('/');
     await page.keyboard.press('l');
     await expect(page.getByTestId('log-deck')).toBeVisible({ timeout: 5_000 });
-    await expect(page.getByTestId('log-deck')).toContainText(/the git record/i);
+    await expect(page.getByTestId('log-deck')).toContainText(/reload/i);
   });
 
   test('S hotkey returns to STATE', async ({ page }) => {

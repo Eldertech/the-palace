@@ -94,8 +94,42 @@ export default function EntryReader({
   // drawn inside the editor, not here.
   const editAllow = checkPathSafety(entry.path);
 
+  // The entry's hero ("<Title> — hero.png" in its bundle) becomes a faint,
+  // darkened backdrop behind the top of the reading column — ambient identity,
+  // never at the cost of phosphor legibility. Prefer the title-matched hero,
+  // else any "* — hero.png". Served by the existing GET /api/file.
+  const bundleFiles = entry.bundle?.files || [];
+  const heroFile = bundleFiles.find((f) => f.name === `${entry.title} — hero.png`)
+    || bundleFiles.find((f) => / — hero\.png$/i.test(f.name));
+  const heroPath = heroFile ? heroFile.relPath : null;
+
   return (
-    <div data-testid="entry-reader" data-path={entry.path}>
+    <div data-testid="entry-reader" data-path={entry.path} style={{ position: 'relative', zIndex: 1 }}>
+      {heroPath ? (
+        <div
+          aria-hidden="true"
+          data-testid="entry-hero-backdrop"
+          style={{
+            // Fixed to the viewport top so it stays put as the entry scrolls —
+            // a persistent "which page am I on" reminder. EntryReader is its own
+            // stacking context (z-index:1 above), so this z-index:0 sits above
+            // the Shell's opaque background but below the entry content (z-index:1).
+            position: 'fixed', top: 0, left: 0, right: 0, height: 540,
+            zIndex: 0, pointerEvents: 'none',
+            // Image under a top-to-bottom veil that fades it into the terminal
+            // black before the body text begins; desaturated + dimmed so it
+            // reads as ambient, not as a competing surface.
+            backgroundImage:
+              `linear-gradient(to bottom, color-mix(in srgb, var(--bg) 55%, transparent) 0%, var(--bg) 95%), url("/api/file?path=${encodeURIComponent(heroPath)}")`,
+            backgroundSize: 'cover',
+            backgroundPosition: 'center 22%',
+            backgroundRepeat: 'no-repeat',
+            filter: 'saturate(0.8) brightness(1.2)',
+            opacity: 0.72,
+          }}
+        />
+      ) : null}
+      <div style={{ position: 'relative', zIndex: 1 }}>
       <div style={{ marginBottom: 8 }}>
         {onGoBack ? (
           <span
@@ -186,6 +220,7 @@ export default function EntryReader({
           />
           <BundlePanel bundle={entry.bundle} />
         </div>
+      </div>
       </div>
     </div>
   );
