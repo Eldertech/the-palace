@@ -30,8 +30,8 @@ ACCEPT / borderline (QA over-flagged — likely leave): STIGMERGY, Excellent Adv
 
 Fix recipe: build `prompts-wave2-fix.json` with corrected prompts (strengthen ANTI_TEXT with "no signature/watermark/edge-label"; add anti-gloss "flat, matte, visible paper grain, no specular, no smooth gradients" to CGI ones; explicit "a woman" for female-misses; clearer single image for metaphor-misses). Delete ONLY the failing png(s) per entry, `generate` (resumable re-renders just those), re-QA, `place`, commit.
 
-## NEW standing directive — apply to everything (from Loudon, 2026-06-24)
-**Embed women / feminine energy in all imagery.** Never let a scene go male-dominated; when >1 figure, include women; lean female/androgynous for single archetypes; bring the feminine in *especially* where the concept/history is male-dominated (Stoicism, math, science, philosophy). Saved as memory `female-representation-in-imagery` and folded into the Maker's locked Art Direction. This is why the 4 below are being regenerated.
+## Standing directive — gender mix (from Loudon, 2026-06-24, RECALIBRATED same day)
+**Aim for an even men/women mix in all imagery — balanced, neither male- nor female-dominated.** *First* form of this directive pushed "embed women heavily / lean female / bring the feminine in especially where male-dominated"; after Wave 2 shipped, Loudon judged it **overshot into too-female-focused** and recalibrated: *"we need an even mix of men and women."* So: multi-figure scenes include both men and women; single archetypes **alternate** gender across entries (don't default either way); never all-male OR all-female. Saved as memory `female-representation-in-imagery` (updated) and folded into the Maker's locked Art Direction. **Future waves use the balanced version.**
 
 ## Current state (all committed on `main`)
 - **Faced so far:** 21 Projects/ + Kuramoto Coupling + Dub Lineage + 28 hubs/ceremonies (Wave 1). STIGMERGY display code (avatars + hero backdrop) is merged to main.
