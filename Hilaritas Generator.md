@@ -56,6 +56,8 @@ forward_vector: "I want to build out the learning architect concept into a speci
 
 # Hilaritas Generator
 
+![[Hilaritas Generator — hero.png]]
+
 The classroom — or the live stream, or any learning space — reconceived as a machine for producing Spinozist **hilaritas**: the active, whole-being joy that accompanies an increase in power-to-act (as distinct from *titillatio*, localized pleasure).
 
 ## The Mechanism
