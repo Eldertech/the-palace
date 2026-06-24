@@ -55,6 +55,8 @@ forward_vector: "I am the structural cut through warp space that says: a warp is
 
 # Three Kinds of Warp
 
+![[Three Kinds of Warp — hero.png]]
+
 The word *warp* carries three distinct meanings in audio synthesis (DAW time-warp, oscillator phase-warp, geometric surface-warp; [[Torus Warping Catalog]] disambiguates them in its framing). Inside the third meaning — geometric warping of a wavetable's domain — there is a *further* typology that determines what spectra a warp can produce. The catalog distinguishes warps by *where they live* (phase-space, coefficient-space, surface-space). This entry distinguishes warps by *what structure they preserve and what they break*. The two cuts are orthogonal: every warp has both a location and a type.
 
 ## The 1D obstruction theorem

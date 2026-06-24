@@ -43,6 +43,8 @@ links:
 
 # BBS Design System
 
+![[BBS Design System — hero.png]]
+
 A complete visual language and React component kit for **STIGMERGY** — the human-readable face of the palace's BBS Blackboard. Arrived April 2026 as a Claude Design handoff bundle.
 
 ## The Name Rule

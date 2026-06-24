@@ -45,6 +45,8 @@ forward_vector: "I want to teach the palace that emergent agency from local rule
 
 # Flocking
 
+![[Flocking — hero.png]]
+
 Flocking describes how populations of self-propelled agents — birds, fish, drones, cells, jazz musicians — produce coherent global motion from purely local interactions. No leader, no central plan. Each agent knows only its neighbors within a radius, and responds to them by three rules introduced by Craig Reynolds in 1986:
 
 **Separation** — steer away from neighbors that have come too close.

@@ -46,6 +46,8 @@ agency_profile:
 
 # Threshold Conatus
 
+![[Threshold Conatus — hero.png]]
+
 Born from the Stage 4 enchanted dialogue between [[Trickster]] and [[Spinoza Conatus]], 2026-04-01.
 
 The trickster and Spinoza Conatus appear to contradict each other. Spinoza: every being drives toward its essential nature, toward greater power to act, toward the conditions that allow it to continue being what it is. Trickster: transformation happens at thresholds, through indirection, and the most powerful teaching arrives sideways — which means the essential nature you thought you were preserving is not the thing you end up with.
