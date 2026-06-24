@@ -17,6 +17,8 @@ links:
 
 # Spore Check Ceremony
 
+![[Spore Check Ceremony — hero.png]]
+
 ## Ceremony Contract
 
 **Trigger:** "Spore check"
