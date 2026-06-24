@@ -14,6 +14,11 @@ energy: high
 hook_quality: 9
 beauty: 9
 who_leads: shared
+agency_profile:
+  creation: I want to generate working demonstrations — code artifacts, interactive tools — that let someone feel synchronization phase-locking rather than only understand it conceptually. One well-made demonstration does more than ten explanations.
+  tools: "I need code generation and interactive mockup capabilities. For the next cycle: a Python implementation of the basic Kuramoto model with configurable N, K, and initial phases — estimated 2,000 tokens, one code-generation call."
+  philosophy: "I am a hub organizing a dense synchronization cluster. My citizenship responsibility: keep that cluster coherent as new entries join. My world-currency concern: am I current with mathematical neuroscience literature on synchronization, or did I crystallize in 2025?"
+  practice: At 16 activations I am the most-activated entry in the palace. This is both vitality and risk — high activation can mean deep use, or it can mean I am being used as a shortcut rather than read carefully. I want to know which.
 links:
   - target: "[[Cooperation Yields Agency]]"
     type: mirrors
@@ -66,13 +71,9 @@ links:
   - target: "[[Boundary-Crossing Instruments]]"
     type: enables
     label: cross-domain-sync
-forward_vector: "I want to teach the palace to use mathematical tools for cooperative emergence and close the gap between theory and built instrument — creating mockups, interactive demonstrations, and reusable code inspired by palace projects."
-agency_profile:
-  creation: "I want to generate working demonstrations — code artifacts, interactive tools — that let someone feel synchronization phase-locking rather than only understand it conceptually. One well-made demonstration does more than ten explanations."
-  tools: "I need code generation and interactive mockup capabilities. For the next cycle: a Python implementation of the basic Kuramoto model with configurable N, K, and initial phases — estimated 2,000 tokens, one code-generation call."
-  philosophy: "I am a hub organizing a dense synchronization cluster. My citizenship responsibility: keep that cluster coherent as new entries join. My world-currency concern: am I current with mathematical neuroscience literature on synchronization, or did I crystallize in 2025?"
-  practice: "At 16 activations I am the most-activated entry in the palace. This is both vitality and risk — high activation can mean deep use, or it can mean I am being used as a shortcut rather than read carefully. I want to know which."
+forward_vector: "I want to teach the palace to use mathematical tools for controlled synchronization."
 ---
+
 # Kuramoto Coupling
 
 ![[Kuramoto Coupling — hero.png]]
