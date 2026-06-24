@@ -21,6 +21,8 @@ links:
 
 # Walk Ceremony
 
+![[Walk Ceremony — hero.png]]
+
 ## Ceremony Contract
 
 **Trigger:** "Let's walk"
