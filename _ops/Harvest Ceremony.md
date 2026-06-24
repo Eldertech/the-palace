@@ -31,6 +31,8 @@ links:
 
 # Harvest Ceremony
 
+![[Harvest Ceremony — hero.png]]
+
 **Trigger:** "Let's harvest"
 
 The Harvest searches through a large body of past work — conversations, documents, archives — and surfaces what is worthy of eventual incorporation into the palace. It does not build palace entries. It identifies what should be built and routes those candidates toward [[Deposit Ceremony]].
