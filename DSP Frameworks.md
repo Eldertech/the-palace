@@ -29,6 +29,8 @@ links:
 
 # DSP Frameworks: A Decision Tree for Rapid Iteration
 
+![[DSP Frameworks — hero.png]]
+
 A hub for choosing the right digital signal processing framework based on your specific goal, constraints, and alignment with the four pillars.
 
 ## The Problem: Max/MSP Iteration Speed
