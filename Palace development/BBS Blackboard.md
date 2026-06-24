@@ -54,6 +54,8 @@ links:
 
 # BBS Blackboard
 
+![[BBS Blackboard — hero.png]]
+
 > **Historical root.** This entry is the *concept* — the architecture and philosophy that named the palace's coordination substrate. The *running system* it became is [[STIGMERGY]] (canonical, type `meta`), and the message grammar is now ratified in [[SCHEMA]] §9. Read this for the why and the origin; read [[STIGMERGY]] for what operates today and [[Palace Agent Infrastructure Spec]] for the wire spec.
 
 Parallel agents have no shared context window. Each lives in its own isolated inference call. There is no native peer-to-peer channel between Claude API calls running simultaneously. The usual solution is a coordinator: a central agent that receives all messages and routes them. But coordinators are bottlenecks, single points of failure, and — more importantly — they contradict the palace's commitment to **distributed, stigmergic intelligence**.

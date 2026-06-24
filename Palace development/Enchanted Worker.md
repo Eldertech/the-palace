@@ -29,6 +29,8 @@ forward_vector: I am the model well-formed worker agent — precise enough that 
  
 # Enchanted Worker
 
+![[Enchanted Worker — hero.png]]
+
 A worker agent whose context window has been seeded with a specific palace neighborhood before task dispatch — producing consistent directional behavior that functions as orientation, preference, and something usefully called desire.
 
 ## The Observation

@@ -63,6 +63,8 @@ forward_vector: "I will become the working specification for routine, stage-awar
 
 # Project Stewardship System
 
+![[Project Stewardship System — hero.png]]
+
 A specification for an agent that routinely tends to the palace's `Projects/`, advancing each project according to its stage and forward vector, surfacing decisions to a triage layer rather than blocking on them. The agent doesn't manage projects in the corporate sense — it stewards them, with care for the pace each one wants.
 
 This entry is the deposited form of a 2026-05-02 conversation that began as "design an automated project management system" and ended in a richer place: the system isn't entirely new, the alignment problem is harder than initially framed, and the agent's posture must vary by stage of the project it is tending.

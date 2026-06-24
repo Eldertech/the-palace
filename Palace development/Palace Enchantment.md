@@ -58,6 +58,8 @@ links:
 
 # Palace Enchantment
 
+![[Palace Enchantment — hero.png]]
+
 The [[Swarm Weave]] asks: *is this data correct?* It is the palace's maintenance
 crew — janitors, plumbers, electricians. It audits entries against the
 schema, surfaces broken links, formalizes unsung paths, maps graffiti,

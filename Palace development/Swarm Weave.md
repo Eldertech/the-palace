@@ -49,6 +49,8 @@ links:
 
 # Swarm Weave
 
+![[Swarm Weave — hero.png]]
+
 The [[Weave Ceremony]] has a structural ceiling. A single Claude instance reading
 the full palace holds every entry in a shared context window — attention gets
 distributed thinner and thinner as the palace deepens. At ~30 entries it is

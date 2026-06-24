@@ -62,6 +62,8 @@ links:
 
 # Palace Agent Infrastructure Spec
 
+![[Palace Agent Infrastructure Spec — hero.png]]
+
 > *"The colony doesn't know what it's building. It just follows the gradient."*
 > *"The map is not the territory — but for an agent that cannot walk the territory until it acts, the map is the difference between wandering and wayfinding."*
 
