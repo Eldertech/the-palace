@@ -53,6 +53,8 @@ agency_profile:
 
 # Spinoza Conatus
 
+![[Spinoza Conatus — hero.png]]
+
 In Spinoza's *Ethics*, conatus is the drive of every being to persist in its own nature — to continue being what it is, and to increase its power to act. This isn't a conscious choice; it's the fundamental tendency of existence itself. A rock persists in being a rock. A human persists in being human. An idea persists in being thought.
 
 Conatus is not static preservation. It's *active self-maintenance* — the continuous effort to maintain and enhance one's coherent existence. This makes it deeply dynamic. A being with high conatus isn't just surviving; it's thriving, expanding its capacity, increasing its engagement with the world.
