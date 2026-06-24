@@ -31,6 +31,8 @@ forward_vector: "I want to become an interactive teaching artifact — the HTML 
 
 # Piano String Inharmonicity
 
+![[Piano String Inharmonicity — hero.png]]
+
 The stretching of upper harmonics in stiff strings, making their partials sharp relative to integer multiples of the fundamental. This is what gives piano tone its characteristic "bell-like" quality and distinguishes it from idealized harmonic instruments.
 
 ## The Physics

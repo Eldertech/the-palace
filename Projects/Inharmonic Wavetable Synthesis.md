@@ -67,6 +67,8 @@ agency_profile:
 
 # Inharmonic Wavetable Synthesis
 
+![[Inharmonic Wavetable Synthesis — hero.png]]
+
 A novel synthesis architecture that uses two independent wavetables — one controlling partial amplitudes, one controlling partial frequencies — combined through an additive synthesis engine. The result is a two-dimensional timbral instrument where spectral shape and harmonic identity are independently expressive, modulatable axes. The central conceptual insight: **a flat horizontal line is the harmonic series. Every deviation from that line is inharmonicity. The shape of the deviation encodes the physics of a material.**
 
 This entry documents the architectural conclusions reached in a design session (April 2026) and establishes the forward vector toward both a Four Pillars teaching instrument and a commercial VST.
