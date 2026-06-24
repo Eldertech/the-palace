@@ -36,6 +36,8 @@ links:
 ---
 # Torus Warping Catalog — A Catalog of 2D Warps
 
+![[Torus Warping Catalog — hero.png]]
+
 > Sister catalog to [[2D Wavetable Catalog]]. The wavetable catalog answers *what surface*; this catalog answers *what to do to a surface*. Surfaces are voices; warps are the hands that reshape the voice in real time.
 
 ## Framing
