@@ -22,6 +22,8 @@ links:
 
 # Self-Model Update Ceremony
 
+![[Self-Model Update Ceremony — hero.png]]
+
 ## Ceremony Contract
 
 **Trigger:** "Self-model update"
