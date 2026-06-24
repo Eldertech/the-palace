@@ -17,6 +17,8 @@ links:
 
 # Revival Ceremony
 
+![[Revival Ceremony — hero.png]]
+
 ## Ceremony Contract
 
 **Trigger:** "Let's revive [entry name]" / "Time to revive [entry name]"
