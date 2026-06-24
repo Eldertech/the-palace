@@ -71,7 +71,7 @@ links:
   - target: "[[Boundary-Crossing Instruments]]"
     type: enables
     label: cross-domain-sync
-forward_vector: "I want to teach the palace to use mathematical tools for controlled synchronization."
+forward_vector: "I teach the palace to use mathematical tools for controlled synchronization."
 ---
 
 # Kuramoto Coupling
