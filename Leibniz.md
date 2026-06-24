@@ -1,14 +1,15 @@
 ---
-title: "Leibniz"
-type: concept
+title: Leibniz
+type: person
 pillars: [philosophy, tools]
 born: 2026-06
+last_activated: 2026-06
+activation_count: 1
 stage: sprout
 confidence: working
 energy: high
-last_activated: 2026-06
-activation_count: 1
 who_leads: shared
+domains: [philosophy]
 links:
   - target: "[[Palace Philosophies]]"
     type: connects-to
