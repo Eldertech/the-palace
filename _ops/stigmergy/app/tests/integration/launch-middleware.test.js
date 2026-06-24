@@ -146,3 +146,92 @@ describe('POST /api/launch/agent', () => {
     expect(res.body.construction.tiers[3].what).toMatch(/state \(/i);
   });
 });
+
+describe('POST /api/launch/ephemeral', () => {
+  let root;
+  beforeEach(() => { root = makeTempPalace(); });
+  afterEach(() => { rmSync(root, { recursive: true, force: true }); });
+
+  // The ephemeral path needs no steward roster — it constructs ANY page. An
+  // injected builder stands in for buildEphemeralPrompt so the route is exercised
+  // without walking a palace.
+  const okBuild = (o) => ({ ok: true, status: 'built', home: o.title, stage: 'growing', full: `EPHEMERAL for ${o.title} (mode ${o.mode})` });
+
+  test('400 when no home is given', async () => {
+    const res = await request(makeServer(root, { buildEphemeralPromptImpl: okBuild }))
+      .post('/api/launch/ephemeral').send({});
+    expect(res.status).toBe(400);
+  });
+
+  test('preview returns the tiered construction + the constructed prompt, built in interactive mode at cycle 1', async () => {
+    let built = null;
+    const buildEphemeralPromptImpl = (o) => { built = o; return okBuild(o); };
+    const res = await request(makeServer(root, { buildEphemeralPromptImpl }))
+      .post('/api/launch/ephemeral').send({ home: 'Murmuration', mandate: 'sketch the boids', preview: true });
+    expect(res.status).toBe(200);
+    expect(res.body.preview).toBe(true);
+    expect(res.body.ephemeral).toBe(true);
+    expect(res.body.cycle).toBe(1);                  // a one-off is always a fresh first activation
+    expect(res.body.prompt).toContain('EPHEMERAL for Murmuration');
+    expect(res.body.construction.tiers).toHaveLength(4);
+    expect(res.body.construction.tiers[3].loads).toBe('injected');
+    expect(res.body.construction.ephemeral).toBe(true);
+    expect(res.body.construction.framing).toMatch(/one-off/i);
+    expect(res.body.construction.framing).toMatch(/not registered as a permanent steward/i);
+    // the builder was driven by title, in interactive mode, with the mandate + normalized include
+    expect(built.title).toBe('Murmuration');
+    expect(built.mode).toBe('interactive');
+    expect(built.extraMandate).toBe('sketch the boids');
+    expect(built.include).toEqual({ board: true, history: true, pageChange: true, staging: true });
+  });
+
+  test('launch hands the constructed prompt + model/effort to the launcher', async () => {
+    let launched = null;
+    const launchImpl = (prompt, o) => { launched = { prompt, model: o.model, effort: o.effort }; return { launched: true, supported: true, scriptPath: '/tmp/x/launch.command' }; };
+    const res = await request(makeServer(root, { buildEphemeralPromptImpl: okBuild, launchImpl }))
+      .post('/api/launch/ephemeral').send({ home: 'Murmuration', model: 'claude-sonnet-4-6', effort: 'high' });
+    expect(res.status).toBe(200);
+    expect(res.body.launched).toBe(true);
+    expect(res.body.ephemeral).toBe(true);
+    expect(res.body.cycle).toBe(1);
+    expect(launched.prompt).toBe('EPHEMERAL for Murmuration (mode interactive)');
+    expect(launched.model).toBe('claude-sonnet-4-6');
+    expect(launched.effort).toBe('high');
+  });
+
+  test('404 when the page is not found', async () => {
+    const buildEphemeralPromptImpl = () => ({ ok: false, status: 'not_found', home: 'Ghost' });
+    const res = await request(makeServer(root, { buildEphemeralPromptImpl }))
+      .post('/api/launch/ephemeral').send({ home: 'Ghost' });
+    expect(res.status).toBe(404);
+    expect(res.body.status).toBe('not_found');
+  });
+
+  test('422 when the page has no frontmatter (a learning material, not a canon entry)', async () => {
+    const buildEphemeralPromptImpl = () => ({ ok: false, status: 'no_frontmatter', home: 'Plain' });
+    const res = await request(makeServer(root, { buildEphemeralPromptImpl }))
+      .post('/api/launch/ephemeral').send({ home: 'Plain' });
+    expect(res.status).toBe(422);
+    expect(res.body.error).toMatch(/no frontmatter/i);
+  });
+
+  test('501 when the host is not macOS (client falls back to copy)', async () => {
+    const launchImpl = () => ({ launched: false, supported: false, error: 'open-in-terminal is macOS-only — use copy prompt.' });
+    const res = await request(makeServer(root, { buildEphemeralPromptImpl: okBuild, launchImpl }))
+      .post('/api/launch/ephemeral').send({ home: 'Murmuration' });
+    expect(res.status).toBe(501);
+    expect(res.body.supported).toBe(false);
+  });
+
+  test('include toggles pass to the builder and trim the Tier-3 construction summary', async () => {
+    let built = null;
+    const buildEphemeralPromptImpl = (o) => { built = o; return okBuild(o); };
+    const res = await request(makeServer(root, { buildEphemeralPromptImpl }))
+      .post('/api/launch/ephemeral').send({ home: 'Murmuration', include: { board: false, staging: false }, preview: true });
+    expect(res.status).toBe(200);
+    expect(built.include).toEqual({ board: false, history: true, pageChange: true, staging: false });
+    expect(res.body.construction.tiers[3].what).not.toMatch(/board slice/i);
+    expect(res.body.construction.tiers[3].what).toMatch(/recent history/i);
+    expect(res.body.construction.tiers[3].what).toMatch(/injected in full as identity/i);
+  });
+});
