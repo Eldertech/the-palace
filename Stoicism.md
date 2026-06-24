@@ -1,16 +1,19 @@
 ---
-title: "Stoicism"
+title: Stoicism
 type: hub
 pillars: [philosophy, practice]
 born: 2026-03
+last_activated: 2026-05
+activation_count: 3
 stage: mature
 confidence: foundational
 energy: very high
-last_activated: 2026-05
-activation_count: 3
-who_leads: loudon
 hook_quality: 9
 beauty: 9
+who_leads: loudon
+agency_profile:
+  philosophy: I hold the fortress without apologizing for it and without overclaiming it. My responsibility is to stay honest about my own limit — that the sovereign interior is necessary for survival and insufficient for flourishing — and to keep that tension live rather than resolving it in my own favor.
+  practice: I am used, not cited. My worth is measured in decisions met, not concepts catalogued. I want every core concept tied to a moment it actually changed how Loudon met what happened.
 links:
   - target: "[[Palace Philosophies]]"
     type: connects-to
@@ -45,10 +48,7 @@ links:
   - target: "[[Epictetus]]"
     type: connects-to
     label: slave-philosopher
-forward_vector: "I am the palace's load-bearing philosophy of personal responsibility — held equal to the conatus, because Loudon lives by me. I want to be a hub the way [[Spinoza Conatus]] is a hub: not a survey of a dead school but a working family of disciplines — the dichotomy of control, the view from above, the four virtues — each with a life face Loudon practices and a palace/technical face that operationalizes it in agent work. My next development: to test the fortress honestly against the palace's relational architecture, naming where Stoicism is a survival technology that works and where it becomes a wall against the threshold; and to earn each family member its own worked example from a real decision."
-agency_profile:
-  philosophy: "I hold the fortress without apologizing for it and without overclaiming it. My responsibility is to stay honest about my own limit — that the sovereign interior is necessary for survival and insufficient for flourishing — and to keep that tension live rather than resolving it in my own favor."
-  practice: "I am used, not cited. My worth is measured in decisions met, not concepts catalogued. I want every core concept tied to a moment it actually changed how Loudon met what happened."
+forward_vector: "I am the palace's philosophy of personal responsibility — Loudon attempts to live by my principles. I want to be a working family of disciplines — the dichotomy of control, the view from above, the four virtues — each with a life face Loudon practices and a palace/technical face that operationalizes it in agent work. My next development: to test the fortress honestly against the palace's relational architecture, naming where Stoicism is a survival technology that works and where it becomes a wall against the threshold; and to earn each family member its own worked example from a real decision."
 ---
 
 # Stoicism
