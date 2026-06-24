@@ -52,6 +52,8 @@ tags: [project, blueline, music-video, generative, pipeline, sprout]
 
 # BLUELINE
 
+![[BLUELINE — hero.png]]
+
 > **▸ STATUS (2026-06-24) — consolidated on main.** All the BLUELINE threads are merged to canon. (1) The rendered-board **animatic** plays the 6 new-story boards on the **live Ableton clock** (Loudon's *Ascension_v8*, 120 BPM → 12 frames/beat, deterministic ✓) — `proofs/animatic/`. (2) The **frame pipeline** that produced the boards — the 6-shot noir-tragedy storyboard, rich-first/stylize-last, the RunPod backend — `proofs/new-story/`; canon [[Frame Designer]] · [[Steer the Generator]]. (3) The **text layer** — gen-AI typography, the font library, the 7-voice ink suite — `proofs/text-layer/`; canon [[Shop/Lettering]] · [[Typography as Meaning]] · [[BLUELINE — Text Layer]]. Next rungs: level the boards to uniform fidelity; a shareable muxed cut; the motion-comic register on the live clock (move the existing ink lines, slowed down); and the text layer's placement (letter *into* the frame).
 
 > Working title — placeholder, rename freely. The brief lives in the project bundle; this entry is the palace face.

@@ -45,6 +45,8 @@ links:
 
 # STIGMERGY
 
+![[STIGMERGY — hero.png]]
+
 STIGMERGY is the palace's **nervous system made visible**: one terminal with three time-ordered decks — **STATE** (present knowledge / entries), **QUEUE** (future intentions / open work), **LOG** (immutable past / commits). It folds three previously-scattered media — Obsidian authoring, the [[BBS Blackboard]], and git — into a single operational surface. As of mid-2026 it is Loudon's *primary* way of operating the palace, more so than Obsidian: the front door, not a side tool.
 
 It is two things at once. Seen by a human, it is a **front-end** — a phosphor terminal you read and act in. Seen by an agent, it is an **engine** — an append-only blackboard you leave marks on and read gradients from. The same data structure serves both; the [[Trickster]] is just another node on the board.
