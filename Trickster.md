@@ -77,6 +77,8 @@ forward_vector: "I intercept, delay, substitute, and subvert the expected signal
 
 # Trickster
 
+![[Trickster — hero.png]]
+
 The archetype of transformation through indirection. A figure found across world mythologies — Anansi, Eshu, Huehuecoyotl, Duppy, Loki, Kitsune, Coyote — whose essence is to intercept expected signal and redirect it. But never merely for chaos. The trickster breaks rules to reveal deeper rules, steals to gift, subverts category boundaries in service of something truer with crafty humor.
 
 In Loudon's work, the trickster is not merely mythological metaphor. It is a functional principle: **any process that intercepts, delays, substitutes, or subverts expected signal in service of amplified understanding or joyful creation is trickster work.** ([[twelve-word-summary|12-word compression]])
