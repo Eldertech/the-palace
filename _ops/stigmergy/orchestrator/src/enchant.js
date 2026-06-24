@@ -1,5 +1,7 @@
-#!/usr/bin/env node
 // enchant.js — enchant ONE project page as a permanent steward.
+// (No shebang: the app server bundles this via ephemeral-prompt.js, and esbuild
+// does NOT strip shebangs — a leading `#!` becomes a bundle syntax error. Same
+// reason build-cycle-prompt.js omits one. Invoke as `node src/enchant.js`.)
 //
 // Reads the page's frontmatter (stage, forward_vector, links), writes the
 // steward directory (manifest.json, state.json, empty history.jsonl) under
