@@ -1,0 +1,59 @@
+{
+  "_doc": "BLUELINE — board records for the 6-shot opening. The reproducible generative truth behind each board, keyed by shot id, so the Ableton clip NAMES can stay short (carry just a gist) while the full prompt+negative+seed live here. Aligns with BLUELINE — Board Record Schema (POSITIVE / NEG / SEED / SHOT_ID). The clip's POSITION+LENGTH carries time; this file carries content. Prompts extracted verbatim from render_shot.py SHOTS (feature/blueline-m3); style/neg from style-lock/locked-style.json (pen-flow, locked 2026-06-19).",
+  "style_lock": "modern pen and ink illustration, loose gestural linework with bold dramatic sweeping flow lines and speed streaks driving the motion, scattered energetic ink blobs and splatter, stark high-contrast black and white, film-noir deep shadow, rough white paper, lots of white space, dynamic foreshortening, low canted angle",
+  "negative": "extra limbs, deformed, two heads, color, colour, photograph, photorealistic, 3d render, smooth digital shading, gradient, blurry, low quality, watermark, text, signature, frame, border, static, stiff, standing still, posed portrait, symmetrical, calm, motionless, bust shot",
+  "checkpoint": "sd_xl_base_1.0.safetensors",
+  "boards": [
+    {
+      "id": "01", "file": "boards/01.png", "size": [1216, 832], "orient": "landscape",
+      "cue": "burning city",
+      "clip_name": "01 · noir city, many rooftop fires, high wide, smoke",
+      "positive": "a vast sprawling noir city at night seen from a high wide angle, many separate fires burning across distant rooftops, thick billowing smoke rising, a brooding skyline, desolate, cinematic high-contrast",
+      "pose": null, "seed": null, "seed_note": "keeper filename carries no seed suffix; reseed if re-rendering",
+      "section_hint": "intro", "flow": false
+    },
+    {
+      "id": "02", "file": "boards/02.png", "size": [832, 1216], "orient": "portrait",
+      "cue": "hero on the car",
+      "clip_name": "02 · figure on crushed sedan roof, arm out pointing, embers",
+      "positive": "a lone powerful figure standing on the crushed dented roof of a burning sedan, one arm thrust out pointing a finger at a sparse frightened crowd, commanding, smoke and embers",
+      "pose": "authored (Track IV openpose) — standing on roof, pointing", "seed": 2211,
+      "render_note": "forced B&W desaturate pass (fix_shot02.py)",
+      "section_hint": "intro", "flow": false
+    },
+    {
+      "id": "03", "file": "boards/03.png", "size": [832, 1216], "orient": "portrait",
+      "cue": "the leap",
+      "clip_name": "03 · CU braced legs explode upward, car roof buckling, debris",
+      "positive": "tight close-up on a figure's braced legs and boots exploding upward into a jump, the steel car roof buckling and denting downward under the impossible force, debris flying",
+      "pose": null, "seed": null, "seed_note": "keeper filename carries no seed suffix; reseed if re-rendering",
+      "section_hint": "verse", "flow": true
+    },
+    {
+      "id": "04", "file": "boards/04.png", "size": [832, 1216], "orient": "portrait",
+      "cue": "plummet",
+      "clip_name": "04 · worm's-eye, figure plummeting at camera, coat flaring, fire sky",
+      "positive": "extreme low angle from the ground looking straight up, a figure plummeting downward fast toward the viewer, long coat flaring violently, against a smoke-and-fire sky",
+      "pose": null, "seed": 1234,
+      "section_hint": "verse", "flow": true
+    },
+    {
+      "id": "05", "file": "boards/05.png", "size": [1216, 832], "orient": "landscape",
+      "cue": "impact over the dying woman",
+      "clip_name": "05 · hard crouch landing, radial pavement crack, woman's body, crowd recoiling",
+      "positive": "a figure landing hard in a low crouch on cracked asphalt, the pavement shattering in a radial ring around him, smoke and dust blasting outward from the impact, a woman's limp body on the ground nearby, a crowd recoiling in the back",
+      "pose": "authored (hero behind, woman front) — layered composite",
+      "seed": null, "seed_note": "keeper = rich_final_d85.png, the rich-first/stylize-last LAYERED build (separate hero+woman+crowd layer-prompts -> integrate pass -> desaturate + img2img denoise 0.85). Not a single-seed render; the line above is the canonical one-liner. See new-story/layer_render.py + rich_pipeline.py to reproduce.",
+      "section_hint": "drop", "flow": true
+    },
+    {
+      "id": "06", "file": "boards/06.png", "size": [832, 1216], "orient": "portrait",
+      "cue": "the kiss · hero POV",
+      "clip_name": "06 · POV straight down at dying woman's face, blood/sweat falling, kiss off-frame",
+      "positive": "extreme close-up of a dying woman's face seen from directly above, the grieving hero's point of view looking straight down at her, her head tilted back on the ground, eyes closed, lips parted, hair splayed out, drops of blood and sweat falling down toward her face from above, raw anguish, the unseen kiss just out of frame",
+      "pose": null, "seed": 5678,
+      "reframe_note": "the two-figure kiss was the multi-subject hard case; reframed to the hero's POV (one expressive face) — the kiss is the unseen thing past the bottom edge",
+      "section_hint": "drop", "flow": false
+    }
+  ]
+}
