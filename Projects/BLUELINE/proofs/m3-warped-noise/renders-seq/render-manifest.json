@@ -1,0 +1,23 @@
+{
+  "pod": "b5gpxyqtm9yy7e",
+  "hyper": "a lone figure in a charcoal flight jacket, copper undercut, surreal mathematical landscape, hyperreal cinematic photograph, dramatic key light, volumetric haze, film grain, shallow depth of field, photorealistic skin, 8k, dramatic impact moment, sharp focus",
+  "comic": "a lone figure in a charcoal flight jacket, copper undercut, surreal mathematical landscape, bande dessin\u00e9e comic panel, bold black ink outlines, flat cel-shaded color, screen-tone shading, graphic-novel illustration, clean linework, sharp focus",
+  "base": "a lone figure in a charcoal flight jacket, copper undercut, dramatic cinematic key light, surreal mathematical landscape, bold graphic-novel color, sharp focus",
+  "frames": {
+    "renders-seq/A": "/Users/loudonstearns/Documents/palace-feature-blueline-m3/Projects/BLUELINE/proofs/m3-warped-noise/renders-seq/A.png",
+    "renders-seq/B_s1_seedlock": "/Users/loudonstearns/Documents/palace-feature-blueline-m3/Projects/BLUELINE/proofs/m3-warped-noise/renders-seq/B_s1_seedlock.png",
+    "renders-seq/B_s1_warped": "/Users/loudonstearns/Documents/palace-feature-blueline-m3/Projects/BLUELINE/proofs/m3-warped-noise/renders-seq/B_s1_warped.png",
+    "renders-seq/B_s2_seedlock": "/Users/loudonstearns/Documents/palace-feature-blueline-m3/Projects/BLUELINE/proofs/m3-warped-noise/renders-seq/B_s2_seedlock.png",
+    "renders-seq/B_s2_warped": "/Users/loudonstearns/Documents/palace-feature-blueline-m3/Projects/BLUELINE/proofs/m3-warped-noise/renders-seq/B_s2_warped.png",
+    "renders-seq/B_s3_seedlock": "/Users/loudonstearns/Documents/palace-feature-blueline-m3/Projects/BLUELINE/proofs/m3-warped-noise/renders-seq/B_s3_seedlock.png",
+    "renders-seq/B_s3_warped": "/Users/loudonstearns/Documents/palace-feature-blueline-m3/Projects/BLUELINE/proofs/m3-warped-noise/renders-seq/B_s3_warped.png",
+    "renders-seq/B_s4_seedlock": "/Users/loudonstearns/Documents/palace-feature-blueline-m3/Projects/BLUELINE/proofs/m3-warped-noise/renders-seq/B_s4_seedlock.png",
+    "renders-seq/B_s4_warped": "/Users/loudonstearns/Documents/palace-feature-blueline-m3/Projects/BLUELINE/proofs/m3-warped-noise/renders-seq/B_s4_warped.png",
+    "renders-seq/B_s5_seedlock": "/Users/loudonstearns/Documents/palace-feature-blueline-m3/Projects/BLUELINE/proofs/m3-warped-noise/renders-seq/B_s5_seedlock.png",
+    "renders-seq/B_s5_warped": "/Users/loudonstearns/Documents/palace-feature-blueline-m3/Projects/BLUELINE/proofs/m3-warped-noise/renders-seq/B_s5_warped.png",
+    "renders-m4/A_hyper": "/Users/loudonstearns/Documents/palace-feature-blueline-m3/Projects/BLUELINE/proofs/m3-warped-noise/renders-m4/A_hyper.png",
+    "renders-m4/A_comic": "/Users/loudonstearns/Documents/palace-feature-blueline-m3/Projects/BLUELINE/proofs/m3-warped-noise/renders-m4/A_comic.png",
+    "renders-m4/B_hyper": "/Users/loudonstearns/Documents/palace-feature-blueline-m3/Projects/BLUELINE/proofs/m3-warped-noise/renders-m4/B_hyper.png",
+    "renders-m4/B_comic": "/Users/loudonstearns/Documents/palace-feature-blueline-m3/Projects/BLUELINE/proofs/m3-warped-noise/renders-m4/B_comic.png"
+  }
+}

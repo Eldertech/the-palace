@@ -1,0 +1,228 @@
+<!doctype html>
+<html lang="en" class="skin-graphite">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Taste Breeder · BLUELINE</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Cormorant+Garamond:ital,wght@0,400;1,300&family=Manrope:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
+:root{
+  --serif:'Cormorant Garamond',Georgia,serif; --sans:'Manrope',system-ui,sans-serif;
+  --display:'Anton',sans-serif; --mono:'JetBrains Mono',ui-monospace,Menlo,monospace;
+  --bg:#0a0a0f; --bg-elev-1:#12121a; --bg-elev-2:#1a1a28; --bg-elev-3:#22222e;
+  --border:#4a4a5e; --border-soft:rgba(255,255,255,0.06); --border-hover:rgba(232,184,74,0.55);
+  --fg-1:#e8e8f0; --fg-2:#c8c8d8; --fg-3:#8a8aa0; --fg-4:#4a4a5a; --fg-on-accent:#0a0a0f;
+  --accent:#e8b84a; --accent-soft:rgba(232,184,74,0.10); --accent-line:rgba(232,184,74,0.50);
+  --success:#00ff66; --success-soft:rgba(0,255,102,0.10); --danger:#ff2a2a; --info:#4a8fff;
+  --r-sm:2px; --r-md:4px; --ease:cubic-bezier(.4,0,.2,1);
+  --glow-accent:inset 0 1px 0 rgba(232,184,74,0.25),0 0 28px rgba(232,184,74,0.34),0 0 4px rgba(232,184,74,0.5);
+}
+*{box-sizing:border-box} html,body{margin:0;background:var(--bg);color:var(--fg-1)}
+body{font-family:var(--sans);font-weight:300}
+.wrap{max-width:1180px;margin:0 auto;padding:0 22px 60px}
+header{display:flex;align-items:baseline;gap:16px;flex-wrap:wrap;padding:22px 0 14px;border-bottom:1px solid var(--border-soft)}
+.wordmark{font-family:var(--display);font-size:24px;letter-spacing:.02em}
+.tag{font-family:var(--mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--accent)}
+.sub{font-family:var(--serif);font-size:18px;color:var(--fg-3);margin-left:auto}
+.layout{display:grid;grid-template-columns:1fr 290px;gap:24px;margin-top:22px}
+@media(max-width:880px){.layout{grid-template-columns:1fr}}
+
+/* prompt / instruction line */
+.prompt-line{font-family:var(--serif);font-size:20px;color:var(--fg-2);margin:0 0 4px}
+.prompt-line b{font-family:var(--sans);font-weight:600;color:var(--fg-1)}
+.hint{font-family:var(--mono);font-size:12px;color:var(--fg-3);letter-spacing:.04em;margin-bottom:16px}
+
+/* 4-up */
+.deck{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.card{position:relative;background:var(--bg-elev-1);border:1px solid var(--border);border-radius:var(--r-sm);
+  overflow:hidden;cursor:pointer;transition:transform 140ms var(--ease),border-color 140ms var(--ease)}
+.card:hover{border-color:var(--border-hover);transform:translateY(-2px)}
+.card img{width:100%;height:300px;object-fit:cover;display:block;background:#000}
+.card .meta{font-family:var(--mono);font-size:10.5px;color:var(--fg-3);padding:7px 9px;letter-spacing:.03em;
+  display:flex;gap:8px;flex-wrap:wrap;border-top:1px solid var(--border-soft)}
+.card .meta .k{color:var(--fg-2)}
+.card .pick-num{position:absolute;top:8px;left:8px;font-family:var(--mono);font-size:12px;color:var(--fg-on-accent);
+  background:var(--accent);border-radius:var(--r-sm);padding:2px 7px;font-weight:600;opacity:.85}
+.card.guess{border-color:var(--accent);box-shadow:var(--glow-accent)}
+.card .verdict{position:absolute;inset:0;display:none;align-items:center;justify-content:center;
+  font-family:var(--display);font-size:20px;letter-spacing:.04em;background:rgba(10,10,15,.55)}
+.card.reveal .verdict{display:flex}
+.card.reveal.hit .verdict{color:var(--success)} .card.reveal.miss .verdict{color:var(--accent)}
+.card.reveal.chosen{outline:2px solid var(--fg-1)}
+
+/* side panel */
+.panel{background:var(--bg-elev-1);border:1px solid var(--border);border-radius:var(--r-sm);padding:16px;margin-bottom:16px}
+.panel h3{font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--fg-3);margin:0 0 12px;font-weight:500}
+.stat{display:flex;justify-content:space-between;align-items:baseline;margin:7px 0}
+.stat .v{font-family:var(--mono);font-size:20px;color:var(--accent)}
+.stat .l{font-family:var(--sans);font-size:13px;color:var(--fg-3)}
+.accbar{height:6px;background:var(--bg-elev-3);border-radius:99px;overflow:hidden;margin-top:6px}
+.accbar i{display:block;height:100%;background:var(--accent);width:0;transition:width 300ms var(--ease)}
+.prof-row{margin:9px 0}
+.prof-row .lab{font-family:var(--mono);font-size:11px;color:var(--fg-3);display:flex;justify-content:space-between;letter-spacing:.04em}
+.prof-row .lab b{color:var(--fg-1);font-weight:500}
+.bar{height:5px;background:var(--bg-elev-3);border-radius:99px;overflow:hidden;margin-top:3px}
+.bar i{display:block;height:100%;background:var(--info);transition:width 250ms var(--ease)}
+.bar i.pos{background:var(--accent)} .bar i.neg{background:var(--danger)}
+.refined{font-family:var(--serif);font-size:15px;line-height:1.5;color:var(--fg-2);font-style:italic}
+.btn{font-family:var(--mono);font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--fg-2);
+  background:var(--bg-elev-3);border:1px solid var(--border);border-radius:var(--r-sm);padding:9px 12px;cursor:pointer;width:100%;margin-top:8px}
+.btn:hover{color:var(--fg-1);border-color:var(--border-hover)}
+.note{font-family:var(--mono);font-size:11px;color:var(--fg-4);margin-top:10px;line-height:1.5}
+#toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%) translateY(16px);opacity:0;pointer-events:none;
+  font-family:var(--mono);font-size:13px;background:var(--bg-elev-3);border:1px solid var(--border-hover);
+  border-radius:var(--r-md);padding:9px 16px;transition:all 220ms var(--ease);z-index:50}
+#toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+footer{margin-top:30px;text-align:center;font-family:var(--display);font-size:15px;color:var(--fg-3)}
+footer em{font-family:var(--serif);font-style:italic;color:var(--accent)}
+.loading{font-family:var(--mono);color:var(--fg-3);padding:40px;text-align:center}
+</style></head>
+<body>
+<div class="wrap">
+  <header>
+    <span class="wordmark">TASTE BREEDER</span>
+    <span class="tag">intuition → style, fast</span>
+    <span class="sub">pick the one that feels right · I learn · I guess your next</span>
+  </header>
+
+  <div class="layout">
+    <div>
+      <p class="prompt-line" id="promptLine">Pick the frame that feels most <b>right</b>.</p>
+      <p class="hint" id="hint">Round 1 · I haven't guessed yet — show me what you like.</p>
+      <div class="deck" id="deck"><div class="loading">loading the pool…</div></div>
+    </div>
+    <aside>
+      <div class="panel">
+        <h3>How well I read you</h3>
+        <div class="stat"><span class="l">next-pick guesses right</span><span class="v" id="acc">—</span></div>
+        <div class="accbar"><i id="accbar"></i></div>
+        <div class="stat" style="margin-top:14px"><span class="l">rounds played</span><span class="v" id="rounds">0</span></div>
+        <div class="stat"><span class="l">pool size</span><span class="v" id="pool">0</span></div>
+      </div>
+      <div class="panel">
+        <h3>Your taste, as I see it</h3>
+        <div id="profile"></div>
+      </div>
+      <div class="panel">
+        <h3>Refined prompt</h3>
+        <div class="refined" id="refined">—</div>
+        <button class="btn" id="copyBtn">Copy this prompt</button>
+        <button class="btn" id="exportBtn">Export session</button>
+        <button class="btn" id="resetBtn">Reset taste</button>
+        <div class="note">V2: a “breed fresh” button will generate 4 brand-new frames from this learned prompt each round. Today it navigates a growing local pool instantly.</div>
+      </div>
+    </aside>
+  </div>
+  <footer>Loudon <em>Live</em> · Autodidact Polymaths</footer>
+</div>
+<div id="toast"></div>
+
+<script>
+const TONE={ink:"pure black ink, stark high contrast",dry:"black ink with grey dry-brush",wash:"black ink with soft grey wash"};
+const LINE={gestural:"loose gestural strokes that amplify motion",tight:"tight confident contour",scratchy:"rough scratchy kinetic ink"};
+const DENS={sparse:"economical, lots of white space",medium:"balanced ink",dense:"dense hatching, filled"};
+const SUBSTRATE="black chisel-tip marker on rough white cold-press watercolor paper, monochrome, sumi-e/Vagabond ink";
+const AX=["tone","line","density","subject"]; const LR=0.6;
+let IMAGES=[], SUBJECTS=[], w={}, seen=new Set(), round=0, predHits=0, predTotal=0, shown=[], predicted=null, history=[];
+const $=id=>document.getElementById(id);
+function toast(m){const t=$('toast');t.textContent=m;t.classList.add('show');clearTimeout(t._t);t._t=setTimeout(()=>t.classList.remove('show'),2000);}
+function key(ax,v){return ax+":"+v;}
+function feats(im){return AX.map(a=>key(a, a==="subject"?("s"+im.subject):im[a]));}
+function score(im){return feats(im).reduce((s,k)=>s+(w[k]||0),0);}
+
+async function load(){
+  try{
+    const m=await (await fetch('pool-manifest.json?_='+Date.now())).json();
+    SUBJECTS=m.subjects||[]; IMAGES=m.images||[];
+  }catch(e){ $('deck').innerHTML='<div class="loading">no pool-manifest.json yet — run pool_gen.py</div>'; return; }
+  $('pool').textContent=IMAGES.length;
+  if(IMAGES.length<4){ $('deck').innerHTML='<div class="loading">pool is filling… '+IMAGES.length+' frames so far. Refresh in a minute.</div>'; setTimeout(load,15000); return; }
+  if(!shown.length) nextRound();
+}
+function diversity(im,chosen){ // count axis-values not already in the chosen set
+  const have=new Set(chosen.flatMap(feats)); return feats(im).filter(k=>!have.has(k)).length;
+}
+function nextRound(){
+  let pool=IMAGES.filter(im=>!seen.has(im.file));
+  if(pool.length<4){ seen=new Set(); pool=IMAGES.slice(); toast('seen the pool — reshuffling'); }
+  pool.sort((a,b)=>score(b)-score(a));
+  const exploit=pool[0]; const sel=[exploit]; const rest=pool.slice(1);
+  while(sel.length<4 && rest.length){
+    // balance: prefer high score AND new axis-values vs what's already selected
+    let best=null,bi=-1,bv=-1e9;
+    rest.forEach((im,i)=>{const v=score(im)*0.5 + diversity(im,sel)*1.0 + Math.random()*0.15; if(v>bv){bv=v;best=im;bi=i;}});
+    sel.push(best); rest.splice(bi,1);
+  }
+  // display order shuffled; prediction = current argmax score among the 4
+  for(let i=sel.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[sel[i],sel[j]]=[sel[j],sel[i]];}
+  shown=sel; predicted=sel.reduce((a,b)=>score(b)>score(a)?b:a, sel[0]);
+  render();
+}
+function render(){
+  const d=$('deck'); d.innerHTML='';
+  shown.forEach((im,i)=>{
+    const c=document.createElement('div'); c.className='card';
+    c.innerHTML=`<div class="pick-num">${i+1}</div>
+      <img src="${im.file}" alt="">
+      <div class="meta"><span class="k">${im.tone}</span><span class="k">${im.line}</span><span class="k">${im.density}</span><span>${(SUBJECTS[im.subject]||'').split(',')[0].replace(/^a /,'')}</span></div>
+      <div class="verdict"></div>`;
+    c.onclick=()=>choose(im,c);
+    d.appendChild(c);
+  });
+  $('rounds').textContent=round; $('pool').textContent=IMAGES.length;
+  $('hint').textContent = round===0 ? "Round 1 · I haven't guessed yet — show me what you like."
+    : `Round ${round+1} · my guess is hidden — click yours, then I'll reveal if I read you right.`;
+  renderProfile(); renderRefined();
+}
+function choose(im,card){
+  predTotal++; const hit=(im===predicted); if(hit)predHits++;
+  // reveal prediction + correctness on the cards
+  document.querySelectorAll('.card').forEach((c,idx)=>{
+    const sim=shown[idx]; c.classList.add('reveal');
+    if(sim===predicted){ c.classList.add('guess', hit?'hit':'miss'); c.querySelector('.verdict').textContent = hit?'I GUESSED IT':'MY GUESS'; }
+    if(sim===im) c.classList.add('chosen');
+    c.onclick=null;
+  });
+  // online preference update: chosen up, others down
+  const others=shown.filter(s=>s!==im);
+  feats(im).forEach(k=>w[k]=(w[k]||0)+LR);
+  others.forEach(o=>feats(o).forEach(k=>w[k]=(w[k]||0)-LR/others.length));
+  shown.forEach(s=>seen.add(s.file));
+  history.push({round,chosen:im.file,shown:shown.map(s=>s.file),predicted:predicted.file,hit});
+  round++;
+  const acc=predTotal?Math.round(100*predHits/predTotal):0;
+  $('acc').textContent=acc+'%'; $('accbar').style.width=acc+'%';
+  toast(hit?`Round ${round}: I read you right ✓  (${acc}% so far)`:`Round ${round}: missed — learning. (${acc}% so far)`);
+  setTimeout(nextRound, 1100);
+}
+function renderProfile(){
+  const p=$('profile'); p.innerHTML='';
+  // show, per axis, the strongest-weighted value
+  AX.forEach(ax=>{
+    const vals = ax==="subject" ? SUBJECTS.map((_,i)=>"s"+i) : Object.keys({tone:TONE,line:LINE,density:DENS}[ax]);
+    let max=0; vals.forEach(v=>max=Math.max(max,Math.abs(w[key(ax,v)]||0)));
+    vals.forEach(v=>{
+      const ww=w[key(ax,v)]||0; if(Math.abs(ww)<1e-6 && max===0 && v!==vals[0]) {}
+      const label = ax==="subject" ? (SUBJECTS[+v.slice(1)]||v).split(',')[0].replace(/^a /,'') : v;
+      const pct = max? Math.round(100*Math.abs(ww)/max):0;
+      const row=document.createElement('div'); row.className='prof-row';
+      row.innerHTML=`<div class="lab"><span>${ax}: <b>${label}</b></span><span>${ww>0?'+':''}${ww.toFixed(1)}</span></div>
+        <div class="bar"><i class="${ww>=0?'pos':'neg'}" style="width:${pct}%"></i></div>`;
+      p.appendChild(row);
+    });
+    p.appendChild(Object.assign(document.createElement('div'),{style:'height:8px'}));
+  });
+}
+function topVal(ax){ const vals = ax==="subject"?SUBJECTS.map((_,i)=>"s"+i):Object.keys({tone:TONE,line:LINE,density:DENS}[ax]);
+  return vals.reduce((a,b)=>(w[key(ax,b)]||0)>(w[key(ax,a)]||0)?b:a, vals[0]); }
+function renderRefined(){
+  if(round===0){ $('refined').textContent='— (pick a few and I’ll assemble your prompt)'; return; }
+  const t=topVal('tone'), l=topVal('line'), den=topVal('density');
+  $('refined').textContent=`${LINE[l]}, ${TONE[t]}, ${DENS[den]}, ${SUBSTRATE}`;
+}
+$('copyBtn').onclick=()=>{navigator.clipboard?.writeText($('refined').textContent).then(()=>toast('prompt copied'),()=>toast('copy failed'));};
+$('exportBtn').onclick=()=>{const blob=new Blob([JSON.stringify({weights:w,accuracy:predTotal?predHits/predTotal:0,rounds:round,history},null,2)],{type:'application/json'});
+  const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='taste-session.json';a.click();toast('session exported');};
+$('resetBtn').onclick=()=>{w={};seen=new Set();round=0;predHits=0;predTotal=0;history=[];$('acc').textContent='—';$('accbar').style.width='0';toast('taste reset');nextRound();};
+load();
+</script>
+</body></html>

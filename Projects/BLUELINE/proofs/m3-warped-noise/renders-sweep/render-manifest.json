@@ -1,0 +1,64 @@
+{
+  "pod": "p6s1aygzdu0ozp",
+  "prompt": "a lone figure in a charcoal flight jacket, copper undercut, dramatic cinematic key light, surreal mathematical landscape, bold graphic-novel color, sharp focus",
+  "deltas": [
+    {
+      "t": 0.1,
+      "tag": "010",
+      "delta_px": 48.3,
+      "pose_png": "sweep/pose_t010.png",
+      "warp_npy": "sweep/N_warp_t010.npy",
+      "warp_filled": 0.967,
+      "whiteness_lag1": 0.0014
+    },
+    {
+      "t": 0.2,
+      "tag": "020",
+      "delta_px": 96.5,
+      "pose_png": "sweep/pose_t020.png",
+      "warp_npy": "sweep/N_warp_t020.npy",
+      "warp_filled": 0.933,
+      "whiteness_lag1": 0.001
+    },
+    {
+      "t": 0.35,
+      "tag": "035",
+      "delta_px": 168.9,
+      "pose_png": "sweep/pose_t035.png",
+      "warp_npy": "sweep/N_warp_t035.npy",
+      "warp_filled": 0.882,
+      "whiteness_lag1": 0.0015
+    },
+    {
+      "t": 0.6,
+      "tag": "060",
+      "delta_px": 289.6,
+      "pose_png": "sweep/pose_t060.png",
+      "warp_npy": "sweep/N_warp_t060.npy",
+      "warp_filled": 0.797,
+      "whiteness_lag1": 0.0004
+    },
+    {
+      "t": 1.0,
+      "tag": "100",
+      "delta_px": 482.6,
+      "pose_png": "sweep/pose_t100.png",
+      "warp_npy": "sweep/N_warp_t100.npy",
+      "warp_filled": 0.663,
+      "whiteness_lag1": 0.0015
+    }
+  ],
+  "frames": {
+    "A": "/Users/loudonstearns/Documents/palace-feature-blueline-m3/Projects/BLUELINE/proofs/m3-warped-noise/renders-sweep/A.png",
+    "B_t010_seedlock": "/Users/loudonstearns/Documents/palace-feature-blueline-m3/Projects/BLUELINE/proofs/m3-warped-noise/renders-sweep/B_t010_seedlock.png",
+    "B_t010_warped": "/Users/loudonstearns/Documents/palace-feature-blueline-m3/Projects/BLUELINE/proofs/m3-warped-noise/renders-sweep/B_t010_warped.png",
+    "B_t020_seedlock": "/Users/loudonstearns/Documents/palace-feature-blueline-m3/Projects/BLUELINE/proofs/m3-warped-noise/renders-sweep/B_t020_seedlock.png",
+    "B_t020_warped": "/Users/loudonstearns/Documents/palace-feature-blueline-m3/Projects/BLUELINE/proofs/m3-warped-noise/renders-sweep/B_t020_warped.png",
+    "B_t035_seedlock": "/Users/loudonstearns/Documents/palace-feature-blueline-m3/Projects/BLUELINE/proofs/m3-warped-noise/renders-sweep/B_t035_seedlock.png",
+    "B_t035_warped": "/Users/loudonstearns/Documents/palace-feature-blueline-m3/Projects/BLUELINE/proofs/m3-warped-noise/renders-sweep/B_t035_warped.png",
+    "B_t060_seedlock": "/Users/loudonstearns/Documents/palace-feature-blueline-m3/Projects/BLUELINE/proofs/m3-warped-noise/renders-sweep/B_t060_seedlock.png",
+    "B_t060_warped": "/Users/loudonstearns/Documents/palace-feature-blueline-m3/Projects/BLUELINE/proofs/m3-warped-noise/renders-sweep/B_t060_warped.png",
+    "B_t100_seedlock": "/Users/loudonstearns/Documents/palace-feature-blueline-m3/Projects/BLUELINE/proofs/m3-warped-noise/renders-sweep/B_t100_seedlock.png",
+    "B_t100_warped": "/Users/loudonstearns/Documents/palace-feature-blueline-m3/Projects/BLUELINE/proofs/m3-warped-noise/renders-sweep/B_t100_warped.png"
+  }
+}

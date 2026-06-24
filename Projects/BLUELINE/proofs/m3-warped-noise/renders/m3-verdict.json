@@ -1,0 +1,16 @@
+{
+  "delta_px": 482,
+  "A_vs_B_seedlock": {
+    "embed_cos": 0.7438827157020569,
+    "color_corr": 0.3795160276087179
+  },
+  "A_vs_B_warped": {
+    "embed_cos": 0.5080263614654541,
+    "color_corr": 0.015745272342027578
+  },
+  "delta_warped_minus_seedlock": {
+    "embed_cos": -0.23585635423660278,
+    "color_corr": -0.36377075526669034
+  },
+  "warped_wins": false
+}

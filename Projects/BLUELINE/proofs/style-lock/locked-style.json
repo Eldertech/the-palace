@@ -1,0 +1,12 @@
+{
+  "name": "pen-flow",
+  "locked": "2026-06-19",
+  "chosen_by": "Loudon, from the finalist montage — by eye",
+  "style": "modern pen and ink illustration, loose gestural linework with bold dramatic sweeping flow lines and speed streaks driving the motion, scattered energetic ink blobs and splatter, stark high-contrast black and white, film-noir deep shadow, rough white paper, lots of white space, dynamic foreshortening, low canted angle",
+  "neg_extra": "color, colour, photograph, photorealistic, 3d render, smooth digital shading, gradient, blurry, low quality, watermark, text, signature, frame, border, static, stiff, standing still, posed portrait, symmetrical, calm, motionless, bust shot",
+  "tone": "ink",
+  "line": "gestural",
+  "density": "medium",
+  "lineage": "modern pen & ink (the loved first tile) + its drifting ink blobs + the sprinter's dramatic flow lines; Inoue / sumi-e / noir",
+  "notes": "THE single locked house style. pose_engine.py reads this verbatim. Blobs/splatter intentionally vary frame-to-frame (a future animation lever). Hold style constant; vary pose."
+}
