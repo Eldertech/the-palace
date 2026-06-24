@@ -68,6 +68,16 @@ is the render** — legible *by construction* (the canny lock holds the letters)
 surface is generated). A pure txt2img `--mode free` stays available for SFX, where the onomatopoeia is
 impressionistic by design and illegibility is a feature.
 
+**Two stages — rich-first, stylize-last** (the same discipline as the boards). The skeleton+canny render gives a
+*photoreal* word — rich material and value (flame, blood, ember). That render is then the **structural anchor**
+for a second pass: **desaturate** it (its greyscale values carry the letterform), then **img2img at ~0.8 with a
+pen-flow-ink prompt — the canny still locking the letters** — landing the word in the locked **white-ink-on-black**
+idiom *last*. So the text register is **not a choice** between photoreal and ink: it is photoreal *for structure*,
+ink *for skin* — exactly the [[Steer the Generator|rich-first / stylize-last]] pipeline the frames already run, now
+applied to a single word. Proven 2026-06-24 (`NO` → white-ink splatter-burst, `too late` → bone-ink flowing strokes,
+`BURNING` → inky drips). `render_text.py --mode stylize` (desaturate → img2img + canny); the photoreal and ink
+variants sit side by side in `contact-sheet.html`.
+
 **The prompt structure — `emotion+source → material`, `emotion+intensity → gesture`.** Each prompt names
 *what the letters are made of* and *what they are doing*: the dying woman's `stay` is faint trembling graphite
 thinning into breath; the hero's `NO` is cracking brush flinging ink; the song's `BURNING` is living flame
