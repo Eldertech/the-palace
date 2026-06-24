@@ -37,6 +37,8 @@ links:
 
 # Baton Ceremony
 
+![[Baton Ceremony — hero.png]]
+
 *Formerly the Handoff Ceremony. The **baton** is the file this ceremony generates — the thing that gets passed. "Handoff" is a secondary, looser name; see § Trigger for how to tell an official baton from a casual handoff.*
 
 ---
