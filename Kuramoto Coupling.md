@@ -71,7 +71,7 @@ links:
   - target: "[[Boundary-Crossing Instruments]]"
     type: enables
     label: cross-domain-sync
-forward_vector: "I teach the palace to use mathematical tools for controlled synchronization."
+forward_vector: "I use and teach the mathematical tools of controlled synchronization. \"Locking\" and \"synchronizing\" are controllable parameters for practical and artistic purposes."
 ---
 
 # Kuramoto Coupling
