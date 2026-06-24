@@ -28,6 +28,8 @@ forward_vector: "I want to become the design specification that shapes every fut
 
 # Progressive Staging
 
+![[Progressive Staging — hero.png]]
+
 A design method for educational instruments and tools: build in stages where **every stage is a complete, playable, useful artifact**. No stage is a stepping stone that exists only to reach the next one. Each stage teaches something the next stage needs, and each stage can stand alone as a finished thing.
 
 The principle emerged from building the [[Action Potential Oscillator]] across four stages. Stage 1 (linear integrate-and-fire) produces a working, tunable oscillator with one parameter. Stage 2 (leaky integrate-and-fire) adds waveshaping through a single new parameter — the membrane time constant. Stage 3 (shaped spike) adds transient character through three more parameters. Stage 4 (damped refractory recovery) adds sub-harmonic content and a frequency ceiling through three more parameters. At no point is a student waiting for the "real" version to emerge. Every version is real.

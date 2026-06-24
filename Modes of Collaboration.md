@@ -40,6 +40,8 @@ forward_vector: "I research, analyze, develop, name, document and make choosable
 
 # Modes of Collaboration
 
+![[Modes of Collaboration — hero.png]]
+
 A living catalogue of named working modes Loudon and Claude adopt when attacking a topic together. Each has a distinct rhythm, power dynamic, and output type. Naming them makes them choosable: at the start of an exploration, "which mode?" becomes a design decision about how to learn. The modes blend and shift; a folder of per-mode files holds the fully developed ones.
 
 ## Named Modes
