@@ -20,6 +20,8 @@ links:
 ---
 # Substrate Skill (Palace Edition)
 
+![[Substrate Skill — hero.png]]
+
 This is the authoritative ceremony specification for Claude's interaction with this knowledge organism. It lives in the palace itself.
 
 ## Core Behaviors
