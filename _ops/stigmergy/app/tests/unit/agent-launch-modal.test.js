@@ -41,4 +41,24 @@ describe('AgentLaunchModal — construction chrome', () => {
     const html = render({ mandateSeed: 'resolve the stage-2 decision' });
     expect(html).toContain('resolve the stage-2 decision');
   });
+
+  it('defaults to steward mode (the existing Trickster/Stewards callers are unchanged)', () => {
+    const html = render();
+    expect(html).toContain('construct agent');
+    expect(html).not.toContain('enchant page');
+  });
+
+  it('ephemeral mode reframes the header as a one-off enchant, same knobs + actions', () => {
+    const html = render({ mode: 'ephemeral' });
+    // reframed header copy
+    expect(html).toContain('enchant page');
+    expect(html).toContain('to life');
+    expect(html).toContain('not registered as a steward');
+    expect(html).not.toContain('construct agent');
+    // the construction chrome is the SAME panel — knobs + actions intact
+    expect(html).toContain('data-testid="agent-model"');
+    expect(html).toContain('data-testid="agent-effort"');
+    expect(html).toContain('data-testid="agent-mandate"');
+    expect(html).toContain('data-testid="agent-launch-terminal"');
+  });
 });

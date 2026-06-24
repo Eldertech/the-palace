@@ -72,3 +72,50 @@ export async function launchAgent({ home, mandate, model, effort, include }) {
     return { ok: false, status: 0, supported: true, error: err.message || 'could not reach the server' };
   }
 }
+
+// Bring ANY canon page to life as a one-off (POST /api/launch/ephemeral). The
+// twins of previewAgent/launchAgent, pointed at the ephemeral route: the server
+// stages a throwaway agent dir and runs the SAME buildCyclePrompt, so the
+// construction is identical to a registered steward's — only nothing is written to
+// the registry. Works for any page with frontmatter, not just stewards (a 422
+// `no_frontmatter` means a learning material, not a canon entry).
+export async function previewEphemeral({ home, mandate, include }) {
+  try {
+    const res = await fetch('/api/launch/ephemeral', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ home, mandate, include, preview: true }),
+    });
+    let data = {};
+    try { data = await res.json(); } catch { /* non-JSON */ }
+    if (res.ok) return { ok: true, ...data };
+    return {
+      ok: false,
+      status: res.status,
+      error: data.error || `preview failed (${res.status})`,
+    };
+  } catch (err) {
+    return { ok: false, status: 0, error: err.message || 'could not reach the server' };
+  }
+}
+
+export async function launchEphemeral({ home, mandate, model, effort, include }) {
+  try {
+    const res = await fetch('/api/launch/ephemeral', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ home, mandate, model, effort, include }),
+    });
+    let data = {};
+    try { data = await res.json(); } catch { /* non-JSON */ }
+    if (res.ok && data.launched) return { ok: true, ...data };
+    return {
+      ok: false,
+      status: res.status,
+      supported: data.supported !== false,
+      error: data.error || `launch failed (${res.status})`,
+    };
+  } catch (err) {
+    return { ok: false, status: 0, supported: true, error: err.message || 'could not reach the server' };
+  }
+}

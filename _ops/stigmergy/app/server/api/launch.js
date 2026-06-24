@@ -1,7 +1,9 @@
 // server/api/launch.js — open an interactive Claude Code session in a terminal.
-//   POST /api/launch        { prompt }                  -> launch a raw prompt
-//   POST /api/launch/agent  { home, mandate?, model?,   -> CONSTRUCT a page-agent
-//                             effort?, preview? }            (steward) and launch it
+//   POST /api/launch            { prompt }                  -> launch a raw prompt
+//   POST /api/launch/agent      { home, mandate?, model?,   -> CONSTRUCT a page-agent
+//                                 effort?, preview? }            (registered steward) + launch
+//   POST /api/launch/ephemeral  { home, ... }               -> CONSTRUCT ANY page as a
+//                                                                one-off (no registration) + launch
 //
 // The human-driven counterpart to /api/worker/fire (headless `claude -p`): this
 // hands a prompt to a real TUI the user watches + steers. macOS-only; a
@@ -20,6 +22,7 @@
 import { jsonResponse, readBody } from '../http.js';
 import { launchInteractive } from '../launch.js';
 import { buildCyclePrompt } from '../../../orchestrator/src/build-cycle-prompt.js';
+import { buildEphemeralPrompt } from '../../../orchestrator/src/ephemeral-prompt.js';
 
 const EFFORTS = new Set(['low', 'medium', 'high', 'xhigh', 'max']);
 
@@ -28,7 +31,7 @@ const EFFORTS = new Set(['low', 'medium', 'high', 'xhigh', 'max']);
 // root; tier 3 — the active surface — is what THIS prompt injects (the page as
 // identity + its situational state). The launcher renders this so the build is
 // legible, not a black box.
-function buildConstruction({ home, stage, cycle, inc }) {
+function buildConstruction({ home, stage, cycle, inc, ephemeral = false }) {
   // Tier-3 reflects which OPTIONAL layers the toggles left on. The identity (the
   // page) and state are always present — they ARE the agent, never toggled.
   const optional = [
@@ -44,7 +47,10 @@ function buildConstruction({ home, stage, cycle, inc }) {
     stage: stage || null,
     cycle,
     include: inc,
-    framing: 'interactive — you drive; the agent narrates every write before it makes it, and posts to the board as the page',
+    ephemeral,
+    framing: ephemeral
+      ? 'interactive · one-off — you drive; the agent narrates every write, posts to the board as the page, and is NOT registered as a permanent steward (nothing under _ops/agents/permanent/)'
+      : 'interactive — you drive; the agent narrates every write before it makes it, and posts to the board as the page',
     posture: 'steward discipline — stage-conditional · catch-up-first · ship-a-made-thing · audition gate · act-on-your-lean',
     tiers: [
       { tier: 0, name: 'Jewel', loads: 'floor', what: 'interpretive lens · operating posture · invariants' },
@@ -134,12 +140,84 @@ async function handleAgentLaunch(ctx) {
   return true;
 }
 
+// The one-off counterpart to handleAgentLaunch: bring ANY page to life without
+// registering it as a permanent steward. buildEphemeralPrompt stages a throwaway
+// agent dir, runs the SAME buildCyclePrompt(mode:'interactive'), and discards it —
+// so the construction is identical to a registered steward's cycle 1, the registry
+// is never touched, and any canon page (not just stewards) can be launched.
+async function handleEphemeralLaunch(ctx) {
+  const { req, res, palaceRoot, opts } = ctx;
+
+  const bodyText = await readBody(req, res);
+  if (bodyText === null) return true;
+  let body;
+  try { body = JSON.parse(bodyText); } catch (e) {
+    jsonResponse(res, 400, { error: `malformed JSON: ${e.message}` });
+    return true;
+  }
+
+  const home = body && typeof body.home === 'string' ? body.home.trim() : '';
+  if (!home) { jsonResponse(res, 400, { error: 'missing page title' }); return true; }
+
+  const mandate = typeof body.mandate === 'string' ? body.mandate.trim() : '';
+  const includeRaw = (body && typeof body.include === 'object' && body.include) || {};
+  const inc = {
+    board: includeRaw.board !== false,
+    history: includeRaw.history !== false,
+    pageChange: includeRaw.pageChange !== false,
+    staging: includeRaw.staging !== false,
+  };
+
+  // Injectable for tests so the route can be exercised without walking the palace.
+  const build = opts.buildEphemeralPromptImpl || buildEphemeralPrompt;
+  let built;
+  try {
+    built = build({ palaceRoot, title: home, mode: 'interactive', include: inc, extraMandate: mandate });
+  } catch (e) {
+    jsonResponse(res, 500, { error: `could not construct the agent: ${e.message}` });
+    return true;
+  }
+
+  if (!built || !built.ok) {
+    // not_found -> 404 (no such entry); no_frontmatter -> 422 (a learning material,
+    // not a canon entry, so not an agent). Either way the client shows the reason.
+    const notFound = built && built.status === 'not_found';
+    const msg = built && built.status === 'no_frontmatter'
+      ? `"${home}" has no frontmatter — only a canon entry can be brought to life.`
+      : `"${home}" could not be found as a palace entry.`;
+    jsonResponse(res, notFound ? 404 : 422, { error: msg, status: built?.status || 'error', home });
+    return true;
+  }
+
+  const cycle = 1; // an ephemeral session is always a fresh first activation.
+  const construction = buildConstruction({ home, stage: built.stage, cycle, inc, ephemeral: true });
+
+  if (body.preview) {
+    jsonResponse(res, 200, { ok: true, preview: true, ephemeral: true, home, stage: built.stage || null, cycle, construction, prompt: built.full });
+    return true;
+  }
+
+  const effort = EFFORTS.has(body.effort) ? body.effort : undefined;
+  const model = (typeof body.model === 'string' && /^[A-Za-z0-9._-]+$/.test(body.model)) ? body.model : undefined;
+  const launch = opts.launchImpl || launchInteractive;
+  const result = await launch(built.full, { palaceRoot, model, effort, ...(opts.launchOpts || {}) });
+  if (!result.launched) {
+    jsonResponse(res, result.supported === false ? 501 : 500, { ...result, home, cycle, ephemeral: true });
+    return true;
+  }
+  jsonResponse(res, 200, { ...result, home, cycle, ephemeral: true, construction });
+  return true;
+}
+
 export async function launchRoutes(ctx) {
   const { req, res, urlPath, method, palaceRoot, opts } = ctx;
   if (method !== 'POST') return false;
 
-  // The page-agent construction launch (steward).
+  // The page-agent construction launch (registered steward).
   if (urlPath === '/api/launch/agent') return handleAgentLaunch(ctx);
+
+  // The one-off construction launch (any canon page, no registration).
+  if (urlPath === '/api/launch/ephemeral') return handleEphemeralLaunch(ctx);
 
   // The raw-prompt launch (handoffs, cards, and the steward fallback).
   if (urlPath !== '/api/launch') return false;
