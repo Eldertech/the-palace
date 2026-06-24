@@ -38,6 +38,8 @@ forward_vector: "I want to become the biological proof of concept that the palac
 ---
 # Endosymbiosis
 
+![[Endosymbiosis — hero.png]]
+
 Lynn Margulis's theory that the most significant transitions in evolutionary history occurred through symbiotic mergers rather than gradual mutation. The most famous case: the ancestral eukaryotic cell engulfed an aerobic bacterium — rather than digesting it, they cooperated. The bacterium became the mitochondrion. Every complex life form on Earth runs on this merger.
 
 The key property: after deep enough cooperation, the distinction between the cooperating entities becomes difficult to draw. The mitochondrion retains its own DNA, but it cannot reproduce independently. The host cell cannot survive without the mitochondrion's metabolism. The merger was so successful it became permanent and irreversible.

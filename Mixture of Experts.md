@@ -38,6 +38,8 @@ forward_vector: "I map AI architectural patterns — routing, expert specializat
 
 # Mixture of Experts
 
+![[Mixture of Experts — hero.png]]
+
 An architectural pattern in which a system routes each input to one or more specialist sub-models (experts) via a gating mechanism, rather than passing every input through a single monolithic model. Only the relevant experts activate — the rest remain dormant. The gate chooses; the experts execute; the results integrate.
 
 First encountered in June 2024 as a curiosity about LLM internals. Recognized in March 2026 as the dominant paradigm in frontier AI — and, more importantly, as a **substrate-indifferent** pattern that recurs wherever specialized capability is routed by intent. The same shape appears in neural MoE, in the palace's typed-link ontology, and in the embodied dialogic practices ([[Excellent Adventure]], [[Dialectic]]) that humans were already running before the term existed.

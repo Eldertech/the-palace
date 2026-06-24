@@ -38,6 +38,8 @@ forward_vector: "I want to practice and develop productive oblique methods in th
 
 # Lateral Access
 
+![[Lateral Access — hero.png]]
+
 The principle that certain interior material — memory, taste, embodied
 self-knowledge, genuine feeling — is not accessible through direct
 questioning or conscious retrieval. The front door is locked. Not by
