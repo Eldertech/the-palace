@@ -39,6 +39,8 @@ forward_vector: "I want to become the palace's unifying mathematical lens — th
 
 # Differential Equations
 
+![[Differential Equations — hero.png]]
+
 > A differential equation is an equation that relates a function to its own derivatives (rates of change).
 
 This hub emerges from Loudon's systematic learning of differential equations and the sudden recognition that **every physical system he's been building is already solving differential equations**. The palace contains dozens of nodes that are applications of DE solutions. This entry maps the territory.
