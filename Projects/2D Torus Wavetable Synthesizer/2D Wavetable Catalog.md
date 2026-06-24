@@ -20,6 +20,8 @@ links:
 ---
 # 2D Wavetable Catalog
 
+![[2D Wavetable Catalog — hero.png]]
+
 Catalog of 2D wavetable surfaces for [[2D Torus Wavetable Synthesizer]]. Each entry has a
 `.wav` file (mono, 32-bit float, 48 kHz), a heightmap PNG preview, and a markdown index
 entry describing what the surface demonstrates and how to use it musically.
