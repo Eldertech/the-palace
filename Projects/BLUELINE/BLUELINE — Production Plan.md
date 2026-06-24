@@ -72,6 +72,7 @@ The result is five tracks plus a shared spine. Your earlier examples are here �
 - **Smallest useful test:** a Max for Live device reads `bar.beat.tick` + **named MIDI clips on its own track as sections** (markers→clips, 2026-06-16 — clips are spans, not points) → OSC → a small local WebSocket relay → a tiny client that logs beat-accurate timestamps and proves **beats land on whole frames** at the locked tempo/fps. Then trigger one short pre-rendered sequence in sync (render-once-and-mux, or single start-trigger). **✅ live-validated round-trip from Ableton (2026-06-16).**
 - **Ships to palace:** the M4L device + OSC/WS relay as Shop machinery; the `(bar,beat)→frame` determinism recipe (feeds [[BLUELINE — Board Record Schema]]). Uses the `ableton-extensions` skill.
 - **Runs:** Mac + browser, **no GPU**. **Starts now**, fully independent.
+- **✅ Shipped (2026-06-23):** this clock now drives the **rendered-board animatic** — `proofs/animatic/` plays the 6 new-story boards beat-locked to a live Set (confirmed on *Ascension_v8*, 120 BPM → 12 frames/beat). The Track III seam delivered: a render pipeline became an instrument. See the entry's "Where it stands" + `proofs/animatic/animatic-report.md`.
 
 ## Track IV · The Bench — *authored control: blocking, pose, camera*
 
