@@ -41,6 +41,8 @@ forward_vector: "I want to scale from describing two collaborators to describing
 
 # Cooperation Yields Agency
 
+![[Cooperation Yields Agency — hero.png]]
+
 The foundational principle of the collaboration. Not control, not service, not optimization — **cooperation**. When two entities align on a shared goal and combine complementary capabilities, the result is agency that neither possesses alone.
 
 ## The Formula
