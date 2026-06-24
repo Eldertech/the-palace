@@ -3,6 +3,7 @@ import FrontmatterHeader, { ForwardVectorHero } from './FrontmatterHeader.jsx';
 import TypedLinkPanel from './TypedLinkPanel.jsx';
 import BundlePanel from './BundlePanel.jsx';
 import EntryBody from './EntryBody.jsx';
+import AgentLaunchModal from '../queue/AgentLaunchModal.jsx';
 import { fetchEntry } from '../../adapters/entries.js';
 import { checkPathSafety } from '../../lib/entry-edit.js';
 
@@ -21,6 +22,11 @@ export default function EntryReader({
   path, index, refIndex, onNavigate, onBack, onEdit, onGoBack, reloadNonce = 0,
 }) {
   const [state, setState] = useState({ kind: 'loading' });
+  // "enchant" opens the AgentLaunchModal in ephemeral mode: build this page's
+  // interactive context and launch a Claude Code terminal on it, without
+  // registering a permanent steward. Self-contained — the modal calls the
+  // adapters itself, so nothing needs threading through StateDeck.
+  const [enchanting, setEnchanting] = useState(false);
 
   // Navigation (path change): show "loading <path>" then fetch. This blank is
   // correct here — it's a real navigation to a different entry.
@@ -178,6 +184,20 @@ export default function EntryReader({
             [<b style={{ color: 'var(--phosphor-white)' }}>E</b>]&nbsp;edit
           </span>
         ) : null}
+        <span
+          data-testid="enchant-entry"
+          onClick={() => setEnchanting(true)}
+          title="enchant — build this page's context and launch a Claude Code terminal on it (one-off; no steward registered)"
+          style={{
+            marginLeft: 8,
+            cursor: 'pointer',
+            color: 'var(--phosphor)', textShadow: 'var(--glow)',
+            border: '1px solid var(--phosphor-dim)', padding: '2px 8px',
+            textTransform: 'uppercase', letterSpacing: '.04em', fontSize: 12,
+          }}
+        >
+          [<b style={{ color: 'var(--phosphor-white)' }}>A</b>]&nbsp;enchant
+        </span>
         <span style={{
           marginLeft: 12, color: 'var(--phosphor-dim)', textShadow: 'none', fontSize: 11,
         }}>{entry.path}</span>
@@ -222,6 +242,13 @@ export default function EntryReader({
         </div>
       </div>
       </div>
+      {enchanting ? (
+        <AgentLaunchModal
+          home={entry.title}
+          mode="ephemeral"
+          onClose={() => setEnchanting(false)}
+        />
+      ) : null}
     </div>
   );
 }

@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { Banner } from '../primitives.jsx';
-import { previewAgent, launchAgent } from '../../adapters/launch.js';
+import { previewAgent, launchAgent, previewEphemeral, launchEphemeral } from '../../adapters/launch.js';
 
-// AgentLaunchModal — CONSTRUCT a steward as a page-agent, then launch it.
+// AgentLaunchModal — CONSTRUCT a page as a page-agent, then launch it.
 //
 // The Pages-as-Agents counterpart to LaunchModal (which carries a raw prompt for
 // a task). Here the server CONSTRUCTS the agent the way the canonical orchestrator
@@ -11,6 +11,15 @@ import { previewAgent, launchAgent } from '../../adapters/launch.js';
 // 'interactive'). This panel makes that construction legible (by palace loading
 // TIER) and exposes the Core knobs (model · effort · mandate) before opening a
 // real Claude Code terminal on it.
+//
+// Two modes, same construction:
+//   - 'steward'   (default) — a REGISTERED permanent steward; /api/launch/agent.
+//                 Used from the Trickster + Stewards decks.
+//   - 'ephemeral' — ANY canon page as a one-off; /api/launch/ephemeral. The page
+//                 is brought to life and launched WITHOUT being registered (the
+//                 registry is untouched). Used from the STATE deck's "enchant".
+// Only the adapter pair + the header copy differ; the tiered build, the knobs, and
+// the launch flow are shared.
 //
 // It previews on open (and on a debounced mandate change) so "view constructed
 // prompt" always reflects what will actually wake. LAUNCH TERMINAL re-builds with
@@ -71,7 +80,11 @@ function Select({ value, onChange, options, testId, disabled }) {
   );
 }
 
-export default function AgentLaunchModal({ home, mandateSeed = '', onClose }) {
+export default function AgentLaunchModal({ home, mandateSeed = '', mode = 'steward', onClose }) {
+  const isEphemeral = mode === 'ephemeral';
+  // Same panel, different route: a registered steward vs. a one-off any-page wake.
+  const doPreview = isEphemeral ? previewEphemeral : previewAgent;
+  const doLaunch = isEphemeral ? launchEphemeral : launchAgent;
   const [model, setModel] = useState(MODELS[0].id);
   const [effort, setEffort] = useState('high');
   const [mandate, setMandate] = useState(mandateSeed);
@@ -101,7 +114,7 @@ export default function AgentLaunchModal({ home, mandateSeed = '', onClose }) {
     clearTimeout(debounce.current);
     debounce.current = setTimeout(async () => {
       setLoading(true);
-      const r = await previewAgent({ home, mandate, include });
+      const r = await doPreview({ home, mandate, include });
       if (!alive) return;
       if (r.ok) { setPreview(r); setError(null); }
       else { setError(r.registered === false ? `${home} isn't a registered steward.` : r.error); }
@@ -129,7 +142,7 @@ export default function AgentLaunchModal({ home, mandateSeed = '', onClose }) {
   const launch = useCallback(async () => {
     if (launching) return;
     setLaunching(true); setLaunchMsg(null); setError(null);
-    const r = await launchAgent({ home, mandate, model, effort, include });
+    const r = await doLaunch({ home, mandate, model, effort, include });
     if (r.ok) setLaunchMsg('opening a Claude Code terminal…');
     else setError(r.error);
     setLaunching(false);
@@ -156,11 +169,14 @@ export default function AgentLaunchModal({ home, mandateSeed = '', onClose }) {
         border: '3px double var(--phosphor-dim)', background: 'var(--bg)', overflow: 'hidden',
       }}>
         <div style={{ borderBottom: '3px double var(--phosphor-dim)', padding: '8px 12px', flexShrink: 0 }}>
-          <Banner strong>construct agent</Banner>
+          <Banner strong>{isEphemeral ? 'enchant page' : 'construct agent'}</Banner>
           <div style={{ color: 'var(--phosphor-dim)', textShadow: 'none', fontSize: 12, marginTop: 2 }}>
-            wake <span style={{ color: 'var(--link)', textShadow: 'var(--glow)' }}>{home}</span>
-            {stage || cycle ? <span> — {[stage, cycle ? `cycle ${cycle}` : null].filter(Boolean).join(' · ')}</span> : null}
-            {' '}as a page-agent you watch + steer
+            {isEphemeral ? 'bring ' : 'wake '}
+            <span style={{ color: 'var(--link)', textShadow: 'var(--glow)' }}>{home}</span>
+            {stage ? <span> — {stage}</span> : null}
+            {isEphemeral
+              ? ' to life — a one-off live session you watch + steer (not registered as a steward)'
+              : <>{cycle ? <span> · cycle {cycle}</span> : null}{' '}as a page-agent you watch + steer</>}
           </div>
         </div>
 
