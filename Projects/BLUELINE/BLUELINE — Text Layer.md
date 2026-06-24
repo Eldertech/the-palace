@@ -78,6 +78,19 @@ applied to a single word. Proven 2026-06-24 (`NO` → white-ink splatter-burst, 
 `BURNING` → inky drips). `render_text.py --mode stylize` (desaturate → img2img + canny); the photoreal and ink
 variants sit side by side in `contact-sheet.html`.
 
+**Three refinements that make it read as hand-lettering, not a font** (2026-06-24, Loudon's art direction):
+1. **Skeleton from a hand-drawn font** (Chalkduster), not a mechanical one (Impact) — so even where the
+   structure shows through it reads as *a hand*, not a typeface coming through too strongly.
+2. **Loose canny on the ink pass** (strength ~0.5, released by ~45% of the steps) so the letters go organic
+   instead of staying a rigid traced outline — the img2img init is the legibility floor.
+3. **Leave the font black — put the original letterform in negative space.** A final knockout composites the
+   (slightly dilated) skeleton as pure black into the ink energy, so the **word becomes the void the energy
+   flows around** rather than positive white strokes. Every `--mode stylize` render emits a `_negspace` variant
+   (`knockout()`). Strongest where the energy field is *light* around the word (an engraving / scratchboard
+   field — see `stay`); a *many-of-these*, not all. Also folds toward [[The Drift|negative space as the subject]].
+   The drop step from rung-finish — never feed the photoreal `gesture` into the ink prompt (it names the photoreal
+   material and re-injects it) — stays in force.
+
 **The prompt structure — `emotion+source → material`, `emotion+intensity → gesture`.** Each prompt names
 *what the letters are made of* and *what they are doing*: the dying woman's `stay` is faint trembling graphite
 thinning into breath; the hero's `NO` is cracking brush flinging ink; the song's `BURNING` is living flame
