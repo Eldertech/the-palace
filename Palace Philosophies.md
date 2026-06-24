@@ -70,6 +70,8 @@ forward_vector: "I am the palace's living philosophical index — not a survey o
 
 # Palace Philosophies
 
+![[Palace Philosophies — hero.png]]
+
 The philosophical **register** of the palace — traditions used as living tools, not cited as survey. Two are load-bearing and carried here in full; the rest each have (or will have) their own page and are indexed below.
 
 ## Spinoza — the metaphysical backbone
