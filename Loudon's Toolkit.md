@@ -33,6 +33,8 @@ forward_vector: Become a complete, navigable map of every instrument, tool, and 
 
 # Loudon's Toolkit
 
+![[Loudon's Toolkit — hero.png]]
+
 The full ecosystem of hardware and software Loudon uses for making music, teaching, building, and thinking. This hub anchors a cluster of category entries, each a focused inventory with context about use, teaching role, and ecosystem relationships.
 
 Any Claude instance reading this hub plus one category entry should have immediate, reliable orientation in that domain — without needing to reconstruct the landscape from scattered conversation history.
