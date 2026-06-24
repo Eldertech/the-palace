@@ -49,18 +49,6 @@
       "runtimeExecutable": "python3",
       "runtimeArgs": ["-m", "http.server", "8204", "--directory", "Projects/BLUELINE/proofs/m2-motion-comic"],
       "port": 8204
-    },
-    {
-      "name": "blueline-lesson",
-      "runtimeExecutable": "python3",
-      "runtimeArgs": ["-m", "http.server", "8205", "--directory", "Projects/BLUELINE/proofs"],
-      "port": 8205
-    },
-    {
-      "name": "taste-breeder",
-      "runtimeExecutable": "python3",
-      "runtimeArgs": ["-m", "http.server", "8206", "--directory", "Projects/BLUELINE/proofs/style-lock"],
-      "port": 8206
     }
   ]
 }
