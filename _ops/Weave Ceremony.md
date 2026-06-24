@@ -30,6 +30,8 @@ links:
 
 # Weave Ceremony
 
+![[Weave Ceremony — hero.png]]
+
 The palace's full-body examination. Where the Walk follows one thread, the Weave reads every thread and asks: how do they relate? What forms? What tangles? What has grown unnoticed? What has died without a marker?
 
 For metaphor, cadence rationale, and swarm architecture history, see [[Weave Ceremony — Context]].
