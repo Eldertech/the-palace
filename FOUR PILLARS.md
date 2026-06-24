@@ -39,6 +39,8 @@ forward_vector: "I take all available opportunities to integrate creation, tools
 
 # Four Pillars
 
+![[FOUR PILLARS — hero.png]]
+
 Loudon's framework for learning through making: four projections of a single higher-dimensional reality, cast by the light of curiosity into comprehensible dimensions. They tag everything in the palace.
 
 **Creation** (publicly "Music") — the drive to make things. Learning happens through building, not prerequisite accumulation. The public name keeps what "Creation" alone loses: beauty, taste, cultural perspective, the communication making enables.
