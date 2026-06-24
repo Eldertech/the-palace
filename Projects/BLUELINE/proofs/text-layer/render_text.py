@@ -146,7 +146,9 @@ def main(only, seeds, mode, denoise):
                 if not os.path.exists(src):
                     print(f'  [{p["id"]}] s{sd}: no photoreal {os.path.basename(src)} — run --mode skeleton first', flush=True); continue
                 init_name = upload(desaturate(src, os.path.join(DESAT, f'{p["id"]}_s{sd}.png')))
-                full = f'the word "{p["words"]}" — {p["emotion"]}, {p["gesture"]}, {INK}'
+                # NB: do NOT feed the photoreal `gesture` here — it names the photoreal material
+                # (fire/blood/embers) and re-injects it through the ink pass. emotion + ink_style carry the motion.
+                full = f'the word "{p["words"]}" — {p["emotion"]}, {INK}'
                 dn = denoise
             else:
                 full = f'{p["positive"]}, {STYLE}'
