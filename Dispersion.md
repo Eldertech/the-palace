@@ -35,6 +35,8 @@ forward_vector: "I want to become the palace's teachable demonstration that one 
 
 # Dispersion
 
+![[Dispersion — hero.png]]
+
 *Dispersion* is one term doing multiple jobs across audio domains. A single word, three distinct meanings — all involving spreading, all involving wavelength or frequency, but operating in different dimensions. Learning to distinguish them is a teachable moment: it reveals the hidden unification principle.
 
 ## Three Meanings of Dispersion
