@@ -57,6 +57,8 @@ Earned by hitting each wall in turn:
 - **Be patient through the first cold pull** — the image is 19–35GB; recycling a worker mid-extract just restarts the download. Don't mistake a long `IN_QUEUE` for a wedge.
 - **flashboot off** for very large images (it left workers in a flapping restored state).
 - **Container disk must hold the image** — a 35GB image needs ~80GB container disk, not the 30GB default.
+- **Stage big models to the container disk, not synchronously to the network volume.** The volume is fast to *read* (cached models) but slow to *write*: a boot script that downloads a fresh ~10GB checkpoint straight to the volume *before* launching ComfyUI blows the readiness timeout — two dead pods on the SVD image-to-video run. Download to the container disk (fast local NVMe), launch, then **background-copy to the volume** so the *next* boot symlinks the cache and is ready in ~1 min. A `>size` check rejects any half-written partial a killed pod left behind.
+- **Pull ~10GB checkpoints with a parallel downloader.** Single-stream `wget` from HF to a pod is unreliable at that size — one run finished in ~5 min, the next timed out at 30. `aria2c -x16 -s16` (16 connections, resumable) makes it reliably fast.
 - **Verify one frame before batching.** The most expensive lesson: the failed img2img movie ran all 30 frames before anyone looked. One render, eyeballed, would have caught it.
 
 ## The FLUX + ControlNet pose-locked restyle workflow
