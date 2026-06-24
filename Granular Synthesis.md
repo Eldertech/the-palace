@@ -33,6 +33,8 @@ forward_vector: "I build boundary crossing instruments from populations of short
 
 # Granular Synthesis
 
+![[Granular Synthesis — hero.png]]
+
 The technique of building sound from large populations of small sonic events (grains) — typically short sine bursts, windowed samples, or simple waveforms — whose collective statistical behavior produces emergent timbres, textures, and spatial fields. The grain is the atom; the cloud is the material.
 
 ## Origin

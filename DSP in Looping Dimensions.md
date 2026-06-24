@@ -32,6 +32,8 @@ links:
 ---
 # DSP in Looping Dimensions
 
+![[DSP in Looping Dimensions — hero.png]]
+
 A unifying principle that explains why a wide range of seemingly distinct DSP techniques all share the same hard limit and the same path past it.
 
 ## The Principle in Plain Language

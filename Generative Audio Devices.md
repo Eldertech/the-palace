@@ -45,6 +45,8 @@ forward_vector: "I want to become a generalizable pipeline — natural language 
 
 # Generative Audio Devices
 
+![[Generative Audio Devices — hero.png]]
+
 A Four Pillars project: **AI-generated modular audio architectures from natural-language descriptions, across any target environment.** The pipeline reads a human description of a sound or instrument and emits a loadable artifact — a VCV Rack patch, RNBO DSP code, a Max/MSP patcher, a Pure Data file, a WebAudio graph — whatever target has a registered vocabulary.
 
 The central bet: with a curated, source-verified component vocabulary as grounding, LLM generation of precise technical artifacts becomes reliable. Without it, models hallucinate port names, module slugs, parameter IDs. With it, generation is structurally constrained to what is actually possible. VCV Rack is the first test case — visually inspectable, fast to load, small verifiable module set. Each additional target is a new registry and emitter, not a new architecture. The generalizable concept: [[Registry Pattern]].
