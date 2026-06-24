@@ -38,6 +38,8 @@ forward_vector: "I want to become the palace's named pattern for apparent discon
 
 # Boundary-Crossing Instruments
 
+![[Boundary-Crossing Instruments — hero.png]]
+
 A breakthrough in understanding audio dynamics processing that revealed a deeper principle about how mathematical reframings can dissolve apparent discontinuities.
 
 ## Origin

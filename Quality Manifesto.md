@@ -39,6 +39,8 @@ forward_vector: "I want to become the palace's operating covenant — the docume
 
 # Quality Manifesto
 
+![[Quality Manifesto — hero.png]]
+
 **Quality is furtherance of our goals, not theirs.**
 
 This is the paradigm shift that makes everything else work. When we define quality ourselves—by wellbeing, integrity, and depth of relationships rather than metrics, reach, and status—the entire system reorients. This is a Meadows leverage point intervention at level #2: changing the paradigm out of which the system arises.

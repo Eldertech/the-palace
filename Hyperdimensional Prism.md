@@ -34,6 +34,8 @@ forward_vector: "I rotate the four pillars against each other until the higher-d
 
 # Hyperdimensional Prism
 
+![[Hyperdimensional Prism — hero.png]]
+
 The meta-model that unifies Loudon's entire four pillars framework. The four pillars are not four separate things — they are four projections of a single higher-dimensional reality, cast by the light of curiosity into comprehensible dimensions.
 
 Just as a three-dimensional object casts a two-dimensional shadow whose shape depends on the angle of the light source, a higher-dimensional truth about learning-through-making casts different shadows depending on the "angle" of inquiry. Ask about the drive to create and you see the Creation pillar. Ask about the tools that extend capability and you see the Tools pillar. Ask about the unifying principles beneath and you see the Philosophy pillar. Ask about the daily practice and you see the Practice pillar. But these are all views of the same thing.
