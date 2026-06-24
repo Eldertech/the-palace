@@ -36,6 +36,8 @@ links:
 ---
 	# SCHEMA — The Palace Type System
 
+![[SCHEMA — hero.png]]
+
 This is the authoritative TBox (type system) for the Palace. It defines what can exist here and how things can be related. Any human or AI operator must read this before creating new entries, proposing new link types, or modifying ceremony structure.
 
 **Schema changes are permanent structural commitments.** They require a Schema Ceremony, documented rationale, and a version increment. Adding entries and editing content are routine. Changing the schema is not.

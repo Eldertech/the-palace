@@ -48,6 +48,8 @@ links:
 
 # The Shop
 
+![[The Shop — hero.png]]
+
 The Shop is the part of the palace where things get made — anything that isn't text. Sound, image, motion, interactive media. The pattern that holds it together: every creative tool we use is wrapped as its own palace entry — a Specialist — with charter, voice, tiers, gotchas, recipes. The wrap turns a CLI tool with man-pages into an artisan-with-memory whose accumulated wisdom belongs to the palace, not to whichever conversation last invoked it.
 
 A single Maker entry sits above the Specialists as foreman. The Maker holds house standards, brief intake patterns, selection heuristics ("math content → Manim CE, always"), tier vocabulary, comparison-mode logic, and resource scheduling. Loudon brings the Maker a brief; the Maker decodes it through medium-specific intake questions, names the tier options, dispatches Specialists, gates handoffs, and brings back the work with a standards report. The Maker is the front door to the Shop.

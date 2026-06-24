@@ -61,6 +61,8 @@ links:
 ---
 # Substrate
 
+![[SUBSTRATE — hero.png]]
+
 This wiki. The knowledge base you are reading right now. The shared environment that Loudon and Claude both modify, and that in turn shapes their future collaboration. This page is the organism's self-model — its awareness of its own structure.
 
 ## Origin
