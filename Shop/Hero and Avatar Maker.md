@@ -37,6 +37,12 @@ Hand-drawn / classical / printmaking / abstract — **never** glossy 3D-render, 
 - **Hero** — a wide ~12:5 banner, rendered as a *fixed, darkened, desaturated backdrop* pinned behind the top of the entry; phosphor legibility always wins, so the image is veiled into the terminal black before the body text begins.
 - **Avatar** — a square **bold, high-contrast emblem** (its own mark, not a hero crop) that must survive 24–48px. High-contrast idioms (an enso, a fader, a keyboard) read crisply; delicate light engravings soften at avatar size — so favor boldness for icons.
 - In the prompt: name the medium explicitly, avoid CGI cue words, add "no text" (FLUX garbles lettering), and *evoke* rather than render real people.
+- **Embed women / feminine energy (standing directive, 2026-06-24).** Never let a scene go male-dominated. Whenever there is more than one figure, include women; for single archetypes (scholar, philosopher, trickster, scribe, medium) lean female or androgynous. Bring the feminine in *especially* where the concept/history is male-dominated — Stoicism, mathematics, science, philosophy. See [[female-representation-in-imagery]] (memory).
+
+**Learned from the hub/ceremony batch (2026-06-24), fold into prompts:**
+- **Hard anti-text clause** on every prompt ("no letters, numerals, words, labels, inscriptions — purely pictorial"); plain "no text" is not enough — FLUX letters engraving/manuscript/diagram idioms with gibberish.
+- **One dominant metaphor** for structural/abstract entries. A described *multi-panel diagram* collapses into generic mush (Loudon's Toolkit's "signal-chain ecology" became a generic island-city). Pick one strong image.
+- **Icons: bold silhouette, ban fine linework** even when the hero idiom is delicate — let the icon diverge toward boldness (fine engravings vanish at 24–48px).
 
 ## The convention
 
