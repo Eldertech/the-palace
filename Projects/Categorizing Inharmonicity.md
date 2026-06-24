@@ -44,6 +44,8 @@ forward_vector: "I map the space of inharmonicity types — stretched, Bessel, s
 
 # Categorizing Inharmonicity
 
+![[Categorizing Inharmonicity — hero.png]]
+
 Inharmonicity is not a single dimension but a *space*. A piano string stretched under tension, a struck bell resonating through circular geometry, a chaotic physical system driven at the edge of bifurcation, a granular texture with random pitch scatter — all of these are inharmonic, but in fundamentally different ways. The question is not "is this harmonious?" but "*how* is this inharmonious?" What is the *type* of inharmonicity, the mechanism that breaks the harmonic series, the physical or mathematical origin of the deviation?
 
 To build synthesis instruments that capture the character of real sounds, we need to systematize the *forms* that inharmonicity takes. This is a taxonomy not of timbre (too vast, too subjective) but of the structural pathways that generate non-integer partial spacing.

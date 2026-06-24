@@ -53,6 +53,8 @@ links:
 ---
 # 2D Torus Wavetable Synthesizer
 
+![[2D Torus Wavetable Synthesizer — hero.png]]
+
 A wavetable instrument where the wavetable is a 2D surface on a torus rather than a 1D loop, scanned at audio rate by two independent phasors. The ratio of the two scan rates is the primary inharmonicity gate. The instrument is the concrete incarnation of [[DSP in Looping Dimensions]], the proving ground for whether the principle generates musically interesting sound, and the four-pillar project that Loudon is using to test his own understanding as a synthesizer designer.
 
 ## Why This Project Exists

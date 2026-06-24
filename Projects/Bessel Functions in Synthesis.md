@@ -28,6 +28,8 @@ links:
 
 # Bessel Functions in Synthesis
 
+![[Bessel Functions in Synthesis — hero.png]]
+
 FM synthesis is not a collection of ad-hoc modulation techniques. It is *angular motion in phase space*, and Bessel functions are the natural harmonics of that rotation. The same mathematical structure that emerges in quantum oscillators, circular acoustics, and phase modulation is not analogous across domains—it is *the same geometry appearing in different physical materials*. This is [[Spinoza Conatus|monism]]: one substance, multiple attributes.
 
 ## The FM-Bessel Isomorphism

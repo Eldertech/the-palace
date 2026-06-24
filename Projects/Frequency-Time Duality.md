@@ -28,6 +28,8 @@ links:
 
 # Frequency-Time Duality
 
+![[Frequency-Time Duality — hero.png]]
+
 Frequency and delay time are mathematical reciprocals: f = 1/T. This is not merely a conversion formula — it means that a single continuous parameter (repeat rate) produces the full spectrum of perceptual experience depending on where you are on the axis.
 
 The continuum, traveling from high to low frequency / short to long delay:
