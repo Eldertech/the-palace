@@ -28,6 +28,8 @@ links:
 
 # Dissolutions
 
+![[Dissolutions — hero.png]]
+
 A pattern the palace keeps re-discovering: **two things taught as separate turn out to be one object, seen from different doorways.** Not analogies. Not isomorphisms in passing. *The same object*, with the apparent difference traceable entirely to how it is read — by phasor or by impulse, by round-trip or by scan, by slow envelope or by audio-rate waveform, by analysis or by synthesis. When the representation changes, the boundary disappears.
 
 This hub holds the catalogue. Each member entry names one specific dissolution. The hub itself names the recurring move.
