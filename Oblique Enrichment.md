@@ -51,6 +51,8 @@ links:
 
 # Oblique Enrichment
 
+![[Oblique Enrichment — hero.png]]
+
 A way of moving an entry forward by coming at it *sideways*. Where [[Enrichment]]
 leaves a small varied gift in an entry, Oblique Enrichment leaves a **paired
 image-and-sound provocation** — the fewest words possible, lots of sound, a
