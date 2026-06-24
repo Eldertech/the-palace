@@ -1,0 +1,18 @@
+{
+  "pod": "nyeq9sfh7kaish",
+  "prompt": "a lone figure in a charcoal flight jacket, copper undercut, dramatic cinematic key light, surreal mathematical landscape, bold graphic-novel color, sharp focus",
+  "frames": {
+    "A": "/Users/loudonstearns/Documents/palace-feature-blueline-m3/Projects/BLUELINE/proofs/m3-warped-noise/renders-gtf/A.png",
+    "B_seedlock": "/Users/loudonstearns/Documents/palace-feature-blueline-m3/Projects/BLUELINE/proofs/m3-warped-noise/renders-gtf/B_seedlock.png",
+    "B_warped_gtf": "/Users/loudonstearns/Documents/palace-feature-blueline-m3/Projects/BLUELINE/proofs/m3-warped-noise/renders-gtf/B_warped_gtf.png"
+  },
+  "params": {
+    "steps": 24,
+    "guidance": 3.5,
+    "cn_strength": 0.75,
+    "cn_end": 0.85,
+    "sampler": "euler",
+    "scheduler": "simple",
+    "size": "832x1216"
+  }
+}

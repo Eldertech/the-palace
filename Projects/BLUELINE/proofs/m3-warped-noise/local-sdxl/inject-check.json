@@ -1,0 +1,6 @@
+{
+  "d_same_meanabs255": 0.0,
+  "d_warp_meanabs255": 57.67042922973633,
+  "pass": true,
+  "note": "pose fixed at A; only the injected noise varies"
+}

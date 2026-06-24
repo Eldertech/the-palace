@@ -1,0 +1,52 @@
+{
+  "max_disp_px": 482.6,
+  "prompt_ref": "m3_pod_render.PROMPT",
+  "anchor_noise": "N_A.npy",
+  "deltas": [
+    {
+      "t": 0.1,
+      "tag": "010",
+      "delta_px": 48.3,
+      "pose_png": "sweep/pose_t010.png",
+      "warp_npy": "sweep/N_warp_t010.npy",
+      "warp_filled": 0.967,
+      "whiteness_lag1": 0.0014
+    },
+    {
+      "t": 0.2,
+      "tag": "020",
+      "delta_px": 96.5,
+      "pose_png": "sweep/pose_t020.png",
+      "warp_npy": "sweep/N_warp_t020.npy",
+      "warp_filled": 0.933,
+      "whiteness_lag1": 0.001
+    },
+    {
+      "t": 0.35,
+      "tag": "035",
+      "delta_px": 168.9,
+      "pose_png": "sweep/pose_t035.png",
+      "warp_npy": "sweep/N_warp_t035.npy",
+      "warp_filled": 0.882,
+      "whiteness_lag1": 0.0015
+    },
+    {
+      "t": 0.6,
+      "tag": "060",
+      "delta_px": 289.6,
+      "pose_png": "sweep/pose_t060.png",
+      "warp_npy": "sweep/N_warp_t060.npy",
+      "warp_filled": 0.797,
+      "whiteness_lag1": 0.0004
+    },
+    {
+      "t": 1.0,
+      "tag": "100",
+      "delta_px": 482.6,
+      "pose_png": "sweep/pose_t100.png",
+      "warp_npy": "sweep/N_warp_t100.npy",
+      "warp_filled": 0.663,
+      "whiteness_lag1": 0.0015
+    }
+  ]
+}
