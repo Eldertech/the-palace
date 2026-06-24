@@ -222,12 +222,8 @@ export default function TricksterDeck({
 
   return (
     <div data-testid="trickster-deck">
-      <Banner as="h1" strong style={{ fontSize: 32, margin: '0 0 4px' }}>
-        {t('trickster.deck.title')}
-      </Banner>
       <div style={{ color: 'var(--phosphor-dim)', textShadow: 'none', marginBottom: 10 }}>
-        {t('trickster.deck.subtitle')}
-        {loadState === 'ok' ? <> · {n} {countLabel}</> : null}
+        {loadState === 'ok' ? <>{n} {countLabel}</> : null}
         {onReload ? (
           <span
             data-testid="trickster-reload"

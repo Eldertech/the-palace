@@ -106,16 +106,6 @@ export default function StateDeck({ jumpTarget = null, onEntryPathChange, reload
         />
       ) : (
         <>
-          <Banner as="h1" strong style={{ fontSize: 32, margin: '0 0 4px' }}>
-            state -- the palace as it stands
-          </Banner>
-          <div style={{ color: 'var(--phosphor-dim)', textShadow: 'none', marginBottom: 12 }}>
-            {state.kind === 'ok'
-              ? lens === 'pulse'
-                ? `${state.count} entries indexed. click a column to sort.`
-                : `typed-link graph of the freshest palace map. click a node to open it.`
-              : 'walking the palace...'}
-          </div>
           <LensToggle lens={lens} onChange={setLens} />
           {lens === 'topology' ? (
             <TopologyLens

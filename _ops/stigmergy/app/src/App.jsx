@@ -9,7 +9,6 @@ import { DECKS } from './lib/decks.js';
 import StateDeck from './components/state/StateDeck.jsx';
 import LogDeck from './components/log/LogDeck.jsx';
 import TricksterDeck from './components/TricksterDeck.jsx';
-import ActuatorPanel from './components/queue/ActuatorPanel.jsx';
 import QueuePanel from './components/queue/QueuePanel.jsx';
 import StewardsDeck from './components/stewards/StewardsDeck.jsx';
 import CompanionHost from './components/CompanionHost.jsx';
@@ -21,11 +20,6 @@ import { buildInbox } from './lib/inbox.js';
 import { BOARDS } from './lib/format.js';
 import { DEMO_MESSAGES } from './lib/demo-data.js';
 import { validateAll } from './lib/schema.js';
-
-function formatNow() {
-  const d = new Date();
-  return `${String(d.getHours()).padStart(2, '0')}:${String(d.getMinutes()).padStart(2, '0')}`;
-}
 
 // Demo mode from the ?demo= query param:
 //   '1'     → demo data PREPENDED onto live palace data (the default showcase)
@@ -62,7 +56,6 @@ function initialDeck() {
 }
 
 export default function App() {
-  const [clock, setClock] = useState(formatNow());
   // Top-level deck: STATE (present, default), QUEUE (future), LOG (past).
   // The retro/prospective discipline as navigation, per the v1.0 thesis.
   const [deck, setDeck] = useState(initialDeck());
@@ -70,7 +63,6 @@ export default function App() {
   // page that earns its keep moment-to-moment.
   const [activeBoard, setActiveBoard] = useState('TRICKSTER');
   const [agentFilter, setAgentFilter] = useState(null);
-  const [scanlinesOn, setScanlinesOn] = useState(true);
   // The raw per-board feed (ChannelTabs + MessageList + AgentRoster) is now a
   // collapsible "firehose" under the QUEUE deck's ranked open-work board, not a
   // co-equal second navigation axis. Folded by default for focus; auto-open in
@@ -126,11 +118,6 @@ export default function App() {
   const [liveState, setLiveState] = useState('offline');
 
   const demo = demoMode();
-
-  useEffect(() => {
-    const t = setInterval(() => setClock(formatNow()), 1000);
-    return () => clearInterval(t);
-  }, []);
 
   const loadAll = useCallback(async () => {
     setLoadState('loading');
@@ -190,7 +177,6 @@ export default function App() {
   //   1-6 → select board (only meaningful when QUEUE is active)
   //   R → reload (deck-aware: reloads board on QUEUE, no-op stub elsewhere
   //       until the deck adds its own reload affordance)
-  //   V → toggle scanlines
   useEffect(() => {
     function onKey(e) {
       if (e.target && /input|textarea/i.test(e.target.tagName)) return;
@@ -206,8 +192,6 @@ export default function App() {
         if (idx >= 0 && idx < BOARDS.length) { setActiveBoard(BOARDS[idx]); setFirehoseOpen(true); }
       } else if (k === 'r' || k === 'R') {
         loadAll();
-      } else if (k === 'v' || k === 'V') {
-        setScanlinesOn((on) => !on);
       }
     }
     window.addEventListener('keydown', onKey);
@@ -297,7 +281,6 @@ export default function App() {
     const trailing = [
       { key: '~', label: agentOpen ? 'close companion' : 'companion' },
       { key: 'R', label: 'reload' },
-      { key: 'V', label: scanlinesOn ? 'visual off' : 'visual on' },
     ];
     if (deck === 'QUEUE') {
       const boardCmds = [
@@ -311,7 +294,7 @@ export default function App() {
       return [...deckCmds, ...boardCmds, ...trailing];
     }
     return [...deckCmds, ...trailing];
-  }, [deck, scanlinesOn, agentOpen]);
+  }, [deck, agentOpen]);
 
   function handleCommand(k) {
     if (k === 'S') return setDeck('STATE');
@@ -320,7 +303,6 @@ export default function App() {
     if (k === 'T') return setDeck('TRICKSTER');
     if (k === '~') return toggleAgent();
     if (k === 'R') return loadAll();
-    if (k === 'V') return setScanlinesOn((on) => !on);
     if (deck === 'QUEUE') {
       const idx = parseInt(k, 10);
       if (idx >= 1 && idx <= 6) { setActiveBoard(BOARDS[idx - 1]); setFirehoseOpen(true); }
@@ -336,12 +318,14 @@ export default function App() {
     : 'L';
 
   return (
-    <Shell nodeName="01" clock={clock} unread={totalFlagged}
-      commands={cmds} onCommand={handleCommand} scanlinesOn={scanlinesOn}
-      vfxState={scanlinesOn ? 'on' : 'off'} activeBoard={commandBarActive}
-      liveState={liveState}>
+    <Shell commands={cmds} onCommand={handleCommand}
+      activeBoard={commandBarActive} liveState={liveState}>
       <PalaceRefProvider vault="The Palace" openEntryInState={openEntryInState}>
-      <DeckTabs active={deck} onSelect={setDeck} />
+      {/* Lift the deck nav above an entry's fixed hero backdrop (EntryReader
+          z-index:1) so the buttons stay bright; the hero sits behind them. */}
+      <div style={{ position: 'relative', zIndex: 2 }}>
+        <DeckTabs active={deck} onSelect={setDeck} />
+      </div>
 
       {deck === 'STATE' && (
         <StateDeck
@@ -363,11 +347,7 @@ export default function App() {
       )}
       {deck === 'QUEUE' && (
         <div data-testid="board-screen" style={{ width: '100%' }}>
-          <Banner as="h1" strong style={{ fontSize: 32, margin: '0 0 4px' }}>
-            queue -- the open-work board
-          </Banner>
           <div style={{ marginBottom: 10 }}>
-            <ActuatorPanel />
             <QueuePanel messages={visibleMessages} onJumpEntry={() => setDeck('STATE')} />
           </div>
           {/* The raw per-board feed, demoted from a co-equal second nav axis to

@@ -15,7 +15,7 @@
 import { readdirSync, statSync, readFileSync, existsSync } from 'node:fs';
 import { join, resolve, sep, basename, dirname } from 'node:path';
 import { parseFrontmatter, normalizeLinks, normalizePillars } from './yaml-frontmatter.js';
-import { bundleDirFor, listBundleFiles } from './bundle.js';
+import { bundleDirFor, listBundleFiles, iconRelFor } from './bundle.js';
 
 // Top-level dirs we never walk into.
 const HARD_EXCLUDE_DIRS = new Set([
@@ -124,6 +124,7 @@ function summarize(relPath, fm, body) {
     link_count: links.length,
     body_size: typeof body === 'string' ? body.length : 0,
     has_bundle: false, // patched in caller (needs absolute path)
+    icon: null,        // patched in caller — palace-relative path to the bundle avatar, if any
     has_active_handoff: markers.has_active_handoff,
     has_stewardship_marker: markers.has_stewardship_marker,
   };
@@ -141,7 +142,9 @@ export function listEntries(palaceRoot) {
     try { text = readFileSync(abs, 'utf8'); } catch (_) { continue; }
     const { frontmatter, body } = parseFrontmatter(text);
     const summary = summarize(rel, frontmatter, body);
-    summary.has_bundle = bundleDirFor(abs) !== null;
+    const bundleDir = bundleDirFor(abs);
+    summary.has_bundle = bundleDir !== null;
+    summary.icon = bundleDir ? iconRelFor(root, bundleDir) : null;
     out.push(summary);
   }
   return out;
@@ -191,6 +194,7 @@ export function readEntry(palaceRoot, relPath) {
   let bundle = null;
   if (bundleDir) {
     summary.has_bundle = true;
+    summary.icon = iconRelFor(root, bundleDir);
     bundle = {
       dir: bundleDir.slice(root.length + 1).replaceAll(sep, '/'),
       files: listBundleFiles(root, bundleDir),

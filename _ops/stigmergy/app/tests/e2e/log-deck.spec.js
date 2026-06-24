@@ -17,7 +17,7 @@ async function gotoLog(page) {
 test.describe('LOG deck — chrome + stream', () => {
   test('L opens the LOG deck and renders the commit stream', async ({ page }) => {
     await gotoLog(page);
-    await expect(page.getByTestId('log-deck')).toContainText(/the git record/i);
+    await expect(page.getByTestId('log-deck')).toContainText(/reload/i);
     await expect(page.getByTestId('commit-stream')).toBeVisible({ timeout: 15_000 });
     const cards = await page.locator('[data-testid="commit-card"]').count();
     expect(cards).toBeGreaterThan(3);

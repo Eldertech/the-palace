@@ -241,29 +241,6 @@ hr::before { content: "═══════════════════
 @keyframes bbs-spin-ascii { 0%{content:"|"} 25%{content:"/"} 50%{content:"-"} 75%{content:"\\"} 100%{content:"|"} }
 .spin::before { content: "|"; animation: bbs-spin-ascii 0.4s steps(4) infinite; display: inline-block; width: 1ch; }
 
-.scanlines { position: relative; }
-.scanlines::after {
-  content: "";
-  position: absolute; inset: 0; pointer-events: none;
-  background: repeating-linear-gradient(
-    to bottom,
-    rgba(0,0,0,0) 0px,
-    rgba(0,0,0,0) 2px,
-    rgba(0,0,0,0.28) 2px,
-    rgba(0,0,0,0.28) 3px
-  );
-  mix-blend-mode: multiply;
-  z-index: 9999;
-}
-
-.vignette { position: relative; }
-.vignette::before {
-  content: "";
-  position: absolute; inset: 0; pointer-events: none;
-  background: radial-gradient(ellipse at center, transparent 55%, rgba(0,0,0,0.55) 100%);
-  z-index: 9998;
-}
-
 /* ---- Entry-Agent window: active-section glow ------------------------------ */
 /* The section the companion window is "reading" gets a restrained lift: a
    brightness bump, a faint phosphor wash, and a thin left accent. Conforms to
