@@ -49,6 +49,8 @@ forward_vector: "I want to become a set of interactive and static visualizations
 
 # Synthesis Space as Torus
 
+![[Wavetable Space as Torus — hero.png]]
+
 A wavetable is not a rectangle. It is a torus.
 
 This is not a metaphor. The topology of wavetable synthesis space is exactly **T² = S¹ × S¹** — the product of two circles. Every point encodes a complete synthesis state; paths at constant angular velocity are torus knots; adding inharmonicity as a third cyclic dimension produces **T³**. The geometry is precise and determines what synthesis operations are possible.

@@ -25,6 +25,8 @@ forward_vector: "I want to become the neurological grounding for what the palace
 
 # Striatum
 
+![[Striatum — hero.png]]
+
 A subcortical structure in the forebrain and a major component of the basal ganglia system. It turns out to be one of the central physical sites where learning, rhythm, reward, and habit formation converge — making it unexpectedly relevant across several palace threads at once.
 
 ## Structure

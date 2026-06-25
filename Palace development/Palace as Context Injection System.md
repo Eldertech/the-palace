@@ -46,6 +46,8 @@ forward_vector: "I want to become the technical specification that guides every 
 
 # Palace as Context Injection System
 
+![[Palace as Context Injection System — hero.png]]
+
 The palace is not a knowledge base that gets queried. It is a substrate that builds identity in the minds that navigate it.
 
 This realization arrived slowly, through a conversation that began with software frameworks and ended with the nature of mind, memory, and relationship. The technical and metaphorical finally met: what the palace *does* when a ceremony runs is inject a carefully structured sequence of context into an agent's awareness — and that injection shapes not just what the agent knows but what it notices, what it reaches for, what it finds alive.

@@ -29,6 +29,8 @@ links:
 
 # Registry Pattern
 
+![[Registry Pattern — hero.png]]
+
 A method for making LLM generation of structured technical artifacts reliable. The core move: before asking the model to generate anything, inject a curated, verified component vocabulary that defines the complete space of legal outputs. The model is constrained to this vocabulary. Hallucination of names, indices, and parameters is structurally prevented rather than hoped against.
 
 Without a registry, a language model generating a VCV Rack patch will invent port names, module slugs, and parameter IDs that don't exist. The patch loads — but cables point nowhere. The registry collapses the output space to only what is actually possible.
