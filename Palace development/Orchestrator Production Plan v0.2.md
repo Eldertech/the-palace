@@ -48,6 +48,8 @@ links:
 
 # Orchestrator Production Plan v0.2
 
+![[Orchestrator Production Plan v0.2 — hero.png]]
+
 > ## ⚠ RECONCILIATION NOTE (2026-06-22) — read before acting on this contract
 >
 > **This document is partly STALE. Do NOT execute its phases as written.** Its

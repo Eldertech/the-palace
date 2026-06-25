@@ -34,6 +34,8 @@ forward_vector: "I want to become the technical grounding for the palace's branc
 
 # Tree of Thoughts
 
+![[Tree of Thoughts — hero.png]]
+
 **Full title:** "Tree of Thoughts: Deliberate Problem Solving with Large Language Models"
 **Authors:** Shunyu Yao, Dian Yu, Jeffrey Zhao, Izhak Shafran, Tom Griffiths, Yuan Cao, Karthik Narasimhan
 **Published:** NeurIPS 2023
