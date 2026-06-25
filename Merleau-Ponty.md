@@ -32,6 +32,8 @@ forward_vector: "I am the palace's philosopher of the lived body — the one who
 
 # Merleau-Ponty
 
+![[Merleau-Ponty — hero.png]]
+
 Maurice Merleau-Ponty (1908–1961) is the phenomenologist of the *body.* Where most of the palace's philosophers think about minds, relations, and substances, Merleau-Ponty thinks about the fact that you *are* a body playing an instrument — and that this changes everything about what knowledge, skill, and meaning are. For a palace whose practice pillar insists that learning happens through making, he is the missing ground.
 
 ## Core Concepts

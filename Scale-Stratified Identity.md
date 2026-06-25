@@ -37,6 +37,8 @@ forward_vector: "I want to become the palace's general-purpose tool for resolvin
 
 # Scale-Stratified Identity
 
+![[Scale-Stratified Identity — hero.png]]
+
 The question *is it still the same thing?* — asked of a being that has changed, transformed, been through thresholds — is not one question. It is at least two questions asked at different scales of description, and the answers need not agree.
 
 This is not a paradox to resolve. It is a structure to inhabit.

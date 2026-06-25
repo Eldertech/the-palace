@@ -56,6 +56,8 @@ forward_vector: "I want the palace's philosophy to stop being a neighborhood Lou
 
 # STIGMERGY Philosophical Lenses
 
+![[STIGMERGY Philosophical Lenses — hero.png]]
+
 > *A design proposal layered on [[STIGMERGY v1.0 — Palace Front-End]]. It changes nothing about the locked [[BBS Design System]] aesthetic and adds no new top-level deck; it proposes how the philosophy neighborhood lives **inside** the three decks (STATE / QUEUE / LOG), plus one genuinely new swarm mode. Written so a later Claude Code session can phase it onto the v1.0 build. Show-before-build: this is a contract to react to, not yet a thing to construct.*
 
 ## Thesis
