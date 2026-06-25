@@ -46,6 +46,8 @@ links:
 
 # Generative Compression
 
+![[Generative Compression — hero.png]]
+
 A conversation ends. Most of what was said was necessary to arrive at the insights, but not all of it should travel forward. Wrong turns, abandoned framings, noise between signal moments — these bloat the next context window and dilute the best material. Generative Compression is the practice of distilling a long, productive conversation into a focused document that serves as the seed of the next conversation, retaining the essential signal and deliberately discarding the rest.
 
 The key word is *generative* — the document produced is not a summary. It is a seed. Its job is not to record what happened but to enable what comes next.

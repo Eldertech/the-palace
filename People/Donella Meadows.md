@@ -46,6 +46,8 @@ links:
 ---
 
 # Donella Meadows
+
+![[Donella Meadows — hero.png]]
 ## Systems Thinking for Creative Practice
 
 **1941-2001** | Environmental Scientist, Systems Thinker, Writer

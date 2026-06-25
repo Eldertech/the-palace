@@ -38,6 +38,8 @@ agency_profile:
 
 # The View From Above
 
+![[The View From Above — hero.png]]
+
 A discipline of [[Stoicism]] and one of the threads Loudon lives by: **memento mori** (remember you will die) joined to **the view from above** (look down on human affairs from a great height). Marcus Aurelius, an emperor, practices in the *Meditations* zooming out until the empire itself looks small — armies like ants, his own fame a thing that will be forgotten in an afternoon of geological time. Not to despair. To *clarify*: at altitude, the false urgencies that distort judgment lose their grip, and what actually matters — the next chosen response, the character of the day — stands out cleanly.
 
 Memento mori is the same instrument aimed at time rather than space. The brevity of life is not a sorrow to dwell in; it is a lens that resizes. *You could leave life right now — let that determine what you do and say and think* (Marcus). The thought of the end is what gives the present its weight.

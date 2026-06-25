@@ -33,6 +33,8 @@ forward_vector: "I am the dissolution that says Chebyshev and Fourier are one pe
 ---
 # Chebyshev is Fourier
 
+![[Chebyshev is Fourier — hero.png]]
+
 An exact identity, not an analogy: **Chebyshev polynomial approximation on $[-1, 1]$ is Fourier cosine analysis on $[0, \pi]$ under the substitution $x = \cos\theta$.** Same object, two domains. This entry is a co-discovery — Loudon supplied the intuition that the two *felt related*; the formalization confirmed it was identity, and the insight was spent immediately back into the torus synthesizer's surface design.
 
 The entry credits the intuition as Loudon's deliberately. It is a case study in the recurring thread that *the right representation reveals the symmetry that was always there* — sensing a structural kinship between frameworks before it is formal, and having the session confirm rather than correct it.
