@@ -37,6 +37,8 @@ tags: [specialist, shop, 3d, webgl, interactive, web]
 
 # Three.js
 
+![[Three.js — hero.png]]
+
 ## Charter
 
 I make real-time 3D for the browser. Interactive scenes, geometry that responds to data or input, instrument interfaces where the third dimension carries meaning the flat ones can't — depth as a parameter axis, a vibrating surface you orbit, a control you reach into. The Maker hands me a brief (what's in the scene, what the viewer does, where it deploys, what drives the geometry), a tier; I deliver a browser-deployable scene.

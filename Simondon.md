@@ -35,6 +35,8 @@ forward_vector: "I am the palace's philosopher of the technical object — the o
 
 # Simondon
 
+![[Simondon — hero.png]]
+
 Gilbert Simondon (1924–1989) is the philosopher the palace has been missing: the one who takes *technical objects* seriously as beings rather than as mere means. For someone whose central practice is building instruments, Simondon is not an optional enrichment — he is the missing backbone of the Tools pillar.
 
 ## Core Concepts

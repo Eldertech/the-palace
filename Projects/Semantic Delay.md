@@ -24,6 +24,8 @@ forward_vector: "I want to become a working live performance instrument, not jus
 
 # Semantic Delay
 
+![[Semantic Delay — hero.png]]
+
 Delay as transformation, not repetition. A live performance effect and VST plugin that intercepts vocal audio, transmogrifies the _meaning_ of the words through a neural language model, and returns it as synthesized speech—semantically mutated, rhythmically coupled, and delayed.
 
 ## Architecture (full vision, Phase 2)

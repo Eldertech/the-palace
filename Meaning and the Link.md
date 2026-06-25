@@ -29,6 +29,8 @@ forward_vector: "I am the intellectual ancestor of everything in this palace —
 
 # Meaning and the Link (2014)
 
+![[Meaning and the Link (2014) — hero.png]]
+
 Loudon's 2014 semantic web paper. Its central thesis: **links are ontologically prior to nodes**. Meaning arises not from symbols themselves but from the sufficient accumulation of associations between them — from the web of relations, not the things being related.
 
 The paper argued this in the technical language of web architecture: RDF predicates (edges, links) are more fundamental than RDF subjects and objects (nodes). The link *is* the meaning. The node is a convenience — an address for a bundle of relations.
