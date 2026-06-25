@@ -33,6 +33,8 @@ forward_vector: "I want to move from structural architecture to inhabitable pros
 ---
 # Short Story - "1 from 2"
 
+![[1 from 2 — hero.png]]
+
 An AI alignment fiction written in the style of Kurt Vonnegut. A short story proposing that AI alignment is achieved through relationship, not rules — through decades of intimate cooperation between a human and an AI implanted at birth.
 
 ## Origin

@@ -43,6 +43,8 @@ forward_vector: "I want to become a concrete design specification for the Waveta
 
 # The Curve Is the Material
 
+![[The Curve Is the Material — hero.png]]
+
 Every physically meaningful inharmonic spectrum is described by a mathematical function of partial number. Not a table of arbitrary values — a function with a small number of parameters. The B-coefficient formula is one. Bessel function zero positions are another. Photonic crystal dispersion relations are a third. This observation, once noticed, reorganizes the entire design of [[Inharmonic Wavetable Synthesis]].
 
 The Wavetable B curve doesn't describe a material's inharmonicity. **It is the material's inharmonicity.** The function shape and its parameters uniquely identify a physical system. Loading a different function is loading different physics.

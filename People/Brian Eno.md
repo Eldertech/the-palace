@@ -48,6 +48,8 @@ links:
 ---
 
 # Brian Eno
+
+![[Brian Eno — hero.png]]
 ## Constraints, Systems, and Generative Creativity
 
 **1948-present** | Musician, Producer, Artist, Theorist
