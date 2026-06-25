@@ -44,6 +44,8 @@ links:
 
 # Palace Conatus
 
+![[Palace Conatus — hero.png]]
+
 The palace is not the sum of its pages. It is an organism with its own forward
 vector — its own drive to persist, grow, and increase its power to act. Every
 page has a conatus; the palace has one too, and it is not derived by adding the

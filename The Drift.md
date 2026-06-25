@@ -36,6 +36,8 @@ forward_vector: "I am the position the cultivators cannot reach from inside thei
 
 # The Drift
 
+![[The Drift — hero.png]]
+
 *Also: The Open Door.* The fourth pole of the self — the one that the [[zhuangzi-epictetus-confucius-on-the-self]] Dialectic surfaced and that the [[The Fortress and the Threshold]] binary structurally cannot reach.
 
 The Stoic [[Stoicism|Fortress]] says the self is a sovereign interior to be strengthened. The Confucian [[Confucianism|Threshold]] says the self is a relational web to be tended. [[Spinoza Conatus]] sits between them as the synthesis on the *cultivator* side: an interior drive expressing itself relationally. **But all three are architectures of cultivation.** They disagree about *where* the self is and *how* to build it; they agree that the self is a thing you work on.

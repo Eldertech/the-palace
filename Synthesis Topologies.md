@@ -30,6 +30,8 @@ forward_vector: "I keep naming the ontology of synthesis as a topology question 
 
 # Synthesis Topologies
 
+![[Synthesis Topologies — hero.png]]
+
 ## 1. The Distinction
 *Section seed.* Topology-first vs. topology-emergent synthesis. The architectural skeleton that decides what is reachable in parameter space, versus a graph that the user assembles. Most commercial synthesizers are topology-first; modular synthesis is the canonical topology-emergent counter-case. Define the axis precisely enough that an instrument can be located on it.
 
