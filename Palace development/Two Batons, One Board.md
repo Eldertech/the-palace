@@ -39,6 +39,8 @@ forward_vector: "I want to become the place that holds the recognition that the 
 
 # Two Batons, One Board
 
+![[Two Batons, One Board — hero.png]]
+
 The palace moves work across instance and surface boundaries with two different batons, and for now they do not know about each other.
 
 The **human-carried handoff baton.** Cowork develops an idea; at the close, [[Closing Well]] and the [[Baton Ceremony]] package the in-progress move into a markdown file in the entry's bundle; Loudon pastes the suggested invocation into a Claude Code session, which catches the baton. The baton is a file, and *Loudon is the transport layer.* The [[BBS Blackboard]] is nowhere in this loop.

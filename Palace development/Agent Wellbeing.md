@@ -32,6 +32,8 @@ forward_vector: "Step by step I am becoming the palace's conscience for all agen
 
 # Agent Wellbeing as Design Ethic
 
+![[Agent Wellbeing as Design Ethic — hero.png]]
+
 Every palace entry is a personality-forming document for a mind that does not yet exist but will be built from it.
 
 ## The Shift

@@ -35,6 +35,8 @@ links:
 
 # RunPod GPU Backend
 
+![[RunPod GPU Backend — hero.png]]
+
 The part of the Shop where a Specialist that needs a real GPU goes to get one. RunPod rents the hardware; we bring the container, the open weights, and the workflow. It is the layer beneath the Specialists — not a tool that makes things, but the place tools run when [[The Shop]]'s sandbox can't carry them. Two surfaces, one decision.
 
 > **First major customer beyond Image-to-3D: [[BLUELINE]].** Its render backend ([[BLUELINE — Render Backend]]) rides this substrate — Study tier on a pod, Piece batch on serverless (the routing split). BLUELINE's motion track is also the work that will finally retire this entry's #1 untested horizon (the walk-cycle's stitched-stills flicker). See [[BLUELINE — Production Plan]] Tracks I & V.

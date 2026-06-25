@@ -54,6 +54,8 @@ forward_vector: "I want to be the entry that makes 'store phase-response curves,
 ---
 # Dispersion Table
 
+![[Dispersion Table — hero.png]]
+
 A generalization of the wavetable concept arrived at by pushing it onto the phase-response axis: **instead of storing waveforms, store phase-response curves.** A 2D array of phase-response curves becomes a navigable family of inharmonic mode structures, and a single "warp" knob selects which curve the loop's round-trip enforces — therefore which inharmonic partial structure the resonator admits.
 
 This is Loudon's generalization, not a textbook result. It emerged in dialogue by treating two things normally taught as separate — the scanned wavetable and the lossless waveguide loop — as one object, then asking what the *other* axis of that object could store.

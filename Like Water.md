@@ -34,6 +34,8 @@ links:
 
 # Water as Pedagogical Architecture
 
+![[Like Water — hero.png]]
+
 Water benefits all things without contention. It does not govern; it does
 not impose form. It flows to the lowest place — and nothing can fault it
 for this, because it is entirely itself.
