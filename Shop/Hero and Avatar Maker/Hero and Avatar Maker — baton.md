@@ -5,10 +5,17 @@ links:
   - target: "[[Hero and Avatar Maker]]"
     type: connects-to
     label: baton-for
-forward_vector: "I carry the live face-rollout across a context boundary — Wave 1 (hubs+ceremonies) shipped, the 4 female-rep regens + the 2 flawed re-distills committed, Wave 2 (43-entry connected backbone) rendering now; next is view→place→commit Wave 2, then Wave 3 (degree 8–19)."
+forward_vector: "I carry the live face-rollout across a context boundary — Waves 1, 2, AND 3 all shipped (≈207 entries faced through degree-8); the gender directive recalibrated to an even mix mid-Wave-3; next is exception-regens from the QA galleries, then Wave 4 (degree < 8 / the long tail) if Loudon wants it."
 ---
 
 # Baton: the palace face rollout
+
+## Wave 3 — SHIPPED (2026-06-24/25)
+113 entries (degree 8–19), 226 images, committed as-is in 12 batch commits (`...`→`6895c74`). Balanced gender confirmed by QA: **42 M / 38 F / 10 mixed / 23 none** (recalibration worked). Distilled via 14 subagents → assembled `prompts-wave3.json` → gender-rebalance + de-text patch (`wave3/patch.json`, 12 flips) → render → 14-way QA (`wave3/qa3-*.json`, 55 flagged, mostly genuine CGI / icon-text / fine-icons) → annotated gallery `batch-hubs-out/wave3-gallery.html`.
+- **Render kept stalling on Mac sleep** (148→177→199→221→226 across 4 resumes); `caffeinate -dimsu` blocks idle/system sleep but NOT clamshell on battery. For a long batch: keep the Mac plugged in + lid open, or expect to resume (it's fully resumable — `generate` skips existing).
+- **Commit-at-scale gotcha:** new bundle dirs are untracked, so `git status` shows the *dir* not the files — resolve each entry's real on-disk bundle (case-insensitive match for case-merges) and `git add` explicit png paths. 2 `.md` files skipped (other-agent dirty): Web Audio Worklet, Wavetable Scanner — their pngs committed, embeds ride with the steward's later commit.
+- **Exception fix-list (next):** from `wave3/qa3-*.json` — genuine CGI (Wavetable Synthesis Deep Research, The Four Virtues, Shimmer Cloud, STIGMERGY Alignment Review/Phil Lenses, Meadows Origin), icon-text (SCHEMA-style edge letters on several), fine/mushy icons. Loudon exception-reviews the gallery; regen only what he marks + the clear failures.
+
 
 ## Move
 Giving every important palace entry a **hero** (page backdrop) + **avatar** (icon), via the [[Hero and Avatar Maker]] pipeline. Wave 1 (28 hubs + ceremonies) shipped; the 4 female-rep regens + 2 flawed re-distills are committed; **Wave 2 (43-entry backbone) is rendering now.**
