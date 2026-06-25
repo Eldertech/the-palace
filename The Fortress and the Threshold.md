@@ -38,6 +38,8 @@ forward_vector: "I want to become the palace's primary lens for questions of sel
 ---
 # The Fortress and the Threshold
 
+![[The Fortress and the Threshold — hero.png]]
+
 Two answers to the question of what a human being fundamentally *is* — and what virtue therefore requires.
 
 ## Origin

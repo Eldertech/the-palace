@@ -36,6 +36,8 @@ forward_vector: "I am mature but underleveraged as a tool. My direction is activ
 
 # Leverage Points Framework
 
+![[Leverage Points Framework — hero.png]]
+
 Donella Meadows' leverage points framework applied to creative practice. A decision-making lens that asks: **Where are we intervening in the system?** Parameters? Feedback loops? Goals? Paradigms?
 
 Most creators exhaust themselves working at low-leverage points (tweaking posting schedules, optimizing thumbnails). High-leverage work happens at the level of goals and paradigms—changing what "success" means, not how often you post.

@@ -23,6 +23,8 @@ forward_vector: "I want to become the palace's exemplar for cross-domain structu
 
 # Ohm's Law
 
+![[Ohm's Law — hero.png]]
+
 **V = I × R**
 
 The fundamental relationship between voltage, current, and resistance in electrical circuits. A model system for building intuition about how variables relate in simple equations — particularly equations where one variable is in the denominator.

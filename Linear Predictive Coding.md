@@ -37,6 +37,8 @@ forward_vector: "I want to carry one sentence through every domain it touches �
 ---
 # Linear Predictive Coding
 
+![[Linear Predictive Coding — hero.png]]
+
 A speech-coding technique from the late 1960s, organized here around a single thesis held from statistics through engineering to philosophy: **prediction is compression is intelligence.** LPC is the worked example; the thesis is the reason it belongs in the palace and not only in a DSP notebook.
 
 The commission that produced it was explicit — *be deep and broad, connect disparate fields, use metaphor, mathematics, and storytelling.* This entry preserves that register deliberately; the prose is the synthesis, so the best passages are kept rather than compressed away.
