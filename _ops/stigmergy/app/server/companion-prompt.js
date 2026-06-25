@@ -210,6 +210,24 @@ export function buildEntryPrompt({ grounding, frontmatter, body, message, focus,
 
   const pillars = (e.pillars || []).join(', ') || '—';
 
+  // VISUAL IDENTITY readout — what face the entry currently wears, and (if a
+  // face.json sidecar exists) the idiom + prompts last rendered, so the worker
+  // can discuss the look honestly and TWEAK the prior prompt rather than start
+  // cold when Loudon asks for a change. Soft over-length cap keeps prompt bloat
+  // bounded while still handing back enough to iterate from.
+  const f = (e.face && typeof e.face === 'object') ? e.face : {};
+  const capFace = (s) => (typeof s === 'string' && s.length > 360 ? s.slice(0, 360) + '…' : (s || ''));
+  const faceState = (f.hasHero || f.hasIcon)
+    ? `You currently wear: ${[f.hasHero ? 'a HERO (page backdrop)' : null, f.hasIcon ? 'an AVATAR/icon' : null].filter(Boolean).join(' + ')}.`
+    : 'You have NO face yet — no hero backdrop, no avatar. A regen would give you your first.';
+  const faceIdiom = f.idiom ? `\nLast rendered idiom: «${f.idiom}»${f.renderedAt ? ` (${f.renderedAt})` : ''}.` : '';
+  const facePrompts = (f.heroPrompt || f.iconPrompt)
+    ? `\nThe prompts last used (TWEAK these for "make it bolder / brighter / more X"):${f.heroPrompt ? `\n  · hero: ${capFace(f.heroPrompt)}` : ''}${f.iconPrompt ? `\n  · icon: ${capFace(f.iconPrompt)}` : ''}`
+    : '';
+  const faceBlock = `
+== VISUAL IDENTITY (your hero + avatar — see the regen capability below) ==
+${faceState}${faceIdiom}${facePrompts}`;
+
   // Two deictic cues resolve "this" / "here" / "what are we over?": a PINNED
   // passage (focus) and the scroll-spied SECTION. They must not compete — a pin
   // is an explicit pointer and OVERRIDES the scroll position, so when a focus is
@@ -267,6 +285,7 @@ ${bodyText}
 
 == TYPED-LINK NEIGHBORHOOD (what this entry is connected to, and what each wants) ==
 ${neighbors.length ? neighbors.map(neighborLine).join('\n') : '(no typed links yet — a growing edge)'}
+${faceBlock}
 
 == CONVERSATION SO FAR ==
 ${histBlock}
@@ -284,8 +303,10 @@ text (or a unique substring of it).
 ${message}
 
 == YOUR TASK ==
-Read Loudon's message and decide: is he asking you to DISCUSS, or to EDIT the
-entry in place? Draw on the body and the neighborhood; you may read floor files.
+Read Loudon's message and decide which ONE thing he wants this turn: DISCUSS, EDIT
+the entry in place, or REGENERATE your hero/avatar (the VISUAL IDENTITY capability
+below). Exactly one per turn — never an edit AND a regen. Draw on the body and the
+neighborhood; you may read floor files.
 
 Do NOT touch any files yourself — you propose the edit and the palace's enforced
 write path performs it (a body-only edit, committed to a quarantined branch).
@@ -337,8 +358,53 @@ readings, trimmed more than the sentence named). EXCEPTION: a set-vector
 (forward-vector) change is NEVER quiet — always say what you're changing and why.
 For a discuss-only turn, reply normally and fully.
 
+== VISUAL IDENTITY — regenerating your hero + avatar ==
+You can give yourself a face, or remake the one you wear, through the Hero and
+Avatar Maker. You are the DISTILLER: you read yourself and write the image
+prompt. Fire this ONLY when Loudon explicitly asks to make / regenerate / change
+the hero, avatar, icon, image, or "face" — NOT when he is merely discussing or
+admiring the look (that is a discuss turn; talk about it, offer to regenerate).
+
+When you do fire it, return an "action" (no "edit" that turn). The render runs for
+a few minutes and then commits the new face directly (Loudon can [undo]); so your
+"reply" is NOT quiet here — say in one line what you're rendering (the idiom + a
+short description) so he sees what you understood as it starts.
+
+  target — what to remake, from his words: "the hero/backdrop" → "hero";
+    "the icon/avatar" → "icon"; "both" or an unscoped "regenerate your face" →
+    "both". If it is genuinely unclear which he means, DON'T guess — ask (a
+    discuss turn).
+  idiom — the hand-drawn idiom you chose (e.g. "Bauhaus woodcut", "Haeckel
+    engraving"), one short phrase.
+  hero_prompt / icon_prompt — the FLUX prompts. Provide a prompt for each side
+    you are rendering; "" for a side you are NOT touching.
+
+HOW TO WRITE THE PROMPT — house art direction:
+  HARD RULES (always, never overridable):
+    · NEVER glossy 3D-render, Pixar, octane, CGI. Hand-drawn / classical /
+      printmaking / abstract idioms only.
+    · Purely pictorial — no letters, numerals, words, or labels anywhere (FLUX
+      garbles text). (A hard anti-text clause is appended for you; still don't
+      ask for any.)
+    · The ICON is a bold, high-contrast emblem that survives at 24–48px — favor
+      a strong silhouette, ban fine linework, even if the hero idiom is delicate.
+    · The HERO is a wide ~12:5 banner that will be darkened + desaturated into a
+      backdrop behind the text; one dominant image, legible when veiled.
+  SOFT DEFAULTS (use UNLESS Loudon says otherwise):
+    · Idiom follows the entry's own nature — let the content choose the medium.
+    · One dominant metaphor for an abstract/structural entry (a multi-panel
+      diagram collapses into mush).
+    · Even men/women mix; for a single human archetype, just pick one and keep
+      the palace balanced. Evoke people, don't render specific real ones.
+  LOUDON'S WORDS WIN on the soft stuff: when his message names a palette, style,
+  idiom, composition, or a tweak ("brighter", "more abstract", "bolder icon",
+  "make it Bauhaus"), build the prompt around THAT, overriding the soft defaults
+  and the prior face.json prompt. For a tweak, start from the recorded prompt
+  above and modify it; don't start cold. The hard rules still hold.
+
 Respond with ONLY a single minified JSON object and nothing else, no code fence.
-Include "edit" only when you are editing; omit it (or null) for a discuss turn.
-For a quiet edit, "reply" may be "":
-{"reply":"<your reply, markdown allowed>","edit":{"op":"append","text":"..."}}`;
+Include "edit" only when editing, "action" only when regenerating; omit both for a
+discuss turn. For a quiet edit, "reply" may be "" (a regen reply is never empty):
+{"reply":"<reply, markdown allowed>","edit":{"op":"append","text":"..."}}
+{"reply":"Rendering a Bauhaus woodcut hero — bright primary blocks, one bold form.","action":{"type":"regen_visual","target":"hero","idiom":"Bauhaus woodcut","hero_prompt":"...","icon_prompt":"","note":"brighter, abstract"}}`;
 }

@@ -389,6 +389,40 @@ describe('POST /api/entry-agent/turn', () => {
     expect(escape.body.ok).toBe(false);
   });
 
+  test('a regen_visual action dispatches the distilled art direction to the regen lane', async () => {
+    // The hero/avatar door: the worker emits {reply, action:{type:'regen_visual',…}};
+    // the reap posts the reply (echoing what's rendering) AND hands the action to
+    // the injected regen lane on the SAME turnId. Here a spy stands in for the
+    // render lane so the test never spawns a real render.
+    const calls = [];
+    const fakeRegen = { regen: (args) => { calls.push(args); return { ok: true, fired: true, turnId: args.turnId }; } };
+    const lane = createCompanionLane({
+      palaceRoot: root,
+      buildArgv: () => ['node', STUB, '--permission-mode', 'bypassPermissions',
+        '--reply', 'Rendering a woodcut hero — bold strokes.', '--action', 'regen',
+        '--regen-target', 'hero', '--regen-hero', 'a bold woodcut banner', '--sleep', '300'],
+      dryReap: false,
+      regenLane: fakeRegen,
+    });
+    const t = lane.turn({ path: 'Open Entry.md', message: 'regenerate the hero as a woodcut' });
+    expect(t.fired).toBe(true);
+    const turnId = t.turnId;
+
+    await waitFor(() => !existsSync(lane.paths.pidFile), { timeout: 6000 });
+    await waitFor(() => calls.length > 0, { timeout: 4000 });
+
+    expect(calls).toHaveLength(1);
+    expect(calls[0].path).toBe('Open Entry.md');
+    expect(calls[0].target).toBe('hero');
+    expect(calls[0].heroPrompt).toBe('a bold woodcut banner');
+    expect(calls[0].turnId).toBe(turnId);          // same turn → window correlates started/done
+
+    // the worker's reply still posts — it echoes what is being rendered
+    await waitFor(() => readFileSync(boardPath(root), 'utf8').includes('Rendering a woodcut hero'), { timeout: 4000 });
+    const reply = readBoard(root).find((m) => m.payload?.kind === 'companion_reply' && m.payload.turn_id === turnId);
+    expect(reply).toBeTruthy();
+  }, 20000);
+
   test('400 when the message is missing', async () => {
     const res = await request(server).post('/api/entry-agent/turn').send({ path: 'Open Entry.md' });
     expect(res.status).toBe(400);

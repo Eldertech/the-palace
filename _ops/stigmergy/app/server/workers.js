@@ -7,6 +7,7 @@ import { resolve } from 'node:path';
 import { createActuator } from './actuator.js';
 import { createStewardLane } from './steward-lane.js';
 import { createCompanionLane } from './companion-lane.js';
+import { createRegenLane } from './regen-lane.js';
 
 /**
  * Build — or accept injected — the Enrichment actuator and the steward lane.
@@ -18,8 +19,8 @@ import { createCompanionLane } from './companion-lane.js';
  * autonomous agent or mutating the real palace. Env unset → the real worker.
  *
  * @param {string} palaceRoot
- * @param {{ actuator?: object, stewardLane?: object, companionLane?: object }} [opts]
- * @returns {{ actuator: object, stewardLane: object, companionLane: object }}
+ * @param {{ actuator?: object, stewardLane?: object, companionLane?: object, regenLane?: object }} [opts]
+ * @returns {{ actuator: object, stewardLane: object, companionLane: object, regenLane: object }}
  */
 export function buildWorkers(palaceRoot, opts = {}) {
   // One global actuator per palace root (scar #4: single global worker per lane).
@@ -56,12 +57,23 @@ export function buildWorkers(palaceRoot, opts = {}) {
     }
   }
 
+  // The regen lane: a SEPARATE actuator lane (.actuator-regen/) that fires the
+  // Hero and Avatar Maker render (regen_one.py → FLUX on RunPod) for ONE entry
+  // and reaps it by committing the new face + posting the PROOF. The companion
+  // lane dispatches to it when a worker emits a `regen_visual` action. Built
+  // before the companion lane so it can be injected. (No STIGMERGY_STUB_WORKER
+  // branch: a real render is only ever reached via a real companion worker, and
+  // the stub companion lane's dryReap skips its reap, so a render is never fired
+  // in e2e/stub mode. Tests inject opts.regenLane / construct one with mock:true.)
+  const regenLane = opts.regenLane || createRegenLane({ palaceRoot });
+
   // The companion lane: a SEPARATE actuator lane (.actuator-companion/) that
   // fires an interactive entry-agent turn and reaps it by posting the reply to
   // the board. Same STIGMERGY_STUB_WORKER gate; when stubbed it fires a stub
   // that emits a canned reply AND sets dryReap so a live e2e fire never mutates
   // the real board. Tests inject opts.companionLane (a temp-palace lane) to
-  // prove the genuine reap → post cycle.
+  // prove the genuine reap → post cycle. The regen lane is injected so a
+  // `regen_visual` action can fire a render.
   let companionLane = opts.companionLane;
   if (!companionLane) {
     if (process.env.STIGMERGY_STUB_WORKER) {
@@ -70,11 +82,12 @@ export function buildWorkers(palaceRoot, opts = {}) {
         palaceRoot,
         buildArgv: (prompt) => ['node', companionStub, '--permission-mode', 'bypassPermissions', '--sleep', '500'],
         dryReap: true,
+        regenLane,
       });
     } else {
-      companionLane = createCompanionLane({ palaceRoot });
+      companionLane = createCompanionLane({ palaceRoot, regenLane });
     }
   }
 
-  return { actuator, stewardLane, companionLane };
+  return { actuator, stewardLane, companionLane, regenLane };
 }

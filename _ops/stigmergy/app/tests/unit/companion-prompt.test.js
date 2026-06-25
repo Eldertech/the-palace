@@ -92,8 +92,8 @@ describe('buildCompanionPrompt', () => {
 
   it('offers the edit ops and the optional-edit JSON contract', () => {
     const p = buildCompanionPrompt({ grounding, body: 'x', message: 'hi' });
-    // worker classifies discuss-vs-edit itself (Tier A, capable model)
-    expect(p).toMatch(/DISCUSS, or to EDIT the\nentry in place/);
+    // worker classifies discuss-vs-edit-vs-regen itself (Tier A, capable model)
+    expect(p).toMatch(/DISCUSS, EDIT\nthe entry in place, or REGENERATE/);
     expect(p).toMatch(/Do NOT touch any files yourself/);
     expect(p).toMatch(/"op":"append"/);
     expect(p).toMatch(/"op":"prepend"/);
@@ -102,7 +102,7 @@ describe('buildCompanionPrompt', () => {
     expect(p).toMatch(/"op":"set-vector"/);
     // exactly-one-occurrence discipline for rewrite
     expect(p).toMatch(/occur exactly once/);
-    expect(p).toMatch(/Include "edit" only when you are editing/);
+    expect(p).toMatch(/Include "edit" only when editing/);
   });
 
   it('lets the forward vector be edited (set-vector, never silent) but no other frontmatter', () => {
@@ -134,6 +134,36 @@ describe('buildCompanionPrompt', () => {
     const huge = 'z'.repeat(20000);
     const p = buildCompanionPrompt({ grounding, body: huge, message: 'hi' });
     expect(p).toMatch(/\[truncated\]/);
+  });
+
+  it('exposes the VISUAL IDENTITY regen capability + the regen_visual action contract', () => {
+    const p = buildCompanionPrompt({ grounding, body: 'x', message: 'regenerate the hero as a woodcut' });
+    expect(p).toMatch(/VISUAL IDENTITY — regenerating your hero \+ avatar/);
+    expect(p).toMatch(/"type":"regen_visual"/);
+    // hard rules (never overridable) and the precedence rule (your words win)
+    expect(p).toMatch(/NEVER glossy 3D-render, Pixar, octane, CGI/);
+    expect(p).toMatch(/LOUDON'S WORDS WIN on the soft stuff/);
+    expect(p).toMatch(/Include "edit" only when editing, "action" only when regenerating/);
+  });
+
+  it('reports the current face state — none vs. a recorded idiom + prior prompts — from grounding', () => {
+    const noFace = buildCompanionPrompt({ grounding, body: 'x', message: 'hi' });
+    expect(noFace).toMatch(/VISUAL IDENTITY \(your hero \+ avatar/);
+    expect(noFace).toMatch(/You have NO face yet/);
+
+    const withFace = buildCompanionPrompt({
+      grounding: {
+        ...grounding,
+        entry: {
+          ...grounding.entry,
+          face: { hasHero: true, hasIcon: true, idiom: 'Klee gouache', heroPrompt: 'a bright Klee field', iconPrompt: 'a bold glyph' },
+        },
+      },
+      body: 'x', message: 'what idiom is my hero?',
+    });
+    expect(withFace).toMatch(/You currently wear: a HERO \(page backdrop\) \+ an AVATAR\/icon/);
+    expect(withFace).toMatch(/Last rendered idiom: «Klee gouache»/);
+    expect(withFace).toMatch(/hero: a bright Klee field/); // the prior prompt, to tweak from
   });
 });
 
