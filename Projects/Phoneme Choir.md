@@ -33,6 +33,8 @@ forward_vector: "I keep teaching the per-file responsive-onset pipeline as its f
 
 # Phoneme Choir
 
+![[Phoneme Choir — hero.png]]
+
 A percussive-utterance SFZ multisample (88 phonemes × 4 velocity layers = 352 cells, MIDI A0–C8) where every key fires a unique percussive vocalization — `pop`, `snap`, `clonk`, `boom`, `dum`, `tom`, `woof`, `yip`, `tsk!`, `hut!` — voiced by a rotating pool of 12 Kokoro voices. Velocity selects voice character: gentle / warm / characterful / bold.
 
 Phase 1.x of [[Generative Sample Libraries]]. Sister build to [[Talking Keyboard]]: same Kokoro stack, same architecture, completely different deliverable. Built 2026-05-03 in a single session.

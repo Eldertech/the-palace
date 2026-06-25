@@ -20,6 +20,8 @@ forward_vector: "I want to become the palace's canonical reference for ratio-pre
 
 # Logarithmic Interface Scaling
 
+![[Logarithmic Interface Scaling — hero.png]]
+
 A fundamental interface design pattern for controls (sliders, faders, knobs) that manipulate values spanning multiple orders of magnitude. The pattern makes multiplication and division feel symmetric by mapping the control position logarithmically, so equal physical movements represent equal ratios rather than equal additions.
 
 ## The Interface Design Problem

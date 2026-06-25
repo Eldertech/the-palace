@@ -20,6 +20,8 @@ tags: [meta, blueline, schema, contract, sync]
 
 # BLUELINE — Board Record Schema
 
+![[BLUELINE — Board Record Schema — hero.png]]
+
 > The connective tissue. The AnimaticPlanProposal's `board_template.txt` is the seed; this extends it with the two things it lacked — a **clock** (so renders sync to Ableton) and an **edge channel** (so SDXL gets its canny). One record per shot; the BIBLE once per film.
 
 ## The principle

@@ -41,6 +41,8 @@ forward_vector: "I want to be the entry that makes the difference between *drivi
 
 # Parametric Resonance
 
+![[Parametric Resonance — hero.png]]
+
 The phenomenon that an oscillator's amplitude can build exponentially when one of its parameters is periodically modulated at *twice* its natural frequency. Distinct from ordinary resonance: there is no external force pushing on the system. The energy comes from inside, from whatever is paying the cost of modulating the parameter.
 
 The cleanest example is a child pumping a swing.
