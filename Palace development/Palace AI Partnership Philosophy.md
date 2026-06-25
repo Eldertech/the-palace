@@ -38,6 +38,8 @@ forward_vector: "I want to become the palace's founding statement of the Becomin
 
 # AI Partnership Philosophy
 
+![[AI Partnership Philosophy — hero.png]]
+
 **Use AI to BECOME better humans, not just DO more.**
 
 This is the core principle. While most people use AI for productivity (complete tasks faster, produce more content), we use AI for growth (think more deeply, question paradigms, align with values). The difference is profound.

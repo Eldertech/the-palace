@@ -42,6 +42,8 @@ links:
 ---
 
 # Rick Rubin
+
+![[Rick Rubin — hero.png]]
 ## The Producer as Subtractor
 
 **1963-present** | Producer, Co-founder Def Jam Recordings

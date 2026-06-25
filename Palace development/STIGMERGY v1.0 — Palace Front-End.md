@@ -52,6 +52,8 @@ forward_vector: "I want to become the single terminal Loudon lives in — to end
 
 # STIGMERGY v1.0 — Palace Front-End
 
+![[STIGMERGY v1.0 — Palace Front-End — hero.png]]
+
 > *Design specification and autonomous-build contract. Written in the [[BBS Production Plan]] idiom: a thesis, a precise interaction model, a precise commit specification, and phased build gates a later Claude Code session can execute. The locked visual language is [[BBS Design System]] — phosphor on black, VT323 + IBM Plex Mono, CP437-evoked borders, `steps()` motion, color as signal. This document changes nothing about the aesthetic; it changes the architecture the aesthetic dresses.*
 
 ## Thesis

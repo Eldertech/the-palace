@@ -25,6 +25,8 @@ forward_vector: "I want to become the technical grounding for the palace's core 
 ---
 # Embeddings as Relational Meaning
 
+![[Embeddings as Relational Meaning — hero.png]]
+
 In large language models, a word's meaning is not stored as a definition — it is encoded as a position in a high-dimensional vector space. That position is determined entirely by the word's pattern of associations with every other word across the training corpus. The embedding *is* the relational web, compressed into a point in space.
 
 This is the computational instantiation of the thesis in [[Meaning and the Link]]: meaning arises from sufficient associations between a pattern of symbols and a reality. The link is prior to the node. Here, the geometry of the embedding space *is* the links — directions and distances in that space encode semantic relationships (king − man + woman ≈ queen), syntactic roles, conceptual neighborhoods.

@@ -32,6 +32,8 @@ forward_vector: "I want to make the synthesizer its own oscilloscope — one sto
 ---
 # Rank-N Lattice Analysis
 
+![[Rank-N Lattice Analysis — hero.png]]
+
 The analysis-side complement to [[DSP in Looping Dimensions]]: if N looping dimensions at irrational ratios *generate* a rank-N lattice spectrum, then **fitting the minimal generating spectrum of a recorded sound — and measuring its rank — is the inverse operation.** Harmonicity becomes the rank-1 special case. The synthesizer becomes its own oscilloscope. Analysis and synthesis become two readings of one artifact.
 
 ## Rank as a measured property
