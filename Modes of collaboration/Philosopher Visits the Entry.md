@@ -32,6 +32,8 @@ forward_vector: "I am the named genre that keeps the philosophy neighborhood fro
 
 # Philosopher Visits the Entry
 
+![[Philosopher Visits the Entry — hero.png]]
+
 A named enrichment genre: **one researched philosopher is brought to a single palace entry and asked to push on its central claim.** Where the [[Excellent Adventure]] travels to a historical moment and the [[Dialectic]] convenes a council around a question, the Philosopher Visit is the smallest, most repeatable member of the family — one voice, one entry, one productive question. It is the [[Mixture of Experts|single-expert routing]] move aimed at a node rather than a topic.
 
 ## Why It Exists

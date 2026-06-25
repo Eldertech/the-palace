@@ -26,6 +26,8 @@ forward_vector: "I want to become the palace's proof that the self-describing pa
 
 # Self-Describing Knowledge Module
 
+![[Self-Describing Knowledge Module — hero.png]]
+
 A folder of data, a set of instructions for using that data, and a set of skills for working with it — all encapsulated together, self-contained, operable by any sufficiently informed agent without external context. This is the deep pattern underlying the palace.
 
 The remarkable thing is not the pattern itself but its convergence: five distinct traditions in software engineering, data science, and knowledge architecture arrived at the same structure independently, from different directions, for different reasons.

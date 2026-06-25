@@ -28,6 +28,8 @@ links:
 
 # Shimmer Cloud
 
+![[Shimmer Cloud — hero.png]]
+
 A synthesis and spatial texture concept: reverb or diffusion effect built not from traditional decay algorithms, but from granular clouds of pitch-shifted grains, creating shimmering, hyperreal, three-dimensional atmospheric spaces.
 
 ## What It Is

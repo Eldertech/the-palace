@@ -38,6 +38,8 @@ agency_profile:
 
 # The Four Virtues
 
+![[The Four Virtues — hero.png]]
+
 The Stoic account of what is actually *good* — and therefore the seat of personal responsibility. The Stoics hold that the only genuine good is **virtue**, and virtue has four cardinal parts: **wisdom**, **justice**, **courage**, and **temperance**. Everything else — health, wealth, reputation, even life itself — is a *preferred indifferent*: worth having, never the good. This is the hard, clarifying core of [[Stoicism]]: a life goes well or badly entirely according to the character of the responses you author, because that character is the one thing fully up to you ([[The Dichotomy of Control]]).
 
 - **Wisdom (*sophia* / *phronesis*)** — seeing what a situation actually requires; knowing the true value of things so you are not deceived into chasing indifferents as if they were goods. Practical, not theoretical: the discernment that acts rightly *here*.

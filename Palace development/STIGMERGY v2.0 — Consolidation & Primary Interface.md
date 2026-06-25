@@ -41,6 +41,8 @@ links:
 
 # STIGMERGY v2.0 — Consolidation & Primary Interface
 
+![[STIGMERGY v2.0 — Consolidation & Primary Interface — hero.png]]
+
 > *Assessment, shipped consolidation, and roadmap. Written in the [[BBS Production Plan]] idiom. The locked aesthetic is [[BBS Design System]] — phosphor on black, VT323 + IBM Plex Mono, monospace structural. This document changes the architecture the aesthetic dresses, and corrects where the aesthetic had quietly drifted off-system.*
 
 ## Thesis
