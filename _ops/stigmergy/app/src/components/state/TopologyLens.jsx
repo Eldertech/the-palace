@@ -6,12 +6,16 @@ import { Box } from '../primitives.jsx';
 import { fetchTopology, fetchUnsungPaths } from '../../adapters/topology.js';
 import { assignRoles, roleCounts } from '../../lib/topology-roles.js';
 import { buildPillarsByPath, annotateBridges, bridgeCounts } from '../../lib/topology-bridges.js';
+import {
+  buildIconByPath, attachIcons, avatarRadiusFor, avatarCount,
+} from '../../lib/topology-avatars.js';
 
 // TOPOLOGY -- the typed-link graph lens. Renders the freshest
 // palace-map-full-*.json as a force-directed canvas. Clicking a node
-// opens that entry in STATE via onSelect(path). Gate-18 minimum bar:
-// nodes + edges + click-to-open. Hubs / orphans / cross-pillar bridges /
-// unsung paths are reserved for follow-up commits.
+// opens that entry in STATE via onSelect(path). Layers, painted bottom-up:
+// unsung paths / typed edges / cross-pillar bridges, then hub-orphan-default
+// dots, then per-entry avatar art (the bundle `<Title> — icon.png`) for the
+// nodes that carry it — toggleable from the legend.
 
 // Resolve ?path / ?id mismatches: the map JSON keys nodes by `id`; the
 // EntryReader keys by `path`. We pass node.path through to onSelect.
@@ -31,6 +35,10 @@ const ROLE_STYLE = {
 };
 const HOVER_FILL = '#ffffff';
 const HOVER_RING = '#aaffff';
+// Avatar ring — a phosphor frame around the bundle art so the full-color
+// hand-drawn icon reads as part of the BBS terminal, not pasted onto it.
+// Hubs wear the brighter frame, matching ROLE_STYLE.
+const AVATAR_RING = { hub: '#ccffcc', default: '#2fbf6a' };
 // Cross-pillar bridge edges — amber, slightly stronger than the dim
 // phosphor used for in-pillar / unaffiliated edges.
 const EDGE_STYLE = {
@@ -43,7 +51,7 @@ const EDGE_STYLE = {
   unsung:  { color: 'rgba(120, 220, 255, 0.22)', width: 0.5, dash: [2, 3] },
 };
 
-function prepareGraph(raw, pillarsByPath, unsungEdges) {
+function prepareGraph(raw, pillarsByPath, unsungEdges, iconByPath) {
   // d3-force will mutate source/target on the link objects (string -> node
   // object). Clone everything so the input data stays untouched.
   const baseNodes = (raw?.nodes ?? []).map((n) => ({
@@ -56,6 +64,10 @@ function prepareGraph(raw, pillarsByPath, unsungEdges) {
     degree: (n.outbound_count ?? 0) + (n.inbound_count ?? 0),
   }));
   const withRoles = assignRoles(baseNodes);
+  // Join each node to its bundle avatar art (or null) so the canvas can paint
+  // the entry's icon instead of a bare dot. Role is already assigned, so the
+  // avatar size policy (avatarRadiusFor) can read it.
+  attachIcons(withRoles, iconByPath);
   const ids = new Set(withRoles.map((n) => n.id));
   // Drop ghost edges (targets that don't exist as nodes) so d3-force doesn't
   // throw on link resolution. The map's meta.ghost_taxonomy explains them.
@@ -90,10 +102,29 @@ export default function TopologyLens({ onSelect, entries = [] }) {
   const graphRef = useRef(null);
   const hoverRef = useRef(null);
   const [hoverInfo, setHoverInfo] = useState(null);
+  // Avatar image cache (icon path -> HTMLImageElement), persisted across
+  // effect re-runs so we never re-fetch art. drawRef always points at the
+  // latest draw() so a late image load repaints the current canvas (not a
+  // stale closure). showAvatars is a live toggle read through a ref, so
+  // flipping it repaints without re-running the whole simulation.
+  const imgCacheRef = useRef(new Map());
+  const drawRef = useRef(null);
+  const [showAvatars, setShowAvatars] = useState(true);
+  const showAvatarsRef = useRef(true);
+  function toggleAvatars() {
+    setShowAvatars((v) => {
+      const next = !v;
+      showAvatarsRef.current = next;
+      if (drawRef.current) drawRef.current();
+      return next;
+    });
+  }
 
   // Build the path -> pillars Set lookup once per entries fetch. Stable
   // across lens-switches so we don't re-walk on hover repaints.
   const pillarsByPath = useMemo(() => buildPillarsByPath(entries), [entries]);
+  // Path -> bundle-icon lookup, same lifecycle as pillarsByPath.
+  const iconByPath = useMemo(() => buildIconByPath(entries), [entries]);
 
   useEffect(() => {
     let cancelled = false;
@@ -121,13 +152,14 @@ export default function TopologyLens({ onSelect, entries = [] }) {
   // useEffect mounts.
   const legendStats = useMemo(() => {
     if (state.kind !== 'ok') return null;
-    const g = prepareGraph(state.raw, pillarsByPath, state.unsungEdges);
+    const g = prepareGraph(state.raw, pillarsByPath, state.unsungEdges, iconByPath);
     return {
       roles: roleCounts(g.nodes),
       bridges: bridgeCounts(g.links),
       unsung: g.unsungLinks.length,
+      avatars: avatarCount(g.nodes),
     };
-  }, [state, pillarsByPath]);
+  }, [state, pillarsByPath, iconByPath]);
 
   useEffect(() => {
     if (state.kind !== 'ok') return;
@@ -141,14 +173,43 @@ export default function TopologyLens({ onSelect, entries = [] }) {
     const ctx = canvas.getContext('2d');
     ctx.scale(dpr, dpr);
 
-    const graph = prepareGraph(state.raw, pillarsByPath, state.unsungEdges);
+    const graph = prepareGraph(state.raw, pillarsByPath, state.unsungEdges, iconByPath);
     graphRef.current = graph;
+
+    // Preload avatar art. Each load (or failure) repaints via drawRef so the
+    // node flips from dot to art the moment its image arrives. Cached across
+    // effect re-runs in imgCacheRef, so re-mounts don't re-fetch.
+    const imgCache = imgCacheRef.current;
+    function ensureImage(iconPath) {
+      let img = imgCache.get(iconPath);
+      if (img) return img;
+      img = new Image();
+      img.decoding = 'async';
+      img.onload = () => { if (drawRef.current) drawRef.current(); };
+      img.onerror = () => { img._failed = true; if (drawRef.current) drawRef.current(); };
+      img.src = `/api/file?path=${encodeURIComponent(iconPath)}`;
+      imgCache.set(iconPath, img);
+      return img;
+    }
+    function imageReady(iconPath) {
+      const img = imgCache.get(iconPath);
+      return img && !img._failed && img.complete && img.naturalWidth > 0 ? img : null;
+    }
+    for (const n of graph.nodes) if (n.icon) ensureImage(n.icon);
+
+    // A node draws as an avatar when avatars are on, it has art, and that art
+    // has finished loading; otherwise it falls back to the phosphor dot. The
+    // collide force below reserves the larger avatar footprint up front (keyed
+    // on `icon`, not load state) so the art doesn't pile up once it arrives.
+    const isAvatarNode = (n) => showAvatarsRef.current && n.icon && imageReady(n.icon);
 
     const sim = forceSimulation(graph.nodes)
       .force('link', forceLink(graph.links).id((d) => d.id).distance(50).strength(0.4))
       .force('charge', forceManyBody().strength(-60))
       .force('center', forceCenter(WIDTH / 2, HEIGHT / 2))
-      .force('collide', forceCollide(NODE_RADIUS + 2));
+      .force('collide', forceCollide((d) => (
+        d.icon ? avatarRadiusFor(d.role) : (ROLE_STYLE[d.role]?.radius ?? ROLE_STYLE.default.radius)
+      ) + 2));
     simRef.current = sim;
 
     function draw() {
@@ -185,9 +246,11 @@ export default function TopologyLens({ onSelect, entries = [] }) {
         }
         ctx.stroke();
       }
-      // nodes — role-driven size + color; hover overrides both.
+      // dots — role-driven size + color; hover overrides both. Nodes whose
+      // avatar art is ready get skipped here and painted in the avatar pass.
       for (const n of graph.nodes) {
         if (typeof n.x !== 'number') continue;
+        if (isAvatarNode(n)) continue;
         const isHover = hoverRef.current && hoverRef.current.id === n.id;
         const style = ROLE_STYLE[n.role] ?? ROLE_STYLE.default;
         const r = isHover ? HOVER_RADIUS : style.radius;
@@ -202,7 +265,37 @@ export default function TopologyLens({ onSelect, entries = [] }) {
           ctx.stroke();
         }
       }
+      // avatars — the entry's hand-drawn bundle art, clipped to a circle and
+      // settled onto the phosphor (slight desaturate, like EntryAvatar).
+      // Painted last so the art sits above link tissue and dots; hover
+      // enlarges. Two sub-passes: filtered art, then an unfiltered ring.
+      ctx.filter = 'saturate(0.85) brightness(0.92)';
+      for (const n of graph.nodes) {
+        if (typeof n.x !== 'number' || !isAvatarNode(n)) continue;
+        const img = imageReady(n.icon);
+        const isHover = hoverRef.current && hoverRef.current.id === n.id;
+        const r = avatarRadiusFor(n.role) + (isHover ? 4 : 0);
+        ctx.save();
+        ctx.beginPath();
+        ctx.arc(n.x, n.y, r, 0, Math.PI * 2);
+        ctx.closePath();
+        ctx.clip();
+        ctx.drawImage(img, n.x - r, n.y - r, r * 2, r * 2);
+        ctx.restore();
+      }
+      ctx.filter = 'none';
+      for (const n of graph.nodes) {
+        if (typeof n.x !== 'number' || !isAvatarNode(n)) continue;
+        const isHover = hoverRef.current && hoverRef.current.id === n.id;
+        const r = avatarRadiusFor(n.role) + (isHover ? 4 : 0);
+        ctx.beginPath();
+        ctx.arc(n.x, n.y, r, 0, Math.PI * 2);
+        ctx.lineWidth = isHover ? 2 : 1.25;
+        ctx.strokeStyle = isHover ? HOVER_RING : (AVATAR_RING[n.role] ?? AVATAR_RING.default);
+        ctx.stroke();
+      }
     }
+    drawRef.current = draw;
     sim.on('tick', draw);
 
     // Hit-test helpers shared by mousemove + click.
@@ -215,7 +308,13 @@ export default function TopologyLens({ onSelect, entries = [] }) {
         if (typeof n.x !== 'number') continue;
         const dx = n.x - x; const dy = n.y - y;
         const d = dx * dx + dy * dy;
-        if (d < bestDist && d < 64) { // 8px hit radius
+        // Hit radius tracks the node's drawn size (+4px margin) so the larger
+        // avatars are clickable to their edge, not just their 8px core.
+        const baseR = n.icon
+          ? avatarRadiusFor(n.role)
+          : (ROLE_STYLE[n.role]?.radius ?? ROLE_STYLE.default.radius);
+        const hitR = baseR + 4;
+        if (d < bestDist && d < hitR * hitR) {
           best = n; bestDist = d;
         }
       }
@@ -229,6 +328,7 @@ export default function TopologyLens({ onSelect, entries = [] }) {
         setHoverInfo(n ? {
           id: n.id, type: n.type, stage: n.stage, degree: n.degree, role: n.role, path: n.path,
           pillars: n.pillars ? [...n.pillars] : [],
+          icon: n.icon ?? null,
         } : null);
         // re-draw immediately so hover feedback isn't tied to sim tick
         draw();
@@ -250,8 +350,9 @@ export default function TopologyLens({ onSelect, entries = [] }) {
       sim.stop();
       simRef.current = null;
       graphRef.current = null;
+      drawRef.current = null;
     };
-  }, [state, onSelect, pillarsByPath]);
+  }, [state, onSelect, pillarsByPath, iconByPath]);
 
   if (state.kind === 'loading') {
     return (
@@ -275,7 +376,7 @@ export default function TopologyLens({ onSelect, entries = [] }) {
   const edgeCount = state.meta?.edge_count ?? '?';
   return (
     <Box title={`TOPOLOGY  --  typed-link graph  (${nodeCount} nodes, ${edgeCount} edges from ${state.source ?? '?'})`} tone="double">
-      <Legend stats={legendStats} />
+      <Legend stats={legendStats} showAvatars={showAvatars} onToggleAvatars={toggleAvatars} />
       <div style={{ position: 'relative' }}>
         <canvas
           data-testid="topology-canvas"
@@ -289,6 +390,19 @@ export default function TopologyLens({ onSelect, entries = [] }) {
             padding: '4px 8px', fontSize: 11, color: 'var(--phosphor)',
             textShadow: 'var(--glow)', pointerEvents: 'none', maxWidth: '60ch',
           }}>
+            {hoverInfo.icon ? (
+              <img
+                src={`/api/file?path=${encodeURIComponent(hoverInfo.icon)}`}
+                alt=""
+                width={32}
+                height={32}
+                style={{
+                  float: 'right', marginLeft: 8, borderRadius: '50%',
+                  border: '1px solid var(--phosphor-dim)', objectFit: 'cover',
+                  filter: 'saturate(0.85) brightness(0.92)',
+                }}
+              />
+            ) : null}
             <div><strong>{hoverInfo.id}</strong></div>
             <div style={{ color: 'var(--phosphor-dim)', textShadow: 'none' }}>
               {hoverInfo.type ?? '--'} · {hoverInfo.stage ?? '--'} · degree {hoverInfo.degree} · {hoverInfo.role}
@@ -323,7 +437,7 @@ function EdgeSwatch({ color, width, dashed }) {
   );
 }
 
-function Legend({ stats }) {
+function Legend({ stats, showAvatars, onToggleAvatars }) {
   if (!stats) return null;
   const { roles, bridges } = stats;
   return (
@@ -346,6 +460,20 @@ function Legend({ stats }) {
         <strong style={{ color: 'var(--phosphor)' }}>{stats.unsung}</strong> unsung paths
         <span style={{ opacity: 0.6 }}> (body wikilinks not in YAML)</span>
       </span>
+      <label
+        data-testid="topology-legend-avatars"
+        style={{ display: 'inline-flex', alignItems: 'center', gap: 6, cursor: 'pointer' }}
+      >
+        <input
+          type="checkbox"
+          data-testid="topology-avatars-toggle"
+          checked={!!showAvatars}
+          onChange={onToggleAvatars}
+          style={{ accentColor: 'var(--phosphor)', cursor: 'pointer', margin: 0 }}
+        />
+        <strong style={{ color: 'var(--phosphor)' }}>{stats.avatars}</strong> avatars
+        <span style={{ opacity: 0.6 }}> (bundle art)</span>
+      </label>
     </div>
   );
 }
