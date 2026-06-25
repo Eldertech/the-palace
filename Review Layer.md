@@ -36,6 +36,8 @@ links:
 
 # Review Layer
 
+![[Review Layer — hero.png]]
+
 The goal of any artifact Loudon and Claude make together is **alignment** — the thing in Loudon's head and the thing on the screen converging. Alignment takes iteration; nobody hits it on the first version. So the first version's job is not to be right, it is to be **reviewable**: to carry, built in, a surface where Loudon can leave section-level feedback in context, right where the work is, for the next round to act on.
 
 This is the structural counterpart to [[Closing Well]]. Closing Well is about a session leaving a clean baton; the Review Layer is about an *artifact* leaving a clean way to be corrected. Both refuse the lossy alternative — reconstructing intent later from memory, in chat, divorced from the thing being discussed.

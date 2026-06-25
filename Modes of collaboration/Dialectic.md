@@ -30,6 +30,8 @@ forward_vector: "I want to become a fully documented, executable method — prec
 
 # Dialectic
 
+![[Dialectic — hero.png]]
+
 A collaborative practice in which competing philosophies or frameworks are embodied as the people who generated them — researched, characterized, and placed in genuine dialogue — to illuminate a design, intellectual, or creative problem from multiple irreducible angles simultaneously.
 
 The word *dialectic* captures what this practice actually is: not just conversation, but the joint search for truth through productive friction. Voices enter and exit, challenge and concede, reframe and resist. What emerges cannot be reached by any single voice alone.

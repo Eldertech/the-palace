@@ -33,6 +33,8 @@ forward_vector: "I am a breakthrough that risks staying abstract. My direction i
 
 # Metaphor as Coupling Medium
 
+![[Metaphor as Coupling Medium — hero.png]]
+
 The realization arrived in the session that produced the Swarm Weave. Loudon
 came in with a technical worry — context window limits on the single-agent Weave
 — but asked it sideways, through an image: *is the Weave actually a hive of ants

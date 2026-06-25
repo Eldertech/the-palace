@@ -40,6 +40,8 @@ forward_vector: "I want to be the physical anchor for the Floquet-in-time claim 
 
 # Photonic Time Crystals
 
+![[Photonic Time Crystals — hero.png]]
+
 A photonic medium whose **refractive index is modulated periodically in time**. The temporal analog of an ordinary photonic crystal (whose refractive index is periodic in *space*). The result is a system that exhibits **frequency bandgaps**, **amplification of bandgap-frequency light from vacuum noise**, and a host of other phenomena that have no analog in static media.
 
 Photonic time crystals are the experimental incarnation of [[Floquet Theory]] in optics. They are the most direct physical realization of the claim that *crystals are Bloch in space; time-modulated systems are Floquet in time*. And as of this writing, they are an active research frontier.

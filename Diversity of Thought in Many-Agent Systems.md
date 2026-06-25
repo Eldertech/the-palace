@@ -25,6 +25,8 @@ links:
 
 # Diversity of Thought in Many-Agent Systems
 
+![[Diversity of Thought in Many-Agent Systems — hero.png]]
+
 When does plural orchestration earn its keep over a single, well-loaded expert?
 
 The question opened during the design of [[The Shop]] when a clean architectural pattern — plural Designers (Sound Designer, Motion Designer, etc.) modeled on human creative studios — collapsed into a singular Maker. The collapse was justified by a bandwidth argument: the plurality of roles in human teams is a response to *human cognitive limits*, and AI's larger context windows dissolve enough of that constraint that one Maker, well-loaded, can hold multi-medium taste.

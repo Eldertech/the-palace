@@ -33,6 +33,8 @@ forward_vector: "I want to become the stable home for the surface deltas that ha
 
 # Surfaces and Capabilities
 
+![[Surfaces and Capabilities — hero.png]]
+
 The palace is operated from several different *surfaces* — execution environments Claude inhabits — and they are not interchangeable. A render that is trivial on one is impossible on another. A git commit that is clean on one leaves wreckage on another. The same palace file is linked with `computer:///` from one surface and `obsidian://` from another. None of this is visible from inside the work; it only becomes visible at the boundary, when work crosses from one surface to the next.
 
 That crossing is the baton. And the most distinctive, most-often-improvised content of a cross-surface baton is the *capability delta* — what the receiving surface can do that the sending one can't, and the surface-specific gotcha the catcher will hit. This entry is the stable home for those deltas, so a baton can name the receiving surface and point here rather than re-deriving the whole picture every time. See [[Baton Ceremony]] § Receiving environment.

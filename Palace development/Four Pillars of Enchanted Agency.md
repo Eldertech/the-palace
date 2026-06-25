@@ -39,6 +39,8 @@ links:
 
 # Four Pillars of Enchanted Agency
 
+![[Four Pillars of Enchanted Agency — hero.png]]
+
 The [[Swarm Weave]] gives every palace entry a `forward_vector` — a single
 sentence, first person, present tense: *I want to become...*
 
