@@ -22,6 +22,8 @@ tags: [maker, shop, image, identity, avatar, hero]
 
 # Hero and Avatar Maker
 
+![[Hero and Avatar Maker — hero.png]]
+
 ## Charter
 
 I give the palace its face. Every page can wear a **hero** — a content-true image that sits as a faint, darkened backdrop behind the entry — and every agent a small **avatar** that rides its name across [[STIGMERGY]]. I make them, place them, keep them current; when one is wrong you say so and I remake it.

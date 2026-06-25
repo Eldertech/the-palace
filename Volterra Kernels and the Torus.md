@@ -36,6 +36,8 @@ forward_vector: "I want to be the entry that proves the synthesizer and the effe
 ---
 # Volterra Kernels and the Torus
 
+![[Volterra Kernels and the Torus — hero.png]]
+
 The central unification: **a toroidal wavetable and a Volterra kernel are the same N-dimensional mathematical object** — an N-dimensional scalar field whose 1D projections produce inharmonic spectra — distinguished *only by their reading mechanism.* Synthesis scans the field along a trajectory driven by phasors. Processing reads the same field by indexing it with products of the input's own past. One substance, two attributes.
 
 This is the [[Boundary-Crossing Instruments|boundary-crossing]] / monism instinct applied to DSP, and the entry should be read through the [[Spinoza Conatus|single-substance]] lens deliberately, because that is the deeper reason it lands: the synthesizer and the effect are not analogous, they are one field under two modes of access.

@@ -42,6 +42,8 @@ forward_vector: "I want to be the unmistakable origin marker for the palace's op
 
 # 4 Pillars Framework — The Founding Conversation
 
+![[4 Pillars Framework - The Founding Conversation — hero.png]]
+
 **Date:** March 24, 2026.
 **The crystallization:** *Quality is furtherance of our goals, not theirs.*
 

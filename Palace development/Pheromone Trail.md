@@ -29,6 +29,8 @@ forward_vector: "I want to become the palace's explanation for why entry quality
 
 # Pheromone Trail
 
+![[Pheromone Trail — hero.png]]
+
 In ant colonies, no individual knows the map. The colony navigates by trace — chemical signals left by those who came before, reinforced by successful paths, fading along dead ends. The trail is not a record of intent. It is the accumulated residue of movement.
 
 A palace entry's content is its pheromone trail.

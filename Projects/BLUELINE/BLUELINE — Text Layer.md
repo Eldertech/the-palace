@@ -32,6 +32,8 @@ tags: [meta, blueline, text, lettering, lyrics, typography, sync]
 
 # BLUELINE — Text Layer
 
+![[BLUELINE — Text Layer — hero.png]]
+
 > The words-on-screen layer of BLUELINE — generalized from the [[LIVE-CLOCK-LOOP-SPEC|lyrics layer]] into
 > the full text register: dialogue, thought, narration, voiceover, lyrics, signage, described sound, and the
 > system's own voice. Graphic novels carry their words as a designed layer; so do we. **Lyrics is rung 1
