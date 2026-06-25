@@ -28,6 +28,8 @@ links:
 
 # Signal-Rate CV Architecture
 
+![[Signal-Rate CV Architecture — hero.png]]
+
 The design principle that every input in the neural synthesis suite — and any module that can support it — operates at signal rate. No control-rate parameters. Every input is a CV jack. The math runs per-sample because the processes being modeled run continuously.
 
 ## Three Converging Arguments

@@ -32,6 +32,8 @@ forward_vector: "I am the palace's process philosopher — the one who says real
 
 # Whitehead
 
+![[Whitehead — hero.png]]
+
 Alfred North Whitehead (1861–1947) — mathematician (co-author of *Principia Mathematica* with Russell), then, late in life, the author of the most ambitious metaphysics of the twentieth century. He is the palace's natural ally because his entire system is the claim the palace was built on: **relations are primary, and the thing is what the relating produces.**
 
 ## Core Concepts
