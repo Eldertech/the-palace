@@ -44,6 +44,8 @@ links:
 
 # BBS Production Plan v0.3 — Rich Content
 
+![[BBS Production Plan v0.3 — Rich Content — hero.png]]
+
 The architecture is in [[BBS Blackboard]]. The visual language is in [[BBS Design System]] (STIGMERGY uses the BBS aesthetic, not Loudon Live — `CLAUDE.md § Artifact Aesthetic` carves this out). The move, the decided constraints, and the do-not-relitigate list are in [[BBS Rich Content — handoff]] — read it first; it is the source of this plan's authority. The build-contract pattern is [[BBS Production Plan v0.2]]. This document is the executable bridge: it turns the rendering capability proven in `Enrichment/server.py` into a STIGMERGY capability, with §2.2-clean tests and the BBS aesthetic.
 
 ## The move

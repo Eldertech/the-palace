@@ -29,6 +29,8 @@ tags: [meta, blueline, production-plan, parallel, substrate]
 
 # BLUELINE — Production Plan
 
+![[BLUELINE — Production Plan — hero.png]]
+
 > **Supersedes** the single-thread [[BLUELINE — Claude Code Job]] (Sessions 1 & 3 done — conditioning keystone and flow-field spine both proved). What the early sessions revealed: BLUELINE is less a single app than a stack of **palace substrate upgrades** that other work (Image-to-3D, Loudon Live, any music-synced visual) needs anyway. So the plan is reset as **parallel tracks**, defined by the project's real seams, not a feature list.
 
 ## How the tracks were chosen

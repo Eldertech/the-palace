@@ -51,6 +51,8 @@ links:
 
 # Bundle-Local Stewardship — Production Plan
 
+![[Bundle-Local Stewardship — Production Plan — hero.png]]
+
 This plan instantiates one operating principle across the whole stewardship system:
 
 > **The Machinery/Content Split.** Shared engine code, indexes, schedulers, and runtime bookkeeping belong in `_ops/`. Anything *about a specific entry* — its plan, its open decisions, its working memory, its lessons — belongs in that entry's bundle. When a file describes one entry, it lives with that entry. When a file runs across all entries, it stays in ops.

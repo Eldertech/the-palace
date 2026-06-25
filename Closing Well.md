@@ -36,6 +36,8 @@ forward_vector: "I want to keep teaching every palace ceremony, every Specialist
 
 # Closing Well
 
+![[Closing Well — hero.png]]
+
 Work isn't done when the artifact is built. It's done when the next person — Loudon, a fresh Claude instance, a blind student, a deaf student, a future steward of this palace — has what they need to use it without re-doing the understanding that produced it. *Closing well* is the discipline of designing for that boundary.
 
 The principle has a test built into it: *could the next person who arrives, cold, with no memory of this session, pick the work up and use it?* If the answer requires "well, they'd need to know that I…" the work isn't done. The closing is the part where the answer becomes yes.

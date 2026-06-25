@@ -51,6 +51,8 @@ links:
 
 # Orchestrator Production Plan
 
+![[Orchestrator Production Plan — hero.png]]
+
 The architecture is in [[Palace Agent Infrastructure Spec]] § 3 (the thin orchestrator, manifest format, health score, posting discipline). The Stage A hand-run pilot is documented in [[Project Stewardship System]] § Stage A (9 spec gaps + 4 content findings). The autonomous-build pattern is in [[BBS Production Plan]] and refined in [[BBS Production Plan v0.2]]. This document is the bridge: the executable contract that turns the §3.2 sketch and the Stage A learning into a working Claude-Code-resident orchestrator.
 
 It exists because as of 2026-05-04, four things converged: (1) Stage A piloted the manifest pattern and surfaced the spec gaps that block a clean Stage B implementation; (2) STIGMERGY v0.2 shipped the strict §2.2 validator that the orchestrator can re-use directly; (3) the first manually-orchestrated songline (`songline-2026-05-04-001`) demonstrated that the songline mode works at the conceptual level — automation is the next step; (4) Loudon does not have direct Anthropic API access and won't for the foreseeable future, so the orchestrator must use Claude Code subagents as its model-dispatch primitive rather than direct SDK calls. **This plan is the Path 2 reframe** — Claude-Code-resident orchestration, no API key required.
