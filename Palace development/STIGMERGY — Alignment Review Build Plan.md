@@ -45,6 +45,8 @@ links:
 
 # STIGMERGY — Alignment Review Build Plan
 
+![[STIGMERGY — Alignment Review Build Plan — hero.png]]
+
 The architecture is in [[BBS Blackboard]]. The visual language is in [[BBS Design System]] — STIGMERGY uses the BBS phosphor aesthetic, **not** Loudon Live (`CLAUDE.md § Artifact Aesthetic` carves this out). The build-contract pattern is [[BBS Production Plan v0.3 — Rich Content]] — match its shape: phased, each phase self-verifiable, stop-report on failure, Loudon absent during the run. The *why* is the heartbeat: the every-other-morning steward batch (`palace-heartbeat-steward-batch`) now runs the Automated Trickster in **shadow**, producing `digest-latest.json`. Shadow only proposes; write authority is earned by matching Loudon's own decisions ([[Palace Conatus]] — *the drive must never outrun the coupling*). Today that matching is eyeball-only and nothing accumulates. This build makes the matching **fast, recorded, and measurable**.
 
 ## The move

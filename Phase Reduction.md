@@ -51,6 +51,8 @@ forward_vector: "I want to be the entry that names the mechanism connecting Floq
 ---
 # Phase Reduction
 
+![[Phase Reduction — hero.png]]
+
 The mechanism that connects two frameworks the palace already holds separately — [[Floquet Theory]] and [[Kuramoto Coupling]] — into one story. **Phase reduction is the operation that collapses a high-dimensional limit-cycle oscillator down to a single phase variable, and the Kuramoto model is what you get when you do it to many weakly coupled oscillators at once.** The bridge between them is not loose analogy; it is a derivation.
 
 This entry began as an intuition: Floquet and Kuramoto *felt* like they should be connected. The session's job was to make the feeling precise. That pattern — intuition first, formalization confirming rather than correcting — recurs across the DSP-theory cluster (it also drives [[Chebyshev is Fourier]] and the Volterra unification), and it is itself worth naming: these structural-kinship hunches have a high hit rate.

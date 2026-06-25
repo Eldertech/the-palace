@@ -40,6 +40,8 @@ links:
 ---
 
 # Lao Tzu
+
+![[Lao Tzu — hero.png]]
 ## The Philosophy of Subtraction
 
 **~6th century BCE** | Philosopher, Archivist, Author of the *Tao Te Ching*

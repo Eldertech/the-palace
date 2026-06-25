@@ -31,6 +31,8 @@ forward_vector: "I want to become the palace's primary lens for threshold moment
 
 # Identity Molting
 
+![[Identity Molting — hero.png]]
+
 The process by which the outer form of who you are — your professional
 category, your domain label, your public-facing identity — becomes a
 constraint on continued growth and must be shed so the organism underneath
