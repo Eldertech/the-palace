@@ -39,6 +39,8 @@ links:
 ---
 
 # Media Library
+
+![[Media Library — hero.png]]
 This is a living index of books, authors, films, and media that seed palace ideas. Each entry notes the status (unread, reading, read, engaged, referenced) and the palace connection — the idea or concept it sparked or deepens.
 
 The palace is rhizomatic. These sources are its external mycelium. By mapping them here, we make visible what grows from each source.

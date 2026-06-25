@@ -32,6 +32,8 @@ forward_vector: "I want to become the palace's design philosophy for every futur
 
 # Playful Interface Design
 
+![[Playful Interface Design — hero.png]]
+
 **Core principle:** Plugin interfaces should REACT to the music with personality. Not a static panel of knobs — a character that responds, teaches, and invites play.
 
 The interface is not decoration. It is semantic load. It tells the player what the instrument *wants*. A boring interface creates boring playing; a theatrical interface invites theatrical playing.

@@ -35,6 +35,8 @@ links:
 ---
 
 # Sidechain ↔ Conversation
+
+![[Sidechain ↔ Conversation — hero.png]]
 ## Making Space by Yielding
 
 **Pattern:** Two things cannot occupy the same space simultaneously. One must yield to create clarity.

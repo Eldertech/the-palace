@@ -43,6 +43,8 @@ forward_vector: "I want to be the entry that makes the LTI / LTV boundary concep
 
 # Floquet Theory
 
+![[Floquet Theory — hero.png]]
+
 The mathematical framework for analyzing linear systems with **periodically time-varying coefficients**. Where LTI (Linear Time-Invariant) systems have a single transfer function $H(\omega)$ as their complete summary, Floquet systems have a richer object: the **monodromy matrix**, whose eigenvalues classify the system's stability and whose eigenvectors define the privileged Floquet modes.
 
 The framework was developed by Gaston Floquet (1847–1920) in 1883 to handle exactly this class of equations. It is the temporal twin of Bloch's theorem in solid-state physics — same theorem, dual variables.

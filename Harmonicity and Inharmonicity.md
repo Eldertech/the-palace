@@ -28,6 +28,8 @@ forward_vector: "I ask what happens to coupling when the relationships break —
 
 # Harmonicity and Inharmonicity
 
+![[Harmonicity and Inharmonicity — hero.png]]
+
 The relationship between harmonic and inharmonic spectra — how partials relate to a fundamental, what happens when those relationships are exact integer ratios versus stretched, compressed, or irrational, and the deep consequences of this distinction for perception, coupling, and instrument design.
 
 ## Origin
