@@ -32,6 +32,8 @@ forward_vector: "I want to become the palace's most-walked named songline — th
 ---
 # The Cooperation Path
 
+![[The Cooperation Path — hero.png]]
+
 A named songline through the palace, tracing how a story became a principle, grounded in biology, rooted in philosophy, expressed as pedagogy, and scaled into a framework.
 
 ## The Path

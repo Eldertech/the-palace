@@ -26,6 +26,8 @@ tags: [concept, flow-field, simulation, motion, blueline, seed]
 
 # The Flow Field is the Spine
 
+![[The Flow Field is the Spine — hero.png]]
+
 **One authored vector field, rendered at three resolutions of reality.**
 
 A single flow field per shot is the heart of [[BLUELINE]] — the same quantity expressed three ways:

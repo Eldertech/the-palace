@@ -46,6 +46,8 @@ links:
 
 # Wavetable Synthesis — Deep Research & Higher-Dimensional Design
 
+![[Wavetable Synthesis — Deep Research & Higher-Dimensional Design — hero.png]]
+
 > *A single-cycle waveform is a universe. A table of them is a geography. Navigate it.*
 
 ---
