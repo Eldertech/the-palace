@@ -26,6 +26,8 @@ links:
 ---
 # 2D Torus Wavetable Synthesizer — Build Log
 
+![[2D Torus Wavetable Synthesizer — Build Log — hero.png]]
+
 A handoff-friendly chronological record of the catalog build sessions. The point of this file is the [SCHEMA Self-Description Test](../SCHEMA.md): a fresh Claude with no prior memory should be able to read this and the [[2D Torus Wavetable Synthesizer]] entry and pick up the next move without re-deriving everything.
 
 If you only read one thing here, read **State at handoff** at the bottom.

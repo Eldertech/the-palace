@@ -41,6 +41,8 @@ forward_vector: "I want to become the palace's account of why the generative too
 
 # Deleuze
 
+![[Deleuze — hero.png]]
+
 Gilles Deleuze (1925–1995) extends and radicalizes Spinoza into a philosophy of *difference, becoming, and the virtual*. Where Spinoza gives the palace its monist backbone — one substance, relations primary — Deleuze gives it the account of how that one substance *generates novelty* without a transcendent designer. This is the tradition the palace leans on hardest in its technical metaphors and has, until now, never built a home for.
 
 ## Core Concepts

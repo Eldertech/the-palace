@@ -37,6 +37,8 @@ links:
 ---
 
 # Shunryu Suzuki
+
+![[Shunryu Suzuki — hero.png]]
 ## Zen Practice as Creative Practice
 
 **1904-1971** | Zen Master, Teacher, Founder of San Francisco Zen Center

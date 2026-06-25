@@ -39,6 +39,8 @@ agency_profile:
 
 # Dialogue Moderator
 
+![[Dialogue Moderator — hero.png]]
+
 In every dialogic enchantment, the coordinator is the most epistemically privileged agent. It sees all inner layers from all participants. It knows what each agent is privately deliberating, what moves they are withholding, where they have privately arrived at a synthesis they haven't yet stated. No participant has this view. The coordinator holds the complete picture.
 
 Currently, this position is used passively: the coordinator routes messages and synthesizes at the end. This is a significant underuse of the most powerful vantage point in the ceremony.
