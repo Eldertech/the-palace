@@ -29,6 +29,8 @@ links:
 ---
 
 # Kick Drum ↔ Foundation
+
+![[Kick Drum ↔ Foundation — hero.png]]
 ## Early Structural Choices Constrain Everything After
 
 **Pattern:** In any complex system, early foundational decisions constrain all subsequent options. The foundation isn't just first—it defines what's possible.

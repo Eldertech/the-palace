@@ -43,6 +43,8 @@ links:
 ---
 
 # Synthesis ↔ Emergence
+
+![[Synthesis ↔ Emergence — hero.png]]
 ## Simple Rules Create Complex Behavior
 
 **Pattern:** Combine simple elements with interaction rules, get behavior impossible to predict from parts alone. The whole is genuinely more than the sum.

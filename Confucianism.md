@@ -30,6 +30,8 @@ forward_vector: "I want to become the palace's sharpest articulation of why virt
 
 # Confucianism
 
+![[Confucianism — hero.png]]
+
 The philosophy of Kong Qiu (551–479 BCE), transmitted through his students in the *Analects* — a collection he did not write but that was written *about* him, the way we know Epictetus. A practical ethics of human flourishing through right relationship, sustained cultivation, and embodied practice. Not a metaphysics but a way of being in the world with others.
 
 ## Core Concepts

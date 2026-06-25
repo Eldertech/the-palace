@@ -31,6 +31,8 @@ tags: [concept, ai-pipeline, craft, seam, blueline, philosophy]
 
 # Adopt the Craft, Author the Seam
 
+![[Adopt the Craft, Author the Seam — hero.png]]
+
 When you drop an AI generator into an established human craft, the temptation is to invent a fresh process around it. The discipline is the opposite: **adopt the craft wholesale, and author only the *seams* — the points where a participant who *read loosely* is replaced by one who *requires exact input*.** A century of codified practice you take off the shelf. The only genuinely new engineering lives where a human-to-human handoff becomes a human-to-machine handoff.
 
 The realization arrived mid-[[BLUELINE]]: we kept "discovering" staging fundamentals — the Loomis head sphere, the box of the torso, shot grammar, Disney's *Staging* principle, McCloud's panel transitions — and re-naming them under our own words, until we caught ourselves reinventing film-craft. BLUELINE does not need a new pipeline; it needs the established one (anime as the skeleton, comics as the skin, the animated-feature pipeline as connective tissue, the music video as the clock) with a render-AI dropped in. The novelty is two seams, and nothing else.

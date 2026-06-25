@@ -21,6 +21,8 @@ links:
 
 # Palace To-Do
 
+![[Palace To-Do — hero.png]]
+
 A cache of meta-improvement ideas for the palace itself — things to do, things to build, things to reconsider. This is a planning surface, not an action log. Items here are captured but not yet acted on. The palace grows deliberately.
 
 Items move off this list when they become entries, get completed, or get composted. Completed items with full bodies live in the **Completed** section below until they are summarized into **Recently Completed**.

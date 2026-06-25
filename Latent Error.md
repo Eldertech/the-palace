@@ -30,6 +30,8 @@ links:
 
 # Latent Error
 
+![[Latent Error — hero.png]]
+
 Latent error is a **human factors engineering** concept with deep roots in systems thinking and control theory. It is a practice of *looking through* the visible failure to the structural precondition that made failure possible. The discipline is: when something breaks, ask not "what went wrong?" but "what condition *allowed* this to go wrong?"
 
 James Reason's Swiss Cheese Model (1990s human factors engineering) names the distinction: **active errors** are the visible operator mistakes; **latent errors** are the pre-existing structural weaknesses that allow active errors to become catastrophic. Systems fail when these "holes" align across layers. The cockpit eject-lever problem is the classic illustration — identical-looking levers for ejection and landing gear aren't a pilot-attention problem, they're a design latent error. The philosophy: don't design for idealized attention, redesign so failure requires more than one simultaneous mistake.
