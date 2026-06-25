@@ -383,6 +383,92 @@ export function TodoMarker({ title, area, severity }) {
   );
 }
 
+// A render in progress — the Hero and Avatar Maker is rendering this entry's
+// face. Persistent (a cold endpoint takes minutes); the done marker / an error
+// replaces it. Amber, the companion's "look at this" accent.
+export function RegenProgress({ target, idiom }) {
+  const what = target === 'hero' ? 'hero' : target === 'icon' ? 'avatar' : 'hero + avatar';
+  return (
+    <div data-testid="eaw-regen-progress" style={{
+      marginBottom: 8, padding: '6px 8px',
+      border: '1px solid var(--ansi-bright-yellow)',
+      background: 'color-mix(in srgb, var(--ansi-bright-yellow) 7%, transparent)',
+    }}>
+      <div style={{
+        color: 'var(--ansi-bright-yellow)', textShadow: '0 0 6px currentColor', fontSize: 11,
+      }}>
+        ⟳ rendering {what}{idiom ? ` — ${idiom}` : ''}…
+      </div>
+      <div style={{ color: 'var(--phosphor-dim)', fontSize: 10, marginTop: 2 }}>
+        a cold endpoint takes a few minutes; it commits the new face when done
+      </div>
+    </div>
+  );
+}
+
+// A committed regen — the new face landed and was committed. Shows the rendered
+// hero strip + the new icon (both cache-busted on the commit, since a regen
+// overwrites the PNGs in place) and an [undo] that reverts the commit, restoring
+// the prior face. `undone` dims it (the same revertedCommits set as edits).
+export function RegenMarker({ target, commit, heroRel, iconRel, idiom, title, onUndo, undone, undoing }) {
+  const what = target === 'hero' ? 'hero' : target === 'icon' ? 'avatar' : 'hero + avatar';
+  const heroSrc = heroRel
+    ? `/api/file?path=${encodeURIComponent(heroRel)}${commit ? `&v=${encodeURIComponent(commit)}` : ''}`
+    : null;
+  return (
+    <div data-testid="eaw-regen" data-op="regen" style={{
+      marginBottom: 8, padding: '5px 7px',
+      border: '1px solid var(--phosphor-dim)',
+      background: 'color-mix(in srgb, var(--phosphor) 6%, transparent)',
+      opacity: undone ? 0.6 : 1,
+    }}>
+      <div style={{ display: 'flex', alignItems: 'baseline', gap: 6 }}>
+        <span style={{
+          flex: 1, minWidth: 0,
+          color: 'var(--phosphor)', textShadow: 'var(--glow)', fontSize: 11,
+          textDecoration: undone ? 'line-through' : 'none',
+        }}>
+          ✎ face — {what}{idiom ? ` · ${idiom}` : ''}
+        </span>
+        {undone ? (
+          <span style={{ color: 'var(--phosphor-dim)', fontSize: 10, textTransform: 'uppercase', letterSpacing: '.04em' }}>
+            reverted
+          </span>
+        ) : onUndo ? (
+          <span
+            data-testid="eaw-regen-undo"
+            role="button"
+            onClick={undoing ? undefined : onUndo}
+            title="revert this regen (restores the prior face)"
+            style={{
+              cursor: undoing ? 'default' : 'pointer', opacity: undoing ? 0.5 : 1,
+              color: 'var(--ansi-bright-yellow)', fontSize: 10,
+              textTransform: 'uppercase', letterSpacing: '.04em', whiteSpace: 'nowrap',
+            }}
+          >{undoing ? 'undoing…' : '[undo]'}</span>
+        ) : null}
+      </div>
+      {heroSrc ? (
+        <img
+          data-testid="eaw-regen-hero"
+          src={heroSrc}
+          alt={`${title || 'entry'} hero`}
+          style={{
+            display: 'block', width: '100%', height: 54, objectFit: 'cover', marginTop: 4,
+            border: '1px solid var(--phosphor-deep)', filter: 'saturate(0.85) brightness(1.05)',
+          }}
+        />
+      ) : null}
+      <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginTop: 4 }}>
+        {iconRel ? <EntryAvatar name={title} icon={iconRel} version={commit} size={24} /> : null}
+        <span style={{ color: 'var(--phosphor-dim)', fontSize: 10 }}>
+          committed <span style={{ color: 'var(--phosphor-bright)' }}>{commit}</span>
+        </span>
+      </div>
+    </div>
+  );
+}
+
 export default function EntryAgentWindow({ entry, context, containerRef, onClose, onEntryCommitted }) {
   // Context-driven (Stage 0). The window used to be bound to a single `entry`;
   // it now grounds in a `context` descriptor that follows the user across decks.
@@ -590,6 +676,32 @@ export default function EntryAgentWindow({ entry, context, containerRef, onClose
             id: m.id || `t-${p.turn_id}`, role: 'todo',
             title: p.title, area: p.area, severity: p.severity,
           }]);
+        } else if (p.kind === 'companion_regen_started') {
+          // A render started (Hero and Avatar Maker). Persistent row until the
+          // done/failed PROOF lands — a cold endpoint takes minutes.
+          setConvo((prev) => [...prev, {
+            id: m.id || `rg-${p.turn_id}`, role: 'regen-progress',
+            turnId: p.turn_id, target: p.target, idiom: p.idiom || null, note: p.note || null,
+          }]);
+        } else if (p.kind === 'companion_regen_done') {
+          // The new face committed: swap the progress row for the marker and
+          // refresh the reader so the hero backdrop + avatar update live.
+          const doneItem = {
+            id: m.id || `rgd-${p.turn_id}-${p.commit}`, role: 'regen',
+            turnId: p.turn_id, target: p.target, commit: p.commit,
+            heroRel: p.hero_rel || null, iconRel: p.icon_rel || null, idiom: p.idiom || null,
+          };
+          setConvo((prev) => [
+            ...prev.filter((mm) => !(mm.role === 'regen-progress' && mm.turnId === p.turn_id)),
+            doneItem,
+          ]);
+          if (p.entry_path) onCommittedRef.current?.(p.entry_path);
+        } else if (p.kind === 'companion_regen_failed') {
+          // Render failed: drop the progress row, show the honest error.
+          setConvo((prev) => [
+            ...prev.filter((mm) => !(mm.role === 'regen-progress' && mm.turnId === p.turn_id)),
+            { id: m.id || `rgf-${p.turn_id}`, role: 'companion', text: `⚠ Render failed: ${p.error || 'unknown error'}` },
+          ]);
         } else {
           return;
         }
@@ -1072,15 +1184,27 @@ export default function EntryAgentWindow({ entry, context, containerRef, onClose
                   />
                 : m.role === 'todo'
                   ? <TodoMarker key={m.id} title={m.title} area={m.area} severity={m.severity} />
-                  : m.role === 'proposal'
-                    ? <ProposalCard
-                        key={m.id}
-                        op={m.op} summary={m.summary} vectorChange={m.vectorChange}
-                        applying={applyingTurns.has(m.turnId)}
-                        onApprove={() => doApprove(m)}
-                        onDiscard={() => doDiscard(m.id)}
-                      />
-                    : <ChatBubble key={m.id} role={m.role} text={m.text} />
+                  : m.role === 'regen-progress'
+                    ? <RegenProgress key={m.id} target={m.target} idiom={m.idiom} />
+                    : m.role === 'regen'
+                      ? <RegenMarker
+                          key={m.id}
+                          target={m.target} commit={m.commit}
+                          heroRel={m.heroRel} iconRel={m.iconRel} idiom={m.idiom}
+                          title={title}
+                          onUndo={m.commit ? () => doUndo(m.commit, m.turnId) : undefined}
+                          undone={revertedCommits.has(m.commit)}
+                          undoing={undoingCommits.has(m.commit)}
+                        />
+                      : m.role === 'proposal'
+                        ? <ProposalCard
+                            key={m.id}
+                            op={m.op} summary={m.summary} vectorChange={m.vectorChange}
+                            applying={applyingTurns.has(m.turnId)}
+                            onApprove={() => doApprove(m)}
+                            onDiscard={() => doDiscard(m.id)}
+                          />
+                        : <ChatBubble key={m.id} role={m.role} text={m.text} />
             ))}
             {applyError ? (
               <div data-testid="eaw-apply-error" style={{ color: 'var(--warn)', textShadow: 'var(--glow)', fontSize: 11, marginTop: 4 }}>

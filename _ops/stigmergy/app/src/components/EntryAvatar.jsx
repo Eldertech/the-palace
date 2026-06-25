@@ -23,9 +23,15 @@ export function initials(name) {
   return (words[0][0] + words[words.length - 1][0]).toUpperCase();
 }
 
-export default function EntryAvatar({ name, icon, size = 20 }) {
+export default function EntryAvatar({ name, icon, size = 20, version = null }) {
   const [failed, setFailed] = useState(false);
   const hasIcon = typeof icon === 'string' && icon.trim() !== '' && !failed;
+  // Optional cache-buster: a regen overwrites `<Title> — icon.png` in place, so
+  // the path is unchanged and the browser would show the stale image. Passing a
+  // `version` (e.g. the commit hash or file size) appends a harmless query so the
+  // new bytes load. Absent → no change to the URL (back-compat).
+  const bust = (version !== null && version !== undefined && `${version}` !== '')
+    ? `&v=${encodeURIComponent(version)}` : '';
 
   const frame = {
     width: size,
@@ -47,7 +53,7 @@ export default function EntryAvatar({ name, icon, size = 20 }) {
     return (
       <span data-testid="entry-avatar" data-has-icon="true" title={name || ''} style={frame}>
         <img
-          src={`/api/file?path=${encodeURIComponent(icon)}`}
+          src={`/api/file?path=${encodeURIComponent(icon)}${bust}`}
           alt={name ? `${name} icon` : 'entry icon'}
           width={size}
           height={size}
