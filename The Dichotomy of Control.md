@@ -41,6 +41,8 @@ agency_profile:
 
 # The Dichotomy of Control
 
+![[The Dichotomy of Control — hero.png]]
+
 The operating core of [[Stoicism]] and the discipline Loudon lives by: **some things are up to us, and some are not.** Epictetus opens the *Enchiridion* with it. *Up to us:* our judgments, our chosen responses, what we pursue and avoid — in a word, *prohairesis*, the faculty of moral choice. *Not up to us:* the body, reputation, property, other people, outcomes, the past, the weather. Suffering is the category error of treating the second column as if it were the first — staking peace on what cannot be commanded.
 
 The practice is not resignation. It is *precision*: locate the seam between the two columns exactly, pour effort entirely into the first, and meet the second with equanimity rather than struggle. The serenity to accept, the courage to change, the wisdom to know the difference — the Serenity Prayer is the dichotomy of control in three lines.

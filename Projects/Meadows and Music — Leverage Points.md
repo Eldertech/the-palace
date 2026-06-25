@@ -27,6 +27,8 @@ forward_vector: "I want to become a living, field-tested teaching curriculum —
 ---
 
 # Ten Leverage Points: A Progressive Exploration
+
+![[Meadows and Music — Leverage Points — hero.png]]
 ## From Sound to Self
 
 *These exercises move from concrete musical experiments to foundational creative practice. Start with what feels immediate and accessible; the later exercises require sustained commitment but offer transformative leverage.*

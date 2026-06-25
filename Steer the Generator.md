@@ -34,6 +34,8 @@ links:
 
 # Steer the Generator
 
+![[Steer the Generator — hero.png]]
+
 A generative model is **steered, not asked.** The natural reflex is to *describe* what you want in the prompt and hope the model complies. Across a long BLUELINE production push that reflex failed every time it carried real weight — and the failures all pointed at the same correction: when an attribute matters, you get it by **controlling** it, **selecting** for it, or **measuring** it, not by wording it more carefully.
 
 ## The three moves

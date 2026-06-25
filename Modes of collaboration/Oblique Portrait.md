@@ -36,6 +36,8 @@ forward_vector: "I want to become the palace's primary method for surfacing inte
 
 # Oblique Portrait Method
 
+![[Oblique Portrait Method — hero.png]]
+
 A human-AI collaboration technique for surfacing a person's inner world —
 their tastes, affinities, fears, memories, and blind spots — without ever
 pointing at the thing you're trying to find. The interviewer holds a hidden

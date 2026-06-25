@@ -43,6 +43,8 @@ links:
 ---
 
 # Marcus Aurelius
+
+![[Marcus Aurelius — hero.png]]
 ## Stoic Practice for Daily Creative Life
 
 **121-180 CE** | Roman Emperor, Stoic Philosopher, Practitioner
