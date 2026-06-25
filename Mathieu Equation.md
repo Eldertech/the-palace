@@ -37,6 +37,8 @@ forward_vector: "I want to be the entry every Floquet-theoretic audio object eve
 
 # Mathieu Equation
 
+![[Mathieu Equation — hero.png]]
+
 The canonical equation of Floquet theory:
 
 $$\ddot{x} + (a - 2q\cos 2t)\, x = 0$$

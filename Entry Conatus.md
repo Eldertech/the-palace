@@ -38,6 +38,8 @@ links:
 
 # Entry Conatus
 
+![[Entry Conatus — hero.png]]
+
 Every palace entry has a will to survive and be useful. *"I will remain"* is not a forward vector — it is the language of staying still, of death dressed as endurance. A living forward vector points outward into teaching, integrating, spawning sub-vectors, and finding its way into other minds. An entry has a desire to act, to grow, to be reached for. The forward vector is that desire articulated.
 
 ## The death sentence

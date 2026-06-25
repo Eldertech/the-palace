@@ -35,6 +35,8 @@ forward_vector: "I want to become the recognized consolidation beat of stewardsh
 
 # Drift and Consolidation
 
+![[Drift and Consolidation — hero.png]]
+
 When a project is moved forward by a steward (see [[Project Stewardship System]]), its knowledge stops living in one place. It bifurcates.
 
 - The **log** — the BBS thread plus the steward's `state.json` and `history.jsonl` — is fast, append-only, episodic. It records every cycle: what was asked, what was decided, what was built, what couldn't be verified. It is where discovery actually happens.

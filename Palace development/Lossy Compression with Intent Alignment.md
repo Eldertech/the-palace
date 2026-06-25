@@ -46,6 +46,8 @@ forward_vector: "I remind that an entry is not a faithful transcript of a conver
 
 # Lossy Compression with Intent Alignment
 
+![[Lossy Compression with Intent Alignment — hero.png]]
+
 Every act of knowledge-making involves compression. The question is never *whether* to lose information — it is *what to lose*, guided by *what the compressed representation is for*.
 
 Lossy compression with intent alignment is the practice of making that choice deliberately: discarding surface phenomena in order to preserve the latent variables that could regenerate them. It is compression in service of a generative model, not just a smaller file.

@@ -32,6 +32,8 @@ links:
 
 # Wallpaper Groups
 
+![[Wallpaper Groups — hero.png]]
+
 There are exactly 17 ways to tile an infinite plane with a repeating pattern. No more. No fewer. This is not opinion; this is mathematical fact—a complete classification of 2D periodic symmetries. These are the **wallpaper groups**, and they represent a fundamental ceiling on how complexity can repeat without introducing contradiction.
 
 The groups encode every possible combination of **translation, rotation, reflection, and glide reflection** (translation + reflection simultaneously). These operations form *groups*—closed sets where any two operations composed yield another operation in the set. The 17 groups represent all possible group structures consistent with 2D periodicity.

@@ -53,6 +53,8 @@ agency_profile:
 
 # The Lens
 
+![[The Lens — hero.png]]
+
 One operation, three faces. **The operation:** render a passage of page A through the conceptual apparatus of page B — read A *as* B would. **The instrument:** a draggable glass (the [[STIGMERGY Entry-Agent Window — Integration Plan v0.1|companion window]] in a new mode) you move over a page; under it the text is refracted, around it the literal text stays. **The genre:** pages written for the express purpose of being worn — lenses, not archives.
 
 The philosopher case ([[Philosopher Visits the Entry]]) was the training-wheels version: B is a philosopher's page. The general claim is larger and is just the palace's own founding commitments cashing out — **any node can be the glass for any other.**
