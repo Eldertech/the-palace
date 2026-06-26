@@ -4,6 +4,8 @@ import StageGlyph from './StageGlyph.jsx';
 import { pulseSort } from '../../lib/pulse.js';
 import { sortEntries, DEFAULT_DIR, SORT_KEYS } from '../../lib/entry-sort.js';
 import EntryAvatar from '../EntryAvatar.jsx';
+import PulseDot from './PulseDot.jsx';
+import { typeColor } from '../../lib/entry-style.js';
 
 // PULSE: the vitality lens that is STATE's default index. Entries sorted
 // by how alive they are right now (recency * activation_count * stage *
@@ -13,45 +15,8 @@ import EntryAvatar from '../EntryAvatar.jsx';
 // A filter input narrows by title/type/path; clicking a row opens that
 // entry in EntryReader.
 
-function PulseDot({ score }) {
-  // 5-position dot meter -- compact, monospace-friendly.
-  const filled = Math.max(0, Math.min(5, Math.round(score * 5)));
-  return (
-    <span
-      data-testid="pulse-dot"
-      data-score={filled}
-      style={{
-        fontFamily: 'var(--font-mono)', fontSize: 12,
-        color: 'var(--phosphor-dim)', textShadow: 'none', letterSpacing: '0.1em',
-      }}
-    >
-      {Array.from({ length: 5 }, (_, i) => i < filled ? '*' : '.').map((g, i) => (
-        <span key={i} style={{
-          color: i < filled ? 'var(--phosphor)' : 'var(--phosphor-dim)',
-          textShadow: i < filled ? 'var(--glow)' : 'none',
-        }}>{g}</span>
-      ))}
-    </span>
-  );
-}
-
-const TYPE_COLOR = {
-  meta: 'var(--phosphor-white)',
-  concept: 'var(--phosphor)',
-  hub: 'var(--ansi-bright-cyan)',
-  project: 'var(--ansi-bright-yellow)',
-  breakthrough: 'var(--ansi-bright-magenta)',
-  source: 'var(--ansi-bright-cyan)',
-  practice: 'var(--phosphor-bright)',
-  person: 'var(--ansi-bright-magenta)',
-  question: 'var(--warn)',
-  spore: 'var(--phosphor-dim)',
-  specialist: 'var(--phosphor-bright)',
-  maker: 'var(--phosphor-bright)',
-};
-
 function EntryRow({ entry, onSelect }) {
-  const typeColor = TYPE_COLOR[entry.type ?? ''] ?? 'var(--phosphor-dim)';
+  const rowColor = typeColor(entry.type);
   return (
     <div
       data-testid="pulse-row"
@@ -68,7 +33,7 @@ function EntryRow({ entry, onSelect }) {
     >
       <PulseDot score={entry.pulse ?? 0} />
       <span style={{
-        color: typeColor, textShadow: 'var(--glow)',
+        color: rowColor, textShadow: 'var(--glow)',
         fontSize: 11, letterSpacing: '.06em', textTransform: 'uppercase',
         whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis',
       }}>{entry.type ?? '--'}</span>
