@@ -1,0 +1,271 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Track VI · Elemental Motion — experiment log</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Manrope:wght@200;300;400;500;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
+:root{
+  --serif:'Cormorant Garamond',Georgia,serif; --sans:'Manrope',system-ui,sans-serif;
+  --display:'Anton',sans-serif; --mono:'JetBrains Mono',ui-monospace,Menlo,monospace;
+  --bg:#0a0a0f; --bg1:#12121a; --bg2:#1a1a28; --border:#4a4a5e; --border-soft:rgba(255,255,255,.06);
+  --fg1:#e8e8f0; --fg2:#c8c8d8; --fg3:#8a8aa0; --accent:#e8b84a; --accent-line:rgba(232,184,74,.5);
+  --good:#00ff66; --bad:#ff5a5a;
+}
+*{box-sizing:border-box} html,body{margin:0;background:var(--bg);color:var(--fg1);-webkit-font-smoothing:antialiased}
+body{font-family:var(--serif);font-size:16.5px;line-height:1.6}
+.wrap{max-width:1180px;margin:0 auto;padding:0 26px}
+.mono{font-family:var(--mono)}
+.eyebrow{font-family:var(--mono);font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);font-weight:500}
+header{border-bottom:1px solid var(--border);padding:48px 0 28px;background:radial-gradient(120% 90% at 50% -10%,rgba(232,184,74,.05),transparent 60%)}
+.wordmark{font-family:var(--display);font-size:14px;letter-spacing:.04em;color:var(--fg2)}
+.wordmark em{font-style:italic;font-weight:300;color:var(--accent);font-family:var(--serif)}
+h1{font-family:var(--display);font-weight:400;font-size:clamp(40px,8vw,80px);line-height:1.02;letter-spacing:.005em;text-transform:uppercase;margin:12px 0 6px}
+.lead{font-family:var(--serif);font-style:italic;font-weight:300;font-size:21px;color:var(--fg2);max-width:780px;margin:4px 0 0}
+.runmeta{font-family:var(--mono);font-size:12px;color:var(--fg3);margin-top:18px;display:flex;gap:20px;flex-wrap:wrap}
+.runmeta b{color:var(--accent);font-weight:600}
+.toc{display:flex;flex-wrap:wrap;gap:1px;background:var(--border-soft);border:1px solid var(--border-soft);margin:30px 0}
+.toc a{flex:1 1 160px;background:var(--bg1);padding:11px 13px;text-decoration:none;color:var(--fg2);font-family:var(--sans);font-size:13px}
+.toc a:hover{background:var(--bg2);color:var(--fg1)} .toc a .n{font-family:var(--mono);color:var(--accent);font-size:11px;margin-right:7px}
+.chapter{padding:40px 0 8px;border-top:1px solid var(--border)}
+.chapter h2{font-family:var(--display);font-weight:400;font-size:30px;letter-spacing:.01em;text-transform:uppercase;margin:6px 0 2px}
+.chapter h2 .n{font-family:var(--mono);font-size:14px;color:var(--accent);vertical-align:super;margin-right:10px}
+.chapter .intro{max-width:820px;color:var(--fg2);margin:8px 0 6px}
+.exp{background:var(--bg1);border:1px solid var(--border);border-radius:5px;margin:18px 0;overflow:hidden}
+.exp-head{display:flex;align-items:baseline;gap:12px;padding:13px 18px;border-bottom:1px solid var(--border-soft);flex-wrap:wrap}
+.exp-head h3{font-family:var(--sans);font-weight:700;font-size:16px;margin:0;color:#fff}
+.tag{font-family:var(--mono);font-size:10px;letter-spacing:.05em;text-transform:uppercase;color:var(--bg);background:var(--accent);border-radius:3px;padding:2px 7px}
+.tag.alt{background:var(--bg2);color:var(--accent);border:1px solid var(--accent-line)}
+.exp-body{display:grid;grid-template-columns:1.35fr 1fr;gap:0}
+@media(max-width:760px){.exp-body{grid-template-columns:1fr}}
+.media{padding:14px;display:grid;gap:10px;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));align-content:start}
+.media.one{grid-template-columns:1fr} .media.two{grid-template-columns:1fr 1fr}
+figure{margin:0;background:#fff;border:1px solid var(--border);border-radius:3px;overflow:hidden}
+figure video,figure img{width:100%;display:block;background:#fff}
+figcaption{padding:5px 8px;font-family:var(--mono);font-size:10px;color:var(--fg3);background:var(--bg1);line-height:1.35}
+figcaption b{color:var(--accent);font-weight:500}
+.detail{padding:16px 18px;border-left:1px solid var(--border-soft);font-size:15px;color:var(--fg2)}
+@media(max-width:760px){.detail{border-left:none;border-top:1px solid var(--border-soft)}}
+.detail p{margin:0 0 10px} .detail strong{color:#fff;font-weight:500}
+.detail .params{font-family:var(--mono);font-size:11.5px;color:var(--fg3);background:var(--bg);border:1px solid var(--border-soft);border-radius:3px;padding:8px 10px;margin:8px 0;white-space:pre-wrap;line-height:1.5}
+.verdict{font-family:var(--mono);font-size:11px;text-transform:uppercase;letter-spacing:.08em;margin-top:8px}
+.verdict.win{color:var(--good)} .verdict.mixed{color:var(--accent)} .verdict.note{color:var(--fg3)}
+.wide{padding:14px 18px} .wide img{width:100%;border:1px solid var(--border);border-radius:3px;background:#fff;display:block}
+.wide .cap{font-family:var(--mono);font-size:11px;color:var(--fg3);margin-top:6px}
+.metrics{display:flex;gap:12px;flex-wrap:wrap;margin:8px 0}
+.metric{background:var(--bg);border:1px solid var(--border);border-radius:3px;padding:9px 14px}
+.metric .v{font-family:var(--mono);font-size:20px;font-weight:600;color:var(--accent)}
+.metric.good .v{color:var(--good)} .metric.bad .v{color:var(--bad)}
+.metric .l{font-family:var(--mono);font-size:10px;color:var(--fg3);text-transform:uppercase;letter-spacing:.06em;margin-top:2px}
+.map{background:var(--bg1);border:1px solid var(--border);border-radius:4px;padding:18px 22px;font-family:var(--mono);font-size:13px;line-height:1.7;white-space:pre-wrap;color:var(--fg2);margin:14px 0}
+.map b{color:var(--accent)} .map u{color:var(--fg1);text-decoration:none}
+footer{border-top:1px solid var(--border);margin-top:34px;padding:26px 0 70px;font-family:var(--mono);font-size:12px;color:var(--fg3);display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
+footer b{color:var(--fg2)}
+</style>
+</head>
+<body>
+<header><div class="wrap">
+  <div class="wordmark">LOUDON <em>Live</em></div>
+  <div class="eyebrow" style="margin-top:16px">Track VI · BLUELINE · experiment log</div>
+  <h1>Elemental Motion<br>— every test</h1>
+  <p class="lead">The full lab notebook: each experiment, what it tested, its parameters, and the moving result. All loops play inline.</p>
+  <div class="runmeta"><span><b>26</b> loops</span><span><b>7</b> plates</span><span><b>8</b> experiment groups</span><span><b>18</b> comparison boards</span><span>local SDXL · headless Blender · RunPod FLUX-union</span></div>
+</div></header>
+
+<div class="wrap">
+  <nav class="toc">
+    <a href="#inputs"><span class="n">00</span>Inputs (plates)</a>
+    <a href="#tierA"><span class="n">01</span>Warp the ink</a>
+    <a href="#tierB"><span class="n">02</span>Blender sims</a>
+    <a href="#plume"><span class="n">03</span>Beautiful plume</a>
+    <a href="#tierC"><span class="n">04</span>Stylize once</a>
+    <a href="#recomp"><span class="n">05</span>Recomposite</a>
+    <a href="#routes"><span class="n">06</span>The two routes</a>
+    <a href="#controlnet"><span class="n">07</span>ControlNet, pushed</a>
+    <a href="#phys"><span class="n">08</span>Physical motion</a>
+    <a href="#map"><span class="n">09</span>Decision map</a>
+  </nav>
+
+  <!-- 00 INPUTS -->
+  <section class="chapter" id="inputs">
+    <div class="eyebrow">00 · the inputs</div>
+    <h2><span class="n">00</span>The pen-flow plates</h2>
+    <p class="intro">Every motion experiment starts from one of these inked B&amp;W stills, generated on local SDXL in the locked look (black chisel-marker + grey dry-brush on white cold-press, sumi-e / Vagabond lineage). Lots of white space, so the element to animate is easy to lift out.</p>
+    <div class="media" style="grid-template-columns:repeat(auto-fill,minmax(150px,1fr))">
+      <figure><img src="plates/water.png"><figcaption><b>water</b> · lake + reflections</figcaption></figure>
+      <figure><img src="plates/sky.png"><figcaption><b>sky</b> · billowing clouds over a ridge</figcaption></figure>
+      <figure><img src="plates/smoke.png"><figcaption><b>smoke</b> · candle + curling plume</figcaption></figure>
+      <figure><img src="plates/flame2.png"><figcaption><b>flame</b> · woodcut wall of fire</figcaption></figure>
+      <figure><img src="plates/dust.png"><figcaption><b>dust</b> · figure in a dust storm</figcaption></figure>
+      <figure><img src="plates/chimney.png"><figcaption><b>chimney</b> · white-ground, for compositing</figcaption></figure>
+    </div>
+  </section>
+
+  <!-- 01 TIER A -->
+  <section class="chapter" id="tierA">
+    <div class="eyebrow">01 · warp the existing ink — CPU, free, loop-perfect</div>
+    <h2><span class="n">01</span>Tier A · move the ink</h2>
+    <p class="intro">Take one inked plate + a mask + a per-element displacement field; resample the ink under the field. Every temporal term is a whole number of cycles, so the loop is seamless by construction and only the masked element moves.</p>
+
+    <div class="exp"><div class="exp-head"><span class="tag">warp</span><h3>Water — ripple</h3></div><div class="exp-body">
+      <div class="media one"><figure><video src="renders/water_v1/water_v1.mp4" autoplay loop muted playsinline></video><figcaption><b>water_v1</b> · 60f @24 · amp 1.3</figcaption></figure></div>
+      <div class="detail"><p>Traveling sinusoids, mostly vertical bob, amplitude scaled by depth (foreground waves bigger). Mask = bottom 50%.</p><p>The lake surface and reflections ripple; the trees and sky hold perfectly still.</p><div class="verdict win">✓ ideal warp case</div></div>
+    </div></div>
+
+    <div class="exp"><div class="exp-head"><span class="tag">warp</span><h3>Sky — drift</h3></div><div class="exp-body">
+      <div class="media one"><figure><video src="renders/sky_v1/sky_v1.mp4" autoplay loop muted playsinline></video><figcaption><b>sky_v1</b> · low-freq billow + drift</figcaption></figure></div>
+      <div class="detail"><p>Very low-frequency, long-wavelength billow. Mask = top 55%.</p><p>The clouds breathe and slide; the dark ridge stays locked.</p><div class="verdict win">✓ reads as time-lapse</div></div>
+    </div></div>
+
+    <div class="exp"><div class="exp-head"><span class="tag">warp</span><h3>Smoke (wispy) — curl</h3></div><div class="exp-body">
+      <div class="media one"><figure><video src="renders/smoke_v1/smoke_v1.mp4" autoplay loop muted playsinline></video><figcaption><b>smoke_v1</b> · base-anchored</figcaption></figure></div>
+      <div class="detail"><p>Turbulent rise, lateral-biased, base-anchored (the candle flame + plume both move, the candlestick is static).</p><div class="verdict win">✓ the drawn curls move</div></div>
+    </div></div>
+
+    <div class="exp"><div class="exp-head"><span class="tag">warp</span><h3>Flame — lick</h3></div><div class="exp-body">
+      <div class="media one"><figure><video src="renders/flame_v1/flame_v1.mp4" autoplay loop muted playsinline></video><figcaption><b>flame_v1</b> · full mask · base anchor</figcaption></figure></div>
+      <div class="detail"><p>Fast oscillatory lick + lateral curl on the whole woodcut wall of flame; the base is pinned and the tips dance most (the base-anchor weight).</p><div class="verdict win">✓ tips dance, base holds</div></div>
+    </div></div>
+
+    <div class="exp"><div class="exp-head"><span class="tag">warp</span><h3>Dust — wind shimmer</h3></div><div class="exp-body">
+      <div class="media one"><figure><video src="renders/dust_v1/dust_v1.mp4" autoplay loop muted playsinline></video><figcaption><b>dust_v1</b> · lateral, lower band</figcaption></figure></div>
+      <div class="detail"><p>Lateral-biased shimmer on the lower band — wind across the drawn grit.</p><div class="verdict mixed">~ good as a faint layer</div></div>
+    </div></div>
+
+    <div class="wide"><img src="report-assets/all_five_board.png"><div class="cap">all five — motion revealed as red/cyan fringe (frame 0 vs mid). zero fringe = perfectly static.</div></div>
+  </section>
+
+  <!-- 02 TIER B -->
+  <section class="chapter" id="tierB">
+    <div class="eyebrow">02 · simulate → stylize — for what isn't drawn</div>
+    <h2><span class="n">02</span>Tier B · Blender sims, inked</h2>
+    <p class="intro">For billowing/topology-changing media there's no stable ink to warp. Headless Mantaflow bakes a sim, renders grayscale-on-white, and a deterministic NPR pass turns it to marker-on-cold-press.</p>
+    <div class="exp"><div class="exp-head"><span class="tag alt">blender+npr</span><h3>Smoke sim → ink</h3></div><div class="exp-body">
+      <div class="media one"><figure><video src="renders/smoke_sim_npr/smoke_sim_npr.mp4" autoplay loop muted playsinline></video><figcaption><b>smoke_sim_npr</b> · static tooth → loop-stable</figcaption></figure></div>
+      <div class="detail"><p>Mantaflow density, puff emission, rendered BW (after fixing the AgX→Standard view transform), then NPR-inked on a paper tooth generated <strong>once</strong> so it can't boil.</p><div class="verdict note">pipeline proven; art direction is the lever →</div></div>
+    </div></div>
+    <div class="exp"><div class="exp-head"><span class="tag alt">blender+npr</span><h3>Fire sim → ink</h3></div><div class="exp-body">
+      <div class="media one"><figure><video src="renders/fire_sim_npr/fire_sim_npr.mp4" autoplay loop muted playsinline></video><figcaption><b>fire_sim_npr</b> · mode=both, rising column</figcaption></figure></div>
+      <div class="detail"><p>Same path, fire+smoke. The emitter is hidden from render; an upward launch velocity + 110 frames gave the rise.</p></div>
+    </div></div>
+  </section>
+
+  <!-- 03 PLUME -->
+  <section class="chapter" id="plume">
+    <div class="eyebrow">03 · art-directing the sim</div>
+    <h2><span class="n">03</span>The beautiful plume</h2>
+    <p class="intro">The first sims rose but were a faint blob. This pass art-directs Mantaflow into a tall billowing plume with delicate tips and true ink-blacks, exposing nine reusable flags on <span class="mono">smoke_sim.py</span>. Three variants below; gray (the sim substrate) on the left of each pair, inked on the right.</p>
+    <div class="exp"><div class="exp-head"><span class="tag alt">mantaflow</span><h3>Variant A — puff</h3></div><div class="exp-body">
+      <div class="media two"><figure><video src="renders/plume/plume_A_gray.mp4" autoplay loop muted playsinline></video><figcaption><b>A · gray</b></figcaption></figure><figure><video src="renders/plume/plume_A_ink.mp4" autoplay loop muted playsinline></video><figcaption><b>A · ink</b></figcaption></figure></div>
+      <div class="detail"><p>A single puff rises and clears — good for one-shot smoke that dissipates.</p></div>
+    </div></div>
+    <div class="exp"><div class="exp-head"><span class="tag">mantaflow · winner</span><h3>Variant B — tall column</h3></div><div class="exp-body">
+      <div class="media two"><figure><video src="renders/plume/plume_B_gray.mp4" autoplay loop muted playsinline></video><figcaption><b>B · gray</b></figcaption></figure><figure><video src="renders/plume/plume_B_ink.mp4" autoplay loop muted playsinline></video><figcaption><b>B · ink</b></figcaption></figure></div>
+      <div class="detail"><p>Continuous inflow, rich blacks, loopable — the strongest all-rounder.</p><div class="params">--res 96 --noise --vorticity 3.5 --beta 4.0 --alpha 0.0 --density 12 --dissolve --dissolve-speed 30 --domain-height 2.5 --emitter-size 0.4</div><div class="verdict win">✓ winner</div></div>
+    </div></div>
+    <div class="exp"><div class="exp-head"><span class="tag alt">mantaflow</span><h3>Variant C — delicate (fast dissolve)</h3></div><div class="exp-body">
+      <div class="media two"><figure><video src="renders/plume/plume_C_gray.mp4" autoplay loop muted playsinline></video><figcaption><b>C · gray</b></figcaption></figure><figure><video src="renders/plume/plume_C_ink.mp4" autoplay loop muted playsinline></video><figcaption><b>C · ink</b></figcaption></figure></div>
+      <div class="detail"><p>dissolve-speed 15 — old smoke fades fast, leaving wispy sumi-e tips.</p><div class="verdict mixed">~ most delicate</div></div>
+    </div></div>
+    <div class="wide"><img src="report-assets/plume/plume_compare_board.png"><div class="cap">biggest levers, ranked: wavelet --noise · --dissolve (delicate tips vs blob) · tall --domain-height · --density 12 (ink blacks) · --vorticity 3.5 (curl).</div></div>
+  </section>
+
+  <!-- 04 TIER C -->
+  <section class="chapter" id="tierC">
+    <div class="eyebrow">04 · temporal coherence</div>
+    <h2><span class="n">04</span>Stylize once, not every frame</h2>
+    <p class="intro">The same Blender smoke through two stylizers. Deterministic NPR reuses one static paper tooth → stable. Per-frame SDXL img2img redraws each frame → it boils.</p>
+    <div class="metrics"><div class="metric good"><div class="v">0.15</div><div class="l">NPR boil /255</div></div><div class="metric bad"><div class="v">1.50</div><div class="l">AI restyle boil /255</div></div><div class="metric good"><div class="v">0.0px</div><div class="l">loop seam</div></div></div>
+    <div class="exp"><div class="exp-head"><span class="tag">npr</span><h3>Deterministic NPR vs per-frame AI</h3></div><div class="exp-body">
+      <div class="media two"><figure><video src="renders/smoke_sim_npr/smoke_sim_npr.mp4" autoplay loop muted playsinline></video><figcaption><b>NPR</b> · boil 0.15</figcaption></figure><figure><video src="renders/smoke_ai_flick/smoke_ai_flick.mp4" autoplay loop muted playsinline></video><figcaption><b>AI img2img</b> · boil 1.50</figcaption></figure></div>
+      <div class="detail"><p>~10× more boil from the AI restyle, even with a fixed seed. The lesson echoes the warp: <strong>AI makes the still; geometry makes the motion.</strong></p></div>
+    </div></div>
+    <div class="wide"><img src="report-assets/flicker_compare.png"><div class="cap">same sim, two stylizers · the AI strip crawls frame-to-frame where the NPR strip holds.</div></div>
+  </section>
+
+  <!-- 05 RECOMPOSITE -->
+  <section class="chapter" id="recomp">
+    <div class="eyebrow">05 · separate → infill → animate → recomposite</div>
+    <h2><span class="n">05</span>The recomposite pipeline</h2>
+    <p class="intro">Ink-on-paper compositing is multiply (white passes through, black ink darkens). Separate a moving element, infill the hole, animate it, multiply it back.</p>
+    <div class="exp"><div class="exp-head"><span class="tag alt">compose</span><h3>Candle — sim smoke recomposited</h3></div><div class="exp-body">
+      <div class="media one"><figure><video src="renders/smoke_recomp/smoke_recomp.mp4" autoplay loop muted playsinline></video><figcaption><b>smoke_recomp</b></figcaption></figure></div>
+      <div class="detail"><p>Removed the drawn plume, dropped in the simulated smoke. <strong>The lesson:</strong> the candle plate has a dark ground, so white-paper infill punched a hole and multiply can't show ink on dark — recompositing wants a white ground.</p><div class="verdict note">revealed the infill-ground rule</div></div>
+    </div></div>
+    <div class="exp"><div class="exp-head"><span class="tag alt">compose</span><h3>Chimney — white-ground add</h3></div><div class="exp-body">
+      <div class="media one"><figure><video src="renders/chimney_recomp/chimney_recomp.mp4" autoplay loop muted playsinline></video><figcaption><b>chimney_recomp</b></figcaption></figure></div>
+      <div class="detail"><p>Adding inked smoke into white sky over a chimney — the clean case. Placement of the puffed element is finicky; a continuous-emitter element aligns better.</p></div>
+    </div></div>
+  </section>
+
+  <!-- 06 ROUTES -->
+  <section class="chapter" id="routes">
+    <div class="eyebrow">06 · two ways to the layer stack</div>
+    <h2><span class="n">06</span>Separate, or generate</h2>
+    <p class="intro">The 2.5D paper stack needs sheets. Route A cuts a finished drawing along its black lines; Route B generates each sheet. Tested on the sky/ridge scene — the case where soft band-masks bled.</p>
+    <div class="exp"><div class="exp-head"><span class="tag">route A · separate</span><h3>Cut the drawing</h3></div><div class="exp-body">
+      <div class="media two"><figure><video src="renders/sky_separate/sky_separate.mp4" autoplay loop muted playsinline></video><figcaption><b>sky_separate</b> · clouds drift, ridge locked</figcaption></figure><figure><img src="report-assets/sky_separate_mattes.png"><figcaption><b>mattes</b> · ridge vs sky</figcaption></figure></div>
+      <div class="detail"><p>A luminance threshold grabbed 63% (dark hill <em>and</em> dark cloud ink read "dark"). Fix: threshold dark-<strong>density</strong> — a filled mass vs linework — so the hill survives and the cut lands on the black silhouette.</p><div class="verdict win">✓ coherence free; cut is the work</div></div>
+    </div></div>
+    <div class="exp"><div class="exp-head"><span class="tag alt">route B · generate</span><h3>Generate each sheet (naive)</h3></div><div class="exp-body">
+      <div class="media two"><figure><video src="renders/sky_generate/sky_generate.mp4" autoplay loop muted playsinline></video><figcaption><b>sky_generate</b> · clean alpha, but…</figcaption></figure><figure><img src="report-assets/sky_generate_mattes.png"><figcaption><b>mattes</b> · two passes</figcaption></figure></div>
+      <div class="detail"><p>Alpha is clean by construction, but two independent generations <strong>don't cohere</strong> — the "ridge" prompt drifted into a figure-scene that fights the clouds.</p><div class="verdict mixed">~ cut free; coherence is the work</div></div>
+    </div></div>
+    <div class="wide"><img src="report-assets/routes_compare.png"><div class="cap">A (cut a finished drawing) vs B (two separate generations) — the duality: A makes coherence free and the cut hard; B the reverse.</div></div>
+  </section>
+
+  <!-- 07 CONTROLNET -->
+  <section class="chapter" id="controlnet">
+    <div class="eyebrow">07 · pushing both routes on controlnet (runpod)</div>
+    <h2><span class="n">07</span>ControlNet, pushed</h2>
+    <p class="intro">Both weak spots hardened on the proven RunPod FLUX-union ControlNet (network volume recipe) + local SDXL.</p>
+    <div class="exp"><div class="exp-head"><span class="tag">route A v2 · inpaint</span><h3>Inpaint behind the foreground</h3></div><div class="exp-body">
+      <div class="media two"><figure><video src="renders/water_separate_v2/water_separate_v2.mp4" autoplay loop muted playsinline></video><figcaption><b>water_separate_v2</b> · trees static, lake ripples</figcaption></figure><figure><img src="report-assets/water_separate_v2_mattes.png"><figcaption><b>mattes</b> · back lake / front trees</figcaption></figure></div>
+      <div class="detail"><p>On a dark/structured ground, SDXL inpaint (local, in ink) fills behind the extracted trees with coherent water + far shore — so the trees become a static front sheet over rippling water, not a white hole.</p><div class="verdict win">✓ infill upgrade</div></div>
+    </div></div>
+    <div class="wide"><img src="report-assets/infill_compare.png"><div class="cap">white-paper infill (a hole on a dark ground) → SDXL inpaint (water + shore continue, in ink).</div></div>
+    <div class="exp"><div class="exp-head"><span class="tag">route B v2 · shared depth</span><h3>Shared-conditioning generate</h3></div><div class="exp-body">
+      <div class="media two"><figure><video src="renders/sky_generate_v2_ink/sky_generate_v2_ink.mp4" autoplay loop muted playsinline></video><figcaption><b>v2 · re-inked</b> · clouds behind static ridge</figcaption></figure><figure><video src="renders/sky_generate_v2_flux/sky_generate_v2_flux.mp4" autoplay loop muted playsinline></video><figcaption><b>v2 · FLUX</b> · the coherent stack</figcaption></figure></div>
+      <div class="detail"><p>Both layer passes condition on the <strong>same authored depth map + same seed</strong>, so they register as one scene. The hill landed at 38–39% in every pass. Then re-inked locally with SDXL.</p><div class="verdict win">✓ shared conditioning = coherence</div><div class="verdict note">edge: re-ink reads wash-like; a lineart CN would sharpen it</div></div>
+    </div></div>
+    <div class="wide"><img src="report-assets/routeB_v2_compare.png"><div class="cap">naive B (two drawings fight) → B v2 FLUX depth-shared (one coherent scene) → re-inked.</div></div>
+  </section>
+
+  <!-- 08 PHYS -->
+  <section class="chapter" id="phys">
+    <div class="eyebrow">08 · physically-grounded motion</div>
+    <h2><span class="n">08</span>Velocity-driven warp</h2>
+    <p class="intro">Can a Blender sim's velocity field drive the warp better than a synthetic field? Optical flow (pure numpy, no OpenCV) on the sim's density frames feeds <span class="mono">fields.from_flow</span>.</p>
+    <div class="exp"><div class="exp-head"><span class="tag alt">flow → warp</span><h3>Procedural vs velocity-driven</h3></div><div class="exp-body">
+      <div class="media two"><figure><video src="renders/phys-motion/smoke_procedural/smoke_procedural.mp4" autoplay loop muted playsinline></video><figcaption><b>procedural</b> · smooth, perfect loop</figcaption></figure><figure><video src="renders/phys-motion/smoke_velocity/smoke_velocity.mp4" autoplay loop muted playsinline></video><figcaption><b>velocity-driven</b> · organic, slight seam</figcaption></figure></div>
+      <div class="detail"><p>The velocity field deforms the ink along the sim's <em>actual</em> plume shape — more organic — but carries a faint loop seam (cross-fade) and a square-sim-vs-portrait-plate mismatch.</p><div class="verdict mixed">~ works, doesn't clearly beat procedural</div><p style="margin-top:8px;font-size:13.5px">Fixes if pursued: render the sim at the plate's aspect; integrate flow into a periodic field instead of cross-fading.</p></div>
+    </div></div>
+    <div class="wide"><img src="report-assets/phys-motion/phys_motion_compare.png"><div class="cap">left plate · middle procedural (smooth uniform) · right velocity-driven (shaped by the plume topology).</div></div>
+  </section>
+
+  <!-- 09 MAP -->
+  <section class="chapter" id="map">
+    <div class="eyebrow">09 · which technique, when</div>
+    <h2><span class="n">09</span>The decision map</h2>
+    <div class="map">Is the element already drawn, and does it keep its topology (just displaces)?
+  <b>├─ YES →</b> <u>WARP THE INK</u> (Tier A). Free, loop-perfect, native.
+  <b>│         </b>[ water · sky · wispy smoke · flame · gentle dust ]
+  <b>└─ NO  →</b> billows / scatters / not-drawn-yet?
+            <b>└─</b> <u>SIMULATE</u> (Blender) → <u>STYLIZE NPR</u> → <u>RECOMPOSITE</u> (multiply, white ground).
+               [ billowing smoke · heavy dust · a medium the drawing lacks ]
+
+Need the layer stack?
+  <b>Have the frame  →</b> Route A · separate. Cut on the black line (density), inpaint behind.
+  <b>Making the frame →</b> Route B · generate, under one shared depth + seed, then re-ink.
+
+Never: per-frame AI restyle for the motion — it boils. AI makes the still; geometry makes the motion.</div>
+  </section>
+
+  <footer>
+    <span><b>Loudon Live</b> · Autodidact Polymaths</span>
+    <span>BLUELINE · Track VI · Elemental Motion — experiment log</span>
+  </footer>
+</div>
+</body>
+</html>
