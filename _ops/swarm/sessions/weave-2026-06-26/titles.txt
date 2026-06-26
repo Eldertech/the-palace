@@ -1,0 +1,331 @@
+00 — Test Diagnostic Wavetable
+01 — Sine Cycle Sweep
+02 — Partial Stack Sweep
+03 — Duty Cycle Morph
+04 — Sine + Variable 3rd Harmonic
+1 from 2
+10 — Membrane
+11 — Chladni Ghost
+12 — Theta Surface
+13 — Stiff String
+14 — Knot Shadow
+15 — Penrose Lattice
+16 — Kuramoto Bloom
+17 — Matérn Field
+18 — Fisher Ridge
+1D Wavetable Scanning
+2D Torus Wavetable Synthesizer
+2D Torus Wavetable Synthesizer — Build Log
+2D Wavetable Catalog
+4 Pillars Framework - The Founding Conversation
+Action Potential Oscillator
+Adopt the Craft, Author the Seam
+Agent Wellbeing
+Agnes Martin
+Andrei Tarkovsky
+Andy Goldsworthy
+Animate the Background
+Annie Dillard
+Audition Gate
+Autodidact Polymaths
+BBS Blackboard
+BBS Design System
+BBS Production Plan
+BBS Production Plan v0.2
+BBS Production Plan v0.3 — Rich Content
+BLUELINE
+BLUELINE — Board Record Schema
+BLUELINE — Claude Code Job
+BLUELINE — Deposit Map
+BLUELINE — Production Pipeline
+BLUELINE — Production Plan
+BLUELINE — Render Backend
+BLUELINE — Specialists and Seams
+BLUELINE — Text Layer
+Bayesian Granular Synthesizer
+Bessel Functions in Synthesis
+Biomechanical Synthesis
+Blender
+Blocked, Not Prompted
+Blood Compressor
+Boundary-Crossing Instruments
+Brian Eno
+Buckminster Fuller
+Bundle-Local Stewardship — Production Plan
+CLAUDE
+Categorizing Inharmonicity
+Chebyshev is Fourier
+Christopher Alexander
+Claude CLI Reference
+Closing Well
+ComfyUI
+Comic and Cinema — Two Ways of Seeing
+Compression ↔ Intimacy
+Compressor Design
+Confucianism
+Cooking ↔ Mixing
+Cooperation Yields Agency
+Cooperation Yields Agency — Context
+Cooperation_Yields_Agency
+Cross-Domain Resonances
+Crystal Synthesizer
+Curriculum Map
+D3.js
+DSP Frameworks
+DSP in Looping Dimensions
+Deleuze
+Dialectic
+Dialogue Moderator
+Differential Equations
+Dispersion
+Dispersion Table
+Dissolutions
+Diversity of Thought in Many-Agent Systems
+Does Personifying an Agent Change What It Does
+Donella Meadows
+Douglas Hofstadter
+Dovetail Joint ↔ Counterpoint
+Drift and Consolidation
+Dub Lineage
+Embeddings as Relational Meaning
+Enchanted Conversation Archive
+Enchanted Worker
+Endosymbiosis
+Enrichment
+Entry Conatus
+Epictetus
+Excellent Adventure
+Exponential Decay Curvature
+FLUX (Hugging Face)
+FOUR PILLARS
+FOUR PILLARS — Context
+FOUR_PILLARS
+Flocking
+Floquet Theory
+Floquet Time-Modulated Loops
+Four Pillars of Enchanted Agency
+Frame Designer
+Frequency Domain ↔ Perspective Shift
+Frequency-Time Duality
+Frequency-Time Explorer
+Gemma 4 — Local Coordination Guide
+Generative Audio Devices
+Generative Compression
+Generative Preset Development
+Generative Sample Libraries
+Generative Wavetable Libraries
+George Nakashima
+Granular Synthesis
+Graphic Storytelling
+Hand-Drawn 3D Look
+Harmonicity and Inharmonicity
+Hero and Avatar Maker
+Hilaritas Generator
+Hilaritas Generator — Context
+Hilaritas_Generator
+Hyperdimensional Prism
+Identity Molting
+Image-to-3D Smith
+Infeasible DSP Now Shippable
+Inharmonic Wavetable Synthesis
+JEWEL
+JSUI
+James Turrell
+Jewel — Context
+John Cage
+Julia Cameron
+Kick Drum ↔ Foundation
+Kokoro
+Kuramoto Coupling
+LaTeX
+Language as a Tonal Medium
+Lao Tzu
+Latent Error
+Lateral Access
+Learning Materials and Canon
+Leibniz
+Lettering
+Leverage Diagnostic — Loudon Draft
+Leverage Points Framework
+Like Water
+Linear Predictive Coding
+LoRA Trainer
+Logarithmic Interface Scaling
+Lossy Compression with Intent Alignment
+Loudon Live
+Loudon Live Design System
+Loudon Live Post-producer
+Loudon's Toolkit
+Maker
+Manim CE
+Marcus Aurelius
+Mathieu Equation
+Matplotlib
+Meadows and Music — Leverage Points
+Meadows and Music — Origin and Process
+Meadows and an Artist's Career
+Meaning and the Link
+Media Library
+Merleau-Ponty
+Mermaid
+Metaphor as Coupling Medium
+Metric Modulation
+Midjourney
+Mixture of Experts
+Modes of Collaboration
+Modes of Collaboration — Context
+Modes_of_Collaboration
+Move the Ink, Don't Redraw It
+Murmuration
+Natalie Goldberg
+Neural Granular Synthesis
+Oblique Enrichment
+Oblique Portrait
+Observable Plot
+Octave Equivalence
+Ohm's Law
+Orchestrator Production Plan
+Orchestrator Production Plan v0.2
+PDL Generation Prompt
+PDL Renderer
+Palace AI Partnership Philosophy
+Palace Agent Infrastructure Spec
+Palace Conatus
+Palace Enchantment
+Palace Philosophies
+Palace Philosophies — Context
+Palace as Context Injection System
+Palace_Philosophies
+Parametric Resonance
+Particle Synthesis
+Pauline Oliveros
+Phase Reduction
+Pheromone Trail
+Philosopher Visits the Entry
+Phoneme Choir
+Photonic Time Crystals
+Piano String Inharmonicity
+Playful Interface Design
+Portamento and Physical Pitch Modeling
+Preset Oracle
+Progressive Staging
+Project Stewardship System
+Quadratic Interpolation in DSP
+Quality Manifesto
+Quantization ↔ Precision vs Flow
+Quantum Synthesizer
+R. Murray Schafer
+README
+README - The Palace Guide
+README — RNBO Prototype
+RECONNAISSANCE
+RNBO codebox~ smith
+ROSETTA
+Radio Play
+Rank-N Lattice Analysis
+Registry Pattern
+Remnants in Depth
+Remotion
+Resonant Link Labels
+Retrospective Delay
+Reverb ↔ Space-Time
+Review Layer
+Rick Rubin
+RunPod GPU Backend
+SCHEMA
+SMPTE LTC
+STIGMERGY
+STIGMERGY Entry-Agent Window — Integration Plan v0.1
+STIGMERGY Philosophical Lenses
+STIGMERGY v1.0 — Palace Front-End
+STIGMERGY v2.0 — Consolidation & Primary Interface
+STIGMERGY — Alignment Review Build Plan
+STIGMERGY — Equation Rendering Build Plan
+STIGMERGY — Weave Flag Item Type Build Plan
+SUBSTRATE
+Sam Maloof
+Saturation ↔ Richness
+Scale-Stratified Identity
+Self-Describing Knowledge Module
+Semantic Delay
+Semantic Delay — Phase 1 Plan Review 2026-04-20
+Semantic Webcam
+Seneca
+Shepard Tone Synthesizer
+Shimmer Cloud
+Shopkeeper
+Shunryu Suzuki
+Sidechain ↔ Conversation
+Signal-Rate CV Architecture
+Simondon
+Slime Mold Delay
+Songlines
+Source Library
+Speak Like a Person, Log Like a Protocol
+Spinoza
+Spinoza Conatus
+Stable Audio Open
+State Machine
+Steer the Generator
+Stoicism
+Streaming details
+Striatum
+Surfaces and Capabilities
+Swarm Weave
+Symbiotic Skills
+Synth Archetypes
+Synthesis Topologies
+Synthesis ↔ Emergence
+Talking Keyboard
+Terrence Malick
+The 2.5D Paper Stack
+The Adjacent Affordance
+The Cooperation Path
+The Curve Is the Material
+The Dichotomy of Control
+The Drift
+The Flow Field is the Spine
+The Fortress and the Threshold
+The Four Virtues
+The Lens
+The Metaphor Stretch
+The Reader's Context Window
+The Shop
+The Substrate Drifts
+The View From Above
+Three Kinds of Warp
+Three.js
+Threshold Conatus
+Tier Vocabulary Glossary
+Tier-1 Warp Snippets
+Tone.js
+Toolkit — Audio Plugins
+Toolkit — Synthesizers
+Torus Warping Catalog
+Tract Mirror
+Tree of Thoughts
+Trickster
+Trickster Commit
+Tristitia Generator
+Two Batons, One Board
+Typography as Meaning
+VCV Patch Generator
+Verification Prep Checklist
+Volterra Kernels and the Torus
+Walk That Weaves
+Wallpaper Groups
+Waveguide Synthesizer
+Wavetable Scanner
+Wavetable Space as Torus
+Wavetable Synthesis -- Research & Higher-Dimensional Design
+Web Audio Worklet
+What Claim Does Scientific Sonification Make?
+Whisper
+Whitehead
+Worktree Practice
+Yasujirō Ozu
+control-vocabulary-math
+ffmpeg
+p5.js
+spinoza-zhuangzi-on-striving
+zhuangzi-epictetus-confucius-on-the-self
