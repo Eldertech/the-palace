@@ -162,6 +162,30 @@ function BundleFileRow({ row, onSelect }) {
   );
 }
 
+// A loose non-.md file sitting directly in an org folder. Never an entry, so
+// it always opens natively — same affordance as a non-md bundle file.
+function LooseFileRow({ row }) {
+  const { node: file, depth } = row;
+  return (
+    <div
+      data-testid="tree-loose-file-row"
+      data-path={file.relPath}
+      onClick={() => window.open(`/api/open?path=${encodeURIComponent(file.relPath)}`, '_self')}
+      style={{ ...ROW_BASE, paddingLeft: `${6 + depth * INDENT_CH * 8}px`, cursor: 'pointer' }}
+    >
+      <span style={{ width: '1.2ch', textAlign: 'center', color: 'var(--phosphor-dim)' }}>·</span>
+      <KindBadge kind={file.fileKind} />
+      <span style={{
+        flex: 1, minWidth: 0, color: 'var(--phosphor-dim)', textShadow: 'none',
+        whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis',
+      }}>{file.name}</span>
+      <span style={{ color: 'var(--phosphor-dim)', textShadow: 'none', fontSize: 11 }}>
+        {formatBytes(file.size)}
+      </span>
+    </div>
+  );
+}
+
 export default function TreeLens({ onSelect, tree = null, defaultExpanded = null, target = null }) {
   const [state, setState] = useState(
     tree ? { kind: 'ok', root: tree.root, counts: tree.counts } : { kind: 'loading' },
@@ -300,6 +324,7 @@ export default function TreeLens({ onSelect, tree = null, defaultExpanded = null
         {rows.map((row) => {
           if (row.kind === 'folder') return <FolderRow key={row.key} row={row} onToggle={onToggle} />;
           if (row.kind === 'entry') return <EntryRow key={row.key} row={row} onToggle={onToggle} onSelect={onSelect} />;
+          if (row.kind === 'loose-file') return <LooseFileRow key={row.key} row={row} />;
           return <BundleFileRow key={row.key} row={row} onSelect={onSelect} />;
         })}
         {rows.length === 0 ? (

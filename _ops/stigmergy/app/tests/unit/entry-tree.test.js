@@ -23,6 +23,9 @@ beforeAll(() => {
   mkdirSync(join(root, 'Projects', 'Frame Designer'));
   writeFileSync(join(root, 'Projects', 'Frame Designer', 'Frame Designer — plan.md'), '---\ntitle: Frame Designer — plan\n---\nplan\n');
   writeFileSync(join(root, 'Projects', 'Frame Designer', 'hero.png'), 'PNGDATA');
+
+  // A loose non-md asset sitting directly in an org folder, owned by no entry.
+  writeFileSync(join(root, 'Projects', 'diagram.png'), 'PNGDATA');
 });
 
 afterAll(() => {
@@ -76,8 +79,9 @@ describe('buildEntryTree', () => {
   it('does not turn a bundle folder into an organizational folder', () => {
     const { root: tree, counts } = buildEntryTree(root);
     const projects = folderByName(tree, 'Projects');
-    // Projects has exactly one child: the Frame Designer entry.
-    expect(projects.children).toHaveLength(1);
+    // The Frame Designer bundle dir must not appear as a sub-folder of Projects.
+    expect(projects.children.some((c) => c.kind === 'folder')).toBe(false);
+    expect(childByPath(projects, 'Projects/Frame Designer.md')).toBeTruthy();
     expect(counts.entries).toBe(3); // Kuramoto, Kokoro, Frame Designer
     expect(counts.bundles).toBe(1);
     expect(counts.bundleFiles).toBe(2);
@@ -87,5 +91,17 @@ describe('buildEntryTree', () => {
     const { root: tree } = buildEntryTree(root);
     expect(folderByName(tree, 'Shop').entryCount).toBe(1);
     expect(folderByName(tree, 'Projects').entryCount).toBe(1);
+  });
+
+  it('surfaces a loose non-md file as a loose-file node in its org folder', () => {
+    const { root: tree, counts } = buildEntryTree(root);
+    const projects = folderByName(tree, 'Projects');
+    const loose = projects.children.find((c) => c.kind === 'loose-file');
+    expect(loose).toBeTruthy();
+    expect(loose.relPath).toBe('Projects/diagram.png');
+    expect(loose.fileKind).toBe('image');
+    // Exactly one loose file: the bundle's own hero.png stays a bundle file,
+    // not a loose file (it lives inside the bundle subdir, not directly here).
+    expect(counts.looseFiles).toBe(1);
   });
 });

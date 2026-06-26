@@ -52,14 +52,17 @@ function compareEntries(a, b, key) {
   return entryLabel(a).localeCompare(entryLabel(b));
 }
 
-// Order a folder's children: folders always first (alpha by name), then entries
-// by `key`. Returns a new array; the input is untouched.
+// Child ordering: folders, then entries, then loose files.
+const KIND_ORDER = { folder: 0, entry: 1, 'loose-file': 2 };
+
+// Order a folder's children: folders first (alpha), entries by `key`, loose
+// files last (alpha by name). Returns a new array; the input is untouched.
 function sortChildren(children, key) {
   const copy = [...(children ?? [])];
   copy.sort((a, b) => {
-    if (a.kind !== b.kind) return a.kind === 'folder' ? -1 : 1;
-    if (a.kind === 'folder') return a.name.localeCompare(b.name);
-    return compareEntries(a, b, key);
+    if (a.kind !== b.kind) return (KIND_ORDER[a.kind] ?? 9) - (KIND_ORDER[b.kind] ?? 9);
+    if (a.kind === 'entry') return compareEntries(a, b, key);
+    return a.name.localeCompare(b.name);
   });
   return copy;
 }
@@ -69,15 +72,16 @@ function sortChildren(children, key) {
 // are no loose root entries, the tree is returned unchanged.
 export function withRootGroup(root) {
   const children = root?.children ?? [];
-  const entries = children.filter((c) => c.kind === 'entry');
   const folders = children.filter((c) => c.kind === 'folder');
-  if (entries.length === 0) return root;
+  const nonFolders = children.filter((c) => c.kind !== 'folder'); // entries + loose files
+  const entryCount = nonFolders.filter((c) => c.kind === 'entry').length;
+  if (nonFolders.length === 0) return root;
   const rootFolder = {
     kind: 'folder',
     name: ROOT_GROUP_PATH,
     path: ROOT_GROUP_PATH,
-    children: entries,
-    entryCount: entries.length,
+    children: nonFolders,
+    entryCount,
     synthetic: true,
   };
   return { ...root, children: [rootFolder, ...folders] };
@@ -150,6 +154,18 @@ export function flattenVisible(root, { expanded = new Set(), filter = '', sort =
             });
           }
         }
+      } else if (node.kind === 'loose-file') {
+        // Loose files are secondary — hide them while a filter is narrowing to
+        // matching entries, surface them otherwise.
+        if (q) continue;
+        rows.push({
+          key: `l:${node.relPath}`,
+          kind: 'loose-file',
+          depth,
+          node,
+          isTopLevel: depth === 0,
+        });
+        emitted = true;
       }
     }
     return emitted;
