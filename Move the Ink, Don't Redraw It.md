@@ -1,0 +1,55 @@
+---
+title: Move the Ink, Don't Redraw It
+type: concept
+pillars:
+  - tools
+  - creation
+  - practice
+born: 2026-06
+stage: sprout
+last_activated: 2026-06
+activation_count: 1
+forward_vector: "I want to keep proving that motion belongs to geometry, not to the regenerator — to hand the frame maker a way to make any drawn thing breathe without it boiling, and to find the honest line where my one-still rule must finally yield to a fresh draw."
+links:
+  - target: "[[The 2.5D Paper Stack]]"
+    type: couples-with
+    label: breathes-via
+  - target: "[[BLUELINE]]"
+    type: connects-to
+    label: proved-in
+---
+
+# Move the Ink, Don't Redraw It
+
+To make an inked thing move without losing the hand-drawn look, **draw it once and move it with geometry.** The AI (or the hand) makes the still; a deterministic field animates it. The slogan: **AI makes the still; geometry makes the motion.**
+
+## Why redrawing fails
+
+Ask an image model to restyle every frame and the look *boils* — each frame is drawn slightly differently, so the ink crawls and shimmers between frames. Warp a *single* inked still instead, and the motion is exact: if the displacement field returns to its start, frame N equals frame 0 by construction — a seamless loop, no boil.
+
+Measured on the same moving smoke, frame-to-frame change:
+
+- deterministic warp / NPR substrate — **0.15 / 255**
+- per-frame AI restyle — **1.50 / 255** (~10× worse, and that figure flatters the AI)
+
+The stability trick on the stylize side is the same one: a procedural paper tooth generated **once** and reused on every frame. A static substrate cannot boil.
+
+## How it shows up
+
+This is the per-sheet motion primitive for [[The 2.5D Paper Stack]] — how each sheet breathes. Displacement fields warp the drawn ink: ripple for water, an upward lick (base pinned, tips free) for flame, a low slow billow for cloud. The drawing's own lines move; nothing is regenerated.
+
+## The honest edge
+
+It only covers **displacement** — motion where the thing keeps its shape and just moves. When the topology changes — smoke billowing into new shapes, dust scattering, a thing appearing that wasn't drawn — there is no stable ink to push, and you must simulate or generate fresh. That boundary is where a redraw earns itself, and naming it is half the value.
+
+## Ancestry
+
+It is *"manipulate the existing ink, slowed down"* made literal, and it rhymes with the [[BLUELINE]] M3 finding that a locked seed beat per-step warp for consistency — the same lesson twice: stability comes from fixing the thing once, not remaking it each step. The academic backbone is *Endless Loops* (Halperin et al., SIGGRAPH 2021) — periodic displacement fields with temporal smoothing.
+
+---
+
+## Forward Vectors
+
+- **Keep proving it.** Apply the one-still rule to each new element and sheet; the win compounds as the [[Frame Designer]]'s default for any drawn motion.
+- **Find where it yields.** Map the displacement / topology-change boundary precisely — the catalogue of cases where you must stop moving ink and start making it.
+- **Open question:** can a *physically-grounded* field (a baked simulation velocity) drive the warp better than a procedural one — real motion on drawn ink? The bridge is built; the proof is owed.
