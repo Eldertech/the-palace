@@ -36,6 +36,9 @@ links:
   - target: "[[Remnants in Depth]]"
     type: connects-to
     label: 2d-marks-in-3d
+  - target: "[[Shop/Figure Rig]]"
+    type: connects-to
+    label: figure-staging-method
 ---
 
 # Frame Designer

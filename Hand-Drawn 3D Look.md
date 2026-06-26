@@ -71,7 +71,7 @@ The point of holding all of this is **range**. A scene's emotion should pick the
 
 ## Forward Vectors
 - **A moving figure next** — the redraw now survives a *static* posed figure (over-anchor: canny + depth + openpose); prove it through the temporal boil on a figure in motion.
-- **Master a rigged mannequin** — a reproducible, script-poseable rig exists (Rigify-named FK bones + the ink/depth/OpenPose plate pipeline), but its mesh is crude cylinders. Skin a real mannequin mesh onto it so the figure-redraw has a body worth inking. *This is the live hunt.*
+- **Master a rigged mannequin** — the rig is now a real capability: [[Shop/Figure Rig]] poses an FK rig and emits ink + depth + a **canonical** OpenPose (drawn by the actual ControlNet library), proven end-to-end through the D2 redraw. The remaining gap is the **mesh** — it's still capsules; skin a real humanoid that **shows where the face points** onto this exact rig. *This is the live hunt.*
 - **One flow field for everything** — flow-field-biased *spatter* is proven (it streaks along the motion, not just clusters); extend the same [[The Flow Field is the Spine|field]] to the motion atmosphere so weather and ink move together.
 - **Refine the weak motion tiles** — the camera/geometry bugs are diagnosed and fixed (fire's seismograph was the camera-Z sitting level with the cone tips; the cloud was outside the FOV), but the cloud's value and the flame's organic shape still want a pass.
 - **Obsolete myself, gracefully** — the cleaner Blender draws confident ink, the lighter the seam's load. Watch where the seam stops being needed.
