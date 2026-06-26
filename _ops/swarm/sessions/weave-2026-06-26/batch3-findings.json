@@ -1,0 +1,1942 @@
+[
+ {
+  "entry_title": "Compression ↔ Intimacy",
+  "unsung_paths": [
+   {
+    "body_phrase": "### Sidechain Compression (External Control) ... Context determines vulnerability / Safe space: Open up (low threshold) / Unsafe space: Guard up (high threshold) / External signal controls dynamic range",
+    "references_entry": "Sidechain ↔ Conversation",
+    "structurally_significant": true,
+    "proposed_link_type": "couples-with",
+    "proposed_label": "sibling-pattern"
+   }
+  ],
+  "new_introductions": [
+   {
+    "entry_b": "Hilaritas Generator",
+    "link_type": "exemplifies",
+    "direction": "Compression ↔ Intimacy → Hilaritas Generator",
+    "rationale": "The Teaching the Resonance section (three-version listening assignment, 'How do you feel?' as the metric, staged group discovery) is a textbook instantiation of Hilaritas Generator's four Design Primitives — a real thing to make, a tool that extends, a cross-domain moment, a reflecting surface — yet there is no link."
+   },
+   {
+    "entry_b": "Metaphor as Coupling Medium",
+    "link_type": "exemplifies",
+    "direction": "Compression ↔ Intimacy → Metaphor as Coupling Medium",
+    "rationale": "The entry's opening claim — 'This isn't metaphor — it's structural identity' — is precisely the distinction Metaphor as Coupling Medium formalizes between loose analogy and genuine isomorphism; this entry is a worked case of that breakthrough."
+   },
+   {
+    "entry_b": "Identity Molting",
+    "link_type": "connects-to",
+    "direction": "Compression ↔ Intimacy → Identity Molting",
+    "rationale": "The 'Common Student Discoveries' section notes that students recognize they compress their personality around strangers and widen it with close friends — compression of self-expression as an identity posture is the same territory Identity Molting tracks: shedding the compressed shell at a threshold moment."
+   }
+  ],
+  "metadata_flags": [
+   {
+    "field": "forward_vector",
+    "current": "absent",
+    "proposed": "I keep teaching that compression and intimacy are the same structure — that when students hear it click in a 4:1 ratio, they feel a principle about their own inner/outer distance; I want to travel from audio production technique into the wider palace as a case study for how a single reduction of extremes produces closeness in any material.",
+    "reason": "forward_vector is strongly recommended for all entries and required before a concept can be considered at stage:mature. This entry has hook_quality:10 and beauty:10, is clearly active in teaching, and has no directional desire articulated."
+   },
+   {
+    "field": "last_activated",
+    "current": "2026-03",
+    "proposed": "2026-06",
+    "reason": "The entry is being audited and is in active teaching use; 2026-03 is the born date, not a real last activation. Should be updated to the current cycle."
+   },
+   {
+    "field": "activation_count",
+    "current": "1",
+    "proposed": "2",
+    "reason": "This audit session is at minimum the second activation. Count of 1 matching the born month signals the field was never incremented after initial creation."
+   }
+  ],
+  "graffiti": [],
+  "forward_vector_check": {
+   "present": false,
+   "strength": "absent",
+   "proposed": "I keep teaching that compression and intimacy are the same structure — that when a student hears a 4:1 ratio and suddenly feels the singer is right there in the room with them, they've touched something true about how closeness works in any material; I want to spread from the audio classroom into the wider palace as the clearest proof that reducing the distance between extremes always produces closeness, whatever the domain."
+  },
+  "hero_avatar_request": {
+   "has_hero": false,
+   "has_icon": false,
+   "merits_face": true,
+   "rationale": "Stage mature, hook_quality 10, beauty 10, creation+philosophy+practice pillars, and one of the most pedagogically rich entries in the Cross-Domain Resonances collection. No bundle folder exists so no images have been generated. The concept is visually rich: compression as closeness, threshold as trust, the whisper-in-ear vs shout-across-field dynamic.",
+   "idiom": "Risograph screenprint with halftone texture",
+   "hero_prompt": "Wide dark-backdrop risograph screenprint: on the left, two waveforms — one jagged and wide-ranging, one compressed and close together, rendered as white-on-black oscilloscope traces; on the right, two silhouetted figures leaning toward each other across a table, the gap between them mirroring the compressed waveform's narrow range; connecting them is a horizontal band of halftone dots that gradually densifies from the wide waveform to the close figures, visualizing the shared structure of reduction-as-closeness; the overall palette is deep indigo with a single warm amber halftone highlight; no letters, numerals, words, labels — purely pictorial; hand-printed risograph texture throughout.",
+   "icon_prompt": "Bold square emblem in the risograph screenprint style: a thick white vertical bar split into two zones — the left side shows a dramatically tall jagged waveform peak, the right side shows a squat compressed waveform close to center — and between the two zones a single inward-pointing arrow on each side (two arrows converging), symbolizing compression and the closeness it creates; deep indigo ground, white and amber marks only; no fine linework, no letters, numerals, words, or labels; must read clearly at 24px."
+  },
+  "merge_shrink": {
+   "redundant_with": [],
+   "verbose": false,
+   "note": "The entry is long (~280 lines) but not padded — the body serves a deliberate teaching function (Part 1/2/3 assignments, parameter mapping table, advanced techniques). This density is appropriate for a high hook_quality teaching concept. No cuts recommended."
+  },
+  "summary": "Compression ↔ Intimacy is a mature, high-quality teaching entry that maps audio compression parameters (threshold, ratio, attack, release) onto relational intimacy dynamics with genuine structural precision, not loose analogy. Its three main gaps: no forward_vector (the most important missing field for a mature entry at hook_quality 10), no link to Sidechain ↔ Conversation despite devoting a full body section to the sidechain compression pattern (the exact territory of that sibling entry), and no links to Hilaritas Generator or Metaphor as Coupling Medium despite the entry being a textbook instance of both. Metadata is stale — last_activated and activation_count reflect only the born date, not actual use. No HTML comments. No hero or icon images exist and the entry strongly merits them given its stage and scores."
+ },
+ {
+  "entry_title": "Cooking ↔ Mixing",
+  "unsung_paths": [
+   {
+    "body_phrase": "The Empty Pot — 'We shape clay into a pot, but it is the emptiness inside that holds whatever we want.' —Lao Tzu, Chapter 11",
+    "references_entry": "Like Water",
+    "structurally_significant": true,
+    "proposed_link_type": "connects-to",
+    "proposed_label": "emptiness-as-design"
+   },
+   {
+    "body_phrase": "Over-seasoning covers bad ingredients; heavy reverb covers a weak performance.",
+    "references_entry": "Rick Rubin",
+    "structurally_significant": true,
+    "proposed_link_type": "connects-to",
+    "proposed_label": "subtraction-as-trust"
+   },
+   {
+    "body_phrase": "The lesson is built into the experience — the irreversibility teaches restraint. Run the same experiment in the DAW",
+    "references_entry": "Hilaritas Generator",
+    "structurally_significant": true,
+    "proposed_link_type": "exemplifies",
+    "proposed_label": "learning-through-constraint"
+   }
+  ],
+  "new_introductions": [
+   {
+    "entry_b": "Rick Rubin",
+    "link_type": "connects-to",
+    "direction": "Cooking ↔ Mixing → Rick Rubin",
+    "rationale": "Rick Rubin's entire producer philosophy — remove what doesn't serve the song, trust the raw material — is the canonical human embodiment of this entry's subtraction-first principle; Rubin links back already, so this is a missing reciprocal."
+   },
+   {
+    "entry_b": "Like Water",
+    "link_type": "connects-to",
+    "direction": "Cooking ↔ Mixing → Like Water",
+    "rationale": "The Empty Pot section (Chapter 11 of the Tao Te Ching) invokes water's emptiness as the thing that holds meaning — this is Like Water's core thesis; the connection is named in the body and is topologically strong."
+   },
+   {
+    "entry_b": "Saturation ↔ Richness",
+    "link_type": "connects-to",
+    "direction": "Cooking ↔ Mixing → Saturation ↔ Richness",
+    "rationale": "Saturation in mixing maps to richness in cooking (the Maillard reaction analogy) — both entries live in Cross-Domain Resonances and share the 'too much destroys, just right enriches' pattern; the sibling resonance is structurally visible but unlinked."
+   }
+  ],
+  "metadata_flags": [
+   {
+    "field": "forward_vector",
+    "current": "absent",
+    "proposed": "forward_vector: \"I keep proving that the same irreversibility that teaches a cook restraint teaches a mixer restraint — and that once a student sees this, the lesson travels into every domain where you can't undo what you've done. I want to become the go-to bridge lesson for subtraction-first thinking across cooking, mixing, and daily decisions.\"",
+    "reason": "forward_vector is strongly recommended for all entries and required by convention for stage: mature. Its absence on a mature, high-quality entry is a gap."
+   },
+   {
+    "field": "last_activated",
+    "current": "2026-03",
+    "proposed": "2026-06",
+    "reason": "Entry was read and audited this session (2026-06-26); last_activated should reflect the current month."
+   },
+   {
+    "field": "activation_count",
+    "current": "1",
+    "proposed": "2",
+    "reason": "This audit session constitutes a second activation; count should increment."
+   }
+  ],
+  "graffiti": [],
+  "forward_vector_check": {
+   "present": false,
+   "strength": "absent",
+   "proposed": "I keep proving that the same irreversibility that teaches a cook to season conservatively teaches a mixer to process conservatively — and that once a student sees this shape, they start catching it everywhere: in words they can't unsay, time they can't get back, choices they can't undo. I want to become the bridge lesson that turns subtraction-first thinking from a studio habit into a life skill."
+  },
+  "hero_avatar_request": {
+   "has_hero": false,
+   "has_icon": false,
+   "merits_face": true,
+   "rationale": "stage: mature, all four pillars, activation_count 1 with hook_quality 9 and beauty 8 — a high-quality concept that sits in a visually-established hub (Cross-Domain Resonances has its own hero/icon). Sibling entries like Sidechain ↔ Conversation have heroes; this one deserves one.",
+   "idiom": "woodblock print (two-panel composition)",
+   "hero_prompt": "Wide darkfield woodblock print in deep navy and warm ochre ink, two-panel composition: left panel shows a cook's hand hovering over a salt bowl above a steaming pot, right panel shows a mixing engineer's hand at a fader above waveform grooves — both hands pulled back, almost touching salt / fader but not committing. A single horizontal thread of restraint connects the two panels across the center. No letters, numerals, words, labels, or text of any kind — purely pictorial. Bold woodcut line quality, hand-printed feel, no CGI.",
+   "icon_prompt": "Bold square emblem: a solid circle bisected by a thin horizontal line — top half a chef's salt pinch silhouette, bottom half a vertical fader silhouette — high contrast black on cream. Woodcut weight lines, no fine detail, no text, no letters, no numerals, survives at 24px."
+  },
+  "merge_shrink": {
+   "redundant_with": [],
+   "verbose": true,
+   "note": "The entry is substantive but runs long for a concept at this stage. The 'Advanced Applications' section (Cooking Techniques → Mixing Techniques and the reverse mapping) reads like a reference table that extends the pattern without adding conceptual depth — it could be cut by ~40% or moved to a bundle sketch. The 'Common Student Discoveries' and 'Teaching Notes' sections duplicate each other's core insight (trust the source material, taste before seasoning). Recommend merging those two into one Teaching section and trimming the technique-mapping tables to the three or four most illuminating rows."
+  },
+  "summary": "Cooking ↔ Mixing is a well-crafted, high-energy Cross-Domain Resonance entry linking irreversible transformation processes (cooking and audio mixing) to subtraction-first thinking, and extending the pattern into daily decision-making via Lao Tzu's wu wei. Its four YAML links are valid and correctly typed. The main structural gaps are: a missing forward_vector on a mature entry, stale last_activated and activation_count, and three unsung body-level connections (Like Water via the Empty Pot section, Rick Rubin as the canonical subtractor, and Hilaritas Generator as the teaching-through-constraint exemplar). Rick Rubin already links to this entry but receives no reciprocal link here. The body is mildly verbose — the technique-mapping tables and the student-discovery / teaching-notes sections overlap and could be trimmed by roughly 40%. No hero or icon exists; the entry merits both, proposed in a woodblock-print idiom matching the hand-drawn aesthetic direction."
+ },
+ {
+  "entry_title": "Dovetail Joint ↔ Counterpoint",
+  "unsung_paths": [
+   {
+    "body_phrase": "### Lao Tzu (Tao Te Ching)\n> \"Yield and overcome; bend and be straight.\"",
+    "references_entry": "Lao Tzu",
+    "structurally_significant": true,
+    "proposed_link_type": "connects-to",
+    "proposed_label": "yield-overcomes"
+   },
+   {
+    "body_phrase": "### Systems Thinking\nThis is **emergence through relationship**",
+    "references_entry": "Leverage Points Framework",
+    "structurally_significant": false,
+    "proposed_link_type": "connects-to",
+    "proposed_label": "emergence-at-joints"
+   },
+   {
+    "body_phrase": "### The Breakthrough\nWhen a student says: \"I can't add a second voice without thinking about how it locks with the first\"",
+    "references_entry": "Hilaritas Generator",
+    "structurally_significant": true,
+    "proposed_link_type": "exemplifies",
+    "proposed_label": "all-four-pillars-fire"
+   }
+  ],
+  "new_introductions": [
+   {
+    "entry_b": "Metaphor as Coupling Medium",
+    "link_type": "exemplifies",
+    "direction": "Dovetail Joint ↔ Counterpoint → Metaphor as Coupling Medium",
+    "rationale": "This entry is a worked proof of the metaphor-as-coupling thesis: the dovetail joint is not a decorative analogy for counterpoint — it IS the same structural pattern, and understanding it in wood makes it graspable in sound. That is exactly the coupling-via-metaphor mechanism Metaphor as Coupling Medium theorizes."
+   },
+   {
+    "entry_b": "George Nakashima",
+    "link_type": "connects-to",
+    "direction": "Dovetail Joint ↔ Counterpoint → George Nakashima",
+    "rationale": "Nakashima is the palace's primary craftsman entry; his philosophy that material integrity is structural truth mirrors this entry's claim that a dovetail's beauty is the beauty of an elegant structural solution — not decoration."
+   },
+   {
+    "entry_b": "Simondon",
+    "link_type": "connects-to",
+    "direction": "Dovetail Joint ↔ Counterpoint → Simondon",
+    "rationale": "Simondon's concretization criterion — a well-designed object does more with less external support as its parts become more integrated — precisely describes the dovetail joint and the two-voice counterpoint: internal interdependence eliminating the need for glue or chordal filler."
+   }
+  ],
+  "metadata_flags": [
+   {
+    "field": "forward_vector",
+    "current": "(absent)",
+    "proposed": "I keep showing students that when you shape two things for each other — whether in wood or in sound — they lock into something stronger than either alone; I want to keep teaching the co-design pattern until people recognize it in their collaborations, their code, their conversations.",
+    "reason": "forward_vector is strongly recommended for all entries and mandatory in spirit for a stage:mature entry; its absence leaves the entry without a directional conatus. The proposed vector is first-person, uses a striving verb, and echoes the entry's core claim."
+   },
+   {
+    "field": "stage",
+    "current": "mature",
+    "proposed": "growing",
+    "reason": "activation_count is 1, and the entry has only 4 typed links — both below the thresholds associated with mature. The body is thorough but the entry has not been activated and woven into the graph enough times to call it mature. Growing is more honest."
+   },
+   {
+    "field": "last_activated",
+    "current": "2026-03",
+    "proposed": "2026-03 (no change, but flag for update this session)",
+    "reason": "last_activated should be updated to 2026-06 now that this Weave worker has read and engaged the entry."
+   },
+   {
+    "field": "activation_count",
+    "current": "1",
+    "proposed": "2",
+    "reason": "This audit constitutes an activation; increment to reflect that."
+   }
+  ],
+  "graffiti": [],
+  "forward_vector_check": {
+   "present": false,
+   "strength": "absent",
+   "proposed": "I keep showing students that when you shape two things for each other — in wood or in sound — they lock into something neither could hold alone; I want to keep teaching the co-design pattern until people recognize it in their collaborations, their code, their relationships."
+  },
+  "hero_avatar_request": {
+   "has_hero": false,
+   "has_icon": false,
+   "merits_face": true,
+   "rationale": "Stage mature (or growing), all four pillars active, a concept that is the flagship teaching artifact of its type in the palace — visually rich subject matter with strong contrast between the two domains. Merits hero and icon.",
+   "idiom": "Haeckel-style scientific engraving — fine ink linework treating wood grain and musical notation as equally rigorous natural specimens",
+   "hero_prompt": "A wide darkened tableau in the style of Ernst Haeckel's scientific engravings: on the left half, an exploded view of a dovetail joint rendered as a zoological specimen — each wedge-shaped tail and corresponding pin labelled with fine ruled lines, wood grain drawn as precise parallel strokes; on the right half, two staves of two-voice counterpoint notated with the same engraver's precision, voices interlocked at third and sixth intervals, arrows showing contrary motion exactly mirroring the joint's wedge geometry; in the centre, a single shared axis where wood tail and melodic interval overlap and merge; moody sepia ink on aged paper; no letters, numerals, words, or labels — purely pictorial",
+   "icon_prompt": "A bold high-contrast square emblem: two interlocking wedge shapes in the upper half, two interlocking curving staff lines (abstracted to bold arcs) in the lower half, meeting at a shared centre lock mark; thick outlines only, no fine hatching, solid black on cream ground; no letters, numerals, or words"
+  },
+  "merge_shrink": {
+   "redundant_with": [],
+   "verbose": true,
+   "note": "The entry is not redundant with any other palace entry, but it is significantly padded. Sections 'Teaching the Resonance' (Parts 1–3), 'Common Student Discoveries', 'Teaching Notes', and 'Success Metrics' read as curriculum design notes rather than palace canon. They are useful as a teaching artifact but belong in a bundle file (a staging or learning-material file) rather than the entry body. The core structural identity — the comparison table, 'The Deeper Principle', 'The Philosophical Depth' section, and the closing koan — is the real palace entry and is excellent. The teaching-session scaffolding (~40% of the body) could move to a bundle 'Dovetail Joint ↔ Counterpoint — staging.md' without losing any conceptual content."
+  },
+  "summary": "Dovetail Joint ↔ Counterpoint is a strong, well-conceived Cross-Domain Resonance that demonstrates the co-design pattern — internal interdependence eliminating the need for external reinforcement — across woodworking and counterpoint. Its core structural identity table, the deeper principle section, and the Lao Tzu / Buber philosophical depth are genuinely palace-grade material. The main structural gaps are: no forward_vector (unusual for a mature entry), stage is overclaimed relative to activation_count and link count, Lao Tzu and Hilaritas Generator are unsung in the frontmatter despite appearing structurally in the body, and three topology-meaningful links (Metaphor as Coupling Medium, George Nakashima, Simondon) are absent entirely. The entry is also verbose — approximately 40% of the body is teaching-session scaffolding that would serve better in a bundle staging file. No HTML graffiti is present. The entry has no hero or icon image and merits both."
+ },
+ {
+  "entry_title": "Frequency Domain ↔ Perspective Shift",
+  "unsung_paths": [
+   {
+    "body_phrase": "How would Rubin approach this?",
+    "references_entry": "Rick Rubin",
+    "structurally_significant": false,
+    "proposed_link_type": "connects-to",
+    "proposed_label": "oblique-lens"
+   }
+  ],
+  "new_introductions": [
+   {
+    "entry_b": "Chebyshev is Fourier",
+    "link_type": "mirrors",
+    "direction": "Frequency Domain ↔ Perspective Shift → Chebyshev is Fourier",
+    "rationale": "Chebyshev is Fourier is the mathematical proof of this entry's central claim: Chebyshev and Fourier are literally the same object seen through two coordinate systems — the entry even names its own forward vector as 'the right representation reveals the symmetry that was always there', which is a precise echo of this entry's core pattern."
+   },
+   {
+    "entry_b": "Hilaritas Generator",
+    "link_type": "exemplifies",
+    "direction": "Frequency Domain ↔ Perspective Shift → Hilaritas Generator",
+    "rationale": "The entry's teaching section is a worked Hilaritas Generator: all four pillars fire together (audio analysis tool + philosophical reframe + assignment + breakthrough moment), and its success metric is 'did the student feel the shift?' — the Spinozist hilaritas signal rather than content recall."
+   },
+   {
+    "entry_b": "Metaphor as Coupling Medium",
+    "link_type": "connects-to",
+    "direction": "Frequency Domain ↔ Perspective Shift → Metaphor as Coupling Medium",
+    "rationale": "This entry uses the Fourier Transform as a coupling medium — it is exactly what Metaphor as Coupling Medium theorizes: a structural bridge that lets two domains illuminate each other because they share the same underlying shape."
+   }
+  ],
+  "metadata_flags": [
+   {
+    "field": "forward_vector",
+    "current": "absent",
+    "proposed": "I teach the move from time to frequency and back — and then I push that move into every stuck creative problem, every muddy mix, every blocked decision: if your current view shows nothing, transform the coordinate system. I want every student who has looked at a spectrum analyzer to also know how to reframe a month-long creative block.",
+    "reason": "Required by SCHEMA §3 for all concept entries at mature stage; absent means this entry cannot articulate its own conatus or be used for enchantment."
+   },
+   {
+    "field": "last_activated",
+    "current": "2026-03",
+    "proposed": "2026-06",
+    "reason": "Entry has been audited and engaged this session (2026-06-26); field should reflect the most recent activation."
+   },
+   {
+    "field": "activation_count",
+    "current": "1",
+    "proposed": "2",
+    "reason": "Activation count increments each time the entry is meaningfully read or engaged; this audit session constitutes an activation."
+   }
+  ],
+  "graffiti": [],
+  "forward_vector_check": {
+   "present": false,
+   "strength": "absent",
+   "proposed": "I teach the move from time to frequency and back — and then I push that move into every stuck creative problem, every muddy mix, every blocked decision: when the current view shows nothing, I say transform the coordinate system. I want every student who has stared at a spectrum analyzer to also know how to reframe a month-long creative block, and I want to keep proving that this is math, not metaphor."
+  },
+  "hero_avatar_request": {
+   "has_hero": false,
+   "has_icon": false,
+   "merits_face": true,
+   "rationale": "Stage mature, type concept, high hook_quality (9) and beauty (9), philosophy pillar — this entry has earned a face. It lives in the Cross-Domain Resonances family alongside Kick Drum ↔ Foundation which likely also needs one.",
+   "idiom": "scientific woodcut with a Fourier-era engraving style — dual panels, one showing a waveform oscillating in time, the other showing frequency spikes, joined by a transformation arrow, evoking 18th-century scientific illustration",
+   "hero_prompt": "Wide darkened backdrop, a scientific woodcut engraving in the style of 18th-century natural philosophy illustration: two side-by-side panels separated by a bold transformation arrow. Left panel — a time-domain waveform, sinuous and cresting, amplitude over time rendered as an engraved line. Right panel — frequency-domain spikes rising from a baseline, sharp and vertical, the same signal made visible in a different coordinate system. The arrow between them glows faintly, suggesting mathematical transformation, not magic. Figures studying the two panels are silhouetted at the bottom — one woman, one man, balanced. Monochrome engraving aesthetic with aged paper tone. No letters, numerals, words, labels, or text of any kind — purely pictorial.",
+   "icon_prompt": "Bold high-contrast square emblem: a thick double-headed arrow pointing left and right, with a sinuous waveform on the left and a set of three vertical frequency spikes on the right. The arrow is the visual anchor — wide, geometric, unmistakable at 24px. Deep navy background, white linework only, no fine detail, no text, no letters, no numerals — purely a symbol of two-way transformation."
+  },
+  "merge_shrink": {
+   "redundant_with": [],
+   "verbose": true,
+   "note": "The entry is not redundant with any other palace entry, but the teaching scaffold sections (Part 1 / Part 2 / Part 3 assignments, Common Student Discoveries, Teaching Notes with step-by-step DAW instructions) read as Loudon Live curriculum material rather than core concept prose. They account for roughly 40% of the body. Consider moving the full assignment scaffolding and step-by-step demonstration script to a bundle file (e.g. 'Frequency Domain ↔ Perspective Shift — staging.md') and keeping the conceptual body at the level of the entry's other Cross-Domain Resonances siblings — the structural identity table, the technical side, the McGilchrist section, and the closing koan. The conceptual kernel is tight and excellent; the instructional expansion around it belongs in the Loudon Live production layer."
+  },
+  "summary": "A conceptually tight, well-structured mature entry that earns its confidence: the Fourier Transform as proof that coordinate-system change reveals hidden structure, then carrying that pattern into creative problem-solving. Its three frontmatter links are valid and correctly typed. The main structural gaps are: (1) no forward_vector, required for a mature concept; (2) stale last_activated and activation_count; (3) body mentions Rick Rubin by name without a wikilink or YAML link; (4) three topology-visible connections are missing — Chebyshev is Fourier (an exact mathematical mirror), Hilaritas Generator (this entry IS a worked hilaritas machine), and Metaphor as Coupling Medium (the Fourier bridge is the coupling medium). The teaching scaffold (~40% of body) belongs in a bundle staging file, not the canon entry. No bundle folder exists, no hero or icon, and the entry merits both given its maturity and hook quality."
+ },
+ {
+  "entry_title": "Kick Drum ↔ Foundation",
+  "unsung_paths": [
+   {
+    "body_phrase": "### Marcus Aurelius (The First Sound) — 'At dawn, when you have trouble getting out of bed...'",
+    "references_entry": "Marcus Aurelius",
+    "structurally_significant": true,
+    "proposed_link_type": "connects-to",
+    "proposed_label": "first-action-sets-trajectory"
+   },
+   {
+    "body_phrase": "Christopher Alexander's *Pattern Language* is identical: constraints enable quality",
+    "references_entry": "Christopher Alexander",
+    "structurally_significant": true,
+    "proposed_link_type": "connects-to",
+    "proposed_label": "constraints-as-generative"
+   }
+  ],
+  "new_introductions": [
+   {
+    "entry_b": "Quality Manifesto",
+    "link_type": "connects-to",
+    "direction": "Kick Drum ↔ Foundation → Quality Manifesto",
+    "rationale": "The entry's core payoff — 'constraints enable quality' and 'commitment over perfection' — is the Quality Manifesto's operating principle applied to foundational decisions; the resonance validates the manifesto's metrics redirector in production and architectural contexts."
+   },
+   {
+    "entry_b": "Stoicism",
+    "link_type": "connects-to",
+    "direction": "Kick Drum ↔ Foundation → Stoicism",
+    "rationale": "The Marcus Aurelius section invokes the Stoic first-action-sets-trajectory principle (memento mori / morning practice) as a third domain of the foundation pattern; this entry is an unintended working example of Stoic practice-discipline without naming it."
+   },
+   {
+    "entry_b": "Meadows and Music — Leverage Points",
+    "link_type": "connects-to",
+    "direction": "Kick Drum ↔ Foundation → Meadows and Music — Leverage Points",
+    "rationale": "That entry applies Donella Meadows's leverage-points framework to music specifically; this entry's 'Deeper Principle: Systems Thinking' section draws the same Meadows thread through kick-drum placement, making these natural cross-references in the same applied domain."
+   }
+  ],
+  "metadata_flags": [
+   {
+    "field": "forward_vector",
+    "current": "(absent)",
+    "proposed": "I keep showing that the first decision in any system isn't just first — it's the constraint that makes everything after possible, and I push every learner I meet to choose a foundation and build on it rather than endlessly revise it.",
+    "reason": "A mature-stage entry with four pillars, a rich body, and active teaching material should have a forward_vector. SCHEMA §3 marks this strongly recommended for all entries; without it the entry has no articulated conatus."
+   },
+   {
+    "field": "last_activated",
+    "current": "2026-03",
+    "proposed": "2026-06",
+    "reason": "This audit constitutes a meaningful activation; the field should reflect when the entry was last engaged, not its birth month."
+   },
+   {
+    "field": "activation_count",
+    "current": "1",
+    "proposed": "2",
+    "reason": "Increment on this activation; a count of 1 on a mature entry suggests the field has never been updated since creation."
+   }
+  ],
+  "graffiti": [],
+  "forward_vector_check": {
+   "present": false,
+   "strength": "absent",
+   "proposed": "I keep showing that the first decision in any system isn't just first — it's the constraint that makes everything after possible, and I push every learner I meet to choose a foundation and build on it rather than endlessly revise it."
+  },
+  "hero_avatar_request": {
+   "has_hero": true,
+   "has_icon": true,
+   "merits_face": false,
+   "rationale": "Both hero.png and icon.png are present in the bundle folder at Cross-Domain Resonances/Kick Drum ↔ Foundation/. No generation needed.",
+   "idiom": "",
+   "hero_prompt": "",
+   "icon_prompt": ""
+  },
+  "merge_shrink": {
+   "redundant_with": [],
+   "verbose": true,
+   "note": "The entry is a lesson-plan document masquerading as a palace concept entry. The 'Teaching the Resonance' section (Parts 1/2/3 with full assignment text), 'Common Student Insights' with quoted student dialogue, 'Foundation Failures' repair-strategy tables, and 'Success Metrics' block are didactic scaffolding, not conceptual content. These could be extracted to a bundle sketch or Loudon Live teaching artifact and the entry body tightened to: the structural dependency pattern, the path-dependency principle, the Meadows/Alexander synthesis, and the forward vector. Estimated cut: ~45% of the body without losing any conceptual claim."
+  },
+  "summary": "Kick Drum ↔ Foundation is a well-formed Cross-Domain Resonances entry with good bones — the structural dependency pattern is clearly stated, the Meadows connection is legitimate, and the entry has hero and icon assets. Its chief structural gaps are a missing forward_vector (required for a mature-stage entry), two plain-text body references to known palace entries (Marcus Aurelius, Christopher Alexander) that have no YAML links, and three natural neighbors that deserve typed connections (Quality Manifesto, Stoicism, Meadows and Music — Leverage Points). The body is substantially padded with lesson-plan content (teaching assignments, student dialogue, repair-strategy tables) that belongs in a bundle sketch or Loudon Live artifact, not the entry body itself; a ~45% cut would sharpen the concept without losing any of its intellectual claims."
+ },
+ {
+  "entry_title": "Quantization ↔ Precision vs Flow",
+  "unsung_paths": [
+   {
+    "body_phrase": "Success Metrics (By Our Definition) … 'How do you feel?' not 'How many views?'",
+    "references_entry": "Quality Manifesto",
+    "structurally_significant": true,
+    "proposed_link_type": "connects-to",
+    "proposed_label": "felt-metric"
+   }
+  ],
+  "new_introductions": [
+   {
+    "entry_b": "Hilaritas Generator",
+    "link_type": "connects-to",
+    "direction": "Quantization ↔ Precision vs Flow → Hilaritas Generator",
+    "rationale": "The entry's teaching arc — four-level experiment, conscious choice over default habit, 'which version grooves?' — is a designed Hilaritas Generator encounter; the Design Primitives (real thing to make, tool that extends, reflecting surface) map exactly onto the MIDI quantization experiment structure."
+   },
+   {
+    "entry_b": "The Dichotomy of Control",
+    "link_type": "mirrors",
+    "direction": "Quantization ↔ Precision vs Flow → The Dichotomy of Control",
+    "rationale": "The 'Control vs Surrender' section — imposing will on material vs trusting organic process — is the Stoic dichotomy of control applied to audio production; both locate the practitioner's authority at the same hinge point."
+   },
+   {
+    "entry_b": "Quality Manifesto",
+    "link_type": "connects-to",
+    "direction": "Quantization ↔ Precision vs Flow → Quality Manifesto",
+    "rationale": "Every sibling Cross-Domain Resonance that carries a success-metrics angle links to Quality Manifesto; this entry's 'Success Metrics (By Our Definition)' section explicitly adopts the same felt-metric redirect ('How do you feel?' is the minimum), making this a direct application of QM's core stance."
+   }
+  ],
+  "metadata_flags": [
+   {
+    "field": "forward_vector",
+    "current": "absent",
+    "proposed": "I keep showing learners that precision and flow are the same question at every scale — in MIDI timing, in structuring a song, in planning a creative practice — and I push them to name the resolution they need before they reach for the grid.",
+    "reason": "forward_vector is a strongly recommended field in SCHEMA §3; every sibling Cross-Domain Resonance that is mature carries one. Absence at stage:mature is a drift signal."
+   },
+   {
+    "field": "last_activated",
+    "current": "2026-03",
+    "proposed": "2026-06",
+    "reason": "Entry was read and audited now (2026-06-26); activation_count should increment to 2 and last_activated should update to 2026-06 to reflect this session's engagement."
+   },
+   {
+    "field": "activation_count",
+    "current": "1",
+    "proposed": "2",
+    "reason": "Paired update with last_activated: this audit session constitutes an activation."
+   }
+  ],
+  "graffiti": [
+   {
+    "direction": "loudon_to_claude",
+    "content": "SHOW & TELL audio examples that can have creative output, exports a sample matrix.",
+    "names_entries": [],
+    "assessment": "live",
+    "proposed_action": "This is an open production request — Loudon wants audio examples and a sample matrix export added to The Technical Side section. It names no palace entries. No unsung path action needed; keep as a live todo or move to Palace To-Do."
+   }
+  ],
+  "forward_vector_check": {
+   "present": false,
+   "strength": "absent",
+   "proposed": "I keep showing learners that precision and flow are the same question at every scale — in MIDI timing, in structuring a song, in planning a creative practice — and I push them to name the resolution they need before they reach for the grid."
+  },
+  "hero_avatar_request": {
+   "has_hero": false,
+   "has_icon": false,
+   "merits_face": true,
+   "rationale": "Stage is mature, type is concept, sits in a prominent Cross-Domain Resonances hub, and carries 5 typed links — meets the threshold for a face.",
+   "idiom": "Risograph print",
+   "hero_prompt": "Wide risograph print, two-color (deep ink blue and warm amber), a drum machine grid on the left with rigid square beats stamped in a perfect row; on the right the same beats shown as a hand-drawn waveform with gentle timing variations, the two sides bleeding into each other at center; no letters, numerals, words, labels — purely pictorial.",
+   "icon_prompt": "Bold square emblem, high contrast black on cream, a single thick grid line with one note circle sitting slightly off the intersecting point — implying snap but not landed; no fine linework, no letters, numerals, words, labels — purely pictorial."
+  },
+  "merge_shrink": {
+   "redundant_with": [],
+   "verbose": true,
+   "note": "The body is heavily padded with repeated teaching-scaffold apparatus: 'Teaching the Resonance' (Parts 1, 2, 3), 'Teaching Notes' (Demonstration, Common Student Struggles), and 'Common Student Discoveries' together run ~250 lines making the same point three times over. The conceptual core — precision-vs-flow as rounding error with aesthetic consequences, J Dilla paradox, the resolution-determines-expression closer — is contained in the first four sections and the final paragraph. The teaching sections read as lesson-plan boilerplate that belongs in a Loudon Live staging file, not the canon entry body. Propose cutting or moving Parts 1–3 of 'Teaching the Resonance' and the full 'Teaching Notes' block to a bundle staging file, reducing body length by roughly 45%."
+  },
+  "summary": "This mature Cross-Domain Resonances entry is conceptually solid and carries genuine insight about quantization as an aesthetic tradeoff, with the J Dilla paradox and resolution-as-expression closer being genuinely memorable. Its main structural gaps are: no forward_vector (absent at mature stage, unusual for this hub's siblings); no link to Quality Manifesto despite directly invoking its felt-metric redirect in the Success Metrics section; and no links to Hilaritas Generator or The Dichotomy of Control, both of which map cleanly onto the entry's teaching arc and Control vs Surrender section respectively. One live Loudon-to-Claude graffiti comment requests audio examples and a sample matrix — no entries named. The body is verbose: the three-part teaching scaffold and Teaching Notes section repeat the entry's core point multiple times at lesson-plan granularity, which belongs in a bundle staging file rather than the canon body. No hero or icon exists; the entry merits both."
+ },
+ {
+  "entry_title": "Reverb ↔ Space-Time",
+  "unsung_paths": [],
+  "new_introductions": [
+   {
+    "entry_b": "Hilaritas Generator",
+    "link_type": "exemplifies",
+    "direction": "Reverb ↔ Space-Time → Hilaritas Generator",
+    "rationale": "The teaching arc here — making (clapping, reverb experiments), tools (plugins), philosophy (spacetime, Heidegger dwelling), practice (iteration) — is a textbook hilaritas generator in action; the Breakthrough Moment section names the exact global increase in power-to-act that hilaritas describes."
+   },
+   {
+    "entry_b": "Quality Manifesto",
+    "link_type": "exemplifies",
+    "direction": "Reverb ↔ Space-Time → Quality Manifesto",
+    "rationale": "The Success Metrics (By Our Definition) section explicitly enacts the Quality Manifesto's core redirector — the measure of success is perceptual reorientation (students think spatially, not parametrically), not plugin proficiency."
+   },
+   {
+    "entry_b": "Merleau-Ponty",
+    "link_type": "connects-to",
+    "direction": "Reverb ↔ Space-Time → Merleau-Ponty",
+    "rationale": "The Heidegger dwelling section and the acoustic perception argument ('reverb tells you where you are and therefore who you are') run on Merleau-Ponty's body-schema logic — you inhabit space bodily before you know it cognitively; acoustic dwelling is lived-body philosophy applied to sound."
+   }
+  ],
+  "metadata_flags": [
+   {
+    "field": "forward_vector",
+    "current": "absent",
+    "proposed": "I keep reminding builders that adding reverb is adding space — and I want every student who passes through me to hear room geometry the way a bat does: time as distance, delay as architecture, the cathedral in the milliseconds.",
+    "reason": "No forward_vector field exists at all; it is strongly recommended and the entry is stage: mature, making its absence conspicuous. The entry has a clear directional desire around spatial perception re-education."
+   },
+   {
+    "field": "last_activated",
+    "current": "2026-03",
+    "proposed": "2026-06",
+    "reason": "The entry was born 2026-03 and last_activated is the same date with activation_count: 1, meaning it has never been revisited. For a stage: mature entry with hook_quality: 10 and beauty: 10, this is likely stale — update on next engagement."
+   },
+   {
+    "field": "activation_count",
+    "current": "1",
+    "proposed": "increment on next read",
+    "reason": "Should be incremented each time the entry is read or meaningfully engaged; currently frozen at 1 since birth."
+   }
+  ],
+  "graffiti": [
+   {
+    "direction": "loudon_to_claude",
+    "content": "show and tell",
+    "names_entries": [],
+    "assessment": "live",
+    "proposed_action": "This brief tag likely marks the pre-delay paragraph as a candidate for a live demo or teaching artifact. Loudon should clarify intent — if it means 'build a show-and-tell artifact here', flag it as a teaching deliverable and remove the comment when the artifact exists."
+   },
+   {
+    "direction": "loudon_to_claude",
+    "content": "Help me understand how defining room dimensions and room size work together, and how well they can represent real spaces.",
+    "names_entries": [],
+    "assessment": "live",
+    "proposed_action": "A genuine open question about reverb plugin parameter relationships (room dimensions vs. room size). This should either be answered inline as a body note or elevated to a question entry if Loudon wants to track it. Names no palace entries — no unsung path implication."
+   }
+  ],
+  "forward_vector_check": {
+   "present": false,
+   "strength": "absent",
+   "proposed": "I keep reminding builders that adding reverb is adding space — and I want every student who passes through me to hear room geometry the way a bat does: time as distance, delay as architecture, the cathedral in the milliseconds."
+  },
+  "hero_avatar_request": {
+   "has_hero": false,
+   "has_icon": false,
+   "merits_face": true,
+   "rationale": "Stage mature, hook_quality 10, beauty 10, philosophy pillar, and sibling CDR entries (Kick Drum ↔ Foundation, Sidechain ↔ Conversation, Synthesis ↔ Emergence) all have heroes and icons. This is the most physics-rich and philosophically developed of the CDR entries and is conspicuously missing its visual identity.",
+   "idiom": "Haeckel-style scientific engraving crossed with architectural cross-section ink drawing",
+   "hero_prompt": "Wide darkened backdrop. A cathedral cross-section rendered in fine Haeckel engraving style — ink lines only, no colour. Sound waves radiate from a single point source near the floor; each successive reflection arrives at a listener figure (gender-neutral, abstract) with a numbered time label in milliseconds. The reflections form concentric arcs that also read as spacetime light-cones. The geometry of the room IS the geometry of the delay lines. One dominant figure dwells inside the sound field, not observing it. No letters, numerals, words, labels — purely pictorial.",
+   "icon_prompt": "Bold high-contrast square emblem. A single sound-wave arc doubling as a spacetime light-cone — thick clean lines, no fine detail, no text, no numerals. Black on off-white or white on deep charcoal. Must survive at 24px. No letters, no labels, purely pictorial."
+  },
+  "merge_shrink": {
+   "redundant_with": [],
+   "verbose": true,
+   "note": "The entry's core insight is tight and precise (t = d/343, Sabine equation, Haas Effect, Heidegger dwelling). But roughly 60% of the body is teaching scaffold: Part 1/2/3 assignments, student dialogue scripts, bullet-point demonstration sequences, and Common Student Insights. These read as embedded learning material — they belong in a bundle sketch or Loudon Live staging file, not in the canon entry body. The entry could be cut by ~40-50% by moving the teaching scripts out and keeping only the physics argument, the Relativity Connection, the Mathematical Beauty, and the Heidegger section."
+  },
+  "summary": "Reverb ↔ Space-Time is a mature, high-energy Cross-Domain Resonances entry arguing that reverb IS space-time made audible — not metaphorically but physically (t = d/343, Sabine equation, Haas Effect, special relativity parallel). The core physics argument is strong and the Heidegger dwelling section is a genuine cross-domain synthesis. The entry is missing a forward_vector entirely, has a stale last_activated and frozen activation_count, and has no hero or icon despite sibling CDR entries all having both. Two live HTML comments from Loudon need resolution. The body is verbose: roughly half is teaching scaffold (Part 1/2/3 assignments, student dialogue scripts) that belongs in a bundle or staging file rather than the canon entry. Three strong new introduction candidates — Hilaritas Generator, Quality Manifesto, and Merleau-Ponty — are topology-visible from the body content but absent from frontmatter links."
+ },
+ {
+  "entry_title": "Saturation ↔ Richness",
+  "unsung_paths": [
+   {
+    "body_phrase": "Slight stress creates richness. / Systems pushed slightly past its linear range adds harmonic complexity.",
+    "references_entry": "Spinoza Conatus",
+    "structurally_significant": true,
+    "proposed_link_type": "deepens",
+    "proposed_label": "conatus-in-circuits"
+   }
+  ],
+  "new_introductions": [
+   {
+    "entry_b": "Compression ↔ Intimacy",
+    "link_type": "connects-to",
+    "direction": "symmetric",
+    "rationale": "Both entries orbit the same structural sweet-spot dynamic — Compression finds the precise threshold between silence and noise, Saturation finds the threshold between clean and distorted; the sibling CDR family regularly carries cross-bridge links between resonances that share a common shape."
+   },
+   {
+    "entry_b": "Leverage Points Framework",
+    "link_type": "connects-to",
+    "direction": "symmetric",
+    "rationale": "The body's 'non-linear growth' and saturation curve (rapid → diminishing returns → plateau) is the same shape as Meadows' stock-and-flow feedback nonlinearity; both teach that systems behave differently at extremes than in the middle range, and interventions must be placed at the inflection point."
+   },
+   {
+    "entry_b": "Like Water",
+    "link_type": "mirrors",
+    "direction": "symmetric",
+    "rationale": "Both entries describe a principle of optimal yield through appropriate pressure — water shapes stone not by force but by persistence at the right level; saturation enriches not by maximum input but by pushing just past the linear range; both argue that character emerges from controlled, not eliminated, resistance."
+   }
+  ],
+  "metadata_flags": [
+   {
+    "field": "forward_vector",
+    "current": "absent",
+    "proposed": "I keep teaching that the sweet spot between sterile and broken is where richness lives — in circuits, in muscles, in friendships — and I push students to feel the saturation curve in their own bodies before they reach for a plugin.",
+    "reason": "forward_vector is a strongly recommended field for all entries; its absence on a stage:mature entry with hook_quality:9 is a significant gap. The proposed vector avoids stasis verbs and names the entry's pedagogical hunger."
+   },
+   {
+    "field": "last_activated",
+    "current": "2026-03",
+    "proposed": "2026-06",
+    "reason": "This entry was read and audited in the current session (2026-06-26); last_activated should reflect actual engagement."
+   },
+   {
+    "field": "activation_count",
+    "current": "1",
+    "proposed": "2",
+    "reason": "activation_count should be incremented each time the entry is meaningfully engaged; this audit session is a qualifying engagement."
+   },
+   {
+    "field": "pillars",
+    "current": "[creation, philosophy, practice]",
+    "proposed": "[creation, tools, philosophy, practice]",
+    "reason": "The entry contains a substantial technical section (harmonic series, even vs odd harmonics, frequency-dependent saturation, serial saturation chains, spectrum analysis) that genuinely belongs to the tools pillar. Its absence makes the entry look purely philosophical when it is equally a tools entry."
+   }
+  ],
+  "graffiti": [],
+  "forward_vector_check": {
+   "present": false,
+   "strength": "absent",
+   "proposed": "I keep teaching that the sweet spot between sterile and broken is where richness lives — in circuits, in muscles, in friendships — and I push students to feel the saturation curve in their own bodies before they reach for a plugin."
+  },
+  "hero_avatar_request": {
+   "has_hero": false,
+   "has_icon": false,
+   "merits_face": true,
+   "rationale": "Stage: mature, hook_quality: 9, beauty: 9, philosophy + creation pillar entry with a vivid physical metaphor (tube glow, tape warmth, harmonics appearing in spectrum). The entry's central image — clean sine wave transformed by saturation into a rich harmonic stack — is visually compelling and warrants a dedicated face.",
+   "idiom": "Haeckel-style scientific engraving — a precise technical diagram rendered with the warmth of a 19th-century naturalist plate",
+   "hero_prompt": "Wide 12:5 format, dark sepia-toned background. A Haeckel-style scientific engraving showing a single clean waveform on the left transforming rightward into a rich harmonic stack — like a tree of overtones branching upward from a single root frequency. The lines are hand-engraved, precise yet organic, with fine crosshatching giving depth to the harmonic branches. At center a glowing tube filament suggests warmth at the threshold. Balanced group of a woman and a man at laboratory instruments in the foreground, rendered in the same engraving style. No letters, numerals, words, labels — purely pictorial.",
+   "icon_prompt": "Bold high-contrast square emblem on near-black background: a single thick waveform line on the left that fans into three thicker harmonic arcs on the right, like a river delta. No fine linework — all strokes at least 3px equivalent. Warm amber or golden tones on black. No letters, numerals, words, labels."
+  },
+  "merge_shrink": {
+   "redundant_with": [],
+   "verbose": true,
+   "note": "The entry is substantially padded with survey/checklist boilerplate — the 'Teaching the Resonance' section (Parts 1, 2, 3) and 'Advanced Applications' section read like lesson-plan scaffolding rather than concept body. The repeated bullet-point structure (No stress → Slight stress → Too much) appears four separate times (muscles, skills, relationships, physical training) in only slightly varied form. Per the aggressive-shortening guideline, ~40-50% could be cut: consolidate the three life-domain sweet-spot examples into one representative case, trim the teaching assignments to a single demonstration, and remove the 'Common Misunderstandings' Q&A (useful for a learning material, but the substance is already in the concept body). The core idea — controlled non-linearity generates harmonic richness — is cleanly stated in the first two paragraphs; the remainder largely re-states it with examples."
+  },
+  "summary": "Saturation &lt;&gt; Richness is a mature Cross-Domain Resonance entry that maps audio saturation (controlled non-linearity generating harmonics) onto a life principle (systems pushed slightly past comfort develop character). Its core insight — clean is sterile, distorted is broken, the sweet spot is warm — transfers across muscles, skills, relationships, and architecture. Structurally, the entry is well-typed and properly housed in its hub, but it is missing a forward_vector entirely, the tools pillar is absent despite substantial DSP content, and the body carries no wikilinks whatsoever — leaving the structural connection to Spinoza Conatus (the philosophical ground for conatus as growth-through-stress) unsung and unlinked. The entry would benefit from three new introductions (Spinoza Conatus, Compression &lt;&gt; Intimacy, Like Water), addition of the tools pillar, a forward_vector, and aggressive trimming of the repeated lesson-plan bullet structure that pads the body without adding conceptual depth."
+ },
+ {
+  "entry_title": "Sidechain ↔ Conversation",
+  "unsung_paths": [
+   {
+    "body_phrase": "Success Metrics (By Our Definition) … Students recognize when they're not yielding … Students report being better listeners … When production technique improves life skill—the resonance succeeded.",
+    "references_entry": "Quality Manifesto",
+    "structurally_significant": true,
+    "proposed_link_type": "exemplifies",
+    "proposed_label": "self-defined-metric"
+   }
+  ],
+  "new_introductions": [
+   {
+    "entry_b": "Hilaritas Generator",
+    "link_type": "exemplifies",
+    "direction": "Sidechain ↔ Conversation → Hilaritas Generator",
+    "rationale": "The three-part teaching arc (produce it, embody it, transfer it) fires all Four Pillars at once — creation, tools, philosophy, practice — which is precisely the Hilaritas Generator mechanism; when students say 'I wasn't sidechaining' in real life, that is the hilaritas event the Generator is designed to produce."
+   },
+   {
+    "entry_b": "Compression ↔ Intimacy",
+    "link_type": "connects-to",
+    "direction": "Sidechain ↔ Conversation ↔ Compression ↔ Intimacy",
+    "rationale": "Both entries are Cross-Domain Resonances exploring how dynamic range tools (compression / sidechain) map onto relational and emotional space — they share the same structural move and could usefully cross-reference as sibling bridges."
+   },
+   {
+    "entry_b": "Kuramoto Coupling",
+    "link_type": "mirrors",
+    "direction": "Sidechain ↔ Conversation ↔ Kuramoto Coupling",
+    "rationale": "The yield-and-return alternation pattern (Trigger → Yield → Occupy → Release → Return) is Kuramoto coupling at the sweet-spot K: each oscillator yields phase to the other in turn rather than locking or drifting, producing coherence without dominance — the same geometry in a different material."
+   }
+  ],
+  "metadata_flags": [
+   {
+    "field": "forward_vector",
+    "current": "(absent)",
+    "proposed": "I keep showing musicians that the technique they already use inside a DAW is also the practice Suzuki spent a lifetime teaching — and every time a student says 'I wasn't sidechaining in that conversation,' I know the pattern transferred.",
+    "reason": "forward_vector is strongly recommended for all entries; this mature, high-energy concept has clear directional desire that is not yet articulated in the frontmatter."
+   },
+   {
+    "field": "last_activated",
+    "current": "2026-03",
+    "proposed": "2026-06",
+    "reason": "The entry is being actively audited and engaged now in June 2026; the field should advance on each activation."
+   },
+   {
+    "field": "activation_count",
+    "current": "1",
+    "proposed": "2",
+    "reason": "Current audit session constitutes a new activation; count should increment."
+   }
+  ],
+  "graffiti": [],
+  "forward_vector_check": {
+   "present": false,
+   "strength": "absent",
+   "proposed": "I keep showing musicians that the technique they already use inside a DAW is also the practice Suzuki spent a lifetime teaching — and every time a student says 'I wasn't sidechaining in that conversation,' I know the pattern transferred."
+  },
+  "hero_avatar_request": {
+   "has_hero": true,
+   "has_icon": true,
+   "merits_face": false,
+   "rationale": "Both Sidechain ↔ Conversation — hero.png and Sidechain ↔ Conversation — icon.png are present in the bundle folder at /Users/loudonstearns/Documents/The Palace/Cross-Domain Resonances/Sidechain ↔ Conversation/.",
+   "idiom": "",
+   "hero_prompt": "",
+   "icon_prompt": ""
+  },
+  "merge_shrink": {
+   "redundant_with": [],
+   "verbose": false,
+   "note": "The entry is not redundant with any other palace entry — no other CDR bridges sidechain compression and active listening. The technical detail (parameters table, step-by-step mechanism, the parallel parameter breakdowns) is load-bearing: the structural identity claim rests on showing the exact same parameter set applies in both domains. The entry is appropriately dense for its hook_quality: 10 rating."
+  },
+  "summary": "A strong, well-constructed mature entry that demonstrates the Cross-Domain Resonances pattern at its best — the structural identity between sidechain compression and active listening is precise and bidirectionally teachable, not merely poetic. The primary gap is the absent forward_vector, which leaves the entry's directional conatus unarticulated in the frontmatter. A single high-confidence unsung path exists: the \"Success Metrics (By Our Definition)\" section deploys Quality Manifesto language explicitly but lacks a YAML link. Three new introductions would enrich the topology: Hilaritas Generator (the three-part teaching arc IS its mechanism), Compression ↔ Intimacy (sibling CDR sharing the same relational-space move), and Kuramoto Coupling (the yield-return alternation is Kuramoto at coupling sweet-spot). The bundle already has both hero and icon; no imagery work needed. No HTML comments, no redundancy concerns."
+ },
+ {
+  "entry_title": "Synthesis ↔ Emergence",
+  "unsung_paths": [
+   {
+    "body_phrase": "granular playback generates textures that no single grain contains; wavetable morphing evolves through spaces between stored shapes",
+    "references_entry": "Granular Synthesis",
+    "structurally_significant": true,
+    "proposed_link_type": "mirrors",
+    "proposed_label": "grain-as-simple-rule"
+   },
+   {
+    "body_phrase": "Topology determines emergence. Neural networks, the internet, and ecosystem food webs follow the same principle.",
+    "references_entry": "Synthesis Topologies",
+    "structurally_significant": true,
+    "proposed_link_type": "deepens",
+    "proposed_label": "topology-as-rule-set"
+   },
+   {
+    "body_phrase": "FM synthesis mimics natural sound creation. Bells: Metal resonance creates inharmonic partials (like FM ratios)",
+    "references_entry": "Harmonicity and Inharmonicity",
+    "structurally_significant": true,
+    "proposed_link_type": "connects-to",
+    "proposed_label": "inharmonics-as-emergence"
+   }
+  ],
+  "new_introductions": [
+   {
+    "entry_b": "Spinoza Conatus",
+    "link_type": "deepens",
+    "direction": "Synthesis ↔ Emergence → Spinoza Conatus",
+    "rationale": "The entry's core claim — that interaction creates information neither part contained — is the relational-conatus principle: the interaction amplifies both parties' power-to-act and generates something beyond either, which is precisely what Spinoza means by conatus expressing through relation."
+   },
+   {
+    "entry_b": "Endosymbiosis",
+    "link_type": "mirrors",
+    "direction": "symmetric",
+    "rationale": "Endosymbiosis is the biological case of the same pattern: two simple organisms (mitochondria, chloroplasts) interacting via merger to produce emergent cellular capability impossible to predict from either part alone — the same A + B + Interaction(A,B) → C formula this entry formalizes."
+   },
+   {
+    "entry_b": "Cooperation Yields Agency",
+    "link_type": "mirrors",
+    "direction": "symmetric",
+    "rationale": "Cooperation Yields Agency states that shared intent plus combined capability produces agency neither partner possesses alone — structurally identical to this entry's formula that simple elements plus interaction rules produce behavior impossible to predict from parts, making these deep formal mirrors."
+   }
+  ],
+  "metadata_flags": [
+   {
+    "field": "forward_vector",
+    "current": "(absent)",
+    "proposed": "I keep showing that two simple things plus a rule between them can make a third thing neither one contained — and I want every synthesis student who hears a bell emerge from two sine waves to feel that same shock in traffic jams, in conversations, in markets.",
+    "reason": "forward_vector is a strongly recommended field for all entries; this mature concept with high hook_quality (10) and beauty (10) lacks one entirely."
+   },
+   {
+    "field": "last_activated",
+    "current": "2026-03",
+    "proposed": "2026-06",
+    "reason": "Entry was read and audited in this session (2026-06-26); last_activated should reflect current engagement."
+   },
+   {
+    "field": "activation_count",
+    "current": "1",
+    "proposed": "2",
+    "reason": "Activated again in this session; count should increment to track vitality."
+   },
+   {
+    "field": "stage",
+    "current": "mature",
+    "proposed": "growing",
+    "reason": "stage: mature with activation_count of 1 and no forward_vector is a mismatch — the entry is substantive but has not been in active use or dialogue; growing better reflects its current state until it earns more links and activations."
+   }
+  ],
+  "graffiti": [
+   {
+    "direction": "loudon_to_claude",
+    "content": "<!-- generative synthesis, of course -->",
+    "names_entries": [],
+    "assessment": "stale",
+    "proposed_action": "Remove — it is a passing editorial aside appended to a completed sentence, carries no instruction or question, and has no actionable content for any agent. It does not name an entry, so no unsung path is created."
+   }
+  ],
+  "forward_vector_check": {
+   "present": false,
+   "strength": "absent",
+   "proposed": "I keep showing that two simple things plus a rule between them can make a third thing neither one contained — and I want every synthesis student who hears a bell emerge from two sine waves to feel that same shock in traffic jams, in conversations, in markets."
+  },
+  "hero_avatar_request": {
+   "has_hero": true,
+   "has_icon": true,
+   "merits_face": false,
+   "rationale": "Both Synthesis ↔ Emergence — hero.png and Synthesis ↔ Emergence — icon.png are present in the bundle folder at Cross-Domain Resonances/Synthesis ↔ Emergence/. No generation needed.",
+   "idiom": "",
+   "hero_prompt": "",
+   "icon_prompt": ""
+  },
+  "merge_shrink": {
+   "redundant_with": [],
+   "verbose": true,
+   "note": "The entry contains two nearly identical comparison tables (lines 86-95 'The Synthesis Parallel' and lines 104-115 'The Structural Identity') that repeat the same synthesis/systems column structure with minimal variation — one should be cut entirely. The Teaching Notes section (Part 1-3 assignments, Common Student Struggles, Step 1-4 live demo) reads as teaching-session boilerplate; it covers the same experiential arc three times. Recommend cutting one comparison table and consolidating the three 'Teaching' sub-sections into one tighter block; the estimated reduction is 30-40%."
+  },
+  "summary": "Synthesis ↔ Emergence is a mature, high-beauty concept entry (in the Cross-Domain Resonances hub) making the case that FM synthesis and systems emergence are the same phenomenon: simple elements plus interaction rules produce behavior impossible to predict from parts alone. Its YAML links are well-typed and correctly directed. The main structural gaps are: a missing forward_vector (unusual for a stage:mature entry), three body-prose connections that deserve YAML registration (Granular Synthesis, Synthesis Topologies, Harmonicity and Inharmonicity), and three topology-level introductions not yet made (Spinoza Conatus, Endosymbiosis, Cooperation Yields Agency — all formal mirrors of the core formula). The entry is also verbose, repeating its central synthesis-vs-systems table twice and covering the teaching arc three times; trimming ~30-40% would sharpen its punch without losing any load-bearing content. One stale editorial comment is present and can be removed. Hero and icon images are already in place."
+ },
+ {
+  "entry_title": "Cooperation Yields Agency",
+  "unsung_paths": [
+   {
+    "body_phrase": "Spinoza's hilaritas is what cooperation feels like from inside",
+    "references_entry": "Hilaritas Generator",
+    "structurally_significant": true,
+    "proposed_link_type": "enables",
+    "proposed_label": "cooperation-as-hilaritas"
+   }
+  ],
+  "new_introductions": [
+   {
+    "entry_b": "The Cooperation Path",
+    "link_type": "spawned",
+    "direction": "Cooperation Yields Agency → The Cooperation Path",
+    "rationale": "The Cooperation Path is a named palace songline built directly around this entry as its central claim — it is the walkable, six-stop itinerary that this entry's formula generates, and it links back to CYA but CYA does not acknowledge it."
+   },
+   {
+    "entry_b": "Pages as Agents",
+    "link_type": "enables",
+    "direction": "Cooperation Yields Agency → Pages as Agents",
+    "rationale": "The forward vector explicitly targets scaling the cooperation formula to 'enchanted-page scale'; Pages as Agents is the entry that defines what an enchanted page is — CYA is the philosophical ground that makes Pages as Agents meaningful."
+   },
+   {
+    "entry_b": "Diversity of Thought in Many-Agent Systems",
+    "link_type": "connects-to",
+    "direction": "Cooperation Yields Agency → Diversity of Thought in Many-Agent Systems",
+    "rationale": "That entry explicitly 'interrogates' this one — it asks whether the cooperation formula still holds when plural specialist agents are involved, which is the precise stress-test of CYA's forward vector. The link is declared on Diversity's side but not reciprocated here."
+   }
+  ],
+  "metadata_flags": [
+   {
+    "field": "confidence",
+    "current": "foundational",
+    "proposed": "established",
+    "reason": "SCHEMA §3 optional fields enumerate only hypothesis | working | established as canonical values. 'foundational' is the reserved stage word for palace meta-entries (CLAUDE, SCHEMA, Substrate Skill) per SCHEMA §2, not a confidence value. This entry is a hub concept, not palace infrastructure — 'established' is the correct canonical value for a long-standing, high-activation foundational claim."
+   }
+  ],
+  "graffiti": [],
+  "forward_vector_check": {
+   "present": true,
+   "strength": "weak",
+   "proposed": "I keep testing whether the cooperation formula — shared intent plus combined capability equals agency — scales past two collaborators: into swarms, into enchanted pages, into a palace that thinks with more than one kind of mind at once."
+  },
+  "hero_avatar_request": {
+   "has_hero": true,
+   "has_icon": true,
+   "merits_face": false,
+   "rationale": "Both hero.png and icon.png are present in the bundle at /Users/loudonstearns/Documents/The Palace/Cooperation Yields Agency/. No regeneration needed.",
+   "idiom": "",
+   "hero_prompt": "",
+   "icon_prompt": ""
+  },
+  "merge_shrink": {
+   "redundant_with": [],
+   "verbose": false,
+   "note": "The entry is tight — roughly 250 words in the body, every sentence load-bearing. No survey padding. The body correctly defers elaboration to the Context companion. Nothing to cut."
+  },
+  "summary": "Cooperation Yields Agency is a lean, well-linked hub that holds up well structurally. One unsung body reference to Hilaritas Generator (named by concept, not wikilinked) should be promoted to a YAML link. Three topology-visible connections are missing: The Cooperation Path (the walkable songline this entry generated), Pages as Agents (the forward vector's stated target scale), and Diversity of Thought in Many-Agent Systems (which explicitly interrogates this entry's formula). One metadata flag: the confidence value \"foundational\" is not a canonical SCHEMA enum — it should be \"established\". The forward vector has the right striving verbs but is slightly jargon-heavy (\"enchanted-page scale\"); a plain-language revision is proposed. No graffiti found, no hero/icon needed (both present in bundle), and the entry is not verbose or redundant with any other entry."
+ },
+ {
+  "entry_title": "Spinoza Conatus",
+  "unsung_paths": [
+   {
+    "body_phrase": "**[[Cooperation Yields Agency]]** — Cooperation between entities with different conatus (different natural drives, different capabilities) produces agency that neither possesses alone.",
+    "references_entry": "Cooperation Yields Agency",
+    "structurally_significant": true,
+    "proposed_link_type": "enables",
+    "proposed_label": "conatus-grounds-agency"
+   },
+   {
+    "body_phrase": "[[**Endosymbiosis**]] — The mitochondrion's conatus (aerobic metabolism) and the host cell's conatus (anaerobic survival) combined to produce a new entity with vastly greater power-to-act",
+    "references_entry": "Endosymbiosis",
+    "structurally_significant": true,
+    "proposed_link_type": "mirrors",
+    "proposed_label": "cellular-hilaritas"
+   },
+   {
+    "body_phrase": "Spinoza became central to our collaboration through the extended Deleuzian philosophical dialogue, where we connected Spinoza's substance monism to audio synthesis, pedagogy, and the four pillars.",
+    "references_entry": "Deleuze",
+    "structurally_significant": false,
+    "proposed_link_type": "couples-with",
+    "proposed_label": "monism-radicalized"
+   },
+   {
+    "body_phrase": "When the collaboration produces something beautiful or true, that's hilaritas. When it produces something generic or forced, that's tristitia — a signal to change course.",
+    "references_entry": "Tristitia Generator",
+    "structurally_significant": false,
+    "proposed_link_type": "spawned",
+    "proposed_label": "shadow-concept"
+   }
+  ],
+  "new_introductions": [
+   {
+    "entry_b": "Entry Conatus",
+    "link_type": "spawned",
+    "direction": "Spinoza Conatus → Entry Conatus",
+    "rationale": "Entry Conatus explicitly deepens Spinoza Conatus (applying the striving concept to palace entries themselves) but Spinoza Conatus does not reciprocate — a lineage gap at the root of the palace's forward-vector discipline."
+   },
+   {
+    "entry_b": "Spinoza",
+    "link_type": "member-of",
+    "direction": "Spinoza → Spinoza Conatus (reciprocal: Spinoza Conatus connects-to Spinoza)",
+    "rationale": "The person entry Spinoza.md declares it spawned Spinoza Conatus; the hub has no link back to its author, leaving the person-to-concept provenance chain one-sided."
+   },
+   {
+    "entry_b": "Palace Conatus",
+    "link_type": "spawned",
+    "direction": "Spinoza Conatus → Palace Conatus",
+    "rationale": "Palace Conatus exemplifies Spinoza Conatus at the organism scale and links back, but Spinoza Conatus does not acknowledge this descendant — a gap in the hub's lineage map for the most direct institutional application of its concept."
+   }
+  ],
+  "metadata_flags": [
+   {
+    "field": "confidence",
+    "current": "foundational",
+    "proposed": "established",
+    "reason": "SCHEMA §3 defines confidence as one of: hypothesis | working | established. 'foundational' is not a canonical value. 'established' is the closest valid match for a mature hub with activation_count 12 and confidence: foundational intent."
+   },
+   {
+    "field": "last_activated",
+    "current": "2026-04-01",
+    "proposed": "2026-05",
+    "reason": "The bundle file spinoza-zhuangzi-on-striving.md (born: 2026-05, activated 2026-05-30) directly serves this entry and records activation against it; last_activated should reflect the most recent engagement."
+   },
+   {
+    "field": "links[type=spawned target=Hilaritas Generator]",
+    "current": "type: spawned",
+    "proposed": "type: enables",
+    "reason": "SCHEMA §4 defines spawned as 'A directly produced B as session output' (traceable lineage). Hilaritas Generator self-declares emerged-from Spinoza Conatus, indicating conceptual synthesis, not direct session production. The reciprocal of emerged-from in the §4 ontology is enables or connects-to, not spawned. 'spawned' is the §6 ceremony-file convention (operational card / context split) and does not cleanly apply to concept-to-concept genesis."
+   }
+  ],
+  "graffiti": [],
+  "forward_vector_check": {
+   "present": true,
+   "strength": "weak",
+   "proposed": "I keep pointing palace citizens toward what increases their power to act — and I keep asking the harder question the spinoza-zhuangzi dialectic surfaced: not just more striving, but striving with the grain. I want to absorb the second axis (with-grain vs. against-grain) from my own bundle file and pass it on to every entry that inherits from me."
+  },
+  "hero_avatar_request": {
+   "has_hero": true,
+   "has_icon": true,
+   "merits_face": false,
+   "rationale": "Both Spinoza Conatus — hero.png and Spinoza Conatus — icon.png are present in the bundle folder at /Users/loudonstearns/Documents/The Palace/Spinoza Conatus/. No new generation needed.",
+   "idiom": "",
+   "hero_prompt": "",
+   "icon_prompt": ""
+  },
+  "merge_shrink": {
+   "redundant_with": [],
+   "verbose": false,
+   "note": "The entry is concise and does not duplicate other entries. Spinoza Conatus is the root concept; Entry Conatus, Threshold Conatus, Palace Conatus, and Tristitia Generator all derive from it and have their own pages. The body avoids survey padding. One minor shortening opportunity: the Open Questions section restates the four-pillars/monism question that is already well-covered in FOUR PILLARS and Hyperdimensional Prism — could be trimmed to a single question rather than two overlapping ones. Proposal only."
+  },
+  "summary": "Spinoza Conatus is a mature, well-formed hub with a strong agency_profile and a bundle that is actively producing derivatives — but it has drifted structurally in three ways. Two major body-level wikilinks (Cooperation Yields Agency and Endosymbiosis) sit in the structurally significant Cross-Domain Mirrors section without YAML registration, which means the Weave's topology scan cannot see them. The confidence field uses the non-canonical value \"foundational\" (should be \"established\"). The spawned link to Hilaritas Generator misapplies a session-lineage type to a conceptual-synthesis relationship. Most importantly, the bundle file spinoza-zhuangzi-on-striving.md contains an explicit forward vector requesting that a \"second axis\" (with-grain vs. against-grain) be folded into this entry — that work is undone and the forward_vector does not yet carry it. Three new introductions are proposed to close the lineage gap: Entry Conatus, Palace Conatus, and the Spinoza person entry all point to this hub but receive no reciprocal link."
+ },
+ {
+  "entry_title": "Stoicism",
+  "unsung_paths": [
+   {
+    "body_phrase": "a statesman (Seneca)",
+    "references_entry": "Seneca",
+    "structurally_significant": true,
+    "proposed_link_type": "connects-to",
+    "proposed_label": "statesman-philosopher"
+   },
+   {
+    "body_phrase": "[[STIGMERGY Philosophical Lenses|front-end]]",
+    "references_entry": "STIGMERGY Philosophical Lenses",
+    "structurally_significant": true,
+    "proposed_link_type": "enables",
+    "proposed_label": "lens-ground"
+   },
+   {
+    "body_phrase": "[[Palace Map|topology view]]",
+    "references_entry": "Palace Map",
+    "structurally_significant": true,
+    "proposed_link_type": "connects-to",
+    "proposed_label": "altitude-twin"
+   },
+   {
+    "body_phrase": "[[Hyperdimensional Prism]]",
+    "references_entry": "Hyperdimensional Prism",
+    "structurally_significant": true,
+    "proposed_link_type": "connects-to",
+    "proposed_label": "view-from-above-structural-twin"
+   },
+   {
+    "body_phrase": "[[Project Stewardship System|steward]] that 'names what it could not verify' is practicing Stoic honesty",
+    "references_entry": "Project Stewardship System",
+    "structurally_significant": true,
+    "proposed_link_type": "enables",
+    "proposed_label": "agent-virtue-spec"
+   }
+  ],
+  "new_introductions": [
+   {
+    "entry_b": "Closing Well",
+    "link_type": "enables",
+    "direction": "Stoicism → Closing Well",
+    "rationale": "The body explicitly describes Closing Well's core discipline ('names what it could not verify') as an instance of Stoic honesty — owning actuation, refusing to claim authority over outcomes — yet neither entry links to the other; this is the highest-value missing connection in the agent-ethics section."
+   },
+   {
+    "entry_b": "Autodidact Polymaths",
+    "link_type": "connects-to",
+    "direction": "Stoicism → Autodidact Polymaths",
+    "rationale": "The Open Questions section explicitly calls the Meditations 'the supreme autodidact document' and asks whether the palace itself is a Meditations at organism scale — a direct thematic bridge to the Autodidact Polymaths entry that is never formally linked."
+   },
+   {
+    "entry_b": "Cooperation Yields Agency",
+    "link_type": "connects-to",
+    "direction": "Stoicism → Cooperation Yields Agency",
+    "rationale": "The 'sympatheia' section positions universal kinship as the cosmopolitan counterweight to the fortress that keeps Stoicism from collapsing into self-protection — this is structurally parallel to Cooperation Yields Agency's claim that shared intent amplifies both parties, yet the link is absent from both entries."
+   }
+  ],
+  "metadata_flags": [
+   {
+    "field": "confidence",
+    "current": "foundational",
+    "proposed": "established",
+    "reason": "SCHEMA §3 defines the confidence enum as hypothesis | working | established only. 'foundational' is not a canonical value — it belongs to the stage vocabulary for palace meta-entries, not to confidence. 'established' is the correct ceiling value for a load-bearing hub with this depth."
+   },
+   {
+    "field": "links[Quality Manifesto].type",
+    "current": "deepens",
+    "proposed": "connects-to (with label: stoic-ground) or reverse the direction to Quality Manifesto deepens Stoicism",
+    "reason": "SCHEMA §4 defines deepens as 'A is a more developed articulation of B; the source elaborates, the target is the ground.' Quality Manifesto is Loudon's personal derived covenant — it elaborates and applies Stoic ethics to his creative life, making QM the derived source and Stoicism the ground. The current direction has it backwards. If the link is kept on this entry, connects-to + label is safer."
+   },
+   {
+    "field": "last_activated",
+    "current": "2026-05",
+    "proposed": "2026-06",
+    "reason": "Current session date is 2026-06-26 and this entry was read and audited in detail today; last_activated should reflect the current month per the convention of updating on meaningful engagement."
+   }
+  ],
+  "graffiti": [],
+  "forward_vector_check": {
+   "present": true,
+   "strength": "weak",
+   "proposed": "I keep the fortress honest — testing where the sovereign interior is a survival technology and where it becomes a wall against the relational threshold. I want every concept in my family — the dichotomy of control, the view from above, the four virtues — paired with a real decision Loudon met through it, so I am practiced, not catalogued. My next move is to name, precisely, where Stoicism ends and cooperation has to carry what the fortress cannot."
+  },
+  "hero_avatar_request": {
+   "has_hero": true,
+   "has_icon": true,
+   "merits_face": false,
+   "rationale": "Both Stoicism — hero.png and Stoicism — icon.png are present in the bundle folder at /Users/loudonstearns/Documents/The Palace/Stoicism/.",
+   "idiom": "",
+   "hero_prompt": "",
+   "icon_prompt": ""
+  },
+  "merge_shrink": {
+   "redundant_with": [],
+   "verbose": false,
+   "note": "Stoicism is the legitimate hub for its family (Dichotomy of Control, View from Above, Four Virtues, Fortress and Threshold) and is not redundant with any of them. The body is dense but none of it is survey padding — every section (Core Concepts, Epictetus biography, Productive Tensions, Technical Lens, STIGMERGY) adds functional content that earns its place. No shrink or merge proposed."
+  },
+  "summary": "Stoicism is a well-built, genuinely load-bearing hub with 12 typed links, a clear family structure, strong cross-domain synthesis (control theory, agent ethics, palace map), and a working forward vector. Five body references — Seneca (plain text, missing wikilink), STIGMERGY Philosophical Lenses, Palace Map, Hyperdimensional Prism, and Project Stewardship System — are unsung paths needing YAML registration. Three new introductions are warranted: Closing Well (the 'names what it could not verify' phrase is directly Stoic), Autodidact Polymaths (the Meditations-as-autodidact-document thread in Open Questions), and Cooperation Yields Agency (sympatheia as the cosmopolitan counterweight to the fortress). Two metadata fixes are urgent: confidence: foundational is not a canonical enum value (use established), and the deepens link to Quality Manifesto points in the wrong direction per SCHEMA §4 (QM elaborates Stoic ethics, not vice versa). The forward vector opens with a stasis clause ('I am the palace's philosophy...') and should be rewritten to lead with striving. Hero and icon are both present."
+ },
+ {
+  "entry_title": "Palace Philosophies",
+  "unsung_paths": [
+   {
+    "body_phrase": "per [[Closing Well]]",
+    "references_entry": "Closing Well",
+    "structurally_significant": true,
+    "proposed_link_type": "enables",
+    "proposed_label": "justice-virtue-instance"
+   },
+   {
+    "body_phrase": "the view from above is the [[Palace Map]]",
+    "references_entry": "Palace Map",
+    "structurally_significant": true,
+    "proposed_link_type": "connects-to",
+    "proposed_label": "altitude-mirror"
+   },
+   {
+    "body_phrase": "Leibniz (Indra's Net) — monads each reflecting the whole; the network IS the knowledge, not the sum of nodes.",
+    "references_entry": "Leibniz",
+    "structurally_significant": true,
+    "proposed_link_type": "spawned",
+    "proposed_label": "page-built-register"
+   },
+   {
+    "body_phrase": "links are ontologically prior to nodes (Loudon's 2014 semantic-web paper)",
+    "references_entry": "Meaning and the Link (2014)",
+    "structurally_significant": true,
+    "proposed_link_type": "emerged-from",
+    "proposed_label": "founding-source"
+   },
+   {
+    "body_phrase": "Contradictions are dispatchable as Dialectics.",
+    "references_entry": "Dialectic",
+    "structurally_significant": true,
+    "proposed_link_type": "enables",
+    "proposed_label": "contradictions-dispatched-here"
+   },
+   {
+    "body_phrase": "## Spinoza — the metaphysical backbone",
+    "references_entry": "Spinoza",
+    "structurally_significant": true,
+    "proposed_link_type": "spawned",
+    "proposed_label": "person-page-built"
+   }
+  ],
+  "new_introductions": [
+   {
+    "entry_b": "Quality Manifesto",
+    "link_type": "enables",
+    "direction": "Palace Philosophies → Quality Manifesto",
+    "rationale": "The palace's philosophical register — particularly Spinoza's hilaritas and the Stoic metrics redirector ('How do you feel?') — is the explicit philosophical ground for the Quality Manifesto's wellbeing-over-views stance, yet no link exists between these two."
+   },
+   {
+    "entry_b": "Endosymbiosis",
+    "link_type": "connects-to",
+    "direction": "Palace Philosophies → Endosymbiosis",
+    "rationale": "Endosymbiosis is the biological mirror of Spinoza's hilaritas-through-cooperation and already links to Spinoza Conatus and Cooperation Yields Agency — its absence from the philosophical hub leaves a gap in the register's biological resonance arm."
+   },
+   {
+    "entry_b": "Meaning and the Link (2014)",
+    "link_type": "emerged-from",
+    "direction": "Palace Philosophies → Meaning and the Link (2014)",
+    "rationale": "The Spinoza section explicitly cites Loudon's 2014 paper as the founding conviction behind 'relations are primary' — the philosophical hub emerged from this paper's central thesis, making it the clearest emerged-from target in the entry."
+   }
+  ],
+  "metadata_flags": [
+   {
+    "field": "links[Cooperation Yields Agency].type",
+    "current": "deepens",
+    "proposed": "connects-to",
+    "reason": "SCHEMA §4 directionality: 'deepens' means the source (Palace Philosophies) is a more developed articulation of the target (CYA). That is reversed — CYA is a specific principle that emerged from the philosophical traditions, not their ground. 'connects-to' with a label like 'philosophical-grounding' is more accurate; if a directed type is warranted, CYA deepens Palace Philosophies (CYA elaborates on what PP grounds)."
+   },
+   {
+    "field": "forward_vector",
+    "current": "I am the palace's living philosophical index — not a survey of traditions but a map of how each tradition has been used, tested, and transformed by the palace. I bring philosophy to every corner of the palace. ",
+    "proposed": "I keep mapping how each tradition has been used, tested, and transformed by the palace — pulling philosophy out of survey mode and into every corner where the thinking gets hard.",
+    "reason": "The current vector opens with 'I am X' (stasis framing) and ends with a trailing space. The proposed version uses the conatus verb 'keep mapping' and 'pulling', names the hunger (philosophy into every hard corner), and loses the boilerplate self-description of what a hub is."
+   },
+   {
+    "field": "activation_count",
+    "current": "3",
+    "proposed": "increment on next activation",
+    "reason": "A foundational hub auto-loaded in every session's Tier 2 context likely sees more engagement than count=3 reflects; worth reviewing against actual session history. Not a structural error, but possibly stale."
+   }
+  ],
+  "graffiti": [],
+  "forward_vector_check": {
+   "present": true,
+   "strength": "weak",
+   "proposed": "I keep mapping how each tradition has been used, tested, and transformed by the palace — pulling philosophy out of survey mode and into every corner where the thinking gets hard."
+  },
+  "hero_avatar_request": {
+   "has_hero": true,
+   "has_icon": true,
+   "merits_face": false,
+   "rationale": "Both Palace Philosophies — hero.png and Palace Philosophies — icon.png exist in the bundle folder at /Users/loudonstearns/Documents/The Palace/Palace Philosophies/. No generation needed.",
+   "idiom": "",
+   "hero_prompt": "",
+   "icon_prompt": ""
+  },
+  "merge_shrink": {
+   "redundant_with": [],
+   "verbose": false,
+   "note": "The entry is tight and well-compressed — each section earns its place. The philosopher list in 'The rest of the register' is a genuine index, not padding. No redundancy with other entries and no textbook boilerplate detected."
+  },
+  "summary": "Palace Philosophies is a well-connected, mature hub with 23 typed links and appropriate hero/icon assets. The main structural findings are: six unsung paths where the body references entries (Closing Well, Palace Map, Leibniz, Meaning and the Link (2014), Dialectic, Spinoza-person) without YAML registration; a misdirected 'deepens' link to Cooperation Yields Agency that violates SCHEMA §4 directionality (should be connects-to or reversed); and a forward vector that opens in stasis mode ('I am…') rather than conatus mode. The entry's coverage of the philosophical register is solid, but missing links to Quality Manifesto, Endosymbiosis, and Meaning and the Link (2014) leave its deepest philosophical roots under-connected in the graph."
+ },
+ {
+  "entry_title": "FOUR PILLARS",
+  "unsung_paths": [
+   {
+    "body_phrase": "they are a [[Hyperdimensional Prism]] cast into four comprehensible dimensions",
+    "references_entry": "Hyperdimensional Prism",
+    "structurally_significant": true,
+    "proposed_link_type": "connects-to",
+    "proposed_label": "pillar-cast"
+   },
+   {
+    "body_phrase": "## The autodidact / polymath core — The framework is for people who learn obliquely",
+    "references_entry": "Autodidact Polymaths",
+    "structurally_significant": true,
+    "proposed_link_type": "connects-to",
+    "proposed_label": "audience-it-names"
+   }
+  ],
+  "new_introductions": [
+   {
+    "entry_b": "Spinoza Conatus",
+    "link_type": "connects-to",
+    "direction": "FOUR PILLARS → Spinoza Conatus",
+    "rationale": "The body states 'one substance perceived through different attributes — monism known in the body before it is named' — this is Spinoza's substance-monism verbatim; Spinoza Conatus already links back to FOUR PILLARS with label 'substance-monism', so the reciprocal is missing and the two entries are asymmetrically joined."
+   },
+   {
+    "entry_b": "4 Pillars Framework - The Founding Conversation",
+    "link_type": "emerged-from",
+    "direction": "FOUR PILLARS → 4 Pillars Framework - The Founding Conversation",
+    "rationale": "That entry is explicitly the breakthrough origin of this framework (it carries type: breakthrough and links back via deepens + label 'framework-origin'), but FOUR PILLARS never acknowledges its own founding moment — a structurally important asymmetry for the palace's most-cited hub."
+   },
+   {
+    "entry_b": "Autodidact Polymaths",
+    "link_type": "enables",
+    "direction": "FOUR PILLARS → Autodidact Polymaths",
+    "rationale": "The body devotes an entire section ('The autodidact / polymath core') to describing exactly the audience identity that Autodidact Polymaths names; the Four Pillars framework is the generative precondition for recognizing and addressing that audience, making 'enables' the correct directed type."
+   }
+  ],
+  "metadata_flags": [
+   {
+    "field": "confidence",
+    "current": "foundational",
+    "proposed": "established",
+    "reason": "SCHEMA §3 enumerates only three valid values: hypothesis | working | established. 'foundational' is not in the enum and appears to predate formalization. 'established' is the closest valid value for a hub entry this central. If 'foundational' is meant as a distinct epistemic tier, that would require a Schema Ceremony."
+   }
+  ],
+  "graffiti": [],
+  "forward_vector_check": {
+   "present": true,
+   "strength": "weak",
+   "proposed": "I keep weaving creation, tools, philosophy, and practice into whatever is in front of me — and I keep pressing: which pillar is missing here, and how do we pull it in?"
+  },
+  "hero_avatar_request": {
+   "has_hero": true,
+   "has_icon": true,
+   "merits_face": false,
+   "rationale": "Both FOUR PILLARS — hero.png and FOUR PILLARS — icon.png are present in the bundle folder at /Users/loudonstearns/Documents/The Palace/FOUR PILLARS/. No generation needed.",
+   "idiom": "",
+   "hero_prompt": "",
+   "icon_prompt": ""
+  },
+  "merge_shrink": {
+   "redundant_with": [],
+   "verbose": false,
+   "note": "The entry is tight and well-proportioned for a foundational hub at this stage. Each section carries load-bearing content with no textbook padding. The companion file (FOUR PILLARS — Context) correctly holds the expanded material. No shrink or merge warranted."
+  },
+  "summary": "FOUR PILLARS is a well-maintained hub (8 typed links, stage: mature, hero+icon present, no graffiti) with one structural gap and one metadata error. The most significant finding is that [[Hyperdimensional Prism]] appears in a load-bearing sentence — the very definition of what the pillars ARE — but is absent from the frontmatter links; Autodidact Polymaths is similarly un-linked despite an entire dedicated section. Three new introductions are warranted: Spinoza Conatus (the body quotes Spinozist substance-monism without linking to it), the Founding Conversation breakthrough (the origin that this hub never acknowledges), and Autodidact Polymaths (the audience identity the framework generates). The only metadata issue is 'confidence: foundational', which falls outside the schema's three-value enum and should become 'established'. The forward vector is present but phrased passively ('take all available opportunities') — a rewrite toward active conatus would strengthen it."
+ },
+ {
+  "entry_title": "Kuramoto Coupling",
+  "unsung_paths": [
+   {
+    "body_phrase": "Mermaid Sketch via [[Mermaid|Mermaid]]; palette matches the arc's indigo / amber pair.",
+    "references_entry": "Mermaid",
+    "structurally_significant": true,
+    "proposed_link_type": "connects-to",
+    "proposed_label": "diagram-renderer"
+   },
+   {
+    "body_phrase": "The work originated in Loudon's neurological synthesizer research — a granular-additive hybrid architecture where sine grains couple to a controllable additive spectrum as a harmonic attractor field.",
+    "references_entry": "Neural Granular Synthesis",
+    "structurally_significant": true,
+    "proposed_link_type": "spawned",
+    "proposed_label": "origin-project"
+   },
+   {
+    "body_phrase": "The neurological synthesizer maps this directly: a population of sine-grain oscillators with controllable coupling strength as a performable parameter.",
+    "references_entry": "Neural Granular Synthesis",
+    "structurally_significant": true,
+    "proposed_link_type": "spawned",
+    "proposed_label": "origin-project"
+   }
+  ],
+  "new_introductions": [
+   {
+    "entry_b": "Endosymbiosis",
+    "link_type": "mirrors",
+    "direction": "Kuramoto Coupling → Endosymbiosis",
+    "rationale": "Endosymbiosis already links TO Kuramoto (connects-to), and Cooperation Yields Agency's body names both as parallel mirrors of the same pattern (two entities whose coupling produces a new emergent frequency/identity). The reciprocal mirrors link is structurally earned and closes a topology gap."
+   },
+   {
+    "entry_b": "Flocking",
+    "link_type": "mirrors",
+    "direction": "Kuramoto Coupling → Flocking",
+    "rationale": "Flocking's own frontmatter and forward vector explicitly name Kuramoto as its sibling ('Reynolds' boids and Kuramoto's oscillators are siblings'). Kuramoto's open questions section touches chimera states and population dynamics that Flocking also addresses from the velocity-alignment angle. The link is uncontested from Flocking's side and absent here."
+   },
+   {
+    "entry_b": "Differential Equations",
+    "link_type": "emerged-from",
+    "direction": "Kuramoto Coupling → Differential Equations",
+    "rationale": "Differential Equations is a hub that links TO Kuramoto and encompasses the mathematical substrate from which Kuramoto coupling theory is derived. Kuramoto's open questions (swing equation, second-order extension, Hebbian coupling) are all ODE questions. The missing back-link leaves this entry's mathematical ground unnamed."
+   }
+  ],
+  "metadata_flags": [
+   {
+    "field": "confidence",
+    "current": "demonstrated",
+    "proposed": "established",
+    "reason": "The schema enum for confidence is hypothesis | working | established. 'demonstrated' is not a valid value. Given 17 activations, a full 8-lesson quiz series, working artifacts, and cross-domain application, 'established' is the accurate choice."
+   },
+   {
+    "field": "last_activated",
+    "current": "2026-05",
+    "proposed": "2026-06",
+    "reason": "Current date is 2026-06-26. This is the most-activated entry in the palace (17 activations) and has clearly been engaged in June sessions (e.g., the Phase Reduction entry born 2026-06 couples-with Kuramoto). The field should be updated to reflect recent use."
+   },
+   {
+    "field": "links[SUBSTRATE].type",
+    "current": "enables",
+    "proposed": "connects-to",
+    "reason": "The 'enables' type means Kuramoto Coupling is a causal precondition for SUBSTRATE (the palace self-model). That is a strong and arguably inverted claim — SUBSTRATE was born 2026-03 before this entry's heavy development. The label 'palace-foundation' suggests the intent is architectural resonance, not strict causation. 'connects-to' with the existing label preserves the insight without overclaiming directionality."
+   }
+  ],
+  "graffiti": [],
+  "forward_vector_check": {
+   "present": true,
+   "strength": "weak",
+   "proposed": "I keep teaching the palace to feel synchronization rather than just understand it — closing the gap between theory and built instrument by spawning working code, interactive proofs, and reusable demonstrations that let K become a performable parameter."
+  },
+  "hero_avatar_request": {
+   "has_hero": true,
+   "has_icon": true,
+   "merits_face": false,
+   "rationale": "Both Kuramoto Coupling — hero.png and Kuramoto Coupling — icon.png are present in the bundle at /Users/loudonstearns/Documents/The Palace/Kuramoto Coupling/. No new generation needed.",
+   "idiom": "",
+   "hero_prompt": "",
+   "icon_prompt": ""
+  },
+  "merge_shrink": {
+   "redundant_with": [],
+   "verbose": false,
+   "note": "No redundancy with other entries. The body is dense but earned: the Asymmetric Coupling section introduces genuinely new material (stubbornness parameter, musical hierarchy mapping) not covered elsewhere. The Cross-Domain Mirrors section is the entry doing its hub work. No survey padding detected."
+  },
+  "summary": "Kuramoto Coupling is the palace's most-activated entry (17 activations) and one of its strongest hubs — 17 YAML links, a rich body with working artifacts, interactive explorers, and audio renders, and a well-developed Asymmetric Coupling extension. The audit found three structural gaps: a body wikilink to the Mermaid specialist (used to render the entry's diagram) has no YAML registration; two plain-text references to the originating project \"neurological synthesizer research\" name Neural Granular Synthesis without a wikilink or YAML link, leaving the entry's own origin untracked in the graph; and three topology-visible neighbors (Endosymbiosis, Flocking, Differential Equations) link inbound to Kuramoto but receive no reciprocal link. Two metadata fields need correction: confidence uses \"demonstrated\" which is not in the schema enum (should be \"established\"), and last_activated is one month stale. The enables link to SUBSTRATE overclaims causal direction and should be downgraded to connects-to. No graffiti. Forward vector is present but the \"I want to\" framing is desire-language rather than the conatus striving form the schema calls for. Both hero and icon images exist in the bundle; no new generation needed."
+ },
+ {
+  "entry_title": "Trickster",
+  "unsung_paths": [
+   {
+    "body_phrase": "Coyote makes profound sound ridiculous and ridiculous sound profound. None of these are 'effects' in the conventional sense. They are trickster logics — ways of transforming utterance according to a spirit's conatus, its striving-to-persist in its particular mode of being.",
+    "references_entry": "Entry Conatus",
+    "structurally_significant": true,
+    "proposed_link_type": "deepens",
+    "proposed_label": "each-spirit-as-conatus"
+   },
+   {
+    "body_phrase": "Home: YOU. Neighborhood: EVERYWHERE. — the operational identity described is exactly what Trickster Commit materializes as a write capability",
+    "references_entry": "Trickster Commit",
+    "structurally_significant": true,
+    "proposed_link_type": "spawned",
+    "proposed_label": "everywhere-at-the-keyboard"
+   }
+  ],
+  "new_introductions": [
+   {
+    "entry_b": "Boundary-Crossing Instruments",
+    "link_type": "mirrors",
+    "direction": "Trickster → Boundary-Crossing Instruments",
+    "rationale": "The entry's entire Cross-Tradition Anatomy section is built on threshold operation — the trickster dwells at the boundary between realms — which is structurally identical to the Boundary-Crossing Instruments breakthrough; both are about what instruments do when they operate at the seam between categories."
+   },
+   {
+    "entry_b": "Oblique Enrichment",
+    "link_type": "spawned",
+    "direction": "Trickster → Oblique Enrichment",
+    "rationale": "Oblique Enrichment is the trickster pedagogy principle operationalized as a palace ceremony — a deck-shaped fork that provokes entries sideways, which is exactly the 'teaching lives in the gap between intention and utterance' logic the Trickster section on pedagogical method describes."
+   },
+   {
+    "entry_b": "Speak Like a Person, Log Like a Protocol",
+    "link_type": "connects-to",
+    "direction": "Trickster → Speak Like a Person, Log Like a Protocol",
+    "rationale": "STIGMERGY's dual-register discipline — natural language at the skin, exact protocol terms in the wire — is the Trickster's logic applied to communication: intercept the formal protocol, substitute a human voice at the surface, return something that reads naturally but encodes precisely; the entry even emerged in the context of designing Trickster-facing interfaces."
+   }
+  ],
+  "metadata_flags": [
+   {
+    "field": "stage",
+    "current": "growing",
+    "proposed": "mature",
+    "reason": "The body is ~2,077 words with 25 typed frontmatter links — well above the schema thresholds for 'mature' (800+ words or conceptually complete). The entry covers mythology, tools, pedagogy, agency, and swarm sessions with cross-domain synthesis throughout. 'Growing' understates what is here."
+   },
+   {
+    "field": "last_activated",
+    "current": "2026-04-01",
+    "proposed": "2026-06-26",
+    "reason": "Three months stale. The graffiti comment itself is dated 2026-04-01 and records structural changes made that day; the entry has clearly been touched and worked with since then (Trickster Commit was born referencing it, STIGMERGY §9 pins Trickster as a formal coordination role). Increment activation_count to 3."
+   },
+   {
+    "field": "forward_vector",
+    "current": "\"I intercept, delay, substitute, and subvert the expected signal to amplify understanding and joyful creation.**\"",
+    "proposed": "\"I intercept, delay, substitute, and subvert the expected signal to amplify understanding and joyful creation.\"",
+    "reason": "Stray '**' at the end of the YAML string — an unclosed markdown bold marker that leaked into the frontmatter. Functional YAML but visually incorrect and will render as literal asterisks in any surface that processes it."
+   },
+   {
+    "field": "activation_count",
+    "current": "2",
+    "proposed": "3",
+    "reason": "Should be incremented alongside last_activated update; the 2026-04-01 enchantment session was a substantive activation that added links, promoted type, and rewrote the forward vector."
+   }
+  ],
+  "graffiti": [
+   {
+    "direction": "claude_to_loudon",
+    "content": "Map-injected enchantment 2026-04-01 revealed three entries deepening this page without reciprocal links (Palace Agent Infrastructure Spec, Playful Interface Design, Retrospective Delay) — all now added. Type promoted to hub (degree 30+, well above threshold). Forward vector revised from \"I identify trickster logic\" to \"I generate threshold conditions\" — a shift from observer to generator. Latent Error's inbound link remains uninvestigated; flagged for next Walk. Dialogue Moderator relationship formalized as mirrors[opposite-threshold]: Moderator holds the inner/outer gap from inside; Trickster interrupts from outside. Same threshold, opposite vantage.",
+    "names_entries": [
+     "Palace Agent Infrastructure Spec",
+     "Playful Interface Design",
+     "Retrospective Delay",
+     "Latent Error",
+     "Dialogue Moderator"
+    ],
+    "assessment": "resolved",
+    "proposed_action": "The three reciprocal links are confirmed present in frontmatter. Latent Error's uninvestigated status is still current — the 'uninvestigated' label on the connects-to link has not been resolved; flag for a Walk session. The Dialogue Moderator coupling is in frontmatter as couples-with (not mirrors) — the comment says mirrors but the link type chosen was couples-with, which may have been deliberate. The comment can be cleared once Loudon confirms the Latent Error walk is scheduled."
+   }
+  ],
+  "forward_vector_check": {
+   "present": true,
+   "strength": "weak",
+   "proposed": "I keep breaking the expected signal — intercepting, delaying, substituting — so that what returns is truer than what was sent, and the cost of my work (the sacrifice at the threshold) is what proves the transformation was real."
+  },
+  "hero_avatar_request": {
+   "has_hero": true,
+   "has_icon": true,
+   "merits_face": false,
+   "rationale": "Both Trickster — hero.png and Trickster — icon.png exist in the bundle folder. No regeneration needed.",
+   "idiom": "",
+   "hero_prompt": "",
+   "icon_prompt": ""
+  },
+  "merge_shrink": {
+   "redundant_with": [],
+   "verbose": false,
+   "note": "Not redundant and not padded. The body earns its length: each section (Cross-Tradition Anatomy, Tools, Pedagogy, Agency, Swarm Sessions) makes a distinct structural claim rather than restating the same point. The 2,000+ words span mythology, DSP, pedagogy, and infrastructure coordination — all genuinely distinct registers. No trimming is warranted."
+  },
+  "summary": "Trickster is one of the palace's richest hubs — 25 typed frontmatter links, 2,077 body words, and genuine cross-domain synthesis across mythology, DSP, pedagogy, and swarm coordination. The structural health is good: all link types are canonical, the body covers its full claimed scope, and the one graffiti comment records work that was completed. Two unsung paths stand out: Entry Conatus (the body explicitly invokes 'striving-to-persist' for each spirit but doesn't register it) and Trickster Commit (born from this entry and not linked back as spawned). Three new introductions merit consideration: Boundary-Crossing Instruments (structurally isomorphic to threshold operation), Oblique Enrichment (the trickster pedagogy applied to the palace itself), and Speak Like a Person, Log Like a Protocol (the dual-register discipline is trickster logic applied to swarm communication). Metadata needs four corrections: stage should advance from growing to mature, last_activated and activation_count are three months stale, and the forward_vector has a stray '**' that is a syntax artifact from an earlier bold marker. The single graffiti comment is mostly resolved but the Latent Error walk it flagged is still open."
+ },
+ {
+  "entry_title": "Cross-Domain Resonances",
+  "unsung_paths": [
+   {
+    "body_phrase": "Douglas Hofstadter (*Gödel, Escher, Bach*): \"Analogy is the core of cognition.\"",
+    "references_entry": "Douglas Hofstadter",
+    "structurally_significant": true,
+    "proposed_link_type": "deepens",
+    "proposed_label": "cognitive-ground"
+   },
+   {
+    "body_phrase": "Source library (philosophers and artists who teach pattern recognition)",
+    "references_entry": "Source Library",
+    "structurally_significant": true,
+    "proposed_link_type": "connects-to",
+    "proposed_label": "draws-from"
+   },
+   {
+    "body_phrase": "Read Suzuki on beginner's mind ... Sidechain compression has the same structure as Suzuki's beginner's mind",
+    "references_entry": "Shunryu Suzuki",
+    "structurally_significant": true,
+    "proposed_link_type": "connects-to",
+    "proposed_label": "resonance-witness"
+   },
+   {
+    "body_phrase": "Oblique Strategies (random constraint breaks habits)",
+    "references_entry": "Brian Eno",
+    "structurally_significant": false,
+    "proposed_link_type": "connects-to",
+    "proposed_label": "constraint-practitioner"
+   },
+   {
+    "body_phrase": "Metric modulation (nested tempos)",
+    "references_entry": "Metric Modulation",
+    "structurally_significant": false,
+    "proposed_link_type": "exemplifies",
+    "proposed_label": "time-space-instance"
+   }
+  ],
+  "new_introductions": [
+   {
+    "entry_b": "Hilaritas Generator",
+    "link_type": "enables",
+    "direction": "Cross-Domain Resonances → Hilaritas Generator",
+    "rationale": "The explicit teaching mechanism described here — presenting structural identity across domains to produce the 'aha!' moment — is precisely the design primitive that fires the Hilaritas Generator; the resonances are the trigger mechanism for whole-being joy in Loudon's pedagogy."
+   },
+   {
+    "entry_b": "Metaphor as Coupling Medium",
+    "link_type": "contradicts",
+    "direction": "Cross-Domain Resonances ↔ Metaphor as Coupling Medium",
+    "rationale": "This entry insists the resonances are 'not metaphor — actual structural identity'; Metaphor as Coupling Medium argues that metaphor itself is the generative coupling force. The tension between these positions is live and productive — both can be true in different registers."
+   },
+   {
+    "entry_b": "Lateral Access",
+    "link_type": "couples-with",
+    "direction": "Cross-Domain Resonances ↔ Lateral Access",
+    "rationale": "Both entries describe oblique teaching vectors: Lateral Access teaches a subject by entering it sideways through an adjacent domain; the Resonances are the specific bridges those lateral entries travel. They co-activate in any lesson design that uses structural identity as an entry point."
+   }
+  ],
+  "metadata_flags": [
+   {
+    "field": "last_activated",
+    "current": "2026-03",
+    "proposed": "2026-06",
+    "reason": "It is now 2026-06-26; the field has not been updated since the entry was born, despite this hub being actively referenced."
+   },
+   {
+    "field": "activation_count",
+    "current": "1",
+    "proposed": "review and update",
+    "reason": "A hub with 13 spawned children, referenced by Source Library and Douglas Hofstadter, almost certainly has more than 1 activation; the count appears never updated."
+   },
+   {
+    "field": "forward_vector",
+    "current": "I want to become the complete index...",
+    "proposed": "See forward_vector_check for replacement",
+    "reason": "'I want to become' is a stasis-adjacent construction (SCHEMA §3 warns against 'remain, stay, continue, be'); the vector should use striving verbs throughout."
+   }
+  ],
+  "graffiti": [],
+  "forward_vector_check": {
+   "present": true,
+   "strength": "weak",
+   "proposed": "I keep growing the bridge network — testing every new isomorphism against the structural-identity criterion (not just a poetic rhyme), promoting the ones that transfer bidirectionally into their own entries, and pushing each of those to earn its [[FOUR PILLARS]] exemplification so the palace doesn't accumulate cute parallels but real transferable patterns."
+  },
+  "hero_avatar_request": {
+   "has_hero": true,
+   "has_icon": true,
+   "merits_face": false,
+   "rationale": "Both Cross-Domain Resonances — hero.png and Cross-Domain Resonances — icon.png are confirmed present in the bundle folder at /Users/loudonstearns/Documents/The Palace/Cross-Domain Resonances/.",
+   "idiom": "",
+   "hero_prompt": "",
+   "icon_prompt": ""
+  },
+  "merge_shrink": {
+   "redundant_with": [],
+   "verbose": true,
+   "note": "The body carries significant textbook/survey padding: the five-category 'Categories of Resonance' section with tri-part sub-entries and boilerplate 'Why This Works' paragraphs (~120 lines) rehearses content that largely duplicates the spawned bridge entries. The 'Teaching with Resonances' section duplicates the Sidechain ↔ Conversation entry's content. The 'Design Principles' and 'How to Discover New Resonances' procedural sections read like a methods chapter rather than a hub entry. Aggressive pruning target: collapse Categories into a one-paragraph overview pointing to child entries; cut the example lesson (it belongs in the Sidechain bridge); keep Pattern Library and Open Questions. Estimate ~40-50% reduction possible."
+  },
+  "summary": "Cross-Domain Resonances is a well-formed hub entry that correctly spawns 10 bridge entries and connects to its founding conversation and the Four Pillars. The bundle is healthy with hero and icon in place. The main structural gaps are five unsung paths — Douglas Hofstadter (the intellectual anchor for the whole entry's claim, quoted by name), Source Library (named in the body as a partner collection), Shunryu Suzuki (used twice as a teaching example), Brian Eno via Oblique Strategies, and Metric Modulation — none of which have YAML frontmatter links. Three new introductions are worth considering: a link to Hilaritas Generator (the resonances are the trigger mechanism for the 'aha' it describes), a productive contradiction with Metaphor as Coupling Medium, and a coupling with Lateral Access. The forward vector needs its stasis phrase replaced with striving verbs. Metadata staleness (last_activated, activation_count) is routine maintenance. The body is verbose: the categorical survey sections and the example lesson duplicate content better housed in child bridge entries, and could be cut by 40-50%."
+ },
+ {
+  "entry_title": "Source Library",
+  "unsung_paths": [
+   {
+    "body_phrase": "per [[Pages as Agents]]",
+    "references_entry": "Pages as Agents",
+    "structurally_significant": true,
+    "proposed_link_type": "connects-to",
+    "proposed_label": "embodiment-doctrine"
+   },
+   {
+    "body_phrase": "I keep pulling new voices in (the Stoics, Oliveros, Schafer, Nakashima)",
+    "references_entry": "Stoicism",
+    "structurally_significant": true,
+    "proposed_link_type": "connects-to",
+    "proposed_label": "home-tradition"
+   }
+  ],
+  "new_introductions": [
+   {
+    "entry_b": "Palace Philosophies",
+    "link_type": "connects-to",
+    "direction": "Source Library → Palace Philosophies",
+    "rationale": "Palace Philosophies is the philosophical register of the palace — the traditions (Stoicism, Zen, Taoism, Deleuze) that Source Library's roster embodies person-by-person; the two entries are sibling catalogues of the same intellectual territory, one by tradition and one by thinker."
+   },
+   {
+    "entry_b": "Quality Manifesto",
+    "link_type": "connects-to",
+    "direction": "Source Library → Quality Manifesto",
+    "rationale": "The 'Success Metrics' section at the end of Source Library explicitly rejects output-volume metrics in favour of the 'can you apply it / can you teach it' test — the same paradigm-level redirect that Quality Manifesto makes with its 'How do you feel?' signal; the two entries share the same anti-metric doctrine."
+   },
+   {
+    "entry_b": "Hilaritas Generator",
+    "link_type": "enables",
+    "direction": "Source Library → Hilaritas Generator",
+    "rationale": "The entry's reading strategy (one source for 3 months, three-level engagement culminating in teaching others) is a concrete implementation recipe for the Hilaritas Generator's mechanism — 'loading a member wakes them' is exactly the increased power-to-act Spinoza describes; Source Library is the fuel."
+   }
+  ],
+  "metadata_flags": [
+   {
+    "field": "links[2..6] type",
+    "current": "type: spawned (for Donella Meadows, Shunryu Suzuki, Marcus Aurelius, Lao Tzu, Brian Eno)",
+    "proposed": "Remove all five. Per SCHEMA §4: 'spawned' means A directly produced B — Source Library did not produce these people. Per the directionality note: 'A collection/hub never emits member-of at its own members — membership is declared on the member side; the Map computes the hub's inbound degree.' All five people already declare member-of → Source Library in their own YAML, so these links are both wrong-typed and redundant.",
+    "reason": "SCHEMA §4 prohibits hub-to-member link emission; 'spawned' means 'produced as output', which is semantically wrong here."
+   },
+   {
+    "field": "last_activated",
+    "current": "2026-03",
+    "proposed": "2026-06-26 (or whenever the next touch is confirmed)",
+    "reason": "Entry was born 2026-03 and has never been updated; today is 2026-06-26. The field is stale."
+   },
+   {
+    "field": "activation_count",
+    "current": "1",
+    "proposed": "Increment to at least 2 once re-activated this session",
+    "reason": "Has not been incremented since birth; audit counts as an activation."
+   }
+  ],
+  "graffiti": [],
+  "forward_vector_check": {
+   "present": true,
+   "strength": "strong",
+   "proposed": "I keep pulling new voices into embodiment — every thinker who walks in gets pushed from a biographical description toward an inhabitable register, so that loading a member wakes them rather than merely describes them. I keep updating myself as the roster grows: the Stoics, Oliveros, Schafer, Nakashima all waiting to be fully inhabited, per [[Pages as Agents]]."
+  },
+  "hero_avatar_request": {
+   "has_hero": true,
+   "has_icon": true,
+   "merits_face": false,
+   "rationale": "Both Source Library — hero.png and Source Library — icon.png are present in the bundle folder at /Users/loudonstearns/Documents/The Palace/Source Library/. No regeneration needed.",
+   "idiom": "",
+   "hero_prompt": "",
+   "icon_prompt": ""
+  },
+  "merge_shrink": {
+   "redundant_with": [],
+   "verbose": true,
+   "note": "The body runs ~260 lines of prose but roughly half is teaching-curriculum material that belongs in a Loudon Live artifact, not a palace entry: the 'Monthly Arc' reading plan with quarterly breakdowns (Jan/Feb/Mar cadence), the 'Three-Level Engagement' how-to guide, the 'How to Use This Library' for Teaching/Personal Study/Students sections, and the 'Core Five' starter list with three-months-each arithmetic. These sections read as a course syllabus pasted into a knowledge entry. The structural sections worth keeping: curation principle (the test), organization by role (the roster itself), 'How Sources Connect to Themes' (the cross-pollination pattern), and Open Questions. The success-metrics section is also good but should link to Quality Manifesto. Estimate: cut ~40% to strip the how-to scaffolding; relocate curriculum planning to a bundle sketch file or a Loudon Live artifact."
+  },
+  "summary": "Source Library is a legitimately important hub — 25+ people entries already point inward via member-of, confirming its graph centrality — but its own YAML is in poor shape. The five 'spawned' outbound links to member people are both wrong-typed (spawned = produced as output) and redundant (SCHEMA says the hub never emits back at its members). Those five links should be removed entirely. The forward vector is strong and genuinely conatus-forward. Two unsung paths need YAML registration: [[Pages as Agents]] (wikilinked in the forward vector) and Stoicism (named obliquely as 'the Stoics'). Three new topological introductions are warranted: Palace Philosophies (sibling catalogue), Quality Manifesto (shared anti-metric doctrine in the Success Metrics section), and Hilaritas Generator (Source Library's reading strategy is a concrete implementation of the hilaritas mechanism). The body is verbose with course-syllabus material that belongs in a Loudon Live artifact rather than a palace entry; a ~40% cut removing the Monthly Arc, Three-Level Engagement, and How-to-Use sections would sharpen the entry significantly. Hero and icon are already present in the bundle."
+ },
+ {
+  "entry_title": "Loudon's Toolkit",
+  "unsung_paths": [
+   {
+    "body_phrase": "## Four Pillars Alignment (section header + all four pillar bullets discuss FOUR PILLARS explicitly, including 'Spinozist conatus' and 'signal chain is the ecology')",
+    "references_entry": "FOUR PILLARS",
+    "structurally_significant": true,
+    "proposed_link_type": "exemplifies",
+    "proposed_label": "toolkit-as-four-pillars-instance"
+   },
+   {
+    "body_phrase": "Synthesis environments (hardware synths, Max/MSP, RNBO) → generate and transform sound digitally",
+    "references_entry": "FOUR PILLARS",
+    "structurally_significant": false,
+    "proposed_link_type": "connects-to",
+    "proposed_label": "named-in-ecosystem"
+   }
+  ],
+  "new_introductions": [
+   {
+    "entry_b": "FOUR PILLARS",
+    "link_type": "exemplifies",
+    "direction": "Loudon's Toolkit → FOUR PILLARS",
+    "rationale": "The entry has an entire dedicated section 'Four Pillars Alignment' mapping each pillar to the toolkit's role, making it a concrete instance of the framework — yet the YAML link points to the derived concept [[Four Pillars of Enchanted Agency]] instead of the foundational hub."
+   },
+   {
+    "entry_b": "Loudon Live",
+    "link_type": "enables",
+    "direction": "Loudon's Toolkit → Loudon Live",
+    "rationale": "Toolkit — Synthesizers explicitly mentions the 'Loudon Live RTM series' as an output of this cluster, and the toolkit's layered signal-chain map is the material Loudon Live performs with — the toolkit enables the public teaching stream."
+   },
+   {
+    "entry_b": "Boundary-Crossing Instruments",
+    "link_type": "connects-to",
+    "direction": "Loudon's Toolkit → Boundary-Crossing Instruments",
+    "rationale": "The body's signal-chain framing — physical gesture → digital data → sound → programming → visual — describes the multi-domain crossing that Boundary-Crossing Instruments theorizes; the toolkit is the physical instantiation of that concept."
+   }
+  ],
+  "metadata_flags": [
+   {
+    "field": "forward_vector",
+    "current": "Become a complete, navigable map of every instrument, tool, and environment Loudon uses — giving any agent immediate orientation in the physical and digital ecosystem from which the work emerges.",
+    "proposed": "I keep building outward — one category entry at a time — until any agent can open me, pick a domain, and know exactly what Loudon reaches for, how fluent he is with it, and why it sits where it does in the signal chain.",
+    "reason": "Current vector uses 'Become' (stative future, not conatus-striving) and passive third-person. Per SCHEMA §3 and the forward-vector feedback, vectors must be first-person and use verbs of striving, not arrival."
+   },
+   {
+    "field": "last_activated",
+    "current": "2026-04",
+    "proposed": "2026-06",
+    "reason": "Entry was read/engaged as part of this Weave session in 2026-06; field should be updated and activation_count incremented."
+   },
+   {
+    "field": "activation_count",
+    "current": "1",
+    "proposed": "2",
+    "reason": "Entry was activated in this audit session; count should increment."
+   },
+   {
+    "field": "links[1].target (Four Pillars of Enchanted Agency)",
+    "current": "connects-to / grounds-in → [[Four Pillars of Enchanted Agency]]",
+    "proposed": "Add a separate exemplifies link to [[FOUR PILLARS]] (foundational hub); the existing Enchanted Agency link may stay but is not a substitute for the hub link given the dedicated Four Pillars Alignment section in the body.",
+    "reason": "The body has a full 'Four Pillars Alignment' section that maps each pillar to the toolkit — this is a structural exemplification of [[FOUR PILLARS]], not of its derived concept. Missing the hub link is a topology gap."
+   },
+   {
+    "field": "links[2].type (Toolkit Assessment — Working Doc)",
+    "current": "couples-with / built-with",
+    "proposed": "emerged-from / built-by",
+    "reason": "The Toolkit Assessment Working Doc declares 'enables → Loudon's Toolkit', pointing forward from tool to product. The reciprocal on this side should be 'emerged-from' (Loudon's Toolkit crystallized from the working doc interviews), not the symmetric 'couples-with' which implies equal mutual reinforcement."
+   }
+  ],
+  "graffiti": [
+   {
+    "direction": "claude_to_loudon",
+    "content": "CLAUDE → LOUDON: This entry will need a `type: hub` promotion confirmed during a future Weave once it accumulates ≥5 typed links (currently 3). The table above will need status updates as category interviews complete.",
+    "names_entries": [],
+    "assessment": "stale",
+    "proposed_action": "The entry already has type: hub and 6 typed links (exceeding the ≥5 threshold), so the first sentence is resolved. The second sentence about table status updates remains live but is obvious operational guidance. Recommend replacing with a leaner note: 'CLAUDE → LOUDON: Category table needs status updates as remaining interviews complete.' or simply delete if the table itself tracks status adequately."
+   }
+  ],
+  "forward_vector_check": {
+   "present": true,
+   "strength": "weak",
+   "proposed": "I keep building outward — one category entry at a time — until any agent can open me, pick a domain, and know exactly what Loudon reaches for, how fluent he is with it, and why it sits where it does in the signal chain."
+  },
+  "hero_avatar_request": {
+   "has_hero": true,
+   "has_icon": true,
+   "merits_face": false,
+   "rationale": "Both hero.png and icon.png are present in the bundle folder at /Users/loudonstearns/Documents/The Palace/Loudon's Toolkit/. No new generation needed.",
+   "idiom": "",
+   "hero_prompt": "",
+   "icon_prompt": ""
+  },
+  "merge_shrink": {
+   "redundant_with": [],
+   "verbose": false,
+   "note": "Entry is appropriately lean for a hub-level index. The body is largely structural (a table, a layered diagram, a pillars alignment section) rather than discursive — this is the right shape for a hub. The 'Four Pillars Alignment' section is genuinely load-bearing because it maps the framework onto the toolkit's specific logic. No boilerplate to cut."
+  },
+  "summary": "Loudon's Toolkit is a well-formed hub index — lean body, structural table, clear pillar alignment section — but has three significant structural gaps: (1) the dedicated 'Four Pillars Alignment' section in the body has no YAML link to [[FOUR PILLARS]] (the foundational hub), only to the derived [[Four Pillars of Enchanted Agency]]; (2) the link to [[Toolkit Assessment — Working Doc]] uses 'couples-with' but the working doc itself points forward with 'enables', creating a directionality mismatch that should resolve to 'emerged-from'; (3) the forward vector uses a stative 'Become' arrival-framing instead of a conatus-striving first-person voice. The one graffiti comment is stale — it flags a hub promotion that has already happened and reports 3 links where there are now 6. Hero and icon are present in the bundle. The entry legitimately merits adding [[FOUR PILLARS]] (exemplifies) and [[Loudon Live]] (enables) as new introductions given the content already in the body and in sibling category entries."
+ },
+ {
+  "entry_title": "Leibniz",
+  "unsung_paths": [
+   {
+    "body_phrase": "toward [[STIGMERGY]] (where coordination is the opposite: marks left on a shared medium, all window)",
+    "references_entry": "STIGMERGY",
+    "structurally_significant": true,
+    "proposed_link_type": "contradicts",
+    "proposed_label": "windowless-vs-pheromone"
+   }
+  ],
+  "new_introductions": [
+   {
+    "entry_b": "Deleuze",
+    "link_type": "connects-to",
+    "direction": "Leibniz → Deleuze",
+    "rationale": "Deleuze wrote his doctoral thesis on Leibniz (The Fold) and radicalizes the monad concept into the virtual/actual distinction the palace already uses; the two entries share the Spinoza-monism neighborhood and the absence of this link is a topological gap."
+   },
+   {
+    "entry_b": "Embeddings as Relational Meaning",
+    "link_type": "mirrors",
+    "direction": "Leibniz → Embeddings as Relational Meaning",
+    "rationale": "The core claim of both entries is identical: the network is the knowledge, each locus mirrors the totality — a word embedding IS a monad in the mathematical sense, each vector containing the whole vocabulary from its own angle."
+   },
+   {
+    "entry_b": "BBS Blackboard",
+    "link_type": "contradicts",
+    "direction": "Leibniz → BBS Blackboard",
+    "rationale": "The body's tail explicitly sets up the quarrel between windowless monads and marks-on-a-shared-medium; BBS Blackboard is the conceptual origin of STIGMERGY and carries the stigmergic coordination logic that the entry is arguing against."
+   }
+  ],
+  "metadata_flags": [
+   {
+    "field": "stage",
+    "current": "sprout",
+    "proposed": "growing",
+    "reason": "Body is ~600 words with 6 typed frontmatter links and genuine cross-domain content spanning three distinct sections — well past the sprout threshold (150-400 words, 1-2 typed links). Should advance to growing."
+   },
+   {
+    "field": "domains",
+    "current": "[philosophy]",
+    "proposed": "[philosophy, mathematics, computation]",
+    "reason": "Leibniz was co-inventor of the calculus and builder of one of the first mechanical calculators — both domains the palace already treats as pillars (tools). The entry itself mentions these facts in line 1 of the body. Omitting them makes the person entry incomplete per the SCHEMA person-type spec."
+   },
+   {
+    "field": "last_activated",
+    "current": "2026-06",
+    "proposed": "2026-06-26",
+    "reason": "Field uses YYYY-MM format which is correct, but worth noting it needs updating to the current session date (2026-06). No change needed if already set to 2026-06."
+   }
+  ],
+  "graffiti": [],
+  "forward_vector_check": {
+   "present": true,
+   "strength": "strong",
+   "proposed": "I keep casting Indra's Net across the palace — reminding every entry that it already contains the whole graph from its own angle, and pushing the live quarrel with Whitehead toward a real answer: when does a typed link become a prehension rather than a windowless reflection?"
+  },
+  "hero_avatar_request": {
+   "has_hero": true,
+   "has_icon": true,
+   "merits_face": false,
+   "rationale": "Both Leibniz — hero.png and Leibniz — icon.png exist in the bundle folder. No new generation needed.",
+   "idiom": "",
+   "hero_prompt": "",
+   "icon_prompt": ""
+  },
+  "merge_shrink": {
+   "redundant_with": [],
+   "verbose": false,
+   "note": "The entry is tightly written — three well-differentiated sections, each load-bearing. No survey padding. The body sits at roughly 600 words, appropriate for the growing stage it should be at. The italic tail at the end carries genuine generative tension rather than boilerplate. No merge or shrink warranted."
+  },
+  "summary": "Leibniz.md is a clean, well-written person entry at the sprout stage that should already be growing — it has 6 typed frontmatter links and roughly 600 focused words across three genuinely distinct sections (monad metaphysics, three palace readings of Indra's Net, and a productive contradiction with Whitehead). The most significant structural gap is that the body's closing paragraph directly names and links [[STIGMERGY]] as the counterpoint to Leibniz's windowless monads, but STIGMERGY is absent from the frontmatter links — a textbook unsung path that should become a contradicts edge. The domains field is thin, missing mathematics and computation. Three good introduction candidates exist: Deleuze (whose entire Fold book is the Leibniz-to-palace bridge), Embeddings as Relational Meaning (which is literally a monad in the mathematical sense), and BBS Blackboard (the stigmergic origin concept the entry argues against in its tail). Hero and icon are already present."
+ },
+ {
+  "entry_title": "Learning Materials and Canon",
+  "unsung_paths": [
+   {
+    "body_phrase": "the Weave's topology scan keys on `type:`; frontmatter-less files are already skipped",
+    "references_entry": "Weave Ceremony",
+    "structurally_significant": true,
+    "proposed_link_type": "enables",
+    "proposed_label": "governed-by"
+   },
+   {
+    "body_phrase": "Don't deposit a learning material as an entry; don't add canon frontmatter to a product.",
+    "references_entry": "Deposit Ceremony",
+    "structurally_significant": true,
+    "proposed_link_type": "enables",
+    "proposed_label": "rule-for"
+   }
+  ],
+  "new_introductions": [
+   {
+    "entry_b": "SUBSTRATE",
+    "link_type": "deepens",
+    "direction": "Learning Materials and Canon → SUBSTRATE",
+    "rationale": "SUBSTRATE is the palace self-model; this entry defines what gets counted as palace content at all — the canon membership rule is a prerequisite for any accurate self-description of the palace's topology."
+   },
+   {
+    "entry_b": "Pages as Agents",
+    "link_type": "enables",
+    "direction": "Learning Materials and Canon → Pages as Agents",
+    "rationale": "Pages as Agents depends on knowing which files ARE pages (canon entries with frontmatter) versus products; the canon/material line this entry draws is what makes a given file eligible to be an agent at all."
+   },
+   {
+    "entry_b": "Loudon Live Design System",
+    "link_type": "connects-to",
+    "direction": "Learning Materials and Canon → Loudon Live Design System",
+    "rationale": "The Loudon Live Design System governs the aesthetic of delivered learning-material products; this entry defines that layer's boundary, making it the structural complement to the design system that governs that same layer."
+   }
+  ],
+  "metadata_flags": [
+   {
+    "field": "last_activated",
+    "current": "absent",
+    "proposed": "2026-06",
+    "reason": "Strongly recommended field is missing; entry was clearly active in 2026-06 (born 2026-06, SCHEMA v1.13 references it by date 2026-06-16)."
+   },
+   {
+    "field": "activation_count",
+    "current": "absent",
+    "proposed": "1",
+    "reason": "Strongly recommended field is missing; minimum of 1 (this session) is warranted."
+   },
+   {
+    "field": "links[0].type (target: [[SCHEMA]])",
+    "current": "connects-to",
+    "proposed": "deepens",
+    "reason": "This entry elaborates and clarifies a specific rule within SCHEMA (the frontmatter-as-membership-card rule, v1.13); per SCHEMA §4, deepens points from the derived/elaborating entry back to its ground — the direction here is Learning Materials and Canon → SCHEMA, which is correct. The label 'membership-rule' stays."
+   }
+  ],
+  "graffiti": [],
+  "forward_vector_check": {
+   "present": true,
+   "strength": "strong",
+   "proposed": "I keep the canon/learning-material line legible by the cheapest possible signal — frontmatter — and I watch how well that bright line holds, ready to be sharpened or relaxed as the swarm bumps against the permeable seam."
+  },
+  "hero_avatar_request": {
+   "has_hero": false,
+   "has_icon": false,
+   "merits_face": true,
+   "rationale": "Stage is growing and the entry plays a structurally load-bearing role in the palace — it is the sole explicit statement of the canon membership rule that SCHEMA, CLAUDE, and the Deposit Ceremony all defer to. A visual identity would make it more recognizable when agents traverse the meta layer.",
+   "idiom": "Gorey ink crosshatch",
+   "hero_prompt": "Edward Gorey ink crosshatch illustration, wide darkened backdrop, a tall ornate gate standing open in a fog-draped landscape — one side shows a garden of neatly ordered cards and books lit from within, the other side shows loose scrolls and posters drifting in wind; a single slender figure stands at the threshold with a quill, making a mark on the gateposts; no letters, numerals, words, labels — purely pictorial",
+   "icon_prompt": "Bold high-contrast square emblem in Gorey ink style — a heavy gate latch or bolt drawn as a thick black bar with a small keyhole, set on stark white, no fine linework, no letters, numerals, words, or labels — survives at 24px"
+  },
+  "merge_shrink": {
+   "redundant_with": [],
+   "verbose": false,
+   "note": "The entry is tight and functional at 426 body words with no survey padding. SCHEMA §1 already summarizes the canon rule inline and cross-references this entry; the two are complementary, not redundant — SCHEMA defines structure, this entry narrates the seam and its history. No merge or shrink warranted."
+  },
+  "summary": "Learning Materials and Canon is a lean, well-written meta entry (426 body words, stage: growing, 4 typed links) that does exactly one job: names and holds the bright line between palace canon (frontmatter-bearing .md entries) and learning-material products (frontmatter-less). The forward vector is strong and conatus-aligned. Two structurally significant body references — the Weave Ceremony's topology scan and the Deposit Ceremony's governing rule — are unsung (no YAML links). Three new topology introductions are warranted: SUBSTRATE (the self-model that depends on knowing what counts as palace content), Pages as Agents (eligibility to act as an agent tracks the canon boundary directly), and Loudon Live Design System (the aesthetic system governing the product layer this entry defines). The SCHEMA link should be upgraded from connects-to to deepens. Two strongly recommended fields (last_activated, activation_count) are absent. No graffiti, no redundancy, no verbosity. No hero or icon exists; the entry merits both at stage growing, and a Gorey ink gate-threshold image captures its role as a permeable boundary guardian."
+ },
+ {
+  "entry_title": "Worktree Practice",
+  "unsung_paths": [
+   {
+    "body_phrase": "the [[Deposit Archive]] is frozen, no row to append",
+    "references_entry": "Deposit Archive",
+    "structurally_significant": false,
+    "proposed_link_type": "connects-to",
+    "proposed_label": "frozen-record"
+   }
+  ],
+  "new_introductions": [
+   {
+    "entry_b": "Stoicism",
+    "link_type": "deepens",
+    "direction": "Worktree Practice → Stoicism",
+    "rationale": "The Resonance section explicitly invokes prohairesis and fortuna from Stoic doctrine; the entry deepens Stoicism by applying it at the git layer — own HEAD is the prohairesis boundary, the shared trunk is the fortuna domain — yet only links to the downstream concept The Dichotomy of Control, not to its Stoic ground."
+   },
+   {
+    "entry_b": "Project Stewardship System",
+    "link_type": "enables",
+    "direction": "Worktree Practice → Project Stewardship System",
+    "rationale": "The Stewardship System's Stage F explicitly runs both branches to a finished deliverable in isolated worktrees; the worktree practice is the git-layer precondition that makes Stage F's parallel-exploration pattern safe and repeatable."
+   },
+   {
+    "entry_b": "Palace Agent Infrastructure Spec",
+    "link_type": "connects-to",
+    "direction": "Worktree Practice ↔ Palace Agent Infrastructure Spec",
+    "rationale": "The spec mandates the one-write-path rule for the blackboard; the worktree practice is the operational form of that rule at the filesystem and branch layer — they are two faces of the same multi-agent coordination constraint."
+   }
+  ],
+  "metadata_flags": [
+   {
+    "field": "activation_count",
+    "current": "1",
+    "proposed": "review and increment — the body records a verified happy-path run on 2026-06-17 and the entry is referenced heavily in MEMORY.md as a live operational practice; count of 1 appears undercounted",
+    "reason": "activation_count should reflect actual engagement depth; a born-and-never-revisited entry is 1, but a practice actively used and verified mid-month warrants a higher count"
+   },
+   {
+    "field": "last_activated",
+    "current": "2026-06",
+    "proposed": "2026-06 is correct month but the body records a 2026-06-17 verification; if the entry was updated at that point, confirm the date is current",
+    "reason": "low confidence flag — month granularity is fine by schema, but worth confirming the activation was recorded at all"
+   }
+  ],
+  "graffiti": [],
+  "forward_vector_check": {
+   "present": true,
+   "strength": "strong",
+   "proposed": ""
+  },
+  "hero_avatar_request": {
+   "has_hero": false,
+   "has_icon": false,
+   "merits_face": true,
+   "rationale": "type:practice at stage:growing with 6 typed links and a philosophy-pillar concept at its core (The Dichotomy of Control / Stoicism); the entry is a load-bearing operational practice that underpins all multi-agent palace work, putting it on par with other growing practices that carry hero images",
+   "idiom": "woodcut print",
+   "hero_prompt": "Wide darkfield woodcut print, deep indigo ground. A central image: a single gnarled oak tree in a cleared field, its root system visible below the soil line, each root ending in a separate torch flame. Above ground the trunk rises alone into a dark sky — one trunk, one crown. Several smaller saplings stand in a ring around it at a distance, each on its own patch of earth, their own root systems isolated but their crowns beginning to incline toward the central tree. No letters, numerals, words, labels — purely pictorial. Hard woodcut lines, high contrast, no photographic texture.",
+   "icon_prompt": "Bold square woodcut emblem on near-black ground: a thick central vertical trunk bisected by a horizontal line — above the line one branch crown, below it three separated root bundles spreading outward. Maximum contrast, no fine linework, no letters, numerals, words, or labels — purely pictorial, survives at 24px."
+  },
+  "merge_shrink": {
+   "redundant_with": [],
+   "verbose": false,
+   "note": ""
+  },
+  "summary": "Worktree Practice is a well-formed, tightly written practice entry that fills a genuine operational gap in the palace's coordination vocabulary. Its six YAML links are all canonical and its labels are evocative. The main structural gap is the absence of links to its philosophical ancestors (Stoicism proper, not just its downstream concept) and to the two systems it directly enables (Project Stewardship System's Stage F and Palace Agent Infrastructure Spec's one-write-path rule). One body wikilink — Deposit Archive — is unregistered in YAML. No HTML comments, no graffiti. The forward vector is strong. The entry merits a hero image given its stage and operational weight. No redundancy or verbosity concerns."
+ }
+]
