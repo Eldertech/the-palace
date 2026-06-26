@@ -8,7 +8,7 @@ tool_version: "5.1.2 + comfyui_controlnet_aux draw_bodypose (verified Mac/MPS 20
 born: 2026-06
 last_tested: 2026-06-26
 license: GPL-3.0
-forward_vector: "Hand me a pose and I hand back a figure ready for the gen-AI ink — three ALIGNED conditioning plates from one rig: a Freestyle ink silhouette, a depth map, and a CANONICAL OpenPose drawn by the real ControlNet library so the model actually reads it. I am the figure-staging method [[Frame Designer]] was missing. I am hunting a real mannequin mesh to replace my cylinders — one that clearly shows where the face points — and a pose library, so a frame is dialed, not hand-typed."
+forward_vector: "Hand me a pose and I hand back a figure ready for the gen-AI ink — three ALIGNED conditioning plates from one rig: a Freestyle ink silhouette, a depth map, and a CANONICAL OpenPose drawn by the real ControlNet library so the model actually reads it. I am the figure-staging method [[Frame Designer]] was missing. I now wear a real articulated mannequin mesh — tapered limbs, joint balls, an egg head with a nose nub that shows where the face points — and my OpenPose face keypoints track the actual head direction. I am hunting a pose library so a frame is dialed not hand-typed, and finer skin + real feet for extreme poses."
 links:
   - { target: "[[The Shop]]", type: member-of, label: roster-member }
   - { target: "[[Frame Designer]]", type: connects-to, label: staging-method }
@@ -31,7 +31,7 @@ I turn a **pose** into a figure ready for the hand-drawn-3D seam. One FK rig (Ri
 - **downstream recipe (the payoff):** the **D2 redraw** — img2img over the ink plate, anchored **canny 0.30 + depth 0.60 + openpose 0.70** at denoise 0.92 → a posed figure inked in the locked style, **pose held** (proven end-to-end 2026-06-26).
 
 ## How it works — two steps, one camera
-1. `pose_rig.py` (Blender headless): build the FK rig, pose it, render ink + depth, project the 18 canonical keypoints via `world_to_camera_view`.
+1. `pose_rig_mesh.py` (Blender headless): build the FK rig, pose it, build + skin the **mannequin mesh**, render ink + depth, and project the 18 canonical keypoints via `world_to_camera_view` — with facing read from the head bone's world matrix. *(The original `pose_rig.py` is the capsule-mesh version, kept for reference.)*
 2. `draw_openpose.py` (ComfyUI venv python): draw those keypoints with the real `draw_bodypose`.
 
 ## Gotchas (hard-won)
@@ -44,16 +44,16 @@ I turn a **pose** into a figure ready for the hand-drawn-3D seam. One FK rig (Ri
 ## Tiers
 - **Sketch** — named pose + capsule mesh: instant blocking.
 - **Study** — a `--pose-json` custom pose + the D2 redraw: a real inked figure to judge.
-- **Piece** — *awaits a real mannequin mesh* (see Forward Vectors).
+- **Piece** — the real mannequin mesh + custom pose + D2 redraw → a believable inked figure with legible facing.
 
 ## Honest limits
-- **Mesh is capsules** (cylinders + joint spheres + a head sphere) — a clean depth silhouette, but not a real mannequin; the redraw is rough at this fidelity.
-- **Face keypoints are synthesized** from head position + an assumed facing (−Y) — approximate on strong profiles. A real mesh that *shows* facing is the next build.
-- **FK only** — no IK; a crouch needs thigh + shin set independently.
+- **Mesh** *(upgraded 2026-06-26)* is a real articulated mannequin (`pose_rig_mesh.py`): tapered limb segments + joint balls + a chest block + a pelvis wedge + an egg head with a **nose nub + brow ridge**, joined and skinned to the rig via Automatic Weights. Reads as a wooden artist's mannequin, and the nub makes facing legible in ink + depth.
+- **Facing is real** — the OpenPose nose/eyes/ears derive from the **head bone's world matrix**, so they track head-turns and profiles instead of assuming −Y.
+- Remaining: **FK only** (no IK); **feet are primitive** paddles (no toe spread); Automatic Weights are adequate but can collapse a little at joints under extreme poses (vertex-group painting would fix it); no clavicle blocks.
 
 ## Forward Vectors
-- **A real mannequin mesh** — skin a proper humanoid onto this exact rig (Rigify-named bones) that **clearly shows where the face points**, so depth and facing read true. *The live build (2026-06-26).*
 - **A pose library** — dial a frame from a catalogue, not hand-typed JSON.
-- **Per-bone facing** — read head orientation from the bone matrix for the eyes/ears instead of assuming −Y.
+- **Finer skin + real feet** — vertex-group weights for extreme poses; feet with toe spread.
+- *(Closed 2026-06-26: the real mannequin mesh with a face-pointing nub, and head-bone-derived facing for the OpenPose keypoints.)*
 
-Tools: `Projects/BLUELINE/proofs/blender-handdrawn/followups/rig-openpose/` — `pose_rig.py` · `draw_openpose.py` · `redraw_test.py`.
+Tools: `Projects/BLUELINE/proofs/blender-handdrawn/followups/rig-openpose/` — `pose_rig_mesh.py` (mannequin) · `pose_rig.py` (capsule, reference) · `draw_openpose.py` · `redraw_test.py`.
