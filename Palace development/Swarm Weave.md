@@ -45,6 +45,9 @@ links:
   - target: "[[STIGMERGY]]"
     type: connects-to
     label: coordinated-on
+  - target: "[[Hero and Avatar Maker]]"
+    type: connects-to
+    label: face-check-dispatch
 ---
 
 # Swarm Weave
@@ -181,23 +184,26 @@ USER:
    strong (specific, actionable) or weak (vague, generic). Flag weak
    vectors for rewrite.
 
-4. GRAFFITI AUDIT:
-   Extract all HTML comments from the entry body (<!-- ... -->).
-   For each comment, report:
-   - Direction: loudon_to_claude (unsigned comment) or
-     claude_to_loudon (prefixed <!-- CLAUDE → LOUDON: ... -->)
-   - The comment text verbatim
-   - Any palace entry titles explicitly referenced inside it
-   - Assessment:
-     - live: concern still valid, action still needed
-     - resolved: the entry's current state already addresses the comment
-     - stale: the concern has been superseded (e.g. "needs more
-       connections" on an entry now with 8 typed links)
-   IMPORTANT: if a comment names another entry and no corresponding YAML
-   frontmatter link exists, route it to unsung_paths with
-   source: "graffiti" — do not leave it in graffiti only. A
-   comment-level reference that names a connection is an unsung path;
-   the prose already asserts the relationship. Treat it as such.
+6. FACE CHECK — Hero/Avatar Request:
+   Look in the assigned entry's bundle folder ([Entry]/) for a hero and
+   avatar: files named "[Entry] — hero.png" and "[Entry] — icon.png" (or
+   any "* — hero.png" / "* — icon.png" — STIGMERGY prefers the
+   title-matched name, else any). Report has_hero / has_icon. If a face is
+   MISSING and the entry merits one — type project; a hub or any entry with
+   ≥5 typed links; a philosophy-pillar concept; or stage growing or beyond
+   — propose one in [[Hero and Avatar Maker]]'s locked art direction:
+   - idiom: an apt hand-drawn / printmaking / classical medium (screenprint,
+     woodcut, Haeckel engraving, Gorey ink, Klee gouache, diagram). NEVER
+     CGI / Pixar / octane / glossy 3-D render.
+   - hero_prompt: wide ~12:5 darkened backdrop, ONE dominant metaphor drawn
+     from the entry's forward vector, the medium named explicitly, a hard
+     anti-text clause ("no letters, numerals, words, labels — purely
+     pictorial"), balanced gender if figures are present, evoke rather than
+     render real people.
+   - icon_prompt: a bold, high-contrast square emblem (its own mark, not a
+     hero crop) that survives 24-48px; ban fine linework; hard anti-text.
+   You only PROPOSE. Nothing is rendered in the Weave — rendering bills
+   (RunPod FLUX) and runs as a gated batch after Loudon approves the prompts.
 
 Return ONLY valid JSON matching the report schema provided.
 ```
@@ -259,6 +265,14 @@ The coordinator receives all worker JSON reports and:
 5. **Collects forward vector proposals** — aggregates all missing or weak
    forward vector flags from worker reports; presents as a batch for quick
    approval; these are new YAML content, not just link corrections
+5b. **Collects hero/avatar requests** — aggregates every `hero_avatar_request`
+   where `merits_face` is true and a face is missing; de-duplicates; ranks by
+   the Maker's priority order (projects → philosophies → hubs / ≥5-link
+   entries → anything that earns one); presents as a discrete **face-request
+   batch** (idiom + hero_prompt + icon_prompt per entry) for Loudon's
+   approval. Approved prompts feed the [[Hero and Avatar Maker]] render
+   pipeline as a gated, billed batch *after* the Weave's link/metadata writes
+   — never rendered inline
 6. **Builds the Topology Report** from worker reports alone — never re-reads
    palace files at this stage
 7. **Presents to Loudon** — staged approval: unsung paths first (near-zero
@@ -278,10 +292,11 @@ coherent. Its context budget goes to synthesis logic, not content storage.
 | Each worker | One entry body + neighbor bodies (self-fetched) | Small — 3–6 files |
 | No agent | The full palace simultaneously | Never |
 
-Worker reports now carry five task outputs: unsung paths, new introductions,
-metadata flags, graffiti audit, and forward vector check. The coordinator
-synthesizes all five. The graffiti map and forward vector batch are presented
-to Loudon as discrete sections before link proposals.
+Worker reports now carry six task outputs: unsung paths, new introductions,
+metadata flags, graffiti audit, forward vector check, and hero/avatar request.
+The coordinator synthesizes all six. The graffiti map, the forward vector
+batch, and the face-request batch are presented to Loudon as discrete sections
+before link proposals.
 
 ### Parallelism
 
@@ -400,6 +415,15 @@ async function runWorker({ assignedEntryPath, neighborPaths, entryTitles, schema
     "present": false,
     "proposed": "I want to become the canonical model linking oblique access to topology-driven connection-finding across the palace.",
     "strength": null
+  },
+  "hero_avatar_request": {
+    "has_hero": false,
+    "has_icon": false,
+    "merits_face": true,
+    "rationale": "Project entry, stage growing, no face in bundle yet.",
+    "idiom": "Klee/Kandinsky gouache — geometric oscillators finding phase",
+    "hero_prompt": "wide darkened gouache backdrop, a field of small geometric figures drifting into a single shared rhythm, one dominant metaphor of coupled motion, hand-painted Klee idiom, no letters numerals words or labels — purely pictorial",
+    "icon_prompt": "bold high-contrast square emblem, two interlocking arcs locking phase, flat gouache, no fine linework, no text"
   }
 }
 ```
@@ -432,6 +456,7 @@ Current capabilities:
 - Unsung paths audit (body-text mentions not yet in YAML)
 - New introductions (up to 3 semantic proposals)
 - Metadata flags (missing or stale fields)
+- Face check (propose a hero/avatar prompt when the entry merits one and has none)
 
 ### Execution options
 
