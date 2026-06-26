@@ -29,6 +29,8 @@ forward_vector: "I want to ask whether the palace itself has well-worn songlines
 
 # Songlines
 
+![[Songlines — hero.png]]
+
 The Dreaming tracks of Aboriginal Australia: paths through the landscape
 that are simultaneously navigation routes, creation myths, and songs. The
 Ancestors sang the world into existence; to walk a songline is to re-enact

@@ -29,6 +29,8 @@ links:
 ---
 
 # Buckminster Fuller
+
+![[Buckminster Fuller — hero.png]]
 ## Systems Thinker
 
 **Domain:** Systems Thinker

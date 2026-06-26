@@ -22,6 +22,8 @@ forward_vector: "I will keep naming this audience to themselves — the framing 
 
 # Autodidact Polymaths
 
+![[Autodidact Polymaths — hero.png]]
+
 The audience identity that [[Loudon Live]] is built for and addresses by name. Footer of the first session artifact reads *Loudon Live · Autodidact Polymaths*. The phrase emerged in conversation as the right name for the kind of viewer this work is for — self-taught generalists who learn across many fields, often without institutional credentialing in any of them, and who recognize themselves in cross-domain pedagogy.
 
 This entry is deliberately thin. The phrase is in active use, but its full articulation hasn't been done yet. What follows is what's currently load-bearing; the Open Questions section carries what isn't.
