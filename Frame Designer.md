@@ -30,6 +30,12 @@ links:
   - target: "[[BLUELINE — Production Pipeline]]"
     type: connects-to
     label: realizes-stages-4-5
+  - target: "[[Hand-Drawn 3D Look]]"
+    type: connects-to
+    label: hand-drawn-pipeline
+  - target: "[[Remnants in Depth]]"
+    type: connects-to
+    label: 2d-marks-in-3d
 ---
 
 # Frame Designer
