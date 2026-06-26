@@ -61,4 +61,18 @@ describe('TreeLens', () => {
     expect(html).toContain('data-is-entry="1"');
     expect(html).toContain('data-is-entry="0"');
   });
+
+  it('reveals a deep-link target by opening its ancestor folders', () => {
+    // ?tree=Projects/Frame Designer.md should open Projects without any manual
+    // expand, so the target row is present on first render.
+    const html = render({ target: 'Projects/Frame Designer.md' });
+    expect(html).toContain('data-path="Projects/Frame Designer.md"');
+  });
+
+  it('offers the sort toggle', () => {
+    const html = render();
+    expect(html).toContain('data-testid="tree-sort-name"');
+    expect(html).toContain('data-testid="tree-sort-type"');
+    expect(html).toContain('data-testid="tree-sort-pulse"');
+  });
 });

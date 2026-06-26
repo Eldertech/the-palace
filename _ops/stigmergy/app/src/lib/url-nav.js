@@ -187,6 +187,25 @@ export function buildLensSearch(searchString, lens) {
   return s === '' ? '' : `?${s}`;
 }
 
+// Parse `?tree=<path>` — the TREE lens deep-link target (an entry path to
+// reveal: its ancestor folders open, the row scrolled into view). SSR-safe.
+export function parseTreeTargetFromUrl(searchString) {
+  if (typeof searchString !== 'string') return null;
+  const v = new URLSearchParams(searchString).get('tree');
+  return v && v !== '' ? v : null;
+}
+
+// Build a search string with `tree` set to `path` (or cleared when falsy),
+// preserving every other param. Lets a future "locate in tree" affordance link
+// straight to a focused TREE view.
+export function buildTreeTargetSearch(searchString, path) {
+  const params = new URLSearchParams(searchString || '');
+  params.delete('tree');
+  if (path) params.set('tree', path);
+  const s = params.toString();
+  return s === '' ? '' : `?${s}`;
+}
+
 // React hook: keeps `lens` in sync with the URL. pushState on switch so
 // browser back/forward traverses lens changes. Default landing is PULSE.
 export function useLensNavigation() {

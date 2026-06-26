@@ -1,11 +1,25 @@
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { Box } from '../primitives.jsx';
 import EntryAvatar from '../EntryAvatar.jsx';
 import PulseDot from './PulseDot.jsx';
 import { typeColor } from '../../lib/entry-style.js';
 import { scoreEntry } from '../../lib/pulse.js';
-import { withRootGroup, flattenVisible } from '../../lib/tree.js';
+import { withRootGroup, flattenVisible, ancestorsToExpand } from '../../lib/tree.js';
 import { fetchTree } from '../../adapters/tree.js';
+
+// Where the open-folder set persists across lens round-trips within a session.
+const EXPANDED_STORAGE_KEY = 'stigmergy.tree.expanded';
+const SORT_KEYS = ['name', 'type', 'pulse'];
+
+function readPersistedExpanded() {
+  try {
+    if (typeof sessionStorage === 'undefined') return [];
+    const raw = sessionStorage.getItem(EXPANDED_STORAGE_KEY);
+    return raw ? JSON.parse(raw) : [];
+  } catch (_) {
+    return [];
+  }
+}
 
 // TREE -- the folder-structure lens. PULSE ranks by vitality and TOPOLOGY draws
 // the link graph; TREE shows where things LIVE. Organizational folders (Shop/,
@@ -148,14 +162,22 @@ function BundleFileRow({ row, onSelect }) {
   );
 }
 
-export default function TreeLens({ onSelect, tree = null, defaultExpanded = null }) {
+export default function TreeLens({ onSelect, tree = null, defaultExpanded = null, target = null }) {
   const [state, setState] = useState(
     tree ? { kind: 'ok', root: tree.root, counts: tree.counts } : { kind: 'loading' },
   );
-  // `defaultExpanded` seeds the open-set — used by tests today and the Phase-2
-  // `?tree=<path>` deep-link (open a path's ancestors) tomorrow.
-  const [expanded, setExpanded] = useState(() => new Set(defaultExpanded ?? []));
+  // The open-set is seeded (in priority order) from: an explicit defaultExpanded
+  // (tests), the session-persisted set (so a lens round-trip keeps your place),
+  // and the deep-link target's ancestor folders (so ?tree=<path> reveals it).
+  const [expanded, setExpanded] = useState(() => {
+    const seed = new Set(defaultExpanded ?? []);
+    for (const p of readPersistedExpanded()) seed.add(p);
+    for (const p of ancestorsToExpand(target)) seed.add(p);
+    return seed;
+  });
   const [filter, setFilter] = useState('');
+  const [sort, setSort] = useState('name');
+  const listRef = useRef(null);
 
   useEffect(() => {
     if (tree) return undefined; // injected — no fetch
@@ -169,14 +191,41 @@ export default function TreeLens({ onSelect, tree = null, defaultExpanded = null
     return () => { cancelled = true; };
   }, [tree]);
 
+  // Persist the open-set so switching lenses and back keeps the tree where the
+  // human left it (session-scoped — a fresh tab starts collapsed).
+  useEffect(() => {
+    try {
+      if (typeof sessionStorage !== 'undefined') {
+        sessionStorage.setItem(EXPANDED_STORAGE_KEY, JSON.stringify([...expanded]));
+      }
+    } catch (_) { /* storage unavailable — non-fatal */ }
+  }, [expanded]);
+
+  // When the deep-link target changes after mount, open its ancestors.
+  useEffect(() => {
+    if (!target) return;
+    setExpanded((prev) => {
+      const next = new Set(prev);
+      for (const p of ancestorsToExpand(target)) next.add(p);
+      return next;
+    });
+  }, [target]);
+
   const grouped = useMemo(
     () => (state.kind === 'ok' ? withRootGroup(state.root) : null),
     [state],
   );
   const rows = useMemo(
-    () => (grouped ? flattenVisible(grouped, { expanded, filter }) : []),
-    [grouped, expanded, filter],
+    () => (grouped ? flattenVisible(grouped, { expanded, filter, sort }) : []),
+    [grouped, expanded, filter, sort],
   );
+
+  // Scroll the deep-link target into view once its row is present.
+  useEffect(() => {
+    if (!target || !listRef.current) return;
+    const el = listRef.current.querySelector(`[data-path=${JSON.stringify(target)}]`);
+    if (el && typeof el.scrollIntoView === 'function') el.scrollIntoView({ block: 'center' });
+  }, [target, rows]);
 
   const onToggle = (path) => {
     setExpanded((prev) => {
@@ -225,8 +274,29 @@ export default function TreeLens({ onSelect, tree = null, defaultExpanded = null
             outline: 'none', padding: '2px 0',
           }}
         />
+        <span style={{ color: 'var(--phosphor-dim)', textShadow: 'none', fontSize: 12 }}>sort:</span>
+        {SORT_KEYS.map((key) => {
+          const active = key === sort;
+          return (
+            <span
+              key={key}
+              data-testid={`tree-sort-${key}`}
+              data-active={active ? '1' : '0'}
+              role="button"
+              tabIndex={0}
+              onClick={() => setSort(key)}
+              onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); setSort(key); } }}
+              style={{
+                cursor: 'pointer', userSelect: 'none', fontSize: 12, letterSpacing: '.04em',
+                color: active ? 'var(--phosphor)' : 'var(--phosphor-dim)',
+                textShadow: active ? 'var(--glow)' : 'none',
+                borderBottom: active ? '1px solid var(--phosphor)' : '1px solid transparent',
+              }}
+            >{key}</span>
+          );
+        })}
       </div>
-      <div style={{ maxHeight: '60vh', overflowY: 'auto' }}>
+      <div ref={listRef} style={{ maxHeight: '60vh', overflowY: 'auto' }}>
         {rows.map((row) => {
           if (row.kind === 'folder') return <FolderRow key={row.key} row={row} onToggle={onToggle} />;
           if (row.kind === 'entry') return <EntryRow key={row.key} row={row} onToggle={onToggle} onSelect={onSelect} />;

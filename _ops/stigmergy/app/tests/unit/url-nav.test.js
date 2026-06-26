@@ -2,6 +2,7 @@ import { describe, it, expect } from 'vitest';
 import {
   parseEntryFromUrl, buildEntrySearch,
   parseLensFromUrl, buildLensSearch,
+  parseTreeTargetFromUrl, buildTreeTargetSearch,
 } from '../../src/lib/url-nav.js';
 
 describe('parseEntryFromUrl', () => {
@@ -113,5 +114,25 @@ describe('buildLensSearch', () => {
   it('replaces an existing lens param', () => {
     expect(buildLensSearch('?lens=topology&deck=STATE', 'pulse'))
       .toBe('?deck=STATE');
+  });
+});
+
+describe('parseTreeTargetFromUrl', () => {
+  it('reads ?tree=<path>', () => {
+    expect(parseTreeTargetFromUrl('?tree=Projects%2FFoo.md')).toBe('Projects/Foo.md');
+  });
+  it('returns null when absent or empty', () => {
+    expect(parseTreeTargetFromUrl('?lens=tree')).toBeNull();
+    expect(parseTreeTargetFromUrl('')).toBeNull();
+    expect(parseTreeTargetFromUrl(null)).toBeNull();
+  });
+});
+
+describe('buildTreeTargetSearch', () => {
+  it('sets the tree param, preserving others', () => {
+    expect(buildTreeTargetSearch('?lens=tree', 'Foo.md')).toBe('?lens=tree&tree=Foo.md');
+  });
+  it('clears the tree param when path is falsy', () => {
+    expect(buildTreeTargetSearch('?lens=tree&tree=Foo.md', null)).toBe('?lens=tree');
   });
 });

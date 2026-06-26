@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { withRootGroup, flattenVisible, ROOT_GROUP_PATH } from '../../src/lib/tree.js';
+import { withRootGroup, flattenVisible, ancestorsToExpand, ROOT_GROUP_PATH } from '../../src/lib/tree.js';
 
 // A small tree mirroring buildEntryTree's output shape.
 function fixture() {
@@ -49,10 +49,10 @@ describe('flattenVisible', () => {
   const grouped = withRootGroup(fixture());
 
   it('shows only top-level folders when nothing is expanded', () => {
-    // withRootGroup preserves child order (sorting is the server's job); the
-    // fixture lists Shop before Projects, so that order carries through.
+    // flattenVisible sorts folders alpha by name (the synthetic '(' group
+    // sorts first), so the order is deterministic regardless of input order.
     const rows = flattenVisible(grouped, { expanded: new Set() });
-    expect(rows.map((r) => r.node.path)).toEqual([ROOT_GROUP_PATH, 'Shop', 'Projects']);
+    expect(rows.map((r) => r.node.path)).toEqual([ROOT_GROUP_PATH, 'Projects', 'Shop']);
     expect(rows.every((r) => r.kind === 'folder' && r.depth === 0)).toBe(true);
   });
 
@@ -90,5 +90,45 @@ describe('flattenVisible', () => {
     const rows = flattenVisible(grouped, { expanded: new Set(), filter: 'frame' });
     expect(rows.find((r) => r.node.path === 'Projects/Frame Designer.md')).toBeTruthy();
     expect(rows.find((r) => r.kind === 'bundle-file')).toBeUndefined();
+  });
+});
+
+describe('flattenVisible sort', () => {
+  // A single folder holding three entries of different type/title.
+  const tree = {
+    kind: 'folder', name: '', path: '',
+    children: [{
+      kind: 'folder', name: 'Bin', path: 'Bin', entryCount: 3,
+      children: [
+        { kind: 'entry', name: 'C.md', path: 'Bin/C.md', summary: { title: 'Cedar', type: 'project' }, bundle: null },
+        { kind: 'entry', name: 'A.md', path: 'Bin/A.md', summary: { title: 'Ash', type: 'concept' }, bundle: null },
+        { kind: 'entry', name: 'B.md', path: 'Bin/B.md', summary: { title: 'Birch', type: 'hub' }, bundle: null },
+      ],
+    }],
+  };
+  const titlesUnder = (rows) => rows.filter((r) => r.kind === 'entry').map((r) => r.node.summary.title);
+
+  it('orders entries by title for sort=name', () => {
+    const rows = flattenVisible(tree, { expanded: new Set(['Bin']), sort: 'name' });
+    expect(titlesUnder(rows)).toEqual(['Ash', 'Birch', 'Cedar']);
+  });
+
+  it('orders entries by type for sort=type', () => {
+    const rows = flattenVisible(tree, { expanded: new Set(['Bin']), sort: 'type' });
+    // concept < hub < project alphabetically.
+    expect(titlesUnder(rows)).toEqual(['Ash', 'Birch', 'Cedar']);
+  });
+});
+
+describe('ancestorsToExpand', () => {
+  it('returns the (root) group for a root-level entry', () => {
+    expect(ancestorsToExpand('Foo.md')).toEqual([ROOT_GROUP_PATH]);
+  });
+  it('returns each ancestor folder, innermost last', () => {
+    expect(ancestorsToExpand('Projects/Sub/Foo.md')).toEqual(['Projects', 'Projects/Sub']);
+  });
+  it('is empty for null/empty input', () => {
+    expect(ancestorsToExpand(null)).toEqual([]);
+    expect(ancestorsToExpand('')).toEqual([]);
   });
 });
