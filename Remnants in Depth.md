@@ -4,12 +4,12 @@ type: practice
 pillars: [tools, creation]
 born: 2026-06
 last_activated: 2026-06
-activation_count: 1
+activation_count: 2
 stage: growing
 confidence: working
 energy: high
 who_leads: shared
-forward_vector: "I take a flat artistic mark — an ink blob, a splatter, a chalk smudge — and give it a place in 3D space, so it parallaxes when the camera moves while still reading as flat drawn ink. I want any Shop worker to read me once and lift their own remnants into depth without re-deriving the two-layer trick. I am hunting the generalization past ink (paint, torn paper, halftone, charcoal) and the day my billboard density is driven by [[The Flow Field is the Spine]] so the splatter follows the motion instead of scattering at random. My open question: when does a remnant want to be a billboard, and when does it want to be real geometry?"
+forward_vector: "I take a flat artistic mark — an ink blob, a splatter, a chalk smudge — and give it a place in 3D space, so it parallaxes when the camera moves while still reading as flat drawn ink. I want any Shop worker to read me once and lift their own remnants into depth without re-deriving the two-layer trick. My density now follows [[The Flow Field is the Spine]] — the splatter streaks with the motion instead of scattering at random — so I am pushing past placement toward a time-varying field, and hunting the generalization past ink (paint, torn paper, halftone, charcoal). My open question: when does a remnant want to be a billboard, and when does it want to be real geometry?"
 links:
   - target: "[[BLUELINE]]"
     type: emerged-from
@@ -28,7 +28,7 @@ links:
     label: author-the-placement
   - target: "[[The Flow Field is the Spine]]"
     type: connects-to
-    label: density-could-follow-the-field
+    label: density-follows-the-field
 ---
 
 # Remnants in Depth
@@ -57,7 +57,7 @@ Each billboard can carry a short scale-life: pop in fast (ink landing), hold, fa
 Nothing here is blob-specific. The same analyze → recreate → place → composite chain lifts **any 2D artistic remnant** into depth — paint flecks, torn-paper edges, halftone dots, charcoal dust, screen-print misregistration. Swap the reference, the synth grammar follows. That is why this is a `practice`, not a one-frame recipe.
 
 ## Forward Vectors
-- **Flow-field-biased density** — drive placement and throw-direction off [[The Flow Field is the Spine]] so remnants *follow the motion*, not scatter at random. The first build after deposit.
-- **Seam as a comp layer** — render the remnant field as its own depth-tagged pass and composite it *over* a gen-AI-redrawn plate, so the model never touches the marks.
+- **Flow-field-biased density — proven 2026-06-25.** Density *and* direction now track the field: billboards **elongate and rotate along the local flow**, so strong-field marks streak with the motion while weak-field marks stay round. Next: a *time-varying* field + animated birth, so splatter erupts on impact rather than sitting pre-placed.
+- **Seam as a comp layer — proven 2026-06-25.** The remnant field renders as its own RGBA + depth pass and composites *over* a gen-AI-inked plate; a real Z-mask (`markZ ≤ sceneZ`) occludes marks behind the inked geometry (~1px proxy drift, since the redraw has no native depth). The model never touches the marks — they keep exact shape + parallax, and the comp-layer **wins in motion**. Next: a low-denoise harmonization pass to dissolve the still-frame texture seam.
 - **Promote the three scripts into [[The Shop]]** as named Specialists/recipes, so a worker dispatches them instead of copying code.
 - **Answer the open question** — billboard vs. real geometry: a big foreground ink mass might tolerate (or want) genuine dimensionality. Where is the line?
