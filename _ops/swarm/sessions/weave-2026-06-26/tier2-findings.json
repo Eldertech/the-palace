@@ -1,0 +1,2021 @@
+{
+ "scanned": 388,
+ "unsung_paths": [
+  {
+   "entry": "Closing Well",
+   "references": "Kuramoto Coupling"
+  },
+  {
+   "entry": "The Four Virtues",
+   "references": "Confucianism"
+  },
+  {
+   "entry": "The Four Virtues",
+   "references": "Hilaritas Generator"
+  },
+  {
+   "entry": "The Four Virtues",
+   "references": "The Fortress and the Threshold"
+  },
+  {
+   "entry": "The Dichotomy of Control",
+   "references": "Project Stewardship System"
+  },
+  {
+   "entry": "The Dichotomy of Control",
+   "references": "STIGMERGY Philosophical Lenses"
+  },
+  {
+   "entry": "The Dichotomy of Control",
+   "references": "Trickster"
+  },
+  {
+   "entry": "Phase Reduction",
+   "references": "Bayesian Granular Synthesizer"
+  },
+  {
+   "entry": "Phase Reduction",
+   "references": "Wallpaper Groups"
+  },
+  {
+   "entry": "Loudon Live",
+   "references": "Compressor Design"
+  },
+  {
+   "entry": "Loudon Live",
+   "references": "Crystal Synthesizer"
+  },
+  {
+   "entry": "Loudon Live",
+   "references": "Generative Audio Devices"
+  },
+  {
+   "entry": "Loudon Live",
+   "references": "Generative Preset Development"
+  },
+  {
+   "entry": "Loudon Live",
+   "references": "Retrospective Delay"
+  },
+  {
+   "entry": "Loudon Live",
+   "references": "Shepard Tone Synthesizer"
+  },
+  {
+   "entry": "Hyperdimensional Prism",
+   "references": "Harmonicity and Inharmonicity"
+  },
+  {
+   "entry": "Hyperdimensional Prism",
+   "references": "Loudon Live"
+  },
+  {
+   "entry": "Wavetable Space as Torus",
+   "references": "Deleuze"
+  },
+  {
+   "entry": "Wavetable Space as Torus",
+   "references": "Philosopher Visits the Entry"
+  },
+  {
+   "entry": "Wavetable Space as Torus",
+   "references": "Simondon"
+  },
+  {
+   "entry": "Palace_Philosophies",
+   "references": "Closing Well"
+  },
+  {
+   "entry": "Palace_Philosophies",
+   "references": "Palace Map"
+  },
+  {
+   "entry": "Dissolutions",
+   "references": "Chebyshev is Fourier"
+  },
+  {
+   "entry": "Dissolutions",
+   "references": "Dispersion Table"
+  },
+  {
+   "entry": "Dissolutions",
+   "references": "Exponential Decay Curvature"
+  },
+  {
+   "entry": "Dissolutions",
+   "references": "Floquet Theory"
+  },
+  {
+   "entry": "Dissolutions",
+   "references": "Kuramoto Coupling"
+  },
+  {
+   "entry": "Dissolutions",
+   "references": "Linear Predictive Coding"
+  },
+  {
+   "entry": "Dissolutions",
+   "references": "Phase Reduction"
+  },
+  {
+   "entry": "Dissolutions",
+   "references": "Rank-N Lattice Analysis"
+  },
+  {
+   "entry": "Dissolutions",
+   "references": "Volterra Kernels and the Torus"
+  },
+  {
+   "entry": "Dispersion Table",
+   "references": "Loudon Live"
+  },
+  {
+   "entry": "Review Layer",
+   "references": "Palace as Context Injection System"
+  },
+  {
+   "entry": "JSUI",
+   "references": "Playful Interface Design"
+  },
+  {
+   "entry": "The Flow Field is the Spine",
+   "references": "flow-field-spine"
+  },
+  {
+   "entry": "Floquet Theory",
+   "references": "Entry Conatus"
+  },
+  {
+   "entry": "Floquet Theory",
+   "references": "Philosopher Visits the Entry"
+  },
+  {
+   "entry": "Floquet Theory",
+   "references": "Spinoza Conatus"
+  },
+  {
+   "entry": "Floquet Theory",
+   "references": "The Drift"
+  },
+  {
+   "entry": "Floquet Theory",
+   "references": "Whitehead"
+  },
+  {
+   "entry": "The Drift",
+   "references": "Entry Conatus"
+  },
+  {
+   "entry": "The Drift",
+   "references": "Granular Synthesis"
+  },
+  {
+   "entry": "The Drift",
+   "references": "Parametric Resonance"
+  },
+  {
+   "entry": "The Drift",
+   "references": "spinoza-zhuangzi-on-striving"
+  },
+  {
+   "entry": "Wavetable Synthesis -- Research & Higher-Dimensional Design",
+   "references": "Loudon Live"
+  },
+  {
+   "entry": "Linear Predictive Coding",
+   "references": "Loudon Live"
+  },
+  {
+   "entry": "Linear Predictive Coding",
+   "references": "Philosopher Visits the Entry"
+  },
+  {
+   "entry": "Linear Predictive Coding",
+   "references": "Spinoza"
+  },
+  {
+   "entry": "The Lens",
+   "references": "BBS Design System"
+  },
+  {
+   "entry": "The Lens",
+   "references": "Deleuze"
+  },
+  {
+   "entry": "The Lens",
+   "references": "Merleau-Ponty"
+  },
+  {
+   "entry": "The Lens",
+   "references": "Simondon"
+  },
+  {
+   "entry": "The Lens",
+   "references": "The Dichotomy of Control"
+  },
+  {
+   "entry": "The Lens",
+   "references": "The Four Virtues"
+  },
+  {
+   "entry": "Whitehead",
+   "references": "FOUR PILLARS"
+  },
+  {
+   "entry": "Whitehead",
+   "references": "Granular Synthesis"
+  },
+  {
+   "entry": "Whitehead",
+   "references": "STIGMERGY v1.0 — Palace Front-End"
+  },
+  {
+   "entry": "Striatum",
+   "references": "Hilaritas Generator"
+  },
+  {
+   "entry": "Merleau-Ponty",
+   "references": "FOUR PILLARS"
+  },
+  {
+   "entry": "Merleau-Ponty",
+   "references": "Logarithmic Interface Scaling"
+  },
+  {
+   "entry": "Merleau-Ponty",
+   "references": "STIGMERGY v1.0 — Palace Front-End"
+  },
+  {
+   "entry": "Merleau-Ponty",
+   "references": "Stoicism"
+  },
+  {
+   "entry": "Harmonicity and Inharmonicity",
+   "references": "Compressor Design"
+  },
+  {
+   "entry": "Harmonicity and Inharmonicity",
+   "references": "Hyperdimensional Prism"
+  },
+  {
+   "entry": "Synthesis Topologies",
+   "references": "The Curve Is the Material"
+  },
+  {
+   "entry": "Synthesis Topologies",
+   "references": "Three Kinds of Warp"
+  },
+  {
+   "entry": "Loudon Live Post-producer",
+   "references": "Loudon Live Post-producer — Log"
+  },
+  {
+   "entry": "Loudon Live Post-producer",
+   "references": "Whisper"
+  },
+  {
+   "entry": "Loudon Live Post-producer",
+   "references": "ffmpeg"
+  },
+  {
+   "entry": "Tier Vocabulary Glossary",
+   "references": "Generative Compression"
+  },
+  {
+   "entry": "Parametric Resonance",
+   "references": "Hilaritas Generator"
+  },
+  {
+   "entry": "Photonic Time Crystals",
+   "references": "Hilaritas Generator"
+  },
+  {
+   "entry": "Mixture of Experts",
+   "references": "Swarm Weave"
+  },
+  {
+   "entry": "Flocking",
+   "references": "Loudon Live Design System"
+  },
+  {
+   "entry": "Flocking",
+   "references": "Maker"
+  },
+  {
+   "entry": "Mathieu Equation",
+   "references": "Deleuze"
+  },
+  {
+   "entry": "Mathieu Equation",
+   "references": "Philosopher Visits the Entry"
+  },
+  {
+   "entry": "Mathieu Equation",
+   "references": "Spinoza Conatus"
+  },
+  {
+   "entry": "Mathieu Equation",
+   "references": "The Drift"
+  },
+  {
+   "entry": "Mathieu Equation",
+   "references": "Wavetable Space as Torus"
+  },
+  {
+   "entry": "Mathieu Equation",
+   "references": "spinoza-zhuangzi-on-striving"
+  },
+  {
+   "entry": "Hilaritas_Generator",
+   "references": "Quality Manifesto"
+  },
+  {
+   "entry": "Spinoza Conatus",
+   "references": "Cooperation Yields Agency"
+  },
+  {
+   "entry": "Scale-Stratified Identity",
+   "references": "Threshold Conatus"
+  },
+  {
+   "entry": "Entry Conatus",
+   "references": "Spore Check Ceremony"
+  },
+  {
+   "entry": "4 Pillars Framework - The Founding Conversation",
+   "references": "Hyperdimensional Prism"
+  },
+  {
+   "entry": "4 Pillars Framework - The Founding Conversation",
+   "references": "Palace Enchantment"
+  },
+  {
+   "entry": "Palace Philosophies",
+   "references": "Closing Well"
+  },
+  {
+   "entry": "Palace Philosophies",
+   "references": "Palace Map"
+  },
+  {
+   "entry": "The View From Above",
+   "references": "STIGMERGY Philosophical Lenses"
+  },
+  {
+   "entry": "Volterra Kernels and the Torus",
+   "references": "Loudon Live"
+  },
+  {
+   "entry": "The Fortress and the Threshold",
+   "references": "zhuangzi-epictetus-confucius-on-the-self"
+  },
+  {
+   "entry": "Exponential Decay Curvature",
+   "references": "Loudon Live"
+  },
+  {
+   "entry": "FOUR PILLARS",
+   "references": "Hyperdimensional Prism"
+  },
+  {
+   "entry": "Rank-N Lattice Analysis",
+   "references": "Dispersion Table"
+  },
+  {
+   "entry": "Rank-N Lattice Analysis",
+   "references": "Infeasible DSP Now Shippable"
+  },
+  {
+   "entry": "Rank-N Lattice Analysis",
+   "references": "Volterra Kernels and the Torus"
+  },
+  {
+   "entry": "Deleuze",
+   "references": "Dialectic"
+  },
+  {
+   "entry": "Deleuze",
+   "references": "Entry Conatus"
+  },
+  {
+   "entry": "Deleuze",
+   "references": "Excellent Adventure"
+  },
+  {
+   "entry": "Deleuze",
+   "references": "STIGMERGY Philosophical Lenses"
+  },
+  {
+   "entry": "Deleuze",
+   "references": "STIGMERGY v1.0 — Palace Front-End"
+  },
+  {
+   "entry": "Kuramoto Coupling",
+   "references": "Kuramoto Coupling — 8-Lesson Quiz Series"
+  },
+  {
+   "entry": "Kuramoto Coupling",
+   "references": "Kuramoto Coupling — Quiz Answer Key"
+  },
+  {
+   "entry": "Kuramoto Coupling",
+   "references": "Mermaid"
+  },
+  {
+   "entry": "Wavetable Scanner",
+   "references": "Loudon Live Design System"
+  },
+  {
+   "entry": "Wavetable Scanner",
+   "references": "Wavetable Scanner — gotchas"
+  },
+  {
+   "entry": "Gemma 4 — Local Coordination Guide",
+   "references": "GEMMA4_GUIDE"
+  },
+  {
+   "entry": "Simondon",
+   "references": "Kuramoto Coupling"
+  },
+  {
+   "entry": "Simondon",
+   "references": "Palace Enchantment"
+  },
+  {
+   "entry": "FOUR_PILLARS",
+   "references": "Hyperdimensional Prism"
+  },
+  {
+   "entry": "Stoicism",
+   "references": "Hyperdimensional Prism"
+  },
+  {
+   "entry": "Stoicism",
+   "references": "Palace Map"
+  },
+  {
+   "entry": "Stoicism",
+   "references": "Project Stewardship System"
+  },
+  {
+   "entry": "Stoicism",
+   "references": "STIGMERGY Philosophical Lenses"
+  },
+  {
+   "entry": "Spinoza",
+   "references": "Donella Meadows"
+  },
+  {
+   "entry": "Spinoza",
+   "references": "Generative Compression"
+  },
+  {
+   "entry": "Wavetable Scanner — gotchas",
+   "references": "1D Wavetable Scanning"
+  },
+  {
+   "entry": "Wavetable Scanner — gotchas",
+   "references": "Waveguide Synthesizer"
+  },
+  {
+   "entry": "zhuangzi-epictetus-confucius-on-the-self",
+   "references": "Pages as Agents"
+  },
+  {
+   "entry": "Murmuration",
+   "references": "Diversity of Thought in Many-Agent Systems"
+  },
+  {
+   "entry": "Murmuration",
+   "references": "Granular Synthesis"
+  },
+  {
+   "entry": "Semantic Webcam",
+   "references": "Cooperation Yields Agency"
+  },
+  {
+   "entry": "Generative Wavetable Libraries",
+   "references": "Drift and Consolidation"
+  },
+  {
+   "entry": "Tract Mirror",
+   "references": "Tract Mirror — build plan — JUCE VST"
+  },
+  {
+   "entry": "Generative Sample Libraries",
+   "references": "Drift and Consolidation"
+  },
+  {
+   "entry": "Semantic Delay — Phase 1 Plan Review 2026-04-20",
+   "references": "Whisper"
+  },
+  {
+   "entry": "2D Torus Wavetable Synthesizer",
+   "references": "Loudon Live"
+  },
+  {
+   "entry": "Waveguide Synthesizer",
+   "references": "Particle Synthesis"
+  },
+  {
+   "entry": "Frequency-Time Explorer",
+   "references": "BBS Design System"
+  },
+  {
+   "entry": "Biomechanical Synthesis",
+   "references": "haiku-grotesque-pedagogy"
+  },
+  {
+   "entry": "Generative Sample Libraries — handoff — stage-a",
+   "references": "Palace Enchantment"
+  },
+  {
+   "entry": "Generative Sample Libraries — handoff — stage-a",
+   "references": "Project Stewardship System"
+  },
+  {
+   "entry": "Floquet Time-Modulated Loops",
+   "references": "2D Wavetable Catalog"
+  },
+  {
+   "entry": "Floquet Time-Modulated Loops",
+   "references": "Action Potential Oscillator"
+  },
+  {
+   "entry": "Floquet Time-Modulated Loops",
+   "references": "Bessel Functions in Synthesis"
+  },
+  {
+   "entry": "Floquet Time-Modulated Loops",
+   "references": "Crystal Synthesizer"
+  },
+  {
+   "entry": "Floquet Time-Modulated Loops",
+   "references": "Hilaritas Generator"
+  },
+  {
+   "entry": "Floquet Time-Modulated Loops",
+   "references": "Progressive Staging"
+  },
+  {
+   "entry": "2026-05-04-preset-interview-mock",
+   "references": "Generative Wavetable Libraries"
+  },
+  {
+   "entry": "2026-05-04-claude-code-handoff-prompt",
+   "references": "Generative Sample Libraries"
+  },
+  {
+   "entry": "2026-05-04-claude-code-handoff-prompt",
+   "references": "Talking Keyboard"
+  },
+  {
+   "entry": "Murmuration — plan",
+   "references": "Diversity of Thought in Many-Agent Systems"
+  },
+  {
+   "entry": "Murmuration — plan",
+   "references": "Review Layer"
+  },
+  {
+   "entry": "INTERVIEW",
+   "references": "Crystal Synthesizer"
+  },
+  {
+   "entry": "INTERVIEW",
+   "references": "Floquet Theory"
+  },
+  {
+   "entry": "Shepard Tone Synthesizer — plan",
+   "references": "Shepard Tone Synthesizer — Staging"
+  },
+  {
+   "entry": "Shepard Tone Synthesizer — Staging",
+   "references": "Kuramoto Coupling"
+  },
+  {
+   "entry": "Shepard Tone Synthesizer — Staging",
+   "references": "Loudon Live"
+  },
+  {
+   "entry": "Shepard Tone Synthesizer — Staging",
+   "references": "Octave Equivalence"
+  },
+  {
+   "entry": "Shepard Tone Synthesizer — Staging",
+   "references": "Piano String Inharmonicity"
+  },
+  {
+   "entry": "Shepard Tone Synthesizer — Staging",
+   "references": "Portamento and Physical Pitch Modeling"
+  },
+  {
+   "entry": "Shepard Tone Synthesizer — Staging",
+   "references": "Signal-Rate CV Architecture"
+  },
+  {
+   "entry": "BLUELINE — baton",
+   "references": "Frame Designer"
+  },
+  {
+   "entry": "Crystal Synthesizer — plan",
+   "references": "Crystal Synthesizer — Staging"
+  },
+  {
+   "entry": "Crystal Synthesizer — Staging",
+   "references": "Bessel Functions in Synthesis"
+  },
+  {
+   "entry": "Crystal Synthesizer — Staging",
+   "references": "Loudon Live"
+  },
+  {
+   "entry": "Crystal Sonification Reference",
+   "references": "Crystal Synthesizer — Staging"
+  },
+  {
+   "entry": "Retrospective Delay — Staging",
+   "references": "Boundary-Crossing Instruments"
+  },
+  {
+   "entry": "Retrospective Delay — Staging",
+   "references": "Compressor Design"
+  },
+  {
+   "entry": "Retrospective Delay — Staging",
+   "references": "Frequency-Time Duality"
+  },
+  {
+   "entry": "Retrospective Delay — Staging",
+   "references": "Playful Interface Design"
+  },
+  {
+   "entry": "Retrospective Delay — Staging",
+   "references": "Trickster"
+  },
+  {
+   "entry": "Retrospective Delay — plan",
+   "references": "Retrospective Delay — Staging"
+  },
+  {
+   "entry": "visuals-spec",
+   "references": "Kuramoto Coupling"
+  },
+  {
+   "entry": "visuals-spec",
+   "references": "Loudon Live"
+  },
+  {
+   "entry": "radio-play-script",
+   "references": "Progressive Staging"
+  },
+  {
+   "entry": "sfx-cue-sheet",
+   "references": "Compressor Design"
+  },
+  {
+   "entry": "LoRA Trainer",
+   "references": "Review Layer"
+  },
+  {
+   "entry": "D3.js",
+   "references": "Flocking"
+  },
+  {
+   "entry": "D3.js",
+   "references": "Matplotlib"
+  },
+  {
+   "entry": "D3.js",
+   "references": "Observable Plot"
+  },
+  {
+   "entry": "D3.js",
+   "references": "p5.js"
+  },
+  {
+   "entry": "p5.js",
+   "references": "Observable Plot"
+  },
+  {
+   "entry": "VCV Patch Generator",
+   "references": "PDL Generation Prompt"
+  },
+  {
+   "entry": "VCV Patch Generator",
+   "references": "PDL Renderer"
+  },
+  {
+   "entry": "VCV Patch Generator",
+   "references": "Registry Pattern"
+  },
+  {
+   "entry": "SAM",
+   "references": "LaMa"
+  },
+  {
+   "entry": "Depth Anything",
+   "references": "LaMa"
+  },
+  {
+   "entry": "Three.js",
+   "references": "1D Wavetable Scanning"
+  },
+  {
+   "entry": "Three.js",
+   "references": "Particle Synthesis"
+  },
+  {
+   "entry": "Three.js",
+   "references": "Shimmer Cloud"
+  },
+  {
+   "entry": "Three.js",
+   "references": "Tone.js"
+  },
+  {
+   "entry": "Three.js",
+   "references": "Waveguide Synthesizer"
+  },
+  {
+   "entry": "Shopkeeper",
+   "references": "Loudon Live Post-producer"
+  },
+  {
+   "entry": "Web Audio Worklet",
+   "references": "1D Wavetable Scanning"
+  },
+  {
+   "entry": "Web Audio Worklet",
+   "references": "Murmuration"
+  },
+  {
+   "entry": "Web Audio Worklet",
+   "references": "Waveguide Synthesizer"
+  },
+  {
+   "entry": "Web Audio Worklet",
+   "references": "Wavetable Scanner"
+  },
+  {
+   "entry": "Blender",
+   "references": "Blocked, Not Prompted"
+  },
+  {
+   "entry": "Mermaid",
+   "references": "Kuramoto Coupling"
+  },
+  {
+   "entry": "Observable Plot",
+   "references": "D3.js"
+  },
+  {
+   "entry": "Observable Plot",
+   "references": "Flocking"
+  },
+  {
+   "entry": "Observable Plot",
+   "references": "Matplotlib"
+  },
+  {
+   "entry": "Observable Plot",
+   "references": "p5.js"
+  },
+  {
+   "entry": "Palace Ceremonies",
+   "references": "Baton Ceremony"
+  },
+  {
+   "entry": "2026-05-04-batch-narration-and-AP-sample-library",
+   "references": "Phoneme Choir"
+  },
+  {
+   "entry": "2026-05-04-batch-narration-and-AP-sample-library",
+   "references": "Project Stewardship System"
+  },
+  {
+   "entry": "2026-05-04-batch-narration-and-AP-sample-library",
+   "references": "Talking Keyboard"
+  },
+  {
+   "entry": "Kuramoto Coupling — 8-Lesson Quiz Series",
+   "references": "Kuramoto Coupling — Quiz Answer Key"
+  },
+  {
+   "entry": "Dialectic",
+   "references": "Confucianism"
+  },
+  {
+   "entry": "Dialectic",
+   "references": "Stoicism"
+  },
+  {
+   "entry": "Dialectic",
+   "references": "The Fortress and the Threshold"
+  },
+  {
+   "entry": "Dialectic",
+   "references": "zhuangzi-epictetus-confucius-on-the-self"
+  },
+  {
+   "entry": "Philosopher Visits the Entry",
+   "references": "Action Potential Oscillator"
+  },
+  {
+   "entry": "Philosopher Visits the Entry",
+   "references": "Confucianism"
+  },
+  {
+   "entry": "Philosopher Visits the Entry",
+   "references": "Deleuze"
+  },
+  {
+   "entry": "Philosopher Visits the Entry",
+   "references": "Merleau-Ponty"
+  },
+  {
+   "entry": "Philosopher Visits the Entry",
+   "references": "Palace Philosophies"
+  },
+  {
+   "entry": "Philosopher Visits the Entry",
+   "references": "STIGMERGY Philosophical Lenses"
+  },
+  {
+   "entry": "Philosopher Visits the Entry",
+   "references": "Simondon"
+  },
+  {
+   "entry": "Philosopher Visits the Entry",
+   "references": "Spinoza Conatus"
+  },
+  {
+   "entry": "Philosopher Visits the Entry",
+   "references": "The Drift"
+  },
+  {
+   "entry": "Philosopher Visits the Entry",
+   "references": "Whitehead"
+  },
+  {
+   "entry": "spinoza-zhuangzi-on-striving",
+   "references": "Deleuze"
+  },
+  {
+   "entry": "spinoza-zhuangzi-on-striving",
+   "references": "Hilaritas Generator"
+  },
+  {
+   "entry": "spinoza-zhuangzi-on-striving",
+   "references": "The Fortress and the Threshold"
+  },
+  {
+   "entry": "STIGMERGY v2.0 — Consolidation & Primary Interface",
+   "references": "Entry Conatus"
+  },
+  {
+   "entry": "STIGMERGY v2.0 — Consolidation & Primary Interface",
+   "references": "Orchestrator Production Plan v0.2"
+  },
+  {
+   "entry": "STIGMERGY v2.0 — Consolidation & Primary Interface",
+   "references": "Pages as Agents"
+  },
+  {
+   "entry": "STIGMERGY v2.0 — Consolidation & Primary Interface",
+   "references": "Resonant Link Labels"
+  },
+  {
+   "entry": "STIGMERGY v2.0 — Consolidation & Primary Interface",
+   "references": "Speak Like a Person, Log Like a Protocol"
+  },
+  {
+   "entry": "BBS Blackboard",
+   "references": "Palace Agent Infrastructure Spec"
+  },
+  {
+   "entry": "Project Stewardship System",
+   "references": "Baton Ceremony"
+  },
+  {
+   "entry": "Project Stewardship System",
+   "references": "Drift and Consolidation"
+  },
+  {
+   "entry": "STIGMERGY Philosophical Lenses",
+   "references": "Confucianism"
+  },
+  {
+   "entry": "STIGMERGY Philosophical Lenses",
+   "references": "Drift and Consolidation"
+  },
+  {
+   "entry": "STIGMERGY Philosophical Lenses",
+   "references": "Like Water"
+  },
+  {
+   "entry": "STIGMERGY Philosophical Lenses",
+   "references": "Spinoza Conatus"
+  },
+  {
+   "entry": "STIGMERGY Philosophical Lenses",
+   "references": "The Drift"
+  },
+  {
+   "entry": "STIGMERGY Philosophical Lenses",
+   "references": "The Fortress and the Threshold"
+  },
+  {
+   "entry": "STIGMERGY Philosophical Lenses",
+   "references": "spinoza-zhuangzi-on-striving"
+  },
+  {
+   "entry": "STIGMERGY v1.0 — Palace Front-End",
+   "references": "Baton Ceremony"
+  },
+  {
+   "entry": "STIGMERGY v1.0 — Palace Front-End",
+   "references": "STIGMERGY v2.0 — Consolidation & Primary Interface"
+  },
+  {
+   "entry": "Palace Enchantment",
+   "references": "Palace Map"
+  },
+  {
+   "entry": "Palace Enchantment",
+   "references": "Project Stewardship System"
+  }
+ ],
+ "face_missing": [
+  {
+   "entry": "The Adjacent Affordance",
+   "has_hero": false,
+   "has_icon": false
+  },
+  {
+   "entry": "Toolkit — Audio Plugins",
+   "has_hero": false,
+   "has_icon": false
+  },
+  {
+   "entry": "README - The Palace Guide",
+   "has_hero": false,
+   "has_icon": false
+  },
+  {
+   "entry": "Cooperation_Yields_Agency",
+   "has_hero": false,
+   "has_icon": false
+  },
+  {
+   "entry": "Palace_Philosophies",
+   "has_hero": false,
+   "has_icon": false
+  },
+  {
+   "entry": "Quadratic Interpolation in DSP",
+   "has_hero": false,
+   "has_icon": false
+  },
+  {
+   "entry": "ROSETTA",
+   "has_hero": false,
+   "has_icon": false
+  },
+  {
+   "entry": "FOUR PILLARS — Context",
+   "has_hero": false,
+   "has_icon": false
+  },
+  {
+   "entry": "Toolkit — Synthesizers",
+   "has_hero": false,
+   "has_icon": false
+  },
+  {
+   "entry": "1D Wavetable Scanning",
+   "has_hero": false,
+   "has_icon": false
+  },
+  {
+   "entry": "Hilaritas Generator — Context",
+   "has_hero": false,
+   "has_icon": false
+  },
+  {
+   "entry": "JSUI",
+   "has_hero": false,
+   "has_icon": false
+  },
+  {
+   "entry": "Infeasible DSP Now Shippable",
+   "has_hero": false,
+   "has_icon": false
+  },
+  {
+   "entry": "Wavetable Synthesis -- Research & Higher-Dimensional Design",
+   "has_hero": false,
+   "has_icon": false
+  },
+  {
+   "entry": "Palace Philosophies — Context",
+   "has_hero": false,
+   "has_icon": false
+  },
+  {
+   "entry": "Does Personifying an Agent Change What It Does",
+   "has_hero": false,
+   "has_icon": false
+  },
+  {
+   "entry": "JEWEL",
+   "has_hero": false,
+   "has_icon": false
+  },
+  {
+   "entry": "What Claim Does Scientific Sonification Make?",
+   "has_hero": false,
+   "has_icon": false
+  },
+  {
+   "entry": "Synth Archetypes",
+   "has_hero": false,
+   "has_icon": false
+  },
+  {
+   "entry": "The Metaphor Stretch",
+   "has_hero": false,
+   "has_icon": false
+  },
+  {
+   "entry": "Tier Vocabulary Glossary",
+   "has_hero": false,
+   "has_icon": false
+  },
+  {
+   "entry": "Modes of Collaboration — Context",
+   "has_hero": false,
+   "has_icon": false
+  },
+  {
+   "entry": "Worktree Practice",
+   "has_hero": false,
+   "has_icon": false
+  },
+  {
+   "entry": "Octave Equivalence",
+   "has_hero": false,
+   "has_icon": false
+  },
+  {
+   "entry": "PDL Renderer",
+   "has_hero": false,
+   "has_icon": false
+  },
+  {
+   "entry": "Blocked, Not Prompted",
+   "has_hero": false,
+   "has_icon": false
+  },
+  {
+   "entry": "Learning Materials and Canon",
+   "has_hero": false,
+   "has_icon": false
+  },
+  {
+   "entry": "Audition Gate",
+   "has_hero": false,
+   "has_icon": false
+  },
+  {
+   "entry": "Hilaritas_Generator",
+   "has_hero": false,
+   "has_icon": false
+  },
+  {
+   "entry": "The Substrate Drifts",
+   "has_hero": false,
+   "has_icon": false
+  },
+  {
+   "entry": "Claude CLI Reference",
+   "has_hero": false,
+   "has_icon": false
+  },
+  {
+   "entry": "Trickster Commit",
+   "has_hero": false,
+   "has_icon": false
+  },
+  {
+   "entry": "State Machine",
+   "has_hero": false,
+   "has_icon": false
+  },
+  {
+   "entry": "PDL Generation Prompt",
+   "has_hero": false,
+   "has_icon": false
+  },
+  {
+   "entry": "Cooperation Yields Agency — Context",
+   "has_hero": false,
+   "has_icon": false
+  },
+  {
+   "entry": "Speak Like a Person, Log Like a Protocol",
+   "has_hero": false,
+   "has_icon": false
+  },
+  {
+   "entry": "Exponential Decay Curvature",
+   "has_hero": false,
+   "has_icon": false
+  },
+  {
+   "entry": "Modes_of_Collaboration",
+   "has_hero": false,
+   "has_icon": false
+  },
+  {
+   "entry": "Jewel — Context",
+   "has_hero": false,
+   "has_icon": false
+  },
+  {
+   "entry": "Meaning and the Link",
+   "has_hero": false,
+   "has_icon": false
+  },
+  {
+   "entry": "Language as a Tonal Medium",
+   "has_hero": false,
+   "has_icon": false
+  },
+  {
+   "entry": "SMPTE LTC",
+   "has_hero": false,
+   "has_icon": false
+  },
+  {
+   "entry": "CLAUDE",
+   "has_hero": false,
+   "has_icon": false
+  },
+  {
+   "entry": "Tristitia Generator",
+   "has_hero": false,
+   "has_icon": false
+  },
+  {
+   "entry": "Gemma 4 — Local Coordination Guide",
+   "has_hero": false,
+   "has_icon": false
+  },
+  {
+   "entry": "FOUR_PILLARS",
+   "has_hero": false,
+   "has_icon": false
+  },
+  {
+   "entry": "Streaming details",
+   "has_hero": false,
+   "has_icon": false
+  },
+  {
+   "entry": "Wavetable Scanner — gotchas",
+   "has_hero": false,
+   "has_icon": false
+  },
+  {
+   "entry": "zhuangzi-epictetus-confucius-on-the-self",
+   "has_hero": false,
+   "has_icon": false
+  },
+  {
+   "entry": "Loudon Live — launch kit",
+   "has_hero": false,
+   "has_icon": false
+  },
+  {
+   "entry": "Loudon Live — asset plan",
+   "has_hero": false,
+   "has_icon": false
+  },
+  {
+   "entry": "Curriculum Map",
+   "has_hero": false,
+   "has_icon": false
+  },
+  {
+   "entry": "Metric Modulation",
+   "has_hero": false,
+   "has_icon": false
+  },
+  {
+   "entry": "2D Torus Wavetable Synthesizer — Build Log",
+   "has_hero": false,
+   "has_icon": false
+  },
+  {
+   "entry": "Semantic Delay — Phase 1 Plan Review 2026-04-20",
+   "has_hero": false,
+   "has_icon": false
+  },
+  {
+   "entry": "Meadows and Music — Origin and Process",
+   "has_hero": false,
+   "has_icon": false
+  },
+  {
+   "entry": "Generative Sample Libraries — plan",
+   "has_hero": false,
+   "has_icon": false
+  },
+  {
+   "entry": "Generative Sample Libraries — lessons — stage-a",
+   "has_hero": false,
+   "has_icon": false
+  },
+  {
+   "entry": "Generative Sample Libraries — handoff — stage-a",
+   "has_hero": false,
+   "has_icon": false
+  },
+  {
+   "entry": "Tract Mirror — build plan — JUCE VST",
+   "has_hero": false,
+   "has_icon": false
+  },
+  {
+   "entry": "BUILD_SUMMARY",
+   "has_hero": false,
+   "has_icon": false
+  },
+  {
+   "entry": "NOTES",
+   "has_hero": false,
+   "has_icon": false
+  },
+  {
+   "entry": "Semantic Delay — plan",
+   "has_hero": false,
+   "has_icon": false
+  },
+  {
+   "entry": "2026-05-04-substitution-chain",
+   "has_hero": false,
+   "has_icon": false
+  },
+  {
+   "entry": "Generative Preset Development — plan",
+   "has_hero": false,
+   "has_icon": false
+  },
+  {
+   "entry": "2026-05-04-preset-interview-mock",
+   "has_hero": false,
+   "has_icon": false
+  },
+  {
+   "entry": "RECONNAISSANCE",
+   "has_hero": false,
+   "has_icon": false
+  },
+  {
+   "entry": "2026-05-04-claude-code-handoff-prompt",
+   "has_hero": false,
+   "has_icon": false
+  },
+  {
+   "entry": "Particle Synthesis — plan",
+   "has_hero": false,
+   "has_icon": false
+  },
+  {
+   "entry": "Leverage Diagnostic — Loudon Draft",
+   "has_hero": false,
+   "has_icon": false
+  },
+  {
+   "entry": "Meadows and an Artist's Career — plan",
+   "has_hero": false,
+   "has_icon": false
+  },
+  {
+   "entry": "Murmuration — plan",
+   "has_hero": false,
+   "has_icon": false
+  },
+  {
+   "entry": "2026-05-04-pedagogical-retrospective",
+   "has_hero": false,
+   "has_icon": false
+  },
+  {
+   "entry": "haiku-grotesque-pedagogy",
+   "has_hero": false,
+   "has_icon": false
+  },
+  {
+   "entry": "Generative Wavetable Libraries — plan",
+   "has_hero": false,
+   "has_icon": false
+  },
+  {
+   "entry": "2026-05-04-interview-mock",
+   "has_hero": false,
+   "has_icon": false
+  },
+  {
+   "entry": "INTERVIEW",
+   "has_hero": false,
+   "has_icon": false
+  },
+  {
+   "entry": "BUILD",
+   "has_hero": false,
+   "has_icon": false
+  },
+  {
+   "entry": "FIT-TEST",
+   "has_hero": false,
+   "has_icon": false
+  },
+  {
+   "entry": "Shepard Tone Synthesizer — plan",
+   "has_hero": false,
+   "has_icon": false
+  },
+  {
+   "entry": "Shepard Tone Synthesizer — Staging",
+   "has_hero": false,
+   "has_icon": false
+  },
+  {
+   "entry": "Quantum Synthesizer — plan",
+   "has_hero": false,
+   "has_icon": false
+  },
+  {
+   "entry": "Portamento and Physical Pitch Modeling — plan",
+   "has_hero": false,
+   "has_icon": false
+  },
+  {
+   "entry": "flow-field-spine",
+   "has_hero": false,
+   "has_icon": false
+  },
+  {
+   "entry": "BLUELINE — Specialists and Seams",
+   "has_hero": false,
+   "has_icon": false
+  },
+  {
+   "entry": "BLUELINE — Production Plan",
+   "has_hero": false,
+   "has_icon": false
+  },
+  {
+   "entry": "BLUELINE — Production Pipeline",
+   "has_hero": false,
+   "has_icon": false
+  },
+  {
+   "entry": "BLUELINE — baton",
+   "has_hero": false,
+   "has_icon": false
+  },
+  {
+   "entry": "BLUELINE — Deposit Map",
+   "has_hero": false,
+   "has_icon": false
+  },
+  {
+   "entry": "BLUELINE — Board Record Schema",
+   "has_hero": false,
+   "has_icon": false
+  },
+  {
+   "entry": "BLUELINE — Claude Code Job",
+   "has_hero": false,
+   "has_icon": false
+  },
+  {
+   "entry": "FIELD-NOTES",
+   "has_hero": false,
+   "has_icon": false
+  },
+  {
+   "entry": "APPROACHES",
+   "has_hero": false,
+   "has_icon": false
+  },
+  {
+   "entry": "Crystal Synthesizer — plan",
+   "has_hero": false,
+   "has_icon": false
+  },
+  {
+   "entry": "Crystal Synthesizer — Staging",
+   "has_hero": false,
+   "has_icon": false
+  },
+  {
+   "entry": "session-1-implementation",
+   "has_hero": false,
+   "has_icon": false
+  },
+  {
+   "entry": "Crystal Sonification Reference",
+   "has_hero": false,
+   "has_icon": false
+  },
+  {
+   "entry": "Semantic Webcam — plan",
+   "has_hero": false,
+   "has_icon": false
+  },
+  {
+   "entry": "Waveguide Synthesizer — plan",
+   "has_hero": false,
+   "has_icon": false
+  },
+  {
+   "entry": "Slime Mold Delay — plan",
+   "has_hero": false,
+   "has_icon": false
+  },
+  {
+   "entry": "2026-05-04-new-oracle-prompt",
+   "has_hero": false,
+   "has_icon": false
+  },
+  {
+   "entry": "2D Torus Wavetable Synthesizer — plan",
+   "has_hero": false,
+   "has_icon": false
+  },
+  {
+   "entry": "00 — Test Diagnostic Wavetable",
+   "has_hero": false,
+   "has_icon": false
+  },
+  {
+   "entry": "17 — Matérn Field",
+   "has_hero": false,
+   "has_icon": false
+  },
+  {
+   "entry": "03 — Duty Cycle Morph",
+   "has_hero": false,
+   "has_icon": false
+  },
+  {
+   "entry": "01 — Sine Cycle Sweep",
+   "has_hero": false,
+   "has_icon": false
+  },
+  {
+   "entry": "14 — Knot Shadow",
+   "has_hero": false,
+   "has_icon": false
+  },
+  {
+   "entry": "04 — Sine + Variable 3rd Harmonic",
+   "has_hero": false,
+   "has_icon": false
+  },
+  {
+   "entry": "11 — Chladni Ghost",
+   "has_hero": false,
+   "has_icon": false
+  },
+  {
+   "entry": "02 — Partial Stack Sweep",
+   "has_hero": false,
+   "has_icon": false
+  },
+  {
+   "entry": "16 — Kuramoto Bloom",
+   "has_hero": false,
+   "has_icon": false
+  },
+  {
+   "entry": "13 — Stiff String",
+   "has_hero": false,
+   "has_icon": false
+  },
+  {
+   "entry": "18 — Fisher Ridge",
+   "has_hero": false,
+   "has_icon": false
+  },
+  {
+   "entry": "12 — Theta Surface",
+   "has_hero": false,
+   "has_icon": false
+  },
+  {
+   "entry": "15 — Penrose Lattice",
+   "has_hero": false,
+   "has_icon": false
+  },
+  {
+   "entry": "10 — Membrane",
+   "has_hero": false,
+   "has_icon": false
+  },
+  {
+   "entry": "Tier-1 Warp Snippets",
+   "has_hero": false,
+   "has_icon": false
+  },
+  {
+   "entry": "README — RNBO Prototype",
+   "has_hero": false,
+   "has_icon": false
+  },
+  {
+   "entry": "Verification Prep Checklist",
+   "has_hero": false,
+   "has_icon": false
+  },
+  {
+   "entry": "Retrospective Delay — Staging",
+   "has_hero": false,
+   "has_icon": false
+  },
+  {
+   "entry": "Retrospective Delay — plan",
+   "has_hero": false,
+   "has_icon": false
+  },
+  {
+   "entry": "stage-1-the-witness",
+   "has_hero": false,
+   "has_icon": false
+  },
+  {
+   "entry": "mockup-imagery-brief",
+   "has_hero": false,
+   "has_icon": false
+  },
+  {
+   "entry": "patch-spec",
+   "has_hero": false,
+   "has_icon": false
+  },
+  {
+   "entry": "findings",
+   "has_hero": false,
+   "has_icon": false
+  },
+  {
+   "entry": "neural_oscillator_dev_plan",
+   "has_hero": false,
+   "has_icon": false
+  },
+  {
+   "entry": "Action Potential Oscillator — plan",
+   "has_hero": false,
+   "has_icon": false
+  },
+  {
+   "entry": "Neural Granular Synthesis — plan",
+   "has_hero": false,
+   "has_icon": false
+  },
+  {
+   "entry": "control-vocabulary-math",
+   "has_hero": false,
+   "has_icon": false
+  },
+  {
+   "entry": "Inharmonic Wavetable Synthesis — plan",
+   "has_hero": false,
+   "has_icon": false
+  },
+  {
+   "entry": "README",
+   "has_hero": false,
+   "has_icon": false
+  },
+  {
+   "entry": "visuals-spec",
+   "has_hero": false,
+   "has_icon": false
+  },
+  {
+   "entry": "Blood Compressor — plan",
+   "has_hero": false,
+   "has_icon": false
+  },
+  {
+   "entry": "audition-seed-attack-pair",
+   "has_hero": false,
+   "has_icon": false
+  },
+  {
+   "entry": "radio-play-script",
+   "has_hero": false,
+   "has_icon": false
+  },
+  {
+   "entry": "sfx-cue-sheet",
+   "has_hero": false,
+   "has_icon": false
+  },
+  {
+   "entry": "LoRA Trainer",
+   "has_hero": false,
+   "has_icon": false
+  },
+  {
+   "entry": "D3.js",
+   "has_hero": false,
+   "has_icon": false
+  },
+  {
+   "entry": "Tone.js",
+   "has_hero": false,
+   "has_icon": false
+  },
+  {
+   "entry": "Whisper",
+   "has_hero": false,
+   "has_icon": false
+  },
+  {
+   "entry": "Midjourney",
+   "has_hero": false,
+   "has_icon": false
+  },
+  {
+   "entry": "VCV Patch Generator",
+   "has_hero": false,
+   "has_icon": false
+  },
+  {
+   "entry": "LaTeX",
+   "has_hero": false,
+   "has_icon": false
+  },
+  {
+   "entry": "Figure Rig",
+   "has_hero": false,
+   "has_icon": false
+  },
+  {
+   "entry": "LaMa",
+   "has_hero": false,
+   "has_icon": false
+  },
+  {
+   "entry": "SAM",
+   "has_hero": false,
+   "has_icon": false
+  },
+  {
+   "entry": "Depth Anything",
+   "has_hero": false,
+   "has_icon": false
+  },
+  {
+   "entry": "Lettering",
+   "has_hero": false,
+   "has_icon": false
+  },
+  {
+   "entry": "Matplotlib",
+   "has_hero": false,
+   "has_icon": false
+  },
+  {
+   "entry": "RNBO codebox~ smith",
+   "has_hero": false,
+   "has_icon": false
+  },
+  {
+   "entry": "Image-to-3D Smith",
+   "has_hero": false,
+   "has_icon": false
+  },
+  {
+   "entry": "Remotion",
+   "has_hero": false,
+   "has_icon": false
+  },
+  {
+   "entry": "Mermaid",
+   "has_hero": false,
+   "has_icon": false
+  },
+  {
+   "entry": "Observable Plot",
+   "has_hero": false,
+   "has_icon": false
+  },
+  {
+   "entry": "Hero and Avatar Maker — baton",
+   "has_hero": false,
+   "has_icon": false
+  },
+  {
+   "entry": "ComfyUI — local-install",
+   "has_hero": false,
+   "has_icon": false
+  },
+  {
+   "entry": "toyxyz-conditioning-recipe",
+   "has_hero": false,
+   "has_icon": false
+  },
+  {
+   "entry": "flocking-maker-comparison",
+   "has_hero": false,
+   "has_icon": false
+  },
+  {
+   "entry": "Technical Diagram Standard",
+   "has_hero": false,
+   "has_icon": false
+  },
+  {
+   "entry": "Baton Ceremony — Context",
+   "has_hero": false,
+   "has_icon": false
+  },
+  {
+   "entry": "Schema Ceremony Proposal — exemplifies + member-of",
+   "has_hero": false,
+   "has_icon": false
+  },
+  {
+   "entry": "Graffiti Pass — Handoff 2026-04-30",
+   "has_hero": false,
+   "has_icon": false
+  },
+  {
+   "entry": "Artifacts to Projects Migration — handoff",
+   "has_hero": false,
+   "has_icon": false
+  },
+  {
+   "entry": "Deposit Archive",
+   "has_hero": false,
+   "has_icon": false
+  },
+  {
+   "entry": "Map Log",
+   "has_hero": false,
+   "has_icon": false
+  },
+  {
+   "entry": "Deposit Ceremony — Context",
+   "has_hero": false,
+   "has_icon": false
+  },
+  {
+   "entry": "Mermaid Diagram Standard",
+   "has_hero": false,
+   "has_icon": false
+  },
+  {
+   "entry": "Graffiti Pass — Handoff 2026-05-02",
+   "has_hero": false,
+   "has_icon": false
+  },
+  {
+   "entry": "Weave Ceremony — Context",
+   "has_hero": false,
+   "has_icon": false
+  },
+  {
+   "entry": "Palace Audit — 2026-05-28",
+   "has_hero": false,
+   "has_icon": false
+  },
+  {
+   "entry": "Image Embedding Standard",
+   "has_hero": false,
+   "has_icon": false
+  },
+  {
+   "entry": "Graffiti Pass — Handoff 2026-05-02 — Session 2",
+   "has_hero": false,
+   "has_icon": false
+  },
+  {
+   "entry": "Harvest Ceremony — Context",
+   "has_hero": false,
+   "has_icon": false
+  },
+  {
+   "entry": "Palace Quotes",
+   "has_hero": false,
+   "has_icon": false
+  },
+  {
+   "entry": "Toolkit Assessment — Working Doc",
+   "has_hero": false,
+   "has_icon": false
+  },
+  {
+   "entry": "coordinator-synthesis-template",
+   "has_hero": false,
+   "has_icon": false
+  },
+  {
+   "entry": "worker-prompt-template",
+   "has_hero": false,
+   "has_icon": false
+  },
+  {
+   "entry": "plan",
+   "has_hero": false,
+   "has_icon": false
+  },
+  {
+   "entry": "Companion Relocate Op — baton",
+   "has_hero": false,
+   "has_icon": false
+  },
+  {
+   "entry": "2026-05-04-batch-narration-and-AP-sample-library",
+   "has_hero": false,
+   "has_icon": false
+  },
+  {
+   "entry": "Pages as Agents — Context",
+   "has_hero": false,
+   "has_icon": false
+  },
+  {
+   "entry": "bug-sse-reconnect-replay",
+   "has_hero": false,
+   "has_icon": false
+  },
+  {
+   "entry": "Smoke Sender",
+   "has_hero": false,
+   "has_icon": false
+  },
+  {
+   "entry": "Smoke Receiver",
+   "has_hero": false,
+   "has_icon": false
+  },
+  {
+   "entry": "GEMMA4_GUIDE",
+   "has_hero": false,
+   "has_icon": false
+  },
+  {
+   "entry": "logarithmic_scaling_guide",
+   "has_hero": false,
+   "has_icon": false
+  },
+  {
+   "entry": "log_slider_python_pseudocode",
+   "has_hero": false,
+   "has_icon": false
+  },
+  {
+   "entry": "Kuramoto Coupling — 8-Lesson Quiz Series",
+   "has_hero": false,
+   "has_icon": false
+  },
+  {
+   "entry": "Kuramoto Coupling — Quiz Answer Key",
+   "has_hero": false,
+   "has_icon": false
+  },
+  {
+   "entry": "Kuramoto Coupling — handoff",
+   "has_hero": false,
+   "has_icon": false
+  },
+  {
+   "entry": "Loudon Live Post-producer — Log",
+   "has_hero": false,
+   "has_icon": false
+  },
+  {
+   "entry": "Enrichment — handoff",
+   "has_hero": false,
+   "has_icon": false
+  },
+  {
+   "entry": "Oblique Portrait",
+   "has_hero": false,
+   "has_icon": false
+  },
+  {
+   "entry": "spinoza-zhuangzi-on-striving",
+   "has_hero": false,
+   "has_icon": false
+  },
+  {
+   "entry": "STIGMERGY — Equation Rendering Build Plan",
+   "has_hero": false,
+   "has_icon": false
+  },
+  {
+   "entry": "STIGMERGY Entry-Agent Window — Integration Plan v0.1",
+   "has_hero": false,
+   "has_icon": false
+  },
+  {
+   "entry": "Resonant Link Labels",
+   "has_hero": false,
+   "has_icon": false
+  },
+  {
+   "entry": "Orchestrator Production Plan",
+   "has_hero": false,
+   "has_icon": false
+  },
+  {
+   "entry": "Orchestrator Production Plan v0.2",
+   "has_hero": false,
+   "has_icon": false
+  },
+  {
+   "entry": "STIGMERGY — Weave Flag Item Type Build Plan",
+   "has_hero": false,
+   "has_icon": false
+  },
+  {
+   "entry": "Agent Wellbeing",
+   "has_hero": false,
+   "has_icon": false
+  },
+  {
+   "entry": "Palace AI Partnership Philosophy",
+   "has_hero": false,
+   "has_icon": false
+  },
+  {
+   "entry": "STIGMERGY — Alignment Review Build Plan",
+   "has_hero": false,
+   "has_icon": false
+  },
+  {
+   "entry": "Bundle-Local Stewardship — Production Plan",
+   "has_hero": false,
+   "has_icon": false
+  },
+  {
+   "entry": "Walk That Weaves",
+   "has_hero": false,
+   "has_icon": false
+  },
+  {
+   "entry": "STIGMERGY v1.0 — Palace Front-End",
+   "has_hero": false,
+   "has_icon": false
+  },
+  {
+   "entry": "Enchanted Conversation Archive",
+   "has_hero": false,
+   "has_icon": false
+  },
+  {
+   "entry": "Reverb ↔ Space-Time",
+   "has_hero": false,
+   "has_icon": false
+  },
+  {
+   "entry": "Quantization ↔ Precision vs Flow",
+   "has_hero": false,
+   "has_icon": false
+  },
+  {
+   "entry": "Saturation ↔ Richness",
+   "has_hero": false,
+   "has_icon": false
+  },
+  {
+   "entry": "Dovetail Joint ↔ Counterpoint",
+   "has_hero": false,
+   "has_icon": false
+  },
+  {
+   "entry": "Frequency Domain ↔ Perspective Shift",
+   "has_hero": false,
+   "has_icon": false
+  },
+  {
+   "entry": "Cooking ↔ Mixing",
+   "has_hero": false,
+   "has_icon": false
+  },
+  {
+   "entry": "Compression ↔ Intimacy",
+   "has_hero": false,
+   "has_icon": false
+  }
+ ]
+}

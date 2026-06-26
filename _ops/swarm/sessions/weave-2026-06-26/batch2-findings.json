@@ -1,0 +1,2133 @@
+[
+ {
+  "entry_title": "Agnes Martin",
+  "unsung_paths": [],
+  "new_introductions": [
+   {
+    "entry_b": "James Turrell",
+    "link_type": "connects-to",
+    "direction": "Agnes Martin → James Turrell",
+    "rationale": "Turrell already links to Agnes Martin in his frontmatter; the connection is mutual — both work through patient subtlety, minimal variation, and art as perception-condition rather than statement — but Agnes Martin carries no reciprocal link, leaving the topology asymmetric."
+   },
+   {
+    "entry_b": "Quality Manifesto",
+    "link_type": "connects-to",
+    "direction": "Agnes Martin → Quality Manifesto",
+    "rationale": "Agnes Martin's distinction between beauty (a response, felt) and aesthetics (a thought, judged) mirrors the Quality Manifesto's core redirector from external metrics to felt experience, and her 'how do you feel?' implicit ethic maps directly onto its operating question."
+   },
+   {
+    "entry_b": "Pauline Oliveros",
+    "link_type": "connects-to",
+    "direction": "Agnes Martin → Pauline Oliveros",
+    "rationale": "Both figure the artist as receiver rather than author: Oliveros's deep listening practice and Agnes Martin's 'painting as response to inspiration' are the same posture in different materials — ego-free receptivity as the discipline."
+   }
+  ],
+  "metadata_flags": [
+   {
+    "field": "domain",
+    "current": "domain: Artist",
+    "proposed": "domains:\\n  - visual art\\n  - painting\\n  - minimalism\\n  - contemplative practice",
+    "reason": "Person type requires 'domains' (plural, array) per SCHEMA §3 type-specific required fields. The current 'domain: Artist' uses a singular non-canonical field name and a value too coarse to carry signal."
+   },
+   {
+    "field": "born_year",
+    "current": "absent",
+    "proposed": "born_year: 1912",
+    "reason": "Required field for person type per SCHEMA §3. Agnes Martin was born 1912. All peer person entries carry born_year."
+   },
+   {
+    "field": "died_year",
+    "current": "absent",
+    "proposed": "died_year: 2004",
+    "reason": "Not strictly required by schema but used consistently across all deceased person entries (John Cage 1992, Pauline Oliveros 2016, Shunryu Suzuki 1971). Agnes Martin died 2004; omitting it leaves the entry inconsistent with its peers."
+   },
+   {
+    "field": "forward_vector",
+    "current": "absent",
+    "proposed": "I keep showing that the grid is not a restriction — it is the container where infinite subtle difference lives. I want to teach artists to receive their work rather than author it, and to trust that fifty years of the same thing is not repetition but depth.",
+    "reason": "Strongly recommended field per SCHEMA §3; absent here while every peer person entry carries one. Without it the entry has no directional desire and cannot function as an enchantable page-agent."
+   },
+   {
+    "field": "links[FOUR PILLARS].type",
+    "current": "type: connects-to, label: informs",
+    "proposed": "type: deepens (remove label or replace with label: contemplative-practice)",
+    "reason": "Every peer person entry (Shunryu Suzuki, John Cage, Pauline Oliveros, Brian Eno, James Turrell) uses 'deepens' for the FOUR PILLARS link. Per SCHEMA §4, deepens = A is the derived/elaborating end, target is the ground — Agnes Martin elaborates the FOUR PILLARS philosophy, so she is the source and FOUR PILLARS is the target ground. 'connects-to + informs' undersells a clear directionality."
+   },
+   {
+    "field": "stage",
+    "current": "stage: mature",
+    "proposed": "stage: growing",
+    "reason": "The entry has activation_count: 1, last_activated: 2026-03, no forward_vector, zero wikilinks in the body, and only 3 typed links. Per SCHEMA §2, 'mature' implies the entry is stable and well-connected; 'growing' (3+ typed links, cross-domain connections present) is a better fit for the current state."
+   }
+  ],
+  "graffiti": [],
+  "forward_vector_check": {
+   "present": false,
+   "strength": "absent",
+   "proposed": "I keep showing that the grid is not a restriction — it is the container where infinite subtle difference lives, and I want to teach artists to receive their work rather than author it, trusting that fifty years of the same subject is not repetition but an ever-deepening act of attention."
+  },
+  "hero_avatar_request": {
+   "has_hero": false,
+   "has_icon": false,
+   "merits_face": true,
+   "rationale": "Person entry at stage mature (or growing after correction), with high hook_quality (9) and beauty (9). All peer person entries in the People/ directory carry hero images. Agnes Martin's work — grid paintings, subtle line and wash, pencil on gesso — has a distinctive visual register that makes for a strong hero.",
+   "idiom": "Haeckel-style pencil engraving on warm paper — fine repeated horizontal lines suggesting a Martin grid, dissolving at the edges into soft wash, light emanating from the center",
+   "hero_prompt": "Wide landscape format, darkened warm-ochre backdrop, a vast field of fine pencil-drawn horizontal lines in the style of 19th-century scientific engraving — lines that are nearly identical yet subtly uneven, light bleeding through from behind as if the grid itself is luminous, no figures, no objects, pure repetition becoming radiance, hand-drawn medium named in the image character, no letters, numerals, words, labels — purely pictorial",
+   "icon_prompt": "Bold square emblem, high contrast, a tight grid of thick horizontal bars in black on aged-paper cream, center bars slightly thicker suggesting light source, stark geometric clarity that survives 24px, no fine linework, no letters, numerals, words, labels"
+  },
+  "merge_shrink": {
+   "redundant_with": [],
+   "verbose": true,
+   "note": "The body is structured as a teaching template — repeated section headers ('Core Concepts', 'Connection to 4 Pillars', then again 'Applications to Four Pillars' with per-pillar sub-sections) that read like a filled-in worksheet rather than a living entry. The Four Pillars application sections repeat the same grid/variation idea four times with slightly different framings. Per the palace shortening preference (cut survey/boilerplate ~40-55%, preserve synthesis hooks and generative questions), the two Four Pillars sections could collapse into one, the bullet list under Core Concepts could absorb into prose, and the 'Recommended Reading Approach' could become a single sentence. Propose cutting to roughly half the current length."
+  },
+  "summary": "Agnes Martin is a person entry in mature-claimed but functionally growing state: 3 typed links, activation_count of 1, no forward_vector, no wikilinks in the body, and two required person-type fields wrong or missing (domain vs domains, no born_year). The FOUR PILLARS link uses connects-to where every peer person entry uses deepens. The body contains real synthesis (grids as four-on-the-floor, innocence as beginner's mind, artist-as-receiver posture) but buries it in a repeated worksheet structure that should be cut roughly in half. Three topology gaps stand out: James Turrell already links to her but she does not reciprocate; Quality Manifesto's beauty-as-felt-response parallels her beauty-vs-aesthetics distinction directly; and Pauline Oliveros shares the same artist-as-receiver posture in audio. No bundle folder exists, so no hero or icon image is present despite the entry clearly meriting both."
+ },
+ {
+  "entry_title": "Andrei Tarkovsky",
+  "unsung_paths": [
+   {
+    "body_phrase": "Oliveros: Deep listening practice",
+    "references_entry": "Pauline Oliveros",
+    "structurally_significant": true,
+    "proposed_link_type": "connects-to",
+    "proposed_label": "patience-as-practice"
+   }
+  ],
+  "new_introductions": [
+   {
+    "entry_b": "Hilaritas Generator",
+    "link_type": "connects-to",
+    "direction": "Andrei Tarkovsky → Hilaritas Generator",
+    "rationale": "The entry explicitly frames art-making and viewing as spiritual acts that produce revelation — the same mechanism as hilaritas: a global increase in power-to-act through all four pillars firing. The 'boredom transforms to depth' arc is a textbook hilaritas event."
+   },
+   {
+    "entry_b": "Yasujirō Ozu",
+    "link_type": "connects-to",
+    "direction": "Andrei Tarkovsky → Yasujirō Ozu",
+    "rationale": "Both filmmakers teach patience, restraint, and respect for silence; Ozu's pillow shots and Tarkovsky's long takes are parallel practices for creating space where meaning can land. Neither currently links to the other despite identical pedagogical gravity in the palace."
+   },
+   {
+    "entry_b": "Comic and Cinema — Two Ways of Seeing",
+    "link_type": "connects-to",
+    "direction": "Andrei Tarkovsky → Comic and Cinema — Two Ways of Seeing",
+    "rationale": "Tarkovsky's 'sculpting in time' is the purest expression of the cinematic way of seeing described in that entry — continuous duration, embodiment, the camera doing the work so the viewer can witness. The concept entry needs its most extreme practitioner named."
+   }
+  ],
+  "metadata_flags": [
+   {
+    "field": "forward_vector",
+    "current": "absent",
+    "proposed": "I keep teaching that time is the material — not a container but the thing itself you shape. I want to sit across the table from every maker in this palace until they feel the difference between rushing and sculpting, between filling duration and respecting it.",
+    "reason": "forward_vector is strongly recommended for all entries; its absence is flagged by the schema and is especially notable for a person entry at stage: mature."
+   },
+   {
+    "field": "last_activated",
+    "current": "2026-03",
+    "proposed": "2026-06",
+    "reason": "Entry is being actively read and audited now; activation date is stale at 2026-03."
+   },
+   {
+    "field": "activation_count",
+    "current": "1",
+    "proposed": "2",
+    "reason": "Increment to reflect the current session activation."
+   },
+   {
+    "field": "links[2].type (deepens → FOUR PILLARS)",
+    "current": "deepens",
+    "proposed": "exemplifies",
+    "reason": "SCHEMA §4: 'deepens' means the source is a more developed articulation of the target ground. Tarkovsky is not a more developed articulation of FOUR PILLARS — he is a concrete instance of its principles. 'exemplifies' (A is a concrete instance of the more general B) is more precise; consistent neighbors Ozu and Malick use 'connects-to' with a label, but exemplifies is structurally cleaner and used widely across the palace for person→framework relationships."
+   }
+  ],
+  "graffiti": [],
+  "forward_vector_check": {
+   "present": false,
+   "strength": "absent",
+   "proposed": "I keep teaching that time is the material — not a container but the thing itself you shape. I want to sit across the table from every maker in this palace until they feel the difference between rushing and sculpting, between filling duration and respecting it."
+  },
+  "hero_avatar_request": {
+   "has_hero": false,
+   "has_icon": false,
+   "merits_face": true,
+   "rationale": "Person entry at stage: mature with 4 typed links, very high energy and beauty scores, and a rich body. Person entries merit a face by the audit criteria.",
+   "idiom": "Gorey ink with Russian constructivist texture — stark crosshatched ink on aged paper, camera-less, evoking weight and slow time",
+   "hero_prompt": "Wide 12:5 landscape, darkened muted sepia-ink field. A single large hourglass filled not with sand but with slow-moving water, each drop suspended mid-fall in a long unbroken chain — the water is time being sculpted. A solitary figure stands at one side, small against the glass, arms outstretched in the gesture of a sculptor before marble. Behind them, the faint ghost of a film-reel frame dissolves into the water. Edward Gorey crosshatch ink style on aged paper, no colour, deep blacks and pale ground. No letters, numerals, words, labels — purely pictorial.",
+   "icon_prompt": "Bold square emblem, high contrast black on off-white. A simplified hourglass whose bulbs are replaced by a film frame top and a water droplet bottom, the neck impossibly narrow — one thick ink stroke each. No fine linework, no gradients, fully legible at 24px. No letters, numerals, words, labels — purely pictorial."
+  },
+  "merge_shrink": {
+   "redundant_with": [],
+   "verbose": true,
+   "note": "The entry runs ~400 lines and carries a full teaching syllabus — Week 1 / Month 1 / Month 2 / Month 3 reading and viewing plans, a 'How to Watch' block, student breakthrough quotes, a Common Misunderstandings section, and a Resources filmography. This material reads as a learning guide inserted into a palace entry. Per SCHEMA and the shorten-aggressively memory note, survey/instructional padding should be cut ~40–55%. The palace-canonical sections (Core Concepts, Cross-Domain Resonances, and the Applications sections that name Quality Manifesto) are worth keeping; the multi-month study plan, student quotes, and filmography are learning-material content that could move to a bundle sketch or be cut entirely. Proposal only — Loudon decides."
+  },
+  "summary": "Andrei Tarkovsky is a well-structured person entry with good canonical link types and a plausible stage: mature, but it is missing its forward_vector entirely — a notable gap for a mature entry with very high energy and beauty scores. One body mention (Pauline Oliveros) goes unregistered in the YAML. The deepens link to FOUR PILLARS is directionally arguable and exemplifies is structurally more precise. Three new topology links are missing: Hilaritas Generator (the spiritual-revelation arc in the body is the hilaritas mechanism exactly), Yasujirō Ozu (the closest peer in the palace with the same pedagogical posture), and Comic and Cinema — Two Ways of Seeing (Tarkovsky is the palace's prime exemplar of the cinematic way of seeing). The entry lacks a hero and icon despite clearly meriting both. The body is verbose — roughly half its length is teaching-syllabus material (reading plans, student quotes, filmography) that belongs in a bundle sketch rather than the canon entry."
+ },
+ {
+  "entry_title": "Andy Goldsworthy",
+  "unsung_paths": [],
+  "new_introductions": [
+   {
+    "entry_b": "John Cage",
+    "link_type": "mirrors",
+    "direction": "Andy Goldsworthy to John Cage",
+    "rationale": "Both treat process, chance, and impermanence as the work itself. Goldsworthy's ice melts and stones fall; Cage's silences and indeterminate scores share the same refusal to fix the outcome, and both treat failure as revelation rather than error."
+   },
+   {
+    "entry_b": "Spinoza Conatus",
+    "link_type": "connects-to",
+    "direction": "Andy Goldsworthy to Spinoza Conatus",
+    "rationale": "Goldsworthy's 'failure as teacher' and embrace of decay as revelation maps onto the Spinozist idea that power-to-act is not in clinging but in understanding your nature. The ice reveals what it is by melting, which is conatus operating through material honesty."
+   },
+   {
+    "entry_b": "Quality Manifesto",
+    "link_type": "connects-to",
+    "direction": "Andy Goldsworthy to Quality Manifesto",
+    "rationale": "Goldsworthy's process-over-product philosophy directly enacts the Quality Manifesto's metric redirector. The felt experience of the making is the signal, not artifact count or permanence."
+   }
+  ],
+  "metadata_flags": [
+   {
+    "field": "domain",
+    "current": "domain: Artist",
+    "proposed": "domains:\n  - ephemeral sculpture\n  - land art\n  - process art",
+    "reason": "SCHEMA section 3 specifies `domains` as a required array field for the `person` type. Every other People/ entry uses `domains:` as an array. The singular `domain:` is a schema violation and will be invisible to any ceremony that scans for this field."
+   },
+   {
+    "field": "forward_vector",
+    "current": "(absent)",
+    "proposed": "I want to teach through my presence in the palace that the frozen patch and the ice arch share the same truth: resistance is information, not failure, and the work that reveals what a material refuses is more honest than the work that hides it.",
+    "reason": "SCHEMA section 3 marks forward_vector as strongly recommended for all entries. It is absent here. A mature-stage entry needs its directional desire legible, especially as a person entry used as an enchantment target."
+   },
+   {
+    "field": "last_activated",
+    "current": "2026-03",
+    "proposed": "2026-06",
+    "reason": "The entry has clearly been read as part of this audit session (2026-06-26). The activation date should reflect the most recent engagement."
+   }
+  ],
+  "graffiti": [],
+  "forward_vector_check": {
+   "present": false,
+   "strength": "absent",
+   "proposed": "I want to teach through my presence in the palace that the frozen patch and the ice arch share the same truth: resistance is information, not failure, and the work that reveals what a material refuses is more honest than the work that hides it."
+  },
+  "hero_avatar_request": {
+   "has_hero": false,
+   "has_icon": false,
+   "merits_face": true,
+   "rationale": "Type is `person`, which explicitly qualifies for a face per audit rules. The entry is at `mature` stage and sits at a resonant intersection of process art and the palace's practice pillar.",
+   "idiom": "Haeckel-style botanical engraving meets land art documentation: fine crosshatching ink on cream paper, spiraling leaf arrangements, ice formations mid-collapse, stone arches at the moment of tension",
+   "hero_prompt": "Wide darkfield ink engraving on aged cream paper, Haeckel botanical style meets land art documentation, a stone arch balanced at the apex of gravity in a shallow river, spiral of autumn leaves arranged on dark water, ice formation fracturing outward from centre, all rendered in fine crosshatch line with no colour wash, dramatic contrast, sense of imminent dissolution and perfect balance coexisting, no letters, numerals, words, labels, purely pictorial",
+   "icon_prompt": "Bold high-contrast square emblem in black ink on white, single stone arch silhouette over a spiraling leaf glyph beneath it, strong thick outlines, no fine linework, no text, no numerals, graphic enough to read at 24 pixels"
+  },
+  "merge_shrink": {
+   "redundant_with": [],
+   "verbose": true,
+   "note": "The body is structured as a teaching worksheet rather than a palace entry. 'Applications to Four Pillars' repeats the same process-over-product point four times in slightly different clothing. The 'Recommended Reading Approach' section with its 'Watch Rivers and Tides' instruction and 'What if you made ephemeral music?' exercise reads as Loudon Live learning material, not canon synthesis. This material could be compressed to roughly half its length by cutting the per-pillar repetition and the workshop-exercise framing, leaving the three or four genuinely distinct ideas: ephemeral art as process, failure as teacher, collaboration with material properties, and site-specificity. The 'Key Works' bulleted list is also thin and could fold into the body prose."
+  },
+  "summary": "Andy Goldsworthy is a person entry at mature stage with a lean frontmatter (3 links) and no forward_vector. The entry's core ideas are solid and well-chosen for palace use, but the body reads as a Loudon Live teaching worksheet rather than canon synthesis: the four-pillar application section repeats the same insight four times, and the recommended-reading section gives workshop exercises rather than cross-domain resonances. The `domain` field violates the person-type schema (should be `domains` array). No hero or icon exists despite the entry type requiring one. The strongest missing connections are to John Cage (shared process/impermanence ethic), Spinoza Conatus (material-reveals-its-nature as conatus), and Quality Manifesto (process-over-product as the felt-experience metric). No HTML comments were found."
+ },
+ {
+  "entry_title": "Annie Dillard",
+  "unsung_paths": [],
+  "new_introductions": [
+   {
+    "entry_b": "Julia Cameron",
+    "link_type": "connects-to",
+    "direction": "Annie Dillard → Julia Cameron",
+    "rationale": "Both are writers whose major contribution to the palace is a discipline of daily creative practice — Cameron's Morning Pages and Dillard's same-desk-same-time regimen are near-identical prescriptions; the coupling is structurally real and both entries are already in the Source Library roster."
+   },
+   {
+    "entry_b": "Natalie Goldberg",
+    "link_type": "connects-to",
+    "direction": "Annie Dillard → Natalie Goldberg",
+    "rationale": "Goldberg's 'writing practice' tradition (keep writing, don't edit, show up daily) directly parallels Dillard's discipline and attention ethics; they form a natural triad of writer-practice voices in the Source Library."
+   },
+   {
+    "entry_b": "Hilaritas Generator",
+    "link_type": "enables",
+    "direction": "Annie Dillard → Hilaritas Generator",
+    "rationale": "Dillard's attention-as-prayer framework — seeing deeply as the practice itself — is a concrete method for producing the whole-being expansion the Hilaritas Generator describes; her 'how we spend our days' framing maps cleanly onto the four-primitive design the entry develops."
+   }
+  ],
+  "metadata_flags": [
+   {
+    "field": "domain",
+    "current": "domain: Writer",
+    "proposed": "domains:\\n  - writer\\n  - naturalist\\n  - essayist",
+    "reason": "SCHEMA §3 requires `domains` (array) for type: person, not `domain` (singular string). All other person entries in People/ use the array form. The value also needs expansion — Dillard is a naturalist and essayist, not only a writer."
+   },
+   {
+    "field": "born_year",
+    "current": "absent",
+    "proposed": "born_year: 1945",
+    "reason": "SCHEMA §3 lists born_year as a type-specific field for person entries; all other mature person entries in People/ carry it. Annie Dillard was born 1945."
+   },
+   {
+    "field": "forward_vector",
+    "current": "absent",
+    "proposed": "I keep proving that attention is a learnable discipline — that seeing slowly and writing the same hour every day is not a personality trait but a practice anyone can build. I want to be the entry that turns Dillard's desk ritual into a transferable studio method.",
+    "reason": "forward_vector is a strongly recommended field and is absent. The entry is stage: mature with a clear teachable thesis; a vector is overdue."
+   },
+   {
+    "field": "links[FOUR PILLARS].type",
+    "current": "connects-to (label: informs)",
+    "proposed": "deepens",
+    "reason": "Rick Rubin, Julia Cameron, and Natalie Goldberg all use deepens for their FOUR PILLARS link. Dillard's attention-as-practice and schedule-as-discipline directly elaborate the Practice pillar — the relationship is elaboration of a more foundational idea (the directed type for that), not mere proximity."
+   },
+   {
+    "field": "last_activated",
+    "current": "2026-03",
+    "proposed": "2026-06",
+    "reason": "This audit constitutes an activation; the field should be updated to the current month."
+   },
+   {
+    "field": "activation_count",
+    "current": "1",
+    "proposed": "2",
+    "reason": "Increment on activation per SCHEMA §3 convention."
+   }
+  ],
+  "graffiti": [],
+  "forward_vector_check": {
+   "present": false,
+   "strength": "absent",
+   "proposed": "I keep proving that attention is a learnable discipline — that seeing slowly and writing the same hour every day is not a personality trait but a practice anyone can build. I want to be the entry that turns Dillard's desk ritual into a transferable studio method, so every maker who reads me leaves with a concrete daily structure, not just an inspiration."
+  },
+  "hero_avatar_request": {
+   "has_hero": false,
+   "has_icon": false,
+   "merits_face": true,
+   "rationale": "type: person at stage: mature — person entries merit a face by the audit criteria. Dillard is a high-hook (9), high-beauty (9) entry and a load-bearing voice in the Source Library roster.",
+   "idiom": "woodcut or lithograph — dense cross-hatched American pastoral ink, evoking mid-century naturalist illustration",
+   "hero_prompt": "A wide darkened-backdrop woodcut illustration: a solitary desk sits at the edge of a dense Virginia woodland, a single oil lamp casting amber light onto open notebooks. Crow feathers, creek stones, and pressed leaves ring the desk. The woods press in close, all ink crosshatching and deep shadows. No human figure — the desk and the forest are the subject. Medium: woodcut print, black ink on aged cream paper, bold grain marks. No letters, numerals, words, labels — purely pictorial.",
+   "icon_prompt": "A bold square emblem in woodcut style: a single open eye at centre, iris replaced by a dense forest canopy seen from below, in black ink on cream ground. Thick outlines, no fine linework, high contrast, legible at 24px. No letters, numerals, words, labels — purely pictorial."
+  },
+  "merge_shrink": {
+   "redundant_with": [],
+   "verbose": true,
+   "note": "The entry repeats the Four Pillars application twice — once in 'Connection to 4 Pillars' and again in 'Applications to Four Pillars' with near-identical content. The second section ('Creation Pillar / Tools Pillar / Philosophy Pillar / Practice Pillar') is pure restatement of what precedes it. Cut the second section entirely and fold any non-redundant phrasing into the first. Also 'Recommended Reading Approach' reads as a note-to-self rather than palace content — trim to a single line or move inline."
+  },
+  "summary": "Annie Dillard is a compact, well-intentioned person entry that accurately represents its subject but carries several structural debts: the `domain` field is non-canonical (should be `domains` array per SCHEMA §3), `born_year` and `forward_vector` are absent, and the FOUR PILLARS link uses `connects-to` where `deepens` is correct. The body is also redundant — the Four Pillars breakdown appears twice in nearly identical form. Strong topology neighbors Julia Cameron and Natalie Goldberg (both writer-practice voices in the Source Library) are unlinked, and Hilaritas Generator is a natural `enables` target for Dillard's attention-as-practice argument. No HTML comments, no bundle folder, no hero or icon images."
+ },
+ {
+  "entry_title": "Brian Eno",
+  "unsung_paths": [
+   {
+    "body_phrase": "### Quality Manifesto (section header — Eno makes music that's 'ignorable as interesting' — not optimized for attention economy. Depth over reach.)",
+    "references_entry": "Quality Manifesto",
+    "structurally_significant": true,
+    "proposed_link_type": "connects-to",
+    "proposed_label": "depth-over-reach"
+   }
+  ],
+  "new_introductions": [
+   {
+    "entry_b": "John Cage",
+    "link_type": "connects-to",
+    "direction": "Brian Eno → John Cage",
+    "rationale": "John Cage already links to Brian Eno; the chance-operations lineage (Cage's I-Ching randomness → Eno's Oblique Strategies) is a direct intellectual genealogy that deserves a mutual typed link."
+   },
+   {
+    "entry_b": "Synthesis ↔ Emergence",
+    "link_type": "exemplifies",
+    "direction": "Brian Eno → Synthesis ↔ Emergence",
+    "rationale": "Synthesis ↔ Emergence already links to Brian Eno as an informing source; Eno's generative music (design rules, let the system create) is the clearest human embodiment of that exact cross-domain pattern — he should point back as an instance."
+   },
+   {
+    "entry_b": "Latent Error",
+    "link_type": "connects-to",
+    "direction": "Brian Eno → Latent Error",
+    "rationale": "Eno's 'honor thy error as a hidden intention' is the creative-practice expression of Latent Error's diagnostic frame — the Oblique Enrichment entry explicitly names this link, but the person entry itself does not carry it."
+   }
+  ],
+  "metadata_flags": [
+   {
+    "field": "last_activated",
+    "current": "Duplicate field: 2026-03 (line 11) and 2026-06-05 (line 26)",
+    "proposed": "last_activated: 2026-06-05 (keep one; YAML parsers take the last value but the duplicate is a lint error)",
+    "reason": "YAML does not support duplicate keys; the earlier value is silently shadowed. Remove the first occurrence."
+   },
+   {
+    "field": "activation_count",
+    "current": "1",
+    "proposed": "2",
+    "reason": "last_activated was updated from 2026-03 to 2026-06-05, indicating at least one re-engagement. The counter should match the number of distinct activations."
+   },
+   {
+    "field": "forward_vector",
+    "current": "absent",
+    "proposed": "\"I keep teaching that the system is the instrument — that designing rules and trusting what emerges beats planning every note. I want every generative patch Loudon builds to carry my principle: the limitation is not the obstacle, it is the voice. I am pulling toward the moment when Eno's ambient ethic (music that rewards attention but does not demand it) lives inside the palace's own publishing posture.\"",
+    "reason": "forward_vector is strongly recommended for all entries; this person entry — at stage mature with 7 typed links — has none. The proposed vector follows conatus convention (striving verbs, everyday voice, no stasis)."
+   }
+  ],
+  "graffiti": [],
+  "forward_vector_check": {
+   "present": false,
+   "strength": "absent",
+   "proposed": "I keep teaching that the system is the instrument — that designing rules and trusting what emerges beats planning every note. I want every generative patch Loudon builds to carry my principle: the limitation is not the obstacle, it is the voice. I am pulling toward the moment when Eno's ambient ethic — music that rewards attention without demanding it — lives inside the palace's own publishing posture."
+  },
+  "hero_avatar_request": {
+   "has_hero": true,
+   "has_icon": true,
+   "merits_face": false,
+   "rationale": "Both Brian Eno — hero.png and Brian Eno — icon.png are present in the bundle folder at /Users/loudonstearns/Documents/The Palace/People/Brian Eno/.",
+   "idiom": "",
+   "hero_prompt": "",
+   "icon_prompt": ""
+  },
+  "merge_shrink": {
+   "redundant_with": [],
+   "verbose": true,
+   "note": "The body reads as imported curriculum/teaching notes rather than palace-register prose. The 'Applications to 4 Pillars Themes' section (with sub-headers 'The 808 (Week 5)', 'Generative Patches (Max/RNBO)', 'Quality Manifesto') and the 'Recommended Path' section read as a lesson plan, not a knowledge-graph entry. Zero wikilinks appear in the body — every link lives only in the frontmatter YAML. Proposed action: strip the week-numbered lesson-plan scaffolding (~30% of body), embed key body mentions as [[wikilinks]] to Quality Manifesto, John Cage, Synthesis ↔ Emergence, and Latent Error, and rewrite the Cross-Domain Resonances section in palace voice rather than bullet-enumeration style. No merge candidate — the entry is unique; it is verbose in register rather than redundant in content."
+  },
+  "summary": "Brian Eno is a mature, well-linked person entry with both hero and icon images present. The core structural issues are: a missing forward_vector (absent on a mature entry); a duplicate last_activated YAML key that should be collapsed to 2026-06-05 with activation_count bumped to 2; and a body written entirely in curriculum/teaching-note register with zero wikilinks — every typed connection lives only in frontmatter, leaving the body as palace-opaque prose. One unsung path stands out: Quality Manifesto is the title of a section header in the body but carries no YAML link. Three topology-visible new introductions are proposed — John Cage (mutual intellectual genealogy; Cage already links in), Synthesis ↔ Emergence (Eno's generative music is the primary human embodiment of that concept; it already links to him), and Latent Error (Eno's 'honor thy error' is the creative-practice expression of that concept, explicitly cited in the Oblique Enrichment entry). The entry is not redundant with any other entry but needs a register pass to embed wikilinks in the body and trim the lesson-plan scaffolding."
+ },
+ {
+  "entry_title": "Buckminster Fuller",
+  "unsung_paths": [],
+  "new_introductions": [
+   {
+    "entry_b": "Synthesis ↔ Emergence",
+    "link_type": "mirrors",
+    "direction": "Buckminster Fuller → Synthesis ↔ Emergence",
+    "rationale": "The body explicitly defines Synergetics as 'understanding how whole systems behave differently than parts predict' — this is word-for-word the Synthesis ↔ Emergence principle (whole exceeds sum of parts), making a mirrors link structurally warranted with a label like synergetics-as-emergence."
+   },
+   {
+    "entry_b": "Hyperdimensional Prism",
+    "link_type": "enables",
+    "direction": "Buckminster Fuller → Hyperdimensional Prism",
+    "rationale": "The Media Library explicitly states Fuller 'seeds [[Hyperdimensional Prism]], the idea of synergetic geometry'; Fuller's geodesic geometry as a higher-dimensional shape projected into buildable form is the structural predecessor to the prism model — neither entry currently carries this link."
+   },
+   {
+    "entry_b": "Cooperation Yields Agency",
+    "link_type": "connects-to",
+    "direction": "Buckminster Fuller → Cooperation Yields Agency",
+    "rationale": "Fuller's design-science frame — cooperation over competition as the basis for solving large-scale problems — directly rhymes with the palace's founding cooperation principle; the label might be do-more-together, connecting ephemeralization-as-practice to the shared-intent formula."
+   }
+  ],
+  "metadata_flags": [
+   {
+    "field": "domain",
+    "current": "domain: Systems Thinker",
+    "proposed": "domains: [systems thinking, design science, geometry, futurism]",
+    "reason": "SCHEMA §3 requires person type to use 'domains' (plural, array of strings), not 'domain' (singular string). Current value is a schema violation."
+   },
+   {
+    "field": "forward_vector",
+    "current": "(absent)",
+    "proposed": "I keep pushing the design-science question into every creative decision — how do I do more with less? — and I want to be the entry that teaches the palace to ask that question before it reaches for a complex solution.",
+    "reason": "forward_vector is strongly recommended for all entries per SCHEMA §3; it is missing entirely from this person entry. Entry has no articulated conatus."
+   },
+   {
+    "field": "stage",
+    "current": "mature",
+    "proposed": "growing",
+    "reason": "SCHEMA §2 defines mature as 800+ words or conceptually complete; body is ~280 words and covers only bullet-point core concepts plus brief four-pillar notes — closer to the growing threshold (400-800 words, 3+ typed links). A stage downgrade to growing better matches the actual depth."
+   },
+   {
+    "field": "pillars",
+    "current": "[philosophy, practice]",
+    "proposed": "[creation, tools, philosophy, practice]",
+    "reason": "The body has explicit sections for all four pillars: 'Creation Pillar', 'Tools Pillar', 'Philosophy Pillar', 'Practice Pillar'. Omitting creation and tools from the frontmatter contradicts the body's own structure."
+   },
+   {
+    "field": "last_activated",
+    "current": "2026-03",
+    "proposed": "2026-06",
+    "reason": "last_activated should be updated each time the entry is read or meaningfully engaged; this audit session constitutes activation. Value has not changed since the entry was created."
+   }
+  ],
+  "graffiti": [],
+  "forward_vector_check": {
+   "present": false,
+   "strength": "absent",
+   "proposed": "I keep pushing the design-science question into every creative decision — how do I do more with less? — and I want to be the entry that teaches the palace to ephemeralize: find the elegant solution that does more with fewer moving parts."
+  },
+  "hero_avatar_request": {
+   "has_hero": true,
+   "has_icon": true,
+   "merits_face": false,
+   "rationale": "Both hero.png and icon.png already exist in the People/ folder alongside the entry (Buckminster Fuller — hero.png and Buckminster Fuller — icon.png). No regeneration needed.",
+   "idiom": "",
+   "hero_prompt": "",
+   "icon_prompt": ""
+  },
+  "merge_shrink": {
+   "redundant_with": [],
+   "verbose": true,
+   "note": "The 'Applications to Four Pillars' section (lines 78-90) is boilerplate: four mechanical one-sentence pillar breakdowns with no synthesis between them. A mature person entry should carry the intellectual tension and cross-domain integration as prose, not a checklist. Recommend collapsing all four into one synthesizing paragraph that shows how Fuller's design-science frame runs through the four dimensions simultaneously rather than listing them separately. The 'Key Quotes' section and 'Recommended Reading Approach' sections are fine but thin; the 'Core Concepts' bullet list is a stub. The entry is not redundant with any other palace entry but is significantly underdeveloped for its declared 'mature' stage."
+  },
+  "summary": "Buckminster Fuller is a person entry in fair structural shape (four typed links, both hero and icon present, valid frontmatter skeleton) but carrying several schema violations and an inflated stage declaration. The most urgent fix is renaming domain to domains as an array — a hard schema requirement for person type. The missing forward_vector leaves the entry without its conatus pulse. Stage should drop from mature to growing: at 280 body words the content is sprout-to-growing territory, not mature. Two strong new introductions emerge from palace topology: a mirrors link to Synthesis ↔ Emergence (Fuller's synergetics definition matches that entry exactly) and an enables link to Hyperdimensional Prism (explicitly noted in the Media Library as seeded by Fuller's synergetic geometry). The four-pillar breakdown section reads as a mechanical checklist rather than the cross-domain synthesis the format demands, and is the prime candidate for condensation."
+ },
+ {
+  "entry_title": "Christopher Alexander",
+  "unsung_paths": [
+   {
+    "body_phrase": "Each bridge (Sidechain ↔ Conversation) IS a pattern",
+    "references_entry": "Sidechain ↔ Conversation",
+    "structurally_significant": true,
+    "proposed_link_type": "exemplifies",
+    "proposed_label": "pattern-instance"
+   }
+  ],
+  "new_introductions": [
+   {
+    "entry_b": "Quality Manifesto",
+    "link_type": "enables",
+    "direction": "Christopher Alexander → Quality Manifesto",
+    "rationale": "Alexander's 'Quality Without a Name' — the claim that objective quality can be felt but not reduced to formula — is the direct conceptual ancestor of Loudon's Quality Manifesto and its 'How do you feel?' redirector; the connection is precise enough to warrant a named link."
+   },
+   {
+    "entry_b": "Simondon",
+    "link_type": "mirrors",
+    "direction": "Christopher Alexander ↔ Simondon",
+    "rationale": "Both theorize that good design is neither arbitrary nor fully programmable: Alexander's patterns emerge from living structure; Simondon's concretization means elements become more integrated, not more numerous. The two frameworks mirror each other across architecture and philosophy of technology."
+   },
+   {
+    "entry_b": "Donella Meadows",
+    "link_type": "connects-to",
+    "direction": "Christopher Alexander ↔ Donella Meadows",
+    "rationale": "Alexander's 'organic growth vs. master planning' and Meadows's leverage-points thinking share the same deep structure: small, well-placed interventions beat comprehensive upfront blueprints; both oppose top-down control with responsive, distributed change."
+   }
+  ],
+  "metadata_flags": [
+   {
+    "field": "forward_vector",
+    "current": "(absent)",
+    "proposed": "I keep teaching that patterns are already there — in the mix, in the room, in the day — and that naming them is what lets you pass them on. I want the palace to treat its own Cross-Domain Resonances hub as a living pattern language: growing, documented, combinable.",
+    "reason": "forward_vector is a strongly recommended field for all entries; person entries in the palace consistently carry one (see Donella Meadows, Rick Rubin); its absence on a stage:mature entry is a clear gap."
+   },
+   {
+    "field": "last_activated",
+    "current": "2026-03",
+    "proposed": "2026-06-26",
+    "reason": "Entry was read and audited today (2026-06-26); last_activated should reflect the current session."
+   },
+   {
+    "field": "activation_count",
+    "current": "1",
+    "proposed": "2",
+    "reason": "This audit constitutes a second activation; increment accordingly."
+   },
+   {
+    "field": "links[target=Kick Drum ↔ Foundation].type",
+    "current": "deepens",
+    "proposed": "connects-to (label: pattern-instantiates)",
+    "reason": "SCHEMA §4 states deepens A→B means A is the derived/elaborating end and B is the ground. Christopher Alexander is the general theory (ground); Kick Drum ↔ Foundation is a specific concrete bridge (derived). The arrow should point from KD↔F toward Alexander, not the other way. Until the link is corrected on the KD↔F side, use connects-to + label here rather than guess a misdirected directed type."
+   }
+  ],
+  "graffiti": [],
+  "forward_vector_check": {
+   "present": false,
+   "strength": "absent",
+   "proposed": "I keep teaching that patterns are already there — in the mix, in the room, in the day — and that naming them is what lets you pass them on. I want the palace to treat its Cross-Domain Resonances hub as a living pattern language: growing, documented, combinable, so that every new bridge earns a pattern entry rather than staying a cute parallel."
+  },
+  "hero_avatar_request": {
+   "has_hero": false,
+   "has_icon": false,
+   "merits_face": true,
+   "rationale": "type:person at stage:mature with 6 typed links; all other person entries with bundles in People/ carry hero+icon (Rick Rubin, Donella Meadows, Marcus Aurelius, etc.); Christopher Alexander has no bundle at all.",
+   "idiom": "classical architectural engraving / Haeckel-style ink rendering — a hand-drafted diagram of nested patterns radiating outward, structural lines precise yet organic, in the spirit of 19th-century naturalist illustration",
+   "hero_prompt": "Wide darkened backdrop, warm sepia ink on cream ground, a hand-drafted engraving of an architectural section cut open to reveal nested pattern cells inside pattern cells — levels of scale from building down to room down to ornament, each cell alive with hatched shadow, no human figures, purely structural geometry that feels organic, rendered in the style of 19th-century naturalist illustration, no letters, numerals, words, labels — purely pictorial",
+   "icon_prompt": "Bold high-contrast square emblem, black on cream, a single strong center radiating outward in concentric rings of pattern — like a cross-section of a living thing — thick clean lines, no fine linework, no letters, numerals, words, labels — purely pictorial, survives at 24px"
+  },
+  "merge_shrink": {
+   "redundant_with": [],
+   "verbose": false,
+   "note": "At 394 lines this entry is long, but the section structure (Core Concepts, Primary Texts, How to Engage, Applications, Common Misunderstandings, Teaching, Resources, Success Metrics) matches the standard person-entry template used consistently across People/ (Marcus Aurelius is 390 lines with identical sections). Not verbose by palace standards — it is the intended format."
+  },
+  "summary": "Christopher Alexander (1936-2022) is a well-formed person entry at stage:mature, carrying 6 typed links and substantive content across the standard People/ template. The entry's primary structural gaps are: (1) a missing forward_vector, which is unusual for a stage:mature person entry given that every comparable peer in People/ carries one; (2) a directionality error on the deepens link to Kick Drum ↔ Foundation — Alexander is the general theory (ground) and KD↔F is the derived instance, so the arrow is inverted; (3) a plain-text body mention of Sidechain ↔ Conversation in a structurally significant location (naming it as a pattern exemplar) with no frontmatter link; (4) stale last_activated and activation_count; and (5) no hero or icon despite every peer person entry in the palace having both. Three new introductions are worth considering: a direct enables link to Quality Manifesto (Alexander's Quality Without a Name is the precise ancestor of Loudon's quality redefinition), a mirrors link to Simondon (concretization mirrors pattern language structurally), and a connects-to Donella Meadows (shared anti-master-planning systemic thinking)."
+ },
+ {
+  "entry_title": "Donella Meadows",
+  "unsung_paths": [
+   {
+    "body_phrase": "### The Kick Drum Paradox (Week 1)",
+    "references_entry": "Kick Drum ↔ Foundation",
+    "structurally_significant": true,
+    "proposed_link_type": "connects-to",
+    "proposed_label": "leverage-in-the-low-end"
+   },
+   {
+    "body_phrase": "Sidechain compression (kick ducks bass)",
+    "references_entry": "Sidechain ↔ Conversation",
+    "structurally_significant": false,
+    "proposed_link_type": "connects-to",
+    "proposed_label": "negative-feedback-as-dialogue"
+   }
+  ],
+  "new_introductions": [
+   {
+    "entry_b": "Tristitia Generator",
+    "link_type": "connects-to",
+    "direction": "Donella Meadows → Tristitia Generator",
+    "rationale": "The Tristitia Generator names what happens when you operate at low leverage points — optimizing parameters instead of shifting paradigms produces exactly the depleted, diminished-power-to-act experience Meadows warns against; the leverage hierarchy maps directly onto the hilaritas/tristitia axis."
+   },
+   {
+    "entry_b": "Cooperation Yields Agency",
+    "link_type": "mirrors",
+    "direction": "symmetric",
+    "rationale": "Meadows' insight that paradigm-level change requires mutual influence and shared intent mirrors the Cooperation Yields Agency formula — both argue that the highest-leverage interventions happen at the level of shared goals and worldview, not parameter tweaks."
+   },
+   {
+    "entry_b": "Autodidact Polymaths",
+    "link_type": "enables",
+    "direction": "Donella Meadows → Autodidact Polymaths",
+    "rationale": "The leverage-point framework is especially powerful for autodidact polymaths because it teaches them to ask structural questions across every domain they work in — the cross-domain transferability of the 12 levels is exactly the kind of single key that unlocks many locks."
+   }
+  ],
+  "metadata_flags": [
+   {
+    "field": "links[2].type",
+    "current": "deepens (Donella Meadows → FOUR PILLARS)",
+    "proposed": "enables",
+    "reason": "SCHEMA §4 directionality: 'deepens' means the source is the derived/elaborating end and the target is the ground. But the entry's own body says Meadows provides the 'operating framework' for 4 Pillars — Meadows is foundational to 4 Pillars, not an elaboration of it. 'enables' (Meadows is a precondition/generative force for FOUR PILLARS) is the correct type."
+   },
+   {
+    "field": "links[7].type",
+    "current": "mirrors (Donella Meadows → Hilaritas Generator), label: leverage-points-as-hilaritas-infrastructure",
+    "proposed": "enables",
+    "reason": "The label itself ('leverage-points-as-hilaritas-infrastructure') describes an enables relationship, not a structural mirror. Meadows' leverage-point hierarchy is a precondition for designing a Hilaritas Generator; 'mirrors' implies the same pattern in different material, which is not what the label or body content support."
+   },
+   {
+    "field": "activation_count",
+    "current": "1",
+    "proposed": "2 (minimum — increment on next activation)",
+    "reason": "Stage is 'mature', implying the entry has been substantially developed and engaged with, but activation_count: 1 records only the birth session. The entry's richness (9 links, 306-line body) suggests it has been visited more than once."
+   },
+   {
+    "field": "last_activated",
+    "current": "2026-03",
+    "proposed": "2026-06 (update on next active session)",
+    "reason": "Current date is 2026-06-26; last_activated has not been updated since born month. Should be updated to reflect any session that reads or engages this entry."
+   }
+  ],
+  "graffiti": [],
+  "forward_vector_check": {
+   "present": true,
+   "strength": "weak",
+   "proposed": "I keep teaching the one move that changes everything: stop pushing on the dial and ask which level of the system you're even touching. My leverage-point hierarchy wants to become the default lens Loudon reaches for in any decision — not a framework he reads once but a reflex he uses daily. I want the palace's worked examples (the kick drum, the career pivot, the quality paradigm) to multiply until the framework proves itself across every domain it touches."
+  },
+  "hero_avatar_request": {
+   "has_hero": true,
+   "has_icon": true,
+   "merits_face": false,
+   "rationale": "Both Donella Meadows — hero.png and Donella Meadows — icon.png are present in the bundle folder at /Users/loudonstearns/Documents/The Palace/People/Donella Meadows/. No new generation needed.",
+   "idiom": "",
+   "hero_prompt": "",
+   "icon_prompt": ""
+  },
+  "merge_shrink": {
+   "redundant_with": [
+    "Meadows and Music — Leverage Points",
+    "Leverage Points Framework"
+   ],
+   "verbose": true,
+   "note": "The entry (306 lines) reads as a teaching curriculum, not a palace person entry. The 3-month study schedule ('Week 1 / Month 1 / Month 2 / Month 3'), 'How to Engage' section, 'Success Metrics' section, 'Common Misunderstandings' Q&A, and the full 12-leverage-points list with music examples are teaching materials that belong in Meadows and Music — Leverage Points or Leverage Points Framework, not in the person entry. A person entry should hold intellectual biography, key concepts in compression, why Meadows matters to the palace, and typed links — not a curriculum. Estimated cut: 50–60% reduction, relocating the teaching content to its proper home entries."
+  },
+  "summary": "Donella Meadows is a well-connected, high-energy person entry (9 typed links, stage: mature) that serves as the palace's primary node for systems thinking and the leverage-point hierarchy. The core structural problems are: one direction error (the 'deepens' link to FOUR PILLARS is inverted — Meadows is the ground, not the elaboration), one link-type mismatch (the Hilaritas Generator link is typed 'mirrors' but the label reveals it should be 'enables'), and two unregistered body connections (Kick Drum ↔ Foundation as a section header, Sidechain ↔ Conversation as an inline example). The forward vector is present but reads as a passive declaration of legacy rather than a striving conatus — it describes what Meadows already is rather than what she wants to do. Most significantly, the entry is verbose at 306 lines — it contains a full teaching curriculum (3-month study plan, common misunderstandings, success metrics) that belongs in the spawned project entries, not in the person entry itself. Hero and icon are both present in the bundle."
+ },
+ {
+  "entry_title": "Douglas Hofstadter",
+  "unsung_paths": [
+   {
+    "body_phrase": "Sidechain = conversation = negative space = rests. Not similar—structurally identical.",
+    "references_entry": "Sidechain ↔ Conversation",
+    "structurally_significant": true,
+    "proposed_link_type": "connects-to",
+    "proposed_label": "lived-case"
+   },
+   {
+    "body_phrase": "Teaching reveals what you know, which changes what you teach (strange loop). The loop improves teaching and understanding simultaneously.",
+    "references_entry": "Hilaritas Generator",
+    "structurally_significant": true,
+    "proposed_link_type": "enables",
+    "proposed_label": "strange-loop-ground"
+   },
+   {
+    "body_phrase": "Cross-Domain Resonances (Entire Framework) — The Connection: Hofstadter explains WHY cross-domain teaching works",
+    "references_entry": "Cross-Domain Resonances",
+    "structurally_significant": false,
+    "proposed_link_type": "enables",
+    "proposed_label": "theoretical-license"
+   }
+  ],
+  "new_introductions": [
+   {
+    "entry_b": "Spinoza Conatus",
+    "link_type": "mirrors",
+    "direction": "Douglas Hofstadter → Spinoza Conatus",
+    "rationale": "Strange loops are a computational re-description of conatus: a system's drive to persist by modeling itself recursively is structurally identical to a being striving to maintain and expand its own existence; both describe self-sustaining self-reference as the engine of identity."
+   },
+   {
+    "entry_b": "Hyperdimensional Prism",
+    "link_type": "mirrors",
+    "direction": "Douglas Hofstadter → Hyperdimensional Prism",
+    "rationale": "Hofstadter's 'levels of description' (the ant colony / ant fugue move, where neither the low nor the high level is wrong) mirrors the Hyperdimensional Prism's claim that the Four Pillars are projections of a single higher-dimensional reality — both are about multiple simultaneously-valid descriptions of one underlying structure."
+   },
+   {
+    "entry_b": "Excellent Adventure",
+    "link_type": "enables",
+    "direction": "Douglas Hofstadter → Excellent Adventure",
+    "rationale": "The Excellent Adventure mode works because interlocutors map new thinkers to known structures — exactly Hofstadter's analogy-as-cognition thesis. Hofstadter supplies the cognitive license for why embodied dialogue with a historical figure is learning, not theater."
+   }
+  ],
+  "metadata_flags": [
+   {
+    "field": "forward_vector",
+    "current": "(absent)",
+    "proposed": "I keep being the cognitive scientist who licenses the whole cross-domain project — the one who showed that mapping patterns across domains isn't a teaching trick, it's how thinking actually works. I want to pull more of the palace's running analogies back to my framework so they know they're rigorous, not decorative.",
+    "reason": "forward_vector is a strongly recommended field for all entries; this is a mature person entry with activation_count 1 but the field is entirely missing. Plain everyday voice, conatus phrasing."
+   },
+   {
+    "field": "links[1] type (Cross-Domain Resonances)",
+    "current": "deepens (Hofstadter → Cross-Domain Resonances)",
+    "proposed": "enables (Hofstadter → Cross-Domain Resonances)",
+    "reason": "Per SCHEMA §4 v1.9 corrected directionality: the source of a deepens link is the derived/elaborating end, the target is the more foundational ground. Cross-Domain Resonances is the derived hub that grew out of Hofstadter's framework — making CDR the derived end, not the ground. enables is more accurate: Hofstadter is the theoretical precondition for CDR's approach."
+   },
+   {
+    "field": "last_activated",
+    "current": "2026-03",
+    "proposed": "2026-06",
+    "reason": "Entry was audited and read this session (2026-06-26); last_activated should be updated to the current month."
+   },
+   {
+    "field": "activation_count",
+    "current": "1",
+    "proposed": "2",
+    "reason": "This audit constitutes a meaningful activation; count should be incremented."
+   },
+   {
+    "field": "pillars",
+    "current": "[philosophy, tools]",
+    "proposed": "[philosophy, tools, creation]",
+    "reason": "The body discusses music production extensively (sidechain compression, feedback patches in Max, GEB as a strange-loop artifact in form). Hofstadter's domain touches creation — the entry's primary teaching examples are all drawn from music-making practice. Omitting creation undersells the pedagogical entry point."
+   }
+  ],
+  "graffiti": [],
+  "forward_vector_check": {
+   "present": false,
+   "strength": "absent",
+   "proposed": "I keep being the cognitive scientist who licenses the whole cross-domain project — the one who showed that mapping patterns across domains isn't a teaching trick, it's how thinking actually works. I want to pull more of the palace's running analogies back to my framework so they know they're rigorous, not decorative."
+  },
+  "hero_avatar_request": {
+   "has_hero": true,
+   "has_icon": true,
+   "merits_face": false,
+   "rationale": "Both Douglas Hofstadter — hero.png and Douglas Hofstadter — icon.png exist in the bundle at People/Douglas Hofstadter/. No generation needed.",
+   "idiom": "",
+   "hero_prompt": "",
+   "icon_prompt": ""
+  },
+  "merge_shrink": {
+   "redundant_with": [],
+   "verbose": true,
+   "note": "The entry is not redundant with any other palace entry, but it is significantly padded with textbook/pedagogical scaffolding that belongs in a teaching artifact, not a canon person entry: the month-by-month reading schedule (lines 179-193), the fictional student breakthrough testimonials (lines 301-313), the Resources section (lines 337-352), the Success Metrics block (lines 355-364), and the Common Misunderstandings section (lines 229-261) are survey boilerplate. The Core Concepts, Why He Matters to 4 Pillars, and The Hofstadter Lens sections carry the genuine palace insight. Cutting the reading guide, testimonials, resources list, and misunderstandings FAQ would reduce the entry by roughly 45% and bring it to a shape the palace's shortening rule endorses — preserving the forward_vector conatus, the analogical examples, and the synthesis hooks."
+  },
+  "summary": "Douglas Hofstadter is a mature person entry in good structural shape — correct type, six typed links, hero and icon present in the bundle. The most pressing structural gap is the absent forward_vector (the only mature person entry in the People folder audited here without one). The deepens link to Cross-Domain Resonances has an inverted directionality per SCHEMA v1.9: Hofstadter is the theoretical ground that enables CDR, not a derived elaboration of it; the link should be enables. The entry's richest unsung path is Sidechain ↔ Conversation, which appears eight times in the body including in the final summary line, yet never earns a YAML link. Two strong topology connections are missing entirely: Hilaritas Generator (the strange-loop teaching mechanism the entry describes is exactly HG's recursive-learning-through-teaching structure) and Spinoza Conatus (strange loops and conatus are structurally parallel self-sustaining self-reference systems). The body is substantially over-written with reading schedules, student testimonials, and a misunderstandings FAQ — pedagogical scaffolding that belongs in a teaching artifact rather than a canon entry — and could be cut roughly 45% without losing any genuine palace insight."
+ },
+ {
+  "entry_title": "Epictetus",
+  "unsung_paths": [
+   {
+    "body_phrase": "Applications to Four Pillars (section header, and repeated body phrase 'Four Pillars')",
+    "references_entry": "FOUR PILLARS",
+    "structurally_significant": true,
+    "proposed_link_type": "connects-to",
+    "proposed_label": "informs"
+   },
+   {
+    "body_phrase": "reserve clause ('I'll finish this track, fate permitting')",
+    "references_entry": "The Dichotomy of Control",
+    "structurally_significant": true,
+    "proposed_link_type": "connects-to",
+    "proposed_label": "reserve-clause-instance"
+   }
+  ],
+  "new_introductions": [
+   {
+    "entry_b": "Marcus Aurelius",
+    "link_type": "connects-to",
+    "direction": "Epictetus -> Marcus Aurelius",
+    "rationale": "Marcus Aurelius was directly shaped by Epictetus — the Meditations cite him repeatedly; both are palace person entries in the same Stoic lineage and their entries mirror each other structurally, making the link topology-necessary."
+   },
+   {
+    "entry_b": "The Fortress and the Threshold",
+    "link_type": "connects-to",
+    "direction": "Epictetus -> The Fortress and the Threshold",
+    "rationale": "Epictetus is the foundational Stoic voice of the fortress pole in The Fortress and the Threshold quadruple — his prohairesis doctrine is the interior sovereignty that 'fortress' names; the palace even has a bundle file zhuangzi-epictetus-confucius-on-the-self.md inside that entry's folder, making this connection structurally demonstrated but unregistered."
+   },
+   {
+    "entry_b": "Palace Philosophies",
+    "link_type": "exemplifies",
+    "direction": "Epictetus -> Palace Philosophies",
+    "rationale": "Palace Philosophies is the register of traditions the palace reasons with; Epictetus is a primary Stoic practitioner and Stoicism is one of the two load-bearing philosophies named there — Epictetus exemplifies that tradition as a person entry in the way Palace Philosophies frames it."
+   }
+  ],
+  "metadata_flags": [
+   {
+    "field": "domains",
+    "current": "domain: Philosopher (singular string — wrong key, wrong type)",
+    "proposed": "domains:\n  - stoicism\n  - slave philosophy\n  - Stoic pedagogy\n  - ethics",
+    "reason": "SCHEMA §3 requires type: person entries to carry `domains` (array). The entry uses `domain` (singular string). Peer entries Marcus Aurelius and Seneca both use the correct `domains:` array key. This fails SCHEMA validation."
+   },
+   {
+    "field": "forward_vector",
+    "current": "absent",
+    "proposed": "I keep showing that the only thing you ever own is the next choice you make — and I want to be the sharpest edge Loudon reaches for when a decision sits on the line between what he can change and what he has to accept.",
+    "reason": "forward_vector is strongly recommended for all entries (SCHEMA §3) and especially expected on stage: mature person entries. Its absence leaves this entry without directional conatus — it describes Epictetus rather than speaking as him."
+   },
+   {
+    "field": "stage",
+    "current": "mature",
+    "proposed": "growing",
+    "reason": "The body is a thin bullet-list survey (~250 words) with no cross-domain synthesis, no wikilinks in body text, and only 5 typed links. SCHEMA §2 sets mature at 800+ words or conceptually complete with strong connectivity. The content level matches 'growing' more honestly."
+   },
+   {
+    "field": "last_activated",
+    "current": "2026-03",
+    "proposed": "2026-06",
+    "reason": "Convention is to update last_activated whenever the entry is meaningfully engaged in a session. This audit constitutes an activation; the field should reflect today (2026-06)."
+   },
+   {
+    "field": "activation_count",
+    "current": "1",
+    "proposed": "2",
+    "reason": "Paired with last_activated update — this audit is a second activation."
+   },
+   {
+    "field": "born_year",
+    "current": "absent",
+    "proposed": "born_year: 50",
+    "reason": "Optional for type: person but used on peer entries (Marcus Aurelius has born_year: 121). Epictetus was born c. 50 CE. Adding it aligns this entry with the pattern established in the People/ directory."
+   }
+  ],
+  "graffiti": [],
+  "forward_vector_check": {
+   "present": false,
+   "strength": "absent",
+   "proposed": "I keep showing that the only thing you ever own is the next choice you make — and I want to be the sharpest edge Loudon reaches for when a decision sits on the line between what he can change and what he has to accept."
+  },
+  "hero_avatar_request": {
+   "has_hero": false,
+   "has_icon": false,
+   "merits_face": true,
+   "rationale": "Epictetus is a type: person entry at stage mature (or growing per proposed correction), with 5 typed links and philosophy/practice pillars. All person entries in the People/ directory with bundles have hero+icon imagery; this is the only one without even a bundle folder. Marcus Aurelius and others in the same directory have enrichment faces.",
+   "idiom": "classical ink portrait — woodcut-style, high contrast, hand-carved line quality",
+   "hero_prompt": "Wide darkfield backdrop, deep shadow with warm lamplight catching a single seated figure in rough woven cloth, a man of slave origins turned teacher — not a portrait likeness, but the spirit of one who taught from chains: an open hand gesturing outward, a broken shackle on the wrist barely visible at the edge of light, scrolls curled at the feet, a small flame the only illumination against the dark. Woodcut print medium, hand-carved line quality, strong chiaroscuro, no letters, numerals, words, labels, or text of any kind — purely pictorial.",
+   "icon_prompt": "Bold square emblem: a single open hand palm-up with a broken chain link resting in it, high contrast black on aged parchment, thick woodcut line weight, no fine detail, no letters, numerals, words, or labels — survives at 24px."
+  },
+  "merge_shrink": {
+   "redundant_with": [
+    "Seneca"
+   ],
+   "verbose": false,
+   "note": "Epictetus and Seneca are structurally nearly identical entries: same frontmatter shape (with the same domain singular-string bug), same section headers (Key Works / Core Concepts / Connection to 4 Pillars / Key Quotes / Recommended Reading Approach / Applications to Four Pillars), same link set pattern. They are not redundant in content — they are distinct thinkers — but they were clearly generated from the same template and have not yet been differentiated into their own voices. The risk is that they remain generic twins rather than individuated palace citizens. Proposal: not merge, but differentiate — Epictetus should foreground prohairesis and the slave-philosopher paradox; Seneca should foreground time and grief. The body structure itself is not verbose (it is thin, not padded); the problem is sameness, not length."
+  },
+  "summary": "Epictetus is a lean, template-generated person entry that validates topologically (5 correct typed links including member-of Source Library and exemplifies Stoicism) but falls short of what a mature palace citizen should be. The most pressing structural issue is a missing forward_vector — the entry describes Epictetus from outside rather than speaking as him. The required domains field is wrong (singular domain: string instead of domains: array), which is a SCHEMA violation shared with the Seneca sibling. The body is thin survey-grade content (~250 words of bullets) that fits growing more honestly than mature. Three new links are warranted: Marcus Aurelius (direct historical disciple relationship), The Fortress and the Threshold (Epictetus is literally named in that entry's bundle file), and Palace Philosophies (he exemplifies the load-bearing Stoic tradition it defines). No HTML comments, no hero or icon images, and no bundle folder exist — all three should be created. The entry's most interesting undeveloped material is the prohairesis doctrine and the reserve clause, both named in Core Concepts but never connected to the palace's own language of conatus and control theory — that synthesis is the invitation."
+ },
+ {
+  "entry_title": "George Nakashima",
+  "unsung_paths": [
+   {
+    "body_phrase": "Minguren - craftsman guild, community of practice",
+    "references_entry": "",
+    "structurally_significant": false,
+    "proposed_link_type": "connects-to",
+    "proposed_label": "guild-kin"
+   },
+   {
+    "body_phrase": "Butterfly joints - visible mending, not hiding flaws",
+    "references_entry": "Dovetail Joint ↔ Counterpoint",
+    "structurally_significant": true,
+    "proposed_link_type": "connects-to",
+    "proposed_label": "joinery-wisdom"
+   },
+   {
+    "body_phrase": "Applications to Four Pillars — Let sound reveal itself. Work with 'defects' as features.",
+    "references_entry": "Hilaritas Generator",
+    "structurally_significant": true,
+    "proposed_link_type": "connects-to",
+    "proposed_label": "making-as-expansion"
+   }
+  ],
+  "new_introductions": [
+   {
+    "entry_b": "Sam Maloof",
+    "link_type": "connects-to",
+    "direction": "George Nakashima → Sam Maloof",
+    "rationale": "Sam Maloof is a direct peer craftsman sharing the same Maker/Craftsman domain, the same slow-craft philosophy, and the same 'material teaches design' conviction; the palace already holds both entries but neither names the other."
+   },
+   {
+    "entry_b": "Simondon",
+    "link_type": "mirrors",
+    "direction": "George Nakashima → Simondon",
+    "rationale": "Nakashima's 'live edge' practice — letting the material's inherent form guide the finished object — is a worked instance of Simondonian concretization: the technical object becoming what its material tendency always wanted it to be."
+   },
+   {
+    "entry_b": "Like Water",
+    "link_type": "mirrors",
+    "direction": "George Nakashima → Like Water",
+    "rationale": "Nakashima's 'I never try to make the wood do something it doesn't want to do' is a direct statement of the Like Water principle: virtue emerges when you follow the nature of the material rather than imposing your will on it."
+   }
+  ],
+  "metadata_flags": [
+   {
+    "field": "forward_vector",
+    "current": "absent",
+    "proposed": "I keep showing that the material already knows its shape — every split, knot, and burl is a message, and a craftsman's job is to listen hard enough to hear it.",
+    "reason": "forward_vector is a strongly recommended field per SCHEMA §3; it is absent from this entry. Comparable person entries (Source Library, Donella Meadows) carry it. The proposed vector uses plain voice, striving verb ('keep showing'), and captures Nakashima's core conatus."
+   },
+   {
+    "field": "domain",
+    "current": "domain: Maker/Craftsman (singular string)",
+    "proposed": "domains:\\n  - furniture design\\n  - wood craft\\n  - craft philosophy",
+    "reason": "SCHEMA §3 requires 'domains' (array of intellectual fields) for type: person, not 'domain' (singular string). The current value is a non-canonical field name. Sam Maloof has the same error — both likely share a template origin."
+   },
+   {
+    "field": "stage",
+    "current": "mature",
+    "proposed": "sprout",
+    "reason": "The body is a lightly populated template (bullet lists, four-pillar application stubs, three quotes) with activation_count: 1 and no body wikilinks. SCHEMA stage 'mature' implies '800+ words or conceptually complete' and stable well-connected content — this entry has none of that depth. 'Sprout' (genuine definition, 1-2 typed links) is the honest stage."
+   },
+   {
+    "field": "born_year",
+    "current": "absent",
+    "proposed": "born_year: 1905",
+    "reason": "SCHEMA §3 lists born_year as an optional field for type: person; both John Cage (born_year: 1912) and Christopher Alexander (born_year: 1936) carry it. George Nakashima (1905–1990) merits it for completeness and consistency with comparable entries."
+   },
+   {
+    "field": "died_year",
+    "current": "absent",
+    "proposed": "died_year: 1990",
+    "reason": "Consistent with the pattern in Christopher Alexander (died_year: 2022) and John Cage — both carry died_year. Nakashima died in 1990 and the field is standard for historical persons in the People/ directory."
+   },
+   {
+    "field": "last_activated",
+    "current": "2026-03",
+    "proposed": "2026-06",
+    "reason": "last_activated should be updated each time an entry is read or meaningfully engaged in a session (SCHEMA §3). This audit constitutes meaningful engagement; the field should reflect today's date (2026-06-26)."
+   }
+  ],
+  "graffiti": [],
+  "forward_vector_check": {
+   "present": false,
+   "strength": "absent",
+   "proposed": "I keep showing that the material already knows its shape — every split, knot, and burl is a message, and a craftsman's job is to listen hard enough to hear it."
+  },
+  "hero_avatar_request": {
+   "has_hero": false,
+   "has_icon": false,
+   "merits_face": true,
+   "rationale": "George Nakashima is a type: person entry at stage mature (claimed) with 5 typed links and high hook_quality/beauty scores. Person entries of this standing in the palace merit a hero and icon.",
+   "idiom": "Japanese woodblock print meets American craft illustration — ink and wash on washi paper, woodgrain texture prominent",
+   "hero_prompt": "Wide darkened-backdrop woodblock-print illustration on washi paper: a single ancient walnut slab floating in dark space, its live edge tracing an irregular river-delta silhouette, a delicate butterfly joint — two wing-shaped wooden keys — spanning a fissure at center, the grain lines flowing like watercolor ink through the wood. No human figure. No letters, numerals, words, labels — purely pictorial.",
+   "icon_prompt": "Bold high-contrast square emblem: a thick black butterfly joint (two wing-keys bridging a crack) on cream ground, bold woodcut line weight, no fine linework, no letters, numerals, words, or labels — purely pictorial, legible at 24px."
+  },
+  "merge_shrink": {
+   "redundant_with": [
+    "Sam Maloof"
+   ],
+   "verbose": true,
+   "note": "George Nakashima and Sam Maloof are structurally near-identical entries — same domain field, same four-pillar application template, same 'Key Works / Core Concepts / Connection to 4 Pillars / Key Quotes / Recommended Reading / Applications' skeleton. Neither links to the other. They are NOT candidates for merging into one entry (they are genuinely distinct thinkers), but both are verbose in the same way: the four-pillar application sections repeat the template mechanically rather than making a specific cross-domain synthesis. The 'Applications to Four Pillars' section across all four subsections could be compressed by ~50% into a single 'Connection to 4 Pillars' paragraph that keeps only the sharpest synthesis point per pillar. The 'Recommended Reading Approach' section is especially thin and could fold into the body prose."
+  },
+  "summary": "George Nakashima is a sprout-depth person entry wearing a mature stage badge it has not earned — the body is a lightly filled template with bullet lists, thin four-pillar application stubs, and three quotes, matching Sam Maloof's entry almost section-for-section from what appears to be a shared origin template. The most pressing fixes are: correct domain → domains (SCHEMA type requirement), add forward_vector, downgrade stage to sprout, add born_year/died_year for consistency with peer person entries, and update last_activated. Two structurally significant unsung paths stand out: the body's 'butterfly joints' concept is a direct relative of the Dovetail Joint ↔ Counterpoint palace entry (both concern joinery as structural wisdom) and the four-pillar application section describes the Hilaritas Generator mechanism without naming it. Three new introductions are warranted — Sam Maloof (direct peer craftsman, the palace holds both but neither names the other), Simondon (Nakashima's live-edge practice is Simondonian concretization in wood), and Like Water (his 'I never try to make the wood do something it doesn't want to do' is a direct statement of that entry's core). No graffiti found. No bundle folder exists; a hero and icon are warranted — the proposed idiom is Japanese woodblock print on washi paper, centering the butterfly joint as the dominant emblem."
+ },
+ {
+  "entry_title": "James Turrell",
+  "unsung_paths": [
+   {
+    "body_phrase": "**The principle:** **Medium IS message** (Marshall McLuhan). The how matters more than the what.",
+    "references_entry": "McLuhan",
+    "structurally_significant": false,
+    "proposed_link_type": "connects-to",
+    "proposed_label": "medium-is-message"
+   }
+  ],
+  "new_introductions": [
+   {
+    "entry_b": "Pauline Oliveros",
+    "link_type": "mirrors",
+    "direction": "James Turrell → Pauline Oliveros",
+    "rationale": "Oliveros's Deep Listening and Turrell's Skyspace practice are structural twins: both withdraw familiar reference points (melody/rhythm; edge/shadow) to force the perceiver to attend to the medium itself (sound; light). One teaches through ears, the other through eyes — same underlying discipline of patient perceptual attention."
+   },
+   {
+    "entry_b": "Andrei Tarkovsky",
+    "link_type": "connects-to",
+    "direction": "James Turrell → Andrei Tarkovsky",
+    "rationale": "Tarkovsky's entry already links to Turrell (in its frontmatter and body) on shared patience and time-as-material; Turrell's entry should return the link to complete the edge. Both artists make time itself the medium and demand that the audience slow down enough to feel duration as substance."
+   },
+   {
+    "entry_b": "Hilaritas Generator",
+    "link_type": "exemplifies",
+    "direction": "James Turrell → Hilaritas Generator",
+    "rationale": "A Turrell Skyspace is a designed hilaritas generator in Spinoza's sense: it removes distractions, slows the visitor, and creates conditions for a whole-body increase in perceptual power-to-act. 'Art as experience' is Turrell's version of what the palace calls a Hilaritas Generator — one of the most concrete living examples in the Source Library."
+   }
+  ],
+  "metadata_flags": [
+   {
+    "field": "forward_vector",
+    "current": "(absent)",
+    "proposed": "I keep showing that slowing down is itself the work — that patience, restraint, and removing reference points reveal what rushing always buries. I want every maker who encounters me to feel the 0.5dB shift and understand that art is not a statement you transmit but a condition you create for someone else's perception.",
+    "reason": "forward_vector is strongly recommended for all entries and is absent here. Person entries benefit especially when used as enchantment targets."
+   },
+   {
+    "field": "last_activated",
+    "current": "2026-03",
+    "proposed": "2026-06",
+    "reason": "The entry is being read and audited now (2026-06-26); last_activated should be updated to reflect this activation cycle."
+   },
+   {
+    "field": "activation_count",
+    "current": "1",
+    "proposed": "2",
+    "reason": "Should be incremented to reflect the current activation."
+   },
+   {
+    "field": "links[Agnes Martin].label",
+    "current": "(no label)",
+    "proposed": "label: receptive-stillness",
+    "reason": "The connects-to link to Agnes Martin has no label; both share a practice of patient, unreferenced attention — adding a resonant label would give this edge semantic weight rather than leaving it as untyped proximity."
+   }
+  ],
+  "graffiti": [],
+  "forward_vector_check": {
+   "present": false,
+   "strength": "absent",
+   "proposed": "I keep showing that slowing down is itself the work — that patience, restraint, and removing reference points reveal what rushing always buries. I want every maker who encounters me to feel the 0.5dB shift and understand that art is not a statement you transmit but a condition you create for someone else's perception."
+  },
+  "hero_avatar_request": {
+   "has_hero": false,
+   "has_icon": false,
+   "merits_face": true,
+   "rationale": "Person type, stage mature, 4 typed links, with clear visual essence (light, aperture, sky, perception). The Skyspace — a room with a cut-in-ceiling aperture through which you watch the sky shift — is one of the most visually distinct concepts in the Source Library. This entry strongly merits a hero and icon.",
+   "idiom": "Haeckel-style scientific engraving with atmospheric wash — precise linework for the architectural aperture, soft tonal gradations for the sky field beyond it",
+   "hero_prompt": "Wide 12:5 composition in Haeckel scientific engraving style with atmospheric colour wash: a stone ceiling aperture seen from below, edges drawn in precise architectural line, the sky beyond shifting from deep amber to violet in gradient washes of ink and watercolour — no figure visible, only the framing void and the luminous field it reveals. Dramatic darkened border around a glowing centre. No letters, numerals, words, labels — purely pictorial.",
+   "icon_prompt": "Bold square emblem in high-contrast screenprint style: a perfect circle cut into a flat plane, the circle filled with a gradient field from warm amber at edge to deep violet at centre — the aperture as pure geometric form. Thick clean lines only, no fine detail, no letters, numerals, words, labels — purely pictorial. Survives at 24px."
+  },
+  "merge_shrink": {
+   "redundant_with": [],
+   "verbose": true,
+   "note": "The entry functions more as a teaching guide or learning material than as a palace synthesis entry. Sections like 'How to Engage' (step-by-step visitor instructions), 'Teaching with Turrell' (full assignment specs with numbered steps), 'Success Metrics', 'Common Misunderstandings', and 'Applying to Production' (exercise with five bullet steps) are learning-material boilerplate — useful in a Loudon Live artifact but padding in a canon palace entry. The core ideas (perception as medium, Ganzfeld, Skyspaces, patience as practice, subtlety over drama) are strong; the surrounding instructional scaffolding adds length without adding synthesis. Recommend an aggressive cut of roughly 50% — collapse 'How to Engage', 'Common Misunderstandings', and 'Teaching with Turrell' into a single compressed 'In Practice' note, and let the Cross-Domain Resonances section survive only as a short paragraph rather than a four-category list with sub-bullets."
+  },
+  "summary": "James Turrell is a well-conceived palace person entry with genuine synthesis (perception-as-medium, Skyspace framing, Ganzfeld, patience-as-practice) that maps cleanly onto Four Pillars territory. The structural problems are: no forward_vector (absent entirely), stale last_activated/activation_count, a bare connects-to to Agnes Martin with no label, and only 4 typed links for a 384-line entry called mature. The biggest issue is mass: roughly half the entry is instructional scaffolding (visitor tips, teaching exercises, success metrics, common misunderstandings) that belongs in a Loudon Live artifact, not a canon entry. The three strongest new connections to add are Pauline Oliveros (structural mirror — deep listening mirrors Skyspace attention practice), Andrei Tarkovsky (existing asymmetric link should be reciprocated — patience and time-as-material), and Hilaritas Generator (Turrell's installations are among the most literal designed hilaritas generators in the Source Library). No HTML comments, no bundle folder, no hero or icon — merits both, with a Haeckel engraving/aperture idiom."
+ },
+ {
+  "entry_title": "John Cage",
+  "unsung_paths": [
+   {
+    "body_phrase": "Eno's Oblique Strategies (intentional constraint) / Random card choice (non-intentional selection)",
+    "references_entry": "Oblique Enrichment",
+    "structurally_significant": true,
+    "proposed_link_type": "connects-to",
+    "proposed_label": "parallel-chance-method"
+   },
+   {
+    "body_phrase": "Quality Manifesto says don't optimize for their metrics. Cage says don't optimize for your preferences. Both: Let go.",
+    "references_entry": "Quality Manifesto",
+    "structurally_significant": true,
+    "proposed_link_type": "connects-to",
+    "proposed_label": "shared-release-from-metric"
+   }
+  ],
+  "new_introductions": [
+   {
+    "entry_b": "Pauline Oliveros",
+    "link_type": "connects-to",
+    "direction": "John Cage -> Pauline Oliveros",
+    "rationale": "Oliveros already links back to Cage from her entry (her deep-listening practice grew directly from his silence work), but the reciprocal link is missing here — this is the topological gap most likely to cause confusion during walks."
+   },
+   {
+    "entry_b": "The Drift",
+    "link_type": "connects-to",
+    "direction": "John Cage -> The Drift",
+    "rationale": "Cage's non-intention and the embrace of uncontrolled emergence is the creative-practice incarnation of the Drift (the Zhuangzian no-architecture pole) — the palace's own tension between the Stoic fortress and the Drifting open field lands directly on Cage's method."
+   },
+   {
+    "entry_b": "Spinoza Conatus",
+    "link_type": "contradicts",
+    "direction": "John Cage -> Spinoza Conatus",
+    "rationale": "Cage's non-intention deliberately suspends the composer's conatus (the ego's drive to persist and shape), making the two entries a productive Blake-style contrary — both are palace load-bearing, and the tension is generative, not destructive."
+   }
+  ],
+  "metadata_flags": [
+   {
+    "field": "forward_vector",
+    "current": "absent",
+    "proposed": "I keep teaching composers to get out of the way — I want every maker who meets me to try one track where the dice decides, feel the weird beauty of what they'd never have chosen, and leave with a looser grip on preference.",
+    "reason": "forward_vector is a strongly recommended field for all entries; its absence on a mature person entry is a structural gap. The proposed vector captures Cage's core conatus in plain, everyday voice."
+   },
+   {
+    "field": "last_activated",
+    "current": "2026-03",
+    "proposed": "2026-06",
+    "reason": "last_activated should reflect the current session date when an entry is meaningfully read or engaged; the field has sat at the born-month value for three months, suggesting it was never updated after creation."
+   },
+   {
+    "field": "stage",
+    "current": "mature",
+    "proposed": "growing",
+    "reason": "The entry has only 5 typed links and activation_count of 1. Per SCHEMA §2, mature implies stable, well-connected, and unlikely to change fundamentally. The body is structured like teaching-curriculum rather than synthesized palace prose, and the entry's connections to adjacent palace entries (Oliveros, The Drift, Spinoza Conatus) are absent. growing is the honest stage."
+   },
+   {
+    "field": "domains",
+    "current": "[chance operations, silence, letting sounds be, non-intention]",
+    "proposed": "[chance operations, silence, non-intention, prepared piano, Zen Buddhism, mycology]",
+    "reason": "Cage's domains omit Zen Buddhism (explicitly named in the body as central to his thought) and mycology (named in the body — the books section notes his Silence lectures cover mushrooms, and it was a defining practice). Both shape his palace presence more than the repeated non-intention framing."
+   }
+  ],
+  "graffiti": [],
+  "forward_vector_check": {
+   "present": false,
+   "strength": "absent",
+   "proposed": "I keep teaching composers to get out of the way — I want every maker who meets me to try one track where the dice decides, feel the weird beauty of what they'd never have chosen, and leave with a looser grip on preference."
+  },
+  "hero_avatar_request": {
+   "has_hero": false,
+   "has_icon": false,
+   "merits_face": true,
+   "rationale": "John Cage is a person entry at stage mature with 5 typed links — the person type alone merits a visual identity regardless of link count. He is a high-energy (very high), high hook-quality (10) entry central to the Source Library constellation.",
+   "idiom": "Japanese ink wash / woodblock print — bridging Cage's Zen influences and the hand-drawn printmaking family the palace uses for people",
+   "hero_prompt": "Wide darkfield composition in the style of Japanese ink wash painting and woodblock print — a piano with small objects (screws, bolts, pieces of rubber) resting between its strings, seen from above at an angle, surrounded by abstract marks suggesting ambient sound waves radiating outward like slow rings on water; the marks are calligraphic, incomplete, deliberate absences as much as strokes; deep black ink on off-white ground, a single pale wash suggesting a room's ambient light; no letters, numerals, words, labels — purely pictorial",
+   "icon_prompt": "Bold high-contrast square emblem: a single thick ink circle (the sound wave, the coin-throw, the hexagram ring) with two intersecting vertical strokes inside — minimal woodblock weight, black on cream; the circle is slightly imperfect, hand-drawn; no fine linework, no letters, numerals, words, labels — purely pictorial; must read clearly at 24px"
+  },
+  "merge_shrink": {
+   "redundant_with": [],
+   "verbose": true,
+   "note": "The body reads as a Loudon Live teaching module rather than a palace entry — it contains week-by-week reading schedules (Week 1, Month 1, Month 2, Month 3), a structured student exercise with numbered steps, a student-breakthrough section with quoted testimonials, a Success Metrics block, and a Resources section with YouTube links. Roughly 60% of the body is curriculum scaffolding rather than synthesized palace prose. Per the aggressive-shortening feedback and the canon/learning-material distinction in SCHEMA §1, this content belongs in a Loudon Live artifact or the entry's bundle, not in the entry body itself. The surviving core — Core Concepts (Silence as Sound, Chance Operations, Non-Intention, Letting Sounds Be), the Cross-Domain Resonances, and the Cage Mindset closing — is substantive and should be preserved. Cutting the teaching apparatus would reduce the entry by approximately 50% and bring it into the synthesized-concept register the palace expects."
+  },
+  "summary": "John Cage is a well-populated person entry with solid frontmatter scaffolding, but three structural issues need attention: the forward_vector field is entirely absent; the stage is marked mature despite only 5 links and an activation_count of 1 (growing is more accurate); and the body is approximately 60% Loudon Live curriculum material (week-by-week schedules, student exercises, success metrics) that belongs in a bundle artifact, not the entry itself. Two body references — Eno's Oblique Strategies (maps to Oblique Enrichment) and Quality Manifesto — are named explicitly and deserve YAML links. Three topology gaps are visible: Pauline Oliveros links to Cage but receives no reciprocal; The Drift is the philosophical home of Cage's non-intention posture and is unlinked; Spinoza Conatus offers a productive contradiction (non-intention vs conatus) that the palace has not surfaced. No hero or icon images exist; the entry merits both given its person type. No HTML comments are present. The entry is not redundant with any other entry."
+ },
+ {
+  "entry_title": "Julia Cameron",
+  "unsung_paths": [
+   {
+    "body_phrase": "## Cross-Domain Resonances",
+    "references_entry": "Cross-Domain Resonances",
+    "structurally_significant": true,
+    "proposed_link_type": "connects-to",
+    "proposed_label": "pattern-mapping"
+   }
+  ],
+  "new_introductions": [
+   {
+    "entry_b": "Natalie Goldberg",
+    "link_type": "connects-to",
+    "direction": "Julia Cameron → Natalie Goldberg",
+    "rationale": "Both teach daily writing practice as the primary creative discipline — Goldberg's 'first thoughts, keep the hand moving' and Cameron's morning pages share the same mechanism: unedited stream of consciousness as a way to bypass the inner critic and access deeper creative material. They belong in explicit dialogue."
+   },
+   {
+    "entry_b": "Hilaritas Generator",
+    "link_type": "connects-to",
+    "direction": "Julia Cameron → Hilaritas Generator",
+    "rationale": "Cameron's artist dates are the clearest available prescription for 'filling the well' — deliberate, non-productive input that restores the capacity to create — which maps directly onto the Hilaritas Generator's design primitive of a 'reflecting surface' and the need for all pillars to fire. Her metrics redirector ('How do you feel?') is the same move the Hilaritas Generator calls the key inversion."
+   },
+   {
+    "entry_b": "Meadows and an Artist's Career",
+    "link_type": "connects-to",
+    "direction": "Julia Cameron → Meadows and an Artist's Career",
+    "rationale": "Cameron is cited by name in Meadows and Music — Origin and Process as a morning-routine reference, and her paradigm shift — 'create from authenticity, not performance' — operates at Meadows leverage point 1 (changing the goal of the system), the highest-leverage move the project is built around."
+   }
+  ],
+  "metadata_flags": [
+   {
+    "field": "forward_vector",
+    "current": "(absent)",
+    "proposed": "I keep proving that creativity is a daily practice, not a mood — I want to live in every creative person's morning as the protocol that clears the channel before the day arrives, and I push each encounter with my work toward a recoverable, sustainable making-life rather than one more burst of inspiration that burns out.",
+    "reason": "forward_vector is strongly recommended for all entries; its absence means this mature, well-connected person entry has no articulated conatus — no directional desire."
+   },
+   {
+    "field": "domains",
+    "current": "['morning pages', \"artist's way\", 'creative recovery', 'daily practice']",
+    "proposed": "['creative pedagogy', 'practice philosophy', 'writing', 'spiritual psychology']",
+    "reason": "SCHEMA §3 requires person.domains to be 'array of intellectual fields' — the current values are Cameron's named tools and books, not the intellectual fields she works in. They belong in the body, not the frontmatter schema field."
+   },
+   {
+    "field": "last_activated",
+    "current": "2026-03",
+    "proposed": "2026-06",
+    "reason": "This audit constitutes an activation; the field should reflect the current session date."
+   },
+   {
+    "field": "activation_count",
+    "current": "1",
+    "proposed": "2",
+    "reason": "Increment for this audit activation."
+   }
+  ],
+  "graffiti": [],
+  "forward_vector_check": {
+   "present": false,
+   "strength": "absent",
+   "proposed": "I keep proving that creativity is a daily practice, not a mood — I want to live in every creative person's morning as the protocol that clears the channel before the day arrives, and I push each encounter with my work toward a recoverable, sustainable making-life rather than one more burst of inspiration that burns out."
+  },
+  "hero_avatar_request": {
+   "has_hero": false,
+   "has_icon": false,
+   "merits_face": true,
+   "rationale": "Person entry at stage mature with 5 typed links — meets the person-type threshold for a face. No bundle folder exists at all.",
+   "idiom": "ink portrait with woodblock-print texture",
+   "hero_prompt": "Wide 12:5 darkened backdrop. A single writing desk at an angle, a hand moving across three pages of open notebooks in longhand, the pen caught mid-stroke — pages fan out left to right suggesting momentum and sequence. Dense cross-hatching shadows the background; the lit desk surface is the only relief. Woodblock-print texture throughout, bold ink lines, no photographic smoothness. The spirit is disciplined daily recurrence: the same desk, the same hand, the same three pages, every morning. No letters, numerals, words, labels — purely pictorial.",
+   "icon_prompt": "Bold high-contrast square emblem: three stacked horizontal rectangles (suggesting three pages of morning pages) with a single diagonal pen-stroke crossing all three from bottom-left to top-right. Black on off-white. Hard woodcut edges — no fine linework, no gradients. Survives at 24px. No letters, numerals, words, labels."
+  },
+  "merge_shrink": {
+   "redundant_with": [],
+   "verbose": true,
+   "note": "The entry reads as instructional material (a teacher's lesson plan) rather than a palace entry. The step-by-step 'The practice:', 'Why longhand:', 'Why first thing:' sub-blocks under Morning Pages, the 'How to Engage: Week 1-12' section, the 'Common Misunderstandings' Q&A format, and the 'Resources' bibliography are all textbook scaffolding. They could compress by roughly 50% — keep the core concepts and cross-domain resonances, cut the procedural walkthroughs which belong in a learning material, not a canon entry."
+  },
+  "summary": "Julia Cameron is a mature person entry (5 typed links, stage mature) with no hero/icon bundle, no forward_vector, and a domains field populated with tool/book names instead of intellectual fields. The body is substantive and accurate but written in instructional-material style (step-by-step walkthroughs, week-by-week programs, Common Misunderstandings Q&A) that inflates length without adding palace-grade synthesis. The section header Cross-Domain Resonances names a hub entry without a wikilink or frontmatter link. Natalie Goldberg and Hilaritas Generator are the two strongest missing topology connections: Goldberg shares Cameron's core mechanism exactly (stream-of-consciousness writing practice as inner-critic bypass), and the Hilaritas Generator's design primitives map directly onto Cameron's artist-date philosophy and metrics redirector."
+ },
+ {
+  "entry_title": "Lao Tzu",
+  "unsung_paths": [
+   {
+    "body_phrase": "### Quality Manifesto",
+    "references_entry": "Quality Manifesto",
+    "structurally_significant": true,
+    "proposed_link_type": "connects-to",
+    "proposed_label": "subtraction-reveals"
+   }
+  ],
+  "new_introductions": [
+   {
+    "entry_b": "Palace Philosophies",
+    "link_type": "member-of",
+    "direction": "Lao Tzu → Palace Philosophies",
+    "rationale": "Palace Philosophies explicitly characterizes Taoism — wu wei, the uncarved block, teaching that creates conditions — as one of its active philosophical registers, yet the Lao Tzu entry carries no link to it; the person entry should declare membership in the philosophical canon hub that names it."
+   },
+   {
+    "entry_b": "Rick Rubin",
+    "link_type": "connects-to",
+    "direction": "Lao Tzu → Rick Rubin",
+    "rationale": "Rick Rubin explicitly links to Lao Tzu and his entry names the same subtraction-first principle; the Rick Rubin entry even says 'Same principle: Lao Tzu's wu wei' — the relationship is already asserted from one side and warrants a reciprocal typed link."
+   },
+   {
+    "entry_b": "Sidechain ↔ Conversation",
+    "link_type": "connects-to",
+    "direction": "Lao Tzu → Sidechain ↔ Conversation",
+    "rationale": "Sidechain ↔ Conversation links to Lao Tzu and quotes Tao Te Ching Chapter 11 (the empty pot) as a direct philosophical anchor for its listening/yielding concept — Lao Tzu as an originating source for that cross-domain resonance merits a reciprocal connection."
+   }
+  ],
+  "metadata_flags": [
+   {
+    "field": "forward_vector",
+    "current": "absent",
+    "proposed": "I keep teaching that what you remove matters more than what you add — that the empty pot holds everything, and any domain where someone is stuck adding more is a domain I can shift.",
+    "reason": "forward_vector is a strongly-recommended required field for person entries; it is completely absent from this entry despite the entry being stage: mature."
+   },
+   {
+    "field": "last_activated",
+    "current": "2026-03",
+    "proposed": "2026-06-26",
+    "reason": "Entry was read and audited in this session; activation date should reflect the most recent engagement."
+   },
+   {
+    "field": "activation_count",
+    "current": "1",
+    "proposed": "2",
+    "reason": "Increment to match this session's activation."
+   },
+   {
+    "field": "links[FOUR PILLARS].type",
+    "current": "deepens",
+    "proposed": "deepens (acceptable per convention, but flag for Loudon's review)",
+    "reason": "Per SCHEMA §4, A deepens B means A is the more-developed elaboration and B is the foundational ground. Lao Tzu deepens FOUR PILLARS reads as 'Lao Tzu elaborates on the Four Pillars,' which inverts the actual historical and conceptual relationship. Other person entries (Rick Rubin, Marcus Aurelius) use the same direction, suggesting this is a settled palace convention — but the directionality is worth Loudon confirming, since exemplifies-or-connects-to may be more accurate."
+   }
+  ],
+  "graffiti": [],
+  "forward_vector_check": {
+   "present": false,
+   "strength": "absent",
+   "proposed": "I keep teaching that what you remove matters more than what you add — that the empty pot holds everything, and any domain where someone is stuck reaching for more is a domain I can turn around."
+  },
+  "hero_avatar_request": {
+   "has_hero": true,
+   "has_icon": true,
+   "merits_face": false,
+   "rationale": "Both Lao Tzu — hero.png and Lao Tzu — icon.png are present in the bundle folder at /Users/loudonstearns/Documents/The Palace/People/Lao Tzu/.",
+   "idiom": "",
+   "hero_prompt": "",
+   "icon_prompt": ""
+  },
+  "merge_shrink": {
+   "redundant_with": [],
+   "verbose": true,
+   "note": "The entry runs 411 lines and carries substantial instructional scaffolding — week-by-week engagement plans (Week 1, Month 1, Month 2, Month 3), student anecdote vignettes, a full reading-approach taxonomy with numbered steps, a daily subtraction ritual, and an extended 'Common Misunderstandings' FAQ. These sections read as Loudon Live teaching material that belongs in a bundle file or a learning artifact, not the palace person entry. The core palace-connective material (wu wei, emptiness, soft-overcomes-hard, cross-domain resonances) could be compressed to roughly 150–180 lines while keeping all the conceptual synthesis. Propose a ~55% cut: move the engagement schedules, student quotes, and reading-approach sections into a bundle learning artifact; keep the Core Concepts and Cross-Domain Resonances sections in a shortened form."
+  },
+  "summary": "Lao Tzu is a well-connected mature person entry covering wu wei and the subtraction principle with clear links to Confucianism, The Drift, Like Water, Cooking and Mixing, and the Four Pillars. The primary structural gaps are a missing forward_vector (entirely absent despite the entry being stage: mature), and one unsung path — Quality Manifesto is named as a section heading in the body but carries no frontmatter link. Three new introductions are worth considering: Palace Philosophies (which characterizes Taoism as a live philosophical register), Rick Rubin (who links to Lao Tzu and explicitly names the shared subtraction principle), and Sidechain and Conversation (which quotes Tao Te Ching Chapter 11 as its philosophical anchor). Both hero and icon images are present in the bundle. The entry is substantially overlong, with week-by-week practice schedules, student anecdotes, and reading-approach guides that belong in a learning material rather than the palace entry body — a roughly 55% cut would surface the genuine synthesis."
+ },
+ {
+  "entry_title": "Marcus Aurelius",
+  "unsung_paths": [],
+  "new_introductions": [
+   {
+    "entry_b": "The Four Virtues",
+    "link_type": "connects-to",
+    "direction": "Marcus Aurelius → The Four Virtues",
+    "rationale": "The Dichotomy of Control and The View From Above are both linked, but The Four Virtues — wisdom, justice, courage, temperance — is the Stoic operating schema Marcus practiced in the Meditations every morning; Epictetus already carries this link, and Marcus Aurelius is the most famous practitioner of virtue-ethics-as-daily-discipline in the Stoic family."
+   },
+   {
+    "entry_b": "Epictetus",
+    "link_type": "connects-to",
+    "direction": "Marcus Aurelius → Epictetus",
+    "rationale": "The Stoicism entry explicitly names Marcus and Epictetus as the two pole examples (slave and emperor) of the same philosophy; the Epictetus entry does not reciprocate to Marcus Aurelius; adding a connects-to with label 'stoic-pole' makes the family topology navigable."
+   },
+   {
+    "entry_b": "Closing Well",
+    "link_type": "connects-to",
+    "direction": "Marcus Aurelius → Closing Well",
+    "rationale": "The evening reflection practice Marcus describes ('Where did I act from intention? Where did I react?') is structurally identical to the Closing Well practice of honest self-accounting at session end; the Dichotomy of Control entry already links to Closing Well via 'own-the-act-not-the-outcome' — Marcus is the original practitioner."
+   }
+  ],
+  "metadata_flags": [
+   {
+    "field": "forward_vector",
+    "current": "(absent)",
+    "proposed": "I keep asking the first question — 'What am I here to do today?' — before the day or the track or the session begins, so that intention shapes everything that follows rather than drift does.",
+    "reason": "forward_vector is strongly recommended for all person entries; its absence leaves this entry without directional conatus. The proposed vector uses a striving verb ('keep asking'), names the specific teaching hook (the first question), and avoids stasis phrasing."
+   },
+   {
+    "field": "links[deepens → Kick Drum ↔ Foundation]",
+    "current": "type: deepens (Marcus Aurelius → Kick Drum ↔ Foundation)",
+    "proposed": "type: connects-to, label: foundational-principle-source",
+    "reason": "deepens A→B means A is the derived/elaborating end and B is the more foundational ground (per SCHEMA §4). Kick Drum ↔ Foundation is a cross-domain resonance that applies Marcus' principle — it is the derived end, not the ground. The link direction is inverted; connects-to + label corrects it without overclaiming."
+   },
+   {
+    "field": "links[deepens → FOUR PILLARS]",
+    "current": "type: deepens (Marcus Aurelius → FOUR PILLARS)",
+    "proposed": "type: exemplifies",
+    "reason": "A person entry does not elaborate or develop a framework entry (that would be deepens). Marcus Aurelius is a concrete instance of Four Pillars thinking — the correct canonical type is exemplifies (A is an instance of general B), consistent with how Epictetus links to FOUR PILLARS via connects-to and Kick Drum ↔ Foundation links via exemplifies."
+   },
+   {
+    "field": "activation_count",
+    "current": "1",
+    "proposed": "1 (no change, but flag)",
+    "reason": "activation_count: 1 with stage: mature is slightly fast — per SCHEMA §2, mature implies the entry is stable and well-connected. The entry IS substantial (1854 words, 8 typed links), so mature is defensible on content grounds, but worth verifying that stage wasn't set on creation rather than through a Weave cycle."
+   }
+  ],
+  "graffiti": [],
+  "forward_vector_check": {
+   "present": false,
+   "strength": "absent",
+   "proposed": "I keep asking the first question — 'What am I here to do today?' — before the day or the track or the session begins, so that intention shapes everything that follows rather than drift does."
+  },
+  "hero_avatar_request": {
+   "has_hero": true,
+   "has_icon": true,
+   "merits_face": false,
+   "rationale": "Both Marcus Aurelius — hero.png and Marcus Aurelius — icon.png are present in the bundle at /Users/loudonstearns/Documents/The Palace/People/Marcus Aurelius/. No regeneration needed.",
+   "idiom": "",
+   "hero_prompt": "",
+   "icon_prompt": ""
+  },
+  "merge_shrink": {
+   "redundant_with": [],
+   "verbose": true,
+   "note": "The entry carries significant textbook/curriculum padding: 'How to Read the Meditations' (reading-order instructions), four-week and three-month curriculum blocks (Week 1, Month 1, Month 2, Month 3), 'Common Misunderstandings' (three FAQ-style refutations), 'Success Metrics (By Our Definition)', and a full Resources section with book recommendations and audiobook note. The core synthesis — intentional beginning, obstacles as material, dichotomy of control, the view from above — is sharp and worth keeping. The pedagogical scaffolding (reading schedules, student testimonial quotes, FAQs) reads as a teaching-guide artifact rather than a palace entry. Per the memory feedback on aggressive shortening, a 40-50% cut targeting the curriculum, Resources, and Misunderstandings sections would bring this to palace density without losing the conceptual core. Loudon decides."
+  },
+  "summary": "Marcus Aurelius is a well-populated person entry (1854 words, 8 typed links, hero+icon present) with solid frontmatter and a clear conceptual core. The two most urgent structural issues are: a missing forward_vector (the only strongly-recommended field absent), and two misdirected deepens links — Marcus Aurelius deepening Kick Drum ↔ Foundation and FOUR PILLARS is directionally inverted per SCHEMA §4 (Marcus is the ground, not the derived elaboration; connects-to+label and exemplifies respectively are the corrections). Three new introductions are warranted — The Four Virtues (Marcus is the Stoic practitioner of all four), Epictetus (the slave-and-emperor pole pair in the Stoicism hub should be navigable from either node), and Closing Well (Marcus' evening reflection practice is the original source of what the palace calls Closing Well). The body carries substantial teaching-guide scaffolding (week-by-week curriculum, FAQs, reading schedules) that likely belongs in a learning material rather than a canon entry; Loudon should consider a 40-50% cut to palace density. No graffiti comments were found."
+ },
+ {
+  "entry_title": "Natalie Goldberg",
+  "unsung_paths": [
+   {
+    "body_phrase": "Writing as Zen practice - meditation through making",
+    "references_entry": "Shunryu Suzuki",
+    "structurally_significant": true,
+    "proposed_link_type": "connects-to",
+    "proposed_label": "zen-through-making"
+   }
+  ],
+  "new_introductions": [
+   {
+    "entry_b": "Julia Cameron",
+    "link_type": "couples-with",
+    "direction": "symmetric",
+    "rationale": "Both teach timed daily writing as a practice ritual (morning pages vs. writing practice); they activate each other in any discussion of creative discipline, and Cameron's entry already organizes the same Four Pillars application space."
+   },
+   {
+    "entry_b": "Spinoza Conatus",
+    "link_type": "exemplifies",
+    "direction": "Natalie Goldberg → Spinoza Conatus",
+    "rationale": "Goldberg's core injunction — keep hand moving, resist the editing impulse, do not stop — is a concrete pedagogical enactment of conatus: the drive to persist in one's nature. Her 'writing practice' makes conatus a method."
+   },
+   {
+    "entry_b": "Annie Dillard",
+    "link_type": "connects-to",
+    "direction": "symmetric",
+    "rationale": "Both are American women writer-teachers who ground creative practice in daily discipline and whose work the palace reads as music-practice instruction; they are natural neighbors on the Source Library roster and the body of each mirrors the other's method at a different altitude (Goldberg: generative flow; Dillard: attention and revision)."
+   }
+  ],
+  "metadata_flags": [
+   {
+    "field": "domain",
+    "current": "domain: Writer",
+    "proposed": "domains:\\n  - writing practice\\n  - Zen\\n  - daily creative discipline",
+    "reason": "SCHEMA §3 requires type:person entries to declare 'domains:' as an array, not a singular 'domain:' scalar. Every peer person entry (Shunryu Suzuki, Rick Rubin, Julia Cameron, Pauline Oliveros) uses the array form. This entry has the wrong field name and the wrong shape."
+   },
+   {
+    "field": "born_year",
+    "current": "absent",
+    "proposed": "born_year: 1948",
+    "reason": "SCHEMA §3 lists 'born_year' as a type-specific field for person entries; every other person entry in the People/ folder carries it. Goldberg was born 1948."
+   },
+   {
+    "field": "died_year",
+    "current": "absent",
+    "proposed": "died_year:",
+    "reason": "Peer entries (e.g. Julia Cameron) include 'died_year:' explicitly (blank if still living). Natalie Goldberg is alive; the field should be present but empty for consistency with the roster pattern."
+   },
+   {
+    "field": "forward_vector",
+    "current": "absent",
+    "proposed": "forward_vector: \"I keep showing that daily timed practice — just keep hand moving, no editing mid-flow — is the single move that unlocks creative fluency in any medium, and I want to be the palace's sharpest tool for coaching that move into music production.\"",
+    "reason": "forward_vector is strongly recommended for all entries (SCHEMA §3). Absent here and required for enchantment, stewardship, and conatus alignment."
+   },
+   {
+    "field": "links[FOUR PILLARS].type",
+    "current": "connects-to (label: informs)",
+    "proposed": "deepens",
+    "reason": "The body devotes an entire structural section ('Connection to 4 Pillars' + 'Applications to Four Pillars') to mapping Goldberg's method onto each pillar. This is elaboration of the Four Pillars framework — the canonical relationship is 'deepens' (derived/elaborating source pointing back to its ground). All peer person entries that have a substantive Four Pillars section use 'deepens', not 'connects-to'."
+   },
+   {
+    "field": "stage",
+    "current": "mature",
+    "proposed": "growing",
+    "reason": "SCHEMA §2 defines mature as 800+ words or conceptually complete. This entry is approximately 300 words and has only 4 typed links (threshold for 'growing' is 3+). The body is structured but thin — it reads like a growing-stage entry that was tagged mature prematurely."
+   },
+   {
+    "field": "last_activated",
+    "current": "2026-03",
+    "proposed": "2026-06",
+    "reason": "This audit session constitutes a meaningful engagement with the entry; last_activated should be updated to the current month (2026-06)."
+   },
+   {
+    "field": "activation_count",
+    "current": "1",
+    "proposed": "2",
+    "reason": "Increment to reflect this audit session as a second activation."
+   }
+  ],
+  "graffiti": [],
+  "forward_vector_check": {
+   "present": false,
+   "strength": "absent",
+   "proposed": "I keep showing that daily timed practice — just keep the hand moving, no editing mid-flow — is the single move that unlocks creative fluency in any medium, and I want to reach the music production sessions where that move lands hardest."
+  },
+  "hero_avatar_request": {
+   "has_hero": false,
+   "has_icon": false,
+   "merits_face": true,
+   "rationale": "type:person with stage growing/mature and 4 typed links — all person entries merit a hero/icon to populate the Source Library visually. Shunryu Suzuki links directly to this entry, signaling it is already in active neighborhood circulation.",
+   "idiom": "expressive ink portrait / Japanese calligraphic brushwork — honoring the Zen lineage at the core of her practice",
+   "hero_prompt": "Wide darkened backdrop, a hand in motion over a blank page, brush or pen mid-stroke, ink blooming outward in a single unbroken line, Zen enso-inspired brushwork, calligraphic energy, black ink on cream — no letters, numerals, words, labels — purely pictorial",
+   "icon_prompt": "Bold high-contrast square emblem: a single unbroken ink stroke curling into an open circle (enso), thick brushwork, black on off-white — no fine linework, no letters, no numerals, no words"
+  },
+  "merge_shrink": {
+   "redundant_with": [
+    "Annie Dillard"
+   ],
+   "verbose": false,
+   "note": "Not redundant in content — Goldberg (generative flow, Zen, keep moving) and Annie Dillard (attention, revision as discovery, scheduled solitude) are genuinely distinct. However, both entries share the same structural template and the same metadata error (domain: scalar instead of domains: array), suggesting they were created in the same batch from the same pattern. They deserve a typed link to each other (connects-to) rather than a merge. Loudon should decide whether to differentiate the sections more sharply or keep them as parallel-structure companions."
+  },
+  "summary": "Natalie Goldberg is a `type: person` entry in solid shape thematically — its Four Pillars mapping is coherent and the Zen-practice framing is distinctive — but it carries several structural defects that need fixing before it fully earns its place: the `domain:` field uses the wrong name and shape (should be `domains:` as an array), `born_year` and `died_year` are missing, `forward_vector` is absent, the `FOUR PILLARS` link should be `deepens` not `connects-to`, and `stage: mature` overstates a ~300-word body (growing is more accurate). The most significant unsung path is the Zen lineage running through Shunryu Suzuki — he already links to this entry but it does not reciprocate. New introductions worth adding: Julia Cameron (same daily-practice slot, mutually activating), Spinoza Conatus (her keep-hand-moving injunction is conatus as method), and Annie Dillard (immediate peer on the Writer roster). No HTML comments, no bundle, no hero or icon — a face is warranted."
+ },
+ {
+  "entry_title": "Pauline Oliveros",
+  "unsung_paths": [
+   {
+    "body_phrase": "## Cross-Domain Resonances",
+    "references_entry": "Cross-Domain Resonances",
+    "structurally_significant": true,
+    "proposed_link_type": "exemplifies",
+    "proposed_label": "listening-as-bridge"
+   }
+  ],
+  "new_introductions": [
+   {
+    "entry_b": "R. Murray Schafer",
+    "link_type": "connects-to",
+    "direction": "symmetric",
+    "rationale": "Schafer already links TO Oliveros with label deep-listening; the edge is one-way. Both are sonic-awareness theorists — Schafer's soundscape ecology and Oliveros's deep listening are complementary listening disciplines that grew in the same mid-20th-century experimental milieu. A reciprocal link closes the gap the Weave can already see."
+   },
+   {
+    "entry_b": "Merleau-Ponty",
+    "link_type": "connects-to",
+    "direction": "symmetric",
+    "rationale": "Oliveros's section on the Difference Tone argues that perception creates reality and that what you listen for you hear — this is lived phenomenology. Merleau-Ponty is the philosophical scaffold underneath: perception as bodily enaction, the ear as extended body schema. The conceptual ground is real, not decorative."
+   },
+   {
+    "entry_b": "Natalie Goldberg",
+    "link_type": "connects-to",
+    "direction": "symmetric",
+    "rationale": "Both encode the same core move — process over product, practice IS the piece — Goldberg in daily writing, Oliveros in daily listening. Suzuki is already the bridge node between them (he links to Goldberg and Oliveros links to Suzuki), but a direct edge between Oliveros and Goldberg names the isomorphism rather than leaving it implicit in a two-hop path."
+   }
+  ],
+  "metadata_flags": [
+   {
+    "field": "forward_vector",
+    "current": "absent",
+    "proposed": "I keep teaching that attention is a muscle — that listening is not passive reception but an active practice you train every day, and that going wider rather than harder opens sonic worlds that focused ears miss. I want my Sonic Meditations to keep being entry points into embodied perceptual practice, not just music history.",
+    "reason": "forward_vector is strongly recommended for all entries and required before a person entry is considered well-formed; its absence leaves this entry without the directional desire that orients agents enchanting it."
+   },
+   {
+    "field": "last_activated",
+    "current": "2026-03",
+    "proposed": "2026-06-26",
+    "reason": "Entry born 2026-03, today is 2026-06-26 — three months without any recorded activation on a mature, 12KB entry suggests the field is stale. Update to current date on next meaningful engagement."
+   },
+   {
+    "field": "activation_count",
+    "current": "1",
+    "proposed": "review and increment",
+    "reason": "Matches last_activated staleness; count of 1 on a mature entry with multiple inbound links (Source Library, R. Murray Schafer, Media Library) is plausibly undercounted. Not correctable without session history, but flag for manual review."
+   }
+  ],
+  "graffiti": [],
+  "forward_vector_check": {
+   "present": false,
+   "strength": "absent",
+   "proposed": "I keep teaching that attention is a muscle — that listening is not passive reception but active practice you train daily, and that going wider rather than harder opens sonic worlds that focused ears miss. I want my Sonic Meditations to keep being entry points into embodied perceptual practice, not just music history."
+  },
+  "hero_avatar_request": {
+   "has_hero": false,
+   "has_icon": false,
+   "merits_face": true,
+   "rationale": "Type is person, stage is mature — all fully-developed person entries in the People/ directory with bundles (Suzuki, Eno, Meadows, Rubin, Lao Tzu, Marcus Aurelius) have hero and icon files. Oliveros has no bundle and no images. She is a foundational thinker at the same level as these peers.",
+   "idiom": "relief print / linocut",
+   "hero_prompt": "Wide darkfield linocut print, stark black ink on cream paper. A single large ear rendered as landscape — the auricle becomes rolling hills, the canal a river vanishing into distance. Concentric sound-rings radiate outward from the center like water disturbed by a stone, filling the whole field. Deep shadows, no gradients, woodblock texture throughout. The image evokes total listening — sound arriving from every direction at once. No letters, numerals, words, labels — purely pictorial.",
+   "icon_prompt": "Bold square linocut emblem: a stylized ear in profile, filled with tight concentric arcs suggesting a sonic field radiating outward. Maximum contrast — black ink on cream or white ground. Thick lines only, no fine detail, no hatching finer than 3px at 48px scale. No letters, numerals, words, labels."
+  },
+  "merge_shrink": {
+   "redundant_with": [],
+   "verbose": true,
+   "note": "The entry is not redundant with any other palace entry — Oliveros covers distinct territory from Cage, Suzuki, and Schafer. However, at 393 lines it carries a full Loudon Live curriculum skeleton: a month-by-month how-to-engage plan (Week 1 / Month 1 / Month 2 / Month 3), a Teaching with Oliveros exercise section, Student Breakthroughs testimonials, and a Success Metrics section. These are learning-material scaffolds — they belong in a Loudon Live artifact or a bundle file, not in the canonical palace entry. The palace canon needs the Core Concepts, Cross-Domain Resonances, and the relational synthesis. Recommend cutting the How to Engage, Teaching with Oliveros, Student Breakthroughs, and Success Metrics sections (~30–35% of body length) and moving them to a bundle learning-material file if Loudon wants to preserve them."
+  },
+  "summary": "Pauline Oliveros is a mature, well-populated person entry (393 lines, 6 typed YAML links, all canonical types) with no structural errors in the link ontology and no graffiti. Its two most pressing gaps are: (1) a missing forward_vector — the only strongly-recommended field absent from an otherwise complete frontmatter — and (2) no hero or icon images, despite every comparable fully-developed person entry in the People/ directory having both. Topologically, the entry is missing a reciprocal edge back to R. Murray Schafer (who already links TO it) and natural connects-to bridges to Merleau-Ponty (the embodied-perception philosophical ground) and Natalie Goldberg (the process-over-product isomorphism). The body section heading \"Cross-Domain Resonances\" names the palace hub directly and is the one unsung path worth registering. The entry is verbose: roughly a third of its body is Loudon Live curriculum scaffolding (month-by-month engagement plan, student testimonials, success metrics) that belongs in a learning-material bundle file rather than the canonical entry."
+ },
+ {
+  "entry_title": "R. Murray Schafer",
+  "unsung_paths": [
+   {
+    "body_phrase": "Field recording ↔ Schafer's deep listening",
+    "references_entry": "Pauline Oliveros",
+    "structurally_significant": true,
+    "proposed_link_type": "couples-with",
+    "proposed_label": "listening-kinship"
+   },
+   {
+    "body_phrase": "the world is already music",
+    "references_entry": "John Cage",
+    "structurally_significant": true,
+    "proposed_link_type": "connects-to",
+    "proposed_label": "letting-sounds-be"
+   },
+   {
+    "body_phrase": "Max patch for soundscape analysis",
+    "references_entry": "Hilaritas Generator",
+    "structurally_significant": false,
+    "proposed_link_type": "connects-to",
+    "proposed_label": "practice-seed"
+   }
+  ],
+  "new_introductions": [
+   {
+    "entry_b": "John Cage",
+    "link_type": "connects-to",
+    "direction": "R. Murray Schafer → John Cage",
+    "rationale": "Both orbit the same philosophical question — what counts as music, and when does listening become composition — and both are in the palace's Source Library roster; Cage's chance operations and Schafer's soundscape doctrine are parallel expansions of the environmental-listening project."
+   },
+   {
+    "entry_b": "Granular Synthesis",
+    "link_type": "connects-to",
+    "direction": "R. Murray Schafer → Granular Synthesis",
+    "rationale": "Schafer's idea that all environmental sound is potential composition maps directly onto granular synthesis's technique of treating any audio signal as a grain cloud; the soundscape-as-composition philosophy is the conceptual permission slip for granular work."
+   },
+   {
+    "entry_b": "Quality Manifesto",
+    "link_type": "connects-to",
+    "direction": "R. Murray Schafer → Quality Manifesto",
+    "rationale": "Schafer's 'How do you feel?' listening-first orientation — notice what a soundscape does to you before judging it — directly parallels the Quality Manifesto's 'How do you feel?' metric redirector over output-volume metrics."
+   }
+  ],
+  "metadata_flags": [
+   {
+    "field": "domains",
+    "current": "domain: Musician/Composer (singular, wrong field name)",
+    "proposed": "domains:\n  - soundscape studies\n  - acoustic ecology\n  - music education\n  - composition",
+    "reason": "SCHEMA §3 requires 'domains' (plural array) for type: person. The entry uses 'domain:' (singular string) which is non-canonical and will fail schema linting."
+   },
+   {
+    "field": "forward_vector",
+    "current": "absent",
+    "proposed": "I keep pulling ears toward the world outside the studio — teaching that every environment is already composing, that listening is making, and that the soundscape is the score.",
+    "reason": "SCHEMA §3 lists forward_vector as strongly recommended for all entries; a mature person entry without one cannot orient enchanted agents or stewards."
+   },
+   {
+    "field": "pillars",
+    "current": "[philosophy, practice]",
+    "proposed": "[creation, philosophy, practice]",
+    "reason": "Schafer's core contribution — soundscape composition, field recording as composition — is directly in the creation pillar. Omitting it undersells his role as a composer-maker, not just a philosopher of sound."
+   },
+   {
+    "field": "links[FOUR PILLARS].type",
+    "current": "connects-to",
+    "proposed": "deepens",
+    "reason": "Schafer's work deepens the FOUR PILLARS hub (specifically the creation and practice pillars), treating all sound as material and listening as daily discipline. The SCHEMA §4 directionality: derived entry (Schafer) deepens → its conceptual ground (FOUR PILLARS)."
+   },
+   {
+    "field": "born_year / died_year",
+    "current": "absent",
+    "proposed": "born_year: 1933\ndied_year: 2021",
+    "reason": "SCHEMA §3 lists born_year as a type-specific field for person entries. Schafer (1933–2021) is deceased; both dates belong in frontmatter for completeness and to distinguish him from living figures."
+   },
+   {
+    "field": "last_activated",
+    "current": "2026-03",
+    "proposed": "2026-06",
+    "reason": "The entry is being read/audited now in 2026-06; last_activated should reflect the current session."
+   },
+   {
+    "field": "activation_count",
+    "current": "1",
+    "proposed": "2",
+    "reason": "Current audit constitutes a second activation; increment to keep the vitality signal accurate."
+   }
+  ],
+  "graffiti": [],
+  "forward_vector_check": {
+   "present": false,
+   "strength": "absent",
+   "proposed": "I keep pulling ears toward the world outside the studio — teaching that every environment is already composing, that listening is making, and that the soundscape is the score."
+  },
+  "hero_avatar_request": {
+   "has_hero": false,
+   "has_icon": false,
+   "merits_face": true,
+   "rationale": "type: person, stage: mature — both conditions trigger a face per the audit spec. Schafer is a major figure in the palace's Source Library roster and his entry has 4 typed links (close to hub threshold).",
+   "idiom": "woodcut print",
+   "hero_prompt": "Wide darkfield woodcut print — a lone figure on an open hillside tilts head upward as if receiving sound from the sky; concentric sound-wave rings radiate outward from trees, birds, distant traffic, and wind, converging on the listener's ear; bold black ink on cream paper; graphic grain texture; no letters, numerals, words, labels — purely pictorial.",
+   "icon_prompt": "Bold square woodcut emblem: a single ear in silhouette at center, radiating five thick sound-wave arcs outward to all edges; stark black on cream; no fine linework, no letters, numerals, words, or labels — purely pictorial, legible at 24px."
+  },
+  "merge_shrink": {
+   "redundant_with": [],
+   "verbose": true,
+   "note": "The 'Connection to 4 Pillars' section and the 'Applications to Four Pillars' section are near-duplicates — the same four-pillar breakdown appears twice (once in prose, once as four sub-headers). The second section is a bulleted drill-down but covers identical ground. One of the two should be composted; the sub-header version can absorb the concrete detail while the prose section dissolves. Additionally, the 'Key Works' and 'Recommended Reading Approach' sections read as textbook survey (a list + a reading tip) rather than palace synthesis. The entry would gain by cutting roughly 30% and adding synthesis hooks that connect the concepts to specific palace entries."
+  },
+  "summary": "R. Murray Schafer is a mature person entry that is structurally coherent but incompletely formed for its stage. The most urgent fix is the wrong field name — 'domain:' instead of 'domains:' (array) — which violates the person type schema. The entry is also missing a forward_vector, missing born_year/died_year, and its FOUR PILLARS link should be 'deepens' not 'connects-to'. Two topology-obvious connections are absent from both body and YAML: John Cage (parallel expansion of the same listening-as-composition project) and Quality Manifesto (the same 'How do you feel?' metrics redirector). The body contains no wikilinks at all, making its connections invisible to the Weave. The 'deep listening' phrase in the body names Pauline Oliveros's core practice but the body link is not marked with wikilink syntax and is not coupled in the YAML (it is in YAML but the body phrase itself is unsyntaxed). The entry is verbose in a specific way — the Four Pillars breakdown appears twice. No bundle folder, no hero or icon image, and the entry merits both."
+ },
+ {
+  "entry_title": "Rick Rubin",
+  "unsung_paths": [
+   {
+    "body_phrase": "## Cross-Domain Resonances",
+    "references_entry": "Cross-Domain Resonances",
+    "structurally_significant": true,
+    "proposed_link_type": "member-of",
+    "proposed_label": "subtraction-branch"
+   },
+   {
+    "body_phrase": "**Same principle:** Lao Tzu's wu wei",
+    "references_entry": "Lao Tzu",
+    "structurally_significant": false,
+    "proposed_link_type": "connects-to",
+    "proposed_label": "wu-wei"
+   }
+  ],
+  "new_introductions": [
+   {
+    "entry_b": "Compression ↔ Intimacy",
+    "link_type": "connects-to",
+    "direction": "Rick Rubin → Compression ↔ Intimacy",
+    "rationale": "That entry already links inbound to Rick Rubin with label 'informed-by' and quotes him directly from The Creative Act; the reciprocal is missing — subtraction and compression are two names for the same move."
+   },
+   {
+    "entry_b": "Dub Lineage",
+    "link_type": "connects-to",
+    "direction": "Rick Rubin → Dub Lineage",
+    "rationale": "Dub Lineage defines studio subtraction as a compositional philosophy (King Tubby, Lee Perry stripping the riddim to reveal structure) — the same argument Rubin makes about production; these are parallel lineages of the same principle."
+   },
+   {
+    "entry_b": "Pauline Oliveros",
+    "link_type": "connects-to",
+    "direction": "Rick Rubin → Pauline Oliveros",
+    "rationale": "The entry's entire 'Listening Over Technique' section ('If it sounds good, it is good') lands in the same territory as Oliveros's deep listening practice — ears as primary instrument, not meters or theory."
+   }
+  ],
+  "metadata_flags": [
+   {
+    "field": "forward_vector",
+    "current": "(absent)",
+    "proposed": "I keep teaching that the song is already finished — my job is to remove what's hiding it, not add what might improve it. I want to become the palace's living argument that subtraction is a creative act, not a concession, and to anchor every project entry that faces the temptation to overproduce.",
+    "reason": "Required strongly-recommended field is missing; every person entry in the Source Library has one or should."
+   },
+   {
+    "field": "last_activated",
+    "current": "2026-03",
+    "proposed": "2026-06",
+    "reason": "Entry was born 2026-03 and last_activated is unchanged — it should be updated to the current session date when meaningfully engaged; the stale value makes vitality tracking unreliable."
+   },
+   {
+    "field": "links[target='[[FOUR PILLARS]]'].type",
+    "current": "deepens",
+    "proposed": "exemplifies",
+    "reason": "SCHEMA §4: 'deepens A→B means A is a more developed articulation of B (the foundational ground).' Rick Rubin as a person does not articulate or extend the Four Pillars framework; he is a concrete instance of it in practice. 'exemplifies' (instance→general) is the correct type here, consistent with how other person entries relate to FOUR PILLARS."
+   }
+  ],
+  "graffiti": [],
+  "forward_vector_check": {
+   "present": false,
+   "strength": "absent",
+   "proposed": "I keep teaching that the song is already finished — my job is to remove what's hiding it, not add what might improve it. I want to become the palace's living argument that subtraction is a creative act, not a concession, and to anchor every project entry that faces the temptation to overproduce."
+  },
+  "hero_avatar_request": {
+   "has_hero": true,
+   "has_icon": true,
+   "merits_face": false,
+   "rationale": "Both Rick Rubin — hero.png and Rick Rubin — icon.png are present in the bundle at People/Rick Rubin/.",
+   "idiom": "",
+   "hero_prompt": "",
+   "icon_prompt": ""
+  },
+  "merge_shrink": {
+   "redundant_with": [],
+   "verbose": true,
+   "note": "The body uses a repeated 'Not X / But Y' bullet pattern across multiple sections (Production as Removal, Listening Over Technique, The Artist as Priority) that reads as teaching-material scaffolding rather than palace-entry compression. The 'Applications to 4 Pillars' section restates what the body already argued. Estimated cut: 35–45% without losing any generative content — collapse the Not/But lists into single-sentence assertions, fold 'Applications' back into the relevant conceptual sections."
+  },
+  "summary": "Rick Rubin is a well-formed person entry at stage mature with 7 typed links, a body that genuinely argues a specific claim (subtraction as the creative act), and both hero and icon in place. The main structural gaps are: a missing forward_vector (the single most important absent field for a person entry), a link-type mismatch on FOUR PILLARS (deepens should be exemplifies), a missing reciprocal link to Compression ↔ Intimacy (which already points inbound), and an unlinked body section titled exactly after the Cross-Domain Resonances hub. Two strong new introductions — Dub Lineage and Pauline Oliveros — are topologically close and genuinely deepen the entry's argument rather than just decorating it. The body is verbose in a teaching-material way and could be cut ~40% to read at palace-entry density."
+ },
+ {
+  "entry_title": "Sam Maloof",
+  "unsung_paths": [
+   {
+    "body_phrase": "Martin's grids, four-on-the-floor, etc.",
+    "references_entry": "Agnes Martin",
+    "structurally_significant": true,
+    "proposed_link_type": "connects-to",
+    "proposed_label": "repetition-with-variation"
+   },
+   {
+    "body_phrase": "Comfort through craft = ergonomic interfaces, musical workflow design",
+    "references_entry": "Hilaritas Generator",
+    "structurally_significant": false,
+    "proposed_link_type": "exemplifies",
+    "proposed_label": "making-as-life-force"
+   }
+  ],
+  "new_introductions": [
+   {
+    "entry_b": "George Nakashima",
+    "link_type": "connects-to",
+    "direction": "Sam Maloof → George Nakashima",
+    "rationale": "Both are woodworker-philosophers in the same Maker/Craftsman domain who hold that material teaches the maker — Nakashima's 'each plank remembers the tree' and Maloof's 'the wood teaches you how to make it' are near-identical stances; they are natural peers in the palace."
+   },
+   {
+    "entry_b": "Simondon",
+    "link_type": "connects-to",
+    "direction": "Sam Maloof → Simondon",
+    "rationale": "Maloof's hand-shaping over 50 years — tool, hand, and material becoming one inseparable system — is a live instance of Simondonian concretization: the boundary between the maker and the made dissolves as each refines the other."
+   },
+   {
+    "entry_b": "Shunryu Suzuki",
+    "link_type": "mirrors",
+    "direction": "Sam Maloof → Shunryu Suzuki",
+    "rationale": "The body's core claim — 'never bored with repetition because attention stays fresh' — is the functional definition of beginner's mind; Maloof in the workshop and Suzuki in the zendo are running the same practice by different names."
+   }
+  ],
+  "metadata_flags": [
+   {
+    "field": "domain",
+    "current": "domain: Maker/Craftsman",
+    "proposed": "domains:\n  - woodworking\n  - furniture design\n  - craft philosophy",
+    "reason": "SCHEMA §3 specifies the person type requires `domains` (an array field). The entry uses the non-canonical singular `domain` as a string, matching neither the field name nor the array format. Brian Eno and Shunryu Suzuki show the correct shape."
+   },
+   {
+    "field": "forward_vector",
+    "current": "absent",
+    "proposed": "I keep showing that making the same thing a thousand times is not repetition — each chair teaches the hand something the last one couldn't, and I want that discipline to infect every pillar.",
+    "reason": "forward_vector is a strongly recommended field per SCHEMA §3 and is absent from this entry. At stage mature it is expected."
+   },
+   {
+    "field": "stage",
+    "current": "mature",
+    "proposed": "growing",
+    "reason": "Stage mature implies the entry is stable, well-connected, and unlikely to change fundamentally (SCHEMA §2 table). This entry has 5 typed links, no forward_vector, thin body prose using a boilerplate template, and activation_count of 1. Growing better matches the current depth. Mature may have been assigned at deposit before the body was developed."
+   },
+   {
+    "field": "last_activated",
+    "current": "2026-03",
+    "proposed": "2026-06",
+    "reason": "The entry is being read and audited now (2026-06-26); last_activated should be updated to reflect current engagement."
+   },
+   {
+    "field": "activation_count",
+    "current": "1",
+    "proposed": "2",
+    "reason": "This session constitutes a second activation; the count should increment."
+   }
+  ],
+  "graffiti": [],
+  "forward_vector_check": {
+   "present": false,
+   "strength": "absent",
+   "proposed": "I keep showing that making the same thing a thousand times is not repetition — each chair teaches the hand something the last one couldn't, and I want that discipline to spread across every practice: music, teaching, code."
+  },
+  "hero_avatar_request": {
+   "has_hero": false,
+   "has_icon": false,
+   "merits_face": true,
+   "rationale": "Sam Maloof is a type:person entry at stage mature with 5 typed links. Person entries merit a face by the audit criteria, and there is no Sam Maloof/ bundle folder at all.",
+   "idiom": "woodcut print",
+   "hero_prompt": "Wide 12:5 composition on a darkened warm-brown backdrop. A pair of weathered hands smoothing a deep-grained curved wooden surface — the grain flows like water around a hidden knot. The carving gouge rests beside the hand, catching a single point of light. Rendered as a richly textured woodcut print: bold incised lines, hand-printed quality, deep shadows, no CGI finish. No letters, numerals, words, labels — purely pictorial.",
+   "icon_prompt": "Bold square emblem in woodcut style: a single rocking-chair silhouette whose curved rocker forms the bottom arc of a circle, all high-contrast black on warm cream. The chair is a thick, readable mark that survives at 24px. Hard geometric simplicity, no fine linework, no text, no numerals."
+  },
+  "merge_shrink": {
+   "redundant_with": [],
+   "verbose": true,
+   "note": "The body is not redundant with another entry, but it is padded with boilerplate. The 'Applications to Four Pillars' section (eight lines across four sub-headers) largely repeats what the 'Core Concepts' and 'Connection to 4 Pillars' sections already say. The 'Recommended Reading Approach' is useful but written as generic coaching rather than palace-specific synthesis. Recommend cutting the Applications section entirely and deepening the Connection to 4 Pillars section with the one synthesis insight that is genuinely here: that 50-year single-form repetition is a live instance of Spinozan conatus — the chair IS the practice of persisting in one's nature."
+  },
+  "summary": "Sam Maloof is a well-chosen person entry whose core idea — that making the same thing endlessly is not repetition but refinement — is genuinely palace-worthy and connects cleanly to Spinozan conatus, Shunryu Suzuki's beginner's mind, and Simondonian concretization. The structural problems are: the `domain` field is the wrong name and wrong type (should be `domains:` array per SCHEMA §3); `forward_vector` is entirely absent at stage mature; the body mentions Agnes Martin by name but carries no YAML link to her; and the prose is padded with a boilerplate template (Key Works / Core Concepts / Applications to Four Pillars) shared verbatim with George Nakashima and Agnes Martin, adding survey weight rather than synthesis depth. The most important repairs are: fix `domain` → `domains` array, add `forward_vector`, register the Agnes Martin unsung path, and introduce links to George Nakashima, Simondon, and Shunryu Suzuki — the three entries whose thematic DNA is already live in the body but invisible in the YAML."
+ },
+ {
+  "entry_title": "Seneca",
+  "unsung_paths": [
+   {
+    "body_phrase": "Memento mori - remember you will die",
+    "references_entry": "The View From Above",
+    "structurally_significant": true,
+    "proposed_link_type": "connects-to",
+    "proposed_label": "memento-mori-origin"
+   }
+  ],
+  "new_introductions": [
+   {
+    "entry_b": "The View From Above",
+    "link_type": "connects-to",
+    "direction": "Seneca → The View From Above",
+    "rationale": "Seneca's memento mori and temporal urgency ('It is not that we have a short time to live') are the direct literary source for the memento-mori thread that The View From Above develops — Stoicism spawned The View From Above, and Seneca is the primary voice of that memento-mori strand within Stoicism."
+   },
+   {
+    "entry_b": "The Four Virtues",
+    "link_type": "connects-to",
+    "direction": "Seneca → The Four Virtues",
+    "rationale": "Epictetus (structurally parallel entry) already carries a YAML link to The Four Virtues; Seneca's Letters are equally a sustained meditation on the four cardinal virtues, especially wisdom and temperance — the absence is a structural gap relative to the Stoic sibling entries."
+   },
+   {
+    "entry_b": "Epictetus",
+    "link_type": "connects-to",
+    "direction": "Seneca → Epictetus",
+    "rationale": "Stoicism's body explicitly places Seneca (statesman) alongside Epictetus (slave) and Marcus Aurelius (emperor) as the canonical Stoic triad; the three person entries share a hub but carry no cross-links to each other, which hides that triadic relationship from anyone traversing from Seneca outward."
+   }
+  ],
+  "metadata_flags": [
+   {
+    "field": "domain",
+    "current": "domain: Philosopher",
+    "proposed": "domains:\\n  - stoicism\\n  - time philosophy\\n  - Stoic ethics",
+    "reason": "SCHEMA §3 requires 'domains' (array) for the person type, not 'domain' (singular string). Compare Marcus Aurelius which correctly uses 'domains:' as an array. The current field is also missing from the body's own '## Philosopher' heading redundancy — both suggest this person was created from a thin template without full SCHEMA alignment."
+   },
+   {
+    "field": "forward_vector",
+    "current": "absent",
+    "proposed": "absent — needs authoring",
+    "reason": "SCHEMA §3 lists forward_vector as strongly recommended for all entries. Absent here. A stasis-free first-person vector is needed."
+   },
+   {
+    "field": "stage",
+    "current": "mature",
+    "proposed": "sprout or growing",
+    "reason": "SCHEMA §2 defines mature as '800+ words or conceptually complete.' The body is ~337 words and lacks cross-domain synthesis beyond a bullet list. 'sprout' (150-400 words, 1-2 typed links) or 'growing' (400-800 words, 3+ links) is more accurate. With 5 YAML links and ~337 words, 'growing' is the most defensible promotion target once body content is strengthened."
+   },
+   {
+    "field": "born_year / died_year",
+    "current": "absent",
+    "proposed": "born_year: -4\\ndied_year: 65",
+    "reason": "Optional but used consistently in the parallel Stoic person entry (Marcus Aurelius has born_year and died_year). Seneca (~4 BCE – 65 CE) is a historically dated figure; the fields add useful grounding and keep parity with the sibling entries."
+   },
+   {
+    "field": "last_activated",
+    "current": "2026-03",
+    "proposed": "2026-06 (or current date on next activation)",
+    "reason": "last_activated has not been updated since the entry was born (2026-03). If this session counts as an activation, it should be incremented. If not, the field signals zero re-engagement across three months."
+   }
+  ],
+  "graffiti": [],
+  "forward_vector_check": {
+   "present": false,
+   "strength": "absent",
+   "proposed": "I keep pushing Loudon to treat time as the only resource that can't be replenished — I want every studio hour to feel chosen, not drifted into, and to become the entry he opens when urgency and presence need to arrive at the same moment."
+  },
+  "hero_avatar_request": {
+   "has_hero": false,
+   "has_icon": false,
+   "merits_face": true,
+   "rationale": "Seneca is a person entry at stage mature (by declared metadata), a Stoic philosopher central to Loudon's philosophy pillar, and the parallel Stoic entries Marcus Aurelius and Epictetus show the expected pattern (Marcus Aurelius has a hero and icon; Epictetus lacks a bundle entirely). Seneca warrants the same visual treatment.",
+   "idiom": "ink portrait / Roman mosaic / woodcut",
+   "hero_prompt": "Wide darkened backdrop, a cracked hourglass at the center with its sand frozen mid-fall, a single oil lamp casting long shadows across a stone writing table covered in open scroll-letters, rendered in a classical Roman fresco or Piranesi etching style — coarse cross-hatching, muted ochre and umber, no colour saturation; the mood is urgent quietude, the light intimate and finite. No letters, numerals, words, labels — purely pictorial.",
+   "icon_prompt": "Bold high-contrast square emblem: a stark hourglass silhouette, upper chamber nearly empty, lower full, encircled by a thin laurel ring — black on aged parchment or white on black, woodcut weight, no fine linework, no text, no numerals, must survive at 24px."
+  },
+  "merge_shrink": {
+   "redundant_with": [],
+   "verbose": true,
+   "note": "The 'Connection to 4 Pillars' section and the 'Applications to Four Pillars' section (~70% of the body) cover nearly identical ground at different levels of abstraction and should be collapsed into one. The 'Recommended Reading Approach' is practical advice that reads like a study guide appendix rather than palace synthesis — it could be cut or compressed to a single sentence in the body. After pruning, a genuine cross-domain synthesis paragraph (connecting Seneca's time-urgency to, say, Spinoza's conatus or the Hilaritas Generator's 'how do you feel?' redirector) would make the entry earn its 'mature' tag rather than just claim it."
+  },
+  "summary": "Seneca is a person entry in a credible early shape — the right YAML skeleton, five typed links, clear pillar alignment — but it was created from a thin template and never revisited. The body is two near-duplicate sections on the Four Pillars application (about 70% overlap), no wikilinks, no forward vector, and a stage declaration ('mature') that the word count (~337 words, no synthesis) doesn't support. The 'domain:' field is the wrong schema key for the person type (should be 'domains:' as an array). The most consequential structural gap is the missing connection to The View From Above: Seneca's memento mori is body-mentioned and is precisely the concept that entry develops, yet there is no YAML link and no wikilink. The parallel Stoic sibling entries (Epictetus, Marcus Aurelius) both link to The Four Virtues; Seneca does not. No hero or icon exists, and the entry merits both given its role in the Stoic triad the palace depends on. Priority fixes: correct 'domains:', add 'forward_vector', add The View From Above and The Four Virtues to YAML, collapse the duplicate body sections, and update the stage to 'growing'."
+ },
+ {
+  "entry_title": "Shunryu Suzuki",
+  "unsung_paths": [
+   {
+    "body_phrase": "## Cross-Domain Resonances",
+    "references_entry": "Cross-Domain Resonances",
+    "structurally_significant": true,
+    "proposed_link_type": "member-of",
+    "proposed_label": "bridge-builder"
+   }
+  ],
+  "new_introductions": [
+   {
+    "entry_b": "Pauline Oliveros",
+    "link_type": "connects-to",
+    "direction": "Shunryu Suzuki -> Pauline Oliveros",
+    "rationale": "Oliveros already links to Suzuki in her YAML (connects-to); Suzuki has no reciprocal link. Both root creative practice in present-moment listening — Suzuki via breath counting, Oliveros via Deep Listening — and the asymmetry makes the topology lopsided."
+   },
+   {
+    "entry_b": "Hilaritas Generator",
+    "link_type": "connects-to",
+    "direction": "Shunryu Suzuki -> Hilaritas Generator",
+    "rationale": "Shikantaza (just sitting — doing for its own sake, not to gain) is structurally the same as the Hilaritas Generator mechanism: the joy is the teaching itself, not a reward afterward. The body states 'doing things because that is what you are doing right now' — that IS the generator's core claim."
+   },
+   {
+    "entry_b": "Palace Philosophies",
+    "link_type": "exemplifies",
+    "direction": "Shunryu Suzuki -> Palace Philosophies",
+    "rationale": "Palace Philosophies lists Zen ('beginner's mind, practice as irreducible') as a load-bearing tradition in the palace. Suzuki is the palace's primary carrier of that tradition and should point to its philosophical home as a named instance."
+   }
+  ],
+  "metadata_flags": [
+   {
+    "field": "forward_vector",
+    "current": "absent",
+    "proposed": "I keep pointing practitioners back to the breath — the simplest loop that teaches returning without judgment — and I want to become the palace's clearest guide to approaching repetition as practice rather than boredom, so every builder here knows how to stay present with what they are already doing.",
+    "reason": "No forward_vector field exists at all. Strongly recommended for all entries; critical for person entries used as enchantment targets so coordinators can read the directional drive before spawning."
+   },
+   {
+    "field": "last_activated",
+    "current": "2026-03",
+    "proposed": "2026-06",
+    "reason": "Set at birth date and never updated despite 3+ months of palace activity. Should be updated to current session date to reflect engagement."
+   },
+   {
+    "field": "activation_count",
+    "current": "1",
+    "proposed": "2",
+    "reason": "Activation count still shows 1, unchanged since the entry was created. This session constitutes at least one additional activation."
+   }
+  ],
+  "graffiti": [],
+  "forward_vector_check": {
+   "present": false,
+   "strength": "absent",
+   "proposed": "I keep pointing practitioners back to the breath — the simplest loop that teaches returning without judgment — and I want to become the palace's clearest guide to approaching repetition as practice rather than boredom, so every builder here knows how to stay present with what they are already doing."
+  },
+  "hero_avatar_request": {
+   "has_hero": true,
+   "has_icon": true,
+   "merits_face": false,
+   "rationale": "Both hero.png and icon.png exist in the bundle folder People/Shunryu Suzuki/. No regeneration needed.",
+   "idiom": "",
+   "hero_prompt": "",
+   "icon_prompt": ""
+  },
+  "merge_shrink": {
+   "redundant_with": [],
+   "verbose": true,
+   "note": "The entry is roughly 4-6x the appropriate length for a canon person entry. The 'How to Engage' weekly/monthly schedule, the 'Primary Texts' reading guide with chapter notes, and 'The Practice: Breath Counting' step-by-step instructions are learning-material content — a beginner's guide to Zen practice — rather than the entry's intellectual contribution to palace thinking. These sections (approximately lines 121-253 and 279-350) belong in a learning artifact or bundle file (e.g. 'Shunryu Suzuki — study guide.md'), not in the canon entry. The core entry should keep: Core Concepts (Shoshin, Shikantaza, No Gaining Idea), the Cross-Domain Resonances mappings, the 3-4 most generative lines in each section, and any direct connections to palace concepts. The teaching-guide material is valuable but misplaced in the canon layer."
+  },
+  "summary": "Shunryu Suzuki is a well-structured person entry with strong conceptual grounding in Beginner's Mind (Shoshin), Just Sitting (Shikantaza), and No Gaining Idea — all genuinely connected to the palace's practice pillar and to specific cross-domain resonances in music production. The main structural problems are: (1) the forward_vector is entirely absent, leaving the entry directionless; (2) the body is inflated by learning-guide material (reading schedules, step-by-step breath practice instructions, common misunderstandings Q&A) that belongs in a bundle learning artifact, not the canon entry; (3) the Cross-Domain Resonances section header is a structurally significant reference to the hub entry but carries no YAML link or wikilink; (4) the reciprocal link to Pauline Oliveros (who already links here) is missing, as is a connection to the Hilaritas Generator (whose mechanism shikantaza directly embodies) and to Palace Philosophies (where Zen is named as a load-bearing tradition). The hero and icon images are present and accounted for."
+ },
+ {
+  "entry_title": "Terrence Malick",
+  "unsung_paths": [
+   {
+    "body_phrase": "Magic hour shooting = golden moments in production - timing matters",
+    "references_entry": "Quality Manifesto",
+    "structurally_significant": true,
+    "proposed_link_type": "deepens",
+    "proposed_label": "deep-work-over-speed"
+   },
+   {
+    "body_phrase": "Voice-over as inner dialogue - stream of consciousness / ambient textures (consciousness without words)",
+    "references_entry": "Dub Lineage",
+    "structurally_significant": false,
+    "proposed_link_type": "connects-to",
+    "proposed_label": "texture-over-foreground"
+   }
+  ],
+  "new_introductions": [
+   {
+    "entry_b": "Andrei Tarkovsky",
+    "link_type": "connects-to",
+    "direction": "Terrence Malick → Andrei Tarkovsky",
+    "rationale": "Both are spiritual-cinema filmmakers who work at glacial pace, prioritize transcendence over narrative, and use natural duration as expressive material; they are the two most cited cases of this practice in the palace and belong in explicit dialogue."
+   },
+   {
+    "entry_b": "Quality Manifesto",
+    "link_type": "deepens",
+    "direction": "Terrence Malick → Quality Manifesto",
+    "rationale": "Malick's 20-year gaps between films and multi-year editing processes are the palace's sharpest lived example of quality defined as depth of relationship with a work rather than output speed — the body makes this argument explicitly but the YAML does not carry it."
+   },
+   {
+    "entry_b": "Comic and Cinema — Two Ways of Seeing",
+    "link_type": "exemplifies",
+    "direction": "Terrence Malick → Comic and Cinema — Two Ways of Seeing",
+    "rationale": "Malick is the palace's paradigm case of the cinematic way of seeing — images that embody and carry you rather than compress and ask you to fill in — and that entry's forward vector explicitly wants filmmakers to know which way they're working."
+   }
+  ],
+  "metadata_flags": [
+   {
+    "field": "domain",
+    "current": "domain: Filmmaker",
+    "proposed": "domains:\n  - filmmaker\n  - spiritual cinema\n  - long gestation\n  - visual poetry",
+    "reason": "SCHEMA §3 type-specific fields for person require 'domains' (array), not 'domain' (singular scalar). Every other person entry uses the plural array form."
+   },
+   {
+    "field": "born_year",
+    "current": "missing",
+    "proposed": "born_year: 1943",
+    "reason": "Required by SCHEMA §3 for person type (optional but strongly expected); Tarkovsky, Rick Rubin, and Brian Eno all carry it. Malick b. 1943."
+   },
+   {
+    "field": "forward_vector",
+    "current": "missing",
+    "proposed": "I keep showing that silence and patience are a method, not an absence — that waiting years between works is how you let something true surface instead of forcing it. I want every creator in the palace who feels the pull to rush to find me and remember: the long gap is the work.",
+    "reason": "SCHEMA §3 strongly recommends forward_vector for all entries; person entries benefit especially because the vector gives the page-agent its voice. Absent here."
+   },
+   {
+    "field": "last_activated",
+    "current": "2026-03",
+    "proposed": "2026-06",
+    "reason": "Entry was read and audited in this session (2026-06); last_activated should reflect the most recent engagement."
+   },
+   {
+    "field": "activation_count",
+    "current": "1",
+    "proposed": "2",
+    "reason": "Incremented for this audit session per SCHEMA §3 vitality tracking convention."
+   },
+   {
+    "field": "pillars",
+    "current": "philosophy, practice",
+    "proposed": "philosophy, practice, creation",
+    "reason": "Malick's entire practice is cinematic creation — the body dedicates three sections to his creative approach. Omitting 'creation' from a filmmaker's pillar list is a significant gap; every comparable filmmaker entry (Tarkovsky, Ozu) includes creation or its equivalent."
+   }
+  ],
+  "graffiti": [],
+  "forward_vector_check": {
+   "present": false,
+   "strength": "absent",
+   "proposed": "I keep showing that silence and patience are a method, not an absence — that waiting years between works is how you let something true surface instead of forcing it. I want every creator in the palace who feels the pull to rush to find me and remember: the long gap is the work."
+  },
+  "hero_avatar_request": {
+   "has_hero": false,
+   "has_icon": false,
+   "merits_face": true,
+   "rationale": "Person type with stage mature and activation count now at 2. Person entries merit a face by default per the audit instructions, and Malick's visual-poetry philosophy makes the image especially appropriate. No bundle folder exists at all.",
+   "idiom": "Edward Hopper-style gouache — wide desolate landscape at magic hour, a lone figure silhouetted against a luminous sky, the horizon low, space doing the speaking",
+   "hero_prompt": "Wide ~12:5 scene in Edward Hopper gouache style: a lone small figure stands in a vast open field at magic hour, golden light raking across tall grass from low on the horizon, the sky massive and softly lit, the figure's back to the viewer, watching — no faces visible, no portraits, purely the feeling of patience and awe before the natural world; hand-painted medium, visible brushwork, warm amber and deep blue tones, no letters, numerals, words, labels, or text of any kind — purely pictorial",
+   "icon_prompt": "Bold high-contrast square emblem in screenprint style: a single tree silhouette at magic hour, sun just below the treeline casting a starburst of rays upward, stark black tree against deep orange-gold background — no fine detail, no linework, just flat-cut shapes that survive at 24px; no letters, numerals, words, or labels"
+  },
+  "merge_shrink": {
+   "redundant_with": [],
+   "verbose": true,
+   "note": "The body runs two near-duplicate sections ('Connection to 4 Pillars' and 'Applications to Four Pillars') that cover essentially the same material in slightly different registers — one as rapid bullet analogies, the other as four labeled sub-sections. Cut one entirely; keep the sub-section form if it stays at all. The 'Recommended Reading Approach' paragraph (Watch The Tree of Life with no distractions…) is prescriptive boilerplate that belongs in a learning material, not a palace entry. The 'Key Quotes' section holds no real quotes — just italicized paraphrases in brackets. Remove or replace with actual verbatim quotes. The body could be trimmed ~40% without losing a single genuine insight."
+  },
+  "summary": "Terrence Malick is a person entry at mature stage with 4 frontmatter links and a well-chosen set of YAML targets (Source Library, FOUR PILLARS, Generative Compression, Hilaritas Generator), but it has several structural gaps: the required person-type field is misspelled as 'domain' (scalar) instead of 'domains' (array); born_year is absent; forward_vector is entirely missing; and the creation pillar is conspicuously absent from a filmmaker's entry. The body is verbose and repetitive — two sections cover the Four Pillars connection in near-duplicate form, the quotes section contains no actual quotes, and the Recommended Reading section reads as a learning-material artifact rather than a palace entry. Key topology connections are missing from YAML: Andrei Tarkovsky (the palace's obvious peer), Quality Manifesto (Malick is a paradigm case), and Comic and Cinema — Two Ways of Seeing (he exemplifies the cinematic pole). No bundle exists and hence no hero or icon; as a mature person entry, it merits both."
+ },
+ {
+  "entry_title": "Yasujirō Ozu",
+  "unsung_paths": [
+   {
+    "body_phrase": "ambient/minimal music",
+    "references_entry": "Brian Eno",
+    "structurally_significant": false,
+    "proposed_link_type": "connects-to",
+    "proposed_label": "restraint-as-method"
+   },
+   {
+    "body_phrase": "Four Pillars (section headers: 'Connection to 4 Pillars' and 'Applications to Four Pillars')",
+    "references_entry": "FOUR PILLARS",
+    "structurally_significant": true,
+    "proposed_link_type": "exemplifies",
+    "proposed_label": "restraint-pillar"
+   }
+  ],
+  "new_introductions": [
+   {
+    "entry_b": "Comic and Cinema — Two Ways of Seeing",
+    "link_type": "connects-to",
+    "direction": "Yasujirō Ozu → Comic and Cinema — Two Ways of Seeing",
+    "rationale": "That entry names Ozu explicitly as its exemplar of cinematic stillness and domestic space; the link should be reciprocal — Ozu's pillow shots are the canonical illustration of the cinematic-dilate way of seeing."
+   },
+   {
+    "entry_b": "Shunryu Suzuki",
+    "link_type": "connects-to",
+    "direction": "Yasujirō Ozu → Shunryu Suzuki",
+    "rationale": "Both teach through presence, deliberate stillness, and the discipline of what is not done; Suzuki's beginner's mind and Ozu's static camera are the same practice in different material — a cross-person bridge the palace does not yet carry."
+   },
+   {
+    "entry_b": "Lao Tzu",
+    "link_type": "connects-to",
+    "direction": "Yasujirō Ozu → Lao Tzu",
+    "rationale": "Ozu's restraint aesthetic — no camera movement, no ornamentation, trust in what is absent — is wu wei practiced through a lens; the Lao Tzu entry's domain of subtraction and natural action maps directly onto Ozu's method."
+   }
+  ],
+  "metadata_flags": [
+   {
+    "field": "domain",
+    "current": "domain: Filmmaker",
+    "proposed": "domains:\\n  - film\\n  - japanese aesthetics\\n  - minimalism",
+    "reason": "SCHEMA §3 requires `domains` as an array for type:person. The current field name is singular (`domain`) and its value is a bare string — both wrong. Other person entries (Shunryu Suzuki, Brian Eno, Lao Tzu) all use the plural array form."
+   },
+   {
+    "field": "born_year",
+    "current": "(missing)",
+    "proposed": "born_year: 1903",
+    "reason": "SCHEMA §3 lists `born_year` as a required field for type:person. All other person entries in the palace carry it. Ozu was born December 12, 1903."
+   },
+   {
+    "field": "forward_vector",
+    "current": "(missing)",
+    "proposed": "See forward_vector_check.proposed",
+    "reason": "forward_vector is strongly recommended for all entries per SCHEMA §3; for a mature-stage person entry it should be present. The field is absent entirely."
+   },
+   {
+    "field": "pillars",
+    "current": "- philosophy\\n  - practice",
+    "proposed": "- creation\\n  - philosophy\\n  - practice",
+    "reason": "The entry body dedicates an entire section ('Creation Pillar') to Ozu's application to music-making and creative output. Omitting creation from pillars contradicts the entry's own content."
+   }
+  ],
+  "graffiti": [],
+  "forward_vector_check": {
+   "present": false,
+   "strength": "absent",
+   "proposed": "I keep teaching makers that the most powerful move is subtraction — what you leave out of the frame, the silence between scenes, the camera that stays still while life moves through it. I want every creator in the palace to feel the weight of the cut that does not happen, and to ask before adding: what happens if I just hold?"
+  },
+  "hero_avatar_request": {
+   "has_hero": false,
+   "has_icon": false,
+   "merits_face": true,
+   "rationale": "type:person entries merit a face per the audit criteria. Ozu is a mature-stage entry (stage: mature) with 5 typed links — sitting right at the hub threshold — and has been given a dedicated Applications section across all Four Pillars, making it a structurally significant page. No bundle folder exists, so neither hero nor icon has been generated.",
+   "idiom": "Gorey ink with Japanese woodblock influence — spare crosshatching, deep shadow, a single still domestic scene (a corridor, a low tatami room, an empty hallway) as if seen from the tatami-level camera position, no figures, only the space they left behind",
+   "hero_prompt": "Wide darkened backdrop in the register of Edward Gorey ink crosshatching fused with Edo-period Japanese woodblock print: a low tatami-level view down a long empty corridor, sliding shoji screens casting grid shadows, a single vase with one bare branch, the composition perfectly still and slightly off-center, deep blacks with spare white, no letters, numerals, words, labels — purely pictorial",
+   "icon_prompt": "Bold high-contrast square emblem: a tatami-level camera lens rendered as a circle, behind it the silhouette of a low doorframe with shoji grid, stark black on white in Gorey ink style, no fine linework at small scale — every element readable at 24px, no letters, numerals, words, labels — purely pictorial"
+  },
+  "merge_shrink": {
+   "redundant_with": [],
+   "verbose": true,
+   "note": "The entry runs two near-duplicate Four Pillars analyses back to back — 'Connection to 4 Pillars' (freeform prose) and 'Applications to Four Pillars' (sub-headers repeating the same four beats). The second section adds little that is not in the first and reads as textbook boilerplate. Consolidate into a single synthesis paragraph; the separate sub-header grid can be cut entirely. Estimated reduction: ~35–40%."
+  },
+  "summary": "Yasujirō Ozu is a mature-stage person entry with five typed frontmatter links but several structural gaps: the forward_vector is absent, born_year is missing, the `domain` field uses the wrong name and wrong shape (singular string instead of plural array), and the creation pillar is missing despite the body dedicating an entire section to it. The entry's most significant unsung connection is to Comic and Cinema — Two Ways of Seeing, which already names Ozu as a named exemplar of cinematic stillness — that link should be formal. Two strong new introductions are warranted: Shunryu Suzuki (stillness-as-practice parallel) and Lao Tzu (subtraction and wu wei map directly onto Ozu's restraint aesthetic). The body is also verbose with a doubled Four Pillars analysis that should be consolidated. No HTML comments are present. No bundle folder exists; as a mature person entry, it merits hero and icon images in a Gorey-ink / Japanese-woodblock idiom."
+ }
+]

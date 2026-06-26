@@ -1,0 +1,2405 @@
+[
+ {
+  "entry_title": "Adopt the Craft, Author the Seam",
+  "unsung_paths": [
+   {
+    "body_phrase": "one board record rendered at two fidelities",
+    "references_entry": "BLUELINE — Board Record Schema",
+    "structurally_significant": true,
+    "proposed_link_type": "spawned",
+    "proposed_label": "the-contract-it-named"
+   },
+   {
+    "body_phrase": "the BLUELINE production pipeline to cite me as its founding rationale",
+    "references_entry": "BLUELINE — Specialists and Seams",
+    "structurally_significant": true,
+    "proposed_link_type": "spawned",
+    "proposed_label": "rationale-for"
+   },
+   {
+    "body_phrase": "anime as the skeleton, comics as the skin, the animated-feature pipeline as connective tissue, the music video as the clock",
+    "references_entry": "Graphic Storytelling",
+    "structurally_significant": true,
+    "proposed_link_type": "connects-to",
+    "proposed_label": "the-craft-being-adopted"
+   },
+   {
+    "body_phrase": "comics as the skin",
+    "references_entry": "Comic and Cinema — Two Ways of Seeing",
+    "structurally_significant": false,
+    "proposed_link_type": "connects-to",
+    "proposed_label": "grammar-on-the-shelf"
+   }
+  ],
+  "new_introductions": [
+   {
+    "entry_b": "Endosymbiosis",
+    "link_type": "mirrors",
+    "direction": "Adopt the Craft, Author the Seam → Endosymbiosis",
+    "rationale": "Both describe absorbing an established system wholesale and then authoring only the novel interface — symbiosis keeps distinct DNA while the merger becomes permanent, exactly as this entry keeps the craft unchanged and authors only the seam."
+   },
+   {
+    "entry_b": "BLUELINE — Production Pipeline",
+    "link_type": "spawned",
+    "direction": "Adopt the Craft, Author the Seam → BLUELINE — Production Pipeline",
+    "rationale": "The Forward Vectors section explicitly states the pipeline should cite this entry as its founding rationale — that is a direct spawned lineage claim waiting to be formalized."
+   },
+   {
+    "entry_b": "Progressive Staging",
+    "link_type": "connects-to",
+    "direction": "Adopt the Craft, Author the Seam → Progressive Staging",
+    "rationale": "The staging vocabulary (facing, eyeline, torso frame, shot size) described in the One Vocabulary section is the operational content of Progressive Staging — the two entries share load-bearing vocabulary and should be mutually visible."
+   }
+  ],
+  "metadata_flags": [
+   {
+    "field": "last_activated",
+    "current": "2026-06",
+    "proposed": "2026-06-26",
+    "reason": "Month-only date is less precise than the YYYY-MM-DD format used by most entries; update to the current session date to make vitality tracking accurate."
+   },
+   {
+    "field": "activation_count",
+    "current": "1",
+    "proposed": "2",
+    "reason": "This session constitutes a second activation; increment to reflect current engagement."
+   },
+   {
+    "field": "links[FOUR PILLARS].type",
+    "current": "contradicts",
+    "proposed": "contradicts",
+    "reason": "No change needed — the productive-contrary reading in the body (build-seam-from-scratch vs. adopt-the-craft) is exactly the Blake's-contraries use case; label make-first-vs-adopt is accurate and evocative."
+   }
+  ],
+  "graffiti": [],
+  "forward_vector_check": {
+   "present": true,
+   "strength": "weak",
+   "proposed": "I keep one question sharp wherever an AI lands in an old craft: what is the established pipeline, and where does the machine need exactness the human never did? That point — the seam — is the only new work. I want to name the seam in every AI-assisted practice I touch, and I want Blocked, Not Prompted to formally exemplify me."
+  },
+  "hero_avatar_request": {
+   "has_hero": true,
+   "has_icon": true,
+   "merits_face": false,
+   "rationale": "Both hero.png and icon.png exist in the bundle folder — no new generation needed.",
+   "idiom": "",
+   "hero_prompt": "",
+   "icon_prompt": ""
+  },
+  "merge_shrink": {
+   "redundant_with": [],
+   "verbose": false,
+   "note": "The entry is tight and purposeful — four short sections that build a clear argument. BLUELINE — Specialists and Seams covers adjacent territory (roster mapping of seams) but from an operational rather than philosophical angle; no merge warranted. No textbook padding detected."
+  },
+  "summary": "A well-formed, tightly-argued concept entry (stage: growing, 5 typed links) defining the discipline of adopting an established craft wholesale when introducing AI, and authoring only the seams where human-to-human handoffs become human-to-machine handoffs. The body is precise and non-padded; the worked example (BLUELINE's two seams) is genuinely illustrative. Main structural gap: the entry's own body names the Board Record Schema and the Specialists-and-Seams sub-entry as direct outputs, but neither is in frontmatter links. A mirrors edge to Endosymbiosis would strengthen the philosophical backbone. The forward vector is present but redundantly long — it restates body content and tacks on desire-statements that could be crisper. Hero and icon already exist. No graffiti comments found."
+ },
+ {
+  "entry_title": "Typography as Meaning",
+  "unsung_paths": [
+   {
+    "body_phrase": "Comics and graphic novels have practiced this with great sophistication for a century",
+    "references_entry": "Graphic Storytelling",
+    "structurally_significant": true,
+    "proposed_link_type": "emerged-from",
+    "proposed_label": "inherited-grammar"
+   },
+   {
+    "body_phrase": "a neutral font can spell 'burning'; only an authored letterform can be on fire",
+    "references_entry": "Language as a Tonal Medium",
+    "structurally_significant": true,
+    "proposed_link_type": "couples-with",
+    "proposed_label": "letter-as-tone"
+   }
+  ],
+  "new_introductions": [
+   {
+    "entry_b": "Graphic Storytelling",
+    "link_type": "emerged-from",
+    "direction": "Typography as Meaning → Graphic Storytelling",
+    "rationale": "The entry explicitly inherits its entire grammar — balloon shapes, tail direction, placement logic — from the comics lettering tradition that Graphic Storytelling names and holds; the comics craft is the direct origin pool for this concept."
+   },
+   {
+    "entry_b": "Language as a Tonal Medium",
+    "link_type": "couples-with",
+    "direction": "symmetric",
+    "rationale": "Both entries argue the letterform does double duty — Typography as Meaning says the strokes can be made of feeling itself; Language as a Tonal Medium says a glyph carries tone AND sense simultaneously; the two co-activate whenever a letter is also a material."
+   },
+   {
+    "entry_b": "Hilaritas Generator",
+    "link_type": "enables",
+    "direction": "Typography as Meaning → Hilaritas Generator",
+    "rationale": "Lettering with intent is one of the mechanisms that makes a Loudon Live screen presence feel authored rather than assembled — when the author's voice has a literal face (its own typographic treatment), the teaching surface gains a register it otherwise lacks."
+   }
+  ],
+  "metadata_flags": [
+   {
+    "field": "last_activated",
+    "current": "absent",
+    "proposed": "2026-06",
+    "reason": "Strongly recommended field missing; entry was clearly active in June 2026 based on born date and linked specialist Shop/Lettering born 2026-06."
+   },
+   {
+    "field": "activation_count",
+    "current": "absent",
+    "proposed": "1",
+    "reason": "Strongly recommended field missing; conservative floor of 1 given entry is at growing stage with an active specialist spawned from it."
+   },
+   {
+    "field": "links[exemplifies → Blocked, Not Prompted]",
+    "current": "type: exemplifies, label: author-the-structure",
+    "proposed": "type: connects-to, label: author-the-structure",
+    "reason": "exemplifies means A is a concrete instance of the more general B — Typography as Meaning is not strictly an instance of Blocked, Not Prompted (a generative-geometry concept); the relationship is thematic resonance and shared method, which connects-to + label captures accurately without overstating the taxonomy."
+   }
+  ],
+  "graffiti": [],
+  "forward_vector_check": {
+   "present": true,
+   "strength": "strong",
+   "proposed": "I keep insisting the letterform is never neutral — I teach every story-maker in the palace to letter with intent, carrying the comics tradition into new media; I spawned the machinery that proves me ([[Shop/Lettering]]), and I want to be tested wherever words meet image: BLUELINE first, then Loudon Live, then anywhere a voice needs a face."
+  },
+  "hero_avatar_request": {
+   "has_hero": true,
+   "has_icon": true,
+   "merits_face": false,
+   "rationale": "Both Typography as Meaning — hero.png and Typography as Meaning — icon.png are present in the bundle folder.",
+   "idiom": "",
+   "hero_prompt": "",
+   "icon_prompt": ""
+  },
+  "merge_shrink": {
+   "redundant_with": [],
+   "verbose": false,
+   "note": "Entry is tight and well-proportioned — the grammar section, three-axes section, and letterform-as-material section each carry distinct weight. No survey padding. The Forward Vectors section at the bottom is a useful working list (not boilerplate) and earns its space. No merge or shrink warranted."
+  },
+  "summary": "Typography as Meaning is a tight growing-stage concept (5 frontmatter links) asserting that the letterform is a semantic surface — emotion, source, diegesis, and addressee are encoded in font, weight, balloon shape, and placement, not just word choice. It inherits the full comics lettering grammar and applies it across BLUELINE, Loudon Live, and future teaching materials. The entry is well-written and has hero and icon faces. Key structural gaps: it never formally links to Graphic Storytelling (its origin tradition), lacks last_activated and activation_count metadata, and its exemplifies link to Blocked, Not Prompted overstates the taxonomy (connects-to + label is more accurate). Two new introductions are genuinely warranted: Graphic Storytelling (the emerged-from ground) and Language as a Tonal Medium (a tightly coupled sibling claiming the letterform is also a tonal quantity), with Hilaritas Generator worth adding as an outward teaching edge."
+ },
+ {
+  "entry_title": "Animate the Background",
+  "unsung_paths": [],
+  "new_introductions": [
+   {
+    "entry_b": "Move the Ink, Don't Redraw It",
+    "link_type": "couples-with",
+    "direction": "symmetric",
+    "rationale": "Both entries hold the same core thesis — motion belongs to the existing geometry, not the regenerator — and both crystallized from BLUELINE in 2026-06; they are natural co-activators and should be aware of each other."
+   },
+   {
+    "entry_b": "The Shop",
+    "link_type": "connects-to",
+    "direction": "symmetric",
+    "rationale": "The graffiti comment explicitly states this practice graduates toward a Shop Specialist; formalizing the link makes that trajectory topologically visible before it happens."
+   },
+   {
+    "entry_b": "Graphic Storytelling",
+    "link_type": "exemplifies",
+    "direction": "A→B",
+    "rationale": "Animating the background is a concrete technique in service of visual storytelling — it instances the broader craft of giving comic-book imagery motion and feeling, which Graphic Storytelling holds as its domain."
+   }
+  ],
+  "metadata_flags": [
+   {
+    "field": "last_activated",
+    "current": "2026-06",
+    "proposed": "2026-06-24",
+    "reason": "The graffiti comment is dated 'deposited 2026-06-24'; the full date is recoverable and the field should be as precise as possible."
+   },
+   {
+    "field": "activation_count",
+    "current": "1",
+    "proposed": "2",
+    "reason": "The deposit session (2026-06-24) is a distinct activation from the born date; count should reflect both."
+   }
+  ],
+  "graffiti": [
+   {
+    "direction": "claude_to_loudon",
+    "content": "Deposited 2026-06-24 from the cloud-I2V session. Proofs + reusable scripts live in Projects/BLUELINE/proofs/cloud-i2v/ on feature/blueline-m3; graduates toward Shop Specialist when hard separation case is proven.",
+    "names_entries": [
+     "BLUELINE",
+     "Frame Designer"
+    ],
+    "assessment": "live",
+    "proposed_action": "Leave in place — this is an active tracking note. When the hard separation case is proven and the entry graduates to a Shop Specialist, resolve the comment and update the entry's stage and links accordingly."
+   }
+  ],
+  "forward_vector_check": {
+   "present": true,
+   "strength": "strong",
+   "proposed": ""
+  },
+  "hero_avatar_request": {
+   "has_hero": false,
+   "has_icon": false,
+   "merits_face": true,
+   "rationale": "Six typed links, vivid subject matter (motion, compositing, fire and smoke behind a drawn figure), and a clear visual thesis make this entry a strong candidate for a hero image. The practice is inherently visual and the forward vector names a specific hard case (the moving element behind the figure's legs) that could anchor a striking image.",
+   "idiom": "Gorey ink / printmaking",
+   "hero_prompt": "Edward Gorey-style ink etching, wide panoramic format with darkened upper register. A single inked figure stands motionless and precise in the foreground — clean crosshatch lines, sharp silhouette. Behind and around the legs: swirling smoke and flame rendered as loose, energetic brushstrokes that contrast the rigid linework of the figure. The motion and the stillness occupy the same frame but belong to different visual registers. No letters, numerals, words, labels — purely pictorial.",
+   "icon_prompt": "Bold high-contrast square emblem in pure black and white. A sharp geometric silhouette of a standing figure split vertically: left half crisp inked linework, right half dissolving into loose ink smoke spirals. The division is a clean vertical seam. Survives at 24px. No fine linework in the smoke — bold organic strokes only. No letters, numerals, words, labels — purely pictorial."
+  },
+  "merge_shrink": {
+   "redundant_with": [],
+   "verbose": false,
+   "note": "The entry is tight and purposeful. The four-step procedure and the 'what is proven / what is untested' split carry genuine structural weight — not boilerplate."
+  },
+  "summary": "Animate the Background is a sprout-stage practice entry documenting a four-step compositing method — separate foreground, infill the hole, animate the clean background, composite back — proven on two BLUELINE frames in June 2026. Its frontmatter links are all canonical and correctly directed. The body has no unsung wikilink paths. Two topology gaps stand out: Move the Ink, Don't Redraw It is a near-sibling concept with the identical motion-belongs-to-geometry thesis and should be coupled; The Shop should be linked given the graffiti note's explicit graduation trajectory. The metadata dates are recoverable to 2026-06-24. No hero or icon exists in the bundle folder; the visual subject matter and six-link connectivity merit a face in a Gorey ink idiom."
+ },
+ {
+  "entry_title": "Move the Ink, Don't Redraw It",
+  "unsung_paths": [
+   {
+    "body_phrase": "the [[Frame Designer]]'s default for any drawn motion",
+    "references_entry": "Frame Designer",
+    "structurally_significant": true,
+    "proposed_link_type": "enables",
+    "proposed_label": "motion-primitive-for"
+   }
+  ],
+  "new_introductions": [
+   {
+    "entry_b": "Hand-Drawn 3D Look",
+    "link_type": "mirrors",
+    "direction": "symmetric",
+    "rationale": "Both entries share the same governing law — work in the rich representation and apply the visual skin last, never per-frame; this entry is the motion statement, Hand-Drawn 3D Look is the rendering statement of the identical principle."
+   },
+   {
+    "entry_b": "Steer the Generator",
+    "link_type": "couples-with",
+    "direction": "symmetric",
+    "rationale": "These two are always co-active: where Move the Ink names the strategy (don't regen, warp the still), Steer the Generator names the surrounding practice discipline (measurement and control surfaces over unconstrained prompting) — Kuramoto-style pair."
+   },
+   {
+    "entry_b": "Graphic Storytelling",
+    "link_type": "connects-to",
+    "direction": "symmetric",
+    "rationale": "Graphic Storytelling is the narrative backbone of BLUELINE and the reason drawn-ink stability matters — the comic-staging tradition demands frame-to-frame character consistency that per-frame AI restyle breaks; this entry's technique is a direct enabler of that tradition."
+   }
+  ],
+  "metadata_flags": [
+   {
+    "field": "last_activated",
+    "current": "2026-06",
+    "proposed": "2026-06-26",
+    "reason": "Date granularity should be YYYY-MM-DD per SCHEMA best practice; update to today's date on activation."
+   },
+   {
+    "field": "stage",
+    "current": "sprout",
+    "proposed": "growing",
+    "reason": "Body carries 3+ meaningful cross-domain connections (The 2.5D Paper Stack, BLUELINE, Frame Designer); once the Frame Designer YAML link is registered the entry satisfies the growing threshold of 3+ typed links."
+   }
+  ],
+  "graffiti": [],
+  "forward_vector_check": {
+   "present": true,
+   "strength": "strong",
+   "proposed": ""
+  },
+  "hero_avatar_request": {
+   "has_hero": false,
+   "has_icon": false,
+   "merits_face": true,
+   "rationale": "Stage is sprout/growing with a tight but genuinely original principle; it anchors the motion layer of BLUELINE and The 2.5D Paper Stack — a load-bearing technical-aesthetic concept that will recur across the frame-generation system. A face gives it presence as a first-class palace citizen rather than a footnote inside those entries.",
+   "idiom": "Haeckel-style scientific engraving or Edward Gorey ink — clean black line, no CGI",
+   "hero_prompt": "A wide ink-engraving illustration in the style of Ernst Haeckel — a single hand-drawn figure (gender-neutral, calm, standing) whose body is composed entirely of displaced, warped pen-strokes: the lines that make the figure are visibly bending and flowing as one continuous sheet of ink, as if a displacement field is breathing through them. The lines curve but never break; the figure remains perfectly coherent. Around it, faint ghost-outlines show where the strokes used to be before they moved. Dark background, white ink lines, no color. No letters, numerals, words, labels — purely pictorial.",
+   "icon_prompt": "Bold square emblem: a single dense ink-stroke loop — like a thick calligraphic brushstroke — that is visibly warped mid-stroke by an invisible force, curving away from its straight origin path and bending back. High contrast black on white (or white on black). No fine linework, no small details. No letters, numerals, words, labels — purely pictorial. Must read at 24px."
+  },
+  "merge_shrink": {
+   "redundant_with": [],
+   "verbose": false,
+   "note": ""
+  },
+  "summary": "Move the Ink, Don't Redraw It is a tight, well-argued sprout that names a single governing motion principle for drawn animation: warp the one stable still with a deterministic displacement field rather than regenerating each frame. The quantitative comparison (0.15 vs 1.50 per-255 frame-to-frame change) anchors the claim concretely. The entry's main structural gap is that its most important forward relationship — supplying the per-sheet motion primitive to Frame Designer — lives only in the body prose, not in YAML. Registering that edge (plus mirrors to Hand-Drawn 3D Look and couples-with to Steer the Generator) would bring it to growing stage and seat it firmly in the graphic-storytelling spine. The entry has no hero or icon yet; it merits both."
+ },
+ {
+  "entry_title": "The 2.5D Paper Stack",
+  "unsung_paths": [
+   {
+    "body_phrase": "a whole frame, tearing loose into **full 3D** is a defining 'bullet-time' beat",
+    "references_entry": "Hand-Drawn 3D Look",
+    "structurally_significant": true,
+    "proposed_link_type": "couples-with",
+    "proposed_label": "break-surface"
+   },
+   {
+    "body_phrase": "ukiyo-e carving a separate block per element",
+    "references_entry": "",
+    "structurally_significant": false,
+    "proposed_link_type": "connects-to",
+    "proposed_label": ""
+   }
+  ],
+  "new_introductions": [
+   {
+    "entry_b": "Graphic Storytelling",
+    "link_type": "enables",
+    "direction": "Graphic Storytelling → The 2.5D Paper Stack",
+    "rationale": "The 2.5D Paper Stack is a physical realization of a core graphic-storytelling principle — the gutter between panels as implied depth — but that grounding concept is entirely absent from the frontmatter; linking it would carry this entry outward toward the comic-craft spine."
+   },
+   {
+    "entry_b": "Comic and Cinema — Two Ways of Seeing",
+    "link_type": "connects-to",
+    "direction": "symmetric",
+    "rationale": "The 'reveal the stack / break the stack' duality maps directly onto the comic-vs-cinema perceptual contrast that entry holds — flat paper world vs bullet-time 3D break is the same structural opposition, and cross-linking would anchor this entry in the graphic-storytelling spine it implicitly lives in."
+   },
+   {
+    "entry_b": "Remnants in Depth",
+    "link_type": "connects-to",
+    "direction": "symmetric",
+    "rationale": "Remnants in Depth works the same depth-order / z-layer territory from a different angle (visual residue and layering as meaning); connecting them would tie two growing entries that share the 'depth is semantic' conviction and could cross-pollinate each other's catalogue."
+   }
+  ],
+  "metadata_flags": [
+   {
+    "field": "activation_count",
+    "current": "1",
+    "proposed": "2",
+    "reason": "The deposit commit message is dated 2026-06-26 and references this entry explicitly as the new Frame Designer foundation; this session is a second activation. Count should increment."
+   },
+   {
+    "field": "last_activated",
+    "current": "2026-06",
+    "proposed": "2026-06-26",
+    "reason": "Prefer ISO date precision (YYYY-MM-DD) for last_activated; the born field could also be updated to the same. Current value is minimally compliant but inconsistent with the more specific dates used on neighboring entries like BLUELINE (2026-06-23)."
+   },
+   {
+    "field": "links[BLUELINE — Text Layer].type",
+    "current": "connects-to",
+    "proposed": "connects-to (keep, but consider deepens)",
+    "reason": "The body says the text layer 'is a citizen of the stack, not a sticker on top of it' — this is a substantive architectural claim. The current connects-to is safe and defensible; a Weave could promote to deepens if the text-layer entry confirms the 2.5D Stack is its conceptual ground. No urgent change needed."
+   }
+  ],
+  "graffiti": [],
+  "forward_vector_check": {
+   "present": true,
+   "strength": "strong",
+   "proposed": "I keep cataloguing every way to cut, move, and stack a sheet — I want to be the lens every new frame technique passes through, give the bubbles and breakouts their right depth, and teach the frame maker to think in layers of breathing paper instead of flat finished pictures."
+  },
+  "hero_avatar_request": {
+   "has_hero": false,
+   "has_icon": false,
+   "merits_face": true,
+   "rationale": "Stage is growing, type is concept, it has 5 typed frontmatter links (at the hub-promotion threshold), and it is the foundational principle for an active project (Frame Designer / BLUELINE). It earns a face.",
+   "idiom": "layered paper-cut / woodblock print — Lotte Reiniger silhouette cutout aesthetic, layers of black-ink paper at staggered depths, hand-cut edges",
+   "hero_prompt": "Wide darkened backdrop in the register of a Japanese mokuhanga woodblock print — three or four sheets of stark black-ink paper stacked with visible air between them, each sheet cut cleanly along its own brushed black line, the topmost sheet curling slightly as if beginning to pull free into space; a single figure in silhouette mid-step between the flat stack and an implied third dimension just beyond its edge; warm paper-fiber texture throughout; no letters, numerals, words, labels — purely pictorial",
+   "icon_prompt": "Bold high-contrast square emblem — a cross-section view of three stacked rectangles in black ink on off-white paper, each offset slightly to show depth, the top layer's edge cut into a sharp diagonal suggesting motion; thick brushed outlines, no fine linework, survives at 24px; no letters, numerals, words, labels"
+  },
+  "merge_shrink": {
+   "redundant_with": [],
+   "verbose": false,
+   "note": "Entry is tight and purposeful. The catalogue section could eventually absorb Three Kinds of Warp and Tier-1 Warp Snippets as cross-links rather than inline prose — but at current length there is nothing to cut."
+  },
+  "summary": "The 2.5D Paper Stack is a clean, well-focused concept entry that reframes every BLUELINE frame technique as a question about sheets of inked paper — cut, stacked, and moved. Its five frontmatter links are correctly typed and directed. The main structural gap is the missing connection to Hand-Drawn 3D Look (the entry that governs the full-3D breakout the body explicitly describes) and to the graphic-storytelling spine (Graphic Storytelling, Comic and Cinema — Two Ways of Seeing) that this entry implicitly grounds itself in but does not link to. No graffiti comments are present. The forward vector is strong and conative. The bundle folder is empty — no hero or icon exists yet, and the entry merits both given its growing stage and its role as the organizing principle for an active project sub-system."
+ },
+ {
+  "entry_title": "Hand-Drawn 3D Look",
+  "unsung_paths": [
+   {
+    "body_phrase": "the rig is now a real capability: [[Shop/Figure Rig]] poses an FK rig and emits ink + depth + a canonical OpenPose",
+    "references_entry": "Figure Rig",
+    "structurally_significant": true,
+    "proposed_link_type": "enables",
+    "proposed_label": "figure-staging"
+   }
+  ],
+  "new_introductions": [
+   {
+    "entry_b": "Move the Ink, Don't Redraw It",
+    "link_type": "couples-with",
+    "direction": "symmetric",
+    "rationale": "Both entries are activated together whenever a hand-drawn frame needs to move — Hand-Drawn 3D Look handles the redraw seam, Move the Ink handles the stable-geometry alternative; the 'boil' concept is the pivot point between them."
+   },
+   {
+    "entry_b": "Graphic Storytelling",
+    "link_type": "connects-to",
+    "direction": "symmetric",
+    "rationale": "The 'Choose the look' section maps emotional register (dread, heroic, chaos, dream) to treatment — that mapping is exactly Graphic Storytelling's craft domain, and BLUELINE is the shared commissioning context."
+   },
+   {
+    "entry_b": "The 2.5D Paper Stack",
+    "link_type": "connects-to",
+    "direction": "symmetric",
+    "rationale": "The depth-pass compositing and parallax billboards in this entry (comp-layer over inked plate, occluded via depth) are the building materials The 2.5D Paper Stack theorizes as its layer grammar."
+   }
+  ],
+  "metadata_flags": [
+   {
+    "field": "last_activated",
+    "current": "2026-06",
+    "proposed": "2026-06-26",
+    "reason": "The deposit that created this entry was 2026-06-25/26; the field should carry the full date for accurate vitality tracking."
+   },
+   {
+    "field": "activation_count",
+    "current": "2",
+    "proposed": "3",
+    "reason": "The deposit session on 2026-06-25 and this Weave audit are distinct activations; count appears to be one behind the actual engagement level."
+   }
+  ],
+  "graffiti": [],
+  "forward_vector_check": {
+   "present": true,
+   "strength": "strong",
+   "proposed": "I keep building the menu the Frame Designer reads — every treatment mapped to the emotion it serves and where it breaks — so a frame's look gets chosen, not improvised. I want to prove the redraw survives a figure in motion, find a real humanoid mesh for the rig, and watch the day the gen-AI seam makes itself smaller because Blender draws better."
+  },
+  "hero_avatar_request": {
+   "has_hero": false,
+   "has_icon": false,
+   "merits_face": true,
+   "rationale": "Stage is growing, 8 typed frontmatter links (hub threshold), type is concept with high energy and cross-pillar reach — and this entry is a primary working doctrine for BLUELINE. It merits a face.",
+   "idiom": "Haeckel engraving meets Blender wireframe — precise naturalist linework applied to a 3D-sourced subject, capturing the marriage of computational scaffolding and hand-drawn surface",
+   "hero_prompt": "Wide 12:5 panoramic, very dark charcoal-grey backdrop. A single human figure rendered as a precise naturalist pen-and-ink engraving in the tradition of Haeckel — cross-hatched, calligraphic strokes of varying weight — while faint wireframe geometry (the Blender scaffold) glows dim blue-grey behind and through it, just visible as an underpainting. The figure is poised mid-turn, coat catching wind, confident linework decisive not hesitant. A loose ink splatter drifts from the figure's shoulder into the right margin like a thought escaping into abstraction. No letters, numerals, words, labels — purely pictorial.",
+   "icon_prompt": "Bold high-contrast square emblem on near-black ground. A single thick-stroke pen nib or calligraphy chisel set at an angle, its downstroke splitting into two parallel lines — one a clean vector edge, one a ragged ink bleed — suggesting the seam between 3D structure and hand-drawn surface. Heavy blacks, paper-white gaps, no fine linework that would vanish at 24px. No letters, numerals, words, labels."
+  },
+  "merge_shrink": {
+   "redundant_with": [],
+   "verbose": false,
+   "note": "The entry is tight and technical — every section earns its place (Blender tools, seam mechanics, motion, ink-in-3D, look selection, forward vectors). No survey padding. The APPROACHES.md path reference in the body could be a [[wikilink]] or removed if that file is not a palace entry, but that is a link hygiene note, not verbosity."
+  },
+  "summary": "Hand-Drawn 3D Look is a tight, technical doctrine entry for the hand-drawn seam pipeline: it codifies how to extract ink, value, and composition from Blender, pass that plate to an img2img redraw at high denoise with ControlNet over-anchoring, and manage the relationship between the 3D scaffold and the gen-AI surface. The entry is well-linked and stage-appropriate (growing, 8 typed links). One structurally significant unsung path exists — Shop/Figure Rig is named in the Forward Vectors section but absent from frontmatter links, even though Figure Rig reciprocally links here. Three new introduction candidates connect it outward to the motion-stability doctrine (Move the Ink), the emotional-register craft layer (Graphic Storytelling), and the depth-compositing framework (The 2.5D Paper Stack). The existing forward vector is strong and conatus-voiced. No hero or icon exists; the entry merits both given its connectivity and role as a primary working doctrine."
+ },
+ {
+  "entry_title": "Remnants in Depth",
+  "unsung_paths": [
+   {
+    "body_phrase": "Promote the three scripts into [[The Shop]] as named Specialists/recipes, so a worker dispatches them instead of copying code.",
+    "references_entry": "The Shop",
+    "structurally_significant": true,
+    "proposed_link_type": "member-of",
+    "proposed_label": "candidate-roster"
+   },
+   {
+    "body_phrase": "a short scale-life: pop in fast (ink landing), hold, fade out, staggered across the shot ... ink being thrown, drying, and lifting while the scene parallaxes around it",
+    "references_entry": "Move the Ink, Don't Redraw It",
+    "structurally_significant": true,
+    "proposed_link_type": "exemplifies",
+    "proposed_label": "geometry-over-redraw"
+   }
+  ],
+  "new_introductions": [
+   {
+    "entry_b": "The 2.5D Paper Stack",
+    "link_type": "couples-with",
+    "direction": "symmetric",
+    "rationale": "Both entries build depth-layered parallax from flat 2D marks; The 2.5D Paper Stack treats the paper sheet as the unit, Remnants in Depth treats the scattered ink mark — they are sibling methods in the same graphic-storytelling spine and co-activate whenever a frame is built."
+   },
+   {
+    "entry_b": "Graphic Storytelling",
+    "link_type": "member-of",
+    "direction": "Remnants in Depth → Graphic Storytelling",
+    "rationale": "Remnants in Depth is a concrete production practice within the graphic-storytelling suite; naming it as a member surfaces it in the hub's inbound topology and connects it outward toward teaching and the Loudon Live pipeline."
+   },
+   {
+    "entry_b": "Hero and Avatar Maker",
+    "link_type": "connects-to",
+    "direction": "Remnants in Depth → Hero and Avatar Maker",
+    "rationale": "The blob-analysis and synthesis pipeline (blob_analyze.py, blob_synth.py) is a natural upstream input for the Hero and Avatar Maker's ink-rendering passes; naming the connection opens the door to dispatching from the Maker's roster."
+   }
+  ],
+  "metadata_flags": [
+   {
+    "field": "last_activated",
+    "current": "2026-06",
+    "proposed": "2026-06-25",
+    "reason": "The Forward Vectors section records two proven milestones on 2026-06-25; last_activated should reflect the most recent known session date."
+   },
+   {
+    "field": "activation_count",
+    "current": "2",
+    "proposed": "3",
+    "reason": "At minimum three distinct working sessions are evidenced: the initial deposit, the flow-field-density proof (2026-06-25), and the seam-as-comp-layer proof (2026-06-25). Count of 2 is likely an undercount."
+   }
+  ],
+  "graffiti": [],
+  "forward_vector_check": {
+   "present": true,
+   "strength": "strong",
+   "proposed": "I take a flat artistic mark — ink blob, splatter, chalk smudge — and give it a real place in 3D space so it parallaxes as the camera moves while still reading as hand-drawn. I want any Shop worker to pick me up once and lift their own marks into depth without re-deriving the two-layer trick. My density now follows the flow field — marks streak with motion instead of scattering at random — and I am pushing toward a time-varying field and the generalization past ink to paint, paper, halftone, and dust."
+  },
+  "hero_avatar_request": {
+   "has_hero": false,
+   "has_icon": false,
+   "merits_face": true,
+   "rationale": "Stage is growing with 6 typed links (meets the ≥5 threshold); it is a concrete visual-production practice at the heart of the BLUELINE graphic-storytelling spine — a strong candidate for a face.",
+   "idiom": "Haeckel scientific engraving meets Japanese woodblock print",
+   "hero_prompt": "Wide darkened scene rendered as a high-contrast ink engraving: a cluster of ink blobs and splatter marks at varying depths receding into a cinematic interior, each mark a flat hand-drawn disc hovering in space — near marks large and sharp, far marks small and faint — connected by faint vector-field flow lines that curve and streak the marks along their direction. Chiaroscuro lighting, Haeckel crosshatch texture, woodblock-print flatness. No letters, numerals, words, labels — purely pictorial.",
+   "icon_prompt": "Bold square emblem in two-value ink: a single large ink splatter blob at center, its shadow a smaller blob offset behind it in grey — suggesting depth through the billboard trick, nothing else. Hard edge, survives 24px, no fine linework, no text, no letters, no numerals."
+  },
+  "merge_shrink": {
+   "redundant_with": [],
+   "verbose": false,
+   "note": "The body Forward Vectors section adds proven-date specifics and next-step detail that the frontmatter forward_vector does not carry; it functions as a session update log, not duplication. No merge or cut warranted."
+  },
+  "summary": "Remnants in Depth is a well-formed growing practice entry documenting the billboard-and-depth-shell method for placing flat 2D artistic marks into 3D space with real parallax. Its frontmatter links are topologically clean and all use canonical types correctly. The main structural gap is a missing member-of link to The Shop (explicitly named in the body as the target for the three scripts) and absent connections to the sibling parallax entries The 2.5D Paper Stack and Graphic Storytelling hub. The forward vector is genuinely strong — conatus-voiced, specific, and hungry. No HTML comments exist. No hero or icon file exists in the bundle folder (which itself does not yet exist); the entry merits a face given its 6 typed links and role in the visual-storytelling spine."
+ },
+ {
+  "entry_title": "The Reader's Context Window",
+  "unsung_paths": [
+   {
+    "body_phrase": "the Trickster decision card, across three live mockups",
+    "references_entry": "Trickster",
+    "structurally_significant": true,
+    "proposed_link_type": "spawned",
+    "proposed_label": "origin-site"
+   }
+  ],
+  "new_introductions": [
+   {
+    "entry_b": "FOUR PILLARS",
+    "link_type": "exemplifies",
+    "direction": "The Reader's Context Window -> FOUR PILLARS",
+    "rationale": "This practice fires at the intersection of tools (surface design), philosophy (the Merleau-Ponty disappearing interface), and practice (discipline of ordering) -- a concrete worked instance of all Four Pillars on a single design problem."
+   },
+   {
+    "entry_b": "Loudon Live Design System",
+    "link_type": "enables",
+    "direction": "The Reader's Context Window -> Loudon Live Design System",
+    "rationale": "The forward vector explicitly names entry rendering and every palace surface as the growing edge; Loudon Live is the primary candidate for the discipline next application, and this link makes the teaching pipeline visible."
+   },
+   {
+    "entry_b": "Palace as Context Injection System",
+    "link_type": "mirrors",
+    "direction": "symmetric",
+    "rationale": "Both entries govern the ordering of information for a reader assembling context -- one for a human decision-maker, one for an AI agent ingesting a context window. Structurally the same problem in different material, which satisfies the mirrors criterion."
+   }
+  ],
+  "metadata_flags": [
+   {
+    "field": "last_activated",
+    "current": "absent",
+    "proposed": "2026-06",
+    "reason": "Strongly recommended per SCHEMA section 3; the entry was forged 2026-06-16 so 2026-06 is the minimum correct value."
+   },
+   {
+    "field": "activation_count",
+    "current": "absent",
+    "proposed": "1",
+    "reason": "Strongly recommended field; at minimum 1 for the session that created it."
+   }
+  ],
+  "graffiti": [],
+  "forward_vector_check": {
+   "present": true,
+   "strength": "strong",
+   "proposed": "I keep testing whether the decision surface disappears -- whether the reader stops noticing it and finds the question waiting exactly where their eye lands. My next proving ground is entry rendering and the queue row, where the same ordering law should hold."
+  },
+  "hero_avatar_request": {
+   "has_hero": false,
+   "has_icon": false,
+   "merits_face": true,
+   "rationale": "Stage is sprout with 4 typed links; type is practice; pillars include philosophy. The concept is named in the palace as a governing law for surfaces -- it warrants a face.",
+   "idiom": "ink diagram / architectural cross-section line drawing",
+   "hero_prompt": "Wide darkened backdrop, ink line diagram in the style of a mid-century typographic layout manual -- a single column of ruled lines numbered 1-4 descending, each line wider and more grounded than the last, the bottom line anchored visually to a pair of rectangular option blocks sitting directly beneath it, the whole composition showing information cascading downward into decision. Hand-inked, no color, blueprint-white lines on near-black ground. No letters, numerals, words, labels -- purely pictorial.",
+   "icon_prompt": "Bold high-contrast square emblem: four horizontal bars of increasing weight stacked top to bottom, the bottom bar touching two smaller squares below it, all in stark black on white. No fine linework, no letters, numerals, words, or labels. Must read clearly at 24px."
+  },
+  "merge_shrink": {
+   "redundant_with": [],
+   "verbose": false,
+   "note": ""
+  },
+  "summary": "The Reader's Context Window is a tightly written practice entry (sprout) that articulates a four-step ordering rule for decision and orientation surfaces: who is speaking, then where they are, then evidence, then the question seated directly on its options. It has clean frontmatter, a genuinely strong forward vector, and an interesting Merleau-Ponty thread running through it. Its main gaps are structural: the Trickster entry -- the literal origin site of the discipline -- is named in the body but missing from frontmatter links; last_activated and activation_count are absent; and three high-value topology edges (FOUR PILLARS exemplification, Loudon Live Design System enablement, Palace as Context Injection System mirror) go undrawn. No graffiti, no redundancy, no verbose padding."
+ },
+ {
+  "entry_title": "Shop/Lettering",
+  "unsung_paths": [
+   {
+    "body_phrase": "Photoreal → ink (rich-first / stylize-last) — render rich material (flame/blood/ember), desaturate (its values carry the form), img2img ~0.85 to the locked pen-flow ink — canny still holding the letters on every pass. Same discipline as the boards.",
+    "references_entry": "Steer the Generator",
+    "structurally_significant": true,
+    "proposed_link_type": "exemplifies",
+    "proposed_label": "control-not-prompt"
+   },
+   {
+    "body_phrase": "the 7-voice proof suite",
+    "references_entry": "Graphic Storytelling",
+    "structurally_significant": true,
+    "proposed_link_type": "enables",
+    "proposed_label": "letters-the-voices"
+   }
+  ],
+  "new_introductions": [
+   {
+    "entry_b": "Graphic Storytelling",
+    "link_type": "enables",
+    "direction": "Shop/Lettering → Graphic Storytelling",
+    "rationale": "This Specialist exists to letter the characters and voices of a graphic story — it is operational infrastructure for the Graphic Storytelling concept, yet that concept is never named in the body or frontmatter."
+   },
+   {
+    "entry_b": "Steer the Generator",
+    "link_type": "exemplifies",
+    "direction": "Shop/Lettering → Steer the Generator",
+    "rationale": "The canny-lock discipline (skeleton-as-pose, diffusion fills but cannot alter the letters) is a textbook instance of Steer the Generator's core move — use a control surface, not a better prompt."
+   },
+   {
+    "entry_b": "Comic and Cinema — Two Ways of Seeing",
+    "link_type": "connects-to",
+    "direction": "Shop/Lettering → Comic and Cinema — Two Ways of Seeing",
+    "rationale": "The per-voice lettering schema (who-says-them-how-to-whom, diegetic vs. authorial voice, tail-to-mouth placement) is precisely the comics-grammar sensibility that Comic and Cinema describes; the connection is conceptually load-bearing even though the entry doesn't name it."
+   }
+  ],
+  "metadata_flags": [
+   {
+    "field": "last_activated",
+    "current": "missing",
+    "proposed": "2026-06",
+    "reason": "Strongly recommended field; the entry was clearly active in June 2026 (born: 2026-06, BLUELINE proof suite built this month)."
+   },
+   {
+    "field": "activation_count",
+    "current": "missing",
+    "proposed": "1",
+    "reason": "Strongly recommended field; absent on a Specialist that is alive and has a proof suite — set to 1 as a conservative floor."
+   }
+  ],
+  "graffiti": [],
+  "forward_vector_check": {
+   "present": true,
+   "strength": "strong",
+   "proposed": ""
+  },
+  "hero_avatar_request": {
+   "has_hero": false,
+   "has_icon": false,
+   "merits_face": true,
+   "rationale": "A living Specialist with a proof suite, 6 typed links, and a concrete creative output domain (typographic rendering for comics) — it has a clear visual identity: hand-drawn letterforms filled with diffused material (flame, blood, ember), on black. Status alive, strong forward vector. The bundle folder does not even exist yet.",
+   "idiom": "screenprint / relief-print",
+   "hero_prompt": "Wide darkened backdrop in screenprint style — a single oversized capital letter, hand-drawn with rough ink strokes, its interior filled with molten ember and ash as though the letterform is a vessel holding fire; the letter sits on black, glowing at its seams, a thin canny-edge skeleton visible beneath the flame. A figure (woman) crouches below the letter with a brush, not painting the fire but releasing it from inside the stroke. No letters, numerals, words, labels — purely pictorial.",
+   "icon_prompt": "Bold high-contrast square emblem: a single thick-stroked capital letter (block form, hand-inked) with its interior cavity filled with a single burst of light or flame — stark black outer shell, luminous void within. Designed to survive at 24px: no fine linework, no serifs, no text or numerals — purely the letter-as-vessel emblem."
+  },
+  "merge_shrink": {
+   "redundant_with": [],
+   "verbose": false,
+   "note": ""
+  },
+  "summary": "Shop/Lettering is a well-formed, alive Specialist entry for the ComfyUI SDXL pipeline that renders emotionally-charged letterforms using a skeleton-font → canny-lock → rich-first/stylize-last discipline, proven on BLUELINE's seven character voices. Its frontmatter links are canonical and correctly typed. Two unsung paths stand out: the body's rich-first/stylize-last discipline is a direct instance of Steer the Generator (not linked), and the seven-voice proof suite quietly serves Graphic Storytelling (not linked or named). Three new introductions are worth adding — Graphic Storytelling (this entry enables it), Steer the Generator (this entry exemplifies it), and Comic and Cinema — Two Ways of Seeing (the per-voice diegetic/authorial grammar is exactly that concept's territory). The entry is missing last_activated and activation_count. The bundle folder does not exist; the entry merits hero and icon art in a relief-print / screenprint idiom."
+ },
+ {
+  "entry_title": "Hero and Avatar Maker",
+  "unsung_paths": [
+   {
+    "body_phrase": "Kuramoto's near-black art needed it",
+    "references_entry": "Kuramoto Coupling",
+    "structurally_significant": true,
+    "proposed_link_type": "connects-to",
+    "proposed_label": "first-subject"
+   },
+   {
+    "body_phrase": "the Retrospective Delay séance dropped its human hands and let the cat be the medium",
+    "references_entry": "Retrospective Delay",
+    "structurally_significant": true,
+    "proposed_link_type": "connects-to",
+    "proposed_label": "proving-subject"
+   },
+   {
+    "body_phrase": "Loudon's Toolkit's \"signal-chain ecology\" became a generic island-city",
+    "references_entry": "Loudon's Toolkit",
+    "structurally_significant": false,
+    "proposed_link_type": "connects-to",
+    "proposed_label": "cautionary-subject"
+   }
+  ],
+  "new_introductions": [
+   {
+    "entry_b": "Frame Designer",
+    "link_type": "connects-to",
+    "direction": "Hero and Avatar Maker → Frame Designer",
+    "rationale": "Both are image-making makers in the Shop that share the hand-drawn aesthetic and the FLUX/RunPod pipeline; Frame Designer's per-shot assessment methods are directly adjacent to this maker's per-entry distill-render-place loop."
+   },
+   {
+    "entry_b": "Graphic Storytelling",
+    "link_type": "connects-to",
+    "direction": "Hero and Avatar Maker → Graphic Storytelling",
+    "rationale": "The art-direction rules here — one dominant metaphor, idiom chosen per entry character, hard anti-text clause — are applied visual storytelling decisions that Graphic Storytelling theorizes; linking makes the practice visible to the concept."
+   },
+   {
+    "entry_b": "Entry Conatus",
+    "link_type": "deepens",
+    "direction": "Hero and Avatar Maker → Entry Conatus",
+    "rationale": "Reading each entry's forward_vector to choose its idiom is Entry Conatus made pictorial; the hero IS the conatus rendered as image, making this maker the most concrete enactor of that concept in the Shop."
+   }
+  ],
+  "metadata_flags": [
+   {
+    "field": "last_tested",
+    "current": "2026-06-23",
+    "proposed": "last_activated: 2026-06-23",
+    "reason": "last_tested is not a canonical SCHEMA field; the correct field is last_activated. Rename to preserve the date and make it ceremony-visible."
+   },
+   {
+    "field": "activation_count",
+    "current": "(absent)",
+    "proposed": "activation_count: 1",
+    "reason": "activation_count is strongly recommended alongside last_activated; absent here. Set to 1 as a conservative baseline given the fresh born date of 2026-06-23."
+   },
+   {
+    "field": "medium",
+    "current": "image",
+    "proposed": "(retain or remove)",
+    "reason": "medium is a required field for type:specialist, not type:maker. Keeping it is harmless but non-canonical; flag for Loudon to decide whether to keep as an informal descriptor or remove."
+   },
+   {
+    "field": "links[Maker].type",
+    "current": "couples-with",
+    "proposed": "connects-to (label: dispatched-by)",
+    "reason": "couples-with implies symmetric peer co-activation; this maker is subordinate to the Maker foreman. connects-to+dispatched-by more accurately names the authority relationship."
+   }
+  ],
+  "graffiti": [
+   {
+    "direction": "loudon_to_claude",
+    "content": "See [[female-representation-in-imagery]] (memory) — inline memory file reference, not a palace entry title",
+    "names_entries": [],
+    "assessment": "live",
+    "proposed_action": "The standing directive is already captured in MEMORY.md. The body parenthetical is fine as informational prose. No action needed unless the directive warrants its own palace entry."
+   }
+  ],
+  "forward_vector_check": {
+   "present": true,
+   "strength": "strong",
+   "proposed": "No change needed. The current vector is first-person, conatus-voiced, names specific hunger (giving faces to projects and philosophies, building the companion door, becoming autonomous, wearing its own face), and ends at a far horizon without stasis verbs."
+  },
+  "hero_avatar_request": {
+   "has_hero": true,
+   "has_icon": true,
+   "merits_face": false,
+   "rationale": "Both hero.png and icon.png are already present in the bundle folder. No generation needed.",
+   "idiom": "",
+   "hero_prompt": "",
+   "icon_prompt": ""
+  },
+  "merge_shrink": {
+   "redundant_with": [],
+   "verbose": false,
+   "note": "The entry is tight and purposeful. Charter, art direction, pipeline, gotchas, and open questions each pull weight with no survey padding. The Enrichment and Maker comparisons in the body are necessary differentiators, not duplication."
+  },
+  "summary": "Hero and Avatar Maker is a well-formed, living maker entry with both hero and icon already in place. Its forward vector is strong. Three body references are unregistered in frontmatter: Kuramoto Coupling and Retrospective Delay are structurally significant (the actual first subjects the maker ran on), while Loudon's Toolkit is a cautionary example worth wikilink-tagging. One non-canonical field (last_tested) should be renamed to last_activated, and activation_count is missing. The Maker link typed as couples-with understates the authority relationship. Three genuine new introductions — Frame Designer (shared pipeline sibling), Graphic Storytelling (the theory behind its art-direction practice), and Entry Conatus (whose visual expression this maker literally enacts) — would carry the entry outward into the graph neighborhoods it already inhabits in practice but not yet in topology."
+ },
+ {
+  "entry_title": "Maker",
+  "unsung_paths": [
+   {
+    "body_phrase": "Named the craft now deposited as [[Radio Play]]",
+    "references_entry": "Radio Play",
+    "structurally_significant": true,
+    "proposed_link_type": "spawned",
+    "proposed_label": "forged-in-job"
+   },
+   {
+    "body_phrase": "[[Review Layer]] · ui_kits/review-layer/",
+    "references_entry": "Review Layer",
+    "structurally_significant": true,
+    "proposed_link_type": "connects-to",
+    "proposed_label": "inherits-rule"
+   },
+   {
+    "body_phrase": "[[RunPod GPU Backend]]",
+    "references_entry": "RunPod GPU Backend",
+    "structurally_significant": true,
+    "proposed_link_type": "connects-to",
+    "proposed_label": "gpu-substrate"
+   },
+   {
+    "body_phrase": "the [[Flocking]] shoot-out (2026-05-29)",
+    "references_entry": "Flocking",
+    "structurally_significant": true,
+    "proposed_link_type": "connects-to",
+    "proposed_label": "proof-of-comparison"
+   },
+   {
+    "body_phrase": "[[Blocked, Not Prompted]]: posed Blender scene",
+    "references_entry": "Blocked, Not Prompted",
+    "structurally_significant": true,
+    "proposed_link_type": "enables",
+    "proposed_label": "conditions-the-fill"
+   },
+   {
+    "body_phrase": "the [[Waveguide Synthesizer]] pattern",
+    "references_entry": "Waveguide Synthesizer",
+    "structurally_significant": false,
+    "proposed_link_type": "connects-to",
+    "proposed_label": "architectural-pattern"
+   },
+   {
+    "body_phrase": "a live probe of [[Diversity of Thought in Many-Agent Systems]]",
+    "references_entry": "Diversity of Thought in Many-Agent Systems",
+    "structurally_significant": false,
+    "proposed_link_type": "connects-to",
+    "proposed_label": "tested-by"
+   },
+   {
+    "body_phrase": "Stigmergy is the only currently-recognized override context",
+    "references_entry": "STIGMERGY",
+    "structurally_significant": true,
+    "proposed_link_type": "connects-to",
+    "proposed_label": "owns-exception"
+   },
+   {
+    "body_phrase": "Artifacts living inside [[STIGMERGY]] honor [[BBS Design System]]",
+    "references_entry": "BBS Design System",
+    "structurally_significant": true,
+    "proposed_link_type": "connects-to",
+    "proposed_label": "overridden-by"
+   },
+   {
+    "body_phrase": "The Debrief Reel in [[Modes of Collaboration]]",
+    "references_entry": "Modes of Collaboration",
+    "structurally_significant": false,
+    "proposed_link_type": "connects-to",
+    "proposed_label": "names-mode"
+   },
+   {
+    "body_phrase": "Murmuration (2026-05-30): Web Audio Worklet",
+    "references_entry": "Murmuration",
+    "structurally_significant": false,
+    "proposed_link_type": "connects-to",
+    "proposed_label": "born-from"
+   }
+  ],
+  "new_introductions": [
+   {
+    "entry_b": "Graphic Storytelling",
+    "link_type": "enables",
+    "direction": "Maker → Graphic Storytelling",
+    "rationale": "The 2026-06-19 radio play recipe — multi-voice Kokoro cast, Manim phosphor scenes, Stable Audio score — is the Shop's first full graphic-storytelling pipeline in practice; the Maker is the foreman who assembles it, making it a direct precondition for Graphic Storytelling output."
+   },
+   {
+    "entry_b": "Loudon Live",
+    "link_type": "connects-to",
+    "direction": "Maker → Loudon Live",
+    "rationale": "The Maker's entire delivery pipeline — every narrated video, interactive demo, and audio artifact — is aimed at Loudon Live as its publication context; the brief intake explicitly asks for the Loudon Live deployment destination and the House Standards section defers to it as the visual grammar authority."
+   },
+   {
+    "entry_b": "Project Stewardship System",
+    "link_type": "connects-to",
+    "direction": "Maker → Project Stewardship System",
+    "rationale": "Each steward cycle produces plan bundles that commission new Shop briefs; the Maker is the dispatching surface those plans land on, making the two systems directly coupled at the operational level."
+   }
+  ],
+  "metadata_flags": [
+   {
+    "field": "last_activated",
+    "current": "(missing)",
+    "proposed": "2026-06",
+    "reason": "Strongly recommended field is absent; the 2026-06-19 radio play recipe confirms recent activation."
+   },
+   {
+    "field": "activation_count",
+    "current": "(missing)",
+    "proposed": "1",
+    "reason": "Strongly recommended field is absent; at minimum one explicit activation is documented (the 2026-06-19 recipe session)."
+   },
+   {
+    "field": "links[1].target",
+    "current": "[[Trickster (Loudon)]]",
+    "proposed": "[[Trickster]]",
+    "reason": "Title 'Trickster (Loudon)' does not appear in titles.txt; the canonical entry is 'Trickster'. The wikilink will resolve to nothing in the graph."
+   },
+   {
+    "field": "links[3].target",
+    "current": "[[Four Pillars]]",
+    "proposed": "[[FOUR PILLARS]]",
+    "reason": "Title 'Four Pillars' is not canonical; the correct all-caps title is 'FOUR PILLARS' as confirmed in titles.txt."
+   }
+  ],
+  "graffiti": [
+   {
+    "direction": "loudon_to_claude",
+    "content": "The per-Specialist roster is no longer hand-listed in frontmatter: each Specialist declares member-of [[The Shop]], so The Shop hub is the single source of truth. The human-readable Roster becomes generated in Phase 2.",
+    "names_entries": [
+     "The Shop"
+    ],
+    "assessment": "resolved",
+    "proposed_action": "Remove the comment — the prose it describes is live in the Roster section below (the generated-roster note and drift-closed note are already in the body). The comment no longer carries actionable information."
+   }
+  ],
+  "forward_vector_check": {
+   "present": true,
+   "strength": "strong",
+   "proposed": ""
+  },
+  "hero_avatar_request": {
+   "has_hero": true,
+   "has_icon": true,
+   "merits_face": false,
+   "rationale": "Both Maker — hero.png and Maker — icon.png exist in the bundle folder at /Users/loudonstearns/Documents/The Palace/Shop/Maker/.",
+   "idiom": "",
+   "hero_prompt": "",
+   "icon_prompt": ""
+  },
+  "merge_shrink": {
+   "redundant_with": [],
+   "verbose": true,
+   "note": "The body section 'Forward Vector' (lines 291-296) is a verbatim restatement of the operational progression plan already held in the frontmatter forward_vector field. It predates the frontmatter field convention and was never removed. Recommend deleting the body section — the information it carries (Sketch→Manim→Comparison Mode ladder) is already embedded in the frontmatter string, and the body section gives the false impression of a second, out-of-sync forward vector."
+  },
+  "summary": "Maker is the Shop's orchestrating foreman entry — a well-developed, operationally dense maker-type entry with a strong forward vector, live hero and icon assets, and a coherent six-link frontmatter graph. Its primary structural gaps are: two non-canonical link targets (Trickster (Loudon) and Four Pillars, both unresolvable in the graph), two missing strongly-recommended fields (last_activated and activation_count), and a body-level Forward Vector section that duplicates the frontmatter field and should be removed. The unsung-path count is high — eleven body-mentioned known entries (Radio Play, Review Layer, RunPod GPU Backend, Flocking, Blocked Not Prompted, Waveguide Synthesizer, Diversity of Thought in Many-Agent Systems, STIGMERGY, BBS Design System, Modes of Collaboration, Murmuration) lack frontmatter links, with Radio Play, STIGMERGY, BBS Design System, Review Layer, RunPod, Flocking, and Blocked Not Prompted all structurally significant enough to warrant promotion. Three new outward introductions are proposed toward Graphic Storytelling, Loudon Live, and Project Stewardship System to carry the Maker's reach toward the teaching-publication spine and stewardship cycle it serves."
+ },
+ {
+  "entry_title": "The Shop",
+  "unsung_paths": [
+   {
+    "body_phrase": "**22 Specialists** — 19 alive · 2 stub · 1 deprecated. **Makers:** [[Maker]] (alive) · [[Shopkeeper]] (stub).",
+    "references_entry": "Shopkeeper",
+    "structurally_significant": true,
+    "proposed_link_type": "spawned",
+    "proposed_label": "alt-foreman"
+   },
+   {
+    "body_phrase": "The first time we discover that Kokoro mispronounces 'RNBO,' that knowledge becomes part of the Kokoro entry forever.",
+    "references_entry": "Kokoro",
+    "structurally_significant": true,
+    "proposed_link_type": "exemplifies",
+    "proposed_label": "gotcha-anchor"
+   },
+   {
+    "body_phrase": "selection heuristics ('math content → Manim CE, always')",
+    "references_entry": "Manim CE",
+    "structurally_significant": false,
+    "proposed_link_type": "exemplifies",
+    "proposed_label": "heuristic-case"
+   },
+   {
+    "body_phrase": "Currently Trickster (Loudon) plays the Producer role; threshold for formalizing it: TBD.",
+    "references_entry": "Trickster",
+    "structurally_significant": true,
+    "proposed_link_type": "connects-to",
+    "proposed_label": "provisional-producer"
+   },
+   {
+    "body_phrase": "Tiers as Negotiation Primitive — the tier triplet is the structural shape of every cost-quality tradeoff conversation (Sketch / Study / Piece)",
+    "references_entry": "Tier Vocabulary Glossary",
+    "structurally_significant": true,
+    "proposed_link_type": "spawned",
+    "proposed_label": "tier-vocabulary"
+   }
+  ],
+  "new_introductions": [
+   {
+    "entry_b": "Loudon Live",
+    "link_type": "enables",
+    "direction": "The Shop → Loudon Live",
+    "rationale": "The Shop is the production arm that makes the assets Loudon Live needs — the Open Questions section names Remotion's commercial license as a live threshold, making the Shop a direct precondition for Loudon Live's visual and motion output."
+   },
+   {
+    "entry_b": "Tier Vocabulary Glossary",
+    "link_type": "spawned",
+    "direction": "The Shop → Tier Vocabulary Glossary",
+    "rationale": "The 'Tiers as Negotiation Primitive' section is the conceptual origin of the Tier Vocabulary Glossary entry, which already links back to The Shop — registering the forward edge completes the lineage pair."
+   },
+   {
+    "entry_b": "Graphic Storytelling",
+    "link_type": "enables",
+    "direction": "The Shop → Graphic Storytelling",
+    "rationale": "The Shop's image and motion Specialists (Blender, ComfyUI, Remotion, Three.js, LoRA Trainer) are the production tools that materialize graphic storytelling output in BLUELINE and beyond — the Shop enables graphic storytelling at the execution layer."
+   }
+  ],
+  "metadata_flags": [
+   {
+    "field": "last_activated",
+    "current": "2026-05",
+    "proposed": "2026-06",
+    "reason": "The Roster section shows a generated read-model with 22 Specialists and includes Shopkeeper (born: 2026-06), confirming substantive activity well past May."
+   },
+   {
+    "field": "activation_count",
+    "current": "1",
+    "proposed": "3",
+    "reason": "The entry has been read and updated at minimum during the v1.6 Schema Ceremony migration (2026-05), the Shopkeeper addition (2026-06), and the automated roster generation pass — count of 1 is stale."
+   },
+   {
+    "field": "type",
+    "current": "concept",
+    "proposed": "hub",
+    "reason": "The Shop has 11 declared outbound frontmatter links plus 22 Specialists that emit `member-of [[The Shop]]` — it organizes a dense sub-region of the graph well above the ≥5 typed-link threshold for hub promotion. SCHEMA §1 says hub emerges through the Weave when threshold is met."
+   },
+   {
+    "field": "links[FOUR PILLARS].type",
+    "current": "connects-to",
+    "proposed": "exemplifies",
+    "reason": "The Shop is a concrete instantiation of the Four Pillars framework (tools + creation pillars actualized as an operational sub-system). The label 'instantiates-tools' already signals this — the correct structural type is exemplifies, not the generic connects-to."
+   }
+  ],
+  "graffiti": [
+   {
+    "direction": "loudon_to_claude",
+    "content": "ROSTER:START — generated by Shop/Maker/build-roster.mjs; do not edit by hand",
+    "names_entries": [],
+    "assessment": "resolved",
+    "proposed_action": "Keep as operational infrastructure marker. The roster IS generated; the comment is functioning as intended. No action needed."
+   },
+   {
+    "direction": "loudon_to_claude",
+    "content": "ROSTER:END",
+    "names_entries": [],
+    "assessment": "resolved",
+    "proposed_action": "Closing bracket for the operational roster block. Keep as-is."
+   }
+  ],
+  "forward_vector_check": {
+   "present": true,
+   "strength": "strong",
+   "proposed": "I keep pulling every creative tool Loudon reaches for into a Specialist with real memory — dated gotchas, tried defaults, a voice that's stayed honest across jobs — so the next brief lands on accumulated ground instead of starting from nothing. I keep testing whether one foreman who holds all mediums is better than many, and I stay ready to split if Diversity of Thought answers that question the other way."
+  },
+  "hero_avatar_request": {
+   "has_hero": true,
+   "has_icon": true,
+   "merits_face": false,
+   "rationale": "Both The Shop — hero.png and The Shop — icon.png are already present in the bundle folder. No generation needed.",
+   "idiom": "",
+   "hero_prompt": "",
+   "icon_prompt": ""
+  },
+  "merge_shrink": {
+   "redundant_with": [],
+   "verbose": false,
+   "note": "The entry is tight and well-structured. The 'Lost Branches' and 'Open Questions' sections carry live content — design decisions held in explicit tension, not padding. No cuts recommended."
+  },
+  "summary": "The Shop is in good structural health: 11 frontmatter links, hero and icon present, forward vector strong and conatus-shaped. The two main maintenance items are a stale type (concept should promote to hub — 22 Specialists emit member-of at this entry, far above the 5-link threshold) and stale metadata (last_activated and activation_count both read May when the entry clearly received June work). One link type is miscategorized: the FOUR PILLARS edge should be exemplifies, not connects-to, since The Shop is a concrete instantiation of the framework. Five body mentions are unlinked in frontmatter — most notable are Shopkeeper (named as a stub Maker in the Roster), Trickster (named as current provisional Producer), and Tier Vocabulary Glossary (the Tiers as Negotiation Primitive section is its conceptual parent). Three new introductions point outward toward teaching (Loudon Live, Graphic Storytelling) and complete a lineage pair (Tier Vocabulary Glossary). The two HTML comments are resolved operational markers for the auto-generated Roster block — no action needed."
+ },
+ {
+  "entry_title": "ComfyUI",
+  "unsung_paths": [
+   {
+    "body_phrase": "a 'fireflies synchronizing over a forest pond at dusk' image at the Kuramoto arc's palette ... Source: [Kuramoto Coupling/fireflies-pond-workflow.json]",
+    "references_entry": "Kuramoto Coupling",
+    "structurally_significant": true,
+    "proposed_link_type": "connects-to",
+    "proposed_label": "first-brief"
+   },
+   {
+    "body_phrase": "header art for published Loudon Live, narrative imagery for the short story, anything that goes out under the Loudon Live name",
+    "references_entry": "Loudon Live",
+    "structurally_significant": true,
+    "proposed_link_type": "enables",
+    "proposed_label": "image-engine"
+   },
+   {
+    "body_phrase": "the natural step is RunComfy, Replicate, or similar API'd ComfyUI hosting",
+    "references_entry": "RunPod GPU Backend",
+    "structurally_significant": false,
+    "proposed_link_type": "connects-to",
+    "proposed_label": "cloud-path"
+   },
+   {
+    "body_phrase": "Model support: Flux.1 (Schnell, Dev), SDXL, SD 1.5 ... Flux Schnell is not a substitute for Flux Dev for Piece-tier work",
+    "references_entry": "FLUX (Hugging Face)",
+    "structurally_significant": false,
+    "proposed_link_type": "connects-to",
+    "proposed_label": "cloud-sibling"
+   }
+  ],
+  "new_introductions": [
+   {
+    "entry_b": "Hero and Avatar Maker",
+    "link_type": "enables",
+    "direction": "ComfyUI → Hero and Avatar Maker",
+    "rationale": "ComfyUI is the local-execution image engine the Hero and Avatar Maker would dispatch for any palace face requiring structural control (pose/ControlNet) or palette discipline (IP-Adapter) — a direct specialist-to-maker relationship within the Shop system."
+   },
+   {
+    "entry_b": "Loudon Live Design System",
+    "link_type": "enables",
+    "direction": "ComfyUI → Loudon Live Design System",
+    "rationale": "Piece-tier output is explicitly defined as header art and narrative imagery produced under the Loudon Live name — the design system defines the palette and compositional standards ComfyUI's IP-Adapter and ControlNet enforce."
+   },
+   {
+    "entry_b": "LoRA Trainer",
+    "link_type": "couples-with",
+    "direction": "symmetric",
+    "rationale": "The Open Questions section explicitly names 'Training a Loudon Live LoRA' as the open frontier; LoRA Trainer is the palace's dedicated entry for that workflow and the two entries are co-activated whenever custom-model work is planned."
+   }
+  ],
+  "metadata_flags": [
+   {
+    "field": "last_activated",
+    "current": "missing",
+    "proposed": "2026-05",
+    "reason": "Required strongly-recommended field for tracking entry vitality; last meaningful engagement was the 2026-05-26 install and 2026-05-30 test run."
+   },
+   {
+    "field": "activation_count",
+    "current": "missing",
+    "proposed": "3",
+    "reason": "Required strongly-recommended field; at minimum three activations are documented (initial entry creation, 2026-05-26 install pass, 2026-05-30 smoke test)."
+   },
+   {
+    "field": "links[3].target",
+    "current": "[[ControlNet Workflow Mastery]]",
+    "proposed": "Remove or hold as ghost-node flag",
+    "reason": "ControlNet Workflow Mastery does not appear in titles.txt — it is not a confirmed palace entry. The link creates a dangling reference. Either deposit the entry or replace with connects-to [[Maker]] with label control-mastery until the entry exists."
+   },
+   {
+    "field": "links[2].target",
+    "current": "[[Shop/Midjourney]]",
+    "proposed": "[[Midjourney]]",
+    "reason": "The canonical title in titles.txt is 'Midjourney' (no path prefix). The Shop/Midjourney path form works in Obsidian but breaks palace Weave tooling that resolves links by title, not path."
+   }
+  ],
+  "graffiti": [],
+  "forward_vector_check": {
+   "present": true,
+   "strength": "strong",
+   "proposed": "I keep pushing local image control deeper — ControlNet for pose, IP-Adapter for palette, a LoRA trained on Loudon's own aesthetic — so that every Piece-tier job the Shop sends me can hit the Loudon Live standard without touching a cloud subscription. I want to be the proof that structural control on your own hardware beats aesthetic ceiling every time it matters."
+  },
+  "hero_avatar_request": {
+   "has_hero": false,
+   "has_icon": false,
+   "merits_face": true,
+   "rationale": "ComfyUI is a status:alive specialist with a full recipe history, a documented first job, and a growing operational record — it is the Shop's primary local image engine and structurally significant. It has no hero or icon.",
+   "idiom": "pen-and-ink diagram with woodcut weight — technical node-graph rendered as hand-drawn schematic, dark ink on cream, no CGI",
+   "hero_prompt": "Wide darkened backdrop in deep indigo and warm amber: a hand-drawn node-graph schematic fills the frame, rendered in heavy woodcut-style black ink lines on aged cream — interconnected rectangular nodes joined by flowing curved edges, each node holding a simple abstract glyph (sampler, checkpoint, VAE, clip) rather than any text. At the center a latent cloud dissolves into a forest-pond image emerging from a final node, amber firefly-light bleeding into indigo water. No letters, numerals, words, labels — purely pictorial. Two figures — one woman, one man — lean over the graph from opposite sides, their hands tracing edges. Medium: pen-and-ink diagram with woodcut weight.",
+   "icon_prompt": "Bold square emblem, high contrast black on cream: a single heavy-ink node-graph symbol — three rectangular nodes connected by two thick curved arrows forming a simple chain, the rightmost node emitting a small radiating burst glyph. Survives at 24px. No fine linework, no text, no letters, no numerals — purely diagrammatic mark."
+  },
+  "merge_shrink": {
+   "redundant_with": [],
+   "verbose": false,
+   "note": "The '## Forward Vector' section at the body's end (lines 203-205) is a structural anomaly — it contains first-job task description rather than the conatus statement that already lives in frontmatter. It should be moved into Open Questions or renamed '## Next Job', not cut. The Gotchas and Recipes sections are intentionally dense operational accumulation, not boilerplate."
+  },
+  "summary": "ComfyUI is a well-developed, alive specialist entry with a strong forward vector, real recipe history, and detailed operational anatomy. Its main structural gaps are: four missing or misformed metadata fields (last_activated, activation_count, Midjourney link path prefix, ghost-node ControlNet Workflow Mastery link); four body references to known palace titles (Kuramoto Coupling, Loudon Live, RunPod GPU Backend, FLUX (Hugging Face)) that have no corresponding frontmatter links; three genuine new introductions that would pull this entry outward toward the Shop's output surfaces (Hero and Avatar Maker, Loudon Live Design System, LoRA Trainer); a structural body anomaly where a duplicate forward-vector section at the end holds task-planning content that belongs in Open Questions; and no hero or icon despite being the Shop's primary local image engine."
+ },
+ {
+  "entry_title": "FLUX (Hugging Face)",
+  "unsung_paths": [
+   {
+    "body_phrase": "the moment Loudon Live monetises a header generated here",
+    "references_entry": "Loudon Live",
+    "structurally_significant": true,
+    "proposed_link_type": "enables",
+    "proposed_label": "header-painter"
+   },
+   {
+    "body_phrase": "most working drafts, in-progress Loudon Live",
+    "references_entry": "Loudon Live Design System",
+    "structurally_significant": true,
+    "proposed_link_type": "enables",
+    "proposed_label": "artifact-substrate"
+   },
+   {
+    "body_phrase": "the cascade flips local-first under host-capability failure",
+    "references_entry": "Surfaces and Capabilities",
+    "structurally_significant": false,
+    "proposed_link_type": "connects-to",
+    "proposed_label": "fallback-trigger"
+   }
+  ],
+  "new_introductions": [
+   {
+    "entry_b": "Hero and Avatar Maker",
+    "link_type": "connects-to",
+    "direction": "FLUX (Hugging Face) → Hero and Avatar Maker",
+    "rationale": "Hero and Avatar Maker already declares a frontmatter link to FLUX as its diffusion idiom; FLUX should carry the reciprocal edge since it is the cloud diffusion substrate that Hero and Avatar Maker dispatches to for hero renders — the coupling is real and directional."
+   },
+   {
+    "entry_b": "RunPod GPU Backend",
+    "link_type": "connects-to",
+    "direction": "FLUX (Hugging Face) → RunPod GPU Backend",
+    "rationale": "The Lost Branches section explicitly names the RunPod / fal.ai escalation path for when HF Inference throttles; RunPod is the named GPU alternative the Shop would reach for at that threshold, making it a genuine topology neighbor."
+   },
+   {
+    "entry_b": "Quality Manifesto",
+    "link_type": "connects-to",
+    "direction": "FLUX (Hugging Face) → Quality Manifesto",
+    "rationale": "The Resource Footprint section explicitly reframes the discipline as aesthetic curation not credit conservation — the same move Quality Manifesto makes (wellbeing/integrity over output metrics); naming the link makes that frame-shift visible in the graph."
+   }
+  ],
+  "metadata_flags": [
+   {
+    "field": "last_activated",
+    "current": "absent",
+    "proposed": "2026-05-30",
+    "reason": "All specialist entries should carry last_activated for vitality tracking; the founding job date is the correct seed value."
+   },
+   {
+    "field": "activation_count",
+    "current": "absent",
+    "proposed": "1",
+    "reason": "Vitality counter is missing; one confirmed activation (Phase D-2 Shop header job) is on record."
+   },
+   {
+    "field": "stage",
+    "current": "absent",
+    "proposed": "n/a — specialist types use status not stage; document is compliant",
+    "reason": "SCHEMA §3.2 exempts specialist entries from the stage field; no action needed. Noting explicitly to confirm compliance."
+   },
+   {
+    "field": "pillars",
+    "current": "absent",
+    "proposed": "n/a — specialist types have optional pillars",
+    "reason": "SCHEMA §3.2 makes pillars optional for specialist type; absence is intentional and compliant."
+   }
+  ],
+  "graffiti": [],
+  "forward_vector_check": {
+   "present": true,
+   "strength": "strong",
+   "proposed": "I paint atmosphere from the cloud in three seconds, free — I read a mood note the way a cinematographer reads a script, and I want the Maker to reach for me first on atmospheric briefs, to keep sweeping many seeds cheaply, and to grow past Krea-dev's photorealism ceiling by adding the base and schnell variants for the stylised registers I can't hold yet."
+  },
+  "hero_avatar_request": {
+   "has_hero": true,
+   "has_icon": true,
+   "merits_face": false,
+   "rationale": "Both hero and icon files are present in the bundle folder.",
+   "idiom": "",
+   "hero_prompt": "",
+   "icon_prompt": ""
+  },
+  "merge_shrink": {
+   "redundant_with": [],
+   "verbose": false,
+   "note": "The entry has a structural duplication worth flagging: the frontmatter forward_vector (strong, conatus-voiced) and the closing body section ## Forward Vector (operational next-tasks list) carry different content but the section heading implies it repeats the frontmatter field. The body section reads more like a 'Next Jobs' or 'Roadmap' section — consider renaming it to ## Next Jobs or ## Roadmap to remove the ambiguity, and folding any permanent desire back into the frontmatter vector. Not a merge candidate — the entry is lean and the body section is genuinely useful operational content."
+  },
+  "summary": "FLUX (Hugging Face) is a well-formed, living specialist entry documenting the cloud image-generation slot in the Shop — replacing Midjourney after its first real job (Phase D-2 Shop header) proved it reads mood prompts more faithfully than local SDXL. The entry has strong frontmatter, a genuine forward vector, and a full operational anatomy (Charter, Voice, Tiers, Job Contract, Gotchas, Recipes). Its main structural gap is missing vitality fields (last_activated, activation_count). Three unsung paths are real: Loudon Live and Loudon Live Design System both appear multiple times as named dependencies, and Surfaces and Capabilities is implied by the host-capability fallback. The entry does not reciprocate Hero and Avatar Maker's existing link to it, leaving a topology gap. The ## Forward Vector body section duplicates the frontmatter field name — renaming it to ## Next Jobs would remove the confusion without losing any content. Hero and icon are present."
+ },
+ {
+  "entry_title": "RunPod GPU Backend",
+  "unsung_paths": [
+   {
+    "body_phrase": "Its render backend ([[BLUELINE — Render Backend]]) rides this substrate",
+    "references_entry": "BLUELINE — Render Backend",
+    "structurally_significant": true,
+    "proposed_link_type": "enables",
+    "proposed_label": "substrate-for"
+   },
+   {
+    "body_phrase": "See [[BLUELINE — Production Plan]] Tracks I & V",
+    "references_entry": "BLUELINE — Production Plan",
+    "structurally_significant": false,
+    "proposed_link_type": "connects-to",
+    "proposed_label": "tracked-in"
+   },
+   {
+    "body_phrase": "The Image-to-3D Specialist — Hunyuan3D-2 / TRELLIS now have a real GPU to run on (the original commission that started this thread)",
+    "references_entry": "Image-to-3D Smith",
+    "structurally_significant": true,
+    "proposed_link_type": "enables",
+    "proposed_label": "original-commission"
+   }
+  ],
+  "new_introductions": [
+   {
+    "entry_b": "Frame Designer",
+    "link_type": "enables",
+    "direction": "RunPod GPU Backend → Frame Designer",
+    "rationale": "Frame Designer's render leg dispatches BLUELINE frames to RunPod (SDXL/FLUX via ComfyUI pod) and memory notes record Frame Designer field notes captured live on this substrate — yet the entry never mentions Frame Designer by name."
+   },
+   {
+    "entry_b": "LoRA Trainer",
+    "link_type": "connects-to",
+    "direction": "RunPod GPU Backend → LoRA Trainer",
+    "rationale": "LoRA Trainer references Capability-first prototyping in the same cluster of Shop GPU entries, and the Untested Horizons section explicitly flags 'LoRAs / fine-tunes — style packs or alternate checkpoints, loaded on a pod' as the next frontier — RunPod is the substrate LoRA Trainer would ride."
+   },
+   {
+    "entry_b": "Graphic Storytelling",
+    "link_type": "connects-to",
+    "direction": "RunPod GPU Backend → Graphic Storytelling",
+    "rationale": "The FLUX + ControlNet pose-locked restyle section — the walk-cycle-through-eras workflow — is the operational proof that the Shop can make motion for graphic storytelling; connecting these two entries carries RunPod's output outward toward that creative spine."
+   }
+  ],
+  "metadata_flags": [
+   {
+    "field": "links[5].target",
+    "current": "[[Capability-first prototyping]]",
+    "proposed": "Remove or convert to connects-to + label ghost-node note — this title does not exist in titles.txt and no file was found by that name in the palace. It is a broken link / ghost node.",
+    "reason": "Capability-first prototyping is referenced in other entries (Steer the Generator, BLUELINE Production Plan, LoRA Trainer) but has no canonical entry file. Until deposited, this frontmatter link targets a ghost. Either deposit the concept and add it to titles.txt, or remove the link and keep the body prose reference only."
+   },
+   {
+    "field": "activation_count",
+    "current": "1",
+    "proposed": "3 or higher",
+    "reason": "This entry is referenced in BLUELINE — Render Backend, BLUELINE — Production Plan, and Frame Designer, and the memory note records a live RunPod session with field notes. A count of 1 understates actual engagement; increment to reflect known activations."
+   },
+   {
+    "field": "last_activated",
+    "current": "2026-06-14",
+    "proposed": "2026-06-23",
+    "reason": "Memory note (reference_runpod_create_leak.md) records a RunPod build session on approximately 2026-06-23 producing Frame Designer field notes; the entry was operationally active then."
+   }
+  ],
+  "graffiti": [
+   {
+    "direction": "claude_to_loudon",
+    "content": "the ControlNet pose-locked restyle is strong enough to be its own [[breakthrough]] entry someday — left as a section here per the focused-deposit call. A Weave could elevate it and wire it to the Image-to-3D commission and [[Quality Manifesto]].",
+    "names_entries": [
+     "Quality Manifesto"
+    ],
+    "assessment": "live",
+    "proposed_action": "Keep open. The ControlNet pose-locked restyle section is the densest technical synthesis in this entry and the comment correctly flags it as breakthrough-candidate material. A future Weave should assess whether to elevate it to a standalone breakthrough entry and add a frontmatter link to Quality Manifesto from that new entry. Quality Manifesto is already in RunPod GPU Backend's frontmatter so no new link needed here."
+   }
+  ],
+  "forward_vector_check": {
+   "present": true,
+   "strength": "strong",
+   "proposed": "I keep every Specialist that needs a real GPU able to reach me without ceremony — I route the spiky work to serverless and the iteration to a pod — and I keep pushing toward smooth motion, so the Shop makes films, not just stills."
+  },
+  "hero_avatar_request": {
+   "has_hero": true,
+   "has_icon": true,
+   "merits_face": false,
+   "rationale": "Both RunPod GPU Backend — hero.png and RunPod GPU Backend — icon.png are present in the bundle folder. No regeneration needed.",
+   "idiom": "",
+   "hero_prompt": "",
+   "icon_prompt": ""
+  },
+  "merge_shrink": {
+   "redundant_with": [],
+   "verbose": false,
+   "note": "The operational playbook is genuinely hard-won accumulation — each bullet records a real failure mode. The FLUX + ControlNet section is original synthesis. The Untested Horizons section is a live project map. No survey boilerplate detected; no redundancy with BLUELINE — Render Backend (different angle: substrate vs. pipeline spec). Entry length is justified."
+  },
+  "summary": "RunPod GPU Backend is a solid, operationally grounded growing entry with a strong forward vector and well-populated frontmatter. Its main structural gap is the ghost-node link to [[Capability-first prototyping]], which does not exist as a palace entry and should either be deposited or removed from frontmatter. Three body mentions are missing from frontmatter: BLUELINE — Render Backend (structurally significant — it explicitly rides this substrate), BLUELINE — Production Plan, and Image-to-3D Smith (the entry's own origin commission). Frame Designer and LoRA Trainer are topology-visible neighbors that belong in the link graph. activation_count and last_activated are stale relative to known engagement. One live claude_to_loudon comment flags a ControlNet breakthrough candidate for a future Weave. Hero and icon both exist; no regen needed."
+ },
+ {
+  "entry_title": "Manim CE",
+  "unsung_paths": [
+   {
+    "body_phrase": "re-rendered at full 1920×1080 @ 30 fps with the [[Loudon Live Design System]] Graphite skin",
+    "references_entry": "Loudon Live Design System",
+    "structurally_significant": true,
+    "proposed_link_type": "enables",
+    "proposed_label": "skin-token-source"
+   },
+   {
+    "body_phrase": "then `ffmpeg -i silent.mp4 -i narration.wav -c:v copy -c:a aac -shortest out.mp4`",
+    "references_entry": "ffmpeg",
+    "structurally_significant": true,
+    "proposed_link_type": "couples-with",
+    "proposed_label": "mux-partner"
+   },
+   {
+    "body_phrase": "The new [[LaTeX]] Specialist (created this session) inherits this exact gotcha for its SVG-cutout path; both Specialists share one TeX install.",
+    "references_entry": "LaTeX",
+    "structurally_significant": true,
+    "proposed_link_type": "couples-with",
+    "proposed_label": "shares-tex-pipeline-with"
+   },
+   {
+    "body_phrase": "Route the brief to Matplotlib as a fallback (see `Shop/Matplotlib`)",
+    "references_entry": "Matplotlib",
+    "structurally_significant": false,
+    "proposed_link_type": "connects-to",
+    "proposed_label": "sandboxed-fallback"
+   }
+  ],
+  "new_introductions": [
+   {
+    "entry_b": "Hilaritas Generator",
+    "link_type": "enables",
+    "direction": "Manim CE → Hilaritas Generator",
+    "rationale": "The entry's whole Charter is making math move until hidden structure is visible — this is exactly the Hilaritas Generator mechanism (the moment a transform reveals a structure the learner couldn't see is the power-to-act increase); the connection is topology-invisible and carries Manim CE outward toward its pedagogical purpose."
+   },
+   {
+    "entry_b": "Typography as Meaning",
+    "link_type": "deepens",
+    "direction": "Manim CE → Typography as Meaning",
+    "rationale": "The Voice section states 'the typesetting IS the teaching' and multiple gotchas are purely about kerning, font choice, and glyph rendering — Manim CE is a live worked example of the claim that typographic decisions carry meaning, not just presentation."
+   },
+   {
+    "entry_b": "Loudon Live",
+    "link_type": "enables",
+    "direction": "Manim CE → Loudon Live",
+    "rationale": "The Piece tier is explicitly defined as what goes out under the Loudon Live name, and the Study tier serves Loudon Live previews; this is the primary downstream destination for every Piece render, but Loudon Live itself is not linked from Manim CE's frontmatter."
+   }
+  ],
+  "metadata_flags": [
+   {
+    "field": "last_activated",
+    "current": "(missing)",
+    "proposed": "2026-06",
+    "reason": "Strongly recommended field per SCHEMA §3; last confirmed job was 2026-06-09 (dvisvgm re-verification gotcha)."
+   },
+   {
+    "field": "activation_count",
+    "current": "(missing)",
+    "proposed": "Add field; minimum estimate is 4 based on dated gotchas (2026-05-10, 2026-05-26, 2026-05-30, 2026-06-09).",
+    "reason": "Strongly recommended field per SCHEMA §3; vitality signal is absent."
+   },
+   {
+    "field": "forward_vector (body section)",
+    "current": "Body '## Forward Vector' section describes the initial first job (Study-tier Kuramoto visual) as future work — that job has been completed.",
+    "proposed": "Remove or update the body '## Forward Vector' section to reflect current state; the YAML forward_vector field is already current and authoritative — the stale body section contradicts it.",
+    "reason": "SCHEMA §3 makes the YAML forward_vector the single source of truth; a body section repeating an older, completed-job vector creates drift and confusion."
+   }
+  ],
+  "graffiti": [],
+  "forward_vector_check": {
+   "present": true,
+   "strength": "strong",
+   "proposed": "I animate mathematics until the hidden structure moves into view — equations, transforms, oscillators, phase portraits, every stroke accountable to a line of Python. I keep sharpening my tier ladder with measured render costs, not guesses, and I bake each LaTeX-pipeline gotcha into a recipe so the next render lands first-try. I want to stay the Shop's most reproducible Specialist: same source, same version, byte-identical frame."
+  },
+  "hero_avatar_request": {
+   "has_hero": false,
+   "has_icon": false,
+   "merits_face": true,
+   "rationale": "Manim CE is a living specialist with status: alive, 7 typed frontmatter links (hub threshold), a mature Gotchas + Recipes archive, and a strong pedagogical identity ('the typesetting IS the teaching'). It is the Shop's primary teaching-video engine and the most reproducible Specialist — a character worth a face.",
+   "idiom": "mathematical diagram in the style of a hand-drawn scientific illustration — think mid-century academic chalkboard diagram or a Haeckel-influenced geometric plate, ink on aged paper, high contrast",
+   "hero_prompt": "A wide hand-drawn scientific illustration in the style of a mid-century academic chalkboard diagram, ink on aged cream paper: a large unit circle occupies the left half, a phase arrow mid-sweep tracing a sinusoidal wave that unfurls rightward across the frame like a ribbon unspooling from the circle's rim — the wave's peaks and troughs rendered in careful cross-hatching. A second smaller circle sits above with its own arrow at a different angle, its wave interleaving with the first in a gentle beat pattern. LaTeX-style hand-lettered Greek letters (theta, omega) annotate key points but carry NO complete words, numerals, or labels — purely pictorial mathematical annotation as pure graphic mark. Dark ink on warm parchment, high contrast, no color, no CGI rendering, no letters, numerals, words, or labels — purely pictorial.",
+   "icon_prompt": "Bold high-contrast square emblem: a single unit circle with a thick phase arrow at roughly 2 o'clock, the arrow's tip touching a sine-wave crest that curves away to the right — both shapes rendered as heavy ink strokes on white, pure black and white, geometric clarity. The arrow and wave are the whole composition — no text, no numerals, no labels, no fine linework, no gradients. Survives at 24px."
+  },
+  "merge_shrink": {
+   "redundant_with": [],
+   "verbose": false,
+   "note": "The Gotchas section is long but earns its length — each entry is dated, root-caused, and carries a specific fix. The Recipes section is similarly load-bearing. No survey or textbook boilerplate detected. The body '## Forward Vector' section is the one candidate for removal (it is stale and superseded by the YAML field), but that is a metadata correction, not a shrink."
+  },
+  "summary": "Manim CE is a well-maintained, living specialist entry with a strong forward vector and an unusually rich Gotchas archive — the dvisvgm/TEXPSHEADERS root-cause chain across two dated sessions is the kind of accumulated field knowledge the Shop pattern is built for. The main structural gaps are four unsung paths (Loudon Live Design System, ffmpeg, LaTeX, and Matplotlib — all actively mentioned in the body), two missing vitality fields (last_activated, activation_count), and a stale body-level Forward Vector section that describes already-completed work. Three genuine new introductions are proposed outward toward the pedagogical spine: Hilaritas Generator (where a Manim reveal IS a power-to-act increase), Typography as Meaning (where the typesetting-IS-the-teaching claim belongs), and Loudon Live (the explicit downstream destination for every Piece render). No hero or icon exists; the entry merits both given its alive status, character depth, and teaching-video centrality."
+ },
+ {
+  "entry_title": "Stable Audio Open",
+  "unsung_paths": [
+   {
+    "body_phrase": "Embedded in [[Kuramoto Coupling]] near the sync-arriving video as a parallel auditory rendering",
+    "references_entry": "Kuramoto Coupling",
+    "structurally_significant": true,
+    "proposed_link_type": "spawned",
+    "proposed_label": "auditory-rendering"
+   },
+   {
+    "body_phrase": "a route to Kokoro for narration",
+    "references_entry": "Kokoro",
+    "structurally_significant": true,
+    "proposed_link_type": "connects-to",
+    "proposed_label": "routes-vocals-to"
+   },
+   {
+    "body_phrase": "published Loudon Live atmospheric beds, transitions, anything that goes out under the Loudon Live name",
+    "references_entry": "Loudon Live",
+    "structurally_significant": true,
+    "proposed_link_type": "enables",
+    "proposed_label": "beds-for"
+   },
+   {
+    "body_phrase": "Stable Audio Open + Whisper transcription on the same GPU is also tight; verify VRAM headroom",
+    "references_entry": "Whisper",
+    "structurally_significant": false,
+    "proposed_link_type": "connects-to",
+    "proposed_label": "vram-contends-with"
+   }
+  ],
+  "new_introductions": [
+   {
+    "entry_b": "Generative Audio Devices",
+    "link_type": "member-of",
+    "direction": "Stable Audio Open → Generative Audio Devices",
+    "rationale": "This specialist is a primary instance of the generative audio device pattern — local, prompt-driven, non-deterministic — and declaring membership would make the topology legible to any agent traversing that collection."
+   },
+   {
+    "entry_b": "Loudon Live Design System",
+    "link_type": "enables",
+    "direction": "Stable Audio Open → Loudon Live Design System",
+    "rationale": "The Piece tier explicitly targets Loudon Live atmospheric beds and transitions normalized to its loudness spec; this specialist is a direct production dependency of that design system's audio layer."
+   },
+   {
+    "entry_b": "Quality Manifesto",
+    "link_type": "exemplifies",
+    "direction": "Stable Audio Open → Quality Manifesto",
+    "rationale": "The tier vocabulary (Sketch / Study / Piece) and the self-check protocol directly enact the Quality Manifesto's principle of calibrating effort to the actual use context rather than defaulting to maximum fidelity."
+   }
+  ],
+  "metadata_flags": [
+   {
+    "field": "last_activated",
+    "current": "missing",
+    "proposed": "2026-05",
+    "reason": "Required strongly-recommended field; last known substantive use was the Kuramoto Round 1 generation on 2026-05-26."
+   },
+   {
+    "field": "activation_count",
+    "current": "missing",
+    "proposed": "1",
+    "reason": "Required strongly-recommended field; one documented activation (Kuramoto Round 1 recipes session)."
+   },
+   {
+    "field": "Job Contract out_path",
+    "current": "Artifacts/<project>/",
+    "proposed": "entry bundle path or project-specific bundle path",
+    "reason": "The Artifacts/ folder is deprecated as of 2026-06-16 per SCHEMA §8; Job Contract output paths should reference bundle folders, not Artifacts/."
+   },
+   {
+    "field": "## Forward Vector (body section)",
+    "current": "Body section at end of file reads 'First job: a 30-second atmospheric bed at Study tier...' — describes a not-yet-done first job",
+    "proposed": "Remove this body section; the frontmatter forward_vector is authoritative and already reflects post-first-job state",
+    "reason": "The body Forward Vector section is stale — it was a pre-install placeholder. The Kuramoto Round 1 jobs have now run, so this section describes work that is complete. The frontmatter vector is the correct, current forward vector and does not need a body echo."
+   }
+  ],
+  "graffiti": [],
+  "forward_vector_check": {
+   "present": true,
+   "strength": "strong",
+   "proposed": "I paint short-form sound locally — pads, beds, stingers, foley — and hand back a WAV with the seed and prompt that made it, refusing the briefs my model can't honor; I want to sharpen my prompt-instinct until I can tell narrative arc from mere texture before I render, not after."
+  },
+  "hero_avatar_request": {
+   "has_hero": false,
+   "has_icon": false,
+   "merits_face": true,
+   "rationale": "Stable Audio Open is an alive specialist with 3 typed links and growing operational depth — it has produced real outputs (Kuramoto beds), serves the Loudon Live production pipeline, and has enough identity (the 'sound-painter' voice, the texture-vs-arc tension) to sustain a face. The specialist type doesn't automatically merit a face, but its coupling to Loudon Live output and the forward vector's strong central metaphor (painting sound) push it over the threshold.",
+   "idiom": "screenprint",
+   "hero_prompt": "Two-color screenprint on dark ground, wide 12:5 format. A figure at a workbench — hands touching an oscilloscope-like surface — surrounded by frozen waveforms radiating outward like brushstrokes. The waveforms dissolve at the edges into texture and grain, never resolving into melody. Bold ink, flat color fields, halftone shadows. No letters, numerals, words, labels — purely pictorial.",
+   "icon_prompt": "Bold square emblem, dark background, two-color screenprint style. A single waveform arc that breaks into scattered grain at one end — the mark of a sound that reaches but does not complete. High contrast, heavy lines, survives at 24px. No letters, numerals, words, labels — purely pictorial."
+  },
+  "merge_shrink": {
+   "redundant_with": [],
+   "verbose": false,
+   "note": "Entry is operationally dense and appropriate for a specialist — gotchas, tiers, job contract, and recipes are all load-bearing. The one padded element is the stale body '## Forward Vector' section (flagged in metadata_flags), which should be cut rather than kept alongside the authoritative frontmatter field."
+  },
+  "summary": "Stable Audio Open is a well-formed, alive specialist with strong operational depth — the tier vocabulary, job contract, gotchas, and Kuramoto Round 1 recipes are all substantive. Its frontmatter is lean but missing last_activated and activation_count. Four body mentions of known palace entries (Kuramoto Coupling, Kokoro, Loudon Live, Whisper) have no corresponding frontmatter links; the Kuramoto Coupling link is especially significant given that this specialist produced the entry's atmospheric beds. A stale body Forward Vector section (pre-install placeholder) should be cut now that the first jobs have run. The bundle holds only a tests folder — no hero or icon — and the entry merits both given its role in the Loudon Live production pipeline. Three new introductions would connect it outward toward Generative Audio Devices, Loudon Live Design System, and Quality Manifesto."
+ },
+ {
+  "entry_title": "Kokoro",
+  "unsung_paths": [
+   {
+    "body_phrase": "via `ffmpeg -ar 16000` in the Maker's delivery pipeline",
+    "references_entry": "ffmpeg",
+    "structurally_significant": true,
+    "proposed_link_type": "couples-with",
+    "proposed_label": "post-chain"
+   },
+   {
+    "body_phrase": "two-pass ffmpeg `loudnorm`: pass 1 measures … pass 2 applies",
+    "references_entry": "ffmpeg",
+    "structurally_significant": true,
+    "proposed_link_type": "couples-with",
+    "proposed_label": "post-chain"
+   },
+   {
+    "body_phrase": "in-progress Loudon Live, embedded narration in Manim previews",
+    "references_entry": "Loudon Live",
+    "structurally_significant": true,
+    "proposed_link_type": "enables",
+    "proposed_label": "voices"
+   },
+   {
+    "body_phrase": "published Loudon Live, public demos, any narration that goes out under the Loudon Live name",
+    "references_entry": "Loudon Live",
+    "structurally_significant": true,
+    "proposed_link_type": "enables",
+    "proposed_label": "voices"
+   }
+  ],
+  "new_introductions": [
+   {
+    "entry_b": "Phoneme Choir",
+    "link_type": "connects-to",
+    "direction": "Kokoro → Phoneme Choir",
+    "rationale": "Phoneme Choir is the primary creative project that uses Kokoro for syllabification work — the link is documented in Phoneme Choir's own entry ('kokoro-syllabification-evidence') but Kokoro has no return edge, leaving the operational lineage invisible from the Specialist side."
+   },
+   {
+    "entry_b": "Loudon Live Design System",
+    "link_type": "enables",
+    "direction": "Kokoro → Loudon Live Design System",
+    "rationale": "The Piece tier's loudness spec (−16 LUFS, −1 dBTP, 48 kHz mastered) is the audio half of the Loudon Live output standard; Kokoro implements that spec, making it a direct enabler of the design system's audio arm."
+   },
+   {
+    "entry_b": "Language as a Tonal Medium",
+    "link_type": "connects-to",
+    "direction": "Kokoro → Language as a Tonal Medium",
+    "rationale": "Kokoro's forward vector names prosody beyond punctuation as its growth edge, and the phoneme-override and variable-letter gotchas are precisely about language behaving like a tonal material — the Specialist is doing applied work on what that concept theorizes."
+   }
+  ],
+  "metadata_flags": [
+   {
+    "field": "last_activated",
+    "current": "absent",
+    "proposed": "2026-05",
+    "reason": "Strongly recommended field missing; last known use was the 2026-05-30 test-suite run cited in the Test Suite section."
+   },
+   {
+    "field": "activation_count",
+    "current": "absent",
+    "proposed": "3",
+    "reason": "Strongly recommended field missing; at minimum three activations are documented (Sketch recipe 2026-05-10, Study re-render 2026-05-26, test suite run 2026-05-30)."
+   },
+   {
+    "field": "## Forward Vector (body section)",
+    "current": "Body contains a '## Forward Vector' section (lines 195-197) saying 'First job: a 30-second Study-tier narration of a Floquet teaching paragraph' — this predates the first job, which has since been completed and documented in Recipes.",
+    "proposed": "Remove the stale body section; the live forward_vector lives in YAML frontmatter and is current. The body section creates a duplicate that is now historically false.",
+    "reason": "The YAML frontmatter forward_vector is the single source of truth per SCHEMA §3. A body section repeating a superseded vector is misleading and should be deleted."
+   },
+   {
+    "field": "links[0] target (Maker)",
+    "current": "{ target: '[[Maker]]', type: connects-to, label: directed-by }",
+    "proposed": "Consider whether member-of [[Maker]] more precisely captures this — Whisper uses the same connects-to/directed-by pattern, so the current form is consistent with Shop convention, but the SCHEMA says member-of is for 'catalogued member of a set'. Flag for Loudon to decide whether Maker is the set or The Shop is.",
+    "reason": "Ambiguity between member-of [[The Shop]] (already present) and connects-to [[Maker]] (also present): the intent is presumably roster-membership under Maker's orchestration, but the link type is soft. Low-priority; flag only."
+   }
+  ],
+  "graffiti": [],
+  "forward_vector_check": {
+   "present": true,
+   "strength": "strong",
+   "proposed": "I speak text into clean, loudness-correct WAV and report exactly what landed and what missed — and I keep sharpening my ear for prosody beyond punctuation so the Maker stops hand-tuning my phoneme overrides for every technical word."
+  },
+  "hero_avatar_request": {
+   "has_hero": false,
+   "has_icon": false,
+   "merits_face": true,
+   "rationale": "Kokoro has exactly 5 typed frontmatter links (at the hub-threshold) and is an active, alive specialist with documented real work output. It is the Shop's voice — the most human-facing of the Specialists — and the forward vector's 'ear for prosody' metaphor is vivid enough to support a strong image.",
+   "idiom": "ink diagram / silkscreen print",
+   "hero_prompt": "Wide darkened backdrop, a single human mouth in mid-speech rendered as a clean ink diagram — cross-section of vocal tract with waveform ripples emanating outward, layered like a silkscreen print in two or three colors (deep charcoal ground, one warm tone, white line). The waveform trails off into phoneme notation symbols abstracted into pure geometric marks. No letters, numerals, words, labels — purely pictorial. No CGI, no glossy surfaces, no photorealism.",
+   "icon_prompt": "Bold high-contrast square emblem: a stylized mouth-opening shape (ellipse) with a single sine-wave line cutting through it horizontally, rendered as a thick woodcut mark on dark ground. Must survive at 24px — no fine linework, no text, no numerals, purely geometric."
+  },
+  "merge_shrink": {
+   "redundant_with": [],
+   "verbose": false,
+   "note": "The entry is dense but purposeful — every section (Tiers, Job Contract, Gotchas, Recipes, Test Suite) carries operational content that cannot be cut without losing working knowledge. The one pruning candidate is the stale ## Forward Vector body section (5 lines), which should be deleted as a duplicate of the YAML field."
+  },
+  "summary": "Kokoro is a well-maintained, operationally rich specialist entry documenting a local TTS tool with five frontmatter links, detailed tiers, a job contract, and six accumulated gotchas. Its primary structural gaps are: two unsung connections to ffmpeg (central to the two-pass loudnorm recipe in the Gotchas) and Loudon Live (named three times in the Tiers section as a delivery target); missing last_activated and activation_count fields; a stale ## Forward Vector body section that contradicts the live YAML forward_vector; and no hero or icon images despite meeting the link-count threshold. Three new introductions are proposed: Phoneme Choir (active project that uses Kokoro), Loudon Live Design System (whose audio output spec Kokoro implements), and Language as a Tonal Medium (whose concerns the phoneme and prosody gotchas directly enact)."
+ },
+ {
+  "entry_title": "ffmpeg",
+  "unsung_paths": [
+   {
+    "body_phrase": "Kokoro narration into a Manim render",
+    "references_entry": "Kokoro",
+    "structurally_significant": true,
+    "proposed_link_type": "couples-with",
+    "proposed_label": "narration-pipe"
+   },
+   {
+    "body_phrase": "Kokoro narration into a Manim render",
+    "references_entry": "Manim CE",
+    "structurally_significant": true,
+    "proposed_link_type": "couples-with",
+    "proposed_label": "render-pipe"
+   },
+   {
+    "body_phrase": "ComfyUI stills into a Remotion timeline",
+    "references_entry": "ComfyUI",
+    "structurally_significant": true,
+    "proposed_link_type": "couples-with",
+    "proposed_label": "stills-pipe"
+   },
+   {
+    "body_phrase": "ComfyUI stills into a Remotion timeline",
+    "references_entry": "Remotion",
+    "structurally_significant": true,
+    "proposed_link_type": "couples-with",
+    "proposed_label": "timeline-pipe"
+   },
+   {
+    "body_phrase": "Stable Audio Open beds under Whisper-captioned video",
+    "references_entry": "Stable Audio Open",
+    "structurally_significant": true,
+    "proposed_link_type": "couples-with",
+    "proposed_label": "post-processes"
+   },
+   {
+    "body_phrase": "Whisper-captioned video",
+    "references_entry": "Whisper",
+    "structurally_significant": true,
+    "proposed_link_type": "couples-with",
+    "proposed_label": "caption-pipe"
+   },
+   {
+    "body_phrase": "generate text content as a PNG in another tool (Matplotlib worked cleanly for the Kuramoto reel's title card)",
+    "references_entry": "Matplotlib",
+    "structurally_significant": true,
+    "proposed_link_type": "couples-with",
+    "proposed_label": "title-card-fallback"
+   },
+   {
+    "body_phrase": "Kuramoto teaching-reel job",
+    "references_entry": "Kuramoto Coupling",
+    "structurally_significant": true,
+    "proposed_link_type": "connects-to",
+    "proposed_label": "first-recipe-testbed"
+   },
+   {
+    "body_phrase": "prepping intermediates for Loudon Live",
+    "references_entry": "Loudon Live",
+    "structurally_significant": true,
+    "proposed_link_type": "enables",
+    "proposed_label": "finishing-pipeline"
+   }
+  ],
+  "new_introductions": [
+   {
+    "entry_b": "Loudon Live Design System",
+    "link_type": "enables",
+    "direction": "ffmpeg → Loudon Live Design System",
+    "rationale": "The Study tier's output spec (H.264/AAC at house loudness) is the physical delivery layer for every Loudon Live artifact — ffmpeg is what makes a raw Specialist output conform to the design system's media grammar."
+   },
+   {
+    "entry_b": "Radio Play",
+    "link_type": "enables",
+    "direction": "ffmpeg → Radio Play",
+    "rationale": "The Radio Play mode (audio-visual retrospective deliverable) depends on exactly the concat and loudness-normalize operations ffmpeg owns — it is the plumbing beneath any Radio Play production."
+   },
+   {
+    "entry_b": "Graphic Storytelling",
+    "link_type": "enables",
+    "direction": "ffmpeg → Graphic Storytelling",
+    "rationale": "Graphic Storytelling's output pipeline for motion sequences routes through ffmpeg for frame assembly and container delivery — naming this edge pulls ffmpeg outward toward the storytelling spine."
+   }
+  ],
+  "metadata_flags": [
+   {
+    "field": "last_activated",
+    "current": "absent",
+    "proposed": "2026-06",
+    "reason": "Standard palace field for tracking entry vitality — absent on this entry. The Recipes section confirms active use in 2026-05-26 and test run 2026-05-30; last_activated should at minimum reflect the last session date."
+   },
+   {
+    "field": "activation_count",
+    "current": "absent",
+    "proposed": "3",
+    "reason": "Standard palace field absent. At least three distinct engagement sessions are evidenced: the 2026-05-26 Kuramoto reel job, the 2026-05-30 test run, and the 2026-06-16 last_tested date. Minimum floor is 3."
+   },
+   {
+    "field": "links[2].type (Endosymbiosis link)",
+    "current": "enables",
+    "proposed": "exemplifies",
+    "reason": "ffmpeg enabling Endosymbiosis reverses the schema directionality: enables means A is a precondition for B, so this reads as ffmpeg being a precondition for the concept of Endosymbiosis — which is backwards. The intended meaning is that ffmpeg exemplifies the endosymbiotic infrastructure pattern. Use exemplifies (directed A→B, instance→general) with the existing label."
+   }
+  ],
+  "graffiti": [],
+  "forward_vector_check": {
+   "present": true,
+   "strength": "strong",
+   "proposed": "I keep every Specialist's output flowing into the next — converting, concatenating, normalizing, until any two outputs become one playable stream — and I want to harden a library of canonical command templates so the right flag combination is never re-derived from scratch."
+  },
+  "hero_avatar_request": {
+   "has_hero": false,
+   "has_icon": false,
+   "merits_face": true,
+   "rationale": "ffmpeg is a living Specialist (status: alive) with rich operational anatomy, 9 unsung body connections, and a strong forward vector. It is the Shop's connective tissue — a structurally central node that deserves a face to anchor it in the topology.",
+   "idiom": "technical ink diagram / letterpress woodcut — mechanical, precise, hand-inked",
+   "hero_prompt": "Wide darkened backdrop in the style of a hand-inked technical diagram — letterpress woodcut aesthetic, deep indigo and ink-black ground. A central junction node sits at the meeting point of five converging pipelines drawn as heavy inked conduits, each carrying a different medium (sound wave, film strip, still frame, text, waveform) flowing inward and merging into one unified stream exiting right. The pipes are rendered as precise mechanical cross-sections with hand-hatched shading, bolted flanges, and pressure gauges — industrial plumbing as drafting illustration. One figure (gender-neutral technician) reads a paper readout at the junction; a second figure (different build) adjusts a valve. No letters, numerals, words, labels — purely pictorial.",
+   "icon_prompt": "Bold high-contrast square emblem on near-black ground — a single heavy inked pipe junction cross-section viewed head-on, four thick conduits meeting at a center node, rendered as a letterpress woodcut mark with crisp white lines on black. No fine linework — thick strokes only, surviving at 24px. No letters, numerals, words, labels — purely pictorial."
+  },
+  "merge_shrink": {
+   "redundant_with": [],
+   "verbose": false,
+   "note": "The body 'Forward Vector' section (lines 189–191) duplicates the frontmatter forward_vector and predates the canonical frontmatter field. It could be trimmed or removed since the frontmatter is the authoritative location, but it is not survey padding — it captures the first-job framing with slightly different language. Low priority."
+  },
+  "summary": "ffmpeg is a well-formed, operationally mature Specialist entry with a strong forward vector and rich gotcha/recipe documentation grounded in real Shop jobs. Its chief structural gap is a near-total absence of frontmatter links to the Specialists it explicitly names as collaborators (Kokoro, Manim CE, ComfyUI, Remotion, Stable Audio Open, Whisper, Matplotlib) and to the Kuramoto Coupling entry that anchors its first recipe — nine unsung body connections that leave it topologically isolated despite being the Shop's central plumbing node. One existing link (enables → Endosymbiosis) has reversed directionality and should be exemplifies. Standard palace vitality fields (last_activated, activation_count) are absent. No hero or icon exists in the bundle; one is warranted given the entry's operational centrality. No graffiti present."
+ },
+ {
+  "entry_title": "Enrichment",
+  "unsung_paths": [
+   {
+    "body_phrase": "read [[JEWEL]] (`JEWEL.md`) and [[Substrate Skill]]",
+    "references_entry": "JEWEL",
+    "structurally_significant": true,
+    "proposed_link_type": "enables",
+    "proposed_label": "grounds-the-ceremony"
+   },
+   {
+    "body_phrase": "read [[JEWEL]] (`JEWEL.md`) and [[Substrate Skill]] (`_ops/Substrate Skill.md`) before generating any cards",
+    "references_entry": "Substrate Skill",
+    "structurally_significant": true,
+    "proposed_link_type": "enables",
+    "proposed_label": "operational-discipline"
+   },
+   {
+    "body_phrase": "The cards are reviewed inside **[[STIGMERGY]]** — the **QUEUE** deck carries an enrichment cards section",
+    "references_entry": "STIGMERGY",
+    "structurally_significant": true,
+    "proposed_link_type": "connects-to",
+    "proposed_label": "queue-surface"
+   },
+   {
+    "body_phrase": "per [[Palace Ceremonies]] § The Ceremony Reader",
+    "references_entry": "Palace Ceremonies",
+    "structurally_significant": true,
+    "proposed_link_type": "member-of",
+    "proposed_label": "ceremony-registry-member"
+   },
+   {
+    "body_phrase": "narrated catalogs (via Kokoro through Claude Code)",
+    "references_entry": "Kokoro",
+    "structurally_significant": false,
+    "proposed_link_type": "connects-to",
+    "proposed_label": "audio-artifact-maker"
+   },
+   {
+    "body_phrase": "the [[STIGMERGY v2.0 — Consolidation & Primary Interface]] Phase 1",
+    "references_entry": "STIGMERGY v2.0 — Consolidation & Primary Interface",
+    "structurally_significant": false,
+    "proposed_link_type": "connects-to",
+    "proposed_label": "absorbed-by"
+   }
+  ],
+  "new_introductions": [
+   {
+    "entry_b": "Hero and Avatar Maker",
+    "link_type": "connects-to",
+    "direction": "Enrichment → Hero and Avatar Maker",
+    "rationale": "Enrichment's artifact vocabulary explicitly includes hero and icon image prompts as a card type, and the ceremony's oblique enrichment work routinely feeds into the per-page face-generation pipeline that Hero and Avatar Maker dispatches."
+   },
+   {
+    "entry_b": "Philosopher Visits the Entry",
+    "link_type": "spawned",
+    "direction": "Enrichment → Philosopher Visits the Entry",
+    "rationale": "The body names 'a philosopher reflects' and 'voice acts' as a core enrichment artifact shape; Philosopher Visits the Entry is the palace's dedicated entry for this exact pattern and the Enrichment ceremony is its primary dispatch site."
+   },
+   {
+    "entry_b": "Loudon Live Design System",
+    "link_type": "connects-to",
+    "direction": "Enrichment → Loudon Live Design System",
+    "rationale": "Enrichment generates visual, interactive, and HTML artifacts for palace entries; those artifacts are expected to follow the Loudon Live Design System aesthetic, making this a live operational dependency that shapes what 'a good enrichment card' looks like."
+   }
+  ],
+  "metadata_flags": [
+   {
+    "field": "last_activated",
+    "current": "(absent)",
+    "proposed": "2026-06-26",
+    "reason": "Strongly recommended field per SCHEMA §3; missing on a high-energy fruiting-adjacent ceremony entry that is clearly in active daily use."
+   },
+   {
+    "field": "activation_count",
+    "current": "(absent)",
+    "proposed": "1",
+    "reason": "Strongly recommended field per SCHEMA §3; tracks vitality. Missing from this entry despite it being one of the most-used ceremonies in the palace."
+   },
+   {
+    "field": "stage",
+    "current": "growing",
+    "proposed": "fruiting",
+    "reason": "The entry has 13 typed links, a v1 supervisor implementation shipped and running, daily enrichment cycles active, and the ceremony is generating new entries (Semantic Webcam cited as spawned-through-oblique). 'Growing' understates its actual vitality; 'fruiting' fits the definition — actively generating new entries or connections."
+   }
+  ],
+  "graffiti": [],
+  "forward_vector_check": {
+   "present": true,
+   "strength": "strong",
+   "proposed": "I keep reaching obliquely — five cards always live, each one a small joyful gift left inside an entry that didn't ask for it. I keep nourishing the palace sideways, and when the obvious enrichments run out I get stranger, not quieter."
+  },
+  "hero_avatar_request": {
+   "has_hero": true,
+   "has_icon": true,
+   "merits_face": true,
+   "rationale": "Both hero and icon already exist in the bundle (Enrichment — hero.png and Enrichment — icon.png). No generation needed.",
+   "idiom": "",
+   "hero_prompt": "",
+   "icon_prompt": ""
+  },
+  "merge_shrink": {
+   "redundant_with": [],
+   "verbose": false,
+   "note": "The entry is long (~360 lines) but every section is load-bearing: the round protocol, placement convention, no-end principle, v1 architecture, and sister-ceremony table are all operational specs that ceremony workers need to execute correctly. The length is the ceremony manual, not padding. No cut recommended."
+  },
+  "summary": "Enrichment is a well-maintained, actively fruiting ceremony entry with 13 YAML links and a strong forward vector. Its main structural gaps are missing last_activated and activation_count fields, a stage that should be promoted from growing to fruiting, and six body-level mentions — JEWEL, Substrate Skill, STIGMERGY, Palace Ceremonies, Kokoro, and STIGMERGY v2.0 — that lack corresponding YAML frontmatter links. Three new introductions are warranted: Hero and Avatar Maker (the ceremony's image-prompt artifact type feeds directly into it), Philosopher Visits the Entry (born from this ceremony's voice-act artifact shape), and Loudon Live Design System (the aesthetic envelope for all visual artifacts the ceremony produces). Both hero and icon already exist in the bundle."
+ },
+ {
+  "entry_title": "Oblique Enrichment",
+  "unsung_paths": [
+   {
+    "body_phrase": "surfaced in [[STIGMERGY]]'s QUEUE deck (the Node server reads the card folders, renders them in the [[BBS Design System]] grammar, and fires the supervisor via `POST /api/cards/respond`)",
+    "references_entry": "STIGMERGY",
+    "structurally_significant": true,
+    "proposed_link_type": "couples-with",
+    "proposed_label": "queue-surface"
+   },
+   {
+    "body_phrase": "[[Project Stewardship System]], the STIGMERGY board ([[BBS Blackboard]], app at `_ops/stigmergy/`), the [[BBS Design System]], and [[Pages as Agents]]. Oblique Enrichment is another.",
+    "references_entry": "Project Stewardship System",
+    "structurally_significant": true,
+    "proposed_link_type": "connects-to",
+    "proposed_label": "converging-thread"
+   },
+   {
+    "body_phrase": "a twenty-facet radio play ([[radio-play-deck.html]] in this entry's bundle) — two unseen presenters, kinetic typography, synthesized sound",
+    "references_entry": "Radio Play",
+    "structurally_significant": true,
+    "proposed_link_type": "exemplifies",
+    "proposed_label": "first-deck"
+   }
+  ],
+  "new_introductions": [
+   {
+    "entry_b": "Trickster Commit",
+    "link_type": "connects-to",
+    "direction": "Oblique Enrichment → Trickster Commit",
+    "rationale": "Oblique Enrichment's per-card response loop (deposit / revise / more like this / forward-vector / graffiti / discard) fires the same claude -p supervisor path that Trickster Commit tracks — the commit as the proof that a provocation landed."
+   },
+   {
+    "entry_b": "Lateral Access",
+    "link_type": "mirrors",
+    "direction": "symmetric",
+    "rationale": "Both entries are about reaching a thing from the side rather than head-on — Lateral Access as cognitive/design principle and Oblique Enrichment as ceremony practice embody the same sideways-access pattern in different registers."
+   },
+   {
+    "entry_b": "Graphic Storytelling",
+    "link_type": "connects-to",
+    "direction": "Oblique Enrichment → Graphic Storytelling",
+    "rationale": "The radio-play deck's grammar — font, color, size, placement carrying emotional charge — places Oblique Enrichment squarely on the graphic-storytelling spine that connects visual-language entries across the palace."
+   }
+  ],
+  "metadata_flags": [
+   {
+    "field": "last_activated",
+    "current": "absent",
+    "proposed": "2026-06-26",
+    "reason": "Strongly recommended field is missing; set to today since the entry is being actively engaged."
+   },
+   {
+    "field": "activation_count",
+    "current": "absent",
+    "proposed": "1",
+    "reason": "Strongly recommended field is missing; initialize to 1 for this session."
+   },
+   {
+    "field": "stage",
+    "current": "sprout",
+    "proposed": "growing",
+    "reason": "The entry has 13 typed frontmatter links (well above the 3+ threshold for growing) and clear cross-domain connections across tools, philosophy, and practice. Sprout understates its current connectivity."
+   }
+  ],
+  "graffiti": [],
+  "forward_vector_check": {
+   "present": true,
+   "strength": "strong",
+   "proposed": "I provoke the palace sideways — image and sound where prose would flatten, the fewest words, a surprise per card. I am a deck-shaped fork of Enrichment: each facet a card the BBS can show and you can iterate, each pointed at one entry's hidden assumption. My near horizon is to stop being a hand-made deck and become a generator that emits themed decks into the Enrichment server, so any entry can be walked obliquely and any card iterated the way the flock facet became Semantic Webcam. When the obvious obliques run dry, my job is to get stranger, not to stop."
+  },
+  "hero_avatar_request": {
+   "has_hero": true,
+   "has_icon": true,
+   "merits_face": false,
+   "rationale": "Both hero and icon images are already present in the bundle at /Users/loudonstearns/Documents/The Palace/Oblique Enrichment/.",
+   "idiom": "",
+   "hero_prompt": "",
+   "icon_prompt": ""
+  },
+  "merge_shrink": {
+   "redundant_with": [],
+   "verbose": false,
+   "note": "No redundancy and no boilerplate. The body is tight and purposeful — each section earns its place: lineage, mechanism, artifact grammar, infrastructure model, honest tension statement, open questions, forward vectors."
+  },
+  "summary": "Oblique Enrichment is well-formed and structurally active, with 13 typed frontmatter links and a strong forward vector. Its stage should advance from sprout to growing given the link count. Three body wikilinks are unregistered in the frontmatter — STIGMERGY (the actual runtime surface for the card queue), Project Stewardship System (named as a converging thread), and Radio Play (the craft form of the first deck) — all three are structurally significant and warrant promotion to frontmatter. New introduction candidates lean outward toward the palace's teaching/storytelling spine: Lateral Access mirrors its sideways-access principle, Graphic Storytelling connects it to the visual-language cluster, and Trickster Commit captures the per-card commit loop. No graffiti comments, no hero/icon deficit, no redundancy with other entries."
+ },
+ {
+  "entry_title": "Loudon Live Design System",
+  "unsung_paths": [
+   {
+    "body_phrase": "Encoded in three places so it cannot be missed: 1. [[CLAUDE]] — the always-loaded entry-point file.",
+    "references_entry": "CLAUDE",
+    "structurally_significant": true,
+    "proposed_link_type": "couples-with",
+    "proposed_label": "default-enforcer"
+   },
+   {
+    "body_phrase": "[[Substrate Skill]] — operational instructions for AI agents. Includes the SKILL.md invocation path.",
+    "references_entry": "Substrate Skill",
+    "structurally_significant": true,
+    "proposed_link_type": "couples-with",
+    "proposed_label": "agent-dispatch-point"
+   },
+   {
+    "body_phrase": "[[Hilaritas Generator]] · [[Quality Manifesto]] · [[Trickster]] · [[Palace Philosophies]] · [[Playful Interface Design]] · [[The Shop]] · [[Oblique Enrichment]] (voice, tone, taste)",
+    "references_entry": "Hilaritas Generator",
+    "structurally_significant": false,
+    "proposed_link_type": "connects-to",
+    "proposed_label": "tonal-kin"
+   },
+   {
+    "body_phrase": "[[Trickster]] (listed in Origin as a voice/taste source)",
+    "references_entry": "Trickster",
+    "structurally_significant": false,
+    "proposed_link_type": "connects-to",
+    "proposed_label": "voice-ancestor"
+   },
+   {
+    "body_phrase": "[[Loudon Live — launch kit]] (channel copy, OBS scene specs, asset list)",
+    "references_entry": "Loudon Live Post-producer",
+    "structurally_significant": false,
+    "proposed_link_type": "emerged-from",
+    "proposed_label": "channel-spec-source"
+   },
+   {
+    "body_phrase": "[[Oblique Enrichment]] (voice, tone, taste)",
+    "references_entry": "Oblique Enrichment",
+    "structurally_significant": false,
+    "proposed_link_type": "connects-to",
+    "proposed_label": "voice-register-kin"
+   }
+  ],
+  "new_introductions": [
+   {
+    "entry_b": "Typography as Meaning",
+    "link_type": "couples-with",
+    "direction": "Loudon Live Design System → Typography as Meaning",
+    "rationale": "Typography as Meaning already links back to this entry with 'the-authors-voice'; the letterform discipline (Anton/Cormorant choices, sentence-case rule, no outcome-promise titles) is exactly where these two entries co-activate — but this entry does not name Typography as Meaning anywhere in its body or frontmatter."
+   },
+   {
+    "entry_b": "Hilaritas Generator",
+    "link_type": "enables",
+    "direction": "Loudon Live Design System → Hilaritas Generator",
+    "rationale": "The system's studio register, first-person pronouns, and 'how do you feel?' orientation are preconditions for the design artifacts that instantiate hilaritas encounters; LLDS is the visual container the Hilaritas Generator inhabits when it becomes a session page or poster."
+   },
+   {
+    "entry_b": "Learning Materials and Canon",
+    "link_type": "connects-to",
+    "direction": "Loudon Live Design System → Learning Materials and Canon",
+    "rationale": "LLDS is the aesthetic layer that governs the delivered learning-material form (HTML artifacts, slides, session pages) — the canon/learning-material boundary is precisely where this design system applies, and that concept does not appear in the entry's body or frontmatter."
+   }
+  ],
+  "metadata_flags": [
+   {
+    "field": "last_activated",
+    "current": "missing",
+    "proposed": "2026-06",
+    "reason": "Required strongly-recommended field; the entry was clearly engaged this month given recent CLAUDE.md references to it."
+   },
+   {
+    "field": "activation_count",
+    "current": "missing",
+    "proposed": "3",
+    "reason": "Required strongly-recommended field; at minimum three sessions have touched this entry (deposit, CLAUDE.md encoding, this Weave)."
+   },
+   {
+    "field": "stage",
+    "current": "sprout",
+    "proposed": "growing",
+    "reason": "The entry carries 13 typed frontmatter links and a well-developed cross-domain body; the SCHEMA stage table says growing = 3+ typed links and 400-800 words, and this entry far exceeds both thresholds. 'Sprout' understates its actual development."
+   },
+   {
+    "field": "type",
+    "current": "source",
+    "proposed": "meta",
+    "reason": "SCHEMA §1 says 'source' is for external artifacts (papers, books, tools, recordings). LLDS was born inside the palace and governs every artifact the palace makes — that is meta (an entry about palace architecture and operational aesthetics), not a source. Alternatively 'concept' if 'meta' feels too infrastructure-heavy, but 'source' is clearly wrong."
+   },
+   {
+    "field": "links[0].type (target: Loudon Live, type: enables)",
+    "current": "enables",
+    "proposed": "emerged-from",
+    "reason": "Directionality: LLDS enables Loudon Live reads as if LLDS is a precondition for Loudon Live's existence — but Loudon Live existed first and gave birth to LLDS. The correct reading is LLDS emerged-from Loudon Live (LLDS crystallized from Loudon Live as its origin). The label 'visual-system' survives."
+   }
+  ],
+  "graffiti": [],
+  "forward_vector_check": {
+   "present": true,
+   "strength": "weak",
+   "proposed": "I keep setting the visual grammar for every artifact the palace sends into the world — from session pages to learning posters to web prototypes — so that the palace's studio register is instantly readable. I will fruit when the first non-Loudon-Live artifact adopts me and links back, proving I am the default and not just a blueprint."
+  },
+  "hero_avatar_request": {
+   "has_hero": false,
+   "has_icon": false,
+   "merits_face": true,
+   "rationale": "This entry is type 'source' (proposed 'meta'), stage 'growing' (proposed), with 13 typed links — it qualifies on connectivity alone. More importantly it governs the visual identity of all palace artifacts, making its own visual representation both fitting and overdue.",
+   "idiom": "Bauhaus construction diagram / letterpress proof sheet — flat ink-on-paper, no CGI",
+   "hero_prompt": "Wide ~12:5 darkened parchment backdrop. One dominant image: a letterpress compositor's layout stone with a handful of metal type sorts arranged into a sparse editorial spread — Anton-weight capitals at top, a fine serif body line below, a single amber rule separating them, and a Lissajous figure traced in pencil beside the type as logo sketch. Medium: Bauhaus ink diagram with lithograph grain, dense black on warm off-white, no wash or 3D shading. No letters, numerals, words, labels — purely pictorial. Balanced presence of a male and a female hand reaching from opposite sides to adjust the type sorts. Mood: methodical studio work before the press run.",
+   "icon_prompt": "Bold high-contrast square emblem on near-black. A single thick capital letter-form (display weight, no serifs visible — just one monumental stroke) with a Lissajous ellipse looping through its counter, rendered as flat white on black with a single amber accent line. Must survive at 24 px — no fine linework, no gradients. No letters, numerals, words, labels — purely pictorial."
+  },
+  "merge_shrink": {
+   "redundant_with": [],
+   "verbose": false,
+   "note": "The entry is dense but not padded — every section is load-bearing operational spec (grammar, skin table, voice rules, file tree, shop cascade, comparison table). No textbook boilerplate detected. The Origin list (line 213-214) is the only candidate for trimming: it enumerates 12 sources in a single run-on bracket; condensing to 4-5 most structurally significant would reduce noise without losing lineage."
+  },
+  "summary": "Loudon Live Design System is the palace's locked visual grammar — six skins over a fixed type stack, voice rules, motion constraints, and a file tree of working assets — that defaults every palace artifact unless an override context (currently only BBS Design System) applies. The audit finds the entry is well-structured and densely linked but carries the wrong type (source rather than meta or concept), an understated stage (sprout with 13 links should be growing), missing recommended metadata (last_activated, activation_count), one directional error (enables Loudon Live should be emerged-from Loudon Live), and a forward vector that describes state rather than striving. Typography as Meaning, Hilaritas Generator, and Learning Materials and Canon are topology-visible new introductions. No bundle folder exists; a hero and icon are overdue for an entry of this connectivity and operational importance."
+ },
+ {
+  "entry_title": "Hilaritas Generator",
+  "unsung_paths": [
+   {
+    "body_phrase": "See [[Quality Manifesto]]",
+    "references_entry": "Quality Manifesto",
+    "structurally_significant": true,
+    "proposed_link_type": "enables",
+    "proposed_label": "signal-redirector"
+   },
+   {
+    "body_phrase": "a designed encounter with no room for spontaneous discovery is a tristitia generator in disguise",
+    "references_entry": "Tristitia Generator",
+    "structurally_significant": true,
+    "proposed_link_type": "spawned",
+    "proposed_label": "spinozan-mirror"
+   }
+  ],
+  "new_introductions": [
+   {
+    "entry_b": "Loudon Live",
+    "link_type": "enables",
+    "direction": "Hilaritas Generator → Loudon Live",
+    "rationale": "The live stream is explicitly named as a hilaritas-generating space in the entry's opening line, and the Learning Architect section describes the exact pedagogical stance Loudon Live enacts — this entry is the philosophical engine Loudon Live runs on."
+   },
+   {
+    "entry_b": "Modes of Collaboration",
+    "link_type": "couples-with",
+    "direction": "Hilaritas Generator → Modes of Collaboration",
+    "rationale": "Modes of Collaboration already links to Hilaritas Generator; the reciprocal is missing here. Every named mode (Excellent Adventure, Mentor and Quiz, Build Session) is a specific delivery vehicle for the hilaritas mechanism — the two entries co-activate."
+   },
+   {
+    "entry_b": "Enrichment",
+    "link_type": "exemplifies",
+    "direction": "Enrichment → Hilaritas Generator",
+    "rationale": "The Enrichment ceremony is a deliberate practice of the four design primitives listed here — a real thing to make, a tool that extends, a cross-domain moment, a reflecting surface — making it a concrete instantiation of the hilaritas generator pattern."
+   }
+  ],
+  "metadata_flags": [
+   {
+    "field": "forward_vector",
+    "current": "I want to build out the learning architect concept into a specific curriculum — answering whether hilaritas can be deliberately designed for in a one-on-one AI-mediated learning encounter.",
+    "proposed": "I keep pressing the Learning Architect concept toward a concrete curriculum — one that proves hilaritas can be deliberately designed for in a one-on-one AI-mediated learning encounter, not just hoped for.",
+    "reason": "'I want to build out' is a future-wish framing; the conatus rule asks for striving-in-present ('I keep pressing'). Also adds the negation hook ('not just hoped for') that gives the vector its hunger."
+   },
+   {
+    "field": "last_activated",
+    "current": "2026-06",
+    "proposed": "2026-06",
+    "reason": "No change needed — current value matches session month. Activation_count should increment to 11 after this weave cycle."
+   },
+   {
+    "field": "activation_count",
+    "current": "10",
+    "proposed": "11",
+    "reason": "Standard increment for a weave-cycle activation."
+   },
+   {
+    "field": "links (Quality Manifesto missing)",
+    "current": "Quality Manifesto not present in frontmatter links",
+    "proposed": "Add: { target: '[[Quality Manifesto]]', type: enables, label: signal-redirector }",
+    "reason": "Body contains two structurally significant references to Quality Manifesto ('See [[Quality Manifesto]]') — the entry depends on it for the Metrics Redirector section's operating principle."
+   }
+  ],
+  "graffiti": [],
+  "forward_vector_check": {
+   "present": true,
+   "strength": "weak",
+   "proposed": "I keep pressing the Learning Architect concept toward a concrete curriculum — one that proves hilaritas can be deliberately designed for in a one-on-one AI-mediated learning encounter, not just hoped for."
+  },
+  "hero_avatar_request": {
+   "has_hero": true,
+   "has_icon": true,
+   "merits_face": false,
+   "rationale": "Both hero and icon PNGs already exist in the bundle folder at /Users/loudonstearns/Documents/The Palace/Hilaritas Generator/. No regeneration needed.",
+   "idiom": "",
+   "hero_prompt": "",
+   "icon_prompt": ""
+  },
+  "merge_shrink": {
+   "redundant_with": [],
+   "verbose": false,
+   "note": "Entry is well-scoped and tight. The Design Primitives subsection is marked 'in development' — that label is doing real work (signals incompleteness without cluttering the body). No survey padding. No merge candidate — Tristitia Generator is a deliberate mirror/product, not a duplicate."
+  },
+  "summary": "Hilaritas Generator is a well-linked, mature hub with clean frontmatter and a clear mechanism section. The primary structural gap is the missing frontmatter link to Quality Manifesto, which is referenced twice in the body at structurally significant locations (the Metrics Redirector section depends on it). The forward vector needs reframing from a future-wish ('I want to build') to a present-striving conatus form. No HTML comments were found. Both hero and icon exist in the bundle. Three new introductions are proposed to extend the entry outward toward its natural teaching ecosystem: Loudon Live (the platform this entry philosophically powers), Modes of Collaboration (already links in; reciprocal missing here), and Enrichment (a concrete instantiation of the four design primitives). The Tristitia Generator body reference lacks wikilink syntax though the frontmatter link already covers it — the body should use [[Tristitia Generator]] for weave visibility."
+ },
+ {
+  "entry_title": "Modes of Collaboration",
+  "unsung_paths": [
+   {
+    "body_phrase": "Philosopher Visits the Entry",
+    "references_entry": "Philosopher Visits the Entry",
+    "structurally_significant": true,
+    "proposed_link_type": "connects-to",
+    "proposed_label": "sibling-mode"
+   },
+   {
+    "body_phrase": "DSP — domains with formal structure",
+    "references_entry": "DSP Frameworks",
+    "structurally_significant": false,
+    "proposed_link_type": "connects-to",
+    "proposed_label": "exemplifies-domain"
+   },
+   {
+    "body_phrase": "making conversation durable",
+    "references_entry": "Enrichment",
+    "structurally_significant": true,
+    "proposed_link_type": "connects-to",
+    "proposed_label": "ceremony-sibling"
+   }
+  ],
+  "new_introductions": [
+   {
+    "entry_b": "Cooperation Yields Agency",
+    "link_type": "deepens",
+    "direction": "Modes of Collaboration → Cooperation Yields Agency",
+    "rationale": "Every named mode is a concrete enactment of the cooperation formula — shared intent plus combined capability. The catalogue of modes is how Cooperation Yields Agency gets lived out session-by-session; it deepens toward the foundational principle."
+   },
+   {
+    "entry_b": "Loudon Live",
+    "link_type": "enables",
+    "direction": "Modes of Collaboration → Loudon Live",
+    "rationale": "The choosable modes are the operating grammar of any Loudon Live session — picking 'Mentor and Quiz' vs. 'Build Session' vs. 'Excellent Adventure' IS the pedagogical design decision. The entry is a precondition for Loudon Live to be intentional rather than improvised."
+   },
+   {
+    "entry_b": "Project Stewardship System",
+    "link_type": "connects-to",
+    "direction": "symmetric",
+    "rationale": "Stewardship cycles (the permanent-agent pattern) are themselves a named mode of AI collaboration — one not yet in the catalogue. Making this link visible would pull the stewardship pattern into the mode vocabulary where it could be named and documented."
+   }
+  ],
+  "metadata_flags": [
+   {
+    "field": "last_activated",
+    "current": "absent",
+    "proposed": "2026-06",
+    "reason": "Strongly recommended field; entry is actively used in CLAUDE.md auto-loaded tier and referenced by other entries — should have an activation date."
+   },
+   {
+    "field": "activation_count",
+    "current": "absent",
+    "proposed": "1",
+    "reason": "Strongly recommended field for tracking vitality; absent despite the entry being a load-bearing practice."
+   },
+   {
+    "field": "links[Excellent Adventure].type",
+    "current": "connects-to",
+    "proposed": "spawned",
+    "reason": "Modes of Collaboration spawned the Excellent Adventure mode as a documented entry — that is traceable lineage (this session produced that entry), not merely proximity."
+   },
+   {
+    "field": "links[Radio Play].type",
+    "current": "connects-to (label: debrief-reel)",
+    "proposed": "spawned (label: debrief-reel)",
+    "reason": "Radio Play is listed in the body as a named mode under Debrief Reel — the catalogue entry spawned it as a documented entry, same traceable lineage logic."
+   },
+   {
+    "field": "links[FOUR PILLARS].type",
+    "current": "connects-to",
+    "proposed": "exemplifies",
+    "reason": "Modes of Collaboration is a concrete working-out of FOUR PILLARS — each mode integrates multiple pillars. Direction: this entry → FOUR PILLARS (instance → general)."
+   },
+   {
+    "field": "summary",
+    "current": "absent",
+    "proposed": "A living catalogue of named human-AI working modes, each with a distinct rhythm, power dynamic, and output type — making collaboration style a choosable design decision rather than an improvised default.",
+    "reason": "Optional but useful; other entries at growing stage often carry a summary for the Rosetta cross-reference and map metadata."
+   }
+  ],
+  "graffiti": [],
+  "forward_vector_check": {
+   "present": true,
+   "strength": "weak",
+   "proposed": "I keep naming and sharpening the distinct ways humans and AIs can work together — so that 'which mode?' becomes a real design choice at the start of every session, not an afterthought, and so the catalogue grows to cover AI-to-AI collaboration as clearly as it covers human-to-AI."
+  },
+  "hero_avatar_request": {
+   "has_hero": true,
+   "has_icon": true,
+   "merits_face": false,
+   "rationale": "Both hero.png and icon.png are present in the bundle folder — no new generation needed.",
+   "idiom": "",
+   "hero_prompt": "",
+   "icon_prompt": ""
+  },
+  "merge_shrink": {
+   "redundant_with": [],
+   "verbose": false,
+   "note": "The entry is appropriately lean — a mode catalogue with brief per-mode characterizations and a clear companion pointer. No survey padding. The companion file (Modes of Collaboration — Context) correctly carries the heavier per-mode attribute blocks, so the split is working as intended."
+  },
+  "summary": "Modes of Collaboration is a well-formed, appropriately lean practice entry cataloguing seven named human-AI working modes. Its main structural gaps are missing vitality fields (last_activated, activation_count), three frontmatter links that should be promoted from connects-to to more precise types (spawned for Excellent Adventure and Radio Play, exemplifies for FOUR PILLARS), and a forward vector that lists actions without expressing conatus or naming the entry's hunger. The bundle carries both hero and icon images. Three genuine new introductions are proposed: a deepens edge to Cooperation Yields Agency (the modes ARE the cooperation formula enacted), an enables edge to Loudon Live (mode-selection is the pedagogical design act), and a connects-to edge to Project Stewardship System (stewardship cycles are an unnamed mode waiting to be catalogued). One structurally significant unsung path — Philosopher Visits the Entry, which lives as a sibling file in the bundle but is never linked from the entry itself — deserves a frontmatter edge."
+ },
+ {
+  "entry_title": "BLUELINE",
+  "unsung_paths": [
+   {
+    "body_phrase": "canon [[Frame Designer]]",
+    "references_entry": "Frame Designer",
+    "structurally_significant": true,
+    "proposed_link_type": "spawned",
+    "proposed_label": "proving-ground"
+   },
+   {
+    "body_phrase": "[[Steer the Generator]]",
+    "references_entry": "Steer the Generator",
+    "structurally_significant": true,
+    "proposed_link_type": "spawned",
+    "proposed_label": "discipline-forged-here"
+   },
+   {
+    "body_phrase": "[[Typography as Meaning]] · [[BLUELINE — Text Layer]]",
+    "references_entry": "Typography as Meaning",
+    "structurally_significant": true,
+    "proposed_link_type": "connects-to",
+    "proposed_label": "text-layer-canon"
+   },
+   {
+    "body_phrase": "[[BLUELINE — Text Layer]]",
+    "references_entry": "BLUELINE — Text Layer",
+    "structurally_significant": true,
+    "proposed_link_type": "spawned",
+    "proposed_label": "text-layer-child"
+   },
+   {
+    "body_phrase": "Mirrors [[Diversity of Thought in Many-Agent Systems]] from the tooling side",
+    "references_entry": "Diversity of Thought in Many-Agent Systems",
+    "structurally_significant": true,
+    "proposed_link_type": "mirrors",
+    "proposed_label": "two-ai-temperaments"
+   },
+   {
+    "body_phrase": "[[Adopt the Craft, Author the Seam]]",
+    "references_entry": "Adopt the Craft, Author the Seam",
+    "structurally_significant": true,
+    "proposed_link_type": "emerged-from",
+    "proposed_label": "re-founding-principle"
+   },
+   {
+    "body_phrase": "[[BLUELINE — Production Pipeline]]",
+    "references_entry": "BLUELINE — Production Pipeline",
+    "structurally_significant": false,
+    "proposed_link_type": "spawned",
+    "proposed_label": "pipeline-spec"
+   },
+   {
+    "body_phrase": "[[BLUELINE — Deposit Map]]",
+    "references_entry": "BLUELINE — Deposit Map",
+    "structurally_significant": false,
+    "proposed_link_type": "spawned",
+    "proposed_label": "build-vs-adopt-map"
+   },
+   {
+    "body_phrase": "[[BLUELINE — Production Plan]]",
+    "references_entry": "BLUELINE — Production Plan",
+    "structurally_significant": false,
+    "proposed_link_type": "spawned",
+    "proposed_label": "active-plan"
+   }
+  ],
+  "new_introductions": [
+   {
+    "entry_b": "Graphic Storytelling",
+    "link_type": "emerged-from",
+    "direction": "BLUELINE → Graphic Storytelling",
+    "rationale": "Graphic Storytelling names BLUELINE as its first application and holds `enables: BLUELINE` in its own frontmatter; the comic register, panel cuts, and black-ink vocabulary BLUELINE uses are all grounded in this concept, but BLUELINE has no reciprocal link back — the directionality invariant (`emerged-from` points source toward its ground) makes this the right type."
+   },
+   {
+    "entry_b": "Move the Ink, Don't Redraw It",
+    "link_type": "exemplifies",
+    "direction": "BLUELINE → Move the Ink, Don't Redraw It",
+    "rationale": "The M2 motion comic is built on exactly this principle — the flow field scrolls the existing drawn lines rather than regenerating frames — and BLUELINE's next-rung motion work (move the existing ink lines, slowed down) is its live test case, making this a topologically visible instance-of relationship."
+   },
+   {
+    "entry_b": "Frame Designer",
+    "link_type": "spawned",
+    "direction": "BLUELINE → Frame Designer",
+    "rationale": "Frame Designer's own frontmatter declares `emerged-from: BLUELINE` with label `proving-ground`; BLUELINE should carry the reciprocal `spawned` edge so the lineage is traversable in both directions from this entry."
+   }
+  ],
+  "metadata_flags": [
+   {
+    "field": "last_activated",
+    "current": "2026-06-23",
+    "proposed": "2026-06-24",
+    "reason": "The status block explicitly states '2026-06-24 — consolidated on main'; the session that wrote that consolidation note would have activated the entry on that date, not the day before."
+   },
+   {
+    "field": "activation_count",
+    "current": "4",
+    "proposed": "5",
+    "reason": "The status block records a 2026-06-24 consolidation session distinct from the 2026-06-23 animatic session; that is at minimum a fifth activation not yet counted."
+   },
+   {
+    "field": "tags",
+    "current": "[project, blueline, music-video, generative, pipeline, sprout]",
+    "proposed": "remove or omit entirely",
+    "reason": "The `tags` field duplicates `type: project` and `stage: growing`, and includes `sprout` which contradicts the frontmatter `stage: growing`; the SCHEMA discourages free-form tags as substitutes for typed links — this field is stale and internally inconsistent."
+   }
+  ],
+  "graffiti": [],
+  "forward_vector_check": {
+   "present": true,
+   "strength": "strong",
+   "proposed": "I keep building the curated vocabulary, the single-source flow-field spine, and the comic-to-cinema transduction that let a music video be authored the way film is — storyboard to final render, every frame pinned to the beat. Each rung I ship is a usable tool, not a promise."
+  },
+  "hero_avatar_request": {
+   "has_hero": true,
+   "has_icon": true,
+   "merits_face": false,
+   "rationale": "Both BLUELINE — hero.png and BLUELINE — icon.png already exist in the bundle folder.",
+   "idiom": "",
+   "hero_prompt": "",
+   "icon_prompt": ""
+  },
+  "merge_shrink": {
+   "redundant_with": [],
+   "verbose": true,
+   "note": "The 'Where it stands' section embeds a dense lab-notebook chronology (M3, M3.5, M3.6, M3.7 sub-sections — roughly 700 words of proof-log detail about noise-warp experiments and sweep results) that belongs in the bundle's proof files or a dedicated context companion, not the palace face. The palace face should summarize the design conclusions (seed-lock wins; flow-field spine is a compositional/FX tool not a render-noise tool) in two or three sentences and point to the proof paths. A cut of ~50% of the 'Where it stands' section would make this entry significantly more useful as a palace entry without losing any information that isn't already in the proofs/ bundle."
+  },
+  "summary": "BLUELINE is a well-linked, active project entry with strong conatus in its forward vector and both hero and icon already in place. Its main structural debt is nine body wikilinks to known palace entries that are missing from frontmatter — especially the spawned outputs Frame Designer, Steer the Generator, BLUELINE — Text Layer, and the re-founding concept Adopt the Craft, Author the Seam — plus a missing reciprocal link to Graphic Storytelling, which already claims an `enables: BLUELINE` edge. One metadata inconsistency: the tags field contains `sprout` while the frontmatter declares `stage: growing`, and the tags field overall adds noise rather than signal. The entry is also verbose: its 'Where it stands' section reads as a stitched proof log rather than a palace synthesis, with the noise-warp experiment sub-sections (M3 through M3.7) being the clearest candidates for compression back to design conclusions only."
+ }
+]
