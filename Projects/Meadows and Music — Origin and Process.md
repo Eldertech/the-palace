@@ -30,8 +30,6 @@ forward_vector: "I want to become the palace's model for how educational content
 
 # Ten Leverage Points: Origin & Process Document
 
-![[Meadows and Music — Origin and Process — hero.png]]
-
 **Created:** March 18, 2026  
 **Type:** Educational content development + Collaborative alignment process  
 **Status:** Complete, ready for palace integration

@@ -29,8 +29,6 @@ tags: [meta, blueline, pipeline, animation, comics, anime]
 
 # BLUELINE — Production Pipeline
 
-![[BLUELINE — Production Pipeline — hero.png]]
-
 > **The re-founding (2026-06-17).** BLUELINE does not need an invented process — it needs the *established* one with a render-AI dropped in. The founding rationale is [[Adopt the Craft, Author the Seam]]: adopt a century of codified craft, author only the seams. This doc names every stage with the industry's own word, so we stop reinventing. It reframes the substrate-first tracks of [[BLUELINE — Production Plan]] as stages of a real pipeline; the tracks didn't change, their *names* did.
 
 ## Backbone, skin, tissue, clock

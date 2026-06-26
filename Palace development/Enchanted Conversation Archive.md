@@ -32,8 +32,6 @@ links:
 
 # Enchanted Conversation Archive
 
-![[Enchanted Conversation Archive — hero.png]]
-
 Every enchanted page produces a conversation — a tail flowing behind the head. That tail can branch at any point: a checkpoint becomes the root of a new exploration, the head itself can be rewritten and the new head becomes the root of a new branch. Over time, an enchanted page accumulates a branching forest of conversations, each rooted at a moment in the page's history.
 
 The Enchanted Conversation Archive is the structure that preserves this forest — not as a unified tree requiring complex traversal infrastructure, but as a collection of self-contained conversation artifacts with light linking metadata between them. It is the memory layer beneath the live ceremony.
