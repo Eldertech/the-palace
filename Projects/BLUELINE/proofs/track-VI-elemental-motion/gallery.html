@@ -1,0 +1,86 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>BLUELINE · Track VI — Elemental Motion</title>
+<style>
+  :root{ --bg:#15161a; --pa:#1d1f25; --ink:#eceae4; --dim:#8b8d96; --amber:#e8b84a; --line:#2c2f37; }
+  *{box-sizing:border-box} html,body{margin:0;background:var(--bg);color:var(--ink);
+    font-family:"Helvetica Neue",Arial,sans-serif;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1180px;margin:0 auto;padding:38px 26px 80px}
+  h1{font-family:"Helvetica Neue",Impact,sans-serif;font-weight:800;letter-spacing:.5px;
+    font-size:40px;margin:0 0 4px;text-transform:uppercase}
+  .sub{font-family:Georgia,serif;font-style:italic;color:var(--dim);font-size:18px;margin:0 0 26px}
+  .call{border-left:3px solid var(--amber);background:var(--pa);padding:16px 20px;border-radius:4px;
+    margin:0 0 30px;font-size:15.5px;line-height:1.6}
+  .call b{color:var(--amber)}
+  h2{font-size:13px;letter-spacing:2px;text-transform:uppercase;color:var(--amber);
+    border-bottom:1px solid var(--line);padding-bottom:8px;margin:38px 0 18px}
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:18px}
+  .card{background:var(--pa);border:1px solid var(--line);border-radius:6px;overflow:hidden}
+  .card video{width:100%;display:block;background:#fff}
+  .meta{padding:9px 11px}
+  .meta .t{font-weight:700;font-size:14px}
+  .meta .d{font-family:"JetBrains Mono",ui-monospace,monospace;font-size:11px;color:var(--dim);margin-top:3px}
+  .tag{display:inline-block;font-family:"JetBrains Mono",monospace;font-size:10px;color:var(--bg);
+    background:var(--amber);border-radius:3px;padding:1px 6px;margin-left:6px;vertical-align:1px}
+  .map{background:var(--pa);border:1px solid var(--line);border-radius:6px;padding:18px 22px;
+    font-family:"JetBrains Mono",monospace;font-size:13px;line-height:1.7;white-space:pre-wrap;color:#cfd2da}
+  .map b{color:var(--amber)}
+  .metrics{display:flex;gap:26px;flex-wrap:wrap;margin:14px 0 0;font-size:14px}
+  .metrics div{background:var(--pa);border:1px solid var(--line);border-radius:6px;padding:10px 16px}
+  .metrics span{color:var(--amber);font-family:"JetBrains Mono",monospace;font-weight:700}
+  footer{margin-top:46px;color:var(--dim);font-family:"JetBrains Mono",monospace;font-size:12px;
+    border-top:1px solid var(--line);padding-top:16px}
+</style>
+<div class="wrap">
+  <h1>Track VI — Elemental Motion</h1>
+  <p class="sub">subtle, dramatic motion on an individual inked frame — without losing the hand-drawn black-and-white look.</p>
+
+  <div class="call">
+    <b>The finding:</b> stylize once with AI, then move the ink with pure geometry. The drawing is
+    inked a single time; a deterministic displacement field animates it into a <b>seamless loop</b>
+    (frame N ≡ frame 0 by construction). The result is temporally rock-solid — <b>zero boil</b> — where
+    a per-frame AI restyle flickers. "Manipulate the existing ink, slowed down," made literal.
+  </div>
+
+  <div class="metrics">
+    <div>loop seam <span>0.0 px</span></div>
+    <div>NPR boil <span>0.15 / 255</span></div>
+    <div>sim→ink boil <span>0.78 / 255</span></div>
+    <div>AI restyle boil <span id="aiflick">1.50 / 255 — ~10× worse</span></div>
+  </div>
+
+  <h2>Tier A · warp the existing ink — the native path (CPU, free, loop-perfect)</h2>
+  <div class="grid">
+    <div class="card"><video src="report-assets/previews/water_v1.mp4" autoplay loop muted playsinline></video>
+      <div class="meta"><div class="t">Water <span class="tag">warp</span></div><div class="d">ripple · bottom mask · depth-scaled</div></div></div>
+    <div class="card"><video src="report-assets/previews/sky_v1.mp4" autoplay loop muted playsinline></video>
+      <div class="meta"><div class="t">Time-lapse sky <span class="tag">warp</span></div><div class="d">low-freq billow + drift · top mask</div></div></div>
+    <div class="card"><video src="report-assets/previews/smoke_v1.mp4" autoplay loop muted playsinline></video>
+      <div class="meta"><div class="t">Smoke (wispy) <span class="tag">warp</span></div><div class="d">turbulent rise · base-anchored</div></div></div>
+    <div class="card"><video src="report-assets/previews/flame_v1.mp4" autoplay loop muted playsinline></video>
+      <div class="meta"><div class="t">Flame <span class="tag">warp</span></div><div class="d">fast lick + curl · full · base-anchored</div></div></div>
+    <div class="card"><video src="report-assets/previews/dust_v1.mp4" autoplay loop muted playsinline></video>
+      <div class="meta"><div class="t">Dust <span class="tag">warp</span></div><div class="d">lateral wind-shimmer · lower band</div></div></div>
+  </div>
+
+  <h2>Tier B+C · simulate → stylize → composite — the billow path (for what isn't drawn)</h2>
+  <div class="grid">
+    <div class="card"><video src="report-assets/previews/fire_sim_npr.mp4" autoplay loop muted playsinline></video>
+      <div class="meta"><div class="t">Fire sim → ink <span class="tag">blender+npr</span></div><div class="d">Mantaflow · grayscale · deterministic NPR</div></div></div>
+    <div class="card"><video src="report-assets/previews/smoke_sim_npr.mp4" autoplay loop muted playsinline></video>
+      <div class="meta"><div class="t">Smoke sim → ink <span class="tag">blender+npr</span></div><div class="d">cold-press tooth · loop-stable</div></div></div>
+  </div>
+
+  <h2>The decision map</h2>
+  <div class="map">Is the element already drawn, and does it keep its topology (just displaces)?
+  <b>├─ YES →</b> WARP THE INK (Tier A). Free, loop-perfect, native.
+  <b>│         </b>[water · sky · wispy smoke · flame · gentle dust]
+  <b>└─ NO  →</b> billows / scatters / not-drawn-yet?
+            <b>└─</b> SIMULATE (Tier B) → STYLIZE NPR (Tier C) → RECOMPOSITE (multiply).
+               [billowing smoke · heavy dust · a medium the drawing lacks]
+
+Physically-grounded motion on drawn ink?  → bake velocity → drive the warp (fields.from_flow).
+Never: per-frame AI restyle for the motion — it boils. AI makes the still; geometry makes the motion.</div>
+
+  <footer>Loudon Live · Autodidact Polymaths</footer>
+</div>
