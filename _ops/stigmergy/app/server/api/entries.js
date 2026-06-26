@@ -1,11 +1,13 @@
 // server/api/entries.js — palace-entry read endpoints (the STATE deck's data).
 //   GET /api/entries       — recursive index of palace .md entries
+//   GET /api/tree          — folder-structure tree (TREE lens), bundles nested
 //   GET /api/unsung-paths  — body-wikilink edges not formalized in YAML
 //   GET /api/topology      — the freshest palace-map-full-*.json
 //   GET /api/entry?path=   — one entry's full read shape
 
 import { jsonResponse } from '../http.js';
 import { listEntries, readEntry, walkEntryRecords } from '../../src/lib/entries.js';
+import { buildEntryTree } from '../../src/lib/entry-tree.js';
 import { readLatestMap } from '../../src/lib/topology.js';
 import { findUnsungEdges, buildPalaceIndex } from '../../src/lib/unsung-paths.js';
 
@@ -15,6 +17,15 @@ export async function entriesRoutes(ctx) {
   if (urlPath === '/api/entries' && method === 'GET') {
     const entries = listEntries(palaceRoot);
     jsonResponse(res, 200, { entries, count: entries.length, ts: new Date().toISOString() });
+    return true;
+  }
+
+  // The palace folder structure as a nested tree: org folders contain entries,
+  // and each bundled entry carries its owned files as children. Full walk like
+  // /api/entries; no user input, so no path-safety surface.
+  if (urlPath === '/api/tree' && method === 'GET') {
+    const tree = buildEntryTree(palaceRoot);
+    jsonResponse(res, 200, { ...tree, ts: new Date().toISOString() });
     return true;
   }
 
