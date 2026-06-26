@@ -106,7 +106,7 @@ def terminate(pid):
     print(f"[terminate] WARNING — could not confirm termination of {pid}; check the RunPod console")
     return False
 
-def wait_ready(pid, boot_timeout=720):
+def wait_ready(pid, boot_timeout=1800):   # FLUX worker image cold-pull (19-35GB) can exceed 12 min on a fresh host
     t0 = time.time()
     comfy_up = False
     while time.time() - t0 < boot_timeout:
