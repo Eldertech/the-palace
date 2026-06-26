@@ -15,9 +15,10 @@
 // and the bundle file listing from listBundleFiles — reusing the authoritative
 // server-side bundle logic instead of re-deriving membership from path strings.
 
-import { join, resolve } from 'node:path';
+import { readdirSync, statSync } from 'node:fs';
+import { join, resolve, sep } from 'node:path';
 import { listEntries } from './entries.js';
-import { listBundleFiles } from './bundle.js';
+import { listBundleFiles, classifyFile } from './bundle.js';
 
 // Build an entry's bundle node (or null when the bundle holds no listable
 // files). `isEntry` marks the .md owned files so the UI can deep-link them to
@@ -47,30 +48,64 @@ function countEntries(folder) {
   return n;
 }
 
-// Sort a folder's children in place: folders before entries; folders alpha by
-// name; entries alpha by title. The client may re-sort entries (see tree.js),
-// but this gives a stable, navigable default.
+// Child ordering within a folder: folders, then entries, then loose files.
+const KIND_ORDER = { folder: 0, entry: 1, 'loose-file': 2 };
+
+// Sort a folder's children in place: folders before entries before loose files;
+// folders alpha by name; entries alpha by title; loose files alpha by name. The
+// client may re-sort entries (see tree.js), but this gives a stable default.
 function sortChildren(folder) {
   folder.children.sort((a, b) => {
-    if (a.kind !== b.kind) return a.kind === 'folder' ? -1 : 1;
-    if (a.kind === 'folder') return a.name.localeCompare(b.name);
-    const at = a.summary?.title ?? a.name;
-    const bt = b.summary?.title ?? b.name;
-    return at.localeCompare(bt);
+    if (a.kind !== b.kind) return KIND_ORDER[a.kind] - KIND_ORDER[b.kind];
+    if (a.kind === 'entry') {
+      return (a.summary?.title ?? a.name).localeCompare(b.summary?.title ?? b.name);
+    }
+    return a.name.localeCompare(b.name);
   });
   for (const child of folder.children) {
     if (child.kind === 'folder') sortChildren(child);
   }
 }
 
+// Surface loose non-.md files that sit DIRECTLY in a folder that already holds
+// entries — a stray diagram or html next to its siblings. Scoped to the known
+// org-folder dirs only (never a blind full-disk walk), so it can't wander into
+// _tools/ or other heavy, entry-less trees. Returns the count; mutates nodes.
+function collectLooseFiles(palaceRoot, folderIndex) {
+  let count = 0;
+  for (const [folderPath, node] of folderIndex) {
+    const absDir = folderPath === '' ? palaceRoot : join(palaceRoot, folderPath);
+    let dirents;
+    try { dirents = readdirSync(absDir, { withFileTypes: true }); } catch (_) { continue; }
+    for (const d of dirents) {
+      if (!d.isFile()) continue;            // dirs are folders or bundles
+      if (d.name.startsWith('.')) continue; // hidden / junk
+      if (d.name.endsWith('.md')) continue; // entries + bundle files already placed
+      const relPath = folderPath === '' ? d.name : `${folderPath}/${d.name}`;
+      let size = 0;
+      try { size = statSync(join(absDir, d.name)).size; } catch (_) { /* unreadable — size 0 */ }
+      node.children.push({
+        kind: 'loose-file',
+        name: d.name,
+        relPath,
+        fileKind: classifyFile(d.name),
+        size,
+      });
+      count += 1;
+    }
+  }
+  return count;
+}
+
 // buildEntryTree(palaceRoot) -> { root, counts }
 //   root   : the synthetic palace-root FolderNode (path '')
-//   counts : { folders, entries, bundles, bundleFiles }
+//   counts : { folders, entries, bundles, bundleFiles, looseFiles }
 //
 // Node shapes:
 //   FolderNode = { kind:'folder', name, path, children: Node[], entryCount }
 //   EntryNode  = { kind:'entry',  name, path, summary, bundle: BundleNode|null }
 //   BundleNode = { kind:'bundle', dir, files: [{name, relPath, kind, size, isEntry}] }
+//   LooseFile  = { kind:'loose-file', name, relPath, fileKind, size }
 export function buildEntryTree(palaceRoot) {
   const root = resolve(palaceRoot);
   const entries = listEntries(root);
@@ -122,6 +157,9 @@ export function buildEntryTree(palaceRoot) {
     });
   }
 
+  // Loose non-.md files sitting directly in any entry-bearing folder.
+  const looseFiles = collectLooseFiles(root, folderIndex);
+
   // Recursive entry counts for folder badges, then a stable child order.
   for (const node of folderIndex.values()) {
     node.entryCount = countEntries(node);
@@ -135,6 +173,7 @@ export function buildEntryTree(palaceRoot) {
       entries: firstClass.length,
       bundles,
       bundleFiles,
+      looseFiles,
     },
   };
 }

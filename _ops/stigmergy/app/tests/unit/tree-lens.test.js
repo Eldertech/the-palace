@@ -22,6 +22,7 @@ const TREE = {
               ],
             },
           },
+          { kind: 'loose-file', name: 'diagram.png', relPath: 'Projects/diagram.png', fileKind: 'image', size: 12 },
         ],
       },
     ],
@@ -74,5 +75,11 @@ describe('TreeLens', () => {
     expect(html).toContain('data-testid="tree-sort-name"');
     expect(html).toContain('data-testid="tree-sort-type"');
     expect(html).toContain('data-testid="tree-sort-pulse"');
+  });
+
+  it('renders loose files within an expanded folder', () => {
+    const html = render({ defaultExpanded: ['Projects'] });
+    expect(html).toContain('data-testid="tree-loose-file-row"');
+    expect(html).toContain('data-path="Projects/diagram.png"');
   });
 });

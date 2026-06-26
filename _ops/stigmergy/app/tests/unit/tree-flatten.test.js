@@ -120,6 +120,34 @@ describe('flattenVisible sort', () => {
   });
 });
 
+describe('flattenVisible loose files', () => {
+  const tree = {
+    kind: 'folder', name: '', path: '',
+    children: [{
+      kind: 'folder', name: 'Bin', path: 'Bin', entryCount: 1,
+      children: [
+        { kind: 'entry', name: 'A.md', path: 'Bin/A.md', summary: { title: 'Ash', type: 'concept' }, bundle: null },
+        { kind: 'loose-file', name: 'diagram.png', relPath: 'Bin/diagram.png', fileKind: 'image', size: 12 },
+      ],
+    }],
+  };
+
+  it('renders loose files after entries when the folder is expanded', () => {
+    const rows = flattenVisible(tree, { expanded: new Set(['Bin']) });
+    const kinds = rows.map((r) => r.kind);
+    expect(kinds).toEqual(['folder', 'entry', 'loose-file']);
+    const loose = rows.find((r) => r.kind === 'loose-file');
+    expect(loose.node.relPath).toBe('Bin/diagram.png');
+    expect(loose.depth).toBe(1);
+  });
+
+  it('hides loose files under an active filter', () => {
+    const rows = flattenVisible(tree, { expanded: new Set(['Bin']), filter: 'ash' });
+    expect(rows.find((r) => r.kind === 'loose-file')).toBeUndefined();
+    expect(rows.find((r) => r.node.path === 'Bin/A.md')).toBeTruthy();
+  });
+});
+
 describe('ancestorsToExpand', () => {
   it('returns the (root) group for a root-level entry', () => {
     expect(ancestorsToExpand('Foo.md')).toEqual([ROOT_GROUP_PATH]);
