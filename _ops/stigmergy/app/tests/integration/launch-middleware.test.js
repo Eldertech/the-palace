@@ -152,10 +152,10 @@ describe('POST /api/launch/ephemeral', () => {
   beforeEach(() => { root = makeTempPalace(); });
   afterEach(() => { rmSync(root, { recursive: true, force: true }); });
 
-  // The ephemeral path needs no steward roster — it constructs ANY page. An
-  // injected builder stands in for buildEphemeralPrompt so the route is exercised
-  // without walking a palace.
-  const okBuild = (o) => ({ ok: true, status: 'built', home: o.title, stage: 'growing', full: `EPHEMERAL for ${o.title} (mode ${o.mode})` });
+  // The ephemeral path wakes ANY page as itself (no steward roster). An injected
+  // builder stands in for buildEphemeralPrompt so the route is exercised without
+  // walking a palace.
+  const okBuild = (o) => ({ ok: true, status: 'built', home: o.title, stage: 'growing', full: `AWAKEN ${o.title}` });
 
   test('400 when no home is given', async () => {
     const res = await request(makeServer(root, { buildEphemeralPromptImpl: okBuild }))
@@ -163,7 +163,7 @@ describe('POST /api/launch/ephemeral', () => {
     expect(res.status).toBe(400);
   });
 
-  test('preview returns the tiered construction + the constructed prompt, built in interactive mode at cycle 1', async () => {
+  test('preview returns the awaken construction + the prompt — no steward layers, no cycle', async () => {
     let built = null;
     const buildEphemeralPromptImpl = (o) => { built = o; return okBuild(o); };
     const res = await request(makeServer(root, { buildEphemeralPromptImpl }))
@@ -171,21 +171,28 @@ describe('POST /api/launch/ephemeral', () => {
     expect(res.status).toBe(200);
     expect(res.body.preview).toBe(true);
     expect(res.body.ephemeral).toBe(true);
-    expect(res.body.cycle).toBe(1);                  // a one-off is always a fresh first activation
-    expect(res.body.prompt).toContain('EPHEMERAL for Murmuration');
+    expect(res.body.cycle).toBeUndefined();          // a woken page has no cycle
+    expect(res.body.prompt).toContain('AWAKEN Murmuration');
     expect(res.body.construction.tiers).toHaveLength(4);
     expect(res.body.construction.tiers[3].loads).toBe('injected');
     expect(res.body.construction.ephemeral).toBe(true);
-    expect(res.body.construction.framing).toMatch(/one-off/i);
-    expect(res.body.construction.framing).toMatch(/not registered as a permanent steward/i);
-    // the builder was driven by title, in interactive mode, with the mandate + normalized include
+    expect(res.body.construction.include).toBeUndefined(); // no layer toggles for a woken page
+    // the awaken framing + the three-desire posture
+    expect(res.body.construction.framing).toMatch(/enchanted/i);
+    expect(res.body.construction.framing).toMatch(/not a steward/i);
+    expect(res.body.construction.posture).toMatch(/forward vector/i);
+    expect(res.body.construction.posture).toMatch(/good palace citizen/i);
+    expect(res.body.construction.posture).toMatch(/healthy for the palace/i);
+    expect(res.body.construction.tiers[3].what).toMatch(/your forward vector/i);
+    expect(res.body.construction.tiers[3].what).toMatch(/injected in full as identity/i);
+    // the builder is driven by title + the session note only — no mode, no include
     expect(built.title).toBe('Murmuration');
-    expect(built.mode).toBe('interactive');
     expect(built.extraMandate).toBe('sketch the boids');
-    expect(built.include).toEqual({ board: true, history: true, pageChange: true, staging: true });
+    expect(built.mode).toBeUndefined();
+    expect(built.include).toBeUndefined();
   });
 
-  test('launch hands the constructed prompt + model/effort to the launcher', async () => {
+  test('launch hands the woken prompt + model/effort to the launcher', async () => {
     let launched = null;
     const launchImpl = (prompt, o) => { launched = { prompt, model: o.model, effort: o.effort }; return { launched: true, supported: true, scriptPath: '/tmp/x/launch.command' }; };
     const res = await request(makeServer(root, { buildEphemeralPromptImpl: okBuild, launchImpl }))
@@ -193,8 +200,8 @@ describe('POST /api/launch/ephemeral', () => {
     expect(res.status).toBe(200);
     expect(res.body.launched).toBe(true);
     expect(res.body.ephemeral).toBe(true);
-    expect(res.body.cycle).toBe(1);
-    expect(launched.prompt).toBe('EPHEMERAL for Murmuration (mode interactive)');
+    expect(res.body.cycle).toBeUndefined();
+    expect(launched.prompt).toBe('AWAKEN Murmuration');
     expect(launched.model).toBe('claude-sonnet-4-6');
     expect(launched.effort).toBe('high');
   });
@@ -221,17 +228,5 @@ describe('POST /api/launch/ephemeral', () => {
       .post('/api/launch/ephemeral').send({ home: 'Murmuration' });
     expect(res.status).toBe(501);
     expect(res.body.supported).toBe(false);
-  });
-
-  test('include toggles pass to the builder and trim the Tier-3 construction summary', async () => {
-    let built = null;
-    const buildEphemeralPromptImpl = (o) => { built = o; return okBuild(o); };
-    const res = await request(makeServer(root, { buildEphemeralPromptImpl }))
-      .post('/api/launch/ephemeral').send({ home: 'Murmuration', include: { board: false, staging: false }, preview: true });
-    expect(res.status).toBe(200);
-    expect(built.include).toEqual({ board: false, history: true, pageChange: true, staging: false });
-    expect(res.body.construction.tiers[3].what).not.toMatch(/board slice/i);
-    expect(res.body.construction.tiers[3].what).toMatch(/recent history/i);
-    expect(res.body.construction.tiers[3].what).toMatch(/injected in full as identity/i);
   });
 });

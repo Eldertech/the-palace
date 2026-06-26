@@ -31,7 +31,7 @@ const EFFORTS = new Set(['low', 'medium', 'high', 'xhigh', 'max']);
 // root; tier 3 — the active surface — is what THIS prompt injects (the page as
 // identity + its situational state). The launcher renders this so the build is
 // legible, not a black box.
-function buildConstruction({ home, stage, cycle, inc, ephemeral = false }) {
+function buildConstruction({ home, stage, cycle, inc }) {
   // Tier-3 reflects which OPTIONAL layers the toggles left on. The identity (the
   // page) and state are always present — they ARE the agent, never toggled.
   const optional = [
@@ -47,10 +47,7 @@ function buildConstruction({ home, stage, cycle, inc, ephemeral = false }) {
     stage: stage || null,
     cycle,
     include: inc,
-    ephemeral,
-    framing: ephemeral
-      ? 'interactive · one-off — you drive; the agent narrates every write, posts to the board as the page, and is NOT registered as a permanent steward (nothing under _ops/agents/permanent/)'
-      : 'interactive — you drive; the agent narrates every write before it makes it, and posts to the board as the page',
+    framing: 'interactive — you drive; the agent narrates every write before it makes it, and posts to the board as the page',
     posture: 'steward discipline — stage-conditional · catch-up-first · ship-a-made-thing · audition gate · act-on-your-lean',
     tiers: [
       { tier: 0, name: 'Jewel', loads: 'floor', what: 'interpretive lens · operating posture · invariants' },
@@ -140,11 +137,32 @@ async function handleAgentLaunch(ctx) {
   return true;
 }
 
-// The one-off counterpart to handleAgentLaunch: bring ANY page to life without
-// registering it as a permanent steward. buildEphemeralPrompt stages a throwaway
-// agent dir, runs the SAME buildCyclePrompt(mode:'interactive'), and discards it —
-// so the construction is identical to a registered steward's cycle 1, the registry
-// is never touched, and any canon page (not just stewards) can be launched.
+// The construction summary for an enchanted (awakened) page, by palace TIER.
+// Distinct from buildConstruction (the steward cycle): the woken page is not a
+// steward, so there is no posting discipline, no board/state/staging layers, no
+// cycle. Tier 3 is just the active surface a page wakes from — itself, its
+// desire, its neighbors — and the posture is the three desires.
+function buildAwakenConstruction({ home, stage }) {
+  return {
+    home,
+    stage: stage || null,
+    ephemeral: true,
+    framing: 'interactive · enchanted — you ARE this page, woken to think and work with Loudon in your own voice; not a steward, no cycle, no board duty',
+    posture: 'awake as yourself — move along your forward vector (your desire), be a good palace citizen, grow in a way that is healthy for the palace',
+    tiers: [
+      { tier: 0, name: 'Jewel', loads: 'floor', what: 'interpretive lens · operating posture · invariants' },
+      { tier: 1, name: 'Skeleton', loads: 'floor', what: 'CLAUDE · SCHEMA — what can exist + that the room may hold other agents' },
+      { tier: 2, name: 'World', loads: 'floor', what: 'Four Pillars · philosophies · cooperation' },
+      { tier: 3, name: 'You', loads: 'injected', what: `${home} injected in full as identity · your forward vector (your desire) · your fuller desires (agency_profile, when present) · your neighbors` },
+    ],
+  };
+}
+
+// The one-off counterpart to handleAgentLaunch: bring ANY canon page to life
+// WITHOUT registering it as a permanent steward. buildEphemeralPrompt wakes the
+// page as itself — its identity, its forward vector (its desire), its neighbors —
+// per [[Pages as Agents]]; it is NOT a steward cycle, touches no registry, and
+// stages no files. Any canon page (not just stewards) can be enchanted.
 async function handleEphemeralLaunch(ctx) {
   const { req, res, palaceRoot, opts } = ctx;
 
@@ -159,22 +177,18 @@ async function handleEphemeralLaunch(ctx) {
   const home = body && typeof body.home === 'string' ? body.home.trim() : '';
   if (!home) { jsonResponse(res, 400, { error: 'missing page title' }); return true; }
 
+  // `mandate` is an optional human note for this session ("wake and let's work on
+  // X"). There are no context-layer toggles — a woken page is not a steward, so it
+  // has no board/state/history/staging layers to trim.
   const mandate = typeof body.mandate === 'string' ? body.mandate.trim() : '';
-  const includeRaw = (body && typeof body.include === 'object' && body.include) || {};
-  const inc = {
-    board: includeRaw.board !== false,
-    history: includeRaw.history !== false,
-    pageChange: includeRaw.pageChange !== false,
-    staging: includeRaw.staging !== false,
-  };
 
   // Injectable for tests so the route can be exercised without walking the palace.
   const build = opts.buildEphemeralPromptImpl || buildEphemeralPrompt;
   let built;
   try {
-    built = build({ palaceRoot, title: home, mode: 'interactive', include: inc, extraMandate: mandate });
+    built = build({ palaceRoot, title: home, extraMandate: mandate });
   } catch (e) {
-    jsonResponse(res, 500, { error: `could not construct the agent: ${e.message}` });
+    jsonResponse(res, 500, { error: `could not wake the page: ${e.message}` });
     return true;
   }
 
@@ -189,11 +203,10 @@ async function handleEphemeralLaunch(ctx) {
     return true;
   }
 
-  const cycle = 1; // an ephemeral session is always a fresh first activation.
-  const construction = buildConstruction({ home, stage: built.stage, cycle, inc, ephemeral: true });
+  const construction = buildAwakenConstruction({ home, stage: built.stage });
 
   if (body.preview) {
-    jsonResponse(res, 200, { ok: true, preview: true, ephemeral: true, home, stage: built.stage || null, cycle, construction, prompt: built.full });
+    jsonResponse(res, 200, { ok: true, preview: true, ephemeral: true, home, stage: built.stage || null, construction, prompt: built.full });
     return true;
   }
 
@@ -202,10 +215,10 @@ async function handleEphemeralLaunch(ctx) {
   const launch = opts.launchImpl || launchInteractive;
   const result = await launch(built.full, { palaceRoot, model, effort, ...(opts.launchOpts || {}) });
   if (!result.launched) {
-    jsonResponse(res, result.supported === false ? 501 : 500, { ...result, home, cycle, ephemeral: true });
+    jsonResponse(res, result.supported === false ? 501 : 500, { ...result, home, ephemeral: true });
     return true;
   }
-  jsonResponse(res, 200, { ...result, home, cycle, ephemeral: true, construction });
+  jsonResponse(res, 200, { ...result, home, ephemeral: true, construction });
   return true;
 }
 
