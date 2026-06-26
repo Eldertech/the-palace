@@ -90,7 +90,7 @@ Small entries that give the project its intellectual scaffolding and link target
 
 - **`Blocked, Not Prompted`** (`concept`) — authoring composition as geometry so the model fills rather than chooses. `contradicts` → the front-on prompt-only default. The most reusable idea here.
 - **`The Flow Field is the Spine`** (`concept`) — one quantity at three resolutions of reality; "the arrow becomes the wind." `connects-to` [[Flocking]], `couples-with` `Blocked, Not Prompted`.
-- **`Comic and Cinema as Two Registers`** (`concept`) — McCloud's gutter + transition types, compression vs dilation. `philosophy` pillar anchor.
+- **`Comic and Cinema — Two Ways of Seeing`** (`concept`) — McCloud's gutter + transition types, compression vs dilation. `philosophy` pillar anchor.
 - **`Staging-AI vs Render-AI`** (`concept`) — the opposite-risk-profile split; cheap structured extraction vs expensive uncertain generation. `exemplifies` → [[Diversity of Thought in Many-Agent Systems]] (two AIs, opposite temperaments).
 - **`Go-with-the-Flow`** (`source`) — CVPR 2025, arXiv 2501.08331. The published precedent that one flow field drives camera + object motion. `connects-to` `The Flow Field is the Spine`.
 - **`Declarative Camera Control`** (`source`/`concept`) — the automatic-cinematography literature behind the camera-grammar solver (Galvane et al.). Camera preset = on-screen-layout constraint solver.

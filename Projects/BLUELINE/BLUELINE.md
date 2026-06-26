@@ -65,7 +65,7 @@ tags: [project, blueline, music-video, generative, pipeline, sprout]
 
 BLUELINE makes bold, dramatic, graphic-cinematic action in surreal, mathematical worlds — music videos built the way film is built: **storyboard → animatic → final render**, with every frame pinned to the song. It is *not* a general generator. It has a default style, a fixed visual language, and a point of view. The bias is the product.
 
-The pipeline moves between **two registers**: the storyboard speaks **comic**, the final render speaks **cinema**, and the system's whole job is the transduction between them — comic compresses and abstracts, cinema dilates and embodies. See [[Comic and Cinema as Two Registers]] *(ghost — not yet deposited)*.
+The pipeline moves between **two registers**: the storyboard speaks **comic**, the final render speaks **cinema**, and the system's whole job is the transduction between them — comic compresses and abstracts, cinema dilates and embodies. See [[Comic and Cinema — Two Ways of Seeing]] *(ghost — not yet deposited)*.
 
 ## The two load-bearing ideas
 
