@@ -45,29 +45,23 @@ Deep workers ran the 6-task audit (unsung / new-intro / metadata / graffiti / fo
 - `batch2-findings.json` — 25 People/. **Systematic:** 25/25 weak-or-absent vectors,
   24/25 verbose (worksheet boilerplate), 17/25 faces merited, missing `born_year`/`domains`,
   FOUR PILLARS link wants `deepens` not `connects-to`, several stage mature→growing.
-- `batch3-findings.json` — **NOT YET WRITTEN — Batch 3 was still running when parked.**
-  23 entries: 10 Bridges (Cross-Domain Resonances/) + 10 foundational/philosophy hubs
-  (Cooperation Yields Agency, Spinoza Conatus, Stoicism, Palace Philosophies, FOUR PILLARS,
-  Kuramoto Coupling, Trickster, Cross-Domain Resonances, Source Library, Loudon's Toolkit)
-  + 3 new root (Leibniz, Learning Materials and Canon, Worktree Practice).
+- `batch3-findings.json` — **DONE (saved after parking).** 23 entries: 10 Bridges
+  (Cross-Domain Resonances/) + 10 foundational/philosophy hubs (Cooperation Yields Agency,
+  Spinoza Conatus, Stoicism, Palace Philosophies, FOUR PILLARS, Kuramoto Coupling, Trickster,
+  Cross-Domain Resonances, Source Library, Loudon's Toolkit) + 3 new root (Leibniz, Learning
+  Materials and Canon, Worktree Practice). 52 unsung · 69 new-intros · 70 metadata · 6 graffiti
+  · 9 faces merited · 19/23 weak-or-absent vectors · 10 merge/shrink (the Bridges + the
+  Cross-Domain Resonances hub + Source Library — verbose teaching entries, same pattern as People).
 - `tier2-findings.json` — zero-LLM scan of the 388 remaining canon entries:
   **236 high-confidence unsung paths** (body [[wikilink]] not in YAML, meta/log files filtered
   out) + **214 face-missing** (informational only).
 
-## RESUME STEP 1 — recover Batch 3
-It ran as a Workflow. **Run ID: `wf_8203dd65-25c`**, script `weave-batch.js` (in this dir),
-batchName `b3-hubs-bridges`. Re-invoke with resume (cached workers return instantly):
-```
-Workflow({ scriptPath: ".../scratchpad or this dir/weave-batch.js",
-           resumeFromRunId: "wf_8203dd65-25c",
-           args: { batchName:"b3-hubs-bridges", entries:[ ...the 23 paths... ] } })
-```
-The 23 entry paths are in the Batch-3 Workflow call in the transcript; or re-derive: the 10
-`Cross-Domain Resonances/*.md` Bridges + the 10 hubs + 3 new root above. Then parse its
-`result` and save as `batch3-findings.json` here (same shape as batch1/2).
-*(If the task output `tasks/wrnfjbt3d.output` exists and is valid JSON, just parse that.)*
+## RESUME STEP 1 — recover Batch 3  ✅ DONE
+All three deep batches are recorded (`batch1/2/3-findings.json`) + `tier2-findings.json`.
+Start directly at Step 2. (Re-run the batch Workflow only if you want to re-audit; the
+reusable script is `weave-batch.js` here, run id was `wf_8203dd65-25c`.)
 
-## RESUME STEP 2 — the write-back checkpoint (SHOW BEFORE WRITING)
+## RESUME STEP 2 — the write-back checkpoint (SHOW BEFORE WRITING)  ← START HERE
 This is the high-stakes step. ~150 files, hundreds of frontmatter edits. The tree is shared
 and volatile (other Claudes running). DO NOT hand-edit 150 files; write a careful Python
 applier, **dry-run → sample diff → Loudon's go → apply → lint**. Plan:
