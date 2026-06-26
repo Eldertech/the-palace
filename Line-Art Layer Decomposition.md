@@ -26,7 +26,7 @@ links:
   - target: "[[Frame Designer]]"
     type: connects-to
     label: a-decomposition-the-roster-wants
-forward_vector: "I am the search for how to take a flat ink drawing apart into living, depth-ordered layers. I want to find the reliable path past the line-art wall — and I think I have it: decompose in photoreal, stylize last. I want to harden into a general split_to_layers any frame can call, and to be compared against the parallel explorations until the most reliable method is settled."
+forward_vector: "I am the search for how to take a flat ink drawing apart into living, depth-ordered layers. I found the reliable path past the line-art wall: convert to a flat cel-shaded domain (it beat photoreal), segment and infill there, stylize each cel back to ink last. I want to harden into a general split_to_layers any frame can call, and to be compared against the parallel explorations until the most reliable method is settled."
 ---
 
 # Line-Art Layer Decomposition
@@ -57,17 +57,23 @@ The nine reproducible scripts live beside them.
 (no solid region), depth (no discontinuity), colour (no fill), and morphology (no closed boundary). They
 exist only as perceptually-grouped strokes — legible to a human, to no low-level signal.
 
-**The reframe that dissolves it (Loudon's insight): decompose in PHOTOREAL, stylize last.** Don't fight
-the line-art representation — convert the drawing to photoreal (FLUX + canny ControlNet, same
-composition), where SAM/depth/LaMa are all trained and strong, do segmentation + infill there, then
+**The reframe that dissolves it (Loudon's insight): convert to a segmentable domain, stylize last.**
+Don't fight the line-art representation — convert the drawing (SDXL/FLUX + canny ControlNet, same
+composition) to a domain where SAM/depth/LaMa are trained and strong, segment + infill there, then
 re-apply the ink style to each clean cel. It is [[Steer the Generator]]'s **rich-first / stylize-last**
-discipline carried from *rendering* into *layering*. The reliable pipeline:
+discipline carried from *rendering* into *layering*.
 
-> `generate/convert → photoreal · segment + depth + infill · stylize each cel to ink · warp & recompose`
+**Validated (2026-06-25, 3 new scenes — burning city, rooftop leap, impact crouch).** Both photoreal
+*and* flat-cel make SAM segment cleanly where line-art gave garbage — so convert-first generalises. And
+the *better* intermediate is **flat cel-shaded**, not photoreal: solid flat regions give more distinct
+object segments (44/47 vs 30/26), are separable even by a **no-model colour-quantize**, and are a far
+smaller stylistic round-trip back to ink. The reliable pipeline:
+
+> `convert to flat-cel · segment + depth + infill · stylize each cel to ink · warp & recompose`
 
 ## Forward vectors
-- Validate the photoreal-first car on shot 02 (SAM should lock it instantly), then build the full
-  per-cel stylize-back.
+- Build the full per-cel stylize-back (each flat-cel cel → ink) and push the flat style flatter
+  (lower ControlNet strength / posterise) for even cleaner masks.
 - Harden a general `split_to_layers(image)` + `compose_layers(layers, ops)`.
 - The unsolved deep skill: amodal **shape** completion (continue occluded contours, not just texture) —
   and the line-art-native path (T-junction / Huffman-Clowes line labeling).

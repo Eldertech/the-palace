@@ -46,11 +46,14 @@ STEPS = [
   "The drawing's <i>own</i> fire/smoke strokes are warped along that measured flow (rise + lick + up-right lean), "
   "masked to the plume, the man extracted and his hole infilled with fire, the buildings locked, the man held "
   "crisp on top, slow and looped. <b>No overlay — the existing ink moves.</b>"),
- ("08_photoreal_first.png", "8 · The breakthrough — decompose in PHOTOREAL, stylize last",
-  "The insight that dissolves the wall: don't fight line-art. Convert the drawing to <b>photoreal</b> (FLUX + "
-  "canny ControlNet, same composition) — now SAM and depth lock the car instantly, because in photoreal it is a "
-  "solid object they were trained on. Segment + infill in the domain where the tools are strong, then re-apply "
-  "the ink style to each clean cel. <b>Rich-first / stylize-last, applied to layering.</b>"),
+ ("08_photoreal_first.png", "8 · VALIDATED — convert first, and flat-cel beats photoreal",
+  "The wall dissolves by converting the drawing to a domain segmentation was trained on, then re-styling each "
+  "cel to ink. Tested on <b>3 new scenes</b> (SDXL + canny ControlNet, local): both photoreal and flat-cel make "
+  "SAM segment cleanly where line-art gave garbage — so convert-first generalises. And Loudon's refinement holds: "
+  "<b>flat-cel is the better intermediate</b> — more distinct object segments (44/47 vs 30/26 photoreal), the "
+  "figures/objects pop as solid shapes, it's separable even by a <i>no-model</i> colour-quantize (right column), "
+  "and it's a far smaller round-trip back to ink. <b>Rich-first / stylize-last, applied to layering.</b> "
+  "(Push the flat style harder — lower ControlNet strength / posterise — for even cleaner masks.)"),
 ]
 
 CONCLUSION = """
