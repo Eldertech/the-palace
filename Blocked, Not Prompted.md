@@ -26,8 +26,6 @@ tags: [concept, generative, controlnet, staging, blueline, seed]
 
 # Blocked, Not Prompted
 
-![[Blocked, Not Prompted — hero.png]]
-
 **Author the composition as geometry, so the model fills it rather than chooses it.**
 
 Prompt-only image generation defaults to a centered, front-on portrait — it chooses the composition, and it chooses the safe one. *Blocked, not prompted* refuses that default by moving the compositional decisions upstream into a 3D block: camera position, framing, figure pose, environment layout are all *authored* (in [[Shop/Blender]], by hand or by a staging-AI), then emitted as conditioning passes (depth, pose, lineart, normal) that the diffusion model must obey. The model's job shrinks from "decide and draw" to "fill a frame someone already staged."

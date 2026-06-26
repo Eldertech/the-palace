@@ -45,8 +45,6 @@ links:
 
 # STIGMERGY — Weave Flag Item Type Build Plan
 
-![[STIGMERGY — Weave Flag Item Type Build Plan — hero.png]]
-
 The architecture is in [[BBS Blackboard]]. The visual language is in [[BBS Design System]] — STIGMERGY uses the BBS phosphor aesthetic, **not** Loudon Live. The build-contract pattern is [[STIGMERGY — Alignment Review Build Plan]] (the most recent sibling) — match its shape: phased, each phase self-verifiable, stop-report on failure, Loudon absent during the run. The *why* is documented in the [[Drift and Consolidation]] entry's spirit: archive rows that claim past facts are honest; archive rows that try to drive future work are a category error. The Deposit Ceremony has been treating archive prose as flag input for months. This build fixes the channel.
 
 ## The move

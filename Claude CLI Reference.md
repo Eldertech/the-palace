@@ -35,8 +35,6 @@ links:
 
 # Claude CLI Reference
 
-![[Claude CLI Reference — hero.png]]
-
 A working reference of the most useful Claude CLI commands for palace work and synthesis tool development. This is not a complete manual — see the official Anthropic Claude CLI documentation for full specs. This is a practitioner's cheat sheet.
 
 ## Conversation Management
