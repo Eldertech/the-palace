@@ -21,7 +21,7 @@ links:
   - target: "[[Frame Designer]]"
     type: connects-to
     label: applies-this-craft
-  - target: "[[Comic and Cinema as Two Registers]]"
+  - target: "[[Comic and Cinema — Two Ways of Seeing]]"
     type: connects-to
     label: the-comic-way-of-seeing
   - target: "[[Adopt the Craft, Author the Seam]]"
@@ -82,7 +82,7 @@ The actionable questions this thread answers: which color, how often, attached t
 
 ## Why it lives in the palace
 
-Graphic storytelling is the craft tradition that several palace citizens are quietly performing. It `enables` [[BLUELINE]]'s whole front half (the storyboard speaks comics before the render speaks cinema). It `couples-with` [[Typography as Meaning]] — the lettering sub-discipline is graphic storytelling's text channel, and in comics word and image are never really separable. It is the body of knowledge [[Frame Designer]] reaches into every time it stages a frame, and the craft that [[Adopt the Craft, Author the Seam]] tells us to adopt wholesale so we can spend our novelty only on the seams. It also leans on the still-unwritten [[Comic and Cinema as Two Registers]] — the comic way of seeing (compress, abstract) against the cinematic one (dilate, embody).
+Graphic storytelling is the craft tradition that several palace citizens are quietly performing. It `enables` [[BLUELINE]]'s whole front half (the storyboard speaks comics before the render speaks cinema). It `couples-with` [[Typography as Meaning]] — the lettering sub-discipline is graphic storytelling's text channel, and in comics word and image are never really separable. It is the body of knowledge [[Frame Designer]] reaches into every time it stages a frame, and the craft that [[Adopt the Craft, Author the Seam]] tells us to adopt wholesale so we can spend our novelty only on the seams. It also leans on [[Comic and Cinema — Two Ways of Seeing]] — the comic way of seeing (compress, abstract) against the cinematic one (dilate, embody).
 
 ## Sources & status
 

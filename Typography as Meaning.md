@@ -16,7 +16,7 @@ links:
   - target: "[[Blocked, Not Prompted]]"
     type: exemplifies
     label: author-the-structure
-  - target: "[[Comic and Cinema as Two Registers]]"
+  - target: "[[Comic and Cinema — Two Ways of Seeing]]"
     type: connects-to
     label: text-transduces-too
   - target: "[[Shop/Lettering]]"

@@ -18,7 +18,7 @@ links:
   - target: "[[Blocked, Not Prompted]]"
     type: exemplifies
     label: balloon-placement-is-geometry
-  - target: "[[Comic and Cinema as Two Registers]]"
+  - target: "[[Comic and Cinema — Two Ways of Seeing]]"
     type: connects-to
     label: text-transduces-too
   - target: "[[Loudon Live Design System]]"
@@ -242,7 +242,7 @@ sharing only the clock (`frame`), which all derive from `(bar,beat)`.
 - **Film sound** — Chion: diegetic/non-diegetic, the three listening modes, the *acousmêtre* (the bodiless
   voice = voiceover).
 - **The palace** — [[The Flow Field is the Spine]] (SFX as the fourth resolution), [[Blocked, Not Prompted]]
-  (balloon placement as authored geometry; keypoint-anchored tails), [[Comic and Cinema as Two Registers]]
+  (balloon placement as authored geometry; keypoint-anchored tails), [[Comic and Cinema — Two Ways of Seeing]]
   (the text layer *transduces too*: comic balloon ↔ cinematic caption — it recapitulates BLUELINE's whole
   structure at a smaller scale), [[Loudon Live Design System]] (the author's voice is the locked typography;
   the diegetic world is hand-lettered).
