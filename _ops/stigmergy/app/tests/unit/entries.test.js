@@ -82,6 +82,19 @@ describe('listEntries', () => {
     expect(claude.has_bundle).toBe(false);
   });
 
+  it('flags .md files that live inside a bundle as is_bundle_file', () => {
+    const list = listEntries(root);
+    // The owned file inside the Kuramoto/ bundle is a bundle file...
+    const handoff = list.find((e) => e.path === 'Kuramoto/Kuramoto — handoff.md');
+    expect(handoff).toBeTruthy();
+    expect(handoff.is_bundle_file).toBe(true);
+    // ...while the owning entry and a plain root entry are not.
+    const kuramoto = list.find((e) => e.path === 'Kuramoto.md');
+    expect(kuramoto.is_bundle_file).toBe(false);
+    const claude = list.find((e) => e.path === 'CLAUDE.md');
+    expect(claude.is_bundle_file).toBe(false);
+  });
+
   it('surfaces the Active Handoff marker via body probe', () => {
     const list = listEntries(root);
     const kuramoto = list.find((e) => e.path === 'Kuramoto.md');
