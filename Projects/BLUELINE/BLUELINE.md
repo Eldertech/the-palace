@@ -47,6 +47,9 @@ links:
   - target: "[[Autodidact Polymaths]]"
     type: couples-with
     label: learn-by-building-the-tool
+  - target: "[[Hand-Drawn 3D Look]]"
+    type: spawned
+    label: hand-drawn-3d-capability
 tags: [project, blueline, music-video, generative, pipeline, sprout]
 ---
 

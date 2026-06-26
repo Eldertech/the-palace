@@ -1,0 +1,15 @@
+# Heavy, regenerable render outputs — regenerate from scripts/. Keep the repo lean.
+# Canon for this proof = the scripts, FIELD-NOTES.md, APPROACHES.md, presentation.html,
+# and the summary atlases (atlas/*.png, catalog/atlas_*.png).
+blender/
+motion/
+stylized/
+blobspace/
+blob-library/
+temporal/
+catalog/lines/
+catalog/motion/
+*.mp4
+*.mov
+*.gif
+*.log

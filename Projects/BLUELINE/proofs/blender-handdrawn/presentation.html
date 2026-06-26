@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en" class="skin-graphite">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>BLUELINE · Hand-drawn from Blender</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=Manrope:wght@200;300;400;500;700&family=JetBrains+Mono:wght@400;500;600&family=Silkscreen:wght@400;700&display=swap');
+
+:root{
+  --serif:'Cormorant Garamond',Georgia,serif;
+  --sans:'Manrope',system-ui,sans-serif;
+  --display:'Anton','Bebas Neue',sans-serif;
+  --mono:'JetBrains Mono',ui-monospace,Menlo,monospace;
+  --pixel:'Silkscreen',monospace;
+  --bg:#0a0a0f; --bg-elev-1:#12121a; --bg-elev-2:#1a1a28; --bg-elev-3:#22222e;
+  --border:#4a4a5e; --border-soft:rgba(255,255,255,.06);
+  --fg-1:#e8e8f0; --fg-2:#c8c8d8; --fg-3:#8a8aa0; --fg-4:#4a4a5a; --fg-on-accent:#0a0a0f;
+  --accent:#e8b84a; --accent-dim:#7a6030; --accent-soft:rgba(232,184,74,.10); --accent-line:rgba(232,184,74,.50);
+  --info:#4a8fff; --success:#00ff66; --danger:#ff2a2a;
+  --text-glow-accent:0 0 12px rgba(232,184,74,.55),0 0 24px rgba(232,184,74,.25);
+  --shadow-2:inset 0 1px 0 rgba(255,255,255,.07),0 6px 16px rgba(0,0,0,.55),0 1px 2px rgba(0,0,0,.50);
+  --shadow-3:inset 0 1px 0 rgba(255,255,255,.10),0 18px 40px -8px rgba(0,0,0,.70),0 4px 10px rgba(0,0,0,.45);
+  --ease:cubic-bezier(.4,0,.2,1); --ease-out:cubic-bezier(.2,.9,.2,1);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%}
+body{
+  background:var(--bg); color:var(--fg-2);
+  font-family:var(--sans); font-weight:300; font-size:16px; line-height:1.5;
+  -webkit-font-smoothing:antialiased;
+}
+.deck{height:100vh; overflow-y:scroll; scroll-snap-type:y mandatory; scroll-behavior:smooth;}
+section{
+  min-height:100vh; scroll-snap-align:start; position:relative;
+  padding:64px 80px 80px; display:flex; flex-direction:column; justify-content:center;
+  border-bottom:1px solid var(--border-soft);
+}
+@media(max-width:820px){ section{padding:56px 24px 64px} }
+
+/* ── type ─────────────────────────────────────────────── */
+.eyebrow{font-family:var(--mono); font-size:11px; font-weight:500; letter-spacing:.18em; text-transform:uppercase; color:var(--fg-3);}
+.eyebrow .am{color:var(--accent)}
+h1{font-family:var(--display); font-weight:400; letter-spacing:.005em; text-transform:none; color:var(--fg-1); line-height:1.02; font-size:clamp(40px,6.5vw,92px);}
+h2{font-family:var(--display); font-weight:400; letter-spacing:.005em; color:var(--fg-1); line-height:1.05; font-size:clamp(30px,4.4vw,56px); margin-bottom:8px;}
+h2 em{font-style:italic; color:var(--accent); font-family:var(--serif); font-weight:400;}
+h3{font-family:var(--sans); font-weight:500; font-size:20px; color:var(--fg-1); letter-spacing:.005em;}
+.lead{font-family:var(--serif); font-weight:300; font-size:clamp(19px,2.1vw,24px); line-height:1.55; color:var(--fg-2); max-width:60ch;}
+p{max-width:64ch; margin-bottom:12px}
+p.sans{font-family:var(--sans)}
+strong{color:var(--fg-1); font-weight:500}
+em.k{font-style:italic; color:var(--fg-1)}
+a{color:var(--accent); text-decoration:none; border-bottom:1px solid var(--accent-line)}
+
+/* wordmark */
+.wm{font-family:var(--display); letter-spacing:.01em; line-height:1; display:inline-flex; align-items:baseline; gap:.18em;}
+.wm .l{color:var(--fg-1)} .wm .s{color:var(--fg-3); font-weight:400}
+.wm .v{font-family:var(--serif); font-style:italic; font-weight:300; color:var(--accent); text-shadow:var(--text-glow-accent);}
+.brand-fixed{position:fixed; top:18px; left:24px; z-index:40; font-size:18px; opacity:.92}
+
+/* ── chips / meta ─────────────────────────────────────── */
+.chips{display:flex; flex-wrap:wrap; gap:8px; margin-top:14px}
+.chip{font-family:var(--mono); font-size:12px; font-weight:500; color:var(--fg-2);
+  border:1px solid var(--border); border-radius:2px; padding:4px 9px; background:var(--bg-elev-1);}
+.chip .key{color:var(--fg-3)}
+.chip.win{border-color:var(--success); color:#bfffcd}
+.chip.fail{border-color:var(--danger); color:#ffd0d0}
+.tier{font-family:var(--mono); font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:var(--accent); border:1px solid var(--accent-line); border-radius:999px; padding:3px 11px;}
+
+/* ── media ────────────────────────────────────────────── */
+.frame{border:1px solid var(--border); border-radius:2px; background:#fff; box-shadow:var(--shadow-2); overflow:hidden}
+.frame img,.frame video{display:block; width:100%; height:auto}
+figcaption{font-family:var(--mono); font-size:12px; color:var(--fg-3); margin-top:8px; letter-spacing:.02em}
+.grid{display:grid; gap:24px}
+.cols-2{grid-template-columns:1fr 1fr}
+.cols-3{grid-template-columns:repeat(3,1fr)}
+@media(max-width:900px){.cols-2,.cols-3{grid-template-columns:1fr}}
+.content{max-width:1180px; width:100%; margin:0 auto}
+.row{display:grid; gap:40px; align-items:center}
+.row.media-left{grid-template-columns:1.05fr .95fr}
+@media(max-width:980px){.row.media-left{grid-template-columns:1fr}}
+
+/* spec card */
+.spec{font-family:var(--mono); font-size:13.5px; line-height:1.7; color:var(--fg-2);
+  background:var(--bg-elev-1); border:1px solid var(--border); border-left:2px solid var(--accent);
+  border-radius:2px; padding:18px 20px; max-width:70ch;}
+.spec .hl{color:var(--fg-1)}
+.spec .neg{color:var(--danger)}
+
+/* numbered list */
+ol.recs{list-style:none; counter-reset:r; display:grid; gap:16px; max-width:78ch}
+ol.recs li{counter-increment:r; position:relative; padding-left:46px; font-family:var(--sans); font-weight:300; color:var(--fg-2)}
+ol.recs li::before{content:counter(r,decimal-leading-zero); position:absolute; left:0; top:0;
+  font-family:var(--mono); font-size:13px; color:var(--accent); border:1px solid var(--accent-line); border-radius:2px; padding:2px 6px}
+ol.recs li strong{color:var(--fg-1)}
+
+/* table */
+table{border-collapse:collapse; width:100%; font-family:var(--sans); font-size:14px; max-width:920px}
+th,td{text-align:left; padding:9px 12px; border-bottom:1px solid var(--border-soft); vertical-align:top}
+th{font-family:var(--mono); font-size:11px; letter-spacing:.12em; text-transform:uppercase; color:var(--fg-3); font-weight:500}
+td.set{font-family:var(--mono); font-size:12.5px; color:var(--fg-2); white-space:nowrap}
+tr.win td{background:var(--success-soft, rgba(0,255,102,.05))}
+.verdict-win{color:var(--success); font-family:var(--mono); font-size:12px}
+.verdict-fail{color:var(--danger); font-family:var(--mono); font-size:12px}
+.verdict-part{color:var(--warn,#ff9b4a); font-family:var(--mono); font-size:12px}
+
+ul.plain{list-style:none; display:grid; gap:10px; max-width:74ch}
+ul.plain li{padding-left:20px; position:relative; font-family:var(--sans); font-weight:300}
+ul.plain li::before{content:'▸'; position:absolute; left:0; color:var(--accent); font-size:12px; top:3px}
+
+.note{font-family:var(--serif); font-style:italic; font-size:18px; color:var(--fg-3); border-top:1px solid var(--border-soft); padding-top:14px; margin-top:10px; max-width:62ch}
+.foot{font-family:var(--mono); font-size:12px; letter-spacing:.14em; text-transform:uppercase; color:var(--fg-3)}
+.foot .am{color:var(--accent)}
+
+/* ── progress dots ───────────────────────────────────── */
+.dots{position:fixed; right:20px; top:50%; transform:translateY(-50%); z-index:40; display:flex; flex-direction:column; gap:11px}
+.dots a{width:8px; height:8px; border-radius:999px; background:transparent; border:1px solid var(--fg-4); transition:all .22s var(--ease)}
+.dots a.on{background:var(--accent); border-color:var(--accent); box-shadow:0 0 8px rgba(232,184,74,.5)}
+@media(max-width:820px){.dots{display:none}}
+
+/* ── review layer ────────────────────────────────────── */
+.rev-toggle{position:fixed; right:20px; bottom:20px; z-index:60; font-family:var(--mono); font-size:11px; letter-spacing:.12em;
+  text-transform:uppercase; color:var(--fg-3); background:var(--bg-elev-2); border:1px solid var(--border); border-radius:999px;
+  padding:7px 13px; cursor:pointer; display:flex; align-items:center; gap:7px;}
+.rev-toggle .led{width:7px; height:7px; border-radius:999px; background:var(--fg-4)}
+body.review-on .rev-toggle{color:var(--accent); border-color:var(--accent-line)}
+body.review-on .rev-toggle .led{background:var(--accent); box-shadow:0 0 8px var(--accent)}
+.rev-add{position:absolute; top:18px; right:24px; display:none; font-family:var(--mono); font-size:11px; letter-spacing:.1em;
+  text-transform:uppercase; color:var(--fg-3); background:var(--bg-elev-1); border:1px dashed var(--border); border-radius:2px;
+  padding:4px 10px; cursor:pointer; z-index:10}
+body.review-on .rev-add{display:inline-block}
+.rev-add:hover{color:var(--accent); border-color:var(--accent-line)}
+.rev-box{display:none; margin-top:18px; max-width:70ch}
+.rev-box.open{display:block}
+.rev-box textarea{width:100%; min-height:70px; background:var(--bg-elev-1); border:1px solid var(--border); border-left:2px solid var(--accent);
+  border-radius:2px; color:var(--fg-1); font-family:var(--mono); font-size:13px; line-height:1.6; padding:11px 13px; resize:vertical}
+.rev-box textarea:focus{outline:none; border-color:var(--accent-line)}
+.rev-has{border-color:var(--accent) !important; color:var(--accent) !important}
+.rev-export{position:fixed; right:20px; bottom:58px; z-index:60; display:none; font-family:var(--mono); font-size:11px;
+  letter-spacing:.1em; text-transform:uppercase; color:var(--fg-2); background:var(--bg-elev-2); border:1px solid var(--border);
+  border-radius:999px; padding:7px 13px; cursor:pointer}
+body.review-on .rev-export{display:block}
+.kbd{font-family:var(--mono); font-size:11px; color:var(--fg-4); border:1px solid var(--border-soft); border-radius:2px; padding:1px 5px}
+</style>
+</head>
+<body>
+<div class="brand-fixed wm"><span class="l">LOUDON</span><span class="s">/</span><span class="v">Live</span></div>
+<nav class="dots" id="dots"></nav>
+<button class="rev-toggle" id="revToggle"><span class="led"></span>Review</button>
+<button class="rev-export" id="revExport">Export notes</button>
+
+<main class="deck" id="deck">
+
+<!-- 1 · COVER -->
+<section data-title="Cover">
+  <div class="content">
+    <div class="eyebrow"><span class="am">BLUELINE</span> · RESEARCH PROOF · 2026·06·25 · <span class="tier" style="display:inline-block">Study</span></div>
+    <h1 style="margin:22px 0 18px">Hand-drawn from Blender —<br>and the seam to gen&nbsp;AI.</h1>
+    <p class="lead">Can a 3D scene render <em class="k">close to our pen-flow ink</em>, composite cleanly with the gen-AI pass, and give us hand-drawn clouds, fire and water? Rendered start-to-finish on this Mac — Blender 5.1 headless, local ComfyUI / SDXL.</p>
+    <div class="row media-left" style="margin-top:34px">
+      <figure class="frame">
+        <img src="blender/city_ink.png" alt="Blender Freestyle ink cityscape">
+        <div style="padding:10px 14px; background:var(--bg-elev-1); border-top:1px solid var(--border-soft)">
+          <figcaption style="margin:0">city · Freestyle sketchy ink · rendered in ≈2&nbsp;seconds</figcaption>
+        </div>
+      </figure>
+      <div>
+        <h3 style="margin-bottom:10px">The short answer</h3>
+        <ul class="plain">
+          <li>Blender draws the <strong>line, value &amp; composition</strong> — fast and deterministic.</li>
+          <li>The gen-AI pass adds the <strong>gestural ink &amp; splatter</strong> Blender can't invent.</li>
+          <li>Water · clouds · smoke render hand-drawn as <strong>atmosphere elements</strong>.</li>
+        </ul>
+        <p class="foot" style="margin-top:20px"><span class="kbd">↓</span> scroll &nbsp;·&nbsp; <span class="kbd">→</span> next &nbsp;·&nbsp; turn on <span style="color:var(--accent)">Review</span> to leave notes</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 2 · THE STYLE -->
+<section data-title="The style">
+  <div class="content">
+    <div class="eyebrow">THE TARGET · <span class="am">locked pen-flow</span></div>
+    <h2>One <em>house</em> style, held constant.</h2>
+    <p class="lead" style="margin:6px 0 22px">Everything here is measured against the style you locked by eye on 2026·06·19. It reads verbatim from <span style="font-family:var(--mono);font-size:14px;color:var(--fg-2)">locked-style.json</span>:</p>
+    <div class="spec">
+      <span class="hl">modern pen and ink illustration</span>, loose gestural linework, bold dramatic sweeping <span class="hl">flow lines</span> and speed streaks, scattered energetic <span class="hl">ink blobs and splatter</span>, stark high-contrast black and white, film-noir deep shadow, <span class="hl">rough white paper</span>, lots of white space, dynamic foreshortening, low canted angle.
+      <div style="margin-top:12px; padding-top:10px; border-top:1px solid var(--border-soft)">
+        <span style="color:var(--fg-3)">negative ·</span> <span class="neg">color · photoreal · 3d render · smooth digital shading · gradient</span>
+      </div>
+    </div>
+    <p class="note">The negative is the whole game: it names a clean 3D render as the enemy. So Blender's job is never to <em>look finished</em> — it's to give honest structure, then get roughed up. Lineage you named: <em class="k">Inoue · sumi-e · noir</em>.</p>
+  </div>
+</section>
+
+<!-- 3 · STILLS -->
+<section data-title="Stills">
+  <div class="content">
+    <div class="eyebrow">PART ONE · <span class="am">Blender draws ink</span></div>
+    <h2>Stills — line and <em>value</em>, in seconds.</h2>
+    <div class="row media-left" style="margin-top:20px">
+      <figure class="frame" style="background:var(--bg-elev-1); border-color:var(--border)">
+        <img src="atlas/atlas_stills.png" alt="Four Blender stills: city and figure in ink and toon">
+        <figcaption style="padding:8px 12px">two scenes × two looks · ink (Freestyle) and toon (Shader-to-RGB)</figcaption>
+      </figure>
+      <div>
+        <h3 style="margin-bottom:8px">Freestyle "sketchy ink"</h3>
+        <p class="sans">The win is the <em class="k">waver</em>. Stacked noise modifiers make the pen wobble; a calligraphy modifier gives pressure; sketchy chaining doubles strokes the way a hand does.</p>
+        <div class="chips">
+          <span class="chip"><span class="key">chaining</span> SKETCHY·3</span>
+          <span class="chip"><span class="key">geo</span> spatial+perlin noise</span>
+          <span class="chip"><span class="key">thickness</span> calligraphy 0.6–4.5</span>
+        </div>
+        <h3 style="margin:20px 0 8px">EEVEE toon ink-wash</h3>
+        <p class="sans">Shader-to-RGB into a 2-band constant ramp = flat spotted blacks / paper white, with a stormy noir sky.</p>
+        <div class="chips">
+          <span class="chip"><span class="key">ramp</span> CONSTANT · ink/paper</span>
+          <span class="chip win"><span class="key">gotcha</span> view-transform = Standard</span>
+        </div>
+        <p class="foot" style="margin-top:18px; color:var(--fg-4)">AgX (Blender 5 default) greys the paper — force Standard.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 4 · MOTION -->
+<section data-title="Motion">
+  <div class="content">
+    <div class="eyebrow">PART TWO · <span class="am">hand-drawn motion</span></div>
+    <h2>Water, clouds, smoke — the ink <em>breathes</em>.</h2>
+    <p class="lead" style="margin:4px 0 20px; max-width:74ch">All procedural — no Mantaflow bake — so they re-render identically. Every frame is a pure function of the playhead, so they sync to the song. <span style="font-family:var(--mono);font-size:13px">(muted · looping)</span></p>
+    <div class="grid cols-3">
+      <figure class="frame">
+        <video src="motion/water.mp4" autoplay loop muted playsinline></video>
+        <figcaption style="padding:8px 12px">water · Ocean modifier → toon+ink</figcaption>
+      </figure>
+      <figure class="frame">
+        <video src="motion/clouds.mp4" autoplay loop muted playsinline></video>
+        <figcaption style="padding:8px 12px">clouds · drifting toon volumes</figcaption>
+      </figure>
+      <figure class="frame">
+        <video src="motion/smoke.mp4" autoplay loop muted playsinline></video>
+        <figcaption style="padding:8px 12px">smoke/fire · rising ink plume</figcaption>
+      </figure>
+    </div>
+    <div class="row media-left" style="margin-top:26px; grid-template-columns:1fr 1fr">
+      <p class="sans"><strong>The boil.</strong> A per-frame handler re-seeds the line noise "on twos" so the ink <em class="k">wavers</em> frame-to-frame like traditional animation, instead of sitting frozen. There's a clean OFF switch back to a steady line.</p>
+      <div class="chips">
+        <span class="chip"><span class="key">water Δ/frame</span> 10.7%</span>
+        <span class="chip"><span class="key">clouds Δ</span> 6.6%</span>
+        <span class="chip"><span class="key">smoke Δ</span> 5.5%</span>
+        <span class="chip"><span class="key">note</span> fire wants a small Mantaflow bake</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 5 · THE SEAM -->
+<section data-title="The seam">
+  <div class="content">
+    <div class="eyebrow">PART THREE · <span class="am">Blender → img2img → pen-flow</span></div>
+    <h2>The seam is a <em>redraw</em>, not a filter.</h2>
+    <div class="row media-left" style="margin-top:18px">
+      <figure class="frame" style="background:var(--bg-elev-1)">
+        <img src="atlas/atlas_denoise_lesson.png" alt="Denoise 0.72 reconstructs the render; 0.95 reaches ink">
+        <figcaption style="padding:8px 12px">left · denoise 0.72 hands the render back &nbsp;|&nbsp; right · denoise 0.95 + loose Canny reaches ink</figcaption>
+      </figure>
+      <div>
+        <p class="sans">Low denoise is a trap — SDXL just reconstructs your 3D render. You reach the locked ink only when you let the model <em class="k">redraw the medium</em>: high denoise with Canny <strong>loosened to ~0.4</strong> so structure only <em>guides</em>. The Blender render becomes a composition seed, not an appearance.</p>
+        <table style="margin-top:14px">
+          <tr><th>Setting</th><th>Verdict</th></tr>
+          <tr><td class="set">denoise 0.72 · canny 0.85</td><td><span class="verdict-fail">● reconstructs render</span></td></tr>
+          <tr><td class="set">denoise 0.90 · canny 0.55</td><td><span class="verdict-part">◐ half-toon</span></td></tr>
+          <tr class="win"><td class="set">denoise 0.95 · canny 0.42</td><td><span class="verdict-win">● reaches pen-flow</span></td></tr>
+        </table>
+      </div>
+    </div>
+    <div class="grid cols-2" style="margin-top:26px">
+      <figure class="frame" style="background:var(--bg-elev-1)">
+        <img src="atlas/atlas_seam.png" alt="Blender line, Blender value, genAI ink">
+        <figcaption style="padding:8px 12px">the pipeline · line → value → gen-AI redraw</figcaption>
+      </figure>
+      <figure class="frame">
+        <img src="stylized/city_push_d95_cn40.png" alt="genAI pen-flow city result">
+        <figcaption style="padding:8px 12px">the payoff · vanishing-point street, speed-lines, splatter, white space</figcaption>
+      </figure>
+    </div>
+    <p class="note">Two hedges, both in the field notes: Canny alone won't hold a <em>figure</em> through a 0.95 redraw — a body needs pose/depth anchors. And SDXL-base reaches it inconsistently; the tuned RunPod ink checkpoint would hit it reliably at lower denoise, keeping more of the staging.</p>
+  </div>
+</section>
+
+<!-- 5b · INK IN 3D -->
+<section data-title="Ink in 3D">
+  <div class="content">
+    <div class="eyebrow">THE BREAKTHROUGH · <span class="am">splatter that lives in space</span></div>
+    <h2>Ink blobs in <em>three dimensions</em>.</h2>
+    <p class="lead" style="margin:4px 0 22px; max-width:76ch">What if the splatter isn't a flat 2D effect — but ink suspended <em class="k">in the scene</em>, so it parallaxes when the camera moves? It can be. <span style="font-family:var(--mono);font-size:13px">(muted · looping)</span></p>
+    <div class="row media-left">
+      <figure class="frame">
+        <video src="blobspace.mp4" autoplay loop muted playsinline></video>
+        <figcaption style="padding:8px 12px">camera trucks · near blobs sweep, far specks hold · buildings occlude ink at their depth</figcaption>
+      </figure>
+      <div>
+        <ol class="recs">
+          <li><strong>Analyze</strong> — find every ink mark in a pen-flow frame, separate blobs from linework, measure their character.</li>
+          <li><strong>Recreate</strong> — synthesize crisp hi-res blobs to that signature: round body + satellites + a thrown spatter tail.</li>
+          <li><strong>Place</strong> — scatter as camera-facing alpha billboards across a depth shell, excluded from Freestyle.</li>
+        </ol>
+        <div class="chips" style="margin-top:16px">
+          <span class="chip"><span class="key">median Ø</span> ~7px</span>
+          <span class="chip"><span class="key">circularity</span> ~1.0 · spiky tail 0.42</span>
+          <span class="chip win"><span class="key">alpha</span> blended · no depth-write (lines stay)</span>
+        </div>
+      </div>
+    </div>
+    <div class="grid cols-2" style="margin-top:24px">
+      <figure class="frame" style="background:#fff">
+        <img src="blob-library/contact.png" alt="analyzed real ink blobs">
+        <figcaption style="padding:8px 12px">1 · analyzed — your real blobs, cut from a pen-flow frame</figcaption>
+      </figure>
+      <figure class="frame" style="background:#fff">
+        <img src="blob-library/synth/contact.png" alt="recreated high-res ink blobs">
+        <figcaption style="padding:8px 12px">2 · recreated — infinite crisp ink tuned to that character</figcaption>
+      </figure>
+    </div>
+    <p class="note">Billboards, not 3D geometry — a real ink-glob seen off-axis looks like a ball and breaks the flat-ink read. A camera-facing card keeps the mark <em>flat drawn ink</em> while giving it a 3D position. Flatness and parallax at once.</p>
+  </div>
+</section>
+
+<!-- 6 · RECOMMENDATION -->
+<section data-title="Recommendation">
+  <div class="content">
+    <div class="eyebrow">FOR BLUELINE · <span class="am">what to do with it</span></div>
+    <h2>Four moves.</h2>
+    <ol class="recs" style="margin-top:18px">
+      <li><strong>Make Freestyle/toon a staging surface.</strong> It already emits most of pen-flow — line, value, exact composition — in ~2&nbsp;s/frame. Add a <em class="k">"draft ink"</em> pass to the Frame Designer staging leg, beside pose / depth / canny.</li>
+      <li><strong>Treat the seam as a redraw.</strong> Feed the Blender render as init at denoise ≥0.9 + loose Canny + pose/depth anchors, on the tuned ink model — to seed composition, not to be preserved.</li>
+      <li><strong>Hand-drawn motion = atmosphere behind figures.</strong> Water is the immediate keeper; clouds are easy; fire wants a small Mantaflow bake through the same ramp. Render with the boil; it stays song-synced.</li>
+      <li><strong>Keep it local for proofs, RunPod for the press.</strong> Stills stylize fine on this Mac (~2&nbsp;min); motion stylization is too slow per frame locally — that belongs on the GPU backend.</li>
+    </ol>
+    <p class="note" style="margin-top:24px">Open question for you · is the Blender Freestyle ink <em>itself</em> close enough to ship as a register — cleaner, more controllable, but missing the organic blob texture — or strictly a seed for the gen-AI ink pass?</p>
+  </div>
+</section>
+
+<!-- 7 · CLOSE -->
+<section data-title="Close">
+  <div class="content">
+    <div class="eyebrow">WHERE IT LIVES · <span class="am">all re-runnable</span></div>
+    <h2 style="margin-bottom:18px">The proof folder.</h2>
+    <div class="grid cols-2" style="gap:32px">
+      <div>
+        <h3 style="margin-bottom:10px">Artifacts</h3>
+        <ul class="plain">
+          <li><span style="font-family:var(--mono);font-size:13px">FIELD-NOTES.md</span> — findings + recommendation</li>
+          <li><span style="font-family:var(--mono);font-size:13px">blender/</span> — 4 stills (ink + toon)</li>
+          <li><span style="font-family:var(--mono);font-size:13px">motion/</span> — water · clouds · smoke (mp4 + frames)</li>
+          <li><span style="font-family:var(--mono);font-size:13px">stylized/</span> — img2img seam results</li>
+          <li><span style="font-family:var(--mono);font-size:13px">blob-library/</span> — analyzed + synthesized ink</li>
+          <li><span style="font-family:var(--mono);font-size:13px">blobspace/</span> — the 3D parallax frames + mp4</li>
+          <li><span style="font-family:var(--mono);font-size:13px">atlas/</span> — the contact sheets in this deck</li>
+        </ul>
+      </div>
+      <div>
+        <h3 style="margin-bottom:10px">Scripts · all headless</h3>
+        <ul class="plain">
+          <li><span style="font-family:var(--mono);font-size:13px">01_stills.py</span> — Freestyle + toon stills</li>
+          <li><span style="font-family:var(--mono);font-size:13px">02_stylize.py / 02b_</span> — SDXL img2img seam</li>
+          <li><span style="font-family:var(--mono);font-size:13px">03_motion.py</span> — water / clouds / smoke + boil</li>
+          <li><span style="font-family:var(--mono);font-size:13px">blob_analyze · _synth · _swarm</span> — ink in 3D</li>
+        </ul>
+        <h3 style="margin:20px 0 10px">Next, if you want</h3>
+        <ul class="plain">
+          <li>Wire the draft-ink pass into Frame Designer</li>
+          <li>Re-run the 0.95 seam on a posed figure (pose+depth)</li>
+          <li>Deposit / promote toward a Shop staging method</li>
+        </ul>
+      </div>
+    </div>
+    <div style="margin-top:48px; padding-top:18px; border-top:1px solid var(--border)">
+      <span class="wm" style="font-size:20px"><span class="l">LOUDON</span><span class="s">/</span><span class="v">Live</span></span>
+      <span class="foot" style="margin-left:18px">· Autodidact Polymaths</span>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<script>
+const deck=document.getElementById('deck');
+const secs=[...document.querySelectorAll('section')];
+const dots=document.getElementById('dots');
+secs.forEach((s,i)=>{const a=document.createElement('a');a.title=s.dataset.title;a.href='#';
+  a.onclick=e=>{e.preventDefault();s.scrollIntoView({behavior:'smooth'});};dots.appendChild(a);});
+const dotEls=[...dots.children];
+const io=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){
+  const i=secs.indexOf(e.target);dotEls.forEach((d,j)=>d.classList.toggle('on',j===i));}});},{threshold:.5});
+secs.forEach(s=>io.observe(s));
+// keyboard nav
+let cur=0;
+function go(d){cur=Math.max(0,Math.min(secs.length-1,cur+d));secs[cur].scrollIntoView({behavior:'smooth'});}
+window.addEventListener('keydown',e=>{
+  if(e.target.tagName==='TEXTAREA')return;
+  if(['ArrowDown','ArrowRight','PageDown',' '].includes(e.key)){e.preventDefault();go(1);}
+  if(['ArrowUp','ArrowLeft','PageUp'].includes(e.key)){e.preventDefault();go(-1);}
+});
+deck.addEventListener('scroll',()=>{const c=deck.scrollTop+window.innerHeight/2;
+  cur=secs.findIndex(s=>s.offsetTop<=c&&s.offsetTop+s.offsetHeight>c);if(cur<0)cur=0;},{passive:true});
+
+// ── review layer ──
+const body=document.body, KEY='blueline-blender-review';
+let notes=JSON.parse(localStorage.getItem(KEY)||'{}');
+secs.forEach((s)=>{
+  const id=s.dataset.title;
+  const add=document.createElement('button');add.className='rev-add';add.textContent='+ note';
+  const box=document.createElement('div');box.className='rev-box';
+  const ta=document.createElement('textarea');ta.placeholder='note on "'+id+'" …';ta.value=notes[id]||'';
+  box.appendChild(ta);
+  s.querySelector('.content').appendChild(box);
+  s.appendChild(add);
+  if(notes[id]){add.classList.add('rev-has');add.textContent='● note';}
+  add.onclick=()=>{box.classList.toggle('open');if(box.classList.contains('open'))ta.focus();};
+  ta.oninput=()=>{notes[id]=ta.value;if(!ta.value)delete notes[id];localStorage.setItem(KEY,JSON.stringify(notes));
+    const has=!!ta.value;add.classList.toggle('rev-has',has);add.textContent=has?'● note':'+ note';};
+});
+document.getElementById('revToggle').onclick=()=>body.classList.toggle('review-on');
+document.getElementById('revExport').onclick=()=>{
+  const lines=secs.map(s=>s.dataset.title).filter(t=>notes[t]).map(t=>'## '+t+'\n'+notes[t]).join('\n\n');
+  const out=lines||'(no notes yet)';
+  navigator.clipboard?.writeText(out).then(()=>alert('Notes copied to clipboard:\n\n'+out),()=>prompt('Copy notes:',out));
+};
+</script>
+</body>
+</html>
