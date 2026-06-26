@@ -10,7 +10,59 @@
 //     a filter narrows to matching entries with their ancestor folders forced
 //     open.
 
+import { scoreEntry } from './pulse.js';
+
 export const ROOT_GROUP_PATH = '(root)';
+
+// The folder paths that must be open for `path`'s row to be visible — its
+// ancestor folders, innermost last. A root-level entry (no slash) sits in the
+// synthetic (root) group. Used by the ?tree=<path> deep-link to reveal a target.
+export function ancestorsToExpand(path) {
+  if (typeof path !== 'string' || path === '') return [];
+  const dirs = path.split('/').slice(0, -1);
+  if (dirs.length === 0) return [ROOT_GROUP_PATH];
+  const out = [];
+  let acc = '';
+  for (const d of dirs) {
+    acc = acc === '' ? d : `${acc}/${d}`;
+    out.push(acc);
+  }
+  return out;
+}
+
+function entryLabel(node) {
+  return node.summary?.title ?? node.name ?? node.path ?? '';
+}
+
+// Compare two entry nodes by the chosen key. Folders are handled by the caller;
+// this only orders entries. name/type ascending, pulse descending; each falls
+// back to title so the order is stable.
+function compareEntries(a, b, key) {
+  if (key === 'type') {
+    const at = a.summary?.type ?? '~~';
+    const bt = b.summary?.type ?? '~~';
+    if (at !== bt) return at.localeCompare(bt);
+    return entryLabel(a).localeCompare(entryLabel(b));
+  }
+  if (key === 'pulse') {
+    const diff = scoreEntry(b.summary ?? {}) - scoreEntry(a.summary ?? {});
+    if (diff !== 0) return diff;
+    return entryLabel(a).localeCompare(entryLabel(b));
+  }
+  return entryLabel(a).localeCompare(entryLabel(b));
+}
+
+// Order a folder's children: folders always first (alpha by name), then entries
+// by `key`. Returns a new array; the input is untouched.
+function sortChildren(children, key) {
+  const copy = [...(children ?? [])];
+  copy.sort((a, b) => {
+    if (a.kind !== b.kind) return a.kind === 'folder' ? -1 : 1;
+    if (a.kind === 'folder') return a.name.localeCompare(b.name);
+    return compareEntries(a, b, key);
+  });
+  return copy;
+}
 
 // Return a root node whose loose entry children are gathered under a synthetic
 // "(root)" folder placed first, ahead of the organizational folders. If there
@@ -39,13 +91,14 @@ function entryMatches(node, q) {
     || (s.type ?? '').toLowerCase().includes(q);
 }
 
-// flattenVisible(root, { expanded, filter }) -> Row[]
+// flattenVisible(root, { expanded, filter, sort }) -> Row[]
 //   Row = { key, kind: 'folder'|'entry'|'bundle-file', depth, node,
 //           isExpanded?, hasChildren?, isTopLevel? }
 // `expanded` is a Set of folder/entry paths the user has opened. A non-empty
 // `filter` forces folders open and drops non-matching entries (and folders with
-// no matching descendant); bundles are NOT force-opened under filter.
-export function flattenVisible(root, { expanded = new Set(), filter = '' } = {}) {
+// no matching descendant); bundles are NOT force-opened under filter. `sort` is
+// an entry-ordering key ('name' | 'type' | 'pulse'); folders stay alpha-first.
+export function flattenVisible(root, { expanded = new Set(), filter = '', sort = 'name' } = {}) {
   const q = (filter || '').trim().toLowerCase();
   const rows = [];
 
@@ -53,7 +106,7 @@ export function flattenVisible(root, { expanded = new Set(), filter = '' } = {})
   // under an active filter).
   function walk(children, depth) {
     let emitted = false;
-    for (const node of children ?? []) {
+    for (const node of sortChildren(children, sort)) {
       if (node.kind === 'folder') {
         const headerIndex = rows.length;
         const isExpanded = q ? true : expanded.has(node.path);
