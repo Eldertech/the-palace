@@ -1,0 +1,13 @@
+{
+  "field": "smoke",
+  "mask": "auto:top:0.6",
+  "anchor": "base",
+  "note": "topology-changing \u2014 sim path, not pure warp",
+  "plate": "plates/smoke_billow.png",
+  "prompt": "thick black smoke billowing violently from the chimney of a lone burning house on a bleak hill, dense rolling plumes, dramatic noir light, hand-drawn with a black chisel-tip marker on rough white cold-press watercolor paper, visible paper tooth, broken dry ink edges, monochrome black and white, lots of white space, confident calligraphic linework, sparse grey dry-brush half-tones, manga and sumi-e ink influence",
+  "seed": 7055,
+  "size": [
+    832,
+    1216
+  ]
+}

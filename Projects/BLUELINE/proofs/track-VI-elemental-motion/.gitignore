@@ -1,0 +1,6 @@
+# Reproducible / bulky — regenerate from the scripts. The curated loops + boards the
+# debrief/gallery actually use live in report-assets/ and ARE committed.
+renders/
+**/__pycache__/
+*.part
+plates/structure_depth.png
