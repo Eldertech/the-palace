@@ -165,12 +165,16 @@ export function useEntryNavigation() {
   };
 }
 
-// Parse `?lens=topology` from the URL. Returns 'topology' or 'pulse'
-// (the default). SSR-safe.
+// The STATE lenses. Pulse is the implicit default (omitted from the URL);
+// topology and tree are named. Unknown values fall back to pulse.
+export const LENSES = new Set(['pulse', 'topology', 'tree']);
+
+// Parse `?lens=topology` / `?lens=tree` from the URL. Returns a known lens id
+// or 'pulse' (the default). SSR-safe.
 export function parseLensFromUrl(searchString) {
   if (typeof searchString !== 'string') return 'pulse';
   const v = new URLSearchParams(searchString).get('lens');
-  return v === 'topology' ? 'topology' : 'pulse';
+  return LENSES.has(v) ? v : 'pulse';
 }
 
 // Build a new search string preserving all params except `lens`. Pulse is
@@ -178,7 +182,7 @@ export function parseLensFromUrl(searchString) {
 export function buildLensSearch(searchString, lens) {
   const params = new URLSearchParams(searchString || '');
   params.delete('lens');
-  if (lens === 'topology') params.set('lens', 'topology');
+  if (lens && lens !== 'pulse' && LENSES.has(lens)) params.set('lens', lens);
   const s = params.toString();
   return s === '' ? '' : `?${s}`;
 }

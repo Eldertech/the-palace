@@ -82,6 +82,9 @@ describe('parseLensFromUrl', () => {
   it('reads ?lens=topology', () => {
     expect(parseLensFromUrl('?lens=topology')).toBe('topology');
   });
+  it('reads ?lens=tree', () => {
+    expect(parseLensFromUrl('?lens=tree')).toBe('tree');
+  });
   it('coerces unknown lens values to pulse', () => {
     expect(parseLensFromUrl('?lens=bogus')).toBe('pulse');
     expect(parseLensFromUrl('?lens=PULSE')).toBe('pulse'); // case-strict
@@ -99,6 +102,9 @@ describe('buildLensSearch', () => {
   });
   it('writes lens=topology', () => {
     expect(buildLensSearch('', 'topology')).toBe('?lens=topology');
+  });
+  it('writes lens=tree', () => {
+    expect(buildLensSearch('', 'tree')).toBe('?lens=tree');
   });
   it('preserves other params (deck, entry, edit)', () => {
     expect(buildLensSearch('?deck=STATE&entry=Foo.md', 'topology'))
