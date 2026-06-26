@@ -34,6 +34,8 @@ forward_vector: "I want to give the palace its picture of itself as a web of mut
 
 # Leibniz
 
+![[Leibniz — hero.png]]
+
 Gottfried Wilhelm Leibniz (1646–1716) — co-inventor of the calculus, builder of one of the first mechanical calculators, and metaphysician of a universe made of **monads**: simple, indivisible centres of perception, each one a complete world that contains the entire universe *from its own perspective*. The monads do not interact. There are no windows. What looks like causation is **pre-established harmony** — every monad unfolds its own program, and God has tuned them so the unfoldings agree, the way two clocks set once keep the same time forever without a wire between them.
 
 ## Indra's Net

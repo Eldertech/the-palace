@@ -26,6 +26,8 @@ links:
 
 # Typography as Meaning
 
+![[Typography as Meaning — hero.png]]
+
 A letterform is not a neutral container for a word — it is a **site of meaning**. Its font, weight, case, the balloon that holds it, the treatment of its strokes, and the space around it encode *who is speaking, how they are saying it, who they are saying it to, and whether the world can hear them*. **Comics and graphic novels** have practiced this with great sophistication for a century — the palace adopts that craft as a general storytelling tool, to be used wherever words meet image.
 
 ## The grammar (inherited from comics lettering)

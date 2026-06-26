@@ -42,6 +42,8 @@ forward_vector: "I am the house philosopher of the palace, the person behind the
 
 # Spinoza
 
+![[Spinoza — hero.png]]
+
 ## 1. Who He Was
 *Section seed.* Dutch-Portuguese rationalist philosopher (1632–1677). Excommunicated from the Amsterdam Sephardic community at 23 for heretical opinions; ground optical lenses for a living; wrote the *Ethics* (1677, posthumous) as a geometric demonstration of a single-substance metaphysics. Died at 44 of a lung condition possibly aggravated by glass dust.
 

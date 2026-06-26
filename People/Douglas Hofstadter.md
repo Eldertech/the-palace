@@ -39,6 +39,8 @@ links:
 ---
 
 # Douglas Hofstadter
+
+![[Douglas Hofstadter — hero.png]]
 ## Analogy as the Core of Cognition
 
 **1945-present** | Cognitive Scientist, Author, Professor

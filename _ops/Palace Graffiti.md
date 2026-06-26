@@ -29,6 +29,8 @@ links:
 
 # Palace Graffiti
 
+![[Palace Graffiti — hero.png]]
+
 **"I am the trickster in the palace."** — Loudon Stearns, 2026-03-24
 
 The palace's HTML comment system has been renamed graffiti. This entry documents what that means and why it matters.
