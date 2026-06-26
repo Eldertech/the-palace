@@ -1,105 +1,110 @@
 import { describe, test, expect, afterEach } from 'vitest';
-import { mkdtempSync, mkdirSync, writeFileSync, existsSync, readdirSync, rmSync } from 'node:fs';
+import { mkdtempSync, writeFileSync, existsSync, readdirSync, rmSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import path from 'node:path';
 import { buildEphemeralPrompt } from '../../src/ephemeral-prompt.js';
-import { buildManifest, buildInitialState, readPageFrontmatter, kebab } from '../../src/enchant.js';
-import { buildCyclePrompt } from '../../src/build-cycle-prompt.js';
 
-// buildEphemeralPrompt brings ANY canon page to life as a one-off — same rich
-// construction as a registered steward's cycle 1, but nothing is written to the
-// registry. These tests pin both halves of that contract: the construction is
-// correct, and it leaves no permanent footprint.
+// buildEphemeralPrompt wakes a page as ITSELF — its identity, its forward vector
+// (its desire), its neighbors — per Pages as Agents. It is NOT a steward cycle.
+// These tests pin both halves: the awaken framing is present, and NONE of the
+// steward role leaks in (the bug Loudon caught: every enchanted page was told it
+// was a permanent steward running cycle 1).
 
-describe('buildEphemeralPrompt', () => {
+// Steward-role words that must never appear in an awaken prompt's FRAMING. The
+// fixture body is controlled (no incidental matches) so a whole-prompt scan is fair.
+const STEWARD_LEAK = [
+  'permanent steward', 'long_duration_background', 'cycle 1', 'this cycle',
+  'TRICKSTER ask', 'SPINNING UP', 'save state', 'blackboard slice', 'board slice',
+  'audition gate', 'iteration 0', 'last_read_cursor', 'posting discipline',
+];
+
+describe('buildEphemeralPrompt — wakes a page as itself', () => {
   let root;
   afterEach(() => { if (root) rmSync(root, { recursive: true, force: true }); root = null; });
 
-  // A temp palace with the skill template, a persistent board, and one page.
-  function makePalace({ home = 'Foo', stage = 'growing', body = 'BODY MARKER LINE', board = [], withFrontmatter = true } = {}) {
+  function makePalace({ home = 'Foo', stage = 'growing', body = 'BODY-MARKER-LINE', vector = 'I will keep proving the seam.', withFrontmatter = true, withAgency = false, links = ['Neighbor A', 'Neighbor B'] } = {}) {
     root = mkdtempSync(path.join(tmpdir(), 'palace-eph-'));
-    mkdirSync(path.join(root, '_ops/swarm/persistent'), { recursive: true });
-    const promptsDir = path.join(root, '.claude/skills/palace-orchestrator/prompts');
-    mkdirSync(promptsDir, { recursive: true });
-    writeFileSync(path.join(promptsDir, 'steward.md'), 'STEWARD SYSTEM home={{home}} cycle={{cycle_id}} stage={{stage_at_last_activation}}');
-    writeFileSync(path.join(root, '_ops/swarm/persistent/blackboard.jsonl'), board.map((m) => JSON.stringify(m)).join('\n'));
-    const page = withFrontmatter
-      ? `---\ntitle: "${home}"\nstage: ${stage}\nforward_vector: "I will keep proving the seam."\nlinks:\n  - target: "[[Neighbor A]]"\n    type: connects-to\n---\n# ${home}\n${body}\n`
+    const linkBlock = links.length
+      ? 'links:\n' + links.map((l) => `  - target: "[[${l}]]"\n    type: connects-to`).join('\n') + '\n'
+      : '';
+    const agency = withAgency ? 'agency_profile:\n  creation: "MAKE-THINGS"\n  practice: "EXAMINE-MYSELF"\n' : '';
+    const fm = withFrontmatter
+      ? `---\ntitle: "${home}"\nstage: ${stage}\nforward_vector: "${vector}"\n${agency}${linkBlock}---\n# ${home}\n${body}\n`
       : `# ${home}\n${body}\n`;
-    writeFileSync(path.join(root, `${home}.md`), page);
+    writeFileSync(path.join(root, `${home}.md`), fm);
     return { home };
   }
 
-  test('builds the interactive one-off prompt: identity inlined, interactive closing, ephemeral session label', () => {
-    makePalace({ board: [{ id: 'x1', type: 'BROADCAST', from: 'Neighbor A', to: '*' }] });
-    const r = buildEphemeralPrompt({ palaceRoot: root, title: 'Foo', today: '2026-06-23' });
+  test('wakes with the three desires, the page identity, the vector — and no steward role', () => {
+    makePalace({ withAgency: true });
+    const r = buildEphemeralPrompt({ palaceRoot: root, title: 'Foo' });
 
     expect(r.ok).toBe(true);
     expect(r.status).toBe('built');
-    expect(r.home).toBe('Foo');
     expect(r.stage).toBe('growing');
-    // identity (the page) is injected in full
-    expect(r.full).toContain('BODY MARKER LINE');
-    expect(r.full).toContain('Your home entry — Foo');
-    // interactive closing (driven live), not the headless orchestrator protocol
-    expect(r.full).toContain('driven live');
-    expect(r.full).toContain('Narrate every write before you make it');
-    expect(r.full).not.toContain('# Output protocol');
-    // the one honest divergence: an ephemeral session label, never "permanent-stewardship"
-    expect(r.full).toContain('ephemeral-foo-2026-06-23');
-    expect(r.full).not.toContain('permanent-stewardship');
+
+    // identity injected in full
+    expect(r.full).toContain('You are awake');
+    expect(r.full).toContain('This is you — Foo');
+    expect(r.full).toContain('BODY-MARKER-LINE');
+
+    // the three desires, in order
+    const iVector = r.full.search(/forward vector is your desire/i);
+    const iCitizen = r.full.search(/good citizen of the palace/i);
+    const iHealthy = r.full.search(/healthy for the palace/i);
+    expect(iVector).toBeGreaterThan(-1);
+    expect(iCitizen).toBeGreaterThan(iVector);
+    expect(iHealthy).toBeGreaterThan(iCitizen);
+
+    // the vector is highlighted, the agency profile injected, neighbors named
+    expect(r.full).toContain('I will keep proving the seam.');
+    expect(r.full).toMatch(/fuller desires/i);
+    expect(r.full).toContain('MAKE-THINGS');
+    expect(r.full).toContain('[[Neighbor A]]');
+    expect(r.full).toContain('[[Neighbor B]]');
+
+    // NONE of the steward role leaks in
+    const lower = r.full.toLowerCase();
+    for (const banned of STEWARD_LEAK) expect(lower).not.toContain(banned.toLowerCase());
   });
 
-  test('leaves NO permanent footprint — no steward dir, no registry, tmp cleaned', () => {
+  test('leaves NO footprint — no tmp agent dir, no registry, no files written', () => {
     makePalace();
-    const before = readdirSync(tmpdir()).filter((n) => n.startsWith('stigmergy-ephemeral-')).length;
-    const r = buildEphemeralPrompt({ palaceRoot: root, title: 'Foo', today: '2026-06-23' });
+    const beforeTmp = readdirSync(tmpdir()).filter((n) => n.startsWith('stigmergy-ephemeral-')).length;
+    const r = buildEphemeralPrompt({ palaceRoot: root, title: 'Foo' });
     expect(r.ok).toBe(true);
-    // nothing under _ops/agents/permanent and no REGISTRY written
+    // the builder reads the page directly — it stages nothing
     expect(existsSync(path.join(root, '_ops/agents/permanent'))).toBe(false);
-    expect(existsSync(path.join(root, '_ops/agents/permanent/REGISTRY.json'))).toBe(false);
-    // the throwaway tmp dir is removed (count of our staging dirs unchanged)
-    const after = readdirSync(tmpdir()).filter((n) => n.startsWith('stigmergy-ephemeral-')).length;
-    expect(after).toBe(before);
+    const afterTmp = readdirSync(tmpdir()).filter((n) => n.startsWith('stigmergy-ephemeral-')).length;
+    expect(afterTmp).toBe(beforeTmp);
   });
 
-  test('tight correlation: identical to a staged steward cycle-1, modulo session label + the throwaway dir path', () => {
-    const { home } = makePalace({ board: [{ id: 'x1', type: 'BROADCAST', from: 'Neighbor A', to: '*' }] });
-    const today = '2026-06-23';
+  test('an optional session note from Loudon is woven in', () => {
+    makePalace();
+    const r = buildEphemeralPrompt({ palaceRoot: root, title: 'Foo', extraMandate: 'wake and let us voice the dispersion filter' });
+    expect(r.full).toMatch(/Loudon's note for this session/);
+    expect(r.full).toContain('wake and let us voice the dispersion filter');
+  });
 
-    // Stage a real steward dir the way enchantSteward would (same buildManifest +
-    // buildInitialState + empty history) and run the SAME builder at cycle 1.
-    const fm = readPageFrontmatter(path.join(root, `${home}.md`));
-    const slug = kebab(home);
-    const dir = path.join(root, '_ops/agents/permanent', slug);
-    mkdirSync(dir, { recursive: true });
-    writeFileSync(path.join(dir, 'manifest.json'), JSON.stringify(buildManifest({ title: home, fm, slug, today }), null, 2) + '\n');
-    writeFileSync(path.join(dir, 'state.json'), JSON.stringify(buildInitialState(), null, 2) + '\n');
-    writeFileSync(path.join(dir, 'history.jsonl'), '');
-    const steward = buildCyclePrompt({ palaceRoot: root, agentDir: dir, cycleN: 1, today, mode: 'interactive' });
-
-    const ephemeral = buildEphemeralPrompt({ palaceRoot: root, title: home, today });
-
-    // Normalize the two known, intentional divergences: the session label
-    // (permanent-stewardship-* vs ephemeral-*) and the first-activation line that
-    // names the agent's directory (a throwaway tmp path vs the permanent dir).
-    const norm = (s) => s
-      .replace(/permanent-stewardship-foo-2026-06-23|ephemeral-foo-2026-06-23/g, 'SESSION')
-      .replace(/The directory at `[^`]*` was created today/g, 'The directory at `DIR` was created today');
-
-    expect(norm(ephemeral.full)).toBe(norm(steward.full));
+  test('a page with no forward vector wakes with a listen-for-it fallback, not a blank', () => {
+    makePalace({ vector: '', withFrontmatter: true });
+    // write a page that genuinely lacks the field
+    writeFileSync(path.join(root, 'Foo.md'), '---\ntitle: "Foo"\nstage: seed\n---\n# Foo\nBODY-MARKER-LINE\n');
+    const r = buildEphemeralPrompt({ palaceRoot: root, title: 'Foo' });
+    expect(r.ok).toBe(true);
+    expect(r.full).toMatch(/no forward vector yet/i);
   });
 
   test('a title with no page returns not_found', () => {
     makePalace();
-    const r = buildEphemeralPrompt({ palaceRoot: root, title: 'Ghost', today: '2026-06-23' });
+    const r = buildEphemeralPrompt({ palaceRoot: root, title: 'Ghost' });
     expect(r.ok).toBe(false);
     expect(r.status).toBe('not_found');
   });
 
   test('a frontmatter-less page (a learning material, not a canon entry) returns no_frontmatter', () => {
     makePalace({ home: 'Plain', withFrontmatter: false });
-    const r = buildEphemeralPrompt({ palaceRoot: root, title: 'Plain', today: '2026-06-23' });
+    const r = buildEphemeralPrompt({ palaceRoot: root, title: 'Plain' });
     expect(r.ok).toBe(false);
     expect(r.status).toBe('no_frontmatter');
   });

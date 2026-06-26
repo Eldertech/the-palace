@@ -218,8 +218,10 @@ export default function AgentLaunchModal({ home, mandateSeed = '', mode = 'stewa
                   <div><b style={{ color: 'var(--phosphor)' }}>posture</b> · {construction.posture}</div>
                   <div><b style={{ color: 'var(--phosphor)' }}>framing</b> · {construction.framing}</div>
                 </div>
-                {/* Context-layer toggles — trim the OPTIONAL Tier-3 layers. The
-                    identity (the page) + state are locked on (they are the agent). */}
+                {/* Context-layer toggles — trim the OPTIONAL Tier-3 layers. Steward
+                    only: a woken page (ephemeral) has no board/state/staging layers
+                    to trim — it wakes from itself, its desire, and its neighbors. */}
+                {!isEphemeral ? (
                 <div data-testid="agent-toggles" style={{ marginTop: 8, display: 'flex', gap: 14, flexWrap: 'wrap', alignItems: 'center' }}>
                   <span style={{ fontSize: 10, color: 'var(--phosphor-dim)', textShadow: 'none', textTransform: 'uppercase', letterSpacing: '.06em' }}>
                     context layers
@@ -247,6 +249,7 @@ export default function AgentLaunchModal({ home, mandateSeed = '', mode = 'stewa
                     </label>
                   ))}
                 </div>
+                ) : null}
               </div>
             ) : null}
           </div>
