@@ -13,3 +13,9 @@ catalog/motion/
 *.mov
 *.gif
 *.log
+# follow-up proofs: keep scripts + reports + key comparison images; drop heavy intermediates
+*.exr
+followups/*/before/
+followups/*/after/
+followups/*/clip/
+followups/**/*_frames/
