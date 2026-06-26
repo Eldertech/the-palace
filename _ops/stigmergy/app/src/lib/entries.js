@@ -125,6 +125,12 @@ function summarize(relPath, fm, body) {
     body_size: typeof body === 'string' ? body.length : 0,
     has_bundle: false, // patched in caller (needs absolute path)
     icon: null,        // patched in caller — palace-relative path to the bundle avatar, if any
+    // True when this .md lives INSIDE some entry's bundle folder (SCHEMA §8
+    // owned file: a baton/plan/staging/context/sketch, not a first-class
+    // entry). Patched in listEntries' second pass — it needs the full set of
+    // bundle dirs, which isn't known per-file. PULSE hides these by default;
+    // the TREE lens nests them under their owning entry.
+    is_bundle_file: false,
     has_active_handoff: markers.has_active_handoff,
     has_stewardship_marker: markers.has_stewardship_marker,
   };
@@ -136,6 +142,10 @@ function summarize(relPath, fm, body) {
 export function listEntries(palaceRoot) {
   const root = resolve(palaceRoot);
   const out = [];
+  // Palace-relative bundle dirs (e.g. `Projects/Foo`) for every entry that
+  // owns one. Collected during the walk so the second pass can flag which
+  // .md files live inside a bundle.
+  const bundleDirRels = [];
   for (const rel of walkMarkdownFiles(root)) {
     const abs = join(root, rel);
     let text;
@@ -145,7 +155,19 @@ export function listEntries(palaceRoot) {
     const bundleDir = bundleDirFor(abs);
     summary.has_bundle = bundleDir !== null;
     summary.icon = bundleDir ? iconRelFor(root, bundleDir) : null;
+    if (bundleDir) {
+      bundleDirRels.push(bundleDir.slice(root.length + 1).replaceAll(sep, '/'));
+    }
     out.push(summary);
+  }
+  // Second pass: a .md is a bundle file when its path sits inside some entry's
+  // bundle dir (`Projects/Foo/...` under bundle `Projects/Foo`). The owning
+  // entry itself (`Projects/Foo.md`) is NOT inside `Projects/Foo/`, so it stays
+  // a first-class entry. Skips entries that own a bundle (a bundle never nests
+  // inside another's), keeping the common case cheap.
+  for (const summary of out) {
+    if (summary.has_bundle) continue;
+    summary.is_bundle_file = bundleDirRels.some((d) => summary.path.startsWith(d + '/'));
   }
   return out;
 }

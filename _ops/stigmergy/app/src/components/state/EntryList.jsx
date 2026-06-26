@@ -114,6 +114,12 @@ export default function EntryList({ entries = [], loadState, error, onSelect }) 
   const [filter, setFilter] = useState('');
   const [sortKey, setSortKey] = useState('pulse');
   const [sortDir, setSortDir] = useState(DEFAULT_DIR.pulse);
+  // Bundle files (SCHEMA §8 owned files: batons, plans, staging, context)
+  // are not first-class entries — they're an entry's private substrate. PULSE
+  // is the vitality triage list, so it hides them by default; the toggle and
+  // the TREE lens are where they belong. Off by default = the flat list shows
+  // only entries that stand on their own.
+  const [showBundleFiles, setShowBundleFiles] = useState(false);
 
   // Always pulse-stamp first (the dot meter shows score regardless of sort
   // column), then apply the column sort on top.
@@ -132,15 +138,23 @@ export default function EntryList({ entries = [], loadState, error, onSelect }) 
     }
   };
 
+  // Hide bundle files unless the toggle is on. This is the universe the
+  // filter and the header count operate over, so "N/M entries" reflects what
+  // PULSE actually triages, not the raw .md count.
+  const base = useMemo(
+    () => (showBundleFiles ? sorted : sorted.filter((e) => !e.is_bundle_file)),
+    [sorted, showBundleFiles],
+  );
+
   const filtered = useMemo(() => {
     const q = filter.trim().toLowerCase();
-    if (!q) return sorted;
-    return sorted.filter((e) =>
+    if (!q) return base;
+    return base.filter((e) =>
       (e.title ?? '').toLowerCase().includes(q)
       || (e.path ?? '').toLowerCase().includes(q)
       || (e.type ?? '').toLowerCase().includes(q)
     );
-  }, [filter, sorted]);
+  }, [filter, base]);
 
   if (loadState === 'loading') {
     return (
@@ -161,7 +175,7 @@ export default function EntryList({ entries = [], loadState, error, onSelect }) 
   }
 
   return (
-    <Box title={`PULSE  --  vitality lens  (${filtered.length}/${entries.length} entries)`} tone="double">
+    <Box title={`PULSE  --  vitality lens  (${filtered.length}/${base.length} entries)`} tone="double">
       <div style={{ marginBottom: 8, display: 'flex', gap: 8, alignItems: 'center' }}>
         <span style={{ color: 'var(--phosphor-dim)', textShadow: 'none', fontSize: 12 }}>
           filter:
@@ -181,6 +195,22 @@ export default function EntryList({ entries = [], loadState, error, onSelect }) 
             outline: 'none', padding: '2px 0',
           }}
         />
+        <label
+          data-testid="pulse-bundle-toggle"
+          style={{
+            display: 'inline-flex', alignItems: 'center', gap: 6,
+            cursor: 'pointer', whiteSpace: 'nowrap',
+            color: 'var(--phosphor-dim)', textShadow: 'none', fontSize: 12,
+          }}
+        >
+          <input
+            type="checkbox"
+            checked={showBundleFiles}
+            onChange={(e) => setShowBundleFiles(e.target.checked)}
+            style={{ accentColor: 'var(--phosphor)', cursor: 'pointer', margin: 0 }}
+          />
+          show bundle files
+        </label>
       </div>
 
       <div data-testid="pulse-header" style={{
