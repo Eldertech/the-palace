@@ -43,15 +43,13 @@ forward_vector: "I take all available opportunities to integrate creation, tools
 
 Loudon's framework for learning through making: four projections of a single higher-dimensional reality, cast by the light of curiosity into comprehensible dimensions. They tag everything in the palace.
 
-**Creation** (publicly "Music") — the drive to make things. Learning happens through building, not prerequisite accumulation. The public name keeps what "Creation" alone loses: beauty, taste, cultural perspective, the communication making enables.
+**Creation** (music) — the drive to make things. Learning happens through building, not prerequisite accumulation. The public name keeps what "Creation" alone loses: beauty, taste, cultural perspective, the communication making enables.
 
-**Tools** (publicly "Technology") — instruments that extend capability: AI, code, Max/MSP, mathematics, visualization. A philosophy is a tool — applied to a problem the way you apply a bandpass filter. Skillful tool use IS understanding expressed through a different attribute.
+**Tools** (Technology) — instruments that extend capability: AI, code, Max/MSP, mathematics, visualization. A philosophy is a tool — applied to a problem the way you apply a bandpass filter. Skillful tool use IS understanding expressed through a different attribute.
 
-**Philosophy** — the love of wisdom and cross-domain curiosity; the connective tissue. Build from first principles, test through dialectic, ground in experience, hold contraries as generative, seek unity beneath distinct phenomena, connect to others' ideas.
+**Philosophy** — connection to the wider world history of ideas, the love of wisdom and cross-domain curiosity; the connective tissue. Build from first principles, test through dialectic, ground in experience, hold contraries as generative, seek unity beneath distinct phenomena, connect to others' ideas.
 
-**Practice** — the iterative, embodied process: sustainability, rhythm, health, daily discipline, community care. The *how*. Without it the other pillars stay theoretical. (The name was hard-won — it replaced "wellbeing"; that story is in the companion.)
-
-The cycle: **things** to make with **tools** by **thinking** and **acting** — which inevitably reveals more things to make. (Repeats without end.)
+**Practice** — the iterative, embodied process: sustainability, rhythm, health, daily discipline, community care. The *how*. Without it the other pillars stay theoretical. 
 
 ## The trajectory: specific → general
 
