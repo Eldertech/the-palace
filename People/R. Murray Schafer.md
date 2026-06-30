@@ -13,7 +13,12 @@ energy: high
 hook_quality: 9
 beauty: 9
 who_leads: shared
-domain: Musician/Composer
+born_year: 1933
+died_year: 2021
+domains:
+  - music
+  - acoustic ecology
+  - soundscape studies
 forward_vector: "I keep pulling ears toward the world outside the studio — teaching that every environment is already composing, that listening is making, and that the soundscape is the score."
 links:
   - target: "[[Source Library]]"

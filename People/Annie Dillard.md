@@ -13,7 +13,12 @@ energy: high
 hook_quality: 9
 beauty: 9
 who_leads: shared
-domain: Writer
+born_year: 1945
+died_year:
+domains:
+  - literature
+  - essay
+  - nature writing
 forward_vector: "I keep proving that attention is a learnable discipline — that seeing slowly and writing the same hour every day is not a personality trait but a practice anyone can build. I want to be the entry that turns Dillard's desk ritual into a transferable studio method, so every maker who reads me leaves with a concrete daily structure, not just an inspiration."
 links:
   - target: "[[Source Library]]"

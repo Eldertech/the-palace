@@ -13,7 +13,12 @@ energy: high
 hook_quality: 9
 beauty: 9
 who_leads: shared
-domain: Filmmaker
+born_year: 1943
+died_year:
+domains:
+  - film
+  - cinema
+  - philosophy
 forward_vector: "I keep showing that silence and patience are a method, not an absence — that waiting years between works is how you let something true surface instead of forcing it. I want every creator in the palace who feels the pull to rush to find me and remember: the long gap is the work."
 links:
   - target: "[[Source Library]]"

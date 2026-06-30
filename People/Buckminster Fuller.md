@@ -13,7 +13,12 @@ energy: high
 hook_quality: 9
 beauty: 9
 who_leads: shared
-domain: Systems Thinker
+born_year: 1895
+died_year: 1983
+domains:
+  - design science
+  - architecture
+  - systems thinking
 forward_vector: "I keep pushing the design-science question into every creative decision — how do I do more with less? — and I want to be the entry that teaches the palace to ephemeralize: find the elegant solution that does more with fewer moving parts."
 links:
   - target: "[[Source Library]]"

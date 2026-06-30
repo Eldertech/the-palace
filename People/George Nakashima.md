@@ -13,7 +13,12 @@ energy: high
 hook_quality: 9
 beauty: 9
 who_leads: shared
-domain: Maker/Craftsman
+born_year: 1905
+died_year: 1990
+domains:
+  - woodworking
+  - furniture design
+  - craft
 forward_vector: "I keep showing that the material already knows its shape — every split, knot, and burl is a message, and a craftsman's job is to listen hard enough to hear it."
 links:
   - target: "[[Source Library]]"
