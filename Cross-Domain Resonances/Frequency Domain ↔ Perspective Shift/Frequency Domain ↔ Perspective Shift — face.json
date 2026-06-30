@@ -1,0 +1,9 @@
+{
+  "title": "Frequency Domain \u2194 Perspective Shift",
+  "idiom": "scientific woodcut with a Fourier-era engraving style \u2014 dual panels, one showing a waveform oscillating in time, the other showing frequency spikes, joined by a transformation arrow, evoking 18th-century scientific illustration",
+  "hero_prompt": "Wide darkened backdrop, a scientific woodcut engraving in the style of 18th-century natural philosophy illustration: two side-by-side panels separated by a bold transformation arrow. Left panel \u2014 a time-domain waveform, sinuous and cresting, amplitude over time rendered as an engraved line. Right panel \u2014 frequency-domain spikes rising from a baseline, sharp and vertical, the same signal made visible in a different coordinate system. The arrow between them glows faintly, suggesting mathematical transformation, not magic. Figures studying the two panels are silhouetted at the bottom \u2014 one woman, one man, balanced. Monochrome engraving aesthetic with aged paper tone. No letters, numerals, words, labels, or text of any kind \u2014 purely pictorial.",
+  "icon_prompt": "Bold high-contrast square emblem: a thick double-headed arrow pointing left and right, with a sinuous waveform on the left and a set of three vertical frequency spikes on the right. The arrow is the visual anchor \u2014 wide, geometric, unmistakable at 24px. Deep navy background, white linework only, no fine detail, no text, no letters, no numerals \u2014 purely a symbol of two-way transformation.",
+  "seeds": {},
+  "rendered_at": "2026-06-30T19:56:11Z",
+  "history": []
+}

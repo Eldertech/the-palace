@@ -32,6 +32,8 @@ links:
 
 # Worktree Practice
 
+![[Worktree Practice — hero.png]]
+
 For any sustained, commit-producing work in the palace, spin up an isolated **git worktree** — its own branch, its own HEAD, its own directory — before starting, rather than working in the shared primary checkout. The machinery lives in `_ops/worktree/` (`new-worktree.mjs` + the `symlinks.json` manifest + `SKILL.md`): a worktree is created with `node _ops/worktree/new-worktree.mjs --name <branch> --profile <p>` and torn down with `--remove`.
 
 ## Why it exists

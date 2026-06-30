@@ -32,6 +32,8 @@ links:
 ---
 
 # Saturation ↔ Richness
+
+![[Saturation ↔ Richness — hero.png]]
 ## Adding Harmonics Adds Complexity and Warmth
 
 **Pattern:** Pushing a system slightly past its linear range adds harmonic complexity. Clean is precise. Saturated is rich. Too much = distortion (破坏). Just right = warmth (enrichment).

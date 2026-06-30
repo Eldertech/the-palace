@@ -1,0 +1,9 @@
+{
+  "title": "Saturation \u2194 Richness",
+  "idiom": "Haeckel-style scientific engraving \u2014 a precise technical diagram rendered with the warmth of a 19th-century naturalist plate",
+  "hero_prompt": "Wide 12:5 format, dark sepia-toned background. A Haeckel-style scientific engraving showing a single clean waveform on the left transforming rightward into a rich harmonic stack \u2014 like a tree of overtones branching upward from a single root frequency. The lines are hand-engraved, precise yet organic, with fine crosshatching giving depth to the harmonic branches. At center a glowing tube filament suggests warmth at the threshold. Balanced group of a woman and a man at laboratory instruments in the foreground, rendered in the same engraving style. No letters, numerals, words, labels \u2014 purely pictorial.",
+  "icon_prompt": "Bold high-contrast square emblem on near-black background: a single thick waveform line on the left that fans into three thicker harmonic arcs on the right, like a river delta. No fine linework \u2014 all strokes at least 3px equivalent. Warm amber or golden tones on black. No letters, numerals, words, labels.",
+  "seeds": {},
+  "rendered_at": "2026-06-30T19:56:11Z",
+  "history": []
+}

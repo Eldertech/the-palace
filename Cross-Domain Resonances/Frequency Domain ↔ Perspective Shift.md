@@ -35,6 +35,8 @@ links:
 ---
 
 # Frequency Domain ↔ Perspective Shift
+
+![[Frequency Domain ↔ Perspective Shift — hero.png]]
 ## Same Data, Different View Reveals Different Truth
 
 **Pattern:** Transforming perspective reveals information invisible in original view. Same data, different coordinate system, different insights.
