@@ -66,7 +66,7 @@ Hand-drawn / classical / printmaking / abstract — **never** glossy 3D-render, 
 3. **Place** — copy into the entry's bundle by the convention; embed the hero; commit `enrich(<Entry>): hero + icon — purpose: visual identity (hand-drawn)`. Git is the biography.
 4. **Show** — [[STIGMERGY]] renders the avatar in board `from` headers, the STATE PULSE list, and the companion titlebar (the `EntryAvatar` component), and the hero as the page's fixed backdrop.
 
-The reusable tooling lives at `_ops/scratch/hero-icon-proving/` — `prompts.json` → `batch.py generate | place | gallery`. It is the seed of the autonomous distiller below. The STIGMERGY display side shipped on branch `feature/stigmergy-entry-avatars`.
+The reusable tooling now lives in **this entry's own bundle** (`Shop/Hero and Avatar Maker/`), tracked in git — the Maker owns its render path, no longer dependent on ephemeral scratch. Two tools share **one** render implementation: **`make_faces.py`** is the batch driver (`prompts.json` → `generate | place | gallery | plan`, endpoint up once for the whole batch, parked in a `finally`), and **`regen_one.py`** the single-page render behind the STIGMERGY companion door. Both place by the entry's *real* path (`md.parent/<Title>/`, so any location works — Projects, People, Bridges, Shop, hubs), add the hard ANTI_TEXT clause, and write a `<Title> — face.json` sidecar so a re-ask can iterate from the prior prompt. Raw renders stay in the gitignored `_renders/` working dir; only finals copy into each entry's bundle. *(The older project-only scripts in `_ops/scratch/hero-icon-proving/` — `batch.py`/`batch_hubs.py` — are superseded by `make_faces.py`.)* The STIGMERGY display side shipped on branch `feature/stigmergy-entry-avatars`.
 
 ## Scope & priority
 
