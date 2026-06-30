@@ -51,6 +51,9 @@ links:
   - target: "[[Hilaritas Generator — Context]]"
     type: connects-to
     label: context-companion
+  - target: "[[Quality Manifesto]]"
+    type: connects-to
+    label: signal-redirector
 forward_vector: "I want to build out the learning architect concept into a specific curriculum — answering whether hilaritas can be deliberately designed for."
 ---
 

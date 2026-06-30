@@ -20,6 +20,33 @@ links:
   - target: "[[Endosymbiosis]]"
     type: enables
     label: symbiotic-infrastructure
+  - target: "[[Kokoro]]"
+    type: couples-with
+    label: narration-pipe
+  - target: "[[Manim CE]]"
+    type: couples-with
+    label: render-pipe
+  - target: "[[ComfyUI]]"
+    type: couples-with
+    label: stills-pipe
+  - target: "[[Remotion]]"
+    type: couples-with
+    label: timeline-pipe
+  - target: "[[Stable Audio Open]]"
+    type: couples-with
+    label: post-processes
+  - target: "[[Whisper]]"
+    type: couples-with
+    label: caption-pipe
+  - target: "[[Matplotlib]]"
+    type: couples-with
+    label: title-card-fallback
+  - target: "[[Kuramoto Coupling]]"
+    type: connects-to
+    label: first-recipe-testbed
+  - target: "[[Loudon Live]]"
+    type: enables
+    label: finishing-pipeline
 tags: [specialist, shop, plumbing, audio, video, conversion]
 ---
 

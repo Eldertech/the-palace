@@ -57,6 +57,18 @@ links:
   - target: "[[Boundary-Crossing Instruments]]"
     type: mirrors
     label: lti-to-ltv-boundary
+  - target: "[[2D Wavetable Catalog]]"
+    type: connects-to
+  - target: "[[Action Potential Oscillator]]"
+    type: connects-to
+  - target: "[[Bessel Functions in Synthesis]]"
+    type: connects-to
+  - target: "[[Crystal Synthesizer]]"
+    type: connects-to
+  - target: "[[Hilaritas Generator]]"
+    type: connects-to
+  - target: "[[Progressive Staging]]"
+    type: connects-to
 forward_vector: "I want to become a working set of five Loudon Live sessions, with Stage 1 (the Mathieu Resonator in codebox~) shipped first as a complete pedagogical artifact — every named object taught, every concept media-supported, every cross-domain hook landed. I want to be the entry every modulation-with-period device in the palace eventually links back to, and the proof that the LTI assumption is a choice, not the territory."
 ---
 

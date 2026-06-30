@@ -47,6 +47,10 @@ links:
   - target: "[[Map Build Ceremony]]"
     type: connects-to
     label: feeds-the-topology-lens
+  - target: "[[Baton Ceremony]]"
+    type: connects-to
+  - target: "[[STIGMERGY v2.0 — Consolidation & Primary Interface]]"
+    type: connects-to
 forward_vector: "I want to become the single terminal Loudon lives in — to end the bounce between Obsidian and the board by making the palace's three faces (what is, what's waiting, what happened) the literal top-level navigation, so the retrospective/prospective discipline stops being a rule he has to remember and becomes the shape of the screen. I want git to be visibly the truth, the schema to be un-mistypeable because the UI is the form, and every enrichment to render where it lives. My open edge: I am a reading-and-command surface that also edits, and I must never let editing convenience erode the one thing that keeps the whole system honest — that the commit is the record and nothing is real until it is recorded."
 ---
 

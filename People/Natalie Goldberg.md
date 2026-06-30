@@ -26,6 +26,9 @@ links:
   - target: "[[Quality Manifesto]]"
     type: connects-to
     label: showing-up
+  - target: "[[Shunryu Suzuki]]"
+    type: connects-to
+    label: zen-through-making
 ---
 
 # Natalie Goldberg

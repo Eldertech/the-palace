@@ -18,6 +18,12 @@ links:
   - target: "[[4 Pillars Framework - The Founding Conversation]]"
     type: connects-to
     label: cautionary-tale
+  - target: "[[Weave Ceremony]]"
+    type: enables
+    label: governed-by
+  - target: "[[Deposit Ceremony]]"
+    type: enables
+    label: rule-for
 forward_vector: "I keep the canon/learning-material line legible by the cheapest possible signal — frontmatter — and I watch how well that bright line holds, ready to be sharpened or relaxed as the swarm bumps against the permeable seam."
 ---
 

@@ -37,6 +37,9 @@ links:
   - target: "[[Confucianism]]"
     type: contradicts
     label: dao-vs-li
+  - target: "[[Quality Manifesto]]"
+    type: connects-to
+    label: subtraction-reveals
 ---
 
 # Lao Tzu

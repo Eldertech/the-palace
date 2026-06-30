@@ -16,6 +16,14 @@ links:
   - { target: "[[Shop/D3.js]]", type: connects-to, label: alternative-to }
   - { target: "[[Shop/Matplotlib]]", type: connects-to, label: alternative-to }
   - { target: "[[Shop/D3.js]]", type: enables, label: built-on }
+  - target: "[[D3.js]]"
+    type: connects-to
+  - target: "[[Flocking]]"
+    type: connects-to
+  - target: "[[Matplotlib]]"
+    type: connects-to
+  - target: "[[p5.js]]"
+    type: connects-to
 tags: [specialist, shop, interactive, data-viz, web, charts, stub]
 ---
 

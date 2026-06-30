@@ -36,6 +36,9 @@ links:
   - target: "[[Hilaritas Generator]]"
     type: connects-to
     label: practice-is-piece
+  - target: "[[Cross-Domain Resonances]]"
+    type: exemplifies
+    label: listening-as-bridge
 ---
 
 # Pauline Oliveros

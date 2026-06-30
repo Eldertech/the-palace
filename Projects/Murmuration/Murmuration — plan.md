@@ -5,6 +5,10 @@ links:
   - target: "[[Murmuration]]"
     type: connects-to
     label: plan-for
+  - target: "[[Diversity of Thought in Many-Agent Systems]]"
+    type: connects-to
+  - target: "[[Review Layer]]"
+    type: connects-to
 forward_vector: "I hold Murmuration's live work-state — open decisions and a done trail — so the next steward or session picks up without re-deriving where the build stands. My end-state is to stay an accurate read-model of the project's forward vector, never a second copy of it."
 ---
 

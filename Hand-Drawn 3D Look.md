@@ -35,6 +35,9 @@ links:
   - target: "[[The Flow Field is the Spine]]"
     type: connects-to
     label: one-field-for-everything
+  - target: "[[Figure Rig]]"
+    type: enables
+    label: figure-staging
 ---
 
 # Hand-Drawn 3D Look

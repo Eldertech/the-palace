@@ -18,6 +18,18 @@ links:
   - { target: "[[Shop/Remotion]]", type: connects-to, label: alternative-to }
   - { target: "[[Kuramoto Coupling]]", type: connects-to, label: round-1-test-bed }
   - { target: "[[Frequency-Time Duality]]", type: mirrors, label: visual-temporal-duality }
+  - target: "[[Loudon Live Design System]]"
+    type: enables
+    label: skin-token-source
+  - target: "[[ffmpeg]]"
+    type: couples-with
+    label: mux-partner
+  - target: "[[LaTeX]]"
+    type: couples-with
+    label: shares-tex-pipeline-with
+  - target: "[[Matplotlib]]"
+    type: connects-to
+    label: sandboxed-fallback
 tags: [specialist, shop, motion, math, animation]
 ---
 

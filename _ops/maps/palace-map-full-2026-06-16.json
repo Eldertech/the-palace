@@ -2,11 +2,17 @@
   "meta": {
     "generated": "2026-06-16",
     "scope": "full",
-    "node_count": 310,
-    "ops_node_count": 34,
-    "edge_count": 1963,
+    "node_count": 335,
+    "ops_node_count": 35,
+    "edge_count": 2541,
     "ghost_taxonomy": {
-      "error_ghosts": [],
+      "error_ghosts": [
+        {
+          "source": "Maker",
+          "target": "Four Pillars",
+          "resolves_to": "FOUR PILLARS"
+        }
+      ],
       "ops_ghosts": [
         "Baton Ceremony",
         "Deposit Ceremony",
@@ -53,9 +59,16 @@
         {
           "target": "Capability-first prototyping",
           "sources": [
+            "Steer the Generator",
             "LoRA Trainer",
             "RunPod GPU Backend",
             "BLUELINE \u2014 Production Plan"
+          ]
+        },
+        {
+          "target": "ControlNet Workflow Mastery",
+          "sources": [
+            "ComfyUI"
           ]
         },
         {
@@ -78,15 +91,21 @@
           ]
         },
         {
-          "target": "Flocking \u2014 Maker's Comparison Recommendation",
+          "target": "GEMMA4_GUIDE",
           "sources": [
-            "shop-header \u2014 Maker's Comparison Recommendation"
+            "Gemma 4 \u2014 Local Coordination Guide"
           ]
         },
         {
           "target": "Go-with-the-Flow",
           "sources": [
             "The Flow Field is the Spine"
+          ]
+        },
+        {
+          "target": "Graphviz",
+          "sources": [
+            "Mermaid"
           ]
         },
         {
@@ -102,15 +121,53 @@
           ]
         },
         {
+          "target": "Kuramoto Coupling \u2014 8-Lesson Quiz Series",
+          "sources": [
+            "Kuramoto Coupling"
+          ]
+        },
+        {
+          "target": "Kuramoto Coupling \u2014 Quiz Answer Key",
+          "sources": [
+            "Kuramoto Coupling"
+          ]
+        },
+        {
           "target": "Latent Space Navigation",
           "sources": [
             "Wavetable Synthesis -- Research & Higher-Dimensional Design"
           ]
         },
         {
+          "target": "Line-Art Layer Decomposition",
+          "sources": [
+            "LaMa",
+            "SAM",
+            "Depth Anything"
+          ]
+        },
+        {
+          "target": "Loudon Live Post-producer \u2014 Log",
+          "sources": [
+            "Loudon Live Post-producer"
+          ]
+        },
+        {
           "target": "Loudon Live \u2014 asset plan",
           "sources": [
             "Loudon Live Design System"
+          ]
+        },
+        {
+          "target": "Multiplane Animation",
+          "sources": [
+            "The 2.5D Paper Stack"
+          ]
+        },
+        {
+          "target": "Plotly",
+          "sources": [
+            "Matplotlib"
           ]
         },
         {
@@ -147,6 +204,43 @@
           "target": "Toolkit \u2014 MIDI Controllers",
           "sources": [
             "Toolkit \u2014 Synthesizers"
+          ]
+        },
+        {
+          "target": "Tract Mirror \u2014 build plan \u2014 JUCE VST",
+          "sources": [
+            "Tract Mirror"
+          ]
+        },
+        {
+          "target": "Trickster (Loudon)",
+          "sources": [
+            "Maker",
+            "BLUELINE \u2014 Specialists and Seams"
+          ]
+        },
+        {
+          "target": "flow-field-spine",
+          "sources": [
+            "The Flow Field is the Spine"
+          ]
+        },
+        {
+          "target": "haiku-grotesque-pedagogy",
+          "sources": [
+            "Biomechanical Synthesis"
+          ]
+        },
+        {
+          "target": "shop-header \u2014 Maker's Comparison Recommendation",
+          "sources": [
+            "FLUX (Hugging Face)"
+          ]
+        },
+        {
+          "target": "toyxyz-conditioning-recipe",
+          "sources": [
+            "Blender"
           ]
         }
       ]
@@ -327,7 +421,7 @@
       "last_activated": null,
       "activation_count": null,
       "outbound_count": 4,
-      "inbound_count": 1
+      "inbound_count": 2
     },
     {
       "id": "2D Torus Wavetable Synthesizer",
@@ -337,8 +431,8 @@
       "has_forward_vector": true,
       "last_activated": null,
       "activation_count": null,
-      "outbound_count": 13,
-      "inbound_count": 42
+      "outbound_count": 14,
+      "inbound_count": 43
     },
     {
       "id": "2D Torus Wavetable Synthesizer \u2014 Build Log",
@@ -360,7 +454,7 @@
       "last_activated": null,
       "activation_count": null,
       "outbound_count": 3,
-      "inbound_count": 4
+      "inbound_count": 5
     },
     {
       "id": "4 Pillars Framework - The Founding Conversation",
@@ -370,7 +464,7 @@
       "has_forward_vector": true,
       "last_activated": "2026-04",
       "activation_count": "2",
-      "outbound_count": 7,
+      "outbound_count": 9,
       "inbound_count": 5
     },
     {
@@ -382,7 +476,18 @@
       "last_activated": "2026-04",
       "activation_count": "4",
       "outbound_count": 17,
-      "inbound_count": 25
+      "inbound_count": 27
+    },
+    {
+      "id": "Adopt the Craft, Author the Seam",
+      "path": "Adopt the Craft, Author the Seam.md",
+      "type": "concept",
+      "stage": "growing",
+      "has_forward_vector": true,
+      "last_activated": "2026-06",
+      "activation_count": "1",
+      "outbound_count": 7,
+      "inbound_count": 10
     },
     {
       "id": "Agent Wellbeing",
@@ -404,7 +509,7 @@
       "last_activated": "2026-03",
       "activation_count": "1",
       "outbound_count": 3,
-      "inbound_count": 1
+      "inbound_count": 2
     },
     {
       "id": "Andrei Tarkovsky",
@@ -414,7 +519,7 @@
       "has_forward_vector": false,
       "last_activated": "2026-03",
       "activation_count": "1",
-      "outbound_count": 4,
+      "outbound_count": 5,
       "inbound_count": 0
     },
     {
@@ -427,6 +532,17 @@
       "activation_count": "1",
       "outbound_count": 3,
       "inbound_count": 0
+    },
+    {
+      "id": "Animate the Background",
+      "path": "Animate the Background.md",
+      "type": "practice",
+      "stage": "sprout",
+      "has_forward_vector": true,
+      "last_activated": "2026-06",
+      "activation_count": "1",
+      "outbound_count": 6,
+      "inbound_count": 1
     },
     {
       "id": "Annie Dillard",
@@ -458,8 +574,8 @@
       "has_forward_vector": true,
       "last_activated": "2026-04",
       "activation_count": "1",
-      "outbound_count": 2,
-      "inbound_count": 3
+      "outbound_count": 3,
+      "inbound_count": 5
     },
     {
       "id": "BBS Blackboard",
@@ -469,7 +585,7 @@
       "has_forward_vector": true,
       "last_activated": "2026-05-02",
       "activation_count": "3",
-      "outbound_count": 12,
+      "outbound_count": 13,
       "inbound_count": 28
     },
     {
@@ -481,7 +597,7 @@
       "last_activated": "2026-05-02",
       "activation_count": "2",
       "outbound_count": 8,
-      "inbound_count": 14
+      "inbound_count": 19
     },
     {
       "id": "BBS Production Plan",
@@ -492,7 +608,7 @@
       "last_activated": "2026-05-02",
       "activation_count": "3",
       "outbound_count": 5,
-      "inbound_count": 6
+      "inbound_count": 7
     },
     {
       "id": "BBS Production Plan v0.2",
@@ -520,12 +636,12 @@
       "id": "BLUELINE",
       "path": "Projects/BLUELINE/BLUELINE.md",
       "type": "project",
-      "stage": "sprout",
+      "stage": "growing",
       "has_forward_vector": true,
-      "last_activated": "2026-06-14",
-      "activation_count": "2",
-      "outbound_count": 12,
-      "inbound_count": 8
+      "last_activated": "2026-06-23",
+      "activation_count": "4",
+      "outbound_count": 18,
+      "inbound_count": 24
     },
     {
       "id": "BLUELINE \u2014 Board Record Schema",
@@ -536,7 +652,7 @@
       "last_activated": null,
       "activation_count": null,
       "outbound_count": 3,
-      "inbound_count": 3
+      "inbound_count": 7
     },
     {
       "id": "BLUELINE \u2014 Claude Code Job",
@@ -561,6 +677,17 @@
       "inbound_count": 1
     },
     {
+      "id": "BLUELINE \u2014 Production Pipeline",
+      "path": "Projects/BLUELINE/BLUELINE \u2014 Production Pipeline.md",
+      "type": "meta",
+      "stage": null,
+      "has_forward_vector": true,
+      "last_activated": null,
+      "activation_count": null,
+      "outbound_count": 6,
+      "inbound_count": 2
+    },
+    {
       "id": "BLUELINE \u2014 Production Plan",
       "path": "Projects/BLUELINE/BLUELINE \u2014 Production Plan.md",
       "type": "meta",
@@ -569,7 +696,7 @@
       "last_activated": null,
       "activation_count": null,
       "outbound_count": 5,
-      "inbound_count": 1
+      "inbound_count": 2
     },
     {
       "id": "BLUELINE \u2014 Render Backend",
@@ -583,6 +710,28 @@
       "inbound_count": 3
     },
     {
+      "id": "BLUELINE \u2014 Specialists and Seams",
+      "path": "Projects/BLUELINE/BLUELINE \u2014 Specialists and Seams.md",
+      "type": "meta",
+      "stage": null,
+      "has_forward_vector": true,
+      "last_activated": null,
+      "activation_count": null,
+      "outbound_count": 6,
+      "inbound_count": 0
+    },
+    {
+      "id": "BLUELINE \u2014 Text Layer",
+      "path": "Projects/BLUELINE/BLUELINE \u2014 Text Layer.md",
+      "type": "meta",
+      "stage": null,
+      "has_forward_vector": true,
+      "last_activated": null,
+      "activation_count": null,
+      "outbound_count": 8,
+      "inbound_count": 3
+    },
+    {
       "id": "Bayesian Granular Synthesizer",
       "path": "Projects/Bayesian Granular Synthesizer.md",
       "type": "project",
@@ -591,7 +740,7 @@
       "last_activated": "2026-06",
       "activation_count": "1",
       "outbound_count": 4,
-      "inbound_count": 0
+      "inbound_count": 2
     },
     {
       "id": "Bessel Functions in Synthesis",
@@ -602,7 +751,7 @@
       "last_activated": null,
       "activation_count": null,
       "outbound_count": 9,
-      "inbound_count": 12
+      "inbound_count": 13
     },
     {
       "id": "Biomechanical Synthesis",
@@ -620,11 +769,11 @@
       "path": "Shop/Blender.md",
       "type": "specialist",
       "stage": null,
-      "has_forward_vector": false,
+      "has_forward_vector": true,
       "last_activated": null,
       "activation_count": null,
-      "outbound_count": 0,
-      "inbound_count": 2
+      "outbound_count": 6,
+      "inbound_count": 8
     },
     {
       "id": "Blocked, Not Prompted",
@@ -635,7 +784,7 @@
       "last_activated": "2026-06-13",
       "activation_count": "1",
       "outbound_count": 4,
-      "inbound_count": 4
+      "inbound_count": 14
     },
     {
       "id": "Blood Compressor",
@@ -667,8 +816,8 @@
       "has_forward_vector": false,
       "last_activated": "2026-03",
       "activation_count": "1",
-      "outbound_count": 7,
-      "inbound_count": 6
+      "outbound_count": 8,
+      "inbound_count": 8
     },
     {
       "id": "Buckminster Fuller",
@@ -723,7 +872,7 @@
       "last_activated": "2026-06",
       "activation_count": "1",
       "outbound_count": 5,
-      "inbound_count": 3
+      "inbound_count": 4
     },
     {
       "id": "Christopher Alexander",
@@ -733,8 +882,8 @@
       "has_forward_vector": false,
       "last_activated": "2026-03",
       "activation_count": "1",
-      "outbound_count": 6,
-      "inbound_count": 0
+      "outbound_count": 7,
+      "inbound_count": 1
     },
     {
       "id": "Claude CLI Reference",
@@ -755,18 +904,29 @@
       "has_forward_vector": true,
       "last_activated": "2026-05-26",
       "activation_count": "1",
-      "outbound_count": 6,
-      "inbound_count": 10
+      "outbound_count": 7,
+      "inbound_count": 13
     },
     {
       "id": "ComfyUI",
       "path": "Shop/ComfyUI.md",
       "type": "specialist",
       "stage": null,
-      "has_forward_vector": false,
+      "has_forward_vector": true,
       "last_activated": null,
       "activation_count": null,
-      "outbound_count": 0,
+      "outbound_count": 7,
+      "inbound_count": 10
+    },
+    {
+      "id": "Comic and Cinema \u2014 Two Ways of Seeing",
+      "path": "Comic and Cinema \u2014 Two Ways of Seeing.md",
+      "type": "concept",
+      "stage": "sprout",
+      "has_forward_vector": true,
+      "last_activated": "2026-06",
+      "activation_count": "1",
+      "outbound_count": 5,
       "inbound_count": 4
     },
     {
@@ -777,7 +937,7 @@
       "has_forward_vector": false,
       "last_activated": "2026-03",
       "activation_count": "1",
-      "outbound_count": 5,
+      "outbound_count": 6,
       "inbound_count": 1
     },
     {
@@ -789,7 +949,7 @@
       "last_activated": "2026-03",
       "activation_count": "1",
       "outbound_count": 6,
-      "inbound_count": 10
+      "inbound_count": 12
     },
     {
       "id": "Confucianism",
@@ -800,7 +960,7 @@
       "last_activated": "2026-03",
       "activation_count": "1",
       "outbound_count": 8,
-      "inbound_count": 12
+      "inbound_count": 16
     },
     {
       "id": "Cooking \u2194 Mixing",
@@ -810,7 +970,7 @@
       "has_forward_vector": false,
       "last_activated": "2026-03",
       "activation_count": "1",
-      "outbound_count": 4,
+      "outbound_count": 7,
       "inbound_count": 3
     },
     {
@@ -821,8 +981,8 @@
       "has_forward_vector": true,
       "last_activated": "2026-06",
       "activation_count": "15",
-      "outbound_count": 9,
-      "inbound_count": 37
+      "outbound_count": 10,
+      "inbound_count": 40
     },
     {
       "id": "Cooperation Yields Agency \u2014 Context",
@@ -843,7 +1003,7 @@
       "has_forward_vector": true,
       "last_activated": "2026-06",
       "activation_count": "15",
-      "outbound_count": 9,
+      "outbound_count": 10,
       "inbound_count": 0
     },
     {
@@ -854,8 +1014,8 @@
       "has_forward_vector": true,
       "last_activated": "2026-03",
       "activation_count": "1",
-      "outbound_count": 13,
-      "inbound_count": 13
+      "outbound_count": 18,
+      "inbound_count": 17
     },
     {
       "id": "Crystal Synthesizer",
@@ -866,7 +1026,7 @@
       "last_activated": "2026-04",
       "activation_count": "2",
       "outbound_count": 11,
-      "inbound_count": 14
+      "inbound_count": 16
     },
     {
       "id": "Curriculum Map",
@@ -884,11 +1044,11 @@
       "path": "Shop/D3.js.md",
       "type": "specialist",
       "stage": null,
-      "has_forward_vector": false,
+      "has_forward_vector": true,
       "last_activated": null,
       "activation_count": null,
-      "outbound_count": 0,
-      "inbound_count": 0
+      "outbound_count": 9,
+      "inbound_count": 3
     },
     {
       "id": "DSP Frameworks",
@@ -899,7 +1059,7 @@
       "last_activated": "2026-03",
       "activation_count": "1",
       "outbound_count": 5,
-      "inbound_count": 4
+      "inbound_count": 6
     },
     {
       "id": "DSP in Looping Dimensions",
@@ -920,8 +1080,19 @@
       "has_forward_vector": true,
       "last_activated": "2026-05",
       "activation_count": "1",
-      "outbound_count": 9,
-      "inbound_count": 6
+      "outbound_count": 14,
+      "inbound_count": 12
+    },
+    {
+      "id": "Depth Anything",
+      "path": "Shop/Depth Anything.md",
+      "type": "specialist",
+      "stage": null,
+      "has_forward_vector": true,
+      "last_activated": null,
+      "activation_count": null,
+      "outbound_count": 4,
+      "inbound_count": 1
     },
     {
       "id": "Dialectic",
@@ -931,8 +1102,8 @@
       "has_forward_vector": true,
       "last_activated": "2026-05",
       "activation_count": "2",
-      "outbound_count": 7,
-      "inbound_count": 12
+      "outbound_count": 11,
+      "inbound_count": 15
     },
     {
       "id": "Dialogue Moderator",
@@ -975,8 +1146,8 @@
       "has_forward_vector": true,
       "last_activated": "2026-06",
       "activation_count": "1",
-      "outbound_count": 12,
-      "inbound_count": 2
+      "outbound_count": 13,
+      "inbound_count": 4
     },
     {
       "id": "Dissolutions",
@@ -986,7 +1157,7 @@
       "has_forward_vector": true,
       "last_activated": null,
       "activation_count": null,
-      "outbound_count": 3,
+      "outbound_count": 12,
       "inbound_count": 7
     },
     {
@@ -998,7 +1169,7 @@
       "last_activated": "2026-05",
       "activation_count": "1",
       "outbound_count": 4,
-      "inbound_count": 4
+      "inbound_count": 7
     },
     {
       "id": "Does Personifying an Agent Change What It Does",
@@ -1019,8 +1190,8 @@
       "has_forward_vector": true,
       "last_activated": "2026-03",
       "activation_count": "1",
-      "outbound_count": 9,
-      "inbound_count": 5
+      "outbound_count": 11,
+      "inbound_count": 6
     },
     {
       "id": "Douglas Hofstadter",
@@ -1030,8 +1201,8 @@
       "has_forward_vector": false,
       "last_activated": "2026-03",
       "activation_count": "1",
-      "outbound_count": 6,
-      "inbound_count": 0
+      "outbound_count": 8,
+      "inbound_count": 1
     },
     {
       "id": "Dovetail Joint \u2194 Counterpoint",
@@ -1041,8 +1212,8 @@
       "has_forward_vector": false,
       "last_activated": "2026-03",
       "activation_count": "1",
-      "outbound_count": 4,
-      "inbound_count": 1
+      "outbound_count": 7,
+      "inbound_count": 2
     },
     {
       "id": "Drift and Consolidation",
@@ -1053,7 +1224,7 @@
       "last_activated": "2026-05-27",
       "activation_count": "1",
       "outbound_count": 3,
-      "inbound_count": 3
+      "inbound_count": 6
     },
     {
       "id": "Dub Lineage",
@@ -1064,7 +1235,7 @@
       "last_activated": null,
       "activation_count": null,
       "outbound_count": 4,
-      "inbound_count": 7
+      "inbound_count": 8
     },
     {
       "id": "Embeddings as Relational Meaning",
@@ -1108,7 +1279,7 @@
       "last_activated": "2026-03",
       "activation_count": "3",
       "outbound_count": 10,
-      "inbound_count": 13
+      "inbound_count": 14
     },
     {
       "id": "Enrichment",
@@ -1118,8 +1289,8 @@
       "has_forward_vector": true,
       "last_activated": null,
       "activation_count": null,
-      "outbound_count": 6,
-      "inbound_count": 6
+      "outbound_count": 8,
+      "inbound_count": 8
     },
     {
       "id": "Entry Conatus",
@@ -1130,7 +1301,7 @@
       "last_activated": "2026-05",
       "activation_count": "1",
       "outbound_count": 5,
-      "inbound_count": 1
+      "inbound_count": 6
     },
     {
       "id": "Epictetus",
@@ -1152,7 +1323,7 @@
       "last_activated": "2026-03",
       "activation_count": "2",
       "outbound_count": 10,
-      "inbound_count": 17
+      "inbound_count": 18
     },
     {
       "id": "Exponential Decay Curvature",
@@ -1162,19 +1333,19 @@
       "has_forward_vector": true,
       "last_activated": "2026-06",
       "activation_count": "1",
-      "outbound_count": 5,
-      "inbound_count": 2
+      "outbound_count": 6,
+      "inbound_count": 3
     },
     {
       "id": "FLUX (Hugging Face)",
       "path": "Shop/FLUX (Hugging Face).md",
       "type": "specialist",
       "stage": null,
-      "has_forward_vector": false,
+      "has_forward_vector": true,
       "last_activated": null,
       "activation_count": null,
-      "outbound_count": 1,
-      "inbound_count": 2
+      "outbound_count": 6,
+      "inbound_count": 5
     },
     {
       "id": "FOUR PILLARS",
@@ -1184,12 +1355,12 @@
       "has_forward_vector": true,
       "last_activated": "2026-06",
       "activation_count": "34",
-      "outbound_count": 8,
-      "inbound_count": 111
+      "outbound_count": 10,
+      "inbound_count": 117
     },
     {
       "id": "FOUR PILLARS \u2014 Context",
-      "path": "FOUR PILLARS \u2014 Context.md",
+      "path": "FOUR PILLARS/FOUR PILLARS \u2014 Context.md",
       "type": "meta",
       "stage": "growing",
       "has_forward_vector": true,
@@ -1206,8 +1377,19 @@
       "has_forward_vector": true,
       "last_activated": "2026-06",
       "activation_count": "34",
-      "outbound_count": 8,
+      "outbound_count": 10,
       "inbound_count": 0
+    },
+    {
+      "id": "Figure Rig",
+      "path": "Shop/Figure Rig.md",
+      "type": "specialist",
+      "stage": null,
+      "has_forward_vector": true,
+      "last_activated": null,
+      "activation_count": null,
+      "outbound_count": 7,
+      "inbound_count": 2
     },
     {
       "id": "Flocking",
@@ -1217,8 +1399,8 @@
       "has_forward_vector": true,
       "last_activated": "2026-05-29",
       "activation_count": "2",
-      "outbound_count": 8,
-      "inbound_count": 9
+      "outbound_count": 10,
+      "inbound_count": 13
     },
     {
       "id": "Floquet Theory",
@@ -1228,8 +1410,8 @@
       "has_forward_vector": true,
       "last_activated": null,
       "activation_count": null,
-      "outbound_count": 9,
-      "inbound_count": 7
+      "outbound_count": 14,
+      "inbound_count": 8
     },
     {
       "id": "Floquet Time-Modulated Loops",
@@ -1239,7 +1421,7 @@
       "has_forward_vector": true,
       "last_activated": null,
       "activation_count": null,
-      "outbound_count": 14,
+      "outbound_count": 20,
       "inbound_count": 5
     },
     {
@@ -1254,6 +1436,17 @@
       "inbound_count": 5
     },
     {
+      "id": "Frame Designer",
+      "path": "Frame Designer.md",
+      "type": "maker",
+      "stage": null,
+      "has_forward_vector": true,
+      "last_activated": null,
+      "activation_count": null,
+      "outbound_count": 11,
+      "inbound_count": 10
+    },
+    {
       "id": "Frequency Domain \u2194 Perspective Shift",
       "path": "Cross-Domain Resonances/Frequency Domain \u2194 Perspective Shift.md",
       "type": "concept",
@@ -1261,7 +1454,7 @@
       "has_forward_vector": false,
       "last_activated": "2026-03",
       "activation_count": "1",
-      "outbound_count": 5,
+      "outbound_count": 6,
       "inbound_count": 2
     },
     {
@@ -1283,7 +1476,7 @@
       "has_forward_vector": true,
       "last_activated": null,
       "activation_count": null,
-      "outbound_count": 6,
+      "outbound_count": 7,
       "inbound_count": 1
     },
     {
@@ -1306,7 +1499,7 @@
       "last_activated": null,
       "activation_count": null,
       "outbound_count": 11,
-      "inbound_count": 11
+      "inbound_count": 14
     },
     {
       "id": "Generative Compression",
@@ -1317,7 +1510,7 @@
       "last_activated": "2026-06-05",
       "activation_count": "2",
       "outbound_count": 9,
-      "inbound_count": 7
+      "inbound_count": 9
     },
     {
       "id": "Generative Preset Development",
@@ -1328,7 +1521,7 @@
       "last_activated": null,
       "activation_count": null,
       "outbound_count": 10,
-      "inbound_count": 4
+      "inbound_count": 5
     },
     {
       "id": "Generative Sample Libraries",
@@ -1349,7 +1542,7 @@
       "has_forward_vector": true,
       "last_activated": "2026-05",
       "activation_count": null,
-      "outbound_count": 9,
+      "outbound_count": 10,
       "inbound_count": 1
     },
     {
@@ -1360,7 +1553,7 @@
       "has_forward_vector": false,
       "last_activated": "2026-03",
       "activation_count": "1",
-      "outbound_count": 5,
+      "outbound_count": 7,
       "inbound_count": 0
     },
     {
@@ -1372,7 +1565,29 @@
       "last_activated": null,
       "activation_count": null,
       "outbound_count": 8,
-      "inbound_count": 16
+      "inbound_count": 20
+    },
+    {
+      "id": "Graphic Storytelling",
+      "path": "Graphic Storytelling.md",
+      "type": "concept",
+      "stage": "growing",
+      "has_forward_vector": true,
+      "last_activated": "2026-06",
+      "activation_count": "2",
+      "outbound_count": 5,
+      "inbound_count": 4
+    },
+    {
+      "id": "Hand-Drawn 3D Look",
+      "path": "Hand-Drawn 3D Look.md",
+      "type": "concept",
+      "stage": "growing",
+      "has_forward_vector": true,
+      "last_activated": "2026-06",
+      "activation_count": "2",
+      "outbound_count": 9,
+      "inbound_count": 5
     },
     {
       "id": "Harmonicity and Inharmonicity",
@@ -1382,8 +1597,19 @@
       "has_forward_vector": true,
       "last_activated": null,
       "activation_count": null,
-      "outbound_count": 6,
-      "inbound_count": 13
+      "outbound_count": 8,
+      "inbound_count": 15
+    },
+    {
+      "id": "Hero and Avatar Maker",
+      "path": "Shop/Hero and Avatar Maker.md",
+      "type": "maker",
+      "stage": null,
+      "has_forward_vector": true,
+      "last_activated": null,
+      "activation_count": null,
+      "outbound_count": 12,
+      "inbound_count": 1
     },
     {
       "id": "Hilaritas Generator",
@@ -1393,8 +1619,8 @@
       "has_forward_vector": true,
       "last_activated": "2026-06",
       "activation_count": "10",
-      "outbound_count": 12,
-      "inbound_count": 51
+      "outbound_count": 13,
+      "inbound_count": 67
     },
     {
       "id": "Hilaritas Generator \u2014 Context",
@@ -1415,7 +1641,7 @@
       "has_forward_vector": true,
       "last_activated": "2026-06",
       "activation_count": "10",
-      "outbound_count": 12,
+      "outbound_count": 13,
       "inbound_count": 0
     },
     {
@@ -1426,8 +1652,8 @@
       "has_forward_vector": true,
       "last_activated": "2026-03",
       "activation_count": "10",
-      "outbound_count": 7,
-      "inbound_count": 33
+      "outbound_count": 9,
+      "inbound_count": 39
     },
     {
       "id": "Identity Molting",
@@ -1441,6 +1667,17 @@
       "inbound_count": 8
     },
     {
+      "id": "Image-to-3D Smith",
+      "path": "Shop/Image-to-3D Smith.md",
+      "type": "specialist",
+      "stage": null,
+      "has_forward_vector": true,
+      "last_activated": null,
+      "activation_count": null,
+      "outbound_count": 5,
+      "inbound_count": 1
+    },
+    {
       "id": "Infeasible DSP Now Shippable",
       "path": "Infeasible DSP Now Shippable.md",
       "type": "concept",
@@ -1449,7 +1686,7 @@
       "last_activated": "2026-06",
       "activation_count": "1",
       "outbound_count": 3,
-      "inbound_count": 0
+      "inbound_count": 1
     },
     {
       "id": "Inharmonic Wavetable Synthesis",
@@ -1481,7 +1718,7 @@
       "has_forward_vector": true,
       "last_activated": "2026-03",
       "activation_count": "3",
-      "outbound_count": 3,
+      "outbound_count": 4,
       "inbound_count": 2
     },
     {
@@ -1514,8 +1751,8 @@
       "has_forward_vector": false,
       "last_activated": "2026-03",
       "activation_count": "1",
-      "outbound_count": 5,
-      "inbound_count": 1
+      "outbound_count": 6,
+      "inbound_count": 2
     },
     {
       "id": "Julia Cameron",
@@ -1525,7 +1762,7 @@
       "has_forward_vector": false,
       "last_activated": "2026-03",
       "activation_count": "1",
-      "outbound_count": 5,
+      "outbound_count": 6,
       "inbound_count": 1
     },
     {
@@ -1536,19 +1773,19 @@
       "has_forward_vector": false,
       "last_activated": "2026-03",
       "activation_count": "1",
-      "outbound_count": 4,
-      "inbound_count": 5
+      "outbound_count": 6,
+      "inbound_count": 6
     },
     {
       "id": "Kokoro",
       "path": "Shop/Kokoro.md",
       "type": "specialist",
       "stage": null,
-      "has_forward_vector": false,
+      "has_forward_vector": true,
       "last_activated": null,
       "activation_count": null,
-      "outbound_count": 1,
-      "inbound_count": 0
+      "outbound_count": 7,
+      "inbound_count": 7
     },
     {
       "id": "Kuramoto Coupling",
@@ -1558,19 +1795,30 @@
       "has_forward_vector": true,
       "last_activated": "2026-05",
       "activation_count": "17",
-      "outbound_count": 17,
-      "inbound_count": 64
+      "outbound_count": 19,
+      "inbound_count": 73
+    },
+    {
+      "id": "LaMa",
+      "path": "Shop/LaMa.md",
+      "type": "specialist",
+      "stage": null,
+      "has_forward_vector": true,
+      "last_activated": null,
+      "activation_count": null,
+      "outbound_count": 4,
+      "inbound_count": 2
     },
     {
       "id": "LaTeX",
       "path": "Shop/LaTeX.md",
       "type": "specialist",
       "stage": null,
-      "has_forward_vector": false,
+      "has_forward_vector": true,
       "last_activated": null,
       "activation_count": null,
-      "outbound_count": 0,
-      "inbound_count": 0
+      "outbound_count": 4,
+      "inbound_count": 1
     },
     {
       "id": "Language as a Tonal Medium",
@@ -1581,7 +1829,7 @@
       "last_activated": null,
       "activation_count": null,
       "outbound_count": 3,
-      "inbound_count": 1
+      "inbound_count": 2
     },
     {
       "id": "Lao Tzu",
@@ -1591,8 +1839,8 @@
       "has_forward_vector": false,
       "last_activated": "2026-03",
       "activation_count": "1",
-      "outbound_count": 6,
-      "inbound_count": 4
+      "outbound_count": 7,
+      "inbound_count": 5
     },
     {
       "id": "Latent Error",
@@ -1630,12 +1878,23 @@
     {
       "id": "Leibniz",
       "path": "Leibniz.md",
-      "type": "concept",
+      "type": "person",
       "stage": "sprout",
       "has_forward_vector": true,
       "last_activated": "2026-06",
       "activation_count": "1",
       "outbound_count": 6,
+      "inbound_count": 3
+    },
+    {
+      "id": "Lettering",
+      "path": "Shop/Lettering.md",
+      "type": "specialist",
+      "stage": null,
+      "has_forward_vector": true,
+      "last_activated": null,
+      "activation_count": null,
+      "outbound_count": 8,
       "inbound_count": 1
     },
     {
@@ -1658,7 +1917,7 @@
       "last_activated": "2026-03",
       "activation_count": "1",
       "outbound_count": 7,
-      "inbound_count": 9
+      "inbound_count": 10
     },
     {
       "id": "Like Water",
@@ -1669,7 +1928,7 @@
       "last_activated": "2026-03",
       "activation_count": "1",
       "outbound_count": 6,
-      "inbound_count": 10
+      "inbound_count": 12
     },
     {
       "id": "Linear Predictive Coding",
@@ -1679,8 +1938,8 @@
       "has_forward_vector": true,
       "last_activated": "2026-06",
       "activation_count": "1",
-      "outbound_count": 6,
-      "inbound_count": 4
+      "outbound_count": 9,
+      "inbound_count": 5
     },
     {
       "id": "LoRA Trainer",
@@ -1690,7 +1949,7 @@
       "has_forward_vector": true,
       "last_activated": "2026-06",
       "activation_count": "1",
-      "outbound_count": 3,
+      "outbound_count": 4,
       "inbound_count": 0
     },
     {
@@ -1702,7 +1961,7 @@
       "last_activated": null,
       "activation_count": null,
       "outbound_count": 4,
-      "inbound_count": 3
+      "inbound_count": 4
     },
     {
       "id": "Lossy Compression with Intent Alignment",
@@ -1723,8 +1982,8 @@
       "has_forward_vector": true,
       "last_activated": null,
       "activation_count": null,
-      "outbound_count": 10,
-      "inbound_count": 14
+      "outbound_count": 16,
+      "inbound_count": 26
     },
     {
       "id": "Loudon Live Design System",
@@ -1734,8 +1993,8 @@
       "has_forward_vector": true,
       "last_activated": null,
       "activation_count": null,
-      "outbound_count": 12,
-      "inbound_count": 5
+      "outbound_count": 15,
+      "inbound_count": 11
     },
     {
       "id": "Loudon Live Post-producer",
@@ -1745,8 +2004,8 @@
       "has_forward_vector": true,
       "last_activated": "2026-05",
       "activation_count": "1",
-      "outbound_count": 6,
-      "inbound_count": 0
+      "outbound_count": 8,
+      "inbound_count": 2
     },
     {
       "id": "Loudon's Toolkit",
@@ -1756,30 +2015,30 @@
       "has_forward_vector": true,
       "last_activated": "2026-04",
       "activation_count": "1",
-      "outbound_count": 5,
-      "inbound_count": 3
+      "outbound_count": 6,
+      "inbound_count": 4
     },
     {
       "id": "Maker",
       "path": "Shop/Maker.md",
       "type": "maker",
       "stage": null,
-      "has_forward_vector": false,
+      "has_forward_vector": true,
       "last_activated": null,
       "activation_count": null,
-      "outbound_count": 2,
-      "inbound_count": 12
+      "outbound_count": 14,
+      "inbound_count": 41
     },
     {
       "id": "Manim CE",
       "path": "Shop/Manim CE.md",
       "type": "specialist",
       "stage": null,
-      "has_forward_vector": false,
+      "has_forward_vector": true,
       "last_activated": null,
       "activation_count": null,
-      "outbound_count": 2,
-      "inbound_count": 0
+      "outbound_count": 11,
+      "inbound_count": 7
     },
     {
       "id": "Marcus Aurelius",
@@ -1790,7 +2049,7 @@
       "last_activated": "2026-03",
       "activation_count": "1",
       "outbound_count": 8,
-      "inbound_count": 3
+      "inbound_count": 4
     },
     {
       "id": "Mathieu Equation",
@@ -1800,7 +2059,7 @@
       "has_forward_vector": true,
       "last_activated": null,
       "activation_count": null,
-      "outbound_count": 7,
+      "outbound_count": 13,
       "inbound_count": 4
     },
     {
@@ -1808,11 +2067,11 @@
       "path": "Shop/Matplotlib.md",
       "type": "specialist",
       "stage": null,
-      "has_forward_vector": false,
+      "has_forward_vector": true,
       "last_activated": null,
       "activation_count": null,
-      "outbound_count": 0,
-      "inbound_count": 0
+      "outbound_count": 3,
+      "inbound_count": 7
     },
     {
       "id": "Meadows and Music \u2014 Leverage Points",
@@ -1877,19 +2136,19 @@
       "has_forward_vector": true,
       "last_activated": "2026-05",
       "activation_count": "1",
-      "outbound_count": 6,
-      "inbound_count": 5
+      "outbound_count": 10,
+      "inbound_count": 8
     },
     {
       "id": "Mermaid",
       "path": "Shop/Mermaid.md",
       "type": "specialist",
       "stage": null,
-      "has_forward_vector": false,
+      "has_forward_vector": true,
       "last_activated": null,
       "activation_count": null,
-      "outbound_count": 0,
-      "inbound_count": 0
+      "outbound_count": 3,
+      "inbound_count": 1
     },
     {
       "id": "Metaphor as Coupling Medium",
@@ -1911,18 +2170,18 @@
       "last_activated": "2026-03",
       "activation_count": "1",
       "outbound_count": 5,
-      "inbound_count": 1
+      "inbound_count": 2
     },
     {
       "id": "Midjourney",
       "path": "Shop/Midjourney.md",
       "type": "specialist",
       "stage": null,
-      "has_forward_vector": false,
+      "has_forward_vector": true,
       "last_activated": null,
       "activation_count": null,
-      "outbound_count": 0,
-      "inbound_count": 1
+      "outbound_count": 4,
+      "inbound_count": 2
     },
     {
       "id": "Mixture of Experts",
@@ -1932,7 +2191,7 @@
       "has_forward_vector": true,
       "last_activated": "2026-04-30",
       "activation_count": "4",
-      "outbound_count": 9,
+      "outbound_count": 10,
       "inbound_count": 14
     },
     {
@@ -1943,8 +2202,8 @@
       "has_forward_vector": true,
       "last_activated": null,
       "activation_count": null,
-      "outbound_count": 9,
-      "inbound_count": 22
+      "outbound_count": 12,
+      "inbound_count": 23
     },
     {
       "id": "Modes of Collaboration \u2014 Context",
@@ -1965,8 +2224,30 @@
       "has_forward_vector": true,
       "last_activated": null,
       "activation_count": null,
-      "outbound_count": 9,
+      "outbound_count": 12,
       "inbound_count": 0
+    },
+    {
+      "id": "Move the Ink, Don't Redraw It",
+      "path": "Move the Ink, Don't Redraw It.md",
+      "type": "concept",
+      "stage": "sprout",
+      "has_forward_vector": true,
+      "last_activated": "2026-06",
+      "activation_count": "1",
+      "outbound_count": 3,
+      "inbound_count": 2
+    },
+    {
+      "id": "Murmuration",
+      "path": "Projects/Murmuration.md",
+      "type": "project",
+      "stage": "growing",
+      "has_forward_vector": true,
+      "last_activated": "2026-06",
+      "activation_count": "1",
+      "outbound_count": 10,
+      "inbound_count": 1
     },
     {
       "id": "Natalie Goldberg",
@@ -1976,7 +2257,7 @@
       "has_forward_vector": false,
       "last_activated": "2026-03",
       "activation_count": "1",
-      "outbound_count": 4,
+      "outbound_count": 5,
       "inbound_count": 1
     },
     {
@@ -1988,7 +2269,7 @@
       "last_activated": null,
       "activation_count": null,
       "outbound_count": 5,
-      "inbound_count": 10
+      "inbound_count": 12
     },
     {
       "id": "Oblique Enrichment",
@@ -1998,7 +2279,7 @@
       "has_forward_vector": true,
       "last_activated": null,
       "activation_count": null,
-      "outbound_count": 12,
+      "outbound_count": 14,
       "inbound_count": 6
     },
     {
@@ -2017,11 +2298,11 @@
       "path": "Shop/Observable Plot.md",
       "type": "specialist",
       "stage": null,
-      "has_forward_vector": false,
+      "has_forward_vector": true,
       "last_activated": null,
       "activation_count": null,
-      "outbound_count": 0,
-      "inbound_count": 0
+      "outbound_count": 9,
+      "inbound_count": 3
     },
     {
       "id": "Octave Equivalence",
@@ -2062,10 +2343,10 @@
       "type": "project",
       "stage": "seed",
       "has_forward_vector": true,
-      "last_activated": "2026-05-04",
-      "activation_count": "1",
-      "outbound_count": 4,
-      "inbound_count": 1
+      "last_activated": "2026-06",
+      "activation_count": "2",
+      "outbound_count": 5,
+      "inbound_count": 2
     },
     {
       "id": "PDL Generation Prompt",
@@ -2076,7 +2357,7 @@
       "last_activated": null,
       "activation_count": null,
       "outbound_count": 4,
-      "inbound_count": 1
+      "inbound_count": 2
     },
     {
       "id": "PDL Renderer",
@@ -2087,7 +2368,7 @@
       "last_activated": "2026-05-26",
       "activation_count": null,
       "outbound_count": 3,
-      "inbound_count": 1
+      "inbound_count": 2
     },
     {
       "id": "Palace AI Partnership Philosophy",
@@ -2109,7 +2390,7 @@
       "last_activated": "2026-03-28",
       "activation_count": "1",
       "outbound_count": 16,
-      "inbound_count": 16
+      "inbound_count": 17
     },
     {
       "id": "Palace Conatus",
@@ -2130,8 +2411,8 @@
       "has_forward_vector": true,
       "last_activated": null,
       "activation_count": null,
-      "outbound_count": 16,
-      "inbound_count": 19
+      "outbound_count": 17,
+      "inbound_count": 22
     },
     {
       "id": "Palace Philosophies",
@@ -2141,8 +2422,8 @@
       "has_forward_vector": true,
       "last_activated": "2026-06",
       "activation_count": "3",
-      "outbound_count": 22,
-      "inbound_count": 17
+      "outbound_count": 26,
+      "inbound_count": 18
     },
     {
       "id": "Palace Philosophies \u2014 Context",
@@ -2164,7 +2445,7 @@
       "last_activated": "2026-06-07",
       "activation_count": "3",
       "outbound_count": 12,
-      "inbound_count": 5
+      "inbound_count": 6
     },
     {
       "id": "Palace_Philosophies",
@@ -2174,7 +2455,7 @@
       "has_forward_vector": true,
       "last_activated": "2026-06",
       "activation_count": "3",
-      "outbound_count": 22,
+      "outbound_count": 26,
       "inbound_count": 0
     },
     {
@@ -2185,8 +2466,8 @@
       "has_forward_vector": true,
       "last_activated": null,
       "activation_count": null,
-      "outbound_count": 8,
-      "inbound_count": 4
+      "outbound_count": 9,
+      "inbound_count": 5
     },
     {
       "id": "Particle Synthesis",
@@ -2197,7 +2478,7 @@
       "last_activated": "2026-01",
       "activation_count": "0",
       "outbound_count": 5,
-      "inbound_count": 7
+      "inbound_count": 10
     },
     {
       "id": "Pauline Oliveros",
@@ -2207,8 +2488,8 @@
       "has_forward_vector": false,
       "last_activated": "2026-03",
       "activation_count": "1",
-      "outbound_count": 6,
-      "inbound_count": 1
+      "outbound_count": 7,
+      "inbound_count": 2
     },
     {
       "id": "Phase Reduction",
@@ -2218,8 +2499,8 @@
       "has_forward_vector": true,
       "last_activated": "2026-06",
       "activation_count": "1",
-      "outbound_count": 11,
-      "inbound_count": 5
+      "outbound_count": 13,
+      "inbound_count": 6
     },
     {
       "id": "Pheromone Trail",
@@ -2240,8 +2521,8 @@
       "has_forward_vector": true,
       "last_activated": "2026-05",
       "activation_count": "1",
-      "outbound_count": 5,
-      "inbound_count": 5
+      "outbound_count": 15,
+      "inbound_count": 11
     },
     {
       "id": "Phoneme Choir",
@@ -2262,7 +2543,7 @@
       "has_forward_vector": true,
       "last_activated": null,
       "activation_count": null,
-      "outbound_count": 8,
+      "outbound_count": 9,
       "inbound_count": 2
     },
     {
@@ -2285,7 +2566,7 @@
       "last_activated": "2026-03",
       "activation_count": "1",
       "outbound_count": 7,
-      "inbound_count": 6
+      "inbound_count": 7
     },
     {
       "id": "Portamento and Physical Pitch Modeling",
@@ -2318,7 +2599,7 @@
       "last_activated": null,
       "activation_count": null,
       "outbound_count": 6,
-      "inbound_count": 15
+      "inbound_count": 16
     },
     {
       "id": "Project Stewardship System",
@@ -2328,8 +2609,8 @@
       "has_forward_vector": true,
       "last_activated": "2026-05-26",
       "activation_count": "4",
-      "outbound_count": 14,
-      "inbound_count": 17
+      "outbound_count": 15,
+      "inbound_count": 22
     },
     {
       "id": "Quadratic Interpolation in DSP",
@@ -2351,7 +2632,7 @@
       "last_activated": "2026-03",
       "activation_count": "1",
       "outbound_count": 8,
-      "inbound_count": 39
+      "inbound_count": 48
     },
     {
       "id": "Quantization \u2194 Precision vs Flow",
@@ -2361,7 +2642,7 @@
       "has_forward_vector": false,
       "last_activated": "2026-03",
       "activation_count": "1",
-      "outbound_count": 5,
+      "outbound_count": 6,
       "inbound_count": 1
     },
     {
@@ -2383,7 +2664,7 @@
       "has_forward_vector": false,
       "last_activated": "2026-03",
       "activation_count": "1",
-      "outbound_count": 4,
+      "outbound_count": 6,
       "inbound_count": 0
     },
     {
@@ -2435,11 +2716,11 @@
       "path": "Shop/RNBO codebox~ smith.md",
       "type": "specialist",
       "stage": null,
-      "has_forward_vector": false,
+      "has_forward_vector": true,
       "last_activated": null,
       "activation_count": null,
-      "outbound_count": 0,
-      "inbound_count": 1
+      "outbound_count": 4,
+      "inbound_count": 3
     },
     {
       "id": "ROSETTA",
@@ -2453,6 +2734,17 @@
       "inbound_count": 4
     },
     {
+      "id": "Radio Play",
+      "path": "Radio Play.md",
+      "type": "practice",
+      "stage": "sprout",
+      "has_forward_vector": true,
+      "last_activated": null,
+      "activation_count": null,
+      "outbound_count": 6,
+      "inbound_count": 4
+    },
+    {
       "id": "Rank-N Lattice Analysis",
       "path": "Rank-N Lattice Analysis.md",
       "type": "concept",
@@ -2460,8 +2752,8 @@
       "has_forward_vector": true,
       "last_activated": "2026-06",
       "activation_count": "1",
-      "outbound_count": 5,
-      "inbound_count": 3
+      "outbound_count": 8,
+      "inbound_count": 4
     },
     {
       "id": "Registry Pattern",
@@ -2472,18 +2764,29 @@
       "last_activated": null,
       "activation_count": null,
       "outbound_count": 5,
-      "inbound_count": 6
+      "inbound_count": 7
+    },
+    {
+      "id": "Remnants in Depth",
+      "path": "Remnants in Depth.md",
+      "type": "practice",
+      "stage": "growing",
+      "has_forward_vector": true,
+      "last_activated": "2026-06",
+      "activation_count": "2",
+      "outbound_count": 8,
+      "inbound_count": 2
     },
     {
       "id": "Remotion",
       "path": "Shop/Remotion.md",
       "type": "specialist",
       "stage": null,
-      "has_forward_vector": false,
+      "has_forward_vector": true,
       "last_activated": null,
       "activation_count": null,
-      "outbound_count": 0,
-      "inbound_count": 0
+      "outbound_count": 3,
+      "inbound_count": 2
     },
     {
       "id": "Resonant Link Labels",
@@ -2494,7 +2797,7 @@
       "last_activated": "2026-06-05",
       "activation_count": "1",
       "outbound_count": 4,
-      "inbound_count": 3
+      "inbound_count": 4
     },
     {
       "id": "Retrospective Delay",
@@ -2505,7 +2808,7 @@
       "last_activated": "2026-03",
       "activation_count": "8",
       "outbound_count": 9,
-      "inbound_count": 9
+      "inbound_count": 11
     },
     {
       "id": "Reverb \u2194 Space-Time",
@@ -2526,8 +2829,8 @@
       "has_forward_vector": true,
       "last_activated": "2026-06",
       "activation_count": "2",
-      "outbound_count": 7,
-      "inbound_count": 0
+      "outbound_count": 8,
+      "inbound_count": 3
     },
     {
       "id": "Rick Rubin",
@@ -2537,8 +2840,8 @@
       "has_forward_vector": false,
       "last_activated": "2026-03",
       "activation_count": "1",
-      "outbound_count": 7,
-      "inbound_count": 3
+      "outbound_count": 8,
+      "inbound_count": 5
     },
     {
       "id": "RunPod GPU Backend",
@@ -2548,8 +2851,19 @@
       "has_forward_vector": true,
       "last_activated": "2026-06-14",
       "activation_count": "1",
-      "outbound_count": 6,
-      "inbound_count": 4
+      "outbound_count": 7,
+      "inbound_count": 7
+    },
+    {
+      "id": "SAM",
+      "path": "Shop/SAM.md",
+      "type": "specialist",
+      "stage": null,
+      "has_forward_vector": true,
+      "last_activated": null,
+      "activation_count": null,
+      "outbound_count": 4,
+      "inbound_count": 2
     },
     {
       "id": "SCHEMA",
@@ -2560,7 +2874,7 @@
       "last_activated": null,
       "activation_count": null,
       "outbound_count": 7,
-      "inbound_count": 12
+      "inbound_count": 13
     },
     {
       "id": "SMPTE LTC",
@@ -2581,8 +2895,8 @@
       "has_forward_vector": true,
       "last_activated": null,
       "activation_count": null,
-      "outbound_count": 8,
-      "inbound_count": 12
+      "outbound_count": 9,
+      "inbound_count": 15
     },
     {
       "id": "STIGMERGY Entry-Agent Window \u2014 Integration Plan v0.1",
@@ -2603,8 +2917,8 @@
       "has_forward_vector": true,
       "last_activated": null,
       "activation_count": null,
-      "outbound_count": 14,
-      "inbound_count": 3
+      "outbound_count": 21,
+      "inbound_count": 8
     },
     {
       "id": "STIGMERGY v1.0 \u2014 Palace Front-End",
@@ -2614,8 +2928,19 @@
       "has_forward_vector": true,
       "last_activated": "2026-05-29",
       "activation_count": "2",
-      "outbound_count": 10,
-      "inbound_count": 4
+      "outbound_count": 11,
+      "inbound_count": 8
+    },
+    {
+      "id": "STIGMERGY v2.0 \u2014 Consolidation & Primary Interface",
+      "path": "Palace development/STIGMERGY v2.0 \u2014 Consolidation & Primary Interface.md",
+      "type": "project",
+      "stage": "sprout",
+      "has_forward_vector": true,
+      "last_activated": null,
+      "activation_count": null,
+      "outbound_count": 13,
+      "inbound_count": 5
     },
     {
       "id": "STIGMERGY \u2014 Alignment Review Build Plan",
@@ -2669,7 +2994,7 @@
       "has_forward_vector": false,
       "last_activated": "2026-03",
       "activation_count": "1",
-      "outbound_count": 5,
+      "outbound_count": 6,
       "inbound_count": 0
     },
     {
@@ -2680,7 +3005,7 @@
       "has_forward_vector": false,
       "last_activated": "2026-03",
       "activation_count": "1",
-      "outbound_count": 4,
+      "outbound_count": 5,
       "inbound_count": 1
     },
     {
@@ -2691,7 +3016,7 @@
       "has_forward_vector": true,
       "last_activated": null,
       "activation_count": null,
-      "outbound_count": 8,
+      "outbound_count": 9,
       "inbound_count": 2
     },
     {
@@ -2724,7 +3049,7 @@
       "has_forward_vector": true,
       "last_activated": null,
       "activation_count": null,
-      "outbound_count": 4,
+      "outbound_count": 5,
       "inbound_count": 1
     },
     {
@@ -2735,7 +3060,7 @@
       "has_forward_vector": true,
       "last_activated": null,
       "activation_count": null,
-      "outbound_count": 6,
+      "outbound_count": 7,
       "inbound_count": 6
     },
     {
@@ -2746,8 +3071,8 @@
       "has_forward_vector": false,
       "last_activated": "2026-03",
       "activation_count": "1",
-      "outbound_count": 5,
-      "inbound_count": 0
+      "outbound_count": 6,
+      "inbound_count": 1
     },
     {
       "id": "Shepard Tone Synthesizer",
@@ -2758,7 +3083,7 @@
       "last_activated": "2026-03",
       "activation_count": "12",
       "outbound_count": 9,
-      "inbound_count": 4
+      "inbound_count": 5
     },
     {
       "id": "Shimmer Cloud",
@@ -2769,7 +3094,7 @@
       "last_activated": "2026-03",
       "activation_count": "1",
       "outbound_count": 5,
-      "inbound_count": 3
+      "inbound_count": 4
     },
     {
       "id": "Shopkeeper",
@@ -2779,8 +3104,8 @@
       "has_forward_vector": true,
       "last_activated": "2026-06",
       "activation_count": "1",
-      "outbound_count": 7,
-      "inbound_count": 1
+      "outbound_count": 8,
+      "inbound_count": 2
     },
     {
       "id": "Shunryu Suzuki",
@@ -2790,8 +3115,8 @@
       "has_forward_vector": false,
       "last_activated": "2026-03",
       "activation_count": "1",
-      "outbound_count": 5,
-      "inbound_count": 4
+      "outbound_count": 6,
+      "inbound_count": 6
     },
     {
       "id": "Sidechain \u2194 Conversation",
@@ -2801,8 +3126,8 @@
       "has_forward_vector": false,
       "last_activated": "2026-03",
       "activation_count": "1",
-      "outbound_count": 6,
-      "inbound_count": 2
+      "outbound_count": 7,
+      "inbound_count": 6
     },
     {
       "id": "Signal-Rate CV Architecture",
@@ -2823,8 +3148,8 @@
       "has_forward_vector": true,
       "last_activated": "2026-05",
       "activation_count": "1",
-      "outbound_count": 7,
-      "inbound_count": 5
+      "outbound_count": 9,
+      "inbound_count": 9
     },
     {
       "id": "Slime Mold Delay",
@@ -2856,8 +3181,8 @@
       "has_forward_vector": true,
       "last_activated": "2026-03",
       "activation_count": "1",
-      "outbound_count": 7,
-      "inbound_count": 25
+      "outbound_count": 8,
+      "inbound_count": 26
     },
     {
       "id": "Speak Like a Person, Log Like a Protocol",
@@ -2868,7 +3193,7 @@
       "last_activated": null,
       "activation_count": null,
       "outbound_count": 5,
-      "inbound_count": 0
+      "inbound_count": 2
     },
     {
       "id": "Spinoza",
@@ -2878,8 +3203,8 @@
       "has_forward_vector": true,
       "last_activated": "2026-06",
       "activation_count": "1",
-      "outbound_count": 7,
-      "inbound_count": 0
+      "outbound_count": 9,
+      "inbound_count": 3
     },
     {
       "id": "Spinoza Conatus",
@@ -2889,19 +3214,19 @@
       "has_forward_vector": true,
       "last_activated": "2026-04-01",
       "activation_count": "12",
-      "outbound_count": 9,
-      "inbound_count": 60
+      "outbound_count": 13,
+      "inbound_count": 65
     },
     {
       "id": "Stable Audio Open",
       "path": "Shop/Stable Audio Open.md",
       "type": "specialist",
       "stage": null,
-      "has_forward_vector": false,
+      "has_forward_vector": true,
       "last_activated": null,
       "activation_count": null,
-      "outbound_count": 0,
-      "inbound_count": 0
+      "outbound_count": 7,
+      "inbound_count": 2
     },
     {
       "id": "State Machine",
@@ -2915,6 +3240,17 @@
       "inbound_count": 2
     },
     {
+      "id": "Steer the Generator",
+      "path": "Steer the Generator.md",
+      "type": "practice",
+      "stage": "sprout",
+      "has_forward_vector": true,
+      "last_activated": "2026-06",
+      "activation_count": "1",
+      "outbound_count": 5,
+      "inbound_count": 5
+    },
+    {
       "id": "Stoicism",
       "path": "Stoicism.md",
       "type": "hub",
@@ -2922,8 +3258,8 @@
       "has_forward_vector": true,
       "last_activated": "2026-05",
       "activation_count": "3",
-      "outbound_count": 12,
-      "inbound_count": 16
+      "outbound_count": 16,
+      "inbound_count": 19
     },
     {
       "id": "Streaming details",
@@ -2944,7 +3280,7 @@
       "has_forward_vector": true,
       "last_activated": "2026-03",
       "activation_count": "1",
-      "outbound_count": 4,
+      "outbound_count": 5,
       "inbound_count": 4
     },
     {
@@ -2966,8 +3302,8 @@
       "has_forward_vector": false,
       "last_activated": "2026-03",
       "activation_count": "1",
-      "outbound_count": 9,
-      "inbound_count": 18
+      "outbound_count": 10,
+      "inbound_count": 19
     },
     {
       "id": "Symbiotic Skills",
@@ -2999,8 +3335,8 @@
       "has_forward_vector": true,
       "last_activated": "2026-05",
       "activation_count": "1",
-      "outbound_count": 5,
-      "inbound_count": 3
+      "outbound_count": 7,
+      "inbound_count": 4
     },
     {
       "id": "Synthesis \u2194 Emergence",
@@ -3010,7 +3346,7 @@
       "has_forward_vector": false,
       "last_activated": "2026-03",
       "activation_count": "1",
-      "outbound_count": 9,
+      "outbound_count": 12,
       "inbound_count": 4
     },
     {
@@ -3032,8 +3368,19 @@
       "has_forward_vector": false,
       "last_activated": "2026-03",
       "activation_count": "1",
-      "outbound_count": 4,
+      "outbound_count": 6,
       "inbound_count": 0
+    },
+    {
+      "id": "The 2.5D Paper Stack",
+      "path": "The 2.5D Paper Stack.md",
+      "type": "concept",
+      "stage": "growing",
+      "has_forward_vector": true,
+      "last_activated": "2026-06",
+      "activation_count": "1",
+      "outbound_count": 5,
+      "inbound_count": 2
     },
     {
       "id": "The Adjacent Affordance",
@@ -3066,7 +3413,7 @@
       "last_activated": "2026-04",
       "activation_count": "1",
       "outbound_count": 8,
-      "inbound_count": 3
+      "inbound_count": 4
     },
     {
       "id": "The Dichotomy of Control",
@@ -3076,8 +3423,8 @@
       "has_forward_vector": true,
       "last_activated": "2026-05",
       "activation_count": "1",
-      "outbound_count": 7,
-      "inbound_count": 10
+      "outbound_count": 10,
+      "inbound_count": 12
     },
     {
       "id": "The Drift",
@@ -3087,8 +3434,8 @@
       "has_forward_vector": true,
       "last_activated": "2026-05",
       "activation_count": "1",
-      "outbound_count": 7,
-      "inbound_count": 6
+      "outbound_count": 11,
+      "inbound_count": 10
     },
     {
       "id": "The Flow Field is the Spine",
@@ -3099,7 +3446,7 @@
       "last_activated": "2026-06-13",
       "activation_count": "2",
       "outbound_count": 3,
-      "inbound_count": 2
+      "inbound_count": 6
     },
     {
       "id": "The Fortress and the Threshold",
@@ -3109,8 +3456,8 @@
       "has_forward_vector": true,
       "last_activated": "2026-05",
       "activation_count": "2",
-      "outbound_count": 10,
-      "inbound_count": 9
+      "outbound_count": 11,
+      "inbound_count": 13
     },
     {
       "id": "The Four Virtues",
@@ -3120,8 +3467,8 @@
       "has_forward_vector": true,
       "last_activated": "2026-05",
       "activation_count": "1",
-      "outbound_count": 6,
-      "inbound_count": 5
+      "outbound_count": 9,
+      "inbound_count": 6
     },
     {
       "id": "The Lens",
@@ -3131,8 +3478,8 @@
       "has_forward_vector": true,
       "last_activated": "2026-06",
       "activation_count": "1",
-      "outbound_count": 9,
-      "inbound_count": 0
+      "outbound_count": 15,
+      "inbound_count": 1
     },
     {
       "id": "The Metaphor Stretch",
@@ -3146,6 +3493,17 @@
       "inbound_count": 3
     },
     {
+      "id": "The Reader's Context Window",
+      "path": "The Reader's Context Window.md",
+      "type": "practice",
+      "stage": "sprout",
+      "has_forward_vector": true,
+      "last_activated": null,
+      "activation_count": null,
+      "outbound_count": 5,
+      "inbound_count": 1
+    },
+    {
       "id": "The Shop",
       "path": "The Shop.md",
       "type": "concept",
@@ -3153,8 +3511,8 @@
       "has_forward_vector": true,
       "last_activated": "2026-05",
       "activation_count": "1",
-      "outbound_count": 10,
-      "inbound_count": 20
+      "outbound_count": 15,
+      "inbound_count": 53
     },
     {
       "id": "The Substrate Drifts",
@@ -3175,8 +3533,8 @@
       "has_forward_vector": true,
       "last_activated": "2026-05",
       "activation_count": "1",
-      "outbound_count": 5,
-      "inbound_count": 6
+      "outbound_count": 6,
+      "inbound_count": 7
     },
     {
       "id": "Three Kinds of Warp",
@@ -3187,18 +3545,18 @@
       "last_activated": "2026-04",
       "activation_count": "1",
       "outbound_count": 12,
-      "inbound_count": 8
+      "inbound_count": 9
     },
     {
       "id": "Three.js",
       "path": "Shop/Three.js.md",
       "type": "specialist",
       "stage": null,
-      "has_forward_vector": false,
+      "has_forward_vector": true,
       "last_activated": null,
       "activation_count": null,
-      "outbound_count": 0,
-      "inbound_count": 3
+      "outbound_count": 12,
+      "inbound_count": 5
     },
     {
       "id": "Threshold Conatus",
@@ -3209,7 +3567,7 @@
       "last_activated": null,
       "activation_count": null,
       "outbound_count": 10,
-      "inbound_count": 11
+      "inbound_count": 12
     },
     {
       "id": "Tier Vocabulary Glossary",
@@ -3219,8 +3577,8 @@
       "has_forward_vector": true,
       "last_activated": "2026-05",
       "activation_count": "1",
-      "outbound_count": 5,
-      "inbound_count": 0
+      "outbound_count": 6,
+      "inbound_count": 1
     },
     {
       "id": "Tier-1 Warp Snippets",
@@ -3238,11 +3596,11 @@
       "path": "Shop/Tone.js.md",
       "type": "specialist",
       "stage": null,
-      "has_forward_vector": false,
+      "has_forward_vector": true,
       "last_activated": null,
       "activation_count": null,
-      "outbound_count": 0,
-      "inbound_count": 1
+      "outbound_count": 4,
+      "inbound_count": 5
     },
     {
       "id": "Toolkit \u2014 Audio Plugins",
@@ -3307,8 +3665,8 @@
       "has_forward_vector": true,
       "last_activated": "2026-04-01",
       "activation_count": "2",
-      "outbound_count": 25,
-      "inbound_count": 28
+      "outbound_count": 27,
+      "inbound_count": 32
     },
     {
       "id": "Trickster Commit",
@@ -3319,7 +3677,7 @@
       "last_activated": null,
       "activation_count": null,
       "outbound_count": 3,
-      "inbound_count": 0
+      "inbound_count": 1
     },
     {
       "id": "Tristitia Generator",
@@ -3330,7 +3688,7 @@
       "last_activated": "2026-03",
       "activation_count": "1",
       "outbound_count": 4,
-      "inbound_count": 3
+      "inbound_count": 4
     },
     {
       "id": "Two Batons, One Board",
@@ -3341,6 +3699,17 @@
       "last_activated": "2026-05-29",
       "activation_count": "2",
       "outbound_count": 6,
+      "inbound_count": 4
+    },
+    {
+      "id": "Typography as Meaning",
+      "path": "Typography as Meaning.md",
+      "type": "concept",
+      "stage": "growing",
+      "has_forward_vector": true,
+      "last_activated": null,
+      "activation_count": null,
+      "outbound_count": 7,
       "inbound_count": 3
     },
     {
@@ -3348,10 +3717,10 @@
       "path": "Shop/VCV Patch Generator.md",
       "type": "specialist",
       "stage": null,
-      "has_forward_vector": false,
+      "has_forward_vector": true,
       "last_activated": null,
       "activation_count": null,
-      "outbound_count": 1,
+      "outbound_count": 7,
       "inbound_count": 1
     },
     {
@@ -3373,8 +3742,8 @@
       "has_forward_vector": true,
       "last_activated": "2026-06",
       "activation_count": "1",
-      "outbound_count": 6,
-      "inbound_count": 2
+      "outbound_count": 7,
+      "inbound_count": 4
     },
     {
       "id": "Walk That Weaves",
@@ -3396,7 +3765,7 @@
       "last_activated": "2026-05",
       "activation_count": "2",
       "outbound_count": 7,
-      "inbound_count": 8
+      "inbound_count": 9
     },
     {
       "id": "Waveguide Synthesizer",
@@ -3406,8 +3775,8 @@
       "has_forward_vector": true,
       "last_activated": null,
       "activation_count": null,
-      "outbound_count": 9,
-      "inbound_count": 5
+      "outbound_count": 10,
+      "inbound_count": 8
     },
     {
       "id": "Wavetable Scanner",
@@ -3418,7 +3787,7 @@
       "last_activated": null,
       "activation_count": null,
       "outbound_count": 6,
-      "inbound_count": 1
+      "inbound_count": 2
     },
     {
       "id": "Wavetable Space as Torus",
@@ -3428,8 +3797,8 @@
       "has_forward_vector": true,
       "last_activated": "2026-06-05",
       "activation_count": "2",
-      "outbound_count": 10,
-      "inbound_count": 8
+      "outbound_count": 13,
+      "inbound_count": 9
     },
     {
       "id": "Wavetable Synthesis -- Research & Higher-Dimensional Design",
@@ -3439,7 +3808,7 @@
       "has_forward_vector": true,
       "last_activated": "2026-06-05",
       "activation_count": "2",
-      "outbound_count": 6,
+      "outbound_count": 7,
       "inbound_count": 3
     },
     {
@@ -3447,11 +3816,11 @@
       "path": "Shop/Web Audio Worklet.md",
       "type": "specialist",
       "stage": null,
-      "has_forward_vector": false,
+      "has_forward_vector": true,
       "last_activated": null,
       "activation_count": null,
-      "outbound_count": 4,
-      "inbound_count": 2
+      "outbound_count": 9,
+      "inbound_count": 4
     },
     {
       "id": "What Claim Does Scientific Sonification Make?",
@@ -3469,11 +3838,11 @@
       "path": "Shop/Whisper.md",
       "type": "specialist",
       "stage": null,
-      "has_forward_vector": false,
+      "has_forward_vector": true,
       "last_activated": null,
       "activation_count": null,
-      "outbound_count": 0,
-      "inbound_count": 0
+      "outbound_count": 4,
+      "inbound_count": 6
     },
     {
       "id": "Whitehead",
@@ -3483,8 +3852,19 @@
       "has_forward_vector": true,
       "last_activated": "2026-05",
       "activation_count": "1",
-      "outbound_count": 6,
-      "inbound_count": 6
+      "outbound_count": 9,
+      "inbound_count": 8
+    },
+    {
+      "id": "Worktree Practice",
+      "path": "Worktree Practice.md",
+      "type": "practice",
+      "stage": "growing",
+      "has_forward_vector": true,
+      "last_activated": "2026-06",
+      "activation_count": "1",
+      "outbound_count": 4,
+      "inbound_count": 0
     },
     {
       "id": "Yasujir\u014d Ozu",
@@ -3494,7 +3874,7 @@
       "has_forward_vector": false,
       "last_activated": "2026-03",
       "activation_count": "1",
-      "outbound_count": 5,
+      "outbound_count": 6,
       "inbound_count": 0
     },
     {
@@ -3513,33 +3893,22 @@
       "path": "Shop/ffmpeg.md",
       "type": "specialist",
       "stage": null,
-      "has_forward_vector": false,
+      "has_forward_vector": true,
       "last_activated": null,
       "activation_count": null,
-      "outbound_count": 1,
-      "inbound_count": 0
+      "outbound_count": 12,
+      "inbound_count": 6
     },
     {
       "id": "p5.js",
       "path": "Shop/p5.js.md",
       "type": "specialist",
       "stage": null,
-      "has_forward_vector": false,
-      "last_activated": null,
-      "activation_count": null,
-      "outbound_count": 3,
-      "inbound_count": 0
-    },
-    {
-      "id": "shop-header \u2014 Maker's Comparison Recommendation",
-      "path": "Shop/Maker/comparisons/2026-05-30-shop-header/shop-header \u2014 Maker's Comparison Recommendation.md",
-      "type": "meta",
-      "stage": null,
       "has_forward_vector": true,
       "last_activated": null,
       "activation_count": null,
-      "outbound_count": 5,
-      "inbound_count": 1
+      "outbound_count": 7,
+      "inbound_count": 6
     },
     {
       "id": "spinoza-zhuangzi-on-striving",
@@ -3549,8 +3918,8 @@
       "has_forward_vector": true,
       "last_activated": "2026-05",
       "activation_count": "1",
-      "outbound_count": 7,
-      "inbound_count": 2
+      "outbound_count": 10,
+      "inbound_count": 5
     },
     {
       "id": "zhuangzi-epictetus-confucius-on-the-self",
@@ -3561,7 +3930,7 @@
       "last_activated": "2026-05",
       "activation_count": "1",
       "outbound_count": 7,
-      "inbound_count": 2
+      "inbound_count": 4
     }
   ],
   "edges": [
@@ -3606,6 +3975,12 @@
       "type": "couples-with",
       "target": "SUBSTRATE",
       "label": "self-model-discipline"
+    },
+    {
+      "source": "Closing Well",
+      "type": "connects-to",
+      "target": "Kuramoto Coupling",
+      "label": null
     },
     {
       "source": "DSP Frameworks",
@@ -3716,6 +4091,18 @@
       "label": "each-card-provokes-one-entry"
     },
     {
+      "source": "Oblique Enrichment",
+      "type": "connects-to",
+      "target": "Project Stewardship System",
+      "label": "converging-thread"
+    },
+    {
+      "source": "Oblique Enrichment",
+      "type": "exemplifies",
+      "target": "Radio Play",
+      "label": "first-deck"
+    },
+    {
       "source": "The Four Virtues",
       "type": "emerged-from",
       "target": "Stoicism",
@@ -3752,6 +4139,54 @@
       "label": "four-and-four-but-not-the-same-four"
     },
     {
+      "source": "The Four Virtues",
+      "type": "connects-to",
+      "target": "Confucianism",
+      "label": null
+    },
+    {
+      "source": "The Four Virtues",
+      "type": "connects-to",
+      "target": "Hilaritas Generator",
+      "label": null
+    },
+    {
+      "source": "The Four Virtues",
+      "type": "connects-to",
+      "target": "The Fortress and the Threshold",
+      "label": null
+    },
+    {
+      "source": "Graphic Storytelling",
+      "type": "enables",
+      "target": "BLUELINE",
+      "label": "grounds-the-comic-staging"
+    },
+    {
+      "source": "Graphic Storytelling",
+      "type": "couples-with",
+      "target": "Typography as Meaning",
+      "label": "word-meets-image"
+    },
+    {
+      "source": "Graphic Storytelling",
+      "type": "connects-to",
+      "target": "Frame Designer",
+      "label": "applies-this-craft"
+    },
+    {
+      "source": "Graphic Storytelling",
+      "type": "connects-to",
+      "target": "Comic and Cinema \u2014 Two Ways of Seeing",
+      "label": "the-comic-way-of-seeing"
+    },
+    {
+      "source": "Graphic Storytelling",
+      "type": "connects-to",
+      "target": "Adopt the Craft, Author the Seam",
+      "label": "the-craft-BLUELINE-adopts"
+    },
+    {
       "source": "The Adjacent Affordance",
       "type": "mirrors",
       "target": "The Dichotomy of Control",
@@ -3786,6 +4221,48 @@
       "type": "connects-to",
       "target": "SUBSTRATE",
       "label": null
+    },
+    {
+      "source": "Typography as Meaning",
+      "type": "connects-to",
+      "target": "BLUELINE \u2014 Text Layer",
+      "label": "first-application"
+    },
+    {
+      "source": "Typography as Meaning",
+      "type": "connects-to",
+      "target": "Loudon Live Design System",
+      "label": "the-authors-voice"
+    },
+    {
+      "source": "Typography as Meaning",
+      "type": "exemplifies",
+      "target": "Blocked, Not Prompted",
+      "label": "author-the-structure"
+    },
+    {
+      "source": "Typography as Meaning",
+      "type": "connects-to",
+      "target": "Comic and Cinema \u2014 Two Ways of Seeing",
+      "label": "text-transduces-too"
+    },
+    {
+      "source": "Typography as Meaning",
+      "type": "spawned",
+      "target": "Lettering",
+      "label": "the-renderer"
+    },
+    {
+      "source": "Typography as Meaning",
+      "type": "emerged-from",
+      "target": "Graphic Storytelling",
+      "label": "inherited-grammar"
+    },
+    {
+      "source": "Typography as Meaning",
+      "type": "couples-with",
+      "target": "Language as a Tonal Medium",
+      "label": "letter-as-tone"
     },
     {
       "source": "The Dichotomy of Control",
@@ -3828,6 +4305,24 @@
       "type": "connects-to",
       "target": "Closing Well",
       "label": "own-the-act-not-the-outcome"
+    },
+    {
+      "source": "The Dichotomy of Control",
+      "type": "connects-to",
+      "target": "Project Stewardship System",
+      "label": null
+    },
+    {
+      "source": "The Dichotomy of Control",
+      "type": "connects-to",
+      "target": "STIGMERGY Philosophical Lenses",
+      "label": null
+    },
+    {
+      "source": "The Dichotomy of Control",
+      "type": "connects-to",
+      "target": "Trickster",
+      "label": null
     },
     {
       "source": "Phase Reduction",
@@ -3894,6 +4389,18 @@
       "type": "member-of",
       "target": "Dissolutions",
       "label": "one-object-two-doorways"
+    },
+    {
+      "source": "Phase Reduction",
+      "type": "connects-to",
+      "target": "Bayesian Granular Synthesizer",
+      "label": null
+    },
+    {
+      "source": "Phase Reduction",
+      "type": "connects-to",
+      "target": "Wallpaper Groups",
+      "label": null
     },
     {
       "source": "Palace Conatus",
@@ -4106,6 +4613,42 @@
       "label": "visual-system-now-palace-default"
     },
     {
+      "source": "Loudon Live",
+      "type": "connects-to",
+      "target": "Compressor Design",
+      "label": null
+    },
+    {
+      "source": "Loudon Live",
+      "type": "connects-to",
+      "target": "Crystal Synthesizer",
+      "label": null
+    },
+    {
+      "source": "Loudon Live",
+      "type": "connects-to",
+      "target": "Generative Audio Devices",
+      "label": null
+    },
+    {
+      "source": "Loudon Live",
+      "type": "connects-to",
+      "target": "Generative Preset Development",
+      "label": null
+    },
+    {
+      "source": "Loudon Live",
+      "type": "connects-to",
+      "target": "Retrospective Delay",
+      "label": null
+    },
+    {
+      "source": "Loudon Live",
+      "type": "connects-to",
+      "target": "Shepard Tone Synthesizer",
+      "label": null
+    },
+    {
       "source": "README - The Palace Guide",
       "type": "enables",
       "target": "SUBSTRATE",
@@ -4184,6 +4727,12 @@
       "label": "context-companion"
     },
     {
+      "source": "Cooperation_Yields_Agency",
+      "type": "enables",
+      "target": "Hilaritas Generator",
+      "label": "cooperation-as-hilaritas"
+    },
+    {
       "source": "Hyperdimensional Prism",
       "type": "deepens",
       "target": "FOUR PILLARS",
@@ -4223,6 +4772,18 @@
       "source": "Hyperdimensional Prism",
       "type": "connects-to",
       "target": "Compressor Design",
+      "label": null
+    },
+    {
+      "source": "Hyperdimensional Prism",
+      "type": "connects-to",
+      "target": "Harmonicity and Inharmonicity",
+      "label": null
+    },
+    {
+      "source": "Hyperdimensional Prism",
+      "type": "connects-to",
+      "target": "Loudon Live",
       "label": null
     },
     {
@@ -4322,6 +4883,24 @@
       "label": "perception-topology"
     },
     {
+      "source": "Wavetable Space as Torus",
+      "type": "connects-to",
+      "target": "Deleuze",
+      "label": null
+    },
+    {
+      "source": "Wavetable Space as Torus",
+      "type": "connects-to",
+      "target": "Philosopher Visits the Entry",
+      "label": null
+    },
+    {
+      "source": "Wavetable Space as Torus",
+      "type": "connects-to",
+      "target": "Simondon",
+      "label": null
+    },
+    {
       "source": "Identity Molting",
       "type": "connects-to",
       "target": "Like Water",
@@ -4356,6 +4935,54 @@
       "type": "connects-to",
       "target": "Lateral Access",
       "label": "vulnerability-window-as-oblique-path"
+    },
+    {
+      "source": "Remnants in Depth",
+      "type": "emerged-from",
+      "target": "BLUELINE",
+      "label": "blob-field"
+    },
+    {
+      "source": "Remnants in Depth",
+      "type": "couples-with",
+      "target": "Hand-Drawn 3D Look",
+      "label": "lives-inside"
+    },
+    {
+      "source": "Remnants in Depth",
+      "type": "connects-to",
+      "target": "Frame Designer",
+      "label": "render-method"
+    },
+    {
+      "source": "Remnants in Depth",
+      "type": "connects-to",
+      "target": "Blender",
+      "label": "billboard-rig"
+    },
+    {
+      "source": "Remnants in Depth",
+      "type": "exemplifies",
+      "target": "Adopt the Craft, Author the Seam",
+      "label": "author-the-placement"
+    },
+    {
+      "source": "Remnants in Depth",
+      "type": "connects-to",
+      "target": "The Flow Field is the Spine",
+      "label": "density-follows-the-field"
+    },
+    {
+      "source": "Remnants in Depth",
+      "type": "member-of",
+      "target": "The Shop",
+      "label": "candidate-roster"
+    },
+    {
+      "source": "Remnants in Depth",
+      "type": "exemplifies",
+      "target": "Move the Ink, Don't Redraw It",
+      "label": "geometry-over-redraw"
     },
     {
       "source": "Palace_Philosophies",
@@ -4496,6 +5123,36 @@
       "label": "context-companion"
     },
     {
+      "source": "Palace_Philosophies",
+      "type": "enables",
+      "target": "Closing Well",
+      "label": "justice-virtue-instance"
+    },
+    {
+      "source": "Palace_Philosophies",
+      "type": "connects-to",
+      "target": "Palace Map",
+      "label": null
+    },
+    {
+      "source": "Palace_Philosophies",
+      "type": "spawned",
+      "target": "Leibniz",
+      "label": "page-built-register"
+    },
+    {
+      "source": "Palace_Philosophies",
+      "type": "connects-to",
+      "target": "Dialectic",
+      "label": "contradictions-dispatched-here"
+    },
+    {
+      "source": "Palace_Philosophies",
+      "type": "spawned",
+      "target": "Spinoza",
+      "label": "person-page-built"
+    },
+    {
       "source": "Dissolutions",
       "type": "emerged-from",
       "target": "Boundary-Crossing Instruments",
@@ -4512,6 +5169,60 @@
       "type": "connects-to",
       "target": "Frequency-Time Duality",
       "label": "first-walk-across-a-boundary"
+    },
+    {
+      "source": "Dissolutions",
+      "type": "connects-to",
+      "target": "Chebyshev is Fourier",
+      "label": null
+    },
+    {
+      "source": "Dissolutions",
+      "type": "connects-to",
+      "target": "Dispersion Table",
+      "label": null
+    },
+    {
+      "source": "Dissolutions",
+      "type": "connects-to",
+      "target": "Exponential Decay Curvature",
+      "label": null
+    },
+    {
+      "source": "Dissolutions",
+      "type": "connects-to",
+      "target": "Floquet Theory",
+      "label": null
+    },
+    {
+      "source": "Dissolutions",
+      "type": "connects-to",
+      "target": "Kuramoto Coupling",
+      "label": null
+    },
+    {
+      "source": "Dissolutions",
+      "type": "connects-to",
+      "target": "Linear Predictive Coding",
+      "label": null
+    },
+    {
+      "source": "Dissolutions",
+      "type": "connects-to",
+      "target": "Phase Reduction",
+      "label": null
+    },
+    {
+      "source": "Dissolutions",
+      "type": "connects-to",
+      "target": "Rank-N Lattice Analysis",
+      "label": null
+    },
+    {
+      "source": "Dissolutions",
+      "type": "connects-to",
+      "target": "Volterra Kernels and the Torus",
+      "label": null
     },
     {
       "source": "Quadratic Interpolation in DSP",
@@ -4616,6 +5327,12 @@
       "label": "one-object-two-doorways"
     },
     {
+      "source": "Dispersion Table",
+      "type": "connects-to",
+      "target": "Loudon Live",
+      "label": null
+    },
+    {
       "source": "ROSETTA",
       "type": "mirrors",
       "target": "SCHEMA",
@@ -4638,12 +5355,6 @@
       "type": "deepens",
       "target": "SUBSTRATE",
       "label": null
-    },
-    {
-      "source": "FOUR PILLARS \u2014 Context",
-      "type": "member-of",
-      "target": "FOUR PILLARS",
-      "label": "context-companion"
     },
     {
       "source": "Toolkit \u2014 Synthesizers",
@@ -4752,6 +5463,36 @@
       "type": "couples-with",
       "target": "Progressive Staging",
       "label": "pedagogical-method"
+    },
+    {
+      "source": "Comic and Cinema \u2014 Two Ways of Seeing",
+      "type": "deepens",
+      "target": "Graphic Storytelling",
+      "label": "the-comic-way-of-seeing"
+    },
+    {
+      "source": "Comic and Cinema \u2014 Two Ways of Seeing",
+      "type": "connects-to",
+      "target": "BLUELINE",
+      "label": "lives-on-the-seam"
+    },
+    {
+      "source": "Comic and Cinema \u2014 Two Ways of Seeing",
+      "type": "connects-to",
+      "target": "Frame Designer",
+      "label": "stages-comic-renders-cinematic"
+    },
+    {
+      "source": "Comic and Cinema \u2014 Two Ways of Seeing",
+      "type": "couples-with",
+      "target": "The Reader's Context Window",
+      "label": "what-the-gap-asks-of-the-reader"
+    },
+    {
+      "source": "Comic and Cinema \u2014 Two Ways of Seeing",
+      "type": "connects-to",
+      "target": "Adopt the Craft, Author the Seam",
+      "label": "the-seam-is-here"
     },
     {
       "source": "The Curve Is the Material",
@@ -4964,6 +5705,12 @@
       "label": "shared-respond-loop"
     },
     {
+      "source": "Review Layer",
+      "type": "connects-to",
+      "target": "Palace as Context Injection System",
+      "label": null
+    },
+    {
       "source": "Differential Equations",
       "type": "connects-to",
       "target": "Action Potential Oscillator",
@@ -5030,6 +5777,24 @@
       "label": null
     },
     {
+      "source": "Move the Ink, Don't Redraw It",
+      "type": "couples-with",
+      "target": "The 2.5D Paper Stack",
+      "label": "breathes-via"
+    },
+    {
+      "source": "Move the Ink, Don't Redraw It",
+      "type": "connects-to",
+      "target": "BLUELINE",
+      "label": "proved-in"
+    },
+    {
+      "source": "Move the Ink, Don't Redraw It",
+      "type": "enables",
+      "target": "Frame Designer",
+      "label": "motion-primitive-for"
+    },
+    {
       "source": "JSUI",
       "type": "spawned",
       "target": "Retrospective Delay",
@@ -5045,6 +5810,12 @@
       "source": "JSUI",
       "type": "connects-to",
       "target": "Preset Oracle",
+      "label": null
+    },
+    {
+      "source": "JSUI",
+      "type": "connects-to",
+      "target": "Playful Interface Design",
       "label": null
     },
     {
@@ -5072,6 +5843,12 @@
       "label": "published-precedent"
     },
     {
+      "source": "The Flow Field is the Spine",
+      "type": "connects-to",
+      "target": "flow-field-spine",
+      "label": null
+    },
+    {
       "source": "Infeasible DSP Now Shippable",
       "type": "connects-to",
       "target": "Loudon Live",
@@ -5088,6 +5865,72 @@
       "type": "connects-to",
       "target": "Boundary-Crossing Instruments",
       "label": "mathematical-taste-as-the-moat"
+    },
+    {
+      "source": "Frame Designer",
+      "type": "connects-to",
+      "target": "Maker",
+      "label": "designer-split"
+    },
+    {
+      "source": "Frame Designer",
+      "type": "member-of",
+      "target": "The Shop",
+      "label": "frame-designer"
+    },
+    {
+      "source": "Frame Designer",
+      "type": "emerged-from",
+      "target": "BLUELINE",
+      "label": "proving-ground"
+    },
+    {
+      "source": "Frame Designer",
+      "type": "connects-to",
+      "target": "BLUELINE \u2014 Board Record Schema",
+      "label": "spine"
+    },
+    {
+      "source": "Frame Designer",
+      "type": "connects-to",
+      "target": "Blocked, Not Prompted",
+      "label": "applies"
+    },
+    {
+      "source": "Frame Designer",
+      "type": "connects-to",
+      "target": "Steer the Generator",
+      "label": "render-discipline"
+    },
+    {
+      "source": "Frame Designer",
+      "type": "exemplifies",
+      "target": "Adopt the Craft, Author the Seam",
+      "label": "comp-as-craft"
+    },
+    {
+      "source": "Frame Designer",
+      "type": "connects-to",
+      "target": "BLUELINE \u2014 Production Pipeline",
+      "label": "realizes-stages-4-5"
+    },
+    {
+      "source": "Frame Designer",
+      "type": "connects-to",
+      "target": "Hand-Drawn 3D Look",
+      "label": "hand-drawn-pipeline"
+    },
+    {
+      "source": "Frame Designer",
+      "type": "connects-to",
+      "target": "Remnants in Depth",
+      "label": "2d-marks-in-3d"
+    },
+    {
+      "source": "Frame Designer",
+      "type": "connects-to",
+      "target": "Figure Rig",
+      "label": "figure-staging-method"
     },
     {
       "source": "Media Library",
@@ -5246,6 +6089,72 @@
       "label": "bridge-via-PRC"
     },
     {
+      "source": "Floquet Theory",
+      "type": "connects-to",
+      "target": "Entry Conatus",
+      "label": null
+    },
+    {
+      "source": "Floquet Theory",
+      "type": "connects-to",
+      "target": "Philosopher Visits the Entry",
+      "label": null
+    },
+    {
+      "source": "Floquet Theory",
+      "type": "connects-to",
+      "target": "Spinoza Conatus",
+      "label": null
+    },
+    {
+      "source": "Floquet Theory",
+      "type": "connects-to",
+      "target": "The Drift",
+      "label": null
+    },
+    {
+      "source": "Floquet Theory",
+      "type": "connects-to",
+      "target": "Whitehead",
+      "label": null
+    },
+    {
+      "source": "The 2.5D Paper Stack",
+      "type": "enables",
+      "target": "Frame Designer",
+      "label": "re-founds"
+    },
+    {
+      "source": "The 2.5D Paper Stack",
+      "type": "emerged-from",
+      "target": "BLUELINE",
+      "label": "track-VI"
+    },
+    {
+      "source": "The 2.5D Paper Stack",
+      "type": "deepens",
+      "target": "Multiplane Animation",
+      "label": "modernizes"
+    },
+    {
+      "source": "The 2.5D Paper Stack",
+      "type": "couples-with",
+      "target": "Move the Ink, Don't Redraw It",
+      "label": "breathes-via"
+    },
+    {
+      "source": "The 2.5D Paper Stack",
+      "type": "connects-to",
+      "target": "BLUELINE \u2014 Text Layer",
+      "label": "stacks-the-bubble"
+    },
+    {
+      "source": "The 2.5D Paper Stack",
+      "type": "couples-with",
+      "target": "Hand-Drawn 3D Look",
+      "label": "break-surface"
+    },
+    {
       "source": "The Drift",
       "type": "emerged-from",
       "target": "The Fortress and the Threshold",
@@ -5286,6 +6195,30 @@
       "type": "connects-to",
       "target": "Deleuze",
       "label": "difference-not-no-self"
+    },
+    {
+      "source": "The Drift",
+      "type": "connects-to",
+      "target": "Entry Conatus",
+      "label": null
+    },
+    {
+      "source": "The Drift",
+      "type": "connects-to",
+      "target": "Granular Synthesis",
+      "label": null
+    },
+    {
+      "source": "The Drift",
+      "type": "connects-to",
+      "target": "Parametric Resonance",
+      "label": null
+    },
+    {
+      "source": "The Drift",
+      "type": "connects-to",
+      "target": "spinoza-zhuangzi-on-striving",
+      "label": null
     },
     {
       "source": "SCHEMA",
@@ -5390,6 +6323,12 @@
       "label": "subcategory"
     },
     {
+      "source": "Loudon's Toolkit",
+      "type": "exemplifies",
+      "target": "FOUR PILLARS",
+      "label": "toolkit-as-four-pillars-instance"
+    },
+    {
       "source": "Wavetable Synthesis -- Research & Higher-Dimensional Design",
       "type": "connects-to",
       "target": "FOUR PILLARS",
@@ -5456,6 +6395,12 @@
       "label": "mathematical-substrate"
     },
     {
+      "source": "Wavetable Synthesis -- Research & Higher-Dimensional Design",
+      "type": "connects-to",
+      "target": "Loudon Live",
+      "label": null
+    },
+    {
       "source": "Linear Predictive Coding",
       "type": "mirrors",
       "target": "Waveguide Synthesizer",
@@ -5490,6 +6435,24 @@
       "type": "member-of",
       "target": "Dissolutions",
       "label": "analysis-as-synthesis-read-backward"
+    },
+    {
+      "source": "Linear Predictive Coding",
+      "type": "connects-to",
+      "target": "Loudon Live",
+      "label": null
+    },
+    {
+      "source": "Linear Predictive Coding",
+      "type": "connects-to",
+      "target": "Philosopher Visits the Entry",
+      "label": null
+    },
+    {
+      "source": "Linear Predictive Coding",
+      "type": "connects-to",
+      "target": "Spinoza",
+      "label": null
     },
     {
       "source": "The Lens",
@@ -5556,6 +6519,42 @@
       "type": "connects-to",
       "target": "Trickster",
       "label": "the-glass-intercepts-and-transforms"
+    },
+    {
+      "source": "The Lens",
+      "type": "connects-to",
+      "target": "BBS Design System",
+      "label": null
+    },
+    {
+      "source": "The Lens",
+      "type": "connects-to",
+      "target": "Deleuze",
+      "label": null
+    },
+    {
+      "source": "The Lens",
+      "type": "connects-to",
+      "target": "Merleau-Ponty",
+      "label": null
+    },
+    {
+      "source": "The Lens",
+      "type": "connects-to",
+      "target": "Simondon",
+      "label": null
+    },
+    {
+      "source": "The Lens",
+      "type": "connects-to",
+      "target": "The Dichotomy of Control",
+      "label": null
+    },
+    {
+      "source": "The Lens",
+      "type": "connects-to",
+      "target": "The Four Virtues",
+      "label": null
     },
     {
       "source": "Playful Interface Design",
@@ -5666,6 +6665,24 @@
       "label": "occasions-of-synchrony"
     },
     {
+      "source": "Whitehead",
+      "type": "connects-to",
+      "target": "FOUR PILLARS",
+      "label": null
+    },
+    {
+      "source": "Whitehead",
+      "type": "connects-to",
+      "target": "Granular Synthesis",
+      "label": null
+    },
+    {
+      "source": "Whitehead",
+      "type": "connects-to",
+      "target": "STIGMERGY v1.0 \u2014 Palace Front-End",
+      "label": null
+    },
+    {
       "source": "Threshold Conatus",
       "type": "emerged-from",
       "target": "Trickster",
@@ -5753,6 +6770,12 @@
       "source": "Striatum",
       "type": "deepens",
       "target": "Excellent Adventure",
+      "label": null
+    },
+    {
+      "source": "Striatum",
+      "type": "connects-to",
+      "target": "Hilaritas Generator",
       "label": null
     },
     {
@@ -5858,6 +6881,30 @@
       "label": "motor-intentionality-of-the-knob"
     },
     {
+      "source": "Merleau-Ponty",
+      "type": "connects-to",
+      "target": "FOUR PILLARS",
+      "label": null
+    },
+    {
+      "source": "Merleau-Ponty",
+      "type": "connects-to",
+      "target": "Logarithmic Interface Scaling",
+      "label": null
+    },
+    {
+      "source": "Merleau-Ponty",
+      "type": "connects-to",
+      "target": "STIGMERGY v1.0 \u2014 Palace Front-End",
+      "label": null
+    },
+    {
+      "source": "Merleau-Ponty",
+      "type": "connects-to",
+      "target": "Stoicism",
+      "label": null
+    },
+    {
       "source": "Dub Lineage",
       "type": "mirrors",
       "target": "Trickster",
@@ -5948,6 +6995,48 @@
       "label": "access-through-shell"
     },
     {
+      "source": "Adopt the Craft, Author the Seam",
+      "type": "connects-to",
+      "target": "BLUELINE",
+      "label": "worked-example"
+    },
+    {
+      "source": "Adopt the Craft, Author the Seam",
+      "type": "connects-to",
+      "target": "Blocked, Not Prompted",
+      "label": "the-render-seam"
+    },
+    {
+      "source": "Adopt the Craft, Author the Seam",
+      "type": "connects-to",
+      "target": "Blender",
+      "label": "the-2D-3D-seam"
+    },
+    {
+      "source": "Adopt the Craft, Author the Seam",
+      "type": "contradicts",
+      "target": "FOUR PILLARS",
+      "label": "make-first-vs-adopt"
+    },
+    {
+      "source": "Adopt the Craft, Author the Seam",
+      "type": "mirrors",
+      "target": "Simondon",
+      "label": "concretization"
+    },
+    {
+      "source": "Adopt the Craft, Author the Seam",
+      "type": "connects-to",
+      "target": "Graphic Storytelling",
+      "label": "the-craft-being-adopted"
+    },
+    {
+      "source": "Adopt the Craft, Author the Seam",
+      "type": "connects-to",
+      "target": "Comic and Cinema \u2014 Two Ways of Seeing",
+      "label": "grammar-on-the-shelf"
+    },
+    {
       "source": "Harmonicity and Inharmonicity",
       "type": "couples-with",
       "target": "Kuramoto Coupling",
@@ -5982,6 +7071,18 @@
       "type": "emerged-from",
       "target": "Piano String Inharmonicity",
       "label": "b-coefficient-anchor"
+    },
+    {
+      "source": "Harmonicity and Inharmonicity",
+      "type": "connects-to",
+      "target": "Compressor Design",
+      "label": null
+    },
+    {
+      "source": "Harmonicity and Inharmonicity",
+      "type": "connects-to",
+      "target": "Hyperdimensional Prism",
+      "label": null
     },
     {
       "source": "Synth Archetypes",
@@ -6030,6 +7131,18 @@
       "type": "mirrors",
       "target": "Lossy Compression with Intent Alignment",
       "label": "topology-as-prior"
+    },
+    {
+      "source": "Synthesis Topologies",
+      "type": "connects-to",
+      "target": "The Curve Is the Material",
+      "label": null
+    },
+    {
+      "source": "Synthesis Topologies",
+      "type": "connects-to",
+      "target": "Three Kinds of Warp",
+      "label": null
     },
     {
       "source": "Granular Synthesis",
@@ -6116,6 +7229,24 @@
       "label": "producer-layer"
     },
     {
+      "source": "Loudon Live Post-producer",
+      "type": "connects-to",
+      "target": "Loudon Live Post-producer \u2014 Log",
+      "label": null
+    },
+    {
+      "source": "Loudon Live Post-producer",
+      "type": "connects-to",
+      "target": "Whisper",
+      "label": null
+    },
+    {
+      "source": "Loudon Live Post-producer",
+      "type": "connects-to",
+      "target": "ffmpeg",
+      "label": null
+    },
+    {
       "source": "The Metaphor Stretch",
       "type": "connects-to",
       "target": "Crystal Synthesizer",
@@ -6168,6 +7299,12 @@
       "type": "connects-to",
       "target": "Quality Manifesto",
       "label": "tier-as-quality-boundary"
+    },
+    {
+      "source": "Tier Vocabulary Glossary",
+      "type": "connects-to",
+      "target": "Generative Compression",
+      "label": null
     },
     {
       "source": "The Cooperation Path",
@@ -6268,8 +7405,26 @@
     {
       "source": "Modes of Collaboration",
       "type": "connects-to",
+      "target": "Radio Play",
+      "label": "debrief-reel"
+    },
+    {
+      "source": "Modes of Collaboration",
+      "type": "connects-to",
       "target": "Modes of Collaboration \u2014 Context",
       "label": "context-companion"
+    },
+    {
+      "source": "Modes of Collaboration",
+      "type": "connects-to",
+      "target": "Philosopher Visits the Entry",
+      "label": "sibling-mode"
+    },
+    {
+      "source": "Modes of Collaboration",
+      "type": "connects-to",
+      "target": "DSP Frameworks",
+      "label": "exemplifies-domain"
     },
     {
       "source": "Chebyshev is Fourier",
@@ -6380,6 +7535,42 @@
       "label": "context-companion"
     },
     {
+      "source": "Worktree Practice",
+      "type": "connects-to",
+      "target": "Deposit Ceremony",
+      "label": "routes-canon-home"
+    },
+    {
+      "source": "Worktree Practice",
+      "type": "connects-to",
+      "target": "Baton Ceremony",
+      "label": "carries-my-coordinate"
+    },
+    {
+      "source": "Worktree Practice",
+      "type": "connects-to",
+      "target": "STIGMERGY",
+      "label": "shares-one-write-path"
+    },
+    {
+      "source": "Worktree Practice",
+      "type": "connects-to",
+      "target": "SCHEMA",
+      "label": "honors-one-write-path"
+    },
+    {
+      "source": "Worktree Practice",
+      "type": "mirrors",
+      "target": "The Dichotomy of Control",
+      "label": "own-HEAD-own-control"
+    },
+    {
+      "source": "Worktree Practice",
+      "type": "connects-to",
+      "target": "Closing Well",
+      "label": "close-before-teardown"
+    },
+    {
       "source": "Cross-Domain Resonances",
       "type": "deepens",
       "target": "FOUR PILLARS",
@@ -6456,6 +7647,72 @@
       "type": "spawned",
       "target": "Synthesis \u2194 Emergence",
       "label": null
+    },
+    {
+      "source": "Cross-Domain Resonances",
+      "type": "connects-to",
+      "target": "Douglas Hofstadter",
+      "label": "cognitive-ground"
+    },
+    {
+      "source": "Cross-Domain Resonances",
+      "type": "connects-to",
+      "target": "Source Library",
+      "label": "draws-from"
+    },
+    {
+      "source": "Cross-Domain Resonances",
+      "type": "connects-to",
+      "target": "Shunryu Suzuki",
+      "label": "resonance-witness"
+    },
+    {
+      "source": "Cross-Domain Resonances",
+      "type": "connects-to",
+      "target": "Brian Eno",
+      "label": "constraint-practitioner"
+    },
+    {
+      "source": "Cross-Domain Resonances",
+      "type": "exemplifies",
+      "target": "Metric Modulation",
+      "label": "time-space-instance"
+    },
+    {
+      "source": "Radio Play",
+      "type": "emerged-from",
+      "target": "The Shop",
+      "label": "forged-in"
+    },
+    {
+      "source": "Radio Play",
+      "type": "connects-to",
+      "target": "Maker",
+      "label": "dispatched-by"
+    },
+    {
+      "source": "Radio Play",
+      "type": "connects-to",
+      "target": "Kokoro",
+      "label": "casts"
+    },
+    {
+      "source": "Radio Play",
+      "type": "connects-to",
+      "target": "Stable Audio Open",
+      "label": "scores"
+    },
+    {
+      "source": "Radio Play",
+      "type": "connects-to",
+      "target": "ffmpeg",
+      "label": "assembles"
+    },
+    {
+      "source": "Radio Play",
+      "type": "connects-to",
+      "target": "FOUR PILLARS",
+      "label": "sound-leads"
     },
     {
       "source": "Octave Equivalence",
@@ -6600,6 +7857,12 @@
       "type": "connects-to",
       "target": "Phase Reduction",
       "label": "pump-phase-lives-in-the-floquet-eigenvector"
+    },
+    {
+      "source": "Parametric Resonance",
+      "type": "connects-to",
+      "target": "Hilaritas Generator",
+      "label": null
     },
     {
       "source": "SUBSTRATE",
@@ -6776,6 +8039,12 @@
       "label": "frequency-dependent-amplification"
     },
     {
+      "source": "Photonic Time Crystals",
+      "type": "connects-to",
+      "target": "Hilaritas Generator",
+      "label": null
+    },
+    {
       "source": "Mixture of Experts",
       "type": "mirrors",
       "target": "Hyperdimensional Prism",
@@ -6840,6 +8109,12 @@
       "type": "connects-to",
       "target": "Pages as Agents",
       "label": "experts-as-pool"
+    },
+    {
+      "source": "Mixture of Experts",
+      "type": "connects-to",
+      "target": "Swarm Weave",
+      "label": null
     },
     {
       "source": "Blocked, Not Prompted",
@@ -6944,6 +8219,18 @@
       "label": "spawned-through-oblique"
     },
     {
+      "source": "Enrichment",
+      "type": "connects-to",
+      "target": "Kokoro",
+      "label": "audio-artifact-maker"
+    },
+    {
+      "source": "Enrichment",
+      "type": "connects-to",
+      "target": "STIGMERGY v2.0 \u2014 Consolidation & Primary Interface",
+      "label": "absorbed-by"
+    },
+    {
       "source": "Flocking",
       "type": "mirrors",
       "target": "Kuramoto Coupling",
@@ -6998,6 +8285,18 @@
       "label": "data-viz-shoot-out-target"
     },
     {
+      "source": "Flocking",
+      "type": "connects-to",
+      "target": "Loudon Live Design System",
+      "label": null
+    },
+    {
+      "source": "Flocking",
+      "type": "connects-to",
+      "target": "Maker",
+      "label": null
+    },
+    {
       "source": "Learning Materials and Canon",
       "type": "connects-to",
       "target": "SCHEMA",
@@ -7020,6 +8319,18 @@
       "type": "connects-to",
       "target": "4 Pillars Framework - The Founding Conversation",
       "label": "cautionary-tale"
+    },
+    {
+      "source": "Learning Materials and Canon",
+      "type": "enables",
+      "target": "Weave Ceremony",
+      "label": "governed-by"
+    },
+    {
+      "source": "Learning Materials and Canon",
+      "type": "enables",
+      "target": "Deposit Ceremony",
+      "label": "rule-for"
     },
     {
       "source": "The Shop",
@@ -7088,6 +8399,36 @@
       "label": "shop-wide-standard"
     },
     {
+      "source": "The Shop",
+      "type": "spawned",
+      "target": "Shopkeeper",
+      "label": "alt-foreman"
+    },
+    {
+      "source": "The Shop",
+      "type": "exemplifies",
+      "target": "Kokoro",
+      "label": "gotcha-anchor"
+    },
+    {
+      "source": "The Shop",
+      "type": "exemplifies",
+      "target": "Manim CE",
+      "label": "heuristic-case"
+    },
+    {
+      "source": "The Shop",
+      "type": "connects-to",
+      "target": "Trickster",
+      "label": "provisional-producer"
+    },
+    {
+      "source": "The Shop",
+      "type": "spawned",
+      "target": "Tier Vocabulary Glossary",
+      "label": "tier-vocabulary"
+    },
+    {
       "source": "Mathieu Equation",
       "type": "emerged-from",
       "target": "Floquet Time-Modulated Loops",
@@ -7128,6 +8469,42 @@
       "type": "connects-to",
       "target": "Dispersion",
       "label": "stiffness-is-dispersion-mechanism"
+    },
+    {
+      "source": "Mathieu Equation",
+      "type": "connects-to",
+      "target": "Deleuze",
+      "label": null
+    },
+    {
+      "source": "Mathieu Equation",
+      "type": "connects-to",
+      "target": "Philosopher Visits the Entry",
+      "label": null
+    },
+    {
+      "source": "Mathieu Equation",
+      "type": "connects-to",
+      "target": "Spinoza Conatus",
+      "label": null
+    },
+    {
+      "source": "Mathieu Equation",
+      "type": "connects-to",
+      "target": "The Drift",
+      "label": null
+    },
+    {
+      "source": "Mathieu Equation",
+      "type": "connects-to",
+      "target": "Wavetable Space as Torus",
+      "label": null
+    },
+    {
+      "source": "Mathieu Equation",
+      "type": "connects-to",
+      "target": "spinoza-zhuangzi-on-striving",
+      "label": null
     },
     {
       "source": "Audition Gate",
@@ -7232,6 +8609,12 @@
       "label": "context-companion"
     },
     {
+      "source": "Hilaritas_Generator",
+      "type": "connects-to",
+      "target": "Quality Manifesto",
+      "label": "signal-redirector"
+    },
+    {
       "source": "Source Library",
       "type": "deepens",
       "target": "FOUR PILLARS",
@@ -7272,6 +8655,12 @@
       "type": "spawned",
       "target": "Brian Eno",
       "label": null
+    },
+    {
+      "source": "Source Library",
+      "type": "connects-to",
+      "target": "Stoicism",
+      "label": "home-tradition"
     },
     {
       "source": "Boundary-Crossing Instruments",
@@ -7418,6 +8807,30 @@
       "label": "ai-agency-question"
     },
     {
+      "source": "Spinoza Conatus",
+      "type": "enables",
+      "target": "Cooperation Yields Agency",
+      "label": "conatus-grounds-agency"
+    },
+    {
+      "source": "Spinoza Conatus",
+      "type": "mirrors",
+      "target": "Endosymbiosis",
+      "label": "cellular-hilaritas"
+    },
+    {
+      "source": "Spinoza Conatus",
+      "type": "couples-with",
+      "target": "Deleuze",
+      "label": "monism-radicalized"
+    },
+    {
+      "source": "Spinoza Conatus",
+      "type": "spawned",
+      "target": "Tristitia Generator",
+      "label": "shadow-concept"
+    },
+    {
       "source": "Scale-Stratified Identity",
       "type": "deepens",
       "target": "Spinoza Conatus",
@@ -7464,6 +8877,48 @@
       "type": "connects-to",
       "target": "The Fortress and the Threshold",
       "label": "binary-as-special-case-of-stratification"
+    },
+    {
+      "source": "Scale-Stratified Identity",
+      "type": "connects-to",
+      "target": "Threshold Conatus",
+      "label": null
+    },
+    {
+      "source": "Steer the Generator",
+      "type": "emerged-from",
+      "target": "BLUELINE",
+      "label": "forged-in"
+    },
+    {
+      "source": "Steer the Generator",
+      "type": "connects-to",
+      "target": "The Shop",
+      "label": "production-discipline-for"
+    },
+    {
+      "source": "Steer the Generator",
+      "type": "connects-to",
+      "target": "Quality Manifesto",
+      "label": "measure-the-right-signal"
+    },
+    {
+      "source": "Steer the Generator",
+      "type": "exemplifies",
+      "target": "FOUR PILLARS",
+      "label": "make-first-learn-through-friction"
+    },
+    {
+      "source": "Steer the Generator",
+      "type": "couples-with",
+      "target": "Cooperation Yields Agency",
+      "label": "intuition-steers-generation"
+    },
+    {
+      "source": "Steer the Generator",
+      "type": "connects-to",
+      "target": "Capability-first prototyping",
+      "label": "prove-the-control-small"
     },
     {
       "source": "1 from 2",
@@ -7730,6 +9185,18 @@
       "label": "triage-role-host"
     },
     {
+      "source": "Trickster",
+      "type": "deepens",
+      "target": "Entry Conatus",
+      "label": "each-spirit-as-conatus"
+    },
+    {
+      "source": "Trickster",
+      "type": "spawned",
+      "target": "Trickster Commit",
+      "label": "everywhere-at-the-keyboard"
+    },
+    {
       "source": "Entry Conatus",
       "type": "deepens",
       "target": "Spinoza Conatus",
@@ -7770,6 +9237,12 @@
       "type": "connects-to",
       "target": "Weave Ceremony",
       "label": "vector-linting"
+    },
+    {
+      "source": "Entry Conatus",
+      "type": "connects-to",
+      "target": "Spore Check Ceremony",
+      "label": null
     },
     {
       "source": "Trickster Commit",
@@ -7832,6 +9305,18 @@
       "label": "weekly-cadence-folded-here"
     },
     {
+      "source": "4 Pillars Framework - The Founding Conversation",
+      "type": "connects-to",
+      "target": "Hyperdimensional Prism",
+      "label": null
+    },
+    {
+      "source": "4 Pillars Framework - The Founding Conversation",
+      "type": "connects-to",
+      "target": "Palace Enchantment",
+      "label": null
+    },
+    {
       "source": "Autodidact Polymaths",
       "type": "couples-with",
       "target": "Loudon Live",
@@ -7842,6 +9327,12 @@
       "type": "connects-to",
       "target": "FOUR PILLARS",
       "label": "pillar-shaped-learners"
+    },
+    {
+      "source": "Autodidact Polymaths",
+      "type": "connects-to",
+      "target": "Hyperdimensional Prism",
+      "label": null
     },
     {
       "source": "Leverage Points Framework",
@@ -8024,6 +9515,36 @@
       "label": "context-companion"
     },
     {
+      "source": "Palace Philosophies",
+      "type": "enables",
+      "target": "Closing Well",
+      "label": "justice-virtue-instance"
+    },
+    {
+      "source": "Palace Philosophies",
+      "type": "connects-to",
+      "target": "Palace Map",
+      "label": null
+    },
+    {
+      "source": "Palace Philosophies",
+      "type": "spawned",
+      "target": "Leibniz",
+      "label": "page-built-register"
+    },
+    {
+      "source": "Palace Philosophies",
+      "type": "connects-to",
+      "target": "Dialectic",
+      "label": "contradictions-dispatched-here"
+    },
+    {
+      "source": "Palace Philosophies",
+      "type": "spawned",
+      "target": "Spinoza",
+      "label": "person-page-built"
+    },
+    {
       "source": "State Machine",
       "type": "enables",
       "target": "Action Potential Oscillator",
@@ -8162,6 +9683,12 @@
       "label": "scale-as-joy"
     },
     {
+      "source": "The View From Above",
+      "type": "connects-to",
+      "target": "STIGMERGY Philosophical Lenses",
+      "label": null
+    },
+    {
       "source": "Volterra Kernels and the Torus",
       "type": "mirrors",
       "target": "2D Torus Wavetable Synthesizer",
@@ -8196,6 +9723,12 @@
       "type": "member-of",
       "target": "Dissolutions",
       "label": "synthesis-is-processing-one-substance"
+    },
+    {
+      "source": "Volterra Kernels and the Torus",
+      "type": "connects-to",
+      "target": "Loudon Live",
+      "label": null
     },
     {
       "source": "Leibniz",
@@ -8294,6 +9827,66 @@
       "label": "taoist-third-pole"
     },
     {
+      "source": "The Fortress and the Threshold",
+      "type": "connects-to",
+      "target": "zhuangzi-epictetus-confucius-on-the-self",
+      "label": null
+    },
+    {
+      "source": "Hand-Drawn 3D Look",
+      "type": "emerged-from",
+      "target": "BLUELINE",
+      "label": "proving-ground"
+    },
+    {
+      "source": "Hand-Drawn 3D Look",
+      "type": "exemplifies",
+      "target": "Adopt the Craft, Author the Seam",
+      "label": "skin-last"
+    },
+    {
+      "source": "Hand-Drawn 3D Look",
+      "type": "connects-to",
+      "target": "Steer the Generator",
+      "label": "redraw-not-filter"
+    },
+    {
+      "source": "Hand-Drawn 3D Look",
+      "type": "connects-to",
+      "target": "Blender",
+      "label": "npr-surface"
+    },
+    {
+      "source": "Hand-Drawn 3D Look",
+      "type": "connects-to",
+      "target": "ComfyUI",
+      "label": "the-seam"
+    },
+    {
+      "source": "Hand-Drawn 3D Look",
+      "type": "connects-to",
+      "target": "Frame Designer",
+      "label": "dispatched-by"
+    },
+    {
+      "source": "Hand-Drawn 3D Look",
+      "type": "couples-with",
+      "target": "Remnants in Depth",
+      "label": "contains"
+    },
+    {
+      "source": "Hand-Drawn 3D Look",
+      "type": "connects-to",
+      "target": "The Flow Field is the Spine",
+      "label": "one-field-for-everything"
+    },
+    {
+      "source": "Hand-Drawn 3D Look",
+      "type": "enables",
+      "target": "Figure Rig",
+      "label": "figure-staging"
+    },
+    {
       "source": "Speak Like a Person, Log Like a Protocol",
       "type": "connects-to",
       "target": "BBS Design System",
@@ -8352,6 +9945,12 @@
       "type": "member-of",
       "target": "Dissolutions",
       "label": "envelope-is-waveform-at-slow-rate"
+    },
+    {
+      "source": "Exponential Decay Curvature",
+      "type": "connects-to",
+      "target": "Loudon Live",
+      "label": null
     },
     {
       "source": "Confucianism",
@@ -8452,8 +10051,26 @@
     {
       "source": "Modes_of_Collaboration",
       "type": "connects-to",
+      "target": "Radio Play",
+      "label": "debrief-reel"
+    },
+    {
+      "source": "Modes_of_Collaboration",
+      "type": "connects-to",
       "target": "Modes of Collaboration \u2014 Context",
       "label": "context-companion"
+    },
+    {
+      "source": "Modes_of_Collaboration",
+      "type": "connects-to",
+      "target": "Philosopher Visits the Entry",
+      "label": "sibling-mode"
+    },
+    {
+      "source": "Modes_of_Collaboration",
+      "type": "connects-to",
+      "target": "DSP Frameworks",
+      "label": "exemplifies-domain"
     },
     {
       "source": "Jewel \u2014 Context",
@@ -8496,6 +10113,36 @@
       "type": "connects-to",
       "target": "Hilaritas Generator",
       "label": "new-country"
+    },
+    {
+      "source": "The Reader's Context Window",
+      "type": "couples-with",
+      "target": "Speak Like a Person, Log Like a Protocol",
+      "label": "words-and-order"
+    },
+    {
+      "source": "The Reader's Context Window",
+      "type": "emerged-from",
+      "target": "STIGMERGY v2.0 \u2014 Consolidation & Primary Interface",
+      "label": "forged-in-the-trickster-card"
+    },
+    {
+      "source": "The Reader's Context Window",
+      "type": "connects-to",
+      "target": "Merleau-Ponty",
+      "label": "the-interface-that-disappears"
+    },
+    {
+      "source": "The Reader's Context Window",
+      "type": "connects-to",
+      "target": "BBS Design System",
+      "label": "the-surface-it-orders"
+    },
+    {
+      "source": "The Reader's Context Window",
+      "type": "spawned",
+      "target": "Trickster",
+      "label": "origin-site"
     },
     {
       "source": "Cooperation Yields Agency",
@@ -8552,6 +10199,12 @@
       "label": "context-companion"
     },
     {
+      "source": "Cooperation Yields Agency",
+      "type": "enables",
+      "target": "Hilaritas Generator",
+      "label": "cooperation-as-hilaritas"
+    },
+    {
       "source": "FOUR PILLARS",
       "type": "enables",
       "target": "Cooperation Yields Agency",
@@ -8598,6 +10251,18 @@
       "type": "connects-to",
       "target": "FOUR PILLARS \u2014 Context",
       "label": "context-companion"
+    },
+    {
+      "source": "FOUR PILLARS",
+      "type": "connects-to",
+      "target": "Hyperdimensional Prism",
+      "label": null
+    },
+    {
+      "source": "FOUR PILLARS",
+      "type": "connects-to",
+      "target": "Autodidact Polymaths",
+      "label": "audience-it-names"
     },
     {
       "source": "Meaning and the Link",
@@ -8672,6 +10337,24 @@
       "label": "minimal-spectrum-of-the-stored-field"
     },
     {
+      "source": "Rank-N Lattice Analysis",
+      "type": "connects-to",
+      "target": "Dispersion Table",
+      "label": null
+    },
+    {
+      "source": "Rank-N Lattice Analysis",
+      "type": "connects-to",
+      "target": "Infeasible DSP Now Shippable",
+      "label": null
+    },
+    {
+      "source": "Rank-N Lattice Analysis",
+      "type": "connects-to",
+      "target": "Volterra Kernels and the Torus",
+      "label": null
+    },
+    {
       "source": "Deleuze",
       "type": "connects-to",
       "target": "Palace Philosophies",
@@ -8724,6 +10407,72 @@
       "type": "connects-to",
       "target": "The Drift",
       "label": "difference-not-no-self"
+    },
+    {
+      "source": "Deleuze",
+      "type": "connects-to",
+      "target": "Dialectic",
+      "label": null
+    },
+    {
+      "source": "Deleuze",
+      "type": "connects-to",
+      "target": "Entry Conatus",
+      "label": null
+    },
+    {
+      "source": "Deleuze",
+      "type": "connects-to",
+      "target": "Excellent Adventure",
+      "label": null
+    },
+    {
+      "source": "Deleuze",
+      "type": "connects-to",
+      "target": "STIGMERGY Philosophical Lenses",
+      "label": null
+    },
+    {
+      "source": "Deleuze",
+      "type": "connects-to",
+      "target": "STIGMERGY v1.0 \u2014 Palace Front-End",
+      "label": null
+    },
+    {
+      "source": "Animate the Background",
+      "type": "exemplifies",
+      "target": "The Flow Field is the Spine",
+      "label": "the-sim-leg-realized"
+    },
+    {
+      "source": "Animate the Background",
+      "type": "couples-with",
+      "target": "Blocked, Not Prompted",
+      "label": "author-fg-animate-bg"
+    },
+    {
+      "source": "Animate the Background",
+      "type": "connects-to",
+      "target": "Adopt the Craft, Author the Seam",
+      "label": "composite-is-the-seam"
+    },
+    {
+      "source": "Animate the Background",
+      "type": "connects-to",
+      "target": "Steer the Generator",
+      "label": "take-what-it-gives-and-select"
+    },
+    {
+      "source": "Animate the Background",
+      "type": "emerged-from",
+      "target": "BLUELINE",
+      "label": "proving-ground"
+    },
+    {
+      "source": "Animate the Background",
+      "type": "connects-to",
+      "target": "Frame Designer",
+      "label": "a-method-in-the-roster"
     },
     {
       "source": "Kuramoto Coupling",
@@ -8826,6 +10575,30 @@
       "type": "enables",
       "target": "Boundary-Crossing Instruments",
       "label": "cross-domain-sync"
+    },
+    {
+      "source": "Kuramoto Coupling",
+      "type": "connects-to",
+      "target": "Mermaid",
+      "label": null
+    },
+    {
+      "source": "Kuramoto Coupling",
+      "type": "spawned",
+      "target": "Neural Granular Synthesis",
+      "label": "origin-project"
+    },
+    {
+      "source": "Kuramoto Coupling",
+      "type": "connects-to",
+      "target": "Kuramoto Coupling \u2014 8-Lesson Quiz Series",
+      "label": null
+    },
+    {
+      "source": "Kuramoto Coupling",
+      "type": "connects-to",
+      "target": "Kuramoto Coupling \u2014 Quiz Answer Key",
+      "label": null
     },
     {
       "source": "Language as a Tonal Medium",
@@ -8940,6 +10713,12 @@
       "type": "connects-to",
       "target": "BBS Design System",
       "label": "locked-aesthetic"
+    },
+    {
+      "source": "STIGMERGY",
+      "type": "spawned",
+      "target": "STIGMERGY v2.0 \u2014 Consolidation & Primary Interface",
+      "label": "consolidation-and-roadmap"
     },
     {
       "source": "SMPTE LTC",
@@ -9158,6 +10937,12 @@
       "label": "context-companion"
     },
     {
+      "source": "Hilaritas Generator",
+      "type": "connects-to",
+      "target": "Quality Manifesto",
+      "label": "signal-redirector"
+    },
+    {
       "source": "Gemma 4 \u2014 Local Coordination Guide",
       "type": "connects-to",
       "target": "BBS Blackboard",
@@ -9180,6 +10965,12 @@
       "type": "connects-to",
       "target": "Enchanted Worker",
       "label": "register-gap"
+    },
+    {
+      "source": "Gemma 4 \u2014 Local Coordination Guide",
+      "type": "connects-to",
+      "target": "GEMMA4_GUIDE",
+      "label": null
     },
     {
       "source": "Simondon",
@@ -9222,6 +11013,18 @@
       "type": "connects-to",
       "target": "Quality Manifesto",
       "label": "concretization-as-quality"
+    },
+    {
+      "source": "Simondon",
+      "type": "connects-to",
+      "target": "Kuramoto Coupling",
+      "label": null
+    },
+    {
+      "source": "Simondon",
+      "type": "connects-to",
+      "target": "Palace Enchantment",
+      "label": null
     },
     {
       "source": "FOUR_PILLARS",
@@ -9270,6 +11073,18 @@
       "type": "connects-to",
       "target": "FOUR PILLARS \u2014 Context",
       "label": "context-companion"
+    },
+    {
+      "source": "FOUR_PILLARS",
+      "type": "connects-to",
+      "target": "Hyperdimensional Prism",
+      "label": null
+    },
+    {
+      "source": "FOUR_PILLARS",
+      "type": "connects-to",
+      "target": "Autodidact Polymaths",
+      "label": "audience-it-names"
     },
     {
       "source": "Stoicism",
@@ -9342,6 +11157,36 @@
       "type": "connects-to",
       "target": "Epictetus",
       "label": "slave-philosopher"
+    },
+    {
+      "source": "Stoicism",
+      "type": "connects-to",
+      "target": "Seneca",
+      "label": "statesman-philosopher"
+    },
+    {
+      "source": "Stoicism",
+      "type": "enables",
+      "target": "STIGMERGY Philosophical Lenses",
+      "label": "lens-ground"
+    },
+    {
+      "source": "Stoicism",
+      "type": "connects-to",
+      "target": "Palace Map",
+      "label": null
+    },
+    {
+      "source": "Stoicism",
+      "type": "connects-to",
+      "target": "Hyperdimensional Prism",
+      "label": null
+    },
+    {
+      "source": "Stoicism",
+      "type": "enables",
+      "target": "Project Stewardship System",
+      "label": "agent-virtue-spec"
     },
     {
       "source": "Like Water",
@@ -9450,6 +11295,18 @@
       "type": "connects-to",
       "target": "Merleau-Ponty",
       "label": "embodied-power-to-act"
+    },
+    {
+      "source": "Spinoza",
+      "type": "connects-to",
+      "target": "Donella Meadows",
+      "label": null
+    },
+    {
+      "source": "Spinoza",
+      "type": "connects-to",
+      "target": "Generative Compression",
+      "label": null
     },
     {
       "source": "Embeddings as Relational Meaning",
@@ -9566,6 +11423,12 @@
       "label": "cultivator-pole"
     },
     {
+      "source": "zhuangzi-epictetus-confucius-on-the-self",
+      "type": "connects-to",
+      "target": "Pages as Agents",
+      "label": null
+    },
+    {
       "source": "Talking Keyboard",
       "type": "emerged-from",
       "target": "Generative Sample Libraries",
@@ -9600,6 +11463,66 @@
       "type": "connects-to",
       "target": "Project Stewardship System",
       "label": "stage-mismatch-evidence"
+    },
+    {
+      "source": "Murmuration",
+      "type": "mirrors",
+      "target": "Particle Synthesis",
+      "label": "agents-drive-the-grain-cloud"
+    },
+    {
+      "source": "Murmuration",
+      "type": "emerged-from",
+      "target": "Flocking",
+      "label": "sonified"
+    },
+    {
+      "source": "Murmuration",
+      "type": "connects-to",
+      "target": "2D Torus Wavetable Synthesizer",
+      "label": "shares-the-2D-terrain"
+    },
+    {
+      "source": "Murmuration",
+      "type": "connects-to",
+      "target": "Neural Granular Synthesis",
+      "label": null
+    },
+    {
+      "source": "Murmuration",
+      "type": "connects-to",
+      "target": "Bayesian Granular Synthesizer",
+      "label": "statistical-grain-cloud"
+    },
+    {
+      "source": "Murmuration",
+      "type": "connects-to",
+      "target": "Kuramoto Coupling",
+      "label": "order-disorder-transition"
+    },
+    {
+      "source": "Murmuration",
+      "type": "connects-to",
+      "target": "Web Audio Worklet",
+      "label": "built-by"
+    },
+    {
+      "source": "Murmuration",
+      "type": "exemplifies",
+      "target": "Review Layer",
+      "label": "first-mechanism"
+    },
+    {
+      "source": "Murmuration",
+      "type": "connects-to",
+      "target": "Diversity of Thought in Many-Agent Systems",
+      "label": null
+    },
+    {
+      "source": "Murmuration",
+      "type": "connects-to",
+      "target": "Granular Synthesis",
+      "label": null
     },
     {
       "source": "Piano String Inharmonicity",
@@ -9882,6 +11805,12 @@
       "type": "spawned",
       "target": "Language as a Tonal Medium",
       "label": "harvested-the-carried-question"
+    },
+    {
+      "source": "Semantic Webcam",
+      "type": "connects-to",
+      "target": "Cooperation Yields Agency",
+      "label": null
     },
     {
       "source": "Meadows and Music \u2014 Leverage Points",
@@ -10208,6 +12137,12 @@
       "label": "time-periodic-modulation"
     },
     {
+      "source": "Generative Wavetable Libraries",
+      "type": "connects-to",
+      "target": "Drift and Consolidation",
+      "label": null
+    },
+    {
       "source": "Shimmer Cloud",
       "type": "emerged-from",
       "target": "Granular Synthesis",
@@ -10362,6 +12297,12 @@
       "type": "connects-to",
       "target": "Boundary-Crossing Instruments",
       "label": "source-filter-as-one-machine"
+    },
+    {
+      "source": "Tract Mirror",
+      "type": "connects-to",
+      "target": "Tract Mirror \u2014 build plan \u2014 JUCE VST",
+      "label": null
     },
     {
       "source": "Bayesian Granular Synthesizer",
@@ -10628,6 +12569,12 @@
       "label": null
     },
     {
+      "source": "Semantic Delay \u2014 Phase 1 Plan Review 2026-04-20",
+      "type": "connects-to",
+      "target": "Whisper",
+      "label": null
+    },
+    {
       "source": "Semantic Delay",
       "type": "couples-with",
       "target": "Kuramoto Coupling",
@@ -10740,6 +12687,12 @@
       "type": "spawned",
       "target": "The Shop",
       "label": "asset-library"
+    },
+    {
+      "source": "2D Torus Wavetable Synthesizer",
+      "type": "connects-to",
+      "target": "Loudon Live",
+      "label": null
     },
     {
       "source": "Compressor Design",
@@ -10902,6 +12855,12 @@
       "type": "connects-to",
       "target": "Frequency-Time Duality",
       "label": "delay-is-spectrum"
+    },
+    {
+      "source": "Waveguide Synthesizer",
+      "type": "connects-to",
+      "target": "Particle Synthesis",
+      "label": null
     },
     {
       "source": "Action Potential Oscillator",
@@ -11076,6 +13035,12 @@
       "type": "connects-to",
       "target": "Haas Effect",
       "label": "lives-on-the-axis"
+    },
+    {
+      "source": "Frequency-Time Explorer",
+      "type": "connects-to",
+      "target": "BBS Design System",
+      "label": null
     },
     {
       "source": "Quantum Synthesizer",
@@ -11342,6 +13307,12 @@
       "label": "power-to-act"
     },
     {
+      "source": "Biomechanical Synthesis",
+      "type": "connects-to",
+      "target": "haiku-grotesque-pedagogy",
+      "label": null
+    },
+    {
       "source": "LoRA Trainer",
       "type": "connects-to",
       "target": "RunPod GPU Backend",
@@ -11366,16 +13337,328 @@
       "label": "prove-then-optimize"
     },
     {
+      "source": "LoRA Trainer",
+      "type": "connects-to",
+      "target": "Review Layer",
+      "label": null
+    },
+    {
+      "source": "Kokoro",
+      "type": "connects-to",
+      "target": "Maker",
+      "label": null
+    },
+    {
+      "source": "Kokoro",
+      "type": "connects-to",
+      "target": "The Shop",
+      "label": null
+    },
+    {
+      "source": "Kokoro",
+      "type": "connects-to",
+      "target": "Whisper",
+      "label": null
+    },
+    {
+      "source": "Kokoro",
+      "type": "connects-to",
+      "target": "Manim CE",
+      "label": null
+    },
+    {
       "source": "Kokoro",
       "type": "connects-to",
       "target": "Kuramoto Coupling",
       "label": "phoneme-tested-on"
     },
     {
+      "source": "Kokoro",
+      "type": "couples-with",
+      "target": "ffmpeg",
+      "label": "post-chain"
+    },
+    {
+      "source": "Kokoro",
+      "type": "enables",
+      "target": "Loudon Live",
+      "label": "voices"
+    },
+    {
+      "source": "D3.js",
+      "type": "connects-to",
+      "target": "Maker",
+      "label": null
+    },
+    {
+      "source": "D3.js",
+      "type": "connects-to",
+      "target": "The Shop",
+      "label": null
+    },
+    {
+      "source": "D3.js",
+      "type": "connects-to",
+      "target": "Observable Plot",
+      "label": null
+    },
+    {
+      "source": "D3.js",
+      "type": "connects-to",
+      "target": "p5.js",
+      "label": null
+    },
+    {
+      "source": "D3.js",
+      "type": "connects-to",
+      "target": "Matplotlib",
+      "label": null
+    },
+    {
+      "source": "D3.js",
+      "type": "connects-to",
+      "target": "Flocking",
+      "label": null
+    },
+    {
+      "source": "D3.js",
+      "type": "connects-to",
+      "target": "Matplotlib",
+      "label": null
+    },
+    {
+      "source": "D3.js",
+      "type": "connects-to",
+      "target": "Observable Plot",
+      "label": null
+    },
+    {
+      "source": "D3.js",
+      "type": "connects-to",
+      "target": "p5.js",
+      "label": null
+    },
+    {
+      "source": "Tone.js",
+      "type": "connects-to",
+      "target": "Maker",
+      "label": null
+    },
+    {
+      "source": "Tone.js",
+      "type": "connects-to",
+      "target": "The Shop",
+      "label": null
+    },
+    {
+      "source": "Tone.js",
+      "type": "connects-to",
+      "target": "p5.js",
+      "label": null
+    },
+    {
+      "source": "Tone.js",
+      "type": "connects-to",
+      "target": "RNBO codebox~ smith",
+      "label": null
+    },
+    {
+      "source": "FLUX (Hugging Face)",
+      "type": "connects-to",
+      "target": "Maker",
+      "label": null
+    },
+    {
+      "source": "FLUX (Hugging Face)",
+      "type": "connects-to",
+      "target": "The Shop",
+      "label": null
+    },
+    {
+      "source": "FLUX (Hugging Face)",
+      "type": "connects-to",
+      "target": "ComfyUI",
+      "label": null
+    },
+    {
+      "source": "FLUX (Hugging Face)",
+      "type": "connects-to",
+      "target": "Midjourney",
+      "label": null
+    },
+    {
       "source": "FLUX (Hugging Face)",
       "type": "connects-to",
       "target": "shop-header \u2014 Maker's Comparison Recommendation",
       "label": "founding-job"
+    },
+    {
+      "source": "FLUX (Hugging Face)",
+      "type": "enables",
+      "target": "Loudon Live",
+      "label": "header-painter"
+    },
+    {
+      "source": "FLUX (Hugging Face)",
+      "type": "enables",
+      "target": "Loudon Live Design System",
+      "label": "artifact-substrate"
+    },
+    {
+      "source": "Whisper",
+      "type": "connects-to",
+      "target": "Maker",
+      "label": null
+    },
+    {
+      "source": "Whisper",
+      "type": "connects-to",
+      "target": "The Shop",
+      "label": null
+    },
+    {
+      "source": "Whisper",
+      "type": "connects-to",
+      "target": "Kokoro",
+      "label": null
+    },
+    {
+      "source": "Whisper",
+      "type": "connects-to",
+      "target": "Manim CE",
+      "label": null
+    },
+    {
+      "source": "Hero and Avatar Maker",
+      "type": "connects-to",
+      "target": "The Shop",
+      "label": null
+    },
+    {
+      "source": "Hero and Avatar Maker",
+      "type": "connects-to",
+      "target": "Maker",
+      "label": null
+    },
+    {
+      "source": "Hero and Avatar Maker",
+      "type": "connects-to",
+      "target": "RunPod GPU Backend",
+      "label": null
+    },
+    {
+      "source": "Hero and Avatar Maker",
+      "type": "connects-to",
+      "target": "FLUX (Hugging Face)",
+      "label": null
+    },
+    {
+      "source": "Hero and Avatar Maker",
+      "type": "connects-to",
+      "target": "ComfyUI",
+      "label": null
+    },
+    {
+      "source": "Hero and Avatar Maker",
+      "type": "connects-to",
+      "target": "STIGMERGY",
+      "label": null
+    },
+    {
+      "source": "Hero and Avatar Maker",
+      "type": "connects-to",
+      "target": "Enrichment",
+      "label": null
+    },
+    {
+      "source": "Hero and Avatar Maker",
+      "type": "connects-to",
+      "target": "Loudon Live Design System",
+      "label": null
+    },
+    {
+      "source": "Hero and Avatar Maker",
+      "type": "connects-to",
+      "target": "Hilaritas Generator",
+      "label": null
+    },
+    {
+      "source": "Hero and Avatar Maker",
+      "type": "connects-to",
+      "target": "Kuramoto Coupling",
+      "label": "first-subject"
+    },
+    {
+      "source": "Hero and Avatar Maker",
+      "type": "connects-to",
+      "target": "Retrospective Delay",
+      "label": "proving-subject"
+    },
+    {
+      "source": "Hero and Avatar Maker",
+      "type": "connects-to",
+      "target": "Loudon's Toolkit",
+      "label": "cautionary-subject"
+    },
+    {
+      "source": "Stable Audio Open",
+      "type": "connects-to",
+      "target": "Maker",
+      "label": null
+    },
+    {
+      "source": "Stable Audio Open",
+      "type": "connects-to",
+      "target": "The Shop",
+      "label": null
+    },
+    {
+      "source": "Stable Audio Open",
+      "type": "connects-to",
+      "target": "ffmpeg",
+      "label": null
+    },
+    {
+      "source": "Stable Audio Open",
+      "type": "spawned",
+      "target": "Kuramoto Coupling",
+      "label": "auditory-rendering"
+    },
+    {
+      "source": "Stable Audio Open",
+      "type": "connects-to",
+      "target": "Kokoro",
+      "label": "routes-vocals-to"
+    },
+    {
+      "source": "Stable Audio Open",
+      "type": "enables",
+      "target": "Loudon Live",
+      "label": "beds-for"
+    },
+    {
+      "source": "Stable Audio Open",
+      "type": "connects-to",
+      "target": "Whisper",
+      "label": "vram-contends-with"
+    },
+    {
+      "source": "p5.js",
+      "type": "connects-to",
+      "target": "Maker",
+      "label": "directed-by"
+    },
+    {
+      "source": "p5.js",
+      "type": "member-of",
+      "target": "The Shop",
+      "label": "roster-member"
+    },
+    {
+      "source": "p5.js",
+      "type": "couples-with",
+      "target": "Tone.js",
+      "label": "pairs-with"
     },
     {
       "source": "p5.js",
@@ -11394,6 +13677,36 @@
       "type": "enables",
       "target": "Playful Interface Design",
       "label": "immediate-feedback-loop"
+    },
+    {
+      "source": "p5.js",
+      "type": "connects-to",
+      "target": "Observable Plot",
+      "label": null
+    },
+    {
+      "source": "Midjourney",
+      "type": "connects-to",
+      "target": "Maker",
+      "label": null
+    },
+    {
+      "source": "Midjourney",
+      "type": "connects-to",
+      "target": "The Shop",
+      "label": null
+    },
+    {
+      "source": "Midjourney",
+      "type": "connects-to",
+      "target": "ComfyUI",
+      "label": null
+    },
+    {
+      "source": "Midjourney",
+      "type": "connects-to",
+      "target": "FLUX (Hugging Face)",
+      "label": null
     },
     {
       "source": "RunPod GPU Backend",
@@ -11438,10 +13751,424 @@
       "label": "render-substrate-for"
     },
     {
+      "source": "RunPod GPU Backend",
+      "type": "enables",
+      "target": "Image-to-3D Smith",
+      "label": "original-commission"
+    },
+    {
+      "source": "VCV Patch Generator",
+      "type": "connects-to",
+      "target": "Maker",
+      "label": "directed-by"
+    },
+    {
+      "source": "VCV Patch Generator",
+      "type": "member-of",
+      "target": "The Shop",
+      "label": "roster-member"
+    },
+    {
+      "source": "VCV Patch Generator",
+      "type": "connects-to",
+      "target": "Generative Audio Devices",
+      "label": "stage-of"
+    },
+    {
       "source": "VCV Patch Generator",
       "type": "mirrors",
       "target": "Lossy Compression with Intent Alignment",
       "label": "pdl-as-intent-compression"
+    },
+    {
+      "source": "VCV Patch Generator",
+      "type": "connects-to",
+      "target": "PDL Generation Prompt",
+      "label": null
+    },
+    {
+      "source": "VCV Patch Generator",
+      "type": "connects-to",
+      "target": "PDL Renderer",
+      "label": null
+    },
+    {
+      "source": "VCV Patch Generator",
+      "type": "connects-to",
+      "target": "Registry Pattern",
+      "label": null
+    },
+    {
+      "source": "ComfyUI",
+      "type": "connects-to",
+      "target": "Maker",
+      "label": null
+    },
+    {
+      "source": "ComfyUI",
+      "type": "connects-to",
+      "target": "The Shop",
+      "label": null
+    },
+    {
+      "source": "ComfyUI",
+      "type": "connects-to",
+      "target": "Midjourney",
+      "label": null
+    },
+    {
+      "source": "ComfyUI",
+      "type": "connects-to",
+      "target": "ControlNet Workflow Mastery",
+      "label": null
+    },
+    {
+      "source": "ComfyUI",
+      "type": "connects-to",
+      "target": "Kuramoto Coupling",
+      "label": "first-brief"
+    },
+    {
+      "source": "ComfyUI",
+      "type": "enables",
+      "target": "Loudon Live",
+      "label": "image-engine"
+    },
+    {
+      "source": "ComfyUI",
+      "type": "connects-to",
+      "target": "RunPod GPU Backend",
+      "label": "cloud-path"
+    },
+    {
+      "source": "ComfyUI",
+      "type": "connects-to",
+      "target": "FLUX (Hugging Face)",
+      "label": "cloud-sibling"
+    },
+    {
+      "source": "LaTeX",
+      "type": "connects-to",
+      "target": "Maker",
+      "label": "directed-by"
+    },
+    {
+      "source": "LaTeX",
+      "type": "member-of",
+      "target": "The Shop",
+      "label": "roster-member"
+    },
+    {
+      "source": "LaTeX",
+      "type": "couples-with",
+      "target": "Manim CE",
+      "label": "shares-tex-pipeline-with"
+    },
+    {
+      "source": "LaTeX",
+      "type": "enables",
+      "target": "Matplotlib",
+      "label": "underpins"
+    },
+    {
+      "source": "Figure Rig",
+      "type": "connects-to",
+      "target": "The Shop",
+      "label": null
+    },
+    {
+      "source": "Figure Rig",
+      "type": "connects-to",
+      "target": "Frame Designer",
+      "label": null
+    },
+    {
+      "source": "Figure Rig",
+      "type": "connects-to",
+      "target": "Blender",
+      "label": null
+    },
+    {
+      "source": "Figure Rig",
+      "type": "connects-to",
+      "target": "ComfyUI",
+      "label": null
+    },
+    {
+      "source": "Figure Rig",
+      "type": "connects-to",
+      "target": "Hand-Drawn 3D Look",
+      "label": null
+    },
+    {
+      "source": "Figure Rig",
+      "type": "connects-to",
+      "target": "Blocked, Not Prompted",
+      "label": null
+    },
+    {
+      "source": "Figure Rig",
+      "type": "connects-to",
+      "target": "BLUELINE",
+      "label": null
+    },
+    {
+      "source": "LaMa",
+      "type": "connects-to",
+      "target": "The Shop",
+      "label": null
+    },
+    {
+      "source": "LaMa",
+      "type": "connects-to",
+      "target": "Maker",
+      "label": null
+    },
+    {
+      "source": "LaMa",
+      "type": "connects-to",
+      "target": "Line-Art Layer Decomposition",
+      "label": null
+    },
+    {
+      "source": "LaMa",
+      "type": "connects-to",
+      "target": "Animate the Background",
+      "label": null
+    },
+    {
+      "source": "LaMa",
+      "type": "connects-to",
+      "target": "SAM",
+      "label": null
+    },
+    {
+      "source": "SAM",
+      "type": "connects-to",
+      "target": "The Shop",
+      "label": null
+    },
+    {
+      "source": "SAM",
+      "type": "connects-to",
+      "target": "Maker",
+      "label": null
+    },
+    {
+      "source": "SAM",
+      "type": "connects-to",
+      "target": "Line-Art Layer Decomposition",
+      "label": null
+    },
+    {
+      "source": "SAM",
+      "type": "connects-to",
+      "target": "Depth Anything",
+      "label": null
+    },
+    {
+      "source": "SAM",
+      "type": "connects-to",
+      "target": "LaMa",
+      "label": null
+    },
+    {
+      "source": "Depth Anything",
+      "type": "connects-to",
+      "target": "The Shop",
+      "label": null
+    },
+    {
+      "source": "Depth Anything",
+      "type": "connects-to",
+      "target": "Maker",
+      "label": null
+    },
+    {
+      "source": "Depth Anything",
+      "type": "connects-to",
+      "target": "Line-Art Layer Decomposition",
+      "label": null
+    },
+    {
+      "source": "Depth Anything",
+      "type": "connects-to",
+      "target": "SAM",
+      "label": null
+    },
+    {
+      "source": "Depth Anything",
+      "type": "connects-to",
+      "target": "LaMa",
+      "label": null
+    },
+    {
+      "source": "Lettering",
+      "type": "member-of",
+      "target": "The Shop",
+      "label": null
+    },
+    {
+      "source": "Lettering",
+      "type": "emerged-from",
+      "target": "BLUELINE",
+      "label": "proving-ground"
+    },
+    {
+      "source": "Lettering",
+      "type": "connects-to",
+      "target": "Frame Designer",
+      "label": "letters-what-it-draws"
+    },
+    {
+      "source": "Lettering",
+      "type": "exemplifies",
+      "target": "Typography as Meaning",
+      "label": null
+    },
+    {
+      "source": "Lettering",
+      "type": "exemplifies",
+      "target": "Blocked, Not Prompted",
+      "label": "for-text"
+    },
+    {
+      "source": "Lettering",
+      "type": "connects-to",
+      "target": "BLUELINE \u2014 Text Layer",
+      "label": "the-spec"
+    },
+    {
+      "source": "Lettering",
+      "type": "exemplifies",
+      "target": "Steer the Generator",
+      "label": "control-not-prompt"
+    },
+    {
+      "source": "Lettering",
+      "type": "enables",
+      "target": "Graphic Storytelling",
+      "label": "letters-the-voices"
+    },
+    {
+      "source": "Three.js",
+      "type": "connects-to",
+      "target": "Maker",
+      "label": "directed-by"
+    },
+    {
+      "source": "Three.js",
+      "type": "member-of",
+      "target": "The Shop",
+      "label": "roster-member"
+    },
+    {
+      "source": "Three.js",
+      "type": "couples-with",
+      "target": "Tone.js",
+      "label": "pairs-with"
+    },
+    {
+      "source": "Three.js",
+      "type": "couples-with",
+      "target": "Web Audio Worklet",
+      "label": "pairs-with"
+    },
+    {
+      "source": "Three.js",
+      "type": "couples-with",
+      "target": "p5.js",
+      "label": "pairs-with"
+    },
+    {
+      "source": "Three.js",
+      "type": "connects-to",
+      "target": "Waveguide Synthesizer",
+      "label": "commissioned-by"
+    },
+    {
+      "source": "Three.js",
+      "type": "connects-to",
+      "target": "Wavetable Scanner",
+      "label": "exemplified-by"
+    },
+    {
+      "source": "Three.js",
+      "type": "connects-to",
+      "target": "1D Wavetable Scanning",
+      "label": null
+    },
+    {
+      "source": "Three.js",
+      "type": "connects-to",
+      "target": "Particle Synthesis",
+      "label": null
+    },
+    {
+      "source": "Three.js",
+      "type": "connects-to",
+      "target": "Shimmer Cloud",
+      "label": null
+    },
+    {
+      "source": "Three.js",
+      "type": "connects-to",
+      "target": "Tone.js",
+      "label": null
+    },
+    {
+      "source": "Three.js",
+      "type": "connects-to",
+      "target": "Waveguide Synthesizer",
+      "label": null
+    },
+    {
+      "source": "Matplotlib",
+      "type": "connects-to",
+      "target": "Maker",
+      "label": null
+    },
+    {
+      "source": "Matplotlib",
+      "type": "connects-to",
+      "target": "The Shop",
+      "label": null
+    },
+    {
+      "source": "Matplotlib",
+      "type": "connects-to",
+      "target": "Plotly",
+      "label": null
+    },
+    {
+      "source": "Matplotlib",
+      "type": "connects-to",
+      "target": "Manim CE",
+      "label": null
+    },
+    {
+      "source": "RNBO codebox~ smith",
+      "type": "connects-to",
+      "target": "Maker",
+      "label": "directed-by"
+    },
+    {
+      "source": "RNBO codebox~ smith",
+      "type": "member-of",
+      "target": "The Shop",
+      "label": "roster-member"
+    },
+    {
+      "source": "RNBO codebox~ smith",
+      "type": "enables",
+      "target": "ffmpeg",
+      "label": "feeds"
+    },
+    {
+      "source": "RNBO codebox~ smith",
+      "type": "connects-to",
+      "target": "Generative Audio Devices",
+      "label": "stage-2-pipeline"
     },
     {
       "source": "Shopkeeper",
@@ -11486,6 +14213,90 @@
       "label": "serves-tools-and-creation"
     },
     {
+      "source": "Shopkeeper",
+      "type": "connects-to",
+      "target": "Loudon Live Post-producer",
+      "label": null
+    },
+    {
+      "source": "Image-to-3D Smith",
+      "type": "connects-to",
+      "target": "The Shop",
+      "label": null
+    },
+    {
+      "source": "Image-to-3D Smith",
+      "type": "connects-to",
+      "target": "Maker",
+      "label": null
+    },
+    {
+      "source": "Image-to-3D Smith",
+      "type": "connects-to",
+      "target": "Three.js",
+      "label": null
+    },
+    {
+      "source": "Image-to-3D Smith",
+      "type": "connects-to",
+      "target": "Blender",
+      "label": null
+    },
+    {
+      "source": "Image-to-3D Smith",
+      "type": "connects-to",
+      "target": "FLUX (Hugging Face)",
+      "label": null
+    },
+    {
+      "source": "Remotion",
+      "type": "connects-to",
+      "target": "Maker",
+      "label": null
+    },
+    {
+      "source": "Remotion",
+      "type": "connects-to",
+      "target": "The Shop",
+      "label": null
+    },
+    {
+      "source": "Remotion",
+      "type": "connects-to",
+      "target": "Manim CE",
+      "label": null
+    },
+    {
+      "source": "Web Audio Worklet",
+      "type": "connects-to",
+      "target": "Maker",
+      "label": null
+    },
+    {
+      "source": "Web Audio Worklet",
+      "type": "connects-to",
+      "target": "The Shop",
+      "label": null
+    },
+    {
+      "source": "Web Audio Worklet",
+      "type": "connects-to",
+      "target": "p5.js",
+      "label": null
+    },
+    {
+      "source": "Web Audio Worklet",
+      "type": "connects-to",
+      "target": "Tone.js",
+      "label": null
+    },
+    {
+      "source": "Web Audio Worklet",
+      "type": "connects-to",
+      "target": "RNBO codebox~ smith",
+      "label": null
+    },
+    {
       "source": "Web Audio Worklet",
       "type": "exemplifies",
       "target": "The Shop",
@@ -11511,33 +14322,363 @@
     },
     {
       "source": "ffmpeg",
+      "type": "connects-to",
+      "target": "Maker",
+      "label": "directed-by"
+    },
+    {
+      "source": "ffmpeg",
+      "type": "member-of",
+      "target": "The Shop",
+      "label": "roster-member"
+    },
+    {
+      "source": "ffmpeg",
       "type": "enables",
       "target": "Endosymbiosis",
       "label": "symbiotic-infrastructure"
     },
     {
+      "source": "ffmpeg",
+      "type": "couples-with",
+      "target": "Kokoro",
+      "label": "narration-pipe"
+    },
+    {
+      "source": "ffmpeg",
+      "type": "couples-with",
+      "target": "Manim CE",
+      "label": "render-pipe"
+    },
+    {
+      "source": "ffmpeg",
+      "type": "couples-with",
+      "target": "ComfyUI",
+      "label": "stills-pipe"
+    },
+    {
+      "source": "ffmpeg",
+      "type": "couples-with",
+      "target": "Remotion",
+      "label": "timeline-pipe"
+    },
+    {
+      "source": "ffmpeg",
+      "type": "couples-with",
+      "target": "Stable Audio Open",
+      "label": "post-processes"
+    },
+    {
+      "source": "ffmpeg",
+      "type": "couples-with",
+      "target": "Whisper",
+      "label": "caption-pipe"
+    },
+    {
+      "source": "ffmpeg",
+      "type": "couples-with",
+      "target": "Matplotlib",
+      "label": "title-card-fallback"
+    },
+    {
+      "source": "ffmpeg",
+      "type": "connects-to",
+      "target": "Kuramoto Coupling",
+      "label": "first-recipe-testbed"
+    },
+    {
+      "source": "ffmpeg",
+      "type": "enables",
+      "target": "Loudon Live",
+      "label": "finishing-pipeline"
+    },
+    {
+      "source": "Blender",
+      "type": "connects-to",
+      "target": "Maker",
+      "label": null
+    },
+    {
+      "source": "Blender",
+      "type": "connects-to",
+      "target": "The Shop",
+      "label": null
+    },
+    {
+      "source": "Blender",
+      "type": "connects-to",
+      "target": "ComfyUI",
+      "label": null
+    },
+    {
+      "source": "Blender",
+      "type": "connects-to",
+      "target": "Three.js",
+      "label": null
+    },
+    {
+      "source": "Blender",
+      "type": "connects-to",
+      "target": "BLUELINE",
+      "label": null
+    },
+    {
+      "source": "Blender",
+      "type": "connects-to",
+      "target": "toyxyz-conditioning-recipe",
+      "label": null
+    },
+    {
+      "source": "Blender",
+      "type": "connects-to",
+      "target": "Blocked, Not Prompted",
+      "label": null
+    },
+    {
       "source": "Maker",
-      "type": "mirrors",
+      "type": "connects-to",
+      "target": "The Shop",
+      "label": null
+    },
+    {
+      "source": "Maker",
+      "type": "connects-to",
+      "target": "Trickster (Loudon)",
+      "label": null
+    },
+    {
+      "source": "Maker",
+      "type": "connects-to",
+      "target": "Hilaritas Generator",
+      "label": null
+    },
+    {
+      "source": "Maker",
+      "type": "connects-to",
+      "target": "Four Pillars",
+      "label": null
+    },
+    {
+      "source": "Maker",
+      "type": "connects-to",
       "target": "Lateral Access",
-      "label": "taste-as-laterality"
+      "label": null
     },
     {
       "source": "Maker",
       "type": "connects-to",
       "target": "Loudon Live Design System",
-      "label": "palace-base-spec"
+      "label": null
+    },
+    {
+      "source": "Maker",
+      "type": "spawned",
+      "target": "Radio Play",
+      "label": "forged-in-job"
+    },
+    {
+      "source": "Maker",
+      "type": "connects-to",
+      "target": "Review Layer",
+      "label": "inherits-rule"
+    },
+    {
+      "source": "Maker",
+      "type": "connects-to",
+      "target": "RunPod GPU Backend",
+      "label": "gpu-substrate"
+    },
+    {
+      "source": "Maker",
+      "type": "connects-to",
+      "target": "Flocking",
+      "label": "proof-of-comparison"
+    },
+    {
+      "source": "Maker",
+      "type": "enables",
+      "target": "Blocked, Not Prompted",
+      "label": "conditions-the-fill"
+    },
+    {
+      "source": "Maker",
+      "type": "connects-to",
+      "target": "Waveguide Synthesizer",
+      "label": "architectural-pattern"
+    },
+    {
+      "source": "Maker",
+      "type": "connects-to",
+      "target": "Diversity of Thought in Many-Agent Systems",
+      "label": "tested-by"
+    },
+    {
+      "source": "Maker",
+      "type": "connects-to",
+      "target": "BBS Design System",
+      "label": "overridden-by"
+    },
+    {
+      "source": "Maker",
+      "type": "connects-to",
+      "target": "Modes of Collaboration",
+      "label": "names-mode"
+    },
+    {
+      "source": "Maker",
+      "type": "connects-to",
+      "target": "Murmuration",
+      "label": "born-from"
+    },
+    {
+      "source": "Mermaid",
+      "type": "connects-to",
+      "target": "Maker",
+      "label": null
+    },
+    {
+      "source": "Mermaid",
+      "type": "connects-to",
+      "target": "The Shop",
+      "label": null
+    },
+    {
+      "source": "Mermaid",
+      "type": "connects-to",
+      "target": "Graphviz",
+      "label": null
+    },
+    {
+      "source": "Mermaid",
+      "type": "connects-to",
+      "target": "Kuramoto Coupling",
+      "label": null
+    },
+    {
+      "source": "Manim CE",
+      "type": "connects-to",
+      "target": "Maker",
+      "label": null
+    },
+    {
+      "source": "Manim CE",
+      "type": "connects-to",
+      "target": "The Shop",
+      "label": null
+    },
+    {
+      "source": "Manim CE",
+      "type": "connects-to",
+      "target": "Kokoro",
+      "label": null
+    },
+    {
+      "source": "Manim CE",
+      "type": "connects-to",
+      "target": "Whisper",
+      "label": null
+    },
+    {
+      "source": "Manim CE",
+      "type": "connects-to",
+      "target": "Remotion",
+      "label": null
     },
     {
       "source": "Manim CE",
       "type": "connects-to",
       "target": "Kuramoto Coupling",
-      "label": "round-1-test-bed"
+      "label": null
     },
     {
       "source": "Manim CE",
-      "type": "mirrors",
+      "type": "connects-to",
       "target": "Frequency-Time Duality",
-      "label": "visual-temporal-duality"
+      "label": null
+    },
+    {
+      "source": "Manim CE",
+      "type": "enables",
+      "target": "Loudon Live Design System",
+      "label": "skin-token-source"
+    },
+    {
+      "source": "Manim CE",
+      "type": "couples-with",
+      "target": "ffmpeg",
+      "label": "mux-partner"
+    },
+    {
+      "source": "Manim CE",
+      "type": "couples-with",
+      "target": "LaTeX",
+      "label": "shares-tex-pipeline-with"
+    },
+    {
+      "source": "Manim CE",
+      "type": "connects-to",
+      "target": "Matplotlib",
+      "label": "sandboxed-fallback"
+    },
+    {
+      "source": "Observable Plot",
+      "type": "connects-to",
+      "target": "Maker",
+      "label": null
+    },
+    {
+      "source": "Observable Plot",
+      "type": "connects-to",
+      "target": "The Shop",
+      "label": null
+    },
+    {
+      "source": "Observable Plot",
+      "type": "connects-to",
+      "target": "D3.js",
+      "label": null
+    },
+    {
+      "source": "Observable Plot",
+      "type": "connects-to",
+      "target": "Matplotlib",
+      "label": null
+    },
+    {
+      "source": "Observable Plot",
+      "type": "connects-to",
+      "target": "D3.js",
+      "label": null
+    },
+    {
+      "source": "Observable Plot",
+      "type": "connects-to",
+      "target": "D3.js",
+      "label": null
+    },
+    {
+      "source": "Observable Plot",
+      "type": "connects-to",
+      "target": "Flocking",
+      "label": null
+    },
+    {
+      "source": "Observable Plot",
+      "type": "connects-to",
+      "target": "Matplotlib",
+      "label": null
+    },
+    {
+      "source": "Observable Plot",
+      "type": "connects-to",
+      "target": "p5.js",
+      "label": null
+    },
+    {
+      "source": "FOUR PILLARS \u2014 Context",
+      "type": "member-of",
+      "target": "FOUR PILLARS",
+      "label": "context-companion"
     },
     {
       "source": "R. Murray Schafer",
@@ -11562,6 +14703,18 @@
       "type": "connects-to",
       "target": "Dub Lineage",
       "label": "schizophonia"
+    },
+    {
+      "source": "R. Murray Schafer",
+      "type": "connects-to",
+      "target": "John Cage",
+      "label": "letting-sounds-be"
+    },
+    {
+      "source": "R. Murray Schafer",
+      "type": "connects-to",
+      "target": "Hilaritas Generator",
+      "label": "practice-seed"
     },
     {
       "source": "Epictetus",
@@ -11654,6 +14807,12 @@
       "label": "concretization"
     },
     {
+      "source": "Rick Rubin",
+      "type": "member-of",
+      "target": "Cross-Domain Resonances",
+      "label": "subtraction-branch"
+    },
+    {
       "source": "Marcus Aurelius",
       "type": "member-of",
       "target": "Source Library",
@@ -11738,6 +14897,12 @@
       "label": "pattern-language"
     },
     {
+      "source": "Christopher Alexander",
+      "type": "exemplifies",
+      "target": "Sidechain \u2194 Conversation",
+      "label": "pattern-instance"
+    },
+    {
       "source": "Terrence Malick",
       "type": "member-of",
       "target": "Source Library",
@@ -11760,6 +14925,18 @@
       "type": "connects-to",
       "target": "Hilaritas Generator",
       "label": "transcendence-through-craft"
+    },
+    {
+      "source": "Terrence Malick",
+      "type": "deepens",
+      "target": "Quality Manifesto",
+      "label": "deep-work-over-speed"
+    },
+    {
+      "source": "Terrence Malick",
+      "type": "connects-to",
+      "target": "Dub Lineage",
+      "label": "texture-over-foreground"
     },
     {
       "source": "Sam Maloof",
@@ -11790,6 +14967,12 @@
       "type": "connects-to",
       "target": "Hilaritas Generator",
       "label": "making-as-life"
+    },
+    {
+      "source": "Sam Maloof",
+      "type": "connects-to",
+      "target": "Agnes Martin",
+      "label": "repetition-with-variation"
     },
     {
       "source": "Donella Meadows",
@@ -11846,6 +15029,18 @@
       "label": "systems-strive"
     },
     {
+      "source": "Donella Meadows",
+      "type": "connects-to",
+      "target": "Kick Drum \u2194 Foundation",
+      "label": "leverage-in-the-low-end"
+    },
+    {
+      "source": "Donella Meadows",
+      "type": "connects-to",
+      "target": "Sidechain \u2194 Conversation",
+      "label": "negative-feedback-as-dialogue"
+    },
+    {
       "source": "Julia Cameron",
       "type": "member-of",
       "target": "Source Library",
@@ -11876,6 +15071,12 @@
       "label": "daily-ritual"
     },
     {
+      "source": "Julia Cameron",
+      "type": "connects-to",
+      "target": "Cross-Domain Resonances",
+      "label": "pattern-mapping"
+    },
+    {
       "source": "Natalie Goldberg",
       "type": "member-of",
       "target": "Source Library",
@@ -11898,6 +15099,12 @@
       "type": "connects-to",
       "target": "Quality Manifesto",
       "label": "showing-up"
+    },
+    {
+      "source": "Natalie Goldberg",
+      "type": "connects-to",
+      "target": "Shunryu Suzuki",
+      "label": "zen-through-making"
     },
     {
       "source": "Douglas Hofstadter",
@@ -11936,6 +15143,18 @@
       "label": "level-crossing"
     },
     {
+      "source": "Douglas Hofstadter",
+      "type": "connects-to",
+      "target": "Sidechain \u2194 Conversation",
+      "label": "lived-case"
+    },
+    {
+      "source": "Douglas Hofstadter",
+      "type": "enables",
+      "target": "Hilaritas Generator",
+      "label": "strange-loop-ground"
+    },
+    {
       "source": "Pauline Oliveros",
       "type": "member-of",
       "target": "Source Library",
@@ -11970,6 +15189,12 @@
       "type": "connects-to",
       "target": "Hilaritas Generator",
       "label": "practice-is-piece"
+    },
+    {
+      "source": "Pauline Oliveros",
+      "type": "exemplifies",
+      "target": "Cross-Domain Resonances",
+      "label": "listening-as-bridge"
     },
     {
       "source": "Brian Eno",
@@ -12014,6 +15239,12 @@
       "label": "rules-emergence"
     },
     {
+      "source": "Brian Eno",
+      "type": "connects-to",
+      "target": "Quality Manifesto",
+      "label": "depth-over-reach"
+    },
+    {
       "source": "George Nakashima",
       "type": "member-of",
       "target": "Source Library",
@@ -12042,6 +15273,18 @@
       "type": "connects-to",
       "target": "Quality Manifesto",
       "label": "slow-craft"
+    },
+    {
+      "source": "George Nakashima",
+      "type": "connects-to",
+      "target": "Dovetail Joint \u2194 Counterpoint",
+      "label": "joinery-wisdom"
+    },
+    {
+      "source": "George Nakashima",
+      "type": "connects-to",
+      "target": "Hilaritas Generator",
+      "label": "making-as-expansion"
     },
     {
       "source": "Buckminster Fuller",
@@ -12134,6 +15377,12 @@
       "label": "reject-metrics"
     },
     {
+      "source": "Andrei Tarkovsky",
+      "type": "connects-to",
+      "target": "Pauline Oliveros",
+      "label": "patience-as-practice"
+    },
+    {
       "source": "Shunryu Suzuki",
       "type": "member-of",
       "target": "Source Library",
@@ -12164,6 +15413,12 @@
       "label": "first-thought"
     },
     {
+      "source": "Shunryu Suzuki",
+      "type": "member-of",
+      "target": "Cross-Domain Resonances",
+      "label": "bridge-builder"
+    },
+    {
       "source": "Seneca",
       "type": "member-of",
       "target": "Source Library",
@@ -12192,6 +15447,12 @@
       "type": "connects-to",
       "target": "Quality Manifesto",
       "label": "time-consciousness"
+    },
+    {
+      "source": "Seneca",
+      "type": "connects-to",
+      "target": "The View From Above",
+      "label": "memento-mori-origin"
     },
     {
       "source": "Lao Tzu",
@@ -12230,6 +15491,12 @@
       "label": "dao-vs-li"
     },
     {
+      "source": "Lao Tzu",
+      "type": "connects-to",
+      "target": "Quality Manifesto",
+      "label": "subtraction-reveals"
+    },
+    {
       "source": "Yasujir\u014d Ozu",
       "type": "member-of",
       "target": "Source Library",
@@ -12260,6 +15527,12 @@
       "label": "concretization"
     },
     {
+      "source": "Yasujir\u014d Ozu",
+      "type": "connects-to",
+      "target": "Brian Eno",
+      "label": "restraint-as-method"
+    },
+    {
       "source": "John Cage",
       "type": "member-of",
       "target": "Source Library",
@@ -12288,6 +15561,12 @@
       "type": "connects-to",
       "target": "Flocking",
       "label": "set-conditions"
+    },
+    {
+      "source": "John Cage",
+      "type": "connects-to",
+      "target": "Quality Manifesto",
+      "label": "shared-release-from-metric"
     },
     {
       "source": "Agnes Martin",
@@ -12398,6 +15677,30 @@
       "label": "multi-expert-with-cross-talk"
     },
     {
+      "source": "Dialectic",
+      "type": "connects-to",
+      "target": "Confucianism",
+      "label": null
+    },
+    {
+      "source": "Dialectic",
+      "type": "connects-to",
+      "target": "Stoicism",
+      "label": null
+    },
+    {
+      "source": "Dialectic",
+      "type": "connects-to",
+      "target": "The Fortress and the Threshold",
+      "label": null
+    },
+    {
+      "source": "Dialectic",
+      "type": "connects-to",
+      "target": "zhuangzi-epictetus-confucius-on-the-self",
+      "label": null
+    },
+    {
       "source": "Excellent Adventure",
       "type": "deepens",
       "target": "Hilaritas Generator",
@@ -12488,6 +15791,66 @@
       "label": "single-expert-routed-to-a-node"
     },
     {
+      "source": "Philosopher Visits the Entry",
+      "type": "connects-to",
+      "target": "Action Potential Oscillator",
+      "label": null
+    },
+    {
+      "source": "Philosopher Visits the Entry",
+      "type": "connects-to",
+      "target": "Confucianism",
+      "label": null
+    },
+    {
+      "source": "Philosopher Visits the Entry",
+      "type": "connects-to",
+      "target": "Deleuze",
+      "label": null
+    },
+    {
+      "source": "Philosopher Visits the Entry",
+      "type": "connects-to",
+      "target": "Merleau-Ponty",
+      "label": null
+    },
+    {
+      "source": "Philosopher Visits the Entry",
+      "type": "connects-to",
+      "target": "Palace Philosophies",
+      "label": null
+    },
+    {
+      "source": "Philosopher Visits the Entry",
+      "type": "connects-to",
+      "target": "STIGMERGY Philosophical Lenses",
+      "label": null
+    },
+    {
+      "source": "Philosopher Visits the Entry",
+      "type": "connects-to",
+      "target": "Simondon",
+      "label": null
+    },
+    {
+      "source": "Philosopher Visits the Entry",
+      "type": "connects-to",
+      "target": "Spinoza Conatus",
+      "label": null
+    },
+    {
+      "source": "Philosopher Visits the Entry",
+      "type": "connects-to",
+      "target": "The Drift",
+      "label": null
+    },
+    {
+      "source": "Philosopher Visits the Entry",
+      "type": "connects-to",
+      "target": "Whitehead",
+      "label": null
+    },
+    {
       "source": "spinoza-zhuangzi-on-striving",
       "type": "emerged-from",
       "target": "Spinoza Conatus",
@@ -12528,6 +15891,24 @@
       "type": "mirrors",
       "target": "zhuangzi-epictetus-confucius-on-the-self",
       "label": "same-method-second-question"
+    },
+    {
+      "source": "spinoza-zhuangzi-on-striving",
+      "type": "connects-to",
+      "target": "Deleuze",
+      "label": null
+    },
+    {
+      "source": "spinoza-zhuangzi-on-striving",
+      "type": "connects-to",
+      "target": "Hilaritas Generator",
+      "label": null
+    },
+    {
+      "source": "spinoza-zhuangzi-on-striving",
+      "type": "connects-to",
+      "target": "The Fortress and the Threshold",
+      "label": null
     },
     {
       "source": "Enchanted Worker",
@@ -12648,6 +16029,24 @@
       "type": "connects-to",
       "target": "The Shop",
       "label": "shared-studio-register"
+    },
+    {
+      "source": "Loudon Live Design System",
+      "type": "connects-to",
+      "target": "Hilaritas Generator",
+      "label": "tonal-kin"
+    },
+    {
+      "source": "Loudon Live Design System",
+      "type": "connects-to",
+      "target": "Trickster",
+      "label": "voice-ancestor"
+    },
+    {
+      "source": "Loudon Live Design System",
+      "type": "emerged-from",
+      "target": "Loudon Live Post-producer",
+      "label": "channel-spec-source"
     },
     {
       "source": "Two Batons, One Board",
@@ -12998,6 +16397,12 @@
       "label": "coordinated-on"
     },
     {
+      "source": "Swarm Weave",
+      "type": "connects-to",
+      "target": "Hero and Avatar Maker",
+      "label": "face-check-dispatch"
+    },
+    {
       "source": "Symbiotic Skills",
       "type": "emerged-from",
       "target": "Cooperation Yields Agency",
@@ -13166,6 +16571,90 @@
       "label": "intent-as-compression-signal"
     },
     {
+      "source": "STIGMERGY v2.0 \u2014 Consolidation & Primary Interface",
+      "type": "deepens",
+      "target": "STIGMERGY v1.0 \u2014 Palace Front-End",
+      "label": "consolidation-and-primary-interface"
+    },
+    {
+      "source": "STIGMERGY v2.0 \u2014 Consolidation & Primary Interface",
+      "type": "connects-to",
+      "target": "STIGMERGY",
+      "label": "the-system-this-develops"
+    },
+    {
+      "source": "STIGMERGY v2.0 \u2014 Consolidation & Primary Interface",
+      "type": "connects-to",
+      "target": "BBS Design System",
+      "label": "the-governing-aesthetic-restored"
+    },
+    {
+      "source": "STIGMERGY v2.0 \u2014 Consolidation & Primary Interface",
+      "type": "connects-to",
+      "target": "Project Stewardship System",
+      "label": "the-routine-that-runs-on-it"
+    },
+    {
+      "source": "STIGMERGY v2.0 \u2014 Consolidation & Primary Interface",
+      "type": "connects-to",
+      "target": "Enrichment",
+      "label": "the-parallel-server-to-absorb"
+    },
+    {
+      "source": "STIGMERGY v2.0 \u2014 Consolidation & Primary Interface",
+      "type": "connects-to",
+      "target": "The Lens",
+      "label": "the-state-deck-mode-to-build"
+    },
+    {
+      "source": "STIGMERGY v2.0 \u2014 Consolidation & Primary Interface",
+      "type": "connects-to",
+      "target": "Palace Enchantment",
+      "label": "the-ceremony-to-formalize"
+    },
+    {
+      "source": "STIGMERGY v2.0 \u2014 Consolidation & Primary Interface",
+      "type": "connects-to",
+      "target": "Two Batons, One Board",
+      "label": "the-retro-prospective-discipline-the-decks-enact"
+    },
+    {
+      "source": "STIGMERGY v2.0 \u2014 Consolidation & Primary Interface",
+      "type": "mirrors",
+      "target": "BBS Production Plan",
+      "label": "autonomous-build-contract-idiom"
+    },
+    {
+      "source": "STIGMERGY v2.0 \u2014 Consolidation & Primary Interface",
+      "type": "connects-to",
+      "target": "Entry Conatus",
+      "label": null
+    },
+    {
+      "source": "STIGMERGY v2.0 \u2014 Consolidation & Primary Interface",
+      "type": "connects-to",
+      "target": "Orchestrator Production Plan v0.2",
+      "label": null
+    },
+    {
+      "source": "STIGMERGY v2.0 \u2014 Consolidation & Primary Interface",
+      "type": "connects-to",
+      "target": "Pages as Agents",
+      "label": null
+    },
+    {
+      "source": "STIGMERGY v2.0 \u2014 Consolidation & Primary Interface",
+      "type": "connects-to",
+      "target": "Resonant Link Labels",
+      "label": null
+    },
+    {
+      "source": "STIGMERGY v2.0 \u2014 Consolidation & Primary Interface",
+      "type": "connects-to",
+      "target": "Speak Like a Person, Log Like a Protocol",
+      "label": null
+    },
+    {
       "source": "Orchestrator Production Plan",
       "type": "enables",
       "target": "Palace Agent Infrastructure Spec",
@@ -13304,6 +16793,12 @@
       "label": "stigmergy-surface"
     },
     {
+      "source": "BBS Blackboard",
+      "type": "connects-to",
+      "target": "Palace Agent Infrastructure Spec",
+      "label": null
+    },
+    {
       "source": "Orchestrator Production Plan v0.2",
       "type": "emerged-from",
       "target": "Orchestrator Production Plan",
@@ -13344,6 +16839,12 @@
       "type": "couples-with",
       "target": "Substrate Skill",
       "label": "stage-conditional-dispatch"
+    },
+    {
+      "source": "Orchestrator Production Plan v0.2",
+      "type": "connects-to",
+      "target": "STIGMERGY v2.0 \u2014 Consolidation & Primary Interface",
+      "label": "scheduling-axis-superseded-by"
     },
     {
       "source": "STIGMERGY \u2014 Weave Flag Item Type Build Plan",
@@ -13734,6 +17235,18 @@
       "type": "connects-to",
       "target": "Bundle-Local Stewardship \u2014 Production Plan",
       "label": "hardened-by"
+    },
+    {
+      "source": "Project Stewardship System",
+      "type": "connects-to",
+      "target": "Baton Ceremony",
+      "label": null
+    },
+    {
+      "source": "Project Stewardship System",
+      "type": "connects-to",
+      "target": "Drift and Consolidation",
+      "label": null
     },
     {
       "source": "Tree of Thoughts",
@@ -14180,6 +17693,48 @@
       "label": "the-altitude-navigation-mode"
     },
     {
+      "source": "STIGMERGY Philosophical Lenses",
+      "type": "connects-to",
+      "target": "Confucianism",
+      "label": null
+    },
+    {
+      "source": "STIGMERGY Philosophical Lenses",
+      "type": "connects-to",
+      "target": "Drift and Consolidation",
+      "label": null
+    },
+    {
+      "source": "STIGMERGY Philosophical Lenses",
+      "type": "connects-to",
+      "target": "Like Water",
+      "label": null
+    },
+    {
+      "source": "STIGMERGY Philosophical Lenses",
+      "type": "connects-to",
+      "target": "Spinoza Conatus",
+      "label": null
+    },
+    {
+      "source": "STIGMERGY Philosophical Lenses",
+      "type": "connects-to",
+      "target": "The Drift",
+      "label": null
+    },
+    {
+      "source": "STIGMERGY Philosophical Lenses",
+      "type": "connects-to",
+      "target": "The Fortress and the Threshold",
+      "label": null
+    },
+    {
+      "source": "STIGMERGY Philosophical Lenses",
+      "type": "connects-to",
+      "target": "spinoza-zhuangzi-on-striving",
+      "label": null
+    },
+    {
       "source": "STIGMERGY v1.0 \u2014 Palace Front-End",
       "type": "deepens",
       "target": "BBS Blackboard",
@@ -14250,6 +17805,18 @@
       "type": "connects-to",
       "target": "Map Build Ceremony",
       "label": "feeds-the-topology-lens"
+    },
+    {
+      "source": "STIGMERGY v1.0 \u2014 Palace Front-End",
+      "type": "connects-to",
+      "target": "Baton Ceremony",
+      "label": null
+    },
+    {
+      "source": "STIGMERGY v1.0 \u2014 Palace Front-End",
+      "type": "connects-to",
+      "target": "STIGMERGY v2.0 \u2014 Consolidation & Primary Interface",
+      "label": null
     },
     {
       "source": "Enchanted Conversation Archive",
@@ -14408,6 +17975,18 @@
       "label": "palace-scale-conatus"
     },
     {
+      "source": "Palace Enchantment",
+      "type": "connects-to",
+      "target": "Palace Map",
+      "label": null
+    },
+    {
+      "source": "Palace Enchantment",
+      "type": "connects-to",
+      "target": "Project Stewardship System",
+      "label": null
+    },
+    {
       "source": "Kick Drum \u2194 Foundation",
       "type": "member-of",
       "target": "Cross-Domain Resonances",
@@ -14430,6 +18009,18 @@
       "type": "connects-to",
       "target": "Leverage Points Framework",
       "label": "foundation-as-leverage"
+    },
+    {
+      "source": "Kick Drum \u2194 Foundation",
+      "type": "connects-to",
+      "target": "Marcus Aurelius",
+      "label": "first-action-sets-trajectory"
+    },
+    {
+      "source": "Kick Drum \u2194 Foundation",
+      "type": "connects-to",
+      "target": "Christopher Alexander",
+      "label": "constraints-as-generative"
     },
     {
       "source": "Reverb \u2194 Space-Time",
@@ -14486,6 +18077,12 @@
       "label": "local-rules-global-feel"
     },
     {
+      "source": "Quantization \u2194 Precision vs Flow",
+      "type": "connects-to",
+      "target": "Quality Manifesto",
+      "label": "felt-metric"
+    },
+    {
       "source": "Saturation \u2194 Richness",
       "type": "member-of",
       "target": "Cross-Domain Resonances",
@@ -14510,6 +18107,12 @@
       "label": "felt-calibration"
     },
     {
+      "source": "Saturation \u2194 Richness",
+      "type": "deepens",
+      "target": "Spinoza Conatus",
+      "label": "conatus-in-circuits"
+    },
+    {
       "source": "Dovetail Joint \u2194 Counterpoint",
       "type": "member-of",
       "target": "Cross-Domain Resonances",
@@ -14532,6 +18135,24 @@
       "type": "connects-to",
       "target": "Cooperation Yields Agency",
       "label": "complementary-strength"
+    },
+    {
+      "source": "Dovetail Joint \u2194 Counterpoint",
+      "type": "connects-to",
+      "target": "Lao Tzu",
+      "label": "yield-overcomes"
+    },
+    {
+      "source": "Dovetail Joint \u2194 Counterpoint",
+      "type": "connects-to",
+      "target": "Leverage Points Framework",
+      "label": "emergence-at-joints"
+    },
+    {
+      "source": "Dovetail Joint \u2194 Counterpoint",
+      "type": "exemplifies",
+      "target": "Hilaritas Generator",
+      "label": "all-four-pillars-fire"
     },
     {
       "source": "Frequency Domain \u2194 Perspective Shift",
@@ -14562,6 +18183,12 @@
       "type": "mirrors",
       "target": "Lateral Access",
       "label": "reframe"
+    },
+    {
+      "source": "Frequency Domain \u2194 Perspective Shift",
+      "type": "connects-to",
+      "target": "Rick Rubin",
+      "label": "oblique-lens"
     },
     {
       "source": "Synthesis \u2194 Emergence",
@@ -14618,6 +18245,24 @@
       "label": "design-for-emergence"
     },
     {
+      "source": "Synthesis \u2194 Emergence",
+      "type": "mirrors",
+      "target": "Granular Synthesis",
+      "label": "grain-as-simple-rule"
+    },
+    {
+      "source": "Synthesis \u2194 Emergence",
+      "type": "deepens",
+      "target": "Synthesis Topologies",
+      "label": "topology-as-rule-set"
+    },
+    {
+      "source": "Synthesis \u2194 Emergence",
+      "type": "connects-to",
+      "target": "Harmonicity and Inharmonicity",
+      "label": "inharmonics-as-emergence"
+    },
+    {
       "source": "Cooking \u2194 Mixing",
       "type": "member-of",
       "target": "Cross-Domain Resonances",
@@ -14640,6 +18285,24 @@
       "type": "connects-to",
       "target": "Quality Manifesto",
       "label": "taste-over-metrics"
+    },
+    {
+      "source": "Cooking \u2194 Mixing",
+      "type": "connects-to",
+      "target": "Like Water",
+      "label": "emptiness-as-design"
+    },
+    {
+      "source": "Cooking \u2194 Mixing",
+      "type": "connects-to",
+      "target": "Rick Rubin",
+      "label": "subtraction-as-trust"
+    },
+    {
+      "source": "Cooking \u2194 Mixing",
+      "type": "exemplifies",
+      "target": "Hilaritas Generator",
+      "label": "learning-through-constraint"
     },
     {
       "source": "Compression \u2194 Intimacy",
@@ -14670,6 +18333,12 @@
       "type": "connects-to",
       "target": "Quality Manifesto",
       "label": "felt-metric"
+    },
+    {
+      "source": "Compression \u2194 Intimacy",
+      "type": "couples-with",
+      "target": "Sidechain \u2194 Conversation",
+      "label": "sibling-pattern"
     },
     {
       "source": "Sidechain \u2194 Conversation",
@@ -14706,6 +18375,12 @@
       "type": "mirrors",
       "target": "Flocking",
       "label": "local-yield"
+    },
+    {
+      "source": "Sidechain \u2194 Conversation",
+      "type": "exemplifies",
+      "target": "Quality Manifesto",
+      "label": "self-defined-metric"
     },
     {
       "source": "BBS Production Plan v0.2",
@@ -14778,42 +18453,6 @@
       "type": "mirrors",
       "target": "Progressive Staging",
       "label": "phased-build"
-    },
-    {
-      "source": "shop-header \u2014 Maker's Comparison Recommendation",
-      "type": "connects-to",
-      "target": "The Shop",
-      "label": "hub-header-brief"
-    },
-    {
-      "source": "shop-header \u2014 Maker's Comparison Recommendation",
-      "type": "directed-by",
-      "target": "Maker",
-      "label": null
-    },
-    {
-      "source": "shop-header \u2014 Maker's Comparison Recommendation",
-      "type": "produced-by",
-      "target": "ComfyUI",
-      "label": null
-    },
-    {
-      "source": "shop-header \u2014 Maker's Comparison Recommendation",
-      "type": "produced-by",
-      "target": "FLUX (Hugging Face)",
-      "label": "midjourney-replacement"
-    },
-    {
-      "source": "shop-header \u2014 Maker's Comparison Recommendation",
-      "type": "supersedes",
-      "target": "Midjourney",
-      "label": "midjourney-deprecated-too-expensive"
-    },
-    {
-      "source": "shop-header \u2014 Maker's Comparison Recommendation",
-      "type": "mirrors",
-      "target": "Flocking \u2014 Maker's Comparison Recommendation",
-      "label": "prior-comparison-shape"
     },
     {
       "source": "Floquet Time-Modulated Loops",
@@ -14900,6 +18539,42 @@
       "label": "lti-to-ltv-boundary"
     },
     {
+      "source": "Floquet Time-Modulated Loops",
+      "type": "connects-to",
+      "target": "2D Wavetable Catalog",
+      "label": null
+    },
+    {
+      "source": "Floquet Time-Modulated Loops",
+      "type": "connects-to",
+      "target": "Action Potential Oscillator",
+      "label": null
+    },
+    {
+      "source": "Floquet Time-Modulated Loops",
+      "type": "connects-to",
+      "target": "Bessel Functions in Synthesis",
+      "label": null
+    },
+    {
+      "source": "Floquet Time-Modulated Loops",
+      "type": "connects-to",
+      "target": "Crystal Synthesizer",
+      "label": null
+    },
+    {
+      "source": "Floquet Time-Modulated Loops",
+      "type": "connects-to",
+      "target": "Hilaritas Generator",
+      "label": null
+    },
+    {
+      "source": "Floquet Time-Modulated Loops",
+      "type": "connects-to",
+      "target": "Progressive Staging",
+      "label": null
+    },
+    {
       "source": "Leverage Diagnostic \u2014 Loudon Draft",
       "type": "member-of",
       "target": "Meadows and an Artist's Career",
@@ -14916,6 +18591,48 @@
       "type": "connects-to",
       "target": "FOUR PILLARS",
       "label": null
+    },
+    {
+      "source": "BLUELINE \u2014 Specialists and Seams",
+      "type": "connects-to",
+      "target": "BLUELINE",
+      "label": "specialist-structure-for"
+    },
+    {
+      "source": "BLUELINE \u2014 Specialists and Seams",
+      "type": "deepens",
+      "target": "BLUELINE \u2014 Production Pipeline",
+      "label": "answers-its-forward-vector"
+    },
+    {
+      "source": "BLUELINE \u2014 Specialists and Seams",
+      "type": "connects-to",
+      "target": "BLUELINE \u2014 Board Record Schema",
+      "label": "the-inter-specialist-contract"
+    },
+    {
+      "source": "BLUELINE \u2014 Specialists and Seams",
+      "type": "connects-to",
+      "target": "The Shop",
+      "label": "reuses-the-roster"
+    },
+    {
+      "source": "BLUELINE \u2014 Specialists and Seams",
+      "type": "connects-to",
+      "target": "Maker",
+      "label": "dispatched-as-a-recipe"
+    },
+    {
+      "source": "BLUELINE \u2014 Specialists and Seams",
+      "type": "exemplifies",
+      "target": "Adopt the Craft, Author the Seam",
+      "label": "the-seams-are-the-only-new-work"
+    },
+    {
+      "source": "BLUELINE \u2014 Specialists and Seams",
+      "type": "connects-to",
+      "target": "Trickster (Loudon)",
+      "label": "loudon-is-producer-not-director"
     },
     {
       "source": "BLUELINE \u2014 Production Plan",
@@ -15026,6 +18743,42 @@
       "label": "learn-by-building-the-tool"
     },
     {
+      "source": "BLUELINE",
+      "type": "spawned",
+      "target": "Hand-Drawn 3D Look",
+      "label": "hand-drawn-3d-capability"
+    },
+    {
+      "source": "BLUELINE",
+      "type": "spawned",
+      "target": "Frame Designer",
+      "label": "proving-ground"
+    },
+    {
+      "source": "BLUELINE",
+      "type": "spawned",
+      "target": "Steer the Generator",
+      "label": "discipline-forged-here"
+    },
+    {
+      "source": "BLUELINE",
+      "type": "connects-to",
+      "target": "Typography as Meaning",
+      "label": "text-layer-canon"
+    },
+    {
+      "source": "BLUELINE",
+      "type": "mirrors",
+      "target": "Diversity of Thought in Many-Agent Systems",
+      "label": "two-ai-temperaments"
+    },
+    {
+      "source": "BLUELINE",
+      "type": "emerged-from",
+      "target": "Adopt the Craft, Author the Seam",
+      "label": "re-founding-principle"
+    },
+    {
       "source": "BLUELINE \u2014 Render Backend",
       "type": "connects-to",
       "target": "BLUELINE",
@@ -15054,6 +18807,90 @@
       "type": "connects-to",
       "target": "BLUELINE \u2014 Board Record Schema",
       "label": "executes-the-record"
+    },
+    {
+      "source": "BLUELINE \u2014 Production Pipeline",
+      "type": "connects-to",
+      "target": "BLUELINE",
+      "label": "production-pipeline-for"
+    },
+    {
+      "source": "BLUELINE \u2014 Production Pipeline",
+      "type": "exemplifies",
+      "target": "Adopt the Craft, Author the Seam",
+      "label": "founding-rationale"
+    },
+    {
+      "source": "BLUELINE \u2014 Production Pipeline",
+      "type": "connects-to",
+      "target": "BLUELINE \u2014 Production Plan",
+      "label": "tracks-map-onto-stages"
+    },
+    {
+      "source": "BLUELINE \u2014 Production Pipeline",
+      "type": "connects-to",
+      "target": "BLUELINE \u2014 Board Record Schema",
+      "label": "the-spine"
+    },
+    {
+      "source": "BLUELINE \u2014 Production Pipeline",
+      "type": "connects-to",
+      "target": "Blocked, Not Prompted",
+      "label": "seam-2"
+    },
+    {
+      "source": "BLUELINE \u2014 Production Pipeline",
+      "type": "connects-to",
+      "target": "Blender",
+      "label": "the-layout-DCC"
+    },
+    {
+      "source": "BLUELINE \u2014 Text Layer",
+      "type": "connects-to",
+      "target": "BLUELINE",
+      "label": "text-half-of-the-pipeline"
+    },
+    {
+      "source": "BLUELINE \u2014 Text Layer",
+      "type": "connects-to",
+      "target": "BLUELINE \u2014 Board Record Schema",
+      "label": "adds-the-TEXT-block"
+    },
+    {
+      "source": "BLUELINE \u2014 Text Layer",
+      "type": "exemplifies",
+      "target": "The Flow Field is the Spine",
+      "label": "sfx-is-the-fourth-resolution"
+    },
+    {
+      "source": "BLUELINE \u2014 Text Layer",
+      "type": "exemplifies",
+      "target": "Blocked, Not Prompted",
+      "label": "balloon-placement-is-geometry"
+    },
+    {
+      "source": "BLUELINE \u2014 Text Layer",
+      "type": "connects-to",
+      "target": "Comic and Cinema \u2014 Two Ways of Seeing",
+      "label": "text-transduces-too"
+    },
+    {
+      "source": "BLUELINE \u2014 Text Layer",
+      "type": "connects-to",
+      "target": "Loudon Live Design System",
+      "label": "the-authors-voice"
+    },
+    {
+      "source": "BLUELINE \u2014 Text Layer",
+      "type": "exemplifies",
+      "target": "Adopt the Craft, Author the Seam",
+      "label": "render-art-letter-over"
+    },
+    {
+      "source": "BLUELINE \u2014 Text Layer",
+      "type": "exemplifies",
+      "target": "The 2.5D Paper Stack",
+      "label": "bubble-as-sheet"
     },
     {
       "source": "BLUELINE \u2014 Deposit Map",

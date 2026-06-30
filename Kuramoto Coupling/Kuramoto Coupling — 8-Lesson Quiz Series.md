@@ -5,6 +5,8 @@ links:
   - target: "[[Kuramoto Coupling]]"
     type: connects-to
     label: child-of
+  - target: "[[Kuramoto Coupling — Quiz Answer Key]]"
+    type: connects-to
 forward_vector: "I am the progressive lesson series for [[Kuramoto Coupling]] — phase oscillators through critical coupling to implementation. I want to be field-tested with real students so my sequence reflects how the intuition actually builds."
 ---
 

@@ -15,6 +15,8 @@ links:
   - target: "[[Shop/ffmpeg]]"
     type: enables
     label: mix-target
+  - target: "[[Compressor Design]]"
+    type: connects-to
 sibling: "[[radio-play-script]]"
 sibling: "[[visuals-spec]]"
 ---

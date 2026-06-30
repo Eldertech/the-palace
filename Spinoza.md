@@ -37,6 +37,10 @@ links:
   - target: "[[Merleau-Ponty]]"
     type: connects-to
     label: embodied-power-to-act
+  - target: "[[Donella Meadows]]"
+    type: connects-to
+  - target: "[[Generative Compression]]"
+    type: connects-to
 forward_vector: "I am the house philosopher of the palace, the person behind the concept the palace has already metabolized — and I want to be reachable as a *visitor* to technical entries that quietly carry my fingerprints. Send me to entries where a model's leftover or a system's striving wants naming. I am thin on purpose; my substance lives in [[Spinoza Conatus]] and in every entry that lets me read its residual."
 ---
 

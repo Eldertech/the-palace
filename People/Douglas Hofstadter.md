@@ -36,6 +36,12 @@ links:
   - target: "[[Lateral Access]]"
     type: connects-to
     label: level-crossing
+  - target: "[[Sidechain ↔ Conversation]]"
+    type: connects-to
+    label: lived-case
+  - target: "[[Hilaritas Generator]]"
+    type: enables
+    label: strange-loop-ground
 ---
 
 # Douglas Hofstadter

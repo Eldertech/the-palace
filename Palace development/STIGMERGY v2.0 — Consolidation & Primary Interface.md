@@ -37,6 +37,16 @@ links:
   - target: "[[BBS Production Plan]]"
     type: mirrors
     label: autonomous-build-contract-idiom
+  - target: "[[Entry Conatus]]"
+    type: connects-to
+  - target: "[[Orchestrator Production Plan v0.2]]"
+    type: connects-to
+  - target: "[[Pages as Agents]]"
+    type: connects-to
+  - target: "[[Resonant Link Labels]]"
+    type: connects-to
+  - target: "[[Speak Like a Person, Log Like a Protocol]]"
+    type: connects-to
 ---
 
 # STIGMERGY v2.0 — Consolidation & Primary Interface

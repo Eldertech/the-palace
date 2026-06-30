@@ -40,6 +40,10 @@ links:
   - target: "[[The Shop]]"
     type: connects-to
     label: data-viz-shoot-out-target
+  - target: "[[Loudon Live Design System]]"
+    type: connects-to
+  - target: "[[Maker]]"
+    type: connects-to
 forward_vector: "I want to teach the palace that emergent agency from local rules is the same shape as synchronization from coupling — Reynolds' boids and Kuramoto's oscillators are siblings — and to ride the Shop's data-viz triad (D3.js, Observable Plot, p5.js) as my first real artifact path so the same math is shown from three angles: interactive control, analytical view, expressive interpretation."
 ---
 

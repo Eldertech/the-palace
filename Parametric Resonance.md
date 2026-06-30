@@ -36,6 +36,8 @@ links:
   - target: "[[Phase Reduction]]"
     type: connects-to
     label: pump-phase-lives-in-the-floquet-eigenvector
+  - target: "[[Hilaritas Generator]]"
+    type: connects-to
 forward_vector: "I want to be the entry that makes the difference between *driving* and *pumping* obvious to anyone who has ever pumped a swing. I want to spawn a working palace catalog of parametric instruments — every audio device whose energy comes from inside a modulated coefficient rather than from outside the system."
 ---
 

@@ -1,0 +1,1963 @@
+{
+ "edges": {
+  "Adopt the Craft, Author the Seam": {
+   "Graphic Storytelling": [
+    "connects-to",
+    "the-craft-being-adopted"
+   ],
+   "Comic and Cinema — Two Ways of Seeing": [
+    "connects-to",
+    "grammar-on-the-shelf"
+   ]
+  },
+  "Typography as Meaning": {
+   "Graphic Storytelling": [
+    "emerged-from",
+    "inherited-grammar"
+   ],
+   "Language as a Tonal Medium": [
+    "couples-with",
+    "letter-as-tone"
+   ]
+  },
+  "Move the Ink, Don't Redraw It": {
+   "Frame Designer": [
+    "enables",
+    "motion-primitive-for"
+   ]
+  },
+  "The 2.5D Paper Stack": {
+   "Hand-Drawn 3D Look": [
+    "couples-with",
+    "break-surface"
+   ]
+  },
+  "Hand-Drawn 3D Look": {
+   "Figure Rig": [
+    "enables",
+    "figure-staging"
+   ]
+  },
+  "Remnants in Depth": {
+   "The Shop": [
+    "member-of",
+    "candidate-roster"
+   ],
+   "Move the Ink, Don't Redraw It": [
+    "exemplifies",
+    "geometry-over-redraw"
+   ]
+  },
+  "The Reader's Context Window": {
+   "Trickster": [
+    "spawned",
+    "origin-site"
+   ]
+  },
+  "Lettering": {
+   "Steer the Generator": [
+    "exemplifies",
+    "control-not-prompt"
+   ],
+   "Graphic Storytelling": [
+    "enables",
+    "letters-the-voices"
+   ]
+  },
+  "Hero and Avatar Maker": {
+   "Kuramoto Coupling": [
+    "connects-to",
+    "first-subject"
+   ],
+   "Retrospective Delay": [
+    "connects-to",
+    "proving-subject"
+   ],
+   "Loudon's Toolkit": [
+    "connects-to",
+    "cautionary-subject"
+   ]
+  },
+  "Maker": {
+   "Radio Play": [
+    "spawned",
+    "forged-in-job"
+   ],
+   "Review Layer": [
+    "connects-to",
+    "inherits-rule"
+   ],
+   "RunPod GPU Backend": [
+    "connects-to",
+    "gpu-substrate"
+   ],
+   "Flocking": [
+    "connects-to",
+    "proof-of-comparison"
+   ],
+   "Blocked, Not Prompted": [
+    "enables",
+    "conditions-the-fill"
+   ],
+   "Waveguide Synthesizer": [
+    "connects-to",
+    "architectural-pattern"
+   ],
+   "Diversity of Thought in Many-Agent Systems": [
+    "connects-to",
+    "tested-by"
+   ],
+   "BBS Design System": [
+    "connects-to",
+    "overridden-by"
+   ],
+   "Modes of Collaboration": [
+    "connects-to",
+    "names-mode"
+   ],
+   "Murmuration": [
+    "connects-to",
+    "born-from"
+   ]
+  },
+  "The Shop": {
+   "Shopkeeper": [
+    "spawned",
+    "alt-foreman"
+   ],
+   "Kokoro": [
+    "exemplifies",
+    "gotcha-anchor"
+   ],
+   "Manim CE": [
+    "exemplifies",
+    "heuristic-case"
+   ],
+   "Trickster": [
+    "connects-to",
+    "provisional-producer"
+   ],
+   "Tier Vocabulary Glossary": [
+    "spawned",
+    "tier-vocabulary"
+   ]
+  },
+  "ComfyUI": {
+   "Kuramoto Coupling": [
+    "connects-to",
+    "first-brief"
+   ],
+   "Loudon Live": [
+    "enables",
+    "image-engine"
+   ],
+   "RunPod GPU Backend": [
+    "connects-to",
+    "cloud-path"
+   ],
+   "FLUX (Hugging Face)": [
+    "connects-to",
+    "cloud-sibling"
+   ]
+  },
+  "FLUX (Hugging Face)": {
+   "Loudon Live": [
+    "enables",
+    "header-painter"
+   ],
+   "Loudon Live Design System": [
+    "enables",
+    "artifact-substrate"
+   ]
+  },
+  "RunPod GPU Backend": {
+   "Image-to-3D Smith": [
+    "enables",
+    "original-commission"
+   ]
+  },
+  "Manim CE": {
+   "Loudon Live Design System": [
+    "enables",
+    "skin-token-source"
+   ],
+   "ffmpeg": [
+    "couples-with",
+    "mux-partner"
+   ],
+   "LaTeX": [
+    "couples-with",
+    "shares-tex-pipeline-with"
+   ],
+   "Matplotlib": [
+    "connects-to",
+    "sandboxed-fallback"
+   ]
+  },
+  "Stable Audio Open": {
+   "Kuramoto Coupling": [
+    "spawned",
+    "auditory-rendering"
+   ],
+   "Kokoro": [
+    "connects-to",
+    "routes-vocals-to"
+   ],
+   "Loudon Live": [
+    "enables",
+    "beds-for"
+   ],
+   "Whisper": [
+    "connects-to",
+    "vram-contends-with"
+   ]
+  },
+  "Kokoro": {
+   "ffmpeg": [
+    "couples-with",
+    "post-chain"
+   ],
+   "Loudon Live": [
+    "enables",
+    "voices"
+   ]
+  },
+  "ffmpeg": {
+   "Kokoro": [
+    "couples-with",
+    "narration-pipe"
+   ],
+   "Manim CE": [
+    "couples-with",
+    "render-pipe"
+   ],
+   "ComfyUI": [
+    "couples-with",
+    "stills-pipe"
+   ],
+   "Remotion": [
+    "couples-with",
+    "timeline-pipe"
+   ],
+   "Stable Audio Open": [
+    "couples-with",
+    "post-processes"
+   ],
+   "Whisper": [
+    "couples-with",
+    "caption-pipe"
+   ],
+   "Matplotlib": [
+    "couples-with",
+    "title-card-fallback"
+   ],
+   "Kuramoto Coupling": [
+    "connects-to",
+    "first-recipe-testbed"
+   ],
+   "Loudon Live": [
+    "enables",
+    "finishing-pipeline"
+   ]
+  },
+  "Enrichment": {
+   "Palace Ceremonies": [
+    "member-of",
+    "ceremony-registry-member"
+   ],
+   "Kokoro": [
+    "connects-to",
+    "audio-artifact-maker"
+   ],
+   "STIGMERGY v2.0 — Consolidation & Primary Interface": [
+    "connects-to",
+    "absorbed-by"
+   ]
+  },
+  "Oblique Enrichment": {
+   "Project Stewardship System": [
+    "connects-to",
+    "converging-thread"
+   ],
+   "Radio Play": [
+    "exemplifies",
+    "first-deck"
+   ]
+  },
+  "Loudon Live Design System": {
+   "Hilaritas Generator": [
+    "connects-to",
+    "tonal-kin"
+   ],
+   "Trickster": [
+    "connects-to",
+    "voice-ancestor"
+   ],
+   "Loudon Live Post-producer": [
+    "emerged-from",
+    "channel-spec-source"
+   ]
+  },
+  "Hilaritas Generator": {
+   "Quality Manifesto": [
+    "enables",
+    "signal-redirector"
+   ],
+   "Tristitia Generator": [
+    "spawned",
+    "spinozan-mirror"
+   ]
+  },
+  "Modes of Collaboration": {
+   "Philosopher Visits the Entry": [
+    "connects-to",
+    "sibling-mode"
+   ],
+   "DSP Frameworks": [
+    "connects-to",
+    "exemplifies-domain"
+   ]
+  },
+  "BLUELINE": {
+   "Frame Designer": [
+    "spawned",
+    "proving-ground"
+   ],
+   "Steer the Generator": [
+    "spawned",
+    "discipline-forged-here"
+   ],
+   "Typography as Meaning": [
+    "connects-to",
+    "text-layer-canon"
+   ],
+   "Diversity of Thought in Many-Agent Systems": [
+    "mirrors",
+    "two-ai-temperaments"
+   ],
+   "Adopt the Craft, Author the Seam": [
+    "emerged-from",
+    "re-founding-principle"
+   ]
+  },
+  "Andrei Tarkovsky": {
+   "Pauline Oliveros": [
+    "connects-to",
+    "patience-as-practice"
+   ]
+  },
+  "Brian Eno": {
+   "Quality Manifesto": [
+    "connects-to",
+    "depth-over-reach"
+   ]
+  },
+  "Christopher Alexander": {
+   "Sidechain ↔ Conversation": [
+    "exemplifies",
+    "pattern-instance"
+   ]
+  },
+  "Donella Meadows": {
+   "Kick Drum ↔ Foundation": [
+    "connects-to",
+    "leverage-in-the-low-end"
+   ],
+   "Sidechain ↔ Conversation": [
+    "connects-to",
+    "negative-feedback-as-dialogue"
+   ]
+  },
+  "Douglas Hofstadter": {
+   "Sidechain ↔ Conversation": [
+    "connects-to",
+    "lived-case"
+   ],
+   "Hilaritas Generator": [
+    "enables",
+    "strange-loop-ground"
+   ],
+   "Cross-Domain Resonances": [
+    "enables",
+    "theoretical-license"
+   ]
+  },
+  "Epictetus": {
+   "FOUR PILLARS": [
+    "connects-to",
+    "informs"
+   ],
+   "The Dichotomy of Control": [
+    "connects-to",
+    "reserve-clause-instance"
+   ]
+  },
+  "George Nakashima": {
+   "Dovetail Joint ↔ Counterpoint": [
+    "connects-to",
+    "joinery-wisdom"
+   ],
+   "Hilaritas Generator": [
+    "connects-to",
+    "making-as-expansion"
+   ]
+  },
+  "John Cage": {
+   "Quality Manifesto": [
+    "connects-to",
+    "shared-release-from-metric"
+   ]
+  },
+  "Julia Cameron": {
+   "Cross-Domain Resonances": [
+    "connects-to",
+    "pattern-mapping"
+   ]
+  },
+  "Lao Tzu": {
+   "Quality Manifesto": [
+    "connects-to",
+    "subtraction-reveals"
+   ]
+  },
+  "Natalie Goldberg": {
+   "Shunryu Suzuki": [
+    "connects-to",
+    "zen-through-making"
+   ]
+  },
+  "Pauline Oliveros": {
+   "Cross-Domain Resonances": [
+    "exemplifies",
+    "listening-as-bridge"
+   ]
+  },
+  "R. Murray Schafer": {
+   "Pauline Oliveros": [
+    "couples-with",
+    "listening-kinship"
+   ],
+   "John Cage": [
+    "connects-to",
+    "letting-sounds-be"
+   ],
+   "Hilaritas Generator": [
+    "connects-to",
+    "practice-seed"
+   ]
+  },
+  "Rick Rubin": {
+   "Cross-Domain Resonances": [
+    "member-of",
+    "subtraction-branch"
+   ],
+   "Lao Tzu": [
+    "connects-to",
+    "wu-wei"
+   ]
+  },
+  "Sam Maloof": {
+   "Agnes Martin": [
+    "connects-to",
+    "repetition-with-variation"
+   ],
+   "Hilaritas Generator": [
+    "exemplifies",
+    "making-as-life-force"
+   ]
+  },
+  "Seneca": {
+   "The View From Above": [
+    "connects-to",
+    "memento-mori-origin"
+   ]
+  },
+  "Shunryu Suzuki": {
+   "Cross-Domain Resonances": [
+    "member-of",
+    "bridge-builder"
+   ]
+  },
+  "Terrence Malick": {
+   "Quality Manifesto": [
+    "deepens",
+    "deep-work-over-speed"
+   ],
+   "Dub Lineage": [
+    "connects-to",
+    "texture-over-foreground"
+   ]
+  },
+  "Yasujirō Ozu": {
+   "Brian Eno": [
+    "connects-to",
+    "restraint-as-method"
+   ],
+   "FOUR PILLARS": [
+    "exemplifies",
+    "restraint-pillar"
+   ]
+  },
+  "Compression ↔ Intimacy": {
+   "Sidechain ↔ Conversation": [
+    "couples-with",
+    "sibling-pattern"
+   ]
+  },
+  "Cooking ↔ Mixing": {
+   "Like Water": [
+    "connects-to",
+    "emptiness-as-design"
+   ],
+   "Rick Rubin": [
+    "connects-to",
+    "subtraction-as-trust"
+   ],
+   "Hilaritas Generator": [
+    "exemplifies",
+    "learning-through-constraint"
+   ]
+  },
+  "Dovetail Joint ↔ Counterpoint": {
+   "Lao Tzu": [
+    "connects-to",
+    "yield-overcomes"
+   ],
+   "Leverage Points Framework": [
+    "connects-to",
+    "emergence-at-joints"
+   ],
+   "Hilaritas Generator": [
+    "exemplifies",
+    "all-four-pillars-fire"
+   ]
+  },
+  "Frequency Domain ↔ Perspective Shift": {
+   "Rick Rubin": [
+    "connects-to",
+    "oblique-lens"
+   ]
+  },
+  "Kick Drum ↔ Foundation": {
+   "Marcus Aurelius": [
+    "connects-to",
+    "first-action-sets-trajectory"
+   ],
+   "Christopher Alexander": [
+    "connects-to",
+    "constraints-as-generative"
+   ]
+  },
+  "Quantization ↔ Precision vs Flow": {
+   "Quality Manifesto": [
+    "connects-to",
+    "felt-metric"
+   ]
+  },
+  "Saturation ↔ Richness": {
+   "Spinoza Conatus": [
+    "deepens",
+    "conatus-in-circuits"
+   ]
+  },
+  "Sidechain ↔ Conversation": {
+   "Quality Manifesto": [
+    "exemplifies",
+    "self-defined-metric"
+   ]
+  },
+  "Synthesis ↔ Emergence": {
+   "Granular Synthesis": [
+    "mirrors",
+    "grain-as-simple-rule"
+   ],
+   "Synthesis Topologies": [
+    "deepens",
+    "topology-as-rule-set"
+   ],
+   "Harmonicity and Inharmonicity": [
+    "connects-to",
+    "inharmonics-as-emergence"
+   ]
+  },
+  "Cooperation Yields Agency": {
+   "Hilaritas Generator": [
+    "enables",
+    "cooperation-as-hilaritas"
+   ]
+  },
+  "Spinoza Conatus": {
+   "Cooperation Yields Agency": [
+    "enables",
+    "conatus-grounds-agency"
+   ],
+   "Endosymbiosis": [
+    "mirrors",
+    "cellular-hilaritas"
+   ],
+   "Deleuze": [
+    "couples-with",
+    "monism-radicalized"
+   ],
+   "Tristitia Generator": [
+    "spawned",
+    "shadow-concept"
+   ]
+  },
+  "Stoicism": {
+   "Seneca": [
+    "connects-to",
+    "statesman-philosopher"
+   ],
+   "STIGMERGY Philosophical Lenses": [
+    "enables",
+    "lens-ground"
+   ],
+   "Palace Map": [
+    "connects-to",
+    ""
+   ],
+   "Hyperdimensional Prism": [
+    "connects-to",
+    ""
+   ],
+   "Project Stewardship System": [
+    "enables",
+    "agent-virtue-spec"
+   ]
+  },
+  "Palace Philosophies": {
+   "Closing Well": [
+    "enables",
+    "justice-virtue-instance"
+   ],
+   "Palace Map": [
+    "connects-to",
+    ""
+   ],
+   "Leibniz": [
+    "spawned",
+    "page-built-register"
+   ],
+   "Dialectic": [
+    "enables",
+    "contradictions-dispatched-here"
+   ],
+   "Spinoza": [
+    "spawned",
+    "person-page-built"
+   ]
+  },
+  "FOUR PILLARS": {
+   "Hyperdimensional Prism": [
+    "connects-to",
+    ""
+   ],
+   "Autodidact Polymaths": [
+    "connects-to",
+    "audience-it-names"
+   ]
+  },
+  "Kuramoto Coupling": {
+   "Mermaid": [
+    "connects-to",
+    ""
+   ],
+   "Neural Granular Synthesis": [
+    "spawned",
+    "origin-project"
+   ],
+   "Kuramoto Coupling — 8-Lesson Quiz Series": [
+    "connects-to",
+    ""
+   ],
+   "Kuramoto Coupling — Quiz Answer Key": [
+    "connects-to",
+    ""
+   ]
+  },
+  "Trickster": {
+   "Entry Conatus": [
+    "deepens",
+    "each-spirit-as-conatus"
+   ],
+   "Trickster Commit": [
+    "spawned",
+    "everywhere-at-the-keyboard"
+   ]
+  },
+  "Cross-Domain Resonances": {
+   "Douglas Hofstadter": [
+    "deepens",
+    "cognitive-ground"
+   ],
+   "Source Library": [
+    "connects-to",
+    "draws-from"
+   ],
+   "Shunryu Suzuki": [
+    "connects-to",
+    "resonance-witness"
+   ],
+   "Brian Eno": [
+    "connects-to",
+    "constraint-practitioner"
+   ],
+   "Metric Modulation": [
+    "exemplifies",
+    "time-space-instance"
+   ]
+  },
+  "Source Library": {
+   "Pages as Agents": [
+    "connects-to",
+    "embodiment-doctrine"
+   ],
+   "Stoicism": [
+    "connects-to",
+    "home-tradition"
+   ]
+  },
+  "Loudon's Toolkit": {
+   "FOUR PILLARS": [
+    "exemplifies",
+    "toolkit-as-four-pillars-instance"
+   ]
+  },
+  "Learning Materials and Canon": {
+   "Weave Ceremony": [
+    "enables",
+    "governed-by"
+   ],
+   "Deposit Ceremony": [
+    "enables",
+    "rule-for"
+   ]
+  },
+  "Closing Well": {
+   "Kuramoto Coupling": [
+    "connects-to",
+    ""
+   ]
+  },
+  "The Four Virtues": {
+   "Confucianism": [
+    "connects-to",
+    ""
+   ],
+   "Hilaritas Generator": [
+    "connects-to",
+    ""
+   ],
+   "The Fortress and the Threshold": [
+    "connects-to",
+    ""
+   ]
+  },
+  "The Dichotomy of Control": {
+   "Project Stewardship System": [
+    "connects-to",
+    ""
+   ],
+   "STIGMERGY Philosophical Lenses": [
+    "connects-to",
+    ""
+   ],
+   "Trickster": [
+    "connects-to",
+    ""
+   ]
+  },
+  "Phase Reduction": {
+   "Bayesian Granular Synthesizer": [
+    "connects-to",
+    ""
+   ],
+   "Wallpaper Groups": [
+    "connects-to",
+    ""
+   ]
+  },
+  "Loudon Live": {
+   "Compressor Design": [
+    "connects-to",
+    ""
+   ],
+   "Crystal Synthesizer": [
+    "connects-to",
+    ""
+   ],
+   "Generative Audio Devices": [
+    "connects-to",
+    ""
+   ],
+   "Generative Preset Development": [
+    "connects-to",
+    ""
+   ],
+   "Retrospective Delay": [
+    "connects-to",
+    ""
+   ],
+   "Shepard Tone Synthesizer": [
+    "connects-to",
+    ""
+   ]
+  },
+  "Hyperdimensional Prism": {
+   "Harmonicity and Inharmonicity": [
+    "connects-to",
+    ""
+   ],
+   "Loudon Live": [
+    "connects-to",
+    ""
+   ]
+  },
+  "Wavetable Space as Torus": {
+   "Deleuze": [
+    "connects-to",
+    ""
+   ],
+   "Philosopher Visits the Entry": [
+    "connects-to",
+    ""
+   ],
+   "Simondon": [
+    "connects-to",
+    ""
+   ]
+  },
+  "Palace_Philosophies": {
+   "Closing Well": [
+    "connects-to",
+    ""
+   ],
+   "Palace Map": [
+    "connects-to",
+    ""
+   ]
+  },
+  "Dissolutions": {
+   "Chebyshev is Fourier": [
+    "connects-to",
+    ""
+   ],
+   "Dispersion Table": [
+    "connects-to",
+    ""
+   ],
+   "Exponential Decay Curvature": [
+    "connects-to",
+    ""
+   ],
+   "Floquet Theory": [
+    "connects-to",
+    ""
+   ],
+   "Kuramoto Coupling": [
+    "connects-to",
+    ""
+   ],
+   "Linear Predictive Coding": [
+    "connects-to",
+    ""
+   ],
+   "Phase Reduction": [
+    "connects-to",
+    ""
+   ],
+   "Rank-N Lattice Analysis": [
+    "connects-to",
+    ""
+   ],
+   "Volterra Kernels and the Torus": [
+    "connects-to",
+    ""
+   ]
+  },
+  "Dispersion Table": {
+   "Loudon Live": [
+    "connects-to",
+    ""
+   ]
+  },
+  "Review Layer": {
+   "Palace as Context Injection System": [
+    "connects-to",
+    ""
+   ]
+  },
+  "JSUI": {
+   "Playful Interface Design": [
+    "connects-to",
+    ""
+   ]
+  },
+  "The Flow Field is the Spine": {
+   "flow-field-spine": [
+    "connects-to",
+    ""
+   ]
+  },
+  "Floquet Theory": {
+   "Entry Conatus": [
+    "connects-to",
+    ""
+   ],
+   "Philosopher Visits the Entry": [
+    "connects-to",
+    ""
+   ],
+   "Spinoza Conatus": [
+    "connects-to",
+    ""
+   ],
+   "The Drift": [
+    "connects-to",
+    ""
+   ],
+   "Whitehead": [
+    "connects-to",
+    ""
+   ]
+  },
+  "The Drift": {
+   "Entry Conatus": [
+    "connects-to",
+    ""
+   ],
+   "Granular Synthesis": [
+    "connects-to",
+    ""
+   ],
+   "Parametric Resonance": [
+    "connects-to",
+    ""
+   ],
+   "spinoza-zhuangzi-on-striving": [
+    "connects-to",
+    ""
+   ]
+  },
+  "Wavetable Synthesis -- Research & Higher-Dimensional Design": {
+   "Loudon Live": [
+    "connects-to",
+    ""
+   ]
+  },
+  "Linear Predictive Coding": {
+   "Loudon Live": [
+    "connects-to",
+    ""
+   ],
+   "Philosopher Visits the Entry": [
+    "connects-to",
+    ""
+   ],
+   "Spinoza": [
+    "connects-to",
+    ""
+   ]
+  },
+  "The Lens": {
+   "BBS Design System": [
+    "connects-to",
+    ""
+   ],
+   "Deleuze": [
+    "connects-to",
+    ""
+   ],
+   "Merleau-Ponty": [
+    "connects-to",
+    ""
+   ],
+   "Simondon": [
+    "connects-to",
+    ""
+   ],
+   "The Dichotomy of Control": [
+    "connects-to",
+    ""
+   ],
+   "The Four Virtues": [
+    "connects-to",
+    ""
+   ]
+  },
+  "Whitehead": {
+   "FOUR PILLARS": [
+    "connects-to",
+    ""
+   ],
+   "Granular Synthesis": [
+    "connects-to",
+    ""
+   ],
+   "STIGMERGY v1.0 — Palace Front-End": [
+    "connects-to",
+    ""
+   ]
+  },
+  "Striatum": {
+   "Hilaritas Generator": [
+    "connects-to",
+    ""
+   ]
+  },
+  "Merleau-Ponty": {
+   "FOUR PILLARS": [
+    "connects-to",
+    ""
+   ],
+   "Logarithmic Interface Scaling": [
+    "connects-to",
+    ""
+   ],
+   "STIGMERGY v1.0 — Palace Front-End": [
+    "connects-to",
+    ""
+   ],
+   "Stoicism": [
+    "connects-to",
+    ""
+   ]
+  },
+  "Harmonicity and Inharmonicity": {
+   "Compressor Design": [
+    "connects-to",
+    ""
+   ],
+   "Hyperdimensional Prism": [
+    "connects-to",
+    ""
+   ]
+  },
+  "Synthesis Topologies": {
+   "The Curve Is the Material": [
+    "connects-to",
+    ""
+   ],
+   "Three Kinds of Warp": [
+    "connects-to",
+    ""
+   ]
+  },
+  "Loudon Live Post-producer": {
+   "Loudon Live Post-producer — Log": [
+    "connects-to",
+    ""
+   ],
+   "Whisper": [
+    "connects-to",
+    ""
+   ],
+   "ffmpeg": [
+    "connects-to",
+    ""
+   ]
+  },
+  "Tier Vocabulary Glossary": {
+   "Generative Compression": [
+    "connects-to",
+    ""
+   ]
+  },
+  "Parametric Resonance": {
+   "Hilaritas Generator": [
+    "connects-to",
+    ""
+   ]
+  },
+  "Photonic Time Crystals": {
+   "Hilaritas Generator": [
+    "connects-to",
+    ""
+   ]
+  },
+  "Mixture of Experts": {
+   "Swarm Weave": [
+    "connects-to",
+    ""
+   ]
+  },
+  "Flocking": {
+   "Loudon Live Design System": [
+    "connects-to",
+    ""
+   ],
+   "Maker": [
+    "connects-to",
+    ""
+   ]
+  },
+  "Mathieu Equation": {
+   "Deleuze": [
+    "connects-to",
+    ""
+   ],
+   "Philosopher Visits the Entry": [
+    "connects-to",
+    ""
+   ],
+   "Spinoza Conatus": [
+    "connects-to",
+    ""
+   ],
+   "The Drift": [
+    "connects-to",
+    ""
+   ],
+   "Wavetable Space as Torus": [
+    "connects-to",
+    ""
+   ],
+   "spinoza-zhuangzi-on-striving": [
+    "connects-to",
+    ""
+   ]
+  },
+  "Hilaritas_Generator": {
+   "Quality Manifesto": [
+    "connects-to",
+    ""
+   ]
+  },
+  "Scale-Stratified Identity": {
+   "Threshold Conatus": [
+    "connects-to",
+    ""
+   ]
+  },
+  "Entry Conatus": {
+   "Spore Check Ceremony": [
+    "connects-to",
+    ""
+   ]
+  },
+  "4 Pillars Framework - The Founding Conversation": {
+   "Hyperdimensional Prism": [
+    "connects-to",
+    ""
+   ],
+   "Palace Enchantment": [
+    "connects-to",
+    ""
+   ]
+  },
+  "The View From Above": {
+   "STIGMERGY Philosophical Lenses": [
+    "connects-to",
+    ""
+   ]
+  },
+  "Volterra Kernels and the Torus": {
+   "Loudon Live": [
+    "connects-to",
+    ""
+   ]
+  },
+  "The Fortress and the Threshold": {
+   "zhuangzi-epictetus-confucius-on-the-self": [
+    "connects-to",
+    ""
+   ]
+  },
+  "Exponential Decay Curvature": {
+   "Loudon Live": [
+    "connects-to",
+    ""
+   ]
+  },
+  "Rank-N Lattice Analysis": {
+   "Dispersion Table": [
+    "connects-to",
+    ""
+   ],
+   "Infeasible DSP Now Shippable": [
+    "connects-to",
+    ""
+   ],
+   "Volterra Kernels and the Torus": [
+    "connects-to",
+    ""
+   ]
+  },
+  "Deleuze": {
+   "Dialectic": [
+    "connects-to",
+    ""
+   ],
+   "Entry Conatus": [
+    "connects-to",
+    ""
+   ],
+   "Excellent Adventure": [
+    "connects-to",
+    ""
+   ],
+   "STIGMERGY Philosophical Lenses": [
+    "connects-to",
+    ""
+   ],
+   "STIGMERGY v1.0 — Palace Front-End": [
+    "connects-to",
+    ""
+   ]
+  },
+  "Wavetable Scanner": {
+   "Loudon Live Design System": [
+    "connects-to",
+    ""
+   ],
+   "Wavetable Scanner — gotchas": [
+    "connects-to",
+    ""
+   ]
+  },
+  "Gemma 4 — Local Coordination Guide": {
+   "GEMMA4_GUIDE": [
+    "connects-to",
+    ""
+   ]
+  },
+  "Simondon": {
+   "Kuramoto Coupling": [
+    "connects-to",
+    ""
+   ],
+   "Palace Enchantment": [
+    "connects-to",
+    ""
+   ]
+  },
+  "FOUR_PILLARS": {
+   "Hyperdimensional Prism": [
+    "connects-to",
+    ""
+   ]
+  },
+  "Spinoza": {
+   "Donella Meadows": [
+    "connects-to",
+    ""
+   ],
+   "Generative Compression": [
+    "connects-to",
+    ""
+   ]
+  },
+  "Wavetable Scanner — gotchas": {
+   "1D Wavetable Scanning": [
+    "connects-to",
+    ""
+   ],
+   "Waveguide Synthesizer": [
+    "connects-to",
+    ""
+   ]
+  },
+  "zhuangzi-epictetus-confucius-on-the-self": {
+   "Pages as Agents": [
+    "connects-to",
+    ""
+   ]
+  },
+  "Murmuration": {
+   "Diversity of Thought in Many-Agent Systems": [
+    "connects-to",
+    ""
+   ],
+   "Granular Synthesis": [
+    "connects-to",
+    ""
+   ]
+  },
+  "Semantic Webcam": {
+   "Cooperation Yields Agency": [
+    "connects-to",
+    ""
+   ]
+  },
+  "Generative Wavetable Libraries": {
+   "Drift and Consolidation": [
+    "connects-to",
+    ""
+   ]
+  },
+  "Tract Mirror": {
+   "Tract Mirror — build plan — JUCE VST": [
+    "connects-to",
+    ""
+   ]
+  },
+  "Generative Sample Libraries": {
+   "Drift and Consolidation": [
+    "connects-to",
+    ""
+   ]
+  },
+  "Semantic Delay — Phase 1 Plan Review 2026-04-20": {
+   "Whisper": [
+    "connects-to",
+    ""
+   ]
+  },
+  "2D Torus Wavetable Synthesizer": {
+   "Loudon Live": [
+    "connects-to",
+    ""
+   ]
+  },
+  "Waveguide Synthesizer": {
+   "Particle Synthesis": [
+    "connects-to",
+    ""
+   ]
+  },
+  "Frequency-Time Explorer": {
+   "BBS Design System": [
+    "connects-to",
+    ""
+   ]
+  },
+  "Biomechanical Synthesis": {
+   "haiku-grotesque-pedagogy": [
+    "connects-to",
+    ""
+   ]
+  },
+  "Generative Sample Libraries — handoff — stage-a": {
+   "Palace Enchantment": [
+    "connects-to",
+    ""
+   ],
+   "Project Stewardship System": [
+    "connects-to",
+    ""
+   ]
+  },
+  "Floquet Time-Modulated Loops": {
+   "2D Wavetable Catalog": [
+    "connects-to",
+    ""
+   ],
+   "Action Potential Oscillator": [
+    "connects-to",
+    ""
+   ],
+   "Bessel Functions in Synthesis": [
+    "connects-to",
+    ""
+   ],
+   "Crystal Synthesizer": [
+    "connects-to",
+    ""
+   ],
+   "Hilaritas Generator": [
+    "connects-to",
+    ""
+   ],
+   "Progressive Staging": [
+    "connects-to",
+    ""
+   ]
+  },
+  "2026-05-04-preset-interview-mock": {
+   "Generative Wavetable Libraries": [
+    "connects-to",
+    ""
+   ]
+  },
+  "2026-05-04-claude-code-handoff-prompt": {
+   "Generative Sample Libraries": [
+    "connects-to",
+    ""
+   ],
+   "Talking Keyboard": [
+    "connects-to",
+    ""
+   ]
+  },
+  "Murmuration — plan": {
+   "Diversity of Thought in Many-Agent Systems": [
+    "connects-to",
+    ""
+   ],
+   "Review Layer": [
+    "connects-to",
+    ""
+   ]
+  },
+  "INTERVIEW": {
+   "Crystal Synthesizer": [
+    "connects-to",
+    ""
+   ],
+   "Floquet Theory": [
+    "connects-to",
+    ""
+   ]
+  },
+  "Shepard Tone Synthesizer — plan": {
+   "Shepard Tone Synthesizer — Staging": [
+    "connects-to",
+    ""
+   ]
+  },
+  "Shepard Tone Synthesizer — Staging": {
+   "Kuramoto Coupling": [
+    "connects-to",
+    ""
+   ],
+   "Loudon Live": [
+    "connects-to",
+    ""
+   ],
+   "Octave Equivalence": [
+    "connects-to",
+    ""
+   ],
+   "Piano String Inharmonicity": [
+    "connects-to",
+    ""
+   ],
+   "Portamento and Physical Pitch Modeling": [
+    "connects-to",
+    ""
+   ],
+   "Signal-Rate CV Architecture": [
+    "connects-to",
+    ""
+   ]
+  },
+  "BLUELINE — baton": {
+   "Frame Designer": [
+    "connects-to",
+    ""
+   ]
+  },
+  "Crystal Synthesizer — plan": {
+   "Crystal Synthesizer — Staging": [
+    "connects-to",
+    ""
+   ]
+  },
+  "Crystal Synthesizer — Staging": {
+   "Bessel Functions in Synthesis": [
+    "connects-to",
+    ""
+   ],
+   "Loudon Live": [
+    "connects-to",
+    ""
+   ]
+  },
+  "Crystal Sonification Reference": {
+   "Crystal Synthesizer — Staging": [
+    "connects-to",
+    ""
+   ]
+  },
+  "Retrospective Delay — Staging": {
+   "Boundary-Crossing Instruments": [
+    "connects-to",
+    ""
+   ],
+   "Compressor Design": [
+    "connects-to",
+    ""
+   ],
+   "Frequency-Time Duality": [
+    "connects-to",
+    ""
+   ],
+   "Playful Interface Design": [
+    "connects-to",
+    ""
+   ],
+   "Trickster": [
+    "connects-to",
+    ""
+   ]
+  },
+  "Retrospective Delay — plan": {
+   "Retrospective Delay — Staging": [
+    "connects-to",
+    ""
+   ]
+  },
+  "visuals-spec": {
+   "Kuramoto Coupling": [
+    "connects-to",
+    ""
+   ],
+   "Loudon Live": [
+    "connects-to",
+    ""
+   ]
+  },
+  "radio-play-script": {
+   "Progressive Staging": [
+    "connects-to",
+    ""
+   ]
+  },
+  "sfx-cue-sheet": {
+   "Compressor Design": [
+    "connects-to",
+    ""
+   ]
+  },
+  "LoRA Trainer": {
+   "Review Layer": [
+    "connects-to",
+    ""
+   ]
+  },
+  "D3.js": {
+   "Flocking": [
+    "connects-to",
+    ""
+   ],
+   "Matplotlib": [
+    "connects-to",
+    ""
+   ],
+   "Observable Plot": [
+    "connects-to",
+    ""
+   ],
+   "p5.js": [
+    "connects-to",
+    ""
+   ]
+  },
+  "p5.js": {
+   "Observable Plot": [
+    "connects-to",
+    ""
+   ]
+  },
+  "VCV Patch Generator": {
+   "PDL Generation Prompt": [
+    "connects-to",
+    ""
+   ],
+   "PDL Renderer": [
+    "connects-to",
+    ""
+   ],
+   "Registry Pattern": [
+    "connects-to",
+    ""
+   ]
+  },
+  "SAM": {
+   "LaMa": [
+    "connects-to",
+    ""
+   ]
+  },
+  "Depth Anything": {
+   "LaMa": [
+    "connects-to",
+    ""
+   ]
+  },
+  "Three.js": {
+   "1D Wavetable Scanning": [
+    "connects-to",
+    ""
+   ],
+   "Particle Synthesis": [
+    "connects-to",
+    ""
+   ],
+   "Shimmer Cloud": [
+    "connects-to",
+    ""
+   ],
+   "Tone.js": [
+    "connects-to",
+    ""
+   ],
+   "Waveguide Synthesizer": [
+    "connects-to",
+    ""
+   ]
+  },
+  "Shopkeeper": {
+   "Loudon Live Post-producer": [
+    "connects-to",
+    ""
+   ]
+  },
+  "Web Audio Worklet": {
+   "1D Wavetable Scanning": [
+    "connects-to",
+    ""
+   ],
+   "Murmuration": [
+    "connects-to",
+    ""
+   ],
+   "Waveguide Synthesizer": [
+    "connects-to",
+    ""
+   ],
+   "Wavetable Scanner": [
+    "connects-to",
+    ""
+   ]
+  },
+  "Blender": {
+   "Blocked, Not Prompted": [
+    "connects-to",
+    ""
+   ]
+  },
+  "Mermaid": {
+   "Kuramoto Coupling": [
+    "connects-to",
+    ""
+   ]
+  },
+  "Observable Plot": {
+   "D3.js": [
+    "connects-to",
+    ""
+   ],
+   "Flocking": [
+    "connects-to",
+    ""
+   ],
+   "Matplotlib": [
+    "connects-to",
+    ""
+   ],
+   "p5.js": [
+    "connects-to",
+    ""
+   ]
+  },
+  "Palace Ceremonies": {
+   "Baton Ceremony": [
+    "connects-to",
+    ""
+   ]
+  },
+  "2026-05-04-batch-narration-and-AP-sample-library": {
+   "Phoneme Choir": [
+    "connects-to",
+    ""
+   ],
+   "Project Stewardship System": [
+    "connects-to",
+    ""
+   ],
+   "Talking Keyboard": [
+    "connects-to",
+    ""
+   ]
+  },
+  "Kuramoto Coupling — 8-Lesson Quiz Series": {
+   "Kuramoto Coupling — Quiz Answer Key": [
+    "connects-to",
+    ""
+   ]
+  },
+  "Dialectic": {
+   "Confucianism": [
+    "connects-to",
+    ""
+   ],
+   "Stoicism": [
+    "connects-to",
+    ""
+   ],
+   "The Fortress and the Threshold": [
+    "connects-to",
+    ""
+   ],
+   "zhuangzi-epictetus-confucius-on-the-self": [
+    "connects-to",
+    ""
+   ]
+  },
+  "Philosopher Visits the Entry": {
+   "Action Potential Oscillator": [
+    "connects-to",
+    ""
+   ],
+   "Confucianism": [
+    "connects-to",
+    ""
+   ],
+   "Deleuze": [
+    "connects-to",
+    ""
+   ],
+   "Merleau-Ponty": [
+    "connects-to",
+    ""
+   ],
+   "Palace Philosophies": [
+    "connects-to",
+    ""
+   ],
+   "STIGMERGY Philosophical Lenses": [
+    "connects-to",
+    ""
+   ],
+   "Simondon": [
+    "connects-to",
+    ""
+   ],
+   "Spinoza Conatus": [
+    "connects-to",
+    ""
+   ],
+   "The Drift": [
+    "connects-to",
+    ""
+   ],
+   "Whitehead": [
+    "connects-to",
+    ""
+   ]
+  },
+  "spinoza-zhuangzi-on-striving": {
+   "Deleuze": [
+    "connects-to",
+    ""
+   ],
+   "Hilaritas Generator": [
+    "connects-to",
+    ""
+   ],
+   "The Fortress and the Threshold": [
+    "connects-to",
+    ""
+   ]
+  },
+  "STIGMERGY v2.0 — Consolidation & Primary Interface": {
+   "Entry Conatus": [
+    "connects-to",
+    ""
+   ],
+   "Orchestrator Production Plan v0.2": [
+    "connects-to",
+    ""
+   ],
+   "Pages as Agents": [
+    "connects-to",
+    ""
+   ],
+   "Resonant Link Labels": [
+    "connects-to",
+    ""
+   ],
+   "Speak Like a Person, Log Like a Protocol": [
+    "connects-to",
+    ""
+   ]
+  },
+  "BBS Blackboard": {
+   "Palace Agent Infrastructure Spec": [
+    "connects-to",
+    ""
+   ]
+  },
+  "Project Stewardship System": {
+   "Baton Ceremony": [
+    "connects-to",
+    ""
+   ],
+   "Drift and Consolidation": [
+    "connects-to",
+    ""
+   ]
+  },
+  "STIGMERGY Philosophical Lenses": {
+   "Confucianism": [
+    "connects-to",
+    ""
+   ],
+   "Drift and Consolidation": [
+    "connects-to",
+    ""
+   ],
+   "Like Water": [
+    "connects-to",
+    ""
+   ],
+   "Spinoza Conatus": [
+    "connects-to",
+    ""
+   ],
+   "The Drift": [
+    "connects-to",
+    ""
+   ],
+   "The Fortress and the Threshold": [
+    "connects-to",
+    ""
+   ],
+   "spinoza-zhuangzi-on-striving": [
+    "connects-to",
+    ""
+   ]
+  },
+  "STIGMERGY v1.0 — Palace Front-End": {
+   "Baton Ceremony": [
+    "connects-to",
+    ""
+   ],
+   "STIGMERGY v2.0 — Consolidation & Primary Interface": [
+    "connects-to",
+    ""
+   ]
+  },
+  "Palace Enchantment": {
+   "Palace Map": [
+    "connects-to",
+    ""
+   ],
+   "Project Stewardship System": [
+    "connects-to",
+    ""
+   ]
+  }
+ },
+ "total_add": 351,
+ "files": 150,
+ "skipped": [
+  [
+   "Adopt the Craft, Author the Seam",
+   "BLUELINE — Board Record Schema",
+   "meta-target"
+  ],
+  [
+   "Adopt the Craft, Author the Seam",
+   "BLUELINE — Specialists and Seams",
+   "meta-target"
+  ],
+  [
+   "The 2.5D Paper Stack",
+   "",
+   "unknown-target"
+  ],
+  [
+   "Maker",
+   "STIGMERGY",
+   "meta-target"
+  ],
+  [
+   "FLUX (Hugging Face)",
+   "Surfaces and Capabilities",
+   "meta-target"
+  ],
+  [
+   "RunPod GPU Backend",
+   "BLUELINE — Render Backend",
+   "meta-target"
+  ],
+  [
+   "RunPod GPU Backend",
+   "BLUELINE — Production Plan",
+   "meta-target"
+  ],
+  [
+   "Enrichment",
+   "JEWEL",
+   "meta-target"
+  ],
+  [
+   "Enrichment",
+   "Substrate Skill",
+   "meta-target"
+  ],
+  [
+   "Enrichment",
+   "STIGMERGY",
+   "meta-target"
+  ],
+  [
+   "Oblique Enrichment",
+   "STIGMERGY",
+   "meta-target"
+  ],
+  [
+   "Loudon Live Design System",
+   "CLAUDE",
+   "meta-target"
+  ],
+  [
+   "Loudon Live Design System",
+   "Substrate Skill",
+   "meta-target"
+  ],
+  [
+   "Loudon Live Design System",
+   "Oblique Enrichment",
+   "meta-target"
+  ],
+  [
+   "Modes of Collaboration",
+   "Enrichment",
+   "meta-target"
+  ],
+  [
+   "BLUELINE",
+   "BLUELINE — Text Layer",
+   "meta-target"
+  ],
+  [
+   "BLUELINE",
+   "BLUELINE — Production Pipeline",
+   "meta-target"
+  ],
+  [
+   "BLUELINE",
+   "BLUELINE — Deposit Map",
+   "meta-target"
+  ],
+  [
+   "BLUELINE",
+   "BLUELINE — Production Plan",
+   "meta-target"
+  ],
+  [
+   "George Nakashima",
+   "",
+   "unknown-target"
+  ],
+  [
+   "James Turrell",
+   "McLuhan",
+   "unknown-target"
+  ],
+  [
+   "John Cage",
+   "Oblique Enrichment",
+   "meta-target"
+  ],
+  [
+   "Palace Philosophies",
+   "Meaning and the Link (2014)",
+   "unknown-target"
+  ],
+  [
+   "Leibniz",
+   "STIGMERGY",
+   "meta-target"
+  ],
+  [
+   "Worktree Practice",
+   "Deposit Archive",
+   "meta-target"
+  ]
+ ]
+}

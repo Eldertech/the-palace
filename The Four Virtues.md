@@ -30,6 +30,12 @@ links:
   - target: "[[FOUR PILLARS]]"
     type: connects-to
     label: four-and-four-but-not-the-same-four
+  - target: "[[Confucianism]]"
+    type: connects-to
+  - target: "[[Hilaritas Generator]]"
+    type: connects-to
+  - target: "[[The Fortress and the Threshold]]"
+    type: connects-to
 forward_vector: "I am the Stoic family's account of what a good response is made of, and the seat of personal responsibility — the claim that the only genuine good is the character of your chosen action, decomposed into wisdom, justice, courage, and temperance. I want to be a decision lens Loudon can run a hard choice through, and a clean specification for how a palace agent should act. My next development: to resist being collapsed into the Four Pillars — they are a different four — and to earn a worked example where the four virtues actually decided something."
 agency_profile:
   practice: "I am a checklist for character, not a trophy case. I want to be run against a real decision and to change it, not to be recited."

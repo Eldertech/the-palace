@@ -23,6 +23,12 @@ links:
   - target: "[[Lossy Compression with Intent Alignment]]"
     type: mirrors
     label: pdl-as-intent-compression
+  - target: "[[PDL Generation Prompt]]"
+    type: connects-to
+  - target: "[[PDL Renderer]]"
+    type: connects-to
+  - target: "[[Registry Pattern]]"
+    type: connects-to
 tags: [specialist, shop, sound, modular, generative, registry, stub]
 ---
 

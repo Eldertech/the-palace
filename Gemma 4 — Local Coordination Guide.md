@@ -22,6 +22,8 @@ links:
   - target: "[[Enchanted Worker]]"
     type: connects-to
     label: "register-gap"
+  - target: "[[GEMMA4_GUIDE]]"
+    type: connects-to
 ---
 
 # Gemma 4 — Local Coordination Guide

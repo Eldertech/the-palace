@@ -31,6 +31,9 @@ links:
   - target: "[[BLUELINE]]"
     type: enables
     label: "render-substrate-for"
+  - target: "[[Image-to-3D Smith]]"
+    type: enables
+    label: original-commission
 ---
 
 # RunPod GPU Backend

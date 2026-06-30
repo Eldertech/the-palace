@@ -18,6 +18,8 @@ links:
   - target: "[[Loudon Live]]"
     type: enables
     label: 30-min-radio-play-format
+  - target: "[[Progressive Staging]]"
+    type: connects-to
 ---
 
 # Blood Compressor — Radio-Play Lesson Script

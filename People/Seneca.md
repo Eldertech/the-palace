@@ -27,6 +27,9 @@ links:
   - target: "[[Quality Manifesto]]"
     type: connects-to
     label: time-consciousness
+  - target: "[[The View From Above]]"
+    type: connects-to
+    label: memento-mori-origin
 ---
 
 # Seneca

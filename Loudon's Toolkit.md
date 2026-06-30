@@ -28,6 +28,9 @@ links:
   - target: "[[Toolkit — Audio Plugins]]"
     type: connects-to
     label: subcategory
+  - target: "[[FOUR PILLARS]]"
+    type: exemplifies
+    label: toolkit-as-four-pillars-instance
 forward_vector: Become a complete, navigable map of every instrument, tool, and environment Loudon uses — giving any agent immediate orientation in the physical and digital ecosystem from which the work emerges.
 ---
 

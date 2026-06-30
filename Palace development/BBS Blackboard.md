@@ -50,6 +50,8 @@ links:
   - target: "[[Semantic Webcam]]"
     type: connects-to
     label: stigmergy-surface
+  - target: "[[Palace Agent Infrastructure Spec]]"
+    type: connects-to
 ---
 
 # BBS Blackboard

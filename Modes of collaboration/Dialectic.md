@@ -25,6 +25,14 @@ links:
   - target: "[[Mixture of Experts]]"
     type: mirrors
     label: multi-expert-with-cross-talk
+  - target: "[[Confucianism]]"
+    type: connects-to
+  - target: "[[Stoicism]]"
+    type: connects-to
+  - target: "[[The Fortress and the Threshold]]"
+    type: connects-to
+  - target: "[[zhuangzi-epictetus-confucius-on-the-self]]"
+    type: connects-to
 forward_vector: "I want to become a fully documented, executable method — precise enough that any agent can initiate a Dialectic without having participated in one before. My next development: a protocol document specifying how to choose the council (how many voices, which traditions, what selection criteria), how to research each voice before embodying it, and how to know when the dialogue has done its work versus when it has merely produced a summary of competing positions."
 ---
 

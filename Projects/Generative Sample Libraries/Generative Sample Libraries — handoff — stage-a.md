@@ -5,6 +5,10 @@ links:
   - target: "[[Generative Sample Libraries]]"
     type: connects-to
     label: handoff-for
+  - target: "[[Palace Enchantment]]"
+    type: connects-to
+  - target: "[[Project Stewardship System]]"
+    type: connects-to
 forward_vector: "I carry the Stage A pilot handoff for the Generative Sample Libraries steward — the cycle-5-closed state for whoever fires cycle 6. Relocated into the bundle by the Machinery/Content Split (was a stray in _ops); I am consumed on pickup and then archived."
 ---
 

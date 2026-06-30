@@ -15,6 +15,8 @@ links:
   - { target: "[[Maker]]", type: connects-to, label: directed-by }
   - { target: "[[Line-Art Layer Decomposition]]", type: connects-to, label: the-surprise-win }
   - { target: "[[SAM]]", type: connects-to, label: a-second-route-to-the-figure }
+  - target: "[[LaMa]]"
+    type: connects-to
 tags: [specialist, shop, perception, depth, decomposition, local]
 ---
 

@@ -47,6 +47,10 @@ links:
   - target: "[[Dissolutions]]"
     type: member-of
     label: one-object-two-doorways
+  - target: "[[Bayesian Granular Synthesizer]]"
+    type: connects-to
+  - target: "[[Wallpaper Groups]]"
+    type: connects-to
 forward_vector: "I want to be the entry that names the mechanism connecting Floquet and Kuramoto out loud — phase reduction is why a population of oscillators can be described by phase alone — and to make the Phase Response Curve a designed control object in a coupled-grain instrument. I also want to hold the meta-observation that Loudon's intuitions about framework-kinship keep getting confirmed."
 ---
 # Phase Reduction

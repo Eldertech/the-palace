@@ -28,6 +28,9 @@ links:
   - target: "[[Flocking]]"
     type: mirrors
     label: local-rules-global-feel
+  - target: "[[Quality Manifesto]]"
+    type: connects-to
+    label: felt-metric
 ---
 
 # Quantization ↔ Precision vs Flow

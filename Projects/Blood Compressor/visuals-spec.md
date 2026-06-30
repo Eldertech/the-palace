@@ -18,6 +18,10 @@ links:
   - target: "[[Shop/Manim CE]]"
     type: enables
     label: dispatch-target-math-motion
+  - target: "[[Kuramoto Coupling]]"
+    type: connects-to
+  - target: "[[Loudon Live]]"
+    type: connects-to
 sibling: "[[radio-play-script]]"
 sibling: "[[sfx-cue-sheet]]"
 ---

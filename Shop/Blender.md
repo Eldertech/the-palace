@@ -17,6 +17,8 @@ links:
   - { target: "[[Shop/Three.js]]", type: connects-to, label: complement-to }
   - { target: "[[BLUELINE]]", type: connects-to, label: commissioned-by }
   - { target: "[[Shop/Blender/toyxyz-conditioning-recipe]]", type: connects-to, label: recipe }
+  - target: "[[Blocked, Not Prompted]]"
+    type: connects-to
 tags: [specialist, shop, 3d, blender, blocking, render, local]
 ---
 

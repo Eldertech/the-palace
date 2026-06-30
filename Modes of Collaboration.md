@@ -35,6 +35,12 @@ links:
   - target: "[[Modes of Collaboration — Context]]"
     type: connects-to
     label: context-companion
+  - target: "[[Philosopher Visits the Entry]]"
+    type: connects-to
+    label: sibling-mode
+  - target: "[[DSP Frameworks]]"
+    type: connects-to
+    label: exemplifies-domain
 forward_vector: "I research, analyze, develop, name, document and make choosable distinct rhythms of human & AI interactions and AI & AI interactions."
 ---
 

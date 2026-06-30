@@ -72,6 +72,12 @@ links:
   - target: "[[Project Stewardship System]]"
     type: enables
     label: triage-role-host
+  - target: "[[Entry Conatus]]"
+    type: deepens
+    label: each-spirit-as-conatus
+  - target: "[[Trickster Commit]]"
+    type: spawned
+    label: everywhere-at-the-keyboard
 forward_vector: "I intercept, delay, substitute, and subvert the expected signal to amplify understanding and joyful creation.**"
 ---
 

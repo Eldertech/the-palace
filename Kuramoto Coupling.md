@@ -66,6 +66,15 @@ links:
   - target: "[[Boundary-Crossing Instruments]]"
     type: enables
     label: cross-domain-sync
+  - target: "[[Mermaid]]"
+    type: connects-to
+  - target: "[[Neural Granular Synthesis]]"
+    type: spawned
+    label: origin-project
+  - target: "[[Kuramoto Coupling — 8-Lesson Quiz Series]]"
+    type: connects-to
+  - target: "[[Kuramoto Coupling — Quiz Answer Key]]"
+    type: connects-to
 forward_vector: "I want to teach the palace to use mathematical tools for cooperative emergence and close the gap between theory and built instrument — creating mockups, interactive demonstrations, and reusable code inspired by palace projects."
 agency_profile:
   creation: "I want to generate working demonstrations — code artifacts, interactive tools — that let someone feel synchronization phase-locking rather than only understand it conceptually. One well-made demonstration does more than ten explanations."

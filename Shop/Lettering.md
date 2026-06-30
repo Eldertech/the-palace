@@ -24,6 +24,12 @@ links:
   - target: "[[BLUELINE — Text Layer]]"
     type: connects-to
     label: the-spec
+  - target: "[[Steer the Generator]]"
+    type: exemplifies
+    label: control-not-prompt
+  - target: "[[Graphic Storytelling]]"
+    type: enables
+    label: letters-the-voices
 ---
 
 # Shop/Lettering — *the emotional-text renderer*

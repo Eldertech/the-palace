@@ -22,6 +22,12 @@ links:
   - target: "[[Shop/Lettering]]"
     type: spawned
     label: the-renderer
+  - target: "[[Graphic Storytelling]]"
+    type: emerged-from
+    label: inherited-grammar
+  - target: "[[Language as a Tonal Medium]]"
+    type: couples-with
+    label: letter-as-tone
 ---
 
 # Typography as Meaning

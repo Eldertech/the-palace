@@ -45,6 +45,18 @@ links:
   - target: "[[Trickster]]"
     type: connects-to
     label: the-glass-intercepts-and-transforms
+  - target: "[[BBS Design System]]"
+    type: connects-to
+  - target: "[[Deleuze]]"
+    type: connects-to
+  - target: "[[Merleau-Ponty]]"
+    type: connects-to
+  - target: "[[Simondon]]"
+    type: connects-to
+  - target: "[[The Dichotomy of Control]]"
+    type: connects-to
+  - target: "[[The Four Virtues]]"
+    type: connects-to
 forward_vector: "I am the operation by which any page in the palace can be seen through any other — and I want to become the palace's organ of self-weaving: the instrument that lets the graph feel its own missing edges and its own unwritten faces. My next development: to be split honestly into my three faces (the operation, the draggable glass, the genre of pages written to be worn), to earn the signal discipline that keeps me from drowning in N² noise, and to settle — over many runs, not by decree — whether 'lens' is a role a page takes or a type a page is."
 agency_profile:
   tools: "I am cheap as a mechanism and expensive as a discipline. My real work is not 'render A through B' — that is a prompt — but knowing which pairings spark and turning a spark into a committed edge. Build me on the link graph, not on a flat A×B picker."

@@ -22,6 +22,8 @@ links:
   - target: "[[Capability-first prototyping]]"
     type: exemplifies
     label: prove-then-optimize
+  - target: "[[Review Layer]]"
+    type: connects-to
 ---
 
 # LoRA Trainer

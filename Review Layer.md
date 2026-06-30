@@ -32,6 +32,8 @@ links:
   - target: "[[Enrichment]]"
     type: couples-with
     label: shared-respond-loop
+  - target: "[[Palace as Context Injection System]]"
+    type: connects-to
 ---
 
 # Review Layer

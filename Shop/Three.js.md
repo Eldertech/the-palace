@@ -32,6 +32,16 @@ links:
   - target: "[[Wavetable Scanner]]"
     type: connects-to
     label: exemplified-by
+  - target: "[[1D Wavetable Scanning]]"
+    type: connects-to
+  - target: "[[Particle Synthesis]]"
+    type: connects-to
+  - target: "[[Shimmer Cloud]]"
+    type: connects-to
+  - target: "[[Tone.js]]"
+    type: connects-to
+  - target: "[[Waveguide Synthesizer]]"
+    type: connects-to
 tags: [specialist, shop, 3d, webgl, interactive, web]
 ---
 

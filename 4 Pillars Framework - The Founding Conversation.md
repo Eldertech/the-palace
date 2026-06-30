@@ -37,6 +37,10 @@ links:
   - target: "[[Loudon Live]]"
     type: connects-to
     label: weekly-cadence-folded-here
+  - target: "[[Hyperdimensional Prism]]"
+    type: connects-to
+  - target: "[[Palace Enchantment]]"
+    type: connects-to
 forward_vector: "I want to be the unmistakable origin marker for the palace's operating paradigm — read once, returned to rarely, but pointed at often. I want to remain the breakthrough, not the manual: the long-form expansion lives in Artifacts as the transcript; I am the node the link graph reaches when entries declare 'I emerged-from this.' My job is to make the moment of crystallization legible so future entries can locate themselves relative to it."
 ---
 

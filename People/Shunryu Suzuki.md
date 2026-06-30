@@ -34,6 +34,9 @@ links:
   - target: "[[Natalie Goldberg]]"
     type: connects-to
     label: first-thought
+  - target: "[[Cross-Domain Resonances]]"
+    type: member-of
+    label: bridge-builder
 ---
 
 # Shunryu Suzuki

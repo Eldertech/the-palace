@@ -39,6 +39,9 @@ links:
   - target: "[[Simondon]]"
     type: connects-to
     label: concretization
+  - target: "[[Cross-Domain Resonances]]"
+    type: member-of
+    label: subtraction-branch
 ---
 
 # Rick Rubin

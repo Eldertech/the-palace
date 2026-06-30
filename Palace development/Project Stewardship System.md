@@ -58,6 +58,10 @@ links:
   - target: "[[Bundle-Local Stewardship — Production Plan]]"
     type: connects-to
     label: hardened-by
+  - target: "[[Baton Ceremony]]"
+    type: connects-to
+  - target: "[[Drift and Consolidation]]"
+    type: connects-to
 forward_vector: "I will become the working specification for routine, stage-aware project stewardship — a permanent agent that advances each palace project at the rhythm appropriate to its stage, posts status, blocks, and questions to the BBS, with the Trickster (Loudon directly, or an automated proxy with escalation rules) handling triage one decision at a time."
 ---
 

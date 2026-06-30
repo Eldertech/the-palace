@@ -17,6 +17,9 @@ links:
   - target: "[[BLUELINE]]"
     type: connects-to
     label: proved-in
+  - target: "[[Frame Designer]]"
+    type: enables
+    label: motion-primitive-for
 ---
 
 # Move the Ink, Don't Redraw It

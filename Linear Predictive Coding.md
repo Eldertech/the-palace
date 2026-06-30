@@ -33,6 +33,12 @@ links:
   - target: "[[Dissolutions]]"
     type: member-of
     label: analysis-as-synthesis-read-backward
+  - target: "[[Loudon Live]]"
+    type: connects-to
+  - target: "[[Philosopher Visits the Entry]]"
+    type: connects-to
+  - target: "[[Spinoza]]"
+    type: connects-to
 forward_vector: "I want to carry one sentence through every domain it touches — prediction is compression is intelligence — and to be the entry that proves a DSP technique and a theory of selfhood are the same claim read at different scales. I want to spawn an RNBO LPC vocoder for Loudon Live and to ask, out loud, what survives a large language model's prediction."
 ---
 # Linear Predictive Coding

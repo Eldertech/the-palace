@@ -34,6 +34,8 @@ links:
   - target: "[[Weave Ceremony]]"
     type: connects-to
     label: vector-linting
+  - target: "[[Spore Check Ceremony]]"
+    type: connects-to
 ---
 
 # Entry Conatus

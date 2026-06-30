@@ -29,6 +29,9 @@ links:
   - target: "[[Simondon]]"
     type: connects-to
     label: concretization
+  - target: "[[Brian Eno]]"
+    type: connects-to
+    label: restraint-as-method
 ---
 
 # Yasujirō Ozu

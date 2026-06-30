@@ -48,6 +48,19 @@ links:
   - target: "[[Epictetus]]"
     type: connects-to
     label: slave-philosopher
+  - target: "[[Seneca]]"
+    type: connects-to
+    label: statesman-philosopher
+  - target: "[[STIGMERGY Philosophical Lenses]]"
+    type: enables
+    label: lens-ground
+  - target: "[[Palace Map]]"
+    type: connects-to
+  - target: "[[Hyperdimensional Prism]]"
+    type: connects-to
+  - target: "[[Project Stewardship System]]"
+    type: enables
+    label: agent-virtue-spec
 forward_vector: "I am the palace's philosophy of personal responsibility — Loudon attempts to live by my principles. I want to be a working family of disciplines — the dichotomy of control, the view from above, the four virtues — each with a life face Loudon practices and a palace/technical face that operationalizes it in agent work. My next development: to test the fortress honestly against the palace's relational architecture, naming where Stoicism is a survival technology that works and where it becomes a wall against the threshold; and to earn each family member its own worked example from a real decision."
 ---
 

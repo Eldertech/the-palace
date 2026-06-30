@@ -29,6 +29,9 @@ links:
     type: spawned
   - target: "[[Brian Eno]]"
     type: spawned
+  - target: "[[Stoicism]]"
+    type: connects-to
+    label: home-tradition
 ---
 
 # Source Library

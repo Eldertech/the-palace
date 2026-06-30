@@ -15,6 +15,18 @@ links:
   - { target: "[[The Shop]]", type: member-of, label: roster-member }
   - { target: "[[Shop/Midjourney]]", type: connects-to, label: alternative-to }
   - { target: "[[ControlNet Workflow Mastery]]", type: connects-to, label: control-mastery }
+  - target: "[[Kuramoto Coupling]]"
+    type: connects-to
+    label: first-brief
+  - target: "[[Loudon Live]]"
+    type: enables
+    label: image-engine
+  - target: "[[RunPod GPU Backend]]"
+    type: connects-to
+    label: cloud-path
+  - target: "[[FLUX (Hugging Face)]]"
+    type: connects-to
+    label: cloud-sibling
 tags: [specialist, shop, image, generative, local]
 ---
 

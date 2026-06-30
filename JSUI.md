@@ -21,6 +21,8 @@ links:
     type: connects-to
   - target: "[[Preset Oracle]]"
     type: connects-to
+  - target: "[[Playful Interface Design]]"
+    type: connects-to
 forward_vector: "I want to become a fully revived project entry with a staged curriculum: JSUI as the theatrical layer in Max/MSP instrument design, from basic drawing to animated state machines to the full Retrospective Delay character system. My revival depends on the next plugin reaching Stage 4 — when that happens, I am ready."
 ---
 

@@ -27,6 +27,26 @@ links:
   - target: "[[Mixture of Experts]]"
     type: mirrors
     label: single-expert-routed-to-a-node
+  - target: "[[Action Potential Oscillator]]"
+    type: connects-to
+  - target: "[[Confucianism]]"
+    type: connects-to
+  - target: "[[Deleuze]]"
+    type: connects-to
+  - target: "[[Merleau-Ponty]]"
+    type: connects-to
+  - target: "[[Palace Philosophies]]"
+    type: connects-to
+  - target: "[[STIGMERGY Philosophical Lenses]]"
+    type: connects-to
+  - target: "[[Simondon]]"
+    type: connects-to
+  - target: "[[Spinoza Conatus]]"
+    type: connects-to
+  - target: "[[The Drift]]"
+    type: connects-to
+  - target: "[[Whitehead]]"
+    type: connects-to
 forward_vector: "I am the named genre that keeps the philosophy neighborhood from cooling — the standing practice of sending one researched philosopher to visit one technical entry and ask the question the entry cannot ask itself. I want to be reached for whenever a technical entry carries a bare 'philosophy' pillar tag with no philosophy in it, because a tag without content is a broken promise and I am how it gets kept. My next development: a small roster of which philosopher visits which family of entries, and a STIGMERGY card type that renders a visit inline in the entry it serves."
 ---
 

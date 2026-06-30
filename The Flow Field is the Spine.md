@@ -21,6 +21,8 @@ links:
   - target: "[[Go-with-the-Flow]]"
     type: connects-to
     label: published-precedent
+  - target: "[[flow-field-spine]]"
+    type: connects-to
 tags: [concept, flow-field, simulation, motion, blueline, seed]
 ---
 

@@ -43,6 +43,12 @@ links:
   - target: "[[Spinoza Conatus]]"
     type: mirrors
     label: systems-strive
+  - target: "[[Kick Drum ↔ Foundation]]"
+    type: connects-to
+    label: leverage-in-the-low-end
+  - target: "[[Sidechain ↔ Conversation]]"
+    type: connects-to
+    label: negative-feedback-as-dialogue
 ---
 
 # Donella Meadows

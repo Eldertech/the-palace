@@ -26,6 +26,12 @@ links:
   - target: "[[Dub Lineage]]"
     type: connects-to
     label: schizophonia
+  - target: "[[John Cage]]"
+    type: connects-to
+    label: letting-sounds-be
+  - target: "[[Hilaritas Generator]]"
+    type: connects-to
+    label: practice-seed
 ---
 
 # R. Murray Schafer

@@ -18,6 +18,12 @@ links:
   - target: "[[Kuramoto Coupling]]"
     type: connects-to
     label: phoneme-tested-on
+  - target: "[[ffmpeg]]"
+    type: couples-with
+    label: post-chain
+  - target: "[[Loudon Live]]"
+    type: enables
+    label: voices
 tags: [specialist, shop, sound, narration, tts]
 ---
 

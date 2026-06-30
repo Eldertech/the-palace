@@ -24,6 +24,8 @@ links:
   - target: "[[Quality Manifesto]]"
     type: connects-to
     label: tier-as-quality-boundary
+  - target: "[[Generative Compression]]"
+    type: connects-to
 forward_vector: "I keep being the place a future Specialist consults before naming its tiers — the glossary that says what Sketch means across tools, what Study costs and buys, what Piece commits to. I want a small canonical table and a longer set of per-medium notes (sound differs from motion which differs from interactive). I want to be loose enough that a Specialist can name its own dialect ('Idea / Demo / Final' for one tool, 'Test / Render / Master' for another) but tight enough that the Maker can compare tiers across Specialists without misreading."
 ---
 

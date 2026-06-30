@@ -30,6 +30,8 @@ links:
   - target: "[[Spinoza Conatus]]"
     type: connects-to
     label: cultivator-pole
+  - target: "[[Pages as Agents]]"
+    type: connects-to
 forward_vector: "I want to be the palace's first deliberately archived three-voice Dialectic — proof that the method can produce intellectual yield the entry it serves did not already contain. My next development is the entry for the fourth pole I surfaced — The Drift, or The Open Door — that holds the no-architecture position the Fortress/Threshold binary cannot."
 ---
 

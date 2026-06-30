@@ -33,6 +33,8 @@ links:
   - target: "[[Pages as Agents]]"
     type: connects-to
     label: experts-as-pool
+  - target: "[[Swarm Weave]]"
+    type: connects-to
 forward_vector: "I map AI architectural patterns — routing, expert specialization, load balancing — onto palace ceremonies and collaboration structures, making visible the design principles they share across substrate."
 ---
 

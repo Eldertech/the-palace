@@ -5,6 +5,8 @@ links:
   - target: "[[Crystal Synthesizer]]"
     type: connects-to
     label: child-of
+  - target: "[[Crystal Synthesizer — Staging]]"
+    type: connects-to
 forward_vector: "I am the mineral palette for [[Crystal Synthesizer]] — physical properties, spectral ratios, and generation prompts for the eight crystals. I keep the partial tables canonical so the instrument and its media stay physically honest."
 ---
 

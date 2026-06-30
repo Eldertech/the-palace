@@ -25,6 +25,10 @@ links:
   - target: "[[Lossy Compression with Intent Alignment]]"
     type: mirrors
     label: topology-as-prior
+  - target: "[[The Curve Is the Material]]"
+    type: connects-to
+  - target: "[[Three Kinds of Warp]]"
+    type: connects-to
 forward_vector: "I keep naming the ontology of synthesis as a topology question — fixed architectures (wavetable, Serum2, Vital) are topology-first instruments where the architecture decides what is reachable, and modular synthesis is the topology-emergent counterpart where the patcher decides. I want to expose the trade — fixed topology buys a large legible parameter space; free topology buys composability at the cost of legibility — and name the in-betweens (PDL-constrained generation, profile registries, fixed-skeleton-variable-flesh designs)."
 ---
 

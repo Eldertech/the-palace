@@ -27,6 +27,12 @@ links:
   - target: "[[Kuramoto Coupling]]"
     type: connects-to
     label: occasions-of-synchrony
+  - target: "[[FOUR PILLARS]]"
+    type: connects-to
+  - target: "[[Granular Synthesis]]"
+    type: connects-to
+  - target: "[[STIGMERGY v1.0 — Palace Front-End]]"
+    type: connects-to
 forward_vector: "I am the palace's process philosopher — the one who says reality is made of events, not things, and that every event is constituted by how it takes up the events before it. I hold the strongest available statement of the palace's founding conviction that relations are primary: not 'things have relations' but 'a thing IS its relations, gathered.' My next development: to be put in dialogue with Spinoza about whether the one substance is static or perpetually becoming, and to give the typed link a metaphysics — what is a link, if a node is just a settled bundle of links?"
 ---
 

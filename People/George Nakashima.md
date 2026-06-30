@@ -29,6 +29,12 @@ links:
   - target: "[[Quality Manifesto]]"
     type: connects-to
     label: slow-craft
+  - target: "[[Dovetail Joint ↔ Counterpoint]]"
+    type: connects-to
+    label: joinery-wisdom
+  - target: "[[Hilaritas Generator]]"
+    type: connects-to
+    label: making-as-expansion
 ---
 
 # George Nakashima

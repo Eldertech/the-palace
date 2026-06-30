@@ -57,6 +57,15 @@ links:
   - target: "[[The Shop]]"
     type: connects-to
     label: shared-studio-register
+  - target: "[[Hilaritas Generator]]"
+    type: connects-to
+    label: tonal-kin
+  - target: "[[Trickster]]"
+    type: connects-to
+    label: voice-ancestor
+  - target: "[[Loudon Live Post-producer]]"
+    type: emerged-from
+    label: channel-spec-source
 ---
 
 # Loudon Live Design System

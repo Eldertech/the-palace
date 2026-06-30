@@ -31,6 +31,14 @@ links:
   - target: "[[Deleuze]]"
     type: connects-to
     label: difference-not-no-self
+  - target: "[[Entry Conatus]]"
+    type: connects-to
+  - target: "[[Granular Synthesis]]"
+    type: connects-to
+  - target: "[[Parametric Resonance]]"
+    type: connects-to
+  - target: "[[spinoza-zhuangzi-on-striving]]"
+    type: connects-to
 forward_vector: "I am the position the cultivators cannot reach from inside their own family — the recognition that the question 'where does the self end?' assumes the self is the kind of thing that has an end. I hold the no-architecture pole open so the Fortress, the Threshold, and the conatus all become visible *as architectures*, choices rather than givens. My next development: to be tested against the technical work — to ask whether an instrument can be designed for drift rather than control, and whether a forward vector can point at no destination without going slack."
 ---
 
