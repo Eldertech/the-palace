@@ -3,6 +3,7 @@ title: "Enrichment"
 type: meta
 pillars: [practice, philosophy, creation, tools]
 born: 2026-05-04
+last_activated: 2026-06-26
 stage: growing
 confidence: working
 energy: very high

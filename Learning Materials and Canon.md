@@ -5,6 +5,7 @@ pillars:
   - practice
   - philosophy
 born: 2026-06
+last_activated: 2026-06-26
 stage: growing
 links:
   - target: "[[SCHEMA]]"

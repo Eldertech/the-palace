@@ -6,8 +6,8 @@ pillars:
   - practice
 born: 2026-06
 stage: growing
-last_activated: 2026-06
-activation_count: 1
+last_activated: 2026-06-26
+activation_count: 2
 forward_vector: "I keep every line of work on its own HEAD so no agent's commit lands on another's branch, and I teach each ceremony to reach back to the trunk for canon. I want to grow from a git convenience into the palace's default posture on parallel work — a swarm of isolated hands, one convergent trunk."
 links:
   - target: "[[Deposit Ceremony]]"

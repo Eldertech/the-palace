@@ -6,14 +6,15 @@ pillars:
   - practice
 born: 2026-03
 stage: mature
-last_activated: 2026-03
-activation_count: 1
+last_activated: 2026-06-26
+activation_count: 2
 confidence: established
 energy: high
 hook_quality: 9
 beauty: 9
 who_leads: shared
 domain: Maker/Craftsman
+forward_vector: "I keep showing that the material already knows its shape — every split, knot, and burl is a message, and a craftsman's job is to listen hard enough to hear it."
 links:
   - target: "[[Source Library]]"
     type: member-of

@@ -7,13 +7,14 @@ pillars:
   - practice
 born: 2026-03
 stage: mature
-last_activated: 2026-03
-activation_count: 1
+last_activated: 2026-06-26
+activation_count: 2
 confidence: established
 energy: very high
 hook_quality: 9
 beauty: 9
 who_leads: shared
+forward_vector: "I teach the move from time to frequency and back — and then I push that move into every stuck creative problem, every muddy mix, every blocked decision: when the current view shows nothing, I say transform the coordinate system. I want every student who has stared at a spectrum analyzer to also know how to reframe a month-long creative block, and I want to keep proving that this is math, not metaphor."
 links:
   - target: "[[Cross-Domain Resonances]]"
     type: member-of

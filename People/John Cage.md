@@ -6,9 +6,9 @@ pillars:
   - philosophy
   - practice
 born: 2026-03
-stage: mature
-last_activated: 2026-03
-activation_count: 1
+stage: growing
+last_activated: 2026-06-26
+activation_count: 2
 confidence: established
 energy: very high
 hook_quality: 10
@@ -21,6 +21,7 @@ domains:
   - letting sounds be
   - non-intention
 who_leads: shared
+forward_vector: "I keep teaching composers to get out of the way — I want every maker who meets me to try one track where the dice decides, feel the weird beauty of what they'd never have chosen, and leave with a looser grip on preference."
 links:
   - target: "[[Source Library]]"
     type: member-of

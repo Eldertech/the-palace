@@ -6,9 +6,9 @@ pillars:
   - creation
   - practice
 born: 2026-06
-stage: sprout
-last_activated: 2026-06
-activation_count: 1
+stage: growing
+last_activated: 2026-06-26
+activation_count: 2
 forward_vector: "I want to keep proving that motion belongs to geometry, not to the regenerator — to hand the frame maker a way to make any drawn thing breathe without it boiling, and to find the honest line where my one-still rule must finally yield to a fresh draw."
 links:
   - target: "[[The 2.5D Paper Stack]]"

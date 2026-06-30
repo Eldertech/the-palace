@@ -4,8 +4,8 @@ type: hub
 pillars:
   - philosophy
 born: 2026-03
-last_activated: 2026-06
-activation_count: 3
+last_activated: 2026-06-26
+activation_count: 4
 stage: mature
 links:
   - target: "[[Spinoza Conatus]]"

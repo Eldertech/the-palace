@@ -6,6 +6,7 @@ pillars:
   - philosophy
   - tools
 born: 2026-03
+last_activated: 2026-06-26
 stage: growing
 confidence: working
 energy: high
@@ -20,7 +21,7 @@ links:
   - target: "[[Symbiotic Skills]]"
     type: connects-to
   - target: "[[FOUR PILLARS]]"
-    type: connects-to
+    type: deepens
   - target: "[[Ohm's Law]]"
     type: connects-to
   - target: "[[Dialectic]]"

@@ -6,8 +6,8 @@ pillars:
   - practice
 born: 2026-03
 stage: mature
-last_activated: 2026-03
-activation_count: 1
+last_activated: 2026-06-26
+activation_count: 2
 confidence: established
 energy: very high
 hook_quality: 10
@@ -20,6 +20,7 @@ domains:
   - beginner's mind
   - teaching
 who_leads: shared
+forward_vector: "I keep pointing practitioners back to the breath — the simplest loop that teaches returning without judgment — and I want to become the palace's clearest guide to approaching repetition as practice rather than boredom, so every builder here knows how to stay present with what they are already doing."
 links:
   - target: "[[Source Library]]"
     type: member-of

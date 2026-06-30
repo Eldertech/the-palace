@@ -7,8 +7,8 @@ pillars:
   - practice
 born: 2026-03
 stage: mature
-last_activated: 2026-03
-activation_count: 1
+last_activated: 2026-06-26
+activation_count: 2
 confidence: established
 energy: very high
 hook_quality: 10
@@ -22,6 +22,7 @@ domains:
   - patience
   - subtlety
 who_leads: shared
+forward_vector: "I keep showing that slowing down is itself the work — that patience, restraint, and removing reference points reveal what rushing always buries. I want every maker who encounters me to feel the 0.5dB shift and understand that art is not a statement you transmit but a condition you create for someone else's perception."
 links:
   - target: "[[Source Library]]"
     type: member-of

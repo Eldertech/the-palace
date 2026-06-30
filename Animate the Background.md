@@ -3,8 +3,8 @@ title: "Animate the Background"
 type: practice
 pillars: [tools, creation]
 born: 2026-06
-last_activated: 2026-06
-activation_count: 1
+last_activated: 2026-06-26
+activation_count: 2
 stage: sprout
 confidence: working
 energy: high

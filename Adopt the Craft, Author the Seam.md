@@ -3,8 +3,8 @@ title: "Adopt the Craft, Author the Seam"
 type: concept
 pillars: [tools, philosophy, creation]
 born: 2026-06
-last_activated: 2026-06
-activation_count: 1
+last_activated: 2026-06-26
+activation_count: 2
 stage: growing
 confidence: working
 energy: high

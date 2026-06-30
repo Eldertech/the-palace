@@ -8,13 +8,14 @@ pillars:
   - practice
 born: 2026-03
 stage: mature
-last_activated: 2026-03
-activation_count: 1
+last_activated: 2026-06-26
+activation_count: 2
 confidence: established
 energy: very high
 hook_quality: 9
 beauty: 8
 who_leads: shared
+forward_vector: "I keep proving that the same irreversibility that teaches a cook to season conservatively teaches a mixer to process conservatively — and that once a student sees this shape, they start catching it everywhere: in words they can't unsay, time they can't get back, choices they can't undo. I want to become the bridge lesson that turns subtraction-first thinking from a studio habit into a life skill."
 links:
   - target: "[[Cross-Domain Resonances]]"
     type: member-of

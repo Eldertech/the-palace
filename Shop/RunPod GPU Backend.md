@@ -6,8 +6,8 @@ pillars:
   - creation
 born: 2026-06
 stage: growing
-last_activated: 2026-06-14
-activation_count: 1
+last_activated: 2026-06-26
+activation_count: 2
 forward_vector: "I want every Specialist that needs a real GPU to reach me without ceremony — to pick serverless when the work is spiky and a pod when it needs ControlNet or iteration — and I want the walk-cycle to one day move smoothly, so the Shop can make motion, not just stills."
 links:
   - target: "[[The Shop]]"

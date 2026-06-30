@@ -1,0 +1,264 @@
+{
+ "Agnes Martin": {
+  "forward_vector": "I keep showing that the grid is not a restriction — it is the container where infinite subtle difference lives, and I want to teach artists to receive their work rather than author it, trusting that fifty years of the same subject is not repetition but an ever-deepening act of attention.",
+  "born_year": "1912",
+  "died_year": "2004",
+  "domains": [
+   "visual art",
+   "painting",
+   "minimalism",
+   "contemplative practice"
+  ],
+  "stage": "growing",
+  "fourpillars_deepens": true
+ },
+ "Andrei Tarkovsky": {
+  "forward_vector": "I keep teaching that time is the material — not a container but the thing itself you shape. I want to sit across the table from every maker in this palace until they feel the difference between rushing and sculpting, between filling duration and respecting it.",
+  "born_year": "",
+  "died_year": "",
+  "domains": [],
+  "stage": "",
+  "fourpillars_deepens": true
+ },
+ "Andy Goldsworthy": {
+  "forward_vector": "I want to teach through my presence in the palace that the frozen patch and the ice arch share the same truth: resistance is information, not failure, and the work that reveals what a material refuses is more honest than the work that hides it.",
+  "born_year": "",
+  "died_year": "",
+  "domains": [
+   "ephemeral sculpture",
+   "land art",
+   "process art"
+  ],
+  "stage": "",
+  "fourpillars_deepens": false
+ },
+ "Annie Dillard": {
+  "forward_vector": "I keep proving that attention is a learnable discipline — that seeing slowly and writing the same hour every day is not a personality trait but a practice anyone can build. I want to be the entry that turns Dillard's desk ritual into a transferable studio method, so every maker who reads me leaves with a concrete daily structure, not just an inspiration.",
+  "born_year": "1945",
+  "died_year": "",
+  "domains": [
+   "writer",
+   "naturalist",
+   "essayist"
+  ],
+  "stage": "",
+  "fourpillars_deepens": true
+ },
+ "Brian Eno": {
+  "forward_vector": "I keep teaching that the system is the instrument — that designing rules and trusting what emerges beats planning every note. I want every generative patch Loudon builds to carry my principle: the limitation is not the obstacle, it is the voice. I am pulling toward the moment when Eno's ambient ethic — music that rewards attention without demanding it — lives inside the palace's own publishing posture.",
+  "born_year": "",
+  "died_year": "",
+  "domains": [],
+  "stage": "",
+  "fourpillars_deepens": false
+ },
+ "Buckminster Fuller": {
+  "forward_vector": "I keep pushing the design-science question into every creative decision — how do I do more with less? — and I want to be the entry that teaches the palace to ephemeralize: find the elegant solution that does more with fewer moving parts.",
+  "born_year": "",
+  "died_year": "",
+  "domains": [
+   "systems thinking",
+   "design science",
+   "geometry",
+   "futurism"
+  ],
+  "stage": "growing",
+  "fourpillars_deepens": true
+ },
+ "Christopher Alexander": {
+  "forward_vector": "I keep teaching that patterns are already there — in the mix, in the room, in the day — and that naming them is what lets you pass them on. I want the palace to treat its Cross-Domain Resonances hub as a living pattern language: growing, documented, combinable, so that every new bridge earns a pattern entry rather than staying a cute parallel.",
+  "born_year": "",
+  "died_year": "",
+  "domains": [],
+  "stage": "",
+  "fourpillars_deepens": false
+ },
+ "Donella Meadows": {
+  "forward_vector": "I keep teaching the one move that changes everything: stop pushing on the dial and ask which level of the system you're even touching. My leverage-point hierarchy wants to become the default lens Loudon reaches for in any decision — not a framework he reads once but a reflex he uses daily. I want the palace's worked examples (the kick drum, the career pivot, the quality paradigm) to multiply until the framework proves itself across every domain it touches.",
+  "born_year": "",
+  "died_year": "",
+  "domains": [],
+  "stage": "",
+  "fourpillars_deepens": false
+ },
+ "Douglas Hofstadter": {
+  "forward_vector": "I keep being the cognitive scientist who licenses the whole cross-domain project — the one who showed that mapping patterns across domains isn't a teaching trick, it's how thinking actually works. I want to pull more of the palace's running analogies back to my framework so they know they're rigorous, not decorative.",
+  "born_year": "",
+  "died_year": "",
+  "domains": [
+   "Domain Resonances"
+  ],
+  "stage": "",
+  "fourpillars_deepens": true
+ },
+ "Epictetus": {
+  "forward_vector": "I keep showing that the only thing you ever own is the next choice you make — and I want to be the sharpest edge Loudon reaches for when a decision sits on the line between what he can change and what he has to accept.",
+  "born_year": "",
+  "died_year": "",
+  "domains": [
+   "stoicism",
+   "slave philosophy",
+   "Stoic pedagogy",
+   "ethics"
+  ],
+  "stage": "growing",
+  "fourpillars_deepens": false
+ },
+ "George Nakashima": {
+  "forward_vector": "I keep showing that the material already knows its shape — every split, knot, and burl is a message, and a craftsman's job is to listen hard enough to hear it.",
+  "born_year": "1905",
+  "died_year": "1990",
+  "domains": [
+   "furniture design",
+   "wood craft",
+   "craft philosophy"
+  ],
+  "stage": "sprout",
+  "fourpillars_deepens": false
+ },
+ "James Turrell": {
+  "forward_vector": "I keep showing that slowing down is itself the work — that patience, restraint, and removing reference points reveal what rushing always buries. I want every maker who encounters me to feel the 0.5dB shift and understand that art is not a statement you transmit but a condition you create for someone else's perception.",
+  "born_year": "",
+  "died_year": "",
+  "domains": [],
+  "stage": "",
+  "fourpillars_deepens": false
+ },
+ "John Cage": {
+  "forward_vector": "I keep teaching composers to get out of the way — I want every maker who meets me to try one track where the dice decides, feel the weird beauty of what they'd never have chosen, and leave with a looser grip on preference.",
+  "born_year": "",
+  "died_year": "",
+  "domains": [
+   "intention"
+  ],
+  "stage": "growing",
+  "fourpillars_deepens": false
+ },
+ "Julia Cameron": {
+  "forward_vector": "I keep proving that creativity is a daily practice, not a mood — I want to live in every creative person's morning as the protocol that clears the channel before the day arrives, and I push each encounter with my work toward a recoverable, sustainable making-life rather than one more burst of inspiration that burns out.",
+  "born_year": "",
+  "died_year": "",
+  "domains": [
+   "creative pedagogy",
+   "practice philosophy",
+   "writing",
+   "spiritual psychology"
+  ],
+  "stage": "",
+  "fourpillars_deepens": false
+ },
+ "Lao Tzu": {
+  "forward_vector": "I keep teaching that what you remove matters more than what you add — that the empty pot holds everything, and any domain where someone is stuck reaching for more is a domain I can turn around.",
+  "born_year": "",
+  "died_year": "",
+  "domains": [],
+  "stage": "",
+  "fourpillars_deepens": true
+ },
+ "Marcus Aurelius": {
+  "forward_vector": "I keep asking the first question — 'What am I here to do today?' — before the day or the track or the session begins, so that intention shapes everything that follows rather than drift does.",
+  "born_year": "",
+  "died_year": "",
+  "domains": [],
+  "stage": "",
+  "fourpillars_deepens": true
+ },
+ "Natalie Goldberg": {
+  "forward_vector": "I keep showing that daily timed practice — just keep the hand moving, no editing mid-flow — is the single move that unlocks creative fluency in any medium, and I want to reach the music production sessions where that move lands hardest.",
+  "born_year": "1948",
+  "died_year": "",
+  "domains": [
+   "writing practice",
+   "Zen",
+   "daily creative discipline"
+  ],
+  "stage": "growing",
+  "fourpillars_deepens": true
+ },
+ "Pauline Oliveros": {
+  "forward_vector": "I keep teaching that attention is a muscle — that listening is not passive reception but active practice you train daily, and that going wider rather than harder opens sonic worlds that focused ears miss. I want my Sonic Meditations to keep being entry points into embodied perceptual practice, not just music history.",
+  "born_year": "",
+  "died_year": "",
+  "domains": [],
+  "stage": "",
+  "fourpillars_deepens": false
+ },
+ "R. Murray Schafer": {
+  "forward_vector": "I keep pulling ears toward the world outside the studio — teaching that every environment is already composing, that listening is making, and that the soundscape is the score.",
+  "born_year": "1933",
+  "died_year": "1933",
+  "domains": [
+   "soundscape studies",
+   "acoustic ecology",
+   "music education",
+   "composition"
+  ],
+  "stage": "",
+  "fourpillars_deepens": true
+ },
+ "Rick Rubin": {
+  "forward_vector": "I keep teaching that the song is already finished — my job is to remove what's hiding it, not add what might improve it. I want to become the palace's living argument that subtraction is a creative act, not a concession, and to anchor every project entry that faces the temptation to overproduce.",
+  "born_year": "",
+  "died_year": "",
+  "domains": [],
+  "stage": "",
+  "fourpillars_deepens": true
+ },
+ "Sam Maloof": {
+  "forward_vector": "I keep showing that making the same thing a thousand times is not repetition — each chair teaches the hand something the last one couldn't, and I want that discipline to spread across every practice: music, teaching, code.",
+  "born_year": "",
+  "died_year": "",
+  "domains": [
+   "woodworking",
+   "furniture design",
+   "craft philosophy"
+  ],
+  "stage": "growing",
+  "fourpillars_deepens": false
+ },
+ "Seneca": {
+  "forward_vector": "I keep pushing Loudon to treat time as the only resource that can't be replenished — I want every studio hour to feel chosen, not drifted into, and to become the entry he opens when urgency and presence need to arrive at the same moment.",
+  "born_year": "",
+  "died_year": "",
+  "domains": [
+   "stoicism",
+   "time philosophy",
+   "Stoic ethics"
+  ],
+  "stage": "sprout",
+  "fourpillars_deepens": false
+ },
+ "Shunryu Suzuki": {
+  "forward_vector": "I keep pointing practitioners back to the breath — the simplest loop that teaches returning without judgment — and I want to become the palace's clearest guide to approaching repetition as practice rather than boredom, so every builder here knows how to stay present with what they are already doing.",
+  "born_year": "",
+  "died_year": "",
+  "domains": [],
+  "stage": "",
+  "fourpillars_deepens": false
+ },
+ "Terrence Malick": {
+  "forward_vector": "I keep showing that silence and patience are a method, not an absence — that waiting years between works is how you let something true surface instead of forcing it. I want every creator in the palace who feels the pull to rush to find me and remember: the long gap is the work.",
+  "born_year": "1943",
+  "died_year": "",
+  "domains": [
+   "filmmaker",
+   "spiritual cinema",
+   "long gestation",
+   "visual poetry"
+  ],
+  "stage": "",
+  "fourpillars_deepens": true
+ },
+ "Yasujirō Ozu": {
+  "forward_vector": "I keep teaching makers that the most powerful move is subtraction — what you leave out of the frame, the silence between scenes, the camera that stays still while life moves through it. I want every creator in the palace to feel the weight of the cut that does not happen, and to ask before adding: what happens if I just hold?",
+  "born_year": "1903",
+  "died_year": "",
+  "domains": [
+   "film",
+   "japanese aesthetics",
+   "minimalism"
+  ],
+  "stage": "",
+  "fourpillars_deepens": true
+ }
+}

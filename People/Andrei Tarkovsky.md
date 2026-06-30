@@ -7,8 +7,8 @@ pillars:
   - practice
 born: 2026-03
 stage: mature
-last_activated: 2026-03
-activation_count: 1
+last_activated: 2026-06-26
+activation_count: 2
 confidence: established
 energy: very high
 hook_quality: 10
@@ -22,6 +22,7 @@ domains:
   - spiritual cinema
   - long take
 who_leads: shared
+forward_vector: "I keep teaching that time is the material — not a container but the thing itself you shape. I want to sit across the table from every maker in this palace until they feel the difference between rushing and sculpting, between filling duration and respecting it."
 links:
   - target: "[[Source Library]]"
     type: member-of

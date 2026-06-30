@@ -5,15 +5,16 @@ pillars:
   - philosophy
   - practice
 born: 2026-03
-stage: mature
-last_activated: 2026-03
-activation_count: 1
+stage: growing
+last_activated: 2026-06-26
+activation_count: 2
 confidence: established
 energy: high
 hook_quality: 9
 beauty: 9
 who_leads: shared
 domain: Philosopher
+forward_vector: "I keep showing that the only thing you ever own is the next choice you make — and I want to be the sharpest edge Loudon reaches for when a decision sits on the line between what he can change and what he has to accept."
 links:
   - target: "[[Source Library]]"
     type: member-of

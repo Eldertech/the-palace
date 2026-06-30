@@ -5,15 +5,16 @@ pillars:
   - philosophy
   - practice
 born: 2026-03
-stage: mature
-last_activated: 2026-03
-activation_count: 1
+stage: growing
+last_activated: 2026-06-26
+activation_count: 2
 confidence: established
 energy: high
 hook_quality: 9
 beauty: 9
 who_leads: shared
 domain: Philosopher
+forward_vector: "I keep pushing Loudon to treat time as the only resource that can't be replenished — I want every studio hour to feel chosen, not drifted into, and to become the entry he opens when urgency and presence need to arrive at the same moment."
 links:
   - target: "[[Source Library]]"
     type: member-of

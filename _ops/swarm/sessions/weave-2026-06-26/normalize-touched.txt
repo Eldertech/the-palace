@@ -1,0 +1,73 @@
+Adopt the Craft, Author the Seam.md
+Typography as Meaning.md
+Animate the Background.md
+Move the Ink, Don't Redraw It.md
+The 2.5D Paper Stack.md
+Hand-Drawn 3D Look.md
+Remnants in Depth.md
+The Reader's Context Window.md
+Shop/Lettering.md
+Shop/Hero and Avatar Maker.md
+Shop/Maker.md
+The Shop.md
+Shop/ComfyUI.md
+Shop/FLUX (Hugging Face).md
+Shop/RunPod GPU Backend.md
+Shop/Manim CE.md
+Shop/Stable Audio Open.md
+Shop/Kokoro.md
+Shop/ffmpeg.md
+Enrichment.md
+Oblique Enrichment.md
+Palace development/Loudon Live Design System.md
+Hilaritas Generator.md
+Modes of Collaboration.md
+Projects/BLUELINE/BLUELINE.md
+People/Agnes Martin.md
+People/Andrei Tarkovsky.md
+People/Andy Goldsworthy.md
+People/Annie Dillard.md
+People/Brian Eno.md
+People/Buckminster Fuller.md
+People/Christopher Alexander.md
+People/Donella Meadows.md
+People/Douglas Hofstadter.md
+People/Epictetus.md
+People/George Nakashima.md
+People/James Turrell.md
+People/John Cage.md
+People/Julia Cameron.md
+People/Lao Tzu.md
+People/Marcus Aurelius.md
+People/Natalie Goldberg.md
+People/Pauline Oliveros.md
+People/R. Murray Schafer.md
+People/Rick Rubin.md
+People/Sam Maloof.md
+People/Seneca.md
+People/Shunryu Suzuki.md
+People/Terrence Malick.md
+People/Yasujirō Ozu.md
+Cross-Domain Resonances/Compression ↔ Intimacy.md
+Cross-Domain Resonances/Cooking ↔ Mixing.md
+Cross-Domain Resonances/Dovetail Joint ↔ Counterpoint.md
+Cross-Domain Resonances/Frequency Domain ↔ Perspective Shift.md
+Cross-Domain Resonances/Kick Drum ↔ Foundation.md
+Cross-Domain Resonances/Quantization ↔ Precision vs Flow.md
+Cross-Domain Resonances/Reverb ↔ Space-Time.md
+Cross-Domain Resonances/Saturation ↔ Richness.md
+Cross-Domain Resonances/Sidechain ↔ Conversation.md
+Cross-Domain Resonances/Synthesis ↔ Emergence.md
+Cooperation Yields Agency.md
+Spinoza Conatus.md
+Stoicism.md
+Palace Philosophies.md
+FOUR PILLARS.md
+Kuramoto Coupling.md
+Trickster.md
+Cross-Domain Resonances.md
+Source Library.md
+Loudon's Toolkit.md
+Leibniz.md
+Learning Materials and Canon.md
+Worktree Practice.md

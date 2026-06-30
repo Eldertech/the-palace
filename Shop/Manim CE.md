@@ -6,6 +6,7 @@ medium: motion
 tool: manim-ce
 tool_version: 0.20.1
 born: 2026-05
+last_activated: 2026-06-26
 last_tested: 2026-06-09
 last_gotcha: 2026-06-09
 license: MIT

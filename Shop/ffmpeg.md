@@ -6,6 +6,7 @@ medium: plumbing
 tool: ffmpeg
 tool_version: 7.x
 born: 2026-05
+last_activated: 2026-06-26
 last_tested: 2026-06-16
 last_gotcha: 2026-05-26
 license: LGPL-2.1+ / GPL-2+ (build-dependent)

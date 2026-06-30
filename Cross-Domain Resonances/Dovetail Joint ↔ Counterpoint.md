@@ -7,14 +7,15 @@ pillars:
   - philosophy
   - practice
 born: 2026-03
-stage: mature
-last_activated: 2026-03
-activation_count: 1
+stage: growing
+last_activated: 2026-06-26
+activation_count: 2
 confidence: established
 energy: very high
 hook_quality: 10
 beauty: 9
 who_leads: shared
+forward_vector: "I keep showing students that when you shape two things for each other — in wood or in sound — they lock into something neither could hold alone; I want to keep teaching the co-design pattern until people recognize it in their collaborations, their code, their relationships."
 links:
   - target: "[[Cross-Domain Resonances]]"
     type: member-of

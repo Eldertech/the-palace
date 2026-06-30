@@ -3,9 +3,9 @@ title: Leibniz
 type: person
 pillars: [philosophy, tools]
 born: 2026-06
-last_activated: 2026-06
-activation_count: 1
-stage: sprout
+last_activated: 2026-06-26
+activation_count: 2
+stage: growing
 confidence: working
 energy: high
 who_leads: shared

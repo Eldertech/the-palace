@@ -5,15 +5,16 @@ pillars:
   - philosophy
   - practice
 born: 2026-03
-stage: mature
-last_activated: 2026-03
-activation_count: 1
+stage: growing
+last_activated: 2026-06-26
+activation_count: 2
 confidence: established
 energy: high
 hook_quality: 9
 beauty: 9
 who_leads: shared
 domain: Maker/Craftsman
+forward_vector: "I keep showing that making the same thing a thousand times is not repetition — each chair teaches the hand something the last one couldn't, and I want that discipline to spread across every practice: music, teaching, code."
 links:
   - target: "[[Source Library]]"
     type: member-of

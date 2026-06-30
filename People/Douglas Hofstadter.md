@@ -6,8 +6,8 @@ pillars:
   - tools
 born: 2026-03
 stage: mature
-last_activated: 2026-03
-activation_count: 1
+last_activated: 2026-06-26
+activation_count: 2
 confidence: established
 energy: very high
 hook_quality: 10
@@ -20,6 +20,7 @@ domains:
   - cognition
   - recursion
 who_leads: shared
+forward_vector: "I keep being the cognitive scientist who licenses the whole cross-domain project — the one who showed that mapping patterns across domains isn't a teaching trick, it's how thinking actually works. I want to pull more of the palace's running analogies back to my framework so they know they're rigorous, not decorative."
 links:
   - target: "[[Source Library]]"
     type: member-of

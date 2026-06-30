@@ -6,6 +6,7 @@ medium: sound
 tool: stable-audio-3
 tool_version: 3.0
 born: 2026-05
+last_activated: 2026-06-26
 migrated_from: stable-audio-open-1.0
 migrated_at: 2026-05-26
 last_tested: 2026-05-26

@@ -7,13 +7,14 @@ pillars:
   - practice
 born: 2026-03
 stage: mature
-last_activated: 2026-03
-activation_count: 1
+last_activated: 2026-06-26
+activation_count: 2
 confidence: established
 energy: very high
 hook_quality: 10
 beauty: 10
 who_leads: shared
+forward_vector: "I keep teaching that compression and intimacy are the same structure — that when a student hears a 4:1 ratio and suddenly feels the singer is right there in the room with them, they've touched something true about how closeness works in any material; I want to spread from the audio classroom into the wider palace as the clearest proof that reducing the distance between extremes always produces closeness, whatever the domain."
 links:
   - target: "[[Cross-Domain Resonances]]"
     type: member-of
