@@ -25,6 +25,9 @@ links:
   - target: "[[Loudon Live]]"
     type: enables
     label: voices
+  - target: "[[Loudon Live Design System]]"
+    type: enables
+    label: the-lesson-voice
 tags: [specialist, shop, sound, narration, tts]
 ---
 

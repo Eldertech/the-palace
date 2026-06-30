@@ -28,6 +28,9 @@ links:
   - target: "[[FLUX (Hugging Face)]]"
     type: connects-to
     label: cloud-sibling
+  - target: "[[Loudon Live Design System]]"
+    type: enables
+    label: renders-the-lesson-art
 tags: [specialist, shop, image, generative, local]
 ---
 

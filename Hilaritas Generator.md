@@ -54,6 +54,9 @@ links:
   - target: "[[Quality Manifesto]]"
     type: connects-to
     label: signal-redirector
+  - target: "[[Modes of Collaboration]]"
+    type: couples-with
+    label: how-we-make-joy
 forward_vector: "I want to build out the learning architect concept into a specific curriculum — answering whether hilaritas can be deliberately designed for."
 ---
 

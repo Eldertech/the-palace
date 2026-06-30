@@ -42,6 +42,9 @@ links:
   - target: "[[DSP Frameworks]]"
     type: connects-to
     label: exemplifies-domain
+  - target: "[[Cooperation Yields Agency]]"
+    type: deepens
+    label: named-ways-to-cooperate
 forward_vector: "I research, analyze, develop, name, document and make choosable distinct rhythms of human & AI interactions and AI & AI interactions."
 ---
 

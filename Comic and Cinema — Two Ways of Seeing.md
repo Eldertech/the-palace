@@ -25,6 +25,9 @@ links:
   - target: "[[Adopt the Craft, Author the Seam]]"
     type: connects-to
     label: the-seam-is-here
+  - target: "[[Hilaritas Generator]]"
+    type: connects-to
+    label: compress-or-dilate-to-teach
 ---
 
 # Comic and Cinema — Two Ways of Seeing

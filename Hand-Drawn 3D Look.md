@@ -38,6 +38,9 @@ links:
   - target: "[[Figure Rig]]"
     type: enables
     label: figure-staging
+  - target: "[[The 2.5D Paper Stack]]"
+    type: connects-to
+    label: lifts-ink-into-depth
 ---
 
 # Hand-Drawn 3D Look

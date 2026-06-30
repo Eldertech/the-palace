@@ -29,6 +29,9 @@ links:
   - target: "[[Whisper]]"
     type: connects-to
     label: vram-contends-with
+  - target: "[[Loudon Live Design System]]"
+    type: enables
+    label: lesson-sound
 tags: [specialist, shop, sound, generative, music, sfx]
 ---
 
