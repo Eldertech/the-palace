@@ -231,6 +231,22 @@ def add_camera():
     c.rotation_euler = direction.to_track_quat('-Z', 'Y').to_euler()
     bpy.context.scene.camera = c; return c
 
+def frame_camera(cam, body, margin=1.12):
+    """Height-adaptive framing: aim the hero-diagonal camera at the posed body's
+    bbox center, at a distance that fits its extent. Keeps children and adults both
+    well-framed (a fixed camera tuned for 1.66m leaves a 1.1m child tiny/low)."""
+    bpy.context.view_layer.update()
+    dg = bpy.context.evaluated_depsgraph_get()
+    me = body.evaluated_get(dg)
+    pts = [body.matrix_world @ v.co for v in me.data.vertices]
+    xs = [p.x for p in pts]; ys = [p.y for p in pts]; zs = [p.z for p in pts]
+    center = mathutils.Vector(((min(xs)+max(xs))/2, (min(ys)+max(ys))/2, (min(zs)+max(zs))/2))
+    extent = max(max(zs)-min(zs), (max(xs)-min(xs))*1.25, (max(ys)-min(ys))*1.25)
+    # hero-diagonal direction, calibrated k≈1.9 (adult 1.66m → ~3.1m looked right)
+    d = (mathutils.Vector(CAM_LOC) - mathutils.Vector(CAM_TARGET)).normalized()
+    cam.location = center + d * (extent * 1.9 * margin)
+    cam.rotation_euler = (center - cam.location).to_track_quat('-Z', 'Y').to_euler()
+
 def add_ground(mat):
     bpy.ops.mesh.primitive_plane_add(size=20, location=(0, 0, -0.01))
     g = bpy.context.active_object
@@ -347,6 +363,7 @@ def main():
     add_ground(mt)
     add_lights()
     cam = add_camera()
+    frame_camera(cam, body)        # height-adaptive: frame children + adults alike
     configure_freestyle()
 
     render_to(os.path.join(out, "ink_plate.png"), True, 1.0)
