@@ -199,9 +199,9 @@ footer .ll em{font-family:var(--serif);font-style:italic;font-weight:300;color:v
 
 <!-- ───────────────────────── VARIATION ───────────────────────── -->
 <h2><span class="gl">◇</span> Variation — one flag flips the body</h2>
-<p class="h2note">Male / female / young / old is a single macro dict — <span style="font-family:var(--mono);color:var(--fg-2)">{gender, age, muscle, weight, height}</span> — exposed as CLI flags. Same pipeline, same OpenPose remap, distinct bodies. Below: <span style="font-family:var(--mono)">--gender 0.0</span> vs <span style="font-family:var(--mono)">--gender 1.0</span>.</p>
-<div class="fig"><img src="__IMG_COMPARE__" alt="male vs female stride comparison">
-  <div class="cap"><b>Male ↔ female, same stride.</b> Note the broader male shoulders vs the narrower female shoulders / wider hips — and the OpenPose registering on each.</div></div>
+<p class="h2note">Female / male / young / old is a single macro dict — <span style="font-family:var(--mono);color:var(--fg-2)">{gender, age, muscle, weight, height}</span> — exposed as CLI flags. Same pipeline, same OpenPose remap, distinct bodies. The convention (from MPFB's own <span style="font-family:var(--mono)">macro.json</span>): <span style="font-family:var(--mono)">--gender 0.0 = female</span>, <span style="font-family:var(--mono)">1.0 = male</span>.</p>
+<div class="fig"><img src="__IMG_COMPARE__" alt="female vs male stride comparison">
+  <div class="cap"><b>Female ↔ male, same stride.</b> <span style="font-family:var(--mono)">--gender 0.0</span> (left) vs <span style="font-family:var(--mono)">1.0</span> (right) — narrower female shoulders / wider hips vs the broader male frame, OpenPose registering on each. The full 8-body × 3-style matrix is below.</div></div>
 
 <!-- ───────────────────────── BEFORE / AFTER ───────────────────────── -->
 <h2><span class="gl">●</span> Before / after — the skirt is gone</h2>
@@ -224,6 +224,11 @@ footer .ll em{font-family:var(--serif);font-style:italic;font-weight:300;color:v
     <div class="cap"><b>Two clean legs.</b> Same camera, same redraw recipe — only the body+skeleton source changed.</div>
   </div>
 </div>
+
+<!-- ───────────────────────── EXAMPLES GALLERY ───────────────────────── -->
+<h2 style="margin-top:72px"><span class="gl">●</span> The matrix — 8 people × 3 styles, all guided by OpenPose</h2>
+<p class="h2note">Eight bodies — young girl, young boy, thin woman, thin man, big woman, big man, muscular woman, muscular man — each posed differently, each staged in Blender, conditioned by its own OpenPose, then generated on RunPod in three styles. The OpenPose holds the pose; the prompt has free rein over style. For each: the Blender ink, the OpenPose plate, and the three gen-AI skins — with the exact prompt used.</p>
+__GALLERY__
 
 <div class="callout">The body changed; the seam didn't. <b>Stop force-fitting</b> — grow the mesh and its weighted skeleton together — and the legs stay two limbs through a hard stride, the body type becomes a dial, and the canonical-OpenPose draw + D2 redraw carry over untouched.</div>
 
