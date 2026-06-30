@@ -4,6 +4,10 @@
 
 Started 2026-06-24. Bench: `Projects/BLUELINE/proofs/track-VI-elemental-motion/`.
 
+## Shelved (2026-06-26): Route B ink sharpening — pending GPU capacity
+
+The `route_generate_v3_sharp.py` script is ready — depth+canny dual FLUX-union control with denoise-0.80 SDXL line-prompt re-ink, designed to turn Route B v2's wash-like ink into crisp pen lines. Last attempted 2026-06-26 and shelved when EU-RO-1 (the `blueline-models` network volume's datacenter) was out of GPU capacity on all six attempted types. **Nothing was charged.** Resume options when picked back up: retry when capacity returns, or download `flux-union-pro` to container disk (no volume → any DC). Until then, Route B's ink reads wash-like in the v2 result.
+
 ---
 
 ## TL;DR — the headline finding
