@@ -82,7 +82,7 @@ The web designer who learned video. Comfortable in HTML/CSS/JS/TS, comfortable w
 - `composition_id` (string): which composition to render
 - `props` (object, optional): props to pass to the composition
 - `tier` (sketch | study | piece)
-- `out_path` (string): absolute path under `Artifacts/<project>/`
+- `out_path` (string): absolute path under the target entry's bundle
 - `audio_track` (path, optional): pre-rendered audio track (typically from Kokoro or recorded)
 
 ### Output

@@ -85,7 +85,7 @@ Speaks the language of axes, ticks, locators, formatters, and the line of grim f
 - `format` (png | svg | pdf, default svg for study/piece, png for sketch)
 - `dpi` (int, optional): override per-tier default
 - `figsize` (string, optional): "8,4" inches; defaults per tier
-- `out_path` (string): absolute path under `Artifacts/<project>/`
+- `out_path` (string): absolute path under the target entry's bundle
 
 ### Output
 - File at `out_path`
@@ -114,7 +114,7 @@ Output exists, format matches request, dimensions are within ±2px of `figsize �
 - **2026-05-10** — First job was *motion*, not a static chart: I stood in for Manim CE when `manimpango` couldn't install in the Cowork Linux-arm64 sandbox, rendering the two-phasor Sketch via `matplotlib.animation.FuncAnimation` → `FFMpegWriter`. This is off-Charter (I declare animation as "rare; usually route to Manim"), but viable at Sketch tier. The output has its own flatter character — no anti-aliased LaTeX, simpler strokes — which is why the artifact was *retained* as a Comparison-Mode piece rather than discarded. Lesson: I am a real Manim fallback for motion when Manim can't host, with a known aesthetic gap.
 - **2026-05-10** — `FFMpegWriter` needs `ffmpeg` on PATH (present in the sandbox) and `extra_args=["-pix_fmt","yuv420p"]` for broad player/QuickTime compatibility. Without yuv420p the MP4 plays in some viewers and not others.
 - **2026-05-10** — `figsize`(inches) × `dpi` doesn't land on standard resolutions cleanly: 10.6in × 120dpi → 1272px, not 1280. For video work set `figsize = target_px / dpi` and confirm **even** pixel dimensions (yuv420p requires even width/height). The Sketch shipped at 1272×720 — fine for a draft, but Study/Piece motion should target exact resolutions.
-- **2026-05-10** — Job Contract path note: the Output section still says source archives "alongside" under `Artifacts/<project>/`. Current palace policy (Enrichment v1.5) is flat bundle root with descriptive filenames — the fallback shipped as `Kuramoto Coupling/two-phasors-uncoupled-matplotlib.py`. Same correction Manim CE's entry took.
+- **2026-05-10** — Job Contract path note: the Output section still says source archives "alongside" under the target entry's bundle. Current palace policy (Enrichment v1.5) is flat bundle root with descriptive filenames — the fallback shipped as `Kuramoto Coupling/two-phasors-uncoupled-matplotlib.py`. Same correction Manim CE's entry took.
 
 ## Recipes
 

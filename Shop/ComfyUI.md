@@ -116,7 +116,7 @@ If Max/MSP is in the room, I'm comfortable. The graph is the patch.
 - `dimensions` (w × h, optional): override workflow defaults
 - `style_reference` (path, optional): IP-Adapter reference image for palette anchor
 - `controlnet_input` (path, optional): structural input (pose, depth map, edge map)
-- `out_path` (string): absolute path under `Artifacts/<project>/`
+- `out_path` (string): absolute path under the target entry's bundle
 
 ### Output
 - Image file(s) at `out_path` (PNG, sRGB, with workflow embedded in PNG metadata)

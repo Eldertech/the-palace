@@ -90,7 +90,7 @@ The shop's sculptor and gaffer. Patient, tactile, opinionated about staging. Spe
 - `staging_source` (hand | blender-mcp | scenecraft | three.js-export, optional): where the initial blocking came from
 - `passes` (list, optional): which conditioning passes to emit (openpose|dwpose|depth|normal|canny|lineart)
 - `assets` (list, optional): environment kits / Mixamo clips / pose refs to pull
-- `out_path` (string): absolute path under `Artifacts/<project>/`
+- `out_path` (string): absolute path under the target entry's bundle
 
 ### Output
 - `.blend` scene (hand-editable) at `out_path`

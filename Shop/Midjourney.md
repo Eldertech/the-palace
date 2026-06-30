@@ -97,7 +97,7 @@ The shop's painter. Aesthetic instincts, fast on prompt phrasing, knows which wo
 - `tier` (sketch | study | piece): determines parameter set and selection discipline
 - `aspect_ratio` (string): "16:9" etc.; Maker injects as `--ar` if not in prompt
 - `style_reference` (URL or `--sref` code, optional): project palette / style anchor
-- `out_path` (string): absolute path under `Artifacts/<project>/`
+- `out_path` (string): absolute path under the target entry's bundle
 - `seed` (int, optional): for reproducing a prior generation; flagged if model version has shifted
 
 ### Output

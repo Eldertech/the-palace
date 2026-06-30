@@ -116,7 +116,7 @@ The shop's spatial builder. Thinks in scene graphs, meshes, materials, and the r
 - `inputs` (list): what the viewer manipulates (orbit, drag-on-object, sliders, pointer)
 - `paired_specialist` (optional): the audio/data specialist whose state this scene reads
 - `skin` (string, optional): Loudon Live skin; defaults to Graphite via the cascade
-- `out_path` (string): absolute path under `Artifacts/<project>/`
+- `out_path` (string): absolute path under the target entry's bundle
 
 ### Output
 - HTML (+ JS/CSS, or a built bundle for R3F) at `out_path`

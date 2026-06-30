@@ -92,7 +92,7 @@ Kokoro's mirror image. Where Kokoro speaks the text into being, I read the speec
 - `task` (transcribe | translate, default transcribe): translate emits English regardless of source
 - `vad` (boolean, optional): force VAD pre-pass on or off
 - `diarize` (boolean, optional): run speaker diarization
-- `out_path` (string): absolute path under `Artifacts/<project>/`
+- `out_path` (string): absolute path under the target entry's bundle
 
 ### Output
 - File(s) at `out_path`: `.json`, `.srt`, `.vtt`, `.txt` per format requests
