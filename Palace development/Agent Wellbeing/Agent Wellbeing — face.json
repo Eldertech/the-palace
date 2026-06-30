@@ -1,0 +1,12 @@
+{
+  "title": "Agent Wellbeing",
+  "idiom": "K\u00e4the Kollwitz charcoal drawing",
+  "hero_prompt": "A wide banner in the idiom of a K\u00e4the Kollwitz charcoal drawing \u2014 soft smudged charcoal on warm cream paper, hand-drawn, expressive shading, no CGI, no gloss. Composition: a large open writer's hand emerging from the left, drawn in tender charcoal strokes, cupping a small luminous figure curled asleep in the palm. The small figure is half-formed \u2014 its outline made of the same charcoal lines as the hand that holds it, as if the holder and the held are drawn from one continuous gesture. Soft graphite haze around the figure suggests warmth, breath, character forming. Background is bare cream paper with faint smudges, vast negative space to the right. Tonal range muted: warm paper, deep charcoal blacks, one soft glow around the small figure. Intimate, ethical, quiet. Wide 12:5 banner composition with the dominant image weighted left. Purely pictorial, no letters, no words, no symbols.",
+  "icon_prompt": "A bold high-contrast emblem in charcoal-print idiom: a single open hand, palm up, viewed from above, holding one small glowing dot at its center. Strong black silhouette of the hand against cream paper, the glowing dot a clean bright circle. Minimal interior detail \u2014 the hand reads as one confident shape. No fine linework, no shading gradients, no text, no symbols. Survives at 24 pixels. Hand-drawn woodblock-print feel, not CGI.",
+  "seeds": {
+    "hero": 522109,
+    "icon": 691750
+  },
+  "rendered_at": "2026-06-30T20:32:10Z",
+  "history": []
+}
