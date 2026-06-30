@@ -73,7 +73,10 @@ All three deep batches are recorded (`batch1/2/3-findings.json`) + `tier2-findin
 Start directly at Step 2. (Re-run the batch Workflow only if you want to re-audit; the
 reusable script is `weave-batch.js` here, run id was `wf_8203dd65-25c`.)
 
-## RESUME STEP 2 — the write-back checkpoint (SHOW BEFORE WRITING)  ← START HERE
+## ✅ WRITE-BACK DONE 2026-06-30 — see `Weave Report — 2026-06-26.md` for the closeout.
+**START HERE for the TAIL:** artifacts-refs (W0 `Artifacts/` paths) · theme-ghost wikilinks · Frame-Designer/Shop prose rosters · the DEFERRED born/died/domains factual lookup + People worksheet shrink · **BLUELINE Phase B** (merge `feature/blueline-m3`, then compress the technique cluster *with Loudon*, 2.5D stays the anchor). The Step-2/3/4 detail below remains the playbook.
+
+## RESUME STEP 2 — the write-back checkpoint (SHOW BEFORE WRITING)  [DONE — kept for reference]
 This is the high-stakes step. ~150 files, hundreds of frontmatter edits. The tree is shared
 and volatile (other Claudes running). DO NOT hand-edit 150 files; write a careful Python
 applier, **dry-run → sample diff → Loudon's go → apply → lint**. Plan:

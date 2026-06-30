@@ -2,9 +2,9 @@
   "meta": {
     "generated": "2026-06-16",
     "scope": "full",
-    "node_count": 335,
+    "node_count": 336,
     "ops_node_count": 35,
-    "edge_count": 2563,
+    "edge_count": 2571,
     "ghost_taxonomy": {
       "error_ghosts": [
         {
@@ -641,7 +641,7 @@
       "last_activated": "2026-06-26",
       "activation_count": "5",
       "outbound_count": 19,
-      "inbound_count": 24
+      "inbound_count": 25
     },
     {
       "id": "BLUELINE \u2014 Board Record Schema",
@@ -773,7 +773,18 @@
       "last_activated": null,
       "activation_count": null,
       "outbound_count": 6,
-      "inbound_count": 8
+      "inbound_count": 9
+    },
+    {
+      "id": "Block It in Blender, Ink It in genAI",
+      "path": "Block It in Blender, Ink It in genAI.md",
+      "type": "practice",
+      "stage": "growing",
+      "has_forward_vector": true,
+      "last_activated": "2026-06",
+      "activation_count": "1",
+      "outbound_count": 8,
+      "inbound_count": 0
     },
     {
       "id": "Blocked, Not Prompted",
@@ -784,7 +795,7 @@
       "last_activated": "2026-06-13",
       "activation_count": "1",
       "outbound_count": 4,
-      "inbound_count": 14
+      "inbound_count": 15
     },
     {
       "id": "Blood Compressor",
@@ -916,7 +927,7 @@
       "last_activated": "2026-06-26",
       "activation_count": null,
       "outbound_count": 8,
-      "inbound_count": 10
+      "inbound_count": 11
     },
     {
       "id": "Comic and Cinema \u2014 Two Ways of Seeing",
@@ -1389,7 +1400,7 @@
       "last_activated": null,
       "activation_count": null,
       "outbound_count": 7,
-      "inbound_count": 2
+      "inbound_count": 3
     },
     {
       "id": "Flocking",
@@ -1587,7 +1598,7 @@
       "last_activated": "2026-06-26",
       "activation_count": "3",
       "outbound_count": 10,
-      "inbound_count": 5
+      "inbound_count": 6
     },
     {
       "id": "Harmonicity and Inharmonicity",
@@ -2775,7 +2786,7 @@
       "last_activated": "2026-06-26",
       "activation_count": "3",
       "outbound_count": 9,
-      "inbound_count": 2
+      "inbound_count": 3
     },
     {
       "id": "Remotion",
@@ -3248,7 +3259,7 @@
       "last_activated": "2026-06",
       "activation_count": "1",
       "outbound_count": 5,
-      "inbound_count": 5
+      "inbound_count": 6
     },
     {
       "id": "Stoicism",
@@ -8949,6 +8960,54 @@
       "type": "connects-to",
       "target": "Threshold Conatus",
       "label": null
+    },
+    {
+      "source": "Block It in Blender, Ink It in genAI",
+      "type": "exemplifies",
+      "target": "Blocked, Not Prompted",
+      "label": "runbook-for"
+    },
+    {
+      "source": "Block It in Blender, Ink It in genAI",
+      "type": "connects-to",
+      "target": "Blender",
+      "label": "blocks-the-scene"
+    },
+    {
+      "source": "Block It in Blender, Ink It in genAI",
+      "type": "connects-to",
+      "target": "Figure Rig",
+      "label": "stages-the-figure"
+    },
+    {
+      "source": "Block It in Blender, Ink It in genAI",
+      "type": "connects-to",
+      "target": "ComfyUI",
+      "label": "drives-the-genai"
+    },
+    {
+      "source": "Block It in Blender, Ink It in genAI",
+      "type": "couples-with",
+      "target": "Hand-Drawn 3D Look",
+      "label": "the-look"
+    },
+    {
+      "source": "Block It in Blender, Ink It in genAI",
+      "type": "connects-to",
+      "target": "Remnants in Depth",
+      "label": "atmosphere-layers"
+    },
+    {
+      "source": "Block It in Blender, Ink It in genAI",
+      "type": "connects-to",
+      "target": "Steer the Generator",
+      "label": "generate-many"
+    },
+    {
+      "source": "Block It in Blender, Ink It in genAI",
+      "type": "emerged-from",
+      "target": "BLUELINE",
+      "label": "proving-ground"
     },
     {
       "source": "Steer the Generator",
