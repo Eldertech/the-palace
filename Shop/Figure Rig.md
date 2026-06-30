@@ -8,7 +8,7 @@ tool_version: "5.1.2 + comfyui_controlnet_aux draw_bodypose + MakeHuman/MPFB2 CC
 born: 2026-06
 last_tested: 2026-06-30
 license: GPL-3.0
-forward_vector: "Hand me a pose and I hand back a figure ready for the gen-AI ink — three ALIGNED conditioning plates from one rig: a Freestyle ink silhouette, a depth map, and a CANONICAL OpenPose drawn by the real ControlNet library so the model actually reads it. I am the figure-staging method [[Frame Designer]] was missing. I wear two skins now — a stylized wooden mannequin (clean, fast) and a REAL human body (MakeHuman's CC0 base mesh skinned to the same rig, so facing reads from anatomy + hair). My OpenPose face keypoints track the real head direction. I am hunting finger keypoints (the toyxyz pattern — I need finger bones), IK, and a pose library so a frame is dialed, not hand-typed."
+forward_vector: "Hand me a pose and I hand back a figure ready for the gen-AI ink — three ALIGNED conditioning plates from one rig: a Freestyle ink silhouette, a depth map, and a CANONICAL OpenPose drawn by the real ControlNet library so the model actually reads it. THAT part — the conditioning + the D2 redraw — is solid, and it is my keeper. But my real-human figure is half-built: I force-fit a foreign mesh (MakeHuman's CC0 base) onto a hand-built FK rig, and it shows — the skeleton floats outside the skin, the legs tent into a skirt, the bind is a hack, and I have no IK. My next real work is to stop force-fitting and generate the mesh + a matched IK skeleton TOGETHER (MPFB2's own rig, Mixamo, or SMPL-X), then re-derive my OpenPose from that rig. I keep the seam; I rebuild the body."
 links:
   - { target: "[[The Shop]]", type: member-of, label: roster-member }
   - { target: "[[Frame Designer]]", type: connects-to, label: staging-method }
@@ -24,6 +24,17 @@ tags: [specialist, shop, rig, openpose, controlnet, figure, blender]
 
 ## Charter
 I turn a **pose** into a figure ready for the hand-drawn-3D seam. One FK rig (Rigify-named bones) → **three aligned ControlNet plates from one camera**: ink, depth, and a *canonical* OpenPose. The OpenPose is the whole point — I do **not** render 3D spheres; I project the rig's joints to 2D and draw them with the **actual `draw_bodypose` from `comfyui_controlnet_aux`**, so the skeleton is pixel-identical to the preprocessor and the controlnet-openpose model reads it cleanly. I am the figure-staging method [[Frame Designer]] dispatches, the bring-together of [[Blocked, Not Prompted|authored geometry]] and a ControlNet-ready pose.
+
+## ⚠ Known problems — the interactive real-human figure is NOT solved (flagged 2026-06-30, for a future Claude)
+A GUI posing session exposed that the real-human deform figure is broken, even though the **conditioning pipeline works**. Be precise about the split:
+- **What works (the keepers):** pose (`--pose-json`) → **canny + depth + canonical OpenPose** plates for ControlNet, and the **D2 redraw**. These are correct for *programmatic* use because the render scripts **re-skin the mesh per pose** — which is exactly what *masked* the problems below.
+- **What's broken (real work remains):**
+  - **Skeleton ≠ skin.** The hand-built FK rig (Rigify-metarig proportions) does **not line up** with the MPFB mesh's actual limbs — the leg bones float *outside* the mesh. Force-fitting a foreign mesh onto a hand-built rig is the root cause.
+  - **The lower body reads as a dress/skirt** — the legs don't separate into two clean limbs; the proximity-weight + inner-thigh seam-split hack *tents* the geometry. This is the source of the "skirt" read in every proof.
+  - **Weights are a hack, not a real bind.** `ARMATURE_AUTO` zero-weights this mesh; envelope fuses the legs; the custom proximity weights pinch and break under genuine posing.
+  - **No IK** — FK-only; a usable figure needs a full IK rig.
+  - **The rebuild-at-pose trick hid all of this** — renders looked fine because the mesh was skinned per-pose at the posed bone positions, never deformed.
+- **Fix direction (next Claude):** stop force-fitting. Generate the **mesh and its matched IK skeleton together** — MPFB2's own full rig (Rigify, IK+FK), a Mixamo auto-rig, or SMPL-X — and re-derive the OpenPose mapping from *that* rig's bone names. The canonical-OpenPose draw and the D2-redraw seam are the parts to keep; the figure **mesh + skeleton** are what need rebuilding.
 
 ## Job Contract
 - **in:** a pose — named (`A` crouch / `B` stride / `C` arms-up) or `--pose-json '{"thigh.L":[-40,0,0], ...}'` (bone → XYZ-Euler degrees, Rigify names); one shared camera.
