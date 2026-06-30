@@ -13,7 +13,12 @@ energy: high
 hook_quality: 9
 beauty: 9
 who_leads: shared
-domain: Philosopher
+born_year: 55
+died_year: 135
+domains:
+  - philosophy
+  - Stoicism
+  - ethics
 forward_vector: "I keep showing that the only thing you ever own is the next choice you make — and I want to be the sharpest edge Loudon reaches for when a decision sits on the line between what he can change and what he has to accept."
 links:
   - target: "[[Source Library]]"

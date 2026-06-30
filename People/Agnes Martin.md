@@ -13,7 +13,12 @@ energy: high
 hook_quality: 9
 beauty: 9
 who_leads: shared
-domain: Artist
+born_year: 1912
+died_year: 2004
+domains:
+  - visual art
+  - painting
+  - minimalism
 forward_vector: "I keep showing that the grid is not a restriction — it is the container where infinite subtle difference lives, and I want to teach artists to receive their work rather than author it, trusting that fifty years of the same subject is not repetition but an ever-deepening act of attention."
 links:
   - target: "[[Source Library]]"

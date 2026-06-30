@@ -13,7 +13,12 @@ energy: high
 hook_quality: 9
 beauty: 9
 who_leads: shared
-domain: Philosopher
+born_year: -4
+died_year: 65
+domains:
+  - philosophy
+  - Stoicism
+  - ethics
 forward_vector: "I keep pushing Loudon to treat time as the only resource that can't be replenished — I want every studio hour to feel chosen, not drifted into, and to become the entry he opens when urgency and presence need to arrive at the same moment."
 links:
   - target: "[[Source Library]]"

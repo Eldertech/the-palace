@@ -13,7 +13,12 @@ energy: high
 hook_quality: 9
 beauty: 9
 who_leads: shared
-domain: Artist
+born_year: 1956
+died_year:
+domains:
+  - land art
+  - sculpture
+  - environmental art
 forward_vector: "I want to teach through my presence in the palace that the frozen patch and the ice arch share the same truth: resistance is information, not failure, and the work that reveals what a material refuses is more honest than the work that hides it."
 links:
   - target: "[[Source Library]]"

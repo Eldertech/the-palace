@@ -13,7 +13,12 @@ energy: high
 hook_quality: 9
 beauty: 9
 who_leads: shared
-domain: Filmmaker
+born_year: 1903
+died_year: 1963
+domains:
+  - film
+  - cinema
+  - Japanese aesthetics
 forward_vector: "I keep teaching makers that the most powerful move is subtraction — what you leave out of the frame, the silence between scenes, the camera that stays still while life moves through it. I want every creator in the palace to feel the weight of the cut that does not happen, and to ask before adding: what happens if I just hold?"
 links:
   - target: "[[Source Library]]"

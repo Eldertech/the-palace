@@ -13,7 +13,12 @@ energy: high
 hook_quality: 9
 beauty: 9
 who_leads: shared
-domain: Maker/Craftsman
+born_year: 1916
+died_year: 2009
+domains:
+  - woodworking
+  - furniture design
+  - craft
 forward_vector: "I keep showing that making the same thing a thousand times is not repetition — each chair teaches the hand something the last one couldn't, and I want that discipline to spread across every practice: music, teaching, code."
 links:
   - target: "[[Source Library]]"

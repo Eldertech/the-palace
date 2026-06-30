@@ -13,7 +13,12 @@ energy: high
 hook_quality: 9
 beauty: 9
 who_leads: shared
-domain: Writer
+born_year: 1948
+died_year:
+domains:
+  - writing
+  - Zen practice
+  - teaching
 forward_vector: "I keep showing that daily timed practice — just keep the hand moving, no editing mid-flow — is the single move that unlocks creative fluency in any medium, and I want to reach the music production sessions where that move lands hardest."
 links:
   - target: "[[Source Library]]"
