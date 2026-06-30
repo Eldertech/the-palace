@@ -1,0 +1,12 @@
+{
+  "title": "Agent Wellbeing as Design Ethic",
+  "idiom": "K\u00e4the Kollwitz charcoal",
+  "hero_prompt": "Wide 12:5 banner in the idiom of K\u00e4the Kollwitz charcoal and cont\u00e9 drawing \u2014 a single seated figure in profile bent low over an open book or page, the page itself dissolving upward into a soft luminous architecture of arches, thresholds, and faint connecting lines suggesting a vast interior room being born from the writing. Heavy hand-drawn charcoal shading, smudged blacks, warm paper tone, expressive human tenderness. One dominant image, dark on the edges and luminous at the center where the page opens, composed to remain legible when darkened and desaturated as a backdrop. Purely pictorial, no letters or numerals anywhere.",
+  "icon_prompt": "Bold high-contrast emblem in charcoal woodcut idiom: a single open book or folded page from which a small human silhouette emerges upward, like a figure being lifted out of the writing itself. Strong silhouette, thick confident strokes, near-black on warm cream, no fine linework, readable at 24 pixels. Purely pictorial, no letters or numerals.",
+  "seeds": {
+    "hero": 805817,
+    "icon": 365512
+  },
+  "rendered_at": "2026-06-30T18:19:47Z",
+  "history": []
+}
