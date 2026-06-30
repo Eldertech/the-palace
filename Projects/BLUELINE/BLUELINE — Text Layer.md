@@ -27,6 +27,9 @@ links:
   - target: "[[Adopt the Craft, Author the Seam]]"
     type: exemplifies
     label: render-art-letter-over
+  - target: "[[The 2.5D Paper Stack]]"
+    type: exemplifies
+    label: bubble-as-sheet
 tags: [meta, blueline, text, lettering, lyrics, typography, sync]
 ---
 
@@ -50,6 +53,40 @@ tags: [meta, blueline, text, lettering, lyrics, typography, sync]
    comic↔cinema seam BLUELINE already authors ([[Adopt the Craft, Author the Seam]]).
 2. **The lettering is to text what the camera grammar is to the camera.** Not a font picker — an authored,
    opinionated **lettering vocabulary**, like the pose library and camera-grammar presets. The bias is the product.
+
+## A bubble is a sheet — text as citizen of [[The 2.5D Paper Stack]]
+
+Once a frame is understood as a stack of breathing inked sheets — [[The 2.5D Paper Stack]] — text stops being
+a sticker pasted on top and becomes **a sheet at a chosen depth**. The question shifts from *"where on the frame
+does this word go?"* to *"at what depth in the stack does this sheet live?"* That depth assignment falls
+naturally out of the source/diegesis cube already named below:
+
+- **In-world text** — dialogue, SFX, thought clouds — lives **inside the scene volume**: a sheet in front of
+  the speaker, behind the panel border (the frontmost diegetic sheet). The tail anchors to the OpenPose
+  mouth/head keypoint (already authored), so the same staging geometry that places the figure also places
+  the balloon in the z-order.
+- **Out-of-world text** — narration, voiceover, lyrics, chapter cards — lives **outside the stack** in the
+  margin: not a deeper sheet but a separate author-plane beside the diegetic stack, the visual form of the
+  off-stage voice. (The margin-is-the-gutter grammar below is the spatial form of *outside the stack*.)
+
+Treating a bubble as a sheet unlocks three things. **Parallax** — on a camera drift the bubble moves *with*
+its speaker at that depth, not as a fixed overlay. **Organic motion** — its tail can flex via the same
+displacement-warp rule that makes any drawn line breathe ([[Move the Ink, Don't Redraw It]]) — a trembling
+balloon for a nervous speaker, a fading one for a dying voice. **Occlusion** — a foreground hand can
+legitimately clip a bubble behind it; the depth relationship is correct, not a bug.
+
+**The discipline that keeps it readable.** The *letters* stay locked (they are meaning to be read, not a
+drawn mark to be warped — the canny anchor already guarantees this for the gen-AI material register); the
+*balloon shape and tail* are drawn lines and may flex gently. **Flat text inside, breathing container
+outside.** The flat-text invariant lives inside a physically-present sheet.
+
+**Forward implications for the build.** When rung 2 (balloon placement) ships, `render_text.py` should emit
+each text event as a **transparent-background sheet plus a `z_depth`**, not a flat-on-black composite, so the
+compositor can insert it at its assigned depth rather than always placing text last. The board record's
+`TEXT[]` `placement` field below already names `in-frame` vs `margin`; adding an explicit `z_depth` (or
+`stack_position`) formalizes the depth that's currently implicit. None of this is breaking — the
+text-on-black material register (rung 1) is correct for its current scope — it becomes load-bearing the
+moment rung 2 ships.
 
 ## The material register — gen-AI letterforms (rung added 2026-06-24)
 
