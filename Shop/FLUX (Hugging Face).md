@@ -104,7 +104,7 @@ The cloud-side painter. Fast (~3 s per render) and free, but I live on someone e
 - `seed` (int): pin for reproducibility; the Maker assigns the project's anchor seed
 - `guidance_scale` (float, default 4.5): FLUX preferred range 3.0–5.0
 - `num_inference_steps` (int, default 24): Krea-dev quality plateau around 24–32
-- `out_path` (string): absolute path under `Artifacts/<project>/`
+- `out_path` (string): absolute path under the target entry's bundle
 
 ### Output
 - PNG file at `out_path` (sRGB)

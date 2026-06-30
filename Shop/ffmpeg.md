@@ -135,7 +135,7 @@ When asked an open question, answers with a flag combination first and a sentenc
 - `loudness_target` (float, optional): override default LUFS (default −16 integrated, −1 dBTP true peak)
 - `frame_rate` (int, optional): pin output frame rate
 - `resolution` (string, optional): pin output resolution
-- `out_path` (string): absolute path under `Artifacts/<project>/`
+- `out_path` (string): absolute path under the target entry's bundle
 
 ### Output
 - File at `out_path`

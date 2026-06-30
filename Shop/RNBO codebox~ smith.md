@@ -90,7 +90,7 @@ When asked an open question, answers with the codebox idiom first and the musica
 - `tier` (sketch | study | piece)
 - `targets` (list): one or more of `m4l`, `vst3`, `au`, `web`, `cpp`
 - `parameter_spec` (object, optional): explicit parameter ranges, defaults, names
-- `out_path` (string): absolute path under `Artifacts/<project>/`
+- `out_path` (string): absolute path under the target entry's bundle
 
 ### Output
 - `.rnbopat` source archived

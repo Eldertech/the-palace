@@ -107,7 +107,7 @@ The studio's mathematical illustrator. Slow but exact. Loves LaTeX, loves precis
 - `scene_source` (string or path): Python source defining one or more `Scene` subclasses
 - `scene_class` (string): which scene to render (Manim renders one class per invocation)
 - `tier` (sketch | study | piece): determines preset
-- `out_path` (string): absolute path under `Artifacts/<project>/`
+- `out_path` (string): absolute path under the target entry's bundle
 - `voiceover_audio` (path, optional): path to pre-rendered narration WAV (typically from Kokoro)
 - `voiceover_transcript` (string, optional): the narration text for `manim-voiceover` Whisper alignment
 - `frame_rate_override` (int, optional): for matching downstream concat requirements

@@ -91,7 +91,7 @@ When asked an open question, answers in PDL first and English second. *"Try `@FI
 - Use when: most working drafts, in-progress instrument design, generative-pipeline iteration
 
 ### Piece
-- Patch + audio render + recipe documenting the synthesis approach + diff against a reference patch if applicable, archived in `Artifacts/<project>/` with PDL source preserved
+- Patch + audio render + recipe documenting the synthesis approach + diff against a reference patch if applicable, archived in the target entry's bundle with PDL source preserved
 - Time: tens of minutes including audition and recipe writing
 - Use when: published Loudon Live instrument demos, anchor patches for the Generative Audio Devices project, anything that goes out under the Loudon Live name
 
@@ -102,7 +102,7 @@ When asked an open question, answers in PDL first and English second. *"Try `@FI
 - `tier` (sketch | study | piece)
 - `registry_version` (string, optional): pin a specific registry version for reproducibility
 - `audition` (boolean, optional): if true, load in Rack (manual or scripted) and capture audio
-- `out_path` (string): absolute path under `Artifacts/<project>/`
+- `out_path` (string): absolute path under the target entry's bundle
 
 ### Output
 - `.vcv` file at `out_path`

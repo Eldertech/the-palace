@@ -91,7 +91,7 @@ The shop's typesetter — the one who cares that the en-dash isn't a hyphen and 
 - `output_format` (pdf | svg | png, default pdf; svg/png trigger the cutout path)
 - `bib` (path, optional): bibliography source for `biber`/`bibtex`
 - `assets` (list, optional): image/data files the source `\input`s
-- `out_path` (string): absolute path under `Artifacts/<project>/` or the entry's bundle
+- `out_path` (string): absolute path under the target entry's bundle
 
 ### Output
 - File at `out_path` (PDF, or SVG/PNG cutout)

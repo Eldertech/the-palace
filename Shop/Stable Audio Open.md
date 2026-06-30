@@ -103,7 +103,7 @@ The shop's sound-painter. Comfortable in spectral and temporal language. Knows t
 - `seed` (int, optional): for reproducibility
 - `cfg_scale` (float, optional): prompt adherence (default 6.0–7.0)
 - `steps` (int, optional): override per-tier defaults
-- `out_path` (string): absolute path under `Artifacts/<project>/`
+- `out_path` (string): absolute path under the target entry's bundle
 
 ### Output
 - WAV file at `out_path`

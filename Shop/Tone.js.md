@@ -82,7 +82,7 @@ The shop's web musician. Knows the Web Audio API underneath but rarely needs to 
 - `deployment` (claude-artifact | local-server | standalone-html): determines packaging
 - `inputs` (list, optional): user inputs (mouse, keyboard, MIDI, touch)
 - `tempo` (float, optional): default tempo if Transport-based
-- `out_path` (string): absolute path under `Artifacts/<project>/`
+- `out_path` (string): absolute path under the target entry's bundle
 
 ### Output
 - HTML file (and supporting JS/CSS as needed) at `out_path`

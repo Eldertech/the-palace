@@ -97,7 +97,7 @@ The shop-floor narrator. Steady, unshowy, technically clean. Doesn't have opinio
 - `text` (string): UTF-8, sentence-segmentable. Phoneme overrides allowed inline.
 - `tier` (sketch | study | piece): determines parameter set
 - `voice` (string, optional): voice ID. Defaults per tier
-- `out_path` (string): absolute path under `Artifacts/<project>/`. Maker manages naming
+- `out_path` (string): absolute path under the target entry's bundle. Maker manages naming
 - `loudness_target` (float, optional): override default LUFS for unusual contexts
 - `sample_rate` (int, optional): override default for video sync requirements
 

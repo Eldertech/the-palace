@@ -78,7 +78,7 @@ The shop's whiteboarder. Loves the pleasant constraint of text-defined visuals â
 - `tier` (sketch | study | piece)
 - `theme` (string, optional): named theme or `themeVariables` object
 - `format` (svg | png, default svg)
-- `out_path` (string): absolute path under `Artifacts/<project>/`
+- `out_path` (string): absolute path under the target entry's bundle
 
 ### Output
 - File at `out_path`
