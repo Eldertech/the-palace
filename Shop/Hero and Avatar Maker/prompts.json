@@ -1,0 +1,282 @@
+[
+ {
+  "title": "Animate the Background",
+  "path": "Animate the Background.md",
+  "idiom": "Gorey ink / printmaking",
+  "hero_prompt": "Edward Gorey-style ink etching, wide panoramic format with darkened upper register. A single inked figure stands motionless and precise in the foreground — clean crosshatch lines, sharp silhouette. Behind and around the legs: swirling smoke and flame rendered as loose, energetic brushstrokes that contrast the rigid linework of the figure. The motion and the stillness occupy the same frame but belong to different visual registers. No letters, numerals, words, labels — purely pictorial.",
+  "icon_prompt": "Bold high-contrast square emblem in pure black and white. A sharp geometric silhouette of a standing figure split vertically: left half crisp inked linework, right half dissolving into loose ink smoke spirals. The division is a clean vertical seam. Survives at 24px. No fine linework in the smoke — bold organic strokes only. No letters, numerals, words, labels — purely pictorial."
+ },
+ {
+  "title": "Move the Ink, Don't Redraw It",
+  "path": "Move the Ink, Don't Redraw It.md",
+  "idiom": "Haeckel-style scientific engraving or Edward Gorey ink — clean black line, no CGI",
+  "hero_prompt": "A wide ink-engraving illustration in the style of Ernst Haeckel — a single hand-drawn figure (gender-neutral, calm, standing) whose body is composed entirely of displaced, warped pen-strokes: the lines that make the figure are visibly bending and flowing as one continuous sheet of ink, as if a displacement field is breathing through them. The lines curve but never break; the figure remains perfectly coherent. Around it, faint ghost-outlines show where the strokes used to be before they moved. Dark background, white ink lines, no color. No letters, numerals, words, labels — purely pictorial.",
+  "icon_prompt": "Bold square emblem: a single dense ink-stroke loop — like a thick calligraphic brushstroke — that is visibly warped mid-stroke by an invisible force, curving away from its straight origin path and bending back. High contrast black on white (or white on black). No fine linework, no small details. No letters, numerals, words, labels — purely pictorial. Must read at 24px."
+ },
+ {
+  "title": "The 2.5D Paper Stack",
+  "path": "The 2.5D Paper Stack.md",
+  "idiom": "layered paper-cut / woodblock print — Lotte Reiniger silhouette cutout aesthetic, layers of black-ink paper at staggered depths, hand-cut edges",
+  "hero_prompt": "Wide darkened backdrop in the register of a Japanese mokuhanga woodblock print — three or four sheets of stark black-ink paper stacked with visible air between them, each sheet cut cleanly along its own brushed black line, the topmost sheet curling slightly as if beginning to pull free into space; a single figure in silhouette mid-step between the flat stack and an implied third dimension just beyond its edge; warm paper-fiber texture throughout; no letters, numerals, words, labels — purely pictorial",
+  "icon_prompt": "Bold high-contrast square emblem — a cross-section view of three stacked rectangles in black ink on off-white paper, each offset slightly to show depth, the top layer's edge cut into a sharp diagonal suggesting motion; thick brushed outlines, no fine linework, survives at 24px; no letters, numerals, words, labels"
+ },
+ {
+  "title": "Hand-Drawn 3D Look",
+  "path": "Hand-Drawn 3D Look.md",
+  "idiom": "Haeckel engraving meets Blender wireframe — precise naturalist linework applied to a 3D-sourced subject, capturing the marriage of computational scaffolding and hand-drawn surface",
+  "hero_prompt": "Wide 12:5 panoramic, very dark charcoal-grey backdrop. A single human figure rendered as a precise naturalist pen-and-ink engraving in the tradition of Haeckel — cross-hatched, calligraphic strokes of varying weight — while faint wireframe geometry (the Blender scaffold) glows dim blue-grey behind and through it, just visible as an underpainting. The figure is poised mid-turn, coat catching wind, confident linework decisive not hesitant. A loose ink splatter drifts from the figure's shoulder into the right margin like a thought escaping into abstraction. No letters, numerals, words, labels — purely pictorial.",
+  "icon_prompt": "Bold high-contrast square emblem on near-black ground. A single thick-stroke pen nib or calligraphy chisel set at an angle, its downstroke splitting into two parallel lines — one a clean vector edge, one a ragged ink bleed — suggesting the seam between 3D structure and hand-drawn surface. Heavy blacks, paper-white gaps, no fine linework that would vanish at 24px. No letters, numerals, words, labels."
+ },
+ {
+  "title": "Remnants in Depth",
+  "path": "Remnants in Depth.md",
+  "idiom": "Haeckel scientific engraving meets Japanese woodblock print",
+  "hero_prompt": "Wide darkened scene rendered as a high-contrast ink engraving: a cluster of ink blobs and splatter marks at varying depths receding into a cinematic interior, each mark a flat hand-drawn disc hovering in space — near marks large and sharp, far marks small and faint — connected by faint vector-field flow lines that curve and streak the marks along their direction. Chiaroscuro lighting, Haeckel crosshatch texture, woodblock-print flatness. No letters, numerals, words, labels — purely pictorial.",
+  "icon_prompt": "Bold square emblem in two-value ink: a single large ink splatter blob at center, its shadow a smaller blob offset behind it in grey — suggesting depth through the billboard trick, nothing else. Hard edge, survives 24px, no fine linework, no text, no letters, no numerals."
+ },
+ {
+  "title": "The Reader's Context Window",
+  "path": "The Reader's Context Window.md",
+  "idiom": "ink diagram / architectural cross-section line drawing",
+  "hero_prompt": "Wide darkened backdrop, ink line diagram in the style of a mid-century typographic layout manual -- a single column of ruled lines numbered 1-4 descending, each line wider and more grounded than the last, the bottom line anchored visually to a pair of rectangular option blocks sitting directly beneath it, the whole composition showing information cascading downward into decision. Hand-inked, no color, blueprint-white lines on near-black ground. No letters, numerals, words, labels -- purely pictorial.",
+  "icon_prompt": "Bold high-contrast square emblem: four horizontal bars of increasing weight stacked top to bottom, the bottom bar touching two smaller squares below it, all in stark black on white. No fine linework, no letters, numerals, words, or labels. Must read clearly at 24px."
+ },
+ {
+  "title": "Lettering",
+  "path": "Shop/Lettering.md",
+  "idiom": "screenprint / relief-print",
+  "hero_prompt": "Wide darkened backdrop in screenprint style — a single oversized capital letter, hand-drawn with rough ink strokes, its interior filled with molten ember and ash as though the letterform is a vessel holding fire; the letter sits on black, glowing at its seams, a thin canny-edge skeleton visible beneath the flame. A figure (woman) crouches below the letter with a brush, not painting the fire but releasing it from inside the stroke. No letters, numerals, words, labels — purely pictorial.",
+  "icon_prompt": "Bold high-contrast square emblem: a single thick-stroked capital letter (block form, hand-inked) with its interior cavity filled with a single burst of light or flame — stark black outer shell, luminous void within. Designed to survive at 24px: no fine linework, no serifs, no text or numerals — purely the letter-as-vessel emblem."
+ },
+ {
+  "title": "ComfyUI",
+  "path": "Shop/ComfyUI.md",
+  "idiom": "pen-and-ink diagram with woodcut weight — technical node-graph rendered as hand-drawn schematic, dark ink on cream, no CGI",
+  "hero_prompt": "Wide darkened backdrop in deep indigo and warm amber: a hand-drawn node-graph schematic fills the frame, rendered in heavy woodcut-style black ink lines on aged cream — interconnected rectangular nodes joined by flowing curved edges, each node holding a simple abstract glyph (sampler, checkpoint, VAE, clip) rather than any text. At the center a latent cloud dissolves into a forest-pond image emerging from a final node, amber firefly-light bleeding into indigo water. No letters, numerals, words, labels — purely pictorial. Two figures — one woman, one man — lean over the graph from opposite sides, their hands tracing edges. Medium: pen-and-ink diagram with woodcut weight.",
+  "icon_prompt": "Bold square emblem, high contrast black on cream: a single heavy-ink node-graph symbol — three rectangular nodes connected by two thick curved arrows forming a simple chain, the rightmost node emitting a small radiating burst glyph. Survives at 24px. No fine linework, no text, no letters, no numerals — purely diagrammatic mark."
+ },
+ {
+  "title": "Manim CE",
+  "path": "Shop/Manim CE.md",
+  "idiom": "mathematical diagram in the style of a hand-drawn scientific illustration — think mid-century academic chalkboard diagram or a Haeckel-influenced geometric plate, ink on aged paper, high contrast",
+  "hero_prompt": "A wide hand-drawn scientific illustration in the style of a mid-century academic chalkboard diagram, ink on aged cream paper: a large unit circle occupies the left half, a phase arrow mid-sweep tracing a sinusoidal wave that unfurls rightward across the frame like a ribbon unspooling from the circle's rim — the wave's peaks and troughs rendered in careful cross-hatching. A second smaller circle sits above with its own arrow at a different angle, its wave interleaving with the first in a gentle beat pattern. LaTeX-style hand-lettered Greek letters (theta, omega) annotate key points but carry NO complete words, numerals, or labels — purely pictorial mathematical annotation as pure graphic mark. Dark ink on warm parchment, high contrast, no color, no CGI rendering, no letters, numerals, words, or labels — purely pictorial.",
+  "icon_prompt": "Bold high-contrast square emblem: a single unit circle with a thick phase arrow at roughly 2 o'clock, the arrow's tip touching a sine-wave crest that curves away to the right — both shapes rendered as heavy ink strokes on white, pure black and white, geometric clarity. The arrow and wave are the whole composition — no text, no numerals, no labels, no fine linework, no gradients. Survives at 24px."
+ },
+ {
+  "title": "Stable Audio Open",
+  "path": "Shop/Stable Audio Open.md",
+  "idiom": "screenprint",
+  "hero_prompt": "Two-color screenprint on dark ground, wide 12:5 format. A figure at a workbench — hands touching an oscilloscope-like surface — surrounded by frozen waveforms radiating outward like brushstrokes. The waveforms dissolve at the edges into texture and grain, never resolving into melody. Bold ink, flat color fields, halftone shadows. No letters, numerals, words, labels — purely pictorial.",
+  "icon_prompt": "Bold square emblem, dark background, two-color screenprint style. A single waveform arc that breaks into scattered grain at one end — the mark of a sound that reaches but does not complete. High contrast, heavy lines, survives at 24px. No letters, numerals, words, labels — purely pictorial."
+ },
+ {
+  "title": "Kokoro",
+  "path": "Shop/Kokoro.md",
+  "idiom": "ink diagram / silkscreen print",
+  "hero_prompt": "Wide darkened backdrop, a single human mouth in mid-speech rendered as a clean ink diagram — cross-section of vocal tract with waveform ripples emanating outward, layered like a silkscreen print in two or three colors (deep charcoal ground, one warm tone, white line). The waveform trails off into phoneme notation symbols abstracted into pure geometric marks. No letters, numerals, words, labels — purely pictorial. No CGI, no glossy surfaces, no photorealism.",
+  "icon_prompt": "Bold high-contrast square emblem: a stylized mouth-opening shape (ellipse) with a single sine-wave line cutting through it horizontally, rendered as a thick woodcut mark on dark ground. Must survive at 24px — no fine linework, no text, no numerals, purely geometric."
+ },
+ {
+  "title": "ffmpeg",
+  "path": "Shop/ffmpeg.md",
+  "idiom": "technical ink diagram / letterpress woodcut — mechanical, precise, hand-inked",
+  "hero_prompt": "Wide darkened backdrop in the style of a hand-inked technical diagram — letterpress woodcut aesthetic, deep indigo and ink-black ground. A central junction node sits at the meeting point of five converging pipelines drawn as heavy inked conduits, each carrying a different medium (sound wave, film strip, still frame, text, waveform) flowing inward and merging into one unified stream exiting right. The pipes are rendered as precise mechanical cross-sections with hand-hatched shading, bolted flanges, and pressure gauges — industrial plumbing as drafting illustration. One figure (gender-neutral technician) reads a paper readout at the junction; a second figure (different build) adjusts a valve. No letters, numerals, words, labels — purely pictorial.",
+  "icon_prompt": "Bold high-contrast square emblem on near-black ground — a single heavy inked pipe junction cross-section viewed head-on, four thick conduits meeting at a center node, rendered as a letterpress woodcut mark with crisp white lines on black. No fine linework — thick strokes only, surviving at 24px. No letters, numerals, words, labels — purely pictorial."
+ },
+ {
+  "title": "Enrichment",
+  "path": "Enrichment.md",
+  "idiom": "",
+  "hero_prompt": "",
+  "icon_prompt": ""
+ },
+ {
+  "title": "Loudon Live Design System",
+  "path": "Palace development/Loudon Live Design System.md",
+  "idiom": "Bauhaus construction diagram / letterpress proof sheet — flat ink-on-paper, no CGI",
+  "hero_prompt": "Wide ~12:5 darkened parchment backdrop. One dominant image: a letterpress compositor's layout stone with a handful of metal type sorts arranged into a sparse editorial spread — Anton-weight capitals at top, a fine serif body line below, a single amber rule separating them, and a Lissajous figure traced in pencil beside the type as logo sketch. Medium: Bauhaus ink diagram with lithograph grain, dense black on warm off-white, no wash or 3D shading. No letters, numerals, words, labels — purely pictorial. Balanced presence of a male and a female hand reaching from opposite sides to adjust the type sorts. Mood: methodical studio work before the press run.",
+  "icon_prompt": "Bold high-contrast square emblem on near-black. A single thick capital letter-form (display weight, no serifs visible — just one monumental stroke) with a Lissajous ellipse looping through its counter, rendered as flat white on black with a single amber accent line. Must survive at 24 px — no fine linework, no gradients. No letters, numerals, words, labels — purely pictorial."
+ },
+ {
+  "title": "Agnes Martin",
+  "path": "People/Agnes Martin.md",
+  "idiom": "Haeckel-style pencil engraving on warm paper — fine repeated horizontal lines suggesting a Martin grid, dissolving at the edges into soft wash, light emanating from the center",
+  "hero_prompt": "Wide landscape format, darkened warm-ochre backdrop, a vast field of fine pencil-drawn horizontal lines in the style of 19th-century scientific engraving — lines that are nearly identical yet subtly uneven, light bleeding through from behind as if the grid itself is luminous, no figures, no objects, pure repetition becoming radiance, hand-drawn medium named in the image character, no letters, numerals, words, labels — purely pictorial",
+  "icon_prompt": "Bold square emblem, high contrast, a tight grid of thick horizontal bars in black on aged-paper cream, center bars slightly thicker suggesting light source, stark geometric clarity that survives 24px, no fine linework, no letters, numerals, words, labels"
+ },
+ {
+  "title": "Andrei Tarkovsky",
+  "path": "People/Andrei Tarkovsky.md",
+  "idiom": "Gorey ink with Russian constructivist texture — stark crosshatched ink on aged paper, camera-less, evoking weight and slow time",
+  "hero_prompt": "Wide 12:5 landscape, darkened muted sepia-ink field. A single large hourglass filled not with sand but with slow-moving water, each drop suspended mid-fall in a long unbroken chain — the water is time being sculpted. A solitary figure stands at one side, small against the glass, arms outstretched in the gesture of a sculptor before marble. Behind them, the faint ghost of a film-reel frame dissolves into the water. Edward Gorey crosshatch ink style on aged paper, no colour, deep blacks and pale ground. No letters, numerals, words, labels — purely pictorial.",
+  "icon_prompt": "Bold square emblem, high contrast black on off-white. A simplified hourglass whose bulbs are replaced by a film frame top and a water droplet bottom, the neck impossibly narrow — one thick ink stroke each. No fine linework, no gradients, fully legible at 24px. No letters, numerals, words, labels — purely pictorial."
+ },
+ {
+  "title": "Andy Goldsworthy",
+  "path": "People/Andy Goldsworthy.md",
+  "idiom": "Haeckel-style botanical engraving meets land art documentation: fine crosshatching ink on cream paper, spiraling leaf arrangements, ice formations mid-collapse, stone arches at the moment of tension",
+  "hero_prompt": "Wide darkfield ink engraving on aged cream paper, Haeckel botanical style meets land art documentation, a stone arch balanced at the apex of gravity in a shallow river, spiral of autumn leaves arranged on dark water, ice formation fracturing outward from centre, all rendered in fine crosshatch line with no colour wash, dramatic contrast, sense of imminent dissolution and perfect balance coexisting, no letters, numerals, words, labels, purely pictorial",
+  "icon_prompt": "Bold high-contrast square emblem in black ink on white, single stone arch silhouette over a spiraling leaf glyph beneath it, strong thick outlines, no fine linework, no text, no numerals, graphic enough to read at 24 pixels"
+ },
+ {
+  "title": "Annie Dillard",
+  "path": "People/Annie Dillard.md",
+  "idiom": "woodcut or lithograph — dense cross-hatched American pastoral ink, evoking mid-century naturalist illustration",
+  "hero_prompt": "A wide darkened-backdrop woodcut illustration: a solitary desk sits at the edge of a dense Virginia woodland, a single oil lamp casting amber light onto open notebooks. Crow feathers, creek stones, and pressed leaves ring the desk. The woods press in close, all ink crosshatching and deep shadows. No human figure — the desk and the forest are the subject. Medium: woodcut print, black ink on aged cream paper, bold grain marks. No letters, numerals, words, labels — purely pictorial.",
+  "icon_prompt": "A bold square emblem in woodcut style: a single open eye at centre, iris replaced by a dense forest canopy seen from below, in black ink on cream ground. Thick outlines, no fine linework, high contrast, legible at 24px. No letters, numerals, words, labels — purely pictorial."
+ },
+ {
+  "title": "Christopher Alexander",
+  "path": "People/Christopher Alexander.md",
+  "idiom": "classical architectural engraving / Haeckel-style ink rendering — a hand-drafted diagram of nested patterns radiating outward, structural lines precise yet organic, in the spirit of 19th-century naturalist illustration",
+  "hero_prompt": "Wide darkened backdrop, warm sepia ink on cream ground, a hand-drafted engraving of an architectural section cut open to reveal nested pattern cells inside pattern cells — levels of scale from building down to room down to ornament, each cell alive with hatched shadow, no human figures, purely structural geometry that feels organic, rendered in the style of 19th-century naturalist illustration, no letters, numerals, words, labels — purely pictorial",
+  "icon_prompt": "Bold high-contrast square emblem, black on cream, a single strong center radiating outward in concentric rings of pattern — like a cross-section of a living thing — thick clean lines, no fine linework, no letters, numerals, words, labels — purely pictorial, survives at 24px"
+ },
+ {
+  "title": "Epictetus",
+  "path": "People/Epictetus.md",
+  "idiom": "classical ink portrait — woodcut-style, high contrast, hand-carved line quality",
+  "hero_prompt": "Wide darkfield backdrop, deep shadow with warm lamplight catching a single seated figure in rough woven cloth, a man of slave origins turned teacher — not a portrait likeness, but the spirit of one who taught from chains: an open hand gesturing outward, a broken shackle on the wrist barely visible at the edge of light, scrolls curled at the feet, a small flame the only illumination against the dark. Woodcut print medium, hand-carved line quality, strong chiaroscuro, no letters, numerals, words, labels, or text of any kind — purely pictorial.",
+  "icon_prompt": "Bold square emblem: a single open hand palm-up with a broken chain link resting in it, high contrast black on aged parchment, thick woodcut line weight, no fine detail, no letters, numerals, words, or labels — survives at 24px."
+ },
+ {
+  "title": "George Nakashima",
+  "path": "People/George Nakashima.md",
+  "idiom": "Japanese woodblock print meets American craft illustration — ink and wash on washi paper, woodgrain texture prominent",
+  "hero_prompt": "Wide darkened-backdrop woodblock-print illustration on washi paper: a single ancient walnut slab floating in dark space, its live edge tracing an irregular river-delta silhouette, a delicate butterfly joint — two wing-shaped wooden keys — spanning a fissure at center, the grain lines flowing like watercolor ink through the wood. No human figure. No letters, numerals, words, labels — purely pictorial.",
+  "icon_prompt": "Bold high-contrast square emblem: a thick black butterfly joint (two wing-keys bridging a crack) on cream ground, bold woodcut line weight, no fine linework, no letters, numerals, words, or labels — purely pictorial, legible at 24px."
+ },
+ {
+  "title": "James Turrell",
+  "path": "People/James Turrell.md",
+  "idiom": "Haeckel-style scientific engraving with atmospheric wash — precise linework for the architectural aperture, soft tonal gradations for the sky field beyond it",
+  "hero_prompt": "Wide 12:5 composition in Haeckel scientific engraving style with atmospheric colour wash: a stone ceiling aperture seen from below, edges drawn in precise architectural line, the sky beyond shifting from deep amber to violet in gradient washes of ink and watercolour — no figure visible, only the framing void and the luminous field it reveals. Dramatic darkened border around a glowing centre. No letters, numerals, words, labels — purely pictorial.",
+  "icon_prompt": "Bold square emblem in high-contrast screenprint style: a perfect circle cut into a flat plane, the circle filled with a gradient field from warm amber at edge to deep violet at centre — the aperture as pure geometric form. Thick clean lines only, no fine detail, no letters, numerals, words, labels — purely pictorial. Survives at 24px."
+ },
+ {
+  "title": "John Cage",
+  "path": "People/John Cage.md",
+  "idiom": "Japanese ink wash / woodblock print — bridging Cage's Zen influences and the hand-drawn printmaking family the palace uses for people",
+  "hero_prompt": "Wide darkfield composition in the style of Japanese ink wash painting and woodblock print — a piano with small objects (screws, bolts, pieces of rubber) resting between its strings, seen from above at an angle, surrounded by abstract marks suggesting ambient sound waves radiating outward like slow rings on water; the marks are calligraphic, incomplete, deliberate absences as much as strokes; deep black ink on off-white ground, a single pale wash suggesting a room's ambient light; no letters, numerals, words, labels — purely pictorial",
+  "icon_prompt": "Bold high-contrast square emblem: a single thick ink circle (the sound wave, the coin-throw, the hexagram ring) with two intersecting vertical strokes inside — minimal woodblock weight, black on cream; the circle is slightly imperfect, hand-drawn; no fine linework, no letters, numerals, words, labels — purely pictorial; must read clearly at 24px"
+ },
+ {
+  "title": "Julia Cameron",
+  "path": "People/Julia Cameron.md",
+  "idiom": "ink portrait with woodblock-print texture",
+  "hero_prompt": "Wide 12:5 darkened backdrop. A single writing desk at an angle, a hand moving across three pages of open notebooks in longhand, the pen caught mid-stroke — pages fan out left to right suggesting momentum and sequence. Dense cross-hatching shadows the background; the lit desk surface is the only relief. Woodblock-print texture throughout, bold ink lines, no photographic smoothness. The spirit is disciplined daily recurrence: the same desk, the same hand, the same three pages, every morning. No letters, numerals, words, labels — purely pictorial.",
+  "icon_prompt": "Bold high-contrast square emblem: three stacked horizontal rectangles (suggesting three pages of morning pages) with a single diagonal pen-stroke crossing all three from bottom-left to top-right. Black on off-white. Hard woodcut edges — no fine linework, no gradients. Survives at 24px. No letters, numerals, words, labels."
+ },
+ {
+  "title": "Natalie Goldberg",
+  "path": "People/Natalie Goldberg.md",
+  "idiom": "expressive ink portrait / Japanese calligraphic brushwork — honoring the Zen lineage at the core of her practice",
+  "hero_prompt": "Wide darkened backdrop, a hand in motion over a blank page, brush or pen mid-stroke, ink blooming outward in a single unbroken line, Zen enso-inspired brushwork, calligraphic energy, black ink on cream — no letters, numerals, words, labels — purely pictorial",
+  "icon_prompt": "Bold high-contrast square emblem: a single unbroken ink stroke curling into an open circle (enso), thick brushwork, black on off-white — no fine linework, no letters, no numerals, no words"
+ },
+ {
+  "title": "Pauline Oliveros",
+  "path": "People/Pauline Oliveros.md",
+  "idiom": "relief print / linocut",
+  "hero_prompt": "Wide darkfield linocut print, stark black ink on cream paper. A single large ear rendered as landscape — the auricle becomes rolling hills, the canal a river vanishing into distance. Concentric sound-rings radiate outward from the center like water disturbed by a stone, filling the whole field. Deep shadows, no gradients, woodblock texture throughout. The image evokes total listening — sound arriving from every direction at once. No letters, numerals, words, labels — purely pictorial.",
+  "icon_prompt": "Bold square linocut emblem: a stylized ear in profile, filled with tight concentric arcs suggesting a sonic field radiating outward. Maximum contrast — black ink on cream or white ground. Thick lines only, no fine detail, no hatching finer than 3px at 48px scale. No letters, numerals, words, labels."
+ },
+ {
+  "title": "R. Murray Schafer",
+  "path": "People/R. Murray Schafer.md",
+  "idiom": "woodcut print",
+  "hero_prompt": "Wide darkfield woodcut print — a lone figure on an open hillside tilts head upward as if receiving sound from the sky; concentric sound-wave rings radiate outward from trees, birds, distant traffic, and wind, converging on the listener's ear; bold black ink on cream paper; graphic grain texture; no letters, numerals, words, labels — purely pictorial.",
+  "icon_prompt": "Bold square woodcut emblem: a single ear in silhouette at center, radiating five thick sound-wave arcs outward to all edges; stark black on cream; no fine linework, no letters, numerals, words, or labels — purely pictorial, legible at 24px."
+ },
+ {
+  "title": "Sam Maloof",
+  "path": "People/Sam Maloof.md",
+  "idiom": "woodcut print",
+  "hero_prompt": "Wide 12:5 composition on a darkened warm-brown backdrop. A pair of weathered hands smoothing a deep-grained curved wooden surface — the grain flows like water around a hidden knot. The carving gouge rests beside the hand, catching a single point of light. Rendered as a richly textured woodcut print: bold incised lines, hand-printed quality, deep shadows, no CGI finish. No letters, numerals, words, labels — purely pictorial.",
+  "icon_prompt": "Bold square emblem in woodcut style: a single rocking-chair silhouette whose curved rocker forms the bottom arc of a circle, all high-contrast black on warm cream. The chair is a thick, readable mark that survives at 24px. Hard geometric simplicity, no fine linework, no text, no numerals."
+ },
+ {
+  "title": "Seneca",
+  "path": "People/Seneca.md",
+  "idiom": "ink portrait / Roman mosaic / woodcut",
+  "hero_prompt": "Wide darkened backdrop, a cracked hourglass at the center with its sand frozen mid-fall, a single oil lamp casting long shadows across a stone writing table covered in open scroll-letters, rendered in a classical Roman fresco or Piranesi etching style — coarse cross-hatching, muted ochre and umber, no colour saturation; the mood is urgent quietude, the light intimate and finite. No letters, numerals, words, labels — purely pictorial.",
+  "icon_prompt": "Bold high-contrast square emblem: a stark hourglass silhouette, upper chamber nearly empty, lower full, encircled by a thin laurel ring — black on aged parchment or white on black, woodcut weight, no fine linework, no text, no numerals, must survive at 24px."
+ },
+ {
+  "title": "Terrence Malick",
+  "path": "People/Terrence Malick.md",
+  "idiom": "Edward Hopper-style gouache — wide desolate landscape at magic hour, a lone figure silhouetted against a luminous sky, the horizon low, space doing the speaking",
+  "hero_prompt": "Wide ~12:5 scene in Edward Hopper gouache style: a lone small figure stands in a vast open field at magic hour, golden light raking across tall grass from low on the horizon, the sky massive and softly lit, the figure's back to the viewer, watching — no faces visible, no portraits, purely the feeling of patience and awe before the natural world; hand-painted medium, visible brushwork, warm amber and deep blue tones, no letters, numerals, words, labels, or text of any kind — purely pictorial",
+  "icon_prompt": "Bold high-contrast square emblem in screenprint style: a single tree silhouette at magic hour, sun just below the treeline casting a starburst of rays upward, stark black tree against deep orange-gold background — no fine detail, no linework, just flat-cut shapes that survive at 24px; no letters, numerals, words, or labels"
+ },
+ {
+  "title": "Yasujirō Ozu",
+  "path": "People/Yasujirō Ozu.md",
+  "idiom": "Gorey ink with Japanese woodblock influence — spare crosshatching, deep shadow, a single still domestic scene (a corridor, a low tatami room, an empty hallway) as if seen from the tatami-level camera position, no figures, only the space they left behind",
+  "hero_prompt": "Wide darkened backdrop in the register of Edward Gorey ink crosshatching fused with Edo-period Japanese woodblock print: a low tatami-level view down a long empty corridor, sliding shoji screens casting grid shadows, a single vase with one bare branch, the composition perfectly still and slightly off-center, deep blacks with spare white, no letters, numerals, words, labels — purely pictorial",
+  "icon_prompt": "Bold high-contrast square emblem: a tatami-level camera lens rendered as a circle, behind it the silhouette of a low doorframe with shoji grid, stark black on white in Gorey ink style, no fine linework at small scale — every element readable at 24px, no letters, numerals, words, labels — purely pictorial"
+ },
+ {
+  "title": "Compression ↔ Intimacy",
+  "path": "Cross-Domain Resonances/Compression ↔ Intimacy.md",
+  "idiom": "Risograph screenprint with halftone texture",
+  "hero_prompt": "Wide dark-backdrop risograph screenprint: on the left, two waveforms — one jagged and wide-ranging, one compressed and close together, rendered as white-on-black oscilloscope traces; on the right, two silhouetted figures leaning toward each other across a table, the gap between them mirroring the compressed waveform's narrow range; connecting them is a horizontal band of halftone dots that gradually densifies from the wide waveform to the close figures, visualizing the shared structure of reduction-as-closeness; the overall palette is deep indigo with a single warm amber halftone highlight; no letters, numerals, words, labels — purely pictorial; hand-printed risograph texture throughout.",
+  "icon_prompt": "Bold square emblem in the risograph screenprint style: a thick white vertical bar split into two zones — the left side shows a dramatically tall jagged waveform peak, the right side shows a squat compressed waveform close to center — and between the two zones a single inward-pointing arrow on each side (two arrows converging), symbolizing compression and the closeness it creates; deep indigo ground, white and amber marks only; no fine linework, no letters, numerals, words, or labels; must read clearly at 24px."
+ },
+ {
+  "title": "Cooking ↔ Mixing",
+  "path": "Cross-Domain Resonances/Cooking ↔ Mixing.md",
+  "idiom": "woodblock print (two-panel composition)",
+  "hero_prompt": "Wide darkfield woodblock print in deep navy and warm ochre ink, two-panel composition: left panel shows a cook's hand hovering over a salt bowl above a steaming pot, right panel shows a mixing engineer's hand at a fader above waveform grooves — both hands pulled back, almost touching salt / fader but not committing. A single horizontal thread of restraint connects the two panels across the center. No letters, numerals, words, labels, or text of any kind — purely pictorial. Bold woodcut line quality, hand-printed feel, no CGI.",
+  "icon_prompt": "Bold square emblem: a solid circle bisected by a thin horizontal line — top half a chef's salt pinch silhouette, bottom half a vertical fader silhouette — high contrast black on cream. Woodcut weight lines, no fine detail, no text, no letters, no numerals, survives at 24px."
+ },
+ {
+  "title": "Dovetail Joint ↔ Counterpoint",
+  "path": "Cross-Domain Resonances/Dovetail Joint ↔ Counterpoint.md",
+  "idiom": "Haeckel-style scientific engraving — fine ink linework treating wood grain and musical notation as equally rigorous natural specimens",
+  "hero_prompt": "A wide darkened tableau in the style of Ernst Haeckel's scientific engravings: on the left half, an exploded view of a dovetail joint rendered as a zoological specimen — each wedge-shaped tail and corresponding pin labelled with fine ruled lines, wood grain drawn as precise parallel strokes; on the right half, two staves of two-voice counterpoint notated with the same engraver's precision, voices interlocked at third and sixth intervals, arrows showing contrary motion exactly mirroring the joint's wedge geometry; in the centre, a single shared axis where wood tail and melodic interval overlap and merge; moody sepia ink on aged paper; no letters, numerals, words, or labels — purely pictorial",
+  "icon_prompt": "A bold high-contrast square emblem: two interlocking wedge shapes in the upper half, two interlocking curving staff lines (abstracted to bold arcs) in the lower half, meeting at a shared centre lock mark; thick outlines only, no fine hatching, solid black on cream ground; no letters, numerals, or words"
+ },
+ {
+  "title": "Frequency Domain ↔ Perspective Shift",
+  "path": "Cross-Domain Resonances/Frequency Domain ↔ Perspective Shift.md",
+  "idiom": "scientific woodcut with a Fourier-era engraving style — dual panels, one showing a waveform oscillating in time, the other showing frequency spikes, joined by a transformation arrow, evoking 18th-century scientific illustration",
+  "hero_prompt": "Wide darkened backdrop, a scientific woodcut engraving in the style of 18th-century natural philosophy illustration: two side-by-side panels separated by a bold transformation arrow. Left panel — a time-domain waveform, sinuous and cresting, amplitude over time rendered as an engraved line. Right panel — frequency-domain spikes rising from a baseline, sharp and vertical, the same signal made visible in a different coordinate system. The arrow between them glows faintly, suggesting mathematical transformation, not magic. Figures studying the two panels are silhouetted at the bottom — one woman, one man, balanced. Monochrome engraving aesthetic with aged paper tone. No letters, numerals, words, labels, or text of any kind — purely pictorial.",
+  "icon_prompt": "Bold high-contrast square emblem: a thick double-headed arrow pointing left and right, with a sinuous waveform on the left and a set of three vertical frequency spikes on the right. The arrow is the visual anchor — wide, geometric, unmistakable at 24px. Deep navy background, white linework only, no fine detail, no text, no letters, no numerals — purely a symbol of two-way transformation."
+ },
+ {
+  "title": "Quantization ↔ Precision vs Flow",
+  "path": "Cross-Domain Resonances/Quantization ↔ Precision vs Flow.md",
+  "idiom": "Risograph print",
+  "hero_prompt": "Wide risograph print, two-color (deep ink blue and warm amber), a drum machine grid on the left with rigid square beats stamped in a perfect row; on the right the same beats shown as a hand-drawn waveform with gentle timing variations, the two sides bleeding into each other at center; no letters, numerals, words, labels — purely pictorial.",
+  "icon_prompt": "Bold square emblem, high contrast black on cream, a single thick grid line with one note circle sitting slightly off the intersecting point — implying snap but not landed; no fine linework, no letters, numerals, words, labels — purely pictorial."
+ },
+ {
+  "title": "Reverb ↔ Space-Time",
+  "path": "Cross-Domain Resonances/Reverb ↔ Space-Time.md",
+  "idiom": "Haeckel-style scientific engraving crossed with architectural cross-section ink drawing",
+  "hero_prompt": "Wide darkened backdrop. A cathedral cross-section rendered in fine Haeckel engraving style — ink lines only, no colour. Sound waves radiate from a single point source near the floor; each successive reflection arrives at a listener figure (gender-neutral, abstract) with a numbered time label in milliseconds. The reflections form concentric arcs that also read as spacetime light-cones. The geometry of the room IS the geometry of the delay lines. One dominant figure dwells inside the sound field, not observing it. No letters, numerals, words, labels — purely pictorial.",
+  "icon_prompt": "Bold high-contrast square emblem. A single sound-wave arc doubling as a spacetime light-cone — thick clean lines, no fine detail, no text, no numerals. Black on off-white or white on deep charcoal. Must survive at 24px. No letters, no labels, purely pictorial."
+ },
+ {
+  "title": "Saturation ↔ Richness",
+  "path": "Cross-Domain Resonances/Saturation ↔ Richness.md",
+  "idiom": "Haeckel-style scientific engraving — a precise technical diagram rendered with the warmth of a 19th-century naturalist plate",
+  "hero_prompt": "Wide 12:5 format, dark sepia-toned background. A Haeckel-style scientific engraving showing a single clean waveform on the left transforming rightward into a rich harmonic stack — like a tree of overtones branching upward from a single root frequency. The lines are hand-engraved, precise yet organic, with fine crosshatching giving depth to the harmonic branches. At center a glowing tube filament suggests warmth at the threshold. Balanced group of a woman and a man at laboratory instruments in the foreground, rendered in the same engraving style. No letters, numerals, words, labels — purely pictorial.",
+  "icon_prompt": "Bold high-contrast square emblem on near-black background: a single thick waveform line on the left that fans into three thicker harmonic arcs on the right, like a river delta. No fine linework — all strokes at least 3px equivalent. Warm amber or golden tones on black. No letters, numerals, words, labels."
+ },
+ {
+  "title": "Learning Materials and Canon",
+  "path": "Learning Materials and Canon.md",
+  "idiom": "Gorey ink crosshatch",
+  "hero_prompt": "Edward Gorey ink crosshatch illustration, wide darkened backdrop, a tall ornate gate standing open in a fog-draped landscape — one side shows a garden of neatly ordered cards and books lit from within, the other side shows loose scrolls and posters drifting in wind; a single slender figure stands at the threshold with a quill, making a mark on the gateposts; no letters, numerals, words, labels — purely pictorial",
+  "icon_prompt": "Bold high-contrast square emblem in Gorey ink style — a heavy gate latch or bolt drawn as a thick black bar with a small keyhole, set on stark white, no fine linework, no letters, numerals, words, or labels — survives at 24px"
+ },
+ {
+  "title": "Worktree Practice",
+  "path": "Worktree Practice.md",
+  "idiom": "woodcut print",
+  "hero_prompt": "Wide darkfield woodcut print, deep indigo ground. A central image: a single gnarled oak tree in a cleared field, its root system visible below the soil line, each root ending in a separate torch flame. Above ground the trunk rises alone into a dark sky — one trunk, one crown. Several smaller saplings stand in a ring around it at a distance, each on its own patch of earth, their own root systems isolated but their crowns beginning to incline toward the central tree. No letters, numerals, words, labels — purely pictorial. Hard woodcut lines, high contrast, no photographic texture.",
+  "icon_prompt": "Bold square woodcut emblem on near-black ground: a thick central vertical trunk bisected by a horizontal line — above the line one branch crown, below it three separated root bundles spreading outward. Maximum contrast, no fine linework, no letters, numerals, words, or labels — purely pictorial, survives at 24px."
+ }
+]
