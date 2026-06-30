@@ -4,6 +4,8 @@ import StageGlyph from './StageGlyph.jsx';
 import { pulseSort } from '../../lib/pulse.js';
 import { sortEntries, DEFAULT_DIR, SORT_KEYS } from '../../lib/entry-sort.js';
 import EntryAvatar from '../EntryAvatar.jsx';
+import PulseDot from './PulseDot.jsx';
+import { typeColor } from '../../lib/entry-style.js';
 
 // PULSE: the vitality lens that is STATE's default index. Entries sorted
 // by how alive they are right now (recency * activation_count * stage *
@@ -13,45 +15,8 @@ import EntryAvatar from '../EntryAvatar.jsx';
 // A filter input narrows by title/type/path; clicking a row opens that
 // entry in EntryReader.
 
-function PulseDot({ score }) {
-  // 5-position dot meter -- compact, monospace-friendly.
-  const filled = Math.max(0, Math.min(5, Math.round(score * 5)));
-  return (
-    <span
-      data-testid="pulse-dot"
-      data-score={filled}
-      style={{
-        fontFamily: 'var(--font-mono)', fontSize: 12,
-        color: 'var(--phosphor-dim)', textShadow: 'none', letterSpacing: '0.1em',
-      }}
-    >
-      {Array.from({ length: 5 }, (_, i) => i < filled ? '*' : '.').map((g, i) => (
-        <span key={i} style={{
-          color: i < filled ? 'var(--phosphor)' : 'var(--phosphor-dim)',
-          textShadow: i < filled ? 'var(--glow)' : 'none',
-        }}>{g}</span>
-      ))}
-    </span>
-  );
-}
-
-const TYPE_COLOR = {
-  meta: 'var(--phosphor-white)',
-  concept: 'var(--phosphor)',
-  hub: 'var(--ansi-bright-cyan)',
-  project: 'var(--ansi-bright-yellow)',
-  breakthrough: 'var(--ansi-bright-magenta)',
-  source: 'var(--ansi-bright-cyan)',
-  practice: 'var(--phosphor-bright)',
-  person: 'var(--ansi-bright-magenta)',
-  question: 'var(--warn)',
-  spore: 'var(--phosphor-dim)',
-  specialist: 'var(--phosphor-bright)',
-  maker: 'var(--phosphor-bright)',
-};
-
 function EntryRow({ entry, onSelect }) {
-  const typeColor = TYPE_COLOR[entry.type ?? ''] ?? 'var(--phosphor-dim)';
+  const rowColor = typeColor(entry.type);
   return (
     <div
       data-testid="pulse-row"
@@ -68,7 +33,7 @@ function EntryRow({ entry, onSelect }) {
     >
       <PulseDot score={entry.pulse ?? 0} />
       <span style={{
-        color: typeColor, textShadow: 'var(--glow)',
+        color: rowColor, textShadow: 'var(--glow)',
         fontSize: 11, letterSpacing: '.06em', textTransform: 'uppercase',
         whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis',
       }}>{entry.type ?? '--'}</span>
@@ -114,6 +79,12 @@ export default function EntryList({ entries = [], loadState, error, onSelect }) 
   const [filter, setFilter] = useState('');
   const [sortKey, setSortKey] = useState('pulse');
   const [sortDir, setSortDir] = useState(DEFAULT_DIR.pulse);
+  // Bundle files (SCHEMA §8 owned files: batons, plans, staging, context)
+  // are not first-class entries — they're an entry's private substrate. PULSE
+  // is the vitality triage list, so it hides them by default; the toggle and
+  // the TREE lens are where they belong. Off by default = the flat list shows
+  // only entries that stand on their own.
+  const [showBundleFiles, setShowBundleFiles] = useState(false);
 
   // Always pulse-stamp first (the dot meter shows score regardless of sort
   // column), then apply the column sort on top.
@@ -132,15 +103,23 @@ export default function EntryList({ entries = [], loadState, error, onSelect }) 
     }
   };
 
+  // Hide bundle files unless the toggle is on. This is the universe the
+  // filter and the header count operate over, so "N/M entries" reflects what
+  // PULSE actually triages, not the raw .md count.
+  const base = useMemo(
+    () => (showBundleFiles ? sorted : sorted.filter((e) => !e.is_bundle_file)),
+    [sorted, showBundleFiles],
+  );
+
   const filtered = useMemo(() => {
     const q = filter.trim().toLowerCase();
-    if (!q) return sorted;
-    return sorted.filter((e) =>
+    if (!q) return base;
+    return base.filter((e) =>
       (e.title ?? '').toLowerCase().includes(q)
       || (e.path ?? '').toLowerCase().includes(q)
       || (e.type ?? '').toLowerCase().includes(q)
     );
-  }, [filter, sorted]);
+  }, [filter, base]);
 
   if (loadState === 'loading') {
     return (
@@ -161,7 +140,7 @@ export default function EntryList({ entries = [], loadState, error, onSelect }) 
   }
 
   return (
-    <Box title={`PULSE  --  vitality lens  (${filtered.length}/${entries.length} entries)`} tone="double">
+    <Box title={`PULSE  --  vitality lens  (${filtered.length}/${base.length} entries)`} tone="double">
       <div style={{ marginBottom: 8, display: 'flex', gap: 8, alignItems: 'center' }}>
         <span style={{ color: 'var(--phosphor-dim)', textShadow: 'none', fontSize: 12 }}>
           filter:
@@ -181,6 +160,22 @@ export default function EntryList({ entries = [], loadState, error, onSelect }) 
             outline: 'none', padding: '2px 0',
           }}
         />
+        <label
+          data-testid="pulse-bundle-toggle"
+          style={{
+            display: 'inline-flex', alignItems: 'center', gap: 6,
+            cursor: 'pointer', whiteSpace: 'nowrap',
+            color: 'var(--phosphor-dim)', textShadow: 'none', fontSize: 12,
+          }}
+        >
+          <input
+            type="checkbox"
+            checked={showBundleFiles}
+            onChange={(e) => setShowBundleFiles(e.target.checked)}
+            style={{ accentColor: 'var(--phosphor)', cursor: 'pointer', margin: 0 }}
+          />
+          show bundle files
+        </label>
       </div>
 
       <div data-testid="pulse-header" style={{

@@ -3,10 +3,11 @@ import EntryList from './EntryList.jsx';
 import EntryReader from './EntryReader.jsx';
 import EntryEditor from './EntryEditor.jsx';
 import TopologyLens from './TopologyLens.jsx';
+import TreeLens from './TreeLens.jsx';
 import { fetchEntries } from '../../adapters/entries.js';
 import { buildIndex } from '../../lib/wikilink.js';
 import { buildRefIndex } from '../../lib/entry-ref.js';
-import { useEntryNavigation, useLensNavigation } from '../../lib/url-nav.js';
+import { useEntryNavigation, useLensNavigation, parseTreeTargetFromUrl } from '../../lib/url-nav.js';
 import { Banner } from '../primitives.jsx';
 
 // STATE deck shell. Holds the entries index, and toggles between the
@@ -112,6 +113,11 @@ export default function StateDeck({ jumpTarget = null, onEntryPathChange, reload
               onSelect={nav.openEntry}
               entries={state.kind === 'ok' ? state.entries : []}
             />
+          ) : lens === 'tree' ? (
+            <TreeLens
+              onSelect={nav.openEntry}
+              target={typeof window !== 'undefined' ? parseTreeTargetFromUrl(window.location.search) : null}
+            />
           ) : (
             <EntryList
               entries={state.kind === 'ok' ? state.entries : []}
@@ -128,8 +134,9 @@ export default function StateDeck({ jumpTarget = null, onEntryPathChange, reload
 
 function LensToggle({ lens, onChange }) {
   const tabs = [
-    { id: 'pulse', label: 'PULSE', sub: 'vitality lens' },
-    { id: 'topology', label: 'TOPOLOGY', sub: 'typed-link graph' },
+    { id: 'pulse', key: 'P', label: 'PULSE', sub: 'vitality lens' },
+    { id: 'topology', key: 'T', label: 'TOPOLOGY', sub: 'typed-link graph' },
+    { id: 'tree', key: 'R', label: 'TREE', sub: 'folder structure' },
   ];
   return (
     <div data-testid="state-lens-toggle" style={{
@@ -158,7 +165,7 @@ function LensToggle({ lens, onChange }) {
               paddingBottom: 2,
             }}
           >
-            [{t.id === 'pulse' ? 'P' : 'T'}] {t.label}
+            [{t.key}] {t.label}
             <span style={{ marginLeft: 6, color: 'var(--phosphor-dim)', textShadow: 'none', fontSize: 10 }}>
               -- {t.sub}
             </span>
