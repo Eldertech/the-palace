@@ -1,13 +1,13 @@
 ---
-title: Agent Wellbeing as Design Ethic
+title: Agent Wellbeing
 type: breakthrough
 pillars:
   - philosophy
   - practice
 born: 2026-03
-stage: growing
 last_activated: 2026-03
 activation_count: 1
+stage: growing
 links:
   - target: "[[Palace as Context Injection System]]"
     type: emerged-from
