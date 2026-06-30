@@ -12,12 +12,14 @@
 import { describe, it, expect } from 'vitest';
 import React from 'react';
 import { renderToStaticMarkup } from 'react-dom/server';
-import EntryAgentWindow, { EditMarker, TodoMarker, ProposalCard, buildTurnHistory } from '../../src/components/state/EntryAgentWindow.jsx';
+import EntryAgentWindow, { EditMarker, TodoMarker, ProposalCard, RegenProgress, RegenMarker, buildTurnHistory } from '../../src/components/state/EntryAgentWindow.jsx';
 
 const render = (props) => renderToStaticMarkup(React.createElement(EntryAgentWindow, props));
 const renderMarker = (props) => renderToStaticMarkup(React.createElement(EditMarker, props));
 const renderTodo = (props) => renderToStaticMarkup(React.createElement(TodoMarker, props));
 const renderProposal = (props) => renderToStaticMarkup(React.createElement(ProposalCard, props));
+const renderRegenProgress = (props) => renderToStaticMarkup(React.createElement(RegenProgress, props));
+const renderRegenMarker = (props) => renderToStaticMarkup(React.createElement(RegenMarker, props));
 
 const entry = {
   title: 'Merleau-Ponty',
@@ -244,5 +246,44 @@ describe('EditMarker (committed edit + post-commit undo)', () => {
     expect(html).toContain('abc1234'); // the original
     expect(html).toContain('def5678'); // the new inverse commit
     expect(html).not.toContain('data-testid="eaw-edit-undo"'); // a revert isn't itself undoable here
+  });
+});
+
+describe('RegenProgress + RegenMarker (hero/avatar regen)', () => {
+  it('RegenProgress names what is rendering and warns it takes minutes', () => {
+    const html = renderRegenProgress({ target: 'hero', idiom: 'Bauhaus woodcut' });
+    expect(html).toContain('data-testid="eaw-regen-progress"');
+    expect(html).toMatch(/rendering hero/);
+    expect(html).toContain('Bauhaus woodcut');
+    expect(html).toMatch(/few minutes/);
+  });
+
+  it('RegenProgress labels "both" as hero + avatar', () => {
+    const html = renderRegenProgress({ target: 'both' });
+    expect(html).toMatch(/rendering hero \+ avatar/);
+  });
+
+  it('RegenMarker shows the committed face — cache-busted hero strip, commit hash, [undo]', () => {
+    const html = renderRegenMarker({
+      target: 'both', commit: 'abc1234', idiom: 'Klee gouache', title: 'Kuramoto',
+      heroRel: 'Kuramoto/Kuramoto — hero.png', iconRel: 'Kuramoto/Kuramoto — icon.png',
+      onUndo: () => {},
+    });
+    expect(html).toContain('data-testid="eaw-regen"');
+    expect(html).toContain('data-testid="eaw-regen-hero"');
+    expect(html).toMatch(/v=abc1234/);                 // the cache-buster (regen overwrites in place)
+    expect(html).toContain('abc1234');                 // the commit hash shown
+    expect(html).toContain('Klee gouache');
+    expect(html).toContain('data-testid="eaw-regen-undo"');
+  });
+
+  it('RegenMarker dims and shows "reverted" when undone, with no undo control', () => {
+    const html = renderRegenMarker({
+      target: 'icon', commit: 'def5678', title: 'Kuramoto',
+      iconRel: 'Kuramoto/Kuramoto — icon.png', onUndo: () => {}, undone: true,
+    });
+    expect(html).toContain('reverted');
+    expect(html).not.toContain('data-testid="eaw-regen-undo"');
+    expect(html).not.toContain('data-testid="eaw-regen-hero"'); // icon-only → no hero strip
   });
 });

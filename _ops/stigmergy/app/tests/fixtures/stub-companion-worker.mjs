@@ -39,6 +39,20 @@ if (actionType === 'flag') {
       },
     },
   };
+} else if (actionType === 'regen') {
+  // The hero/avatar regen (entry kind): the worker distilled art direction and
+  // emits a regen_visual action. Fields overridable for targeting tests.
+  out = {
+    reply,
+    action: {
+      type: 'regen_visual',
+      target: flag('--regen-target', 'both'),
+      idiom: flag('--regen-idiom', 'test woodcut'),
+      hero_prompt: flag('--regen-hero', 'a bold woodcut banner'),
+      icon_prompt: flag('--regen-icon', 'a bold woodcut emblem'),
+      note: flag('--regen-note', 'bolder, brighter'),
+    },
+  };
 } else if (editText) {
   out = { reply, edit: { op: editOp, text: editText } };
 } else {

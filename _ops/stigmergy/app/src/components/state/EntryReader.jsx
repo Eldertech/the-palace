@@ -108,6 +108,10 @@ export default function EntryReader({
   const heroFile = bundleFiles.find((f) => f.name === `${entry.title} — hero.png`)
     || bundleFiles.find((f) => / — hero\.png$/i.test(f.name));
   const heroPath = heroFile ? heroFile.relPath : null;
+  // Cache-buster: a companion regen overwrites the hero PNG in place (same path),
+  // so the browser would keep showing the old backdrop after a reload. The file's
+  // byte size changes between renders — append it so the new image loads.
+  const heroBust = heroFile && typeof heroFile.size === 'number' ? `&v=${heroFile.size}` : '';
 
   return (
     <div data-testid="entry-reader" data-path={entry.path} style={{ position: 'relative', zIndex: 1 }}>
@@ -126,7 +130,7 @@ export default function EntryReader({
             // black before the body text begins; desaturated + dimmed so it
             // reads as ambient, not as a competing surface.
             backgroundImage:
-              `linear-gradient(to bottom, color-mix(in srgb, var(--bg) 55%, transparent) 0%, var(--bg) 95%), url("/api/file?path=${encodeURIComponent(heroPath)}")`,
+              `linear-gradient(to bottom, color-mix(in srgb, var(--bg) 55%, transparent) 0%, var(--bg) 95%), url("/api/file?path=${encodeURIComponent(heroPath)}${heroBust}")`,
             backgroundSize: 'cover',
             backgroundPosition: 'center 22%',
             backgroundRepeat: 'no-repeat',
