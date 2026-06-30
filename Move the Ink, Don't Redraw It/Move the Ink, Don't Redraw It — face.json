@@ -1,0 +1,9 @@
+{
+  "title": "Move the Ink, Don't Redraw It",
+  "idiom": "Haeckel-style scientific engraving or Edward Gorey ink \u2014 clean black line, no CGI",
+  "hero_prompt": "A wide ink-engraving illustration in the style of Ernst Haeckel \u2014 a single hand-drawn figure (gender-neutral, calm, standing) whose body is composed entirely of displaced, warped pen-strokes: the lines that make the figure are visibly bending and flowing as one continuous sheet of ink, as if a displacement field is breathing through them. The lines curve but never break; the figure remains perfectly coherent. Around it, faint ghost-outlines show where the strokes used to be before they moved. Dark background, white ink lines, no color. No letters, numerals, words, labels \u2014 purely pictorial.",
+  "icon_prompt": "Bold square emblem: a single dense ink-stroke loop \u2014 like a thick calligraphic brushstroke \u2014 that is visibly warped mid-stroke by an invisible force, curving away from its straight origin path and bending back. High contrast black on white (or white on black). No fine linework, no small details. No letters, numerals, words, labels \u2014 purely pictorial. Must read at 24px.",
+  "seeds": {},
+  "rendered_at": "2026-06-30T19:37:52Z",
+  "history": []
+}

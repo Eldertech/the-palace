@@ -43,6 +43,8 @@ links:
 ---
 
 # Pauline Oliveros
+
+![[Pauline Oliveros — hero.png]]
 ## Deep Listening as Practice
 
 **1932-2016** | Composer, Accordionist, Pioneer of Deep Listening

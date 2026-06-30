@@ -1,0 +1,9 @@
+{
+  "title": "Christopher Alexander",
+  "idiom": "classical architectural engraving / Haeckel-style ink rendering \u2014 a hand-drafted diagram of nested patterns radiating outward, structural lines precise yet organic, in the spirit of 19th-century naturalist illustration",
+  "hero_prompt": "Wide darkened backdrop, warm sepia ink on cream ground, a hand-drafted engraving of an architectural section cut open to reveal nested pattern cells inside pattern cells \u2014 levels of scale from building down to room down to ornament, each cell alive with hatched shadow, no human figures, purely structural geometry that feels organic, rendered in the style of 19th-century naturalist illustration, no letters, numerals, words, labels \u2014 purely pictorial",
+  "icon_prompt": "Bold high-contrast square emblem, black on cream, a single strong center radiating outward in concentric rings of pattern \u2014 like a cross-section of a living thing \u2014 thick clean lines, no fine linework, no letters, numerals, words, labels \u2014 purely pictorial, survives at 24px",
+  "seeds": {},
+  "rendered_at": "2026-06-30T19:37:52Z",
+  "history": []
+}

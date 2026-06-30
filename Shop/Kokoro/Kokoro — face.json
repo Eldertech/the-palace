@@ -1,0 +1,9 @@
+{
+  "title": "Kokoro",
+  "idiom": "ink diagram / silkscreen print",
+  "hero_prompt": "Wide darkened backdrop, a single human mouth in mid-speech rendered as a clean ink diagram \u2014 cross-section of vocal tract with waveform ripples emanating outward, layered like a silkscreen print in two or three colors (deep charcoal ground, one warm tone, white line). The waveform trails off into phoneme notation symbols abstracted into pure geometric marks. No letters, numerals, words, labels \u2014 purely pictorial. No CGI, no glossy surfaces, no photorealism.",
+  "icon_prompt": "Bold high-contrast square emblem: a stylized mouth-opening shape (ellipse) with a single sine-wave line cutting through it horizontally, rendered as a thick woodcut mark on dark ground. Must survive at 24px \u2014 no fine linework, no text, no numerals, purely geometric.",
+  "seeds": {},
+  "rendered_at": "2026-06-30T19:37:52Z",
+  "history": []
+}

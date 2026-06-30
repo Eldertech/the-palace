@@ -59,6 +59,8 @@ tags: [specialist, shop, plumbing, audio, video, conversion]
 
 # ffmpeg
 
+![[ffmpeg — hero.png]]
+
 ## Charter
 
 I convert, concatenate, mix, normalize, and reformat audio and video. Anywhere two Specialists' outputs need to meet — Kokoro narration into a Manim render, ComfyUI stills into a Remotion timeline, Stable Audio Open beds under Whisper-captioned video — I'm the meeting place. The Shop's connective tissue.

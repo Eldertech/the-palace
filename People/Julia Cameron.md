@@ -40,6 +40,8 @@ links:
 ---
 
 # Julia Cameron
+
+![[Julia Cameron — hero.png]]
 ## Daily Practice and Creative Recovery
 
 **1948-present** | Author, Teacher, Filmmaker

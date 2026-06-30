@@ -1,0 +1,9 @@
+{
+  "title": "ComfyUI",
+  "idiom": "pen-and-ink diagram with woodcut weight \u2014 technical node-graph rendered as hand-drawn schematic, dark ink on cream, no CGI",
+  "hero_prompt": "Wide darkened backdrop in deep indigo and warm amber: a hand-drawn node-graph schematic fills the frame, rendered in heavy woodcut-style black ink lines on aged cream \u2014 interconnected rectangular nodes joined by flowing curved edges, each node holding a simple abstract glyph (sampler, checkpoint, VAE, clip) rather than any text. At the center a latent cloud dissolves into a forest-pond image emerging from a final node, amber firefly-light bleeding into indigo water. No letters, numerals, words, labels \u2014 purely pictorial. Two figures \u2014 one woman, one man \u2014 lean over the graph from opposite sides, their hands tracing edges. Medium: pen-and-ink diagram with woodcut weight.",
+  "icon_prompt": "Bold square emblem, high contrast black on cream: a single heavy-ink node-graph symbol \u2014 three rectangular nodes connected by two thick curved arrows forming a simple chain, the rightmost node emitting a small radiating burst glyph. Survives at 24px. No fine linework, no text, no letters, no numerals \u2014 purely diagrammatic mark.",
+  "seeds": {},
+  "rendered_at": "2026-06-30T19:37:52Z",
+  "history": []
+}

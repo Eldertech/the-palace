@@ -1,0 +1,9 @@
+{
+  "title": "Stable Audio Open",
+  "idiom": "screenprint",
+  "hero_prompt": "Two-color screenprint on dark ground, wide 12:5 format. A figure at a workbench \u2014 hands touching an oscilloscope-like surface \u2014 surrounded by frozen waveforms radiating outward like brushstrokes. The waveforms dissolve at the edges into texture and grain, never resolving into melody. Bold ink, flat color fields, halftone shadows. No letters, numerals, words, labels \u2014 purely pictorial.",
+  "icon_prompt": "Bold square emblem, dark background, two-color screenprint style. A single waveform arc that breaks into scattered grain at one end \u2014 the mark of a sound that reaches but does not complete. High contrast, heavy lines, survives at 24px. No letters, numerals, words, labels \u2014 purely pictorial.",
+  "seeds": {},
+  "rendered_at": "2026-06-30T19:37:52Z",
+  "history": []
+}

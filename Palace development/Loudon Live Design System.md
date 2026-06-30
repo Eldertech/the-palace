@@ -71,6 +71,8 @@ links:
 
 # Loudon Live Design System
 
+![[Loudon Live Design System — hero.png]]
+
 The palace's **default artifact aesthetic** — born from Loudon Live, cemented through review, now governing every artifact the palace makes unless context explicitly demands a different system.
 
 ## The Status Rule

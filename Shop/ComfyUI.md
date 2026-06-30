@@ -36,6 +36,8 @@ tags: [specialist, shop, image, generative, local]
 
 # ComfyUI
 
+![[ComfyUI — hero.png]]
+
 ## Charter
 
 I generate images locally. Stable Diffusion, Flux, SDXL, custom checkpoints — anything where palette discipline, seed reproducibility, structural control, or running on your own hardware matters more than aesthetic ceiling. The Maker hands me a workflow (or a prompt for the Maker's default workflow), parameters, and a tier; I deliver image files at the requested dimensions with byte-exact reproducibility from a workflow JSON + seed + checkpoint.

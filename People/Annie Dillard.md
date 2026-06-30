@@ -27,6 +27,8 @@ links:
 ---
 
 # Annie Dillard
+
+![[Annie Dillard — hero.png]]
 ## Writer
 
 **Domain:** Writer

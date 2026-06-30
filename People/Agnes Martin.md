@@ -27,6 +27,8 @@ links:
 ---
 
 # Agnes Martin
+
+![[Agnes Martin — hero.png]]
 ## Artist
 
 **Domain:** Artist

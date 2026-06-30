@@ -1,0 +1,9 @@
+{
+  "title": "The Reader's Context Window",
+  "idiom": "ink diagram / architectural cross-section line drawing",
+  "hero_prompt": "Wide darkened backdrop, ink line diagram in the style of a mid-century typographic layout manual -- a single column of ruled lines numbered 1-4 descending, each line wider and more grounded than the last, the bottom line anchored visually to a pair of rectangular option blocks sitting directly beneath it, the whole composition showing information cascading downward into decision. Hand-inked, no color, blueprint-white lines on near-black ground. No letters, numerals, words, labels -- purely pictorial.",
+  "icon_prompt": "Bold high-contrast square emblem: four horizontal bars of increasing weight stacked top to bottom, the bottom bar touching two smaller squares below it, all in stark black on white. No fine linework, no letters, numerals, words, or labels. Must read clearly at 24px.",
+  "seeds": {},
+  "rendered_at": "2026-06-30T19:37:52Z",
+  "history": []
+}

@@ -35,6 +35,8 @@ links:
 
 # Shop/Lettering — *the emotional-text renderer*
 
+![[Lettering — hero.png]]
+
 The [[Shop]] citizen that renders **short, high-impact words as imagery** where the *letterform carries the feeling* — the register a font can't reach. Sibling to [[Frame Designer]]: it letters what the frame draws. Realizes [[Typography as Meaning]]; grown on [[BLUELINE — Text Layer|BLUELINE's text layer]]. (Long, legible text stays the future **vector letterer's** job — see Forward Vectors.)
 
 ## Charter

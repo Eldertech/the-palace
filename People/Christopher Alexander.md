@@ -43,6 +43,8 @@ links:
 ---
 
 # Christopher Alexander
+
+![[Christopher Alexander — hero.png]]
 ## Pattern Language and Organic Systems
 
 **1936-2022** | Architect, Design Theorist, Author

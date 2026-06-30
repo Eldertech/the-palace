@@ -1,0 +1,9 @@
+{
+  "title": "Julia Cameron",
+  "idiom": "ink portrait with woodblock-print texture",
+  "hero_prompt": "Wide 12:5 darkened backdrop. A single writing desk at an angle, a hand moving across three pages of open notebooks in longhand, the pen caught mid-stroke \u2014 pages fan out left to right suggesting momentum and sequence. Dense cross-hatching shadows the background; the lit desk surface is the only relief. Woodblock-print texture throughout, bold ink lines, no photographic smoothness. The spirit is disciplined daily recurrence: the same desk, the same hand, the same three pages, every morning. No letters, numerals, words, labels \u2014 purely pictorial.",
+  "icon_prompt": "Bold high-contrast square emblem: three stacked horizontal rectangles (suggesting three pages of morning pages) with a single diagonal pen-stroke crossing all three from bottom-left to top-right. Black on off-white. Hard woodcut edges \u2014 no fine linework, no gradients. Survives at 24px. No letters, numerals, words, labels.",
+  "seeds": {},
+  "rendered_at": "2026-06-30T19:37:52Z",
+  "history": []
+}
