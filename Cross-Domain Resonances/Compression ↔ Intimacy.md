@@ -35,6 +35,8 @@ links:
 ---
 
 # Compression ↔ Intimacy
+
+![[Compression ↔ Intimacy — hero.png]]
 ## Reducing Distance Creates Closeness
 
 **Pattern:** Reducing dynamic range brings elements closer together. Same relationship between loud and quiet, same relationship between speaker and listener.

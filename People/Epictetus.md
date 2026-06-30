@@ -32,6 +32,8 @@ links:
 ---
 
 # Epictetus
+
+![[Epictetus — hero.png]]
 ## Philosopher
 
 **Domain:** Philosopher

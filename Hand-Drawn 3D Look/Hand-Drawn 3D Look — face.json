@@ -1,0 +1,9 @@
+{
+  "title": "Hand-Drawn 3D Look",
+  "idiom": "Haeckel engraving meets Blender wireframe \u2014 precise naturalist linework applied to a 3D-sourced subject, capturing the marriage of computational scaffolding and hand-drawn surface",
+  "hero_prompt": "Wide 12:5 panoramic, very dark charcoal-grey backdrop. A single human figure rendered as a precise naturalist pen-and-ink engraving in the tradition of Haeckel \u2014 cross-hatched, calligraphic strokes of varying weight \u2014 while faint wireframe geometry (the Blender scaffold) glows dim blue-grey behind and through it, just visible as an underpainting. The figure is poised mid-turn, coat catching wind, confident linework decisive not hesitant. A loose ink splatter drifts from the figure's shoulder into the right margin like a thought escaping into abstraction. No letters, numerals, words, labels \u2014 purely pictorial.",
+  "icon_prompt": "Bold high-contrast square emblem on near-black ground. A single thick-stroke pen nib or calligraphy chisel set at an angle, its downstroke splitting into two parallel lines \u2014 one a clean vector edge, one a ragged ink bleed \u2014 suggesting the seam between 3D structure and hand-drawn surface. Heavy blacks, paper-white gaps, no fine linework that would vanish at 24px. No letters, numerals, words, labels.",
+  "seeds": {},
+  "rendered_at": "2026-06-30T19:37:52Z",
+  "history": []
+}

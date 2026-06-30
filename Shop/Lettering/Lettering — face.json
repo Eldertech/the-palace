@@ -1,0 +1,9 @@
+{
+  "title": "Lettering",
+  "idiom": "screenprint / relief-print",
+  "hero_prompt": "Wide darkened backdrop in screenprint style \u2014 a single oversized capital letter, hand-drawn with rough ink strokes, its interior filled with molten ember and ash as though the letterform is a vessel holding fire; the letter sits on black, glowing at its seams, a thin canny-edge skeleton visible beneath the flame. A figure (woman) crouches below the letter with a brush, not painting the fire but releasing it from inside the stroke. No letters, numerals, words, labels \u2014 purely pictorial.",
+  "icon_prompt": "Bold high-contrast square emblem: a single thick-stroked capital letter (block form, hand-inked) with its interior cavity filled with a single burst of light or flame \u2014 stark black outer shell, luminous void within. Designed to survive at 24px: no fine linework, no serifs, no text or numerals \u2014 purely the letter-as-vessel emblem.",
+  "seeds": {},
+  "rendered_at": "2026-06-30T19:37:52Z",
+  "history": []
+}

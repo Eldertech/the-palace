@@ -33,6 +33,8 @@ links:
 ---
 
 # Natalie Goldberg
+
+![[Natalie Goldberg — hero.png]]
 ## Writer
 
 **Domain:** Writer

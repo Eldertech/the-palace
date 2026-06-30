@@ -1,0 +1,9 @@
+{
+  "title": "Compression \u2194 Intimacy",
+  "idiom": "Risograph screenprint with halftone texture",
+  "hero_prompt": "Wide dark-backdrop risograph screenprint: on the left, two waveforms \u2014 one jagged and wide-ranging, one compressed and close together, rendered as white-on-black oscilloscope traces; on the right, two silhouetted figures leaning toward each other across a table, the gap between them mirroring the compressed waveform's narrow range; connecting them is a horizontal band of halftone dots that gradually densifies from the wide waveform to the close figures, visualizing the shared structure of reduction-as-closeness; the overall palette is deep indigo with a single warm amber halftone highlight; no letters, numerals, words, labels \u2014 purely pictorial; hand-printed risograph texture throughout.",
+  "icon_prompt": "Bold square emblem in the risograph screenprint style: a thick white vertical bar split into two zones \u2014 the left side shows a dramatically tall jagged waveform peak, the right side shows a squat compressed waveform close to center \u2014 and between the two zones a single inward-pointing arrow on each side (two arrows converging), symbolizing compression and the closeness it creates; deep indigo ground, white and amber marks only; no fine linework, no letters, numerals, words, or labels; must read clearly at 24px.",
+  "seeds": {},
+  "rendered_at": "2026-06-30T19:37:52Z",
+  "history": []
+}

@@ -37,6 +37,8 @@ tags: [specialist, shop, sound, generative, music, sfx]
 
 # Stable Audio Open
 
+![[Stable Audio Open — hero.png]]
+
 *Migrated 2026-05-26 from Stable Audio Open 1.0 to Stable Audio 3 — Loudon noticed mid-install that SA3 had been released ten days earlier and called the pivot. The file name `Shop/Stable Audio Open.md` is deliberately kept (no rename) so future Stability versions land on the same Specialist without churning palace wikilinks. "Open" is the open-weights line and stays generic across versions.*
 
 ## Charter

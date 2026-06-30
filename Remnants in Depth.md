@@ -42,6 +42,8 @@ links:
 
 # Remnants in Depth
 
+![[Remnants in Depth — hero.png]]
+
 A 2D artistic mark — an ink blob, a splatter, a chalk smudge — is flat. It belongs to the *paper*, not the *world*. This is the method for giving such a mark a **position in 3D space** so it gains real parallax when the camera moves — near marks sweep across frame, far marks barely drift, scene geometry occludes the ones genuinely behind it — while it never stops reading as flat, hand-drawn ink. Born lifting [[BLUELINE]]'s ink splatter off the page; written so the next Shop worker can do it with any mark, not just blobs.
 
 ## The trick: billboards, not geometry

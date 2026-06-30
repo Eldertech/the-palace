@@ -39,6 +39,8 @@ links:
 ---
 
 # George Nakashima
+
+![[George Nakashima — hero.png]]
 ## Maker/Craftsman
 
 **Domain:** Maker/Craftsman

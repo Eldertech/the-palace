@@ -1,0 +1,9 @@
+{
+  "title": "Animate the Background",
+  "idiom": "Gorey ink / printmaking",
+  "hero_prompt": "Edward Gorey-style ink etching, wide panoramic format with darkened upper register. A single inked figure stands motionless and precise in the foreground \u2014 clean crosshatch lines, sharp silhouette. Behind and around the legs: swirling smoke and flame rendered as loose, energetic brushstrokes that contrast the rigid linework of the figure. The motion and the stillness occupy the same frame but belong to different visual registers. No letters, numerals, words, labels \u2014 purely pictorial.",
+  "icon_prompt": "Bold high-contrast square emblem in pure black and white. A sharp geometric silhouette of a standing figure split vertically: left half crisp inked linework, right half dissolving into loose ink smoke spirals. The division is a clean vertical seam. Survives at 24px. No fine linework in the smoke \u2014 bold organic strokes only. No letters, numerals, words, labels \u2014 purely pictorial.",
+  "seeds": {},
+  "rendered_at": "2026-06-30T19:37:52Z",
+  "history": []
+}

@@ -27,6 +27,8 @@ links:
 ---
 
 # Andy Goldsworthy
+
+![[Andy Goldsworthy — hero.png]]
 ## Artist
 
 **Domain:** Artist

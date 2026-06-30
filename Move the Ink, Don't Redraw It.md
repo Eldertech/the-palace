@@ -24,6 +24,8 @@ links:
 
 # Move the Ink, Don't Redraw It
 
+![[Move the Ink, Don't Redraw It — hero.png]]
+
 To make an inked thing move without losing the hand-drawn look, **draw it once and move it with geometry.** The AI (or the hand) makes the still; a deterministic field animates it. The slogan: **AI makes the still; geometry makes the motion.**
 
 ## Why redrawing fails

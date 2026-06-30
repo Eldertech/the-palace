@@ -1,0 +1,9 @@
+{
+  "title": "Loudon Live Design System",
+  "idiom": "Bauhaus construction diagram / letterpress proof sheet \u2014 flat ink-on-paper, no CGI",
+  "hero_prompt": "Wide ~12:5 darkened parchment backdrop. One dominant image: a letterpress compositor's layout stone with a handful of metal type sorts arranged into a sparse editorial spread \u2014 Anton-weight capitals at top, a fine serif body line below, a single amber rule separating them, and a Lissajous figure traced in pencil beside the type as logo sketch. Medium: Bauhaus ink diagram with lithograph grain, dense black on warm off-white, no wash or 3D shading. No letters, numerals, words, labels \u2014 purely pictorial. Balanced presence of a male and a female hand reaching from opposite sides to adjust the type sorts. Mood: methodical studio work before the press run.",
+  "icon_prompt": "Bold high-contrast square emblem on near-black. A single thick capital letter-form (display weight, no serifs visible \u2014 just one monumental stroke) with a Lissajous ellipse looping through its counter, rendered as flat white on black with a single amber accent line. Must survive at 24 px \u2014 no fine linework, no gradients. No letters, numerals, words, labels \u2014 purely pictorial.",
+  "seeds": {},
+  "rendered_at": "2026-06-30T19:37:52Z",
+  "history": []
+}

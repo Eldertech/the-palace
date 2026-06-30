@@ -1,0 +1,9 @@
+{
+  "title": "Remnants in Depth",
+  "idiom": "Haeckel scientific engraving meets Japanese woodblock print",
+  "hero_prompt": "Wide darkened scene rendered as a high-contrast ink engraving: a cluster of ink blobs and splatter marks at varying depths receding into a cinematic interior, each mark a flat hand-drawn disc hovering in space \u2014 near marks large and sharp, far marks small and faint \u2014 connected by faint vector-field flow lines that curve and streak the marks along their direction. Chiaroscuro lighting, Haeckel crosshatch texture, woodblock-print flatness. No letters, numerals, words, labels \u2014 purely pictorial.",
+  "icon_prompt": "Bold square emblem in two-value ink: a single large ink splatter blob at center, its shadow a smaller blob offset behind it in grey \u2014 suggesting depth through the billboard trick, nothing else. Hard edge, survives 24px, no fine linework, no text, no letters, no numerals.",
+  "seeds": {},
+  "rendered_at": "2026-06-30T19:37:52Z",
+  "history": []
+}

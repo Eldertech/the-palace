@@ -42,6 +42,8 @@ links:
 ---
 
 # Andrei Tarkovsky
+
+![[Andrei Tarkovsky — hero.png]]
 ## Sculpting in Time
 
 **1932-1986** | Soviet Filmmaker, Poet of Cinema

@@ -45,6 +45,8 @@ links:
 
 # Hand-Drawn 3D Look
 
+![[Hand-Drawn 3D Look — hero.png]]
+
 How to get a **confident, hand-drawn pen-and-ink look out of a 3D scene** — and how to hand it to a gen-AI model without losing the drawing. The whole approach hangs on one through-line, inherited from [[Adopt the Craft, Author the Seam]]: **work in the rich 3D representation, apply the hand-drawn skin last.** Proven in [[BLUELINE]] against a locked pen-and-ink-noir style; written as the menu the [[Frame Designer]] dispatches from.
 
 ## What Blender draws for free

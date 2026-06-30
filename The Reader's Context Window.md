@@ -32,6 +32,8 @@ links:
 
 # The Reader's Context Window
 
+![[The Reader's Context Window — hero.png]]
+
 A discipline for laying out any surface a human reads to *decide* or *orient*: order the information the way the reader's mind actually assembles it, and show only what is necessary to assemble it. The question is never "what could I put here?" but **"what order does this reader need this in to build their own context window?"** — and Loudon is far more sensitive to that order than the machine is, so the order is his to set and the page's to obey.
 
 It is the structural sibling of [[Speak Like a Person, Log Like a Protocol]]. That principle governs the *register* of the words on a surface; this one governs their *sequence and their count*. Together they are the two laws of a palace front-end. Where they hold, the interface disappears ([[Merleau-Ponty]]: the instrument absorbed into the body schema; a front-end works when you stop noticing it).

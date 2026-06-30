@@ -1,0 +1,9 @@
+{
+  "title": "Manim CE",
+  "idiom": "mathematical diagram in the style of a hand-drawn scientific illustration \u2014 think mid-century academic chalkboard diagram or a Haeckel-influenced geometric plate, ink on aged paper, high contrast",
+  "hero_prompt": "A wide hand-drawn scientific illustration in the style of a mid-century academic chalkboard diagram, ink on aged cream paper: a large unit circle occupies the left half, a phase arrow mid-sweep tracing a sinusoidal wave that unfurls rightward across the frame like a ribbon unspooling from the circle's rim \u2014 the wave's peaks and troughs rendered in careful cross-hatching. A second smaller circle sits above with its own arrow at a different angle, its wave interleaving with the first in a gentle beat pattern. LaTeX-style hand-lettered Greek letters (theta, omega) annotate key points but carry NO complete words, numerals, or labels \u2014 purely pictorial mathematical annotation as pure graphic mark. Dark ink on warm parchment, high contrast, no color, no CGI rendering, no letters, numerals, words, or labels \u2014 purely pictorial.",
+  "icon_prompt": "Bold high-contrast square emblem: a single unit circle with a thick phase arrow at roughly 2 o'clock, the arrow's tip touching a sine-wave crest that curves away to the right \u2014 both shapes rendered as heavy ink strokes on white, pure black and white, geometric clarity. The arrow and wave are the whole composition \u2014 no text, no numerals, no labels, no fine linework, no gradients. Survives at 24px.",
+  "seeds": {},
+  "rendered_at": "2026-06-30T19:37:52Z",
+  "history": []
+}

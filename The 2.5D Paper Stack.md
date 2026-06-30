@@ -36,6 +36,8 @@ links:
 
 # The 2.5D Paper Stack
 
+![[The 2.5D Paper Stack — hero.png]]
+
 A frame is not a flat finished picture. It is a **stack of inked paper sheets** — each cut sharp along its own black lines, stacked with a little air between them, and each free to move on its own. You are not animating a drawing; you are sliding sheets of paper.
 
 This is the new way to think about every frame technique in [[BLUELINE]]. It is not one trick among many. It is the **foundation** the [[Frame Designer]] now rests on: every technique we have, or will add, answers one question — *how do I make, move, or place a sheet?*

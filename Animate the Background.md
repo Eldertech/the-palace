@@ -32,6 +32,8 @@ forward_vector: "I hold one rule — keep what you authored, animate what should
 
 # Animate the Background
 
+![[Animate the Background — hero.png]]
+
 A still drawing comes alive without becoming a video: **separate the foreground from the background, give the background motion, and composite them back together.** What you authored — the hero, the camera, the staging — stays crisp and exactly where you drew it. What should breathe — sky, smoke, fire, water, a crowd — gets real motion.
 
 This is [[Blocked, Not Prompted]] carried into time: author what matters, let the model animate what merely lives. It is the half of [[The Flow Field is the Spine]] that survives — the field the compositor *keeps*, not the one the diffusion eats. The arrow becomes the wind by **compositing**, not by steering the noise.

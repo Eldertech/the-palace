@@ -36,6 +36,8 @@ links:
 ---
 
 # James Turrell
+
+![[James Turrell — hero.png]]
 ## Light, Perception, and Patience
 
 **1943-present** | Artist working with Light and Space

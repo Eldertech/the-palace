@@ -41,6 +41,8 @@ links:
 ---
 
 # John Cage
+
+![[John Cage — hero.png]]
 ## Letting Sounds Be Themselves
 
 **1912-1992** | Composer, Philosopher, Mycologist
