@@ -35,7 +35,9 @@ Measured on the same moving smoke, frame-to-frame change:
 - deterministic warp / NPR substrate — **0.15 / 255**
 - per-frame AI restyle — **1.50 / 255** (~10× worse, and that figure flatters the AI)
 
-The stability trick on the stylize side is the same one: a procedural paper tooth generated **once** and reused on every frame. A static substrate cannot boil.
+## The same rule, the substrate too
+
+The stability move on the stylize side is the same one: when turning a sim into ink, the procedural paper tooth is generated **once** and reused on every frame. A static substrate cannot boil. The lesson generalizes — at every layer where stability matters, fix the thing once, don't remake it each step. AI for the inked still, AI for the paper grain — never AI for the frame-to-frame motion.
 
 ## How it shows up
 
@@ -44,6 +46,8 @@ This is the per-sheet motion primitive for [[The 2.5D Paper Stack]] — how each
 ## The honest edge
 
 It only covers **displacement** — motion where the thing keeps its shape and just moves. When the topology changes — smoke billowing into new shapes, dust scattering, a thing appearing that wasn't drawn — there is no stable ink to push, and you must simulate or generate fresh. That boundary is where a redraw earns itself, and naming it is half the value.
+
+A second boundary, finer: **physically-grounded** motion is available — drive the warp from a baked sim's velocity field instead of a procedural one — but as of 2026-06 it doesn't clearly beat procedural. The velocity-driven version reads more organic (the ink deforms along the sim's actual shape, not a synthetic wave) but currently carries a faint loop seam and a geometry mismatch when the sim and the plate have different aspects. Two specific fixes would change that: render the sim at the plate's aspect ratio, and integrate the flow into a periodic field instead of cross-fading frames. Until those land, procedural fields are the simpler win; the physically-grounded path is *available* and worth reaching for when a shot demands sim-accurate motion, not as a default.
 
 ## Ancestry
 

@@ -47,10 +47,25 @@ The soft, smeary masks we started with were a confession that we didn't have the
 
 The stack is held open as a growing catalogue of ways to get sheets and move them. Two families:
 
-- **2D** — cut what's already drawn. *Separate-and-infill* (lift a sheet out, fill the hole behind it). *[[Move the Ink, Don't Redraw It]]* (warp a sheet's own ink so it breathes — ripple, flicker, drift — without it boiling).
-- **3D** — build the sheet from depth. *Pose-control* (ControlNet pose), *depth maps* (one shared depth makes generated sheets register as one scene), *full 3D models* rendered to a plane.
+- **2D** — cut what's already drawn.
+  - *Separate-and-infill* — lift a sheet out, fill the hole behind it. A luminance threshold fails (dark hill and dark cloud ink both read "dark"); use **content-aware density extraction** — a filled mass is densely dark, linework is sparse, so threshold dark-*density*. The cut then lands on the black silhouette where it disappears. **Infill is ground-dependent**: on a white-paper ground the recomposite is a one-line multiply (white passes, black ink darkens); on a structured ground the hole needs SDXL inpaint guided by a canny of the surrounding lines, so the missing region continues in style.
+  - *[[Move the Ink, Don't Redraw It]]* — warp a sheet's own ink so it breathes (ripple, flicker, drift) without it boiling. The per-sheet motion primitive.
+- **3D** — build the sheet from depth.
+  - *Pose-control* (ControlNet pose), *depth maps*, *full 3D models* rendered to a plane.
+  - When generating *layers* (each sheet its own pass), independent passes produce two drawings that fight. **Shared conditioning** — one authored depth map + one seed across passes — is what makes them register as one scene. Re-ink locally afterwards for the pen-flow look.
 
 Every one of these resolves to the same thing: a sheet, with an alpha cut on its black line, at a depth in the stack.
+
+## The A/B duals — choose by what you hold
+
+Separate and generate are duals. Each makes free what the other makes hard:
+
+|  | separate (have the frame) | generate (make the frame) |
+|---|---|---|
+| coherence (one picture) | **free** — it is one drawing | **the work** — passes drift apart unless conditioning is shared |
+| clean alpha (the cut) | **the work** — content-aware extract + infill | **free** — by construction |
+
+Have the finished frame → separate. Making the frame → generate, under shared control. The pipeline you reach for is named by which freedom you can give up.
 
 ## The stacking order means something
 
