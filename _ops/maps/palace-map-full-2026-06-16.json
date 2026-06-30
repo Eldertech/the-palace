@@ -4,7 +4,7 @@
     "scope": "full",
     "node_count": 335,
     "ops_node_count": 35,
-    "edge_count": 2541,
+    "edge_count": 2563,
     "ghost_taxonomy": {
       "error_ghosts": [
         {
@@ -519,7 +519,7 @@
       "has_forward_vector": true,
       "last_activated": "2026-06-26",
       "activation_count": "2",
-      "outbound_count": 5,
+      "outbound_count": 6,
       "inbound_count": 0
     },
     {
@@ -640,7 +640,7 @@
       "has_forward_vector": true,
       "last_activated": "2026-06-26",
       "activation_count": "5",
-      "outbound_count": 18,
+      "outbound_count": 19,
       "inbound_count": 24
     },
     {
@@ -915,7 +915,7 @@
       "has_forward_vector": true,
       "last_activated": "2026-06-26",
       "activation_count": null,
-      "outbound_count": 7,
+      "outbound_count": 8,
       "inbound_count": 10
     },
     {
@@ -926,8 +926,8 @@
       "has_forward_vector": true,
       "last_activated": "2026-06",
       "activation_count": "1",
-      "outbound_count": 5,
-      "inbound_count": 4
+      "outbound_count": 6,
+      "inbound_count": 8
     },
     {
       "id": "Compression \u2194 Intimacy",
@@ -982,7 +982,7 @@
       "last_activated": "2026-06-26",
       "activation_count": "16",
       "outbound_count": 10,
-      "inbound_count": 40
+      "inbound_count": 42
     },
     {
       "id": "Cooperation Yields Agency \u2014 Context",
@@ -1443,7 +1443,7 @@
       "has_forward_vector": true,
       "last_activated": null,
       "activation_count": null,
-      "outbound_count": 11,
+      "outbound_count": 14,
       "inbound_count": 10
     },
     {
@@ -1576,7 +1576,7 @@
       "last_activated": "2026-06",
       "activation_count": "2",
       "outbound_count": 5,
-      "inbound_count": 4
+      "inbound_count": 6
     },
     {
       "id": "Hand-Drawn 3D Look",
@@ -1586,7 +1586,7 @@
       "has_forward_vector": true,
       "last_activated": "2026-06-26",
       "activation_count": "3",
-      "outbound_count": 9,
+      "outbound_count": 10,
       "inbound_count": 5
     },
     {
@@ -1619,8 +1619,8 @@
       "has_forward_vector": true,
       "last_activated": "2026-06-26",
       "activation_count": "11",
-      "outbound_count": 13,
-      "inbound_count": 67
+      "outbound_count": 14,
+      "inbound_count": 69
     },
     {
       "id": "Hilaritas Generator \u2014 Context",
@@ -1641,7 +1641,7 @@
       "has_forward_vector": true,
       "last_activated": "2026-06-26",
       "activation_count": "11",
-      "outbound_count": 13,
+      "outbound_count": 14,
       "inbound_count": 0
     },
     {
@@ -1784,7 +1784,7 @@
       "has_forward_vector": true,
       "last_activated": "2026-06-26",
       "activation_count": null,
-      "outbound_count": 7,
+      "outbound_count": 8,
       "inbound_count": 7
     },
     {
@@ -1994,7 +1994,7 @@
       "last_activated": "2026-06-26",
       "activation_count": null,
       "outbound_count": 15,
-      "inbound_count": 11
+      "inbound_count": 16
     },
     {
       "id": "Loudon Live Post-producer",
@@ -2202,8 +2202,8 @@
       "has_forward_vector": true,
       "last_activated": "2026-06-26",
       "activation_count": null,
-      "outbound_count": 12,
-      "inbound_count": 23
+      "outbound_count": 13,
+      "inbound_count": 26
     },
     {
       "id": "Modes of Collaboration \u2014 Context",
@@ -2224,7 +2224,7 @@
       "has_forward_vector": true,
       "last_activated": "2026-06-26",
       "activation_count": null,
-      "outbound_count": 12,
+      "outbound_count": 13,
       "inbound_count": 0
     },
     {
@@ -2741,8 +2741,8 @@
       "has_forward_vector": true,
       "last_activated": null,
       "activation_count": null,
-      "outbound_count": 6,
-      "inbound_count": 4
+      "outbound_count": 8,
+      "inbound_count": 5
     },
     {
       "id": "Rank-N Lattice Analysis",
@@ -2774,7 +2774,7 @@
       "has_forward_vector": true,
       "last_activated": "2026-06-26",
       "activation_count": "3",
-      "outbound_count": 8,
+      "outbound_count": 9,
       "inbound_count": 2
     },
     {
@@ -3225,7 +3225,7 @@
       "has_forward_vector": true,
       "last_activated": "2026-06-26",
       "activation_count": null,
-      "outbound_count": 7,
+      "outbound_count": 8,
       "inbound_count": 2
     },
     {
@@ -3379,8 +3379,8 @@
       "has_forward_vector": true,
       "last_activated": "2026-06-26",
       "activation_count": "2",
-      "outbound_count": 5,
-      "inbound_count": 2
+      "outbound_count": 6,
+      "inbound_count": 5
     },
     {
       "id": "The Adjacent Affordance",
@@ -3709,7 +3709,7 @@
       "has_forward_vector": true,
       "last_activated": "2026-06-26",
       "activation_count": null,
-      "outbound_count": 7,
+      "outbound_count": 8,
       "inbound_count": 3
     },
     {
@@ -3874,7 +3874,7 @@
       "has_forward_vector": true,
       "last_activated": "2026-06-26",
       "activation_count": "2",
-      "outbound_count": 6,
+      "outbound_count": 7,
       "inbound_count": 0
     },
     {
@@ -3896,7 +3896,7 @@
       "has_forward_vector": true,
       "last_activated": "2026-06-26",
       "activation_count": null,
-      "outbound_count": 12,
+      "outbound_count": 14,
       "inbound_count": 6
     },
     {
@@ -4263,6 +4263,12 @@
       "type": "couples-with",
       "target": "Language as a Tonal Medium",
       "label": "letter-as-tone"
+    },
+    {
+      "source": "Typography as Meaning",
+      "type": "enables",
+      "target": "Hilaritas Generator",
+      "label": "a-voice-with-a-face"
     },
     {
       "source": "The Dichotomy of Control",
@@ -4985,6 +4991,12 @@
       "label": "geometry-over-redraw"
     },
     {
+      "source": "Remnants in Depth",
+      "type": "couples-with",
+      "target": "The 2.5D Paper Stack",
+      "label": "layers-in-space"
+    },
+    {
       "source": "Palace_Philosophies",
       "type": "spawned",
       "target": "Spinoza Conatus",
@@ -5495,6 +5507,12 @@
       "label": "the-seam-is-here"
     },
     {
+      "source": "Comic and Cinema \u2014 Two Ways of Seeing",
+      "type": "connects-to",
+      "target": "Hilaritas Generator",
+      "label": "compress-or-dilate-to-teach"
+    },
+    {
       "source": "The Curve Is the Material",
       "type": "deepens",
       "target": "Inharmonic Wavetable Synthesis",
@@ -5933,6 +5951,24 @@
       "label": "figure-staging-method"
     },
     {
+      "source": "Frame Designer",
+      "type": "deepens",
+      "target": "Graphic Storytelling",
+      "label": "applies-the-craft"
+    },
+    {
+      "source": "Frame Designer",
+      "type": "exemplifies",
+      "target": "Comic and Cinema \u2014 Two Ways of Seeing",
+      "label": "stages-the-seam"
+    },
+    {
+      "source": "Frame Designer",
+      "type": "emerged-from",
+      "target": "The 2.5D Paper Stack",
+      "label": "born-from-the-stack"
+    },
+    {
       "source": "Media Library",
       "type": "connects-to",
       "target": "FOUR PILLARS",
@@ -6153,6 +6189,12 @@
       "type": "couples-with",
       "target": "Hand-Drawn 3D Look",
       "label": "break-surface"
+    },
+    {
+      "source": "The 2.5D Paper Stack",
+      "type": "connects-to",
+      "target": "Comic and Cinema \u2014 Two Ways of Seeing",
+      "label": "depth-between-registers"
     },
     {
       "source": "The Drift",
@@ -7427,6 +7469,12 @@
       "label": "exemplifies-domain"
     },
     {
+      "source": "Modes of Collaboration",
+      "type": "deepens",
+      "target": "Cooperation Yields Agency",
+      "label": "named-ways-to-cooperate"
+    },
+    {
       "source": "Chebyshev is Fourier",
       "type": "enables",
       "target": "2D Torus Wavetable Synthesizer",
@@ -7713,6 +7761,18 @@
       "type": "connects-to",
       "target": "FOUR PILLARS",
       "label": "sound-leads"
+    },
+    {
+      "source": "Radio Play",
+      "type": "connects-to",
+      "target": "Modes of Collaboration",
+      "label": "the-debrief-reel"
+    },
+    {
+      "source": "Radio Play",
+      "type": "connects-to",
+      "target": "Loudon Live Design System",
+      "label": "teaching-radio"
     },
     {
       "source": "Octave Equivalence",
@@ -8613,6 +8673,12 @@
       "type": "connects-to",
       "target": "Quality Manifesto",
       "label": "signal-redirector"
+    },
+    {
+      "source": "Hilaritas_Generator",
+      "type": "couples-with",
+      "target": "Modes of Collaboration",
+      "label": "how-we-make-joy"
     },
     {
       "source": "Source Library",
@@ -9887,6 +9953,12 @@
       "label": "figure-staging"
     },
     {
+      "source": "Hand-Drawn 3D Look",
+      "type": "connects-to",
+      "target": "The 2.5D Paper Stack",
+      "label": "lifts-ink-into-depth"
+    },
+    {
       "source": "Speak Like a Person, Log Like a Protocol",
       "type": "connects-to",
       "target": "BBS Design System",
@@ -10071,6 +10143,12 @@
       "type": "connects-to",
       "target": "DSP Frameworks",
       "label": "exemplifies-domain"
+    },
+    {
+      "source": "Modes_of_Collaboration",
+      "type": "deepens",
+      "target": "Cooperation Yields Agency",
+      "label": "named-ways-to-cooperate"
     },
     {
       "source": "Jewel \u2014 Context",
@@ -10941,6 +11019,12 @@
       "type": "connects-to",
       "target": "Quality Manifesto",
       "label": "signal-redirector"
+    },
+    {
+      "source": "Hilaritas Generator",
+      "type": "couples-with",
+      "target": "Modes of Collaboration",
+      "label": "how-we-make-joy"
     },
     {
       "source": "Gemma 4 \u2014 Local Coordination Guide",
@@ -13385,6 +13469,12 @@
       "label": "voices"
     },
     {
+      "source": "Kokoro",
+      "type": "enables",
+      "target": "Loudon Live Design System",
+      "label": "the-lesson-voice"
+    },
+    {
       "source": "D3.js",
       "type": "connects-to",
       "target": "Maker",
@@ -13643,6 +13733,12 @@
       "label": "vram-contends-with"
     },
     {
+      "source": "Stable Audio Open",
+      "type": "enables",
+      "target": "Loudon Live Design System",
+      "label": "lesson-sound"
+    },
+    {
       "source": "p5.js",
       "type": "connects-to",
       "target": "Maker",
@@ -13845,6 +13941,12 @@
       "type": "connects-to",
       "target": "FLUX (Hugging Face)",
       "label": "cloud-sibling"
+    },
+    {
+      "source": "ComfyUI",
+      "type": "enables",
+      "target": "Loudon Live Design System",
+      "label": "renders-the-lesson-art"
     },
     {
       "source": "LaTeX",
@@ -14391,6 +14493,18 @@
       "type": "enables",
       "target": "Loudon Live",
       "label": "finishing-pipeline"
+    },
+    {
+      "source": "ffmpeg",
+      "type": "enables",
+      "target": "Loudon Live Design System",
+      "label": "assembles-the-reel"
+    },
+    {
+      "source": "ffmpeg",
+      "type": "enables",
+      "target": "Radio Play",
+      "label": "assembles-the-play"
     },
     {
       "source": "Blender",
@@ -15383,6 +15497,12 @@
       "label": "patience-as-practice"
     },
     {
+      "source": "Andrei Tarkovsky",
+      "type": "connects-to",
+      "target": "Comic and Cinema \u2014 Two Ways of Seeing",
+      "label": "long-take-dilation"
+    },
+    {
       "source": "Shunryu Suzuki",
       "type": "member-of",
       "target": "Source Library",
@@ -15531,6 +15651,12 @@
       "type": "connects-to",
       "target": "Brian Eno",
       "label": "restraint-as-method"
+    },
+    {
+      "source": "Yasujir\u014d Ozu",
+      "type": "connects-to",
+      "target": "Comic and Cinema \u2014 Two Ways of Seeing",
+      "label": "the-pillow-shot-gutter"
     },
     {
       "source": "John Cage",
@@ -18777,6 +18903,12 @@
       "type": "emerged-from",
       "target": "Adopt the Craft, Author the Seam",
       "label": "re-founding-principle"
+    },
+    {
+      "source": "BLUELINE",
+      "type": "emerged-from",
+      "target": "Graphic Storytelling",
+      "label": "speaks-comics-first"
     },
     {
       "source": "BLUELINE \u2014 Render Backend",

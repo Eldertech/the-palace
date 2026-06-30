@@ -29,6 +29,9 @@ links:
   - target: "[[Hand-Drawn 3D Look]]"
     type: couples-with
     label: break-surface
+  - target: "[[Comic and Cinema — Two Ways of Seeing]]"
+    type: connects-to
+    label: depth-between-registers
 ---
 
 # The 2.5D Paper Stack

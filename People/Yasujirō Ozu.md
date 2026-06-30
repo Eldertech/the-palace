@@ -33,6 +33,9 @@ links:
   - target: "[[Brian Eno]]"
     type: connects-to
     label: restraint-as-method
+  - target: "[[Comic and Cinema — Two Ways of Seeing]]"
+    type: connects-to
+    label: the-pillow-shot-gutter
 ---
 
 # Yasujirō Ozu

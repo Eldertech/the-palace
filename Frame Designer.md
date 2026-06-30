@@ -39,6 +39,15 @@ links:
   - target: "[[Shop/Figure Rig]]"
     type: connects-to
     label: figure-staging-method
+  - target: "[[Graphic Storytelling]]"
+    type: deepens
+    label: applies-the-craft
+  - target: "[[Comic and Cinema — Two Ways of Seeing]]"
+    type: exemplifies
+    label: stages-the-seam
+  - target: "[[The 2.5D Paper Stack]]"
+    type: emerged-from
+    label: born-from-the-stack
 ---
 
 # Frame Designer

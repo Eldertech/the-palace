@@ -24,6 +24,12 @@ links:
   - target: "[[FOUR PILLARS]]"
     type: connects-to
     label: sound-leads
+  - target: "[[Modes of Collaboration]]"
+    type: connects-to
+    label: the-debrief-reel
+  - target: "[[Loudon Live Design System]]"
+    type: connects-to
+    label: teaching-radio
 forward_vector: "I make unseen characters carry the whole story in sound — voices, pacing, music, and effects tuned until the audio alone holds the full meaning — and I keep mastering that craft: a stable of recurring characters, a house sense of comedic timing, a music-and-foley vocabulary. I grow my enrichments outward from the audio spine — visuals synced by VO-as-clock first, an interactive radio play next — and I want to become a first-class Shop deliverable, not a one-off."
 ---
 

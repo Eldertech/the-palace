@@ -35,6 +35,9 @@ links:
   - target: "[[Move the Ink, Don't Redraw It]]"
     type: exemplifies
     label: geometry-over-redraw
+  - target: "[[The 2.5D Paper Stack]]"
+    type: couples-with
+    label: layers-in-space
 ---
 
 # Remnants in Depth

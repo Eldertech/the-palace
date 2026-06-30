@@ -65,6 +65,9 @@ links:
   - target: "[[Adopt the Craft, Author the Seam]]"
     type: emerged-from
     label: re-founding-principle
+  - target: "[[Graphic Storytelling]]"
+    type: emerged-from
+    label: speaks-comics-first
 tags: [project, blueline, music-video, generative, pipeline, sprout]
 ---
 

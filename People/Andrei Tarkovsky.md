@@ -36,6 +36,9 @@ links:
   - target: "[[Pauline Oliveros]]"
     type: connects-to
     label: patience-as-practice
+  - target: "[[Comic and Cinema — Two Ways of Seeing]]"
+    type: connects-to
+    label: long-take-dilation
 ---
 
 # Andrei Tarkovsky
