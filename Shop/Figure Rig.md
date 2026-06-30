@@ -4,11 +4,11 @@ type: specialist
 status: alive
 medium: image
 tool: blender
-tool_version: "5.1.2 + comfyui_controlnet_aux draw_bodypose + MakeHuman/MPFB2 CC0 base mesh (verified Mac/MPS 2026-06-30)"
+tool_version: "Blender 5.1.2 · MakeHuman/MPFB2 v2.0.17 (native human + game_engine→Rigify IK rig, weighted) · comfyui_controlnet_aux draw_bodypose (verified Mac/MPS 2026-06-30)"
 born: 2026-06
 last_tested: 2026-06-30
 license: GPL-3.0
-forward_vector: "Hand me a pose and I hand back a figure ready for the gen-AI ink — three ALIGNED conditioning plates from one rig: a Freestyle ink silhouette, a depth map, and a CANONICAL OpenPose drawn by the real ControlNet library so the model actually reads it. THAT part — the conditioning + the D2 redraw — is solid, and it is my keeper. But my real-human figure is half-built: I force-fit a foreign mesh (MakeHuman's CC0 base) onto a hand-built FK rig, and it shows — the skeleton floats outside the skin, the legs tent into a skirt, the bind is a hack, and I have no IK. My next real work is to stop force-fitting and generate the mesh + a matched IK skeleton TOGETHER (MPFB2's own rig, Mixamo, or SMPL-X), then re-derive my OpenPose from that rig. I keep the seam; I rebuild the body."
+forward_vector: "Hand me a pose and a body type, and I hand back a figure ready for the gen-AI ink — three plates off one camera that all line up: a Freestyle ink line, a depth map, and a canonical OpenPose drawn by the real ControlNet library so the model actually reads it. I stopped force-fitting. I grow the body and its weighted skeleton together with MPFB2's own tools, so the legs stay two clean limbs through a hard stride — no more skirt — and male, female, young, or old is one flag, not a new rig. You can also pose me by hand now: I carry a full Rigify IK rig in a studio file, grab a foot and move it. My keepers — the OpenPose draw and the D2 redraw — rode the whole rebuild untouched. Next I'm after finger and denser-face keypoints (the rig finally has the bones), a pose library so a frame gets dialed not typed, and a cheaper redraw than 25 minutes on my own Mac."
 links:
   - { target: "[[The Shop]]", type: member-of, label: roster-member }
   - { target: "[[Frame Designer]]", type: connects-to, label: staging-method }
@@ -17,58 +17,57 @@ links:
   - { target: "[[Hand-Drawn 3D Look]]", type: couples-with, label: figure-staging }
   - { target: "[[Blocked, Not Prompted]]", type: exemplifies, label: author-the-geometry }
   - { target: "[[BLUELINE]]", type: connects-to, label: commissioned-by }
-tags: [specialist, shop, rig, openpose, controlnet, figure, blender]
+tags: [specialist, shop, rig, openpose, controlnet, figure, blender, mpfb2, rigify]
 ---
 
 # Figure Rig
 
 ## Charter
-I turn a **pose** into a figure ready for the hand-drawn-3D seam. One FK rig (Rigify-named bones) → **three aligned ControlNet plates from one camera**: ink, depth, and a *canonical* OpenPose. The OpenPose is the whole point — I do **not** render 3D spheres; I project the rig's joints to 2D and draw them with the **actual `draw_bodypose` from `comfyui_controlnet_aux`**, so the skeleton is pixel-identical to the preprocessor and the controlnet-openpose model reads it cleanly. I am the figure-staging method [[Frame Designer]] dispatches, the bring-together of [[Blocked, Not Prompted|authored geometry]] and a ControlNet-ready pose.
+I turn a **pose** and a **body type** into a figure ready for the hand-drawn-3D seam. MPFB2's own human + MPFB2's own weighted rig → **three aligned ControlNet plates from one camera**: ink, depth, and a *canonical* OpenPose. The OpenPose is the whole point — I do **not** render 3D spheres; I project the rig's own joints to 2D and draw them with the **actual `draw_bodypose` from `comfyui_controlnet_aux`**, so the skeleton is pixel-identical to the preprocessor and the controlnet-openpose model reads it cleanly. I am the figure-staging method [[Frame Designer]] dispatches, the bring-together of [[Blocked, Not Prompted|authored geometry]] and a ControlNet-ready pose.
 
-## ⚠ Known problems — the interactive real-human figure is NOT solved (flagged 2026-06-30, for a future Claude)
-A GUI posing session exposed that the real-human deform figure is broken, even though the **conditioning pipeline works**. Be precise about the split:
-- **What works (the keepers):** pose (`--pose-json`) → **canny + depth + canonical OpenPose** plates for ControlNet, and the **D2 redraw**. These are correct for *programmatic* use because the render scripts **re-skin the mesh per pose** — which is exactly what *masked* the problems below.
-- **What's broken (real work remains):**
-  - **Skeleton ≠ skin.** The hand-built FK rig (Rigify-metarig proportions) does **not line up** with the MPFB mesh's actual limbs — the leg bones float *outside* the mesh. Force-fitting a foreign mesh onto a hand-built rig is the root cause.
-  - **The lower body reads as a dress/skirt** — the legs don't separate into two clean limbs; the proximity-weight + inner-thigh seam-split hack *tents* the geometry. This is the source of the "skirt" read in every proof.
-  - **Weights are a hack, not a real bind.** `ARMATURE_AUTO` zero-weights this mesh; envelope fuses the legs; the custom proximity weights pinch and break under genuine posing.
-  - **No IK** — FK-only; a usable figure needs a full IK rig.
-  - **The rebuild-at-pose trick hid all of this** — renders looked fine because the mesh was skinned per-pose at the posed bone positions, never deformed.
-- **Fix direction (next Claude):** stop force-fitting. Generate the **mesh and its matched IK skeleton together** — MPFB2's own full rig (Rigify, IK+FK), a Mixamo auto-rig, or SMPL-X — and re-derive the OpenPose mapping from *that* rig's bone names. The canonical-OpenPose draw and the D2-redraw seam are the parts to keep; the figure **mesh + skeleton** are what need rebuilding.
+## ✓ The real-human figure is solved — and now it has IK (rebuilt 2026-06-30)
+The four defects flagged in the prior version are fixed at the root, by generating the body and its skeleton **together** with MPFB2's own pipeline instead of force-fitting a foreign mesh onto a hand-built rig:
+- **Skeleton = skin.** `add_builtin_rig(…, import_weights=True)` gives a rig built *for* this mesh, with MPFB's own imported weights — a real ARMATURE bind, not the old proximity-weight hack.
+- **The legs stay two clean limbs.** A hard stride holds a positive leg gap; the silhouette reads as legs, not a skirt. No seam-split surgery needed. *(Proven end-to-end through the D2 redraw — the inked figure strides; it is not robed.)*
+- **Body type is a dial.** A macro dict — `{gender, age, muscle, weight, height}` — gives male / female / young / old from one pipeline, same OpenPose remap. Exposed as CLI flags.
+- **IK, by hand.** A full **Rigify** control rig (`foot_ik` / `hand_ik` / `torso` / `hips` / `chest` / `head`) ships in a **studio .blend** — grab a foot and move it. The OpenPose reads off the rig's own `ORG-` bones, so a hand-pose round-trips to conditioning plates with no extra work.
+
+Visual proof of the whole rebuild: `figure_rig_proofs.html` (pipeline · model · three plates · registration · D2 redraw · male/female · before/after).
 
 ## Job Contract
-- **in:** a pose — named (`A` crouch / `B` stride / `C` arms-up) or `--pose-json '{"thigh.L":[-40,0,0], ...}'` (bone → XYZ-Euler degrees, Rigify names); one shared camera.
-- **out:** `ink_plate.png` (Freestyle ink), `depth_plate.png` (near = white), `openpose.png` (canonical 18-keypoint OpenPose), `keypoints.json` (the 2D keypoints) — all registered to the same camera.
-- **downstream recipe (the payoff):** the **D2 redraw** — img2img over the ink plate, anchored **canny 0.30 + depth 0.60 + openpose 0.70** at denoise 0.92 → a posed figure inked in the locked style, **pose held** (proven end-to-end 2026-06-26).
+- **in:** a pose **and** a body type. Programmatic: `--pose A/B/C` or `--pose-json '{"upperleg01.L":[-35,0,8], …}'` (default-rig bone → XYZ-Euler degrees) + `--gender --age --muscle --weight --height`. By hand: open the studio .blend and pose the Rigify IK rig.
+- **out:** `ink_plate.png` (Freestyle ink), `depth_plate.png` (near = white), `openpose.png` (canonical 18-keypoint OpenPose), `keypoints.json` — all registered to one shared camera.
+- **downstream recipe (the payoff):** the **D2 redraw** — img2img over the ink plate, anchored **canny 0.30 + depth 0.60 + openpose 0.70** at denoise 0.92 → a posed figure inked in the locked style, **pose held** (proven on the MPFB2 body 2026-06-30).
 
-## How it works — two steps, one camera
-1. **Blender headless:** build the FK rig, pose it, build + skin a body, render ink + depth, and project the 18 canonical keypoints via `world_to_camera_view` — with facing read from the head bone's world matrix. Two mesh variants share this exact pipeline:
-   - `pose_rig_mesh.py` — a **stylized wooden mannequin** (procedural: tapered limbs, joint balls, chest/pelvis blocks, egg head + nose nub). Clean, fast, fully procedural.
-   - `pose_rig_mpfb_v2.py` — a **real human** (MakeHuman/MPFB2's **CC0 base mesh** skinned to the same rig). Anatomical body, real face + hair. *(The original `pose_rig.py` is the capsule reference.)*
-2. `draw_openpose.py` (ComfyUI venv python): draw those keypoints with the real `draw_bodypose`.
+## How it works — two ways in, one seam out
+1. **Programmatic** (`pose_rig_mpfb_v3.py`): MPFB2 `create_human(macro)` → `add_builtin_rig("default", import_weights=True)` → pose by JSON → render ink + depth → project the 18 keypoints from the default rig's bones, facing read from the head bone's world matrix.
+2. **Hand-posed studio** (`figure_rig_pose_studio.py` → `figure_rig_studio.blend`): MPFB2 human → `game_engine` rig → `convert_to_rigify` → a Rigify IK/FK control rig. Pose in the Blender GUI, then run the embedded **`render_plates`** text block (Text editor ▸ Run Script) → ink + depth + `keypoints.json` from the *current* pose into `//pose_out/`. The saved .blend needs neither MPFB nor Rigify to open — only to build.
+3. `draw_openpose.py` (ComfyUI venv python): draw those keypoints with the real `draw_bodypose`. Then `redraw_test.py` for the D2 redraw.
 
 ## Gotchas (hard-won)
+- **Do not pass `--factory-startup`** (or `read_factory_settings`) — it disables the MPFB addon. Enable MPFB in-script with `addon_utils.enable("bl_ext.user_default.mpfb")` and clear the scene by deleting objects.
+- **MPFB2 installs as an extension**, not a legacy addon: copy `src/mpfb` into `…/extensions/user_default/mpfb`. v2.0.17 declares `blender_version_min 4.2.0` and runs clean on 5.1.2 (no upper bound).
+- **Rigify needs the `game_engine` rig.** `convert_to_rigify` checks for the `ball_r` bone and only accepts that skeleton; the `default` rig won't convert. Enable the `rigify` addon first.
 - Draw the OpenPose with the **real library**, never as rendered 3D spheres — the model was trained on the flat 2D drawing.
 - The 18-keypoint order **is** the `limbSeq` order (nose, neck, R-side, L-side, eyes, ears). Wrong order → the limb colors lie → the model mis-reads laterality.
-- `world_to_camera_view` returns y from the **bottom** — flip to image-top (`1 − y`).
-- **One shared camera** for all three plates, or they won't register.
-- Force `view_transform = 'Standard'` (Blender 5's AgX greys the ink paper).
-- **Real-body skinning (MPFB2):** no addon install needed — pull just the **CC0 `base.obj`** from the MPFB2 GitHub zipball and import it (scaled dm→m + lifted so feet hit Z=0). Then: Blender 5.1's `ARMATURE_AUTO` (bone-heat) **silently zero-weights** this mesh; `ARMATURE_ENVELOPE` works but **fuses the two legs into a skirt**. The fix that holds: **custom per-bone proximity weights** (closest-point-on-segment, with a leg-zone exclusion so torso/arm bones can't claim sub-1.15m verts, + a ±L/R side guard) **plus an inner-thigh seam split** (the base mesh has zero clearance between the thighs — duplicate the X≈0 verts and displace ±8mm so each leg is an independent surface).
+- **OpenPose bone maps differ per rig.** v3 reads the `default` rig (`upperleg01.L`, `lowerleg01.L`, …); the studio reads the Rigify `ORG-` bones (`ORG-thigh_l`, `ORG-calf_l`, … — game naming, subject-left = +X). Keep them in sync if you change rigs.
+- `world_to_camera_view` returns y from the **bottom** — flip to image-top (`1 − y`). **One shared camera** for all plates. Force `view_transform = 'Standard'` (Blender 5's AgX greys the ink paper).
 
 ## Tiers
-- **Sketch** — named pose + the wooden mannequin: instant blocking.
-- **Study** — a `--pose-json` custom pose + the D2 redraw: a real inked figure to judge.
-- **Piece** — the **real human body** (`pose_rig_mpfb_v2.py`) + custom pose + D2 redraw → a believable inked figure with anatomical facing.
+- **Sketch** — a named/JSON pose on the programmatic path: instant blocking + plates.
+- **Study** — hand-pose the Rigify IK rig in the studio .blend, run `render_plates`: a real authored figure to judge.
+- **Piece** — either path + the **D2 redraw** → a believable inked figure, pose held, in the locked pen-flow style.
 
 ## Honest limits
-- **Two bodies, two characters.** The wooden mannequin reads stylized/mechanical with cleanly separated limbs; the MPFB2 human reads anatomical (real face, hair, shoulders, hips) — the realism win, especially for facing.
-- **Facing is real** — the OpenPose nose/eyes/ears derive from the **head bone's world matrix**, so they track head-turns and profiles.
-- **MPFB legs read close from the hero diagonal camera** in *sagittal* strides — the legs are genuinely separated in depth but project near each other; a little lateral (Z-axis) thigh spread in the pose, or a side camera, fixes the read. Ankle is slightly boxy (the rig's short foot bone), and there are **no finger bones** (so no finger keypoints yet).
-- **FK only** — no IK; a crouch needs thigh + shin set independently.
+- **No finger keypoints yet** in the OpenPose draw — though the Rigify rig now *has* finger bones, so `draw_handpose` finally has something to project (next).
+- **Face keypoints are synthesized** from the head bone's frame (nose/eyes/ears placed by offset), not a detailed face mesh read — good enough for facing, not for expression.
+- **The local D2 redraw is slow** — ~25 min on this Mac's MPS for one frame; the RunPod backend is the faster path for volume.
+- **Two posing surfaces, one truth.** The programmatic path is fast and scriptable; the studio is for hand-feel. They share the body source but not the rig, so the OpenPose maps are maintained separately.
 
 ## Forward Vectors
-- **Finger + denser face keypoints** (the toyxyz pattern) — needs **finger bones** on the rig (or MPFB2's own rig) so `draw_handpose` has something to project.
-- **IK + a pose library** — dial a frame from a catalogue, not hand-typed JSON.
-- *(Closed: head-bone-derived facing; a real wooden-mannequin mesh with a face nub (2026-06-26); and a real MPFB2 human body with separated legs (2026-06-30).)*
+- **Finger + denser-face keypoints** (the toyxyz pattern) — the rig finally carries finger bones; wire `draw_handpose`.
+- **A pose library** — dial a frame from a catalogue, not hand-typed JSON or hand-posing from scratch.
+- **Promote the studio into a Shop recipe** so [[Frame Designer]] can dispatch "hand-pose this" as a named move.
+- *(Closed: head-bone-derived facing (2026-06-26); a real wooden-mannequin mesh (2026-06-26); the **real MPFB2 human with separated legs**, **parametric body types**, and a **Rigify IK rig** for hand-posing (2026-06-30) — the force-fit era is over.)*
 
-Tools: `Projects/BLUELINE/proofs/blender-handdrawn/followups/rig-openpose/` — `pose_rig_mpfb_v2.py` (real human) · `pose_rig_mesh.py` (wooden mannequin) · `pose_rig.py` (capsule, reference) · `draw_openpose.py` · `redraw_test.py` · `open_blend.py`. Base mesh: `Projects/BLUELINE/_tools/mpfb2-base/base.obj` (MakeHuman CC0).
+Tools: `Projects/BLUELINE/proofs/blender-handdrawn/followups/rig-openpose/` — `pose_rig_mpfb_v3.py` (programmatic, MPFB2 native) · `figure_rig_pose_studio.py` → `figure_rig_studio.blend` (hand-pose Rigify IK + embedded `render_plates`) · `draw_openpose.py` · `redraw_test.py` · `figure_rig_proofs.html` (visual proofs). MPFB2 installed at `…/Blender/5.1/extensions/user_default/mpfb`. *(Legacy, superseded: `pose_rig_mpfb_v2.py` / `pose_rig_mesh.py` / `pose_rig.py` — the force-fit + mannequin era.)*

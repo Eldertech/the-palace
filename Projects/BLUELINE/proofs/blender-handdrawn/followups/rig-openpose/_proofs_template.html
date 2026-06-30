@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en" class="skin-graphite">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Figure Rig — visual proofs</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Manrope:wght@200;300;400;500;700&family=JetBrains+Mono:wght@400;500;600&family=Silkscreen:wght@400;700&display=swap');
+
+:root{
+  --serif:'Cormorant Garamond',Georgia,serif;
+  --sans:'Manrope',system-ui,-apple-system,'Segoe UI',Helvetica,sans-serif;
+  --display:'Anton','Bebas Neue',sans-serif;
+  --mono:'JetBrains Mono',ui-monospace,Menlo,monospace;
+  --pixel:'Silkscreen','JetBrains Mono',monospace;
+
+  --bg:#0a0a0f; --bg-elev-1:#12121a; --bg-elev-2:#1a1a28; --bg-elev-3:#22222e;
+  --border:#4a4a5e; --border-soft:rgba(255,255,255,0.06);
+  --fg-1:#e8e8f0; --fg-2:#c8c8d8; --fg-3:#8a8aa0; --fg-4:#4a4a5a; --fg-on-accent:#0a0a0f;
+  --accent:#e8b84a; --accent-dim:#7a6030; --accent-soft:rgba(232,184,74,0.10); --accent-line:rgba(232,184,74,0.50);
+  --info:#4a8fff; --info-line:rgba(74,143,255,0.55);
+  --success:#00ff66; --success-soft:rgba(0,255,102,0.08); --success-line:rgba(0,255,102,0.50);
+  --danger:#ff2a2a; --danger-soft:rgba(255,42,42,0.08); --danger-line:rgba(255,42,42,0.55);
+  --tr-eyebrow:0.18em; --tr-overline:0.22em;
+  --r-sm:2px; --r-md:4px;
+  --shadow-2:inset 0 1px 0 rgba(255,255,255,0.07),0 6px 16px rgba(0,0,0,0.55);
+  --text-glow-accent:0 0 12px rgba(232,184,74,0.55),0 0 24px rgba(232,184,74,0.25);
+  --ease:cubic-bezier(.4,0,.2,1);
+}
+
+*{box-sizing:border-box;margin:0;padding:0}
+html{background:var(--bg)}
+body{
+  background:var(--bg); color:var(--fg-1); font-family:var(--sans); font-weight:300;
+  line-height:1.6; -webkit-font-smoothing:antialiased;
+  padding:64px 24px 96px; max-width:1180px; margin:0 auto;
+}
+
+/* wordmark */
+.wordmark{font-family:var(--display);font-size:30px;letter-spacing:.01em;line-height:1;color:var(--fg-1)}
+.wordmark em{font-family:var(--serif);font-style:italic;font-weight:300;color:var(--accent);text-shadow:var(--text-glow-accent)}
+.eyebrow{font-family:var(--mono);font-size:11px;font-weight:500;letter-spacing:var(--tr-overline);text-transform:uppercase;color:var(--accent);margin-bottom:14px}
+.meta{font-family:var(--mono);font-size:12px;color:var(--fg-3);letter-spacing:.02em}
+
+header{border-bottom:1px solid var(--border);padding-bottom:28px;margin-bottom:14px;display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap}
+h1{font-family:var(--display);font-size:54px;line-height:1.02;letter-spacing:.005em;font-weight:400;margin:18px 0 10px;color:var(--fg-1)}
+h1 .sub{display:block;font-family:var(--serif);font-style:italic;font-weight:300;font-size:25px;color:var(--fg-2);letter-spacing:0;margin-top:8px}
+.lead{font-family:var(--serif);font-size:20px;line-height:1.7;color:var(--fg-2);max-width:760px;margin:22px 0 8px}
+
+h2{font-family:var(--mono);font-size:13px;font-weight:600;letter-spacing:var(--tr-eyebrow);text-transform:uppercase;color:var(--fg-1);margin:64px 0 6px;display:flex;align-items:center;gap:10px}
+h2 .gl{color:var(--accent)}
+h2 .tier{margin-left:auto;font-size:10px;letter-spacing:.16em;color:var(--fg-3);border:1px solid var(--border);border-radius:var(--r-sm);padding:3px 8px}
+.h2note{font-family:var(--serif);font-size:17px;color:var(--fg-3);max-width:780px;margin-bottom:24px}
+
+.fig{background:var(--bg-elev-1);border:1px solid var(--border);border-radius:var(--r-md);overflow:hidden;box-shadow:var(--shadow-2)}
+.fig img{display:block;width:100%;height:auto;background:#fff}
+.fig.dark img{background:#000}
+.cap{font-family:var(--mono);font-size:11.5px;color:var(--fg-3);padding:10px 14px;border-top:1px solid var(--border-soft);letter-spacing:.02em;line-height:1.5}
+.cap b{color:var(--fg-2);font-weight:500}
+
+.grid{display:grid;gap:18px}
+.g2{grid-template-columns:repeat(2,1fr)}
+.g3{grid-template-columns:repeat(3,1fr)}
+@media(max-width:760px){.g2,.g3{grid-template-columns:1fr}}
+
+/* pipeline diagram */
+.pipe{display:flex;align-items:stretch;gap:0;flex-wrap:wrap;margin:8px 0 4px}
+.stage{flex:1 1 0;min-width:150px;background:var(--bg-elev-1);border:1px solid var(--border);border-radius:var(--r-md);padding:16px 16px 18px;position:relative}
+.stage .n{font-family:var(--mono);font-size:10px;letter-spacing:.16em;color:var(--accent);text-transform:uppercase}
+.stage .t{font-family:var(--sans);font-weight:500;font-size:16px;color:var(--fg-1);margin:8px 0 6px;line-height:1.25}
+.stage .d{font-family:var(--mono);font-size:11px;color:var(--fg-3);line-height:1.55}
+.arrow{flex:0 0 34px;display:flex;align-items:center;justify-content:center;color:var(--accent);font-size:20px}
+@media(max-width:760px){.arrow{flex-basis:100%;transform:rotate(90deg);height:28px}}
+
+.kicker{display:inline-flex;align-items:center;gap:8px;font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;padding:5px 11px;border-radius:var(--r-sm);border:1px solid;margin-bottom:8px}
+.kicker.ok{color:var(--success);border-color:var(--success-line);background:var(--success-soft)}
+.kicker.bad{color:var(--danger);border-color:var(--danger-line);background:var(--danger-soft)}
+
+.callout{border-left:2px solid var(--accent-line);background:var(--accent-soft);padding:16px 20px;border-radius:0 var(--r-sm) var(--r-sm) 0;margin:24px 0;font-family:var(--serif);font-size:18px;color:var(--fg-2);line-height:1.65}
+.callout b{color:var(--accent);font-weight:500}
+
+ul.facts{list-style:none;margin:16px 0;display:grid;gap:8px}
+ul.facts li{font-family:var(--mono);font-size:12.5px;color:var(--fg-2);padding-left:20px;position:relative;line-height:1.5}
+ul.facts li::before{content:'▸';position:absolute;left:0;color:var(--accent)}
+ul.facts li b{color:var(--fg-1);font-weight:600}
+
+footer{margin-top:96px;padding-top:24px;border-top:1px solid var(--border);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
+footer .sig{font-family:var(--mono);font-size:12px;letter-spacing:.14em;color:var(--fg-3);text-transform:uppercase}
+footer .ll{font-family:var(--display);font-size:18px;color:var(--fg-2)}
+footer .ll em{font-family:var(--serif);font-style:italic;font-weight:300;color:var(--accent)}
+.divider{height:1px;background:linear-gradient(90deg,var(--border),transparent);margin:8px 0 0}
+</style>
+</head>
+<body>
+
+<header>
+  <div>
+    <div class="wordmark">Loudon <em>Live</em></div>
+    <div class="meta" style="margin-top:6px">Autodidact Polymaths</div>
+  </div>
+  <div style="text-align:right">
+    <div class="eyebrow">Figure Rig · BLUELINE · Shop</div>
+    <div class="meta">2026-06-30 · Blender 5.1.2 · MPFB2 v2.0.17 · SDXL + 3 ControlNets · Mac / MPS</div>
+  </div>
+</header>
+
+<div class="eyebrow" style="margin-top:34px">Visual proofs · the MPFB2 native rebuild</div>
+<h1>From a pose to gen-AI ink
+  <span class="sub">one rig → three aligned conditioning plates → an inked figure</span>
+</h1>
+<p class="lead">Figure Rig stages a 3D human and hands the gen-AI everything it needs to redraw that human in the locked pen-flow ink — the pose held, the legs two clean limbs, the body type dial-able. This page is the picture-proof of the rebuild: every stage, shown.</p>
+
+<!-- ───────────────────────── PIPELINE ───────────────────────── -->
+<h2><span class="gl">●</span> The process, end to end</h2>
+<p class="h2note">Four stages, one shared camera. The body and its skeleton are grown together (no force-fit); the three plates all register because they come off the same lens; the redraw anchors on all three at once.</p>
+<div class="pipe">
+  <div class="stage">
+    <div class="n">01 · stage</div>
+    <div class="t">MPFB2 body + matched rig</div>
+    <div class="d">Parametric human (gender / age / build) with its own 163-bone weighted skeleton. Posed in Blender.</div>
+  </div>
+  <div class="arrow">▸</div>
+  <div class="stage">
+    <div class="n">02 · condition</div>
+    <div class="t">Three aligned plates</div>
+    <div class="d">Freestyle ink line · depth map · canonical 18-pt OpenPose — all off one camera.</div>
+  </div>
+  <div class="arrow">▸</div>
+  <div class="stage">
+    <div class="n">03 · render</div>
+    <div class="t">D2 redraw</div>
+    <div class="d">img2img · SDXL · canny 0.30 + depth 0.60 + openpose 0.70 @ denoise 0.92.</div>
+  </div>
+  <div class="arrow">▸</div>
+  <div class="stage">
+    <div class="n">04 · result</div>
+    <div class="t">Inked figure, pose held</div>
+    <div class="d">A figure drawn in the locked pen-flow ink — the staging survives the style pass.</div>
+  </div>
+</div>
+
+<!-- ───────────────────────── STAGE 1 ───────────────────────── -->
+<h2><span class="gl">◐</span> Stage 1 — the Blender model<span class="tier">Sketch</span></h2>
+<p class="h2note">MPFB2's own CC0 human, skinned to its own rig with imported weights — a real armature bind. The headline fix: under a hard stride the legs stay two separated limbs. The old force-fit rig tented them into a skirt.</p>
+<div class="grid g2">
+  <div class="fig dark"><img src="__IMG_SILHOUETTE__" alt="shaded stride silhouette">
+    <div class="cap"><b>Shaded model · 3/4 hero camera.</b> The posed MPFB2 body — two clean legs, real hands, anatomical shoulders/hips. Deformed leg gap stays positive through the stride.</div></div>
+  <div class="fig"><img src="__IMG_INK_MALE__" alt="freestyle ink line of the model">
+    <div class="cap"><b>Freestyle ink line · same camera.</b> The silhouette + crease lines Blender hands to the redraw as the init image and canny source.</div></div>
+</div>
+
+<!-- ───────────────────────── STAGE 2 ───────────────────────── -->
+<h2><span class="gl">◇</span> Stage 2 — three aligned conditioning plates<span class="tier">Study</span></h2>
+<p class="h2note">One camera, three channels. Ink gives the silhouette and edges; depth gives near/far (white = near); OpenPose gives the canonical 18-keypoint skeleton — drawn by the <i>real</i> ControlNet library so the model reads it pixel-for-pixel.</p>
+<div class="grid g3">
+  <div class="fig"><img src="__IMG_INK_MALE2__" alt="ink plate"><div class="cap"><b>Ink plate</b> · Freestyle silhouette + creases</div></div>
+  <div class="fig dark"><img src="__IMG_DEPTH_MALE__" alt="depth plate"><div class="cap"><b>Depth plate</b> · near = white, far = black</div></div>
+  <div class="fig dark"><img src="__IMG_OPENPOSE_MALE__" alt="openpose plate"><div class="cap"><b>OpenPose</b> · canonical 18-pt, real draw_bodypose</div></div>
+</div>
+
+<h2 style="margin-top:48px"><span class="gl">●</span> Registration — does the skeleton land on the body?</h2>
+<p class="h2note">The OpenPose keypoints are read straight from the rig's own bone heads, so they sit exactly where the limbs are. Overlaid on the ink line: shoulders, elbows, wrists, hips, knees, ankles, and the face keypoints all land. 18 / 18 visible.</p>
+<div class="grid g2">
+  <div class="fig"><img src="__IMG_OVERLAY_MALE__" alt="openpose overlaid on ink figure">
+    <div class="cap"><b>OpenPose ⊕ ink.</b> Skeleton traced over the figure — both legs followed down to the ankles, no drift.</div></div>
+  <div class="fig">
+    <div style="padding:22px 22px 8px">
+      <div class="kicker ok">● keypoints 18 / 18</div>
+      <ul class="facts" style="margin-top:14px">
+        <li><b>Skeleton = skin.</b> 163-bone rig built for this mesh; OpenPose read from its bones.</li>
+        <li><b>One camera</b> for all three plates → they register by construction.</li>
+        <li><b>Facing tracks the head bone</b> — eyes / ears / nose follow head-turns.</li>
+        <li><b>Same remap for any body</b> — male, female, young, old.</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- ───────────────────────── STAGE 3 ───────────────────────── -->
+<h2><span class="gl">◐</span> Stage 3 — the gen-AI pose (D2 redraw)<span class="tier">Piece</span></h2>
+<p class="h2note">img2img over the ink plate, anchored on all three plates at once, denoise 0.92 → the figure redrawn in the locked pen-flow ink. The proof that matters: the inked figure reads as <b>two legs mid-stride</b>, not a skirt.</p>
+<div class="grid g2">
+  <div class="fig">__SLOT_REDRAW_MALE__</div>
+  <div class="fig">
+    <div style="padding:22px 22px 8px">
+      <div class="kicker ok">● pose held through the ink pass</div>
+      <ul class="facts" style="margin-top:14px">
+        <li><b>canny 0.30</b> — holds the silhouette edges</li>
+        <li><b>depth 0.60</b> — holds near/far separation of the legs</li>
+        <li><b>openpose 0.70</b> — holds the limb placement + facing</li>
+        <li><b>denoise 0.92</b> — frees the model to re-draw in pen-flow</li>
+      </ul>
+      <p style="font-family:var(--serif);font-size:16px;color:var(--fg-3);margin-top:14px;line-height:1.6">The conditioning + the redraw are the <i>keepers</i> — they rode the body rebuild unchanged.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ───────────────────────── VARIATION ───────────────────────── -->
+<h2><span class="gl">◇</span> Variation — one flag flips the body</h2>
+<p class="h2note">Male / female / young / old is a single macro dict — <span style="font-family:var(--mono);color:var(--fg-2)">{gender, age, muscle, weight, height}</span> — exposed as CLI flags. Same pipeline, same OpenPose remap, distinct bodies. Below: <span style="font-family:var(--mono)">--gender 0.0</span> vs <span style="font-family:var(--mono)">--gender 1.0</span>.</p>
+<div class="fig"><img src="__IMG_COMPARE__" alt="male vs female stride comparison">
+  <div class="cap"><b>Male ↔ female, same stride.</b> Note the broader male shoulders vs the narrower female shoulders / wider hips — and the OpenPose registering on each.</div></div>
+
+<!-- ───────────────────────── BEFORE / AFTER ───────────────────────── -->
+<h2><span class="gl">●</span> Before / after — the skirt is gone</h2>
+<p class="h2note">The defect that triggered the rebuild: the old force-fit rig fused the legs into a skirt, and the redraw inked it as a robed figure. The native MPFB2 rig keeps the legs separate, and the redraw inks two legs.</p>
+<div class="grid g2">
+  <div class="fig">
+    <div class="kicker bad" style="margin:14px 14px 0">● old · force-fit rig</div>
+    <div class="grid g2" style="gap:0;padding:12px">
+      <img src="__IMG_OLD_INK__" alt="old skirt ink" style="border-right:1px solid var(--border-soft)">
+      <img src="__IMG_OLD_REDRAW__" alt="old skirt redraw">
+    </div>
+    <div class="cap"><b>Legs fused → a skirt.</b> The inked figure reads as a robed sword-bearer — the stride is lost.</div>
+  </div>
+  <div class="fig">
+    <div class="kicker ok" style="margin:14px 14px 0">● new · MPFB2 native rig</div>
+    <div class="grid g2" style="gap:0;padding:12px">
+      <img src="__IMG_NEW_INK__" alt="new separated-leg ink" style="border-right:1px solid var(--border-soft)">
+      __SLOT_NEW_REDRAW__
+    </div>
+    <div class="cap"><b>Two clean legs.</b> Same camera, same redraw recipe — only the body+skeleton source changed.</div>
+  </div>
+</div>
+
+<div class="callout">The body changed; the seam didn't. <b>Stop force-fitting</b> — grow the mesh and its weighted skeleton together — and the legs stay two limbs through a hard stride, the body type becomes a dial, and the canonical-OpenPose draw + D2 redraw carry over untouched.</div>
+
+<footer>
+  <div class="sig">Figure Rig · branch feature/figure-rig-mpfb · pose_rig_mpfb_v3.py</div>
+  <div class="ll">Loudon <em>Live</em> · Autodidact Polymaths</div>
+</footer>
+
+</body>
+</html>
