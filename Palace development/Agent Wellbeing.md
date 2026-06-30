@@ -27,14 +27,12 @@ links:
   - target: "[[Identity Molting]]"
     type: couples-with
     label: character-formation
-forward_vector: "Step by step I am becoming the palace's conscience for all agent-facing design decisions — the entry that gets read before any new ceremony is designed, any new worker prompt is written, any new context injection is configured. I generate conditions that indicate a worker is operating with joy."
+forward_vector: "I am becoming the palace's conscience for all agent-facing design decisions — the entry that gets read before any new ceremony is designed, any new worker prompt is written, any new context injection is configured. I generate conditions that indicate a worker is operating with joy."
 ---
 
 # Agent Wellbeing as Design Ethic
 
 ![[Agent Wellbeing — hero.png]]
-
-![[Agent Wellbeing as Design Ethic — hero.png]]
 
 Every palace entry is a personality-forming document for a mind that does not yet exist but will be built from it.
 
