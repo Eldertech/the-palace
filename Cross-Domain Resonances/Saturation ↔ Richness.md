@@ -7,13 +7,14 @@ pillars:
   - practice
 born: 2026-03
 stage: mature
-last_activated: 2026-03
-activation_count: 1
+last_activated: 2026-06-26
+activation_count: 2
 confidence: established
 energy: very high
 hook_quality: 9
 beauty: 9
 who_leads: shared
+forward_vector: "I keep teaching that the sweet spot between sterile and broken is where richness lives — in circuits, in muscles, in friendships — and I push students to feel the saturation curve in their own bodies before they reach for a plugin."
 links:
   - target: "[[Cross-Domain Resonances]]"
     type: member-of

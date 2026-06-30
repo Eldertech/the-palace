@@ -3,7 +3,8 @@ title: "Oblique Enrichment"
 type: meta
 pillars: [creation, philosophy, tools, practice]
 born: 2026-05-27
-stage: sprout
+last_activated: 2026-06-26
+stage: growing
 confidence: working
 energy: high
 forward_vector: "I provoke the palace sideways — image and sound where prose would flatten, the fewest words, a surprise per card. I am a deck-shaped fork of [[Enrichment]]: each facet a card the BBS can show and you can iterate, each pointed at one entry's hidden assumption. My near horizon is to stop being a hand-made deck and become a generator that emits themed decks into the Enrichment server, so any entry can be walked obliquely and any card iterated the way the flock facet became [[Semantic Webcam]]. When the obvious obliques run dry, my job is to get stranger, not to stop."

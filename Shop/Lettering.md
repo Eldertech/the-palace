@@ -6,6 +6,7 @@ medium: image
 tool: "ComfyUI SDXL + ControlNet-canny (render_text.py)"
 tool_version: "sd_xl_base_1.0 · controlnet-canny-sdxl"
 born: 2026-06
+last_activated: 2026-06-26
 forward_vector: "Hand me words plus who-says-them-how-to-whom, and I render the letterform that means it — I author the legible skeleton, let diffusion supply the emotional material, and leave the font black when the void speaks louder. Proven on BLUELINE's seven voices; I want to harden my pipeline into named recipes, grow a vector-letterer for long legible text, and learn placement so I letter into the frame, not just onto black."
 links:
   - target: "[[The Shop]]"

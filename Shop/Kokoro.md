@@ -6,6 +6,7 @@ medium: sound
 tool: kokoro
 tool_version: 0.9.4
 born: 2026-05
+last_activated: 2026-06-26
 last_tested: 2026-05-26
 last_gotcha: 2026-05-26
 license: Apache-2.0

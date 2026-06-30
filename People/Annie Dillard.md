@@ -6,19 +6,20 @@ pillars:
   - practice
 born: 2026-03
 stage: mature
-last_activated: 2026-03
-activation_count: 1
+last_activated: 2026-06-26
+activation_count: 2
 confidence: established
 energy: high
 hook_quality: 9
 beauty: 9
 who_leads: shared
 domain: Writer
+forward_vector: "I keep proving that attention is a learnable discipline — that seeing slowly and writing the same hour every day is not a personality trait but a practice anyone can build. I want to be the entry that turns Dillard's desk ritual into a transferable studio method, so every maker who reads me leaves with a concrete daily structure, not just an inspiration."
 links:
   - target: "[[Source Library]]"
     type: member-of
   - target: "[[FOUR PILLARS]]"
-    type: connects-to
+    type: deepens
     label: informs
   - target: "[[Quality Manifesto]]"
     type: connects-to

@@ -6,8 +6,8 @@ pillars:
   - practice
 born: 2026-03
 stage: mature
-last_activated: 2026-03
-activation_count: 1
+last_activated: 2026-06-26
+activation_count: 2
 confidence: established
 energy: very high
 hook_quality: 10
@@ -20,6 +20,7 @@ domains:
   - subtraction
   - natural action
 who_leads: shared
+forward_vector: "I keep teaching that what you remove matters more than what you add — that the empty pot holds everything, and any domain where someone is stuck reaching for more is a domain I can turn around."
 links:
   - target: "[[Source Library]]"
     type: member-of

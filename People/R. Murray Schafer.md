@@ -6,19 +6,20 @@ pillars:
   - practice
 born: 2026-03
 stage: mature
-last_activated: 2026-03
-activation_count: 1
+last_activated: 2026-06-26
+activation_count: 2
 confidence: established
 energy: high
 hook_quality: 9
 beauty: 9
 who_leads: shared
 domain: Musician/Composer
+forward_vector: "I keep pulling ears toward the world outside the studio — teaching that every environment is already composing, that listening is making, and that the soundscape is the score."
 links:
   - target: "[[Source Library]]"
     type: member-of
   - target: "[[FOUR PILLARS]]"
-    type: connects-to
+    type: deepens
     label: informs
   - target: "[[Pauline Oliveros]]"
     type: connects-to

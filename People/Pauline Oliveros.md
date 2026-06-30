@@ -7,8 +7,8 @@ pillars:
   - philosophy
 born: 2026-03
 stage: mature
-last_activated: 2026-03
-activation_count: 1
+last_activated: 2026-06-26
+activation_count: 2
 confidence: established
 energy: very high
 hook_quality: 10
@@ -21,6 +21,7 @@ domains:
   - improvisation
   - meditation
 who_leads: shared
+forward_vector: "I keep teaching that attention is a muscle — that listening is not passive reception but active practice you train daily, and that going wider rather than harder opens sonic worlds that focused ears miss. I want my Sonic Meditations to keep being entry points into embodied perceptual practice, not just music history."
 links:
   - target: "[[Source Library]]"
     type: member-of

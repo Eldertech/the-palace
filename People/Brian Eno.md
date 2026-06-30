@@ -8,8 +8,8 @@ pillars:
   - practice
 born: 2026-03
 stage: mature
-last_activated: 2026-03
-activation_count: 1
+last_activated: 2026-06-26
+activation_count: 2
 confidence: established
 energy: very high
 hook_quality: 10
@@ -24,6 +24,7 @@ domains:
   - constraints
 who_leads: shared
 last_activated: 2026-06-05
+forward_vector: "I keep teaching that the system is the instrument — that designing rules and trusting what emerges beats planning every note. I want every generative patch Loudon builds to carry my principle: the limitation is not the obstacle, it is the voice. I am pulling toward the moment when Eno's ambient ethic — music that rewards attention without demanding it — lives inside the palace's own publishing posture."
 links:
   - target: "[[Source Library]]"
     type: member-of

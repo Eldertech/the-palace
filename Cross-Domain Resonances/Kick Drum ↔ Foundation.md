@@ -8,13 +8,14 @@ pillars:
   - practice
 born: 2026-03
 stage: mature
-last_activated: 2026-03
-activation_count: 1
+last_activated: 2026-06-26
+activation_count: 2
 confidence: established
 energy: very high
 hook_quality: 9
 beauty: 8
 who_leads: shared
+forward_vector: "I keep showing that the first decision in any system isn't just first — it's the constraint that makes everything after possible, and I push every learner I meet to choose a foundation and build on it rather than endlessly revise it."
 links:
   - target: "[[Cross-Domain Resonances]]"
     type: member-of

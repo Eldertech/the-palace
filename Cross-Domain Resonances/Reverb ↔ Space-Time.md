@@ -8,13 +8,14 @@ pillars:
   - practice
 born: 2026-03
 stage: mature
-last_activated: 2026-03
-activation_count: 1
+last_activated: 2026-06-26
+activation_count: 2
 confidence: established
 energy: very high
 hook_quality: 10
 beauty: 10
 who_leads: shared
+forward_vector: "I keep reminding builders that adding reverb is adding space — and I want every student who passes through me to hear room geometry the way a bat does: time as distance, delay as architecture, the cathedral in the milliseconds."
 links:
   - target: "[[Cross-Domain Resonances]]"
     type: member-of

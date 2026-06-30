@@ -7,8 +7,8 @@ pillars:
   - practice
 born: 2026-04
 stage: growing
-last_activated: 2026-04
-activation_count: 1
+last_activated: 2026-06-26
+activation_count: 2
 links:
   - target: "[[Toolkit — Synthesizers]]"
     type: spawned

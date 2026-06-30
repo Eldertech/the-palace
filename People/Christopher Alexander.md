@@ -7,8 +7,8 @@ pillars:
   - practice
 born: 2026-03
 stage: mature
-last_activated: 2026-03
-activation_count: 1
+last_activated: 2026-06-26
+activation_count: 2
 confidence: established
 energy: very high
 hook_quality: 9
@@ -21,6 +21,7 @@ domains:
   - organic growth
   - living structure
 who_leads: shared
+forward_vector: "I keep teaching that patterns are already there — in the mix, in the room, in the day — and that naming them is what lets you pass them on. I want the palace to treat its Cross-Domain Resonances hub as a living pattern language: growing, documented, combinable, so that every new bridge earns a pattern entry rather than staying a cute parallel."
 links:
   - target: "[[Source Library]]"
     type: member-of

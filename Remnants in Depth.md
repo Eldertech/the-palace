@@ -3,8 +3,8 @@ title: "Remnants in Depth"
 type: practice
 pillars: [tools, creation]
 born: 2026-06
-last_activated: 2026-06
-activation_count: 2
+last_activated: 2026-06-26
+activation_count: 3
 stage: growing
 confidence: working
 energy: high

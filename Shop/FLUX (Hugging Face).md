@@ -6,6 +6,7 @@ medium: image
 tool: flux.1-krea-dev (hf-inference-api)
 tool_version: black-forest-labs/FLUX.1-Krea-dev
 born: 2026-05
+last_activated: 2026-06-26
 last_tested: 2026-05-30
 last_gotcha: "FLUX.1-Krea-dev is tuned for photorealism but reads mood prompts faithfully — it delivered dusk + dust motes + amber light pouring where SDXL flattened the same prompt to even afternoon light"
 license: "FLUX.1-dev non-commercial license (Black Forest Labs); commercial use requires Black Forest Labs license + Hugging Face hosting agreement"

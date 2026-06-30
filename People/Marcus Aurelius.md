@@ -6,8 +6,8 @@ pillars:
   - practice
 born: 2026-03
 stage: mature
-last_activated: 2026-03
-activation_count: 1
+last_activated: 2026-06-26
+activation_count: 2
 confidence: established
 energy: very high
 hook_quality: 10
@@ -20,6 +20,7 @@ domains:
   - intentional living
   - leadership
 who_leads: shared
+forward_vector: "I keep asking the first question — 'What am I here to do today?' — before the day or the track or the session begins, so that intention shapes everything that follows rather than drift does."
 links:
   - target: "[[Source Library]]"
     type: member-of

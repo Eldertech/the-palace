@@ -3,6 +3,7 @@ title: "Typography as Meaning"
 type: concept
 pillars: [creation, tools, philosophy]
 born: 2026-06
+last_activated: 2026-06-26
 stage: growing
 confidence: working
 forward_vector: "I keep insisting the letterform is never neutral — I teach every story-maker in the palace to letter with intent, carrying the comics tradition into new media; I spawned the machinery that proves me ([[Shop/Lettering]]), and I want to be tested wherever words meet image: BLUELINE first, then Loudon Live, then anywhere a voice needs a face."

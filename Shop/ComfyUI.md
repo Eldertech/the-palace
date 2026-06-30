@@ -6,6 +6,7 @@ medium: image
 tool: comfyui
 tool_version: 0.3.x
 born: 2026-05
+last_activated: 2026-06-26
 last_tested: 2026-05-26
 last_gotcha: 2026-05-26
 license: GPL-3.0

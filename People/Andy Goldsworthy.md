@@ -6,14 +6,15 @@ pillars:
   - practice
 born: 2026-03
 stage: mature
-last_activated: 2026-03
-activation_count: 1
+last_activated: 2026-06-26
+activation_count: 2
 confidence: established
 energy: high
 hook_quality: 9
 beauty: 9
 who_leads: shared
 domain: Artist
+forward_vector: "I want to teach through my presence in the palace that the frozen patch and the ice arch share the same truth: resistance is information, not failure, and the work that reveals what a material refuses is more honest than the work that hides it."
 links:
   - target: "[[Source Library]]"
     type: member-of

@@ -7,7 +7,8 @@ pillars:
   - philosophy
   - practice
 born: 2026-05-28
-stage: sprout
+last_activated: 2026-06-26
+stage: growing
 energy: high
 forward_vector: >
   I am the palace's default artifact aesthetic — locked grammar (Anton display,

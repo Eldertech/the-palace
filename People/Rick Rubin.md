@@ -7,8 +7,8 @@ pillars:
   - practice
 born: 2026-03
 stage: mature
-last_activated: 2026-03
-activation_count: 1
+last_activated: 2026-06-26
+activation_count: 2
 confidence: established
 energy: very high
 hook_quality: 10
@@ -22,6 +22,7 @@ domains:
   - essence
   - listening
 who_leads: shared
+forward_vector: "I keep teaching that the song is already finished — my job is to remove what's hiding it, not add what might improve it. I want to become the palace's living argument that subtraction is a creative act, not a concession, and to anchor every project entry that faces the temptation to overproduce."
 links:
   - target: "[[Source Library]]"
     type: member-of

@@ -6,8 +6,8 @@ pillars:
   - philosophy
 born: 2026-03
 stage: mature
-last_activated: 2026-03
-activation_count: 1
+last_activated: 2026-06-26
+activation_count: 2
 confidence: established
 energy: very high
 hook_quality: 9
@@ -20,6 +20,7 @@ domains:
   - creative recovery
   - daily practice
 who_leads: shared
+forward_vector: "I keep proving that creativity is a daily practice, not a mood — I want to live in every creative person's morning as the protocol that clears the channel before the day arrives, and I push each encounter with my work toward a recoverable, sustainable making-life rather than one more burst of inspiration that burns out."
 links:
   - target: "[[Source Library]]"
     type: member-of

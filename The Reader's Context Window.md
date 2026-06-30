@@ -6,6 +6,7 @@ pillars:
   - practice
   - philosophy
 born: 2026-06
+last_activated: 2026-06-26
 stage: sprout
 confidence: working
 energy: high
