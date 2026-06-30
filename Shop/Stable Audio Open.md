@@ -144,6 +144,8 @@ The Maker should not run two Stable Audio Open generations in parallel on a sing
 
 ## Recipes
 
+**2026-06-19 — Comedic register: laugh track + stingers (from [[Radio Play]]).** Alongside the existing foley/texture strengths: small-sfx renders a studio-audience **laugh track** and **rimshot / whoosh / ding** stingers; small-music renders title **stings** and short **swells**. The comedic register is short, punchy, transient-forward — generate a few variants and pick by feel.
+
 **2026-05-26 — Kuramoto Round 1 atmospheric beds + synchronization-arriving** (Sketch tier, SA3 small-music + small-sfx). Three sibling jobs from one driver script:
 
 - *opening-bed.wav* (small-music, 6 s, stereo 44.1 kHz). Cinematic film-score opening pad. Sits −14 dB under the −16 LUFS Kokoro VO at the start of the teaching reel. Gen time on MPS: 8.7 s (includes model warm-up).

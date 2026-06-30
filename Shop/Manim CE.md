@@ -215,6 +215,8 @@ With it exported, a real `MathTex(r"\theta_A(t)=\omega_A\,t,\ \frac{\omega_A}{2\
 
 ## Recipes
 
+**2026-06-19 — Duration-parameterized Seg base class, VO-as-clock (from [[Radio Play]]).** Each scene reads its segment's audio length `SEG_DUR` and scales every `play`/`wait` by `factor = SEG_DUR / NOMINAL`, then `fill()`s the remainder — so the animation lands exactly on its voiceover's length. The voiceover is the clock; the visuals stretch to it. A base `Seg` class holding this logic lets a multi-segment piece sync to its narration without hand-tuning each scene.
+
 **2026-05-26 — Sync arriving** (Study tier, 720p30, 36.5s). Eight oscillators in a horizontal row, each shown as a unit-circle dial with a phase arrow that interpolates indigo → amber as the order parameter |R| climbs. A central larger circle holds the R vector. K ramps linearly 0 → 3·K_c over the narration's duration; phases drift, then align past K_c, with |R| climbing from ~0.1 toward ~0.99. Simulation: Kuramoto ODE on a 120 Hz physics grid (`dθ_j/dt = ω_j + K·R·sin(ψ−θ_j)`), N=8, ω drawn from N(0, σ=0.30 rad/s), seed=7. K_c is computed analytically from the Gaussian g(ω): `K_c = 2σ·√(2/π) ≈ 0.48`. K_end = 3·K_c ≈ 1.44 — comfortably above threshold so the transition is visible within the duration.
 
 **Bug story dated to this job:** the first attempt placed the simulation in a closure attached to a dummy `Mobject()` driver and mutated arrows in place via `put_start_and_end_on`. The HUD updated; the arrows didn't (see the foreign-updater gotcha above). The fix used `always_redraw` factories for all eight phase arrows and the R-vector, driven by a `ValueTracker` clock. Cost: a small per-frame allocation. Benefit: animation actually animates.

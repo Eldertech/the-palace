@@ -201,6 +201,8 @@ The Maker may run ffmpeg in parallel with most other Specialists — it doesn't 
 
 ## Recipes
 
+**2026-06-19 — Radio Play whole-video assembly (from [[Radio Play]]).** Per segment: place each VO / SFX / laugh with `adelay` over a low music bed, `amix` with `normalize=0` (so levels don't auto-duck), `atrim`+`afade` the edges, then `loudnorm I=-16` with `-ar 48000` pinned; finally concat the uniform segments via the concat demuxer with stream-copy (`-c copy`) so nothing re-encodes. The pinned 48 kHz and `normalize=0` are the two gotchas that keep levels and sync stable across segments.
+
 **2026-05-26 — Kuramoto Round 1 teaching reel** (Study tier, 1280×720@30, 49.5 s, −16.15 LUFS). Concats the two-phasors-uncoupled Manim clip (854×480@15, 10 s, silent), a Matplotlib-generated title card stretched into a 3 s still-clip, and the sync-arriving narrated animation (1280×720@30, 36.5 s, Kokoro Study narration). Pipeline (Python script): make title PNG via Matplotlib → encode title PNG as 3 s H.264 clip → re-encode uncoupled clip to 1280×720@30 with letterbox padding (matches sync-arriving's geometry; required by `concat` re-encode) → `concat=n=3:v=1:a=1` with per-segment silent audio sources (one `anullsrc` per silent video, sized exactly to that video's duration) → two-pass `loudnorm` to −16 LUFS / −1 dBTP with `linear=true` → final encode at H.264/AAC, 48 kHz audio. Source: [Kuramoto Coupling/round-1-teaching-reel.py](../Kuramoto Coupling/round-1-teaching-reel.py). Output: [Kuramoto Coupling/round-1-teaching-reel.mp4](../Kuramoto Coupling/round-1-teaching-reel.mp4). Report: `.report.json` next to output. First successful end-to-end Kuramoto teaching reel; closes the ffmpeg connective-tissue role for Round 1.
 
 ## Test Suite
