@@ -53,6 +53,8 @@ Every one of these resolves to the same thing: a sheet, with an alpha cut on its
 
 Depth order is not just "who covers whom." It is **semantic**. A dialogue bubble has a *place* in the stack — it lives at a chosen depth, in front of the figure it belongs to, behind the panel border — not merely a position on the page. The text thread ([[BLUELINE — Text Layer]]) is a citizen of the stack, not a sticker on top of it.
 
+The split runs deeper. The *in-world* text — dialogue, a sound effect, a thought cloud — sits **inside** the scene volume; narration and lyrics live **outside** it, in the margin — not a deeper sheet but a separate author-plane beside the stack, the visual form of the off-stage voice. Once a bubble has a depth it can **drift with its speaker** on a camera move, and its tail can flex with the same warp that moves any other drawn sheet ([[Move the Ink, Don't Redraw It]]) — one more thing that breathes. The discipline that keeps it readable: the *letters* stay locked (they are meaning to be read, not a mark to be warped), while the *balloon shape and tail* are the drawn lines free to move. The full worked-out case — every text type mapped to a stack depth — is [[BLUELINE — Text Layer]].
+
 ## A classic principle, given modern motion
 
 This is the **[[Multiplane Animation]]** idea: Disney's multiplane camera (1937), Lotte Reiniger cutting *The Adventures of Prince Achmed* out of literal black paper (1926), ukiyo-e carving a separate block per element. The lineage is cut paper and stacked glass. What's new is the *motion source* — AI, simulation, and deterministic warp now move the sheets, where the old multiplane could only dolly the camera through static art. A classic principle, re-founded.
