@@ -49,6 +49,12 @@
       "runtimeExecutable": "python3",
       "runtimeArgs": ["-m", "http.server", "8204", "--directory", "Projects/BLUELINE/proofs/m2-motion-comic"],
       "port": 8204
+    },
+    {
+      "name": "figure-rig-proofs",
+      "runtimeExecutable": "python3",
+      "runtimeArgs": ["-m", "http.server", "8220", "--directory", "Projects/BLUELINE/proofs/blender-handdrawn/followups/rig-openpose"],
+      "port": 8220
     }
   ]
 }
