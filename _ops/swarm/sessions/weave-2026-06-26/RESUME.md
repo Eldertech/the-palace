@@ -28,7 +28,19 @@ Deep weave incorporating recent additions. Specifics he asked for:
 5. Run via the **Workflow tool**, Sonnet workers, **part-by-part** (token-conscious),
    commits land on **main**.
 
-## DONE & committed on main
+## PROGRESS — 2026-06-30 (write-back resumed)
+The write-back is well underway. Committed this session:
+- `df519a4` — **351 unsung paths** across 150 entries (the "formalize all" bulk; 3 E1s resolved; linters clean).
+- `d98e52c` — **Maker owns its render path**: `make_faces.py` batch driver + `prompts.json` (40 face specs) into the `Shop/Hero and Avatar Maker/` bundle, out of `_ops/scratch/`. regen_one.py is the single-page sibling; both share one render impl.
+- `c46532a` — **People/Bridges normalization**: 34 forward_vectors (where absent) + last_activated/activation_count/stage/FOUR-PILLARS→deepens. *Deferred:* born_year/died_year/domains (worker facts unreliable — need a lookup pass) and the ~50% worksheet shrink (authorial). Merges NOT applied (distinct people).
+- `7e70e12` — **20 curated new-introductions** (the generalization edges: BLUELINE package + storytelling→teaching + tools→Loudon Live).
+- **Face render:** 3-frame verification launched (`make_faces.py generate --only ...`); on Loudon's OK, render the remaining ~36 (`make_faces.py generate` then `place`, `plan`, commit per-bundle). Endpoint parks itself.
+
+**STILL OPEN (next):** the 20 weave-flags (Frame Designer×4 wiring, radioplay specialist recipes×4, haiku-sweep, artifacts-refs W0s, theme-ghosts, Baton→mature w/ the approved vector, DELETE stewardship handoffs, PROMOTE Taste Breeder); the deferred born/died/domains factual pass + worksheet shrink; memory reconcile (Step 6b); the final `Weave — 2026-06-26 — …` summary commit; BLUELINE Phase B (merge blueline-m3, compress technique cluster).
+
+Tooling for the write-back lives in this dir: `unsung_apply.py`, `normalize_apply.py`, `intro_apply.py`, `tier2_scan.py` (all dry-run by default, `--apply` to write, dirty-file-guarded). **Gotcha:** a naive frontmatter inserter jams the closing `---` onto the last label when `links:` is the final key — the hardened appliers insert before a trailing blank; always run the *structural* check (closing `---` on its own line), not just yaml.safe_load (which false-passes).
+
+## DONE & committed on main (earlier this session)
 - `a6d5e0a` deposit(Graphic Storytelling) — captured the untracked spine entry
 - `ca78394` cleanup(deprecation) — Artifacts/ + stale assets/ deletions
 - `e11c889` feat(Swarm Weave) — **FACE CHECK** = worker's 6th task (+ fixed a duplicate
