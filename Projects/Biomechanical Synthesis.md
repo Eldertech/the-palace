@@ -44,6 +44,8 @@ links:
   - target: "[[Spinoza Conatus]]"
     type: mirrors
     label: power-to-act
+  - target: "[[haiku-grotesque-pedagogy]]"
+    type: connects-to
 last_activated: 2026-03
 activation_count: 1
 forward_vector: "I am the palace's most viscerally pedagogical framework — the set of eight instruments that prove DSP mechanics are unforgettable when made physical and grotesque."

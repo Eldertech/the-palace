@@ -43,6 +43,18 @@ links:
   - target: "[[Loudon Live Design System]]"
     type: spawned
     label: visual-system-now-palace-default
+  - target: "[[Compressor Design]]"
+    type: connects-to
+  - target: "[[Crystal Synthesizer]]"
+    type: connects-to
+  - target: "[[Generative Audio Devices]]"
+    type: connects-to
+  - target: "[[Generative Preset Development]]"
+    type: connects-to
+  - target: "[[Retrospective Delay]]"
+    type: connects-to
+  - target: "[[Shepard Tone Synthesizer]]"
+    type: connects-to
 ---
 
 # Loudon Live

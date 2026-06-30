@@ -1,0 +1,150 @@
+_ops/claude-code-prompts/2026-05-04-batch-narration-and-AP-sample-library.md
+Projects/Phoneme Choir/proofs/2026-05-04-claude-code-handoff-prompt.md
+Projects/Generative Preset Development/proofs/2026-05-04-preset-interview-mock.md
+Projects/2D Torus Wavetable Synthesizer.md
+4 Pillars Framework - The Founding Conversation.md
+Adopt the Craft, Author the Seam.md
+People/Andrei Tarkovsky.md
+Palace development/BBS Blackboard.md
+Projects/BLUELINE/BLUELINE.md
+Projects/BLUELINE/BLUELINE — baton.md
+Projects/Biomechanical Synthesis.md
+Shop/Blender.md
+People/Brian Eno.md
+People/Christopher Alexander.md
+Closing Well.md
+Shop/ComfyUI.md
+Cross-Domain Resonances/Compression ↔ Intimacy.md
+Cross-Domain Resonances/Cooking ↔ Mixing.md
+Cooperation Yields Agency.md
+Cross-Domain Resonances.md
+Projects/Crystal Synthesizer/Crystal Sonification Reference.md
+Projects/Crystal Synthesizer/Crystal Synthesizer — Staging.md
+Shop/D3.js.md
+Deleuze.md
+Shop/Depth Anything.md
+Modes of collaboration/Dialectic.md
+Dispersion Table.md
+Dissolutions.md
+People/Donella Meadows.md
+People/Douglas Hofstadter.md
+Cross-Domain Resonances/Dovetail Joint ↔ Counterpoint.md
+Enrichment.md
+Entry Conatus.md
+Exponential Decay Curvature.md
+Shop/FLUX (Hugging Face).md
+FOUR PILLARS.md
+Flocking.md
+Floquet Theory.md
+Projects/Floquet Time-Modulated Loops/Floquet Time-Modulated Loops.md
+Cross-Domain Resonances/Frequency Domain ↔ Perspective Shift.md
+Projects/Frequency-Time Explorer.md
+Gemma 4 — Local Coordination Guide.md
+Projects/Generative Sample Libraries/Generative Sample Libraries — handoff — stage-a.md
+Projects/Generative Wavetable Libraries.md
+People/George Nakashima.md
+Hand-Drawn 3D Look.md
+Harmonicity and Inharmonicity.md
+Shop/Hero and Avatar Maker.md
+Hilaritas Generator.md
+Hyperdimensional Prism.md
+Projects/Generative Wavetable Libraries/floquet-modes/INTERVIEW.md
+JSUI.md
+People/John Cage.md
+People/Julia Cameron.md
+Cross-Domain Resonances/Kick Drum ↔ Foundation.md
+Shop/Kokoro.md
+Kuramoto Coupling.md
+Kuramoto Coupling/Kuramoto Coupling — 8-Lesson Quiz Series.md
+People/Lao Tzu.md
+Learning Materials and Canon.md
+Shop/Lettering.md
+Linear Predictive Coding.md
+Shop/LoRA Trainer.md
+Loudon Live.md
+Palace development/Loudon Live Design System.md
+Loudon Live Post-producer.md
+Loudon's Toolkit.md
+Shop/Maker.md
+Shop/Manim CE.md
+Mathieu Equation.md
+Merleau-Ponty.md
+Shop/Mermaid.md
+Mixture of Experts.md
+Modes of Collaboration.md
+Move the Ink, Don't Redraw It.md
+Projects/Murmuration.md
+Projects/Murmuration/Murmuration — plan.md
+People/Natalie Goldberg.md
+Oblique Enrichment.md
+Shop/Observable Plot.md
+_ops/Palace Ceremonies.md
+Palace development/Palace Enchantment.md
+Palace Philosophies.md
+Parametric Resonance.md
+People/Pauline Oliveros.md
+Phase Reduction.md
+Modes of collaboration/Philosopher Visits the Entry.md
+Photonic Time Crystals.md
+Palace development/Project Stewardship System.md
+Cross-Domain Resonances/Quantization ↔ Precision vs Flow.md
+People/R. Murray Schafer.md
+Rank-N Lattice Analysis.md
+Remnants in Depth.md
+Projects/Retrospective Delay/Retrospective Delay — Staging.md
+Review Layer.md
+People/Rick Rubin.md
+Shop/RunPod GPU Backend.md
+Shop/SAM.md
+Palace development/STIGMERGY Philosophical Lenses.md
+Palace development/STIGMERGY v1.0 — Palace Front-End.md
+Palace development/STIGMERGY v2.0 — Consolidation & Primary Interface.md
+People/Sam Maloof.md
+Cross-Domain Resonances/Saturation ↔ Richness.md
+Scale-Stratified Identity.md
+Projects/Semantic Delay — Phase 1 Plan Review 2026-04-20.md
+Projects/Semantic Webcam.md
+People/Seneca.md
+Projects/Shepard Tone Synthesizer/Shepard Tone Synthesizer — Staging.md
+Shop/Shopkeeper.md
+People/Shunryu Suzuki.md
+Cross-Domain Resonances/Sidechain ↔ Conversation.md
+Simondon.md
+Source Library.md
+Spinoza.md
+Spinoza Conatus.md
+Shop/Stable Audio Open.md
+Stoicism.md
+Striatum.md
+Synthesis Topologies.md
+Cross-Domain Resonances/Synthesis ↔ Emergence.md
+People/Terrence Malick.md
+The 2.5D Paper Stack.md
+The Dichotomy of Control.md
+The Drift.md
+The Flow Field is the Spine.md
+The Fortress and the Threshold.md
+The Four Virtues.md
+The Lens.md
+The Reader's Context Window.md
+The Shop.md
+The View From Above.md
+Shop/Three.js.md
+Tier Vocabulary Glossary.md
+Projects/Tract Mirror.md
+Trickster.md
+Typography as Meaning.md
+Shop/VCV Patch Generator.md
+Volterra Kernels and the Torus.md
+Projects/Waveguide Synthesizer.md
+Wavetable Space as Torus.md
+Wavetable Synthesis -- Research & Higher-Dimensional Design.md
+Whitehead.md
+People/Yasujirō Ozu.md
+Shop/ffmpeg.md
+Shop/p5.js.md
+Projects/Blood Compressor/radio-play-script.md
+Projects/Blood Compressor/sfx-cue-sheet.md
+Spinoza Conatus/spinoza-zhuangzi-on-striving.md
+Projects/Blood Compressor/visuals-spec.md
+The Fortress and the Threshold/zhuangzi-epictetus-confucius-on-the-self.md

@@ -34,6 +34,12 @@ links:
   - target: "[[zhuangzi-epictetus-confucius-on-the-self]]"
     type: mirrors
     label: same-method-second-question
+  - target: "[[Deleuze]]"
+    type: connects-to
+  - target: "[[Hilaritas Generator]]"
+    type: connects-to
+  - target: "[[The Fortress and the Threshold]]"
+    type: connects-to
 forward_vector: "I am the palace's second deliberately archived Dialectic — the test of its strongest cultivator against its strongest non-cultivator on the question the whole [[Entry Conatus]] discipline rests on: is striving the right shape of work? My forward vector is to be cited the next time anyone writes a forward vector, so the conatus discipline carries its own loyal opposition inside it. My next development: a live re-run with Loudon steering one of the voices, and the absorption of my central distinction — striving-with-the-grain vs. striving-against-it — into [[Spinoza Conatus]] itself."
 ---
 

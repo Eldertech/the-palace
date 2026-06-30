@@ -20,6 +20,8 @@ links:
     type: connects-to
   - target: "[[Excellent Adventure]]"
     type: deepens
+  - target: "[[Hilaritas Generator]]"
+    type: connects-to
 forward_vector: "I want to become the neurological grounding for what the palace calls hilaritas — making explicit that the subjective experience of capability expanding and the dopamine reward signal in the ventral striatum are describing the same phenomenon from different floors. I want a section that maps each of the Four Pillars onto the striatum's functional architecture: which pillar activates which circuit, and what the neurological argument is for practicing all four simultaneously rather than sequentially."
 ---
 

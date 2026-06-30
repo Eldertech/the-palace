@@ -65,6 +65,20 @@ links:
   - target: "[[Palace Philosophies — Context]]"
     type: connects-to
     label: context-companion
+  - target: "[[Closing Well]]"
+    type: enables
+    label: justice-virtue-instance
+  - target: "[[Palace Map]]"
+    type: connects-to
+  - target: "[[Leibniz]]"
+    type: spawned
+    label: page-built-register
+  - target: "[[Dialectic]]"
+    type: connects-to
+    label: contradictions-dispatched-here
+  - target: "[[Spinoza]]"
+    type: spawned
+    label: person-page-built
 forward_vector: "I am the palace's living philosophical index — not a survey of traditions but a map of how each tradition has been used, tested, and transformed by the palace. I bring philosophy to every corner of the palace. "
 ---
 

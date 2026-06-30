@@ -26,6 +26,15 @@ links:
   - target: "[[Cooperation Yields Agency]]"
     type: connects-to
     label: complementary-strength
+  - target: "[[Lao Tzu]]"
+    type: connects-to
+    label: yield-overcomes
+  - target: "[[Leverage Points Framework]]"
+    type: connects-to
+    label: emergence-at-joints
+  - target: "[[Hilaritas Generator]]"
+    type: exemplifies
+    label: all-four-pillars-fire
 ---
 
 # Dovetail Joint ↔ Counterpoint

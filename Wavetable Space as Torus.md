@@ -44,6 +44,12 @@ links:
   - target: "[[Shepard Tone Synthesizer]]"
     type: enables
     label: perception-topology
+  - target: "[[Deleuze]]"
+    type: connects-to
+  - target: "[[Philosopher Visits the Entry]]"
+    type: connects-to
+  - target: "[[Simondon]]"
+    type: connects-to
 forward_vector: "I want to become a set of interactive and static visualizations — one for each geometric concept (T², T³, torus knots, fiber bundle monodromy, Hopf fibration, quasicrystal cut-and-project) — that make the topology of synthesis space navigable without language. I also want to be tested as an audio synthesis algorithm: can a scalar field on T³ generate inharmonic audio without an oscillator bank? The answer lives in a prototype, and the question lives in Open Questions below."
 ---
 

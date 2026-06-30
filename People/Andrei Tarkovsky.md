@@ -32,6 +32,9 @@ links:
   - target: "[[Quality Manifesto]]"
     type: connects-to
     label: reject-metrics
+  - target: "[[Pauline Oliveros]]"
+    type: connects-to
+    label: patience-as-practice
 ---
 
 # Andrei Tarkovsky

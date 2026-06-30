@@ -28,6 +28,12 @@ links:
   - target: "[[Dissolutions]]"
     type: member-of
     label: minimal-spectrum-of-the-stored-field
+  - target: "[[Dispersion Table]]"
+    type: connects-to
+  - target: "[[Infeasible DSP Now Shippable]]"
+    type: connects-to
+  - target: "[[Volterra Kernels and the Torus]]"
+    type: connects-to
 forward_vector: "I want to make the synthesizer its own oscilloscope — one stored field that is simultaneously what was heard and what will be played. I want to unify pitch detection, modal analysis, and harmonicity measurement as one operation at different ranks, and to prototype the analyzer→synth round-trip as a single tool."
 ---
 # Rank-N Lattice Analysis

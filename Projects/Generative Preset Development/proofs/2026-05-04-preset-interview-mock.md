@@ -4,7 +4,9 @@ type: proof
 project: "[[Generative Preset Development]]"
 date: 2026-05-04
 medium: interview-transcript
----
+links:
+  - target: "[[Generative Wavetable Libraries]]"
+    type: connects-to---
 
 # Mock — what the preset interview should feel like
 

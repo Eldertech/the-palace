@@ -25,6 +25,9 @@ links:
   - target: "[[Quality Manifesto]]"
     type: connects-to
     label: felt-calibration
+  - target: "[[Spinoza Conatus]]"
+    type: deepens
+    label: conatus-in-circuits
 ---
 
 # Saturation ↔ Richness

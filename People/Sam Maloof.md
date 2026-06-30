@@ -29,6 +29,9 @@ links:
   - target: "[[Hilaritas Generator]]"
     type: connects-to
     label: making-as-life
+  - target: "[[Agnes Martin]]"
+    type: connects-to
+    label: repetition-with-variation
 ---
 
 # Sam Maloof

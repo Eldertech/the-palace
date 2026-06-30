@@ -26,6 +26,12 @@ links:
   - target: "[[Leverage Points Framework]]"
     type: connects-to
     label: foundation-as-leverage
+  - target: "[[Marcus Aurelius]]"
+    type: connects-to
+    label: first-action-sets-trajectory
+  - target: "[[Christopher Alexander]]"
+    type: connects-to
+    label: constraints-as-generative
 ---
 
 # Kick Drum ↔ Foundation

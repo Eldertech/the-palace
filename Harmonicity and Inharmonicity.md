@@ -23,6 +23,10 @@ links:
   - target: "[[Piano String Inharmonicity]]"
     type: emerged-from
     label: b-coefficient-anchor
+  - target: "[[Compressor Design]]"
+    type: connects-to
+  - target: "[[Hyperdimensional Prism]]"
+    type: connects-to
 forward_vector: "I ask what happens to coupling when the relationships break — how inharmonic partials create frustrated forces — and I use that frustration to clarify both instrument design and the physics of coherence."
 ---
 

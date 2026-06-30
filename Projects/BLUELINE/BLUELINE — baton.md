@@ -5,6 +5,8 @@ links:
   - target: "[[BLUELINE]]"
     type: connects-to
     label: baton-for
+  - target: "[[Frame Designer]]"
+    type: connects-to
 forward_vector: "I carry the new-story sequence across the overnight pause — storyboard done, animatic next — waiting to be caught once Loudon brings the song tomorrow."
 ---
 

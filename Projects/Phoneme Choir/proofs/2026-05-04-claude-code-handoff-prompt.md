@@ -5,7 +5,11 @@ project: "[[Phoneme Choir]]"
 date: 2026-05-04
 medium: agent-prompt
 target: "Claude Code session on Loudon's local machine"
----
+links:
+  - target: "[[Generative Sample Libraries]]"
+    type: connects-to
+  - target: "[[Talking Keyboard]]"
+    type: connects-to---
 
 # Claude Code handoff — render the Phoneme Choir Stage 0 audition
 

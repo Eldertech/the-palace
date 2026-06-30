@@ -28,6 +28,9 @@ links:
   - target: "[[Quality Manifesto]]"
     type: connects-to
     label: felt-metric
+  - target: "[[Sidechain ↔ Conversation]]"
+    type: couples-with
+    label: sibling-pattern
 ---
 
 # Compression ↔ Intimacy

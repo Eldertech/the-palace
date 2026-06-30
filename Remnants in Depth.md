@@ -29,6 +29,12 @@ links:
   - target: "[[The Flow Field is the Spine]]"
     type: connects-to
     label: density-follows-the-field
+  - target: "[[The Shop]]"
+    type: member-of
+    label: candidate-roster
+  - target: "[[Move the Ink, Don't Redraw It]]"
+    type: exemplifies
+    label: geometry-over-redraw
 ---
 
 # Remnants in Depth

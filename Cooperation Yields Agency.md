@@ -36,6 +36,9 @@ links:
   - target: "[[Cooperation Yields Agency — Context]]"
     type: connects-to
     label: context-companion
+  - target: "[[Hilaritas Generator]]"
+    type: enables
+    label: cooperation-as-hilaritas
 forward_vector: "I want to scale from describing two collaborators to describing the palace's full distributed intelligence — and test whether the formula holds at enchanted-page scale."
 ---
 

@@ -6,6 +6,18 @@ links:
   - target: "[[Shepard Tone Synthesizer]]"
     type: connects-to
     label: staging-of
+  - target: "[[Kuramoto Coupling]]"
+    type: connects-to
+  - target: "[[Loudon Live]]"
+    type: connects-to
+  - target: "[[Octave Equivalence]]"
+    type: connects-to
+  - target: "[[Piano String Inharmonicity]]"
+    type: connects-to
+  - target: "[[Portamento and Physical Pitch Modeling]]"
+    type: connects-to
+  - target: "[[Signal-Rate CV Architecture]]"
+    type: connects-to
 forward_vector: I hold the Loudon Live staging plan for the Shepard Tone Synthesizer — the progressive-revelation stage sequence pairing each synth stage with its Octave Equivalence theory section — so the parent project's steward can advance it without re-deriving the arc.
 ---
 

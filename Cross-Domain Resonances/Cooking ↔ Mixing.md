@@ -26,6 +26,15 @@ links:
   - target: "[[Quality Manifesto]]"
     type: connects-to
     label: taste-over-metrics
+  - target: "[[Like Water]]"
+    type: connects-to
+    label: emptiness-as-design
+  - target: "[[Rick Rubin]]"
+    type: connects-to
+    label: subtraction-as-trust
+  - target: "[[Hilaritas Generator]]"
+    type: exemplifies
+    label: learning-through-constraint
 ---
 
 # Cooking ↔ Mixing

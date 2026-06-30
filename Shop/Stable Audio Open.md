@@ -16,6 +16,18 @@ links:
   - { target: "[[Maker]]", type: connects-to, label: directed-by }
   - { target: "[[The Shop]]", type: member-of, label: roster-member }
   - { target: "[[Shop/ffmpeg]]", type: connects-to, label: post-processed-by }
+  - target: "[[Kuramoto Coupling]]"
+    type: spawned
+    label: auditory-rendering
+  - target: "[[Kokoro]]"
+    type: connects-to
+    label: routes-vocals-to
+  - target: "[[Loudon Live]]"
+    type: enables
+    label: beds-for
+  - target: "[[Whisper]]"
+    type: connects-to
+    label: vram-contends-with
 tags: [specialist, shop, sound, generative, music, sfx]
 ---
 

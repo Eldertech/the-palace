@@ -40,6 +40,15 @@ links:
   - target: "[[Generative Audio Devices]]"
     type: connects-to
     label: design-for-emergence
+  - target: "[[Granular Synthesis]]"
+    type: mirrors
+    label: grain-as-simple-rule
+  - target: "[[Synthesis Topologies]]"
+    type: deepens
+    label: topology-as-rule-set
+  - target: "[[Harmonicity and Inharmonicity]]"
+    type: connects-to
+    label: inharmonics-as-emergence
 ---
 
 # Synthesis ↔ Emergence

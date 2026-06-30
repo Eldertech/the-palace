@@ -18,6 +18,12 @@ links:
   - target: "[[shop-header — Maker's Comparison Recommendation]]"
     type: connects-to
     label: founding-job
+  - target: "[[Loudon Live]]"
+    type: enables
+    label: header-painter
+  - target: "[[Loudon Live Design System]]"
+    type: enables
+    label: artifact-substrate
 tags: [specialist, shop, image, generative, cloud, hugging-face, flux]
 ---
 

@@ -12,6 +12,36 @@ links:
   - { target: "[[Four Pillars]]", type: connects-to, label: follows }
   - { target: "[[Lateral Access]]", type: mirrors, label: taste-as-laterality }
   - { target: "[[Loudon Live Design System]]", type: connects-to, label: palace-base-spec }
+  - target: "[[Radio Play]]"
+    type: spawned
+    label: forged-in-job
+  - target: "[[Review Layer]]"
+    type: connects-to
+    label: inherits-rule
+  - target: "[[RunPod GPU Backend]]"
+    type: connects-to
+    label: gpu-substrate
+  - target: "[[Flocking]]"
+    type: connects-to
+    label: proof-of-comparison
+  - target: "[[Blocked, Not Prompted]]"
+    type: enables
+    label: conditions-the-fill
+  - target: "[[Waveguide Synthesizer]]"
+    type: connects-to
+    label: architectural-pattern
+  - target: "[[Diversity of Thought in Many-Agent Systems]]"
+    type: connects-to
+    label: tested-by
+  - target: "[[BBS Design System]]"
+    type: connects-to
+    label: overridden-by
+  - target: "[[Modes of Collaboration]]"
+    type: connects-to
+    label: names-mode
+  - target: "[[Murmuration]]"
+    type: connects-to
+    label: born-from
 tags: [maker, shop, foreman, studio]
 ---
 

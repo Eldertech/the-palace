@@ -17,6 +17,15 @@ links:
   - { target: "[[Enrichment]]", type: couples-with, label: "uniform-enrichment cousin" }
   - { target: "[[Loudon Live Design System]]", type: connects-to, label: "frame + cascade" }
   - { target: "[[Hilaritas Generator]]", type: connects-to, label: "joy in identity" }
+  - target: "[[Kuramoto Coupling]]"
+    type: connects-to
+    label: first-subject
+  - target: "[[Retrospective Delay]]"
+    type: connects-to
+    label: proving-subject
+  - target: "[[Loudon's Toolkit]]"
+    type: connects-to
+    label: cautionary-subject
 tags: [maker, shop, image, identity, avatar, hero]
 ---
 

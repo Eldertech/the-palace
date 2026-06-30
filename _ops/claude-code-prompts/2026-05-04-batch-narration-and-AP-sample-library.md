@@ -10,7 +10,13 @@ projects:
   - "[[Action Potential Oscillator]]"
   - "[[Generative Sample Libraries]]"
 prerequisite: "Local TTS available (Kokoro preferred; alternative acceptable if documented)"
----
+links:
+  - target: "[[Phoneme Choir]]"
+    type: connects-to
+  - target: "[[Project Stewardship System]]"
+    type: connects-to
+  - target: "[[Talking Keyboard]]"
+    type: connects-to---
 
 # Claude Code batch handoff — four narration tasks + one sample library build
 

@@ -54,6 +54,10 @@ links:
   - target: "[[Palace Conatus]]"
     type: spawned
     label: palace-scale-conatus
+  - target: "[[Palace Map]]"
+    type: connects-to
+  - target: "[[Project Stewardship System]]"
+    type: connects-to
 ---
 
 # Palace Enchantment

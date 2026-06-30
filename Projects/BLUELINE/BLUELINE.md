@@ -50,6 +50,21 @@ links:
   - target: "[[Hand-Drawn 3D Look]]"
     type: spawned
     label: hand-drawn-3d-capability
+  - target: "[[Frame Designer]]"
+    type: spawned
+    label: proving-ground
+  - target: "[[Steer the Generator]]"
+    type: spawned
+    label: discipline-forged-here
+  - target: "[[Typography as Meaning]]"
+    type: connects-to
+    label: text-layer-canon
+  - target: "[[Diversity of Thought in Many-Agent Systems]]"
+    type: mirrors
+    label: two-ai-temperaments
+  - target: "[[Adopt the Craft, Author the Seam]]"
+    type: emerged-from
+    label: re-founding-principle
 tags: [project, blueline, music-video, generative, pipeline, sprout]
 ---
 

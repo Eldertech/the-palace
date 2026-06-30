@@ -9,6 +9,16 @@ links:
   - target: "[[Progressive Staging]]"
     type: couples-with
     label: pedagogical-method
+  - target: "[[Boundary-Crossing Instruments]]"
+    type: connects-to
+  - target: "[[Compressor Design]]"
+    type: connects-to
+  - target: "[[Frequency-Time Duality]]"
+    type: connects-to
+  - target: "[[Playful Interface Design]]"
+    type: connects-to
+  - target: "[[Trickster]]"
+    type: connects-to
 forward_vector: I hold the Loudon Live staging plan for Retrospective Delay — the staged pedagogical arc from buffer mechanism to dub-lineage framing — so the parent project's steward can advance it without re-deriving the path.
 ---
 

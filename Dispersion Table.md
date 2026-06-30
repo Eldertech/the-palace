@@ -50,6 +50,8 @@ links:
   - target: "[[Dissolutions]]"
     type: member-of
     label: one-object-two-doorways
+  - target: "[[Loudon Live]]"
+    type: connects-to
 forward_vector: "I want to be the entry that makes 'store phase-response curves, not waveforms' an obvious move rather than a leap — the surface where a single warp knob selects which inharmonic mode-structure a resonator will admit. I want to spawn a Wavetable Oscillator entry that finally states the lossless-loop identity plainly, and to earn a place as a first-class control axis in the synth interface."
 ---
 # Dispersion Table

@@ -51,6 +51,20 @@ links:
   - target: "[[The View From Above]]"
     type: connects-to
     label: the-altitude-navigation-mode
+  - target: "[[Confucianism]]"
+    type: connects-to
+  - target: "[[Drift and Consolidation]]"
+    type: connects-to
+  - target: "[[Like Water]]"
+    type: connects-to
+  - target: "[[Spinoza Conatus]]"
+    type: connects-to
+  - target: "[[The Drift]]"
+    type: connects-to
+  - target: "[[The Fortress and the Threshold]]"
+    type: connects-to
+  - target: "[[spinoza-zhuangzi-on-striving]]"
+    type: connects-to
 forward_vector: "I want the palace's philosophy to stop being a neighborhood Loudon visits and become a lens he can switch on over everything else — a way to look at any entry, any swarm, any commit through Spinoza or Zhuangzi or Simondon and see what changes. I propose the surfaces that make philosophical thinking a live operation of the front-end rather than a set of pages, and the one new swarm mode that lets philosophers argue on the board in real time. My open edge: a lens must illuminate without distorting — it must never let the philosopher's vocabulary overwrite the entry's own."
 ---
 

@@ -21,6 +21,24 @@ links:
   - target: "[[Frequency-Time Duality]]"
     type: connects-to
     label: first-walk-across-a-boundary
+  - target: "[[Chebyshev is Fourier]]"
+    type: connects-to
+  - target: "[[Dispersion Table]]"
+    type: connects-to
+  - target: "[[Exponential Decay Curvature]]"
+    type: connects-to
+  - target: "[[Floquet Theory]]"
+    type: connects-to
+  - target: "[[Kuramoto Coupling]]"
+    type: connects-to
+  - target: "[[Linear Predictive Coding]]"
+    type: connects-to
+  - target: "[[Phase Reduction]]"
+    type: connects-to
+  - target: "[[Rank-N Lattice Analysis]]"
+    type: connects-to
+  - target: "[[Volterra Kernels and the Torus]]"
+    type: connects-to
 ---
 
 <!-- Membership is declared on the member side: each member entry carries `member-of: [[Dissolutions]]`. Per SCHEMA §4 (v1.8), member-of is directed member→collection with no forced reciprocal on the hub side — the Map computes the hub's inbound degree. The catalogue below is the human-readable roster; the YAML membership lives in the members. -->

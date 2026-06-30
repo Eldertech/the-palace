@@ -36,6 +36,9 @@ links:
   - target: "[[Hilaritas Generator]]"
     type: connects-to
     label: pattern-language
+  - target: "[[Sidechain ↔ Conversation]]"
+    type: exemplifies
+    label: pattern-instance
 ---
 
 # Christopher Alexander

@@ -47,6 +47,12 @@ links:
   - target: "[[Semantic Webcam]]"
     type: connects-to
     label: spawned-through-oblique
+  - target: "[[Kokoro]]"
+    type: connects-to
+    label: audio-artifact-maker
+  - target: "[[STIGMERGY v2.0 — Consolidation & Primary Interface]]"
+    type: connects-to
+    label: absorbed-by
 ---
 
 # Enrichment

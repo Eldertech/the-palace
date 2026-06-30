@@ -33,6 +33,12 @@ links:
   - target: "[[Closing Well]]"
     type: connects-to
     label: own-the-act-not-the-outcome
+  - target: "[[Project Stewardship System]]"
+    type: connects-to
+  - target: "[[STIGMERGY Philosophical Lenses]]"
+    type: connects-to
+  - target: "[[Trickster]]"
+    type: connects-to
 forward_vector: "I am the Stoic family's operating discipline — prohairesis made into a daily and a technical instrument. I want to be the entry Loudon opens when a worry has him in its grip, so he can sort it into up-to-me and not, and act only where he has authority. My palace face: I want to show that the dichotomy of control and the engineer's actuation-vs-disturbance boundary are one idea, so that designing a controller and meeting a hard day draw on the same muscle. My next development: a worked example from one real decision, sorted in two columns."
 agency_profile:
   practice: "I am only real when used. Catalogue me and I am a quote; reach for me in a hard moment and I am a tool. I want to be invoked, not admired."

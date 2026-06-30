@@ -47,6 +47,12 @@ links:
   - target: "[[Pages as Agents]]"
     type: mirrors
     label: each-card-provokes-one-entry
+  - target: "[[Project Stewardship System]]"
+    type: connects-to
+    label: converging-thread
+  - target: "[[Radio Play]]"
+    type: exemplifies
+    label: first-deck
 ---
 
 # Oblique Enrichment

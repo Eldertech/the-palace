@@ -42,6 +42,8 @@ links:
   - target: "[[DSP in Looping Dimensions]]"
     type: connects-to
     label: mathematical-substrate
+  - target: "[[Loudon Live]]"
+    type: connects-to
 ---
 
 # Wavetable Synthesis — Deep Research & Higher-Dimensional Design

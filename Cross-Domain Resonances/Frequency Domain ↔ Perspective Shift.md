@@ -28,6 +28,9 @@ links:
   - target: "[[Lateral Access]]"
     type: mirrors
     label: reframe
+  - target: "[[Rick Rubin]]"
+    type: connects-to
+    label: oblique-lens
 ---
 
 # Frequency Domain ↔ Perspective Shift

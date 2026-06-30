@@ -24,6 +24,9 @@ links:
   - target: "[[BBS Design System]]"
     type: connects-to
     label: the-surface-it-orders
+  - target: "[[Trickster]]"
+    type: spawned
+    label: origin-site
 ---
 
 # The Reader's Context Window

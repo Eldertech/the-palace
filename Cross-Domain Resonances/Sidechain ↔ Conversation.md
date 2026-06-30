@@ -32,6 +32,9 @@ links:
   - target: "[[Flocking]]"
     type: mirrors
     label: local-yield
+  - target: "[[Quality Manifesto]]"
+    type: exemplifies
+    label: self-defined-metric
 ---
 
 # Sidechain ↔ Conversation

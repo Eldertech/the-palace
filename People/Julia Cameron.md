@@ -33,6 +33,9 @@ links:
   - target: "[[Stoicism]]"
     type: connects-to
     label: daily-ritual
+  - target: "[[Cross-Domain Resonances]]"
+    type: connects-to
+    label: pattern-mapping
 ---
 
 # Julia Cameron

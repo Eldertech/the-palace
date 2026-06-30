@@ -32,6 +32,8 @@ links:
   - target: "[[Dissolutions]]"
     type: member-of
     label: synthesis-is-processing-one-substance
+  - target: "[[Loudon Live]]"
+    type: connects-to
 forward_vector: "I want to be the entry that proves the synthesizer and the effect were never two machines — one N-dimensional field, scanned by different hands. I want to open the unmapped territory of generalized non-diagonal slice trajectories as a real processor, and to give the torus project a second life as a general kernel architecture."
 ---
 # Volterra Kernels and the Torus

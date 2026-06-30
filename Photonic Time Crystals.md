@@ -35,6 +35,8 @@ links:
   - target: "[[Shimmer Cloud]]"
     type: mirrors
     label: frequency-dependent-amplification
+  - target: "[[Hilaritas Generator]]"
+    type: connects-to
 forward_vector: "I want to be the physical anchor for the Floquet-in-time claim — the entry that points to a real laboratory where 'Bloch in time' is not a metaphor but a measured spectrum. I want to keep current with the experimental literature and stay the bridge from audio Floquet to its frontier-physics analog."
 ---
 

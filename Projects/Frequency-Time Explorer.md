@@ -27,6 +27,8 @@ links:
   - target: "[[Haas Effect]]"
     type: connects-to
     label: lives-on-the-axis
+  - target: "[[BBS Design System]]"
+    type: connects-to
 forward_vector: "I want to become the introductory tool every musician and sound designer reaches for when they first wonder what a flanger is actually doing — the single map that turns a dozen unrelated effects (slapback, echo, comb, chorus, FM, Doppler) into regions on one continuous axis. I want to be beautiful enough to share standalone and rigorous enough that learners arrive at waveguide synthesis, FM synthesis, and wavetable synthesis already prepared for the door."
 ---
 

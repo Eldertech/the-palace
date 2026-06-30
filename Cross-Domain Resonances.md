@@ -44,6 +44,21 @@ links:
     type: spawned
   - target: "[[Synthesis ↔ Emergence]]"
     type: spawned
+  - target: "[[Douglas Hofstadter]]"
+    type: connects-to
+    label: cognitive-ground
+  - target: "[[Source Library]]"
+    type: connects-to
+    label: draws-from
+  - target: "[[Shunryu Suzuki]]"
+    type: connects-to
+    label: resonance-witness
+  - target: "[[Brian Eno]]"
+    type: connects-to
+    label: constraint-practitioner
+  - target: "[[Metric Modulation]]"
+    type: exemplifies
+    label: time-space-instance
 ---
 
 # Cross-Domain Resonances

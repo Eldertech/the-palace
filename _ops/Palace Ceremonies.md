@@ -31,6 +31,8 @@ links:
     type: connects-to
   - target: "[[Map Build Ceremony]]"
     type: enables
+  - target: "[[Baton Ceremony]]"
+    type: connects-to
 ---
 # Palace Ceremonies
 

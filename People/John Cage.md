@@ -34,6 +34,9 @@ links:
   - target: "[[Flocking]]"
     type: connects-to
     label: set-conditions
+  - target: "[[Quality Manifesto]]"
+    type: connects-to
+    label: shared-release-from-metric
 ---
 
 # John Cage

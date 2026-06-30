@@ -35,6 +35,10 @@ links:
   - target: "[[Review Layer]]"
     type: exemplifies
     label: first-mechanism
+  - target: "[[Diversity of Thought in Many-Agent Systems]]"
+    type: connects-to
+  - target: "[[Granular Synthesis]]"
+    type: connects-to
 ---
 
 # Murmuration

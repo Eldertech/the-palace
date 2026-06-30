@@ -26,6 +26,9 @@ links:
   - target: "[[BLUELINE — Text Layer]]"
     type: connects-to
     label: stacks-the-bubble
+  - target: "[[Hand-Drawn 3D Look]]"
+    type: couples-with
+    label: break-surface
 ---
 
 # The 2.5D Paper Stack

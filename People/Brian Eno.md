@@ -45,6 +45,9 @@ links:
   - target: "[[Flocking]]"
     type: connects-to
     label: rules-emergence
+  - target: "[[Quality Manifesto]]"
+    type: connects-to
+    label: depth-over-reach
 ---
 
 # Brian Eno

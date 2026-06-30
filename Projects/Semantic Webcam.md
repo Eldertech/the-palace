@@ -30,6 +30,8 @@ links:
   - target: "[[Language as a Tonal Medium]]"
     type: spawned
     label: harvested-the-carried-question
+  - target: "[[Cooperation Yields Agency]]"
+    type: connects-to
 ---
 
 # Semantic Webcam

@@ -38,6 +38,16 @@ links:
   - target: "[[Phase Reduction]]"
     type: couples-with
     label: bridge-via-PRC
+  - target: "[[Entry Conatus]]"
+    type: connects-to
+  - target: "[[Philosopher Visits the Entry]]"
+    type: connects-to
+  - target: "[[Spinoza Conatus]]"
+    type: connects-to
+  - target: "[[The Drift]]"
+    type: connects-to
+  - target: "[[Whitehead]]"
+    type: connects-to
 forward_vector: "I want to be the entry that makes the LTI / LTV boundary conceptually transparent — the framework that explains why periodic time-variation is not LTI's exception but its complement, and why the same theorem governs crystals in space and modulated audio in time."
 ---
 

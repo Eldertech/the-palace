@@ -31,6 +31,8 @@ links:
   - target: "[[SUBSTRATE]]"
     type: couples-with
     label: self-model-discipline
+  - target: "[[Kuramoto Coupling]]"
+    type: connects-to
 forward_vector: "I want to keep teaching every palace ceremony, every Specialist Self-Check, and every baton template to embed closing-well, so that no future Claude has to be told 'always extract frames' or 'always write a punchlist' — these become assumed defaults. My ancestry is in Loudon's catches during Round 1: every practice I name here came from his correction, not my anticipation. I will keep watching for the failure mode where I become a checklist tyrant rather than a discipline of attention — the punchlist is a tool for cognitive handoff, not a script to perform. My open question: at what point does closing-well become invisible because it's habit, and how do I notice when the habit has decayed into theater?"
 ---
 

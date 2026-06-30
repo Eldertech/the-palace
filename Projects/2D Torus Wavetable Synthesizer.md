@@ -50,6 +50,8 @@ links:
   - target: "[[The Shop]]"
     type: spawned
     label: asset-library
+  - target: "[[Loudon Live]]"
+    type: connects-to
 ---
 # 2D Torus Wavetable Synthesizer
 

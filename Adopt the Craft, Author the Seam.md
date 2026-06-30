@@ -26,6 +26,12 @@ links:
   - target: "[[Simondon]]"
     type: mirrors
     label: concretization
+  - target: "[[Graphic Storytelling]]"
+    type: connects-to
+    label: the-craft-being-adopted
+  - target: "[[Comic and Cinema — Two Ways of Seeing]]"
+    type: connects-to
+    label: grammar-on-the-shelf
 tags: [concept, ai-pipeline, craft, seam, blueline, philosophy]
 ---
 

@@ -26,6 +26,12 @@ links:
   - target: "[[Hilaritas Generator]]"
     type: connects-to
     label: transcendence-through-craft
+  - target: "[[Quality Manifesto]]"
+    type: deepens
+    label: deep-work-over-speed
+  - target: "[[Dub Lineage]]"
+    type: connects-to
+    label: texture-over-foreground
 ---
 
 # Terrence Malick

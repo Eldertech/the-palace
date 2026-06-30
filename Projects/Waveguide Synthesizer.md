@@ -38,6 +38,8 @@ links:
   - target: "[[Frequency-Time Duality]]"
     type: connects-to
     label: delay-is-spectrum
+  - target: "[[Particle Synthesis]]"
+    type: connects-to
 ---
 
 # Waveguide Synthesizer
