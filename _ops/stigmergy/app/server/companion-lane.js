@@ -318,6 +318,10 @@ export function createCompanionLane(opts = {}) {
   const model = opts.model || DEFAULT_MODEL;
   const stubArgv = typeof opts.buildArgv === 'function' ? opts.buildArgv : null;
   const dryReap = opts.dryReap === true;
+  // The render lane (Hero and Avatar Maker). Injected so a worker's `regen_visual`
+  // action can fire a hero/avatar render. Absent → the regen action is declined
+  // honestly in the window (no lane wired). See [[Hero and Avatar Maker]].
+  const regenLane = opts.regenLane || null;
   // Edits commit DIRECTLY to the live palace (`root`) — the quarantine was
   // retired 2026-06-09 in favor of show-before-editing (propose → approve).
 
@@ -371,6 +375,9 @@ export function createCompanionLane(opts = {}) {
       const hasEdit = allowEdit && !!(edit && edit.op);
       // The to-do capture (Stage 1): a flag action from the app_feedback context.
       const hasFlag = meta.kind === 'app_feedback' && !!(action && action.type === 'flag');
+      // The hero/avatar regen (entry kind): a regen_visual action. One thing per
+      // turn — an edit wins if the worker somehow sent both (it is told not to).
+      const hasRegen = allowEdit && !hasEdit && !!(action && action.type === 'regen_visual');
 
       // 1) the conversational reply. Adaptive narration (Plan §7.2): when an
       // edit lands, the worker stays QUIET for a clean/obvious change — the edit
@@ -384,7 +391,7 @@ export function createCompanionLane(opts = {}) {
         postIfValid(buildCompanionMessage({
           title, entryPath, turnId, reply: trimmedReply, model: meta.model || model, ts: new Date().toISOString(),
         }));
-      } else if (!hasEdit && !hasFlag) {
+      } else if (!hasEdit && !hasFlag && !hasRegen) {
         postIfValid(buildCompanionMessage({
           title, entryPath, turnId, reply: '(the companion returned nothing)',
           model: meta.model || model, ts: new Date().toISOString(),
@@ -446,7 +453,50 @@ export function createCompanionLane(opts = {}) {
           flagSummary = { ok: false, error: e.message };
         }
       }
-      writeLastTurn({ ok: true, turn_id: turnId, entry: title, edit: editSummary, flag: flagSummary, ts: new Date().toISOString() });
+      // 4) the hero/avatar regen: hand the distilled art direction to the render
+      //    lane (the Hero and Avatar Maker). Fired on the SAME turnId so the
+      //    window correlates the started/done PROOFs with this conversation. The
+      //    reply (above) already echoed what's being rendered; the render runs for
+      //    minutes and commits on its own. If the lane is missing or busy, say so.
+      let regenSummary = null;
+      if (hasRegen) {
+        if (regenLane && typeof regenLane.regen === 'function') {
+          try {
+            const rr = regenLane.regen({
+              path: entryPath,
+              target: action.target,
+              idiom: action.idiom,
+              heroPrompt: action.hero_prompt,
+              iconPrompt: action.icon_prompt,
+              note: action.note,
+              turnId,
+            });
+            regenSummary = { ok: !!rr.ok, fired: !!rr.fired, busy: !!rr.busy };
+            if (!rr.ok && !rr.fired) {
+              postIfValid(buildCompanionMessage({
+                title, entryPath, turnId,
+                reply: rr.busy
+                  ? "A render is already running — give it a moment, then ask again."
+                  : `I couldn't start the render: ${rr.msg}`,
+                model: meta.model || model, ts: new Date().toISOString(),
+                id: `${slugify(title)}-companion-regenfail-${turnId}`,
+              }));
+            }
+          } catch (e) {
+            logLine(`ERROR: companion regen dispatch failed: ${e.message}`);
+            regenSummary = { ok: false, error: e.message };
+          }
+        } else {
+          postIfValid(buildCompanionMessage({
+            title, entryPath, turnId,
+            reply: "I'd remake my face, but the render lane isn't wired up here.",
+            model: meta.model || model, ts: new Date().toISOString(),
+            id: `${slugify(title)}-companion-noregen-${turnId}`,
+          }));
+          regenSummary = { ok: false, error: 'no regen lane' };
+        }
+      }
+      writeLastTurn({ ok: true, turn_id: turnId, entry: title, edit: editSummary, flag: flagSummary, regen: regenSummary, ts: new Date().toISOString() });
     } catch (e) {
       logLine(`ERROR: companion reap failed: ${e.message}`);
       writeLastTurn({ ok: false, turn_id: turnId, error: e.message });

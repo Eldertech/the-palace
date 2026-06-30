@@ -14,6 +14,8 @@
 // real vectors) instead of the M0 stub. M1c reuses the same object to build the
 // Companion worker's prompt — one grounding, two consumers.
 
+import { existsSync, readFileSync } from 'node:fs';
+import { resolve } from 'node:path';
 import { readEntry, listEntries } from './entries.js';
 import { buildIndex, resolveWikilink } from './wikilink.js';
 
@@ -54,6 +56,36 @@ function neighborFrom(palaceRoot, link, index) {
   };
 }
 
+// The entry's VISUAL IDENTITY, read from its bundle: whether it currently wears
+// a hero/avatar, and — if a `<Title> — face.json` sidecar exists (written by the
+// regen door) — the idiom and prompts last rendered, so the Companion can say
+// "this is a woodcut" and iterate ("make it bolder") from the prior prompt
+// rather than starting cold. Pure over the fs (uses the already-listed bundle
+// files). Always returns an object; absent art is `has*: false`.
+function assembleFace(palaceRoot, entry) {
+  const files = (entry.bundle && Array.isArray(entry.bundle.files)) ? entry.bundle.files : [];
+  const hasHero = files.some((f) => / — hero\.png$/i.test(f.name));
+  const hasIcon = files.some((f) => / — icon\.png$/i.test(f.name));
+  const face = { hasHero, hasIcon, idiom: null, heroPrompt: null, iconPrompt: null, renderedAt: null };
+
+  const faceFile = files.find((f) => / — face\.json$/i.test(f.name));
+  if (faceFile && typeof faceFile.relPath === 'string') {
+    try {
+      const abs = resolve(palaceRoot, faceFile.relPath);
+      if (existsSync(abs)) {
+        const j = JSON.parse(readFileSync(abs, 'utf8'));
+        if (j && typeof j === 'object') {
+          if (typeof j.idiom === 'string') face.idiom = j.idiom;
+          if (typeof j.hero_prompt === 'string') face.heroPrompt = j.hero_prompt;
+          if (typeof j.icon_prompt === 'string') face.iconPrompt = j.icon_prompt;
+          if (typeof j.rendered_at === 'string') face.renderedAt = j.rendered_at;
+        }
+      }
+    } catch (_) { /* a malformed sidecar is non-fatal — fall back to existence only */ }
+  }
+  return face;
+}
+
 /**
  * Assemble the grounding for one entry.
  *
@@ -61,7 +93,8 @@ function neighborFrom(palaceRoot, link, index) {
  * @param {string} relPath — palace-relative path to the entry (.md)
  * @returns {object|null} grounding, or null if the entry can't be read
  *   {
- *     entry: { path, title, type, stage, pillars, forward_vector, body_chars, link_count },
+ *     entry: { path, title, type, stage, pillars, forward_vector, body_chars, link_count,
+ *              face: { hasHero, hasIcon, idiom, heroPrompt, iconPrompt, renderedAt } },
  *     neighbors: [{ name, path, type, label, resolved, stage, type_of_entry, forward_vector }],
  *     counts: { links, neighbors_resolved, neighbors_ghost },
  *     floor: PALACE_FLOOR,
@@ -122,6 +155,7 @@ export function assembleGrounding(palaceRoot, relPath) {
       forward_vector: typeof entry.frontmatter?.forward_vector === 'string' ? entry.frontmatter.forward_vector : null,
       body_chars: typeof entry.body === 'string' ? entry.body.length : 0,
       link_count: (entry.links || []).length,
+      face: assembleFace(palaceRoot, entry),
     },
     neighbors,
     counts: {
