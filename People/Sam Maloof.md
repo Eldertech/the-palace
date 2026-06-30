@@ -36,6 +36,8 @@ links:
 ---
 
 # Sam Maloof
+
+![[Sam Maloof — hero.png]]
 ## Maker/Craftsman
 
 **Domain:** Maker/Craftsman

@@ -35,6 +35,8 @@ links:
 ---
 
 # Quantization ↔ Precision vs Flow
+
+![[Quantization ↔ Precision vs Flow — hero.png]]
 ## When Snapping to Grid Serves vs Stifles
 
 **Pattern:** Converting continuous values to discrete steps. Trade fluidity for alignment. Gain precision, lose nuance.

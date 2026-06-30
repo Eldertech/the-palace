@@ -1,0 +1,9 @@
+{
+  "title": "Terrence Malick",
+  "idiom": "Edward Hopper-style gouache \u2014 wide desolate landscape at magic hour, a lone figure silhouetted against a luminous sky, the horizon low, space doing the speaking",
+  "hero_prompt": "Wide ~12:5 scene in Edward Hopper gouache style: a lone small figure stands in a vast open field at magic hour, golden light raking across tall grass from low on the horizon, the sky massive and softly lit, the figure's back to the viewer, watching \u2014 no faces visible, no portraits, purely the feeling of patience and awe before the natural world; hand-painted medium, visible brushwork, warm amber and deep blue tones, no letters, numerals, words, labels, or text of any kind \u2014 purely pictorial",
+  "icon_prompt": "Bold high-contrast square emblem in screenprint style: a single tree silhouette at magic hour, sun just below the treeline casting a starburst of rays upward, stark black tree against deep orange-gold background \u2014 no fine detail, no linework, just flat-cut shapes that survive at 24px; no letters, numerals, words, or labels",
+  "seeds": {},
+  "rendered_at": "2026-06-30T19:56:11Z",
+  "history": []
+}

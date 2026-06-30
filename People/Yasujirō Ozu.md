@@ -39,6 +39,8 @@ links:
 ---
 
 # Yasujirō Ozu
+
+![[Yasujirō Ozu — hero.png]]
 ## Filmmaker
 
 **Domain:** Filmmaker

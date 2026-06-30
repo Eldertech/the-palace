@@ -1,0 +1,9 @@
+{
+  "title": "Reverb \u2194 Space-Time",
+  "idiom": "Haeckel-style scientific engraving crossed with architectural cross-section ink drawing",
+  "hero_prompt": "Wide darkened backdrop. A cathedral cross-section rendered in fine Haeckel engraving style \u2014 ink lines only, no colour. Sound waves radiate from a single point source near the floor; each successive reflection arrives at a listener figure (gender-neutral, abstract) with a numbered time label in milliseconds. The reflections form concentric arcs that also read as spacetime light-cones. The geometry of the room IS the geometry of the delay lines. One dominant figure dwells inside the sound field, not observing it. No letters, numerals, words, labels \u2014 purely pictorial.",
+  "icon_prompt": "Bold high-contrast square emblem. A single sound-wave arc doubling as a spacetime light-cone \u2014 thick clean lines, no fine detail, no text, no numerals. Black on off-white or white on deep charcoal. Must survive at 24px. No letters, no labels, purely pictorial.",
+  "seeds": {},
+  "rendered_at": "2026-06-30T19:56:11Z",
+  "history": []
+}

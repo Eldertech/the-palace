@@ -36,6 +36,8 @@ links:
 ---
 
 # Terrence Malick
+
+![[Terrence Malick — hero.png]]
 ## Filmmaker
 
 **Domain:** Filmmaker

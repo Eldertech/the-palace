@@ -30,6 +30,8 @@ forward_vector: "I keep the canon/learning-material line legible by the cheapest
 
 # Learning Materials and Canon
 
+![[Learning Materials and Canon — hero.png]]
+
 The palace holds two kinds of thing, and for a long time it couldn't tell them apart.
 
 **Canon** is Loudon's knowledge repository — the typed-link graph of concepts, breakthroughs, people, and bridges that agents reason with, weave, and update as truth. **Learning materials** are the student-facing products *derived from* canon: Loudon Live lessons, slides, posters, interactive tools. They are downstream of canon, refined for an audience — not the source.

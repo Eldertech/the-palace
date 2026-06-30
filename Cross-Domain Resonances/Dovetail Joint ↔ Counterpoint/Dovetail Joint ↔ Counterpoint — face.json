@@ -1,0 +1,9 @@
+{
+  "title": "Dovetail Joint \u2194 Counterpoint",
+  "idiom": "Haeckel-style scientific engraving \u2014 fine ink linework treating wood grain and musical notation as equally rigorous natural specimens",
+  "hero_prompt": "A wide darkened tableau in the style of Ernst Haeckel's scientific engravings: on the left half, an exploded view of a dovetail joint rendered as a zoological specimen \u2014 each wedge-shaped tail and corresponding pin labelled with fine ruled lines, wood grain drawn as precise parallel strokes; on the right half, two staves of two-voice counterpoint notated with the same engraver's precision, voices interlocked at third and sixth intervals, arrows showing contrary motion exactly mirroring the joint's wedge geometry; in the centre, a single shared axis where wood tail and melodic interval overlap and merge; moody sepia ink on aged paper; no letters, numerals, words, or labels \u2014 purely pictorial",
+  "icon_prompt": "A bold high-contrast square emblem: two interlocking wedge shapes in the upper half, two interlocking curving staff lines (abstracted to bold arcs) in the lower half, meeting at a shared centre lock mark; thick outlines only, no fine hatching, solid black on cream ground; no letters, numerals, or words",
+  "seeds": {},
+  "rendered_at": "2026-06-30T19:56:11Z",
+  "history": []
+}

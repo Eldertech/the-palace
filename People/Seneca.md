@@ -34,6 +34,8 @@ links:
 ---
 
 # Seneca
+
+![[Seneca — hero.png]]
 ## Philosopher
 
 **Domain:** Philosopher

@@ -30,6 +30,8 @@ links:
 ---
 
 # Reverb ↔ Space-Time
+
+![[Reverb ↔ Space-Time — hero.png]]
 ## When Reflections Reveal Dimension
 
 **Pattern:** Space creates time smear. Time creates spatial perception. They're not separate—they're the same phenomenon viewed from different angles.

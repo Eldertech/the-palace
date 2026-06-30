@@ -36,6 +36,8 @@ links:
 ---
 
 # R. Murray Schafer
+
+![[R. Murray Schafer — hero.png]]
 ## Musician/Composer
 
 **Domain:** Musician/Composer

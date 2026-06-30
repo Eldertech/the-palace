@@ -39,6 +39,8 @@ links:
 ---
 
 # Cooking ↔ Mixing
+
+![[Cooking ↔ Mixing — hero.png]]
 ## Irreversible Processes and Subtraction-First Thinking
 
 **Pattern:** Both are irreversible transformation processes where you can always add, but rarely remove perfectly. Therefore, both develop subtraction-first thinking.

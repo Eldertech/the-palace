@@ -39,6 +39,8 @@ links:
 ---
 
 # Dovetail Joint ↔ Counterpoint
+
+![[Dovetail Joint ↔ Counterpoint — hero.png]]
 ## Strength Through Mutual Support
 
 **Pattern:** Two elements designed to support each other create strength without external reinforcement.
