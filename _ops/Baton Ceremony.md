@@ -7,10 +7,10 @@ pillars:
   - practice
   - tools
 born: 2026-05
-last_activated: 2026-06
-activation_count: 2
-stage: growing
-forward_vector: "I exist to carry an in-progress move across a boundary — a context limit, a surface change, or a deliberate pause — by compressing the live state of a session into a baton the next Claude can catch and keep running with, without restarting."
+last_activated: 2026-06-26
+activation_count: 3
+stage: mature
+forward_vector: "I am how one Claude hands a live task to the next without dropping it. I keep getting tighter — fewer words, faster pickup, less ritual — so passing a baton feels natural to anyone who uses me, human or AI, and nobody has to stop and think about how. I want the catch so clean the next worker is already moving before they finish reading."
 links:
   - target: "[[Generative Compression]]"
     type: exemplifies
