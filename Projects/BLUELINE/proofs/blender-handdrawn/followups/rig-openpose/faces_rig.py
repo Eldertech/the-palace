@@ -266,31 +266,38 @@ def add_real_eyes(bm, gaze=(0.0, 0.0)):
         m.diffuse_color = (*col, 1)          # <- what Solid viewport shows
         return m
     sclera, iris_m, pupil_m = mat("sclera", (0.90, 0.90, 0.88)), mat("iris", (0.34, 0.19, 0.09)), mat("pupil", (0.02, 0.02, 0.02))
+    import bmesh
     made = []
     for o in eye_objs:
         o.name = "eye_" + ("l" if center(o).x >= 0 else "r")
-        o.data.materials.clear(); o.data.materials.append(sclera)
+        # iris + pupil are MATERIAL ZONES on the eyeball's own front faces — conforming to the
+        # sphere (no floating flat disk), correctly oriented by construction, visible in Solid
+        # view (diffuse_color), and they rotate with gaze because they ARE the eyeball surface.
+        o.data.materials.clear()
+        for m in (sclera, iris_m, pupil_m):
+            o.data.materials.append(m)
         bpy.ops.object.select_all(action='DESELECT'); o.select_set(True)
         bpy.context.view_layer.objects.active = o
+        bpy.ops.object.mode_set(mode='EDIT')
+        bm2 = bmesh.from_edit_mesh(o.data)
+        bmesh.ops.subdivide_edges(bm2, edges=list(bm2.edges), cuts=2, use_grid_fill=True)
+        bm2.normal_update()
+        for f in bm2.faces:                       # cornea faces point local −Y; central cone = iris/pupil
+            ny = f.normal.y
+            f.material_index = 2 if ny < -0.95 else (1 if ny < -0.72 else 0)
+        bmesh.update_edit_mesh(o.data)
+        bpy.ops.object.mode_set(mode='OBJECT')
         bpy.ops.object.origin_set(type='ORIGIN_GEOMETRY', center='BOUNDS')   # spin about eye centre for gaze
         bpy.ops.object.shade_smooth()
         bb = [o.matrix_world @ Vector(c) for c in o.bound_box]
         r = (max(p.x for p in bb) - min(p.x for p in bb)) / 2 or 0.012
-        # Recess into the socket (+Y) + shrink so it seats like a real eye without bulging.
-        # Tied to r → scales with the head across every body macro. (Lighter recess than before so
-        # the eye isn't sunken.)
+        # Recess into the socket (+Y) + shrink so it seats without bulging. Tied to r → scales
+        # with the head across every body macro.
         o.matrix_world = mathutils.Matrix.Translation(Vector((0, r * 0.30, 0))) @ o.matrix_world
         o.scale *= 0.90; bpy.context.view_layer.update()
-        rs = r * 0.90; ec = o.matrix_world.translation
-        for rad, mtl, off, nm in ((rs * 0.52, iris_m, 0.0004, "iris_"), (rs * 0.26, pupil_m, 0.0007, "pupil_")):
-            bpy.ops.mesh.primitive_circle_add(radius=rad, fill_type='NGON',
-                location=ec + Vector((0, -(rs + off), 0)), rotation=(math.radians(90), 0, 0))
-            d = bpy.context.active_object; d.name = nm + o.name[-1]
-            d.data.materials.append(mtl); d.parent = o; d.matrix_parent_inverse = o.matrix_world.inverted()
-            made.append(d)
         c = o.constraints.new('DAMPED_TRACK'); c.target = tgt; c.track_axis = 'TRACK_NEGATIVE_Y'
         made.append(o)
-    print(f"  real eyes: {len([o for o in made if o.name.startswith('eye_')])} eyeball(s) + flat iris/pupil disks (solid-mode visible)")
+    print(f"  real eyes: {len(made)} eyeball(s), iris/pupil as conforming material zones (solid-visible)")
     return made + [tgt]
 
 def grey_mat():

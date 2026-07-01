@@ -76,11 +76,26 @@ def add_real_eyes(bm, gaze=(0.0, 0.0)):
         m.diffuse_color = (*col, 1)
         return m
     sclera, iris_m, pupil_m = mat("sclera", (0.90, 0.90, 0.88)), mat("iris", (0.34, 0.19, 0.09)), mat("pupil", (0.02, 0.02, 0.02))
+    import bmesh
     for o in eye_objs:
         o.name = "eye_" + ("l" if center(o).x >= 0 else "r")
-        o.data.materials.clear(); o.data.materials.append(sclera)
+        # iris + pupil are MATERIAL ZONES on the eyeball's own front faces — conforming to the
+        # sphere (no floating disk), correctly oriented by construction, Solid-view visible, and
+        # they rotate with gaze because they ARE the eyeball surface.
+        o.data.materials.clear()
+        for m in (sclera, iris_m, pupil_m):
+            o.data.materials.append(m)
         bpy.ops.object.select_all(action='DESELECT'); o.select_set(True)
         bpy.context.view_layer.objects.active = o
+        bpy.ops.object.mode_set(mode='EDIT')
+        bm2 = bmesh.from_edit_mesh(o.data)
+        bmesh.ops.subdivide_edges(bm2, edges=list(bm2.edges), cuts=2, use_grid_fill=True)
+        bm2.normal_update()
+        for f in bm2.faces:
+            ny = f.normal.y
+            f.material_index = 2 if ny < -0.95 else (1 if ny < -0.72 else 0)
+        bmesh.update_edit_mesh(o.data)
+        bpy.ops.object.mode_set(mode='OBJECT')
         bpy.ops.object.origin_set(type='ORIGIN_GEOMETRY', center='BOUNDS')
         bpy.ops.object.shade_smooth()
         bb = [o.matrix_world @ Vector(c) for c in o.bound_box]
@@ -88,12 +103,6 @@ def add_real_eyes(bm, gaze=(0.0, 0.0)):
         # recess into the socket (+Y) + shrink so it seats without bulging (lighter recess = forward)
         o.matrix_world = mathutils.Matrix.Translation(Vector((0, r * 0.30, 0))) @ o.matrix_world
         o.scale *= 0.90; bpy.context.view_layer.update()
-        rs = r * 0.90; ec = o.matrix_world.translation
-        for rad, mtl, off, nm in ((rs * 0.52, iris_m, 0.0004, "iris_"), (rs * 0.26, pupil_m, 0.0007, "pupil_")):
-            bpy.ops.mesh.primitive_circle_add(radius=rad, fill_type='NGON',
-                location=ec + Vector((0, -(rs + off), 0)), rotation=(math.radians(90), 0, 0))
-            d = bpy.context.active_object; d.name = nm + o.name[-1]
-            d.data.materials.append(mtl); d.parent = o; d.matrix_parent_inverse = o.matrix_world.inverted()
         c = o.constraints.new('DAMPED_TRACK'); c.target = tgt; c.track_axis = 'TRACK_NEGATIVE_Y'
     return eye_objs, [], tgt
 
