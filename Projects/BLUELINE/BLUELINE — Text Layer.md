@@ -193,14 +193,24 @@ The cube is the renderer's job sheet: answer three questions, and the answers *d
 Comics lettering is a century-old discipline that encodes exactly these three in **frame, font, and context**.
 We adopt it and make it opinionated:
 
-- **Balloon shape = emotion / channel.** round = neutral speech · spiky = shout or electronic · scalloped
-  cloud = thought · wavy/dripping = weak/dying/sick · hard rectangle = robotic/formal/narration · icicle =
-  cold/menace · dashed = whisper · double-stroke = loud.
-- **Tail = source + addressee.** Points at the speaker, *toward* the listener. **The tail anchors to the
-  mouth/head keypoint** already authored for the render — in mode #1 the *projected 3D* anchor, which carries
-  its own depth — so the *same staging geometry* that conditions the figure now places the balloon: one
-  geometry doing a **fourth and fifth job** (board-record field → conditioning keypoints → 2D↔3D transfer →
-  **lettering anchor** → **stack depth**, read from the depth plate). Tail across the frame edge = off-panel
+- **Balloon shape = emotion / channel.** A locked 12-style catalog (proven 2026-07-01,
+  `renders/text-anchor/balloons/` — `balloon_lib.py`): `speech-oval` / `speech-rrect` = neutral speech ·
+  `shout-spiky` = shout · `electronic-radio` = electronic / broadcast (fine regular serration, distinct
+  from shout) · `thought-cloud` = interior (detached puff trail, not a tail) · `weak-wavy` = weak / dying /
+  sick · `narration-rect` = narration / formal (tail-less) · `cold-icicle` = cold / menace · `whisper-dashed`
+  = whisper · `loud-double` = loud (double stroke) · `offpanel-oval` = off-panel speaker (tail runs to the
+  frame edge, not a face) · `title-burst` = title / SFX / system voice (tail-less). New styles earn a catalog
+  entry the way a new frame technique earns a line in [[The 2.5D Paper Stack]]'s catalogue.
+- **Tail = source + addressee.** Points at the speaker, *toward* the listener. **Two geometry rules,
+  locked 2026-07-01.** (a) *The tail is part of the silhouette.* The balloon is drawn as one filled shape
+  (body ∪ tail) and only its outer contour is stroked, so the outline **breaks where the tail joins** — the
+  two tail edges continue the line down and back, never a stroke cutting across the body. (b) *The tip stops
+  short of the person.* The tail points at the mouth but its tip halts a small gap **outside** the figure
+  silhouette (read from the depth plate) — it must **never touch the speaker or cross the face**. **The tail
+  anchors to the mouth/head keypoint** already authored for the render — in mode #1 the *projected 3D*
+  anchor, which carries its own depth — so the *same staging geometry* that conditions the figure now places
+  the balloon: one geometry doing a **fourth and fifth job** (board-record field → conditioning keypoints →
+  2D↔3D transfer → **lettering anchor** → **stack depth**, read from the depth plate). Tail across the frame edge = off-panel
   speaker; tail-less box = narration; balloon facing out / breaking into the margin = fourth-wall. Addressee
   becomes a *vector* — pure [[Blocked, Not Prompted]]: drama is geometry, even for words.
 - **Typography = source + emotion.** weight (bold = volume) · case (ALL-CAPS comic default; lowercase =
@@ -225,6 +235,12 @@ space is the answer:
 The split *is* the diegesis grammar — legible at a glance. And layout **responds to aspect ratio**: a portrait
 board's wide side-pillars become manga-style vertical caption columns; a landscape board's top/bottom bars
 become cinematic lower-thirds. The text layout is a small solver keyed off the board's dimensions.
+
+**Body placement is hybrid — auto-solve with per-event override** (decided 2026-07-01). For in-frame text the
+solver reads the figure silhouette (depth plate) + the speaker's keypoint and picks a body position that
+**clears the face**, stays in frame, and biases to the open side beside the speaker; the tail then points in
+and stops short. The board record's `TEXT[]` may carry an explicit `placement` that **overrides** the solver
+when a composition needs a specific spot. Proven: `auto_place()` in `balloon_lib.py`.
 
 ## Beat-addressed text — it rides the clock like the boards
 
