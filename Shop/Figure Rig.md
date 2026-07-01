@@ -74,3 +74,7 @@ Visual proof of the whole rebuild: `figure_rig_proofs.html` (pipeline · model �
 - *(Closed: head-bone-derived facing (2026-06-26); a real wooden-mannequin mesh (2026-06-26); the **real MPFB2 human with separated legs**, **parametric body types**, a **Rigify IK rig** for hand-posing, and an **8-people × 3-styles RunPod matrix** proving pose-locked restyle across bodies (2026-06-30) — the force-fit era is over.)*
 
 Tools: `Projects/BLUELINE/proofs/blender-handdrawn/followups/rig-openpose/` — `pose_rig_mpfb_v3.py` (programmatic, MPFB2 native, height-adaptive autoframe) · `figure_rig_pose_studio.py` → `figure_rig_studio.blend` (hand-pose Rigify IK + embedded `render_plates`) · `examples_manifest.py` + `render_plates_all.py` + `batch_pod.py` (the 8×3 matrix: 8 bodies/poses → Blender plates → RunPod pose-locked restyle in 3 styles) · `draw_openpose.py` · `redraw_test.py` · `figure_rig_proofs.html` (visual proofs + the matrix gallery). Design note: [[Figure Rig — face-hands-openpose design]]. MPFB2 installed at `…/Blender/5.1/extensions/user_default/mpfb`. *(Legacy, superseded: `pose_rig_mpfb_v2.py` / `pose_rig_mesh.py` / `pose_rig.py` — the force-fit + mannequin era.)*
+
+## Active Baton
+
+[[Figure Rig — baton]] — drafted 2026-07-01
