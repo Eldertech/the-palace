@@ -77,3 +77,8 @@ Projects/BLUELINE/proofs/blender-handdrawn/followups/rig-openpose/renders/exampl
 Projects/BLUELINE/proofs/blender-handdrawn/followups/rig-openpose/renders/examples/*/verify_strip.png
 Projects/BLUELINE/proofs/blender-handdrawn/followups/rig-openpose/renders/examples/*.log
 Projects/BLUELINE/proofs/blender-handdrawn/followups/rig-openpose/renders/mpfb-v3/pose_B_male/redraw_male.log
+
+# Figure Rig hands — raw gen batch (reproducible; in figure_rig_hands.html + contact sheets)
+Projects/BLUELINE/proofs/blender-handdrawn/followups/rig-openpose/renders/hands-gen/*/gen_*.png
+Projects/BLUELINE/proofs/blender-handdrawn/followups/rig-openpose/renders/hands-gen/*.log
+Projects/BLUELINE/proofs/blender-handdrawn/followups/rig-openpose/renders/hands/plates.log

@@ -1,0 +1,9 @@
+{
+ "subject": "point_side",
+ "shot": "closeup",
+ "prompts": {
+  "storyboard": "extreme close-up photograph of a single human hand, a hand pointing with one extended index finger, three-quarter side view, detailed fingers, modern pen and ink illustration, loose gestural linework with bold dramatic sweeping flow lines and speed streaks driving the motion, scattered energetic ink blobs and splatter, stark high-contrast black and white, film-noir deep shadow, rough white paper, lots of white space, dynamic foreshortening, low canted angle",
+  "watercolor": "extreme close-up photograph of a single human hand, a hand pointing with one extended index finger, three-quarter side view, detailed fingers, soft watercolor concept art, loose wet washes, delicate ink linework over color, muted earthy palette, textured cold-press paper, gentle natural light, painterly",
+  "comic": "extreme close-up photograph of a single human hand, a hand pointing with one extended index finger, three-quarter side view, detailed fingers, bold graphic novel cel-shaded illustration, thick confident black ink outlines, flat vivid saturated colors, dramatic cel shading, halftone dot shadows, high contrast"
+ }
+}

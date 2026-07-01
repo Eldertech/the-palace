@@ -15,7 +15,7 @@ from PIL import Image
 
 COMFY = "/Users/loudonstearns/Documents/The Palace/_tools/ComfyUI"
 sys.path.insert(0, os.path.join(COMFY, "custom_nodes", "comfyui_controlnet_aux", "src"))
-from custom_controlnet_aux.open_pose.util import draw_bodypose
+from custom_controlnet_aux.open_pose.util import draw_bodypose, draw_handpose
 from custom_controlnet_aux.open_pose.body import Keypoint
 
 pose_dir = sys.argv[1]
@@ -27,5 +27,13 @@ canvas = np.zeros((H, W, 3), dtype=np.uint8)
 keypoints = [Keypoint(x, y) if vis else None for (x, y, vis) in kps]
 canvas = draw_bodypose(canvas, keypoints)
 
+# Optional hands (21-keypoint each) — draw_handpose on the same canvas, backward-compatible.
+nhands = 0
+for side, hk in data.get("hands", {}).items():
+    hand_kps = [Keypoint(x, y) if vis else None for (x, y, vis) in hk]
+    if any(k is not None for k in hand_kps):
+        canvas = draw_handpose(canvas, hand_kps); nhands += 1
+
 Image.fromarray(canvas).save(os.path.join(pose_dir, "openpose.png"))
-print("wrote", os.path.join(pose_dir, "openpose.png"), "| visible:", sum(1 for k in keypoints if k), "/18")
+print("wrote", os.path.join(pose_dir, "openpose.png"),
+      "| body:", sum(1 for k in keypoints if k), "/18 | hands drawn:", nhands)

@@ -48,6 +48,28 @@ The full face comes from the **mesh, not the rig**. MPFB's base mesh has a *fixe
 only real work. "OpenFace" in the request = OpenPose's face module (70 pts) / DWPose's face — not
 the separate OpenFace behavior-analysis tool; the relevant target is the 70-point face skeleton.
 
+### Facial-expression prep findings (verified 2026-06-30, offline)
+Done during the hands renders — the face phase is de-risked, **no software to install**:
+- **Expressions render, fully offline.** MPFB exposes 52 ARKit face units (`FaceService.set_expression`),
+  but the ARKit-*named* `!ex-*` targets are **not bundled** (every `set_expression` call skipped —
+  "Target file not found"). The fix: MPFB *does* bundle **34 raw MakeHuman expression units** per
+  ethnicity in `data/targets/expression/units/{caucasian,african,asian}/` — FACS-style shapes
+  (`mouth-corner-puller` = smile, `mouth-open`, `eyebrows-*-down` = angry brow, `mouth-depression` =
+  frown, `eye-*-opened-up`, `nose-*-dilatation`, …). Load them directly with
+  `TargetService.load_target(bm, path, weight, name="!ex-…")`. **Validated**: neutral / smile /
+  surprised / angry / sad all render as clearly distinct faces (`renders/faces/expr_contact.png`).
+- **Expression → raw-unit recipes** (starting point): *smile* = mouth-corner-puller + mouth-upward-retraction;
+  *surprised* = mouth-open + eyebrows-l/r-up + eye-l/r-opened-up; *angry* = eyebrows-l/r-down +
+  nose-l/r-dilatation + mouth-compression; *sad* = mouth-depression + eyebrows-l/r-inner-up.
+- **`draw_facepose` (70 dots) is in the same library** we already use — so the face plate is one more
+  `draw_*` call, exactly like hands.
+- **The only remaining build**: the 70-point face-landmark **vertex map**. The rig gives only sparse
+  face joints (`joint-l-eye`, `joint-r-eye`, `joint-jaw`, `joint-mouth`, `helper-l-eye` eye-ring
+  verts); the full iBUG-70 needs ~70 fixed vertex indices identified once on the base mesh (jaw rim,
+  brows, nose, eye rings, lip rim). That map is the first task of the face phase — and because the
+  landmarks are mesh verts, they move with the expression shape keys, so the face plate carries the
+  emotion for free.
+
 ## 3. Should OpenPose be *baked into the rig as a toggle-able layer* instead of a script?
 
 This is the sharpest question. The instinct is right that the current cross-step is clumsy —
