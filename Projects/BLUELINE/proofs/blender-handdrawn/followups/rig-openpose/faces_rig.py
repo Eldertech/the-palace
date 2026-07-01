@@ -252,41 +252,45 @@ def add_real_eyes(bm, gaze=(0.0, 0.0)):
     # white EEVEE material (the MakeHuman litsphere material renders black in EEVEE) and add a
     # dark iris+pupil disk on the cornea. Each eyeball's origin is re-centred first so the Damped
     # Track rotates it about its own centre (gaze), and the iris is parented so it tracks with it.
-    # Realtime-standard eye: the iris/pupil are PAINTED on the eyeball via its own UVs + the
-    # brown_eye.png texture (no protruding iris sphere — that was wrong). Because the iris is on
-    # the sphere, it rotates with the eyeball → gaze moves the pupil for free.
-    tex_path = os.path.normpath(os.path.join(os.path.dirname(MHCLO_EYES), os.pardir, "materials", "brown_eye.png"))
-    def eye_material():
-        m = bpy.data.materials.new("eye"); m.use_nodes = True; nt = m.node_tree
-        bsdf = nt.nodes.get("Principled BSDF")
-        if os.path.isfile(tex_path):
-            uvn = nt.nodes.new("ShaderNodeUVMap"); uvn.uv_map = "UVMap"
-            tx = nt.nodes.new("ShaderNodeTexImage"); tx.image = bpy.data.images.load(tex_path, check_existing=True)
-            nt.links.new(uvn.outputs["UV"], tx.inputs["Vector"])
-            nt.links.new(tx.outputs["Color"], bsdf.inputs["Base Color"])
-        else:
-            bsdf.inputs["Base Color"].default_value = (0.9, 0.9, 0.88, 1)
-        if "Roughness" in bsdf.inputs: bsdf.inputs["Roughness"].default_value = 0.30
+    # Eye = white sclera sphere + FLAT iris & pupil DISKS on the cornea. Flat disks (not a
+    # protruding ball) read as a real iris and — crucially — are visible in EVERY viewport mode,
+    # including plain SOLID (a UV texture only shows in Material-Preview/Rendered). Each material
+    # also sets diffuse_color so Solid-mode "Color: Material" shows it. Disks are parented to the
+    # eyeball, so they rotate with gaze.
+    def mat(name, col, rough=0.4):
+        m = bpy.data.materials.new(name); m.use_nodes = True
+        b = m.node_tree.nodes.get("Principled BSDF")
+        if b:
+            b.inputs["Base Color"].default_value = (*col, 1)
+            if "Roughness" in b.inputs: b.inputs["Roughness"].default_value = rough
+        m.diffuse_color = (*col, 1)          # <- what Solid viewport shows
         return m
-    emat = eye_material()
+    sclera, iris_m, pupil_m = mat("sclera", (0.90, 0.90, 0.88)), mat("iris", (0.34, 0.19, 0.09)), mat("pupil", (0.02, 0.02, 0.02))
     made = []
     for o in eye_objs:
         o.name = "eye_" + ("l" if center(o).x >= 0 else "r")
-        o.data.materials.clear(); o.data.materials.append(emat)
+        o.data.materials.clear(); o.data.materials.append(sclera)
         bpy.ops.object.select_all(action='DESELECT'); o.select_set(True)
         bpy.context.view_layer.objects.active = o
         bpy.ops.object.origin_set(type='ORIGIN_GEOMETRY', center='BOUNDS')   # spin about eye centre for gaze
         bpy.ops.object.shade_smooth()
         bb = [o.matrix_world @ Vector(c) for c in o.bound_box]
         r = (max(p.x for p in bb) - min(p.x for p in bb)) / 2 or 0.012
-        # The MPFB base mesh's eyelids don't drape over the eyeball, so a full-size sphere reads as
-        # a bulging ball. Recess it into the socket (+Y = into the head) and shrink slightly so it
-        # seats like a real eye. Tied to r → scales with the head across every body macro.
-        o.matrix_world = mathutils.Matrix.Translation(Vector((0, r * 0.42, 0))) @ o.matrix_world
-        o.scale *= 0.88; bpy.context.view_layer.update()
+        # Recess into the socket (+Y) + shrink so it seats like a real eye without bulging.
+        # Tied to r → scales with the head across every body macro. (Lighter recess than before so
+        # the eye isn't sunken.)
+        o.matrix_world = mathutils.Matrix.Translation(Vector((0, r * 0.30, 0))) @ o.matrix_world
+        o.scale *= 0.90; bpy.context.view_layer.update()
+        rs = r * 0.90; ec = o.matrix_world.translation
+        for rad, mtl, off, nm in ((rs * 0.52, iris_m, 0.0004, "iris_"), (rs * 0.26, pupil_m, 0.0007, "pupil_")):
+            bpy.ops.mesh.primitive_circle_add(radius=rad, fill_type='NGON',
+                location=ec + Vector((0, -(rs + off), 0)), rotation=(math.radians(90), 0, 0))
+            d = bpy.context.active_object; d.name = nm + o.name[-1]
+            d.data.materials.append(mtl); d.parent = o; d.matrix_parent_inverse = o.matrix_world.inverted()
+            made.append(d)
         c = o.constraints.new('DAMPED_TRACK'); c.target = tgt; c.track_axis = 'TRACK_NEGATIVE_Y'
         made.append(o)
-    print(f"  real eyes: {len(made)} textured eyeball(s) + gaze target at offset {gaze}")
+    print(f"  real eyes: {len([o for o in made if o.name.startswith('eye_')])} eyeball(s) + flat iris/pupil disks (solid-mode visible)")
     return made + [tgt]
 
 def grey_mat():
