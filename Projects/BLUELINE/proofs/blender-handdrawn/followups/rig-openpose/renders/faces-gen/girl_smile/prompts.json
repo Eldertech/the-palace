@@ -1,0 +1,10 @@
+{
+ "person": "girl",
+ "expression": "smile",
+ "shot": "closeup",
+ "prompts": {
+  "storyboard": "extreme close-up portrait of a face, a young girl child with a warm broad happy smile, joyful, detailed expressive face, modern pen and ink illustration, loose gestural linework with bold dramatic sweeping flow lines and speed streaks driving the motion, scattered energetic ink blobs and splatter, stark high-contrast black and white, film-noir deep shadow, rough white paper, lots of white space, dynamic foreshortening, low canted angle",
+  "watercolor": "extreme close-up portrait of a face, a young girl child with a warm broad happy smile, joyful, detailed expressive face, soft watercolor portrait, loose wet washes, delicate ink linework over color, muted palette, textured paper, gentle light, painterly, expressive",
+  "comic": "extreme close-up portrait of a face, a young girl child with a warm broad happy smile, joyful, detailed expressive face, bold graphic novel cel-shaded portrait, thick black ink outlines, flat vivid colors, dramatic cel shading, halftone shadows, high contrast, expressive"
+ }
+}

@@ -28,6 +28,9 @@ CN_POSE = "controlnet-openpose-sdxl.safetensors"
 SDXL_URL = "https://huggingface.co/stabilityai/stable-diffusion-xl-base-1.0/resolve/main/sd_xl_base_1.0.safetensors"
 OP_URL = "https://huggingface.co/xinsir/controlnet-openpose-sdxl-1.0/resolve/main/diffusion_pytorch_model.safetensors"
 DEPTH_URL = "https://huggingface.co/xinsir/controlnet-depth-sdxl-1.0/resolve/main/diffusion_pytorch_model.safetensors"
+CANNY_URL = "https://huggingface.co/xinsir/controlnet-canny-sdxl-1.0/resolve/main/diffusion_pytorch_model.safetensors"
+import os as _os
+_WITH_CANNY = bool(_os.environ.get("POD_CANNY"))  # faces want ink→canny + depth + openpose
 UA = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0 Safari/537.36"
 KEY = json.load(open(CONFIG))["api_key"]
 try:
@@ -59,7 +62,8 @@ START = (
   'else echo "[dl] FAILED $(basename "$2") ($SZ)"; rm -f "$2.part"; fi; fi; }\n'
   f'( dl "{SDXL_URL}" "/comfyui/models/checkpoints/{CKPT}" 1000000000 \n'
   f'  dl "{OP_URL}" "/comfyui/models/controlnet/{CN_POSE}" 1000000000 \n'
-  f'  dl "{DEPTH_URL}" "/comfyui/models/controlnet/controlnet-depth-sdxl.safetensors" 1000000000 ) &\n'
+  + (f'  dl "{CANNY_URL}" "/comfyui/models/controlnet/controlnet-canny-sdxl.safetensors" 1000000000 \n' if _WITH_CANNY else '')
+  + f'  dl "{DEPTH_URL}" "/comfyui/models/controlnet/controlnet-depth-sdxl.safetensors" 1000000000 ) &\n'
   'echo "[pod] launch ComfyUI (model downloads running in background)"\n'
   'cd /comfyui && exec python -u main.py --disable-auto-launch --disable-metadata --listen --port 8188\n'
 )

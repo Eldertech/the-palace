@@ -1,0 +1,16 @@
+{
+ "avg_seconds_per_render": {
+  "ink_canny": 10.1,
+  "shaded_canny": 16.6,
+  "color_canny": 9.5,
+  "color_img2img": 7.3,
+  "shaded_img2img_hi": 7.6
+ },
+ "n_per_approach": {
+  "ink_canny": 3,
+  "shaded_canny": 4,
+  "color_canny": 4,
+  "color_img2img": 4,
+  "shaded_img2img_hi": 4
+ }
+}
