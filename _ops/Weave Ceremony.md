@@ -62,6 +62,8 @@ The single-agent protocol below remains valid for: palaces under ~20 entries, qu
 2c. A **substrate sweep** has been completed: uncommitted edits, stashes, dangling commits, unmerged branches, and recent rewrites have been triaged per finding (recover / discard / leave). Recoveries are additive only; discards are recorded so the LOG stays honest.
 2d. The **link-direction linter** (`_ops/swarm/lint-link-directions.py`) has been run against a freshly rebuilt map. It reports **no link-direction errors introduced by this Weave** — E1 reciprocal contradictions for asymmetric types, E2 hubs emitting `member-of`. Pre-existing errors the Weave chose not to resolve are listed in the commit body with a one-line reason; a silent red linter violates the LOG. This is the checkable directional postcondition that the 2026-06-05 schema-compliance miss showed the Weave needed.
 2e. The **doc-drift linter** (`_ops/swarm/lint-doc-drift.py`) exits **0 on errors** (warnings reviewed). This is the prose-consistency counterpart to 2d: it catches foundational-doc drift — wrong-case refs, broken paths, dangling section pins, trigger-coverage gaps. Any warning left standing is a deliberate review-list item, not a silent miss.
+
+2f. The **entry-naming linter** (`_ops/swarm/lint-entry-naming.py`) exits **0 on errors** (warnings reviewed). It checks entry↔filesystem naming: E1 (error) a bundle folder that matches its entry only case-insensitively (the SCHEMA §8 exact-name rule, e.g. `Modes of collaboration/` beside `Modes of Collaboration.md`); W1 (warning) a canon entry whose `title:` ≠ its filename (SCHEMA §3). Both are masked by the case-insensitive FS until a case-sensitive reader breaks. No E1 may be introduced; the W1 list is triaged (real drift corrected, deliberate names left).
 3. **New introductions** have been proposed — new typed links between entries that do not yet mention each other in prose. No more than 5 per Weave. These are genuine growth events and deserve deliberate curation.
 4. **Vector tuning has been invited** for entries whose `forward_vector` has visibly drifted from the entry's current content, connections, or pace. Forward vectors are meant to evolve; the Weave is a natural occasion to surface drift and propose tweaks or full overhauls.
 5. Any confirmed metadata updates have been written to entry files
@@ -238,6 +240,7 @@ After all confirmed edits are written, rebuild the map and run the linters. Ther
 python3 "$(ls -1 _ops/swarm/build-map-*.py | sort | tail -1)"   # newest dated map builder
 python3 _ops/swarm/lint-link-directions.py                       # §4 link directionality
 python3 _ops/swarm/lint-doc-drift.py                             # foundational-doc consistency
+python3 _ops/swarm/lint-entry-naming.py                          # entry title↔filename, bundle-folder case
 ```
 
 Routing note: session-level Weave artifacts (maps, reports) go to `_ops/swarm/sessions/[session-id]/`; per-entry artifacts go to that entry's bundle (`[Entry]/`, per [[SCHEMA]] §8).
@@ -248,6 +251,12 @@ Routing note: session-level Weave artifacts (maps, reports) go to `_ops/swarm/se
 - **W1 / W2** — heuristic reviews (a ground emitting a lineage link; `member-of`/`exemplifies` toward a less-central target). Not all are bugs — `deepens`-chains legitimately trip W1.
 
 Resolve every error this Weave introduced. Any pre-existing error left standing is named in the commit body with a one-line reason. Do not commit a Weave that *added* a directional error.
+
+`lint-entry-naming.py` is the naming check — the mechanical backstop for the two ways an entry drifts from the filesystem, both hidden by macOS's case-insensitive volume until a case-sensitive reader (git, Linux CI, the STIGMERGY tree) trips over them:
+- **E1** — a bundle folder that matches its entry only case-insensitively (`Modes of collaboration/` beside `Modes of Collaboration.md`). SCHEMA §8 matches bundles by *exact* name; the miscase silently splits the bundle. Always a bug — an **error** that gates the commit. Fix by renaming the folder (two-step `git mv` on a case-insensitive FS).
+- **W1** — a canon entry whose `title:` ≠ its filename (SCHEMA §3), e.g. `Oblique Portrait.md` titled "Oblique Portrait Method". A **warning**, reviewed every Weave and corrected where it's real drift; a few are deliberate (foundational stylized names like `ROSETTA`; source entries carrying a year). Correct by editing the title to match, or — when the filename is wrong — renaming the file and repointing its `[[wikilinks]]` (canonicalize on whichever the graph already points to). Titles differing only by a filesystem-illegal character (`?`, `/`) are not flagged.
+
+Resolve every E1 this Weave introduced (do not commit a Weave that added one); triage the W1 list, fixing real mismatches and leaving intentional ones.
 
 **Step 7: Commit**
 
