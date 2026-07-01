@@ -57,4 +57,4 @@ Ran the first Dialectic between two *made* citizens under true multi-agent isola
 - **Done (embodiable-citizen model):** Spinoza · Donella Meadows · John Cage.
 - **Interim layer:** the other ~24 `People/` entries were prose-reworked from course-handout style on 2026-07-01 (`5ff3424`) — readable and link-woven, but *not yet* embodiable citizens (no blindspot section, no dossier, still `stage: mature`).
 - **Pending:** upgrade the ~24 to the full model — Loudon running tests first, then batches (register-diverse, worst-gaps-first). Order and depth TBD per the Open Questions in the card.
-- **Blocked-on-decision:** the schema housekeeping (dossier type, agency_profile-on-persons, seed-stage) — do it as one Schema Ceremony before or after the rollout?
+- **Done:** the schema housekeeping was ratified in the **v1.14 Schema Ceremony** (2026-07-01), before the rollout — `dossier` in SCHEMA §8, `agency_profile`-on-persons in §3.1, seed-citizen stage semantics in §1. Additive/descriptive; mirror docs unaffected.

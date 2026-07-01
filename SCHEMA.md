@@ -6,7 +6,7 @@ pillars:
   - practice
   - philosophy
 born: 2026-03
-version: "1.13"
+version: "1.14"
 stage: foundational
 status: canonical
 links:
@@ -102,6 +102,7 @@ If you are unsure which type to use, follow this path:
 **`person`** — A thinker, maker, or collaborator whose ideas are in active dialogue with the palace. Not every cited name — only those whose thinking has shaped the palace's structure, language, or direction. Carries intellectual biography relevant to the palace's concerns.
 - Required fields: adds `born_year` (optional), `domains` (array of fields they work in)
 - Example entries: Spinoza, Luhmann, Deleuze, Donna Haraway
+- Born as embodiable **citizens** (v1.14): the *body* is the fully-formed human — source material an agent can wear in a [[Dialectic]] or [[Excellent Adventure]] — and the *frontmatter* is a newborn palace resident with its own `forward_vector` and (usually) `agency_profile`. A `person` entry's `stage` tracks *palace citizenship* (born `seed`, growing through dispatch and enchantment), not the human's completeness — analogous to how `specialist`/`maker` use `status`. The deep research corpus lives in a bundle `dossier`. Method: [[Making a Palace Citizen]].
 
 **`question`** — An unresolved question being actively carried. Questions are not failures — they are the palace's growing edge. A question entry matures when it either becomes a concept (answered) or spawns a project (acted upon). It composts when the question dissolves without a satisfying answer, and that dissolution is itself noted.
 - Example use: "When does this wiki warrant its own Claude Project?"
@@ -205,7 +206,7 @@ seed → sprout → growing → mature → fruiting → dormant → composting
 
 **Schema Ceremony rationale (2026-04-01, v1.1):** Single `forward_vector` sentences proved sufficient for simple directional drive but insufficient for entries with distinct creation, tools, philosophy, and practice dimensions — particularly entries used as enchantment targets, where coordinators need pre-flight visibility into resource requirements (tools dimension) and governance posture (philosophy dimension). The [[Four Pillars of Enchanted Agency]] entry articulated the theoretical basis; this ceremony formalizes it as schema.
 
-**When to add:** Only when a page has genuinely distinct desires across multiple dimensions that the single `forward_vector` sentence cannot carry. Do not add speculatively. The first candidates are entries that have been enchanted at least once and whose enchanted voice revealed multi-dimensional desire.
+**When to add:** Only when a page has genuinely distinct desires across multiple dimensions that the single `forward_vector` sentence cannot carry. Do not add speculatively. The first candidates are entries that have been enchanted at least once and whose enchanted voice revealed multi-dimensional desire. As of v1.14, `person` entries built as embodiable citizens carry `agency_profile` by default — the enchantment-target case this field was designed for — with the `practice` sub-field naming the citizen's blindspot (what to dispatch it toward). See [[Making a Palace Citizen]].
 
 **Structure:**
 
@@ -389,8 +390,11 @@ This keeps every file in the palace self-describing without conflating bundle fi
 | `enrichment` | Material added via Enrichment ceremonies. Use the qualifier slot to name which enrichment. |
 | `plan` | The entry's materialized **work state** — open decisions, resolved decisions, a done trail — regenerated each steward cycle as the read-model of [[STIGMERGY]]'s append-only board. Maker-facing, high-churn; the steward owns it. Holds a *pointer* to the entry's `forward_vector`, never a copy (single-source-of-truth). One per stewarded entry. See [[Bundle-Local Stewardship — Production Plan]] and the Machinery/Content Split. |
 | `staging` | The entry's **teaching arc** — stage-by-stage Loudon Live session plans, ordered by didactic difficulty. Learner-facing, relatively stable once designed; produced by [[project-stage-builder]] (and Loudon), not the steward. Only project entries bound for Loudon Live have one. The steward *reads* it but does not rewrite it — arc-level changes are flagged to Loudon, never silently edited. |
+| `dossier` | The deep research corpus behind a `person` entry — timeline, positions, characteristic moves, lexicon, blindspots, sourced quotes, dispatch notes — loaded when an agent must *embody* the person faithfully (Dialectic, Excellent Adventure, Philosopher Visit). One per made citizen. See [[Making a Palace Citizen]]. |
 
-New types may be tried freely. When a type earns recurring use across multiple bundles, add it to this table — additions to this open vocabulary are not Schema Ceremony events. Only structural changes to the bundle pattern itself are. `plan` and `staging` were added 2026-06-09 once the 19-steward stewardship migration gave them recurring use across many bundles — documentation, not ceremony.
+New types may be tried freely. When a type earns recurring use across multiple bundles, add it to this table — additions to this open vocabulary are not Schema Ceremony events. Only structural changes to the bundle pattern itself are. `plan` and `staging` were added 2026-06-09 once the 19-steward stewardship migration gave them recurring use across many bundles — documentation, not ceremony; `dossier` was added 2026-07-01 with the embodiable-citizen model ([[Making a Palace Citizen]]), likewise documentation, formalized in the v1.14 descriptive ceremony below for discoverability.
+
+**Schema Ceremony rationale (2026-07-01, v1.14): ratified the person-citizen conventions; additive and descriptive.** The embodiable-citizen model for `person` entries — validated the same day by the first Dialectic between two made citizens ([[Spinoza and Meadows on the Threshold]]) and formalized in [[Making a Palace Citizen]] — carries three conventions this ceremony records: (1) the `dossier` bundle type above (the deep research corpus for faithful embodiment); (2) `agency_profile` as a default on embodiable `person` entries, noted in §3.1 — the enchantment-target case the field was designed for; (3) the clarification in §1 that a `person` entry's `stage` tracks *palace citizenship* (born `seed`, growing through dispatch), not the human's completeness. **Additive and descriptive** — like v1.10–v1.12 it ratifies conventions already in practice. No entry type, link type, required field, stage lifecycle, or ceremony was added or removed; the `dossier` addition is a §8-exempt documentation act recorded here formally for discoverability. **Mirror impact: none** — no mirror doc (ROSETTA, README, SUBSTRATE, `_ops/Substrate Skill.md`, Palace Ceremonies) restates the §8 bundle-file vocabulary, `agency_profile`, or per-type stage semantics, and `person` already appears in every mirror's type list (added v1.11). Verified by `_ops/swarm/lint-doc-drift.py`.
 
 **Archive:** Consumed bundle files move to `[Entry]/Archive/`. Stays with the entry; git carries history.
 
