@@ -72,7 +72,9 @@ def main():
 
     for label, pk, ex, shot in jobs:
         pd = os.path.join(PL, label)
-        ink = bk.upload(os.path.join(pd, "ink_plate.png"))
+        # WINNER (guide experiment): feed canny the SHADED render, not the flat ink —
+        # the shaded render's edges sit on real form → correct eyes + bold style.
+        ink = bk.upload(os.path.join(pd, "shaded_plate.png"))
         dep = bk.upload(os.path.join(pd, "depth_plate.png"))
         pose = bk.upload(os.path.join(pd, "openpose.png"))
         outdir = os.path.join(OUT, label); os.makedirs(outdir, exist_ok=True)

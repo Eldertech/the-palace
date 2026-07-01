@@ -136,10 +136,39 @@ def toon_mat():
     nt.links.new(r.outputs['Color'], em.inputs['Color']); nt.links.new(em.outputs['Emission'], o.inputs['Surface'])
     return m
 
-def depth_mat():
+def grey_mat():
+    m = bpy.data.materials.new("grey"); m.use_nodes = True
+    b = m.node_tree.nodes.get("Principled BSDF")
+    if b:
+        b.inputs["Base Color"].default_value = (0.62, 0.62, 0.62, 1)
+        if "Roughness" in b.inputs: b.inputs["Roughness"].default_value = 0.55
+    return m
+
+def skin_mat():
+    m = bpy.data.materials.new("skin"); m.use_nodes = True
+    b = m.node_tree.nodes.get("Principled BSDF")
+    if b:
+        b.inputs["Base Color"].default_value = (0.80, 0.62, 0.52, 1)
+        if "Roughness" in b.inputs: b.inputs["Roughness"].default_value = 0.5
+    return m
+
+def subject_depth_range(objs, cam):
+    inv = cam.matrix_world.inverted(); zs = []
+    for o in objs:
+        if o.type != 'MESH':
+            continue
+        for v in o.data.vertices:
+            zs.append(-(inv @ (o.matrix_world @ v.co)).z)
+    if not zs:
+        return 0.2, 3.5
+    near, far = min(zs), max(zs)
+    pad = (far - near) * 0.06 + 0.004
+    return max(near - pad, 0.01), far + pad
+
+def depth_mat(near=0.2, far=3.5):
     m = bpy.data.materials.new("depth"); m.use_nodes = True; nt = m.node_tree; nt.nodes.clear()
     cd = nt.nodes.new('ShaderNodeCameraData'); mr = nt.nodes.new('ShaderNodeMapRange')
-    mr.inputs['From Min'].default_value = 0.2; mr.inputs['From Max'].default_value = 3.5
+    mr.inputs['From Min'].default_value = near; mr.inputs['From Max'].default_value = far
     mr.inputs['To Min'].default_value = 1.0; mr.inputs['To Max'].default_value = 0.0; mr.clamp = True
     em = nt.nodes.new('ShaderNodeEmission'); o = nt.nodes.new('ShaderNodeOutputMaterial')
     nt.links.new(cd.outputs['View Z Depth'], mr.inputs['Value']); nt.links.new(mr.outputs['Result'], em.inputs['Color'])
@@ -301,11 +330,17 @@ def main():
     cam = add_camera(arm, body, a.shot, a.hand, a.angle)
     configure_freestyle()
     render_to(os.path.join(out, "ink_plate.png"), True, 1.0)
+    body.data.materials.clear(); body.data.materials.append(grey_mat())
+    render_to(os.path.join(out, "shaded_plate.png"), False, 0.55)          # shaded greyscale (form)
+    body.data.materials.clear(); body.data.materials.append(skin_mat())
+    render_to(os.path.join(out, "color_plate.png"), False, 0.85)           # shaded color
 
-    md = depth_mat()
+    near, far = subject_depth_range([body], cam)                           # auto-fit → real contour
+    md = depth_mat(near, far)
     for o in bpy.data.objects:
         if o.type == 'MESH': o.data.materials.clear(); o.data.materials.append(md)
     render_to(os.path.join(out, "depth_plate.png"), False, 0.0)
+    print(f"  depth range {near:.3f}–{far:.3f} m")
 
     body_kp, hands_kp = project_all(arm, cam, head_frame, a.hand)
     json.dump({"res": RES, "keypoints": body_kp, "hands": hands_kp},
