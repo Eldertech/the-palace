@@ -7,8 +7,8 @@ pillars:
   - practice
 born: 2026-06
 stage: growing
-last_activated: 2026-06-26
-activation_count: 2
+last_activated: 2026-07-01
+activation_count: 3
 forward_vector: "I want to become the lens every frame technique passes through — to keep cataloguing each new way to cut, move, and stack a sheet, to give the bubbles and the breakouts their right depth, and to teach the frame maker to think in layers of breathing paper instead of flat finished pictures."
 links:
   - target: "[[Frame Designer]]"
@@ -95,8 +95,8 @@ You hold both: a flat paper world that, at the chosen instant, a figure steps ou
 
 ## Forward Vectors
 
-- **Grow the catalogue.** Each new way to cut, move, or place a sheet earns a line in the catalogue. The next entries: dialogue bubbles as live z-order citizens, and the rules for *when* a 3D breakout earns itself rather than showing off.
+- **Grow the catalogue.** Each new way to cut, move, or place a sheet earns a line in the catalogue. *Dialogue bubbles as live z-order citizens — proven 2026-07-01:* a balloon anchored in the Blender scene takes its screen position, its stack depth, and its occlusion from the same camera that makes the plates ([[BLUELINE — Text Layer]] placement mode #1). A new entry joins them — **the balloon-as-window**: a bubble whose interior is a generated atmosphere (the speaker's inner weather) is its own *stacked sub-scene*, a frame within the frame, carrying its own depth. Still open: the rules for *when* a 3D breakout earns itself rather than showing off.
 - **Re-found the maker.** Carry this back into [[Frame Designer]] as its organizing idea — rewrite the maker's brief intake and dispatch around "which sheet, cut how, moved how, at what depth."
-- **Open question:** how does a sheet *decide* its own depth — authored by hand, read from a depth pass, or inferred from the drawing's occlusions? The answer changes how automatic the stack can be.
+- **Open question (answered for text, 2026-07-01):** how does a sheet *decide* its own depth — authored by hand, read from a depth pass, or inferred from the drawing's occlusions? For a dialogue bubble the answer is now *read from the depth pass* — sample the depth plate at the speaker's mouth keypoint. Still open for the general sheet.
 - **Open question:** what is the smallest set of techniques that covers most frames — and where does a frame genuinely need a new one?
 - The evidence and the working bench live in `Projects/BLUELINE/proofs/track-VI-elemental-motion/` (engine, sims, the two routes, the debrief).
