@@ -137,12 +137,41 @@ def main():
     RigifyHelpers.get_instance({"produce": True, "meta_rig_action": "hide", "name": "FigureRig"}).convert_to_rigify(arm)
     rig = bpy.data.objects["FigureRig"]; rig.show_in_front = True
 
-    # eyes + gaze target follow the head: bone-parent to DEF-head
+    # eyes follow the head: bone-parent to DEF-head
     head_bone = "DEF-head" if "DEF-head" in rig.pose.bones else ("head" if "head" in rig.pose.bones else None)
+
+    # Replace the gaze-target EMPTY with a CONTROL BONE in the rig, so gaze is manipulable in
+    # POSE MODE alongside the head/body (an empty is only movable in Object Mode). The bone is
+    # parented to the head, so gaze stays head-relative; the eyes' Damped Track re-points at it.
+    tgt_world = tgt.matrix_world.translation.copy()
+    bpy.context.view_layer.objects.active = rig
+    bpy.ops.object.mode_set(mode='EDIT')
+    eb = rig.data.edit_bones.new("eye_target")
+    loc = rig.matrix_world.inverted() @ tgt_world
+    eb.head = loc; eb.tail = loc + Vector((0, -0.05, 0)); eb.use_connect = False
+    if head_bone and head_bone in rig.data.edit_bones:
+        eb.parent = rig.data.edit_bones[head_bone]
+    # pre-select it (Bone.select doesn't exist in 5.1; selection lives on the EditBone)
+    for b in rig.data.edit_bones:
+        b.select = b.select_head = b.select_tail = False
+    eb.select = eb.select_head = eb.select_tail = True
+    bpy.ops.object.mode_set(mode='OBJECT')
+    # put it in a visible bone collection so it shows in Pose Mode
+    try:
+        gcoll = rig.data.collections.new("GAZE"); gcoll.is_visible = True
+        gcoll.assign(rig.data.bones["eye_target"])
+    except Exception as e:
+        print("  gaze collection:", e)
+    # re-point each eye's Damped Track from the empty to the bone, then drop the empty
+    for o in eye_objs:
+        for c in o.constraints:
+            if c.type == 'DAMPED_TRACK':
+                c.target = rig; c.subtarget = "eye_target"
+    bpy.data.objects.remove(tgt, do_unlink=True)
     if head_bone:
-        for o in eye_objs + [tgt]:
+        for o in eye_objs:
             bone_parent(o, rig, head_bone)
-        print(f"  eyes + gaze target bone-parented to {head_bone}")
+        print(f"  eyes bone-parented to {head_bone}; gaze = 'eye_target' CONTROL BONE (Pose Mode)")
 
     # camera framing the face + lights
     cam_data = bpy.data.cameras.new("FaceCam"); cam_data.lens = 85
@@ -157,9 +186,16 @@ def main():
         o = bpy.data.objects.new(nm, L); bpy.context.collection.objects.link(o)
         o.rotation_euler = tuple(math.radians(x) for x in rot)
 
-    # leave the gaze target selected (it's what to grab first), rig ready to pose
-    bpy.ops.object.select_all(action='DESELECT')
-    tgt.select_set(True); bpy.context.view_layer.objects.active = tgt
+    # leave the rig in Pose Mode with the eye_target control bone selected — grab it (G) to aim gaze
+    try:
+        bpy.ops.object.select_all(action='DESELECT')
+        rig.select_set(True); bpy.context.view_layer.objects.active = rig
+        bpy.ops.object.mode_set(mode='POSE')
+        et = rig.data.bones.get("eye_target")
+        if et:
+            rig.data.bones.active = et                 # highlight it; it's pre-selected from edit mode
+    except Exception as e:
+        print("  pose-focus eye_target (cosmetic):", repr(e)[:80])
 
     out = a.out if os.path.isabs(a.out) else os.path.join(SCRIPT_DIR, a.out)
     bpy.ops.wm.save_as_mainfile(filepath=out)
