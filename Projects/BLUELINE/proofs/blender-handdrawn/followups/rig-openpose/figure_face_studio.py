@@ -64,15 +64,25 @@ def add_real_eyes(bm, gaze=(0.0, 0.0)):
     tgt.location = mid + Vector((gaze[0], -0.6, gaze[1]))
     bpy.context.collection.objects.link(tgt)
 
-    def white():
-        m = bpy.data.materials.new("sclera"); m.use_nodes = True
-        b = m.node_tree.nodes.get("Principled BSDF")
-        if b: b.inputs["Base Color"].default_value = (0.93, 0.93, 0.91, 1)
+    # Realtime-standard eye: iris/pupil PAINTED on the eyeball via its UVs + brown_eye.png (no
+    # protruding iris sphere). The texture rotates with the eyeball, so gaze moves the pupil.
+    tex_path = os.path.normpath(os.path.join(os.path.dirname(MHCLO_EYES), os.pardir, "materials", "brown_eye.png"))
+    def eye_material():
+        m = bpy.data.materials.new("eye"); m.use_nodes = True; nt = m.node_tree
+        bsdf = nt.nodes.get("Principled BSDF")
+        if os.path.isfile(tex_path):
+            uvn = nt.nodes.new("ShaderNodeUVMap"); uvn.uv_map = "UVMap"
+            tx = nt.nodes.new("ShaderNodeTexImage"); tx.image = bpy.data.images.load(tex_path, check_existing=True)
+            nt.links.new(uvn.outputs["UV"], tx.inputs["Vector"])
+            nt.links.new(tx.outputs["Color"], bsdf.inputs["Base Color"])
+        else:
+            bsdf.inputs["Base Color"].default_value = (0.9, 0.9, 0.88, 1)
+        if "Roughness" in bsdf.inputs: bsdf.inputs["Roughness"].default_value = 0.30
         return m
-    irises = []
+    emat = eye_material()
     for o in eye_objs:
         o.name = "eye_" + ("l" if center(o).x >= 0 else "r")
-        o.data.materials.clear(); o.data.materials.append(white())
+        o.data.materials.clear(); o.data.materials.append(emat)
         bpy.ops.object.select_all(action='DESELECT'); o.select_set(True)
         bpy.context.view_layer.objects.active = o
         bpy.ops.object.origin_set(type='ORIGIN_GEOMETRY', center='BOUNDS')
@@ -82,17 +92,8 @@ def add_real_eyes(bm, gaze=(0.0, 0.0)):
         # recess into the socket (+Y) + shrink so the eyeball seats instead of bulging
         o.matrix_world = mathutils.Matrix.Translation(Vector((0, r * 0.42, 0))) @ o.matrix_world
         o.scale *= 0.88; bpy.context.view_layer.update()
-        r *= 0.88; ec = o.matrix_world.translation
-        bpy.ops.mesh.primitive_uv_sphere_add(radius=r * 0.46, location=ec + Vector((0, -r * 0.80, 0)))
-        iris = bpy.context.active_object; iris.name = "iris_" + o.name[-1]
-        mi = bpy.data.materials.new("iris"); mi.use_nodes = True
-        bi = mi.node_tree.nodes.get("Principled BSDF")
-        if bi: bi.inputs["Base Color"].default_value = (0.10, 0.07, 0.05, 1)
-        iris.data.materials.append(mi); bpy.ops.object.shade_smooth()
-        iris.parent = o; iris.matrix_parent_inverse = o.matrix_world.inverted()
         c = o.constraints.new('DAMPED_TRACK'); c.target = tgt; c.track_axis = 'TRACK_NEGATIVE_Y'
-        irises.append(iris)
-    return eye_objs, irises, tgt
+    return eye_objs, [], tgt
 
 
 def bone_parent(obj, rig, bone):
