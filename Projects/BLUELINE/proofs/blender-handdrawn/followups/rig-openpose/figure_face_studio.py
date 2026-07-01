@@ -79,7 +79,10 @@ def add_real_eyes(bm, gaze=(0.0, 0.0)):
         bpy.ops.object.shade_smooth()
         bb = [o.matrix_world @ Vector(c) for c in o.bound_box]
         r = (max(p.x for p in bb) - min(p.x for p in bb)) / 2 or 0.012
-        ec = o.matrix_world.translation
+        # recess into the socket (+Y) + shrink so the eyeball seats instead of bulging
+        o.matrix_world = mathutils.Matrix.Translation(Vector((0, r * 0.42, 0))) @ o.matrix_world
+        o.scale *= 0.88; bpy.context.view_layer.update()
+        r *= 0.88; ec = o.matrix_world.translation
         bpy.ops.mesh.primitive_uv_sphere_add(radius=r * 0.46, location=ec + Vector((0, -r * 0.80, 0)))
         iris = bpy.context.active_object; iris.name = "iris_" + o.name[-1]
         mi = bpy.data.materials.new("iris"); mi.use_nodes = True
