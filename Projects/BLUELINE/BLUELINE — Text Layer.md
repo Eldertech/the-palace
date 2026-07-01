@@ -30,6 +30,9 @@ links:
   - target: "[[The 2.5D Paper Stack]]"
     type: exemplifies
     label: bubble-as-sheet
+  - target: "[[Figure Rig]]"
+    type: connects-to
+    label: balloon-anchors-to-the-rig
 tags: [meta, blueline, text, lettering, lyrics, typography, sync]
 ---
 
@@ -80,13 +83,39 @@ drawn mark to be warped — the canny anchor already guarantees this for the gen
 *balloon shape and tail* are drawn lines and may flex gently. **Flat text inside, breathing container
 outside.** The flat-text invariant lives inside a physically-present sheet.
 
-**Forward implications for the build.** When rung 2 (balloon placement) ships, `render_text.py` should emit
-each text event as a **transparent-background sheet plus a `z_depth`**, not a flat-on-black composite, so the
-compositor can insert it at its assigned depth rather than always placing text last. The board record's
-`TEXT[]` `placement` field below already names `in-frame` vs `margin`; adding an explicit `z_depth` (or
-`stack_position`) formalizes the depth that's currently implicit. None of this is breaking — the
-text-on-black material register (rung 1) is correct for its current scope — it becomes load-bearing the
-moment rung 2 ships.
+**The WHERE / WHAT synthesis — how this squares with Commitment 1.** Commitment 1 says text is *lettered
+over the art, never diffused in*; the 2.5D lens says text is *a sheet at a depth in the scene*. These only
+fight if you conflate the letters with their placement — and they are separable. **Blender computes WHERE
+(screen position, stack depth, how the tail bends); the compositor draws WHAT (the locked, readable
+letters).** The letters stay a deterministic overlay — Commitment 1 fully intact — while their *placement*
+is authored in the 3D scene and round-trips through the board record exactly the way **depth** already
+round-trips across [[BLUELINE — Production Pipeline|Seam A]]. Text stops being a Stage-6 afterthought and
+joins **Stage 4 (layout)**, where the pose itself is authored.
+
+**Three placement modes, mastered in order — the story chooses which.** (1) **Anchor in Blender** — the
+balloon's anchor is an empty parented to the speaker's head/mouth bone; its screen x/y *and* its z-depth
+fall out of the same `world_to_camera_view` that makes the OpenPose/depth plates, so parallax,
+head-tracking, and occlusion come for free. (2) **2D post-composite** — placed in a deterministic canvas
+pass against the 2D keypoints; simpler, no Blender dependency, but z-depth is hand-authored. (3) **Hybrid by
+voice** — in-world text (dialogue, SFX) anchored in Blender world-space, out-of-world text (narration,
+lyrics) a screen-space overlay, matching the in-world/out-of-world split onto Blender's two coordinate
+systems. All three are wanted eventually; **mode #1 is mastered first.**
+
+**Proven (2026-07-01) — mode #1.** `text_anchor_proof.py` (+ `draw_text_anchor.py`, under the ComfyUI venv)
+parents a balloon anchor to the MPFB rig's head, drifts the camera and turns the head 30°, and projects the
+anchor through the *shared* camera. Result: the in-world balloon holds head-depth and **tracks the head
+turn** (px x 0.641 → 0.552), while a control sheet placed behind the torso is **occluded by the figure in
+every frame** — the occlusion decided by comparing the bubble's `z_norm` to the **depth plate** sampled over
+the balloon. Both branches of the depth test fire from the one shared plate. Proof + field note:
+`proofs/blender-handdrawn/followups/rig-openpose/renders/text-anchor/`.
+
+**The z_depth is sourced, not authored.** [[The 2.5D Paper Stack]]'s open question — *how does a sheet decide
+its own depth?* — is answered for text: sample the **depth plate** at the speaker's mouth keypoint → that is
+the bubble's z (in the plate's own near=1 scale). So `render_text.py` should emit each text event as a
+**transparent sheet plus a `z_depth`**, not a flat-on-black composite, and the compositor inserts it at that
+depth rather than always last. The board record's `TEXT[]` gains an explicit `z_depth` (below). None of this
+is breaking — the text-on-black material register (rung 1) is correct for its scope; it becomes load-bearing
+the moment rung 2 ships.
 
 ## The material register — gen-AI letterforms (rung added 2026-06-24)
 
@@ -168,9 +197,10 @@ We adopt it and make it opinionated:
   cloud = thought · wavy/dripping = weak/dying/sick · hard rectangle = robotic/formal/narration · icicle =
   cold/menace · dashed = whisper · double-stroke = loud.
 - **Tail = source + addressee.** Points at the speaker, *toward* the listener. **The tail anchors to the
-  OpenPose mouth/head keypoint** already authored for the render — so the *same staging geometry* that
-  conditions the figure now places the balloon: one geometry doing a **fourth job** (board-record field →
-  conditioning keypoints → 2D↔3D transfer → **lettering anchor**). Tail across the frame edge = off-panel
+  mouth/head keypoint** already authored for the render — in mode #1 the *projected 3D* anchor, which carries
+  its own depth — so the *same staging geometry* that conditions the figure now places the balloon: one
+  geometry doing a **fourth and fifth job** (board-record field → conditioning keypoints → 2D↔3D transfer →
+  **lettering anchor** → **stack depth**, read from the depth plate). Tail across the frame edge = off-panel
   speaker; tail-less box = narration; balloon facing out / breaking into the margin = fourth-wall. Addressee
   becomes a *vector* — pure [[Blocked, Not Prompted]]: drama is geometry, even for words.
 - **Typography = source + emotion.** weight (bold = volume) · case (ALL-CAPS comic default; lowercase =
@@ -209,6 +239,11 @@ Text rides Track III exactly like the boards do (decision 2026-06-24: **track-pe
 - **SFX can ride the flow field — the bold bet.** [[The Flow Field is the Spine]] is one field at three
   resolutions of reality; let SFX lettering be a **fourth resolution** — "KRAA-THOOM" streaking and deforming
   *along the wind vector*. The arrow becomes the wind becomes the word.
+- **Break the stack — the 3D beat.** The Blakean contrary from [[The 2.5D Paper Stack]]: a word that is flat
+  ink 99% of the time and, at one struck instant, tears loose into *true 3D* — a shouted `THOOM` the camera
+  whips past, then settles back to flat. It lands *because* everything else is paper; flatness is what the
+  break breaks. The one place text genuinely wants the third dimension, and cheap to stage — the word already
+  lives in the Blender scene (mode #1), so extruding and dollying past it is a keyframe, not a new pipeline.
 - **Emotion can couple to the music**: the section's energy modulates intensity — loud drop → bigger, bolder,
   jagged; quiet verse → small, intimate, lowercase. The text layer breathes with the song.
 
@@ -243,6 +278,7 @@ TEXT: [
   { type, source, addressee, emotion,        # the 3-axis cube + emotion
     text,                                     # the words
     placement,                                # in-frame:anchor=<keypoint> | margin:<lower-third|side|caption>
+    z_depth,                                  # stack depth (depth-plate near=1 scale); in-frame = sampled at the anchor, margin = author-plane
     reveal,                                   # type-on | fade | pop | snap | ride(flow)
     beat_in, beat_hold, frame,                # the clock (frame derived; whole at locked tempo/fps)
     voice }                                   # which curated voice (world | author | song | principal:<name>)
@@ -255,22 +291,38 @@ sharing only the clock (`frame`), which all derive from `(bar,beat)`.
 
 ## Rungs
 
-> **Active (2026-06-24): the gen-AI material register — text on black.** Per Loudon: *get the text up with
-> emotion and style on a black background first; dialogue balloons come later.* So the build is re-sequenced —
-> the **material register** (the words made of embers / ink / flame / vapor, [[Blocked, Not Prompted]] for
-> text) is being proven now on pure black; balloon **placement** (rung 2) is deliberately **deferred** until
-> the expressive lettering itself is right. Proof: `proofs/text-layer/` — `text-prompts.json` (the structure-
-> guidance + emotion→material prompts), `render_text.py` (skeleton+canny and free modes), `text-on-black.html`
-> (the font-register comparison the gen-AI register surpasses).
+> **Done (2026-06-24): the gen-AI material register — text on black.** Per Loudon: *get the text up with
+> emotion and style on a black background first; dialogue balloons come later.* The **material register**
+> (the words made of embers / ink / flame / vapor, [[Blocked, Not Prompted]] for text) shipped on pure
+> black. Proof: `proofs/text-layer/` — `text-prompts.json`, `render_text.py`, `text-on-black.html`.
+>
+> **Now (2026-07-01): balloon placement, mode #1 — anchor in Blender.** With the material register done and
+> the [[Figure Rig]] now emitting registered keypoints + a depth plate, rung 2 is re-founded on the 2.5D
+> stack: the balloon is a sheet whose position *and* depth are computed in Blender (the WHERE/WHAT synthesis
+> above), not composited flat-last. Mode #1 is proven (`.../rig-openpose/renders/text-anchor/`); modes #2
+> (2D post-composite) and #3 (hybrid-by-voice) follow as the story needs them.
 
 1. **Lyrics (the song's voice)** — *specced + building (2026-06-24)*. Beat-locked lines/words in the margin,
    in the song's voice, on the animatic player. Proves the overlay layer + the beat-reveal + the in-margin
    grammar. Detail: `proofs/track-III-clock/LYRICS-LAYER-SPEC.md`; proof: `proofs/lyrics-layer/`.
-2. **Dialogue balloons (the world's hand)** — in-frame, tails anchored to the OpenPose mouth/head keypoints,
-   emotion-shaped, hand-lettered. The hardest/most expressive case; the keypoint-anchor coupling is the win.
+2. **Dialogue balloons (the world's hand)** — *placement mode #1 (anchor in Blender) proven 2026-07-01.*
+   In-frame balloons whose anchor is parented to the head/mouth bone in the Blender scene, so screen
+   position + z-depth + occlusion all fall out of the shared camera projection; tails anchor to the
+   projected mouth keypoint, emotion-shaped, hand-lettered. The keypoint-anchor coupling is the win. Rides
+   just behind the [[Figure Rig]]'s face-landmark work (the 70-pt `draw_facepose` map *is* the mouth-tail
+   anchors). Next: emit each event as a transparent sheet + `z_depth`; warp the tail as a drawn line
+   ([[Move the Ink, Don't Redraw It]]); then earn modes #2 (2D post-composite) and #3 (hybrid). Proof:
+   `proofs/blender-handdrawn/followups/rig-openpose/renders/text-anchor/`.
 3. **SFX riding the flow field** — onomatopoeia that streaks/deforms along the field vector (text as the
    field's fourth resolution). The boldest synthesis; downstream of rungs 1–2 and the flow field reaching the render.
 4. **Narration / captions (the author's voice)** — the Loudon Live display type in the margin; chapter cards, titles.
+5. **Signage / diegetic words (the world's surfaces)** — text that lives *on* a surface in the scene (a
+   street sign, neon) as a real textured plane in Blender, taking the same ink-stylization pass:
+   perspective-correct, occludable, lit. The purest case of text-as-sheet-at-a-depth — mode #1 with the
+   sheet welded to a world surface instead of floating by a head.
+6. **Break the stack (the 3D beat)** — a word that is flat ink until, at one instant, it tears into true 3D
+   and the camera passes it, then flattens again ([[The 2.5D Paper Stack]]'s contrary). Cheap once the word
+   already lives in the scene; the boldest *look*, saved for the beat that earns it.
 
 ## Cross-domain anchors
 
