@@ -23,26 +23,37 @@ import { listBundleFiles, classifyFile } from './bundle.js';
 // Build an entry's bundle node (or null when the bundle holds no listable
 // files). `isEntry` marks the .md owned files so the UI can deep-link them to
 // the reader; everything else opens natively.
-function buildBundleNode(palaceRoot, entry) {
+//
+// `members` are first-class entries that live INSIDE this bundle dir (a
+// catalogue whose folder holds real member entries — e.g. Modes of
+// Collaboration). Those members nest under the entry as rich entry nodes
+// elsewhere, so their .md files and their own sub-bundle files are excluded
+// here — otherwise they'd double-render as flat bundle files too.
+function buildBundleNode(palaceRoot, entry, members = []) {
   const rel = entry.path.replace(/\.md$/, '');
   const absBundleDir = join(palaceRoot, rel);
-  const files = listBundleFiles(palaceRoot, absBundleDir).map((f) => ({
-    name: f.name,
-    relPath: f.relPath,
-    kind: f.kind,
-    size: f.size,
-    isEntry: f.ext === '.md',
-  }));
+  const memberFiles = new Set(members.map((m) => m.path));
+  const memberDirs = members.map((m) => `${m.path.replace(/\.md$/, '')}/`);
+  const files = listBundleFiles(palaceRoot, absBundleDir)
+    .filter((f) => !memberFiles.has(f.relPath) && !memberDirs.some((d) => f.relPath.startsWith(d)))
+    .map((f) => ({
+      name: f.name,
+      relPath: f.relPath,
+      kind: f.kind,
+      size: f.size,
+      isEntry: f.ext === '.md',
+    }));
   if (files.length === 0) return null;
   return { kind: 'bundle', dir: rel, files };
 }
 
 // Recursively count entry descendants under a folder, so a folder's badge can
-// show how much lives within it (not just its direct children).
-function countEntries(folder) {
+// show how much lives within it (not just its direct children). An entry may
+// itself hold member sub-entries (a catalogue), so recurse into entries too.
+function countEntries(node) {
   let n = 0;
-  for (const child of folder.children) {
-    if (child.kind === 'entry') n += 1;
+  for (const child of node.children ?? []) {
+    if (child.kind === 'entry') n += 1 + countEntries(child);
     else if (child.kind === 'folder') n += countEntries(child);
   }
   return n;
@@ -63,7 +74,10 @@ function sortChildren(folder) {
     return a.name.localeCompare(b.name);
   });
   for (const child of folder.children) {
-    if (child.kind === 'folder') sortChildren(child);
+    // Recurse into folders and into catalogue entries that carry member children.
+    if (child.kind === 'folder' || (child.kind === 'entry' && (child.children ?? []).length > 0)) {
+      sortChildren(child);
+    }
   }
 }
 
@@ -136,25 +150,62 @@ export function buildEntryTree(palaceRoot) {
     return cur;
   }
 
+  // Detect "member sub-entries": a first-class entry that lives DIRECTLY inside
+  // another entry's bundle dir (a catalogue like Modes of Collaboration whose
+  // same-named folder holds real member entries, each with its own avatar
+  // bundle). Members nest UNDER their owning entry as rich entry nodes rather
+  // than leaking into a phantom organizational folder. `has_bundle` and
+  // `is_bundle_file` are mutually exclusive, so every bundle owner is
+  // first-class and appears in nodeByPath below.
+  const entryByBundleDir = new Map();
+  for (const e of firstClass) {
+    if (e.has_bundle) entryByBundleDir.set(e.path.replace(/\.md$/, ''), e);
+  }
+  const ownerOf = (entryPath) => {
+    const segs = entryPath.split('/');
+    const parentDir = segs.slice(0, -1).join('/');
+    const owner = entryByBundleDir.get(parentDir);
+    return owner && owner.path !== entryPath ? owner : null;
+  };
+  const membersByOwner = new Map();
+  for (const e of firstClass) {
+    const owner = ownerOf(e.path);
+    if (!owner) continue;
+    if (!membersByOwner.has(owner.path)) membersByOwner.set(owner.path, []);
+    membersByOwner.get(owner.path).push(e);
+  }
+
+  // Build a node per first-class entry (a catalogue owner gets a member-aware
+  // bundle node that omits its members' files), then wire placement.
   let bundles = 0;
   let bundleFiles = 0;
+  const nodeByPath = new Map();
   for (const entry of firstClass) {
     const segs = entry.path.split('/');
-    const name = segs[segs.length - 1];
-    const folderPath = segs.slice(0, -1).join('/');
-    const folder = ensureFolder(folderPath);
-    const bundle = entry.has_bundle ? buildBundleNode(root, entry) : null;
+    const members = membersByOwner.get(entry.path) ?? [];
+    const bundle = entry.has_bundle ? buildBundleNode(root, entry, members) : null;
     if (bundle) {
       bundles += 1;
       bundleFiles += bundle.files.length;
     }
-    folder.children.push({
+    nodeByPath.set(entry.path, {
       kind: 'entry',
-      name,
+      name: segs[segs.length - 1],
       path: entry.path,
       summary: entry,
       bundle,
+      children: [],
     });
+  }
+  for (const entry of firstClass) {
+    const node = nodeByPath.get(entry.path);
+    const owner = ownerOf(entry.path);
+    if (owner) {
+      nodeByPath.get(owner.path).children.push(node);
+    } else {
+      const folderPath = entry.path.split('/').slice(0, -1).join('/');
+      ensureFolder(folderPath).children.push(node);
+    }
   }
 
   // Loose non-.md files sitting directly in any entry-bearing folder.
