@@ -1,5 +1,5 @@
 ---
-title: "Shop/Lettering"
+title: "Lettering"
 type: specialist
 status: alive
 medium: image
@@ -33,7 +33,7 @@ links:
     label: letters-the-voices
 ---
 
-# Shop/Lettering — *the emotional-text renderer*
+# Lettering — *the emotional-text renderer*
 
 ![[Lettering — hero.png]]
 
