@@ -74,8 +74,26 @@ def make_face(a):
 
 
 # ---- mesh-based face landmarks (move with the expression shape keys) -------------
-def face_landmarks(bm):
+def eval_coords(bm):
+    """World coords of every vertex on the EVALUATED mesh (shape keys applied), indexed by the
+    original vertex index. The macro (gender/age/build) lives in shape keys — it is invisible in
+    bm.data.vertices, so reading rest coords put a child's eyes at adult height. The MASK modifier
+    is disabled while sampling so the index order is preserved."""
+    masks = [m for m in bm.modifiers if m.type == 'MASK']
+    prev = [(m, m.show_viewport) for m in masks]
+    for m in masks:
+        m.show_viewport = False
+    bpy.context.view_layer.update()
+    dg = bpy.context.evaluated_depsgraph_get()
+    ev = bm.evaluated_get(dg)
     mw = bm.matrix_world
+    coords = [mw @ v.co for v in ev.data.vertices]
+    for m, s in prev:
+        m.show_viewport = s
+    bpy.context.view_layer.update()
+    return coords
+
+def face_landmarks(bm, EV):
     V = bm.data.vertices
 
     def gverts(name):
@@ -85,7 +103,7 @@ def face_landmarks(bm):
         return [i for i, v in enumerate(V) if any(g.group == gi for g in v.groups)]
 
     def W(i):
-        return mw @ V[i].co
+        return EV[i]
 
     pts = []
 
@@ -97,15 +115,23 @@ def face_landmarks(bm):
             continue
         c = sum((W(i) for i in ring), Vector()) / len(ring)
         eye_centers[side] = c
-        ring.sort(key=lambda i: math.atan2(W(i).z - c.z, W(i).x - c.x))
+        # eye contour: 6 points sampled from the inner rim (filter to the tightest ring,
+        # so lashes/socket verts don't scatter the contour)
+        rr = sorted((W(i) - c).length for i in ring)
+        rmax = rr[int(len(rr) * 0.55)]                      # inner 55% = the lid rim
+        rim = [i for i in ring if (W(i) - c).length <= rmax] or ring
+        rim.sort(key=lambda i: math.atan2(W(i).z - c.z, W(i).x - c.x))
         for k in range(6):
-            pts.append(W(ring[k * len(ring) // 6]))
-        # brows: a clean 4-point arc above the eye (computed, not scattered ring verts)
-        xs = [W(i).x for i in ring]; xmin, xmax = min(xs), max(xs)
-        for k in range(4):
-            fx = xmin + (xmax - xmin) * k / 3.0
-            arch = 0.015 + 0.004 * math.sin(math.pi * k / 3.0)
-            pts.append(Vector((fx, c.y - 0.004, c.z + arch)))
+            pts.append(W(rim[k * len(rim) // 6]))
+        # brows: REAL brow-ridge verts above the eye — they deform with the FACS brow units,
+        # so angry (down) / surprised (up) actually move the drawn brow points.
+        brow = [i for i in range(len(V))
+                if c.z + 0.007 < W(i).z < c.z + 0.032 and abs(W(i).x - c.x) < 0.038
+                and c.y - 0.055 < W(i).y < c.y + 0.02]
+        brow.sort(key=lambda i: W(i).x)
+        for k in range(5):
+            if brow:
+                pts.append(W(brow[min(k * len(brow) // 5, len(brow) - 1)]))
 
     # pupils
     for side in ("l", "r"):
@@ -144,16 +170,16 @@ def face_landmarks(bm):
         for b in sorted(bins):
             pts.append(bins[b][1])
 
-    # jaw: chin + a few points up each side of the lower-face silhouette
-    lower = [i for i in range(len(V)) if W(i).z < face_c.z - 0.03 and W(i).z > face_c.z - 0.18 and W(i).y < -0.02]
+    # jaw: chin + 3 silhouette points up each side (clean, even z-sampling)
+    lower = [i for i in range(len(V)) if face_c.z - 0.19 < W(i).z < face_c.z - 0.04 and W(i).y < -0.015]
     if lower:
-        chin = min(lower, key=lambda i: W(i).z)
-        pts.append(W(chin))
+        chin = W(min(lower, key=lambda i: W(i).z)); pts.append(chin)
+        ztop = face_c.z - 0.05
         for sgn in (1, -1):
-            side_v = [i for i in lower if (W(i).x * sgn) > 0.02]
-            zlevels = sorted(set(round(W(i).z, 2) for i in side_v))
-            for zl in zlevels[::max(1, len(zlevels)//4)][:4]:
-                cand = [i for i in side_v if abs(W(i).z - zl) < 0.015]
+            side_v = [i for i in lower if W(i).x * sgn > 0.02]
+            for t in (0.3, 0.6, 0.9):
+                zl = chin.z + (ztop - chin.z) * t
+                cand = [i for i in side_v if abs(W(i).z - zl) < 0.02]
                 if cand:
                     pts.append(W(max(cand, key=lambda i: abs(W(i).x))))
     return pts
@@ -181,6 +207,52 @@ def toon_mat():
     nt.links.new(r.outputs['Color'], em.inputs['Color']); nt.links.new(em.outputs['Emission'], o.inputs['Surface'])
     return m
 
+def add_eyeballs(bm, EV):
+    """MPFB's base mesh has empty eye sockets → the shaded/canny pass reads 'hollow' and the
+    gen-AI renders blank eyes. Fill each socket with a sclera sphere + a dark iris so every
+    conditioning pass shows a real eye. These are separate objects; only the face mesh (bm)
+    gets its material swapped per pass, so the eyes keep their look through ink/shaded/color."""
+    V = bm.data.vertices
+    def gverts(name):
+        if name not in bm.vertex_groups:
+            return []
+        gi = bm.vertex_groups[name].index
+        return [EV[i] for i, v in enumerate(V) if any(g.group == gi for g in v.groups)]
+    made = []
+    for side in ("l", "r"):
+        # MPFB's eye helper/joint groups sit ~5.5 cm ABOVE and slightly behind the visible
+        # socket (verified). The original code hard-coded that offset (0, +0.010, −0.055),
+        # which only fit the reference young-woman head. Tie it to the socket WIDTH instead —
+        # which scales with the head as the macro changes it — so every subject lands right.
+        ring = gverts(f"helper-{side}-eye")
+        if len(ring) < 4:
+            continue
+        c = sum(ring, Vector()) / len(ring)
+        xs = [p.x for p in ring]
+        half_w = (max(xs) - min(xs)) / 2.0
+        # Verified by a straight-on marker render: the visible socket sits at the helper x/z,
+        # only ~0.018 below it, on the forward face surface. (The old −0.055 was far too much;
+        # the socket is near-constant across subjects, so this small offset fits all heads.)
+        lids = gverts(f"joint-{side}-upperlid") + gverts(f"joint-{side}-lowerlid")
+        front_y = min((p.y for p in (lids or ring)), default=-0.15)
+        c_eye = Vector((c.x, front_y + 0.010, c.z - 0.026))
+        r_eye = min(max(half_w * 0.82, 0.008), 0.018)
+        bpy.ops.mesh.primitive_uv_sphere_add(radius=r_eye, location=c_eye)
+        eye = bpy.context.active_object; eye.name = f"eye_{side}"
+        m = bpy.data.materials.new("sclera"); m.use_nodes = True
+        b = m.node_tree.nodes.get("Principled BSDF")
+        if b: b.inputs["Base Color"].default_value = (0.92, 0.92, 0.90, 1)
+        eye.data.materials.append(m); bpy.ops.object.shade_smooth()
+        # iris toward the camera (−Y) on the sclera surface
+        bpy.ops.mesh.primitive_uv_sphere_add(radius=r_eye * 0.46, location=c_eye + Vector((0, -r_eye * 0.78, 0)))
+        iris = bpy.context.active_object; iris.name = f"iris_{side}"
+        mi = bpy.data.materials.new("iris"); mi.use_nodes = True
+        bi = mi.node_tree.nodes.get("Principled BSDF")
+        if bi: bi.inputs["Base Color"].default_value = (0.06, 0.05, 0.05, 1)
+        iris.data.materials.append(mi); bpy.ops.object.shade_smooth()
+        made += [eye, iris]
+    return made
+
 def grey_mat():
     m = bpy.data.materials.new("grey"); m.use_nodes = True
     b = m.node_tree.nodes.get("Principled BSDF")
@@ -197,10 +269,26 @@ def skin_mat():
         if "Roughness" in b.inputs: b.inputs["Roughness"].default_value = 0.5
     return m
 
-def depth_mat():
+def subject_depth_range(objs, cam):
+    """Near/far (camera View-Z distance) over the subject meshes, so the depth plate uses its
+    FULL black→white range on the subject instead of mapping a fixed 0.2–3.5 m (which leaves a
+    closeup head as one flat grey). Returns padded (near, far)."""
+    inv = cam.matrix_world.inverted(); zs = []
+    for o in objs:
+        if o.type != 'MESH':
+            continue
+        for v in o.data.vertices:
+            zs.append(-(inv @ (o.matrix_world @ v.co)).z)   # +distance in front of camera
+    if not zs:
+        return 0.2, 3.5
+    near, far = min(zs), max(zs)
+    pad = (far - near) * 0.06 + 0.004
+    return max(near - pad, 0.01), far + pad
+
+def depth_mat(near=0.2, far=3.5):
     m = bpy.data.materials.new("depth"); m.use_nodes = True; nt = m.node_tree; nt.nodes.clear()
     cd = nt.nodes.new('ShaderNodeCameraData'); mr = nt.nodes.new('ShaderNodeMapRange')
-    mr.inputs['From Min'].default_value = 0.2; mr.inputs['From Max'].default_value = 3.5
+    mr.inputs['From Min'].default_value = near; mr.inputs['From Max'].default_value = far
     mr.inputs['To Min'].default_value = 1.0; mr.inputs['To Max'].default_value = 0.0; mr.clamp = True
     em = nt.nodes.new('ShaderNodeEmission'); o = nt.nodes.new('ShaderNodeOutputMaterial')
     nt.links.new(cd.outputs['View Z Depth'], mr.inputs['Value']); nt.links.new(mr.outputs['Result'], em.inputs['Color'])
@@ -237,19 +325,40 @@ def render_to(path, freestyle, worldval):
     sc.render.filepath = path; bpy.ops.render.render(write_still=True)
 
 
-def add_camera(bm, face_c, shot):
+def add_camera(bm, face_c, shot, EV):
     cd = bpy.data.cameras.new('Cam'); c = bpy.data.objects.new('Cam', cd)
     bpy.context.collection.objects.link(c); bpy.context.scene.camera = c
+    # Everything reads the EVALUATED mesh (EV) so the macro (child = small head) is reflected.
+    V = bm.data.vertices
+    def gcent(n):
+        if n not in bm.vertex_groups: return None
+        gi = bm.vertex_groups[n].index
+        P = [EV[i] for i, v in enumerate(V) if any(g.group == gi for g in v.groups)]
+        return sum(P, Vector()) / len(P) if P else None
+    el = gcent("helper-l-eye"); er = gcent("helper-r-eye")
+    eye_c = (el + er) / 2 if (el and er) else face_c
+    # Head bounding box from the mesh: verts near the crown, narrow in X (excludes shoulders) →
+    # robust head height for any subject. Fit that height in frame at the lens FOV.
+    P = EV
+    crown = max(p.z for p in P)
+    head = [p for p in P if p.z > crown - 0.30 and abs(p.x - eye_c.x) < 0.13]
+    hz = [p.z for p in head]; head_h = (max(hz) - min(hz)) or 0.24
+    head_cz = (max(hz) + min(hz)) / 2
+    import math as _m
+    def fit_dist(height_m, margin=1.25):
+        fov = 2 * _m.atan(0.5 * cd.sensor_width / cd.lens)
+        return (height_m * margin) / (2 * _m.tan(fov / 2))
     if shot == "closeup":
-        cd.lens = 80; dist = 0.42
-        target = face_c
+        cd.lens = 80
+        target = Vector((eye_c.x, eye_c.y, eye_c.z - head_h * 0.18))  # eyes-to-mouth centre
+        dist = fit_dist(head_h * 0.72)                                # tight on the face
     elif shot == "medium":
-        cd.lens = 55; dist = 1.1
-        target = face_c - Vector((0, 0, 0.18))   # head + shoulders
+        cd.lens = 60
+        target = Vector((eye_c.x, eye_c.y, head_cz - head_h * 0.9))   # head + shoulders
+        dist = fit_dist(head_h * 2.4)
     else:  # full
         cd.lens = 45
-        dg = bpy.context.evaluated_depsgraph_get(); me = bm.evaluated_get(dg)
-        zs = [(bm.matrix_world @ v.co).z for v in me.data.vertices]
+        zs = [p.z for p in P]
         target = Vector((0, -0.05, (max(zs) + min(zs)) / 2)); dist = (max(zs) - min(zs)) * 1.9 * 1.05
     c.location = target + Vector((0.06, -1, 0.02)).normalized() * dist
     c.rotation_euler = (target - c.location).to_track_quat('-Z', 'Y').to_euler()
@@ -262,10 +371,12 @@ def main():
     bm = make_face(a)
     bm.data.materials.clear(); bm.data.materials.append(toon_mat())
     bpy.context.view_layer.objects.active = bm; bpy.ops.object.shade_smooth()
+    EV = eval_coords(bm)                               # macro-applied (evaluated) world coords
+    add_eyeballs(bm, EV)                               # fill the empty sockets (no more hollow eyes)
 
-    lms = face_landmarks(bm)
+    lms = face_landmarks(bm, EV)
     face_c = sum(lms, Vector()) / len(lms) if lms else Vector((0, -0.12, 1.5))
-    cam, target = add_camera(bm, face_c, a.shot)
+    cam, target = add_camera(bm, face_c, a.shot, EV)
     add_lights(); configure_freestyle()
 
     label = a.label or f"{a.expression}_{a.shot}"
@@ -277,10 +388,13 @@ def main():
     render_to(os.path.join(out, "shaded_plate.png"), False, 0.55)          # 2) shaded greyscale (form)
     bm.data.materials.clear(); bm.data.materials.append(skin_mat())
     render_to(os.path.join(out, "color_plate.png"), False, 0.85)           # 3) shaded color
-    md = depth_mat()
-    for o in bpy.data.objects:
-        if o.type == 'MESH': o.data.materials.clear(); o.data.materials.append(md)
+    subj = [o for o in bpy.data.objects if o.type == 'MESH']
+    near, far = subject_depth_range(subj, cam)
+    md = depth_mat(near, far)                                              # auto-fit → real contour
+    for o in subj:
+        o.data.materials.clear(); o.data.materials.append(md)
     render_to(os.path.join(out, "depth_plate.png"), False, 0.0)            # 4) depth
+    print(f"  depth range {near:.3f}–{far:.3f} m")
 
     from bpy_extras.object_utils import world_to_camera_view
     sc = bpy.context.scene
