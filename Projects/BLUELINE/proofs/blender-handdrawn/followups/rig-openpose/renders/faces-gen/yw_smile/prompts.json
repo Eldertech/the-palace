@@ -1,0 +1,9 @@
+{
+ "person": "young_woman",
+ "expression": "smile",
+ "shot": "closeup",
+ "prompts": {
+  "watercolor": "extreme close-up portrait of a face, a young adult woman with a warm broad happy smile, joyful, detailed expressive face, soft watercolor portrait, loose wet washes, delicate ink linework over color, muted palette, textured paper, gentle light, painterly, expressive",
+  "comic": "extreme close-up portrait of a face, a young adult woman with a warm broad happy smile, joyful, detailed expressive face, bold graphic novel cel-shaded portrait, thick black ink outlines, flat vivid colors, dramatic cel shading, halftone shadows, high contrast, expressive"
+ }
+}
