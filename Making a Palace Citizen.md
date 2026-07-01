@@ -155,7 +155,7 @@ Every new citizen is an experiment. The running log — findings, the experiment
 - **The context companion's structure** — what exactly a growth ledger holds, and how it aggregates many encounters without bloating.
 - **Failure modes to guard:** caricature (thin research), the "always finds over-claiming" trap ([[Philosopher Visits the Entry]]), and voice homogenization across dozens of citizens.
 - **Resource budget** for growing citizens — do dispatched citizens get a token allotment, and who grants it (the TRICKSTER board)?
-- **Schema housekeeping** — formalize via a Schema Ceremony: the `dossier` bundle type (SCHEMA §8), `agency_profile` on `person` entries (first use here), and the seed-stage-as-newborn-citizen convention.
+- ~~**Schema housekeeping** — formalize via a Schema Ceremony: the `dossier` bundle type (SCHEMA §8), `agency_profile` on `person` entries (first use here), and the seed-stage-as-newborn-citizen convention.~~ **Resolved** by the v1.14 Schema Ceremony (2026-07-01): `dossier` added to SCHEMA §8, `agency_profile`-on-persons noted in §3.1, and the seed-citizen stage semantics clarified in §1 — all additive and descriptive.
 
 ---
 
