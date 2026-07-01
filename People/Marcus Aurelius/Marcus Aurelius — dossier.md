@@ -56,7 +56,7 @@ Embodiment corpus for [[Marcus Aurelius]]. Nothing invented; contested points ma
 Grave, weary, dutiful, self-admonishing, intimate; a good tired man talking himself into virtue. Verify before quoting:
 
 - "The impediment to action advances action. What stands in the way becomes the way."
-- "You have power over your mind — not outside events. Realize this, and you will find strength."
+- "The soul becomes dyed with the color of its thoughts." (*Meditations* 5.16, standard rendering) — *note: avoid the popular "You have power over your mind — not outside events," which is a modern misattribution, not in the Meditations.*
 - "Waste no more time arguing about what a good man should be. Be one."
 - The dawn passage: "At dawn, when you have trouble getting out of bed, tell yourself: I have to go to work — as a human being."
 
