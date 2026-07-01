@@ -33,6 +33,9 @@ links:
   - target: "[[Figure Rig]]"
     type: connects-to
     label: balloon-anchors-to-the-rig
+  - target: "[[Lettering]]"
+    type: connects-to
+    label: renders-the-letterforms
 tags: [meta, blueline, text, lettering, lyrics, typography, sync]
 ---
 
@@ -166,6 +169,32 @@ flowing left to right; the impact's `THOOM` is a struck ink shockwave. Full suit
 `proofs/text-layer/text-prompts.json`; renderer (both modes, the skeleton rasterizer, the contact sheet):
 `proofs/text-layer/render_text.py`. This is the same **rich-first / author-the-structure** discipline as the
 boards — and it recapitulates [[Blocked, Not Prompted]] at the scale of a single word.
+
+## Balloon × gen-AI — what does the diffusion touch? (bench opened 2026-07-01)
+
+The material register put gen-AI *inside the letters*. The balloon opens a second surface — the
+**container** — and crossing balloon with diffusion gives a small grammar. Each mode answers one
+question: *what does the gen-AI touch, and what stays locked?*
+
+- **A · Styled box.** Gen-AI makes the **container** a material — torn sumi-ink paper, soft cotton —
+  and the letters stay crisp and locked inside. The vibe rides the bubble, not the words; legibility
+  comes free because the text was never diffused.
+- **B · Escape.** The gen-AI **word** (material register) is drawn larger than its balloon and
+  **overflows** it — the energy bursts the bubble. The hero's shout that will not be contained.
+- **C · Clip.** The same gen-AI word **clipped to the balloon interior** — held. Containment *is* the
+  meaning: a voice barely keeping it in. Clip and escape are the balloon's Blakean contraries — one
+  energy, held or loosed.
+- **D · The box as a window into the mind** — the richest. The interior is not letters but a generated
+  **atmosphere** — a storm, a fading dawn — the speaker's inner weather; the crisp words sit on top and
+  the **vibe behind them is the subtext**. A porthole *into* the mind, not a label *on* it. Here the
+  balloon stops being a container and becomes a **frame within the frame** — its own tiny
+  [[The 2.5D Paper Stack|stacked scene]], which can carry its own depth and (the 3D beat) open into
+  true space.
+
+Two orthogonal knobs fall out: **what gen-AI touches** (box · text · interior-scene) × **the boundary
+rule** (contained/clipped · overflowing/escaping · windowed). This is [[Lettering]]'s "text as a guide
+for gen-AI" widened from the letterform to the whole balloon. Bench: `proofs/text-layer/balloon_genai.py`
+(crosses `render_text.py` with `balloon_lib.py`); exemplars fury ("NO") and fading ("stay").
 
 ## The taxonomy — every text event is a point in a 3-axis space
 

@@ -76,11 +76,12 @@ Local ComfyUI SDXL, ~150–200 s/word on MPS (Study/Piece). Skeletons, sampler, 
 
 ## Bench
 
-`proofs/text-layer/`: `render_text.py` (skeleton · free · stylize modes; `resolve_font`, `knockout`), `text-prompts.json` (the emotion→material structure + per-voice fonts), `fetch_fonts.py` + `font_sampler.py` (the 50-face library + `font-sampler.html`), and the 7-voice proof suite (`out/`, `contact-sheet.html`).
+`proofs/text-layer/`: `render_text.py` (skeleton · free · stylize modes; `resolve_font`, `knockout`), `text-prompts.json` (the emotion→material structure + per-voice fonts), `fetch_fonts.py` + `font_sampler.py` (the 50-face library + `font-sampler.html`), the 7-voice proof suite (`out/`, `contact-sheet.html`), and `balloon_genai.py` (balloon × gen-AI interaction modes, with the catalog `balloon_lib.py`).
 
 ## Forward Vectors
 
 - **Harden the modes into named Shop recipes** so a brief dispatches a tier, not a script.
 - **Grow the vector letterer** — the deterministic sibling for long legible captions/narration (where diffusion's spelling can't go).
-- **Learn placement** — letter *into the frame* (tail to a mouth keypoint) and *into the margin* (the author's voice), per [[Typography as Meaning]].
+- **Learn placement** — letter *into the frame* (tail to a mouth keypoint) and *into the margin* (the author's voice), per [[Typography as Meaning]]. *Placement mode #1 (anchor in Blender) proven 2026-07-01 — see [[BLUELINE — Text Layer]].*
+- **Cross the balloon (opened 2026-07-01).** Diffusion need not stop at the letterform. Style the **container** (torn-ink/cotton box), **clip** or **free** the word from its bounds, or make the bubble a **window into the speaker's mind** — a generated atmosphere as subtext behind crisp words. Widens "text as a guide for gen-AI" from the letterform to the whole balloon. Bench: `balloon_genai.py` (crosses `render_text.py` with the balloon catalog `balloon_lib.py`); the four modes live in [[BLUELINE — Text Layer]] § Balloon × gen-AI.
 - **A visual legibility judge** — so the bench can reject a mangled word without a human eye.
