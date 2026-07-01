@@ -82,3 +82,9 @@ Projects/BLUELINE/proofs/blender-handdrawn/followups/rig-openpose/renders/mpfb-v
 Projects/BLUELINE/proofs/blender-handdrawn/followups/rig-openpose/renders/hands-gen/*/gen_*.png
 Projects/BLUELINE/proofs/blender-handdrawn/followups/rig-openpose/renders/hands-gen/*.log
 Projects/BLUELINE/proofs/blender-handdrawn/followups/rig-openpose/renders/hands/plates.log
+
+# Figure Rig faces — raw gen batches (reproducible; contact sheets kept)
+Projects/BLUELINE/proofs/blender-handdrawn/followups/rig-openpose/renders/faces-gen/*/gen_*.png
+Projects/BLUELINE/proofs/blender-handdrawn/followups/rig-openpose/renders/faces-guides/*/*_*.png
+Projects/BLUELINE/proofs/blender-handdrawn/followups/rig-openpose/renders/faces-*.log
+Projects/BLUELINE/proofs/blender-handdrawn/followups/rig-openpose/renders/faces-rig/plates.log
