@@ -45,6 +45,27 @@ render's edges sit on real lit form, so eyes/nose/brows come out solid *and* the
 Line art is the wrong guide; shaded (or color) is right. Full data + timings: the guide experiment
 grid in `renders/faces-exp/`.
 
+### 1b. What all-three actually buys (the hands guide ablation, 2026-07-01)
+
+A leave-one-out over three closeup hand poses — each rendered in the locked ink style at a fixed
+seed, changing *only* which guides are fed (none / −openpose / −depth / −shaded / all three) —
+gave a sharper reading than expected. The honest result, from the renders (deposit gallery
+"▸ Hands — why all three guides"):
+
+- **The decisive jump is prompt-only → any guidance.** Unguided, the hand sprouts extra fingers
+  and loses the gesture — the classic hand failure. Any single guide already rescues it.
+- **The three guides are partly *redundant*, not orthogonal.** The **shaded→canny** form-edge
+  carries most of the anatomy, so dropping *one* of the other two usually survives. That
+  redundancy is the robustness you want in production (a missing/late guide degrades gracefully).
+- **The flip side:** the clean per-guide separations we *assert* — openpose = laterality, depth =
+  near/far — read best when a guide is **isolated**, not merely removed. A single-guide pass
+  (openpose-only / depth-only / canny-only) is the sharper test and the next experiment.
+
+The engineering takeaway sits under everything else here: **shaded→canny is the load-bearing
+guide**; openpose and depth are the correction terms that matter most exactly when the form is
+ambiguous (held objects, contact, laterality) — which is why §5 (proxies) and §6 (multi-figure)
+lean on them.
+
 ## 2. Color is not for realism — it is for *separation*
 
 For a single figure, the shaded greyscale render is enough; color adds nothing. So we spend color
@@ -134,6 +155,35 @@ hardest:
 **The one sentence:** author the spatial truth as geometry, render it as pose + depth + color-ID,
 dial how hard each binds, and let the gen-AI paint the surface — and the same rig that made one
 face angry makes two people shake hands.
+
+### 6b. The proof plan — a difficulty ladder (2026-07-01)
+
+Stage the multi-figure proof as a ladder, each rung isolating one new hard thing, so the gallery
+reads as a story (the way the hands ablation does):
+
+| Tier | Scenes | What it isolates |
+|---|---|---|
+| **1 · Separated** | two people talking; one seated + one standing | two distinct skeletons + color-ID keep them from blending — no contact, no occlusion |
+| **2 · Light contact** | handshake (reuses the hand rigs); hand on shoulder | depth resolves who is in front at the contact seam |
+| **3 · Interlocked** | embrace; kiss (two heads, profile); grapple; a carry | the prompt-only-impossible case — authored contact geometry is the whole point |
+| **4 · Crowd** | 3–5 figures depth-stacked, overlapping | color-ID + depth scale to N; per-figure regional binding |
+
+**New pieces to build:** `multi_figure_rig.py` (place N MPFB humans, one scene, balanced
+gender/body-type per figure, one shared camera; emit multi-skeleton openpose + depth + shaded +
+color-ID), an N-figure extension of `draw_openpose.py`, and the **regional-conditioning** ComfyUI
+node (Attention Couple / regional prompts / GLIGEN — still the open question) that binds a prompt
+to a color-ID region.
+
+**Two gen routes, and the contrast IS the proof:** **Route A** = the existing 3-guide stack
+(shaded→canny + depth + openpose), provable today — expected to hold Tiers 1–2 and start blending
+faces at Tier 3. **Route B** = regional conditioning per color-ID region — needed for Tier 3+ and
+per-figure identity (InstantID/PuLID later, a future Specialist). Run Tier 3 on Route A to *show*
+the blend failure, then Route B to fix it — the side-by-side is the argument for authored geometry.
+
+**Staged on two storylines** (2026-07-01): the BLUELINE opening sequence's multi-figure beats
+(hero-on-sedan pointing at a crowd; the impact-landing with the fallen woman and recoiling crowd)
+and a second, invented, wordless short story of similar length — so the proof lands on real
+dramatic beats, not generic "two people talking," and demonstrates the pipeline carries narrative.
 
 ## Gotcha: the base mesh has no eyeballs
 The MPFB base mesh ships with **empty eye sockets** — so the shaded render's canny reads "hollow
