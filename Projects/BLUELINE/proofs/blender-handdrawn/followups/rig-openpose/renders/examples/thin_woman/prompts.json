@@ -1,0 +1,17 @@
+{
+ "subject": "a slender thin adult woman, lean and graceful, narrow build",
+ "label": "Thin woman",
+ "macro": {
+  "gender": 0.0,
+  "age": 0.5,
+  "muscle": 0.4,
+  "weight": 0.18,
+  "height": 0.5
+ },
+ "prompts": {
+  "storyboard": "a slender thin adult woman, lean and graceful, narrow build, full body, modern pen and ink illustration, loose gestural linework with bold dramatic sweeping flow lines and speed streaks driving the motion, scattered energetic ink blobs and splatter, stark high-contrast black and white, film-noir deep shadow, rough white paper, lots of white space, dynamic foreshortening, low canted angle",
+  "watercolor": "a slender thin adult woman, lean and graceful, narrow build, full body, soft watercolor concept art, loose wet washes, delicate ink linework over color, muted earthy palette, textured cold-press paper, gentle natural light, painterly, illustrative, atmospheric",
+  "comic": "a slender thin adult woman, lean and graceful, narrow build, full body, bold graphic novel cel-shaded illustration, thick confident black ink outlines, flat vivid saturated colors, dramatic cel shading, halftone dot shadows, dynamic comic book panel, high contrast"
+ },
+ "neg": "extra limbs, deformed, two heads, color, color, colour, photograph, photorealistic, 3d render, smooth digital shading, gradient, blurry, low quality, watermark, text, signature, frame, border, static, stiff, standing still, posed portrait, symmetrical, calm, motionless, bust shot"
+}

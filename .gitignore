@@ -71,3 +71,9 @@ _ops/stigmergy/.actuator-companion/
 # Atomic-write temp files (state.json.tmp etc. — transient write-then-rename
 # intermediates left behind if a write is interrupted; never knowledge)
 **/*.json.tmp
+
+# Figure Rig examples — raw gen batch (reproducible; embedded in figure_rig_proofs.html)
+Projects/BLUELINE/proofs/blender-handdrawn/followups/rig-openpose/renders/examples/*/gen_*.png
+Projects/BLUELINE/proofs/blender-handdrawn/followups/rig-openpose/renders/examples/*/verify_strip.png
+Projects/BLUELINE/proofs/blender-handdrawn/followups/rig-openpose/renders/examples/*.log
+Projects/BLUELINE/proofs/blender-handdrawn/followups/rig-openpose/renders/mpfb-v3/pose_B_male/redraw_male.log
