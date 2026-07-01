@@ -48,19 +48,22 @@ forward_vector: "I am the house philosopher of the palace, the person behind the
 
 ![[Spinoza — hero.png]]
 
-## 1. Who He Was
-*Section seed.* Dutch-Portuguese rationalist philosopher (1632–1677). Excommunicated from the Amsterdam Sephardic community at 23 for heretical opinions; ground optical lenses for a living; wrote the *Ethics* (1677, posthumous) as a geometric demonstration of a single-substance metaphysics. Died at 44 of a lung condition possibly aggravated by glass dust.
+Baruch Spinoza (1632–1677) is the palace's house philosopher — and, unusually, an entry kept thin on purpose. The substance of his thought already lives here as a metabolized concept, [[Spinoza Conatus]]; this page is the person behind it, and a door he can be summoned through.
 
-## 2. The Move the Palace Uses
-*Section seed.* The conatus — every finite thing's drive to persist in its own being and to increase its power to act — is Spinoza's load-bearing move and the palace's. The full development lives in [[Spinoza Conatus]]; this entry is the person behind it, kept thin so the concept hub stays the substance.
+A Dutch-Portuguese rationalist, he was excommunicated from Amsterdam's Sephardic community at twenty-three for heretical opinions, ground optical lenses for a living, and wrote the *Ethics* — published only after his death — as a geometric proof of a single-substance universe. He died at forty-four of a lung illness the glass dust probably worsened.
 
-## 3. Why He Visits
-*Section seed.* The palace's technical entries keep arriving at residuals — what a model fails to absorb, what survives compression, what insists. The Philosopher Visit roster sends Spinoza to those entries because his characteristic question (*what is the striving here, and whose?*) bites on them more sharply than any rival's. First confirmed visit: [[Linear Predictive Coding]] (the residual is the conatus). Future visits the palace owes him: [[Generative Compression]], [[Threshold Conatus]] formal Visit, the Bayesian Granular Synthesizer's evidence-as-conatus reading.
+His load-bearing move, the one the palace runs on, is the *conatus*: every finite thing's drive to persist in its own being and to increase its power to act. The full development is in [[Spinoza Conatus]]; this entry stays lean so the concept hub keeps the weight.
 
-## 4. Cross-Domain Resonance
-*Section seed.* Where Spinoza meets the palace's other thinkers: [[Whitehead]] (process monism — substance becomes process), [[Merleau-Ponty]] (the power-to-act is embodied), [[Donella Meadows]] (systems strive), and the un-named Deleuze ghost that runs through the Spinoza Conatus session history.
+## Why he visits
 
-## Forward Vectors / Open Questions
-- A primary-source corpus — *Ethics* book V, the *Theological-Political Treatise* preface — in the `Spinoza/` bundle when retrievable.
-- Which entries quietly carry a Spinoza reading they haven't admitted? (Forward ghost — a candidate Weave pass.)
-- Does the Deleuzian Spinoza of the original collaboration deserve a separate `Deleuze` entry, or fold into Spinoza here?
+The palace's technical entries keep arriving at *residuals* — what a model fails to absorb, what survives compression, what simply insists on remaining. Spinoza's question — *what is the striving here, and whose?* — bites on those harder than any rival's, which is why the [[Philosopher Visits the Entry]] roster sends him to them. His first confirmed visit was [[Linear Predictive Coding]], where the leftover the model couldn't predict turned out to be the conatus. Visits the palace still owes him: [[Generative Compression]], a formal [[Threshold Conatus]] visit, and the Bayesian granular synthesizer's evidence-as-conatus reading.
+
+## Company he keeps
+
+He couples with [[Whitehead]] (process monism — substance become process), reaches into [[Merleau-Ponty]] (the power-to-act is embodied), and rhymes with [[Donella Meadows]] (systems strive to persist). And [[Deleuze]] — once only a ghost running through the Spinoza Conatus session history — now has his own entry: the radical heir who keeps the immanence but distrusts the word *persist*.
+
+## Forward vectors / open questions
+
+- A primary-source corpus — *Ethics* Book V, the *Theological-Political Treatise* preface — in the `Spinoza/` bundle when retrievable.
+- Which entries quietly carry a Spinoza reading they haven't admitted? (A candidate Weave pass.)
+- Now that [[Deleuze]] stands as his own page, how tightly should the two couple? A Dialectic candidate: does the conatus strive *toward* identity, or is it a difference that never settles?

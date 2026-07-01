@@ -46,60 +46,35 @@ links:
 # George Nakashima
 
 ![[George Nakashima — hero.png]]
-## Maker/Craftsman
 
-**Domain:** Maker/Craftsman
+George Nakashima (1905–1990) built furniture from boards most shops would reject — split, knotted, burled — and his whole practice was refusing to plane those "flaws" away. *The Soul of a Tree*, his book and his working title for the craft itself, names the belief underneath everything he made: the tree already has a shape it wants to become, and the woodworker's job is to find it, not impose one.
 
----
+## The material already knows its shape
 
-## Key Works
-
-- The Soul of a Tree (book)
-- Furniture (1940s-1990)
-- Conoid Studio (his workshop/philosophy embodied)
-
----
-
-## Core Concepts
-
-- **Live edge** - preserving natural form of wood
-- **Butterfly joints** - visible mending, not hiding flaws
-- **Wood as teacher** - material reveals design
-- **Slow craft** - years from tree to finished piece
-- **Minguren** - craftsman guild, community of practice
-
----
-
-## Connection to 4 Pillars
-
-Nakashima's approach: Let material guide design, don't impose your will. In synthesis: Let the oscillator reveal its character, don't force a sound. His butterfly joints = showing your process, not hiding it. Slow craft = deep practice over quick results. Live edge = keeping natural 'errors' as features.
-
----
-
-## Key Quotes
-
-> "Each plank, each board remembers the tree."
 > "I never try to make the wood do something it doesn't want to do."
+
 > "We work with boards that have splits, knots, burls, all kinds of defects. We design around them."
 
+This is the forward vector stated plainly: every split and knot is information, not damage, and Nakashima's tables read like transcripts of that listening — the live edge of the trunk left uncut, the natural crack held rather than hidden. It's the exact shape of [[Like Water|water's]] wu wei: not a craftsman imposing form on passive material, but a craftsman aligning with a form that's already there. Water flows around the rock because going around *is* water's nature; Nakashima builds around the knot because building around it *is* the plank's nature. Neither is compromise — both are the only honest path.
+
+## The butterfly joint
+
+When a board splits anyway — and boards split — Nakashima didn't hide the crack. He cut a bowtie-shaped inlay across it, the **butterfly joint**, and left it visible: proof of the repair, not a cover for it. This is [[Dovetail Joint ↔ Counterpoint|joinery wisdom]] taken one step further than a dovetail's silent interlock — here the joint doesn't just hold, it *tells the truth about what happened to the wood*. A synth patch or a mix that shows its seams instead of polishing them smooth is doing the same thing: the process stays legible in the finished object.
+
+## Concretization, not more parts
+
+> "Each plank, each board remembers the tree."
+
+Nakashima's furniture doesn't bolt a tabletop onto legs as separate decisions — the grain, the crack, the joint, and the form arrive together, each element doing more than one job. This is [[Simondon|Simondon's]] concretization exactly: a design gets better not by adding features but by letting fewer elements do more work, each one resonating with the others until the object converges on something that couldn't be taken apart without breaking it. A tabletop that *is* the tree's memory, held by a joint that *is* the repair's memory, is a technical object about as concrete as furniture gets.
+
+## Slow craft as quality
+
+Years passed between a tree being felled and a Nakashima piece leaving the shop — the wood had to season, had to tell him what it could become, and he wasn't willing to rush that conversation. That's [[Quality Manifesto|quality]] defined by the work's own timescale instead of a delivery date, and it's what a real [[Hilaritas Generator]] needs underneath it: making something real, with material that resists you and rewards patience, expands what you're capable of in a way a rushed imitation never will. Slow, in this practice, isn't the opposite of productive — it's the only way the material's actual shape gets to arrive.
+
+## Recommended path
+
+- **Start here:** *The Soul of a Tree* — read a chapter, then go find something to make with your hands (wood, code, a patch) and notice whether the material is telling you what it wants to become before you decide for it.
+
 ---
 
-## Recommended Reading Approach
-
-Read The Soul of a Tree while making something with your hands (doesn't have to be wood - could be building a Max patch). Notice: Does the material tell you what it wants to become?
-
----
-
-## Applications to Four Pillars
-
-### Creation Pillar
-Let sound reveal itself. Work with 'defects' (noise, distortion, glitches) as features, not problems.
-
-### Tools Pillar
-Build tools that show their process (like butterfly joints). Don't hide the mechanism.
-
-### Philosophy Pillar
-Material as teacher. The synthesizer tells you what it wants to sound like - listen.
-
-### Practice Pillar
-Slow craft approach: Spend a month on one patch. Let it reveal itself gradually.
+*Each plank remembers the tree. Don't fight the split — build around it. Let the crack become the butterfly joint, visible, honest, load-bearing. The material already knows its shape; your job is to listen long enough to see it.*

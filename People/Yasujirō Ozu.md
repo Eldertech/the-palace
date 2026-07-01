@@ -46,60 +46,36 @@ links:
 # Yasujirō Ozu
 
 ![[Yasujirō Ozu — hero.png]]
-## Filmmaker
 
-**Domain:** Filmmaker
+Ozu (1903–1963) shot families sitting in rooms, talking, not talking, and he did it almost the same way for thirty years: camera low, camera still, cut only when the scene is actually over. *Tokyo Story* (1953), *Late Spring* (1949), and *An Autumn Afternoon* (1962) all live inside that discipline. He is the palace's teacher of subtraction — what you leave out of a frame does more work than what you put in it.
 
----
+## The pillow shot — the gutter that holds still
 
-## Key Works
+Ozu's signature move is the **pillow shot**: a static image of an empty hallway, a train passing, laundry on a line — held a few seconds too long, connected to no character's gaze, cutting nothing forward. Nothing happens in it. That's the point. It's a breath the film takes between scenes, and it asks you to sit in a space rather than be pulled through one.
 
-- Tokyo Story (1953)
-- Late Spring (1949)
-- An Autumn Afternoon (1962)
+Read next to [[Comic and Cinema — Two Ways of Seeing]], the pillow shot is a *gutter* — the blank gap between comic panels where the reader supplies what happened in between. Comics leave the gutter blank and trust you to fill the time; Ozu leaves the frame full of nothing-in-particular and trusts you to feel the time. Same move, opposite material: one withholds the image, the other withholds the *event* inside an image that's fully there. Both bet that meaning made by the audience lands harder than meaning handed to them.
 
----
+## Restraint as the whole method
 
-## Core Concepts
+No camera movement. No dissolves to speak of. A cut only when it's earned. Ozu's camera famously sits at the height of someone kneeling on a tatami mat — low, patient, a guest's-eye view of a family rather than a director's. This is restraint as *method*, not as limitation: fewer tools, used the same way every time, until the constraint itself becomes the style. It's the same wager [[Brian Eno]] makes with tape loops and a short list of rules — strip away the options and what's left is unmistakably yours. Where Eno builds a system and lets it generate, Ozu builds a *posture* — one camera height, one cutting rhythm — and lets the family's ordinary talk fill it.
 
-- **Pillow shots** - still shots of spaces between scenes
-- **Low camera position** - sitting perspective, intimacy
-- **Restraint** - no camera movement, minimal editing
-- **Ma (negative space)** - what's not shown matters
-- **Mono no aware** - poignant awareness of impermanence
+It also reads as [[Simondon]]'s concretization in reverse: instead of a design converging feature by feature into one integrated object, Ozu's form gets *sparer* with every film, each part doing exactly one job with nothing extra bolted on. The mature Ozu picture isn't more elaborate than the early one — it's more itself, with less in it.
 
----
+## Mono no aware — the ache of things passing
 
-## Connection to 4 Pillars
+Ozu's films are almost always about a family changing shape: a daughter marries and leaves, parents age, a household that was one thing becomes another. Nothing dramatic happens on screen — no confrontation scene, no score swelling — and the sadness arrives anyway, because you've watched something ordinary and irreplaceable pass. That's *mono no aware*, the poignant awareness that things are temporary and beautiful because of it. It sits next to [[Like Water]]'s teaching on impermanence: water doesn't grieve taking a new shape, and Ozu's families don't get a villain to blame for time passing — only time, doing what time does.
 
-Ozu's pillow shots = silence/space in music. His restraint = minimal production - what you don't do matters. Low camera = listener perspective, not performer ego. His films are meditations on subtle emotion - same as ambient/minimal music. Ma (space) = rests, silence, negative space in arrangement.
+## Made for himself
 
----
-
-## Key Quotes
-
-> "I want to portray the life of a family, a Japanese family living in Tokyo, with all the subtle nuances of family relationships."
-> "[On his static camera] I think there is something Japanese about looking at things calmly, carefully, and with detachment."
 > "I didn't make my films for critics, nor for public pleasure. I did it for myself."
 
+That's [[Quality Manifesto]]'s whole argument in one sentence, decades before the manifesto existed: build to your own definition of the work, and let the audience that resonates find it — rather than aiming at what the room is already primed to reward.
+
+## Recommended path
+
+- **Watch first, slowly:** *Tokyo Story* (1953), no second screen. Notice the pillow shots — count how many times the film holds on something empty before returning to the family.
+- **Then:** *Late Spring* (1949) and *An Autumn Afternoon* (1962) — the same restraint applied to a daughter leaving and a father growing old, twenty years apart in Ozu's own life.
+
 ---
 
-## Recommended Reading Approach
-
-Watch Tokyo Story slowly (don't multitask). Notice what he doesn't show. Notice the pillow shots - they're teaching you about space/silence. Apply this restraint to your next track.
-
----
-
-## Applications to Four Pillars
-
-### Creation Pillar
-Pillow shot approach: Moments of pure space/silence between sections. Restraint over activity.
-
-### Tools Pillar
-Static perspective: Don't automate everything. Let sounds sit still. Trust simplicity.
-
-### Philosophy Pillar
-Mono no aware - beauty in transience. Capture fleeting moments. Impermanence as aesthetic.
-
-### Practice Pillar
-Weekly Ozu viewing: Watch slowly, notice what's not shown. Apply to music: What can you remove?
+*Before adding the next layer — the swell, the cut, the camera move — ask what happens if you just hold. Sometimes the empty hallway is the whole scene.*

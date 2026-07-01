@@ -13,8 +13,6 @@ energy: high
 hook_quality: 9
 beauty: 9
 who_leads: shared
-born_year: 1945
-died_year:
 domains:
   - literature
   - essay
@@ -34,60 +32,27 @@ links:
 # Annie Dillard
 
 ![[Annie Dillard — hero.png]]
-## Writer
 
-**Domain:** Writer
-
----
-
-## Key Works
-
-- Pilgrim at Tinker Creek (1974)
-- The Writing Life (1989)
-- Teaching a Stone to Talk (essays)
-
----
-
-## Core Concepts
-
-- **Attention as prayer** - seeing deeply changes everything
-- **Writing as paying attention** - noticing what's there
-- Silence and solitude necessary for depth
-- **Schedule protects creative work** - same time, same place
-- **Revision as discovery** - first draft finds the subject
-
----
-
-## Connection to 4 Pillars
-
-Dillard's attention practice = deep listening. Her discipline (same desk, same time, every day) = sustainable creative practice. 'How we spend our days is how we spend our lives' - applies directly to studio practice. Her revision process = iterative mixing - first mix finds the song, later mixes refine it.
-
----
-
-## Key Quotes
+Annie Dillard (1945–) sat by the same creek for a year and wrote down what happened when she actually looked at it. Her claim, stated plainly, is that seeing is not passive — it's a skill, and most people never train it. Attention is something you build the way you build a muscle, by using it on purpose, on a schedule, whether or not anything interesting seems to be happening that day.
 
 > "How we spend our days is, of course, how we spend our lives."
-> "Write as if you were dying. At the same time, assume you write for an audience consisting solely of terminal patients. That is, after all, the case."
-> "The mind itself is an art object. It is a Mondrian canvas onto whose homemade grids it fits its own preoccupations."
+
+That line is the whole argument in one sentence, and it's why she belongs next to the [[FOUR PILLARS]] practice pillar rather than just the creation one: the discipline isn't separate from the work, it *is* the work, accumulated one ordinary session at a time. She didn't wait for inspiration before opening the notebook. She showed up at the same desk, same hour, and treated the sitting-down itself as the discipline — the writing that came out of it was downstream of that.
+
+That's a concrete studio method, not just a mood to admire. Pick one hour, protect it, and go to the instrument or the DAW even on the day nothing seems to want to happen — especially that day, since the discipline is what's being trained, not the output. First sessions find what the piece is about; later sessions, done at the same desk at the same time, refine what the first session found. The ritual is the technology that makes the seeing possible, the same way [[Quality Manifesto]] treats a protected, unglamorous routine (the Saturday no-screen rule, the same-desk habit) as higher leverage than any single burst of inspiration — quality compounds through a kept schedule, not through waiting to feel ready.
+
+Her other insistence is that this attention has stakes, because time is finite and mostly invisible until it's gone:
+
+> "Write as if you were dying."
+
+Not morbid — clarifying. If the hours are the whole of the life, then how you spend the hour at the desk is not preparation for some other, more real life; it's the life itself, which is exactly the wellbeing-over-metrics cut [[Quality Manifesto]] makes when it asks what a session actually gave you, not what it will be worth to someone watching.
+
+## Recommended path
+
+- **Start here:** *The Writing Life* (1989) — short, and it's the desk-ritual argument in full.
+- **Then:** *Pilgrim at Tinker Creek* (1974) — the attention itself, sustained for a year.
+- **For the essays:** *Teaching a Stone to Talk*.
 
 ---
 
-## Recommended Reading Approach
-
-Read The Writing Life, then apply it to music production: Replace 'writing' with 'making music' throughout. Her discipline translates perfectly. Keep a creative practice journal using her method.
-
----
-
-## Applications to Four Pillars
-
-### Creation Pillar
-Attention as core skill. See/hear deeply before acting. First sessions discover the track, later sessions refine.
-
-### Tools Pillar
-Scheduled practice protects creative work. Same time, same place, builds deep work capacity.
-
-### Philosophy Pillar
-How you spend your studio hours is how you spend your creative life. Attention is everything.
-
-### Practice Pillar
-Dillard-style discipline: Same desk, same time, daily. Protect the practice ruthlessly.
+*Same desk, same hour, whether or not it feels like anything is happening. That's not a mood — it's a method, and it's the only part of the work that was ever really yours to control.*
