@@ -17,6 +17,9 @@ OUT_BASE = os.path.join(SCRIPT_DIR, "renders", "faces-rig")
 RES = (832, 1040)
 MPFB_MODULE = "bl_ext.user_default.mpfb"
 UNITS_DIR = os.path.expanduser("~/Library/Application Support/Blender/5.1/extensions/user_default/mpfb/data/targets/expression/units/caucasian")
+# Real CC0 MakeHuman low-poly eyes (iris/sclera), committed under assets/ (the mhclo references
+# ../materials/brown.mhmat). MHCLO fitting seats them in each subject's socket and tracks the head.
+MHCLO_EYES = os.path.join(SCRIPT_DIR, "assets", "eyes", "low-poly.mhclo")
 
 # expression → raw FACS units (unit, weight). Verified present in the caucasian unit pack.
 EXPRESSIONS = {
@@ -46,6 +49,7 @@ def parse_args():
     p.add_argument("--weight", type=float, default=0.5)
     p.add_argument("--height", type=float, default=0.5)
     p.add_argument("--shot", default="closeup", choices=["closeup", "medium", "full"])
+    p.add_argument("--gaze", default="0,0", help="eye-target offset 'x,z' (right,up); 0,0 = look forward")
     p.add_argument("--label", default=None)
     return p.parse_args(argv)
 
@@ -207,51 +211,77 @@ def toon_mat():
     nt.links.new(r.outputs['Color'], em.inputs['Color']); nt.links.new(em.outputs['Emission'], o.inputs['Surface'])
     return m
 
-def add_eyeballs(bm, EV):
-    """MPFB's base mesh has empty eye sockets → the shaded/canny pass reads 'hollow' and the
-    gen-AI renders blank eyes. Fill each socket with a sclera sphere + a dark iris so every
-    conditioning pass shows a real eye. These are separate objects; only the face mesh (bm)
-    gets its material swapped per pass, so the eyes keep their look through ink/shaded/color."""
-    V = bm.data.vertices
-    def gverts(name):
-        if name not in bm.vertex_groups:
-            return []
-        gi = bm.vertex_groups[name].index
-        return [EV[i] for i, v in enumerate(V) if any(g.group == gi for g in v.groups)]
-    made = []
-    for side in ("l", "r"):
-        # MPFB's eye helper/joint groups sit ~5.5 cm ABOVE and slightly behind the visible
-        # socket (verified). The original code hard-coded that offset (0, +0.010, −0.055),
-        # which only fit the reference young-woman head. Tie it to the socket WIDTH instead —
-        # which scales with the head as the macro changes it — so every subject lands right.
-        ring = gverts(f"helper-{side}-eye")
-        if len(ring) < 4:
-            continue
-        c = sum(ring, Vector()) / len(ring)
-        xs = [p.x for p in ring]
-        half_w = (max(xs) - min(xs)) / 2.0
-        # Verified by a straight-on marker render: the visible socket sits at the helper x/z,
-        # only ~0.018 below it, on the forward face surface. (The old −0.055 was far too much;
-        # the socket is near-constant across subjects, so this small offset fits all heads.)
-        lids = gverts(f"joint-{side}-upperlid") + gverts(f"joint-{side}-lowerlid")
-        front_y = min((p.y for p in (lids or ring)), default=-0.15)
-        c_eye = Vector((c.x, front_y + 0.010, c.z - 0.026))
-        r_eye = min(max(half_w * 0.82, 0.008), 0.018)
-        bpy.ops.mesh.primitive_uv_sphere_add(radius=r_eye, location=c_eye)
-        eye = bpy.context.active_object; eye.name = f"eye_{side}"
+def add_real_eyes(bm, gaze=(0.0, 0.0)):
+    """Real CC0 MakeHuman low-poly eyes (sclera + iris/pupil), attached by MHCLO fitting so they
+    seat in each subject's socket and TRACK THE HEAD across body macros — no offset-hacking (the
+    old proxy spheres drifted for non-reference heads). Split into L/R and aimed at a gaze-target
+    empty via Damped Track, so gaze (and vergence = focus) is directable: `gaze=(x,z)` moves the
+    target right/up; (0,0) looks straight ahead. Eyes are separate objects, so they keep their
+    iris material through the ink/shaded/color passes while only the face mesh swaps material."""
+    from bl_ext.user_default.mpfb.services.humanservice import HumanService
+    if not os.path.isfile(MHCLO_EYES):
+        print("  WARN: MHCLO eyes not found at", MHCLO_EYES, "— no eyes added")
+        return []
+    eyes = HumanService.add_mhclo_asset(MHCLO_EYES, bm, asset_type="Eyes",
+                                        set_up_rigging=False, import_weights=False, import_subrig=False)
+    if not eyes:
+        print("  WARN: add_mhclo_asset returned no eyes")
+        return []
+    bpy.context.view_layer.update()
+    # split the single eyes mesh into the two eyeballs (they're disconnected → loose parts)
+    bpy.ops.object.select_all(action='DESELECT')
+    eyes.select_set(True); bpy.context.view_layer.objects.active = eyes
+    bpy.ops.object.mode_set(mode='EDIT'); bpy.ops.mesh.select_all(action='SELECT')
+    bpy.ops.mesh.separate(type='LOOSE'); bpy.ops.object.mode_set(mode='OBJECT')
+    eye_objs = [o for o in bpy.context.selected_objects if o.type == 'MESH']
+    if eyes.name in bpy.data.objects and eyes not in eye_objs:
+        eye_objs.append(eyes)
+
+    def center(o):
+        bb = [o.matrix_world @ Vector(c) for c in o.bound_box]
+        return sum(bb, Vector()) / 8
+    centers = [center(o) for o in eye_objs] or [Vector((0, -0.11, 1.5))]
+    mid = sum(centers, Vector()) / len(centers)
+
+    # gaze target 0.6 m in front (−Y) of the eyes; offset by (x=right, z=up)
+    tgt = bpy.data.objects.new("eye_target", None)
+    tgt.empty_display_type = 'PLAIN_AXES'; tgt.empty_display_size = 0.03
+    tgt.location = mid + Vector((gaze[0], -0.6, gaze[1]))
+    bpy.context.collection.objects.link(tgt)
+    # The MHCLO eyeball gives the correct per-subject sclera position/size; we give it a plain
+    # white EEVEE material (the MakeHuman litsphere material renders black in EEVEE) and add a
+    # dark iris+pupil disk on the cornea. Each eyeball's origin is re-centred first so the Damped
+    # Track rotates it about its own centre (gaze), and the iris is parented so it tracks with it.
+    def white_mat():
         m = bpy.data.materials.new("sclera"); m.use_nodes = True
         b = m.node_tree.nodes.get("Principled BSDF")
-        if b: b.inputs["Base Color"].default_value = (0.92, 0.92, 0.90, 1)
-        eye.data.materials.append(m); bpy.ops.object.shade_smooth()
-        # iris toward the camera (−Y) on the sclera surface
-        bpy.ops.mesh.primitive_uv_sphere_add(radius=r_eye * 0.46, location=c_eye + Vector((0, -r_eye * 0.78, 0)))
-        iris = bpy.context.active_object; iris.name = f"iris_{side}"
+        if b:
+            b.inputs["Base Color"].default_value = (0.93, 0.93, 0.91, 1)
+            if "Roughness" in b.inputs: b.inputs["Roughness"].default_value = 0.4
+        return m
+    made = []
+    for o in eye_objs:
+        o.name = "eye_" + ("l" if center(o).x >= 0 else "r")
+        o.data.materials.clear(); o.data.materials.append(white_mat())
+        bpy.ops.object.select_all(action='DESELECT'); o.select_set(True)
+        bpy.context.view_layer.objects.active = o
+        bpy.ops.object.origin_set(type='ORIGIN_GEOMETRY', center='BOUNDS')   # spin about eye centre
+        bpy.ops.object.shade_smooth()
+        bb = [o.matrix_world @ Vector(c) for c in o.bound_box]
+        r = (max(p.x for p in bb) - min(p.x for p in bb)) / 2 or 0.012
+        ec = o.matrix_world.translation
+        # iris+pupil: a dark sphere on the cornea (−Y front), parented so gaze carries it
+        bpy.ops.mesh.primitive_uv_sphere_add(radius=r * 0.46, location=ec + Vector((0, -r * 0.80, 0)))
+        iris = bpy.context.active_object; iris.name = "iris_" + o.name[-1]
         mi = bpy.data.materials.new("iris"); mi.use_nodes = True
         bi = mi.node_tree.nodes.get("Principled BSDF")
-        if bi: bi.inputs["Base Color"].default_value = (0.06, 0.05, 0.05, 1)
+        if bi: bi.inputs["Base Color"].default_value = (0.10, 0.07, 0.05, 1)   # dark brown, reads as iris+pupil
         iris.data.materials.append(mi); bpy.ops.object.shade_smooth()
-        made += [eye, iris]
-    return made
+        iris.parent = o; iris.matrix_parent_inverse = o.matrix_world.inverted()
+        c = o.constraints.new('DAMPED_TRACK'); c.target = tgt; c.track_axis = 'TRACK_NEGATIVE_Y'
+        made += [o, iris]
+    print(f"  real eyes: {len(eye_objs)} eyeball(s) + iris + gaze target at offset {gaze}")
+    return made + [tgt]
 
 def grey_mat():
     m = bpy.data.materials.new("grey"); m.use_nodes = True
@@ -270,16 +300,24 @@ def skin_mat():
     return m
 
 def subject_depth_range(objs, cam):
-    """Near/far (camera View-Z distance) over the subject meshes, so the depth plate uses its
-    FULL black→white range on the subject instead of mapping a fixed 0.2–3.5 m (which leaves a
-    closeup head as one flat grey). Returns padded (near, far)."""
+    """Near/far (camera View-Z) over only the verts INSIDE the camera frame — so the depth plate
+    spends its full black→white range on what's actually shown (a closeup head), not the whole
+    body (feet, back of skull) that left the face one flat grey. Uses evaluated meshes so the
+    macro-shifted geometry is measured. Returns padded (near, far)."""
+    from bpy_extras.object_utils import world_to_camera_view
+    sc = bpy.context.scene
+    deps = bpy.context.evaluated_depsgraph_get()
     inv = cam.matrix_world.inverted(); zs = []
     for o in objs:
         if o.type != 'MESH':
             continue
-        for v in o.data.vertices:
-            zs.append(-(inv @ (o.matrix_world @ v.co)).z)   # +distance in front of camera
-    if not zs:
+        me = o.evaluated_get(deps); mw = o.matrix_world
+        for v in me.data.vertices:
+            wp = mw @ v.co
+            co = world_to_camera_view(sc, cam, wp)
+            if -0.03 <= co.x <= 1.03 and -0.03 <= co.y <= 1.03 and co.z > 0:   # in (padded) frame
+                zs.append(-(inv @ wp).z)
+    if len(zs) < 8:
         return 0.2, 3.5
     near, far = min(zs), max(zs)
     pad = (far - near) * 0.06 + 0.004
@@ -372,7 +410,11 @@ def main():
     bm.data.materials.clear(); bm.data.materials.append(toon_mat())
     bpy.context.view_layer.objects.active = bm; bpy.ops.object.shade_smooth()
     EV = eval_coords(bm)                               # macro-applied (evaluated) world coords
-    add_eyeballs(bm, EV)                               # fill the empty sockets (no more hollow eyes)
+    try:
+        gx, gz = (float(v) for v in a.gaze.split(","))
+    except Exception:
+        gx, gz = 0.0, 0.0
+    add_real_eyes(bm, (gx, gz))                         # real MHCLO eyes, head-tracking + gaze
 
     lms = face_landmarks(bm, EV)
     face_c = sum(lms, Vector()) / len(lms) if lms else Vector((0, -0.12, 1.5))

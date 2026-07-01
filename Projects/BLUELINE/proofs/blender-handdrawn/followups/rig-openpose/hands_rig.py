@@ -153,13 +153,22 @@ def skin_mat():
     return m
 
 def subject_depth_range(objs, cam):
+    """Near/far over only the verts INSIDE the camera frame (evaluated meshes), so a hand closeup
+    spends the full depth range on the hand — not the whole arm/body behind it (which flattened it)."""
+    from bpy_extras.object_utils import world_to_camera_view
+    sc = bpy.context.scene
+    deps = bpy.context.evaluated_depsgraph_get()
     inv = cam.matrix_world.inverted(); zs = []
     for o in objs:
         if o.type != 'MESH':
             continue
-        for v in o.data.vertices:
-            zs.append(-(inv @ (o.matrix_world @ v.co)).z)
-    if not zs:
+        me = o.evaluated_get(deps); mw = o.matrix_world
+        for v in me.data.vertices:
+            wp = mw @ v.co
+            co = world_to_camera_view(sc, cam, wp)
+            if -0.03 <= co.x <= 1.03 and -0.03 <= co.y <= 1.03 and co.z > 0:
+                zs.append(-(inv @ wp).z)
+    if len(zs) < 8:
         return 0.2, 3.5
     near, far = min(zs), max(zs)
     pad = (far - near) * 0.06 + 0.004
