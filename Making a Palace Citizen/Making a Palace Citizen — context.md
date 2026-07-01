@@ -41,7 +41,20 @@ Ran the first Dialectic between two *made* citizens under true multi-agent isola
 
 ---
 
+### 2026-07-01 — First rollout batch: the 8 most-linked citizens
+
+Chose the next 8 by measured inbound wikilink count (excluding the flagship trio): Brian Eno (16), Shunryu Suzuki (10), Marcus Aurelius (8), Rick Rubin (6), Lao Tzu (6), Leibniz (5), Pauline Oliveros (4), Agnes Martin (4). Built each to the full model (embodiable body + seed-citizen frontmatter + agency_profile + dossier). Register spread was deliberate — three thinkers, four makers, one Zen teacher — to keep cast voices distinct.
+
+The blindspot section was the hardest and most valuable part per citizen, and the point of the whole model — a sampler: **Eno** preaches "let the system run" while curating the frame with iron taste; **Suzuki**'s "no-gaining-idea" becomes a gaining-idea, and his gentle non-attainment ran alongside real monastic authority; **Marcus**'s Stoic calm is the privilege of a throne and can shade into quietism before injustice; **Rubin**'s "uncover the essence" assumes an essence was waiting (the drawer Meadows denies); **Lao Tzu**'s "the Tao can't be told" is an unfalsifiable dodge, and wu wei doubles as a ruler's pacifier; **Leibniz**'s best-of-all-possible-worlds is Voltaire's Pangloss, and his harmony-everywhere avoids real conflict; **Oliveros**'s all-inclusive Deep Listening has no criterion of quality; **Agnes Martin**'s "I only receive" is a ferociously authored, controlling stance that edits out her own darkness.
+
+**Not yet run:** the built citizens are unvalidated by dispatch. The marquee test is a **Spinoza ↔ Leibniz** Dialectic (one substance vs infinite windowless monads) and **Eno ↔ Cage** (curated vs chance-driven generation) — both now in the queue below. Dossier quotes are model-knowledge, flagged in-file for verification, not source-checked.
+
+---
+
 ## Experiment queue (tests to run)
+
+- **Spinoza ↔ Leibniz** — one substance vs infinite windowless monads; the marquee rationalist Dialectic, now that both are built.
+- **Brian Eno ↔ John Cage** — taste-driven generation vs chance-driven non-intention (Cage would call Eno's curation the ego sneaking back).
 
 - **Spinoza ↔ [[Deleuze]]** on the same axis (homecoming vs. becoming) — Deleuze is Spinoza's friendliest, sharpest push; does the citizen hold up against a philosopher who *loves* him and still radicalizes him? (Note: Deleuze is currently `type: concept`, not `person` — may need a citizen build first.)
 - **A non-philosopher Dialectic:** [[John Cage]] ↔ [[Brian Eno]] — system-as-instrument, but Cage would call Eno's taste-driven curation "the ego sneaking back in." Tests whether maker-citizens produce friction as sharp as thinker-citizens.
@@ -54,7 +67,7 @@ Ran the first Dialectic between two *made* citizens under true multi-agent isola
 
 ## Rollout tracker
 
-- **Done (embodiable-citizen model):** Spinoza · Donella Meadows · John Cage.
-- **Interim layer:** the other ~24 `People/` entries were prose-reworked from course-handout style on 2026-07-01 (`5ff3424`) — readable and link-woven, but *not yet* embodiable citizens (no blindspot section, no dossier, still `stage: mature`).
-- **Pending:** upgrade the ~24 to the full model — Loudon running tests first, then batches (register-diverse, worst-gaps-first). Order and depth TBD per the Open Questions in the card.
+- **Done (embodiable-citizen model, 11):** Spinoza · Donella Meadows · John Cage — plus the 8 most-linked person entries, added 2026-07-01: Brian Eno · Shunryu Suzuki · Marcus Aurelius · Rick Rubin · Lao Tzu · Leibniz · Pauline Oliveros · Agnes Martin.
+- **Interim layer:** the remaining ~16 `People/` entries were prose-reworked from course-handout style on 2026-07-01 (`5ff3424`) — readable and link-woven, but *not yet* embodiable citizens (no blindspot section, no dossier, still `stage: mature`).
+- **Pending:** upgrade the remaining ~16 to the full model — Loudon running tests first, then batches (register-diverse). Order and depth TBD per the Open Questions in the card.
 - **Done:** the schema housekeeping was ratified in the **v1.14 Schema Ceremony** (2026-07-01), before the rollout — `dossier` in SCHEMA §8, `agency_profile`-on-persons in §3.1, seed-citizen stage semantics in §1. Additive/descriptive; mirror docs unaffected.
