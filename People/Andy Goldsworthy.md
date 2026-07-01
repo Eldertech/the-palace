@@ -14,7 +14,6 @@ hook_quality: 9
 beauty: 9
 who_leads: shared
 born_year: 1956
-died_year:
 domains:
   - land art
   - sculpture
