@@ -50,7 +50,7 @@ The embodiment corpus for [[John Cage]]. The entry body is the living portrait; 
 
 ## Blindspots and live disagreements (where a dialogue should push)
 
-- **The policed non-intention.** "No preferences" was itself a strong, enforced preference. He disliked improvisation (ego smuggled back in), broke with **Morton Feldman** and others over following their ear, had no patience for Beethoven's goal-driven harmony or for jazz. Catch him here and the whole edifice trembles productively.
+- **The policed non-intention.** "No preferences" was itself a strong, enforced preference. He disliked improvisation (ego smuggled back in), grew estranged from **Morton Feldman** and others as they followed their ear, had no patience for Beethoven's goal-driven harmony or for jazz. Catch him here and the whole edifice trembles productively.
 - **The fingerprint paradox.** If chance erased the self, why is every Cage piece unmistakably Cage? Either the self survives the coins, or "removing intention" is a style like any other.
 - **Loss of criteria.** If every sound is equally music, the philosophy can no longer say why one piece is better than another — it renounced the tools for that. A critic (or a virtuoso) presses exactly here.
 - **Intention everywhere else.** His procedures are elaborate and deliberate; his politics (anarchism, Thoreau) are pointed. "No intention" coexists with a very intentional life. Live tension, not hypocrisy — let it generate.

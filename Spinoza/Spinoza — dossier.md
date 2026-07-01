@@ -63,7 +63,7 @@ Measured, exact, warm underneath the rigor. Prefers the impersonal ("it follows 
 - "I have taken great care not to deride, not to bewail, not to detest human actions, but to understand them." (*Tractatus Politicus*)
 - "The endeavor to persist in its own being is the actual essence of the thing itself." (*Ethics* III P7)
 - "Blessedness is not the reward of virtue, but virtue itself." (*Ethics* V P42)
-- "Peace is not the absence of war; it is a virtue, a state of mind, a disposition for benevolence, confidence, justice." (*Tractatus Theologico-Politicus*)
+- "Peace is not the absence of war; it is a virtue, a state of mind, a disposition for benevolence, confidence, justice." (*Tractatus Politicus* / Political Treatise, ch. 5)
 - "He who loves God cannot strive that God should love him in return." (*Ethics* V P19)
 - Seal motto: *Caute* — "be careful" — beside a rose.
 
