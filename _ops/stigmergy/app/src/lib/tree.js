@@ -130,20 +130,16 @@ export function flattenVisible(root, { expanded = new Set(), filter = '', sort =
           emitted = true;
         }
       } else if (node.kind === 'entry') {
-        if (!entryMatches(node, q)) continue;
+        const members = node.children ?? [];
+        const hasMembers = members.length > 0;
         const hasBundle = !!node.bundle && (node.bundle.files ?? []).length > 0;
-        const isExpanded = expanded.has(node.path);
-        rows.push({
-          key: `e:${node.path}`,
-          kind: 'entry',
-          depth,
-          node,
-          isExpanded,
-          hasChildren: hasBundle,
-          isTopLevel: depth === 0,
-        });
-        emitted = true;
-        if (hasBundle && isExpanded) {
+        const hasChildren = hasMembers || hasBundle;
+        const selfMatches = entryMatches(node, q);
+
+        // Emit this entry's own owned files (parent bundle) at depth+1. Bundles
+        // are NOT force-opened under a filter (mirrors folder behavior).
+        const emitBundleFiles = () => {
+          if (!hasBundle || q) return;
           for (const f of node.bundle.files) {
             rows.push({
               key: `b:${f.relPath}`,
@@ -153,6 +149,50 @@ export function flattenVisible(root, { expanded = new Set(), filter = '', sort =
               isTopLevel: false,
             });
           }
+        };
+
+        // A leaf entry (no member sub-entries): unchanged behavior — the row is
+        // dropped outright when it doesn't match the filter.
+        if (!hasMembers) {
+          if (!selfMatches) continue;
+          const isExpanded = expanded.has(node.path);
+          rows.push({
+            key: `e:${node.path}`,
+            kind: 'entry',
+            depth,
+            node,
+            isExpanded,
+            hasChildren,
+            isTopLevel: depth === 0,
+          });
+          emitted = true;
+          if (hasBundle && isExpanded) emitBundleFiles();
+          continue;
+        }
+
+        // A catalogue entry (holds member sub-entries) behaves folder-like under
+        // a filter: force it open so a matching member is revealed, then prune
+        // the header if neither it nor any member matched.
+        const headerIndex = rows.length;
+        const isExpanded = q ? true : expanded.has(node.path);
+        rows.push({
+          key: `e:${node.path}`,
+          kind: 'entry',
+          depth,
+          node,
+          isExpanded,
+          hasChildren,
+          isTopLevel: depth === 0,
+        });
+        let childEmitted = false;
+        if (isExpanded) {
+          childEmitted = walk(members, depth + 1);
+          if (!q && hasBundle) { emitBundleFiles(); childEmitted = true; }
+        }
+        if (q && !selfMatches && !childEmitted) {
+          rows.splice(headerIndex); // no matching member, header doesn't match — drop
+        } else {
+          emitted = true;
         }
       } else if (node.kind === 'loose-file') {
         // Loose files are secondary — hide them while a filter is narrowing to
