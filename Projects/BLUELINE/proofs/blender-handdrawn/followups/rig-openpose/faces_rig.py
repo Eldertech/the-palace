@@ -269,7 +269,12 @@ def add_real_eyes(bm, gaze=(0.0, 0.0)):
         bpy.ops.object.shade_smooth()
         bb = [o.matrix_world @ Vector(c) for c in o.bound_box]
         r = (max(p.x for p in bb) - min(p.x for p in bb)) / 2 or 0.012
-        ec = o.matrix_world.translation
+        # The MPFB base mesh's eyelids don't drape over the eyeball, so a full-size sphere reads as
+        # a bulging ball (verified in profile). Recess it into the socket (+Y = into the head) and
+        # shrink slightly so it seats like a real eye. Tied to r → scales with the head.
+        o.matrix_world = mathutils.Matrix.Translation(Vector((0, r * 0.42, 0))) @ o.matrix_world
+        o.scale *= 0.88; bpy.context.view_layer.update()
+        r *= 0.88; ec = o.matrix_world.translation
         # iris+pupil: a dark sphere on the cornea (−Y front), parented so gaze carries it
         bpy.ops.mesh.primitive_uv_sphere_add(radius=r * 0.46, location=ec + Vector((0, -r * 0.80, 0)))
         iris = bpy.context.active_object; iris.name = "iris_" + o.name[-1]
