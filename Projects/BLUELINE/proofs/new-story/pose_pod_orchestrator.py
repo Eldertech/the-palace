@@ -44,6 +44,7 @@ if _ns_dir and _ns_dir not in sys.path:
     sys.path.insert(0, _ns_dir)
 from agent_ns import SLUG, pod_name, pod_id_file   # fail-closed: import error > single-tenant run
 import gpu_lease
+from commons.providers.runpod_pod import RunpodPodProvider   # pod lifecycle lives in the Commons provider
 
 PALACE = Path("/Users/loudonstearns/Documents/The Palace")
 CONFIG = PALACE / "RunPod Images" / "studio" / "config.json"
@@ -60,21 +61,12 @@ CANNY_URL = "https://huggingface.co/xinsir/controlnet-canny-sdxl-1.0/resolve/mai
 import os as _os
 _WITH_CANNY = bool(_os.environ.get("POD_CANNY"))  # faces want ink→canny + depth + openpose
 UA = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0 Safari/537.36"
-KEY = json.load(open(CONFIG))["api_key"]
 try:
     import certifi; CTX = ssl.create_default_context(cafile=certifi.where())
 except Exception:
     CTX = ssl._create_unverified_context()
 
-def api(method, path, body=None, timeout=60):
-    data = json.dumps(body).encode() if body is not None else None
-    req = urllib.request.Request("https://rest.runpod.io/v1" + path, data=data, method=method,
-          headers={"Authorization": f"Bearer {KEY}", "Content-Type": "application/json"})
-    try:
-        with urllib.request.urlopen(req, timeout=timeout, context=CTX) as r:
-            b = r.read(); return (json.loads(b) if b else {}), r.status
-    except urllib.error.HTTPError as e:
-        return {"_error": e.read().decode()[:400]}, e.code
+_PROV = RunpodPodProvider(config_path=CONFIG)   # create/list/cull/terminate, all slug-scoped
 
 def proxy_get(pid, path, timeout=15):
     req = urllib.request.Request(f"https://{pid}-8188.proxy.runpod.net{path}", headers={"User-Agent": UA})
@@ -96,55 +88,28 @@ START = (
   'cd /comfyui && exec python -u main.py --disable-auto-launch --disable-metadata --listen --port 8188\n'
 )
 
-NAME = pod_name("blueline-sdxl-pose-cn")   # per-agent: "...-<slug>", never shared across agents
-POD_ID_FILE = pod_id_file()                # "/tmp/pod_id-<slug>", never the shared "/tmp/pod_id"
+BASE = "blueline-sdxl-pose-cn"
+NAME = pod_name(BASE)          # display only; the provider owns naming ("<base>--<slug>")
+POD_ID_FILE = pod_id_file()    # "/tmp/pod_id-<slug>", never the shared "/tmp/pod_id"
 
-def list_named():
-    """MY pods only — filters the account-wide list down to this agent's namespaced name,
-    so every guard/cull/cleanup built on it is scoped to pods I created."""
-    d, _ = api("GET", "/pods")
-    return [p for p in (d if isinstance(d, list) else []) if p.get("name") == NAME]
+def _spec():
+    return {"base": BASE, "image": IMAGE, "gpuTypeIds": GPU_IDS, "gpuCount": 1,
+            "ports": ["8188/http"], "containerDiskInGb": 55, "dockerStartCmd": ["bash", "-c", START]}
+
+def create_pod():
+    """Delegate create (with flaky-500 recover-by-name + cull) to the slug-scoped provider."""
+    r = _PROV.create(_spec())
+    POD_ID_FILE.write_text(r.id)
+    return r.id
 
 def cleanup_named():
-    pods = list_named(); print(f"[cleanup] {len(pods)} '{NAME}' pod(s) to remove: {[p['id'] for p in pods]}")
-    for p in pods:
-        _, c = api("DELETE", f"/pods/{p['id']}"); print(f"  DELETE {p['id']} -> {c}")
-    return len(pods)
-
-def _cull_extras(keep):
-    """RunPod's create is flaky — it can 500 yet still create the pod. Keep one, DELETE any others by name,
-    so a retry never leaks (the bug that spawned 11 pods on 2026-06-23)."""
-    for p in list_named():
-        if p["id"] != keep:
-            api("DELETE", f"/pods/{p['id']}"); print(f"[create] culled extra leaked pod {p['id']}")
-
-def create_pod(max_tries=6, delay=30):
-    body = {"name":NAME,"imageName":IMAGE,"gpuTypeIds":GPU_IDS,"gpuCount":1,
-            "ports":["8188/http"],"containerDiskInGb":55,"dockerStartCmd":["bash","-c",START]}
-    for i in range(max_tries):
-        r, code = api("POST", "/pods", body)
-        pid = (r.get("id") or r.get("podId")) if isinstance(r, dict) else None
-        if code in (200, 201) and pid:
-            time.sleep(4); _cull_extras(pid)
-            POD_ID_FILE.write_text(pid); print(f"[create] pod {pid}"); return pid
-        # non-200: the pod may STILL have been created (flaky 500). RECOVER by name instead of retry-leaking.
-        time.sleep(6); named = list_named()
-        if named:
-            pid = named[0]["id"]; _cull_extras(pid)
-            POD_ID_FILE.write_text(pid)
-            print(f"[create] recovered pod {pid} (API returned {code} but a pod exists)"); return pid
-        print(f"[create] no pod created (code {code}, try {i+1}/{max_tries}) — retry {delay}s"); time.sleep(delay)
-    sys.exit("create failed: no pod after retries")
+    mine = _PROV.list_mine(); print(f"[cleanup] {len(mine)} '{NAME}' pod(s): {[r.id for r in mine]}")
+    for r in mine:
+        _PROV.terminate(r)
+    return len(mine)
 
 def terminate(pid):
-    r, code = api("DELETE", f"/pods/{pid}")
-    print(f"[terminate] DELETE /pods/{pid} -> {code}")
-    for _ in range(10):
-        g, c = api("GET", f"/pods/{pid}")
-        if c == 404 or (isinstance(g, dict) and g.get("desiredStatus") in ("TERMINATED","EXITED")):
-            print(f"[terminate] confirmed {pid} gone"); return True
-        time.sleep(3)
-    print(f"[terminate] WARNING could not confirm {pid} — CHECK CONSOLE"); return False
+    return _PROV.terminate(pid)
 
 def _opts(pid, node, field):
     try:
@@ -161,7 +126,7 @@ def wait_ready(pid, boot_timeout=1800):
         if not up:
             try: proxy_get(pid, "/system_stats", timeout=10); up = True; print(f"[ready] ComfyUI HTTP up at ~{el}s")
             except Exception:
-                g,_ = api("GET", f"/pods/{pid}"); ds = g.get("desiredStatus") if isinstance(g,dict) else "?"
+                g,_ = _PROV.api("GET", f"/pods/{pid}"); ds = g.get("desiredStatus") if isinstance(g,dict) else "?"
                 print(f"[ready] waiting… {el}s (status={ds})"); time.sleep(10); continue
         ck = CKPT in _opts(pid, "CheckpointLoaderSimple", "ckpt_name")
         cn = CN_POSE in _opts(pid, "ControlNetLoader", "control_net_name")
@@ -183,9 +148,9 @@ def main():
     if a.terminate_only: terminate(a.terminate_only); return
     # Guard on MY namespace only — another agent's pods are invisible here, so a concurrent
     # Claude on the same account no longer trips this abort (and I never see theirs to kill).
-    mine = list_named()
+    mine = _PROV.list_mine()
     if mine:
-        print(f"[guard] my pod '{NAME}' already exists {[p.get('id') for p in mine]} — abort. "
+        print(f"[guard] my pod '{NAME}' already exists {[r.id for r in mine]} — abort. "
               f"Run with --cleanup to remove it first."); sys.exit(2)
     gpu_lease.acquire("blueline-sdxl-pose-cn")   # opt-in via RUNPOD_LEASE; no-op otherwise
     pid = create_pod(); rc = 1
