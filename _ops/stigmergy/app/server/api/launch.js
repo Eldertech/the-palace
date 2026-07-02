@@ -23,6 +23,7 @@ import { jsonResponse, readBody } from '../http.js';
 import { launchInteractive } from '../launch.js';
 import { buildCyclePrompt } from '../../../orchestrator/src/build-cycle-prompt.js';
 import { buildEphemeralPrompt } from '../../../orchestrator/src/ephemeral-prompt.js';
+import { buildLensMandate } from '../../../orchestrator/src/lens-mandate.js';
 
 const EFFORTS = new Set(['low', 'medium', 'high', 'xhigh', 'max']);
 
@@ -182,31 +183,46 @@ async function handleEphemeralLaunch(ctx) {
   // has no board/state/history/staging layers to trim.
   const mandate = typeof body.mandate === 'string' ? body.mandate.trim() : '';
 
+  // `lensSubject` turns this wake into a LENS session ([[The Lens]]): the page
+  // still wakes fully as itself, but is also handed a second page's text and
+  // asked to read it through its own apparatus, per the fixed procedure in
+  // buildLensMandate. `mandate` becomes Loudon's extra note on TOP of that
+  // procedure, not a replacement for it.
+  const lensSubject = typeof body.lensSubject === 'string' ? body.lensSubject.trim() : '';
+
   // Injectable for tests so the route can be exercised without walking the palace.
-  const build = opts.buildEphemeralPromptImpl || buildEphemeralPrompt;
+  const build = lensSubject
+    ? (opts.buildLensMandateImpl || buildLensMandate)
+    : (opts.buildEphemeralPromptImpl || buildEphemeralPrompt);
   let built;
   try {
-    built = build({ palaceRoot, title: home, extraMandate: mandate });
+    built = lensSubject
+      ? build({ palaceRoot, glassTitle: home, subjectTitle: lensSubject, loudonNote: mandate })
+      : build({ palaceRoot, title: home, extraMandate: mandate });
   } catch (e) {
     jsonResponse(res, 500, { error: `could not wake the page: ${e.message}` });
     return true;
   }
 
   if (!built || !built.ok) {
-    // not_found -> 404 (no such entry); no_frontmatter -> 422 (a learning material,
-    // not a canon entry, so not an agent). Either way the client shows the reason.
-    const notFound = built && built.status === 'not_found';
-    const msg = built && built.status === 'no_frontmatter'
-      ? `"${home}" has no frontmatter — only a canon entry can be brought to life.`
-      : `"${home}" could not be found as a palace entry.`;
-    jsonResponse(res, notFound ? 404 : 422, { error: msg, status: built?.status || 'error', home });
+    const status = built?.status || 'error';
+    const messages = {
+      not_found: `"${home}" could not be found as a palace entry.`,
+      no_frontmatter: `"${home}" has no frontmatter — only a canon entry can be brought to life.`,
+      same_page: `a lens needs two different pages — "${home}" cannot lens itself.`,
+      subject_not_found: `"${lensSubject}" (the subject) could not be found as a palace entry.`,
+      subject_no_frontmatter: `"${lensSubject}" (the subject) has no frontmatter — only a canon entry can be read this way.`,
+    };
+    const notFound = status === 'not_found' || status === 'subject_not_found';
+    jsonResponse(res, notFound ? 404 : 422, { error: messages[status] || `"${home}" could not be found as a palace entry.`, status, home, lensSubject: lensSubject || undefined });
     return true;
   }
 
   const construction = buildAwakenConstruction({ home, stage: built.stage });
+  const lens = lensSubject ? { subject: lensSubject } : undefined;
 
   if (body.preview) {
-    jsonResponse(res, 200, { ok: true, preview: true, ephemeral: true, home, stage: built.stage || null, construction, prompt: built.full });
+    jsonResponse(res, 200, { ok: true, preview: true, ephemeral: true, home, stage: built.stage || null, construction, prompt: built.full, lens });
     return true;
   }
 
@@ -215,10 +231,10 @@ async function handleEphemeralLaunch(ctx) {
   const launch = opts.launchImpl || launchInteractive;
   const result = await launch(built.full, { palaceRoot, model, effort, ...(opts.launchOpts || {}) });
   if (!result.launched) {
-    jsonResponse(res, result.supported === false ? 501 : 500, { ...result, home, ephemeral: true });
+    jsonResponse(res, result.supported === false ? 501 : 500, { ...result, home, ephemeral: true, lens });
     return true;
   }
-  jsonResponse(res, 200, { ...result, home, ephemeral: true, construction });
+  jsonResponse(res, 200, { ...result, home, ephemeral: true, construction, lens });
   return true;
 }
 
