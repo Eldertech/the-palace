@@ -12,10 +12,38 @@ pod via the proxy, and ALWAYS terminates in finally. Create-retry across GPU typ
   python3 pose_pod_orchestrator.py                                   # runs rich_pipeline.py --pod <id>
   python3 pose_pod_orchestrator.py --render-script scene_pipeline.py --render-args "--seed 1100 --tag A --ngens 2"
   python3 pose_pod_orchestrator.py --terminate-only <podId>
+
+MULTI-TENANT (2026-07-02): safe to run concurrently with other Claudes on the SAME RunPod account.
+Every pod is named "blueline-sdxl-pose-cn-<slug>" where <slug> is this agent's namespace (see
+_ops/runpod/agent_ns.py: $RUNPOD_AGENT_SLUG -> git worktree name -> host). The startup guard, cleanup,
+cull, pod-id file and terminate are ALL scoped to that name, so an agent only ever sees and touches its
+OWN pods -- it can no longer strangle another agent's booting pod (the "dud node" outage of 2026-07-02).
+Optional: RUNPOD_LEASE=1 announces a cooperative GPU lease on the STIGMERGY board (advisory; add
+RUNPOD_LEASE_STRICT=1 to abort if another agent already holds it). See Shop/RunPod GPU Backend.md.
 """
 import argparse, json, ssl, subprocess, sys, time
 import urllib.request, urllib.error
 from pathlib import Path
+
+# ── per-agent namespace (multi-agent safety) ─────────────────────────────────
+# Locate the single-sourced slug helpers under _ops/runpod/, CWD-independent.
+import os as _bootstrap_os
+def _find_runpod_ns():
+    d = _bootstrap_os.path.dirname(_bootstrap_os.path.abspath(__file__))
+    for _ in range(10):
+        cand = _bootstrap_os.path.join(d, "_ops", "runpod")
+        if _bootstrap_os.path.isfile(_bootstrap_os.path.join(cand, "agent_ns.py")):
+            return cand
+        nd = _bootstrap_os.path.dirname(d)
+        if nd == d:
+            break
+        d = nd
+    return None
+_ns_dir = _find_runpod_ns()
+if _ns_dir and _ns_dir not in sys.path:
+    sys.path.insert(0, _ns_dir)
+from agent_ns import SLUG, pod_name, pod_id_file   # fail-closed: import error > single-tenant run
+import gpu_lease
 
 PALACE = Path("/Users/loudonstearns/Documents/The Palace")
 CONFIG = PALACE / "RunPod Images" / "studio" / "config.json"
@@ -68,9 +96,12 @@ START = (
   'cd /comfyui && exec python -u main.py --disable-auto-launch --disable-metadata --listen --port 8188\n'
 )
 
-NAME = "blueline-sdxl-pose-cn"
+NAME = pod_name("blueline-sdxl-pose-cn")   # per-agent: "...-<slug>", never shared across agents
+POD_ID_FILE = pod_id_file()                # "/tmp/pod_id-<slug>", never the shared "/tmp/pod_id"
 
 def list_named():
+    """MY pods only — filters the account-wide list down to this agent's namespaced name,
+    so every guard/cull/cleanup built on it is scoped to pods I created."""
     d, _ = api("GET", "/pods")
     return [p for p in (d if isinstance(d, list) else []) if p.get("name") == NAME]
 
@@ -95,12 +126,12 @@ def create_pod(max_tries=6, delay=30):
         pid = (r.get("id") or r.get("podId")) if isinstance(r, dict) else None
         if code in (200, 201) and pid:
             time.sleep(4); _cull_extras(pid)
-            Path("/tmp/pod_id").write_text(pid); print(f"[create] pod {pid}"); return pid
+            POD_ID_FILE.write_text(pid); print(f"[create] pod {pid}"); return pid
         # non-200: the pod may STILL have been created (flaky 500). RECOVER by name instead of retry-leaking.
         time.sleep(6); named = list_named()
         if named:
             pid = named[0]["id"]; _cull_extras(pid)
-            Path("/tmp/pod_id").write_text(pid)
+            POD_ID_FILE.write_text(pid)
             print(f"[create] recovered pod {pid} (API returned {code} but a pod exists)"); return pid
         print(f"[create] no pod created (code {code}, try {i+1}/{max_tries}) — retry {delay}s"); time.sleep(delay)
     sys.exit("create failed: no pod after retries")
@@ -145,14 +176,18 @@ def main():
     ap.add_argument("--render-script", default="rich_pipeline.py")
     ap.add_argument("--render-args", default="")
     ap.add_argument("--keep-alive", action="store_true", help="don't terminate (for batching multiple runs)")
-    ap.add_argument("--cleanup", action="store_true", help="terminate ALL blueline-sdxl-pose-cn pods and exit")
+    ap.add_argument("--cleanup", action="store_true", help=f"terminate MY '{NAME}' pods and exit")
     a = ap.parse_args()
+    print(f"[ns] agent slug={SLUG}  pod name={NAME}")
     if a.cleanup: cleanup_named(); return
     if a.terminate_only: terminate(a.terminate_only); return
-    pods,_ = api("GET","/pods"); existing=[p for p in (pods if isinstance(pods,list) else [])]
-    if existing:
-        print(f"[guard] {len(existing)} pod(s) already exist {[p.get('id') for p in existing]} — abort. "
-              f"Run with --cleanup to remove leaked '{NAME}' pods first."); sys.exit(2)
+    # Guard on MY namespace only — another agent's pods are invisible here, so a concurrent
+    # Claude on the same account no longer trips this abort (and I never see theirs to kill).
+    mine = list_named()
+    if mine:
+        print(f"[guard] my pod '{NAME}' already exists {[p.get('id') for p in mine]} — abort. "
+              f"Run with --cleanup to remove it first."); sys.exit(2)
+    gpu_lease.acquire("blueline-sdxl-pose-cn")   # opt-in via RUNPOD_LEASE; no-op otherwise
     pid = create_pod(); rc = 1
     try:
         if not wait_ready(pid): raise RuntimeError("pod did not reach ready")
@@ -165,6 +200,7 @@ def main():
             print(f"[finally] --keep-alive: pod {pid} LEFT RUNNING — terminate with --terminate-only {pid}")
         else:
             print("[finally] tearing down pod (guaranteed)"); terminate(pid)
+        gpu_lease.release("blueline-sdxl-pose-cn")
     sys.exit(rc)
 
 if __name__ == "__main__":

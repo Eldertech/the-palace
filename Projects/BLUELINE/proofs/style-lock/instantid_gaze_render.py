@@ -26,6 +26,24 @@ HERE = Path(__file__).resolve().parent
 sys.path.insert(0, str(HERE.parent / "m3-warped-noise"))
 from m3_pod_render import Pod  # proven transport: upload/submit/wait/fetch, curl-hardened
 
+# ── per-agent namespace (multi-agent safety) ─────────────────────────────────
+import os as _bootstrap_os
+def _find_runpod_ns():
+    d = _bootstrap_os.path.dirname(_bootstrap_os.path.abspath(__file__))
+    for _ in range(10):
+        cand = _bootstrap_os.path.join(d, "_ops", "runpod")
+        if _bootstrap_os.path.isfile(_bootstrap_os.path.join(cand, "agent_ns.py")):
+            return cand
+        nd = _bootstrap_os.path.dirname(d)
+        if nd == d:
+            break
+        d = nd
+    return None
+_ns_dir = _find_runpod_ns()
+if _ns_dir and _ns_dir not in sys.path:
+    sys.path.insert(0, _ns_dir)
+from agent_ns import read_pod_id, SLUG
+
 CKPT = "sd_xl_base_1.0.safetensors"
 CN_NAME = "instantid-controlnet.safetensors"
 W, H, STEPS, CFG = 832, 1216, 28, 6.0
@@ -99,7 +117,7 @@ def main():
     ref_path = (HERE / a.ref).resolve()
     if not ref_path.exists(): sys.exit(f"reference identity not found: {ref_path}")
     out = (HERE / a.out); out.mkdir(parents=True, exist_ok=True)
-    pid = a.pod or Path("/tmp/pod_id").read_text().strip()
+    pid = read_pod_id(a.pod)
     pod = Pod(pid)
     print(f"pod {pid} | base {pod.B} | ref {a.ref} | weight {a.weight} end_at {a.end_at}")
     if not pod.alive(): sys.exit(f"pod {pid} not reachable at {pod.B}/system_stats")

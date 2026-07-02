@@ -19,6 +19,24 @@ orchestrator owns the pod lifecycle so teardown is guaranteed even on render fai
 import argparse, base64, json, os, ssl, subprocess, sys, tempfile, time, urllib.request, urllib.parse, uuid
 from pathlib import Path
 
+# ── per-agent namespace (multi-agent safety) ─────────────────────────────────
+import os as _bootstrap_os
+def _find_runpod_ns():
+    d = _bootstrap_os.path.dirname(_bootstrap_os.path.abspath(__file__))
+    for _ in range(10):
+        cand = _bootstrap_os.path.join(d, "_ops", "runpod")
+        if _bootstrap_os.path.isfile(_bootstrap_os.path.join(cand, "agent_ns.py")):
+            return cand
+        nd = _bootstrap_os.path.dirname(d)
+        if nd == d:
+            break
+        d = nd
+    return None
+_ns_dir = _find_runpod_ns()
+if _ns_dir and _ns_dir not in sys.path:
+    sys.path.insert(0, _ns_dir)
+from agent_ns import read_pod_id, SLUG
+
 HERE = Path(__file__).resolve().parent
 UA = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0 Safari/537.36"
 try:
@@ -133,7 +151,7 @@ def main():
     ap.add_argument("--warp-label", default="B_warped")
     a = ap.parse_args()
     FRAMES = build_frames(a.warp_npy, a.warp_label)
-    pid = a.pod or Path("/tmp/pod_id").read_text().strip()
+    pid = read_pod_id(a.pod)
     out = (HERE / a.out); out.mkdir(parents=True, exist_ok=True)
     pod = Pod(pid)
     print(f"pod {pid} | base {pod.B} | warp={a.warp_npy}")

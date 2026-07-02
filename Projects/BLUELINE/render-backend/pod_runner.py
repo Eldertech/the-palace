@@ -17,6 +17,24 @@ Stdlib + curl. Reads the pod id from --pod or /tmp/pod_id.
 import argparse, json, re, ssl, subprocess, sys, time, urllib.request, urllib.parse, uuid
 from pathlib import Path
 
+# ── per-agent namespace (multi-agent safety) ─────────────────────────────────
+import os as _bootstrap_os
+def _find_runpod_ns():
+    d = _bootstrap_os.path.dirname(_bootstrap_os.path.abspath(__file__))
+    for _ in range(10):
+        cand = _bootstrap_os.path.join(d, "_ops", "runpod")
+        if _bootstrap_os.path.isfile(_bootstrap_os.path.join(cand, "agent_ns.py")):
+            return cand
+        nd = _bootstrap_os.path.dirname(d)
+        if nd == d:
+            break
+        d = nd
+    return None
+_ns_dir = _find_runpod_ns()
+if _ns_dir and _ns_dir not in sys.path:
+    sys.path.insert(0, _ns_dir)
+from agent_ns import read_pod_id, SLUG
+
 UA = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0 Safari/537.36"
 try:
     import certifi; CTX = ssl.create_default_context(cafile=certifi.where())
@@ -104,7 +122,7 @@ def main():
     ap.add_argument("--pose"); ap.add_argument("--prompt"); ap.add_argument("--seed", type=int, default=555)
     ap.add_argument("--assets", default="."); ap.add_argument("--out", required=True)
     a = ap.parse_args()
-    pid = a.pod or Path("/tmp/pod_id").read_text().strip()
+    pid = read_pod_id(a.pod)
     pod = Pod(pid)
     if a.shot:
         b = parse_board(a.template, a.shot)
