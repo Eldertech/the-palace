@@ -71,7 +71,7 @@ function LowerThird({ label, value }) {
 function Watermark() {
   return (
     <div className="watermark">
-      LOUDON<span className="slash">/</span><span className="accent">LIVE</span>
+      LOUD’N <span className="accent">LIVE</span>
     </div>
   );
 }

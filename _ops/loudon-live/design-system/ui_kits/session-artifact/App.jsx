@@ -75,7 +75,7 @@ function App() {
         <CalloutChange label="change">Wrap period nudged from a fixed 1.0 s to a slider — listeners hear the seam emerge as it shortens.</CalloutChange>
       </section>
 
-      <SessionFooter left="Loudon Live" right="Autodidact Polymaths" />
+      <SessionFooter left="Loud'n Live" />
       <div className="session-stage-trailer">
         <span className="stage-label">Stage 1 · the illusion</span>
       </div>
