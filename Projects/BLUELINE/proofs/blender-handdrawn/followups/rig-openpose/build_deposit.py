@@ -112,6 +112,24 @@ def body_section():
         rows.append(guide_gen_row(p["key"], gd, nd, BODY_GUIDES, FACE_GENS, p["label"], meta))
     return "\n".join(rows)
 
+# ---------- MULTI-FIGURE (THE LIFT) ----------
+MULTI_GUIDES = [("openpose", "openpose.png"), ("depth", "depth_plate.png"),
+                ("color-ID", "colorid_plate.png"), ("shaded", "shaded_plate.png")]
+MULTI_GENS = [("ink", "gen_ink.png"), ("comic", "gen_comic.png")]
+MULTI_BEATS = [("B1_alone", "1 · alone in the crowd", "crowd, separated"),
+               ("B2_one_turns", "2 · one turns", "the pivot"),
+               ("B3_reach", "3 · the reach", "light contact"),
+               ("B4_cradle", "4 · the cradle", "interlocked — Route A weak"),
+               ("B5_many_hands", "5 · many hands", "crowd + contact"),
+               ("B6_held_up", "6 · held up", "overhead lift — Route A weak")]
+
+def multi_section():
+    rows = []
+    for key, lab, meta in MULTI_BEATS:
+        gd = os.path.join(R, "multi", key); nd = os.path.join(R, "multi-gen", key)
+        rows.append(guide_gen_row(key, gd, nd, MULTI_GUIDES, MULTI_GENS, lab, meta))
+    return "\n".join(rows)
+
 # ---------- experiment + timings ----------
 def experiment_block():
     grid = os.path.join(R, "faces-exp", "experiment_grid.png")
@@ -129,6 +147,7 @@ def main():
     doc = doc.replace("__HANDS__", hands_section())
     doc = doc.replace("__HANDS_ABLATION__", hands_ablation_section())
     doc = doc.replace("__BODY__", body_section())
+    doc = doc.replace("__MULTI__", multi_section())
     doc = doc.replace("__EXP_IMG__", exp_img)
     doc = doc.replace("__TIMINGS__", tim_rows)
     out = os.path.join(HERE, "figure_rig_deposit.html")
@@ -248,6 +267,12 @@ __HANDS_ABLATION__
 <h2>▸ Bodies — parametric people × poses</h2>
 <p>Guidance: OpenPose · depth · ink. One macro dict → any body; the OpenPose holds the pose, the prompt drives the style.</p>
 __BODY__
+
+<h2>▸ Multi-figure — THE LIFT (an invented wordless sequence)</h2>
+<p>The single-figure stack scales to whole scenes: <b>N MPFB humans in one scene, one shared camera, four registered passes</b> (multi-skeleton OpenPose · depth · <b>color-ID</b> — each figure a distinct flat hue · shaded→canny). Staged as a six-beat wordless story — <i>alone in the crowd → one turns → the reach → the cradle → many hands → held up</i> — the counter-weight to BLUELINE's solitary tragedy: collective tenderness, the palace's own [[Cooperation Yields Agency]] made visible. Each row: the guide passes, then the gen in the locked ink + a comic alternate.</p>
+__MULTI__
+<p><span class="kick k-ok">what holds</span> <b>Separation.</b> Across every beat the figures stay distinct people — never the melted single-face blob that prompt-only multi-subject gives. Multi-skeleton OpenPose + depth carry it; the color-ID pass is the reserve channel for when they don't. <b>B1/B2/B3/B5 read as scenes</b> — a fallen body and a gathering crowd land clearly.</p>
+<p><span class="kick k-bad">where Route A ends</span> The two tightest beats expose the boundary this proof was built to find: <b>B4 (cradle)</b> — interlocked bodies in close contact — and <b>B6 (overhead lift)</b> do <i>not</i> resolve cleanly under Route A (canny+depth+pose). This is the predicted failure: close contact needs <b>Route B — regional conditioning</b> binding each prompt to its color-ID region (Attention Couple / GLIGEN), the next build. Second gap: <b>clothing is geometry, not prompt</b> — canny off the nude base mesh keeps ink figures bare (comic dresses them only as saturated bodysuits); the fix is clothing meshes, not wordier prompts. Honest map of where authored-geometry-Route-A wins and where it hands off. Full method: [[Figure Rig — face-hands-openpose design|conditioning-stack note]] §6b.</p>
 
 <h2>▸ Next steps (the plans, ready to execute)</h2>
 <h4>Hands + objects with Blender proxy geometry</h4>

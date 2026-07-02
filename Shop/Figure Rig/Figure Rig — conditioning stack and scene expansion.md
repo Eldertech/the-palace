@@ -185,6 +185,21 @@ the blend failure, then Route B to fix it — the side-by-side is the argument f
 and a second, invented, wordless short story of similar length — so the proof lands on real
 dramatic beats, not generic "two people talking," and demonstrates the pipeline carries narrative.
 
+**Result — THE LIFT, 6 beats genned on Route A (2026-07-02).** The invented wordless story
+(*alone in the crowd → one turns → the reach → the cradle → many hands → held up*) was staged as
+six multi-figure scenes and generated Route A (canny+depth+pose), ink + comic. Honest findings:
+- **Separation holds everywhere** — figures stay distinct people, never the melted single-face
+  blob prompt-only multi-subject gives. Multi-skeleton OpenPose + depth carry it; color-ID is the
+  held-in-reserve channel. **B1/B2/B3/B5 read as scenes** (a fallen body + a gathering crowd land).
+- **Route A's boundary is the two tightest beats:** **B4 (cradle, interlocked bodies)** and
+  **B6 (overhead lift)** do not resolve cleanly — the predicted failure. Close contact is where
+  **Route B (regional conditioning on the color-ID region)** must take over. That is the next build.
+- **Clothing is geometry, not prompt.** Canny off the nude base mesh keeps ink figures bare
+  (comic dresses them only as saturated bodysuits); a clothing-mesh pass — not a wordier prompt —
+  is the real fix, and it doubles as better silhouettes for every pass.
+Tools: `multi_figure_rig.py` (N humans, one camera, 4 passes) · `draw_openpose_multi.py`
+(N skeletons/plate) · `multi_batch_pod.py` (Route A gen) · `local_gen_multi.py` (:8188 fallback).
+
 ## Gotcha: the base mesh has no eyeballs
 The MPFB base mesh ships with **empty eye sockets** — so the shaded render's canny reads "hollow
 almond" and the gen-AI fills it with blank/hollow eyes (intermittently; it's a coin-flip the prompt
