@@ -51,6 +51,16 @@ The blindspot section was the hardest and most valuable part per citizen, and th
 
 ---
 
+### 2026-07-02 — Voice fidelity added (the 3+2 model)
+
+Loudon: finding real sources of a citizen's *voice* is an important addition to the method, and enchantment is where it matters most. Weighed three ways to capture voice — (1) rewrite the body in first person, (2) a "how to speak" note in the entry, (3) cited speech examples in the bundle. Adopted **3+2**: the bundle **speech file** (verbatim, cited, context-tagged ground truth, with a "sources & their limits" ledger) + a short **`## Voice` note** in the entry (its enchantment-reachable compile). **Rejected (1)** — a first-person body launders invention and destroys the blindspot's outside view.
+
+The triangulation discipline earned its place immediately: Cage's most-cited "sources" include a **fabrication** (the Ted Berrigan "interview," which once won best-interview-of-the-year) and a Cage-approved **collage** (Kostelanetz's *Conversing with Cage*), and Eno's signature analogies (garden/screwdriver) are **rehearsed stage lines**, not off-the-cuff talk. One source misleads; people talk differently on a stage than in a taxi.
+
+Standardized into the method (§Voice fidelity; procedure steps 3 and 5) and into [[Palace Enchantment]] (its context-construction loads the speech file for person citizens; its synthesis trigger now says *sound* like them, in the situation's register, not a caricature). SCHEMA §8 gained the `speech` bundle type (documentation). Pilot built + committed for [[Brian Eno]] and [[John Cage]] (`b64ec59`). WebFetch was down, so the speech files are seeded from search-surfaced transcripts and flagged "verify" — the marked next step is mining primary transcripts for off-the-cuff excerpts.
+
+---
+
 ## Experiment queue (tests to run)
 
 - **Spinoza ↔ Leibniz** — one substance vs infinite windowless monads; the marquee rationalist Dialectic, now that both are built.
