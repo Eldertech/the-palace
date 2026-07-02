@@ -64,6 +64,8 @@ Standardized into the method (§Voice fidelity; procedure steps 3 and 5) and int
 ## Experiment queue (tests to run)
 
 - **A/V voice sourcing for modern citizens** *(Loudon, 2026-07-02)* — when audio/video analysis is possible in-harness, mine *recordings* (podcasts, filmed interviews, lectures) for the less-edited, off-the-cuff speech that print smooths away; start with Eno (living) and Cage (well-recorded). First solve *how* an agent analyzes A/V here (recording-transcripts vs prosody notes vs multimodal). Tag recording-vs-print in each speech file.
+  - *Toward this — a proposed Shop **`specialist`*** *(Loudon, 2026-07-02)*: wrap a multimodal model (or a transcribe→analyze pipeline) that ingests a recording and returns a synthesized **voice profile** to the text-only main agent — verbatim off-the-cuff excerpts + prosody notes (pace, pitch, laughter, hesitation) + context tags. This is the bridge between "recordings are ground truth" and a text-only enchanter. Draft it as a Shop entry when the Shop is next touched.
+- **Verification pass — 2026-07-02 (ran under the classifier/WebFetch outage, via WebSearch + Bash):** 5/5 highest-risk citizen quotes verified authentic (Rubin, Oliveros, Agnes Martin, Meadows, Suzuki — no fabrications; the earlier fake-Marcus catch remains the only one). Conformance lint clean: all 11 built citizens have seed + agency_profile + dossier, 0 unresolved links, 0 placeholder brackets; the 16 interim entries correctly show unbuilt.
 - **Spinoza ↔ Leibniz** — one substance vs infinite windowless monads; the marquee rationalist Dialectic, now that both are built.
 - **Brian Eno ↔ John Cage** — taste-driven generation vs chance-driven non-intention (Cage would call Eno's curation the ego sneaking back).
 
