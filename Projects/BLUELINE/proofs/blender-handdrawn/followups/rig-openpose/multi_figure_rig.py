@@ -55,6 +55,11 @@ def body_pose(name):
         d = relax_arms(); d.update({"spine01": [20, 0, 0]}); d.update(REACH_IN); return d
     if name == "support_up":     # arms raised overhead to hold a body aloft
         d = dict(ARMS_UP); return d
+    if name == "lean_in":        # upright, lean the torso forward so two heads meet (a kiss)
+        d = relax_arms(); d.update({"spine01": [18, 0, 0], "spine02": [10, 0, 0]}); return d
+    if name == "recoil":         # step back, arms up defensively
+        d = {"upperarm01.L": [30, 0, -55], "upperarm01.R": [30, 0, 55],
+             "lowerarm01.L": [-50, 0, -10], "lowerarm01.R": [-50, 0, 10], "spine01": [-8, 0, 0]}; return d
     return {}
 
 # ---- scenes -----------------------------------------------------------------------
@@ -123,6 +128,23 @@ SCENES = {
         _f(( 0.6, 0.3, 0), -18, pose="reach_in", macro=dict(gender=0.15, height=0.53)),
         _f(( 1.3, 0.7, 0), -45, pose="reach_in", macro=dict(gender=0.8, height=0.58)),
         _f(( 0.0, 2.0, 0), 8, pose="reach_in", macro=dict(gender=0.3, height=0.56)),
+    ],
+
+    # A5 (BLUELINE) — impact landing: the powered hero low/central, a woman's limp body at his feet,
+    # a sparse crowd recoiling back.
+    "A5_impact": [
+        _f((0.0, 1.3, 0.0), 4, macro=dict(gender=0.9, muscle=0.85, height=0.68)),          # hero, dominant
+        _f((0.5, 0.7, 0.12), 100, tilt=90, macro=dict(gender=0.1, height=0.5)),             # fallen woman
+        _f((-1.6, 0.6, 0), 22, pose="recoil", macro=dict(gender=0.2, height=0.53)),         # recoiling crowd
+        _f((-0.9, 0.3, 0), 8, pose="recoil", macro=dict(gender=0.85, height=0.57)),
+        _f(( 1.7, 0.8, 0), -20, pose="recoil", macro=dict(gender=0.15, height=0.52)),
+    ],
+
+    # A6' (BLUELINE) — the kiss: two figures upright, leaning in, heads meeting (the Tier-3 hard case,
+    # the shot BLUELINE frames as POV; here staged head-on as a contact test).
+    "A6_kiss": [
+        _f((-0.16, 1.2, 0), 90, pose="lean_in", macro=dict(gender=0.85, height=0.63)),      # figure A, faces +X
+        _f(( 0.16, 1.2, 0), 270, pose="lean_in", macro=dict(gender=0.12, height=0.57)),      # figure B, faces -X
     ],
 
     # B6 — "held up": the fallen one raised overhead on many hands, arms open, above the crowd.

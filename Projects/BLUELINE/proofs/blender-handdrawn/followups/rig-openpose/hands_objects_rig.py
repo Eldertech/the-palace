@@ -31,12 +31,12 @@ RES = HR.RES
 
 # object -> (grip finger-pose, proxy kind, per-object placement tweaks)
 OBJECTS = {
-    "glass":  {"pose": "grip",  "proxy": "cylinder", "radius": 0.032, "length": 0.150,
-               "along": 0.02, "outward": 0.030},
-    "snake":  {"pose": "grip",  "proxy": "torus",    "radius": 0.055, "thick": 0.014,
+    "glass":  {"pose": "grip",  "proxy": "cylinder", "radius": 0.028, "length": 0.095,
                "along": 0.00, "outward": 0.028},
-    "flower": {"pose": "pinch", "proxy": "flower",   "radius": 0.006, "length": 0.170,
-               "head": 0.030, "along": 0.03, "outward": 0.045},
+    "snake":  {"pose": "grip",  "proxy": "torus",    "radius": 0.050, "thick": 0.013,
+               "along": 0.00, "outward": 0.026},
+    "flower": {"pose": "pinch", "proxy": "flower",   "radius": 0.005, "length": 0.120,
+               "head": 0.028, "along": 0.02, "outward": 0.040},
 }
 
 
