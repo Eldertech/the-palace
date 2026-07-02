@@ -21,8 +21,9 @@ from commons.identity import (  # noqa: E402
     agent_slug,
     owner_tag,
     owner_name,
+    owner_of_name,
+    base_of_name,
     owns_name,
-    slug_from_name,
     pod_id_file,
     read_pod_id,
 )

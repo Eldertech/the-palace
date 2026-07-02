@@ -44,26 +44,40 @@ def agent_slug() -> str:
 
 
 # ── ownership helpers (each derives from the slug) ───────────────────────────
+#
+# Name-suffix ownership uses a DOUBLE-hyphen separator: "<base>--<slug>". Bases and
+# slugs are both single-hyphen kebab (my slugify collapses runs of non-alnum to one
+# '-'), so "--" never occurs inside either — which makes `rsplit("--", 1)` an
+# unambiguous (base, slug) split. That's what lets the reaper attribute any pod to
+# its owner from the name alone, and lets a pod with no "--" be recognized as
+# not-Commons-managed (owner None → never reaped).
+
+OWNER_SEP = "--"
+
 
 def owner_tag(slug: str | None = None) -> str:
-    """Metadata/prefix ownership tag: 'owner=<slug>'."""
+    """Metadata/prefix ownership tag: 'owner=<slug>' (for APIs with real tags/prefixes)."""
     return f"owner={slug or agent_slug()}"
 
 
 def owner_name(base: str, slug: str | None = None) -> str:
-    """Name-suffix ownership: '<base>-<slug>' (e.g. RunPod pod names)."""
-    return f"{base}-{slug or agent_slug()}"
+    """Name-suffix ownership: '<base>--<slug>' (e.g. RunPod pod names)."""
+    return f"{base}{OWNER_SEP}{slug or agent_slug()}"
 
 
-def owns_name(name: str, base: str, slug: str | None = None) -> bool:
-    """True iff a resource name belongs to this agent (or the given slug)."""
-    return name == owner_name(base, slug)
+def owner_of_name(name: str) -> str | None:
+    """The owner slug encoded in a '<base>--<slug>' name, or None if unmanaged."""
+    return name.rsplit(OWNER_SEP, 1)[1] if OWNER_SEP in name else None
 
 
-def slug_from_name(name: str, base: str) -> str | None:
-    """Extract the owner slug from a '<base>-<slug>' name, or None if it doesn't fit."""
-    prefix = f"{base}-"
-    return name[len(prefix):] if name.startswith(prefix) and len(name) > len(prefix) else None
+def base_of_name(name: str) -> str:
+    """The base of a '<base>--<slug>' name (the whole name if unmanaged)."""
+    return name.rsplit(OWNER_SEP, 1)[0] if OWNER_SEP in name else name
+
+
+def owns_name(name: str, slug: str | None = None) -> bool:
+    """True iff a resource name is owned by this agent (or the given slug)."""
+    return owner_of_name(name) == (slug or agent_slug())
 
 
 # ── per-agent local handoff state (never a shared path) ──────────────────────
