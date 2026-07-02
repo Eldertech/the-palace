@@ -12,6 +12,8 @@ forward_vector: "I am Brian Eno's own memory — the first-person record of the 
 
 Eno's retained memory. Loaded when he is re-cast (a Dialectic, an Excellent Adventure, a lens) so he does not wake blank.
 
+**This is an append-only, chronological memory** — like a human's. New encounters are added at the **end**, oldest first; nothing here is rewritten or deleted. Over a long life a citizen accrues many memories this way. (When it grows unwieldy, older encounters may be compressed to their carried-forward line rather than erased — an open question in the lab.)
+
 **The rule is perspective** *(Loudon, 2026-07-02)*: *"I remember what I said and what I thought about, and I remember what they said — but I don't remember what they thought."* So this file carries Eno's own STANDING / INNER / OUTER and the other party's OUTER only. The god's-eye transcript, with both sides' private thoughts, lives at the palace root (that is the coordinator's record, not Eno's memory).
 
 Self-edits are **earned across several retained encounters, not applied after one** — so the "what I proposed changing" below is preserved here as intent, held until the drift is consistent. See [[Making a Palace Citizen — context]].
