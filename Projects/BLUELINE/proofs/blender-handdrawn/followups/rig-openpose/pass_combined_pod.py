@@ -27,6 +27,7 @@ def main():
     rcs.append(run("batch_hands_objects_pod.py", a.pod))
     rcs.append(run("multi_regionB_pod.py", a.pod, ["--scene", "B4_cradle"]))
     rcs.append(run("multi_regionB_pod.py", a.pod, ["--scene", "B6_held_up"]))
+    rcs.append(run("multi_batch_pod.py", a.pod, ["--only", "A5_impact,A6_kiss"]))  # BLUELINE A5/A6' Route A
     print(f"\nCOMBINED_PASS_DONE rcs={rcs}", flush=True)
     sys.exit(0 if all(r == 0 for r in rcs) else 1)
 

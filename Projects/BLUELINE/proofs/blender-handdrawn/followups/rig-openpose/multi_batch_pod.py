@@ -54,10 +54,15 @@ SCENES = {
     "B6_held_up":   "a crowd of people in street clothes with raised arms holding one person aloft "
                     "overhead, the lifted person's arms open wide, light breaking through, "
                     "everyone fully dressed, triumphant, tender, full-length figures",
-    # BLUELINE beat kept available
+    # BLUELINE beats
     "A2_hero_points": "a powerful commanding figure in a long coat standing raised above a small "
                       "frightened crowd, one arm thrust out pointing down at them, fully dressed, "
                       "dramatic low angle, embers and smoke",
+    "A5_impact": "a powerful figure landing hard in a low crouch on cracked pavement, a woman's limp "
+                 "body on the ground nearby, a sparse crowd recoiling back in fear, everyone fully "
+                 "dressed, smoke and dust, dramatic, cinematic",
+    "A6_kiss": "two people in coats leaning close together, foreheads and faces almost touching, an "
+               "intimate tender moment, both fully dressed, close-up, cinematic, emotional",
 }
 
 
