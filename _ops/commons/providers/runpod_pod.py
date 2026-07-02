@@ -120,6 +120,13 @@ class RunpodPodProvider(InstanceProvider):
             "containerDiskInGb": spec["containerDiskInGb"],
             "dockerStartCmd": spec["dockerStartCmd"],
         }
+        # Optional RunPod create fields, forwarded only when the spec sets them (e.g. m3's
+        # network volume where its FLUX Union ControlNet lives). Keeps naming/ownership
+        # invariant while letting a spec carry whatever the pod actually needs.
+        for opt in ("networkVolumeId", "volumeMountPath", "volumeInGb", "env",
+                    "allowedCudaVersions", "dataCenterIds", "cloudType"):
+            if spec.get(opt) is not None:
+                body[opt] = spec[opt]
         max_tries, delay = spec.get("max_tries", 6), spec.get("delay", 30)
         self._heartbeat(base)                     # I'm about to use the account (liveness for the reaper)
         for i in range(max_tries):

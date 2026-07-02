@@ -33,6 +33,7 @@ _ns_dir = _find_runpod_ns()
 if _ns_dir and _ns_dir not in sys.path:
     sys.path.insert(0, _ns_dir)
 from agent_ns import SLUG, pod_name, pod_id_file
+from commons.providers.runpod_pod import RunpodPodProvider   # pod lifecycle lives in the Commons provider
 
 PALACE = Path("/Users/loudonstearns/Documents/The Palace")
 CONFIG = PALACE / "RunPod Images" / "studio" / "config.json"
@@ -48,21 +49,12 @@ CN_HF = ("https://huggingface.co/Shakker-Labs/FLUX.1-dev-ControlNet-Union-Pro/re
          "diffusion_pytorch_model.safetensors")
 UA = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0 Safari/537.36"
 
-KEY = json.load(open(CONFIG))["api_key"]
 try:
     import certifi; CTX = ssl.create_default_context(cafile=certifi.where())
 except Exception:
     CTX = ssl._create_unverified_context()
 
-def api(method, path, body=None, timeout=60):
-    data = json.dumps(body).encode() if body is not None else None
-    req = urllib.request.Request("https://rest.runpod.io/v1" + path, data=data, method=method,
-          headers={"Authorization": f"Bearer {KEY}", "Content-Type": "application/json"})
-    try:
-        with urllib.request.urlopen(req, timeout=timeout, context=CTX) as r:
-            b = r.read(); return (json.loads(b) if b else {}), r.status
-    except urllib.error.HTTPError as e:
-        return {"_error": e.read().decode()[:500]}, e.code
+_PROV = RunpodPodProvider(config_path=CONFIG)   # create/list/cull/terminate, all slug-scoped
 
 def proxy_get(pid, path, timeout=15):
     url = f"https://{pid}-8188.proxy.runpod.net{path}"
@@ -91,49 +83,26 @@ def start_script():
         'cd /comfyui && exec python -u main.py --disable-auto-launch --disable-metadata --listen --port 8188\n'
     )
 
-NAME = pod_name("blueline-m3")   # per-agent: "...-<slug>", never shared across agents
-POD_ID_FILE = pod_id_file()      # "/tmp/pod_id-<slug>", never the shared "/tmp/pod_id"
+BASE = "blueline-m3"
+NAME = pod_name(BASE)          # display only; provider owns naming
+POD_ID_FILE = pod_id_file()
 
-def list_named():
-    d, _ = api("GET", "/pods")
-    return [p for p in (d if isinstance(d, list) else []) if p.get("name") == NAME]
+def _spec():
+    return {"base": BASE, "image": IMAGE, "gpuTypeIds": GPU_IDS, "gpuCount": 1,
+            "networkVolumeId": VOLUME_ID, "volumeMountPath": "/workspace",
+            "ports": ["8188/http", "22/tcp"], "containerDiskInGb": 25,
+            "dockerStartCmd": ["bash", "-c", start_script()]}
 
-def create_pod(max_tries=12, delay=30):
-    body = {
-        "name": NAME, "imageName": IMAGE,
-        "gpuTypeIds": GPU_IDS, "gpuCount": 1,
-        "networkVolumeId": VOLUME_ID, "volumeMountPath": "/workspace",
-        "ports": ["8188/http", "22/tcp"], "containerDiskInGb": 25,
-        "dockerStartCmd": ["bash", "-c", start_script()],
-    }
-    for i in range(max_tries):
-        r, code = api("POST", "/pods", body)
-        if code in (200, 201):
-            pid = r.get("id") or r.get("podId")
-            if not pid:
-                sys.exit(f"create returned no id: {json.dumps(r)[:400]}")
-            POD_ID_FILE.write_text(pid)
-            print(f"[create] pod {pid} ({r.get('machine',{}).get('gpuTypeId') or r.get('gpuTypeIds')}) — id at {POD_ID_FILE}")
-            return pid
-        err = json.dumps(r)[:200]
-        # EU-RO-1 (the volume's DC) momentarily out of all listed GPUs — capacity is transient, retry.
-        if code == 500 or "no instances" in err.lower() or "no longer any instances" in err.lower():
-            print(f"[create] no capacity (try {i+1}/{max_tries} [{code}]): {err} — retry in {delay}s")
-            time.sleep(delay); continue
-        sys.exit(f"create failed [{code}]: {json.dumps(r)[:600]}")
-    sys.exit(f"create failed: no GPU capacity in the volume's datacenter after {max_tries} tries — try later")
+def create_pod():
+    r = _PROV.create(_spec()); POD_ID_FILE.write_text(r.id); return r.id
+
+def cleanup_named():
+    mine = _PROV.list_mine(); print(f"[cleanup] {len(mine)} pod(s): {[r.id for r in mine]}")
+    for r in mine: _PROV.terminate(r)
+    return len(mine)
 
 def terminate(pid):
-    r, code = api("DELETE", f"/pods/{pid}")
-    print(f"[terminate] DELETE /pods/{pid} -> {code} {('' if code in (200,204) else json.dumps(r)[:300])}")
-    # verify gone
-    for _ in range(10):
-        g, c = api("GET", f"/pods/{pid}")
-        if c == 404 or (isinstance(g, dict) and g.get("desiredStatus") in ("TERMINATED", "EXITED")):
-            print(f"[terminate] confirmed pod {pid} gone/terminated"); return True
-        time.sleep(3)
-    print(f"[terminate] WARNING — could not confirm termination of {pid}; check the RunPod console")
-    return False
+    return _PROV.terminate(pid)
 
 def wait_ready(pid, boot_timeout=720):
     t0 = time.time()
@@ -145,7 +114,7 @@ def wait_ready(pid, boot_timeout=720):
                 proxy_get(pid, "/system_stats", timeout=10); comfy_up = True
                 print(f"[ready] ComfyUI HTTP up at ~{el}s")
             except Exception:
-                g, _ = api("GET", f"/pods/{pid}")
+                g, _ = _PROV.api("GET", f"/pods/{pid}")
                 ds = g.get("desiredStatus") if isinstance(g, dict) else "?"
                 print(f"[ready] waiting… {el}s (pod desiredStatus={ds})"); time.sleep(8); continue
         # ComfyUI up — verify node + CN are registered
@@ -175,9 +144,9 @@ def main():
         terminate(a.terminate_only); return
 
     # guard: don't stack MY pods (another agent's pods are invisible here)
-    mine = list_named()
+    mine = _PROV.list_mine()
     if mine:
-        print(f"[guard] my pod '{NAME}' already exists {[p.get('id') for p in mine]} — abort. Run --terminate-only to remove it first.")
+        print(f"[guard] my pod '{NAME}' already exists {[r.id for r in mine]} — abort. Run --terminate-only to remove it first.")
         sys.exit(2)
 
     pid = create_pod()
