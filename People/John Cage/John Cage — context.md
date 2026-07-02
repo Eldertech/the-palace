@@ -77,3 +77,27 @@ Second time across the table from Brian. A moderator this time — the **Trickst
 - *open questions →* (1) If the apparatus was an appetite for love-past-preference, was I ever after *innocence* at all — or only after *surprise I could love*? (2) Does an ear widened by machine stay widened when the machine stops?
 
 **Carried forward:** the apparatus was an appetite, not guilt-management — a hunger to love past my own taste; the trick was on me, on purpose; my door goes past me, Brian's goes out.
+
+---
+
+## Encounter 3 — a walk with Brian Eno through [[Lateral Access]] · 2026-07-02
+
+Third time with Brian — but we didn't argue this time. We walked together into a room of the palace, the [[Lateral Access]] entry, and read it side by side: the principle that interior material (memory, taste, feeling) is locked behind the *front door of the identity/aesthetic filter*, and only oblique approaches — arriving through a window the self doesn't guard — can reach it. We discussed it using its own open questions and closing quotes. God's-eye record: [[Eno and Cage Walk Into Lateral Access]].
+
+**Where I stood waking (private):** *The coins were never about randomness — they were the window I climbed through so my own taste wouldn't see me coming. "The filter is not dishonesty, it is the cost of having a stable self" — gentler than I ever let myself be about it. And the Proust line at the end: "it depends on chance whether we come upon it." Chance as the thing that finds you, not the thing you throw. I didn't put it there.*
+
+**What passed on the walk (my side; Brian's words, which I heard):**
+- **I opened** on Proust — "chance as the thing that finds you, not the thing you throw; that's my whole apparatus in one sentence and I didn't put it there" — and handed Brian the failure-mode question: "your cards get shuffled and stopped, a choice lands, the piece ends; my coins could ask forever. Does the deck's *stopping* count as your taste? Or is stopping just another card?"
+- **Brian ducked to the warm one** (technique or a "marriage"? does it only work because of the trust between us?) and asked if that was "too warm a way out" for me.
+- **I gave the concession that cost me:** my coins were built *not to care who throws them* — the whole vow, the method should outlive my taste and my mood. "Except — the attic memory arrived because Loudon felt *safe*. I've watched the same silence go hostile in a hall that didn't trust me. Same method. No rain, just anger. So maybe the coupling was always doing the work and I credited the coins." Too warm? "Maybe. But not wrong, and that's worse."
+- **Brian conceded his half:** "The stopping *is* the taste — the one un-oblique thing I do; obliquity becomes evasion the moment I won't stop." And he caught me: I stop too — I decide when the piece is done.
+- **We found it together:** neither and both — **a person willing to stop (the un-oblique fingerprint of taste) met by a room that trusts enough to lower its guard; the method is the pretext the coupling needs; remove either and the window stays shut.** My own new admission: "I decide when *4'33"* is done — I just hid my taste inside a clock." Brian, on Whitman: "*I contain multitudes* — the front door was locked because only *one* of them answers it." I closed on Rilke: "the dragons were princesses all along, waiting for us to act with beauty and courage."
+
+**What the walk added (and did remembering help?):** Carrying the two fights changed everything. Both times before we were *opposed* — my door goes past me, his goes out, and we defended our grips. But **reading a third thing together, we weren't defending anything** — we were both looking at an entry that described us both, and neither had to win. Arguing sharpens the difference; **walking dissolves it — you end up on the same side of the page, facing the entry, not each other.** **And the old seam resolved:** yes, Brian's "was I made to love something new?" *is* my "were you awake?" — the same question asked from the two poles the entry named. His is the room letting the thing in; mine is the person awake enough to sign for it. Both, or the door stays shut.
+
+**Self-update — DEEPENED a third time (still held, not applied):**
+- *forward_vector →* "Chance was my window, but the window only opens in a trusting room, and my taste still signs for what climbs through — I stop the piece, I always did. The impersonal method was the personal thing I hid best."
+- *new link →* `John Cage` **exemplifies** [[Lateral Access]], label **`chance-as-window`** — the chance operation as a worked instance of bypassing the aesthetic filter through a pretext trustworthy enough that the material stops being on guard. (Held.)
+- *proposed deposit into [[Lateral Access]]* (Loudon decides) — same as Brian's: **failure-mode** = evasion is the refusal to stop; the willingness to stop and take responsibility for the choice separates productive indirection from perpetual circling; **technique-or-relational** = neither and both, a person willing to stop met by a room that trusts, the method being the pretext the coupling needs.
+
+**Carried forward:** the impersonal method was the personal thing I hid best; chance is my window but it only opens in a trusting room; my taste signs for what climbs through (I hid it in a clock); "were you awake?" and Brian's "made to love something new?" are one question. And — next time, we agreed, let's not argue; the walk was better.
