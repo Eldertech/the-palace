@@ -31,14 +31,33 @@ STYLES = [("ink", "__LOCKED__"),
           ("comic", "bold graphic novel cel-shaded illustration, thick confident black ink outlines, "
                     "flat vivid saturated colors, dramatic cel shading, high contrast")]
 
-# scene -> the roles/setting prompt (style appended). Written to read with no text — the drama is staged.
+NEG = RS.NEG + ", nude, naked, nudity, bare skin, underwear"
+
+# scene -> the roles/setting prompt (style appended). Written to read with NO text — drama is staged.
+# THE LIFT (invented, wordless): indifference -> noticing -> reaching -> holding -> collective lift -> release.
 SCENES = {
-    "B2_one_turns": "a busy city street crowd of people walking away with their backs turned, "
-                    "one young woman stopped and turned to face the viewer, full-length figures, urban",
-    "B1_alone":     "a person collapsed lying on the pavement of a busy street, a crowd of people "
-                    "walking past around them not noticing, full-length figures, bleak urban",
-    "A2_hero_points": "a powerful commanding figure standing raised above a small frightened crowd, "
-                      "one arm thrust out pointing down at them, dramatic low angle, embers and smoke",
+    "B1_alone":     "a person collapsed lying face-up on the pavement of a busy city street, a crowd of "
+                    "people in coats and street clothes walking past around them without stopping, "
+                    "everyone fully dressed, bleak, indifferent, full-length figures, urban",
+    "B2_one_turns": "a busy city street, a crowd of people in coats walking away with their backs turned, "
+                    "one young woman in a coat stopped and turned to look back at the viewer, "
+                    "everyone fully dressed, quiet, urban, full-length figures",
+    "B3_reach":     "a person lying fallen on the pavement, one passerby in street clothes leaning over "
+                    "and reaching a hand down to them, a crowd passing behind, everyone fully dressed, "
+                    "tender, urban, full-length figures",
+    "B4_cradle":    "a person in street clothes lifting and cradling a collapsed stranger up into their "
+                    "arms, holding them close, others passing behind, everyone fully dressed, "
+                    "compassionate, tender, full-length figures",
+    "B5_many_hands": "a ring of people in street clothes crouching and reaching in with many hands to "
+                     "lift a fallen person up from the ground together, everyone fully dressed, "
+                     "solidarity, urban, full-length figures",
+    "B6_held_up":   "a crowd of people in street clothes with raised arms holding one person aloft "
+                    "overhead, the lifted person's arms open wide, light breaking through, "
+                    "everyone fully dressed, triumphant, tender, full-length figures",
+    # BLUELINE beat kept available
+    "A2_hero_points": "a powerful commanding figure in a long coat standing raised above a small "
+                      "frightened crowd, one arm thrust out pointing down at them, fully dressed, "
+                      "dramatic low angle, embers and smoke",
 }
 
 
@@ -46,7 +65,7 @@ def graph(prompt, seed, prefix, shaded, depth, pose):
     return {
         "ckpt": {"class_type": "CheckpointLoaderSimple", "inputs": {"ckpt_name": "sd_xl_base_1.0.safetensors"}},
         "pos": {"class_type": "CLIPTextEncode", "inputs": {"text": prompt, "clip": ["ckpt", 1]}},
-        "neg": {"class_type": "CLIPTextEncode", "inputs": {"text": RS.NEG, "clip": ["ckpt", 1]}},
+        "neg": {"class_type": "CLIPTextEncode", "inputs": {"text": NEG, "clip": ["ckpt", 1]}},
         "latent": {"class_type": "EmptyLatentImage", "inputs": {"width": W, "height": H, "batch_size": 1}},
         "shimg": {"class_type": "LoadImage", "inputs": {"image": shaded}},
         "canny": {"class_type": "Canny", "inputs": {"image": ["shimg", 0], "low_threshold": 0.12, "high_threshold": 0.35}},
