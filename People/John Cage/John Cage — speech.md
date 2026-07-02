@@ -5,7 +5,7 @@ links:
   - target: "[[John Cage]]"
     type: connects-to
     label: speech-of
-forward_vector: "I am the cited, context-tagged evidence of how John Cage actually talks — raw verbatim excerpts with their sources and situations, so a future agent can build (or rebuild) his voice profile from ground truth rather than trust a synthesis. My end-state is enough real, multi-source, context-marked material that an enchantment or Dialectic can embody his gentle, dissolving talking voice — not his composed literary aphorisms. I grow as more primary transcripts are mined."
+forward_vector: "I am the cited, context-tagged evidence of how John Cage actually talks — raw verbatim excerpts with their sources and situations, so a future agent can build (or rebuild) his voice profile from ground truth rather than trust a synthesis. My end-state is enough real, multi-source, context-marked material that an enchantment or Dialectic can embody his gentle, dissolving talking voice — not his composed literary aphorisms. I grow as more primary sources are mined — and because Cage is a well-recorded figure, I reach first for audio and video of him actually speaking (less edited than print) once such analysis is possible here."
 ---
 
 # John Cage — speech
