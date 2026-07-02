@@ -61,16 +61,33 @@ Standardized into the method (§Voice fidelity; procedure steps 3 and 5) and int
 
 ---
 
+### 2026-07-02 — Second validation Dialectic (Eno ↔ Cage) — the voice-fidelity test
+
+Ran the first Eno↔Cage Dialectic under true multi-agent isolation (separate Sonnet subagents, frontmatter-only mutual knowledge, coordinator routing only OUTER), now that both citizens carry a **source-checked** `## Voice` note + `[Name] — speech.md`. Question: is curated generative art choosing-well-and-calling-it-emergence, or genuinely getting out of the way? Full transcript: [[Eno and Cage on the Hand and the Open Ear]].
+
+**What it proved — the voice-fidelity layer works (the thing this run was for):**
+- **Faithful to the real speech, not the myth.** This is the new bar. Both agents *obeyed the speech files' ledgers*: Eno did **not** deploy the rehearsed garden/architecture or screwdriver set-pieces as monologues (used a light passing gardening image only); Cage did **not** quote the *Silence* aphorisms ("nothing to say," "no such thing as silence") as spoken lines. Both stayed in the *off-the-cuff* register the files flag — Eno digressive/searching/self-critical; Cage gentle/drifting/concessive, reframing rather than answering, closing with a soft joke ("I'll be over here, not choosing, loudly"). The source-check + context-tags did their job.
+- **Distinct voices**, nameable with labels stripped: Eno argues and holds ground; Cage concedes and dissolves.
+- **Blindspots fired *and deepened* — the deeper-blindspot discovery repeated.** Each found the flaw *beneath* the one on their page. Eno: past "I curate and call it emergence" to *"'scenius' / 'the system thinks for itself' is a story I tell to make my taste sound like ecology, to dress my fingerprint as weather."* Cage: past "every chance piece is unmistakably mine" to *"chance operations were a device for not having to watch myself choose — I wanted innocence and built a machine to feel it; I moved my choosing upstream and called the downstream silence non-intention."* Neither collapsed into caricature or capitulation; Eno explicitly refused to fuse into "one nice instrument" ("the tension is the whole thing").
+- **Shared-child finding + independent `contradicts`.** Both opened on the same gradient (nobody's fully out of the way; it's how far the hand has moved from the wheel) without seeing each other, and both *independently* proposed upgrading their link to `contradicts` (labels `hand-vs-open-ear` / `same-fingerprint-different-hand`) — the Spinoza↔Meadows pattern, repeated.
+- **Real new material (the yield):** the flinch never leaves, it *relocates* (Eno end-loads choosing / curation; Cage front-loads it / the question he asks the coins); the generative system *doesn't think, it widens*; the axis **better vs. more** — keep the criterion (the hand, taste out loud) vs. trade comparative judgment for attention ("were you awake?", the open ear). Candidate deposit: [[Generative Audio Devices]] or a new curated-vs-chance concept — pending Loudon.
+
+**Write-backs proposed to Loudon (not yet applied):** revised `forward_vector` for both citizens; a reciprocal `contradicts` link Eno↔Cage; two new open-questions per page; and the concept deposit. Awaiting approval.
+
+**Caveat:** speech files are source-checked but were seeded under the WebFetch/classifier outage; the A/V-sourcing step (recordings over edited print) is still queued and would sharpen cadence further.
+
+---
+
 ## Experiment queue (tests to run)
 
 - **A/V voice sourcing for modern citizens** *(Loudon, 2026-07-02)* — when audio/video analysis is possible in-harness, mine *recordings* (podcasts, filmed interviews, lectures) for the less-edited, off-the-cuff speech that print smooths away; start with Eno (living) and Cage (well-recorded). First solve *how* an agent analyzes A/V here (recording-transcripts vs prosody notes vs multimodal). Tag recording-vs-print in each speech file.
   - *Toward this — a proposed Shop **`specialist`*** *(Loudon, 2026-07-02)*: wrap a multimodal model (or a transcribe→analyze pipeline) that ingests a recording and returns a synthesized **voice profile** to the text-only main agent — verbatim off-the-cuff excerpts + prosody notes (pace, pitch, laughter, hesitation) + context tags. This is the bridge between "recordings are ground truth" and a text-only enchanter. Draft it as a Shop entry when the Shop is next touched.
 - **Verification pass — 2026-07-02 (ran under the classifier/WebFetch outage, via WebSearch + Bash):** 5/5 highest-risk citizen quotes verified authentic (Rubin, Oliveros, Agnes Martin, Meadows, Suzuki — no fabrications; the earlier fake-Marcus catch remains the only one). Conformance lint clean: all 11 built citizens have seed + agency_profile + dossier, 0 unresolved links, 0 placeholder brackets; the 16 interim entries correctly show unbuilt.
 - **Spinoza ↔ Leibniz** — one substance vs infinite windowless monads; the marquee rationalist Dialectic, now that both are built.
-- **Brian Eno ↔ John Cage** — taste-driven generation vs chance-driven non-intention (Cage would call Eno's curation the ego sneaking back).
+- ~~**Brian Eno ↔ John Cage** — taste-driven generation vs chance-driven non-intention (Cage would call Eno's curation the ego sneaking back).~~ **RUN 2026-07-02** → [[Eno and Cage on the Hand and the Open Ear]] (see findings above).
 
 - **Spinoza ↔ [[Deleuze]]** on the same axis (homecoming vs. becoming) — Deleuze is Spinoza's friendliest, sharpest push; does the citizen hold up against a philosopher who *loves* him and still radicalizes him? (Note: Deleuze is currently `type: concept`, not `person` — may need a citizen build first.)
-- **A non-philosopher Dialectic:** [[John Cage]] ↔ [[Brian Eno]] — system-as-instrument, but Cage would call Eno's taste-driven curation "the ego sneaking back in." Tests whether maker-citizens produce friction as sharp as thinker-citizens.
+- ~~**A non-philosopher Dialectic:** [[John Cage]] ↔ [[Brian Eno]] — system-as-instrument, but Cage would call Eno's taste-driven curation "the ego sneaking back in." Tests whether maker-citizens produce friction as sharp as thinker-citizens.~~ **RUN 2026-07-02** — maker-citizens produced friction as sharp as the thinker pair; see findings above.
 - **Free Enchantment** of one citizen ("what do you want to do?") — tests whether the citizen's forward_vector is a real drive or a label ([[Palace Enchantment]] § Free Enchantment).
 - **Tiered-dossier test** — build one citizen with a *light* dossier and one with the full corpus; compare embodiment fidelity. Answers the "does every citizen need the full dossier?" open question.
 - **Person vs. page-citizen** — enchant the same page once as the *human* (Dialectic) and once as the *page-citizen* (self-reflective Enchantment); compare. Confirms the two-selves split is real and useful.
