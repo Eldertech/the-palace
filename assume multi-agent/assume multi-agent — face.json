@@ -1,0 +1,12 @@
+{
+  "title": "assume multi-agent",
+  "idiom": "stark woodcut broadside",
+  "hero_prompt": "A stark woodcut broadside: two workers, one woman and one man, both reaching toward the same single tool on a workbench, one of them pausing and stepping aside into a separate marked lane, the floor divided into distinct bounded tracks. Bold black ink, high contrast, hand-cut lines, a cautionary old-print mood, darker upper register.",
+  "icon_prompt": "A bold black-and-white emblem: two overlapping human silhouettes, each contained within its own bounded lane with a clear divider between them. Sharp woodcut silhouette, pure black on white, no gradients.",
+  "seeds": {
+    "hero": 263474,
+    "icon": 586070
+  },
+  "rendered_at": "2026-07-02T18:56:20Z",
+  "history": []
+}

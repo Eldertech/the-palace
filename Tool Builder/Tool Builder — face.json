@@ -1,0 +1,12 @@
+{
+  "title": "Tool Builder",
+  "idiom": "draughtsman's technical etching",
+  "hero_prompt": "A detailed draughtsman's etching of a craftsman's workbench seen head-on: hand tools hung in careful order on a pegboard, a set-square and calipers, a row of notches carved into the bench edge like a checklist, wood shavings below. Fine engraved linework, blueprint-ink discipline, warm and orderly, darker upper register.",
+  "icon_prompt": "A bold high-contrast square emblem: a set-square crossed with a hand-forged chisel bearing a guard, over a fine grid. Pure black and white printmaking silhouette, no gradients.",
+  "seeds": {
+    "hero": 300012,
+    "icon": 83125
+  },
+  "rendered_at": "2026-07-02T18:56:43Z",
+  "history": []
+}
