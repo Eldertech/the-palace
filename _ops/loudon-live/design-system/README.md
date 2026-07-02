@@ -4,9 +4,9 @@ The brand and visual system for **Loudon Live** — Loudon's primary public teac
 
 > Building synths, effects, and tools — out loud.
 
-**Audience:** Autodidact Polymaths — self-taught generalists who learn across many fields at once.
+**Audience:** Autodidact Polymaths — self-taught generalists who learn across many fields at once. Named situationally in prose, phrased to the register and said once — **not** stamped on every artifact (see *Naming the audience*, below).
 
-**Footer signature:** `Loudon Live · Autodidact Polymaths`
+**Footer signature:** `Loud'n Live` — the wordmark alone. *(The `· Autodidact Polymaths` tagline was retired from the universal footer 2026-07; forward-only, already-shipped artifacts keep the old footer.)*
 
 **Editorial posture:** Subject is sound and music; tools are the medium. Honesty is a light touch, not a confession. The channel is itself a teaching artifact.
 
@@ -50,9 +50,9 @@ Snapshots of the most useful sources live under `_reference/` for offline use.
 
 ---
 
-## Content fundamentals · cemented
+## Content fundamentals · the house style
 
-The system as locked through review. Every design decision below carries a rule and a *why*. When in doubt: studio register, never commercial-production register. Autodidact polymath, never broadcast personality.
+The default dress, worked out through review — a **floor, not a cage**. A tiny floor is non-negotiable (the studio voice, the Lissajous sigil, the nevers: no cyan / no emoji / no hype); everything below is the reliable *house style* a projection reaches for and may depart from. Every decision below carries a rule and a *why*. When in doubt: hold the floor, reach for the house style, depart deliberately. Studio register, never commercial-production. Loudon presents as many projections (loudon, LDN, Loud'n Live, Professor Compressor, Sonic Sensei, TRICKSTER) — this house style is the home of the **Loud'n Live** projection.
 
 ### Voice
 
@@ -83,7 +83,7 @@ The italic-light *Live* is the only italicised word in the wordmark — and ital
 
 | Role | Family | Weights | Use |
 |---|---|---|---|
-| **Display / wordmark** | **Anton** | 400 | LOUDON / LIVE lockup · slide hero numbers and big poster headlines |
+| **Display / wordmark** | **Anton** | 400 | LOUD’N LIVE lockup · slide hero numbers and big poster headlines |
 | **Body serif** | **Cormorant Garamond** | 300 (italic 300, 400 reserved) | Long-form reading body in publication-flavoured artifacts · italic pull-quotes · identity statements |
 | **UI sans** | **Manrope** | 300 / 400 / 500 / 700 | Magazine-article body in session artifacts · captions · lower-thirds · labels · subheads |
 | **Mono** | **JetBrains Mono** | 400 / 500 / 600 | Metadata · eyebrows · parameter chips · code · timestamps |
@@ -93,7 +93,7 @@ The italic-light *Live* is the only italicised word in the wordmark — and ital
 
 **The italic-light "Live" trick.** In any wordmark or hero, when "Live" appears alongside the channel name it is italic, weight 300, in the active accent colour. The trick survives across all skins.
 
-**The /slash separator.** The wordmark is always `LOUDON` slash `LIVE`. The slash is `--fg-3` (never accent). The accent and glow live on the word "LIVE" only.
+**The `’n` connector.** *(Replaced the `/` slash separator 2026-07.)* The connector is the word `’n`, not a slash — and it **case-matches whatever run it sits in.** In an all-caps setting (the Anton display lockup, mono all-caps eyebrows) the `’N` is a full-size cap, part of the run: `LOUD’N LIVE`. In title or sentence case (prose, body, signatures) it is lowercase: `Loud’n Live`. **Never strand a shrunken lowercase `’n` between all-caps words** — a tiny `n` marooned in a caps lockup (worst beside the italic *Live*) reads wrong. Said aloud the mark is "Loudon" (the *o* elided); read on the page it is "loud *and* live." One apostrophe, always (not the three-word `Loud 'n' Live` idiom). Accent and glow live on "LIVE" only. **Plain-text fallback** (handles / URL slugs / hashtags, where no apostrophe survives): `loudonlive` — restore the *o*, never `loudnlive`.
 
 ---
 
@@ -179,4 +179,28 @@ Each palette and each generator carries a conceptual handle that the autodidact 
 
 ---
 
-*Footer of every Loudon Live artifact: `Loudon Live · Autodidact Polymaths`*
+## Naming the audience — state it, don't stamp it
+
+*(New 2026-07. Replaces the old universal `· Autodidact Polymaths` footer stamp.)*
+
+The audience used to ride every footer. That over-said it, and "autodidact polymaths" carries an academic tilt that fights the everyday voice. Instead, name the idea in specific moments — prose, intros — quickly and never leaned on. Two rules:
+
+1. **Describe the way of learning, never label the person.** "You teach yourself things across fields" invites recognition; "you are a polymath" tells someone what they are — the move the phrase was built to avoid.
+2. **Match the phrasing to the register, and say it once.** The term "autodidact polymaths" keeps a home, but a rare one: the Amber Lab / long-form register, used once. Everywhere else, a plainer line tuned to the room.
+
+**Phrasing bank** (living — add good lines back, tagged by register):
+
+| Register / skin | How to say it, quickly and in passing |
+|---|---|
+| **Graphite** (workshop) | "…if you teach yourself things — lots of things — you're in the right place." / "for people who learn by building, whatever the field." |
+| **Amber Lab** (philosophical) | *The one place the term earns its keep:* "a channel for autodidact polymaths — the self-taught, working across more than one field at once." Said once, then dropped. |
+| **CRT** (DSP · first-principles) | "We'll derive this from scratch — no prerequisites assumed, just a willingness to be a beginner for an hour." |
+| **Strobe** (performance) | "For the ones who never picked just one thing." |
+| **Cobalt Grid** (math) | "If you like it when a concept from one field explains something in another — that's the whole idea here." |
+| **Drafting** (build) | "Built for generalists — people assembling their own education one project at a time." |
+
+The **silent** version is the cross-domain aside — a `◇`-marked marginal note naming an idea in a second field's vocabulary. It proves who the channel is for without a word. Asides demonstrate; the occasional line names.
+
+---
+
+*Footer of every future Loud'n Live artifact: `Loud'n Live` (the wordmark alone).*

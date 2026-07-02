@@ -7,17 +7,21 @@ pillars:
   - philosophy
   - practice
 born: 2026-05-28
-last_activated: 2026-06-26
+last_activated: 2026-07-02
 stage: growing
 energy: high
 forward_vector: >
-  I am the palace's default artifact aesthetic — locked grammar (Anton display,
-  Cormorant body, Manrope UI, JetBrains Mono metadata, Silkscreen as register)
-  over six per-stream skins. Born from Loudon Live, I now govern every artifact
-  the palace makes — session pages, learning materials, slides, posters, web
-  prototypes — unless context demands a different system (Stigmergy keeps its
-  terminal aesthetic for swarm coordination). I am cemented through review and
-  ready to use; I will fruit when used.
+  I am the floor beneath Loudon's many projections, not a cage around them. The small
+  fixed nature I actually hold is tiny — the studio voice, the Lissajous sigil,
+  and a few nevers (no cyan, no emoji, no hype) — and that is enough to let
+  loudon, LDN, Loud'n Live, Professor Compressor, Sonic Sensei, and TRICKSTER all
+  read as recognizably him. My six-skin house style is a reliable default to
+  reach for, never a law to obey; a projection may wear it or depart from it. I keep
+  shrinking my non-negotiables to only what makes the multiplicity cohere, and I
+  fruit when a new projection is born and still reads as Loudon. Each projection is a
+  projection of one multilinear self, cast into a context — the [[Hyperdimensional
+  Prism]] geometry turned on the person who made it. Stigmergy keeps its own
+  terminal aesthetic for swarm coordination — the one standing departure.
 links:
   - target: "[[Loudon Live]]"
     type: enables
@@ -37,6 +41,12 @@ links:
   - target: "[[Loudon Live — asset plan]]"
     type: spawned
     label: cemented-from
+  - target: "[[The Multilinear Self]]"
+    type: exemplifies
+    label: visual-expression
+  - target: "[[Trickster]]"
+    type: connects-to
+    label: one-nature-many-projections
   - target: "[[BBS Design System]]"
     type: mirrors
     label: sibling-system-different-register
@@ -73,29 +83,41 @@ links:
 
 ![[Loudon Live Design System — hero.png]]
 
-The palace's **default artifact aesthetic** — born from Loudon Live, cemented through review, now governing every artifact the palace makes unless context explicitly demands a different system.
+The palace's **default artifact aesthetic** — born from Loudon Live. Read it as a **floor, not a cage**: a small fixed *nature* that keeps every artifact recognizably Loudon, and a wide *field* above it — skins, projections, plays on the name — that is *meant* to vary. It is the dress the palace reaches for, not a law it obeys.
+
+## The floor and the field
+
+Loudon is not a rigid brand and not a *loose* one either — he is a **multilinear self**. The many names are not variations slackly allowed; they are **projections of one higher-dimensional person, cast into context** — the [[Hyperdimensional Prism]] geometry (one reality, many casts) turned on the maker himself. A superposition can't be *displayed* directly; locked into linear time, a multilinear being presents its truth by **switching between projections**, one at a time. The switching is not indecision — it is the honest rendering of the whole. So this system does not police a mark; it holds the one thing conserved across every projection — the **nature** — and keeps it small on purpose, so the projections can run.
+
+**The floor (non-negotiable, tiny).** Three things, mostly non-visual, are all that must hold for an artifact to still be Loudon:
+
+- **The voice** — studio register, generous to makers, curious, playful through restraint, honesty as a light touch. The most durable thing here, and it isn't even visual. (Full rules under [Voice](#voice-the-heart-of-the-floor).)
+- **The sigil** — the [[Hyperdimensional Prism|Lissajous scope]], present on any projection. It needn't be big; it needs to be *there*.
+- **The nevers** — no cyan, no emoji / no CDN icon library, no hype (no outcome-promising titles). Negatives are the strongest invariant: they exclude the off-brand while permitting infinite on-brand.
+
+**The field (open, encouraged).** Everything else. The six-skin house style below is the reliable *default* — the visual home of the **Loud'n Live** projection — but Loudon presents as many projections (loudon, LDN, Professor Compressor, Sonic Sensei, TRICKSTER…), each free to wear the house style or depart from it. The multiplicity is the message: shown together, the projections read as *range*, which is what [[Autodidact Polymaths|polymath]] looks like from outside. This is the [[The Multilinear Self|multilinear self]] made visual — one nature, many projections — of which this design system is the [[Trickster]]-switched surface. The living list is the [[The Multilinear Self — projection roster|projection roster]].
+
+**When in doubt:** hold the floor, reach for the house style, and depart from it deliberately when a projection wants its own look.
 
 ## The Status Rule
 
-The system is named **Loudon Live** because it was built to express the channel's brand. It serves as the **palace default** because that brand — Lissajous-in-sphere, Anton-on-Cormorant, six skins, studio register, autodidact polymath addressee — is the same brand the palace itself speaks in. Every new HTML artifact, slide deck, session page, learning poster, and web prototype defaults to this system. The override carve-out is narrow: a context with its own established visual language (currently only [[BBS Design System]] for STIGMERGY) keeps its own grammar because the context demands it.
+The system is named **Loudon Live** because it was built to express the channel's brand, and its house style serves as the **palace default** because that dress — Lissajous-in-sphere, Anton display, six skins, studio register — is the palace's own everyday voice. New HTML artifacts, slide decks, session pages, and posters reach for it by default. The one standing departure is a context with its own established visual language (currently only [[BBS Design System]] for STIGMERGY).
 
-When in doubt: use this system.
+## The house style (the default projection)
 
-## What's Cemented
+This is the **default dress** — the palace's reliable go-to and the visual home of the **Loud'n Live** projection. It is a strong default, *not* a law: a projection may wear all of it, some of it, or depart entirely when it genuinely wants its own look. What's truly non-negotiable is the floor above; what follows is the house style below it. Within the house style, the grammar holds steady and the skin rotates.
 
-The system locks **grammar** and rotates **skin**.
-
-**Locked grammar** (never varies, ever):
+**The house grammar** (steady default — depart only when a projection wants its own look):
 
 - **Type stack** — Anton (display/wordmark), Cormorant Garamond (body serif), Manrope (UI sans), JetBrains Mono (metadata), Silkscreen (technical garnish only — pixelation is a register, not a default).
-- **Wordmark** — `LOUDON` slash `LIVE`, the italic-light "Live" in accent colour at weight 300. The slash is `--fg-3`, never accent.
+- **Wordmark** — the connector **case-matches whatever run it sits in.** In an all-caps setting (the Anton display lockup, mono all-caps eyebrows) the `’N` is a full-size cap, part of the run: `LOUD’N LIVE`. In title or sentence case (prose, body, signatures) it is lowercase: `Loud’n Live`. **Never strand a shrunken lowercase `’n` between all-caps words** — a tiny `n` marooned in a caps lockup (worst beside the italic *Live*) reads wrong; that was the earlier mistake, corrected 2026-07. One apostrophe, always (the name contracting from the inside, Loud-o-n — not the three-word `Loud 'n' Live` idiom). "Live" stays the accent word (accent colour, weight 300, italic in title-case settings). Said aloud it is "Loudon"; read on the page it is "loud *and* live." **Plain-text fallback** for any surface that can't render the apostrophe (handles, URL slugs, hashtags): `loudonlive` — restore the *o*, never `loudnlive`. *(Renamed from `LOUDON / LIVE` 2026-07; the palace entry titles and filenames keep "Loudon Live" — only the rendered wordmark changed.)*
 - **Layout** — left-aligned editorial spread is the default; no centred-book-cover compositions.
 - **Radii** — ceiling of 4 px. 0 / 1 / 2 / 4 only. Pill (999) only when shape carries meaning.
 - **Borders** — 1 – 1.5 px. Never thicker.
 - **Spacing scale** — 4 / 8 / 12 / 16 / 20 / 24 / 32 / 40 / 48 / 64 / 80 / 120.
 - **Motion** — `cubic-bezier(.4, 0, .2, 1)` at 220 ms ordinary, `.2 .9 .2 1` at 550 ms emphasised. Two ambient motions allowed: the Lissajous rotation, the on-air red-dot pulse. No bounces, no springs.
 - **Iconography** — typographic glyphs (`● ▸ · ◐ ◇`) + the Lissajous trace + the LL monogram. **No emoji, no CDN icon library.**
-- **Footer** — `Loudon Live · Autodidact Polymaths` on every shipped artifact.
+- **Footer** — `Loud'n Live` on every shipped artifact: the wordmark alone. *(The `· Autodidact Polymaths` tagline was retired from the universal footer 2026-07 — see [§ Naming the audience](#naming-the-audience-state-it-dont-stamp-it). Forward-only: already-shipped artifacts keep their old footer.)*
 
 **Per-stream skin** (rotates by setting one class on `<html>`):
 
@@ -110,7 +132,7 @@ The system locks **grammar** and rotates **skin**.
 
 **Per-stream generative element** rotates from the six in `assets/generators/`: lissajous-bundle, modular-grid, particle-field, spectral-bands, waveform-stack, plus the canonical [[Hyperdimensional Prism|Lissajous trace]]. Each carries a conceptual handle — use them when relevant, not as decoration.
 
-## Voice (also locked)
+## Voice (the heart of the floor)
 
 - **Studio register, never commercial-production register.** Sketch / Study / Piece — never MVP / v1 / final.
 - **First-person and collaborative pronouns.** "Let's explore" — not "students," not "subscribers."
@@ -118,6 +140,30 @@ The system locks **grammar** and rotates **skin**.
 - **No outcome promises in titles.** "Live build · synth lab, session 1" — not "Finishing the synth in one hour."
 - **Honesty as a light touch, not a confession.** Once in the trailer; the work speaks elsewhere.
 - **No emoji. No abbreviations when a full word fits.** *Snare*, not "SNR".
+
+## Naming the audience — state it, don't stamp it
+
+*(New 2026-07. Replaces the old universal `· Autodidact Polymaths` footer stamp.)*
+
+The audience is [[Autodidact Polymaths]] — self-taught generalists who learn across many fields at once. It used to be stamped on every footer. That over-said it, and the term itself carries an academic tilt that fights the everyday voice. So: **name the idea in specific moments — prose, intros — stated quickly and never leaned on.**
+
+Two rules:
+
+1. **Describe the way of learning, never label the person.** "You teach yourself things across fields" invites recognition; "you are a polymath" tells someone what they are — the move the phrase was built to avoid.
+2. **Match the phrasing to the register, and say it once.** The academic term "autodidact polymaths" keeps a home, but a rare one: the long-form / philosophical (Amber Lab) register, used once and dropped. Everywhere else, use a plainer line tuned to the room.
+
+**Phrasing bank** (living — add good in-passing lines back, tagged by register):
+
+| Register / skin | How to say it, quickly and in passing |
+|---|---|
+| **Graphite** (default · workshop) | "…if you're the kind of person who teaches yourself things — lots of things — you're in the right place." / "for people who learn by building, whatever the field." |
+| **Amber Lab** (philosophical · long-form) | *The one place the term earns its keep:* "a channel for autodidact polymaths — the self-taught, working across more than one field at once." Said once, then dropped. |
+| **CRT** (DSP · first-principles) | "We'll derive this from scratch — no prerequisites assumed, just curiosity and a willingness to be a beginner for an hour." |
+| **Strobe** (performance · live) | "For the ones who never picked just one thing." |
+| **Cobalt Grid** (math · blueprint) | "If you like it when a concept from one field turns out to explain something in another — that's the whole idea here." |
+| **Drafting** (schematic · build) | "Built for generalists — people assembling their own education one project at a time." |
+
+The **silent** version of the same signal is the cross-domain aside — a `◇`-marked marginal note naming an idea in a second field's vocabulary (the [[ROSETTA]] move, formalized as a reusable component). It proves who the channel is for without a word. The asides demonstrate; the occasional line names.
 
 ## Where The System Lives
 
@@ -201,18 +247,25 @@ For a new palace artifact:
 
 The previews in `preview/` are working specimen cards — open them in a browser to see the system before writing anything.
 
-## Hard Rules (Non-Negotiable)
+## The floor (non-negotiable) and the house defaults
 
-These survive every artifact, every palette, every skin:
+Two lists, deliberately separated. The floor survives *every* projection, skin, and artifact — break it and the thing stops being Loudon. The house defaults are the reliable look a projection reaches for and may depart from on purpose.
+
+**The floor — non-negotiable, survives every projection:**
 
 - **No emoji. No CDN icon library.** Typographic glyphs and the Lissajous trace are the only iconography.
-- **No outcome promises in titles or session names.**
-- **First-person and collaborative pronouns.** Never "subscribe and hit the bell," never "students," never "audience."
-- **Italic-light *Live*** is the brand signature. Italic in body reserved for emphasis and the *one* keyword in a two-word title.
-- **One accent glow per view.** Reserved for the primary call to action.
 - **No cyan.** Anywhere. Ever. The earlier teal callout is dead; change-notes use info-blue.
-- **No decorative gradients in chrome.** The only allowed gradient is the radial protection-gradient under cards on busy backgrounds.
-- **Restrained motion.** The Lissajous trace's slow rotation and the on-air red-dot pulse are the only ambient motions.
+- **No hype.** No outcome-promising titles or session names.
+- **First-person and collaborative voice.** Never "subscribe and hit the bell," never "students," never "audience."
+- **The Lissajous sigil is present** somewhere on the artifact — small is fine.
+
+**House defaults — reach for these; depart when a projection wants its own look:**
+
+- **Italic-light *Live*** is the Loud'n Live projection's signature. Italic in body reserved for emphasis and the *one* keyword in a two-word title.
+- **One accent glow per view**, reserved for the primary call to action.
+- **No decorative gradients in chrome** — the only house gradient is the radial protection-gradient under cards on busy backgrounds.
+- **Restrained motion** — the Lissajous trace's slow rotation and the on-air red-dot pulse are the house's only ambient motions.
+- **The Anton / Cormorant / Manrope / JetBrains type stack and the six skins** — the default dress, catalogued above under [the house style](#the-house-style-the-default-projection).
 
 ## Origin
 

@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 160" width="720" height="160">
   <rect width="720" height="160" fill="#0a0a0f"></rect>
-  <text x="40" y="100" font-family="Source Serif 4, Georgia, serif" font-size="80" font-weight="700" letter-spacing="-1.5" fill="#e8e8f0">Loudon <tspan font-style="italic" font-weight="300" fill="#e8b84a">Live</tspan></text>
+  <text x="40" y="100" font-family="Source Serif 4, Georgia, serif" font-size="80" font-weight="700" letter-spacing="-1.5" fill="#e8e8f0">Loud<tspan font-weight="300" fill="#7a7a8e">’n</tspan> <tspan font-style="italic" font-weight="300" fill="#e8b84a">Live</tspan></text>
   <line x1="40" y1="120" x2="320" y2="120" stroke="#e8b84a" stroke-opacity="0.4" stroke-width="1"></line>
   <text x="40" y="140" font-family="JetBrains Mono, monospace" font-size="13" letter-spacing="3" fill="#7a7a8e">SOUND · FIRST PRINCIPLES · OUT LOUD</text>
 </svg>

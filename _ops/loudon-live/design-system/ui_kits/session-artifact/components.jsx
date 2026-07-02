@@ -110,8 +110,8 @@ function CalloutChange({ label, children }) {
 function SessionFooter({ left, right }) {
   return (
     <div className="session-footer">
-      <span className="sig-mono">{left} <em>·</em> {right}</span>
-      <span className="wordmark">LOUDON<span className="slash">/</span><span className="accent">LIVE</span></span>
+      <span className="sig-mono">{left}{right ? <> <em>·</em> {right}</> : null}</span>
+      <span className="wordmark">LOUD’N <span className="accent">LIVE</span></span>
     </div>
   );
 }

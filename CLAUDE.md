@@ -134,11 +134,11 @@ Cadences, the Ceremony Reader, and full specs: [[Palace Ceremonies]]. Operationa
 
 ## Artifact Aesthetic — Default
 
-Every HTML artifact, slide, session page, learning material, web prototype, or visual deliverable the palace makes defaults to the **[[Loudon Live Design System]]** — locked grammar (Anton display, Cormorant body, Manrope UI, JetBrains Mono metadata, Silkscreen pixel) over six per-stream skins (Graphite default · Amber Lab · CRT · Strobe · Cobalt Grid · Drafting). The agent-readable manifest lives at `_ops/loudon-live/design-system/SKILL.md`; invoke it before generating any artifact.
+Every HTML artifact, slide, session page, learning material, web prototype, or visual deliverable the palace makes defaults to the **[[Loudon Live Design System]]** — read as a **floor, not a cage**: a small non-negotiable floor (the studio voice, the Lissajous sigil, the nevers — no cyan / no emoji / no hype) keeps everything recognizably Loudon, and a house style (Anton display, Cormorant body, Manrope UI, JetBrains Mono metadata, Silkscreen pixel) over six per-stream skins (Graphite default · Amber Lab · CRT · Strobe · Cobalt Grid · Drafting) is the reliable default to reach for and depart from. Loudon presents as many projections of one [[The Multilinear Self|multilinear self]] ([[The Multilinear Self — projection roster|roster]]); the house style is the home of the **Loud'n Live** projection. The agent-readable manifest lives at `_ops/loudon-live/design-system/SKILL.md`; invoke it before generating any artifact.
 
 **Override carve-out:** when a context has its own established visual language, that system wins. Currently only [[BBS Design System]] (STIGMERGY swarm terminal) qualifies. New overrides require a deliberate decision documented in the artifact's parent entry.
 
-The footer of any shipped artifact reads `Loudon Live · Autodidact Polymaths`. No emoji, no CDN icon libraries, no cyan, no outcome promises in titles. See [[Loudon Live Design System]] for the full rule set.
+The footer of any shipped artifact reads `Loud'n Live` — the wordmark alone. (The `· Autodidact Polymaths` tagline was retired from the universal footer 2026-07: the audience is now named situationally in prose, phrased to the register and said once, never stamped on every artifact. Already-shipped artifacts keep their old footer; the change is forward-only.) No emoji, no CDN icon libraries, no cyan, no outcome promises in titles. See [[Loudon Live Design System]] for the full rule set, the `Loud'n Live` wordmark grammar, and the audience-phrasing bank.
 
 ## Key Vocabulary
 
