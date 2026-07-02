@@ -39,11 +39,22 @@ def relax_arms(side_both=True):
          "upperarm01.R": [0, 0, 62],  "lowerarm01.R": [0, 0, 12]}
     return d
 
+REACH_IN = {"upperarm01.L": [72, 0, -32], "lowerarm01.L": [-42, 0, -8],
+            "upperarm01.R": [72, 0, 32],  "lowerarm01.R": [-42, 0, 8]}    # both arms forward+down toward centre
+
 def body_pose(name):
     if name == "stand":
         return relax_arms()
     if name == "stand_hands_pocket":
         d = relax_arms(); d.update({"lowerarm01.L": [-40, 0, -20], "lowerarm01.R": [-40, 0, 20]}); return d
+    if name == "bend_over":      # lean over the fallen and reach a hand down
+        d = relax_arms(); d.update({"spine01": [34, 0, 0], "spine02": [16, 0, 0]}); d.update(REACH_DOWN_R); return d
+    if name == "cradle":         # crouch forward, both forearms forward to gather a body up
+        d = relax_arms(); d.update({"spine01": [22, 0, 0]}); d.update(CRADLE); return d
+    if name == "reach_in":       # bend in and reach both arms toward the centre (crowd, many hands)
+        d = relax_arms(); d.update({"spine01": [20, 0, 0]}); d.update(REACH_IN); return d
+    if name == "support_up":     # arms raised overhead to hold a body aloft
+        d = dict(ARMS_UP); return d
     return {}
 
 # ---- scenes -----------------------------------------------------------------------
@@ -54,8 +65,8 @@ def _f(pos, rot, pose="stand", macro=None, hand=None, present=None, tilt=0.0):
 # arm gestures (euler deg on the default rig) — approximate, tuned by render-inspect
 POINT_R = {"upperarm01.R": [18, 0, 40], "lowerarm01.R": [-8, 0, 5]}     # right arm thrust out to point
 REACH_DOWN_R = {"upperarm01.R": [45, 0, 30], "lowerarm01.R": [-15, 0, 8]}  # kneeling reach toward the ground
-CRADLE = {"upperarm01.L": [40, 0, -20], "lowerarm01.L": [-70, 0, -10],
-          "upperarm01.R": [40, 0, 20],  "lowerarm01.R": [-70, 0, 10]}    # both forearms forward, cradle
+CRADLE = {"upperarm01.L": [78, 0, -14], "lowerarm01.L": [-55, 0, -8],
+          "upperarm01.R": [78, 0, 14],  "lowerarm01.R": [-55, 0, 8]}     # both arms forward + up, cradling a body
 ARMS_UP = {"upperarm01.L": [0, 0, -150], "upperarm01.R": [0, 0, 150],
            "lowerarm01.L": [-20, 0, 0],  "lowerarm01.R": [-20, 0, 0]}    # lifted figure, arms open overhead
 
@@ -86,6 +97,41 @@ SCENES = {
         _f((-0.5, 0.9, 0), -12, macro=dict(gender=0.2, height=0.52)),
         _f(( 0.7, 0.6, 0), 8, macro=dict(gender=0.85, height=0.55)),
         _f(( 1.6, 1.0, 0), -18, macro=dict(gender=0.15, height=0.5)),
+    ],
+
+    # B3 — "the reach": one passerby leans over the fallen one and extends a hand down.
+    "B3_reach": [
+        _f((0.35, 0.7, 0.12), 92, tilt=90, macro=dict(gender=0.15, height=0.52)),   # the fallen one (lying)
+        _f((-0.55, 0.6, 0), 60, pose="bend_over", hand="open", macro=dict(gender=0.2, height=0.55)),  # the reacher
+        _f((-1.7, 2.0, 0), 172, macro=dict(gender=0.9, height=0.6)),                # crowd still passing
+        _f(( 1.6, 2.1, 0), 184, macro=dict(gender=0.85, height=0.58)),
+    ],
+
+    # B4 — "the cradle": the passerby gathers the fallen one up, arms underneath, heads close.
+    "B4_cradle": [
+        _f((0.05, 0.85, 0.62), 35, tilt=40, macro=dict(gender=0.15, height=0.5)),   # fallen, half-upright in the arms
+        _f((-0.15, 0.75, 0), 30, pose="cradle", macro=dict(gender=0.25, height=0.6)),  # the cradler, arms forward+up
+        _f((-1.9, 2.2, 0), 170, macro=dict(gender=0.9, height=0.6)),
+        _f(( 1.8, 2.3, 0), 188, macro=dict(gender=0.15, height=0.55)),
+    ],
+
+    # B5 — "many hands": a ring of people stop and reach in, many hands going under the body.
+    "B5_many_hands": [
+        _f((0.0, 1.1, 0.35), 90, tilt=90, macro=dict(gender=0.15, height=0.5)),     # the body, low, centre
+        _f((-1.3, 0.7, 0), 45, pose="reach_in", macro=dict(gender=0.2, height=0.55)),
+        _f((-0.6, 0.3, 0), 18, pose="reach_in", macro=dict(gender=0.85, height=0.6)),
+        _f(( 0.6, 0.3, 0), -18, pose="reach_in", macro=dict(gender=0.15, height=0.53)),
+        _f(( 1.3, 0.7, 0), -45, pose="reach_in", macro=dict(gender=0.8, height=0.58)),
+        _f(( 0.0, 2.0, 0), 8, pose="reach_in", macro=dict(gender=0.3, height=0.56)),
+    ],
+
+    # B6 — "held up": the fallen one raised overhead on many hands, arms open, above the crowd.
+    "B6_held_up": [
+        _f((0.0, 1.2, 1.18), 90, tilt=90, pose="support_up", macro=dict(gender=0.15, height=0.52)),  # lifted, arms open
+        _f((-1.3, 0.9, 0), 12, pose="support_up", macro=dict(gender=0.2, height=0.55)),
+        _f((-0.5, 0.6, 0), 6, pose="support_up", macro=dict(gender=0.85, height=0.6)),
+        _f(( 0.5, 0.6, 0), -6, pose="support_up", macro=dict(gender=0.15, height=0.53)),
+        _f(( 1.3, 0.9, 0), -12, pose="support_up", macro=dict(gender=0.8, height=0.58)),
     ],
 }
 
@@ -130,7 +176,7 @@ def add_group_camera(bodies):
     cd.lens = 40
     center, (dx, dy, dz) = group_bounds(bodies)
     aspect = RES[0] / RES[1]
-    extent = max(dx / aspect, dz) * 1.20                     # fit width (scaled by aspect) or height
+    extent = max(dx / aspect, dz) * 1.32                     # fit width (scaled by aspect) or height, w/ margin
     dist = extent * 1.9
     eye = mathutils.Vector((center.x, center.y - dist, center.z + 0.05))
     c.location = eye
