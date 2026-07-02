@@ -68,6 +68,15 @@ START = (
   'cd /comfyui && exec python -u main.py --disable-auto-launch --disable-metadata --listen --port 8188\n'
 )
 
+# ⚠ SINGLE-TENANT — assumes this is the ONLY agent using the RunPod account.
+# All pods share this one NAME, main()'s guard aborts if ANY pod exists, and cleanup_named/
+# _cull_extras delete BY NAME. External stray-sweeps GET /pods -> DELETE all. So if a SECOND
+# Claude runs pods concurrently, the two mutually terminate each other's pods mid-boot — which
+# reads as a "dud node" (RUNNING but ComfyUI never comes up; wait_ready times out). Diagnosed
+# 2026-07-02 after a day of phantom duds. Until this is namespaced per-agent (unique NAME suffix;
+# every list/cull/sweep/guard scoped to the agent's OWN name; per-agent pod_id path), only ONE
+# agent may use RunPod at a time — serialize via a TRICKSTER RESOURCE_REQUEST lease. See
+# Shop/RunPod GPU Backend.md § Operational playbook, and the standing "assume multi-agent" rule.
 NAME = "blueline-sdxl-pose-cn"
 
 def list_named():
