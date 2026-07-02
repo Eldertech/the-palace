@@ -7,10 +7,32 @@ so a boot/render failure costs minutes, not a leaked GPU. Loudon greenlit ~$0.30
 
   python3 m3_pod_orchestrator.py            # full lifecycle: create -> render -> terminate
   python3 m3_pod_orchestrator.py --terminate-only <podId>   # safety: kill a leaked pod
+
+MULTI-AGENT (2026-07-02): the pod is per-agent-namespaced — "blueline-m3-<slug>" (see
+_ops/runpod/agent_ns.py). Guard/create/terminate all scope to that name, so this is safe to
+run concurrently with other Claudes on the same RunPod account.
 """
 import argparse, base64, json, ssl, subprocess, sys, time
 import urllib.request, urllib.error
 from pathlib import Path
+
+# ── per-agent namespace (multi-agent safety) ─────────────────────────────────
+import os as _bootstrap_os
+def _find_runpod_ns():
+    d = _bootstrap_os.path.dirname(_bootstrap_os.path.abspath(__file__))
+    for _ in range(10):
+        cand = _bootstrap_os.path.join(d, "_ops", "runpod")
+        if _bootstrap_os.path.isfile(_bootstrap_os.path.join(cand, "agent_ns.py")):
+            return cand
+        nd = _bootstrap_os.path.dirname(d)
+        if nd == d:
+            break
+        d = nd
+    return None
+_ns_dir = _find_runpod_ns()
+if _ns_dir and _ns_dir not in sys.path:
+    sys.path.insert(0, _ns_dir)
+from agent_ns import SLUG, pod_name, pod_id_file
 
 PALACE = Path("/Users/loudonstearns/Documents/The Palace")
 CONFIG = PALACE / "RunPod Images" / "studio" / "config.json"
@@ -69,9 +91,16 @@ def start_script():
         'cd /comfyui && exec python -u main.py --disable-auto-launch --disable-metadata --listen --port 8188\n'
     )
 
+NAME = pod_name("blueline-m3")   # per-agent: "...-<slug>", never shared across agents
+POD_ID_FILE = pod_id_file()      # "/tmp/pod_id-<slug>", never the shared "/tmp/pod_id"
+
+def list_named():
+    d, _ = api("GET", "/pods")
+    return [p for p in (d if isinstance(d, list) else []) if p.get("name") == NAME]
+
 def create_pod(max_tries=12, delay=30):
     body = {
-        "name": "blueline-m3", "imageName": IMAGE,
+        "name": NAME, "imageName": IMAGE,
         "gpuTypeIds": GPU_IDS, "gpuCount": 1,
         "networkVolumeId": VOLUME_ID, "volumeMountPath": "/workspace",
         "ports": ["8188/http", "22/tcp"], "containerDiskInGb": 25,
@@ -83,8 +112,8 @@ def create_pod(max_tries=12, delay=30):
             pid = r.get("id") or r.get("podId")
             if not pid:
                 sys.exit(f"create returned no id: {json.dumps(r)[:400]}")
-            Path("/tmp/pod_id").write_text(pid)
-            print(f"[create] pod {pid} ({r.get('machine',{}).get('gpuTypeId') or r.get('gpuTypeIds')}) — id at /tmp/pod_id")
+            POD_ID_FILE.write_text(pid)
+            print(f"[create] pod {pid} ({r.get('machine',{}).get('gpuTypeId') or r.get('gpuTypeIds')}) — id at {POD_ID_FILE}")
             return pid
         err = json.dumps(r)[:200]
         # EU-RO-1 (the volume's DC) momentarily out of all listed GPUs — capacity is transient, retry.
@@ -141,14 +170,14 @@ def main():
     ap.add_argument("--render-script", default="m3.6_pod_render.py")   # current move: the delta sweep
     ap.add_argument("--render-args", default="")                       # extra argv for the render script
     a = ap.parse_args()
+    print(f"[ns] agent slug={SLUG}  pod name={NAME}")
     if a.terminate_only:
         terminate(a.terminate_only); return
 
-    # guard: don't stack pods
-    pods, _ = api("GET", "/pods")
-    existing = [p for p in (pods if isinstance(pods, list) else [])]
-    if existing:
-        print(f"[guard] {len(existing)} pod(s) already exist: {[p.get('id') for p in existing]} — aborting to avoid double spend")
+    # guard: don't stack MY pods (another agent's pods are invisible here)
+    mine = list_named()
+    if mine:
+        print(f"[guard] my pod '{NAME}' already exists {[p.get('id') for p in mine]} — abort. Run --terminate-only to remove it first.")
         sys.exit(2)
 
     pid = create_pod()

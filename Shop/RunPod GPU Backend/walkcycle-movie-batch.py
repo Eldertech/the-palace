@@ -4,9 +4,27 @@ import json, sys
 from pathlib import Path
 import pod_comfy as pc
 
+# ── per-agent namespace (multi-agent safety) ─────────────────────────────────
+import os as _bootstrap_os
+def _find_runpod_ns():
+    d = _bootstrap_os.path.dirname(_bootstrap_os.path.abspath(__file__))
+    for _ in range(10):
+        cand = _bootstrap_os.path.join(d, "_ops", "runpod")
+        if _bootstrap_os.path.isfile(_bootstrap_os.path.join(cand, "agent_ns.py")):
+            return cand
+        nd = _bootstrap_os.path.dirname(d)
+        if nd == d:
+            break
+        d = nd
+    return None
+_ns_dir = _find_runpod_ns()
+if _ns_dir and _ns_dir not in sys.path:
+    sys.path.insert(0, _ns_dir)
+from agent_ns import read_pod_id, SLUG
+
 POSES = Path("/sessions/beautiful-zen-allen/mnt/outputs/runpod-backend/walkcycle")
 OUT = Path("/sessions/beautiful-zen-allen/mnt/The Palace/RunPod Images/flux/walk_movie")
-STATE = Path("/tmp/walkmovie.json")
+STATE = Path(f"/tmp/walkmovie-{SLUG}.json")
 SEED = 555
 
 ANCHOR = ("A full-body cinematic photograph of the same man walking, mid-stride, full body visible head to toe, "
