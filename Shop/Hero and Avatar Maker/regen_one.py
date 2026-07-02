@@ -44,6 +44,28 @@ import tempfile
 import urllib.request
 from pathlib import Path
 
+# ── Commons endpoint worker coordinator (multi-agent-safe worker scaling) ─────
+# The naive set_workers(0)-in-finally is a wedge when >1 agent shares the endpoint.
+# EndpointWorkers reference-counts renderers on the board so workers park to 0 only
+# when the LAST agent leaves. Falls back to naive scaling if Commons isn't importable.
+def _find_commons_ops():
+    d = os.path.dirname(os.path.abspath(__file__))
+    for _ in range(10):
+        if os.path.isfile(os.path.join(d, "_ops", "commons", "endpoint.py")):
+            return os.path.join(d, "_ops")
+        nd = os.path.dirname(d)
+        if nd == d:
+            break
+        d = nd
+    return None
+_ops_dir = _find_commons_ops()
+if _ops_dir and _ops_dir not in sys.path:
+    sys.path.insert(0, _ops_dir)
+try:
+    from commons.endpoint import EndpointWorkers
+except Exception:
+    EndpointWorkers = None
+
 HERO = (1280, 544)                              # ~12:5 banner
 ICON = (1024, 1024)                             # square emblem
 
@@ -237,13 +259,17 @@ def main(argv) -> int:
     seeds: dict = {}
     ep_obj = None
     key = ep = None
+    workers = None
     try:
         if not mock:
             rp = load_client(palace)
             key, ep = creds(palace)
             ep_obj = rp.RunPodEndpoint(endpoint_id=ep, api_key=key,
                                        poll=rp.PollPolicy(total_timeout_seconds=900))
-            set_workers(key, ep, 1)
+            if EndpointWorkers is not None:
+                workers = EndpointWorkers(ep, key); workers.enter()   # ref-counted, multi-agent-safe
+            else:
+                set_workers(key, ep, 1)                                # fallback: single-tenant scaling
         for side in sides:
             prompt = spec[f"{side}_prompt"].strip() + ANTI_TEXT
             seeds[side] = render_side(ep_obj, out_dir, side, prompt, out_dir / f"{slug(title)}-{side}.png", mock)
@@ -254,7 +280,10 @@ def main(argv) -> int:
     finally:
         if not mock and key and ep:
             try:
-                set_workers(key, ep, 0)         # ALWAYS park — the wedge gotcha
+                if workers is not None:
+                    workers.exit()              # park to 0 only if I'm the LAST renderer (board ref-count)
+                else:
+                    set_workers(key, ep, 0)     # fallback: naive park (single-tenant wedge)
             except Exception as ex:
                 log(f"WARN: could not park endpoint: {ex}")
 
