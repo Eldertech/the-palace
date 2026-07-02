@@ -132,10 +132,12 @@ def wait_ready(pid, boot_timeout=1800):
             except Exception:
                 g,_ = api("GET", f"/pods/{pid}"); ds = g.get("desiredStatus") if isinstance(g,dict) else "?"
                 print(f"[ready] waiting… {el}s (status={ds})"); time.sleep(10); continue
+        cnames = _opts(pid, "ControlNetLoader", "control_net_name")
         ck = CKPT in _opts(pid, "CheckpointLoaderSimple", "ckpt_name")
-        cn = CN_POSE in _opts(pid, "ControlNetLoader", "control_net_name")
-        print(f"[ready] {el}s sdxl={ck} openpose_cn={cn}")
-        if ck and cn: print(f"[ready] PASS at ~{el}s"); return True
+        cn = CN_POSE in cnames
+        cy = (not _WITH_CANNY) or ("controlnet-canny-sdxl.safetensors" in cnames)
+        print(f"[ready] {el}s sdxl={ck} openpose_cn={cn} canny_cn={cy}")
+        if ck and cn and cy: print(f"[ready] PASS at ~{el}s (sdxl+canny confirmed)"); return True
         time.sleep(10)
     return False
 
