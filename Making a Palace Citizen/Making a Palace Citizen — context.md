@@ -63,6 +63,7 @@ Standardized into the method (§Voice fidelity; procedure steps 3 and 5) and int
 
 ## Experiment queue (tests to run)
 
+- **A/V voice sourcing for modern citizens** *(Loudon, 2026-07-02)* — when audio/video analysis is possible in-harness, mine *recordings* (podcasts, filmed interviews, lectures) for the less-edited, off-the-cuff speech that print smooths away; start with Eno (living) and Cage (well-recorded). First solve *how* an agent analyzes A/V here (recording-transcripts vs prosody notes vs multimodal). Tag recording-vs-print in each speech file.
 - **Spinoza ↔ Leibniz** — one substance vs infinite windowless monads; the marquee rationalist Dialectic, now that both are built.
 - **Brian Eno ↔ John Cage** — taste-driven generation vs chance-driven non-intention (Cage would call Eno's curation the ego sneaking back).
 
