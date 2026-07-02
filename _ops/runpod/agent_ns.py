@@ -1,78 +1,38 @@
-"""Per-agent RunPod namespace — the ONE place the multi-agent slug is defined.
+"""Back-compat shim — agent identity now lives in _ops/commons/identity.py.
 
-Two (or more) Claudes routinely share a single RunPod account. Any tool that
-names, lists, guards, culls, sweeps or terminates pods account-wide will strangle
-the *other* agent's pods mid-boot — which on 2026-07-02 read as a full day of
-phantom "dud node" RunPod outage. The fix (the [[assume multi-agent]] discipline):
-scope EVERYTHING an agent creates or destroys to a per-agent slug, so an agent only
-ever sees and touches its own pods.
+Kept at this EXACT path (_ops/runpod/agent_ns.py) because the RunPod
+orchestrators' `_find_runpod_ns()` bootstrap imports `agent_ns` from here. This
+module just re-exports the Commons identity surface, so the ~13 files already
+doing `from agent_ns import ...` need no edit.
 
-  slug priority:  $RUNPOD_AGENT_SLUG  (e.g. a STIGMERGY session_id kebab-slug)
-                  → git worktree/checkout dir name  (stable per-worktree)
-                  → host-<hostname>                 (last resort)
-
-Pod NAME becomes  "<base>-<slug>"  and the pod-id handoff file becomes
-"/tmp/<tag>-<slug>", so two differently-slugged agents are invisible to each other.
-
-Every RunPod caller in the palace imports from here rather than re-deriving a slug,
-so the namespace is single-sourced. See Shop/RunPod GPU Backend.md § Operational
-playbook for the full story and the caller audit.
+The whole point of The Commons is that this slug is NOT RunPod-specific — it is
+the one per-agent namespace for every shared external service. See
+_ops/commons/identity.py and _ops/commons/__init__.py.
 """
-import os, re, socket, subprocess
-from pathlib import Path
+import os as _os
+import sys as _sys
 
+# _ops/runpod/agent_ns.py -> _ops -> add it so `commons` is importable as a package.
+_ops_dir = _os.path.abspath(_os.path.join(_os.path.dirname(__file__), ".."))
+if _ops_dir not in _sys.path:
+    _sys.path.insert(0, _ops_dir)
 
-def agent_slug() -> str:
-    """A short, filesystem/pod-name-safe per-agent namespace token."""
-    s = os.environ.get("RUNPOD_AGENT_SLUG", "").strip()
-    if not s:
-        try:
-            here = os.path.dirname(os.path.abspath(__file__))
-            s = os.path.basename(subprocess.run(
-                ["git", "-C", here, "rev-parse", "--show-toplevel"],
-                capture_output=True, text=True, timeout=5).stdout.strip())
-        except Exception:
-            s = ""
-    if not s:
-        s = "host-" + socket.gethostname()
-    s = re.sub(r"[^a-z0-9]+", "-", s.lower()).strip("-")
-    return s[:32] or "default"
+from commons.identity import (  # noqa: E402
+    agent_slug,
+    owner_tag,
+    owner_name,
+    owns_name,
+    slug_from_name,
+    pod_id_file,
+    read_pod_id,
+)
 
-
-SLUG = agent_slug()
-
-
-def pod_name(base: str) -> str:
-    """The account-unique pod name for THIS agent: '<base>-<slug>'."""
-    return f"{base}-{SLUG}"
-
-
-def pod_id_file(tag: str = "pod_id") -> Path:
-    """The per-agent pod-id handoff path: '/tmp/<tag>-<slug>'. Never shared."""
-    return Path(f"/tmp/{tag}-{SLUG}")
-
-
-def read_pod_id(explicit: str | None = None, tag: str = "pod_id") -> str:
-    """Resolve a pod id for a transport/worker script.
-
-    Priority: an explicit --pod value → this agent's slugged handoff file →
-    a legacy unslugged '/tmp/<tag>' (back-compat for a human standalone run).
-    Raises if none resolve, so a worker never silently drives the wrong pod.
-    """
-    if explicit:
-        return explicit
-    f = pod_id_file(tag)
-    if f.exists():
-        return f.read_text().strip()
-    legacy = Path(f"/tmp/{tag}")
-    if legacy.exists():
-        return legacy.read_text().strip()
-    raise SystemExit(
-        f"[pod-id] no pod id — pass --pod <id>, or one of {f} / {legacy} must exist")
+# Legacy names the RunPod callers import.
+pod_name = owner_name           # old name for owner_name(base) -> "<base>-<slug>"
+SLUG = agent_slug()             # recomputed on every (re)import — test_multi_agent relies on this
 
 
 if __name__ == "__main__":
-    # `python3 agent_ns.py` — print this agent's namespace (handy for debugging).
-    print(f"slug         = {SLUG}")
-    print(f"pod_name(x)  = {pod_name('blueline-sdxl-pose-cn')}")
-    print(f"pod_id_file  = {pod_id_file()}")
+    print(f"slug        = {SLUG}")
+    print(f"pod_name(x) = {pod_name('blueline-sdxl-pose-cn')}")
+    print(f"pod_id_file = {pod_id_file()}")
