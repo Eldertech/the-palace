@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+  <key>Label</key>
+  <string>com.loudon.palace.commons-reaper-sweep</string>
+
+  <key>ProgramArguments</key>
+  <array>
+    <string>/bin/zsh</string>
+    <string>-l</string>
+    <string>/Users/loudonstearns/Documents/The Palace/_ops/heartbeat/run-commons-reaper-sweep.sh</string>
+  </array>
+
+  <!-- Daily 07:00 local. Report-only: FLAGs suspected leaked resources, terminates nothing. -->
+  <key>StartCalendarInterval</key>
+  <dict>
+    <key>Hour</key><integer>7</integer>
+    <key>Minute</key><integer>0</integer>
+  </dict>
+
+  <key>RunAtLoad</key>
+  <false/>
+
+  <key>StandardOutPath</key>
+  <string>/Users/loudonstearns/Documents/The Palace/_ops/heartbeat/logs/launchd-commons-reaper-sweep.out</string>
+  <key>StandardErrorPath</key>
+  <string>/Users/loudonstearns/Documents/The Palace/_ops/heartbeat/logs/launchd-commons-reaper-sweep.err</string>
+</dict>
+</plist>
