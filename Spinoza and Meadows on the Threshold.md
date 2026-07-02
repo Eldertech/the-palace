@@ -1,23 +1,12 @@
 ---
 title: "Spinoza and Meadows on the Threshold"
 born: 2026-07-01
-links:
-  - target: "[[Spinoza]]"
-    type: connects-to
-    label: dialectic-participant
-  - target: "[[Donella Meadows]]"
-    type: connects-to
-    label: dialectic-participant
-  - target: "[[Threshold Conatus]]"
-    type: connects-to
-    label: refines
-  - target: "[[Dialectic]]"
-    type: connects-to
-    label: archived-instance
-forward_vector: "I am the archived transcript of the first Dialectic between the newly-embodied Spinoza and Donella Meadows citizen-pages. I hold the record of how 'persist vs. transform' resolved into the 'homecoming vs. becoming' contrary and the shared name 'the threshold,' so the encounter is not lost and can be re-read, re-deposited, or re-run."
+kind: artifact
 ---
 
 # Spinoza and Meadows on the Threshold
+
+> *Artifact — a Dialectic transcript, **not a canon palace entry** (no `type`, no agent `forward_vector`; invisible to the ceremonies). The coordinator's god's-eye record. Participants: [[Spinoza]], [[Donella Meadows]]. Ceremony: [[Dialectic]]. Yield deposited into [[Threshold Conatus]]. (Predates the per-citizen bundle-memory convention, so no perspectival `— context.md` was written for this run.)*
 
 The palace's first Dialectic run between two newly-embodied `person` citizen-pages, under true multi-agent isolation (separate agents, frontmatter-only mutual knowledge, coordinator routing only OUTER messages, per [[Palace Enchantment]]). Model: Sonnet both sides. 2026-07-01.
 

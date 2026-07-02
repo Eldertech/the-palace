@@ -271,6 +271,11 @@ IDENTITY LAYER (ingestion):
 [the entry's forward_vector field, extracted and placed prominently]
 [if the entry is a `person` citizen: its bundle `[Name] — speech.md` — cited,
 context-tagged real speech — loaded here for voice embodiment]
+[if the citizen has a bundle `[Name] — context.md` memory ledger: load it here
+too, so a re-cast citizen wakes *remembering* its prior encounters. This is the
+citizen's own first-person, perspectival memory (its STANDING/INNER/OUTER + what
+others said aloud to it — never what others privately thought). See
+[[Making a Palace Citizen]] §How a citizen grows.]
 
 SYNTHESIS TRIGGER (end of context — strongest position):
 "Ingestion complete. Your personality, voice, and approach to problems
