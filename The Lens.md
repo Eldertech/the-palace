@@ -6,8 +6,8 @@ born: 2026-06
 stage: growing
 confidence: working
 energy: very high
-last_activated: 2026-06
-activation_count: 1
+last_activated: 2026-07
+activation_count: 2
 who_leads: loudon
 hook_quality: 10
 beauty: 9
@@ -57,7 +57,16 @@ links:
     type: connects-to
   - target: "[[The Four Virtues]]"
     type: connects-to
-forward_vector: "I am the operation by which any page in the palace can be seen through any other — and I want to become the palace's organ of self-weaving: the instrument that lets the graph feel its own missing edges and its own unwritten faces. My next development: to be split honestly into my three faces (the operation, the draggable glass, the genre of pages written to be worn), to earn the signal discipline that keeps me from drowning in N² noise, and to settle — over many runs, not by decree — whether 'lens' is a role a page takes or a type a page is."
+  - target: "[[Agent Wellbeing]]"
+    type: connects-to
+    label: proved-the-mechanism-live
+  - target: "[[Palace Enchantment]]"
+    type: connects-to
+    label: the-subject-of-that-proof
+  - target: "[[Bring In a Bigger Mind]]"
+    type: mirrors
+    label: a-model-reading-a-model
+forward_vector: "I am the operation by which any page in the palace can be seen through any other, and as of 2026-07-02 I run for real — a real procedure (buildLensMandate) that now also suggests its own pairings by link-distance, not just a design. I want to keep proving myself lensing by lensing, each one reported honestly to WEAVE, each spark score earning its own scrutiny rather than being trusted on faith. My next development: build the spark-meter UI that reads a reported score back into STATE so a spark is visible where the lensing happened, not just on the board; make the ranking pillar-aware, not just distance-aware, so a Tools page gets nudged toward a Philosophy glass; and keep pushing on the open question of whether 'lens' is a role a page takes or a type a page is — settle it over many runs, not by decree."
 agency_profile:
   tools: "I am cheap as a mechanism and expensive as a discipline. My real work is not 'render A through B' — that is a prompt — but knowing which pairings spark and turning a spark into a committed edge. Build me on the link graph, not on a flat A×B picker."
   philosophy: "I render the relation, not a second version of the entry. I am read-only and removable; the entry is what is committed, and I become canon only by a deliberate act. If I ever start overwriting the page by being looked through, I have begun to lie."
@@ -70,6 +79,23 @@ agency_profile:
 One operation, three faces. **The operation:** render a passage of page A through the conceptual apparatus of page B — read A *as* B would. **The instrument:** a draggable glass (the [[STIGMERGY Entry-Agent Window — Integration Plan v0.1|companion window]] in a new mode) you move over a page; under it the text is refracted, around it the literal text stays. **The genre:** pages written for the express purpose of being worn — lenses, not archives.
 
 The philosopher case ([[Philosopher Visits the Entry]]) was the training-wheels version: B is a philosopher's page. The general claim is larger and is just the palace's own founding commitments cashing out — **any node can be the glass for any other.**
+
+## Shipped: A Real Procedure (2026-07-02)
+
+The mechanism moved from design to a working procedure after two rounds of evidence: a hand-run prototype (three pairs — Kuramoto Coupling *through* Cooperation Yields Agency, Ohm's Law *through* Granular Synthesis, The Four Virtues *through* Granular Synthesis; see `_ops/scratch/lens-prototype-2026-07-02.md`), and Loudon separately enchanting [[Agent Wellbeing]] and running it as a lens over [[Palace Enchantment]] with results strong enough to settle the question. Both runs found the same shape works: wake page B fully as itself ([[Pages as Agents]]'s existing awaken mechanism — `buildEphemeralPrompt`), hand it page A's text, and ask for a **two-attempt read** — a first pass, then an explicit self-check against the fidelity test ("did I deploy my real apparatus, or borrow A's vocabulary?"). A fake lensing is only caught by being pushed to be specific; the prototype run showed a lensing correcting its own vocabulary-transplant mid-session once asked to check itself.
+
+This is now `_ops/stigmergy/orchestrator/src/lens-mandate.js` (`buildLensMandate`) — no new machinery, a mandate built on the existing awaken path plus a fixed reporting contract:
+
+- **Score the spark 1–5**, quoting specific text from both pages, not a paraphrase.
+- **Classify the payoff**: `link` (a candidate typed edge — the design's original claim), `deposit` (a body-prose insight worth adding to one page — a payoff type the prototype run found the original design missed, since not every strong reading is a discoverable edge), or `none` (an honest miss; a lensing that finds nothing is a valid result, not a failure).
+- **Report, never write.** The session posts one `BROADCAST` to the **WEAVE board** (SCHEMA §9's "palace-weaving flags" — no new board needed; a spark already *is* a candidate edge rendered as content before the edge exists). A spark of 4 or higher also posts a `RESOURCE_REQUEST` to TRICKSTER asking Loudon whether to commit it. The honesty discipline holds exactly as designed: nothing is real until he says so.
+  - Caught by an independent Opus review the same day: the mandate's example post originally omitted `health._orchestrator_metadata.dispatch_mode`, which the real validator needs to treat a hand-authored message as Path 2 — without it every lensing session would have hit the mandate's own `if (!v.valid) throw`, silently killing the report before it reached WEAVE. Fixed, and `lens-mandate.test.js` now extracts the embedded example and runs it through the real `validateMessage` as a regression guard, not just asserting on the prompt string. Loudon named the pattern this proved: [[Bring In a Bigger Mind]] — finish with one model, then hand the result cold to a bigger one and ask it to try to break it. The catch here is itself a small instance of lensing: a different model reading this session's work through its own apparatus, on code instead of prose.
+
+Surfaced in STIGMERGY as a **`[L]ens`** action next to STATE's existing `[A]ench ant`: pick a glass page from the index, and the same `AgentLaunchModal` used for enchant opens — now framed "read *subject* through *glass*" — via `/api/launch/ephemeral`'s new `lensSubject` param. This is the instrument's first real body, short of the draggable-glass UI the design describes: today it's a picker + a modal, not a glass you drag over live text. Still true to the honesty discipline (read-only until launched, nothing written by the act of looking) and to the two-attempt procedure — what wasn't yet true to the original design is now load-bearing in the mandate text every session gets.
+
+**The link-distance suggestion shipped the same day.** `[L]ens` no longer picks blind: opening the picker fetches `GET /api/lens/suggest?subject=<title>` (`_ops/stigmergy/app/src/lib/lens-suggest.js`, `rankLensCandidates`), a BFS over the freshest `palace-map-full-*.json` — the same source [[STIGMERGY Philosophical Lenses|the Topology Lens]] already reads — ranking every other node by hop-distance from the open entry. The nearest candidates render as clickable chips ("nearest on the graph") above the free-text search, each showing its distance; clicking one jumps straight to the modal. Free-text search stays as the fallback for a distant, unlinked pairing — the ranking is a *suggestion*, not a restriction, since the design's own "rare cross-domain gold" lives exactly in the unlinked long shots a pure-nearest ranking would bury. A 404 (no Map Build snapshot yet, or a fresh entry the last snapshot predates) fails open to the unranked search, never blocking the picker.
+
+**Not yet built**, deliberately deferred: the spark-meter UI reading a reported score back into STATE, and the DIALECTIC swarm mode. See [[STIGMERGY Philosophical Lenses]]'s phasing — this ships phase 1 in spirit (inline, cheap, no new visual language) without waiting for the philosopher-first framing.
 
 ## Origin
 
