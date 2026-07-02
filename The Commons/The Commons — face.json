@@ -1,0 +1,12 @@
+{
+  "title": "The Commons",
+  "idiom": "antique engraving / etching",
+  "hero_prompt": "A fine antique engraving of a shared commons: a tended green field worked by many different hands, distinct small workshops linked by woven threads of light, no single owner at the center. Delicate cross-hatching, old cartographer's linework, warm ink on aged paper, panoramic composition with a darker upper register.",
+  "icon_prompt": "A bold high-contrast square emblem in pure black and white: many distinct threads woven into one shared knot, or open hands meeting around a common field. Sharp geometric printmaking silhouette, no gradients.",
+  "seeds": {
+    "hero": 529050,
+    "icon": 579047
+  },
+  "rendered_at": "2026-07-02T18:55:59Z",
+  "history": []
+}
