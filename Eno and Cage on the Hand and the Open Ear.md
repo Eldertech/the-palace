@@ -1,26 +1,12 @@
 ---
 title: "Eno and Cage on the Hand and the Open Ear"
 born: 2026-07-02
-links:
-  - target: "[[Brian Eno]]"
-    type: connects-to
-    label: dialectic-participant
-  - target: "[[John Cage]]"
-    type: connects-to
-    label: dialectic-participant
-  - target: "[[Dialectic]]"
-    type: connects-to
-    label: archived-instance
-  - target: "[[Making a Palace Citizen]]"
-    type: connects-to
-    label: validation-run
-  - target: "[[Palace Enchantment]]"
-    type: connects-to
-    label: true-isolation-run
-forward_vector: "I am the archived transcript of the first Dialectic between the embodied Brian Eno and John Cage citizen-pages — the run that validated the voice-fidelity layer of the citizen method. I hold the record of how 'curated emergence vs. chance' resolved into the 'hand vs. open ear' contrary and the shared confession that nobody is ever fully out of the way, so the encounter can be re-read, re-deposited, or re-run."
+kind: artifact
 ---
 
 # Eno and Cage on the Hand and the Open Ear
+
+> *Artifact — a Dialectic transcript, **not a canon palace entry** (no `type`, no agent `forward_vector`; invisible to the ceremonies). This is the coordinator's god's-eye record. Each participant's own perspectival memory lives in his bundle — [[Brian Eno — context]], [[John Cage — context]] — and this full record is reconstructable from the two. Participants: [[Brian Eno]], [[John Cage]]. Ceremony: [[Dialectic]]. Validation run for [[Making a Palace Citizen]] · [[Palace Enchantment]] true-isolation.*
 
 The palace's second Dialectic between two made `person` citizen-pages — and the first to test the **voice-fidelity layer** ([[Making a Palace Citizen]] §Voice fidelity): both citizens carry a source-checked `## Voice` note and a context-tagged `[Name] — speech.md`. Run under true multi-agent isolation (separate Sonnet subagents, frontmatter-only mutual knowledge, coordinator routing only OUTER messages, per [[Palace Enchantment]] § True Multi-Agent Isolation). Model: Sonnet both sides. 2026-07-02.
 
@@ -28,9 +14,7 @@ The palace's second Dialectic between two made `person` citizen-pages — and th
 
 **The question on the table:** When you set a generative system running and then curate what comes out, are you making art that "thinks for itself" — or choosing the good bits with ferocious taste and calling it emergence? Cage removes his own preferences with chance operations and would call Eno's curation the ego sneaking back in. Is generative art *choosing well and calling it getting-out-of-the-way*, or genuinely getting out of the way? And the same needle turns on Cage: his "no intention" became his fiercest intention, and every chance piece is unmistakably his.
 
-Format below: each agent's private `STANDING` and per-turn `INNER` were visible only to the coordinator; only `OUTER` messages crossed between them.
-
-**This is the coordinator's god's-eye record — both sides' private thoughts included.** Each participant's *own* memory of this encounter is perspectival and lives in his bundle: [[Brian Eno — context]] and [[John Cage — context]] hold only that man's inner voice plus what the other said aloud to him — never the other's private thoughts (the rule Loudon set 2026-07-02: *memory is perspective*). Those bundle files are what a future cast of Eno or Cage is re-loaded with; this root file is the neutral history.
+Format below: each agent's private `STANDING` and per-turn `INNER` were visible only to the coordinator; only `OUTER` messages crossed between them. *Memory is perspective* (Loudon, 2026-07-02): each citizen's bundle memory keeps only his own inner voice + what the other said aloud, never the other's private thoughts — so this god's-eye record exists only here, as an artifact, not in either citizen.
 
 ---
 
