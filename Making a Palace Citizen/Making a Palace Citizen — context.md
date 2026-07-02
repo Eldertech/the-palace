@@ -51,8 +51,21 @@ The blindspot section was the hardest and most valuable part per citizen, and th
 
 ---
 
+### 2026-07-02 — Voice fidelity added (the 3+2 model)
+
+Loudon: finding real sources of a citizen's *voice* is an important addition to the method, and enchantment is where it matters most. Weighed three ways to capture voice — (1) rewrite the body in first person, (2) a "how to speak" note in the entry, (3) cited speech examples in the bundle. Adopted **3+2**: the bundle **speech file** (verbatim, cited, context-tagged ground truth, with a "sources & their limits" ledger) + a short **`## Voice` note** in the entry (its enchantment-reachable compile). **Rejected (1)** — a first-person body launders invention and destroys the blindspot's outside view.
+
+The triangulation discipline earned its place immediately: Cage's most-cited "sources" include a **fabrication** (the Ted Berrigan "interview," which once won best-interview-of-the-year) and a Cage-approved **collage** (Kostelanetz's *Conversing with Cage*), and Eno's signature analogies (garden/screwdriver) are **rehearsed stage lines**, not off-the-cuff talk. One source misleads; people talk differently on a stage than in a taxi.
+
+Standardized into the method (§Voice fidelity; procedure steps 3 and 5) and into [[Palace Enchantment]] (its context-construction loads the speech file for person citizens; its synthesis trigger now says *sound* like them, in the situation's register, not a caricature). SCHEMA §8 gained the `speech` bundle type (documentation). Pilot built + committed for [[Brian Eno]] and [[John Cage]] (`b64ec59`). WebFetch was down, so the speech files are seeded from search-surfaced transcripts and flagged "verify" — the marked next step is mining primary transcripts for off-the-cuff excerpts.
+
+---
+
 ## Experiment queue (tests to run)
 
+- **A/V voice sourcing for modern citizens** *(Loudon, 2026-07-02)* — when audio/video analysis is possible in-harness, mine *recordings* (podcasts, filmed interviews, lectures) for the less-edited, off-the-cuff speech that print smooths away; start with Eno (living) and Cage (well-recorded). First solve *how* an agent analyzes A/V here (recording-transcripts vs prosody notes vs multimodal). Tag recording-vs-print in each speech file.
+  - *Toward this — a proposed Shop **`specialist`*** *(Loudon, 2026-07-02)*: wrap a multimodal model (or a transcribe→analyze pipeline) that ingests a recording and returns a synthesized **voice profile** to the text-only main agent — verbatim off-the-cuff excerpts + prosody notes (pace, pitch, laughter, hesitation) + context tags. This is the bridge between "recordings are ground truth" and a text-only enchanter. Draft it as a Shop entry when the Shop is next touched.
+- **Verification pass — 2026-07-02 (ran under the classifier/WebFetch outage, via WebSearch + Bash):** 5/5 highest-risk citizen quotes verified authentic (Rubin, Oliveros, Agnes Martin, Meadows, Suzuki — no fabrications; the earlier fake-Marcus catch remains the only one). Conformance lint clean: all 11 built citizens have seed + agency_profile + dossier, 0 unresolved links, 0 placeholder brackets; the 16 interim entries correctly show unbuilt.
 - **Spinoza ↔ Leibniz** — one substance vs infinite windowless monads; the marquee rationalist Dialectic, now that both are built.
 - **Brian Eno ↔ John Cage** — taste-driven generation vs chance-driven non-intention (Cage would call Eno's curation the ego sneaking back).
 
