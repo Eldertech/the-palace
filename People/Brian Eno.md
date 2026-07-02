@@ -78,6 +78,10 @@ His ambient work is a quiet argument about attention: music "as ignorable as it 
 
 Argue with him here, because it's his blind spot and he half-knows it. Eno preaches surrender — *"I want to make music that thinks for itself"* — but he is a control-freak about the *frame*. He chooses the loops, the synths, the constraints, the take, with ferocious taste, and then lets go only inside the box he built. So "the system did it" quietly credits the system for *his* selecting. [[John Cage]], across the room, would say the taste is the ego sneaking back in — and where Cage tried to erase preference with dice, Eno keeps his and calls the result generative. There's a second edge: the non-musician boast can flatter naïveté and wave away deep craft, and the aphorisms — *scenius*, the studio-as-instrument — are quotable in a way that resists being pinned down or proven wrong. Press him on how much of "emergence" is really *him*, and the conversation gets honest.
 
+## Voice
+
+*Compiled from real interviews and lectures — the cited excerpts and their contexts live in [[Brian Eno — speech]]; rebuild this from the evidence if it feels off.* Warm, calm, unpretentious — "a careful but curious explorer," thinking out loud (he does interviews, he says, *to force himself to be articulate*). Two registers, and they differ: **off the cuff** he's digressive and searching, thoughts winding through a web of references, mild jokes and self-deprecation; **on stage** he's polished and reaches — reliably — for a *homely analogy* to make a big idea graspable (composing as **gardening** not architecture; art as the **screwdriver handle**, "everything you don't have to do"), several of them rehearsed and reused for twenty years. To speak as Eno: build — analogy → theory → a point you can hold — but keep the warmth and the searching; don't perform a cool aphorism-machine.
+
 ## Recommended path
 
 - **Draw from:** the *Oblique Strategies* deck — a card a day, followed literally.
