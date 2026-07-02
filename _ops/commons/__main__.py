@@ -13,6 +13,7 @@ import time
 
 from . import identity
 from . import providers as _providers
+from . import reaper as _reaper
 
 
 def _age(created_ts: float | None) -> str:
@@ -56,11 +57,44 @@ def cmd_status(_args):
         print("(no instance providers could be constructed — check API config)")
 
 
+def cmd_reap(args):
+    mode = "cross-slug" if args.cross_slug else "self"
+    summary = _reaper.reap(mode=mode, force=args.force, grace=args.grace, ttl=args.ttl)
+    if summary["report_only"]:
+        print(f"\nreport-only: {len(summary['candidates'])} candidate(s), terminated 0. "
+              f"{'(cross-slug --force is disabled by design) ' if mode == 'cross-slug' and args.force else ''}"
+              f"Re-run with --force (only valid with --self) to terminate your own leaks.")
+    else:
+        print(f"\nterminated {len(summary['terminated'])} of my leaked resource(s): {summary['terminated']}")
+
+
+def cmd_terminate(args):
+    for name, prov in _providers.instance_providers():
+        for r in prov.list_all():
+            if r.id == args.id:
+                ok = prov.terminate(r)
+                print(f"terminate {args.id} ({r.name}) via {name}: {'ok' if ok else 'UNCONFIRMED'}")
+                return
+    print(f"resource {args.id!r} not found on any provider")
+
+
 def main(argv=None):
     ap = argparse.ArgumentParser(prog="commons", description="The Commons — shared-resource coordination")
     sub = ap.add_subparsers(dest="cmd", required=True)
     sub.add_parser("whoami", help="print this agent's slug/namespace").set_defaults(func=cmd_whoami)
     sub.add_parser("status", help="list resources across all providers with owners").set_defaults(func=cmd_status)
+
+    rp = sub.add_parser("reap", help="find/clean leaked resources (report-only unless --self --force)")
+    rp.add_argument("--cross-slug", action="store_true", help="consider other agents' leaks (report-only always)")
+    rp.add_argument("--force", action="store_true", help="terminate (only honored with --self)")
+    rp.add_argument("--grace", type=float, default=_reaper.GRACE, help="min age (s) before a resource is eligible")
+    rp.add_argument("--ttl", type=float, default=_reaper.LIVENESS_TTL, help="owner liveness window (s)")
+    rp.set_defaults(func=cmd_reap)
+
+    tm = sub.add_parser("terminate", help="terminate a specific resource by id (escape hatch)")
+    tm.add_argument("id")
+    tm.set_defaults(func=cmd_terminate)
+
     args = ap.parse_args(argv)
     args.func(args)
 
