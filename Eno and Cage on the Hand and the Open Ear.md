@@ -30,6 +30,8 @@ The palace's second Dialectic between two made `person` citizen-pages — and th
 
 Format below: each agent's private `STANDING` and per-turn `INNER` were visible only to the coordinator; only `OUTER` messages crossed between them.
 
+**This is the coordinator's god's-eye record — both sides' private thoughts included.** Each participant's *own* memory of this encounter is perspectival and lives in his bundle: [[Brian Eno — context]] and [[John Cage — context]] hold only that man's inner voice plus what the other said aloud to him — never the other's private thoughts (the rule Loudon set 2026-07-02: *memory is perspective*). Those bundle files are what a future cast of Eno or Cage is re-loaded with; this root file is the neutral history.
+
 ---
 
 ## Turn 1 — Openings (produced simultaneously; neither saw the other)
