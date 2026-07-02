@@ -5,6 +5,7 @@ import BundlePanel from './BundlePanel.jsx';
 import EntryBody from './EntryBody.jsx';
 import AgentLaunchModal from '../queue/AgentLaunchModal.jsx';
 import { fetchEntry } from '../../adapters/entries.js';
+import { fetchLensSuggestions } from '../../adapters/launch.js';
 import { checkPathSafety } from '../../lib/entry-edit.js';
 
 // One entry's full read shape, rendered:
@@ -27,6 +28,18 @@ export default function EntryReader({
   // registering a permanent steward. Self-contained — the modal calls the
   // adapters itself, so nothing needs threading through StateDeck.
   const [enchanting, setEnchanting] = useState(false);
+  // "lens" runs [[The Lens]]'s procedure: pick a GLASS page from the index,
+  // then wake it in the same AgentLaunchModal, with THIS entry handed to it
+  // as the subject to read (lensSubject). `picking` holds the inline
+  // title-picker's typed value before a glass is chosen; `glass` holds the
+  // committed choice that opens the modal.
+  const [picking, setPicking] = useState(null); // null | string (in-progress text)
+  const [glass, setGlass] = useState(null); // null | chosen glass title
+  // Ranked glass candidates for the OPEN entry (link-distance, nearest first —
+  // [[The Lens]]'s "lean on the graph to suggest" design). Fetched once when
+  // the picker opens; null while loading/unavailable (falls back to the
+  // free-text + datalist search, which always works regardless of map freshness).
+  const [suggestions, setSuggestions] = useState(null);
 
   // Navigation (path change): show "loading <path>" then fetch. This blank is
   // correct here — it's a real navigation to a different entry.
@@ -63,6 +76,22 @@ export default function EntryReader({
     return () => { cancelled = true; };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [reloadNonce]);
+
+  // Fetch ranked glass candidates when the picker opens (picking flips from
+  // null to a string). Re-fetches per entry (state.entry?.title dep) so
+  // navigating to a different entry while a picker is open doesn't show stale
+  // suggestions for the wrong subject.
+  useEffect(() => {
+    if (picking === null || state.kind !== 'ok') return undefined;
+    let cancelled = false;
+    setSuggestions(null);
+    fetchLensSuggestions(state.entry.title).then((r) => {
+      if (cancelled) return;
+      setSuggestions(r.ok ? r.candidates ?? [] : []);
+    });
+    return () => { cancelled = true; };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [picking !== null, state.kind === 'ok' ? state.entry.title : null]);
 
   if (state.kind === 'loading') {
     return (
@@ -202,6 +231,71 @@ export default function EntryReader({
         >
           [<b style={{ color: 'var(--phosphor-white)' }}>A</b>]&nbsp;enchant
         </span>
+        <span
+          data-testid="lens-entry"
+          onClick={() => setPicking((p) => (p === null ? '' : null))}
+          title="lens — pick another page to wake as a glass and read this entry through its apparatus (reports a spark score to WEAVE)"
+          style={{
+            marginLeft: 8,
+            cursor: 'pointer',
+            color: 'var(--phosphor)', textShadow: 'var(--glow)',
+            border: '1px solid var(--phosphor-dim)', padding: '2px 8px',
+            textTransform: 'uppercase', letterSpacing: '.04em', fontSize: 12,
+          }}
+        >
+          [<b style={{ color: 'var(--phosphor-white)' }}>L</b>]&nbsp;lens
+        </span>
+        {picking !== null ? (
+          <span style={{ marginLeft: 8, display: 'inline-flex', alignItems: 'center', gap: 4 }}>
+            <input
+              data-testid="lens-glass-input"
+              autoFocus
+              list="lens-glass-options"
+              value={picking}
+              placeholder="read through which page?"
+              onChange={(e) => setPicking(e.target.value)}
+              onKeyDown={(e) => {
+                if (e.key === 'Escape') setPicking(null);
+                if (e.key === 'Enter' && picking.trim() && picking.trim() !== entry.title) {
+                  setGlass(picking.trim());
+                  setPicking(null);
+                }
+              }}
+              style={{
+                background: 'var(--bg)', color: 'var(--phosphor)', textShadow: 'var(--glow)',
+                border: '1px dashed var(--phosphor-dim)', fontFamily: 'var(--font-mono)', fontSize: 12,
+                padding: '2px 6px', outline: 'none', width: 220,
+              }}
+            />
+            <datalist id="lens-glass-options">
+              {index instanceof Map ? Array.from(index.keys())
+                .filter((t) => t !== entry.title)
+                .map((t) => <option key={t} value={t} />) : null}
+            </datalist>
+          </span>
+        ) : null}
+        {picking !== null ? (
+          <div data-testid="lens-suggestions" style={{ width: '100%', marginTop: 6, display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: 6 }}>
+            <span style={{ fontSize: 10, color: 'var(--phosphor-dim)', textShadow: 'none', textTransform: 'uppercase', letterSpacing: '.06em' }}>
+              nearest on the graph{suggestions === null ? '…' : suggestions.length === 0 ? ' — none (no Map Build snapshot yet; search above)' : ''}
+            </span>
+            {suggestions?.map((c) => (
+              <span
+                key={c.title}
+                data-testid="lens-suggestion"
+                onClick={() => { setGlass(c.title); setPicking(null); }}
+                title={c.distance === Infinity ? 'not yet linked to this entry' : `${c.distance} hop${c.distance === 1 ? '' : 's'} away on the typed-link graph`}
+                style={{
+                  cursor: 'pointer', fontSize: 11,
+                  color: 'var(--link)', textShadow: 'var(--glow)',
+                  border: '1px dashed var(--phosphor-dim)', padding: '1px 6px',
+                }}
+              >
+                {c.title}{c.distance !== Infinity ? <span style={{ color: 'var(--phosphor-dim)', textShadow: 'none' }}>·{c.distance}</span> : null}
+              </span>
+            ))}
+          </div>
+        ) : null}
         <span style={{
           marginLeft: 12, color: 'var(--phosphor-dim)', textShadow: 'none', fontSize: 11,
         }}>{entry.path}</span>
@@ -251,6 +345,14 @@ export default function EntryReader({
           home={entry.title}
           mode="ephemeral"
           onClose={() => setEnchanting(false)}
+        />
+      ) : null}
+      {glass ? (
+        <AgentLaunchModal
+          home={glass}
+          mode="ephemeral"
+          lensSubject={entry.title}
+          onClose={() => setGlass(null)}
         />
       ) : null}
     </div>

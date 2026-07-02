@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
+import { createPortal } from 'react-dom';
 import { Banner } from '../primitives.jsx';
 import { previewAgent, launchAgent, previewEphemeral, launchEphemeral } from '../../adapters/launch.js';
 
@@ -27,6 +28,7 @@ import { previewAgent, launchAgent, previewEphemeral, launchEphemeral } from '..
 
 const MODELS = [
   { id: 'claude-opus-4-8', label: 'Opus 4.8' },
+  { id: 'claude-sonnet-5', label: 'Sonnet 5' },
   { id: 'claude-sonnet-4-6', label: 'Sonnet 4.6' },
 ];
 const EFFORTS = ['high', 'medium', 'xhigh', 'max', 'low'];
@@ -80,8 +82,11 @@ function Select({ value, onChange, options, testId, disabled }) {
   );
 }
 
-export default function AgentLaunchModal({ home, mandateSeed = '', mode = 'steward', onClose }) {
+export default function AgentLaunchModal({ home, mandateSeed = '', mode = 'steward', lensSubject = '', onClose }) {
   const isEphemeral = mode === 'ephemeral';
+  // A lens session is an ephemeral wake with a second page (lensSubject) handed
+  // to it to read through its own apparatus — see [[The Lens]] / lens-mandate.js.
+  const isLens = isEphemeral && !!lensSubject;
   // Same panel, different route: a registered steward vs. a one-off any-page wake.
   const doPreview = isEphemeral ? previewEphemeral : previewAgent;
   const doLaunch = isEphemeral ? launchEphemeral : launchAgent;
@@ -114,14 +119,14 @@ export default function AgentLaunchModal({ home, mandateSeed = '', mode = 'stewa
     clearTimeout(debounce.current);
     debounce.current = setTimeout(async () => {
       setLoading(true);
-      const r = await doPreview({ home, mandate, include });
+      const r = await doPreview({ home, mandate, include, lensSubject });
       if (!alive) return;
       if (r.ok) { setPreview(r); setError(null); }
       else { setError(r.registered === false ? `${home} isn't a registered steward.` : r.error); }
       setLoading(false);
     }, preview ? 400 : 0);
     return () => { alive = false; clearTimeout(debounce.current); };
-  }, [home, mandate, include]); // eslint-disable-line react-hooks/exhaustive-deps
+  }, [home, mandate, include, lensSubject]); // eslint-disable-line react-hooks/exhaustive-deps
 
   const handleClose = useCallback(() => { if (!launching) onClose(); }, [launching, onClose]);
   useEffect(() => {
@@ -142,17 +147,17 @@ export default function AgentLaunchModal({ home, mandateSeed = '', mode = 'stewa
   const launch = useCallback(async () => {
     if (launching) return;
     setLaunching(true); setLaunchMsg(null); setError(null);
-    const r = await doLaunch({ home, mandate, model, effort, include });
+    const r = await doLaunch({ home, mandate, model, effort, include, lensSubject });
     if (r.ok) setLaunchMsg('opening a Claude Code terminal…');
     else setError(r.error);
     setLaunching(false);
-  }, [launching, home, mandate, model, effort, include]);
+  }, [launching, home, mandate, model, effort, include, lensSubject]);
 
   const construction = preview?.construction || null;
   const stage = preview?.stage;
   const cycle = preview?.cycle;
 
-  return (
+  const content = (
     <div
       data-testid="agent-launch-modal"
       ref={backdropRef}
@@ -169,14 +174,25 @@ export default function AgentLaunchModal({ home, mandateSeed = '', mode = 'stewa
         border: '3px double var(--phosphor-dim)', background: 'var(--bg)', overflow: 'hidden',
       }}>
         <div style={{ borderBottom: '3px double var(--phosphor-dim)', padding: '8px 12px', flexShrink: 0 }}>
-          <Banner strong>{isEphemeral ? 'enchant page' : 'construct agent'}</Banner>
+          <Banner strong>{isLens ? 'lens' : isEphemeral ? 'enchant page' : 'construct agent'}</Banner>
           <div style={{ color: 'var(--phosphor-dim)', textShadow: 'none', fontSize: 12, marginTop: 2 }}>
-            {isEphemeral ? 'bring ' : 'wake '}
-            <span style={{ color: 'var(--link)', textShadow: 'var(--glow)' }}>{home}</span>
-            {stage ? <span> — {stage}</span> : null}
-            {isEphemeral
-              ? ' to life — a one-off live session you watch + steer (not registered as a steward)'
-              : <>{cycle ? <span> · cycle {cycle}</span> : null}{' '}as a page-agent you watch + steer</>}
+            {isLens ? (
+              <>
+                read <span style={{ color: 'var(--link)', textShadow: 'var(--glow)' }}>{lensSubject}</span>
+                {' '}through <span style={{ color: 'var(--link)', textShadow: 'var(--glow)' }}>{home}</span>
+                {stage ? <span> — {stage}</span> : null}
+                {' '}— a live session that reads one page through the other's apparatus and reports a spark score to WEAVE
+              </>
+            ) : (
+              <>
+                {isEphemeral ? 'bring ' : 'wake '}
+                <span style={{ color: 'var(--link)', textShadow: 'var(--glow)' }}>{home}</span>
+                {stage ? <span> — {stage}</span> : null}
+                {isEphemeral
+                  ? ' to life — a one-off live session you watch + steer (not registered as a steward)'
+                  : <>{cycle ? <span> · cycle {cycle}</span> : null}{' '}as a page-agent you watch + steer</>}
+              </>
+            )}
           </div>
         </div>
 
@@ -264,12 +280,14 @@ export default function AgentLaunchModal({ home, mandateSeed = '', mode = 'stewa
             </label>
           </div>
           <div>
-            <div style={{ fontSize: 11, color: 'var(--phosphor-dim)', textShadow: 'none', textTransform: 'uppercase', letterSpacing: '.05em', marginBottom: 4 }}>mandate — this session's focus</div>
+            <div style={{ fontSize: 11, color: 'var(--phosphor-dim)', textShadow: 'none', textTransform: 'uppercase', letterSpacing: '.05em', marginBottom: 4 }}>
+              {isLens ? 'extra note — on top of the lens procedure' : "mandate — this session's focus"}
+            </div>
             <textarea
               data-testid="agent-mandate"
               value={mandate}
               onChange={(e) => setMandate(e.target.value)}
-              placeholder="leave blank for the standard next-cycle mandate"
+              placeholder={isLens ? 'leave blank for just the standard lens procedure' : 'leave blank for the standard next-cycle mandate'}
               rows={2}
               disabled={launching}
               style={{
@@ -307,4 +325,12 @@ export default function AgentLaunchModal({ home, mandateSeed = '', mode = 'stewa
       </div>
     </div>
   );
+
+  // Portal to <body> in a real browser so the modal escapes any clipping/
+  // stacking-context ancestor (the fix this was added for). In SSR / the
+  // unit-test harness (environment: 'node', no jsdom — see tests/unit's
+  // "no jsdom" convention) there is no `document` to portal into; render the
+  // content inline instead, which renderToStaticMarkup-based tests can still
+  // assert on as an HTML string.
+  return typeof document !== 'undefined' ? createPortal(content, document.body) : content;
 }

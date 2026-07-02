@@ -17,6 +17,7 @@ import { digestRoutes } from './api/digest.js';
 import { entrySaveRoutes } from './api/entry-save.js';
 import { entryAgentRoutes } from './api/entry-agent.js';
 import { launchRoutes } from './api/launch.js';
+import { lensRoutes } from './api/lens.js';
 import { weaveRoutes } from './api/weave.js';
 import { schedulerRoutes } from './api/scheduler.js';
 import { sessionsRoutes } from './api/sessions.js';
@@ -33,6 +34,7 @@ const FAMILIES = [
   entrySaveRoutes,
   entryAgentRoutes,
   launchRoutes,
+  lensRoutes,
   weaveRoutes,
   schedulerRoutes,
   sessionsRoutes,

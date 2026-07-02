@@ -79,12 +79,12 @@ export async function launchAgent({ home, mandate, model, effort, include }) {
 // construction is identical to a registered steward's — only nothing is written to
 // the registry. Works for any page with frontmatter, not just stewards (a 422
 // `no_frontmatter` means a learning material, not a canon entry).
-export async function previewEphemeral({ home, mandate, include }) {
+export async function previewEphemeral({ home, mandate, include, lensSubject }) {
   try {
     const res = await fetch('/api/launch/ephemeral', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ home, mandate, include, preview: true }),
+      body: JSON.stringify({ home, mandate, include, lensSubject, preview: true }),
     });
     let data = {};
     try { data = await res.json(); } catch { /* non-JSON */ }
@@ -99,12 +99,33 @@ export async function previewEphemeral({ home, mandate, include }) {
   }
 }
 
-export async function launchEphemeral({ home, mandate, model, effort, include }) {
+// Ranked glass candidates for a lensing subject (GET /api/lens/suggest),
+// nearest-by-link-distance first — [[The Lens]]'s "lean on the graph to
+// suggest" design. A 404 (no Map Build snapshot yet) is not an error the UI
+// needs to surface loudly; the picker just falls back to the unranked index.
+export async function fetchLensSuggestions(subject, limit = 8) {
+  try {
+    const res = await fetch(`/api/lens/suggest?subject=${encodeURIComponent(subject)}&limit=${limit}`, {
+      headers: { Accept: 'application/json' },
+    });
+    if (!res.ok) return { ok: false, status: res.status };
+    const data = await res.json();
+    return { ok: true, ...data };
+  } catch (err) {
+    return { ok: false, error: err?.message ?? String(err) };
+  }
+}
+
+// `lensSubject` runs this wake as [[The Lens]]: `home` (the glass) wakes fully
+// as itself, then reads `lensSubject`'s page through its own apparatus per the
+// fixed procedure in buildLensMandate. `mandate` here becomes an extra note on
+// top of that procedure, same as previewEphemeral/launchEphemeral otherwise.
+export async function launchEphemeral({ home, mandate, model, effort, include, lensSubject }) {
   try {
     const res = await fetch('/api/launch/ephemeral', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ home, mandate, model, effort, include }),
+      body: JSON.stringify({ home, mandate, model, effort, include, lensSubject }),
     });
     let data = {};
     try { data = await res.json(); } catch { /* non-JSON */ }
