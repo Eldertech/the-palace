@@ -110,7 +110,7 @@ The June 2026 research found nearly every piece exists off the shelf: the Blende
 ## Scope decisions (locked)
 
 - **Fixed tempo** — sync is deterministic arithmetic, not elastic alignment.
-- **Staged, not simulated** — comic motion is held pose + camera + FX, never simulated contact.
+- **Staged, not simulated** — comic motion is camera + FX + pose, never simulated *contact*. *(Updated 2026-07-03: the held-pose constraint is relaxed — **pose-blend-along-flow** is now in scope as a bounded experiment (interpolate key-poses along the flow direction). Simulated physical contact between figures stays out. Unblocks [[BLUELINE — Motion and Flow]] Edge 3.)*
 - **Animal motion is OUT of scope** *(2026-06-13)* — humanoid only; the one data-starved hard case retired by decision.
 - **Each milestone ships** — M0 previz → M1 animatic → M2 motion comic → M3 flow-field FX → M4 hyperreal impact → M5 sync server. Every rung is a usable tool.
 
