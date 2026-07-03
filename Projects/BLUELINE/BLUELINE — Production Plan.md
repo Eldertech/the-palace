@@ -152,7 +152,7 @@ boards are leveled to uniform fidelity, and a muxed cut exists.
 | `track-III-clock`, `animatic`, `m0-previz`, `m1-animatic`, `m2-motion-comic` | 1 Clock & Sync (+ comic players) | ✅ |
 | `session-2-staging`, `seam-a-roundtrip`, `seam-b` | 2 Board Record & Staging | ◑ (Seam B open) |
 | `blender-handdrawn`, `track-IV-bench`, `blender-gallery` | 3 Figure & Pose | ✅ |
-| `session-3-flowfield`, `session-4-figure-flow`, `session-5-flow-3d`, `session-6-flow-gn-studio`, `session-7-aftermath`, `session-8-swing`, `session-9-three-swings` | 4 Motion & Flow | ✅ |
+| `session-3-flowfield`, `session-4-figure-flow`, `session-5-flow-3d`, `session-6-flow-gn-studio`, `session-7-aftermath`, `session-8-swing`, `session-9-three-swings`, `session-10-impact` | 4 Motion & Flow | ✅ |
 | `track-V-motion`, `m3-warped-noise` | 4 Motion & Flow | ✗ retired render-noise |
 | `track-VI-elemental-motion`, `cloud-i2v`, `embedded-motion` | 4 Motion & Flow | ◑ |
 | `new-story` | 5 Render Backend (the 6-shot proof) | ✅ |

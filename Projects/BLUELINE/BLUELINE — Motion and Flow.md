@@ -163,9 +163,17 @@ generalizes to any action (punch, leap, throw, whip). **Generalization proven (S
 `proofs/session-9-three-swings/`:** three swings from the one solver by changing only
 `{pivot, windup, contact}` — **chop** (axis Y, v_c down, tip 32.9 m/s), **side slash** (axis Z, v_c
 sideways, tip 24.9 m/s), **rising cut** (axis −Y, v_c up, tip 33.3 m/s) — each with the right rotation
-axis and consequence directions falling out (`s9_contact_sheet.png`). **Next:** IK-animate the full swing
-on the rig and render the clip that *shows* the arc (the definitive "the motion happened" proof). See
-`session-8-report.md` + `session-9-report.md`.
+axis and consequence directions falling out (`s9_contact_sheet.png`).
+
+**✅ Real impact deformation + arc speed-lines (Session 10, 2026-07-03) — `proofs/session-10-impact/`.**
+Two gaps closed: (1) the column is now **actually deformed** — the wound is the blade's swept volume
+**boolean-subtracted** (material removed where the blade passed), and the shards emerge *from that gash*
+(consistent). Physical-max next: **Cell Fracture** (shards *are* the removed chunks → mass conserved +
+splinters). (2) **Speed-lines follow the arc** — each traces `blade_dir(u)` at a radius (curved, the
+swing itself) over the recent `u∈[0.70,0.93]`, stopping short of the blade (`U1<1`) so they never touch
+it — a deliberate gap. **Next:** IK-animate the full swing on the rig and render the clip that *shows*
+the arc (the definitive "the motion happened" proof); Cell-Fracture the wound; stylize to ink. See
+`session-8/9/10-report.md`.
 
 ## Contract touchpoints
 The board record already carries the handles: **`FLOW`** (field handle + scalar) and the **pose**
