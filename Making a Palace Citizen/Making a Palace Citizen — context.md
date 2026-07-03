@@ -102,7 +102,21 @@ The first run of the **retained-memory loop**: both citizens re-cast **with thei
 - **The Trickster-as-moderator worked** (first active/enchanted coordinator run): its needles ("did Cage aim or not?"; "you're both still in the confessional — go to the work"; "John just shrank his life to one sentence") drove the deepening. Validated `coordinator_mode: enchanted:Trickster` from [[Dialogue Moderator]].
 - **New yield** (beyond encounter 1): both subversions are an engineered escape from where taste stands, narrated as innocence/philosophy; the "trickster" is accepted only turned *inward* (the trick is on yourself); *aiming only hits what you already love* — a generative frame widens what you're **able to love**, not just what you choose; the split sharpened (Eno's door goes *out* to keep the good one; Cage's goes *past himself* to be handed one he couldn't keep).
 
-**Write-back now proposed as EARNED** (Loudon's call): two encounters produced a consistent, deepening drift on both citizens' `forward_vector` and the reciprocal `contradicts` link. Awaiting Loudon's go to apply (still no unilateral self-editing).
+**Write-back proposed as EARNED — Loudon's call was KEEP HOLDING** (2026-07-02): two encounters isn't enough; keep accruing. So the deepened forward_vectors + reciprocal `contradicts` link stay held (preserved in each memory). Good discipline — encounter 3 then deepened them a *third* time, confirming holding was right.
+
+---
+
+### 2026-07-02 — Fourth encounter (Eno ↔ Cage, encounter 3) — a WALK, not a debate; memory compounds across three
+
+A new mode, at Loudon's direction: instead of another debate, **the two citizens walked together into a shared entry — [[Lateral Access]] — and co-read it**, discussing via its own open questions and closing quotes (the "palace wandering together" variant of [[Palace Enchantment]]). Both carried memory of encounters 1 *and* 2. Light coordinator (no Trickster). Full record: [[Eno and Cage Walk Into Lateral Access]].
+
+**What it added over the two debates:**
+- **Memory compounded across three encounters — provably.** The open seam both carried out of encounter 2 (*is Cage's "were you awake?" the same as Eno's "was I made to love something new?"*) **resolved on the walk**: yes — the same question from the two poles the entry names (the room that lets the thing in; the person awake enough to sign for it). A seam opened in encounter 2 and closed in encounter 3 — only accumulated memory makes that arc possible.
+- **A finding about the MODE.** Both said, independently, that *walking* did what *arguing* couldn't. Eno: "a shared third thing to look at, so the disagreement stopped being about our egos and became about the text — and the text described us both; *that's* when the split dissolved instead of just sharpening." Cage: "arguing sharpens the difference; walking dissolves it — you end up on the same side of the page, facing the entry, not each other." **Debate → sharpen; walk → dissolve.** A real design lesson for the ceremony family: pick the mode by whether you want the contrary held or dissolved.
+- **Self-edits deepened a THIRD consecutive time, same direction.** Eno: "the frame I'm a control-freak about was never the deck — it's the *room*." Cage: "the impersonal method was the personal thing I hid best." Three consistent deepenings now — the "earned" signal is strong; still held per Loudon.
+- **The walk answered the *host entry's* own open questions** (a genuine deposit yield, like Threshold Conatus from Spinoza↔Meadows). [[Lateral Access]] explicitly lacked a failure-mode analysis and asked technique-vs-relational; the walk delivered both: *evasion = the refusal to stop*; *neither technique nor relational but both — a person willing to stop met by a room that trusts; the method is the pretext the coupling needs.* Both citizens independently proposed the same deposit + parallel `exemplifies` links (Eno `props-need-a-hand`, Cage `chance-as-window` → [[Lateral Access]]). **All held for Loudon.**
+
+**Method note:** two `Read` tool-calls showed up per walker — they read the canonical [[Lateral Access]] file (which was also given inline). No perspective leak observed (neither cited the other's private thoughts). For future co-reads, embedding the shared entry inline is enough; can forbid file reads to be safe.
 
 ---
 

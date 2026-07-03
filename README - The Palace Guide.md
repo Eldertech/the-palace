@@ -174,6 +174,7 @@ The palace draws in three registers, each with its own standard. [[Mermaid Diagr
 3. Add at least 2-3 typed links in the frontmatter connecting to existing entries
 4. Write the body: an Origin section (how this idea arrived), the core content, Cross-Pillar Connections, and a Forward Vector (the agent's drive — see "Reading an Entry" above)
 5. Sprinkle `[[wiki links]]` in the body text to any related entries
+6. **Close with 1–3 real, attributed quotes** that refract the entry's idea in a borrowed voice — a standard, expected part of the template, and the single most-dropped element when an entry is built from memory of the format rather than from freshly-read neighbors. Never fabricate; verify the wording.
 
 ### Minimum Viable Entry
 
@@ -200,7 +201,15 @@ How and when this idea arrived.
 ## Forward Vector
 
 The agent's drive. What this page wants: questions actively carried, paths opened in conversation but not yet followed, things the entry wants to fix about itself, where it pulls a future session. Treat this section as the conatus of the page — when re-loaded, this is what the page asks the next agent to do.
+
+---
+
+*"A real, attributed quote that refracts the idea."* — Author
+
+*"A second, from another tradition, if it earns its place."* — Author
 ```
+
+**Entries normally close with 1–3 real, attributed quotes** — a standard, expected part of the template, not a flourish. It is the element most often dropped when an entry is assembled from the abstract template rather than from freshly-read neighbors, so it is written into the template on purpose. Never fabricate; verify wording; reach for a quote that actually refracts the idea (it is the entry saying its idea once more in a borrowed voice). Operational, meta, or project entries that end on Open Questions or a Forward Vector are the genuine exception — don't force a quote where it doesn't belong.
 
 
 ### The Key Rule
