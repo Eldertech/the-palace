@@ -9,12 +9,39 @@ not a leaked GPU. Loudon greenlit ~$1-3 for this run.
 Mirrors the proven m3_pod_orchestrator; the only differences are: download SVD (non-gated mirror)
 instead of the FLUX ControlNet, no custom node, and a longer boot timeout for the 9.6 GB download.
 
+MULTI-AGENT (2026-07-03): the pod is per-agent-namespaced — "blueline-cloud-i2v--<slug>" (see
+_ops/runpod/agent_ns.py + _ops/commons). Lifecycle is delegated to the Commons RunpodPodProvider,
+so guard (list_mine), create (flaky-500 recover-by-name + cull), and terminate are all scoped to
+THIS agent's slug — safe to run concurrently with other Claudes on the same RunPod account. A
+best-effort `reap --self --force` in finally sweeps any older leaked pod of MINE (a prior crashed
+run whose finally never fired); it can never touch this run's pod (spared) or another agent's.
+
   python3 svd_orchestrator.py
   python3 svd_orchestrator.py --terminate-only <podId>
 """
 import argparse, json, ssl, subprocess, sys, time
 import urllib.request, urllib.error
 from pathlib import Path
+
+# ── per-agent namespace (multi-agent safety) ─────────────────────────────────
+import os as _bootstrap_os
+def _find_runpod_ns():
+    d = _bootstrap_os.path.dirname(_bootstrap_os.path.abspath(__file__))
+    for _ in range(10):
+        cand = _bootstrap_os.path.join(d, "_ops", "runpod")
+        if _bootstrap_os.path.isfile(_bootstrap_os.path.join(cand, "agent_ns.py")):
+            return cand
+        nd = _bootstrap_os.path.dirname(d)
+        if nd == d:
+            break
+        d = nd
+    return None
+_ns_dir = _find_runpod_ns()
+if _ns_dir and _ns_dir not in sys.path:
+    sys.path.insert(0, _ns_dir)
+from agent_ns import SLUG, pod_name, pod_id_file       # noqa: E402
+from commons.providers.runpod_pod import RunpodPodProvider   # pod lifecycle lives in the Commons provider  # noqa: E402
+from commons import reaper                             # noqa: E402  (best-effort self-reap backstop)
 
 PALACE = Path("/Users/loudonstearns/Documents/The Palace")
 CONFIG = PALACE / "RunPod Images" / "studio" / "config.json"
@@ -29,21 +56,16 @@ SVD_HF = ("https://huggingface.co/thingthatis/stable-video-diffusion-img2vid-xt/
           "resolve/main/svd_xt.safetensors")     # non-gated mirror of stabilityai SVD-XT (weights-only)
 UA = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0 Safari/537.36"
 
-KEY = json.load(open(CONFIG))["api_key"]
 try:
     import certifi; CTX = ssl.create_default_context(cafile=certifi.where())
 except Exception:
     CTX = ssl._create_unverified_context()
 
-def api(method, path, body=None, timeout=60):
-    data = json.dumps(body).encode() if body is not None else None
-    req = urllib.request.Request("https://rest.runpod.io/v1" + path, data=data, method=method,
-          headers={"Authorization": f"Bearer {KEY}", "Content-Type": "application/json"})
-    try:
-        with urllib.request.urlopen(req, timeout=timeout, context=CTX) as r:
-            b = r.read(); return (json.loads(b) if b else {}), r.status
-    except urllib.error.HTTPError as e:
-        return {"_error": e.read().decode()[:500]}, e.code
+_PROV = RunpodPodProvider(config_path=CONFIG)   # create/list_mine/cull/terminate, all slug-scoped
+
+BASE = "blueline-cloud-i2v"
+NAME = pod_name(BASE)          # display only; the provider owns naming ("<base>--<slug>")
+POD_ID_FILE = pod_id_file()    # per-agent handoff: /tmp/pod_id-<slug>, never the shared path
 
 def proxy_get(pid, path, timeout=15):
     url = f"https://{pid}-8188.proxy.runpod.net{path}"
@@ -79,36 +101,23 @@ def start_script():
         'cd /comfyui && exec python -u main.py --disable-auto-launch --disable-metadata --listen --port 8188\n'
     )
 
-def create_pod(max_tries=12, delay=30):
-    body = {"name": "blueline-cloud-i2v", "imageName": IMAGE,
-            "gpuTypeIds": GPU_IDS, "gpuCount": 1,
+def _spec():
+    # base (not name): the provider tags ownership into the name as "<base>--<slug>".
+    # max_tries/delay preserve this pod's patient capacity-retry (SVD wants a specific volume DC).
+    return {"base": BASE, "image": IMAGE, "gpuTypeIds": GPU_IDS, "gpuCount": 1,
             "networkVolumeId": VOLUME_ID, "volumeMountPath": "/workspace",
             "ports": ["8188/http", "22/tcp"], "containerDiskInGb": 30,
-            "dockerStartCmd": ["bash", "-c", start_script()]}
-    for i in range(max_tries):
-        r, code = api("POST", "/pods", body)
-        if code in (200, 201):
-            pid = r.get("id") or r.get("podId")
-            if not pid: sys.exit(f"create returned no id: {json.dumps(r)[:400]}")
-            Path("/tmp/svd_pod_id").write_text(pid)
-            print(f"[create] pod {pid} — id at /tmp/svd_pod_id"); return pid
-        err = json.dumps(r)[:200]
-        if code == 500 or "no instances" in err.lower() or "no longer any instances" in err.lower():
-            print(f"[create] no capacity (try {i+1}/{max_tries} [{code}]): {err} — retry in {delay}s")
-            time.sleep(delay); continue
-        sys.exit(f"create failed [{code}]: {json.dumps(r)[:600]}")
-    sys.exit(f"create failed: no GPU capacity after {max_tries} tries")
+            "dockerStartCmd": ["bash", "-c", start_script()],
+            "max_tries": 12, "delay": 30}
+
+def create_pod():
+    r = _PROV.create(_spec())           # flaky-500 recover-by-name + cull-extras, all slug-scoped
+    POD_ID_FILE.write_text(r.id)
+    print(f"[create] pod {r.id} ({r.name}) — id at {POD_ID_FILE}")
+    return r.id
 
 def terminate(pid):
-    r, code = api("DELETE", f"/pods/{pid}")
-    print(f"[terminate] DELETE /pods/{pid} -> {code}")
-    for _ in range(10):
-        g, c = api("GET", f"/pods/{pid}")
-        if c == 404 or (isinstance(g, dict) and g.get("desiredStatus") in ("TERMINATED", "EXITED")):
-            print(f"[terminate] confirmed {pid} gone"); return True
-        time.sleep(3)
-    print(f"[terminate] WARNING — could not confirm termination of {pid}; check the RunPod console")
-    return False
+    return _PROV.terminate(pid)
 
 def wait_ready(pid, boot_timeout=2400):     # worst case: a slow first download (cached runs boot in ~1 min)
     t0 = time.time(); comfy_up = False
@@ -119,7 +128,7 @@ def wait_ready(pid, boot_timeout=2400):     # worst case: a slow first download 
                 proxy_get(pid, "/system_stats", timeout=10); comfy_up = True
                 print(f"[ready] ComfyUI HTTP up at ~{el}s")
             except Exception:
-                g, _ = api("GET", f"/pods/{pid}")
+                g, _ = _PROV.api("GET", f"/pods/{pid}")
                 ds = g.get("desiredStatus") if isinstance(g, dict) else "?"
                 print(f"[ready] waiting… {el}s (status={ds})"); time.sleep(10); continue
         try:
@@ -133,16 +142,29 @@ def wait_ready(pid, boot_timeout=2400):     # worst case: a slow first download 
         time.sleep(10)
     return False
 
+def _self_reap():
+    """Best-effort backstop: sweep any older leaked pod of MINE. Never touches this run's pod
+    (spared by the handoff file) or another agent's (scoped to my slug). Never breaks the run."""
+    try:
+        summary = reaper.reap(mode="self", force=True)
+        if summary.get("terminated"):
+            print(f"[reap] swept prior leaked pod(s): {summary['terminated']}")
+    except Exception as e:
+        print(f"[reap] skipped ({type(e).__name__}: {repr(e)[:100]})")
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--terminate-only", default=None)
     ap.add_argument("--render-args", default="")
     a = ap.parse_args()
+    print(f"[ns] agent slug={SLUG}  pod name={NAME}")
     if a.terminate_only: terminate(a.terminate_only); return
-    pods, _ = api("GET", "/pods")
-    existing = [p for p in (pods if isinstance(pods, list) else [])]
-    if existing:
-        print(f"[guard] {len(existing)} pod(s) already exist: {[p.get('id') for p in existing]} — aborting to avoid double spend"); sys.exit(2)
+
+    # guard: don't stack MY pods (another agent's pods are invisible here)
+    mine = _PROV.list_mine()
+    if mine:
+        print(f"[guard] my pod '{NAME}' already exists {[r.id for r in mine]} — abort. Run --terminate-only to remove it first."); sys.exit(2)
+
     pid = create_pod(); rc = 1
     try:
         if not wait_ready(pid): raise RuntimeError("pod did not reach render-ready state within timeout")
@@ -152,6 +174,7 @@ def main():
         print(f"[render] svd_render exited {rc}")
     finally:
         print("[finally] tearing down pod (guaranteed)"); terminate(pid)
+        _self_reap()
     sys.exit(rc)
 
 if __name__ == "__main__":
