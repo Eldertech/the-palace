@@ -86,6 +86,19 @@ one-time **field-build** step (mask + projection), not a per-leg one. So the cou
 
 ---
 
+## Shot #2 — fed into a BLUELINE graphic (`03-composite-figure-in-wind.png`)
+
+First render coupling, deterministic composite (`legs/composite_render.py`): the D2 inked crouching hero
+(`redraw_D2_canny030_depth060_pose070.png`) with the same character-aware flow composited *around* them.
+Because D2 is stark noir (black sky / white ground), a single-polarity ink line can't read across both, so
+the flow is composited in **two stark passes** — black comic speed-lines on the light ground, sparse thin
+white scratch-lines in the dark sky — so the wind reads in both zones without greying the blacks. The
+figure's body matte suppresses lines inside the silhouette, so the speed-lines flow *around* the character
+and the wake spirals sit beside them. The result is one BLUELINE frame: the hero in the wind. Honest limit:
+the ground reads dense (strong wind); dialing seed density trades hatching for white space. The heavier
+follow-up — a low-denoise img2img pass to *fuse* the composite into one coherent ink drawing (ComfyUI,
+~5 min/frame, not run this round) — is the true render-unification.
+
 ## Write-back (proposed — not yet committed)
 
 - New proof bundle `proofs/session-4-figure-flow/` (this file + `field.py` + `legs/` + `renders/` + `inputs/`).
