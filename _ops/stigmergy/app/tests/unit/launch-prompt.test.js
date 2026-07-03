@@ -27,6 +27,27 @@ describe('buildLaunchPrompt — handoff', () => {
     expect(typeof p).toBe('string');
   });
 
+  test('leads with the move and surfaces the invocation when present', () => {
+    const p = buildLaunchPrompt({
+      ...ctx,
+      summary: 'demo: open handoff, awaiting pickup',
+      move: 'Wire the feedback-path saturation stage; decide pre/post filter placement.',
+      invocation: 'Read Foo.md and the baton, then pick up the move.',
+    });
+    // The move (not the generic summary) is what the prompt names as "the move".
+    expect(p).toContain('The move (handoff h-1, from Foo): "Wire the feedback-path saturation stage; decide pre/post filter placement."');
+    // The verbatim invocation is surfaced as the first action.
+    expect(p).toContain('First action (the baton\'s invocation): Read Foo.md and the baton, then pick up the move.');
+    // The generic summary is NOT used as the move when a move exists.
+    expect(p).not.toContain('The move (handoff h-1, from Foo): "demo: open handoff, awaiting pickup"');
+  });
+
+  test('a move-less baton falls back to summary and omits the invocation line', () => {
+    const p = buildLaunchPrompt(ctx); // no move, no invocation
+    expect(p).toContain('mid-move on Stage C');
+    expect(p).not.toContain('First action');
+  });
+
   test('generic kind for an unrecognized future context', () => {
     const p = buildLaunchPrompt({ kind: 'mystery', title: 'Kuramoto Coupling', summary: 'a koan card' });
     expect(p).toContain('Kuramoto Coupling');

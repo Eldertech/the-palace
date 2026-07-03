@@ -13,16 +13,18 @@ async function gotoQueue(page) {
 }
 
 test.describe('QUEUE — unsung-path audit trigger', () => {
-  test('the trigger is present in the QUEUE header', async ({ page }) => {
+  test('the audit pulldown offers this kind', async ({ page }) => {
     await gotoQueue(page);
-    const trigger = page.getByTestId('run-unsung-audit');
-    await expect(trigger).toBeVisible();
-    await expect(trigger).toContainText(/run unsung-path audit/i);
+    await expect(page.getByTestId('audit-select')).toBeVisible();
+    await expect(page.getByTestId('run-audit')).toBeVisible();
+    await page.getByTestId('audit-select').selectOption('unsung');
+    await expect(page.getByTestId('audit-select')).toHaveValue('unsung');
   });
 
-  test('clicking it runs a dry run and surfaces honest counts (no write)', async ({ page }) => {
+  test('running it does a dry run and surfaces honest counts (no write)', async ({ page }) => {
     await gotoQueue(page);
-    await page.getByTestId('run-unsung-audit').click();
+    await page.getByTestId('audit-select').selectOption('unsung');
+    await page.getByTestId('run-audit').click();
     // A full palace scan runs server-side — give it room.
     const result = page.getByTestId('unsung-audit-result');
     await expect(result).toBeVisible({ timeout: 25_000 });

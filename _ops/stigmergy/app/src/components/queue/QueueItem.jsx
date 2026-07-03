@@ -259,6 +259,27 @@ export default function QueueItem({ item, onJump, onClear, onRespond, onLaunch, 
           ) : null}
           <span>{vantage(item)}</span>
         </div>
+      ) : item.kind === 'handoff_ready' ? (
+        <div style={{
+          display: 'flex', gap: 10, alignItems: 'center', flexWrap: 'wrap',
+          fontSize: 11, color: 'var(--phosphor-dim)', textShadow: 'none',
+          marginBottom: 6,
+        }}>
+          {item.entry ? (
+            <span data-testid="queue-item-handoff-entry" style={{
+              border: '1px dotted var(--phosphor-dim)', padding: '0 6px',
+              fontFamily: 'var(--font-mono)',
+            }}>
+              entry: {item.entry.replace(/\.md$/, '')}
+            </span>
+          ) : null}
+          {item.receiving_surface ? (
+            <span data-testid="queue-item-handoff-surface" style={{ fontFamily: 'var(--font-mono)' }}>
+              surface: {item.receiving_surface}
+            </span>
+          ) : null}
+          <span>{vantage(item)}</span>
+        </div>
       ) : (
         <div style={{ color: 'var(--phosphor-dim)', textShadow: 'none', fontSize: 11, marginBottom: 6 }}>
           {vantage(item)}
@@ -300,6 +321,19 @@ export default function QueueItem({ item, onJump, onClear, onRespond, onLaunch, 
               ) : null}
             </div>
           ) : null}
+        </div>
+      ) : null}
+
+      {/* The catcher's immediate next step — the baton's `invocation`. Kept in
+          the brighter phosphor (not the dim footer) because it is the one line
+          that turns "seen" into "picked up". */}
+      {item.invocation ? (
+        <div data-testid="queue-item-handoff-next" style={{
+          color: 'var(--phosphor)', textShadow: 'var(--glow)', fontSize: 12,
+          lineHeight: 1.4, maxWidth: '78ch', marginBottom: 6,
+        }}>
+          <span style={{ color: 'var(--phosphor-dim)', textShadow: 'none' }}>next: </span>
+          {item.invocation}
         </div>
       ) : null}
 
@@ -349,6 +383,23 @@ export default function QueueItem({ item, onJump, onClear, onRespond, onLaunch, 
             }}
             title="hand this baton to an interactive session you can watch and steer"
           >launch interactive</button>
+        ) : null}
+
+        {/* Manual clear — with staleness (git auto-resolution) off, a baton
+            stays open until it is launched or the human dismisses it here.
+            Local dismiss; the durable board record stands. */}
+        {!resolved && !decided && item.kind === 'handoff_ready' && typeof onClear === 'function' ? (
+          <button
+            data-testid="queue-item-handoff-clear"
+            onClick={() => onClear(item)}
+            style={{
+              background: 'transparent', color: 'var(--phosphor-dim)',
+              border: '1px solid var(--phosphor-dim)', padding: '3px 10px',
+              fontFamily: 'var(--font-mono)', fontSize: 11, cursor: 'pointer',
+              textTransform: 'uppercase', letterSpacing: '.04em',
+            }}
+            title="dismiss this baton from the queue (the board record stands)"
+          >clear</button>
         ) : null}
 
         {canRespond ? (

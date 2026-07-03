@@ -13,16 +13,18 @@ async function gotoQueue(page) {
 }
 
 test.describe('QUEUE — label-enrichment audit trigger', () => {
-  test('the trigger is present in the QUEUE header', async ({ page }) => {
+  test('the audit pulldown offers this kind', async ({ page }) => {
     await gotoQueue(page);
-    const trigger = page.getByTestId('run-label-audit');
-    await expect(trigger).toBeVisible();
-    await expect(trigger).toContainText(/run label-enrichment audit/i);
+    await expect(page.getByTestId('audit-select')).toBeVisible();
+    await expect(page.getByTestId('run-audit')).toBeVisible();
+    await page.getByTestId('audit-select').selectOption('label');
+    await expect(page.getByTestId('audit-select')).toHaveValue('label');
   });
 
-  test('clicking it runs a dry-run scan and surfaces honest counts (no generation, no write)', async ({ page }) => {
+  test('running it does a dry-run scan and surfaces honest counts (no generation, no write)', async ({ page }) => {
     await gotoQueue(page);
-    await page.getByTestId('run-label-audit').click();
+    await page.getByTestId('audit-select').selectOption('label');
+    await page.getByTestId('run-audit').click();
     const result = page.getByTestId('label-audit-result');
     await expect(result).toBeVisible({ timeout: 25_000 });
     await expect(result).toContainText(/entries scanned/i);

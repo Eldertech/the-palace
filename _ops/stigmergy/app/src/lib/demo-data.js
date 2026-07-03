@@ -441,6 +441,11 @@ export const DEMO_MESSAGES = [
       entry: 'Nonexistent Demo Entry ZZZ',
       handoff_path: 'Nonexistent Demo Entry ZZZ/x -- handoff.md',
       summary: 'demo: open handoff, awaiting pickup',
+      // The move (state) + invocation (next step) the QUEUE card now surfaces,
+      // so a baton is pick-up-able without opening the file.
+      move: 'Wire the feedback-path saturation stage; decide pre/post filter placement.',
+      invocation: 'Read the entry and the baton, follow its On-pickup steps, then take the move.',
+      receiving_surface: 'Claude Code (Mac, palace root)',
       stale_if: 'a commit touches Nonexistent Demo Entry ZZZ after this',
     },
   },

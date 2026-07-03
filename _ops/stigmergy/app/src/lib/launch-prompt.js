@@ -26,8 +26,13 @@ export function buildLaunchPrompt(ctx = {}) {
 
 const ORIENT = 'First, orient yourself: read CLAUDE.md, JEWEL.md, and _ops/Substrate Skill.md.';
 
-function handoffPrompt({ sourcePath, entry, from, id, summary }) {
+function handoffPrompt({ sourcePath, entry, from, id, summary, move, invocation }) {
   const path = sourcePath || '(baton path missing — find the handoff_ready announcement on the board)';
+  const str = (v) => (typeof v === 'string' && v.trim() !== '' ? v.trim() : null);
+  // Lead with the sharp `move` (the in-flight state the board announcement
+  // carried); fall back to the generic `summary` for older, move-less batons.
+  const theMove = str(move) || str(summary);
+  const theInvocation = str(invocation);
   const lines = [
     'You are catching an in-progress baton in The Palace, in a fresh interactive',
     'session at the palace root. Pick up the move and run with it in dialogue —',
@@ -37,11 +42,16 @@ function handoffPrompt({ sourcePath, entry, from, id, summary }) {
     `2. Read the baton:  ${path}`,
   ];
   if (entry) lines.push(`   ...and its parent entry [[${String(entry).replace(/\.md$/, '')}]].`);
-  if (summary) lines.push(`   The move (handoff ${id || '?'}, from ${from || '?'}): "${summary}"`);
+  if (theMove) lines.push(`   The move (handoff ${id || '?'}, from ${from || '?'}): "${theMove}"`);
   lines.push(
     '3. Follow the baton\'s own "On pickup" checklist (it rides inside the baton):',
     '   mark it caught, then delete the baton file — git is its archive.',
     '4. Pick up the move exactly where it left off and keep going, interactively.',
+  );
+  // The board's `invocation` is a ready, verbatim first action — surface it so
+  // the catcher has the exact starting step, not just a paraphrase of the move.
+  if (theInvocation) lines.push('', `First action (the baton's invocation): ${theInvocation}`);
+  lines.push(
     '',
     `(The QUEUE item for handoff ${id || '?'} has been marked picked up.)`,
   );

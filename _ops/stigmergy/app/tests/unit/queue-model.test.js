@@ -582,6 +582,8 @@ describe('buildQueue — the new ask/resourceType/rationale fields', () => {
   });
 
   it('handoff_ready items leave the new ask/resourceType fields undefined', () => {
+    // A baton that predates the move convention (summary only): the card must
+    // fall back to `summary`, so `ask` stays undefined (not fabricated).
     const msg = {
       id: 'h1', type: 'BROADCAST', from: 'Foo', ts: '2026-05-29T10:00:00Z', board: 'GENERAL',
       payload: { kind: 'handoff_ready', summary: 'hand off Foo', entry: 'Foo' },
@@ -591,5 +593,36 @@ describe('buildQueue — the new ask/resourceType/rationale fields', () => {
     expect(items[0].kind).toBe('handoff_ready');
     expect(items[0].ask).toBeUndefined();
     expect(items[0].resourceType).toBeUndefined();
+  });
+
+  it('handoff_ready surfaces move / invocation / receiving_surface and leads with move', () => {
+    const msg = {
+      id: 'h1', type: 'BROADCAST', from: 'Semantic Delay', ts: '2026-05-29T10:00:00Z', board: 'GENERAL',
+      payload: {
+        kind: 'handoff_ready',
+        entry: 'Semantic Delay',
+        summary: 'handoff ready: Semantic Delay',
+        move: 'Wire the feedback-path saturation stage; decide pre/post filter placement.',
+        invocation: 'Read Semantic Delay.md and the baton, then pick up the move.',
+        receiving_surface: 'Claude Code (Mac, palace root)',
+      },
+    };
+    const items = buildQueue([msg]);
+    expect(items.length).toBe(1);
+    const it = items[0];
+    // The card LEADS with the move (the state) rather than the generic summary.
+    expect(it.ask).toBe('Wire the feedback-path saturation stage; decide pre/post filter placement.');
+    expect(it.move).toBe('Wire the feedback-path saturation stage; decide pre/post filter placement.');
+    expect(it.invocation).toBe('Read Semantic Delay.md and the baton, then pick up the move.');
+    expect(it.receiving_surface).toBe('Claude Code (Mac, palace root)');
+  });
+
+  it('handoff_ready leaves move / invocation / receiving_surface null when absent', () => {
+    const it = buildQueue([handoffMsg()])[0];
+    expect(it.move).toBeNull();
+    expect(it.invocation).toBeNull();
+    expect(it.receiving_surface).toBeNull();
+    // No move → no fabricated ask (the card falls back to summary).
+    expect(it.ask).toBeUndefined();
   });
 });

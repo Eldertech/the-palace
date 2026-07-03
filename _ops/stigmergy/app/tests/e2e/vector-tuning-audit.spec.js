@@ -15,16 +15,18 @@ async function gotoQueue(page) {
 }
 
 test.describe('QUEUE — vector-tuning audit trigger', () => {
-  test('the trigger is present in the QUEUE header', async ({ page }) => {
+  test('the audit pulldown offers this kind', async ({ page }) => {
     await gotoQueue(page);
-    const trigger = page.getByTestId('run-vector-tuning-audit');
-    await expect(trigger).toBeVisible();
-    await expect(trigger).toContainText(/run vector-tuning audit/i);
+    await expect(page.getByTestId('audit-select')).toBeVisible();
+    await expect(page.getByTestId('run-audit')).toBeVisible();
+    await page.getByTestId('audit-select').selectOption('vector-tuning');
+    await expect(page.getByTestId('audit-select')).toHaveValue('vector-tuning');
   });
 
-  test('clicking it runs a dry-run scan and surfaces honest counts (no generation, no write)', async ({ page }) => {
+  test('running it does a dry-run scan and surfaces honest counts (no generation, no write)', async ({ page }) => {
     await gotoQueue(page);
-    await page.getByTestId('run-vector-tuning-audit').click();
+    await page.getByTestId('audit-select').selectOption('vector-tuning');
+    await page.getByTestId('run-audit').click();
     const result = page.getByTestId('vector-tuning-audit-result');
     await expect(result).toBeVisible({ timeout: 25_000 }); // a full palace scan
     await expect(result).toContainText(/entries scanned/i);

@@ -565,7 +565,10 @@ test.describe(`phase ${PHASE} captures`, () => {
       await page.screenshot({ path: resolve(dir, 'queue-inbox.png'), fullPage: false });
     });
 
-    test('phase-15-v1.0/queue-resolved.png', async ({ page }) => {
+    // STALENESS DISABLED (2026-07-03): git auto-resolution is off, so no
+    // "looks-done" resolved card is ever produced. This capture has nothing to
+    // shoot; skipped until/unless staleness is re-enabled.
+    test.skip('phase-15-v1.0/queue-resolved.png', async ({ page }) => {
       await page.goto('/?demo=only&deck=QUEUE');
       await page.getByTestId('board-screen').waitFor({ timeout: 10_000 });
       await preloadFonts(page);

@@ -14,16 +14,18 @@ async function gotoQueue(page) {
 }
 
 test.describe('QUEUE — stage-transition audit trigger', () => {
-  test('the trigger is present in the QUEUE header', async ({ page }) => {
+  test('the audit pulldown offers this kind', async ({ page }) => {
     await gotoQueue(page);
-    const trigger = page.getByTestId('run-stage-audit');
-    await expect(trigger).toBeVisible();
-    await expect(trigger).toContainText(/run stage-transition audit/i);
+    await expect(page.getByTestId('audit-select')).toBeVisible();
+    await expect(page.getByTestId('run-audit')).toBeVisible();
+    await page.getByTestId('audit-select').selectOption('stage');
+    await expect(page.getByTestId('audit-select')).toHaveValue('stage');
   });
 
-  test('clicking it runs a dry run and surfaces honest counts (no write)', async ({ page }) => {
+  test('running it does a dry run and surfaces honest counts (no write)', async ({ page }) => {
     await gotoQueue(page);
-    await page.getByTestId('run-stage-audit').click();
+    await page.getByTestId('audit-select').selectOption('stage');
+    await page.getByTestId('run-audit').click();
     const result = page.getByTestId('stage-audit-result');
     await expect(result).toBeVisible({ timeout: 25_000 }); // a full palace scan
     await expect(result).toContainText(/entries scanned/i);
