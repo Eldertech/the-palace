@@ -206,7 +206,13 @@ The deposit's record *is its commit*. There is no separate archive file to appen
 
 **Use the committer — do not hand-roll a deposit commit.** The slips this guards against are observed and real: a plain `git commit` brings back the retired `Deposit — …` subject, drops the `Palace-Kind` / `Palace-Entry` trailers (so the deposit never lands on the LOG deck's deposit view — it classifies as `mixed`/`edit` and disappears from the archive-as-filter), and tempts a row appended to the now-frozen [[Deposit Archive]]. The committer composes the `deposit(<id>):` subject and derives the trailers for you; the archive is frozen — **never add a row to it.**
 
-Compose the commit through the palace committer (`POST /api/commit/create` when the STIGMERGY server is up, or `_ops/cowork-git/commit.mjs` from Cowork). Pass:
+Compose the commit through the **palace committer** — one tool over one spec (`_ops/stigmergy/app/src/lib/commit-spec.js`): it stages the paths you name and *derives* the `Palace-Entry` / `Palace-Stage` / `Palace-Vector` trailers from the staged diff, so the schema is never hand-transcribed. Three surfaces, one spec:
+
+- **Any session, no server (the default):** the CLI — `node _ops/stigmergy/app/scripts/palace-commit.mjs …` (bare `node`, no install; `--dry-run` previews the message before committing; `PALACE_ROOT="<owner>"` lands on the trunk from a feature worktree). This is the answer when the STIGMERGY server isn't running — never fall back to a plain `git commit`.
+- **STIGMERGY server already up:** `POST /api/commit/create` (the UI / STATE-save path — the same spec over HTTP).
+- **Cowork sandbox:** `_ops/cowork-git/commit.mjs` (the lock-safe wrapper around the same committer).
+
+Pass (as CLI flags, or the JSON-body equivalents):
 - `--kind deposit` — stamps `Palace-Kind: deposit` and colors the card the brightest phosphor on the deck.
 - `--scope <deposit-id>` — the human ID (e.g. `D-2026-06-19-ARCHIVE`). The committer composes the spec subject `deposit(<id>): <summary>`, which is what makes the commit self-classify onto the deposit view. *(The old `Deposit — …` em-dash subject is retired — it does not self-classify.)*
 - `--summary "<one line, observational past tense>"` — the subject's summary half.

@@ -47,6 +47,26 @@ describe('validateCommitMessage', () => {
     expect(r.errors.some((e) => /Palace-Verify/.test(e))).toBe(true);
   });
 
+  it('warns (not errors) on the retired "Deposit —" subject, and nudges to deposit(<id>):', () => {
+    // Recognized as a deposit ceremony (so it is NOT annotated ops), but the
+    // LOG-deck reader will not self-classify it — warn the author at commit time.
+    const r = validateCommitMessage('Deposit — Foo — 1 new entry\n\nA body.');
+    expect(r.valid).toBe(true); // still valid — a real deposit, just old-form
+    expect(r.warnings.some((w) => /retired deposit subject/.test(w))).toBe(true);
+    expect(r.warnings.some((w) => /deposit\(<id>\):/.test(w))).toBe(true);
+  });
+
+  it('does NOT warn about the retired form for the structured deposit(<id>): subject', () => {
+    const r = validateCommitMessage('deposit(D-2026-07-02-FOO): name the foo\n\nPalace-Kind: deposit');
+    expect(r.warnings.some((w) => /retired deposit subject/.test(w))).toBe(false);
+  });
+
+  it('does NOT warn when a "Deposit —" subject carries a Palace-Kind: deposit trailer', () => {
+    // The trailer makes the LOG-deck reader classify it correctly, so no nudge.
+    const r = validateCommitMessage('Deposit — Foo\n\nPalace-Kind: deposit\nPalace-Verify: verified');
+    expect(r.warnings.some((w) => /retired deposit subject/.test(w))).toBe(false);
+  });
+
   it('warns (not errors) when a kind disagrees', () => {
     const msg = 'edit(Foo): x\n\nPalace-Kind: deposit\nPalace-Verify: verified';
     const r = validateCommitMessage(msg);
