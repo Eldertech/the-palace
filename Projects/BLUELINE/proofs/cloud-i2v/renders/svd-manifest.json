@@ -1,0 +1,23 @@
+{
+  "pod": "29i7jcyhg4mqjp",
+  "init": "cloud_init.png",
+  "conditions": {
+    "fire_m60": {
+      "motion_bucket": 60,
+      "frames": 25
+    },
+    "fire_m160": {
+      "motion_bucket": 160,
+      "frames": 25
+    }
+  },
+  "params": {
+    "model": "svd_xt",
+    "frames": 25,
+    "size": "1024x576",
+    "steps": 20,
+    "cfg": 2.5,
+    "sampler": "euler",
+    "scheduler": "karras"
+  }
+}
