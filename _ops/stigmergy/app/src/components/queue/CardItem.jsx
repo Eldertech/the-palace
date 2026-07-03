@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import ArtifactSlot from '../ArtifactSlot.jsx';
 import { verdictTone } from '../../lib/card-model.js';
+import { cardAge } from '../../lib/queue-model.js';
 
 // CardItem — one Enrichment card as a QUEUE item (Phase 4.5).
 //
@@ -34,6 +35,7 @@ export default function CardItem({ card, onRespond, busy, onLaunch }) {
   };
 
   const vtone = verdictTone(card.validator_verdict);
+  const age = cardAge(card.created);
 
   return (
     <div
@@ -63,6 +65,20 @@ export default function CardItem({ card, onRespond, busy, onLaunch }) {
           >
             {card.validator_verdict}
           </span>
+        ) : null}
+        {/* Age readout — same instrument as the queue cards: dim by default,
+            amber when stale (>= 3 days). */}
+        {age.label ? (
+          <span
+            data-testid="card-item-age"
+            title={`created ${age.label}${age.label === 'just now' ? '' : ' ago'}${age.stale ? ' — old enough to be stale' : ''}`}
+            style={{
+              color: age.stale ? 'var(--warn)' : 'var(--phosphor-dim)',
+              textShadow: age.stale ? 'var(--glow)' : 'none',
+              border: `1px solid ${age.stale ? 'var(--warn)' : 'var(--phosphor-dim)'}`,
+              padding: '0 5px', fontSize: 10, letterSpacing: '.04em',
+            }}
+          >{age.label}{age.stale ? ' old' : ''}</span>
         ) : null}
       </div>
 

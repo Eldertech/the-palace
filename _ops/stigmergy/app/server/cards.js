@@ -83,7 +83,17 @@ export function readCards(palaceRoot) {
       try { artifactText = readFileSync(join(cardDir, artifactFile), 'utf8'); } catch (_) { artifactText = null; }
     }
 
-    cards.push(normalizeCard({ id: ent.name, frontmatter, body, artifactFile, artifactText }));
+    // Folder birthtime (creation) as a `created` fallback when the card.md
+    // frontmatter omits its own — so every card carries an age. birthtime can be
+    // 0/unsupported on some filesystems; fall back to mtime, then to nothing.
+    let dirCreated = null;
+    try {
+      const st = statSync(cardDir);
+      const ms = (Number.isFinite(st.birthtimeMs) && st.birthtimeMs > 0) ? st.birthtimeMs : st.mtimeMs;
+      if (Number.isFinite(ms) && ms > 0) dirCreated = new Date(ms).toISOString();
+    } catch (_) { /* ignore — created stays null */ }
+
+    cards.push(normalizeCard({ id: ent.name, frontmatter, body, artifactFile, artifactText, created: dirCreated }));
   }
 
   const sorted = sortCards(cards);

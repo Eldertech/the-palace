@@ -70,7 +70,7 @@ const FLAG_TYPE_LABEL = {
   standard_reference: 'standard reference',
 };
 
-export default function QueueItem({ item, onJump, onClear, onRespond, onLaunch, onApply }) {
+export default function QueueItem({ item, onJump, onClear, onDismissHandoff, onRespond, onLaunch, onApply }) {
   const resolved = item.resolved?.done;
   // A decision is the human's answer (GRANTED / DENIED / RESPONDED), recorded
   // by QueuePanel. It survives buildQueue dropping the answered item so the
@@ -402,19 +402,21 @@ export default function QueueItem({ item, onJump, onClear, onRespond, onLaunch, 
         ) : null}
 
         {/* Manual clear — with staleness (git auto-resolution) off, a baton
-            stays open until it is launched or the human dismisses it here.
-            Local dismiss; the durable board record stands. */}
-        {!resolved && !decided && item.kind === 'handoff_ready' && typeof onClear === 'function' ? (
+            stays open until it is launched or the human clears it here. Clear
+            durably retires it: it posts the paired handoff_picked_up so the
+            baton does NOT return on reload (onDismissHandoff); onClear is the
+            local-only fallback. */}
+        {!resolved && !decided && item.kind === 'handoff_ready' && (onDismissHandoff || onClear) ? (
           <button
             data-testid="queue-item-handoff-clear"
-            onClick={() => onClear(item)}
+            onClick={() => (onDismissHandoff || onClear)(item)}
             style={{
               background: 'transparent', color: 'var(--phosphor-dim)',
               border: '1px solid var(--phosphor-dim)', padding: '3px 10px',
               fontFamily: 'var(--font-mono)', fontSize: 11, cursor: 'pointer',
               textTransform: 'uppercase', letterSpacing: '.04em',
             }}
-            title="dismiss this baton from the queue (the board record stands)"
+            title="mark this baton picked up and clear it (durable — will not return on reload)"
           >clear</button>
         ) : null}
 

@@ -34,7 +34,7 @@ export function isArchived(fm) {
 // object the UI renders. `artifactFile` is the resolved artifact filename
 // (the server picks the first non-card.md file when frontmatter omits it).
 // `artifactText` is the inline text body for text-type artifacts (optional).
-export function normalizeCard({ id, frontmatter = {}, body = '', artifactFile = null, artifactText = null }) {
+export function normalizeCard({ id, frontmatter = {}, body = '', artifactFile = null, artifactText = null, created = null }) {
   const fm = frontmatter || {};
   const artifact = (typeof fm.artifact_path === 'string' && fm.artifact_path.trim() !== '')
     ? fm.artifact_path
@@ -58,7 +58,9 @@ export function normalizeCard({ id, frontmatter = {}, body = '', artifactFile = 
     fv: str(fm.fv),
     summary: str(fm.summary),
     reasoning: str(fm.reasoning),
-    created: str(fm.created),
+    // Prefer the card's own `created` frontmatter; fall back to the folder
+    // birthtime the server passes in, so every card gets an age readout.
+    created: str(fm.created) || str(created),
     artifact,
     artifact_type: artifactType,
     artifact_url: artifactUrl,

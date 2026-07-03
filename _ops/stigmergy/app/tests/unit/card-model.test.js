@@ -71,6 +71,18 @@ describe('normalizeCard', () => {
     const c = normalizeCard({ id: 'c', frontmatter: { validator_iterations: 1 } });
     expect(c.validator_iterations).toBe('1');
   });
+
+  it('prefers frontmatter.created, else falls back to the passed-in (folder) created', () => {
+    // frontmatter wins when present
+    const a = normalizeCard({ id: 'c', frontmatter: { created: '2026-05-05' }, created: '2026-01-01T00:00:00Z' });
+    expect(a.created).toBe('2026-05-05');
+    // fallback used when frontmatter omits it
+    const b = normalizeCard({ id: 'c', frontmatter: {}, created: '2026-01-01T00:00:00Z' });
+    expect(b.created).toBe('2026-01-01T00:00:00Z');
+    // neither → empty string (unchanged prior behavior)
+    const c = normalizeCard({ id: 'c', frontmatter: {} });
+    expect(c.created).toBe('');
+  });
 });
 
 describe('sortCards', () => {

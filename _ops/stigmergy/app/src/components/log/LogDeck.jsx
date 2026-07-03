@@ -45,6 +45,13 @@ function CampaignThread({ thread, onOpen, onFilterEntry }) {
   );
 }
 
+// The LOG deck reads only the most recent N commits — a WINDOW, not the whole
+// history (the repo has hundreds/thousands). The old "N/N commits" readout used
+// this window size as the denominator, which read as "N of N total" — i.e. "this
+// is all of history" — when it is really "the last N we loaded". Naming it here
+// and surfacing it as "last N commits" makes the window honest.
+const LOG_WINDOW = 200;
+
 export default function LogDeck() {
   const [logState, setLogState] = useState({ kind: 'loading' });
   const [uncommitted, setUncommitted] = useState(null);
@@ -62,7 +69,7 @@ export default function LogDeck() {
 
   const load = () => {
     setLogState({ kind: 'loading' });
-    fetchLog({ limit: 200 }).then((r) => {
+    fetchLog({ limit: LOG_WINDOW }).then((r) => {
       if (r.ok) setLogState({ kind: 'ok', commits: r.commits ?? [], count: r.count ?? 0 });
       else setLogState({ kind: 'err', error: r.error });
     });
@@ -109,8 +116,19 @@ export default function LogDeck() {
 
   return (
     <div data-testid="log-deck">
-      <div style={{ color: 'var(--phosphor-dim)', textShadow: 'none', marginBottom: 10 }}>
-        {logState.kind === 'ok' ? `${filtered.length}/${logState.count} commits` : 'reading history...'}
+      <div
+        style={{ color: 'var(--phosphor-dim)', textShadow: 'none', marginBottom: 10 }}
+        title={logState.kind === 'ok' && logState.count >= LOG_WINDOW
+          ? `the LOG shows the most recent ${LOG_WINDOW} commits — a window, not the full repo history`
+          : undefined}
+      >
+        {logState.kind === 'ok'
+          ? (logState.count >= LOG_WINDOW
+              ? (filtered.length === logState.count
+                  ? `last ${LOG_WINDOW} commits`
+                  : `${filtered.length} of last ${LOG_WINDOW} commits`)
+              : `${filtered.length}/${logState.count} commits`)
+          : 'reading history...'}
         <span
           onClick={load}
           style={{ marginLeft: 12, cursor: 'pointer', color: 'var(--phosphor)', textShadow: 'var(--glow)', border: '1px solid var(--phosphor-dim)', padding: '0 6px', fontSize: 11 }}
