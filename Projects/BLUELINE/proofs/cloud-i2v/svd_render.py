@@ -18,6 +18,23 @@ import argparse, json, os, ssl, subprocess, sys, tempfile, time, urllib.request,
 from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
+
+# ── per-agent namespace: resolve the pod id from THIS agent's slugged handoff ──
+def _find_runpod_ns():
+    d = os.path.dirname(os.path.abspath(__file__))
+    for _ in range(10):
+        cand = os.path.join(d, "_ops", "runpod")
+        if os.path.isfile(os.path.join(cand, "agent_ns.py")):
+            return cand
+        nd = os.path.dirname(d)
+        if nd == d:
+            break
+        d = nd
+    return None
+_ns_dir = _find_runpod_ns()
+if _ns_dir and _ns_dir not in sys.path:
+    sys.path.insert(0, _ns_dir)
+from agent_ns import read_pod_id       # noqa: E402  (explicit --pod → my slugged handoff → legacy)
 UA = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0 Safari/537.36"
 try:
     import certifi; CTX = ssl.create_default_context(cafile=certifi.where())
@@ -102,7 +119,7 @@ def main():
     ap.add_argument("--init", default="cloud_init.png")   # the I2V seed (any background crop)
     ap.add_argument("--prefix", default="svd")            # output label prefix
     a = ap.parse_args()
-    pid = a.pod or Path("/tmp/svd_pod_id").read_text().strip()
+    pid = read_pod_id(a.pod)          # explicit --pod, else this agent's slugged handoff file
     out = (HERE / a.out); out.mkdir(parents=True, exist_ok=True)
     pod = Pod(pid)
     print(f"pod {pid} | base {pod.B} | init {a.init} | prefix {a.prefix}")
