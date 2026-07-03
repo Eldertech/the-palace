@@ -121,6 +121,17 @@ export function validateCommitMessage(text) {
     warnings.push('no Palace-Kind trailer (derivable, but recommended)');
   }
 
+  // The Deposit ceremony migrated to the structured `deposit(<id>):` subject
+  // (2026-06-19). The em-dash `Deposit — …` form is still recognized above (so a
+  // real deposit is not mis-annotated `ops`), but it is RETIRED: the LOG-deck
+  // reader (commit-parse.js `classifyCommit`) does not read ceremony subjects,
+  // so a `Deposit —` commit with no `Palace-Kind` trailer silently misses the
+  // deposit view. Warn loudly at commit time rather than let it slip through —
+  // this closes the hook/reader asymmetry from the author's side.
+  if (ceremony.ceremony === 'Deposit' && !subj.declared && !trailers.kind) {
+    warnings.push('“Deposit —” is the retired deposit subject; use `deposit(<id>):` (or add a `Palace-Kind: deposit` trailer) so it self-classifies on the LOG-deck deposit view — see Deposit Ceremony § Step 7b');
+  }
+
   // Palace-Verify, if present, must be one of the allowed values.
   if (trailers.verify && !VERIFY_VALUES.includes(trailers.verify)) {
     errors.push(`Palace-Verify "${trailers.verify}" must be one of ${VERIFY_VALUES.join('|')}`);
