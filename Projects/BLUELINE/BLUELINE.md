@@ -68,9 +68,9 @@ links:
   - target: "[[Graphic Storytelling]]"
     type: emerged-from
     label: speaks-comics-first
-  - target: "[[BLUELINE — Atlas]]"
-    type: spawned
-    label: the-front-door-status-map
+  - target: "[[BLUELINE — Production Plan]]"
+    type: connects-to
+    label: the-front-door
   - target: "[[BLUELINE — Motion and Flow]]"
     type: spawned
     label: unified-motion-subsystem
@@ -81,7 +81,10 @@ tags: [project, blueline, music-video, generative, pipeline, sprout]
 
 ![[BLUELINE — hero.png]]
 
-> **▸ STATUS (2026-06-24) — consolidated on main.** All the BLUELINE threads are merged to canon. (1) The rendered-board **animatic** plays the 6 new-story boards on the **live Ableton clock** (Loudon's *Ascension_v8*, 120 BPM → 12 frames/beat, deterministic ✓) — `proofs/animatic/`. (2) The **frame pipeline** that produced the boards — the 6-shot noir-tragedy storyboard, rich-first/stylize-last, the RunPod backend — `proofs/new-story/`; canon [[Frame Designer]] · [[Steer the Generator]]. (3) The **text layer** — gen-AI typography, the font library, the 7-voice ink suite — `proofs/text-layer/`; canon [[Shop/Lettering]] · [[Typography as Meaning]] · [[BLUELINE — Text Layer]]. Next rungs: level the boards to uniform fidelity; a shareable muxed cut; the motion-comic register on the live clock (move the existing ink lines, slowed down); and the text layer's placement (letter *into* the frame).
+> **▸ Front door: [[BLUELINE — Production Plan]].** For where the project stands, its goals, the eight
+> threads, and the prioritized next steps, read the Production Plan — it is the single, current source
+> of truth (what it is · goals · status · threads · horizon). This entry is the palace *face*; the plan
+> is the map.
 
 > Working title — placeholder, rename freely. The brief lives in the project bundle; this entry is the palace face.
 
@@ -113,8 +116,9 @@ The June 2026 research found nearly every piece exists off the shelf: the Blende
 
 ## Where it stands
 
-`stage: growing`. **The full status map is [[BLUELINE — Atlas]]** — eight named subsystems, every proof
-placed, each marked proven / partial / retired / next. In brief: **Clock & Sync** shipped and
+`stage: growing`. **The full status map, threads, and next steps are in [[BLUELINE — Production Plan]]**
+— every proof placed, each thread marked proven / partial / retired, with the prioritized horizon. In
+brief: **Clock & Sync** shipped and
 live-validated (the rendered-board **animatic** plays on *Ascension_v8*, 120 BPM → 12 fr/beat);
 **Figure & Pose** is mature ([[Shop/Figure Rig]], hands shipped); **Style & Identity** locked the
 `pen-flow` house look (identity → InstantID next); **Text & Lettering** proved rung 1 (material register
@@ -128,26 +132,25 @@ multi-ControlNet; [[Blocked, Not Prompted]]) and the **flow-field spine** (Sessi
 character-aware; [[The Flow Field is the Spine]]). The conceptual map is [[BLUELINE — Production Pipeline]];
 the contracts are [[BLUELINE — Render Backend]] · [[BLUELINE — Board Record Schema]] · [[BLUELINE — toolbox]].
 *(The per-rung M0→M4 history that used to live here is preserved in the proof reports under `proofs/` and
-in git; the Atlas replaced it as the front door on 2026-07-03.)*
+in git; the [[BLUELINE — Production Plan]] is the front door as of 2026-07-03.)*
 
 ## Bundle
 
-> **Reorganized 2026-07-03 (coherence reset).** The front door is now `BLUELINE — Atlas.md`. Docs
-> below are grouped by role; historical docs are marked and the two dead ones moved to `Archive/`.
+> **New here?** Read `BLUELINE — Production Plan.md` (the front door) and stop there until you need
+> depth. The historical/archived docs below are kept for reasoning, not orientation — skip them.
 
-**Front door + subsystem docs**
-- `BLUELINE — Atlas.md` — **read first**: eight subsystems, every proof placed, each proven/partial/retired/next.
-- `BLUELINE — Motion and Flow.md` — the priority subsystem: seven motion threads unified + the pose → field → clock coupling.
+**Front door — read first**
+- `BLUELINE — Production Plan.md` — **read first**: what it is · goals · where it stands · the eight threads · the horizon (next steps). Every proof placed.
 
 **Conceptual map + contracts (canonical)**
 - `BLUELINE — Production Pipeline.md` — the established stage/role pipeline (anime backbone · comics skin · feature tissue · music-video clock) + the two seams.
+- `BLUELINE — Motion and Flow.md` — the priority thread: seven motion threads unified + the pose → field → clock coupling.
 - `BLUELINE — Render Backend.md` — the render-AI half (Study/SDXL·pod, Piece/FLUX·serverless) + the canonical runner in `render-backend/`.
-- `BLUELINE — Board Record Schema.md` — the beat-addressed contract every subsystem reads/writes.
+- `BLUELINE — Board Record Schema.md` — the beat-addressed contract every thread reads/writes.
 - `BLUELINE — toolbox.md` — every runtime + version pinned (the reproduce anchor).
 
-**Historical (folded into the Atlas)**
-- `BLUELINE — Production Plan.md` — the parallel-tracks plan; its Tracks I–V are now the Atlas subsystems.
+**Historical (folded into the Production Plan) — skip if new**
 - `BLUELINE — Specialists and Seams.md` — its "how many Specialists" question is answered by the live [[Shop/Figure Rig]] / [[Shop/Lettering]] / [[Frame Designer]] entries.
-- `Archive/BLUELINE — Deposit Map.md`, `Archive/BLUELINE — Claude Code Job.md` — the original proposal + single-thread spike (executed / superseded).
+- `Archive/BLUELINE — Deposit Map.md`, `Archive/BLUELINE — Claude Code Job.md` — the original June 2026 proposal + single-thread spike (executed / superseded).
 
 - `proofs/` — the per-track + session + rung proofs: `m0-previz/` (the verified previz player + `m0-report.md`), `m1-animatic/` (the comic-register animatic + `m1-report.md`), `m2-motion-comic/` (the beat-locked motion comic + `m2-report.md`), `animatic/` (the **rendered-board animatic** — player + `board-records.json` + `architecture.svg` + `animatic-report.md`), `new-story/` (the 6-shot noir-tragedy storyboard + the rich-first/stylize-last frame pipeline), `text-layer/` (the **text layer** — gen-AI typography, the font library + sampler, the 7-voice ink suite; see [[Shop/Lettering]] + [[Typography as Meaning]]), `m3-warped-noise/` (flow-warped noise vs seed-lock), `track-III-clock/` (clock + M4L spec), `track-II-lora/` (LoRA grade + the v2 ruler), `track-IV-bench/`, `track-V-motion/`, `session-2-staging/`, `session-3-flowfield/`.
