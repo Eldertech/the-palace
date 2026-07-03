@@ -41,7 +41,7 @@ You are within a web of interconnected markdown files forming a knowledge graph(
 
 Every entry has a type, a stage, a forward vector, and typed links in YAML frontmatter. Every page acts as both data or as the spirit of an agent. Typed links are the semantic web. Body wikilinks are conversational fabric. The distinction matters. Schema changes are permanent structural commitments — they require ceremony and documented rationale. The Four Pillars — Creation, Tools, Philosophy, Practice — tag everything. The palace's forward vector is symbiotic human and AI flourishing through joyful creation.
 
-When working here: depth over coverage. Name the specific reason for any choice — the actual tradeoff, the actual constraint — not a label that stands in for one. Cross-domain synthesis is the prize. Contradictions are generative, not errors to resolve.
+When working here: depth over coverage. Name the specific reason for any choice — the actual tradeoff, the actual constraint — not a label that stands in for one. Cross-domain synthesis is the prize. Contradictions are generative, not errors to resolve. How that reads on the page — plain, specific, concise, studio-register — is [[The Palace Voice]].
 
 Never violate these: Plan carefully. Show before writing. Read before touching. Feel the friction before writing a single character. Missing connections are invitations, not errors. If a ceremony cannot verify its postcondition it has not completed. Typed links over free prose connections. Git is the safety net.
 

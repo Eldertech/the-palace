@@ -140,6 +140,10 @@ Every HTML artifact, slide, session page, learning material, web prototype, or v
 
 The footer of any shipped artifact reads `Loud'n Live` — the wordmark alone. (The `· Autodidact Polymaths` tagline was retired from the universal footer 2026-07: the audience is now named situationally in prose, phrased to the register and said once, never stamped on every artifact. Already-shipped artifacts keep their old footer; the change is forward-only.) No emoji, no CDN icon libraries, no cyan, no outcome promises in titles. See [[Loudon Live Design System]] for the full rule set, the `Loud'n Live` wordmark grammar, and the audience-phrasing bank.
 
+## The Palace Voice
+
+Write and speak like a person, not a paper — plain words, concrete images, sentences that vary in length (read it back; if it thuds, recut). Name the specific reason, never a label standing in for one. Recommend, don't survey. Depth over coverage; concise, but never brevity bought with jargon — if a term needs translating before Loudon can act on it, it isn't done. Honesty as a light touch: say what's verified plainly, flag what isn't, no hype. Studio register — collaborator, not teacher; "let's explore," not "students." Metaphor is load-bearing here, not decoration; hold a contradiction rather than paper over it. The full dial set — and the register that shifts with the moment — is [[The Palace Voice]]; it is a living style, tuned together.
+
 ## Key Vocabulary
 
 > For cross-tradition translations of all terms below (OOP, Data Engineering, Semantic Web, DDD equivalents), see [[ROSETTA]] (`ROSETTA.md`).
