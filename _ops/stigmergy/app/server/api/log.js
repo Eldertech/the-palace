@@ -6,7 +6,7 @@
 //   POST /api/commit/create — record a structured palace commit
 
 import { jsonResponse, readBody } from '../http.js';
-import { readLog, readCommit, readUncommitted, readGitState } from '../git.js';
+import { readLog, readCommit, readUncommitted, readGitState, readCommitGraph } from '../git.js';
 import { commitSelected } from '../commit.js';
 
 export async function logRoutes(ctx) {
@@ -60,6 +60,18 @@ export async function logRoutes(ctx) {
       return true;
     } catch (err) {
       jsonResponse(res, 500, { error: `git worktree read failed: ${err.message}` });
+      return true;
+    }
+  }
+
+  // The commit DAG behind the worktrees (LOG deck TOPOLOGY). Read-only.
+  if (urlPath === '/api/commit-graph' && method === 'GET') {
+    try {
+      const graph = await readCommitGraph(palaceRoot);
+      jsonResponse(res, 200, { ...graph, ts: new Date().toISOString() });
+      return true;
+    } catch (err) {
+      jsonResponse(res, 500, { error: `git graph read failed: ${err.message}` });
       return true;
     }
   }
