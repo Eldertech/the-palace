@@ -7,9 +7,9 @@ pillars:
   - philosophy
 born: 2026-03
 stage: foundational
-version: 1.14
+version: 1.15
 schema: SCHEMA.md
-last_schema_ceremony: 2026-07-01
+last_schema_ceremony: 2026-07-03
 github: https://github.com/Eldertech/the-palace
 github_raw: https://raw.githubusercontent.com/Eldertech/the-palace/main
 links:
@@ -117,6 +117,7 @@ These verbs ARE invocations. When Loudon uses one as an instruction — bare wor
 |---|---|---|
 | "deposit", "let's deposit", "add this to the palace", "memorialize this" | **Deposit** — draft entry/edits from the conversation; show before writing; the commit *is* the record (`Palace-Kind: deposit` + synthesis in the body) — the [[Deposit Archive]] is frozen, no row | [[Deposit Ceremony]] |
 | "baton", "pass the baton", "baton this", "baton it to [surface]" | **Baton** — compress the live session into a baton (a file) the next Claude catches and runs with; delete on pickup, git is the archive | [[Baton Ceremony]] |
+| "close well", "let's close well", "close this session well" | **Closing Well** — dispatch the enchanted [[Closing Well]] page as the Closing Well Agent: read the session arc with fresh eyes, draft a **close map** (deposit / baton / artifacts, or fewer), one gate (Loudon signs), then execute each row via its own ceremony — "deposit: none" is a first-class outcome | [[Closing Well Ceremony]] |
 | "harvest", "let's harvest" | **Harvest** — search past work, surface deposit candidates to a working list | [[Harvest Ceremony]] |
 | "weave", "let's weave" | **Weave** — Swarm Weave: map build → parallel audit → synthesis; topology, unsung paths, new links | [[Weave Ceremony]] |
 | "walk", "let's walk" | **Walk** — follow typed links from one entry, surface an unexpected connection | [[Walk Ceremony]] |
