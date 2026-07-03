@@ -154,3 +154,7 @@ in git; the [[BLUELINE — Production Plan]] is the front door as of 2026-07-03.
 - `Archive/BLUELINE — Deposit Map.md`, `Archive/BLUELINE — Claude Code Job.md` — the original June 2026 proposal + single-thread spike (executed / superseded).
 
 - `proofs/` — the per-track + session + rung proofs: `m0-previz/` (the verified previz player + `m0-report.md`), `m1-animatic/` (the comic-register animatic + `m1-report.md`), `m2-motion-comic/` (the beat-locked motion comic + `m2-report.md`), `animatic/` (the **rendered-board animatic** — player + `board-records.json` + `architecture.svg` + `animatic-report.md`), `new-story/` (the 6-shot noir-tragedy storyboard + the rich-first/stylize-last frame pipeline), `text-layer/` (the **text layer** — gen-AI typography, the font library + sampler, the 7-voice ink suite; see [[Shop/Lettering]] + [[Typography as Meaning]]), `m3-warped-noise/` (flow-warped noise vs seed-lock), `track-III-clock/` (clock + M4L spec), `track-II-lora/` (LoRA grade + the v2 ruler), `track-IV-bench/`, `track-V-motion/`, `session-2-staging/`, `session-3-flowfield/`.
+
+## Active Baton
+
+[[BLUELINE — baton]] — drafted 2026-07-03 (the Aftermath Frame solver → gen-AI frames; hand to a fresh Claude).
