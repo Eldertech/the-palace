@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Baton ⇄ steward — one atom, two forms</title>
+<style>
+:root{--text-primary:#1c1917;--text-secondary:#57534e;--border:#d6d3d1;}
+*{box-sizing:border-box}
+body{background:#faf9f7;color:var(--text-primary);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",system-ui,sans-serif;line-height:1.6;max-width:780px;margin:0 auto;padding:2rem 1.5rem;}
+h1{font-size:20px;font-weight:500;margin:0 0 .3rem}
+.sub{color:var(--text-secondary);font-size:13px;margin:0 0 1.6rem}
+.dgm{margin:0 0 1.7rem}
+.dgm h3{margin:0 0 .35rem;font-weight:500;font-size:15px}
+.lgnd{margin:0 0 1.1rem;font-size:12px;color:var(--text-secondary)}
+svg{max-width:100%;height:auto}
+svg text{font-family:inherit}
+table.uni{width:100%;border-collapse:collapse;font-size:13px;table-layout:fixed}
+table.uni th,table.uni td{border:1px solid var(--border);padding:8px 10px;text-align:left;vertical-align:top;color:var(--text-primary);line-height:1.45}
+table.uni thead th{font-weight:500}
+table.uni td.lab{color:var(--text-secondary)}
+table.uni td.amb{border-left:2px solid #b7791f}
+footer{margin-top:2rem;padding-top:.9rem;border-top:1px solid var(--border);font-size:12px;color:var(--text-secondary)}
+</style>
+</head>
+<body>
+<h1>Baton ⇄ steward — one atom, two forms</h1>
+<p class="sub">A handoff is the atom; the baton is its impulse, the steward its loop. Evidence for the entry <em>Two Batons, One Board</em>. Built 2026-07-03.</p>
+
+<p class="lgnd">amber outline = the handoff artifact that crosses the boundary · dashed = not built yet</p>
+
+<div class="dgm">
+<h3>1 · the atom — one handoff</h3>
+<svg width="100%" viewBox="0 0 680 185" role="img"><title>One handoff</title><desc>Worker A drops a handoff artifact across a boundary; worker A-prime catches it.</desc>
+<defs><marker id="mA" markerWidth="9" markerHeight="9" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#71717a"/></marker></defs>
+<rect x="40" y="58" width="150" height="54" rx="4" fill="none" stroke="#71717a" stroke-width="1.5"/>
+<text x="115" y="90" text-anchor="middle" font-size="14" fill="var(--text-primary)">worker A</text>
+<rect x="490" y="58" width="150" height="54" rx="4" fill="none" stroke="#71717a" stroke-width="1.5"/>
+<text x="565" y="90" text-anchor="middle" font-size="14" fill="var(--text-primary)">worker A′</text>
+<rect x="282" y="52" width="116" height="64" rx="4" fill="none" stroke="#b7791f" stroke-width="2"/>
+<text x="340" y="80" text-anchor="middle" font-size="14" fill="var(--text-primary)">handoff</text>
+<text x="340" y="98" text-anchor="middle" font-size="11" fill="var(--text-secondary)">baton · state</text>
+<line x1="190" y1="85" x2="280" y2="85" stroke="#71717a" stroke-width="1.5" marker-end="url(#mA)"/>
+<text x="235" y="76" text-anchor="middle" font-size="12" fill="var(--text-primary)">drop</text>
+<text x="235" y="102" text-anchor="middle" font-size="11" fill="var(--text-secondary)">Closing Well</text>
+<line x1="400" y1="85" x2="490" y2="85" stroke="#71717a" stroke-width="1.5" marker-end="url(#mA)"/>
+<text x="445" y="76" text-anchor="middle" font-size="12" fill="var(--text-primary)">catch</text>
+<line x1="340" y1="16" x2="340" y2="50" stroke="#a1a1aa" stroke-width="1" stroke-dasharray="4 4"/>
+<line x1="340" y1="118" x2="340" y2="150" stroke="#a1a1aa" stroke-width="1" stroke-dasharray="4 4"/>
+<text x="340" y="170" text-anchor="middle" font-size="12" fill="var(--text-secondary)">one boundary crossed: session · context · surface</text>
+</svg>
+</div>
+
+<div class="dgm">
+<h3>2 · baton — a manual handoff (an impulse)</h3>
+<svg width="100%" viewBox="0 0 680 170" role="img"><title>The baton</title><desc>Session one writes a baton file, Loudon carries it, session two catches it, then it is deleted with git as the archive.</desc>
+<defs><marker id="mB" markerWidth="9" markerHeight="9" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#71717a"/></marker></defs>
+<rect x="24" y="54" width="132" height="46" rx="4" fill="none" stroke="#71717a" stroke-width="1.5"/>
+<text x="90" y="74" text-anchor="middle" font-size="13" fill="var(--text-primary)">session 1</text>
+<text x="90" y="90" text-anchor="middle" font-size="11" fill="var(--text-secondary)">Loudon + Claude</text>
+<rect x="196" y="54" width="120" height="46" rx="4" fill="none" stroke="#b7791f" stroke-width="2"/>
+<text x="256" y="81" text-anchor="middle" font-size="13" fill="var(--text-primary)">baton file</text>
+<rect x="356" y="54" width="132" height="46" rx="4" fill="none" stroke="#71717a" stroke-width="1.5"/>
+<text x="422" y="74" text-anchor="middle" font-size="13" fill="var(--text-primary)">session 2</text>
+<text x="422" y="90" text-anchor="middle" font-size="11" fill="var(--text-secondary)">next Claude</text>
+<rect x="528" y="54" width="128" height="46" rx="4" fill="none" stroke="#a1a1aa" stroke-width="1.5" stroke-dasharray="5 4"/>
+<text x="592" y="74" text-anchor="middle" font-size="13" fill="var(--text-secondary)">deleted</text>
+<text x="592" y="90" text-anchor="middle" font-size="11" fill="var(--text-secondary)">git = archive</text>
+<line x1="156" y1="77" x2="196" y2="77" stroke="#71717a" stroke-width="1.5" marker-end="url(#mB)"/>
+<text x="176" y="47" text-anchor="middle" font-size="12" fill="var(--text-primary)">writes</text>
+<line x1="316" y1="77" x2="356" y2="77" stroke="#71717a" stroke-width="1.5" marker-end="url(#mB)"/>
+<text x="336" y="47" text-anchor="middle" font-size="12" fill="var(--text-primary)">Loudon carries</text>
+<line x1="488" y1="77" x2="528" y2="77" stroke="#71717a" stroke-width="1.5" marker-end="url(#mB)"/>
+<text x="508" y="47" text-anchor="middle" font-size="12" fill="var(--text-primary)">caught</text>
+<text x="340" y="140" text-anchor="middle" font-size="12" fill="var(--text-secondary)">lifecycle: mint → carry → delete   ·   transport: you</text>
+</svg>
+</div>
+
+<div class="dgm">
+<h3>3 · steward — the same handoff, looped (an oscillator)</h3>
+<svg width="100%" viewBox="0 0 680 245" role="img"><title>The steward</title><desc>A cycle catches the rolling state, does a move, drops it back; the next cycle catches it. A scheduler that is not yet built would drive the loop, and the Trickster answers blocking forks.</desc>
+<defs><marker id="mC" markerWidth="9" markerHeight="9" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#71717a"/></marker></defs>
+<rect x="260" y="36" width="170" height="60" rx="4" fill="none" stroke="#b7791f" stroke-width="2"/>
+<text x="345" y="62" text-anchor="middle" font-size="13" fill="var(--text-primary)">state · plan · board</text>
+<text x="345" y="80" text-anchor="middle" font-size="11" fill="var(--text-secondary)">updated in place, never deleted</text>
+<rect x="250" y="168" width="190" height="52" rx="4" fill="none" stroke="#71717a" stroke-width="1.5"/>
+<text x="345" y="190" text-anchor="middle" font-size="13" fill="var(--text-primary)">one cycle</text>
+<text x="345" y="208" text-anchor="middle" font-size="12" fill="var(--text-secondary)">catch → move → drop</text>
+<line x1="312" y1="96" x2="312" y2="168" stroke="#71717a" stroke-width="1.5" marker-end="url(#mC)"/>
+<text x="286" y="136" text-anchor="middle" font-size="12" fill="var(--text-primary)">catch</text>
+<line x1="378" y1="168" x2="378" y2="96" stroke="#71717a" stroke-width="1.5" marker-end="url(#mC)"/>
+<text x="404" y="136" text-anchor="middle" font-size="12" fill="var(--text-primary)">drop</text>
+<line x1="120" y1="194" x2="248" y2="194" stroke="#a1a1aa" stroke-width="1.5" stroke-dasharray="5 4" marker-end="url(#mC)"/>
+<text x="120" y="182" text-anchor="start" font-size="12" fill="var(--text-secondary)">scheduler (the ant)</text>
+<text x="120" y="214" text-anchor="start" font-size="11" fill="var(--text-secondary)">not built — you trigger it</text>
+<line x1="440" y1="194" x2="476" y2="194" stroke="#71717a" stroke-width="1.5" marker-end="url(#mC)"/>
+<text x="458" y="186" text-anchor="middle" font-size="11" fill="var(--text-secondary)">fork</text>
+<rect x="478" y="170" width="178" height="48" rx="4" fill="none" stroke="#71717a" stroke-width="1.5"/>
+<text x="567" y="190" text-anchor="middle" font-size="13" fill="var(--text-primary)">Trickster</text>
+<text x="567" y="207" text-anchor="middle" font-size="11" fill="var(--text-secondary)">decides blocking forks</text>
+</svg>
+</div>
+
+<div class="dgm">
+<h3>4 · same atom, two forms</h3>
+<table class="uni">
+<thead><tr><th style="width:20%"></th><th style="width:40%">un-stewarded project</th><th style="width:40%">stewarded project</th></tr></thead>
+<tbody>
+<tr><td class="lab">worker</td><td>Loudon, by hand in a session</td><td>the enchanted page, automatically</td></tr>
+<tr><td class="lab">Trickster (decides forks)</td><td>Loudon</td><td>Loudon, or the auto-Trickster</td></tr>
+<tr><td class="lab">handoff artifact</td><td class="amb">baton file</td><td class="amb">state · plan · board</td></tr>
+<tr><td class="lab">transport</td><td>Loudon pastes the invocation</td><td>the scheduler (not built — you still trigger it)</td></tr>
+<tr><td class="lab">lifecycle</td><td>mint → carry → delete</td><td>roll — update in place, keep</td></tr>
+</tbody>
+</table>
+</div>
+
+<footer>Loud'n Live</footer>
+</body>
+</html>
