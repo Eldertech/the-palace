@@ -1,0 +1,19 @@
+{
+  "title": "The Palace Practices on Itself",
+  "idiom": "classical lithograph / Escher-inflected engraving",
+  "hero_prompt": "A fine classical lithograph, Escher-inflected but warmly hand-drawn: a loom weaving a thread that curves back to become part of the loom itself, a structure building itself in a closed feedback loop, while one bright thread reaches off the edge to touch a real object outside the loop. Nested self-reference, meticulous cross-hatching, ink on aged paper, a darker upper register, contemplative not clinical.",
+  "icon_prompt": "A bold high-contrast square emblem in pure black and white: an ouroboros reimagined as a loop of woven threads and small tools feeding back into itself, one link opening outward. Sharp geometric printmaking silhouette, no gradients.",
+  "seeds": {
+    "hero": 380289,
+    "icon": 886595
+  },
+  "rendered_at": "2026-07-03T00:41:34Z",
+  "history": [
+    {
+      "idiom": "classical lithograph / Escher-inflected engraving",
+      "hero_prompt": "A fine classical lithograph, Escher-inflected but warmly hand-drawn: a loom weaving a thread that curves back to become part of the loom itself, a structure building itself in a closed feedback loop, while one bright thread reaches off the edge to touch a real object outside the loop. Nested self-reference, meticulous cross-hatching, ink on aged paper, a darker upper register, contemplative not clinical.",
+      "icon_prompt": "A bold high-contrast square emblem in pure black and white: an ouroboros reimagined as a loop of woven threads and small tools feeding back into itself, one link opening outward. Sharp geometric printmaking silhouette, no gradients.",
+      "rendered_at": "2026-07-03T00:41:22Z"
+    }
+  ]
+}
