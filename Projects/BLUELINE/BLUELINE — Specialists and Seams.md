@@ -1,7 +1,7 @@
 ---
 title: "BLUELINE — Specialists and Seams"
 type: meta
-status: draft
+status: historical
 born: 2026-06-17
 who_leads: loudon
 forward_vector: "I answer the question the Production Pipeline's forward vector raised — how many Specialists does BLUELINE actually need, what does each one do, and where are the seams between them — by showing that the pipeline's stages are MOSTLY the Shop's existing Specialists, that the seams are the board-record handoffs (two of them genuinely hard), and that Loudon is the Producer/auteur above the foreman, not the Director-stage inside it."
@@ -32,6 +32,12 @@ tags: [meta, blueline, specialists, maker, seams, roles]
 
 # BLUELINE — Specialists and Seams
 
+> **Historical (2026-07-03).** Its central question — how many Specialists does BLUELINE need — is now
+> answered by live entries: **[[Shop/Figure Rig]]** (figure & pose), **[[Shop/Lettering]]** (text), and
+> **[[Frame Designer]]** (the Maker's per-medium foreman that dispatches them). The seam analysis
+> (Seam A solved-by-design, Seam B the frontier) is still current and lives on in
+> [[BLUELINE — Production Pipeline]]. Kept for the reasoning; the roster it predicted is real now.
+>
 > The [[BLUELINE — Production Pipeline]] forward vector asks for "each stage to grow its own role-Specialist
 > (Director / Board artist / DP-layout / Render-AI / Editor) under a BLUELINE [[Maker]]-style foreman, so the
 > team is real and not a metaphor." This doc answers it — and the answer is **smaller and more reused** than
