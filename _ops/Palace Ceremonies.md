@@ -33,6 +33,8 @@ links:
     type: enables
   - target: "[[Baton Ceremony]]"
     type: connects-to
+  - target: "[[Closing Well Ceremony]]"
+    type: enables
 ---
 # Palace Ceremonies
 
@@ -69,6 +71,7 @@ The complete and canonical list of all palace ceremonies. Every ceremony has a t
 | Ceremony | Trigger | What Happens | Full Spec |
 |---|---|---|---|
 | The Baton | "baton" / "pass the baton" / "baton this" / "baton it to [surface]" | Compress an in-progress move into a baton (a file) the next Claude catches and runs with, without restarting. Writes to the entry's bundle (or the work's home). Disposable — deleted on pickup; git is the archive. | [[Baton Ceremony]] |
+| The Close | "close well" / "let's close well" / "close this session well" | Dispatch the enchanted [[Closing Well]] page as the Closing Well Agent: read the spent session's arc with fresh eyes, draft a **close map** (deposit · baton · artifacts, or fewer), one gate (Loudon signs), then execute each row via its own ceremony. "deposit: none" is a first-class outcome — never manufacture canon to fill the map. *Recognition scaffold built (Phase 2); the Agent's full mechanism is being built through [[Closing Well — production plan]].* | [[Closing Well Ceremony]] |
 
 **"Handoff" is ambiguous — ask first.** "Baton" is the official trigger; the baton is the file that gets passed. Loudon also says "handoff," but sometimes means an informal, non-ceremony pass — so when he says "handoff" or "hand this off," ask *"Baton ceremony, or an informal handoff?"* and proceed on his answer. A deliberate, temporary training-wheel while the "baton" habit sets in.
 
