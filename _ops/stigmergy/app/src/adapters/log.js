@@ -46,9 +46,11 @@ export async function fetchGitState() {
 }
 
 // The commit DAG behind the worktrees for the TOPOLOGY graph. Read-only.
-export async function fetchCommitGraph() {
+// `depth` walks the drawn root that many commits deeper down the trunk.
+export async function fetchCommitGraph({ depth = 0 } = {}) {
   try {
-    const res = await fetch('/api/commit-graph', { headers: { Accept: 'application/json' } });
+    const qs = depth ? `?depth=${encodeURIComponent(depth)}` : '';
+    const res = await fetch(`/api/commit-graph${qs}`, { headers: { Accept: 'application/json' } });
     if (!res.ok) return { ok: false, status: res.status, error: `http ${res.status}` };
     return { ok: true, ...(await res.json()) };
   } catch (err) {

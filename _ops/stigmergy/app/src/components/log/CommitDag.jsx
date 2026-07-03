@@ -44,6 +44,7 @@ export function DagBody({ graph, hostBranch }) {
           return <div key={i} style={{ display: 'flex' }}><GraphStrip cells={row.cells} cols={cols} /></div>;
         }
         const c = row.commit;
+        const isConvergence = graph.convergence && c.sha === graph.convergence;
         return (
           <div key={i} data-testid="dag-commit" style={{ display: 'flex', alignItems: 'baseline' }}>
             <GraphStrip cells={row.cells} cols={cols} />
@@ -52,28 +53,38 @@ export function DagBody({ graph, hostBranch }) {
             <span style={{ color: c.isRoot ? 'var(--phosphor-dim)' : 'var(--phosphor)' }}>
               {c.subject.length > 60 ? c.subject.slice(0, 59) + '…' : c.subject}
             </span>
-            {c.isRoot ? <span style={{ ...dim, marginLeft: 8 }}>· merge-base (trunk continues ↓)</span> : null}
+            {isConvergence && !c.isRoot ? <span style={{ ...dim, marginLeft: 8 }}>· worktrees rejoin here</span> : null}
+            {c.isRoot ? <span style={{ ...dim, marginLeft: 8 }}>{graph.moreBelow ? '· trunk continues ↓' : '· root'}</span> : null}
           </div>
         );
       })}
-      {graph.truncated ? <div style={{ ...dim, marginTop: 4 }}>… graph truncated at the window cap.</div> : null}
+      {graph.truncated ? <div style={{ ...dim, marginTop: 4 }}>… window cap reached; ask for less depth to see the tips.</div> : null}
     </div>
   );
 }
 
+const DEPTH_STEP = 40;
+
 export default function CommitDag({ nonce = 0, hostBranch = null, trunk = 'main' }) {
   const [state, setState] = useState({ kind: 'loading' });
+  const [depth, setDepth] = useState(0);
 
+  // Reload (nonce) resets to the shallow view; the depth control re-fetches in
+  // place. Loading keeps the last graph visible so the view doesn't flash.
+  useEffect(() => { setDepth(0); }, [nonce]);
   useEffect(() => {
     let cancelled = false;
-    setState((s) => (s.kind === 'ok' ? s : { kind: 'loading' }));
-    fetchCommitGraph().then((r) => {
+    setState((s) => (s.kind === 'ok' ? { ...s, busy: true } : { kind: 'loading' }));
+    fetchCommitGraph({ depth }).then((r) => {
       if (cancelled) return;
       if (r.ok) setState({ kind: 'ok', graph: r });
       else setState({ kind: 'err', error: r.error });
     });
     return () => { cancelled = true; };
-  }, [nonce]);
+  }, [nonce, depth]);
+
+  const graph = state.kind === 'ok' ? state.graph : null;
+  const commitCount = graph ? (graph.commits ?? []).filter((c) => !c.isRoot).length : 0;
 
   return (
     <div style={{ border: '1px solid var(--phosphor-dim)', padding: '10px 12px', overflowX: 'auto', background: '#040804' }}>
@@ -82,7 +93,24 @@ export default function CommitDag({ nonce = 0, hostBranch = null, trunk = 'main'
       ) : state.kind === 'loading' ? (
         <div style={{ ...dim }}>reading commit graph…</div>
       ) : (
-        <DagBody graph={state.graph} hostBranch={hostBranch} />
+        <>
+          <DagBody graph={graph} hostBranch={hostBranch} />
+          <div style={{ display: 'flex', gap: 12, alignItems: 'baseline', marginTop: 8, borderTop: '1px dashed var(--phosphor-dim)', paddingTop: 6, fontSize: 11, ...dim }}>
+            <span>{commitCount} commits{depth > 0 ? ` · +${depth} deep` : ''}{state.busy ? ' · loading…' : ''}</span>
+            {graph.moreBelow ? (
+              <span data-testid="dag-deeper" role="button" onClick={() => setDepth((d) => d + DEPTH_STEP)}
+                style={{ cursor: 'pointer', color: 'var(--phosphor)', textShadow: 'var(--glow)', border: '1px solid var(--phosphor-dim)', padding: '0 6px' }}>
+                ▼ older
+              </span>
+            ) : <span style={{ opacity: 0.6 }}>▼ root reached</span>}
+            {depth > 0 ? (
+              <span role="button" onClick={() => setDepth((d) => Math.max(0, d - DEPTH_STEP))}
+                style={{ cursor: 'pointer', color: 'var(--phosphor)', textShadow: 'var(--glow)', border: '1px solid var(--phosphor-dim)', padding: '0 6px' }}>
+                ▲ less
+              </span>
+            ) : null}
+          </div>
+        </>
       )}
     </div>
   );

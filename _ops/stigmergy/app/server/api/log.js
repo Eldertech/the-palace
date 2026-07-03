@@ -65,9 +65,10 @@ export async function logRoutes(ctx) {
   }
 
   // The commit DAG behind the worktrees (LOG deck TOPOLOGY). Read-only.
+  // ?depth=N walks the drawn root N commits deeper down the trunk.
   if (urlPath === '/api/commit-graph' && method === 'GET') {
     try {
-      const graph = await readCommitGraph(palaceRoot);
+      const graph = await readCommitGraph(palaceRoot, { depth: query.get('depth') ?? 0 });
       jsonResponse(res, 200, { ...graph, ts: new Date().toISOString() });
       return true;
     } catch (err) {

@@ -260,11 +260,14 @@ export async function readGitState(palaceRoot, { base = 'main' } = {}) {
 }
 
 // The real commit DAG behind the worktrees -- every commit reachable from the
-// worktree tips down to their common merge-base (the convergence root, where
-// all lanes rejoin the trunk). Bounded by `maxCommits` and by the merge-base
-// so the graph stays a handful of lanes wide. Read-only. Returns
-// { commits: [DAG nodes, newest first], root, trunk, tips, truncated }.
-export async function readCommitGraph(palaceRoot, { maxCommits = 150 } = {}) {
+// worktree tips down to a drawn root. By default the root is the octopus
+// merge-base of all tips (`convergence`, where the worktree lanes rejoin the
+// trunk); `depth` walks the root that many commits FURTHER down the trunk's
+// first-parent chain, revealing deeper history (and any merges down there) on
+// demand. Bounded by `maxCommits + depth` so width and length stay sane.
+// Read-only. Returns { commits, root, convergence, moreBelow, depth, trunk,
+// tips, truncated }.
+export async function readCommitGraph(palaceRoot, { maxCommits = 150, depth = 0 } = {}) {
   const base = 'main';
   const wtRes = await git(palaceRoot, ['worktree', 'list', '--porcelain'], { allowFail: true });
   if (wtRes.failed) return { commits: [], root: null, trunk: base, tips: [], error: wtRes.stderr || 'git worktree list failed' };
@@ -290,34 +293,54 @@ export async function readCommitGraph(palaceRoot, { maxCommits = 150 } = {}) {
     seenSha.add(sha);
     resolved.push({ ref: t, sha });
   }
-  if (resolved.length === 0) return { commits: [], root: null, trunk: base, tips: [], truncated: false };
+  if (resolved.length === 0) return { commits: [], root: null, convergence: null, moreBelow: false, depth: 0, trunk: base, tips: [], truncated: false };
 
-  // The convergence root: the octopus merge-base of all tips. The graph is the
-  // range (root, tips] plus the root node itself as the trunk anchor.
+  // The convergence: the octopus merge-base of all tips -- where the worktree
+  // lanes rejoin the trunk.
   const refArgs = resolved.map((t) => t.ref);
   const mbRes = await git(palaceRoot, ['merge-base', '--octopus', ...refArgs], { allowFail: true });
-  const root = mbRes.failed ? null : mbRes.stdout.trim().split('\n')[0].trim();
+  const convergence = mbRes.failed ? null : mbRes.stdout.trim().split('\n')[0].trim();
 
+  // The drawn root: the convergence, or `d` commits deeper along the trunk's
+  // first-parent chain. If the requested depth runs past the true root, clamp
+  // to it.
+  const d = Math.max(0, Math.min(2000, parseInt(depth, 10) || 0));
+  let root = convergence;
+  if (convergence && d > 0) {
+    const deeper = await git(palaceRoot, ['rev-parse', '--verify', '--quiet', `${convergence}~${d}^{commit}`], { allowFail: true });
+    if (!deeper.failed && deeper.stdout.trim()) {
+      root = deeper.stdout.trim();
+    } else {
+      const chain = await git(palaceRoot, ['rev-list', '--first-parent', convergence], { allowFail: true });
+      const lines = chain.failed ? [] : chain.stdout.trim().split('\n').filter(Boolean);
+      root = lines.length ? lines[lines.length - 1] : convergence;
+    }
+  }
+
+  const cap = maxCommits + d;
   const rangeArgs = ['log', '--topo-order', '--parents', `--format=${GRAPH_FORMAT}`,
-    `-n`, String(maxCommits + 1), ...refArgs];
+    `-n`, String(cap + 1), ...refArgs];
   if (root) rangeArgs.push(`^${root}`);
   const logRes = await git(palaceRoot, rangeArgs, { allowFail: true });
-  if (logRes.failed) return { commits: [], root, trunk: base, tips: refArgs, error: logRes.stderr || 'git log failed' };
+  if (logRes.failed) return { commits: [], root, convergence, moreBelow: false, depth: d, trunk: base, tips: refArgs, error: logRes.stderr || 'git log failed' };
 
   let commits = parseGraphLog(logRes.stdout);
-  const truncated = commits.length > maxCommits;
-  if (truncated) commits = commits.slice(0, maxCommits);
+  const truncated = commits.length > cap;
+  if (truncated) commits = commits.slice(0, cap);
 
-  // Append the merge-base itself as the trunk root node (its parents are left
-  // undrawn -- the trunk continues below the window). Only if not already in
-  // the set (it won't be, since the range excludes it).
+  // Append the drawn root as the trunk anchor (its parents left undrawn). Its
+  // real parent count tells us whether there's more history below the window.
+  let moreBelow = false;
   if (root && !commits.some((c) => c.sha === root)) {
     const rootRes = await git(palaceRoot, ['log', '-1', `--format=${GRAPH_FORMAT}`, root], { allowFail: true });
     if (!rootRes.failed) {
       const [rootNode] = parseGraphLog(rootRes.stdout);
-      if (rootNode) commits.push({ ...rootNode, parents: [], isRoot: true });
+      if (rootNode) {
+        moreBelow = rootNode.parents.length > 0;
+        commits.push({ ...rootNode, parents: [], isRoot: true });
+      }
     }
   }
 
-  return { commits, root, trunk: base, tips: refArgs, truncated };
+  return { commits, root, convergence, moreBelow, depth: d, trunk: base, tips: refArgs, truncated };
 }
