@@ -133,6 +133,22 @@ The technique was already ready and needed only the scope call — so this now m
 one key-pose pair (e.g. coil→leap), the in-betweens driven by the flow field along the line of action,
 staying a pure function of the song playhead (so it remains an instrument, not a simulation).
 
+## The aftermath frame — the still remembers the motion (✅ first proof 2026-07-03)
+
+A distinct capability that grew out of the coupling above and **motivates Edge 2**: many BLUELINE stills
+are the **moment after** a dramatic movement — a sword has just struck a column; the frame shows shards
+spraying, air torn along the swing, the figure in follow-through. Nothing moves, yet the frame *is* the
+motion — the reader runs it backwards from the debris (comics **closure**; [[Graphic Storytelling]]).
+
+The principle is the spine **extended into time**: author the *motion* once (a swing arc, windup→impact)
+and derive every element from it, advanced to "now" — the follow-through **pose**, the **wake** dust
+(spread by time-since-passage), the ballistic **shards**, the tapered **speed-lines**. One source, four
+registers, in register. Because the impact lands on a beat, each effect is a function of
+`(now − impact_time)` — which *is* Edge 2 made concrete. First proof (sword into a wooden column, on the
+real Figure Rig): `proofs/session-7-aftermath/` (`s7_aftermath.png` + `aftermath.blend`). Productization
+points at **Track VI** (Mantaflow dust burst, rigid-body/Cell-Fracture shards, ink-stylized speed-lines).
+Deposit-worthy concept, flagged as a ghost: **[[The Aftermath Frame]]**.
+
 ## Contract touchpoints
 The board record already carries the handles: **`FLOW`** (field handle + scalar) and the **pose**
 fields (`POSE`/`DEPTH`, `FACING`/`EYELINE`). Edge 1 means the field-builder reads the *same* pose the
