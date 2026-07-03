@@ -13,16 +13,18 @@ async function gotoQueue(page) {
 }
 
 test.describe('QUEUE — hub-promotion audit trigger', () => {
-  test('the trigger is present in the QUEUE header', async ({ page }) => {
+  test('the audit pulldown offers this kind', async ({ page }) => {
     await gotoQueue(page);
-    const trigger = page.getByTestId('run-hub-audit');
-    await expect(trigger).toBeVisible();
-    await expect(trigger).toContainText(/run hub-promotion audit/i);
+    await expect(page.getByTestId('audit-select')).toBeVisible();
+    await expect(page.getByTestId('run-audit')).toBeVisible();
+    await page.getByTestId('audit-select').selectOption('hub');
+    await expect(page.getByTestId('audit-select')).toHaveValue('hub');
   });
 
-  test('clicking it runs a dry run and surfaces honest counts (no write)', async ({ page }) => {
+  test('running it does a dry run and surfaces honest counts (no write)', async ({ page }) => {
     await gotoQueue(page);
-    await page.getByTestId('run-hub-audit').click();
+    await page.getByTestId('audit-select').selectOption('hub');
+    await page.getByTestId('run-audit').click();
     const result = page.getByTestId('hub-audit-result');
     await expect(result).toBeVisible({ timeout: 25_000 }); // a full palace scan
     await expect(result).toContainText(/entries scanned/i);

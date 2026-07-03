@@ -114,17 +114,21 @@ test.describe('QUEUE panel — the ranked inbox', () => {
     await expect(openItem.first()).toContainText(/stale if:/i);
   });
 
-  test('a handoff_ready self-clears when git has a resolving commit', async ({ page }) => {
+  // STALENESS DISABLED (2026-07-03): git auto-resolution (reconcileQueue) is
+  // turned off in QueuePanel — the heuristic was mis-firing, so items now stay
+  // OPEN until the human clears them. These two tests assert the self-clear
+  // behavior that no longer runs; skipped (not deleted) so they can be restored
+  // in one step if staleness is re-enabled. The manual-clear path is covered by
+  // the "clear button dismisses an open handoff" test below.
+  test.skip('a handoff_ready self-clears when git has a resolving commit', async ({ page }) => {
     await gotoQueue(page);
-    // The "Two Batons, One Board" handoff resolves against real git history.
     const resolved = page.locator('[data-testid="queue-item"][data-resolved="true"]');
     await expect(resolved.first()).toBeVisible({ timeout: 15_000 });
     await expect(resolved.first()).toContainText(/looks done/i);
-    // And it offers the "clear it?" affordance (human confirms; not silent).
     await expect(resolved.first().getByTestId('queue-item-clear')).toBeVisible();
   });
 
-  test('clicking "clear it?" removes the resolved item from the view', async ({ page }) => {
+  test.skip('clicking "clear it?" removes the resolved item from the view', async ({ page }) => {
     await gotoQueue(page);
     const resolved = page.locator('[data-testid="queue-item"][data-resolved="true"]');
     await expect(resolved.first()).toBeVisible({ timeout: 15_000 });
@@ -132,6 +136,17 @@ test.describe('QUEUE panel — the ranked inbox', () => {
     await resolved.first().getByTestId('queue-item-clear').click();
     await page.waitForTimeout(300);
     const after = await page.locator('[data-testid="queue-item"]').count();
+    expect(after).toBe(before - 1);
+  });
+
+  test('the clear button dismisses an open handoff', async ({ page }) => {
+    await gotoQueue(page);
+    const openHandoff = page.locator('[data-testid="queue-item"][data-kind="handoff_ready"][data-resolved="false"]').first();
+    await expect(openHandoff).toBeVisible({ timeout: 15_000 });
+    const before = await page.locator('[data-testid="queue-item"][data-kind="handoff_ready"]').count();
+    await openHandoff.getByTestId('queue-item-handoff-clear').click();
+    await page.waitForTimeout(300);
+    const after = await page.locator('[data-testid="queue-item"][data-kind="handoff_ready"]').count();
     expect(after).toBe(before - 1);
   });
 

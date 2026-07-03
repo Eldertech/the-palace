@@ -232,6 +232,17 @@ export function buildQueue(messages) {
 
     if (p.kind === 'handoff_ready' && !ackedHandoffs.has(m.id)) {
       const entry = typeof p.entry === 'string' ? p.entry : null;
+      const str = (v) => (typeof v === 'string' && v.trim() !== '' ? v.trim() : null);
+      // `move` is the in-flight move (the state description), `invocation` is
+      // how the catcher picks it up (the immediate next step), and
+      // `receiving_surface` names where the baton is meant to land. All three
+      // are already on the board convention (Baton Ceremony § Announcing the
+      // Baton on the Board) — surfaced here so the card is pick-up-able without
+      // opening the file. Older announcements predate the convention and carry
+      // only `summary`; the card falls back to it.
+      const move = str(p.move);
+      const invocation = str(p.invocation);
+      const receivingSurface = str(p.receiving_surface);
       items.push({
         id: m.id,
         sourceId: m.id,
@@ -240,6 +251,12 @@ export function buildQueue(messages) {
         ts: m.ts,
         board: m.board,
         summary: p.summary || (entry ? `handoff ready: ${entry}` : 'handoff ready'),
+        // The card LEADS with the move; undefined (not null) when absent so a
+        // move-less baton keeps leading with `summary` (see QueueItem HERO 2).
+        ask: move || undefined,
+        move,
+        invocation,
+        receiving_surface: receivingSurface,
         entry,
         handoff_path: typeof p.handoff_path === 'string' ? p.handoff_path : null,
         // The git condition that retires it (mirrors the board convention).

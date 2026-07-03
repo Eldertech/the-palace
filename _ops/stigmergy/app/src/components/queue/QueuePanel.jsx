@@ -55,6 +55,8 @@ export default function QueuePanel({ messages, onJumpEntry }) {
   // error. `auditBusy` guards the two clicks while a request is in flight.
   const [audit, setAudit] = useState(null);
   const [auditBusy, setAuditBusy] = useState(false);
+  // The audit kind chosen in the collapsed audit pulldown (run on the button).
+  const [auditKindSel, setAuditKindSel] = useState('unsung');
 
   // Record (or update) the verdict badge for an item, snapshotting the item so
   // it keeps rendering after buildQueue drops the now-answered request.
@@ -215,11 +217,6 @@ export default function QueuePanel({ messages, onJumpEntry }) {
     setAuditBusy(false);
     setAudit(r.ok ? { kind, phase: 'dry', ...r } : { kind, phase: 'error', error: r.error });
   }
-  const runUnsungAudit = () => runAudit('unsung');
-  const runHubAudit = () => runAudit('hub');
-  const runVectorTuningAudit = () => runAudit('vector-tuning');
-  const runStageAudit = () => runAudit('stage');
-  const runLabelAudit = () => runAudit('label');
   async function postAudit() {
     if (auditBusy || !audit) return;
     const kind = audit.kind || 'unsung';
@@ -302,26 +299,46 @@ export default function QueuePanel({ messages, onJumpEntry }) {
     // still models resource_requests (the model is complete + unit-tested); this
     // view simply doesn't surface them, so a decision never appears twice.
     const built = buildQueue(messages).filter((it) => it.kind !== 'resource_request');
-    const reconciled = reconcileQueue(built, commits);
+    // Staleness (git auto-resolution via reconcileQueue) is DISABLED for now —
+    // the heuristic was mis-firing. Items stay OPEN until the human clears them
+    // with the card's clear button; nothing greys or self-retires off a git
+    // guess. reconcileQueue + the `commits` feed are still imported/fetched, so
+    // re-enabling is a one-line change once the heuristic is fixed.
     // Re-attach decided items buildQueue has since dropped (a GRANT/DENY landed
     // on the board), so their verdict badge survives until the human clears it.
-    const present = new Set(reconciled.map((it) => it.id));
-    const merged = [...reconciled];
+    const present = new Set(built.map((it) => it.id));
+    const merged = [...built];
     for (const [id, snap] of snapshots) {
       if (!present.has(id) && !dismissed.has(id)) merged.push(snap);
     }
     return rankQueue(merged)
       .filter((it) => !dismissed.has(it.id))
       .map((it) => (decisions.has(it.id) ? { ...it, decision: decisions.get(it.id) } : it));
-  }, [messages, commits, dismissed, decisions, snapshots]);
+  }, [messages, dismissed, decisions, snapshots]);
 
   const lanes = useMemo(() => laneCounts(items), [items]);
-  const laneFiltered = laneFilter ? items.filter((i) => i.board === laneFilter) : items;
+  // Lanes are filters. The board chips slice by `board`; the handoffs chip
+  // slices by `kind` (a different axis, same row — from the queue's view it's
+  // just another slice). The sentinel can't collide with a board name.
+  const HANDOFF_LANE = '@handoffs';
+  const handoffCount = useMemo(() => items.filter((i) => i.kind === 'handoff_ready').length, [items]);
+  const laneFiltered = laneFilter
+    ? (laneFilter === HANDOFF_LANE
+        ? items.filter((i) => i.kind === 'handoff_ready')
+        : items.filter((i) => i.board === laneFilter))
+    : items;
   const { open, resolved } = partitionQueue(laneFiltered);
   // Decided items still partition as "open" (not git-resolved); split them out
   // for the status counts so "open" means genuinely-awaiting-you.
   const liveOpen = open.filter((it) => !it.decision);
   const decidedOpen = open.filter((it) => it.decision);
+  // Handoffs get their own lane PINNED at the top of the open list. Batons
+  // aren't `blocking`, so newest-first ranking would sink them below every
+  // request — but a baton is the one item that should be seen and caught first
+  // (Two Batons, One Board). Pinning them here decouples "ready to continue"
+  // from recency. They are lifted out of the main list so they show once.
+  const openHandoffs = open.filter((it) => it.kind === 'handoff_ready');
+  const openRest = open.filter((it) => it.kind !== 'handoff_ready');
 
   const clearItem = (item) => {
     const t = autoClearTimers.current.get(item.id);
@@ -343,6 +360,11 @@ export default function QueuePanel({ messages, onJumpEntry }) {
   const launchHandoff = (it) => setLaunchContext({
     kind: 'handoff', id: it.id, entry: it.entry, from: it.from,
     sourcePath: it.handoff_path, summary: it.summary,
+    // Carry the sharper move + the ready invocation so the launch prompt leads
+    // with the real move (not the generic summary) and hands over the exact
+    // first action. Both are undefined for move-less batons — the prompt falls
+    // back to summary and omits the invocation line.
+    move: it.move, invocation: it.invocation,
   });
   const launchCard = (card) => setLaunchContext({
     kind: 'card', id: card.id, entry: card.target_name, from: card.target_name,
@@ -376,52 +398,39 @@ export default function QueuePanel({ messages, onJumpEntry }) {
             {decisionNote.text}
           </span>
         ) : null}
-        <span
-          onClick={loadCommits}
-          style={{ cursor: 'pointer', color: 'var(--ansi-bright-cyan)', textShadow: 'var(--glow)', textDecoration: 'underline' }}
-          title="re-check git for resolving commits"
-        >
-          reconcile
-        </span>
-        <span
-          data-testid="run-unsung-audit"
-          onClick={auditBusy ? undefined : runUnsungAudit}
-          style={{ cursor: auditBusy ? 'wait' : 'pointer', color: 'var(--ansi-bright-cyan)', textShadow: 'var(--glow)', textDecoration: 'underline' }}
-          title="scan the palace for body wikilinks not yet typed as links — the Weave's unsung-path audit (dry run; nothing is written)"
-        >
-          {auditBusy ? 'auditing...' : 'run unsung-path audit'}
-        </span>
-        <span
-          data-testid="run-hub-audit"
-          onClick={auditBusy ? undefined : runHubAudit}
-          style={{ cursor: auditBusy ? 'wait' : 'pointer', color: 'var(--ansi-bright-cyan)', textShadow: 'var(--glow)', textDecoration: 'underline' }}
-          title="scan the palace for concept entries over the inbound-link threshold — the Weave's hub-promotion audit (dry run; nothing is written)"
-        >
-          {auditBusy ? 'auditing...' : 'run hub-promotion audit'}
-        </span>
-        <span
-          data-testid="run-vector-tuning-audit"
-          onClick={auditBusy ? undefined : runVectorTuningAudit}
-          style={{ cursor: auditBusy ? 'wait' : 'pointer', color: 'var(--ansi-bright-cyan)', textShadow: 'var(--glow)', textDecoration: 'underline' }}
-          title="scan the palace for entries whose forward_vector wants sharpening — the Weave's vector-tuning audit, the generative one (dry run is a cheap scan; nothing is written until you generate + post)"
-        >
-          {auditBusy ? 'auditing...' : 'run vector-tuning audit'}
-        </span>
-        <span
-          data-testid="run-stage-audit"
-          onClick={auditBusy ? undefined : runStageAudit}
-          style={{ cursor: auditBusy ? 'wait' : 'pointer', color: 'var(--ansi-bright-cyan)', textShadow: 'var(--glow)', textDecoration: 'underline' }}
-          title="scan the palace for entries that have outgrown their stage — the Weave's stage-transition audit (dry run; nothing is written)"
-        >
-          {auditBusy ? 'auditing...' : 'run stage-transition audit'}
-        </span>
-        <span
-          data-testid="run-label-audit"
-          onClick={auditBusy ? undefined : runLabelAudit}
-          style={{ cursor: auditBusy ? 'wait' : 'pointer', color: 'var(--ansi-bright-cyan)', textShadow: 'var(--glow)', textDecoration: 'underline' }}
-          title="scan the palace for typed links missing a register label — the Weave's label-enrichment audit, generative (dry run is a cheap scan; nothing is written until you generate + post)"
-        >
-          {auditBusy ? 'auditing...' : 'run label-enrichment audit'}
+        {/* Weave audits collapsed into a pulldown + one button to reclaim
+            header space. Pick a kind, click run — the dry run for that kind
+            fires; the result panel (keyed by kind) still carries the explicit
+            post/confirm, so nothing is written on a dry run. */}
+        <span data-testid="audit-controls" style={{ display: 'inline-flex', gap: 6, alignItems: 'baseline' }}>
+          <label htmlFor="audit-select" style={{ color: 'var(--phosphor-dim)' }}>audit:</label>
+          <select
+            id="audit-select"
+            data-testid="audit-select"
+            value={auditKindSel}
+            onChange={(e) => setAuditKindSel(e.target.value)}
+            disabled={auditBusy}
+            style={{
+              background: 'var(--phosphor-deep)', color: 'var(--phosphor)',
+              border: '1px solid var(--phosphor-dim)', fontFamily: 'var(--font-mono)',
+              fontSize: 11, padding: '1px 4px', textShadow: 'var(--glow)',
+            }}
+            title="choose which Weave audit to run"
+          >
+            <option value="unsung">unsung-path</option>
+            <option value="hub">hub-promotion</option>
+            <option value="vector-tuning">vector-tuning</option>
+            <option value="stage">stage-transition</option>
+            <option value="label">label-enrichment</option>
+          </select>
+          <span
+            data-testid="run-audit"
+            onClick={auditBusy ? undefined : () => runAudit(auditKindSel)}
+            style={{ cursor: auditBusy ? 'wait' : 'pointer', color: 'var(--ansi-bright-cyan)', textShadow: 'var(--glow)', textDecoration: 'underline' }}
+            title="run the selected Weave audit — a dry run (nothing is written until you confirm in the result)"
+          >
+            {auditBusy ? 'auditing...' : 'run audit'}
+          </span>
         </span>
 
         {/* lanes: the six boards become filters, not tabs */}
@@ -436,6 +445,20 @@ export default function QueuePanel({ messages, onJumpEntry }) {
             border: '1px solid var(--phosphor-dim)',
           }}
         >all ({items.length})</span>
+        {handoffCount > 0 ? (
+          <span
+            data-testid="queue-lane-handoffs"
+            onClick={() => setLaneFilter(laneFilter === HANDOFF_LANE ? null : HANDOFF_LANE)}
+            style={{
+              cursor: 'pointer', fontSize: 11, padding: '0 5px',
+              background: laneFilter === HANDOFF_LANE ? 'var(--warn)' : 'transparent',
+              color: laneFilter === HANDOFF_LANE ? 'var(--bg)' : 'var(--warn)',
+              textShadow: laneFilter === HANDOFF_LANE ? 'none' : 'var(--glow)',
+              border: '1px solid var(--warn)',
+            }}
+            title="show only handoffs -- batons ready to catch"
+          >handoffs ({handoffCount})</span>
+        ) : null}
         {[...lanes.entries()].map(([board, n]) => (
           <span
             key={board}
@@ -522,7 +545,30 @@ export default function QueuePanel({ messages, onJumpEntry }) {
       ) : null}
 
       <div data-testid="queue-open">
-        {open.map((it) => (
+        {/* HANDOFFS — pinned at the top, ahead of the ranked list. A baton is
+            the one open item meant to be caught first, so it does not wait on
+            recency. The warn accent matches the handoff badge. */}
+        {openHandoffs.length > 0 ? (
+          <div
+            data-testid="queue-handoff-lane"
+            style={{
+              marginBottom: 12,
+              border: '1px solid var(--warn)',
+              padding: '8px 10px 4px',
+            }}
+          >
+            <div style={{
+              color: 'var(--warn)', textShadow: 'var(--glow)', fontSize: 11,
+              textTransform: 'uppercase', letterSpacing: '.08em', marginBottom: 8,
+            }}>
+              handoffs &mdash; batons ready to catch ({openHandoffs.length})
+            </div>
+            {openHandoffs.map((it) => (
+              <QueueItem key={it.id} item={it} onJump={jump} onClear={clearItem} onRespond={respondToItem} onLaunch={launchHandoff} onApply={grantAndApply} />
+            ))}
+          </div>
+        ) : null}
+        {openRest.map((it) => (
           <QueueItem key={it.id} item={it} onJump={jump} onClear={clearItem} onRespond={respondToItem} onLaunch={launchHandoff} onApply={grantAndApply} />
         ))}
       </div>
