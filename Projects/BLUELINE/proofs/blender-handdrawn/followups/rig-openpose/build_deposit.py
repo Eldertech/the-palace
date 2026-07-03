@@ -70,6 +70,37 @@ def hands_section():
         rows.append(guide_gen_row(label, gd, nd, HAND_GUIDES, HAND_GENS, label, j["shot"]))
     return "\n".join(rows)
 
+# ---------- HANDS — guide ablation (why all three) ----------
+HAND_ABL_GUIDES = [("openpose", "openpose.png"), ("depth", "depth_plate.png"), ("shaded", "shaded_plate.png")]
+# (dir key, caption, filename, is-the-winner) — floor -> leave-one-out -> ceiling
+ABL_CONDS = [("none", "prompt only", "gen_none.png", False),
+             ("no_pose", "− openpose", "gen_no_pose.png", False),
+             ("no_depth", "− depth", "gen_no_depth.png", False),
+             ("no_canny", "− shaded", "gen_no_canny.png", False),
+             ("all", "ALL THREE", "gen_all.png", True)]
+# (pose key, title, which guide this pose is chosen to stress)
+ABL_POSES = [("point_closeup", "pointing hand", "openpose owns this — finger extension + which finger"),
+             ("glass_closeup", "hand + glass", "depth owns this — glass vs fingers in Z"),
+             ("snake_closeup", "hand + snake", "shaded→canny owns this — organic form")]
+
+def hands_ablation_section():
+    rows = []
+    for key, title, note in ABL_POSES:
+        gd = os.path.join(R, "hands", key); nd = os.path.join(R, "hands-ablation", key)
+        gcells = "".join(cellimg(os.path.join(gd, fn), lab, 108, dark=("depth" in fn or "openpose" in fn))
+                         for lab, fn in HAND_ABL_GUIDES)
+        ncells = ""
+        for cond, lab, fn, win in ABL_CONDS:
+            cls = "cell win" if win else "cell"
+            p = os.path.join(nd, fn)
+            tag = f'<img src="{uri(p, 158)}">' if os.path.isfile(p) else '<div class="miss">—</div>'
+            ncells += f'<div class="{cls}">{tag}<div class="cc">{lab}</div></div>'
+        rows.append(f'<div class="row"><div class="rlab"><b>{title}</b><br><span class="rm">{note}</span></div>'
+                    f'<div class="guides"><div class="gh">the 3 guides</div><div class="gset">{gcells}</div></div>'
+                    f'<div class="results"><div class="gh">leave-one-out (same seed &amp; style)</div>'
+                    f'<div class="rset">{ncells}</div></div></div>')
+    return "\n".join(rows)
+
 # ---------- BODY ----------
 BODY_GUIDES = [("openpose", "openpose.png"), ("depth", "depth_plate.png"), ("ink", "ink_plate.png")]
 
@@ -79,6 +110,24 @@ def body_section():
         gd = os.path.join(R, "mpfb-v3", "pose_" + p["key"]); nd = os.path.join(R, "examples", p["key"])
         m = p["macro"]; meta = f'{"female" if m["gender"] < 0.5 else "male"} · age {m["age"]}'
         rows.append(guide_gen_row(p["key"], gd, nd, BODY_GUIDES, FACE_GENS, p["label"], meta))
+    return "\n".join(rows)
+
+# ---------- MULTI-FIGURE (THE LIFT) ----------
+MULTI_GUIDES = [("openpose", "openpose.png"), ("depth", "depth_plate.png"),
+                ("color-ID", "colorid_plate.png"), ("shaded", "shaded_plate.png")]
+MULTI_GENS = [("ink", "gen_ink.png"), ("comic", "gen_comic.png")]
+MULTI_BEATS = [("B1_alone", "1 · alone in the crowd", "crowd, separated"),
+               ("B2_one_turns", "2 · one turns", "the pivot"),
+               ("B3_reach", "3 · the reach", "light contact"),
+               ("B4_cradle", "4 · the cradle", "interlocked — Route A weak"),
+               ("B5_many_hands", "5 · many hands", "crowd + contact"),
+               ("B6_held_up", "6 · held up", "overhead lift — Route A weak")]
+
+def multi_section():
+    rows = []
+    for key, lab, meta in MULTI_BEATS:
+        gd = os.path.join(R, "multi", key); nd = os.path.join(R, "multi-gen", key)
+        rows.append(guide_gen_row(key, gd, nd, MULTI_GUIDES, MULTI_GENS, lab, meta))
     return "\n".join(rows)
 
 # ---------- experiment + timings ----------
@@ -96,7 +145,9 @@ def main():
     doc = TEMPLATE
     doc = doc.replace("__FACES__", faces_section())
     doc = doc.replace("__HANDS__", hands_section())
+    doc = doc.replace("__HANDS_ABLATION__", hands_ablation_section())
     doc = doc.replace("__BODY__", body_section())
+    doc = doc.replace("__MULTI__", multi_section())
     doc = doc.replace("__EXP_IMG__", exp_img)
     doc = doc.replace("__TIMINGS__", tim_rows)
     out = os.path.join(HERE, "figure_rig_deposit.html")
@@ -137,6 +188,7 @@ table{border-collapse:collapse;margin:12px 0;font-family:var(--mono);font-size:1
 .cell{display:flex;flex-direction:column;align-items:center}
 .cell img{display:block;border-radius:2px;background:#fff;border:1px solid var(--bs)}
 .cell.dark img{background:#000}
+.cell.win img{border:2px solid var(--ac)}.cell.win .cc{color:var(--ac);font-weight:600}
 .cc{font-family:var(--mono);font-size:8.5px;color:var(--f3);margin-top:3px;text-transform:uppercase;letter-spacing:.06em}
 .miss{width:108px;height:135px;background:var(--b2);border-radius:2px;color:var(--f4);display:flex;align-items:center;justify-content:center;font-family:var(--mono)}
 .kick{display:inline-block;font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;padding:4px 10px;border-radius:2px;border:1px solid;margin:2px 6px 2px 0}
@@ -145,7 +197,7 @@ footer{margin-top:70px;padding-top:20px;border-top:1px solid var(--bd);display:f
 .sig{font-family:var(--mono);font-size:12px;letter-spacing:.14em;color:var(--f3);text-transform:uppercase}.ll{font-family:var(--display);font-size:18px;color:var(--f2)}.ll em{font-family:var(--serif);font-style:italic;color:var(--ac)}
 </style></head><body>
 <div class="wm">Loudon <em>Live</em></div>
-<div class="ey">Figure Rig · full deposit + continuation handoff · 2026-06-30</div>
+<div class="ey">Figure Rig · full deposit + continuation handoff · 2026-07-01</div>
 <h1>Staging figures for the gen-AI<span class="s">pose · expression · hands · the conditioning stack — and how to carry it into BLUELINE scenes</span></h1>
 <p class="lead">This is the record of one long session and a handoff: a fresh Claude should be able to read it and keep building. It carries the working pipeline, the galleries (every render matrix shown <b>with the Blender passes that guided it</b> — OpenPose, depth, shaded, color), the guide experiment that fixed front/back, and the answers to Loudon's questions written as next-step plans.</p>
 
@@ -204,12 +256,23 @@ __EXP_IMG__
 __FACES__
 
 <h2>▸ Hands — gestures + held objects</h2>
-<p>Guidance: OpenPose (21-pt hand from finger bones) · depth · ink. The pose holds the hand; the prompt adds the object.</p>
+<p>Guidance: OpenPose (21-pt hand from finger bones) · depth · ink. The pose holds the hand; the prompt adds the object. <b>Every hand here is conditioned on all three guides at once</b> (shaded→canny + depth + openpose) — the ablation below proves why.</p>
 __HANDS__
+
+<h2>▸ Hands — why all three guides (leave-one-out)</h2>
+<p>The section above feeds all three guides together. Here we knock them out one at a time. <b>Same hand, same locked pen-flow ink, same seed — the only thing that changes is which guides are fed.</b> Left: the three Blender passes. Right: prompt-only (the floor), then each single guide removed, then <span style="color:var(--ac)">all three</span> (the reference). Each pose was picked to stress a different guide — bare gesture, rigid held object, organic held object.</p>
+__HANDS_ABLATION__
+<p class="mono" style="color:var(--f3)"><span class="kick k-ok">what it shows</span> The decisive jump is <b style="color:var(--f2)">prompt-only → any guidance</b>: unguided, the hand sprouts extra fingers and loses the gesture. Past that, the three guides are <b style="color:var(--f2)">partly redundant</b> — the <b style="color:var(--f2)">shaded→canny</b> form-edge carries most of the anatomy, so dropping <i>one</i> of the other two usually survives. That redundancy is the robustness you want in production; the flip side is that the clean separations (openpose = laterality, depth = near/far) read best when a guide is <b style="color:var(--f2)">isolated</b>, not merely removed — a single-guide pass is the sharper test. <span class="kick k-in">note</span> canny is fed the <b style="color:var(--f2)">shaded</b> render, not the flat ink — form-bearing edges, the same fix that saved the faces.</p>
 
 <h2>▸ Bodies — parametric people × poses</h2>
 <p>Guidance: OpenPose · depth · ink. One macro dict → any body; the OpenPose holds the pose, the prompt drives the style.</p>
 __BODY__
+
+<h2>▸ Multi-figure — THE LIFT (an invented wordless sequence)</h2>
+<p>The single-figure stack scales to whole scenes: <b>N MPFB humans in one scene, one shared camera, four registered passes</b> (multi-skeleton OpenPose · depth · <b>color-ID</b> — each figure a distinct flat hue · shaded→canny). Staged as a six-beat wordless story — <i>alone in the crowd → one turns → the reach → the cradle → many hands → held up</i> — the counter-weight to BLUELINE's solitary tragedy: collective tenderness, the palace's own [[Cooperation Yields Agency]] made visible. Each row: the guide passes, then the gen in the locked ink + a comic alternate.</p>
+__MULTI__
+<p><span class="kick k-ok">what holds</span> <b>Separation.</b> Across every beat the figures stay distinct people — never the melted single-face blob that prompt-only multi-subject gives. Multi-skeleton OpenPose + depth carry it; the color-ID pass is the reserve channel for when they don't. <b>B1/B2/B3/B5 read as scenes</b> — a fallen body and a gathering crowd land clearly.</p>
+<p><span class="kick k-bad">where Route A ends</span> The two tightest beats expose the boundary this proof was built to find: <b>B4 (cradle)</b> — interlocked bodies in close contact — and <b>B6 (overhead lift)</b> do <i>not</i> resolve cleanly under Route A (canny+depth+pose). This is the predicted failure: close contact needs <b>Route B — regional conditioning</b> binding each prompt to its color-ID region (Attention Couple / GLIGEN), the next build. Second gap: <b>clothing is geometry, not prompt</b> — canny off the nude base mesh keeps ink figures bare (comic dresses them only as saturated bodysuits); the fix is clothing meshes, not wordier prompts. Honest map of where authored-geometry-Route-A wins and where it hands off. Full method: [[Figure Rig — face-hands-openpose design|conditioning-stack note]] §6b.</p>
 
 <h2>▸ Next steps (the plans, ready to execute)</h2>
 <h4>Hands + objects with Blender proxy geometry</h4>
@@ -223,7 +286,7 @@ __BODY__
 <li>Tighter face landmarks (still a rough point-cloud) + proper MPFB eye assets (we added proxy eyeball spheres; the joint-eye sits ~5 cm high, seat with an offset).</li>
 </ul>
 
-<footer><div class="sig">Figure Rig · deposit · branch feature/figure-rig-mpfb</div><div class="ll">Loudon <em>Live</em> · Autodidact Polymaths</div></footer>
+<footer><div class="sig">Figure Rig · deposit · branch feature/figure-rig-gen</div><div class="ll">Loudon <em>Live</em> · Autodidact Polymaths</div></footer>
 </body></html>"""
 
 main()

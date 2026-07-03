@@ -358,4 +358,5 @@ def main():
     print(f"  body visible {sum(k[2] for k in body_kp)}/18 | hand({a.hand}) visible {vis_h}/21")
     print(f"=== {label} DONE ===")
 
-main()
+if __name__ == "__main__":
+    main()
