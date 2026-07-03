@@ -9,9 +9,9 @@ links:
   - target: "[[BLUELINE]]"
     type: connects-to
     label: motion-subsystem-of
-  - target: "[[BLUELINE — Atlas]]"
+  - target: "[[BLUELINE — Production Plan]]"
     type: connects-to
-    label: subsystem-4
+    label: thread-4-of
   - target: "[[The Flow Field is the Spine]]"
     type: exemplifies
     label: the-field-is-the-geometry
@@ -32,7 +32,7 @@ tags: [meta, blueline, motion, flow-field, animation, subsystem]
 
 # BLUELINE — Motion and Flow
 
-> **Subsystem 4 of the [[BLUELINE — Atlas]], and its priority frontier.** Motion was the most
+> **Thread 4 of the [[BLUELINE — Production Plan]], and its priority frontier.** Motion was the most
 > fragmented part of BLUELINE — **seven sub-threads** pulled separately, four of which never
 > cross-referenced. This doc is their single home: what each proved, what got retired, and the one
 > coupling worth building next. It **absorbs** the older `flow-field-spine.md` workflow doc (which
@@ -110,7 +110,9 @@ beat-phased field is a wiring job, not a research risk. Pairs with [[Move the In
 Interpolate held key-poses *along the flow direction* (coil→leap that follows the wind). This is the
 one edge **blocked by a standing scope lock — "staged, not simulated"** ([[BLUELINE]] scope decisions).
 Surfaced here as an explicit choice for Loudon: keep the lock (poses stay held; motion is field + ink +
-camera only), or relax it for a bounded pose-blend-along-flow experiment. **Not built pending that call.**
+camera only), or relax it for a bounded pose-blend-along-flow experiment. This is a **one-line scope
+call, not a research blocker** — the technique is ready to build the moment the lock relaxes. **Not
+built pending that call.**
 
 ## Contract touchpoints
 The board record already carries the handles: **`FLOW`** (field handle + scalar) and the **pose**
