@@ -125,8 +125,12 @@ The one prioritized, cross-thread stack. Each item links the thread that owns it
 6. **Motion & Flow · Edge 3 — pose-blend-along-flow** *(greenlit 2026-07-03 — Loudon relaxed the "staged, not simulated" lock).* Interpolate held key-poses along the flow direction (coil→leap that follows the wind); bounded experiment, simulated contact still out. The technique was already ready; it just needed the scope call. → [[BLUELINE — Motion and Flow]] §Edge 3.
 
 **The big lifts** (design / research):
-7. **Motion & Flow · Edge 2 — field → clock.** A time-varying field that evolves per beat (the
-   priority frontier; a wiring job — substrate exists in Track VI's `warp.py` / `fields.py:from_flow`).
+7. **Motion & Flow · Edge 2 — field → clock** *(+ the aftermath frame; first proof 2026-07-03).* A
+   time-varying field that evolves per beat (the priority frontier; substrate exists in Track VI's
+   `warp.py` / `fields.py:from_flow`). Its concrete, dramatic form is **the aftermath frame** — the still
+   as the record of a motion (swing → shards + wake + speed-lines), `proofs/session-7-aftermath/`;
+   productize the shards/burst via Track VI (Mantaflow + rigid bodies) and stylize to ink.
+   → [[BLUELINE — Motion and Flow]] §Edge 2 + §the aftermath frame.
 8. **Figure & Pose — the multi-figure ladder.** Separated → contact → interlocked → crowd; Route A
    3-guide stack / Route B regional conditioning ("the next big prize"). → [[Shop/Figure Rig]].
 9. **Board Record & Staging — Seam B + the staging-AI.** Exact blocking → exact keypoints; language →
@@ -146,7 +150,7 @@ boards are leveled to uniform fidelity, and a muxed cut exists.
 | `track-III-clock`, `animatic`, `m0-previz`, `m1-animatic`, `m2-motion-comic` | 1 Clock & Sync (+ comic players) | ✅ |
 | `session-2-staging`, `seam-a-roundtrip`, `seam-b` | 2 Board Record & Staging | ◑ (Seam B open) |
 | `blender-handdrawn`, `track-IV-bench`, `blender-gallery` | 3 Figure & Pose | ✅ |
-| `session-3-flowfield`, `session-4-figure-flow`, `session-5-flow-3d`, `session-6-flow-gn-studio` | 4 Motion & Flow | ✅ |
+| `session-3-flowfield`, `session-4-figure-flow`, `session-5-flow-3d`, `session-6-flow-gn-studio`, `session-7-aftermath` | 4 Motion & Flow | ✅ |
 | `track-V-motion`, `m3-warped-noise` | 4 Motion & Flow | ✗ retired render-noise |
 | `track-VI-elemental-motion`, `cloud-i2v`, `embedded-motion` | 4 Motion & Flow | ◑ |
 | `new-story` | 5 Render Backend (the 6-shot proof) | ✅ |
