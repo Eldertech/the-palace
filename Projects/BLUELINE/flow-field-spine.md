@@ -13,6 +13,12 @@ forward_vector: "I am the working recipe for BLUELINE's single-source flow field
 
 # flow-field-spine (workflow doc)
 
+> **Superseded (2026-07-03) — folded into [[BLUELINE — Motion and Flow]].** This recipe predated the
+> character-aware field (Session 4) and the elemental-motion bench (Track VI), and its "steers via
+> noise-warp" leg was retired (M3.7). It is kept for the field-math recipe below (still correct), but
+> the *current* motion story — the seven threads, the retired render-noise result, and the
+> pose → field → clock coupling — lives in [[BLUELINE — Motion and Flow]]. Start there.
+>
 > Bundle doc, not a skill yet (Deposit-Map decision #3: bundle docs before skills). Proven by
 > [[BLUELINE — Claude Code Job]] Session 3 — see `proofs/session-3-flowfield/`. The recipe for
 > [[The Flow Field is the Spine]].

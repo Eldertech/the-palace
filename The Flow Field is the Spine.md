@@ -23,6 +23,9 @@ links:
     label: published-precedent
   - target: "[[flow-field-spine]]"
     type: connects-to
+  - target: "[[BLUELINE — Motion and Flow]]"
+    type: connects-to
+    label: unified-motion-home
   - target: "[[Move the Ink, Don't Redraw It]]"
     type: couples-with
     label: field-is-the-geometry
@@ -57,6 +60,21 @@ There is published reason for optimism: [[Go-with-the-Flow]] (CVPR 2025) makes v
 ## Now it flows around a character (Session 4, 2026-07-02)
 
 The Session-3 field was character-*blind* — drift plus hand-placed vortices, nothing knew a figure stood in the wind. Session 4 makes it **character-aware**, coupling the spine to the posed-mannequin work: the figure's silhouette becomes a **solid obstacle**, and a single pressure-projection (Poisson solve, no-flux at the body) bends the field tangent to it — streamlines **part around** the head/torso/crouched legs, **compress past the shoulders/hips**, **stagnate** on the windward chest, and **shed a counter-rotating wake** downwind. The same untouched `flow-field.json` then feeds both proven registers: comic **speed-lines** wrap the body, and a **dust sim** piles bright on the windward edge and swirls into the wake. Crucially the coupling adds a stage to the *field author* (mask → projection → wake), **not** to each leg — so the spine's shared-source claim survives the obstacle. This is the two-lifetimes promotion made literal: *the arrow becomes the wind, and now the wind knows the body is there.* Evidence: `Projects/BLUELINE/proofs/session-4-figure-flow/` (`CONTACT-SHEET-one-field-around-a-character.png`). Recipe updated in [[flow-field-spine]] § Obstacle.
+
+## The render-noise sub-claim is retired (M3–M3.7, 2026-06-18/19)
+
+One reading of the **Steers** leg was literal: *warp the diffusion noise* along the flow so the render
+itself carries the motion ([[Go-with-the-Flow]]'s mechanism). That sub-claim was tested exhaustively and
+**retired**. Even with a correct whiteness-preserving warp, flow-warped noise **never beat seed-lock** at
+the render — not on a single staged jump swept 48→483 px (M3.6, statistically tied), and not on a
+cumulative 6-frame sequence (M3.7, seed-lock's adjacent-frame coherence 0.858 vs the warped chain's
+0.809). Seed-lock is already near-ceiling at the pose deltas BLUELINE uses, leaving no headroom. **Design
+rule, load-bearing:** the storyboard→render path rides **seed-lock + identity + depth + img2img**; do not
+invest in flow-warped noise there. The spine is **not** disproven — it lost only the "move the noise"
+leg. It stays the **compositional/FX spine**: the drawn speed-lines, the character-aware dust, the
+comic-register scroll, and — via [[Move the Ink, Don't Redraw It]] — the geometry that *warps the ink*
+(where deterministic displacement beats per-frame AI, boil 0.15 vs 1.50). Full accounting and the next
+coupling (pose → field → clock): [[BLUELINE — Motion and Flow]]. Evidence: `proofs/m3-warped-noise/`.
 
 ## Why it's a spine and not a feature
 
