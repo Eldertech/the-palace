@@ -1,0 +1,201 @@
+<style>
+  /* ---- BBS phosphor tokens (mirrored from src/styles/tokens.css) ---- */
+  :root{
+    --phosphor:#33ff66; --phosphor-bright:#7fff9b; --phosphor-dim:#1f8a3c;
+    --phosphor-deep:#0b2a14; --phosphor-white:#d7f6dc; --bg:#050a06;
+    --warn:#ffb000; --error:#ff4136; --cyan:#7fdbff; --magenta:#ff5fff; --yellow:#ffb000;
+    --glow:0 0 6px currentColor, 0 0 14px color-mix(in srgb, currentColor 40%, transparent);
+    --glow-strong:0 0 8px currentColor, 0 0 22px currentColor;
+    --mono:"IBM Plex Mono","VT323",ui-monospace,Menlo,Consolas,monospace;
+  }
+  *{box-sizing:border-box}
+  .crt{
+    background:var(--bg); color:var(--phosphor); font-family:var(--mono);
+    font-size:14px; line-height:1.5; padding:20px 22px; min-height:100vh;
+    text-shadow:var(--glow);
+    background-image:repeating-linear-gradient(0deg, rgba(0,0,0,0) 0, rgba(0,0,0,0) 2px, rgba(0,20,5,.22) 3px);
+  }
+  .dim{color:var(--phosphor-dim);text-shadow:none}
+  .bright{color:var(--phosphor-bright)}
+  .white{color:var(--phosphor-white);text-shadow:var(--glow-strong)}
+  .warn{color:var(--warn)} .err{color:var(--error)} .cy{color:var(--cyan)} .mg{color:var(--magenta)}
+  .hr{border:none;border-top:1px dashed var(--phosphor-dim);margin:14px 0}
+
+  .banner{font-size:12px;letter-spacing:.14em}
+  h1.title{font-size:22px;letter-spacing:.16em;margin:2px 0 0;font-weight:400;text-shadow:var(--glow-strong)}
+  .sub{font-size:11px;letter-spacing:.24em;color:var(--phosphor-dim);text-shadow:none;margin-bottom:14px}
+
+  /* ---- section headers ---- */
+  .sec{font-size:11px;letter-spacing:.20em;margin:20px 0 8px;color:var(--phosphor-dim);text-shadow:none;
+       border-bottom:1px solid var(--phosphor-dim);padding-bottom:4px;display:flex;justify-content:space-between}
+  .sec b{color:var(--phosphor);letter-spacing:.20em;font-weight:400}
+  .newtag{color:var(--bg);background:var(--phosphor);padding:0 6px;font-size:10px;letter-spacing:.1em;text-shadow:none}
+
+  /* ---- you-are-here rail ---- */
+  .rail{display:flex;flex-wrap:wrap;gap:0 14px;align-items:center;border:1px solid var(--phosphor-dim);
+        padding:6px 12px;font-size:13px}
+  .rail .pill{color:var(--phosphor-dim)}
+  .rail .v{color:var(--phosphor)}
+
+  /* ---- worktree roster ---- */
+  .roster{display:flex;flex-direction:column;gap:6px}
+  .wt{display:grid;grid-template-columns:16px 20ch 26ch 9ch 12ch 8ch;gap:0 14px;align-items:baseline;
+      border-left:3px solid var(--accent,var(--phosphor-dim));padding:5px 10px;background:var(--phosphor-deep)}
+  .wt .glyph{color:var(--accent)}
+  .wt .name{color:var(--phosphor)}
+  .wt .branch{color:var(--phosphor-dim)}
+  .wt .sha{color:var(--cyan);text-shadow:none;font-size:12px}
+  .wt .last{grid-column:2 / -1;color:var(--phosphor-dim);text-shadow:none;font-size:11px;margin-top:2px}
+  .here{color:var(--bg);background:var(--phosphor-bright);padding:0 5px;font-size:10px;letter-spacing:.08em;text-shadow:none}
+  .flag{font-size:10px;padding:0 5px;border:1px solid currentColor;letter-spacing:.06em}
+  .ab-up{color:var(--cyan)} .ab-dn{color:var(--error)} .clean{color:var(--phosphor-dim)} .dirty{color:var(--warn)}
+
+  /* state accents */
+  .s-host{--accent:var(--phosphor-bright)}
+  .s-clean{--accent:var(--phosphor)}
+  .s-dirty{--accent:var(--warn)}
+  .s-behind{--accent:var(--error)}
+  .s-detached{--accent:var(--magenta)}
+  .s-prunable{--accent:var(--phosphor-dim)}
+
+  /* ---- topology graph ---- */
+  pre.graph{margin:0;font-family:var(--mono);font-size:13px;line-height:1.35;letter-spacing:0;
+            border:1px solid var(--phosphor-dim);padding:12px 14px;overflow-x:auto;background:#040804}
+  pre.graph .node{color:var(--phosphor)}
+  pre.graph .edge{color:var(--phosphor-dim)}
+  pre.graph .head{color:var(--phosphor-bright);text-shadow:var(--glow-strong)}
+
+  /* ---- legend ---- */
+  .legend{display:flex;flex-wrap:wrap;gap:6px 18px;font-size:11px;color:var(--phosphor-dim);text-shadow:none;margin-top:8px}
+  .legend span b{font-weight:400}
+  .sw{display:inline-block;width:9px;height:9px;vertical-align:middle;margin-right:5px}
+
+  /* ---- callouts ---- */
+  .note{border-left:2px solid var(--cyan);padding:4px 10px;margin:8px 0;color:var(--cyan);text-shadow:none;font-size:11px}
+  .note b{color:var(--phosphor-white);font-weight:400}
+
+  /* ---- existing-below (dimmed context) ---- */
+  .ghost{opacity:.42;filter:saturate(.6);margin-top:8px}
+  .ghost .card{border-left:3px solid var(--phosphor-dim);padding:5px 10px;background:var(--phosphor-deep);margin-bottom:5px;font-size:12px}
+  .kindbadge{color:var(--bg);padding:0 5px;font-size:10px;text-shadow:none}
+</style>
+
+<div class="crt">
+  <div class="banner dim">STIGMERGY // LOG</div>
+  <h1 class="title">LOG</h1>
+  <div class="sub">PAST — WHAT HAPPENED · <span style="color:var(--phosphor)">now branch- and worktree-aware</span></div>
+
+  <!-- ============ 1. YOU-ARE-HERE RAIL ============ -->
+  <div class="sec"><b>◈ GIT STATE</b> <span class="newtag">NEW · Phase B</span></div>
+  <div class="rail">
+    <span><span class="pill">worktree</span> <span class="v bright">palace</span></span>
+    <span><span class="pill">·</span></span>
+    <span><span class="pill">branch</span> <span class="v">main</span></span>
+    <span><span class="pill">·</span></span>
+    <span><span class="pill">vs origin/main</span> <span class="cy">↑0</span> <span class="dim">↓0</span></span>
+    <span><span class="pill">·</span></span>
+    <span><span class="pill">HEAD</span> <span class="sha" style="color:var(--cyan)">374bcbf</span></span>
+    <span><span class="pill">·</span></span>
+    <span class="warn">✎ 9 uncommitted</span>
+    <span><span class="pill">·</span></span>
+    <span class="here">YOU ARE HERE</span>
+  </div>
+  <div class="note">The one-line answer to <b>“which branch will my next commit land on?”</b> — the exact question the worktree system exists to keep honest. Live-refreshed with the uncommitted poll.</div>
+
+  <!-- ============ 2. WORKTREE ROSTER ============ -->
+  <div class="sec"><b>▚ WORKTREES</b> <span class="newtag">NEW · Phase C</span></div>
+  <div class="roster">
+
+    <div class="wt s-host">
+      <span class="glyph">●</span>
+      <span class="name">palace <span class="here">HOST</span></span>
+      <span class="branch">main</span>
+      <span class="sha">374bcbf</span>
+      <span><span class="ab-up">↑0</span> <span class="dim">↓0</span></span>
+      <span class="dirty">✎9</span>
+      <span class="last">blueline(style-atlas): complete Phase-2 SDXL style atlas — 47 frames · 2h ago</span>
+    </div>
+
+    <div class="wt s-dirty">
+      <span class="glyph">◐</span>
+      <span class="name">palace-blueline-m3</span>
+      <span class="branch">feature/blueline-m3</span>
+      <span class="sha">9f0e1d2</span>
+      <span><span class="ab-up">↑3</span> <span class="dim">↓0</span></span>
+      <span class="dirty">✎12</span>
+      <span class="last">blueline(m3): per-cel stylize-back on canny cels · 20m ago</span>
+    </div>
+
+    <div class="wt s-clean">
+      <span class="glyph">●</span>
+      <span class="name">palace-figrig</span>
+      <span class="branch">feature/figure-rig-gen</span>
+      <span class="sha">44aa021</span>
+      <span><span class="ab-up">↑1</span> <span class="ab-dn">↓2</span></span>
+      <span class="clean">clean</span>
+      <span class="last">figure-rig(faces): 70-pt native rebuild wired · 1d ago · <span class="err">behind main by 2</span></span>
+    </div>
+
+    <div class="wt s-detached">
+      <span class="glyph">◆</span>
+      <span class="name">palace-live</span>
+      <span class="branch">detached @ e7c1a90</span>
+      <span class="sha">e7c1a90</span>
+      <span class="dim">—</span>
+      <span class="clean">clean</span>
+      <span class="last">detached HEAD — inspecting a commit; not on a branch · 3h ago</span>
+    </div>
+
+    <div class="wt s-prunable">
+      <span class="glyph">⊘</span>
+      <span class="name dim">palace-oldtext</span>
+      <span class="branch">feature/blueline-text-anchor</span>
+      <span class="sha">3c4d5e6</span>
+      <span><span class="ab-up">↑2</span> <span class="dim">↓0</span></span>
+      <span><span class="flag dim">PRUNABLE</span></span>
+      <span class="last">directory gone — <span class="dim">git worktree prune</span> would clear it (read-only here; never auto-pruned)</span>
+    </div>
+
+  </div>
+
+  <div class="legend">
+    <span><span class="sw" style="background:var(--phosphor-bright)"></span><b>host</b> (you are here)</span>
+    <span><span class="sw" style="background:var(--phosphor)"></span><b>clean</b></span>
+    <span><span class="sw" style="background:var(--warn)"></span><b>dirty</b> (uncommitted)</span>
+    <span><span class="sw" style="background:var(--cyan)"></span><b>ahead ↑</b></span>
+    <span><span class="sw" style="background:var(--error)"></span><b>behind ↓</b></span>
+    <span><span class="sw" style="background:var(--magenta)"></span><b>detached / locked</b></span>
+    <span><span class="sw" style="background:var(--phosphor-dim)"></span><b>prunable</b></span>
+  </div>
+
+  <!-- ============ 3. TOPOLOGY LANE GRAPH ============ -->
+  <div class="sec"><b>⑃ TOPOLOGY</b> <span class="newtag">NEW · Phase D</span></div>
+<pre class="graph"><span class="edge">        older ───────────────────────────────────────────▶ newer
+</span><span class="edge">main            </span><span class="node">●───●───●───●───●───●───●───●</span>  <span class="head">374bcbf ◄ HEAD · palace · HOST</span>
+<span class="edge">                         ╲                    </span>
+<span class="edge">blueline-m3               ╲──</span><span class="node">●───●───●</span><span class="edge">        </span>  <span class="cy">9f0e1d2 ↑3 ✎12 ◄ palace-blueline-m3</span>
+<span class="edge">                             ╲                </span>
+<span class="edge">blueline-text                 ╲──</span><span class="node">●───●</span><span class="edge">     </span>  <span class="dim">3c4d5e6 ↑2  ◄ palace-oldtext (prunable)</span>
+<span class="edge">                ╲                             </span>
+<span class="edge">figure-rig-gen   ╲──</span><span class="node">●───●</span><span class="edge">                    </span>  <span class="node">44aa021 </span><span class="cy">↑1</span> <span class="err">↓2</span> <span class="dim">◄ palace-figrig</span>
+</pre>
+  <div class="note">Merge-base to <b>main</b> is where each lane forks; the caret pins each <b>worktree HEAD</b> to its commit. Renders as box-drawing by default; a Mermaid <span class="dim">gitGraph</span> fallback is available (d3/Mermaid already bundled) for pan/zoom on busy histories.</div>
+
+  <!-- ============ existing surface, unchanged (dimmed context) ============ -->
+  <hr class="hr">
+  <div class="sec"><b>▼ EXISTING — unchanged below</b> <span class="dim" style="letter-spacing:.1em">uncommitted banner · filters · commit stream</span></div>
+
+  <div class="ghost">
+    <div style="border:3px double var(--warn);padding:6px 12px;margin-bottom:8px;color:var(--warn)">
+      ! 9 uncommitted changes — not yet recorded &nbsp;<span class="dim">[select all] [none] 0 selected</span>
+    </div>
+    <div class="card"><span class="kindbadge" style="background:var(--phosphor-bright)">deposit</span> &nbsp;complete Phase-2 SDXL style atlas — 47 frames + contact strips &nbsp;<span class="dim">· 374bcbf · +612 −18 · 47 files</span></div>
+    <div class="card"><span class="kindbadge" style="background:var(--phosphor)">edit</span> &nbsp;V0 tool source — mixing-board style-prompt console &nbsp;<span class="dim">· dfae34c · +301 −4</span></div>
+    <div class="card"><span class="kindbadge" style="background:var(--yellow)">ops</span> &nbsp;scope the pod-cleanup gotcha to your own namespace &nbsp;<span class="dim">· 91933ca · +8 −3</span></div>
+  </div>
+
+  <hr class="hr">
+  <div class="dim" style="font-size:11px;letter-spacing:.06em">
+    read-only · self-scoped · no prune / remove actions ever &nbsp;·&nbsp; source: <span class="cy">/api/git-state</span> (proposed) &nbsp;·&nbsp; Loud'n Live
+  </div>
+</div>
