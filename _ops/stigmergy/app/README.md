@@ -146,6 +146,17 @@ iterates on failures up to ten attempts per check, and stops on either
 success (`V0.2-COMPLETE.md` written) or a stop condition
 (`STOP-REPORT.md` written). See the plan for the full protocol.
 
+## Testing & worktree gotchas
+
+Hard-won cautions for anyone building or testing this app:
+
+- **The Playwright e2e fires REAL stewards.** `playwright.config.js` has `reuseExistingServer: !CI`, so `npx playwright test` attaches to whatever dev server is on :5173. If that server was started without `STIGMERGY_STUB_WORKER`, `stewards.spec.js` fires a real `claude -p` steward cycle (~60 s) that posts to the persistent blackboard, mutates `_ops/agents/permanent/*/state.json`, and can write real entries/wavetables — passing the stub env on the *test* command does NOT reach an already-running server. To verify a change safely, run only your surface's specs (`state-deck.spec.js`, etc.), not the full suite; the `stewards:41` "reap to idle" 15 s assertion fails against a non-stub server (real cycle ~60 s) — environmental, not a regression.
+- **The vitest suite has a known load-flake.** The full app suite (~67 files / ~1054 tests) intermittently fails **exactly one** integration test under concurrent load (an SSE `fs.watch` delivery or `entry-save` stage-trailer check); each passes 100% in isolation. Never treat a single such failure as a regression — re-run the file isolated (`npx vitest run <file>`) or the suite once to confirm green.
+- **`core/` edits are inert in a worktree.** `@stigmergy/core` is imported as a *package*; a worktree's `node_modules` symlinks to the owner's, whose `@stigmergy/core` points back at the owner's `_ops/stigmergy/core/`. So a worktree edit to `core/` is not what the tests/app load — make and verify `core/` changes on the **owner (main)**. (App `src/…` edits import by relative path and are fine in a worktree.)
+- **A preview server run from a worktree traps board writes.** The app roots its board at its own cwd, so a dev server launched from a worktree writes companion/coordination state to *that worktree's* `blackboard.jsonl` + `.actuator-companion` — lost on `git worktree remove --force`. Before tearing down a stigmergy worktree, `git status` for a modified board and rescue any messages you didn't author to the owner tree. Prefer running previews from the owner.
+- **No shebangs in app-imported orchestrator files.** The app (Vite/esbuild) bundles orchestrator modules imported by relative path, and esbuild does *not* strip a leading `#!/usr/bin/env node` — it becomes a `Syntax error "!"` and the dev server fails to start. Drop the shebang and invoke such files via `node <file>`. Vitest won't catch this; only a real `vite` start does.
+- **Reuse the styled media components.** Surfacing audio → `src/components/PhosphorAudio.jsx`; image / iframe / file → `src/components/ArtifactSlot.jsx` (+ `src/lib/artifact.js`). Never drop a raw native `<audio controls>` / player — it breaks the phosphor language. Grep for the existing component before building a new media display.
+
 ## Directory map
 
 ```
