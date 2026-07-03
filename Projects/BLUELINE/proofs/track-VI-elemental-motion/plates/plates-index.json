@@ -1,0 +1,75 @@
+{
+  "flame": {
+    "field": "flame",
+    "mask": "auto:mid",
+    "anchor": "base",
+    "plate": "plates/flame.png",
+    "prompt": "a lone bonfire blazing on an empty plain at night, tall licking flames and rising sparks, a small seated figure silhouette beside it, low horizon, vast white sky, hand-drawn with a black chisel-tip marker on rough white cold-press watercolor paper, visible paper tooth, broken dry ink edges, monochrome black and white, lots of white space, confident calligraphic linework, sparse grey dry-brush half-tones, manga and sumi-e ink influence",
+    "seed": 7011,
+    "size": [
+      832,
+      1216
+    ]
+  },
+  "water": {
+    "field": "water",
+    "mask": "auto:bottom:0.5",
+    "anchor": null,
+    "plate": "plates/water.png",
+    "prompt": "a calm wide lake at dusk, broad rippling water reflections filling the lower half of the frame, a lone figure standing at the near shoreline gazing across, distant low far shore, open empty sky, hand-drawn with a black chisel-tip marker on rough white cold-press watercolor paper, visible paper tooth, broken dry ink edges, monochrome black and white, lots of white space, confident calligraphic linework, sparse grey dry-brush half-tones, manga and sumi-e ink influence",
+    "seed": 7022,
+    "size": [
+      832,
+      1216
+    ]
+  },
+  "sky": {
+    "field": "sky",
+    "mask": "auto:top:0.55",
+    "anchor": null,
+    "plate": "plates/sky.png",
+    "prompt": "immense dramatic billowing storm clouds piled high over a bare windswept hill, a tiny lone figure standing on the ridge below, sweeping cloud forms, deep noir shadow, lots of white paper, hand-drawn with a black chisel-tip marker on rough white cold-press watercolor paper, visible paper tooth, broken dry ink edges, monochrome black and white, lots of white space, confident calligraphic linework, sparse grey dry-brush half-tones, manga and sumi-e ink influence",
+    "seed": 7033,
+    "size": [
+      832,
+      1216
+    ]
+  },
+  "smoke": {
+    "field": "smoke",
+    "mask": "auto:top:0.7",
+    "anchor": "base",
+    "plate": "plates/smoke.png",
+    "prompt": "a thin column of dark smoke curling and rising from a single snuffed candle on an empty table, delicate wisps against white paper, close intimate study, hand-drawn with a black chisel-tip marker on rough white cold-press watercolor paper, visible paper tooth, broken dry ink edges, monochrome black and white, lots of white space, confident calligraphic linework, sparse grey dry-brush half-tones, manga and sumi-e ink influence",
+    "seed": 7044,
+    "size": [
+      832,
+      1216
+    ]
+  },
+  "smoke_billow": {
+    "field": "smoke",
+    "mask": "auto:top:0.6",
+    "anchor": "base",
+    "note": "topology-changing \u2014 sim path, not pure warp",
+    "plate": "plates/smoke_billow.png",
+    "prompt": "thick black smoke billowing violently from the chimney of a lone burning house on a bleak hill, dense rolling plumes, dramatic noir light, hand-drawn with a black chisel-tip marker on rough white cold-press watercolor paper, visible paper tooth, broken dry ink edges, monochrome black and white, lots of white space, confident calligraphic linework, sparse grey dry-brush half-tones, manga and sumi-e ink influence",
+    "seed": 7055,
+    "size": [
+      832,
+      1216
+    ]
+  },
+  "dust": {
+    "field": "dust",
+    "mask": "auto:bottom:0.6",
+    "anchor": null,
+    "plate": "plates/dust.png",
+    "prompt": "a fierce dust storm sweeping low across a desolate flat plain, a cloaked figure leaning hard into the howling wind, long streaks of blowing grit and haze, pale empty sky above, hand-drawn with a black chisel-tip marker on rough white cold-press watercolor paper, visible paper tooth, broken dry ink edges, monochrome black and white, lots of white space, confident calligraphic linework, sparse grey dry-brush half-tones, manga and sumi-e ink influence",
+    "seed": 7066,
+    "size": [
+      832,
+      1216
+    ]
+  }
+}
