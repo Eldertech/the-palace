@@ -120,6 +120,61 @@ export function parseNumstat(raw) {
   return map;
 }
 
+// Parse `git worktree list --porcelain` into structured worktree records.
+// Records are separated by a blank line; each is a set of `key value` lines:
+//   worktree <abs-path>
+//   HEAD <sha>
+//   branch refs/heads/<name>   |   detached
+//   bare                        (optional)
+//   locked [<reason>]           (optional)
+//   prunable [<reason>]         (optional)
+// Returns [{ path, head, shortHead, branch, detached, bare, locked,
+// lockedReason, prunable, prunableReason }]. `branch` is the short name
+// (refs/heads/ stripped); null when detached or bare.
+export function parseWorktreePorcelain(raw) {
+  const out = [];
+  if (typeof raw !== 'string' || raw.trim() === '') return out;
+  let cur = null;
+  const flush = () => { if (cur && cur.path) out.push(cur); cur = null; };
+  for (const line of raw.split(/\r?\n/)) {
+    if (line === '') { flush(); continue; }
+    const sp = line.indexOf(' ');
+    const key = sp === -1 ? line : line.slice(0, sp);
+    const val = sp === -1 ? '' : line.slice(sp + 1);
+    switch (key) {
+      case 'worktree':
+        flush();
+        cur = {
+          path: val, head: null, shortHead: null, branch: null,
+          detached: false, bare: false,
+          locked: false, lockedReason: null, prunable: false, prunableReason: null,
+        };
+        break;
+      case 'HEAD': if (cur) { cur.head = val; cur.shortHead = val.slice(0, 7); } break;
+      case 'branch': if (cur) cur.branch = val.replace(/^refs\/heads\//, ''); break;
+      case 'detached': if (cur) cur.detached = true; break;
+      case 'bare': if (cur) cur.bare = true; break;
+      case 'locked': if (cur) { cur.locked = true; cur.lockedReason = val || null; } break;
+      case 'prunable': if (cur) { cur.prunable = true; cur.prunableReason = val || null; } break;
+      default: break;
+    }
+  }
+  flush();
+  return out;
+}
+
+// Parse `git rev-list --left-right --count A...B` output ("<left>\t<right>").
+// With A=base, B=branch: left = commits on base not branch (branch is BEHIND
+// by that many); right = commits on branch not base (branch is AHEAD).
+// Returns { behind, ahead } or null when the output is unparseable (e.g. no
+// upstream, which the caller runs with allowFail).
+export function parseAheadBehind(raw) {
+  if (typeof raw !== 'string') return null;
+  const m = raw.trim().match(/^(\d+)\s+(\d+)$/);
+  if (!m) return null;
+  return { behind: parseInt(m[1], 10), ahead: parseInt(m[2], 10) };
+}
+
 // Parse `git status --porcelain=v1` output into a structured working-tree
 // delta. Returns { staged: [...], unstaged: [...], untracked: [...] } where
 // each entry is { path, status }.
