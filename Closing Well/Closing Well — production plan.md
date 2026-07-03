@@ -16,9 +16,12 @@ Production Plan]]): phased, each phase closes one gap and ends at a verify gate,
 the earliest phase is a hand-run pilot before any automation — the same order that
 worked for the [[Project Stewardship System]].
 
-Status as of 2026-07-03: **Phase 0 (this plan) written. Nothing else built.** The
-design lives in [[Closing Well]] § Closing Well, Enchanted. This branch
-(`feature/closing-well-agent`) is the workspace; canon merges to `main` at the end.
+Status as of 2026-07-03: **Phases 0–2 done; Phase 3 is next.** Phase 0 (this
+plan) and Phase 1 (hand-run pilot — this design's own close) are complete; Phase 2
+landed on `main` via the v1.15 Schema Ceremony: the `close well` trigger + the thin
+[[Closing Well Ceremony]] card (recognition + dispatch). The design lives in
+[[Closing Well]] § Closing Well, Enchanted. The feature branch has been merged and
+retired; further phases branch fresh from `main`.
 
 ## Reuse — do not rebuild
 
@@ -46,7 +49,7 @@ Most of the machinery already exists. The Agent is mostly *wiring*, not inventio
 
 ## Phases
 
-### Phase 1 — Hand-run pilot ✳ start here
+### Phase 1 — Hand-run pilot ✓ done
 Run the whole flow **by hand** on one real session, no automation — exactly how
 Stewardship's Stage A de-risked its build. A fresh reader (or Loudon) reads a
 finished transcript, drafts a close map by hand, runs the one-gate review, and
@@ -55,9 +58,13 @@ close** (closing well the design of closing well).
 *Verify gate:* a real close map produced and signed; format proven or revised;
 first gotchas recorded. Output scopes Phase 2.
 
-### Phase 2 — Trigger + ceremony card
+### Phase 2 — Trigger + ceremony card ✓ done
 Write the thin `close well` card; add the CLAUDE.md trigger row. Recognition only.
 *Verify gate:* saying "close well" reliably dispatches; a passing mention does not.
+*Landed 2026-07-03 (v1.15 Schema Ceremony):* [[Closing Well Ceremony]] card +
+CLAUDE.md trigger row + Palace Ceremonies row; `lint-doc-drift.py` clean (trigger
+coverage confirmed — the card's `Trigger:` phrases are all present in the table).
+The next phase branches fresh from `main`.
 
 ### Phase 3 — Enchantment + transcript reader
 Dispatch [[Closing Well]] as a subagent that reads the session transcript and returns
