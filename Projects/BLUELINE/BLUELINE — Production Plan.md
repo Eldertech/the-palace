@@ -111,9 +111,10 @@ lineage is noted where it maps.)*
 The one prioritized, cross-thread stack. Each item links the thread that owns it.
 
 **Ready now** (build; no new unknowns):
-1. **Motion & Flow · Edge 1 — pose → field.** Obstacle mask from the same board-record pose that
-   conditions the render; concrete wins: flow-field-biased ink splatter + feed-the-field-to-render
-   img2img fuse. → [[BLUELINE — Motion and Flow]] §Edge 1.
+1. **Motion & Flow · Edge 1 — pose → field** *(3D-native; first proof shipped 2026-07-03).* The field
+   now lives in the Blender scene, parting around the real posed figure mesh (`proofs/session-5-flow-3d/`).
+   Still open: flow-field-biased ink splatter + feed-the-field-to-render img2img fuse; productize as a
+   Geometry-Nodes Simulation Zone. → [[BLUELINE — Motion and Flow]] §Edge 1.
 2. **Figure & Pose — face keypoints + a pose library.** `draw_facepose` (the 70-pt map) and a
    dial-a-frame catalogue. → [[Shop/Figure Rig]].
 3. **Style & Identity — InstantID face-slot.** Bake identity + gaze at generation. → [[Steer the Generator]].
@@ -143,7 +144,7 @@ boards are leveled to uniform fidelity, and a muxed cut exists.
 | `track-III-clock`, `animatic`, `m0-previz`, `m1-animatic`, `m2-motion-comic` | 1 Clock & Sync (+ comic players) | ✅ |
 | `session-2-staging`, `seam-a-roundtrip`, `seam-b` | 2 Board Record & Staging | ◑ (Seam B open) |
 | `blender-handdrawn`, `track-IV-bench`, `blender-gallery` | 3 Figure & Pose | ✅ |
-| `session-3-flowfield`, `session-4-figure-flow` | 4 Motion & Flow | ✅ |
+| `session-3-flowfield`, `session-4-figure-flow`, `session-5-flow-3d` | 4 Motion & Flow | ✅ |
 | `track-V-motion`, `m3-warped-noise` | 4 Motion & Flow | ✗ retired render-noise |
 | `track-VI-elemental-motion`, `cloud-i2v`, `embedded-motion` | 4 Motion & Flow | ◑ |
 | `new-story` | 5 Render Backend (the 6-shot proof) | ✅ |
