@@ -139,6 +139,10 @@ These flow down into every job spec automatically. Specialists honor them or fla
 - Audio loudness: −16 LUFS integrated, −1 dBTP true peak, EBU R128
 - Sample rate: 24kHz mono for narration, 48kHz stereo for finished mixes
 
+**Engineering floor** (how tools are built, not how output looks):
+
+- **Assume multi-agent from the first line.** Any Specialist or piece of tooling that owns state or touches a shared service (a GPU account, an API, the repo) is built expecting concurrent Claudes — namespace what it creates by agent, scope every list/delete to its own, lease scarce resources via a TRICKSTER `RESOURCE_REQUEST`. Single-tenant is a flagged exception, never the silent default. Full rule + the day-long RunPod outage that earned it: [[assume multi-agent]].
+
 **Visual / typographic / motion** (deferred to [[Loudon Live Design System]] — the palace-base spec):
 
 - Palette: project palette if a project is named in the brief; the active [[Loudon Live Design System]] skin otherwise (Graphite is the channel default; Amber Lab / CRT / Strobe / Cobalt Grid / Drafting per project register)
