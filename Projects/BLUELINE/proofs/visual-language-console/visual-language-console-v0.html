@@ -1,0 +1,344 @@
+<title>Visual language console · Loud'n Live</title>
+<!-- House faces (Anton / Cormorant / Manrope / JetBrains Mono) fall back to system stand-ins:
+     the artifact sandbox blocks font CDNs, so no webfont is linked (silent-fallback risk). -->
+<style>
+  :root{
+    --ground:#17181A; --surface:#1F2124; --surface2:#26292C; --hair:#34373B;
+    --paper:#EAE4D6; --ink:#121110;
+    --text:#E7E3DA; --dim:#9C988D; --faint:#6A675E;
+    --accent:#E0913A; --accent-soft:rgba(224,145,58,.16);
+    --radius:6px;
+    --f-display:"Arial Narrow","Helvetica Neue",Impact,system-ui,sans-serif;
+    --f-serif:Georgia,"Iowan Old Style","Times New Roman",serif;
+    --f-ui:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+    --f-mono:ui-monospace,"SF Mono",Menlo,Consolas,monospace;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--ground);color:var(--text);font-family:var(--f-ui);
+    font-size:15px;line-height:1.5;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:940px;margin:0 auto;padding:26px 22px 60px}
+  a{color:var(--accent)}
+  ::selection{background:var(--accent-soft)}
+  button{font-family:var(--f-ui)}
+  :focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+
+  header{display:flex;align-items:center;gap:16px;margin-bottom:6px}
+  #sigil{width:52px;height:52px;flex:none}
+  .lock{flex:1;min-width:0}
+  .eyebrow{font-family:var(--f-mono);font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--faint)}
+  h1{font-family:var(--f-display);font-weight:700;text-transform:uppercase;letter-spacing:.04em;
+    font-size:34px;line-height:.98;margin:2px 0 0;color:var(--text)}
+  .intro{font-family:var(--f-serif);font-size:17px;line-height:1.6;color:var(--dim);
+    max-width:60ch;margin:14px 0 24px}
+  .intro em{color:var(--text);font-style:italic}
+  .rev-btn{font-family:var(--f-mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;
+    background:transparent;color:var(--dim);border:1px solid var(--hair);border-radius:var(--radius);
+    padding:7px 12px;cursor:pointer}
+  .rev-btn:hover{border-color:var(--accent);color:var(--text)}
+  .rev-btn.on{border-color:var(--accent);color:var(--accent)}
+
+  section{background:var(--surface);border:1px solid var(--hair);border-radius:10px;
+    padding:16px 18px;margin-bottom:16px}
+  .sec-label{font-family:var(--f-mono);font-size:11px;letter-spacing:.2em;text-transform:uppercase;
+    color:var(--faint);margin-bottom:12px;display:flex;align-items:center;gap:8px}
+  .sec-label .dot{color:var(--accent)}
+
+  /* specimen */
+  .specimen-row{display:flex;gap:18px;align-items:center;flex-wrap:wrap}
+  .plate{background:var(--paper);border-radius:6px;padding:8px;width:280px;flex:none;
+    box-shadow:0 1px 0 #000 inset}
+  .plate svg{display:block;width:100%;border-radius:3px}
+  .specimen-note{font-family:var(--f-serif);font-style:italic;color:var(--dim);font-size:15px;flex:1;min-width:180px}
+
+  /* board */
+  #board{display:flex;gap:6px;align-items:stretch;justify-content:space-between}
+  .ch{flex:1;display:flex;flex-direction:column;align-items:center;gap:7px;min-width:0}
+  .ch .name{font-size:12px;color:var(--text);text-align:center;height:30px;line-height:1.25}
+  .ch .pole{font-family:var(--f-mono);font-size:10px;letter-spacing:.02em;color:var(--faint);text-align:center;height:22px;display:flex;align-items:center;justify-content:center}
+  .trk{position:relative;width:9px;height:150px;background:var(--surface2);border:1px solid var(--hair);
+    border-radius:6px;touch-action:none;cursor:ns-resize}
+  .trk .fill{position:absolute;left:0;right:0;bottom:0;background:#454a4e;border-radius:6px;height:50%}
+  .trk .cap{position:absolute;left:50%;bottom:50%;width:26px;height:13px;background:#d9d4c8;
+    border:1px solid #8f8a7d;border-radius:3px;transform:translate(-50%,50%);box-shadow:0 1px 2px rgba(0,0,0,.4)}
+  .trk.hot .cap{background:var(--accent);border-color:var(--accent)}
+  .cur{font-family:var(--f-mono);font-size:10px;color:var(--dim);text-align:center;height:26px;line-height:1.2}
+
+  /* switches */
+  .switch-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  .sw-lab{font-size:12px;color:var(--dim);margin-bottom:6px}
+  .chips{display:flex;gap:6px;flex-wrap:wrap}
+  .chip{font-family:var(--f-ui);font-size:12px;background:var(--surface2);color:var(--dim);
+    border:1px solid var(--hair);border-radius:var(--radius);padding:5px 10px;cursor:pointer}
+  .chip:hover{color:var(--text);border-color:#4a4e52}
+  .chip.on{color:var(--ink);background:var(--accent);border-color:var(--accent);font-weight:500}
+  .chip .sw{display:inline-block;width:9px;height:9px;border-radius:2px;margin-right:6px;vertical-align:-1px}
+
+  /* presets */
+  .presets{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px}
+  .preset{font-family:var(--f-mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;
+    background:transparent;color:var(--dim);border:1px solid var(--hair);border-radius:var(--radius);
+    padding:7px 11px;cursor:pointer}
+  .preset:hover{border-color:var(--accent);color:var(--text)}
+
+  /* output */
+  .out{margin-bottom:14px}
+  .out:last-child{margin-bottom:0}
+  .out-head{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:6px}
+  .out-head .k{font-family:var(--f-mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--faint)}
+  .copy{font-family:var(--f-mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;
+    background:transparent;border:1px solid var(--hair);color:var(--dim);border-radius:var(--radius);
+    padding:4px 10px;cursor:pointer}
+  .copy:hover{border-color:var(--accent);color:var(--text)}
+  .copy.primary{border-color:var(--accent);color:var(--accent)}
+  .field{font-family:var(--f-mono);font-size:12.5px;line-height:1.6;background:var(--ink);
+    border:1px solid var(--hair);border-radius:6px;padding:11px 13px;color:var(--text);white-space:pre-wrap;word-break:break-word}
+  .field.neg{color:#c9857f}
+  .field.spec{color:var(--dim)}
+
+  /* review */
+  .review-bar{display:none;align-items:center;gap:12px;background:var(--accent-soft);
+    border:1px solid var(--accent);border-radius:8px;padding:10px 14px;margin-bottom:16px}
+  body.review-on .review-bar{display:flex}
+  .review-bar .msg{font-size:13px;color:var(--text);flex:1}
+  .review-note{display:none;margin-top:12px}
+  body.review-on .review-note{display:block}
+  .review-note label{font-family:var(--f-mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);display:block;margin-bottom:5px}
+  .review-note textarea{width:100%;background:var(--ink);border:1px solid var(--hair);border-radius:6px;
+    color:var(--text);font-family:var(--f-ui);font-size:13px;padding:8px 10px;resize:vertical;min-height:44px}
+
+  footer{margin-top:34px;padding-top:18px;border-top:1px solid var(--hair);
+    display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px}
+  .mark{font-family:var(--f-display);font-weight:700;text-transform:uppercase;letter-spacing:.06em;font-size:16px;color:var(--text)}
+  .mark .n{color:var(--accent)}
+  .mark .live{font-weight:400}
+  .fine{font-family:var(--f-mono);font-size:11px;color:var(--faint);letter-spacing:.04em}
+
+  @media (max-width:720px){
+    #board{flex-wrap:wrap;gap:14px}.ch{flex:0 0 20%}.switch-grid{grid-template-columns:1fr}
+    h1{font-size:28px}
+  }
+  @media (prefers-reduced-motion:reduce){*{animation:none!important}}
+</style>
+
+<div class="wrap">
+  <header>
+    <canvas id="sigil" width="104" height="104" aria-hidden="true"></canvas>
+    <div class="lock">
+      <div class="eyebrow">study · visual language</div>
+      <h1>Visual language console</h1>
+    </div>
+    <button class="rev-btn" id="revToggle" aria-pressed="false">Review</button>
+  </header>
+
+  <p class="intro">Dial a hand-drawn comic style the way you'd ride a mixing desk — seven faders for the marks, a switch strip for medium and colour. Read it back as a prompt your pipeline can <em>hold steady</em>, frame after frame.</p>
+
+  <div class="review-bar">
+    <span class="msg">Review on — leave a note under any section, then copy it back.</span>
+    <button class="copy" id="copyReview">Copy feedback</button>
+  </div>
+
+  <section id="secSpecimen">
+    <div class="sec-label"><span class="dot">●</span> specimen</div>
+    <div class="specimen-row">
+      <div class="plate">
+        <svg id="pv" viewBox="0 0 280 190">
+          <defs>
+            <pattern id="hatch" width="7" height="7" patternUnits="userSpaceOnUse" patternTransform="rotate(40)"><line x1="0" y1="0" x2="0" y2="7" stroke="#141210" stroke-width="1.3"/></pattern>
+            <pattern id="xhatch" width="7" height="7" patternUnits="userSpaceOnUse"><line x1="0" y1="0" x2="0" y2="7" stroke="#141210" stroke-width="1.1"/><line x1="0" y1="0" x2="7" y2="0" stroke="#141210" stroke-width="1.1"/></pattern>
+            <pattern id="stip" width="6" height="6" patternUnits="userSpaceOnUse"><circle cx="1.4" cy="1.4" r="1" fill="#141210"/></pattern>
+          </defs>
+          <rect id="pnl" x="0" y="0" width="280" height="190" fill="#EAE4D6"/>
+          <rect id="door" x="104" y="18" width="72" height="150" fill="#f3efe6"/>
+          <rect id="shad" x="60" y="152" width="160" height="38" fill="#141210"/>
+          <g id="marks" stroke="#141210" stroke-width="1.4" stroke-linecap="round">
+            <line id="m1" x1="52" y1="52" x2="64" y2="44"/><line id="m2" x1="214" y1="60" x2="226" y2="50"/>
+            <line id="m3" x1="58" y1="134" x2="72" y2="130"/><line id="m4" x1="208" y1="134" x2="222" y2="130"/>
+            <line id="m5" x1="140" y1="17" x2="140" y2="7"/>
+          </g>
+          <g id="fig" fill="none" stroke="#141210" stroke-width="2.2" stroke-linejoin="round">
+            <circle cx="140" cy="58" r="14"/><path d="M120 75 L160 75 L169 162 L111 162 Z"/>
+          </g>
+          <g id="figInterior" stroke="#141210" stroke-width="1" fill="none"><line x1="140" y1="75" x2="140" y2="156"/><line x1="128" y1="96" x2="152" y2="96"/></g>
+          <rect id="acc" x="136" y="77" width="8" height="30" fill="#A32D2D" style="display:none"/>
+          <rect id="wash" x="0" y="0" width="280" height="190" fill="#A32D2D" opacity="0"/>
+        </svg>
+      </div>
+      <p class="specimen-note">A stand-in figure, redrawn as you move the faders. In the built tool this panel shows real frames generated from your own pipeline — the calibration strips are Phase&nbsp;2.</p>
+    </div>
+    <div class="review-note"><label>note · specimen</label><textarea data-sec="specimen" placeholder="What's off about the preview?"></textarea></div>
+  </section>
+
+  <section id="secBoard">
+    <div class="sec-label"><span class="dot">▸</span> the faders</div>
+    <div id="board"></div>
+    <div class="review-note"><label>note · faders</label><textarea data-sec="faders" placeholder="Missing a variable? Wrong poles?"></textarea></div>
+  </section>
+
+  <section id="secSwitches">
+    <div class="sec-label"><span class="dot">◐</span> medium &amp; colour</div>
+    <div class="switch-grid">
+      <div><div class="sw-lab">Medium</div><div class="chips" id="seg-medium"></div></div>
+      <div><div class="sw-lab">Colour mode</div><div class="chips" id="seg-mode"></div></div>
+      <div><div class="sw-lab">Hue</div><div class="chips" id="seg-hue"></div></div>
+      <div><div class="sw-lab">Accent carries</div><div class="chips" id="seg-carries"></div></div>
+    </div>
+    <div class="review-note"><label>note · medium &amp; colour</label><textarea data-sec="switches" placeholder="..."></textarea></div>
+  </section>
+
+  <section id="secOut">
+    <div class="sec-label"><span class="dot">◇</span> read-out</div>
+    <div class="presets" id="presets"></div>
+    <div class="out">
+      <div class="out-head"><span class="k">positive prompt</span><button class="copy primary" data-copy="pos">Copy</button></div>
+      <div class="field" id="f-pos"></div>
+    </div>
+    <div class="out">
+      <div class="out-head"><span class="k">negative prompt</span><button class="copy" data-copy="neg">Copy</button></div>
+      <div class="field neg" id="f-neg"></div>
+    </div>
+    <div class="out">
+      <div class="out-head"><span class="k">style spec · board-record token</span><button class="copy" data-copy="spec">Copy</button></div>
+      <div class="field spec" id="f-spec"></div>
+    </div>
+    <div class="review-note"><label>note · read-out</label><textarea data-sec="readout" placeholder="Prompt phrasing you'd change?"></textarea></div>
+  </section>
+
+  <footer>
+    <span class="mark">LOUD<span class="n">’N</span> <span class="live">LIVE</span></span>
+    <span class="fine">visual language console · study · v0</span>
+  </footer>
+</div>
+
+<script>
+(function(){
+  var faders=[
+    {k:"ink",name:"Line weight",top:"heavy brush",bot:"hairline",n:5,
+     tok:["fine crowquill line, thin delicate ink linework","fine pen line","medium ink line","bold brush line","heavy brush inking, thick confident brushstrokes"],
+     cur:["hairline","fine pen","medium","bold brush","heavy brush"]},
+    {k:"char",name:"Line character",top:"scratchy",bot:"ligne claire",n:5,
+     tok:["ligne claire, clear even line, no hatching","clean controlled line","natural inked line","loose expressive line","scratchy dry-nib ink line"],
+     cur:["ligne claire","controlled","natural","loose","scratchy"],negLow:"hatching, sketchy, crosshatch"},
+    {k:"black",name:"Black density",top:"noir solid",bot:"open",n:5,
+     tok:["open airy linework, minimal blacks","light blacks","balanced spotted blacks","heavy spotted blacks, high contrast","near-solid noir blacks, bold black shapes, high contrast"],
+     cur:["open","light","balanced","heavy","noir solid"],negLow:"grey shading, gradient, heavy shadow"},
+    {k:"mark",name:"Mark technique",top:"feather",bot:"solid",n:4,
+     tok:["solid flat black fills","parallel-line hatching","cross-hatching, intersecting line shading","ink feathering, tapered barb-lines"],
+     cur:["solid","hatch","cross-hatch","feather"]},
+    {k:"detail",name:"Detail density",top:"dense",bot:"minimal",n:5,
+     tok:["minimal detail, essential shapes only","spare detail","moderate detail","rich detailed linework","intricate dense linework"],
+     cur:["minimal","spare","moderate","rich","dense"],negLow:"busy, cluttered background"},
+    {k:"abstr",name:"Abstraction",top:"iconic",bot:"natural",n:5,
+     tok:["naturalistic proportions, observational","lightly stylized","stylized","simplified forms","simplified iconic cartooning, flat graphic shapes"],
+     cur:["natural","light","stylized","simplified","iconic"]},
+    {k:"contrast",name:"Contrast & light",top:"noir",bot:"flat",n:5,
+     tok:["flat even high-key lighting","bright lighting","mid-key lighting","shadowed low light","low-key single-source lighting, deep noir shadows, raking light"],
+     cur:["flat light","bright","mid-key","shadowed","noir"]}
+  ];
+  var C={}; faders.forEach(function(f){C[f.k]=f;});
+  var state={ink:4,char:3,black:4,mark:4,detail:2,abstr:2,contrast:4,medium:"brush",mode:"B&W",hue:{name:"crimson",hex:"#A32D2D"},carries:"object"};
+
+  /* ---- board ---- */
+  var board=document.getElementById("board"), activeF=null;
+  faders.forEach(function(f){
+    var ch=document.createElement("div"); ch.className="ch";
+    ch.innerHTML='<div class="name">'+f.name+'</div><div class="pole">'+f.top+'</div>'+
+      '<div class="trk" tabindex="0" role="slider" aria-label="'+f.name+'" aria-valuemin="1" aria-valuemax="'+f.n+'"><div class="fill"></div><div class="cap"></div></div>'+
+      '<div class="pole">'+f.bot+'</div><div class="cur" id="cur-'+f.k+'"></div>';
+    board.appendChild(ch);
+    f.trk=ch.querySelector(".trk"); f.fill=ch.querySelector(".fill"); f.cap=ch.querySelector(".cap");
+    function setY(y){var r=f.trk.getBoundingClientRect();var fr=1-(y-r.top)/r.height;fr=Math.max(0,Math.min(1,fr));var v=Math.round(1+fr*(f.n-1));if(v!==state[f.k]){state[f.k]=v;draw();}}
+    f.trk.addEventListener("pointerdown",function(e){activeF=f;f.trk.classList.add("hot");f.trk.setPointerCapture(e.pointerId);setY(e.clientY);e.preventDefault();});
+    f.trk.addEventListener("pointermove",function(e){if(activeF===f)setY(e.clientY);});
+    f.trk.addEventListener("pointerup",function(){if(activeF)activeF.trk.classList.remove("hot");activeF=null;});
+    f.trk.addEventListener("pointercancel",function(){activeF=null;});
+    f.trk.addEventListener("keydown",function(e){var d=e.key==="ArrowUp"?1:(e.key==="ArrowDown"?-1:0);if(d){state[f.k]=Math.max(1,Math.min(f.n,state[f.k]+d));draw();e.preventDefault();}});
+  });
+
+  /* ---- switches ---- */
+  function chip(txt,on,sw){var b=document.createElement("button");b.className="chip"+(on?" on":"");if(sw)b.innerHTML='<span class="sw" style="background:'+sw+'"></span>'+txt;else b.textContent=txt;return b;}
+  function seg(id,opts,cur,cb){var c=document.getElementById(id);c.innerHTML="";opts.forEach(function(o){var b=chip(o,cur===o);b.onclick=function(){cb(o);};c.appendChild(b);});}
+  var hues=[{name:"crimson",hex:"#A32D2D"},{name:"amber",hex:"#BA7517"},{name:"teal",hex:"#0F6E56"},{name:"cobalt",hex:"#185FA5"},{name:"acid green",hex:"#639922"},{name:"violet",hex:"#534AB7"}];
+  function switches(){
+    seg("seg-medium",["pen","brush","dry-brush","woodcut","pencil"],state.medium,function(o){state.medium=o;render();});
+    seg("seg-mode",["B&W","spot accent","duotone","flat limited"],state.mode,function(o){state.mode=o;render();});
+    seg("seg-carries",["object","light","field"],state.carries,function(o){state.carries=o;render();});
+    var hc=document.getElementById("seg-hue");hc.innerHTML="";hues.forEach(function(h){var b=chip(h.name,state.hue.name===h.name,h.hex);b.onclick=function(){state.hue=h;render();};hc.appendChild(b);});
+  }
+  function render(){switches();draw();}
+
+  /* ---- presets ---- */
+  var presets={
+    "pen-flow default":{ink:4,char:3,black:4,mark:4,detail:2,abstr:2,contrast:4,medium:"brush",mode:"B&W",carries:"object",hue:"crimson"},
+    "Sin City noir":{ink:5,char:2,black:5,mark:1,detail:1,abstr:3,contrast:5,medium:"brush",mode:"spot accent",carries:"object",hue:"crimson"},
+    "Moebius clear-line":{ink:2,char:1,black:1,mark:2,detail:4,abstr:1,contrast:1,medium:"pen",mode:"flat limited",carries:"field",hue:"teal"},
+    "Ward woodcut":{ink:4,char:3,black:4,mark:1,detail:2,abstr:3,contrast:5,medium:"woodcut",mode:"B&W",carries:"object",hue:"crimson"}
+  };
+  var pc=document.getElementById("presets");
+  Object.keys(presets).forEach(function(name){var b=document.createElement("button");b.className="preset";b.textContent=name;b.onclick=function(){var p=presets[name];for(var k in p){if(k==="hue"){state.hue=hues.filter(function(h){return h.name===p.hue;})[0];}else state[k]=p[k];}render();};pc.appendChild(b);});
+
+  /* ---- draw ---- */
+  var el=function(id){return document.getElementById(id);};
+  function draw(){
+    faders.forEach(function(f){var pct=(state[f.k]-1)/(f.n-1);f.fill.style.height=(pct*100)+"%";f.cap.style.bottom=(pct*100)+"%";f.trk.setAttribute("aria-valuenow",state[f.k]);el("cur-"+f.k).textContent=f.cur[state[f.k]-1];});
+    var c=state.contrast;
+    var bg=["#f2efe8","#e6e1d6","#c3bea9","#5a574f","#141210"][c-1];
+    var door=["#fbf8f0","#f3efe6","#d8d3c7","#7a776d","#2a2622"][c-1];
+    var ink=c>=4?"#efeadf":"#141210"; if(state.medium==="pencil"&&c<4)ink="#5a574f";
+    el("pnl").setAttribute("fill",bg);
+    var sw=[0.8,1.5,2.3,3.3,4.3][state.ink-1]; if(state.medium==="woodcut")sw+=0.8;
+    var fig=el("fig"); fig.setAttribute("stroke",ink); fig.setAttribute("stroke-width",sw);
+    var dash=state.char>=5?"2 3":(state.char===4?"5 3":"none"); if(state.medium==="dry-brush"&&dash==="none")dash="6 2";
+    fig.setAttribute("stroke-dasharray",dash);
+    fig.setAttribute("fill",(state.black>=4||state.medium==="woodcut")?ink:"none");
+    var interior=el("figInterior"); interior.setAttribute("stroke",ink); interior.style.display=(state.abstr<=2&&state.black<4)?"":"none";
+    var shad=el("shad"),mk=state.mark;
+    shad.setAttribute("fill",mk===1?ink:(mk===2?"url(#hatch)":(mk===3?"url(#xhatch)":"url(#stip)")));
+    shad.setAttribute("opacity",state.black>=2?1:0.4);
+    for(var i=1;i<=5;i++){el("m"+i).style.display=(i<=state.detail?"":"none");el("m"+i).setAttribute("stroke",ink);}
+    var acc=el("acc"),wash=el("wash"); acc.style.display="none";wash.setAttribute("opacity","0");el("door").setAttribute("fill",door);
+    if(state.mode==="spot accent"){if(state.carries==="object"){acc.style.display="";acc.setAttribute("fill",state.hue.hex);}else if(state.carries==="light"){el("door").setAttribute("fill",state.hue.hex);}else{wash.setAttribute("fill",state.hue.hex);wash.setAttribute("opacity","0.14");}}
+    else if(state.mode==="duotone"){shad.setAttribute("fill",state.hue.hex);}
+    else if(state.mode==="flat limited"){wash.setAttribute("fill",state.hue.hex);wash.setAttribute("opacity","0.18");}
+    writePrompts();
+  }
+
+  function writePrompts(){
+    var h=state.hue.name;
+    var med={pen:"pen and ink, crowquill",brush:"brush and ink, expressive brushstrokes","dry-brush":"dry-brush texture, scratchboard",woodcut:"black-and-white woodcut relief print, bold carved lines",pencil:"graphite pencil on toned paper"}[state.medium];
+    var color;
+    if(state.mode==="B&W")color="stark black and white, monochrome ink";
+    else if(state.mode==="spot accent")color="stark black and white with a single "+h+" spot colour on the "+state.carries+", selective colour";
+    else if(state.mode==="duotone")color="duotone two-colour print, black plus "+h+", risograph";
+    else color="flat limited palette keyed to "+h;
+    var pos="ink art of a single dramatically-staged figure — "+med+", "+C.ink.tok[state.ink-1]+", "+C.char.tok[state.char-1]+", "+C.black.tok[state.black-1]+", "+C.mark.tok[state.mark-1]+" shadows, "+C.detail.tok[state.detail-1]+", "+C.abstr.tok[state.abstr-1]+" figure, "+C.contrast.tok[state.contrast-1]+", "+color+", on rough textured paper, hand-drawn, ink on paper";
+    el("f-pos").textContent=pos;
+    var neg=["3d render","cgi","photorealistic","smooth gradient","octane","glossy","digital painting"];
+    if(state.char<=2&&C.char.negLow)neg.push(C.char.negLow);
+    if(state.black<=2&&C.black.negLow)neg.push(C.black.negLow);
+    if(state.detail<=2&&C.detail.negLow)neg.push(C.detail.negLow);
+    if(state.medium==="woodcut")neg.push("wood grain, colour");
+    el("f-neg").textContent=neg.join(", ");
+    var spec={line_weight:state.ink,line_character:state.char,black_density:state.black,mark_technique:C.mark.cur[state.mark-1],detail:state.detail,abstraction:state.abstr,contrast_light:state.contrast,medium:state.medium,colour_mode:state.mode,hue:state.mode==="B&W"?null:h,accent_carries:state.mode==="spot accent"?state.carries:null,seed_lock:true};
+    el("f-spec").textContent=JSON.stringify(spec,null,1);
+  }
+
+  /* ---- copy ---- */
+  document.querySelectorAll(".copy[data-copy]").forEach(function(b){b.onclick=function(){var m={pos:"f-pos",neg:"f-neg",spec:"f-spec"}[b.getAttribute("data-copy")];try{navigator.clipboard.writeText(el(m).textContent);var t=b.textContent;b.textContent="Copied";setTimeout(function(){b.textContent=t;},1100);}catch(e){}};});
+
+  /* ---- review ---- */
+  var rb=document.getElementById("revToggle");
+  rb.onclick=function(){var on=document.body.classList.toggle("review-on");rb.classList.toggle("on",on);rb.setAttribute("aria-pressed",on);};
+  document.getElementById("copyReview").onclick=function(){var out=[];document.querySelectorAll(".review-note textarea").forEach(function(t){if(t.value.trim())out.push("["+t.getAttribute("data-sec")+"] "+t.value.trim());});var txt=out.length?out.join("\n\n"):"(no notes yet)";try{navigator.clipboard.writeText(txt);var b=document.getElementById("copyReview");b.textContent="Copied";setTimeout(function(){b.textContent="Copy feedback";},1100);}catch(e){}};
+
+  /* ---- lissajous sigil ---- */
+  var cv=document.getElementById("sigil"),cx=cv.getContext("2d");
+  var reduce=window.matchMedia&&window.matchMedia("(prefers-reduced-motion:reduce)").matches;
+  function sig(rot){cx.clearRect(0,0,104,104);cx.save();cx.translate(52,52);cx.rotate(rot);
+    cx.beginPath();cx.arc(0,0,40,0,Math.PI*2);cx.strokeStyle="#34373B";cx.lineWidth=1;cx.stroke();
+    cx.beginPath();for(var i=0;i<=240;i++){var t=i/240*Math.PI*2;var x=Math.sin(3*t+Math.PI/2)*34;var y=Math.sin(2*t)*34;i?cx.lineTo(x,y):cx.moveTo(x,y);}
+    cx.strokeStyle="#E0913A";cx.lineWidth=1.4;cx.stroke();cx.restore();}
+  if(reduce){sig(0);}else{var r=0;(function loop(){r+=0.005;sig(r);requestAnimationFrame(loop);})();}
+
+  switches();draw();
+})();
+</script>
