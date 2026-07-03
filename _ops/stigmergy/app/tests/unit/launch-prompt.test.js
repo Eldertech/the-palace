@@ -17,6 +17,16 @@ describe('buildLaunchPrompt — handoff', () => {
     expect(p).toContain('h-1');
   });
 
+  test('receives the baton with skepticism — a freshness/live gate before acting', () => {
+    const p = buildLaunchPrompt(ctx);
+    expect(p).toMatch(/skepticism/i);
+    expect(p).toMatch(/still LIVE/);
+    expect(p).toMatch(/moved past it/i);
+    // It must tell the catcher to STOP on a stale move, not execute it.
+    expect(p).toMatch(/stale move/i);
+    expect(p).toMatch(/superseded/i);
+  });
+
   test('defaults kind to handoff', () => {
     expect(buildLaunchPrompt({ sourcePath: 'x — baton.md' })).toContain('catching an in-progress baton');
   });

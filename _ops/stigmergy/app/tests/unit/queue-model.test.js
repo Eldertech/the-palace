@@ -1,7 +1,7 @@
 import { describe, it, expect } from 'vitest';
 import {
   buildQueue, reconcileQueue, partitionQueue, rankQueue, laneCounts, vantage, deriveAsk,
-  synthesizeProposalAsk, synthesizeFlagAsk,
+  synthesizeProposalAsk, synthesizeFlagAsk, cardAge, STALE_AGE_MS,
 } from '../../src/lib/queue-model.js';
 
 function reqMsg(over = {}) {
@@ -624,5 +624,45 @@ describe('buildQueue — the new ask/resourceType/rationale fields', () => {
     expect(it.receiving_surface).toBeNull();
     // No move → no fabricated ask (the card falls back to summary).
     expect(it.ask).toBeUndefined();
+  });
+});
+
+describe('cardAge — the age readout on every card', () => {
+  const base = Date.parse('2026-07-03T12:00:00Z');
+  const at = (offsetMs) => new Date(base - offsetMs).toISOString();
+
+  it('reads "just now" under a minute', () => {
+    expect(cardAge(at(30 * 1000), base).label).toBe('just now');
+  });
+
+  it('reads minutes, hours, and days', () => {
+    expect(cardAge(at(5 * 60_000), base).label).toBe('5m');
+    expect(cardAge(at(3 * 3_600_000), base).label).toBe('3h');
+    expect(cardAge(at(6 * 86_400_000), base).label).toBe('6d');
+  });
+
+  it('rolls up to weeks, months, and years', () => {
+    expect(cardAge(at(14 * 86_400_000), base).label).toBe('2w');
+    expect(cardAge(at(60 * 86_400_000), base).label).toBe('2mo');
+    expect(cardAge(at(400 * 86_400_000), base).label).toBe('1y');
+  });
+
+  it('flags stale at/after 3 days, not before', () => {
+    expect(cardAge(at(STALE_AGE_MS - 1000), base).stale).toBe(false);
+    expect(cardAge(at(STALE_AGE_MS), base).stale).toBe(true);
+    expect(cardAge(at(6 * 86_400_000), base).stale).toBe(true);
+  });
+
+  it('clamps a future ts to "just now" (never negative)', () => {
+    const r = cardAge(at(-10_000), base); // ts 10s in the "future"
+    expect(r.ms).toBe(0);
+    expect(r.label).toBe('just now');
+    expect(r.stale).toBe(false);
+  });
+
+  it('returns a null label for a bad ts', () => {
+    const r = cardAge('not-a-date', base);
+    expect(r.label).toBeNull();
+    expect(r.stale).toBe(false);
   });
 });

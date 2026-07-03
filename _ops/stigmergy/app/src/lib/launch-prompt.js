@@ -35,7 +35,8 @@ function handoffPrompt({ sourcePath, entry, from, id, summary, move, invocation 
   const theInvocation = str(invocation);
   const lines = [
     'You are catching an in-progress baton in The Palace, in a fresh interactive',
-    'session at the palace root. Pick up the move and run with it in dialogue —',
+    'session at the palace root. Catch it — but with healthy skepticism: a baton',
+    'is a snapshot from a past moment, and the project may have moved past it.',
     'Loudon is watching and will steer.',
     '',
     `1. ${ORIENT}`,
@@ -44,9 +45,13 @@ function handoffPrompt({ sourcePath, entry, from, id, summary, move, invocation 
   if (entry) lines.push(`   ...and its parent entry [[${String(entry).replace(/\.md$/, '')}]].`);
   if (theMove) lines.push(`   The move (handoff ${id || '?'}, from ${from || '?'}): "${theMove}"`);
   lines.push(
-    '3. Follow the baton\'s own "On pickup" checklist (it rides inside the baton):',
-    '   mark it caught, then delete the baton file — git is its archive.',
-    '4. Pick up the move exactly where it left off and keep going, interactively.',
+    '3. Check it is still LIVE before acting. Re-read the entry\'s current state and',
+    '   `git log` it since the baton was written; confirm the "Current state" the baton',
+    '   quotes still matches the file. If the move is already done, superseded, or no',
+    '   longer wanted, STOP and tell Loudon — do not execute a stale move.',
+    '4. If it is still live, follow the baton\'s own "On pickup" checklist (it rides',
+    '   inside the baton): mark it caught, then delete the baton file — git is its archive.',
+    '5. Pick up the move where it left off and keep going, interactively.',
   );
   // The board's `invocation` is a ready, verbatim first action — surface it so
   // the catcher has the exact starting step, not just a paraphrase of the move.

@@ -445,6 +445,39 @@ export function synthesizeFlagAsk(flagType, sourceEntries, targetEntry) {
   }
 }
 
+// Compact age of an item from its ts — a readout on EVERY card, not just
+// batons: "just now" / "5m" / "3h" / "6d" / "2w" / "4mo" / "1y". `stale` flags
+// an item that has sat open long enough to deserve skepticism (>= 3 days) — the
+// passive backstop now that git auto-resolution is off. nowMs is injectable for
+// tests; it defaults to Date.now() (fine in app runtime; never called from a
+// workflow script). Returns { label, ms, stale }; label is null for a bad ts.
+export const STALE_AGE_MS = 3 * 24 * 60 * 60 * 1000;
+export function cardAge(ts, nowMs) {
+  const then = tsToEpoch(ts);
+  if (!Number.isFinite(then)) return { label: null, ms: null, stale: false };
+  const now = Number.isFinite(nowMs) ? nowMs : Date.now();
+  const ms = Math.max(0, now - then);
+  const s = Math.floor(ms / 1000);
+  let label;
+  if (s < 60) label = 'just now';
+  else {
+    const m = Math.floor(s / 60);
+    if (m < 60) label = `${m}m`;
+    else {
+      const h = Math.floor(m / 60);
+      if (h < 24) label = `${h}h`;
+      else {
+        const d = Math.floor(h / 24);
+        if (d < 7) label = `${d}d`;
+        else if (d < 30) label = `${Math.floor(d / 7)}w`;
+        else if (d < 365) label = `${Math.floor(d / 30)}mo`;
+        else label = `${Math.floor(d / 365)}y`;
+      }
+    }
+  }
+  return { label, ms, stale: ms >= STALE_AGE_MS };
+}
+
 // A short human vantage string: "announced HH:MM:SSZ, from X".
 export function vantage(item) {
   const ts = typeof item?.ts === 'string' ? item.ts : '';

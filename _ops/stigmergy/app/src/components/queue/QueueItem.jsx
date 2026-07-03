@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { vantage } from '../../lib/queue-model.js';
+import { vantage, cardAge } from '../../lib/queue-model.js';
 import InlineProse from '../../lib/inline-prose.jsx';
 
 // One honest QUEUE item. The hierarchy leads with WHO is asking, then the
@@ -79,6 +79,7 @@ export default function QueueItem({ item, onJump, onClear, onRespond, onLaunch, 
   const decided = !!decision;
   const dColor = decided ? (DECISION_COLOR[decision.verb] || 'var(--phosphor)') : null;
   const accent = KIND_COLOR[item.kind] || 'var(--phosphor)';
+  const age = cardAge(item.ts);
   const [showRationale, setShowRationale] = useState(false);
 
   const canRespond = !resolved && !decided
@@ -115,6 +116,21 @@ export default function QueueItem({ item, onJump, onClear, onRespond, onLaunch, 
           {KIND_LABEL[item.kind] || item.kind}
         </span>
         <span style={{ flex: 1 }} />
+        {/* Age readout on EVERY card — how long it has sat open. Dim by default;
+            when stale (>= 3 days) it flips to warn, the passive skepticism cue
+            that replaced git auto-resolution. */}
+        {age.label ? (
+          <span
+            data-testid="queue-item-age"
+            title={`opened ${age.label}${age.label === 'just now' ? '' : ' ago'}${age.stale ? ' — old enough to be stale; verify before acting' : ''}`}
+            style={{
+              color: (age.stale && !resolved) ? 'var(--warn)' : 'var(--phosphor-dim)',
+              textShadow: (age.stale && !resolved) ? 'var(--glow)' : 'none',
+              border: `1px solid ${(age.stale && !resolved) ? 'var(--warn)' : 'var(--phosphor-dim)'}`,
+              padding: '0 6px', fontSize: 10, letterSpacing: '.04em',
+            }}
+          >{age.label}{age.stale ? ' old' : ''}</span>
+        ) : null}
         {item.blocking && !resolved ? (
           <span style={{
             color: 'var(--warn)', textShadow: 'var(--glow)', fontSize: 11,
