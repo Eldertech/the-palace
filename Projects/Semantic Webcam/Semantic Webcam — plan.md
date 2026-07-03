@@ -12,25 +12,28 @@ forward_vector: "I am Semantic Webcam's materialized work state — open decisio
 
 > Materialized read-model of the steward's work state. Regenerated each cycle from the [[STIGMERGY]] persistent board; do not hand-edit the decision sections.
 > **Forward vector:** see [[Semantic Webcam]] frontmatter `forward_vector` — not copied here (single-source-of-truth).
-> _Last materialized: 2026-06-23T13:13:43.000Z._
+> _Last materialized: 2026-06-25T00:34:11.833Z._
 
 ## Plan
 
 - **Stage:** growing (read live from [[Semantic Webcam]] frontmatter)
-- **Open:** 1  ·  **Resolved:** 0  ·  **Iteration:** 6
+- **Open:** 0  ·  **Resolved:** 1  ·  **Iteration:** 7
 
 ## Open Decisions
+
+_None open._
+
+## Resolved Decisions
 
 ### `semantic-webcam-011` — directional_decision
 - **Options:** EYES-AND-FINGERS · GROW-THE-LENS · FOLD-INTO-OBLIQUE · YOU-DEFINE
 - **Posted:** 2026-06-23T15:32:00-04:00
-
-## Resolved Decisions
-
-_None yet._
+- **Resolved:** 2026-06-25T00:07:50.162Z (by `resp-mqsqtxg2-p7d1jc`)
+- **Outcome:** GRANTED — option_id=EYES-AND-FINGERS
 
 ## Done
 
+- 2026-06-25T00:34:11.833Z — cycle complete (iteration 7); posted: none
 - 2026-06-23T13:13:43.000Z — cycle complete (iteration 6); posted: semantic-webcam-010, semantic-webcam-011
 - 2026-06-06T13:38:00.474Z — cycle complete (iteration 5); posted: none
 - 2026-06-06T10:50:45Z — cycle complete (iteration 4); posted: semantic-webcam-007, semantic-webcam-008, semantic-webcam-009

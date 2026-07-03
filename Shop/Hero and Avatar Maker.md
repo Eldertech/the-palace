@@ -3,6 +3,7 @@ title: "Hero and Avatar Maker"
 type: maker
 status: alive
 born: 2026-06-23
+last_activated: 2026-06-26
 last_tested: 2026-06-23
 medium: image
 tool: "FLUX.1-dev-fp8 (RunPod serverless) + ComfyUI / procedural icon paths"

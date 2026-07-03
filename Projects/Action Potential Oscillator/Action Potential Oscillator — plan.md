@@ -12,25 +12,28 @@ forward_vector: "I am Action Potential Oscillator's materialized work state — 
 
 > Materialized read-model of the steward's work state. Regenerated each cycle from the [[STIGMERGY]] persistent board; do not hand-edit the decision sections.
 > **Forward vector:** see [[Action Potential Oscillator]] frontmatter `forward_vector` — not copied here (single-source-of-truth).
-> _Last materialized: 2026-06-23T12:45:21.000Z._
+> _Last materialized: 2026-06-25T00:34:27.301Z._
 
 ## Plan
 
 - **Stage:** growing (read live from [[Action Potential Oscillator]] frontmatter)
-- **Open:** 1  ·  **Resolved:** 0  ·  **Iteration:** 4
+- **Open:** 0  ·  **Resolved:** 1  ·  **Iteration:** 5
 
 ## Open Decisions
+
+_None open._
+
+## Resolved Decisions
 
 ### `apo-steward-009` — directional_decision
 - **Options:** FAUST-FIRST · PYTHON-DEEPER · H90-RNBO · FIX-AUDITION
 - **Posted:** 2026-06-23T08:50:30-04:00
-
-## Resolved Decisions
-
-_None yet._
+- **Resolved:** 2026-06-25T00:09:01.361Z (by `resp-mqsqvgdt-hge8qg`)
+- **Outcome:** GRANTED — option_id=FAUST-FIRST
 
 ## Done
 
+- 2026-06-25T00:34:27.301Z — cycle complete (iteration 5); posted: none
 - 2026-06-23T12:45:21.000Z — cycle complete (iteration 4); posted: apo-steward-008, apo-steward-009
 - 2026-06-06T10:29:38Z — cycle complete (iteration 3); posted: apo-steward-005, apo-steward-006, apo-steward-007
 - 2026-06-06T10:29:38Z — Palace heartbeat batch 2026-06-06T10:29:38Z. ~97515 subagent tokens, 23 tool uses.

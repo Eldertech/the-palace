@@ -215,6 +215,86 @@ def render_pitch_class_drone(pitch_class: int,
 # CLI / smoke test
 # ---------------------------------------------------------------------------
 
+# ---------------------------------------------------------------------------
+# Stage 2 — Discrete-step ascent (ASCENT-FIRST + STEP-AND-SHOW grants)
+# ---------------------------------------------------------------------------
+
+@dataclass(frozen=True)
+class ShepardStage2Params:
+    """Stage 2: step the pitch class up by `step_semitones` every
+    `step_duration_s` seconds, holding the Stage 1 envelope fixed.
+
+    STEP-AND-SHOW: when the pitch-class index wraps past 11 back to 0,
+    we briefly drop the envelope to `seam_dip` for `seam_dip_ms` so the
+    wrap seam is audible — the Escher staircase with one edge lit.
+    """
+
+    start_pitch_class: int = 0
+    step_semitones: int = 1
+    step_duration_s: float = 0.5
+    n_steps: int = 24
+    sample_rate: int = 48_000
+    octaves: Sequence[int] = DEFAULT_OCTAVES
+    centroid_log2hz: float = DEFAULT_CENTROID_LOG2HZ
+    sigma_octaves: float = DEFAULT_SIGMA_OCTAVES
+    peak_amplitude: float = 0.5
+    fade_ms: float = 25.0
+    seam_dip: float = 0.35     # envelope multiplier at the wrap
+    seam_dip_ms: float = 60.0  # how long the seam is exposed
+
+
+def render_stage2(params: ShepardStage2Params) -> np.ndarray:
+    """Render a discrete-step ascent. Each step is a Stage 1 drone at
+    the next pitch class, concatenated with a 10ms crossfade. On wraps
+    (pc returns to start), the seam is briefly attenuated."""
+    step_n = int(round(params.step_duration_s * params.sample_rate))
+    xfade_n = min(int(0.010 * params.sample_rate), step_n // 4)
+    seam_n = int(round(params.seam_dip_ms * 1e-3 * params.sample_rate))
+
+    out = np.zeros(step_n * params.n_steps, dtype=np.float32)
+    prev_pc = None
+    for i in range(params.n_steps):
+        pc = (params.start_pitch_class + i * params.step_semitones) % 12
+        drone = render_stage1(ShepardStage1Params(
+            pitch_class=pc,
+            duration_s=params.step_duration_s,
+            sample_rate=params.sample_rate,
+            octaves=params.octaves,
+            centroid_log2hz=params.centroid_log2hz,
+            sigma_octaves=params.sigma_octaves,
+            peak_amplitude=params.peak_amplitude,
+            fade_ms=2.0,
+        ))
+        start = i * step_n
+        end = start + step_n
+        seg = drone[:step_n].copy()
+
+        # Expose the wrap seam: dip the envelope at the start of the segment
+        # whenever pc has just wrapped past 11 back toward 0.
+        if prev_pc is not None and params.step_semitones > 0 and pc < prev_pc:
+            n = min(seam_n, len(seg))
+            ramp = np.linspace(params.seam_dip, 1.0, n, dtype=np.float32)
+            seg[:n] *= ramp
+        prev_pc = pc
+
+        if i == 0 or xfade_n == 0:
+            out[start:end] = seg
+        else:
+            fade_in = np.linspace(0.0, 1.0, xfade_n, dtype=np.float32)
+            out[start:start + xfade_n] = (
+                out[start:start + xfade_n] * (1.0 - fade_in) + seg[:xfade_n] * fade_in
+            )
+            out[start + xfade_n:end] = seg[xfade_n:]
+
+    # global fade in/out
+    fade_n = max(1, int(round(params.fade_ms * 1e-3 * params.sample_rate)))
+    fade_n = min(fade_n, len(out) // 2)
+    ramp = np.linspace(0.0, 1.0, fade_n, dtype=np.float32)
+    out[:fade_n] *= ramp
+    out[-fade_n:] *= ramp[::-1]
+    return out
+
+
 def _write_wav(path: str, audio: np.ndarray, sample_rate: int) -> None:
     """Minimal 16-bit PCM WAV writer (no scipy dependency for callers
     who don't want it)."""

@@ -1,0 +1,16 @@
+{
+  "state": "awakening",
+  "rig_png": "pose-awakening-openpose-rig.png",
+  "controlnet": "controlnet-openpose-sdxl.safetensors",
+  "controlnet_strength": 0.8,
+  "seed": 42,
+  "steps": 30,
+  "cfg": 7.5,
+  "sampler": "euler/normal",
+  "style": "gorey-ink-refined",
+  "prompt_final": "Edward Gorey style pen and ink illustration, hand-drawn wobbly ink line with visible tremor and irregular weight, dense parallel crosshatching and stippled shading, varied stroke thickness from hair-fine to bold, scratchy nib texture, eerie Victorian gothic atmosphere, a small black cat sitting upright with one front paw lifted tentatively, ears perked, eyes opening wide with the first spark of starlight, thin wavering ectoplasm wisps just beginning to curl up from the floor, s\u00e9ance ritual, candelabra and patterned wallpaper in background, sparse fussy Victorian interior, deliberate imperfect linework, black ink on warm cream paper, very high contrast, gothic whimsy, no color, monochrome, etching quality",
+  "negative_final": "smooth digital line, vector clean, airbrush, soft gradient, photographic, anime, cel shading, flat color, blurry, watermark, text, deformed, low contrast, grey wash",
+  "render_time_sec": 150.48,
+  "output_png": "gorey-ink-awakening-refined-openpose.png",
+  "status": "ok"
+}

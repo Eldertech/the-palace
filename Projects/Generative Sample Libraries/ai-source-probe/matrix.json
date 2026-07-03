@@ -1,0 +1,22 @@
+{
+  "instruments": [
+    {"name": "piano",   "prompt_hint": "grand piano, single sustained note, close-mic, no reverb"},
+    {"name": "violin",  "prompt_hint": "solo violin, bowed sustained note, no vibrato, dry"},
+    {"name": "marimba", "prompt_hint": "marimba mallet strike, sustained ring, dry"},
+    {"name": "flute",   "prompt_hint": "solo flute, sustained note, no vibrato, dry"},
+    {"name": "bass",    "prompt_hint": "acoustic upright bass, sustained bowed note, dry"},
+    {"name": "choir",   "prompt_hint": "mixed choir humming a single vowel on one pitch, dry"}
+  ],
+  "pitches": [
+    {"name": "A2", "hz": 110.00, "midi": 45},
+    {"name": "A3", "hz": 220.00, "midi": 57},
+    {"name": "A4", "hz": 440.00, "midi": 69},
+    {"name": "A5", "hz": 880.00, "midi": 81}
+  ],
+  "seeds": [1, 2],
+  "acceptance": {
+    "max_cents_err": 20,
+    "min_cells_pct": 0.75,
+    "min_voiced_pct": 0.60
+  }
+}

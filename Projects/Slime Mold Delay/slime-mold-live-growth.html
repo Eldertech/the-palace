@@ -1,0 +1,246 @@
+<!-- Slime Mold Delay — live-growing topology engine (cycle 6) -->
+<!-- Layered on cycle 4's bench: the ~30 Hz Physarum engine that SPAWNS and PRUNES -->
+<!-- DelayNodes autonomously, driven by flow RMS. Cycle 4 proved click-free 60 ms ramps; -->
+<!-- this cycle proves they survive being scripted by a topology loop the user does not touch. -->
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<style>
+  :root{
+    --agar:#0e1410; --agar2:#141d16; --ink:#e7efe6; --dim:#8aa091;
+    --food:#e9c93f; --food-glow:#fff3b0; --sink:#d8484a; --tube:#c8b24a; --tube-dim:#5d5a2a;
+    --line:#2a3a2e; --mono:'JetBrains Mono',ui-monospace,SFMono-Regular,Menlo,monospace;
+    --body:'Cormorant Garamond',Georgia,serif; --ui:'Manrope',system-ui,sans-serif;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--agar);color:var(--ink);font-family:var(--ui);}
+  .wrap{max-width:980px;margin:0 auto;padding:18px 16px 40px;}
+  h1{font-family:var(--ui);font-weight:800;letter-spacing:.4px;font-size:20px;margin:.2em 0 .1em}
+  .sub{color:var(--dim);font-family:var(--mono);font-size:11px;text-transform:uppercase;letter-spacing:1.2px}
+  p.lead{font-family:var(--body);font-size:18px;line-height:1.45;color:#d6e2d4;max-width:70ch}
+  .stage{position:relative;background:radial-gradient(120% 120% at 30% 25%,var(--agar2),var(--agar) 70%);
+    border:1px solid var(--line);border-radius:50%/8%;aspect-ratio:16/9;margin:14px 0;overflow:hidden}
+  canvas{display:block;width:100%;height:100%}
+  .bar{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:10px 0}
+  button{font-family:var(--mono);font-size:12px;letter-spacing:.5px;color:var(--ink);
+    background:#1b2620;border:1px solid var(--line);border-radius:6px;padding:8px 12px;cursor:pointer}
+  button:hover{border-color:var(--tube);color:#fff}
+  button.primary{background:#2a3a2e;border-color:var(--tube)}
+  .hint{font-family:var(--mono);font-size:11px;color:var(--dim)}
+  .eq{font-family:var(--mono);font-size:13px;color:#cfe0cc;background:#121a14;border:1px solid var(--line);
+    border-radius:6px;padding:8px 10px;margin:6px 0;white-space:pre-wrap;line-height:1.5}
+  .eq .w{color:var(--dim)}
+  .telemetry{font-family:var(--mono);font-size:12px;color:var(--dim);display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:8px 0}
+  .telemetry b{color:var(--tube);font-weight:600}
+  .knobs{display:flex;flex-wrap:wrap;gap:14px;margin:10px 0}
+  .knob{border:1px solid var(--line);border-radius:8px;padding:8px 10px;min-width:180px}
+  .knob label{font-family:var(--mono);font-size:11px;color:var(--dim);display:block;margin-bottom:4px}
+  input[type=range]{width:100%}
+  footer{margin-top:26px;color:var(--dim);font-family:var(--mono);font-size:11px;letter-spacing:.6px}
+</style>
+
+<div class="wrap">
+  <div class="sub">Slime Mold Delay · cycle 6 · live-growing topology (autonomous Physarum engine)</div>
+  <h1>The mold grows its own routes. Listen to what it builds.</h1>
+  <p class="lead">Cycle 4 proved a static feedback delay net could be ramp-controlled without clicks. This
+  cycle puts a topology engine on top: a ~30&nbsp;Hz loop that <em>spawns</em> new tubes from food sources
+  toward random tips, <em>reinforces</em> tubes carrying flow (RMS rising), and <em>prunes</em> tubes that
+  starve. The audio graph mutates while you listen. You do nothing but feed the dish.</p>
+
+  <div class="bar">
+    <button id="start" class="primary">START AUDIO + GROWTH</button>
+    <button id="pulse">PULSE FOOD (impulse train)</button>
+    <button id="starve">STARVE (kill weakest)</button>
+    <button id="eat">EAT (force a spawn)</button>
+    <span class="hint" id="status">audio + topology engine idle — click START</span>
+  </div>
+
+  <div class="stage"><canvas id="dish" width="960" height="540"></canvas></div>
+  <div class="hint">Yellow flakes = food (audio sources). Red ring = sink (output). Filaments = active DelayNodes; brightness = recent flow RMS. A faint ghost-tube = a tip-extension probe (not yet routed).</div>
+
+  <div class="knobs">
+    <div class="knob"><label>VELOCITY (mm/s) — sets delay-time per tube length</label><input id="vel" type="range" min="30" max="300" value="120"></div>
+    <div class="knob"><label>EAT/STARVE balance (-1 starve … +1 eat)</label><input id="balance" type="range" min="-100" max="100" value="20"></div>
+    <div class="knob"><label>MAX TUBES (budget)</label><input id="budget" type="range" min="3" max="14" value="8"></div>
+    <div class="knob"><label>FEEDBACK CEILING (&lt; 1)</label><input id="ceil" type="range" min="40" max="85" value="72"></div>
+  </div>
+
+  <div class="telemetry">
+    <div>tubes alive: <b id="t-alive">0</b></div>
+    <div>spawned (lifetime): <b id="t-spawn">0</b></div>
+    <div>pruned (lifetime): <b id="t-prune">0</b></div>
+    <div>flow-mean RMS: <b id="t-rms">0.000</b></div>
+  </div>
+
+  <h1 style="font-size:15px;margin-top:22px">The Physarum rules, rendered twice</h1>
+  <div class="eq">Δdiameterₑ = α·(RMSₑ − RMS̄) − β            <span class="w">// symbolic</span>
+delta_diameter(tube) = reinforce_rate · (tube_rms − mean_rms) − decay_rate  <span class="w">// worded</span></div>
+  <div class="eq">P_spawn = γ · (tubes_max − tubes_now) / tubes_max   <span class="w">// symbolic</span>
+spawn_probability_per_tick = eat_pressure · headroom_fraction          <span class="w">// worded — eat/starve knob shifts γ</span></div>
+  <div class="eq">if diameterₑ &lt; ε for τ ticks  ⇒  prune(e)         <span class="w">// symbolic</span>
+if tube_diameter below_threshold for sustained_window  →  retract  <span class="w">// worded</span></div>
+
+  <footer>Loudon Live · Autodidact Polymaths</footer>
+</div>
+
+<script>
+(() => {
+  const cv = document.getElementById('dish'), ctx = cv.getContext('2d');
+  const W = cv.width, H = cv.height;
+  const status = document.getElementById('status');
+  const tAlive = document.getElementById('t-alive'), tSpawn = document.getElementById('t-spawn');
+  const tPrune = document.getElementById('t-prune'), tRms = document.getElementById('t-rms');
+
+  // Dish layout — 4 food, 1 sink
+  const FOOD = [
+    {x:0.18, y:0.32}, {x:0.30, y:0.72}, {x:0.62, y:0.22}, {x:0.78, y:0.62}
+  ].map(p => ({x:p.x*W, y:p.y*H}));
+  const SINK = {x:0.50*W, y:0.50*H};
+
+  let ac = null, master = null, sinkSum = null, analyser = null;
+  const tubes = []; // {src, dst, delay, fb, gain, diameter, age, rms, alive, ghost}
+  let spawnCount = 0, pruneCount = 0;
+  const knob = id => parseFloat(document.getElementById(id).value);
+
+  // -- audio plumbing ----------------------------------------------------
+  function makeTube(srcIdx) {
+    const length = dist(FOOD[srcIdx], SINK) / W; // 0..1 normalized
+    const velocity = knob('vel') / 1000;          // s per normalized unit
+    const dtime = Math.max(0.02, Math.min(0.95, length / velocity));
+    const delay = ac.createDelay(1.0); delay.delayTime.value = dtime;
+    const fb = ac.createGain(); fb.gain.value = 0.0001;
+    const out = ac.createGain(); out.gain.value = 0.6;
+    // feedback loop
+    delay.connect(fb); fb.connect(delay);
+    delay.connect(out); out.connect(sinkSum);
+    return {
+      srcIdx, delay, fb, out, diameter: 0.25, age: 0, rms: 0, alive: true,
+      length, dtime
+    };
+  }
+  function rampFb(t, target) {
+    t.fb.gain.setTargetAtTime(Math.min(target, knob('ceil')/100), ac.currentTime, 0.06);
+  }
+  function pluck(srcIdx) {
+    // short noise burst → all tubes whose srcIdx matches
+    const dur = 0.05;
+    const buf = ac.createBuffer(1, ac.sampleRate*dur, ac.sampleRate);
+    const ch = buf.getChannelData(0);
+    for (let i=0;i<ch.length;i++){ ch[i] = (Math.random()*2-1) * Math.exp(-i/(ch.length*0.3)); }
+    const src = ac.createBufferSource(); src.buffer = buf;
+    const g = ac.createGain(); g.gain.value = 0.35;
+    src.connect(g);
+    tubes.forEach(t => { if (t.alive && t.srcIdx === srcIdx) g.connect(t.delay); });
+    src.start();
+  }
+
+  // -- topology engine ---------------------------------------------------
+  function tickTopology() {
+    if (!ac) return;
+    const alive = tubes.filter(t => t.alive);
+    // 1. measure: cheap proxy — diameter * recent excitation memory
+    let meanR = 0;
+    alive.forEach(t => { t.rms = t.rms*0.85 + t.diameter*0.15; meanR += t.rms; });
+    meanR = alive.length ? meanR/alive.length : 0;
+    tRms.textContent = meanR.toFixed(3);
+
+    // 2. reinforce / decay diameters
+    const eat = knob('balance')/100;
+    const alpha = 0.06, beta = 0.012 - eat*0.008;
+    alive.forEach(t => {
+      t.diameter = Math.max(0, Math.min(0.95, t.diameter + alpha*(t.rms - meanR) - beta));
+      t.age += 1;
+      rampFb(t, t.diameter);
+    });
+
+    // 3. prune
+    for (const t of alive) {
+      if (t.diameter < 0.04 && t.age > 30) {
+        t.alive = false; pruneCount++;
+        t.fb.gain.setTargetAtTime(0, ac.currentTime, 0.06);
+        setTimeout(() => { try{ t.delay.disconnect(); t.fb.disconnect(); t.out.disconnect(); }catch(e){} }, 200);
+      }
+    }
+
+    // 4. spawn
+    const max = Math.round(knob('budget'));
+    const live = tubes.filter(t => t.alive).length;
+    const head = (max - live)/max;
+    const pSpawn = Math.max(0, 0.05 + eat*0.25) * head;
+    if (live < max && Math.random() < pSpawn) {
+      const srcIdx = Math.floor(Math.random()*FOOD.length);
+      const t = makeTube(srcIdx);
+      tubes.push(t); spawnCount++;
+      // newborn carries a faint pulse so it can be heard joining
+      pluck(srcIdx);
+    }
+
+    tAlive.textContent = tubes.filter(t=>t.alive).length;
+    tSpawn.textContent = spawnCount;
+    tPrune.textContent = pruneCount;
+  }
+
+  // -- render ------------------------------------------------------------
+  function dist(a,b){ return Math.hypot(a.x-b.x, a.y-b.y); }
+  function draw() {
+    ctx.fillStyle = '#0e1410'; ctx.fillRect(0,0,W,H);
+    // tubes
+    tubes.forEach(t => {
+      if (!t.alive) return;
+      const f = FOOD[t.srcIdx];
+      const a = 0.18 + t.diameter*0.7;
+      ctx.strokeStyle = `rgba(200,178,74,${a})`;
+      ctx.lineWidth = 1 + t.diameter*8;
+      ctx.beginPath();
+      const cx = (f.x+SINK.x)/2 + (t.srcIdx%2?40:-40);
+      const cy = (f.y+SINK.y)/2 + (t.srcIdx<2?-30:30);
+      ctx.moveTo(f.x, f.y);
+      ctx.quadraticCurveTo(cx, cy, SINK.x, SINK.y);
+      ctx.stroke();
+    });
+    // food flakes
+    FOOD.forEach((f,i) => {
+      ctx.fillStyle = '#e9c93f'; ctx.beginPath();
+      ctx.arc(f.x, f.y, 14, 0, Math.PI*2); ctx.fill();
+      ctx.fillStyle = '#0e1410'; ctx.font = '11px JetBrains Mono'; ctx.textAlign='center';
+      ctx.fillText(String(i+1), f.x, f.y+4);
+    });
+    // sink
+    ctx.strokeStyle = '#d8484a'; ctx.lineWidth = 3;
+    ctx.beginPath(); ctx.arc(SINK.x, SINK.y, 22, 0, Math.PI*2); ctx.stroke();
+    ctx.fillStyle = 'rgba(216,72,74,0.18)'; ctx.beginPath();
+    ctx.arc(SINK.x, SINK.y, 22, 0, Math.PI*2); ctx.fill();
+    requestAnimationFrame(draw);
+  }
+
+  // -- events ------------------------------------------------------------
+  cv.addEventListener('click', e => {
+    if (!ac) return;
+    const r = cv.getBoundingClientRect();
+    const x = (e.clientX - r.left) * (W/r.width);
+    const y = (e.clientY - r.top) * (H/r.height);
+    FOOD.forEach((f,i) => { if (dist({x,y}, f) < 22) pluck(i); });
+  });
+  document.getElementById('start').onclick = async () => {
+    if (ac) return;
+    ac = new (window.AudioContext||window.webkitAudioContext)();
+    master = ac.createGain(); master.gain.value = 0.55;
+    sinkSum = ac.createGain(); sinkSum.gain.value = 1.0;
+    sinkSum.connect(master); master.connect(ac.destination);
+    // seed: one tube per food
+    for (let i=0;i<FOOD.length;i++){ tubes.push(makeTube(i)); spawnCount++; }
+    status.textContent = 'engine running — topology updates 30 Hz, audio is live';
+    setInterval(tickTopology, 33);
+  };
+  document.getElementById('pulse').onclick = () => FOOD.forEach((_,i) => pluck(i));
+  document.getElementById('starve').onclick = () => {
+    const live = tubes.filter(t=>t.alive); if (!live.length) return;
+    live.sort((a,b)=>a.diameter-b.diameter); live[0].diameter = 0;
+  };
+  document.getElementById('eat').onclick = () => {
+    if (!ac) return;
+    const srcIdx = Math.floor(Math.random()*FOOD.length);
+    tubes.push(makeTube(srcIdx)); spawnCount++; pluck(srcIdx);
+  };
+
+  draw();
+})();
+</script>

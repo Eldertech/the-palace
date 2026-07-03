@@ -55,6 +55,19 @@ PLACEHOLDER_STEMS = {"foo", "entry", "entryname", "theme", "ceremony name", "slu
 
 PALACE_DEFAULT = os.path.normpath(os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", ".."))
 
+# Illustrative-example allowlist. Docs that describe the linters (or SCHEMA rules about
+# naming) deliberately quote a *wrong* path to show what a broken/miscased reference looks
+# like - e.g. Weave Ceremony §2f explains the entry-naming linter's E1 error by showing
+# `Modes of collaboration/` beside `Modes of Collaboration.md`. Those strings are
+# documentation, not real references, so path/case checks must not flag them. The allowlist
+# is keyed on (citing-file, exact-token) so it stays precise: it exempts only the specific
+# example in the specific doc, never masking a genuine drift elsewhere in the same file. To
+# add an example that trips the linter, add its (relpath, token) pair here - don't edit the
+# doc's example string (it's correct as documentation).
+EXAMPLE_REF_ALLOWLIST = {
+    ("_ops/Weave Ceremony.md", "Modes of collaboration/"),
+}
+
 
 def walk(root):
     for dp, dns, fns in os.walk(root):
@@ -136,6 +149,8 @@ def check_path_refs(root, files, dirs, basenames_lower, scan):
             raw = m.group(1)
             if not is_concrete_path(raw):
                 continue
+            if (rp, raw.strip()) in EXAMPLE_REF_ALLOWLIST:
+                continue  # deliberate illustrative example, not a real reference
             ref = raw.strip().lstrip("./")
             # candidate resolutions: as-given (root-relative) and doc-relative
             cands = {ref}

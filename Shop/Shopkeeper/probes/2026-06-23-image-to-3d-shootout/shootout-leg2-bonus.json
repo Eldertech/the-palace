@@ -1,0 +1,18 @@
+{
+  "trellis2": {
+    "status": "ok",
+    "elapsed_s": 47.2,
+    "outputs": [
+      "/Users/loudonstearns/Documents/The Palace/Shop/Shopkeeper/probes/2026-06-23-image-to-3d-shootout/leg2-trellis2.glb",
+      "/Users/loudonstearns/Documents/The Palace/Shop/Shopkeeper/probes/2026-06-23-image-to-3d-shootout/leg2-trellis2.glb"
+    ]
+  },
+  "hi3dgen": {
+    "status": "ok",
+    "elapsed_s": 26.5,
+    "outputs": [
+      "/Users/loudonstearns/Documents/The Palace/Shop/Shopkeeper/probes/2026-06-23-image-to-3d-shootout/bonus-hi3dgen-out2.glb",
+      "/Users/loudonstearns/Documents/The Palace/Shop/Shopkeeper/probes/2026-06-23-image-to-3d-shootout/bonus-hi3dgen-out3.glb"
+    ]
+  }
+}

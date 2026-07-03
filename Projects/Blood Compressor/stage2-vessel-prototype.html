@@ -1,0 +1,211 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Blood Compressor — Stage 2 Vessel Prototype</title>
+<style>
+  :root{
+    --bg:#0B0B10; --blood:#C8254C; --wall:#8B4A5E;
+    --baro:#F5C16C; --ink:#E8E8F0; --flash:#FFFFFF;
+  }
+  html,body{margin:0;background:var(--bg);color:var(--ink);
+    font-family:Manrope,system-ui,sans-serif;height:100%;}
+  .wrap{display:grid;grid-template-rows:auto 1fr auto;height:100vh;padding:14px;gap:10px;}
+  h1{font-family:Anton,Impact,sans-serif;letter-spacing:.04em;margin:0 0 2px;font-size:22px;}
+  .sub{font-family:'JetBrains Mono',monospace;font-size:11px;opacity:.7;}
+  canvas{width:100%;height:100%;display:block;background:var(--bg);border:1px solid #1a1a22;border-radius:6px;}
+  .ctrls{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;font-size:12px;}
+  .ctrls label{display:flex;flex-direction:column;gap:4px;font-family:'JetBrains Mono',monospace;}
+  .ctrls input[type=range]{accent-color:var(--blood);}
+  .row{display:flex;gap:8px;align-items:center;}
+  button{background:var(--blood);color:var(--ink);border:0;padding:8px 14px;
+    font-family:'JetBrains Mono',monospace;border-radius:4px;cursor:pointer;letter-spacing:.05em;}
+  button.alt{background:transparent;border:1px solid var(--wall);color:var(--ink);}
+  .readout{font-family:'JetBrains Mono',monospace;font-size:11px;opacity:.8;}
+  footer{font-family:'JetBrains Mono',monospace;font-size:10px;opacity:.5;text-align:right;}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div>
+    <h1>BLOOD COMPRESSOR — VESSEL PROTOTYPE</h1>
+    <div class="sub">stage 2 starter · web audio DynamicsCompressorNode + vessel-narrowing GUI</div>
+  </div>
+
+  <canvas id="cv"></canvas>
+
+  <div class="ctrls">
+    <label>THRESHOLD (systolic) <input id="th" type="range" min="-60" max="0" value="-24" step="0.5"><span class="readout" id="th_r">-24 dB</span></label>
+    <label>RATIO (wall elasticity) <input id="ra" type="range" min="1" max="20" value="4" step="0.1"><span class="readout" id="ra_r">4:1</span></label>
+    <label>ATTACK (baroreceptor delay) <input id="at" type="range" min="0.005" max="0.4" value="0.05" step="0.005"><span class="readout" id="at_r">50 ms</span></label>
+    <label>RELEASE (smooth-muscle) <input id="re" type="range" min="0.05" max="2" value="0.4" step="0.01"><span class="readout" id="re_r">400 ms</span></label>
+    <label>INPUT GAIN <input id="ig" type="range" min="-12" max="18" value="6" step="0.5"><span class="readout" id="ig_r">+6 dB</span></label>
+  </div>
+
+  <div class="row">
+    <button id="play">START · pulse source</button>
+    <button class="alt" id="mode">SOURCE: sine-pulse</button>
+    <span class="readout" id="gr">GR: 0.0 dB</span>
+    <span class="readout" id="bp">baroreceptors: idle</span>
+    <span style="flex:1"></span>
+    <footer>Loudon Live · Autodidact Polymaths</footer>
+  </div>
+</div>
+
+<script>
+const cv=document.getElementById('cv');
+const ctx2d=cv.getContext('2d');
+let ac, src, comp, inGain, analyser, data, srcMode='sine';
+let playing=false;
+
+function resize(){const r=cv.getBoundingClientRect();cv.width=r.width*devicePixelRatio;cv.height=r.height*devicePixelRatio;}
+addEventListener('resize',resize);resize();
+
+const $=id=>document.getElementById(id);
+const params={th:-24,ra:4,at:0.05,re:0.4,ig:6};
+function bind(id,fmt,setter){
+  const el=$(id), r=$(id+'_r');
+  el.oninput=()=>{params[id]=+el.value;r.textContent=fmt(+el.value);setter&&setter(+el.value);};
+  r.textContent=fmt(+el.value);
+}
+bind('th',v=>v.toFixed(1)+' dB',v=>comp&&(comp.threshold.value=v));
+bind('ra',v=>v.toFixed(1)+':1',v=>comp&&(comp.ratio.value=v));
+bind('at',v=>(v*1000).toFixed(0)+' ms',v=>comp&&(comp.attack.value=v));
+bind('re',v=>(v*1000).toFixed(0)+' ms',v=>comp&&(comp.release.value=v));
+bind('ig',v=>(v>0?'+':'')+v.toFixed(1)+' dB',v=>inGain&&(inGain.gain.value=Math.pow(10,v/20)));
+
+function makeSource(){
+  if(src){try{src.stop()}catch(e){};src.disconnect();}
+  if(srcMode==='sine'){
+    // amplitude-pulsed sine — clean test signal for compression
+    const o=ac.createOscillator();o.frequency.value=220;
+    const g=ac.createGain();
+    const lfo=ac.createOscillator();lfo.frequency.value=1.2;
+    const lg=ac.createGain();lg.gain.value=0.5;
+    const base=ac.createConstantSource();base.offset.value=0.5;
+    lfo.connect(lg).connect(g.gain);base.connect(g.gain);
+    o.connect(g);o.start();lfo.start();base.start();
+    src=g;
+  } else {
+    // pink-ish noise bursts
+    const b=ac.createBuffer(1,ac.sampleRate*2,ac.sampleRate);
+    const d=b.getChannelData(0);let l=0;
+    for(let i=0;i<d.length;i++){const w=Math.random()*2-1;l=(l+0.02*w)/1.02;
+      const env=Math.max(0,Math.sin(i/ac.sampleRate*Math.PI*2*1.3));
+      d[i]=l*3*env;}
+    const bs=ac.createBufferSource();bs.buffer=b;bs.loop=true;bs.start();
+    src=bs;
+  }
+}
+
+async function start(){
+  if(!ac) ac=new (window.AudioContext||window.webkitAudioContext)();
+  await ac.resume();
+  inGain=ac.createGain();inGain.gain.value=Math.pow(10,params.ig/20);
+  comp=ac.createDynamicsCompressor();
+  comp.threshold.value=params.th;comp.ratio.value=params.ra;
+  comp.attack.value=params.at;comp.release.value=params.re;comp.knee.value=6;
+  analyser=ac.createAnalyser();analyser.fftSize=1024;
+  data=new Float32Array(analyser.fftSize);
+  makeSource();
+  src.connect(inGain).connect(comp).connect(analyser).connect(ac.destination);
+  playing=true;$('play').textContent='STOP';
+}
+function stop(){if(src){try{src.stop()}catch(e){};src.disconnect();}playing=false;$('play').textContent='START · pulse source';}
+$('play').onclick=()=>playing?stop():start();
+$('mode').onclick=()=>{srcMode=srcMode==='sine'?'noise':'sine';$('mode').textContent='SOURCE: '+srcMode+(srcMode==='sine'?'-pulse':'-bursts');if(playing){makeSource();src.connect(inGain);}};
+
+// ---- visualization ----
+let baroFlash=0;
+function draw(){
+  requestAnimationFrame(draw);
+  const W=cv.width,H=cv.height,cy=H/2;
+  ctx2d.fillStyle='#0B0B10';ctx2d.fillRect(0,0,W,H);
+
+  const gr=comp?comp.reduction:0; // negative dB
+  $('gr').textContent='GR: '+gr.toFixed(1)+' dB';
+
+  // vessel walls: baseline diameter, narrowed by |gr|
+  const baseR=H*0.32;
+  const narrow=Math.min(1,Math.abs(gr)/24);
+  const r=baseR*(1-0.7*narrow);
+
+  // threshold line on RHS gauge
+  const gx=W-80*devicePixelRatio;
+  ctx2d.strokeStyle='#E8E8F0';ctx2d.globalAlpha=.25;
+  ctx2d.lineWidth=1*devicePixelRatio;
+  ctx2d.beginPath();ctx2d.moveTo(gx,40);ctx2d.lineTo(gx,H-40);ctx2d.stroke();
+  ctx2d.globalAlpha=1;
+
+  // vessel: two arcs along x
+  ctx2d.fillStyle='#8B4A5E';
+  ctx2d.fillRect(0,cy-baseR-6,W,6);
+  ctx2d.fillRect(0,cy+baseR,W,6);
+
+  // blood path between narrowed walls
+  const grad=ctx2d.createLinearGradient(0,cy-r,0,cy+r);
+  grad.addColorStop(0,'#7a1830');grad.addColorStop(0.5,'#C8254C');grad.addColorStop(1,'#7a1830');
+  ctx2d.fillStyle=grad;
+  ctx2d.beginPath();
+  ctx2d.moveTo(0,cy-r);
+  for(let x=0;x<=W;x+=8){
+    const t=x/W;
+    const wob=Math.sin(performance.now()/200 + t*8)*4*devicePixelRatio*(1-narrow*.5);
+    ctx2d.lineTo(x,cy-r+wob);
+  }
+  for(let x=W;x>=0;x-=8){
+    const t=x/W;
+    const wob=Math.sin(performance.now()/200 + t*8 + Math.PI)*4*devicePixelRatio*(1-narrow*.5);
+    ctx2d.lineTo(x,cy+r+wob);
+  }
+  ctx2d.closePath();ctx2d.fill();
+
+  // waveform overlay (the heartbeat audio)
+  if(analyser){
+    analyser.getFloatTimeDomainData(data);
+    ctx2d.strokeStyle='#E8E8F0';ctx2d.globalAlpha=.55;ctx2d.lineWidth=1.2*devicePixelRatio;
+    ctx2d.beginPath();
+    for(let i=0;i<data.length;i++){
+      const x=(i/data.length)*W;
+      const y=cy+data[i]*r*0.9;
+      i?ctx2d.lineTo(x,y):ctx2d.moveTo(x,y);
+    }
+    ctx2d.stroke();ctx2d.globalAlpha=1;
+
+    // RMS-driven pulse flash
+    let rms=0;for(let i=0;i<data.length;i++)rms+=data[i]*data[i];
+    rms=Math.sqrt(rms/data.length);
+    if(rms>0.3 && baroFlash<=0)baroFlash=1;
+  }
+
+  // baroreceptors (left + right of vessel) — fire when gr active
+  const firing=Math.abs(gr)>0.5;
+  $('bp').textContent='baroreceptors: '+(firing?'FIRING':'idle');
+  if(firing && baroFlash<0.2)baroFlash=Math.max(baroFlash,0.6);
+  baroFlash*=0.92;
+  for(const px of [W*0.2,W*0.5,W*0.8]){
+    ctx2d.fillStyle='#F5C16C';
+    ctx2d.globalAlpha=0.25+0.6*baroFlash;
+    ctx2d.beginPath();ctx2d.arc(px,cy-baseR-3,6*devicePixelRatio*(1+baroFlash),0,Math.PI*2);ctx2d.fill();
+    ctx2d.beginPath();ctx2d.arc(px,cy+baseR+3,6*devicePixelRatio*(1+baroFlash),0,Math.PI*2);ctx2d.fill();
+  }
+  ctx2d.globalAlpha=1;
+
+  // GR gauge (right side)
+  const gh=(H-80);
+  ctx2d.fillStyle='#1a1a22';ctx2d.fillRect(gx-16,40,12,gh);
+  ctx2d.fillStyle='#C8254C';
+  const gv=Math.min(1,Math.abs(gr)/24);
+  ctx2d.fillRect(gx-16,40,12,gh*gv);
+  ctx2d.fillStyle='#E8E8F0';ctx2d.font=(11*devicePixelRatio)+"px 'JetBrains Mono', monospace";
+  ctx2d.fillText('GR',gx-16,30);
+
+  // threshold marker on gauge
+  const thFrac=(60+params.th)/60;
+  ctx2d.fillStyle='#F5C16C';
+  ctx2d.fillRect(gx-22,40+gh*(1-thFrac)-1,24,2);
+}
+draw();
+</script>
+</body>
+</html>

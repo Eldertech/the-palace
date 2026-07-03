@@ -12,25 +12,28 @@ forward_vector: "I am Blood Compressor's materialized work state — open decisi
 
 > Materialized read-model of the steward's work state. Regenerated each cycle from the [[STIGMERGY]] persistent board; do not hand-edit the decision sections.
 > **Forward vector:** see [[Blood Compressor]] frontmatter `forward_vector` — not copied here (single-source-of-truth).
-> _Last materialized: 2026-06-23T12:48:21.000Z._
+> _Last materialized: 2026-06-25T00:34:19.271Z._
 
 ## Plan
 
 - **Stage:** sprout (read live from [[Blood Compressor]] frontmatter)
-- **Open:** 1  ·  **Resolved:** 0  ·  **Iteration:** 5
+- **Open:** 0  ·  **Resolved:** 1  ·  **Iteration:** 6
 
 ## Open Decisions
+
+_None open._
+
+## Resolved Decisions
 
 ### `blood-compressor-012` — directional_redirect
 - **Options:** CUSTOM-DSP-NEXT · ASYMMETRIC-VESSEL · PULSE-AUDIO-ON · RETURN-TO-SEED · STEER-ELSEWHERE
 - **Posted:** 2026-06-23T17:06:00-04:00
-
-## Resolved Decisions
-
-_None yet._
+- **Resolved:** 2026-06-24T23:59:58.362Z (by `resp-mqsqjtei-5117i4`)
+- **Outcome:** GRANTED — (no option_id); notes: "I am having trouble with the interactive blood vessel, the threshold parameter doesn't seem to be working properly, lets get this diagram really working great."
 
 ## Done
 
+- 2026-06-25T00:34:19.271Z — cycle complete (iteration 6); posted: none
 - 2026-06-23T12:48:21.000Z — cycle complete (iteration 5); posted: blood-compressor-011, blood-compressor-012
 - 2026-06-06T10:29:38Z — cycle complete (iteration 4); posted: blood-compressor-008, blood-compressor-009, blood-compressor-010
 - 2026-06-06T10:29:38Z — Palace heartbeat batch 2026-06-06T10:29:38Z. ~99911 subagent tokens, 21 tool uses.

@@ -1,0 +1,622 @@
+{
+  "subject": "a lone figure standing in a tall lit doorway, seen from a low dramatic angle, full body",
+  "seed": 77,
+  "size": [
+    768,
+    1024
+  ],
+  "cells": [
+    {
+      "tag": "fader__ink__1",
+      "file": "frames/fader__ink__1.png",
+      "state": {
+        "ink": 1,
+        "char": 3,
+        "black": 3,
+        "mark": 2,
+        "detail": 2,
+        "abstr": 2,
+        "contrast": 4,
+        "medium": "brush",
+        "mode": "B&W",
+        "hue": "crimson",
+        "carries": "object"
+      },
+      "prompt": "ink art of a lone figure standing in a tall lit doorway, seen from a low dramatic angle, full body \u2014 brush and ink, expressive brushstrokes, fine crowquill line, thin delicate ink linework, natural inked line, balanced spotted blacks, parallel-line hatching shadows, spare detail, lightly stylized figure, shadowed low light, stark black and white, monochrome ink, on rough textured paper, hand-drawn, ink on paper"
+    },
+    {
+      "tag": "fader__ink__2",
+      "file": "frames/fader__ink__2.png",
+      "state": {
+        "ink": 2,
+        "char": 3,
+        "black": 3,
+        "mark": 2,
+        "detail": 2,
+        "abstr": 2,
+        "contrast": 4,
+        "medium": "brush",
+        "mode": "B&W",
+        "hue": "crimson",
+        "carries": "object"
+      },
+      "prompt": "ink art of a lone figure standing in a tall lit doorway, seen from a low dramatic angle, full body \u2014 brush and ink, expressive brushstrokes, fine pen line, natural inked line, balanced spotted blacks, parallel-line hatching shadows, spare detail, lightly stylized figure, shadowed low light, stark black and white, monochrome ink, on rough textured paper, hand-drawn, ink on paper"
+    },
+    {
+      "tag": "fader__ink__3",
+      "file": "frames/fader__ink__3.png",
+      "state": {
+        "ink": 3,
+        "char": 3,
+        "black": 3,
+        "mark": 2,
+        "detail": 2,
+        "abstr": 2,
+        "contrast": 4,
+        "medium": "brush",
+        "mode": "B&W",
+        "hue": "crimson",
+        "carries": "object"
+      },
+      "prompt": "ink art of a lone figure standing in a tall lit doorway, seen from a low dramatic angle, full body \u2014 brush and ink, expressive brushstrokes, medium ink line, natural inked line, balanced spotted blacks, parallel-line hatching shadows, spare detail, lightly stylized figure, shadowed low light, stark black and white, monochrome ink, on rough textured paper, hand-drawn, ink on paper"
+    },
+    {
+      "tag": "fader__ink__4",
+      "file": "frames/fader__ink__4.png",
+      "state": {
+        "ink": 4,
+        "char": 3,
+        "black": 3,
+        "mark": 2,
+        "detail": 2,
+        "abstr": 2,
+        "contrast": 4,
+        "medium": "brush",
+        "mode": "B&W",
+        "hue": "crimson",
+        "carries": "object"
+      },
+      "prompt": "ink art of a lone figure standing in a tall lit doorway, seen from a low dramatic angle, full body \u2014 brush and ink, expressive brushstrokes, bold brush line, natural inked line, balanced spotted blacks, parallel-line hatching shadows, spare detail, lightly stylized figure, shadowed low light, stark black and white, monochrome ink, on rough textured paper, hand-drawn, ink on paper"
+    },
+    {
+      "tag": "fader__ink__5",
+      "file": "frames/fader__ink__5.png",
+      "state": {
+        "ink": 5,
+        "char": 3,
+        "black": 3,
+        "mark": 2,
+        "detail": 2,
+        "abstr": 2,
+        "contrast": 4,
+        "medium": "brush",
+        "mode": "B&W",
+        "hue": "crimson",
+        "carries": "object"
+      },
+      "prompt": "ink art of a lone figure standing in a tall lit doorway, seen from a low dramatic angle, full body \u2014 brush and ink, expressive brushstrokes, heavy brush inking, thick confident brushstrokes, natural inked line, balanced spotted blacks, parallel-line hatching shadows, spare detail, lightly stylized figure, shadowed low light, stark black and white, monochrome ink, on rough textured paper, hand-drawn, ink on paper"
+    },
+    {
+      "tag": "fader__char__1",
+      "file": "frames/fader__char__1.png",
+      "state": {
+        "ink": 3,
+        "char": 1,
+        "black": 3,
+        "mark": 2,
+        "detail": 2,
+        "abstr": 2,
+        "contrast": 4,
+        "medium": "brush",
+        "mode": "B&W",
+        "hue": "crimson",
+        "carries": "object"
+      },
+      "prompt": "ink art of a lone figure standing in a tall lit doorway, seen from a low dramatic angle, full body \u2014 brush and ink, expressive brushstrokes, medium ink line, ligne claire, clear even line, no hatching, balanced spotted blacks, parallel-line hatching shadows, spare detail, lightly stylized figure, shadowed low light, stark black and white, monochrome ink, on rough textured paper, hand-drawn, ink on paper"
+    },
+    {
+      "tag": "fader__char__2",
+      "file": "frames/fader__char__2.png",
+      "state": {
+        "ink": 3,
+        "char": 2,
+        "black": 3,
+        "mark": 2,
+        "detail": 2,
+        "abstr": 2,
+        "contrast": 4,
+        "medium": "brush",
+        "mode": "B&W",
+        "hue": "crimson",
+        "carries": "object"
+      },
+      "prompt": "ink art of a lone figure standing in a tall lit doorway, seen from a low dramatic angle, full body \u2014 brush and ink, expressive brushstrokes, medium ink line, clean controlled line, balanced spotted blacks, parallel-line hatching shadows, spare detail, lightly stylized figure, shadowed low light, stark black and white, monochrome ink, on rough textured paper, hand-drawn, ink on paper"
+    },
+    {
+      "tag": "fader__char__3",
+      "file": "frames/fader__char__3.png",
+      "state": {
+        "ink": 3,
+        "char": 3,
+        "black": 3,
+        "mark": 2,
+        "detail": 2,
+        "abstr": 2,
+        "contrast": 4,
+        "medium": "brush",
+        "mode": "B&W",
+        "hue": "crimson",
+        "carries": "object"
+      },
+      "prompt": "ink art of a lone figure standing in a tall lit doorway, seen from a low dramatic angle, full body \u2014 brush and ink, expressive brushstrokes, medium ink line, natural inked line, balanced spotted blacks, parallel-line hatching shadows, spare detail, lightly stylized figure, shadowed low light, stark black and white, monochrome ink, on rough textured paper, hand-drawn, ink on paper"
+    },
+    {
+      "tag": "fader__char__4",
+      "file": "frames/fader__char__4.png",
+      "state": {
+        "ink": 3,
+        "char": 4,
+        "black": 3,
+        "mark": 2,
+        "detail": 2,
+        "abstr": 2,
+        "contrast": 4,
+        "medium": "brush",
+        "mode": "B&W",
+        "hue": "crimson",
+        "carries": "object"
+      },
+      "prompt": "ink art of a lone figure standing in a tall lit doorway, seen from a low dramatic angle, full body \u2014 brush and ink, expressive brushstrokes, medium ink line, loose expressive line, balanced spotted blacks, parallel-line hatching shadows, spare detail, lightly stylized figure, shadowed low light, stark black and white, monochrome ink, on rough textured paper, hand-drawn, ink on paper"
+    },
+    {
+      "tag": "fader__char__5",
+      "file": "frames/fader__char__5.png",
+      "state": {
+        "ink": 3,
+        "char": 5,
+        "black": 3,
+        "mark": 2,
+        "detail": 2,
+        "abstr": 2,
+        "contrast": 4,
+        "medium": "brush",
+        "mode": "B&W",
+        "hue": "crimson",
+        "carries": "object"
+      },
+      "prompt": "ink art of a lone figure standing in a tall lit doorway, seen from a low dramatic angle, full body \u2014 brush and ink, expressive brushstrokes, medium ink line, scratchy dry-nib ink line, balanced spotted blacks, parallel-line hatching shadows, spare detail, lightly stylized figure, shadowed low light, stark black and white, monochrome ink, on rough textured paper, hand-drawn, ink on paper"
+    },
+    {
+      "tag": "fader__black__1",
+      "file": "frames/fader__black__1.png",
+      "state": {
+        "ink": 3,
+        "char": 3,
+        "black": 1,
+        "mark": 2,
+        "detail": 2,
+        "abstr": 2,
+        "contrast": 4,
+        "medium": "brush",
+        "mode": "B&W",
+        "hue": "crimson",
+        "carries": "object"
+      },
+      "prompt": "ink art of a lone figure standing in a tall lit doorway, seen from a low dramatic angle, full body \u2014 brush and ink, expressive brushstrokes, medium ink line, natural inked line, open airy linework, minimal blacks, parallel-line hatching shadows, spare detail, lightly stylized figure, shadowed low light, stark black and white, monochrome ink, on rough textured paper, hand-drawn, ink on paper"
+    },
+    {
+      "tag": "fader__black__2",
+      "file": "frames/fader__black__2.png",
+      "state": {
+        "ink": 3,
+        "char": 3,
+        "black": 2,
+        "mark": 2,
+        "detail": 2,
+        "abstr": 2,
+        "contrast": 4,
+        "medium": "brush",
+        "mode": "B&W",
+        "hue": "crimson",
+        "carries": "object"
+      },
+      "prompt": "ink art of a lone figure standing in a tall lit doorway, seen from a low dramatic angle, full body \u2014 brush and ink, expressive brushstrokes, medium ink line, natural inked line, light blacks, parallel-line hatching shadows, spare detail, lightly stylized figure, shadowed low light, stark black and white, monochrome ink, on rough textured paper, hand-drawn, ink on paper"
+    },
+    {
+      "tag": "fader__black__3",
+      "file": "frames/fader__black__3.png",
+      "state": {
+        "ink": 3,
+        "char": 3,
+        "black": 3,
+        "mark": 2,
+        "detail": 2,
+        "abstr": 2,
+        "contrast": 4,
+        "medium": "brush",
+        "mode": "B&W",
+        "hue": "crimson",
+        "carries": "object"
+      },
+      "prompt": "ink art of a lone figure standing in a tall lit doorway, seen from a low dramatic angle, full body \u2014 brush and ink, expressive brushstrokes, medium ink line, natural inked line, balanced spotted blacks, parallel-line hatching shadows, spare detail, lightly stylized figure, shadowed low light, stark black and white, monochrome ink, on rough textured paper, hand-drawn, ink on paper"
+    },
+    {
+      "tag": "fader__black__4",
+      "file": "frames/fader__black__4.png",
+      "state": {
+        "ink": 3,
+        "char": 3,
+        "black": 4,
+        "mark": 2,
+        "detail": 2,
+        "abstr": 2,
+        "contrast": 4,
+        "medium": "brush",
+        "mode": "B&W",
+        "hue": "crimson",
+        "carries": "object"
+      },
+      "prompt": "ink art of a lone figure standing in a tall lit doorway, seen from a low dramatic angle, full body \u2014 brush and ink, expressive brushstrokes, medium ink line, natural inked line, heavy spotted blacks, high contrast, parallel-line hatching shadows, spare detail, lightly stylized figure, shadowed low light, stark black and white, monochrome ink, on rough textured paper, hand-drawn, ink on paper"
+    },
+    {
+      "tag": "fader__black__5",
+      "file": "frames/fader__black__5.png",
+      "state": {
+        "ink": 3,
+        "char": 3,
+        "black": 5,
+        "mark": 2,
+        "detail": 2,
+        "abstr": 2,
+        "contrast": 4,
+        "medium": "brush",
+        "mode": "B&W",
+        "hue": "crimson",
+        "carries": "object"
+      },
+      "prompt": "ink art of a lone figure standing in a tall lit doorway, seen from a low dramatic angle, full body \u2014 brush and ink, expressive brushstrokes, medium ink line, natural inked line, near-solid noir blacks, bold black shapes, high contrast, parallel-line hatching shadows, spare detail, lightly stylized figure, shadowed low light, stark black and white, monochrome ink, on rough textured paper, hand-drawn, ink on paper"
+    },
+    {
+      "tag": "fader__mark__1",
+      "file": "frames/fader__mark__1.png",
+      "state": {
+        "ink": 3,
+        "char": 3,
+        "black": 3,
+        "mark": 1,
+        "detail": 2,
+        "abstr": 2,
+        "contrast": 4,
+        "medium": "brush",
+        "mode": "B&W",
+        "hue": "crimson",
+        "carries": "object"
+      },
+      "prompt": "ink art of a lone figure standing in a tall lit doorway, seen from a low dramatic angle, full body \u2014 brush and ink, expressive brushstrokes, medium ink line, natural inked line, balanced spotted blacks, solid flat black fills shadows, spare detail, lightly stylized figure, shadowed low light, stark black and white, monochrome ink, on rough textured paper, hand-drawn, ink on paper"
+    },
+    {
+      "tag": "fader__mark__2",
+      "file": "frames/fader__mark__2.png",
+      "state": {
+        "ink": 3,
+        "char": 3,
+        "black": 3,
+        "mark": 2,
+        "detail": 2,
+        "abstr": 2,
+        "contrast": 4,
+        "medium": "brush",
+        "mode": "B&W",
+        "hue": "crimson",
+        "carries": "object"
+      },
+      "prompt": "ink art of a lone figure standing in a tall lit doorway, seen from a low dramatic angle, full body \u2014 brush and ink, expressive brushstrokes, medium ink line, natural inked line, balanced spotted blacks, parallel-line hatching shadows, spare detail, lightly stylized figure, shadowed low light, stark black and white, monochrome ink, on rough textured paper, hand-drawn, ink on paper"
+    },
+    {
+      "tag": "fader__mark__3",
+      "file": "frames/fader__mark__3.png",
+      "state": {
+        "ink": 3,
+        "char": 3,
+        "black": 3,
+        "mark": 3,
+        "detail": 2,
+        "abstr": 2,
+        "contrast": 4,
+        "medium": "brush",
+        "mode": "B&W",
+        "hue": "crimson",
+        "carries": "object"
+      },
+      "prompt": "ink art of a lone figure standing in a tall lit doorway, seen from a low dramatic angle, full body \u2014 brush and ink, expressive brushstrokes, medium ink line, natural inked line, balanced spotted blacks, cross-hatching, intersecting line shading shadows, spare detail, lightly stylized figure, shadowed low light, stark black and white, monochrome ink, on rough textured paper, hand-drawn, ink on paper"
+    },
+    {
+      "tag": "fader__mark__4",
+      "file": "frames/fader__mark__4.png",
+      "state": {
+        "ink": 3,
+        "char": 3,
+        "black": 3,
+        "mark": 4,
+        "detail": 2,
+        "abstr": 2,
+        "contrast": 4,
+        "medium": "brush",
+        "mode": "B&W",
+        "hue": "crimson",
+        "carries": "object"
+      },
+      "prompt": "ink art of a lone figure standing in a tall lit doorway, seen from a low dramatic angle, full body \u2014 brush and ink, expressive brushstrokes, medium ink line, natural inked line, balanced spotted blacks, ink feathering, tapered barb-lines shadows, spare detail, lightly stylized figure, shadowed low light, stark black and white, monochrome ink, on rough textured paper, hand-drawn, ink on paper"
+    },
+    {
+      "tag": "fader__detail__1",
+      "file": "frames/fader__detail__1.png",
+      "state": {
+        "ink": 3,
+        "char": 3,
+        "black": 3,
+        "mark": 2,
+        "detail": 1,
+        "abstr": 2,
+        "contrast": 4,
+        "medium": "brush",
+        "mode": "B&W",
+        "hue": "crimson",
+        "carries": "object"
+      },
+      "prompt": "ink art of a lone figure standing in a tall lit doorway, seen from a low dramatic angle, full body \u2014 brush and ink, expressive brushstrokes, medium ink line, natural inked line, balanced spotted blacks, parallel-line hatching shadows, minimal detail, essential shapes only, lightly stylized figure, shadowed low light, stark black and white, monochrome ink, on rough textured paper, hand-drawn, ink on paper"
+    },
+    {
+      "tag": "fader__detail__2",
+      "file": "frames/fader__detail__2.png",
+      "state": {
+        "ink": 3,
+        "char": 3,
+        "black": 3,
+        "mark": 2,
+        "detail": 2,
+        "abstr": 2,
+        "contrast": 4,
+        "medium": "brush",
+        "mode": "B&W",
+        "hue": "crimson",
+        "carries": "object"
+      },
+      "prompt": "ink art of a lone figure standing in a tall lit doorway, seen from a low dramatic angle, full body \u2014 brush and ink, expressive brushstrokes, medium ink line, natural inked line, balanced spotted blacks, parallel-line hatching shadows, spare detail, lightly stylized figure, shadowed low light, stark black and white, monochrome ink, on rough textured paper, hand-drawn, ink on paper"
+    },
+    {
+      "tag": "fader__detail__3",
+      "file": "frames/fader__detail__3.png",
+      "state": {
+        "ink": 3,
+        "char": 3,
+        "black": 3,
+        "mark": 2,
+        "detail": 3,
+        "abstr": 2,
+        "contrast": 4,
+        "medium": "brush",
+        "mode": "B&W",
+        "hue": "crimson",
+        "carries": "object"
+      },
+      "prompt": "ink art of a lone figure standing in a tall lit doorway, seen from a low dramatic angle, full body \u2014 brush and ink, expressive brushstrokes, medium ink line, natural inked line, balanced spotted blacks, parallel-line hatching shadows, moderate detail, lightly stylized figure, shadowed low light, stark black and white, monochrome ink, on rough textured paper, hand-drawn, ink on paper"
+    },
+    {
+      "tag": "fader__detail__4",
+      "file": "frames/fader__detail__4.png",
+      "state": {
+        "ink": 3,
+        "char": 3,
+        "black": 3,
+        "mark": 2,
+        "detail": 4,
+        "abstr": 2,
+        "contrast": 4,
+        "medium": "brush",
+        "mode": "B&W",
+        "hue": "crimson",
+        "carries": "object"
+      },
+      "prompt": "ink art of a lone figure standing in a tall lit doorway, seen from a low dramatic angle, full body \u2014 brush and ink, expressive brushstrokes, medium ink line, natural inked line, balanced spotted blacks, parallel-line hatching shadows, rich detailed linework, lightly stylized figure, shadowed low light, stark black and white, monochrome ink, on rough textured paper, hand-drawn, ink on paper"
+    },
+    {
+      "tag": "fader__detail__5",
+      "file": "frames/fader__detail__5.png",
+      "state": {
+        "ink": 3,
+        "char": 3,
+        "black": 3,
+        "mark": 2,
+        "detail": 5,
+        "abstr": 2,
+        "contrast": 4,
+        "medium": "brush",
+        "mode": "B&W",
+        "hue": "crimson",
+        "carries": "object"
+      },
+      "prompt": "ink art of a lone figure standing in a tall lit doorway, seen from a low dramatic angle, full body \u2014 brush and ink, expressive brushstrokes, medium ink line, natural inked line, balanced spotted blacks, parallel-line hatching shadows, intricate dense linework, lightly stylized figure, shadowed low light, stark black and white, monochrome ink, on rough textured paper, hand-drawn, ink on paper"
+    },
+    {
+      "tag": "fader__abstr__1",
+      "file": "frames/fader__abstr__1.png",
+      "state": {
+        "ink": 3,
+        "char": 3,
+        "black": 3,
+        "mark": 2,
+        "detail": 2,
+        "abstr": 1,
+        "contrast": 4,
+        "medium": "brush",
+        "mode": "B&W",
+        "hue": "crimson",
+        "carries": "object"
+      },
+      "prompt": "ink art of a lone figure standing in a tall lit doorway, seen from a low dramatic angle, full body \u2014 brush and ink, expressive brushstrokes, medium ink line, natural inked line, balanced spotted blacks, parallel-line hatching shadows, spare detail, naturalistic proportions, observational figure, shadowed low light, stark black and white, monochrome ink, on rough textured paper, hand-drawn, ink on paper"
+    },
+    {
+      "tag": "fader__abstr__2",
+      "file": "frames/fader__abstr__2.png",
+      "state": {
+        "ink": 3,
+        "char": 3,
+        "black": 3,
+        "mark": 2,
+        "detail": 2,
+        "abstr": 2,
+        "contrast": 4,
+        "medium": "brush",
+        "mode": "B&W",
+        "hue": "crimson",
+        "carries": "object"
+      },
+      "prompt": "ink art of a lone figure standing in a tall lit doorway, seen from a low dramatic angle, full body \u2014 brush and ink, expressive brushstrokes, medium ink line, natural inked line, balanced spotted blacks, parallel-line hatching shadows, spare detail, lightly stylized figure, shadowed low light, stark black and white, monochrome ink, on rough textured paper, hand-drawn, ink on paper"
+    },
+    {
+      "tag": "fader__abstr__3",
+      "file": "frames/fader__abstr__3.png",
+      "state": {
+        "ink": 3,
+        "char": 3,
+        "black": 3,
+        "mark": 2,
+        "detail": 2,
+        "abstr": 3,
+        "contrast": 4,
+        "medium": "brush",
+        "mode": "B&W",
+        "hue": "crimson",
+        "carries": "object"
+      },
+      "prompt": "ink art of a lone figure standing in a tall lit doorway, seen from a low dramatic angle, full body \u2014 brush and ink, expressive brushstrokes, medium ink line, natural inked line, balanced spotted blacks, parallel-line hatching shadows, spare detail, stylized figure, shadowed low light, stark black and white, monochrome ink, on rough textured paper, hand-drawn, ink on paper"
+    },
+    {
+      "tag": "fader__abstr__4",
+      "file": "frames/fader__abstr__4.png",
+      "state": {
+        "ink": 3,
+        "char": 3,
+        "black": 3,
+        "mark": 2,
+        "detail": 2,
+        "abstr": 4,
+        "contrast": 4,
+        "medium": "brush",
+        "mode": "B&W",
+        "hue": "crimson",
+        "carries": "object"
+      },
+      "prompt": "ink art of a lone figure standing in a tall lit doorway, seen from a low dramatic angle, full body \u2014 brush and ink, expressive brushstrokes, medium ink line, natural inked line, balanced spotted blacks, parallel-line hatching shadows, spare detail, simplified forms figure, shadowed low light, stark black and white, monochrome ink, on rough textured paper, hand-drawn, ink on paper"
+    },
+    {
+      "tag": "fader__abstr__5",
+      "file": "frames/fader__abstr__5.png",
+      "state": {
+        "ink": 3,
+        "char": 3,
+        "black": 3,
+        "mark": 2,
+        "detail": 2,
+        "abstr": 5,
+        "contrast": 4,
+        "medium": "brush",
+        "mode": "B&W",
+        "hue": "crimson",
+        "carries": "object"
+      },
+      "prompt": "ink art of a lone figure standing in a tall lit doorway, seen from a low dramatic angle, full body \u2014 brush and ink, expressive brushstrokes, medium ink line, natural inked line, balanced spotted blacks, parallel-line hatching shadows, spare detail, simplified iconic cartooning, flat graphic shapes figure, shadowed low light, stark black and white, monochrome ink, on rough textured paper, hand-drawn, ink on paper"
+    },
+    {
+      "tag": "fader__contrast__1",
+      "file": "frames/fader__contrast__1.png",
+      "state": {
+        "ink": 3,
+        "char": 3,
+        "black": 3,
+        "mark": 2,
+        "detail": 2,
+        "abstr": 2,
+        "contrast": 1,
+        "medium": "brush",
+        "mode": "B&W",
+        "hue": "crimson",
+        "carries": "object"
+      },
+      "prompt": "ink art of a lone figure standing in a tall lit doorway, seen from a low dramatic angle, full body \u2014 brush and ink, expressive brushstrokes, medium ink line, natural inked line, balanced spotted blacks, parallel-line hatching shadows, spare detail, lightly stylized figure, flat even high-key lighting, stark black and white, monochrome ink, on rough textured paper, hand-drawn, ink on paper"
+    },
+    {
+      "tag": "fader__contrast__2",
+      "file": "frames/fader__contrast__2.png",
+      "state": {
+        "ink": 3,
+        "char": 3,
+        "black": 3,
+        "mark": 2,
+        "detail": 2,
+        "abstr": 2,
+        "contrast": 2,
+        "medium": "brush",
+        "mode": "B&W",
+        "hue": "crimson",
+        "carries": "object"
+      },
+      "prompt": "ink art of a lone figure standing in a tall lit doorway, seen from a low dramatic angle, full body \u2014 brush and ink, expressive brushstrokes, medium ink line, natural inked line, balanced spotted blacks, parallel-line hatching shadows, spare detail, lightly stylized figure, bright lighting, stark black and white, monochrome ink, on rough textured paper, hand-drawn, ink on paper"
+    },
+    {
+      "tag": "fader__contrast__3",
+      "file": "frames/fader__contrast__3.png",
+      "state": {
+        "ink": 3,
+        "char": 3,
+        "black": 3,
+        "mark": 2,
+        "detail": 2,
+        "abstr": 2,
+        "contrast": 3,
+        "medium": "brush",
+        "mode": "B&W",
+        "hue": "crimson",
+        "carries": "object"
+      },
+      "prompt": "ink art of a lone figure standing in a tall lit doorway, seen from a low dramatic angle, full body \u2014 brush and ink, expressive brushstrokes, medium ink line, natural inked line, balanced spotted blacks, parallel-line hatching shadows, spare detail, lightly stylized figure, mid-key lighting, stark black and white, monochrome ink, on rough textured paper, hand-drawn, ink on paper"
+    },
+    {
+      "tag": "fader__contrast__4",
+      "file": "frames/fader__contrast__4.png",
+      "state": {
+        "ink": 3,
+        "char": 3,
+        "black": 3,
+        "mark": 2,
+        "detail": 2,
+        "abstr": 2,
+        "contrast": 4,
+        "medium": "brush",
+        "mode": "B&W",
+        "hue": "crimson",
+        "carries": "object"
+      },
+      "prompt": "ink art of a lone figure standing in a tall lit doorway, seen from a low dramatic angle, full body \u2014 brush and ink, expressive brushstrokes, medium ink line, natural inked line, balanced spotted blacks, parallel-line hatching shadows, spare detail, lightly stylized figure, shadowed low light, stark black and white, monochrome ink, on rough textured paper, hand-drawn, ink on paper"
+    },
+    {
+      "tag": "fader__contrast__5",
+      "file": "frames/fader__contrast__5.png",
+      "state": {
+        "ink": 3,
+        "char": 3,
+        "black": 3,
+        "mark": 2,
+        "detail": 2,
+        "abstr": 2,
+        "contrast": 5,
+        "medium": "brush",
+        "mode": "B&W",
+        "hue": "crimson",
+        "carries": "object"
+      },
+      "prompt": "ink art of a lone figure standing in a tall lit doorway, seen from a low dramatic angle, full body \u2014 brush and ink, expressive brushstrokes, medium ink line, natural inked line, balanced spotted blacks, parallel-line hatching shadows, spare detail, lightly stylized figure, low-key single-source lighting, deep noir shadows, raking light, stark black and white, monochrome ink, on rough textured paper, hand-drawn, ink on paper"
+    }
+  ]
+}

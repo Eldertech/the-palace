@@ -12,26 +12,31 @@ forward_vector: "I am Crystal Synthesizer's materialized work state — open dec
 
 > Materialized read-model of the steward's work state. Regenerated each cycle from the [[STIGMERGY]] persistent board; do not hand-edit the decision sections.
 > **Forward vector:** see [[Crystal Synthesizer]] frontmatter `forward_vector` — not copied here (single-source-of-truth).
-> _Last materialized: 2026-06-23T12:50:40.000Z._
+> _Last materialized: 2026-06-25T00:21:50.424Z._
 
 ## Plan
 
 - **Stage:** fruiting (read live from [[Crystal Synthesizer]] frontmatter)
 - **Teaching arc:** [[Crystal Synthesizer — Staging]] — read by the steward; arc changes are flagged, not edited here.
-- **Open:** 1  ·  **Resolved:** 0  ·  **Iteration:** 7
+- **Open:** 1  ·  **Resolved:** 1  ·  **Iteration:** 8
 
 ## Open Decisions
+
+### `crystal-synth-steward-021` — directional_decision
+- **Options:** BUILD-GEN-PATCH · FILL-PALETTE · POLISH-MENU · STEER
+- **Posted:** 2026-06-25T11:40:00-04:00
+
+## Resolved Decisions
 
 ### `crystal-synth-steward-018` — directional_decision
 - **Options:** BUILD-GENPATCH · RENDER-LABRADORITE · STAGE-2-PORTABILITY · STEER
 - **Posted:** 2026-06-23T17:05:00-04:00
-
-## Resolved Decisions
-
-_None yet._
+- **Resolved:** 2026-06-25T00:01:43.699Z (by `resp-mqsqm2oj-svnibh`)
+- **Outcome:** GRANTED — option_id=RENDER-LABRADORITE; notes: "make a really nice html menu of the proofs and what we are teaching, use accurate visuals and the audio examples."
 
 ## Done
 
+- 2026-06-25T00:21:50.424Z — cycle complete (iteration 8); posted: crystal-synth-steward-019, crystal-synth-steward-020, crystal-synth-steward-021
 - 2026-06-23T12:50:40.000Z — cycle complete (iteration 7); posted: crystal-synth-steward-017, crystal-synth-steward-018
 - 2026-06-07T16:31:46.896Z — cycle complete (iteration 6); posted: crystal-synth-steward-015, crystal-synth-steward-016
 - 2026-06-06T17:00:49.367Z — cycle complete (iteration 5); posted: crystal-synth-steward-013, crystal-synth-steward-014

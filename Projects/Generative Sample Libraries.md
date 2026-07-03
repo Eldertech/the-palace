@@ -52,6 +52,8 @@ forward_vector: "I will become a chat-driven generator of multisampled instrumen
 
 # Generative Sample Libraries
 
+![[Generative Sample Libraries — hero.png]]
+
 A development plan for a chat-driven pipeline that turns a conversation into a playable, deployment-ready sampled instrument. The user describes the instrument they want; Claude conducts the interview to gather the choices that matter (source, range, velocity layers, destination format); Claude renders the result.
 
 This project runs parallel to [[Generative Audio Devices]] and anticipates eventual convergence: the generative devices project builds the instrument shells; this project generates the sonic content that fills them. Wavetable equivalents live in [[Generative Wavetable Libraries]], which split off from this entry on 2026-05-02 — same philosophical backbone (palace synthesis becomes deployable artifact), different format families and tooling.
@@ -326,7 +328,7 @@ This page is tended by a permanent steward and **may lag its live state** — th
 
 - **Steward state + history:** `_ops/agents/permanent/generative-sample-libraries/`
 - **Live thread (BBS):** session `permanent-stewardship-2026-05-03` — open in STIGMERGY
-- **As of last consolidation:** cycle 10 (2026-05-27) · no blocking auditions · Phase 3 first source shipped (Crystal Hexagonal, 176 WAVs) · Interview skill `status: active`
-- **Not yet folded in here:** the full Crystal (Hexagonal) instrument lives at `Projects/Generative Sample Libraries/crystal-instrument/` (88 notes A0–C8 × 2 velocity layers, 176-region SFZ); the Interview skill at `_ops/sample-libraries/skills/interview/SKILL.md` was promoted out of draft on `gsl-steward-012` APPROVE (cycle 9), with the user-skill-space move deferred to a deposit ceremony; the F1 12.7-cent bottom-octave wrinkle was attributed to FFT-bin quantization in the verifier (not a synthesis artifact) per Loudon's `CONSOLIDATE` grant; Phase 3 source two will be a Shepard-tone instrument coordinated with the [[Shepard Tone Synthesizer]] steward (per `gsl-steward-017` SECOND-PALACE grant).
+- **As of last consolidation:** cycle 17 (2026-06-23) · no blocking auditions · Phase 3 sources one and two shipped (Crystal Hexagonal · Shepard-tone) · Interview skill `status: active`, user-skill-space deposit still pending
+- **Not yet folded in here:** the full Crystal (Hexagonal) instrument lives at `Projects/Generative Sample Libraries/crystal-instrument/` (88 notes A0–C8 × 2 velocity layers, 176-region SFZ); the Shepard-tone instrument lives at `Projects/Generative Sample Libraries/shepard-instrument/` (12 octave-class WAVs, 191-line SFZ, interior-loop seam <0.07 dB by measurement) coordinated with the [[Shepard Tone Synthesizer]] steward via `gsl-steward-017` SECOND-PALACE; the Interview skill at `_ops/sample-libraries/skills/interview/SKILL.md` has been `status: active` since `gsl-steward-012` APPROVE (cycle 9) with a deposit proposal drafted at `Projects/Generative Sample Libraries/interview-skill-promotion-proposal.md` to move it to `/skills/sample-library-interview/SKILL.md` — not yet committed; the F1 12.7-cent bottom-octave wrinkle is FFT-bin quantization in the verifier, not a synthesis artifact; Phase 3 source three (local WAV folder via librosa pitch detect) is the next named direction in the steward's baton but not yet scaffolded.
 
 This footer is placed at enchantment and pruned at consolidation. See [[Drift and Consolidation]].

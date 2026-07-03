@@ -1,0 +1,18 @@
+{
+  "dimensions": "1024x1024",
+  "model_used": "sd_xl_base_1.0.safetensors",
+  "controlnet": "controlnet-openpose-sdxl.safetensors",
+  "controlnet_strength": 0.8,
+  "rig_png": "pose-3-openpose-rig.png",
+  "seed": 42,
+  "steps": 30,
+  "cfg": 7.5,
+  "sampler": "euler/normal",
+  "tier_used": "Sketch",
+  "style": "cyberpunk",
+  "prompt_final": "cyberpunk s\u00e9ance cat, dark synth atmosphere, small upright cat with arms stretched wide overhead in summoning pose, neon rim lighting in magenta and electric blue, ectoplasm rendered as glowing neon plasma wisps, stars and circuit-trace patterns in wide glowing eyes, dark background, high contrast, neon-on-black, detailed fur with subsurface neon glow, cinematic mood, digital painting style",
+  "render_time_sec": 134.43,
+  "comfy_filename": "cyberpunk-pose-3-openpose_00001_.png",
+  "output_png": "cyberpunk-pose-3-openpose.png",
+  "status": "ok"
+}

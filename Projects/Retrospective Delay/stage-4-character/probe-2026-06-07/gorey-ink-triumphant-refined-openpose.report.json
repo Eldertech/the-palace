@@ -1,0 +1,17 @@
+{
+  "state": "triumphant-refined",
+  "rig_png": "pose-3-openpose-rig.png",
+  "controlnet": "controlnet-openpose-sdxl.safetensors",
+  "controlnet_strength": 0.8,
+  "seed": 42,
+  "steps": 30,
+  "cfg": 7.5,
+  "sampler": "euler/normal",
+  "style": "gorey-ink-refined",
+  "prompt_final": "Edward Gorey style pen and ink illustration, hand-drawn wobbly ink line with visible tremor and irregular weight, dense parallel crosshatching and stippled shading, varied stroke thickness from hair-fine to bold, scratchy nib texture, eerie Victorian gothic atmosphere, a small black cat standing upright with both arms stretched wide overhead in a summoning pose, ectoplasm wisps rendered as fine wavering ink lines swirling around outstretched paws, tiny stars in wide round eyes, s\u00e9ance ritual, candelabra and patterned wallpaper in background, sparse fussy Victorian interior, deliberate imperfect linework, black ink on warm cream paper, very high contrast, gothic whimsy, no color, monochrome, etching quality",
+  "negative_final": "smooth digital line, vector clean, airbrush, soft gradient, photographic, anime, cel shading, flat color, blurry, watermark, text, deformed, low contrast, grey wash",
+  "render_time_sec": 180.69,
+  "output_png": "gorey-ink-triumphant-refined-openpose.png",
+  "status": "ok",
+  "refinement_axis": "wobble + hatching density + ink-weight variation"
+}

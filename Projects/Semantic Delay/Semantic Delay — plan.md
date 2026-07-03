@@ -12,25 +12,28 @@ forward_vector: "I am Semantic Delay's materialized work state — open decision
 
 > Materialized read-model of the steward's work state. Regenerated each cycle from the [[STIGMERGY]] persistent board; do not hand-edit the decision sections.
 > **Forward vector:** see [[Semantic Delay]] frontmatter `forward_vector` — not copied here (single-source-of-truth).
-> _Last materialized: 2026-06-23T13:08:22.000Z._
+> _Last materialized: 2026-06-25T00:33:57.587Z._
 
 ## Plan
 
 - **Stage:** growing (read live from [[Semantic Delay]] frontmatter)
-- **Open:** 1  ·  **Resolved:** 0  ·  **Iteration:** 6
+- **Open:** 0  ·  **Resolved:** 1  ·  **Iteration:** 7
 
 ## Open Decisions
+
+_None open._
+
+## Resolved Decisions
 
 ### `semantic-delay-steward-012` — directional_steer
 - **Options:** F0-COUPLING · CPP-SKETCH · HANDOFF-NOW · DRIVE-IT
 - **Posted:** 2026-06-23T16:36:00-04:00
-
-## Resolved Decisions
-
-_None yet._
+- **Resolved:** 2026-06-25T00:05:08.089Z (by `resp-mqsqqge1-tt6pqx`)
+- **Outcome:** GRANTED — option_id=F0-COUPLING; notes: "just a warning, the language here assumes I know what is going on with the project( you are describing phases without clearly describing the phases and the tradeoffs)."
 
 ## Done
 
+- 2026-06-25T00:33:57.587Z — cycle complete (iteration 7); posted: none
 - 2026-06-23T13:08:22.000Z — cycle complete (iteration 6); posted: semantic-delay-steward-011, semantic-delay-steward-012
 - 2026-06-06T13:37:57.704Z — cycle complete (iteration 5); posted: none
 - 2026-06-06T10:50:45Z — cycle complete (iteration 4); posted: semantic-delay-steward-008, semantic-delay-steward-009, semantic-delay-steward-010

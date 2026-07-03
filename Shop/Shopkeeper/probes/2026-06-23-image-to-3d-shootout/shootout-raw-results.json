@@ -1,0 +1,26 @@
+{
+  "hunyuan3d2": {
+    "status": "ok",
+    "elapsed_s": 22.8,
+    "output": "/Users/loudonstearns/Documents/The Palace/Shop/Shopkeeper/probes/2026-06-23-image-to-3d-shootout/leg1-hunyuan3d2.glb"
+  },
+  "trellis2": {
+    "status": "space_not_found",
+    "tried": [
+      "stabilityai/stable-point-aware-3d",
+      "JeffreyXiang/TRELLIS-demo",
+      "trellis-infer/TRELLIS",
+      "microsoft/TRELLIS"
+    ]
+  },
+  "triposplat": {
+    "status": "ok",
+    "elapsed_s": 27.8,
+    "outputs": [
+      "/Users/loudonstearns/Documents/The Palace/Shop/Shopkeeper/probes/2026-06-23-image-to-3d-shootout/leg3-triposplat-out1.png",
+      "/Users/loudonstearns/Documents/The Palace/Shop/Shopkeeper/probes/2026-06-23-image-to-3d-shootout/leg3-triposplat-out2.ply",
+      "/Users/loudonstearns/Documents/The Palace/Shop/Shopkeeper/probes/2026-06-23-image-to-3d-shootout/leg3-triposplat-out3.ply"
+    ],
+    "meta": "262,144 gaussians  \u00b7  generation: 10.7s  \u00b7  saved: splat.ply"
+  }
+}

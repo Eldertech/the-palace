@@ -1,0 +1,17 @@
+{
+  "dimensions": "1024x1024",
+  "model_used": "sd_xl_base_1.0.safetensors",
+  "seed": 42,
+  "steps": 30,
+  "cfg": 7.5,
+  "sampler": "euler/normal",
+  "tier_used": "Sketch",
+  "style": "gorey-ink",
+  "prompt_final": "Edward Gorey style pen and ink illustration, fine crosshatch shading, eerie Victorian atmosphere, a small black cat standing upright with both arms stretched wide overhead in a summoning pose, ectoplasm wisps swirling around outstretched paws, stars in its wide round eyes, s\u00e9ance ritual, floating candles in background, sparse Victorian room, delicate fine line work, black ink on cream paper, high contrast, gothic whimsy, no color, monochrome",
+  "render_time_sec": 351.27,
+  "comfy_filename": "gorey-ink-pose-3-probe_00001_.png",
+  "output_png": "gorey-ink-pose-3-probe.png",
+  "gotchas_hit": [],
+  "status": "ok",
+  "notes": ""
+}

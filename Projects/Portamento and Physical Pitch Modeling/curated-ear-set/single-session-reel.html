@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Portamento — Single-Session Ear Training</title>
+<style>
+  :root {
+    --bg:#1a1a1a; --ink:#e8e4dc; --dim:#8a857a; --rule:#2a2a2a;
+    --over:#7fb069; --crit:#e0b020; --under:#d96b6b;
+  }
+  html,body{margin:0;background:var(--bg);color:var(--ink);
+    font-family:"Cormorant Garamond","Iowan Old Style",Georgia,serif;
+    font-size:18px;line-height:1.55}
+  .frame{max-width:760px;margin:0 auto;padding:48px 36px 96px}
+  h1{font-family:"Anton","Bebas Neue",Impact,sans-serif;font-weight:400;
+    font-size:54px;line-height:1;letter-spacing:.5px;margin:0 0 8px;text-transform:uppercase}
+  .sub{font-family:"Manrope","Inter",sans-serif;font-size:12px;letter-spacing:2.5px;
+    text-transform:uppercase;color:var(--dim);margin-bottom:36px}
+  .intro{border-left:2px solid var(--rule);padding:6px 0 6px 18px;margin:0 0 40px;color:#cfcabd}
+  .item{border-top:1px solid var(--rule);padding:28px 0 22px}
+  .num{font-family:"Silkscreen","JetBrains Mono",monospace;font-size:11px;color:var(--dim);
+    letter-spacing:2px;margin-bottom:6px}
+  .prompt{font-family:"Anton",sans-serif;font-size:24px;text-transform:uppercase;
+    letter-spacing:.5px;margin:0 0 14px}
+  audio{width:100%;filter:invert(.92) hue-rotate(180deg);margin-bottom:14px}
+  details{font-family:"Manrope",sans-serif;font-size:14px;color:#cfcabd}
+  summary{cursor:pointer;color:var(--ink);font-size:13px;letter-spacing:1.5px;
+    text-transform:uppercase;padding:6px 0;outline:none}
+  .reveal{padding:14px 0 6px;border-top:1px dashed var(--rule);margin-top:8px}
+  .tag{display:inline-block;font-family:"Silkscreen",monospace;font-size:10px;
+    padding:3px 8px;letter-spacing:1.5px;margin-right:8px;text-transform:uppercase}
+  .t-over{background:var(--over);color:#0e1a07}
+  .t-crit{background:var(--crit);color:#1d1402}
+  .t-under{background:var(--under);color:#1d0606}
+  .system{font-style:italic;color:var(--dim);margin:6px 0 10px}
+  .note{font-size:14px;color:#cfcabd}
+  .round{font-family:"Manrope",sans-serif;font-size:11px;letter-spacing:3px;
+    color:var(--dim);text-transform:uppercase;margin:48px 0 8px}
+  .close{margin-top:56px;padding:24px;border:1px solid var(--rule);font-size:15px;color:#cfcabd}
+  .close b{color:var(--ink);font-family:"Anton",sans-serif;font-weight:400;
+    text-transform:uppercase;letter-spacing:.5px}
+  footer{font-family:"Manrope",sans-serif;font-size:10px;letter-spacing:2px;
+    color:var(--dim);text-transform:uppercase;margin-top:56px;text-align:center}
+</style>
+</head>
+<body>
+<div class="frame">
+
+<h1>Portamento by Ear</h1>
+<div class="sub">single-session reel · ~15 minutes · 6 clips</div>
+
+<p class="intro">Six glides. For each: listen twice, name the regime in your head
+(<b style="color:var(--over)">overdamped</b> · smooth arrival, no overshoot &nbsp;|&nbsp;
+<b style="color:var(--crit)">critically damped</b> · fastest no-overshoot landing &nbsp;|&nbsp;
+<b style="color:var(--under)">underdamped</b> · overshoots and rings back), then guess
+the physical system. Reveal. Move on. The first round is unambiguous; the
+second sharpens the ear.</p>
+
+<div class="round">Round one — clear signatures</div>
+
+<div class="item">
+  <div class="num">01</div>
+  <div class="prompt">A slow brass glide. Which regime?</div>
+  <audio controls src="audio/01-overdamped.wav"></audio>
+  <details><summary>Reveal</summary><div class="reveal">
+    <span class="tag t-over">Overdamped</span>
+    <div class="system">Trombone — heavy slide, long air column, brass damps overshoot.</div>
+    <div class="note">Smooth exponential approach. No "thump" of arrival, no ring.
+    The slide's mass and the air column's loss together push ζ well above 1.</div>
+  </div></details>
+</div>
+
+<div class="item">
+  <div class="num">02</div>
+  <div class="prompt">A synth glide that lands fast and clean.</div>
+  <audio controls src="audio/05-critically-damped.wav"></audio>
+  <details><summary>Reveal</summary><div class="reveal">
+    <span class="tag t-crit">Critically damped</span>
+    <div class="system">Synthesizer — engineered glide circuit tuned for the fastest no-overshoot arrival.</div>
+    <div class="note">The shortest path that does not ring. ζ=1 is an engineered
+    target; circuits like this are built to it.</div>
+  </div></details>
+</div>
+
+<div class="item">
+  <div class="num">03</div>
+  <div class="prompt">A bell struck slightly off, settling toward its true pitch.</div>
+  <audio controls src="audio/09-underdamped.wav"></audio>
+  <details><summary>Reveal</summary><div class="reveal">
+    <span class="tag t-under">Underdamped</span>
+    <div class="system">Bell — light strike that detunes the mode; resonance rings around the target.</div>
+    <div class="note">The pitch swings past the target and oscillates around it
+    while decaying — the textbook ring-back. ζ well below 1.</div>
+  </div></details>
+</div>
+
+<div class="round">Round two — sharper edges</div>
+
+<div class="item">
+  <div class="num">04</div>
+  <div class="prompt">A pitch sneaks up through the air. No mechanical contact.</div>
+  <audio controls src="audio/02-overdamped.wav"></audio>
+  <details><summary>Reveal</summary><div class="reveal">
+    <span class="tag t-over">Overdamped</span>
+    <div class="system">Theremin — capacitive coupling, no mechanical inertia, glide rate set by hand motion.</div>
+    <div class="note">No instrument-side dynamics to overshoot; the hand
+    <i>is</i> the damping. Almost everything from a theremin sounds this way.</div>
+  </div></details>
+</div>
+
+<div class="item">
+  <div class="num">05</div>
+  <div class="prompt">An acoustic guitar bend, released with discipline.</div>
+  <audio controls src="audio/08-critically-damped.wav"></audio>
+  <details><summary>Reveal</summary><div class="reveal">
+    <span class="tag t-crit">Critically damped</span>
+    <div class="system">Guitar — bend released with discipline, string tension settles fast.</div>
+    <div class="note">Tempting to call underdamped — guitar bends often ring —
+    but a controlled release brings tension home with no swing past. The
+    finger is doing the damping work.</div>
+  </div></details>
+</div>
+
+<div class="item">
+  <div class="num">06</div>
+  <div class="prompt">An electric guitar — fast bend, then finger vibrato.</div>
+  <audio controls src="audio/11-underdamped.wav"></audio>
+  <details><summary>Reveal</summary><div class="reveal">
+    <span class="tag t-under">Underdamped</span>
+    <div class="system">Electric guitar — fast bend, string tension overshoots, finger relaxes back.</div>
+    <div class="note">Speed is what makes this underdamped: a slow bend would
+    let the player ride the tension home; a fast one outruns the correction
+    and overshoots. Vibrato keeps the ringing visible.</div>
+  </div></details>
+</div>
+
+<div class="close">
+  <b>If you got 5 or 6 right</b> — you have the regime ear. Next session: take
+  the <a href="paired-exercises.html" style="color:var(--ink)">paired exercises</a>
+  to drill the physical-system guess.<br><br>
+  <b>If you got 3 or 4 right</b> — re-listen to the misses with the reveal
+  open. The overdamped/critically-damped boundary is the hardest: both lack
+  ring, and only the <i>shape of the approach</i> separates them.<br><br>
+  <b>If you got 0–2 right</b> — start over with eyes on the reveals.
+  Knowing the answer before listening trains the regime onto the sound;
+  surprise comes back after two passes.
+</div>
+
+<footer>Loudon Live · Autodidact Polymaths</footer>
+
+</div>
+</body>
+</html>

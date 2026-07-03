@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Career Leverage Self-Diagnostic — Meadows v0.1</title>
+<style>
+  :root {
+    --bg: #1a1a1a; --ink: #e8e6df; --dim: #8a877e; --rule: #3a3a3a;
+    --hot: #e8a657; --cool: #6b8ea8; --accent: #c75c4a;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; padding: 28px 32px; background: var(--bg); color: var(--ink);
+    font-family: "Cormorant Garamond", Georgia, serif; font-size: 17px; line-height: 1.5;
+  }
+  h1 { font-family: "Anton", Impact, sans-serif; font-weight: normal;
+       letter-spacing: 0.04em; font-size: 28px; margin: 0 0 4px; }
+  .sub { font-family: "Manrope", system-ui, sans-serif; color: var(--dim);
+         font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 20px; }
+  p.lede { max-width: 62ch; margin: 0 0 24px; }
+  table { width: 100%; border-collapse: collapse; margin-top: 16px; }
+  th, td { text-align: left; padding: 9px 10px; border-bottom: 1px solid var(--rule);
+           vertical-align: top; }
+  th { font-family: "Manrope", sans-serif; font-size: 11px; letter-spacing: 0.14em;
+       text-transform: uppercase; color: var(--dim); font-weight: 500; }
+  td.lvl { font-family: "JetBrains Mono", monospace; color: var(--cool); width: 38px; }
+  td.name { font-family: "Manrope", sans-serif; width: 200px; }
+  .row input[type=number] { width: 52px; background: #111; color: var(--ink);
+       border: 1px solid var(--rule); padding: 4px 6px; font-family: "JetBrains Mono", monospace; }
+  .bar { height: 14px; background: linear-gradient(90deg, var(--hot), var(--accent));
+         display: inline-block; vertical-align: middle; min-width: 2px; transition: width 0.2s; }
+  .pct { font-family: "JetBrains Mono", monospace; color: var(--dim); font-size: 12px;
+         margin-left: 8px; }
+  .totals { margin-top: 22px; padding: 14px 16px; background: #222; border-left: 3px solid var(--hot); }
+  .totals .row1 { font-family: "Manrope", sans-serif; font-size: 13px; color: var(--dim); }
+  .totals .row2 { font-family: "Anton", sans-serif; font-size: 22px; margin-top: 4px; }
+  .inverted { color: var(--accent); }
+  .balanced { color: #7ab87a; }
+  details { margin-top: 24px; padding: 12px 14px; background: #1f1f1f; border: 1px solid var(--rule); }
+  summary { cursor: pointer; font-family: "Manrope", sans-serif; font-size: 12px;
+            letter-spacing: 0.1em; text-transform: uppercase; color: var(--dim); }
+  details p { margin: 10px 0 0; max-width: 62ch; }
+  .footer { margin-top: 28px; font-family: "JetBrains Mono", monospace;
+            font-size: 10px; letter-spacing: 0.1em; color: var(--dim); text-transform: uppercase; }
+</style>
+</head>
+<body>
+<h1>Career Leverage Self-Diagnostic</h1>
+<div class="sub">Meadows · Twelve Leverage Points · v0.1 sketch</div>
+
+<p class="lede">Think of your last ten career-shaping moves — anything you spent a week or more on. Place each one on the hierarchy below. Watch the distribution. The hypothesis: most of us put 80% of our attention at level 12 and almost none at levels 1–4 — exactly the inversion Meadows warned about.</p>
+
+<table>
+  <thead>
+    <tr><th>Lvl</th><th>What that move looks like</th><th>Count</th><th>Distribution</th></tr>
+  </thead>
+  <tbody id="rows"></tbody>
+</table>
+
+<div class="totals">
+  <div class="row1">TOTAL DECISIONS PLACED · <span id="total">0</span></div>
+  <div class="row2"><span id="verdict">place ten decisions to see your distribution</span></div>
+</div>
+
+<details>
+  <summary>How to read the verdict</summary>
+  <p><strong>Inverted (the common case).</strong> The bulk sits at levels 10–12. You are spending your attention where Meadows says the leverage is lowest — parameters, buffers, stock-and-flow ratios. Real changes feel out of reach because the moves you make do not reach high enough to make them.</p>
+  <p><strong>Balanced.</strong> Meaningful weight at levels 3–7 — goals, rules, feedback loops, information flows. The career is reachable from where you stand.</p>
+  <p><strong>Top-heavy.</strong> Most of the weight at 1–4. Rare. Either you are mid-paradigm-shift, or you are avoiding execution.</p>
+</details>
+
+<div class="footer">Loudon Live · Autodidact Polymaths</div>
+
+<script>
+  const LEVELS = [
+    [12, "Tweaking parameters — gear, pricing, schedule"],
+    [11, "Sizing buffers — savings, runway, backlog"],
+    [10, "Restructuring stocks & flows — teach-vs-make ratio"],
+    [9,  "Shortening delays — idea-to-ship cycle time"],
+    [8,  "Adding balancing feedback — what stops me going too far"],
+    [7,  "Protecting reinforcing loops — what compounds"],
+    [6,  "Opening an information flow — a metric I trust"],
+    [5,  "Setting a rule — what I refuse to take"],
+    [4,  "Self-organizing — letting work change my identity"],
+    [3,  "Changing the goal — what this career is FOR"],
+    [2,  "Shifting the paradigm — what 'being an artist' means"],
+    [1,  "Letting go of any single answer to what it's all for"],
+  ];
+
+  const rows = document.getElementById("rows");
+  LEVELS.forEach(([lvl, name], i) => {
+    const tr = document.createElement("tr");
+    tr.className = "row";
+    tr.innerHTML = `
+      <td class="lvl">${String(lvl).padStart(2,"0")}</td>
+      <td class="name">${name}</td>
+      <td><input type="number" min="0" max="20" value="0" data-lvl="${lvl}"></td>
+      <td><span class="bar" id="bar-${lvl}" style="width:0px"></span><span class="pct" id="pct-${lvl}">0%</span></td>
+    `;
+    rows.appendChild(tr);
+  });
+
+  function recompute() {
+    const inputs = document.querySelectorAll("input[data-lvl]");
+    let total = 0, bottom = 0, mid = 0, top = 0;
+    const counts = {};
+    inputs.forEach(i => {
+      const n = parseInt(i.value, 10) || 0;
+      const lvl = parseInt(i.dataset.lvl, 10);
+      counts[lvl] = n; total += n;
+      if (lvl >= 10) bottom += n;
+      else if (lvl >= 5) mid += n;
+      else top += n;
+    });
+    document.getElementById("total").textContent = total;
+    inputs.forEach(i => {
+      const lvl = parseInt(i.dataset.lvl, 10);
+      const pct = total ? (counts[lvl] / total) * 100 : 0;
+      document.getElementById("bar-" + lvl).style.width = (pct * 3) + "px";
+      document.getElementById("pct-" + lvl).textContent = pct.toFixed(0) + "%";
+    });
+    const v = document.getElementById("verdict");
+    if (total === 0) { v.textContent = "place ten decisions to see your distribution"; v.className = ""; return; }
+    const bPct = bottom/total, tPct = top/total;
+    if (bPct >= 0.6) { v.textContent = "INVERTED — most attention at the lowest-leverage end"; v.className = "inverted"; }
+    else if (tPct >= 0.5) { v.textContent = "TOP-HEAVY — mostly paradigm/goal-level moves"; v.className = "balanced"; }
+    else { v.textContent = "BALANCED — meaningful weight in the middle band"; v.className = "balanced"; }
+  }
+
+  document.addEventListener("input", e => { if (e.target.matches("input[data-lvl]")) recompute(); });
+  recompute();
+</script>
+</body>
+</html>
