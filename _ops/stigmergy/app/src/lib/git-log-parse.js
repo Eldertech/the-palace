@@ -54,6 +54,39 @@ function pushUtf8(bytes, ch) {
 export const LOG_FORMAT =
   ['%H', '%an', '%ae', '%aI', '%s', '%b'].join('%x1f') + '%x1e';
 
+// The format for the commit-graph pass (LOG deck TOPOLOGY). Field order:
+//   hash, parents (space-separated), ref-decoration (%D), subject, author-date
+export const GRAPH_FORMAT =
+  ['%H', '%P', '%D', '%s', '%aI'].join('%x1f') + '%x1e';
+
+// Parse the graph-pass output into DAG nodes. Each node:
+//   { sha, shortSha, parents: [sha...], refs: [name...], subject, date }
+// `refs` strips the "HEAD -> ", "tag: ", and "origin/" noise, keeping local
+// branch names. Order is preserved (git --topo-order, newest first).
+export function parseGraphLog(raw) {
+  if (typeof raw !== 'string' || raw.trim() === '') return [];
+  const out = [];
+  for (const rec of raw.split(RECORD_SEP)) {
+    const trimmed = rec.replace(/^\r?\n/, '');
+    if (trimmed.trim() === '') continue;
+    const [hash, parents, decoration, subject, date] = trimmed.split(FIELD_SEP);
+    if (!hash) continue;
+    const refs = (decoration ?? '')
+      .split(',')
+      .map((r) => r.trim().replace(/^HEAD -> /, '').replace(/^tag: /, ''))
+      .filter((r) => r && r !== 'HEAD');
+    out.push({
+      sha: hash.trim(),
+      shortSha: hash.trim().slice(0, 7),
+      parents: (parents ?? '').trim() === '' ? [] : parents.trim().split(/\s+/),
+      refs,
+      subject: subject ?? '',
+      date: date ?? '',
+    });
+  }
+  return out;
+}
+
 // Parse the metadata-pass output into commit objects (without numstat).
 export function parseLogMeta(raw) {
   if (typeof raw !== 'string' || raw.trim() === '') return [];

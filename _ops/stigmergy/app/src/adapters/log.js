@@ -45,6 +45,17 @@ export async function fetchGitState() {
   }
 }
 
+// The commit DAG behind the worktrees for the TOPOLOGY graph. Read-only.
+export async function fetchCommitGraph() {
+  try {
+    const res = await fetch('/api/commit-graph', { headers: { Accept: 'application/json' } });
+    if (!res.ok) return { ok: false, status: res.status, error: `http ${res.status}` };
+    return { ok: true, ...(await res.json()) };
+  } catch (err) {
+    return { ok: false, error: err?.message ?? String(err) };
+  }
+}
+
 // Record a structured palace commit from the LOG deck. Stages ONLY the named
 // paths and commits exactly those. 400 (validation) is a structured outcome,
 // not a throw.

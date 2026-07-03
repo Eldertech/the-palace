@@ -7,7 +7,7 @@
 import { describe, it, expect } from 'vitest';
 import React from 'react';
 import { renderToStaticMarkup } from 'react-dom/server';
-import { Rail, WorktreeRow, Topology } from '../../src/components/log/GitStatePanel.jsx';
+import { Rail, WorktreeRow } from '../../src/components/log/GitStatePanel.jsx';
 
 const h = React.createElement;
 
@@ -66,15 +66,5 @@ describe('WorktreeRow', () => {
   });
 });
 
-describe('Topology', () => {
-  it('draws base trunk plus a fork lane with real node counts', () => {
-    const html = renderToStaticMarkup(h(Topology, { state: { base: 'main', worktrees: [MAIN, HOST, PRUNABLE] } }));
-    expect(html).toContain('main');
-    expect(html).toContain('◄ HOST');
-    expect(html).toContain('older');
-    expect(html).toContain('▶ newer');
-  });
-  it('renders nothing for an empty topology', () => {
-    expect(renderToStaticMarkup(h(Topology, { state: { worktrees: [] } }))).toBe('');
-  });
-});
+// The topology graph is now a true commit DAG rendered by CommitDag /
+// buildCommitDag — its layout is covered in commit-dag.test.js.

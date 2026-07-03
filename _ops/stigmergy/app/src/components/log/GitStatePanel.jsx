@@ -1,8 +1,9 @@
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { fetchGitState } from '../../adapters/log.js';
 import {
-  classifyWorktree, accentFor, stateStyle, formatDivergence, buildLanes, STATE_STYLE,
+  classifyWorktree, accentFor, stateStyle, formatDivergence, STATE_STYLE,
 } from '../../lib/git-state-view.js';
+import CommitDag from './CommitDag.jsx';
 
 // The GIT STATE section of the LOG deck -- the worktree topology made visible.
 // Three tiers, densest-first:
@@ -85,41 +86,6 @@ export function WorktreeRow({ wt }) {
   );
 }
 
-// ---- 3. the topology lane graph ------------------------------------------
-export function Topology({ state }) {
-  const lanes = useMemo(() => buildLanes(state), [state]);
-  if (lanes.length === 0) return null;
-  const NAME_W = 18;
-  return (
-    <pre data-testid="git-topology" style={{
-      margin: '4px 0 0', fontFamily: 'var(--font-mono)', fontSize: 13, lineHeight: 1.5,
-      border: '1px solid var(--phosphor-dim)', padding: '10px 12px', overflowX: 'auto', background: '#040804',
-    }}>
-      <span style={dimText}>{'     older ' + '─'.repeat(28) + '▶ newer'}</span>{'\n'}
-      {lanes.map((lane, i) => {
-        const label = (lane.branch.length > NAME_W ? lane.branch.slice(0, NAME_W - 1) + '…' : lane.branch).padEnd(NAME_W, ' ');
-        const indent = '   '.repeat(lane.forkCol);
-        const fork = lane.isBase ? '' : '╲── ';
-        const nodes = Array.from({ length: lane.nodes }).map(() => '●').join('───');
-        const div = formatDivergence(lane.aheadBehind ?? { ahead: lane.ahead, behind: lane.behind });
-        return (
-          <span key={i}>
-            <span style={dimText}>{label}</span>
-            <span style={dimText}>{indent}{fork}</span>
-            <span style={{ color: lane.accent, textShadow: 'var(--glow)' }}>{nodes}</span>
-            <span>{'  '}</span>
-            <span style={{ color: lane.isHost ? 'var(--phosphor-bright)' : 'var(--ansi-bright-cyan)', textShadow: 'none' }}>{lane.shortHead}</span>
-            {lane.ahead > 0 ? <span style={{ color: 'var(--ansi-bright-cyan)', textShadow: 'none' }}>{' ↑' + lane.ahead}</span> : null}
-            {lane.behind > 0 ? <span style={{ color: 'var(--error)', textShadow: 'none' }}>{' ↓' + lane.behind}</span> : null}
-            {lane.isHost ? <span style={{ color: 'var(--phosphor-bright)' }}>{'  ◄ HOST'}</span> : <span style={dimText}>{'  ◄ ' + lane.name}</span>}
-            {'\n'}
-          </span>
-        );
-      })}
-    </pre>
-  );
-}
-
 const LEGEND = ['host', 'clean', 'dirty', 'behind', 'detached', 'prunable'];
 
 export default function GitStatePanel({ nonce = 0, uncommittedCount = 0 }) {
@@ -168,8 +134,8 @@ export default function GitStatePanel({ nonce = 0, uncommittedCount = 0 }) {
             ))}
           </div>
 
-          <div style={{ ...dimText, fontSize: 10, letterSpacing: '.16em', margin: '10px 0 2px' }}>⑃ TOPOLOGY · divergence from {state.base ?? 'main'}</div>
-          <Topology state={state} />
+          <div style={{ ...dimText, fontSize: 10, letterSpacing: '.16em', margin: '10px 0 2px' }}>⑃ TOPOLOGY · commit graph since merge-base with {state.base ?? 'main'}</div>
+          <CommitDag nonce={nonce} hostBranch={host?.branch} trunk={state.base} />
         </>
       )}
     </div>
