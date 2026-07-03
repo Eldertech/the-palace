@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>STIGMERGY v2.0 // recent features</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=VT323&family=IBM+Plex+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --phosphor:#33ff66; --phosphor-bright:#7fff9b; --phosphor-dim:#1f8a3c;
+  --phosphor-deep:#0b2a14; --phosphor-white:#d7f6dc;
+  --bg:#050a06;
+  --amber:#ffb000; --cyan:#7fdbff; --red:#ff4136; --yellow:#ffb000;
+  --fg2:var(--phosphor-dim); --fg3:#0f5024;
+  --font-display:'VT323','Menlo','Courier New',monospace;
+  --font-body:'IBM Plex Mono','Menlo','Consolas',monospace;
+  --glow:0 0 6px currentColor, 0 0 14px color-mix(in srgb, currentColor 40%, transparent);
+  --glow-strong:0 0 8px currentColor, 0 0 22px currentColor, 0 0 44px color-mix(in srgb, currentColor 30%, transparent);
+}
+*{box-sizing:border-box}
+html,body{margin:0;height:100%}
+body{
+  background:var(--bg); color:var(--phosphor);
+  font-family:var(--font-body); font-size:15px; line-height:1.5;
+  text-shadow:var(--glow);
+  font-feature-settings:"liga" 0,"calt" 0;
+  -webkit-font-smoothing:antialiased;
+}
+/* ---- CRT overlays ---- */
+.crt-scan,.crt-vig{position:fixed;inset:0;pointer-events:none;z-index:9999}
+.crt-scan{background:repeating-linear-gradient(to bottom,rgba(0,0,0,0) 0 2px,rgba(0,0,0,.26) 2px 3px);mix-blend-mode:multiply}
+.crt-vig{background:radial-gradient(ellipse at center,transparent 52%,rgba(0,0,0,.6) 100%)}
+
+/* ---- deck / slides ---- */
+.deck{scroll-snap-type:y mandatory;height:100vh;overflow-y:scroll;scroll-behavior:smooth;scrollbar-width:none}
+.deck::-webkit-scrollbar{display:none}
+.slide{scroll-snap-align:start;min-height:100vh;display:flex;flex-direction:column;justify-content:center;
+  padding:64px 32px 56px;max-width:1000px;margin:0 auto;position:relative}
+@media(max-width:680px){.slide{padding:48px 18px}}
+
+/* ---- type ---- */
+.banner{font-family:var(--font-display);color:var(--phosphor-white);text-shadow:var(--glow-strong);
+  font-size:clamp(64px,14vw,148px);line-height:.86;letter-spacing:.02em;margin:0}
+h2.kick{font-family:var(--font-display);font-size:clamp(30px,5vw,52px);color:var(--phosphor-white);
+  text-shadow:var(--glow-strong);text-transform:uppercase;line-height:1;margin:0 0 6px}
+.eyebrow{font-size:12px;letter-spacing:.34em;text-transform:uppercase;color:var(--amber);text-shadow:var(--glow);margin:0 0 18px}
+.lead{color:var(--phosphor-bright);max-width:74ch;margin:0 0 8px;font-size:17px}
+.dim{color:var(--fg2)}
+.cy{color:var(--cyan)} .am{color:var(--amber)} .rd{color:var(--red)} .wt{color:var(--phosphor-white)}
+.rule{border:0;color:var(--fg2);overflow:hidden;white-space:nowrap;margin:18px 0}
+.rule::before{content:"════════════════════════════════════════════════════════════════════════════════════════"}
+.idx{font-family:var(--font-display);font-size:20px;color:var(--phosphor-dim);letter-spacing:.1em}
+.blink{animation:bl 1.1s steps(1) infinite}@keyframes bl{50%{opacity:0}}
+
+/* ---- terminal window mockup ---- */
+.win{border:3px double var(--phosphor-dim);background:rgba(11,42,20,.34);margin:6px 0 0}
+.win-bar{display:flex;gap:10px;align-items:baseline;border-bottom:1px solid var(--phosphor-dim);
+  padding:6px 12px;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--phosphor-white)}
+.win-bar .tag{color:var(--bg);background:var(--phosphor);padding:0 7px;text-shadow:none}
+.win-body{padding:12px 14px;font-size:13.5px}
+.win-body .ln{white-space:pre-wrap}
+.card{border:1px solid var(--phosphor-dim);padding:9px 11px;margin:9px 0;background:rgba(5,10,6,.5)}
+.btn{display:inline-block;border:1px solid var(--phosphor-dim);padding:1px 10px;margin:6px 8px 0 0;
+  font-size:12.5px;letter-spacing:.04em;text-transform:uppercase}
+.btn.go{border-color:var(--phosphor);color:var(--phosphor-bright)}
+.btn.am{border-color:var(--amber);color:var(--amber)}
+.btn.rd{border-color:var(--red);color:var(--red)}
+.tab{border:1px solid var(--phosphor-dim);padding:3px 12px;font-size:13px;letter-spacing:.1em;text-transform:uppercase}
+.tab.on{background:var(--phosphor);color:var(--bg);text-shadow:none}
+.tabrow{display:flex;flex-wrap:wrap;gap:7px}
+.lanes{display:flex;flex-wrap:wrap;gap:6px;font-size:11.5px;color:var(--fg2)}
+.lanes .l{border:1px solid var(--phosphor-dim);padding:0 6px}
+.muted-row{color:var(--fg3)}
+.k{color:var(--cyan)}
+
+/* ---- use / test panels ---- */
+.cols{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:18px}
+@media(max-width:680px){.cols{grid-template-columns:1fr}}
+.panel{border-left:2px solid var(--phosphor-dim);padding:2px 0 2px 14px}
+.panel h4{margin:0 0 8px;font-size:12px;letter-spacing:.2em;text-transform:uppercase}
+.panel.use h4{color:var(--phosphor-bright)} .panel.test h4{color:var(--amber)}
+.panel ol{margin:0;padding-left:18px} .panel li{margin:0 0 7px;font-size:13.5px;color:var(--phosphor-bright)}
+.panel li::marker{color:var(--fg2)}
+.path{color:var(--cyan);font-size:12.5px;word-break:break-all}
+
+/* ---- contents menu ---- */
+.menu{display:grid;grid-template-columns:1fr 1fr;gap:4px 28px;margin:10px 0 0;max-width:80ch}
+@media(max-width:680px){.menu{grid-template-columns:1fr}}
+.menu a{color:var(--phosphor);text-decoration:none;border-bottom:1px dashed transparent;padding:3px 0;display:flex;gap:12px;cursor:pointer}
+.menu a:hover{color:var(--phosphor-white);border-bottom-color:var(--phosphor-dim)}
+.menu .n{color:var(--amber)}
+
+/* ---- chrome ---- */
+.brand{position:fixed;top:14px;left:18px;font-family:var(--font-display);font-size:22px;letter-spacing:.18em;
+  color:var(--phosphor-dim);z-index:50;text-shadow:var(--glow)}
+.foot{position:fixed;bottom:10px;left:18px;right:18px;display:flex;justify-content:space-between;
+  font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--fg3);z-index:50;text-shadow:none}
+.nav{position:fixed;right:16px;top:50%;transform:translateY(-50%);display:flex;flex-direction:column;gap:11px;z-index:60}
+.nav b{width:9px;height:9px;border:1px solid var(--phosphor-dim);cursor:pointer;display:block}
+.nav b.on{background:var(--phosphor);border-color:var(--phosphor);box-shadow:var(--glow)}
+.hint{font-size:11px;color:var(--fg3);letter-spacing:.16em;text-transform:uppercase;margin-top:22px}
+.tags{display:flex;gap:8px;flex-wrap:wrap;margin:14px 0 0}
+.chip{border:1px solid var(--phosphor-dim);padding:1px 8px;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--fg2)}
+.chip.new{border-color:var(--amber);color:var(--amber)}
+</style>
+</head>
+<body>
+<div class="crt-scan"></div><div class="crt-vig"></div>
+<div class="brand">STIGMERGY</div>
+<nav class="nav" id="nav"></nav>
+<div class="foot"><span>stigmergy // palace coordination terminal</span><span>built green // 2026-06</span></div>
+
+<main class="deck" id="deck">
+
+  <!-- 0 — TITLE -->
+  <section class="slide" data-name="cover">
+    <p class="eyebrow">the palace front-end // recent build log</p>
+    <h1 class="banner">STIGMERGY<span class="blink wt">_</span></h1>
+    <p class="lead" style="margin-top:18px"><span class="wt">v2.0 -- consolidation &amp; primary interface.</span> the last few weeks turned the swarm window Loudon <span class="dim">watches</span> into the surface he <span class="wt">operates</span>: one screen by time, every creative loop pulled inside, the Weave closing its own loop.</p>
+    <hr class="rule">
+    <div class="menu">
+      <a onclick="go(1)"><span class="n">01</span><span>the five-deck terminal</span></a>
+      <a onclick="go(2)"><span class="n">02</span><span>the companion -- author in place</span></a>
+      <a onclick="go(3)"><span class="n">03</span><span>launch interactive / agent launcher</span></a>
+      <a onclick="go(4)"><span class="n">04</span><span>the weave posting half</span></a>
+      <a onclick="go(5)"><span class="n">05</span><span>enrichment + reconciliation</span></a>
+      <a onclick="go(6)"><span class="n">06</span><span>still open // run it</span></a>
+    </div>
+    <p class="hint">scroll, &#8595; / &#8593;, or click a dot &#8594;</p>
+  </section>
+
+  <!-- 1 — FIVE DECKS -->
+  <section class="slide" data-name="decks">
+    <span class="idx">01</span>
+    <h2 class="kick">the five-deck terminal</h2>
+    <p class="eyebrow am">phase 0 consolidation // shipped 2026-06-16</p>
+    <p class="lead">one screen organized by <span class="wt">time</span>, and decisions live in exactly one place. two stacked navigation paradigms were healed; pure monospace was restored (zero serif left in the DOM).</p>
+    <div class="win">
+      <div class="win-bar"><span class="tag">decks</span><span class="dim">nothing is real until it lands in LOG</span></div>
+      <div class="win-body">
+        <div class="tabrow">
+          <span class="tab">STATE</span><span class="tab">QUEUE</span><span class="tab">LOG</span>
+          <span class="tab on">TRICKSTER</span><span class="tab">STEWARDS</span>
+        </div>
+        <div class="ln dim" style="margin-top:9px;font-size:12px">present &#183; future &#183; past &#183; <span class="am">decide</span> &#183; advance</div>
+        <hr class="rule" style="margin:11px 0">
+        <div class="ln"><span class="am">TRICKSTER</span> = a steward is waiting on your answer.</div>
+        <div class="ln"><span class="cy">QUEUE</span> = everything else open you might act on -- nothing blocked on you.</div>
+      </div>
+    </div>
+    <div class="cols">
+      <div class="panel use"><h4>use it</h4><ol>
+        <li>click a deck tab to switch surface; the row reads left-to-right as time.</li>
+        <li>answer blocked stewards on <span class="am">TRICKSTER</span>; work everything else from <span class="cy">QUEUE</span>.</li>
+      </ol></div>
+      <div class="panel test"><h4>test it</h4><ol>
+        <li>open <span class="cy">QUEUE</span> -- confirm <span class="wt">zero</span> decision cards appear (they only live on TRICKSTER).</li>
+        <li>open TRICKSTER -- the auto-trickster digest sits <span class="dim">below</span> the cards, collapsed; text is all monospace.</li>
+      </ol></div>
+    </div>
+  </section>
+
+  <!-- 2 — COMPANION -->
+  <section class="slide" data-name="companion">
+    <span class="idx">02</span>
+    <h2 class="kick">the companion</h2>
+    <p class="eyebrow am">author inside the terminal // propose &#8594; approve &#8594; commit</p>
+    <p class="lead">talk to an entry; it proposes an edit; you approve; it commits to the live palace. a forward_vector is <span class="wt">never</span> rewritten silently -- the from&#8594;to always shows.</p>
+    <div class="win">
+      <div class="win-bar"><span class="tag">entry</span><span>Kuramoto Coupling (companion)</span></div>
+      <div class="win-body">
+        <div class="ln dim">&gt; sharpen the forward vector -- it reads like a label, not a striving.</div>
+        <div class="card">
+          <div class="ln"><span class="am">EDIT PROPOSED</span> &#183; set-vector &#183; <span class="dim">show before editing</span></div>
+          <div class="ln" style="margin-top:6px"><span class="rd">from:</span> I am the canonical Kuramoto entry.</div>
+          <div class="ln"><span class="cy">to:</span> I keep coupling oscillators until learners feel phase-lock in their hands.</div>
+          <span class="btn go">[ approve ]</span><span class="btn">[ discard ]</span>
+        </div>
+        <div class="ln muted-row" style="margin-top:4px">&#9492; committed a1b9f3c &#183; <span class="k">[ undo ]</span> reverts honestly (a new inverse commit)</div>
+      </div>
+    </div>
+    <div class="cols">
+      <div class="panel use"><h4>use it</h4><ol>
+        <li>open an entry in STATE, open its companion, ask for the change in plain language.</li>
+        <li>review the proposed diff, hit <span class="wt">approve</span> to write + commit; <span class="k">undo</span> reverts; <span class="am">trickster write</span> writes anywhere in one gesture.</li>
+      </ol></div>
+      <div class="panel test"><h4>test it</h4><ol>
+        <li>ask to tune a forward_vector -- the card must show <span class="rd">from</span>&#8594;<span class="cy">to</span> (never silent).</li>
+        <li>approve -- a commit hash appears; open LOG to see it; click <span class="k">undo</span> -- an inverse commit lands.</li>
+      </ol></div>
+    </div>
+  </section>
+
+  <!-- 3 — LAUNCH INTERACTIVE -->
+  <section class="slide" data-name="launch">
+    <span class="idx">03</span>
+    <h2 class="kick">launch interactive</h2>
+    <p class="eyebrow am">the agent construction launcher // 2026-06-17 &#8594; 18</p>
+    <p class="lead">hand any open work into a <span class="wt">watchable, steerable</span> Claude Code session -- or constitute a palace page as a live agent, the build legible by JEWEL tier and tunable before it opens.</p>
+    <div class="win">
+      <div class="win-bar"><span class="tag">construct</span><span>page-agent // Crystal Synthesizer</span></div>
+      <div class="win-body">
+        <div class="ln">model <span class="cy">claude-opus-4-8</span> &#183; effort <span class="cy">high</span></div>
+        <div class="card">
+          <div class="ln dim">context layers</div>
+          <div class="ln"><span class="am">[x]</span> T0-2 @import floor <span class="dim">(locked)</span>   <span class="am">[x]</span> T3 identity <span class="dim">(locked)</span></div>
+          <div class="ln"><span class="am">[x]</span> board slice   <span class="am">[x]</span> history   <span class="am">[x]</span> page-change   <span class="am">[ ]</span> staging</div>
+        </div>
+        <span class="btn go">[ LAUNCH TERMINAL ]</span><span class="btn">[ view constructed prompt ]</span>
+      </div>
+    </div>
+    <div class="cols">
+      <div class="panel use"><h4>use it</h4><ol>
+        <li>a <span class="cy">handoff_ready</span> item &#8594; <span class="wt">launch interactive</span>; a TRICKSTER card &#8594; <span class="wt">open interactive</span> (a steward routes here with the decision pre-filled as its mandate).</li>
+        <li>tune model / effort / context layers, then <span class="wt">LAUNCH TERMINAL</span> -- Terminal.app opens running claude on Opus 4.8.</li>
+      </ol></div>
+      <div class="panel test"><h4>test it</h4><ol>
+        <li>open the launcher on a steward -- read the tiered constructed prompt; toggle a context layer and watch it change.</li>
+        <li>LAUNCH TERMINAL -- first run asks for the macOS automation grant, then a real terminal opens.</li>
+      </ol></div>
+    </div>
+  </section>
+
+  <!-- 4 — WEAVE POSTING HALF -->
+  <section class="slide" data-name="weave">
+    <span class="idx">04</span>
+    <h2 class="kick">the weave posting half</h2>
+    <p class="eyebrow am">detect &#8594; propose &#8594; grant &amp; apply // 2026-06-18 &#8594; 21</p>
+    <p class="lead">the Weave now <span class="wt">posts its own proposals</span> and <span class="wt">applies them on grant</span> -- the edit no longer waits for a hand in Obsidian. three audits; one click closes each loop.</p>
+    <div class="win">
+      <div class="win-bar"><span class="tag">queue</span><span>the ranked inbox</span></div>
+      <div class="win-body">
+        <div class="lanes"><span class="dim">3 open &#183;</span><span class="k">reconcile</span><span class="k">run unsung-path audit</span><span class="k">run hub-promotion audit</span></div>
+        <div class="ln dim" style="margin:8px 0;font-size:12px">532 scanned &#183; 913 unsung &#183; 909 eligible &#183; <span class="wt">6 would post</span> &#183; 903 over limit NOT emitted &#8594; <span class="am">[ post 6 proposals ]</span></div>
+        <div class="card">
+          <div class="ln"><span class="am">WEAVE</span> &#183; promote unsung path</div>
+          <div class="ln" style="margin-top:4px"><span class="cy">Hilaritas Generator</span> &#8594; <span class="cy">Quality Manifesto</span> <span class="dim">(connects-to)</span></div>
+          <span class="btn">[ grant ]</span><span class="btn go">[ grant &amp; apply ]</span>
+        </div>
+      </div>
+    </div>
+    <p class="dim" style="font-size:13px;margin-top:12px">ops that apply on grant: <span class="cy">set-vector</span> &#183; <span class="cy">add-link</span> &#183; <span class="cy">set-type</span>. newest, generative, CLI today:
+      <span class="path">node scripts/weave-emit-vector-tuning.mjs --scan</span> <span class="chip new">vector-tuning</span></p>
+    <div class="cols">
+      <div class="panel use"><h4>use it</h4><ol>
+        <li>click an audit -- the first click is always a <span class="wt">dry run</span> (honest counts, writes nothing); then <span class="am">post N proposals</span> seeds the WEAVE lane.</li>
+        <li>each proposal carries <span class="wt">grant &amp; apply</span> -- it commits the change + posts a weave_applied PROOF with the hash.</li>
+      </ol></div>
+      <div class="panel test"><h4>test it</h4><ol>
+        <li>run the unsung audit -- confirm the dry run writes nothing; post; <span class="wt">grant &amp; apply</span> one.</li>
+        <li>open LOG -- a <span class="cy">weave</span>-authored commit + PROOF appear; re-run the audit -- already-proposed pairs are skipped (idempotent).</li>
+      </ol></div>
+    </div>
+  </section>
+
+  <!-- 5 — ENRICHMENT + RECONCILIATION -->
+  <section class="slide" data-name="enrichment">
+    <span class="idx">05</span>
+    <h2 class="kick">enrichment + reconciliation</h2>
+    <p class="eyebrow am">one server, one board // 2026-06-16</p>
+    <p class="lead">the parallel Flask server is retired -- enrichment cards now live in QUEUE -- and the queue <span class="wt">greys what git has already done</span>: the future&#8594;past crossing, made visible.</p>
+    <div class="win">
+      <div class="win-bar"><span class="tag">queue</span><span>enrichment cards &#183; reconciliation</span></div>
+      <div class="win-body">
+        <div class="card">
+          <div class="ln"><span class="am">ENRICHMENT</span> &#183; oblique card &#183; <span class="dim">Spinoza Conatus</span></div>
+          <span class="btn go">[ deposit ]</span><span class="btn am">[ revise ]</span><span class="btn rd">[ discard ]</span><span class="btn">[ launch interactive ]</span>
+        </div>
+        <div class="card muted-row">
+          <div class="ln">to-do &#183; tighten the QUEUE firehose default</div>
+          <div class="ln" style="margin-top:3px">&#9633; looks done -- a commit satisfied its stale_if &#183; <span class="k">[ clear it? ]</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="cols">
+      <div class="panel use"><h4>use it</h4><ol>
+        <li>respond to a card -- <span class="wt">deposit / revise / discard</span> fires the supervisor through the actuator (no Flask).</li>
+        <li>click <span class="k">reconcile</span> to re-check git; items whose stale_if a commit satisfied grey out as <span class="dim">looks-done</span>.</li>
+      </ol></div>
+      <div class="panel test"><h4>test it</h4><ol>
+        <li>respond a card -- the feedback line confirms <span class="wt">supervisor fired</span>.</li>
+        <li>land a commit matching an item's stale_if -- the item drops to <span class="dim">looks-done (git resolved)</span>; clear it.</li>
+      </ol></div>
+    </div>
+  </section>
+
+  <!-- 6 — CLOSE -->
+  <section class="slide" data-name="close">
+    <span class="idx">06</span>
+    <h2 class="kick">still open // run it</h2>
+    <div class="cols" style="grid-template-columns:1fr 1fr">
+      <div class="panel use"><h4>still open</h4><ol>
+        <li>surface <span class="wt">vector-tuning</span> in the terminal (it ships CLI-first today).</li>
+        <li><span class="wt">mirror sweeps</span> -- the last open generative proposal type.</li>
+        <li>the <span class="wt">autonomous scheduler</span> (Orchestrator v0.2) -- fire a cycle with no human click.</li>
+      </ol></div>
+      <div class="panel test"><h4>run it</h4><ol>
+        <li class="dim"><span class="path">cd _ops/stigmergy/app</span></li>
+        <li class="dim"><span class="path">npm run dev</span> &#8594; open the printed localhost.</li>
+        <li><span class="rd">note:</span> the live board is non-stub -- audits + grants touch the real palace.</li>
+      </ol></div>
+    </div>
+    <hr class="rule">
+    <p class="lead wt" style="font-size:20px">only the commit is the record. nothing is real until it lands in LOG.<span class="blink"> _</span></p>
+    <p class="dim" style="font-size:12px;letter-spacing:.16em;text-transform:uppercase">stigmergy v2.0 &#183; consolidation &amp; primary interface &#183; phosphor on black</p>
+  </section>
+
+</main>
+
+<script>
+(function(){
+  var deck=document.getElementById('deck');
+  var slides=[].slice.call(document.querySelectorAll('.slide'));
+  var nav=document.getElementById('nav');
+  slides.forEach(function(s,i){var b=document.createElement('b');b.onclick=function(){go(i)};nav.appendChild(b)});
+  var dots=[].slice.call(nav.children);
+  window.go=function(i){ if(slides[i]) slides[i].scrollIntoView({behavior:'smooth'}); };
+  function current(){var y=deck.scrollTop,h=deck.clientHeight;return Math.round(y/h);}
+  function mark(){var c=current();dots.forEach(function(d,i){d.classList.toggle('on',i===c)});}
+  deck.addEventListener('scroll',function(){window.requestAnimationFrame(mark)});
+  document.addEventListener('keydown',function(e){
+    var c=current();
+    if(e.key==='ArrowDown'||e.key==='PageDown'||e.key===' '){e.preventDefault();go(Math.min(c+1,slides.length-1));}
+    if(e.key==='ArrowUp'||e.key==='PageUp'){e.preventDefault();go(Math.max(c-1,0));}
+    if(e.key==='Home'){e.preventDefault();go(0);}
+    if(e.key==='End'){e.preventDefault();go(slides.length-1);}
+  });
+  mark();
+})();
+</script>
+</body>
+</html>

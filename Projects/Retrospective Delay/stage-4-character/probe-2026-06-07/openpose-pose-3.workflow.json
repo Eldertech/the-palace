@@ -1,0 +1,82 @@
+{
+  "_comment": "Séance Cat Pose 3 — Gorey-Ink + Cyberpunk with OpenPose ControlNet. Extends gorey-ink-pose-3-probe.workflow.json by inserting LoadImage (node 10) → ControlNetLoader (node 11) → ControlNetApply (node 12) between CLIPTextEncode-positive (6) and KSampler (3). Strength 0.8. Seed 42, 30 steps, CFG 7.5, 1024². The driver render-openpose.py swaps the prompt strings on node 6/7 for the cyberpunk variant. Rig PNG is loaded by filename from ComfyUI's input dir — the driver copies it there before queueing.",
+  "3": {
+    "inputs": {
+      "seed": 42,
+      "steps": 30,
+      "cfg": 7.5,
+      "sampler_name": "euler",
+      "scheduler": "normal",
+      "denoise": 1.0,
+      "model": ["4", 0],
+      "positive": ["12", 0],
+      "negative": ["7", 0],
+      "latent_image": ["5", 0]
+    },
+    "class_type": "KSampler"
+  },
+  "4": {
+    "inputs": {
+      "ckpt_name": "sd_xl_base_1.0.safetensors"
+    },
+    "class_type": "CheckpointLoaderSimple"
+  },
+  "5": {
+    "inputs": {
+      "width": 1024,
+      "height": 1024,
+      "batch_size": 1
+    },
+    "class_type": "EmptyLatentImage"
+  },
+  "6": {
+    "inputs": {
+      "text": "Edward Gorey style pen and ink illustration, fine crosshatch shading, eerie Victorian atmosphere, a small black cat standing upright with both arms stretched wide overhead in a summoning pose, ectoplasm wisps swirling around outstretched paws, stars in its wide round eyes, séance ritual, floating candles in background, sparse Victorian room, delicate fine line work, black ink on cream paper, high contrast, gothic whimsy, no color, monochrome",
+      "clip": ["4", 1]
+    },
+    "class_type": "CLIPTextEncode"
+  },
+  "7": {
+    "inputs": {
+      "text": "color, photograph, photorealistic, 3d render, cartoon, anime, manga, watermark, text, blurry, low quality, ugly, deformed, modern, flat design, vector art, gradient",
+      "clip": ["4", 1]
+    },
+    "class_type": "CLIPTextEncode"
+  },
+  "8": {
+    "inputs": {
+      "samples": ["3", 0],
+      "vae": ["4", 2]
+    },
+    "class_type": "VAEDecode"
+  },
+  "9": {
+    "inputs": {
+      "filename_prefix": "gorey-ink-pose-3-openpose",
+      "images": ["8", 0]
+    },
+    "class_type": "SaveImage"
+  },
+  "10": {
+    "inputs": {
+      "image": "pose-3-openpose-rig.png",
+      "upload": "image"
+    },
+    "class_type": "LoadImage"
+  },
+  "11": {
+    "inputs": {
+      "control_net_name": "controlnet-openpose-sdxl.safetensors"
+    },
+    "class_type": "ControlNetLoader"
+  },
+  "12": {
+    "inputs": {
+      "strength": 0.8,
+      "conditioning": ["6", 0],
+      "control_net": ["11", 0],
+      "image": ["10", 0]
+    },
+    "class_type": "ControlNetApply"
+  }
+}

@@ -34,7 +34,6 @@ When working within the palace with an AI:
 - **"Add this to the palace"** — The AI will draft a new entry based on the current conversation and write it to the palace.
 - **"Let's walk"** — The AI reads the current state of the palace and surfaces connections, orphans, or surprises. The Walk ceremony.
 - **"Let's weave"** — Full graph review. The AI reads all entries, reports on topology, suggests new links, identifies what's dormant. The Weave ceremony.
-- **"Spore check"** — The AI reviews dormant entries against current work and proposes revivals.
 - **"What does the palace say about...?"** — The AI searches the palace for relevant entries and synthesizes.
 - **"Connect this to the palace"** — The AI proposes which existing entries relate to what you're currently discussing and what link types apply.
 

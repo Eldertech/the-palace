@@ -22,3 +22,5 @@
 {"event":"TOOL_CALL","ts":"2026-06-23T12:45:21.000Z","tool":"write_blackboard","args":{"message_id":"apo-steward-008"},"result":"emitted+validated+appended"}
 {"event":"TOOL_CALL","ts":"2026-06-23T12:45:21.000Z","tool":"write_blackboard","args":{"message_id":"apo-steward-009"},"result":"emitted+validated+appended"}
 {"event":"CYCLE_COMPLETE","ts":"2026-06-23T12:45:21.000Z","iteration":4,"stop_reason":"end_turn","posted_messages":["apo-steward-008","apo-steward-009"],"pending_after":["apo-steward-009"]}
+{"event":"CYCLE_5_SPAWN","ts":"2026-06-25T00:34:27.301Z","dispatched_by":"bbs-actuator","model":"claude-opus-4-7"}
+{"event":"CYCLE_COMPLETE","ts":"2026-06-25T00:34:27.301Z","iteration":5,"stop_reason":"end_turn","posted_messages":[],"pending_after":[]}

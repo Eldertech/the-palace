@@ -1,0 +1,138 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>Semantic Webcam — A Deck in Five Facets</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+  :root{
+    --bg:#08080c; --ink:#f3c879; --ink-dim:#8b8b98; --ink-cool:#74e6d8;
+    --hush:#5a5a6a; --shout:#ff5d8f; --rule:#1a1a22;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html,body{min-height:100%;background:var(--bg);color:#eee;
+    font-family:Georgia,'Iowan Old Style',serif;line-height:1.45}
+  body{padding:48px 28px 96px;max-width:980px;margin:0 auto}
+  header{border-bottom:1px solid var(--rule);padding-bottom:24px;margin-bottom:32px}
+  .eyebrow{font-family:ui-monospace,Menlo,monospace;font-size:11px;letter-spacing:3px;
+    text-transform:uppercase;color:var(--ink-cool);opacity:.8;margin-bottom:8px}
+  h1{font-size:42px;line-height:1.05;letter-spacing:-.5px;color:var(--ink);font-weight:400}
+  h1 em{font-style:italic;color:#eee}
+  .blurb{margin-top:14px;color:var(--ink-dim);max-width:62ch;font-size:15px}
+  .blurb a{color:var(--ink-cool);text-decoration:none;border-bottom:1px dotted var(--ink-cool)}
+
+  .deck{display:grid;grid-template-columns:1fr;gap:22px}
+  .card{border:1px solid var(--rule);background:#0c0c12;padding:24px 26px 22px;
+    display:grid;grid-template-columns:64px 1fr;gap:22px;align-items:start;
+    transition:border-color .2s ease,transform .2s ease}
+  .card:hover{border-color:var(--ink);transform:translateY(-1px)}
+  .num{font-family:ui-monospace,Menlo,monospace;font-size:38px;color:var(--hush);
+    line-height:1;padding-top:4px}
+  .card.live .num{color:var(--shout)}
+  .card.parked .num{color:var(--hush);text-decoration:line-through}
+  .card h2{font-size:22px;letter-spacing:-.2px;font-weight:400;color:#fff;margin-bottom:6px}
+  .card h2 em{color:var(--ink-cool);font-style:italic;font-size:13px;letter-spacing:2px;
+    text-transform:uppercase;margin-left:10px;border:1px solid var(--rule);
+    padding:2px 8px;border-radius:2px;font-family:ui-monospace,Menlo,monospace;vertical-align:middle}
+  .card.live h2 em{border-color:var(--shout);color:var(--shout)}
+  .card.parked h2 em{color:var(--hush);border-color:var(--hush)}
+  .card p{color:var(--ink-dim);font-size:15px;max-width:62ch;margin-bottom:14px}
+  .card .actions{display:flex;gap:14px;flex-wrap:wrap;align-items:center;margin-top:4px}
+  .card a{color:var(--ink);font-family:ui-monospace,Menlo,monospace;font-size:12px;
+    letter-spacing:2px;text-transform:uppercase;text-decoration:none;border-bottom:1px solid var(--ink)}
+  .card a:hover{color:#fff;border-color:#fff}
+  .card .tag{font-family:ui-monospace,Menlo,monospace;font-size:11px;letter-spacing:2px;
+    text-transform:uppercase;color:var(--hush)}
+
+  footer{margin-top:48px;padding-top:24px;border-top:1px solid var(--rule);
+    color:var(--ink-dim);font-size:13px;font-family:ui-monospace,Menlo,monospace}
+  footer a{color:var(--ink-cool);text-decoration:none}
+</style>
+<body>
+<header>
+  <div class="eyebrow">Oblique Enrichment · iterable cards</div>
+  <h1>Semantic Webcam — <em>a deck in five facets</em></h1>
+  <p class="blurb">
+    A camera that renders you as typeset language. The project <em>is</em> its build
+    history — five facets that could not stop iterating each other. Each card below
+    opens the live cam. They are the answer the entry gave to its own carried question:
+    <em>is legibility just another band of light?</em>
+  </p>
+</header>
+
+<div class="deck">
+
+  <div class="card live">
+    <div class="num">01</div>
+    <div>
+      <h2>Live STIGMERGY Cam <em>terminal</em></h2>
+      <p>Your motion as cells lit on an amber CP437 grid. Camera as blackboard:
+        the screen is the trace, not the picture. The homage that started it.</p>
+      <div class="actions">
+        <a href="01-live-stigmergy-cam.html" target="_blank">Open the cam →</a>
+        <span class="tag">facet · terminal grid</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="card parked">
+    <div class="num">02</div>
+    <div>
+      <h2>Word Flock Cam <em>parked</em></h2>
+      <p>Words as boids, flocking to the eyes and fingertips it can find. Set aside
+        on the pivot to multiply. The branch worth reviving — the unfinished facet
+        that the forward vector still wants.</p>
+      <div class="actions">
+        <a href="02-word-flock-cam.html" target="_blank">Open the cam →</a>
+        <span class="tag">facet · flocking</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="card live">
+    <div class="num">03</div>
+    <div>
+      <h2>Character Multiply Cam <em>anchor</em></h2>
+      <p>Luminance picks the glyph; periods in shadow, dashes above, whole words
+        through the mid-tones, heavy shade, then white. A convolution of two
+        character layers — the multiply that made the rest of the deck possible.</p>
+      <div class="actions">
+        <a href="03-character-multiply-cam.html" target="_blank">Open the cam →</a>
+        <span class="tag">facet · multiply blend</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="card live">
+    <div class="num">04</div>
+    <div>
+      <h2>Grammar-Fit Cam <em>composes</em></h2>
+      <p>Mid-tone runs filled by chained words that follow each other grammatically,
+        not just by length. The blob becomes a phrase that almost reads aloud —
+        the picture trying to speak.</p>
+      <div class="actions">
+        <a href="04-grammar-fit-cam.html" target="_blank">Open the cam →</a>
+        <span class="tag">facet · syntax</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="card live">
+    <div class="num">05</div>
+    <div>
+      <h2>Tonal Word Cam <em>final</em></h2>
+      <p>The carried question rendered as the answer: light <em>is</em> typeset.
+        Spawned the concept entry it could not stop pointing at —
+        <a href="obsidian://open?vault=The%20Palace&file=Language%20as%20a%20Tonal%20Medium.md">Language as a Tonal Medium</a>.</p>
+      <div class="actions">
+        <a href="05-tonal-word-cam.html" target="_blank">Open the cam →</a>
+        <span class="tag">facet · concept-spawning</span>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  Loudon Live · Autodidact Polymaths · part of
+  <a href="obsidian://open?vault=The%20Palace&file=Oblique%20Enrichment.md">Oblique Enrichment</a>.
+</footer>
+</body>

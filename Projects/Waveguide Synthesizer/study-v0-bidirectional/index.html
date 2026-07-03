@@ -1,0 +1,287 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Waveguide Study v0 — Bidirectional</title>
+<style>
+  html, body { margin: 0; padding: 0; background: #0b0d10; color: #cfd3d8;
+    font-family: ui-monospace, Menlo, monospace; overflow: hidden; height: 100%; }
+  #ui { position: absolute; top: 10px; left: 12px; z-index: 10;
+    background: rgba(11,13,16,0.78); padding: 12px 14px; border: 1px solid #1e242b;
+    border-radius: 4px; font-size: 12px; line-height: 1.55; max-width: 300px; }
+  #ui h1 { margin: 0 0 8px 0; font-size: 13px; letter-spacing: 0.04em; }
+  #ui label { display: block; margin-top: 6px; }
+  #ui input[type=range] { width: 100%; }
+  #ui .row { display: flex; justify-content: space-between; font-variant-numeric: tabular-nums; }
+  #ui button { margin-top: 8px; background: #1a2128; color: #cfd3d8; border: 1px solid #2a323b;
+    padding: 6px 12px; font: inherit; cursor: pointer; border-radius: 3px; }
+  #ui button:hover { background: #232c35; }
+  #ui .key { margin-top: 10px; font-size: 11px; opacity: 0.7; line-height: 1.5; }
+  #ui .key .swatch { display: inline-block; width: 10px; height: 10px; vertical-align: middle; margin-right: 5px; }
+  #hint { position: absolute; bottom: 10px; left: 12px; font-size: 11px; opacity: 0.6; }
+  #status { margin-top: 6px; font-size: 10px; opacity: 0.6; }
+  canvas { display: block; }
+</style>
+</head>
+<body>
+<div id="ui">
+  <h1>waveguide · study v0</h1>
+  <label>freq <span class="row"><span></span><span id="vFreq">196</span> Hz</span>
+    <input id="freq" type="range" min="80" max="880" value="196" step="1"></label>
+  <label>brightness (loop LP) <span class="row"><span></span><span id="vBright">0.55</span></span>
+    <input id="bright" type="range" min="0" max="1" value="0.55" step="0.01"></label>
+  <label>bridge loss <span class="row"><span></span><span id="vBridge">0.985</span></span>
+    <input id="bridge" type="range" min="0.9" max="1.0" value="0.985" step="0.0005"></label>
+  <label>nut loss <span class="row"><span></span><span id="vNut">0.995</span></span>
+    <input id="nut" type="range" min="0.9" max="1.0" value="0.995" step="0.0005"></label>
+  <button id="pluck">pluck (center)</button>
+  <div class="key">
+    <div><span class="swatch" style="background:#ff7a3d"></span>displacement (sum)</div>
+    <div><span class="swatch" style="background:#3a8fff"></span>right-going wave</div>
+    <div><span class="swatch" style="background:#7a3dff"></span>left-going wave</div>
+  </div>
+  <div id="status">click string to pluck · drag empty space to orbit</div>
+</div>
+<div id="hint">click anywhere on the string to pluck there · the orange line is what you hear</div>
+
+<script src="https://unpkg.com/three@0.128.0/build/three.min.js"></script>
+<script src="https://unpkg.com/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+
+<script id="worklet-src" type="text/plain">
+// Bidirectional digital waveguide.
+// Two delay lines: rBuf (right-going) and lBuf (left-going).
+// Displacement at position n = rBuf[n] + lBuf[n].
+// Reflections at bridge (idx 0) and nut (idx len-1) invert and filter.
+// Output tap: at the bridge (where a real string drives the body).
+const VIS_N = 180;
+class WG extends AudioWorkletProcessor {
+  constructor() {
+    super();
+    this.sr = sampleRate;
+    this.maxLen = Math.ceil(this.sr / 60);
+    this.rBuf = new Float32Array(this.maxLen);
+    this.lBuf = new Float32Array(this.maxLen);
+    // Effective period = 2 * len (round trip). For freq f, len = sr/(2f).
+    this.len = Math.floor(this.sr / (2 * 196));
+    this.bright = 0.55;     // loop LP brightness
+    this.bridge = 0.985;    // reflection magnitude at bridge
+    this.nut = 0.995;       // reflection magnitude at nut
+    this.lpBridge = 0;      // one-pole state for bridge reflection LP
+    this.lpNut = 0;
+    this.visR = new Float32Array(VIS_N);
+    this.visL = new Float32Array(VIS_N);
+    this.visD = new Float32Array(VIS_N);
+    this.visPayload = new Float32Array(VIS_N * 3);
+    this.samplesSincePost = 0;
+    this.postEvery = Math.floor(this.sr / 60);
+    this.port.onmessage = (e) => {
+      const m = e.data;
+      if (m.type === 'pluck') {
+        const len = this.len;
+        const center = Math.floor((m.position ?? 0.5) * len);
+        const width = Math.max(6, Math.floor(len * 0.25));
+        // Initial displacement triangle, split equally into r and l (a stationary
+        // displacement = two counter-traveling halves; d'Alembert).
+        for (let i = 0; i < len; i++) {
+          const d = Math.abs(i - center);
+          const disp = Math.max(0, 1 - d / width);
+          this.rBuf[i] = 0.5 * disp;
+          this.lBuf[i] = 0.5 * disp;
+        }
+        for (let i = len; i < this.maxLen; i++) { this.rBuf[i] = 0; this.lBuf[i] = 0; }
+      } else if (m.type === 'params') {
+        if (m.freq) this.len = Math.max(8, Math.min(this.maxLen - 1, Math.floor(this.sr / (2 * m.freq))));
+        if (m.bright !== undefined) this.bright = m.bright;
+        if (m.bridge !== undefined) this.bridge = m.bridge;
+        if (m.nut !== undefined) this.nut = m.nut;
+      }
+    };
+  }
+  process(_in, outputs) {
+    const out = outputs[0][0];
+    const N = out.length;
+    const len = this.len;
+    // one-pole LP coefficient: bright=1 -> a=0 (mirror-like), bright=0 -> a~0.9 (soft)
+    const a = (1 - this.bright) * 0.9;
+    const r = this.rBuf, l = this.lBuf;
+    for (let n = 0; n < N; n++) {
+      // Read the samples about to leave each end.
+      const rOut = r[len - 1];        // right-going arriving at bridge (idx len-1)
+      const lOut = l[0];              // left-going arriving at nut (idx 0)
+      // Output tap = displacement at bridge before reflection. (Standard waveguide
+      // output: r at bridge + l at bridge; bridge is idx len-1 here.)
+      out[n] = (rOut + l[len - 1]) * 0.5;
+      // Reflect with sign flip + one-pole LP + loss.
+      this.lpBridge = a * this.lpBridge + (1 - a) * rOut;
+      const bridgeRefl = -this.lpBridge * this.bridge;     // becomes new left-going
+      this.lpNut = a * this.lpNut + (1 - a) * lOut;
+      const nutRefl = -this.lpNut * this.nut;              // becomes new right-going
+      // Shift right-going forward (idx 0 -> len-1 motion): we shift in place.
+      // Move r right by 1: r[i] = r[i-1], for i = len-1..1; r[0] = nutRefl.
+      for (let i = len - 1; i > 0; i--) r[i] = r[i - 1];
+      r[0] = nutRefl;
+      // Move l left by 1: l[i] = l[i+1], for i = 0..len-2; l[len-1] = bridgeRefl.
+      for (let i = 0; i < len - 1; i++) l[i] = l[i + 1];
+      l[len - 1] = bridgeRefl;
+    }
+    this.samplesSincePost += N;
+    if (this.samplesSincePost >= this.postEvery) {
+      this.samplesSincePost = 0;
+      const step = len / VIS_N;
+      for (let i = 0; i < VIS_N; i++) {
+        const si = Math.min(len - 1, Math.floor(i * step));
+        const rv = r[si], lv = l[si];
+        this.visPayload[i*3]   = rv + lv;   // displacement
+        this.visPayload[i*3+1] = rv;        // right-going
+        this.visPayload[i*3+2] = lv;        // left-going
+      }
+      this.port.postMessage({ type: 'wave', data: this.visPayload.slice() });
+    }
+    return true;
+  }
+}
+registerProcessor('wg', WG);
+</script>
+
+<script>
+const $ = (id) => document.getElementById(id);
+let audioCtx = null, wgNode = null, latestWave = null;
+const VIS_N = 180;
+const params = { freq: 196, bright: 0.55, bridge: 0.985, nut: 0.995 };
+
+async function startAudio() {
+  if (audioCtx) return;
+  audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+  const src = document.getElementById('worklet-src').textContent;
+  const url = URL.createObjectURL(new Blob([src], { type: 'application/javascript' }));
+  await audioCtx.audioWorklet.addModule(url);
+  wgNode = new AudioWorkletNode(audioCtx, 'wg', { outputChannelCount: [1] });
+  wgNode.port.onmessage = (e) => { if (e.data.type === 'wave') latestWave = e.data.data; };
+  wgNode.connect(audioCtx.destination);
+  sendParams();
+  $('status').textContent = 'audio: ' + audioCtx.sampleRate + ' Hz · bidirectional waveguide';
+}
+
+function sendParams() {
+  if (!wgNode) return;
+  wgNode.port.postMessage({ type: 'params', ...params });
+}
+
+function pluck(position = 0.5) {
+  if (!audioCtx) { startAudio().then(() => pluck(position)); return; }
+  if (audioCtx.state === 'suspended') audioCtx.resume();
+  wgNode.port.postMessage({ type: 'pluck', position });
+}
+
+$('freq').addEventListener('input', (e) => {
+  params.freq = +e.target.value; $('vFreq').textContent = params.freq; sendParams();
+});
+$('bright').addEventListener('input', (e) => {
+  params.bright = +e.target.value; $('vBright').textContent = params.bright.toFixed(2); sendParams();
+});
+$('bridge').addEventListener('input', (e) => {
+  params.bridge = +e.target.value; $('vBridge').textContent = params.bridge.toFixed(3); sendParams();
+});
+$('nut').addEventListener('input', (e) => {
+  params.nut = +e.target.value; $('vNut').textContent = params.nut.toFixed(3); sendParams();
+});
+$('pluck').addEventListener('click', () => pluck(0.5));
+
+// ---- Three.js scene ----
+const scene = new THREE.Scene();
+scene.background = new THREE.Color(0x0b0d10);
+const camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 100);
+camera.position.set(0, 1.0, 4.2);
+const renderer = new THREE.WebGLRenderer({ antialias: true });
+renderer.setPixelRatio(window.devicePixelRatio);
+renderer.setSize(window.innerWidth, window.innerHeight);
+document.body.appendChild(renderer.domElement);
+const controls = new THREE.OrbitControls(camera, renderer.domElement);
+controls.target.set(0, 0, 0);
+controls.update();
+
+const STRING_LEN = 3.2;
+function makeLine(color, yOffset, opacity) {
+  const positions = new Float32Array(VIS_N * 3);
+  for (let i = 0; i < VIS_N; i++) {
+    positions[i*3]   = -STRING_LEN/2 + (i/(VIS_N-1)) * STRING_LEN;
+    positions[i*3+1] = yOffset;
+    positions[i*3+2] = 0;
+  }
+  const geom = new THREE.BufferGeometry();
+  geom.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+  const mat = new THREE.LineBasicMaterial({ color, transparent: opacity < 1, opacity });
+  return new THREE.Line(geom, mat);
+}
+
+// Displacement (orange, main) at y=0; right-going (blue) above, left-going (purple) below.
+const dLine = makeLine(0xff7a3d, 0, 1.0);
+const rLine = makeLine(0x3a8fff, 0.9, 0.55);
+const lLine = makeLine(0x7a3dff, -0.9, 0.55);
+scene.add(dLine); scene.add(rLine); scene.add(lLine);
+
+// invisible pick mesh
+const pickGeom = new THREE.BoxGeometry(STRING_LEN, 0.4, 0.4);
+const pickMat = new THREE.MeshBasicMaterial({ visible: false });
+const pickMesh = new THREE.Mesh(pickGeom, pickMat);
+scene.add(pickMesh);
+
+// endpoints (bridge = right, nut = left, visually marked differently)
+const nut = new THREE.Mesh(new THREE.SphereGeometry(0.08, 16, 12), new THREE.MeshBasicMaterial({ color: 0x556070 }));
+nut.position.x = -STRING_LEN/2; scene.add(nut);
+const bridge = new THREE.Mesh(new THREE.BoxGeometry(0.06, 0.4, 0.4), new THREE.MeshBasicMaterial({ color: 0x8a6a3d }));
+bridge.position.x = STRING_LEN/2; scene.add(bridge);
+
+const raycaster = new THREE.Raycaster();
+const mouse = new THREE.Vector2();
+let dragStart = null;
+renderer.domElement.addEventListener('pointerdown', (e) => {
+  dragStart = { x: e.clientX, y: e.clientY };
+});
+renderer.domElement.addEventListener('pointerup', (e) => {
+  if (!dragStart) return;
+  const dx = e.clientX - dragStart.x, dy = e.clientY - dragStart.y;
+  dragStart = null;
+  if (dx*dx + dy*dy > 16) return;
+  mouse.x = (e.clientX / window.innerWidth) * 2 - 1;
+  mouse.y = -(e.clientY / window.innerHeight) * 2 + 1;
+  raycaster.setFromCamera(mouse, camera);
+  const hits = raycaster.intersectObject(pickMesh);
+  if (hits.length > 0) {
+    const px = hits[0].point.x;
+    const pos = (px + STRING_LEN/2) / STRING_LEN;
+    pluck(Math.max(0.02, Math.min(0.98, pos)));
+  } else {
+    startAudio();
+  }
+});
+
+window.addEventListener('resize', () => {
+  camera.aspect = window.innerWidth / window.innerHeight;
+  camera.updateProjectionMatrix();
+  renderer.setSize(window.innerWidth, window.innerHeight);
+});
+
+const AMP = 1.4;
+function tick() {
+  if (latestWave) {
+    const dpos = dLine.geometry.attributes.position.array;
+    const rpos = rLine.geometry.attributes.position.array;
+    const lpos = lLine.geometry.attributes.position.array;
+    for (let i = 0; i < VIS_N; i++) {
+      dpos[i*3+1] = latestWave[i*3]   * AMP;
+      rpos[i*3+1] = 0.9 + latestWave[i*3+1] * AMP * 0.7;
+      lpos[i*3+1] = -0.9 + latestWave[i*3+2] * AMP * 0.7;
+    }
+    dLine.geometry.attributes.position.needsUpdate = true;
+    rLine.geometry.attributes.position.needsUpdate = true;
+    lLine.geometry.attributes.position.needsUpdate = true;
+  }
+  controls.update();
+  renderer.render(scene, camera);
+  requestAnimationFrame(tick);
+}
+tick();
+</script>
+</body>
+</html>

@@ -1,0 +1,301 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Crystal Synthesizer — Proofs Menu</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Manrope:wght@400;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg:#0d0d0e; --panel:#161618; --ink:#ececec; --ink-dim:#9a9a9a;
+    --rule:#2a2a2c; --accent:#c8a36b; --cool:#7fb8ff; --warm:#ffb867;
+    --good:#74c69d; --crit:#e07a7a;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;background:var(--bg);color:var(--ink);font-family:'Cormorant Garamond',Georgia,serif}
+  body{max-width:1080px;margin:0 auto;padding:48px 32px 96px;line-height:1.55}
+  h1{font-family:'Anton',sans-serif;font-weight:400;font-size:64px;line-height:1;margin:0 0 4px;letter-spacing:.5px;text-transform:uppercase}
+  h1 .sub{display:block;font-family:'Manrope',sans-serif;font-size:14px;letter-spacing:3px;color:var(--ink-dim);margin-top:14px;text-transform:uppercase}
+  h2{font-family:'Anton',sans-serif;font-weight:400;font-size:34px;letter-spacing:.5px;margin:0 0 6px;text-transform:uppercase}
+  h3{font-family:'Manrope',sans-serif;font-size:13px;letter-spacing:2.5px;color:var(--accent);text-transform:uppercase;margin:0 0 14px}
+  p{font-size:18.5px;color:#dcdcdc}
+  .meta{font-family:'JetBrains Mono',monospace;font-size:11.5px;color:var(--ink-dim);letter-spacing:.5px}
+  .lede{font-size:21px;color:#e6e6e6;margin:24px 0 8px;max-width:780px}
+  .lede em{color:var(--accent);font-style:italic}
+  hr{border:0;border-top:1px solid var(--rule);margin:36px 0}
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin:24px 0}
+  .card{background:var(--panel);border:1px solid var(--rule);border-radius:8px;padding:22px}
+  .card.full{grid-column:1 / -1}
+  .card h2{font-size:26px}
+  .card .tag{display:inline-block;font-family:'JetBrains Mono',monospace;font-size:10.5px;letter-spacing:1.5px;color:#0d0d0e;background:var(--accent);padding:3px 8px;border-radius:3px;margin-bottom:10px;text-transform:uppercase}
+  .card .tag.cool{background:var(--cool)}
+  .card .tag.warm{background:var(--warm)}
+  .card .tag.new{background:var(--good)}
+  .claim{font-style:italic;color:#e6e6e6;border-left:2px solid var(--accent);padding:2px 0 2px 14px;margin:10px 0 16px;font-size:18px}
+  audio{width:100%;margin:8px 0;filter:invert(.92) hue-rotate(180deg)}
+  .audio-row{display:flex;align-items:center;gap:14px;margin:10px 0;font-family:'Manrope',sans-serif;font-size:13.5px;color:#cfcfcf}
+  .audio-row .label{flex:0 0 220px;color:var(--ink-dim)}
+  .audio-row .label b{display:block;color:var(--ink);font-weight:600;font-family:'Manrope',sans-serif}
+  .audio-row audio{flex:1;margin:0}
+  .visual{background:#0f0f0f;border:1px solid var(--rule);border-radius:6px;padding:12px;margin:14px 0}
+  .visual img,.visual object{display:block;width:100%}
+  table{width:100%;border-collapse:collapse;font-family:'JetBrains Mono',monospace;font-size:13px;margin:12px 0}
+  th,td{text-align:left;padding:6px 10px;border-bottom:1px solid var(--rule);color:#dcdcdc}
+  th{color:var(--accent);font-weight:600;font-size:11px;letter-spacing:1.5px;text-transform:uppercase}
+  td.num{text-align:right;color:#cfcfcf}
+  .teach{background:#101013;border:1px dashed var(--rule);border-radius:6px;padding:14px 18px;margin-top:14px;font-size:16.5px;color:#cfcfcf}
+  .teach b{font-family:'Manrope',sans-serif;font-size:11px;letter-spacing:2px;color:var(--accent);text-transform:uppercase;display:block;margin-bottom:6px}
+  footer{margin-top:64px;border-top:1px solid var(--rule);padding-top:18px;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:1.5px;color:var(--ink-dim);text-transform:uppercase}
+  @media (max-width:760px){
+    .grid{grid-template-columns:1fr}
+    .audio-row{flex-direction:column;align-items:stretch}
+    .audio-row .label{flex:initial}
+    h1{font-size:44px}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="meta">Project · Crystal Synthesizer · cycle 8 · 2026-06-25</div>
+  <h1>Proofs Menu<span class="sub">Hearing what crystal symmetry sounds like</span></h1>
+  <p class="lede">
+    A crystal synthesizer makes the optical properties of crystals <em>audible</em>.
+    The instrument is not a metaphor for the physics — it <em>enacts</em> the physics.
+    Each proof below answers one hypothesis the home entry put on the table.
+    Listen on speakers or headphones; the differences are in the spectrum, not the volume.
+  </p>
+  <p class="meta">Root pitch for the additive proofs is A2 (110 Hz). The dispersion proofs are broadband strikes.</p>
+</header>
+
+<hr>
+
+<!-- ─────────────  THE TRICLINIC PROOF — NEW THIS CYCLE  ───────────── -->
+<section class="card full">
+  <span class="tag new">New · 2026-06-25 · closes the hypothesis arc</span>
+  <h2>Symmetry Determines Timbre</h2>
+  <h3>Diamond (cubic Fd-3m) versus Labradorite (triclinic C-1)</h3>
+  <p class="claim">
+    The home entry's core claim is that <b>crystal symmetry shapes timbre</b>.
+    Diamond is the maximum-symmetry pole — four unique partials packed into less than one octave.
+    Labradorite is the minimum-symmetry pole — eight unique partials spread across more than four octaves,
+    with no two intervals symmetry-related. If the claim holds, the same struck additive synth
+    on the same pitch should sound <em>compressed and bright</em> for diamond and
+    <em>scattered and alien</em> for labradorite. It does.
+  </p>
+
+  <div class="grid">
+    <div>
+      <h3 style="color:var(--cool)">Diamond — 5 partials, 1.00 → 1.65</h3>
+      <div class="visual"><object type="image/svg+xml" data="triclinic-proof/diamond_strike.svg"></object></div>
+      <table>
+        <thead><tr><th>mode</th><th>r<sub>n</sub></th><th>Hz over A2</th></tr></thead>
+        <tbody>
+          <tr><td>TA</td><td class="num">1.00</td><td class="num">110.0</td></tr>
+          <tr><td>TO</td><td class="num">1.32</td><td class="num">145.2</td></tr>
+          <tr><td>LA</td><td class="num">1.48</td><td class="num">162.8</td></tr>
+          <tr><td>LO</td><td class="num">1.57</td><td class="num">172.7</td></tr>
+          <tr><td>Γ-opt</td><td class="num">1.65</td><td class="num">181.5</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div>
+      <h3 style="color:var(--warm)">Labradorite — 8 partials, 1.00 → 17.5</h3>
+      <div class="visual"><object type="image/svg+xml" data="triclinic-proof/labradorite_strike.svg"></object></div>
+      <table>
+        <thead><tr><th>cm⁻¹</th><th>r<sub>n</sub></th><th>Hz over A2</th></tr></thead>
+        <tbody>
+          <tr><td>~60</td><td class="num">1.00</td><td class="num">110</td></tr>
+          <tr><td>~110</td><td class="num">1.83</td><td class="num">201</td></tr>
+          <tr><td>~190</td><td class="num">3.17</td><td class="num">349</td></tr>
+          <tr><td>~280</td><td class="num">4.67</td><td class="num">514</td></tr>
+          <tr><td>~420</td><td class="num">7.00</td><td class="num">770</td></tr>
+          <tr><td>~570</td><td class="num">9.50</td><td class="num">1045</td></tr>
+          <tr><td>~800</td><td class="num">13.3</td><td class="num">1463</td></tr>
+          <tr><td>~1050</td><td class="num">17.5</td><td class="num">1925</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="audio-row">
+    <div class="label"><b>Diamond strike</b>cubic · same envelope · A2</div>
+    <audio controls preload="none" src="triclinic-proof/diamond_strike.wav"></audio>
+  </div>
+  <div class="audio-row">
+    <div class="label"><b>Labradorite strike</b>triclinic · same envelope · A2</div>
+    <audio controls preload="none" src="triclinic-proof/labradorite_strike.wav"></audio>
+  </div>
+  <div class="audio-row">
+    <div class="label"><b>A → B back to back</b>diamond, 1 s gap, labradorite</div>
+    <audio controls preload="none" src="triclinic-proof/symmetry_arc_AB.wav"></audio>
+  </div>
+
+  <div class="teach">
+    <b>What we are teaching</b>
+    Identical additive synth, identical strike envelope, identical root pitch.
+    The only thing that changes between the two clips is the set of partial ratios —
+    and that set comes straight from each crystal's space group. Symmetry comes in through
+    the ratios and exits through your ear. Diamond's whole spectrum fits inside a perfect fifth-plus;
+    labradorite's spans 10.6 × wider, four octaves of partials that the ear cannot fold back into intervals.
+    Bell-like, but no bell you have heard.
+  </div>
+</section>
+
+<hr>
+
+<!-- ─────────────  ACOUSTIC BIREFRINGENCE  ───────────── -->
+<section class="card full">
+  <span class="tag warm">Beryl · hexagonal P6/mcc · 2026-06-08</span>
+  <h2>One Crystal, Two Dispersions</h2>
+  <h3>Acoustic Birefringence in Emerald</h3>
+  <p class="claim">
+    Birefringence in optics — one ray of light enters, two rays leave at different speeds —
+    has a phonon twin. In beryl, sound propagating <em>along the c-axis</em> (down the soft hollow
+    Si₆O₁₈ channels) sees a different dispersion law than sound propagating <em>across the basal
+    plane</em> (through the stiff six-membered silicate rings). Same crystal, same strike,
+    two smears.
+  </p>
+  <div class="visual"><object type="image/svg+xml" data="dispersion-filter/beryl_birefringence_plot.html" style="width:100%;height:340px;border:0"></object></div>
+
+  <div class="audio-row">
+    <div class="label"><b>Dry click</b>broadband strike · undispersed control</div>
+    <audio controls preload="none" src="dispersion-filter/beryl_dry_click.wav"></audio>
+  </div>
+  <div class="audio-row">
+    <div class="label"><b>c-axis</b>soft channels · steeper dispersion · <em>more smear</em></div>
+    <audio controls preload="none" src="dispersion-filter/beryl_c_axis.wav"></audio>
+  </div>
+  <div class="audio-row">
+    <div class="label"><b>basal plane</b>stiff rings · shallower dispersion · <em>less smear</em></div>
+    <audio controls preload="none" src="dispersion-filter/beryl_basal_plane.wav"></audio>
+  </div>
+  <div class="audio-row">
+    <div class="label"><b>Birefringent pair</b>c-axis, gap, basal — back to back</div>
+    <audio controls preload="none" src="dispersion-filter/beryl_birefringent_pair.wav"></audio>
+  </div>
+
+  <div class="teach">
+    <b>What we are teaching</b>
+    A crystal is not isotropic unless its symmetry makes it so. Hexagonal beryl has an optic axis,
+    and that optic axis is also a phonon axis. The dispersion law that determines how a click
+    smears in time is direction-dependent. The two clips are the same physics looked through
+    from two angles — the auditory image of birefringence.
+  </div>
+</section>
+
+<!-- ─────────────  THE DISPERSION FILTER (DIAMOND, ISOTROPIC)  ───────────── -->
+<section class="card full">
+  <span class="tag cool">Diamond · cubic Fd-3m · 2026-06-06</span>
+  <h2>The Crystal as a Prism in Time</h2>
+  <h3>Acoustic Dispersion — the Optical-Sonic Bridge</h3>
+  <p class="claim">
+    An optical prism separates a white flash <em>in space</em> by frequency.
+    A dispersive crystal filter separates a broadband click <em>in time</em> by frequency.
+    Low frequencies arrive first (zone-centre, fast); high frequencies arrive late
+    (zone-boundary, slow). The undispersed click is one event; the dispersed click is a
+    falling rainbow of arrivals, mass conserved, energy retimed.
+  </p>
+  <div class="audio-row">
+    <div class="label"><b>Dry click</b>broadband strike · before the crystal</div>
+    <audio controls preload="none" src="dispersion-filter/01_dry_click.wav"></audio>
+  </div>
+  <div class="audio-row">
+    <div class="label"><b>Dispersed click</b>diamond dispersion law applied · rising arrival</div>
+    <audio controls preload="none" src="dispersion-filter/02_dispersed_click.wav"></audio>
+  </div>
+  <div class="audio-row">
+    <div class="label"><b>Dispersion sweep</b>dispersion strength swept from 0 → max</div>
+    <audio controls preload="none" src="dispersion-filter/03_dispersion_sweep.wav"></audio>
+  </div>
+  <div class="teach">
+    <b>What we are teaching</b>
+    Dispersion is the fact that ω(k) is not a straight line. Different frequencies travel at
+    different group velocities — for light through glass, for water on the ocean, for phonons
+    through diamond. The render's filter is an all-pass: magnitudes are untouched, only phase
+    (and so group delay) varies with frequency. The smear you hear <em>is</em> the dispersion
+    curve, played out across the listening window.
+  </div>
+</section>
+
+<!-- ─────────────  BIREFRINGENCE-AS-PAIRED-PARTIALS (the haiku proof)  ───────────── -->
+<section class="card full">
+  <span class="tag">Calcite vs Quartz · 2026-05-04 · the twelve-word claim</span>
+  <h2>Paired Partials Beating Against Themselves</h2>
+  <h3>Birefringence as Audible Beating</h3>
+  <p class="claim">
+    <em>Calcite splits the light · two indices in one stone — hear it: paired partials.</em><br>
+    Calcite's strong birefringence yields two refractive indices for one direction of propagation.
+    In the phonon analogue, that becomes paired partials at slightly different frequencies
+    — and the ear hears the difference as slow beating. Quartz, less birefringent, beats less.
+  </p>
+  <div class="audio-row">
+    <div class="label"><b>Calcite vs Quartz</b>same gesture, two birefringence strengths</div>
+    <audio controls preload="none" src="proofs/2026-05-04-calcite-vs-quartz.wav"></audio>
+  </div>
+  <div class="visual" style="display:flex;gap:18px;flex-wrap:wrap">
+    <img src="birefringence-proof/README.md" alt="" style="display:none">
+  </div>
+  <div class="audio-row">
+    <div class="label"><b>Ordinary ray only</b>one polarisation · the unsplit reference</div>
+    <audio controls preload="none" src="birefringence-proof/01_ordinary_only.wav"></audio>
+  </div>
+  <div class="audio-row">
+    <div class="label"><b>Extraordinary ray only</b>second polarisation · slightly detuned</div>
+    <audio controls preload="none" src="birefringence-proof/02_extraordinary_only.wav"></audio>
+  </div>
+  <div class="audio-row">
+    <div class="label"><b>Birefringent sum</b>both rays together · paired partials beat</div>
+    <audio controls preload="none" src="birefringence-proof/03_birefringent_sum.wav"></audio>
+  </div>
+  <div class="audio-row">
+    <div class="label"><b>Stereo velocity split</b>O left, E right · the two indices in space</div>
+    <audio controls preload="none" src="birefringence-proof/04_velocity_split_stereo.wav"></audio>
+  </div>
+  <div class="audio-row">
+    <div class="label"><b>Birefringence arc</b>swept from isotropic → fully split</div>
+    <audio controls preload="none" src="birefringence-proof/05_birefringence_arc.wav"></audio>
+  </div>
+  <div class="teach">
+    <b>What we are teaching</b>
+    The home entry compresses to twelve words: <em>optical properties of crystals, made audible:
+    birefringence as paired partials beating against themselves.</em> This proof is the haiku's
+    ear-check. The interval between the paired partials is set by the difference of the two
+    sound speeds — for the same crystal, the same direction, two polarisations. Beating is the
+    direct auditory translation of double refraction.
+  </div>
+</section>
+
+<hr>
+
+<!-- ─────────────  THE TEACHING ARC  ───────────── -->
+<section class="card full">
+  <h2>The Hypothesis Arc</h2>
+  <h3>What the proofs add up to</h3>
+  <table>
+    <thead><tr><th>proof</th><th>system</th><th>claim tested</th><th>verdict</th></tr></thead>
+    <tbody>
+      <tr><td>Calcite vs Quartz</td><td>trigonal · birefringent</td><td>birefringence audible as paired-partial beating</td><td style="color:var(--good)">confirmed</td></tr>
+      <tr><td>Dispersion filter</td><td>cubic · diamond</td><td>crystal dispersion separates a click in time</td><td style="color:var(--good)">confirmed (cycle 5/6, rising-arrival correct)</td></tr>
+      <tr><td>Anisotropic beryl</td><td>hexagonal P6/mcc</td><td>direction through lattice changes the dispersion law</td><td style="color:var(--good)">confirmed</td></tr>
+      <tr><td>Diamond vs Labradorite</td><td>cubic Fd-3m vs triclinic C-1</td><td>symmetry determines timbral character</td><td style="color:var(--good)">confirmed (this cycle)</td></tr>
+    </tbody>
+  </table>
+  <p>
+    The four proofs together close the home entry's hypothesis arc: optical
+    properties of crystals are audible because the same periodic symmetry that
+    governs how light moves through the lattice governs how phonons do. The next
+    move is the playable instrument — Stage 1 of the staging arc: a monophonic
+    Gen~ partial bank inside Max, with the seven Bravais systems on a selector.
+    The proofs are the curriculum's anchor; the instrument is the experience.
+  </p>
+</section>
+
+<footer>
+  Loudon Live · Autodidact Polymaths · Crystal Synthesizer · proofs menu
+</footer>
+
+</body>
+</html>

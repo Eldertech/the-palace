@@ -22,3 +22,24 @@ action: deposit
 
 ---
 
+## card-038 — Particle Synthesis
+**received:** 2026-06-25 04:15:13  ·  **purpose:** the physics-is-DSP insight as koan — if tuning the spring and changing physics are the same act, who is the composer?
+
+action: discard
+
+---
+
+## card-038 — Particle Synthesis
+**received:** 2026-06-25 04:15:14  ·  **purpose:** the physics-is-DSP insight as koan — if tuning the spring and changing physics are the same act, who is the composer?
+
+action: discard
+
+---
+
+## card-038 — Particle Synthesis
+**received:** 2026-06-25 04:15:18  ·  **purpose:** the physics-is-DSP insight as koan — if tuning the spring and changing physics are the same act, who is the composer?
+
+action: discard
+
+---
+

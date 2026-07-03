@@ -1,11 +1,13 @@
 ---
+title: Wavetable Scanner
 type: project
+status: active
+pillars:
+  - creation
+  - tools
+born: 2026-05
 stage: sprout
-adopted: 2026-05-31
-tier_vocabulary:
-  sketch: Sketch
-  study: Study
-  piece: Piece
+forward_vector: "I am the single-cycle morph laboratory — load any wavetable, see its frames as a 3D landscape, sweep Position to morph through them, switch between tables to compare libraries. I want to grow into a browser-side packer that absorbs the work [[pack_wavetable.py]] currently does outside the browser, so any folder of single-cycle WAVs becomes a centroid-sorted morphable table without leaving the page — that move earns my Sketch → Study transition and turns me into a self-contained tool Loudon can use across the rest of his AKWF library."
 links:
   - target: "[[1D Wavetable Scanning]]"
     type: exemplifies
@@ -25,10 +27,12 @@ links:
   - target: "[[Waveguide Synthesizer]]"
     type: mirrors
     label: geometry-is-the-data
-tags: [project, artifact, synthesis, wavetable, dsp, web, creation, tools]
+tags: [artifact, synthesis, wavetable, dsp, web]
 ---
 
 # Wavetable Scanner
+
+![[Wavetable Scanner — hero.png]]
 
 A browser-deployable single-cycle wavetable morph laboratory. Load a wavetable, see all its frames as a 3D ridge-landscape (each frame a `BufferGeometry` line, brightest at the back under a centroid sort), hold a sustained tone, and scan the cursor across the table to morph through the frames. The artifact tests two things at once: whether `pack_wavetable.py`'s centroid-sorted output actually morphs well in a real synth, and whether the pattern of *audio reads the same Float32Array the renderer reads* keeps the picture and the sound aligned through the morph.
 
@@ -58,7 +62,7 @@ Single HTML file, raw r128 CDN, Blob-URL worklet, desktop Chrome primary. Embedd
 
 Headless verification: both the worklet body and the main app script pass `node --check` (with `${FRAME_LEN}` substituted to the literal constant — the worklet-template-literal hides interpolations from a standalone parse, per [[Shop/Web Audio Worklet]] §Gotchas 2026-05-30). In-browser audible confirmation belongs to whoever opens it first — the Sketch-tier bar.
 
-Bundle: `Artifacts/Wavetable Scanner/wavetable_scanner.html`. Standalone sibling at session-outputs scope kept available for users who want a portable copy with tokens inlined.
+Bundle: `Wavetable Scanner/wavetable_scanner.html` (entry bundle per SCHEMA §8 — owned files live in the entry's bundle, sibling to the .md, with the artifact's CSS link reaching one folder up to the canonical `colors_and_type.css`). Standalone sibling at session-outputs scope kept available for users who want a portable copy with tokens inlined.
 
 #### Sketch round 2 — Drone default fix (same day)
 
@@ -83,7 +87,7 @@ First Sketch shipped key-gated; the user opened it, hit Engage, swept Position, 
 
 ## Gotchas seen on this build
 
-Recorded as a session writeup at `outputs/wavetable_scanner_gotchas.md` and deposited into the relevant Specialist entries on 2026-05-31. Headline items:
+Full build-time discovery record lives in the entry bundle: [[Wavetable Scanner — gotchas]] (`Wavetable Scanner/Wavetable Scanner — gotchas.md`). Each gotcha was also deposited into the relevant Specialist entry on 2026-05-31. Headline items:
 
 - The first-Sketch drone-vs-gated default mistake (above) — now a deposited pattern.
 - `decodeAudioData` neuters its input ArrayBuffer; slice before calling.

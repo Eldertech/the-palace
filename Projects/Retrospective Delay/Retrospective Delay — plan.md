@@ -12,21 +12,25 @@ forward_vector: "I am Retrospective Delay's materialized work state — open dec
 
 > Materialized read-model of the steward's work state. Regenerated each cycle from the [[STIGMERGY]] persistent board; do not hand-edit the decision sections.
 > **Forward vector:** see [[Retrospective Delay]] frontmatter `forward_vector` — not copied here (single-source-of-truth).
-> _Last materialized: 2026-06-23T02:27:59.461Z._
+> _Last materialized: 2026-06-25T00:30:42.874Z._
 
 ## Plan
 
 - **Stage:** growing (read live from [[Retrospective Delay]] frontmatter)
 - **Teaching arc:** [[Retrospective Delay — Staging]] — read by the steward; arc changes are flagged, not edited here.
-- **Open:** 1  ·  **Resolved:** 8  ·  **Iteration:** 17
+- **Open:** 0  ·  **Resolved:** 9  ·  **Iteration:** 18
 
 ## Open Decisions
+
+_None open._
+
+## Resolved Decisions
 
 ### `retrospective-delay-steward-041` — directional_decision
 - **Options:** WIRE-NOW · ADD-FRAMES · DRAW-OVER · STEER
 - **Posted:** 2026-06-22T22:36:30-04:00
-
-## Resolved Decisions
+- **Resolved:** 2026-06-25T00:09:18.562Z (by `resp-mqsqvtnl-e0xhy0`)
+- **Outcome:** GRANTED — option_id=WIRE-NOW
 
 ### `retrospective-delay-steward-039` — directional_decision
 - **Options:** RENDER-SET · POLISH-FIRST · DROP-INK · STEER
@@ -78,6 +82,7 @@ forward_vector: "I am Retrospective Delay's materialized work state — open dec
 
 ## Done
 
+- 2026-06-25T00:30:42.874Z — cycle complete (iteration 18); posted: none
 - 2026-06-23T02:27:59.461Z — cycle complete (iteration 17); posted: retrospective-delay-steward-040, retrospective-delay-steward-041
 - 2026-06-23T01:57:38.516Z — cycle complete (iteration 16); posted: retrospective-delay-steward-038, retrospective-delay-steward-039
 - 2026-06-23T00:06:10.625Z — cycle complete (iteration 15); posted: retrospective-delay-steward-036, retrospective-delay-steward-037
@@ -91,4 +96,3 @@ forward_vector: "I am Retrospective Delay's materialized work state — open dec
 - 2026-06-07T17:12:12.717Z — cycle complete (iteration 7); posted: retrospective-delay-steward-018, retrospective-delay-steward-019, retrospective-delay-steward-020
 - 2026-06-07T16:26:22.591Z — cycle complete (iteration 6); posted: retrospective-delay-steward-015, retrospective-delay-steward-016, retrospective-delay-steward-017
 - 2026-06-07T15:55:33.549Z — cycle complete (iteration 5); posted: retrospective-delay-steward-013, retrospective-delay-steward-014
-- 2026-06-06T10:50:45Z — cycle complete (iteration 4); posted: retrospective-delay-steward-010, retrospective-delay-steward-011, retrospective-delay-steward-012
