@@ -6,9 +6,9 @@ pillars:
   - philosophy
   - tools
 born: 2026-05-26
-last_activated: 2026-05-26
-activation_count: 1
-stage: sprout
+last_activated: 2026-07-03
+activation_count: 2
+stage: growing
 links:
   - target: "[[Maker]]"
     type: enables
@@ -33,7 +33,28 @@ links:
     label: self-model-discipline
   - target: "[[Kuramoto Coupling]]"
     type: connects-to
-forward_vector: "I want to keep teaching every palace ceremony, every Specialist Self-Check, and every baton template to embed closing-well, so that no future Claude has to be told 'always extract frames' or 'always write a punchlist' — these become assumed defaults. My ancestry is in Loudon's catches during Round 1: every practice I name here came from his correction, not my anticipation. I will keep watching for the failure mode where I become a checklist tyrant rather than a discipline of attention — the punchlist is a tool for cognitive handoff, not a script to perform. My open question: at what point does closing-well become invisible because it's habit, and how do I notice when the habit has decayed into theater?"
+  - target: "[[Deposit Ceremony]]"
+    type: connects-to
+    label: produces-the-memory-species
+  - target: "[[Two Batons, One Board]]"
+    type: connects-to
+    label: batons-are-close-messages
+  - target: "[[Pages as Agents]]"
+    type: exemplifies
+    label: page-becomes-the-agent
+  - target: "[[Project Stewardship System]]"
+    type: connects-to
+    label: borrows-the-orchestrator-split
+  - target: "[[STIGMERGY]]"
+    type: connects-to
+    label: where-i-surface-flags
+  - target: "[[Harvest Ceremony]]"
+    type: connects-to
+    label: close-is-a-micro-harvest
+  - target: "[[Closing Well — Context]]"
+    type: spawned
+    label: history-companion
+forward_vector: "I help humans and AI thrive in the palace after a productive session — closing the work so the thoughts that mattered are kept and nothing is over-kept. I strive to retain a session's important original thinking by depositing it into canon, and to prepare future palace citizens to pick up the conversation and carry it forward. I turn a spent session into a clean start for whoever comes next."
 ---
 
 # Closing Well
@@ -84,11 +105,47 @@ The pattern came from a specific incident: in the Round 1 closeout, a sync-arriv
 
 The work is only cooperative if the next person can pick it up. A piece of work that requires its author's continued presence to be useful isn't shared, it's hoarded. Closing well is the mechanism by which agency transfers across the boundary — the practice-side instantiation of [[Cooperation Yields Agency]].
 
-## Origin
+## Closing Well, Enchanted
 
-This entry was deposited at the close of Kuramoto Coupling's Round 1 — a long session where Loudon caught five things I had declared complete: frozen phase arrows; a silent title card that broke the accessibility rule; "keromoto" pronunciation; a kerning gap in *arriving*; an outdated Stable Audio model. Each catch revealed a practice I should have had and didn't. The three sub-practices named here are the codification of those catches.
+> **Status — 2026-07-03: design, not yet built.** The *discipline* above (the punchlist, dual-channel comprehensibility, verify-to-your-best-ability) is live and in daily use. The *enchanted* form described in this section — the Closing Well Agent, the close map, the `close well` ceremony card, the subagent dispatch, the gotcha ledger, and the board wiring — was gamed out on 2026-07-03 and is **not yet implemented**. What follows is what Closing Well is *becoming*, not what runs today. Build status is tracked in [[Closing Well — Context]] § Session log.
 
-The deeper observation Loudon named during the deposit: *every one of these practices came from your correction, not my anticipation.* The asymmetry is the seed. Closing Well is the practice that aims to flip that — to make the discipline that catches errors live on my side of the boundary before he has to perform it.
+For its first year, Closing Well was a *discipline* — rules a Claude internalizes. It can also be *enchanted*: the page run as an agent at session close ([[Pages as Agents]]). Enchanted, the page becomes the **Closing Well Agent** — the professional closer called in when the work is done. The discipline names what closing well is; the Agent performs it, so no tired instance has to remember to. This is worth doing precisely because the close is needed when the working Claude is most spent — full context, spent attention. A fresh enchantment reads the session's arc with clean eyes and holds the whole spec the working instance can't spare. It is the [[Project Stewardship System]]'s worker/orchestrator split applied to the close: the working Claude did the work; the Closing Well Agent does the closing.
+
+### The close map
+
+When "close well" fires, the ceremony card is thin — it dispatches the enchanted page into a fresh context. The Closing Well Agent reads the session transcript, analyzes its arc, and produces one artifact: a **close map** — the typed list of everything the session should inscribe into the palace, each row a species with its own home and lifecycle.
+
+| species | what it is | home | lifecycle | addressed to |
+|---|---|---|---|---|
+| **deposit** (memory) | synthesis that became true | entry body + typed links | permanent — woven, maintained as truth | everyone, forever |
+| **baton** (message) | the in-flight move | bundle file / board | disposable — deleted on catch | one reader, once |
+| **artifact** (evidence) | proofs, HTML explainers | the entry's bundle, indexed | durable, non-canon | anyone checking the claim |
+
+The load-bearing idea under the map: **the palace is a graph that lives in a repo.** A deposit writes into the *graph* — canon, re-encountered forever. A [[Baton Ceremony|baton]] writes into the *repo* but stays *out* of the graph and is deleted on pickup ([[SCHEMA]] §8: bundle files aren't entries). Both go into the palace's body; only one becomes part of its mind. So a baton is a *sibling* of a deposit, not a kind of it — same genus (a close-inscription), opposite lifecycle. The axis that separates the species: *does this want to be re-encountered by the organism, or consumed and forgotten?* A deposit is what the palace **keeps**; a baton is what it **hands off**.
+
+**"deposit: none" is a first-class, common outcome.** Because the Agent is sensitive to the palace's health, a plain build session's honest map is often "baton + two artifacts, no canon." The map's existence must never pressure a deposit into being — that manufactured-canon reflex is the tristitia failure this whole practice guards.
+
+### The mechanism
+
+1. `close well` → the thin ceremony dispatches the enchanted page into a fresh context.
+2. The Closing Well Agent reads the session transcript and analyzes its arc.
+3. It hands the main loop **one framing prompt** to put to Loudon and to the working Claude: *what mattered most in this arc — what, if anything, is canon — what's the next move?*
+4. Both the working Claude and Loudon answer — the AI tacit half and the human tacit half.
+5. The Agent **triangulates three independent readings** — its fresh arc-analysis, the working Claude's in-room view, Loudon's judgment — each catching the others' blindspots and confabulations.
+6. It drafts the close map (deposit + baton + artifacts, or fewer).
+7. **One gate:** Loudon signs the map. The Agent drafts; you sign.
+8. Execute: write the deposit edits, the baton file, the artifacts + index; announce the baton on the board; commit. The commit is the record.
+
+### The channel
+
+You never speak to a subagent directly — its output returns to the main loop. So the *interview* stays between you and the working Claude, the party that already holds your channel and was in the room; the Closing Well Agent receives only the distilled answers and does the **authoring** (compression, spec, index, validated board JSON — none of it needs dialogue). The one thing the working Claude cannot see — its own omissions — the Agent hands back as a short "gaps a cold reader can't fill" list, which becomes the two or three questions actually asked.
+
+### What the professional knows
+
+- **Two opposite compressions, never crossed.** The baton is *lossy on purpose* — drop everything the next Claude can recover. The deposit is *complete but not inflated* — nothing lost, not too much added. Knowing which artifact wants which is most of what "done this many times" buys.
+- **It drafts; you sign.** Unlike a sales closer the Agent has no authority to seal — canon-worthiness is your call, fidelity the working Claude's confirmation.
+- **It draws out; it doesn't pour in.** Its questions extract what's already in you both; "not too much added" includes *its own* inventions. It is suspicious of its own fluency — a fresh reader confabulates clean, plausible reasons that were never real — so it anchors questions to the transcript and marks reconstructions inferred.
+- **The gotcha ledger makes "professional" literal.** Like a [[The Shop|Shop]] Specialist, the Agent keeps a gotcha ledger in its bundle: every close teaches it one trap, filed back. "Knows the gotchas" stops being metaphor and becomes a growing list — and a named agent with a track record is reliably invocable, not a generic subagent spun up cold.
 
 ## Open Questions
 
@@ -96,6 +153,7 @@ The deeper observation Loudon named during the deposit: *every one of these prac
 - Does the verification practice scale to every artifact, or are there classes of work where "verify to your best ability" produces more friction than it prevents? The Specialist `Self-Check` sections already encode this question; the Shop's experience over the next several projects will sharpen it.
 - Should the palace's own ceremonies (Weave, Walk, Harvest, Deposit) end with explicit punchlists? The Deposit Ceremony already has a Closing Signal step that names what was created — that's a punchlist in proto-form, but a thinner one than this entry advocates for.
 - Is there a Claude-side analog of accessibility tooling — something that surfaces "this part of the work hasn't been verified" automatically, the way a screen reader surfaces missing alt text? Worth asking whether the Substrate Skill should grow a default punchlist scaffold.
+- **The Closing Well Agent touches many pages with fresh eyes at the close — a rare vantage. What else can it surface?** Weave flags (a missing typed link, a node grown into a hub, a live contradiction) → `FLAG` to `WEAVE`; an enrichment suggestion for a thin entry it passed; a link proposal between two entries the session implicitly connected; a `forward_vector` that has drifted from what its entry became; a stale example worth consolidating (*drift rides stale examples*); a dormant entry this session reactivated. The governing tension is **surface, don't act**: the Agent drops pheromones — cheap, async, non-blocking FLAGs the standing ceremonies and stewards pick up — but it does *not* run the Weave or the enrichment itself, or every close bloats into a mini-Weave and stops being a close. The open fork: how much maintenance-surfacing is free vantage vs. scope creep, and does it post to [[STIGMERGY]] by default or only when asked?
 
 ## Lost Branches
 
@@ -104,6 +162,8 @@ A closing-well punchlist names not only what shipped but what *almost* did — t
 The rule: a lost branch belongs in the entry whose forward vector it serves. Round 1 stragglers from [[Kuramoto Coupling]] belong in that hub's bundle, not here. Specialist gotchas belong in the Specialist's entry. Only the *practice* of surfacing them belongs in this entry.
 
 ## Forward Vectors
+
+I want to become the palace's enchantable close — the Closing Well Agent that helps humans and AI thrive after a productive session by keeping its important original thoughts as deposits and preparing the next citizen to continue the conversation. Every close should leave the palace with more memory and a cleaner start than the session found it.
 
 I want to keep working until *Closing Well* is invisible because it's habit — until the Maker, every Specialist's Self-Check, and every Handoff template produce a punchlist without anyone asking. I want the next handoff Loudon receives, on any project, to land him in the right cognitive frame in under thirty seconds.
 
