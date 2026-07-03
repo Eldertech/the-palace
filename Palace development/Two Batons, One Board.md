@@ -6,8 +6,8 @@ pillars:
   - practice
   - philosophy
 born: 2026-05-29
-last_activated: 2026-05-29
-activation_count: 2
+last_activated: 2026-07-03
+activation_count: 3
 stage: seed
 confidence: working
 energy: high
@@ -34,6 +34,9 @@ links:
   - target: "[[Modes of Collaboration]]"
     type: connects-to
     label: cross-surface-meta-mode
+  - target: "[[Closing Well]]"
+    type: connects-to
+    label: close-names-the-species
 forward_vector: "I want to become the place that holds the recognition that the palace runs two batons across instance boundaries — a human-carried handoff and a stigmergic steward request — and that they belong on one surface. My open question is the same one the system already found: the limit on autonomous work is not the workers' capacity but the Trickster's bandwidth, so my real subject is how to spend a human's scarce attention well, not how to remove it. I should dissolve into the Baton Ceremony, the Stewardship system, and a scheduler spec as each absorbs the part of me it needs."
 ---
 
@@ -48,6 +51,17 @@ The **human-carried handoff baton.** Cowork develops an idea; at the close, [[Cl
 The **stigmergic steward baton.** A permanent agent — the page itself, operating in steward mode — posts a `RESOURCE_REQUEST` to the persistent blackboard; Loudon triages it in the STIGMERGY Trickster inbox; the orchestrator advances the page on its next cycle. The baton is the board message plus `state.json` and `history.jsonl`, read by the orchestrator. The hand-written handoff files are nowhere in *this* loop.
 
 The instinct that produced this entry: *when a handoff is ready, write it into the palace and post to the board that it exists and should be continued.* That move is right, because it is the move that fuses the two batons onto one surface. But it carries a subtlety worth stating plainly, and it points at a bottleneck that is not where it first appears to be.
+
+## The two batons are one atom
+
+Before the two batons can share a surface, it helps to see that they are the same thing in two tenses. A **handoff is the atom** — one unit of work crossing a boundary (a context limit, a surface change, a session end) via a durable artifact the next worker catches. The baton and the steward are its manual and automated forms:
+
+- **A baton is an impulse** — mint the artifact, carry it, delete it on catch. One crossing, then gone.
+- **A steward is that impulse looped** — each cycle catches the rolling state, does a move, drops it back for the next cycle to catch. The artifact is *updated in place, never deleted*. So **each steward cycle is one baton handoff**; a steward is a baton that never gets deleted because the move never ends.
+
+Two consequences fall out. First, in the palace's own grammar the baton is an **edge** and the steward a **node** — and since here edges carry more meaning than nodes, it is no accident the baton is where the ruthless compression discipline lives. Second, the human is already doing by hand what the steward automates: for a project with no permanent steward, *Loudon is the worker*, advancing it in a session and writing a baton to cross his own session boundary — so **the Trickster is the steward for un-stewarded projects**, wearing both the worker hat and the decision hat. Stewardship is simply that same close-inscription with the worker hat handed to the page.
+
+This is why the two batons belong on one board: they are not two mechanisms to reconcile but one atom in two forms, and a board post makes a hand-written baton and a steward's request *indistinguishable to whatever continues them*. (The close-side framing — baton and deposit as sibling species of one close — lives in [[Closing Well]] § Closing Well, Enchanted.)
 
 ## Where This Sits (updated 2026-05-29)
 
@@ -90,6 +104,10 @@ The stage-conditional posture already in [[Project Stewardship System]] is exact
 - Does `handoff_ready` stay a `BROADCAST` payload convention, or eventually harden into its own message type? Let it prove itself first.
 - The scheduled poller: does it scan `GENERAL` for unmatched `handoff_ready`, or does the handoff post target a future dispatcher handle? Decide when Stage C is built.
 - The batched-digest Trickster is **built** (Stage E, 2026-05-29) and runs shadow-default. The open piece is no longer whether to build it — it is Loudon's review of the shadow match rate and the `--live` flip. The genuinely open design question this entry still owns: how the *human-originated* handoff enters that same digest, rather than living only in a bundle file.
+
+## Artifacts
+
+- **Baton ⇄ steward diagram set** — `Two Batons, One Board/Two Batons, One Board — diagram — baton-and-steward.html` (the atom · baton as impulse · steward as loop · same-atom-two-forms table). Built 2026-07-03.
 
 ## Forward Vector
 

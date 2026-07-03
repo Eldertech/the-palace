@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The scribe-assisted close — sequence</title>
+<style>
+:root{--text-primary:#1c1917;--text-secondary:#57534e;--border:#d6d3d1;}
+*{box-sizing:border-box}
+body{background:#faf9f7;color:var(--text-primary);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",system-ui,sans-serif;line-height:1.6;max-width:780px;margin:0 auto;padding:2rem 1.5rem;}
+h1{font-size:20px;font-weight:500;margin:0 0 .3rem}
+.sub{color:var(--text-secondary);font-size:13px;margin:0 0 1.6rem}
+svg{max-width:100%;height:auto}
+svg text{font-family:inherit}
+footer{margin-top:2rem;padding-top:.9rem;border-top:1px solid var(--border);font-size:12px;color:var(--text-secondary)}
+</style>
+</head>
+<body>
+<h1>The scribe-assisted close — sequence</h1>
+<p class="sub">Three lanes: you, the original (working) Claude, and a fresh Closing Well Agent. Amber marks the load-bearing moments no subagent touches. Evidence for <em>Closing Well</em> § Closing Well, Enchanted. Built 2026-07-03.</p>
+
+<svg width="100%" viewBox="0 0 680 626" role="img" xmlns="http://www.w3.org/2000/svg">
+<title>Sequence of a scribe-assisted baton, initiated from a Claude Code session</title>
+<desc>Three lanes — you, the original Claude, and a fresh scribe subagent. You trigger the baton; the original names the move; the scribe does the mechanical work and interviews the original; the original shows you a draft; you approve at the gate; the original writes the baton, posts it to the board, and commits. A banner notes no scheduler picks it up yet, so you still trigger the pickup.</desc>
+<defs>
+<marker id="mg" markerWidth="9" markerHeight="9" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#71717a"/></marker>
+<marker id="ma" markerWidth="10" markerHeight="10" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#b7791f"/></marker>
+</defs>
+
+<rect x="20" y="14" width="140" height="40" rx="4" fill="none" stroke="#71717a" stroke-width="1.5"/>
+<text x="90" y="33" text-anchor="middle" font-size="13" font-weight="500" fill="var(--text-primary)">you</text>
+<text x="90" y="48" text-anchor="middle" font-size="11" fill="var(--text-secondary)">Loudon</text>
+<rect x="270" y="14" width="140" height="40" rx="4" fill="none" stroke="#71717a" stroke-width="1.5"/>
+<text x="340" y="33" text-anchor="middle" font-size="13" font-weight="500" fill="var(--text-primary)">original Claude</text>
+<text x="340" y="48" text-anchor="middle" font-size="11" fill="var(--text-secondary)">this session · full context</text>
+<rect x="520" y="14" width="140" height="40" rx="4" fill="none" stroke="#71717a" stroke-width="1.5"/>
+<text x="590" y="33" text-anchor="middle" font-size="13" font-weight="500" fill="var(--text-primary)">Closing Well Agent</text>
+<text x="590" y="48" text-anchor="middle" font-size="11" fill="var(--text-secondary)">fresh subagent</text>
+
+<line x1="90" y1="54" x2="90" y2="555" stroke="#a1a1aa" stroke-width="1" stroke-dasharray="4 5"/>
+<line x1="340" y1="54" x2="340" y2="555" stroke="#a1a1aa" stroke-width="1" stroke-dasharray="4 5"/>
+<line x1="590" y1="54" x2="590" y2="555" stroke="#a1a1aa" stroke-width="1" stroke-dasharray="4 5"/>
+
+<text x="215" y="80" text-anchor="middle" font-size="12" fill="var(--text-primary)">1 · close well</text>
+<line x1="96" y1="86" x2="334" y2="86" stroke="#71717a" stroke-width="1.5" marker-end="url(#mg)"/>
+
+<rect x="250" y="98" width="180" height="42" rx="4" fill="none" stroke="#b7791f" stroke-width="2"/>
+<text x="340" y="115" text-anchor="middle" font-size="12" fill="var(--text-primary)">name the move (1 line)</text>
+<text x="340" y="131" text-anchor="middle" font-size="11" fill="var(--text-secondary)">+ guardrail check</text>
+
+<text x="465" y="156" text-anchor="middle" font-size="12" fill="var(--text-primary)">2 · dispatch: spec · transcript · move</text>
+<line x1="346" y1="162" x2="584" y2="162" stroke="#71717a" stroke-width="1.5" marker-end="url(#mg)"/>
+
+<rect x="502" y="176" width="174" height="56" rx="4" fill="none" stroke="#71717a" stroke-width="1.5"/>
+<text x="589" y="194" text-anchor="middle" font-size="11" fill="var(--text-primary)">read transcript · arc</text>
+<text x="589" y="210" text-anchor="middle" font-size="11" fill="var(--text-primary)">do the mechanical half</text>
+<text x="589" y="226" text-anchor="middle" font-size="11" fill="var(--text-primary)">simulate the cold catch</text>
+
+<text x="465" y="246" text-anchor="middle" font-size="12" fill="var(--text-primary)">3 · close map draft + gap questions</text>
+<line x1="584" y1="252" x2="346" y2="252" stroke="#71717a" stroke-width="1.5" marker-end="url(#mg)"/>
+
+<text x="465" y="278" text-anchor="middle" font-size="12" fill="var(--text-primary)">4 · terse answers (tacit gaps)</text>
+<line x1="346" y1="284" x2="584" y2="284" stroke="#71717a" stroke-width="1.5" marker-end="url(#mg)"/>
+<text x="465" y="300" text-anchor="middle" font-size="11" fill="var(--text-secondary)">SendMessage · 1–2 rounds</text>
+
+<rect x="502" y="312" width="174" height="40" rx="4" fill="none" stroke="#71717a" stroke-width="1.5"/>
+<text x="589" y="328" text-anchor="middle" font-size="11" fill="var(--text-primary)">triangulate · flag inferred</text>
+<text x="589" y="344" text-anchor="middle" font-size="11" fill="var(--text-primary)">validate board json</text>
+
+<text x="465" y="368" text-anchor="middle" font-size="12" fill="#9a6410">5 · signed-ready close map</text>
+<line x1="584" y1="374" x2="346" y2="374" stroke="#b7791f" stroke-width="2" marker-end="url(#ma)"/>
+
+<text x="215" y="398" text-anchor="middle" font-size="12" fill="var(--text-primary)">6 · show map (inferred flagged)</text>
+<line x1="334" y1="404" x2="96" y2="404" stroke="#71717a" stroke-width="1.5" marker-end="url(#mg)"/>
+
+<text x="215" y="430" text-anchor="middle" font-size="12" fill="#9a6410">7 · sign the map — the gate</text>
+<line x1="96" y1="436" x2="334" y2="436" stroke="#b7791f" stroke-width="2.5" marker-end="url(#ma)"/>
+
+<rect x="232" y="452" width="216" height="72" rx="4" fill="none" stroke="#71717a" stroke-width="1.5"/>
+<text x="340" y="469" text-anchor="middle" font-size="11" fill="var(--text-primary)">deposit edits · baton file</text>
+<text x="340" y="485" text-anchor="middle" font-size="11" fill="var(--text-primary)">artifacts + index</text>
+<text x="340" y="501" text-anchor="middle" font-size="11" fill="#9a6410">post handoff_ready → board</text>
+<text x="340" y="517" text-anchor="middle" font-size="11" fill="var(--text-primary)">commit — the record</text>
+
+<text x="215" y="542" text-anchor="middle" font-size="12" fill="var(--text-primary)">8 · paths + invocation</text>
+<line x1="334" y1="548" x2="96" y2="548" stroke="#71717a" stroke-width="1.5" marker-end="url(#mg)"/>
+
+<rect x="40" y="566" width="600" height="34" rx="4" fill="none" stroke="#a1a1aa" stroke-width="1" stroke-dasharray="5 4"/>
+<text x="340" y="587" text-anchor="middle" font-size="11" fill="var(--text-secondary)">no scheduler yet — you still trigger the pickup · board post = visibility, not autonomy</text>
+
+<text x="340" y="618" text-anchor="middle" font-size="11" fill="#9a6410">amber = the load-bearing moments: the move · the finished map · your decision</text>
+</svg>
+
+<footer>Loud'n Live</footer>
+</body>
+</html>

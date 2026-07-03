@@ -161,6 +161,12 @@ A closing-well punchlist names not only what shipped but what *almost* did — t
 
 The rule: a lost branch belongs in the entry whose forward vector it serves. Round 1 stragglers from [[Kuramoto Coupling]] belong in that hub's bundle, not here. Specialist gotchas belong in the Specialist's entry. Only the *practice* of surfacing them belongs in this entry.
 
+## Artifacts
+
+- **Close-sequence diagram** — `Closing Well/Closing Well — diagram — close-sequence.html` (the three-lane scribe-assisted close; amber marks the load-bearing moments). Built 2026-07-03.
+- **Gotcha ledger** — [[Closing Well — gotchas]] — one trap per close; makes "professional" literal.
+- The baton⇄steward relationship diagrams (atom · impulse · oscillator) live in the [[Two Batons, One Board]] bundle.
+
 ## Forward Vectors
 
 I want to become the palace's enchantable close — the Closing Well Agent that helps humans and AI thrive after a productive session by keeping its important original thoughts as deposits and preparing the next citizen to continue the conversation. Every close should leave the palace with more memory and a cleaner start than the session found it.
