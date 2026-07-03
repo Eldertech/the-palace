@@ -30,6 +30,25 @@ One divergence-free field = **curl of a scalar potential** ψ (laminar drift + G
 `(vx, vy) = (∂ψ/∂y, −∂ψ/∂x)`. Sample to a grid, export `flow-field.json`. Everything reads this file
 **untouched**. (`proofs/session-3-flowfield/field.py`.)
 
+## Obstacle — the field flows around a character (Session 4)
+
+The field can be made **character-aware** — a *field-author* stage before the legs, so the shared-source
+rule is untouched. Three steps (`proofs/session-4-figure-flow/field.py`):
+
+1. **Mask** the character to a solid silhouette: gate the true filled depth plate with the *dilated OpenPose
+   skeleton* as a locator, so the floor + background props drop out and only the body remains.
+2. **Project**: zero the velocity inside the solid, then one Poisson solve `∇²p = ∇·v` — Neumann (no-flux)
+   at the body surface + top/bottom walls, open inlet/outlet — and set `v = v − ∇p`. The fluid is now
+   divergence-free **and tangent to the body**: streamlines part around it, compress past the shoulders/hips,
+   stagnate windward.
+3. **Wake**: seed a counter-rotating vortex **pair** (curl of gaussians) just behind the lee edge *before*
+   the projection, so the disturbance sheds downwind instead of re-closing symmetrically.
+
+Output is still one `flow-field.json` (now carrying a `solid` mask); every leg reads it untouched — comic
+speed-lines wrap the body, dust piles windward + sheds a wake, from the same field. Honest limit: the wake
+is *authored* (a placed pair), not emergent; genuine shed turbulence wants the light stable-fluids option.
+See `proofs/session-4-figure-flow/session-4-report.md`.
+
 ## The three resolutions
 
 | Leg | Register | How | Per-leg transfer (all it needs) |

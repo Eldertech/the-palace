@@ -32,6 +32,12 @@
       "port": 8201
     },
     {
+      "name": "blueline-figure-flow",
+      "runtimeExecutable": "python3",
+      "runtimeArgs": ["-m", "http.server", "8202", "--directory", "Projects/BLUELINE/proofs/session-4-figure-flow"],
+      "port": 8202
+    },
+    {
       "name": "blueline-clock",
       "runtimeExecutable": "_tools/ComfyUI/venv/bin/python",
       "runtimeArgs": ["Projects/BLUELINE/proofs/track-III-clock/osc_ws_relay.py"],
