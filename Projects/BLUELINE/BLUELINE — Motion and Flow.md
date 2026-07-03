@@ -96,9 +96,17 @@ moved out of the 2D plane into the actual Blender scene: one authored divergence
 vortex filaments) read as **both** streamlines *and* advected dust in the same shot, both parting around
 a **real posed figure mesh** (a BVH of the Track-IV lunge figure, not a 2D mask — closing Session 4's
 honest limit) and shedding a wake, rendered natively from the bench camera, deterministic by seed. See
-`session-5-report.md` + `out/s5_still.png` / `s5_flow3d.mp4`. **Productization path:** a Geometry-Nodes
-Simulation Zone (art-directable in-viewport) for the authored field; Mantaflow (Track VI) for emergent
-wake/smoke. The single-source discipline held — comic and cinema legs are the same field.
+`session-5-report.md` + `out/s5_still.png` / `s5_flow3d.mp4`. The single-source discipline held — comic
+and cinema legs are the same field.
+
+**✅ Interactive GN studio shipped (Session 6, 2026-07-03) — `proofs/session-6-flow-gn-studio/`.** The
+productization: the authored field is now a **Geometry Nodes Simulation Zone** on the **real
+[[Shop/Figure Rig]] character** (MPFB2 + Rigify IK). Open `out/flow_studio.blend` and **pose** the figure
+(grab an IK control — the dust re-parts around the live evaluated mesh) or **tweak the field** (move the
+`Vortex_A`/`Vortex_B` empties, or slide the Wind / strengths / Core / Dt / Shell / Count modifier inputs).
+Deflection uses the figure's true surface normal; a shell-breach **recycle** keeps long playback clean (no
+accumulation, verified to frame 120). Known limit: occasional clinging motes in deep concavities → raise
+Shell / lower Dt, or escalate to **Mantaflow** (Track VI) collision. See `session-6-report.md`.
 
 Still open on Edge 1 (reuses [[Shop/Figure Rig]]'s plates + `session-4-figure-flow/field.py`) — **two
 concrete wins:**
