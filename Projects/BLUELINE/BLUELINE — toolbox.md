@@ -88,7 +88,7 @@ The reproducible environment for BLUELINE. It spans four runtimes: **Blender** (
 - **Python (Mac):** `python3` + `certifi` + `Pillow` (+ `numpy` for post-analysis).
 - **Pod:** the orchestrators build the env at boot — download models, `git clone` InstantID, `pip install insightface onnxruntime`. No manual step.
 - **CLIs:** `brew install ffmpeg aria2` (curl/git/wget already present).
-- **Serverless (future):** bake a worker image from the Models + Nodes tables above → push → create endpoint → submit the frozen pose/M3 workflows through the Commons endpoint coordinator.
+- **Serverless (the planned Piece-tier path — not a current blocker):** current pods already work for every pipeline; serverless is the *graduation* step for the spiky Piece batch (per [[BLUELINE — Render Backend]]'s Study→pod / Piece→serverless routing). When you take it: bake a worker image from the Models + Nodes tables above → push → create endpoint → submit the frozen pose/M3 workflows through the Commons endpoint coordinator. Tracked as a horizon item in [[BLUELINE — Production Plan]] §The horizon.
 
 ## Change log
 
