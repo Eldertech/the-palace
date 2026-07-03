@@ -1,6 +1,7 @@
 import { describe, it, expect } from 'vitest';
 import {
   parseLogMeta, parseNumstat, parsePorcelain,
+  parseWorktreePorcelain, parseAheadBehind,
   FIELD_SEP, RECORD_SEP,
 } from '../../src/lib/git-log-parse.js';
 
@@ -115,5 +116,77 @@ describe('parsePorcelain', () => {
     // git escapes non-ASCII bytes as \NNN octal; "café.md" -> "caf\303\251.md".
     const out = parsePorcelain('?? "caf\\303\\251.md"');
     expect(out.untracked[0].path).toBe('café.md');
+  });
+});
+
+describe('parseWorktreePorcelain', () => {
+  it('parses two branch-attached worktrees', () => {
+    const raw = [
+      'worktree /Users/x/The Palace',
+      'HEAD 1f9293e2742e215e69ee058588af851a6ccd5225',
+      'branch refs/heads/main',
+      '',
+      'worktree /Users/x/palace-feature-log-git-state',
+      'HEAD eb7cd970768762e68f564daf6134b45b40859de1',
+      'branch refs/heads/feature/log-git-state',
+      '',
+    ].join('\n');
+    const out = parseWorktreePorcelain(raw);
+    expect(out).toHaveLength(2);
+    expect(out[0].branch).toBe('main');
+    expect(out[0].shortHead).toBe('1f9293e');
+    expect(out[0].detached).toBe(false);
+    expect(out[1].branch).toBe('feature/log-git-state'); // slashes preserved
+    expect(out[1].head).toBe('eb7cd970768762e68f564daf6134b45b40859de1');
+  });
+
+  it('marks a detached worktree', () => {
+    const raw = [
+      'worktree /Users/x/palace-live',
+      'HEAD e7c1a90aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
+      'detached',
+      '',
+    ].join('\n');
+    const [wt] = parseWorktreePorcelain(raw);
+    expect(wt.detached).toBe(true);
+    expect(wt.branch).toBeNull();
+  });
+
+  it('captures locked and prunable with reasons', () => {
+    const raw = [
+      'worktree /Users/x/palace-old',
+      'HEAD 3c4d5e6aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
+      'branch refs/heads/feature/blueline-text-anchor',
+      'locked on removable media',
+      'prunable gitdir file points to non-existent location',
+      '',
+    ].join('\n');
+    const [wt] = parseWorktreePorcelain(raw);
+    expect(wt.locked).toBe(true);
+    expect(wt.lockedReason).toBe('on removable media');
+    expect(wt.prunable).toBe(true);
+    expect(wt.prunableReason).toBe('gitdir file points to non-existent location');
+  });
+
+  it('flags a bare main repo and returns [] on empty', () => {
+    const [wt] = parseWorktreePorcelain('worktree /repo.git\nbare\n');
+    expect(wt.bare).toBe(true);
+    expect(parseWorktreePorcelain('')).toEqual([]);
+    expect(parseWorktreePorcelain(null)).toEqual([]);
+  });
+});
+
+describe('parseAheadBehind', () => {
+  it('reads left=behind, right=ahead from base...branch', () => {
+    // `git rev-list --left-right --count main...feature` => "3\t0" here means
+    // the branch is 3 behind main and 0 ahead.
+    expect(parseAheadBehind('3\t0')).toEqual({ behind: 3, ahead: 0 });
+    expect(parseAheadBehind('0\t5\n')).toEqual({ behind: 0, ahead: 5 });
+  });
+
+  it('returns null when unparseable (no upstream / fatal)', () => {
+    expect(parseAheadBehind("fatal: no upstream configured for branch 'x'")).toBeNull();
+    expect(parseAheadBehind('')).toBeNull();
+    expect(parseAheadBehind(null)).toBeNull();
   });
 });

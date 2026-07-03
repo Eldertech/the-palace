@@ -3,6 +3,7 @@ import { Banner, Box } from '../primitives.jsx';
 import CommitCard from './CommitCard.jsx';
 import CommitDiff from './CommitDiff.jsx';
 import UncommittedBanner from './UncommittedBanner.jsx';
+import GitStatePanel from './GitStatePanel.jsx';
 import LogFilters from './LogFilters.jsx';
 import { fetchLog, fetchUncommitted } from '../../adapters/log.js';
 import { fetchEntries } from '../../adapters/entries.js';
@@ -49,6 +50,9 @@ export default function LogDeck() {
   const [uncommitted, setUncommitted] = useState(null);
   const [pathPillars, setPathPillars] = useState(null);
   const [filter, setFilter] = useState({});
+  // Bumped by every load() so the GIT STATE panel refetches worktree topology
+  // on the same [R] RELOAD (and after a commit is recorded).
+  const [gitNonce, setGitNonce] = useState(0);
   // URL drives the open commit: ?commit=<sha>. Browser back/forward
   // traverse the open/close history; deep-linked commit URLs land directly
   // on the diff view.
@@ -63,6 +67,7 @@ export default function LogDeck() {
       else setLogState({ kind: 'err', error: r.error });
     });
     fetchUncommitted().then((r) => { if (r.ok) setUncommitted(r); });
+    setGitNonce((n) => n + 1);
   };
 
   useEffect(() => { load(); }, []);
@@ -113,6 +118,8 @@ export default function LogDeck() {
           [R] RELOAD
         </span>
       </div>
+
+      <GitStatePanel nonce={gitNonce} uncommittedCount={uncommitted?.total ?? 0} />
 
       {uncommitted ? <UncommittedBanner delta={uncommitted} onCommitted={load} /> : null}
 
