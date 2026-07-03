@@ -1,0 +1,12 @@
+{
+  "title": "Zoom Out to the Structure",
+  "idiom": "antique architectural draftsmanship / engraving",
+  "hero_prompt": "A fine antique engraving in the style of an old architectural draftsman: a tiny repaired joint at the lower left, ringed by a draughtsman's loupe, its lines pulling the eye outward and upward to reveal that the small detail was always part of a vast bridge-and-cathedral lattice filling the frame. Nested scales, delicate cross-hatching, precise ruled linework opening into grand structure, warm sepia ink on aged paper, a darker upper register.",
+  "icon_prompt": "A bold high-contrast square emblem in pure black and white: a small solid square nested inside three progressively larger concentric frames, a draughtsman's loupe over the innermost point. Sharp geometric printmaking silhouette, no gradients.",
+  "seeds": {
+    "hero": 69828,
+    "icon": 578432
+  },
+  "rendered_at": "2026-07-03T00:44:25Z",
+  "history": []
+}
