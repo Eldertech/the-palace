@@ -77,7 +77,7 @@ their multi-agent safety (do they namespace their pod + reap their own slug?):
 | `new-story/pose_pod_orchestrator.py`, `balloon_pod_orchestrator.py` | pod | ✅ slug + reap |
 | `style-lock/instantid_orchestrator.py` | pod | ✅ slug + reap |
 | `new-story/{pod_backend,balloon_pod_render}.py` | no (transport/render helper) | n/a — driven by a safe orchestrator |
-| **`cloud-i2v/svd_orchestrator.py`** | pod | ⚠️ **not confirmed slugged — namespace it before any reuse** |
+| `cloud-i2v/svd_orchestrator.py` (+ `svd_render.py`) | pod | ✅ slug + reap (retrofit 2026-07-03 — RunpodPodProvider + `reap --self`) |
 
 Rule (from [[Shop/RunPod GPU Backend]]'s hard-won playbook + [[The Commons]]): any pod-creating script
 must name its pod `blueline-…-<slug>` (`agent_ns.py`), recover-by-name on a flaky create, and
