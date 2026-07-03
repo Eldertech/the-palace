@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { vantage, cardAge } from '../../lib/queue-model.js';
+import { buildLaunchPrompt, handoffLaunchContext } from '../../lib/launch-prompt.js';
 import InlineProse from '../../lib/inline-prose.jsx';
 
 // One honest QUEUE item. The hierarchy leads with WHO is asking, then the
@@ -81,6 +82,26 @@ export default function QueueItem({ item, onJump, onClear, onDismissHandoff, onR
   const accent = KIND_COLOR[item.kind] || 'var(--phosphor)';
   const age = cardAge(item.ts);
   const [showRationale, setShowRationale] = useState(false);
+  const [copiedPrompt, setCopiedPrompt] = useState(false);
+
+  // Copy the full, worktree-aware launch prompt straight to the clipboard — the
+  // one-click path from a STIGMERGY card to a fresh Claude Code paste, no modal.
+  // Same builder the LaunchModal uses (handoffLaunchContext), so what you paste
+  // here and what "launch interactive" produces are identical.
+  const copyLaunchPrompt = async () => {
+    const text = buildLaunchPrompt(handoffLaunchContext(item));
+    try {
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        await navigator.clipboard.writeText(text);
+      } else {
+        const ta = document.createElement('textarea');
+        ta.value = text; document.body.appendChild(ta); ta.select();
+        document.execCommand('copy'); ta.remove();
+      }
+      setCopiedPrompt(true);
+      setTimeout(() => setCopiedPrompt(false), 2000);
+    } catch { /* clipboard blocked — launch interactive still exposes the prompt */ }
+  };
 
   const canRespond = !resolved && !decided
     && (item.kind === 'resource_request'
@@ -362,6 +383,15 @@ export default function QueueItem({ item, onJump, onClear, onDismissHandoff, onR
           handoff: <span style={{ color: 'var(--ansi-bright-cyan)' }}>{item.handoff_path}</span>
         </div>
       ) : null}
+      {/* The worktree the baton lives in — surfaced so it is visible on the card
+          itself (this is what a catcher needs and could not see before), and
+          baked into the copy-prompt / launch prompt below. */}
+      {item.worktree && item.worktree.dir ? (
+        <div data-testid="queue-item-handoff-worktree" style={{ color: 'var(--phosphor-dim)', textShadow: 'none', fontSize: 11 }}>
+          worktree: <span style={{ color: 'var(--ansi-bright-cyan)' }}>{item.worktree.dir}</span>
+          {item.worktree.branch ? <span> ({item.worktree.branch})</span> : null}
+        </div>
+      ) : null}
 
       {/* Action row: Grant / Deny / asker options + (when meaningful) jump.
           The jump chip is only meaningful for handoff_ready items pointing
@@ -399,6 +429,27 @@ export default function QueueItem({ item, onJump, onClear, onDismissHandoff, onR
             }}
             title="hand this baton to an interactive session you can watch and steer"
           >launch interactive</button>
+        ) : null}
+
+        {/* Copy prompt: the one-click path from this card to a Claude Code paste.
+            Copies the same worktree-aware launch prompt the modal builds, so you
+            can go straight from STIGMERGY to Claude Code desktop without opening
+            "launch interactive" first. */}
+        {!resolved && item.kind === 'handoff_ready' ? (
+          <button
+            data-testid="queue-item-copy-prompt"
+            onClick={copyLaunchPrompt}
+            style={{
+              background: 'transparent',
+              color: copiedPrompt ? 'var(--ok, var(--phosphor))' : 'var(--phosphor)',
+              textShadow: 'var(--glow)',
+              border: `1px solid ${copiedPrompt ? 'var(--ok, var(--phosphor))' : 'var(--phosphor-dim)'}`,
+              padding: '3px 10px',
+              fontFamily: 'var(--font-mono)', fontSize: 11, cursor: 'pointer',
+              textTransform: 'uppercase', letterSpacing: '.04em',
+            }}
+            title="copy the baton's launch prompt (worktree-aware) to paste into Claude Code"
+          >{copiedPrompt ? 'copied' : 'copy prompt'}</button>
         ) : null}
 
         {/* Manual clear — with staleness (git auto-resolution) off, a baton

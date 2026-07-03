@@ -5,6 +5,7 @@ import CardItem from './CardItem.jsx';
 import LaunchModal from './LaunchModal.jsx';
 import ResponseModal from '../ResponseModal.jsx';
 import { buildQueue, reconcileQueue, partitionQueue, laneCounts, rankQueue } from '../../lib/queue-model.js';
+import { handoffLaunchContext } from '../../lib/launch-prompt.js';
 import { fetchLog } from '../../adapters/log.js';
 import { fetchCards, respondToCard } from '../../adapters/cards.js';
 import { buildResponse, buildRequestOptionResponse } from '../../lib/response-builder.js';
@@ -376,16 +377,10 @@ export default function QueuePanel({ messages, onJumpEntry }) {
 
   // Map a queue handoff item / an enrichment card into the normalized launch
   // context the LaunchModal renders. Same primitive, two surfaces — stewards
-  // and steward-requested sessions plug in here next.
-  const launchHandoff = (it) => setLaunchContext({
-    kind: 'handoff', id: it.id, entry: it.entry, from: it.from,
-    sourcePath: it.handoff_path, summary: it.summary,
-    // Carry the sharper move + the ready invocation so the launch prompt leads
-    // with the real move (not the generic summary) and hands over the exact
-    // first action. Both are undefined for move-less batons — the prompt falls
-    // back to summary and omits the invocation line.
-    move: it.move, invocation: it.invocation,
-  });
+  // and steward-requested sessions plug in here next. The handoff mapping lives
+  // in handoffLaunchContext so the card's "copy prompt" button (QueueItem) and
+  // this modal launch build the identical prompt — worktree coordinate included.
+  const launchHandoff = (it) => setLaunchContext(handoffLaunchContext(it));
   const launchCard = (card) => setLaunchContext({
     kind: 'card', id: card.id, entry: card.target_name, from: card.target_name,
     sourcePath: `Enrichment/${card.id}/`, purpose: card.purpose, summary: card.summary,

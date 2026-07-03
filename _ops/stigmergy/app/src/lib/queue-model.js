@@ -258,6 +258,10 @@ export function buildQueue(messages) {
         invocation,
         receiving_surface: receivingSurface,
         entry,
+        // The worktree coordinate the baton lives in (Baton Ceremony §
+        // Announcing the Baton on the Board). Carried through so the launch
+        // prompt can send the catcher into the right worktree, not the root.
+        worktree: (p.worktree && typeof p.worktree === 'object') ? p.worktree : null,
         handoff_path: typeof p.handoff_path === 'string' ? p.handoff_path : null,
         // The git condition that retires it (mirrors the board convention).
         stale_if: p.stale_if
