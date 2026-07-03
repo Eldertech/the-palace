@@ -24,34 +24,80 @@ export function buildLaunchPrompt(ctx = {}) {
   }
 }
 
+// Normalize a QUEUE handoff item into the launch context buildLaunchPrompt wants.
+// Single source of truth so the card's "copy prompt" button and the LaunchModal
+// build the same prompt — including the worktree coordinate the board carries.
+export function handoffLaunchContext(it = {}) {
+  return {
+    kind: 'handoff',
+    id: it.id,
+    entry: it.entry,
+    from: it.from,
+    sourcePath: it.handoff_path,
+    summary: it.summary,
+    move: it.move,
+    invocation: it.invocation,
+    worktree: it.worktree || null,
+  };
+}
+
 const ORIENT = 'First, orient yourself: read CLAUDE.md, JEWEL.md, and _ops/Substrate Skill.md.';
 
-function handoffPrompt({ sourcePath, entry, from, id, summary, move, invocation }) {
+function handoffPrompt({ sourcePath, entry, from, id, summary, move, invocation, worktree }) {
   const path = sourcePath || '(baton path missing — find the handoff_ready announcement on the board)';
   const str = (v) => (typeof v === 'string' && v.trim() !== '' ? v.trim() : null);
   // Lead with the sharp `move` (the in-flight state the board announcement
   // carried); fall back to the generic `summary` for older, move-less batons.
   const theMove = str(move) || str(summary);
   const theInvocation = str(invocation);
+  // A baton often lives in a git worktree, NOT at the palace root. When the board
+  // announcement carries the coordinate, the prompt must send the catcher there
+  // (and tell them how to rebuild it) — otherwise a fresh Claude lands on `main`
+  // at the root and never sees the branch the work is on.
+  const wt = worktree && typeof worktree === 'object' ? worktree : null;
+  const wtDir = wt && str(wt.dir);
+  const wtBranch = wt && str(wt.branch);
+  const wtProfile = wt && str(wt.profile);
+
   const lines = [
     'You are catching an in-progress baton in The Palace, in a fresh interactive',
-    'session at the palace root. Catch it — but with healthy skepticism: a baton',
-    'is a snapshot from a past moment, and the project may have moved past it.',
-    'Loudon is watching and will steer.',
+    wtDir
+      ? 'session. This baton lives in a git worktree — work THERE, not at the palace root.'
+      : 'session at the palace root.',
+    'Catch it — but with healthy skepticism: a baton is a snapshot from a past',
+    'moment, and the project may have moved past it. Loudon is watching and will steer.',
     '',
-    `1. ${ORIENT}`,
-    `2. Read the baton:  ${path}`,
   ];
+
+  // Number the steps as we emit them, so inserting the worktree step needs no
+  // manual renumber of the ones below.
+  let n = 0;
+  const step = (s) => `${++n}. ${s}`;
+
+  if (wtDir) {
+    lines.push(step('Move into the baton\'s worktree FIRST — it is not at the palace root:'));
+    lines.push(`      cd "${wtDir}"`);
+    const meta = [wtBranch ? `branch ${wtBranch}` : null, wtProfile ? `profile ${wtProfile}` : null]
+      .filter(Boolean).join(', ');
+    if (meta) lines.push(`   (${meta}.)`);
+    if (wtBranch && wtProfile) {
+      lines.push('   If the worktree dir is gone, recreate it from the palace root, then cd in:');
+      lines.push(`      node _ops/worktree/new-worktree.mjs --name ${wtBranch} --profile ${wtProfile}`);
+    }
+  }
+
+  lines.push(step(ORIENT));
+  lines.push(step(`Read the baton:  ${path}`));
   if (entry) lines.push(`   ...and its parent entry [[${String(entry).replace(/\.md$/, '')}]].`);
   if (theMove) lines.push(`   The move (handoff ${id || '?'}, from ${from || '?'}): "${theMove}"`);
   lines.push(
-    '3. Check it is still LIVE before acting. Re-read the entry\'s current state and',
+    step('Check it is still LIVE before acting. Re-read the entry\'s current state and'),
     '   `git log` it since the baton was written; confirm the "Current state" the baton',
     '   quotes still matches the file. If the move is already done, superseded, or no',
     '   longer wanted, STOP and tell Loudon — do not execute a stale move.',
-    '4. If it is still live, follow the baton\'s own "On pickup" checklist (it rides',
+    step('If it is still live, follow the baton\'s own "On pickup" checklist (it rides'),
     '   inside the baton): mark it caught, then delete the baton file — git is its archive.',
-    '5. Pick up the move where it left off and keep going, interactively.',
+    step('Pick up the move where it left off and keep going, interactively.'),
   );
   // The board's `invocation` is a ready, verbatim first action — surface it so
   // the catcher has the exact starting step, not just a paraphrase of the move.

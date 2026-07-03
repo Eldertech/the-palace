@@ -1,5 +1,5 @@
 import { describe, test, expect } from 'vitest';
-import { buildLaunchPrompt } from '../../src/lib/launch-prompt.js';
+import { buildLaunchPrompt, handoffLaunchContext } from '../../src/lib/launch-prompt.js';
 
 describe('buildLaunchPrompt — handoff', () => {
   const ctx = {
@@ -62,6 +62,67 @@ describe('buildLaunchPrompt — handoff', () => {
     const p = buildLaunchPrompt({ kind: 'mystery', title: 'Kuramoto Coupling', summary: 'a koan card' });
     expect(p).toContain('Kuramoto Coupling');
     expect(p).toContain('CLAUDE.md');
+  });
+});
+
+describe('buildLaunchPrompt — handoff worktree coordinate', () => {
+  const wtCtx = {
+    kind: 'handoff', sourcePath: 'Closing Well/Closing Well — baton.md', entry: 'Closing Well',
+    from: 'Closing Well', id: 'cw-1', move: 'Build the Agent; Phase 2 next.',
+    worktree: {
+      branch: 'feature/closing-well-agent',
+      dir: '../palace-feature-closing-well-agent',
+      profile: 'docs',
+    },
+  };
+
+  test('sends the catcher into the worktree, not the palace root', () => {
+    const p = buildLaunchPrompt(wtCtx);
+    expect(p).toContain('lives in a git worktree');
+    expect(p).toContain('cd "../palace-feature-closing-well-agent"');
+    expect(p).toContain('branch feature/closing-well-agent');
+    expect(p).toContain('profile docs');
+    // It must NOT tell a worktree catcher to work at the palace root.
+    expect(p).not.toContain('session at the palace root');
+  });
+
+  test('gives the recreate command when the worktree dir is gone', () => {
+    const p = buildLaunchPrompt(wtCtx);
+    expect(p).toContain('node _ops/worktree/new-worktree.mjs --name feature/closing-well-agent --profile docs');
+  });
+
+  test('without a worktree, keeps the palace-root wording and no cd line', () => {
+    const p = buildLaunchPrompt({ ...wtCtx, worktree: null });
+    expect(p).toContain('session at the palace root');
+    expect(p).not.toContain('lives in a git worktree');
+    expect(p).not.toContain('cd "');
+  });
+
+  test('still degrades: a worktree with only a dir omits the recreate command', () => {
+    const p = buildLaunchPrompt({ ...wtCtx, worktree: { dir: '../somewhere' } });
+    expect(p).toContain('cd "../somewhere"');
+    expect(p).not.toContain('new-worktree.mjs');
+  });
+});
+
+describe('handoffLaunchContext — item → launch context', () => {
+  test('maps a queue item, carrying the worktree coordinate through', () => {
+    const item = {
+      id: 'cw-1', entry: 'Closing Well', from: 'Closing Well',
+      handoff_path: 'Closing Well/Closing Well — baton.md', summary: 's',
+      move: 'm', invocation: 'i',
+      worktree: { branch: 'feature/x', dir: '../x', profile: 'docs' },
+    };
+    const ctx = handoffLaunchContext(item);
+    expect(ctx.kind).toBe('handoff');
+    expect(ctx.sourcePath).toBe('Closing Well/Closing Well — baton.md');
+    expect(ctx.worktree).toEqual({ branch: 'feature/x', dir: '../x', profile: 'docs' });
+    // The mapped context must round-trip through the prompt builder.
+    expect(buildLaunchPrompt(ctx)).toContain('cd "../x"');
+  });
+
+  test('worktree defaults to null when the item has none', () => {
+    expect(handoffLaunchContext({ id: 'a' }).worktree).toBeNull();
   });
 });
 

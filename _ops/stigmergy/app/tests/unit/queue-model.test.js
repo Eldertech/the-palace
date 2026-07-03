@@ -117,6 +117,14 @@ describe('buildQueue', () => {
     expect(q[0].handoff_path).toMatch(/handoff\.md$/);
     expect(q[0].pointer).toEqual({ type: 'entry', target: 'Project Stewardship System' });
     expect(q[0].stale_if).toMatch(/commit touches/);
+    // A move-less/worktree-less baton carries a null worktree, not undefined.
+    expect(q[0].worktree).toBeNull();
+  });
+
+  it('carries the worktree coordinate through when the board announcement has one', () => {
+    const wt = { branch: 'feature/x', dir: '../palace-feature-x', profile: 'stigmergy' };
+    const q = buildQueue([handoffMsg({ payload: { ...handoffMsg().payload, worktree: wt } })]);
+    expect(q[0].worktree).toEqual(wt);
   });
 
   it('drops a handoff_ready that has been explicitly acked as picked up', () => {
