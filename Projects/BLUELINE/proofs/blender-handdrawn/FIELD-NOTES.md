@@ -165,6 +165,15 @@ Two readings, both true:
   denoise, AnimateDiff/video-diffusion, or temporal latent blending. To *embrace* it: it's already
   the traditional-animation boil, for free.
 
+## The "white square around the ink blob" — two distinct bugs
+
+Distinguish by *where* the square shows (I got this wrong twice, 2026-06-25):
+
+1. **Freestyle line-visibility square** — only where a blob sits in front of background lines (invisible on plain white). Camera-facing alpha-billboard blobs are full square quads; even excluded from Freestyle line *generation*, Freestyle still treats them as **occluders** and culls the building lines behind the transparent part of each plane → a white rectangle around every blob. **No EEVEE material setting fixes it** (DITHERED / BLENDED both fail — it's the Freestyle visibility pass, not compositing). Fix: render the line geometry and the alpha billboards in **separate view layers** (Freestyle sees only the line geometry, never culled), then recombine by **Z-depth** — gate the blob layer with `(cityDepth > blobDepth)` fed into an AlphaOver `Factor` so buildings still occlude blobs. Verify on a blob over a line, never on white.
+2. **Codec macroblock square** — everywhere during motion playback. H.264 at normal crf (~17) rings 8×8 DCT blocks on sharp black-on-white edges. Fix: `-crf 6..8 -preset veryslow -tune animation`, or ship **ProRes** (`-c:v prores_ks -profile:v 3 -pix_fmt yuv422p10le`, `.mov`). Crisp GIF: tiny palette + `paletteuse=dither=none`.
+
+**Blender 5.1 compositor API** (changed from 4.x): no `scene.node_tree`; build `bpy.data.node_groups.new(name,'CompositorNodeTree')` + `tree.interface.new_socket('Image', in_out='OUTPUT', socket_type='NodeSocketColor')` + a `NodeGroupOutput`, and assign it to `scene.compositing_node_group`. Math node is `ShaderNodeMath` (not `CompositorNodeMath`); `CompositorNodeAlphaOver` sockets are **Background / Foreground / Factor**; the RLayers depth output is `Depth`.
+
 ## File index
 - `blender/` — 4 stills (city/figure × ink/toon)
 - `motion/` — `water|clouds|smoke` frame folders + `.mp4` + `.gif`

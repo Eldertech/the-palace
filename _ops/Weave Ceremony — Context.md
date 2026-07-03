@@ -51,6 +51,10 @@ The single-agent protocol was the original design. The palace crossed the single
 
 The 15-introduction cap is intentional and serves two purposes: it forces curation (a new introduction should feel earned, not automatic) and it keeps the palace's growth slow enough to remain deliberate. A typed link is a permanent claim about the structure of knowledge. The palace and its gardener both benefit from a slow metabolism.
 
+## Scope — Unsung Paths vs. Harvest
+
+Two behaviors look alike and must not be conflated inside the Weave worker. **Unsung paths** (in scope): entry titles the prose *already names* but the YAML hasn't registered — the connection is made, only the structural catch-up remains; formalize all of them (Step 3a). **Finding concepts that don't yet exist as entries but should** (out of scope): that is **harvest** — the work of an enchanted page looking at itself and wanting to thrive, deciding which concepts to pull into being. It belongs to [[Palace Enchantment]], where a page develops its own forward vectors and names what it wants to exist — not to the Weave worker, which never proposes new entry *creation*. If a Weave run surfaces such candidates, note them as out-of-scope and defer. (This is distinct from the 15-introduction cap above, which governs new typed *links* between entries that already exist, not new entries.) — Loudon's decision, 2026-04-08.
+
 ## Open Questions
 
 - At what palace size should the Weave split into two passes — one for topology, one for link proposals?

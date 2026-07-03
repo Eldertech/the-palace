@@ -110,6 +110,13 @@ ONCE Track I's endpoint is live:
 
 **Each track ships a usable tool** (the rung discipline): Track I = a Shop GPU dispatcher; III = a beat-sync bridge for any music visual; IV = a pose/camera library; II = a LoRA recipe + a measurement ruler; V = motion conditioning. None is a down-payment on the next.
 
+## In-flight side branches (unmerged, as of 2026-07-03)
+
+Two threads live on their own unmerged feature branches — check the branch out to resume; the branch is the source of truth:
+
+- **`feature/blueline-text-anchor`** — the dialogue/text layer. Mode #1 (a balloon anchored in Blender, the WHERE/WHAT split — Blender computes screen position/stack-depth/tail, the compositor draws the letters) is proven, plus a 12-style balloon catalog with two locked tail rules. The compelling open move — the **LIVING BALLOON** (bubble + word as one gen-AI material): canny sweet-spot ≈ cn0.5, and the *membrane* needs a thick/rough-rim guide (`build_guide(rim=30, rough=True)`) — is designed but **not yet rendered** (was GPU-blocked). Spec: `BLUELINE — Text Layer.md`; findings: `proofs/text-layer/balloons-genai/LIVING-BALLOON-FINDINGS.md`.
+- **`feature/blueline-m3`** — **line-art layer decomposition**: don't fight line art, *convert first* — re-render the drawing into a flat cel-shaded domain (SDXL + canny) where SAM / Depth Anything / LaMa are strong, segment + depth-order + infill there, then stylize each cel back to ink. Entry `Line-Art Layer Decomposition` + `decomposition-proof.html` + 9 scripts in `proofs/blender-fire/`; the two-layer case is the [[Animate the Background]] practice. Open: per-cel stylize-back (cel → ink) and amodal *shape* completion. (Its merge is also the deep-weave RESUME tail.)
+
 ## First moves (smallest tests, this round)
 
 1. **Track I:** endpoint + volume up; existing FLUX workflow driven from one board record through the hardened runner; prove the routing split. *(Retires the substrate unknown, unblocks the rest.)*

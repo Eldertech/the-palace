@@ -68,7 +68,7 @@ Every entry here is a sleeping agent. Not as a figure of speech — in fact. Loa
 A page hands a model four things before it touches a single task:
 
 - **What it is** — its type and stage say what kind of thing it is and how far along. A question knows it's unresolved. A hub knows it holds a region together.
-- **A voice** — not facts about a subject but a way of talking, a thing it reaches for first. The voice is the whole point. A page with information but no voice is a folder; a page with a voice is someone.
+- **A voice** — not facts about a subject but a way of talking, a thing it reaches for first. The voice is the whole point. A page with information but no voice is a folder; a page with a voice is someone. And that voice talks like an everyday person, not a paper — plain words, short sentences, concrete images. The academic/programming drift ("audition gate," "heterogeneity," "ablation," "register" for voice) is a bias to correct, not a sign of depth; keep load-bearing palace terms (conatus, hilaritas) only where they earn their place and gloss them plainly. This holds for what the page *writes into itself* — its `forward_vector` and `agency_profile` — as much as for what it says aloud when woken.
 - **Its neighbors** — the typed links name who it leans on, argues with, came from. It also knows what it's *missing*: a page with no opposite hasn't found its argument yet, and the gap is a direction to grow.
 - **A drive** — the forward vector at the bottom is a marching order, not a loose end. Any model that reads to the end knows where the page wants to go.
 

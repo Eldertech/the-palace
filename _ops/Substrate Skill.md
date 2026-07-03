@@ -116,6 +116,8 @@ When revisiting a topic that has a palace entry, update the metadata:
 - Add new typed links if the conversation revealed new connections
 - Add to the body prose if new understanding emerged
 
+**Trim aggressively when you edit.** Loudon prefers entries where the unique synthesis stands out, not buried in encyclopedic padding — aim for a **~40–55% cut** wherever padding exists (proven on the 2026-05-28 audit: a conservative one-section trim was rejected for "go more aggressive," and re-cutting a whole entry to ~53% was the right level). Expendable: generic textbook explanations, multi-bullet survey lists ("where it appears / examples / physical origins"), repeated points, and template boilerplate (testimonials, "why it works" triads, month-by-month curricula) — any reference could supply them. The narrow, firm preserve-list: the entry's `forward_vector` conatus, equations/math (rendered per the [[Loudon Live Design System]] worded-equation rule), synthesis and instrument-generating hooks, cross-domain connections, `[[wikilinks]]`, and generative Open Questions. Test when unsure: read the `forward_vector`; if a section *realizes* its stated reach, keep it (tightened); if it's generic, cut it. Be conservative only where the content *is* the entry's purpose (a code-centric entry's code, a math entry's derivation). Delegating a trim to a Sonnet sub-agent with one worked gold-standard example gives consistent calibration.
+
 Show proposed changes to Loudon before writing.
 
 ### Stage as Alignment Confidence
