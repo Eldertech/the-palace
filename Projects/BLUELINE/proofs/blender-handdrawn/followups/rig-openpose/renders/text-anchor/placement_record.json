@@ -1,0 +1,190 @@
+{
+ "note": "BLUELINE text placement mode #1 \u2014 anchor in Blender",
+ "depth_map": {
+  "near_bu": 2.0,
+  "far_bu": 5.5,
+  "near_value": 1.0
+ },
+ "frames": [
+  {
+   "frame": 0,
+   "label": "00_drift_left",
+   "res": [
+    832,
+    1040
+   ],
+   "cam_azimuth_deg": -14,
+   "head_turn_deg": 0,
+   "ink_plate": "ink_plate.png",
+   "depth_plate": "depth_plate.png",
+   "mouth": {
+    "px": [
+     0.50038,
+     0.28408
+    ],
+    "zview": 3.52271,
+    "z_norm": 0.56494,
+    "vis": 1
+   },
+   "anchors": {
+    "balloon": {
+     "voice": "world",
+     "kind": "dialogue",
+     "px": [
+      0.64506,
+      0.1694
+     ],
+     "zview": 3.4708,
+     "z_norm": 0.57977,
+     "vis": 1
+    },
+    "behind_test": {
+     "voice": "world",
+     "kind": "occlusion-control",
+     "px": [
+      0.54856,
+      0.41663
+     ],
+     "zview": 4.12159,
+     "z_norm": 0.39383,
+     "vis": 1
+    }
+   }
+  },
+  {
+   "frame": 1,
+   "label": "01_center",
+   "res": [
+    832,
+    1040
+   ],
+   "cam_azimuth_deg": 0,
+   "head_turn_deg": 0,
+   "ink_plate": "ink_plate.png",
+   "depth_plate": "depth_plate.png",
+   "mouth": {
+    "px": [
+     0.50074,
+     0.28406
+    ],
+    "zview": 3.52236,
+    "z_norm": 0.56504,
+    "vis": 1
+   },
+   "anchors": {
+    "balloon": {
+     "voice": "world",
+     "kind": "dialogue",
+     "px": [
+      0.64104,
+      0.16213
+     ],
+     "zview": 3.38417,
+     "z_norm": 0.60452,
+     "vis": 1
+    },
+    "behind_test": {
+     "voice": "world",
+     "kind": "occlusion-control",
+     "px": [
+      0.59616,
+      0.41616
+     ],
+     "zview": 4.06935,
+     "z_norm": 0.40876,
+     "vis": 1
+    }
+   }
+  },
+  {
+   "frame": 2,
+   "label": "02_drift_right",
+   "res": [
+    832,
+    1040
+   ],
+   "cam_azimuth_deg": 14,
+   "head_turn_deg": 0,
+   "ink_plate": "ink_plate.png",
+   "depth_plate": "depth_plate.png",
+   "mouth": {
+    "px": [
+     0.50106,
+     0.28404
+    ],
+    "zview": 3.5218,
+    "z_norm": 0.5652,
+    "vis": 1
+   },
+   "anchors": {
+    "balloon": {
+     "voice": "world",
+     "kind": "dialogue",
+     "px": [
+      0.62793,
+      0.15512
+     ],
+     "zview": 3.30467,
+     "z_norm": 0.62724,
+     "vis": 1
+    },
+    "behind_test": {
+     "voice": "world",
+     "kind": "occlusion-control",
+     "px": [
+      0.64031,
+      0.41537
+     ],
+     "zview": 3.98539,
+     "z_norm": 0.43274,
+     "vis": 1
+    }
+   }
+  },
+  {
+   "frame": 3,
+   "label": "03_head_turn",
+   "res": [
+    832,
+    1040
+   ],
+   "cam_azimuth_deg": 0,
+   "head_turn_deg": 30,
+   "ink_plate": "ink_plate.png",
+   "depth_plate": "depth_plate.png",
+   "mouth": {
+    "px": [
+     0.4941,
+     0.2861
+    ],
+    "zview": 3.53133,
+    "z_norm": 0.56248,
+    "vis": 1
+   },
+   "anchors": {
+    "balloon": {
+     "voice": "world",
+     "kind": "dialogue",
+     "px": [
+      0.55178,
+      0.13066
+     ],
+     "zview": 3.49466,
+     "z_norm": 0.57295,
+     "vis": 1
+    },
+    "behind_test": {
+     "voice": "world",
+     "kind": "occlusion-control",
+     "px": [
+      0.65186,
+      0.4024
+     ],
+     "zview": 3.98741,
+     "z_norm": 0.43217,
+     "vis": 1
+    }
+   }
+  }
+ ]
+}

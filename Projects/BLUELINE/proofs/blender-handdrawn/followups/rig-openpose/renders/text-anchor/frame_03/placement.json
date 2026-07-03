@@ -1,0 +1,45 @@
+{
+ "frame": 3,
+ "label": "03_head_turn",
+ "res": [
+  832,
+  1040
+ ],
+ "cam_azimuth_deg": 0,
+ "head_turn_deg": 30,
+ "ink_plate": "ink_plate.png",
+ "depth_plate": "depth_plate.png",
+ "mouth": {
+  "px": [
+   0.4941,
+   0.2861
+  ],
+  "zview": 3.53133,
+  "z_norm": 0.56248,
+  "vis": 1
+ },
+ "anchors": {
+  "balloon": {
+   "voice": "world",
+   "kind": "dialogue",
+   "px": [
+    0.55178,
+    0.13066
+   ],
+   "zview": 3.49466,
+   "z_norm": 0.57295,
+   "vis": 1
+  },
+  "behind_test": {
+   "voice": "world",
+   "kind": "occlusion-control",
+   "px": [
+    0.65186,
+    0.4024
+   ],
+   "zview": 3.98741,
+   "z_norm": 0.43217,
+   "vis": 1
+  }
+ }
+}

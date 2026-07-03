@@ -381,4 +381,8 @@ def main():
     print(f"=== POSE {label} DONE ===")
 
 
-main()
+# Blender runs a `-P` script as __main__, so this still fires headless; guarding it
+# lets sibling proofs (e.g. text_anchor_proof.py) import the camera/pose/depth helpers
+# from here instead of duplicating the proven constants.
+if __name__ == "__main__":
+    main()
