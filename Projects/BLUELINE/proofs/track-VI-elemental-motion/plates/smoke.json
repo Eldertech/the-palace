@@ -1,0 +1,12 @@
+{
+  "field": "smoke",
+  "mask": "auto:top:0.7",
+  "anchor": "base",
+  "plate": "plates/smoke.png",
+  "prompt": "a thin column of dark smoke curling and rising from a single snuffed candle on an empty table, delicate wisps against white paper, close intimate study, hand-drawn with a black chisel-tip marker on rough white cold-press watercolor paper, visible paper tooth, broken dry ink edges, monochrome black and white, lots of white space, confident calligraphic linework, sparse grey dry-brush half-tones, manga and sumi-e ink influence",
+  "seed": 7044,
+  "size": [
+    832,
+    1216
+  ]
+}

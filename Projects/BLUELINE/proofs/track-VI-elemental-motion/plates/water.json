@@ -1,0 +1,12 @@
+{
+  "field": "water",
+  "mask": "auto:bottom:0.5",
+  "anchor": null,
+  "plate": "plates/water.png",
+  "prompt": "a calm wide lake at dusk, broad rippling water reflections filling the lower half of the frame, a lone figure standing at the near shoreline gazing across, distant low far shore, open empty sky, hand-drawn with a black chisel-tip marker on rough white cold-press watercolor paper, visible paper tooth, broken dry ink edges, monochrome black and white, lots of white space, confident calligraphic linework, sparse grey dry-brush half-tones, manga and sumi-e ink influence",
+  "seed": 7022,
+  "size": [
+    832,
+    1216
+  ]
+}

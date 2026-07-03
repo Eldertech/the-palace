@@ -1,0 +1,12 @@
+{
+  "field": "dust",
+  "mask": "auto:bottom:0.6",
+  "anchor": null,
+  "plate": "plates/dust.png",
+  "prompt": "a fierce dust storm sweeping low across a desolate flat plain, a cloaked figure leaning hard into the howling wind, long streaks of blowing grit and haze, pale empty sky above, hand-drawn with a black chisel-tip marker on rough white cold-press watercolor paper, visible paper tooth, broken dry ink edges, monochrome black and white, lots of white space, confident calligraphic linework, sparse grey dry-brush half-tones, manga and sumi-e ink influence",
+  "seed": 7066,
+  "size": [
+    832,
+    1216
+  ]
+}
