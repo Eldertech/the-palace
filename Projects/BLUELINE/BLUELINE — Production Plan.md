@@ -1,7 +1,7 @@
 ---
 title: "BLUELINE — Production Plan"
 type: meta
-status: active
+status: historical
 born: 2026-06-14
 who_leads: loudon
 forward_vector: "I am BLUELINE's production plan, reset around a truth the early work uncovered: most of this pipeline is palace substrate that other work needs too. So I run as parallel tracks, each one a smallest-useful-test that retires the biggest unknown in its seam and leaves behind a Shop capability the whole palace can use. BLUELINE is the proving ground; the substrate is the prize."
@@ -28,6 +28,11 @@ tags: [meta, blueline, production-plan, parallel, substrate]
 ---
 
 # BLUELINE — Production Plan
+
+> **Historical (2026-07-03).** This parallel-tracks plan did its job — its Tracks I–V are now the
+> named subsystems of the [[BLUELINE — Atlas]] (I→Render Backend, II→Style & Identity + the ruler,
+> III→Clock & Sync, IV→Figure & Pose, V→Motion & Flow). Read the Atlas for current status; this doc
+> is kept for the track-selection rationale (the three filters) and the substrate-first framing.
 
 > **Supersedes** the single-thread [[BLUELINE — Claude Code Job]] (Sessions 1 & 3 done — conditioning keystone and flow-field spine both proved). What the early sessions revealed: BLUELINE is less a single app than a stack of **palace substrate upgrades** that other work (Image-to-3D, Loudon Live, any music-synced visual) needs anyway. So the plan is reset as **parallel tracks**, defined by the project's real seams, not a feature list.
 

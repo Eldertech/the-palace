@@ -60,6 +60,30 @@ This is not theoretical here: a working FLUX + Union-ControlNet OpenPose graph a
 
 It is a **stills** pipeline with **no clock**. Motion/temporal coherence is the flow-field spine's job (Production Plan Track V; closes RunPod's #1 untested horizon). Beat-locked timing is the Ableton substrate's job (Track III). Both sit *on top of* this render backend.
 
+## Orchestrator inventory (consolidation, 2026-07-03)
+
+BLUELINE grew ~13 pod scripts across proof folders. **The canonical render/orchestration layer is
+`render-backend/` — `runner.py` (node-title patching), `pod_runner.py` (multi-agent-safe pod lifecycle),
+`serverless_runner.py` (Piece tier)** — riding `_ops/runpod/agent_ns.py` (per-agent slug) and
+`_ops/commons/{reaper,lease,endpoint}.py`. **New render work uses this; do not fork a new orchestrator.**
+
+The per-proof orchestrators are **frozen spikes** — kept for reproducibility, not for reuse. An audit of
+their multi-agent safety (do they namespace their pod + reap their own slug?):
+
+| Script | Creates pods? | Multi-agent safe? |
+|---|---|---|
+| `render-backend/pod_runner.py` · `serverless_runner.py` | pod / serverless | ✅ **canonical** — use these |
+| `m3-warped-noise/{sdxl_,flux_,m3_}orchestrator.py`, `m3*_pod_render.py` | pod | ✅ slug + reap |
+| `new-story/pose_pod_orchestrator.py`, `balloon_pod_orchestrator.py` | pod | ✅ slug + reap |
+| `style-lock/instantid_orchestrator.py` | pod | ✅ slug + reap |
+| `new-story/{pod_backend,balloon_pod_render}.py` | no (transport/render helper) | n/a — driven by a safe orchestrator |
+| **`cloud-i2v/svd_orchestrator.py`** | pod | ⚠️ **not confirmed slugged — namespace it before any reuse** |
+
+Rule (from [[Shop/RunPod GPU Backend]]'s hard-won playbook + [[The Commons]]): any pod-creating script
+must name its pod `blueline-…-<slug>` (`agent_ns.py`), recover-by-name on a flaky create, and
+`commons reap --self` after every run — success or failure. Serverless-endpoint tools are inherently
+multi-agent-safe (shared managed infra, not a single-tenant pod).
+
 ## Placement note
 
 RunPod is **Shop-wide substrate**, built first for the Image-to-3D commission — BLUELINE *rides* it, does not own it. Any `host-capability.json` change must move in lockstep with the Maker Roster (per `Shop/RunPod GPU Backend/backend-design.md`).

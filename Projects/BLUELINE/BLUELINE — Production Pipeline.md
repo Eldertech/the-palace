@@ -31,6 +31,13 @@ tags: [meta, blueline, pipeline, animation, comics, anime]
 
 > **The re-founding (2026-06-17).** BLUELINE does not need an invented process — it needs the *established* one with a render-AI dropped in. The founding rationale is [[Adopt the Craft, Author the Seam]]: adopt a century of codified craft, author only the seams. This doc names every stage with the industry's own word, so we stop reinventing. It reframes the substrate-first tracks of [[BLUELINE — Production Plan]] as stages of a real pipeline; the tracks didn't change, their *names* did.
 
+> **This is the conceptual map; [[BLUELINE — Atlas]] is the status/subsystem index.** Three subsystems
+> that grew after this doc map onto its stages: **Text & Lettering** ([[BLUELINE — Text Layer]]) is the
+> overlay at stage 7 (words over art, never diffused); **Line-Art Decomposition**
+> ([[Line-Art Layer Decomposition]]) serves Seam A / compositing (convert flat-ink → flat-cel → layers);
+> and the **elemental-motion tiers** (Track VI: warp the ink · sim + composite) are stage 6, the motion
+> spine — all gathered in [[BLUELINE — Motion and Flow]].
+
 ## Backbone, skin, tissue, clock
 
 Four traditions, four layers — they don't compete:
