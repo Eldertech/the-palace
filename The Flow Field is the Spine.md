@@ -3,9 +3,9 @@ title: "The Flow Field is the Spine"
 type: concept
 pillars: [tools, creation, philosophy]
 born: 2026-06-13
-last_activated: 2026-06-13
-activation_count: 2
-stage: sprout
+last_activated: 2026-07-02
+activation_count: 3
+stage: growing
 confidence: working
 energy: high
 links:
@@ -23,6 +23,12 @@ links:
     label: published-precedent
   - target: "[[flow-field-spine]]"
     type: connects-to
+  - target: "[[Move the Ink, Don't Redraw It]]"
+    type: couples-with
+    label: field-is-the-geometry
+  - target: "[[The 2.5D Paper Stack]]"
+    type: connects-to
+    label: composites-around
 tags: [concept, flow-field, simulation, motion, blueline, seed]
 ---
 
@@ -47,6 +53,10 @@ The **strong claim** is that one *untouched* field serves all three legs. The **
 There is published reason for optimism: [[Go-with-the-Flow]] (CVPR 2025) makes video diffusion motion-controllable by warping noise with optical-flow fields and gets camera control, object-motion control, and motion transfer *from one flow source*. That de-risks the hardest leg — flow as dense motion conditioning — before the spike even runs.
 
 **Spike result (2026-06-13, [[BLUELINE — Claude Code Job]] Session 3):** the strong claim is **falsified**, the likely-true claim **holds** — and the residual cost is *small*. One field array was read **untouched** by all three legs (drawn speed-lines, dense-motion/noise-warp, particle sim); each leg added only a **thin per-leg transfer** — a scalar magnitude scale plus a seeding/format choice — never a re-authoring of the field. The field's structure (its vortices and drift) is the shared, expensive thing; the per-leg work is a scalar. So the spine is real and load-bearing in its shared-source-plus-mapping form. Evidence: `Projects/BLUELINE/proofs/session-3-flowfield/` (`CONTACT-SHEET-one-field-three-resolutions.png`). The recipe: [[flow-field-spine]].
+
+## Now it flows around a character (Session 4, 2026-07-02)
+
+The Session-3 field was character-*blind* — drift plus hand-placed vortices, nothing knew a figure stood in the wind. Session 4 makes it **character-aware**, coupling the spine to the posed-mannequin work: the figure's silhouette becomes a **solid obstacle**, and a single pressure-projection (Poisson solve, no-flux at the body) bends the field tangent to it — streamlines **part around** the head/torso/crouched legs, **compress past the shoulders/hips**, **stagnate** on the windward chest, and **shed a counter-rotating wake** downwind. The same untouched `flow-field.json` then feeds both proven registers: comic **speed-lines** wrap the body, and a **dust sim** piles bright on the windward edge and swirls into the wake. Crucially the coupling adds a stage to the *field author* (mask → projection → wake), **not** to each leg — so the spine's shared-source claim survives the obstacle. This is the two-lifetimes promotion made literal: *the arrow becomes the wind, and now the wind knows the body is there.* Evidence: `Projects/BLUELINE/proofs/session-4-figure-flow/` (`CONTACT-SHEET-one-field-around-a-character.png`). Recipe updated in [[flow-field-spine]] § Obstacle.
 
 ## Why it's a spine and not a feature
 

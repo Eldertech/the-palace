@@ -1,0 +1,100 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>BLUELINE S4 — dust flowing around a character (live)</title>
+<style>
+  html,body{margin:0;background:#0c0d10;color:#cfd4e0;font:13px/1.5 ui-monospace,Menlo,monospace}
+  #wrap{display:flex;gap:16px;padding:16px;align-items:flex-start;flex-wrap:wrap}
+  canvas{background:#0c0d10;border:1px solid #23252b;max-width:100%;height:auto}
+  .panel{min-width:220px}
+  label{display:block;margin:.5rem 0 .1rem;color:#9aa1b2}
+  input[type=range]{width:200px}
+  b{color:#e8ecf5}
+  .k{color:#7f8aa3}
+</style>
+<div id="wrap">
+  <canvas id="c" width="416" height="520"></canvas>
+  <div class="panel">
+    <div><b>Dust around the character</b> — the same <span class="k">flow-field.json</span> the
+      comic speed-lines read, now advecting a live particle medium. Dust flows around the body,
+      piles on the <b>windward</b> (left) edge, and sheds into the <b>wake</b> behind.</div>
+    <label>particles <span id="np"></span></label><input id="count" type="range" min="2000" max="40000" step="1000" value="16000">
+    <label>speed</label><input id="spd" type="range" min="0.2" max="3" step="0.1" value="1.2">
+    <label>turbulence</label><input id="turb" type="range" min="0" max="2" step="0.05" value="0.5">
+    <label>trail persistence</label><input id="fade" type="range" min="0.02" max="0.4" step="0.01" value="0.12">
+    <label><input id="showbody" type="checkbox" checked> show body silhouette</label>
+    <label><input id="wind" type="checkbox" checked> show windward pile-up (hot)</label>
+    <div style="margin-top:.6rem" class="k">deterministic field · particles reseed at the inlet</div>
+  </div>
+</div>
+<script>
+const cv = document.getElementById('c'), g = cv.getContext('2d');
+let F=null, GW=0, GH=0, asp=1, VX=null, VY=null, S=null, magmax=1;
+let px,py, N=16000;
+const $ = id => document.getElementById(id);
+
+fetch('../flow-field.json').then(r=>r.json()).then(d=>{
+  F=d; GW=d.grid.w; GH=d.grid.h; asp=d.grid.aspect; magmax=d.mag_max;
+  VX=new Float32Array(GW*GH); VY=new Float32Array(GW*GH); S=new Uint8Array(GW*GH);
+  for(let j=0;j<GH;j++)for(let i=0;i<GW;i++){
+    VX[j*GW+i]=d.vectors[j][i][0]; VY[j*GW+i]=d.vectors[j][i][1]; S[j*GW+i]=d.solid[j][i]?1:0;
+  }
+  // canvas aspect = field aspect
+  cv.height = Math.round(cv.width / asp);
+  reseedAll(); requestAnimationFrame(loop);
+});
+
+function sample(x,y){ // domain x in [0,asp], y in [0,1]  -> bilinear
+  let fx=Math.min(Math.max(x/asp,0),1)*(GW-1), fy=Math.min(Math.max(y,0),1)*(GH-1);
+  let x0=fx|0,y0=fy|0,x1=Math.min(x0+1,GW-1),y1=Math.min(y0+1,GH-1),tx=fx-x0,ty=fy-y0;
+  let a=y0*GW,b=y1*GW;
+  let vx=VX[a+x0]*(1-tx)*(1-ty)+VX[a+x1]*tx*(1-ty)+VX[b+x0]*(1-tx)*ty+VX[b+x1]*tx*ty;
+  let vy=VY[a+x0]*(1-tx)*(1-ty)+VY[a+x1]*tx*(1-ty)+VY[b+x0]*(1-tx)*ty+VY[b+x1]*tx*ty;
+  return [vx,vy];
+}
+function solid(x,y){
+  let i=Math.min(Math.max((x/asp*(GW-1))|0,0),GW-1), j=Math.min(Math.max((y*(GH-1))|0,0),GH-1);
+  return S[j*GW+i];
+}
+function reseedAll(){ px=new Float32Array(N); py=new Float32Array(N);
+  // initial cloud fills the WHOLE frame (so the live view is immediately full);
+  // only respawns go to the inlet band.
+  for(let k=0;k<N;k++){ do{ px[k]=Math.random()*asp; py[k]=Math.random(); }while(solid(px[k],py[k])); } }
+function reseed(k){ do{ px[k]=Math.random()*0.06*asp; py[k]=Math.random(); }while(solid(px[k],py[k])); }
+
+$('count').oninput=e=>{ N=+e.target.value; reseedAll(); };
+function loop(){
+  const spd=+$('spd').value, turb=+$('turb').value*0.0015, fade=+$('fade').value;
+  const clamp=Math.min(magmax,4.0);
+  $('np').textContent=N.toLocaleString();
+  // fade the trails
+  g.fillStyle='rgba(12,13,16,'+fade+')'; g.fillRect(0,0,cv.width,cv.height);
+
+  // body silhouette
+  if($('showbody').checked){
+    const cw=cv.width/GW, ch=cv.height/GH;
+    g.fillStyle='rgba(40,70,120,0.35)';
+    for(let j=0;j<GH;j++)for(let i=0;i<GW;i++) if(S[j*GW+i]) g.fillRect(i*cw,j*ch,cw+1,ch+1);
+  }
+  const showWind=$('wind').checked;
+  for(let k=0;k<N;k++){
+    let x=px[k],y=py[k]; const v=sample(x,y); let m=Math.hypot(v[0],v[1])+1e-6;
+    let s=Math.min(1,m/clamp);
+    let stp=0.0016*spd*(0.35+0.9*s);
+    let nx=x+v[0]/m*stp+(Math.random()-0.5)*turb, ny=y+v[1]/m*stp+(Math.random()-0.5)*turb;
+    if(nx<0||nx>asp||ny<0||ny>1){ // draw a faint exit fleck then reseed
+      reseed(k); continue;
+    }
+    if(solid(nx,ny)){ // windward strike -> hot pile mark, then reseed
+      if(showWind){ let sx=x/asp*cv.width, sy=y*cv.height;
+        g.fillStyle='rgba(255,248,230,0.9)'; g.fillRect(sx,sy,1.6,1.6); }
+      reseed(k); continue;
+    }
+    px[k]=nx; py[k]=ny;
+    let sx=nx/asp*cv.width, sy=ny*cv.height;
+    let a=0.25+0.6*s; let val=180+70*s;
+    g.fillStyle='rgba('+val+','+(val*0.97|0)+','+(val*0.86|0)+','+a+')';
+    g.fillRect(sx,sy,1.2,1.2);
+  }
+  requestAnimationFrame(loop);
+}
+</script>
