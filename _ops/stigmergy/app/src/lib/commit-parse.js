@@ -43,6 +43,21 @@ export function kindColor(kind) {
   return KIND_COLOR[kind] ?? KIND_COLOR.other;
 }
 
+// The body's human-readable prose, with the machine trailer block stripped.
+// `Palace-*` trailers are pure metadata already surfaced as the card's kind
+// badge, entry chips, and verify tag — repeating them inline is noise. Drops
+// every `Palace-<Key>:` line, collapses the blank runs they leave, and trims.
+// (The synthesis `Weave flags:` line is NOT a Palace- trailer, so it stays.)
+export function bodyProse(body) {
+  if (typeof body !== 'string') return '';
+  return body
+    .split(/\r?\n/)
+    .filter((line) => !/^Palace-[A-Za-z-]+:\s/.test(line))
+    .join('\n')
+    .replace(/\n{3,}/g, '\n\n')
+    .trim();
+}
+
 // Parse a subject line into { kind, scope, summary, declared }.
 // `declared` is true only when the subject matches the spec form
 // `<kind>(<scope>): <summary>` AND kind is in the enum.
