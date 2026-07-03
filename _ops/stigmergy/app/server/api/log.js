@@ -2,10 +2,11 @@
 //   GET  /api/log          — the commit stream (classified + diffstat)
 //   GET  /api/commit?sha=  — one commit's palace-aware diff
 //   GET  /api/uncommitted  — the working-tree delta (the banner)
+//   GET  /api/git-state    — worktree topology (branches, ahead/behind, dirty)
 //   POST /api/commit/create — record a structured palace commit
 
 import { jsonResponse, readBody } from '../http.js';
-import { readLog, readCommit, readUncommitted } from '../git.js';
+import { readLog, readCommit, readUncommitted, readGitState, readCommitGraph } from '../git.js';
 import { commitSelected } from '../commit.js';
 
 export async function logRoutes(ctx) {
@@ -47,6 +48,30 @@ export async function logRoutes(ctx) {
       return true;
     } catch (err) {
       jsonResponse(res, 500, { error: `git status failed: ${err.message}` });
+      return true;
+    }
+  }
+
+  // The worktree topology -- read-only; never prunes or mutates a worktree.
+  if (urlPath === '/api/git-state' && method === 'GET') {
+    try {
+      const state = await readGitState(palaceRoot);
+      jsonResponse(res, 200, { ...state, ts: new Date().toISOString() });
+      return true;
+    } catch (err) {
+      jsonResponse(res, 500, { error: `git worktree read failed: ${err.message}` });
+      return true;
+    }
+  }
+
+  // The commit DAG behind the worktrees (LOG deck TOPOLOGY). Read-only.
+  if (urlPath === '/api/commit-graph' && method === 'GET') {
+    try {
+      const graph = await readCommitGraph(palaceRoot);
+      jsonResponse(res, 200, { ...graph, ts: new Date().toISOString() });
+      return true;
+    } catch (err) {
+      jsonResponse(res, 500, { error: `git graph read failed: ${err.message}` });
       return true;
     }
   }

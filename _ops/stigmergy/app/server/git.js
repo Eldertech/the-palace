@@ -9,7 +9,8 @@
 
 import { resolve, sep } from 'node:path';
 import {
-  LOG_FORMAT, parseLogMeta, parseNumstat, parsePorcelain, RECORD_SEP, FIELD_SEP,
+  LOG_FORMAT, GRAPH_FORMAT, parseLogMeta, parseNumstat, parsePorcelain, RECORD_SEP, FIELD_SEP,
+  parseWorktreePorcelain, parseAheadBehind, parseGraphLog,
 } from '../src/lib/git-log-parse.js';
 import { classifyCommit } from '../src/lib/commit-parse.js';
 import { diffEntryText } from '../src/lib/frontmatter-diff.js';
@@ -178,4 +179,145 @@ export async function readUncommitted(palaceRoot) {
   const parsed = parsePorcelain(res.stdout);
   const total = parsed.staged.length + parsed.unstaged.length + parsed.untracked.length;
   return { ...parsed, total };
+}
+
+// The worktree topology -- every linked checkout of this repo, each with its
+// branch, HEAD, ahead/behind counts (vs the base branch AND vs its upstream),
+// dirty-file count, and lock/prune state. Read-only and self-scoped: it never
+// prunes, removes, or mutates a worktree -- the cross-agent-kill lesson. The
+// app runs inside one worktree (the host); `git worktree list` from any linked
+// checkout sees them all because they share one .git.
+//
+// `base` is the branch feature lanes are measured against (default `main`).
+export async function readGitState(palaceRoot, { base = 'main' } = {}) {
+  const wtRes = await git(palaceRoot, ['worktree', 'list', '--porcelain'], { allowFail: true });
+  if (wtRes.failed) {
+    return { worktrees: [], base, host: null, error: wtRes.stderr || 'git worktree list failed' };
+  }
+  const records = parseWorktreePorcelain(wtRes.stdout);
+  const hostAbs = resolve(palaceRoot);
+
+  const worktrees = await Promise.all(records.map(async (wt) => {
+    const wtAbs = resolve(wt.path);
+    const isHost = wtAbs === hostAbs;
+    const ref = wt.branch ? `refs/heads/${wt.branch}` : wt.head;
+
+    // Ahead/behind vs the base branch. Skip when this worktree IS the base
+    // (0/0 is uninteresting) or has no resolvable ref.
+    let aheadBehind = null;
+    if (ref && wt.branch !== base) {
+      const r = await git(palaceRoot, ['rev-list', '--left-right', '--count', `${base}...${ref}`], { allowFail: true });
+      if (!r.failed) aheadBehind = parseAheadBehind(r.stdout);
+    } else if (wt.branch === base) {
+      aheadBehind = { behind: 0, ahead: 0 };
+    }
+
+    // Ahead/behind vs the branch's own upstream, computed inside the worktree
+    // so `@{u}` resolves. Null when no upstream is configured or the dir is
+    // gone (prunable) -- both are non-errors here.
+    let upstream = null;
+    if (!wt.prunable && !wt.detached) {
+      const u = await git(wtAbs, ['rev-list', '--left-right', '--count', '@{u}...HEAD'], { allowFail: true });
+      if (!u.failed) upstream = parseAheadBehind(u.stdout);
+    }
+
+    // Dirty count -- run status inside the worktree. A prunable/missing dir
+    // reports null (rendered as "gone"), never an error.
+    let dirty = null;
+    if (!wt.prunable) {
+      const s = await git(wtAbs, ['status', '--porcelain=v1'], { allowFail: true });
+      if (!s.failed) {
+        const p = parsePorcelain(s.stdout);
+        dirty = p.staged.length + p.unstaged.length + p.untracked.length;
+      }
+    }
+
+    // Last commit on this HEAD (subject + ISO + relative age).
+    let last = null;
+    if (wt.head) {
+      const l = await git(palaceRoot, ['log', '-1', `--format=%s${FIELD_SEP}%aI${FIELD_SEP}%cr`, wt.head], { allowFail: true });
+      if (!l.failed) {
+        const [subject, iso, rel] = l.stdout.trim().split(FIELD_SEP);
+        last = { subject: subject ?? '', date: iso ?? '', relative: rel ?? '' };
+      }
+    }
+
+    // A short, render-ready name: the worktree dir's basename.
+    const name = wtAbs.slice(wtAbs.lastIndexOf(sep) + 1) || wtAbs;
+
+    return {
+      path: wt.path, name, isHost,
+      head: wt.head, shortHead: wt.shortHead,
+      branch: wt.branch, detached: wt.detached, bare: wt.bare,
+      locked: wt.locked, lockedReason: wt.lockedReason,
+      prunable: wt.prunable, prunableReason: wt.prunableReason,
+      aheadBehind, upstream, dirty, last,
+    };
+  }));
+
+  const host = worktrees.find((w) => w.isHost) ?? null;
+  return { worktrees, base, host };
+}
+
+// The real commit DAG behind the worktrees -- every commit reachable from the
+// worktree tips down to their common merge-base (the convergence root, where
+// all lanes rejoin the trunk). Bounded by `maxCommits` and by the merge-base
+// so the graph stays a handful of lanes wide. Read-only. Returns
+// { commits: [DAG nodes, newest first], root, trunk, tips, truncated }.
+export async function readCommitGraph(palaceRoot, { maxCommits = 150 } = {}) {
+  const base = 'main';
+  const wtRes = await git(palaceRoot, ['worktree', 'list', '--porcelain'], { allowFail: true });
+  if (wtRes.failed) return { commits: [], root: null, trunk: base, tips: [], error: wtRes.stderr || 'git worktree list failed' };
+
+  // Tips = every worktree's branch ref (or bare HEAD when detached), plus the
+  // base branch. Deduped; only refs git can resolve.
+  const records = parseWorktreePorcelain(wtRes.stdout);
+  const tipSet = new Set([base]);
+  for (const wt of records) {
+    if (wt.prunable) continue;
+    tipSet.add(wt.branch ? `refs/heads/${wt.branch}` : wt.head);
+  }
+  const tips = [...tipSet].filter(Boolean);
+
+  // Keep only tips git can resolve (a branch may have been deleted), deduped by
+  // resolved sha so `main` and `refs/heads/main` don't both appear.
+  const resolved = [];
+  const seenSha = new Set();
+  for (const t of tips) {
+    const r = await git(palaceRoot, ['rev-parse', '--verify', '--quiet', `${t}^{commit}`], { allowFail: true });
+    const sha = r.failed ? '' : r.stdout.trim();
+    if (!sha || seenSha.has(sha)) continue;
+    seenSha.add(sha);
+    resolved.push({ ref: t, sha });
+  }
+  if (resolved.length === 0) return { commits: [], root: null, trunk: base, tips: [], truncated: false };
+
+  // The convergence root: the octopus merge-base of all tips. The graph is the
+  // range (root, tips] plus the root node itself as the trunk anchor.
+  const refArgs = resolved.map((t) => t.ref);
+  const mbRes = await git(palaceRoot, ['merge-base', '--octopus', ...refArgs], { allowFail: true });
+  const root = mbRes.failed ? null : mbRes.stdout.trim().split('\n')[0].trim();
+
+  const rangeArgs = ['log', '--topo-order', '--parents', `--format=${GRAPH_FORMAT}`,
+    `-n`, String(maxCommits + 1), ...refArgs];
+  if (root) rangeArgs.push(`^${root}`);
+  const logRes = await git(palaceRoot, rangeArgs, { allowFail: true });
+  if (logRes.failed) return { commits: [], root, trunk: base, tips: refArgs, error: logRes.stderr || 'git log failed' };
+
+  let commits = parseGraphLog(logRes.stdout);
+  const truncated = commits.length > maxCommits;
+  if (truncated) commits = commits.slice(0, maxCommits);
+
+  // Append the merge-base itself as the trunk root node (its parents are left
+  // undrawn -- the trunk continues below the window). Only if not already in
+  // the set (it won't be, since the range excludes it).
+  if (root && !commits.some((c) => c.sha === root)) {
+    const rootRes = await git(palaceRoot, ['log', '-1', `--format=${GRAPH_FORMAT}`, root], { allowFail: true });
+    if (!rootRes.failed) {
+      const [rootNode] = parseGraphLog(rootRes.stdout);
+      if (rootNode) commits.push({ ...rootNode, parents: [], isRoot: true });
+    }
+  }
+
+  return { commits, root, trunk: base, tips: refArgs, truncated };
 }
