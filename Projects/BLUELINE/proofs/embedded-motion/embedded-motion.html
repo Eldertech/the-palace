@@ -1,0 +1,432 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>BLUELINE — Motion Embedded in the Frame</title>
+<style>
+  :root{--bg:#15161a;--panel:#1d1f25;--ink:#e9e7e2;--dim:#8b8d96;--amber:#e0a83a;--good:#7bbf6a;--bad:#c98a8a;
+        --line:#2c2e36;--paper:#0e0f12;--shadow:#0f1013}
+  *{box-sizing:border-box} html,body{margin:0;height:100%;background:var(--bg);color:var(--ink);
+    font-family:"JetBrains Mono",ui-monospace,Menlo,monospace}
+  .wrap{max-width:1180px;margin:0 auto;padding:20px}
+  h1{font-family:"Anton",Impact,sans-serif;font-weight:400;letter-spacing:.04em;text-transform:uppercase;font-size:26px;margin:0}
+  .sub{color:var(--dim);font-style:italic;font-family:Cormorant,Georgia,serif;font-size:17px;margin:2px 0 16px;max-width:760px}
+  .top{display:flex;justify-content:space-between;align-items:flex-end;gap:16px;flex-wrap:wrap}
+  .bible{font-size:11px;color:var(--dim);text-align:right;line-height:1.5}.bible b{color:var(--amber)}
+  .stage{display:grid;grid-template-columns:1fr 250px;gap:14px;margin-bottom:8px}
+  @media(max-width:820px){.stage{grid-template-columns:1fr}}
+  .panelwrap{background:#000;border:1px solid var(--line);border-radius:6px;overflow:hidden;position:relative;display:flex;justify-content:center}
+  #panel{display:block;max-width:100%;height:auto;background:var(--paper)}
+  .pulse{position:absolute;inset:0;border:0 solid var(--amber);border-radius:6px;pointer-events:none;transition:border-width .09s ease-out}
+  .caption{font-family:Cormorant,Georgia,serif;font-size:18px;line-height:1.35;padding:9px 4px 2px;color:var(--ink);min-height:48px}
+  .caption .lead{color:var(--amber);font-family:"JetBrains Mono",monospace;font-size:12px;letter-spacing:.04em;text-transform:uppercase;margin-right:8px}
+  .side{display:flex;flex-direction:column;gap:10px}
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:12px 13px}
+  .k{color:var(--amber);font-size:11px;text-transform:uppercase;letter-spacing:.06em;margin-bottom:4px}
+  .big{font-size:38px;font-family:"Anton",Impact,sans-serif;line-height:1;margin-top:3px}
+  .row{display:flex;justify-content:space-between;font-size:12px;margin:4px 0;gap:8px}.row span:first-child{color:var(--dim)}
+  .sk{display:flex;align-items:center;gap:8px;font-size:12px;margin:5px 0;cursor:pointer}
+  .sk input{accent-color:var(--amber)} .sk .nm{color:var(--ink)} .sk .fn{color:var(--dim);font-size:10.5px}
+  .det.ok{color:var(--good)}.det.no{color:var(--bad)}
+  .strip{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-top:8px}
+  .cell{background:var(--paper);border:1px solid var(--line);border-radius:5px;overflow:hidden;cursor:pointer}
+  .cell.active{border-color:var(--amber);box-shadow:0 0 0 1px var(--amber)}
+  .cell img{display:block;width:100%;height:74px;object-fit:cover}
+  .cell .lbl{font-size:9.5px;color:var(--dim);text-align:center;padding:3px 0;border-top:1px solid var(--line)}
+  .cell.active .lbl{color:var(--amber)}
+  .bar{display:flex;align-items:center;gap:10px;margin:14px 0 4px;font-size:12px;flex-wrap:wrap}
+  .btn{background:var(--panel);color:var(--ink);border:1px solid var(--line);border-radius:6px;padding:6px 12px;font-family:inherit;font-size:12px;cursor:pointer}
+  .btn:hover{border-color:var(--amber)}.btn.on{border-color:var(--good);color:var(--good)}
+  #conn{font-size:12px}.dot{display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--dim);margin-right:6px;vertical-align:middle}
+  .dot.live{background:var(--good)}.dot.play{background:var(--amber)}
+  #foot{color:var(--dim);font-size:11px;margin-top:16px;letter-spacing:.04em}
+  #sttext{font-size:11px}
+</style></head>
+<body><div class="wrap">
+  <div class="top">
+    <div>
+      <h1>BLUELINE · Motion Embedded in the Frame</h1>
+      <div class="sub">a roster of motion-realization skills — every hand-drawn frame already holds its motion; each skill finds it and realizes it as ink physics over the held still, every motion a pure function of the playhead</div>
+    </div>
+    <div class="bible" id="bible">tempo <b>—</b> · fps <b>—</b> · <b>—</b> frames/beat</div>
+  </div>
+
+  <div class="stage">
+    <div>
+      <div class="panelwrap"><canvas id="panel" width="920" height="600"></canvas><div class="pulse" id="pulse"></div></div>
+      <div class="caption" id="caption"><span class="lead">standby</span>pick a frame or press self-play…</div>
+      <div class="strip" id="strip"></div>
+    </div>
+    <div class="side">
+      <div class="card">
+        <div class="k">now playing</div>
+        <div class="big" id="barbeat">—.—</div>
+        <div class="row"><span>frame</span><span id="frame" style="color:var(--amber)">—</span></div>
+        <div class="row"><span>section</span><span id="section" style="color:var(--ink)">—</span></div>
+        <div class="row"><span>panel</span><span id="shotid">—</span></div>
+      </div>
+      <div class="card">
+        <div class="k">motion realized (the roster)</div>
+        <div id="skills"></div>
+      </div>
+      <div class="card">
+        <div class="k">the locked clock</div>
+        <div class="row"><span>frames / beat</span><span id="fpb">—</span></div>
+        <div class="row"><span>determinism</span><span id="det">—</span></div>
+        <div class="row"><span>motion = f(playhead)</span><span id="phase" class="det ok">∝ F ✓</span></div>
+      </div>
+      <div class="card">
+        <div class="k">determinism self-test</div>
+        <div id="sttext" style="color:var(--dim)">render the same F twice → identical · different F → differs · motion OFF → equals the still</div>
+        <button class="btn" id="selftest" style="margin-top:8px;width:100%">run self-test</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="bar">
+    <span id="conn"><span class="dot" id="dot"></span>connecting…</span>
+    <button class="btn" id="selfplay">▶ self-play (no Ableton)</button>
+    <button class="btn on" id="motion">◉ motion ON</button>
+    <button class="btn on" id="poseaware">◉ flow around figure</button>
+    <span class="dim" id="srcnote">driven by the relay when Ableton + the M4L device play; else use self-play</span>
+  </div>
+
+  <div id="foot">Loudon Live · Autodidact Polymaths</div>
+</div>
+
+<script src="motion-skills.js"></script>
+<script>
+// ── the storyboard: rendered new-story frames + the motion EMBEDDED in each ──
+// Each shot holds a held raster (the hand-drawn render) and a list of motion-intents.
+// The intents are "the motion found in the frame"; MotionSkills realizes each, pure in F.
+const NS = "../new-story/out/";
+const SHOTS = [
+  { id:'01', img:NS+'01_wide-burning-city.png', bar:1, beat:1, hold:8, section:'intro',
+    camera:'WIDE establishing — the burning city',
+    action:'The black ink-lines that make up the smoke and storm in the sky are EXTRACTED and moved like smoke — billowing, slow. The city below holds; nothing is added on top.',
+    fire:{ area:[{cx:0.5,cy:0.15,rx:0.62,ry:0.19}], threshold:108, amp:0.040, speed:0.008, by:0.40, bh:0.40, ky:1.1, omega:0.9, inpaintBlur:13 },
+    intents:[]},
+  { id:'02', img:NS+'02_hero-on-sedan-pointing.png', bar:3, beat:1, hold:8, section:'verse',
+    camera:'MEDIUM — the hero on the sedan',
+    action:'The hero is SEPARATED from the background and held crisp. The black ink-lines of the fire and smoke behind him are extracted and moved like fire — rising, licking, bold. Only the background is processed.',
+    native:[832,1216], occlude:true,
+    kp:{0:[413.0,552.1],1:[416.0,608.0],2:[345.9,623.9],3:[295.4,627.2],4:[251.2,623.1],5:[489.2,620.3],6:[520.4,717.2],7:[535.2,802.9],8:[365.3,788.8],9:[355.1,933.1],10:[356.5,1088.5],11:[471.3,788.1],12:[477.8,934.3],13:[480.4,1091.7],14:[396.7,531.8],15:[423.3,530.8],16:[380.3,543.4],17:[446.0,541.2]},
+    fire:{ area:[{cx:0.47,cy:0.28,rx:0.30,ry:0.30},{cx:0.5,cy:0.10,rx:0.32,ry:0.13}], threshold:118, amp:0.055, speed:0.013, by:0.58, bh:0.56, ky:1.7, omega:1.3, inpaintBlur:13 },
+    intents:[]},
+  { id:'05', img:NS+'05_impact-landing-shockwave.png', bar:5, beat:1, hold:8, section:'drop',
+    camera:'WIDE — the impact landing',
+    action:'He lands. The dramatic lines of his descent flow outward and pierce the ground; a shockwave rings out on the beat.',
+    intents:[
+      { kind:'action-line-flow', origin:[0.46,0.66], count:48, length:0.62, intensity:1.0, arcStart:0, arcEnd:6.2832, bias:[0,1], ring:true, seed:51 }
+    ]}
+];
+
+const BIBLE = { tempo:120, fps:24, beats_per_bar:4 };
+let BPB=4, fpb=12, tempo=120, fps=24, det=true;
+let curIdx=0, motionOn=true, poseAware=true;           // poseAware: pose shots deflect+occlude (flow AROUND) vs straight (THROUGH)
+let CW=920, CH=600;
+const skillOn = {};                                   // per-kind toggle (true unless explicitly off)
+
+// ── images ──────────────────────────────────────────────────────────────────
+const imgs={};
+SHOTS.forEach(s=>{const im=new Image(); im.onload=()=>{im._ok=true; if(SHOTS[curIdx].id===s.id){sizeFor(im); bgKey=null;} buildStrip();}; im.src=s.img; imgs[s.id]=im;});
+function sizeFor(im){const scale=Math.min(920/im.naturalWidth, 620/im.naturalHeight);
+  CW=Math.round(im.naturalWidth*scale); CH=Math.round(im.naturalHeight*scale);
+  const cv=$('panel'); cv.width=CW; cv.height=CH;}
+
+// ── the continuous playhead (clock gives discrete beats; motion needs a continuous
+//    frame; hold the exact frame at the last beat and interpolate, resnap on beat) ──
+let syncFrame=0, syncWall=0, hasSync=false;
+const nowMs=()=>performance.now();
+function resync(frame){syncFrame=frame;syncWall=nowMs();hasSync=true;}
+function playhead(){return hasSync ? syncFrame + (nowMs()-syncWall)*(fps/1000) : 0;}
+
+const $=id=>document.getElementById(id);
+const curShot=()=>curIdx>=0?SHOTS[curIdx]:null;
+const startTB=s=>(s.bar-1)*BPB+(s.beat-1);
+const shotStartF=s=>s?startTB(s)*fpb:0;
+
+// ── the held raster, cached per-shot, oversized by PAD so a parallax blit shows no edge ──
+const PAD=40; let bgCache=null, bgKey=null, bgRect=null;
+function buildBG(shot,W,H){
+  const im=imgs[shot.id]; const c=document.createElement('canvas'); c.width=W+2*PAD; c.height=H+2*PAD;
+  const cx=c.getContext('2d'); cx.fillStyle='#0e0f12'; cx.fillRect(0,0,c.width,c.height);
+  if(im&&im._ok){ cx.drawImage(im, PAD, PAD, W, H); }
+  else { cx.fillStyle='#1d1f25'; cx.fillRect(PAD,PAD,W,H); cx.fillStyle='#8b8d96'; cx.font='14px JetBrains Mono, monospace'; cx.fillText('loading '+shot.img+' …', PAD+16, PAD+28); }
+  bgRect={x:0,y:0,w:W,h:H};   // the image fills the (per-shot sized) canvas
+  if(im&&im._ok){ const sc=document.createElement('canvas'); sc.width=W; sc.height=H; sc.getContext('2d').drawImage(im,0,0,W,H); shot._src=sc; } else shot._src=null;  // clean source for WARP solvers
+  buildPose(shot,W,H);        // pose-aware substrate (silhouette mask + figure cutout), if the shot carries a skeleton
+  buildFire(shot,W,H);        // fire-strokes substrate (isolated element ink + cleaned base), if the shot declares a fire element
+  return c;
+}
+
+// ── pose-aware substrate — port of new-story/silhouette.py: grow a body-shaped mask from the
+//    COCO-18 skeleton (torso polygon + tapered limb capsules + head ellipse), feathered into a
+//    smooth deflection field; plus a figure cutout (raster ∩ mask) used as a foreground occluder. ──
+function buildPose(shot,W,H){
+  if(!shot.kp){ shot._mask=null; shot._figCut=null; return; }
+  const nw=shot.native?shot.native[0]:W, nh=shot.native?shot.native[1]:H, sx=W/nw, sy=H/nh, K={};
+  for(const i in shot.kp){ K[i]=[shot.kp[i][0]*sx, shot.kp[i][1]*sy]; }
+  let _cx=0,_cy=0,_cn=0; for(const i of [1,2,5,8,11]) if(K[i]){_cx+=K[i][0];_cy+=K[i][1];_cn++;}  // torso centroid for interior repulsion
+  _cx=_cn?_cx/_cn:W/2; _cy=_cn?_cy/_cn:H/2;
+  const c=document.createElement('canvas'); c.width=W; c.height=H; const g=c.getContext('2d');
+  g.fillStyle='#fff'; g.strokeStyle='#fff'; g.lineCap='round'; g.lineJoin='round';
+  const dd=(a,b)=>Math.hypot(a[0]-b[0],a[1]-b[1]);
+  const has=function(){ for(let i=0;i<arguments.length;i++) if(!K[arguments[i]]) return false; return true; };
+  const torso=has(1,8)?dd(K[1],K[8]):0.15*H, base=Math.max(10,torso*0.46);
+  const tri=(a,b,cc)=>{g.beginPath();g.moveTo(K[a][0],K[a][1]);g.lineTo(K[b][0],K[b][1]);g.lineTo(K[cc][0],K[cc][1]);g.closePath();g.fill();};
+  if(has(2,5,11,8)){g.beginPath();g.moveTo(K[2][0],K[2][1]);g.lineTo(K[5][0],K[5][1]);g.lineTo(K[11][0],K[11][1]);g.lineTo(K[8][0],K[8][1]);g.closePath();g.fill();}
+  if(has(1,8,11))tri(1,8,11); if(has(1,2,5))tri(1,2,5);
+  const LIMB=[[[2,3],0.55],[[3,4],0.42],[[5,6],0.55],[[6,7],0.42],[[8,9],0.72],[[9,10],0.52],[[11,12],0.72],[[12,13],0.52],[[1,2],0.62],[[1,5],0.62],[[1,8],0.95],[[1,11],0.95],[[1,0],0.5]];
+  for(const seg of LIMB){ const a=seg[0][0],b=seg[0][1],wf=seg[1]; if(has(a,b)){ const w=Math.max(4,base*wf); g.lineWidth=w; g.beginPath(); g.moveTo(K[a][0],K[a][1]); g.lineTo(K[b][0],K[b][1]); g.stroke(); for(const i of [a,b]){const r=w/2; g.beginPath(); g.arc(K[i][0],K[i][1],r,0,7); g.fill();}}}
+  const face=[0,14,15,16,17].filter(i=>K[i]).map(i=>K[i]);
+  if(face.length){const xs=face.map(p=>p[0]),ys=face.map(p=>p[1]);const cx=xs.reduce((a,b)=>a+b,0)/xs.length,cy=ys.reduce((a,b)=>a+b,0)/ys.length;const hr=Math.max(base*0.95,(Math.max.apply(null,xs)-Math.min.apply(null,xs))*0.9);g.beginPath();g.ellipse(cx,cy-hr*0.1,hr,hr*1.15,0,0,7);g.fill();}
+  // feathered copy → smooth deflection field the solver reads
+  const cb=document.createElement('canvas'); cb.width=W; cb.height=H; const gb=cb.getContext('2d');
+  gb.filter='blur(16px)'; gb.drawImage(c,0,0); gb.filter='none';
+  const md=gb.getImageData(0,0,W,H).data;
+  shot._mask={ W:W, H:H, cx:_cx, cy:_cy, at:function(x,y){ x=x|0; y=y|0; if(x<0||y<0||x>=W||y>=H) return 0; return md[(y*W+x)*4]/255; } };
+  // figure cutout (raster ∩ sharp mask) → foreground occluder, so the plume reads as BEHIND him
+  const fc=document.createElement('canvas'); fc.width=W; fc.height=H; const gf=fc.getContext('2d');
+  const im=imgs[shot.id]; if(im&&im._ok){ gf.drawImage(im,0,0,W,H); gf.globalCompositeOperation='destination-in'; gf.drawImage(c,0,0); }
+  shot._figCut=fc;
+}
+
+// ── INFILL — clean-plate the background where the foreground figure sits (diffusion fill), so the
+//    background is COMPLETE before we manipulate it and the fire flows continuously behind him. The
+//    hole is seeded with the mean surround tone, then surrounding pixels are diffused inward. ──
+function infillHole(srcCanvas, holeMask, W, H, iters, blurR){
+  const sd=srcCanvas.getContext('2d').getImageData(0,0,W,H).data;
+  const hd=holeMask.getContext('2d').getImageData(0,0,W,H).data;
+  let r=0,g=0,b=0,nn=0;
+  for(let i=0;i<sd.length;i+=4){ if(hd[i+3]<40){ r+=sd[i];g+=sd[i+1];b+=sd[i+2];nn++; } }
+  if(nn){ r/=nn; g/=nn; b/=nn; } else { r=g=b=180; }
+  const known=document.createElement('canvas'); known.width=W; known.height=H; const kc=known.getContext('2d');
+  kc.drawImage(srcCanvas,0,0); kc.globalCompositeOperation='destination-out'; kc.drawImage(holeMask,0,0); kc.globalCompositeOperation='source-over';
+  const plate=document.createElement('canvas'); plate.width=W; plate.height=H; const pc=plate.getContext('2d');
+  pc.fillStyle='rgb('+(r|0)+','+(g|0)+','+(b|0)+')'; pc.fillRect(0,0,W,H); pc.drawImage(known,0,0);  // hole starts neutral, not the character
+  const tmp=document.createElement('canvas'); tmp.width=W; tmp.height=H; const tc=tmp.getContext('2d');
+  for(let k=0;k<iters;k++){
+    tc.clearRect(0,0,W,H); tc.filter='blur('+blurR+'px)'; tc.drawImage(plate,0,0); tc.filter='none';   // diffuse outward
+    pc.clearRect(0,0,W,H); pc.drawImage(tmp,0,0); pc.drawImage(known,0,0);                              // restore known; hole keeps the diffused value
+  }
+  return plate;
+}
+
+// ── FIRE-STROKES — the bold version. SEPARATE the figure, INFILL its hole (clean plate, above), then
+//    EXTRACT the black ink-lines of the fire/smoke from that plate (dark pixels in the authored area), and
+//    DEFORM those strokes with a fire/smoke flow field (rising travelling waves — bold but bounded, so
+//    no net drift). The cleaned base hides the originals (blurred to haze); the figure rides crisp on
+//    top. No camera shake. Pure function of F. ──
+function buildFire(shot,W,H){
+  if(!shot.fire || !shot._src){ shot._fireBase=null; return; }
+  // CLEAN PLATE: infill the background hole where the figure sits, BEFORE manipulating it, so the fire
+  // is continuous behind him (no character-shaped void at his edges).
+  const plate = shot._figCut ? infillHole(shot._src, shot._figCut, W, H, shot.fire.infillIters||16, shot.fire.infillBlur||9) : shot._src;
+  const srcData=plate.getContext('2d').getImageData(0,0,W,H).data;
+  const fm=document.createElement('canvas'); fm.width=W; fm.height=H; const fmx=fm.getContext('2d');
+  fmx.fillStyle='#000'; fmx.fillRect(0,0,W,H); fmx.fillStyle='#fff';
+  for(const e of shot.fire.area){ fmx.beginPath(); fmx.ellipse(e.cx*W,e.cy*H,e.rx*W,e.ry*H,0,0,Math.PI*2); fmx.fill(); }
+  const fmData=fmx.getImageData(0,0,W,H).data;   // fire AREA = the authored ellipses; the figure region is now FILLED, not excluded
+  let x0=W,y0=H,x1=0,y1=0;
+  for(let y=0;y<H;y++)for(let x=0;x<W;x++) if(fmData[(y*W+x)*4]>128){ if(x<x0)x0=x; if(x>x1)x1=x; if(y<y0)y0=y; if(y>y1)y1=y; }
+  if(x1<x0){ shot._fireBase=null; return; }
+  shot._fireBox={x0,y0,x1,y1};
+  const T=shot.fire.threshold==null?120:shot.fire.threshold;       // isolate the black lines (the drawn ink)
+  // paper tone behind the ink = mean of the LIGHT pixels in the area
+  let pr=0,pg=0,pb=0,pn=0;
+  for(let y=y0;y<=y1;y++)for(let x=x0;x<=x1;x++){ const i=(y*W+x)*4; if(fmData[i]>128){ const lum=(srcData[i]+srcData[i+1]+srcData[i+2])/3; if(lum>170){ pr+=srcData[i];pg+=srcData[i+1];pb+=srcData[i+2];pn++; } } }
+  const paper = pn>50 ? [pr/pn,pg/pn,pb/pn] : [232,228,220];
+  // feathered area mask → soft removal/extraction at the boundary (no hard ellipse seam)
+  const af=document.createElement('canvas'); af.width=W; af.height=H; const afx=af.getContext('2d');
+  afx.filter='blur('+(shot.fire.areaFeather||16)+'px)'; afx.drawImage(fm,0,0); afx.filter='none';
+  const afData=afx.getImageData(0,0,W,H).data;
+  // isolated ink (the black lines), faded at the boundary
+  const inkImg=new ImageData(W,H), id=inkImg.data;
+  for(let y=y0;y<=y1;y++)for(let x=x0;x<=x1;x++){ const i=(y*W+x)*4; const am=afData[i]/255; if(am<=0.01) continue;
+    const lum=(srcData[i]+srcData[i+1]+srcData[i+2])/3;
+    if(lum<T){ id[i]=srcData[i]; id[i+1]=srcData[i+1]; id[i+2]=srcData[i+2]; id[i+3]=Math.min(255,(T-lum)/T*1.7*255)*am; } }
+  shot._inkData=id;
+  // cleaned base: REMOVE the element's ink toward the paper tone (crisp, not blurred), feathered
+  const baseImg=new ImageData(W,H), bd=baseImg.data; bd.set(srcData);
+  const rmT=shot.fire.removeT!=null?shot.fire.removeT:T*1.4;       // clear ANY stroke, fully, so no original ghosts under the moving layer
+  for(let y=y0;y<=y1;y++)for(let x=x0;x<=x1;x++){ const i=(y*W+x)*4; const am=afData[i]/255; if(am<=0.01) continue;
+    const lum=(srcData[i]+srcData[i+1]+srcData[i+2])/3;
+    const rm=Math.max(0,Math.min(1,(rmT-lum)/(rmT*0.5)))*am;
+    bd[i]+=(paper[0]-bd[i])*rm; bd[i+1]+=(paper[1]-bd[i+1])*rm; bd[i+2]+=(paper[2]-bd[i+2])*rm; }
+  const base=document.createElement('canvas'); base.width=W; base.height=H; const bx=base.getContext('2d');
+  bx.putImageData(baseImg,0,0);
+  if(shot._figCut) bx.drawImage(shot._figCut,0,0);                  // figure crisp over the cleaned area
+  shot._fireBase=base;
+  shot._warpCanvas=document.createElement('canvas'); shot._warpCanvas.width=W; shot._warpCanvas.height=H; shot._warpImg=null;
+}
+function fireField(x,y,F,p){
+  const t=F*p.speed, A=p.amp, yn=y/p.H;
+  const env=Math.max(0,Math.min(1,(p.by-yn)/p.bh));      // anchored at the base, licks most at the tips
+  const ph=yn*p.ky*6.2832 - t*p.omega;                   // a travelling wave — rises over time, bounded (no drift)
+  const dx=A*env*(Math.sin(ph)+0.45*Math.sin(ph*2.3+x*0.013));
+  const dy=A*0.55*env*Math.cos(ph*0.85);
+  return [dx,dy];
+}
+function renderFire(ctx,shot,F){
+  const W=shot._fireBase.width,H=shot._fireBase.height,bb=shot._fireBox,src=shot._inkData;
+  ctx.drawImage(shot._fireBase,0,0);
+  const out=shot._warpCanvas.getContext('2d');
+  if(!shot._warpImg) shot._warpImg=out.createImageData(W,H);
+  const od=shot._warpImg.data;
+  for(let y=bb.y0;y<=bb.y1;y++){ const rb=(y*W+bb.x0)*4; od.fill(0,rb,rb+(bb.x1-bb.x0+1)*4); }
+  const p={speed:shot.fire.speed||0.012, amp:(shot.fire.amp||0.05)*Math.min(W,H), by:shot.fire.by==null?0.6:shot.fire.by, bh:shot.fire.bh||0.6, ky:shot.fire.ky||1.4, omega:shot.fire.omega||1.2, H:H};
+  for(let y=bb.y0;y<=bb.y1;y++)for(let x=bb.x0;x<=bb.x1;x++){
+    const d=fireField(x,y,F,p); const sx=x-d[0], sy=y-d[1];
+    if(sx<0||sy<0||sx>=W-1||sy>=H-1) continue;
+    const ax=sx|0,ay=sy|0,fx=sx-ax,fy=sy-ay, i00=(ay*W+ax)*4,i10=i00+4,i01=i00+W*4,i11=i01+4;
+    const a=src[i00+3]*(1-fx)*(1-fy)+src[i10+3]*fx*(1-fy)+src[i01+3]*(1-fx)*fy+src[i11+3]*fx*fy;
+    if(a<6) continue;
+    const o=(y*W+x)*4; od[o]=src[i00]; od[o+1]=src[i00+1]; od[o+2]=src[i00+2]; od[o+3]=a;
+  }
+  out.putImageData(shot._warpImg,0,0,bb.x0,bb.y0,bb.x1-bb.x0+1,bb.y1-bb.y0+1);
+  ctx.drawImage(shot._warpCanvas,0,0);
+  if(shot._figCut) ctx.drawImage(shot._figCut,0,0);                // figure crisp on top
+}
+
+// ── the per-frame draw — a PURE FUNCTION OF (shot, F). Held raster blitted with a
+//    subtle parallax; the motion-intents realized on top (a touch more parallax →
+//    depth); motion OFF skips every realizer so the panel == the held still. ───────
+function drawFrame(F){
+  const ctx=$('panel').getContext('2d'), W=CW, H=CH, s=curShot();
+  if(!s){ ctx.fillStyle='#0e0f12'; ctx.fillRect(0,0,W,H); return; }
+  if(bgKey!==s.id){ bgCache=buildBG(s,W,H); bgKey=s.id; }
+  // NO camera shake (parallax removed per direction — re-introduced later as a deliberate feature).
+  ctx.clearRect(0,0,W,H);
+  if(s.fire && s._fireBase){
+    // FIRE-STROKES: figure held static; the background fire/smoke/cloud ink is extracted and deformed.
+    if(motionOn) renderFire(ctx, s, F);
+    else ctx.drawImage(s._src, 0, 0);                                          // motion OFF → the original still
+  } else {
+    const beatPhase=F/fpb;
+    const accent=motionOn?Math.exp(-(beatPhase-Math.floor(beatPhase))*5):0;    // a 0..1 spike each downbeat
+    ctx.drawImage(bgCache, -PAD, -PAD);
+    if(motionOn){
+      const P={F, beatPhase, accent, camX:0, rect:bgRect, W, H, src:s._src, mask:(poseAware && s._mask)?s._mask:null};
+      for(const el of s.intents){ if(MotionSkills.isWarp(el.kind) && skillOn[el.kind]!==false) MotionSkills.realize(el.kind, ctx, el, P); }
+      for(const el of s.intents){ if(!MotionSkills.isWarp(el.kind) && skillOn[el.kind]!==false) MotionSkills.realize(el.kind, ctx, el, P); }
+      if(poseAware && s.occlude && s._figCut) ctx.drawImage(s._figCut, 0, 0);
+    }
+  }
+  drawChrome(ctx,W,H,s);
+}
+function drawChrome(ctx,W,H,s){
+  ctx.fillStyle='#000'; ctx.fillRect(0,0,W,H*0.045); ctx.fillRect(0,H*0.955,W,H*0.045);     // letterbox
+  ctx.strokeStyle='#000'; ctx.lineWidth=8; ctx.strokeRect(4,4,W-8,H-8);
+  ctx.strokeStyle='rgba(233,231,226,.5)'; ctx.lineWidth=1.5; ctx.strokeRect(9,9,W-18,H-18);  // comic double border
+  ctx.font='12px JetBrains Mono, monospace'; ctx.fillStyle='#e0a83a';
+  ctx.fillText('PANEL '+s.id+'  ·  bar '+s.bar+'.'+s.beat+'  ·  f'+shotStartF(s), 16, H*0.045+19);
+  ctx.textAlign='right'; ctx.fillStyle='#8b8d96'; ctx.fillText(s.camera, W-16, H*0.045+19);
+  ctx.font='22px Anton, Impact, sans-serif'; ctx.fillStyle='#e9e7e2';
+  ctx.fillText((s.section||'').toUpperCase(), W-16, H*0.955-10); ctx.textAlign='left';
+}
+
+// ── the render loop — one rAF reading the interpolated playhead; redraws only when
+//    the frame signature changes, so a frozen panel costs nothing. ────────────────
+let lastSig=null;
+function skillSig(){return SHOTS.flatMap(s=>s.intents.map(e=>skillOn[e.kind]===false?'0':'1')).join('');}
+function loop(){
+  const F=motionOn?playhead():shotStartF(curShot());
+  const sig=curIdx+'|'+(motionOn?Math.round(F*2):'frozen')+'|'+skillSig();
+  if(sig!==lastSig){ lastSig=sig; drawFrame(F); updateHUD(F); }
+  requestAnimationFrame(loop);
+}
+
+function updateHUD(F){
+  const s=curShot();
+  $('phase').className = motionOn?'det ok':'dim';
+  $('phase').textContent = motionOn?'∝ F ✓':'frozen (= still)';
+  if(s){ $('shotid').textContent='#'+s.id; $('section').textContent=(s.section||'—').toUpperCase(); }
+}
+
+// ── clock plumbing (M0/M1/M2 contract, unchanged) ───────────────────────────
+function applyBible(t,f,b){tempo=t;fps=f;BPB=b||BPB;fpb=(f*60)/t;det=Number.isInteger(fpb);
+  $('bible').innerHTML='tempo <b>'+t+'</b> · fps <b>'+f+'</b> · <b>'+(det?fpb:fpb.toFixed(2))+'</b> frames/beat';
+  $('fpb').textContent=det?fpb+'  (exact)':fpb.toFixed(3);
+  $('det').innerHTML=det?'<span class="det ok">deterministic ✓</span>':'<span class="det no">drifts ✗</span>';}
+function onBeat(bar,beat){const tb=(bar-1)*BPB+(beat-1),frame=tb*fpb;
+  resync(frame);
+  $('barbeat').textContent=bar+'.'+(Number.isInteger(beat)?beat:beat.toFixed(2));
+  $('frame').textContent=Math.abs(frame-Math.round(frame))<1e-9?Math.round(frame):frame.toFixed(1);
+  let idx=-1; for(let i=0;i<SHOTS.length;i++){ if(tb>=startTB(SHOTS[i])) idx=i; else break; }
+  if(idx>=0 && idx!==curIdx){ setShot(idx,true); }
+  pulse();}
+let pulseT=null; function pulse(){const p=$('pulse'); p.style.borderWidth='5px'; clearTimeout(pulseT); pulseT=setTimeout(()=>p.style.borderWidth='0px',90);}
+
+function setShot(i,fromClock){ curIdx=i; const s=SHOTS[i]; const im=imgs[s.id]; if(im&&im._ok) sizeFor(im); bgKey=null; lastSig=null;
+  document.querySelectorAll('.cell').forEach((c,k)=>c.classList.toggle('active',k===i));
+  $('caption').innerHTML='<span class="lead" style="color:var(--amber)">PANEL '+s.id+' · '+s.camera+'</span>'+s.action;
+  $('shotid').textContent='#'+s.id; $('section').textContent=(s.section||'—').toUpperCase();
+  renderSkillList(s);
+  if(!fromClock){ $('frame').textContent=shotStartF(s); $('barbeat').textContent=s.bar+'.'+s.beat; }
+}
+
+// ── the roster panel: which skills are realizing this frame (toggleable) ─────
+function renderSkillList(s){
+  const box=$('skills'); box.innerHTML='';
+  s.intents.forEach(el=>{
+    const m=MotionSkills.META[el.kind]||{};
+    const row=document.createElement('label'); row.className='sk';
+    const cb=document.createElement('input'); cb.type='checkbox'; cb.checked=skillOn[el.kind]!==false;
+    cb.addEventListener('change',()=>{skillOn[el.kind]=cb.checked; lastSig=null;});
+    const txt=document.createElement('div');
+    txt.innerHTML='<div class="nm">'+el.kind+'</div><div class="fn">'+(m.finds||'')+'</div>';
+    row.appendChild(cb); row.appendChild(txt); box.appendChild(row);
+  });
+}
+function buildStrip(){
+  const strip=$('strip'); if(strip.childElementCount===SHOTS.length) return;
+  strip.innerHTML='';
+  SHOTS.forEach((s,i)=>{const cell=document.createElement('div'); cell.className='cell'+(i===curIdx?' active':''); cell.id='cell'+i;
+    const im=document.createElement('img'); im.src=s.img; cell.appendChild(im);
+    const lbl=document.createElement('div'); lbl.className='lbl'; lbl.textContent=s.id+' · '+s.bar+'.'+s.beat; cell.appendChild(lbl);
+    cell.addEventListener('click',()=>setShot(i,false)); strip.appendChild(cell);});
+}
+
+// ── live transport (optional) ────────────────────────────────────────────────
+function connect(){let ws;try{ws=new WebSocket("ws://"+location.host+"/ws");}catch(e){setConn(false,'no relay (use self-play)');return;}
+  ws.onopen=()=>setConn('live','● connected to relay — waiting for transport…');
+  ws.onclose=()=>setConn(false,'○ relay disconnected — use self-play');
+  ws.onerror=()=>setConn(false,'relay unreachable — use self-play');
+  ws.onmessage=ev=>{const m=JSON.parse(ev.data);
+    if(m.address==='/transport/bible')applyBible(m.args[0],m.args[1],m.args[2]);
+    else if(m.address==='/transport/beat'){setConn('play','● transport playing');onBeat(m.args[0],m.args[1]);}
+    else if(m.address==='/transport/section')$('section').textContent=(m.args[0]||'').toUpperCase();};}
+function setConn(state,txt){const d=$('dot'); d.className='dot'+(state==='live'?' live':state==='play'?' play':''); $('conn').lastChild.textContent=' '+txt;}
+
+let selfTimer=null,selfTB=0;
+$('selfplay').addEventListener('click',function(){
+  if(selfTimer){clearInterval(selfTimer);selfTimer=null;this.classList.remove('on');this.textContent='▶ self-play (no Ableton)';return;}
+  this.classList.add('on');this.textContent='⏸ self-play running';applyBible(tempo,fps,BPB);selfTB=0;
+  const subdiv=4,msPer=(60000/tempo)/subdiv;
+  selfTimer=setInterval(()=>{const bar=Math.floor(selfTB/BPB)+1,beat=(selfTB%BPB)+1;setConn('play','● self-play (internal clock)');onBeat(bar,beat);selfTB+=1/subdiv;},msPer);});
+$('motion').addEventListener('click',function(){motionOn=!motionOn;this.classList.toggle('on',motionOn);this.textContent=motionOn?'◉ motion ON':'○ motion OFF (still)';lastSig=null;});
+$('poseaware').addEventListener('click',function(){poseAware=!poseAware;this.classList.toggle('on',poseAware);this.textContent=poseAware?'◉ flow around figure':'○ flow THROUGH figure';lastSig=null;});
+
+// ── determinism self-test (serve over http so same-origin images aren't tainted) ──
+$('selftest').addEventListener('click',function(){
+  const cv=$('panel'), out=$('sttext'); const wasMotion=motionOn, wasIdx=curIdx;
+  try{
+    motionOn=true;
+    drawFrame(120); const a=cv.toDataURL();
+    drawFrame(120); const a2=cv.toDataURL();      // same F → must match
+    drawFrame(121.5); const b=cv.toDataURL();      // different F → must differ
+    motionOn=false;
+    drawFrame(50); const f1=cv.toDataURL();
+    drawFrame(999); const f2=cv.toDataURL();        // motion off → F-independent
+    const pure=(a===a2), moves=(a!==b), frozen=(f1===f2);
+    out.innerHTML='<span class="det '+(pure?'ok':'no')+'">same F identical '+(pure?'✓':'✗')+'</span> · '
+      +'<span class="det '+(moves?'ok':'no')+'">diff F differs '+(moves?'✓':'✗')+'</span> · '
+      +'<span class="det '+(frozen?'ok':'no')+'">off = still '+(frozen?'✓':'✗')+'</span>';
+  }catch(e){ out.innerHTML='<span class="det no">self-test needs http (canvas tainted on file://): '+e.message+'</span>'; }
+  finally{ motionOn=wasMotion; curIdx=wasIdx; lastSig=null; }
+});
+
+// ── boot ─────────────────────────────────────────────────────────────────────
+(function(){ applyBible(BIBLE.tempo,BIBLE.fps,BIBLE.beats_per_bar);
+  buildStrip(); setShot(0,false); connect(); requestAnimationFrame(loop);
+})();
+</script></body></html>
