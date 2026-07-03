@@ -1,0 +1,5 @@
+out/seq_*.png
+out/s6_frame120.png
+out/s6_preview.png
+out/*.blend1
+__pycache__/
