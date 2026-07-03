@@ -88,11 +88,20 @@ Today pose, motion, and clock are three separate degrees of freedom. The field i
 Three coupling edges, in priority order; each names its source proof and its honest limit.
 
 ### Edge 1 · pose → field (nearest — ingredients all exist)
-Derive the obstacle mask from the **same board-record pose that conditions the render**, so the figure
-that shapes the wind and the figure that gets drawn are one silhouette by construction (closes
-Session 4's honest-limit: today the mask is a mannequin, not the final figure). Reuses
-[[Shop/Figure Rig]]'s depth/OpenPose plates + `session-4-figure-flow/field.py`. **Two concrete wins
-sit right here:**
+Derive the obstacle from the **same posed figure that conditions the render**, so the figure that
+shapes the wind and the figure that gets drawn are one silhouette by construction.
+
+**✅ First 3D-native proof shipped (Session 5, 2026-07-03) — `proofs/session-5-flow-3d/`.** The spine
+moved out of the 2D plane into the actual Blender scene: one authored divergence-free 3D field (drift +
+vortex filaments) read as **both** streamlines *and* advected dust in the same shot, both parting around
+a **real posed figure mesh** (a BVH of the Track-IV lunge figure, not a 2D mask — closing Session 4's
+honest limit) and shedding a wake, rendered natively from the bench camera, deterministic by seed. See
+`session-5-report.md` + `out/s5_still.png` / `s5_flow3d.mp4`. **Productization path:** a Geometry-Nodes
+Simulation Zone (art-directable in-viewport) for the authored field; Mantaflow (Track VI) for emergent
+wake/smoke. The single-source discipline held — comic and cinema legs are the same field.
+
+Still open on Edge 1 (reuses [[Shop/Figure Rig]]'s plates + `session-4-figure-flow/field.py`) — **two
+concrete wins:**
 - **Flow-field-biased ink splatter** — the `blender-handdrawn` Part-4 hook: blobs already live in 3D;
   seed and orient them off the field velocity so the spatter follows the wind around the body.
 - **Feed the field to the render** — Session 4's last limit: a low-denoise img2img pass that *fuses*
