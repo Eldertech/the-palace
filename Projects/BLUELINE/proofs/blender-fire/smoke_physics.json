@@ -1,0 +1,30 @@
+{
+  "bands": [
+    {
+      "z_norm": 0.083,
+      "lean": 0.692
+    },
+    {
+      "z_norm": 0.25,
+      "lean": 0.426
+    },
+    {
+      "z_norm": 0.417,
+      "lean": 0.548
+    },
+    {
+      "z_norm": 0.583,
+      "lean": 0.623
+    },
+    {
+      "z_norm": 0.75,
+      "lean": 0.571
+    },
+    {
+      "z_norm": 0.917,
+      "lean": 0.904
+    }
+  ],
+  "mean_lean": 0.627,
+  "note": "lean = horizontal drift / vertical rise of the drawn smoke, by Blender height; + = screen-right"
+}
