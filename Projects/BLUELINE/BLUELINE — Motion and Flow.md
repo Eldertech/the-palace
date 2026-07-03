@@ -159,8 +159,13 @@ m/s** · v_contact 20.2 m/s down-and-back — correct for an overhead chop). The
 amplified** (shards/wake take direction + relative speed from the real `v_c`; a comic gain scales only
 count / spread / streak-length — comics are super-physical). This is the reusable **Motion Model** —
 pivots + trajectory + speed profile → derived velocities → forward-sim to the closure frame — and it
-generalizes to any action (punch, leap, throw, whip). **Next:** IK-animate the full swing on the rig and
-render the clip that *shows* the arc (the definitive "the motion happened" proof). See `session-8-report.md`.
+generalizes to any action (punch, leap, throw, whip). **Generalization proven (Session 9, 2026-07-03) —
+`proofs/session-9-three-swings/`:** three swings from the one solver by changing only
+`{pivot, windup, contact}` — **chop** (axis Y, v_c down, tip 32.9 m/s), **side slash** (axis Z, v_c
+sideways, tip 24.9 m/s), **rising cut** (axis −Y, v_c up, tip 33.3 m/s) — each with the right rotation
+axis and consequence directions falling out (`s9_contact_sheet.png`). **Next:** IK-animate the full swing
+on the rig and render the clip that *shows* the arc (the definitive "the motion happened" proof). See
+`session-8-report.md` + `session-9-report.md`.
 
 ## Contract touchpoints
 The board record already carries the handles: **`FLOW`** (field handle + scalar) and the **pose**
