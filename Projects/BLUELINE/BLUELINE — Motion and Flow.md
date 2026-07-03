@@ -149,6 +149,19 @@ real Figure Rig): `proofs/session-7-aftermath/` (`s7_aftermath.png` + `aftermath
 points at **Track VI** (Mantaflow dust burst, rigid-body/Cell-Fracture shards, ink-stylized speed-lines).
 Deposit-worthy concept, flagged as a ghost: **[[The Aftermath Frame]]**.
 
+**✅ The motion made physical — the Swing Solver (Session 8, 2026-07-03) — `proofs/session-8-swing/`.**
+Session 7 *faked* the swing (a hand-authored bezier + eyeballed velocities). Session 8 models it as what
+it physically is — a **rotation**: author only `{pivot, axis, θ(t) with peak-at-impact ω, blade}`, and
+*derive* the arc, every point's velocity (`v = ω × r`), the tip speed, and the **contact velocity** that
+sources every consequence. Real numbers print each run (this chop: Δθ 133° · ω 23.2 rad/s · **tip 32.9
+m/s** · v_contact 20.2 m/s down-and-back — correct for an overhead chop). The split Loudon set: the
+**motion is real** (arc + character trajectory + somewhat-real pose), the **consequences are
+amplified** (shards/wake take direction + relative speed from the real `v_c`; a comic gain scales only
+count / spread / streak-length — comics are super-physical). This is the reusable **Motion Model** —
+pivots + trajectory + speed profile → derived velocities → forward-sim to the closure frame — and it
+generalizes to any action (punch, leap, throw, whip). **Next:** IK-animate the full swing on the rig and
+render the clip that *shows* the arc (the definitive "the motion happened" proof). See `session-8-report.md`.
+
 ## Contract touchpoints
 The board record already carries the handles: **`FLOW`** (field handle + scalar) and the **pose**
 fields (`POSE`/`DEPTH`, `FACING`/`EYELINE`). Edge 1 means the field-builder reads the *same* pose the
