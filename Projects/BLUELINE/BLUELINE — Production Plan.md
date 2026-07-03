@@ -63,7 +63,7 @@ song playhead, not a video paired with audio.
 
 Locked scope decisions (do not relitigate without a reason):
 - **Fixed tempo** — sync is deterministic arithmetic (beats fall on whole frames), not elastic alignment.
-- **Staged, not simulated** — comic motion is held pose + camera + FX, never simulated contact.
+- **Staged, not simulated** — comic motion is camera + FX + pose, never simulated *contact*. **(Relaxed 2026-07-03:** the *held-pose* constraint is lifted — **pose-blend-along-flow** is now in scope as a bounded experiment; simulated physical contact between figures stays out. This greenlights Motion & Flow **Edge 3**, which moves from a decision to the build queue below.)
 - **Humanoid only** — animal motion is out of scope (the one data-starved hard case, retired by decision).
 - **Each milestone ships** — every rung is a usable tool, never a down-payment on the next.
 
@@ -119,19 +119,18 @@ The one prioritized, cross-thread stack. Each item links the thread that owns it
 3. **Style & Identity — InstantID face-slot.** Bake identity + gaze at generation. → [[Steer the Generator]].
 4. **Text & Lettering — rungs 2+.** Dialogue-balloon modes #2/#3; letter *into* the frame. → [[BLUELINE — Text Layer]].
 5. **Cross-cutting — level the 6 boards to uniform fidelity, and a shareable muxed cut.** → [[Frame Designer]] + `Shop/ffmpeg`.
+6. **Motion & Flow · Edge 3 — pose-blend-along-flow** *(greenlit 2026-07-03 — Loudon relaxed the "staged, not simulated" lock).* Interpolate held key-poses along the flow direction (coil→leap that follows the wind); bounded experiment, simulated contact still out. The technique was already ready; it just needed the scope call. → [[BLUELINE — Motion and Flow]] §Edge 3.
 
 **The big lifts** (design / research):
-6. **Motion & Flow · Edge 2 — field → clock.** A time-varying field that evolves per beat (the
+7. **Motion & Flow · Edge 2 — field → clock.** A time-varying field that evolves per beat (the
    priority frontier; a wiring job — substrate exists in Track VI's `warp.py` / `fields.py:from_flow`).
-7. **Figure & Pose — the multi-figure ladder.** Separated → contact → interlocked → crowd; Route A
+8. **Figure & Pose — the multi-figure ladder.** Separated → contact → interlocked → crowd; Route A
    3-guide stack / Route B regional conditioning ("the next big prize"). → [[Shop/Figure Rig]].
-8. **Board Record & Staging — Seam B + the staging-AI.** Exact blocking → exact keypoints; language →
+9. **Board Record & Staging — Seam B + the staging-AI.** Exact blocking → exact keypoints; language →
    staging spec. → [[BLUELINE — Production Pipeline]] §the two seams.
-9. **Render Backend — serverless graduation** for the Piece tier. → [[BLUELINE — Render Backend]].
+10. **Render Backend — serverless graduation** for the Piece tier. → [[BLUELINE — Render Backend]].
 
 **Decisions for Loudon** (a call, not a build):
-10. **Motion & Flow · Edge 3** — pose-blend-along-flow vs the "staged, not simulated" lock (a one-line
-    scope call; the technique is ready if relaxed).
 11. **Visual Language Console · Phase 2** — the hybrid style atlas on RunPod (quote GPU first).
 
 **The gate:** full-song **production volume** begins once a board pair survives the motion test, the

@@ -106,13 +106,15 @@ same `(bar,beat)→frame` law that drives the animatic drives the field's evolut
 already here — Track VI's `warp.py` (periodic displacement) + `fields.py:from_flow` — so a
 beat-phased field is a wiring job, not a research risk. Pairs with [[Move the Ink, Don't Redraw It]].
 
-### Edge 3 · field → figure motion (a decision, not yet a build)
-Interpolate held key-poses *along the flow direction* (coil→leap that follows the wind). This is the
-one edge **blocked by a standing scope lock — "staged, not simulated"** ([[BLUELINE]] scope decisions).
-Surfaced here as an explicit choice for Loudon: keep the lock (poses stay held; motion is field + ink +
-camera only), or relax it for a bounded pose-blend-along-flow experiment. This is a **one-line scope
-call, not a research blocker** — the technique is ready to build the moment the lock relaxes. **Not
-built pending that call.**
+### Edge 3 · field → figure motion (✅ greenlit 2026-07-03 — ready to build)
+Interpolate held key-poses *along the flow direction* (coil→leap that follows the wind). This was the
+one edge blocked by the standing **"staged, not simulated"** scope lock — **Loudon relaxed that lock on
+2026-07-03** ([[BLUELINE]] scope decisions): the *held-pose* constraint is lifted for a **bounded
+pose-blend-along-flow experiment** (simulated physical *contact* between figures stays out of scope).
+The technique was already ready and needed only the scope call — so this now moves into the build queue
+([[BLUELINE — Production Plan]] §The horizon, item 6). **Scope of the first build:** a single figure,
+one key-pose pair (e.g. coil→leap), the in-betweens driven by the flow field along the line of action,
+staying a pure function of the song playhead (so it remains an instrument, not a simulation).
 
 ## Contract touchpoints
 The board record already carries the handles: **`FLOW`** (field handle + scalar) and the **pose**
