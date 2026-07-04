@@ -46,32 +46,37 @@ A single natural-language front-desk verb — "address the palace / ask the Conc
 oracle in Phase 2. Building it now would be a router with only one place to route (the
 moderator), so Phase 1 keeps invocation per-face and honest.
 
-## Dispatching the gatherer (Phase 2 — the oracle's first job)
+## Dispatching a read-only face — the address verb (Phase 2)
 
-Machinery: `prompts/gatherer.md` (the mask's prompt template) + the `concierge` skill
-(`.claude/skills/concierge/SKILL.md`, the discoverable front-desk verb). The dispatch,
-run by the working Claude (Path 2 — via the Agent tool, like the orchestrator and Closing
-Well):
+The oracle has two jobs, both read-only, both dispatched the same way — the working Claude
+**triages the address**, then dispatches one disposable agent (Path 2, the Agent tool):
 
-1. **Give the gatherer our context.** For a rich, conversation-dependent request, distill
-   this session's transcript:
-   `node _ops/closing-well/transcript-reader.mjs --resolve` then
-   `--distill --out <scratch>/arc.md`. For a self-contained request ("all links about X + Y")
-   a 2–3 line context note is enough — don't over-distill.
-2. **Dispatch a read-only agent** (Agent tool; a read-only-instructed general-purpose or
-   `Explore` agent — the gatherer prompt forbids writes regardless). Point it at the template:
+| The address wants… | Face / prompt | Product |
+|---|---|---|
+| the **material** on a topic ("find/collect/gather every doc about X") | gatherer — `prompts/gatherer.md` | a file-cited **index** of pointers |
+| an **answer** ("what does the palace say about X / how does Z work") | oracle Q&A — `prompts/oracle-qa.md` | a synthesized **answer** that cites its pointers |
+
+The `concierge` skill (`.claude/skills/concierge/SKILL.md`) is the discoverable front-desk verb
+that does this triage. Either way:
+
+1. **Give the agent our context.** For a conversation-dependent address, distill this session's
+   transcript: `node _ops/closing-well/transcript-reader.mjs --resolve` then
+   `--distill --out <scratch>/arc.md`. For a self-contained address, a 2–3 line context note is
+   enough — don't over-distill.
+2. **Dispatch one read-only agent** (Agent tool; `Explore` or a read-only-instructed
+   general-purpose — the prompts forbid writes regardless). Point it at the face's prompt:
 
    ```
-   You are the Concierge, wearing the gatherer mask (read-only).
-   Read _ops/concierge/prompts/gatherer.md and follow it, with these slots:
-     {{REQUEST}}            = <what to gather>
-     {{TRANSCRIPT_CONTEXT}} = <the distilled arc, or the 2–3 line context note>
-     {{PALACE_ROOT}}        = /Users/loudonstearns/Documents/The Palace
-   Return only the index it specifies.
+   You are the Concierge, wearing the <gatherer | oracle Q&A> mask (read-only).
+   Read _ops/concierge/prompts/<gatherer.md | oracle-qa.md> and follow it, with these slots:
+     {{REQUEST}} or {{QUESTION}} = <the address>
+     {{TRANSCRIPT_CONTEXT}}      = <the distilled arc, or the 2–3 line note>
+     {{PALACE_ROOT}}             = /Users/loudonstearns/Documents/The Palace
+   Return only the product it specifies.
    ```
-3. **Relay the index** to Loudon; offer to save it (its natural home is the bundle of the
-   entry it most serves, or the scratchpad if it's throwaway). The search's dead ends never
-   entered the main thread — that is the win.
+3. **Relay the product** as returned (already file-cited); offer to save it (the bundle of the
+   entry it most serves, or the scratchpad if throwaway). The search's dead ends never entered
+   the main thread — that is the win.
 
 ## The load-bearing guard: both modes always open
 
