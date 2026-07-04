@@ -92,10 +92,20 @@ vanish." New machinery is just the gatherer prompt + a thin dispatch skill (`con
 *Verify gate:* one real "gather the links for [X]" dispatch returns a quality, file-cited
 index, and costs the main thread only the product — not the search.
 
-### Phase 3 — The steward face
+### Phase 3 — The steward face — ✓ built 2026-07-04
 The 1-hop neighborhood tending: `do / offer / flag`, bounded to entries a session touched.
-Introduces writes, but reversible (do) and human-gated (offer) and non-acting (flag).
-*Verify gate:* a neighborhood tends correctly and never overreaches past one hop.
+The first face that *writes*. **Built thin** (`prompts/steward.md`), on a deliberate reading:
+the specification that earns its place is the part governing *what an agent can wreck* — the two
+hard rules, **one hop** (the fence against overreach) and **do / offer / flag** (a
+reversibility-and-consent gate: `do` = mechanical maintenance performed, `offer` = canon
+authorship drafted for Loudon's yes, `flag` = noticed, not acted). Everything past those trusts
+the dispatched Claude's own judgment rather than scripting it — the same capability as any working
+Claude, fenced, not a lesser agent.
+*Verify gate (met):* dispatched on a real neighborhood ([[Skills Are Enchantable Pages]] + its 1-hop
+links, the entry a recent session re-authored), the steward stayed strictly inside the fence
+(refused the SCHEMA-ceremony question as "two hops past this fence"), performed only the one
+mechanical `do` (an `activation_count` bump), drafted three link `offer`s without applying them,
+and named its flags — tending correctly and never overreaching past one hop.
 
 ### Phase 4 — The moderator face
 Fold the three faces + the moderator character/values + the `agency_profile` into

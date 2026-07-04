@@ -8,7 +8,7 @@ pillars:
 born: 2026-07
 stage: sprout
 last_activated: 2026-07
-activation_count: 1
+activation_count: 2
 links:
   - target: "[[Pages as Agents]]"
     type: deepens

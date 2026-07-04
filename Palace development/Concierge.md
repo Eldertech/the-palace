@@ -64,7 +64,8 @@ A weight ladder — read-only to full-close — each dispatched fresh:
   and **Q&A** (answer "what does the palace say about X" → a cited answer). Prompts:
   `_ops/concierge/prompts/gatherer.md`, `oracle-qa.md`.
 - **steward** — 1-hop neighborhood tending (`do / offer / flag`), bounded to entries a
-  session touched. *Phase 3 — not built.*
+  session touched. The first face that *writes*. *Built (Phase 3), verify gate passed
+  2026-07-04.* Prompt: `_ops/concierge/prompts/steward.md`.
 - **moderator** — a whole session close as a moderated panel. *Built* — the [[Closing Well]]
   Agent, wearing the Concierge's oldest mask. Trigger: `close well`.
 
