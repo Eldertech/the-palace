@@ -460,20 +460,23 @@ export default function QueuePanel({ messages, onJumpEntry }) {
             border: '1px solid var(--phosphor-dim)',
           }}
         >all ({items.length})</span>
-        {handoffCount > 0 ? (
-          <span
-            data-testid="queue-lane-handoffs"
-            onClick={() => setLaneFilter(laneFilter === HANDOFF_LANE ? null : HANDOFF_LANE)}
-            style={{
-              cursor: 'pointer', fontSize: 11, padding: '0 5px',
-              background: laneFilter === HANDOFF_LANE ? 'var(--warn)' : 'transparent',
-              color: laneFilter === HANDOFF_LANE ? 'var(--bg)' : 'var(--warn)',
-              textShadow: laneFilter === HANDOFF_LANE ? 'none' : 'var(--glow)',
-              border: '1px solid var(--warn)',
-            }}
-            title="show only handoffs -- batons ready to catch"
-          >handoffs ({handoffCount})</span>
-        ) : null}
+        {/* The handoffs chip ALWAYS renders -- even at zero -- so an empty lane
+            reads as "handoffs (0)", not as a vanished control (a disappearing
+            chip is ambiguous with "broken"). Dim + inert at zero; warn-accented +
+            clickable filter once there is a baton to catch. */}
+        <span
+          data-testid="queue-lane-handoffs"
+          data-empty={handoffCount === 0 ? 'true' : 'false'}
+          onClick={handoffCount === 0 ? undefined : () => setLaneFilter(laneFilter === HANDOFF_LANE ? null : HANDOFF_LANE)}
+          style={{
+            cursor: handoffCount === 0 ? 'default' : 'pointer', fontSize: 11, padding: '0 5px',
+            background: laneFilter === HANDOFF_LANE ? 'var(--warn)' : 'transparent',
+            color: handoffCount === 0 ? 'var(--phosphor-dim)' : (laneFilter === HANDOFF_LANE ? 'var(--bg)' : 'var(--warn)'),
+            textShadow: (handoffCount === 0 || laneFilter === HANDOFF_LANE) ? 'none' : 'var(--glow)',
+            border: `1px solid ${handoffCount === 0 ? 'var(--phosphor-dim)' : 'var(--warn)'}`,
+          }}
+          title={handoffCount === 0 ? 'no batons waiting to be caught' : 'show only handoffs -- batons ready to catch'}
+        >handoffs ({handoffCount})</span>
         {[...lanes.entries()].map(([board, n]) => (
           <span
             key={board}
