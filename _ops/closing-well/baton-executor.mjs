@@ -28,9 +28,9 @@
 //
 // Exit codes: 0 ok · 1 usage / precondition · 2 validation failed · 3 infra failure.
 
-import { readFileSync, writeFileSync, existsSync, mkdirSync } from 'node:fs';
+import { readFileSync, writeFileSync, existsSync, mkdirSync, readdirSync } from 'node:fs';
 import { execFileSync } from 'node:child_process';
-import { resolve, join, dirname } from 'node:path';
+import { resolve, join, dirname, relative } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import process from 'node:process';
 
@@ -48,6 +48,40 @@ function arg(name, def = null) {
 }
 const has = (n) => process.argv.includes(n);
 function die(code, msg) { process.stderr.write(`baton-executor: ${msg}\n`); process.exit(code); }
+
+// Resolve an entry title to its REAL file, the way Obsidian and the palace resolve a
+// wikilink: search the whole tree, never assume the root (CLAUDE.md § Directory Structure).
+// Excludes .git/.claude/.obsidian. Loud failure on miss or ambiguity — the old silent
+// tree-root guess is exactly what misfiled a nested-entry baton on 2026-07-04 (the file
+// went to a bogus top-level folder, the parent pointer was skipped, and the announce
+// carried a wrong handoff_path — with no error). See Closing Well — gotchas #12.
+const IGNORE_DIRS = new Set(['.git', '.claude', '.obsidian', 'node_modules']);
+function resolveEntryFile(root, name) {
+  const filename = `${name}.md`;
+  const hits = [];
+  const walk = (dir) => {
+    let ents;
+    try { ents = readdirSync(dir, { withFileTypes: true }); } catch { return; }
+    for (const e of ents) {
+      if (e.isDirectory()) { if (!IGNORE_DIRS.has(e.name)) walk(join(dir, e.name)); }
+      else if (e.isFile() && e.name === filename) hits.push(join(dir, e.name));
+    }
+  };
+  walk(root);
+  if (hits.length === 0) {
+    die(1, `entry "${name}" not found: searched ${root} recursively for "${filename}" ` +
+      `(excluding .git/.claude/.obsidian). This executor places a baton for a REAL entry — ` +
+      `pass an --entry whose <name>.md exists. Refusing the old silent tree-root fallback ` +
+      `(gotchas #12). A genuinely entry-less baton (e.g. a cross-surface paste-prompt) is not ` +
+      `supported here yet — that would need an explicit flag, not a silent guess.`);
+  }
+  if (hits.length > 1) {
+    die(1, `entry "${name}" is ambiguous — ${hits.length} files named "${filename}": ` +
+      `${hits.map((h) => relative(root, h)).join(', ')}. Palace filenames must be globally ` +
+      `unique (SCHEMA §8); disambiguate before handing off.`);
+  }
+  return hits[0];
+}
 
 // ---- args -----------------------------------------------------------------
 const entry = arg('--entry');
@@ -104,9 +138,13 @@ ${body}
 ${ON_PICKUP}
 `;
 
-const bundleDir = join(REPO, entry);
+// Resolve the entry's real location, then derive the bundle + baton path from it — the
+// bundle is [Entry]/ sitting beside [Entry].md, wherever that turns out to be.
+const entryPath = resolveEntryFile(REPO, entry);
+const bundleDir = join(dirname(entryPath), entry);
 const batonPath = join(bundleDir, `${entry} — baton.md`);
-const entryPath = join(REPO, `${entry}.md`);
+const relEntry = relative(REPO, entryPath);
+const relBaton = relative(REPO, batonPath);
 const pointer = `\n## Active Baton\n\n[[${entry} — baton]] — drafted ${born}\n`;
 
 // ---- 3: build the handoff_ready announce ----------------------------------
@@ -122,7 +160,7 @@ const announce = {
   },
   payload: {
     kind: 'handoff_ready', entry,
-    handoff_path: `${entry}/${entry} — baton.md`,
+    handoff_path: relBaton,
     receiving_surface: wtDir ? `Claude Code, worktree ${wtBranch} (${wtDir})` : 'Claude Code (Mac)',
     move,
     ...(wtBranch ? { worktree: { branch: wtBranch, dir: wtDir, profile: wtProfile } } : {}),
@@ -155,14 +193,14 @@ if (!vres.ok) die(2, `handoff_ready announce is invalid:\n${JSON.stringify(vres.
 // committer (palace-commit.mjs) is reserved for DEPOSITS, which land on the owner where its
 // deps exist; a `docs`-profile worktree can't run it (no js-yaml). See executor.md.
 const commitCmd =
-  `git add "${entry}/${entry} — baton.md"${existsSync(entryPath) ? ` "${entry}.md"` : ''} && ` +
+  `git add "${relBaton}" "${relEntry}" && ` +
   `git commit -m "baton(${entry}): ${move.slice(0, 60)}" -m "Palace-Kind: baton"`;
 
 if (!doWrite) {
   process.stdout.write(
     `PREVIEW — nothing written, nothing posted.\n\n` +
     `baton file  : ${batonPath}\n` +
-    `parent ptr  : ${existsSync(entryPath) ? entryPath + '  (+ "## Active Baton")' : '(no parent entry in this tree — board announce is the pointer)'}\n` +
+    `parent ptr  : ${entryPath}  (+ "## Active Baton")\n` +
     `announce    : VALID (id ${id}, board GENERAL, owner ${boardPath})\n` +
     `board post  : ${doPost ? 'would POST' : 'skipped (no --post)'}\n\n` +
     `then commit :\n  ${commitCmd}\n\n` +
@@ -174,7 +212,7 @@ if (!doWrite) {
 mkdirSync(bundleDir, { recursive: true });   // bundles are lazy (§8) — create on first use
 writeFileSync(batonPath, batonMd);
 let wrotePointer = false;
-if (existsSync(entryPath)) {
+{
   const cur = readFileSync(entryPath, 'utf8');
   if (!cur.includes('## Active Baton')) { writeFileSync(entryPath, cur.replace(/\s*$/, '\n') + pointer); wrotePointer = true; }
 }
@@ -184,7 +222,7 @@ if (doPost) { const r = runBoardPost('post'); posted = r.ok ? r.path : null; if 
 
 process.stdout.write(
   `wrote baton : ${batonPath}\n` +
-  `parent ptr  : ${wrotePointer ? entryPath + '  ("## Active Baton" added)' : (existsSync(entryPath) ? 'already had "## Active Baton" — left as is' : 'no parent entry in this tree')}\n` +
+  `parent ptr  : ${wrotePointer ? entryPath + '  ("## Active Baton" added)' : 'already had "## Active Baton" — left as is'}\n` +
   `announce    : ${posted ? `POSTED to ${posted} (id ${id})` : `validated, not posted (no --post)`}\n\n` +
   `now land it (baton file + pointer):\n  ${commitCmd}\n` +
   (doPost ? '' : `\n(announce not posted — add --post, or announce by hand, for a cross-worktree baton.)\n`),
