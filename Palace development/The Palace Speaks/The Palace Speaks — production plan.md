@@ -67,12 +67,20 @@ estimate (Phase 4).
 three faces and which is built, and know to invoke `close well` / read-directly — without the
 floor taxing sessions that do neither.
 
-### Phase 2 — The oracle face (the safe first migration)
-Read-only: it answers palace-infrastructure questions, never writes. Lowest risk because
-there is nothing to mis-place, and both modes are trivially open (you can always just read
-the file). Proves the interlocutor model with zero canon-mutation risk.
-*Verify gate:* "spin up, ask, dismiss" is cheaper than loading the files, and the answer
-always points at the file it came from.
+### Phase 2 — The oracle face (the safe first migration) — in build 2026-07-04
+Read-only: never writes. Lowest risk (nothing to mis-place; both modes trivially open —
+you can always read the file). **First job: the gatherer**, chosen ahead of general Q&A
+because it is more useful more often and the cleanest proof of the model. Mid-conversation
+you dispatch "find me every palace doc/link about [X]"; a disposable agent reads the
+transcript for context, searches the graph *in its own window*, follows typed links,
+assembles a clickable index of entries, hands it back, and vanishes — you gain the product
+without paying the context cost of the search (**context-offload**, the Concierge's headline
+benefit). Q&A ("what does the palace say about [X]") follows as the oracle's second job.
+*Reuse, do not rebuild:* the transcript reader (`_ops/closing-well/transcript-reader.mjs`)
+gives the gatherer our context; the Agent tool's dispatch-and-return *is* "hand it back and
+vanish." New machinery is just the gatherer prompt + a thin dispatch skill (`concierge`).
+*Verify gate:* one real "gather the links for [X]" dispatch returns a quality, file-cited
+index, and costs the main thread only the product — not the search.
 
 ### Phase 3 — The steward face
 The 1-hop neighborhood tending: `do / offer / flag`, bounded to entries a session touched.
