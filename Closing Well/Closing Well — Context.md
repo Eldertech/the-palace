@@ -44,3 +44,16 @@ perform it.
   (the atom, the baton, the steward, the scribe-sequence) and remain candidate
   bundle artifacts. Produced the "Closing Well, Enchanted" section on the entry and
   this Context split.
+- **2026-07-03 — Phase 2 built, and the first real `close well`.** A session that
+  began catching the Phase-2 baton surfaced a live gap in the handoff mechanism: a
+  baton's *worktree coordinate* was dropped between the [[STIGMERGY]] board and the
+  paste into a fresh session, so a catcher landed blind at the palace root. Fixed it
+  (worktree threaded through the launch prompt; a **copy-prompt** button added to the
+  handoff card) and merged to `main`. Then caught the baton and built **Phase 2**: the
+  `close well` trigger and the [[Closing Well Ceremony]] card (recognition + dispatch),
+  ratified as the **v1.15 Schema Ceremony** — the first ceremony added since the
+  practice was born. This close is itself the first invocation of `close well`: the
+  practice closing its own construction, run by hand because the enchanted mechanism
+  (Phase 3+) is not built. Its honest map was "everything already landed mid-session;
+  the only work owed was drift-cleanup" — modelling the *deposit: none* outcome the
+  ceremony insists is first-class.
