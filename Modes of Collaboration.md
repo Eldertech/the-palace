@@ -33,6 +33,9 @@ links:
   - target: "[[Radio Play]]"
     type: connects-to
     label: debrief-reel
+  - target: "[[The Scroll]]"
+    type: connects-to
+    label: expanding-artifact-mode
   - target: "[[Modes of Collaboration — Context]]"
     type: connects-to
     label: context-companion
@@ -63,6 +66,7 @@ A living catalogue of named working modes Loudon and Claude adopt when attacking
 - **The Philosophical Dialogue** — extended discursive cross-domain thinking-together, both speaking as themselves (unlike the Excellent Adventure). Slow, winding, recursive; often produces breakthrough entries. Best when a concept needs turning over from many sides.
 - **The Harvest/Deposit** — the palace ceremonies themselves: Claude shifts from participant to archivist, Loudon provides memory and editorial judgment. Deliberate, ceremonial, show-then-approve. Best for making conversation durable.
 - **The Debrief Reel** — a visuals-enriched [[Radio Play]] made to explain just-finished work back to yourself; comprehension is the deliverable, the artifact the byproduct. The retrospective complement to The Build Session — best right after shipping something dense, as a reflecting surface ([[Hilaritas Generator]]). See [[Radio Play]].
+- **The Scroll** — a living page bound to an entry that gathers its proofs and media in the order they were made, growing across the whole conversation instead of landing in deposit-sized chunks. Part index, part reading surface; the counter-rhythm to the deposit cadence. Best when making media *with* an entry (BLUELINE, Generative Sample Libraries). See [[The Scroll]].
 
 Other recurring patterns not yet formally named — the debugging session, the brainstorm, the literature review, the design review — are characterized in the companion.
 
