@@ -67,7 +67,17 @@ estimate (Phase 4).
 three faces and which is built, and know to invoke `close well` / read-directly — without the
 floor taxing sessions that do neither.
 
-### Phase 2 — The oracle face (the safe first migration) — in build 2026-07-04
+### Phase 2 — The oracle face (the safe first migration) — ✓ built 2026-07-04
+**Done:** both read-only jobs and the address verb. The **gatherer** (`prompts/gatherer.md`)
+passed its live gate — one dispatch returned a quality, file-cited STIGMERGY × Agent-Wellbeing
+index, costing the main thread only the product. **Q&A** (`prompts/oracle-qa.md`) is its
+sibling: "what does the palace say about X" → a cited answer. And the **address verb** landed:
+the `concierge` skill now **triages** a plain-language address to the right face (gatherer ·
+Q&A · moderator=`close well`), so you address the palace without naming a face — the front desk
+Phase 1's router pointed at, unblocked once more than one face was live. *Verify gate: a real
+"what does the palace say about X" dispatch returns a cited answer; the triage routes find-vs-ask
+correctly.* The detail below records the original build reasoning.
+
 Read-only: never writes. Lowest risk (nothing to mis-place; both modes trivially open —
 you can always read the file). **First job: the gatherer**, chosen ahead of general Q&A
 because it is more useful more often and the cleanest proof of the model. Mid-conversation

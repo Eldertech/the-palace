@@ -58,10 +58,10 @@ The whole Tier 0–2 floor measures ≈20K tokens (CLAUDE + JEWEL + SCHEMA + the
 
 Besides *loading* the palace (the `@import` floor above, read into you), you can **address** it — invoke a **face** that does the work with fresh eyes and replies ([[The Palace Speaks]]). The **Concierge** ([[Concierge]], a `meta` organ; machinery in `_ops/concierge/`) is the front door: it tells you *whether* to address or just load, and *which* face. **You don't invoke "the Concierge" — you invoke a face directly; today the only live one is `close well`.** Its strength is **context-offload**: a disposable agent does the effortful searching/loading in *its own* window — the grepping, the dead ends, the big files skimmed and dropped — and hands back only the finished product, so your thread stays clean. Reach for it when the work would cost your context more than the product is worth; every face cites the file it drew from, and most work still just loads.
 
-**The faces you invoke** (full roster · triage · build-status in `_ops/concierge/README.md`) — a single "address the palace" verb arrives with the oracle in Phase 2; until then, invoke a face directly:
+**Address it in plain language** and the **`concierge`** skill triages to a face — you don't have to name one (full roster · triage · build-status in `_ops/concierge/README.md`):
 
+- **oracle** — *built (read-only).* Say **"concierge, find me every doc about X"** → the **gatherer** hands back a file-cited index; say **"what does the palace say about X / how does Z work"** → **Q&A** hands back a cited answer. The search happens in a disposable window; only the product returns.
 - **moderator** — *built.* Invoke with **`close well`**. Runs a whole session close as a moderated panel (the [[Closing Well]] Agent): reads the session arc, drafts the reckoning, places what you assent to.
-- **oracle** — *Phase 2, in build.* Read-only retrieval, always citing the file. First job: the **gatherer** — dispatch "find me every palace doc/link about [X]" to a disposable window; it searches, assembles a clickable index, and hands it back. Skill: `concierge`. Until live, use the **Query** trigger in-context.
 - **steward** — *Phase 3, not built.* Will tend the 1-hop neighborhood of entries a session touched (`do / offer / flag`).
 
 Authorship that needs your judgment in the room ([[Deposit Ceremony]], [[Baton Ceremony]]) stays yours — dispatched *through* a face, never replaced by one.

@@ -59,13 +59,19 @@ clean, file-cited index without having loaded the search into your own head.
 
 A weight ladder — read-only to full-close — each dispatched fresh:
 
-- **oracle** — read-only retrieval + synthesis, always citing the file. *In build (Phase 2).*
-  First job: the **gatherer** (collect + assemble a topic's links/context). Grows to Q&A
-  (the [[Query]]/[[Map Build Ceremony|Map Build]] ceremonies, dispatched instead of run in-context).
+- **oracle** — read-only retrieval + synthesis, always citing the file. *Built (Phase 2),
+  two jobs:* the **gatherer** (collect + assemble a topic's links/context → a file-cited index)
+  and **Q&A** (answer "what does the palace say about X" → a cited answer). Prompts:
+  `_ops/concierge/prompts/gatherer.md`, `oracle-qa.md`.
 - **steward** — 1-hop neighborhood tending (`do / offer / flag`), bounded to entries a
   session touched. *Phase 3 — not built.*
 - **moderator** — a whole session close as a moderated panel. *Built* — the [[Closing Well]]
   Agent, wearing the Concierge's oldest mask. Trigger: `close well`.
+
+**The address verb.** You don't have to name the face. Address the palace in plain language —
+*"concierge, find me…"*, *"what does the palace say about…"*, *"close well"* — and the
+`concierge` skill **triages** to the right face. This is the front desk Phase 1's router
+pointed at, unblocked now that more than one face is live.
 
 ## The guard — both modes always open
 
