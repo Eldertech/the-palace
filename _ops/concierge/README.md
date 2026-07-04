@@ -7,9 +7,9 @@ replies). Named for what a good concierge is — careful, thoughtful, personaliz
 assistance that knows the building intimately and *points you where you need to go
 while you stay free to walk there yourself.* That last clause is the whole ethic.
 
-The concept this realizes is [[The Palace Speaks]]; the roadmap is
-[[The Palace Speaks — production plan]]. This directory is the Concierge's machinery
-(the pattern of `_ops/closing-well/`): the always-loaded floor block *recognizes* the
+The canon organ is the entry [[Concierge]] (`Palace development/Concierge.md`); the concept
+it realizes is [[The Palace Speaks]]; the roadmap is [[The Palace Speaks — production plan]].
+This directory is the Concierge's machinery (the pattern of `_ops/closing-well/`): the always-loaded floor block *recognizes* the
 Concierge and names the faces; this card holds the roster, the triage, the guard, and
 the open problem. Phase 1 was recognition + routing only. **Phase 2 is now in build: the
 gatherer** (the oracle's first job — below). The moderator runs today; the steward is Phase 3.
