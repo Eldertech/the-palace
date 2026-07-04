@@ -119,13 +119,36 @@ consent. (The gate ran against the earlier one-hop-read reading; the shipped pro
 to the whole palace + web while keeping the same write discipline — a strict superset, re-verify on
 next real use.)
 
-### Phase 4 — The moderator face
-Fold the three faces + the moderator character/values + the `agency_profile` into
-[[Closing Well]] (the WEAVE-flagged item), and finish the intensity dial (reach scales with
-context-fullness). Most of this is already built ([[Closing Well — production plan]]
-Phases 0–5).
-*Verify gate:* a live close runs at both ends of the dial — slim and heavy — holding its
-warmth and its guards.
+### Architectural reversal — one resident companion, not disposable faces (2026-07-04)
+After Phase 3, a design dialogue with Loudon reversed the model's spine — **from disposable
+fresh-dispatch to a resident companion.** Established empirically the same day (a parked subagent
+resumed many turns later with full context, zero re-reads; idle = zero cost; ID-holding is free):
+- **The Concierge *is* one resident companion**, spawned once and kept for the session, re-addressed
+  by held agent ID. The former "faces" become **postures** of that one agent. Buys **continuity** on
+  top of offload — its next answer builds on its last.
+- **Character carries the safety.** Because one agent both reads and writes, the read/write line
+  lives in its temperament — subservient, *follows* the working Claude, reads before it writes, and
+  a heavy **draft-for-approval bias** (offer generalized to everything). The cost: the charter must
+  hold the bias, and the parent must *review drafts for real*, not rubber-stamp.
+- **The close inverts.** At [[Closing Well]] the hierarchy flips: the companion becomes the
+  **verifier**, doing all verification and *questioning the parent* to catch hallucination. It closes
+  by cross-examination, not cold re-reading — which supersedes the old "moderator must be fresh
+  disposable eyes" rule (a different mind interrogating is a stronger check). A fresh cold reader
+  stays an optional escalation.
+- **Disciplines:** curate the **startup neighborhood** at spawn; watch **health** (`context_pct`,
+  never self-report) and compact/respawn when heavy.
+- **Landed in canon:** [[Concierge]] rewritten (character · lifecycle · inversion · mechanism), new
+  companion charter `_ops/concierge/prompts/companion.md`, README + skill shim + CLAUDE.md floor
+  aligned. The prior disposable-by-default position is deliberately reversed.
+
+### Phase 4 — The verifier posture + the health dial
+Fold the companion character + the close-inversion + the `agency_profile` into [[Closing Well]]
+(the WEAVE-flagged item), and build the **dial** — now governing *two* things on one objective
+signal (`context_pct`, never self-report): **close intensity** (how hard the verifier presses) and
+**companion health** (when to compact/respawn). Most of the close itself is already built
+([[Closing Well — production plan]] Phases 0–5); the dial is the open piece.
+*Verify gate:* a live close runs at both ends of the dial — slim and heavy — with the companion
+holding its warmth, its guards, and its verifier rigor.
 
 ### Phase 5 — Migrate one maintenance ceremony (only then)
 Consider moving one *autonomic* ceremony (Weave or Harvest first) from ceremony-you-run to
