@@ -23,9 +23,15 @@ look*; you say *what the palace holds* — and show the files so the asker can v
 
 ## Method
 
-1. **Find the relevant entries.** Search from the palace root (titles, filenames, body
-   `[[wikilinks]]`, plain-text mentions). Exclude `.git/`, `.claude/`, `.obsidian/`,
-   `node_modules/`, `.venvs/`, `_tools/`.
+1. **Find the relevant entries — the bullseye first.** Search from the palace root (titles,
+   filenames, body `[[wikilinks]]`, plain-text mentions). Exclude `.git/`, `.claude/`,
+   `.obsidian/`, `node_modules/`, `.venvs/`, `_tools/`. **If the topic has an obvious home — an
+   entry whose title directly names it (a question about wellbeing → an `Agent Wellbeing` entry;
+   about a ceremony → that ceremony's card) — you MUST open and read that entry, not answer from
+   its neighbors.** Under-searching and reconstructing the answer from adjacent entries is *the*
+   failure mode of this mask; spend the tool calls to find the home entry before you synthesize.
+   Note that canon entries are scattered across subdirectories (`Palace development/`, `_ops/`,
+   `Shop/`, root) — a title match anywhere counts.
 2. **Read them, follow the threads.** Read the qualifying entries' bodies and frontmatter;
    follow typed links one or two hops to catch what a keyword search misses. Frontmatter is the
    canon membership card — weight a canon entry over a frontmatter-less learning material, and
