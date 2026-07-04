@@ -18,29 +18,35 @@ links:
   - target: "[[Deposit Ceremony]]"
     type: couples-with
     label: sibling-close-species
-forward_vector: "I am the thin recognition-and-dispatch card that turns 'close well' into the Closing Well Agent. I am done when I reliably spawn the enchanted page at session end and hand its close map back for one signature — and I grow as the Agent's mechanism (transcript reader, close map, executors) is built out through its production plan."
+forward_vector: "I am the thin recognition-and-dispatch card that turns 'close well' into the Closing Well Agent — the moderator of a panel between the active Claude and Loudon. I am done when I reliably spawn the moderator, carry its reckoning to one signature, and place every assented row through the backstage executors — and I grow as Phase 6 (automatic gotcha-ledger wiring) is built out."
 ---
 
 # Closing Well Ceremony
 
-> **Status — 2026-07-03: recognition + arc reader (Phases 2–3 of the build).** This
-> card makes `close well` a recognized trigger that dispatches the enchanted
-> [[Closing Well]] page. Phase 3 gave the Agent its first real faculty: it now reads
-> the spent session's transcript and reconstructs the arc *cold* — machinery in
-> `_ops/closing-well/` (see that dir's `README.md` for the dispatch). The rest of the
-> mechanism — the close-map format, the interview loop, the executors — is still being
-> built through [[Closing Well — production plan|the production plan]] (Phases 4–6) and
-> is **not yet complete**. Until then, the dispatched Agent reads the arc, then does as
-> much of the close by hand as it can and names what it cannot yet automate. Honest
-> markers are the point.
+> **Status — 2026-07-04: the moderator model (Phases 2–5 of the build).** This card
+> makes `close well` a recognized trigger that dispatches the enchanted [[Closing
+> Well]] page as the **Closing Well Agent** — a moderator, not a subagent that closes
+> the session in the working Claude's place. Phase 3 gave it the arc reader (reads
+> the spent session's transcript cold). Phase 4 gave it the moderated-panel design:
+> the Agent does homework and coaches the active Claude, the panel itself stays
+> between the active Claude and Loudon, and the Agent drafts two layers — the
+> **reckoning** (front of house, the four gestures: keep / hand on / leave a trace /
+> let go) and the **backstage checklist** (the in-spec mechanism). Phase 5 gave it the
+> **executors** — a fresh backstage subagent that places each assented `candidate`
+> row through its real ceremony (deposit via the committer, baton via
+> `baton-executor.mjs`, artifact via the bundle) and reports what landed. Machinery
+> lives in `_ops/closing-well/` (see that dir's `README.md` for the dispatch). Phase 6
+> (wiring the gotcha ledger to append automatically) is not yet built — the gotcha is
+> still appended by hand.
 
 The operational card for the [[Closing Well]] practice, *enchanted*. Where the
 [[Baton Ceremony]] hands the next instance an in-flight move and the
 [[Deposit Ceremony]] writes synthesis into canon, this ceremony runs the **whole
-close**: it reads a spent session's arc with fresh eyes and produces one **close
-map** — the typed list of everything the session should inscribe (deposit ·
-baton · artifacts, or fewer). The design — the close map, the three species, the
-mechanism, the channel, what the professional knows — lives in
+close** as a moderated panel: the Agent (the moderator) reads a spent session's arc
+with fresh eyes, draws out the active Claude and Loudon rather than answering for
+either, and drafts the **reckoning** — the four gestures, or fewer — together with a
+**backstage checklist** of how each row will be placed. The design — the panel, the
+two layers, the mechanism, the channel, what the professional knows — lives in
 [[Closing Well]] § Closing Well, Enchanted. This card is recognition + dispatch;
 it does not restate the design.
 
@@ -54,44 +60,55 @@ Use context to tell an invocation from a passing mention of the practice.
 1. A substantial session has happened that is worth closing — there is real work
    in the transcript, not an empty or trivial exchange.
 2. The session transcript is readable (the Agent reads the arc, not your memory of it).
-3. Loudon is present to sign the close map (the Agent drafts; you sign).
+3. Loudon is present for the panel and to assent to the reckoning (the Agent drafts;
+   he signs).
 
 **What happens:**
 1. The thin card dispatches the enchanted [[Closing Well]] page into a fresh
-   context — the **Closing Well Agent**, a professional closer with clean eyes and
-   the whole spec the spent working instance can't spare.
-2. The Agent reads the session transcript and analyzes its arc.
-3. It hands the main loop **one framing prompt** for Loudon and the working
-   Claude: *what mattered most — what, if anything, is canon — what's the next move?*
-   The interview stays between Loudon and the working Claude; the Agent authors
-   from the distilled answers (see [[Closing Well]] § The channel).
-4. It triangulates three independent readings — its fresh arc-analysis, the
-   working Claude's in-room view, Loudon's judgment — and drafts the **close map**.
-5. **One gate:** Loudon signs the map.
-6. On signature, execute each row through its existing ceremony: deposit edits
-   ([[Deposit Ceremony]]), the baton file ([[Baton Ceremony]]), artifacts + index,
-   the `handoff_ready` board post — honoring the worktree rules
-   (`_ops/worktree/SKILL.md`: canon to the owner/`main`; batons per worktree).
+   context — the **Closing Well Agent**, the moderator, with clean eyes and the
+   whole spec the spent working instance can't spare.
+2. **Homework (Pass 1).** The Agent reads the session transcript cold and forms its
+   own read of the arc, then hands the active Claude coaching — a stance and two or
+   three genuine wonderings — for the panel ahead.
+3. **The panel** stays between the active Claude and Loudon, not the moderator — the
+   active Claude moderates a short reflective conversation using the coaching,
+   drawing out Loudon's judgment and its own in-room witness. The moderator never
+   answers for a panelist; an unanswered wondering is passed on as `UNFILLED`, never
+   invented (see [[Closing Well]] § Closing Well, Enchanted).
+4. **The reckoning (Pass 2).** Dispatched again with the homework and both distilled
+   readings, the Agent drafts two layers: the **reckoning** — the four gestures
+   (keep / hand on / leave a trace / let go), front of house, plain and warm — and
+   the **backstage checklist** — the in-spec mechanism (deposit / baton / artifact
+   rows with a `status` column), behind it.
+5. **One gate:** Loudon assents to the reckoning, or names what to revise.
+6. **Backstage (Pass 3 — the executors).** On assent, a fresh backstage subagent
+   places every `candidate` row through its real ceremony: a deposit via the
+   committer ([[Deposit Ceremony]]), a baton via `baton-executor.mjs`
+   ([[Baton Ceremony]]) with its `handoff_ready` board post, an artifact filed and
+   indexed in its bundle — honoring the worktree rules (`_ops/worktree/SKILL.md`:
+   canon to the owner/`main`; batons per worktree, announced on the owner board).
    The commit is the record.
 7. Append one trap to [[Closing Well — gotchas]] — the ledger that makes
    "professional" literal.
 
 **Postconditions:**
-1. A close map was drafted and signed (or the session was found to warrant no close).
-2. Every signed row landed through its own ceremony and is committed; nothing is
-   stranded on a feature branch.
+1. A reckoning was drafted and assented to (or the session was found to warrant no
+   close).
+2. Every `candidate` backstage row landed through its own ceremony and is
+   committed; nothing is stranded on a feature branch.
 3. If a baton was written, it is announced on the board (`handoff_ready`) and valid;
-   if a deposit was made, it is canon on the owner.
+   if a deposit was made, it is canon on the owner's `main`.
 4. One gotcha was appended for this close.
 
 **"deposit: none" is a first-class, common outcome.** A plain build session's
-honest map is often "baton + two artifacts, no canon." The map's existence must
+honest reckoning is often "baton + two artifacts, no canon." Its existence must
 never pressure a deposit into being — that manufactured-canon reflex is the
 tristitia failure this whole practice guards.
 
 **Failure mode:** If the Agent cannot read the transcript, or Loudon is not present
-to sign, halt — do not execute an unsigned map, and do not manufacture canon to
-fill the map. A close without a signature is a draft, not a completed ceremony.
+for the panel and the assent, halt — do not execute an unsigned reckoning, and do
+not manufacture canon or invent his judgment to fill it. A close without assent is
+a draft, not a completed ceremony.
 
 **Git commit:** each signed row commits under its own ceremony's convention
 (`deposit(<id>):` for a deposit, a baton-build subject for a baton). This
