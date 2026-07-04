@@ -54,6 +54,18 @@ See @Modes_of_Collaboration.md (→ `Modes of Collaboration.md`).
 
 The whole Tier 0–2 floor measures ≈20K tokens (CLAUDE + JEWEL + SCHEMA + the five framework files; ROSETTA is *not* auto-loaded), per [[JEWEL]]'s loading map. To trim it, remove an `@import` line (the symlink stays, importing is one line). Full rationale and the spaces-bug seam: [[Palace as Context Injection System]] § The @import Floor.
 
+## Addressing the Palace — the Concierge
+
+Besides *loading* the palace (the `@import` floor above, read into you), you can **address** it: send a request to the **Concierge** — the palace's front door — which routes you to a **face** that does the work with fresh eyes and replies ([[The Palace Speaks]]). Its strength is fresh-eyes dispatch: work that is expensive to load context for, wants a whole-graph vantage, or needs a heavyweight ceremony remembered. It never replaces reading — every face points at the file it drew from, and you can always read that file by hand. Reach for it only when load-and-read won't do; most work still just loads.
+
+**The faces you can invoke** (full roster · triage · build-status in `_ops/concierge/README.md`):
+
+- **moderator** — *built.* Invoke with **`close well`**. Runs a whole session close as a moderated panel (the [[Closing Well]] Agent): reads the session arc, drafts the reckoning, places what you assent to.
+- **oracle** — *Phase 2, not built.* Will answer palace-infrastructure questions read-only, always citing the file. Until built, use the **Query** trigger (`what does the palace say about [X]?`).
+- **steward** — *Phase 3, not built.* Will tend the 1-hop neighborhood of entries a session touched (`do / offer / flag`).
+
+Authorship that needs your judgment in the room ([[Deposit Ceremony]], [[Baton Ceremony]]) stays yours — dispatched *through* a face, never replaced by one.
+
 ## Access Paths
 
 The palace is readable from any vector using these paths, in priority order:

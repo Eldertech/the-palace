@@ -46,18 +46,26 @@ link [[Palace as Context Injection System]] to its contrary; fold the three face
 [[Closing Well]]). **This plan** completes the capture — the values *and* the roadmap now
 live in the palace, not only in the conversation.
 
-### Phase 1 — The membrane (the thin router)
+### Phase 1 — The membrane (the thin router) ✓ done 2026-07-04
 The always-loaded recognition layer that lets any Claude choose *load-directly* vs.
 *address-the-mind* per interaction. Recognition + routing only; changes no behavior.
-*Two forks to resolve first (from the design conversation):*
-- **Name / home.** Is the always-loaded router "Closing Well" (legacy-narrow — the close is
-  one of three jobs) or a broader steward-on-call, with [[Closing Well]] becoming the
-  practice page it enchants for the *moderator* face only? (Leaning broader.)
-- **Skill vs. floor-text.** Does the light-weight oracle/steward dispatch live in a Claude
-  Code skill (discoverable, frictionless), with the floor carrying only recognition + the
-  question-type taxonomy in ≤~15 lines? (Leaning yes.)
-*Verify gate:* a cold session can recognize the agent exists, pick a face, and choose
-direct-vs-address — without the floor taxing sessions that do neither.
+*The three forks, resolved (2026-07-04, with Loudon):*
+- **Name / home → the Concierge.** Broadened: a new thin front door named the **Concierge**
+  (careful, thoughtful, personalized routing to a face) is the interlocutor layer;
+  [[Closing Well]] narrows to the practice page for the *moderator* face only. "Concierge"
+  collides with none of the three face-names and carries the both-modes-open ethic in a word.
+- **Skill vs. floor-text → skill.** The light-weight oracle/steward dispatch will live in
+  Claude Code skills (Phases 2–3); the floor carries recognition + the face roster only.
+- **Floor budget → the plan's ~15 lines.** A self-contained `## Addressing the Palace — the
+  Concierge` section in CLAUDE.md (what it is · strengths · how to invoke · the three faces
+  with build-status), not a bare pointer.
+*Landed:* the Concierge card (`_ops/concierge/README.md` — roster, triage, guard, the unsolved
+dial input) and the CLAUDE.md floor section. **The dial's context-fullness input is recorded as
+unsolved** — never the active Claude's self-report; wire to `health.context_pct` or a transcript
+estimate (Phase 4).
+*Verify gate (met):* a cold session reading the floor can recognize the Concierge exists, see the
+three faces and which is built, and know to invoke `close well` / read-directly — without the
+floor taxing sessions that do neither.
 
 ### Phase 2 — The oracle face (the safe first migration)
 Read-only: it answers palace-infrastructure questions, never writes. Lowest risk because
