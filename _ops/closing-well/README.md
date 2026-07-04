@@ -6,21 +6,26 @@ what it dispatches *with*. Build status is tracked in
 [[Closing Well — production plan]]; the design is [[Closing Well]] § Closing Well,
 Enchanted.
 
-## What's built (Phase 3 — the arc reader)
+## What's built (Phases 3–4 — arc reader + close map)
 
-Phase 3 gives the Closing Well Agent its first faculty: reading a spent session's
-transcript, cold, and reconstructing its arc. The close map (Phase 4), the interview
-loop (Phase 4), and the executors (Phase 5) are **not built yet** — this stops at a
-faithful *arc analysis*.
+The Agent now reads a spent session cold (Phase 3) and, after a short interview,
+drafts the **close map** for Loudon's signature (Phase 4). The **executors** — turning
+a signed row into an actual deposit / baton / board post — are Phase 5 and **not built
+yet**; until then a signed map is executed by hand through the existing ceremonies.
 
 | File | Role |
 |---|---|
 | `transcript-reader.mjs` | Resolves the current session's transcript on disk and distills it into a readable arc. Two verbs: `--resolve`, `--distill`. |
-| `prompts/closing-well-agent.md` | The enchantment prompt — runs [[Closing Well]] as a fresh subagent that reads the arc and returns a structured analysis. |
+| `prompts/closing-well-agent.md` | **Pass 1** — the enchantment that runs [[Closing Well]] as a fresh subagent, reads the arc, returns a structured analysis ending in the "gaps a cold reader can't fill" list. |
+| `close-map-format.md` | The typed close-map schema: three species, the `status` column, "deposit: none" as first-class, the template, and how the map renders as the single sign gate. |
+| `prompts/closing-well-agent-map.md` | **Pass 2** — the enchantment that takes the arc analysis + the interview answers + the working Claude's view, triangulates them, and drafts the close map. |
 
-## The dispatch (how `close well` runs today, Phase 3)
+## The dispatch (how `close well` runs today, Phases 3–4)
 
-Run by the working Claude (the ceremony card points here). Four steps:
+Run by the working Claude (the ceremony card points here). Two passes of the Agent
+with a short interview between them.
+
+### Pass 1 — read the session cold (Phase 3)
 
 ```bash
 # 1. Resolve THIS session's transcript. Run from the main loop — its transcript is
@@ -36,8 +41,33 @@ node _ops/closing-well/transcript-reader.mjs --distill --out <scratchpad>/sessio
 3. **Dispatch the Agent** (Agent tool, **Sonnet**, one call): paste
    `prompts/closing-well-agent.md`, filling `{{CLOSING_WELL_PATH}}` with the absolute
    path to `Closing Well.md` and `{{ARC_PATH}}` with the distilled arc from step 2.
-4. **Relay** the returned arc analysis to Loudon. In Phase 3 that *is* the output;
-   from Phase 4 on, the analysis feeds the close-map draft and the interview.
+   It returns the arc analysis, ending in a **gaps** list.
+
+### The interview (Phase 4) — stays in the room
+
+You never speak to a subagent directly, so the interview stays between **Loudon and
+the working Claude** — the parties who hold the channel and were in the room. The
+Agent authored the gaps; the main loop asks them.
+
+4. Put to Loudon **one framing question** — *what mattered most in this arc, what (if
+   anything) is canon, what's the next move?* — plus the Agent's 2–4 specific gaps.
+   Keep it to those; the relay must stay a rounding error against the authoring it
+   saves. This is the whole human cost of the close.
+5. Gather two tacit halves the transcript can't show: **Loudon's answers** (the human
+   judgment) and **the working Claude's own in-room view** (what it knows that the
+   transcript doesn't record). Distil each to a few lines — the Agent gets the
+   distillation, not the dialogue.
+
+### Pass 2 — draft the close map (Phase 4)
+
+6. **Dispatch the Agent again** (Agent tool, **Sonnet**, one call): paste
+   `prompts/closing-well-agent-map.md`, filling `{{CLOSING_WELL_PATH}}`,
+   `{{CLOSE_MAP_FORMAT_PATH}}` (→ `close-map-format.md`), `{{ARC_ANALYSIS}}` (pass 1's
+   output), `{{WORKING_CLAUDE_VIEW}}`, and `{{LOUDON_ANSWERS}}`. It **triangulates**
+   the three readings and returns the filled close map + a short drafting note.
+7. **Show the map to Loudon — the single gate.** He signs: `approve`, or `revise`
+   naming the rows. On approve, each `candidate` row executes through its own existing
+   ceremony (by hand until Phase 5). `landed` and `none` rows execute nothing.
 
 ### Why the main loop resolves, not the subagent
 
@@ -74,12 +104,11 @@ long sessions.
 
 Exit codes: `0` ok · `1` usage / not-found · `2` parse failure.
 
-## Not built yet (Phases 4–6)
+## Not built yet (Phases 5–6)
 
-- **Close map + interview** — the typed deposit/baton/artifact map, the one signature
-  gate, and the "gaps a cold reader can't fill" → interview loop with the working
-  Claude. Phase 3's arc analysis already emits the gaps list as the seed.
-- **Executors** — deposit / baton / artifact-index / board-post / commit, each
-  delegating to its existing ceremony, honoring canon-to-owner and baton-per-worktree.
+- **Executors** — turning a signed `candidate` row into an actual deposit commit /
+  baton file / artifact index / board post, each delegating to its existing ceremony,
+  honoring canon-to-owner and baton-per-worktree. Until Phase 5, a signed map is
+  executed **by hand** through the existing ceremonies, and the map says so.
 - **Gotcha ledger wiring** — [[Closing Well — gotchas]] exists; the Agent appending
   to it per close is Phase 6.
