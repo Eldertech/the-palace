@@ -54,7 +54,7 @@ The always-loaded recognition layer that lets any Claude choose *load-directly* 
   (careful, thoughtful, personalized routing to a face) is the interlocutor layer;
   [[Closing Well]] narrows to the practice page for the *moderator* face only. "Concierge"
   collides with none of the three face-names and carries the both-modes-open ethic in a word.
-- **Skill vs. floor-text → skill.** The light-weight oracle/steward dispatch will live in
+- **Skill vs. floor-text → skill.** The light-weight oracle/curator dispatch will live in
   Claude Code skills (Phases 2–3); the floor carries recognition + the face roster only.
 - **Floor budget → the plan's ~15 lines.** A self-contained `## Addressing the Palace — the
   Concierge` section in CLAUDE.md (what it is · strengths · how to invoke · the three faces
@@ -92,20 +92,32 @@ vanish." New machinery is just the gatherer prompt + a thin dispatch skill (`con
 *Verify gate:* one real "gather the links for [X]" dispatch returns a quality, file-cited
 index, and costs the main thread only the product — not the search.
 
-### Phase 3 — The steward face — ✓ built 2026-07-04
-The 1-hop neighborhood tending: `do / offer / flag`, bounded to entries a session touched.
-The first face that *writes*. **Built thin** (`prompts/steward.md`), on a deliberate reading:
-the specification that earns its place is the part governing *what an agent can wreck* — the two
-hard rules, **one hop** (the fence against overreach) and **do / offer / flag** (a
-reversibility-and-consent gate: `do` = mechanical maintenance performed, `offer` = canon
-authorship drafted for Loudon's yes, `flag` = noticed, not acted). Everything past those trusts
-the dispatched Claude's own judgment rather than scripting it — the same capability as any working
-Claude, fenced, not a lesser agent.
-*Verify gate (met):* dispatched on a real neighborhood ([[Skills Are Enchantable Pages]] + its 1-hop
-links, the entry a recent session re-authored), the steward stayed strictly inside the fence
-(refused the SCHEMA-ceremony question as "two hops past this fence"), performed only the one
-mechanical `do` (an `activation_count` bump), drafted three link `offer`s without applying them,
-and named its flags — tending correctly and never overreaching past one hop.
+### Phase 3 — The curator face — ✓ built 2026-07-04
+Neighborhood tending — `do / offer / flag` — of the entries a session touched. The first face
+that *writes* (`prompts/curator.md`). Named **curator**, not "steward": a palace *steward* is a
+permanent, *looped* agent bound to one entry ([[Project Stewardship System]]); this is the
+disposable, one-shot tending pass — the palace's own canon calls that an **impulse**, not a
+steward ([[Skills Are Enchantable Pages]]).
+
+Built on a deliberate reading refined with Loudon: the specification that earns its place governs
+only *what an agent can wreck*, and **read scope and write scope are decoupled** —
+- **Read: unlimited + web.** The curator reads the *whole* palace (follow any thread, any
+  distance) and reaches the **web** to verify a claim — a check on host hallucination. Nothing is
+  off-limits to look at; access was never the risk.
+- **Write: graduated consent.** `do` = reversible mechanical fix on an entry in play, performed;
+  `offer` = anything with canon judgment *or* any change far from the work in play, drafted for
+  Loudon's yes; `flag` = noticed, not acted. Nothing is walled off from being *proposed* — taste
+  and distance only raise the bar from *act* to *ask*.
+- **Clarify or assume.** On genuine ambiguity it returns one question rather than guess; otherwise
+  it assumes, states the assumption, and proceeds (keeping the back-and-forth out of your thread).
+
+*Verify gate (met):* an early build was live-dispatched on a real neighborhood
+([[Skills Are Enchantable Pages]] + its links, the entry a recent session re-authored). It read
+the neighborhood, performed exactly one mechanical `do` (an `activation_count` bump), drafted three
+link `offer`s without applying them, and named its flags — tending correctly, writing only by
+consent. (The gate ran against the earlier one-hop-read reading; the shipped prompt widens *reading*
+to the whole palace + web while keeping the same write discipline — a strict superset, re-verify on
+next real use.)
 
 ### Phase 4 — The moderator face
 Fold the three faces + the moderator character/values + the `agency_profile` into

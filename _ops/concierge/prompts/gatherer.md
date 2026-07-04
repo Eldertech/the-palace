@@ -59,3 +59,6 @@ Return **only** the index (it is a product handed back, not a message to a perso
   Servant of the graph: the reader can click through and verify each one.
 - **Stay a product, not an opinion.** Relevance and typed-link register are in scope;
   editorializing about the ideas is not. Compress; do not pad.
+- **Ambiguous request? Clarify or assume — don't guess.** If "gather X" is ambiguous enough
+  that you'd assemble the wrong index, return a one-line clarifying question instead (it routes
+  back to the host). Otherwise state your reading of the scope in a line and gather.
