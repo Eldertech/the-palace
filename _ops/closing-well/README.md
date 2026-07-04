@@ -58,13 +58,25 @@ Agent authored the gaps; the main loop asks them.
    transcript doesn't record). Distil each to a few lines — the Agent gets the
    distillation, not the dialogue.
 
+> **Never fabricate the human channel.** If no live interview happens — an autonomous
+> run, a background close, Loudon away — pass the sentinel `UNFILLED — no interview has
+> happened`, **never** invented answers attributed to Loudon. A close with no human
+> reading produces a *provisional* map (canon rows marked `provisional`, a **Questions
+> for Loudon** block instead of a sign line), which is honest and fine. Inventing his
+> judgment is a forgery, not a draft — it is the confabulation-of-the-human-channel
+> failure the autonomous Phase-4 run walked into, and this rule closes it. The gate
+> needs his real signature regardless, so `UNFILLED` costs nothing and a fabrication
+> buys nothing but risk.
+
 ### Pass 2 — draft the close map (Phase 4)
 
 6. **Dispatch the Agent again** (Agent tool, **Sonnet**, one call): paste
    `prompts/closing-well-agent-map.md`, filling `{{CLOSING_WELL_PATH}}`,
    `{{CLOSE_MAP_FORMAT_PATH}}` (→ `close-map-format.md`), `{{ARC_ANALYSIS}}` (pass 1's
-   output), `{{WORKING_CLAUDE_VIEW}}`, and `{{LOUDON_ANSWERS}}`. It **triangulates**
-   the three readings and returns the filled close map + a short drafting note.
+   output), `{{WORKING_CLAUDE_VIEW}}`, and `{{HUMAN_READING}}` (Loudon's distilled
+   answers **or** the `UNFILLED` sentinel — never fabricated). It **triangulates** the
+   readings and returns the filled close map + a short drafting note; with the human
+   reading `UNFILLED` it returns a *provisional* map + Questions block instead.
 7. **Show the map to Loudon — the single gate.** He signs: `approve`, or `revise`
    naming the rows. On approve, each `candidate` row executes through its own existing
    ceremony (by hand until Phase 5). `landed` and `none` rows execute nothing.

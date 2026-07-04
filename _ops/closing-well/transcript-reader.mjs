@@ -116,11 +116,23 @@ function resolveTranscript() {
 }
 
 function resolveBySession(id) {
+  // Accept a full session id OR a prefix (the survey / task chips show short
+  // 8-char ids). Exact match wins; otherwise a unique prefix match; ambiguous
+  // prefixes error rather than guess.
   if (!fs.existsSync(PROJECTS_DIR)) die(`no projects dir at ${PROJECTS_DIR}`);
+  const hits = [];
   for (const d of fs.readdirSync(PROJECTS_DIR)) {
-    const full = path.join(PROJECTS_DIR, d, `${id}.jsonl`);
-    if (fs.existsSync(full)) return full;
+    const dir = path.join(PROJECTS_DIR, d);
+    const exact = path.join(dir, `${id}.jsonl`);
+    if (fs.existsSync(exact)) return exact;
+    let entries = [];
+    try { entries = fs.readdirSync(dir); } catch { continue; }
+    for (const f of entries) {
+      if (f.endsWith('.jsonl') && f.startsWith(id)) hits.push(path.join(dir, f));
+    }
   }
+  if (hits.length === 1) return hits[0];
+  if (hits.length > 1) die(`session prefix "${id}" is ambiguous (${hits.length} matches) — use a longer prefix`);
   return null;
 }
 
@@ -140,6 +152,19 @@ function asText(content) {
 function oneLine(s, n = 200) {
   return String(s).replace(/\s+/g, ' ').trim().slice(0, n);
 }
+
+// Does this tool call mutate palace state (a spine event) or just navigate/read?
+// Spine: file writes, git commits/merges, dispatches, deposits, batons. Navigation:
+// Read/Grep/Glob/LS, read-only Bash (git log/status/diff, ls/cat/grep/find/wc).
+const MUTATE_BASH = /(git\s+(commit|merge|rebase|push|add|reset|stash|cherry-pick)\b|mkdir\b|\bmv\b|\brm\b|\bcp\b|>>|\s>\s|\btee\b|commit\.mjs|new-worktree)/;
+function isSpineCall(name, text) {
+  if (['Write', 'Edit', 'NotebookEdit', 'Agent', 'Task'].includes(name)) return true;
+  if (/deposit|baton|spawn_task|create_event|send_/i.test(name)) return true;
+  if (name === 'Bash') return MUTATE_BASH.test(text);
+  return false; // Read, Grep, Glob, LS, WebFetch, mcp reads, everything else
+}
+// A tool result is spine if it errored or carries commit/deposit/ceremony evidence.
+const SPINE_RESULT = /(committed:|deposit\(|baton\(|Schema Ceremony|✗|error|fatal|denied|failed)/i;
 
 function summarizeToolInput(name, input) {
   if (!input || typeof input !== 'object') return '';
@@ -190,7 +215,8 @@ function distill(file, opts) {
         for (const tr of toolResults) {
           const body = typeof tr.content === 'string' ? tr.content : asText(tr.content);
           const tag = tr.is_error ? 'tool ✗' : 'tool ✓';
-          beats.push({ role: 'RESULT', text: `[${tag}] ${oneLine(body, 180)}` });
+          const spine = tr.is_error || SPINE_RESULT.test(body);
+          beats.push({ role: 'RESULT', text: `[${tag}] ${oneLine(body, 180)}`, spine });
         }
       }
     } else { // assistant
@@ -204,10 +230,30 @@ function distill(file, opts) {
           beats.push({ role: 'think', text: oneLine(b.thinking, 400) });
         } else if (b.type === 'tool_use') {
           toolCalls++;
-          beats.push({ role: 'call', text: `${b.name}(${summarizeToolInput(b.name, b.input)})` });
+          const text = `${b.name}(${summarizeToolInput(b.name, b.input)})`;
+          beats.push({ role: 'call', text, spine: isSpineCall(b.name, text) });
         }
       }
     }
+  }
+
+  let navDropped = 0;
+  if (opts.spine) {
+    // Keep the spine (human turns, Claude text, mutation/dispatch calls, error/commit
+    // results); collapse runs of navigation noise (reads, greps, routine ✓ results)
+    // into a single compact marker so the arc's shape stays legible.
+    const kept = [];
+    let run = 0;
+    const flush = () => { if (run) { kept.push({ role: 'DROP', n: run }); navDropped += run; run = 0; } };
+    for (const b of beats) {
+      const isNav = (b.role === 'call' || b.role === 'RESULT') && !b.spine;
+      if (isNav) { run++; continue; }
+      flush();
+      kept.push(b);
+    }
+    flush();
+    beats.length = 0;
+    beats.push(...kept);
   }
 
   if (opts.maxTurns && beats.length > opts.maxTurns) {
@@ -218,7 +264,7 @@ function distill(file, opts) {
     beats.splice(head, dropped, { role: 'ELIDED', text: `… ${dropped} interior beats elided (--max-turns) …` });
   }
 
-  return { meta, beats, stats: { userTurns, asstTurns, toolCalls, lines: lines.length } };
+  return { meta, beats, stats: { userTurns, asstTurns, toolCalls, lines: lines.length, navDropped } };
 }
 
 function render({ meta, beats, stats }, file) {
@@ -237,6 +283,7 @@ function render({ meta, beats, stats }, file) {
   out.push(`- models: ${[...meta.models].join(', ') || '?'}`);
   out.push(`- span: ${meta.firstTs || '?'} → ${meta.lastTs || '?'}`);
   out.push(`- turns: ${stats.userTurns} human · ${stats.asstTurns} assistant · ${stats.toolCalls} tool calls · ${stats.lines} records`);
+  if (stats.navDropped) out.push(`- spine mode: ${stats.navDropped} navigation beats dropped (reads/greps/routine results)`);
   out.push('');
   out.push('---');
   out.push('');
@@ -246,6 +293,7 @@ function render({ meta, beats, stats }, file) {
     else if (b.role === 'call') { out.push(`  · call → ${b.text}`); }
     else if (b.role === 'RESULT') { out.push(`  · ${b.text}`); }
     else if (b.role === 'think') { out.push(`  · (thinking) ${b.text}`); }
+    else if (b.role === 'DROP') { out.push(`  · … ${b.n} navigation beat${b.n === 1 ? '' : 's'} (reads/greps/routine results) …`); }
     else if (b.role === 'ELIDED') { out.push(''); out.push(`**${b.text}**`); out.push(''); }
   }
   out.push('');
@@ -267,6 +315,7 @@ if (!fs.existsSync(file)) die(`transcript not found: ${file}`);
 if (doDistill) {
   const opts = {
     thinking: !!flags.thinking,
+    spine: !!flags.spine,
     maxTurns: flags['max-turns'] ? parseInt(flags['max-turns'], 10) : 0,
   };
   const distilled = distill(file, opts);
