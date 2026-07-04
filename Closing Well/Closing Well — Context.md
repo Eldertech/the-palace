@@ -57,3 +57,22 @@ perform it.
   (Phase 3+) is not built. Its honest map was "everything already landed mid-session;
   the only work owed was drift-cleanup" — modelling the *deposit: none* outcome the
   ceremony insists is first-class.
+- **2026-07-03 — Phase 3 built: the arc reader.** A session that opened catching the
+  Phase-2 baton found it stale (the branch had already merged to `main`), reported the
+  staleness instead of executing, and on Loudon's word pivoted to Phase 3 in a fresh
+  worktree (`feature/closing-well-phase3`). Built the Agent's first faculty in
+  `_ops/closing-well/`: `transcript-reader.mjs` (resolve the current session's `.jsonl`
+  + *mechanically* distill it into a readable arc — a projection, not a summary, so the
+  cold read stays the Agent's job) and `prompts/closing-well-agent.md` (the enchantment
+  → a structured arc analysis). The verify gate was **self-referential**: a cold Sonnet
+  subagent, handed only the distilled transcript of *this very build session*,
+  reconstructed its arc faithfully — the stale-baton pivot, the `git checkout` guardrail
+  catch, the narrow scoping — and honestly flagged the transcript's own truncation as
+  `(inferred)`, since the arc was distilled *before* the dispatch and so couldn't
+  contain it. Two traps the build itself taught: (a) a running subagent writes its own
+  top-level `.jsonl`, so "newest file" grabs it — fixed with an `origin.kind == 'human'`
+  discriminator, and the reason the main loop resolves *before* dispatch; (b) thinking is
+  redacted to an empty string in the persisted transcript, so `--thinking` is a no-op and
+  the arc is reconstructed from text and actions alone. The seam to Phase 4 is already
+  cut: the arc analysis ends in a "gaps a cold reader can't fill" list — that *is* the
+  interview's question set.

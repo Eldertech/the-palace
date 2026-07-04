@@ -16,12 +16,16 @@ Production Plan]]): phased, each phase closes one gap and ends at a verify gate,
 the earliest phase is a hand-run pilot before any automation — the same order that
 worked for the [[Project Stewardship System]].
 
-Status as of 2026-07-03: **Phases 0–2 done; Phase 3 is next.** Phase 0 (this
+Status as of 2026-07-03: **Phases 0–3 done; Phase 4 is next.** Phase 0 (this
 plan) and Phase 1 (hand-run pilot — this design's own close) are complete; Phase 2
 landed on `main` via the v1.15 Schema Ceremony: the `close well` trigger + the thin
-[[Closing Well Ceremony]] card (recognition + dispatch). The design lives in
-[[Closing Well]] § Closing Well, Enchanted. The feature branch has been merged and
-retired; further phases branch fresh from `main`.
+[[Closing Well Ceremony]] card (recognition + dispatch). Phase 3 (the transcript
+reader + the enchantment that reconstructs a session's arc cold) is built on branch
+`feature/closing-well-phase3` — machinery in `_ops/closing-well/`; its verify gate
+passed (a cold Sonnet subagent faithfully reconstructed this build session's own arc
+from the distilled transcript alone). The design lives in [[Closing Well]] § Closing
+Well, Enchanted. Each phase's feature branch merges to `main` and retires; further
+phases branch fresh from `main`.
 
 ## Reuse — do not rebuild
 
@@ -66,10 +70,20 @@ CLAUDE.md trigger row + Palace Ceremonies row; `lint-doc-drift.py` clean (trigge
 coverage confirmed — the card's `Trigger:` phrases are all present in the table).
 The next phase branches fresh from `main`.
 
-### Phase 3 — Enchantment + transcript reader
+### Phase 3 — Enchantment + transcript reader ✓ done
 Dispatch [[Closing Well]] as a subagent that reads the session transcript and returns
 an arc analysis.
 *Verify gate:* the Agent, cold, reconstructs the session arc from the transcript alone.
+*Landed 2026-07-03 (branch `feature/closing-well-phase3`):* machinery in
+`_ops/closing-well/` — `transcript-reader.mjs` (resolve + mechanical distill; a
+`origin.kind == 'human'` discriminator so it never grabs a running subagent's own
+transcript) and `prompts/closing-well-agent.md` (the enchantment → structured arc
+analysis, ending in the "gaps a cold reader can't fill" list that seeds Phase 4's
+interview). `README.md` documents the dispatch. **Gate passed:** a cold Sonnet
+subagent reconstructed this very build session's arc faithfully — caught the
+stale-baton pivot, the guardrail catch, the narrow scoping; honestly flagged the
+transcript's truncation as `(inferred)`; refused to manufacture canon. The next
+phase branches fresh from `main`.
 
 ### Phase 4 — Close-map + interview protocol
 The gap-list loop and the single gate.
@@ -95,6 +109,11 @@ Turn on the ledger; run several closes; let each teach one trap.
 
 ## Start here
 
-Phase 1, and the cleanest pilot is the close of *this* conversation. Read the
-transcript, draft the close map by hand, and let the first real map prove or revise
-the format before a line of automation is written.
+Phase 4 — close-map + interview. Phase 3 left the seam already cut: the arc analysis
+ends with a "gaps a cold reader can't fill" list, which *is* the interview's question
+set. Phase 4 wires that list into the one-gate loop (Agent hands the gaps to the main
+loop → main asks Loudon and the working Claude → distilled answers return → the Agent
+drafts the typed close map with its `status` column) and stops at Loudon's signature.
+Branch fresh from `main`; reuse `_ops/closing-well/transcript-reader.mjs` and the
+enchantment prompt — extend the prompt's return schema from arc-analysis to close-map,
+don't rebuild the reader.
