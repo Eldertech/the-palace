@@ -5,6 +5,12 @@ backstage checklist into the palace *through its existing ceremony* — never ar
 This file is the executor protocol: what runs, which real tool carries it, and the two
 routing rules that keep a close from stranding work.
 
+> **Execution is a dispatched moderator, not the main loop.** By the moderator model, *the
+> mechanism is the moderator's alone; the panelists never see it as work*. So the executors
+> below are run by a fresh **backstage** subagent (Pass 3 — `prompts/closing-well-executor.md`),
+> not by the spent working instance. This file is that subagent's protocol; the working
+> instance only relays its placement report.
+
 > **Reuse, do not rebuild.** Every executor is a thin wrapper over machinery that already
 > exists and is trusted. An executor's only new work is *placement + routing + validation*
 > — the ceremony's own quality is untouched.
