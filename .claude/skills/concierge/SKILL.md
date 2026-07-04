@@ -1,57 +1,63 @@
 ---
 name: concierge
-description: Address the palace instead of loading it — say what you need in plain language and the Concierge triages it to a disposable agent that works in its own context window and hands back a finished product, keeping the main thread clean (context-offload). Use when Loudon or a working Claude "addresses the palace" — "concierge, …", "ask the palace …", "spin up the concierge", "find me every palace doc about X", "collect the entries on X and Y" (→ gatherer), "what does the palace say about X", "where does the palace stand on Y", "how does ceremony Z work" (→ oracle Q&A, read-only), or "tidy / tend the links around what I just touched" (→ curator — the one face that writes: it reads the whole palace and the web to verify, performs reversible mechanical fixes directly, and drafts canon changes for your yes). Do NOT use to close a session — that is the moderator face, triggered by "close well".
+description: Address the palace instead of loading it — spawn a resident companion once, keep its agent ID, and re-address it in plain language across the session; it works in its own context window, carries what it learns forward, and hands back finished products, keeping the main thread clean (offload + continuity). Use when Loudon or a working Claude "addresses the palace" — "concierge, …", "ask the palace …", "spin up the concierge", "find me every palace doc about X", "collect the entries on X and Y" (→ gatherer posture), "what does the palace say about X", "where does the palace stand on Y", "how does ceremony Z work" (→ oracle Q&A posture, may web-verify), or "tidy / tend the links around what I just touched" (→ curator posture — the writing job: reads the whole palace + web to verify, performs reversible mechanical fixes, and drafts canon changes for your yes). Do NOT use to close a session — that is the verifier posture at Closing Well, triggered by "close well".
 ---
 
 # The Concierge (front-desk shim — the address verb)
 
-This file is a **thin shim** — the harness-discoverable trigger for the Concierge. The organ
-is the canon entry `Palace development/Concierge.md` ([[Concierge]]); the dispatch machinery is
-`_ops/concierge/`. Per [[Skills Are Enchantable Pages]], the page is the organ and this file is
-one dispatch surface onto it — so read the canon entry and machinery rather than duplicating them.
+This file is a **thin shim** — the harness-discoverable trigger for the Concierge. The organ is
+the canon entry `Palace development/Concierge.md` ([[Concierge]]); the machinery is
+`_ops/concierge/` (the **charter** `prompts/companion.md`, the **posture** prompts, `README.md`
+for the full dispatch spec). Per [[Skills Are Enchantable Pages]], the page is the organ and this
+file is one dispatch surface onto it — read the canon entry and machinery rather than duplicating
+them.
 
-You are the working Claude, invoking the Concierge on an **address** — a plain-language request
-to the palace. Your job: **triage it to the right face, dispatch one disposable agent, relay the
-product, let it vanish.** The search never enters this conversation; only the finished thing does.
+You are the working Claude, addressing the palace's **resident companion** — one agent you spawn
+once and keep for the session. Your job: **spawn-or-resume it, name the posture, relay the
+product.** The search never enters this conversation; only the finished thing does.
 
-## Triage — classify the address, route to a face
+## The lifecycle — resident, not fresh-per-request
 
-| The address sounds like… | Face | Dispatch |
+1. **First address of the session → spawn it, and keep the agent ID.** Spawn one write-capable
+   agent (`general-purpose`) with the **charter** (`prompts/companion.md`) and a **curated startup
+   neighborhood** — the entries/context this session will actually work in, chosen deliberately,
+   not the whole palace. Record its `agentId`.
+2. **Every later address → resume the same agent** (`SendMessage` to the held ID), naming the
+   posture and filling that posture prompt's slots. It carries its prior context forward — don't
+   re-spawn, and don't re-feed what it already holds.
+3. **Watch its health.** Resumes re-hydrate a growing context. If it gets heavy over a long
+   session, compact or respawn (watch `context_pct`, never its self-report). Parked between
+   addresses it costs nothing.
+
+If you expect a genuinely large fan-out, tell Loudon the rough cost first (his standing preference).
+
+## Triage — classify the address, name the posture
+
+| The address sounds like… | Posture | Prompt |
 |---|---|---|
-| "find / collect / gather / assemble every doc/link/entry about X" — wants the **material** | **gatherer** | `_ops/concierge/prompts/gatherer.md` |
-| "what does the palace say about X / where does it stand / how does Z work" — wants an **answer** | **oracle Q&A** | `_ops/concierge/prompts/oracle-qa.md` |
-| "close this session well" — wants a **close** | **moderator** | not this skill — the `close well` trigger |
-| "tidy / tend the links around what I touched" | **curator** | `_ops/concierge/prompts/curator.md` — the one **writing** face; dispatch on the touched entries. It reads the whole palace + web (a check on host hallucination), performs the reversible `do`s, and drafts the `offer`s (canon judgment, or anything far from the work) for Loudon's yes |
-| anything a cheap file-read settles | — | just read the file; don't dispatch |
+| "find / collect / gather every doc/link/entry about X" — wants the **material** | **gatherer** (read-only) | `_ops/concierge/prompts/gatherer.md` |
+| "what does the palace say about X / how does Z work" — wants an **answer** | **oracle Q&A** (read-only, may web-verify) | `_ops/concierge/prompts/oracle-qa.md` |
+| "tidy / tend the links around what I touched" | **curator** (writes) | `_ops/concierge/prompts/curator.md` |
+| "close this session well" | **verifier** (the inversion) | not this skill — the `close well` trigger |
+| anything a cheap file-read settles | — | just read the file; don't address |
 
-If an address blends two (e.g. "find the entries *and* tell me what they say"), you may run the
-gatherer then the oracle, or dispatch one agent told to do both — but keep each dispatch's product
-clean.
+Fill the posture prompt's slots — `{{REQUEST}}` / `{{QUESTION}}` / `{{TOUCHED_ENTRIES}}`,
+`{{TRANSCRIPT_CONTEXT}}`, `{{PALACE_ROOT}} = /Users/loudonstearns/Documents/The Palace`. For a
+conversation-dependent address, distill the transcript
+(`node _ops/closing-well/transcript-reader.mjs --resolve` → `--distill`); for a self-contained
+one, a 2–3 line note is enough.
 
-## Dispatch (the faces share a shape; the curator differs in one way)
+## Relay — and hold the safety line
 
-Read `_ops/concierge/README.md` § *Dispatching* for the in-spec detail. In short:
-
-1. **Context.** If the address depends on this conversation, distill the transcript
-   (`node _ops/closing-well/transcript-reader.mjs --resolve` → `--distill --out <scratch>/arc.md`);
-   for a self-contained address, write a 2–3 line context note instead.
-2. **Spawn one agent** (Agent tool; `Explore` or general-purpose). Point it at the face's prompt
-   with slots filled — `{{REQUEST}}` / `{{QUESTION}}` / `{{TOUCHED_ENTRIES}}`,
-   `{{TRANSCRIPT_CONTEXT}}`, `{{PALACE_ROOT}} = /Users/loudonstearns/Documents/The Palace`.
-   Keep it to one agent unless the topic is genuinely large; if you expect a big fan-out, tell
-   Loudon the rough cost first (his standing preference).
-   - **oracle (gatherer / Q&A) is read-only** — the prompts forbid writes regardless of agent type,
-     but may reach the web to verify a claim (label palace vs. web; never dress web as canon).
-   - **the curator writes** — it must be a write-capable agent (general-purpose, not `Explore`).
-     Its prompt lets it read the whole palace + web, performs only the near+mechanical `do`s, and
-     *drafts* everything with canon judgment or far from the work as `offer`s.
-3. **Relay the product** as returned (already file-cited). For the curator, this means: report
-   what it *did* (reversible), surface its *offers* for Loudon's yes (do not apply them yourself),
-   and pass along its *flags* and anything it web-verified. Note the search never entered this context.
+Relay the product as returned (already file-cited). For the **curator**: report what it *did*
+(reversible), **surface its `offer`s for Loudon's yes — do not apply them yourself**, and pass
+along its flags and anything it web-verified. The companion's heavy bias is to draft, not act;
+your job on the other end is to keep the review real — drafts get read, not rubber-stamped.
 
 ## The guard (carry it every time)
 
-Every face is a **faster path to ground truth, never a replacement** ([[Concierge]] § The guard).
-Every line it returns is a clickable file pointer to verify; git stays ground truth; the palace's
-silence is a real answer, never a confabulated one. Keep this shim thin — when the dispatch
-changes, change `_ops/concierge/README.md` and the canon entry, not this file.
+The companion is a **faster path to ground truth, never a replacement** ([[Concierge]] § The
+guard). Every line it returns is a clickable file pointer to verify; git stays ground truth; the
+palace's silence is a real answer, never a confabulated one. Keep this shim thin — when the model
+changes, change `_ops/concierge/README.md`, `prompts/companion.md`, and the canon entry, not this
+file.

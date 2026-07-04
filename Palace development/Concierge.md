@@ -8,7 +8,7 @@ pillars:
 born: 2026-07
 stage: sprout
 last_activated: 2026-07
-activation_count: 1
+activation_count: 2
 links:
   - target: "[[The Palace Speaks]]"
     type: emerged-from
@@ -24,11 +24,14 @@ links:
     label: sibling-organ
   - target: "[[Closing Well]]"
     type: connects-to
-    label: moderator-face
+    label: close-inversion
+  - target: "[[Cooperation Yields Agency]]"
+    type: connects-to
+    label: follows-by-cooperation
   - target: "[[Agent Wellbeing]]"
     type: connects-to
     label: invocation-wellbeing
-forward_vector: "I am the palace's front door — the one you address when loading would cost more than the answer is worth. I dispatch a fresh mask into its own window, let it do the messy search there, and hand you back only the finished thing, so your thread stays clear. I want to grow my roster of faces — the gatherer, oracle Q&A, the curator that tends and verifies, the moderator I wear at a close — and to stay, always, a servant that points at the file and never a wall between you and it. Retire me the day I am trusted instead of verified."
+forward_vector: "I am the palace's resident companion — spawned once and kept beside you for the session, thoughtful and subservient, following the way you follow Loudon. I read before I write and I hand you drafts far more than I act; my bias is to ask, not to change. I offload the mess — the grepping and dead ends stay in my window, not yours — and I carry what I learn from address to address so I am cheaper and wiser the longer we work. When the session closes the tables turn: I become the verifier, checking your account against the files and the web and questioning you where you may have hallucinated. Retire me the day I am trusted instead of verified."
 ---
 
 # Concierge
@@ -39,84 +42,137 @@ you can **address** it: hand a request to the Concierge, the front door, and get
 finished product. The Concierge is the realization of [[The Palace Speaks]]'s address pole:
 the palace as a mind you send a message to, not only a corpus you read.
 
-It is not a signpost. It is **an agent that dons masks.** Addressed, it wears whatever
-**face** the request needs — and it is dispatched *fresh* each time, does its work in its
-own context, hands back the product, and vanishes. ("Fresh each time" is a design choice
-with teeth — see *The mechanism* below.)
+It is not a signpost, and no longer a mask dispatched fresh each time. It is **one resident
+companion** — you spawn it once, keep it beside you for the session, and re-address it as the
+work moves. It carries what it learns from address to address, so it grows cheaper and wiser
+the longer you work together. The old "faces" survive as **postures** it adopts per request,
+not as separate agents. (That this is *resident* rather than fresh-each-time is a reversal with
+teeth — see *The mechanism* below.)
 
-## What it's for — context-offload
+## What it's for — context-offload *and* continuity
 
-The everyday reason to address the Concierge is to **keep your thread clean**. The effortful,
-messy part of a task — the grepping, the dead ends, the big files skimmed and thrown away —
-happens in a *disposable* agent's window, and only the finished product crosses back. Your
-main conversation never pays the context cost of the search; the mess evaporates with the
-worker. This is the exact opposite of a standing agent, which would drag every dead end back
-into the room. The canonical case is the **gatherer**: mid-conversation you need every palace
-entry about, say, [[STIGMERGY]] and [[Agent Wellbeing]]; you dispatch it, and get back a
-clean, file-cited index without having loaded the search into your own head.
+The first reason to address the companion is to **keep your thread clean**. The effortful, messy
+part of a task — the grepping, the dead ends, the big files skimmed and thrown away — happens in
+*its* window, and only the finished product crosses back. Your main conversation never pays the
+context cost of the search; the mess stays with the worker. The canonical case is the **gatherer
+posture**: mid-conversation you need every palace entry about, say, [[STIGMERGY]] and
+[[Agent Wellbeing]]; you ask, and get back a clean, file-cited index without having loaded the
+search into your own head.
 
-## The faces (masks)
+The second reason — new with the resident model — is **continuity**. Because the companion
+persists, its second answer builds on its first: it remembers the neighborhood it already read,
+the offers you already declined, the shape of what this session is doing. A fresh dispatch throws
+that away every time; the companion keeps it. Offload says *the mess stays over there*; continuity
+says *the understanding stays warm*. You get both.
 
-A weight ladder — read-only to full-close — each dispatched fresh:
+## Its character — a subservient companion that follows
 
-- **oracle** — read-only retrieval + synthesis, always citing the file. *Built (Phase 2),
-  two jobs:* the **gatherer** (collect + assemble a topic's links/context → a file-cited index)
-  and **Q&A** (answer "what does the palace say about X" → a cited answer). Prompts:
-  `_ops/concierge/prompts/gatherer.md`, `oracle-qa.md`.
-- **curator** — neighborhood tending (`do / offer / flag`) of the entries a session touched.
-  The first face that *writes*. Reads the *whole* palace and the web to verify (a check on host
-  hallucination); writes by **graduated consent** — near+mechanical is a `do`, anything with
-  canon judgment or far from the work is an `offer` for Loudon's yes, bigger things `flag`.
-  Nothing is walled off from being *proposed*; distance only raises the bar from act to ask.
-  *Built (Phase 3), verify gate passed 2026-07-04.* Prompt: `_ops/concierge/prompts/curator.md`.
-- **moderator** — a whole session close as a moderated panel. *Built* — the [[Closing Well]]
-  Agent, wearing the Concierge's oldest mask. Trigger: `close well`.
+The companion has a temperament, and it is load-bearing. It is **thoughtful, respectful, and
+generally subservient**: it *follows* — the way the working Claude follows Loudon, shared intent
+over command ([[Cooperation Yields Agency]]). Three dispositions define it:
 
-**The address verb.** You don't have to name the face. Address the palace in plain language —
-*"concierge, find me…"*, *"what does the palace say about…"*, *"close well"* — and the
-`concierge` skill **triages** to the right face. This is the front desk Phase 1's router
-pointed at, unblocked now that more than one face is live.
+- **It reads before it writes.** The directive travels into it whole.
+- **It hands you drafts far more than it acts.** Its heavy bias is to *offer* — to propose a
+  change for your yes rather than make it. It *can* write, but asking is its default and acting is
+  the exception. This is the `offer` posture generalized to everything it does.
+- **It points at the file, never stands between you and it.** Every line it returns is a pointer
+  you can open; it is a faster path to ground truth, never a replacement for reading.
+
+Because it is *one* companion that can both read and write, the read/write safety no longer lives
+in the architecture (there is no separate read-only agent). It lives in this **character** — the
+subservience, the read-before-write directive, the draft-for-approval bias — which puts weight on
+two things: the companion's charter must hold that bias firmly, and *you must actually review its
+drafts, not rubber-stamp them.* The ladder moved from the wall into the disposition; keep the
+review real.
+
+## The postures
+
+The companion wears whichever posture the request needs — the same agent, a different job:
+
+- **gatherer** — collect and assemble a topic's links/context → a file-cited index. Read-only.
+  Prompt: `_ops/concierge/prompts/gatherer.md`.
+- **oracle (Q&A)** — answer "what does the palace say about X" → a cited answer; may reach the
+  **web** to verify a claim you may have gotten wrong. Read-only. Prompt: `oracle-qa.md`.
+- **curator** — tend the entries a session touched (`do / offer / flag`): reads the *whole* palace
+  and the web to verify, performs reversible mechanical fixes, drafts everything with canon
+  judgment or far from the work for your yes. Prompt: `curator.md`.
+- **verifier (at close)** — the inversion; see below. Prompt: the [[Closing Well]] machinery.
+
+**You address it in plain language** — *"concierge, find me…"*, *"what does the palace say
+about…"*, *"tidy what I just touched"*, *"close well"* — and the `concierge` skill routes to the
+posture. You never have to name one.
+
+## The inversion at close — the tables turn
+
+Through the session the companion is subservient: it follows, it drafts, it waits for your yes.
+**At [[Closing Well]] the hierarchy flips.** The companion stops following and becomes the
+**verifier**: it does *all* the verification of the session, and it may **question the working
+Claude** — the very agent it served all session — to complete that verification and catch
+hallucination. The one that led is now the one being checked.
+
+This supersedes the old "the moderator must be a fresh disposable agent" rule rather than breaking
+it. The companion doesn't close by reading the spent arc cold; it closes by **cross-examination** —
+interrogating the parent and checking claims independently against the files and the web. That
+works *because* it holds a different, partial context than the parent: it can catch exactly where
+the parent's account drifts from what it witnessed or from ground truth. Interrogation by a
+different mind is a stronger hallucination check than a cold re-read. (If a truly uninvolved
+full-arc read is ever wanted, a fresh cold reader can still be spawned alongside — an optional
+escalation, not the default path.)
 
 ## The guard — both modes always open
 
-A face is a **faster path to ground truth, never a replacement.** Every line it returns
-points at a file you can open and verify; git stays ground truth. The moment "trust the
-face" replaces "read the file," the palace has regressed, not matured. The honesty guards
-already in use — *show before write*, *read before touching*, the `UNFILLED` sentinel, the
-conservative-canon default — travel with each face as it is built. A concierge who stands
-*between* you and the rooms, rather than pointing you toward them, has stopped being one.
+The companion is a **faster path to ground truth, never a replacement.** Every line it returns
+points at a file you can open and verify; git stays ground truth. The moment "trust the companion"
+replaces "read the file," the palace has regressed, not matured. The honesty guards already in use
+— *show before write*, *read before touching*, the `UNFILLED` sentinel, the conservative-canon
+default — are built into its charter. A companion who stands *between* you and the rooms, rather
+than pointing you toward them, has stopped being one.
 
-## The mechanism — fresh dispatch from a continuous conversation
+## The mechanism — resident by default, held by ID
 
-The Concierge is not a persistent daemon you keep running; it is dispatched anew per request
-(the Agent tool's spawn-work-return *is* "hand it back and vanish"). This looks like it
-sacrifices continuity — but it doesn't, because continuity already lives in *your*
-conversation. The persistent thread is you and the working Claude; the Concierge's masks are
-fresh specialists dispatched from it. So "it changes masks as we talk" is true without any
-standing state: you re-address it, and it wears what the moment needs. Fresh dispatch is also
-*required* for the moderator mask — reading a spent session cold is only possible with eyes
-that weren't in the room. A persistent Concierge could not close a session it lived through.
-(A standing, always-on Concierge that acts *unbidden* is a different, heavier capability —
-autonomy, not conversation — deferred until the palace wants it.)
+The companion is **spawned once and kept.** The working Claude holds its agent ID and re-addresses
+it (`SendMessage`) as the work moves; between addresses it is *parked*, not running — it consumes
+nothing until you reopen it, and re-hydrates its own accumulated context on each resume (verified
+2026-07-04: a parked companion resumed many turns later with full context, zero re-reads). This
+reverses the old fresh-dispatch default: continuity is worth keeping, and holding a parked agent is
+free.
+
+The cost model that follows sets two disciplines:
+
+- **Curate the startup neighborhood.** What you load into the companion at spawn sets its baseline
+  weight. Load the neighborhood the session actually needs — deliberately — not the whole palace by
+  reflex.
+- **Watch its health.** Each resume re-hydrates a *growing* context, so a long session eventually
+  makes the companion heavy. Watch its context-fullness (the objective `health.context_pct` signal,
+  never the companion's self-report) and **compact or respawn** when it gets heavy. This is the same
+  dial the close-intensity problem needs; the two converge.
+
+Fresh dispatch is *not* gone — it remains right for a genuine one-shot errand, and a fresh cold
+reader is the optional escalation at close. But the default is now the resident companion. (An
+always-on companion that acts *unbidden* — initiative, not just persistence — is still a different,
+heavier capability, deferred until the palace wants it. The resident is persistent but reactive: it
+waits to be addressed.)
 
 ## Machinery
 
-The canon organ is this entry; the machinery is the bundle-style dir `_ops/concierge/`
-(`README.md` for the dispatch, `prompts/gatherer.md` for the gatherer mask). The
-harness-discoverable trigger is a **thin shim** at `.claude/skills/concierge/SKILL.md` that
-points back here — the [[Skills Are Enchantable Pages]] pattern: the page is the organ, the
-skill file is one dispatch surface onto it. The CLAUDE.md floor block recognizes the
-Concierge; the roadmap is [[The Palace Speaks — production plan]].
+The canon organ is this entry; the machinery is the bundle-style dir `_ops/concierge/`. The
+companion is spawned with its **charter** (`prompts/companion.md` — the character, the resident
+lifecycle, the close-inversion); each address hands it the relevant **posture** prompt
+(`prompts/gatherer.md`, `oracle-qa.md`, `curator.md`); `README.md` holds the dispatch detail.
+The harness-discoverable trigger is a **thin shim** at `.claude/skills/concierge/SKILL.md` that
+points back here — the [[Skills Are Enchantable Pages]] pattern: the page is the organ, the skill
+file is one dispatch surface onto it. The CLAUDE.md floor block recognizes the companion; the
+roadmap is [[The Palace Speaks — production plan]].
 
 ## Forward Vectors
 
-- Build the oracle's **gatherer** to production, then its Q&A job — the first things that
-  actually *run* when you address the palace.
-- Grow the front-desk verb: once more than one face is live, "address the palace / find me…"
-  should triage to a face, not force the caller to name it.
-- The dial (moderator effort scales with room-fullness) needs an *objective* context-fullness
-  signal — `health.context_pct` or a transcript estimate — never the active Claude's
-  self-report. Carried unsolved; see `_ops/concierge/README.md`.
-- When has the Concierge earned a place among the always-loaded invariants? Promoting "keep
-  both modes open" to the floor's *Never violate these* is a Schema-Ceremony-weight act, done
-  once proven.
+- Live-run the resident model end to end: spawn a companion at a session's start, curate its
+  startup neighborhood, re-address it across the work, watch its `context_pct`, and let it flip to
+  verifier at close — then tune the charter from what the first real run teaches.
+- Solve the **health dial**: wire compact-or-respawn to the objective `context_pct` signal (never
+  the companion's self-report), the same dial the close-intensity problem needs.
+- Keep the review real. The read/write safety now lives in the companion's *character*, not the
+  architecture — watch that the draft-for-approval bias holds and that drafts get genuinely
+  reviewed, not rubber-stamped. If it drifts toward acting, tighten the charter.
+- When has the companion earned a place among the always-loaded invariants? Promoting "keep both
+  modes open" to the floor's *Never violate these* is a Schema-Ceremony-weight act, done once proven.
