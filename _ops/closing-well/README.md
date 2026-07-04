@@ -125,17 +125,23 @@ long sessions.
 
 Exit codes: `0` ok · `1` usage / not-found · `2` parse failure.
 
-## Phase 5 — built, pending its live gate
+## Phase 5 — built, and its live gate passed (2026-07-04)
 
 - **Executors** (`executor.md` + `baton-executor.mjs`) — turning an assented `candidate`
   backstage row into an actual deposit commit / baton file + board announcement / artifact
   index, each delegating to its existing ceremony, honoring the two routing rules
   (canon → owner/main; baton → worktree + announced on the owner board). The baton executor
   is unit-tested end to end (scaffold + validated announce + printed commit); deposit and
-  artifact reuse the committer directly. **Not yet run on a live signed close** — that gate
-  wants a real close to exercise it.
+  artifact reuse the committer directly.
+- **Backstage execution** (`prompts/closing-well-executor.md`) — execution is a *third
+  dispatch*, a fresh backstage moderator that places the assented rows, so the spent working
+  instance never runs the mechanism.
 - **Thin dispatch** (`dispatch.md`) — the pasted prompts above replaced by ~10-line pointer
-  prompts (the subagent reads its own template). Built; folds in when a live close runs.
+  prompts (the subagent reads its own template).
+- **Live gate — passed.** The first live `close well` (this dir's own maker session,
+  2026-07-04) ran the full flow end to end — homework → panel → reckoning → assent → the
+  backstage moderator placing every row — and landed canon on `main` (`40c8dd9`) with nothing
+  stranded. The Agent is built end to end (Phases 0–5).
 
 ## Not built yet (Phase 6)
 
