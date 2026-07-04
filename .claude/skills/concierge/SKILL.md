@@ -1,6 +1,6 @@
 ---
 name: concierge
-description: Address the palace instead of loading it — say what you need in plain language and the Concierge triages it to a disposable read-only agent that works in its own context window and hands back a finished product, keeping the main thread clean (context-offload). Use when Loudon or a working Claude "addresses the palace" — "concierge, …", "ask the palace …", "spin up the concierge", "find me every palace doc about X", "collect the entries on X and Y" (→ gatherer), or "what does the palace say about X", "where does the palace stand on Y", "how does ceremony Z work" (→ oracle Q&A). Do NOT use to close a session — that is the moderator face, triggered by "close well". Do NOT use for edits/writes — the read-only faces cannot touch files; route those to their own path.
+description: Address the palace instead of loading it — say what you need in plain language and the Concierge triages it to a disposable agent that works in its own context window and hands back a finished product, keeping the main thread clean (context-offload). Use when Loudon or a working Claude "addresses the palace" — "concierge, …", "ask the palace …", "spin up the concierge", "find me every palace doc about X", "collect the entries on X and Y" (→ gatherer), "what does the palace say about X", "where does the palace stand on Y", "how does ceremony Z work" (→ oracle Q&A, read-only), or "tidy / tend the links around what I just touched" (→ steward — the one face that writes: it performs reversible mechanical fixes and drafts canon changes for your yes, bounded to one hop). Do NOT use to close a session — that is the moderator face, triggered by "close well".
 ---
 
 # The Concierge (front-desk shim — the address verb)
@@ -21,27 +21,31 @@ product, let it vanish.** The search never enters this conversation; only the fi
 | "find / collect / gather / assemble every doc/link/entry about X" — wants the **material** | **gatherer** | `_ops/concierge/prompts/gatherer.md` |
 | "what does the palace say about X / where does it stand / how does Z work" — wants an **answer** | **oracle Q&A** | `_ops/concierge/prompts/oracle-qa.md` |
 | "close this session well" — wants a **close** | **moderator** | not this skill — the `close well` trigger |
-| "tidy / tend the links around what I touched" | **steward** | not built (Phase 3) — do it in-context, one hop, and say so |
+| "tidy / tend the links around what I touched" | **steward** | `_ops/concierge/prompts/steward.md` — the one **writing** face; dispatch on the touched entries, it performs the reversible `do`s and drafts the `offer`s for Loudon's yes, bounded to one hop |
 | anything a cheap file-read settles | — | just read the file; don't dispatch |
 
 If an address blends two (e.g. "find the entries *and* tell me what they say"), you may run the
 gatherer then the oracle, or dispatch one agent told to do both — but keep each dispatch's product
 clean.
 
-## Dispatch (both read-only faces share the shape)
+## Dispatch (the faces share a shape; the steward differs in one way)
 
 Read `_ops/concierge/README.md` § *Dispatching* for the in-spec detail. In short:
 
 1. **Context.** If the address depends on this conversation, distill the transcript
    (`node _ops/closing-well/transcript-reader.mjs --resolve` → `--distill --out <scratch>/arc.md`);
    for a self-contained address, write a 2–3 line context note instead.
-2. **Spawn one read-only agent** (Agent tool; `Explore` or general-purpose — the prompts forbid
-   writes regardless). Point it at the face's prompt with slots filled — `{{REQUEST}}` or
-   `{{QUESTION}}`, `{{TRANSCRIPT_CONTEXT}}`, `{{PALACE_ROOT}} = /Users/loudonstearns/Documents/The Palace`.
+2. **Spawn one agent** (Agent tool; `Explore` or general-purpose). Point it at the face's prompt
+   with slots filled — `{{REQUEST}}` / `{{QUESTION}}` / `{{TOUCHED_ENTRIES}}`,
+   `{{TRANSCRIPT_CONTEXT}}`, `{{PALACE_ROOT}} = /Users/loudonstearns/Documents/The Palace`.
    Keep it to one agent unless the topic is genuinely large; if you expect a big fan-out, tell
    Loudon the rough cost first (his standing preference).
-3. **Relay the product** as returned (already file-cited). Offer to save it; note the search
-   never entered this context.
+   - **oracle (gatherer / Q&A) is read-only** — the prompts forbid writes regardless of agent type.
+   - **the steward writes** — it must be a write-capable agent (general-purpose, not `Explore`).
+     Its prompt fences it to one hop and to the `do` tier; it *drafts* everything heavier.
+3. **Relay the product** as returned (already file-cited). For the steward, this means: report
+   what it *did* (reversible), surface its *offers* for Loudon's yes (do not apply them yourself),
+   and pass along its *flags*. Note the search never entered this context.
 
 ## The guard (carry it every time)
 
