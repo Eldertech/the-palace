@@ -6,26 +6,31 @@ what it dispatches *with*. Build status is tracked in
 [[Closing Well — production plan]]; the design is [[Closing Well]] § Closing Well,
 Enchanted.
 
-## What's built (Phases 3–4 — arc reader + close map)
+## What's built (Phases 3–4 — the arc reader + the moderator model)
 
-The Agent now reads a spent session cold (Phase 3) and, after a short interview,
-drafts the **close map** for Loudon's signature (Phase 4). The **executors** — turning
-a signed row into an actual deposit / baton / board post — are Phase 5 and **not built
-yet**; until then a signed map is executed by hand through the existing ceremonies.
+The Agent reads a spent session cold (Phase 3), then closes it as a **moderated panel**
+(Phase 4). It does its homework on the arc, hands the active Claude stance and a few
+wonderings, and — after the panel — drafts what the day amounted to in two layers: the
+**reckoning** (front of house, the four gestures) and the **backstage checklist** (the
+in-spec mechanism). The **executors** — turning an approved backstage row into an actual
+deposit / baton / board post — are Phase 5 and **not built yet**; until then an approved
+close is executed by hand through the existing ceremonies.
 
 | File | Role |
 |---|---|
 | `transcript-reader.mjs` | Resolves the current session's transcript on disk and distills it into a readable arc. Two verbs: `--resolve`, `--distill`. |
-| `prompts/closing-well-agent.md` | **Pass 1** — the enchantment that runs [[Closing Well]] as a fresh subagent, reads the arc, returns a structured analysis ending in the "gaps a cold reader can't fill" list. |
-| `close-map-format.md` | The typed close-map schema: three species, the `status` column, "deposit: none" as first-class, the template, and how the map renders as the single sign gate. |
-| `prompts/closing-well-agent-map.md` | **Pass 2** — the enchantment that takes the arc analysis + the interview answers + the working Claude's view, triangulates them, and drafts the close map. |
+| `prompts/closing-well-agent.md` | **Pass 1** — the moderator's **homework + coaching**: runs [[Closing Well]] as a fresh subagent, reads the arc cold, returns Part A (the homework — its own read of the day) and Part B (the coaching — stance + two-or-three wonderings handed to the active Claude to moderate the panel with). |
+| `close-map-format.md` | The backstage-checklist schema: the species, the load-bearing `status` column, `provisional`/`none` as first-class, and the template. (The front-of-house reckoning is prose, not a table.) |
+| `prompts/closing-well-agent-map.md` | **Pass 2** — the **reckoning + backstage checklist**: takes the homework + the working Claude's witness + Loudon's drawn-out judgment (or the `UNFILLED` sentinel), and drafts the two layers. The moderator never answers for a panelist. |
 
 ## The dispatch (how `close well` runs today, Phases 3–4)
 
 Run by the working Claude (the ceremony card points here). Two passes of the Agent
-with a short interview between them.
+with the panel between them. (Phase 5 replaces the pasted prompts below with a **thin
+dispatch** — a pointer to each prompt file, not the pasted text — but the flow is the
+same.)
 
-### Pass 1 — read the session cold (Phase 3)
+### Pass 1 — the homework + coaching (read the session cold)
 
 ```bash
 # 1. Resolve THIS session's transcript. Run from the main loop — its transcript is
@@ -41,45 +46,49 @@ node _ops/closing-well/transcript-reader.mjs --distill --out <scratchpad>/sessio
 3. **Dispatch the Agent** (Agent tool, **Sonnet**, one call): paste
    `prompts/closing-well-agent.md`, filling `{{CLOSING_WELL_PATH}}` with the absolute
    path to `Closing Well.md` and `{{ARC_PATH}}` with the distilled arc from step 2.
-   It returns the arc analysis, ending in a **gaps** list.
+   It returns **Part A** (its homework — its own cold read) and **Part B** (the coaching
+   — the stance and the two-or-three wonderings for the panel).
 
-### The interview (Phase 4) — stays in the room
+### The panel (Phase 4) — stays in the room
 
-You never speak to a subagent directly, so the interview stays between **Loudon and
-the working Claude** — the parties who hold the channel and were in the room. The
-Agent authored the gaps; the main loop asks them.
+You never speak to a subagent directly, so the panel stays between **Loudon and the
+working Claude** — the parties who hold the channel and were in the room. The Agent (the
+moderator) did its homework and handed you the coaching; the active Claude now moderates
+a short reflective panel, drawing out Loudon's judgment and adding its own in-room
+witness. The moderator never answers for a panelist.
 
-4. Put to Loudon **one framing question** — *what mattered most in this arc, what (if
-   anything) is canon, what's the next move?* — plus the Agent's 2–4 specific gaps.
-   Keep it to those; the relay must stay a rounding error against the authoring it
-   saves. This is the whole human cost of the close.
-5. Gather two tacit halves the transcript can't show: **Loudon's answers** (the human
-   judgment) and **the working Claude's own in-room view** (what it knows that the
-   transcript doesn't record). Distil each to a few lines — the Agent gets the
+4. Moderate the panel using Part B: put the wonderings to Loudon warmly, one at a time
+   — not as multiple choice. Keep it light; the relay must stay a rounding error against
+   the authoring it saves. This is the whole human cost of the close.
+5. Gather two tacit halves the transcript can't show: **Loudon's drawn-out judgment**
+   (the human panelist) and **the working Claude's own in-room witness** (what it knows
+   that the transcript doesn't record). Distil each to a few lines — the Agent gets the
    distillation, not the dialogue.
 
-> **Never fabricate the human channel.** If no live interview happens — an autonomous
+> **Never answer for the human panelist.** If no live panel happens — an autonomous
 > run, a background close, Loudon away — pass the sentinel `UNFILLED — no interview has
 > happened`, **never** invented answers attributed to Loudon. A close with no human
-> reading produces a *provisional* map (canon rows marked `provisional`, a **Questions
-> for Loudon** block instead of a sign line), which is honest and fine. Inventing his
-> judgment is a forgery, not a draft — it is the confabulation-of-the-human-channel
-> failure the autonomous Phase-4 run walked into, and this rule closes it. The gate
-> needs his real signature regardless, so `UNFILLED` costs nothing and a fabrication
-> buys nothing but risk.
+> panelist produces a *provisional* reckoning (canon rows marked `provisional`, ended
+> with the open wonderings instead of an assent line), which is honest and fine.
+> Inventing his judgment is a forgery, not a draft — it is the confabulation-of-the-
+> human-channel failure the autonomous Phase-4 run walked into, and this rule closes it.
+> The gate needs his real assent regardless, so `UNFILLED` costs nothing and a
+> fabrication buys nothing but risk.
 
-### Pass 2 — draft the close map (Phase 4)
+### Pass 2 — the reckoning + backstage checklist (Phase 4)
 
 6. **Dispatch the Agent again** (Agent tool, **Sonnet**, one call): paste
-   `prompts/closing-well-agent-map.md`, filling `{{CLOSING_WELL_PATH}}`,
-   `{{CLOSE_MAP_FORMAT_PATH}}` (→ `close-map-format.md`), `{{ARC_ANALYSIS}}` (pass 1's
-   output), `{{WORKING_CLAUDE_VIEW}}`, and `{{HUMAN_READING}}` (Loudon's distilled
-   answers **or** the `UNFILLED` sentinel — never fabricated). It **triangulates** the
-   readings and returns the filled close map + a short drafting note; with the human
-   reading `UNFILLED` it returns a *provisional* map + Questions block instead.
-7. **Show the map to Loudon — the single gate.** He signs: `approve`, or `revise`
-   naming the rows. On approve, each `candidate` row executes through its own existing
-   ceremony (by hand until Phase 5). `landed` and `none` rows execute nothing.
+   `prompts/closing-well-agent-map.md`, filling `{{CLOSING_WELL_PATH}}`, `{{HOMEWORK}}`
+   (Part A from pass 1), `{{WORKING_CLAUDE_VIEW}}` (the working Claude's distilled
+   in-room witness), and `{{HUMAN_READING}}` (Loudon's distilled judgment **or** the
+   `UNFILLED` sentinel — never fabricated). It returns **Part A — the reckoning** (front
+   of house, the four gestures, prose) and **Part B — the backstage checklist** (the
+   in-spec mechanism, a table with the `status` column); with the human reading
+   `UNFILLED` the reckoning is *provisional* and ends on the open wonderings.
+7. **Show the reckoning to Loudon — the single gate.** He assents, or names what to
+   revise. On assent, each `candidate` backstage row executes through its own existing
+   ceremony (by hand until Phase 5). `landed`, `provisional`, and `none` rows execute
+   nothing (`provisional` waits on Loudon).
 
 ### Why the main loop resolves, not the subagent
 
@@ -118,9 +127,13 @@ Exit codes: `0` ok · `1` usage / not-found · `2` parse failure.
 
 ## Not built yet (Phases 5–6)
 
-- **Executors** — turning a signed `candidate` row into an actual deposit commit /
-  baton file / artifact index / board post, each delegating to its existing ceremony,
-  honoring canon-to-owner and baton-per-worktree. Until Phase 5, a signed map is
-  executed **by hand** through the existing ceremonies, and the map says so.
+- **Executors** — turning an assented `candidate` backstage row into an actual deposit
+  commit / baton file + board announcement / artifact index, each delegating to its
+  existing ceremony, honoring canon-to-owner and baton-per-worktree. Until Phase 5, an
+  assented reckoning is executed **by hand** through the existing ceremonies, and the
+  reckoning says so.
+- **Thin dispatch wiring** — replacing the pasted prompts in the dispatch above with a
+  pointer to each prompt file on disk (the thin waist: ~15 lines cross the boundary, the
+  subagent reads its own template). Part of Phase 5.
 - **Gotcha ledger wiring** — [[Closing Well — gotchas]] exists; the Agent appending
   to it per close is Phase 6.
