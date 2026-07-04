@@ -59,6 +59,21 @@ links:
 
 ---
 
+## When to reach for a baton
+
+The baton is the **default way one session hands the next its place in an ongoing plan** — not a special measure reserved for work abandoned mid-move. Finishing one stage of a live project and pointing at the next *is* a handoff, and it wants a baton, **even when a production plan already lists that next stage.** The plan names *what* comes next; the baton carries what the plan can't — this session's calibrations, the residue of what was tried and learned, and a pickup so clean the next worker is moving before they finish reading.
+
+Two occasions call a baton, and the second is the common one:
+
+- **A move stopped mid-flight** — the classic case; the baton preserves the half-finished state and the negative space.
+- **A plan advancing to its next stage** — the *continuation baton*. It carries heavy accumulated state (everything built so far) plus this session's calibrations. This is the everyday use, not the exception. "There's no half-finished move to rescue" is **not** a reason to skip it — a continuation rarely has one.
+
+**Only skip a baton** when the next step is trivially reconstructable from the entry (or plan) alone — genuinely small enough that a fresh Claude needs nothing this session knew (§ Pace Obligations).
+
+*(A rarer variant — the **cold-start / commissioning baton**, for genuinely un-started work with no prior state — carries framing instead of momentum; its full treatment is being worked separately. Do not call a continuation "cold-start": the difference is whether real state travels with it.)*
+
+---
+
 ## The Scope of the Baton
 
 The baton carries only what survives compression toward *keep running* — what the next Claude needs to act and cannot recover on their own:
