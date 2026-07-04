@@ -80,9 +80,15 @@ The baton does *not* carry:
 
 If a section is uncertain whether to include, exclude it. The baton is the baton, not the biography. The move is the compression signal: what advances it is kept close to verbatim; what doesn't collapses to a sentence or drops.
 
+### The cold-start (commissioning) variant — a first-class, encouraged technique
+
+Most batons transfer *momentum* — the residue of work already underway. A **cold-start baton** carries the opposite: work that hasn't begun. Its payload is *setup, not residue* — the framing captured while an idea is hot, so a later session can start cold without re-deriving it. It is a commissioning brief, and the move it names is an *entry point, not a scope limit*: a cold-start baton can commission the start of something large — a whole build, a new entry cluster, a project — just as readily as one small step. Everything else still holds — name the move, compress toward it, stay disposable — but "Tried and rejected" and "Current state" have nothing to carry yet, so instead of being omitted they are **labeled "cold start"** and their emptiness reads as *intent, not loss*. A cold-start baton also drifts stale faster (un-started ideas change), so its on-pickup freshness check matters more than usual.
+
+Reach for one whenever an idea is worth commissioning but not worth starting now — it is how the palace hands *future* work to a future session, the same way a momentum baton hands *live* work to the next one. (This spec's own cold-start variant was itself commissioned by a cold-start baton — the technique dogfooding itself.)
+
 ## Trigger
 
-**Primary — the official baton (unambiguous; run the ceremony):** "baton", "pass the baton", "baton this", "baton it to [surface]", "drop a baton for [X]".
+**Primary — the official baton (unambiguous; run the ceremony):** "baton", "pass the baton", "baton this", "baton it to [surface]", "drop a baton for [X]", "drop a cold-start baton for [X]" (commission un-started work — see § The Scope, The cold-start variant).
 
 **Secondary — ambiguous (ask first):** "handoff" / "hand this off". Loudon uses "handoff" loosely and sometimes means an informal, non-ceremony pass. So when he says "handoff," do not assume — ask: *"Baton ceremony, or an informal handoff?"* and proceed on his answer. This ask is deliberate and temporary — a training wheel while the "baton" habit sets in. Retire it once "baton" is the reliable word.
 
@@ -99,6 +105,7 @@ A baton's location and lifecycle depend on the work it continues. Several shapes
 Shapes seen so far:
 
 - **Entry-bundle** (default) — one entry's in-progress move. Lives in the entry's bundle at `[Entry]/[Entry] — baton.md`; consumed and deleted on pickup.
+- **Cold-start / commissioning baton** — a baton for work that has *not started*: it commissions a future session rather than continuing a live one. Same mechanism, different payload (a brief, not residue — see § The Scope), and the commission can be small or the start of something large. Lives where the work *will* live (usually the target entry's bundle) and is **announced on the board** (§ Announcing the Baton on the Board) so it shows as *available work* in `list-handoffs` until caught — that queue visibility is the point, advertising the commission as catchable. (If you only mean to record a thought you don't want advertised as ready, that's a [[Palace To-Do]] item or a spore, not a baton.)
 - **Cross-surface paste-prompt** — a baton handed to another surface, most often Cowork → Claude Code for a build the sandbox can't run. Lives where the work lives (`Projects/.../` or `_ops/claude-code-prompts/`). Its distinctive content is the receiving-surface capability delta and an explicit *what NOT to do*. See [[Surfaces and Capabilities]]. This shape is the one that also gets *announced on the board* — see § Announcing the Baton on the Board.
 - **Session-queue continuation** — picking up a multi-session sweep (a graffiti pass, a deposit run). Carries "how we've been working" and a resume protocol, not just one move. Lives in `_ops/`.
 - **Swarm phase baton** — handing the apply-phase of a completed Swarm Weave to a fresh Claude. Lives in `_ops/swarm/sessions/`.
@@ -178,6 +185,8 @@ the catcher will see them. Omit nothing here.*
 6. If the baton names a receiving-surface capability delta or a worktree coordinate, confirm it holds before relying on it (the [[Surfaces and Capabilities]] catalog can be stale) — for a worktree, check `git worktree list` and recreate it (`node _ops/worktree/new-worktree.mjs --name <branch> --profile <p>`) if it is gone. A build that was supposed to run here but can't is a finding to report, not a failure to hide.
 7. Act on the move, holding the calibrations above. Steward batons are the exception — updated in place, never deleted.
 ```
+
+*Cold-start variant:* when the baton commissions un-started work (§ The Scope, The cold-start variant), replace the **Tried and rejected** and **Current state** sections with a single **`## Cold start`** block that says so plainly — *"COLD START — this work has not begun; no prior state, no tried-and-rejected"* — and carry the captured framing under **Move / Why this move matters / Next move**. Never leave the two sections blank: a blank reads as lost residue, the label reads as intent. Everything else in the template is unchanged, and the freshness check in the On-pickup footer becomes *more* load-bearing, not less.
 
 *Why the last section is fixed, not authored:* the **author** runs this ceremony — you triggered it by saying "baton," so the authoring discipline lives in this spec. The **catcher** does not — it arrives on a work invocation and reads only the baton and the entry, never this file. So the one half of the ceremony the catcher must obey has to travel inside the artifact it actually opens. Everything else still compresses toward the move; this rides along.
 
@@ -286,7 +295,3 @@ The incoming Baton is complete when:
 3. The catch is marked — the "Active Baton" pointer removed, or for a board-announced baton the `handoff_picked_up` REPLY posted — the baton committed if it wasn't already, and the file deleted (or marked deletion-pending where the surface can't delete)
 
 If the incoming Claude finds the baton incoherent, stale, or insufficient: stop, ask Loudon, do not improvise. A bad baton that gets followed silently produces drift.
-
-## Active Baton
-
-[[Baton Ceremony — baton]] — drafted 2026-07-04 *(cold-start: name the cold-start variant + assess Palace To-Do as a baton board — the spec's own dogfood)*
