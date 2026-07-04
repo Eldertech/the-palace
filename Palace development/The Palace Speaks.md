@@ -55,3 +55,7 @@ The relationship to [[Palace as Context Injection System]] is a Blake contrary: 
 - Which function migrates first, and does its direct path survive the migration intact? (The oracle face — read-only — is the safe first test.)
 - The governance question to keep live: as more faces appear, does the palace-agent stay a servant of the graph, or start to have opinions the graph did not authorize?
 - When has the pattern earned a place in the always-loaded invariants (JEWEL/CLAUDE)? Adding "keep both modes open" to the floor is a Schema-Ceremony-weight act — done once proven, not up front.
+
+## Active Baton
+
+[[The Palace Speaks — baton]] — drafted 2026-07-04
