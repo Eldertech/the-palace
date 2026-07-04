@@ -12,7 +12,7 @@ it realizes is [[The Palace Speaks]]; the roadmap is [[The Palace Speaks — pro
 This directory is the Concierge's machinery (the pattern of `_ops/closing-well/`): the always-loaded floor block *recognizes* the
 Concierge and names the faces; this card holds the roster, the triage, the guard, and
 the open problem. **All three faces are now built** — the oracle (Phase 2: gatherer + Q&A), the
-moderator (`close well`), and the steward (Phase 3: the first face that *writes*). What remains
+moderator (`close well`), and the curator (Phase 3: the first face that *writes*). What remains
 unbuilt is the **dial** (Phase 4) — how the moderator's effort scales with room-fullness.
 
 ## What it's for — keep your thread clean
@@ -41,7 +41,7 @@ to just load-and-read. Invocation is **per-face**, and the mechanisms differ:
 - **moderator** — the trigger phrase **`close well`** (recognized in CLAUDE.md's ceremony
   trigger table; dispatches the [[Closing Well]] Agent). *Live today.*
 - **oracle** — the `concierge` Claude Code **skill**, invoked like any skill. *Built (Phase 2).*
-- **steward** — dispatched via `prompts/steward.md` on the entries a session touched. *Built (Phase 3).*
+- **curator** — dispatched via `prompts/curator.md` on the entries a session touched. *Built (Phase 3).*
 
 A single natural-language front-desk verb — "address the palace / ask the Concierge X," which
 *triages* to a face — is the destination once more than one face is live; it arrives with the
@@ -110,19 +110,21 @@ human-in-the-loop — *dispatched through* a face, never replaced by one.
 | Face | What it does | Weight | Status |
 |---|---|---|---|
 | **oracle** | Read-only retrieval + synthesis, always citing the file. First job: the **gatherer** — collect and assemble every palace link/context for a topic, dispatched to a disposable window. Later grows to Q&A (the migration of the Query ceremony from load-directly to fresh-eyes dispatch). | read-only | **Phase 2 — in build (the gatherer).** Skill: `concierge`. Until live, run **Query** / **Map Build** in-context. |
-| **steward** | 1-hop neighborhood tending — `do / offer / flag`, bounded to entries a session actually touched. The first face that *writes*: `do` = mechanical maintenance, performed; `offer` = canon authorship, drafted for Loudon's yes; `flag` = noticed, not acted. | 1-hop, bounded | **Built (Phase 3).** Verify gate passed 2026-07-04. Prompt: `prompts/steward.md`. |
+| **curator** | Neighborhood tending — `do / offer / flag` — of the entries a session touched. The first face that *writes*. Reads the **whole palace + web** (a check on host hallucination); writes by **graduated consent**: `do` = near+mechanical, performed; `offer` = canon judgment *or* far from the work, drafted for Loudon's yes; `flag` = noticed, not acted. Nothing walled off from being proposed — distance only raises act→ask. | read: unlimited · write: graduated | **Built (Phase 3).** Verify gate passed 2026-07-04. Prompt: `prompts/curator.md`. |
 | **moderator** | Runs a whole session close as a moderated panel between the active Claude and Loudon — the four gestures + backstage placement. | full close | **Built** — the [[Closing Well]] Agent (Phases 0–5, live gate passed 2026-07-04). Trigger: `close well`. |
 
-The faces are a **weight ladder** — oracle (read-only) → steward (1-hop) → moderator
-(full close). Oracle is the safe first migration precisely because there is nothing to
-mis-place and both modes are trivially open: you can always just read the file.
+The faces are a **weight ladder by what each can *write*** — oracle (writes nothing) → curator
+(writes by graduated consent) → moderator (runs a full close). The ladder is about mutation, not
+access: every face *reads* freely (the curator reads the whole palace and the web). Oracle is the
+safe first migration precisely because there is nothing to mis-place and both modes are trivially
+open: you can always just read the file.
 
 ## Triage — which question reaches for which face
 
 | The request sounds like… | Route |
 |---|---|
 | "What does X mean / where does the palace stand on Y / how does this ceremony work?" | **oracle** (until built: **Query** in-context, or just read the entry) |
-| "Tidy the links / stage / vector around what I just touched." | **steward** — dispatch `prompts/steward.md` on the touched entries (writes the `do`s, drafts the `offer`s for your yes) |
+| "Tidy the links / stage / vector around what I just touched." | **curator** — dispatch `prompts/curator.md` on the touched entries (reads wide, writes the `do`s, drafts the `offer`s for your yes) |
 | "Close this session well." | **moderator** — `close well` |
 | Anything a cheap file-read answers. | **load-directly** — the default; don't address for what reading settles. |
 
@@ -144,7 +146,7 @@ how full it is.*
 
 ## Scope discipline (what is deliberately not built yet)
 
-- **The steward is built** (Phase 3, `prompts/steward.md`) — the first writing face. What is *not*
+- **The curator is built** (Phase 3, `prompts/curator.md`) — the first writing face. What is *not*
   yet built past it is the **dial** (Phase 4) below.
 - **Does not build the dial** (Phase 4). It records the dial's input constraint above.
 - **Does not add "keep both modes open" to the formal always-loaded invariant list**
