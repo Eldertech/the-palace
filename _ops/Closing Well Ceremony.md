@@ -23,13 +23,16 @@ forward_vector: "I am the thin recognition-and-dispatch card that turns 'close w
 
 # Closing Well Ceremony
 
-> **Status — 2026-07-03: recognition scaffold (Phase 2 of the build).** This card
-> makes `close well` a recognized trigger that dispatches the enchanted
-> [[Closing Well]] page. The Agent's full mechanism — transcript reader, the
-> close-map format, the interview loop, the executors — is being built through
-> [[Closing Well — production plan|the production plan]] (Phases 3–6) and is **not
-> yet complete**. Until then, the dispatched Agent does as much of the close by
-> hand as it can and names what it cannot yet automate. Honest markers are the point.
+> **Status — 2026-07-03: recognition + arc reader (Phases 2–3 of the build).** This
+> card makes `close well` a recognized trigger that dispatches the enchanted
+> [[Closing Well]] page. Phase 3 gave the Agent its first real faculty: it now reads
+> the spent session's transcript and reconstructs the arc *cold* — machinery in
+> `_ops/closing-well/` (see that dir's `README.md` for the dispatch). The rest of the
+> mechanism — the close-map format, the interview loop, the executors — is still being
+> built through [[Closing Well — production plan|the production plan]] (Phases 4–6) and
+> is **not yet complete**. Until then, the dispatched Agent reads the arc, then does as
+> much of the close by hand as it can and names what it cannot yet automate. Honest
+> markers are the point.
 
 The operational card for the [[Closing Well]] practice, *enchanted*. Where the
 [[Baton Ceremony]] hands the next instance an in-flight move and the
