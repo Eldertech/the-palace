@@ -125,15 +125,19 @@ long sessions.
 
 Exit codes: `0` ok · `1` usage / not-found · `2` parse failure.
 
-## Not built yet (Phases 5–6)
+## Phase 5 — built, pending its live gate
 
-- **Executors** — turning an assented `candidate` backstage row into an actual deposit
-  commit / baton file + board announcement / artifact index, each delegating to its
-  existing ceremony, honoring canon-to-owner and baton-per-worktree. Until Phase 5, an
-  assented reckoning is executed **by hand** through the existing ceremonies, and the
-  reckoning says so.
-- **Thin dispatch wiring** — replacing the pasted prompts in the dispatch above with a
-  pointer to each prompt file on disk (the thin waist: ~15 lines cross the boundary, the
-  subagent reads its own template). Part of Phase 5.
-- **Gotcha ledger wiring** — [[Closing Well — gotchas]] exists; the Agent appending
-  to it per close is Phase 6.
+- **Executors** (`executor.md` + `baton-executor.mjs`) — turning an assented `candidate`
+  backstage row into an actual deposit commit / baton file + board announcement / artifact
+  index, each delegating to its existing ceremony, honoring the two routing rules
+  (canon → owner/main; baton → worktree + announced on the owner board). The baton executor
+  is unit-tested end to end (scaffold + validated announce + printed commit); deposit and
+  artifact reuse the committer directly. **Not yet run on a live signed close** — that gate
+  wants a real close to exercise it.
+- **Thin dispatch** (`dispatch.md`) — the pasted prompts above replaced by ~10-line pointer
+  prompts (the subagent reads its own template). Built; folds in when a live close runs.
+
+## Not built yet (Phase 6)
+
+- **Gotcha ledger wiring** — [[Closing Well — gotchas]] exists and is hand-appended; the
+  Agent appending to it *automatically* per close is Phase 6.

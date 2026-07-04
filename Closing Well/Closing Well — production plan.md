@@ -107,11 +107,17 @@ build day; provisional close held clean with both panel channels absent) and a b
 baton-draft comparison on `f7017000` (near-parity with the real human baton). The next
 phase continues on this branch; it merges to `main` with Phase 5.
 
-### Phase 5 — Executors
+### Phase 5 — Executors + thin dispatch ◑ core built, live gate pending
 Wire deposit / baton / artifact-index / board-post / commit to the existing
-ceremonies, honoring canon-to-owner and baton-per-worktree.
-*Verify gate:* a signed map executes end to end; canon lands on `main`; the baton
-is announced and valid; nothing stranded on a feature branch.
+ceremonies, honoring canon-to-owner and baton-per-worktree; plus the thin dispatch
+(pointer prompts, not pasted). *Built 2026-07-04:* `_ops/closing-well/executor.md`
+(protocol + the two routing rules), `baton-executor.mjs` (the "hand on" executor —
+unit-tested end to end: §8-correct scaffold + `board-post.mjs`-validated announce +
+printed commit), and `dispatch.md` (the thin waist). Deposit/artifact reuse the
+committer directly (run from the owner tree, where its deps live and canon lands).
+*Verify gate — still open:* a signed *reckoning* executes end to end on a **live**
+close; canon lands on `main`; the baton is announced and valid; nothing stranded on a
+feature branch. Unit-proven, not yet run on a real close.
 
 ### Phase 6 — Gotcha ledger + iterate
 Turn on the ledger; run several closes; let each teach one trap.
