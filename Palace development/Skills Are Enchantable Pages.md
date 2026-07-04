@@ -102,3 +102,7 @@ The answer was yes to all — and this entry is the yes, written down.
 - Watch the boundary: a pure knowledge entry ([[Kuramoto Coupling]]) is enchantable but has no
   job; a specialist has a Job Contract. Where exactly does a page acquire a *dispatch surface*,
   and is that line worth drawing?
+
+## Active Baton
+
+[[Skills Are Enchantable Pages — baton]] — drafted 2026-07-04 *(cold-start: the dispatch-surface reconciliation, not yet begun)*
