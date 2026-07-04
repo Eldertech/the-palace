@@ -20,12 +20,14 @@ The values and roadmap are canon; the concrete design that makes Phase 1 buildab
 The opening audit surfaced seven real risks in Closing-Well-as-it-stands; the conversation then pivoted to values/character and never returned. Paused, not resolved — carry forward as live:
 - the intensity dial is not built
 - the transcript resolver could grab the wrong session (use bare `--resolve`; gotcha #10)
-- the canon-execution (deposit/baton) path is barely tested
+- the canon-execution path: the **baton** executor is now tested + hardened this session (two bugs fixed — see "Since drafted" below); the **deposit** path is still only lightly exercised — watch it
 - transcript "thinking" is redacted → the cold read is capped; reconstruct from text + actions only
 - the species set (deposit/baton/artifact) doesn't cleanly hold flag/check/vector rows
 
 ## Current state
-Written/canon this session: The Palace Speaks (`6601d31`), its production plan (`a0ce827`), 3 WEAVE flags (`61e7e77`).
+Written/canon this session: The Palace Speaks (`6601d31`), its production plan (`a0ce827`), 3 WEAVE flags (`61e7e77`), this baton (`5a11fc5`).
+
+**Since drafted (post-close fixes — the executor path that placed *this* baton got hardened):** `baton-executor.mjs` now resolves an entry by recursive tree search and fails loud on miss/ambiguity (`ecb6140`), and the board was corrected the ratified way — the wrong-path announce retired via `handoff_picked_up`, a correct `handoff_ready` reposted (`9d62736`). So the nested-entry misfire that happened *while placing this baton* can't recur; that's one fewer risk for you. (Full traps: [[Closing Well — gotchas]] #11–12.)
 
 Only in conversation (this baton's real cargo):
 - **Register-split fix** for `_ops/closing-well/prompts/closing-well-agent.md`: the moderator's Pass-1 output must code-switch — **protocol register** to the working Claude (dense; declare the full *static* repertoire — don't assume it's known; state process, capabilities, target postconditions, and the tone-switch it imposes) and **human register** only for the panel/gate.
