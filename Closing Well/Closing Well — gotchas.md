@@ -33,4 +33,4 @@ record, not a fresh subagent spun up cold. Newest last.
 
 ## From the first live close — 2026-07-04
 
-10. **A live `close well` can't resolve its own transcript by `--session`.** The reader's guard against grabbing a running subagent's transcript also excludes the *real* subject — the currently-running session — so `--distill --session <id>` returns "could not resolve." A live close must distill by explicit `--file <path>`. Found running the first live close.
+10. **For a live `close well`, resolve with bare `--resolve`, not `--session <id>`.** Bare `--resolve` correctly returns the *currently-running* session's transcript — verified in the first live close — and the documented dispatch uses it, so the standard flow works. The explicit `--session <id>` form, by contrast, *fails* on the running session (the guard against grabbing a running subagent's transcript also filters the live main session), returning "could not resolve"; `--file <path>` is only a fallback if you deviate to `--session`. *(Recorded backwards at first — the corrected lesson: the documented path is fine; don't reach for `--session` on a live close.)*

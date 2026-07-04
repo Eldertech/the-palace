@@ -16,7 +16,7 @@ Production Plan]]): phased, each phase closes one gap and ends at a verify gate,
 the earliest phase is a hand-run pilot before any automation — the same order that
 worked for the [[Project Stewardship System]].
 
-Status as of 2026-07-04: **Phases 0–4 done; Phase 5 is next.** Phase 0 (this
+Status as of 2026-07-04: **Phases 0–5 done — the Agent is built end to end; only Phase 6 (automatic gotcha-ledger wiring) remains.** Phase 0 (this
 plan) and Phase 1 (hand-run pilot — this design's own close) are complete; Phase 2
 landed on `main` via the v1.15 Schema Ceremony: the `close well` trigger + the thin
 [[Closing Well Ceremony]] card (recognition + dispatch). Phase 3 (the transcript
@@ -107,17 +107,20 @@ build day; provisional close held clean with both panel channels absent) and a b
 baton-draft comparison on `f7017000` (near-parity with the real human baton). The next
 phase continues on this branch; it merges to `main` with Phase 5.
 
-### Phase 5 — Executors + thin dispatch ◑ core built, live gate pending
+### Phase 5 — Executors + thin dispatch ✓ done (live gate passed 2026-07-04)
 Wire deposit / baton / artifact-index / board-post / commit to the existing
-ceremonies, honoring canon-to-owner and baton-per-worktree; plus the thin dispatch
-(pointer prompts, not pasted). *Built 2026-07-04:* `_ops/closing-well/executor.md`
+ceremonies, honoring canon-to-owner and baton-per-worktree; the thin dispatch
+(pointer prompts, not pasted); and — per Loudon's catch that the mechanism is the
+moderator's alone — **execution as a third dispatch** (a fresh backstage moderator,
+not the spent working instance). *Built 2026-07-04:* `_ops/closing-well/executor.md`
 (protocol + the two routing rules), `baton-executor.mjs` (the "hand on" executor —
-unit-tested end to end: §8-correct scaffold + `board-post.mjs`-validated announce +
-printed commit), and `dispatch.md` (the thin waist). Deposit/artifact reuse the
-committer directly (run from the owner tree, where its deps live and canon lands).
-*Verify gate — still open:* a signed *reckoning* executes end to end on a **live**
-close; canon lands on `main`; the baton is announced and valid; nothing stranded on a
-feature branch. Unit-proven, not yet run on a real close.
+§8-correct scaffold + `board-post.mjs`-validated announce), `dispatch.md` (the thin
+waist), and `prompts/closing-well-executor.md` (the backstage execution pass).
+Deposit/artifact reuse the committer directly (run from the owner tree, where its deps
+live and canon lands). *Verify gate — passed:* the first live `close well` (this design's
+own maker session) ran the whole flow — homework → panel → reckoning → assent → the
+backstage moderator placing every assented row — landing canon on `main` (`40c8dd9`)
+with the doc-drift linter clean and nothing stranded on a feature branch.
 
 ### Phase 6 — Gotcha ledger + iterate
 Turn on the ledger; run several closes; let each teach one trap.
