@@ -30,6 +30,7 @@ session inscribed, including what is already done. Every row carries a status:
 | `landed` | already committed this session — shown so the ledger is complete, not because it's owed |
 | `candidate` | proposed; awaits Loudon's sign to be written |
 | `in-flight` | partially done; names what remains |
+| `provisional` | drafted **without** the human reading (interview `UNFILLED`); a canon call that is Loudon's to make — awaits him, cannot be signed as-is |
 | `none` | a species deliberately empty — *"deposit: none"* is a row, not an omission |
 
 Without the column an already-landed deposit reads as still-owed. With it, `landed`
@@ -52,7 +53,9 @@ the tristitia failure the whole practice guards.
 
 **One-line arc:** <what the session set out to do → what it became>
 
-**What mattered most (distilled):** <1–2 sentences from the interview — Loudon's + the working Claude's read of what, if anything, is canon, and the next move>
+**Human reading:** answered   ·OR·   UNFILLED — provisional draft, not signable
+
+**What mattered most (distilled):** <1–2 sentences — Loudon's + the working Claude's read of what, if anything, is canon, and the next move. If UNFILLED, say so and give only the AI readings' view.>
 
 | # | species | status | what | home | evidence / notes |
 |---|---------|--------|------|------|------------------|
@@ -64,6 +67,19 @@ the tristitia failure the whole practice guards.
 
 **Sign:** Loudon ⟶ ☐ approve   ☐ revise (say which rows)
 ```
+
+**When the human reading is `UNFILLED`**, the map is provisional: canon-dependent rows
+carry status `provisional`, and the `Sign` line is replaced by —
+
+```markdown
+**Questions for Loudon** (his reading settles these; then the map becomes signable):
+1. <the canon call — is <X> a deposit, or already-home / not-canon?>
+2. <the next-move / baton call>
+3. <any other gap only he can fill, from the pass-1 "gaps" list>
+```
+
+A provisional map is a complete, honest output of a close run with no human present —
+not a lesser map. It is never executed; it waits for the interview, then re-drafts.
 
 Rows are ordered species-first (deposit, baton, artifact) then by status. Keep the
 map short — a close map is a *ledger*, not a report. If a species is empty, it still
@@ -83,7 +99,11 @@ until Loudon signs. One gate, not one-per-row:
 
 **Failure mode:** an unsigned map is a draft, not a completed close. Never execute an
 unsigned map; never manufacture a canon row to fill the map. A close without a
-signature has not happened.
+signature has not happened. **And never fabricate the human reading** — a close run with
+no live interview produces a `provisional` map with a Questions block, not a map padded
+with guesses attributed to Loudon. Inventing his judgment is a forgery, not a draft; it
+is the confabulation-of-the-human-channel failure (the trap the autonomous Phase-4 run
+walked into and this rule closes).
 
 ## What Phase 4 builds vs. defers
 
