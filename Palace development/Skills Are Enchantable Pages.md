@@ -80,11 +80,53 @@ letting the organ live outside the body.
 
 ## The family
 
-Ceremony · specialist · skill · enchanted page are one pattern — *a page with a dispatch
-surface* — differing only in **trigger substrate** (a human word, a table row, a harness
-`description`, a deliberate enchantment) and in **what executes** (a reading Claude, the
-harness, an orchestrator). Naming the family is the growing edge; whether it wants a formal
-`dispatch surface` in [[SCHEMA]] is the open question below.
+Ceremony · specialist · skill · steward · enchanted page are one pattern — *a page with a
+dispatch surface* — differing only in **trigger substrate** (what fires it) and in **what
+executes** (what runs the body). Each is the same object in a different (trigger × executor)
+cell:
+
+| Member | Trigger substrate | Executor |
+|---|---|---|
+| **ceremony** | a human word in CLAUDE.md's trigger table (`close well`, `weave`) | a reading Claude, inline |
+| **specialist** | a dispatch call carrying a typed Job Contract | a `maker` / orchestrator |
+| **skill** | a harness `description` matched to intent — *auto-fired* | the harness (Claude Code) |
+| **steward** | a schedule (a cadence) | the orchestrator, looped |
+| **enchantable page** | a deliberate enchantment | a reading Claude, or a spawned agent |
+
+A "skill" is just the cell where the *harness* both triggers and executes — which is why it
+felt like a separate species and isn't.
+
+**Where a page acquires a dispatch surface.** Every page is *enchantable* — woken as a voice
+([[Pages as Agents]]), [[Kuramoto Coupling]] included. A page acquires a *dispatch surface*
+only when it carries a **declared job** — an "invoke me to do X, get Y back" contract — so it
+can run without a human composing the task fresh. Enchantment brings the task *to* the page; a
+dispatch surface is a page that *carries its own*. The line isn't type — it's whether the page
+declares a job. So whether the family wants a formal `dispatch surface` in [[SCHEMA]] is the
+open question below.
+
+## The harness around the organ
+
+Naming the family answers *what* these are; the [[Project Stewardship System]] shows *how the
+palace wraps one* — it is the most built-out harness around an entry we have, and every
+dispatchable organ converges on its shape:
+
+- **the page is the organ** — canon, in the graph, carrying its own `forward_vector`;
+- **shared machinery lives in `_ops/`** — `_ops/concierge/`, `_ops/agents/permanent/[slug]/`,
+  the orchestrator;
+- **a thin trigger surface fires it** — the `.claude/skills/…` shim, a CLAUDE.md trigger row,
+  a scheduled task;
+- **entry-specific working state lives in the bundle** — `[Entry] — plan.md`, with
+  single-source-of-truth fields (stage, `forward_vector`) read *live* from frontmatter, never
+  copied. This is the **Machinery/Content Split** ([[Project Stewardship System]]): engine in
+  ops, content with the entry.
+
+The [[Concierge]] and a steward are the same shape at different tempos. A one-shot dispatch —
+a ceremony run, a skill fire, a gather — is an **impulse**; a steward is that impulse
+**looped**: each cycle is one baton handoff, the artifact updated in place, never deleted
+([[Two Batons, One Board]]). And the palace built all fifteen live stewards *without* a
+`steward` type — a steward is "a mode of the existing permanent-agent primitive plus a posture
+table," not a new substrate. That is the family's own precedent for describing a pattern rather
+than minting a type — the case the fork below turns on.
 
 ## Provenance
 
@@ -95,14 +137,14 @@ The answer was yes to all — and this entry is the yes, written down.
 
 ## Forward Vectors
 
-- Does the family want a formal home in [[SCHEMA]] — a named `dispatch surface`, or a note that
-  `specialist`/`ceremony`/skill are one pattern? That is a Schema conversation, its own session.
+- **Resolved for now (2026-07-04): described family, not a `skill` type.** A `skill` type would
+  rebuild the very split this entry collapses, and the palace's discipline is to let categories
+  prove themselves before hardening — today there is one shim-built skill ([[Concierge]]). The
+  trigger to revisit, with a *descriptive* Schema Ceremony (name the family, add no new type —
+  the [[SCHEMA]] §9 move): a **third** shim-built skill, or the first boundary edge-case the
+  prose can't resolve.
 - Retrofit the existing plumbing: should `palace-orchestrator` (the other `.claude/skills/`
   file) also get a canon organ with the skill as its shim?
 - Watch the boundary: a pure knowledge entry ([[Kuramoto Coupling]]) is enchantable but has no
   job; a specialist has a Job Contract. Where exactly does a page acquire a *dispatch surface*,
   and is that line worth drawing?
-
-## Active Baton
-
-[[Skills Are Enchantable Pages — baton]] — drafted 2026-07-04 *(cold-start: the dispatch-surface reconciliation, not yet begun)*

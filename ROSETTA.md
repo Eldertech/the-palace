@@ -177,6 +177,7 @@ The link ontology above types edges *between entries*. The Palace also has a sec
 | Palace | Claude Code (harness) | Note |
 |---|---|---|
 | **enchantable page / ceremony / specialist** — a page with a *dispatch surface* | a **skill** (`.claude/skills/<name>/SKILL.md`: `name` + `description` + body) | Same object. The one real difference: the harness *auto-fires* a skill by matching its `description`; a page waits for a reading Claude to notice its trigger. See [[Skills Are Enchantable Pages]]. |
+| a **steward** — a page in `long_duration_background` mode, *looped* | a **scheduled / cron-fired agent** (the batch task invoking the orchestrator) | Same object as a skill, but the trigger is a *cadence* and the executor is the orchestrator; each cycle is one baton handoff. See [[Two Batons, One Board]], [[Project Stewardship System]]. |
 | **enchant a page** / invoke a ceremony | **invoke a skill** / load a page into context | enchant = invoke = run-as-skill |
 | a **trigger** (a ceremony word; a page's enchantment) | a skill's **`description`** (intent-matched by the harness) | different trigger substrate, same mechanism |
 | a **face / mask** — a page run as an agent ([[Pages as Agents]]) | a **subagent** (an `agentType`) | the page brings the *who*, the model brings the thinking |
@@ -189,6 +190,8 @@ The link ontology above types edges *between entries*. The Palace also has a sec
 | the **[[STIGMERGY]] blackboard** | — *(no first-class harness equivalent — the palace built its own)* | an honest gap, not a translation |
 
 The gap in the last row is the point: where the harness has a word, the palace should use the **shim** and not reinvent it; where it has none ([[STIGMERGY]]), the palace grew its own. That is the working lesson of [[Skills Are Enchantable Pages]].
+
+**One harness anatomy under all of these.** However a dispatch surface is triggered — a harness `description`, a CLAUDE.md word, a cron cadence — the palace wraps the entry the same way: the **canon page is the organ**, shared **machinery lives in `_ops/`** (`_ops/concierge/`, `_ops/agents/permanent/[slug]/`, the orchestrator), a **thin trigger surface** fires it (the `.claude/skills/…` shim, a trigger row, a scheduled task), and **entry-specific working state lives in the bundle** (`[Entry] — plan.md`, with stage and `forward_vector` read live from frontmatter, never copied). That is the **Machinery/Content Split** — engine in ops, content with the entry. The [[Project Stewardship System]] is its most built-out instance; the [[Concierge]] is the same shape at a one-shot tempo.
 
 ---
 
