@@ -54,11 +54,18 @@ export function buildQueue(messages) {
   }
 
   // handoff_ready ids that a later message explicitly acknowledges as picked up.
+  // A pickup can name its handoff two ways, and both must clear the card:
+  //   - payload.handoff_id  — the form the UI "clear" button writes.
+  //   - top-level `re`      — the form a hand-authored pickup uses (the Baton
+  //     Ceremony convention: a `re:`-threaded handoff_picked_up REPLY). Without
+  //     this branch the documented hand-caught baton never clears from the QUEUE;
+  //     only git reconciliation greys it. Accept both.
   const ackedHandoffs = new Set();
   for (const m of messages) {
     const p = m?.payload;
-    if (p && p.kind === 'handoff_picked_up' && typeof p.handoff_id === 'string') {
-      ackedHandoffs.add(p.handoff_id);
+    if (p && p.kind === 'handoff_picked_up') {
+      if (typeof p.handoff_id === 'string') ackedHandoffs.add(p.handoff_id);
+      if (typeof m.re === 'string') ackedHandoffs.add(m.re);
     }
   }
 
