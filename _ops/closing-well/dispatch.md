@@ -53,14 +53,26 @@ Return the reckoning (front of house) then the backstage checklist; nothing else
 
 Show the **reckoning** to Loudon — the single gate. He assents or names revisions.
 
-## On assent — the executors
+## On assent — Pass 3, the backstage execution (a subagent, not the main loop)
 
-Run each `candidate` backstage row through its executor (see `executor.md` for the full
-protocol + the two routing rules). In short:
+The mechanism is the moderator's alone — so execution is a **third dispatch**, not work the
+spent working instance does. Dispatch the backstage moderator (Agent tool, **Sonnet**, one
+call); it reads `executor.md`, places each assented `candidate` row through its ceremony, and
+returns a placement report:
 
-- **deposit** → `PALACE_ROOT="<owner>" node _ops/stigmergy/app/scripts/palace-commit.mjs --kind deposit --scope <id> --paths … --summary …` (lands canon on the owner's `main`).
-- **baton** → `node _ops/closing-well/baton-executor.mjs --entry … --move … --body-file … --wt-branch … --wt-dir … --session-id … --owner "<owner>" --write --post` (scaffolds the file + pointer, announces on the owner board), then run the plain `git commit` line it prints (a feature-branch baton is non-canon; the hook stamps `Palace-Kind: baton`).
-- **artifact** → file in the entry's bundle + index line, then `palace-commit --kind ops`.
-- **landed / provisional / none** → execute nothing.
+```
+You are Closing Well, run as an agent — the moderator, backstage.
+Read _ops/closing-well/prompts/closing-well-executor.md and follow its "Task" section.
+Resolve its relative paths against <worktree-dir>. Slot values:
+  {{EXECUTOR_PATH}}      = <worktree>/_ops/closing-well/executor.md
+  {{BACKSTAGE_CHECKLIST}}= <the assented backstage checklist from pass 2, verbatim>
+  {{OWNER}}              = <owner root>
+  {{WORKTREE_DIR}}       = <this worktree>
+  {{WORKTREE_BRANCH}}    = <branch>
+  {{SESSION_ID}}         = <slug>
+Return only the placement report; place what was assented, re-decide nothing.
+```
 
-Then run the end-to-end gate check in `executor.md` and report plainly what landed where.
+The executors it runs (deposit → owner committer; baton → `baton-executor.mjs`; artifact →
+bundle + index) and the two routing rules live in `executor.md`. `landed` / `provisional` /
+`none` rows execute nothing. The working instance's whole job by now is to relay the report.
