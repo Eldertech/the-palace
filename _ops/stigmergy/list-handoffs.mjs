@@ -40,11 +40,17 @@ const lines = readFileSync(BOARD, 'utf8').trim().split('\n')
   .map((l) => { try { return JSON.parse(l); } catch { return null; } })
   .filter(Boolean);
 
-// Board-level pickup acks retire a card immediately.
+// Board-level pickup acks retire a card immediately. A picked_up message points
+// at the handoff_ready it retires either way the convention is written: the
+// documented form is a REPLY whose message-level `re` names the handoff id (Baton
+// Ceremony on-pickup step 4), and some acks also carry `payload.handoff_id`.
+// Honor both so a spec-correct pickup is never missed and mistaken for a ghost.
 const acked = new Set();
 for (const m of lines) {
   const p = m.payload || {};
-  if (p.kind === 'handoff_picked_up' && typeof p.handoff_id === 'string') acked.add(p.handoff_id);
+  if (p.kind !== 'handoff_picked_up') continue;
+  if (typeof p.handoff_id === 'string') acked.add(p.handoff_id);
+  if (typeof m.re === 'string') acked.add(m.re);
 }
 
 const open = lines
