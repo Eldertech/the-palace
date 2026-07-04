@@ -16,16 +16,27 @@ Production Plan]]): phased, each phase closes one gap and ends at a verify gate,
 the earliest phase is a hand-run pilot before any automation — the same order that
 worked for the [[Project Stewardship System]].
 
-Status as of 2026-07-03: **Phases 0–3 done; Phase 4 is next.** Phase 0 (this
+Status as of 2026-07-04: **Phases 0–4 done; Phase 5 is next.** Phase 0 (this
 plan) and Phase 1 (hand-run pilot — this design's own close) are complete; Phase 2
 landed on `main` via the v1.15 Schema Ceremony: the `close well` trigger + the thin
 [[Closing Well Ceremony]] card (recognition + dispatch). Phase 3 (the transcript
-reader + the enchantment that reconstructs a session's arc cold) is built on branch
-`feature/closing-well-phase3` — machinery in `_ops/closing-well/`; its verify gate
-passed (a cold Sonnet subagent faithfully reconstructed this build session's own arc
-from the distilled transcript alone). The design lives in [[Closing Well]] § Closing
-Well, Enchanted. Each phase's feature branch merges to `main` and retires; further
-phases branch fresh from `main`.
+reader + the enchantment that reconstructs a session's arc cold) merged to `main`.
+Phase 4 is built on branch `feature/closing-well-phase4` and **redesigned mid-build
+into the moderator model** — the close reframed as a moderated panel (the Agent does
+its homework, the active Claude moderates a short reflective panel with Loudon), and
+the "close map" split into two layers: the **reckoning** (front of house — the four
+gestures keep · hand-on · leave-a-trace · let-go) and the **backstage checklist** (the
+in-spec mechanism). Both dispatch prompts were recast to this model; the moderator
+design is deposited to `main` (`deposit(D-2026-07-04-MODERATOR)`, `3f544d6`). Its
+verify gate passed on real, non-self-referential material (2026-07-04): homework +
+reckoning ran clean on the RunPod session `e3c91c9b` with the honesty guard holding
+under the hardest case (no human panel *and* no in-room witness → a correctly-stamped
+provisional close, no manufactured canon), and a **blind baton-draft comparison** — the
+Agent drafting a baton cold for session `f7017000`, scored against the real human-tuned
+baton that session shipped — came back at near-parity on the hard parts (the why, the
+tried-and-rejected negative space, the calibrations) and *more accurate* on current-state.
+The design lives in [[Closing Well]] § Closing Well, Enchanted. Phase 4 is held on its
+branch pending Phase 5; each phase's branch merges to `main` and retires.
 
 ## Reuse — do not rebuild
 
@@ -85,10 +96,16 @@ stale-baton pivot, the guardrail catch, the narrow scoping; honestly flagged the
 transcript's truncation as `(inferred)`; refused to manufacture canon. The next
 phase branches fresh from `main`.
 
-### Phase 4 — Close-map + interview protocol
-The gap-list loop and the single gate.
-*Verify gate:* on a real session the Agent returns a gap list, the main loop asks
-Loudon, answers fold into a signed map — measured relay cost stays small.
+### Phase 4 — The panel + the two-layer draft ✓ done
+The homework → coaching → panel loop and the single gate, reframed as the moderator
+model. Pass 1 (the moderator's homework + coaching handed to the active Claude); the
+panel (active Claude + Loudon, the Agent never answering for a panelist); Pass 2 (the
+reckoning front-of-house + the backstage checklist). The `UNFILLED`/`provisional`
+honesty guard closes the confabulation trap.
+*Verify gate:* passed 2026-07-04 on non-self-referential material — `e3c91c9b` (a real
+build day; provisional close held clean with both panel channels absent) and a blind
+baton-draft comparison on `f7017000` (near-parity with the real human baton). The next
+phase continues on this branch; it merges to `main` with Phase 5.
 
 ### Phase 5 — Executors
 Wire deposit / baton / artifact-index / board-post / commit to the existing
@@ -109,11 +126,17 @@ Turn on the ledger; run several closes; let each teach one trap.
 
 ## Start here
 
-Phase 4 — close-map + interview. Phase 3 left the seam already cut: the arc analysis
-ends with a "gaps a cold reader can't fill" list, which *is* the interview's question
-set. Phase 4 wires that list into the one-gate loop (Agent hands the gaps to the main
-loop → main asks Loudon and the working Claude → distilled answers return → the Agent
-drafts the typed close map with its `status` column) and stops at Loudon's signature.
-Branch fresh from `main`; reuse `_ops/closing-well/transcript-reader.mjs` and the
-enchantment prompt — extend the prompt's return schema from arc-analysis to close-map,
-don't rebuild the reader.
+Phase 5 — executors + thin dispatch wiring, on `feature/closing-well-phase4`. Phase 4
+left a validated draft flow (homework → coaching → panel → reckoning + backstage
+checklist) that stops at Loudon's signature; Phase 5 makes the *approved* backstage
+rows execute. Wire each species to its existing ceremony — deposit → [[Deposit
+Ceremony]]; baton → [[Baton Ceremony]] (write the bundle file + announce on the owner
+board via `_ops/commons/board-post.mjs`); artifact → file in the bundle + index;
+then the commit — **honoring canon-to-owner** (deposits land on `main`/the owner tree,
+never a feature branch) **and baton-per-worktree**. Reuse, do not rebuild: the palace
+committer + commit-msg hook, `board-post.mjs`, the existing ceremonies. Second piece:
+the **thin dispatch** — the ceremony card dispatches the Agent with a *pointer* to its
+own prompt template on disk (the thin waist: ~15 lines cross the boundary, not an
+~80-line pasted prompt), the subagent reads its own instructions. Verify gate: a signed
+map executes end to end; canon lands on `main`; the baton is announced and validates;
+nothing stranded on a feature branch.
