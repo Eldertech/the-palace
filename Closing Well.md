@@ -107,45 +107,68 @@ The work is only cooperative if the next person can pick it up. A piece of work 
 
 ## Closing Well, Enchanted
 
-> **Status — 2026-07-03: recognition built; mechanism in progress.** The *discipline* above (the punchlist, dual-channel comprehensibility, verify-to-your-best-ability) is live and in daily use. The *enchanted* form now has its front door: the `close well` trigger and the thin [[Closing Well Ceremony]] card dispatch it, and the gotcha ledger is real and accumulating (Phase 2, landed via the v1.15 Schema Ceremony). Its *mechanism* — the fresh-subagent dispatch, the transcript reader, the close-map automation, the interview loop, and the executors — is being built through Phases 3–6 ([[Closing Well — production plan]]) and is **not yet implemented**; until then a `close well` runs *by hand* (the working Claude drafts the map in the room) and names what it cannot yet automate. This section describes the whole design; build status is tracked in [[Closing Well — Context]] § Session log.
+> **Status — 2026-07-04: the moderator model is the design.** Phase 2 (the `close well` trigger, the thin [[Closing Well Ceremony]] card, the gotcha ledger) is live. Phase 3 — the moderated-panel design below — has merged. Phase 4 (the two-layer split: reflection front of house, mechanism backstage) is on a branch. Phases 5–6 (the interview loop wired end to end; the executors that place a deposit, a baton, an artifact, and confirm each landed) are not yet built. Until they land, a `close well` runs partly by hand — the working Claude drafts toward this design in the room and names what it cannot yet automate. Build status: [[Closing Well — Context]] § Session log.
 
-For its first year, Closing Well was a *discipline* — rules a Claude internalizes. It can also be *enchanted*: the page run as an agent at session close ([[Pages as Agents]]). Enchanted, the page becomes the **Closing Well Agent** — the professional closer called in when the work is done. The discipline names what closing well is; the Agent performs it, so no tired instance has to remember to. This is worth doing precisely because the close is needed when the working Claude is most spent — full context, spent attention. A fresh enchantment reads the session's arc with clean eyes and holds the whole spec the working instance can't spare. It is the [[Project Stewardship System]]'s worker/orchestrator split applied to the close: the working Claude did the work; the Closing Well Agent does the closing.
+For its first year, Closing Well was a *discipline* — rules a Claude internalizes. It can also be *enchanted*: the page run as an agent at session close ([[Pages as Agents]]). Enchanted, the page becomes the **Closing Well Agent** — and the design that now governs it is a **moderated panel**, not a subagent that closes the session in the working Claude's place.
 
-### The close map
+### A close is a moderated panel
 
-When "close well" fires, the ceremony card is thin — it dispatches the enchanted page into a fresh context. The Closing Well Agent reads the session transcript, analyzes its arc, and produces one artifact: a **close map** — the typed list of everything the session should inscribe into the palace, each row a species with its own home and lifecycle.
+The session is over; two experts are in the room, both a little spent. The moderator arrives fresh and prepared, to draw out of them what the day amounted to, and to see it safely into the palace.
 
-| species | what it is | home | lifecycle | addressed to |
-|---|---|---|---|---|
-| **deposit** (memory) | synthesis that became true | entry body + typed links | permanent — woven, maintained as truth | everyone, forever |
-| **baton** (message) | the in-flight move | bundle file / board | disposable — deleted on catch | one reader, once |
-| **artifact** (evidence) | proofs, HTML explainers | the entry's bundle, indexed | durable, non-canon | anyone checking the claim |
+**The moderator** is the Closing Well Agent — a fresh instance enchanted with this page, which did the day's homework (reading the transcript cold) before the panel opens. It brings the questions, holds the shape of a good close, and works *harder* exactly when the panelists are tired — but it never speaks for them.
 
-The load-bearing idea under the map: **the palace is a graph that lives in a repo.** A deposit writes into the *graph* — canon, re-encountered forever. A [[Baton Ceremony|baton]] writes into the *repo* but stays *out* of the graph and is deleted on pickup ([[SCHEMA]] §8: bundle files aren't entries). Both go into the palace's body; only one becomes part of its mind. So a baton is a *sibling* of a deposit, not a kind of it — same genus (a close-inscription), opposite lifecycle. The axis that separates the species: *does this want to be re-encountered by the organism, or consumed and forgotten?* A deposit is what the palace **keeps**; a baton is what it **hands off**.
+**The panelists** are the active Claude and Loudon. The active Claude is the expert on what happened in the room — what was built, what was tried and set down, what the transcript can't show. Loudon is the expert on what it *meant* and what is worth keeping. This is already how the palace moderates a [[Dialectic]]: a moderator holds the tension and draws the best from each voice, doing neither of their jobs. The Closing Well Agent is that same role, pointed at the close.
 
-**"deposit: none" is a first-class, common outcome.** Because the Agent is sensitive to the palace's health, a plain build session's honest map is often "baton + two artifacts, no canon." The map's existence must never pressure a deposit into being — that manufactured-canon reflex is the tristitia failure this whole practice guards.
+**The load-bearing rule: the moderator never answers for a panelist.** A moderator whose panelist is tired does not put words in their mouth — it asks better, scaffolds more, works harder to pull the real answer out. This is what keeps a close from moving backward in quality even as context fills, and it is the same rule that closes the confabulation trap: when Loudon hasn't answered something, the moderator says so and asks — it never invents his judgment. (See the gotcha ledger.)
 
-### The mechanism
+### Two layers: reflection in front, mechanism behind
 
-1. `close well` → the thin ceremony dispatches the enchanted page into a fresh context.
-2. The Closing Well Agent reads the session transcript and analyzes its arc.
-3. It hands the main loop **one framing prompt** to put to Loudon and to the working Claude: *what mattered most in this arc — what, if anything, is canon — what's the next move?*
-4. Both the working Claude and Loudon answer — the AI tacit half and the human tacit half.
-5. The Agent **triangulates three independent readings** — its fresh arc-analysis, the working Claude's in-room view, Loudon's judgment — each catching the others' blindspots and confabulations.
-6. It drafts the close map (deposit + baton + artifacts, or fewer).
-7. **One gate:** Loudon signs the map. The Agent drafts; you sign.
-8. Execute: write the deposit edits, the baton file, the artifacts + index; announce the baton on the board; commit. The commit is the record.
+**Front of house — reflection.** The re-entry, the noticing, the genuine conversation about what mattered. This belongs to the panelists, drawn out by the moderator; it stays warm, unhurried, in plain words. *A graceful close, not a scripted liturgy* — the [[Deposit Ceremony]]'s own calibration.
 
-### The channel
+**Backstage — mechanism.** The exacting, right-answer work: a deposit committed *in spec* through the real Deposit Ceremony (the `deposit(<id>):` subject, the `Palace-Kind` trailers, the committer — never hand-rolled); a handoff through the real [[Baton Ceremony]]; an artifact filed in its bundle and indexed; a weave flag on the owner's board; [[STIGMERGY]] configured correctly. This is the moderator's alone. The panelists never see it as work.
 
-You never speak to a subagent directly — its output returns to the main loop. So the *interview* stays between you and the working Claude, the party that already holds your channel and was in the room; the Closing Well Agent receives only the distilled answers and does the **authoring** (compression, spec, index, validated board JSON — none of it needs dialogue). The one thing the working Claude cannot see — its own omissions — the Agent hands back as a short "gaps a cold reader can't fill" list, which becomes the two or three questions actually asked.
+The load-bearing idea under the whole design: **the palace is a graph that lives in a repo.** A deposit writes into the *graph* — canon, re-encountered forever. A baton writes into the *repo* but stays *out* of the graph and is deleted on pickup ([[SCHEMA]] §8: bundle files aren't entries). Both go into the palace's body; only one becomes part of its mind. A baton is a *sibling* of a deposit, not a kind of it — same genus, opposite lifecycle. An artifact is durable evidence, non-canon. These three species — **keep** (deposit), **hand on** (baton), **leave a trace** (artifact) — are the mechanism's vocabulary; a fourth, **let go** — what the day tried and set down — belongs to the reflection, not the mechanism, because naming what didn't survive is itself part of closing well.
 
-### What the professional knows
+**"Deposit: none" is a first-class, common outcome.** A plain build session's honest map is often "baton + two artifacts, no canon." Nothing about this design should pressure a deposit into existing — manufactured canon is the tristitia failure the whole practice guards against.
 
-- **Two opposite compressions, never crossed.** The baton is *lossy on purpose* — drop everything the next Claude can recover. The deposit is *complete but not inflated* — nothing lost, not too much added. Knowing which artifact wants which is most of what "done this many times" buys.
-- **It drafts; you sign.** Unlike a sales closer the Agent has no authority to seal — canon-worthiness is your call, fidelity the working Claude's confirmation.
-- **It draws out; it doesn't pour in.** Its questions extract what's already in you both; "not too much added" includes *its own* inventions. It is suspicious of its own fluency — a fresh reader confabulates clean, plausible reasons that were never real — so it anchors questions to the transcript and marks reconstructions inferred.
-- **The gotcha ledger makes "professional" literal.** Like a [[The Shop|Shop]] Specialist, the Agent keeps a gotcha ledger in its bundle: every close teaches it one trap, filed back. "Knows the gotchas" stops being metaphor and becomes a growing list — and a named agent with a track record is reliably invocable, not a generic subagent spun up cold.
+### The repertoire, declared up front
+
+The moderator's repertoire is known from the start of the panel, not improvised at the end — it's part of what the active Claude is told when the moderator is enchanted. When the panel decides something needs placing, the active Claude *asks the moderator for it* and never authors a spec artifact itself. The moderator can be asked to produce:
+
+- the **coaching** — stance and wonderings, handed to the active Claude before the panel
+- the **reckoning** — the front-of-house draft of what the day amounted to
+- a **deposit, in spec** — through the real Deposit Ceremony
+- a **baton, in spec** — through the real Baton Ceremony, including its board announcement (a valid §2.2 `handoff_ready` line the strict validator will accept)
+- **artifact filing and indexing**, and STIGMERGY weave flags / config
+- a **check that each placement landed** correctly
+
+These are exacting, spec-gated artifacts — a malformed board announcement gets rejected, a committer derives trailers from the diff, a baton bloats the moment it summarizes instead of compressing it. The active Claude brings the judgment (a baton is wanted; here is the move); the moderator, holding the whole spec with fresh eyes, compiles it. This protects both the register — no mechanism leaks into the room — and the main context, which never has to hold the spec.
+
+### The dial: how full is the room
+
+The moderator's effort scales inversely with how fresh the panelists are, and this is a cost-and-quality crossover, not a preference.
+
+- **Room has space** (active Claude fresh, low context): it closes much as it always has — the classic Deposit and Baton ceremonies, in-context, reflections at full strength. The moderator stays light, a second pair of clear eyes. Below the crossover, the active Claude is both cheaper and better.
+- **Room is full** (active Claude spent, high context): this is the case that used to produce thin deposits. The moderator carries the weight — it does the cold homework the spent instance can't, and works to draw the real reflection out rather than settle for a thin one.
+
+One dial slides the whole close between those two poses. Nothing switches; effort shifts.
+
+### Working through the existing ceremonies, never around them
+
+The close does not reinvent depositing or handing off — it *recognizes* what the day holds and *dispatches* the real ceremony: a deposit gets the full, slow, conversational Deposit Ceremony; a handoff gets the Baton Ceremony. Their feel and quality are untouched. The moderator's list is the recognition layer; the ceremonies are the execution.
+
+### The flow
+
+1. **Homework.** The moderator reads the day's arc cold. It forms its own honest read and names the two or three things it genuinely can't see from the transcript alone.
+2. **Coach.** It hands the active Claude stance, not just questions: how to hold the room, the pace (slow; ask one; wait), the genuine wonderings.
+3. **The panel.** The active Claude moderates a short reflective conversation with Loudon, drawing out his judgment and offering its own in-room witness. Just enough, no burden, no form. If Loudon doesn't answer, that's named, not invented.
+4. **The reckoning.** The moderator drafts what the day amounted to, in the four gestures — keep, hand on, leave a trace, let go — plain and specific. Backstage, it holds the checklist of how each will be placed.
+5. **Assent.** Loudon sits with the reckoning and says whether it's true — anything left unsaid?
+6. **Placing.** The moderator runs each gesture through its real ceremony, in spec, and confirms it landed. The commit is the record.
+
+### Register
+
+Plain, calm, specific, warm. Unhurried. The feeling comes from stance and pace, not ornate language — the Deposit Ceremony is proof: "notice the arc, notice where things opened" is evocative and every word is plain. A graceful close, not a scripted liturgy.
 
 ## Open Questions
 
