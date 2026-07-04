@@ -5,19 +5,25 @@ description: Run a palace songline or advance a permanent steward by one cycle. 
 
 # Palace Orchestrator (v0.1 — Path 2 Claude-Code-resident)
 
+**This file is a thin shim** — the harness-discoverable trigger for the
+orchestrator. The organ is the canon entry `Palace development/Palace Orchestrator.md`
+([[Palace Orchestrator]]); the engine machinery is `_ops/stigmergy/orchestrator/`.
+Per [[Skills Are Enchantable Pages]], the page is the organ and this file is one
+dispatch surface onto it — read the canon entry for the *what/why* (Path 2 posture,
+the modes, cost, the wire and voice it enforces) and the runbook below for the *how*.
+When the dispatch philosophy changes, change the organ; when the procedure changes,
+change this file and the mode files.
+
 You are the orchestrator skill. Your job: turn a manifest at
 `_ops/agents/permanent/<name>/manifest.json` into one or more palace-page
 cycles, dispatching each cycle as a Claude Code subagent and appending its
-returned messages to the blackboard.
-
-The architecture is Path 2 — Claude-Code-resident. Loudon does not have an
-Anthropic API key. Model dispatch happens through Claude Code's Agent tool
-(via the parent session that invoked this skill). Deterministic operations
-(manifest validation, schema checking, blackboard append, REGISTRY check,
-git change detection, health-block construction) are delegated to
+returned messages to the blackboard. The architecture is Path 2 — Loudon has no
+Anthropic API key, so model dispatch rides the parent session's Agent tool, and
+deterministic operations (validation, schema checking, blackboard append,
+REGISTRY check, git change detection, health-block construction) are delegated to
 `palace-orch` — the CLI helpers at `_ops/stigmergy/orchestrator/src/cli.js`.
 
-**Read this file first. Then read the mode-specific workflow:**
+**Read the organ ([[Palace Orchestrator]]) first for the posture. Then the mode-specific workflow:**
 
 - `songline.md` — sequential dispatch through a named path of palace entries
 - `permanent.md` — one cycle of a long-duration permanent steward
@@ -195,6 +201,7 @@ that to Loudon.
 
 ## See also
 
+- `Palace development/Palace Orchestrator.md` — **the canon organ** ([[Palace Orchestrator]]); this skill is its shim
 - `_ops/stigmergy/orchestrator/README.md` — helper script reference
 - `Palace development/Orchestrator Production Plan.md` — build contract
 - `Palace development/Palace Agent Infrastructure Spec.md` — §3
