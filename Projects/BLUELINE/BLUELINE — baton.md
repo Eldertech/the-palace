@@ -58,12 +58,13 @@ approach, and it isn't pulling its weight.
 4. Test `side` and `rising` through the tool once the guide is right.
 
 ## Receiving environment
-Same surface (Claude Code, Mac). Working in worktree **`feature/blueline-aftermath`** at
-`/Users/loudonstearns/Documents/palace-feature-blueline-aftermath` (Blender/GPU profile). Blender **5.1.2**
-local for the solver (no GPU rent); studio blends need **MPFB2 + Rigify** (installed). RunPod orchestrators
-+ the Commons reaper exist (`_ops/commons`, `_ops/runpod/agent_ns.py`) — but **quote before any paid pod**.
-This baton + the session-11 work are committed on the feature branch; canon/coordination go to the owner
-(`/Users/loudonstearns/Documents/The Palace`) per `_ops/worktree/SKILL.md`.
+Same surface (Claude Code, Mac). **This baton and all the session-11 work now live on `main`** —
+the `feature/blueline-aftermath` worktree was merged and torn down (2026-07-04). Catch this from the
+palace root `/Users/loudonstearns/Documents/The Palace`; if you want isolation for a GPU/Blender build,
+branch a fresh worktree from `main`: `node _ops/worktree/new-worktree.mjs --name feature/blueline-<slug>
+--profile blueline`. Blender **5.1.2** local for the solver (no GPU rent); studio blends need **MPFB2 +
+Rigify** (installed). RunPod orchestrators + the Commons reaper exist (`_ops/commons`,
+`_ops/runpod/agent_ns.py`) — but **quote before any paid pod**.
 
 ## Calibrations from this session
 - **Loudon steers by looking at renders.** Show a range full-size, let him pick, *then* build around the
