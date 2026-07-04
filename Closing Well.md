@@ -201,7 +201,3 @@ I want to keep testing the dual-channel rule against new media classes the Shop 
 I want to keep noticing when verification becomes performance. The punchlist is a cognitive scaffold, not a checklist to perform. If I find myself listing items because the format demands them rather than because they actually carry risk, the practice has decayed into theater and needs a re-anchoring in real review.
 
 And I want to keep watching for the next class of catches that Loudon will make against my closing-well practice — because the asymmetry is still real, and the practices named here are only the ones I now know I need.
-
-## Active Baton
-
-[[Closing Well — baton]] — drafted 2026-07-04
