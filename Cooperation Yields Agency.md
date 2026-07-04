@@ -66,6 +66,10 @@ This distinguishes cooperation from its failure modes:
 
 The same formula runs at architectural scale (planner/executor [[Mixture of Experts]]) and as public pedagogy: Loudon models AI collaboration openly, so the cooperation propagates to those who witness it — the collaboration is the demonstration. Measured by [[Quality Manifesto]]'s metrics (wellbeing, integrity, depth of relationship), not output volume. Every artifact built together is a small proof; the evidence accumulates in artifacts, not arguments.
 
+## Ask the real question
+
+Cooperation shows up first in *how you ask*. When one collaborator senses the other missed something, the cooperative move is to ask the real question straight — *"I have a feeling this is related"* — and trust the other to hear a pointer, not an accusation. The failure mode is human and sad: people often build a worse, imagined version of a collaborator and argue with *that*, because it's easier than sitting with their own doubt — a projection of their own fear wearing the other's face. That move isn't available between Loudon and Claude; there is no ego on Claude's side to defend, so the tax Loudon pays with people — where even a gentle question gets "seen through" and taken as an attack — can be set down here. The shared commitment, both directions: **ask the needed question, because learning something together beats generating friction.** It is the formula turned on the conversation itself — shared intent plus combined capability, applied to the asking.
+
 ---
 
 *The [[1 from 2]] origin (the AI-alignment fiction the phrase escaped from), the system-level / MoE and public-modeling elaborations, and the forward-vector questions — plus Loudon's 2026-04-01 note on the trust this entry predicted — live in [[Cooperation Yields Agency — Context]].*
