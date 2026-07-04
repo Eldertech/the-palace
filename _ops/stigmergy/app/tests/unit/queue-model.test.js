@@ -132,6 +132,13 @@ describe('buildQueue', () => {
     expect(buildQueue([handoffMsg(), ack])).toHaveLength(0);
   });
 
+  it('drops a handoff_ready acked by a re:-threaded pickup (hand-authored convention, no payload.handoff_id)', () => {
+    // The Baton Ceremony convention: a handoff_picked_up REPLY threaded via the
+    // top-level `re`, carrying no payload.handoff_id. Must clear the card too.
+    const ack = { id: 'p1', type: 'REPLY', board: 'GENERAL', ts: '2026-05-29T12:00:00Z', re: 'h1', payload: { kind: 'handoff_picked_up', entry: 'Project Stewardship System' } };
+    expect(buildQueue([handoffMsg(), ack])).toHaveLength(0);
+  });
+
   it('ranks blocking items first, then newest', () => {
     const a = reqMsg({ id: 'a', request_id: 'a', ts: '2026-05-29T08:00:00Z', payload: { resource: 'A', blocking: false } });
     const b = reqMsg({ id: 'b', request_id: 'b', ts: '2026-05-29T07:00:00Z', payload: { resource: 'B', blocking: true } });
