@@ -286,3 +286,7 @@ The incoming Baton is complete when:
 3. The catch is marked — the "Active Baton" pointer removed, or for a board-announced baton the `handoff_picked_up` REPLY posted — the baton committed if it wasn't already, and the file deleted (or marked deletion-pending where the surface can't delete)
 
 If the incoming Claude finds the baton incoherent, stale, or insufficient: stop, ask Loudon, do not improvise. A bad baton that gets followed silently produces drift.
+
+## Active Baton
+
+[[Baton Ceremony — baton]] — drafted 2026-07-04 *(cold-start: name the cold-start variant + assess Palace To-Do as a baton board — the spec's own dogfood)*
