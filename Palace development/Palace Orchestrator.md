@@ -71,3 +71,7 @@ today; the harness-discoverable trigger is the thin shim at
   the shim to a true pointer, with the launchd batch tested end-to-end.
 - When a second executor appears (a non-Path-2 dispatcher, an API-direct path), does this page
   generalize to "the executor role," or stay the Path-2 engine specifically?
+
+## Active Baton
+
+[[Palace Orchestrator — baton]] — drafted 2026-07-04 *(cold-start: finish the shim — relocate the mode machinery into `_ops/`, slim the skill to a true pointer, test the live batch)*
