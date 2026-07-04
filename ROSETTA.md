@@ -170,6 +170,26 @@ The link ontology above types edges *between entries*. The Palace also has a sec
 | `TRICKSTER` | The human node at the threshold | Operator / supervisor in the control loop |
 | stigmergy | Coordination via traces in a shared medium, no central router | Indirect coordination; pheromone/Grassé; eventually-consistent choreography (not orchestration) |
 
+### 4c. The Palace ↔ Claude Code (harness-speak)
+
+§1 translates the palace into *conceptual* traditions (OOP, DDD, the Semantic Web). But the palace also runs on one concrete **operational substrate** — Claude Code, the harness — and the two vocabularies map directly. This is that dictionary. It is also where the realization that *a palace page and a harness skill are the same object* is recorded: [[Skills Are Enchantable Pages]].
+
+| Palace | Claude Code (harness) | Note |
+|---|---|---|
+| **enchantable page / ceremony / specialist** — a page with a *dispatch surface* | a **skill** (`.claude/skills/<name>/SKILL.md`: `name` + `description` + body) | Same object. The one real difference: the harness *auto-fires* a skill by matching its `description`; a page waits for a reading Claude to notice its trigger. See [[Skills Are Enchantable Pages]]. |
+| **enchant a page** / invoke a ceremony | **invoke a skill** / load a page into context | enchant = invoke = run-as-skill |
+| a **trigger** (a ceremony word; a page's enchantment) | a skill's **`description`** (intent-matched by the harness) | different trigger substrate, same mechanism |
+| a **face / mask** — a page run as an agent ([[Pages as Agents]]) | a **subagent** (an `agentType`) | the page brings the *who*, the model brings the thinking |
+| the [[Concierge]] **dispatching a fresh mask** — do the work, hand it back, vanish | the **Agent tool** — spawn a subagent; its final message returns; its context is discarded | this *is* "hand it back and vanish" — the basis of context-offload |
+| the **thin shim** — a `.claude/skills/…` file pointing at a canon page | a skill file used as a **pointer to the organ**, not the organ itself | canon page = organ; skill = one dispatch surface onto it |
+| **CLAUDE.md** (the auto-loaded floor) | the project's **`CLAUDE.md`** — read into every session | not an analogy: literally the same file |
+| the `_`-symlink **`@import`** block | **`@import`** in CLAUDE.md | harness-native mechanism |
+| **Path 2 dispatch** (e.g. the `palace-orchestrator` skill) | **subagents via the Agent tool**, no API key required | how the palace runs agents without an Anthropic key |
+| a **Baton** (session hand-off) | a fresh session / subagent **picking up a task**; session continuation | the palace adds the compression discipline the harness doesn't |
+| the **[[STIGMERGY]] blackboard** | — *(no first-class harness equivalent — the palace built its own)* | an honest gap, not a translation |
+
+The gap in the last row is the point: where the harness has a word, the palace should use the **shim** and not reinvent it; where it has none ([[STIGMERGY]]), the palace grew its own. That is the working lesson of [[Skills Are Enchantable Pages]].
+
 ---
 
 ## 5. Ceremony Reference Card
