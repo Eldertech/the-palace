@@ -14,6 +14,21 @@ Concierge and names the faces; this card holds the roster, the triage, the guard
 the open problem. **Phase 1 is recognition + routing only — it changes no behavior.**
 The oracle and steward faces are not built yet; only the moderator runs today.
 
+## How you invoke it — a face, not the Concierge
+
+There is no `concierge` command. The Concierge is the **recognition map** (the CLAUDE.md
+floor section + this card); you act on it by invoking a **face** directly, or by deciding
+to just load-and-read. Invocation is **per-face**, and the mechanisms differ:
+
+- **moderator** — the trigger phrase **`close well`** (recognized in CLAUDE.md's ceremony
+  trigger table; dispatches the [[Closing Well]] Agent). *Live today.*
+- **oracle / steward** — Claude Code **skills** (Phases 2–3), invoked like any skill. *Not built.*
+
+A single natural-language front-desk verb — "address the palace / ask the Concierge X," which
+*triages* to a face — is the destination once more than one face is live; it arrives with the
+oracle in Phase 2. Building it now would be a router with only one place to route (the
+moderator), so Phase 1 keeps invocation per-face and honest.
+
 ## The load-bearing guard: both modes always open
 
 A face is a **faster path to ground truth, never a replacement.** It shows its work
