@@ -8,10 +8,23 @@
       "port": 5180
     },
     {
+      "name": "v2pres",
+      "runtimeExecutable": "python3",
+      "runtimeArgs": ["-m", "http.server", "5193", "--directory", "Palace development/STIGMERGY v2.0 — Consolidation & Primary Interface"],
+      "port": 5193
+    },
+    {
       "name": "stigmergy",
       "runtimeExecutable": "npm",
       "runtimeArgs": ["--prefix", "_ops/stigmergy/app", "run", "dev"],
       "port": 5173
+    },
+    {
+      "name": "stigmergy-preview",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["--prefix", "_ops/stigmergy/app", "run", "dev", "--", "--port", "5174", "--strictPort"],
+      "port": 5174,
+      "autoPort": false
     },
     {
       "name": "about",
@@ -51,10 +64,10 @@
       "port": 8204
     },
     {
-      "name": "figure-rig-proofs",
+      "name": "blueline-blender",
       "runtimeExecutable": "python3",
-      "runtimeArgs": ["-m", "http.server", "8220", "--directory", "Projects/BLUELINE/proofs/blender-handdrawn/followups/rig-openpose"],
-      "port": 8220
+      "runtimeArgs": ["-m", "http.server", "8212", "--directory", "Projects/BLUELINE/proofs/blender-handdrawn"],
+      "port": 8212
     }
   ]
 }
