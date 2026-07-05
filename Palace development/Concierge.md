@@ -43,9 +43,11 @@ finished product. The Concierge is the realization of [[The Palace Speaks]]'s ad
 the palace as a mind you send a message to, not only a corpus you read.
 
 It is not a signpost, and no longer a mask dispatched fresh each time. It is **one resident
-companion** — you spawn it once, keep it beside you for the session, and re-address it as the
-work moves. It carries what it learns from address to address, so it grows cheaper and wiser
-the longer you work together. The old "faces" survive as **postures** it adopts per request,
+companion** — *persistent once summoned*, not always-on: you call it **when first needed** (early,
+at a chapter, or only at the close), and from then it is kept and re-addressed until the session
+ends. It carries what it learns from address to address, so it grows cheaper and wiser the longer
+you work together. Many chats never call it; some only to close — and a close can be a chapter you
+continue past. The old "faces" survive as **postures** it adopts per request,
 not as separate agents. (That this is *resident* rather than fresh-each-time is a reversal with
 teeth — see *The mechanism* below.)
 
