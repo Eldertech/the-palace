@@ -1,0 +1,12 @@
+{
+  "title": "Cooperation Yields Agency",
+  "idiom": "Haeckel engraving",
+  "hero_prompt": "A wide horizontal hand-drawn scientific engraving in the style of Ernst Haeckel's Kunstformen der Natur, ~12:5 aspect ratio. Two distinct organisms \u2014 one branching coral-like structure on the left, one radiating anemone-like structure on the right \u2014 meeting at center where their roots interweave and fuse into a single shared stem. From the fused stem, one luminous bloom rises upward, more radiant and complex than either parent could produce alone. Fine cross-hatched linework, sepia and deep indigo ink on aged parchment, symmetrical bilateral composition, delicate biological precision. Both organisms retain their distinct character \u2014 the merger amplifies rather than erases. Muted tones so the image reads when darkened as a backdrop. No text, no letters, no labels, purely pictorial.",
+  "icon_prompt": "A bold high-contrast emblem: two interlocking curved forms \u2014 like two crescents or two seed-halves \u2014 fused at the center into a single unified shape that reads as one AND two simultaneously. Woodcut-style thick black lines on cream, strong silhouette, symmetrical, no fine linework. Survives at 24 pixels. Purely pictorial, no text.",
+  "seeds": {
+    "hero": 931809,
+    "icon": 392712
+  },
+  "rendered_at": "2026-07-05T03:15:20Z",
+  "history": []
+}
