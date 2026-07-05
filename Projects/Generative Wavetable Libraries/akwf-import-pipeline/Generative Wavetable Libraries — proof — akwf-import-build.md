@@ -1,5 +1,5 @@
 ---
-title: "AKWF Import Pipeline — build notes"
+title: "Generative Wavetable Libraries — proof — akwf-import-build"
 born: 2026-04-24
 links:
   - target: "[[Generative Wavetable Libraries]]"

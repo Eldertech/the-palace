@@ -1,14 +1,14 @@
 ---
-title: "Blood Compressor — Audition Seed (the attack pair)"
+title: "Blood Compressor — spec — audition-seed-attack-pair"
 born: 2026-06-04
 links:
   - target: "[[Blood Compressor]]"
     type: connects-to
     label: audition-seed-smallest-unit
-  - target: "[[sfx-cue-sheet]]"
+  - target: "[[Blood Compressor — spec — sfx-cue-sheet]]"
     type: emerged-from
     label: consolidates-SFX09-SFX10
-  - target: "[[radio-play-script]]"
+  - target: "[[Blood Compressor — script — radio-play-lesson]]"
     type: emerged-from
     label: Scene-4-attack-payoff
   - target: "[[Shop/Stable Audio Open]]"

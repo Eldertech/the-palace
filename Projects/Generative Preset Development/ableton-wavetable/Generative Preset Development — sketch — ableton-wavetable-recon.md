@@ -1,5 +1,5 @@
 ---
-title: "Ableton Wavetable — Stage 0 Reconnaissance"
+title: "Generative Preset Development — sketch — ableton-wavetable-recon"
 born: 2026-05-27
 links:
   - target: "[[Generative Preset Development]]"

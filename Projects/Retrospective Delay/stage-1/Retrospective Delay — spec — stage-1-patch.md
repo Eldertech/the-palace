@@ -1,5 +1,5 @@
 ---
-title: "Retrospective Delay — Stage 1 Patch Spec"
+title: "Retrospective Delay — spec — stage-1-patch"
 born: 2026-05-27
 links:
   - target: "[[Retrospective Delay]]"

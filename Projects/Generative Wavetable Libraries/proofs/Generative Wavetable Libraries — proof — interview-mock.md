@@ -1,5 +1,5 @@
 ---
-title: "Generative Wavetable Libraries — chat-driven interview mock"
+title: "Generative Wavetable Libraries — proof — interview-mock"
 born: 2026-05-04
 links:
   - target: "[[Generative Wavetable Libraries]]"

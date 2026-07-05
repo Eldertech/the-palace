@@ -1,5 +1,5 @@
 ---
-title: "AKWF fit-test — driving a single-cycle pack through the question tree"
+title: "Generative Wavetable Libraries — proof — akwf-fit-test"
 born: 2026-06-23
 links:
   - target: "[[Generative Wavetable Libraries]]"

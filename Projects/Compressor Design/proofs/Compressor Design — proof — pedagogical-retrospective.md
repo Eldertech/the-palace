@@ -1,5 +1,5 @@
 ---
-title: "Compressor Design — three pedagogical moments"
+title: "Compressor Design — proof — pedagogical-retrospective"
 born: 2026-05-04
 links:
   - target: "[[Compressor Design]]"

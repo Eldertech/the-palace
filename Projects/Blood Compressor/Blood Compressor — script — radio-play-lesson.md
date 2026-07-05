@@ -1,5 +1,5 @@
 ---
-title: "Blood Compressor — Radio-Play Lesson Script"
+title: "Blood Compressor — script — radio-play-lesson"
 born: 2026-05-27
 links:
   - target: "[[Blood Compressor]]"

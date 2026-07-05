@@ -1,5 +1,5 @@
 ---
-title: "Retrospective Delay — Stage 1: Mockup Imagery Brief"
+title: "Retrospective Delay — spec — stage-1-mockup-imagery"
 born: 2026-05-27
 links:
   - target: "[[Retrospective Delay]]"

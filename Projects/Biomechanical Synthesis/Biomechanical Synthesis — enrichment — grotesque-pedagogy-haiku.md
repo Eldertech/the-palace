@@ -1,5 +1,5 @@
 ---
-title: "Biomechanical Synthesis — Grotesque-Pedagogy Haiku"
+title: "Biomechanical Synthesis — enrichment — grotesque-pedagogy-haiku"
 born: 2026-05-09
 links:
   - target: "[[Biomechanical Synthesis]]"

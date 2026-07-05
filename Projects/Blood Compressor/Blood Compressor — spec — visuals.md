@@ -1,5 +1,5 @@
 ---
-title: "Blood Compressor — Visuals Specification"
+title: "Blood Compressor — spec — visuals"
 born: 2026-05-27
 links:
   - target: "[[Blood Compressor]]"
