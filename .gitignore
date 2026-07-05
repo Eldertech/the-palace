@@ -89,3 +89,20 @@ Projects/BLUELINE/proofs/blender-handdrawn/followups/rig-openpose/renders/faces-
 Projects/BLUELINE/proofs/blender-handdrawn/followups/rig-openpose/renders/faces-*.log
 Projects/BLUELINE/proofs/blender-handdrawn/followups/rig-openpose/renders/faces-rig/plates.log
 Projects/BLUELINE/proofs/blender-handdrawn/followups/rig-openpose/renders/faces-exp/*/*_*.png
+
+# Model weights / checkpoints — downloadable tool artifacts, never knowledge.
+# (SAM checkpoints etc. got swept into BLUELINE proofs; purged from history 2026-07-04.
+# Commit the recipe that fetches them, not the bytes.)
+*.pt
+*.pth
+*.ckpt
+*.safetensors
+
+# Heavy cloud-i2v animation renders — reproducible from the pipeline, too big for git
+# (>34MB m160 composite/morph GIFs; purged from history 2026-07-04. Smaller single-clip
+# renders like svd_m160.gif / svd_m60.gif stay tracked.)
+Projects/BLUELINE/proofs/cloud-i2v/renders/fire_m160_composite.gif
+Projects/BLUELINE/proofs/cloud-i2v/renders/svd_m160_composite.gif
+Projects/BLUELINE/proofs/cloud-i2v/renders/svd_m160_morph_sky_raft.gif
+Projects/BLUELINE/proofs/cloud-i2v/renders/svd_m160_morph_sky.gif
+Projects/BLUELINE/proofs/cloud-i2v/renders/fire_m160_morph.gif
