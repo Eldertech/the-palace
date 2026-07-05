@@ -4,7 +4,7 @@ type: meta
 pillars:
   - practice
 born: 2026-03
-stage: foundational
+stage: dormant
 status: canonical
 links:
   - target: "[[Deposit Ceremony]]"

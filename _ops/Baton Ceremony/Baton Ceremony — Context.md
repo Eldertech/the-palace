@@ -5,7 +5,7 @@ aliases:
 type: meta
 pillars: [tools, practice]
 born: 2026-05-28
-stage: foundational
+stage: growing
 forward_vector: "I will keep holding the design decisions and open tensions behind the Baton Ceremony so the card can stay lean and the why is never fully lost."
 links:
   - target: "[[Baton Ceremony]]"

@@ -5,7 +5,7 @@ pillars:
   - tools
   - practice
 born: 2026-03
-stage: foundational
+stage: growing
 links:
   - target: "[[Map Build Ceremony]]"
     type: connects-to

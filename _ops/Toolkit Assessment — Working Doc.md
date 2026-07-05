@@ -5,7 +5,7 @@ pillars:
   - tools
   - practice
 born: 2026-04
-stage: foundational
+stage: growing
 links:
   - target: "[[Loudon's Toolkit]]"
     type: enables
