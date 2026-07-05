@@ -1,12 +1,11 @@
 ---
 title: "Ableton Wavetable — Stage 0 Reconnaissance"
-type: practice
-pillars:
-  - tools
 born: 2026-05-27
-stage: sprout
-status: active
-parent: "[[Generative Preset Development]]"
+links:
+  - target: "[[Generative Preset Development]]"
+    type: connects-to
+    label: stage-0-recon
+forward_vector: "I am the stage-0 reconnaissance for driving Ableton Wavetable — the working notes on what the target synth exposes before preset generation begins."
 ---
 
 # Ableton Wavetable — Stage 0 Reconnaissance

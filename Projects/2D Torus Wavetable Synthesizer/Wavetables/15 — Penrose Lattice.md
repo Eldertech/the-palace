@@ -1,16 +1,11 @@
 ---
 title: 15 — Penrose Lattice
-type: meta
-pillars:
-  - tools
-  - creation
 born: 2026-04-26
-stage: sprout
-status: active
 links:
   - target: "[[2D Torus Wavetable Synthesizer]]"
     type: connects-to
     label: instruments
+forward_vector: "I am the spec for the Penrose Lattice surface — the most demanding quasi-crystalline lookup in the library — geometry, file facts, and musical use — so a player can load and voice this surface without re-deriving the wavetable."
 ---
 # 15 — Penrose Lattice
 

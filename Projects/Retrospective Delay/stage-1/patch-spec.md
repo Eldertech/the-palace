@@ -1,9 +1,6 @@
 ---
 title: "Retrospective Delay — Stage 1 Patch Spec"
-project: "[[Retrospective Delay]]"
-stage_index: 1
-type: spec
-last-updated: 2026-05-27
+born: 2026-05-27
 links:
   - target: "[[Retrospective Delay]]"
     type: spawned
@@ -11,6 +8,7 @@ links:
   - target: "[[stage-1-the-witness|Stage 1 — The Witness]]"
     type: deepens
     label: implementation-detail
+forward_vector: "I am the stage-1 patch spec for Retrospective Delay — the implementation detail behind the Witness lesson."
 ---
 
 # Stage 1 — Patch Spec (Vanilla Max → M4L Audio Effect)

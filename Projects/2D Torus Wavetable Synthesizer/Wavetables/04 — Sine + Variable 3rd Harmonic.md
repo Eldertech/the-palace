@@ -1,16 +1,11 @@
 ---
 title: 04 — Sine + Variable 3rd Harmonic
-type: meta
-pillars:
-  - tools
-  - creation
 born: 2026-04-26
-stage: sprout
-status: active
 links:
   - target: "[[2D Torus Wavetable Synthesizer]]"
     type: connects-to
     label: instruments
+forward_vector: "I am the spec for the Sine + Variable 3rd Harmonic surface — a controlled third-harmonic bloom — geometry, file facts, and musical use — so a player can load and voice this surface without re-deriving the wavetable."
 ---
 # 04 — Sine + Variable 3rd Harmonic
 

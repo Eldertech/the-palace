@@ -1,16 +1,9 @@
 ---
 title: FOUR PILLARS — Context
-type: meta
-pillars:
-  - creation
-  - tools
-  - philosophy
-  - practice
 born: 2026-06
-stage: growing
 links:
   - target: "[[FOUR PILLARS]]"
-    type: member-of
+    type: connects-to
     label: context-companion
 forward_vector: "I hold the history, worked examples, and open questions of the Four Pillars so the entry itself can stay a lean orienting core — read me when the why-and-how-it-came-to-be matters, not for day-to-day orientation."
 ---

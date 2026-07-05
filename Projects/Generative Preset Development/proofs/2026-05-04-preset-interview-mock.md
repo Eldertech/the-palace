@@ -1,12 +1,14 @@
 ---
 title: "Generative Preset Development — preset interview mock"
-type: proof
-project: "[[Generative Preset Development]]"
-date: 2026-05-04
-medium: interview-transcript
+born: 2026-05-04
 links:
+  - target: "[[Generative Preset Development]]"
+    type: connects-to
+    label: proof-of
   - target: "[[Generative Wavetable Libraries]]"
-    type: connects-to---
+    type: connects-to
+forward_vector: "I am the preset-interview mock for Generative Preset Development — what the chat-driven preset generator should feel like in one worked example."
+---
 
 # Mock — what the preset interview should feel like
 

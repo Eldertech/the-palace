@@ -1,10 +1,6 @@
 ---
 title: "Retrospective Delay — Stage 1: Mockup Imagery Brief"
-project: "[[Retrospective Delay]]"
-stage_index: 1
-type: spec
-brief_status: "spec'd, not dispatched"
-last-updated: 2026-05-27
+born: 2026-05-27
 links:
   - target: "[[Retrospective Delay]]"
     type: spawned
@@ -18,6 +14,7 @@ links:
   - target: "[[stage-1-the-witness|Stage 1 — The Witness]]"
     type: deepens
     label: lesson-imagery-spec
+forward_vector: "I am the stage-1 mockup imagery brief for Retrospective Delay — the image spec routed through the Maker, spec'd but not yet dispatched."
 ---
 
 # Mockup Imagery Brief — Stage 1 Lesson

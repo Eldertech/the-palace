@@ -1,16 +1,11 @@
 ---
 title: 17 — Matérn Field
-type: meta
-pillars:
-  - tools
-  - creation
 born: 2026-06-06
-stage: sprout
-status: active
 links:
   - target: "[[2D Torus Wavetable Synthesizer]]"
     type: connects-to
     label: instruments
+forward_vector: "I am the spec for the Matérn Field surface — a Gaussian-random-field texture with tunable roughness — geometry, file facts, and musical use — so a player can load and voice this surface without re-deriving the wavetable."
 ---
 # 17 — Matérn Field
 

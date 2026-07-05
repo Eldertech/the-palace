@@ -1,16 +1,11 @@
 ---
 title: Inharmonic Wavetable Synthesis — Faust Prototype README
-type: meta
-pillars:
-  - tools
-  - creation
 born: 2026-05
-stage: sprout
-status: active
 links:
   - target: "[[Inharmonic Wavetable Synthesis]]"
     type: emerged-from
     label: phase-0-toehold
+forward_vector: "I am the Faust prototype README for Inharmonic Wavetable Synthesis — the phase-0 toehold build notes the project owns."
 ---
 
 # Faust prototype — Phase 0 toehold
