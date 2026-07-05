@@ -24,6 +24,8 @@ links:
 
 # The Jewel
 
+![[The Jewel — hero.png]]
+
 <!-- CLAUDE → LOUDON: The Jewel — Context.md carries a session log tracking changes to this file. Any agent editing The Jewel should read The Jewel — Context first. Added this note to the body below per your graffiti request. -->
 
 The minimum viable context for spawning a palace-oriented agent. A compressed seed that, when read by a fresh agent, orients it to the palace, to Loudon, and to how to move here — without consuming the working context window.
