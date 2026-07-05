@@ -67,6 +67,48 @@ function splitTableRow(line) {
   return cells.map((c) => c.trim());
 }
 
+// Image embed on its own line — either the Obsidian form `![[File.png]]`
+// (optionally `![[File.png|width]]`) or standard markdown `![alt](url)`.
+// Returns { target, alt } or null. The wikilink form only counts as an image
+// when the target carries an image extension — `![[Some Note]]` (note
+// transclusion, which we don't support) is left to fall through unchanged.
+const IMAGE_EXT_RE = /\.(png|jpe?g|gif|webp|svg)$/i;
+function matchImageEmbed(line) {
+  const s = typeof line === 'string' ? line.trim() : '';
+  let m;
+  if ((m = s.match(/^!\[\[\s*([^\]|]+?)\s*(?:\|[^\]]*)?\]\]$/))) {
+    const target = m[1].trim();
+    if (!IMAGE_EXT_RE.test(target)) return null;
+    return { target, alt: target };
+  }
+  if ((m = s.match(/^!\[([^\]]*)\]\(\s*([^)\s]+)\s*\)$/))) {
+    return { target: m[2].trim(), alt: (m[1] || '').trim() };
+  }
+  return null;
+}
+
+// Resolve an embed target to a servable <img> src. External URLs pass through.
+// A bare filename (the Obsidian case) is matched against the entry's bundle
+// files by name/basename; a palace-relative path (has a slash) is served as-is.
+// Returns { src } or null when nothing resolves. The byte-size cache-buster
+// mirrors the hero backdrop's, so a companion regen (same path) reloads.
+function resolveEmbedSrc(target, bundleFiles) {
+  const t = (typeof target === 'string' ? target : '').trim();
+  if (t === '') return null;
+  if (/^https?:\/\//i.test(t)) return { src: t };
+  const base = t.split('/').pop();
+  const hit = (bundleFiles || []).find((f) => (
+    f && (f.name === t || f.name === base
+      || f.relPath === t || (typeof f.relPath === 'string' && f.relPath.split('/').pop() === base))
+  ));
+  if (hit) {
+    const bust = typeof hit.size === 'number' ? `&v=${hit.size}` : '';
+    return { src: `/api/file?path=${encodeURIComponent(hit.relPath)}${bust}` };
+  }
+  if (t.includes('/')) return { src: `/api/file?path=${encodeURIComponent(t)}` };
+  return null;
+}
+
 // Split body into block-level chunks. A chunk is one of:
 //   { kind: 'heading',  level, text }
 //   { kind: 'code',     lang,  text }
@@ -97,6 +139,14 @@ function blocks(text) {
         i = j + 1;
         continue;
       }
+    }
+
+    // Image embed on its own line (![[File.png]] or ![alt](url)).
+    const img = matchImageEmbed(line);
+    if (img) {
+      out.push({ kind: 'image', target: img.target, alt: img.alt });
+      i += 1;
+      continue;
     }
 
     // Code fence.
@@ -181,7 +231,8 @@ function blocks(text) {
       if (l2.trim() === '') break;
       if (l2.match(/^```/) || l2.match(/^#{1,6}\s+/)
         || l2.match(/^>\s?/) || l2.match(/^\s*[-*]\s+/)
-        || l2.match(/^\s*\d+\.\s+/) || l2.trim().startsWith('<!--')) break;
+        || l2.match(/^\s*\d+\.\s+/) || l2.trim().startsWith('<!--')
+        || matchImageEmbed(l2)) break;
       buf.push(l2);
       i += 1;
     }
@@ -651,6 +702,36 @@ function renderBlock(block, ctx, key) {
           </div>
         </div>
       );
+    case 'image': {
+      // The hero (`<Title> — hero.png`) already shows as EntryReader's ambient
+      // backdrop, so its inline embed is suppressed here — no doubled image and
+      // no broken "!...png" line. Every other image embed renders inline.
+      if (/ — hero\.png$/i.test(block.target)) return null;
+      const resolved = resolveEmbedSrc(block.target, ctx.bundleFiles);
+      if (!resolved) {
+        return (
+          <div key={key} data-testid="image-embed-missing" style={{
+            margin: '12px 0', padding: '4px 10px', maxWidth: '78ch',
+            border: '1px dotted var(--phosphor-dim)',
+            color: 'var(--phosphor-dim)', textShadow: 'none',
+            fontFamily: 'var(--font-mono)', fontSize: 12,
+          }}>⌷ {block.alt || block.target} (image not found)</div>
+        );
+      }
+      return (
+        <figure key={key} data-testid="image-embed" style={{ margin: '14px 0', maxWidth: '100%' }}>
+          <img
+            src={resolved.src}
+            alt={block.alt || block.target}
+            style={{
+              maxWidth: '100%', height: 'auto', display: 'block',
+              border: '1px solid var(--phosphor-dim)', borderRadius: 2,
+              boxShadow: 'var(--glow)', filter: 'saturate(0.9) brightness(0.97)',
+            }}
+          />
+        </figure>
+      );
+    }
     case 'blank':
       return null;
     default:
@@ -658,7 +739,7 @@ function renderBlock(block, ctx, key) {
   }
 }
 
-export default function EntryBody({ body, index, refIndex, onNavigate }) {
+export default function EntryBody({ body, index, refIndex, onNavigate, bundleFiles = [] }) {
   if (typeof body !== 'string' || body.trim() === '') {
     return (
       <div data-testid="entry-body" style={{ color: 'var(--phosphor-dim)', textShadow: 'none' }}>
@@ -667,7 +748,7 @@ export default function EntryBody({ body, index, refIndex, onNavigate }) {
     );
   }
   const blocksList = blocks(body);
-  const ctx = { index, refIndex, onNavigate };
+  const ctx = { index, refIndex, onNavigate, bundleFiles };
   return (
     <div data-testid="entry-body">
       {blocksList.map((b, j) => renderBlock(b, ctx, `b${j}`))}
