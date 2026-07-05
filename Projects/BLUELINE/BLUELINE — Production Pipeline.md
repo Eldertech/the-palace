@@ -1,9 +1,6 @@
 ---
 title: "BLUELINE — Production Pipeline"
-type: meta
-status: active
 born: 2026-06-17
-who_leads: loudon
 forward_vector: "I re-found BLUELINE on the established animation pipeline instead of an invented one — anime as the skeleton, comics as the skin, the animated-feature pipeline as connective tissue, the music video as the clock. I name every stage with the industry's own word so we adopt, not reinvent, and I keep the two seams in plain sight, because they are the only places the work is actually ours."
 links:
   - target: "[[BLUELINE]]"
@@ -24,7 +21,6 @@ links:
   - target: "[[Shop/Blender]]"
     type: connects-to
     label: the-layout-DCC
-tags: [meta, blueline, pipeline, animation, comics, anime]
 ---
 
 # BLUELINE — Production Pipeline

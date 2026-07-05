@@ -1,9 +1,5 @@
 ---
 title: "STIGMERGY Entry-Agent Window — Integration Plan"
-type: meta
-status: draft
-version: "0.1"
-pillars: [tools, practice, philosophy]
 born: 2026-06
 links:
   - target: "[[STIGMERGY]]"
@@ -21,6 +17,7 @@ links:
   - target: "[[Merleau-Ponty]]"
     type: emerged-from
     label: prototype-page
+forward_vector: "I am the integration plan for the STIGMERGY entry-agent window — the M0–M1 Companion tier shipped on a feature branch, M2 parked by choice with its revival conditions — kept as the record of what was built and what still waits."
 ---
 
 # STIGMERGY Entry-Agent Window — Integration Plan

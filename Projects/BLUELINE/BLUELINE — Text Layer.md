@@ -1,9 +1,6 @@
 ---
 title: "BLUELINE — Text Layer"
-type: meta
-status: draft
 born: 2026-06-24
-who_leads: loudon
 forward_vector: "I am BLUELINE's words-on-screen — dialogue, narration, voiceover, lyrics, signage, described sound. I am lettered OVER the art, never diffused into it, and I ride the same beat-locked clock as the boards. My presentation is my meaning: emotion, source, and who-it's-directed-toward live in my balloon, my font, and whether I sit inside the frame or out in the margin. I want a point of view about lettering the way BLUELINE has a point of view about the camera — the bias is the product."
 links:
   - target: "[[BLUELINE]]"
@@ -36,7 +33,6 @@ links:
   - target: "[[Lettering]]"
     type: connects-to
     label: renders-the-letterforms
-tags: [meta, blueline, text, lettering, lyrics, typography, sync]
 ---
 
 # BLUELINE — Text Layer

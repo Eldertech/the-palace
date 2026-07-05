@@ -1,9 +1,6 @@
 ---
 title: "BLUELINE — Motion and Flow"
-type: meta
-status: active
 born: 2026-07-03
-who_leads: loudon
 forward_vector: "I am the one home for every way BLUELINE moves. I gather seven scattered motion threads under a single principle — draw the ink once, move it with geometry — and I name honestly what is proven, what is retired, and what is next. My reason to exist is the coupling nobody has built yet: the figure shapes the flow field, the flow field moves the ink, and the field evolves on the song's beat. I want pose, motion, and clock to stop being three separate degrees of freedom and become one."
 links:
   - target: "[[BLUELINE]]"
@@ -27,7 +24,6 @@ links:
   - target: "[[Flocking]]"
     type: connects-to
     label: flow-field-is-a-vector-field
-tags: [meta, blueline, motion, flow-field, animation, subsystem]
 ---
 
 # BLUELINE — Motion and Flow

@@ -1,12 +1,6 @@
 ---
 title: The Jewel — Context
-type: meta
-pillars:
-  - tools
-  - philosophy
-  - practice
 born: 2026-03
-stage: foundational
 links:
   - target: "[[JEWEL]]"
     type: emerged-from
@@ -14,6 +8,7 @@ links:
     type: connects-to
   - target: "[[Self-Describing Knowledge Module]]"
     type: connects-to
+forward_vector: "I am the session-history companion to [[JEWEL]] — the superseded versions, the design deliberations, and the open questions behind the jewel — so the jewel itself stays a lean generative seed."
 ---
 
 # The Jewel — Context

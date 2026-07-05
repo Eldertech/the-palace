@@ -1,11 +1,6 @@
 ---
 title: Hilaritas Generator — Context
-type: meta
-pillars:
-  - practice
-  - philosophy
 born: 2026-06
-stage: growing
 links:
   - target: "[[Hilaritas Generator]]"
     type: member-of

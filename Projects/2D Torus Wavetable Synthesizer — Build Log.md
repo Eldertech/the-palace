@@ -1,11 +1,6 @@
 ---
 title: 2D Torus Wavetable Synthesizer — Build Log
-type: meta
-pillars:
-  - tools
-  - practice
 born: 2026-04
-stage: growing
 links:
   - target: "[[2D Torus Wavetable Synthesizer]]"
     type: emerged-from
@@ -23,6 +18,7 @@ links:
     type: connects-to
   - target: "[[Categorizing Inharmonicity]]"
     type: connects-to
+forward_vector: "I am the running build chronicle of the 2D Torus Wavetable Synthesizer — what was tried, what worked, and why — so the project entry can stay a lean statement of intent while the day-by-day record lives here."
 ---
 # 2D Torus Wavetable Synthesizer — Build Log
 

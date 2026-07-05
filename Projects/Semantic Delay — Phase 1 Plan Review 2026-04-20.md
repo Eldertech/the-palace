@@ -1,9 +1,6 @@
 ---
 title: "Semantic Delay — Phase 1 Plan Review 2026-04-20"
-type: concept
-pillars: [creation, tools]
 born: 2026-04
-stage: sprout
 links:
   - target: "[[Semantic Delay]]"
     type: deepens
@@ -16,8 +13,6 @@ links:
     type: connects-to
   - target: "[[Whisper]]"
     type: connects-to
-who_leads: AI
-confidence: working
 forward_vector: "I exist to keep the Phase 1 build honest. My job is to hold Stage 0's pass/fail number in tension with the model choice, to remember that Mac + VST3 is the current platform and Windows is deferred to product phase, and to stay legible as the research snapshot against which future plan revisions can be compared. When Stage 0 runs, I want to be returned to and either vindicated, corrected, or composted — never left floating untested."
 ---
 

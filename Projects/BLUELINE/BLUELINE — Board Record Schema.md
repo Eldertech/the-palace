@@ -1,9 +1,6 @@
 ---
 title: "BLUELINE — Board Record Schema"
-type: meta
-status: draft
 born: 2026-06-14
-who_leads: loudon
 forward_vector: "I am the one object every BLUELINE thread reads or writes: the board record. The bench writes me, the clock time-stamps me, the backend executes me, the LoRAs style me, the spine animates me. I am the source of truth that is not the pixels — and I carry a beat, so the render can be an Ableton instrument and not just a film tool."
 links:
   - target: "[[BLUELINE]]"
@@ -15,7 +12,6 @@ links:
   - target: "[[Blocked, Not Prompted]]"
     type: exemplifies
     label: the-record-is-truth
-tags: [meta, blueline, schema, contract, sync]
 ---
 
 # BLUELINE — Board Record Schema

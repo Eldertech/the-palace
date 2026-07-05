@@ -1,15 +1,6 @@
 ---
 title: "STIGMERGY v1.0 — Palace Front-End"
-type: project
-pillars: [tools, practice, philosophy, creation]
-status: active
 born: 2026-05
-last_activated: 2026-05-29
-activation_count: 2
-stage: seed
-confidence: proposed
-energy: very high
-who_leads: shared
 links:
   - target: "[[BBS Blackboard]]"
     type: deepens

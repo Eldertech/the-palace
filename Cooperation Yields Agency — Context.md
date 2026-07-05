@@ -1,11 +1,6 @@
 ---
 title: Cooperation Yields Agency — Context
-type: meta
-pillars:
-  - philosophy
-  - practice
 born: 2026-06
-stage: growing
 links:
   - target: "[[Cooperation Yields Agency]]"
     type: member-of
