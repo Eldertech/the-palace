@@ -146,7 +146,7 @@ iterates on failures up to ten attempts per check, and stops on either
 success (`V0.2-COMPLETE.md` written) or a stop condition
 (`STOP-REPORT.md` written). See the plan for the full protocol.
 
-## Testing & worktree gotchas
+## Testing, worktree & topology gotchas
 
 Hard-won cautions for anyone building or testing this app:
 
@@ -156,6 +156,8 @@ Hard-won cautions for anyone building or testing this app:
 - **A preview server run from a worktree traps board writes.** The app roots its board at its own cwd, so a dev server launched from a worktree writes companion/coordination state to *that worktree's* `blackboard.jsonl` + `.actuator-companion` — lost on `git worktree remove --force`. Before tearing down a stigmergy worktree, `git status` for a modified board and rescue any messages you didn't author to the owner tree. Prefer running previews from the owner.
 - **No shebangs in app-imported orchestrator files.** The app (Vite/esbuild) bundles orchestrator modules imported by relative path, and esbuild does *not* strip a leading `#!/usr/bin/env node` — it becomes a `Syntax error "!"` and the dev server fails to start. Drop the shebang and invoke such files via `node <file>`. Vitest won't catch this; only a real `vite` start does.
 - **Reuse the styled media components.** Surfacing audio → `src/components/PhosphorAudio.jsx`; image / iframe / file → `src/components/ArtifactSlot.jsx` (+ `src/lib/artifact.js`). Never drop a raw native `<audio controls>` / player — it breaks the phosphor language. Grep for the existing component before building a new media display.
+- **The TOPOLOGY lens is a frozen snapshot, not a live read of your files.** It serves the newest `_ops/maps/palace-map-full-*.json` (via `/api/topology`), regenerated *only* when you run `_ops/swarm/build-map-*.py`. Editing an entry's frontmatter — demoting a file out of canon, adding links, composting an orphan — changes **nothing** in the graph until you rebuild the map. Commit state is irrelevant: the builder reads the working tree, so uncommitted edits count and committing alone does nothing. Symptom: "I demoted these files but still see them in the topology." Fix: rerun the dated builder, then **reload the page** (the React lens fetches the map once on mount). The date in the lens header (`…palace-map-full-YYYY-MM-DD.json`) tells you which snapshot you're looking at. *(2026-07-05)*
+- **The map builder must skip `@import` symlinks or it mints phantom duplicate nodes.** The five `_`-underscore files at the palace root (`Cooperation_Yields_Agency.md`, `FOUR_PILLARS.md`, `Hilaritas_Generator.md`, `Modes_of_Collaboration.md`, `Palace_Philosophies.md`) are symlinks to their spaced originals, existing only so CLAUDE.md's `@import` floor resolves (the spaces bug). Python's `rglob("*.md")` yields them and `parse_fm` follows the link, so without an `if p.is_symlink(): continue` guard the builder emits duplicate underscore-id nodes (`Cooperation_Yields_Agency`) that have **no bundle folder** — hence no avatar and an ugly underscore label in the graph. `listEntries` (the JS walker) already skips them — a symlink Dirent reports `isFile()===false` — so only the Python builder needed the guard. Fixed in `build-map-2026-07-04.py`; keep the guard in any successor builder. *(2026-07-05)*
 
 ## Directory map
 
