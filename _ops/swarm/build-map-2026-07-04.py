@@ -87,6 +87,13 @@ def basename(t):
 # collect nodes (canon-typed, not in _ops) and ops targets (_ops ceremony cards)
 node_files, ops_files = [], []
 for p in PALACE.rglob("*.md"):
+    # Skip symlinks: the 5 `_`-underscore files at root (Cooperation_Yields_Agency.md,
+    # FOUR_PILLARS.md, etc.) are symlinks to their spaced originals, existing ONLY so
+    # CLAUDE.md's @import floor can resolve (the spaces bug). rglob yields them and
+    # parse_fm follows the link, minting phantom duplicate nodes with underscore ids
+    # and no bundle avatar. They are not entries — the spaced originals are. (listEntries
+    # already skips them: a symlink Dirent reports isFile()===false.)
+    if p.is_symlink(): continue
     if excluded(p): continue
     rel = p.relative_to(PALACE)
     if rel.parts[0] == "_ops":
