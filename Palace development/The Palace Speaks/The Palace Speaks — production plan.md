@@ -130,25 +130,26 @@ resumed many turns later with full context, zero re-reads; idle = zero cost; ID-
   lives in its temperament — subservient, *follows* the working Claude, reads before it writes, and
   a heavy **draft-for-approval bias** (offer generalized to everything). The cost: the charter must
   hold the bias, and the parent must *review drafts for real*, not rubber-stamp.
-- **The close inverts.** At [[Closing Well]] the hierarchy flips: the companion becomes the
-  **verifier**, doing all verification and *questioning the parent* to catch hallucination. It closes
-  by cross-examination, not cold re-reading — which supersedes the old "moderator must be fresh
-  disposable eyes" rule (a different mind interrogating is a stronger check). A fresh cold reader
-  stays an optional escalation.
+- **The role shifts at a close.** At [[Closing Well]] the companion becomes the **moderator**: it
+  reads the day's arc cold with fresh eyes, forms its own honest read, and drafts the reckoning
+  Loudon signs — never answering for a panelist. Its fresh read *is* a check on a spent instance,
+  but it works by reading honestly and refusing to confabulate, **not** by interrogation. (This
+  reconciles the model to the built [[Closing Well Ceremony]] moderator, 2026-07-04 — an earlier
+  "verifier / tables turn" framing was softened back to the moderator character.)
 - **Disciplines:** curate the **startup neighborhood** at spawn; watch **health** (`context_pct`,
   never self-report) and compact/respawn when heavy.
-- **Landed in canon:** [[Concierge]] rewritten (character · lifecycle · inversion · mechanism), new
-  companion charter `_ops/concierge/prompts/companion.md`, README + skill shim + CLAUDE.md floor
-  aligned. The prior disposable-by-default position is deliberately reversed.
+- **Landed in canon:** [[Concierge]] rewritten (character · lifecycle · moderator-at-close ·
+  mechanism), new companion charter `_ops/concierge/prompts/companion.md`, README + skill shim +
+  CLAUDE.md floor aligned. The prior disposable-by-default position is deliberately reversed.
 
-### Phase 4 — The verifier posture + the health dial
-Fold the companion character + the close-inversion + the `agency_profile` into [[Closing Well]]
-(the WEAVE-flagged item), and build the **dial** — now governing *two* things on one objective
-signal (`context_pct`, never self-report): **close intensity** (how hard the verifier presses) and
-**companion health** (when to compact/respawn). Most of the close itself is already built
-([[Closing Well — production plan]] Phases 0–5); the dial is the open piece.
+### Phase 4 — The moderator posture + the health dial
+Fold the companion character + the moderator role at close + the `agency_profile` into
+[[Closing Well]] (the WEAVE-flagged item), and build the **dial** — now governing *two* things on one
+objective signal (`context_pct`, never self-report): **close intensity** (how much the moderator
+carries) and **companion health** (when to compact/respawn). Most of the close itself is already
+built ([[Closing Well — production plan]] Phases 0–5); the dial is the open piece.
 *Verify gate:* a live close runs at both ends of the dial — slim and heavy — with the companion
-holding its warmth, its guards, and its verifier rigor.
+holding its warmth, its guards, and the honesty of its fresh read.
 
 ### Phase 5 — Migrate one maintenance ceremony (only then)
 Consider moving one *autonomic* ceremony (Weave or Harvest first) from ceremony-you-run to
