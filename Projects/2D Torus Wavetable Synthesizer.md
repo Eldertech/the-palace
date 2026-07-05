@@ -32,9 +32,6 @@ links:
   - target: "[[2D Torus Wavetable Synthesizer — Build Log]]"
     type: spawned
     label: chronicles
-  - target: "[[README — RNBO Prototype]]"
-    type: spawned
-    label: prototypes
   - target: "[[Three Kinds of Warp]]"
     type: connects-to
     label: clarifies-mechanism

@@ -30,3 +30,52 @@
 [regen] workersMax=0
 
 --- worker exit pid 50069 at 2026-06-30T20:32:10.950Z ---
+
+--- worker fire 2026-07-05T02:13:42.912Z ---
+[endpoint] workersMax=1 (holders after my acquire)
+[regen] render hero (1280x544, seed 504353)
+[runpod] submitted job dffa3683-4ede-48c1-acd2-2cad452f3e0a-u1 (status IN_QUEUE)
+[runpod] job dffa3683-4ede-48c1-acd2-2cad452f3e0a-u1 still IN_QUEUE after 240s — cold worker boot / model load is normal on a scaled-to-zero endpoint; continuing to poll.
+[runpod] job dffa3683-4ede-48c1-acd2-2cad452f3e0a-u1 COMPLETED
+[runpod] wrote /var/folders/00/cptnslpd44z_1bq0w53rdx2h0000gn/T/regen-dqub40mc/hero-tmp/p_00001_.png
+[regen] render hero -> four-pillars-hero.png
+[regen] render icon (1024x1024, seed 453705)
+[runpod] submitted job 131ec386-324e-4f12-be21-64100af87bb7-u2 (status IN_QUEUE)
+[runpod] job 131ec386-324e-4f12-be21-64100af87bb7-u2 COMPLETED
+[runpod] wrote /var/folders/00/cptnslpd44z_1bq0w53rdx2h0000gn/T/regen-dqub40mc/icon-tmp/p_00001_.png
+[regen] render icon -> four-pillars-icon.png
+[endpoint] workersMax=0 (holders after my release)
+
+--- worker exit pid 53488 at 2026-07-05T02:20:06.658Z ---
+
+--- worker fire 2026-07-05T03:02:18.244Z ---
+[endpoint] workersMax=1 (holders after my acquire)
+[regen] render hero (1280x544, seed 702416)
+[runpod] submitted job 2b70af74-8679-4f43-94f9-447c8aa17ca8-u1 (status IN_QUEUE)
+[runpod] job 2b70af74-8679-4f43-94f9-447c8aa17ca8-u1 COMPLETED
+[runpod] wrote /var/folders/00/cptnslpd44z_1bq0w53rdx2h0000gn/T/regen-pudcjeef/hero-tmp/p_00001_.png
+[regen] render hero -> the-jewel-hero.png
+[regen] render icon (1024x1024, seed 171413)
+[runpod] submitted job 1b16d09c-9b37-4711-b52a-8353ca49682d-u1 (status IN_QUEUE)
+[runpod] job 1b16d09c-9b37-4711-b52a-8353ca49682d-u1 COMPLETED
+[runpod] wrote /var/folders/00/cptnslpd44z_1bq0w53rdx2h0000gn/T/regen-pudcjeef/icon-tmp/p_00002_.png
+[regen] render icon -> the-jewel-icon.png
+[endpoint] workersMax=0 (holders after my release)
+
+--- worker exit pid 61534 at 2026-07-05T03:06:49.566Z ---
+
+--- worker fire 2026-07-05T03:10:09.156Z ---
+[endpoint] workersMax=1 (holders after my acquire)
+[regen] render hero (1280x544, seed 931809)
+[runpod] submitted job f7b1c188-3ecc-4dc0-827c-2176619c529b-u1 (status IN_QUEUE)
+[runpod] job f7b1c188-3ecc-4dc0-827c-2176619c529b-u1 COMPLETED
+[runpod] wrote /var/folders/00/cptnslpd44z_1bq0w53rdx2h0000gn/T/regen-e2gqy__y/hero-tmp/p_00001_.png
+[regen] render hero -> cooperation-yields-agency-hero.png
+[regen] render icon (1024x1024, seed 392712)
+[runpod] submitted job c562075b-864c-4e1e-9cb3-f3321fdf6b2e-u1 (status IN_QUEUE)
+[runpod] job c562075b-864c-4e1e-9cb3-f3321fdf6b2e-u1 COMPLETED
+[runpod] wrote /var/folders/00/cptnslpd44z_1bq0w53rdx2h0000gn/T/regen-e2gqy__y/icon-tmp/p_00002_.png
+[regen] render icon -> cooperation-yields-agency-icon.png
+[endpoint] workersMax=0 (holders after my release)
+
+--- worker exit pid 62021 at 2026-07-05T03:15:21.035Z ---
