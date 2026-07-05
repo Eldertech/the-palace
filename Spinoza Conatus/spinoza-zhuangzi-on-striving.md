@@ -1,6 +1,17 @@
 ---
 title: "Spinoza and Zhuangzi on Whether Striving Is the Right Shape of Work"
+type: breakthrough
+pillars:
+  - philosophy
+  - practice
+  - creation
 born: 2026-05
+stage: mature
+confidence: working
+energy: high
+last_activated: 2026-07-04
+activation_count: 2
+who_leads: claude
 links:
   - target: "[[Spinoza Conatus]]"
     type: emerged-from
