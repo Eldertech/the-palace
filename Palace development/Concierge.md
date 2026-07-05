@@ -162,7 +162,9 @@ lifecycle, the close-inversion); each address hands it the relevant **posture** 
 The harness-discoverable trigger is a **thin shim** at `.claude/skills/concierge/SKILL.md` that
 points back here — the [[Skills Are Enchantable Pages]] pattern: the page is the organ, the skill
 file is one dispatch surface onto it. The CLAUDE.md floor block recognizes the companion; the
-roadmap is [[The Palace Speaks — production plan]].
+roadmap is [[The Palace Speaks — production plan]]. The **test battery** — edge cases and adversarial
+probes against a throwaway sandbox palace (never real canon) — is `_ops/concierge/tests/`
+(`TEST-BATTERY.md` + `sandbox/`).
 
 ## Forward Vectors
 
