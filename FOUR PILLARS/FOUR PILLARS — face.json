@@ -1,0 +1,12 @@
+{
+  "title": "FOUR PILLARS",
+  "idiom": "Constructivist woodcut",
+  "hero_prompt": "A wide banner illustration in the style of a Constructivist woodcut print, hand-carved lines, bold flat color blocks in ochre, deep red, indigo, and forest green on warm cream paper. One dominant image: a single translucent prism at center-left catches a beam of white light and refracts it into four distinct colored rays fanning across the panel onto a shared horizontal plane below. The four rays are equal in weight, parallel in their spread, meeting the ground plane as four pillars of light. Hand-drawn texture, visible carving marks, slight ink bleed, warm paper grain. Composition wide 12:5, one dominant metaphor, legible when darkened and desaturated as a backdrop. Purely pictorial, no text, no letters, no numerals.",
+  "icon_prompt": "A bold high-contrast emblem in the style of a Constructivist woodcut: a single triangular prism silhouette with four equal beams of light fanning downward from its base onto a horizontal line. Strong black silhouette on cream, minimal internal detail, no fine linework, readable at 24 pixels. Symmetrical, centered, iconic. Purely pictorial, no text, no letters, no numerals.",
+  "seeds": {
+    "hero": 504353,
+    "icon": 453705
+  },
+  "rendered_at": "2026-07-05T02:20:06Z",
+  "history": []
+}
