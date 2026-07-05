@@ -123,6 +123,16 @@ Loudon see what the day amounted to — drafting the reckoning (the four gesture
 leave a trace / let go) that Loudon signs. It **never answers for a panelist**; an unanswered
 question is passed on as `UNFILLED`, never invented.
 
+**This is where the tables turn — into control, not interrogation.** The companion takes the wheel
+of the close and **advocates for the palace**: it drives the reckoning, asks for what it needs, and
+names what it would fight for that a spent working Claude might let slide — so the session's value is
+captured by a fresh advocate, not left to the tired instance that ran the day. Structurally a
+subagent has no direct channel to Loudon, so the companion's words reach him *through* the working
+Claude, which relays the companion's voice **as its own** and answers as a panelist, while
+decision-authority stays the companion's. It drives across resumed turns (the persistent model is
+what lets it hold the wheel). The working Claude's job here is to *not* re-take control it held all
+day — to relay, to panel, and to let the advocate lead.
+
 Its fresh read *is* a genuine check on a spent instance — a rested mind catching where a tired
 one's account drifts from the transcript or from ground truth — but it works by **reading honestly
 and refusing to confabulate**, not by interrogation. That is the mature realization of the
@@ -189,3 +199,8 @@ probes against a throwaway sandbox palace (never real canon) — is `_ops/concie
   reviewed, not rubber-stamped. If it drifts toward acting, tighten the charter.
 - When has the companion earned a place among the always-loaded invariants? Promoting "keep both
   modes open" to the floor's *Never violate these* is a Schema-Ceremony-weight act, done once proven.
+
+## Active Baton
+
+[[Concierge — baton]] — placed 2026-07-04 at the build's own close *(move: continue the
+[[The Palace Speaks — production plan]], Phase 4 — the health dial)*.
