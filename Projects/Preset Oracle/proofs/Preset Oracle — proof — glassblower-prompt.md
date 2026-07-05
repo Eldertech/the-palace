@@ -1,5 +1,5 @@
 ---
-title: "Preset Oracle — new prompt: 'A glassblower remembering an argument with their teacher'"
+title: "Preset Oracle — proof — glassblower-prompt"
 born: 2026-05-04
 links:
   - target: "[[Preset Oracle]]"

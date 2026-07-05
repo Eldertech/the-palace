@@ -1,5 +1,5 @@
 ---
-title: "Blood Compressor — SFX Cue Sheet"
+title: "Blood Compressor — spec — sfx-cue-sheet"
 born: 2026-05-27
 links:
   - target: "[[Blood Compressor]]"

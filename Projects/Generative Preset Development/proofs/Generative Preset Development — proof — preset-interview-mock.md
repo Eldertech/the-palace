@@ -1,5 +1,5 @@
 ---
-title: "Generative Preset Development — preset interview mock"
+title: "Generative Preset Development — proof — preset-interview-mock"
 born: 2026-05-04
 links:
   - target: "[[Generative Preset Development]]"

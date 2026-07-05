@@ -1,5 +1,5 @@
 ---
-title: "Semantic Delay — substitution chain mockup"
+title: "Semantic Delay — proof — substitution-chain"
 born: 2026-05-04
 links:
   - target: "[[Semantic Delay]]"

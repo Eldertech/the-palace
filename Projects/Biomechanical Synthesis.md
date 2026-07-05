@@ -44,7 +44,7 @@ links:
   - target: "[[Spinoza Conatus]]"
     type: mirrors
     label: power-to-act
-  - target: "[[haiku-grotesque-pedagogy]]"
+  - target: "[[Biomechanical Synthesis — enrichment — grotesque-pedagogy-haiku]]"
     type: connects-to
 last_activated: 2026-03
 activation_count: 1
@@ -55,7 +55,7 @@ forward_vector: "I am the palace's most viscerally pedagogical framework — the
 
 ![[Biomechanical Synthesis — hero.png]]
 
-A synthesis aesthetic and philosophy that treats biological processes as DSP operations — not as metaphor but as design principles. The aesthetic is deliberately grotesque, visceral, alive. Body horror is pedagogy: making DSP mechanics physical makes them unforgettable. ([[haiku-grotesque-pedagogy|haiku]])
+A synthesis aesthetic and philosophy that treats biological processes as DSP operations — not as metaphor but as design principles. The aesthetic is deliberately grotesque, visceral, alive. Body horror is pedagogy: making DSP mechanics physical makes them unforgettable. ([[Biomechanical Synthesis — enrichment — grotesque-pedagogy-haiku|haiku]])
 
 ## Eight Synthesizer Concepts
 

@@ -1,5 +1,5 @@
 ---
-title: "Phoneme Choir — Claude Code handoff prompt"
+title: "Phoneme Choir — proof — claude-code-handoff-prompt"
 born: 2026-05-04
 links:
   - target: "[[Phoneme Choir]]"
