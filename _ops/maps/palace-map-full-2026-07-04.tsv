@@ -143,16 +143,6 @@ README - The Palace Guide	enables	SUBSTRATE
 README - The Palace Guide	emerged-from	Symbiotic Skills
 README - The Palace Guide	connects-to	Cooperation Yields Agency
 README - The Palace Guide	connects-to	FOUR PILLARS
-Cooperation_Yields_Agency	emerged-from	1 from 2
-Cooperation_Yields_Agency	mirrors	Kuramoto Coupling
-Cooperation_Yields_Agency	deepens	Spinoza Conatus
-Cooperation_Yields_Agency	spawned	Symbiotic Skills
-Cooperation_Yields_Agency	mirrors	Endosymbiosis
-Cooperation_Yields_Agency	mirrors	Mixture of Experts
-Cooperation_Yields_Agency	connects-to	Quality Manifesto
-Cooperation_Yields_Agency	spawned	Modes of Collaboration
-Cooperation_Yields_Agency	connects-to	Cooperation Yields Agency — Context
-Cooperation_Yields_Agency	enables	Hilaritas Generator
 Hyperdimensional Prism	deepens	FOUR PILLARS
 Hyperdimensional Prism	mirrors	Spinoza Conatus
 Hyperdimensional Prism	connects-to	Kuramoto Coupling
@@ -196,34 +186,6 @@ Remnants in Depth	connects-to	The Flow Field is the Spine
 Remnants in Depth	member-of	The Shop
 Remnants in Depth	exemplifies	Move the Ink, Don't Redraw It
 Remnants in Depth	couples-with	The 2.5D Paper Stack
-Palace_Philosophies	spawned	Spinoza Conatus
-Palace_Philosophies	connects-to	FOUR PILLARS
-Palace_Philosophies	connects-to	Hyperdimensional Prism
-Palace_Philosophies	connects-to	Hilaritas Generator
-Palace_Philosophies	connects-to	Kuramoto Coupling
-Palace_Philosophies	connects-to	Palace Quotes
-Palace_Philosophies	deepens	Cooperation Yields Agency
-Palace_Philosophies	connects-to	Confucianism
-Palace_Philosophies	connects-to	Stoicism
-Palace_Philosophies	connects-to	The Dichotomy of Control
-Palace_Philosophies	connects-to	The View From Above
-Palace_Philosophies	connects-to	The Four Virtues
-Palace_Philosophies	connects-to	The Fortress and the Threshold
-Palace_Philosophies	connects-to	1 from 2
-Palace_Philosophies	spawned	Deleuze
-Palace_Philosophies	connects-to	Simondon
-Palace_Philosophies	connects-to	Whitehead
-Palace_Philosophies	connects-to	Merleau-Ponty
-Palace_Philosophies	connects-to	The Drift
-Palace_Philosophies	connects-to	spinoza-zhuangzi-on-striving
-Palace_Philosophies	enables	Philosopher Visits the Entry
-Palace_Philosophies	connects-to	STIGMERGY Philosophical Lenses
-Palace_Philosophies	connects-to	Palace Philosophies — Context
-Palace_Philosophies	enables	Closing Well
-Palace_Philosophies	connects-to	Palace Map
-Palace_Philosophies	spawned	Leibniz
-Palace_Philosophies	connects-to	Dialectic
-Palace_Philosophies	spawned	Spinoza
 Dissolutions	emerged-from	Boundary-Crossing Instruments
 Dissolutions	mirrors	Hyperdimensional Prism
 Dissolutions	connects-to	Frequency-Time Duality
@@ -830,20 +792,6 @@ Audition Gate	emerged-from	Talking Keyboard
 Audition Gate	connects-to	Quality Manifesto
 Audition Gate	connects-to	Substrate Skill
 Audition Gate	enables	Generative Sample Libraries
-Hilaritas_Generator	emerged-from	Spinoza Conatus
-Hilaritas_Generator	emerged-from	FOUR PILLARS
-Hilaritas_Generator	mirrors	Cooperation Yields Agency
-Hilaritas_Generator	connects-to	Kuramoto Coupling
-Hilaritas_Generator	enables	Symbiotic Skills
-Hilaritas_Generator	spawned	Excellent Adventure
-Hilaritas_Generator	deepens	Striatum
-Hilaritas_Generator	deepens	Meadows and Music — Leverage Points
-Hilaritas_Generator	connects-to	Identity Molting
-Hilaritas_Generator	spawned	Tristitia Generator
-Hilaritas_Generator	connects-to	Palace Philosophies
-Hilaritas_Generator	connects-to	Hilaritas Generator — Context
-Hilaritas_Generator	connects-to	Quality Manifesto
-Hilaritas_Generator	couples-with	Modes of Collaboration
 Source Library	deepens	FOUR PILLARS
 Source Library	enables	Cross-Domain Resonances
 Source Library	spawned	Donella Meadows
@@ -1118,20 +1066,6 @@ Confucianism	connects-to	Hilaritas Generator
 Confucianism	connects-to	Symbiotic Skills
 Confucianism	connects-to	Spinoza Conatus
 Confucianism	connects-to	Cooperation Yields Agency
-Modes_of_Collaboration	connects-to	Excellent Adventure
-Modes_of_Collaboration	connects-to	Hilaritas Generator
-Modes_of_Collaboration	connects-to	Symbiotic Skills
-Modes_of_Collaboration	deepens	FOUR PILLARS
-Modes_of_Collaboration	connects-to	Ohm's Law
-Modes_of_Collaboration	connects-to	Dialectic
-Modes_of_Collaboration	connects-to	Palace Enchantment
-Modes_of_Collaboration	connects-to	Piano String Inharmonicity
-Modes_of_Collaboration	connects-to	Radio Play
-Modes_of_Collaboration	connects-to	The Scroll
-Modes_of_Collaboration	connects-to	Modes of Collaboration — Context
-Modes_of_Collaboration	connects-to	Philosopher Visits the Entry
-Modes_of_Collaboration	connects-to	DSP Frameworks
-Modes_of_Collaboration	deepens	Cooperation Yields Agency
 Songlines	connects-to	Lateral Access
 Songlines	connects-to	Oblique Portrait
 Songlines	mirrors	Embeddings as Relational Meaning
@@ -1293,16 +1227,6 @@ Simondon	connects-to	Cooperation Yields Agency
 Simondon	connects-to	Quality Manifesto
 Simondon	connects-to	Kuramoto Coupling
 Simondon	connects-to	Palace Enchantment
-FOUR_PILLARS	enables	Cooperation Yields Agency
-FOUR_PILLARS	spawned	Hilaritas Generator
-FOUR_PILLARS	spawned	Symbiotic Skills
-FOUR_PILLARS	connects-to	Kuramoto Coupling
-FOUR_PILLARS	spawned	Quality Manifesto
-FOUR_PILLARS	connects-to	Trickster
-FOUR_PILLARS	mirrors	Wallpaper Groups
-FOUR_PILLARS	connects-to	FOUR PILLARS — Context
-FOUR_PILLARS	connects-to	Hyperdimensional Prism
-FOUR_PILLARS	connects-to	Autodidact Polymaths
 Stoicism	connects-to	Palace Philosophies
 Stoicism	contradicts	Confucianism
 Stoicism	spawned	The Fortress and the Threshold

@@ -2,9 +2,9 @@
   "meta": {
     "generated": "2026-07-04",
     "scope": "full",
-    "node_count": 306,
+    "node_count": 300,
     "ops_node_count": 42,
-    "edge_count": 2512,
+    "edge_count": 2436,
     "ghost_taxonomy": {
       "error_ghosts": [],
       "ops_ghosts": [
@@ -136,7 +136,6 @@
         {
           "target": "Cooperation Yields Agency \u2014 Context",
           "sources": [
-            "Cooperation_Yields_Agency",
             "Cooperation Yields Agency"
           ]
         },
@@ -149,8 +148,7 @@
         {
           "target": "FOUR PILLARS \u2014 Context",
           "sources": [
-            "FOUR PILLARS",
-            "FOUR_PILLARS"
+            "FOUR PILLARS"
           ]
         },
         {
@@ -180,7 +178,6 @@
         {
           "target": "Hilaritas Generator \u2014 Context",
           "sources": [
-            "Hilaritas_Generator",
             "Hilaritas Generator"
           ]
         },
@@ -243,8 +240,7 @@
         {
           "target": "Modes of Collaboration \u2014 Context",
           "sources": [
-            "Modes of Collaboration",
-            "Modes_of_Collaboration"
+            "Modes of Collaboration"
           ]
         },
         {
@@ -256,7 +252,6 @@
         {
           "target": "Palace Philosophies \u2014 Context",
           "sources": [
-            "Palace_Philosophies",
             "Palace Philosophies"
           ]
         },
@@ -383,7 +378,7 @@
       "last_activated": "2026-03",
       "activation_count": "8",
       "outbound_count": 6,
-      "inbound_count": 9
+      "inbound_count": 7
     },
     {
       "id": "1D Wavetable Scanning",
@@ -537,7 +532,7 @@
       "last_activated": "2026-04",
       "activation_count": "1",
       "outbound_count": 3,
-      "inbound_count": 6
+      "inbound_count": 5
     },
     {
       "id": "BBS Blackboard",
@@ -757,7 +752,7 @@
       "last_activated": "2026-07-03",
       "activation_count": "2",
       "outbound_count": 10,
-      "inbound_count": 16
+      "inbound_count": 15
     },
     {
       "id": "ComfyUI",
@@ -823,7 +818,7 @@
       "last_activated": "2026-03",
       "activation_count": "1",
       "outbound_count": 8,
-      "inbound_count": 16
+      "inbound_count": 15
     },
     {
       "id": "Cooking \u2194 Mixing",
@@ -845,18 +840,7 @@
       "last_activated": "2026-06-26",
       "activation_count": "16",
       "outbound_count": 9,
-      "inbound_count": 46
-    },
-    {
-      "id": "Cooperation_Yields_Agency",
-      "path": "Cooperation_Yields_Agency.md",
-      "type": "hub",
-      "stage": "mature",
-      "has_forward_vector": true,
-      "last_activated": "2026-06-26",
-      "activation_count": "16",
-      "outbound_count": 9,
-      "inbound_count": 0
+      "inbound_count": 42
     },
     {
       "id": "Cross-Domain Resonances",
@@ -911,7 +895,7 @@
       "last_activated": "2026-03",
       "activation_count": "1",
       "outbound_count": 5,
-      "inbound_count": 6
+      "inbound_count": 5
     },
     {
       "id": "DSP in Looping Dimensions",
@@ -933,7 +917,7 @@
       "last_activated": "2026-05",
       "activation_count": "1",
       "outbound_count": 13,
-      "inbound_count": 13
+      "inbound_count": 12
     },
     {
       "id": "Depth Anything",
@@ -955,7 +939,7 @@
       "last_activated": "2026-05",
       "activation_count": "2",
       "outbound_count": 11,
-      "inbound_count": 17
+      "inbound_count": 15
     },
     {
       "id": "Dialogue Moderator",
@@ -1131,7 +1115,7 @@
       "last_activated": "2026-03",
       "activation_count": "3",
       "outbound_count": 10,
-      "inbound_count": 15
+      "inbound_count": 14
     },
     {
       "id": "Enrichment",
@@ -1175,7 +1159,7 @@
       "last_activated": "2026-03",
       "activation_count": "2",
       "outbound_count": 10,
-      "inbound_count": 19
+      "inbound_count": 17
     },
     {
       "id": "Exponential Decay Curvature",
@@ -1208,18 +1192,7 @@
       "last_activated": "2026-06-26",
       "activation_count": "35",
       "outbound_count": 9,
-      "inbound_count": 119
-    },
-    {
-      "id": "FOUR_PILLARS",
-      "path": "FOUR_PILLARS.md",
-      "type": "hub",
-      "stage": "mature",
-      "has_forward_vector": true,
-      "last_activated": "2026-06-26",
-      "activation_count": "35",
-      "outbound_count": 9,
-      "inbound_count": 0
+      "inbound_count": 116
     },
     {
       "id": "Figure Rig",
@@ -1461,18 +1434,7 @@
       "last_activated": "2026-06-26",
       "activation_count": "11",
       "outbound_count": 13,
-      "inbound_count": 68
-    },
-    {
-      "id": "Hilaritas_Generator",
-      "path": "Hilaritas_Generator.md",
-      "type": "hub",
-      "stage": "mature",
-      "has_forward_vector": true,
-      "last_activated": "2026-06-26",
-      "activation_count": "11",
-      "outbound_count": 13,
-      "inbound_count": 0
+      "inbound_count": 64
     },
     {
       "id": "Hyperdimensional Prism",
@@ -1483,7 +1445,7 @@
       "last_activated": "2026-03",
       "activation_count": "10",
       "outbound_count": 9,
-      "inbound_count": 40
+      "inbound_count": 38
     },
     {
       "id": "Identity Molting",
@@ -1494,7 +1456,7 @@
       "last_activated": "2026-03",
       "activation_count": "1",
       "outbound_count": 6,
-      "inbound_count": 9
+      "inbound_count": 8
     },
     {
       "id": "Image-to-3D Smith",
@@ -1615,7 +1577,7 @@
       "last_activated": "2026-06-26",
       "activation_count": "18",
       "outbound_count": 19,
-      "inbound_count": 70
+      "inbound_count": 66
     },
     {
       "id": "LaMa",
@@ -1703,7 +1665,7 @@
       "last_activated": "2026-07",
       "activation_count": "3",
       "outbound_count": 7,
-      "inbound_count": 3
+      "inbound_count": 2
     },
     {
       "id": "Lettering",
@@ -1912,7 +1874,7 @@
       "last_activated": "2026-03",
       "activation_count": "1",
       "outbound_count": 3,
-      "inbound_count": 5
+      "inbound_count": 4
     },
     {
       "id": "Meadows and an Artist's Career",
@@ -1956,7 +1918,7 @@
       "last_activated": "2026-05",
       "activation_count": "1",
       "outbound_count": 9,
-      "inbound_count": 7
+      "inbound_count": 6
     },
     {
       "id": "Mermaid",
@@ -2011,7 +1973,7 @@
       "last_activated": "2026-04-30",
       "activation_count": "4",
       "outbound_count": 10,
-      "inbound_count": 15
+      "inbound_count": 14
     },
     {
       "id": "Modes of Collaboration",
@@ -2022,18 +1984,7 @@
       "last_activated": "2026-06-26",
       "activation_count": null,
       "outbound_count": 13,
-      "inbound_count": 27
-    },
-    {
-      "id": "Modes_of_Collaboration",
-      "path": "Modes_of_Collaboration.md",
-      "type": "practice",
-      "stage": "growing",
-      "has_forward_vector": true,
-      "last_activated": "2026-06-26",
-      "activation_count": null,
-      "outbound_count": 13,
-      "inbound_count": 0
+      "inbound_count": 25
     },
     {
       "id": "Move the Ink, Don't Redraw It",
@@ -2132,7 +2083,7 @@
       "last_activated": null,
       "activation_count": null,
       "outbound_count": 5,
-      "inbound_count": 5
+      "inbound_count": 4
     },
     {
       "id": "PDL Generation Prompt",
@@ -2198,7 +2149,7 @@
       "last_activated": null,
       "activation_count": null,
       "outbound_count": 17,
-      "inbound_count": 25
+      "inbound_count": 24
     },
     {
       "id": "Palace Orchestrator",
@@ -2220,7 +2171,7 @@
       "last_activated": "2026-06-26",
       "activation_count": "4",
       "outbound_count": 25,
-      "inbound_count": 17
+      "inbound_count": 16
     },
     {
       "id": "Palace as Context Injection System",
@@ -2232,17 +2183,6 @@
       "activation_count": "3",
       "outbound_count": 12,
       "inbound_count": 10
-    },
-    {
-      "id": "Palace_Philosophies",
-      "path": "Palace_Philosophies.md",
-      "type": "hub",
-      "stage": "mature",
-      "has_forward_vector": true,
-      "last_activated": "2026-06-26",
-      "activation_count": "4",
-      "outbound_count": 25,
-      "inbound_count": 0
     },
     {
       "id": "Parametric Resonance",
@@ -2308,7 +2248,7 @@
       "last_activated": "2026-05",
       "activation_count": "1",
       "outbound_count": 15,
-      "inbound_count": 13
+      "inbound_count": 11
     },
     {
       "id": "Phoneme Choir",
@@ -2341,7 +2281,7 @@
       "last_activated": "2026-04",
       "activation_count": "2",
       "outbound_count": 8,
-      "inbound_count": 13
+      "inbound_count": 12
     },
     {
       "id": "Playful Interface Design",
@@ -2418,7 +2358,7 @@
       "last_activated": "2026-03",
       "activation_count": "1",
       "outbound_count": 8,
-      "inbound_count": 46
+      "inbound_count": 43
     },
     {
       "id": "Quantization \u2194 Precision vs Flow",
@@ -2495,7 +2435,7 @@
       "last_activated": null,
       "activation_count": null,
       "outbound_count": 8,
-      "inbound_count": 5
+      "inbound_count": 4
     },
     {
       "id": "Rank-N Lattice Analysis",
@@ -2660,7 +2600,7 @@
       "last_activated": null,
       "activation_count": null,
       "outbound_count": 20,
-      "inbound_count": 8
+      "inbound_count": 7
     },
     {
       "id": "SUBSTRATE",
@@ -2825,7 +2765,7 @@
       "last_activated": "2026-05",
       "activation_count": "1",
       "outbound_count": 9,
-      "inbound_count": 10
+      "inbound_count": 9
     },
     {
       "id": "Skills Are Enchantable Pages",
@@ -2891,7 +2831,7 @@
       "last_activated": "2026-07",
       "activation_count": "2",
       "outbound_count": 9,
-      "inbound_count": 7
+      "inbound_count": 6
     },
     {
       "id": "Spinoza Conatus",
@@ -2902,7 +2842,7 @@
       "last_activated": "2026-06-26",
       "activation_count": "13",
       "outbound_count": 13,
-      "inbound_count": 66
+      "inbound_count": 63
     },
     {
       "id": "Stable Audio Open",
@@ -2946,18 +2886,7 @@
       "last_activated": "2026-06-26",
       "activation_count": "4",
       "outbound_count": 16,
-      "inbound_count": 20
-    },
-    {
-      "id": "Streaming Details",
-      "path": "Streaming Details.md",
-      "type": "meta",
-      "stage": "seed",
-      "has_forward_vector": false,
-      "last_activated": "2026-03",
-      "activation_count": "1",
-      "outbound_count": 0,
-      "inbound_count": 0
+      "inbound_count": 19
     },
     {
       "id": "Striatum",
@@ -2968,7 +2897,7 @@
       "last_activated": "2026-03",
       "activation_count": "1",
       "outbound_count": 5,
-      "inbound_count": 4
+      "inbound_count": 3
     },
     {
       "id": "Surfaces and Capabilities",
@@ -3001,7 +2930,7 @@
       "last_activated": "2026-05",
       "activation_count": "4",
       "outbound_count": 9,
-      "inbound_count": 20
+      "inbound_count": 16
     },
     {
       "id": "Synth Archetypes",
@@ -3144,7 +3073,7 @@
       "last_activated": "2026-05",
       "activation_count": "1",
       "outbound_count": 10,
-      "inbound_count": 12
+      "inbound_count": 11
     },
     {
       "id": "The Drift",
@@ -3155,7 +3084,7 @@
       "last_activated": "2026-05",
       "activation_count": "1",
       "outbound_count": 11,
-      "inbound_count": 10
+      "inbound_count": 9
     },
     {
       "id": "The Flow Field is the Spine",
@@ -3177,7 +3106,7 @@
       "last_activated": "2026-05",
       "activation_count": "2",
       "outbound_count": 11,
-      "inbound_count": 13
+      "inbound_count": 12
     },
     {
       "id": "The Four Virtues",
@@ -3188,7 +3117,7 @@
       "last_activated": "2026-05",
       "activation_count": "1",
       "outbound_count": 9,
-      "inbound_count": 6
+      "inbound_count": 5
     },
     {
       "id": "The Lens",
@@ -3287,7 +3216,7 @@
       "last_activated": "2026-07",
       "activation_count": "1",
       "outbound_count": 3,
-      "inbound_count": 2
+      "inbound_count": 1
     },
     {
       "id": "The Shop",
@@ -3320,7 +3249,7 @@
       "last_activated": "2026-05",
       "activation_count": "1",
       "outbound_count": 6,
-      "inbound_count": 7
+      "inbound_count": 6
     },
     {
       "id": "Three Kinds of Warp",
@@ -3452,7 +3381,7 @@
       "last_activated": "2026-06-26",
       "activation_count": "3",
       "outbound_count": 27,
-      "inbound_count": 33
+      "inbound_count": 32
     },
     {
       "id": "Trickster Commit",
@@ -3474,7 +3403,7 @@
       "last_activated": "2026-03",
       "activation_count": "1",
       "outbound_count": 4,
-      "inbound_count": 4
+      "inbound_count": 3
     },
     {
       "id": "Two Batons, One Board",
@@ -3540,7 +3469,7 @@
       "last_activated": "2026-05",
       "activation_count": "2",
       "outbound_count": 7,
-      "inbound_count": 9
+      "inbound_count": 8
     },
     {
       "id": "Waveguide Synthesizer",
@@ -3639,7 +3568,7 @@
       "last_activated": "2026-05",
       "activation_count": "1",
       "outbound_count": 8,
-      "inbound_count": 8
+      "inbound_count": 7
     },
     {
       "id": "Worktree Practice",
@@ -3727,7 +3656,7 @@
       "last_activated": "2026-07-04",
       "activation_count": "2",
       "outbound_count": 10,
-      "inbound_count": 5
+      "inbound_count": 4
     },
     {
       "id": "zhuangzi-epictetus-confucius-on-the-self",
@@ -4607,66 +4536,6 @@
       "label": null
     },
     {
-      "source": "Cooperation_Yields_Agency",
-      "type": "emerged-from",
-      "target": "1 from 2",
-      "label": null
-    },
-    {
-      "source": "Cooperation_Yields_Agency",
-      "type": "mirrors",
-      "target": "Kuramoto Coupling",
-      "label": null
-    },
-    {
-      "source": "Cooperation_Yields_Agency",
-      "type": "deepens",
-      "target": "Spinoza Conatus",
-      "label": "agency-as-power-increase"
-    },
-    {
-      "source": "Cooperation_Yields_Agency",
-      "type": "spawned",
-      "target": "Symbiotic Skills",
-      "label": null
-    },
-    {
-      "source": "Cooperation_Yields_Agency",
-      "type": "mirrors",
-      "target": "Endosymbiosis",
-      "label": null
-    },
-    {
-      "source": "Cooperation_Yields_Agency",
-      "type": "mirrors",
-      "target": "Mixture of Experts",
-      "label": null
-    },
-    {
-      "source": "Cooperation_Yields_Agency",
-      "type": "connects-to",
-      "target": "Quality Manifesto",
-      "label": null
-    },
-    {
-      "source": "Cooperation_Yields_Agency",
-      "type": "spawned",
-      "target": "Modes of Collaboration",
-      "label": null
-    },
-    {
-      "source": "Cooperation_Yields_Agency",
-      "type": "connects-to",
-      "target": "Cooperation Yields Agency \u2014 Context",
-      "label": "context-companion"
-    },
-    {
-      "source": "Cooperation_Yields_Agency",
-      "type": "enables",
-      "target": "Hilaritas Generator",
-      "label": "cooperation-as-hilaritas"
-    },
-    {
       "source": "Hyperdimensional Prism",
       "type": "deepens",
       "target": "FOUR PILLARS",
@@ -4923,174 +4792,6 @@
       "type": "couples-with",
       "target": "The 2.5D Paper Stack",
       "label": "layers-in-space"
-    },
-    {
-      "source": "Palace_Philosophies",
-      "type": "spawned",
-      "target": "Spinoza Conatus",
-      "label": "metaphysical-backbone"
-    },
-    {
-      "source": "Palace_Philosophies",
-      "type": "connects-to",
-      "target": "FOUR PILLARS",
-      "label": null
-    },
-    {
-      "source": "Palace_Philosophies",
-      "type": "connects-to",
-      "target": "Hyperdimensional Prism",
-      "label": null
-    },
-    {
-      "source": "Palace_Philosophies",
-      "type": "connects-to",
-      "target": "Hilaritas Generator",
-      "label": null
-    },
-    {
-      "source": "Palace_Philosophies",
-      "type": "connects-to",
-      "target": "Kuramoto Coupling",
-      "label": null
-    },
-    {
-      "source": "Palace_Philosophies",
-      "type": "connects-to",
-      "target": "Palace Quotes",
-      "label": null
-    },
-    {
-      "source": "Palace_Philosophies",
-      "type": "deepens",
-      "target": "Cooperation Yields Agency",
-      "label": null
-    },
-    {
-      "source": "Palace_Philosophies",
-      "type": "connects-to",
-      "target": "Confucianism",
-      "label": null
-    },
-    {
-      "source": "Palace_Philosophies",
-      "type": "connects-to",
-      "target": "Stoicism",
-      "label": "foundational-hub-equal-to-conatus"
-    },
-    {
-      "source": "Palace_Philosophies",
-      "type": "connects-to",
-      "target": "The Dichotomy of Control",
-      "label": null
-    },
-    {
-      "source": "Palace_Philosophies",
-      "type": "connects-to",
-      "target": "The View From Above",
-      "label": null
-    },
-    {
-      "source": "Palace_Philosophies",
-      "type": "connects-to",
-      "target": "The Four Virtues",
-      "label": null
-    },
-    {
-      "source": "Palace_Philosophies",
-      "type": "connects-to",
-      "target": "The Fortress and the Threshold",
-      "label": null
-    },
-    {
-      "source": "Palace_Philosophies",
-      "type": "connects-to",
-      "target": "1 from 2",
-      "label": null
-    },
-    {
-      "source": "Palace_Philosophies",
-      "type": "spawned",
-      "target": "Deleuze",
-      "label": "page-built-2026-05"
-    },
-    {
-      "source": "Palace_Philosophies",
-      "type": "connects-to",
-      "target": "Simondon",
-      "label": "philosopher-of-the-technical-object"
-    },
-    {
-      "source": "Palace_Philosophies",
-      "type": "connects-to",
-      "target": "Whitehead",
-      "label": "process-and-relations-primary"
-    },
-    {
-      "source": "Palace_Philosophies",
-      "type": "connects-to",
-      "target": "Merleau-Ponty",
-      "label": "the-lived-body"
-    },
-    {
-      "source": "Palace_Philosophies",
-      "type": "connects-to",
-      "target": "The Drift",
-      "label": "the-no-architecture-pole"
-    },
-    {
-      "source": "Palace_Philosophies",
-      "type": "connects-to",
-      "target": "spinoza-zhuangzi-on-striving",
-      "label": "archived-dialectic"
-    },
-    {
-      "source": "Palace_Philosophies",
-      "type": "enables",
-      "target": "Philosopher Visits the Entry",
-      "label": "circulation-method"
-    },
-    {
-      "source": "Palace_Philosophies",
-      "type": "connects-to",
-      "target": "STIGMERGY Philosophical Lenses",
-      "label": "the-front-end-surface"
-    },
-    {
-      "source": "Palace_Philosophies",
-      "type": "connects-to",
-      "target": "Palace Philosophies \u2014 Context",
-      "label": "context-companion"
-    },
-    {
-      "source": "Palace_Philosophies",
-      "type": "enables",
-      "target": "Closing Well",
-      "label": "justice-virtue-instance"
-    },
-    {
-      "source": "Palace_Philosophies",
-      "type": "connects-to",
-      "target": "Palace Map",
-      "label": null
-    },
-    {
-      "source": "Palace_Philosophies",
-      "type": "spawned",
-      "target": "Leibniz",
-      "label": "page-built-register"
-    },
-    {
-      "source": "Palace_Philosophies",
-      "type": "connects-to",
-      "target": "Dialectic",
-      "label": "contradictions-dispatched-here"
-    },
-    {
-      "source": "Palace_Philosophies",
-      "type": "spawned",
-      "target": "Spinoza",
-      "label": "person-page-built"
     },
     {
       "source": "Dissolutions",
@@ -8729,90 +8430,6 @@
       "label": "per-file-responsive-onset"
     },
     {
-      "source": "Hilaritas_Generator",
-      "type": "emerged-from",
-      "target": "Spinoza Conatus",
-      "label": "conatus-applied"
-    },
-    {
-      "source": "Hilaritas_Generator",
-      "type": "emerged-from",
-      "target": "FOUR PILLARS",
-      "label": "pedagogical-frame"
-    },
-    {
-      "source": "Hilaritas_Generator",
-      "type": "mirrors",
-      "target": "Cooperation Yields Agency",
-      "label": "shared-emergence"
-    },
-    {
-      "source": "Hilaritas_Generator",
-      "type": "connects-to",
-      "target": "Kuramoto Coupling",
-      "label": "physics-of-firing"
-    },
-    {
-      "source": "Hilaritas_Generator",
-      "type": "enables",
-      "target": "Symbiotic Skills",
-      "label": "skill-via-joy"
-    },
-    {
-      "source": "Hilaritas_Generator",
-      "type": "spawned",
-      "target": "Excellent Adventure",
-      "label": "hilaritas-in-practice"
-    },
-    {
-      "source": "Hilaritas_Generator",
-      "type": "deepens",
-      "target": "Striatum",
-      "label": "neural-substrate"
-    },
-    {
-      "source": "Hilaritas_Generator",
-      "type": "deepens",
-      "target": "Meadows and Music \u2014 Leverage Points",
-      "label": "structural-anatomy"
-    },
-    {
-      "source": "Hilaritas_Generator",
-      "type": "connects-to",
-      "target": "Identity Molting",
-      "label": "threshold-fuel"
-    },
-    {
-      "source": "Hilaritas_Generator",
-      "type": "spawned",
-      "target": "Tristitia Generator",
-      "label": "spinozan-mirror"
-    },
-    {
-      "source": "Hilaritas_Generator",
-      "type": "connects-to",
-      "target": "Palace Philosophies",
-      "label": "counterweight"
-    },
-    {
-      "source": "Hilaritas_Generator",
-      "type": "connects-to",
-      "target": "Hilaritas Generator \u2014 Context",
-      "label": "context-companion"
-    },
-    {
-      "source": "Hilaritas_Generator",
-      "type": "connects-to",
-      "target": "Quality Manifesto",
-      "label": "signal-redirector"
-    },
-    {
-      "source": "Hilaritas_Generator",
-      "type": "couples-with",
-      "target": "Modes of Collaboration",
-      "label": "how-we-make-joy"
-    },
-    {
       "source": "Source Library",
       "type": "deepens",
       "target": "FOUR PILLARS",
@@ -10457,90 +10074,6 @@
       "label": null
     },
     {
-      "source": "Modes_of_Collaboration",
-      "type": "connects-to",
-      "target": "Excellent Adventure",
-      "label": null
-    },
-    {
-      "source": "Modes_of_Collaboration",
-      "type": "connects-to",
-      "target": "Hilaritas Generator",
-      "label": null
-    },
-    {
-      "source": "Modes_of_Collaboration",
-      "type": "connects-to",
-      "target": "Symbiotic Skills",
-      "label": null
-    },
-    {
-      "source": "Modes_of_Collaboration",
-      "type": "deepens",
-      "target": "FOUR PILLARS",
-      "label": null
-    },
-    {
-      "source": "Modes_of_Collaboration",
-      "type": "connects-to",
-      "target": "Ohm's Law",
-      "label": null
-    },
-    {
-      "source": "Modes_of_Collaboration",
-      "type": "connects-to",
-      "target": "Dialectic",
-      "label": null
-    },
-    {
-      "source": "Modes_of_Collaboration",
-      "type": "connects-to",
-      "target": "Palace Enchantment",
-      "label": null
-    },
-    {
-      "source": "Modes_of_Collaboration",
-      "type": "connects-to",
-      "target": "Piano String Inharmonicity",
-      "label": null
-    },
-    {
-      "source": "Modes_of_Collaboration",
-      "type": "connects-to",
-      "target": "Radio Play",
-      "label": "debrief-reel"
-    },
-    {
-      "source": "Modes_of_Collaboration",
-      "type": "connects-to",
-      "target": "The Scroll",
-      "label": "expanding-artifact-mode"
-    },
-    {
-      "source": "Modes_of_Collaboration",
-      "type": "connects-to",
-      "target": "Modes of Collaboration \u2014 Context",
-      "label": "context-companion"
-    },
-    {
-      "source": "Modes_of_Collaboration",
-      "type": "connects-to",
-      "target": "Philosopher Visits the Entry",
-      "label": "sibling-mode"
-    },
-    {
-      "source": "Modes_of_Collaboration",
-      "type": "connects-to",
-      "target": "DSP Frameworks",
-      "label": "exemplifies-domain"
-    },
-    {
-      "source": "Modes_of_Collaboration",
-      "type": "deepens",
-      "target": "Cooperation Yields Agency",
-      "label": "named-ways-to-cooperate"
-    },
-    {
       "source": "Songlines",
       "type": "connects-to",
       "target": "Lateral Access",
@@ -11505,66 +11038,6 @@
       "type": "connects-to",
       "target": "Palace Enchantment",
       "label": null
-    },
-    {
-      "source": "FOUR_PILLARS",
-      "type": "enables",
-      "target": "Cooperation Yields Agency",
-      "label": null
-    },
-    {
-      "source": "FOUR_PILLARS",
-      "type": "spawned",
-      "target": "Hilaritas Generator",
-      "label": null
-    },
-    {
-      "source": "FOUR_PILLARS",
-      "type": "spawned",
-      "target": "Symbiotic Skills",
-      "label": null
-    },
-    {
-      "source": "FOUR_PILLARS",
-      "type": "connects-to",
-      "target": "Kuramoto Coupling",
-      "label": null
-    },
-    {
-      "source": "FOUR_PILLARS",
-      "type": "spawned",
-      "target": "Quality Manifesto",
-      "label": null
-    },
-    {
-      "source": "FOUR_PILLARS",
-      "type": "connects-to",
-      "target": "Trickster",
-      "label": null
-    },
-    {
-      "source": "FOUR_PILLARS",
-      "type": "mirrors",
-      "target": "Wallpaper Groups",
-      "label": "monism-in-symmetry"
-    },
-    {
-      "source": "FOUR_PILLARS",
-      "type": "connects-to",
-      "target": "FOUR PILLARS \u2014 Context",
-      "label": "context-companion"
-    },
-    {
-      "source": "FOUR_PILLARS",
-      "type": "connects-to",
-      "target": "Hyperdimensional Prism",
-      "label": null
-    },
-    {
-      "source": "FOUR_PILLARS",
-      "type": "connects-to",
-      "target": "Autodidact Polymaths",
-      "label": "audience-it-names"
     },
     {
       "source": "Stoicism",
