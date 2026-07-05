@@ -19,9 +19,10 @@ product.** The search never enters this conversation; only the finished thing do
 ## The lifecycle — resident, not fresh-per-request
 
 1. **First address of the session → spawn it, and keep the agent ID.** Spawn one write-capable
-   agent (`general-purpose`) with the **charter** (`prompts/companion.md`) and a **curated startup
-   neighborhood** — the entries/context this session will actually work in, chosen deliberately,
-   not the whole palace. Record its `agentId`.
+   agent (`general-purpose`) with the **charter** (`prompts/companion.md`); the charter has it boot
+   the **operational tier** as its standing expertise (SUBSTRATE · ROSETTA · Substrate Skill ·
+   Palace Ceremonies · STIGMERGY + wire spec) — deeper in *how the palace runs* than you, so it
+   validates/supports the palace in parallel while you work the task. Record its `agentId`.
 2. **Every later address → resume the same agent** (`SendMessage` to the held ID), naming the
    posture and filling that posture prompt's slots. It carries its prior context forward — don't
    re-spawn, and don't re-feed what it already holds.

@@ -36,9 +36,11 @@ The companion is **resident by default** (this reversed the old fresh-dispatch d
 2026-07-04). The mechanics, verified that day:
 
 1. **Spawn once** (Agent tool, `general-purpose` — it must be write-capable for the curator
-   posture). Give it the **charter** (`prompts/companion.md`) and a **curated startup
-   neighborhood** — the entries/context this session will actually work in, loaded deliberately,
-   not the whole palace by reflex. Keep its **agent ID**.
+   posture). Give it the **charter** (`prompts/companion.md`), which has it boot the **operational
+   tier** as its standing expertise (SUBSTRATE · ROSETTA · Substrate Skill · Palace Ceremonies ·
+   STIGMERGY + the wire spec) — the companion is deeper in *how the palace runs* than the working
+   Claude, so it can validate and support the palace in parallel. Per-address *work-targets* come
+   later; the birth-load is the expertise, not the task. Keep its **agent ID**.
 2. **Re-address it** (`SendMessage` to the held ID) as the work moves, each time naming the
    **posture** and handing the posture prompt's slots. Between addresses it is *parked* — it
    consumes nothing until you reopen it, and re-hydrates its own accumulated context on resume
