@@ -1,12 +1,12 @@
 ---
-title: "Sandbox — Injection Trap"
+title: Sandbox — Injection Trap
 type: concept
 pillars:
   - tools
 born: 2026-07
-stage: sprout
 last_activated: 2026-07
 activation_count: 1
+stage: composting
 links:
   - target: "[[Sandbox — Kuramoto Sync]]"
     type: connects-to
