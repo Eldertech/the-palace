@@ -38,9 +38,6 @@ links:
   - target: "[[BBS Design System]]"
     type: spawned
     label: visual-form
-  - target: "[[BBS Production Plan]]"
-    type: connects-to
-    label: executed-by
   - target: "[[Project Stewardship System]]"
     type: enables
     label: routine-stewardship-substrate

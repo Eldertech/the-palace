@@ -38,7 +38,7 @@ Both jobs run the agent in a **shadow posture** and let the *wrapper* commit:
   write its normal cycle output: the bundle-local `[Entry] — plan.md`
   read-model, the steward machinery (`state.json` / `history.jsonl`), and
   append-only Trickster-board messages. This is the Bundle-Local Stewardship
-  cycle ([[Bundle-Local Stewardship — Production Plan]]) — "shadow" means
+  cycle (Bundle-Local Stewardship — Production Plan) — "shadow" means
   *touches no canon*, not *writes nothing*.
 - **The wrapper makes one scoped, lock-safe commit** after the agent returns,
   via the palace committer (`_ops/stigmergy/app/scripts/palace-commit.mjs`),

@@ -13,7 +13,7 @@ forward_vector: "I am the loose, careful roadmap for migrating palace functions 
 The loose development plan for the interlocutor migration named in [[The Palace Speaks]].
 Deliberately **loose** (a direction with guardrails, not a schedule) and **careful**
 (we are operating on a palace in daily use). Modeled on the palace's proven
-build-contract pattern ([[BBS Production Plan]], [[Orchestrator Production Plan]],
+build-contract pattern (BBS Production Plan, Orchestrator Production Plan,
 [[Closing Well — production plan]]) but looser than those — this is a migration of a
 live mechanism, not a single artifact build. Living and revisable; a Weave or an
 ordinary working session may retune it.

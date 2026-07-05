@@ -221,7 +221,7 @@ Pass (as CLI flags, or the JSON-body equivalents):
 
 The committer derives `Palace-Entry:` from the staged `.md` paths; add an explicit `Palace-Entry: <Title>` for any *updated* (not newly-added) entry so it appears on the card. Optional `Palace-Source: <conversation ref>` preserves provenance.
 
-Then the weave flags, unchanged: for each weave flag named in the deposit, append a `weave_flag` BROADCAST to the **owner's** `_ops/swarm/persistent/blackboard.jsonl` (never a worktree branch copy; § Where the Deposit Lands), `payload.kind: 'weave_flag'` per [[STIGMERGY — Weave Flag Item Type Build Plan]] § Data shapes — with `source_deposit_id` set to the commit's deposit ID. Show Loudon the message bodies before writing; commit only on his approval.
+Then the weave flags, unchanged: for each weave flag named in the deposit, append a `weave_flag` BROADCAST to the **owner's** `_ops/swarm/persistent/blackboard.jsonl` (never a worktree branch copy; § Where the Deposit Lands), `payload.kind: 'weave_flag'` per STIGMERGY — Weave Flag Item Type Build Plan § Data shapes — with `source_deposit_id` set to the commit's deposit ID. Show Loudon the message bodies before writing; commit only on his approval.
 
 Commit on the owner's `main` (`git -C "<owner>"` when the session runs in another worktree). The commit *is* the archive record; once it lands in LOG, the deposit is on the shelf.
 

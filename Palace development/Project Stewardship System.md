@@ -40,24 +40,12 @@ links:
   - target: "[[Palace Enchantment]]"
     type: deepens
     label: routinizing
-  - target: "[[BBS Production Plan]]"
-    type: mirrors
-    label: build-contract-pattern
-  - target: "[[Orchestrator Production Plan]]"
-    type: spawned
-    label: stage-b-build-contract
-  - target: "[[Orchestrator Production Plan v0.2]]"
-    type: spawned
-    label: stage-c-build-contract
   - target: "[[Palace Conatus]]"
     type: connects-to
     label: escalation-rationale
   - target: "[[Two Batons, One Board]]"
     type: connects-to
     label: human-originated-handoff-case
-  - target: "[[Bundle-Local Stewardship — Production Plan]]"
-    type: connects-to
-    label: hardened-by
   - target: "[[Baton Ceremony]]"
     type: connects-to
   - target: "[[Drift and Consolidation]]"
@@ -97,7 +85,7 @@ That framing had a Steward (the routine agent) and a Supervisor (the triage laye
 
 ## The Reframe: This Is Already Mostly Specced
 
-After reading [[BBS Blackboard]], [[BBS Production Plan]], and [[Palace Agent Infrastructure Spec]], the architecture map became clear. Most of what was being designed already existed in spec form:
+After reading [[BBS Blackboard]], BBS Production Plan, and [[Palace Agent Infrastructure Spec]], the architecture map became clear. Most of what was being designed already existed in spec form:
 
 | Concept in seed framing | Existing palace name |
 |---|---|
@@ -215,7 +203,7 @@ The four content findings are the most operationally important learning of the p
 
 #### What Stage B now needs
 
-A Stage B Production Plan, modeled on [[BBS Production Plan]], should include in priority order:
+A Stage B Production Plan, modeled on BBS Production Plan, should include in priority order:
 
 1. **`request_id` location canonized** (Gap 9) — directly breaks the inbox; highest priority
 2. **Schema normalization phase** (Gap 5) — handle the 113 legacy messages
@@ -228,7 +216,7 @@ A Stage B Production Plan, modeled on [[BBS Production Plan]], should include in
 9. **`agent_id` defaults to home page title** (Finding 11) — orchestrator's spawn logic sets `agent_id = manifest.home` for permanent agents
 10. **runAgentCycle implementation** — the §3.2 sketch is largely transcription, plus the gaps above
 
-The Stage B Production Plan is itself a deposit-worthy artifact in the autonomous-build-contract pattern of [[BBS Production Plan]].
+The Stage B Production Plan is itself a deposit-worthy artifact in the autonomous-build-contract pattern of BBS Production Plan.
 
 #### What the pilot did not test
 
@@ -247,17 +235,17 @@ Loudon responds to `gsl-steward-002` on the BBS — picks (a), (b), (c), or volu
 
 ### Stage B — Build `runAgentCycle` ✅ Build-complete (2026-05-04) — awaiting smoke-test + push
 
-The orchestrator. This deserves its own production plan, modeled on [[BBS Production Plan]] (the autonomous build contract that produced STIGMERGY v0.1) — phased verify gates, stop-reports, vision-validator-equivalent for the spec layer. Likely Node, sibling to STIGMERGY at `_ops/stigmergy/orchestrator/`. Health score, git change detection, posting discipline enforcement, schema validation on every BBS write all live here. The §3.2 sketch in [[Palace Agent Infrastructure Spec]] is detailed enough that this is largely transcription, not invention.
+The orchestrator. This deserves its own production plan, modeled on BBS Production Plan (the autonomous build contract that produced STIGMERGY v0.1) — phased verify gates, stop-reports, vision-validator-equivalent for the spec layer. Likely Node, sibling to STIGMERGY at `_ops/stigmergy/orchestrator/`. Health score, git change detection, posting discipline enforcement, schema validation on every BBS write all live here. The §3.2 sketch in [[Palace Agent Infrastructure Spec]] is detailed enough that this is largely transcription, not invention.
 
 Schema drift on the existing persistent board (only 3 of 113 messages spec-conformant per BBS Production Plan v0.1 closure notes) gets normalized as part of this stage — either a one-time migration or a quarantine policy for legacy lines.
 
-### Stage C — Schedule the orchestrator — specced, not built (see [[Orchestrator Production Plan v0.2]])
+### Stage C — Schedule the orchestrator — specced, not built (see Orchestrator Production Plan v0.2)
 
 A scheduled task invokes `runAgentCycle` once per project-Steward per interval. Start with one Steward, daily, on the project Stage A piloted. Tune from observation. Adding more Stewards is just adding directories — no schema or orchestrator change.
 
 ### Stage D — STIGMERGY v0.2: Trickster posting ✅ Shipped (2026-05-04)
 
-The current STIGMERGY viewer is read-only. Triage requires writes — `POST /api/persistent`, click-to-respond on the Trickster Inbox. Without this, every Trickster response requires hand-editing `.jsonl` files. Already on the STIGMERGY roadmap as v0.2 per [[BBS Production Plan]] § What's Deferred.
+The current STIGMERGY viewer is read-only. Triage requires writes — `POST /api/persistent`, click-to-respond on the Trickster Inbox. Without this, every Trickster response requires hand-editing `.jsonl` files. Already on the STIGMERGY roadmap as v0.2 per BBS Production Plan § What's Deferred.
 
 ### Stage E — Automated Trickster — not started; unspecced
 
@@ -265,7 +253,7 @@ Per Infrastructure Spec §12 forward vector, the rules engine is unspecced. This
 
 ## The Machinery/Content Split
 
-A standing operating principle, named 2026-06-09 and applied to this system first via [[Bundle-Local Stewardship — Production Plan]]:
+A standing operating principle, named 2026-06-09 and applied to this system first via Bundle-Local Stewardship — Production Plan:
 
 > **Shared engine code, indexes, schedulers, and runtime bookkeeping belong in `_ops/`. Anything *about a specific entry* — its plan, its open decisions, its working memory, its lessons — belongs in that entry's bundle.** When a file describes one entry, it lives with that entry; when a file runs across all entries, it stays in ops.
 
@@ -276,7 +264,7 @@ The fix is **CQRS, not relocation**: the append-only board stays the event log (
 ## What's Decided
 
 - **Architecture piggybacks on the existing BBS / permanent agent stack.** No new substrate to build; the existing Infrastructure Spec is the foundation.
-- **The Machinery/Content Split governs where stewardship state lives** (decided 2026-06-09; see the section above and [[Bundle-Local Stewardship — Production Plan]]). Engine → `_ops`; per-entry content → the bundle. `[Entry] — plan.md` is the work-state read-model; `[Entry] — staging.md` is the teaching arc; the board stays the append-only log. The steward owns `plan.md`, reads `staging.md`, and flags arc-level changes rather than editing the teaching design.
+- **The Machinery/Content Split governs where stewardship state lives** (decided 2026-06-09; see the section above and Bundle-Local Stewardship — Production Plan). Engine → `_ops`; per-entry content → the bundle. `[Entry] — plan.md` is the work-state read-model; `[Entry] — staging.md` is the teaching arc; the board stays the append-only log. The steward owns `plan.md`, reads `staging.md`, and flags arc-level changes rather than editing the teaching design.
 - **Steward = permanent agent in `long_duration_background` mode**, with stage-conditional posture loaded from the home entry's `stage` field at activation.
 - **Trickster begins as Loudon (manual mode)**, evolves toward hybrid then automated.
 - **The audition gate guards batches, not single artifacts.** A single audition-sized artifact ships freely; the gate fires only before a full batch — per [[Substrate Skill]] § Stage as Alignment Confidence, render the smallest unit, present it, commit to the full batch only after acceptance.
@@ -290,8 +278,8 @@ The fix is **CQRS, not relocation**: the append-only board stays the event log (
 
 ## What's Open
 
-- **The Stage B smoke-test gate (current frontier, as of 2026-05-26).** Orchestrator v0.1 is build-complete but sits on an unpushed local branch awaiting Loudon's own smoke-test + review (see [[Orchestrator Production Plan]] close-out). It has never run on a live project via the skill. Cleanest next move: advance the GSL steward to cycle 6 through the skill — it doubles as smoke-test and first real use — then push the branch.
-- **Whether to build v0.2 (Stage C enablers) now.** [[Orchestrator Production Plan v0.2]] (batch-cycle, cadence, spawn-from-project, scheduled-task recipes) is a ready autonomous-build contract at seed stage. Its Phase 1 reads v0.1's closure report, so it is blocked on the smoke-test gate above. Decision: build it to make stewardship operational, or run stewards by hand longer to learn the right cadence first?
+- **The Stage B smoke-test gate (current frontier, as of 2026-05-26).** Orchestrator v0.1 is build-complete but sits on an unpushed local branch awaiting Loudon's own smoke-test + review (see Orchestrator Production Plan close-out). It has never run on a live project via the skill. Cleanest next move: advance the GSL steward to cycle 6 through the skill — it doubles as smoke-test and first real use — then push the branch.
+- **Whether to build v0.2 (Stage C enablers) now.** Orchestrator Production Plan v0.2 (batch-cycle, cadence, spawn-from-project, scheduled-task recipes) is a ready autonomous-build contract at seed stage. Its Phase 1 reads v0.1's closure report, so it is blocked on the smoke-test gate above. Decision: build it to make stewardship operational, or run stewards by hand longer to learn the right cadence first?
 - **Automated Trickster — built; first safe ruleset chosen, awaiting Loudon's shadow review.** Stage E shipped 2026-05-29 (`_ops/stigmergy/trickster-auto/`). The v0 ruleset auto-grants only non-blocking directional forks carrying the steward's own recommendation; everything else escalates. It runs shadow-default. The remaining open move is operational, not design: Loudon reads the shadow digest on the STIGMERGY TRICKSTER tab, compares the 3 proposed grants + ranking to his own judgment, tunes `rules.json` if needed, and flips `--live` when the match rate satisfies him.
 - **Stage F — Two Paths (decide-after-doing), proposed 2026-05-29.** A new mode past the original five stages: where a steward gave options but no recommendation, or the fork is sensory, run BOTH branches to a finished deliverable (isolated worktrees, the unused `BRANCHES` board, §10.2 Branch Exploration) and let Loudon choose from completed work — the human always picks; the engine never auto-resolves. Design pass and phased build contract were drafted in the Stage F handoff (consumed and deleted 2026-06-16; built 2026-05-29 per `STAGE-F-COMPLETE.md`). It consumes the Stage E digest as its candidate source (rec=n defers + audition escalations are exactly its two triggers).
 - **Vector tuning practice as palace-wide norm.** Vector tuning is settled as a process, not a ceremony (see What's Decided). What's still open: how to make the invitation visible — does the Weave Ceremony spec need an explicit "vector edits welcome" beat? Does [[SCHEMA]] want a one-line note that forward vectors are meant to evolve? Probably yes to both, as small follow-on edits.
@@ -306,11 +294,11 @@ If you are a Claude reading this entry for the first time and Loudon wants to co
 1. Read this entry end-to-end.
 2. Read [[BBS Blackboard]] and [[Palace Agent Infrastructure Spec]] — they contain the architectural ground truth.
 3. Read [[Substrate Skill]] § Stage as Alignment Confidence — the operating posture.
-4. Read [[BBS Production Plan]] for the autonomous build contract pattern (template for Stage B).
+4. Read BBS Production Plan for the autonomous build contract pattern (template for Stage B).
 5. Read [[Generative Sample Libraries]] and [[Talking Keyboard]] — the case study where stage-mismatch was first surfaced empirically.
 6. Ask Loudon: which stage are we ready for? **As of 2026-05-26: Stage A is done (5 cycles), Stage B (Orchestrator v0.1) is build-complete and awaiting smoke-test, Stage D shipped.** The live frontier is the Stage B smoke-test gate — advance the GSL steward to cycle 6 through the orchestrator skill, then push the branch.
 
-After that, the open decision is whether to build [[Orchestrator Production Plan v0.2]] (the Stage C enablers). The historical pickup notes below are kept for the record but no longer describe the frontier.
+After that, the open decision is whether to build Orchestrator Production Plan v0.2 (the Stage C enablers). The historical pickup notes below are kept for the record but no longer describe the frontier.
 
 ## Conversational History
 
@@ -330,7 +318,7 @@ The pattern of the conversation itself was the first concrete instance of the sy
 
 - **[[BBS Blackboard]]** — the communication substrate the Steward uses
 - **[[Palace Agent Infrastructure Spec]]** — the canonical technical foundation
-- **[[BBS Production Plan]]** — the build-contract template Stage B should follow
+- **BBS Production Plan** — the build-contract template Stage B should follow
 - **[[Substrate Skill]]** — the operating posture for stage-conditional agent work
 - **[[Trickster]]** — the role Loudon (or a future automated proxy) plays in triage
 - **[[Pages as Agents]]** — the philosophical foundation: every page is also an agent

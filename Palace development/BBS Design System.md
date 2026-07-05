@@ -36,9 +36,6 @@ links:
   - target: "[[Progressive Staging]]"
     type: mirrors
     label: phased-build
-  - target: "[[BBS Production Plan]]"
-    type: spawned
-    label: build-contract
 ---
 
 # BBS Design System

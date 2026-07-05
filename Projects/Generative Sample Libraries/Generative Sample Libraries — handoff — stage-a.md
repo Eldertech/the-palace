@@ -74,7 +74,7 @@ Two clean branches based on what Loudon wants next.
 
 **Branch A — Phase 3 source direction (most likely):** Loudon picks the first non-Kokoro source for Phase 3. The Interview skill is the entry path for whichever source he picks. Likely candidates from the project page priority list: local WAV folder, palace synthesis (Crystal Synthesizer), AI audio sub-agents (Stable Audio Open / MusicGen), web library. Cycle 6 spawns and posts a `RESOURCE_REQUEST` to TRICKSTER asking which source to start with — `blocking: false`, with the project's named priority list as the options.
 
-**Branch B — Pause this Steward, start another:** the Stewardship pilot has now produced enough evidence (5 cycles, 13 spec gaps, a complete multi-cycle initiative end-to-end) to scope Stage B. Cycle 6 could be: write the Stage B Production Plan modeled on [[BBS Production Plan]]. Or: pick a different palace project and spawn its Steward to test the system on a second case.
+**Branch B — Pause this Steward, start another:** the Stewardship pilot has now produced enough evidence (5 cycles, 13 spec gaps, a complete multi-cycle initiative end-to-end) to scope Stage B. Cycle 6 could be: write the Stage B Production Plan modeled on BBS Production Plan. Or: pick a different palace project and spawn its Steward to test the system on a second case.
 
 **Branch C — Steward reads "no directive" and goes quiet:** the inbox is empty; nothing to do until Loudon points. Cycle 6 doesn't run.
 
@@ -91,7 +91,7 @@ Ask Loudon "fire cycle 6 — Phase 3 direction, or Stage B Production Plan, or p
 
 ## Stage B is queued but unstarted
 
-The 13 spec gaps + 6 content findings across cycles 1–5 are now sufficient to scope Stage B's Production Plan in the autonomous-build-contract shape of [[BBS Production Plan]]. Don't start Stage B without explicit go-ahead from Loudon — it's its own multi-day commitment.
+The 13 spec gaps + 6 content findings across cycles 1–5 are now sufficient to scope Stage B's Production Plan in the autonomous-build-contract shape of BBS Production Plan. Don't start Stage B without explicit go-ahead from Loudon — it's its own multi-day commitment.
 
 ---
 

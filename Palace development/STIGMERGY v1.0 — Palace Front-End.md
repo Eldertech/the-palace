@@ -17,9 +17,6 @@ links:
   - target: "[[BBS Design System]]"
     type: connects-to
     label: locked-aesthetic
-  - target: "[[BBS Production Plan]]"
-    type: mirrors
-    label: autonomous-build-contract-idiom
   - target: "[[Two Batons, One Board]]"
     type: deepens
     label: retro-prospective-split-becomes-the-ui
@@ -56,7 +53,7 @@ forward_vector: "I want to become the single terminal Loudon lives in — to end
 
 # STIGMERGY v1.0 — Palace Front-End
 
-> *Design specification and autonomous-build contract. Written in the [[BBS Production Plan]] idiom: a thesis, a precise interaction model, a precise commit specification, and phased build gates a later Claude Code session can execute. The locked visual language is [[BBS Design System]] — phosphor on black, VT323 + IBM Plex Mono, CP437-evoked borders, `steps()` motion, color as signal. This document changes nothing about the aesthetic; it changes the architecture the aesthetic dresses.*
+> *Design specification and autonomous-build contract. Written in the BBS Production Plan idiom: a thesis, a precise interaction model, a precise commit specification, and phased build gates a later Claude Code session can execute. The locked visual language is [[BBS Design System]] — phosphor on black, VT323 + IBM Plex Mono, CP437-evoked borders, `steps()` motion, color as signal. This document changes nothing about the aesthetic; it changes the architecture the aesthetic dresses.*
 
 ## Thesis
 
@@ -318,7 +315,7 @@ The consolidation — decisions on one surface (TRICKSTER), QUEUE as the open-wo
 
 ## Build Plan (autonomous-build-contract, phased with verify gates)
 
-Built on the existing v0.4 app (`_ops/stigmergy/app/`), in the [[BBS Production Plan]] pattern: each phase ends at a gate of `npm test` green **plus** a vision-capable validator subagent confirming the screen against a checklist; on failure, iterate to a cap, else write a `STOP-REPORT.md`. The aesthetic is locked to [[BBS Design System]] throughout. Order is **read before write before reconcile** — the safe order.
+Built on the existing v0.4 app (`_ops/stigmergy/app/`), in the BBS Production Plan pattern: each phase ends at a gate of `npm test` green **plus** a vision-capable validator subagent confirming the screen against a checklist; on failure, iterate to a cap, else write a `STOP-REPORT.md`. The aesthetic is locked to [[BBS Design System]] throughout. Order is **read before write before reconcile** — the safe order.
 
 | Phase | Deck | Builds | Reuses | Gate |
 |---|---|---|---|---|
@@ -357,7 +354,7 @@ I want to be the terminal Loudon opens instead of choosing between Obsidian and 
 - **[[Project Stewardship System]]** — the stewards QUEUE triages; Stage C/E it renders but does not replace.
 - **[[Closing Well]]** — reviewing the diff in LOG is the audition.
 - **[[SCHEMA]]** — the type system the forms enforce and the LOG diffs render field-by-field.
-- **[[BBS Production Plan]]** — the autonomous-build-contract idiom this follows.
+- **BBS Production Plan** — the autonomous-build-contract idiom this follows.
 
 ## Active Handoff
 
