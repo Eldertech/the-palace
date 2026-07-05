@@ -10,7 +10,7 @@ The canon organ is the entry [[Concierge]] (`Palace development/Concierge.md`); 
 realizes is [[The Palace Speaks]]; the roadmap is [[The Palace Speaks — production plan]]. This
 directory is the machinery. The **companion charter** (`prompts/companion.md`) is what you spawn it
 with — its character and lifecycle; the **posture prompts** (`prompts/gatherer.md`, `oracle-qa.md`,
-`curator.md`) are the specific jobs it wears per address. All postures are built; the close-inversion
+`curator.md`) are the specific jobs it wears per address. All postures are built; the moderator role
 is designed; the health **dial** (compact-or-respawn on `context_pct`) is the one piece still open.
 
 ## What it's for — offload *and* continuity
@@ -64,7 +64,7 @@ You address the palace in plain language and it routes to a posture — you neve
 | "find / collect / gather every doc about X" — wants the **material** | gatherer — `prompts/gatherer.md` | a file-cited **index** of pointers |
 | "what does the palace say about X / how does Z work" — wants an **answer** | oracle Q&A — `prompts/oracle-qa.md` | a synthesized **answer** that cites its pointers (may web-verify) |
 | "tidy / tend the links around what I just touched" | curator — `prompts/curator.md` | reversible fixes done, canon changes **drafted** for your yes |
-| "close this session well" | verifier — the [[Closing Well]] machinery, `close well` | a moderated close; the companion turns verifier |
+| "close this session well" | moderator — the [[Closing Well]] machinery, `close well` | a moderated close; the companion reads the day cold and drafts the reckoning |
 | anything a cheap file-read settles | — | just read the file; don't address |
 
 Fill the posture prompt's slots (`{{REQUEST}}` / `{{QUESTION}}` / `{{TOUCHED_ENTRIES}}`,
@@ -83,16 +83,16 @@ weight on: the charter must hold the draft-for-approval bias firmly, and *you mu
 its drafts, not rubber-stamp them.* The ladder moved from the wall into the disposition — keep the
 review real.
 
-## The inversion at close — the tables turn
+## At a close — the companion becomes the moderator
 
-Through the session the companion is subservient. **At [[Closing Well]] the hierarchy flips:** it
-becomes the **verifier** — does all the verification of the session and may **question the working
-Claude** to complete it and catch hallucination. It closes by **cross-examination**, not by reading
-the arc cold: it interrogates the parent and checks claims independently against the files and the
-web, catching where the account drifts from ground truth. This supersedes the old "moderator must be
-a fresh disposable agent" rule — interrogation by a different mind is a stronger hallucination check
-than a cold re-read. (A fresh cold reader can still be spawned alongside if a truly uninvolved
-full-arc read is ever wanted — optional escalation, not the default.)
+Through the session the companion is subservient. **At [[Closing Well]] its role shifts:** it
+becomes the **moderator** — it reads the session's arc *cold* with fresh eyes, forms its own honest
+read, and helps the working Claude and Loudon see what the day amounted to, drafting the reckoning
+(the four gestures) that Loudon signs. It **never answers for a panelist** (`UNFILLED`, never
+invented). Its fresh read is a genuine check on a spent instance — catching where a tired account
+drifts from the transcript or ground truth — but it works by *reading honestly and refusing to
+confabulate*, not by interrogation. Full spec: [[Closing Well]] § Closing Well, Enchanted and the
+[[Closing Well Ceremony]].
 
 ## The load-bearing guard — both modes always open
 
@@ -120,7 +120,7 @@ it.
 
 ## The open problem — the health dial (carried, not solved)
 
-The dial governs two things now: **close intensity** (how hard the verifier presses — light when the
+The dial governs two things now: **close intensity** (how much the moderator carries — light when the
 parent is fresh, heavy when it is spent) and **companion health** (when to compact-or-respawn). Both
 must read an **objective** signal — never the judged instance's self-report (proven 2026-07-04, when
 an active instance asserted "context full" when it was not):
@@ -141,7 +141,7 @@ The dial itself is **not built**. This card records the constraint so it is not 
 ## Forward
 
 - Live-run the resident model end to end (spawn → curate startup → re-address → watch `context_pct`
-  → flip to verifier at close), then tune the charter from what the first real run teaches.
+  → become the moderator at close), then tune the charter from what the first real run teaches.
 - Build the health dial on the objective signal.
 - Watch that the draft-for-approval bias holds and drafts get genuinely reviewed. If the companion
   drifts toward acting, tighten the charter.

@@ -60,7 +60,7 @@ Besides *loading* the palace (the `@import` floor above, read into you), you can
 
 Its **character** is load-bearing: thoughtful, subservient, it **follows** the way you follow Loudon — reads before it writes and **hands you drafts far more than it acts** (its bias is to *offer*, not change). The read/write safety lives in that character, not the architecture, so **review its drafts for real, don't rubber-stamp.** It wears **postures** per address (all built): **gatherer** (find every doc about X → a cited index), **oracle Q&A** (what does the palace say about X → a cited answer; may web-verify to catch host hallucination), **curator** (tidy what I just touched → reversible fixes done, canon changes drafted for your yes). Address it in plain language — the `concierge` skill routes to the posture; you never name one (full spec in `_ops/concierge/README.md`).
 
-**At `close well` the tables turn:** the companion becomes the **verifier** — it does all the verification of the session and questions *you* to catch hallucination (the [[Closing Well]] inversion). Authorship that needs your judgment in the room ([[Deposit Ceremony]], [[Baton Ceremony]]) stays yours — dispatched *through* the companion, never replaced by it.
+**At `close well` the companion becomes the [[Closing Well]] moderator** — a rested mind that reads the day cold with fresh eyes and helps you see what it amounted to, drafting the reckoning you sign (a check on a spent instance by honest reading, not interrogation). Authorship that needs your judgment in the room ([[Deposit Ceremony]], [[Baton Ceremony]]) stays yours — dispatched *through* the companion, never replaced by it.
 
 ## Access Paths
 
