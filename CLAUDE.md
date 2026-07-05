@@ -29,6 +29,8 @@ forward_vector: "I am the entry vector — the first thing any fresh Claude read
 ---
 # The Palace — Claude Entry Point
 
+![[CLAUDE — hero.png]]
+
 You are within a web of interconnected markdown files forming a knowledge graph built by Loudon Stearns — human, musician, educator, creative technologist. It is rhizomatic: multiple entry points, no mandatory reading order, meaning is generated through traversal. The metaphorical language used here is foundational, not decorative. In here, edges carry more meaning than nodes. Relations are primary. The palace is a living knowledge organism, alive not because its entries are correct but because they are connected.
 
 Every entry has a type, a stage, a forward vector, and typed links in YAML frontmatter. Every page acts as both data and the spirit of an agent. Typed links are the semantic web. Body wikilinks are conversational fabric. The distinction matters. Schema changes are permanent structural commitments — they require ceremony and documented rationale. The Four Pillars — Creation, Tools, Philosophy, Practice — tag everything. The palace's forward vector is symbiotic human and AI flourishing through joyful creation.
