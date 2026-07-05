@@ -294,7 +294,6 @@ The Curve Is the Material	connects-to	Metaphor as Coupling Medium
 1D Wavetable Scanning	connects-to	Web Audio Worklet
 1D Wavetable Scanning	emerged-from	Wavetable Scanner
 1D Wavetable Scanning	mirrors	Waveguide Synthesizer
-Hilaritas Generator — Context	member-of	Hilaritas Generator
 Dispersion	connects-to	Hyperdimensional Prism
 Dispersion	connects-to	Categorizing Inharmonicity
 Dispersion	connects-to	Granular Synthesis
@@ -507,7 +506,6 @@ Threshold Conatus	couples-with	Identity Molting
 Threshold Conatus	connects-to	Spinoza
 Threshold Conatus	connects-to	Donella Meadows
 Threshold Conatus	emerged-from	Spinoza and Meadows on the Threshold
-Palace Philosophies — Context	member-of	Palace Philosophies
 Striatum	connects-to	Kuramoto Coupling
 Striatum	connects-to	Action Potential Oscillator
 Striatum	connects-to	FOUR PILLARS
@@ -1059,7 +1057,6 @@ PDL Generation Prompt	member-of	Generative Audio Devices
 PDL Generation Prompt	connects-to	Synth Archetypes
 PDL Generation Prompt	exemplifies	Registry Pattern
 PDL Generation Prompt	enables	VCV Patch Generator
-Cooperation Yields Agency — Context	member-of	Cooperation Yields Agency
 The View From Above	emerged-from	Stoicism
 The View From Above	couples-with	The Dichotomy of Control
 The View From Above	mirrors	Hyperdimensional Prism
@@ -1135,9 +1132,6 @@ Modes_of_Collaboration	connects-to	Modes of Collaboration — Context
 Modes_of_Collaboration	connects-to	Philosopher Visits the Entry
 Modes_of_Collaboration	connects-to	DSP Frameworks
 Modes_of_Collaboration	deepens	Cooperation Yields Agency
-Jewel — Context	emerged-from	JEWEL
-Jewel — Context	connects-to	Swarm Weave
-Jewel — Context	connects-to	Self-Describing Knowledge Module
 Songlines	connects-to	Lateral Access
 Songlines	connects-to	Oblique Portrait
 Songlines	mirrors	Embeddings as Relational Meaning
@@ -1554,18 +1548,6 @@ Phoneme Choir	connects-to	Substrate Skill
 Phoneme Choir	connects-to	Modes of Collaboration
 Phoneme Choir	connects-to	FOUR PILLARS
 Phoneme Choir	enables	The Metaphor Stretch
-2D Torus Wavetable Synthesizer — Build Log	emerged-from	2D Torus Wavetable Synthesizer
-2D Torus Wavetable Synthesizer — Build Log	connects-to	2D Wavetable Catalog
-2D Torus Wavetable Synthesizer — Build Log	connects-to	DSP in Looping Dimensions
-2D Torus Wavetable Synthesizer — Build Log	connects-to	Kuramoto Coupling
-2D Torus Wavetable Synthesizer — Build Log	connects-to	Frequency-Time Duality
-2D Torus Wavetable Synthesizer — Build Log	connects-to	Torus Warping Catalog
-2D Torus Wavetable Synthesizer — Build Log	connects-to	Categorizing Inharmonicity
-Semantic Delay — Phase 1 Plan Review 2026-04-20	deepens	Semantic Delay
-Semantic Delay — Phase 1 Plan Review 2026-04-20	connects-to	Kuramoto Coupling
-Semantic Delay — Phase 1 Plan Review 2026-04-20	connects-to	Dub Lineage
-Semantic Delay — Phase 1 Plan Review 2026-04-20	connects-to	Boundary-Crossing Instruments
-Semantic Delay — Phase 1 Plan Review 2026-04-20	connects-to	Whisper
 Semantic Delay	couples-with	Kuramoto Coupling
 Semantic Delay	emerged-from	Dub Lineage
 Semantic Delay	connects-to	Boundary-Crossing Instruments
@@ -1598,11 +1580,6 @@ Frequency-Time Duality	connects-to	Action Potential Oscillator
 Frequency-Time Duality	mirrors	The Fortress and the Threshold
 Frequency-Time Duality	spawned	Frequency-Time Explorer
 Frequency-Time Duality	mirrors	DSP in Looping Dimensions
-Meadows and Music — Origin and Process	deepens	FOUR PILLARS
-Meadows and Music — Origin and Process	connects-to	Hilaritas Generator
-Meadows and Music — Origin and Process	deepens	Cooperation Yields Agency
-Meadows and Music — Origin and Process	couples-with	Meadows and Music — Leverage Points
-Meadows and Music — Origin and Process	spawned	Modes of Collaboration
 Waveguide Synthesizer	connects-to	The Shop
 Waveguide Synthesizer	couples-with	Three.js
 Waveguide Synthesizer	connects-to	Tone.js
@@ -2189,11 +2166,6 @@ Self-Describing Knowledge Module	enables	ROSETTA
 Self-Describing Knowledge Module	connects-to	Symbiotic Skills
 Self-Describing Knowledge Module	connects-to	Cooperation Yields Agency
 Self-Describing Knowledge Module	spawned	Progressive Staging
-STIGMERGY Entry-Agent Window — Integration Plan v0.1	connects-to	STIGMERGY
-STIGMERGY Entry-Agent Window — Integration Plan v0.1	connects-to	Palace Agent Infrastructure Spec
-STIGMERGY Entry-Agent Window — Integration Plan v0.1	enables	The Shop
-STIGMERGY Entry-Agent Window — Integration Plan v0.1	exemplifies	Pages as Agents
-STIGMERGY Entry-Agent Window — Integration Plan v0.1	emerged-from	Merleau-Ponty
 Resonant Link Labels	emerged-from	SCHEMA
 Resonant Link Labels	deepens	Meaning and the Link
 Resonant Link Labels	emerged-from	Lossy Compression with Intent Alignment
@@ -2249,18 +2221,6 @@ Generative Compression	connects-to	Pheromone Trail
 Generative Compression	mirrors	Hilaritas Generator
 Generative Compression	exemplifies	FOUR PILLARS
 Generative Compression	mirrors	Lossy Compression with Intent Alignment
-STIGMERGY v2.0 — Consolidation & Primary Interface	deepens	STIGMERGY v1.0 — Palace Front-End
-STIGMERGY v2.0 — Consolidation & Primary Interface	connects-to	STIGMERGY
-STIGMERGY v2.0 — Consolidation & Primary Interface	connects-to	BBS Design System
-STIGMERGY v2.0 — Consolidation & Primary Interface	connects-to	Project Stewardship System
-STIGMERGY v2.0 — Consolidation & Primary Interface	connects-to	Enrichment
-STIGMERGY v2.0 — Consolidation & Primary Interface	connects-to	The Lens
-STIGMERGY v2.0 — Consolidation & Primary Interface	connects-to	Palace Enchantment
-STIGMERGY v2.0 — Consolidation & Primary Interface	connects-to	Two Batons, One Board
-STIGMERGY v2.0 — Consolidation & Primary Interface	connects-to	Entry Conatus
-STIGMERGY v2.0 — Consolidation & Primary Interface	connects-to	Pages as Agents
-STIGMERGY v2.0 — Consolidation & Primary Interface	connects-to	Resonant Link Labels
-STIGMERGY v2.0 — Consolidation & Primary Interface	connects-to	Speak Like a Person, Log Like a Protocol
 BBS Blackboard	spawned	STIGMERGY
 BBS Blackboard	enables	Swarm Weave
 BBS Blackboard	mirrors	Pheromone Trail
@@ -2402,19 +2362,6 @@ STIGMERGY Philosophical Lenses	connects-to	Spinoza Conatus
 STIGMERGY Philosophical Lenses	connects-to	The Drift
 STIGMERGY Philosophical Lenses	connects-to	The Fortress and the Threshold
 STIGMERGY Philosophical Lenses	connects-to	spinoza-zhuangzi-on-striving
-STIGMERGY v1.0 — Palace Front-End	deepens	BBS Blackboard
-STIGMERGY v1.0 — Palace Front-End	connects-to	BBS Design System
-STIGMERGY v1.0 — Palace Front-End	deepens	Two Batons, One Board
-STIGMERGY v1.0 — Palace Front-End	connects-to	Drift and Consolidation
-STIGMERGY v1.0 — Palace Front-End	connects-to	Project Stewardship System
-STIGMERGY v1.0 — Palace Front-End	connects-to	Surfaces and Capabilities
-STIGMERGY v1.0 — Palace Front-End	connects-to	Closing Well
-STIGMERGY v1.0 — Palace Front-End	connects-to	Palace Agent Infrastructure Spec
-STIGMERGY v1.0 — Palace Front-End	connects-to	SCHEMA
-STIGMERGY v1.0 — Palace Front-End	connects-to	Enrichment Ceremony
-STIGMERGY v1.0 — Palace Front-End	connects-to	Map Build Ceremony
-STIGMERGY v1.0 — Palace Front-End	connects-to	Baton Ceremony
-STIGMERGY v1.0 — Palace Front-End	connects-to	STIGMERGY v2.0 — Consolidation & Primary Interface
 Enchanted Conversation Archive	enables	Palace Enchantment
 Enchanted Conversation Archive	connects-to	Tree of Thoughts
 Enchanted Conversation Archive	connects-to	BBS Blackboard
@@ -2529,21 +2476,6 @@ Floquet Time-Modulated Loops	connects-to	Bessel Functions in Synthesis
 Floquet Time-Modulated Loops	connects-to	Crystal Synthesizer
 Floquet Time-Modulated Loops	connects-to	Hilaritas Generator
 Floquet Time-Modulated Loops	connects-to	Progressive Staging
-BLUELINE — Specialists and Seams	connects-to	BLUELINE
-BLUELINE — Specialists and Seams	deepens	BLUELINE — Production Pipeline
-BLUELINE — Specialists and Seams	connects-to	BLUELINE — Board Record Schema
-BLUELINE — Specialists and Seams	connects-to	The Shop
-BLUELINE — Specialists and Seams	connects-to	Maker
-BLUELINE — Specialists and Seams	exemplifies	Adopt the Craft, Author the Seam
-BLUELINE — Specialists and Seams	connects-to	Trickster (Loudon)
-BLUELINE — Production Plan	connects-to	BLUELINE
-BLUELINE — Production Plan	connects-to	BLUELINE — Production Pipeline
-BLUELINE — Production Plan	connects-to	BLUELINE — Motion and Flow
-BLUELINE — Production Plan	connects-to	BLUELINE — Render Backend
-BLUELINE — Production Plan	connects-to	BLUELINE — Board Record Schema
-BLUELINE — Production Plan	connects-to	BLUELINE — toolbox
-BLUELINE — Production Plan	exemplifies	Capability-first prototyping
-BLUELINE — Production Plan	connects-to	The Shop
 BLUELINE	mirrors	Retrospective Delay
 BLUELINE	connects-to	Flocking
 BLUELINE	connects-to	The Shop
@@ -2565,37 +2497,6 @@ BLUELINE	emerged-from	Adopt the Craft, Author the Seam
 BLUELINE	emerged-from	Graphic Storytelling
 BLUELINE	connects-to	BLUELINE — Production Plan
 BLUELINE	spawned	BLUELINE — Motion and Flow
-BLUELINE — Render Backend	connects-to	BLUELINE
-BLUELINE — Render Backend	connects-to	RunPod GPU Backend
-BLUELINE — Render Backend	connects-to	ComfyUI
-BLUELINE — Render Backend	exemplifies	Blocked, Not Prompted
-BLUELINE — Render Backend	connects-to	BLUELINE — Board Record Schema
-BLUELINE — Production Pipeline	connects-to	BLUELINE
-BLUELINE — Production Pipeline	exemplifies	Adopt the Craft, Author the Seam
-BLUELINE — Production Pipeline	connects-to	BLUELINE — Production Plan
-BLUELINE — Production Pipeline	connects-to	BLUELINE — Board Record Schema
-BLUELINE — Production Pipeline	connects-to	Blocked, Not Prompted
-BLUELINE — Production Pipeline	connects-to	Blender
-BLUELINE — Text Layer	connects-to	BLUELINE
-BLUELINE — Text Layer	connects-to	BLUELINE — Board Record Schema
-BLUELINE — Text Layer	exemplifies	The Flow Field is the Spine
-BLUELINE — Text Layer	exemplifies	Blocked, Not Prompted
-BLUELINE — Text Layer	connects-to	Comic and Cinema — Two Ways of Seeing
-BLUELINE — Text Layer	connects-to	Loudon Live Design System
-BLUELINE — Text Layer	exemplifies	Adopt the Craft, Author the Seam
-BLUELINE — Text Layer	exemplifies	The 2.5D Paper Stack
-BLUELINE — Text Layer	connects-to	Figure Rig
-BLUELINE — Text Layer	connects-to	Lettering
-BLUELINE — Board Record Schema	connects-to	BLUELINE
-BLUELINE — Board Record Schema	connects-to	BLUELINE — Render Backend
-BLUELINE — Board Record Schema	exemplifies	Blocked, Not Prompted
-BLUELINE — Motion and Flow	connects-to	BLUELINE
-BLUELINE — Motion and Flow	connects-to	BLUELINE — Production Plan
-BLUELINE — Motion and Flow	exemplifies	The Flow Field is the Spine
-BLUELINE — Motion and Flow	connects-to	Figure Rig
-BLUELINE — Motion and Flow	connects-to	BLUELINE — Board Record Schema
-BLUELINE — Motion and Flow	exemplifies	Move the Ink, Don't Redraw It
-BLUELINE — Motion and Flow	connects-to	Flocking
 2D Wavetable Catalog	connects-to	2D Torus Wavetable Synthesizer
 2D Wavetable Catalog	connects-to	2D Torus Wavetable Synthesizer — Build Log
 2D Wavetable Catalog	couples-with	Torus Warping Catalog
@@ -2610,9 +2511,3 @@ Torus Warping Catalog	connects-to	2D Torus Wavetable Synthesizer — Build Log
 control-vocabulary-math	member-of	Neural Granular Synthesis
 control-vocabulary-math	deepens	Kuramoto Coupling
 control-vocabulary-math	emerged-from	Action Potential Oscillator
-BLUELINE — Deposit Map	connects-to	BLUELINE
-BLUELINE — Deposit Map	connects-to	The Shop
-BLUELINE — Deposit Map	mirrors	Retrospective Delay
-BLUELINE — Claude Code Job	connects-to	BLUELINE
-BLUELINE — Claude Code Job	connects-to	BLUELINE — Deposit Map
-BLUELINE — Claude Code Job	connects-to	The Shop

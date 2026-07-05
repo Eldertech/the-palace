@@ -2,9 +2,9 @@
   "meta": {
     "generated": "2026-07-04",
     "scope": "full",
-    "node_count": 325,
+    "node_count": 306,
     "ops_node_count": 42,
-    "edge_count": 2617,
+    "edge_count": 2512,
     "ghost_taxonomy": {
       "error_ghosts": [],
       "ops_ghosts": [
@@ -12,7 +12,6 @@
         "Closing Well Ceremony",
         "Deposit Ceremony",
         "Harvest Ceremony",
-        "Map Build Ceremony",
         "Pages as Agents",
         "Palace Ceremonies",
         "Palace Graffiti",
@@ -27,6 +26,14 @@
         "Weave Ceremony"
       ],
       "forward_ghosts": [
+        {
+          "target": "2D Torus Wavetable Synthesizer \u2014 Build Log",
+          "sources": [
+            "2D Torus Wavetable Synthesizer",
+            "2D Wavetable Catalog",
+            "Torus Warping Catalog"
+          ]
+        },
         {
           "target": "3D LUT Color Grading",
           "sources": [
@@ -46,9 +53,45 @@
           ]
         },
         {
-          "target": "BLUELINE \u2014 toolbox",
+          "target": "BLUELINE \u2014 Board Record Schema",
           "sources": [
-            "BLUELINE \u2014 Production Plan"
+            "Frame Designer",
+            "BLUELINE"
+          ]
+        },
+        {
+          "target": "BLUELINE \u2014 Motion and Flow",
+          "sources": [
+            "The Flow Field is the Spine",
+            "The Aftermath Frame",
+            "BLUELINE"
+          ]
+        },
+        {
+          "target": "BLUELINE \u2014 Production Pipeline",
+          "sources": [
+            "Frame Designer"
+          ]
+        },
+        {
+          "target": "BLUELINE \u2014 Production Plan",
+          "sources": [
+            "LoRA Trainer",
+            "BLUELINE"
+          ]
+        },
+        {
+          "target": "BLUELINE \u2014 Render Backend",
+          "sources": [
+            "BLUELINE"
+          ]
+        },
+        {
+          "target": "BLUELINE \u2014 Text Layer",
+          "sources": [
+            "Typography as Meaning",
+            "The 2.5D Paper Stack",
+            "Lettering"
           ]
         },
         {
@@ -62,8 +105,7 @@
           "sources": [
             "Steer the Generator",
             "LoRA Trainer",
-            "RunPod GPU Backend",
-            "BLUELINE \u2014 Production Plan"
+            "RunPod GPU Backend"
           ]
         },
         {
@@ -92,15 +134,16 @@
           ]
         },
         {
-          "target": "Crystal Sonification Reference",
+          "target": "Cooperation Yields Agency \u2014 Context",
           "sources": [
-            "Crystal Synthesizer"
+            "Cooperation_Yields_Agency",
+            "Cooperation Yields Agency"
           ]
         },
         {
-          "target": "Enrichment Ceremony",
+          "target": "Crystal Sonification Reference",
           "sources": [
-            "STIGMERGY v1.0 \u2014 Palace Front-End"
+            "Crystal Synthesizer"
           ]
         },
         {
@@ -135,9 +178,22 @@
           ]
         },
         {
+          "target": "Hilaritas Generator \u2014 Context",
+          "sources": [
+            "Hilaritas_Generator",
+            "Hilaritas Generator"
+          ]
+        },
+        {
           "target": "Inharmonicity",
           "sources": [
             "Wavetable Synthesis -- Research & Higher-Dimensional Design"
+          ]
+        },
+        {
+          "target": "Jewel \u2014 Context",
+          "sources": [
+            "JEWEL"
           ]
         },
         {
@@ -177,6 +233,14 @@
           ]
         },
         {
+          "target": "Meadows and Music \u2014 Origin and Process",
+          "sources": [
+            "Meadows and Music \u2014 Leverage Points",
+            "Meadows and an Artist's Career",
+            "Donella Meadows"
+          ]
+        },
+        {
           "target": "Modes of Collaboration \u2014 Context",
           "sources": [
             "Modes of Collaboration",
@@ -187,6 +251,13 @@
           "target": "Multiplane Animation",
           "sources": [
             "The 2.5D Paper Stack"
+          ]
+        },
+        {
+          "target": "Palace Philosophies \u2014 Context",
+          "sources": [
+            "Palace_Philosophies",
+            "Palace Philosophies"
           ]
         },
         {
@@ -205,6 +276,30 @@
           "target": "Resonance and Damping",
           "sources": [
             "Differential Equations"
+          ]
+        },
+        {
+          "target": "STIGMERGY v1.0 \u2014 Palace Front-End",
+          "sources": [
+            "Whitehead",
+            "Merleau-Ponty",
+            "Speak Like a Person, Log Like a Protocol",
+            "Deleuze",
+            "STIGMERGY Philosophical Lenses"
+          ]
+        },
+        {
+          "target": "STIGMERGY v2.0 \u2014 Consolidation & Primary Interface",
+          "sources": [
+            "Enrichment",
+            "The Reader's Context Window",
+            "STIGMERGY"
+          ]
+        },
+        {
+          "target": "Semantic Delay \u2014 Phase 1 Plan Review 2026-04-20",
+          "sources": [
+            "Semantic Delay"
           ]
         },
         {
@@ -254,8 +349,7 @@
         {
           "target": "Trickster (Loudon)",
           "sources": [
-            "Maker",
-            "BLUELINE \u2014 Specialists and Seams"
+            "Maker"
           ]
         },
         {
@@ -310,19 +404,8 @@
       "has_forward_vector": true,
       "last_activated": null,
       "activation_count": null,
-      "outbound_count": 13,
-      "inbound_count": 26
-    },
-    {
-      "id": "2D Torus Wavetable Synthesizer \u2014 Build Log",
-      "path": "Projects/2D Torus Wavetable Synthesizer \u2014 Build Log.md",
-      "type": "meta",
-      "stage": "growing",
-      "has_forward_vector": false,
-      "last_activated": null,
-      "activation_count": null,
-      "outbound_count": 7,
-      "inbound_count": 3
+      "outbound_count": 12,
+      "inbound_count": 25
     },
     {
       "id": "2D Wavetable Catalog",
@@ -332,8 +415,8 @@
       "has_forward_vector": true,
       "last_activated": null,
       "activation_count": null,
-      "outbound_count": 3,
-      "inbound_count": 5
+      "outbound_count": 2,
+      "inbound_count": 4
     },
     {
       "id": "4 Pillars Framework - The Founding Conversation",
@@ -366,7 +449,7 @@
       "last_activated": "2026-06-26",
       "activation_count": "2",
       "outbound_count": 7,
-      "inbound_count": 11
+      "inbound_count": 8
     },
     {
       "id": "Agent Wellbeing",
@@ -465,7 +548,7 @@
       "last_activated": "2026-05-02",
       "activation_count": "3",
       "outbound_count": 12,
-      "inbound_count": 22
+      "inbound_count": 21
     },
     {
       "id": "BBS Design System",
@@ -476,7 +559,7 @@
       "last_activated": "2026-05-02",
       "activation_count": "2",
       "outbound_count": 7,
-      "inbound_count": 13
+      "inbound_count": 11
     },
     {
       "id": "BLUELINE",
@@ -486,107 +569,8 @@
       "has_forward_vector": true,
       "last_activated": "2026-06-26",
       "activation_count": "5",
-      "outbound_count": 21,
-      "inbound_count": 28
-    },
-    {
-      "id": "BLUELINE \u2014 Board Record Schema",
-      "path": "Projects/BLUELINE/BLUELINE \u2014 Board Record Schema.md",
-      "type": "meta",
-      "stage": null,
-      "has_forward_vector": true,
-      "last_activated": null,
-      "activation_count": null,
-      "outbound_count": 3,
-      "inbound_count": 8
-    },
-    {
-      "id": "BLUELINE \u2014 Claude Code Job",
-      "path": "Projects/BLUELINE/Archive/BLUELINE \u2014 Claude Code Job.md",
-      "type": "meta",
-      "stage": null,
-      "has_forward_vector": true,
-      "last_activated": null,
-      "activation_count": null,
-      "outbound_count": 3,
-      "inbound_count": 0
-    },
-    {
-      "id": "BLUELINE \u2014 Deposit Map",
-      "path": "Projects/BLUELINE/Archive/BLUELINE \u2014 Deposit Map.md",
-      "type": "meta",
-      "stage": null,
-      "has_forward_vector": true,
-      "last_activated": null,
-      "activation_count": null,
-      "outbound_count": 3,
-      "inbound_count": 1
-    },
-    {
-      "id": "BLUELINE \u2014 Motion and Flow",
-      "path": "Projects/BLUELINE/BLUELINE \u2014 Motion and Flow.md",
-      "type": "meta",
-      "stage": null,
-      "has_forward_vector": true,
-      "last_activated": null,
-      "activation_count": null,
-      "outbound_count": 7,
-      "inbound_count": 4
-    },
-    {
-      "id": "BLUELINE \u2014 Production Pipeline",
-      "path": "Projects/BLUELINE/BLUELINE \u2014 Production Pipeline.md",
-      "type": "meta",
-      "stage": null,
-      "has_forward_vector": true,
-      "last_activated": null,
-      "activation_count": null,
-      "outbound_count": 6,
-      "inbound_count": 3
-    },
-    {
-      "id": "BLUELINE \u2014 Production Plan",
-      "path": "Projects/BLUELINE/BLUELINE \u2014 Production Plan.md",
-      "type": "meta",
-      "stage": null,
-      "has_forward_vector": true,
-      "last_activated": null,
-      "activation_count": null,
-      "outbound_count": 6,
-      "inbound_count": 4
-    },
-    {
-      "id": "BLUELINE \u2014 Render Backend",
-      "path": "Projects/BLUELINE/BLUELINE \u2014 Render Backend.md",
-      "type": "meta",
-      "stage": null,
-      "has_forward_vector": true,
-      "last_activated": null,
-      "activation_count": null,
-      "outbound_count": 5,
-      "inbound_count": 3
-    },
-    {
-      "id": "BLUELINE \u2014 Specialists and Seams",
-      "path": "Projects/BLUELINE/BLUELINE \u2014 Specialists and Seams.md",
-      "type": "meta",
-      "stage": null,
-      "has_forward_vector": true,
-      "last_activated": null,
-      "activation_count": null,
-      "outbound_count": 6,
-      "inbound_count": 0
-    },
-    {
-      "id": "BLUELINE \u2014 Text Layer",
-      "path": "Projects/BLUELINE/BLUELINE \u2014 Text Layer.md",
-      "type": "meta",
-      "stage": null,
-      "has_forward_vector": true,
-      "last_activated": null,
-      "activation_count": null,
-      "outbound_count": 10,
-      "inbound_count": 3
+      "outbound_count": 17,
+      "inbound_count": 19
     },
     {
       "id": "Bayesian Granular Synthesizer",
@@ -630,7 +614,7 @@
       "last_activated": null,
       "activation_count": null,
       "outbound_count": 6,
-      "inbound_count": 9
+      "inbound_count": 8
     },
     {
       "id": "Block It in Blender, Ink It in genAI",
@@ -652,7 +636,7 @@
       "last_activated": "2026-06-13",
       "activation_count": "1",
       "outbound_count": 4,
-      "inbound_count": 16
+      "inbound_count": 12
     },
     {
       "id": "Blood Compressor",
@@ -674,7 +658,7 @@
       "last_activated": "2026-06-05",
       "activation_count": "8",
       "outbound_count": 8,
-      "inbound_count": 38
+      "inbound_count": 37
     },
     {
       "id": "Brian Eno",
@@ -729,7 +713,7 @@
       "last_activated": "2026-03",
       "activation_count": "1",
       "outbound_count": 12,
-      "inbound_count": 13
+      "inbound_count": 12
     },
     {
       "id": "Chebyshev is Fourier",
@@ -773,7 +757,7 @@
       "last_activated": "2026-07-03",
       "activation_count": "2",
       "outbound_count": 10,
-      "inbound_count": 17
+      "inbound_count": 16
     },
     {
       "id": "ComfyUI",
@@ -784,7 +768,7 @@
       "last_activated": "2026-06-26",
       "activation_count": null,
       "outbound_count": 8,
-      "inbound_count": 11
+      "inbound_count": 10
     },
     {
       "id": "Comic and Cinema \u2014 Two Ways of Seeing",
@@ -795,7 +779,7 @@
       "last_activated": "2026-06",
       "activation_count": "1",
       "outbound_count": 6,
-      "inbound_count": 7
+      "inbound_count": 6
     },
     {
       "id": "Compression \u2194 Intimacy",
@@ -860,19 +844,8 @@
       "has_forward_vector": true,
       "last_activated": "2026-06-26",
       "activation_count": "16",
-      "outbound_count": 10,
-      "inbound_count": 48
-    },
-    {
-      "id": "Cooperation Yields Agency \u2014 Context",
-      "path": "Cooperation Yields Agency \u2014 Context.md",
-      "type": "meta",
-      "stage": "growing",
-      "has_forward_vector": true,
-      "last_activated": null,
-      "activation_count": null,
-      "outbound_count": 1,
-      "inbound_count": 2
+      "outbound_count": 9,
+      "inbound_count": 46
     },
     {
       "id": "Cooperation_Yields_Agency",
@@ -882,7 +855,7 @@
       "has_forward_vector": true,
       "last_activated": "2026-06-26",
       "activation_count": "16",
-      "outbound_count": 10,
+      "outbound_count": 9,
       "inbound_count": 0
     },
     {
@@ -949,7 +922,7 @@
       "last_activated": null,
       "activation_count": null,
       "outbound_count": 7,
-      "inbound_count": 16
+      "inbound_count": 15
     },
     {
       "id": "Deleuze",
@@ -959,7 +932,7 @@
       "has_forward_vector": true,
       "last_activated": "2026-05",
       "activation_count": "1",
-      "outbound_count": 14,
+      "outbound_count": 13,
       "inbound_count": 13
     },
     {
@@ -1069,7 +1042,7 @@
       "has_forward_vector": true,
       "last_activated": "2026-07",
       "activation_count": "3",
-      "outbound_count": 12,
+      "outbound_count": 11,
       "inbound_count": 8
     },
     {
@@ -1103,7 +1076,7 @@
       "last_activated": "2026-05-27",
       "activation_count": "1",
       "outbound_count": 3,
-      "inbound_count": 5
+      "inbound_count": 4
     },
     {
       "id": "Dub Lineage",
@@ -1114,7 +1087,7 @@
       "last_activated": null,
       "activation_count": null,
       "outbound_count": 4,
-      "inbound_count": 8
+      "inbound_count": 7
     },
     {
       "id": "Embeddings as Relational Meaning",
@@ -1168,8 +1141,8 @@
       "has_forward_vector": true,
       "last_activated": "2026-06-26",
       "activation_count": null,
-      "outbound_count": 8,
-      "inbound_count": 7
+      "outbound_count": 7,
+      "inbound_count": 6
     },
     {
       "id": "Entry Conatus",
@@ -1180,7 +1153,7 @@
       "last_activated": "2026-05",
       "activation_count": "1",
       "outbound_count": 5,
-      "inbound_count": 7
+      "inbound_count": 6
     },
     {
       "id": "Epictetus",
@@ -1235,7 +1208,7 @@
       "last_activated": "2026-06-26",
       "activation_count": "35",
       "outbound_count": 9,
-      "inbound_count": 120
+      "inbound_count": 119
     },
     {
       "id": "FOUR_PILLARS",
@@ -1257,7 +1230,7 @@
       "last_activated": null,
       "activation_count": null,
       "outbound_count": 7,
-      "inbound_count": 6
+      "inbound_count": 4
     },
     {
       "id": "Flocking",
@@ -1268,7 +1241,7 @@
       "last_activated": "2026-05-29",
       "activation_count": "2",
       "outbound_count": 10,
-      "inbound_count": 14
+      "inbound_count": 13
     },
     {
       "id": "Floquet Theory",
@@ -1311,7 +1284,7 @@
       "has_forward_vector": true,
       "last_activated": null,
       "activation_count": null,
-      "outbound_count": 14,
+      "outbound_count": 12,
       "inbound_count": 11
     },
     {
@@ -1334,7 +1307,7 @@
       "last_activated": "2026-03",
       "activation_count": "1",
       "outbound_count": 7,
-      "inbound_count": 31
+      "inbound_count": 30
     },
     {
       "id": "Frequency-Time Explorer",
@@ -1487,19 +1460,8 @@
       "has_forward_vector": true,
       "last_activated": "2026-06-26",
       "activation_count": "11",
-      "outbound_count": 14,
-      "inbound_count": 70
-    },
-    {
-      "id": "Hilaritas Generator \u2014 Context",
-      "path": "Hilaritas Generator \u2014 Context.md",
-      "type": "meta",
-      "stage": "growing",
-      "has_forward_vector": true,
-      "last_activated": null,
-      "activation_count": null,
-      "outbound_count": 1,
-      "inbound_count": 2
+      "outbound_count": 13,
+      "inbound_count": 68
     },
     {
       "id": "Hilaritas_Generator",
@@ -1509,7 +1471,7 @@
       "has_forward_vector": true,
       "last_activated": "2026-06-26",
       "activation_count": "11",
-      "outbound_count": 14,
+      "outbound_count": 13,
       "inbound_count": 0
     },
     {
@@ -1575,8 +1537,8 @@
       "has_forward_vector": false,
       "last_activated": null,
       "activation_count": null,
-      "outbound_count": 5,
-      "inbound_count": 4
+      "outbound_count": 4,
+      "inbound_count": 3
     },
     {
       "id": "JSUI",
@@ -1599,17 +1561,6 @@
       "activation_count": "2",
       "outbound_count": 4,
       "inbound_count": 2
-    },
-    {
-      "id": "Jewel \u2014 Context",
-      "path": "Jewel \u2014 Context.md",
-      "type": "meta",
-      "stage": "foundational",
-      "has_forward_vector": false,
-      "last_activated": null,
-      "activation_count": null,
-      "outbound_count": 3,
-      "inbound_count": 1
     },
     {
       "id": "John Cage",
@@ -1664,7 +1615,7 @@
       "last_activated": "2026-06-26",
       "activation_count": "18",
       "outbound_count": 19,
-      "inbound_count": 72
+      "inbound_count": 70
     },
     {
       "id": "LaMa",
@@ -1762,8 +1713,8 @@
       "has_forward_vector": true,
       "last_activated": "2026-06-26",
       "activation_count": null,
-      "outbound_count": 8,
-      "inbound_count": 2
+      "outbound_count": 7,
+      "inbound_count": 1
     },
     {
       "id": "Leverage Points Framework",
@@ -1817,7 +1768,7 @@
       "has_forward_vector": true,
       "last_activated": "2026-06",
       "activation_count": "1",
-      "outbound_count": 4,
+      "outbound_count": 3,
       "inbound_count": 0
     },
     {
@@ -1862,7 +1813,7 @@
       "last_activated": "2026-07-02",
       "activation_count": null,
       "outbound_count": 17,
-      "inbound_count": 19
+      "inbound_count": 18
     },
     {
       "id": "Loudon Live Post-producer",
@@ -1895,7 +1846,7 @@
       "last_activated": "2026-06-26",
       "activation_count": null,
       "outbound_count": 15,
-      "inbound_count": 42
+      "inbound_count": 41
     },
     {
       "id": "Making a Palace Citizen",
@@ -1960,19 +1911,8 @@
       "has_forward_vector": true,
       "last_activated": "2026-03",
       "activation_count": "1",
-      "outbound_count": 4,
-      "inbound_count": 6
-    },
-    {
-      "id": "Meadows and Music \u2014 Origin and Process",
-      "path": "Projects/Meadows and Music \u2014 Origin and Process.md",
-      "type": "source",
-      "stage": "growing",
-      "has_forward_vector": true,
-      "last_activated": "2026-03",
-      "activation_count": "1",
-      "outbound_count": 5,
-      "inbound_count": 3
+      "outbound_count": 3,
+      "inbound_count": 5
     },
     {
       "id": "Meadows and an Artist's Career",
@@ -1982,7 +1922,7 @@
       "has_forward_vector": true,
       "last_activated": "2026-05",
       "activation_count": "1",
-      "outbound_count": 3,
+      "outbound_count": 2,
       "inbound_count": 1
     },
     {
@@ -2015,8 +1955,8 @@
       "has_forward_vector": true,
       "last_activated": "2026-05",
       "activation_count": "1",
-      "outbound_count": 10,
-      "inbound_count": 8
+      "outbound_count": 9,
+      "inbound_count": 7
     },
     {
       "id": "Mermaid",
@@ -2082,7 +2022,7 @@
       "last_activated": "2026-06-26",
       "activation_count": null,
       "outbound_count": 13,
-      "inbound_count": 28
+      "inbound_count": 27
     },
     {
       "id": "Modes_of_Collaboration",
@@ -2104,7 +2044,7 @@
       "last_activated": "2026-06-26",
       "activation_count": "2",
       "outbound_count": 3,
-      "inbound_count": 4
+      "inbound_count": 3
     },
     {
       "id": "Murmuration",
@@ -2236,7 +2176,7 @@
       "last_activated": "2026-03-28",
       "activation_count": "1",
       "outbound_count": 16,
-      "inbound_count": 14
+      "inbound_count": 12
     },
     {
       "id": "Palace Conatus",
@@ -2258,7 +2198,7 @@
       "last_activated": null,
       "activation_count": null,
       "outbound_count": 17,
-      "inbound_count": 26
+      "inbound_count": 25
     },
     {
       "id": "Palace Orchestrator",
@@ -2279,19 +2219,8 @@
       "has_forward_vector": true,
       "last_activated": "2026-06-26",
       "activation_count": "4",
-      "outbound_count": 26,
-      "inbound_count": 18
-    },
-    {
-      "id": "Palace Philosophies \u2014 Context",
-      "path": "Palace Philosophies \u2014 Context.md",
-      "type": "meta",
-      "stage": "growing",
-      "has_forward_vector": true,
-      "last_activated": null,
-      "activation_count": null,
-      "outbound_count": 1,
-      "inbound_count": 2
+      "outbound_count": 25,
+      "inbound_count": 17
     },
     {
       "id": "Palace as Context Injection System",
@@ -2312,7 +2241,7 @@
       "has_forward_vector": true,
       "last_activated": "2026-06-26",
       "activation_count": "4",
-      "outbound_count": 26,
+      "outbound_count": 25,
       "inbound_count": 0
     },
     {
@@ -2467,7 +2396,7 @@
       "last_activated": "2026-05-26",
       "activation_count": "4",
       "outbound_count": 11,
-      "inbound_count": 20
+      "inbound_count": 18
     },
     {
       "id": "Quadratic Interpolation in DSP",
@@ -2621,7 +2550,7 @@
       "last_activated": "2026-06-05",
       "activation_count": "1",
       "outbound_count": 4,
-      "inbound_count": 4
+      "inbound_count": 3
     },
     {
       "id": "Retrospective Delay",
@@ -2632,7 +2561,7 @@
       "last_activated": "2026-03",
       "activation_count": "8",
       "outbound_count": 9,
-      "inbound_count": 11
+      "inbound_count": 10
     },
     {
       "id": "Reverb \u2194 Space-Time",
@@ -2676,7 +2605,7 @@
       "last_activated": "2026-07-02",
       "activation_count": "3",
       "outbound_count": 7,
-      "inbound_count": 8
+      "inbound_count": 7
     },
     {
       "id": "SAM",
@@ -2698,7 +2627,7 @@
       "last_activated": null,
       "activation_count": null,
       "outbound_count": 7,
-      "inbound_count": 13
+      "inbound_count": 12
     },
     {
       "id": "SMPTE LTC",
@@ -2719,19 +2648,8 @@
       "has_forward_vector": true,
       "last_activated": null,
       "activation_count": null,
-      "outbound_count": 9,
-      "inbound_count": 22
-    },
-    {
-      "id": "STIGMERGY Entry-Agent Window \u2014 Integration Plan v0.1",
-      "path": "Palace development/STIGMERGY Entry-Agent Window \u2014 Integration Plan v0.1.md",
-      "type": "meta",
-      "stage": null,
-      "has_forward_vector": false,
-      "last_activated": null,
-      "activation_count": null,
-      "outbound_count": 4,
-      "inbound_count": 0
+      "outbound_count": 8,
+      "inbound_count": 20
     },
     {
       "id": "STIGMERGY Philosophical Lenses",
@@ -2741,30 +2659,8 @@
       "has_forward_vector": true,
       "last_activated": null,
       "activation_count": null,
-      "outbound_count": 21,
+      "outbound_count": 20,
       "inbound_count": 8
-    },
-    {
-      "id": "STIGMERGY v1.0 \u2014 Palace Front-End",
-      "path": "Palace development/STIGMERGY v1.0 \u2014 Palace Front-End.md",
-      "type": "project",
-      "stage": "seed",
-      "has_forward_vector": true,
-      "last_activated": "2026-05-29",
-      "activation_count": "2",
-      "outbound_count": 10,
-      "inbound_count": 6
-    },
-    {
-      "id": "STIGMERGY v2.0 \u2014 Consolidation & Primary Interface",
-      "path": "Palace development/STIGMERGY v2.0 \u2014 Consolidation & Primary Interface.md",
-      "type": "project",
-      "stage": "sprout",
-      "has_forward_vector": true,
-      "last_activated": null,
-      "activation_count": null,
-      "outbound_count": 11,
-      "inbound_count": 4
     },
     {
       "id": "SUBSTRATE",
@@ -2819,7 +2715,7 @@
       "last_activated": "2026-03",
       "activation_count": "1",
       "outbound_count": 5,
-      "inbound_count": 5
+      "inbound_count": 4
     },
     {
       "id": "Semantic Delay",
@@ -2829,19 +2725,8 @@
       "has_forward_vector": true,
       "last_activated": null,
       "activation_count": null,
-      "outbound_count": 6,
-      "inbound_count": 8
-    },
-    {
-      "id": "Semantic Delay \u2014 Phase 1 Plan Review 2026-04-20",
-      "path": "Projects/Semantic Delay \u2014 Phase 1 Plan Review 2026-04-20.md",
-      "type": "concept",
-      "stage": "sprout",
-      "has_forward_vector": true,
-      "last_activated": null,
-      "activation_count": null,
       "outbound_count": 5,
-      "inbound_count": 1
+      "inbound_count": 7
     },
     {
       "id": "Semantic Webcam",
@@ -2994,8 +2879,8 @@
       "has_forward_vector": true,
       "last_activated": null,
       "activation_count": null,
-      "outbound_count": 5,
-      "inbound_count": 2
+      "outbound_count": 4,
+      "inbound_count": 1
     },
     {
       "id": "Spinoza",
@@ -3094,7 +2979,7 @@
       "last_activated": "2026-05-29",
       "activation_count": "2",
       "outbound_count": 5,
-      "inbound_count": 2
+      "inbound_count": 1
     },
     {
       "id": "Swarm Weave",
@@ -3105,7 +2990,7 @@
       "last_activated": "2026-03",
       "activation_count": "1",
       "outbound_count": 10,
-      "inbound_count": 19
+      "inbound_count": 18
     },
     {
       "id": "Symbiotic Skills",
@@ -3181,8 +3066,8 @@
       "has_forward_vector": true,
       "last_activated": "2026-07-01",
       "activation_count": "3",
-      "outbound_count": 6,
-      "inbound_count": 6
+      "outbound_count": 5,
+      "inbound_count": 5
     },
     {
       "id": "The Adjacent Affordance",
@@ -3203,7 +3088,7 @@
       "has_forward_vector": true,
       "last_activated": null,
       "activation_count": null,
-      "outbound_count": 7,
+      "outbound_count": 6,
       "inbound_count": 0
     },
     {
@@ -3280,8 +3165,8 @@
       "has_forward_vector": false,
       "last_activated": "2026-07-02",
       "activation_count": "3",
-      "outbound_count": 6,
-      "inbound_count": 8
+      "outbound_count": 5,
+      "inbound_count": 6
     },
     {
       "id": "The Fortress and the Threshold",
@@ -3314,7 +3199,7 @@
       "last_activated": "2026-07",
       "activation_count": "2",
       "outbound_count": 18,
-      "inbound_count": 2
+      "inbound_count": 1
     },
     {
       "id": "The Metaphor Stretch",
@@ -3379,7 +3264,7 @@
       "has_forward_vector": true,
       "last_activated": "2026-06-26",
       "activation_count": null,
-      "outbound_count": 5,
+      "outbound_count": 4,
       "inbound_count": 1
     },
     {
@@ -3413,7 +3298,7 @@
       "last_activated": "2026-06-26",
       "activation_count": "2",
       "outbound_count": 15,
-      "inbound_count": 54
+      "inbound_count": 49
     },
     {
       "id": "The Substrate Drifts",
@@ -3533,8 +3418,8 @@
       "has_forward_vector": true,
       "last_activated": null,
       "activation_count": null,
-      "outbound_count": 8,
-      "inbound_count": 4
+      "outbound_count": 7,
+      "inbound_count": 3
     },
     {
       "id": "Tract Mirror",
@@ -3600,7 +3485,7 @@
       "last_activated": "2026-07-03",
       "activation_count": "3",
       "outbound_count": 7,
-      "inbound_count": 5
+      "inbound_count": 3
     },
     {
       "id": "Typography as Meaning",
@@ -3610,7 +3495,7 @@
       "has_forward_vector": true,
       "last_activated": "2026-06-26",
       "activation_count": null,
-      "outbound_count": 8,
+      "outbound_count": 7,
       "inbound_count": 3
     },
     {
@@ -3743,7 +3628,7 @@
       "last_activated": null,
       "activation_count": null,
       "outbound_count": 4,
-      "inbound_count": 6
+      "inbound_count": 5
     },
     {
       "id": "Whitehead",
@@ -3753,7 +3638,7 @@
       "has_forward_vector": true,
       "last_activated": "2026-05",
       "activation_count": "1",
-      "outbound_count": 9,
+      "outbound_count": 8,
       "inbound_count": 8
     },
     {
@@ -5628,12 +5513,6 @@
       "label": "geometry-is-the-data"
     },
     {
-      "source": "Hilaritas Generator \u2014 Context",
-      "type": "member-of",
-      "target": "Hilaritas Generator",
-      "label": "context-companion"
-    },
-    {
       "source": "Dispersion",
       "type": "connects-to",
       "target": "Hyperdimensional Prism",
@@ -6904,12 +6783,6 @@
       "type": "emerged-from",
       "target": "Spinoza and Meadows on the Threshold",
       "label": "source-dialectic"
-    },
-    {
-      "source": "Palace Philosophies \u2014 Context",
-      "type": "member-of",
-      "target": "Palace Philosophies",
-      "label": "context-companion"
     },
     {
       "source": "Striatum",
@@ -10218,12 +10091,6 @@
       "label": "feeds-pdl-to"
     },
     {
-      "source": "Cooperation Yields Agency \u2014 Context",
-      "type": "member-of",
-      "target": "Cooperation Yields Agency",
-      "label": "context-companion"
-    },
-    {
       "source": "The View From Above",
       "type": "emerged-from",
       "target": "Stoicism",
@@ -10672,24 +10539,6 @@
       "type": "deepens",
       "target": "Cooperation Yields Agency",
       "label": "named-ways-to-cooperate"
-    },
-    {
-      "source": "Jewel \u2014 Context",
-      "type": "emerged-from",
-      "target": "JEWEL",
-      "label": null
-    },
-    {
-      "source": "Jewel \u2014 Context",
-      "type": "connects-to",
-      "target": "Swarm Weave",
-      "label": null
-    },
-    {
-      "source": "Jewel \u2014 Context",
-      "type": "connects-to",
-      "target": "Self-Describing Knowledge Module",
-      "label": null
     },
     {
       "source": "Songlines",
@@ -13188,78 +13037,6 @@
       "label": "tts-to-percussion-mapping"
     },
     {
-      "source": "2D Torus Wavetable Synthesizer \u2014 Build Log",
-      "type": "emerged-from",
-      "target": "2D Torus Wavetable Synthesizer",
-      "label": "chronicles"
-    },
-    {
-      "source": "2D Torus Wavetable Synthesizer \u2014 Build Log",
-      "type": "connects-to",
-      "target": "2D Wavetable Catalog",
-      "label": "documents"
-    },
-    {
-      "source": "2D Torus Wavetable Synthesizer \u2014 Build Log",
-      "type": "connects-to",
-      "target": "DSP in Looping Dimensions",
-      "label": null
-    },
-    {
-      "source": "2D Torus Wavetable Synthesizer \u2014 Build Log",
-      "type": "connects-to",
-      "target": "Kuramoto Coupling",
-      "label": null
-    },
-    {
-      "source": "2D Torus Wavetable Synthesizer \u2014 Build Log",
-      "type": "connects-to",
-      "target": "Frequency-Time Duality",
-      "label": null
-    },
-    {
-      "source": "2D Torus Wavetable Synthesizer \u2014 Build Log",
-      "type": "connects-to",
-      "target": "Torus Warping Catalog",
-      "label": null
-    },
-    {
-      "source": "2D Torus Wavetable Synthesizer \u2014 Build Log",
-      "type": "connects-to",
-      "target": "Categorizing Inharmonicity",
-      "label": null
-    },
-    {
-      "source": "Semantic Delay \u2014 Phase 1 Plan Review 2026-04-20",
-      "type": "deepens",
-      "target": "Semantic Delay",
-      "label": "pressure-tests"
-    },
-    {
-      "source": "Semantic Delay \u2014 Phase 1 Plan Review 2026-04-20",
-      "type": "connects-to",
-      "target": "Kuramoto Coupling",
-      "label": null
-    },
-    {
-      "source": "Semantic Delay \u2014 Phase 1 Plan Review 2026-04-20",
-      "type": "connects-to",
-      "target": "Dub Lineage",
-      "label": null
-    },
-    {
-      "source": "Semantic Delay \u2014 Phase 1 Plan Review 2026-04-20",
-      "type": "connects-to",
-      "target": "Boundary-Crossing Instruments",
-      "label": null
-    },
-    {
-      "source": "Semantic Delay \u2014 Phase 1 Plan Review 2026-04-20",
-      "type": "connects-to",
-      "target": "Whisper",
-      "label": null
-    },
-    {
       "source": "Semantic Delay",
       "type": "couples-with",
       "target": "Kuramoto Coupling",
@@ -13450,36 +13227,6 @@
       "type": "mirrors",
       "target": "DSP in Looping Dimensions",
       "label": "rhymes-with"
-    },
-    {
-      "source": "Meadows and Music \u2014 Origin and Process",
-      "type": "deepens",
-      "target": "FOUR PILLARS",
-      "label": null
-    },
-    {
-      "source": "Meadows and Music \u2014 Origin and Process",
-      "type": "connects-to",
-      "target": "Hilaritas Generator",
-      "label": null
-    },
-    {
-      "source": "Meadows and Music \u2014 Origin and Process",
-      "type": "deepens",
-      "target": "Cooperation Yields Agency",
-      "label": null
-    },
-    {
-      "source": "Meadows and Music \u2014 Origin and Process",
-      "type": "couples-with",
-      "target": "Meadows and Music \u2014 Leverage Points",
-      "label": null
-    },
-    {
-      "source": "Meadows and Music \u2014 Origin and Process",
-      "type": "spawned",
-      "target": "Modes of Collaboration",
-      "label": "reflection-as-mode"
     },
     {
       "source": "Waveguide Synthesizer",
@@ -16998,36 +16745,6 @@
       "label": "curriculum-implementation"
     },
     {
-      "source": "STIGMERGY Entry-Agent Window \u2014 Integration Plan v0.1",
-      "type": "connects-to",
-      "target": "STIGMERGY",
-      "label": "integrates-into"
-    },
-    {
-      "source": "STIGMERGY Entry-Agent Window \u2014 Integration Plan v0.1",
-      "type": "connects-to",
-      "target": "Palace Agent Infrastructure Spec",
-      "label": "rides-the-wire"
-    },
-    {
-      "source": "STIGMERGY Entry-Agent Window \u2014 Integration Plan v0.1",
-      "type": "enables",
-      "target": "The Shop",
-      "label": "bold-asks-dispatch-to-the-maker"
-    },
-    {
-      "source": "STIGMERGY Entry-Agent Window \u2014 Integration Plan v0.1",
-      "type": "exemplifies",
-      "target": "Pages as Agents",
-      "label": "the-window-is-the-page-in-a-new-mode"
-    },
-    {
-      "source": "STIGMERGY Entry-Agent Window \u2014 Integration Plan v0.1",
-      "type": "emerged-from",
-      "target": "Merleau-Ponty",
-      "label": "prototype-page"
-    },
-    {
       "source": "Resonant Link Labels",
       "type": "emerged-from",
       "target": "SCHEMA",
@@ -17356,78 +17073,6 @@
       "type": "mirrors",
       "target": "Lossy Compression with Intent Alignment",
       "label": "intent-as-compression-signal"
-    },
-    {
-      "source": "STIGMERGY v2.0 \u2014 Consolidation & Primary Interface",
-      "type": "deepens",
-      "target": "STIGMERGY v1.0 \u2014 Palace Front-End",
-      "label": "consolidation-and-primary-interface"
-    },
-    {
-      "source": "STIGMERGY v2.0 \u2014 Consolidation & Primary Interface",
-      "type": "connects-to",
-      "target": "STIGMERGY",
-      "label": "the-system-this-develops"
-    },
-    {
-      "source": "STIGMERGY v2.0 \u2014 Consolidation & Primary Interface",
-      "type": "connects-to",
-      "target": "BBS Design System",
-      "label": "the-governing-aesthetic-restored"
-    },
-    {
-      "source": "STIGMERGY v2.0 \u2014 Consolidation & Primary Interface",
-      "type": "connects-to",
-      "target": "Project Stewardship System",
-      "label": "the-routine-that-runs-on-it"
-    },
-    {
-      "source": "STIGMERGY v2.0 \u2014 Consolidation & Primary Interface",
-      "type": "connects-to",
-      "target": "Enrichment",
-      "label": "the-parallel-server-to-absorb"
-    },
-    {
-      "source": "STIGMERGY v2.0 \u2014 Consolidation & Primary Interface",
-      "type": "connects-to",
-      "target": "The Lens",
-      "label": "the-state-deck-mode-to-build"
-    },
-    {
-      "source": "STIGMERGY v2.0 \u2014 Consolidation & Primary Interface",
-      "type": "connects-to",
-      "target": "Palace Enchantment",
-      "label": "the-ceremony-to-formalize"
-    },
-    {
-      "source": "STIGMERGY v2.0 \u2014 Consolidation & Primary Interface",
-      "type": "connects-to",
-      "target": "Two Batons, One Board",
-      "label": "the-retro-prospective-discipline-the-decks-enact"
-    },
-    {
-      "source": "STIGMERGY v2.0 \u2014 Consolidation & Primary Interface",
-      "type": "connects-to",
-      "target": "Entry Conatus",
-      "label": null
-    },
-    {
-      "source": "STIGMERGY v2.0 \u2014 Consolidation & Primary Interface",
-      "type": "connects-to",
-      "target": "Pages as Agents",
-      "label": null
-    },
-    {
-      "source": "STIGMERGY v2.0 \u2014 Consolidation & Primary Interface",
-      "type": "connects-to",
-      "target": "Resonant Link Labels",
-      "label": null
-    },
-    {
-      "source": "STIGMERGY v2.0 \u2014 Consolidation & Primary Interface",
-      "type": "connects-to",
-      "target": "Speak Like a Person, Log Like a Protocol",
-      "label": null
     },
     {
       "source": "BBS Blackboard",
@@ -18276,84 +17921,6 @@
       "label": null
     },
     {
-      "source": "STIGMERGY v1.0 \u2014 Palace Front-End",
-      "type": "deepens",
-      "target": "BBS Blackboard",
-      "label": "from-coordination-viewer-to-front-end"
-    },
-    {
-      "source": "STIGMERGY v1.0 \u2014 Palace Front-End",
-      "type": "connects-to",
-      "target": "BBS Design System",
-      "label": "locked-aesthetic"
-    },
-    {
-      "source": "STIGMERGY v1.0 \u2014 Palace Front-End",
-      "type": "deepens",
-      "target": "Two Batons, One Board",
-      "label": "retro-prospective-split-becomes-the-ui"
-    },
-    {
-      "source": "STIGMERGY v1.0 \u2014 Palace Front-End",
-      "type": "connects-to",
-      "target": "Drift and Consolidation",
-      "label": "drift-made-visible"
-    },
-    {
-      "source": "STIGMERGY v1.0 \u2014 Palace Front-End",
-      "type": "connects-to",
-      "target": "Project Stewardship System",
-      "label": "the-queue-is-the-triage-surface"
-    },
-    {
-      "source": "STIGMERGY v1.0 \u2014 Palace Front-End",
-      "type": "connects-to",
-      "target": "Surfaces and Capabilities",
-      "label": "one-surface-replaces-the-bounce"
-    },
-    {
-      "source": "STIGMERGY v1.0 \u2014 Palace Front-End",
-      "type": "connects-to",
-      "target": "Closing Well",
-      "label": "review-the-diff-is-the-audition"
-    },
-    {
-      "source": "STIGMERGY v1.0 \u2014 Palace Front-End",
-      "type": "connects-to",
-      "target": "Palace Agent Infrastructure Spec",
-      "label": "message-and-board-model"
-    },
-    {
-      "source": "STIGMERGY v1.0 \u2014 Palace Front-End",
-      "type": "connects-to",
-      "target": "SCHEMA",
-      "label": "the-type-system-the-ui-enforces"
-    },
-    {
-      "source": "STIGMERGY v1.0 \u2014 Palace Front-End",
-      "type": "connects-to",
-      "target": "Enrichment Ceremony",
-      "label": "the-actuator-and-card-queue-to-absorb"
-    },
-    {
-      "source": "STIGMERGY v1.0 \u2014 Palace Front-End",
-      "type": "connects-to",
-      "target": "Map Build Ceremony",
-      "label": "feeds-the-topology-lens"
-    },
-    {
-      "source": "STIGMERGY v1.0 \u2014 Palace Front-End",
-      "type": "connects-to",
-      "target": "Baton Ceremony",
-      "label": null
-    },
-    {
-      "source": "STIGMERGY v1.0 \u2014 Palace Front-End",
-      "type": "connects-to",
-      "target": "STIGMERGY v2.0 \u2014 Consolidation & Primary Interface",
-      "label": null
-    },
-    {
       "source": "Enchanted Conversation Archive",
       "type": "enables",
       "target": "Palace Enchantment",
@@ -19038,96 +18605,6 @@
       "label": null
     },
     {
-      "source": "BLUELINE \u2014 Specialists and Seams",
-      "type": "connects-to",
-      "target": "BLUELINE",
-      "label": "specialist-structure-for"
-    },
-    {
-      "source": "BLUELINE \u2014 Specialists and Seams",
-      "type": "deepens",
-      "target": "BLUELINE \u2014 Production Pipeline",
-      "label": "answers-its-forward-vector"
-    },
-    {
-      "source": "BLUELINE \u2014 Specialists and Seams",
-      "type": "connects-to",
-      "target": "BLUELINE \u2014 Board Record Schema",
-      "label": "the-inter-specialist-contract"
-    },
-    {
-      "source": "BLUELINE \u2014 Specialists and Seams",
-      "type": "connects-to",
-      "target": "The Shop",
-      "label": "reuses-the-roster"
-    },
-    {
-      "source": "BLUELINE \u2014 Specialists and Seams",
-      "type": "connects-to",
-      "target": "Maker",
-      "label": "dispatched-as-a-recipe"
-    },
-    {
-      "source": "BLUELINE \u2014 Specialists and Seams",
-      "type": "exemplifies",
-      "target": "Adopt the Craft, Author the Seam",
-      "label": "the-seams-are-the-only-new-work"
-    },
-    {
-      "source": "BLUELINE \u2014 Specialists and Seams",
-      "type": "connects-to",
-      "target": "Trickster (Loudon)",
-      "label": "loudon-is-producer-not-director"
-    },
-    {
-      "source": "BLUELINE \u2014 Production Plan",
-      "type": "connects-to",
-      "target": "BLUELINE",
-      "label": "production-plan-for"
-    },
-    {
-      "source": "BLUELINE \u2014 Production Plan",
-      "type": "connects-to",
-      "target": "BLUELINE \u2014 Production Pipeline",
-      "label": "the-conceptual-stage-map"
-    },
-    {
-      "source": "BLUELINE \u2014 Production Plan",
-      "type": "connects-to",
-      "target": "BLUELINE \u2014 Motion and Flow",
-      "label": "priority-thread"
-    },
-    {
-      "source": "BLUELINE \u2014 Production Plan",
-      "type": "connects-to",
-      "target": "BLUELINE \u2014 Render Backend",
-      "label": "canonical-render-layer"
-    },
-    {
-      "source": "BLUELINE \u2014 Production Plan",
-      "type": "connects-to",
-      "target": "BLUELINE \u2014 Board Record Schema",
-      "label": "the-shared-contract"
-    },
-    {
-      "source": "BLUELINE \u2014 Production Plan",
-      "type": "connects-to",
-      "target": "BLUELINE \u2014 toolbox",
-      "label": "reproduce-anchor"
-    },
-    {
-      "source": "BLUELINE \u2014 Production Plan",
-      "type": "exemplifies",
-      "target": "Capability-first prototyping",
-      "label": "prove-then-optimize"
-    },
-    {
-      "source": "BLUELINE \u2014 Production Plan",
-      "type": "connects-to",
-      "target": "The Shop",
-      "label": "each-thread-ships-a-capability"
-    },
-    {
       "source": "BLUELINE",
       "type": "mirrors",
       "target": "Retrospective Delay",
@@ -19254,192 +18731,6 @@
       "label": "unified-motion-subsystem"
     },
     {
-      "source": "BLUELINE \u2014 Render Backend",
-      "type": "connects-to",
-      "target": "BLUELINE",
-      "label": "render-backend-of"
-    },
-    {
-      "source": "BLUELINE \u2014 Render Backend",
-      "type": "connects-to",
-      "target": "RunPod GPU Backend",
-      "label": "rides-as-substrate"
-    },
-    {
-      "source": "BLUELINE \u2014 Render Backend",
-      "type": "connects-to",
-      "target": "ComfyUI",
-      "label": "executes-on"
-    },
-    {
-      "source": "BLUELINE \u2014 Render Backend",
-      "type": "exemplifies",
-      "target": "Blocked, Not Prompted",
-      "label": "render-the-record-not-the-pixels"
-    },
-    {
-      "source": "BLUELINE \u2014 Render Backend",
-      "type": "connects-to",
-      "target": "BLUELINE \u2014 Board Record Schema",
-      "label": "executes-the-record"
-    },
-    {
-      "source": "BLUELINE \u2014 Production Pipeline",
-      "type": "connects-to",
-      "target": "BLUELINE",
-      "label": "production-pipeline-for"
-    },
-    {
-      "source": "BLUELINE \u2014 Production Pipeline",
-      "type": "exemplifies",
-      "target": "Adopt the Craft, Author the Seam",
-      "label": "founding-rationale"
-    },
-    {
-      "source": "BLUELINE \u2014 Production Pipeline",
-      "type": "connects-to",
-      "target": "BLUELINE \u2014 Production Plan",
-      "label": "tracks-map-onto-stages"
-    },
-    {
-      "source": "BLUELINE \u2014 Production Pipeline",
-      "type": "connects-to",
-      "target": "BLUELINE \u2014 Board Record Schema",
-      "label": "the-spine"
-    },
-    {
-      "source": "BLUELINE \u2014 Production Pipeline",
-      "type": "connects-to",
-      "target": "Blocked, Not Prompted",
-      "label": "seam-2"
-    },
-    {
-      "source": "BLUELINE \u2014 Production Pipeline",
-      "type": "connects-to",
-      "target": "Blender",
-      "label": "the-layout-DCC"
-    },
-    {
-      "source": "BLUELINE \u2014 Text Layer",
-      "type": "connects-to",
-      "target": "BLUELINE",
-      "label": "text-half-of-the-pipeline"
-    },
-    {
-      "source": "BLUELINE \u2014 Text Layer",
-      "type": "connects-to",
-      "target": "BLUELINE \u2014 Board Record Schema",
-      "label": "adds-the-TEXT-block"
-    },
-    {
-      "source": "BLUELINE \u2014 Text Layer",
-      "type": "exemplifies",
-      "target": "The Flow Field is the Spine",
-      "label": "sfx-is-the-fourth-resolution"
-    },
-    {
-      "source": "BLUELINE \u2014 Text Layer",
-      "type": "exemplifies",
-      "target": "Blocked, Not Prompted",
-      "label": "balloon-placement-is-geometry"
-    },
-    {
-      "source": "BLUELINE \u2014 Text Layer",
-      "type": "connects-to",
-      "target": "Comic and Cinema \u2014 Two Ways of Seeing",
-      "label": "text-transduces-too"
-    },
-    {
-      "source": "BLUELINE \u2014 Text Layer",
-      "type": "connects-to",
-      "target": "Loudon Live Design System",
-      "label": "the-authors-voice"
-    },
-    {
-      "source": "BLUELINE \u2014 Text Layer",
-      "type": "exemplifies",
-      "target": "Adopt the Craft, Author the Seam",
-      "label": "render-art-letter-over"
-    },
-    {
-      "source": "BLUELINE \u2014 Text Layer",
-      "type": "exemplifies",
-      "target": "The 2.5D Paper Stack",
-      "label": "bubble-as-sheet"
-    },
-    {
-      "source": "BLUELINE \u2014 Text Layer",
-      "type": "connects-to",
-      "target": "Figure Rig",
-      "label": "balloon-anchors-to-the-rig"
-    },
-    {
-      "source": "BLUELINE \u2014 Text Layer",
-      "type": "connects-to",
-      "target": "Lettering",
-      "label": "renders-the-letterforms"
-    },
-    {
-      "source": "BLUELINE \u2014 Board Record Schema",
-      "type": "connects-to",
-      "target": "BLUELINE",
-      "label": "the-shared-contract"
-    },
-    {
-      "source": "BLUELINE \u2014 Board Record Schema",
-      "type": "connects-to",
-      "target": "BLUELINE \u2014 Render Backend",
-      "label": "executed-by"
-    },
-    {
-      "source": "BLUELINE \u2014 Board Record Schema",
-      "type": "exemplifies",
-      "target": "Blocked, Not Prompted",
-      "label": "the-record-is-truth"
-    },
-    {
-      "source": "BLUELINE \u2014 Motion and Flow",
-      "type": "connects-to",
-      "target": "BLUELINE",
-      "label": "motion-subsystem-of"
-    },
-    {
-      "source": "BLUELINE \u2014 Motion and Flow",
-      "type": "connects-to",
-      "target": "BLUELINE \u2014 Production Plan",
-      "label": "thread-4-of"
-    },
-    {
-      "source": "BLUELINE \u2014 Motion and Flow",
-      "type": "exemplifies",
-      "target": "The Flow Field is the Spine",
-      "label": "the-field-is-the-geometry"
-    },
-    {
-      "source": "BLUELINE \u2014 Motion and Flow",
-      "type": "connects-to",
-      "target": "Figure Rig",
-      "label": "pose-shapes-the-field"
-    },
-    {
-      "source": "BLUELINE \u2014 Motion and Flow",
-      "type": "connects-to",
-      "target": "BLUELINE \u2014 Board Record Schema",
-      "label": "FLOW-and-pose-fields"
-    },
-    {
-      "source": "BLUELINE \u2014 Motion and Flow",
-      "type": "exemplifies",
-      "target": "Move the Ink, Don't Redraw It",
-      "label": "draw-once-move-with-geometry"
-    },
-    {
-      "source": "BLUELINE \u2014 Motion and Flow",
-      "type": "connects-to",
-      "target": "Flocking",
-      "label": "flow-field-is-a-vector-field"
-    },
-    {
       "source": "2D Wavetable Catalog",
       "type": "connects-to",
       "target": "2D Torus Wavetable Synthesizer",
@@ -19522,42 +18813,6 @@
       "type": "emerged-from",
       "target": "Action Potential Oscillator",
       "label": "engine-being-controlled"
-    },
-    {
-      "source": "BLUELINE \u2014 Deposit Map",
-      "type": "connects-to",
-      "target": "BLUELINE",
-      "label": "deposit-plan-for"
-    },
-    {
-      "source": "BLUELINE \u2014 Deposit Map",
-      "type": "connects-to",
-      "target": "The Shop",
-      "label": "stocks-from"
-    },
-    {
-      "source": "BLUELINE \u2014 Deposit Map",
-      "type": "mirrors",
-      "target": "Retrospective Delay",
-      "label": "sibling-visual-music-pipeline"
-    },
-    {
-      "source": "BLUELINE \u2014 Claude Code Job",
-      "type": "connects-to",
-      "target": "BLUELINE",
-      "label": "technical-spike-job-for"
-    },
-    {
-      "source": "BLUELINE \u2014 Claude Code Job",
-      "type": "connects-to",
-      "target": "BLUELINE \u2014 Deposit Map",
-      "label": "proves-the-candidates-in"
-    },
-    {
-      "source": "BLUELINE \u2014 Claude Code Job",
-      "type": "connects-to",
-      "target": "The Shop",
-      "label": "stocks-survivors-into"
     }
   ]
 }

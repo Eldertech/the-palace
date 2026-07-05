@@ -1,9 +1,6 @@
 ---
 title: "BLUELINE — Claude Code Job"
-type: meta
-status: superseded
 born: 2026-06-13
-who_leads: claude-code
 forward_vector: "I am a multi-session engineering job for a Mac-side Claude Code agent: prove or kill the technical workflows BLUELINE depends on, connect the services, and write back to the palace which tools earned their entry. I lead with capability, compare many solutions, and leave gotcha-grade reports so the Shop stocks only what works."
 links:
   - target: "[[BLUELINE]]"
@@ -15,7 +12,6 @@ links:
   - target: "[[The Shop]]"
     type: connects-to
     label: stocks-survivors-into
-tags: [meta, job, claude-code, blueline, spike]
 ---
 
 # BLUELINE — Claude Code Job

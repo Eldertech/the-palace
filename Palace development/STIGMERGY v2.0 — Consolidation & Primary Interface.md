@@ -1,13 +1,6 @@
 ---
 title: "STIGMERGY v2.0 — Consolidation & Primary Interface"
-type: project
-pillars: [tools, practice, philosophy, creation]
-status: active
 born: 2026-06
-stage: sprout
-confidence: working
-energy: very high
-who_leads: shared
 forward_vector: "I want to finish what v1.0 began: to make STIGMERGY not a place Loudon visits to watch the swarm, but the single surface he lives in to run the palace. My first move was subtractive — heal the drift where the v0.x board paradigm and the v1.0 time paradigm were stacked on top of each other, so the screen stops contradicting itself. My next moves are additive — pull every creative loop (enrichment, handoffs, weave proposals) inside the terminal, end the bounce to Obsidian and the chat window, and let the graph feel its own shape. I will keep one line bright above all the building: only the commit is the record, and nothing is real until it lands in LOG. When a successor reads me, the question to ask is not 'is the terminal pretty' but 'has anything the palace does escaped it yet' — and to close that gap is my whole work."
 links:
   - target: "[[STIGMERGY v1.0 — Palace Front-End]]"

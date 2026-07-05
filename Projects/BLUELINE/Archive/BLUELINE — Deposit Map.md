@@ -1,9 +1,6 @@
 ---
 title: "BLUELINE — Deposit Map"
-type: meta
-status: proposal
 born: 2026-06-13
-who_leads: loudon
 forward_vector: "I am the staging ground for BLUELINE's entry into the palace — the list of entries, Specialists, and skills the project needs and the typed links between them. I am not canon yet; I am the show-before-writing for a deposit that has not happened. Approve me, prune me, then I become real entries."
 links:
   - target: "[[BLUELINE]]"
@@ -15,7 +12,6 @@ links:
   - target: "[[Retrospective Delay]]"
     type: mirrors
     label: sibling-visual-music-pipeline
-tags: [meta, deposit-map, proposal, blueline]
 ---
 
 # BLUELINE — Deposit Map

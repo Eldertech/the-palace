@@ -1,9 +1,6 @@
 ---
 title: "BLUELINE — Production Plan"
-type: meta
-status: active
 born: 2026-06-14
-who_leads: loudon
 forward_vector: "I am BLUELINE's front door and single source of truth: what it is, its goals, where every thread stands, and — the part that used to be missing — what to work on next. A new agent or human who searches 'production plan' lands here and is oriented in one read. When a thread's state or the horizon changes, I am the first thing updated."
 links:
   - target: "[[BLUELINE]]"
@@ -30,7 +27,6 @@ links:
   - target: "[[The Shop]]"
     type: connects-to
     label: each-thread-ships-a-capability
-tags: [meta, blueline, production-plan, status, threads, horizon]
 ---
 
 # BLUELINE — Production Plan

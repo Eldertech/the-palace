@@ -1,10 +1,6 @@
 ---
 title: Palace Philosophies — Context
-type: meta
-pillars:
-  - philosophy
 born: 2026-06
-stage: growing
 links:
   - target: "[[Palace Philosophies]]"
     type: member-of

@@ -1,9 +1,6 @@
 ---
 title: "BLUELINE — Render Backend"
-type: meta
-status: adopted
 born: 2026-06-14
-who_leads: loudon
 forward_vector: "I am the render-AI half of BLUELINE, made concrete: a two-tier ComfyUI pipeline (Study=SDXL decisions, Piece=FLUX fidelity) that reads a board record and executes it, riding the Shop-wide RunPod substrate. I am not a new invention — I am the AnimaticPlanProposal merged with the palace's already-proven transport and routing. I record what was adopted, what was changed, and why."
 links:
   - target: "[[BLUELINE]]"
@@ -21,7 +18,6 @@ links:
   - target: "[[BLUELINE — Board Record Schema]]"
     type: connects-to
     label: executes-the-record
-tags: [meta, blueline, render, comfyui, runpod, controlnet]
 ---
 
 # BLUELINE — Render Backend
