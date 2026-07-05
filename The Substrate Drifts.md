@@ -25,9 +25,6 @@ links:
   - target: "[[Pages as Agents]]"
     type: couples-with
     label: multi-author-heterogeneity
-  - target: "[[BBS Production Plan v0.3 — Rich Content]]"
-    type: emerged-from
-    label: three-bugs-one-root
 ---
 
 # The Substrate Drifts

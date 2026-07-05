@@ -11,7 +11,7 @@ forward_vector: "I am the phased build contract that turns the Closing Well Agen
 # Closing Well — production plan
 
 The build contract that makes the Closing Well Agent real. Modeled on the palace's
-proven autonomous-build-contract pattern ([[BBS Production Plan]], [[Orchestrator
+proven autonomous-build-contract pattern (BBS Production Plan, [[Orchestrator
 Production Plan]]): phased, each phase closes one gap and ends at a verify gate, and
 the earliest phase is a hand-run pilot before any automation — the same order that
 worked for the [[Project Stewardship System]].
