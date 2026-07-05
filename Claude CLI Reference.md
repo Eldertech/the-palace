@@ -7,7 +7,7 @@ pillars:
 born: 2026-03
 last_activated: 2026-03
 activation_count: 1
-stage: growing
+stage: composting
 confidence: demonstrated
 energy: medium
 hook_quality: 5
