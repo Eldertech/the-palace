@@ -23,6 +23,8 @@ links:
 
 # Rosetta Stone — Palace Vocabulary Across Traditions
 
+![[Rosetta Stone — hero.png]]
+
 This is a **meta-entry**: a document about the Palace itself. Its purpose is to ensure that any future operator — human or AI — can understand the Palace's architecture, vocabulary, and operating principles without prior context. It is the Palace's self-description.
 
 ---

@@ -1,0 +1,9 @@
+{
+  "title": "Rosetta Stone",
+  "idiom": "ink rubbing of a carved trilingual stele \u2014 one meaning across three notations",
+  "hero_prompt": "A wide darkened backdrop rendered as an ink rubbing of an ancient carved stone stele \u2014 a single tall dark slab fills the center, divided into three stacked horizontal registers. Each register is carved with a different family of abstract marks: the top band angular wedge-cuts, the middle band flowing organic glyphs, the bottom band precise geometric diagram-signs \u2014 and faint vertical guide-lines link one mark to its counterpart in the bands above and below, showing a single meaning translated across three notations. Weathered stone texture, chiselled shadow, warm torchlight raking across the relief, upper register darkened. Deliberately not real writing \u2014 invented abstract glyphs only. No letters, numerals, words, labels, real inscriptions \u2014 purely pictorial.",
+  "icon_prompt": "Bold high-contrast square emblem: a single upright stone tablet split into three bold horizontal bands, each band holding one large distinct abstract glyph \u2014 a wedge, a spiral, a triangle-grid \u2014 with a thin vertical line threading through all three to show alignment. Heavy carved outline, stark two-value, no fine linework, survives at 24px. No letters, numerals, words, labels \u2014 purely pictorial.",
+  "seeds": {},
+  "rendered_at": "2026-07-05T04:31:08Z",
+  "history": []
+}

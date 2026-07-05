@@ -1,0 +1,9 @@
+{
+  "title": "CLAUDE",
+  "idiom": "Piranesi-esque architectural ink engraving / etching \u2014 the front door into the rhizome",
+  "hero_prompt": "A wide panoramic ink engraving in the tradition of Piranesi \u2014 a single luminous archway threshold at center-left opening from darkness into a vast interior of interconnected vaulted rooms that recede in every direction, each chamber linked to the next by thin glowing threads of light like a constellation drawn through architecture. A lone figure, a woman scholar in a long coat, stands at the threshold mid-step, crossing from the dark foreground into the lit web of rooms. Deep chiaroscuro, crosshatched stone, warm lamplight against near-black, the upper register darkened. No letters, numerals, words, labels, inscriptions \u2014 purely pictorial.",
+  "icon_prompt": "Bold high-contrast square emblem, stark black and white: a single heavy-stroked archway doorway seen head-on, its dark opening emitting three simple radiating threads of light that fan inward toward one small bright node. Thick inked outline, no fine linework, survives at 24px. No letters, numerals, words, labels \u2014 purely pictorial.",
+  "seeds": {},
+  "rendered_at": "2026-07-05T04:31:08Z",
+  "history": []
+}
