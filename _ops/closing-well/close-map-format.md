@@ -2,22 +2,35 @@
 
 The **close map** is the one artifact a `close well` produces: a typed list of
 everything the session should inscribe into the palace, each row a species with its
-own home and lifecycle. The [[Closing Well Agent]] drafts it; **Loudon signs it**.
+own home and lifecycle. The [[Closing Well]] Agent drafts it; **Loudon signs it**.
 This file is the format spec and the template the map-drafting pass fills. The design
 rationale lives in [[Closing Well]] § The close map; this is its operational shape.
 
-## The three species (never crossed)
+## The species (never crossed)
 
 | species | what it is | home | lifecycle | compression |
 |---|---|---|---|---|
 | **deposit** (memory) | synthesis that became true | entry body + typed links | permanent — woven, maintained as truth | complete but not inflated |
 | **baton** (message) | the in-flight move | bundle file / board | disposable — deleted on catch | lossy on purpose |
 | **artifact** (evidence) | proofs, HTML explainers, machinery | the entry's bundle, indexed | durable, non-canon | as-built |
+| **weave-flag** (hand-off to the Weave) | a hygiene debt the session *saw* but shouldn't fix here | `_ops/swarm/persistent/blackboard.jsonl` (WEAVE board) | disposable — cleared when the Weave acts | one line |
 
 The axis under the map: *does this want to be re-encountered by the organism, or
 consumed and forgotten?* A deposit is what the palace **keeps**; a baton is what it
-**hands off**. A deposit writes into the *graph* (canon); a baton writes into the
-*repo* but stays out of the graph and is deleted on pickup.
+**hands off** to the next Claude; a weave-flag is what it **hands off to the Weave**.
+A deposit writes into the *graph* (canon); a baton writes into the *repo* but stays
+out of the graph and is deleted on pickup; a weave-flag writes onto the *board* and is
+cleared when the Weave acts on it.
+
+**Why a weave-flag species.** Closing Well and the Weave are one value-set at different
+vantages. A close has the *session* in its context window — it witnessed what was
+touched — but not the whole graph, so it is the wrong place to *do* palace-wide hygiene.
+When a close notices a debt it can't rightly settle — a deposit that owes reciprocal
+inbound links, an entry it touched that now looks like demotion-substrate, a faceless
+entry that has grown to merit one, a memory that should weave home — it does not fix it
+and it does not drop it. It **flags it to the Weave**, which holds the graph and will
+rule with that context. The close sees; the Weave acts. (Run `_ops/swarm/lint-bundle-hygiene.py`
+and `_ops/swarm/face-audit.py` scoped to the session's touched files to surface these.)
 
 ## The `status` column is load-bearing
 
@@ -62,6 +75,7 @@ the tristitia failure the whole practice guards.
 | 1 | deposit | none | — (no synthesis became canon-worthy this session) | — | — |
 | 2 | baton | candidate | <the in-flight move for the next Claude> | `<Entry>/<Entry> — baton.md` + board | <why it's owed> |
 | 3 | artifact | landed | <what shipped> | `<Entry>/<bundle path>` | commit `<sha>` |
+| 4 | weave-flag | candidate | <hygiene debt the Weave should settle> | WEAVE board | <why this session can't rule it> |
 
 **Next move:** <the one thing the next session picks up, one line>
 
@@ -94,7 +108,9 @@ until Loudon signs. One gate, not one-per-row:
 2. Loudon signs — `approve`, or `revise` naming the rows to change.
 3. On `approve`, each `candidate` / `in-flight` row executes through its **own**
    existing ceremony (deposit → [[Deposit Ceremony]]; baton → [[Baton Ceremony]];
-   artifact → bundle + index) — *that wiring is Phase 5, not Phase 4*.
+   artifact → bundle + index; weave-flag → append a `weave_flag` BROADCAST to the
+   persistent WEAVE board, the same line-append a deposit uses) — *that wiring is
+   Phase 5, not Phase 4*.
 4. `landed` and `none` rows execute nothing — they are ledger, not work.
 
 **Failure mode:** an unsigned map is a draft, not a completed close. Never execute an

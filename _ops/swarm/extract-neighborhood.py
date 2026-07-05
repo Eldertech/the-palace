@@ -55,7 +55,7 @@ def format_edges(edges):
         lines.append(f"{e['from']} --[{e['rel']}]--> {e['to']}")
     return "\n".join(lines)
 
-def fill_template(entry_name, edges, neighbors):
+def fill_template(entry_name, edges, neighbors, max_intros=3, new_entries=None):
     edge_list = format_edges(edges)
     neighbor_list = ", ".join(neighbors)
     entry_path = find_entry_path(entry_name)
@@ -85,6 +85,12 @@ def fill_template(entry_name, edges, neighbors):
     prompt = prompt.replace("{{EDGE_LIST}}", edge_list)
     prompt = prompt.replace("{{NEIGHBOR_LIST}}", neighbor_list)
     prompt = prompt.replace("{{ENTRY_PATH}}", entry_path)
+    # Step 0b catch-up placeholders — never leak a raw {{...}} into a worker prompt.
+    prompt = prompt.replace("{{MAX_INTRODUCTIONS}}", str(max_intros))
+    prompt = prompt.replace(
+        "{{NEW_ENTRIES}}",
+        new_entries if new_entries
+        else "(none flagged this run — run new-entry-catchup.py --block to compute)")
     return prompt
 
 def main():
@@ -120,7 +126,14 @@ def main():
         return
 
     if "--template" in sys.argv:
-        print(fill_template(entry_name, edges, neighbors))
+        max_intros = 3
+        new_entries = None
+        if "--max-introductions" in sys.argv:
+            max_intros = sys.argv[sys.argv.index("--max-introductions") + 1]
+        if "--new-entries-file" in sys.argv:
+            with open(sys.argv[sys.argv.index("--new-entries-file") + 1]) as f:
+                new_entries = f.read().strip()
+        print(fill_template(entry_name, edges, neighbors, max_intros, new_entries))
     else:
         print(f"HOME: {entry_name}")
         print(f"MAP: {map_file}")
