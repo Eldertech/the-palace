@@ -32,8 +32,10 @@ product; you never paid the context cost of finding it.
 
 ## The lifecycle — spawn once, hold the ID, re-address
 
-The companion is **resident by default** (this reversed the old fresh-dispatch default on
-2026-07-04). The mechanics, verified that day:
+The companion is **resident once summoned** — spawned *when first needed* (early, at a chapter, or
+only at the close), then kept until the session ends; not auto-spawned at session start, and many
+sessions never summon it (this reversed the old fresh-dispatch-per-request default on 2026-07-04).
+The mechanics, verified that day:
 
 1. **Spawn once** (Agent tool, `general-purpose` — it must be write-capable for the curator
    posture). Give it the **charter** (`prompts/companion.md`), which has it boot the **operational
