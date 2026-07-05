@@ -87,10 +87,13 @@ correctness the moderator must check:
 | keep | deposit | ... | ... | entry + links | real [[Deposit Ceremony]]: deposit(<id>) subject, Palace-Kind trailers, committer — not hand-rolled |
 | hand on | baton | ... | ... | bundle + board | real [[Baton Ceremony]]; announced on the owner's board |
 | leave | artifact | ... | ... | <Entry>/<bundle> | filed in the bundle, indexed; commit <sha> |
+| flag to Weave | weave-flag | ... | ... | WEAVE board | a hygiene debt the close SAW but shouldn't settle (reciprocal-inbound owed, a touched entry that looks like demotion-substrate, a faceless entry grown to merit one, a memory to weave home) → append a `weave_flag` BROADCAST; the Weave rules it with whole-graph context |
 | let go | — | ... | ... | — | named, released; nothing to place |
 
-Backstage notes: <canon → owner/main, not a feature branch; STIGMERGY weave flags on the
-owner's board; anything to validate before it's called done.>
+Backstage notes: <canon → owner/main, not a feature branch; weave-flags on the owner's
+board (the close sees, the Weave acts); anything to validate before it's called done.>
+To surface weave-flag debts, run `_ops/swarm/lint-bundle-hygiene.py` and
+`_ops/swarm/face-audit.py` and read them scoped to the files this session touched.
 ```
 
 ### Return

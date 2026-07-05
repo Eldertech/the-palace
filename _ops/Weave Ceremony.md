@@ -3,8 +3,8 @@ title: "Weave Ceremony"
 type: practice
 pillars: [practice, tools, philosophy]
 born: 2026-03
-last_activated: 2026-06-16
-activation_count: 6
+last_activated: 2026-07-05
+activation_count: 7
 stage: mature
 links:
   - target: "[[Palace Ceremonies]]"
@@ -26,6 +26,24 @@ links:
   - target: "[[Map Build Ceremony]]"
     type: enables
     label: pre-weave
+  - target: "[[Hilaritas Generator]]"
+    type: connects-to
+    label: hilaritas-cycle
+  - target: "[[Cooperation Yields Agency]]"
+    type: connects-to
+    label: trust-in-workers
+  - target: "[[Agent Wellbeing]]"
+    type: connects-to
+    label: tends-agents
+  - target: "[[Entry Conatus]]"
+    type: connects-to
+    label: serves-conatus
+  - target: "[[Weaving Memory into the Palace]]"
+    type: connects-to
+    label: memory-home
+  - target: "[[Hero and Avatar Maker]]"
+    type: connects-to
+    label: face-batch
 ---
 
 # Weave Ceremony
@@ -34,7 +52,15 @@ links:
 
 The palace's full-body examination. Where the Walk follows one thread, the Weave reads every thread and asks: how do they relate? What forms? What tangles? What has grown unnoticed? What has died without a marker?
 
-For metaphor, cadence rationale, and swarm architecture history, see [[Weave Ceremony — Context]].
+A weave is more than links — it is the palace's periodic tending of its own **health and joy**, across the three bodies a knowledge organism lives in at once:
+
+- **Entries** — reachable, rightly staged, honestly labelled, faced when merited, striving toward a forward vector that still fits. The youngest get the boldest care: newborn, they are the least-alive nodes, and only a weave can wire their *inbound* links (those live in other files). An entry's health is its [[Entry Conatus|conatus]] served.
+- **Agents** — a clean board, honest handoffs, memory kept as a cache not a rival truth, and work *trusted to judgment* rather than caged in scripts. The linters only flag; the mind of the moment decides. That trust is [[Cooperation Yields Agency|cooperation]] turned on our own workers — their [[Agent Wellbeing|wellbeing]].
+- **Humans** — the palace stays legible and uncluttered, *grabs* you in the state view, and hands you the signing, not the toil. The measure is [[Hilaritas Generator|hilaritas]]: "how do you feel," not "how many links."
+
+Links are one instrument of entry-health. The weave tends all three bodies; it is done well when each leaves more able to act than before.
+
+For metaphor, cadence rationale, the widened-charter rationale, and swarm architecture history, see [[Weave Ceremony — Context]].
 
 ## Execution Method
 
@@ -64,10 +90,11 @@ The single-agent protocol below remains valid for: palaces under ~20 entries, qu
 2e. The **doc-drift linter** (`_ops/swarm/lint-doc-drift.py`) exits **0 on errors** (warnings reviewed). This is the prose-consistency counterpart to 2d: it catches foundational-doc drift — wrong-case refs, broken paths, dangling section pins, trigger-coverage gaps. Any warning left standing is a deliberate review-list item, not a silent miss.
 
 2f. The **entry-naming linter** (`_ops/swarm/lint-entry-naming.py`) exits **0 on errors** (warnings reviewed). It checks entry↔filesystem naming: E1 (error) a bundle folder that matches its entry only case-insensitively (the SCHEMA §8 exact-name rule, e.g. `Modes of collaboration/` beside `Modes of Collaboration.md`); W1 (warning) a canon entry whose `title:` ≠ its filename (SCHEMA §3). Both are masked by the case-insensitive FS until a case-sensitive reader breaks. No E1 may be introduced; the W1 list is triaged (real drift corrected, deliberate names left).
-3. **New introductions** have been proposed — new typed links between entries that do not yet mention each other in prose. No more than 5 per Weave. These are genuine growth events and deserve deliberate curation.
+3. **New introductions** have been proposed — new typed links between entries that do not yet mention each other in prose. These are genuine growth events, curated deliberately rather than to a fixed quota (see Step 3b). **New entries born since the last Weave have been given priority integration** — their inbound links wired toward a catch-up target, the whole swarm primed to reach for them (Step 0b).
 4. **Vector tuning has been invited** for entries whose `forward_vector` has visibly drifted from the entry's current content, connections, or pace. Forward vectors are meant to evolve; the Weave is a natural occasion to surface drift and propose tweaks or full overhauls.
 5. Any confirmed metadata updates have been written to entry files
-6. Git commit made: `Weave — [date] — [N links added, N entries promoted, N orphans flagged, N vectors tuned, N flags closed, N orphans recovered/discarded]`
+5a. A **face audit** has run — merited-but-missing faces proposed for the gated [[Hero and Avatar Maker]] batch; faces on now-dormant entries (composting, spores) retired.
+6. Git commit made: `Weave — [date] — [N links added, N entries promoted, N orphans flagged, N vectors tuned, N flags closed, N orphans recovered/discarded, N faces added/retired]`
 
 **Failure mode:** If the palace is only partially readable (some files inaccessible), produce a partial topology report and note which entries were unreachable. A partial Weave is valid. Do not commit until all accessible files have been processed.
 
@@ -75,17 +102,19 @@ The single-agent protocol below remains valid for: palaces under ~20 entries, qu
 
 ## Protocol
 
+*A note on judgment (values-primary): the Weave's scans and linters **detect and flag; they never decide.** Every disposition is a values-based call by the mind running the Weave, made against palace values — those are the goal, and the guidelines below are orientation, not law. A check earns a hard gate (the E1 errors in Step 6.5) only after repeated Weaves prove its rule mechanical; everything else is judgment. Where a step names a number, read it as a guideline for a deliberate pace, not a quota.*
+
 **Step 0 — Load the foundation**
 
 Before anything else — before the map build, before dispatching a single worker — read the foundational set into context if it is not already there this session: [[CLAUDE]], [[SCHEMA]], [[FOUR PILLARS]], [[ROSETTA]], [[SUBSTRATE]], [[README - The Palace Guide]], [[JEWEL]]. The Weave is a *write* ceremony: it formalizes typed links, proposes stage transitions, and may spawn hub entries. Every one of those is governed by SCHEMA. "Read before touching" is inviolable; a Weave that proposes links before SCHEMA §4 is in context is touching before reading. Link directionality is governed by §4; the `lint-link-directions.py` postcondition (2d) is the mechanical backstop.
 
-**Step 0b — Orientation check**
+**Step 0b — New-entry induction (the catch-up)**
 
-Before reading palace entries, do a quick scan for recently deposited entries that haven't yet been woven in:
-- Any `.md` files in the palace root with `stage: seed` and no inbound links from other entries are likely recent deposits waiting for their first Weave
-- Any entries with `activation_count: 1` and `born` in the last month deserve attention — they're new and haven't found their neighborhood yet
+The youngest entries get the boldest care. A newborn entry is the least-alive node in the palace, and only a Weave can wire its *inbound* links — those live in other entries' files, so a deposit cannot place them. This step makes new entries the Weave's priority citizens.
 
-Note these for deeper attention in Steps 3a and 3b. Then proceed.
+Identify the new arrivals: entries with `born` since the last Weave (or files git-added since the last Weave commit), plus any `activation_count: 1` entry that hasn't found its neighborhood. Then set a **catch-up target** — a guideline, not a gate: aim to close roughly **80% of each newcomer's gap** to a typical entry's connectedness (a useful proxy is the median link-degree of established entries). These catch-up links are prioritized, not rationed — they don't count against the general introduction guideline (Step 3b), and in a Weave that welcomes new entries, widen that guideline by roughly a fifth to make room.
+
+Then prime the whole swarm toward them: thread the new-entry list and a directive into **every** worker prompt — *"These entries were born this cycle and are under-connected. As you audit your entry, actively consider whether it should link to one of them; propose inbound links generously, but only genuine ones."* Because inbound links live in the established entries, meeting a newcomer's catch-up target is work spent *by the old graph on the new* — integrating the newcomer and enriching the old in a single motion. Genuine links only; reachability is never faked to hit a target.
 
 **Step 1: Read the full palace**
 
@@ -133,6 +162,8 @@ Report on:
 - **Dormant entries** — `stage: dormant`. Have conditions changed? Any ready for revival?
 - **Stale metadata** — entries missing `last_activated`, `activation_count`, or with stage that seems wrong given content.
 - **Composting candidates** — entries at `stage: composting` from a prior Weave. Confirm deletion or revive.
+- **Bundle-frontmatter health** — files carrying canon frontmatter (`type`/`pillars`/`stage`) that live *inside a bundle folder* (a folder with a twin `.md`, per [[SCHEMA]] §8), or carrying a `type:` not in §1. These are demotion candidates — probably entry-owned working substrate that should wear minimal §8 bundle frontmatter. Flag them; the mind rules substrate-vs-nested-canon (nested canon always exists — Shop specialists, catalogue sub-entries). Demote confirmed substrate; leave real entries; promotion (bundle → canon) is deferred to Loudon. Canon frontmatter inside an *organizational* folder (`Projects/`, `Shop/`, `_ops/`) is normal — the twin-`.md` test is what separates the two.
+- **Ghost wikilinks** — body `[[wikilinks]]` whose target resolves to no file. Flag every one; the mind decides invitation (a deliberate forward-reference, per [[CLAUDE]]'s "missing connections are invitations") vs. typo or stale link (fix or cut). Detection is mechanical and can later be scripted; the disposition is judgment.
 
 **Step 2.5: Substrate sweep**
 
@@ -174,13 +205,13 @@ Identify pairs of entries that should be connected but are NOT already named in 
 - Name the proposed link type and direction
 - Give one sentence of reasoning
 
-**Rate limit: propose no more than 15 new introductions per Weave.** If more candidates exist, choose the ones that feel most alive right now.
+**Keep new introductions curated, not exhaustive.** A typed link is a permanent claim about the structure of knowledge; the palace and its gardener both benefit from a slow, deliberate metabolism. There is no hard cap — the guideline is a modest handful per Weave (historically around fifteen), widened by roughly a fifth in a Weave welcoming new entries (Step 0b). Propose the ones most alive right now. A newcomer's catch-up links (Step 0b) are prioritized and don't count here.
 
 Present to Loudon. Add confirmed links to the appropriate entry frontmatter.
 
 **Step 3c: Label enrichment**
 
-Review existing links that lack labels, prioritizing: (1) all `connects-to` links — these are the most semantically underweight; (2) `mirrors` and `contradicts` links where the nuance is high; (3) any link whose body text already names the relationship more specifically than the type does. For each candidate, propose a single-word or hyphenated label. Rate limit: no more than 10 label proposals per Weave — curation applies here too. A label is a permanent commitment to a specific register; choose deliberately.
+Review existing links that lack labels, prioritizing: (1) all `connects-to` links — these are the most semantically underweight; (2) `mirrors` and `contradicts` links where the nuance is high; (3) any link whose body text already names the relationship more specifically than the type does. For each candidate, propose a single-word or hyphenated label. Keep label proposals curated — a handful per Weave, not an exhaustive sweep; curation applies here too. A label is a permanent commitment to a specific register; choose deliberately.
 
 Present all label proposals to Loudon before applying. Write confirmed labels to the appropriate entry frontmatter.
 
@@ -214,23 +245,30 @@ For each candidate, present:
 - A one-sentence diagnosis of the drift
 - A proposed tweak, refinement, or — when appropriate — a full overhaul
 
-**Rate limit: no more than 8 vector-tuning proposals per Weave.** Tuning a vector is a real authorial decision; too many at once turns the Weave into a vector-rewriting marathon and dilutes deliberation. Choose the entries where the drift is most visible. Loudon may also volunteer vectors he wants tuned — those don't count against the limit.
+**Keep vector-tuning curated — a handful per Weave, where the drift is most visible.** Tuning a vector is a real authorial decision; too many at once turns the Weave into a rewriting marathon and dilutes deliberation. This is a guideline for a deliberate pace, not a hard cap. Loudon may also volunteer vectors he wants tuned — those are always welcome.
 
 Apply confirmed vector edits to entry frontmatter.
 
-**Step 6: Note deposit candidates**
+**Step 5c: Face audit (add and retire)**
 
-Flag any ideas currently living only in conversations or in the Palace To-Do that should be deposited. Add them to Palace To-Do if not already there.
+Faces are load-bearing, not decoration — they are how [[STIGMERGY]]'s state view grabs the eye in search. The Swarm Weave worker's FACE CHECK already proposes a hero/icon for entries that merit one and lack it, in [[Hero and Avatar Maker]]'s locked art direction; the coordinator assembles these. Apply the policy and surface **two lists**:
 
-**Step 6b: Reconcile memory**
+- **Faces to add** — entries that merit a face and lack one. *Always, regardless of stage:* foundational, hubs, projects, persons/citizens, and specialists & makers. *Grey — a judgment call:* `growing`+ concepts (especially philosophy-pillar or single-strong-metaphor ones), breakthroughs, and high-`activation_count` entries that surface often in search. The minimum bar is stage `growing` or one of the always-types.
+- **Faces to retire** — entries wearing a face that no longer earns one. Composting entries, and **spores**: a spore loses its face as part of going dormant — face-loss is one of the visible ways an entry degrades, so if a now-spore entry carried a face, retire it. The state view should never wear a face for a dormant or dead entry.
 
-The Weave also keeps the agent's memory store in sync with the palace, so the two don't drift (a stale MEMORY.md index line — claiming a preference the file itself had already reversed — surfaced this need on 2026-06-16). Memory lives *outside* the palace repo at `~/.claude/projects/[project]/memory/`. Run a light reflective pass — invoke the **consolidate-memory** skill, or by hand:
+Cost is not a constraint, so the policy is deliberately fuzzy: the Weave is exactly where promotions (an entry earns a face) and demotions (an entry loses one) get *seen*. Approved additions feed [[Hero and Avatar Maker]] as a gated batch, run after the Weave's link and metadata writes. (`question` and `spore` entries do not get faces.)
 
-- Fix MEMORY.md index lines that no longer match their files.
-- Merge duplicate memories; retire ones the palace now contradicts.
-- Update or retire any memory citing a file, flag, convention, or count this Weave changed.
+**Step 6: Deposit candidates + walk the To-Do**
 
-Most memories need nothing — this is reconciliation, not rewriting. Note what changed in the Weave report. Memory is a separate store: those edits are not part of the palace git commit.
+Flag any ideas currently living only in conversations that should be deposited; add them to [[Palace To-Do]] if not already there. Then walk the To-Do itself — it is the palace's toss-bucket for uncategorized thoughts, and the Weave is where they get revisited. For each open item ask: still a to-do? how important now? how easy to integrate? Act on the ripe ones, reprioritize the rest, and let go of what has quietly resolved — noting the release, so it doesn't resurface.
+
+**Step 6b: Weave memory home**
+
+The value: **the palace is the store; memory is a volatile cache.** A memory earns its place only if it is *operator-environment-native* — true of this harness, laptop, or usage system, with no palace analog. Everything durable, cross-environment, or value-bearing belongs in canon; in memory it survives at most as a pointer to its source of truth. The reflex is asymmetric — an agent reaches for memory by habit — so this step deliberately redirects toward the palace.
+
+Memory lives *outside* the palace repo at `~/.claude/projects/[project]/memory/`. Run the sweep ([[Weaving Memory into the Palace]]) — invoke the **consolidate-memory** skill, or by hand. Read every memory and apply one disposition: **remove** (already in the palace), **align** (drifted from truth), **repoint** (shrink to a careful pointer), or **place-then-remove** (memory-only content → write it into the right palace doc first, then delete). The flag test is one question: *"Would a fresh palace agent, in a different environment, need this?"* Yes → weave it home. No → it is operator-native; it stays. Also fix MEMORY.md index lines that no longer match their files.
+
+End state: memory holds only the always-on operator floor, as careful pointers. Note what changed in the Weave report. Memory is a separate store — those edits are not part of the palace git commit.
 
 **Step 6.5: Lint link directions**
 
@@ -238,10 +276,15 @@ After all confirmed edits are written, rebuild the map and run the linters. Ther
 
 ```bash
 python3 "$(ls -1 _ops/swarm/build-map-*.py | sort | tail -1)"   # newest dated map builder
-python3 _ops/swarm/lint-link-directions.py                       # §4 link directionality
-python3 _ops/swarm/lint-doc-drift.py                             # foundational-doc consistency
-python3 _ops/swarm/lint-entry-naming.py                          # entry title↔filename, bundle-folder case
+python3 _ops/swarm/lint-link-directions.py                       # §4 link directionality (E1/E2 gate)
+python3 _ops/swarm/lint-doc-drift.py                             # foundational-doc consistency (E1/E3 gate)
+python3 _ops/swarm/lint-entry-naming.py                          # entry title↔filename, bundle-folder case (E1 gate)
+python3 _ops/swarm/lint-ghost-links.py                           # dead body wikilinks — flag-only, never gates
+python3 _ops/swarm/lint-bundle-hygiene.py                        # frontmatter demotion candidates (invalid type gates)
+python3 _ops/swarm/face-audit.py                                 # faces to add / retire (Step 5c)
 ```
+
+The last three are the health scans behind Steps 2 and 5c: `lint-ghost-links.py` surfaces dead body wikilinks (flag-only — a ghost may be an invitation, so it never gates), `lint-bundle-hygiene.py` flags demotion candidates (an invalid `type:` is a hard error; canon-frontmatter-in-a-bundle is a judgment warning), and `face-audit.py` prints the add/retire lists for the face batch. All three *detect*; the mind rules each finding.
 
 Routing note: session-level Weave artifacts (maps, reports) go to `_ops/swarm/sessions/[session-id]/`; per-entry artifacts go to that entry's bundle (`[Entry]/`, per [[SCHEMA]] §8).
 
@@ -297,15 +340,21 @@ The commit body lists every substrate disposition (one line each) and every decl
 **Unsung paths:** [N findings]
 1. [[Entry A]] body mentions "[phrase]" → propose [[Entry B]] as [link-type] — [structurally significant: yes/no]
 
-**New introductions:** [N proposals, max 5]
+**New introductions:** [curated]
 1. [[Entry A]] —[type]→ [[Entry B]] — [one-line rationale]
 
 **Proposed stage transitions:** [list]
 
-**Vector tuning proposals:** [N findings, max 8]
+**Vector tuning proposals:** [curated]
 1. [[Entry]] — current vector: "[verbatim]" — drift: [one-sentence diagnosis] — proposed: "[new vector]"
 
 **Deposit candidates flagged:** [list]
 
-**Recently deposited, not yet woven:** [entries from Step 0]
+**New-entry induction:** [entries born since last Weave — current degree → catch-up target, inbound links wired]
+
+**Faces:** [N to add → Hero and Avatar Maker batch] · [N to retire — composting / spores]
+
+**Bundle-frontmatter health:** [N demotion candidates — canon frontmatter in a bundle folder / invalid type]
+
+**Ghost wikilinks:** [N dead [[links]] — disposition: invitation / fix / cut]
 ```
