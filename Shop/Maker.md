@@ -10,7 +10,7 @@ links:
   - { target: "[[The Shop]]", type: member-of, label: foreman-of }
   - { target: "[[Trickster (Loudon)]]", type: connects-to, label: answers-to }
   - { target: "[[Hilaritas Generator]]", type: connects-to, label: embodies }
-  - { target: "[[Four Pillars]]", type: connects-to, label: follows }
+  - { target: "[[FOUR PILLARS]]", type: connects-to, label: follows }
   - { target: "[[Lateral Access]]", type: mirrors, label: taste-as-laterality }
   - { target: "[[Loudon Live Design System]]", type: connects-to, label: palace-base-spec }
   - target: "[[Radio Play]]"

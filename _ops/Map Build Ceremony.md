@@ -5,8 +5,8 @@ pillars:
   - tools
   - practice
 born: 2026-03
-last_activated: 2026-06-16
-activation_count: 8
+last_activated: 2026-07-04
+activation_count: 9
 stage: growing
 version: 2
 links:
