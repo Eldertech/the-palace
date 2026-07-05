@@ -1,0 +1,12 @@
+{
+  "title": "The Jewel",
+  "idiom": "hand-drawn ink and gouache constellation",
+  "hero_prompt": "A wide banner composition, hand-drawn ink and gouache on deep indigo-black paper. At the center-left, a single luminous multi-faceted jewel \u2014 cut like a brilliant, its facets catching pale gold and cool white light \u2014 suspended in a vast starfield. Fine dim threads of silver-white light radiate outward from the jewel to scattered smaller stars across the field, forming a soft constellation web. The threads are delicate but visible, varying in brightness. Depth of a night sky seen from inside a data-space. One dominant image, contemplative, quietly radiant, legible when darkened and desaturated as a backdrop. Classical astronomical-chart sensibility, not sci-fi. No text, no letters, no labels.",
+  "icon_prompt": "A bold high-contrast emblem: a single multi-faceted jewel in silhouette, cut like a brilliant, filled with a few strong facet planes of light and shadow. Stark ink drawing on pale ground, thick confident linework, no fine detail. Radiating from the jewel, three or four short bold rays suggesting connection lines \u2014 thick enough to survive at 24 pixels. Symmetric, iconic, unmistakable at small size. No text.",
+  "seeds": {
+    "hero": 702416,
+    "icon": 171413
+  },
+  "rendered_at": "2026-07-05T03:06:49Z",
+  "history": []
+}
