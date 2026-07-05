@@ -324,7 +324,7 @@ export default function EntryReader({
               right rail (typed links + bundle) starts at the same vertical
               position rather than getting pushed down by a full-width hero. */}
           <ForwardVectorHero forward_vector={entry.frontmatter?.forward_vector} />
-          <EntryBody body={entry.body} index={index} refIndex={refIndex} onNavigate={onNavigate} />
+          <EntryBody body={entry.body} index={index} refIndex={refIndex} onNavigate={onNavigate} bundleFiles={bundleFiles} />
         </div>
         <div data-testid="entry-rail" style={{
           display: 'flex', flexDirection: 'column', gap: 12,
