@@ -1,10 +1,6 @@
 ---
 title: "Blood Compressor — Visuals Specification"
-type: artifact
-parent: "[[Blood Compressor]]"
-created: 2026-05-27
-tier: study
-status: draft
+born: 2026-05-27
 links:
   - target: "[[Blood Compressor]]"
     type: connects-to
@@ -22,8 +18,7 @@ links:
     type: connects-to
   - target: "[[Loudon Live]]"
     type: connects-to
-sibling: "[[radio-play-script]]"
-sibling: "[[sfx-cue-sheet]]"
+forward_vector: "I am the visuals specification for Blood Compressor's lesson — what to show and when — spec'd for the Shop's image and motion tools."
 ---
 
 # Blood Compressor — Visuals Specification

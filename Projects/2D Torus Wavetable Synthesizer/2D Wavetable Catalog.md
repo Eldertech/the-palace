@@ -1,12 +1,12 @@
 ---
 title: 2D Wavetable Catalog
-type: hub
+type: concept
 pillars:
   - tools
   - creation
 born: 2026-04-26
 stage: growing
-status: active
+forward_vector: "I am the index of every surface in the 2D torus wavetable library — what each one is, how it sounds, and why it earns a slot — and I want to become the map a player reads to choose a starting surface and hear what the geometry promises."
 links:
   - target: "[[2D Torus Wavetable Synthesizer]]"
     type: connects-to

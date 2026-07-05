@@ -1,10 +1,11 @@
 ---
 title: "AKWF Import Pipeline — build notes"
-type: proof
-project: "[[Generative Wavetable Libraries]]"
-date: 2026-04-24
-recovered: 2026-05-30
-medium: code + audio artifacts
+born: 2026-04-24
+links:
+  - target: "[[Generative Wavetable Libraries]]"
+    type: connects-to
+    label: proof-of
+forward_vector: "I am the build notes for the AKWF import pipeline — how the single-cycle packs were brought into Generative Wavetable Libraries."
 ---
 
 # AKWF Import Pipeline — the captured-audio source path

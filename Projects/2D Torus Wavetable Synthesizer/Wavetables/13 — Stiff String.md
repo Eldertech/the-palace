@@ -1,16 +1,11 @@
 ---
 title: 13 — Stiff String
-type: meta
-pillars:
-  - tools
-  - creation
 born: 2026-04-26
-stage: sprout
-status: active
 links:
   - target: "[[2D Torus Wavetable Synthesizer]]"
     type: connects-to
     label: instruments
+forward_vector: "I am the spec for the Stiff String surface — inharmonic stretched partials of a stiff string — geometry, file facts, and musical use — so a player can load and voice this surface without re-deriving the wavetable."
 ---
 # 13 — Stiff String
 

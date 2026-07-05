@@ -1,16 +1,11 @@
 ---
 title: 02 — Partial Stack Sweep
-type: meta
-pillars:
-  - tools
-  - creation
 born: 2026-04-26
-stage: sprout
-status: active
 links:
   - target: "[[2D Torus Wavetable Synthesizer]]"
     type: connects-to
     label: instruments
+forward_vector: "I am the spec for the Partial Stack Sweep surface — an additive harmonic stack morphing along Y — geometry, file facts, and musical use — so a player can load and voice this surface without re-deriving the wavetable."
 ---
 # 02 — Partial Stack Sweep
 

@@ -1,6 +1,6 @@
 ---
 title: "Neural Granular Synthesis — Control-Vocabulary Math"
-type: source
+type: concept
 pillars: [tools, creation, philosophy]
 born: 2026-06
 stage: growing

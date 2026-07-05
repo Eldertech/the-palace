@@ -1,9 +1,11 @@
 ---
 title: "Semantic Delay — substitution chain mockup"
-type: proof
-project: "[[Semantic Delay]]"
-date: 2026-05-04
-medium: text
+born: 2026-05-04
+links:
+  - target: "[[Semantic Delay]]"
+    type: connects-to
+    label: proof-of
+forward_vector: "I am the substitution-chain mockup for Semantic Delay — a text proof of how a word decays into its neighbors across the delay taps."
 ---
 
 # Substitution chain — what the delay tap actually does

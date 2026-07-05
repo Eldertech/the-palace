@@ -1,16 +1,11 @@
 ---
 title: 00 — Test Diagnostic Wavetable
-type: meta
-pillars:
-  - tools
-  - practice
 born: 2026-04-26
-stage: sprout
-status: active
 links:
   - target: "[[2D Torus Wavetable Synthesizer]]"
     type: connects-to
     label: instruments
+forward_vector: "I am the spec for the diagnostic surface — a known-answer wavetable for confirming the readout math is correct — geometry, file facts, and musical use — so a player can load and voice this surface without re-deriving the wavetable."
 ---
 # 00 — Test Diagnostic Wavetable
 

@@ -1,16 +1,11 @@
 ---
 title: 18 — Fisher Ridge
-type: meta
-pillars:
-  - tools
-  - creation
 born: 2026-06-06
-stage: sprout
-status: active
 links:
   - target: "[[2D Torus Wavetable Synthesizer]]"
     type: connects-to
     label: instruments
+forward_vector: "I am the spec for the Fisher Ridge surface — an information-geometry ridge read as timbre — geometry, file facts, and musical use — so a player can load and voice this surface without re-deriving the wavetable."
 ---
 # 18 — Fisher Ridge
 

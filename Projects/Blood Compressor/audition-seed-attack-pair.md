@@ -1,10 +1,6 @@
 ---
 title: "Blood Compressor — Audition Seed (the attack pair)"
-type: artifact
-parent: "[[Blood Compressor]]"
-created: 2026-06-04
-tier: study
-status: draft
+born: 2026-06-04
 links:
   - target: "[[Blood Compressor]]"
     type: connects-to
@@ -24,9 +20,7 @@ links:
   - target: "[[Shop/ffmpeg]]"
     type: enables
     label: assembly-target
-sibling: "[[sfx-cue-sheet]]"
-sibling: "[[radio-play-script]]"
-sibling: "[[visuals-spec]]"
+forward_vector: "I am the smallest audition unit for Blood Compressor — the attack pair — the seed a dispatch renders first to hear whether the lesson's sound is right."
 ---
 
 # Blood Compressor — Audition Seed (the attack pair)

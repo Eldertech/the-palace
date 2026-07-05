@@ -1,16 +1,11 @@
 ---
 title: 14 — Knot Shadow
-type: meta
-pillars:
-  - tools
-  - creation
 born: 2026-04-26
-stage: sprout
-status: active
 links:
   - target: "[[2D Torus Wavetable Synthesizer]]"
     type: connects-to
     label: instruments
+forward_vector: "I am the spec for the Knot Shadow surface — a projected knot casting its shadow into the wave — geometry, file facts, and musical use — so a player can load and voice this surface without re-deriving the wavetable."
 ---
 # 14 — Knot Shadow
 

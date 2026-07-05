@@ -1,21 +1,16 @@
 ---
 title: "Leverage Diagnostic — Loudon Draft"
-type: practice
-pillars: [practice, philosophy, creation]
 born: 2026-06
-stage: seed
-confidence: drafting
-who_leads: loudon
-forward_vector: "I am the editable worksheet that places Loudon's actual career on Meadows' twelve leverage points. The steward fills the left column with its best guesses from the palace; Loudon edits the right column with corrections. The gap between the two columns is the teaching artifact."
 links:
   - target: "[[Meadows and an Artist's Career]]"
-    type: member-of
+    type: connects-to
     label: bundle-artifact
   - target: "[[Quality Manifesto]]"
     type: emerged-from
     label: source-for-drafts
   - target: "[[FOUR PILLARS]]"
     type: connects-to
+forward_vector: "I am the editable worksheet that places Loudon's actual career on Meadows' twelve leverage points. The steward fills the left column with its best guesses from the palace; Loudon edits the right column with corrections. The gap between the two columns is the teaching artifact."
 ---
 
 # Leverage Diagnostic — Loudon Draft

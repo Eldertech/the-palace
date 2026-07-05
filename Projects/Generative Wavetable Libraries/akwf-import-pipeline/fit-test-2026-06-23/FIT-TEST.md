@@ -1,9 +1,11 @@
 ---
 title: "AKWF fit-test — driving a single-cycle pack through the question tree"
-type: proof
-project: "[[Generative Wavetable Libraries]]"
-date: 2026-06-23
-medium: interview-transcript + audio artifact
+born: 2026-06-23
+links:
+  - target: "[[Generative Wavetable Libraries]]"
+    type: connects-to
+    label: proof-of
+forward_vector: "I am the AKWF fit-test — a single-cycle pack driven through the question tree to prove the interview shape holds."
 ---
 
 # AKWF fit-test — branch 1.b through the question tree

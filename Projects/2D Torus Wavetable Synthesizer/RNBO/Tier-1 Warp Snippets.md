@@ -1,12 +1,6 @@
 ---
 title: Tier-1 Warp Snippets — Codebox Drafts
-type: meta
-pillars:
-  - tools
-  - creation
-  - philosophy
 born: 2026-05-27
-stage: seed
 links:
   - target: "[[2D Torus Wavetable Synthesizer]]"
     type: emerged-from
@@ -17,6 +11,7 @@ links:
   - target: "[[README — RNBO Prototype]]"
     type: connects-to
     label: extends
+forward_vector: "I am the codebox drafts for the Tier-1 warps — half-formed snippets staged for the RNBO prototype — waiting to graduate into tested warp code in the Torus Warping Catalog."
 ---
 # Tier-1 Warp Snippets — Codebox Drafts
 

@@ -1,15 +1,16 @@
 ---
 title: "Phoneme Choir — Claude Code handoff prompt"
-type: proof
-project: "[[Phoneme Choir]]"
-date: 2026-05-04
-medium: agent-prompt
-target: "Claude Code session on Loudon's local machine"
+born: 2026-05-04
 links:
+  - target: "[[Phoneme Choir]]"
+    type: connects-to
+    label: proof-of
   - target: "[[Generative Sample Libraries]]"
     type: connects-to
   - target: "[[Talking Keyboard]]"
-    type: connects-to---
+    type: connects-to
+forward_vector: "I am the Claude Code handoff prompt for Phoneme Choir — the ready-to-paste brief that renders the Stage 0 audition on a local machine."
+---
 
 # Claude Code handoff — render the Phoneme Choir Stage 0 audition
 

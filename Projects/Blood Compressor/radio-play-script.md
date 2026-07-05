@@ -1,13 +1,6 @@
 ---
 title: "Blood Compressor — Radio-Play Lesson Script"
-type: artifact
-parent: "[[Blood Compressor]]"
-created: 2026-05-27
-tier: study
-status: draft
-target_duration_minutes: 30
-voices: [NARRATOR, BODY, ENGINEER]
-session_format: loudon-live
+born: 2026-05-27
 links:
   - target: "[[Blood Compressor]]"
     type: connects-to
@@ -20,6 +13,7 @@ links:
     label: 30-min-radio-play-format
   - target: "[[Progressive Staging]]"
     type: connects-to
+forward_vector: "I am the radio-play lesson script for Blood Compressor — the 30-minute three-voice deliverable — waiting to be produced into the first Loudon Live session for this device."
 ---
 
 # Blood Compressor — Radio-Play Lesson Script

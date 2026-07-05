@@ -1,12 +1,6 @@
 ---
 title: 16 — Kuramoto Bloom
-type: meta
-pillars:
-  - tools
-  - creation
 born: 2026-06-06
-stage: sprout
-status: active
 links:
   - target: "[[2D Torus Wavetable Synthesizer]]"
     type: connects-to
@@ -14,6 +8,7 @@ links:
   - target: "[[Kuramoto Coupling]]"
     type: connects-to
     label: bakes-in
+forward_vector: "I am the spec for the Kuramoto Bloom surface — coupled-oscillator synchronization baked into the geometry, with file facts and musical use — so a player can load and voice this surface without re-deriving the wavetable."
 ---
 # 16 — Kuramoto Bloom
 

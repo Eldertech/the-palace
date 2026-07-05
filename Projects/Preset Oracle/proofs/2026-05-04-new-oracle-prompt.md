@@ -1,10 +1,11 @@
 ---
 title: "Preset Oracle — new prompt: 'A glassblower remembering an argument with their teacher'"
-type: proof
-project: "[[Preset Oracle]]"
-date: 2026-05-04
-medium: oracle-prompt
-sibling_to: "Parmenides Dying Alone in a Warehouse"
+born: 2026-05-04
+links:
+  - target: "[[Preset Oracle]]"
+    type: connects-to
+    label: proof-of
+forward_vector: "I am a Preset Oracle prompt — a single evocative sentence the oracle turns into a patch, kept as a proof of the device's range."
 ---
 
 # Oracle prompt — for the next student encounter

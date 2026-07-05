@@ -1,10 +1,11 @@
 ---
 title: "Compressor Design — three pedagogical moments"
-type: proof
-project: "[[Compressor Design]]"
-date: 2026-05-04
-medium: text
-forward_vector_alignment: "the entry that captures not just what the compressor does but why every design choice was made to make the invisible visible"
+born: 2026-05-04
+links:
+  - target: "[[Compressor Design]]"
+    type: connects-to
+    label: proof-of
+forward_vector: "I am the pedagogical retrospective for Compressor Design — three moments that show why each design choice was made to make the invisible visible."
 ---
 
 # Three pedagogical moments — the teaching beats

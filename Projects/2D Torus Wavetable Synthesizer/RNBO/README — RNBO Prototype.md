@@ -1,11 +1,6 @@
 ---
 title: RNBO Prototype — Build & Test Walkthrough
-type: meta
-pillars:
-  - tools
-  - practice
 born: 2026-04-27
-stage: seed
 links:
   - target: "[[2D Torus Wavetable Synthesizer]]"
     type: emerged-from
@@ -16,6 +11,7 @@ links:
   - target: "[[Torus Warping Catalog]]"
     type: enables
     label: precedes
+forward_vector: "I am the build-and-test walkthrough for the smallest playable instance of the 2D Torus Wavetable Synthesizer — the A/B recipe against Max's 2d.wave~ — so the codebox math is trusted surface-by-surface before any warps are added."
 ---
 # RNBO Prototype — Build & Test Walkthrough
 

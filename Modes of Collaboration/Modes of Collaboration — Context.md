@@ -1,14 +1,9 @@
 ---
 title: Modes of Collaboration — Context
-type: meta
-pillars:
-  - practice
-  - tools
 born: 2026-06
-stage: growing
 links:
   - target: "[[Modes of Collaboration]]"
-    type: member-of
+    type: connects-to
     label: context-companion
 forward_vector: "I hold the full per-mode attribute blocks, named examples, and open questions so the catalogue itself can stay a lean, choosable list."
 ---

@@ -1,9 +1,11 @@
 ---
 title: "Generative Wavetable Libraries — chat-driven interview mock"
-type: proof
-project: "[[Generative Wavetable Libraries]]"
-date: 2026-05-04
-medium: interview-transcript
+born: 2026-05-04
+links:
+  - target: "[[Generative Wavetable Libraries]]"
+    type: connects-to
+    label: proof-of
+forward_vector: "I am the chat-driven interview mock for Generative Wavetable Libraries — the conversation that turns a described target into a wavetable pack."
 ---
 
 # Mock — what the wavetable interview should feel like

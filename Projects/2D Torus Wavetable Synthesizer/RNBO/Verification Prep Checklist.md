@@ -1,11 +1,6 @@
 ---
 title: RNBO Prototype — Verification Prep Checklist
-type: meta
-pillars:
-  - tools
-  - practice
 born: 2026-05-27
-stage: seed
 links:
   - target: "[[2D Torus Wavetable Synthesizer]]"
     type: emerged-from
@@ -16,6 +11,7 @@ links:
   - target: "[[2D Torus Wavetable Synthesizer — Build Log]]"
     type: connects-to
     label: documents
+forward_vector: "I am the pre-flight checklist for verifying the RNBO prototype — the steps to run before trusting a surface — so verification is repeatable rather than remembered."
 ---
 # RNBO Prototype — Verification Prep Checklist
 

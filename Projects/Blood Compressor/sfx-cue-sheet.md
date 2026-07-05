@@ -1,10 +1,6 @@
 ---
 title: "Blood Compressor — SFX Cue Sheet"
-type: artifact
-parent: "[[Blood Compressor]]"
-created: 2026-05-27
-tier: study
-status: draft
+born: 2026-05-27
 links:
   - target: "[[Blood Compressor]]"
     type: connects-to
@@ -17,8 +13,7 @@ links:
     label: mix-target
   - target: "[[Compressor Design]]"
     type: connects-to
-sibling: "[[radio-play-script]]"
-sibling: "[[visuals-spec]]"
+forward_vector: "I am the SFX cue sheet for Blood Compressor's lesson — every sound effect the radio play calls for, spec'd for dispatch."
 ---
 
 # Blood Compressor — SFX Cue Sheet
