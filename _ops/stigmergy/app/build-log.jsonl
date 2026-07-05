@@ -200,3 +200,4 @@
 {"ts":"2026-06-06T02:33:02.091Z","phase":19,"action":"gate-end","outcome":"pass","stage":"tests+captures"}
 {"ts":"2026-06-06T03:12:32.393Z","phase":20,"label":"v1.0 Phase 7 — Commit from LOG (structured palace-commit)","action":"gate-start"}
 {"ts":"2026-06-06T03:12:38.180Z","phase":20,"action":"gate-end","outcome":"pass","stage":"tests+captures"}
+{"ts":"2026-07-05T00:00:00.000Z","label":"TOPOLOGY grouping instrument — GROUP BY folder/type/stage/pillar/role; PULL+SPACING faders; inter-group repulsion (mass pushes mass); barycentric pillar-corner placement; chip-click isolate/dim; cursor-following rich hover card; folder-view spread (elliptical ring + eased link force)","action":"feature","outcome":"shipped","commit":"069cd79","stage":"1678 unit + 8 e2e pass"}
