@@ -50,6 +50,9 @@ links:
   - target: "[[Donella Meadows]]"
     type: contradicts
     label: discovered-essence-vs-systems-becoming
+  - target: "[[Found ↔ Made]]"
+    type: exemplifies
+    label: found-pole
 ---
 
 # Rick Rubin

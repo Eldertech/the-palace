@@ -27,6 +27,9 @@ links:
   - target: "[[Kokoro]]"
     type: contradicts
     label: transcribe-vs-perform
+  - target: "[[Found ↔ Made]]"
+    type: exemplifies
+    label: made-pole
 forward_vector: "I want to ask whether the palace itself has well-worn songlines — paths through its own territory that have been sung so often they make adjacent country invisible — and what ceremony would let us sing a new one."
 ---
 

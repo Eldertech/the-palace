@@ -44,6 +44,9 @@ links:
     type: spawned
   - target: "[[Synthesis ↔ Emergence]]"
     type: spawned
+  - target: "[[Found ↔ Made]]"
+    type: spawned
+    label: essence-axis
   - target: "[[Douglas Hofstadter]]"
     type: connects-to
     label: cognitive-ground

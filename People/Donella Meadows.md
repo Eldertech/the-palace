@@ -54,6 +54,9 @@ links:
   - target: "[[Rick Rubin]]"
     type: contradicts
     label: discovered-essence-vs-systems-becoming
+  - target: "[[Found ↔ Made]]"
+    type: exemplifies
+    label: made-pole
   - target: "[[Kick Drum ↔ Foundation]]"
     type: connects-to
     label: leverage-in-the-low-end

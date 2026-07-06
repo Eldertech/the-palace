@@ -47,6 +47,9 @@ links:
   - target: "[[Compressor Design]]"
     type: contradicts
     label: reveal-the-break-vs-hide-it
+  - target: "[[Found ↔ Made]]"
+    type: exemplifies
+    label: found-pole
 ---
 
 # George Nakashima
