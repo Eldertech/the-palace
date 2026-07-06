@@ -4,7 +4,7 @@
     "scope": "full",
     "node_count": 303,
     "ops_node_count": 42,
-    "edge_count": 2487,
+    "edge_count": 2489,
     "ghost_taxonomy": {
       "error_ghosts": [],
       "ops_ghosts": [
@@ -2928,8 +2928,8 @@
       "stage": "growing",
       "has_forward_vector": true,
       "last_activated": "2026-07",
-      "activation_count": "3",
-      "outbound_count": 12,
+      "activation_count": "4",
+      "outbound_count": 14,
       "inbound_count": 18
     },
     {
@@ -3172,7 +3172,7 @@
       "last_activated": "2026-07",
       "activation_count": "1",
       "outbound_count": 4,
-      "inbound_count": 0
+      "inbound_count": 1
     },
     {
       "id": "The Palace Practices on Itself",
@@ -3216,7 +3216,7 @@
       "last_activated": null,
       "activation_count": null,
       "outbound_count": 8,
-      "inbound_count": 0
+      "inbound_count": 1
     },
     {
       "id": "The Reader's Context Window",
@@ -16699,6 +16699,18 @@
       "type": "connects-to",
       "target": "Lateral Access",
       "label": "many-angles"
+    },
+    {
+      "source": "Swarm Weave",
+      "type": "spawned",
+      "target": "The Practice Rediscovers Its Philosophy",
+      "label": "oblique-lens-yield"
+    },
+    {
+      "source": "Swarm Weave",
+      "type": "connects-to",
+      "target": "The Palace Hardens Around Values",
+      "label": "merge-is-the-exhale"
     },
     {
       "source": "Symbiotic Skills",

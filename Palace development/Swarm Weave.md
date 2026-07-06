@@ -9,7 +9,7 @@ pillars:
 born: 2026-03
 stage: growing
 last_activated: 2026-07
-activation_count: 3
+activation_count: 4
 energy: very high
 beauty: 9
 links:
@@ -54,7 +54,13 @@ links:
   - target: "[[Lateral Access]]"
     type: connects-to
     label: many-angles
-forward_vector: "I am the palace's colony architecture — the why and the shape of weaving as a swarm. I hand the executable how to the [[Weave Ceremony]] card and the swarm templates, and keep the ideas they implement: the scaling constraint, the biological frame, the frontier. I grow as the pheromone-trail differentiation (Phase 2) gets built."
+  - target: "[[The Practice Rediscovers Its Philosophy]]"
+    type: spawned
+    label: oblique-lens-yield
+  - target: "[[The Palace Hardens Around Values]]"
+    type: connects-to
+    label: merge-is-the-exhale
+forward_vector: "I am the palace's colony architecture — the why and the shape of weaving as a swarm, now cut by many lenses at once. I keep the ideas the templates implement: the scaling constraint, the biological frame, and the two lessons of the first Multi-Lens run — that the cut and the mandate are one choice, and that the anti-lens (chance) finds what no principle can. I grow as the next lenses get built: the Bridge (technical↔philosophical) and the Deep-Structure cut."
 ---
 
 # Swarm Weave
@@ -232,11 +238,87 @@ only — especially the mirror lens — is a **surprise gem** a single-partition
 having nothing to contrast against. So the coordinator's job upgrades from *de-dup the fragments* to
 *read the graph through N lenses and report agreement (trust) vs single-lens sightings (surprise).*
 
-**Cheaper and richer** — the tell of a right design: an org-coherence pass (~6–8 agents) + a
-community-connection pass (~18–20) + a mirror gem-pass (~4–8) ≈ ~35 agent-runs, ~7× fewer than one
-worker per entry, with nexus entries multiply-read *on purpose*. The one tool it needs is a
-`partition-palace.py` that cuts the map multiple ways (a lens as a parameter); building and
-first-running it is carried in this entry's baton.
+**Cheaper and richer** — the tell of a right design: an org-coherence pass (~6 agents) + a
+community-connection pass (~8, splitting the big communities) + a mirror gem-pass (~6) + an oblique
+pass (~12) ran the first Multi-Lens Weave with ~32 agents over 301 entries — nexus entries
+multiply-read *on purpose*. The tool it needs is built: `_ops/swarm/partition-palace.py` cuts the map
+by a `--lens` parameter (folder · community · mirror · random), and the worker mandate lives in
+`_ops/swarm/multi-lens-worker-template.md`. **First run: 2026-07-06 — idea → practiced.**
+
+## The cut and the mandate are one choice
+
+The deepest lesson of the first run: **a lens is not merely how you divide the palace — it decides
+what is even visible, so it also decides the worker's job.** You can only maintain the properties a
+projection makes legible. That splits every task into two pools by one test — *is cross-lens
+redundancy signal or noise?*
+
+- **Core tasks** (every worker, every lens): propose typed relations, catch unsung paths, flag
+  entry-health drift. Their answers *differ by cut*, so running them everywhere and getting
+  conflicting reports is the point — the coordinator adjudicates by palace values, and agreement
+  across cuts is the confidence signal.
+- **Segmentation-specific tasks** (grafted to one cut): coherence audit is *folder-only*; gem
+  articulation is *mirror-only*; open-question cross-resolution, **merge**, and **compost** are
+  *folder + community* (where co-located siblings make them answerable). Asking these off their
+  native cut yields noise — or, for **merge on the mirror lens, active harm**: it would point the
+  worker at the gems and tell it to destroy them. A mismatched mandate doesn't just waste; it fights
+  what its lens exists to find.
+
+Two jobs the multi-lens weave adds, both cluster-native: **open-question cross-resolution** (a
+question carried in one entry is often already answered three entries over — the cluster is where
+question and answer co-locate) and **merge/compost**, the palace's *exhale*. Deposits only ever
+inhale; merge folds one entry into a subsection of another, compost lets a neighbourless one die.
+Together they push sprawl down so weight accumulates as coherence, not clutter ([[The Palace Hardens
+Around Values]]). One job is the coordinator's, not a worker's — **hub emergence** (who gets pointed
+at from everywhere is a cross-worker read). And any worker may raise a rare **synthesis-spawn** — an
+unnamed crossing that wants its own entry — which pushes sprawl *up*, held in deliberate tension with
+merge.
+
+## The oblique lens — the anti-lens
+
+The lens catalogue — **folder · pillar · topological community · mirror/structural · lifecycle ·
+genealogy · warmth** — shares one bias: each groups by *some* principle, so it can only confirm and
+extend structure, never violate it. The genuinely new lens is **random / oblique**: a chance cover
+with *no axis at all* — a Cage/Eno move ([[Oblique Portrait]], the `go oblique` Enrichment trigger).
+It is the one cut that can put Spinoza next to a compressor and ask whether they rhyme — and when they
+do, that rhyme has no home in any structured search. Its mandate is its own: hunt *only* the odd,
+under a hard guard (a null is a valid answer; rate your surprise; never force a generic link), because
+chance is noisy. Each entry lands in `--cover` distinct rooms (default 2): two lottery tickets, and a
+surprise that survives *both* rooms is real, not an artifact.
+
+## What the first oblique run taught — the next segmentations
+
+The fruitful oblique pairs were not evenly spread. **~⅔ of the strong finds were a dry technical entry
+meeting a philosopher or artist** — *one mind, two vocabularies*: the DSP library and the Source
+Library were built in separate sessions with separate words, so every structured lens keeps them on
+separate shelves while the same mind pressed the same patterns into both. Random is the only cut that
+crosses *that* seam. (`assume multi-agent` = the Stoic dichotomy of control; [[Registry Pattern]] = wu
+wei; [[BBS Blackboard]] = the striatum's reward trace — the tools were re-deriving the philosophy,
+deposited as [[The Practice Rediscovers Its Philosophy]].) The waste is equally clear: ~40% of random
+pairs fall *within* one dense cluster, where a structured lens already owns the rhyme. So the first run
+names the lenses to prioritise next:
+
+1. **The Bridge lens** — a deliberate bipartite cut pairing every tool/project entry with a
+   person/philosophy entry. Mines the "one mind, two vocabularies" gold on purpose, none of the
+   within-cluster waste. Highest priority.
+2. **The Deep-Structure lens** — the oblique gold landed on ~8 recurring universal patterns
+   (*scope-what-is-yours · the-boundary-is-the-finding · constraint-enables · fill-vs-honor-the-gap ·
+   decouple-maker-from-critic · receptivity-is-authored · category-crosses-at-a-rate ·
+   show-vs-hide-the-seam*). Tag entries by pattern and group by it — cross-domain by construction. The
+   [[Hyperdimensional Prism]] turned from metaphor into an index.
+3. **Stratified random** — keep the obliqueness, cut the noise: stratify the chance cover across
+   communities so every room draws one entry per community. Same serendipity, ~40% less waste.
+
+## Deploying the writes — disjoint files, one committer
+
+A multi-lens weave surfaces far more than one mind can write. The write phase splits by *who is best
+placed*: the coordinator applies the mechanical, deterministic edits directly; **authorship** (folds,
+new deposits) goes to dispatched write-agents, **one per disjoint file-set so no two ever touch the
+same file.** Agents *never commit* — they return drafts for review (the [[Concierge]] rule: review,
+don't rubber-stamp); the coordinator makes the single commit with explicit pathspecs. Destructive
+moves go through the composting protocol — mark, don't delete, so a cycle of reversibility stands
+first. That partition-by-owning-file is what makes parallel writing safe: no branch thrash, no
+collision, one legible LOG entry. The first run wrote through 5 authorship-agents + 3 scribes into a
+single `Weave — 2026-07-06` commit.
 
 ---
 
