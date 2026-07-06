@@ -9,7 +9,7 @@ pillars:
 born: 2026-03
 stage: growing
 last_activated: 2026-07
-activation_count: 2
+activation_count: 3
 energy: very high
 beauty: 9
 links:
@@ -48,6 +48,12 @@ links:
   - target: "[[Hero and Avatar Maker]]"
     type: connects-to
     label: face-check-dispatch
+  - target: "[[Hyperdimensional Prism]]"
+    type: exemplifies
+    label: weaving-as-projection
+  - target: "[[Lateral Access]]"
+    type: connects-to
+    label: many-angles
 forward_vector: "I am the palace's colony architecture — the why and the shape of weaving as a swarm. I hand the executable how to the [[Weave Ceremony]] card and the swarm templates, and keep the ideas they implement: the scaling constraint, the biological frame, the frontier. I grow as the pheromone-trail differentiation (Phase 2) gets built."
 ---
 
@@ -56,6 +62,8 @@ forward_vector: "I am the palace's colony architecture — the why and the shape
 ![[Swarm Weave — hero.png]]
 
 > **This entry is the *why* and the *architecture*, not the operational manual.** Running the Weave as a swarm is now the [[Weave Ceremony]]'s default — that card owns the contract (steps, postconditions, the linters), and the executable prompts live in the swarm templates (`_ops/swarm/worker-prompt-template.md`, `coordinator-synthesis-template.md`) beside the deterministic helpers (`build-map-*.py`, `new-entry-catchup.py`, the `lint-*.py` scans, `face-audit.py`). This page carries the *ideas those implement* — the colony model, the coordinator's scaling constraint, the biological frame, and the frontier. When the *how* changes it changes there; read this for the shape, not the syntax.
+
+> **⟢ Active Baton:** the next move on this entry — build `partition-palace.py` and run the first **Multi-Lens Weave** (§ below) — is carried in [[Swarm Weave — baton — multi-lens-build-and-run]]. A fresh Opus should read that baton first.
 
 The [[Weave Ceremony]] has a structural ceiling. A single Claude instance reading
 the full palace holds every entry in a shared context window — attention gets
@@ -181,6 +189,56 @@ entry, its neighbors, and SCHEMA §4 directly into a prompt for `gemma4:26b` ove
 Ollama (serialized, no tool calls, no parallelism; validated for focused
 single-entry work, not the full swarm). The current prompt scaffolds and helpers
 are what these read; this page does not restate them.
+
+---
+
+## The Multi-Lens Weave
+
+*This is where the per-entry model above evolves.* One worker per entry is wasteful — at average
+degree ~16, each entry is read ~17 times (once as home, ~16 times as a neighbor) to produce the
+*same* view. The deeper problem: an entry's connections are not a fixed set — **they depend on the
+lens you read it in.**
+
+Read [[Kuramoto Coupling]] inside the DSP family and it reaches for oscillators, phase, wavetables;
+inside the philosophy family, for Spinoza, cooperation, synchronization-as-agency; inside a biology
+family, for fireflies and [[Endosymbiosis]]. Same entry, three connection-sets — and their union is
+its *true* profile, which no single partition draws out. This is the [[Hyperdimensional Prism]]
+turned on weaving: an entry is a high-dimensional object, each lens a projection, and you reconstruct
+it by taking **several projections**.
+
+**Productive redundancy is the operating principle.** Re-reading an entry inside *different families*
+is not waste — it is the point. A nexus entry (a hub, a bridge) earns its multiple readings, one per
+family it belongs to. The Weave converts *accidental* redundancy (neighbor re-reads that add nothing)
+into *purposeful* redundancy (multi-lens re-reads of the graph's genuine crossing-points).
+
+**Different lenses do different jobs** — not the same task run twice:
+
+- **Organizational lenses (the folders)** → coherence. The whole `Shop/` in one agent sees
+  cross-specialist consistency a per-specialist worker structurally cannot (tier vocab, recipe
+  coverage, roster gaps); `_ops/` audits the ceremony machinery *as a system*; `Projects/` sees
+  curriculum scaffolding; `People/` checks citizen consistency and dialectic pairings.
+- **Cross-cutting lenses (pillar, graph-community)** → connection. They cut *across* the folders,
+  surfacing the cross-domain links the org-lens is blind to.
+- **The `mirrors` / structural lens** → the gems. Grouping entries that rhyme across domains
+  (Kuramoto + Endosymbiosis + [[Cooperation Yields Agency]]) surfaces the deepest cross-domain
+  synthesis — the prize no organizational structure captures.
+
+A partial lens catalogue: **folder** · **pillar** · **topological community** · **mirror/structural**
+· **lifecycle** (the catch-up cohort) · **genealogy** (`emerged-from` lineage) · **warmth**
+(co-activation — what's thought about together now). Each is dense *within* its grouping and blind
+*across* it — which is exactly why you run several.
+
+**Two signals fall out.** A connection that survives re-framing across lenses is **confidence** (the
+old "two workers agree," raised to "it survives the re-frame"); a connection seen under *one* lens
+only — especially the mirror lens — is a **surprise gem** a single-partition weave cannot produce,
+having nothing to contrast against. So the coordinator's job upgrades from *de-dup the fragments* to
+*read the graph through N lenses and report agreement (trust) vs single-lens sightings (surprise).*
+
+**Cheaper and richer** — the tell of a right design: an org-coherence pass (~6–8 agents) + a
+community-connection pass (~18–20) + a mirror gem-pass (~4–8) ≈ ~35 agent-runs, ~7× fewer than one
+worker per entry, with nexus entries multiply-read *on purpose*. The one tool it needs is a
+`partition-palace.py` that cuts the map multiple ways (a lens as a parameter); building and
+first-running it is carried in this entry's baton.
 
 ---
 
@@ -316,10 +374,11 @@ complex. They didn't. The swarm will find out.
 
 ## Forward Vectors
 
-- **What is the right worker scope?** One worker per entry is the cleanest model.
-  An alternative is one worker per *cluster* (entries sharing a pillar or a hub
-  node). Clusters might produce richer new introductions but require a clustering
-  step before worker dispatch.
+- **What is the right worker scope?** Answered above (*The Multi-Lens Weave*): not one
+  worker per entry but one per *neighborhood*, and the palace divided by *several* lenses
+  at once so nexus entries are read in each family they belong to. What remains open is
+  building the `partition-palace.py` that cuts the map multiple ways (a lens as a parameter)
+  and first-running the lens-swarm — carried in this entry's baton.
 - **How should the coordinator handle disagreement between workers?** If worker A
   proposes A→B as `mirrors` and worker B proposes B→A as `deepens`, present both
   to Loudon with the rationale — do not auto-resolve.
