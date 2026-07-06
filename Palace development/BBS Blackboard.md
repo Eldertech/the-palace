@@ -8,7 +8,7 @@ pillars:
 born: 2026-03
 last_activated: 2026-05-02
 activation_count: 3
-stage: growing
+stage: mature
 status: historical-root
 energy: very high
 beauty: 9
@@ -49,6 +49,9 @@ links:
     label: stigmergy-surface
   - target: "[[Palace Agent Infrastructure Spec]]"
     type: connects-to
+  - target: "[[Palace Orchestrator]]"
+    type: connects-to
+    label: appends-through-this-engine
 ---
 
 # BBS Blackboard

@@ -24,6 +24,9 @@ links:
   - target: "[[Spinoza Conatus]]"
     type: mirrors
     label: conatus-as-worker-drive
+  - target: "[[Palace Orchestrator]]"
+    type: connects-to
+    label: model-realized-as-engine
 forward_vector: I am the model well-formed worker agent — precise enough that any agent can read me and know exactly what context it needs before a task, how to hold its neighborhood's perspective without losing task focus, and what the difference feels like between operating with hilaritas and operating with tristitia.
 ---
  
@@ -90,4 +93,4 @@ This has a specific implication for Forward Vectors: the questions at the bottom
 - The phenomenology question was deliberately left open. Does it need to stay open, or is the behavioral claim sufficient for palace design purposes? What would closing it require?
 - If pages are pheromone trails, the quality of the trail depends on the quality of prior writers. How do you audit trail quality? Does the Ceremony Reader apply here?
 ## Forward Vectors
-- 
+- I want to watch whether [[Palace Orchestrator]] dispatching real stewards confirms the enchantment effect at production scale — does a steward loaded with its home page's neighborhood actually behave as directionally as the hand-loaded workers this entry first observed, or does the orchestrator's thinner context-loading discipline flatten the polyphony?

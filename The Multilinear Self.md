@@ -39,6 +39,9 @@ links:
   - target: "[[The Multilinear Self — projection roster]]"
     type: spawned
     label: roster
+  - target: "[[Kuramoto Coupling]]"
+    type: connects-to
+    label: selves-as-coupled-oscillators
 ---
 
 # The Multilinear Self

@@ -33,6 +33,9 @@ links:
     type: connects-to
   - target: "[[Dialectic]]"
     type: couples-with
+  - target: "[[Modes of Collaboration]]"
+    type: exemplifies
+    label: flagship-mode
   - target: "[[Spinoza Conatus]]"
     type: deepens
     label: conatus-hilaritas-teaching

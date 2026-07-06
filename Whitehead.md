@@ -3,7 +3,7 @@ title: "Whitehead"
 type: concept
 pillars: [philosophy, tools]
 born: 2026-05
-stage: sprout
+stage: growing
 confidence: working
 energy: high
 last_activated: 2026-05

@@ -81,6 +81,22 @@ Spinoza defines joy (laetitia) as the affect that accompanies an increase in pow
 
 **Hilaritas** is the special case: a joy that affects the whole body/mind equally, not just one part. It's what Loudon calls the state produced by a great lesson or stream — when creation, tools, philosophy, and practice all fire together. The [[Hilaritas Generator]] is the classroom designed to produce this state.
 
+## The Affects: Tristitia
+
+Tristitia is not just hilaritas's absence — it's a distinct mechanism with its own catalogue of causes. A classroom, a live stream, a creative practice, or a collaboration can be a tristitia generator just as reliably as it can be a hilaritas generator. Mapping what reliably produces it is prerequisite to reliable design: you cannot engineer hilaritas without knowing what works against it. Avoiding these patterns is not the same as producing hilaritas — the positive conditions (all four pillars firing, cooperative encounter, a real thing to make) still have to be present on top.
+
+**Pillars firing in isolation.** A session that is only tool-focused (technique without creation or philosophy) produces narrow titillatio at best. A session that is only philosophical (ideas without making) tends toward tristitia in learners who need embodied engagement. The four pillars amplify each other, and the absence of any one drains the others.
+
+**Premature evaluation.** A learner asked to assess quality before they've had time to explore produces tristitia consistently — the evaluative posture ("is this good?") interrupts the generative one ("what does this want to become?"). Platform analytics — "how many views?" — are premature evaluation applied to the creator's own practice. The counter-metric is titillatio vs. hilaritas: 10,000 views that left you depleted was a tristitia event; 40 views that left you expanded was a hilaritas event. The operating question stays **"how do you feel?"** not "how many views?"
+
+**Identity as obstacle.** When the learner's self-concept is the actual barrier — "I'm not a musician," "I don't do math" — instruction that targets knowledge rather than identity reliably produces tristitia. Knowledge can increase while power-to-act decreases, because the identity filter blocks application. See [[Identity Molting]] for the complementary framing.
+
+**Service, not cooperation.** A session designed to deliver content to a passive receiver is service, not cooperation (see [[Cooperation Yields Agency]]'s failure modes). It may produce narrow titillatio but rarely hilaritas, and can produce tristitia in learners who feel their agency isn't engaged.
+
+**Confusion without resolution.** Productive confusion — the kind that precedes genuine insight — is not tristitia. Confusion that compounds without a pathway forward, unacknowledged, depletes power-to-act instead. The design question: is the confusion generative or deadening?
+
+*This section absorbed the former [[Tristitia Generator]] entry (composted 2026-07-06) — its full catalogue and open questions.*
+
 ## Cross-Domain Mirrors
 
 **[[Kuramoto Coupling]]** — The conatus of each oscillator is its natural frequency — the rhythm it would maintain if uncoupled. Coupling doesn't destroy conatus; it harmonizes multiple conatus into collective coherence. This is why cooperation enhances agency rather than diminishing it: each entity's conatus is amplified, not overridden.

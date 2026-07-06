@@ -24,7 +24,7 @@ links:
     type: connects-to
   - target: "[[p5.js]]"
     type: connects-to
-tags: [specialist, shop, interactive, data-viz, web, charts, stub]
+tags: [specialist, shop, interactive, data-viz, web, charts]
 ---
 
 # Observable Plot

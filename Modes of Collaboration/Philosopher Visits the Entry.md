@@ -20,7 +20,8 @@ links:
     type: connects-to
     label: sibling-method
   - target: "[[Modes of Collaboration]]"
-    type: connects-to
+    type: member-of
+    label: named-mode
   - target: "[[Enrichment]]"
     type: connects-to
     label: a-card-genre

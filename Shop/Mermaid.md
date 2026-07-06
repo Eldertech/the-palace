@@ -16,7 +16,7 @@ links:
   - { target: "[[Shop/Graphviz]]", type: connects-to, label: alternative-to }
   - target: "[[Kuramoto Coupling]]"
     type: connects-to
-tags: [specialist, shop, image, diagram, stub]
+tags: [specialist, shop, image, diagram]
 ---
 
 # Mermaid

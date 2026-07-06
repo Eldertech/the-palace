@@ -6,7 +6,7 @@ pillars: [tools, creation, philosophy]
 born: 2026-06
 last_activated: 2026-06
 activation_count: 1
-stage: sprout
+stage: composting
 confidence: working
 energy: high
 who_leads: loudon
@@ -28,6 +28,8 @@ links:
     label: a-decomposition-the-roster-wants
 forward_vector: "I am the search for how to take a flat ink drawing apart into living, depth-ordered layers. I found the reliable path past the line-art wall: convert to a flat cel-shaded domain (it beat photoreal), segment and infill there, stylize each cel back to ink last. I want to harden into a general split_to_layers any frame can call, and to be compared against the parallel explorations until the most reliable method is settled."
 ---
+
+<!-- COMPOSTING (Weave 2026-07-06): folded into [[Animate the Background]] § The N-Layer Case. Awaiting deletion confirmation next Weave cycle. -->
 
 # Line-Art Layer Decomposition
 

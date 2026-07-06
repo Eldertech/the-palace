@@ -21,7 +21,8 @@ links:
   - target: "[[Palace Philosophies]]"
     type: enables
   - target: "[[Modes of Collaboration]]"
-    type: connects-to
+    type: member-of
+    label: named-mode
   - target: "[[Mixture of Experts]]"
     type: mirrors
     label: multi-expert-with-cross-talk

@@ -41,6 +41,12 @@ links:
   - target: "[[STIGMERGY v2.0 — Consolidation & Primary Interface]]"
     type: spawned
     label: consolidation-and-roadmap
+  - target: "[[Palace Orchestrator]]"
+    type: connects-to
+    label: dispatches-onto-the-board
+  - target: "[[Trickster]]"
+    type: mirrors
+    label: field-trace-vs-signal-intercept
 ---
 
 # STIGMERGY

@@ -8,7 +8,7 @@ pillars:
 born: 2026-03
 last_activated: 2026-03
 activation_count: 1
-stage: growing
+stage: composting
 energy: high
 links:
   - target: "[[Hilaritas Generator]]"
@@ -25,6 +25,8 @@ forward_vector: "I want to become the mirror of the Hilaritas Generator — a pr
 ---
 
 # Tristitia Generator
+
+<!-- COMPOSTING (Weave 2026-07-06): folded into [[Spinoza Conatus]] § The Affects: Tristitia. Nutrients redistributed there. Awaiting deletion confirmation next Weave cycle. -->
 
 The shadow of the [[Hilaritas Generator]]. Spinoza defines tristitia as the affect accompanying a *decrease* in power-to-act — the experience of becoming less capable, less connected, less alive. Where hilaritas touches the whole being and expands it, tristitia contracts it. Both are real phenomena with identifiable causes.
 

@@ -41,6 +41,9 @@ links:
   - target: "[[Hilaritas Generator]]"
     type: connects-to
     label: making-as-expansion
+  - target: "[[Sam Maloof]]"
+    type: mirrors
+    label: wood-craft-two-methods
 ---
 
 # George Nakashima
