@@ -64,7 +64,7 @@ For metaphor, cadence rationale, the widened-charter rationale, and swarm archit
 
 ## Execution Method
 
-The Weave now runs as a **Swarm Weave** — parallel workers auditing individual entries, a coordinator synthesizing results. The Swarm Weave is the canonical execution path. See [[Swarm Weave]] for the full spec and operational instructions.
+The Weave now runs as a **Multi-Lens Swarm Weave** — the map cut by several lenses at once (folder · community · mirror · random/oblique), each lens carrying its own worker mandate (**the cut and the mandate are one choice**), a coordinator reporting cross-lens *convergence* (confidence) versus single-lens *sightings* (gems). This is the canonical execution path. See [[Swarm Weave]] § The Multi-Lens Weave for the full spec — the lens catalogue, the two-pool mandate (core vs segmentation-specific), the oblique lens, and the disjoint-file write-agent deployment. The partitioner is `_ops/swarm/partition-palace.py` (a lens is a `--lens` parameter); the worker mandate is `_ops/swarm/multi-lens-worker-template.md`.
 
 The single-agent protocol below remains valid for: palaces under ~20 entries, quick topological spot-checks, or situations where Claude Code sub-agent orchestration is unavailable. For the current palace (100+ entries), execute as a Swarm Weave.
 
@@ -84,7 +84,7 @@ The single-agent protocol below remains valid for: palaces under ~20 entries, qu
 **Postconditions:**
 1. A topology report has been produced covering: total entry count, hub nodes, orphan entries, most-connected nodes, cross-pillar bridges, dormant entries, stale metadata
 2a. An **unsung paths** audit has been completed: all plain-text body references to known entry titles have been surfaced and formalized as YAML frontmatter links. Any that should NOT be formalized have been flagged with a one-line reason. Unsung paths are mandatory — the prose already asserts the connection; the YAML is simply catching up.
-2b. The **`weave_flag` inbox** has been read from the persistent board, and every open flag has either been acted on by the Weave or had an explicit decision recorded in the commit body.
+2b. The **`weave_flag` inbox** has been read from the persistent board, and every open flag has either been acted on by the Weave or had an explicit decision recorded in the commit body. **Verified mechanically by `_ops/swarm/lint-weave-flags.py`** (exits 0 only when no flag is left un-addressed and un-declined). This is the checkable backstop that makes 2b unmissable *however the Weave was launched* — a baton whose move-list omits Step 1c no longer bypasses it — the sibling of the 2d/2e/2f linters. (Added 2026-07-06 after a baton-launched Multi-Lens Weave skipped the honour-system inbox read; [[The Palace Hardens Around Values]]: a rule earns a gate once its check proves mechanical.)
 2c. A **substrate sweep** has been completed: uncommitted edits, stashes, dangling commits, unmerged branches, and recent rewrites have been triaged per finding (recover / discard / leave). Recoveries are additive only; discards are recorded so the LOG stays honest.
 2d. The **link-direction linter** (`_ops/swarm/lint-link-directions.py`) has been run against a freshly rebuilt map. It reports **no link-direction errors introduced by this Weave** — E1 reciprocal contradictions for asymmetric types, E2 hubs emitting `member-of`. Pre-existing errors the Weave chose not to resolve are listed in the commit body with a one-line reason; a silent red linter violates the LOG. This is the checkable directional postcondition that the 2026-06-05 schema-compliance miss showed the Weave needed.
 2e. The **doc-drift linter** (`_ops/swarm/lint-doc-drift.py`) exits **0 on errors** (warnings reviewed). This is the prose-consistency counterpart to 2d: it catches foundational-doc drift — wrong-case refs, broken paths, dangling section pins, trigger-coverage gaps. Any warning left standing is a deliberate review-list item, not a silent miss.
@@ -94,6 +94,7 @@ The single-agent protocol below remains valid for: palaces under ~20 entries, qu
 4. **Vector tuning has been invited** for entries whose `forward_vector` has visibly drifted from the entry's current content, connections, or pace. Forward vectors are meant to evolve; the Weave is a natural occasion to surface drift and propose tweaks or full overhauls.
 5. Any confirmed metadata updates have been written to entry files
 5a. A **face audit** has run — merited-but-missing faces proposed for the gated [[Hero and Avatar Maker]] batch; faces on now-dormant entries (composting, spores) retired.
+5b. A **visual Weave report** (HTML, per the [[Loudon Live Design System]]) has been produced and saved to the session folder — the human-facing companion to the topology report, summarizing findings across lenses (cross-lens convergences, single-lens gems, the staged decision surface, and — after an oblique pass — what the randomness revealed and which segmentations to prioritize next). This is a standard Weave output, not a one-off. The studio floor applies (Graphite skin, the Lissajous sigil, the `Loud'n Live` footer, no cyan / emoji / hype); entry avatars may be embedded to reinforce the findings visually. Codified 2026-07-06.
 6. Git commit made: `Weave — [date] — [N links added, N entries promoted, N orphans flagged, N vectors tuned, N flags closed, N orphans recovered/discarded, N faces added/retired]`
 
 **Failure mode:** If the palace is only partially readable (some files inaccessible), produce a partial topology report and note which entries were unreachable. A partial Weave is valid. Do not commit until all accessible files have been processed.
@@ -279,6 +280,7 @@ python3 "$(ls -1 _ops/swarm/build-map-*.py | sort | tail -1)"   # newest dated m
 python3 _ops/swarm/lint-link-directions.py                       # §4 link directionality (E1/E2 gate)
 python3 _ops/swarm/lint-doc-drift.py                             # foundational-doc consistency (E1/E3 gate)
 python3 _ops/swarm/lint-entry-naming.py                          # entry title↔filename, bundle-folder case (E1 gate)
+python3 _ops/swarm/lint-weave-flags.py                           # weave_flag inbox addressed/declined (2b gate)
 python3 _ops/swarm/lint-ghost-links.py                           # dead body wikilinks — flag-only, never gates
 python3 _ops/swarm/lint-bundle-hygiene.py                        # frontmatter demotion candidates (invalid type gates)
 python3 _ops/swarm/face-audit.py                                 # faces to add / retire (Step 5c)
