@@ -15,6 +15,12 @@ Sibling to the other `_ops/swarm/` helpers; the map builder is its upstream.
 
 Lenses
 ------
+  random     the anti-lens (oblique): a chance cover with no organizing axis, so
+             it can surface connections no principled cut would ever put in one
+             room (a Cage/Eno move). Each entry lands in `--cover` distinct groups
+             (default 2 — two lottery tickets per entry; a surprise seen in both
+             rooms is real, not an artifact). Seeded (`--seed`) for reproducibility.
+             Its mandate is its own: hunt ONLY the odd/surprising, null is valid.
   folder     directory families (organizational coherence — Shop/, Projects/, …).
              `(root)` is the flat general population, flagged as a non-coherence
              unit: it is a pile, not a family, and should be subdivided or
@@ -42,6 +48,7 @@ boundary edges); `--json` also dumps the JSON to stdout.
 """
 import argparse
 import json
+import random as _random
 import sys
 from collections import Counter, defaultdict, deque
 from pathlib import Path
@@ -239,6 +246,43 @@ def lens_mirror(nodes, edges, link_type="mirrors", demote_hubs=0):
     return out
 
 
+# ---------------------------------------------------------------- lens: random (oblique)
+
+def lens_random(nodes, edges, groups=12, cover=2, seed=20260706):
+    """A chance cover: each entry assigned to `cover` DISTINCT random groups.
+
+    No organizing axis — the point is bias-free adjacency. Deterministic given
+    `seed`. Boundary edges are omitted (meaningless for an arbitrary cut); what
+    matters is which strangers share a room."""
+    rng = _random.Random(seed)
+    ids = sorted(nodes)
+    if cover > groups:
+        sys.exit(f"--cover ({cover}) cannot exceed --groups ({groups}).")
+    members = defaultdict(list)
+    # greedy-balanced: each entry picks `cover` distinct groups, biased toward
+    # the currently-smallest groups so sizes stay even without a rebalance pass.
+    sizes = {g: 0 for g in range(groups)}
+    for nid in ids:
+        # candidate groups sorted by current size (smallest first), ties broken randomly
+        order = sorted(range(groups), key=lambda g: (sizes[g], rng.random()))
+        chosen = order[:cover]
+        for g in chosen:
+            members[g].append(nid)
+            sizes[g] += 1
+    clusters = []
+    for g in sorted(members, key=lambda g: (-len(members[g]), g)):
+        clusters.append({
+            "id": f"R{g+1}",
+            "size": len(members[g]),
+            "members": sorted(members[g]),
+            "internal_edge_count": None,
+            "boundary_edge_count": None,
+            "boundary_edges": [],
+        })
+    return {"cluster_count": len(clusters), "clusters": clusters,
+            "params": {"groups": groups, "cover": cover, "seed": seed}}
+
+
 # ---------------------------------------------------------------- reporting
 
 def human_summary(result, nodes, lens, map_name):
@@ -248,10 +292,7 @@ def human_summary(result, nodes, lens, map_name):
                  + (f" | unclustered: {len(result['unclustered'])}" if result.get("unclustered") else ""))
     if result.get("params"):
         p = result["params"]
-        bits = []
-        if "iterations" in p:
-            bits.append(f"iterations={p['iterations']}")
-        bits.append(f"demote_hubs={p['demote_hubs']}")
+        bits = [f"{k}={v}" for k, v in p.items() if k != "demoted_hubs"]
         lines.append("Params: " + " ".join(bits)
                      + (f" (demoted: {', '.join(p['demoted_hubs'])})" if p.get('demoted_hubs') else ""))
     lines.append("")
@@ -274,13 +315,16 @@ def human_summary(result, nodes, lens, map_name):
 
 def main():
     ap = argparse.ArgumentParser(description="Partition the palace map by a lens.")
-    ap.add_argument("--lens", required=True, choices=["folder", "community", "mirror"])
+    ap.add_argument("--lens", required=True, choices=["folder", "community", "mirror", "random"])
     ap.add_argument("--map", type=Path, default=None, help="map JSON (default: newest)")
     ap.add_argument("--out", type=Path, default=None, help="write full JSON here")
     ap.add_argument("--json", action="store_true", help="also dump full JSON to stdout")
     ap.add_argument("--iterations", type=int, default=100, help="community: max LPA iterations")
     ap.add_argument("--demote-hubs", type=int, default=0, help="community: lift top-N degree nodes before LPA")
     ap.add_argument("--link-type", default="mirrors", help="mirror lens: link type to component on")
+    ap.add_argument("--groups", type=int, default=12, help="random lens: number of chance groups")
+    ap.add_argument("--cover", type=int, default=2, help="random lens: distinct groups each entry lands in")
+    ap.add_argument("--seed", type=int, default=20260706, help="random lens: RNG seed (reproducible)")
     args = ap.parse_args()
 
     map_path = args.map or newest_map()
@@ -290,8 +334,10 @@ def main():
         result = lens_folder(nodes, edges)
     elif args.lens == "community":
         result = lens_community(nodes, edges, iterations=args.iterations, demote_hubs=args.demote_hubs)
-    else:
+    elif args.lens == "mirror":
         result = lens_mirror(nodes, edges, link_type=args.link_type, demote_hubs=args.demote_hubs)
+    else:
+        result = lens_random(nodes, edges, groups=args.groups, cover=args.cover, seed=args.seed)
 
     result["lens"] = args.lens
     result["map"] = map_path.name
