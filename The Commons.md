@@ -22,6 +22,9 @@ links:
   - target: "[[Cooperation Yields Agency]]"
     type: connects-to
     label: operationalizes
+  - target: "[[The Palace Practices on Itself]]"
+    type: connects-to
+    label: worked-instance
 ---
 
 # The Commons

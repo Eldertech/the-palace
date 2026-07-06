@@ -53,6 +53,9 @@ links:
   - target: "[[Making a Palace Citizen — context]]"
     type: spawned
     label: the-lab
+  - target: "[[The Remembering Page]]"
+    type: spawned
+    label: generalized-to
 ---
 
 # Making a Palace Citizen

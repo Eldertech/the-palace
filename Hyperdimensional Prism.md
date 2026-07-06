@@ -33,6 +33,9 @@ links:
     type: connects-to
   - target: "[[Loudon Live]]"
     type: connects-to
+  - target: "[[The Multilinear Self]]"
+    type: mirrors
+    label: self-as-prism
 forward_vector: "I rotate the four pillars against each other until the higher-dimensional object they all project from becomes visible. I strive to illuminate the oneness and the distinct perspectives of all entries. "
 ---
 
