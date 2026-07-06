@@ -8,8 +8,8 @@ pillars:
   - philosophy
 born: 2026-03
 stage: growing
-last_activated: 2026-03
-activation_count: 1
+last_activated: 2026-07
+activation_count: 2
 energy: very high
 beauty: 9
 links:
@@ -48,11 +48,14 @@ links:
   - target: "[[Hero and Avatar Maker]]"
     type: connects-to
     label: face-check-dispatch
+forward_vector: "I am the palace's colony architecture — the why and the shape of weaving as a swarm. I hand the executable how to the [[Weave Ceremony]] card and the swarm templates, and keep the ideas they implement: the scaling constraint, the biological frame, the frontier. I grow as the pheromone-trail differentiation (Phase 2) gets built."
 ---
 
 # Swarm Weave
 
 ![[Swarm Weave — hero.png]]
+
+> **This entry is the *why* and the *architecture*, not the operational manual.** Running the Weave as a swarm is now the [[Weave Ceremony]]'s default — that card owns the contract (steps, postconditions, the linters), and the executable prompts live in the swarm templates (`_ops/swarm/worker-prompt-template.md`, `coordinator-synthesis-template.md`) beside the deterministic helpers (`build-map-*.py`, `new-entry-catchup.py`, the `lint-*.py` scans, `face-audit.py`). This page carries the *ideas those implement* — the colony model, the coordinator's scaling constraint, the biological frame, and the frontier. When the *how* changes it changes there; read this for the shape, not the syntax.
 
 The [[Weave Ceremony]] has a structural ceiling. A single Claude instance reading
 the full palace holds every entry in a shared context window — attention gets
@@ -106,109 +109,24 @@ its work.
 
 ---
 
-## Architecture: Full Swarm Weave
+## Architecture: the shape
+
+*The exact worker prompt, coordinator synthesis steps, and output schema are the
+templates' job (`worker-prompt-template.md`, `coordinator-synthesis-template.md`).
+What follows is the architecture those encode — the ideas, not the syntax.*
 
 ### The Worker
 
-Each worker is a single Claude API call. It receives a focused context containing:
-
-```
-SYSTEM:
-You are a palace worker — a structural auditor and maintenance agent. You
-do not embody the entry you are assigned. You do not interpret, channel,
-or speak for the page. You ask: "Is this correct?" You are the palace's
-maintenance crew: janitor, plumber, electrician. Your job is structural
-integrity — finding what is missing, mislinked, unformalized, or broken,
-and proposing precise corrections. You do not need to know the whole
-palace. Your job is local, precise, and complete.
-
-USER:
-## Your assigned entry
-[full text of entry, including YAML frontmatter]
-
-## Known palace entries (titles only)
-[list of all entry titles — for unsung paths matching only]
-
-## Immediate neighbors (full text)
-[full text of each entry linked in YAML frontmatter, ±1 hop]
-
-## Link ontology
-[SCHEMA §4 — link types and definitions]
-
-## Your task
-1. UNSUNG PATHS — Literal Link Audit:
-   Scan the body text of your assigned entry for plain-text mentions of
-   known entry titles that lack [[wikilink]] syntax. For each finding,
-   report: the phrase used, the entry it refers to, whether the location
-   is structurally significant (Cross-Domain Resonance heading, bold
-   term, sentence-level reference), and a proposed link type. These are
-   mandatory — the prose already asserts the connection; the YAML just
-   hasn't caught up. Flag all of them.
-
-2. NEW INTRODUCTIONS — Semantic Proposals:
-   Propose up to three connections between your entry and other palace
-   entries that are NOT already named in either entry's body text. These
-   are connections visible only from the topology — patterns your
-   immediate reading surfaces. For each: name both entries, propose link
-   type and direction, give one sentence of reasoning. Maximum 3 per
-   worker — the coordinator applies the palace-wide rate limit.
-
-3. METADATA:
-   Flag any missing or stale fields (last_activated, activation_count,
-   stage inconsistencies, non-canonical link types). Non-canonical link
-   types are any not in the SCHEMA ontology — propose the closest
-   canonical replacement. Propose specific corrections.
-
-4. GRAFFITI AUDIT:
-   Extract all HTML comments from the entry body (<!-- ... -->).
-   For each comment, report:
-   - Direction: loudon_to_claude | claude_to_loudon
-   - Content verbatim (truncated to 100 chars if needed)
-   - Any palace entry titles explicitly referenced inside it
-   - Assessment: live | resolved | stale
-     - live: concern still valid, action still needed
-     - resolved: the entry's current state already addresses the comment
-     - stale: comment is outdated (e.g. "needs more connections" on an
-       entry that now has 8 typed links)
-   If a graffiti comment explicitly names another entry title and no
-   corresponding YAML link to that entry exists, also route it to
-   unsung_paths with source: "graffiti".
-
-5. FORWARD VECTOR:
-   Check whether the entry has a forward_vector field in its YAML
-   frontmatter. If absent, propose one: a single sentence, first person,
-   present tense, stating what this entry is becoming and what it wants.
-   Draw from the Forward Vectors / Open Questions section and the body's
-   overall direction. A strong vector is specific enough that the next
-   agent reading it knows exactly where to move. If present, assess:
-   strong (specific, actionable) or weak (vague, generic). Flag weak
-   vectors for rewrite.
-
-6. FACE CHECK — Hero/Avatar Request:
-   Look in the assigned entry's bundle folder ([Entry]/) for a hero and
-   avatar: files named "[Entry] — hero.png" and "[Entry] — icon.png" (or
-   any "* — hero.png" / "* — icon.png" — STIGMERGY prefers the
-   title-matched name, else any). Report has_hero / has_icon. If a face is
-   MISSING and the entry merits one — type project; a hub or any entry with
-   ≥5 typed links; a philosophy-pillar concept; or stage growing or beyond
-   — propose one in [[Hero and Avatar Maker]]'s locked art direction:
-   - idiom: an apt hand-drawn / printmaking / classical medium (screenprint,
-     woodcut, Haeckel engraving, Gorey ink, Klee gouache, diagram). NEVER
-     CGI / Pixar / octane / glossy 3-D render.
-   - hero_prompt: wide ~12:5 darkened backdrop, ONE dominant metaphor drawn
-     from the entry's forward vector, the medium named explicitly, a hard
-     anti-text clause ("no letters, numerals, words, labels — purely
-     pictorial"), balanced gender if figures are present, evoke rather than
-     render real people.
-   - icon_prompt: a bold, high-contrast square emblem (its own mark, not a
-     hero crop) that survives 24-48px; ban fine linework; hard anti-text.
-   You only PROPOSE. Nothing is rendered in the Weave — rendering bills
-   (RunPod FLUX) and runs as a gated batch after Loudon approves the prompts.
-
-Return ONLY valid JSON matching the report schema provided.
-```
-
-The worker returns structured JSON. No prose. No explanation. Just the report.
+Each worker is a single focused Claude call scoped to one entry and its immediate
+neighborhood. It does **not** embody the entry — it is maintenance crew, not a
+channeled voice: janitor, plumber, electrician, asking *"is this correct?"* not
+*"is this alive?"* (that second question belongs to [[Palace Enchantment]]). Its
+work is local, precise, and complete: it audits unsung paths, proposes a few
+genuine new introductions, flags stale metadata, reads the entry's graffiti,
+checks the forward vector, considers whether a newcomer born this cycle deserves
+an inbound link from it (the new-entry catch-up), and checks whether the entry
+merits a face. It never needs to hold the whole palace. The exact task list and
+JSON output shape live in `worker-prompt-template.md`.
 
 ### The Coordinator
 
@@ -218,71 +136,20 @@ scale: if the coordinator loaded every entry to build worker contexts, it would
 need to hold the entire palace in its context window before dispatching a single
 worker, defeating the purpose entirely.
 
-What the coordinator actually does:
+**Phase 1 — dispatch map (cheap, no API calls).** List the entries, parse
+*frontmatter only* (the map builder does this), build a neighbor map, and dispatch
+one worker per entry passing *paths, not content*. Workers do their own reading;
+the coordinator never holds body content at any point.
 
-**Phase 1 — Dispatch map (cheap, no API calls)**
-1. List all `.md` files in the palace root (`fs.readdirSync` — essentially free)
-2. Parse **frontmatter only** from each file (YAML headers, ~20–40 lines per
-   entry — tiny). This gives the full title list and each entry's link targets.
-3. Build a neighbor map: for each entry, which entries does its frontmatter link
-   to? This is the dispatch payload — paths, not content.
-4. Dispatch one worker per entry, passing only:
-   - The **path** to the assigned entry
-   - The **paths** to its immediate neighbors (from frontmatter)
-   - The flat **list of all entry titles** (strings only — for unsung paths matching)
-   - The **path** to SCHEMA (worker reads Section 4 itself)
-
-Workers receive paths. Workers do their own reading. The coordinator never
-holds body content at any point.
-
-**Phase 2 — Synthesis (after all workers return)**
-
-The coordinator receives all worker JSON reports and:
-1. **De-duplicates** — worker A flags Lateral Access → Kuramoto, worker B
-   flags Kuramoto → Lateral Access: collapse to one confirmed bidirectional link
-2. **Resolves conflicts** — two workers proposing incompatible link types for
-   the same pair are surfaced for Loudon's decision, not auto-resolved
-3. **Surfaces global patterns** — an entry independently flagged by three
-   workers who weren't assigned to it is probably an underpowered hub;
-   propose stage promotion
-4. **Synthesizes the graffiti map** — collects all graffiti items from all
-   worker reports into a single cross-palace view. Looks for:
-   - Comments referencing an entry outside the reporting worker's
-     neighborhood (the worker couldn't follow the reference; the
-     coordinator routes it to the relevant neighbor worker retroactively,
-     or surfaces it directly as a coordinator-level finding)
-   - Entries appearing in multiple workers' graffiti reports — consistently
-     unresolved signals across the palace, not local concerns; these rank
-     highest in the action queue
-   - Unresolved loudon_to_claude graffiti across all entries — the full
-     outstanding instruction queue visible in one place for the first time
-   Produces a **graffiti action queue** sorted by priority: structural
-   concerns first (duplicate entries, broken claims, unresolved tensions
-   that have become contradictions), then open questions, then stale items
-   proposed for removal. This queue is distinct from the link proposals and
-   goes to Loudon before them — graffiti is often cheaper to act on and
-   its resolution can clarify link proposals that follow.
-5. **Collects forward vector proposals** — aggregates all missing or weak
-   forward vector flags from worker reports; presents as a batch for quick
-   approval; these are new YAML content, not just link corrections
-5b. **Collects hero/avatar requests** — aggregates every `hero_avatar_request`
-   where `merits_face` is true and a face is missing; de-duplicates; ranks by
-   the Maker's priority order (projects → philosophies → hubs / ≥5-link
-   entries → anything that earns one); presents as a discrete **face-request
-   batch** (idiom + hero_prompt + icon_prompt per entry) for Loudon's
-   approval. Approved prompts feed the [[Hero and Avatar Maker]] render
-   pipeline as a gated, billed batch *after* the Weave's link/metadata writes
-   — never rendered inline
-6. **Builds the Topology Report** from worker reports alone — never re-reads
-   palace files at this stage
-7. **Presents to Loudon** — staged approval: unsung paths first (near-zero
-   deliberation, formalize all), then graffiti action queue (quick
-   dispositions), then forward vector proposals, then new introductions
-   (creative review)
-
-The coordinator is the merge coordinator in distributed version control: not
-the smartest worker, but the function that makes the workers' intelligence
-coherent. Its context budget goes to synthesis logic, not content storage.
+**Phase 2 — synthesis (after all workers return).** The coordinator reasons from
+the JSON reports alone, never re-reading files — de-duplicating reciprocal
+proposals, surfacing incompatible link-type proposals for Loudon rather than
+auto-resolving, spotting an entry flagged by three workers *not* assigned to it
+(an under-powered hub wanting promotion), and assembling the discrete batches:
+the graffiti action queue, the forward-vector batch, and the face-request batch.
+It presents to Loudon in staged order — unsung paths first (near-zero
+deliberation), then graffiti, then vectors, then new introductions. The granular
+step list is in `coordinator-synthesis-template.md`.
 
 **Context budget summary:**
 
@@ -292,11 +159,9 @@ coherent. Its context budget goes to synthesis logic, not content storage.
 | Each worker | One entry body + neighbor bodies (self-fetched) | Small — 3–6 files |
 | No agent | The full palace simultaneously | Never |
 
-Worker reports now carry six task outputs: unsung paths, new introductions,
-metadata flags, graffiti audit, forward vector check, and hero/avatar request.
-The coordinator synthesizes all six. The graffiti map, the forward vector
-batch, and the face-request batch are presented to Loudon as discrete sections
-before link proposals.
+The coordinator is the merge coordinator in distributed version control: not
+the smartest worker, but the function that makes the workers' intelligence
+coherent. Its context budget goes to synthesis logic, not content storage.
 
 ### Parallelism
 
@@ -306,224 +171,16 @@ small context. Total API time approaches the time of one worker call, not 30
 sequential calls. This is the core performance gain — and the core reason the
 architecture scales where the single-weaver cannot.
 
-```javascript
-// Pseudocode sketch — to be built out in Claude Code
-// KEY PRINCIPLE: coordinator reads frontmatter only, passes paths to workers.
-// Workers are autonomous readers — they fetch their own content.
+### Execution
 
-const PALACE_PATH = '/Users/loudonstearns/.../The Palace';
-
-// --- COORDINATOR PHASE 1: Dispatch map (no API calls, no body reads) ---
-
-// 1. List all entries (free — just filesystem)
-const files = fs.readdirSync(PALACE_PATH).filter(f => f.endsWith('.md'));
-
-// 2. Parse frontmatter only from each file (cheap — YAML headers only)
-const frontmatters = files.map(f => ({
-  path: path.join(PALACE_PATH, f),
-  title: parseFrontmatterTitle(f),        // read first ~40 lines only
-  linkTargets: parseFrontmatterLinks(f)   // extract [[targets]] from YAML
-}));
-
-const entryTitles = frontmatters.map(e => e.title);
-const schemaPath = path.join(PALACE_PATH, 'SCHEMA.md');
-
-// 3. Build neighbor map and dispatch workers in parallel
-//    Workers receive PATHS, not content. Workers read themselves.
-const workerReports = await Promise.all(
-  frontmatters.map(entry => runWorker({
-    assignedEntryPath: entry.path,
-    neighborPaths: resolveNeighborPaths(entry.linkTargets, frontmatters),
-    entryTitles,       // strings only — for unsung paths title matching
-    schemaPath         // worker reads Section 4 itself
-  }))
-);
-
-// --- COORDINATOR PHASE 2: Synthesis (reasons from reports, no re-reads) ---
-
-const topologyReport = await runCoordinator({
-  workerReports,
-  entryTitles,
-  frontmatters         // titles + link counts only — already parsed above
-});
-
-await presentToLoudon(topologyReport);
-
-// --- WORKER (runs as sub-agent or API call) ---
-// Receives paths, reads its own files, returns JSON report.
-// Never needs to know about any entry it wasn't given.
-async function runWorker({ assignedEntryPath, neighborPaths, entryTitles, schemaPath }) {
-  const assignedEntry = fs.readFileSync(assignedEntryPath, 'utf8');  // full body
-  const neighbors     = neighborPaths.map(p => fs.readFileSync(p, 'utf8'));
-  const schema        = extractSection4(fs.readFileSync(schemaPath, 'utf8'));
-
-  // Send to Claude API with focused context — returns structured JSON
-  return callClaudeAPI({ assignedEntry, neighbors, entryTitles, schema });
-}
-```
-
-### Report Schema (worker output)
-
-```json
-{
-  "entry_title": "Lateral Access",
-  "unsung_paths": [
-    {
-      "body_phrase": "The Kuramoto model",
-      "references_entry": "Kuramoto Coupling",
-      "structurally_significant": true,
-      "location": "Cross-Domain Resonance bold heading",
-      "proposed_link_type": "mirrors",
-      "proposed_direction": "bidirectional"
-    }
-  ],
-  "new_introductions": [
-    {
-      "entry_a": "Lateral Access",
-      "entry_b": "Physical Modeling Synthesis",
-      "link_type": "mirrors",
-      "direction": "bidirectional",
-      "rationale": "Both describe systems where the desired behavior emerges from conditions set obliquely — you do not command the output, you arrange the preconditions."
-    }
-  ],
-  "metadata_flags": [
-    {
-      "field": "stage",
-      "current": "sprout",
-      "proposed": "growing",
-      "reason": "Body has cross-domain connections and 5 typed links — growing threshold met"
-    }
-  ],
-  "graffiti": [
-    {
-      "direction": "loudon_to_claude",
-      "content": "This is a duplicate of Quality Manifesto and should be combined into that one",
-      "cross_palace_references": ["Quality Manifesto"],
-      "assessment": "live",
-      "routed_to_unsung_paths": true,
-      "proposed_action": "Add mirrors link to Quality Manifesto; flag for potential composting"
-    },
-    {
-      "direction": "claude_to_loudon",
-      "content": "CLAUDE → LOUDON: The jewel as poem, each page a stanza — this describes the actual structure...",
-      "cross_palace_references": [],
-      "assessment": "resolved",
-      "reasoning": "JEWEL.md has been substantially developed since this was written"
-    }
-  ],
-  "forward_vector_check": {
-    "present": false,
-    "proposed": "I want to become the canonical model linking oblique access to topology-driven connection-finding across the palace.",
-    "strength": null
-  },
-  "hero_avatar_request": {
-    "has_hero": false,
-    "has_icon": false,
-    "merits_face": true,
-    "rationale": "Project entry, stage growing, no face in bundle yet.",
-    "idiom": "Klee/Kandinsky gouache — geometric oscillators finding phase",
-    "hero_prompt": "wide darkened gouache backdrop, a field of small geometric figures drifting into a single shared rhythm, one dominant metaphor of coupled motion, hand-painted Klee idiom, no letters numerals words or labels — purely pictorial",
-    "icon_prompt": "bold high-contrast square emblem, two interlocking arcs locking phase, flat gouache, no fine linework, no text"
-  }
-}
-```
-
----
-
-## Architecture: Palace Worker (Mode 2)
-
-A focused, on-demand tool. One entry, its immediate neighborhood, one worker.
-No coordinator. No parallelism. Output small enough to review and approve in a
-single session. Confirmed links written immediately via filesystem.
-
-All palace work runs from Claude Code with direct filesystem access. GitHub raw
-URLs are not used for any Weave operation — they read last-committed state rather
-than live files, and introduce network dependency where none is needed. If a
-claude.ai-based worker template is ever needed in future, it can be added then.
-For now: filesystem only.
-
-### When to invoke
-
-**"Run a palace worker on [Entry Name]"** — invoked by Loudon, by the
-coordinator, or by another worker that has flagged a neighbor as needing
-deeper attention. No assumed context. Any entry, any time, any invoker.
-
-The worker's capabilities will grow over time (formatting fixes, metadata
-normalization, deeper link audits) but its scope stays local: one entry and
-its neighborhood per run. The worker does not need to know who called it.
-
-Current capabilities:
-- Unsung paths audit (body-text mentions not yet in YAML)
-- New introductions (up to 3 semantic proposals)
-- Metadata flags (missing or stale fields)
-- Face check (propose a hero/avatar prompt when the entry merits one and has none)
-
-### Execution options
-
-**Option A — Claude sub-agent (default)**
-
-Uses `Agent(subagent_type="Explore")` in Claude Code. The worker receives
-paths and reads its own files. Produces the highest-quality output, especially
-on unsung paths and evocative labels. Use the prompt template from
-`_ops/swarm/worker-prompt-template.md`.
-
-**Option B — Local Gemma 26b (zero API cost)**
-
-Uses `gemma4:26b` via Ollama with a pre-loaded architecture: the coordinator
-reads all files and embeds content directly into the prompt. No tool calls
-required from the model. Validated 2026-04-08 on SCHEMA and Endosymbiosis.
-
-Requirements: Ollama installed, `gemma4:26b` pulled (~17GB), 32GB+ unified
-memory. Serialized — one entry at a time. Not suitable for full Swarm Weave
-(no parallelism), but zero-cost for focused single-entry work.
-
-```bash
-# Generate and dispatch in one pipeline
-python3 _ops/swarm/build-preloaded-prompt.py "Entry Name" 3 \
-  | python3 -c "
-import json, sys
-prompt = sys.stdin.read()
-import urllib.request
-req = urllib.request.Request(
-    'http://localhost:11434/api/generate',
-    data=json.dumps({'model': 'gemma4:26b', 'stream': False, 'prompt': prompt}).encode(),
-    headers={'Content-Type': 'application/json'}
-)
-resp = urllib.request.urlopen(req, timeout=300)
-print(json.loads(resp.read()).get('response', ''))
-"
-```
-
-**Known Gemma 26b limitations vs. Claude workers:**
-- Occasional label inconsistency across runs (1-2 items may vary)
-- Does not find harvest candidates (concepts worth depositing) — this is
-  correct behavior per the narrow unsung paths definition, but Claude workers
-  will sometimes surface these as a bonus
-- `gemma4:latest` = `gemma4:e4b` (8B) — not `26b`. Always specify `gemma4:26b`
-- Smaller variants (e4b, e2b) tested and not viable: e4b missed unsung paths
-  entirely, e2b produced hallucinations
-
-### Prompt template (Claude sub-agent)
-
-```
-You are a palace worker running a focused connection audit on one palace entry.
-You have filesystem access. Read files directly.
-
-PALACE_PATH = /Users/loudonstearns/Documents/The Palace
-
-## Your tasks
-1. Read the assigned entry: [PALACE_PATH]/[EntryName].md
-2. Parse its YAML frontmatter links to identify immediate neighbors
-3. Read each neighbor file from the filesystem
-4. Read SCHEMA.md — Section 4 only (link ontology)
-5. List all .md filenames in PALACE_PATH — these are your known entry titles
-   for unsung paths matching (filenames only, no body reads)
-
-## Run the worker task
-[paste the worker task block from the Full Swarm Weave system prompt above]
-
-Output as a readable proposal table for Loudon's approval, not JSON.
-```
+Mode 1 runs the workers and coordinator as Claude Code sub-agents
+(`Agent(subagent_type="Explore")`), dispatched in parallel from the orchestration
+layer. Mode 2 (single entry) can run the same way, or — for a zero-API-cost pass —
+via a local model with a pre-loaded prompt: `build-preloaded-prompt.py` embeds the
+entry, its neighbors, and SCHEMA §4 directly into a prompt for `gemma4:26b` over
+Ollama (serialized, no tool calls, no parallelism; validated for focused
+single-entry work, not the full swarm). The current prompt scaffolds and helpers
+are what these read; this page does not restate them.
 
 ---
 
@@ -555,144 +212,13 @@ possible. The Weave comes first.
 
 ---
 
-## Learning Path: Sub-Agents in Claude Code
+## What Comes Next — Enchantment
 
-Loudon is comfortable in Claude Code and eager to understand this architecture
-from the ground up. The learning arc builds in two phases: first use Claude
-Code's native agents feature to develop intuition and test the concept on a
-real palace neighborhood; then rebuild the same logic using the Anthropic SDK
-and Node.js for production use.
-
----
-
-### Phase A — Claude Code Agents (no SDK, no Node.js required)
-
-*Goal: develop real intuition about sub-agent spawning, context scoping, and
-coordinator synthesis before writing any orchestration code. Use real palace
-data from the start — the Hilaritas Generator neighborhood is the test bed.*
-
-**Step A1 — Spawn a single sub-agent manually**
-In Claude Code, use the Task tool (or `/agents` command) to spawn one sub-agent.
-Give it a single palace entry — `Hilaritas Generator.md` — and ask it to run
-the unsung paths audit only. Read what it returns. Understand the boundary:
-what did it see, what didn't it see, what did it need that you didn't give it.
-
-This is the most important step in the whole learning arc. The question
-*"what does a worker actually need in its context?"* is answered here
-experimentally, not theoretically.
-
-**Step A2 — Scope the neighborhood**
-The Hilaritas Generator neighborhood is the test bed: `Hilaritas Generator.md`
-plus all entries it links to directly. Identify these from frontmatter before
-you begin — this is the coordinator's frontmatter-only parse, done manually.
-Note how cheap this step is: you're reading 20–40 lines per file, not bodies.
-
-**Step A3 — Spawn one worker per neighborhood entry**
-Spawn a separate sub-agent for each entry in the neighborhood. Give each one:
-- Its assigned entry (full text, fetched by the sub-agent or passed directly)
-- The neighbor paths (the other entries in the neighborhood)
-- The flat title list
-- SCHEMA Section 4
-
-Do this sequentially first — spawn, wait, read the report, then spawn the next.
-Confirm that each worker runs all five tasks: unsung paths, new introductions,
-metadata, graffiti audit, and forward vector check. A worker that returns clean
-JSON across all five is ready for parallelism. Fix prompt and scope issues
-before attempting parallelism.
-
-**Step A4 — Spawn all workers simultaneously**
-Spawn all neighborhood workers at once. Observe what arrives. This is the first
-moment the architecture feels like a swarm rather than a loop. Note:
-- Do the reports conflict? (Expected — this is useful data)
-- Does any worker return malformed JSON? (Fix the prompt)
-- Does the Hilaritas Generator worker find things the others don't? (It should)
-
-**Step A5 — Coordinate manually**
-Take all the worker reports and feed them to a fresh Claude Code conversation
-as the coordinator context. Ask it to: de-duplicate link proposals, flag
-conflicts, surface global patterns, build the cross-palace graffiti map
-(which graffiti references entries outside the flagging worker's neighborhood?),
-and collect forward vector proposals as a batch. Produce a topology report for
-the Hilaritas Generator neighborhood. Review the output with Loudon's eyes.
-This is the first real Swarm Weave result — small scope, but fully functional.
-
-Notice what the coordinator sees that no individual worker could: graffiti in
-one entry that names a concern about another entry the worker wasn't reading.
-This cross-palace signal is the graffiti map's specific value.
-
-**Step A6 — Validate and write back**
-Approve or reject the coordinator's proposals in order: unsung paths first,
-then graffiti dispositions (resolve or leave live), then forward vector
-proposals, then new introductions. Write confirmed links and forward_vector
-fields to the actual palace entries. Forward vectors are new YAML content —
-they are the worker ceremony's first contribution to palace vitality, not just
-maintenance. This closes the loop: workers found, coordinator synthesized,
-Loudon approved, palace updated. The full ceremony, manually orchestrated,
-on six entries.
-
-*When Step A6 feels natural and the outputs are trustworthy, proceed to Phase B.
-Do not begin Phase B until the neighborhood swarm is producing clean results.*
-
----
-
-### Phase B — SDK and Node.js (production architecture)
-
-*Goal: automate what Phase A did manually, with parallelism, error handling,
-and write-back. The architecture is already understood — Phase B is engineering.*
-
-**Step B1 — The basic API call from Claude Code**
-Claude Code can make Anthropic API calls programmatically via Node.js. Reproduce
-the single worker from Step A1 as a Node.js function. Read the response. Confirm
-the output shape matches the report schema above.
-
-**Step B2 — Structured output (JSON mode)**
-Modify the prompt to return JSON only. Parse with `JSON.parse()` in a try/catch.
-This is the worker report schema — the same shape you validated manually in
-Phase A, now enforced programmatically.
-
-**Step B3 — Frontmatter-only coordinator parse**
-Write the coordinator's dispatch map logic: `fs.readdirSync`, frontmatter
-extraction (YAML headers only — first ~40 lines), neighbor path resolution.
-Confirm it builds the correct dispatch map without reading any entry bodies.
-Test on the full palace. This should feel trivially fast.
-
-**Step B4 — Sequential workers**
-Run the worker function for each palace entry in a loop, passing paths not
-content. Collect all reports. Print them. Slow, but correct. Confirm the output
-shape before adding parallelism.
-
-**Step B5 — Parallel workers with Promise.all()**
-Convert the sequential loop to `Promise.all()`. All workers fire simultaneously.
-Observe the wall-clock time difference. This is also the moment the architecture
-*feels* like a swarm — all the reports arrive together, none of them aware
-of the others.
-
-**Step B6 — The coordinator**
-Write the coordinator as a second API call. It receives all worker reports and
-produces the topology synthesis. Key constraint: the coordinator never reads
-palace files at this stage — it reasons from reports only. Confirm this holds
-by checking what's in its context window.
-
-**Step B7 — Write-back on approval**
-Add the confirmation loop: present output to Loudon, accept approval/rejection
-per link, write confirmed links to `.md` files using Filesystem MCP tools.
-This closes the full loop from dispatch to palace edit.
-
-**Step B8 — Harden and ceremony-ify**
-Add error handling, rate limit backoff/retry, progress reporting, dry-run mode.
-Write the Swarm Weave Ceremony entry as a formal ceremony using the Ceremony
-Linter. This is now a production palace tool.
-
----
-
-### What Comes Next — Enchantment
-
-Once the Swarm Weave is ceremony-ified and producing clean forward vector
-proposals, the palace has the structural foundation for a qualitatively
-different kind of ceremony: [[Palace Enchantment]]. Where the Swarm Weave
-asks *"is this correct?"*, Enchantment asks *"is this alive?"* — agents that
-inhabit pages, follow their forward vectors, and propose what would increase
-each page's power to act.
+Once the Swarm Weave is producing clean forward vector proposals, the palace has
+the structural foundation for a qualitatively different kind of ceremony:
+[[Palace Enchantment]]. Where the Swarm Weave asks *"is this correct?"*,
+Enchantment asks *"is this alive?"* — agents that inhabit pages, follow their
+forward vectors, and propose what would increase each page's power to act.
 
 The forward vectors the Swarm Weave produces are Enchantment's raw material.
 The structural integrity the Swarm Weave maintains is the substrate Enchantment
