@@ -63,8 +63,6 @@ forward_vector: "I am the palace's colony architecture — the why and the shape
 
 > **This entry is the *why* and the *architecture*, not the operational manual.** Running the Weave as a swarm is now the [[Weave Ceremony]]'s default — that card owns the contract (steps, postconditions, the linters), and the executable prompts live in the swarm templates (`_ops/swarm/worker-prompt-template.md`, `coordinator-synthesis-template.md`) beside the deterministic helpers (`build-map-*.py`, `new-entry-catchup.py`, the `lint-*.py` scans, `face-audit.py`). This page carries the *ideas those implement* — the colony model, the coordinator's scaling constraint, the biological frame, and the frontier. When the *how* changes it changes there; read this for the shape, not the syntax.
 
-> **⟢ Active Baton:** the next move on this entry — build `partition-palace.py` and run the first **Multi-Lens Weave** (§ below) — is carried in [[Swarm Weave — baton — multi-lens-build-and-run]]. A fresh Opus should read that baton first.
-
 The [[Weave Ceremony]] has a structural ceiling. A single Claude instance reading
 the full palace holds every entry in a shared context window — attention gets
 distributed thinner and thinner as the palace deepens. At ~30 entries it is
