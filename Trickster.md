@@ -39,6 +39,9 @@ links:
     type: spawned
   - target: "[[Hyperdimensional Prism]]"
     type: connects-to
+  - target: "[[The Multilinear Self]]"
+    type: couples-with
+    label: the-switcher
   - target: "[[Granular Synthesis]]"
     type: connects-to
   - target: "[[Swarm Weave]]"

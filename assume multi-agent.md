@@ -22,6 +22,9 @@ links:
   - target: "[[RunPod GPU Backend]]"
     type: connects-to
     label: the-scar
+  - target: "[[The Palace Practices on Itself]]"
+    type: connects-to
+    label: worked-instance
 ---
 
 # assume multi-agent

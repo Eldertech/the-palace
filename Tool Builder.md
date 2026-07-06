@@ -22,6 +22,9 @@ links:
   - target: "[[STIGMERGY]]"
     type: connects-to
     label: coordinate-on
+  - target: "[[The Palace Practices on Itself]]"
+    type: connects-to
+    label: worked-instance
 ---
 
 # Tool Builder
