@@ -30,6 +30,9 @@ links:
   - target: "[[Dialectic]]"
     type: mirrors
     label: multi-expert-dialogue
+  - target: "[[Philosopher Visits the Entry]]"
+    type: mirrors
+    label: embodied-routing-single-node
   - target: "[[Pages as Agents]]"
     type: connects-to
     label: experts-as-pool
@@ -93,6 +96,16 @@ The palace already names two practices that make this pattern explicit and execu
 The crucial architectural detail: in embodied MoE, the experts produce outputs that **the others can hear and respond to**. This is closer to a deliberative council than to a routed forward pass. The shared latent space in which the experts speak — the situated present of the question being asked — is what makes the integration possible. Neural MoE does not yet have a strong analog for this; the closest cousin is multi-agent agentic systems, which connect directly to the [[Swarm Weave]] frontier.
 
 The pool itself is consequential. Whoever you have read deeply enough to embody is in your MoE; whoever you have not is unavailable as routing target. This is why deep reading of canonical thinkers is not nostalgia — it is *adding experts to the pool*. [[Pages as Agents]] is the palace's mechanism for making the pool durable and shareable across sessions: a person-page well-designed is an embodied expert that any practitioner can route to.
+
+### The Routing Ladder — how wide to open the gate
+
+The embodied practices are not alternatives; they are **rungs on a routing ladder**, ordered by how many minds the gate lights up and whether they interact:
+
+- **[[Philosopher Visits the Entry]] — one voice, one node.** The tightest, most repeatable rung: a single expert routed at one entry's central claim, asked the one question the entry cannot ask itself. Single-expert MoE aimed at a node rather than a topic.
+- **[[Excellent Adventure]] — one voice, open field.** The same single-expert routing, turned loose across a whole topic or historical moment and steered by the learner. Same gate width, wider field.
+- **[[Dialectic]] — many voices, in collision.** Two to four experts in genuine argument, hearing and answering each other. The widest gate, and the only rung where the experts integrate by colliding — cross-talk MoE.
+
+Climbing the ladder trades focus for breadth and control for emergence: one voice on one claim gives you a sharp, steerable line; many voices in argument give you a collision you can only host. Choosing a rung is the embodied form of MoE's routing decision — how wide to open the gate for the question in front of you.
 
 ## Cross-Pillar Connections
 
