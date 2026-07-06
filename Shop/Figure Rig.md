@@ -17,6 +17,7 @@ links:
   - { target: "[[Hand-Drawn 3D Look]]", type: couples-with, label: figure-staging }
   - { target: "[[Blocked, Not Prompted]]", type: exemplifies, label: author-the-geometry }
   - { target: "[[BLUELINE]]", type: connects-to, label: commissioned-by }
+  - { target: "[[Maker]]", type: connects-to, label: directed-by }
 tags: [specialist, shop, rig, openpose, controlnet, figure, blender, mpfb2, rigify]
 ---
 

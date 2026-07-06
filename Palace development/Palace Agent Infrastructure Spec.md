@@ -9,7 +9,7 @@ pillars:
 born: 2026-03
 last_activated: 2026-03-28
 activation_count: 1
-stage: sprout
+stage: growing
 energy: very high
 beauty: 9
 confidence: working
@@ -58,6 +58,9 @@ links:
   - target: "[[Project Stewardship System]]"
     type: enables
     label: stewardship-system-foundation
+  - target: "[[Palace Orchestrator]]"
+    type: connects-to
+    label: realized-as-engine
 ---
 
 # Palace Agent Infrastructure Spec
@@ -945,6 +948,8 @@ The underlying engineering is not novel. The specific configuration, philosophic
 - **The Trickster Inbox UI:** The data structure (§2.6) is specced. The rendering — phosphor-green terminal, real-time streaming, clickable response options, multi-agent question queue — is the next design surface. Priority: high. This is what makes the system feel inhabited rather than operated. Model upgrade/downgrade requests and health warnings should surface in the same inbox alongside resource requests.
 
 - **Automated Trickster:** The manifest already supports `trickster_mode: "automated"`. The rules engine that governs automatic grants, the escalation protocol, and the conditions for routing to Loudon are unspecced. Design this when the first fully automated overnight session is needed.
+
+  *Substantially realized (2026-07):* This is no longer purely open. [[Project Stewardship System]] Stage E built the rules engine (`_ops/stigmergy/trickster-auto/`, shadow-default, auto-grant/auto-deny/escalate with a hard-coded audition gate), and [[Palace Orchestrator]] is now the dispatch engine that actually wakes pages as Claude Code subagents and runs the family of looped jobs — steward cycles, songlines, the weekly batch — described as swarm modes above. What remains genuinely open is narrower: Loudon's live-mode review of the shadow match rate, not the rules-engine design itself.
 
 - **Proof Deposit Ceremony:** A proof that reaches `palace_deposit_candidate: true` needs a ceremony for integration into the page — review, edit, branch, merge, commit. This should become a named ceremony in the palace's ceremony infrastructure, sitting alongside the Weave Ceremony and Deposit Ceremony.
 

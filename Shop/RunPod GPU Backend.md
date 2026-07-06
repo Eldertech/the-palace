@@ -34,6 +34,12 @@ links:
   - target: "[[Image-to-3D Smith]]"
     type: enables
     label: original-commission
+  - target: "[[assume multi-agent]]"
+    type: emerged-from
+    label: the-outage-that-forged-the-rule
+  - target: "[[The Commons]]"
+    type: connects-to
+    label: machinery-adopted
 ---
 
 # RunPod GPU Backend

@@ -42,6 +42,9 @@ links:
   - target: "[[Hilaritas Generator]]"
     type: enables
     label: strange-loop-ground
+  - target: "[[Christopher Alexander]]"
+    type: mirrors
+    label: pattern-vs-analogy-as-cross-domain-engine
 ---
 
 # Douglas Hofstadter

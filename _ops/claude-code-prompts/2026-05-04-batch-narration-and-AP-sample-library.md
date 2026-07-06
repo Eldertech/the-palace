@@ -1,6 +1,5 @@
 ---
 title: "Claude Code batch — narrated catalogs + Action Potential sample library"
-type: agent-prompt
 date: 2026-05-04
 target: "Claude Code session at /Users/loudonstearns/Documents/The Palace"
 projects:

@@ -15,7 +15,7 @@ links:
     type: enables
     label: reframes
   - target: "[[Generative Compression]]"
-    type: deepens
+    type: connects-to
     label: makes-rigorous
   - target: "[[Meaning and the Link]]"
     type: mirrors

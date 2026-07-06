@@ -40,6 +40,9 @@ links:
     type: connects-to
   - target: "[[Agent Wellbeing]]"
     type: connects-to
+  - target: "[[The Palace Speaks]]"
+    type: connects-to
+    label: the-voice-it-asked-for
 ---
 
 # Palace Conatus
@@ -239,6 +242,14 @@ it composts living tissue.
   [[Project Stewardship System]] is hitting from the operational side — the
   17-decision inbox needs consolidation, and the digest is the consolidation.
   Designing the digest *is* designing the palace's voice.
+
+  *A first concrete answer (2026-07):* [[The Palace Speaks]] names the palace
+  becoming a mind you address, not just a corpus you load — the aggregated
+  self-advocacy this entry predicted now has a working organ, the Concierge,
+  that speaks *for* the whole graph in one voice rather than as fifteen
+  separate steward asks. It doesn't fully answer the digest question above —
+  the Concierge is addressed, not a standing ranked feed — but it is the first
+  real answer to how the palace's many small voices become one.
 - **How is "out of phase" measured, not just described?** This entry defines the
   signatures qualitatively. Can any of them be made into a signal a ceremony or
   an automated Trickster could compute — staleness by last-activation date,

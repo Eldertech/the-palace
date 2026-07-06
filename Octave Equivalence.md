@@ -3,7 +3,7 @@ title: "Octave Equivalence"
 type: concept
 pillars: [creation, philosophy]
 born: 2026-03
-stage: sprout
+stage: composting
 links:
   - target: "[[Shepard Tone Synthesizer]]"
     type: emerged-from
@@ -19,6 +19,8 @@ links:
     label: perceptual-scaling
 forward_vector: "I want to become the palace's entry point for the deep strangeness of pitch perception — why the ear hears sameness across a 2:1 frequency ratio, what this says about how the auditory system carves up acoustic space, and how this circularity propagates into instrument design and synthesis. I want to develop alongside the Shepard Tone Synthesizer as its theoretical complement."
 ---
+
+<!-- COMPOSTING (Weave 2026-07-06): folded into [[Shepard Tone Synthesizer]] § Theory — Octave Equivalence. Awaiting deletion confirmation next Weave cycle. -->
 
 # Octave Equivalence
 

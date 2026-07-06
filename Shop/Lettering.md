@@ -31,6 +31,9 @@ links:
   - target: "[[Graphic Storytelling]]"
     type: enables
     label: letters-the-voices
+  - target: "[[Maker]]"
+    type: connects-to
+    label: directed-by
 ---
 
 # Lettering — *the emotional-text renderer*

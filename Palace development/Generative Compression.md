@@ -40,8 +40,8 @@ links:
     type: exemplifies
     label: compression-across-four-pillars
   - target: "[[Lossy Compression with Intent Alignment]]"
-    type: mirrors
-    label: intent-as-compression-signal
+    type: deepens
+    label: practice-grounded-by-theory
 ---
 
 # Generative Compression

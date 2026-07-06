@@ -29,7 +29,7 @@ links:
     type: connects-to
   - target: "[[Registry Pattern]]"
     type: connects-to
-tags: [specialist, shop, sound, modular, generative, registry, stub]
+tags: [specialist, shop, sound, modular, generative, registry]
 ---
 
 # VCV Patch Generator

@@ -2,9 +2,9 @@
   "meta": {
     "generated": "2026-07-04",
     "scope": "full",
-    "node_count": 301,
+    "node_count": 303,
     "ops_node_count": 42,
-    "edge_count": 2443,
+    "edge_count": 2487,
     "ghost_taxonomy": {
       "error_ghosts": [],
       "ops_ghosts": [
@@ -509,7 +509,7 @@
       "has_forward_vector": true,
       "last_activated": "2026-06-26",
       "activation_count": "2",
-      "outbound_count": 3,
+      "outbound_count": 5,
       "inbound_count": 0
     },
     {
@@ -538,12 +538,12 @@
       "id": "BBS Blackboard",
       "path": "Palace development/BBS Blackboard.md",
       "type": "concept",
-      "stage": "growing",
+      "stage": "mature",
       "has_forward_vector": true,
       "last_activated": "2026-05-02",
       "activation_count": "3",
-      "outbound_count": 12,
-      "inbound_count": 21
+      "outbound_count": 13,
+      "inbound_count": 22
     },
     {
       "id": "BBS Design System",
@@ -663,7 +663,7 @@
       "has_forward_vector": true,
       "last_activated": "2026-07",
       "activation_count": "3",
-      "outbound_count": 8,
+      "outbound_count": 9,
       "inbound_count": 8
     },
     {
@@ -675,7 +675,7 @@
       "last_activated": "2026-07",
       "activation_count": "1",
       "outbound_count": 4,
-      "inbound_count": 1
+      "inbound_count": 2
     },
     {
       "id": "Buckminster Fuller",
@@ -730,7 +730,7 @@
       "last_activated": "2026-06-26",
       "activation_count": "2",
       "outbound_count": 7,
-      "inbound_count": 1
+      "inbound_count": 2
     },
     {
       "id": "Claude CLI Reference",
@@ -752,7 +752,7 @@
       "last_activated": "2026-07-03",
       "activation_count": "2",
       "outbound_count": 10,
-      "inbound_count": 15
+      "inbound_count": 16
     },
     {
       "id": "ComfyUI",
@@ -795,7 +795,7 @@
       "has_forward_vector": true,
       "last_activated": "2026-03",
       "activation_count": "1",
-      "outbound_count": 6,
+      "outbound_count": 7,
       "inbound_count": 12
     },
     {
@@ -840,7 +840,7 @@
       "last_activated": "2026-06-26",
       "activation_count": "16",
       "outbound_count": 9,
-      "inbound_count": 43
+      "inbound_count": 44
     },
     {
       "id": "Cross-Domain Resonances",
@@ -1027,7 +1027,7 @@
       "last_activated": "2026-07",
       "activation_count": "3",
       "outbound_count": 11,
-      "inbound_count": 8
+      "inbound_count": 9
     },
     {
       "id": "Douglas Hofstadter",
@@ -1037,14 +1037,14 @@
       "has_forward_vector": true,
       "last_activated": "2026-06-26",
       "activation_count": "2",
-      "outbound_count": 8,
-      "inbound_count": 1
+      "outbound_count": 9,
+      "inbound_count": 2
     },
     {
       "id": "Dovetail Joint \u2194 Counterpoint",
       "path": "Cross-Domain Resonances/Dovetail Joint \u2194 Counterpoint.md",
       "type": "concept",
-      "stage": "growing",
+      "stage": "mature",
       "has_forward_vector": true,
       "last_activated": "2026-06-26",
       "activation_count": "2",
@@ -1103,7 +1103,7 @@
       "has_forward_vector": true,
       "last_activated": "2026-03",
       "activation_count": "1",
-      "outbound_count": 6,
+      "outbound_count": 7,
       "inbound_count": 13
     },
     {
@@ -1148,7 +1148,7 @@
       "last_activated": "2026-06-26",
       "activation_count": "2",
       "outbound_count": 5,
-      "inbound_count": 1
+      "inbound_count": 2
     },
     {
       "id": "Excellent Adventure",
@@ -1158,7 +1158,7 @@
       "has_forward_vector": true,
       "last_activated": "2026-03",
       "activation_count": "2",
-      "outbound_count": 10,
+      "outbound_count": 11,
       "inbound_count": 17
     },
     {
@@ -1192,7 +1192,7 @@
       "last_activated": "2026-06-26",
       "activation_count": "35",
       "outbound_count": 9,
-      "inbound_count": 116
+      "inbound_count": 117
     },
     {
       "id": "Figure Rig",
@@ -1202,7 +1202,7 @@
       "has_forward_vector": true,
       "last_activated": null,
       "activation_count": null,
-      "outbound_count": 7,
+      "outbound_count": 8,
       "inbound_count": 4
     },
     {
@@ -1220,7 +1220,7 @@
       "id": "Floquet Theory",
       "path": "Floquet Theory.md",
       "type": "concept",
-      "stage": "sprout",
+      "stage": "growing",
       "has_forward_vector": true,
       "last_activated": null,
       "activation_count": null,
@@ -1367,7 +1367,7 @@
       "has_forward_vector": true,
       "last_activated": "2026-06-26",
       "activation_count": "2",
-      "outbound_count": 7,
+      "outbound_count": 8,
       "inbound_count": 0
     },
     {
@@ -1445,7 +1445,7 @@
       "last_activated": "2026-03",
       "activation_count": "10",
       "outbound_count": 9,
-      "inbound_count": 39
+      "inbound_count": 40
     },
     {
       "id": "Identity Molting",
@@ -1532,7 +1532,7 @@
       "has_forward_vector": true,
       "last_activated": "2026-07",
       "activation_count": "3",
-      "outbound_count": 6,
+      "outbound_count": 7,
       "inbound_count": 3
     },
     {
@@ -1544,7 +1544,7 @@
       "last_activated": "2026-06-26",
       "activation_count": "2",
       "outbound_count": 6,
-      "inbound_count": 1
+      "inbound_count": 2
     },
     {
       "id": "Kick Drum \u2194 Foundation",
@@ -1577,7 +1577,7 @@
       "last_activated": "2026-06-26",
       "activation_count": "18",
       "outbound_count": 19,
-      "inbound_count": 66
+      "inbound_count": 68
     },
     {
       "id": "LaMa",
@@ -1632,7 +1632,7 @@
       "last_activated": "2026-03",
       "activation_count": "2",
       "outbound_count": 5,
-      "inbound_count": 6
+      "inbound_count": 7
     },
     {
       "id": "Lateral Access",
@@ -1675,7 +1675,7 @@
       "has_forward_vector": true,
       "last_activated": "2026-06-26",
       "activation_count": null,
-      "outbound_count": 7,
+      "outbound_count": 8,
       "inbound_count": 1
     },
     {
@@ -1704,7 +1704,7 @@
       "id": "Line-Art Layer Decomposition",
       "path": "Line-Art Layer Decomposition.md",
       "type": "project",
-      "stage": "sprout",
+      "stage": "composting",
       "has_forward_vector": true,
       "last_activated": "2026-06",
       "activation_count": "1",
@@ -1720,7 +1720,7 @@
       "last_activated": "2026-06",
       "activation_count": "1",
       "outbound_count": 9,
-      "inbound_count": 5
+      "inbound_count": 6
     },
     {
       "id": "LoRA Trainer",
@@ -1764,7 +1764,7 @@
       "last_activated": null,
       "activation_count": null,
       "outbound_count": 16,
-      "inbound_count": 26
+      "inbound_count": 27
     },
     {
       "id": "Loudon Live Design System",
@@ -1808,7 +1808,7 @@
       "last_activated": "2026-06-26",
       "activation_count": null,
       "outbound_count": 15,
-      "inbound_count": 41
+      "inbound_count": 43
     },
     {
       "id": "Making a Palace Citizen",
@@ -1840,8 +1840,8 @@
       "has_forward_vector": true,
       "last_activated": "2026-07",
       "activation_count": "3",
-      "outbound_count": 8,
-      "inbound_count": 4
+      "outbound_count": 9,
+      "inbound_count": 5
     },
     {
       "id": "Mathieu Equation",
@@ -1902,7 +1902,7 @@
       "id": "Media Library",
       "path": "Media Library.md",
       "type": "meta",
-      "stage": "mature",
+      "stage": "composting",
       "has_forward_vector": false,
       "last_activated": "2026-03",
       "activation_count": "1",
@@ -1984,7 +1984,7 @@
       "last_activated": "2026-06-26",
       "activation_count": null,
       "outbound_count": 13,
-      "inbound_count": 25
+      "inbound_count": 26
     },
     {
       "id": "Move the Ink, Don't Redraw It",
@@ -2017,7 +2017,7 @@
       "last_activated": "2026-06-26",
       "activation_count": "2",
       "outbound_count": 5,
-      "inbound_count": 1
+      "inbound_count": 2
     },
     {
       "id": "Neural Granular Synthesis",
@@ -2029,6 +2029,17 @@
       "activation_count": null,
       "outbound_count": 5,
       "inbound_count": 12
+    },
+    {
+      "id": "No Mind Checks Itself",
+      "path": "No Mind Checks Itself.md",
+      "type": "concept",
+      "stage": "seed",
+      "has_forward_vector": true,
+      "last_activated": null,
+      "activation_count": null,
+      "outbound_count": 7,
+      "inbound_count": 0
     },
     {
       "id": "Oblique Enrichment",
@@ -2067,7 +2078,7 @@
       "id": "Octave Equivalence",
       "path": "Octave Equivalence.md",
       "type": "concept",
-      "stage": "sprout",
+      "stage": "composting",
       "has_forward_vector": true,
       "last_activated": null,
       "activation_count": null,
@@ -2122,11 +2133,11 @@
       "id": "Palace Agent Infrastructure Spec",
       "path": "Palace development/Palace Agent Infrastructure Spec.md",
       "type": "concept",
-      "stage": "sprout",
+      "stage": "growing",
       "has_forward_vector": true,
       "last_activated": "2026-03-28",
       "activation_count": "1",
-      "outbound_count": 16,
+      "outbound_count": 17,
       "inbound_count": 12
     },
     {
@@ -2137,7 +2148,7 @@
       "has_forward_vector": true,
       "last_activated": null,
       "activation_count": null,
-      "outbound_count": 9,
+      "outbound_count": 10,
       "inbound_count": 4
     },
     {
@@ -2160,7 +2171,7 @@
       "last_activated": "2026-07",
       "activation_count": "1",
       "outbound_count": 6,
-      "inbound_count": 0
+      "inbound_count": 6
     },
     {
       "id": "Palace Philosophies",
@@ -2182,13 +2193,13 @@
       "last_activated": "2026-06-07",
       "activation_count": "3",
       "outbound_count": 12,
-      "inbound_count": 11
+      "inbound_count": 12
     },
     {
       "id": "Parametric Resonance",
       "path": "Parametric Resonance.md",
       "type": "concept",
-      "stage": "sprout",
+      "stage": "growing",
       "has_forward_vector": true,
       "last_activated": null,
       "activation_count": null,
@@ -2199,7 +2210,7 @@
       "id": "Particle Synthesis",
       "path": "Projects/Particle Synthesis.md",
       "type": "project",
-      "stage": "growing",
+      "stage": "dormant",
       "has_forward_vector": true,
       "last_activated": "2026-01",
       "activation_count": "0",
@@ -2254,7 +2265,7 @@
       "id": "Phoneme Choir",
       "path": "Projects/Phoneme Choir.md",
       "type": "project",
-      "stage": "sprout",
+      "stage": "fruiting",
       "has_forward_vector": true,
       "last_activated": "2026-05",
       "activation_count": "1",
@@ -2265,7 +2276,7 @@
       "id": "Photonic Time Crystals",
       "path": "Photonic Time Crystals.md",
       "type": "concept",
-      "stage": "sprout",
+      "stage": "growing",
       "has_forward_vector": true,
       "last_activated": null,
       "activation_count": null,
@@ -2335,7 +2346,7 @@
       "has_forward_vector": true,
       "last_activated": "2026-05-26",
       "activation_count": "4",
-      "outbound_count": 11,
+      "outbound_count": 12,
       "inbound_count": 18
     },
     {
@@ -2375,7 +2386,7 @@
       "id": "Quantum Synthesizer",
       "path": "Projects/Quantum Synthesizer.md",
       "type": "project",
-      "stage": "growing",
+      "stage": "dormant",
       "has_forward_vector": true,
       "last_activated": "2026-01",
       "activation_count": "0",
@@ -2457,7 +2468,7 @@
       "last_activated": null,
       "activation_count": null,
       "outbound_count": 5,
-      "inbound_count": 7
+      "inbound_count": 8
     },
     {
       "id": "Remnants in Depth",
@@ -2501,7 +2512,7 @@
       "last_activated": "2026-03",
       "activation_count": "8",
       "outbound_count": 9,
-      "inbound_count": 10
+      "inbound_count": 11
     },
     {
       "id": "Reverb \u2194 Space-Time",
@@ -2544,7 +2555,7 @@
       "has_forward_vector": true,
       "last_activated": "2026-07-02",
       "activation_count": "3",
-      "outbound_count": 7,
+      "outbound_count": 9,
       "inbound_count": 7
     },
     {
@@ -2588,7 +2599,7 @@
       "has_forward_vector": true,
       "last_activated": null,
       "activation_count": null,
-      "outbound_count": 8,
+      "outbound_count": 10,
       "inbound_count": 20
     },
     {
@@ -2622,7 +2633,7 @@
       "last_activated": "2026-06-26",
       "activation_count": "2",
       "outbound_count": 6,
-      "inbound_count": 0
+      "inbound_count": 1
     },
     {
       "id": "Saturation \u2194 Richness",
@@ -2687,7 +2698,7 @@
       "has_forward_vector": true,
       "last_activated": "2026-06-26",
       "activation_count": "2",
-      "outbound_count": 6,
+      "outbound_count": 8,
       "inbound_count": 1
     },
     {
@@ -2786,7 +2797,7 @@
       "has_forward_vector": true,
       "last_activated": "2026-05",
       "activation_count": "1",
-      "outbound_count": 5,
+      "outbound_count": 7,
       "inbound_count": 0
     },
     {
@@ -2842,7 +2853,7 @@
       "last_activated": "2026-06-26",
       "activation_count": "13",
       "outbound_count": 13,
-      "inbound_count": 63
+      "inbound_count": 64
     },
     {
       "id": "Stable Audio Open",
@@ -2897,7 +2908,7 @@
       "last_activated": "2026-03",
       "activation_count": "1",
       "outbound_count": 5,
-      "inbound_count": 3
+      "inbound_count": 4
     },
     {
       "id": "Surfaces and Capabilities",
@@ -2958,7 +2969,7 @@
       "id": "Synthesis \u2194 Emergence",
       "path": "Cross-Domain Resonances/Synthesis \u2194 Emergence.md",
       "type": "concept",
-      "stage": "growing",
+      "stage": "mature",
       "has_forward_vector": true,
       "last_activated": "2026-06-26",
       "activation_count": "2",
@@ -2969,7 +2980,7 @@
       "id": "Talking Keyboard",
       "path": "Projects/Talking Keyboard.md",
       "type": "project",
-      "stage": "sprout",
+      "stage": "fruiting",
       "has_forward_vector": true,
       "last_activated": "2026-05",
       "activation_count": null,
@@ -2984,7 +2995,7 @@
       "has_forward_vector": true,
       "last_activated": "2026-06-26",
       "activation_count": "2",
-      "outbound_count": 6,
+      "outbound_count": 7,
       "inbound_count": 0
     },
     {
@@ -3029,7 +3040,7 @@
       "last_activated": null,
       "activation_count": null,
       "outbound_count": 6,
-      "inbound_count": 0
+      "inbound_count": 4
     },
     {
       "id": "The Commons",
@@ -3040,7 +3051,7 @@
       "last_activated": "2026-07",
       "activation_count": "1",
       "outbound_count": 4,
-      "inbound_count": 4
+      "inbound_count": 5
     },
     {
       "id": "The Cooperation Path",
@@ -3073,13 +3084,13 @@
       "last_activated": "2026-05",
       "activation_count": "1",
       "outbound_count": 10,
-      "inbound_count": 11
+      "inbound_count": 12
     },
     {
       "id": "The Drift",
       "path": "The Drift.md",
       "type": "concept",
-      "stage": "sprout",
+      "stage": "growing",
       "has_forward_vector": true,
       "last_activated": "2026-05",
       "activation_count": "1",
@@ -3149,7 +3160,7 @@
       "has_forward_vector": true,
       "last_activated": "2026-07-02",
       "activation_count": null,
-      "outbound_count": 8,
+      "outbound_count": 9,
       "inbound_count": 1
     },
     {
@@ -3183,7 +3194,7 @@
       "last_activated": "2026-07",
       "activation_count": "1",
       "outbound_count": 5,
-      "inbound_count": 1
+      "inbound_count": 2
     },
     {
       "id": "The Palace Voice",
@@ -3193,8 +3204,19 @@
       "has_forward_vector": true,
       "last_activated": "2026-07",
       "activation_count": "1",
-      "outbound_count": 5,
+      "outbound_count": 6,
       "inbound_count": 1
+    },
+    {
+      "id": "The Practice Rediscovers Its Philosophy",
+      "path": "The Practice Rediscovers Its Philosophy.md",
+      "type": "concept",
+      "stage": "seed",
+      "has_forward_vector": true,
+      "last_activated": null,
+      "activation_count": null,
+      "outbound_count": 8,
+      "inbound_count": 0
     },
     {
       "id": "The Reader's Context Window",
@@ -3369,7 +3391,7 @@
       "has_forward_vector": true,
       "last_activated": null,
       "activation_count": null,
-      "outbound_count": 4,
+      "outbound_count": 5,
       "inbound_count": 0
     },
     {
@@ -3392,7 +3414,7 @@
       "last_activated": "2026-06-26",
       "activation_count": "3",
       "outbound_count": 27,
-      "inbound_count": 32
+      "inbound_count": 33
     },
     {
       "id": "Trickster Commit",
@@ -3409,7 +3431,7 @@
       "id": "Tristitia Generator",
       "path": "Tristitia Generator.md",
       "type": "concept",
-      "stage": "growing",
+      "stage": "composting",
       "has_forward_vector": true,
       "last_activated": "2026-03",
       "activation_count": "1",
@@ -3424,7 +3446,7 @@
       "has_forward_vector": true,
       "last_activated": "2026-07-03",
       "activation_count": "3",
-      "outbound_count": 7,
+      "outbound_count": 8,
       "inbound_count": 3
     },
     {
@@ -3574,7 +3596,7 @@
       "id": "Whitehead",
       "path": "Whitehead.md",
       "type": "concept",
-      "stage": "sprout",
+      "stage": "growing",
       "has_forward_vector": true,
       "last_activated": "2026-05",
       "activation_count": "1",
@@ -3601,7 +3623,7 @@
       "last_activated": "2026-06-26",
       "activation_count": "2",
       "outbound_count": 7,
-      "inbound_count": 0
+      "inbound_count": 1
     },
     {
       "id": "Zoom Out to the Structure",
@@ -3623,7 +3645,7 @@
       "last_activated": "2026-07",
       "activation_count": "1",
       "outbound_count": 4,
-      "inbound_count": 1
+      "inbound_count": 3
     },
     {
       "id": "control-vocabulary-math",
@@ -4335,6 +4357,12 @@
       "type": "connects-to",
       "target": "Agent Wellbeing",
       "label": null
+    },
+    {
+      "source": "Palace Conatus",
+      "type": "connects-to",
+      "target": "The Palace Speaks",
+      "label": "the-voice-it-asked-for"
     },
     {
       "source": "Three Kinds of Warp",
@@ -5223,6 +5251,48 @@
       "type": "mirrors",
       "target": "Waveguide Synthesizer",
       "label": "geometry-is-the-data"
+    },
+    {
+      "source": "No Mind Checks Itself",
+      "type": "exemplifies",
+      "target": "Bring In a Bigger Mind",
+      "label": "the-practice-this-grounds"
+    },
+    {
+      "source": "No Mind Checks Itself",
+      "type": "mirrors",
+      "target": "The Blindspot Is the Surprise Fuel",
+      "label": "the-unnamed-wall"
+    },
+    {
+      "source": "No Mind Checks Itself",
+      "type": "deepens",
+      "target": "Cooperation Yields Agency",
+      "label": "why-a-second-mind-is-a-partner-not-an-insult"
+    },
+    {
+      "source": "No Mind Checks Itself",
+      "type": "mirrors",
+      "target": "Latent Error",
+      "label": "decouple-the-maker-from-the-checker"
+    },
+    {
+      "source": "No Mind Checks Itself",
+      "type": "connects-to",
+      "target": "Closing Well",
+      "label": "naming-the-unverifiable"
+    },
+    {
+      "source": "No Mind Checks Itself",
+      "type": "emerged-from",
+      "target": "Donella Meadows",
+      "label": "every-model-including-this-one"
+    },
+    {
+      "source": "No Mind Checks Itself",
+      "type": "emerged-from",
+      "target": "Douglas Hofstadter",
+      "label": "the-loop-cant-see-its-own-level"
     },
     {
       "source": "Dispersion",
@@ -6321,6 +6391,54 @@
       "type": "mirrors",
       "target": "Bring In a Bigger Mind",
       "label": "a-model-reading-a-model"
+    },
+    {
+      "source": "The Practice Rediscovers Its Philosophy",
+      "type": "exemplifies",
+      "target": "Palace as Context Injection System",
+      "label": "the-prism-caught-in-the-act"
+    },
+    {
+      "source": "The Practice Rediscovers Its Philosophy",
+      "type": "exemplifies",
+      "target": "FOUR PILLARS",
+      "label": null
+    },
+    {
+      "source": "The Practice Rediscovers Its Philosophy",
+      "type": "deepens",
+      "target": "Hyperdimensional Prism",
+      "label": "two-shadows-one-object"
+    },
+    {
+      "source": "The Practice Rediscovers Its Philosophy",
+      "type": "connects-to",
+      "target": "The Dichotomy of Control",
+      "label": "found-twice-by-accident"
+    },
+    {
+      "source": "The Practice Rediscovers Its Philosophy",
+      "type": "connects-to",
+      "target": "assume multi-agent",
+      "label": "the-stoic-tool"
+    },
+    {
+      "source": "The Practice Rediscovers Its Philosophy",
+      "type": "connects-to",
+      "target": "Registry Pattern",
+      "label": "wu-wei-as-constraint"
+    },
+    {
+      "source": "The Practice Rediscovers Its Philosophy",
+      "type": "connects-to",
+      "target": "BBS Blackboard",
+      "label": "the-pheromone-and-the-synapse"
+    },
+    {
+      "source": "The Practice Rediscovers Its Philosophy",
+      "type": "connects-to",
+      "target": "Striatum",
+      "label": "the-pheromone-and-the-synapse"
     },
     {
       "source": "Playful Interface Design",
@@ -8639,6 +8757,12 @@
       "label": "play-through-restraint"
     },
     {
+      "source": "The Palace Voice",
+      "type": "connects-to",
+      "target": "Loudon Live",
+      "label": "verbal-floor-of-the-public-face"
+    },
+    {
       "source": "Spinoza Conatus",
       "type": "mirrors",
       "target": "Kuramoto Coupling",
@@ -10745,6 +10869,18 @@
       "label": "consolidation-and-roadmap"
     },
     {
+      "source": "STIGMERGY",
+      "type": "connects-to",
+      "target": "Palace Orchestrator",
+      "label": "dispatches-onto-the-board"
+    },
+    {
+      "source": "STIGMERGY",
+      "type": "mirrors",
+      "target": "Trickster",
+      "label": "field-trace-vs-signal-intercept"
+    },
+    {
       "source": "SMPTE LTC",
       "type": "connects-to",
       "target": "Ableton Extension SDK",
@@ -11429,6 +11565,12 @@
       "label": "roster"
     },
     {
+      "source": "The Multilinear Self",
+      "type": "connects-to",
+      "target": "Kuramoto Coupling",
+      "label": "selves-as-coupled-oscillators"
+    },
+    {
       "source": "zhuangzi-epictetus-confucius-on-the-self",
       "type": "emerged-from",
       "target": "The Fortress and the Threshold",
@@ -11793,6 +11935,18 @@
       "type": "mirrors",
       "target": "Hyperdimensional Prism",
       "label": "emergent-topology-as-projection"
+    },
+    {
+      "source": "Slime Mold Delay",
+      "type": "mirrors",
+      "target": "Spinoza Conatus",
+      "label": "reinforcement-as-conatus"
+    },
+    {
+      "source": "Slime Mold Delay",
+      "type": "couples-with",
+      "target": "Kuramoto Coupling",
+      "label": "reinforcement-vs-phase-lock"
     },
     {
       "source": "Curriculum Map",
@@ -12353,6 +12507,12 @@
       "label": null
     },
     {
+      "source": "Tract Mirror",
+      "type": "mirrors",
+      "target": "Linear Predictive Coding",
+      "label": "the-lattice-made-playable"
+    },
+    {
       "source": "Bayesian Granular Synthesizer",
       "type": "connects-to",
       "target": "Neural Granular Synthesis",
@@ -12699,6 +12859,12 @@
       "type": "connects-to",
       "target": "Trickster",
       "label": "soft-knee-hides-discontinuity"
+    },
+    {
+      "source": "Compressor Design",
+      "type": "couples-with",
+      "target": "Retrospective Delay",
+      "label": "shared-circular-buffer-primitive"
     },
     {
       "source": "Frequency-Time Duality",
@@ -13709,6 +13875,18 @@
       "label": "original-commission"
     },
     {
+      "source": "RunPod GPU Backend",
+      "type": "emerged-from",
+      "target": "assume multi-agent",
+      "label": "the-outage-that-forged-the-rule"
+    },
+    {
+      "source": "RunPod GPU Backend",
+      "type": "connects-to",
+      "target": "The Commons",
+      "label": "machinery-adopted"
+    },
+    {
       "source": "VCV Patch Generator",
       "type": "connects-to",
       "target": "Maker",
@@ -13871,6 +14049,12 @@
       "label": null
     },
     {
+      "source": "Figure Rig",
+      "type": "connects-to",
+      "target": "Maker",
+      "label": null
+    },
+    {
       "source": "LaMa",
       "type": "connects-to",
       "target": "The Shop",
@@ -14007,6 +14191,12 @@
       "type": "enables",
       "target": "Graphic Storytelling",
       "label": "letters-the-voices"
+    },
+    {
+      "source": "Lettering",
+      "type": "connects-to",
+      "target": "Maker",
+      "label": "directed-by"
     },
     {
       "source": "Three.js",
@@ -14825,6 +15015,12 @@
       "label": "morning-pages"
     },
     {
+      "source": "Marcus Aurelius",
+      "type": "exemplifies",
+      "target": "The Blindspot Is the Surprise Fuel",
+      "label": "calm-as-a-throne's-privilege"
+    },
+    {
       "source": "Christopher Alexander",
       "type": "member-of",
       "target": "Source Library",
@@ -14901,6 +15097,12 @@
       "type": "connects-to",
       "target": "Dub Lineage",
       "label": "texture-over-foreground"
+    },
+    {
+      "source": "Terrence Malick",
+      "type": "mirrors",
+      "target": "Yasujir\u014d Ozu",
+      "label": "restraint-and-patience-in-cinema"
     },
     {
       "source": "Sam Maloof",
@@ -15125,6 +15327,12 @@
       "label": "strange-loop-ground"
     },
     {
+      "source": "Douglas Hofstadter",
+      "type": "mirrors",
+      "target": "Christopher Alexander",
+      "label": "pattern-vs-analogy-as-cross-domain-engine"
+    },
+    {
       "source": "Pauline Oliveros",
       "type": "member-of",
       "target": "Source Library",
@@ -15215,6 +15423,12 @@
       "label": "depth-over-reach"
     },
     {
+      "source": "Brian Eno",
+      "type": "exemplifies",
+      "target": "The Blindspot Is the Surprise Fuel",
+      "label": "the-system-quietly-credits-my-taste"
+    },
+    {
       "source": "George Nakashima",
       "type": "member-of",
       "target": "Source Library",
@@ -15257,6 +15471,12 @@
       "label": "making-as-expansion"
     },
     {
+      "source": "George Nakashima",
+      "type": "mirrors",
+      "target": "Sam Maloof",
+      "label": "wood-craft-two-methods"
+    },
+    {
       "source": "Buckminster Fuller",
       "type": "member-of",
       "target": "Source Library",
@@ -15276,9 +15496,9 @@
     },
     {
       "source": "Buckminster Fuller",
-      "type": "connects-to",
+      "type": "deepens",
       "target": "Leverage Points Framework",
-      "label": "do-more-with-less"
+      "label": "ephemeralization-as-leverage-instinct"
     },
     {
       "source": "James Turrell",
@@ -15321,6 +15541,18 @@
       "type": "connects-to",
       "target": "Quality Manifesto",
       "label": "attention-as-practice"
+    },
+    {
+      "source": "Annie Dillard",
+      "type": "connects-to",
+      "target": "Natalie Goldberg",
+      "label": "daily-practice-writers"
+    },
+    {
+      "source": "Annie Dillard",
+      "type": "connects-to",
+      "target": "Julia Cameron",
+      "label": "daily-practice-writers"
     },
     {
       "source": "Andrei Tarkovsky",
@@ -15429,6 +15661,18 @@
       "type": "connects-to",
       "target": "The View From Above",
       "label": "memento-mori-origin"
+    },
+    {
+      "source": "Seneca",
+      "type": "connects-to",
+      "target": "Marcus Aurelius",
+      "label": "stoic-siblings-time-vs-duty"
+    },
+    {
+      "source": "Seneca",
+      "type": "connects-to",
+      "target": "Epictetus",
+      "label": "stoic-siblings-time-vs-will"
     },
     {
       "source": "Lao Tzu",
@@ -15545,6 +15789,12 @@
       "label": "shared-release-from-metric"
     },
     {
+      "source": "John Cage",
+      "type": "exemplifies",
+      "target": "The Blindspot Is the Surprise Fuel",
+      "label": "no-intention-is-policed"
+    },
+    {
       "source": "Agnes Martin",
       "type": "member-of",
       "target": "Source Library",
@@ -15600,9 +15850,9 @@
     },
     {
       "source": "Oblique Portrait",
-      "type": "connects-to",
+      "type": "member-of",
       "target": "Modes of Collaboration",
-      "label": null
+      "label": "named-mode"
     },
     {
       "source": "Oblique Portrait",
@@ -15648,9 +15898,9 @@
     },
     {
       "source": "Dialectic",
-      "type": "connects-to",
+      "type": "member-of",
       "target": "Modes of Collaboration",
-      "label": null
+      "label": "named-mode"
     },
     {
       "source": "Dialectic",
@@ -15732,6 +15982,12 @@
     },
     {
       "source": "Excellent Adventure",
+      "type": "exemplifies",
+      "target": "Modes of Collaboration",
+      "label": "flagship-mode"
+    },
+    {
+      "source": "Excellent Adventure",
       "type": "deepens",
       "target": "Spinoza Conatus",
       "label": "conatus-hilaritas-teaching"
@@ -15756,9 +16012,9 @@
     },
     {
       "source": "Philosopher Visits the Entry",
-      "type": "connects-to",
+      "type": "member-of",
       "target": "Modes of Collaboration",
-      "label": null
+      "label": "named-mode"
     },
     {
       "source": "Philosopher Visits the Entry",
@@ -15933,6 +16189,12 @@
       "type": "mirrors",
       "target": "Spinoza Conatus",
       "label": "conatus-as-worker-drive"
+    },
+    {
+      "source": "Enchanted Worker",
+      "type": "connects-to",
+      "target": "Palace Orchestrator",
+      "label": "model-realized-as-engine"
     },
     {
       "source": "Loudon Live Design System",
@@ -16133,6 +16395,12 @@
       "label": "close-names-the-species"
     },
     {
+      "source": "Two Batons, One Board",
+      "type": "connects-to",
+      "target": "Palace Orchestrator",
+      "label": "is-the-scheduled-poller"
+    },
+    {
       "source": "Lossy Compression with Intent Alignment",
       "type": "enables",
       "target": "Deposit Ceremony",
@@ -16140,7 +16408,7 @@
     },
     {
       "source": "Lossy Compression with Intent Alignment",
-      "type": "deepens",
+      "type": "connects-to",
       "target": "Generative Compression",
       "label": "makes-rigorous"
     },
@@ -16596,9 +16864,9 @@
     },
     {
       "source": "Generative Compression",
-      "type": "mirrors",
+      "type": "deepens",
       "target": "Lossy Compression with Intent Alignment",
-      "label": "intent-as-compression-signal"
+      "label": "practice-grounded-by-theory"
     },
     {
       "source": "BBS Blackboard",
@@ -16683,6 +16951,12 @@
       "type": "connects-to",
       "target": "Palace Agent Infrastructure Spec",
       "label": null
+    },
+    {
+      "source": "BBS Blackboard",
+      "type": "connects-to",
+      "target": "Palace Orchestrator",
+      "label": "appends-through-this-engine"
     },
     {
       "source": "Palace Orchestrator",
@@ -17057,6 +17331,12 @@
       "label": null
     },
     {
+      "source": "Project Stewardship System",
+      "type": "connects-to",
+      "target": "Palace Orchestrator",
+      "label": "run-by-the-orchestrator"
+    },
+    {
       "source": "Tree of Thoughts",
       "type": "enables",
       "target": "Palace Agent Infrastructure Spec",
@@ -17319,6 +17599,12 @@
       "type": "enables",
       "target": "Project Stewardship System",
       "label": "stewardship-system-foundation"
+    },
+    {
+      "source": "Palace Agent Infrastructure Spec",
+      "type": "connects-to",
+      "target": "Palace Orchestrator",
+      "label": "realized-as-engine"
     },
     {
       "source": "STIGMERGY Philosophical Lenses",

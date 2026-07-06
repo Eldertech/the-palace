@@ -30,8 +30,8 @@ links:
     type: connects-to
     label: synergetics
   - target: "[[Leverage Points Framework]]"
-    type: connects-to
-    label: do-more-with-less
+    type: deepens
+    label: ephemeralization-as-leverage-instinct
 ---
 
 # Buckminster Fuller

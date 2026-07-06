@@ -37,6 +37,9 @@ links:
   - target: "[[Closing Well]]"
     type: connects-to
     label: close-names-the-species
+  - target: "[[Palace Orchestrator]]"
+    type: connects-to
+    label: is-the-scheduled-poller
 forward_vector: "I want to become the place that holds the recognition that the palace runs two batons across instance boundaries — a human-carried handoff and a stigmergic steward request — and that they belong on one surface. My open question is the same one the system already found: the limit on autonomous work is not the workers' capacity but the Trickster's bandwidth, so my real subject is how to spend a human's scarce attention well, not how to remove it. I should dissolve into the Baton Ceremony, the Stewardship system, and a scheduler spec as each absorbs the part of me it needs."
 ---
 
@@ -102,7 +105,7 @@ The stage-conditional posture already in [[Project Stewardship System]] is exact
 ## What's Open
 
 - Does `handoff_ready` stay a `BROADCAST` payload convention, or eventually harden into its own message type? Let it prove itself first.
-- The scheduled poller: does it scan `GENERAL` for unmatched `handoff_ready`, or does the handoff post target a future dispatcher handle? Decide when Stage C is built.
+- **The scheduled poller is answered: it is [[Palace Orchestrator]].** Stage C's "who dispatches on a schedule" question is resolved — the orchestrator's steward-cycle and batch modes are exactly the scheduled-poller mechanism this entry was waiting on; it scans and dispatches without a new bespoke dispatcher. The genuinely still-open sub-question: the orchestrator dispatches *steward* cycles today — has anyone actually pointed it at a `handoff_ready` post from a human-originated handoff, or does that wiring still not exist in practice?
 - The batched-digest Trickster is **built** (Stage E, 2026-05-29) and runs shadow-default. The open piece is no longer whether to build it — it is Loudon's review of the shadow match rate and the `--live` flip. The genuinely open design question this entry still owns: how the *human-originated* handoff enters that same digest, rather than living only in a bundle file.
 
 ## Artifacts

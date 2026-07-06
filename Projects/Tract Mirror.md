@@ -25,6 +25,9 @@ links:
     label: source-filter-as-one-machine
   - target: "[[Tract Mirror — build plan — JUCE VST]]"
     type: connects-to
+  - target: "[[Linear Predictive Coding]]"
+    type: mirrors
+    label: the-lattice-made-playable
 ---
 
 # Tract Mirror

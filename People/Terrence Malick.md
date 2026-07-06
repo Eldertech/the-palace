@@ -37,6 +37,9 @@ links:
   - target: "[[Dub Lineage]]"
     type: connects-to
     label: texture-over-foreground
+  - target: "[[Yasujirō Ozu]]"
+    type: mirrors
+    label: restraint-and-patience-in-cinema
 ---
 
 # Terrence Malick

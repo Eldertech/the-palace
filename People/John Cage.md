@@ -43,6 +43,9 @@ links:
   - target: "[[Quality Manifesto]]"
     type: connects-to
     label: shared-release-from-metric
+  - target: "[[The Blindspot Is the Surprise Fuel]]"
+    type: exemplifies
+    label: no-intention-is-policed
 ---
 
 # John Cage

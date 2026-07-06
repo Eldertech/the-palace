@@ -15,7 +15,7 @@ links:
   - { target: "[[The Shop]]", type: member-of, label: roster-member }
   - { target: "[[Shop/p5.js]]", type: couples-with, label: pairs-with }
   - { target: "[[Shop/RNBO codebox~ smith]]", type: connects-to, label: alternative-to }
-tags: [specialist, shop, interactive, audio, web, music, stub]
+tags: [specialist, shop, interactive, audio, web, music]
 ---
 
 # Tone.js

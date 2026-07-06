@@ -52,6 +52,9 @@ links:
   - target: "[[Quality Manifesto]]"
     type: connects-to
     label: depth-over-reach
+  - target: "[[The Blindspot Is the Surprise Fuel]]"
+    type: exemplifies
+    label: the-system-quietly-credits-my-taste
 ---
 
 # Brian Eno

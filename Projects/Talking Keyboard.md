@@ -5,7 +5,7 @@ pillars: [creation, tools]
 status: complete
 born: 2026-05
 last_activated: 2026-05
-stage: sprout
+stage: fruiting
 confidence: working
 energy: medium
 links:

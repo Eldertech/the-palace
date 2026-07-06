@@ -32,6 +32,12 @@ links:
   - target: "[[Hyperdimensional Prism]]"
     type: mirrors
     label: emergent-topology-as-projection
+  - target: "[[Spinoza Conatus]]"
+    type: mirrors
+    label: reinforcement-as-conatus
+  - target: "[[Kuramoto Coupling]]"
+    type: couples-with
+    label: reinforcement-vs-phase-lock
 ---
 
 # Slime Mold Delay

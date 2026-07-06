@@ -36,6 +36,12 @@ links:
   - target: "[[The View From Above]]"
     type: connects-to
     label: memento-mori-origin
+  - target: "[[Marcus Aurelius]]"
+    type: connects-to
+    label: stoic-siblings-time-vs-duty
+  - target: "[[Epictetus]]"
+    type: connects-to
+    label: stoic-siblings-time-vs-will
 ---
 
 # Seneca

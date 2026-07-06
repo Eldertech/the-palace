@@ -28,6 +28,9 @@ links:
   - target: "[[Hilaritas Generator]]"
     type: connects-to
     label: play-through-restraint
+  - target: "[[Loudon Live]]"
+    type: connects-to
+    label: verbal-floor-of-the-public-face
 ---
 
 # The Palace Voice

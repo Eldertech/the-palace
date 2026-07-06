@@ -46,6 +46,9 @@ links:
   - target: "[[Julia Cameron]]"
     type: connects-to
     label: morning-pages
+  - target: "[[The Blindspot Is the Surprise Fuel]]"
+    type: exemplifies
+    label: calm-as-a-throne's-privilege
 ---
 
 # Marcus Aurelius

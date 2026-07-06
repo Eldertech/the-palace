@@ -25,7 +25,8 @@ links:
   - target: "[[Excellent Adventure]]"
     type: mirrors
   - target: "[[Modes of Collaboration]]"
-    type: connects-to
+    type: member-of
+    label: named-mode
   - target: "[[Trickster]]"
     type: mirrors
   - target: "[[Songlines]]"
