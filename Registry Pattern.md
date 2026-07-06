@@ -25,6 +25,9 @@ links:
   - target: "[[Lateral Access]]"
     type: contradicts
     label: "generative-tension"
+  - target: "[[Julia Cameron]]"
+    type: contradicts
+    label: "permission-vs-constraint"
 ---
 
 # Registry Pattern

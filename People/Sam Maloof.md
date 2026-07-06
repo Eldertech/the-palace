@@ -38,6 +38,9 @@ links:
   - target: "[[Agnes Martin]]"
     type: connects-to
     label: repetition-with-variation
+  - target: "[[Move the Ink, Don't Redraw It]]"
+    type: contradicts
+    label: repetition-teaches-the-hand-boils-the-model
 ---
 
 # Sam Maloof

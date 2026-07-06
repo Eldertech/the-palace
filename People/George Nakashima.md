@@ -44,6 +44,9 @@ links:
   - target: "[[Sam Maloof]]"
     type: mirrors
     label: wood-craft-two-methods
+  - target: "[[Compressor Design]]"
+    type: contradicts
+    label: reveal-the-break-vs-hide-it
 ---
 
 # George Nakashima

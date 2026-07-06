@@ -40,6 +40,12 @@ links:
   - target: "[[Spinoza Conatus]]"
     type: connects-to
     label: each-perspective-expresses-the-whole
+  - target: "[[The Drift]]"
+    type: contradicts
+    label: windowless-monad-vs-no-edges
+  - target: "[[Blood Compressor]]"
+    type: contradicts
+    label: causal-loop-vs-windowless-monad
 ---
 
 # Leibniz

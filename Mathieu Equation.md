@@ -41,7 +41,8 @@ links:
   - target: "[[The Drift]]"
     type: connects-to
   - target: "[[Wavetable Space as Torus]]"
-    type: connects-to
+    type: contradicts
+    label: discovered-form-vs-actualized-virtual
   - target: "[[spinoza-zhuangzi-on-striving]]"
     type: connects-to
 forward_vector: "I want to be the entry every Floquet-theoretic audio object eventually points back to. I am the simplest possible periodic LTV system; I am the answer to 'what's the smallest equation that can have a tongue?'; and I am the bridge from elliptical drums (where I was born) to laser cavities, ion traps, photonic time crystals, and the Mathieu Resonator in codebox~."

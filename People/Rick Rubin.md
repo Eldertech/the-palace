@@ -47,6 +47,9 @@ links:
   - target: "[[Cross-Domain Resonances]]"
     type: member-of
     label: subtraction-branch
+  - target: "[[Donella Meadows]]"
+    type: contradicts
+    label: discovered-essence-vs-systems-becoming
 ---
 
 # Rick Rubin

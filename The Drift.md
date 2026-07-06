@@ -28,6 +28,12 @@ links:
   - target: "[[Spinoza Conatus]]"
     type: contradicts
     label: refuses-the-striving
+  - target: "[[Merleau-Ponty]]"
+    type: contradicts
+    label: refuses-the-cultivated-body
+  - target: "[[Leibniz]]"
+    type: contradicts
+    label: refuses-the-monad
   - target: "[[Deleuze]]"
     type: connects-to
     label: difference-not-no-self

@@ -29,6 +29,9 @@ links:
   - target: "[[Spinoza Conatus]]"
     type: deepens
     label: vessel-as-conatus
+  - target: "[[Leibniz]]"
+    type: contradicts
+    label: causal-loop-vs-windowless-monad
 ---
 
 # Blood Compressor

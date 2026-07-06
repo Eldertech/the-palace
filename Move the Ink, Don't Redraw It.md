@@ -20,6 +20,9 @@ links:
   - target: "[[Frame Designer]]"
     type: enables
     label: motion-primitive-for
+  - target: "[[Sam Maloof]]"
+    type: contradicts
+    label: repetition-teaches-the-hand-boils-the-model
 ---
 
 # Move the Ink, Don't Redraw It

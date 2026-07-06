@@ -16,6 +16,7 @@ links:
   - { target: "[[Line-Art Layer Decomposition]]", type: connects-to, label: the-Complete-skill }
   - { target: "[[Animate the Background]]", type: connects-to, label: fills-the-extracted-hole }
   - { target: "[[SAM]]", type: connects-to, label: consumes-its-mask }
+  - { target: "[[R. Murray Schafer]]", type: contradicts, label: invent-the-absence-vs-honor-it }
 tags: [specialist, shop, perception, inpainting, decomposition, local]
 ---
 
