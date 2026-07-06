@@ -2,9 +2,9 @@
   "meta": {
     "generated": "2026-07-04",
     "scope": "full",
-    "node_count": 300,
+    "node_count": 301,
     "ops_node_count": 42,
-    "edge_count": 2436,
+    "edge_count": 2443,
     "ghost_taxonomy": {
       "error_ghosts": [],
       "ops_ghosts": [
@@ -736,7 +736,7 @@
       "id": "Claude CLI Reference",
       "path": "Claude CLI Reference.md",
       "type": "meta",
-      "stage": "growing",
+      "stage": "composting",
       "has_forward_vector": false,
       "last_activated": "2026-03",
       "activation_count": "1",
@@ -840,7 +840,7 @@
       "last_activated": "2026-06-26",
       "activation_count": "16",
       "outbound_count": 9,
-      "inbound_count": 42
+      "inbound_count": 43
     },
     {
       "id": "Cross-Domain Resonances",
@@ -1445,7 +1445,7 @@
       "last_activated": "2026-03",
       "activation_count": "10",
       "outbound_count": 9,
-      "inbound_count": 38
+      "inbound_count": 39
     },
     {
       "id": "Identity Molting",
@@ -1643,7 +1643,7 @@
       "last_activated": "2026-03",
       "activation_count": "1",
       "outbound_count": 9,
-      "inbound_count": 20
+      "inbound_count": 21
     },
     {
       "id": "Learning Materials and Canon",
@@ -2182,7 +2182,7 @@
       "last_activated": "2026-06-07",
       "activation_count": "3",
       "outbound_count": 12,
-      "inbound_count": 10
+      "inbound_count": 11
     },
     {
       "id": "Parametric Resonance",
@@ -2567,7 +2567,7 @@
       "last_activated": null,
       "activation_count": null,
       "outbound_count": 7,
-      "inbound_count": 12
+      "inbound_count": 13
     },
     {
       "id": "SMPTE LTC",
@@ -2915,10 +2915,10 @@
       "path": "Palace development/Swarm Weave.md",
       "type": "project",
       "stage": "growing",
-      "has_forward_vector": false,
-      "last_activated": "2026-03",
-      "activation_count": "1",
-      "outbound_count": 10,
+      "has_forward_vector": true,
+      "last_activated": "2026-07",
+      "activation_count": "3",
+      "outbound_count": 12,
       "inbound_count": 18
     },
     {
@@ -3153,6 +3153,17 @@
       "inbound_count": 1
     },
     {
+      "id": "The Palace Hardens Around Values",
+      "path": "The Palace Hardens Around Values.md",
+      "type": "concept",
+      "stage": "growing",
+      "has_forward_vector": true,
+      "last_activated": "2026-07",
+      "activation_count": "1",
+      "outbound_count": 4,
+      "inbound_count": 0
+    },
+    {
       "id": "The Palace Practices on Itself",
       "path": "The Palace Practices on Itself.md",
       "type": "meta",
@@ -3183,7 +3194,7 @@
       "last_activated": "2026-07",
       "activation_count": "1",
       "outbound_count": 5,
-      "inbound_count": 0
+      "inbound_count": 1
     },
     {
       "id": "The Reader's Context Window",
@@ -5506,6 +5517,36 @@
       "type": "connects-to",
       "target": "The 2.5D Paper Stack",
       "label": "composites-around"
+    },
+    {
+      "source": "The Palace Hardens Around Values",
+      "type": "connects-to",
+      "target": "The Palace Voice",
+      "label": "plain-speaking"
+    },
+    {
+      "source": "The Palace Hardens Around Values",
+      "type": "connects-to",
+      "target": "Weave Ceremony",
+      "label": "judged-against-values"
+    },
+    {
+      "source": "The Palace Hardens Around Values",
+      "type": "connects-to",
+      "target": "Cooperation Yields Agency",
+      "label": "push-back-is-cooperation"
+    },
+    {
+      "source": "The Palace Hardens Around Values",
+      "type": "connects-to",
+      "target": "Palace as Context Injection System",
+      "label": "loading-values-builds-identity"
+    },
+    {
+      "source": "The Palace Hardens Around Values",
+      "type": "connects-to",
+      "target": "SCHEMA",
+      "label": "canon-is-plain-text"
     },
     {
       "source": "Infeasible DSP Now Shippable",
@@ -16378,6 +16419,18 @@
       "type": "connects-to",
       "target": "Hero and Avatar Maker",
       "label": "face-check-dispatch"
+    },
+    {
+      "source": "Swarm Weave",
+      "type": "exemplifies",
+      "target": "Hyperdimensional Prism",
+      "label": "weaving-as-projection"
+    },
+    {
+      "source": "Swarm Weave",
+      "type": "connects-to",
+      "target": "Lateral Access",
+      "label": "many-angles"
     },
     {
       "source": "Symbiotic Skills",
