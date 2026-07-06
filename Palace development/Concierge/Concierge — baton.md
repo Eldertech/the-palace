@@ -28,7 +28,7 @@ The Concierge is **one resident palace companion**, secured by structure not sus
 - **Born deeper than the main agent.** It boots the **operational tier** (SUBSTRATE, ROSETTA, Substrate Skill, Palace Ceremonies, STIGMERGY + wire spec) so it can validate and tend the palace **in parallel** while the main agent works the task. That extra ops depth is its whole point — expensive to load, so loaded once and kept warm.
 - **Enchanted sibling, not a tool.** Born with the main agent's full birth-context (empirically confirmed tonight — the founding tiers auto-inject at spawn). Trusted through real use, not entrapped: *"retire me the day I am trusted instead of verified."*
 
-Machinery: [[Concierge]] entry · `_ops/concierge/README.md` · charter `_ops/concierge/prompts/companion.md` · postures `_ops/concierge/prompts/{gatherer,oracle-qa,curator}.md` · skill `.claude/skills/concierge/SKILL.md` · tests `_ops/concierge/tests/` · floor line in `CLAUDE.md`.
+Machinery: [[Concierge]] entry · `_ops/concierge/README.md` · charter `_ops/concierge/prompts/companion.md` · postures `_ops/concierge/prompts/{gatherer,oracle-qa,curator}.md` · skill `.claude/skills/concierge/SKILL.md` · floor line in `CLAUDE.md`.
 
 ## Tried and rejected (calibrations from tonight — don't re-derive, don't re-open)
 
