@@ -32,6 +32,9 @@ links:
   - target: "[[Loudon Live Design System]]"
     type: enables
     label: lesson-sound
+  - target: "[[The Multilinear Self]]"
+    type: contradicts
+    label: impersonal-texture-vs-personed-projection
 tags: [specialist, shop, sound, generative, music, sfx]
 ---
 

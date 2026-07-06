@@ -25,6 +25,9 @@ links:
     type: connects-to
   - target: "[[Oblique Portrait]]"
     type: mirrors
+  - target: "[[Oblique Portrait]]"
+    type: contradicts
+    label: unsteered-vs-steered
   - target: "[[Confucianism]]"
     type: connects-to
   - target: "[[Stoicism]]"

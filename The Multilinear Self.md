@@ -42,6 +42,9 @@ links:
   - target: "[[Kuramoto Coupling]]"
     type: connects-to
     label: selves-as-coupled-oscillators
+  - target: "[[Stable Audio Open]]"
+    type: contradicts
+    label: impersonal-texture-vs-personed-projection
 ---
 
 # The Multilinear Self

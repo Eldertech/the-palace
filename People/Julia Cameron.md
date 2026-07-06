@@ -36,6 +36,9 @@ links:
   - target: "[[Cross-Domain Resonances]]"
     type: connects-to
     label: pattern-mapping
+  - target: "[[Registry Pattern]]"
+    type: contradicts
+    label: permission-vs-constraint
 ---
 
 # Julia Cameron

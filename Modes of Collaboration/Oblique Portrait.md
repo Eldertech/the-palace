@@ -24,6 +24,9 @@ links:
     type: connects-to
   - target: "[[Excellent Adventure]]"
     type: mirrors
+  - target: "[[Excellent Adventure]]"
+    type: contradicts
+    label: unsteered-vs-steered
   - target: "[[Modes of Collaboration]]"
     type: member-of
     label: named-mode

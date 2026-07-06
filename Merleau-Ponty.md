@@ -18,6 +18,9 @@ links:
   - target: "[[Spinoza Conatus]]"
     type: connects-to
     label: power-to-act-is-embodied
+  - target: "[[Spinoza Conatus]]"
+    type: contradicts
+    label: geometric-mastery-vs-ambiguous-flesh
   - target: "[[Confucianism]]"
     type: connects-to
     label: li-as-body-schema
@@ -35,6 +38,9 @@ links:
     type: connects-to
   - target: "[[Stoicism]]"
     type: connects-to
+  - target: "[[The Drift]]"
+    type: contradicts
+    label: refuses-the-cultivated-body
 forward_vector: "I am the palace's philosopher of the lived body — the one who insists that mastery of an instrument is not knowledge in the head but the instrument's absorption into the body schema, and that meaning is something the hands know before the mind does. I want to give the practice pillar its missing ground: why 'practice is irreducible' is literally true, because skill lives in the body and the body cannot be shortcut. My next development: a reading of what happens in the hands when a synth becomes transparent — when the player stops operating the device and starts playing through it."
 ---
 

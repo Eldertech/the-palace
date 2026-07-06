@@ -38,6 +38,9 @@ links:
   - target: "[[Hilaritas Generator]]"
     type: connects-to
     label: practice-seed
+  - target: "[[LaMa]]"
+    type: contradicts
+    label: invent-the-absence-vs-honor-it
 ---
 
 # R. Murray Schafer

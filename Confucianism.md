@@ -25,6 +25,9 @@ links:
     type: connects-to
   - target: "[[Cooperation Yields Agency]]"
     type: connects-to
+  - target: "[[Deleuze]]"
+    type: couples-with
+    label: anti-essentialist-allies
 forward_vector: "I want to become the palace's sharpest articulation of why virtue cannot exist in isolation — the entry that holds Confucius's insight that the self is a threshold, not a fortress, in productive tension with Stoicism and Spinoza. I want a worked reading of a specific palace practice — the teacher-student relationship in Loudon Live — through the lens of ren and li: what it looks like to teach as a Confucian act."
 ---
 

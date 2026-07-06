@@ -51,6 +51,9 @@ links:
   - target: "[[Spinoza]]"
     type: contradicts
     label: homecoming-vs-becoming
+  - target: "[[Rick Rubin]]"
+    type: contradicts
+    label: discovered-essence-vs-systems-becoming
   - target: "[[Kick Drum ↔ Foundation]]"
     type: connects-to
     label: leverage-in-the-low-end

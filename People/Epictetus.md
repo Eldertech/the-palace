@@ -34,6 +34,9 @@ links:
   - target: "[[The Four Virtues]]"
     type: connects-to
     label: prohairesis
+  - target: "[[Lao Tzu]]"
+    type: contradicts
+    label: wu-wei-vs-prohairesis
 ---
 
 # Epictetus

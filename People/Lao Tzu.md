@@ -43,6 +43,9 @@ links:
   - target: "[[Confucianism]]"
     type: contradicts
     label: dao-vs-li
+  - target: "[[Epictetus]]"
+    type: contradicts
+    label: wu-wei-vs-prohairesis
 ---
 
 # Lao Tzu
