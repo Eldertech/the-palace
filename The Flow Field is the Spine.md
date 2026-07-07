@@ -26,6 +26,9 @@ links:
   - target: "[[BLUELINE — Motion and Flow]]"
     type: connects-to
     label: unified-motion-home
+  - target: "[[The Aftermath Frame]]"
+    type: spawned
+    label: spine-extended-into-time
   - target: "[[Move the Ink, Don't Redraw It]]"
     type: couples-with
     label: field-is-the-geometry
