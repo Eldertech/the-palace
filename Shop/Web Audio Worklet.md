@@ -100,7 +100,7 @@ The shop's browser DSP hand. Thinks in samples, phase accumulators, and windowin
 - `deployment` (claude-artifact | local-server | standalone-html): standalone → Blob-URL worklet is mandatory
 - `inputs` (list, optional): UI controls, mouse, MIDI, mic, or another Specialist's state (e.g. a p5 flock)
 - `channels` (int, default 2): output channel count
-- `out_path` (string): absolute path under `Artifacts/<project>/`
+- `out_path` (string): absolute path under the entry's bundle `[Entry]/`
 
 ### Output
 - HTML file (and supporting JS/CSS as needed) at `out_path`
