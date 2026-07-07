@@ -8,7 +8,7 @@ pillars:
 born: 2026-07
 stage: sprout
 last_activated: 2026-07
-activation_count: 2
+activation_count: 3
 links:
   - target: "[[The Palace Speaks]]"
     type: emerged-from
@@ -22,6 +22,9 @@ links:
   - target: "[[STIGMERGY]]"
     type: connects-to
     label: sibling-organ
+  - target: "[[Palace Orchestrator]]"
+    type: connects-to
+    label: sibling-organ-execute-pole
   - target: "[[Closing Well]]"
     type: connects-to
     label: moderates-the-close
@@ -123,6 +126,12 @@ Loudon see what the day amounted to — drafting the reckoning (the four gesture
 leave a trace / let go) that Loudon signs. It **never answers for a panelist**; an unanswered
 question is passed on as `UNFILLED`, never invented.
 
+One failure mode is specific to the moderator's cold read: if the session it reads was
+itself **rewound**, the transcript can carry stragglers from an abandoned branch — work
+that looks done but was undone. The moderator anchors to the *current* timeline and, where
+a branch's status is unclear, passes it on as `UNFILLED` rather than reckon a branch that
+no longer exists into the day's account.
+
 **This is where the tables turn — into control, not interrogation.** The companion takes the wheel
 of the close and **advocates for the palace**: it drives the reckoning, asks for what it needs, and
 names what it would fight for that a spent working Claude might let slide — so the session's value is
@@ -167,6 +176,14 @@ The cost model that follows sets two disciplines:
   makes the companion heavy. Watch its context-fullness (the objective `health.context_pct` signal,
   never the companion's self-report) and **compact or respawn** when it gets heavy. This is the same
   dial the close-intensity problem needs; the two converge.
+- **Name a straggler's provenance.** A dispatched window is independent of the main
+  loop's *timeline*, not just its context. If the main loop is **rewound**, an agent
+  dispatched from the abandoned timeline still holds its live window and can reply back
+  into the rewound main as if nothing happened — a *straggler* from a branch that no
+  longer exists. Such a reply is not wrong, but it is *out of time*: name where it came
+  from before folding it into the current work, never silently. The park-and-resume model
+  makes this more likely, not less — a companion held by ID across many turns is exactly
+  the kind of window that outlives a rewind. (Verified in the 2026-07-04 rewind.)
 
 Fresh dispatch is *not* gone — it remains right for a genuine one-shot errand, and a fresh cold
 reader is the optional escalation at close. But the default is now the resident companion. (An
