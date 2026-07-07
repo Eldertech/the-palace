@@ -278,5 +278,26 @@
   "idiom": "woodcut print",
   "hero_prompt": "Wide darkfield woodcut print, deep indigo ground. A central image: a single gnarled oak tree in a cleared field, its root system visible below the soil line, each root ending in a separate torch flame. Above ground the trunk rises alone into a dark sky — one trunk, one crown. Several smaller saplings stand in a ring around it at a distance, each on its own patch of earth, their own root systems isolated but their crowns beginning to incline toward the central tree. No letters, numerals, words, labels — purely pictorial. Hard woodcut lines, high contrast, no photographic texture.",
   "icon_prompt": "Bold square woodcut emblem on near-black ground: a thick central vertical trunk bisected by a horizontal line — above the line one branch crown, below it three separated root bundles spreading outward. Maximum contrast, no fine linework, no letters, numerals, words, or labels — purely pictorial, survives at 24px."
+ },
+ {
+  "title": "Martin Heidegger",
+  "path": "People/Martin Heidegger.md",
+  "idiom": "German Expressionist woodcut (Die Brücke / Kirchner) — stark gouged black line, no CGI",
+  "hero_prompt": "A stark German Expressionist woodcut in the manner of Die Brücke: a dense black-forest of jagged, gouged vertical strokes, and punched through its center a narrow CLEARING of pale light where the trees thin — the opening is the brightest region, luminous and genuine. At the forest's edge a small rough-hewn wooden hut; in the near ground a single crude plank bridge crosses a stream, gathering the two banks toward the light. But a long hard shadow falls diagonally across the foreground, darkening the path to the clearing. High-contrast carved black lines on pale ground, no color, printmaking texture. No letters, numerals, words, labels, inscriptions — purely pictorial.",
+  "icon_prompt": "Bold high-contrast woodcut emblem, black on pale: a single ragged CLEARING of white light punched through a dense mass of gouged black forest strokes — an opening in darkness. Heavy carved blacks, no fine linework, survives at 24px. No letters, numerals, words, labels, inscriptions — purely pictorial."
+ },
+ {
+  "title": "Martin Buber",
+  "path": "People/Martin Buber.md",
+  "idiom": "traditional Jewish papercut (mizrah / ketubah papercut) — hand-cut symmetry, warm parchment, no CGI",
+  "hero_prompt": "A traditional Jewish papercut illustration, intricate hand-cut symmetry on warm parchment: two facing abstract forms — evoked as stylized trees-of-life / vessels, NOT human portraits — turned toward one another across a luminous vertical GAP of negative space at the very center, and that between-space gap is the brightest, most charged region of the whole image. Along the base, a single narrow ridge-path threads between two dark drops. Stark cut black silhouette against glowing parchment light behind. Absolutely no Hebrew, no script, no characters of any kind. No letters, numerals, words, labels, inscriptions — purely pictorial.",
+  "icon_prompt": "Bold high-contrast papercut emblem: two simple facing curved forms with a bright vertical GAP of light held between them — the charged space between. Stark black cut-paper silhouette, glowing center, no fine linework, survives at 24px. No Hebrew, no script. No letters, numerals, words, labels, inscriptions — purely pictorial."
+ },
+ {
+  "title": "Iain McGilchrist",
+  "path": "People/Iain McGilchrist.md",
+  "idiom": "Haeckel-style naturalist engraving — fine pen-and-ink, divided into two attentional registers, no CGI",
+  "hero_prompt": "A wide naturalist pen-and-ink engraving in the tradition of Ernst Haeckel, one continuous world crossed by a faint central seam (joined, not split): on the left a bird's head bends in tight, precise, narrowly-focused crosshatch onto a single small seed; on the right the SAME landscape opens broad and whole — rolling hills, vast sky, a far horizon — in looser, airier, open linework held all at once. The two are the same scene attended two ways. White ink line on very dark ground, cross-hatched, scientific-plate texture. No letters, numerals, words, labels, inscriptions — purely pictorial.",
+  "icon_prompt": "Bold high-contrast emblem on near-black ground: a single stylized bird's eye and beak, the left half rendered in tight precise engraved line, the right half opening into one bold broad sweep — two modes of attention in one mark. Heavy contrast, no fine linework that vanishes small, survives at 24px. No letters, numerals, words, labels, inscriptions — purely pictorial."
  }
 ]
