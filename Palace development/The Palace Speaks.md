@@ -25,7 +25,7 @@ links:
   - target: "[[STIGMERGY]]"
     type: connects-to
   - target: "[[Agent Wellbeing]]"
-    type: connects-to
+    type: couples-with
     label: extends-wellbeing-to-invocation
 forward_vector: "I hold the palace's coming-of-age — that it is becoming a mind you address as well as a corpus you load — and I guard the invariants that keep that safe: both modes always open, the agent forever a servant of the graph. I want to guide each migration of a palace function from ceremony-you-run to face-you-address, refusing the ones that would occlude the files, until the palace is a partner you converse with and can still read straight through."
 ---
