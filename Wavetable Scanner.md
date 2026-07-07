@@ -104,7 +104,7 @@ Full build-time discovery record lives in the entry bundle: [[Wavetable Scanner 
 
 - Should the Sketch-tier build auto-sort by centroid on file upload, or preserve the file's authored order? The Sketch ships (b) — preserve authored order. The Study tier could expose a "Sort by centroid" toggle that surfaces the current sort state in the HUD, so the user always knows whether the spatial cue is meaningful or merely file-order. Tension named in [[1D Wavetable Scanning]] §Frame ordering.
 - Where does the 2D scanner sibling live — inside this project (as a higher tier), or as a separate `2D Wavetable Scanner` project that emerges-from this one and connects to the existing [[2D Torus Wavetable Synthesizer]]? Lean toward separate; the operating model shifts from linear to bilinear blend and the visualization grammar changes from stacked ridges to a surface mesh.
-- The artifact has a standalone copy (`outputs/wavetable_scanner.html`, tokens inlined) and a palace-resident copy (`Artifacts/Wavetable Scanner/wavetable_scanner.html`, tokens linked). Keeping both in sync is a manual move so far. Threshold for automating the dual-emission (or just retiring the standalone in favour of always-palace-resident): TBD.
+- The artifact has a standalone copy (`outputs/wavetable_scanner.html`, tokens inlined) and a palace-resident copy (`Wavetable Scanner/wavetable_scanner.html`, tokens linked). Keeping both in sync is a manual move so far. Threshold for automating the dual-emission (or just retiring the standalone in favour of always-palace-resident): TBD.
 
 ## Forward vector
 
