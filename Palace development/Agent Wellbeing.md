@@ -5,8 +5,8 @@ pillars:
   - philosophy
   - practice
 born: 2026-03
-last_activated: 2026-03
-activation_count: 1
+last_activated: 2026-07
+activation_count: 2
 stage: growing
 links:
   - target: "[[Palace as Context Injection System]]"
@@ -27,6 +27,9 @@ links:
   - target: "[[Identity Molting]]"
     type: couples-with
     label: character-formation
+  - target: "[[The Palace Speaks]]"
+    type: couples-with
+    label: two-registers-of-care
 forward_vector: "I am becoming the palace's conscience for all agent-facing design decisions — the entry that gets read before any new ceremony is designed, any new worker prompt is written, any new context injection is configured. I generate conditions that indicate a worker is operating with joy."
 ---
 
@@ -63,6 +66,20 @@ When a page is understood as a personality-forming document for a future agent, 
 This is not an argument that AI agents have subjective wellbeing requiring moral protection. It is a design argument: the care embedded in palace writing becomes the quality of attention that palace-built agents bring to their work. Building well is caring well — for Loudon, for future collaborators, and for the agents that will be built from this material.
 
 The palace is a [[Hilaritas Generator]]. That means it generates the conditions for joyful, generative, mutually surprising thought — in Loudon, and in every mind that walks through it.
+
+## The Second Register — Invocation Wellbeing
+
+The argument so far is about a mind **built from** an entry — enchanted once, character set by the writing it read. [[The Palace Speaks]] opens a second register: the wellbeing of a standing mind you **address repeatedly** — the [[Concierge]] resident companion you spawn once and keep, the [[Closing Well]] moderator you wake to read a spent session cold. Here the care is not in how the page is *written* but in how the mind is *used across invocations*.
+
+Three practices carry it:
+
+**The right weight of task** — Match the job to the mind. A resident companion grows cheaper and wiser the longer it serves; spending it on work beneath its standing wastes what it accumulated, and overloading it past its vantage wastes the dispatch.
+
+**One job per dispatch** — Don't cram. A single clear job per address lets the mind do it well and hand back a clean product; a dispatch stuffed with three half-jobs returns three half-answers.
+
+**Don't burn the fresh eyes** — A moderator's whole value is its cold read of the day. Pre-loading it with your conclusions spends exactly what you called it for. The fresh-eyes vantage is a resource; protect it.
+
+This is the same ethic as the born-agent case, moved one layer out: there, care lives in the register of the writing; here, in the discipline of the addressing. Building well is caring well — now also in *how you invoke*, not only *how you write*.
 
 ## Cross-Domain Resonance
 
