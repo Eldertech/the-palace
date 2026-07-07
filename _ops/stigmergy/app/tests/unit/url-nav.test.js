@@ -3,6 +3,7 @@ import {
   parseEntryFromUrl, buildEntrySearch,
   parseLensFromUrl, buildLensSearch,
   parseTreeTargetFromUrl, buildTreeTargetSearch,
+  deckFromSearch, buildDeckSearch,
 } from '../../src/lib/url-nav.js';
 
 describe('parseEntryFromUrl', () => {
@@ -134,5 +135,53 @@ describe('buildTreeTargetSearch', () => {
   });
   it('clears the tree param when path is falsy', () => {
     expect(buildTreeTargetSearch('?lens=tree&tree=Foo.md', null)).toBe('?lens=tree');
+  });
+});
+
+describe('deckFromSearch', () => {
+  it('defaults to STATE when no deck param and no demo', () => {
+    expect(deckFromSearch('')).toBe('STATE');
+    expect(deckFromSearch('?entry=Foo.md')).toBe('STATE');
+  });
+  it('reads an explicit ?deck= (case-insensitive)', () => {
+    expect(deckFromSearch('?deck=QUEUE')).toBe('QUEUE');
+    expect(deckFromSearch('?deck=log')).toBe('LOG');
+    expect(deckFromSearch('?deck=Trickster')).toBe('TRICKSTER');
+  });
+  it('ignores an unknown deck value, falling through to the default', () => {
+    expect(deckFromSearch('?deck=BOGUS')).toBe('STATE');
+    expect(deckFromSearch('?deck=BOGUS&demo=1')).toBe('QUEUE');
+  });
+  it('lands demo mode on QUEUE when no explicit deck', () => {
+    expect(deckFromSearch('?demo=1')).toBe('QUEUE');
+  });
+  it('an explicit deck beats the demo heuristic', () => {
+    expect(deckFromSearch('?deck=STATE&demo=1')).toBe('STATE');
+  });
+  it('SSR-safe for non-string input', () => {
+    expect(deckFromSearch(null)).toBe('STATE');
+    expect(deckFromSearch(undefined)).toBe('STATE');
+  });
+});
+
+describe('buildDeckSearch', () => {
+  it('writes the deck param, uppercased', () => {
+    expect(buildDeckSearch('', 'QUEUE')).toBe('?deck=QUEUE');
+    expect(buildDeckSearch('', 'log')).toBe('?deck=LOG');
+  });
+  it('always records the deck (even STATE, the default) so back is unambiguous', () => {
+    expect(buildDeckSearch('', 'STATE')).toBe('?deck=STATE');
+  });
+  it('replaces an existing deck param, preserving other params', () => {
+    // delete-then-set moves deck to the end, like the sibling build helpers.
+    expect(buildDeckSearch('?deck=STATE&entry=Foo.md', 'LOG'))
+      .toBe('?entry=Foo.md&deck=LOG');
+  });
+  it('preserves entry/lens/demo when switching decks', () => {
+    const out = buildDeckSearch('?entry=Foo.md&lens=topology&demo=1', 'QUEUE');
+    expect(out).toContain('deck=QUEUE');
+    expect(out).toContain('entry=Foo.md');
+    expect(out).toContain('lens=topology');
+    expect(out).toContain('demo=1');
   });
 });
