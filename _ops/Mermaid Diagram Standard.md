@@ -47,7 +47,7 @@ Mermaid is preferred but not universal. SVG earns its place when:
 
 **The diagram requires custom visual language.** The palace's color-coded node types, double-ring hubs, and edge color conventions in the demo SVG at `_ops/Image Embedding Standard/palace-typed-link-graph-demo.svg` would be painful to reproduce in Mermaid. When visual grammar beyond Mermaid's built-in styling carries meaning, SVG is justified.
 
-**The diagram is sourced from an external work.** A figure from a paper, a hand-drawn sketch, a photograph of a whiteboard — these are image artifacts, not generated diagrams. They belong in `Artifacts/` per [[Image Embedding Standard]], not as Mermaid code.
+**The diagram is sourced from an external work.** A figure from a paper, a hand-drawn sketch, a photograph of a whiteboard — these are image artifacts, not generated diagrams. They belong in the entry's bundle per [[Image Embedding Standard]], not as Mermaid code.
 
 **The diagram needs to live outside the palace.** If a diagram will be exported, shared, or used in another context, an SVG file is a more portable and durable format than a Mermaid block tied to Obsidian's renderer.
 

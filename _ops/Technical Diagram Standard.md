@@ -131,7 +131,7 @@ Artifacts/[Theme]/biquad-df2-signal-flow.svg      <- rendered output (what gets 
 
 Filenames are semantic claims, per [[Image Embedding Standard]]: `biquad-lowpass-magnitude-response.svg`, not `plot.svg`. Computed-data figures keep their `.dat` beside the source so the figure is regenerable. Embedding, alt text, and captions are exactly as [[Image Embedding Standard]] specifies — embed the `.svg` by filename, caption as an argument not a description.
 
-**Bundle vs theme.** Diagrams *owned by one entry* go to that entry's bundle (`[Entry]/`), per [[SCHEMA]] §8 — and this standard's own teaching examples live in its bundle (`_ops/Technical Diagram Standard/`). Diagrams *shared across several entries* go to `Artifacts/[Theme]/`. The example paths above show the shared-theme case; single-owner figures follow the bundle rule.
+**Bundle vs theme.** Diagrams *owned by one entry* go to that entry's bundle (`[Entry]/`), per [[SCHEMA]] §8 — and this standard's own teaching examples live in its bundle (`_ops/Technical Diagram Standard/`). Diagrams *shared across several entries* go to the bundle of their most-owning entry (or a relevant hub's bundle), per [[SCHEMA]] §8. The example paths above show the shared case; single-owner figures follow the bundle rule.
 
 ---
 
@@ -165,7 +165,7 @@ A teaching triptych — three views of one Direct Form II biquad, each drawn by 
 
 ## Open Questions
 
-- ~~Should the three example sources live in this standard's bundle or in a shared `Artifacts/DSP/` theme?~~ **Resolved:** they live in the standard's bundle (`_ops/Technical Diagram Standard/`), owned by the standard. The bundle-vs-theme rule is now stated in § Filing Protocol. A future shared filter-figure library can still go to `Artifacts/DSP/` when the cross-entry need is real.
+- ~~Should the three example sources live in this standard's bundle or in a shared `Artifacts/DSP/` theme?~~ **Resolved:** they live in the standard's bundle (`_ops/Technical Diagram Standard/`), owned by the standard. The bundle-vs-theme rule is now stated in § Filing Protocol. A future shared filter-figure library can live in a relevant hub's bundle (per [[SCHEMA]] §8) when the cross-entry need is real.
 - Mermaid is rendered live by Obsidian with zero build step. LaTeX requires a render pass. Is there value in a lightweight ceremony step — or a git pre-commit hook — that re-renders any changed `.tex` so the `.svg` never drifts from its source?
 - `circuitikz` is installed and can draw actual electronic schematics (filters, op-amp circuits). Does the hardware-synth and modular work want a fourth example, or is that a separate standard when the need is real?
 - At what point does a recurring figure type (pole-zero plots, ADSR envelopes) deserve its own reusable template in the bundle, the way `signal-flow-template.tex` already serves block diagrams?

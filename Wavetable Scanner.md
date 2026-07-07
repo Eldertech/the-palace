@@ -78,7 +78,7 @@ First Sketch shipped key-gated; the user opened it, hit Engage, swept Position, 
 - A second oscillator and an amp envelope. The current voice is a single-osc sustain — adequate for the scanner brief but not for any composition-shaped use.
 - Direct-manipulation in the 3D scene: raycast the cursor plane so dragging it across the scene drives Position. This is the load-bearing capability for the [[Waveguide Synthesizer]] pattern at scanner scale.
 - Mobile audio-unlock + touch-orbit handling.
-- A standards report and test-plan stub at `Artifacts/Wavetable Scanner/tests/test-plan.md`.
+- A standards report and test-plan stub at `Wavetable Scanner/tests/test-plan.md`.
 
 ### Piece *(earned-by criteria — not yet built)*
 

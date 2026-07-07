@@ -80,7 +80,7 @@ The session grounded the design in foundational statistics, all braided back to 
 
 ## Artifact
 
-Eight audio renders (V1–V8) across three code generations; **V7/V8 confirmed good.** The V8 synthesis code lives in the source chat (2026-05-08) and could not be retrieved into this deposit — when pulled, store the code under `Artifacts/` and, if audio examples are wanted in the palace, render V8 and place the files in the entry's bundle.
+Eight audio renders (V1–V8) across three code generations; **V7/V8 confirmed good.** The V8 synthesis code lives in the source chat (2026-05-08) and could not be retrieved into this deposit — when pulled, store the code in the entry's bundle `[Entry]/` and, if audio examples are wanted in the palace, render V8 and place the files there too.
 
 ---
 
