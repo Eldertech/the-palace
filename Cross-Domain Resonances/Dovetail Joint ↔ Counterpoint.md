@@ -36,6 +36,9 @@ links:
   - target: "[[Hilaritas Generator]]"
     type: exemplifies
     label: all-four-pillars-fire
+  - target: "[[Martin Buber]]"
+    type: connects-to
+    label: all-real-living-is-meeting
 ---
 
 # Dovetail Joint ↔ Counterpoint
@@ -262,7 +265,7 @@ They've internalized the pattern. Shape for the other, not in isolation.
 
 The dovetail **yields** (angles inward) to **overcome** (resist pulling). Counterpoint **bends** (contrary motion) to be **straight** (harmonically correct).
 
-### Martin Buber (I and Thou)
+### [[Martin Buber]] (I and Thou)
 > "All real living is meeting."
 
 Dovetail and counterpoint both demonstrate **true meeting**:

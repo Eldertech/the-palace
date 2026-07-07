@@ -27,6 +27,9 @@ links:
   - target: "[[Granular Synthesis]]"
     type: connects-to
     label: room-as-grain
+  - target: "[[Martin Heidegger]]"
+    type: connects-to
+    label: dwelling-makes-space
 ---
 
 # Reverb ↔ Space-Time
@@ -161,7 +164,7 @@ The room's geometry (space) becomes audible through recursive time-smearing (rev
 
 ### "Building Dwelling Thinking"
 
-> "Space is in essence that for which room has been made, that which is let into its bounds." —Martin Heidegger
+> "Space is in essence that for which room has been made, that which is let into its bounds." —[[Martin Heidegger]]
 
 **Reverb makes room.**
 

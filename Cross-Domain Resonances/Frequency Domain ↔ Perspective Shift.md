@@ -32,6 +32,9 @@ links:
   - target: "[[Rick Rubin]]"
     type: connects-to
     label: oblique-lens
+  - target: "[[Iain McGilchrist]]"
+    type: connects-to
+    label: two-modes-of-attention
 ---
 
 # Frequency Domain ↔ Perspective Shift
@@ -176,7 +179,7 @@ The spectrogram (Short-Time Fourier Transform) is a third view: time, frequency,
 
 ## The Deeper Principle: McGilchrist
 
-Iain McGilchrist (*The Master and His Emissary*):
+[[Iain McGilchrist]] (*The Master and His Emissary*):
 - Left hemisphere: Narrow, focused, reductive
 - Right hemisphere: Broad, contextual, holistic
 
