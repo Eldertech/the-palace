@@ -15,7 +15,8 @@
 // minimal (only `entry` and `edit`); other query params (?deck=, ?demo=)
 // pass through untouched so the existing e2e tests don't break.
 
-import { useCallback, useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
+import { DECKS } from './decks.js';
 
 // Parse `?commit=<sha>` from the URL. Returns the sha or null. SSR-safe.
 export function parseCommitFromUrl(searchString) {
@@ -34,37 +35,40 @@ export function buildCommitSearch(searchString, sha) {
   return s === '' ? '' : `?${s}`;
 }
 
-// React hook: keeps `commit` in sync with the URL. pushState on open, native
-// history.back() for the [<] back chip in commit-detail chrome.
+// React hook: keeps `commit` in sync with the URL. The mutation (openCommit)
+// pushes history *and* updates the URL in the same call, then mirrors into
+// React state; popstate only reads the URL back into state. See the note on
+// `pushEntry` in useEntryNavigation for why the push lives in the setter and
+// not in an effect (the latch-leak bug).
 export function useCommitNavigation() {
   const initial = typeof window === 'undefined'
     ? null
     : parseCommitFromUrl(window.location.search);
   const [sha, setSha] = useState(initial);
-  const fromPop = useRef(false);
 
   useEffect(() => {
     if (typeof window === 'undefined') return undefined;
     function onPop() {
-      fromPop.current = true;
       setSha(parseCommitFromUrl(window.location.search));
     }
     window.addEventListener('popstate', onPop);
     return () => window.removeEventListener('popstate', onPop);
   }, []);
 
-  useEffect(() => {
-    if (typeof window === 'undefined') return;
-    if (fromPop.current) { fromPop.current = false; return; }
-    const nextSearch = buildCommitSearch(window.location.search, sha);
-    const currentSearch = window.location.search || '';
-    if (nextSearch === currentSearch) return;
-    const nextUrl = `${window.location.pathname}${nextSearch}${window.location.hash}`;
-    window.history.pushState({ commit: sha }, '', nextUrl);
-  }, [sha]);
+  const openCommit = useCallback((nextSha) => {
+    const target = nextSha || null;
+    if (typeof window !== 'undefined') {
+      const nextSearch = buildCommitSearch(window.location.search, target);
+      const currentSearch = window.location.search || '';
+      if (nextSearch !== currentSearch) {
+        const nextUrl = `${window.location.pathname}${nextSearch}${window.location.hash}`;
+        window.history.pushState({ commit: target }, '', nextUrl);
+      }
+    }
+    setSha(target);
+  }, []);
 
-  const openCommit = useCallback((nextSha) => setSha(nextSha || null), []);
-  const closeCommit = useCallback(() => setSha(null), []);
+  const closeCommit = useCallback(() => openCommit(null), [openCommit]);
   const goBack = useCallback(() => {
     if (typeof window !== 'undefined') window.history.back();
   }, []);
@@ -99,54 +103,65 @@ export function buildEntrySearch(searchString, { path, edit }) {
 
 // React hook: keeps {path, edit} in sync with the URL, exposes setters that
 // push history entries so the browser back button traverses the visit
-// sequence. Each navigation pushes; `goBack()` uses native history.back so
-// forward stays reachable.
+// sequence. `goBack()` uses native history.back so forward stays reachable.
+//
+// Push-in-setter, not push-in-effect. Every mutation calls `pushEntry`, which
+// does the pushState *and* the setState together; popstate only mirrors the
+// URL back into state. The earlier design pushed from a useEffect guarded by a
+// `fromPop` ref, but that ref leaked: a popstate that changed only a *sibling*
+// slice (lens, commit, deck -- all sharing this one URL) left this hook's latch
+// stuck `true`, and the next real navigation here got silently swallowed (no
+// push, URL went stale). That was the intermittent-dead-back-button bug.
+// Pushing straight from the setter removes the latch and the whole failure
+// class -- each user action is exactly one history entry, period.
 export function useEntryNavigation() {
   const initial = typeof window === 'undefined'
     ? { path: null, edit: false }
     : parseEntryFromUrl(window.location.search);
   const [state, setState] = useState(initial);
-  // Track whether the next state change came from popstate so we don't
-  // double-push when the URL changes externally.
-  const fromPop = useRef(false);
 
   useEffect(() => {
     if (typeof window === 'undefined') return undefined;
     function onPop() {
-      fromPop.current = true;
       setState(parseEntryFromUrl(window.location.search));
     }
     window.addEventListener('popstate', onPop);
     return () => window.removeEventListener('popstate', onPop);
   }, []);
 
-  // Push to URL when local state changes -- except when the change came
-  // from popstate (which already updated the URL).
-  useEffect(() => {
-    if (typeof window === 'undefined') return;
-    if (fromPop.current) { fromPop.current = false; return; }
-    const nextSearch = buildEntrySearch(window.location.search, state);
-    const currentSearch = window.location.search || '';
-    if (nextSearch === currentSearch) return;
-    const nextUrl = `${window.location.pathname}${nextSearch}${window.location.hash}`;
-    window.history.pushState({ entry: state.path, edit: state.edit }, '', nextUrl);
-  }, [state.path, state.edit]);
+  const pushEntry = useCallback((next) => {
+    if (typeof window !== 'undefined') {
+      const nextSearch = buildEntrySearch(window.location.search, next);
+      const currentSearch = window.location.search || '';
+      if (nextSearch !== currentSearch) {
+        const nextUrl = `${window.location.pathname}${nextSearch}${window.location.hash}`;
+        window.history.pushState({ entry: next.path, edit: next.edit }, '', nextUrl);
+      }
+    }
+    setState(next);
+  }, []);
+
+  // The current open path is read from the URL (the source of truth) so the
+  // editor toggles stay correct without threading state through a ref.
+  const currentPath = () => (typeof window === 'undefined'
+    ? null
+    : parseEntryFromUrl(window.location.search).path);
 
   const openEntry = useCallback((path) => {
-    setState({ path: path || null, edit: false });
-  }, []);
+    pushEntry({ path: path || null, edit: false });
+  }, [pushEntry]);
 
   const openEditor = useCallback(() => {
-    setState((s) => ({ path: s.path, edit: true }));
-  }, []);
+    pushEntry({ path: currentPath(), edit: true });
+  }, [pushEntry]);
 
   const closeEditor = useCallback(() => {
-    setState((s) => ({ path: s.path, edit: false }));
-  }, []);
+    pushEntry({ path: currentPath(), edit: false });
+  }, [pushEntry]);
 
   const backToPulse = useCallback(() => {
-    setState({ path: null, edit: false });
-  }, []);
+    pushEntry({ path: null, edit: false });
+  }, [pushEntry]);
 
   // Use the browser's native back so forward stays reachable. The popstate
   // listener will resync local state when it fires.
@@ -208,32 +223,105 @@ export function buildTreeTargetSearch(searchString, path) {
 
 // React hook: keeps `lens` in sync with the URL. pushState on switch so
 // browser back/forward traverses lens changes. Default landing is PULSE.
+// Push-in-setter (see useEntryNavigation) so the latch-leak bug can't strand
+// a lens switch when a sibling slice moved.
 export function useLensNavigation() {
   const initial = typeof window === 'undefined'
     ? 'pulse'
     : parseLensFromUrl(window.location.search);
-  const [lens, setLens] = useState(initial);
-  const fromPop = useRef(false);
+  const [lens, setLensState] = useState(initial);
 
   useEffect(() => {
     if (typeof window === 'undefined') return undefined;
     function onPop() {
-      fromPop.current = true;
-      setLens(parseLensFromUrl(window.location.search));
+      setLensState(parseLensFromUrl(window.location.search));
     }
     window.addEventListener('popstate', onPop);
     return () => window.removeEventListener('popstate', onPop);
   }, []);
 
-  useEffect(() => {
-    if (typeof window === 'undefined') return;
-    if (fromPop.current) { fromPop.current = false; return; }
-    const nextSearch = buildLensSearch(window.location.search, lens);
-    const currentSearch = window.location.search || '';
-    if (nextSearch === currentSearch) return;
-    const nextUrl = `${window.location.pathname}${nextSearch}${window.location.hash}`;
-    window.history.pushState({ lens }, '', nextUrl);
-  }, [lens]);
+  const setLens = useCallback((next) => {
+    const lensId = LENSES.has(next) ? next : 'pulse';
+    if (typeof window !== 'undefined') {
+      const nextSearch = buildLensSearch(window.location.search, lensId);
+      const currentSearch = window.location.search || '';
+      if (nextSearch !== currentSearch) {
+        const nextUrl = `${window.location.pathname}${nextSearch}${window.location.hash}`;
+        window.history.pushState({ lens: lensId }, '', nextUrl);
+      }
+    }
+    setLensState(lensId);
+  }, []);
 
   return { lens, setLens };
+}
+
+// ---------------------------------------------------------------------------
+// Deck navigation — the PRIMARY axis (STATE / QUEUE / LOG / TRICKSTER /
+// STEWARDS). Historizing the deck is what makes the browser back button work
+// *across* decks, not just within a deck's sub-views. The deck used to be
+// plain React state read from `?deck=` once on mount and never pushed, so
+// every deck switch was a dead spot for back/forward. This hook (mounted once
+// in App, which is always present regardless of the open deck) puts the deck
+// in the same single history timeline as entry/lens/commit.
+
+// Resolve a deck from a search string, mirroring the original initialDeck
+// heuristic: an explicit `?deck=` (case-insensitive, must be a known deck)
+// wins; else the demo showcase lands on QUEUE; else STATE. SSR-safe.
+export function deckFromSearch(searchString) {
+  const params = new URLSearchParams(typeof searchString === 'string' ? searchString : '');
+  const v = params.get('deck');
+  if (typeof v === 'string') {
+    const up = v.toUpperCase();
+    if (DECKS.includes(up)) return up;
+  }
+  if (params.get('demo')) return 'QUEUE';
+  return 'STATE';
+}
+
+// Build a search string with `deck` set (uppercased), preserving every other
+// param. Unlike lens, the deck is always written on an explicit switch — even
+// STATE, the default — so the history timeline is unambiguous when stepping
+// back across decks.
+export function buildDeckSearch(searchString, deck) {
+  const params = new URLSearchParams(searchString || '');
+  params.delete('deck');
+  if (deck) params.set('deck', String(deck).toUpperCase());
+  const s = params.toString();
+  return s === '' ? '' : `?${s}`;
+}
+
+// React hook: owns the deck as URL-driven state. `navigateDeck` pushes history
+// and updates the URL, then mirrors into state; popstate reads the deck back
+// out of the URL. Push-in-setter, same discipline as the sibling hooks.
+export function useDeckNavigation() {
+  const initial = typeof window === 'undefined'
+    ? 'STATE'
+    : deckFromSearch(window.location.search);
+  const [deck, setDeckState] = useState(initial);
+
+  useEffect(() => {
+    if (typeof window === 'undefined') return undefined;
+    function onPop() {
+      setDeckState(deckFromSearch(window.location.search));
+    }
+    window.addEventListener('popstate', onPop);
+    return () => window.removeEventListener('popstate', onPop);
+  }, []);
+
+  const navigateDeck = useCallback((next) => {
+    if (!next) return;
+    const target = String(next).toUpperCase();
+    if (typeof window !== 'undefined') {
+      const nextSearch = buildDeckSearch(window.location.search, target);
+      const currentSearch = window.location.search || '';
+      if (nextSearch !== currentSearch) {
+        const nextUrl = `${window.location.pathname}${nextSearch}${window.location.hash}`;
+        window.history.pushState({ deck: target }, '', nextUrl);
+      }
+    }
+    setDeckState(target);
+  }, []);
+
+  return { deck, navigateDeck };
 }

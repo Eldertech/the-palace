@@ -5,7 +5,6 @@ import MessageList from './components/MessageList.jsx';
 import ChannelTabs from './components/ChannelTabs.jsx';
 import AgentRoster from './components/AgentRoster.jsx';
 import DeckTabs from './components/DeckTabs.jsx';
-import { DECKS } from './lib/decks.js';
 import StateDeck from './components/state/StateDeck.jsx';
 import LogDeck from './components/log/LogDeck.jsx';
 import TricksterDeck from './components/TricksterDeck.jsx';
@@ -20,6 +19,7 @@ import { buildInbox } from './lib/inbox.js';
 import { BOARDS } from './lib/format.js';
 import { DEMO_MESSAGES } from './lib/demo-data.js';
 import { validateAll } from './lib/schema.js';
+import { useDeckNavigation } from './lib/url-nav.js';
 
 // Demo mode from the ?demo= query param:
 //   '1'     → demo data PREPENDED onto live palace data (the default showcase)
@@ -34,31 +34,18 @@ function demoMode() {
   return v === '1' || v === 'only' || v === 'empty' ? v : null;
 }
 
-// Pick the default deck from ?deck= when present (e2e tests use it to land
-// directly on a specific deck without keyboard navigation). Falls back to
-// STATE -- the v1.0 thesis is that the present is what loads first.
-//
-// Backwards-compat heuristic: when ?demo= is present (the v0.x board-view
-// showcase + most existing e2e tests), default to QUEUE. The demo modes
-// only carry board messages, so landing on STATE would render an empty
-// PULSE lens; landing on QUEUE keeps the existing tests + showcase usable
-// without per-test patches.
-function initialDeck() {
-  if (typeof window === 'undefined') return 'STATE';
-  const params = new URLSearchParams(window.location.search);
-  const v = params.get('deck');
-  if (typeof v === 'string') {
-    const up = v.toUpperCase();
-    if (DECKS.includes(up)) return up;
-  }
-  if (params.get('demo')) return 'QUEUE';
-  return 'STATE';
-}
-
 export default function App() {
   // Top-level deck: STATE (present, default), QUEUE (future), LOG (past).
   // The retro/prospective discipline as navigation, per the v1.0 thesis.
-  const [deck, setDeck] = useState(initialDeck());
+  //
+  // The deck is URL-driven and historized (useDeckNavigation): switching decks
+  // pushes `?deck=` so the browser back button traverses deck changes, and a
+  // ?deck= deep-link (case-insensitive) lands directly. The demo showcase
+  // still defaults to QUEUE via the hook's deckFromSearch heuristic. Use
+  // `navigateDeck` for every user-initiated switch -- never a bare setter --
+  // so no deck change escapes the history timeline.
+  const { deck, navigateDeck } = useDeckNavigation();
+  const setDeck = navigateDeck;
   // Default board (when QUEUE is active) is TRICKSTER -- the inbox is the
   // page that earns its keep moment-to-moment.
   const [activeBoard, setActiveBoard] = useState('TRICKSTER');
