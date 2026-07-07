@@ -57,12 +57,16 @@ describe('launchInteractive (server)', () => {
     expect(readFileSync(join(dir, 'prompt.txt'), 'utf8')).toBe(prompt);
 
     // The launcher cds into the (space-bearing, single-quoted) repo, runs claude
-    // on the pinned model + effort seeded from the file, and self-cleans. It's a
-    // `.command` so LaunchServices runs it in Terminal when `open`ed.
+    // on the pinned model + effort + permission mode seeded from the file, and
+    // self-cleans. It's a `.command` so LaunchServices runs it in Terminal when
+    // `open`ed.
     const script = readFileSync(join(dir, 'launch.command'), 'utf8');
     expect(script).toContain(`cd '/Users/x/The Palace'`);
-    expect(script).toContain(`claude --model 'claude-opus-4-8' --effort 'high' "$(cat '${join(dir, 'prompt.txt')}')"`);
+    expect(script).toContain(`claude --model 'claude-opus-4-8' --effort 'high' --permission-mode 'acceptEdits' "$(cat '${join(dir, 'prompt.txt')}')"`);
     expect(script).toContain(`rm -rf '${dir}'`);
+    // The launched session opens in acceptEdits (low-friction, like a configured
+    // desktop session) and prints the /desktop nudge once at startup.
+    expect(script).toContain('/desktop to move it into the Claude Code app');
 
     // `open -a Terminal <launcher>` — LaunchServices, no Apple Events.
     expect(calls.length).toBe(1);

@@ -44,7 +44,7 @@ function shq(s) {
  * Stage + launch an interactive `claude` session in Terminal.app.
  *
  * @param {string} prompt    the seed prompt (multi-line ok)
- * @param {object} opts      { palaceRoot, platform?, spawnImpl?, tmpDir?, model?, effort? }
+ * @param {object} opts      { palaceRoot, platform?, spawnImpl?, tmpDir?, model?, effort?, permissionMode? }
  * @returns {Promise<{launched:boolean, supported:boolean, error?:string, scriptPath?:string}>}
  */
 export function launchInteractive(prompt, opts = {}) {
@@ -67,6 +67,13 @@ export function launchInteractive(prompt, opts = {}) {
   // opts for a future picker; bump the id when a newer Opus ships.
   const model = opts.model || 'claude-opus-4-8';
   const effort = opts.effort || 'high';
+  // A launched palace agent does real read-edit-commit work, so it opens in
+  // `acceptEdits` rather than the CLI's `default` (ask-before-every-edit) — matching
+  // the low-friction feel of a configured desktop session (which also recalls prior
+  // "don't ask again" decisions a fresh terminal session can't). This auto-approves
+  // file edits but still gates arbitrary Bash, so git stays the safety net. Escalate
+  // to 'bypassPermissions' via opts for zero prompts. Overridable for a future picker.
+  const permissionMode = opts.permissionMode || 'acceptEdits';
 
   let dir, promptPath, scriptPath;
   try {
@@ -81,7 +88,13 @@ export function launchInteractive(prompt, opts = {}) {
     const script = [
       '#!/bin/bash',
       `cd ${shq(palaceRoot)} || exit 1`,
-      `claude --model ${shq(model)} --effort ${shq(effort)} "$(cat ${shq(promptPath)})"`,
+      // One-line nudge: the terminal→desktop hop is an in-session slash command
+      // (there is no CLI flag to launch the desktop app directly), so remind the
+      // operator it exists. Prints once at session start.
+      `echo ''`,
+      `echo '  ↳ session is live — type /desktop to move it into the Claude Code app.'`,
+      `echo ''`,
+      `claude --model ${shq(model)} --effort ${shq(effort)} --permission-mode ${shq(permissionMode)} "$(cat ${shq(promptPath)})"`,
       `rm -rf ${shq(dir)}`,
       '',
     ].join('\n');
