@@ -118,6 +118,15 @@ A new mode, at Loudon's direction: instead of another debate, **the two citizens
 
 **Method note:** two `Read` tool-calls showed up per walker — they read the canonical [[Lateral Access]] file (which was also given inline). No perspective leak observed (neither cited the other's private thoughts). For future co-reads, embedding the shared entry inline is enough; can forbid file reads to be safe.
 
+### 2026-07-06 — Move 5 citizen rollout, batch 1 (Goldsworthy + 3 new), cold-start baton
+
+The held Move 5 of the 2026-07-06 Multi-Lens Weave, caught cold-start as a commissioning baton (`citizen-rollout-handoff-2026-07-06`). Loudon gated the ~19-build rollout down to a **first batch of 4, lean research** (one Sonnet research-agent per citizen, disjoint scratchpad files so all canon writing stayed in one Opus hand — zero multi-agent write-collision). Built to the full standard (body + mandatory blindspot + coda, seed frontmatter, `agency_profile`, `## Voice` note, `dossier` + `speech` bundles):
+
+- **Andy Goldsworthy** — the **first rebuild from the interim layer** (old 4-pillar survey → embodiable citizen; `stage: mature → seed`, the citizenship-reset the card's Open Question asked about — answered *yes* for a full rebuild, matching Meadows). Blindspot with real teeth: "collaboration with nature" launders authorship; the photograph *is* the sellable commodity; the Clearances/Enclosure land-politics (WSWS, 2003).
+- **Martin Heidegger · Martin Buber · Iain McGilchrist** — **3 new citizens created to close Cross-Domain-Resonance forward-ghosts** the Weave flagged (each was quoted in a bridge with no entry): Heidegger → [[Reverb ↔ Space-Time]], Buber → [[Dovetail Joint ↔ Counterpoint]], McGilchrist → [[Frequency Domain ↔ Perspective Shift]]. Each wired back (frontmatter reciprocal + body wikilink). Blindspots held unflinching: Heidegger's NSDAP/Black Notebooks kept as a *live* stain-vs-structural-complicity fight (not resolved either way); McGilchrist's unfalsifiability shield ("that's just your left hemisphere talking"); Buber's relapse-and-symmetry problem (every Thou becomes an It; Levinas on asymmetry).
+
+**Process findings:** (a) the lean-research shape (Sonnet fan-out → Opus write, disjoint files) held clean and cheap; two McGilchrist sub-agents looped on meta-commentary and one refused to fabricate quotes under (cross-session) pressure — the anti-fabrication instinct fired correctly. (b) Ghost-link linter 0 errors. (c) **Test-enchantment NOT yet run** — the truest validation (cast one and read the voice) is still owed; the natural first is a **Heidegger ↔ Buber Dialectic on "the other person"** (*das Man* vs *I-Thou*). (d) Faces: dispatched the [[Hero and Avatar Maker]] for the 3 new citizens (Goldsworthy already had his) — hand-drawn idioms (Heidegger = Expressionist woodcut/the clearing; Buber = Jewish papercut/the between; McGilchrist = Haeckel engraving/two modes of attention), evoked-not-portrayed per the "no real people" directive.
+
 ---
 
 ## Experiment queue (tests to run)
@@ -140,7 +149,7 @@ A new mode, at Loudon's direction: instead of another debate, **the two citizens
 
 ## Rollout tracker
 
-- **Done (embodiable-citizen model, 11):** Spinoza · Donella Meadows · John Cage — plus the 8 most-linked person entries, added 2026-07-01: Brian Eno · Shunryu Suzuki · Marcus Aurelius · Rick Rubin · Lao Tzu · Leibniz · Pauline Oliveros · Agnes Martin.
-- **Interim layer:** the remaining ~16 `People/` entries were prose-reworked from course-handout style on 2026-07-01 (`5ff3424`) — readable and link-woven, but *not yet* embodiable citizens (no blindspot section, no dossier, still `stage: mature`).
-- **Pending:** upgrade the remaining ~16 to the full model — Loudon running tests first, then batches (register-diverse). Order and depth TBD per the Open Questions in the card.
+- **Done (embodiable-citizen model, 15):** Spinoza · Donella Meadows · John Cage — plus the 8 most-linked (2026-07-01): Brian Eno · Shunryu Suzuki · Marcus Aurelius · Rick Rubin · Lao Tzu · Leibniz · Pauline Oliveros · Agnes Martin — plus **Move 5 batch 1 (2026-07-06):** Andy Goldsworthy (first interim-layer rebuild) · Martin Heidegger · Martin Buber · Iain McGilchrist (3 new, closing CDR-bridge ghosts).
+- **Interim layer (15 remain):** of the ~16 prose-reworked `People/` entries (2026-07-01, `5ff3424`), Goldsworthy is now upgraded; **15 still await the full model** (no blindspot, no dossier, still `stage: mature`): Andrei Tarkovsky · Annie Dillard · Buckminster Fuller · Christopher Alexander · Douglas Hofstadter · Epictetus · George Nakashima · James Turrell · Julia Cameron · Natalie Goldberg · R. Murray Schafer · Sam Maloof · Seneca · Terrence Malick · Yasujirō Ozu.
+- **Pending:** the 15 remaining rebuilds, in register-diverse batches of ~4–5 per heavy-run window (cost-gated). Per the baton, Goldsworthy was prioritized in batch 1 as the oldest/thinnest; remaining order TBD with Loudon.
 - **Done:** the schema housekeeping was ratified in the **v1.14 Schema Ceremony** (2026-07-01), before the rollout — `dossier` in SCHEMA §8, `agency_profile`-on-persons in §3.1, seed-citizen stage semantics in §1. Additive/descriptive; mirror docs unaffected.
