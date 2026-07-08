@@ -134,7 +134,7 @@ This is the floor with teeth: the dial reads `subagent_tokens`, divides by the t
 
 - **Self-report calibration** — whether an agent can ever read its own capacity; a question, not a live method.
 - **The outside-agent quality read** — can a fresh agent judge another's acuity/drift better than the instrument? The moderator is the working prototype.
-- **Model coverage and floor weight** — characterized on Haiku plus one Opus point; the Opus resident-trajectory and other models are the next runs, alongside a reassessment of how heavy the auto-loaded floor should be and how much of its ~46K earns its tokens.
+- **Model coverage and floor weight** — now characterized across Haiku / Sonnet / Fable / Opus plus the Opus resident climb (2026-07-08), confirming the sensor on the dial's real target. Two conclusions: content cost scales ~1.35–1.45× from the old (Haiku) to the new-gen tokenizer, tightly clustered within a generation; and on the 1M-window models in use the ~62–67K floor is only ~6–7% at spawn, so **capacity rarely binds** — a resident is <9% full after three document-ingesting addresses. The floor's weight is therefore a *character-and-cost* question, not a headroom one; the larger under-used load is the ~20K of tool schemas, trimmable at dispatch (a leaner agent type), not in canon. For ordinary residents the **quality** dimension binds before capacity — which is why the deferred outside-agent quality read is the more urgent of the two open threads.
 
 ## Cross-Domain Resonance
 
