@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { Banner } from '../primitives.jsx';
 import { buildLaunchPrompt } from '../../lib/launch-prompt.js';
-import { buildHandoffPickup } from '../../lib/handoff-builder.js';
+import { buildHandoffClaim } from '../../lib/handoff-builder.js';
 import { postMessage, InvalidMessageError } from '../../adapters/blackboard.js';
 import { launchInteractiveSession } from '../../adapters/launch.js';
 
@@ -92,7 +92,7 @@ export default function LaunchModal({ context, onPickedUp, onClose }) {
     if (sending) return;
     setSending(true); setErrors([]);
     try {
-      const persisted = await postMessage(buildHandoffPickup({ handoffId: context.id }), 'persistent');
+      const persisted = await postMessage(buildHandoffClaim({ handoffId: context.id }), 'persistent');
       if (onPickedUp) onPickedUp(context, persisted);
     } catch (err) {
       setErrors(err instanceof InvalidMessageError
